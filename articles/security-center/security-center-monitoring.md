@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/10/2016"
+   ms.date="06/06/2016"
    ms.author="yurid"/>
 
 #Überwachen der Sicherheitsintegrität in Azure Security Center
@@ -34,7 +34,7 @@ Weitere Informationen zur Anwendung der Empfehlungen finden Sie unter [Implement
 
 Auf der Kachel **Ressourcensicherheitsintegrität** können Sie den Sicherheitsstatus Ihrer Ressourcen überwachen. Im Beispiel unten sehen Sie eine Reihe von Problemen mit hohem und mittlerem Schweregrad, die Aufmerksamkeit erfordern. Die Sicherheitsrichtlinien, die aktiviert sind, wirken sich auf die Arten von Sicherheitsmechanismen aus, die überwacht werden.
 
-![Ressourcenintegrität](./media/security-center-monitoring/security-center-monitoring-fig1-new2.png)
+![Ressourcenintegrität](./media/security-center-monitoring/security-center-monitoring-fig1-new3.png)
 
 Erkennt Security Center ein Sicherheitsrisiko, das behoben werden muss – etwa ein virtueller Computer mit fehlenden Sicherheitsupdates oder ein Subnetz ohne [Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-nsg.md) –, wird dies hier angegeben.
 
@@ -100,20 +100,19 @@ Dieses Blatt enthält die Sicherheitsdetails für den virtuellen Computer. Unten
 ###Überwachen virtueller Netzwerke
 Wenn Sie auf der Kachel **Ressourcensicherheitsintegrität** auf **Netzwerk** klicken, wird das Blatt **Netzwerk** mit weiteren Details geöffnet (siehe folgende Abbildung):
 
-![Netzwerk](./media/security-center-monitoring/security-center-monitoring-fig9-new.png)
+![Netzwerk](./media/security-center-monitoring/security-center-monitoring-fig9-new3.png)
 
 ####Netzwerkempfehlungen
 
 Ähnlich wie für die Ressourcenintegritätsinformationen für virtuelle Maschinen enthält dieses Blatt im oberen Bereich eine zusammengefasste Liste der Probleme und im unteren Bereich eine Liste der überwachten Netzwerke.
 
-![Blatt „Netzwerk“](./media/security-center-monitoring/security-center-monitoring-fig9-new2.png)
-
 Im Abschnitt für die Statusanalyse der Netzwerke sind potenzielle Sicherheitsprobleme und entsprechende Empfehlungen aufgeführt. Beispiele für Probleme:
 
+- Die Firewall der nächsten Generation (Next Generation Firewall, NGFW) ist nicht installiert.
 - Netzwerksicherheitsgruppen (NSGs) für Subnetze nicht aktiviert
 - NSGs für virtuelle Computer nicht aktiviert
 - Eingeschränkter Zugriff über öffentliche externe Endpunkte
-- Fehlerfrei Subnetze
+- Fehlerfreie Endpunkte mit Internetanbindung
 
 Wenn Sie auf eine dieser Empfehlungen klicken, wird ein neues Blatt mit weiteren Details zur Empfehlung angezeigt (siehe folgendes Beispiel).
 
@@ -123,18 +122,29 @@ In diesem Beispiel befindet sich auf dem Blatt **Fehlende Netzwerksicherheitsgru
 
 Auf dem Blatt **Netzwerksicherheitsgruppe auswählen** können Sie eine geeignete Netzwerksicherheitsgruppe für das Subnetz auswählen oder eine neue Netzwerksicherheitsgruppe erstellen.
 
-####Abschnitt „Netzwerk“
+####Abschnitt „Endpunkte mit Internetanbindung“
 
-Der Abschnitt **Netzwerk** enthält eine hierarchische Ansicht der Ressourcen:
+Im Abschnitt **Endpunkte mit Internetanbindung** werden die virtuellen Computer, die derzeit mit einem Endpunkt mit Internetanbindung konfiguriert sind, und der jeweilige Status angezeigt.
 
-![Netzwerkstruktur](./media/security-center-monitoring/security-center-monitoring-fig121-new2.png)
+![Endpunkt mit Internetanbindung](./media/security-center-monitoring/security-center-monitoring-fig121-new5.png)
+
+Diese Tabelle enthält den Endpunktnamen, der den virtuellen Computer darstellt, die Internet-IP-Adresse und den aktuellen Status der NSG und der NGFW. Die Tabelle ist nach Schweregrad sortiert, wie nachfolgend beschrieben:
+- Rot (oben): hohe Priorität; sollte umgehend behoben werden 
+- Orange: mittlere Priorität; sollte zeitnah behoben werden
+- Grün (ganz unten): fehlerfrei
+
+####Abschnitt „Netzwerktopologie“
+
+Der Abschnitt **Netzwerktopologie** enthält eine hierarchische Ansicht der Ressourcen:
+
+![Netzwerktopologie](./media/security-center-monitoring/security-center-monitoring-fig121-new4.png)
 
 Diese Tabelle ist nach Schweregrad sortiert (virtuelle Computer und Subnetze):
 - Rot (oben): hohe Priorität; sollte umgehend behoben werden 
 - Orange: mittlere Priorität; sollte zeitnah behoben werden
 - Grün (ganz unten): fehlerfrei
 
-In dieser Hierarchie umfasst die erste Ebene [virtuelle Netzwerke](../virtual-network/virtual-networks-overview.md), [virtuelle Netzwerkgateways](../vpn-gateway/vpn-gateway-site-to-site-create.md) und [Virtual Network (klassisch)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Die zweite Ebene umfasst Subnetze. Die dritte Ebene enthält die virtuellen Computer dieser Subnetze. Die rechte Spalte enthält den aktuellen Status der Netzwerksicherheitsgruppe (NSG) für diese Ressourcen. Im folgenden Beispiel wurde der virtuelle Computer „VM-CL-W1“ ausgewählt:
+In dieser Hierarchie umfasst die erste Ebene [virtuelle Netzwerke](../virtual-network/virtual-networks-overview.md), [Virtual Network-Gateways](../vpn-gateway/vpn-gateway-site-to-site-create.md) und [Virtual Network (klassisch)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Die zweite Ebene umfasst Subnetze. Die dritte Ebene enthält die virtuellen Computer dieser Subnetze. Die rechte Spalte enthält den aktuellen Status der Netzwerksicherheitsgruppe (NSG) für diese Ressourcen. Im folgenden Beispiel wurde der virtuelle Computer „VM-CL-W1“ ausgewählt:
 
 ![Netzwerkstruktur](./media/security-center-monitoring/security-center-monitoring-fig13-new2.png)
 
@@ -181,8 +191,8 @@ In diesem Dokument haben Sie erfahren, wie Sie die Überwachungsfunktionen in Az
 
 - [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md) – erfahren Sie, wie Sie Sicherheitseinstellungen in Azure Security Center konfigurieren.
 - [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) – Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
-- [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md): Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
+- [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md) – Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
 - [Häufig gestellte Fragen (FAQ) zu Security Center](security-center-faq.md) – Häufig gestellte Fragen zur Verwendung des Diensts.
 - [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) – suchen Sie nach Blogbeiträgen über Azure-Sicherheit und -Compliance.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

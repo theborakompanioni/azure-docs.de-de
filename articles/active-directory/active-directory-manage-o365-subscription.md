@@ -13,22 +13,22 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="05/26/2016"
+   ms.date="06/03/2016"
    ms.author="curtand"/>
 
 # Verwalten des Verzeichnisses für Ihr Office 365-Abonnement in Azure
 
-In diesem Artikel wird beschrieben, wie ein Verzeichnis verwaltet wird, das für ein Office 365-Abonnement erstellt wurde. Hier verwenden wir aber das klassische Azure-Portal. Sie müssen der Dienstadministrator oder Co-Administrator eines Azure-Abonnements sein, um sich am klassischen Azure-Portal anzumelden. Falls noch kein Azure-Abonnement vorhanden ist
+Dieser Artikel beschreibt die Verwaltung eines für ein Office 365-Abonnement erstellten Verzeichnisses mithilfe des klassischen Azure-Portals. Die Anmeldung beim klassischen Azure-Portal ist nur als Dienstadministrator oder Co-Administrator eines Azure-Abonnements möglich. Falls Sie noch nicht über ein Azure-Abonnement verfügen:
 
 1. Sie können sich registrieren, indem Sie das Geschäfts- oder Schulkonto verwenden, das Sie zum Anmelden an Office 365 verwenden.
 
 ![Eingabefeld für E-Mail-Adresse](./media/active-directory-manage-o365-subscription/AAD_O365_01.png)
 
-Ein entsprechendes Abonnement für Azure wird nicht gefunden. Sie können aber auf **Für Azure registrieren** klicken, sodass relevante Informationen aus dem Office 365-Konto wieder in das Anmeldeformular eingetragen werden. Das gleiche Konto wird standardmäßig der Rolle des Dienstadministrators zugewiesen.
+Sie werden darauf hingewiesen, dass kein entsprechendes Abonnement für Azure gefunden wurde. Wenn Sie auf **Für Azure registrieren** klicken, werden die relevanten Informationen aus dem Office 365-Konto in das Azure-Registrierungsformular übertragen. Das gleiche Konto wird standardmäßig der Rolle des Dienstadministrators zugewiesen.
 
 ![Link zur Anmeldung für ein Azure-Abonnement](./media/active-directory-manage-o365-subscription/AAD_O365_02.png)
 
-Nach Abschluss des Azure-Abonnements können Sie sich beim klassischen Azure-Portal anmelden und auf Azure-Dienste zugreifen. Klicken Sie auf die Active Directory-Erweiterung, um das gleiche Verzeichnis zu verwalten, das Ihre Office 365-Benutzer authentifiziert.
+Nach Abschluss des Azure-Abonnements können Sie sich beim klassischen Azure-Portal anmelden und auf Azure-Dienste zugreifen. Klicken Sie auf die Active Directory-Erweiterung, um das Verzeichnis zu verwalten, das auch zur Authentifizierung Ihrer Office 365-Benutzer verwendet wird.
 
 Wenn Sie bereits über ein Azure-Abonnement verfügen, ist der Prozess zum Verwalten eines weiteren Verzeichnisses ebenfalls ganz einfach. Beispiel: Michael Smith verfügt über ein Office 365-Abonnement für „contoso.com“. Er besitzt außerdem ein Azure-Abonnement, für das er sich mit seinem Microsoft-Konto msmith@hotmail.com registriert hat. In diesem Fall verwaltet er zwei Verzeichnisse.
 
@@ -47,7 +47,7 @@ In diesem Fall sind die beiden Verzeichnisse unabhängig voneinander.
 Damit Michael Smith beide Verzeichnisse verwalten kann, während er in Azure als msmith@hotmail.com angemeldet ist, muss er die folgenden Schritte ausführen:
 
 > [AZURE.NOTE]
-Diese Schritte können nur ausgeführt werden, wenn ein Benutzer mit einem Microsoft-Konto angemeldet ist. Wenn der Benutzer mit einem Geschäfts- oder Schulkonto angemeldet ist, steht die Option **Vorhandenes Verzeichnis verwenden** nicht zur Verfügung. Ein Geschäfts- oder Schulkonto kann nur mithilfe seines Stammverzeichnisses authentifiziert werden (dies ist das Verzeichnis, in dem das Geschäfts- oder Schulkonto gespeichert wird, das im Besitz der Organisation oder Schule ist).
+Diese Schritte können nur ausgeführt werden, wenn ein Benutzer mit einem Microsoft-Konto angemeldet ist. Ist der Benutzer mit einem Geschäfts- oder Schulkonto angemeldet, steht die Option **Vorhandenes Verzeichnis verwenden** nicht zur Verfügung. Ein Geschäfts-oder Schulkonto kann nur anhand des entsprechenden Basisverzeichnisses authentifiziert werden (also des Verzeichnisses, in dem sich das Arbeits- oder Schulkonto befindet und dessen Besitzer das Unternehmen oder die Schule ist).
 
 1.	Melden Sie sich als msmith@hotmail.com beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
 2.	Klicken Sie auf **Neu** -> **App Services** -> **Active Directory** -> **Verzeichnis** -> **Benutzerdefiniert erstellen**.
@@ -60,13 +60,13 @@ Diese Schritte können nur ausgeführt werden, wenn ein Benutzer mit einem Micro
 Nach Abschluss dieser Schritte ist msmith@hotmail.com ein globaler Administrator im Verzeichnis "Contoso".
 
 ## Verwalten von Ressourcen als globaler Administrator
-Nehmen wir nun an, dass Jane Doe sich beim klassischen Azure-Portal anmelden und Webseiten und Datenbankressourcen verwalten muss, die dem Azure-Abonnement für msmith@hotmail.com zugeordnet sind. Bevor dies möglich ist, muss Michael Smith die folgenden zusätzlichen Schritte ausführen:
+Nehmen wir nun an, dass Jane Doe Websites und Datenbankressourcen verwalten möchte, die dem Azure-Abonnement für msmith@hotmail.com zugeordnet sind. Bevor dies möglich ist, muss Michael Smith die folgenden zusätzlichen Schritte ausführen:
 
 1.	Melden Sie sich über das Dienstadministratorkonto des Azure-Abonnements beim [klassischen Azure-Portal](https://manage.windowsazure.com) an (in diesem Beispiel msmith@hotmail.com)).
-2.	Übertragen Sie das Abonnement in das Verzeichnis "Contoso": Klicken Sie auf **Einstellungen** > **Abonnements** > wählen Sie das Abonnement > **Verzeichnis bearbeiten** > wählen Sie **Contoso (Contoso.com)**. Alle Geschäfts- oder Schulonten, die Co-Administratoren des Abonnements sind, werden als Teil der Übertragung entfernt.
-3.	Fügen Sie Jane Doe dem Abonnement als Co-Administrator hinzu: Klicken Sie auf **Einstellungen** > **Administratoren**, und wählen Sie das Abonnement aus. Klicken Sie anschließend auf **Hinzufügen**, und geben Sie ****JohnDoe@Contoso.com** ein.
+2.	Übertragen Sie das Abonnement in das Verzeichnis "Contoso": Klicken Sie auf **Einstellungen** > **Abonnements** > wählen Sie das Abonnement > **Verzeichnis bearbeiten** > wählen Sie **Contoso (Contoso.com)**. Alle Geschäfts- oder Schulkonten, die als Co-Administratoren des Abonnements fungieren, werden im Rahmen der Übertragung entfernt.
+3.	Fügen Sie Jane Doe dem Abonnement als Co-Administrator hinzu: Klicken Sie auf **Einstellungen** > **Administratoren**, und wählen Sie das Abonnement aus. Klicken Sie anschließend auf **Hinzufügen**, und geben Sie **JohnDoe@Contoso.com** ein.
 
-##Nächste Schritte
+## Nächste Schritte
 Weitere Informationen über die Beziehung zwischen Abonnements und Verzeichnissen finden Sie unter [Zuordnung zwischen einem Abonnement und einem Verzeichnis](active-directory-how-subscriptions-associated-directory.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

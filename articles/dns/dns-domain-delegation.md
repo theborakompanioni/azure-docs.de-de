@@ -69,26 +69,50 @@ Nachdem Sie Ihre DNS-Zone in Azure DNS erstellt haben, müssen Sie NS-Einträge 
 
 Nehmen wir beispielsweise an, Sie erwerben die Domäne „contoso.com“ und erstellen eine Zone mit dem Namen „contoso.com“ in Azure DNS. Als Besitzer der Domäne bietet Ihre Registrierungsstelle Ihnen die Option, die Namenserveradressen (d. h. die NS-Einträge) für Ihre Domäne zu konfigurieren. Die Registrierungsstelle wird diese NS-Einträge in der übergeordneten Domäne speichern, in diesem Fall ".com". Clients auf der ganzen Welt werden beim Auflösen von DNS-Einträgen nach "contoso.com" dann an Ihre Domäne in der Azure DNS-Zone geleitet.
 
-### So richten Sie die Delegierung ein
+### Ermitteln der Namen der Namenserver
 
-Zum Einrichten der Delegierung müssen Sie den Namenserver für die Zone kennen. Azure DNS weist jedes Mal Namenserver aus einem Pool zu, wenn Sie eine Zone erstellen, und speichert diese in den autoritativen NS-Einträgen, die automatisch in der Zone erstellt werden. Zum Angeben der Namen der Namenserver müssen Sie lediglich diese Einträge abrufen.
+Bevor Sie Ihre DNS-Zone an Azure DNS delegieren können, müssen Sie den Namenserver für Ihre Zone ermitteln. Azure DNS weist bei jeder Zonenerstellung Namenserver aus einem Pool zu.
 
-Mithilfe von Azure PowerShell können die autoritativen NS-Einträge wie folgt abgerufen werden. (Hinweis: Der Eintragsname „@“ wird verwendet, um auf Einträge an der Spitze der Zone zu verweisen.) In diesem Beispiel wurde die Zone "contoso.com" den Namenservern "ns1-04.azure-dns.com", "ns2-04.azure-dns.net", "ns3-04.azure-dns.org" und "ns4-04.azure-dns.info" zugewiesen.
+Welche Namenserver Ihrer Zone zugewiesen sind, lässt sich am einfachsten über das Azure-Portal ermitteln. In diesem Beispiel wurden der Zone „contoso.net“ die Namenserver „ns1-01.azure-dns.com“, „ns2-01.azure-dns.net“, „ns3-01.azure-dns.org“ und „ns4-01.azure-dns.info“ zugewiesen:
 
+ ![Dns-nameserver](./media/dns-domain-delegation/viewzonens500.png)
 
-	$zone = Get-AzureRmDnsZone –Name contoso.com –ResourceGroupName MyAzureResourceGroup
-	Get-AzureRmDnsRecordSet –Name “@” –RecordType NS –Zone $zone
+Azure DNS erstellt in Ihrer Zone automatisch autoritative NS-Einträge mit den zugewiesenen Namenservern. Die Namen der Namenserver können Sie über Azure PowerShell oder mithilfe der Azure-Befehlszeilenschnittstelle anzeigen, indem Sie diese Einträge abrufen.
+
+Mithilfe von Azure PowerShell können die autoritativen NS-Einträge wie folgt abgerufen werden. (Hinweis: Der Eintragsname „@“ wird verwendet, um auf Einträge an der Spitze der Zone zu verweisen.)
+
+	PS> $zone = Get-AzureRmDnsZone –Name contoso.net –ResourceGroupName MyResourceGroup
+	PS> Get-AzureRmDnsRecordSet –Name “@” –RecordType NS –Zone $zone
 
 	Name              : @
-	ZoneName          : contoso.com
+	ZoneName          : contoso.net
 	ResourceGroupName : MyResourceGroup
 	Ttl               : 3600
 	Etag              : 5fe92e48-cc76-4912-a78c-7652d362ca18
 	RecordType        : NS
-	Records           : {ns1-04.azure-dns.com, ns2-04.azure-dns.net, ns3-04.azure-dns.org,
-                     ns4-04.azure-dns.info}
+	Records           : {ns1-01.azure-dns.com, ns2-01.azure-dns.net, ns3-01.azure-dns.org,
+                        ns4-01.azure-dns.info}
 	Tags              : {}
 
+Sie können auch die plattformübergreifende Azure-Befehlszeilenschnittstelle verwenden, um die autoritativen NS-Datensätze abzurufen, und so die Ihrer Zone zugewiesenen Namenserver ermitteln:
+
+	C:\> azure network dns record-set show MyResourceGroup contoso.net @ NS
+	info:    Executing command network dns record-set show
+		+ Looking up the DNS Record Set "@" of type "NS"
+	data:    Id                              : /subscriptions/.../resourceGroups/MyResourceGroup/providers/Microsoft.Network/dnszones/contoso.net/NS/@
+	data:    Name                            : @
+	data:    Type                            : Microsoft.Network/dnszones/NS
+	data:    Location                        : global
+	data:    TTL                             : 172800
+	data:    NS records
+	data:        Name server domain name     : ns1-01.azure-dns.com.
+	data:        Name server domain name     : ns2-01.azure-dns.net.
+	data:        Name server domain name     : ns3-01.azure-dns.org.
+	data:        Name server domain name     : ns4-01.azure-dns.info.
+	data:
+	info:    network dns record-set show command OK
+
+### So richten Sie die Delegierung ein
 
 Jede Registrierungsstelle hat seine eigenen DNS-Verwaltungstools, um die Namenservereinträge für eine Domäne zu ändern. Bearbeiten Sie auf der DNS-Verwaltungsseite der Registrierungsstelle die NS-Einträge, und ersetzen Sie die NS-Einträge mit den von Azure DNS erstellten.
 
@@ -126,10 +150,9 @@ Eine Unterdomäne wird auf eine ähnliche Weise eingerichtet wie eine normale De
 3. Delegieren Sie die untergeordnete Zone, indem Sie NS-Datensätze in der übergeordneten Zone konfigurieren, die auf die untergeordnete Zone verweisen.
 
 
-
 ### So delegieren Sie eine Unterdomäne
 
-Die Vorgehensweise wird im folgenden PowerShell-Beispiel veranschaulicht.
+Die Vorgehensweise wird im folgenden PowerShell-Beispiel veranschaulicht. Die gleichen Schritte können über das Azure-Portal oder mithilfe der plattformübergreifenden Azure-Befehlsschnittstelle durchgeführt werden.
 
 #### Schritt 1: Erstellen der übergeordneten und untergeordneten Zonen
 
@@ -140,11 +163,11 @@ Als Erstes erstellen wir die übergeordneten und untergeordneten Zonen. Diese k�
 
 #### Schritt 2: Abrufen der NS-Einträge
 
-Dann rufen wir wie im folgenden Beispiel dargestellt die autoritativen NS-Datensätze aus der untergeordneten Zone ab.
+Dann rufen wir wie im folgenden Beispiel dargestellt die autoritativen NS-Datensätze aus der untergeordneten Zone ab. Darin enthalten sind die Namenserver, die der untergeordnete Zone zugewiesen sind.
 
 	$child_ns_recordset = Get-AzureRmDnsRecordSet -Zone $child -Name "@" -RecordType NS
 
-#### Schritt 3: Delegieren der untergeordneten Zone
+#### Schritt 3. Delegieren der untergeordneten Zone
 
 Erstellen Sie in der übergeordneten Zone den entsprechenden NS-Eintragssatz, um die Delegierung abzuschließen. Beachten Sie, dass der Name des Datensatzes in der übergeordneten Zone mit dem Namen in der untergeordneten Zone (in diesem Fall „partners“) übereinstimmt.
 
@@ -176,4 +199,4 @@ Sie können überprüfen, ob alles ordnungsgemäß eingerichtet ist, indem Sie d
 
 [Verwalten von DNS-Einträgen](dns-operations-recordsets.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

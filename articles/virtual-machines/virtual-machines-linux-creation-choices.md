@@ -37,7 +37,7 @@ Verwenden Sie an der CLI die Azure-Befehlszeilenschnittstelle. Weitere Informati
 
 Die grafische Benutzeroberfläche des [Azure-Portals](https://portal.azure.com) bietet eine einfache Möglichkeit zum Testen eines virtuellen Computers. Dies gilt insbesondere dann, wenn Sie noch nicht viel Erfahrung mit Azure haben, da hierzu keine Installation auf Ihrem System erforderlich ist. Verwenden Sie das Azure-Portal, um den virtuellen Computer zu erstellen:
 
-* [Erstellen eines virtuellen Linux-Computers im Azure-Portal](virtual-machines-linux-portal-create.md) 
+* [Erstellen eines virtuellen Linux-Computers im Azure-Portal](virtual-machines-linux-quick-create-portal.md) 
 
 ## Betriebssystem und Image-Optionen
 
@@ -59,10 +59,10 @@ Sollten Sie spezielle Anpassungen benötigen, verwenden Sie ein Image, das auf e
 
 ## Nächste Schritte
 
-* Probieren Sie eines der Tutorials aus, um einen virtuellen Linux-Computer über das [Portal](virtual-machines-linux-portal-create.md), mit der [Befehlszeilenschnittstelle](virtual-machines-linux-quick-create-cli.md) oder mit einer Azure Resource Manager-[Vorlage](virtual-machines-linux-cli-deploy-templates.md) zu erstellen.
+* Probieren Sie eines der Tutorials aus, um einen virtuellen Linux-Computer über das [Portal](virtual-machines-linux-quick-create-portal.md), mit der [CLI](virtual-machines-linux-quick-create-cli.md) oder mit einer Azure Resource Manager-[Vorlage](virtual-machines-linux-cli-deploy-templates.md) zu erstellen.
 
 * Nach dem Erstellen eines virtuellen Linux-Computers können Sie problemlos [einen Datenträger hinzufügen](virtual-machines-linux-add-disk.md).
 
 * Schritte zum schnellen Zurücksetzen von Kennwörtern oder SSH-Schlüsseln sowie zum Verwalten von Benutzern finden Sie [hier](virtual-machines-linux-using-vmaccess-extension.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

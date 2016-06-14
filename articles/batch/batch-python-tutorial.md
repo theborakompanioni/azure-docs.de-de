@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-compute"
-	ms.date="05/27/2016"
+	ms.date="06/08/2016"
 	ms.author="marsma"/>
 
 # Erste Schritte mit dem Azure Batch-Python-Client
@@ -24,7 +24,7 @@
 
 Lernen Sie die Grundlagen von [Azure Batch][azure_batch] und [Batch-Python][py_azure_sdk]-Clients mithilfe einer kleinen in Python erstellten Batch-Anwendung kennen. Wir sehen uns an, wie zwei Beispielskripts den Batch-Dienst nutzen, um eine parallele Workload auf virtuellen Linux-Computern in der Cloud zu verarbeiten, und wie sie mit [Azure Storage](./../storage/storage-introduction.md) in Bezug auf das Bereitstellen und Abrufen von Dateien interagieren. Sie lernen häufig verwendete Batch-Anwendungsworkflows kennen und erhalten ein besseres Verständnis in Bezug auf die Hauptkomponenten von Batch, wie etwa Aufträge, Aufgaben, Pools und Computeknoten.
 
-> [AZURE.NOTE] Die Unterstützung von Linux in Batch befindet sich derzeit in der Vorschauphase. Einige Aspekte des hier beschriebenen Features können sich vor der allgemeinen Verfügbarkeit ändern. [Anwendungspakete](batch-application-packages.md) und [Aufgaben mit mehreren Instanzen](batch-mpi.md) werden derzeit auf Linux-Computeknoten **nicht unterstützt**.
+> [AZURE.NOTE] Die Unterstützung von Linux in Batch befindet sich derzeit in der Vorschauphase. Einige Aspekte des hier beschriebenen Features können sich vor der allgemeinen Verfügbarkeit ändern. [Anwendungspakete](batch-application-packages.md) werden auf Linux-Computeknoten **derzeit nicht unterstützt**.
 
 ![Batch-Lösungsworkflow (einfach)][11]<br/>
 
@@ -36,7 +36,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über Python-Kenntnisse verf�
 
 - **Azure-Konto:** Wenn Sie nicht bereits über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto erstellen][azure_free_account].
 - **Batch-Konto:** Wenn Sie über ein Azure-Abonnement verfügen, können Sie ein [Azure Batch-Konto erstellen](batch-account-create-portal.md).
-- **Storage-Konto**: Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md) im Abschnitt [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account).
+- **Storage-Konto:** Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md) im Abschnitt [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account).
 
 ### Codebeispiel
 
@@ -46,7 +46,7 @@ Das Codebeispiel des Python-Tutorials ist eines der vielen Batch-Codebeispiele i
 
 ### Python-Umgebung
 
-Damit Sie das Beispielskript *python\_tutorial\_client.py* auf der lokalen Arbeitsstation verwenden können, benötigen Sie einen mit Version **2.7** oder **3.3-3.5** kompatiblen **Python-Übersetzer**. Das Skript wurde auf Linux sowie auf Windows getestet.
+Damit Sie das Beispielskript *python\_tutorial\_client.py* auf der lokalen Arbeitsstation verwenden können, benötigen Sie einen mit Version **2.7** oder **3.3 - 3.5** kompatiblen **Python-Übersetzer**. Das Skript wurde auf Linux sowie auf Windows getestet.
 
 Zudem müssen Sie die **Azure Batch**- und **Azure Storage**-Python-Pakete installieren. Dies ist mithilfe der Datei *requirements.txt* möglich, die Sie hier finden:
 
@@ -58,7 +58,7 @@ Geben Sie den folgenden **pip**-Befehl aus, um die Batch- und Storage-Pakete zu 
 
 Sie können die [azure-batch][pypi_batch]- und [azure-storage][pypi_storage]-Python-Pakete auch manuell installieren.
 
-> [AZURE.TIP] Unter Umständen müssen Sie Ihren Befehlen das Präfix `sudo` voranstellen (z.B. `sudo pip install -r requirements.txt`), wenn Sie ein nicht privilegiertes Konto verwenden (empfohlen). Weitere Informationen zur Installation von Python-Paketen finden Sie unter [Installing Packages][pypi_install] \(Installieren von Paketen) auf readthedocs.io.
+> [AZURE.TIP] Unter Umständen müssen Sie Ihren Befehlen das Präfix `sudo` voranstellen (z.B. `sudo pip install -r requirements.txt`), wenn Sie ein nicht privilegiertes Konto verwenden (empfohlen). Weitere Informationen zur Installation von Python-Paketen finden Sie unter [Installing Packages][pypi_install] \(Installieren von Paketen) auf „readthedocs.io“.
 
 ### Azure Batch-Explorer (optional)
 
@@ -78,13 +78,13 @@ Das folgende Diagramm veranschaulicht die primären Vorgänge, die von den Clien
 
 ![Batch-Beispielworkflow][8]<br/>
 
-[**Schritt 1.**](#step-1-create-storage-containers) Erstellen Sie **Container** in Azure Blob Storage.<br/> [**Schritt 2.**](#step-2-upload-task-script-and-data-files) Laden Sie Aufgabenskripts und Eingabedateien in Container hoch.<br/> [**Schritt 3.**](#step-3-create-batch-pool) Erstellen Sie einen Batch-**Pool**<br/> &nbsp;&nbsp;&nbsp;&nbsp;**3a.** Die Aufgabe **StartTask** des Pools lädt das Aufgabenskript (python\_tutorial\_task.py) auf Knoten herunter, wenn diese dem Pool beitreten.<br/> [**Schritt 4.**](#step-4-create-batch-job) Erstellen Sie einen Batch-**Auftrag**.<br/> [**Schritt 5.**](#step-5-add-tasks-to-job) Fügen Sie dem Auftrag **Aufgaben** hinzu.<br/> &nbsp;&nbsp;&nbsp;&nbsp;**5a.** Die Aufgaben werden für die Ausführung auf Knoten geplant.<br/> &nbsp;&nbsp;&nbsp;&nbsp;**5b.** Jede Aufgabe lädt ihre Eingabedaten aus Azure Storage herunter und beginnt dann mit der Ausführung.<br/> [**Schritt 6:**](#step-6-monitor-tasks) Überwachen Sie die Aufgaben.<br/> &nbsp;&nbsp;&nbsp;&nbsp;**6a.** Nach Abschluss der Aufgaben werden die zugehörigen Ausgabedaten in Azure Storage hochgeladen.<br/> [**Schritt 7.**](#step-7-download-task-output) Herunterladen der Aufgabenausgabe aus Storage
+[**Schritt 1:**](#step-1-create-storage-containers) Erstellen von **Containern** in Azure Blob Storage<br/> [**Schritt 2:**](#step-2-upload-task-script-and-data-files) Hochladen von Aufgabenskripts und Eingabedateien in Container<br/> [**Schritt 3:**](#step-3-create-batch-pool) Erstellen eines Batch-**Pools**<br/> &nbsp;&nbsp;&nbsp;&nbsp;**3a.** Die Aufgabe **StartTask** des Pools lädt das Aufgabenskript (python\_tutorial\_task.py) auf Knoten herunter, wenn diese dem Pool beitreten.<br/> [**Schritt 4:**](#step-4-create-batch-job) Erstellen eines Batch-**Auftrags**<br/> [**Schritt 5:**](#step-5-add-tasks-to-job) Hinzufügen von **Aufgaben** zum Auftrag<br/> &nbsp;&nbsp;&nbsp;&nbsp;**5a.** Die Aufgaben werden für die Ausführung auf Knoten geplant.<br/> &nbsp;&nbsp;&nbsp;&nbsp;**5b.** Jede Aufgabe lädt ihre Eingabedaten aus Azure Storage und beginnt dann mit der Ausführung.<br/> [**Schritt 6:**](#step-6-monitor-tasks) Überwachen von Aufgaben<br/> &nbsp;&nbsp;&nbsp;&nbsp;**6a.** Nach Abschluss der Aufgaben werden die zugehörigen Ausgabedaten in Azure Storage hochgeladen.<br/> [**Schritt 7:**](#step-7-download-task-output) Herunterladen der Aufgabenausgabe aus Storage
 
 Wie bereits erwähnt, werden nicht von jeder Batch-Lösung genau diese Schritte ausgeführt, und es können auch erheblich mehr Schritte enthalten sein. Im Beispiel werden jedoch die Prozesse veranschaulicht, die in einer Batch-Lösung häufig vorkommen.
 
 ## Vorbereiten von Clientskripts
 
-Fügen Sie vor dem Ausführen des Beispiels Ihre Batch- und Storage-Anmeldeinformationen zu *python\_tutorial\_client.py* hinzu. Öffnen Sie die Datei in einem Editor und aktualisieren Sie die folgenden Zeilen mit Ihren Anmeldeinformationen (sofern Sie dies noch nicht getan haben).
+Fügen Sie vor dem Ausführen des Beispiels *python\_tutorial\_client.py* Ihre Batch- und Storage-Anmeldeinformationen hinzu. Öffnen Sie die Datei in einem Editor und aktualisieren Sie die folgenden Zeilen mit Ihren Anmeldeinformationen (sofern Sie dies noch nicht getan haben).
 
 ```python
 # Update the Batch and Storage account credential strings below with the values
@@ -120,7 +120,7 @@ if __name__ == '__main__':
 Batch enthält integrierte Unterstützung für die Interaktion mit Azure Storage. Über Container in Ihrem Storage-Konto werden die Dateien angegeben, die für die in Ihrem Batch-Konto ausgeführten Aufgaben erforderlich sind. Die Container stellen auch einen Ort zum Speichern von Ausgabedaten dar, die von den Aufgaben produziert werden. Als Erstes erstellt das Skript *python\_tutorial\_client.py* drei Container in [Azure Blob Storage](../storage/storage-introduction.md#blob-storage):
 
 - **application**: Dieser Container speichert das von den Aufgaben ausgeführte Python-Skript *python\_tutorial\_task.py*.
-- **input**: Die zu verarbeitenden Datendateien werden von den Aufgaben aus dem Container *input* heruntergeladen.
+- **input:** Die zu verarbeitenden Datendateien werden von den Aufgaben aus dem Container *input* heruntergeladen.
 - **output:** Nach Abschluss der Verarbeitung der Eingabedateien werden die Ergebnisse in den Container *output* hochgeladen.
 
 Für die Interaktion mit einem Storage-Konto und die Containererstellung verwenden wir die das Paket [azure-storage][pypi_storage], um ein [BlockBlobService][py_blockblobservice]-Objekt zu erstellen – den „Blob-Client“. Anschließend erstellen wir mithilfe des Blob-Clients im Storage-Konto drei Container.
@@ -229,9 +229,9 @@ In diesem Beispiel werden die Aufgabentypen „JobPreparationTask“ und „JobR
 
 Bei Shared Access Signatures handelt es sich um Zeichenfolgen, die den sicheren Zugriff auf Container und Blobs in Azure Storage ermöglichen. Das Skript *python\_tutorial\_client.py* nutzt Shared Access Signatures sowohl von Blobs als auch von Containern und veranschaulicht, wie diese Shared Access Signature-Zeichenfolgen aus dem Storage-Dienst abgerufen werden.
 
-- **Blob-Shared Access Signatures**: In der StartTask-Aufgabe des Pools werden Blob-Shared Access Signatures verwendet, wenn das Aufgabenskript und Eingabedatendateien aus Storage heruntergeladen werden (siehe [Schritt 3](#step-3-create-batch-pool) weiter unten). Die `upload_file_to_container`-Funktion in *python\_tutorial\_client.py* enthält den Code, mit dem die Shared Access Signature der einzelnen Blobs abgerufen wird. Dies erfolgt durch Aufrufen von [BlockBlobService.make\_blob\_url][py_make_blob_url] im Storage-Modul.
+- **Blob-Shared Access Signatures**: In der StartTask-Aufgabe des Pools werden Blob-Shared Access Signatures verwendet, wenn das Aufgabenskript und Eingabedatendateien aus Storage heruntergeladen werden (siehe [Schritt 3](#step-3-create-batch-pool) weiter unten). Die `upload_file_to_container`-Funktion in *python\_tutorial\_client.py* enthält den Code, mit dem die Shared Access Signature der einzelnen Blobs abgerufen wird. Dies erfolgt durch das Aufrufen von [BlockBlobService.make\_blob\_url][py_make_blob_url] im Storage-Modul.
 
-- **Container-Shared Access Signatures**: Wenn die Arbeit einer Aufgabe auf dem Computeknoten abgeschlossen ist, wird die Ausgabedatei in Azure Storage in den Container *output* hochgeladen. Dafür verwendet *python\_tutorial\_task.py* eine Container-Shared Access Signature, die Schreibzugriff auf den Container bietet. Die Funktion `get_container_sas_token` in *python\_tutorial\_client.py* bezieht die Shared Access Signature des Containers, die daraufhin als Befehlszeilenargument an die Aufgaben übergeben wird. Schritt 5, [Hinzufügen von Aufgaben zu Aufträgen](#step-5-add-tasks-to-job), erläutert die Verwendung von Container-SAS.
+- **Container-Shared Access Signatures**: Wenn die Arbeit einer Aufgabe auf dem Computeknoten abgeschlossen ist, wird die Ausgabedatei in Azure Storage in den Container *output* hochgeladen. Dafür verwendet *python\_tutorial\_task.py* eine Container-Shared Access Signature, die Schreibzugriff auf den Container bietet. Die Funktion `get_container_sas_token` in *python\_tutorial\_client.py* bezieht die Shared Access Signature des Containers, die daraufhin als Befehlszeilenargument an die Aufgaben übergeben wird. In Schritt 5, [Hinzufügen von Aufgaben zu Aufträgen](#step-5-add-tasks-to-job), wird die Verwendung von Container-SAS beschrieben.
 
 > [AZURE.TIP] Sehen Sie sich die zweiteilige Reihe zu Shared Access Signatures an: [Teil 1: Grundlagen zum SAS-Modell](../storage/storage-dotnet-shared-access-signature-part-1.md) und [Teil 2: Erstellen und Verwenden einer SAS mit dem Blob-Dienst](../storage/storage-dotnet-shared-access-signature-part-2.md). Sie erhalten darin weitere Informationen zur Bereitstellung des sicheren Zugriffs auf Daten in Ihrem Storage-Konto.
 
@@ -250,12 +250,11 @@ Nach dem Hochladen des Aufgabenskripts und der Datendateien in das Storage-Konto
                                               _BATCH_ACCOUNT_KEY)
 
  batch_client = batch.BatchServiceClient(
-     batch.BatchServiceClientConfiguration(
-         credentials,
-         base_url=_BATCH_ACCOUNT_URL))
+     credentials,
+     base_url=_BATCH_ACCOUNT_URL)
 ```
 
-Als Nächstes wird mit einem Aufruf von `create_pool` im Batch-Konto ein Pool von Computeknoten erstellt.
+Als Nächstes wird mit einem Aufruf von `create_pool` im Batch-Konto ein Pool mit Computeknoten erstellt.
 
 ```python
 def create_pool(batch_service_client, pool_id,
@@ -324,11 +323,11 @@ Wenn Sie einen Pool erstellen, definieren Sie mit [PoolAddParameter][py_pooladdp
 
 - **Anzahl von Computeknoten** (*target\_dedicated* – erforderlich)<p/>Dies gibt an, wie viele virtuelle Computer im Pool bereitgestellt werden sollen. Beachten Sie, dass alle Batch-Konten über ein Standard**kontingent** verfügen, das die Anzahl von **Kernen** (und somit auch von Computeknoten) in einem Batch-Konto begrenzt. Die Standardkontingente und eine Anleitung zum [Erhöhen des Kontingents](batch-quota-limit.md#increase-a-quota) (wie etwa der Anzahl von Kernen in Ihrem Batch-Konto) finden Sie unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md). Wenn Sie sich z.B. die Frage stellen, weshalb Ihr Pool nur eine bestimmte Anzahl von Knoten erreicht, liegt dies möglicherweise am Kernkontingent.
 
-- **Betriebssystem** für Knoten (*virtual\_machine\_configuration* **oder** *cloud\_service\_configuration* – erforderlich)<p/>In *python\_tutorial\_client.py* haben wir einen Pool von Linux-Knoten mithilfe eines [VirtualMachineConfiguration][py_vm_config]-Elements, das mit der Hilfsfunktion `get_vm_config_for_distro` abgerufen wurde, erstellt. Diese Hilfsfunktion verwendet [list\_node\_agent\_skus][py_list_skus], um ein Image von einer Liste kompatibler Images aus dem [Marketplace für virtuelle Computer][vm_marketplace] abzurufen und auszuwählen. Sie haben jedoch auch die Möglichkeit, stattdessen [CloudServiceConfiguration][py_cs_config] festzulegen und einen Pool von Windows-Knoten aus Cloud Services zu erstellen. Unter [Bereitstellen von Linux-Computeknoten in Azure Batch-Pools](batch-linux-nodes.md) finden Sie weitere Informationen über die beiden verschiedenen Konfigurationen.
+- **Betriebssystem** für Knoten (*virtual\_machine\_configuration* **oder** *cloud\_service\_configuration* – erforderlich)<p/>In *python\_tutorial\_client.py* haben wir einen Pool von Linux-Knoten mithilfe eines [VirtualMachineConfiguration][py_vm_config]-Elements erstellt, das mit der Hilfsfunktion `get_vm_config_for_distro` abgerufen wurde. Diese Hilfsfunktion verwendet [list\_node\_agent\_skus][py_list_skus], um ein Image aus einer Liste kompatibler Images aus dem [Marketplace für virtuelle Computer][vm_marketplace] abzurufen und auszuwählen. Sie haben jedoch auch die Möglichkeit, stattdessen [CloudServiceConfiguration][py_cs_config] festzulegen und einen Pool mit Windows-Knoten aus Cloud Services zu erstellen. Unter [Bereitstellen von Linux-Computeknoten in Azure Batch-Pools](batch-linux-nodes.md) finden Sie weitere Informationen zu den beiden verschiedenen Konfigurationen.
 
-- **Größe der Computeknoten** (*vm\_size* – erforderlich)<p/>Da für [VirtualMachineConfiguration][py_vm_config] Linux-Knoten angegeben werden, ist die Größe des virtuellen Computers (in diesem Beispiel `STANDARD_A1`) festzulegen (siehe [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-linux-sizes.md)). Unter [Bereitstellen von Linux-Computeknoten in Azure Batch-Pools](batch-linux-nodes.md) finden Sie weitere Informationen.
+- **Größe der Computeknoten** (*vm\_size* – erforderlich)<p/>Da für [VirtualMachineConfiguration][py_vm_config] Linux-Knoten angegeben werden, legen wir die Größe des virtuellen Computers fest (in diesem Beispiel `STANDARD_A1`), wie unter [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-linux-sizes.md) beschrieben. Unter [Bereitstellen von Linux-Computeknoten in Azure Batch-Pools](batch-linux-nodes.md) finden Sie ebenfalls wieder weitere Informationen.
 
-- **Startaufgabe** (*start\_task* – nicht erforderlich)<p/>Zusammen mit den o.g. Eigenschaften des physischen Knotens können Sie auch eine [StartTask][py_starttask]-Aufgabe für den Pool festlegen (nicht erforderlich). Die StartTask wird auf jedem Knoten ausgeführt, wenn dieser dem Pool hinzugefügt wird, sowie bei jedem Neustart eines Knotens. Die StartTask-Aufgabe ist insbesondere hilfreich, um Computeknoten auf die Ausführung von Aufgaben vorzubereiten, wie etwa die Installation von Anwendungen, die von Ihren Aufgaben ausgeführt werden.<p/>In dieser Beispielanwendung kopiert die StartTask-Aufgabe die Dateien, die aus Storage heruntergeladen werden (und die mit der **resource\_files**-Eigenschaft von StartTask angegeben werden), aus dem StartTask-*Arbeitsverzeichnis* in das *freigegebene* Verzeichnis. Auf dieses Verzeichnis können alle auf dem Knoten ausgeführten Aufgaben zugreifen. Im Wesentlichen wird dadurch `python_tutorial_task.py` in das freigegebene Verzeichnis jedes Knotens kopiert, wenn der Knoten dem Pool beitritt. So können alle Aufgaben, die auf dem Knoten ausgeführt werden, darauf zugreifen.
+- **Startaufgabe** (*start\_task* – nicht erforderlich)<p/>Zusammen mit den o.g. Eigenschaften des physischen Knotens können Sie auch eine [StartTask][py_starttask]-Aufgabe für den Pool festlegen (nicht erforderlich). Die StartTask wird auf jedem Knoten ausgeführt, wenn dieser dem Pool hinzugefügt wird, sowie bei jedem Neustart eines Knotens. Die StartTask-Aufgabe ist insbesondere hilfreich, um Computeknoten auf die Ausführung von Aufgaben vorzubereiten, z.B. die Installation von Anwendungen, die von Ihren Aufgaben ausgeführt werden.<p/>In dieser Beispielanwendung kopiert die StartTask-Aufgabe die Dateien, die aus Storage heruntergeladen werden (und die mit der **resource\_files**-Eigenschaft von StartTask angegeben werden), aus dem StartTask-*Arbeitsverzeichnis* in das *freigegebene* Verzeichnis. Auf dieses Verzeichnis können alle auf dem Knoten ausgeführten Aufgaben zugreifen. Im Wesentlichen wird dadurch `python_tutorial_task.py` in das freigegebene Verzeichnis jedes Knotens kopiert, wenn der Knoten dem Pool beitritt. So können alle Aufgaben, die auf dem Knoten ausgeführt werden, darauf zugreifen.
 
 Wie Sie sehen, wird die Hilfsfunktion `wrap_commands_in_shell` aufgerufen. Diese Funktion erstellt mit einer Sammlung separater Befehle eine einzelne Befehlszeile, die für die Befehlszeileneigenschaft einer Aufgabe geeignet ist.
 
@@ -429,7 +428,7 @@ In der `for`-Schleife im obigen Codeausschnitt sehen Sie, dass die Befehlszeile 
 
 2. **numwords**: Die obersten *N* Wörter sollen in die Ausgabedatei geschrieben werden.
 
-3. **storageaccount**: Der Name des Storage-Kontos, der den Container besitzt, in den die Aufgabenausgabe hochgeladen werden soll.
+3. **storageaccount**: Der Name des Storage-Kontos, das als Besitzer des Containers angegeben ist, in den die Aufgabenausgabe hochgeladen werden soll.
 
 4. **storagecontainer**: Der Name des Storage-Containers, in den die Ausgabedateien hochgeladen werden sollen.
 
@@ -530,7 +529,7 @@ def download_blobs_from_container(block_blob_client,
 
 ## Schritt 8: Löschen von Containern
 
-Da Ihnen Daten berechnet werden, die sich in Azure Storage befinden, ist Folgendes ratsam: Entfernen Sie alle Blobs, die für Ihre Batch-Aufträge nicht mehr benötigt werden. In *python\_tutorial\_client.py* erfolgt dies mit drei Aufrufen an [BlockBlobService.delete\_container][py_delete_container]\:
+Da Ihnen Daten berechnet werden, die sich in Azure Storage befinden, ist Folgendes ratsam: Entfernen Sie alle Blobs, die für Ihre Batch-Aufträge nicht mehr benötigt werden. In *python\_tutorial\_client.py* erfolgt dies mit drei Aufrufen von [BlockBlobService.delete\_container][py_delete_container]\:
 
 ```
 # Clean up storage resources
@@ -559,9 +558,9 @@ if query_yes_no('Delete pool?') == 'yes':
 
 ## Ausführen des Beispiel-Skripts
 
-Beim Ausführen des Skripts *python\_tutorial\_client.py* ähnelt die Konsolenausgabe folgender Ausgabe: Sie sehen eine Pause bei `Monitoring all tasks for 'Completed' state, timeout in 0:20:00...`, wenn der Pool von Computeknoten erstellt und gestartet wird und die Befehle in der Startaufgabe des Pools ausgeführt werden. Verwenden Sie das [Azure-Portal][azure_portal] oder den [Batch-Explorer][github_batchexplorer], um den Pool, die Computeknoten, den Auftrag und die Aufgaben während und nach der Ausführung zu überwachen. Verwenden Sie das [Azure-Portal][azure_portal] oder den [Microsoft Azure Storage-Explorer][storage_explorer], um die von der Anwendung erstellten Speicherressourcen (Container und Blobs) anzuzeigen.
+Beim Ausführen des Skripts *python\_tutorial\_client.py* ähnelt die Konsolenausgabe folgender Ausgabe: Sie sehen eine Pause bei `Monitoring all tasks for 'Completed' state, timeout in 0:20:00...`, wenn der Pool mit Computeknoten erstellt und gestartet wird und die Befehle in der Startaufgabe des Pools ausgeführt werden. Verwenden Sie das [Azure-Portal][azure_portal] oder den [Batch-Explorer][github_batchexplorer], um den Pool, die Computeknoten, den Auftrag und die Aufgaben während und nach der Ausführung zu überwachen. Verwenden Sie das [Azure-Portal][azure_portal] oder den [Microsoft Azure-Speicher-Explorer][storage_explorer], um die von der Anwendung erstellten Speicherressourcen (Container und Blobs) anzuzeigen.
 
-Die normale Ausführungsdauer beträgt **ca. 5–7 Minuten**, wenn die Anwendung in der Standardkonfiguration ausgeführt wird.
+Die normale Ausführungsdauer beträgt **ca. 5 bis 7 Minuten**, wenn die Anwendung in der Standardkonfiguration ausgeführt wird.
 
 ```
 Sample start: 2016-05-20 22:47:10
@@ -593,7 +592,7 @@ Press ENTER to exit...
 
 ## Nächste Schritte
 
-Nehmen Sie Änderungen an *python\_tutorial\_client.py* und *python\_tutorial\_task.py* vor, um verschiedene Computeszenarien auszutesten. Versuchen Sie beispielsweise, zu *python\_tutorial\_task.py* eine Ausführungsverzögerung hinzuzufügen, um Aufgaben mit langer Ausführungsdauer zu simulieren, und überwachen Sie diese mit dem Feature *Heat Map* des Batch-Explorers. Versuchen Sie, weitere Aufgaben hinzuzufügen oder die Anzahl von Computeknoten anzupassen. Fügen Sie logische Abläufe hinzu, um einen bestehenden Pool zu suchen und dessen Verwendung zur Beschleunigung der Ausführungszeit zuzulassen.
+Nehmen Sie Änderungen an *python\_tutorial\_client.py* und *python\_tutorial\_task.py* vor, um mit verschiedenen Computeszenarien zu experimentieren. Versuchen Sie beispielsweise, *python\_tutorial\_task.py* eine Ausführungsverzögerung hinzuzufügen, um Aufgaben mit langer Ausführungsdauer zu simulieren, und überwachen Sie diese mit dem Feature *Heat Map* des Batch-Explorers. Versuchen Sie, weitere Aufgaben hinzuzufügen oder die Anzahl von Computeknoten anzupassen. Fügen Sie logische Abläufe hinzu, um einen bestehenden Pool zu suchen und dessen Verwendung zur Beschleunigung der Ausführungszeit zuzulassen.
 
 Nachdem Sie sich jetzt mit dem grundlegenden Workflow einer Batch-Lösung vertraut gemacht haben, können wir uns mit den zusätzlichen Features des Batch-Diensts beschäftigen.
 
@@ -665,4 +664,4 @@ Nachdem Sie sich jetzt mit dem grundlegenden Workflow einer Batch-Lösung vertra
 [10]: ./media/batch-dotnet-get-started/credentials_storage_sm.png "Storage-Anmeldeinformationen im Portal"
 [11]: ./media/batch-dotnet-get-started/batch_workflow_minimal_sm.png "Batch-Lösungsworkflow (reduziertes Diagramm)"
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->
