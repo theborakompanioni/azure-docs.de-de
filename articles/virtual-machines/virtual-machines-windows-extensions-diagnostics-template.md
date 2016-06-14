@@ -19,8 +19,6 @@
 
 # Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure-Ressourcen-Manager-Vorlagen
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
-
 Die Azure-Diagnoseerweiterung stellt Überwachungs- und Diagnosefunktionen auf einem Windows-basierten virtuellen Azure-Computer bereit. Sie können diese Funktionen auf dem virtuellen Computer nutzen, indem Sie die Erweiterung in die Azure-Ressourcen-Manager-Vorlage einbinden. Weitere Informationen zum Einbinden von Erweiterungen in eine Vorlage für virtuelle Computer finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen mit VM-Erweiterungen](virtual-machines-windows-extensions-authoring-templates.md). Dieser Artikel beschreibt das Hinzufügen der Azure-Diagnoseerweiterung zu einer Vorlage für virtuelle Windows-Computer.
   
 
@@ -78,11 +76,11 @@ Die Eigenschaft *typeHandlerVersion* gibt die Version der Erweiterung an, die Si
 
 Das Element *settings* enhält Konfigurationseigenschaften für die Erweiterung, die festgelegt und in die Erweiterung eingelesen werden können (wird zuweilen als „öffentliche Konfiguration“ bezeichnet). Die Eigenschaft *xmlcfg* enthält die XML-basierte Konfiguration für die Diagnoseprotokolle, Leistungsindikatoren usw., die vom Diagnose-Agent gesammelt werden. Weitere Informationen zu dem XML-Schema finden Sie unter [Diagnosekonfigurationsschema](https://msdn.microsoft.com/library/azure/dn782207.aspx). Üblicherweise wird die tatsächliche XML-Konfiguration als Variable in der Azure-Ressourcen-Manager-Vorlage gespeichert und dann verkettet und mit Base64 codiert, um den Wert für *xmlcfg* festzulegen. Informationen zum Speichern der XML-Konfiguration in Variablen finden Sie im Abschnitt zu [Diagnosekonfigurationsvariablen](#diagnostics-configuration-variables). Die *storageAccount*-Eigenschaft gibt den Namen des Speicherkontos an, an das die Diagnosedaten übertragen werden.
  
-Die Eigenschaften in *protectedSettings* (zuweilen als „private Konfiguration“ bezeichnet) können festgelegt, danach jedoch nicht in die Erweiterung eingelesen werden. Da *protectedSettings* schreibgeschützt ist, eignet sich diese Eigenschaft sehr gut zum Speichern von geheimen Informationen, wie z. B. des Schlüssels für das Speicherkonto, in das die Diagnosedaten geschrieben werden.
+Die Eigenschaften in *protectedSettings* (zuweilen als „private Konfiguration“ bezeichnet) können festgelegt, danach jedoch nicht in die Erweiterung eingelesen werden. Da *protectedSettings* schreibgeschützt ist, eignet sich diese Eigenschaft sehr gut zum Speichern von geheimen Informationen, wie z. B. des Schlüssels für das Speicherkonto, in das die Diagnosedaten geschrieben werden.
 
 ## Angeben des Diagnosespeicherkontos als Parameter 
 
-Der oben stehende JSON-Codeausschnitt für die Diagnoseerweiterung setzt das Vorhandensein der beiden Parameter *existingdiagnosticsStorageAccountName* und *existingdiagnosticsStorageAccountName* voraus, um das Diagnosespeicherkonto anzugeben, in dem Diagnosedaten gespeichert werden. Wenn Sie das Diagnosespeicherkonto als Parameter angeben, lässt es sich für verschiedene Umgebungen ganz einfach ändern – so können Sie z. B. ein Konto zum Testen und ein anderes für Ihre Produktionsbereitstellung verwenden.
+Der oben stehende JSON-Codeausschnitt für die Diagnoseerweiterung setzt das Vorhandensein der beiden Parameter *existingdiagnosticsStorageAccountName* und *existingdiagnosticsStorageAccountName* voraus, um das Diagnosespeicherkonto anzugeben, in dem Diagnosedaten gespeichert werden. Wenn Sie das Diagnosespeicherkonto als Parameter angeben, lässt es sich für verschiedene Umgebungen ganz einfach ändern – so können Sie z. B. ein Konto zum Testen und ein anderes für Ihre Produktionsbereitstellung verwenden.
 
         "existingdiagnosticsStorageAccountName": {
             "type": "string",
@@ -144,11 +142,11 @@ Die oben stehende Metrikkonfiguration generiert Tabellen mit den folgenden Benen
 
 - **WADMetrics:** Standardpräfix für alle WADMetrics-Tabellen.
 - **PT1H** oder **PT1M**: weist darauf hin, dass die Tabelle Daten enthält, die während einer Stunde bzw. einer Minute aggregiert wurden.
-- **P10D:** gibt an, dass die Tabelle Daten für einen Zeitraum von 10 Tagen ab dem Tag enthält, an dem die Tabelle mit dem Sammeln von Daten begonnen hat.
+- **P10D:** gibt an, dass die Tabelle Daten für einen Zeitraum von 10 Tagen ab dem Tag enthält, an dem die Tabelle mit dem Sammeln von Daten begonnen hat.
 - **V2S**: Zeichenfolgenkonstante.
 - **jjjjmmdd:** das Datum, an dem die Tabelle mit dem Sammeln von Daten begonnen hat.
 
-Beispiel: *WADMetricsPT1HP10DV2S20151108* enthält Metrikdaten, die ab 11. November 2015 10 Tage lang gesammelt und während einer Stunde aggregiert wurden.
+Beispiel: *WADMetricsPT1HP10DV2S20151108* enthält Metrikdaten, die ab 11. November 2015 10 Tage lang gesammelt und während einer Stunde aggregiert wurden.
 
 Jede WADMetrics-Tabelle enthält die folgenden Spalten:
 
@@ -168,4 +166,4 @@ Jede WADMetrics-Tabelle enthält die folgenden Spalten:
 - Stellen Sie die Ressourcen-Manager-Vorlage über [Azure PowerShell](virtual-machines-windows-ps-manage.md) oder die [Azure-Befehlszeile](virtual-machines-linux-cli-deploy-templates.md) bereit.
 - Weitere Informationen zum [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../resource-group-authoring-templates.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

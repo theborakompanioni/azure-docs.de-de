@@ -34,13 +34,15 @@ Die Endpunkt-URL wird im [Azure-Portal](https://portal.azure.com/) auf dem Blatt
 
 ### „Azure-Ressourcen-Manager“-Eigenschaft
 
-Sie können auch die API-Definitions-URL einer API-App mithilfe von Azure-Ressourcen-Manager-Tools wie z. B. Azure PowerShell, Befehlszeilenschnittstelle (CLI) oder [Ressourcen-Explorer](https://resources.azure.com/) konfigurieren.
+Sie können die API-Definitions-URL für eine API-App auch konfigurieren, indem Sie den [Ressourcen-Explorer](https://resources.azure.com/) oder [Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md) in Befehlszeilentools verwenden, beispielsweise in [Azure PowerShell](../powershell-install-configure.md) und der [Azure-CLI](../xplat-cli-install.md).
 
-Legen Sie die `apiDefinition`-Eigenschaft für Ihre Ressource „<site name>/web“ auf den Ressourcentyp „Microsoft.Web/sites/config“ fest. Beispiel: Wechseln Sie im **Ressourcen-Explorer** zu **Abonnements > {Ihr Abonnement} > Ressourcengruppen > {Ihre Ressourcengruppe} > Anbieter > Microsoft.Web > Websites > {Ihre Website} > Konfigurieren > Web**, wo Sie die „cors“-Eigenschaft finden:
+Beispiel: Wechseln Sie im **Ressourcen-Explorer** zu **Abonnements > {Ihr Abonnement} > Ressourcengruppen > {Ihre Ressourcengruppe} > Anbieter > Microsoft.Web > Websites > {Ihre Website} > Konfigurieren > Web**. Hier wird die `apiDefinition`-Eigenschaft angezeigt:
 
 		"apiDefinition": {
 		  "url": "https://contactslistapi.azurewebsites.net/swagger/docs/v1"
 		}
+
+Öffnen Sie die [Datei „azuredeploy.json“ in der Aufgabenlisten-Beispielanwendung](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/azuredeploy.json), um ein Beispiel für eine Azure Resource Manager-Vorlage zum Festlegen der `apiDefinition`-Eigenschaft anzuzeigen. Suchen Sie nach dem Abschnitt der Vorlage, die wie im oben gezeigten JSON-Beispiel aussieht..
 
 ### Standardwert
 
@@ -56,6 +58,6 @@ Sie können Clientcode für eine API-App mit Visual Studio oder über die Befehl
 
 Ein Schritt-für-Schritt-Tutorial mit Anleitungen zum Erstellen, Bereitstellen und Nutzen einer API-App finden Sie unter [Erste Schritte mit API-Apps in Azure App Service](app-service-api-dotnet-get-started.md).
 
-Wenn Sie Azure API Management mit API-Apps verwenden, können Sie Ihre API mithilfe von Swagger-Metadaten in API Management importieren. Weitere Informationen finden Sie unter [Importieren einer API-Definition mit Operationen in Azure API Management](../api-management/api-management-howto-import-api.md)
+Wenn Sie Azure API Management mit API-Apps verwenden, können Sie Ihre API mithilfe von Swagger-Metadaten in API Management importieren. Weitere Informationen finden Sie unter [Importieren einer API-Definition mit Operationen in Azure API Management](../api-management/api-management-howto-import-api.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

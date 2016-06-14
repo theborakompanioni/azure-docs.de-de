@@ -23,8 +23,10 @@
 
 In diesem Artikel wird beschrieben, wie Sie das [Azure-Portal](https://portal.azure.com/) zum schnellen Erstellen eines virtuellen Linux-Computers verwenden. Die einzigen Voraussetzungen sind [ein Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) und [Dateien mit öffentlichen und privaten Schlüsseln](virtual-machines-linux-mac-create-ssh-keys.md).
 
+[AZURE.NOTE] Wenn Sie ein Kennwort für den sicheren Zugriff auf Ihren virtuellen Computer verwenden möchten, muss das Kennwort mindestens zwölf Zeichen lang sein und mindestens einen Großbuchstaben, einen Kleinbuchstaben, ein Sonderzeichen und eine Zahl enthalten.
 
-1. Melden Sie sich mit Ihrer Azure-Kontoidentität am Azure-Portal an, und klicken Sie oben links auf **+ Neu**:
+
+1. Melden Sie sich mit Ihrer Azure-Kontoidentität beim Azure-Portal an, und klicken Sie oben links auf **+ Neu**:
 
     ![Bildschirm 1](../media/virtual-machines-linux-quick-create-portal/screen1.png)
 
@@ -39,7 +41,7 @@ In diesem Artikel wird beschrieben, wie Sie das [Azure-Portal](https://portal.az
     - Verwenden Sie Ihren öffentlichen SSH-Schlüssel als Zeichenfolge (standardmäßig aus dem Verzeichnis `~/.ssh/`).
     - Geben Sie einen Ressourcengruppennamen ein (um eine neue Bereitstellungsgruppe zu erstellen), oder wählen Sie eine vorhandene Gruppe aus.
 
-    Klicken Sie auf **OK**, um fortzufahren und die VM-Größe auszuwählen. Etwa Folgendes sollte angezeigt werden:
+    Klicken Sie auf **OK**, um fortzufahren und die VM-Größe auszuwählen. Folgendes sollte angezeigt werden:
 
     ![Bildschirm 3](../media/virtual-machines-linux-quick-create-portal/screen3.png)
 
@@ -79,4 +81,4 @@ Sie haben nun schnell eine Linux-VM zum Testen und für Demonstrationszwecke ers
 
 Diese Artikel beschreiben die ersten Schritte beim Erstellen einer Azure-Infrastruktur sowie einer beliebigen Anzahl von proprietären und Open Source-Tools zur Infrastrukturbereitstellung, -konfiguration und -orchestrierung.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

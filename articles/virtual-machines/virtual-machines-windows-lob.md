@@ -19,8 +19,6 @@
 
 # Azure-Infrastrukturdienste-Workload: Branchenanwendung mit hoher Verfügbarkeit
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
-
 Richten Sie Ihre webbasierte, nur im Intranet verfügbare Branchenanwendung in Microsoft Azure ein – so profitieren Sie von der einfachen Konfiguration sowie der Möglichkeit, die Anwendung schnell um neue Kapazitäten zu erweitern.
  
 Mit den Funktionen für virtuelle Computer und virtuelle Netzwerke der Azure-Infrastrukturdienste können Sie schnell eine Branchenanwendung bereitstellen und ausführen, auf die die Benutzer Ihres Unternehmens zugreifen können. Sie können beispielsweise Folgendes einrichten:
@@ -85,4 +83,4 @@ Nach der Konfiguration können Sie diese Branchenanwendung problemlos erweitern,
 
 - Verschaffen Sie sich einen [Überblick](virtual-machines-windows-lob-overview.md) über den Produktions-Workload, bevor Sie sich die Konfiguration näher anschauen.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

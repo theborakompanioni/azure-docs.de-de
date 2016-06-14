@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="05/23/2016"
+	ms.date="05/31/2016"
 	ms.author="emgerner"/>
 
 # Verwenden des Warteschlangenspeichers mit Python
@@ -54,7 +54,7 @@ Sie können einen Blick auf die Nachricht am Anfang einer Warteschlange werfen, 
 
 	messages = queue_service.peek_messages('taskqueue')
 	for message in messages:
-		print(message.message_text)
+		print(message.content)
 
 
 ## Gewusst wie: Entfernen von Nachrichten aus Warteschlangen
@@ -68,7 +68,7 @@ Dieser Code entfernt eine Nachricht in zwei Schritten aus der Warteschlange. Wen
 
 Es gibt zwei Möglichkeiten, wie Sie das Abrufen von Nachrichten aus der Warteschlange anpassen können. Erstens können Sie einen Nachrichtenstapel abrufen (bis zu 32). Zweitens können Sie das Unsichtbarkeits-Zeitlimit verkürzen oder verlängern, sodass der Code mehr oder weniger Zeit zur vollständigen Verarbeitung jeder Nachricht benötigt. Das folgende Codebeispiel verwendet **get\_messages**, um 16 Nachrichten mit einem Aufruf abzurufen. Anschließend wird jede Nachricht mithilfe einer for-Schleife verarbeitet. Außerdem wird das Unsichtbarkeits-Zeitlimit auf fünf Minuten pro Nachricht festgelegt.
 
-	messages = queue_service.get_messages('taskqueue', numofmessages=16, visibilitytimeout=5*60)
+	messages = queue_service.get_messages('taskqueue', num_messages=16, visibility_timeout=5*60)
 	for message in messages:
 		print(message.content)
 		queue_service.delete_message('taskqueue', message.message_id, message.pop_receipt)		
@@ -107,4 +107,4 @@ Nachdem Sie sich nun mit den Grundlagen von Queue Storage vertraut gemacht haben
 [Azure Storage-Teamblog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage-SDK für Python]: https://github.com/Azure/azure-storage-python
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

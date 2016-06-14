@@ -13,28 +13,25 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="05/28/2016"
    ms.author="mausher;jrj;barbkess;sonyama"/>
 
 # Umbenennen in SQL Data Warehouse
-SQL Server unterstützt das Umbenennen von Datenbanken über die gespeicherte Prozedur `sp_renamedb`, SQL Data Warehouse hingegen verwendet die DDL-Syntax für die Umbenennung. Der DDL-Befehl lautet `RENAME OBJECT`.
+SQL Data Warehouse verwendet die [RENAME][]-Anweisung zum Umbenennen von Tabellen. SQL Server dagegen verwendet `sp_rename`. Derzeit können nur Benutzertabellen umbenannt werden. Datenbanken und externe Tabellen können nicht umbenannt werden.
 
 ## Umbenennen von Tabellen
 
-Derzeit können nur Tabellen umbenannt werden. Zum Umbenennen einer Tabelle wird die folgende Syntax verwendet:
+Beim Umbenennen einer Tabelle werden alle einer Tabelle zugeordneten Objekte und Eigenschaften aktualisiert, um auf den neuen Tabellennamen zu verweisen. Beispielsweise werden die Tabellendefinitionen, Indizes, Einschränkungen und Berechtigungen aktualisiert. Ansichten werden nicht aktualisiert.
+
+Zum Umbenennen einer Tabelle wird die folgende Syntax verwendet:
 
 ```sql
 RENAME OBJECT dbo.Customer TO NewCustomer;
 ```
 
-Beim Umbenennen einer Tabelle werden alle einer Tabelle zugeordneten Objekte und Eigenschaften aktualisiert, um auf den neuen Tabellennamen zu verweisen. Beispielsweise werden die Tabellendefinitionen, Indizes, Einschränkungen und Berechtigungen aktualisiert. Ansichten werden nicht aktualisiert.
-
-## Umbenennen externer Tabellen
-
-Beim Umbenennen einer externen Tabelle ändert sich der Name der Tabelle in SQL Data Warehouse. Die Umbenennung wirkt sich nicht auf den Speicherort der externen Daten für die Tabelle aus.
-
 ## Ändern eines Tabellenschemas
-Wenn das Schema geändert werden soll, zu dem ein Objekt gehört, ist dies mit ALTER SCHEMA möglich:
+
+Verwenden Sie ALTER SCHEMA zum Ändern des Schemas, zu dem ein Objekt gehört:
 
 ```sql
 ALTER SCHEMA dbo TRANSFER OBJECT::product.item;
@@ -42,20 +39,22 @@ ALTER SCHEMA dbo TRANSFER OBJECT::product.item;
 
 ## Für das Umbenennen von Tabellen ist eine exklusive Tabellensperre erforderlich.
 
-Beachten Sie, dass eine Tabelle nicht umbenannt werden kann, während sie verwendet wird. Für das Umbenennen einer Tabelle muss die Tabelle exklusiv gesperrt werden. Wird die Tabelle verwendet, müssen Sie unter Umständen die Sitzung beenden, die die Tabelle verwendet. Zum Beenden einer Sitzung müssen Sie den [KILL][]-Befehl verwenden. Lassen Sie bei Verwendung von `KILL` Vorsicht walten: Wenn die jeweilige Sitzung beendet wird, wird für nicht abgeschlossene Vorgänge ein Rollback durchgeführt. Sitzungen in SQL Data Warehouse verfügen über das Präfix „SID“. Sie müssen dieses Präfix und die Sitzungsnummer einfügen, wenn Sie den KILL-Befehl aufrufen. Beispiel: `KILL 'SID1234'`. Weitere Informationen zu [Sitzungen] finden Sie im Artikel zu Verbindungen.
+Eine Tabelle kann nicht umbenannt werden, während sie verwendet wird. Für das Umbenennen einer Tabelle muss die Tabelle exklusiv gesperrt werden. Wird die Tabelle verwendet, müssen Sie unter Umständen die Sitzung beenden, die die Tabelle verwendet. Verwenden Sie den [KILL][]-Befehl zum Beenden einer Sitzung. Beispiel: `KILL 'SID1234'`. Verwenden Sie den Befehl KILL mit Bedacht, da für jegliche Transaktionsaufgaben, für die noch kein Commit ausgeführt wurde, bei Beendigung der Sitzung ein Rollback ausgeführt wird. Weitere Informationen zu [Sitzungen und Anforderungen][] finden Sie im Artikel zu Verbindungen. Weitere Informationen dazu, wie sich die Beendigung einer Transaktionsabfrage per KILL und ein Rollback auswirken, finden Sie unter [Optimieren von Transaktionen für SQL Data Warehouse][].
 
 
 ## Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
+Weitere Hinweise zu T-SQL finden Sie unter [Transact-SQL-Referenzen][].
 
 <!--Image references-->
 
 <!--Article references-->
-[Entwicklungsübersicht]: sql-data-warehouse-overview-develop.md
-[Sitzungen]: sql-data-warehouse-develop-connections.md
-
+[development overview]: ./sql-data-warehouse-overview-develop.md
+[Sitzungen und Anforderungen]: ./sql-data-warehouse-develop-connections.md#sessions-and-requests
+[Transact-SQL-Referenzen]: ./sql-data-warehouse-reference-tsql-statements.md
+[Optimieren von Transaktionen für SQL Data Warehouse]: ./sql-data-warehouse-develop-best-practices-transactions.md
 
 <!--MSDN references-->
 [KILL]: https://msdn.microsoft.com/library/ms173730.aspx
+[RENAME]: https://msdn.microsoft.com/library/mt631611.aspx
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0601_2016-->

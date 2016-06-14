@@ -12,7 +12,7 @@ ms.service="search"
 ms.devlang="rest-api"
 ms.workload="search" ms.topic="article"  
 ms.tgt_pltfrm="na"
-ms.date="05/12/2016"
+ms.date="05/28/2016"
 ms.author="eugenesh" />
 
 # Indizieren von Azure Table Storage mit Azure Search
@@ -21,7 +21,7 @@ In diesem Artikel wird beschrieben, wie Sie Azure Search zum Indizieren von Date
 
 > [AZURE.IMPORTANT] Diese Funktion befindet sich derzeit in der Vorschauphase. Sie ist nur im Rahmen der REST-API unter der Version **2015-02-28-Preview** verfügbar. Beachten Sie hierbei, dass Vorschau-APIs für Tests und Evaluierungen bestimmt sind und nicht in Produktionsumgebungen eingesetzt werden sollten.
 
-## Einrichten der Tabellenindizierung
+## Einrichten der Azure-Tabellenindizierung
 
 Für die Einrichtung und Konfiguration eines Azure-Indexers für Tabellen können Sie die Azure Search-REST-API nutzen, um **Indexer** und **Datenquellen** wie unter [Indizierungsvorgänge](https://msdn.microsoft.com/library/azure/dn946891.aspx) beschrieben zu erstellen und zu verwalten. In Zukunft wird die Unterstützung für die Tabellenindizierung dem Azure Search-.NET-SDK und dem Azure-Portal hinzugefügt.
 
@@ -31,7 +31,8 @@ Mit einem Indexer werden Daten aus einer Datenquelle gelesen und in einen Zielsu
 
 So richten Sie die Tabellenindizierung ein:
 
-1. Erstellen Sie eine Datenquelle vom Typ `azuretable`, mit der auf eine Tabelle (und optional eine Abfrage) in einem Azure-Speicherkonto verwiesen wird.
+1. Erstellen einer Datenquelle
+	- Legen Sie für den Parameter `type` `azuretable` fest.
 	- Übergeben Sie die Verbindungszeichenfolge des Speicherkontos als `credentials.connectionString`-Parameter.
 	- Geben Sie den Tabellennamen mit dem Parameter `container.name` an.
 	- Geben Sie optional eine Abfrage mit dem Parameter `container.query` an. Verwenden Sie nach Möglichkeit einen Filter für PartitionKey, um die beste Leistung zu erzielen. Alle anderen Abfragen führen zu einem vollständigen Tabellenscan, wodurch bei großen Tabellen die Leistung beeinträchtigt werden kann.
@@ -51,7 +52,7 @@ So richten Sie die Tabellenindizierung ein:
 	    "container" : { "name" : "my-table", "query" : "PartitionKey eq '123'" }
 	}   
 
-Weitere Informationen zur API zum Erstellen einer Datenquelle finden Sie unter [Datenquelle erstellen](search-api-indexers-2015-02-28-preview.md#create-data-source).
+Weitere Informationen über die API zum Erstellen einer Datenquelle finden Sie unter [Datenquelle erstellen](search-api-indexers-2015-02-28-preview.md#create-data-source).
 
 ### Erstellen des Index 
 
@@ -67,7 +68,7 @@ Weitere Informationen zur API zum Erstellen einer Datenquelle finden Sie unter [
   		]
 	}
 
-Weitere Informationen über die API zum Erstellen eines Index finden Sie unter [Index erstellen](https://msdn.microsoft.com/library/dn798941.aspx)
+Weitere Informationen über die API zum Erstellen eines Indexes finden Sie unter [Index erstellen](https://msdn.microsoft.com/library/dn798941.aspx).
 
 ### Erstellen eines Indexers 
 
@@ -123,4 +124,4 @@ Um anzugeben, dass bestimmte Dokumente aus dem Index entfernt werden müssen, k�
 
 Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/) mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

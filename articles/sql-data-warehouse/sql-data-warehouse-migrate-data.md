@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="05/31/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Migrieren von Daten
-Das Hauptziel bei der Migration von Daten besteht im Auffüllen der SQLDW-Datenbank. Dies kann auf verschiedene Weise erfolgen. Zum Erreichen dieses Ziels können die ADF-Kopieraktivität, SSIS und bcp verwendet werden. Mit zunehmender Menge der Daten empfiehlt es sich jedoch, den Vorgang der Datenmigration in verschiedene Schritte aufzugliedern. Dies bietet Ihnen die Möglichkeit, die einzelnen Schritte im Hinblick auf Leistung und Belastbarkeit zu optimieren und so eine reibungslose Datenmigration zu gewährleisten.
+Daten können aus unterschiedlichen Quellen und mithilfe verschiedener Tools in Ihr SQL Data Warehouse verschoben werden. Zum Erreichen dieses Ziels können die ADF-Kopieraktivität, SSIS und bcp verwendet werden. Mit zunehmender Menge der Daten empfiehlt es sich jedoch, den Vorgang der Datenmigration in verschiedene Schritte aufzugliedern. Dies bietet Ihnen die Möglichkeit, die einzelnen Schritte im Hinblick auf Leistung und Belastbarkeit zu optimieren und so eine reibungslose Datenmigration zu gewährleisten.
 
 In diesem Artikel werden zunächst einfache Migrationsszenarios der ADF-Kopieraktivität sowie von SSIS und bcp erörtert. Dann wird detaillierter erläutert, wie die Migration optimiert werden kann.
 
@@ -30,7 +30,7 @@ Auch PolyBase stellt eine leistungsstarke Möglichkeit zum Laden der Daten dar. 
 
 > [AZURE.NOTE] Für PolyBase müssen die Datendateien mit UTF-8 codiert sein. Dies ist die Standardcodierung der ADF-Kopieraktivität, sodass keine Änderungen vorgenommen werden müssen. Es gilt lediglich zu beachten, dass das Standardverhalten der ADF-Kopieraktivität nicht geändert wird.
 
-In diesem Artikel finden Sie [Beispiele zur Verwendung der ADF-Kopieraktivität].
+In diesem Artikel finden Sie [Beispiele zur Verwendung der ADF-Kopieraktivität][].
 
 ## Integration Services ##
 Integration Services (SSIS) ist ein leistungsfähiges und flexibles ETL-Tool (Extrahieren Transformieren und Laden), das komplexe Workflows, Datentransformation und verschiedene Optionen zum Laden von Daten unterstützt. Mit SSIS können Sie Daten in Azure oder als Teil einer größeren Migration übertragen.
@@ -63,7 +63,7 @@ bcp weist folgende Einschränkungen auf:
 - bcp bietet keine Stabilität beim Laden von Daten über das Internet. Jede Instabilität im Netzwerk kann daher zu Fehlern beim Laden führen.
 - bcp stützt sich auf das in der Zieldatenbank vor dem Laden vorhandene Schema.
 
-Weitere Informationen finden Sie unter [Load data with bcp][] \(in englischer Sprache).
+Weitere Informationen finden Sie unter [Load data with bcp][] (in englischer Sprache).
 
 ## Optimieren der Datenmigration
 Ein SQLDW-Datenmigrationsprozess kann wirksam in drei separate Schritte unterteilt werden:
@@ -104,7 +104,7 @@ Einer der langsamsten Schritte bei der Datenmigration ist die Übertragung der D
 Glücklicherweise stehen mehrere Optionen zur Verbesserung der Geschwindigkeit und Stabilität dieses Vorgangs zur Verfügung:
 
 ### [ExpressRoute][]
-Beispielsweise können Sie [ExpressRoute][] verwenden, um die Übertragung von Daten zu beschleunigen. [ExpressRoute][] ermöglicht Ihnen die Erstellung einer privaten Verbindung mit Azure, d. h., die Verbindung erfolgt nicht über das öffentliche Internet. Dieser Schritt ist keineswegs unbedingt erforderlich. Dadurch verbessert sich jedoch der Durchsatz bei der Übertragung von Daten in Azure von einem Standort vor Ort oder in der Nähe.
+Beispielsweise können Sie [ExpressRoute][] verwenden, um die Übertragung von Daten zu beschleunigen. [ExpressRoute][] stellt Ihnen eine bereits vorhandene private Verbindung mit Azure zur Verfügung, d. h., die Verbindung erfolgt nicht über das öffentliche Internet. Dieser Schritt ist keineswegs unbedingt erforderlich. Dadurch verbessert sich jedoch der Durchsatz bei der Übertragung von Daten in Azure von einem Standort vor Ort oder in der Nähe.
 
 Die Verwendung von [ExpressRoute][] bietet folgende Vorteile:
 
@@ -163,7 +163,7 @@ Die Unterteilung großer Tabellen in mehrere Dateien verbessert nicht nur die Ex
 
 PolyBase unterstützt auch eine Funktion zum "rekursiven Ordnerdurchlauf". Mit dieser Funktion können Sie die Organisation der exportierten Daten weiter verbessern und so die Datenverwaltung optimieren.
 
-Weitere Informationen zum Laden von Daten mit PolyBase finden Sie unter [Load data with bcp][] \(in englischer Sprache).
+Weitere Informationen zum Laden von Daten mit PolyBase finden Sie unter [Load data with bcp][] (in englischer Sprache).
 
 
 ## Nächste Schritte
@@ -194,4 +194,4 @@ Weitere Informationen zur Migration finden Sie unter [Migrieren Ihrer Lösung na
 [ADO.NET-Zieladapter]: https://msdn.microsoft.com/library/bb934041.aspx
 [SSIS-Dokumentation]: https://msdn.microsoft.com/library/ms141026.aspx
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0601_2016-->

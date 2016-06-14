@@ -25,8 +25,8 @@ Sie können für Kunden, die Windows Server mit Software Assurance verwenden, lo
 ## Voraussetzungen
 Es gibt einige Voraussetzungen, um den Azure-Vorteil bei Hybridnutzung für virtuelle Windows Server-Computer in Azure nutzen zu können:
 
-- „Azure PowerShell installieren“-Modul installiert
-- Eine Windows Server-VHD, die Sie in Azure-Speicher hochladen
+- Azure PowerShell-Modul ist installiert.
+- Windows Server-VHD wurde in Azure Storage hochgeladen.
 
 ### Installieren von Azure PowerShell
 Unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) finden Sie Informationen dazu, wie Sie die neueste Version von Azure PowerShell installieren, das gewünschte Abonnement auswählen und sich bei Ihrem Azure-Konto anmelden. Auch wenn Sie Ihre virtuellen Computer mit Resource Manager-Vorlagen bereitstellen möchten, muss Azure PowerShell installiert sein, um die Windows Server-VHD hochladen zu können (siehe den nächsten Schritt weiter unten).
@@ -164,4 +164,4 @@ Weitere Informationen zur [Lizenzierung für den Azure-Vorteil bei Hybridnutzung
 
 Weitere Informationen zum [Verwenden von Resource Manager-Vorlagen](../resource-group-overview.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="05/05/2016"
+	ms.date="06/07/2016"
 	ms.author="cynthn"/>
 
 # Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal
@@ -49,7 +49,7 @@ Nachdem Sie das Image ausgewählt haben, können Sie für den Großteil der Konf
 
 2. Geben Sie einen Benutzernamen und ein sicheres Kennwort für die Erstellung eines lokalen Kontos auf dem virtuellen Computer ein. Das lokale Konto wird für die Anmeldung bei dem virtuellen Computer sowie für dessen Verwaltung verwendet.
 
-	Das Kennwort muss 8 bis 123 Zeichen lang sein und mindestens drei der folgenden Elemente enthalten: einen Kleinbuchstaben, einen Großbuchstaben, eine Zahl und ein Sonderzeichen.
+	Das Kennwort muss 12 bis 123 Zeichen lang sein und mindestens einen Kleinbuchstaben, einen Großbuchstaben, eine Zahl und ein Sonderzeichen enthalten.
 
 
 3. Wählen Sie eine bereits vorhandene Ressourcengruppe[](../resource-group-overview.md#resource-groups) aus, oder geben Sie den Namen für eine neue Ressourcengruppe ein. Geben Sie den Standort eines Azure-Datencenters ein (beispielsweise **USA, Westen**).
@@ -116,4 +116,4 @@ Wenn Sie den virtuellen Computer erneut verwenden möchten, klicken Sie einfach 
 
 * Darüber hinaus haben Sie die Möglichkeit zum [Erstellen eines virtuellen Windows-Computers mit PowerShell](virtual-machines-windows-ps-create.md) sowie zum [Erstellen eines virtuellen Linux-Computers](virtual-machines-linux-quick-create-cli.md) mithilfe der Azure-Befehlszeilenschnittstelle.
 
-<!----HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

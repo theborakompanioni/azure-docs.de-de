@@ -13,14 +13,14 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/16/2016"
+   ms.date="06/01/2016"
    ms.author="sonyama;barbkess"/>
 
 # Installieren von Visual Studio 2015 und SSDT für SQL Data Warehouse
 
-Für die Entwicklung von Anwendungen für SQL Data Warehouse empfiehlt es sich, Visual Studio 2015 in Verbindung mit der neuesten Version von SQL Server Data Tools (SSDT) zu verwenden. Visual Studio 2013 mit SSDT wird ebenfalls unterstützt.
+Für die Entwicklung von Anwendungen für SQL Data Warehouse empfiehlt es sich, Visual Studio 2015 in Verbindung mit der neuesten Version von SQL Server Data Tools (SSDT) zu verwenden. Visual Studio 2013 mit SSDT wird für die Abwärtskompatibilität unterstützt.
 
-Darüber hinaus wird **Microsoft SQL Server-Update für Datenbanktools** benötigt, um Abfragen über die integrierte Visual Studio-Entwicklungsumgebung (Integrated Development Environment, IDE) ausführen zu können. Wenn diese Erweiterung installiert ist, können Sie Datenbankobjekte in der Struktur des Objekt-Explorers anzeigen und Abfragen für Ihr SQL Data Warehouse ausführen.
+Die Verwendung von Visual Studio mit SSDT ermöglicht die Nutzung des SQL Server-Objekt-Explorers zum Visualisieren von Tabellen, Ansichten, gespeicherten Prozeduren und zahlreichen weiteren Objekten in SQL Data Warehouse sowie zum Ausführen von Abfragen.
 
 > [AZURE.NOTE] SQL Data Warehouse unterstützt noch keine Visual Studio-Datenbankprojekte. Dieses Feature wird in einer späteren Version hinzugefügt.
 
@@ -28,21 +28,21 @@ Darüber hinaus wird **Microsoft SQL Server-Update für Datenbanktools** benöti
 
 Verwenden Sie die folgenden Links, um Visual Studio 2015 herunterzuladen und zu installieren. Falls Sie Visual Studio 2013 oder 2015 bereits installiert haben, fahren Sie mit Schritt 2 fort, um SSDT zu installieren.
 
-1. [Laden Sie Visual Studio 2015][] aus Visual Studio Team Services herunter.
-2. Führen Sie die Schritte der auf MSDN bereitgestellten Anleitung [Installieren von Visual Studio][] durch, und wählen Sie die Standardkonfigurationen aus.
+1. [Laden Sie Visual Studio 2015 herunter][].
+2. Führen Sie die Schritte der auf MSDN bereitgestellten Anleitung [Installieren von Visual Studio][] aus, und wählen Sie die Standardkonfigurationen aus.
 
 ## Schritt 2: Installieren von SSDT
 
 Führen Sie zum Installieren von SSDT für Visual Studio einfach die folgenden Schritte aus, um in Visual Studio nach einem SSDT-Update zu suchen:
 
 1. Klicken Sie in Visual Studio auf **Extras** > **Erweiterungen und Updates...** > **Updates**.
-2. Wählen Sie **Produktupdates** aus, und suchen Sie nach **Microsoft SQL Server-Update für Datenbanktools**.
+2. Wählen Sie **Produktupdates**, und suchen Sie nach **Microsoft SQL Server-Update für Datenbanktools**.
 
-Wird kein Update gefunden, ist bereits die neueste Version installiert. Klicken Sie auf **Hilfe** > **Info**, und suchen Sie in der Liste nach „SQL Server Data Tools“, um sich zu vergewissern, dass SSDT installiert ist.
+Wird kein Update gefunden, ist bereits die neueste Version installiert. Klicken Sie auf **Hilfe** > **Info**, und suchen Sie in der Liste nach „SQL Server Data Tools“, um sich zu vergewissern, dass SSDT installiert ist. Die neueste Version von SSDT ist 14.0.60525.0. Falls die Option zur Installation in Visual Studio nicht verfügbar ist, können Sie SSDT auf der Seite für den [SSDT-Download][] manuell herunterladen und installieren.
 
 ## Nächste Schritte
 
-Da Sie jetzt die neueste Version von SSDT verwenden, sind Sie bereit, eine [Verbindung][] mit der Datenbank herzustellen.
+Da Sie jetzt die neueste Version von SSDT verwenden, sind Sie bereit, eine [Verbindung][] mit SQL Data Warehouse herzustellen.
 
 <!--Anchors-->
 
@@ -52,7 +52,8 @@ Da Sie jetzt die neueste Version von SSDT verwenden, sind Sie bereit, eine [Verb
 [Verbindung]: ./sql-data-warehouse-get-started-connect.md
 
 <!--Other-->
-[Laden Sie Visual Studio 2015]: https://www.visualstudio.com/downloads/
+[Laden Sie Visual Studio 2015 herunter]: https://www.visualstudio.com/downloads/
 [Installieren von Visual Studio]: https://msdn.microsoft.com/library/e2h7fzkw.aspx
+[SSDT-Download]: https://msdn.microsoft.com/library/mt204009.aspx
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

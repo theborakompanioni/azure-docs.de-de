@@ -85,7 +85,7 @@ Die folgenden Bereiche sind auf DataSets mit einer Größe unter 10 GB beschrä
 - SMOTE-Modul
 - Skripting-Module: R, Python, SQL
 - Module, bei denen die Größe der Ausgabedaten die der Eingabedaten überschreiten kann, z. B. Join oder Feature-Hashing.
-- Cross-Validation, Sweep Parameters, Ordinal Regression und One-vs-All Multiclass, wenn eine sehr große Anzahl von Iterationen durchgeführt wird.
+- Kreuzvalidierung, Tune Model Hyperparameters, Ordinal Regression und One-vs-All Multiclass, wenn eine sehr große Anzahl von Iterationen durchgeführt wird.
 
 Für DataSets größer als einige GB sollten Sie die Daten in Azure Storage oder Azure SQL-Datenbank laden oder HDInsight verwenden, anstatt die Daten direkt aus lokalen Dateien hochzuladen.
 
@@ -95,7 +95,7 @@ Laden Sie für DataSets größer als einige GB die Daten in Azure Storage oder A
 
 **Können Daten von Amazon S3 gelesen werden?**
 
-Wenn Ihre Daten nicht sehr umfangreich sind und Sie diese über eine HTTP-URL verfügbar machen möchten, können Sie das [Reader][reader]-Modul verwenden. Größere Datenmengen sollten Sie zunächst in Azure Storage übertragen und anschließend mit dem [Reader][reader]-Modul in das Experiment übernehmen.
+Wenn Ihre Daten nicht sehr umfangreich sind und Sie diese über eine HTTP-URL verfügbar machen möchten, können Sie das Modul zum [Importieren von Daten][import-data] verwenden. Größere Datenmengen sollten Sie zunächst in Azure Storage übertragen und anschließend mit dem Modul zum [Importieren von Daten][import-data] in das Experiment übernehmen.
 <!--
 <SEE CLOUD DS PROCESS>
 -->
@@ -227,7 +227,7 @@ Sobald ein Vorhersagemodell bereitgestellt wurde, können Sie es im klassischen 
 
 **Kann ich die Ausgabe meines RRS/BES an einer Stelle einsehen?**
 
-Für RRS wird das Ergebnis normalerweise in der Antwort des Webdiensts ausgegeben. Sie können es auch in den Azure-Blobspeicher schreiben. Bei BES wird die Ausgabe standardmäßig in ein Blob geschrieben. Sie können die Ausgabe außerdem mit dem Modul zum [Exportieren von Daten][writer] in eine Datenbank oder Tabelle schreiben.
+Für RRS wird das Ergebnis normalerweise in der Antwort des Webdiensts ausgegeben. Sie können es auch in den Azure-Blobspeicher schreiben. Bei BES wird die Ausgabe standardmäßig in ein Blob geschrieben. Sie können die Ausgabe außerdem mit dem Modul zum [Exportieren von Daten][export-data] in eine Datenbank oder Tabelle schreiben.
 
 **Können Webdienste nur aus Modellen erstellt werden, die in Machine Learning Studio erstellt wurden?**
 
@@ -326,10 +326,10 @@ Für Azure Machine Learning gibt es außerdem ein Community-Forum auf MSDN, in d
 [join]: https://msdn.microsoft.com/library/azure/124865f7-e901-4656-adac-f4cb08248099/
 [machine-learning-modules]: https://msdn.microsoft.com/library/azure/6d9e2516-1343-4859-a3dc-9673ccec9edc/
 [partition-and-sample]: https://msdn.microsoft.com/library/azure/a8726e34-1b3e-4515-b59a-3e4a475654b8/
-[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-[writer]: https://msdn.microsoft.com/library/azure/7A391181-B6A7-4AD4-B82D-E419C0D6522C
+[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[export-data]: https://msdn.microsoft.com/library/azure/7A391181-B6A7-4AD4-B82D-E419C0D6522C
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [python]: https://msdn.microsoft.com/library/azure/CDB56F95-7F4C-404D-BDE7-5BB972E6F232
 [counts]: https://msdn.microsoft.com/library/azure/dn913056.aspx
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0608_2016-->

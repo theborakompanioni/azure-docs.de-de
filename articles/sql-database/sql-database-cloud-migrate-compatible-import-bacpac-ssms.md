@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="04/06/2016"
+   ms.date="05/31/2016"
    ms.author="carlrab"/>
 
 # Importieren aus BACPAC zur SQL-Datenbank mithilfe von SSMS
@@ -52,4 +52,15 @@ In diesem Artikel wird beschrieben, wie Sie mithilfe des Assistenten „Datenebe
 
 6.	Zeigen Sie über das Azure-Portal Ihre Datenbank und deren Eigenschaften an.
 
-<!---HONumber=AcomDC_0413_2016-->
+## Nächste Schritte
+
+- [Neueste Version von SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
+- [Neueste Version von SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
+
+## Weitere Informationen
+
+- [SQL-Datenbank V12](sql-database-v12-whats-new.md)
+- [Teilweise oder vollständig unterstützte Transact-SQL-Funktionen](sql-database-transact-sql-information.md)
+- [Migrate non-SQL Server databases using SQL Server Migration Assistant](http://blogs.msdn.com/b/ssma/) (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)
+
+<!---HONumber=AcomDC_0601_2016-->

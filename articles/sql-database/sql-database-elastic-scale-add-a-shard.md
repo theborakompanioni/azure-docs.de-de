@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Sie einem Shard-Satz mithilfe der Elastic Scale-APIs neue Shards hinzufügen." 
 	services="sql-database" 
 	documentationCenter="" 
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	authors="ddove" 
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/27/2016" 
-	ms.author="ddove;sidneyh"/>
+	ms.date="05/27/2016" 
+	ms.author="ddove"/>
 
 # Hinzufügen eines Shards mithilfe der Tools für elastische Datenbanken
 
@@ -79,4 +79,4 @@ Eine Datenbank namens „sample\_shard\_2“ sowie alle erforderlichen, darin en
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0601_2016-->

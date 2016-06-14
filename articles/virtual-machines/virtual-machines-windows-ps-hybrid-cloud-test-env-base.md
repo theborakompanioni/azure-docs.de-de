@@ -18,8 +18,6 @@
 	ms.author="josephd"/>
 
 # Einrichten einer Hybrid Cloud-Umgebung zu Testzwecken
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
  
 Dieses Thema führt Sie durch die Erstellung einer Hybrid Cloud-Umgebung mit Microsoft Azure für Tests. Die resultierende Konfiguration sieht folgendermaßen aus.
 
@@ -331,4 +329,4 @@ Die Hybrid Cloud-Umgebung kann nun getestet werden.
 
 - Richten Sie in dieser Umgebung eine [SharePoint-Intranetfarm](virtual-machines-windows-ps-hybrid-cloud-test-env-sp.md), eine [webbasierte Branchenanwendung](virtual-machines-windows-ps-hybrid-cloud-test-env-lob.md) oder einen [Office 365-Verzeichnissynchronisierungsserver (DirSync)](virtual-machines-windows-ps-hybrid-cloud-test-env-dirsync.md) ein.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

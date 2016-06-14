@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/24/2016"
+   ms.date="05/26/2016"
    ms.author="alkohli" />
 
 # Installieren Sie Update 0.1 auf Ihrem StorSimple Virtual Array
@@ -87,7 +87,7 @@ Führen Sie die folgenden Schritte aus, um das Softwareupdate aus dem Microsoft 
 
 3. Geben Sie im Suchfeld des Microsoft Update-Katalogs die KB-Nummer des Hotfixes ein, den Sie herunterladen möchten (beispielsweise **3160441**), und klicken Sie anschließend auf **Suchen**.
 
-    Die Hotfix-Liste wird angezeigt, z.B. **Microsoft Azure StorSimple Virtual Array Update 0.1**.
+    Die Hotfixliste wird angezeigt, z.B. **StorSimple Virtual Array Update 0.1**.
 
     ![Katalog durchsuchen](./media/storsimple-ova-install-update-01/download1.png)
 
@@ -128,4 +128,4 @@ Stellen Sie vor der Update- oder Hotfixinstallation sicher, dass das Update oder
 
 Weitere Informationen zur [Verwaltung des StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

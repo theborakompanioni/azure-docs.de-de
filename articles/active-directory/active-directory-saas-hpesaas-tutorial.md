@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/19/2016"
+	ms.date="05/26/2016"
 	ms.author="jeedes"/>
 
 
@@ -76,12 +76,12 @@ Zum Konfigurieren der Integration von HPE SaaS in Azure AD müssen Sie HPE SaaS 
 	![Anwendungen][4]
 
 6. Geben Sie im Suchfeld als Suchbegriff **HPE SaaS** ein.
-	
+
 	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hpesaas-tutorial/tutorial_hpesaas_01.png)
 
 7. Wählen Sie im Ergebnisbereich **HPE SaaS** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
 
-![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hpesaas-tutorial/tutorial_hpesaas_02.png)
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hpesaas-tutorial/tutorial_hpesaas_02.png)
 
 ##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden von Azure AD in HPE SaaS konfiguriert und getestet werden kann.
@@ -117,14 +117,12 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
 	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hpesaas-tutorial/tutorial_hpesaas_04.png)
 
 
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die von Ihren Benutzern nach folgendem Muster zur Anmeldung bei der HPE SaaS-Anwendung verwendet wird: `https://<tenant name>.saas.hpe.com`
+    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die von Ihren Benutzern zur Anmeldung bei der HPE SaaS-Anwendung verwendet wird: **https://login.saas.hpe.com/msg**. Kunden können diese ebenfalls in eine anwendungsspezifische URL ändern.
 
-    b. Geben Sie im Textfeld **Antwort-URL** die URL unter Verwendung des folgenden Musters ein: `https://<tenant name>.saas.hpe.com/sp/ACS.saml2`
-
-    c. Klicken Sie auf **Weiter**.
+    b. Klicken Sie auf **Weiter**.
 
 
-4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren um HPE SaaS** die folgenden Schritte aus:
+4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für HPE SaaS** die folgenden Schritte aus:
 
 	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hpesaas-tutorial/tutorial_hpesaas_05.png)
 
@@ -136,7 +134,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
 5. Wenden Sie sich wegen der SSO-Konfiguration für Ihre Anwendung an das Supportteam von HPE SaaS, und senden Sie eine E-Mail mit der heruntergeladenen Metadatendatei, damit sie für die SSO-Integration konfiguriert werden kann.
 
 
-6. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
+6. Bestätigen Sie im klassischen Azure-Portal die Konfiguration des einmaligen Anmeldens, und klicken Sie dann auf **Weiter**.
 
 	![Azure AD – einmaliges Anmelden][10]
 
@@ -147,8 +145,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
 
 
 ### Erstellen eines Azure AD-Testbenutzers
-
-In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens Britta Simon erstellt. Wählen Sie in der Benutzerliste **Britta Simon** aus.
+In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens Britta Simon erstellt.
 
 ![Azure AD-Benutzer erstellen][20]
 
@@ -156,7 +153,7 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
 
 1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hpesaas-tutorial/create_aaduser_09.png)
+![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hpesaas-tutorial/create_aaduser_09.png)
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
@@ -164,7 +161,9 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
 
 	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hpesaas-tutorial/create_aaduser_03.png)
 
-4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**. ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hpesaas-tutorial/create_aaduser_04.png)
+4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hpesaas-tutorial/create_aaduser_04.png)
 
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
 
@@ -221,7 +220,7 @@ Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmal
 
 **Um Britta Simon HPE SaaS zuzuweisen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**, um die Anwendungsansicht im klassischen Azure-Portal zu öffnen.
+1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
 
 	![Benutzer zuweisen][201]
 
@@ -270,4 +269,4 @@ In diesem Abschnitt soll Ihre Azure AD-Konfiguration für das einmalige Anmelden
 [204]: ./media/active-directory-saas-hpesaas-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-hpesaas-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

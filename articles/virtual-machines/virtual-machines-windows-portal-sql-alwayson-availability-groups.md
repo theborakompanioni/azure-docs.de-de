@@ -24,9 +24,6 @@
 
 <br/>
 
-> [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Modell.
-
-
 Dieses End-to-End-Tutorial zeigt Ihnen, wie Sie eine SQL Server-Verfügbarkeitsgruppe mit Azure-Ressourcen-Manager-VMs erstellen. Das Tutorial verwendet Azure-Blätter zum Konfigurieren einer Vorlage. Während Sie dieses Tutorial absolvieren, überprüfen Sie Standardeinstellungen, geben erforderliche Einstellungen ein und aktualisieren die Blätter im Portal.
 
 >[AZURE.NOTE] Im Azure-Verwaltungsportal gibt es einen neuen Katalog, der für AlwaysOn-Verfügbarkeitsgruppen mit einem Listener eingerichtet ist. Hierüber wird alles automatisch konfiguriert, was Sie für Verfügbarkeitsgruppen benötigen. Weitere Informationen finden Sie unter [SQL Server Always On Offering in Microsoft Azure classic portal Gallery](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx) (SQL Server-AlwaysOn-Angebot im Katalog des klassischen Microsoft Azure-Portals).
@@ -51,7 +48,7 @@ Alle Ressourcen in dieser Lösung gehören zu einer einzigen Ressourcengruppe.
 
 In diesem Tutorial wird Folgendes vorausgesetzt:
 
-- Sie besitzen bereits ein Azure-Abonnement. Falls Sie keines besitzen, können Sie sich für ein [kostenloses Testkonto registrieren](http://azure.microsoft.com/pricing/free-trial/).
+- Sie besitzen bereits ein Azure-Abonnement. Falls Sie keines besitzen, können Sie sich für ein [Testkonto registrieren](http://azure.microsoft.com/pricing/free-trial/).
 
 - Sie wissen bereits, wie ein virtueller SQL Server-Computer mithilfe der GUI aus dem virtuellen Computerkatalog bereitgestellt wird. Weitere Informationen finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server im Azure-Portal](virtual-machines-windows-portal-sql-server-provision.md).
 
@@ -89,7 +86,7 @@ Klicken Sie auf **Grundlagen**, und konfigurieren Sie Folgendes:
 
 - **Abonnement** ist das Abonnement, das Azure abrechnet, um alle für die Verfügbarkeitsgruppe bereitgestellten Ressourcen auszuführen. Sie können ein anderes Abonnement angeben, wenn Ihr Konto über mehrere Abonnements verfügt.
 
-- **Ressourcengruppe** ist der Name für die Gruppe, zu der alle von diesem Tutorial erstellten Azure-Ressourcen gehören sollen. Verwenden Sie für dieses Tutorial **SQL-HA-RG**. Weitere Informationen finden Sie unter (Azure-Ressourcen-Manager-Übersicht) [resource-group-overview.md/#resource-groups].
+- **Ressourcengruppe** ist der Name der Gruppe, zu der alle von diesem Tutorial erstellten Azure-Ressourcen gehören sollen. Verwenden Sie für dieses Tutorial **SQL-HA-RG**. Weitere Informationen finden Sie unter (Azure-Ressourcen-Manager-Übersicht) [resource-group-overview.md/#resource-groups].
 
 - **Standort** ist die Azure-Region, in der die Ressourcen für dieses Tutorial erstellt werden. Wählen Sie eine Azure-Region zum Hosten der Infrastruktur.
 
@@ -259,4 +256,4 @@ Sie sind jetzt mit dem primären Domänencontroller verbunden. Gehen Sie folgend
 
 Sie sind jetzt über eine RDP-Verbindung mit der SQL Server-Instanz verbunden. Sie können jetzt das SQL Server-Management Studio öffnen, eine Verbindung mit der Standardinstanz von SQL Server herstellen und sicherstellen, dass die Verfügbarkeitsgruppe konfiguriert ist.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/02/2016" 
+	ms.date="05/31/2016" 
 	ms.author="kbaroni;garye" />
 
 # Verwenden der linearen Regression in Azure Machine Learning
@@ -64,7 +64,7 @@ Zunächst war das Excel-Modell dem Azure-ML-Modell deutlich überlegen.
 |<ul style="list-style-type: none;"><li>Adjusted R Square</li></ul>| 0,96 |–|
 |<ul style="list-style-type: none;"><li>Coefficient of <br />Determination</li></ul>|–|	0,78<br />(geringe Genauigkeit)|
 |Mittlerer absoluter Fehler |	9,5 Mio. $|	19,4 Mio. $|
-|Mean Absolute Error (%)|	6,03 %|	12,2 %
+|Mean Absolute Error (%)|	6,03 %|	12,2 %
 
 Als wir unser Verfahren und die Ergebnisse den Entwicklern und Data Scientists des Azure ML-Teams zeigten, konnte man uns dort ein paar rasche Tipps geben.
 
@@ -88,7 +88,7 @@ Als wir die Empfehlungen umgesetzt hatten, konnten wir in Azure ML denselben Ben
 |Adjusted R Square|0,96|–||
 |Coefficient of Determination|–|0,78|0,952049|
 |Mittlerer absoluter Fehler |9,5 Mio. $|19,4 Mio. $|9,5 Mio. $|
-|Mean Absolute Error (%)|<span style="background-color: 00FF00;"> 6,03%</span>|12,2 %|<span style="background-color: 00FF00;"> 6,03%</span>|
+|Mean Absolute Error (%)|<span style="background-color: 00FF00;"> 6,03%</span>|12,2 %|<span style="background-color: 00FF00;"> 6,03%</span>|
 
 Zudem gab es eine gute Übereinstimmung der Excel-Koeffizienten mit den Funktionsgewichten im trainierten Azure-Modell.
 
@@ -117,7 +117,7 @@ Kopieren Sie bei geöffnetem Arbeitsblatt Ihre vordefinierten Parameter in den b
 ![][2]
  
 ### Optimieren und weitere Untersuchungen
-Nun, da wir mit dem Excel-Modell unseren Benchmark erreicht hatten, versuchten wir uns daran, unser Modell der linearen Regression in Azure ML zu optimieren. Wir verwendeten das Modul [Filter-Based Feature Selection][filter-based-feature-selection], um unsere Auswahl der anfänglichen Datenelemente zu verbessern, womit wir eine Leistungsverbesserung von 4,6 % (mittlerer absoluter Fehler) erreichen konnten. Für zukünftige Projekte werden wir diese Funktion verwenden, die uns möglicherweise wochenlanges Iterieren von Datenattributen zum Herausfinden des richtigen Funktionssatzes für das Modell erspart.
+Nun, da wir mit dem Excel-Modell unseren Benchmark erreicht hatten, versuchten wir uns daran, unser Modell der linearen Regression in Azure ML zu optimieren. Wir verwendeten das Modul [Filter-Based Feature Selection][filter-based-feature-selection], um unsere Auswahl der anfänglichen Datenelemente zu verbessern, womit wir eine Leistungsverbesserung von 4,6 % (mittlerer absoluter Fehler) erreichen konnten. Für zukünftige Projekte werden wir diese Funktion verwenden, die uns möglicherweise wochenlanges Iterieren von Datenattributen zum Herausfinden des richtigen Funktionssatzes für das Modell erspart.
 
 Als Nächstes planen wir die Einbeziehung zusätzlicher Algorithmen wie [Bayes][bayesian-linear-regression] oder [Boosted Decision Trees][boosted-decision-tree-regression] in unser Experiment, um deren Leistung vergleichen zu können.
 
@@ -159,4 +159,4 @@ Im Folgenden finden Sie einige Ressourcen für Ihre Arbeit mit Regression:
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
  
 
-<!------HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0601_2016-->

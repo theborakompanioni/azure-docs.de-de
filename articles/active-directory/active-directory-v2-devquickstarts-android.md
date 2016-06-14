@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD v2.0: Android-App | Microsoft Azure"
+	pageTitle="Azure AD v2.0: Android-App | Microsoft Azure"
 	description="Vorgehensweise beim Erstellen einer Android-App, bei der sich Benutzer sowohl mit ihrem persönlichen Microsoft-Konto als auch ihrem Geschäfts- oder Schulkonto anmelden können."
 	services="active-directory"
 	documentationCenter=""
@@ -23,4 +23,8 @@ Das Schnellstart-Tutorial für Android ist noch nicht ausgereift... Kommen Sie b
 > [AZURE.NOTE]
 	Nicht alle Szenarios und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
 
-<!---HONumber=AcomDC_0224_2016-->
+## Abrufen von Sicherheitsupdates für unsere Produkte
+
+Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen einzurichten. Rufen Sie dazu [diese Seite](https://technet.microsoft.com/security/dd252948) auf, und abonnieren Sie Sicherheitsempfehlungen.
+
+<!---HONumber=AcomDC_0601_2016-->

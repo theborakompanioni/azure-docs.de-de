@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute | Microsoft Azure"
+	pageTitle="Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute | Microsoft Azure"
 	description="Listet die mit Azure Active Directory synchronisierten Attribute auf."
 	services="active-directory"
 	documentationCenter=""
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/16/2016"
-	ms.author="markusvi;andkjell"/>
+	ms.date="06/01/2016"
+	ms.author="markvi;andkjell"/>
 
 
-# Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute
+# Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute
 
-In diesem Thema werden die Attribute aufgelistet, die von der Azure AD Connect-Synchronisierung synchronisiert werden. Die Attribute sind nach den zugehörigen Azure AD-Apps gruppiert.
+In diesem Thema werden die Attribute aufgelistet, die von der Azure AD Connect-Synchronisierung synchronisiert werden. Die Attribute sind nach den zugehörigen Azure AD-Apps gruppiert.
 
 ## Zu synchronisierende Attribute
 Häufig wird die Frage gestellt, *welche Attribute als Mindestvoraussetzung synchronisiert werden müssen*. Die standardmäßige und empfohlene Vorgehensweise besteht darin, die Standardattribute beizubehalten, damit in der Cloud eine vollständige GAL (Globale Adressliste) erstellt werden kann und alle Features in Office 365-Workloads abgerufen werden können. In einigen Fällen können Attribute vorhanden sein, die für Ihre Organisation nicht mit der Cloud synchronisiert werden sollen, da sie sensible Daten oder personenbezogene Informationen (Personally Identifiable Information, PII) wie im obigen Beispiel enthalten.
@@ -37,9 +37,9 @@ In diesem Fall beginnen Sie mit der unten angegebenen Liste von Attributen und i
 | accountEnabled| X| Definiert, ob ein Konto aktiviert ist.|
 | cn| X| |
 | displayName| X| |
-| objectSID| X| Mechanische Eigenschaft. AD-Benutzer-ID, die verwendet wird, um die Synchronisierung zwischen Azure AD und AD aufrechtzuerhalten.|
+| objectSID| X| Mechanische Eigenschaft. AD-Benutzer-ID, die verwendet wird, um die Synchronisierung zwischen Azure AD und AD aufrechtzuerhalten.|
 | pwdLastSet| X| Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Von Kennwortsynchronisierung und Verbund verwendet.|
-| sourceAnchor| X| Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird.|
+| sourceAnchor| X| Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird.|
 | usageLocation| X| Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet.|
 | userPrincipalName| X| Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail].|
 
@@ -137,7 +137,7 @@ In diesem Fall beginnen Sie mit der unten angegebenen Liste von Attributen und i
 | msExchTeamMailboxSharePointUrl| X| | | |
 | msExchUserHoldPolicies| X| | | |
 | msOrg-IsOrganizational| | | X| |
-| objectSID| X| | X| Mechanische Eigenschaft. AD-Benutzer-ID, die verwendet wird, um die Synchronisierung zwischen Azure AD und AD aufrechtzuerhalten.|
+| objectSID| X| | X| Mechanische Eigenschaft. AD-Benutzer-ID, die verwendet wird, um die Synchronisierung zwischen Azure AD und AD aufrechtzuerhalten.|
 | oOFReplyToOriginator| | | X| |
 | otherFacsimileTelephone| X| X| | |
 | otherHomePhone| X| X| | |
@@ -152,7 +152,7 @@ In diesem Fall beginnen Sie mit der unten angegebenen Liste von Attributen und i
 | reportToOwner| | | X| |
 | securityEnabled| | | X| Abgeleitet von "groupType"|
 | sn| X| X| | |
-| sourceAnchor| X| X| X| Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird.|
+| sourceAnchor| X| X| X| Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird.|
 | st| X| X| | |
 | streetAddress| X| X| | |
 | targetAddress| X| X| | |
@@ -219,7 +219,7 @@ In diesem Fall beginnen Sie mit der unten angegebenen Liste von Attributen und i
 | msExchTeamMailboxOwners| X| | | |
 | msExchTeamMailboxSharePointLinkedBy| X| | | |
 | msExchTeamMailboxSharePointUrl| X| | | |
-| objectSID| X| | X| Mechanische Eigenschaft. AD-Benutzer-ID, die verwendet wird, um die Synchronisierung zwischen Azure AD und AD aufrechtzuerhalten.|
+| objectSID| X| | X| Mechanische Eigenschaft. AD-Benutzer-ID, die verwendet wird, um die Synchronisierung zwischen Azure AD und AD aufrechtzuerhalten.|
 | oOFReplyToOriginator| | | X| |
 | otherFacsimileTelephone| X| X| | |
 | otherHomePhone| X| X| | |
@@ -238,7 +238,7 @@ In diesem Fall beginnen Sie mit der unten angegebenen Liste von Attributen und i
 | reportToOwner| | | X| |
 | securityEnabled| | | X| Abgeleitet von "groupType"|
 | sn| X| X| | |
-| sourceAnchor| X| X| X| Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird.|
+| sourceAnchor| X| X| X| Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird.|
 | st| X| X| | |
 | streetAddress| X| X| | |
 | targetAddress| X| X| | |
@@ -283,7 +283,7 @@ In diesem Fall beginnen Sie mit der unten angegebenen Liste von Attributen und i
 | msRTCSIP-OwnerUrn| X| | | |
 | msRTCSIP-PrimaryUserAddress| X| X| | |
 | msRTCSIP-UserEnabled| X| X| | |
-| objectSID| X| | X| Mechanische Eigenschaft. AD-Benutzer-ID, die verwendet wird, um die Synchronisierung zwischen Azure AD und AD aufrechtzuerhalten.|
+| objectSID| X| | X| Mechanische Eigenschaft. AD-Benutzer-ID, die verwendet wird, um die Synchronisierung zwischen Azure AD und AD aufrechtzuerhalten.|
 | otherTelephone| X| X| | |
 | physicalDeliveryOfficeName| X| X| | |
 | postalCode| X| X| | |
@@ -292,7 +292,7 @@ In diesem Fall beginnen Sie mit der unten angegebenen Liste von Attributen und i
 | pwdLastSet| X| | | Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Von Kennwortsynchronisierung und Verbund verwendet.|
 | securityEnabled| | | X| Abgeleitet von "groupType"|
 | sn| X| X| | |
-| sourceAnchor| X| X| X| Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird.|
+| sourceAnchor| X| X| X| Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird.|
 | st| X| X| | |
 | streetAddress| X| X| | |
 | telephoneNumber| X| X| | |
@@ -312,11 +312,11 @@ In diesem Fall beginnen Sie mit der unten angegebenen Liste von Attributen und i
 | displayName| X| X| X| Eine Zeichenfolge, die den häufig als Anzeigename (Vorname Nachname) angezeigten Namen darstellt.|
 | mail| X| X| X| Vollständige E-Mail-Adresse|
 | member| | | X| |
-| objectSID| X| | X| Mechanische Eigenschaft. AD-Benutzer-ID, die verwendet wird, um die Synchronisierung zwischen Azure AD und AD aufrechtzuerhalten.|
-| proxyAddresses| X| X| X| Mechanische Eigenschaft. Von Azure AD verwendet. Enthält alle sekundären E-Mail-Adressen für den Benutzer.|
+| objectSID| X| | X| Mechanische Eigenschaft. AD-Benutzer-ID, die verwendet wird, um die Synchronisierung zwischen Azure AD und AD aufrechtzuerhalten.|
+| proxyAddresses| X| X| X| Mechanische Eigenschaft. Von Azure AD verwendet. Enthält alle sekundären E-Mail-Adressen für den Benutzer.|
 | pwdLastSet| X| | | Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen.|
 | securityEnabled| | | X| Abgeleitet von "groupType"|
-| sourceAnchor| X| X| X| Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird.|
+| sourceAnchor| X| X| X| Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird.|
 | usageLocation| X| | | Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet.|
 | userPrincipalName| X| | | Dieser Benutzerprinzipalname ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail].|
 
@@ -333,11 +333,11 @@ In diesem Fall beginnen Sie mit der unten angegebenen Liste von Attributen und i
 | mail| X| X| X| |
 | mailnickname| X| X| X| |
 | member| | | X| |
-| objectSID| X| | X| Mechanische Eigenschaft. AD-Benutzer-ID, die verwendet wird, um die Synchronisierung zwischen Azure AD und AD aufrechtzuerhalten.|
+| objectSID| X| | X| Mechanische Eigenschaft. AD-Benutzer-ID, die verwendet wird, um die Synchronisierung zwischen Azure AD und AD aufrechtzuerhalten.|
 | proxyAddresses| X| X| X| |
 | pwdLastSet| X| | | Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Von Kennwortsynchronisierung und Verbund verwendet.|
 | securityEnabled| | | X| Abgeleitet von "groupType"|
-| sourceAnchor| X| X| X| Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird.|
+| sourceAnchor| X| X| X| Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird.|
 | usageLocation| X| | | Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet.|
 | userPrincipalName| X| | | Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail].|
 
@@ -362,14 +362,14 @@ In diesem Fall beginnen Sie mit der unten angegebenen Liste von Attributen und i
 | manager| X| X| | |
 | member| | | X| |
 | mobile| X| X| | |
-| objectSID| X| | X| Mechanische Eigenschaft. AD-Benutzer-ID, die verwendet wird, um die Synchronisierung zwischen Azure AD und AD aufrechtzuerhalten.|
+| objectSID| X| | X| Mechanische Eigenschaft. AD-Benutzer-ID, die verwendet wird, um die Synchronisierung zwischen Azure AD und AD aufrechtzuerhalten.|
 | physicalDeliveryOfficeName| X| X| | |
 | postalCode| X| X| | |
 | preferredLanguage| X| | | |
 | pwdLastSet| X| | | Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Von Kennwortsynchronisierung und Verbund verwendet.|
 | securityEnabled| | | X| Abgeleitet von "groupType"|
 | sn| X| X| | |
-| sourceAnchor| X| X| X| Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird.|
+| sourceAnchor| X| X| X| Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird.|
 | st| X| X| | |
 | streetAddress| X| X| | |
 | telephoneNumber| X| X| | |
@@ -395,16 +395,16 @@ Dies ist ein Satz von Attributen, die verwendet werden können, wenn das Azure A
 | managedBy| | | X| |
 | mailNickName| X| X| X| |
 | member| | | X| |
-| objectSID| X| | | Mechanische Eigenschaft. AD-Benutzer-ID, die verwendet wird, um die Synchronisierung zwischen Azure AD und AD aufrechtzuerhalten.|
+| objectSID| X| | | Mechanische Eigenschaft. AD-Benutzer-ID, die verwendet wird, um die Synchronisierung zwischen Azure AD und AD aufrechtzuerhalten.|
 | proxyAddresses| X| X| X| |
 | pwdLastSet| X| | | Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Von Kennwortsynchronisierung und Verbund verwendet.|
 | sn| X| X| | |
-| sourceAnchor| X| X| X| Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird.|
+| sourceAnchor| X| X| X| Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird.|
 | usageLocation| X| | | Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet.|
 | userPrincipalName| X| | | Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail].|
 
 ## Windows 10
-Bei unter Windows 10 per Domänenbeitritt in die Domäne eingebundenen Computern (Geräten) werden einige Attribute mit Azure AD synchronisiert. Weitere Informationen zu den Szenarien finden Sie unter [Verbinden von in die Domäne eingebundenen Geräten mit Azure AD für Windows 10-Funktionen](active-directory-azureadjoin-devices-group-policy.md). Diese Attribute werden immer synchronisiert, und Windows 10 wird nicht als App angezeigt, für die Sie die Auswahl aufheben können. Ein unter Windows 10 in die Domäne eingebundener Computer wird dadurch identifiziert, dass das Attribut „userCertificate“ aufgefüllt ist.
+Bei unter Windows 10 per Domänenbeitritt in die Domäne eingebundenen Computern (Geräten) werden einige Attribute mit Azure AD synchronisiert. Weitere Informationen zu den Szenarien finden Sie unter [Verbinden von in die Domäne eingebundenen Geräten mit Azure AD für Windows 10-Funktionen](active-directory-azureadjoin-devices-group-policy.md). Diese Attribute werden immer synchronisiert, und Windows 10 wird nicht als App angezeigt, für die Sie die Auswahl aufheben können. Ein unter Windows 10 in die Domäne eingebundener Computer wird dadurch identifiziert, dass das Attribut „userCertificate“ aufgefüllt ist.
 
 | Attributname| Gerät| Kommentar |
 | --- | :-: | --- |
@@ -440,7 +440,7 @@ Diese Attribute werden vom Azure AD auf das lokale Active Directory zurückgesch
 | proxyAddresses| X| X| X| Nur die x500-Adresse von Exchange Online wird eingefügt.|
 
 ## Geräterückschreiben
-Geräteobjekte werden in Active Directory erstellt. Dabei kann es sich um Geräte, die mit Azure AD verknüpft sind, oder um in eine Domäne eingebundene Windows 10-Computer handeln.
+Geräteobjekte werden in Active Directory erstellt. Dabei kann es sich um Geräte, die mit Azure AD verknüpft sind, oder um in eine Domäne eingebundene Windows 10-Computer handeln.
 
 | Attributname| Gerät| Kommentar |
 | --- | :-: | --- |
@@ -461,7 +461,7 @@ Geräteobjekte werden in Active Directory erstellt. Dabei kann es sich um Gerät
 
 
 ## Hinweise
-- Bei Verwendung einer alternativen ID wird das lokale Attribut userPrincipalName mit dem Azure AD-Attribut onPremisesUserPrincipalName synchronisiert. Das alternative ID-Attribut, z. B. Mail, wird mit dem Azure AD-Attribut userPrincipalName synchronisiert.
+- Bei Verwendung einer alternativen ID wird das lokale Attribut userPrincipalName mit dem Azure AD-Attribut onPremisesUserPrincipalName synchronisiert. Das alternative ID-Attribut, z. B. Mail, wird mit dem Azure AD-Attribut userPrincipalName synchronisiert.
 - In den obigen Listen gilt der Objekttyp **Benutzer** auch für den Objekttyp **iNetOrgPerson**.
 
 ## Nächste Schritte
@@ -469,4 +469,4 @@ Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](
 
 Weitere Informationen zum [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -30,8 +30,6 @@ Es gibt jedoch einige Aspekte bei SQL Server-Verbindungen, die insbesondere Azur
 
 In diesem Artikel wird beschrieben, wie Sie eine Verbindung mit einem virtuellen SQL Server-Computer mithilfe des Resource Manager-Modells herstellen können. Eine vollständige Anleitung, die Bereitstellung und Konnektivität behandelt, finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](virtual-machines-windows-portal-sql-server-provision.md).
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
-
 ## Konnektivitätsszenarien
 
 Die Weise, wie ein Client Verbindungen mit SQL Server auf einem virtuellen Computer herstellt, unterscheidet sich je nach dem Standort des Clients und der Konfiguration des Computers und/oder Netzwerks. Zu diesen Szenarien gehören:
@@ -100,4 +98,4 @@ Es ist wichtig, alle bewährten Sicherheitsmethoden für SQL Server bei der Ausf
 
 Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Computern finden Sie unter [SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0601_2016-->

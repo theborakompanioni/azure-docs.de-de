@@ -129,17 +129,17 @@ Funktionen-Apps basieren auf App Service. Daher stehen alle [für Standard-Web-A
 
 3. Navigieren Sie zu `D:\home\site\wwwroot`, um *host.json* zu aktualisieren, oder zu `D:\home\site\wwwroot<function_name>`, um die Dateien einer Funktion zu aktualisieren.
 
-4. Verschieben Sie eine Datei per Drag & Drop, die Sie im Dateiraster in den entsprechenden Ordner hochladen möchten.
+4. Verschieben Sie eine Datei per Drag & Drop, die Sie im Dateiraster in den entsprechenden Ordner hochladen möchten. Es gibt zwei Bereiche im Dateiraster, in denen Sie eine Datei ablegen können. Für *ZIP*-Dateien wird ein Feld mit der Bezeichnung „Zum Hochladen und Entzippen hier ablegen“ angezeigt. Legen Sie Dateien anderer Dateitypen im Dateiraster ab, jedoch außerhalb des Felds zum Entzippen.
 
 #### So verwenden Sie FTP
 
 1. Führen Sie die [hier](../app-service-web/web-sites-deploy.md#ftp) aufgeführten Schritte aus, um FTP zu konfigurieren.
 
-2. Wenn Sie mit der Website der Funktionen-App verbunden sind, kopieren Sie die aktualisierte Datei *host.json* in `/site/wwwroot`, oder kopieren Sie Funktionendateien in `/site/wwwroot/<function_name>`.
+2. Wenn Sie mit der Website der Funktionen-App verbunden sind, kopieren Sie die aktualisierte Datei *host.json* in `/site/wwwroot`, oder kopieren Sie Funktionsdateien in `/site/wwwroot/<function_name>`.
 
 ## Parallele Ausführung
 
-Wenn die Auslösung mehrerer Ereignisse schneller erfolgt als die Runtime einer Singlethreadfunktion sie verarbeiten kann, kann die Runtime die Funktion mehrmals parallel aufrufen. Wenn eine Funktionen-App den [dynamischen Serviceplan](functions-scale.md#dynamic-service-plan) verwendet, kann die App automatisch horizontal auf bis zu 10 gleichzeitige Instanzen hochskaliert werden. Jede Instanz der Funktionen-App – unabhängig davon, ob die App im dynamischen Serviceplan oder einem regulären [App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) ausgeführt wird – kann dann gleichzeitige Funktionsaufrufe über mehrere Threads parallel verarbeiten. Die maximale Anzahl gleichzeitiger Funktionsaufrufe in jeder Instanz der Funktionen-App variiert je nach Größe des Arbeitsspeichers der Funktionen-App.
+Wenn die Auslösung mehrerer Ereignisse schneller erfolgt als die Runtime einer Singlethreadfunktion sie verarbeiten kann, kann die Runtime die Funktion mehrmals parallel aufrufen. Wenn eine Funktionen-App den [dynamischen Serviceplan](functions-scale.md#dynamic-service-plan) verwendet, kann die App automatisch horizontal auf bis zu zehn gleichzeitige Instanzen hochskaliert werden. Jede Instanz der Funktionen-App – unabhängig davon, ob die App im dynamischen Serviceplan oder einem regulären [App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) ausgeführt wird – kann dann gleichzeitige Funktionsaufrufe über mehrere Threads parallel verarbeiten. Die maximale Anzahl gleichzeitiger Funktionsaufrufe in jeder Instanz der Funktionen-App variiert je nach Größe des Arbeitsspeichers der Funktionen-App.
 
 ## Azure Functions Pulse  
 
@@ -174,4 +174,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 * [Azure Functions: The Journey](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/) im Blog des Azure App Service-Teams. Überblick, wie Azure Functions entwickelt wurde.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

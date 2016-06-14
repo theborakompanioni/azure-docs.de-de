@@ -63,11 +63,11 @@ Stretch-Datenbank ist für Transaktionsdatenbanken mit großen Mengen an histori
 
 Falls Sie die Funktion „temporale Tabelle“ von SQL Server 2016 verwenden, verwenden Sie Stretch-Datenbank, um die ganze oder einen Teil der zugehörigen Verlaufstabelle zur kostengünstigen Speicherung in Azure zu migrieren. Weitere Informationen finden Sie unter [Manage Retention of Historical Data in System-Versioned Temporal Tables](https://msdn.microsoft.com/library/mt637341.aspx) (Verwalten der Aufbewahrung historischer Daten in temporalen Tabellen mit Systemversionsverwaltung).
 
-Verwenden Sie den Stretch-Datenbank-Ratgeber, eine Funktion von SQL Server 2016-Upgraderatgeber, zum Identifizieren von Datenbanken und Tabellen für Stretch-Datenbank. Weitere Informationen finden Sie unter [Identifizieren von Datenbanken und Tabellen für Stretch-Datenbank](sql-server-stretch-database-identify-databases.md). Weitere Informationen über mögliche Blockierungsprobleme finden Sie unter [Oberflächeneinschränkungen und Hindernisse für Stretch-Datenbank](sql-server-stretch-database-limitations.md).
+Verwenden Sie den Stretch-Datenbank-Ratgeber, eine Funktion von SQL Server 2016-Upgraderatgeber, zum Identifizieren von Datenbanken und Tabellen für Stretch-Datenbank. Weitere Informationen finden Sie unter [Identifizieren von Datenbanken und Tabellen für Stretch-Datenbank](sql-server-stretch-database-identify-databases.md). Weitere Informationen über mögliche Blockierungsprobleme finden Sie unter [Einschränkungen für Stretch-Datenbank](sql-server-stretch-database-limitations.md).
 
 ## <a name="FAQ"></a>Häufig gestellte Fragen zur Stretch-Datenbank
 **Funktioniert Stretch-Datenbank mit &lt;SQL Server-Funktionsname&gt;?**
--   Eine Liste der SQL Server-Funktionen, welche die Nutzung von Tabellen in Stretch verhindern, finden Sie unter [Oberflächeneinschränkungen und Hindernisse für Stretch-Datenbank](sql-server-stretch-database-limitations.md).
+-   Eine Liste der SQL Server-Funktionen, welche die Nutzung von Tabellen in Stretch verhindern, finden Sie unter [Einschränkungen für Stretch-Datenbank](sql-server-stretch-database-limitations.md).
 
 -   Optional können Sie den SQL Server 2016 Upgraderatgeber herunterladen, und den Stretch-Datenbank-Ratgeber ausführen, um die Eignung von Datenbanken und Tabellen für Stretch-Datenbank zu prüfen. Weitere Informationen finden Sie unter [Identifizieren von Datenbanken und Tabellen für Stretch-Datenbank](sql-server-stretch-database-identify-databases.md).
 
@@ -123,4 +123,4 @@ Stretch-Datenbank ändert das Berechtigungsmodell einer vorhandenen Datenbank ni
 [StretchOverviewImage2]: ./media/sql-server-stretch-database-overview/StretchDBOverview1.png
 [StretchOverviewImage3]: ./media/sql-server-stretch-database-overview/StretchDBOverview2.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/18/2016"
+	ms.date="06/01/2016"
 	ms.author="cjiang"/>
 
 # Meine Kreditkarte wird nicht akzeptiert, wenn ich versuche, mich für Azure zu registrieren
@@ -31,7 +31,7 @@ Vergewissern Sie sich auch, dass die Zahlungsmethode aktiv ist, und Ihre Bank ni
 - Die Kreditkartenprüfnummer, die Sie eingeben, muss genau mit dem Code übereinstimmen, der auf der Rück- oder Vorderseite der Kredit-/Lastschriftkarte angegeben ist.
 
 ## Versuchen Sie, die kostenlose Azure-Testversion zu aktivieren?
-Das kostenlose Azure-Testversionsangebot ist auf eine einmalige Aktivierung pro Benutzer begrenzt. Wenn Sie bereits zuvor eine kostenlose Testversion aktiviert oder in der Vergangenheit ein Azure-Abonnement besessen haben, aber jetzt versuchen, eine kostenlose Testversion zu aktivieren, erlaubt das System Ihnen nicht, fortzufahren. Nutzen Sie stattdessen einen der anderen verfügbaren, auf der Seite [Microsoft Azure-Angebotsdetails](https://azure.microsoft.com/support/legal/offer-details/) aufgeführten Azure-Pläne.
+Das kostenlose Azure-Testversionsangebot ist auf eine einmalige Aktivierung pro Benutzer begrenzt. Wenn Sie bereits zuvor eine kostenlose Testversion mit dieser Kreditkarte aktiviert oder in der Vergangenheit ein Azure-Abonnement besessen haben, das mit dieser Kreditkarte verknüpft war, erlaubt das System Ihnen jetzt nicht, eine kostenlose Testversion zu aktivieren. Nutzen Sie stattdessen einen der anderen verfügbaren, auf der Seite [Microsoft Azure-Angebotsdetails](https://azure.microsoft.com/support/legal/offer-details/) aufgeführten Azure-Pläne.
 
 ## Wünschen Sie andere Zahlungsmöglichkeiten als Kredit- oder Lastschriftkarten?
 Sie können für Ihr Azure-Abonnement auch Zahlungsmethoden per Rechnung nutzen, z.B. Schecks, Scheckzahlungen über Nacht und Überweisungen.
@@ -40,4 +40,4 @@ Die Rechnungszahlungsoption kann nur von Unternehmen genutzt werden. Diese Optio
 
 Nähere Informationen zum Starten des Prozesses zum Einrichten einer Rechnung finden Sie unter [Azure – Rechnungsstellung](https://azure.microsoft.com/pricing/invoicing/).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

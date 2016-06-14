@@ -3,8 +3,8 @@
 	description="Speichern Sie nicht strukturierte Daten in der Cloud mit Azure Blob Storage (Objektspeicher)."
 	documentationCenter="php"
 	services="storage"
-	authors="rmcmurray"
-	manager="wpickett"
+	authors="allclark"
+	manager="douge"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-    ms.date="04/29/2016"
-	ms.author="robmcm"/>
+    	ms.date="06/01/2016"
+	ms.author="allclark;yaqiyang"/>
 
 # Verwenden des Blob-Speichers mit PHP
 
@@ -49,9 +49,9 @@ Zum Verwenden der Azure-Blob-Dienst-APIs müssen Sie Folgendes durchführen:
 
 Das folgende Beispiel zeigt, wie die Autoloaderdatei eingeschlossen und die **ServicesBuilder**-Klasse referenziert wird.
 
-> [AZURE.NOTE] In diesem Beispiel (und in anderen Beispielen in diesem Artikel) wird angenommen, dass Sie die PHP-Clientbibliotheken für Azure über Composer installiert haben. Wenn Sie die Bibliotheken manuell oder als PEAR-Paket installiert haben, müssen Sie auf die Autoloaderdatei `WindowsAzure.php` verweisen.
+> [AZURE.NOTE] In diesem Beispiel (und in anderen Beispielen in diesem Artikel) wird angenommen, dass Sie die PHP-Clientbibliotheken für Azure über Composer installiert haben. Wenn Sie die Bibliotheken manuell installiert haben, müssen Sie auf die Autoloaderdatei `WindowsAzure.php` verweisen.
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 	use WindowsAzure\Common\ServicesBuilder;
 
 
@@ -79,7 +79,7 @@ Um einen Azure-Dienstclient zu erstellen, müssen Sie die **ServicesBuilder**-Kl
 
 Für die hier erläuterten Beispiele wird die Verbindungszeichenfolge direkt weitergegeben.
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
 
@@ -94,9 +94,9 @@ Mithilfe eines **BlobRestProxy**-Objekts können Sie einen Blob-Container mit de
 	require_once 'vendor\autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Blob\Models\CreateContainerOptions;
-	use WindowsAzure\Blob\Models\PublicAccessType;
-	use WindowsAzure\Common\ServiceException;
+	use MicrosoftAzure\Storage\Blob\Models\CreateContainerOptions;
+	use MicrosoftAzure\Storage\Blob\Models\PublicAccessType;
+	use MicrosoftAzure\Storage\Common\ServiceException;
 
 	// Create blob REST proxy.
 	$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
@@ -147,10 +147,10 @@ Weitere Informationen zu Fehlercodes des Blob-Diensts finden Sie im Thema zu [Fe
 
 Um eine Datei als Blob hochzuladen, verwenden Sie die **BlobRestProxy->createBlockBlob**-Methode. Bei diesem Vorgang wird das Blob erstellt, falls es nicht vorhanden ist, oder überschrieben, falls es vorhanden ist. Das Codebeispiel weiter unten nimmt an, dass der Container bereits erstellt wurde, und verwendet [fopen][fopen], um die Datei als Stream zu öffnen.
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
+	use MicrosoftAzure\Storage\Common\ServiceException;
 
 	// Create blob REST proxy.
 	$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
@@ -178,10 +178,10 @@ Beachten Sie, dass im vorherigen Beispiel ein Blob als Stream hochgeladen wird. 
 
 Um die Blobs in einem Container aufzulisten, verwenden Sie die **BlobRestProxy->listBlobs**-Methode mit einem **foreach**-Loop, um das Ergebnis in einer Schleife zu durchlaufen. Der folgende Code zeigt den Namen der einzelnen Blobs als Ausgabe in einem Container und die einzelnen URIs an den Browser an.
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
+	use MicrosoftAzure\Storage\Common\ServiceException;
 
 	// Create blob REST proxy.
 	$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
@@ -211,10 +211,10 @@ Um die Blobs in einem Container aufzulisten, verwenden Sie die **BlobRestProxy->
 
 Um einen Blob herunterzuladen, rufen Sie die **BlobRestProxy->getBlob**-Methode gefolgt von der **getContentStream**-Methode für das resultierende **GetBlobResult**-Objekt auf.
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
+	use MicrosoftAzure\Storage\Common\ServiceException;
 
 	// Create blob REST proxy.
 	$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
@@ -240,10 +240,10 @@ Beachten Sie, dass in dem Beispiel oben ein Blob als Streamressource abgerufen w
 
 Um einen Blob zu löschen, geben Sie den Containernamen und den Blob-Namen an **BlobRestProxy->deleteBlob** weiter.
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
+	use MicrosoftAzure\Storage\Common\ServiceException;
 
 	// Create blob REST proxy.
 	$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
@@ -266,10 +266,10 @@ Um einen Blob zu löschen, geben Sie den Containernamen und den Blob-Namen an **
 
 Um schließlich einen Blob-Container zu löschen, geben Sie den Containernamen an **BlobRestProxy->deleteContainer** weiter.
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
+	use MicrosoftAzure\Storage\Common\ServiceException;
 
 	// Create blob REST proxy.
 	$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
@@ -308,4 +308,4 @@ Weitere Informationen finden Sie außerdem im [PHP Developer Center](/develop/ph
 [fopen]: http://www.php.net/fopen
 [stream-get-contents]: http://www.php.net/stream_get_contents
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

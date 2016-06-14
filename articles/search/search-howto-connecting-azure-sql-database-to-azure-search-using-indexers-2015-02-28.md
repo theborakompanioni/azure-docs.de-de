@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="05/06/2016" 
+	ms.date="05/26/2016" 
 	ms.author="eugenesh"/>
 
 #Verbinden von Azure SQL-Datenbank mit Azure Search mithilfe von Indexern
@@ -68,23 +68,7 @@ Erstellen Sie zunächst die Datenquelle:
 
 Sie können die Verbindungszeichenfolge mit der Option `ADO.NET connection string` aus dem [klassischen Azure-Portal](https://portal.azure.com) abrufen:
 
-Dann erstellen Sie den Azure Search-Zielindex, sofern Sie bislang über keinen Index verfügen. Sie können dies von der Azure-[Portal-Benutzeroberfläche](https://portal.azure.com) aus tun oder indem Sie die [Create-Index-API](https://msdn.microsoft.com/library/azure/dn798941.aspx) verwenden. Stellen Sie sicher, dass das Schema des Zielindexes mit dem Schema der Quelltabelle kompatibel ist. Sie finden in der folgende Tabelle Informationen zum Zuordnen der SQL-Datentypen zu Azure Search-Datentypen.
-
-## Zuordnung zwischen SQL-Datentypen und Azure Search-Datentypen
-
-|SQL-Datentyp | Zulässige Ziel-Index-Feldtypen |Hinweise 
-|------|-----|----|
-|Bit|Edm.Boolean, Edm.String| |
-|int, smallint, tinyint |Edm.Int32, Edm.Int64, Edm.String| |
-| bigint | Edm.Int64, Edm.String | |
-| real, float |Edm.Double, Edm.String | |
-| Smallmoney, money decimal numeric | Edm.String| Azure Search unterstützt nicht die Konvertierung von Dezimaltypen in Edm.Double-Typen, da es hierbei zu Genauigkeitsverlusten kommt. |
-| char, nchar, varchar, nvarchar | Edm.String<br/>Collection(Edm.String)|Die Umwandlung einer Zeichenfolgenspalte in Collection(Edm.String) erfordert die Verwendung der Version 2015-02-28-Preview der Vorschau-API. Nähere Einzelheiten finden Sie [in diesem Artikel](search-api-indexers-2015-02-28-Preview.md#create-indexer).| 
-|smalldatetime, datetime, datetime2, date, datetimeoffset |Edm.DateTimeOffset, Edm.String| |
-|uniqueidentifer | Edm.String | |
-|geography | Edm.GeographyPoint | Es werden nur Geography-Instanzen vom Typ POINT mit SRID 4326 (Standard) unterstützt. | | 
-|rowversion| N/V |rowversion-Spalten können nicht im Suchindex gespeichert werden, sie können jedoch für die Änderungsnachverfolgung verwendet werden. | |
-| time, timespan, binary, varbinary, image, xml, geometry, CLR types | N/V |Nicht unterstützt |
+Dann erstellen Sie den Azure Search-Zielindex, sofern Sie bislang über keinen Index verfügen. Sie können dies von der Azure-[Portal-Benutzeroberfläche](https://portal.azure.com) aus tun oder indem Sie die [Create-Index-API](https://msdn.microsoft.com/library/azure/dn798941.aspx) verwenden. Stellen Sie sicher, dass das Schema des Zielindexes mit dem Schema der Quelltabelle kompatibel ist – Näheres siehe [Zuordnung zwischen SQL-Datentypen und Azure Search-Datentypen](#TypeMapping).
 
 Erstellen Sie schließlich den Indexer, indem Sie ihm einen Namen geben und einen Verweis auf die Datenquelle und den Zielindex hinzufügen:
 
@@ -102,6 +86,8 @@ Ein auf diese Weise erstellter Indexer verfügt über keinen Zeitplan. Er wird a
 
 	POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2015-02-28 
 	api-key: admin-key
+
+Sie können einige Aspekte des Indexerverhaltens anpassen, z.B. die Batchgröße, und wie viele Dokumente übersprungen werden können, bevor eine Indexerausführung fehlschlägt. Weitere Details finden Sie unter [Create Indexer API](https://msdn.microsoft.com/library/azure/dn946899.aspx) (Erstellen einer Indexer-API).
  
 Möglicherweise müssen Sie Azure Services erlauben, eine Verbindung mit der Datenbank herzustellen. Anleitungen dazu finden Sie unter [Verbinden von Azure](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure).
 
@@ -249,15 +235,32 @@ Wenn Sie die Methode des "vorläufigen Löschens" verwenden, können Sie die Ric
 
 Beachten Sie, dass **softDeleteMarkerValue** eine Zeichenfolge sein muss. Verwenden Sie die Zeichenfolgendarstellung des tatsächlichen Werts. Wenn Sie z. B. über eine "integer"-Spalte verfügen, in der gelöschte Zeilen durch den Wert 1 gekennzeichnet sind, verwenden Sie `"1"`; wenn Sie über eine "BIT"-Spalte verfügen, in der gelöschte Zeilen durch den booleschen Wert "true" markiert werden, verwenden Sie `"True"`.
 
-## Anpassen von Azure SQL-Indexer
- 
-Sie können bestimmte Aspekte des Indexerverhaltens anpassen (z. B. die Batchgröße, wie viele Dokumente übersprungen werden können, bevor eine Indexerausführung fehlschlägt, usw.). Weitere Details finden Sie unter [Anpassen von Azure Search-Indexern](search-indexers-customization.md)
+<a name="TypeMapping"></a>
+## Zuordnung zwischen SQL-Datentypen und Azure Search-Datentypen
+
+|SQL-Datentyp | Zulässige Ziel-Index-Feldtypen |Hinweise 
+|------|-----|----|
+|Bit|Edm.Boolean, Edm.String| |
+|int, smallint, tinyint |Edm.Int32, Edm.Int64, Edm.String| |
+| bigint | Edm.Int64, Edm.String | |
+| real, float |Edm.Double, Edm.String | |
+| Smallmoney, money decimal numeric | Edm.String| Azure Search unterstützt nicht die Konvertierung von Dezimaltypen in Edm.Double-Typen, da es hierbei zu Genauigkeitsverlusten kommt. |
+| char, nchar, varchar, nvarchar | Edm.String<br/>Collection(Edm.String)|Die Umwandlung einer Zeichenfolgenspalte in Collection(Edm.String) erfordert die Verwendung der Version 2015-02-28-Preview der Vorschau-API. Nähere Einzelheiten finden Sie [in diesem Artikel](search-api-indexers-2015-02-28-Preview.md#create-indexer).| 
+|smalldatetime, datetime, datetime2, date, datetimeoffset |Edm.DateTimeOffset, Edm.String| |
+|uniqueidentifer | Edm.String | |
+|geography | Edm.GeographyPoint | Es werden nur Geography-Instanzen vom Typ POINT mit SRID 4326 (Standard) unterstützt. | | 
+|rowversion| N/V |rowversion-Spalten können nicht im Suchindex gespeichert werden, sie können jedoch für die Änderungsnachverfolgung verwendet werden. | |
+| time, timespan, binary, varbinary, image, xml, geometry, CLR types | N/V |Nicht unterstützt |
+
 
 ## Häufig gestellte Fragen
 
 **F:** Kann ich Azure SQL-Indexer mit SQL-Datenbanken verwenden, die auf IaaS-VMs in Azure ausgeführt werden?
 
-A: Ja, solange Sie durch Öffnen der entsprechenden Ports zulassen, dass Azure-Dienste eine Verbindung mit der Datenbank herstellen.
+A: Ja. Sie müssen jedoch die Verbindung des Suchdiensts mit der Datenbank ermöglichen:
+
+1. Konfigurieren Sie die Firewall für den Zugriff auf die IP-Adresse durch Ihren Suchdienst. 
+2. Möglicherweise müssen Sie auch die Datenbank mit einem vertrauenswürdigen Zertifikat so konfigurieren, dass der Suchdienst SSL-Verbindungen mit der Datenbank öffnen kann.
 
 **F:** Kann ich Azure SQL-Indexer mit SQL-Datenbanken verwenden, die lokal ausgeführt werden?
 
@@ -275,4 +278,4 @@ A: Ja. Allerdings kann zu einem gegebenen Zeitpunkt nur ein Indexer auf einem Kn
 
 A: Ja. Indexer werden auf einem der Knoten im Suchdienst ausgeführt, und die Ressourcen dieses Knotens werden für die Indizierung und das Bearbeiten des Datenverkehrs für Abfragen und andere API-Anforderungen gemeinsam genutzt. Wenn Sie intensive Indizierungs- und Abfragearbeitsauslastungen ausführen und viele 503-Fehler oder zunehmend längere Antwortzeiten auftreten, sollten Sie Ihren Suchdienst skalieren.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

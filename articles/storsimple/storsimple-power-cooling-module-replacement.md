@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/21/2016"
+   ms.date="05/25/2016"
    ms.author="alkohli" />
 
 # Austauschen eines Moduls für Stromversorgung und Kühlung eines StorSimple-Geräts
@@ -155,4 +155,4 @@ Folgen Sie diesen Anweisungen, um ein PCM in Ihrem StorSimple-Gerät einzubauen.
 
 Weitere Informationen zum [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0601_2016-->

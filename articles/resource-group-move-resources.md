@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="05/31/2016" 
 	ms.author="tomfitz"/>
 
 # Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
@@ -27,11 +27,13 @@ Beim Verschieben von Ressourcen werden die Quellgruppe und die Zielgruppe für d
 
 Sie können nicht den Speicherort der Ressource ändern. Wenn Sie ein Ressource verschieben, wird sie nur in eine neue Ressourcengruppe verschoben. Die neue Ressourcengruppe hat möglicherweise einen anderen Speicherort, das heißt jedoch nicht, dass der Speicherort der Ressource geändert wird.
 
+> [AZURE.NOTE] In diesem Artikel wird beschrieben, wie Sie Ressourcen in einem vorhandenen Azure-Kontoangebot verschieben. Falls Sie Ihr Azure-Kontoangebot ändern (z.B. ein Upgrade von nutzungsbasierter Bezahlung auf Pre-Pay) und Ihre vorhandenen Ressourcen weiterverwenden möchten, helfen Ihnen die Informationen unter [Wechseln zu einem anderen Azure-Angebot](billing-how-to-switch-azure-offer.md) weiter.
+
 ## Checkliste vor dem Verschieben von Ressourcen
 
 Beim Verschieben einer Ressource sollten Sie einige wichtige Schritte ausführen: Indem Sie diese Bedingungen überprüfen, können Sie Fehler vermeiden.
 
-1. Der Dienst muss die Möglichkeit unterstützen, Ressourcen zu verschieben. In der Liste unten finden Sie Informationen, welche [Dienste das Verschieben von Ressourcen unterstützen](#services-that-support-move).
+1. Der Dienst muss die Möglichkeit unterstützen, Ressourcen zu verschieben. In der Liste unten finden Sie Informationen dazu, [welche Dienste das Verschieben von Ressourcen unterstützen](#services-that-support-move).
 2. Das Zielabonnement muss für den Ressourcenanbieter der verschobenen Ressource registriert sein. Andernfalls erhalten Sie eine Fehlermeldung, die besagt, dass das **Abonnement nicht für einen Ressourcentyp registriert ist**. Dieses Problem kann auftreten, wenn eine Ressource zu einem neuen Abonnement verschoben wird, dieses aber noch nie mit diesem Ressourcentyp verwendet wurde. Weitere Informationen zum Überprüfen des Registrierungsstatus und zum Registrieren von Ressourcenanbietern finden Sie unter [Ressourcenanbieter und -typen](../resource-manager-supported-services.md#resource-providers-and-types).
 3. Wenn Sie Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden, verwenden Sie die neueste Version. Führen Sie zum Aktualisieren Ihrer Version den Microsoft-Webplattform-Installer aus, und überprüfen Sie, ob eine neue Version verfügbar ist. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](powershell-install-configure.md) und [Installieren der Azure-Befehlszeilenschnittstelle](xplat-cli-install.md).
 4. Wenn Sie eine App Service-App verschieben, müssen Sie die [App Service-Einschränkungen](#app-service-limitations) kennen.
@@ -134,7 +136,7 @@ Beim Verschieben von Ressourcen in ein **neues Abonnement** gelten die folgenden
 
 Sie können einige Ressourcen über das Portal verschieben. Allerdings werden nicht alle Ressourcenanbieter, die den Vorgang unterstützen, diese Funktion über das Portal bereitstellen.
 
-Um eine Ressource zu verschieben, wählen Sie die Ressource aus, und klicken Sie dann auf die Schaltfläche **Verschieben**.
+Um eine Ressource zu verschieben, wählen Sie die Ressource aus und klicken dann auf die Schaltfläche **Verschieben**.
 
 ![Ressourcen verschieben](./media/resource-group-move-resources/move-resources.png)
 
@@ -142,7 +144,7 @@ Beim Verschieben der Ressourcen geben Sie das Zielabonnement und die Ressourceng
 
 ![Ziel auswählen](./media/resource-group-move-resources/select-destination.png)
 
-In **Benachrichtigungen** wird angezeigt, dass der Verschiebevorgang ausgeführt wird.
+Unter **Benachrichtigungen** wird angezeigt, dass der Verschiebevorgang ausgeführt wird.
 
 ![Verschiebestatus anzeigen](./media/resource-group-move-resources/show-status.png)
 
@@ -158,7 +160,7 @@ Wählen Sie deren **Eigenschaften** aus.
 
 ![Eigenschaften auswählen](./media/resource-group-move-resources/select-properties.png)
 
-Falls für diesen Ressourcentyp verfügbar, wählen Sie **Ressourcengruppe ändern** aus.
+Wählen Sie **Ressourcengruppe ändern**, falls diese Option für diesen Ressourcentyp verfügbar ist.
 
 ![Ressourcengruppe ändern](./media/resource-group-move-resources/change-resource-group.png)
 
@@ -228,7 +230,7 @@ Führen Sie zum Verschieben vorhandener Ressourcen in eine andere Ressourcengrup
 
 Geben Sie im Anforderungstext die Zielgruppe und die zu verschiebenden Ressourcen an. Weitere Informationen zur REST-Verschiebung finden Sie unter [Verschieben von Ressourcen](https://msdn.microsoft.com/library/azure/mt218710.aspx).
 
-Zum Verschieben von **klassischen Ressourcen in ein neues Abonnement** müssen Sie jedoch unterschiedliche REST-Vorgänge ausführen. Um zu überprüfen, ob ein Abonnement als Quell- oder Zielabonnement an einer abonnementübergreifenden Verschiebung klassischer Ressourcen teilnehmen kann, führen Sie den folgenden Vorgang aus:
+Zum Verschieben von **klassischen Ressourcen in ein neues Abonnement** müssen Sie aber andere REST-Vorgänge ausführen. Um zu überprüfen, ob ein Abonnement als Quell- oder Zielabonnement an einer abonnementübergreifenden Verschiebung klassischer Ressourcen teilnehmen kann, führen Sie den folgenden Vorgang aus:
 
     POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
     
@@ -272,4 +274,4 @@ Mit dem Anforderungstext:
 - Weitere Informationen zu Portalfeatures zum Verwalten Ihres Abonnements finden Sie unter [Verwenden des Azure-Portals zum Verwalten von Ressourcen](./azure-portal/resource-group-portal.md).
 - Informationen zum Anwenden einer logischen Organisation auf Ihre Ressourcen finden Sie unter [Verwenden von Tags zum Organisieren von Ressourcen](resource-group-using-tags.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

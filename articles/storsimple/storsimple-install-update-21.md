@@ -87,11 +87,11 @@ Das Hotfixverfahren umfasst die folgenden drei Schritte:
 | 3\. | KB3103616 | WMI-Paket | Normal | ~ 12 Min. |
 
 
- &#42; *Beachten Sie, dass das Softwareupdate aus zwei Binärdateien besteht: `all-hcsmdssoftwareupdate_d5db7c7a86fc0fffd7fd7e8a1b58584ca4850936.exe` und `all-cismdsagentupdatebundle_a3b6e721045c9229f62ffe3374fb5715bf3699e3.exe`. Das Update für die Gerätesoftware `all-hcsmdssoftwareupdate_d5db7c7a86fc0fffd7fd7e8a1b58584ca4850936.exe` muss vor dem Cis- und Mds-Agent `all-cismdsagentupdatebundle_a3b6e721045c9229f62ffe3374fb5715bf3699e3.exe` installiert werden.*
+ &#42; *Beachten Sie, dass das Softwareupdate aus zwei Binärdateien besteht: `all-hcsmdssoftwareupdate_d5db7c7a86fc0fffd7fd7e8a1b58584ca4850936.exe` und `all-cismdsagentupdatebundle_a3b6e721045c9229f62ffe3374fb5715bf3699e3.exe`. Das Update für die Gerätesoftware `all-hcsmdssoftwareupdate_d5db7c7a86fc0fffd7fd7e8a1b58584ca4850936.exe` muss vor dem CIS- und MDS-Agent `all-cismdsagentupdatebundle_a3b6e721045c9229f62ffe3374fb5715bf3699e3.exe` installiert werden. Sie müssen auch den aktiven Controller über das `Restart-HcsController`-Cmdlet neu starten, nachdem Sie das Update für den CIS- und MDS-Agent angewendet haben (und bevor Sie die verbleibenden Updates anwenden).*
 
 #### Herunterladen von Updates für ein Gerät mit der Software vor Update 2
 
-**Wenn auf Ihrem Gerät die Versionen 0.2, 0.3, 1.0 und 1.1 ausgeführt werden**, müssen Sie das LSI-Treiber- und Firmwareupdate herunterladen und installieren. Dieses Update ist bereits installiert, wenn Sie Update 1.2 oder 2 ausführen.
+**Wenn auf Ihrem Gerät die Versionen 0.2, 0.3, 1.0 und 1.1 ausgeführt werden**, müssen Sie zusätzlich zu den Software-, iSCSI- und WMI-Updates das LSI-Treiber- und Firmwareupdate herunterladen und installieren. Dieses Update ist bereits installiert, wenn Sie Update 1.2 oder 2 ausführen.
  
 | Reihenfolge | KB | Beschreibung | Updatetyp | Installationszeit |
 |--------|-----------|-------------------------|------------- |-------------|
@@ -107,7 +107,7 @@ Das Hotfixverfahren umfasst die folgenden drei Schritte:
 
 
 
-<br></br> Möglicherweise müssen Sie ebenso Datenträgerfirmware-Updates installieren. Sie können überprüfen, ob Sie die Datenträgerfirmware-Updates benötigen, indem Sie das Cmdlet `Get-HcsFirmwareVersion` ausführen. Wenn Sie die folgenden Firmwareversionen ausführen, müssen Sie diese Updates nicht installieren: `XMGG`, `XGEG`, `KZ50`, `F6C2`, `VR08`.
+<br></br> Möglicherweise müssen Sie auch Datenträgerfirmware-Updates installieren. Sie können überprüfen, ob Sie die Datenträgerfirmware-Updates benötigen, indem Sie das Cmdlet `Get-HcsFirmwareVersion` ausführen. Wenn Sie die folgenden Firmwareversionen ausführen, müssen Sie diese Updates nicht installieren: `XMGG`, `XGEG`, `KZ50`, `F6C2`, `VR08`.
 
 
 | Reihenfolge | KB | Beschreibung | Updatetyp | Installationszeit |
@@ -130,6 +130,6 @@ Führen Sie die folgenden Schritte aus, um diese Datei herunterzuladen und die H
 
 ## Nächste Schritte
 
-Weitere Informationen finden Sie unter [Versionshinweise zu Update 2.1](storsimple-update21-release-notes.md)
+Weitere Informationen finden Sie unter [Versionsanmerkungen zu Update 2.1](storsimple-update21-release-notes.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -19,9 +19,6 @@
 
 # Erstellen eines virtuellen Linux-Computers im Azure-Portal
 
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
-
 Das Erstellen eines virtuellen Azure-Computers (VM), auf dem Linux ausdeführt wird, ist ganz einfach. In diesem Tutorial erfahren Sie, wie Sie mit dem Azure-Portal einen solchen virtuellen Computer schnell erstellen können, und es wird anhand der Datei `~/.ssh/id_rsa.pub`, die den öffentlichen Schlüssel enthält, die Konfiguration einer **SSH**-Verbindung zum Schutz Ihres virtuellen Computers gezeigt. Sie können auch mithilfe [eigener Images als Vorlagen](virtual-machines-linux-classic-create-upload-vhd.md) entsprechende virtuelle Linux-Computer erstellen.
 
 
@@ -126,4 +123,4 @@ Weitere Informationen zu Linux auf Azure erhalten Sie unter:
 
 - [Die Docker-Erweiterung für virtuelle Linux-Computer auf Azure](virtual-machines-linux-dockerextension.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0601_2016-->

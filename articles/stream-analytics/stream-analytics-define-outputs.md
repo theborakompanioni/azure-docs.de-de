@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="05/03/2016"
+	ms.date="05/23/2016"
 	ms.author="jeffstok"/>
 
 # Ausrichten von Stream Analytics-Datentransformationsausgaben auf Analysetools und Datenspeicheroptionen
@@ -86,6 +86,8 @@ Die folgende Tabelle enthält die Namen und Beschreibungen der Eigenschaften, di
 | Benutzername | Der Benutzername, der Schreibzugriff auf die Datenbank hat. |
 | Kennwort | Das Kennwort, um eine Verbindung zur Datenbank herzustellen. |
 | Tabelle | Der Name der Tabelle, in die die Ausgabe geschrieben wird. Beim Tabellennamen muss die Groß-/Kleinschreibung beachtet werden. Das Schema dieser Tabelle sollte genau der Anzahl Felder und ihrer Typen entsprechen, die von der Auftragsausgabe generiert werden. |
+
+> [AZURE.NOTE] Zurzeit wird das Azure SQL-Datenbank-Angebot für eine Auftragsausgabe in Stream Analytics unterstützt. Eine Azure-VM mit SQL Server und angefügter Datenbank wird jedoch nicht unterstützt. Dies soll in zukünftigen Versionen geändert werden.
 
 ## Blob-Speicher
 
@@ -316,4 +318,4 @@ Sie haben nun Stream Analytics kennengelernt, einen verwalteten Dienst für Stre
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

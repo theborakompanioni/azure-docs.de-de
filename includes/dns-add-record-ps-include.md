@@ -12,7 +12,7 @@
 
 ### Erstellen einer MX-Datensatzgruppe mit einem einzelnen Datensatz
 
-In diesem Beispiel verwenden wir den Namen des Datensatzes "@" zum Erstellen des MX-Eintrags auf oberster Ebene der Zone (z. B. "contoso.com"). Dies ist bei MX-Einträgen üblich.
+In diesem Beispiel verwenden wir den Namen des Datensatzes „@“ zum Erstellen des MX-Eintrags auf oberster Ebene der Zone (in diesem Fall „contoso.com“). Dies ist bei MX-Einträgen üblich.
 
 	$rs = New-AzureRmDnsRecordSet -Name "@" -RecordType MX -Ttl 60 -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 	Add-AzureRmDnsRecordConfig -RecordSet $rs -Exchange "mail.contoso.com" -Preference 5
@@ -26,7 +26,7 @@ In diesem Beispiel verwenden wir den Namen des Datensatzes "@" zum Erstellen des
 
 ### Erstellen einer SRV-Datensatzgruppe mit einem einzelnen Datensatz
 
-Wenn Sie einen SRV-Datensatz im Zonenstamm erstellen, können Sie im Datensatznamen *\_service* und *\_protocol* festlegen. Es ist nicht erforderlich, „.@“ im Datensatznamen anzugeben.
+Wenn Sie einen SRV-Datensatz im Zonenstamm erstellen, geben Sie im Datensatznamen einfach *\_service* und *\_protocol* an. Es ist nicht erforderlich, „@“ im Datensatznamen anzugeben.
 
 	$rs = New-AzureRmDnsRecordSet -Name "_sip._tls" -RecordType SRV -Ttl 60 -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 	Add-AzureRmDnsRecordConfig -RecordSet $rs –Priority 0 –Weight 5 –Port 8080 –Target "sip.contoso.com"
@@ -37,3 +37,5 @@ Wenn Sie einen SRV-Datensatz im Zonenstamm erstellen, können Sie im Datensatzna
 	$rs = New-AzureRmDnsRecordSet -Name "test-txt" -RecordType TXT -Ttl 60 -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 	Add-AzureRmDnsRecordConfig -RecordSet $rs -Value "This is a TXT record"
 	Set-AzureRmDnsRecordSet -RecordSet $rs
+
+<!---HONumber=AcomDC_0601_2016-->

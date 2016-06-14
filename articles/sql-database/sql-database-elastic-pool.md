@@ -4,15 +4,15 @@
 	keywords="elastische Datenbank, SQL-Datenbanken"
 	services="sql-database"
 	documentationCenter=""
-	authors="sidneyh"
+	authors="srinia"
 	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="05/23/2016"
-	ms.author="sidneyh"
+	ms.date="05/27/2016"
+	ms.author="srinia"
 	ms.workload="data-management"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"/>
@@ -22,7 +22,7 @@
 
 Elastische Pools stellen eine einfache und kostengünstige Lösung zum Verwalten der Leistungsziele für mehrere Datenbanken mit unterschiedlichsten und unvorhersehbaren Nutzungsmustern dar.
 
-> [AZURE.NOTE] Elastische Pools sind in allen Azure-Regionen allgemein verfügbar, mit Ausnahme von „USA, Norden-Mitte“, „Brasilien, Süden“, „Indien, Westen“, „Indien, Süden“ und „China, Norden“, wo sie sich derzeit in der Vorschauphase befinden. Die allgemeine Verfügbarkeit von elastischen Pools in diesen Regionen wird so bald wie möglich bereitgestellt.
+> [AZURE.NOTE] Elastische Pools sind in allen Azure-Regionen allgemein verfügbar, mit Ausnahme von „USA, Norden-Mitte“, „Brasilien, Süden“, „Indien, Westen“ und „China, Norden“, wo sie sich derzeit in der Vorschauphase befinden. Die allgemeine Verfügbarkeit von elastischen Pools in diesen Regionen wird so bald wie möglich bereitgestellt.
 
 ## So funktioniert's
 
@@ -104,4 +104,4 @@ Bei Anwendungen, für die umfangreichere Wiederherstellungsanforderungen als bei
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool/databases.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

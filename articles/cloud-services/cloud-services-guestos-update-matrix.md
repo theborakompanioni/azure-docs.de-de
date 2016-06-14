@@ -52,7 +52,7 @@ Das Gastbetriebssystem November 201511-02 wurde am 4. Januar 2016 für die Berei
 ## Releases von Familie 4
 **Windows Server 2012 R2**
 
-Unterstützt .NET 4.0, 4.5, 4.5.1, 4.5.2 (Hinweis 2)
+Unterstützt .NET 4.0, 4.5, 4.5.1, 4.5.2
 
 >[AZURE.NOTE] Änderungen bei Datumsangaben mit einem * bleiben vorbehalten
 
@@ -203,4 +203,4 @@ Die Unterstützungs- und Deaktivierungsrichtlinie für Gastbetriebssysteme wird 
 [fam1retire]: cloud-services-guestos-family1-retirement.md
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

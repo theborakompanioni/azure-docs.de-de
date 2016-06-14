@@ -16,46 +16,46 @@
    ms.date="05/14/2016"
    ms.author="jehollan"/>
    
-  # Schleifen, Bereiche und Auflösen von Batches in Logik-Apps
+# Schleifen, Bereiche und Auflösen von Batches in Logik-Apps
   
-  >[AZURE.NOTE] Diese Version des Artikels gilt für die Logic Apps-Schemaversion 2016-04-01-preview und höher. Die Konzepte ähneln denen für ältere Schemaversionen, Bereiche stehen aber nur für diese und neuere Schemaversionen zur Verfügung.
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Logic Apps-Schemaversion 2016-04-01-preview und höher. Die Konzepte ähneln denen für ältere Schemaversionen, Bereiche stehen aber nur für diese und neuere Schemaversionen zur Verfügung.
   
-  ## foreach-Schleife und Arrays
+## ForEach-Schleife und Arrays
   
-  Logic Apps erlaubt Schleifen über einen Satz von Daten und das Ausführen von Aktionen für jedes Element. Dies wird über die `foreach`-Aktion ermöglicht. Sie können im Designer eine foreach-Schleife hinzufügen. Nachdem Sie das Array ausgewählt haben, das Sie durchlaufen möchten, können Sie mit dem Hinzufügen von Aktionen beginnen. Zurzeit können Sie pro foreach-Schleife nur eine Aktion angeben, diese Beschränkung wird jedoch in den nächsten Wochen aufgehoben. Innerhalb der Schleife können Sie dann angeben, was bei jedem Wert des Arrays passieren soll.
-  
-  Wenn Sie die Codeansicht verwenden, können Sie eine foreach-Schleife wie unten dargestellt angeben. Dies ist ein Beispiel für eine foreach-Schleife, die eine E-Mail-Nachricht für jede E-Mail-Adresse sendet, die „microsoft.com“ enthält:
-  
-  ```
-  {
-      "forEach_email": {
-          "type": "foreach",
-          "foreach": "@triggerBody()['emails']",
-          "expression": "@contains(item(), 'microsoft.com')",
-          "actions": {
-              "send_email": {
-                  "type": "ApiConnection",
-                  "inputs": {
-                    "body": {
-                        "to": "@item()",
-                        "from": "me@contoso.com",
-                        "message": "Hello, thank you for ordering"
+Logic Apps erlaubt Schleifen über einen Satz von Daten und das Ausführen von Aktionen für jedes Element. Dies wird über die `foreach`-Aktion ermöglicht. Sie können im Designer eine foreach-Schleife hinzufügen. Nachdem Sie das Array ausgewählt haben, das Sie durchlaufen möchten, können Sie mit dem Hinzufügen von Aktionen beginnen. Zurzeit können Sie pro foreach-Schleife nur eine Aktion angeben, diese Beschränkung wird jedoch in den nächsten Wochen aufgehoben. Innerhalb der Schleife können Sie dann angeben, was bei jedem Wert des Arrays passieren soll.
+
+Wenn Sie die Codeansicht verwenden, können Sie eine foreach-Schleife wie unten dargestellt angeben. Dies ist ein Beispiel für eine foreach-Schleife, die eine E-Mail-Nachricht für jede E-Mail-Adresse sendet, die „microsoft.com“ enthält:
+
+```
+{
+    "forEach_email": {
+        "type": "foreach",
+        "foreach": "@triggerBody()['emails']",
+        "expression": "@contains(item(), 'microsoft.com')",
+        "actions": {
+            "send_email": {
+                "type": "ApiConnection",
+                "inputs": {
+                "body": {
+                    "to": "@item()",
+                    "from": "me@contoso.com",
+                    "message": "Hello, thank you for ordering"
+                }
+                "host": {
+                    "connection": {
+                        "id": "@parameters('$connections')['office365']['connection']['id']"
                     }
-                    "host": {
-                        "connection": {
-                            "id": "@parameters('$connections')['office365']['connection']['id']"
-                        }
-                    }
-                  }
-              }
-          }
-      }
-  }
-  ```
+                }
+                }
+            }
+        }
+    }
+}
+```
   
   Eine `foreach`-Aktion kann Arrays mit bis zu 5.000 Zeilen durchlaufen. Alle Iterationen können parallel ausgeführt werden. Es könnte daher erforderlich sein, die Nachrichten in eine Warteschlange einzufügen, wenn eine Datenflusskontrolle gewünscht ist.
   
-  ## until-Schleife
+## Until-Schleife
   
   Sie können eine Aktion oder eine Reihe von Aktionen ausführen, bis eine Bedingung erfüllt ist. Das häufigste Szenario hierfür ist der Aufruf eines Endpunkts, bis Sie die gewünschte Antwort erhalten. Sie können im Designer eine until-Schleife hinzufügen. Sie können nach dem Hinzufügen von Aktionen innerhalb der Schleife die Beendigungsbedingung sowie die Schleifenlimits festlegen. Es gibt eine einminütige Verzögerung zwischen Schleifendurchläufen.
   
@@ -132,4 +132,4 @@ Es ist möglich, eine Reihe von Aktionen zusammen in einem Bereich zu gruppieren
 }
 ```
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

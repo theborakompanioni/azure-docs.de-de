@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/07/2016" 
+	ms.date="05/31/2016" 
 	ms.author="luisca"/>
 
 # Machine Learning-Beispiel-App: Häufig zusammen gekauft
@@ -39,4 +39,4 @@ Dieser Dienst enthält APIs zum Erstellen von Modellen für "Häufig zusammen ge
 
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0601_2016-->

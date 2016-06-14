@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD v2.0: Node.js-Web-App | Microsoft Azure"
+	pageTitle="Azure AD v2.0: Node.js-Web-App | Microsoft Azure"
 	description="Vorgehensweise beim Erstellen einer NodeJS-Web-App, bei der sich Benutzer sowohl mit ihrem persönlichen Microsoft-Konto als auch ihrem Geschäfts- oder Schulkonto anmelden können."
 	services="active-directory"
 	documentationCenter="nodejs"
@@ -25,7 +25,7 @@
 
 Hier wird Passport für Folgendes verwendet:
 
-- Anmelden des Benutzers bei der App mit Azure AD und dem v2.0-Endpunkt
+- Anmelden des Benutzers bei der App mit Azure AD und dem v2.0-Endpunkt
 - Anzeigen einiger Informationen zum Benutzer
 - Abmelden des Benutzers von der App
 
@@ -245,7 +245,7 @@ app.post('/auth/openid/return',
 
 ## 4\. Verwenden von Passport zur Ausgabe von An- und Abmeldeanforderungen für Azure AD
 
-Ihre App ist nun ordnungsgemäß für die Kommunikation mit dem v2.0-Endpunkt über das OpenID Connect-Authentifizierungsprotokoll konfiguriert. `passport-azure-ad` hat dabei alle Details zur Erstellung von Authentifizierungsnachrichten, zur Überprüfung der Token von Azure AD und zur Verwaltung von Benutzersitzungen übernommen. Sie müssen es Ihren Benutzern nur noch ermöglichen, sich anzumelden und abzumelden, und zusätzliche Informationen zu den angemeldeten Benutzer sammeln.
+Ihre App ist nun ordnungsgemäß für die Kommunikation mit dem v2.0-Endpunkt über das OpenID Connect-Authentifizierungsprotokoll konfiguriert. `passport-azure-ad` hat dabei alle Details zur Erstellung von Authentifizierungsnachrichten, zur Überprüfung der Token von Azure AD und zur Verwaltung von Benutzersitzungen übernommen. Sie müssen es Ihren Benutzern nur noch ermöglichen, sich anzumelden und abzumelden, und zusätzliche Informationen zu den angemeldeten Benutzer sammeln.
 
 - Zuerst fügen wir der Datei `app.js` Standard-, Anmelde-, Konto- und Abmeldemethoden hinzu:
 
@@ -416,6 +416,12 @@ Sie können nun mit den Themen für fortgeschrittenere Benutzer fortfahren. Wie 
 
 [Schützen einer Node.js-Web-API mit dem v2.0-Endpunkt >>](active-directory-v2-devquickstarts-node-api.md)
 
-Weitere Ressourcen: - [v2.0-Entwicklerhandbuch >>](active-directory-appmodel-v2-overview.md) - [StackOverflow-Tag „azure-active-directory“ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
+Weitere Ressourcen:
+- [Das v2.0-Entwicklerhandbuch >>](active-directory-appmodel-v2-overview.md)
+- [StackOverflow-Tag „azure-active-directory“ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=AcomDC_0224_2016-->
+## Abrufen von Sicherheitsupdates für unsere Produkte
+
+Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen einzurichten. Rufen Sie dazu [diese Seite](https://technet.microsoft.com/security/dd252948) auf, und abonnieren Sie Sicherheitsempfehlungen.
+
+<!---HONumber=AcomDC_0601_2016-->

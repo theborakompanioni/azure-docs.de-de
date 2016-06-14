@@ -2,7 +2,8 @@
 	pageTitle="Konfigurieren von Oracle GoldenGate auf virtuellen Computern | Microsoft Azure"
 	description="Bearbeiten Sie ein Lernprogramm für das Einrichten und Implementieren von Oracle GoldenGate auf Azure Windows Server-VMs für hohe Verfügbarkeit und Notfallwiederherstellung."
 	services="virtual-machines-windows"
-	authors="bbenz"
+	authors="rickstercdn"
+	manager="timlt"
 	documentationCenter=""
 	tags="azure-service-management"/>
 <tags
@@ -11,13 +12,11 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="infrastructure-services"
-	ms.date="06/22/2015"
-	ms.author="bbenz" />
+	ms.date="05/17/2016"
+	ms.author="rclaus" />
 
 
 #Konfigurieren von Oracle-GoldenGate für Azure
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
 
 
 Dieses Lernprogramm zeigt, wie Sie Oracle GoldenGate für virtuelle Computer in Azure-Umgebung für hohe Verfügbarkeit und Notfallwiederherstellung einrichten. Das Lernprogramm konzentriert sich auf [bidirektionale Replikation](http://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_about_gg.htm) für nicht-RAC Oracle-Datenbanken und erfordert, dass beide Standorte aktiv sind.
@@ -34,9 +33,9 @@ Das Lernprogramm geht zudem davon aus, dass Sie die folgenden Voraussetzungen be
 
 - Sie haben die Oracle-GoldenGate-Software von der Website [Downloads von Oracle](http://www.oracle.com/us/downloads/index.html) heruntergeladen. Sie haben das Produkt Pack Oracle Fusion-Middleware – Datenintegration ausgewählt. Sie haben dann Oracle GoldenGate auf Oracle v11.2.1 Media Pack für Microsoft Windows x64 (64-Bit) für eine Oracle-Datenbank 11g aktiviert. Laden Sie als Nächstes Oracle GoldenGate V11.2.1.0.3 für Oracle 11g 64-Bit unter Windows 2008 (64 Bit) herunter.
 
-- Sie haben zwei virtuelle Computer (VMs) in Azure mit dem von der Plattform bereitgestellten Abbild von Oracle Enterprise Edition auf Windows Server erstellt. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Oracle-Datenbank 12c-Computers in Azure](#z3dc8d3c097cf414e9048f7a89c026f80) und [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/). Stellen Sie sicher, dass sich die virtuellen Computer im [gleichen Clouddienst](virtual-machines-linux-load-balance.md) und im gleichen [virtuellen Netzwerk](https://azure.microsoft.com/documentation/services/virtual-network/) befinden, um sicherzustellen, dass sie über die permanente private IP-Adresse aufeinander zugreifen können.
+- Sie haben zwei virtuelle Computer (VMs) in Azure erstellt, die Oracle Enterprise Edition unter Windows Server verwenden. Stellen Sie sicher, dass sich die virtuellen Computer im [gleichen Clouddienst](virtual-machines-linux-load-balance.md) und im gleichen [virtuellen Netzwerk](https://azure.microsoft.com/documentation/services/virtual-network/) befinden, um sicherzustellen, dass sie über die permanente private IP-Adresse aufeinander zugreifen können.
 
-- Sie haben im klassischen Azure-Portal die Namen der virtuellen Computer für Standort A als „MachineGG1“ und als „MachineGG2“ für Standort B festgelegt.
+- Sie haben im klassischen Azure-Portal die Namen der virtuellen Computer für Standort A als „MachineGG1“ und als „MachineGG2“ für Standort B festgelegt.
 
 - Sie haben die Testdatenbanken "TestGG1" für Standort A und "TestGG2" für Standort B erstellt.
 
@@ -208,7 +207,7 @@ Fahren Sie anschließend die Datenbank herunter und starten Sie sie neu:
 ##3\. Erstellen aller erforderlichen Objekte zur Unterstützung der DDL-Replikation
 Dieser Abschnitt enthält die Skripte, die Sie verwenden müssen, um alle erforderlichen Objekte zur Unterstützung der DDL-Replikation zu erstellen. Sie müssen die Skripte in diesem Abschnitt sowohl an Standort A als auch an Standort B ausführen.
 
-Öffnen Sie eine Windows-Eingabeaufforderung, und navigieren Sie zu den Oracle-GoldenGate-Ordner, z. B. C:\\OracleGG. Starten Sie SQL* Plus-Eingabeaufforderung mit Administratorrechten für die Datenbank, z. B. **SYSDBA** auf Standort A und Standort B.
+Öffnen Sie eine Windows-Eingabeaufforderung, und navigieren Sie zu den Oracle-GoldenGate-Ordner, z. B. C:\\OracleGG. Starten Sie SQL* Plus-Eingabeaufforderung mit Administratorrechten für die Datenbank, z. B. **SYSDBA** auf Standort A und Standort B.
 
 Führen Sie dann die folgende Skripte aus:
 
@@ -285,7 +284,7 @@ Starten Sie den Manager-Prozess:
 
 ###Erstellen von Extrahierungs- und Datapump-Prozessen an Standort A und Standort B
 
-Sie müssen die Prozesse „Extrahieren“ und „Datapump“ an Standort A und Standort B erstellen. Stellen Sie über das klassische Azure-Portal eine Remotedesktopverbindung mit Standort A und Standort B her. GGSCI-Befehlsinterpreterfenster öffnen. Führen Sie die folgenden Befehle an Standort A aus:
+Sie müssen die Prozesse „Extrahieren“ und „Datapump“ an Standort A und Standort B erstellen. Stellen Sie über das klassische Azure-Portal eine Remotedesktopverbindung mit Standort A und Standort B her. GGSCI-Befehlsinterpreterfenster öffnen. Führen Sie die folgenden Befehle an Standort A aus:
 
 	GGSCI (MachineGG1) 14> add extract ext1 tranlog begin now
 	EXTRACT added.
@@ -602,4 +601,4 @@ Remotedesktop an Standort A und überprüfen Sie, ob die Replikation stattgefund
 ##Zusätzliche Ressourcen
 [Oracle Virtual Machine images for Azure (Images von virtuellen Oracle-Computern für Azure; in englischer Sprache)](virtual-machines-linux-classic-oracle-images.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

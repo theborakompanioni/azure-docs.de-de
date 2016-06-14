@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="05/27/2016" 
 	ms.author="bradsev" />
 
 
@@ -71,8 +71,7 @@ Nun können Sie das Power BI-Dashboard mit umfassenden Visualisierungen konfigur
 
 **Generieren simulierter Daten**
 
-1. Wechseln Sie auf Ihrem lokalen Computer zum Ordner, in den Sie das „Vehicle Telematics Simulator“-Paket extrahiert haben.
-![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/2-vehicle-telematics-simulator-folder.png)
+1. Wechseln Sie auf Ihrem lokalen Computer zum Ordner, in den Sie das „Vehicle Telematics Simulator“-Paket extrahiert haben. ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/2-vehicle-telematics-simulator-folder.png)
 2.	Führen Sie die Anwendung ***CarEventGenerator.exe*** aus.
 3.	Diese Anwendung gibt Diagnosedaten und Signale entsprechend dem Zustand des Fahrzeugs und Fahrmuster zu einem bestimmten Zeitpunkt aus. Diese Daten werden in einer Azure Event Hub-Instanz veröffentlicht, die als Teil der Bereitstellung konfiguriert ist.
 
@@ -85,8 +84,7 @@ Zur Lösung gehört eine Anwendung zum Generieren des Echtzeitdashboards in Powe
 So laden Sie die Anwendung herunter
 
 1.	Klicken Sie in der Diagrammansicht auf den Knoten „Power BI“ und dann im Eigenschaftenbereich auf den Link **Echtzeit-Dashboardanwendung herunterladen**.![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard-new1.png)
-2.	Extrahieren Sie die Anwendung, und speichern Sie sie an einem lokalen Speicherort.
-![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/4-real-time-dashboard-application.png)
+2.	Extrahieren Sie die Anwendung, und speichern Sie sie an einem lokalen Speicherort. ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/4-real-time-dashboard-application.png)
 
 3.	Führen Sie die Anwendung **RealtimeDashboardApp.exe** aus.
 4.	Geben Sie gültige Power BI-Anmeldeinformationen ein, melden Sie sich an, und klicken Sie auf **Annehmen**.
@@ -97,7 +95,8 @@ So laden Sie die Anwendung herunter
 
 
 ### Konfigurieren von Power BI-Berichten
-Die Erstellung der Echtzeitberichte und des Dashboards dauert ca. 30 bis 45 Minuten. Navigieren Sie zu [http://powerbi.com](http://powerbi.com), und melden Sie sich an.
+Die Erstellung der Echtzeitberichte und des Dashboards dauert ca. 30 bis 45 Minuten.
+ Navigieren Sie zu [http://powerbi.com](http://powerbi.com), und melden Sie sich an.
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/6-1-powerbi-signin.png)
 
@@ -122,7 +121,7 @@ Diese Lösung enthält drei Echtzeitberichte:
 
 Sie können alle drei Echtzeitberichte konfigurieren oder nach jeder Phase stoppen und mit dem nächsten Abschnitt der Konfiguration von Batchberichten fortfahren. Wir empfehlen Ihnen, alle drei Berichte zu erstellen, um den Echtzeitpfad der Lösung in vollem Umfang zu visualisieren.
 
-### 1\. Vehicles in operation
+### 1. Vehicles in operation
   
 Doppelklicken Sie auf **Seite 1**, und benennen Sie sie in „Vehicles in operation“ um.
 ![Connected Cars – Vehicles in operation](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4a.png)
@@ -152,31 +151,30 @@ Sortieren Sie das Diagramm nach **Count of vin**.
 
 Ändern Sie den **Titel** des Diagramms in **Vehicles in operation by city**.
 
-Klicken Sie auf den Abschnitt **Format**, und wählen Sie **Datenfarben** aus. Klicken Sie auf **Ein**, um **Alle anzeigen** zu aktivieren.
+Klicken Sie auf den Abschnitt **Format**, und wählen Sie **Datenfarben** aus. Klicken Sie auf **Ein**, um **Alle anzeigen** zu aktivieren. 
 ![Connected Cars – Alle Datenfarben zeigen](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4g.png)
 
-Ändern Sie die Farbe der einzelnen Städte durch Klicken auf das Farbsymbol.
+Ändern Sie die Farbe der einzelnen Städte durch Klicken auf das Farbsymbol. 
 ![Connected Cars – Farben ändern](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4h.png)
 
 Klicken Sie auf den leeren Bereich, um eine neue Visualisierung hinzufügen.
 
 Wählen Sie unter „Visualisierungen“ **Gruppiertes Säulendiagramm** aus. Ziehen Sie das Feld **city** in den Bereich **Achse**, **Model** in den Bereich **Legende** und **vin** in den Bereich **Wert**.
-![Connected Cars – Gruppiertes Säulendiagramm](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4i.png)
+![Connected Cars – Gruppiertes Säulendiagramm](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4i.png) 
 ![Connected Cars – Rendering](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4j.png)
   
-Ordnen Sie alle Visualisierungen wie in der Abbildung gezeigt an.
+Ordnen Sie alle Visualisierungen wie in der Abbildung gezeigt an. 
 ![Connected Cars – Visualisierungen](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4k.png)
 
 Sie haben den Echtzeitbericht „Vehicles in operation“ erfolgreich konfiguriert. Sie können fortfahren, um den nächsten Echtzeitbericht zu erstellen, oder hier aufhören und das Dashboard konfigurieren.
 
-### 2\. Vehicles Requiring Maintenance
+### 2. Vehicles Requiring Maintenance
   
-Klicken Sie auf
-![Hinzufügen](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4add.png), um einen neuen Bericht hinzuzufügen. Benennen Sie ihn in **Vehicles Requiring Maintenance** um.
+Klicken Sie auf ![Hinzufügen](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4add.png), um einen neuen Bericht hinzuzufügen. Benennen Sie ihn in **Vehicles Requiring Maintenance** um.
 
 ![Connected Cars – Vehicles Requiring Maintenance](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4l.png)
 
-Wählen Sie das Feld **vin** aus, und ändern Sie den Visualisierungstyp in **Karte**.
+Wählen Sie das Feld **vin** aus, und ändern Sie den Visualisierungstyp in **Karte**. 
 ![Connected Cars – Kartenvisualisierung für „vin“](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4m.png)
 
 Das Dataset enthält das Feld „MaintenanceLabel“. Dieses Feld kann den Wert „0“ oder „1“ haben. Er wurde vom Azure Machine Learning-Modell festgelegt, das als Teil der Lösung bereitgestellt und in den Echtzeitpfad integriert wurde. Der Wert „1“ gibt an, dass ein Fahrzeug gewartet werden muss.
@@ -186,32 +184,32 @@ Wir fügen den Filter **Seitenebene** hinzu, um Daten von Fahrzeugen anzuzeigen,
 1. Ziehen Sie das Feld **MaintenanceLabel** in **Filter auf Seitenebene**.
 ![Connected Cars – Filter auf Seitenebene](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n1.png)  
 
-2. Klicken Sie auf das Menü **Einfaches Filtern**, das sich unten im Filter auf Seitenebene „MaintenanceLabel“ befindet.
+2. Klicken Sie auf das Menü **Einfaches Filtern**, das sich unten im Filter auf Seitenebene „MaintenanceLabel“ befindet. 
 ![Connected Cars – Einfache Filterung](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n2.png)
 
-3.  Legen Sie den Filterwert auf **1** fest.
+3.  Legen Sie den Filterwert auf **1** fest. 
 ![Connected Cars – Filterwert](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n3.png)
 
 
 Klicken Sie auf den leeren Bereich, um eine neue Visualisierung hinzufügen.
 
-Wählen Sie unter „Visualisierungen“ **Gruppiertes Säulendiagramm** aus.
-![Connected Cars – Kartenvisualisierung für „vin“](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4o.png)
+Wählen Sie unter „Visualisierungen“ **Gruppiertes Säulendiagramm** aus. 
+![Connected Cars – Kartenvisualisierung für „vin“](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4o.png) 
 ![Connected Cars – Gruppiertes Säulendiagramm](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4p.png)
 
 Ziehen Sie das Feld **Model** in den Bereich **Achse** und **Vin** in den Bereich **Wert**. Sortieren Sie die Visualisierung dann nach **Count of vin**. Ändern Sie den **Titel** des Diagramms in **Vehicles requiring maintenance by model**.
 
-Ziehen Sie die Felder vom Typ **vin** in den Bereich **Farbsättigung** im Abschnitt **Felder**
-![Felder](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4field.png) der Registerkarte **Visualisierung**.
+Ziehen Sie die Felder vom Typ **vin** in den Bereich **Farbsättigung** im Abschnitt **Felder** ![Felder](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4field.png) der Registerkarte **Visualisierung**. 
 ![Connected Cars – Farbsättigung](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4q.png)
 
-Ändern Sie **Datenfarben** in „Visualizations“ im Abschnitt **Format**. Ändern Sie „Minimum color“ in **F2C812**, und ändern Sie „Maximum color“ in **FF6300**.
-![Connected Cars – Farbänderung](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4r.png)
+Ändern Sie **Datenfarben** in „Visualizations“ im Abschnitt **Format**. 
+Ändern Sie „Minimum color“ in **F2C812**, und ändern Sie „Maximum color“ in **FF6300**. 
+![Connected Cars – Farbänderung](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4r.png) 
 ![Connected Cars – Neue Visualisierungsfarben](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4s.png)
 
 Klicken Sie auf den leeren Bereich, um eine neue Visualisierung hinzufügen.
 
-Wählen Sie unter „Visualisierungen“ **Gruppiertes Säulendiagramm** aus. Ziehen Sie das Feld **vin** in den Bereich **Wert** und **City** in den Bereich **Achse**. Sortieren Sie das Diagramm nach **Count of vin**. Ändern Sie den **Titel** des Diagramms in **Vehicles requiring maintenance by city**.
+Wählen Sie unter „Visualisierungen“ **Gruppiertes Säulendiagramm** aus. Ziehen Sie das Feld **vin** in den Bereich **Wert** und **City** in den Bereich **Achse**. Sortieren Sie das Diagramm nach **Count of vin**. Ändern Sie den **Titel** des Diagramms in **Vehicles requiring maintenance by city**. 
 ![Connected Cars – Vehicles requiring maintenance by city](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4t.png)
 
 Klicken Sie auf den leeren Bereich, um eine neue Visualisierung hinzufügen.
@@ -219,17 +217,16 @@ Klicken Sie auf den leeren Bereich, um eine neue Visualisierung hinzufügen.
 Wählen Sie **Mehrzeilige Zuordnung** in „Visualisierungen“ aus. Ziehen Sie **Model** und **vin** in den Bereich **Felder**.
 ![Connected Cars – Mehrzeilige Zuordnung](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4u.png)
 
-Ordnen Sie alle Visualisierungen neu an. Der endgültige Bericht sieht wie folgt aus:
+Ordnen Sie alle Visualisierungen neu an. Der endgültige Bericht sieht wie folgt aus: 
 ![Connected Cars – Mehrzeilige Zuordnung](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4v.png)
 
 Sie haben den Echtzeitbericht „Vehicles Requiring Maintenance“ erfolgreich konfiguriert. Sie können fortfahren, um den nächsten Echtzeitbericht zu erstellen, oder hier aufhören und das Dashboard konfigurieren.
 
-### 3\. Vehicles Health Statistics
+### 3. Vehicles Health Statistics
   
-Klicken Sie auf
-![Hinzufügen](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4add.png), um einen neuen Bericht hinzuzufügen. Benennen Sie ihn in **Vehicles Health Statistics** um.
+Klicken Sie auf ![Hinzufügen](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4add.png), um einen neuen Bericht hinzuzufügen. Benennen Sie ihn in **Vehicles Health Statistics** um.
 
-Wählen Sie **Maßstab** in „Visualisierungen“ aus. Ziehen Sie dann das Feld **Geschwindigkeit** in die Bereiche **Wert, Minimumwert, Maximumwert**.
+Wählen Sie **Maßstab** in „Visualisierungen“ aus. Ziehen Sie dann das Feld **Geschwindigkeit** in die Bereiche **Wert, Minimumwert, Maximumwert**. 
 ![Connected Cars – Mehrzeilige Zuordnung](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4w.png)
 
 Ändern Sie die Standardaggregation **Geschwindigkeit** im Bereich **Wert** in **Durchschnitt**.
@@ -332,12 +329,14 @@ Glückwunsch! Sie haben das Echtzeit-Dashboard erfolgreich erstellt. Wenn Sie �
 
 Hinweis: Es dauert ca. zwei Stunden (ab dem erfolgreichen Abschluss der Bereitstellung), bis die Pipeline für die End-to-End-Batchverarbeitung die Ausführung beendet und generierte Daten für den Zeitraum eines Jahrs verarbeitet hat. Warten Sie diesen Zeitraum ab, ehe Sie mit den nächsten Schritten fortfahren.
 
-**Herunterladen der PowerBI-Designer-Datei** • Eine vorkonfigurierte PowerBI-Designer-Datei ist in der Bereitstellung enthalten. • Klicken Sie in der Diagrammansicht auf den PowerBI-Knoten, und klicken Sie dann im Eigenschaftenbereich auf den Link „PowerBI-Designer-Datei herunterladen“.
-![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/9.5-download-powerbi-designer.png)
+**Herunterladen der PowerBI-Designer-Datei** 
+• Eine vorkonfigurierte PowerBI-Designer-Datei ist in der Bereitstellung enthalten.
+• Klicken Sie in der Diagrammansicht auf den PowerBI-Knoten, und klicken Sie dann im Eigenschaftenbereich auf den Link „PowerBI-Designer-Datei herunterladen“. ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/9.5-download-powerbi-designer.png)
 
 • Speichern Sie die Datei lokal.
 
-**Konfigurieren von PowerBI-Berichten** • Öffnen Sie die Designer-Datei „VehicleTelemetryAnalytics – Desktop-Report.pbix“ über PowerBI Desktop. Falls noch nicht geschehen, können Sie Power BI Desktop unter [Microsoft Power BI Desktop](http://www.microsoft.com/download/details.aspx?id=45331) herunterladen und installieren.
+**Konfigurieren von PowerBI-Berichten**
+• Öffnen Sie die Designer-Datei „VehicleTelemetryAnalytics – Desktop-Report.pbix“ über PowerBI Desktop. Falls noch nicht geschehen, können Sie Power BI Desktop unter [Microsoft Power BI Desktop](http://www.microsoft.com/download/details.aspx?id=45331) herunterladen und installieren.
 
 • Klicken Sie auf **Abfragen bearbeiten**.
 
@@ -425,7 +424,7 @@ Seite 6: Contoso Logo
 **Auf Seite 6** heften Sie Folgendes an:
 
 1.	Contoso Motors-Logo 
-![Vehicle Telemetry – Anheften von Diagramm 9](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard9.png)
+ ![Vehicle Telemetry – Anheften von Diagramm 9](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard9.png)
 
 **Organisieren des Dashboards**
 
@@ -439,4 +438,4 @@ Seite 6: Contoso Logo
 
 Glückwunsch! Sie haben die Berichte und das Dashboard erfolgreich erstellt, um in Bezug auf den Fahrzeugzustand und das Fahrverhalten Informationen in den Bereichen Echtzeit, vorbeugende Wartung und Batchprozesse zu erhalten.
 
-<!----HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -19,9 +19,6 @@
 
 # Branchenanwendungs-Workload, Phase 2: Konfigurieren der Domänencontroller
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
- 
-
 In dieser Phase der Bereitstellung einer hochverfügbaren Branchenanwendung in den Azure-Infrastrukturdiensten konfigurieren Sie zwei Replikatdomänencontroller im virtuellen Azure-Netzwerk, sodass Webanforderungen der Clients nach Webressourcen im virtuellen Azure-Netzwerk authentifiziert werden können. Die für die Authentifizierung erforderlichen Daten müssen dann nicht über die Verbindung mit Ihrem lokalen Netzwerk gesendet werden.
 
 Diese Phase muss vor Beginn von [Phase 3](virtual-machines-windows-ps-lob-ph3.md) ausgeführt worden sein. Eine Übersicht über alle Phasen finden Sie unter [Bereitstellen einer hochverfügbaren Branchenanwendung in Azure](virtual-machines-windows-lob-overview.md).
@@ -197,4 +194,4 @@ Im folgenden Diagramm ist die aus dem erfolgreichen Abschluss dieser Phase resul
 
 - Zum Fortsetzen der Konfiguration dieser Workload wechseln Sie zu [Phase 3](virtual-machines-windows-ps-lob-ph3.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

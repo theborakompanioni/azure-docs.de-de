@@ -75,7 +75,17 @@ TLS 1.0 kann mit dem folgenden **clusterSettings**-Eintrag deaktiviert werden:
             }
         ],
 
+## Ändern der Reihenfolge der TLS-Verschlüsselungssammlung ##
+Eine weitere Frage von Kunden lautet, ob sie die Liste der Verschlüsselungsverfahren ändern können, die von ihrem Server ausgehandelt wird. Dies ist, wie im Folgenden gezeigt, durch Ändern der Einstellung **clusterSettings** möglich. Die Liste der verfügbaren Verschlüsselungssammlungen kann aus [diesem MSDN-Artikel (https://msdn.microsoft.com/library/windows/desktop/aa374757(v=vs.85).aspx))] abgerufen werden.
 
+        "clusterSettings": [
+            {
+                "name": "FrontEndSSLCipherSuiteOrder",
+                "value": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256"
+            }
+        ],
+
+> Hinweis: Wenn für die Verschlüsselungssammlung falsche Werte festgelegt werden, die SChannel nicht verstehen kann, funktioniert die TLS-Kommunikation mit dem Server ggf. nicht mehr. In diesem Fall müssen Sie Ihre App Service-Umgebung erneut bereitstellen, was erhebliche Ausfallzeiten und möglicherweise Datenverlust verursacht. Verwenden Sie diese Funktion umsichtig.
 
 ## Erste Schritte
 Die Azure-Website mit Resource Manager-Schnellstartvorlagen umfasst eine Vorlage mit der Basisdefinition zum [Erstellen einer App Service-Umgebung](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/).
@@ -85,4 +95,4 @@ Die Azure-Website mit Resource Manager-Schnellstartvorlagen umfasst eine Vorlage
 
 <!-- IMAGES -->
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0601_2016-->

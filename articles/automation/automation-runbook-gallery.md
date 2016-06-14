@@ -66,9 +66,11 @@ Das direkte Importieren aus dem Runbook-Katalog ist nur über das klassische Azu
 
 Microsoft empfiehlt, Runbooks aus dem Runbook-Katalog hinzuzufügen, die für andere Kunden nützlich sein könnten. Sie können ein Runbook durch [Hochladen ins Script Center](http://gallery.technet.microsoft.com/site/upload) hinzufügen. Berücksichtigen Sie dabei Folgendes:
 
-- Damit das Runbook im Assistenten angezeigt wird, geben Sie als **Kategorie** die Option *Windows Azure* und als **Unterkategorie** die Option *Automation* ein.  
+- Damit das Runbook im Assistenten angezeigt wird, geben Sie als **Kategorie** die Option *Microsoft Azure* und als **Unterkategorie** die Option *Automation* ein.  
 
 - Laden Sie eine einzelne Datei vom Typ „.ps1“ oder „.graphrunbook“ hoch. Sind für das Runbook Module, untergeordnete Runbooks oder Objekte erforderlich, führen Sie diese in der Beschreibung der Übermittlung und im Kommentarbereich des Runbooks auf. Falls für Ihre Lösung mehrere Runbooks erforderlich sind, laden Sie sie einzeln hoch, und führen Sie die Namen der zugehörigen Runbooks in den jeweiligen Beschreibungen auf. Verwenden Sie unbedingt die gleichen Tags, damit die Runbooks in derselben Kategorie angezeigt werden. Dass zur Verwendung der Lösung noch andere Runbooks erforderlich sind, erfährt der Benutzer in der Beschreibung.
+
+- Fügen Sie das Tag „GraphicalPS“ hinzu, wenn Sie ein **grafisches Runbook** (keinen grafisches Workflow) veröffentlichen.
 
 - Fügen Sie der Beschreibung einen PowerShell- oder PowerShell-Workflow- Codeausschnitt mithilfe des Symbols **Codeabschnitt einfügen** hinzu.
 
@@ -136,4 +138,4 @@ Sie können Anforderungen an [User Voice](https://feedback.azure.com/forums/2462
 - [Erstellen oder Importieren eines Runbooks in Azure Automation](automation-creating-importing-runbook.md)
 - [Grundlagen des PowerShell-Workflows](automation-powershell-workflow.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0601_2016-->

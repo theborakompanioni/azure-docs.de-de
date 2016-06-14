@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="03/09/2016"
+   ms.date="05/27/2016"
    ms.author="nitinme"/>
 
 # Datenszenarien im Zusammenhang mit dem Azure Data Lake-Speicher
@@ -132,6 +132,6 @@ Sie können eine Kombination von Diensten verwenden, um visuelle Darstellungen d
 ![Visualisieren von Daten im Data Lake-Speicher](./media/data-lake-store-data-scenarios/visualize-data.png "Visualisieren von Daten im Data Lake-Speicher")
 
 * Sie können beginnen, indem Sie [Daten mithilfe von Azure Data Factory aus dem Data Lake-Speicher in Azure SQL Data Warehouse zu verschieben](../data-factory/data-factory-data-movement-activities.md#supported-data-stores).
-* Danach können Sie [Power BI in Azure SQL Data Warehouse integrieren](../sql-data-warehouse/sql-data-warehouse-integrate-power-bi), um eine visuelle Darstellung der Daten zu erstellen.
+* Danach können Sie [Power BI in Azure SQL Data Warehouse integrieren](../sql-data-warehouse/sql-data-warehouse-integrate-power-bi.md), um eine visuelle Darstellung der Daten zu erstellen.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

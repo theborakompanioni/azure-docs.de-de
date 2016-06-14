@@ -19,8 +19,6 @@
 
 # Bereitstellen einer hochverfügbaren Branchenanwendung in Azure
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
-
 Dieser Artikel enthält Links zu den schrittweisen Anweisungen für die Bereitstellung einer hochverfügbaren, webbasierten, nur im Intranet verfügbaren Branchenanwendung mit SQL Server AlwaysOn-Verfügbarkeitsgruppen in Azure-Infrastrukturdiensten. Die Anwendung wird auf folgenden Computern gehostet:
 
 - Zwei Webserver
@@ -93,4 +91,4 @@ Weitere Informationen zum Entwickeln von IT-Workloads für Azure finden Sie in d
 
 - Starten Sie die Konfiguration dieser Workload mit [Phase 1](virtual-machines-windows-ps-lob-ph1.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

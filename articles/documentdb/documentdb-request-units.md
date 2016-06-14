@@ -13,11 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/16/2016" 
+	ms.date="05/31/2016" 
 	ms.author="stbaro"/>
 
 #Anforderungseinheiten in DocumentDB
+Jetzt verfügbar: [Rechner für Anforderungseinheiten](https://www.documentdb.com/capacityplanner) in DocumentDB. Erfahren Sie mehr unter [Schätzen der Durchsatzanforderungen](documentdb-request-units.md#estimating-throughput-needs).
 
+![Durchsatzrechner][5]
+
+##Einführung
 Dieser Artikel bietet einen Überblick über Anforderungseinheiten in [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/).
 
 Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
@@ -29,7 +33,7 @@ Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 
 
 ##Anforderungseinheiten und Anforderungsgebühren
-DocumentDB bietet eine schnelle, vorhersagbare Leistung durch die *Reservierung* von Ressourcen, um dem benötigten Durchsatz für Ihre Anwendung zu entsprechen. Da sich Anwendungsauslastung und Zugriffsmuster mit der Zeit ändern, können Sie mit DocumentDB den Umfang des reservierten Durchsatzes, der Ihrer Anwendung zur Verfügung steht, ganz einfach erhöhen oder verringern.
+DocumentDB bietet eine schnelle, vorhersagbare Leistung durch die *Reservierung* von Ressourcen, die dem benötigten Durchsatz für Ihre Anwendung entsprechen. Da sich Anwendungsauslastung und Zugriffsmuster mit der Zeit ändern, können Sie mit DocumentDB den Umfang des reservierten Durchsatzes, der Ihrer Anwendung zur Verfügung steht, ganz einfach erhöhen oder verringern.
 
 Bei DocumentDB wird der reservierte Durchsatz in Anforderungseinheiten pro Sekunde angegeben. Sie können sich Anforderungseinheiten als Währung für den Durchsatz vorstellen, wobei Sie eine Anzahl garantierter Anforderungseinheiten auf Sekundenbasis für Ihre Anwendung *reservieren*. Jeder Vorgang in DocumentDB – das Schreiben eines Dokuments, das Durchführen einer Abfrage, das Aktualisieren eines Dokuments – beansprucht CPU, Arbeitsspeicher und IOPS. Mit anderen Worten, für jeden Vorgang fällt eine *Anforderungsgebühr* an, die in *Anforderungseinheiten* ausgedrückt wird. Wenn Sie die Faktoren, die sich auf die berechneten Anforderungseinheiten auswirken, sowie die Durchsatzanforderungen Ihrer Anwendung genau kennen, können Sie die Kosten für Ihre Anwendung optimieren.
 
@@ -54,6 +58,30 @@ Eine Anforderungseinheit ist eine normalisierte Kennzahl für die Anforderungsve
 
 > [AZURE.NOTE] Die Baseline einer Anforderungseinheit für ein Dokument von 1 KB entspricht einem einfachen GET-Vorgang per „self link“ oder ID des Dokuments.
 
+###Verwenden des Rechners für Anforderungseinheiten
+Damit Kunden ihre Durchsatzschätzungen optimieren können, gibt es einen webbasierten [Rechner für Anforderungseinheiten](https://www.documentdb.com/capacityplanner), um den Bedarf an Anforderungseinheiten für normale Vorgänge zu schätzen, einschließlich:
+
+- Erstellen von Dokumenten (Schreiben)
+- Lesen von Dokumenten
+- Löschen von Dokumenten
+
+Die Verwendung des Tools ist einfach:
+
+1. Laden Sie mindestens ein repräsentatives JSON-Dokument hoch.
+
+	![Hochladen von Dokumenten in den Rechner für Anforderungseinheiten][2]
+
+2. Geben Sie die Anzahl der Erstellungs-, Lese- und Löschvorgänge für das Dokument an, die Sie (pro Sekunde) benötigen.
+
+	![Eingeben der Durchsatzanforderungen in den Rechner für Anforderungseinheiten][3]
+
+3. Klicken Sie auf „Berechnen“, und prüfen Sie die Ergebnisse.
+
+	![Ergebnisse des Rechners für Anforderungseinheiten][4]
+
+>[AZURE.NOTE]Wenn sich die Dokumenttypen im Hinblick auf Größe und Anzahl indizierter Eigenschaften erheblich voneinander unterscheiden, laden Sie ein Beispiel für jeden *Typ* eines normalen Dokuments in das Tools hoch, und berechnen Sie dann die Ergebnisse.
+
+###Verwenden des DocumentDB-Antwortheaders „request-charge“
 Jede Antwort des DocumentDB-Diensts enthält einen benutzerdefinierten Header (x-ms-request-charge), der die für die Anforderung verbrauchten Anforderungseinheiten enthält. Auf diesen Header kann auch über die DocumentDB-SDKs zugegriffen werden. Im .Net SDK ist „RequestCharge“ eine Eigenschaft des ResourceResponse-Objekts. Für Abfragen stellt der DocumentDB-Abfrage-Explorer im Azure-Portal Informationen zu Anforderungsgebühren für ausgeführten Abfragen bereit.
 
 ![Untersuchen der berechneten RUs im Abfrage-Explorer][1]
@@ -182,5 +210,9 @@ Im Artikel [Performance and Scale Testing with Azure DocumentDB](documentdb-perf
 
 
 [1]: ./media/documentdb-request-units/queryexplorer.png
+[2]: ./media/documentdb-request-units/RUEstimatorUpload.png
+[3]: ./media/documentdb-request-units/RUEstimatorDocuments.png
+[4]: ./media/documentdb-request-units/RUEstimatorResults.png
+[5]: ./media/documentdb-request-units/RUCalculator2.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

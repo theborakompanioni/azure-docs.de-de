@@ -29,8 +29,6 @@ Azure umfasst einen Dienst, den Sie für [den schnellen Einstieg in Jupyter](htt
 
 Wenn der Notebook-Dienst für Ihr Szenario nicht ausgeführt werden kann, finden Sie später in diesem Artikel Informationen zum Bereitstellen von Jupyter Notebook in Microsoft Azure unter Verwendung von virtuellen Linux-Computern.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
-
 [AZURE.INCLUDE [create-account-and-vms-note](../../includes/create-account-and-vms-note.md)]
 
 ## Erstellen und Konfigurieren einer VM in Azure
@@ -41,7 +39,7 @@ Zunächst müssen Sie einen virtuellen Computer (VM) in Azure erstellen. Dieser 
 
 Befolgen Sie die [hier][portal-vm-linux] aufgeführten Anweisungen, um einen virtuellen Computer der *Ubuntu*-Distribution zu erstellen. In diesem Lernprogramm wird Ubuntu Server 14.04 LTS verwendet. Wir gehen vom Standardbenutzernamen *azureuser* aus.
 
-Nachdem der virtuelle Computer bereitgestellt wurde, muss eine Sicherheitsregel für die Netzwerksicherheitsgruppe geöffnet werden. Wechseln Sie im Azure-Portal zu **Netzwerksicherheitsgruppen**, und öffnen Sie die Registerkarte für die Sicherheitsgruppe, die Ihrem virtuellen Computer entspricht. Sie müssen eine Regel für die Sicherheit eingehender Verbindungen mit den folgenden Einstellungen hinzufügen: **TCP** für das Protokoll, **\*** für den (öffentlichen) Quellport und **9999** für den (privaten) Zielport.
+Nachdem der virtuelle Computer bereitgestellt wurde, muss eine Sicherheitsregel für die Netzwerksicherheitsgruppe geöffnet werden. Wechseln Sie im Azure-Portal zu **Netzwerksicherheitsgruppen**, und öffnen Sie die Registerkarte für die Sicherheitsgruppe, die Ihrem virtuellen Computer entspricht. Sie müssen eine Regel für die Sicherheit eingehender Verbindungen mit den folgenden Einstellungen hinzufügen: **TCP** für das Protokoll, ***** für den (öffentlichen) Quellport und **9999** für den (privaten) Zielport.
 
 ![Screenshot](./media/virtual-machines-linux-jupyter-notebook/azure-add-endpoint.png)
 
@@ -189,7 +187,7 @@ Im IPython-Quellcode-[Repository][] finden Sie ein gesamtes Verzeichnis mit Note
 
 Jupyter Notebook bietet eine leistungsstarke Schnittstelle für die interaktive Nutzung des Funktionsumfangs des Python-Ökosystems in Azure. Die Notebooks decken ein breites Spektrum von Anwendungsfällen ab, inklusive Erkundung und Erlernen von Python, Datenanalyse und -Darstellung, Simulation und parallele Berechnungen. Die resultierenden Notebook-Dokumente enthalten eine komplette Aufzeichnung aller ausgeführten Berechnungen und können an andere Jupyter-Benutzer weitergegeben werden. Jupyter Notebook kann als lokale Anwendung verwendet werden, eignet sich jedoch vor allem ideal für Cloudbereitstellungen in Azure.
 
-Die Kernfunktionen von Jupyter sind auch in Visual Studio unter [Python Tools for Visual Studio][] \(PTVS) verfügbar. PTVS ist ein kostenloses Open Source-Plug-In von Microsoft und verwandelt Visual Studio in eine umfangreiche Python-Entwicklungsumgebung mit einem modernen Editor inklusive IntelliSense, Debugging, Profilerstellung und Integration für parallele Berechnungen.
+Die Kernfunktionen von Jupyter sind auch in Visual Studio unter [Python Tools for Visual Studio][] (PTVS) verfügbar. PTVS ist ein kostenloses Open Source-Plug-In von Microsoft und verwandelt Visual Studio in eine umfangreiche Python-Entwicklungsumgebung mit einem modernen Editor inklusive IntelliSense, Debugging, Profilerstellung und Integration für parallele Berechnungen.
 
 ## Nächste Schritte
 
@@ -199,4 +197,4 @@ Weitere Informationen finden Sie im [Python Developer Center](/develop/python/).
 [repository]: https://github.com/ipython/ipython
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 
-<!----HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

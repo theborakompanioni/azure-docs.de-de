@@ -42,11 +42,11 @@ SQL Data Warehouse führt die Wiederherstellung so aus, dass eine neue Datenbank
 
 ### Installieren von PowerShell
 
-Damit Sie Azure PowerShell mit SQL Data Warehouse verwenden können, müssen Sie Azure PowerShell Version 1.0 oder höher installieren. Sie können die Version überprüfen, indem Sie **Get-Module -ListAvailable -Name Azure** ausführen. Sie können die neueste Version installieren, indem Sie sie über [Microsoft-Web Platform Installer][] herunterladen. Weitere Informationen zum Installieren der neuesten Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][].
+Damit Sie Azure PowerShell mit SQL Data Warehouse verwenden können, müssen Sie Azure PowerShell Version 1.0 oder höher installieren. Sie können die Version überprüfen, indem Sie **Get-Module -Name Azure -ListAvailable** ausführen. Sie können die neueste Version installieren, indem Sie sie über [Microsoft-Web Platform Installer][] herunterladen. Weitere Informationen zum Installieren der neuesten Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][].
 
 ## Wiederherstellen einer Livedatenbank
 
-Verwenden Sie das PowerShell-Cmdlet [Restore-AzureRmSqlDatabase][], um eine Datenbank aus einer Momentaufnahme wiederherzustellen.
+Verwenden Sie das Cmdlet [Restore-AzureRmSqlDatabase][], um eine Datenbank aus einer Momentaufnahme wiederherzustellen.
 
 1. Öffnen Sie Windows PowerShell.
 2. Stellen Sie eine Verbindung mit Ihrem Azure-Konto her, und listen Sie alle Abonnements auf, die Ihrem Konto zugeordnet sind.
@@ -56,7 +56,7 @@ Verwenden Sie das PowerShell-Cmdlet [Restore-AzureRmSqlDatabase][], um eine Date
 6. Stellen Sie die Datenbank mit dem gewünschten Wiederherstellungspunkt wieder her.
 7. Überprüfen Sie, ob die wiederhergestellte Datenbank online ist.
 
-```Powershell
+```PowerShell
 
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
@@ -69,7 +69,7 @@ Get-AzureRmSubscription
 Select-AzureRmSubscription -SubscriptionName $SubscriptionName
 
 # List the last 10 database restore points
-((Get-AzureRMSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName ($DatabaseName).RestorePointCreationDate)[-10 .. -1]
+((Get-AzureRmSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName ($DatabaseName).RestorePointCreationDate)[-10 .. -1]
 
 # Or list all restore points
 Get-AzureRmSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
@@ -103,7 +103,7 @@ Verwenden Sie das Cmdlet [Restore-AzureRmSqlDatabase][], um eine gelöschte Date
 5. Stellen Sie die gelöschte Datenbank wieder her.
 6. Überprüfen Sie, ob die wiederhergestellte Datenbank online ist.
 
-```Powershell
+```PowerShell
 
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
@@ -141,7 +141,7 @@ Verwenden Sie das Cmdlet [Restore-AzureRmSqlDatabase][], um eine Datenbank wiede
 5. Erstellen Sie die Wiederherstellungsanforderung für die Datenbank.
 6. Überprüfen Sie den Status der mittels Geowiederherstellung wiederhergestellten Datenbank.
 
-```Powershell
+```PowerShell
 
 Login-AzureRmAccount
 Get-AzureRmSubscription
@@ -193,4 +193,4 @@ Informationen zu den Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank-E
 [Azure Portal]: https://portal.azure.com/
 [Microsoft-Web Platform Installer]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

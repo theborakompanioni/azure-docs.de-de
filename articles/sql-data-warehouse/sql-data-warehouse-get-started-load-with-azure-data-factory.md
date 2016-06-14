@@ -42,7 +42,7 @@ Bevor Sie mit diesem Tutorial beginnen, müssen Sie über die folgenden Ressourc
 
    + **Azure Storage-Blob**: In diesem Tutorial wird Azure Storage-Blob als Datenquelle für die Azure Data Factory-Pipeline verwendet, daher benötigen Sie eines zum Speichern der Beispieldaten. Wenn Sie noch keines haben, finden Sie unter [Erstellen eines Speicherkontos][] weitere Informationen.
 
-   + **SQL Data Warehouse**: In diesem Tutorial werden die Daten aus dem Azure Storage-Blob in SQL Data Warehouse verschoben. Daher muss ein Data Warehouse online sein, in das die AdventureWorksDW-Beispieldaten geladen wurden. Wenn Sie noch kein Data Warehouse haben, erfahren Sie hier, wie [eines bereitstellt wird][Create a SQL Data Warehouse]. Wenn Sie ein Data Warehouse haben, jedoch die Beispieldaten nicht darin bereitgestellt haben, können Sie es [manuell laden][Load sample data into SQL Data Warehouse].
+   + **SQL Data Warehouse**: In diesem Tutorial werden die Daten aus dem Azure Storage-Blob in SQL Data Warehouse verschoben. Daher muss ein Data Warehouse online sein, in das die AdventureWorksDW-Beispieldaten geladen wurden. Wenn Sie noch kein Data Warehouse haben, erfahren Sie hier, wie [eines bereitstellt wird][Create a SQL Data Warehouse]. Wenn Sie ein Data Warehouse haben, es jedoch nicht mit Beispieldaten bereitgestellt haben, können Sie sie [manuell laden][Load sample data into SQL Data Warehouse].
 
    + **Azure Data Factory**: Azure Data Factory schließt die tatsächliche Last ab, daher müssen Sie über eine verfügen, die Sie zum Erstellen der Datenverschiebungspipeline verwenden können. Wenn Sie noch keine haben, erfahren Sie In Schritt 1 von [Erste Schritte mit Azure Data Factory (Data Factory Edition)][], wie Sie eine erstellen.
 
@@ -226,7 +226,7 @@ Diese Themen enthalten ausführliche Informationen zu Azure Data Factory. Darin 
 [Data Factory]: sql-data-warehouse-get-started-load-with-azure-data-factory.md
 [Erste Schritte mit Azure Data Factory (Data Factory Edition)]: ../data-factory/data-factory-build-your-first-pipeline-using-editor.md
 [Einführung in Azure Data Factory]: ../data-factory/data-factory-introduction.md
-[Load sample data into SQL Data Warehouse]: sql-data-warehouse-get-started-manually-load-samples.md
+[Load sample data into SQL Data Warehouse]: sql-data-warehouse-load-sample-databases.md
 [Move data to and from Azure SQL Data Warehouse using Azure Data Factory]: ../data-factory/data-factory-azure-sql-data-warehouse-connector.md
 [PolyBase]: sql-data-warehouse-get-started-load-with-polybase.md
 [Tutorial zu realistischen Szenarien.]: ../data-factory/data-factory-tutorial.md
@@ -240,4 +240,4 @@ Diese Themen enthalten ausführliche Informationen zu Azure Data Factory. Darin 
 [Azure-Portal]: https://portal.azure.com
 [Laden Sie Beispieldaten herunter]: https://migrhoststorage.blob.core.windows.net/adfsample/FactInternetSales.csv
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

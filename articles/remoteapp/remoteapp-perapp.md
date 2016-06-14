@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="03/01/2016"
+   ms.date="05/31/2016"
    ms.author="piotrci"/>
 
 # Veröffentlichen von Anwendungen für einzelne Benutzer in einer Azure RemoteApp-Sammlung (Vorschau)
@@ -102,4 +102,4 @@ Wir freuen uns auf Ihr Feedback und Ihre Vorschläge zu dieser Vorschaufunktion.
 ## Konnten Sie die Vorschaufunktion noch nicht ausprobieren?
 Wenn Sie an der Vorschau noch nicht teilgenommen haben, fordern Sie über diese [Umfrage](http://www.instant.ly/s/AY83p) Zugriff an.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

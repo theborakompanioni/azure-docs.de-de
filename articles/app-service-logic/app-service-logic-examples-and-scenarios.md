@@ -32,16 +32,24 @@ Sie können eine Logik-App auf verschiedene Weise über eine andere App auslöse
 
 - [Logik-Apps als aufrufbare Endpunkte](app-service-logic-http-endpoint.md)
 
+## Benutzerdefinierte und lang ausgeführte Aktionen
+
+- [Erstellen einer benutzerdefinierten Aktion](app-service-logic-create-api-app.md)
+
+## Bereitstellen und Verwalten von Logik-Apps
+
+- [Create a Logic App Deployment Template](app-service-logic-create-deploy-template.md) (Erstellen einer Bereitstellungsvorlage für Logik-Apps)
+- [Diagnosing Issues with a Logic App](app-service-logic-diagnosing-failures.md) (Diagnostizieren von Problemen mit Logik-Apps)
+- [Bereitstellen einer Logik-App von Visual Studio aus](app-service-logic-deploy-from-vs.md)
+- [Überwachen von Logik-Apps](app-service-logic-monitor-your-logic-apps.md)
+
 ## Inhaltstypen, Konvertierungen und Transformationen
 
 Die [Definitionssprache für Workflows](http://aka.ms/logicappsdocs) in Logik-Apps enthält viele Funktionen zum Konvertieren von und Arbeiten mit unterschiedlichen Inhaltstypen. Darüber hinaus versucht das Modul, möglichst alle Inhaltstypen während des Workflows als Datenflüsse beizubehalten.
 
 - [Behandeln von Inhaltstypen](app-service-logic-content-type.md) wie „application/json“, „application/xml“ und „plain/text“
-- [Definitionssprache für Workflows](http://aka.ms/logicappsdocs)
-
-## Lang ausgeführte Aktionen
-
-- [Erstellen von lang ausgeführten Aktionen](app-service-logic-create-api-app.md)
+- [Erstellen von Logik-App-Definitionen](app-service-logic-author-definitions.md)
+- [Workflow Definition Language Reference](http://aka.ms/logicappsdocs) (Referenz zur Definitionssprache für Workflows)
 
 ## Batches und Schleifen
 
@@ -49,15 +57,19 @@ Die [Definitionssprache für Workflows](http://aka.ms/logicappsdocs) in Logik-Ap
 - [ForEach](app-service-logic-loops-and-scopes.md)
 - [Until](app-service-logic-loops-and-scopes.md)
 
-## Integrieren in geschachtelte Workflows und Azure Functions
+## Integration von Azure Functions
 
 - [Integrieren von Azure Functions](app-service-logic-azure-functions.md)
 
+### Szenarios
+
+- [Azure Function as a Service Bus Trigger](app-service-logic-scenario-function-sb-trigger.md) (Azure-Funktion als Service Bus-Trigger)
+
 ## HTTP, REST und SOAP
 
- - [Calling SOAP](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/) (Aufrufen von SOAP)
+ - [Calling SOAP (Aufrufen von SOAP)](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
 
 
 Wir werden diesem Artikel weitere Beispiele und Szenarios hinzufügen. Im Bereich „Kommentare“ unten können Sie uns Wünsche zu Beispielen oder Szenarios mitteilen.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

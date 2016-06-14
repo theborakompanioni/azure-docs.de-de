@@ -19,8 +19,6 @@
 
 # Erstellen von SharePoint-Serverfarmen
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]klassisches Modell.
-
 Mit dem Marketplace im Microsoft Azure-Portal können Sie schnell eine vorkonfigurierte SharePoint Server 2013-Farm erstellen. Damit können Sie viel Zeit sparen, wenn Sie eine grundlegende oder hochverfügbare SharePoint-Farm für eine Test- oder Entwicklungsumgebung benötigen oder wenn Sie SharePoint Server 2013 als Zusammenarbeitslösung für Ihre Organisation bewerten möchten.
 
 > [AZURE.NOTE] Das Element **SharePoint-Serverfarm** wurde aus dem Azure Marketplace des Azure-Portals entfernt. Es wurde durch die Elemente **SharePoint 2013 nicht hoch verfügbare Farm** und **SharePoint 2013 hoch verfügbare Farm** ersetzt.
@@ -67,4 +65,4 @@ Auf der SharePoint-Website für die Zentraladministration können Sie eigene Web
 
 - Lernen Sie weitere Konfigurationen von [SharePoint 2013](https://technet.microsoft.com/library/dn635309.aspx) in Azure-Infrastrukturdiensten kennen.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

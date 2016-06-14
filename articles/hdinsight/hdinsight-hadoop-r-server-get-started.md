@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-services"
-   ms.date="05/16/2016"
+   ms.date="05/27/2016"
    ms.author="jeffstok"
 />
 
@@ -110,13 +110,13 @@ Beim Premium-Tarifangebot für HDInsight ist R Server Teil des HDInsight-Cluster
 
 Stellen Sie über SSH eine Verbindung mit dem R Server-Edgeknoten des HDInsight-Clusters her:
 
-    ssh USERNAME@rserver.CLUSTERNAME.ssh.azurehdinsight.net
+    ssh USERNAME@r-server.CLUSTERNAME-ssh.azurehdinsight.net
     
-> [AZURE.NOTE] Sie finden die Adresse `RServer.CLUSTERNAME.ssh.azurehdinsight.net` auch im Azure-Portal, indem Sie den Cluster und dann __Alle Einstellungen__, __Apps__ und __RServer__ auswählen. Dadurch werden die SSH-Endpunktinformationen für den Edgeknoten angezeigt.
+> [AZURE.NOTE] Sie finden die Adresse `R-Server.CLUSTERNAME-ssh.azurehdinsight.net` auch im Azure-Portal, indem Sie den Cluster und dann __Alle Einstellungen__, __Apps__ und __RServer__ auswählen. Dadurch werden die SSH-Endpunktinformationen für den Edgeknoten angezeigt.
 >
 > ![Bild des SSH-Endpunkts für den Edgeknoten](./media/hdinsight-getting-started-with-r/sshendpoint.png)
     
-Wenn Sie zum Schutz Ihres SSH-Benutzerkontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen öffentlichen Schlüssel verwendet haben, müssen Sie möglicherweise den Parameter `-i` verwenden, um den passenden privaten Schlüssel anzugeben. Beispiel: `ssh -i ~/.ssh/id_rsa USERNAME@RServer.CLUSTERNAME.ssh.azurehdinsight.net`.
+Wenn Sie zum Schutz Ihres SSH-Benutzerkontos ein Kennwort verwendet haben, werden Sie zur Eingabe dieses Kennworts aufgefordert. Wenn Sie einen öffentlichen Schlüssel verwendet haben, müssen Sie möglicherweise den Parameter `-i` verwenden, um den passenden privaten Schlüssel anzugeben. Beispiel: `ssh -i ~/.ssh/id_rsa USERNAME@R-Server.CLUSTERNAME-ssh.azurehdinsight.net`.
     
 Weitere Informationen zum Verwenden von SSH mit Linux-basierten HDInsight-Clustern finden Sie in den folgenden Artikeln:
 
@@ -353,4 +353,4 @@ Mit beide Vorlagen werden ein neuer HDInsight-Cluster und das zugehörige Speich
 
 Allgemeine Informationen zur Verwendung von ARM-Vorlagen finden Sie unter [Erstellen Linux-basierter Hadoop-Cluster in HDInsight mithilfe von ARM-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

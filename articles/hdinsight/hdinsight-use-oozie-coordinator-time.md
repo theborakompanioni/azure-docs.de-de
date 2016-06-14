@@ -14,17 +14,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/04/2016"
+	ms.date="05/26/2016"
 	ms.author="jgao"/>
 
 
 # Verwenden des zeitbasierten Oozie-Koordinators mit Hadoop in HDInsight zum Definieren von Workflows und Koordinieren von Aufträgen
 
-In diesem Artikel erfahren Sie, wie Workflows und Koordinatoren definiert und die Koordinatoraufgaben zeitabhängig ausgelöst werden. Vor der Lektüre dieses Artikels empfiehlt es sich, das Thema [Verwenden von Oozie mit HDInsight durchzuarbeiten][hdinsight-use-oozie]. Informationen zu Azure Data Factory finden Sie unter [Verwenden von Pig und Hive mit Data Factory](../data-factory/data-factory-data-transformation-activities.md).
+In diesem Artikel erfahren Sie, wie Workflows und Koordinatoren definiert und die Koordinatoraufgaben zeitabhängig ausgelöst werden. Vor der Lektüre dieses Artikels empfiehlt es sich, das Thema [Verwenden von Oozie mit HDInsight durchzuarbeiten][hdinsight-use-oozie]. Neben Oozie können Sie auch Azure Data Factory zum Planen von Aufträgen verwenden. Informationen zu Azure Data Factory finden Sie unter [Verwenden von Pig und Hive mit Data Factory](../data-factory/data-factory-data-transformation-activities.md).
 
 > [AZURE.NOTE] Dieser Artikel erfordert einen Windows-basierten HDInsight-Cluster. Informationen zum Verwenden von Oozie, einschließlich zeitbasierter Aufträge, auf einem Linux-basierten Cluster finden Sie unter [Verwenden von Oozie mit Hadoop zum Definieren und Ausführen eines Workflows in Linux-basiertem HDInsight](hdinsight-use-oozie-linux-mac.md)
 
-##<a id="whatisoozie"></a>Was ist Oozie?
+##Was ist Oozie?
 
 Apache Oozie ist ein Workflow-/Koordinationssystem zur Verwaltung von Hadoop-Jobs. Es ist in den Hadoop-Stapel integriert und unterstützt Hadoop-Aufträge für Apache MapReduce, Apache Pig, Apache Hive und Apache Sqoop. Es kann auch dazu verwendet werden, systemspezifische Aufträge zu planen, beispielsweise Java-Programme oder Shellskripts.
 
@@ -57,7 +57,7 @@ Der Workflow enthält zwei Aktionen:
 > [AZURE.NOTE] Informationen zu den unterstützten Oozie-Versionen in HDInsight-Clustern finden Sie unter [Neuheiten in den von HDInsight bereitgestellten Clusterversionen][hdinsight-versions].
 
 
-##<a id="prerequisites"></a>Voraussetzungen
+##Voraussetzungen
 
 Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
@@ -65,9 +65,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
     [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
-    Um Windows PowerShell-Skripts ausführen zu können, müssen Sie Azure PowerShell als Administrator ausführen und die Ausführungsrichtlinie auf *RemoteSigned* festlegen. Weitere Informationen finden Sie unter [Ausführen von Windows PowerShell-Skripts][powershell-script].
-
-- **Einen HDInsight-Cluster**. Informationen zum Erstellen eines HDInsight-Clusters finden Sie unter [Benutzerdefiniertes Bereitstellen von Hadoop-Clustern in HDInsight][hdinsight-provision] oder [Erste Schritte mit HDInsight][hdinsight-get-started]. Sie benötigen die folgenden Daten, um das Lernprogramm durchzuarbeiten:
+- **Einen HDInsight-Cluster**. Informationen zum Erstellen eines HDInsight-Clusters finden Sie unter [Erstellen von HDInsight-Clustern][hdinsight-provision] und [Erste Schritte mit HDInsight][hdinsight-get-started]. Sie benötigen die folgenden Daten, um das Lernprogramm durchzuarbeiten:
 
 	<table border = "1">
 	<tr><th>Clustereigenschaft</th><th>Windows PowerShell-Variablenname</th><th>Wert</th><th>Beschreibung</th></tr>
@@ -88,13 +86,13 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 	<tr><td>SQL-Datenbankname</td><td>$sqlDatabaseName</td><td></td><td>Die Azure SQL-Datenbank, in die Sqoop Daten exportiert. </td></tr>
 	</table>
 
-	> [AZURE.NOTE] Eine Azure SQL-Datenbank ermöglicht standardmäßig Verbindungen von Azure-Diensten wie Azure HDInsight. Wenn die Firewalleinstellung deaktiviert ist, müssen Sie sie im Azure-Portal aktivieren. Anweisungen zum Erstellen einer SQL-Datenbank und zum Konfigurieren von Firewallregeln finden Sie unter [Erstellen und Konfigurieren einer SQL-Datenbank]\[sqldatabase-create-configue].
+	> [AZURE.NOTE] Eine Azure SQL-Datenbank ermöglicht standardmäßig Verbindungen von Azure-Diensten wie Azure HDInsight. Wenn die Firewalleinstellung deaktiviert ist, müssen Sie sie im Azure-Portal aktivieren. Anweisungen zum Erstellen einer SQL-Datenbank und zum Konfigurieren von Firewallregeln finden Sie unter [Erstellen und Konfigurieren einer SQL-Datenbank][sqldatabase-create-configue].
 
 
 > [AZURE.NOTE] Tragen Sie die Werte in die Tabellen ein. Dies wird Ihnen helfen, wenn Sie dieses Lernprogramm durcharbeiten.
 
 
-##<a id="defineworkflow"></a>Definieren des Oozie-Workflows und des zugehörigen HiveQL-Skripts
+##Definieren des Oozie-Workflows und des zugehörigen HiveQL-Skripts
 
 Definitionen von Oozie-Workflows werden in hPDL (einer XML-Prozessdefinitionssprache) geschrieben. Der Standardname der Workflow-Datei lautet *workflow.xml*. Sie speichern die Workflowdatei lokal und stellen sie später im Lernprogramm über die Azure PowerShell im HDInsight-Cluster bereit.
 
@@ -105,7 +103,7 @@ Von der Hive-Aktion im Workflow wird eine HiveQL-Skriptdatei aufgerufen. Die Skr
 3.  **Speicherort der log4j-Protokolldatei**. Das Feldtrennzeichen ist "," Das Standard-Zeilentrennzeichen ist "\\n". Mit einer externen Hive-Tabelle wird vermieden, dass die Datendatei aus dem ursprünglichen Speicherort entfernt wird, falls Sie den Oozie-Workflow mehrmals ausführen möchten.
 3. **Die Anweisung INSERT OVERWRITE** zählt die Vorkommen der verschiedenen Protokollierungsebenen in der log4j-Hive-Tabelle und speichert die Ausgabe in einem Azure-Blobspeicherort.
 
-**Hinweis**: Es ist bekannt, dass es ein Problem mit dem Hive-Pfad gibt. Dieses Problem tritt auf, wenn Sie einen Oozie-Job senden. Die Anweisungen zur Behebung des Problems finden Sie im TechNet-Wiki: [HDInsight Hive error: Unable to rename][technetwiki-hive-error] \(in englischer Sprache).
+**Hinweis**: Es ist bekannt, dass es ein Problem mit dem Hive-Pfad gibt. Dieses Problem tritt auf, wenn Sie einen Oozie-Job senden. Die Anweisungen zur Behebung des Problems finden Sie im TechNet-Wiki: [HDInsight Hive error: Unable to rename][technetwiki-hive-error] (in englischer Sprache).
 
 **So definieren Sie die HiveQL-Skriptdatei, die vom Workflow aufgerufen werden soll**
 
@@ -213,7 +211,7 @@ Von der Hive-Aktion im Workflow wird eine HiveQL-Skriptdatei aufgerufen. Die Skr
 	<tr><td>${hiveOutputFolder}</td><td>Der Ausgabeordner für die Hive-Anweisung INSERT OVERWRITE. Dieser entspricht dem für den Sqoop-Export angegebenen Ordner (export-dir).</td></tr>
 	</table>
 
-	Weitere Informationen über den Oozie-Workflow und die Verwendung von Workflowaktionen finden Sie in der [Apache Oozie 4.0-Dokumentation][apache-oozie-400] \(für HDInsight-Cluster der Version 3.0) oder in der [Apache Oozie 3.3.2-Dokumentation][apache-oozie-332] \(für HDInsight-Cluster der Version 2.1).
+	Weitere Informationen über den Oozie-Workflow und die Verwendung von Workflowaktionen finden Sie in der [Apache Oozie 4.0-Dokumentation][apache-oozie-400] (für HDInsight-Cluster der Version 3.0) oder in der [Apache Oozie 3.3.2-Dokumentation][apache-oozie-332] (für HDInsight-Cluster der Version 2.1).
 
 2. Speichern Sie die Datei al **C:\\Tutorials\\UseOozie\\workflow.xml** mit ANSI (ASCII)-Codierung. (Verwenden Sie Editor, falls Ihr Texteditor diese Option nicht zur Verfügung stellt.)
 
@@ -241,7 +239,7 @@ Von der Hive-Aktion im Workflow wird eine HiveQL-Skriptdatei aufgerufen. Die Skr
 
 2. Speichern Sie die Datei als **C:\\Tutorials\\UseOozie\\coordinator.xml** mit ANSI (ASCII)-Codierung. (Verwenden Sie Editor, falls Ihr Texteditor diese Option nicht zur Verfügung stellt.)
 
-##<a id="deploy"></a>Bereitstellen des Oozie-Projekts und Vorbereiten des Lernprogramms
+##Bereitstellen des Oozie-Projekts und Vorbereiten des Lernprogramms
 
 Sie führen ein Azure PowerShell-Skript aus, um folgende Aktionen durchzuführen:
 
@@ -378,9 +376,9 @@ Weitere Informationen finden Sie unter [HDInsight: Hive Internal and External Ta
 
 	![Ausgabe für Lernprogrammvorbereitung][img-preparation-output]
 
-##<a id="run"></a>Ausführen des Oozie-Projekts
+##Ausführen des Oozie-Projekts
 
-Azure PowerShell stellt derzeit keine Cmdlets zum Definieren von Oozie-Jobs bereit. Sie können das Cmdlet **Invoke-RestMethod** verwenden, um Oozie-Webdienste aufzurufen. Die Oozie-Webdienste-API ist eine HTTP REST JSON-API. Weitere Informationen über die Oozie-Webdienste-API finden Sie in der [Apache Oozie 4.0-Dokumentation][apache-oozie-400] \(für HDInsight-Cluster der Version 3.0) oder in der [Apache Oozie 3.3.2-Dokumentation][apache-oozie-332] \(für HDInsight-Cluster der Version 2.1).
+Azure PowerShell stellt derzeit keine Cmdlets zum Definieren von Oozie-Jobs bereit. Sie können das Cmdlet **Invoke-RestMethod** verwenden, um Oozie-Webdienste aufzurufen. Die Oozie-Webdienste-API ist eine HTTP REST JSON-API. Weitere Informationen über die Oozie-Webdienste-API finden Sie in der [Apache Oozie 4.0-Dokumentation][apache-oozie-400] (für HDInsight-Cluster der Version 3.0) oder in der [Apache Oozie 3.3.2-Dokumentation][apache-oozie-332] (für HDInsight-Cluster der Version 2.1).
 
 **So übermitteln Sie einen Oozie-Auftrag**
 
@@ -686,7 +684,7 @@ Sie können das folgende Windows PowerShell-Beispielskript verwenden:
 	$conn.close()
 
 
-##<a id="nextsteps"></a>Nächste Schritte
+##Nächste Schritte
 In diesem Lernprogramm haben Sie einen Oozie-Workflow und einen Oozie-Koordinator definiert sowie einen Oozie-Koordinatorauftrag mithilfe von Azure PowerShell ausgeführt. Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - [Erste Schritte mit HDInsight][hdinsight-get-started]
@@ -743,4 +741,4 @@ In diesem Lernprogramm haben Sie einen Oozie-Workflow und einen Oozie-Koordinato
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

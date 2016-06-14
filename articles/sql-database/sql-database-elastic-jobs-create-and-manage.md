@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/25/2016"
-	ms.author="ddove; sidneyh"/>
+	ms.date="05/27/2016"
+	ms.author="ddove"/>
 
 # Erstellen und Verwalten von horizontal hochskalierten SQL Azure-Datenbanken (Vorschau)
 
@@ -115,4 +115,4 @@ Wenn ein Auftrag fehlschlägt, wird ein Protokoll zu seiner Ausführung erstellt
 
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0601_2016-->

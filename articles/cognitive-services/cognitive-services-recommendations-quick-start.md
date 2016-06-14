@@ -3,7 +3,7 @@
 	description="Azure Machine Learning-Empfehlungen – Erste Schritte"
 	services="cognitive-services"
 	documentationCenter=""
-	authors="luisca"
+	authors="luiscabrer"
 	manager="paulettm"
 	editor="cgronlun"/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/14/2016"
+	ms.date="05/26/2016"
 	ms.author="luisca"/>
 
 # Kurzanleitung für die Empfehlungs-API der kognitiven Dienste
@@ -129,6 +129,8 @@ In dieser Aufgabe verwenden Sie die Beispielanwendung zum Erstellen Ihres ersten
 
 1. Wenn das Modell erstellt ist, notieren Sie die **Modell-ID**, da Sie sie beim Anfordern von Empfehlungen in Ihrer Produktionsumgebung benötigen werden.
 
+>  [Hier](cognitive-services-recommendations-buildtypes.md) erfahren Sie mehr über Buildtypen und zur Bewertung der Qualität von Builds.
+
 <a name="Ex1Task4"></a>
 ### Bringen Sie Ihr Modell in Produktion! ###
 
@@ -166,4 +168,4 @@ Lesen Sie die Dokumentation [Get Item Recommendations](http://go.microsoft.com/f
 ### Wie geht es weiter?
 Danke, dass Sie bis zum Schluss dabei waren! Weitere Informationen finden Sie in der vollständigen [Empfehlungs-API-Referenz](http://go.microsoft.com/fwlink/?LinkId=759348). Wenn Sie Fragen haben, wenden Sie sich gerne unter mlapi@microsoft.com an uns.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0601_2016-->

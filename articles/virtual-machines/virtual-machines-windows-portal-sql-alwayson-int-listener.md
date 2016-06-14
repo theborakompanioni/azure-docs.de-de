@@ -20,8 +20,6 @@
 
 In diesem Thema erfahren Sie, wie Sie einen internen Load Balancer für eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern erstellen, die unter dem Resource Manager-Modell ausgeführt werden. Eine AlwaysOn-Verfügbarkeitsgruppe benötigt einen Load Balancer, wenn sich die SQL Server-Instanzen auf virtuellen Azure-Computern befinden. Der Load-Balancer speichert die IP-Adresse für den Verfügbarkeitsgruppenlistener. Wenn sich eine Verfügbarkeitsgruppe über mehrere Regionen erstreckt, benötigt jede Region einen Load Balancer.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]klassisches Modell.
-
 Für diese Aufgabe benötigen Sie eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe, die auf virtuellen Azure-Computern unter dem Resource Manager-Modell bereitgestellt wird. Beide virtuellen SQL Server-Computer müssen der gleichen Verfügbarkeitsgruppe angehören. Mithilfe der [Microsoft-Vorlage](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) können Sie die AlwaysOn-Verfügbarkeitsgruppe in Azure Resource Manager automatisch erstellen. Diese Vorlage nimmt Ihnen die Erstellung des internen Load Balancers ab.
 
 Alternativ können Sie aber auch [eine AlwaysOn-Verfügbarkeitsgruppe manuell konfigurieren](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md).
@@ -56,7 +54,7 @@ In diesem Teil führen Sie die folgenden Schritte im Azure-Portal aus:
 
 Im ersten Schritt wird zunächst der Load Balancer erstellt. Öffnen Sie im Azure-Portal die Ressourcengruppe mit den virtuellen SQL Server-Computern. Klicken Sie in der Ressourcengruppe auf **Hinzufügen**.
 
-- Suchen Sie nach **Load Balancer**. Wählen Sie in den Suchergebnissen den (von **Microsoft** veröffentlichten) Load Balancer aus.
+- Suchen Sie nach **Load Balancer**. Wählen Sie in den Suchergebnissen den (von **Microsoft** veröffentlichten) **Load Balancer** aus.
 
 - Klicken Sie auf dem Blatt **Load Balancer** auf **Erstellen**.
 
@@ -102,7 +100,7 @@ Als Nächstes muss ein Back-End-Adresspool erstellt werden. Im Kontext von Azure
 
 - Klicken Sie unter **Einstellungen** auf **Back-End-Pools**.
 
-- Klicken Sie im Bereich für Back-End-Adresspools auf **Hinzufügen**, um einen Back-End-Adresspool zu erstellen.
+- Klicken Sie im Bereich **Back-End-Adresspools** auf **Hinzufügen**, um einen Back-End-Adresspool zu erstellen.
 
 - Geben Sie im Bereich **Back-End-Pool hinzufügen** unter **Name** einen Namen für den Back-End-Pool ein.
 
@@ -112,7 +110,7 @@ Als Nächstes muss ein Back-End-Adresspool erstellt werden. Im Kontext von Azure
 
 - Klicken Sie nach dem Auswählen der Verfügbarkeitsgruppe auf **Choose the virtual machines** (Virtuelle Computer auswählen). Klicken Sie auf die beiden virtuellen Computer, die die SQL Server-Instanzen in der Verfügbarkeitsgruppe hosten. Klicken Sie auf **Auswählen**.
 
-- Klicken Sie auf **OK**, um die Blätter zum Auswählen der virtuellen Computer bzw. zum Hinzufügen des Back-End-Pools zu schließen.
+- Klicken Sie auf **OK**, um die Blätter zum **Auswählen der virtuellen Computer** bzw. zum **Hinzufügen des Back-End-Pools** zu schließen.
 
 Azure aktualisiert die Einstellungen für den Back-End-Adresspool. Die Verfügbarkeitsgruppe verfügt nun über einen Pool mit zwei SQL Server-Instanzen.
 
@@ -148,7 +146,7 @@ Legen Sie die Lastenausgleichsregeln fest. Mit den Lastenausgleichsregeln wird k
 
 - Klicken Sie auf dem Blatt **Lastenausgleichsregeln** auf **Hinzufügen**.
 
-- Konfigurieren Sie auf dem Blatt zum Hinzufügen von Lastenausgleichsregeln die Lastenausgleichsregel. Verwenden Sie folgende Einstellungen:
+- Konfigurieren Sie auf dem Blatt **Lastenausgleichsregeln hinzufügen** die Lastenausgleichsregel. Verwenden Sie folgende Einstellungen:
 
 | Einstellung | Wert |
 | ----- | ----- |
@@ -157,7 +155,7 @@ Legen Sie die Lastenausgleichsregeln fest. Mit den Lastenausgleichsregeln wird k
 | **Port** | *1433* |
 | **Back-End-Port** | *1433*. Wird deaktiviert, da diese Regel **Floating IP (Direct Server Return)** verwendet. |
 | **Test** | Verwenden Sie den Namen des Tests, den Sie für diesen Load Balancer erstellt haben. |
-| **Session persistence** (Sitzungspersistenz) | **Keine** | 
+| **Session persistence (Sitzungspersistenz)** | **Keine** | 
 | **Leerlaufzeitüberschreitung (Minuten)** | *4* | 
 | **Floating IP (Direct Server Return)** | **Aktiviert** | 
 
@@ -252,7 +250,7 @@ Gehen Sie wie folgt vor, um die Verbindung zu testen:
 
 1. Stellen Sie eine RDP-Verbindung mit einem SQL Server her, der sich im gleichen virtuellen Netzwerk befindet, aber nicht für das Replikat zuständig ist. Hierbei kann es sich um den anderen SQL Server im Cluster handeln.
 
-1. Testen Sie die Verbindung mithilfe des Hilfsprogramms **sqlcmd**. Das folgende Skript stellt beispielsweise über den Listener eine sqlcmd-Verbindung mit Windows-Authentifizierung mit dem primären Replikat her:
+1. Testen Sie die Verbindung mithilfe des Hilfsprogramms **sqlcmd**. Das folgende Skript stellt beispielsweise über den Listener eine **sqlcmd**-Verbindung mit Windows-Authentifizierung mit dem primären Replikat her:
 
         sqlmd -S <listenerName> -E
 
@@ -267,4 +265,4 @@ Für Verfügbarkeitsgruppenlistener in Azure mit internem Load Balancer gelten f
 - Bei Verwendung eines internen Load Balancers erfolgt der Zugriff auf den Listener nur innerhalb des gleichen virtuellen Netzwerks.
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

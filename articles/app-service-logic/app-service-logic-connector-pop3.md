@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="02/10/2016"
+   ms.date="05/31/2016"
    ms.author="sameerch"/>
 
 
@@ -33,18 +33,18 @@ Zur Verwendung des POP3-Connectors müssen Sie zunächst eine Instanz der POP3-C
 3.	Konfigurieren Sie den POP3-Connector wie folgt:
 
 	![][1]
-	- **Standort** – Wählen Sie den geografischen Standort, an dem der Connector bereitgestellt werden soll
-	- **Abonnement** – Wählen Sie ein Abonnement, in dem dieser Connector erstellt werden soll
-	- **Ressourcengruppe** – Wählen oder erstellen Sie eine Ressourcengruppe, in der sich der Connector befinden soll
-	- **Webhostingplan** – Wählen Sie einen Webhostingplan aus oder erstellen Sie einen
-	- **Tarif** – Wählen Sie einen Tarif für den Connector aus
-	- **Name** – Geben Sie Ihrem POP3-Connector einen Namen
+	- **Standort** – Wählen Sie den geografischen Standort, an dem Sie den Connector bereitstellen möchten.
+	- **Abonnement** – Wählen Sie ein Abonnement, in dem dieser Connector erstellt werden soll.
+	- **Ressourcengruppe** – Wählen oder erstellen Sie eine Ressourcengruppe, in der sich der Connector befinden soll.
+	- **Webhostingplan** – Wählen oder erstellen Sie einen Webhostingplan.
+	- **Tarif** – Wählen Sie einen Tarif für den Connector.
+	- **Name** – Geben Sie einen Namen für den POP3-Connector ein.
 	- **Paketeinstellungen**
-		- **Benutzername** Geben Sie den Benutzernamen zur Verbindung mit dem POP3-Server an
-		- **Kennwort** Geben Sie das Kennwort zur Verbindung mit dem POP3-Server an
-		- **Serveradresse** Geben Sie den POP3-Severnamen oder die IP-Adresse an
-		- **Serverport** Geben Sie die POP3-Serverportnummer an
-		- **SSL aktivieren** Geben Sie "true" ein, um POP3 über einen sicheren SSL-/TLS-Kanal zu verwenden
+		- **Benutzername** – Geben Sie den Benutzernamen für die Verbindung mit dem POP3-Server an.
+		- **Kennwort** – Geben Sie das Kennwort für die Verbindung mit dem POP3-Server an.
+		- **Serveradresse** – Geben Sie den POP3-Servernamen oder die IP-Adresse an.
+		- **Serverport** – Geben Sie die Portnummer des POP3-Servers an.
+		- **SSL aktivieren** – Geben Sie „True“ an, um POP3 über einen sicheren SSL-/TLS-Kanal zu verwenden.
 4.	Klicken Sie auf "Erstellen". Ein neuer POP3-Connector wird erstellt.
 5.	Sobald die API-App-Instanz erstellt wurde, können Sie in derselben Ressourcengruppe eine Logik-App zur Verwendung des POP3-Connectors erstellen.
 
@@ -54,13 +54,13 @@ Sobald Ihre API-App erstellt wurde, können Sie den POP3-Connector als Trigger f
 1.	Erstellen Sie eine neue Logik-App, und wählen Sie dieselbe Ressourcengruppe aus, in der sich der POP3-Connector befindet.
 
 	![][2]
-2.	Öffnen Sie "Trigger und Aktionen", um den Logik-Apps-Designer zu öffnen und den Datenfluss zu konfigurieren.
+2.	Öffnen Sie „Trigger und Aktionen“, um den Logik-Apps-Designer zu öffnen und den Workflow zu konfigurieren.
 
 	![][3]
 3.	Der POP3-Connector wird im Abschnitt "API-Apps in dieser Ressourcengruppe" im Katalog auf der rechten Seite angezeigt. Wählen Sie ihn aus.
 
 	![][4]
-4.	Sie können die POP3-Connector-API-App im Editor bearbeiten, indem Sie auf den "POP3-Connector" klicken.
+4.	Sie können die POP3-Connector-API-App im Editor bearbeiten, indem Sie auf den „POP3-Connector“ klicken.
 
 5.	Sie können nun den POP3-Connector im Datenfluss verwenden. Wählen Sie den Trigger "E-Mail abrufen", und konfigurieren Sie die Häufigkeit und das Abrufintervall. Sie können nun die vom POP3-Trigger abgerufenen E-Mails in anderen Aktionen im Datenfluss verwenden.
 		 
@@ -70,9 +70,9 @@ Sobald Ihre API-App erstellt wurde, können Sie den POP3-Connector als Trigger f
 	![][6]
 
 ## Mehr mit Ihrem Connector machen
-Nachdem der Connector nun erstellt ist, können Sie ihn mit Logik-App in einem Geschäftsworkflow hinzufügen. Informationen finden Sie unter [Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md).
+Der Connector ist nun erstellt, und Sie können ihn mit einer Logik-App einem Geschäftsworkflow hinzufügen. Informationen finden Sie unter [Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md).
 
->[AZURE.NOTE] Wenn Sie Azure Logik-Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [Logik-App testen](https://tryappservice.azure.com/?appservice=logic) sofort kostenlos eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+>[AZURE.NOTE] Wenn Sie Azure Logik-Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto registrieren, wechseln Sie zu [Logik-App testen](https://tryappservice.azure.com/?appservice=logic). Dort können Sie sofort eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
 Anzeigen der Swagger-REST-API-Referenz unter [Referenz zu Connectors und API-Apps](http://go.microsoft.com/fwlink/p/?LinkId=529766).
 
@@ -87,4 +87,4 @@ Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connec
 [5]: ./media/app-service-logic-connector-pop3/img5.PNG
 [6]: ./media/app-service-logic-connector-pop3/img6.PNG
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0601_2016-->
