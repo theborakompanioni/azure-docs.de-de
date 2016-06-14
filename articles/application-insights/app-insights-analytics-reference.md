@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016" 
+	ms.date="05/26/2016" 
 	ms.author="awills"/>
 
 # Referenz für Analytics
@@ -345,95 +345,129 @@ Teilt einen Ausnahmedatensatz für jedes Element im Feld „Details“ in Zeilen
 
 ### parse-Operator
 
-    T | parse "I am 63 next birthday" with "I am" Year:int "next birthday"
+    T | parse "I got 2 socks for my birthday when I was 63 years old" 
+    with * "got" counter:long " " present "for" * "was" year:long *
 
-    T | parse kind=regex "My 62nd birthday" 
-        with "My" Year:regex("[0..9]+") regex("..") "birthday"
+
+    T | parse kind="relaxed"
+          "I got no socks for my birthday when I was 63 years old" 
+    with * "got" counter:long " " present "for" * "was" year:long * 
+
+    T |  parse kind=regex "I got socks for my 63rd birthday" 
+    with "(I|She) got" present "for .*?" year:long * 
 
 Extrahiert Werte aus einer Zeichenfolge. Kann einfache oder reguläre Ausdrücke für Übereinstimmungen verwenden.
 
-Die Elemente in der `with`-Klausel werden wiederum mit der Quellzeichenfolge verglichen. Jedes Element entnimmt ein Segment des Quelltexts. Handelt es sich dabei um eine einfache Zeichenfolge, bewegt sich der Abgleich-Cursor so weit wie die Übereinstimmung. Handelt es sich um eine Spalte mit einem Typnamen, bewegt sich der Cursor weit genug, um den angegebenen Typ zu analysieren. (Zeichenfolgenübereinstimmungen bewegen sich, bis eine Übereinstimmung mit dem nächsten Element gefunden wird.) Handelt es sich um einen RegEx, wird der reguläre Ausdruck abgeglichen (und die resultierende Spalte ist immer vom Typ „Zeichenfolge“).
-
 **Syntax**
 
-    T | parse StringExpression with [SimpleMatch | Column:Type] ...
-
-    T | parse kind=regex StringExpression 
-        with [SimpleMatch | Column : regex("Regex")] ...
+    T | parse [kind=regex|relaxed] SourceText 
+        with [Match | Column [: Type [*]] ]  ...
 
 **Argumente**
 
-* *T:* die Eingabetabelle.
-* *kind:* einfach oder RegEx. Die Standardeinstellung ist „einfach“.
-* *StringExpression:* ein Ausdruck, der als Zeichenfolge ausgewertet wird oder in eine konvertiert werden kann.
-* *SimpleMatch:* eine Zeichenfolge, die mit dem nächsten Teil des Texts übereinstimmt.
-* *Column:* gibt die neue Spalte an, der eine Übereinstimmung zugewiesen wird.
-* *Type:* gibt an, wie der nächste Teil der Quellzeichenfolge zu analysieren ist.
-* *Regex:* ein regulärer Ausdruck für den Abgleich des nächsten Teils der Zeichenfolge. 
+* `T`: Die Eingabetabelle.
+* `kind`: 
+ * `simple` (Standard): Die `Match`-Zeichenfolgen sind unverschlüsselte Zeichenfolgen.
+ * `relaxed`: Wenn der Text nicht als der Typ einer Spalte analysiert wird, wird die Spalte auf null festgelegt und die Analyse fortgesetzt. 
+ * `regex`: Die `Match`-Zeichenfolgen sind reguläre Ausdrücke.
+* `Text`: Eine Spalte oder ein anderer Ausdruck, die/der als Zeichenfolge ausgewertet wird oder in eine Zeichenfolge konvertiert werden kann.
+* *Übereinstimmung:* Gleichen Sie den nächsten Teil der Zeichenfolge auf Übereinstimmungen ab, und verwerfen Sie sie.
+* *Spalte:* Weisen Sie den nächsten Teil der Zeichenfolge dieser Spalte zu. Die Spalte wird erstellt, wenn sie nicht vorhanden ist.
+* *Typ:* Analysieren Sie den nächsten Teil der Zeichenfolge als den angegebenen Typ. Beispiele: int, date, double. 
+
 
 **Rückgabe**
 
 Die Eingabetabelle, erweitert gemäß der Liste der Spalten.
 
+Die Elemente in der `with`-Klausel werden wiederum mit dem Quelltext abgeglichen. Jedes Element entnimmt ein Segment des Quelltexts:
+
+* Eine Literalzeichenfolge oder ein regulärer Ausdruck verschiebt den entsprechenden Cursor um die Länge der Übereinstimmung.
+* Bei der Analyse eines regulären Ausdrucks kann ein regulärer Ausdruck den Minimierungsoperator „?“ verwenden, um so schnell wie möglich zur folgenden Übereinstimmung zu wechseln.
+* Ein Spaltenname mit einem Typ analysiert den Text als den angegebenen Typ. Außer bei „kind=relaxed“ macht eine nicht erfolgreiche Analyse Übereinstimmungen mit dem gesamten Muster ungültig.
+* Ein Spaltenname ohne einen Typ oder mit dem Typ „string“ kopiert die Mindestanzahl von Zeichen, um die folgende Übereinstimmung abzurufen.
+* „*“ überspringt die Mindestanzahl von Zeichen, um die folgende Übereinstimmung abzurufen. Sie können „*“ am Anfang und Ende des Musters oder hinter einem Typ, der keine Zeichenfolge ist, oder zwischen Zeichenfolgenübereinstimmungen verwenden.
+
+Alle Elemente in einem Analysemuster müssen genau übereinstimmen. Andernfalls werden keine Ergebnisse erzeugt. Die Ausnahme dieser Regel lautet, dass wenn bei „kind=relaxed“ die Analyse einer typisierten Variablen misslingt, die restliche Analyse fortgesetzt wird.
 
 **Beispiele**
 
-Der `parse`-Operator bietet eine optimierte Methode zum Erweitern einer Tabelle mit `extend` durch Verwendung mehrerer `extract`-Anwendungen in demselben `string`-Ausdruck. Dies ist besonders hilfreich, wenn die Tabelle eine `string`-Spalte mit mehreren Werten enthält, die Sie in einzelne Spalten aufteilen möchten, z.B. eine Spalte, die von einer Entwickler-Ablaufverfolgungsanweisung („`printf`“/„`Console.WriteLine`“) erzeugt wurde.
-
-Im folgenden Beispiel wird angenommen, dass die Spalte `EventNarrative` der Tabelle `StormEvents` Zeichenfolgen im Format `{0} at {1} crested at {2} feet around {3} on {4} {5}` enthält. Der folgende Vorgang erweitert die Tabelle mit zwei Spalten: `SwathSize` und `FellLocation`.
-
-
-|EventNarrative|
-|---|
-|Der Green River erreichte bei Brownsville am 12. Dezember um 09.30 Uhr EST den Höchststand von 5,7 m (The Green River at Brownsville crested at 18.8 feet around 0930EST on December 12). Die Hochwassergrenze bei Brownsville beträgt 5,5 m (Flood stage at Brownsville is 18 feet). Bei diesem Pegel tritt eine geringfügige Überflutung auf (Minor flooding occurs at this level). Der Fluss tritt über Schleusenwände und flutet einige der tiefer gelegenen Uferlandschaften und landwirtschaftlichen Nutzflächen (The river overflows lock walls and some of the lower banks, along with some agricultural bottom land).|
-|Der Fluss Rolling Fork erreichte bei Boston am 12. Dezember um 17.00 Uhr EST den Höchststand von 12 m (The Rolling Fork River at Boston crested at 39.3 feet around 1700EST on December 12). Die Hochwassergrenze bei Boston beträgt 10,7 m (Flood stage at Boston is 35 feet). Bei diesem Pegel tritt eine geringfügige Überflutung auf, bei der einige landwirtschaftliche Nutzflächen in der Flussniederung unter Wasser stehen (Minor flooding occurs at this level, with some agricultural bottom land covered).|
-|Der Green River erreichte bei Woodbury am 16. Dezember um 06.00 Uhr EST den Höchststand von 11,2 m (The Green River at Woodbury crested at 36.7 feet around 0600EST on December 16). Die Hochwassergrenze bei Woodbury beträgt 10 m (Flood stage at Woodbury is 33 feet). Bei diesem Pegel tritt eine geringfügige Überflutung auf, bei der einige Tiefebenen um die Stadt unter Wasser stehen (Minor flooding occurs at this level, with some lowlands around the town of Woodbury covered with water).|
-|Der Ohio erreichte bei Tell Stadt am 18. Dezember um 07.00 Uhr EST den Höchststand von 11,9 m (The Ohio River at Tell City crested at 39.0 feet around 7 AM EST on December 18). Die Hochwassergrenze bei Tell Stadt beträgt 11,6 m (Flood stage at Tell City is 38 feet). Bei diesem Pegel beginnt der Fluss, die darüber gelegenen Uferlandschaften zu überfluten (At this level, the river begins to overflow its banks above the gage). Der Indiana Highway 66 wird zwischen Rome und Derby überflutet (Indiana Highway 66 floods between Rome and Derby).|
+*Einfach:*
 
 ```AIQL
 
-StormEvents 
-|  parse EventNarrative 
-   with RiverName:string 
-        "at" 
-        Location:string 
-        "crested at" 
-        Height:double  
-        "feet around" 
-        Time:string 
-        "on" 
-        Month:string 
-        " " 
-        Day:long 
-        "." 
-        notImportant:string
-| project RiverName , Location , Height , Time , Month , Day
-
+// Test without reading a table:
+ range x from 1 to 1 step 1 
+ | parse "I got 2 socks for my birthday when I was 63 years old" 
+    with 
+     *   // skip until next match
+     "got" 
+     counter: long // read a number
+     " " // separate fields
+     present // copy string up to next match
+     "for" 
+     *  // skip until next match
+     "was" 
+     year:long // parse number
+     *  // skip rest of string
 ```
 
-|RiverName|Ort|Höhe|Time|Monat|Tag|
-|---|---|---|---|---|---|
-|Green River | Woodbury |11,2| 06\.00 Uhr EST | Dezember|16|
-|Fluss Rolling Fork | Boston |12| 17\.00 Uhr EST | Dezember|12|
-|Green River | Brownsville |5,7| 09\.30 Uhr EST | Dezember|12|
-|Ohio River | Tell Stadt |11,9| 7\.00 Uhr EST | Dezember|18|
+x | Zähler | Geschenk | Jahr
+---|---|---|---
+1 | 2 | socks (Socken) | 63
 
-Die Verwendung von regulären Ausdrücken für den Abgleich ist ebenfalls möglich. Dies führt zum gleichen Ergebnis, alle Ergebnisspalten sind jedoch vom Typ „Zeichenfolge“:
+*Relaxed:*
+
+Wenn die Eingabe eine ordnungsgemäße Übereinstimmung für jede typisierte Spalte enthält, erzeugt eine Analyse des Typs „Relaxed“ (Ungenau) dieselben Ergebnisse wie eine einfache Analyse. Aber wenn eine der typisierten Spalten nicht ordnungsgemäß analysiert wird, setzt eine ungenaue Analyse das Verarbeiten des Rests des Musters fort, während eine einfache Analyse beendet wird, ohne Ergebnisse zu liefern.
+
 
 ```AIQL
 
-StormEvents
-| parse kind=regex EventNarrative 
-  with RiverName:regex("(\\s?[a-zA-Z]+\\s?)+") 
-  "at" Location:regex(".*") 
-  "crested at " Height:regex("\\d+\\.\\d+") 
-  " feet around" Time:regex(".*") 
-  "on " Month:regex("(December|November|October)") 
-   " " Day:regex("\\d+") 
-   "." notImportant:regex(".*")
-| project RiverName , Location , Height , Time , Month , Day
+// Test without reading a table:
+ range x from 1 to 1 step 1 
+ | parse kind="relaxed"
+        "I got several socks for my birthday when I was 63 years old" 
+    with 
+     *   // skip until next match
+     "got" 
+     counter: long // read a number
+     " " // separate fields
+     present // copy string up to next match
+     "for" 
+     *  // skip until next match
+     "was" 
+     year:long // parse number
+     *  // skip rest of string
 ```
 
+
+x | Geschenk | Jahr
+---|---|---
+1 | socks (Socken) | 63
+
+
+*Regulärer Ausdruck:*
+
+```AIQL
+
+// Run a test without reading a table:
+range x from 1 to 1 step 1 
+// Test string:
+| extend s = "Event: NotifySliceRelease (resourceName=Scheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:00)" 
+// Parse it:
+| parse kind=regex s 
+  with ".*?[a-zA-Z]*=" resource 
+       ", total.*?sliceNumber=" slice:long *
+       "lockTime=" lock
+       ",.*?releaseTime=" release 
+       ",.*?previousLockTime=" previous:date 
+       ".*\)"
+| project-away x, s
+```
+
+Ressource | Slice | Sperre | Freigabe | Vorherige
+---|---|---|---|---
+Scheduler | 16 | 02/17/2016 08:41:00 (17.02.2016) | 02/17/2016 08:41 (17.02.2016) | 2016-02-17T08:40:00Z
 
 ### project-Operator
 
@@ -448,9 +482,9 @@ Wählen Sie die Spalten aus, die einbezogen, umbenannt oder gelöscht werden sol
 
 **Argumente**
 
-* *T:* die Eingabetabelle.
-* *ColumnName:* Name einer Spalte, der in der Ausgabe angezeigt wird. Wenn kein *Ausdruck* vorhanden ist, muss die Eingabe eine Spalte mit diesem Namen enthalten. Bei [Namen](#names) muss Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder das Zeichen „\_“ enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
-* *Expression:* optionaler skalarer Ausdruck, der auf die Eingabespalten verweist. 
+* *T:* Die Eingabetabelle.
+* *ColumnName:* Der Name einer Spalte, der in der Ausgabe angezeigt wird. Wenn kein *Ausdruck* vorhanden ist, muss die Eingabe eine Spalte mit diesem Namen enthalten. Bei [Namen](#names) muss Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder das Zeichen „\_“ enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
+* *Expression:* Optionaler skalarer Ausdruck, der auf die Eingabespalten verweist. 
 
     Das Zurückgeben einer neuen berechneten Spalte mit dem gleichen Namen wie eine vorhandene Spalte der Eingabe ist zulässig.
 
@@ -460,7 +494,7 @@ Eine Tabelle, deren Spalten als Argumente benannt sind, und die ebenso viele Zei
 
 **Beispiel**
 
-Das folgende Beispiel zeigt mehrere Arten von Manipulationen, die mithilfe des `project`-Operators durchgeführt werden können. Die Eingabetabelle `T` umfasst drei Spalten vom Typ `int`: `A`, `B` und `C`.
+Das folgende Beispiel zeigt mehrere Arten von Bearbeitungen, die mithilfe des `project`-Operators erfolgen können. Die Eingabetabelle `T` hat drei Spalten des Typs `int`: `A`, `B` und `C`.
 
 ```AIQL
 T
@@ -499,10 +533,10 @@ Erzeugt eine einspaltige Tabelle mit Werten. Beachten Sie, dass keine Pipeline-E
 
 **Argumente**
 
-* *ColumnName:* der Name der einzelnen Spalte in der Ausgabetabelle.
-* *Start:* der kleinste Wert in der Ausgabe.
-* *Stop:* der höchste in der Ausgabe generierte Wert (oder eine Grenze für den höchsten Wert, wenn *step* diesen Wert überschreitet).
-* *Step:* die Differenz zwischen zwei aufeinanderfolgenden Werten. 
+* *ColumnName:* Der Name der einzelnen Spalte in der Ausgabetabelle.
+* *Start:* Der kleinste Wert in der Ausgabe.
+* *Stop:* Der höchste in der Ausgabe generierte Wert (oder eine Grenze für den höchsten Wert, wenn *step* diesen Wert überschreitet).
+* *Step:* Die Differenz zwischen zwei aufeinanderfolgenden Werten. 
 
 Die Argumente müssen numerische Werte, Datums- oder TimeSpan-Werte sein. Sie können nicht auf die Spalten einer Tabelle verweisen. (Wenn Sie den Bereich basierend auf einer Eingabetabelle berechnen möchten, verwenden Sie die [range*-Funktion*](#range), vielleicht mit dem [mvexpand-Operator](#mvexpand-operator).)
 
@@ -554,8 +588,8 @@ Versucht, ähnliche Datensätze zu gruppieren. Der Operator gibt für jede Grupp
 
 **Argumente**
 
-* *ColumnName:* die zu untersuchende Spalte. Sie muss vom Typ „Zeichenfolge“ sein.
-* *Threshold:* ein Wert im Bereich {0..1}. Der Standardwert ist 0,001. Bei großen Eingaben sollte der Schwellenwert klein sein. 
+* *ColumnName:* Die zu untersuchende Spalte. Sie muss vom Typ „Zeichenfolge“ sein.
+* *Threshold:* Ein Wert im Bereich {0..1}. Der Standardwert ist 0,001. Bei großen Eingaben sollte der Schwellenwert klein sein. 
 
 **Rückgabe**
 
@@ -602,7 +636,7 @@ Sortiert die Zeilen der Eingabetabelle in Reihenfolge nach einer oder mehreren S
 
 **Argumente**
 
-* *T:* die zu sortierende Tabelleneingabe.
+* *T:* Die zu sortierende Tabelleneingabe.
 * *Column:* Spalte von *T*, nach der sortiert werden soll. Der Typ der Werte muss „Numerisch“, „Datum“, „Uhrzeit“ oder „Zeichenfolge“ sein.
 * `asc` Sortierung in aufsteigender Reihenfolge von niedrig nach hoch. Die Standardeinstellung ist `desc`, von hoch zu niedrig.
 
@@ -640,9 +674,9 @@ Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0, 10,0], [10,0,
 
 **Argumente**
 
-* *Column:* optionaler Name für eine Ergebnisspalte. Nimmt standardmäßig den vom Ausdruck abgeleiteten Namen an. Bei [Namen](#names) muss Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder das Zeichen „\_“ enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
-* *Aggregation:* ein Aufruf einer Aggregationsfunktion wie z.B. `count()` oder `avg()` mit Spaltennamen als Argumente. Informationen hierzu finden Sie unter [Aggregationen](#aggregations).
-* *GroupExpression:* ein Ausdruck für die Spalten, der einen Satz von unterschiedlichen Werten bereitstellt. Normalerweise handelt es sich entweder um einen Spaltennamen, der bereits einen eingeschränkten Satz von Werten bereitstellt, oder um `bin()` mit einer numerischen Spalte oder Zeitspalte als Argument. 
+* *Column:* Optionaler Name für eine Ergebnisspalte. Nimmt standardmäßig den vom Ausdruck abgeleiteten Namen an. Bei [Namen](#names) muss Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder das Zeichen „\_“ enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
+* *Aggregation:* Ein Aufruf einer Aggregationsfunktion wie z.B. `count()` oder `avg()` mit Spaltennamen als Argumente. Siehe [Aggregationen](#aggregations).
+* *GroupExpression:* Ein Ausdruck für die Spalten, der einen Satz von unterschiedlichen Werten bereitstellt. Normalerweise handelt es sich entweder um einen Spaltennamen, der bereits einen eingeschränkten Satz von Werten bereitstellt, oder um `bin()` mit einer numerischen Spalte oder Zeitspalte als Argument. 
 
 Wenn Sie einen numerischen Ausdruck oder Zeitausdruck ohne `bin()` bereitstellen, wendet Analytics ihn automatisch mit einem Intervall von `1h` für Uhrzeiten oder von `1.0` für Zahlen an.
 
@@ -680,8 +714,8 @@ Gibt die ersten *N* Datensätze nach den angegebenen Spalten sortiert zurück.
 
 **Argumente**
 
-* *NumberOfRows:* die zurückzugebende Anzahl der Zeilen von *T*.
-* *Sort\_expression:* ein Ausdruck, nach dem die Zeilen sortiert werden. Dies ist in der Regel nur ein Spaltenname. Sie können mehrere „Sort\_expression“-Angaben machen.
+* *NumberOfRows:* Die zurückzugebende Anzahl der Zeilen von *T*.
+* *Sort\_expression:* Ein Ausdruck, nach dem die Zeilen sortiert werden. Dies ist in der Regel nur ein Spaltenname. Sie können mehrere „Sort\_expression“-Angaben machen.
 * Möglicherweise wird `asc` oder `desc` (Standard) angezeigt, um zu steuern, ob die tatsächliche Auswahl am „unteren“ oder „oberen“ Ende des Bereichs erfolgt.
 
 
@@ -707,7 +741,7 @@ Erzeugt die hierarchische Ergebnisse, wobei jede Ebene einen Drilldown der vorhe
 
 * N:int: Anzahl der Zeilen für die Rückgabe oder die Übergabe an die nächste Ebene. In einer Abfrage mit drei Ebenen mit N = 5, 3 und 3 ist die Gesamtanzahl der Zeilen 45.
 * COLUMN: eine Spalte zum Gruppieren für die Aggregation. 
-* AGGREGATION: eine [Aggregationsfunktion](#aggregations), die auf jede Gruppe von Zeilen angewendet werden soll. Die Ergebnisse dieser Aggregationen bestimmt die obersten Gruppen für die Anzeige.
+* AGGREGATION: Eine [Aggregationsfunktion](#aggregations), die auf jede Gruppe von Zeilen angewendet werden soll. Die Ergebnisse dieser Aggregationen bestimmt die obersten Gruppen für die Anzeige.
 
 
 ### union-Operator
@@ -727,10 +761,10 @@ Verwendet mindestens zwei Tabellen und gibt die Zeilen aller Tabellen zurück.
 * *Table1*, *Table2* ...
  *  Der Name einer Tabelle, wie z.B. `requests`, oder eine in einer [let-Klausel](#let-clause) definierte Tabelle; oder
  *  Ein Abfrageausdruck, wie z.B. `(requests | where success=="True")`.
- *  Ein Satz von Tabellen, die mit einem Platzhalterzeichen angegeben sind. `e*` bildet z.B. die Union aller Tabellen, die in den vorhergehenden let-Klauseln definiert wurden und deren Namen mit „e“ beginnt, zusammen mit der Tabelle der Ausnahmen.
+ *  Ein Satz von Tabellen, die mit einem Platzhalterzeichen angegeben sind. `e*` bildet z.B. die Vereinigung aller Tabellen, die in den vorhergehenden „let“-Klauseln definiert wurden und deren Namen mit „e“ beginnt, zusammen mit der Tabelle der Ausnahmen.
 * `kind`: 
  * `inner`: Das Ergebnis enthält die Teilmenge der Spalten, die in allen Eingabetabellen vorkommen.
- * `outer`: Das Ergebnis enthält alle Spalten, die in einer der Eingaben vorkommen. Zellen, die nicht durch eine Eingabezeile definiert wurden, werden auf `null` gesetzt.
+ * `outer`: Das Ergebnis enthält alle Spalten, die in einer der Eingaben vorkommen. Zellen, die nicht durch eine Eingabezeile definiert wurden, werden auf `null` festgelegt.
 * `withsource=`*ColumnName:* Wenn diese Einstellung festgelegt ist, enthält die Ausgabe eine Spalte namens *ColumnName*, deren Wert angibt, aus welchen Quelltabellen die einzelnen Zeilen stammen.
 
 **Rückgabe**
@@ -782,8 +816,8 @@ Filtert eine Tabelle auf die Teilmenge der Zeilen, die ein Prädikat erfüllen.
 
 **Argumente**
 
-* *T:* die tabellarische Eingabe, deren Datensätze gefiltert werden sollen.
-* *Predicate:* ein `boolean`-[Ausdruck](#boolean) über die Spalten von *T*. Er wird für jede Zeile in *T* ausgewertet.
+* *T*: Die tabellarische Eingabe, deren Datensätze gefiltert werden sollen.
+* *Predicate:* Ein `boolean`-[Ausdruck](#boolean) über die Spalten von *T*. Er wird für jede Zeile in *T* ausgewertet.
 
 **Rückgabe**
 
@@ -817,7 +851,7 @@ Beachten Sie, dass wir den Vergleich zwischen zwei Spalten an das Ende stellen, 
 
 ## Aggregationen
 
-Aggregationen dienen zum Kombinieren von Werten in Gruppen, die im [summarize-Vorgang](#summarize-operator) erstellt werden. In dieser Abfrage ist z.B. dcount() eine Aggregatfunktion:
+Aggregationen dienen zum Kombinieren von Werten in Gruppen, die im [„summarize“-Vorgang](#summarize-operator) erstellt werden. In dieser Abfrage ist z.B. dcount() eine Aggregatfunktion:
 
     requests | summarize dcount(name) by success
 
@@ -973,7 +1007,7 @@ Gibt die Anzahl von Zeilen zurück, für die *Predicate* als `true` ausgewertet 
 
 **Leistungstipp:** Verwenden Sie `summarize count(filter)` anstelle von `where filter | summarize count()`.
 
-> [AZURE.NOTE] Vermeiden Sie count() zum Ermitteln der Anzahl von Anforderungen, Ausnahmen oder anderen Ereignissen, die aufgetreten sind. Wenn gerade ein [Sampling](app-insights-sampling.md) durchgeführt wird, ist die Anzahl von Datenpunkten geringer als die Anzahl von tatsächlichen Ereignissen. Verwenden Sie stattdessen `summarize sum(itemCount)...`. Die Eigenschaft „itemCount“ gibt die Anzahl von ursprünglichen Ereignissen wieder, die von jedem vermerkten Datenpunkt dargestellt werden.
+> [AZURE.NOTE] Vermeiden Sie count() zum Ermitteln der Anzahl von Anforderungen, Ausnahmen oder anderen Ereignissen, die aufgetreten sind. Wenn gerade ein [Stichprobe](app-insights-sampling.md) erstellt wird, ist die Anzahl von Datenpunkten geringer als die Anzahl tatsächlicher Ereignisse. Verwenden Sie stattdessen `summarize sum(itemCount)...`. Die Eigenschaft „itemCount“ gibt die Anzahl von ursprünglichen Ereignissen wieder, die von jedem vermerkten Datenpunkt dargestellt werden.
 
 ### countif
 
@@ -983,7 +1017,7 @@ Gibt die Anzahl von Zeilen zurück, für die *Predicate* als `true` ausgewertet 
 
 **Leistungstipp:** Verwenden Sie `summarize countif(filter)` anstelle von `where filter | summarize count()`.
 
-> [AZURE.NOTE] Verwenden Sie „countif()“ nicht zum Ermitteln der Anzahl von Anforderungen, Ausnahmen oder anderen Ereignissen, die aufgetreten sind. Wenn gerade ein [Sampling](app-insights-sampling.md) durchgeführt wird, ist die Anzahl von Datenpunkten geringer als die Anzahl von tatsächlichen Ereignissen. Verwenden Sie stattdessen `summarize sum(itemCount)...`. Die Eigenschaft „itemCount“ gibt die Anzahl von ursprünglichen Ereignissen wieder, die von jedem vermerkten Datenpunkt dargestellt werden.
+> [AZURE.NOTE] Verwenden Sie „countif()“ nicht zum Ermitteln der Anzahl von Anforderungen, Ausnahmen oder anderen Ereignissen, die aufgetreten sind. Wenn gerade ein [Stichprobe](app-insights-sampling.md) erstellt wird, ist die Anzahl von Datenpunkten geringer als die Anzahl tatsächlicher Ereignisse. Verwenden Sie stattdessen `summarize sum(itemCount)...`. Die Eigenschaft „itemCount“ gibt die Anzahl von ursprünglichen Ereignissen wieder, die von jedem vermerkten Datenpunkt dargestellt werden.
 
 ### dcount
 
@@ -1039,7 +1073,7 @@ Gibt ein `dynamic`-Array (JSON) aller Werte von *Expr* in der Gruppe zurück.
 
 Gibt ein `dynamic`-Array (JSON) des Satzes eindeutiger Werte zurück, die *Expr* in der Gruppe annimmt. (Tipp: Verwenden Sie zum Zählen der eindeutigen Werte [`dcount`](#dcount).)
   
-*  *MaxSetSize* ist eine optionale Integer-Beschränkung für die maximale Anzahl zurückgegebener Elemente (Standardwert: *128*).
+*  *MaxSetSize* ist eine optionale Ganzzahlbeschränkung der maximalen Anzahl zurückgegebener Elemente (Standardwert: *128*).
 
 **Beispiel**
 
@@ -1079,7 +1113,7 @@ Gibt eine Schätzung für *Expression* des angegebenen Quantils in der Gruppe zu
 **Beispiele**
 
 
-Der Wert von `duration`, der größer als 95 % und kleiner als 5 % des Beispielsatzes ist, berechnet für jeden Anforderungsnamen:
+Der Wert von `duration`, der größer als 95 % und kleiner als 5 % des Stichprobensatzes ist, berechnet für jeden Anforderungsnamen:
 
     request 
     | summarize percentile(duration, 95)
@@ -1248,8 +1282,8 @@ Die `iff()`-Funktion wertet das erste Argument (Prädikat) aus und gibt entweder
 **Argumente**
 
 * *predicate:* Ein Ausdruck, der als `boolean`-Wert ausgewertet wird.
-* *ifTrue:* ein Ausdruck, der ausgewertet und dessen Wert von der Funktion zurückgegeben wird, wenn *predicate* als `true` ausgewertet wird.
-* *ifFalse:* ein Ausdruck, der ausgewertet und dessen Wert von der Funktion zurückgegeben wird, wenn *predicate* als `false` ausgewertet wird.
+* *ifTrue:* Ein Ausdruck, der ausgewertet und dessen Wert von der Funktion zurückgegeben wird, wenn *predicate* als `true` ausgewertet wird.
+* *ifFalse:* Ein Ausdruck, der ausgewertet und dessen Wert von der Funktion zurückgegeben wird, wenn *predicate* als `false` ausgewertet wird.
 
 **Rückgabe**
 
@@ -1359,7 +1393,17 @@ Das ausgewertete Argument. Wenn das Argument eine Tabelle ist, wird die erste Sp
 || |
 |---|-------------|
 | + | Hinzufügen |
-| - | Subtrahieren | | * | Multiplizieren | | / | Dividieren | | % | Modulo | || | `<` | Kleiner | `<=` | Kleiner oder gleich | `>` | Größer |`>=` | Größer oder gleich | `<>` | Ungleich | `!=` | Ungleich
+| - | Subtrahieren |
+| * | Multiplizieren |
+| / | Dividieren |
+| % | Modulo |
+||
+| `<` | Kleiner
+| `<=` | Kleiner gleich
+| `>` | Größer
+|`>=` | Größer gleich
+| `<>` | Ungleich
+| `!=` | Ungleich
 
 
 ### abs
@@ -1390,8 +1434,8 @@ Alias `floor`.
 
 **Argumente**
 
-* *value:* eine Zahl, ein Datum oder ein Zeitraum. 
-* *roundTo:* die bin-Größe. Eine Zahl, ein Datum oder ein Zeitraum zum Teilen des Werts (*value*). 
+* *value:* Eine Zahl, ein Datum oder ein Zeitraum. 
+* *roundTo:* Die „bin“-Größe. Eine Zahl, ein Datum oder ein Zeitraum zum Teilen des Werts (*value*). 
 
 **Rückgabe**
 
@@ -1435,14 +1479,14 @@ Ein Alias für [`bin()`](#bin).
     log10(v)  // Logarithm base 10 of v
 
 
-`v` sollte eine reelle Zahl sein, die größer als 0 ist. Andernfalls wird Null zurückgegeben.
+`v` muss eine reelle Zahl > 0 sein. Andernfalls wird Null zurückgegeben.
 
 ### rand
 
 Ein Zufallszahlengenerator.
 
-* `rand()`: eine reelle Zahl zwischen 0,0 und 1,0.
-* `rand(n)`: eine ganze Zahl zwischen 0 und n-1.
+* `rand()`: Eine reelle Zahl zwischen 0,0 und 1,0.
+* `rand(n)`: Eine ganze Zahl zwischen 0 und n-1.
 
 
 
@@ -1457,7 +1501,7 @@ Die Quadratwurzelfunktion.
 
 **Argumente**
 
-* *x:* eine reelle Zahl >= 0.
+* *x:* Eine reelle Zahl >= 0.
 
 **Rückgabe**
 
@@ -1600,7 +1644,7 @@ Die Ordinalzahl des Tags im Monat.
 
 **Argumente**
 
-* `a_date`: ein `datetime`-Wert.
+* `a_date`: Ein `datetime`-Wert.
 
 
 ### dayofweek
@@ -1615,7 +1659,7 @@ Die Anzahl von Tagen (als ganze Zahl) seit dem vorherigen Sonntag als `timespan`
 
 **Argumente**
 
-* `a_date`: ein `datetime`-Wert.
+* `a_date`: Ein `datetime`-Wert.
 
 **Rückgabe**
 
@@ -1641,7 +1685,7 @@ Die Ordinalzahl des Tags im Jahr.
 
 **Argumente**
 
-* `a_date`: ein `datetime`-Wert.
+* `a_date`: Ein `datetime`-Wert.
 
 <a name="endofday"></a><a name="endofweek"></a><a name="endofmonth"></a><a name="endofyear"></a>
 ### endofday, endofweek, endofmonth, endofyear
@@ -1687,7 +1731,7 @@ Die aktuelle UTC-Uhrzeit, die optional durch einen angegebenen Zeitraum versetzt
 
 **Argumente**
 
-* *offset:* ein `timespan`-Wert, der der aktuellen UTC-Uhrzeit hinzugefügt wird. Standard: 0.
+* *offset:* Ein `timespan`-Wert, der der aktuellen UTC-Uhrzeit hinzugefügt wird. Standard: 0.
 
 **Rückgabe**
 
@@ -1819,7 +1863,7 @@ Zählt die Vorkommnisse einer Teilzeichenfolge in einer Zeichenfolge. Einfache Z
 
 **Argumente**
 
-* *text:* eine Zeichenfolge.
+* *text:* Eine Zeichenfolge.
 * *search:* Die einfache Zeichenfolge oder der reguläre Ausdruck, die bzw. der in *text* abgeglichen werden soll.
 * *kind:* `"normal"|"regex"`, Standardwert: `normal`. 
 
@@ -1853,14 +1897,14 @@ Ruft eine Übereinstimmung für einen [regulären Ausdruck](#regular-expressions
 
 **Argumente**
 
-* *regex:* ein [regulärer Ausdruck](#regular-expressions).
-* *captureGroup:* eine positive `int`-Konstante, die die zu extrahierende Erfassungsgruppe angibt. 0 steht für die vollständige Übereinstimmung, 1 für den mit der ersten „("Klammer")“ übereinstimmenden Wert im regulären Ausdruck, 2 oder höher für nachfolgende Klammern.
-* *text:* ein zu suchender `string`.
-* *typeLiteral:* ein optionales Typliteral (z.B. `typeof(long)`). Die extrahierte Teilzeichenfolge wird, sofern angegeben, in diesen Typ konvertiert. 
+* *regex:* Ein [regulärer Ausdruck](#regular-expressions).
+* *captureGroup:* Eine positive `int`-Konstante, die die zu extrahierende Erfassungsgruppe angibt. 0 steht für die vollständige Übereinstimmung, 1 für den mit der ersten „("Klammer")“ übereinstimmenden Wert im regulären Ausdruck, 2 oder höher für nachfolgende Klammern.
+* *text:* Ein zu suchender `string`.
+* *typeLiteral:* Ein optionales Typliteral (z.B. `typeof(long)`). Die extrahierte Teilzeichenfolge wird, sofern angegeben, in diesen Typ konvertiert. 
 
 **Rückgabe**
 
-Wenn mit *regex* eine Übereinstimmung in *text* gefunden wird: die mit der angegebenen Erfassungsgruppe *captureGroup* abgeglichene Teilzeichenfolge, optional konvertiert in *typeLiteral*.
+Wenn mit *regex* eine Übereinstimmung in *text* gefunden wird: Die mit der angegebenen Erfassungsgruppe *captureGroup* abgeglichene Teilzeichenfolge, optional konvertiert in *typeLiteral*.
 
 Wenn keine Übereinstimmung vorhanden ist oder bei der Typkonvertierung ein Fehler auftritt: `null`.
 
@@ -1929,9 +1973,9 @@ Ersetzen Sie alle regex-Übereinstimmungen mit einer anderen Zeichenfolge.
 
 **Argumente**
 
-* *regex:* der [reguläre Ausdruck](https://github.com/google/re2/wiki/Syntax) zum Durchsuchen von *text*. Er kann Erfassungsgruppen in „('Klammern')“ enthalten. 
+* *regex:* Der [reguläre Ausdruck](https://github.com/google/re2/wiki/Syntax) zum Durchsuchen von *text*. Er kann Erfassungsgruppen in „('Klammern')“ enthalten. 
 * *rewrite:* Der reguläre Ersatzausdruck für jede Übereinstimmung, die mit *matchingRegex* erzielt wurde. Verwenden Sie `\0`, um auf die gesamte Übereinstimmung zu verweisen, `\1` für die erste Erfassungsgruppe, `\2` usw. für nachfolgende Erfassungsgruppen.
-* *text:* eine Zeichenfolge.
+* *text:* Eine Zeichenfolge.
 
 **Rückgabe**
 
@@ -1972,9 +2016,9 @@ Teilt eine angegebene Zeichenfolge gemäß einem angegebenen Trennzeichen, und g
 
 **Argumente**
 
-* *source:* die Quellzeichenfolge, die dem angegebenen Trennzeichen entsprechend geteilt wird.
+* *source:* Die Quellzeichenfolge, die dem angegebenen Trennzeichen entsprechend geteilt wird.
 * *delimiter:* Das Trennzeichen, das zum Teilen der Quellzeichenfolge verwendet wird.
-* *requestedIndex:* ein optionaler nullbasierter Index `int`. Sofern angegeben, enthält das zurückgegebene Zeichenfolgenarray die angeforderte Teilzeichenfolge, sofern vorhanden. 
+* *requestedIndex:* Ein optionaler nullbasierter Index `int`. Sofern angegeben, enthält das zurückgegebene Zeichenfolgenarray die angeforderte Teilzeichenfolge, sofern vorhanden. 
 
 **Rückgabe**
 
@@ -2018,8 +2062,8 @@ Extrahiert eine Teilzeichenfolge aus einer angegebenen Quellzeichenfolge, beginn
 **Argumente**
 
 * *source:* Die Quellzeichenfolge, aus der die Teilzeichenfolge entnommen wird.
-* *startingIndex:* die nullbasierte Position des Anfangszeichens der angeforderten Teilzeichenfolge.
-* *length:* ein optionaler Parameter, der zur Angabe der angeforderten Anzahl von Zeichen in der Teilzeichenfolge verwendet werden kann. 
+* *startingIndex:* Die nullbasierte Position des Anfangszeichens der angeforderten Teilzeichenfolge.
+* *length:* Ein optionaler Parameter, der zur Angabe der angeforderten Anzahl von Zeichen in der Teilzeichenfolge verwendet werden kann. 
 
 **Rückgabe**
 
@@ -2094,7 +2138,7 @@ Hier ist das Ergebnis einer Abfrage für eine Application Insights-Ausnahme. Der
 ![](./media/app-insights-analytics-reference/410.png)
 
 
-**treepath:** zum Suchen aller Pfade in einem komplexen Objekt:
+**treepath:** Zum Auffinden aller Pfade in einem komplexen Objekt:
 
     exceptions | take 1 | project timestamp, details 
     | extend path = treepath(details) 
@@ -2103,7 +2147,7 @@ Hier ist das Ergebnis einer Abfrage für eine Application Insights-Ausnahme. Der
 
 ![](./media/app-insights-analytics-reference/420.png)
 
-**buildschema:** zum Suchen des minimalen Schemas, das alle Werte des Ausdrucks in der Tabelle zulässt:
+**buildschema:** Zum Auffinden des minimalen Schemas, das alle Werte des Ausdrucks in der Tabelle zulässt:
 
     exceptions | summarize buildschema(details)
 
@@ -2138,10 +2182,10 @@ Beachten Sie, dass mit `indexer` markiert wird, an welcher Stelle Sie einen nume
 
 Verwenden Sie `parsejson` zum Erstellen eines dynamischen Literals (Alias `todynamic`) mit einem JSON-Zeichenfolgenargument:
 
-* `parsejson('[43, 21, 65]')`: ein Array von Zahlen
+* `parsejson('[43, 21, 65]')`: Ein Array von Zahlen
 * `parsejson('{"name":"Alan", "age":21, "address":{"street":432,"postcode":"JLK32P"}}')` 
-* `parsejson('21')`: ein einzelner Wert vom Typ „dynamic“ mit einer Zahl
-* `parsejson('"21"')`: ein einzelner Wert vom Typ „dynamic“ mit einer Zeichenfolge
+* `parsejson('21')`: Ein einzelner Wert vom Typ „dynamic“ mit einer Zahl
+* `parsejson('"21"')`: Ein einzelner Wert vom Typ „dynamic“ mit einer Zeichenfolge
 
 Beachten Sie, dass bei JSON, im Gegensatz zu JavaScript, die Verwendung doppelter Anführungszeichen (`"`) um Zeichenfolgen unbedingt erforderlich ist. Daher ist es im Allgemeinen einfacher, ein JSON-codiertes Zeichenfolgenliteral mit einfachen Anführungszeichen (`'`) zu kennzeichnen.
 
@@ -2275,7 +2319,7 @@ Interpretiert `string` als [JSON-Wert](http://json.org/) und gibt den Wert als `
 
 **Argumente**
 
-* *json:* ein JSON-Dokument.
+* *json:* Ein JSON-Dokument.
 
 **Rückgabe**
 
@@ -2310,9 +2354,9 @@ Die `range()`-Funktion (nicht zu verwechseln mit dem `range`-Operator) erzeugt e
 
 **Argumente**
 
-* *start:* der Wert des ersten Elements im resultierenden Array. 
-* *stop:* der Wert des letzten Elements im resultierenden Array oder der kleinste Wert, der größer ist als das letzte Element im resultierenden Array und in einem ganzzahligen Vielfachen von *step* von *start* enthalten ist.
-* *step:* die Differenz zwischen zwei aufeinanderfolgenden Elementen des Arrays.
+* *start:* Der Wert des ersten Elements im resultierenden Array. 
+* *stop:* Der Wert des letzten Elements im resultierenden Array oder der kleinste Wert, der größer ist als das letzte Element im resultierenden Array und in einem ganzzahligen Vielfachen von *step* von *start* enthalten ist.
+* *step:* Die Differenz zwischen zwei aufeinanderfolgenden Elementen des Arrays.
 
 **Beispiele**
 
@@ -2381,4 +2425,4 @@ Geben Sie einen Namen mit ['... '] oder [" ... "] an, um andere Zeichen einzubez
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

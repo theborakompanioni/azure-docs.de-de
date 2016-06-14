@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/24/2016"
+	ms.date="05/25/2016"
 	ms.author="jroth"/>
 
 # Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
@@ -73,7 +73,8 @@ Daher sollten Sie gegebenenfalls überlegen, wie hoch Ihre Azure-Ressourcengrupp
 - [Stream Analytics](#stream-analytics-limits)
 - [Abonnement](#subscription-limits)
 - [Traffic Manager](#traffic-manager-limits)
-- [Virtual Machines](#virtual-machines-limits)
+- [Virtuelle Computer](#virtual-machines-limits)
+- [Skalierungsgruppen für virtuelle Computer](#virtual-machine-scale-sets-limits)
 
 
 ### Grenzwerte für Abonnements
@@ -91,7 +92,6 @@ Die folgenden Grenzwerte gelten bei Verwendung des Azure-Ressourcen-Managers und
 
 [AZURE.INCLUDE [azure-resource-groups-limits](../includes/azure-resource-groups-limits.md)]
 
-
 ### Grenzwerte für virtuelle Computer
 #### Grenzwerte für virtuelle Computer
 [AZURE.INCLUDE [azure-virtual-machines-limits](../includes/azure-virtual-machines-limits.md)]
@@ -103,6 +103,9 @@ Die folgenden Grenzwerte gelten bei Verwendung des Azure-Ressourcen-Managers und
 
 [AZURE.INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
 
+### Grenzwerte für VM-Skalierungsgruppen
+
+[AZURE.INCLUDE [virtual-machine-scale-sets-limits](../includes/azure-virtual-machine-scale-sets-limits.md)]
 
 ### Grenzwerte für Netzwerke
 
@@ -184,13 +187,19 @@ In der folgende Tabelle werden die Grenzwerte für Azure Biztalk Services aufgef
 
 Die Tarife bestimmen die Kapazität und die Beschränkungen des Suchdiensts. Folgende Tarife sind verfügbar:
 
-- **Free:** Mehrmandantendienst, der mit anderen Azure-Abonnenten gemeinsam genutzt wird und für Bewertung und kleine Entwicklungsprojekte vorgesehen ist.
-- **Basic (Vorschau)** bietet spezifische Computerressourcen für Produktionsworkloads mit geringerem Umfang. Dieser Tarif wird derzeit in der Vorschau und zu einem reduzierten Preis angeboten.
-- **Standard (S1 und S2)** ist für Produktions-Workloads vorgesehen. Eine Version mit höherer Kapazität (**S2**) ist auf Anfrage verfügbar (senden Sie eine E-Mail an azuresearch_contact@microsoft.com).
+- *Free:* Mehrmandantendienst, der mit anderen Azure-Abonnenten gemeinsam genutzt wird und für Bewertung und kleine Entwicklungsprojekte vorgesehen ist
+- *Basic (Vorschau)* bietet spezifische Computerressourcen für Produktionsworkloads mit geringerem Umfang. Dieser Tarif wird derzeit in der Vorschau und zu einem reduzierten Preis angeboten.
+- *Standard (S1 und S2)* ist für Produktionsworkloads vorgesehen. Eine Version mit höherer Kapazität (*S2*) ist auf Anfrage verfügbar (wenden Sie sich an den Support oder an azuresearch_contact@microsoft.com).
 
-[AZURE.INCLUDE [azure-search-limits-all](../includes/azure-search-limits-all.md)]
+**Tarifgrenzwerte**
 
-Weitere Informationen zu anderen Einschränkungen, z.B. Dokumentgröße, Schlüssel, Anforderungen und Antworten, finden Sie unter [Grenzwerte für den Azure Search-Dienst](search/search-limits-quotas-capacity.md).
+[AZURE.INCLUDE [azure-search-limits-all](../includes/azure-search-limits-tier.md)]
+
+**Speichergrenzwerte**
+
+[AZURE.INCLUDE [azure-search-limits-all](../includes/azure-search-limits-storage.md)]
+
+Informationen zu anderen Einschränkungen, z.B. Dokumentgröße, Abfragen pro Sekunde, Schlüssel, Anforderungen und Antworten, finden Sie unter [Grenzwerte für den Azure Search-Dienst](search/search-limits-quotas-capacity.md).
 
 ### Media Services-Grenzwerte
 
@@ -291,4 +300,4 @@ Einschränkungen für SQL-Datenbanken finden Sie unter [Ressourceneinschränkung
 
 [Größen für Cloud Services](cloud-services/cloud-services-sizes-specs.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

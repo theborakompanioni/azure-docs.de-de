@@ -26,6 +26,9 @@ Sie können NuGet verwenden, um beide Pakete zu erhalten. Folgen Sie diesen Schr
 3. Suchen Sie online nach „ConfigurationManager“, und klicken Sie auf **Installieren**, um Azure Configuration Manager zu installieren.
 
 >[AZURE.NOTE] Das Storage Client Library-Paket ist auch im [Azure SDK für .NET](https://azure.microsoft.com/downloads/) enthalten. Wir empfehlen Ihnen aber die Installation der Storage Client Library über NuGet, um sicherzustellen, dass Sie immer über die aktuelle Version der Clientbibliothek verfügen.
+>
+>Die ODataLib-Abhängigkeiten in der Speicherclientbibliothek für .NET werden durch die ODataLib-Pakete (Version 5.0.2 und höher), die über NuGet verfügbar sind, und nicht durch WCF Data Services aufgelöst. Die ODataLib-Bibliotheken können direkt heruntergeladen werden, oder es wird über Ihr Codeprojekt durch NuGet darauf verwiesen. Die spezifischen ODataLib-Pakete, die von der Speicherclientbibliothek verwendet werden, lauten [OData](http://nuget.org/packages/Microsoft.Data.OData/5.0.2), [Edm](http://nuget.org/packages/Microsoft.Data.Edm/5.0.2) und [Spatial](http://nuget.org/packages/System.Spatial/5.0.2). Diese Bibliotheken werden von Azure-Tabellenspeicherklassen verwendet und sind erforderliche Abhängigkeiten für die Programmierung mit der Speicherclientbibliothek.
+
 
 ### Bestimmen der Zielumgebung
 
@@ -65,4 +68,4 @@ Wenn Sie den Speicheremulator verwenden möchten, können Sie eine Verknüpfung 
 
 	<add key="StorageConnectionString" value="UseDevelopmentStorage=true;" />
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0601_2016-->

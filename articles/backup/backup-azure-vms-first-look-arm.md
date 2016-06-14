@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Schützen von ARM-VMs per Azure Backup | Microsoft Azure"
-	description="Schützen Sie ARM-VMs mit dem Azure Backup-Dienst. Verwenden Sie Sicherungen virtueller ARM- und Storage Premium-Computer, um Ihre Daten zu schützen. Erstellen und registrieren Sie einen Recovery Services-Tresor. Registrieren Sie VMs, erstellen Sie eine Richtlinie, und schützen Sie VMs in Azure."
+	pageTitle="Schützen von mit Resource Manager erstellten virtuellen Computern mit Azure Backup | Microsoft Azure"
+	description="Schützen Sie mit Resource Manager erstellte virtuelle Computer mit dem Azure Backup-Dienst. Verwenden Sie Sicherungen von mit Resource Manager bereitgestellten virtuellen Computern und Sicherungen von virtuellen Storage Premium-Computern, um Ihre Daten zu schützen. Erstellen und registrieren Sie einen Recovery Services-Tresor. Registrieren Sie VMs, erstellen Sie eine Richtlinie, und schützen Sie VMs in Azure."
 	services="backup"
 	documentationCenter=""
 	authors="markgalioto"
-	manager="jwhit"
+	manager="cfreeman"
 	editor=""
 	keyword="backups; vm backup"/>
 
@@ -14,26 +14,26 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="03/31/2016"
+	ms.date="06/03/2016"
 	ms.author="markgal; jimpark"/>
 
 
-# Einführung: Sichern von ARM-VMs in einem Recovery Services-Tresor
+# Einführung: Sichern von mit Resource Manager bereitgestellten virtuellen Computern in einem Recovery Services-Tresor
 
 > [AZURE.SELECTOR]
-- [Sichern von ARM-VMs](backup-azure-vms-first-look-arm.md)
+- [Sichern von mit Resource Manager bereitgestellten virtuellen Computern](backup-azure-vms-first-look-arm.md)
 - [Sichern von VMs im klassischen Modus](backup-azure-vms-first-look.md)
 
 In diesem Tutorial werden Sie durch die Schritte zum Erstellen eines Recovery Services-Tresors und Sichern eines virtuellen Azure-Computers (VM) geführt. Recovery Services-Tresore schützen Folgendes:
 
-- Support für virtuelle Azure Resource Manager (ARM)-Computer
+- Mit Azure Resource Manager bereitgestellte virtuelle Computer
 - Klassische virtuelle Computer
 - Virtuelle Standardspeichercomputer
 - Virtuelle Storage Premium-Computer
 
 Weitere Informationen zum Schutz virtueller Storage Premium-Computer finden Sie unter [Back up and Restore Premium Storage VMs](backup-introduction-to-azure-backup.md#back-up-and-restore-premium-storage-vms) (Sichern und Wiederherstellen virtueller Storage Premium-Computer).
 
->[AZURE.NOTE] Dieses Tutorial setzt voraus, dass Sie in Ihrem Azure-Abonnement bereits einen virtuellen Computer verwenden und die entsprechenden Schritte durchgeführt haben, um dem Backup-Dienst den Zugriff auf den virtuellen Computer zu erlauben. Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [das Resource Manager-Modell und das klassische Modell](../resource-manager-deployment-model.md). Dieser Artikel ist für die Verwendung mit Resource Manager und ARM-basierten VMs bestimmt.
+>[AZURE.NOTE] Dieses Tutorial setzt voraus, dass Sie in Ihrem Azure-Abonnement bereits einen virtuellen Computer verwenden und die entsprechenden Schritte durchgeführt haben, um dem Backup-Dienst den Zugriff auf den virtuellen Computer zu erlauben. Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../resource-manager-deployment-model.md). Dieser Artikel ist für die Verwendung mit Resource Manager und virtuellen Computern bestimmt, die mit Resource Manager bereitgestellt wurden.
 
 Dies sind im Allgemeinen die Schritte, die auszuführen sind.
 
@@ -189,35 +189,7 @@ So führen Sie **Jetzt sichern** aus:
 
     Wenn der Sicherungsauftrag abgeschlossen ist, lautet der Status *Abgeschlossen*.
 
-## Definieren einer Sicherungsrichtlinie
-
-Mit einer Sicherungsrichtlinie wird eine Matrix dafür definiert, wann Datenmomentaufnahmen erstellt werden und wie lange diese Momentaufnahmen aufbewahrt werden. Wenn Sie eine Richtlinie zum Sichern eines virtuellen Computers definieren, können Sie einen Sicherungsauftrag *einmal pro Tag* auslösen. Wenn Sie eine neue Richtlinie erstellen, wird sie auf den Tresor angewendet. Die Oberfläche für die Sicherungsrichtlinie sieht wie folgt aus:
-
-![Sicherungsrichtlinie](./media/backup-azure-vms-first-look-arm/backup-policy-daily-raw.png)
-
-So erstellen Sie eine Richtlinie
-
-1. Geben Sie unter **Richtlinienname** einen Namen für die Richtlinie ein.
-
-2. Sie können in täglichen oder wöchentlichen Abständen Momentaufnahmen Ihrer Daten erstellen. Wählen Sie im Dropdownmenü **Sicherungshäufigkeit** aus, ob Momentaufnahmen der Daten täglich oder wöchentlich erstellt werden sollen.
-
-    - Wenn Sie als Intervall „Täglich“ auswählen, können Sie das hervorgehobene Steuerelement verwenden, um die Tageszeit für die Momentaufnahme auszuwählen. Deaktivieren Sie zum Ändern der Stundenangabe die vorhandene Stunde, und wählen Sie dann die neue Stunde aus.
-
-    ![Tägliche Sicherungsrichtlinie](./media/backup-azure-vms-first-look-arm/backup-policy-daily.png) <br/>
-
-    - Verwenden Sie bei Auswahl des Intervalls „Wöchentlich“ die hervorgehobenen Steuerelemente, um die Wochentage und die Uhrzeit für die Erstellung der Momentaufnahme auszuwählen. Wählen Sie im Menü „Tag“ einen oder mehrere Tage aus. Wählen Sie im Menü „Stunde“ eine Stunde aus. Deaktivieren Sie zum Ändern der Stundenangabe die ausgewählte Stunde, und wählen Sie dann die neue Stunde aus.
-
-    ![Wöchentliche Sicherungsrichtlinie](./media/backup-azure-vms-first-look-arm/backup-policy-weekly.png)
-
-3. Standardmäßig sind alle Optionen unter **Beibehaltungsdauer** aktiviert. Deaktivieren Sie alle einschränkenden Optionen für die Beibehaltungsdauer, die Sie nicht verwenden möchten.
-
-    >[AZURE.NOTE] Wenn eine VM geschützt wird, wird einmal pro Tag ein Sicherungsauftrag ausgeführt. Der Zeitpunkt, zu dem die Sicherung ausgeführt wird, ist für jede Beibehaltungsdauer gleich.
-
-    Geben Sie mit den entsprechenden Steuerelementen die gewünschten Intervalle an. Mit monatlichen und jährlichen Beibehaltungsdauern können Sie die Momentaufnahmen basierend auf einem wöchentlichen oder täglichen Inkrement angeben.
-
-4. Nachdem Sie alle Optionen für die Richtlinie festgelegt haben, klicken Sie unten auf dem Blatt auf **OK**.
-
-    Die neue Richtlinie wird so festgelegt, dass sie auf den Tresor angewendet wird, nachdem die Einstellungen für den Recovery Services-Tresor abgeschlossen wurden. Kehren Sie zu Schritt 6 des Abschnitts [Auswählen der Szenariosatzrichtlinie und Definieren von zu schützenden Elementen](backup-azure-vms-first-look-arm.md#step-2---select-scenario-set-policy-and-define-items-to-protect) zurück.
+[AZURE.INCLUDE [backup-create-backup-policy-for-vm](../../includes/backup-create-backup-policy-for-vm.md)]
 
 ## Installieren des VM-Agents auf dem virtuellen Computer
 
@@ -230,7 +202,7 @@ Die folgende Tabelle enthält weitere Informationen zum VM-Agent für virtuelle 
 | **Vorgang** | **Windows** | **Linux** |
 | --- | --- | --- |
 | Installieren des VM-Agent | <li>Laden Sie den [Agent-MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) herunter, und installieren Sie ihn. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. <li>[Aktualisieren Sie die VM-Eigenschaft](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx), um anzugeben, dass der Agent installiert wurde. | <li>Installieren Sie den neuesten [Linux-Agent](https://github.com/Azure/WALinuxAgent) aus GitHub. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. <li> [Aktualisieren Sie die VM-Eigenschaft](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx), um anzugeben, dass der Agent installiert wurde. |
-| Aktualisieren des VM-Agents | Das Aktualisieren des VM-Agents ist so einfach wie das Neuinstallieren der [Binärdateien für den VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. | Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents](../virtual-machines-linux-update-agent.md). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |
+| Aktualisieren des VM-Agents | Das Aktualisieren des VM-Agents ist so einfach wie das Neuinstallieren der [Binärdateien für den VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. | Folgen Sie den Anweisungen unter [Aktualisieren des virtuellen Linux-Agents](../virtual-machines-linux-update-agent.md). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |
 | Überprüfen der VM-Agent-Installation | <li>Navigieren Sie auf dem virtuellen Azure-Computer zum Ordner *C:\\WindowsAzure\\Packages*. <li>Dieser Ordner enthält die Datei „WaAppAgent.exe“.<li> Klicken Sie mit der rechten Maustaste auf die Datei, wechseln Sie zu **Eigenschaften**, und wählen Sie dann die Registerkarte **Details** aus. Im Feld mit der Produktversion sollte 2.6.1198.718 oder eine höhere Version angegeben sein. | N/V |
 
 
@@ -247,4 +219,4 @@ Falls bei der Durchführung einiger Aufgaben in diesem Artikel Probleme auftrete
 ## Fragen?
 Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](http://aka.ms/azurebackup_feedback).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

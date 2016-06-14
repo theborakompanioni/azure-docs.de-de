@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="02/25/2016"
+    ms.date="05/31/2016"
     ms.author="mbaldwin" />
 
 
@@ -35,4 +35,4 @@ Ihre Meinung zählt. Am Ende jeder Sitzung wird ein Dialogfeld angezeigt, in dem
 
 >[AZURE.NOTE] Da es sich um eine kontrollierte Umgebung zu Demonstrationszwecken handelt, ist der externe Internetzugriff von den veröffentlichten Demonstrationsanwendungen nicht aktiviert. Deshalb stehen Dienste wie OneDrive nicht zur Verfügung. Außerdem sind die gemeinsame Nutzung der Zwischenablage (Kopieren und Einfügen) sowie die USB- und Druckerumleitung deaktiviert.
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0608_2016-->

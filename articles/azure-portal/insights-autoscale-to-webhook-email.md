@@ -41,8 +41,8 @@ Bei neueren ARM-basierten virtuellen Computern (Skalierungsgruppen für virtuell
 ## Authentifizierung in Webhooks
 Es gibt zwei Arten von Authentifizierungs-URIs:
 
-	1. Token-base authentication, where you save the webhook URI with a token ID as a query parameter. For example, https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue
-	2. Basic authentication, where you use a user ID and password. For example, https://userid:password@mysamplealert/webcallback?someparamater=somevalue&parameter=value
+1. Bei der tokenbasierten Authentifizierung wird der Webhook-URI mit einer Token-ID als Abfrageparameter gespeichert. Beispiel: https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue
+2. Bei der Standardauthentifizierung werden eine Benutzer-ID und ein Kennwort verwendet. Beispiel: https://userid:password@mysamplealert/webcallback?someparamater=somevalue&parameter=value
 
 ## Benachrichtigung über automatische Skalierung mit dem Webhook-Nutzlastschema
 Beim Generieren der Benachrichtigung über automatische Skalierung werden die folgenden Metadaten in die Webhook-Nutzlast aufgenommen:
@@ -91,6 +91,6 @@ Beim Generieren der Benachrichtigung über automatische Skalierung werden die fo
 |portalLink |Ja |Link vom Azure-Portal zur Zusammenfassungsseite der Zielressource|
 |oldCapacity|	Ja |Die aktuelle (alte) Anzahl von Instanzen, wenn die automatische Skalierung eine Skalierungsaktion durchgeführt hat|
 |newCapacity|	Ja |Die neue Anzahl der Instanzen, auf die die automatische Skalierung die Ressource skaliert hat|
-|Eigenschaften|	Nein|	Optional. Gruppe von <Key  Value>-Paaren (z. B. Wörterbuch <String  String>). Das Feld "properties" ist optional. In einer angepassten Benutzeroberfläche oder einem auf Logik-Apps basierenden Workflow können Sie Schlüssel und Werte eingeben, die mithilfe der Nutzlast übergeben werden können. Alternativ können benutzerdefinierte Eigenschaften über den Webhook-URI selbst (als Abfrageparameter) an den ausgehenden Webhook-Aufruf zurückgegeben werden.|
+|Eigenschaften|	Nein|	Optional. Gruppe von <Key  Value>-Paaren (z.B. Wörterbuch <String  String>). Das Feld "properties" ist optional. In einer angepassten Benutzeroberfläche oder einem auf Logik-Apps basierenden Workflow können Sie Schlüssel und Werte eingeben, die mithilfe der Nutzlast übergeben werden können. Alternativ können benutzerdefinierte Eigenschaften über den Webhook-URI selbst (als Abfrageparameter) an den ausgehenden Webhook-Aufruf zurückgegeben werden.|
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0601_2016-->

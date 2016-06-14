@@ -14,16 +14,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/25/2016" 
+	ms.date="05/27/2016" 
 	ms.author="nitinme"/>
 
 
 # Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung zum Apache Spark-Cluster in Azure HDInsight (Vorschau)
 
-In diesem Artikel erfahren Sie, wie Sie Jupyter Notebook mit den benutzerdefinierten Kerneln PySpark (für Python) und Spark (für Scala) mit Spark Magic installieren und das Notebook mit einem HDInsight-Cluster verbinden.
-
-Obwohl die Jupyter Notebooks bereits im Spark-Cluster in Azure HDInsight verfügbar sind, bietet Ihnen die Installation von Jupyter auf Ihrem Computer die Option, Ihre Notebooks lokal zu erstellen, Ihre Anwendung in einem aktiven Cluster zu testen und die Notebooks anschließend in den Cluster hochzuladen. Sie können die Notebooks entweder mithilfe des im Cluster ausgeführten Jupyter Notebooks hochladen oder sie im Ordner „/HdiNotebooks“ in dem dem Cluster zugeordneten Speicherkonto speichern. Weitere Informationen zum Speichern von Notebooks im Cluster finden Sie unter [Wo werden die Notebooks gespeichert?](hdinsight-apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)
-
+In diesem Artikel erfahren Sie, wie Sie Jupyter Notebook mit den benutzerdefinierten Kerneln PySpark (für Python) und Spark (für Scala) mit Spark Magic installieren und das Notebook mit einem HDInsight-Cluster verbinden. Es kann eine Reihe von Gründen geben, Jupyter auf dem lokalen Computer zu installieren, und es auch können auch einige Probleme auftreten. Eine Liste der Gründe und Probleme finden Sie im Abschnitt [Warum sollte ich Jupyter auf meinem Computer installieren](#why-should-i-install-jupyter-on-my-computer) am Ende dieses Artikels.
 
 Die Installation von Jupyter und Spark Magic auf Ihrem Computer umfasst drei Hauptschritte.
 
@@ -31,18 +28,18 @@ Die Installation von Jupyter und Spark Magic auf Ihrem Computer umfasst drei Hau
 * Installieren der PySpark- und Spark-Kernel mit Spark Magic
 * Konfigurieren von Spark Magic für den Zugriff auf den Spark-Cluster in HDInsight
 
-Weitere Informationen zu den benutzerdefinierten Kerneln und Spark Magic für Jupyter Notebooks mit HDInsight-Clustern, finden Sie unter [Verfügbare Kernels für Jupyter Notebooks mit HDInsight Spark-Linux-Clustern in HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md).
+Weitere Informationen zu den benutzerdefinierten Kerneln und Spark Magic für Jupyter-Notebooks mit HDInsight-Clustern finden Sie unter [Verfügbare Kernels für Jupyter-Notebooks mit Apache Spark-Linux-Clustern in HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md).
 
-**Voraussetzungen:**
+##Voraussetzungen
 
 Die hier aufgeführten Voraussetzungen gelten nicht für die Installation von Jupyter. Sie gelten für die Herstellung einer Verbindung von einem Jupyter Notebook zu einem HDInsight-Cluster, sobald das Notebook installiert wurde.
 
 - Ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/) (in englischer Sprache).
-- Einen Apache Spark-Cluster unter HDInsight (Linux). Anleitungen finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
+- Einen Apache Spark-Cluster unter HDInsight (Linux). Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
 
 ## Installieren von Jupyter Notebook auf Ihrem Computer
 
-Sie müssen Python installieren, bevor Sie Jupyter Notebooks installieren können. Python und Jupyter stehen als Bestandteile der [Ananconda-Verteilung](https://www.continuum.io/downloads) zur Verfügung. Wenn Sie Anaconda installieren, installieren Sie eigentlich eine Python-Verteilung. Nachdem Sie Anaconda installiert haben, können Sie die Jupyter-Installation über einen Befehl hinzufügen. In diesem Abschnitt werden die Schritte erläutert, die Sie befolgen müssen.
+Sie müssen Python installieren, bevor Sie Jupyter Notebooks installieren können. Python und Jupyter stehen als Bestandteile der [Anaconda-Verteilung](https://www.continuum.io/downloads) zur Verfügung. Wenn Sie Anaconda installieren, installieren Sie eigentlich eine Python-Verteilung. Nachdem Sie Anaconda installiert haben, können Sie die Jupyter-Installation über einen Befehl hinzufügen. In diesem Abschnitt werden die Schritte erläutert, die Sie befolgen müssen.
 
 1. Laden Sie das [Anaconda-Installationsprogramm](https://www.continuum.io/downloads) für Ihre Plattform herunter, und führen Sie das Setup aus. Stellen Sie sicher, dass während der Ausführung des Setup-Assistenten die Option für das Hinzufügen von Anaconda zu Ihrer PATH-Variablen aktiviert ist.
 
@@ -50,7 +47,7 @@ Sie müssen Python installieren, bevor Sie Jupyter Notebooks installieren könne
 
 		conda install jupyter
 
-	Weitere Informationen zu Installation von Jupyter finden Sie unter [Installing Jupyter using Anaconda](http://jupyter.readthedocs.io/en/latest/install.html) (Installieren von Jupyter mit Anaconda).
+	Weitere Informationen zur Installation von Jupyter finden Sie unter [Installing Jupyter using Anaconda](http://jupyter.readthedocs.io/en/latest/install.html) (Installieren von Jupyter mit Anaconda).
 
 ## Installieren der Kernel und Spark Magic
 
@@ -105,7 +102,7 @@ In diesem Abschnitt lernen Sie, Spark Magic zu konfigurieren, nachdem Sie es ins
 		  }
 		}
 
-4. Ersetzen Sie **{USERNAME}**, **{CLUSTERDNSNAME}**, und **{BASE64ENCODEDPASSWORD}** durch die entsprechende Werte. Sie können eine Reihe von Dienstprogrammen in Ihrer bevorzugten Programmiersprache oder online nutzen, um ein base64-codiertes Kennwort für Ihr eigentliches Kennwort zu generieren. Dies wäre ein einfacher Python-Ausschnitt, den Sie über die Befehlszeile ausführen können:
+4. Ersetzen Sie **{USERNAME}**, **{CLUSTERDNSNAME}**, und **{BASE64ENCODEDPASSWORD}** durch die entsprechenden Werte. Sie können eine Reihe von Dienstprogrammen in Ihrer bevorzugten Programmiersprache oder online nutzen, um ein base64-codiertes Kennwort für Ihr eigentliches Kennwort zu generieren. Dies wäre ein einfacher Python-Ausschnitt, den Sie über die Befehlszeile ausführen können:
 
 		python -c "import base64; print(base64.b64encode('{YOURPASSWORD}'))"
 
@@ -131,6 +128,18 @@ In diesem Abschnitt lernen Sie, Spark Magic zu konfigurieren, nachdem Sie es ins
 		Wenn Sie die Ausgabe erfolgreich abrufen können, wird Ihre Verbindung zu dem HDInsight-Cluster getestet.
 
 	>[AZURE.TIP] Wenn Sie die Notebookkonfiguration für die Verbindung zu einem anderen Cluster aktualisieren möchten, aktualisieren Sie die Datei „config.json“ mit einem neuen Satz von Werten, wie in Schritt 3 oben dargestellt.
+
+## Warum sollte ich Jupyter auf meinem Computer installieren?
+
+Es kann zahlreiche Gründe geben, warum Sie Jupyter auf dem Computer installieren und mit einem Spark-Cluster in HDInsight verbinden möchten.
+
+* Obwohl die Jupyter Notebooks bereits im Spark-Cluster in Azure HDInsight verfügbar sind, bietet Ihnen die Installation von Jupyter auf Ihrem Computer die Option, Ihre Notebooks lokal zu erstellen, Ihre Anwendung in einem aktiven Cluster zu testen und die Notebooks anschließend in den Cluster hochzuladen. Sie können die Notebooks entweder mithilfe des im Cluster ausgeführten Jupyter Notebooks hochladen oder sie im Ordner „/HdiNotebooks“ in dem dem Cluster zugeordneten Speicherkonto speichern. Weitere Informationen zum Speichern von Notebooks im Cluster finden Sie unter [Wo werden die Notebooks gespeichert?](hdinsight-apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)
+* Wenn Notebooks lokal verfügbar sind, können Sie basierend auf den Anwendungsanforderungen Verbindungen mit unterschiedlichen Spark-Clustern herstellen.
+* Sie können GitHub verwenden, um ein Quellcodeverwaltungssystem zu implementieren und Versionskontrolle für die Notebooks zu ermöglichen. Sie können auch eine Umgebung für Zusammenarbeit einrichten, in der mehrere Benutzer mit dem gleichen Notebook arbeiten können.
+* Sie können mit Notebooks lokal ohne einen Cluster arbeiten. Sie benötigen einen Cluster nur zum Testen der Notebooks, nicht für das manuelle Verwalten von Notebooks oder einer Entwicklungsumgebung.
+* Es ist möglicherweise einfacher, Ihre eigene lokale Entwicklungsumgebung zu konfigurieren, statt die Jupyter-Installation im Cluster zu konfigurieren. Sie können sämtliche Software nutzen, die Sie lokal installiert haben, ohne Remotecluster zu konfigurieren.
+
+>[AZURE.WARNING] Wenn Jupyter auf dem lokalen Computer installiert ist, können mehrere Benutzer gleichzeitig das gleiche Notebook im gleichen Spark-Cluster ausführen. In diesem Fall werden mehrere Livy-Sitzungen erstellt. Wenn ein Problem auftritt, das Sie debuggen möchten, ist es eine komplexe Aufgabe nachzuverfolgen, welche Livy-Sitzung welchem Benutzer gehört.
 
 
 
@@ -168,4 +177,4 @@ In diesem Abschnitt lernen Sie, Spark Magic zu konfigurieren, nachdem Sie es ins
 
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

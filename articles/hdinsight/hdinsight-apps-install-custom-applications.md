@@ -14,7 +14,7 @@
    	ms.topic="hero-article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="05/24/2016"
+   	ms.date="06/07/2016"
    	ms.author="jgao"/>
 
 # Installieren benutzerdefinierter HDInsight-Anwendungen
@@ -71,6 +71,8 @@ Zum Bereitstellen der Anwendung „Hue“ benötigen Sie folgende Dateien:
 
 2. Befolgen Sie die Anleitung, um den Cluster zu erstellen und Hue zu installieren. Weitere Informationen zum Erstellen von HDInsight-Clustern finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
+Neben dem Azure-Portal können Sie ARM-Vorlagen auch mithilfe von [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-with-powershell) sowie mithilfe der [Azure-Befehlszeilenschnittstelle](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-with-azure-cli) aufrufen.
+
 ## Überprüfen der Installation
 
 Sie können den Status der Anwendung im Azure-Portal nachverfolgen und sich so vergewissern, dass die Anwendung installiert wurde. Darüber hinaus können Sie sich vergewissern, dass alle HTTP-Endpunkte wie erwartet verfügbar sind, und die Webseite überprüfen (sofern vorhanden):
@@ -87,6 +89,7 @@ Sie können den Status der Anwendung im Azure-Portal nachverfolgen und sich so v
 ## Behandeln von Installationsproblemen
 
 Sie können den Status der Anwendungsinstallation über die Portalbenachrichtigung überprüfen. (Klicken Sie oben im Portal auf das Glockensymbol.)
+
 
 Wenn eine Anwendungsinstallation nicht erfolgreich ist, können Sie die Fehlermeldungen anzeigen und Informationen an drei Stellen debuggen:
 
@@ -106,6 +109,32 @@ Wenn eine Anwendungsinstallation nicht erfolgreich ist, können Sie die Fehlerme
 
     Weitere Informationen finden Sie unter [Problembehandlung](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting).
 
+## Entfernen von HDInsight-Anwendungen
+
+HDInsight-Anwendungen können auf unterschiedliche Weise gelöscht werden.
+
+### Mithilfe des Portals
+
+**So entfernen Sie eine Anwendung mithilfe des Portals**
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Klicken Sie im linken Menü auf **HDInsight-Cluster**. Sollte diese Option nicht angezeigt werden, klicken Sie auf **Durchsuchen** und anschließend auf **HDInsight-Cluster**.
+3. Klicken Sie auf den Cluster, in dem Sie die Anwendung installiert haben.
+4. Klicken Sie auf dem Blatt **Einstellungen** unter der Kategorie **Allgemein** auf **Anwendungen**. Eine Liste mit installierten Anwendungen wird angezeigt. Im Rahmen dieses Tutorials wird **Hue** auf dem Blatt **Installierte Apps** angezeigt.
+5. Klicken Sie mit der rechten Maustaste auf die zu entfernende Anwendung, und klicken Sie anschließend auf **Löschen**.
+6. Klicken Sie auf **Ja**, um zu bestätigen.
+
+Über das Portal können Sie auch den Cluster oder die Ressourcengruppe löschen, die die Anwendung enthält.
+
+### Mithilfe von Azure PowerShell
+
+Mit Azure PowerShell können Sie den Cluster oder die Ressourcengruppe löschen. Weitere Informationen finden Sie unter [Löschen von Clustern mithilfe von Azure PowerShell](hdinsight-administer-use-powershell.md#delete-clusters).
+
+### Mithilfe der Azure-Befehlszeilenschnittstelle
+
+Mit der Azure-Befehlszeilenschnittstelle können Sie den Cluster oder die Ressourcengruppe löschen. Weitere Informationen finden Sie unter [Löschen von Clustern mithilfe der Azure-Befehlszeilenschnittstelle](hdinsight-administer-use-command-line.md#delete-clusters).
+
+
 ## Nächste Schritte
 
 - [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: Installieren einer HDInsight-Anwendung): Hier erfahren Sie, wie Sie ARM-Vorlagen für die Bereitstellung von HDInsight-Anwendungen entwickeln.
@@ -113,4 +142,4 @@ Wenn eine Anwendungsinstallation nicht erfolgreich ist, können Sie die Fehlerme
 - [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md): Hier erfahren Sie, wie Sie mithilfe der Skriptaktion zusätzliche Anwendungen installieren.
 - [Erstellen Linux-basierter Hadoop-Cluster in HDInsight mithilfe von ARM-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Hier erfahren Sie, wie Sie ARM-Vorlagen für die Erstellung von HDInsight-Clustern aufrufen.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

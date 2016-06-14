@@ -607,7 +607,7 @@ Kennzeichnen von Leistungsindikatorwerten von unter 50% als LOW, andernfalls als
 **Unterstützte Funktionen**
 
 
-| Funktion | Beschreibung | Syntaxbeispiele|  
+| Funktion | Beschreibung | Syntaxbeispiele|
 |---------|---------|---------|
 | abs | Gibt den absoluten Wert des angegebenen Werts oder der Funktion zurück.| `abs(x)` <br> `abs(-5)` |
 | and | Gibt den Wert „true“ zurück, wenn sich für alle Operanden das Ergebnis „true“ ergibt. | `and(not(exists(**popularity**)),exists(**price**))` |
@@ -757,4 +757,4 @@ Weitere Informationen zu Protokollsuchen:
 - Machen Sie sich mit [Protokollsuchen](log-analytics-log-searches.md) vertraut, um ausführliche Informationen anzuzeigen, die von Lösungen gesammelt werden.
 - Verwenden Sie [benutzerdefinierte Felder in Log Analytics](log-analytics-custom-fields.md), um Protokollsuchen zu erweitern.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!----HONumber=AcomDC_0504_2016-->

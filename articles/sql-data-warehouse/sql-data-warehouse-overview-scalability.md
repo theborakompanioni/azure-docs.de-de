@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/28/2016"
+   ms.date="05/26/2016"
    ms.author="barbkess;sonyama"/>
 
 # Leistungsskalierbarkeit für Azure SQL Data Warehouse
@@ -56,7 +56,7 @@ Eine Liste der DWUs finden Sie im Artikel [Kapazitätsgrenzen][] unter den SLOs.
 
 ### Wie skaliere ich die Leistung?
 
-Um die Computeleistung flexibel zu erhöhen oder zu verringern, ändern Sie einfach die Einstellung für die Data Warehouse-Einheiten (DWUs) für Ihre Datenbank. Hinter den Kulissen ändert SQL Data Warehouse die Zuteilung von CPU- und Speicherressourcen mithilfe der schnellen und einfachen Bereitstellungsfunktionen der SQL-Datenbank.
+Um die Computeleistung flexibel zu erhöhen oder zu verringern, ändern Sie einfach die Einstellung für die Data Warehouse-Einheiten (DWUs) für Ihre Datenbank. Hinter den Kulissen hält SQL Data Warehouse Ihre Instanz an, ändert die CPU- und Arbeitsspeicherbelegungen und startet die Instanz dann neu.
 
 DWUs werden in Blöcken von je 100 zugeordnet, aber nicht alle Blöcke sind verfügbar. Mit den DWUs steigt die Leistung linear an. Auf höheren DWU-Ebenen müssen Sie mehr als 100 DWUs hinzufügen, um eine merkliche Verbesserung der Leistung zu erzielen. Damit Sie sinnvolle DWU-Steigerungen wählen können, bieten wir die DWU-Ebenen an, mit denen Sie die besten Ergebnisse erzielen.
  
@@ -142,13 +142,11 @@ Informationen zu zusätzlichen zentralen Leistung- und Skalierbarkeitskonzepten 
 [Fortsetzen von Computeressourcen mit PowerShell]: ./sql-data-warehouse-manage-scale-out-tasks-powershell.md#task-3-resume-compute
 [Fortsetzen von Computeressourcen mit REST-APIs]: ./sql-data-warehouse-manage-scale-out-tasks-rest-api.md#task-3-resume-compute
 
-[Parallelitätsmodell]: sql-data-warehouse-develop-concurrency.md
-[Entwerfen von Tabellen]: sql-data-warehouse-develop-table-design.md
-[Auswählen eines Hashverteilungsschlüssels für die Tabelle]: sql-data-warehouse-develop-hash-distribution-key.md
-[Statistiken zum Verbessern der Leistung]: sql-data-warehouse-develop-statistics.md
-[development overview]: sql-data-warehouse-overview-develop.md
-
-
+[Parallelitätsmodell]: ./sql-data-warehouse-develop-concurrency.md
+[Entwerfen von Tabellen]: ./sql-data-warehouse-develop-table-design.md
+[Auswählen eines Hashverteilungsschlüssels für die Tabelle]: ./sql-data-warehouse-develop-hash-distribution-key.md
+[Statistiken zum Verbessern der Leistung]: ./sql-data-warehouse-develop-statistics.md
+[development overview]: ./sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
 
@@ -157,4 +155,4 @@ Informationen zu zusätzlichen zentralen Leistung- und Skalierbarkeitskonzepten 
 
 [Azure portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

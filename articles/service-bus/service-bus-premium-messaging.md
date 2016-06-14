@@ -56,6 +56,6 @@ Weitere Informationen zu Service Bus Messaging finden Sie in folgenden Themen.
 - [Einführung in Azure Service Bus Premium-Messaging (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 - [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
 - [Übersicht über die Architektur von Azure Service Bus](service-bus-fundamentals-hybrid-solutions.md)
-- [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-how-to-use-queues.md)
+- [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0608_2016-->

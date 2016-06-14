@@ -58,10 +58,10 @@ Falls Sie nicht mit einer ARM-Vorlage beginnen, ist dies auch in Ordnung. Es sin
 
 ## Schritt 1: Einrichten des Pullservers und des Automatisierungskontos
 
-An einer authentifizierten (Add-AzureAccount) PowerShell-Befehlszeile: (es kann einige Minuten dauern, bis der Pullserver eingerichtet ist)
+An einer authentifizierten (Add-AzureRmAccount) PowerShell-Befehlszeile: (es kann einige Minuten dauern, bis der Pullserver eingerichtet ist)
 
     New-AzureRmResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
-    New-AzureAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT 
+    New-AzureRmAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT 
 
 Sie können Ihr Automatisierungskonto in einer der folgenden Regionen anordnen: Japan, Osten, USA (Ost) 2, Westeuropa, Südostasien, USA (Mitte/Süden).
 
@@ -79,15 +79,15 @@ Es gibt auch eine manuelle Vorgehensweise. Die Ordnerstruktur eines PowerShell-I
 
 -   Installieren Sie das Modul, das Sie auf Ihrer Arbeitsstation benötigen, wie folgt:
     -   Installieren Sie [Windows Management Framework, Version 5](http://aka.ms/wmf5latest) (unter Windows 10 nicht erforderlich).
-    -   `Install-Module  –ModuleName MODULENAME` <—Holt sich das Modul aus dem PowerShell-Katalog. 
+    -   `Install-Module –Name MODULE-NAME` <— Ruft das Modul aus dem PowerShell-Katalog ab. 
 -   Kopieren Sie den Modulordner unter `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` in einen temporären Ordner. 
 -   Löschen Sie Beispiele und Dokumentation aus dem Hauptordner. 
--   Zippen Sie den Hauptordner, und geben Sie der ZIP-Datei genau den gleichen Namen des Ordners. 
--   Legen Sie die ZIP-Datei an einem zugänglichen HTTP-Speicherort ab, z. B. in einem BLOB-Speicher eines Azure-Speicherkontos.
+-   Zippen Sie den Hauptordner, und geben Sie der ZIP-Datei den Namen des Ordners. 
+-   Legen Sie die ZIP-Datei an einem zugänglichen HTTP-Speicherort ab, z. B. in Blobspeicher in einem Azure-Speicherkonto.
 -   Führen Sie Folgendes in PowerShell aus:
 
-        New-AzureAutomationModule ``
-            -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT ``
+        New-AzureRmAutomationModule `
+            -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
             -Name MODULE-NAME –ContentLink "https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip"
         
 
@@ -171,7 +171,7 @@ Jedes Mal, wenn eine Version den Qualitätssicherungstest besteht und für die B
 
 ## Hinweise
 
-Dieses Anwendungsbeispiel beginnt mit einem virtuellen Computer aus einem generischen Windows 2012 R2-Image aus dem Azure-Katalog. Sie können es über ein beliebiges gespeichertes Image starten und dann mit der Optimierung mithilfe der DSC-Konfiguration beginnen. Das Ändern einer Konfiguration, die in ein Image integriert ist, ist aber deutlich schwieriger als das dynamische Aktualisieren der Konfiguration per DSC.
+Dieses Anwendungsbeispiel beginnt mit einem virtuellen Computer aus einem generischen Windows Server 2012 R2-Image aus dem Azure-Katalog. Sie können mithilfe eines beliebigen gespeicherten Image starten und dann mit der Optimierung mithilfe der DSC-Konfiguration beginnen. Das Ändern einer Konfiguration, die in ein Image integriert ist, ist aber deutlich schwieriger als das dynamische Aktualisieren der Konfiguration per DSC.
 
 Sie müssen keine ARM-Vorlage und dann die VM-Erweiterung verwenden, um dieses Verfahren mit Ihren virtuellen Computern zu nutzen. Und Ihre virtuellen Computer müssen nicht unter Azure vorhanden sein, um in den Genuss der CD-Verwaltung zu kommen. Lediglich Chocolatey muss installiert sein, und der lokale Konfigurations-Manager (LCM) muss für den virtuellen Computer konfiguriert werden, damit er informiert ist, wo sich der Pullserver befindet.
 
@@ -185,4 +185,4 @@ Den vollständigen Quellcode für dieses Anwendungsbeispiel finden Sie in [diese
 - [Azure Automation DSC-Cmdlets](https://msdn.microsoft.com/library/mt244122.aspx)
 - [Integrieren von Computern für die Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

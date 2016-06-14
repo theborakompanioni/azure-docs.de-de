@@ -24,11 +24,7 @@
 
 <br/>
 
-
-
 In diesem End-to-End-Tutorial erfahren Sie, wie Sie Verfügbarkeitsgruppen mit SQL Server AlwaysOn auf virtuellen Azure Resource Manager-Computern implementieren.
-
-> [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Ressourcen-Manager-Modell.
 
 Am Ende des Tutorials besteht Ihre SQL Server AlwaysOn-Lösung in Azure aus folgenden Elementen:
 
@@ -68,7 +64,7 @@ In diesem Tutorial wird Folgendes vorausgesetzt:
 
 1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an. 
 
-1. Klicken Sie auf **+Neu**, und geben Sie im Marketplace-Suchfenster die Zeichenfolge **Ressourcengruppe** ein.
+1. Klicken Sie auf **+Neu**, und geben Sie im **Marketplace**-Suchfenster die Zeichenfolge **Ressourcengruppe** ein.
 
  ![Ressourcengruppe](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/01-resourcegroupsymbol.png)
 
@@ -155,7 +151,7 @@ Bis jetzt enthält das virtuelle Netzwerk ein Subnetz mit dem Namen „Subnet-1�
 
 1. Erstellen Sie ein zweites Subnetz. Klicken Sie auf **+ Subnetz**. 
 
- Konfigurieren Sie das Subnetz auf dem Blatt **Subnetz hinzufügen**, indem Sie unter **Name** die Zeichenfolge **Subnet-2** eingeben. Azure gibt automatisch einen gültigen Adressbereich an. Vergewissern Sie sich, dass dieser Adressbereich mindestens zehn Adressen umfasst. In einer Produktionsumgebung werden möglicherweise weitere Adressen benötigt.
+ Konfigurieren Sie das Subnetz auf dem Blatt **Subnetz hinzufügen**, indem Sie unter **Name** die Zeichenfolge **Subnet-2** eingeben. Azure gibt automatisch einen gültigen **Adressbereich** an. Vergewissern Sie sich, dass dieser Adressbereich mindestens zehn Adressen umfasst. In einer Produktionsumgebung werden möglicherweise weitere Adressen benötigt.
 
 Klicken Sie auf **OK**.
 
@@ -177,7 +173,7 @@ Hier sehen Sie eine Zusammenfassung der Konfigurationseinstellungen für das vir
 
 ### Erstellen von Verfügbarkeitsgruppen
 
-Vor dem Erstellen virtueller Computer müssen zunächst Verfügbarkeitsgruppen erstellt werden. Verfügbarkeitsgruppen verringern die Ausfallzeiten bei geplanten oder ungeplanten Wartungsereignissen. Eine Azure-Verfügbarkeitsgruppe ist eine logische Gruppe von Ressourcen, die Azure in physischen Fehlerdomänen und Updatedomänen platziert. Eine Fehlerdomäne stellt sicher, dass die Mitglieder der Verfügbarkeitsgruppe über eine separate Stromversorgung sowie über separate Netzwerkressourcen verfügen. Eine Updatedomäne stellt sicher, dass die Mitglieder der Verfügbarkeitsgruppe nicht gleichzeitig zu Wartungszwecken heruntergefahren werden. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](virtual-machines-windows-manage-availability.md).
+Vor dem Erstellen virtueller Computer müssen zunächst Verfügbarkeitsgruppen erstellt werden. Verfügbarkeitsgruppen verringern die Ausfallzeiten bei geplanten oder ungeplanten Wartungsereignissen. Eine Azure-Verfügbarkeitsgruppe ist eine logische Gruppe von Ressourcen, die Azure in physischen Fehlerdomänen und Updatedomänen platziert. Eine Fehlerdomäne stellt sicher, dass die Mitglieder der Verfügbarkeitsgruppe über eine separate Stromversorgung sowie über separate Netzwerkressourcen verfügen. Eine Updatedomäne stellt sicher, dass die Mitglieder der Verfügbarkeitsgruppe nicht gleichzeitig zu Wartungszwecken heruntergefahren werden. [Verwalten der Verfügbarkeit virtueller Computer](virtual-machines-windows-manage-availability.md).
 
 Sie benötigen zwei Verfügbarkeitsgruppen: eine für die Domänencontroller, die andere für die SQL Server.
 
@@ -213,7 +209,7 @@ Führen Sie diesen Prozess zweimal aus, um zwei virtuelle Computer zu erstellen.
 - ad-primary-dc
 - ad-secondary-dc
 
- [AZURE.NOTE] **aad-secondary-dc** ist eine optionale Komponente zur Gewährleistung hoher Verfügbarkeit für Active Directory-Domänendienste.
+ [AZURE.NOTE] **ad-secondary-dc** ist eine optionale Komponente zur Gewährleistung hoher Verfügbarkeit für Active Directory-Domänendienste.
 
 Die folgende Tabelle enthält die Einstellungen für die beiden Computer:
 
@@ -318,7 +314,7 @@ Nach dem Neustart des primären Domänencontrollers können Sie den zweiten Dom�
 
 1. Wählen Sie „Folgende DNS-Serveradressen verwenden“ aus, und geben Sie unter **Bevorzugter DNS-Server** die Adresse des primären Domänencontrollers an.
 
-1. Bei der Adresse handelt es sich um die Adresse, die einem virtuellen Computer im Subnetz „subnet-1“ im virtuellen Azure-Netzwerk zugewiesen ist, und der virtuelle Computer ist **ad-primary-dc**. Führen Sie über die Befehlszeile den Befehl **nslookup ad-primary-dc** aus, um die IP-Adresse von **ad-primary-dc** zu überprüfen:
+1. Bei der Adresse handelt es sich um die Adresse, die einem virtuellen Computer im Subnetz „subnet-1“ im virtuellen Azure-Netzwerk zugewiesen ist. Dieser virtuelle Computer ist **ad-primary-dc**. Führen Sie über die Befehlszeile den Befehl **nslookup ad-primary-dc** aus, um die IP-Adresse von **ad-primary-dc** zu überprüfen:
 
 	![Verwenden von NSLOOKUP zum Suchen der IP-Adresse für den DC](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/IC664954.png)
 
@@ -360,7 +356,7 @@ In den nächsten Schritten werden die Active Directory-Konten (AD) für die spä
 
 1. Klicken Sie auf **OK**, um den **Install**-Benutzer zu erstellen. Dieses Konto wird zum Konfigurieren des Failoverclusters und der Verfügbarkeitsgruppe verwendet.
 
-1. Erstellen Sie zwei zusätzliche Benutzer mit denselben Schritten: **CORP\\SQLSvc1** und **CORP\\SQLSvc2**. Diese Konten werden für die SQL Server-Instanzen verwendet. Als Nächstes müssen **CORP\\Install** die erforderlichen Berechtigungen für das Konfigurieren von Windows Service Failover Clustering (WSFC) erteilt werden.
+1. Erstellen Sie zwei zusätzliche Benutzer mit denselben Schritten: **CORP\\SQLSvc1** und **CORP\\SQLSvc2**. Diese Konten werden für die SQL Server-Instanzen verwendet. Als Nächstes müssen Sie **CORP\\Install** die erforderlichen Berechtigungen für das Konfigurieren von Windows Service Failover Clustering (WSFC) erteilen.
 
 1. Wählen Sie im **Active Directory-Verwaltungscenter** im linken Bereich **corp (lokal)** aus. Klicken Sie dann im rechten **Aufgaben**bereich auf **Eigenschaften**.
 
@@ -435,7 +431,7 @@ Diese Adressen werden zum Konfigurieren des DNS-Diensts für die einzelnen virtu
 
 1. Wählen Sie „Folgende DNS-Serveradressen verwenden“ aus, und geben Sie unter **Bevorzugter DNS-Server** die Adresse des primären Domänencontrollers an.
 
-1. Bei der Adresse handelt es sich um die Adresse, die einem virtuellen Computer im Subnetz „subnet-1“ im virtuellen Azure-Netzwerk zugewiesen ist, und der virtuelle Computer ist **ad-primary-dc**. Führen Sie über die Befehlszeile den Befehl **nslookup ad-primary-dc** aus, um die IP-Adresse von **ad-primary-dc** zu überprüfen:
+1. Bei der Adresse handelt es sich um die Adresse, die einem virtuellen Computer im Subnetz „subnet-1“ im virtuellen Azure-Netzwerk zugewiesen ist. Dieser virtuelle Computer ist **ad-primary-dc**. Führen Sie über die Befehlszeile den Befehl **nslookup ad-primary-dc** aus, um die IP-Adresse von **ad-primary-dc** zu überprüfen:
 
 	![Verwenden von NSLOOKUP zum Suchen der IP-Adresse für den DC](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/IC664954.png)
 
@@ -819,7 +815,7 @@ Als Nächstes muss ein AlwaysOn-Verfügbarkeitsgruppenlistener für den Failover
 
 1. Stellen Sie eine RDP-Verbindung mit dem SQL Server zwischen „ad-primary-dc“ und „sqlserver-0“ her.
 
-1. Notieren Sie sich im Failovercluster-Manager den Namen des Clusternetzwerks. Klicken Sie zum Ermitteln des Clusternetzwerknamens im linken Bereich des Failovercluster-Managers auf **Netzwerke**. Dieser Name wird im PowerShell-Skript in der `$ClusterNetworkName`-Variablen verwendet.
+1. Notieren Sie sich im Failovercluster-Manager den Namen des Clusternetzwerks. Klicken Sie zum Ermitteln des Clusternetzwerknamens im linken Bereich des **Failovercluster-Managers** auf **Netzwerke**. Dieser Name wird im PowerShell-Skript in der `$ClusterNetworkName`-Variablen verwendet.
 
 1. Erweitern Sie im Failovercluster-Manager den Clusternamen, und klicken Sie auf **Rollen**.
 
@@ -843,7 +839,7 @@ Als Nächstes muss ein AlwaysOn-Verfügbarkeitsgruppenlistener für den Failover
     
 1. Aktualisieren Sie die Variablen, und führen Sie das PowerShell-Skript aus, um die IP-Adresse und den Port für den neuen Listener zu konfigurieren.
 
-1. Klicken Sie im Failovercluster-Manager mit der rechten Maustaste auf die Verfügbarkeitsgruppenressource, und klicken Sie anschließend auf **Eigenschaften**. Legen Sie auf der Registerkarte **Abhängigkeiten** fest, dass die Ressourcengruppe vom Netzwerknamen des Listeners abhängig ist.
+1. Klicken Sie im **Failovercluster-Manager** mit der rechten Maustaste auf die Verfügbarkeitsgruppenressource, und klicken Sie anschließend auf **Eigenschaften**. Legen Sie auf der Registerkarte **Abhängigkeiten** fest, dass die Ressourcengruppe vom Netzwerknamen des Listeners abhängig ist.
 
 1. Legen Sie die Port-Eigenschaft des Listeners auf 1433 fest. Öffnen Sie hierzu SQL Server Management Studio, klicken Sie mit der rechten Maustaste auf den Verfügbarkeitsgruppenlistener, und wählen Sie „Eigenschaften“ aus. Legen Sie **Port** auf 1433 fest.
 
@@ -865,4 +861,4 @@ Gehen Sie wie folgt vor, um die Verbindung zu testen:
 
 Weitere Informationen zur Verwendung von SQL Server in Azure finden Sie unter [SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -13,13 +13,13 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/05/2016"
+   ms.date="06/07/2016"
    ms.author="joaoma"/>
 
 
 # Erstellen eines Application Gateways mit der Azure-Ressourcen-Manager-Vorlage
 
-Für das Azure Application Gateway wird ein Load Balancer auf Schicht 7 (Anwendungsschicht) verwendet. Das Application Gateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Application Gateways weisen folgende Anwendungsbereitstellungsfunktionen auf: HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität und Secure Sockets Layer-Auslagerung (SSL).
+Für das Azure Application Gateway wird ein Load Balancer auf Schicht 7 (Anwendungsschicht) verwendet. Das Application Gateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Application Gateways weisen folgende Anwendungsbereitstellungsfunktionen auf: HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität und Secure Sockets Layer-Auslagerung (SSL).
 
 > [AZURE.SELECTOR]
 - [Klassische Azure PowerShell](application-gateway-create-gateway.md)
@@ -57,8 +57,8 @@ Sie können die vorhandene Azure-Ressourcen-Manager-Vorlage herunterladen, um ei
 1. Navigieren Sie zu [Create Application Gateway](https://github.com/Azure/azure-quickstart-templates/tree/master/101-application-gateway-create).
 2. Klicken Sie auf **azuredeploy.json**, und klicken Sie dann auf **RAW**.
 3. Speichern Sie die Datei in einem lokalen Ordner auf Ihrem Computer.
-4. Fahren Sie mit Schritt 7 fort, wenn Sie mit Azure-Ressourcen-Manager-Vorlagen bereits vertraut sind.
-5. Öffnen Sie die Datei, die Sie gerade gespeichert haben, und sehen Sie sich den Inhalt unter **parameters** in Zeile 5 an. Die Parameter der Azure-Ressourcen-Manager-Vorlage stellen Platzhalter für Werte dar, die während der Bereitstellung ausgefüllt werden können.
+4. Fahren Sie mit Schritt 7 fort, wenn Sie mit Azure-Ressourcen-Manager-Vorlagen bereits vertraut sind.
+5. Öffnen Sie die Datei, die Sie gerade gespeichert haben, und sehen Sie sich den Inhalt unter **parameters** in Zeile 5 an. Die Parameter der Azure-Ressourcen-Manager-Vorlage stellen Platzhalter für Werte dar, die während der Bereitstellung ausgefüllt werden können.
 
 	| Parameter | Beschreibung |
 	|---|---|
@@ -81,7 +81,7 @@ Sie können die vorhandene Azure-Ressourcen-Manager-Vorlage herunterladen, um ei
 	- **name**. Name der Ressource. Beachten Sie die Verwendung von **[parameters('applicationGatewayName')]**. Dies bedeutet, dass der Name während der Bereitstellung durch einen Benutzer oder eine Parameterdatei eingegeben wird.
 	- **properties**. Liste der Eigenschaften für die Ressource. Diese Vorlage verwendet während der Erstellung des Application Gateways das virtuelle Netzwerk und die öffentliche IP-Adresse.
 
-7. Navigieren Sie zurück zu https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-create/.
+7. Navigieren Sie zurück zu [https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-create/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-create).
 8. Klicken Sie auf **azuredeploy-parameters.json**, und klicken Sie dann auf **RAW**.
 9. Speichern Sie die Datei in einem lokalen Ordner auf Ihrem Computer.
 10. Öffnen Sie die Datei, die Sie gerade gespeichert haben, und bearbeiten Sie die Parameterwerte. Verwenden Sie die unten angegebenen Werte, um das Application Gateway wie in unserem Szenario beschrieben bereitzustellen.
@@ -116,23 +116,23 @@ Sie können die vorhandene Azure-Ressourcen-Manager-Vorlage herunterladen, um ei
 
 ## Bereitstellen der Azure-Ressourcen-Manager-Vorlage mit PowerShell
 
-Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, ist es ratsam, den Abschnitt [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) zu lesen. Befolgen Sie die komplette Anleitung, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
+Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, ist es ratsam, den Abschnitt [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) zu lesen. Befolgen Sie die komplette Anleitung, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
 
-### Schritt 1
+### Schritt 1
 
 		Login-AzureRmAccount
 
 
 
-### Schritt 2
+### Schritt 2
 
 Überprüfen Sie die Abonnements für das Konto.
 
 		get-AzureRmSubscription
 
-Sie werden aufgefordert, sich mit Ihren Anmeldeinformationen zu authentifizieren.<BR>
+Sie werden zur Authentifizierung mit Ihren Anmeldeinformationen aufgefordert.<BR>
 
-### Schritt 3
+### Schritt 3
 
 Wählen Sie aus, welches Azure-Abonnement Sie verwenden möchten.<BR>
 
@@ -140,7 +140,7 @@ Wählen Sie aus, welches Azure-Abonnement Sie verwenden möchten.<BR>
 		Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 
 
-### Schritt 4
+### Schritt 4
 
 
 Erstellen Sie bei Bedarf eine neue Ressourcengruppe mit dem Cmdlet **New-AzureResourceGroup**. Im folgenden Beispiel erstellen Sie eine neue Ressourcengruppe mit dem Namen AppgatewayRG in der Region „USA, Osten“.
@@ -191,7 +191,7 @@ Folgende Ausgabe wird von der Befehlszeile generiert:
 
 Führen Sie die folgenden Schritte aus, um die heruntergeladene Azure-Ressourcen-Manager-Vorlage mit der Azure-Befehlszeilenschnittstelle bereitzustellen:
 
-1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nicht verwendet haben, ist es ratsam, den Abschnitt [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) zu lesen. Befolgen Sie die Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
+1. Wenn Sie die Azure-CLI noch nicht verwendet haben, ist es ratsam, den Abschnitt [Installieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) zu lesen. Befolgen Sie die Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
 2. Führen Sie den Befehl **azure config mode** aus, um in den Ressourcen-Manager-Modus zu wechseln, wie unten dargestellt.
 
 		azure config mode arm
@@ -200,7 +200,7 @@ Hier ist die erwartete Ausgabe des obigen Befehls:
 
 		info:	New mode is arm
 
-3. Führen Sie bei Bedarf den Befehl **azure group create** aus, um wie unten dargestellt eine neue Ressourcengruppe zu erstellen. Beachten Sie die Ausgabe des Befehls. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../resource-group-overview.md).
+3. Führen Sie bei Bedarf den Befehl **azure group create** aus, um wie unten dargestellt eine neue Ressourcengruppe zu erstellen. Beachten Sie die Ausgabe des Befehls. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../resource-group-overview.md).
 
 		azure group create -n appgatewayRG -l eastus
 
@@ -247,23 +247,23 @@ Hier ist die erwartete Ausgabe des obigen Befehls:
 Click-to-Deploy ist eine weitere Option zum Verwenden von Azure-Ressourcen-Manager-Vorlagen. Diese Art der Bereitstellung bietet eine einfache Möglichkeit, Vorlagen im Azure-Portal zu verwenden.
 
 
-### Schritt 1
+### Schritt 1
 Navigieren Sie zu [Create an Application Gateway with Public IP](https://azure.microsoft.com/documentation/templates/101-application-gateway-public-ip/) (Erstellen eines Application Gateways mit öffentlicher IP).
 
 
-### Schritt 2
+### Schritt 2
 
 Klicken Sie auf Schaltfläche zum **Bereitstellen in Azure**.
 
 ![Bereitstellen in Azure](./media/application-gateway-create-gateway-arm-template/deploytoazure.png)
 
-### Schritt 3
+### Schritt 3
 
 Füllen Sie im Portal die Parameter für die Bereitstellungsvorlage aus, und klicken Sie auf **OK**.
 
 ![Parameter](./media/application-gateway-create-gateway-arm-template/ibiza1.png)
 
-### Schritt 4
+### Schritt 4
 
 Wählen Sie **Rechtliche Bedingungen** aus, und klicken Sie auf **Kaufen**.
 
@@ -275,13 +275,13 @@ Klicken Sie auf dem Blatt „Benutzerdefinierte Bereitstellung“ auf **Erstelle
 
 ## Nächste Schritte
 
-Wenn Sie die SSL-Auslagerung konfigurieren möchten, finden Sie weitere Informationen im Abschnitt [Konfigurieren eines Application Gateways für die SSL-Auslagerung](application-gateway-ssl.md).
+Wenn Sie die SSL-Auslagerung konfigurieren möchten, finden Sie weitere Informationen im Abschnitt [Konfigurieren eines Application Gateways für SSL-Auslagerung](application-gateway-ssl.md).
 
-Wenn Sie ein Application Gateway für die Verwendung mit einem internen Load Balancer konfigurieren möchten, finden Sie weitere Informationen im Abschnitt [Erstellen eines Application Gateways mit einem internen Load Balancer (ILB)](application-gateway-ilb.md).
+Wenn Sie ein Application Gateway für die Verwendung mit einem internen Load Balancer konfigurieren möchten, ist es ratsam, den Abschnitt [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md) zu lesen.
 
 Weitere Informationen zu Lastenausgleichsoptionen im Allgemeinen finden Sie unter:
 
 - [Azure-Lastenausgleich](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0608_2016-->

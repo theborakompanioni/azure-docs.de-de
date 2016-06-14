@@ -28,6 +28,8 @@ Diese Tools werden verwendet, um einige Vorgänge in diesem Dokument durchzufüh
 * [Azure Resource Manager](../resource-group-overview.md)
 * [Azure PowerShell](../powershell-install-configure.md)
 * [Azure Resource Manager-Client](https://github.com/projectkudu/ARMClient)
+* [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure-Ressourcen-Manager-Vorlagen](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)
+
 
 ## Andere Protokollquellen, die gesammelt werden können
 1. **Service Fabric-Protokolle:** Werden von der Plattform für standardmäßige ETW- und EventSource-Kanäle ausgegeben. Protokolle können unterschiedlicher Art sein:
@@ -54,7 +56,13 @@ Für das Azure-Supportteam sind die Supportprotokolle **erforderlich**, um jegli
 5. Wählen von „Vorlage exportieren“ zum Anzeigen des Fensters „Vorlage“
 6. Wählen Sie „In Datei speichern“ aus, um eine ZIP-Datei zu exportieren, die Vorlage-, Parameter- und PowerShell-Dateien enthält.
 
-Nach dem Exportieren der Dateien ist eine Änderung erforderlich. Bearbeiten Sie die Datei **parameters.json**, und entfernen Sie das Element **adminPassword**. Dann wird beim Ausführen des Bereitstellungsskripts eine Aufforderung zur Kennworteingabe angezeigt.
+Nach dem Exportieren der Dateien ist eine Änderung erforderlich. Bearbeiten Sie die Datei **parameters.json**, und entfernen Sie das Element **adminPassword**. Dann wird beim Ausführen des Bereitstellungsskripts eine Aufforderung zur Kennworteingabe angezeigt. So verwenden Sie die heruntergeladene Vorlage, um eine Konfiguration zu aktualisieren
+
+1. Extrahieren Sie den Inhalt in einen Ordner auf dem lokalen Computer.
+2. Ändern Sie den Inhalt, sodass er die neue Konfiguration widerspiegelt.
+3. Starten Sie PowerShell, und wechseln Sie zu dem Ordner, in dem Sie den Inhalt extrahiert haben.
+4. Führen Sie **deploy.ps1** aus, und geben Sie Abonnement-ID, Ressourcengruppenname (verwenden Sie den gleichen Namen, um die Konfiguration zu aktualisieren) und einen eindeutigen Bereitstellungsnamen an.
+
 
 ### Bereitstellen der Diagnoseerweiterung im Rahmen der Clustererstellung mithilfe des Azure Resource Managers
 Wenn Sie einen Cluster mithilfe des Ressourcen-Managers erstellen möchten, müssen Sie der Ressourcen-Manager-Vorlage vom Typ „Vollständiger Cluster“ vor der Clustererstellung den JSON-Code für die Diagnosekonfiguration hinzufügen. Die Vorlagenbeispiele für den Ressourcen-Manager enthalten eine Beispielvorlage mit hinzugefügter Diagnosekonfiguration für einen Cluster mit fünf VMs. Diese finden Sie im Azure-Beispielkatalog unter [Ressourcen-Manager-Beispielvorlage für einen Cluster mit fünf Knoten und Diagnose](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype-wad). Um die Diagnoseeinstellung in der Resource Manager-Vorlage anzuzeigen, öffnen Sie die Datei **azuredeploy.json** und suchen nach **IaaSDiagnostics**. Klicken Sie zum Erstellen eines Clusters mit dieser Vorlage einfach auf die Schaltfläche **In Azure bereitstellen** (unter dem oben angegebenen Link).
@@ -67,7 +75,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $
 ```
 
 ### Bereitstellen der Diagnoseerweiterung für einen vorhandenen Cluster
-Einem bereits vorhandenen Cluster ohne Diagnosebereitstellung können Sie die Diagnose mit den folgenden Schritten hinzufügen. Ändern Sie die zum Erstellen des vorhandenen Clusters verwendete ARM-Vorlage, oder laden Sie die Vorlage, wie oben beschrieben, aus dem Portal herunter. Ändern Sie die Datei **template.json**, indem Sie die folgenden Aufgaben ausführen:
+Wenn Sie bereits über einen Cluster ohne Diagnosebereitstellung verfügen oder eine vorhandene Konfiguration ändern möchten, können Sie die Diagnose mit den folgenden Schritten hinzufügen oder aktualisieren. Ändern Sie die zum Erstellen des vorhandenen Clusters verwendete ARM-Vorlage, oder laden Sie die Vorlage, wie oben beschrieben, aus dem Portal herunter. Ändern Sie die Datei **template.json**, indem Sie die folgenden Aufgaben ausführen:
 
 Fügen Sie der Vorlage eine neue Speicherressource hinzu, indem Sie sie dem Ressourcenabschnitt hinzufügen.
 
@@ -179,4 +187,8 @@ Wenn Sie die Diagnose für das Sammeln von Protokollen aus neuen EventSource-Kan
 ## Nächste Schritte
 Sehen Sie sich die Diagnoseereignisse an, die für [Reliable Actors](service-fabric-reliable-actors-diagnostics.md) und [Reliable Services](service-fabric-reliable-services-diagnostics.md) ausgegeben werden, um besser zu verstehen, welche Ereignisse Sie beim Behandeln von Problemen untersuchen sollten.
 
-<!---HONumber=AcomDC_0525_2016-->
+
+## Verwandte Artikel
+* [Erfahren Sie, wie Sie Leistungsindikatoren oder Protokolle mit diagnostischen Erweiterungen erfassen können.](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)
+
+<!---HONumber=AcomDC_0601_2016-->

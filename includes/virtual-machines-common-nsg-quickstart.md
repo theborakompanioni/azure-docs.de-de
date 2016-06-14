@@ -1,12 +1,14 @@
-You open a port, or create an endpoint, in Azure by creating a network filter that allows traffic to your chosen port on a subnet or virtual machine (VM) network interface. These filters, which control both inbound and outbound traffic, are placed in a Network Security Group and attached to the resource that will receive the traffic.
+In Azure öffnen Sie einen Port oder erstellen einen Endpunkt, indem Sie einen Netzwerkfilter erstellen, mit dem Datenverkehr an den von Ihnen ausgewählten Port in einem Subnetz oder die Netzwerkschnittstelle auf einem virtuellen Computer (VM) geleitet werden kann. Diese Filter, mit denen sowohl eingehender als auch ausgehender Datenverkehr gesteuert werden kann, sind in einer Netzwerksicherheitsgruppe angeordnet und an die Ressource angefügt, die den Datenverkehr empfängt.
 
-Let's use a common example of web traffic on port 80. Once you have a VM that is configured to serve web requests on the standard TCP port 80 (remember to start the appropriate services and open any OS firewall rules on the VM as well), you will:
+Wir verwenden ein gängiges Beispiel für Webdatenverkehr über Port 80. Nachdem Sie über eine VM verfügen, die für die Bereitstellung von Webanforderungen über den standardmäßigen TCP-Port 80 konfiguriert ist (denken Sie auch an das Starten der richtigen Dienste und das Öffnen der erforderlichen Betriebssystem-Firewallregeln auf der VM), führen Sie die folgenden Schritte aus:
 
-1. Create a Network Security Group.
-2. Create an inbound rule allowing traffic with:
-  - the destination port range of "80"
-  - the source port range of "*" (allowing any source port)
-  - a priority value of less 65,500 (to be higher in priority than the default catch-all deny inbound rule)
-3. Associate the Network Security Group with the VM network interface or subnet.
+1. Erstellen einer Netzwerksicherheitsgruppe
+2. Erstellen einer Datenverkehr-Eingangsregel mit diesen Angaben:
+  - Zielportbereich „80“
+  - Quellportbereich „*“ (beliebiger Quellport)
+  - Prioritätswert von weniger als 65.500 (um eine höhere Priorität als mit der standardmäßigen Catch-All-Verweigerungsregel für eingehenden Datenverkehr zu erzielen)
+3. Zuordnen der Netzwerksicherheitsgruppe zur VM-Netzwerkschnittstelle oder zum Subnetz
     
-You can create very complex network configurations to secure your environment using Network Security Groups and rules, rather than only one or two rules that allow HTTP traffic or remote management. For more information, see the ['More Information'](#more-information-on-network-security-groups) section below or [What is a Network Security Group?](../articles/virtual-network/virtual-networks-nsg.md)
+Sie können sehr komplexe Netzwerkkonfigurationen erstellen, um Ihre Umgebung mit Netzwerksicherheitsgruppen und Regeln zu schützen, anstatt nur mit ein oder zwei Regeln, die HTTP-Datenverkehr oder die Remoteverwaltung ermöglichen. Weitere Informationen finden Sie unten im Abschnitt [Weitere Informationen](#more-information-on-network-security-groups) oder unter [Was ist eine Netzwerksicherheitsgruppe?](../articles/virtual-network/virtual-networks-nsg.md).
+
+<!---HONumber=AcomDC_0601_2016-->

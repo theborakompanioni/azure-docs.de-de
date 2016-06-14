@@ -85,7 +85,7 @@ Es folgt eine Tabelle zur Verdeutlichung der Unterschiede zwischen einem Azure-A
 | Zugriff auf [Machine Learning Studio] | Nein * | Ja |
 
 
-> [AZURE.NOTE] * Ein Azure-Abonnementadministrator wird beim Erstellen eines Arbeitsbereichs automatisch dessen Besitzer. Der Zugriff wird ihm jedoch nur gewährt, da er der Besitzer des Arbeitsbereichs ist.
+> [AZURE.NOTE] * Ein Azure-Abonnementadministrator wird automatisch dem Arbeitsbereich hinzugefügt, den er als Arbeitsbereichsbesitzer erstellt. Azure-Abonnementadministrator zu sein allein gewährt ihm jedoch noch keinen Zugriff auf einen Arbeitsbereich unter dem Abonnement.
 
 <!-- ![List of Machine Learning workspaces][2] -->
 
@@ -106,4 +106,4 @@ Es folgt eine Tabelle zur Verdeutlichung der Unterschiede zwischen einem Azure-A
 [klassische Microsoft Azure-Portal]: https://manage.windowsazure.com/
 [klassischen Microsoft Azure-Portal]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/05/2016"
+   ms.date="06/05/2016"
    ms.author="nicw;barbkess;sonyama"/>
 
 
@@ -27,7 +27,7 @@ Unsere Ziele für SQL Data Warehouse:
 - Hohe Zuverlässigkeit für alle Data Warehouse-Vorgänge
 - Kurze Zeit vom Laden der Daten bis zu den Einblicken in relationale und nicht relationale Daten
 
-Wir arbeiten unablässig an der Umsetzung dieser Ziele, bevor wir SQL Data Warehouse allgemein verfügbar machen.
+In der Vorschauphase von SQL Data Warehouse arbeiten wir kontinuierlich an der Umsetzung dieser Ziele.
 
 ## Vorhersagbare und skalierbare Leistung
 
@@ -40,29 +40,22 @@ Für jedes Data Warehouse gibt es zwei grundlegende Messwerte für die Leistung:
 
 Wir haben einige wichtige Leistungsverbesserungen gemessen und werden die voraussichtlichen Raten in Kürze mitteilen. Während der Preview nehmen wir fortlaufend Verbesserungen (z. B. an Komprimierung und Caching) vor, um diese Raten zu erhöhen und eine vorhersagbare Skalierung sicherzustellen.
 
+## Datenschutz
 
-## Hohe Zuverlässigkeit
+SQL Data Warehouse speichert alle Daten mithilfe von lokal redundantem Speicher im Azure-Speicher. Mehrere synchrone Kopien der Daten werden im lokalen Rechenzentrum behalten, um transparenten Datenschutz bei lokalen Ausfällen sicherzustellen.
 
-### Datenschutz
-
-SQL Data Warehouse speichert alle Daten mithilfe von georedundanten Blobs im Azure-Speicher. Drei synchrone Kopien der Daten werden in der lokalen Azure-Region behalten, um transparenten Datenschutz bei lokalen Ausfällen (z. B. Speicherlaufwerksausfälle) sicherzustellen. Darüber hinaus werden drei weitere asynchrone Kopien in einer Azure-Remoteregion zum Schutz von Daten bei einem regionalen Ausfall (Notfallwiederherstellung) beibehalten. Lokale und Remoteregionen werden zusammen verwendet, um akzeptable Synchronisierungslatenzen (z. B. Osten der USA und Westen der USA) zu erreichen.
-
-
-### Backups
+## Backups
 
 Azure SQL Data Warehouse sichert sämtliche Daten mindestens alle 8 Stunden mit Azure-Speichermomentaufnahmen. Diese Momentaufnahmen werden 7 Tage lang aufbewahrt. Dadurch können Daten an bis zu 21 Punkten innerhalb der letzten 7 Tage bis zu dem Zeitpunkt wiederhergestellt werden, zu dem die letzte Momentaufnahme erstellt wurde. Mithilfe von PowerShell oder REST-APIs können Sie die Daten aus einer Momentaufnahme wiederherstellen.
 
-Momentaufnahmen werden asynchron in eine Azure-Remoteregion kopiert, um im Falle eines regionalen Ausfalls (Notfallwiederherstellung) eine noch bessere Wiederherstellbarkeit zu erzielen.
+## Abfragezuverlässigkeit
+
+SQL Data Warehouse basiert auf einer MPP-Architektur (Massively Parallel Processing). SQL Data Warehouse erkennt und migriert automatisch Ausfälle von Compute- und Steuerknoten. Ein Vorgang (z.B. Laden oder Abfragen von Daten) kann aufgrund eines Knotenausfalls oder einer Knotenmigration fehlschlagen. Während der Preview nehmen wir fortlaufend Verbesserungen vor, damit Vorgänge trotz Knotenausfällen erfolgreich abgeschlossen werden können.
 
 
-### Durchführen der Abfrage
+## Upgrades und Downtime
 
-SQL Data Warehouse speichert die Daten auf einem oder mehreren Serverknoten, auf denen jeweils einige Benutzerdaten gespeichert sind, über die die Abfrageausführung für diese Daten gesteuert wird. Im Rahmen der massiven parallelen Verarbeitungsarchitektur (MPP-Architektur) werden die Abfragen parallel über die Serverknoten hinweg ausgeführt. SQL Data Warehouse erkennt und minimiert automatisch Ausfälle von Serverknoten. Während der Preview besteht jedoch die Möglichkeit, dass ein Vorgang (z. B. Laden von Daten oder Abfrage) aufgrund des Ausfalls einzelner Knoten fehlschlägt. Während der Preview nehmen wir fortlaufend Verbesserungen vor, damit Vorgänge trotz Knotenausfällen erfolgreich abgeschlossen werden können.
-
-
-### Upgrades und Downtime
-
-Während der Vorschau wird SQL Data Warehouse in regelmäßigen Abständen aktualisiert werden, um neue Funktionen und wichtige Updates zu installieren. Diese Upgrades können störend sein, und derzeit werden Upgrades nicht in einem vorhersehbaren Zeitplan durchgeführt. Wenn Sie feststellen, dass dieser Prozess zu störend ist, empfehlen wir Ihnen, [ein Supportticket zu erstellen][], damit wir Ihnen helfen können, diesen Prozess zu umgehen.
+SQL Data Warehouse wird in regelmäßigen Abständen aktualisiert, um neue Funktionen hinzuzufügen und wichtige Updates zu installieren. Diese Upgrades können störend sein, und derzeit werden Upgrades nicht in einem vorhersehbaren Zeitplan durchgeführt. Wenn Sie feststellen, dass dieser Prozess zu störend ist, empfehlen wir Ihnen, [ein Supportticket zu erstellen][], damit wir Ihnen helfen können, diesen Prozess zu umgehen.
 
 
 ## Nächste Schritte
@@ -79,4 +72,4 @@ Während der Vorschau wird SQL Data Warehouse in regelmäßigen Abständen aktua
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

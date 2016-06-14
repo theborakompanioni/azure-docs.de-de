@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure App Service, Azure Cloud Services, Azure Virtual Machines und Azure Service Fabric im Vergleich"
-	description="Erfahren Sie, wann Sie Azure App Service, Cloud Services, Virtual Machines und Service Fabric für das Hosten von Webanwendungen nutzen sollten."
+	pageTitle="Azure App Service, Azure Virtual Machines, Service Fabric und Azure Cloud Services im Vergleich | Microsoft Azure"
+	description="Erfahren Sie, wann Sie Azure App Service, Virtual Machines, Service Fabric und Cloud Services für das Hosten von Webanwendungen wählen sollten."
 	services="app-service\web, virtual-machines, cloud-services"
 	documentationCenter=""
 	authors="tdykstra"
@@ -16,21 +16,17 @@
 	ms.date="02/22/2016"
 	ms.author="tdykstra"/>
 
-# Azure App Service, Azure Cloud Services, Azure Virtual Machines und Azure Service Fabric im Vergleich
+# Azure App Service, Azure Virtual Machines, Service Fabric und Azure Cloud Services im Vergleich
 
 ## Übersicht
 
-Azure bietet verschiedene Möglichkeiten für das Hosten von Websites: [Azure App Service][], [Cloud Services][], [Virtual Machines][] und [Service Fabric][]. Dieser Artikel unterstützt Sie dabei, die verfügbaren Optionen zu verstehen und die richtige Wahl für Ihre Webanwendung zu treffen.
+Azure bietet verschiedene Möglichkeiten zum Hosten von Websites: [Azure App Service][], [Azure Cloud Services][], [Azure Virtual Machines][] und [Service Fabric][]. Dieser Artikel unterstützt Sie dabei, die verfügbaren Optionen zu verstehen und die richtige Wahl für Ihre Webanwendung zu treffen.
 
 Azure App Service stellt für die meisten Web-Apps die beste Wahl dar. Die Bereitstellungs- und die Verwaltungsfunktionen sind in die Plattform integriert. Websites können rasch skaliert werden, um hohe Datenaufkommen zu bewältigen. Außerdem bieten der integrierte Lastenausgleich und Traffic Manager eine hohe Verfügbarkeit. Sie können vorhandene Websites mit einem [Online-Migrationstool](https://www.migratetoazure.net/) problemlos in Azure App Service verschieben, eine Open-Source-App aus dem Web-App-Katalog verwenden oder eine neue Website mithilfe des Frameworks und der Tools Ihrer Wahl erstellen. Die Funktion [WebJobs][] erleichtert das Hinzufügen der Hintergrundauftragsverarbeitung zu Ihrer App Service-Web-App.
 
-Wenn Sie mehr Kontrolle über die Webserverumgebung benötigen, wie etwa die Fähigkeit eines Remotezugriffs auf den Server oder eine Konfiguration von Serverstartaufgaben, ist Azure Cloud Services üblicherweise die beste Option.
+Service Fabric ist eine gute Wahl, wenn Sie eine neue App erstellen oder eine vorhandene App so umgestalten, dass eine Architektur aus Microservices verwendet werden kann. Apps, die in einem gemeinsam genutzten Pool von Computern ausgeführt werden, können klein anfangen und bei Bedarf auf Hunderte oder Tausende VMs skaliert werden. Zustandsbehaftete Dienste erleichtern das konsistente und zuverlässige Speichern des App-Zustands. Darüber hinaus verwaltet Service Fabric die Partitionierung, Skalierung und Verfügbarkeit für Sie. Service Fabric unterstützt auch WebAPI mit Open Web Interface für .NET (OWIN) und ASP.NET Core. Im Vergleich mit App Service bietet Service Fabric außerdem mehr Kontrolle über oder direkten Zugriff auf die zugrunde liegende Infrastruktur. Sie können eine Remoteverbindung mit Ihren Servern herstellen oder Serverstartaufgaben konfigurieren. Cloud Services entspricht Service Fabric hinsichtlich des Grads der Kontrolle im Vergleich mit der Bedienungsfreundlichkeit, gilt aber mittlerweile als veraltet, weshalb Service Fabric für Neuentwicklungen empfohlen wird.
 
-Wenn Sie über eine vorhandene Anwendung verfügen, für die erhebliche Änderungen erforderlich sind, damit sie in Azure App Service oder Azure Cloud Services ausgeführt werden kann, können Sie Azure Virtual Machines wählen, um die Migration in die Cloud zu vereinfachen. Das richtige Konfigurieren, Schützen und Warten von VMs erfordert im Vergleich zu Azure App Service und Cloud Services jedoch weitaus mehr Zeit und IT-Kenntnisse. Wenn Sie die Nutzung von Azure Virtual Machines in Erwägung ziehen, müssen Sie den fortlaufenden Wartungsaufwand berücksichtigen, der für das Patchen, Aktualisieren oder Verwalten der VM-Umgebung erforderlich ist.
-
-Das folgende Diagramm vergleicht den relativen Grad der Steuerung mit der Benutzerfreundlichkeit für jede der Webhostingoptionen in Azure.
-
-![Auswahldiagramm][ChoicesDiagram]
+Falls Sie über eine Anwendung verfügen, die wesentlich geändert werden müsste, um sie in App Service oder Service Fabric auszuführen, können Sie die Migration zur Cloud mithilfe von Azure Virtual Machines vereinfachen. Das richtige Konfigurieren, Schützen und Warten von VMs erfordert im Vergleich zu Azure App Service und Service Fabric jedoch weitaus mehr Zeit und IT-Kenntnisse. Wenn Sie die Nutzung von Azure Virtual Machines in Erwägung ziehen, müssen Sie den fortlaufenden Wartungsaufwand berücksichtigen, der für das Patchen, Aktualisieren oder Verwalten der VM-Umgebung erforderlich ist.
 
 ##<a name="scenarios"></a>Szenarien und Empfehlungen
 
@@ -38,7 +34,7 @@ Im Folgenden sind einige Anwendungsszenarien mit Empfehlungen zur Auswahl der ge
 
 - [Ich benötige ein Web-Front-End mit Hintergrundverarbeitung und Datenbank-Back-End, um Geschäftsanwendungen mit integrierten lokalen Medienobjekten auszuführen.](#onprem)
 - [Ich benötige eine zuverlässige Möglichkeit zum Hosten meiner Unternehmenswebsite, die eine problemlose Skalierung und einen globalen Einsatz ermöglicht.](#corp)
-- [Ich verfüge über eine IIS6-Anwendung, die unter Windows Server 2003 ausgeführt wird.](#iis6)
+- [Ich verfüge über eine IIS6-Anwendung, die unter Windows Server 2003 ausgeführt wird.](#iis6)
 - [Ich bin Inhaber eines kleinen Unternehmens und suche nach einem kostengünstigen Weg, meine Website zu hosten. Dabei sollen zukünftige Wachstumsmöglichkeiten berücksichtigt werden.](#smallbusiness)
 - [Ich bin Web-/Grafikdesigner und möchte für meine Kunden Websites entwerfen und erstellen.](#designer)
 - [Ich migriere meine mehrstufige Webanwendung mit einem Web-Front-End zur Cloud.](#multitier)
@@ -50,7 +46,7 @@ Im Folgenden sind einige Anwendungsszenarien mit Empfehlungen zur Auswahl der ge
 
 ### <a id="onprem"></a> Ich benötige ein Web-Front-End mit Hintergrundverarbeitung und Datenbank-Back-End, um Geschäftsanwendungen mit integrierten lokalen Medienobjekten auszuführen.
 
-Azure App Service stellt eine hervorragende Lösung für komplexe Geschäftsanwendungen dar. Mit Azure App Service können Sie Apps entwickeln, die automatisch auf einer Lastenausgleichsplattform skaliert, mit Active Directory geschützt und mit Ihren lokalen Ressourcen verbunden werden können. Das Verwalten dieser Apps wird dank eines erstklassigen Pportals und mithilfe von APIs erleichtert. Sie erhalten außerdem mithilfe von App Insight-Tools Einblicke darin, wie Kunden die Apps verwenden. Mit der Funktion [WebJobs][] können Sie Hintergrundprozesse und Aufgaben als Teil der Webebene ausführen, während Hybridkonnektivität und VNET-Funktionen die Verbindung zurück zu den lokalen Ressourcen ermöglichen. Azure App Service bietet eine SLA mit 99,9 % Verfügbarkeit für Web-Apps und stellt folgende Möglichkeiten bereit:
+Azure App Service stellt eine hervorragende Lösung für komplexe Geschäftsanwendungen dar. Mit Azure App Service können Sie Apps entwickeln, die automatisch auf einer Lastenausgleichsplattform skaliert, mit Active Directory geschützt und mit Ihren lokalen Ressourcen verbunden werden können. Das Verwalten dieser Apps wird dank eines erstklassigen Pportals und mithilfe von APIs erleichtert. Sie erhalten außerdem mithilfe von App Insight-Tools Einblicke darin, wie Kunden die Apps verwenden. Mithilfe des Features [WebJobs][] können Sie Hintergrundprozesse und Aufgaben als Teil der Webebene ausführen, während Hybridkonnektivität und VNet-Funktionen die erneute Verbindung mit lokalen Ressourcen ermöglichen. Azure App Service bietet eine SLA mit 99,9 % Verfügbarkeit für Web-Apps und stellt folgende Möglichkeiten bereit:
 
 * Zuverlässige Ausführung Ihrer Anwendungen auf einer Cloudplattform mit Selbstreparatur und automatischem Patching.
 * Automatische Skalierung in einem globalen Netzwerk von Datencentern.
@@ -60,7 +56,7 @@ Azure App Service stellt eine hervorragende Lösung für komplexe Geschäftsanwe
 
 ### <a id="corp"></a> Ich benötige eine zuverlässige Möglichkeit zum Hosten meiner Unternehmenswebsites, die eine problemlose Skalierung und einen globalen Einsatz ermöglicht.
 
-Azure App Service stellt eine hervorragende Lösung für das Hosten von Unternehmenswebsites dar. Azure App Service ermöglicht ein rasches und problemloses Skalieren von Web-Apps, um die Anforderungen in einem globalen Netzwerk von Datencentern zu erfüllen. Azure App Service bietet lokalen Zugriff, Fehlertoleranz und eine intelligente Verwaltung des Datenverkehrs. Dies alles auf einer Plattform, die erstklassige Verwaltungstools bereitstellt und es Ihnen ermöglicht, rasch und problemlos Einblicke in den Zustand und das Datenaufkommen der Website zu erhalten. Azure App Service bietet eine SLA mit 99,9 % Verfügbarkeit für Web-Apps und stellt folgende Möglichkeiten bereit:
+Azure App Service stellt eine hervorragende Lösung für das Hosten von Unternehmenswebsites dar. Azure App Service ermöglicht ein rasches und problemloses Skalieren von Web-Apps, um die Anforderungen in einem globalen Netzwerk von Datencentern zu erfüllen. Azure App Service bietet lokalen Zugriff, Fehlertoleranz und eine intelligente Verwaltung des Datenverkehrs. Dies alles auf einer Plattform, die erstklassige Verwaltungstools bereitstellt und es Ihnen ermöglicht, rasch und problemlos Einblicke in den Zustand und das Datenaufkommen der Website zu erhalten. Azure App Service bietet eine SLA mit 99,9 % Verfügbarkeit für Web-Apps und stellt folgende Möglichkeiten bereit:
 
 * Führen Sie Ihre Websites auf einer Cloudplattform mit Selbstreparatur und automatischem Patching zuverlässig aus.
 * Nutzen Sie eine automatische Skalierung in einem globalen Netzwerk von Datencentern.
@@ -98,11 +94,11 @@ Für Webentwickler und -designer lässt sich Azure App Service leicht in eine Re
 
 ### <a id="multitier"></a>Ich migriere meine mehrstufige Webanwendung mit einem Web-Front-End zur Cloud.
 
-Wenn Sie eine mehrstufige Anwendung ausführen, z. B. einen Webserver, der eine Verbindung mit einer Datenbank herstellt, ist Azure App Service eine gute Option, die eine enge Integration in Azure SQL-Datenbank bietet. Außerdem können Sie die WebJob-Funktion zum Ausführen von Hintergrundprozessen verwenden.
+Wenn Sie eine mehrstufige Anwendung ausführen, z. B. einen Webserver, der eine Verbindung mit einer Datenbank herstellt, ist Azure App Service eine gute Option, die eine enge Integration in Azure SQL-Datenbank bietet. Außerdem können Sie die WebJob-Funktion zum Ausführen von Hintergrundprozessen verwenden.
 
-Wählen Sie Cloud Services für eine oder mehrere der Ebenen, wenn Sie mehr Kontrolle über die Serverumgebung benötigen. Dies kann beispielsweise die Fähigkeit betreffen, remote auf Ihren Server zuzugreifen oder die Serverstartaufgaben zu konfigurieren.
+Wählen Sie Service Fabric für eine oder mehrere der Ebenen, wenn Sie mehr Kontrolle über die Serverumgebung benötigen. Dies kann beispielsweise die Fähigkeit betreffen, remote auf Ihren Server zuzugreifen oder Serverstartaufgaben zu konfigurieren.
 
-Wählen Sie Virtual Machines für eine oder mehrere der Ebenen, wenn Sie ein eigenes Image verwenden oder Serversoftware oder Dienste ausführen möchten, die Sie nicht in Cloud Services konfigurieren können.
+Wählen Sie Azure Virtual Machines für eine oder mehrere Ihrer Ebenen, wenn Sie ein eigenes Computerimage verwenden oder Serversoftware oder Dienste ausführen möchten, die Sie nicht in Service Fabric konfigurieren können.
 
 ### <a id="custom"></a>Meine Anwendung hängt von stark angepassten Windows- oder Linux-Umgebungen ab, und ich möchte die Anwendung in die Cloud verschieben.
 
@@ -119,22 +115,20 @@ Wenn Ihr Open-Source-Framework in App Service unterstützt wird, werden die von 
 - Richten Sie WordPress, Drupal, Umbraco, DNN und viele weitere Webanwendungen von Drittanbietern ein.
 - Migrieren Sie vorhandene Anwendungen, oder Erstellen Sie neue Anwendungen über den Web-App-Katalog.
 
-Wenn Ihr Open-Source-Framework in App Service nicht unterstützt wird, ist eine Ausführung über eine der weiteren Azure-Webhostingoptionen möglich. Bei Cloud Services verwenden Sie Startaufgaben für das Installieren und Konfigurieren erforderlicher Open-Source-Software, die unter Windows ausgeführt wird. Mit Virtual Machines können Sie die Software auf dem Image eines virtuellen Computers installieren und konfigurieren. Dieser kann Windows- oder Linux-basiert sein.
+Wenn Ihr Open-Source-Framework in App Service nicht unterstützt wird, ist eine Ausführung über eine der weiteren Azure-Webhostingoptionen möglich. Mit Virtual Machines können Sie die Software auf dem Image eines virtuellen Computers installieren und konfigurieren. Dieser kann Windows- oder Linux-basiert sein.
 
 ### <a id="lob"></a>Ich verfüge über eine Branchenanwendung, die mit dem Unternehmensnetzwerk verbunden sein muss.
 
-Wenn Sie eine Branchenanwendung erstellen möchten, benötigt Ihre Website möglicherweise direkten Zugriff auf Dienste oder Daten in Ihrem Unternehmensnetzwerk. Dies ist in App Service, Cloud Services und Virtual Machines über den [Azure Virtual Network-Dienst](/services/virtual-network/) möglich. In App Service können Sie mithilfe der [VNET-Integrationsfunktion](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) eine Azure-Anwendung so ausführen, als befände sie sich in Ihrem Unternehmensnetzwerk.
+Wenn Sie eine Branchenanwendung erstellen möchten, benötigt Ihre Website möglicherweise direkten Zugriff auf Dienste oder Daten in Ihrem Unternehmensnetzwerk. Dies ist in App Service, Service Fabric und Virtual Machines über den [Azure Virtual Network-Dienst](/services/virtual-network/) möglich. In App Service können Sie mithilfe der [VNET-Integrationsfunktion](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) eine Azure-Anwendung so ausführen, als befände sie sich in Ihrem Unternehmensnetzwerk.
 
 ### <a id="mobile"></a>Ich möchte eine REST-API oder einen Webdienst für mobile Clients hosten.
 
 HTTP-basierte Webdienste ermöglichen die Unterstützung vieler unterschiedlicher Clients, einschließlich mobiler Clients. Frameworks wie ASP.NET-Web-API können in Visual Studio integriert werden. Dies erleichtert die Erstellung und Verwendung von REST-Diensten. Diese Dienste werden von einem Webendpunkt verfügbar gemacht, sodass es möglich ist, eine beliebige Webhostingmethode in Azure anzuwenden, um dieses Szenario zu unterstützen. App Service ist jedoch auch eine hervorragende Option für das Hosten von REST-APIs. Mit Azure App Service haben Sie folgende Möglichkeiten:
 
-- Schnelles Erstellen einer Web-App zum Hosten des HTTP-Webdiensts in einem der global verteilten Azure-Datencenter.
+- Schnelles Erstellen einer [mobilen App](../app-service-mobile/app-service-mobile-value-prop.md) oder [API-App](../app-service-api/app-service-api-apps-why-best-platform.md) zum Hosten des HTTP-Webdiensts in einem der global verteilten Azure-Rechenzentren.
 - Migrieren von vorhandenen Diensten oder Erstellen von neuen Diensten.
 - Erfüllen von SLAs zur Verfügbarkeit mit einer einzelnen Instanz oder durch eine horizontale Skalierung auf mehrere dedizierte Computer.
 - Verwenden der veröffentlichten Website, um RESTP-APIs für beliebige HTTP-Clients bereitzustellen, auch für mobile Clients.
-
-Zusätzlich verfügt Azure App Service über eine neue Vorschaufunktion für REST-APIs: API-Apps. Weitere Informationen zu API-Apps finden Sie unter [Was sind API-Apps?](../app-service-api/app-service-api-apps-why-best-platform.md).
 
 ##<a name="features"></a>Funktionsvergleich
 
@@ -155,7 +149,7 @@ Zugriff auf Dienste wie Service Bus, Storage und SQL-Datenbank|X|X|X|X|
 Hosten der Web- oder Webdienstebene einer mehrschichtigen Architektur|X|X|X|X|
 Hosten der mittleren Ebene einer mehrschichtigen Architektur|X|X|X|X|App Service kann problemlos für das Hosten einer REST-API der mittleren Ebene genutzt werden, über die Funktion [WebJobs](http://go.microsoft.com/fwlink/?linkid=390226) können Hintergrundverarbeitungsaufträge gehostet werden. Sie können WebJobs auf einer dedizierten Website ausführen, um eine unabhängige Skalierbarkeit für die entsprechende Ebene zu erzielen. Die Vorschaufunktion [API-Apps](../app-service-api/app-service-api-apps-why-best-platform.md) bietet sogar noch mehr Funktionen für das Hosten von REST-Diensten.
 Integrierte Unterstützung von MySQL-as-a-Service|X|X|X||Cloud Services können in MySQL-as-a-Service über Angebote von ClearDB integriert werden, jedoch nicht als Bestandteil des Azure-Portal-Workflows.
-Unterstützung von ASP.NET, klassischem ASP, Node.js, PHP, Python|X|X|X|X|Service Fabric unterstützt die Erstellung eines Web-Front-Ends mit [ASP.NET 5](../service-fabric/service-fabric-add-a-web-frontend.md). Zudem können Sie jede Art von Anwendung (Node.js, Java usw.) als [ausführbare Gastanwendungsdatei](../service-fabric/service-fabric-deploy-existing-app.md) bereitstellen.
+Unterstützung von ASP.NET, klassischem ASP, Node.js, PHP, Python|X|X|X|X|Service Fabric unterstützt die Erstellung eines Web-Front-Ends mit [ASP.NET 5](../service-fabric/service-fabric-add-a-web-frontend.md). Zudem können Sie jede Art von Anwendung (Node.js, Java usw.) als [ausführbare Gastanwendungsdatei](../service-fabric/service-fabric-deploy-existing-app.md) bereitstellen.
 Horizontale Skalierung auf mehrere Instanzen ohne erneute Bereitstellung|X|X|X|X|Bei virtuellen Computern ist eine horizontale Skalierung auf mehrere Instanzen möglich. Die Dienste, die auf diesen Computern ausgeführt werden, müssen jedoch so geschrieben werden, dass sie diese horizontale Skalierung unterstützen. Sie müssen einen Lastenausgleich konfigurieren, um Anforderungen über die Computer weiterzuleiten. Zudem müssen Sie eine Affinitätsgruppe erstellen, um gleichzeitigen Neustarts aller Instanzen aufgrund von Wartungs- oder Hardware-Fehlern vorzubeugen.
 SSL-Unterstützung|X|X|X|X|Für App Service-Web-Apps wird SSL für benutzerdefinierte Domänen nur in den Modi "Basic" und "Standard" unterstützt. Weitere Informationen zur Verwendung von SSL mit Web-Apps finden Sie unter [Konfigurieren eines SSL-Zertifikats für eine Azure-Website](../app-service-web/web-sites-configure-ssl-certificate.md).
 Visual Studio-Integration|X|X|X|X|
@@ -187,9 +181,9 @@ Informationen zum Einstieg in die gewählte(n) Optionen für Ihre Anwendungen fi
 
   [ChoicesDiagram]: ./media/choose-web-site-cloud-service-vm/Websites_CloudServices_VMs_3.png
   [Azure App Service]: /services/app-service/
-  [Cloud Services]: http://go.microsoft.com/fwlink/?LinkId=306052
-  [Virtual Machines]: http://go.microsoft.com/fwlink/?LinkID=306053
-  [Service Fabric]: /services/service-fabric
+  [Service Fabric]: http://go.microsoft.com/fwlink/?LinkId=306052
+  [Azure Cloud Services]: http://go.microsoft.com/fwlink/?LinkID=306053
+  [Azure Virtual Machines]: /services/service-fabric
   [ClearDB]: http://www.cleardb.com/
   [WebJobs]: http://go.microsoft.com/fwlink/?linkid=390226&clcid=0x409
   [Configuring an SSL certificate for an Azure Website]: http://www.windowsazure.com/develop/net/common-tasks/enable-ssl-web-site/
@@ -203,4 +197,4 @@ Informationen zum Einstieg in die gewählte(n) Optionen für Ihre Anwendungen fi
   [sqldatabase]: http://www.windowsazure.com/documentation/services/sql-database/
   [Storage]: http://www.windowsazure.com/documentation/services/storage/
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0601_2016-->

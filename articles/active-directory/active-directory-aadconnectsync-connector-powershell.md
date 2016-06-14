@@ -16,7 +16,7 @@
    ms.date="05/24/2016"
    ms.author="andkjell"/>
 
-# Technische Referenz für den Windows PowerShell-Connector
+# Technische Referenz für den Windows PowerShell-Connector
 
 Dieser Artikel beschreibt den Windows PowerShell-Connector. Der Artikel bezieht sich auf folgende Produkte:
 
@@ -370,4 +370,4 @@ Ersetzen Sie den Platzhalter <ConnectorName> durch den Namen des Windows PowerS
 [pwdex3]: https://msdn.microsoft.com/library/windows/desktop/microsoft.metadirectoryservices.passwordextensionexception.aspx
 [samp]: http://go.microsoft.com/fwlink/?LinkId=394291
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

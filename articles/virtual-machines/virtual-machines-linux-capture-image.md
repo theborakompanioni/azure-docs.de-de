@@ -20,9 +20,6 @@
 
 # Erfassen eines virtuellen Linux-Computers zur Verwendung als Ressourcen-Manager-Vorlage
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-linux-classic-capture-image.md).
-
-
 Verwenden Sie die Azure-Befehlszeilenschnittstelle (CLI), um einen virtuellen Azure-Computer zu erfassen, auf dem Linux ausgeführt wird, um ihn als Azure Resource Manager-Vorlage zum Erstellen anderer virtueller Computer zu verwenden. Diese Vorlage umfasst den Betriebssystemdatenträger und die an den virtuellen Computer angefügten Datenträger. Nicht enthalten sind die Ressourcen des virtuellen Netzwerks, die Sie zum Erstellen eines virtuellen Azure-Ressourcen-Manager-Computers benötigen, In den meisten Fällen ist eine separate Einrichtung erforderlich, bevor Sie einen weiteren virtuellen Computer erstellen, der die Vorlage verwendet.
 
 ## Voraussetzungen
@@ -178,7 +175,7 @@ Wenn Sie möchten, dass das Netzwerk beim Erstellen eines virtuellen Computers a
 
 ## Verwenden des „azure vm create“-Befehls
 
-Sie sollten stets eine Ressourcen-Manager-Vorlage verwenden, um einen virtuellen Computer aus dem Image zu erstellen. Allerdings können Sie den virtuellen Computer _imperativ_ erstellen, indem Sie den **azure vm create**-Befehl mit dem **-Q** (**--image-urn**)-Parameter verwenden. Übergeben Sie zudem den **-d** (**--os-disk-vhd**)-Parameter, um den Speicherort der VHD-Datei des Betriebssystems für den neuen virtuellen Computer anzugeben. Diese muss sich im VHDS-Container des Speicherkontos befinden, in dem die VHD-Imagedatei gespeichert ist. Der Befehl kopiert die virtuelle Festplatte für den neuen virtuellen Computer automatisch in den VHDS-Container.
+Sie sollten stets eine Ressourcen-Manager-Vorlage verwenden, um einen virtuellen Computer aus dem Image zu erstellen. Allerdings können Sie den virtuellen Computer _imperativ_ erstellen, indem Sie den Befehl **azure vm create** mit dem Parameter **-Q** (**--image-urn**) verwenden. Übergeben Sie zudem den Parameter **-d** (**--os-disk-vhd**), um den Speicherort der VHD-Datei des Betriebssystems für den neuen virtuellen Computer anzugeben. Diese muss sich im VHDS-Container des Speicherkontos befinden, in dem die VHD-Imagedatei gespeichert ist. Der Befehl kopiert die virtuelle Festplatte für den neuen virtuellen Computer automatisch in den VHDS-Container.
 
 Führen Sie vor dem Ausführen von **azure vm create** mit dem Image folgende Schritte aus:
 
@@ -197,4 +194,4 @@ Führen Sie für zusätzliche Befehlsoptionen `azure help vm create` aus.
 
 Informationen zur Verwaltung Ihrer virtuellen Computer mit der CLI finden Sie unter [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -19,7 +19,7 @@
 
 # Problembehandlung bei häufigen Fehlern beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager
 
-In diesem Thema wird beschrieben, wie Sie einige der häufigsten Fehler beheben können, die beim Bereitstellen von Ressourcen in Azure auftreten können. Es wird davon ausgegangen, dass Sie eine Nachricht gesehen haben, die den Fehler beschreibt. Wenn Sie weitere Informationen über die Ursache des Bereitstellungsfehlers benötigen, finden Sie diese unter [Anzeigen von Bereitstellungsvorgängen](resource-manager-troubleshoot-deployments-portal.md).
+In diesem Thema wird beschrieben, wie Sie einige der häufigsten Fehler beheben können, die beim Bereitstellen von Ressourcen in Azure auftreten können. Hoffentlich haben Sie bereits eine hilfreiche Fehlermeldung gesehen. Falls Ihnen noch keine hilfreiche Fehlermeldung angezeigt wurde oder Sie weitere Einzelheiten zur Ursache des Bereitstellungsfehlers benötigen, lesen Sie zunächst [Anzeigen von Bereitstellungsvorgängen](resource-manager-troubleshoot-deployments-portal.md). Kehren Sie anschließend zu diesem Artikel zurück, um Unterstützung beim Beheben des Fehlers zu erhalten.
 
 ## Ungültige Vorlage oder Ressource
 
@@ -33,7 +33,7 @@ Je nachdem, wo sich das fehlende Zeichen in Ihrer Vorlage befindet, erhalten Sie
 
 ## Der Ressourcenname ist bereits vorhanden
 
-Bei einigen Ressourcen, insbesondere Speicherkonten, Datenbankservern und Websites, müssen Sie einen im gesamten Azure-Dienst eindeutigen Namen für die Ressource angeben. Sie können einen eindeutigen Namen erstellen, indem Sie die Benennungskonvention mit dem Ergebnis der [uniqueString](./resource-group-template-functions/#uniquestring)-Funktion verketten.
+Bei einigen Ressourcen, insbesondere Speicherkonten, Datenbankservern und Websites, müssen Sie einen im gesamten Azure-Dienst eindeutigen Namen für die Ressource angeben. Sie können einen eindeutigen Namen erstellen, indem Sie die Benennungskonvention mit dem Ergebnis der [uniqueString](resource-group-template-functions.md#uniquestring)-Funktion verketten.
  
     "name": "[concat('contosostorage', uniqueString(resourceGroup().id))]", 
     "type": "Microsoft.Storage/storageAccounts", 
@@ -240,4 +240,4 @@ Sie können jedoch Azure daran hindern, einen erfolgreichen Bereitstellungsstatu
 - Informationen zur Problembehandlung bei Remotedesktopprotokoll-Fehlern auf Windows-basierten virtuellen Computern finden Sie unter [Problembehandlung bei Remotedesktopverbindungen](./virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md).
 - Informationen zur Problembehandlung bei Secure Shell-Fehlern auf Linux-basierten virtuellen Computern finden Sie unter [Problembehandlung bei Secure Shell-Verbindungen](./virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

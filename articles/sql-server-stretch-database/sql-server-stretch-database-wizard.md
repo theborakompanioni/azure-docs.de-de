@@ -31,10 +31,17 @@ Weitere Informationen zu Stretch-Datenbank finden Sie unter [Stretch-Datenbank](
 ## <a name="Intro"></a>Einführung
 Überprüfen Sie den Zweck des Assistenten und die Voraussetzungen.
 
+Zu diesen wichtigen Voraussetzungen gehört Folgendes:
+-   Sie müssen ein Administrator sein, um die Datenbankeinstellungen zu ändern.
+-   Sie müssen über ein Microsoft Azure-Abonnement verfügen.
+-   Ihre SQL Server-Instanz muss mit dem Azure-Remoteserver kommunizieren können.
+
 ![Einführungsseite des Assistenten der Stretch-Datenbank][StretchWizardImage1]
 
 ## <a name="Tables"></a>Auswählen von Tabellen
 Wählen Sie die Tabellen, die Sie für Stretch aktivieren möchten.
+
+Tabellen mit vielen Zeilen werden in der sortierten Liste oben angezeigt. Bevor der Assistent die Liste mit den Tabellen anzeigt, werden diese in Bezug auf Datentypen analysiert, die derzeit von Stretch-Datenbank nicht unterstützt werden.
 
 ![Auswahl der Tabellenseite des Assistenten der Stretch-Datenbank][StretchWizardImage2]
 
@@ -42,31 +49,41 @@ Wählen Sie die Tabellen, die Sie für Stretch aktivieren möchten.
 |----------|---------------|
 |(ohne Titel)|Aktivieren Sie das Kontrollkästchen in dieser Spalte, um die ausgewählte Tabelle für Stretch zu aktivieren.|
 |**Name**|Gibt den Namen der Spalte in der Tabelle an.|
-|(ohne Titel)|Ein Symbol in dieser Spalte gibt normalerweise an, dass Sie die ausgewählte Tabelle aufgrund eines Hindernisses nicht für Stretch aktivieren können. Möglicherweise verwendet die Tabelle einen nicht unterstützten Datentyp. Zeigen Sie auf das Symbol, um weitere Informationen in einer QuickInfo anzuzeigen. Weitere Informationen finden Sie unter [Oberflächeneinschränkungen und Hindernisse für Stretch-Datenbank](sql-server-stretch-database-limitations.md).|
-|**Gestreckt**|Gibt an, ob die Tabelle bereits aktiviert ist.|
-|**Migrieren**|Sie können eine ganze Tabelle (**Ganze Tabelle**) migrieren oder ein datumsbasiertes Filterprädikat im Assistenten festlegen. Wenn Sie ein anderes Filterprädikat verwenden möchten, um die zu migrierenden Spalten auszuwählen, führen Sie die Anweisung ALTER TABLE aus, um das Filterprädikat nach Beenden des Assistenten festzulegen. Weitere Informationen zum Filterprädikat finden Sie unter [Use a filter predicate to select rows to migrate (Stretch Database)](sql-server-stretch-database-predicate-function.md) (Verwenden eines Filterprädikats, um die zu migrierenden Zeilen auszuwählen (Stretch-Datenbank)). Weitere Informationen zum Anwenden des Prädikats finden Sie unter [Enable Stretch Database for a table](sql-server-stretch-database-enable-table.md) (Aktivieren von Stretch-Datenbank für eine Tabelle) oder [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx).|
+|(ohne Titel)|Ein Symbol in dieser Spalte kann eine Warnung darstellen, durch die nicht verhindert wird, dass Sie die ausgewählte Tabelle für Stretch aktivieren. Es kann auch für ein Hindernis stehen, durch das die Aktivierung der ausgewählten Tabelle für Stretch verhindert wird. Der Grund kann beispielsweise sein, dass in der Tabelle ein nicht unterstützter Datentyp verwendet wird. Zeigen Sie auf das Symbol, um weitere Informationen in einer QuickInfo anzuzeigen. Weitere Informationen finden Sie unter [Einschränkungen für Stretch-Datenbank](sql-server-stretch-database-limitations.md).|
+|**Gestreckt**|Gibt an, ob die Tabelle bereits für Stretch aktiviert ist.|
+|**Migrieren**|Sie können eine gesamte Tabelle migrieren (**Ganze Tabelle**) oder einen Filter für eine vorhandene Spalte in der Tabelle angeben. Wenn Sie ein anderes Filterprädikat verwenden möchten, um die zu migrierenden Spalten auszuwählen, führen Sie die Anweisung ALTER TABLE aus, um das Filterprädikat nach Beenden des Assistenten festzulegen. Weitere Informationen zum Filterprädikat finden Sie unter [Auswählen von Zeilen für die Migration mit einem Filterprädikat](sql-server-stretch-database-predicate-function.md). Weitere Informationen zum Anwenden des Prädikats finden Sie unter [Aktivieren von Stretch-Datenbank für eine Tabelle](sql-server-stretch-database-enable-table.md) oder [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx).|
 |**beibehalten**|Gibt die Anzahl der Zeilen in der Tabelle an|
 |**Größe (KB)**|Gibt die Größe der Tabelle in KB an.|
 
-## <a name="Filter"></a>Geben Sie optional ein datenbasiertes Filterprädikat an.
+## <a name="Filter"></a>Optionales Bereitstellen eines Zeilenfilters
 
-Wenn Sie zum Auswählen zu migrierender Spalten ein datenbasiertes Filterprädikat angeben möchten, führen Sie auf der Seite **Tabellen auswählen** die folgenden Schritte aus.
+Führen Sie auf der Seite **Tabellen auswählen** die folgenden Schritte aus, wenn Sie zum Auswählen von zu migrierenden Spalten ein Filterprädikat angeben möchten.
 
 1.  Klicken Sie in der Liste **Zu streckende Tabellen auswählen** in der Spalte für die Tabelle auf **Ganze Tabelle**. Das Dialogfeld **Zu streckende Zeilen auswählen** wird geöffnet.
 
-    ![Definieren eines datenbasiertes Filterprädikats][StretchWizardImage2a]
+    ![Filterprädikat definieren][StretchWizardImage2a]
 
 2.  Wählen Sie im Dialogfeld **Zu streckende Zeilen auswählen** die Option **Zeilen auswählen** aus.
 
 3.  Geben Sie im **Namensfeld** einen Namen für das Filterprädikat an.
 
-4.  Wählen Sie für die **WHERE**-Klausel eine Datumsspalte der Tabelle und anschließend einen Operator aus, und geben Sie einen Datumswert an.
+4.  Wählen Sie für die **WHERE**-Klausel eine Spalte der Tabelle und anschließend einen Operator aus, und geben Sie einen Wert an.
 
-5. Klicken Sie zum Prüfen des Prädikats auf **Überprüfen**. Wenn das Prädikat aus der Tabelle Ergebnisse zurückgibt (d.h. wenn zu migrierende Zeilen vorhanden sind, auf die die Bedingung zutrifft), meldet der Test **Erfolg**.
+5. Klicken Sie zum Prüfen des Prädikats auf **Überprüfen**. Wenn das Prädikat aus der Tabelle Ergebnisse zurückgibt (also wenn zu migrierende Zeilen vorhanden sind, auf die die Bedingung zutrifft), meldet der Test **Erfolg**.
+
+    >   [AZURE.NOTE] Das Textfeld, in dem die Filterabfrage angezeigt wird, ist schreibgeschützt. Es ist nicht möglich, die Abfrage im Textfeld zu bearbeiten.
 
 6.  Klicken Sie auf „Fertig“, um zur Seite **Tabellen auswählen** zurückzukehren.
 
-    ![Seite „Tabellen auswählen“ nach dem Definieren des Filterprädikats][StretchWizardImage2b]
+Die Filterfunktion wird in SQL Server nur erstellt, wenn Sie den Assistenten abschließen. Bis zu diesem Punkt können Sie zur Seite **Tabellen auswählen** zurückkehren, um die Filterfunktion zu ändern oder umzubenennen.
+
+![Seite „Tabellen auswählen“ nach dem Definieren des Filterprädikats][StretchWizardImage2b]
+
+Führen Sie einen der folgenden Schritte aus, wenn Sie eine andere Art von Filterprädikat für die Auswahl der zu migrierenden Zeilen verwenden.
+
+-   Beenden Sie den Assistenten, und führen Sie die ALTER TABLE-Anweisung aus, um Stretch für die Tabelle zu aktivieren und ein Prädikat anzugeben. Weitere Informationen finden Sie unter [Aktivieren von Stretch-Datenbank für eine Tabelle](sql-server-stretch-database-enable-table.md).  
+
+-   Führen Sie die ALTER TABLE-Anweisung aus, um ein Prädikat anzugeben, nachdem Sie den Assistenten beendet haben. Die erforderlichen Schritte finden Sie unter [Hinzufügen eines Filterprädikats nach dem Ausführen des Assistenten](sql-server-stretch-database-predicate-function.md#addafterwiz).
 
 ## <a name="Configure"></a>Konfigurieren der Azure-Bereitstellung
 
@@ -74,9 +91,11 @@ Wenn Sie zum Auswählen zu migrierender Spalten ein datenbasiertes Filterprädik
 
     ![Anmelden bei Azure – Assistent der Stretch-Datenbank][StretchWizardImage3]
 
-2.  Wählen Sie das Azure-Abonnement für Stretch-Datenbank aus.
+2.  Wählen Sie das vorhandene Azure-Abonnement aus, das für Stretch-Datenbank verwendet werden soll.
 
-3.  Wählen Sie eine Azure-Region. Wenn Sie einen neuen Server erstellen, wird der Server in dieser Region erstellt.
+3.  Wählen Sie eine Azure-Region.
+    -   Wenn Sie einen neuen Server erstellen, wird der Server in dieser Region erstellt.  
+    -   Wenn Sie in der ausgewählten Region über Server verfügen, werden diese vom Assistenten aufgeführt, wenn Sie **Vorhandener Server** wählen.
 
     Um Latenz zu minimieren, wählen Sie die Azure-Region, in der sich Ihr SQL Server befindet. Weitere Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).
 
@@ -94,57 +113,63 @@ Wenn Sie zum Auswählen zu migrierender Spalten ein datenbasiertes Filterprädik
 
     -   **Vorhandener Server**
 
-        1.  Wählen Sie den Namen des vorhandenen Azure-Server aus, oder geben Sie ihn ein.
+        1.  Wählen Sie den vorhandenen Azure-Server aus.
 
         2.  Wählen Sie die Authentifizierungsmethode aus.
 
-            -   Wenn Sie die Option **SQL Server-Authentifizierung** auswählen, erstellen Sie einen neuen Benutzernamen und ein neues Kennwort.
+            -   Geben Sie den Administratorbenutzernamen und das Kennwort an, wenn Sie die Option **SQL Server-Authentifizierung** verwenden.
 
-            -   Wählen Sie **Integrierte Active Directory-Authentifizierung** aus, um ein Verbunddienstkonto für SQL Server für die Kommunikation mit dem Azure-Remoteserver zu verwenden.
+            -   Wählen Sie **Integrierte Active Directory-Authentifizierung** aus, um ein Verbunddienstkonto für SQL Server für die Kommunikation mit dem Azure-Remoteserver zu verwenden. Diese Option wird nicht angezeigt, wenn der ausgewählte Server nicht in Azure Active Directory integriert ist.
 
 		![Auswählen eines vorhandenen Azure-Servers – Assistent der Stretch-Datenbank][StretchWizardImage5]
 
 ## <a name="Credentials"></a>Sichere Anmeldeinformationen
-Geben Sie ein sicheres Kennwort zum Erstellen eines Datenbankhauptschlüssels ein, oder geben Sie das Kennwort ein, wenn bereits ein Datenbankhauptschlüssel vorhanden ist.
-
 Sie brauchen einen Datenbankhauptschlüssel, um die Anmeldeinformationen zu sichern, die Stretch-Datenbank für die Verbindung mit der Remotedatenbank verwendet.
+
+Falls bereits ein Hauptschlüssel vorhanden ist, müssen Sie das Kennwort dafür eingeben.
+
+![Seite mit den sicheren Anmeldeinformationen des Assistenten der Stretch-Datenbank][StretchWizardImage6b]
+
+Wenn die Datenbank keinen vorhandenen Hauptschlüssel aufweist, müssen Sie ein sicheres Kennwort eingeben, um einen Datenbank-Hauptschlüssel zu erstellen.
 
 ![Seite mit den sicheren Anmeldeinformationen des Assistenten der Stretch-Datenbank][StretchWizardImage6]
 
-Weitere Informationen zum Datenbankhauptschlüssel finden Sie unter [CREATE MASTER KEY (Transact-SQL)](https://msdn.microsoft.com/library/ms174382.aspx) und [Erstellen eines Datenbankhauptschlüssels](https://msdn.microsoft.com/library/aa337551.aspx). Weitere Informationen über die Anmeldeinformationen, die der Assistent erstellt, finden Sie unter [CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/mt270260.aspx).
+Weitere Informationen zum Datenbankhauptschlüssel finden Sie unter [CREATE MASTER KEY (Transact-SQL)](https://msdn.microsoft.com/library/ms174382.aspx) und [Erstellen eines Datenbankhauptschlüssels](https://msdn.microsoft.com/library/aa337551.aspx). Weitere Informationen zu den Anmeldeinformationen, die der Assistent erstellt, finden Sie unter [CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/mt270260.aspx).
 
 ## <a name="Network"></a>Auswählen der IP-Adresse
-Verwenden Sie die öffentliche IP-Adresse von SQL Server, oder geben Sie einen IP-Adressbereich ein, um eine Firewallregel für Azure zu erstellen, damit SQL Server mit dem Azure-Remoteserver kommunizieren kann.
+Verwenden Sie den Subnetz-IP-Adressbereich (empfohlen) oder die öffentliche IP-Adresse Ihrer SQL Server-Instanz, um eine Firewallregel für Azure zu erstellen, damit SQL Server mit dem Azure-Remoteserver kommunizieren kann.
 
 Die auf dieser Seite angegebenen IP-Adressen informieren den Azure-Server darüber, dass eingehende Daten, Abfragen und Verwaltungsvorgänge, die von SQL Server initiiert werden, die Azure-Firewall durchlaufen können. Der Assistent ändert keine Einstellungen der Firewall auf SQL Server.
 
 ![Auswählen der IP-Adressseite des Assistenten der Stretch-Datenbank][StretchWizardImage7]
 
 ## <a name="Summary"></a>Zusammenfassung
-Überprüfen Sie die Werte, die Sie eingegeben haben, und die im Assistenten ausgewählten Optionen. Wählen Sie dann **Fertig stellen**, um Stretch zu aktivieren.
+Überprüfen Sie die Werte, die Sie eingegeben haben, und die im Assistenten ausgewählten Optionen sowie die geschätzten Kosten in Azure. Wählen Sie dann **Fertig stellen**, um Stretch zu aktivieren.
 
 ![Zusammenfassungsseite des Assistenten der Stretch-Datenbank][StretchWizardImage8]
 
 ## <a name="Results"></a>Ergebnisse
 Überprüfen Sie die Ergebnisse.
 
-Wählen Sie optional **Überwachen** aus, um den Status der Datenmigration im Stretch Database Monitor zu überwachen. Weitere Informationen finden Sie unter [Monitor and troubleshoot data migration (Stretch Database)](sql-server-stretch-database-monitor.md) (Überwachen und Behandeln von Problemen der Datenmigration (Stretch-Datenbank)).
+Informationen zum Überwachen des Status der Datenmigration finden Sie unter [Überwachen und Behandeln von Problemen der Datenmigration (Stretch-Datenbank)](sql-server-stretch-database-monitor.md).
+
+![Ergebnisseite des Assistenten der Stretch-Datenbank][StretchWizardImage9]
 
 ## <a name="KnownIssues"></a>Problembehandlung für den Assistenten
-**Der Assistent für Stretch-Datenbank ist fehlgeschlagen.** Wenn Stretch-Datenbank noch nicht auf Serverebene aktiviert ist und Sie den Assistenten ohne Systemadministratorberechtigungen zum Aktivieren ausführen, schlägt der Assistent fehl. Bitten Sie den Systemadministrator, Stretch-Datenbank auf der lokalen Serverinstanz zu aktivieren, und führen Sie den Assistenten dann erneut aus. Weitere Informationen finden Sie unter [Prerequisite: Permission to enable Stretch Database on the server](sql-server-stretch-database-enable-database.md#EnableTSQLServer) (Voraussetzung: Berechtigung zum Aktivieren von Stretch-Datenbank auf dem Server).
+**Der Assistent für Stretch-Datenbank ist fehlgeschlagen.** Wenn Stretch-Datenbank noch nicht auf Serverebene aktiviert ist und Sie den Assistenten ohne Systemadministratorberechtigungen zum Aktivieren ausführen, schlägt der Assistent fehl. Bitten Sie den Systemadministrator, Stretch-Datenbank auf der lokalen Serverinstanz zu aktivieren, und führen Sie den Assistenten dann erneut aus. Weitere Informationen finden Sie unter [Voraussetzung: Berechtigung zum Aktivieren von Stretch-Datenbank auf dem Server](sql-server-stretch-database-enable-database.md#EnableTSQLServer).
 
 ## Nächste Schritte
 Aktivieren von zusätzlichen Tabellen für Stretch-Datenbank Überwachen der Datenmigration und Verwalten von Stretch-fähigen Datenbanken und Tabellen
 
--   [Enable Stretch Database for a table](sql-server-stretch-database-enable-table.md) (Aktivieren von Stretch-Datenbank für eine Tabelle) zum Aktivieren zusätzlicher Tabellen
+-   [Aktivieren von Stretch-Datenbank für eine Tabelle](sql-server-stretch-database-enable-table.md) zum Aktivieren zusätzlicher Tabellen
 
--   [Monitor Stretch Database](sql-server-stretch-database-monitor.md) (Überwachen von Stretch-Datenbank) zum Anzeigen des Status der Datenmigration
+-   [Überwachen und Behandeln von Problemen der Datenmigration](sql-server-stretch-database-monitor.md) zum Anzeigen des Status der Datenmigration
 
 -   [Anhalten und Fortsetzen von Stretch-Datenbank](sql-server-stretch-database-pause.md)
 
 -   [Verwalten von Stretch-Datenbank und Behandeln von Problemen ](sql-server-stretch-database-manage.md)
 
--   [Sichern und Wiederherstellen von Stretch-fähigen Datenbanken](sql-server-stretch-database-backup.md)
+-   [Sichern von Stretch-fähigen Datenbanken](sql-server-stretch-database-backup.md)
 
 ## Weitere Informationen
 
@@ -160,7 +185,9 @@ Aktivieren von zusätzlichen Tabellen für Stretch-Datenbank Überwachen der Dat
 [StretchWizardImage4]: ./media/sql-server-stretch-database-wizard/stretchwiz4.png
 [StretchWizardImage5]: ./media/sql-server-stretch-database-wizard/stretchwiz5.png
 [StretchWizardImage6]: ./media/sql-server-stretch-database-wizard/stretchwiz6.png
+[StretchWizardImage6b]: ./media/sql-server-stretch-database-wizard/stretchwiz6b.png
 [StretchWizardImage7]: ./media/sql-server-stretch-database-wizard/stretchwiz7.png
 [StretchWizardImage8]: ./media/sql-server-stretch-database-wizard/stretchwiz8.png
+[StretchWizardImage9]: ./media/sql-server-stretch-database-wizard/stretchwiz9.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

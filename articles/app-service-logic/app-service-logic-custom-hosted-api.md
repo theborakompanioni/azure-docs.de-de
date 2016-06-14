@@ -13,18 +13,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/23/2016"
+	ms.date="05/31/2016"
 	ms.author="stepsic"/>
 
 # Verwenden der in App Service gehosteten benutzerdefinierten API mit Logik-Apps
 
-Zwar weisen Logik-Apps einen umfangreichen Satz von mehr als 40 Connectors für eine Vielzahl von Diensten auf. Trotzdem möchten Sie unter Umständen Ihre eigene benutzerdefinierte API aufrufen, die Ihren eigenen Code ausführen kann. Die einfachste und am besten skalierbare Methode zum Hosten Ihrer eigenen benutzerdefinierten Web-APIs ist die Verwendung von App Service. In diesem Artikel wird beschrieben, wie Sie eine Web-API aufrufen, die in einer App Service-API-App, einer Web-App oder einer mobilen App gehostet wird.
+Zwar weisen Logik-Apps einen umfangreichen Satz von mehr als 40 Connectors für eine Vielzahl von Diensten auf, trotzdem möchten Sie ggf. Ihre eigene benutzerdefinierte API aufrufen, die Ihren eigenen Code ausführen kann. Die einfachste und am besten skalierbare Methode zum Hosten Ihrer eigenen benutzerdefinierten Web-APIs ist die Verwendung von App Service. In diesem Artikel wird beschrieben, wie Sie eine Web-API aufrufen, die in einer App Service-API-App, einer Web-App oder einer mobilen App gehostet wird.
 
 Informationen zum Erstellen von APIs als Trigger oder Aktion innerhalb von Logik-Apps finden Sie in [diesem Artikel](app-service-logic-create-api-app.md).
 
 ## Bereitstellen der Web-App
 
-Zunächst müssen Sie die API als Web-App in App Service bereitstellen. Die hier bereitgestellten Anweisungen decken eine einfache Bereitstellung ab: [Erstellen einer ASP.NET-Web-App](../app-service-web/web-sites-dotnet-get-started.md). Obwohl Sie jede API aus einer Logik-App aufrufen können, sollten Sie am besten Swagger-Metadaten hinzufügen, um die Integration in Logik-Apps-Aktionen zu vereinfachen. Details finden Sie unter [Hinzufügen von Swagger](../app-service-api/app-service-api-dotnet-get-started.md/#use-swagger-metadata-and-ui).
+Zunächst müssen Sie die API als Web-App in App Service bereitstellen. Die hier bereitgestellten Anweisungen decken eine einfache Bereitstellung ab: [Erstellen einer ASP.NET-Web-App](../app-service-web/web-sites-dotnet-get-started.md). Obwohl Sie jede API aus einer Logik-App aufrufen können, sollten Sie am besten Swagger-Metadaten hinzufügen, um die Integration in Logik-Apps-Aktionen zu vereinfachen. Details finden Sie unter [Hinzufügen von Swagger](../app-service-api/app-service-api-dotnet-get-started.md#use-swagger-api-metadata-and-ui).
 
 ### API-Einstellungen
 
@@ -169,4 +169,4 @@ Wenn Sie dies darüber hinaus vollständig in Ihrem eigenen Code implementieren 
 
 Sie müssen dennoch die obigen Schritte ausführen, um die Anwendungsidentität für Ihre Logik-App zu erstellen und diese zum Aufrufen der API zu verwenden.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0601_2016-->

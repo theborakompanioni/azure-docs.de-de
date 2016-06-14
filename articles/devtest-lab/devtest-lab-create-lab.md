@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/08/2016"
+	ms.date="06/01/2016"
 	ms.author="tarcher"/>
 
 # Erstellen eines Labs in Azure DevTest Labs
@@ -33,7 +33,7 @@ Zum Erstellen eines Labs benötigen Sie Folgendes:
 
 1. Wählen Sie in der Liste **DevTest Labs** aus.
 
-1. Tippen Sie auf dem Blatt **DevTest Labs** auf **Hinzufügen**.
+1. Wählen Sie auf dem Blatt **DevTest Labs** die Option **Hinzufügen**.
 
     ![Hinzufügen eines Labs](./media/devtest-lab-create-lab/add-lab-button.png)
 
@@ -42,7 +42,7 @@ Zum Erstellen eines Labs benötigen Sie Folgendes:
     1. Geben Sie einen **Labnamen** für das neue Lab ein.
     1. Wählen Sie das **Abonnement** aus, das mit dem Lab verknüpft werden soll.
     1. Wählen Sie einen **Speicherort** für das Lab aus.
-    1. Tippen Sie auf **Erstellen**.
+    1. Klicken Sie auf **Erstellen**.
 
     ![Erstellen eines Lab-Blatts](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 
@@ -60,4 +60,4 @@ Nachdem das Lab erstellt wurde, sollten Sie ggf. die folgenden Schritte ausführ
 
 - [Hinzufügen einer VM mit Artefakten zu einem Lab](devtest-lab-add-vm-with-artifacts.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

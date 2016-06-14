@@ -2,7 +2,8 @@
 	pageTitle="Erstellen eines virtuellen Oracle WebLogic Server 12c-Computers | Microsoft Azure"
 	description="Erstellen Sie einen virtuellen Oracle WebLogic Server 12c-Computer, auf dem Windows Server 2012 in Microsoft Azure ausgeführt wird, indem Sie das Ressourcen-Manager-Bereitstellungsmodell verwenden."
 	services="virtual-machines-windows"
-	authors="bbenz"
+	authors="rickstercdn"
+	manager="timlt"
 	documentationCenter=""
 	tags="azure-resource-manager"/>
 
@@ -12,43 +13,14 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services"
-	ms.date="06/22/2015"
-	ms.author="bbenz" />
+	ms.date="05/17/2016"
+	ms.author="rclaus" />
 
 #Erstellen eines Erstellen eines virtuellen Oracle WebLogic Server 12c-Computers in Azure
-Das folgende Beispiel zeigt, wie Sie einen virtuellen Computer basierend auf einem von Microsoft bereitgestellten Oracle WebLogic Server 12c-Image unter Windows Server 2012 in Azure erstellen.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
+[AZURE.INCLUDE [virtual-machines-common-oracle-support](../../includes/virtual-machines-common-oracle-support.md)]
 
-
-
-##Erstellen eines virtuellen Oracle WebLogic Server 12c-Computers in Azure
-
-1. Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com/) an.
-
-2. Klicken Sie auf **Marketplace** und dann auf **Compute**, und geben Sie **Oracle** in das Suchfeld ein.
-
-3.	Wählen Sie das Image **WebLogic Server 12c Standard Edition on Windows Server 2012** oder **Oracle WebLogic Server 12c Enterprise Edition on Windows Server 2012** aus. Überprüfen Sie die Informationen zum Image, das Sie auswählen möchten (z. B. empfohlene Mindestgröße), und klicken Sie dann auf **Weiter**.
-
-4.	Geben Sie einen **Hostnamen** für den virtuellen Computer an.
-
-5.	Geben Sie einen **Benutzernamen** für den virtuellen Computer an. Beachten Sie, dass dieser Benutzer für die Remote-Anmeldung auf dem virtuellen Computer verwendet wird. Dies ist nicht der Oracle-Datenbank-Benutzername.
-
-6.	Geben Sie ein Kennwort für den virtuellen Computer ein, und bestätigen Sie es, oder geben Sie einen öffentlichen SSH-Schlüssel an.
-
-7.	Wählen Sie einen **Tarif** aus. Beachten Sie, dass die empfohlenen Tarife standardmäßig angezeigt werden. Um alle Konfigurationsoptionen anzuzeigen, klicken Sie oben rechts auf **Alle anzeigen**.
-
-8.	Legen Sie die optionale Konfiguration nach Bedarf fest. Beachten Sie dabei folgende Überlegungen:
-	1. Lassen Sie **Speicherkonto** unverändert, um ein neues Speicherkonto mit dem Namen des virtuellen Computers zu erstellen.
-	2. Lassen Sie die **Verfügbarkeitsgruppe** auf „Nicht konfiguriert“ festgelegt.
-	3. Fügen Sie zu diesem Zeitpunkt keine **Endpunkte** hinzu.
-
-9.	Wählen Sie eine [Ressourcengruppe](../azure-portal/resource-group-portal.md) aus, oder erstellen Sie sie.
-
-10. Wählen Sie ein **Abonnement** aus.
-
-11. Wählen Sie einen **Standort** aus.
-
+Das folgende Beispiel zeigt, wie Sie eine WebLogic Server 12c-Instanz auf einem virtuellen Computer erstellen können, den Sie zuvor erstellt und auf dem Sie Oracle WebLogic Server 12c unter Windows Server 2012 in Azure installiert haben.
 
 ##Konfigurieren eines virtuellen Oracle WebLogic Server 12c-Computers in Azure
 
@@ -187,4 +159,4 @@ Nachdem Sie den virtuellen Computer mit Oracle WebLogic Server eingerichtet habe
 
 -	[Oracle Virtual Machine images for Azure (Images von virtuellen Oracle-Computern für Azure; in englischer Sprache)](virtual-machines-linux-classic-oracle-images.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0601_2016-->
