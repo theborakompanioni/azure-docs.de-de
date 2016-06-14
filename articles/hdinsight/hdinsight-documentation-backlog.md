@@ -32,9 +32,9 @@ Automation | Aktualisieren des Artikels zum [Verwenden von Sqoop mit einem HDIns
 Automation | Aktualisieren des Artikels zum [Analysieren von Sensordaten mit Apache Storm-Clustern](hdinsight-storm-sensor-data-analysis.md) für die Verwendung einer ARM-Vorlage | 2 | Ausstehend | [@mumian](https://github.com/mumian) | -
 Storage | Artikel zu WASB und Data Lake-Speicheroptionen | 2 | Ausstehend | [@mumian](https://github.com/mumian) | -
 Leistung | Richtlinien für die Leistungsoptimierung von MapReduce-Anwendungen | 1 | Ausstehend | [@blackmist](https://github.com/blackmist) | -
- Leistung | Richtlinien für die Leistungsoptimierung bei Spark-Clustern |1 | Ausstehend | [@nitinme](https://github.com/nitinme) | -
- Entwicklung | Curl- und REST-API-Beispiel zur Verwendung von Sqoop | 2 | [Abgeschlossen](hdinsight-hadoop-use-sqoop-curl.md) | [@mumian](https://github.com/mumian)|
-Jon Kennerly | Entwicklung| [Nicht interaktive Authentifizierung mit HDInsight .NET-Anwendung](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |2| [Abgeschlossen](hdinsight-create-non-interactive-authentication-dotnet-applications.md) | [@mumian](https://github.com/mumian) | [@matt1883](https://github.com/matt1883)
+Leistung | Richtlinien für die Leistungsoptimierung bei Spark-Clustern |1 | Ausstehend | [@nitinme](https://github.com/nitinme) | -
+Entwicklung | Curl- und REST-API-Beispiel zur Verwendung von Sqoop | 2 | [Abgeschlossen](hdinsight-hadoop-use-sqoop-curl.md) | [@mumian](https://github.com/mumian)|Jon Kennerly |
+Entwicklung| [Nicht interaktive Authentifizierung mit HDInsight .NET-Anwendung](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |2| [Abgeschlossen](hdinsight-create-non-interactive-authentication-dotnet-applications.md)| [@mumian](https://github.com/mumian) | [@matt1883](https://github.com/matt1883)
 
 
 ## So senden Sie Feedback bezüglich des Rückstands
