@@ -31,7 +31,7 @@ Im Artikel zum [Vergleich von IoT Hub und Event Hubs][lnk-compare] werden die we
 
 ![Azure IoT Hub als Cloudgateway in der IoT-Lösung][img-architecture]
 
-> [AZURE.NOTE] Detailliertere Informationen zu der IoT-Architektur finden Sie unter [Microsoft Azure IoT Reference Architecture][lnk-refarch] (Microsoft Azure IoT-Referenzarchitektur).
+> [AZURE.NOTE] Detailliertere Informationen zu der IoT-Architektur finden Sie unter [Microsoft Azure IoT Reference Architecture][lnk-refarch]       \(Microsoft Azure IoT-Referenzarchitektur).
 
 ## Anforderungen an die IoT-Gerätekonnektivität
 

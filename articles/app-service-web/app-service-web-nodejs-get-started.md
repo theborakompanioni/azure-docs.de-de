@@ -206,7 +206,7 @@ Führen Sie diese Schritte aus, um Node-Inspector zu aktivieren:
 - [Azure App Service-Web-Apps: Node.js](http://blogs.msdn.com/b/silverlining/archive/2012/06/14/windows-azure-websites-node-js.aspx)
 - [Node.js Developer Center](/develop/nodejs/)
 - [Erste Schritte mit Web-Apps in Azure App Service](app-service-web-get-started.md)
-- [Exploring the Super Secret Kudu Debug Console] (Erkunden der geheimen Kudu-Debugkonsole)
+- [Exploring the Super Secret Kudu Debug Console] \(Erkunden der geheimen Kudu-Debugkonsole)
 
 <!-- URL List -->
 

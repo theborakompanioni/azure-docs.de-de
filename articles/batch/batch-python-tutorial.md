@@ -58,7 +58,7 @@ Geben Sie den folgenden **pip**-Befehl aus, um die Batch- und Storage-Pakete zu 
 
 Sie können die [azure-batch][pypi_batch]- und [azure-storage][pypi_storage]-Python-Pakete auch manuell installieren.
 
-> [AZURE.TIP] Unter Umständen müssen Sie Ihren Befehlen das Präfix `sudo` voranstellen (z.B. `sudo pip install -r requirements.txt`), wenn Sie ein nicht privilegiertes Konto verwenden (empfohlen). Weitere Informationen zur Installation von Python-Paketen finden Sie unter [Installing Packages][pypi_install] (Installieren von Paketen) auf „readthedocs.io“.
+> [AZURE.TIP] Unter Umständen müssen Sie Ihren Befehlen das Präfix `sudo` voranstellen (z.B. `sudo pip install -r requirements.txt`), wenn Sie ein nicht privilegiertes Konto verwenden (empfohlen). Weitere Informationen zur Installation von Python-Paketen finden Sie unter [Installing Packages][pypi_install] \(Installieren von Paketen) auf „readthedocs.io“.
 
 ### Azure Batch-Explorer (optional)
 
@@ -376,7 +376,7 @@ Nachdem ein Auftrag erstellt wurde, werden Aufgaben zum Durchführen der Arbeits
 
 Batch-**Aufgaben** sind die einzelnen Arbeitseinheiten, die auf den Computeknoten ausgeführt werden. Eine Aufgabe verfügt über eine Befehlszeile und führt die Skripts oder ausführbaren Dateien aus, die Sie in der Befehlszeile festlegen.
 
-Zum eigentlichen Ausführen der Arbeitsschritte müssen die Aufgaben einem Auftrag hinzugefügt werden. Jede [CloudTask][py_task]-Aufgabe wird mit einer Befehlszeileneigenschaft und [ResourceFiles][py_resource_file] (wie bei der StartTask-Aufgabe des Pools) konfiguriert, die von der Aufgabe auf den Knoten heruntergeladen werden, bevor die Befehlszeile automatisch ausgeführt wird. Im Beispiel verarbeitet jede Aufgabe nur eine Datei. Daher enthält die ResourceFiles-Sammlung in diesem Fall ein einzelnes Element.
+Zum eigentlichen Ausführen der Arbeitsschritte müssen die Aufgaben einem Auftrag hinzugefügt werden. Jede [CloudTask][py_task]-Aufgabe wird mit einer Befehlszeileneigenschaft und [ResourceFiles][py_resource_file] \(wie bei der StartTask-Aufgabe des Pools) konfiguriert, die von der Aufgabe auf den Knoten heruntergeladen werden, bevor die Befehlszeile automatisch ausgeführt wird. Im Beispiel verarbeitet jede Aufgabe nur eine Datei. Daher enthält die ResourceFiles-Sammlung in diesem Fall ein einzelnes Element.
 
 ```python
 def add_tasks(batch_service_client, job_id, input_files,

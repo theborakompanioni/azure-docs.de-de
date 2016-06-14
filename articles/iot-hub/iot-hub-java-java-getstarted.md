@@ -190,7 +190,7 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, die D2C-Nachrichten (D
     import java.util.logging.*;
     ```
 
-7. Fügen Sie der **App**-Klasse die folgenden Variablen auf Klassenebene hinzu: Ersetzen Sie **{youriothubkey}**, **{youreventhubcompatiblenamespace}** und **{youreventhubcompatiblename}** durch die Werte, die Sie zuvor notiert haben. Der Wert des Platzhalters **{youreventhubcompatiblenamespace}** stammt vom **Event Hub-kompatiblen Endpunkt** und hat das folgende Format: **xyznamespace** (Sie müssen also das Präfix ****sb://** und das Suffix **.servicebus.windows.net** vom Event Hub-kompatiblen Endpunktwert im Portal entfernen):
+7. Fügen Sie der **App**-Klasse die folgenden Variablen auf Klassenebene hinzu: Ersetzen Sie **{youriothubkey}**, **{youreventhubcompatiblenamespace}** und **{youreventhubcompatiblename}** durch die Werte, die Sie zuvor notiert haben. Der Wert des Platzhalters **{youreventhubcompatiblenamespace}** stammt vom **Event Hub-kompatiblen Endpunkt** und hat das folgende Format: **xyznamespace** (Sie müssen also das Präfix **sb://** und das Suffix **.servicebus.windows.net** vom Event Hub-kompatiblen Endpunktwert im Portal entfernen):
 
     ```
     private static String namespaceName = "{youreventhubcompatiblenamespace}";

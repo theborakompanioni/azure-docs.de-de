@@ -106,7 +106,7 @@ Nach Abschluss des Experiments sind alle Module mit einem grünen Häkchen marki
 
 ![Erste Experimentausführung][screen5]
 
-Bislang haben wir im Experiment nur Daten bereinigt. Wenn Sie das bereinigte DataSet anzeigen möchten, klicken Sie auf den linken Ausgabeports des Moduls [Clean Missing Data][clean-missing-data] ("Cleaned dataset"), und wählen Sie **Visualisieren** aus. Beachten Sie, dass die Spalte **normalized-losses** nicht mehr aufgeführt wird und keine fehlenden Werte auftreten.
+Bislang haben wir im Experiment nur Daten bereinigt. Wenn Sie das bereinigte DataSet anzeigen möchten, klicken Sie auf den linken Ausgabeports des Moduls [Clean Missing Data][clean-missing-data] \("Cleaned dataset"), und wählen Sie **Visualisieren** aus. Beachten Sie, dass die Spalte **normalized-losses** nicht mehr aufgeführt wird und keine fehlenden Werte auftreten.
 
 Nach der Bereinigung der Daten können wir nun angeben, welche Funktionen wir im Vorhersagemodell verwenden möchten.
 
