@@ -13,7 +13,7 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="04/29/2016"
+ ms.date="06/06/2016"
  ms.author="dobett"/>
 
 # Was ist Azure IoT Hub?
@@ -31,7 +31,7 @@ Im Artikel zum [Vergleich von IoT Hub und Event Hubs][lnk-compare] werden die we
 
 ![Azure IoT Hub als Cloudgateway in der IoT-Lösung][img-architecture]
 
-> [AZURE.NOTE] Detailliertere Informationen zu der IoT-Architektur finden Sie unter [Microsoft Azure IoT Reference Architecture][lnk-refarch] \(Microsoft Azure IoT-Referenzarchitektur).
+> [AZURE.NOTE] Detailliertere Informationen zu der IoT-Architektur finden Sie unter [Microsoft Azure IoT Reference Architecture][lnk-refarch] (Microsoft Azure IoT-Referenzarchitektur).
 
 ## Anforderungen an die IoT-Gerätekonnektivität
 
@@ -70,7 +70,7 @@ Diese Vorteile gelten für viele Kommunikationsmuster. Mit IoT Hub haben Sie der
 
 -   **Zuverlässiges Cloud-to-Device (C2D)-Messaging (bzw. *Befehle*):** Das Back-End der Lösung kann IoT Hub zum Senden von Nachrichten mit einer garantierten einmaligen Zustellung an einzelne Dienste verwenden. Jede Nachricht verfügt über eine individuelle Einstellung für die Lebensdauer, und das Back-End kann sowohl Zustellungs- als auch Ablaufnachweise anfordern. So wird die vollständige Transparenz des Lebenszyklus einer C2D-Nachricht sichergestellt. Anschließend können Sie eine Geschäftslogik mit Vorgängen implementieren, die auf Geräten ausgeführt werden.
 
-Sie können auch andere gängige Muster implementieren, z. B. das Hoch- und Herunterladen von Dateien, indem Sie in IoT Hub IoT-spezifische Features nutzen. Zu diesen Features gehören die einheitliche Identitätsverwaltung für Geräte, Verbindungsüberwachung und Skalierung.
+-   **Hochladen von Dateien und zwischengespeicherten Sensordaten in die Cloud:** Ihre Geräte können Dateien mit von IoT Hub verwalteten SAS-URIs in Azure Storage hochladen. IoT Hub kann Benachrichtigungen generieren, wenn Dateien in die Cloud übertragen wurden, um die Verarbeitung durch das Back-End zu ermöglichen.
 
 ## Gateways
 
@@ -121,4 +121,4 @@ Weitere Informationen zu Azure IoT Hub finden Sie unter den folgenden Links:
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

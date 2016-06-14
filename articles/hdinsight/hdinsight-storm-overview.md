@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/18/2016"
+   ms.date="06/06/2016"
    ms.author="larryfr"/>
 
 #Einführung in Apache Storm in HDInsight: Echtzeitanalysen für Hadoop
@@ -219,4 +219,4 @@ Weitere Informationen zu Lösungen für Echtzeitanalysen mit Apache Storm in HDI
 [apachetutorial]: https://storm.incubator.apache.org/documentation/Tutorial.html
 [gettingstarted]: hdinsight-apache-storm-tutorial-get-started-linux.md
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0608_2016-->

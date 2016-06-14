@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/10/2016"
+   ms.date="06/03/2016"
    ms.author="yurid"/>
 
 # Festlegen von Sicherheitsrichtlinien in Azure Security Center
@@ -69,8 +69,8 @@ Verwenden Sie die folgende Tabelle als Referenz, um zu verstehen, was jede Optio
 
 | Richtlinie | Zustand Ein |
 |----- |-----|
-| System Updates | Ruft alle zwölf Stunden und abhängig davon, welcher Dienst für diese virtuelle Maschine konfiguriert ist, eine Liste der verfügbaren Updates von Windows Update oder WSUS ab und empfiehlt, dass die fehlenden Sicherheitsupdates und wichtigen Updates auf Ihren virtuellen Windows-Maschinen installiert werden sollen. |
-| Basisregeln | Analysiert alle unterstützten virtuellen Computer, um jegliche Betriebssystemkonfigurationen zu ermitteln, die bewirken können, dass die virtuellen Computer anfälliger für Angriffe werden, und empfiehlt Konfigurationsänderungen, um auf diese Sicherheitsrisiken zu reagieren. Weitere Informationen zu den speziellen Konfigurationen, die überwacht werden, finden Sie in der [Liste der empfohlenen Basisregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) (in englischer Sprache). |
+| System Updates | Ruft täglich eine Liste der verfügbaren Sicherheitsupdates und wichtigen Updates von Windows Update oder WSUS (abhängig davon, welcher Dienst für diesen virtuellen Computer konfiguriert ist) ab und empfiehlt, dass die fehlenden Updates angewendet werden sollen. |
+| Basisregeln | Analysiert täglich Betriebssystemkonfigurationen, die bewirken können, dass die virtuellen Computer anfälliger für Angriffe werden, und empfiehlt Konfigurationsänderungen, um auf diese Sicherheitsrisiken zu reagieren. Weitere Informationen zu den speziellen Konfigurationen, die überwacht werden, finden Sie in der [Liste der empfohlenen Basisregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) (in englischer Sprache). |
 | Endpoint Protection | Empfiehlt die Bereitstellung von Endpoint Protection für alle virtuellen Windows-Computer, um Viren, Spyware und andere Schadsoftware zu erkennen und zu entfernen. 
 | Netzwerksicherheitsgruppen | Empfiehlt die Konfiguration von [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md) (NSGs), um den eingehenden und ausgehenden Datenverkehr für Subnetze und Netzwerkschnittstellen zu steuern. NSGs, die für ein Subnetz konfiguriert sind, werden für alle Netzwerkschnittstellen der virtuellen Computer übernommen, sofern nichts anderes angegeben ist. Zusätzlich zur Überprüfung, ob eine NSG konfiguriert wurde, bewertet diese Option Sicherheitsregeln für eingehende Daten, um Regeln zu identifizieren, die jeglichen eingehenden Datenverkehr zulassen. |
 | Web Application Firewall | Empfiehlt die Bereitstellung einer Web Application Firewall auf virtuellen Computern, wenn Folgendes zutrifft: [Öffentliche IP auf Instanzebene](../virtual-network/virtual-networks-instance-level-public-ip.md) (ILPIP) wird verwendet, und die zugehörigen NSG-Sicherheitsregeln für eingehenden Datenverkehr sind so konfiguriert, dass Zugriff auf den Port 80/443 zugelassen wird. Es wird eine IP-Adresse mit Lastenausgleich (VIP) verwendet, und die zugehörigen Lastenausgleichs- und eingehenden NAT-Regeln sind so konfiguriert, dass Zugriff auf den Port 80/443 zugelassen wird (weitere Informationen finden Sie unter [Unterstützung des Azure-Ressourcen-Managers für Load Balancer](../load-balancer/load-balancer-arm.md)). |
@@ -104,4 +104,4 @@ In diesem Dokument haben Sie erfahren, wie Sie Sicherheitsrichtlinien in Azure S
 - [Häufig gestellte Fragen (FAQ) zu Security Center](security-center-faq.md) – Häufig gestellte Fragen zur Verwendung des Diensts.
 - [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) – suchen Sie nach Blogbeiträgen über Azure-Sicherheit und -Compliance.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

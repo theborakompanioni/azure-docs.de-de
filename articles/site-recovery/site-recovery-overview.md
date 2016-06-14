@@ -61,7 +61,7 @@ Workloads auf physischen Windows-/Linux-Servern | Lokaler physischer Server | Se
 Site Recovery kann anwendungsorientierte BCDR-Vorgänge unterstützen, damit Workloads und Apps auch bei Ausfällen auf konsistente Weise ausgeführt werden können. Site Recovery bietet Folgendes:
 
 - **Anwendungskonsistente Momentaufnahmen:** Replikation mit anwendungskonsistenten Momentaufnahmen für Single- oder N-Tier-Apps. **Nahezu synchrone Replikation:** Replikationsfrequenz von bis zu lediglich 30 Sekunden für Hyper-V und fortlaufende Replikation für VMware. **Integration in SQL Server AlwaysOn:** Sie können das Failover von Verfügbarkeitsgruppen in Site Recovery-Wiederherstellungsplänen verwalten. 
-- **Flexible Wiederherstellungspläne:** Sie können Wiederherstellungspläne mit externen Skripts, manuellen Aktionen und Azure Automation-Runbooks erstellen und anpassen, die Ihnen die Möglichkeit verschaffen, einen gesamten Anwendungsstapel mit nur einem Klick wiederherzustellen.
+- **Flexible Wiederherstellungspläne:** Sie können Wiederherstellungspläne mit externen Skripts, manuellen Aktionen und Azure Automation-Runbooks erstellen und anpassen. Diese Pläne ermöglichen es Ihnen, einen gesamten Anwendungsstapel mit nur einem Klick wiederherzustellen.
 - **Automation-Bibliothek:** Eine umfassende Azure Automation-Bibliothek verfügt über produktionsbereite, anwendungsspezifische Skripts, die heruntergeladen und in Site Recovery integriert werden können. -** Einfache Netzwerkverwaltung**: Mit der erweiterten Netzwerkverwaltung in Site Recovery und Azure werden die Anforderungen des Anwendungsnetzwerks vereinfacht, z. B. das Reservieren von IP-Adressen, das Konfigurieren von Lastenausgleichsmodulen und das Integrieren von Azure Traffic Manager zur Erzielung effizienter Netzwerkwechsel.
 
 
@@ -71,4 +71,4 @@ Site Recovery kann anwendungsorientierte BCDR-Vorgänge unterstützen, damit Wor
 - Weitere Informationen zur Site Recovery-Architektur finden Sie unter [Wie funktioniert Site Recovery?](site-recovery-components.md)
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0608_2016-->

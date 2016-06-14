@@ -1,19 +1,19 @@
 <properties
-   pageTitle="REST-Tutorial zu Service Bus-Relaymessaging | Microsoft Azure"
-   description="Erstellen einer einfachen Service Bus Relay-Hostanwendung, die eine REST-basierte Schnittstelle bereitstellt."
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="" />
+    pageTitle="REST-Tutorial zu Service Bus-Relaymessaging | Microsoft Azure"
+    description="Erstellen einer einfachen Service Bus Relay-Hostanwendung, die eine REST-basierte Schnittstelle bereitstellt."
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" />
 <tags
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="10/14/2015"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="06/03/2016"
+    ms.author="sethm" />
 
 # Service Bus-REST-Lernprogramm
 
@@ -21,19 +21,17 @@ Dieses Lernprogramm beschreibt, wie Sie eine einfache Service Bus-Hostanwendung 
 
 Dieses Lernprogramm verwendet das WCF-REST-Programmiermodell (Windows Communication Foundation) zum Erstellen eines REST-Diensts für Service Bus. Weitere Informationen finden Sie unter [WCF-REST-Programmiermodell](https://msdn.microsoft.com/library/bb412169.aspx) und [Entwerfen und Implementieren von Diensten](https://msdn.microsoft.com/library/ms729746.aspx) in der WCF-Dokumentation.
 
-## Schritt 1: Registrieren eines Azure-Kontos
+## Schritt 1: Erstellen eines Dienstnamespace
 
-Der erste Schritt umfasst die Einrichtung des Dienstnamespace und das Abrufen eines SAS-Schlüssels (Shared Access Signature). Ein Namespace stellt eine Anwendungsgrenze für jede Anwendung bereit, die über Service Bus zur Verfügung steht. Das System generiert automatisch einen SAS-Schlüssel, wenn ein Dienstnamespace erstellt wird. Dienstnamespace und SAS-Schlüssel bilden gemeinsam die Anmeldeinformationen, mit denen sich der Service Bus bei der Anwendung authentifiziert.
-
-### So erstellen Sie einen Dienstnamespace und rufen einen SAS-Schlüssel an
+Der erste Schritt umfasst die Einrichtung eines Namespace und das Abrufen eines Shared Access Signature(SAS)-Schlüssels. Ein Namespace stellt eine Anwendungsgrenze für jede Anwendung bereit, die über Service Bus zur Verfügung steht. Das System generiert automatisch einen SAS-Schlüssel, wenn ein Dienstnamespace erstellt wird. Dienstnamespace und SAS-Schlüssel bilden gemeinsam die Anmeldeinformationen, mit denen sich der Service Bus bei der Anwendung authentifiziert.
 
 1. Rufen Sie zum Erstellen eines Dienstnamespace das [klassische Azure-Portal][] auf. Klicken Sie auf der linken Seite auf **Service Bus** und anschließend auf **Erstellen**. Geben Sie einen Namen für den Namespace ein, und klicken Sie auf das Häkchen.
 
-2. Klicken Sie im Hauptfenster des Portals auf den Namen des Dienstnamespace, den Sie im vorherigen Schritt erstellt haben.
+2. Klicken Sie im Hauptfenster des [klassischen Azure-Portals][] auf den Namen des Namespaces, den Sie im vorherigen Schritt erstellt haben.
 
-3. Klicken Sie auf **Konfigurieren**, um die gemeinsam genutzten Zugriffsrichtlinien für Ihren Namespace anzuzeigen.
+3. Klicken Sie auf die Registerkarte **Konfigurieren**.
 
-4. Notieren Sie den Primärschlüssel für die **RootManageSharedAccessKey**-Richtlinie, oder kopieren Sie ihn in die Zwischenablage. Sie verwenden diesen Wert später im Lernprogramm.
+4. Notieren Sie sich im Abschnitt **Freigegebener Generator für Zugriffsschlüssel** den **Primärschlüssel**, der der **RootManagerSharedAccessKey**-Richtlinie zugeordnet ist, oder kopieren Sie ihn in die Zwischenablage. Sie verwenden diesen Wert später im Tutorial.
 
 ## Schritt 2: Definieren eines REST-basierten WCF-Dienstvertrags für die Verwendung mit Service Bus
 
@@ -45,30 +43,30 @@ Der Hauptunterschied zwischen einem grundlegenden Service Bus-Vertrag und einem 
 
 1. Öffnen Sie Visual Studio als Administrator: Klicken Sie mit der rechten Maustaste im **Startmenü** auf das Programm, und klicken Sie dann auf Als **Administrator ausführen**.
 
-2. Erstellen Sie ein neues Konsolenanwendungsprojekt. Klicken Sie auf das Menü **Datei**, wählen Sie **Neu** und dann **Projekt**. Klicken Sie im Dialogfeld **Neues Projekt** auf **Visual C#** (wenn **Visual C#** nicht angezeigt wird, suchen Sie unter **Andere Sprachen**), wählen Sie die Vorlage **Konsolenanwendung** aus, und nennen Sie sie **ImageListener**. Verwenden Sie den standardmäßigen **Speicherort**. Klicken Sie auf **OK**, um das Projekt zu erstellen.
+2. Erstellen Sie ein neues Konsolenanwendungsprojekt. Klicken Sie auf das Menü **Datei**, wählen Sie **Neu** und dann **Projekt**. Klicken Sie im Dialogfeld **Neues Projekt** auf **Visual C#**, wählen Sie die Vorlage **Konsolenanwendung** aus, und nennen Sie sie **ImageListener**. Verwenden Sie den standardmäßigen **Speicherort**. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 
 3. Für ein C#-Projekt erstellt Visual Studio erstellt eine `Program.cs`-Datei. Diese Klasse enthält eine leere `Main()`-Methode, die erforderlich ist, damit ein Konsolenanwendungsprojekt ordnungsgemäß erstellt wird.
 
-4. Hinzufügen eines Verweises auf **System.ServiceModel.dll** zum Projekt:
+4. Fügen Sie dem Projekt Verweise auf Service Bus und **System.ServiceModel.dll** hinzu, indem Sie das NuGet-Paket „Service Bus“ installieren. Dieses Paket fügt automatisch Verweise auf die Service Bus-Bibliotheken sowie **System.ServiceModel** (WCF) hinzu. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ImageListener**, und klicken Sie anschließend auf **NuGet-Pakete verwalten**. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach `Microsoft Azure Service Bus`. Klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
+
+5. Dem Projekt muss explizit ein Verweis auf **System.ServiceModel.Web.dll** hinzugefügt werden:
 
 	a. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste unter dem Projektordner auf den Ordner **Verweise**, und klicken Sie dann auf **Verweis hinzufügen**.
 
-	b. Klicken Sie im Dialogfeld **Verweis hinzufügen** auf die Registerkarte **.NET**, und führen Sie einen Bildlauf nach unten zu **System.ServiceModel** durch. Wählen Sie diese Option aus, und klicken Sie auf **OK**.
+	b. Klicken Sie links im Dialogfeld **Verweis hinzufügen** auf die Registerkarte **Framework**, und geben Sie im Suchfeld die Zeichenfolge **System.ServiceModel.Web** ein. Aktivieren Sie das Kontrollkästchen **System.ServiceModel.Web**, und klicken Sie anschließend **OK**.
 
-5. Wiederholen Sie den vorherigen Schritt zum Hinzufügen eines Verweises auf die **System.ServiceModel.Web.dll**-Assembly.
+6. Fügen Sie am Anfang der Datei „Program.cs“ folgende `using`-Anweisungen hinzu:
 
-6. Fügen Sie `using`-Anweisungen für die Namespaces **System.ServiceModel**, **System.ServiceModel.Channels**, **System.ServiceModel.Web** und **System.IO** hinzu.
-
-	```c
-  	using System.ServiceModel;
-  	using System.ServiceModel.Channels;
-  	using System.ServiceModel.Web;
-  	using System.IO;
+	```
+	using System.ServiceModel;
+	using System.ServiceModel.Channels;
+	using System.ServiceModel.Web;
+	using System.IO;
 	```
 
 	[System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) ist der Namespace, der den programmgesteuerten Zugriff auf die grundlegenden Funktionen von WCF ermöglicht. Service Bus verwendet viele Objekte und Attribute von WCF, um Dienstverträge zu definieren. Sie verwenden diesen Namespace in den meisten Ihrer Service Bus Relay-Anwendungen. Auf ähnliche Weise trägt [System.ServiceModel.Channels](https://msdn.microsoft.com/library/system.servicemodel.channels.aspx) zur Definition des Kanals bei, der das Objekt darstellt, über das Sie mit Service Bus und dem Clientwebbrowser kommunizieren. Schließlich enthält [System.ServiceModel.Web](https://msdn.microsoft.com/library/system.servicemodel.web.aspx) die Typen, mit denen Sie webbasierte Anwendungen erstellen können.
 
-7. Benennen Sie den Namespace für das Programm vom Visual Studio-Standard in **Microsoft.ServiceBus.Samples** um.
+7. Versehen Sie den `ImageListener`-Namespace mit dem Namen **Microsoft.ServiceBus.Samples**.
 
  	```
 	namespace Microsoft.ServiceBus.Samples
@@ -76,7 +74,7 @@ Der Hauptunterschied zwischen einem grundlegenden Service Bus-Vertrag und einem 
 		...
 	```
 
-8. Direkt nach der Namespacedeklaration definieren Sie eine neue Schnittstelle namens **IImageContract** und wenden das **ServiceContractAttribute**-Attribut auf die Schnittstelle mit einem Wert von `http://samples.microsoft.com/ServiceModel/Relay/` an. Der Namespacewert unterscheidet sich von dem Namespace, den Sie im gesamten Codebereich verwenden. Der Namespacewert dient als eindeutiger Bezeichner für diesen Vertrag und sollte über Versionsinformationen verfügen. Weitere Informationen finden Sie unter [Dienstversionsverwaltung](http://go.microsoft.com/fwlink/?LinkID=180498). Das explizite Angeben des Namespace verhindert, dass der Standardwert für den Namespace dem Vertragsnamen hinzugefügt wird.
+8. Definieren Sie direkt nach der öffnenden geschweiften Klammer der Namespacedeklaration eine neue Schnittstelle namens **IImageContract**, und wenden Sie das **ServiceContractAttribute**-Attribut mit dem Wert `http://samples.microsoft.com/ServiceModel/Relay/` auf die Schnittstelle an. Der Namespacewert unterscheidet sich von dem Namespace, den Sie im gesamten Codebereich verwenden. Der Namespacewert dient als eindeutiger Bezeichner für diesen Vertrag und sollte über Versionsinformationen verfügen. Weitere Informationen finden Sie unter [Dienstversionsverwaltung](http://go.microsoft.com/fwlink/?LinkID=180498). Das explizite Angeben des Namespace verhindert, dass der Standardwert für den Namespace dem Vertragsnamen hinzugefügt wird.
 
 	```
 	[ServiceContract(Name = "ImageContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/RESTTutorial1")]
@@ -95,7 +93,7 @@ Der Hauptunterschied zwischen einem grundlegenden Service Bus-Vertrag und einem 
 	}
 	```
 
-10. Wenden Sie neben dem **OperationContract**-Attribut auch das **WebGet**-Attribut an.
+10. Fügen Sie im **OperationContract**-Attribut den **WebGet**-Wert hinzu.
 
 	```
 	public interface IImageContract
@@ -105,18 +103,11 @@ Der Hauptunterschied zwischen einem grundlegenden Service Bus-Vertrag und einem 
 	}
 	```
 
-	Auf diese Weise kann Service Bus HTTP GET-Anforderungen an **GetImage** weiterleiten und die Rückgabewerte von **GetImage** in eine HTTP GETRESPONSE-Antwort übersetzen. Später in diesem Lernprogramm verwenden Sie einen Webbrowser für den Zugriff auf diese Methode und zum Anzeigen des Bilds im Browser.
+	Auf diese Weise kann Service Bus HTTP GET-Anforderungen an `GetImage` weiterleiten und die Rückgabewerte von `GetImage` in eine HTTP GETRESPONSE-Antwort umwandeln. Später in diesem Lernprogramm verwenden Sie einen Webbrowser für den Zugriff auf diese Methode und zum Anzeigen des Bilds im Browser.
 
 11. Direkt nach der `IImageContract`-Definition deklarieren Sie einen Kanal, der von den beiden `IImageContract`- und `IClientChannel`-Schnittstellen erbt.
 
 	```
-	[ServiceContract(Name = "IImageContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
-	public interface IImageContract
-	{
-		[OperationContract, WebGet]
-		Stream GetImage();
-	}
-
 	public interface IImageChannel : IImageContract, IClientChannel { }
 	```
 
@@ -193,9 +184,9 @@ Wie bei den vorherigen Schritten gibt es nur wenige Unterschiede zwischen der Im
 
 	Stellen Sie beim Hinzufügen der Datei sicher, dass in der Dropdownliste neben dem Feld **Dateiname** die Option **Alle Dateien** ausgewählt ist. Im Rest dieses Lernprogramms wird davon ausgegangen, dass der Name des Bilds "image.jpg" lautet. Wenn Sie eine andere Datei haben, müssen Sie das Bild umbenennen oder den Code entsprechend ändern.
 
-4. Um sicherzustellen, dass der ausgeführte Dienst die Bilddatei finden kann, klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Bilddatei. Legen Sie im Bereich **Eigenschaften** den Wert für **In Ausgabeverzeichnis kopieren** auf **Kopieren, wenn neuer** fest.
+4. Stellen Sie sicher, dass der ausgeführte Dienst die Bilddatei finden kann. Klicken Sie hierzu im Projektmappen-Explorer mit der rechten Maustaste auf die Bilddatei, und klicken Sie anschließend auf **Eigenschaften**. Legen Sie im Bereich **Eigenschaften** den Wert für **In Ausgabeverzeichnis kopieren** auf **Kopieren, wenn neuer** fest.
 
-5. Fügen Sie dem Projekt Verweise zu den Assemblys **System.Drawing.dll**, **System.Runtime.Serialization.dll** und **Microsoft.ServiceBus.dll** hinzu, und fügen Sie auch die folgenden zugeordneten `using`-Anweisungen hinzu.
+5. Fügen Sie dem Projekt einen Verweis auf die Assembly **System.Drawing.dll** sowie die folgenden dazugehörigen `using`-Anweisungen hinzu:
 
 	```
 	using System.Drawing;
@@ -241,32 +232,11 @@ Wie bei den vorherigen Schritten gibt es nur wenige Unterschiede zwischen der Im
 
 ### So definieren Sie die Konfiguration zum Ausführen des Webdiensts auf Service Bus
 
-1. Klicken Sie mit der rechten Maustaste auf das **ImageListener**-Projekt. Klicken Sie dann auf **Hinzufügen** und auf **Neues Element**.
+1. Doppelklicken Sie im Projektmappen-Explorer auf **App.config**, um die Datei im Visual Studio-Editor zu öffnen.
 
-2. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei **App.config**, die derzeit die folgenden XML-Elemente enthält:
+	Die Datei **App.config** gleicht einer WCF-Konfigurationsdatei und enthält den Dienstnamen, den Endpunkt (also den Ort, den Service Bus für die Kommunikation zwischen Clients und Hosts bereitstellt) und die Bindung (die Art des Protokolls für die Kommunikation). Der Hauptunterschied besteht hier darin, dass der konfigurierte Dienstendpunkt auf eine [WebHttpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.webhttprelaybinding.aspx)-Bindung verweist, die nicht Teil von .NET Framework ist.
 
-	```
-	<?xml version="1.0" encoding="utf-8" ?>
-	<configuration>
-	</configuration>
-	```
-
-	Die Konfigurationsdatei entspricht einer WCF-Konfigurationsdatei und enthält den Dienstnamen, den Endpunkt (der Speicherort, den Service Bus für Clients und Hosts für die Kommunikation bereitstellt) und die Bindung (den Typ des Protokolls, das für die Kommunikation verwendet wird). Der Hauptunterschied besteht hier darin, dass der konfigurierte Dienstendpunkt auf eine [WebHttpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.webhttprelaybinding.aspx)-Bindung verweist, die nicht Teil von .NET Framework ist. Weitere Informationen zum Konfigurieren einer Service Bus-Anwendung finden Sie unter [Konfigurieren eines WCF-Diensts für die Registrierung mit Service Bus](https://msdn.microsoft.com/library/ee173579.aspx).
-
-
-3. Fügen Sie der Datei "App.config" ein `<system.serviceModel>`-XML-Element hinzu. Dies ist ein WCF-Element, das einen oder mehrere Dienste definiert. Hier wird es verwendet, um den Dienstnamen und den Endpunkt zu definieren.
-
-	```
-	<?xml version="1.0" encoding="utf-8" ?>
-	<configuration>
-		<system.serviceModel>
-
-		</system.serviceModel>
-
-	</configuration>
-	```
-
-4. Fügen Sie innerhalb des `system.serviceModel`-Elements ein `<bindings>`-Element hinzu, das den folgenden Inhalt aufweist. Dies definiert die in der Anwendung verwendeten Bindungen. Sie können mehrere Bindungen definieren, aber in diesem Lernprogramm definieren Sie nur eine.
+2. Das XML-Element `<system.serviceModel>` ist ein WCF-Element und definiert mindestens einen Dienst. Hier wird es verwendet, um den Dienstnamen und den Endpunkt zu definieren. Fügen Sie am Ende des `<system.serviceModel>`-Elements (aber immer noch innerhalb von `<system.serviceModel>`) ein `<bindings>`-Element mit dem weiter unten angegebenen Inhalt hinzu. Dies definiert die in der Anwendung verwendeten Bindungen. Sie können mehrere Bindungen definieren, aber in diesem Lernprogramm definieren Sie nur eine.
 
 	```
 	<bindings>
@@ -281,7 +251,7 @@ Wie bei den vorherigen Schritten gibt es nur wenige Unterschiede zwischen der Im
 
 	Dieser Schritt definiert eine Service Bus-[WebHttpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.webhttprelaybinding.aspx)-Bindung mit auf **None** festgelegtem **relayClientAuthenticationType**. Diese Einstellung gibt an, dass ein Endpunkt mit dieser Bindung keine Clientanmeldeinformationen erfordert.
 
-5. Fügen Sie nach dem `<bindings>`-Element ein `<services>`-Element hinzu. Ähnlich wie Bindungen können Sie mehrere Dienste in einer einzigen Konfigurationsdatei definieren. Für dieses Lernprogramm definieren Sie aber nur einen.
+3. Fügen Sie nach dem `<bindings>`-Element ein `<services>`-Element hinzu. Ähnlich wie Bindungen können Sie mehrere Dienste in einer einzigen Konfigurationsdatei definieren. Für dieses Lernprogramm definieren Sie aber nur einen.
 
 	```
 	<services>
@@ -300,7 +270,7 @@ Wie bei den vorherigen Schritten gibt es nur wenige Unterschiede zwischen der Im
 
 	Dieser Schritt konfiguriert einen Dienst, der die zuvor definierte standardmäßige **WebHttpRelayBinding**-Bindung verwendet. Darüber hinaus verwendet er den standardmäßigen **SbTokenProvider**-Anbieter, die im nächsten Schritt definiert wird.
 
-6. Erstellen Sie nach dem `<services>`-Element ein `<behaviors>`-Element mit dem folgenden Inhalt, der „SAS\_KEY“ durch den *Shared Access Signature*-Schlüssel (SAS) ersetzt, den Sie in Schritt 1 aus dem [klassischen Azure-Portal][] abgerufen haben.
+4. Erstellen Sie nach dem `<services>`-Element ein `<behaviors>`-Element mit dem folgenden Inhalt, der „SAS\_KEY“ durch den *Shared Access Signature*-Schlüssel (SAS) ersetzt, den Sie in Schritt 1 aus dem [klassischen Azure-Portal][] abgerufen haben.
 
 	```
 	<behaviors>
@@ -321,7 +291,17 @@ Wie bei den vorherigen Schritten gibt es nur wenige Unterschiede zwischen der Im
 	</behaviors>
 	```
 
-7. Klicken Sie im Menü **Build** auf **Projektmappe erstellen**, um die gesamte Projektmappe zu erstellen.
+5. Ersetzen Sie in „App.config“ im `<appSettings>`-Element den gesamten Wert der Verbindungszeichenfolge durch die Verbindungszeichenfolge, die Sie zuvor aus dem Portal abgerufen haben.
+
+	```
+	<appSettings>
+   	<!-- Service Bus specific app settings for messaging connections -->
+   	<add key="Microsoft.ServiceBus.ConnectionString"
+	       value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourKey"/>
+	</appSettings>
+	```
+
+6. Klicken Sie im Menü **Build** auf **Projektmappe erstellen**, um die gesamte Projektmappe zu erstellen.
 
 ### Beispiel
 
@@ -390,50 +370,93 @@ namespace Microsoft.ServiceBus.Samples
 Das folgende Beispiel zeigt die "App.config"-Datei, die dem Dienst zugeordnet ist.
 
 ```
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <configuration>
-  <system.serviceModel>
-    <bindings>
-      <!-- Application Binding -->
-      <webHttpRelayBinding>
-        <binding name="default">
-          <!-- Turn off client authentication so that client does not need to present credential through browser or fiddler -->
-          <security relayClientAuthenticationType="None" />
-        </binding>
-      </webHttpRelayBinding>
-    </bindings>
-
-    <services>
-      <!-- Application Service -->
-      <service name="Microsoft.ServiceBus.Samples.ImageService"
-               behaviorConfiguration="default">
-        <endpoint name="RelayEndpoint"
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2"/>
+    </startup>
+    <system.serviceModel>
+        <extensions>
+            <!-- In this extension section we are introducing all known service bus extensions. User can remove the ones they don't need. -->
+            <behaviorExtensions>
+                <add name="connectionStatusBehavior"
+                    type="Microsoft.ServiceBus.Configuration.ConnectionStatusElement, Microsoft.ServiceBus, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+                <add name="transportClientEndpointBehavior"
+                    type="Microsoft.ServiceBus.Configuration.TransportClientEndpointBehaviorElement, Microsoft.ServiceBus, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+                <add name="serviceRegistrySettings"
+                    type="Microsoft.ServiceBus.Configuration.ServiceRegistrySettingsElement, Microsoft.ServiceBus, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+            </behaviorExtensions>
+            <bindingElementExtensions>
+                <add name="netMessagingTransport"
+                    type="Microsoft.ServiceBus.Messaging.Configuration.NetMessagingTransportExtensionElement, Microsoft.ServiceBus,  Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+                <add name="tcpRelayTransport"
+                    type="Microsoft.ServiceBus.Configuration.TcpRelayTransportElement, Microsoft.ServiceBus, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+                <add name="httpRelayTransport"
+                    type="Microsoft.ServiceBus.Configuration.HttpRelayTransportElement, Microsoft.ServiceBus, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+                <add name="httpsRelayTransport"
+                    type="Microsoft.ServiceBus.Configuration.HttpsRelayTransportElement, Microsoft.ServiceBus, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+                <add name="onewayRelayTransport"
+                    type="Microsoft.ServiceBus.Configuration.RelayedOnewayTransportElement, Microsoft.ServiceBus, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+            </bindingElementExtensions>
+            <bindingExtensions>
+                <add name="basicHttpRelayBinding"
+                    type="Microsoft.ServiceBus.Configuration.BasicHttpRelayBindingCollectionElement, Microsoft.ServiceBus, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+                <add name="webHttpRelayBinding"
+                    type="Microsoft.ServiceBus.Configuration.WebHttpRelayBindingCollectionElement, Microsoft.ServiceBus, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+                <add name="ws2007HttpRelayBinding"
+                    type="Microsoft.ServiceBus.Configuration.WS2007HttpRelayBindingCollectionElement, Microsoft.ServiceBus, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+                <add name="netTcpRelayBinding"
+                    type="Microsoft.ServiceBus.Configuration.NetTcpRelayBindingCollectionElement, Microsoft.ServiceBus, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+                <add name="netOnewayRelayBinding"
+                    type="Microsoft.ServiceBus.Configuration.NetOnewayRelayBindingCollectionElement, Microsoft.ServiceBus, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+                <add name="netEventRelayBinding"
+                    type="Microsoft.ServiceBus.Configuration.NetEventRelayBindingCollectionElement, Microsoft.ServiceBus, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+                <add name="netMessagingBinding"
+                    type="Microsoft.ServiceBus.Messaging.Configuration.NetMessagingBindingCollectionElement, Microsoft.ServiceBus, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+            </bindingExtensions>
+        </extensions>
+      <bindings>
+        <!-- Application Binding -->
+        <webHttpRelayBinding>
+          <binding name="default">
+            <security relayClientAuthenticationType="None" />
+          </binding>
+        </webHttpRelayBinding>
+      </bindings>
+      <services>
+        <!-- Application Service -->
+        <service name="Microsoft.ServiceBus.Samples.ImageService"
+             behaviorConfiguration="default">
+          <endpoint name="RelayEndpoint"
                   contract="Microsoft.ServiceBus.Samples.IImageContract"
                   binding="webHttpRelayBinding"
                   bindingConfiguration="default"
                   behaviorConfiguration="sbTokenProvider"
                   address="" />
-      </service>
-    </services>
-
-    <behaviors>
-      <endpointBehaviors>
-        <behavior name="sbTokenProvider">
-          <transportClientEndpointBehavior>
-            <tokenProvider>
-              <sharedAccessSignature keyName="RootManageSharedAccessKey" key="SAS_KEY" />
-            </tokenProvider>
-          <transportClientEndpointBehavior>
-        </behavior>
-      </endpointBehaviors>
-      <serviceBehaviors>
-        <behavior name="default">
-          <serviceDebug httpHelpPageEnabled="false" httpsHelpPageEnabled="false" />
-        </behavior>
-      </serviceBehaviors>
-    </behaviors>
-
-  </system.serviceModel>
+        </service>
+      </services>
+      <behaviors>
+        <endpointBehaviors>
+          <behavior name="sbTokenProvider">
+            <transportClientEndpointBehavior>
+              <tokenProvider>
+                <sharedAccessSignature keyName="RootManageSharedAccessKey" key="[SAS_KEY]" />
+              </tokenProvider>
+            </transportClientEndpointBehavior>
+          </behavior>
+        </endpointBehaviors>
+        <serviceBehaviors>
+          <behavior name="default">
+            <serviceDebug httpHelpPageEnabled="false" httpsHelpPageEnabled="false" />
+          </behavior>
+        </serviceBehaviors>
+      </behaviors>
+    </system.serviceModel>
+    <appSettings>
+        <!-- Service Bus specific app setings for messaging connections -->
+        <add key="Microsoft.ServiceBus.ConnectionString"
+            value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourKey"/>
+    </appSettings>
 </configuration>
 ```
 
@@ -443,10 +466,10 @@ Dieser Schritt beschreibt, wie ein Webdienst mithilfe einer Konsolenanwendung au
 
 ### So erstellen Sie eine Basisadresse für den Dienst
 
-1. Erstellen Sie in der `Main()`-Funktionsdeklaration eine Variable zum Speichern des Namespace Ihres Service Bus-Projekts.
+1. Erstellen Sie in der `Main()`-Funktionsdeklaration eine Variable zum Speichern des Namespace Ihres Service Bus-Projekts. Ersetzen Sie `yourNamespace` durch den Namen des zuvor erstellten Dienstnamespace.
 
 	```
-	string serviceNamespace = "InsertServiceNamespaceHere";
+	string serviceNamespace = "yourNamespace";
 	```
 	Service Bus verwendet den Namespace-Namen, um einen eindeutigen URI zu erstellen.
 
@@ -486,7 +509,7 @@ Dieser Schritt beschreibt, wie ein Webdienst mithilfe einer Konsolenanwendung au
 
 3. Schließen Sie danach den Diensthost.
 
-	```c
+	```
 	host.Close();
 	```
 
@@ -570,9 +593,11 @@ namespace Microsoft.ServiceBus.Samples
 
 Führen Sie nach dem Erstellen der Projektmappe Folgendes aus, um die Anwendung auszuführen:
 
-1. Führen Sie den Dienst an einer Eingabeaufforderung aus (ImageListener\bin\Debug\ImageListener.exe).
+1. Drücken Sie **F5**, oder navigieren Sie zum Speicherort der ausführbaren Datei (ImageListener\\bin\\Debug\\ImageListener.exe), um den Dienst auszuführen. Führen Sie die App weiter aus, da sie für den nächsten Schritt erforderlich ist.
 
 2. Kopieren Sie die Adresse aus der Eingabeaufforderung in einen Browser, um das Bild anzuzeigen.
+
+3. Drücken Sie schließlich im Eingabeaufforderungsfenster die EINGABETASTE, um die App zu schließen.
 
 ## Nächste Schritte
 
@@ -584,5 +609,6 @@ Da Sie jetzt eine Anwendung erstellt haben, die den Service Bus Relay-Dienst ver
 
 [klassische Azure-Portal]: http://manage.windowsazure.com
 [klassischen Azure-Portal]: http://manage.windowsazure.com
+[klassischen Azure-Portals]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0608_2016-->

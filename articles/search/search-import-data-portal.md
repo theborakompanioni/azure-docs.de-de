@@ -14,14 +14,14 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="03/10/2016"
+	ms.date="06/08/2016"
 	ms.author="heidist"/>
 
 # Importieren von Daten in Azure Search über das Portal
 
-Das Azure-Portal bietet den Befehl **Daten importieren** im Azure Search-Dashboard, der Sie durch die Erfassung von Daten in Azure Search begleitet. Der Befehl setzt auf der integrierten Indexerfunktion auf, die eine vorhandene Datenquelle durchforstet und Dokumente basierend auf dem in der Datenquelle gefundenen Rowset erstellt oder hochlädt.
+Im Azure-Portal steht auf dem Azure Search-Dashboard der Befehl **Daten importieren** zur Verfügung, mit dem Sie Daten in einen Index laden können. Der Befehl setzt auf der integrierten Indexerfunktion auf, die eine vorhandene Datenquelle durchforstet und Dokumente basierend auf dem aus der Datenquelle abgerufenen Rowset erstellt oder hochlädt.
 
-Bei Verwenden des Assistenten besteht der Datenimport aus drei Teilen:
+Der Datenimport im Assistenten besteht aus drei Teilen:
 
 - einer Datenquellenverbindung
 - einem Zielindex, in den Daten hochgeladen werden (der Assistent kann diesen für Sie häufig generieren)
@@ -68,6 +68,12 @@ Beim gerade abgeschlossenen Datenimportvorgang wird im Hintergrund ein Indexer e
 
 ##Bearbeiten eines vorhandenen Indexers
 
-Doppelklicken Sie im Dashboard des Diensts auf die Kachel „Indexer“, um eine Liste aller Indexer einzublenden, die für Ihr Abonnement erstellt wurden. Doppelklicken Sie auf einen der Indexer, um ihn auszuführen, zu bearbeiten oder zu löschen.
+Doppelklicken Sie im Dashboard des Diensts auf die Kachel „Indexer“, um eine Liste aller Indexer einzublenden, die für Ihr Abonnement erstellt wurden. Doppelklicken Sie auf einen der Indexer, um ihn auszuführen, zu bearbeiten oder zu löschen. Sie können während der Indizierung den Index durch einen anderen vorhandenen Index ersetzen, die Datenquelle ändern und Optionen für Fehlerschwellenwerte festlegen.
 
-<!---HONumber=AcomDC_0316_2016-->
+##Bearbeiten eines vorhandenen Index
+
+In Azure Search ist für strukturelle Updates eines Index eine Neuerstellung des Index erforderlich. Dabei wird der Index gelöscht und neu erstellt, und die Daten werden erneut geladen. Zu strukturellen Updates zählen das Ändern des Datentyps und das Umbenennen oder Löschen eines Felds.
+
+Änderungen, für die keine Neuerstellung erforderlich ist, beinhalten das Hinzufügen eines neuen Felds sowie das Ändern von Bewertungsprofilen, Vorschlägen und Sprachanalysen. Weitere Informationen finden Sie unter [Update Index](https://msdn.microsoft.com/library/azure/dn800964.aspx) (Aktualisieren des Index).
+
+<!---HONumber=AcomDC_0608_2016-->

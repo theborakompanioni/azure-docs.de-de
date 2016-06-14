@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/26/2016"
+	ms.date="06/01/2016"
 	ms.author="marsma"/>
 
 # Erstellen und Verwalten eines Azure Batch-Kontos im Azure-Portal
@@ -34,11 +34,7 @@ Das [Azure-Portal][azure_portal] enthält Tools zum Erstellen und Verwalten eine
 
 	![Batch im Marketplace][marketplace_portal]
 
-3. Prüfen Sie die Informationen auf dem Blatt **Batchdienst**, und klicken Sie dann auf **Erstellen**. Beachten Sie, dass für Batch nur das Resource Manager-Bereitstellungsmodell verwendet wird.
-
-	![Batch-Dienst, Blatt „Erstellen“ im Azure-Portal][3]
-
-4. Das Blatt **Neues Batch-Konto** wird angezeigt. Sehen Sie sich unten die Beschreibungen der einzelnen Blattelemente unter den Punkten *a* bis *e* an.
+3. Das Blatt **Neues Batch-Konto** wird angezeigt. Sehen Sie sich unten die Beschreibungen der einzelnen Blattelemente unter den Punkten *a* bis *e* an.
 
     ![Erstellen eines Batch-Kontos][account_portal]
 
@@ -46,17 +42,17 @@ Das [Azure-Portal][azure_portal] enthält Tools zum Erstellen und Verwalten eine
 
 	b. **Abonnement:** Dies ist ein Abonnement, unter dem das Batch-Konto erstellt werden soll. Wenn Sie nur über ein Abonnement verfügen, ist es standardmäßig ausgewählt.
 
-	c. **Ressourcengruppe:** Eine Ressourcengruppe für Ihr neues Batch-Konto. Optional können Sie auch eine neue Ressourcengruppe erstellen.
+	c. **Ressourcengruppe:** Eine vorhandene Ressourcengruppe für Ihr neues Batch-Konto. Optional können Sie auch eine neue Ressourcengruppe erstellen.
 
 	d. **Standort:** Eine Azure-Region, in der das Batch-Konto erstellt werden soll. Nur die Bereiche, die von Ihrem Abonnement und der Ressourcengruppe unterstützt werden, werden als Optionen angezeigt.
 
     e. **Speicherkonto** (optional): Ein Speicherkonto vom Typ **Allgemein**, das Sie dem neuen Batch-Konto zuordnen bzw. damit verknüpfen. Bei dem Feature [Anwendungspakete](batch-application-packages.md) von Batch wird das verknüpfte Speicherkonto für die Speicherung und Wiederherstellung von Anwendungspaketen verwendet. Weitere Informationen zu diesem Feature finden Sie unter [Anwendungsbereitstellung mit Azure Batch-Anwendungspaketen](batch-application-packages.md).
 
-     > [AZURE.TIP] Für das erneute Generieren von Schlüsseln in einem verknüpften Speicherkonto sind besondere Punkte zu beachten. Ausführliche Informationen finden Sie unter [Zu berücksichtigende Aspekte für Batch-Konten](#considerations-for-batch-accounts).
+     > [AZURE.IMPORTANT] Für das erneute Generieren von Schlüsseln in einem verknüpften Speicherkonto sind besondere Punkte zu beachten. Ausführliche Informationen finden Sie unter [Zu berücksichtigende Aspekte für Batch-Konten](#considerations-for-batch-accounts).
 
-5. Klicken Sie auf **Erstellen**, um das Konto zu erstellen.
+4. Klicken Sie auf **Erstellen**, um das Konto zu erstellen.
 
-  Im Portal wird angezeigt, dass das Konto bereitgestellt wird (**Bereitstellen**). Nach Abschluss des Vorgangs wird das Blatt für das Batch-Konto geöffnet.
+  Im Portal wird angezeigt, dass das Konto bereitgestellt wird (**Bereitstellen**), und nach Abschluss des Vorgangs wird unter *Benachrichtigungen* die Meldung **Die Bereitstellungen waren erfolgreich.** angezeigt.
 
 ## Anzeigen der Eigenschaften des Batch-Kontos
 
@@ -102,11 +98,10 @@ Auf dem Blatt für das Batch-Konto werden mehrere Eigenschaften für das Konto a
 [azure_portal]: https://portal.azure.com
 [batch_pricing]: https://azure.microsoft.com/pricing/details/batch/
 
-[3]: ./media/batch-account-create-portal/batch_acct_03.png "Batch-Dienst, Blatt „Erstellen“ im Azure-Portal"
 [4]: ./media/batch-account-create-portal/batch_acct_04.png "Speicherkontoschlüssel erneut generieren"
 [5]: ./media/batch-account-create-portal/batch_acct_05.png "Batch-Konto, Blätter mit Einstellungen und Eigenschaften"
 [marketplace_portal]: ./media/batch-account-create-portal/marketplace_batch.PNG
 [account_portal]: ./media/batch-account-create-portal/batch_acct_portal.png
 [account_keys]: ./media/batch-account-create-portal/account_keys.PNG
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

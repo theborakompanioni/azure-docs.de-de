@@ -17,7 +17,7 @@
    ms.date="05/05/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
-# Erstellen eines SQL Data Warehouse
+# Erstellen einer Azure SQL Data Warehouse-Instanz
 
 > [AZURE.SELECTOR]
 - [Azure-Portal](sql-data-warehouse-get-started-provision.md)
@@ -44,7 +44,7 @@ In diesem Tutorial verwenden Sie das Azure-Portal zum Erstellen eines SQL Data W
 
 	- **Datenbankname**: Der Name, mit dem auf das SQL Data Warehouse verwiesen wird. Dieser Name muss für den Server eindeutig sein.
 	
-    - **Leistung**: Es wird empfohlen, mit 400 DWUs zu beginnen. Bewegen Sie den Schieberegler nach links oder rechts, um die Leistung Ihres Data Warehouse anzupassen oder nach dem Erstellen hoch- oder herunterzuskalieren. Weitere Informationen zu DWUs finden Sie in der Dokumentation zur [Skalierung](./sql-data-warehouse-overview-scalability.md) oder unter den [Preisen](https://azure.microsoft.com/de-DE/pricing/details/sql-data-warehouse/).
+    - **Leistung**: Es wird empfohlen, mit 400 DWUs zu beginnen. Bewegen Sie den Schieberegler nach links oder rechts, um die Leistung Ihres Data Warehouse anzupassen oder nach dem Erstellen hoch- oder herunterzuskalieren. Weitere Informationen zu DWUs finden Sie in der Dokumentation zur [Skalierung](./sql-data-warehouse-manage-compute-overview.md) oder auf der Seite mit unseren [Preisen](https://azure.microsoft.com/de-DE/pricing/details/sql-data-warehouse/).
 
     - **Abonnement**: Wählen Sie das Abonnement aus, dem das SQL Data Warehouse in Rechnung gestellt wird.
 
@@ -68,4 +68,4 @@ Um Daten in SQL Data Warehouse zu laden, lesen Sie [Laden von Daten in SQL Data 
 
 Wenn Sie versuchen, eine vorhandene Datenbank zu SQL Data Warehouse zu migrieren, lesen Sie die [Übersicht über die Migration](./sql-data-warehouse-overview-migrate.md), oder verwenden Sie das [Migrationshilfsprogramm ](./sql-data-warehouse-migrate-migration-utility.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -1,29 +1,29 @@
 <properties 
-   pageTitle="REST-Lernprogramm zu Service Bus-Brokermessaging | Microsoft Azure"
-   description="REST-Lernprogramm zu Brokermessaging"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" />
+    pageTitle="REST-Lernprogramm zu Service Bus-Brokermessaging | Microsoft Azure"
+    description="REST-Lernprogramm zu Brokermessaging"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" />
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="09/15/2015"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="06/03/2016"
+    ms.author="sethm" />
 
 # REST-Lernprogramm zu Service Bus-Brokermessaging
 
-In diesem Lernprogramm wird gezeigt, wie Sie eine einfache REST-basierte Azure Service Bus-Warteschlange und ein dazugehöriges Thema bzw. einen Abonnementdienst erstellen.
+In diesem Tutorial wird gezeigt, wie Sie eine einfache REST-basierte Azure Service Bus-Warteschlange und ein Topic bzw. eine Subscription erstellen.
 
-## Schritt 1: Erstellen eines Namespace
+## Schritt 1: Erstellen eines Namespace
 
 Der erste Schritt umfasst die Einrichtung des Dienstnamespace und das Abrufen eines SAS-Schlüssels ([Shared Access Signature](service-bus-sas-overview.md)). Ein Dienstnamespace stellt eine Anwendungsgrenze für jede Anwendung, die über Service Bus zur Verfügung steht. Das System generiert automatisch einen SAS-Schlüssel, wenn ein Dienstnamespace erstellt wird. Dienstnamespace und SAS-Schlüssel bilden gemeinsam die Anmeldeinformationen, mit denen sich der Servicebus gegenüber der Anwendung authentifiziert.
 
-### Erstellen eines Namespace und Abrufen eines gemeinsamen geheimen Schlüssels
+### Erstellen eines Namespace und Abrufen eines SAS-Schlüssels
 
 1. Rufen Sie zum Erstellen eines Dienstnamespace das [klassische Azure-Portal][] auf. Klicken Sie auf der linken Seite auf **Service Bus** und anschließend auf **Erstellen**. Geben Sie einen Namen für den Namespace ein, und klicken Sie auf das Häkchen.
 
@@ -45,7 +45,7 @@ Der Code in diesem Lernprogramm erfüllt die folgenden Aufgaben:
 
 - Erstellen eines Themas und eines Abonnements für das Thema und Senden und Lesen der Nachricht aus dem Abonnement
 
-- Abrufen aller Warteschlangen-, Themen- und Abonnementinformationen, z. B. Abonnementregeln, aus dem Service Bus
+- Abrufen aller Warteschlangen-, Themen- und Abonnementinformationen, z. B. Abonnementregeln, aus dem Service Bus
 
 - Löschen der Warteschlangen-, Themen- und Abonnementressourcen
 
@@ -186,17 +186,19 @@ Fügen Sie den folgenden Code direkt nach dem `GetSASToken()`-Code ein, den Sie 
 // Uses HTTP PUT to create the queue
 private static string CreateQueue(string queueName, string token)
 {
-    // Create the URI of the new queue, note that this uses the HTTPS schemestring queueAddress = baseAddress + queueName;
+    // Create the URI of the new queue, note that this uses the HTTPS scheme
+    string queueAddress = baseAddress + queueName;
     WebClient webClient = new WebClient();
     webClient.Headers[HttpRequestHeader.Authorization] = token;
 
     Console.WriteLine("\nCreating queue {0}", queueAddress);
-    // Prepare the body of the create queue requestvar putData = @"<entry xmlns=""http://www.w3.org/2005/Atom"">
-                                  <title type=""text"">" + queueName + @"</title>
-                                  <content type=""application/xml"">
-                                    <QueueDescription xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"" />
-                                  </content>
-                                </entry>";
+    // Prepare the body of the create queue request
+    var putData = @"<entry xmlns=""http://www.w3.org/2005/Atom"">
+                          <title type=""text"">" + queueName + @"</title>
+                          <content type=""application/xml"">
+                            <QueueDescription xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"" />
+                          </content>
+                        </entry>";
 
     byte[] response = webClient.UploadData(queueAddress, "PUT", Encoding.UTF8.GetBytes(putData));
     return Encoding.UTF8.GetString(response);
@@ -223,7 +225,7 @@ In diesem Schritt fügen Sie eine Methode hinzu, in der der HTTP POST-Befehl im 
 	}
 	```
 
-1. Standardmäßige Eigenschaften von Brokernachrichten werden in einem `BrokerProperties`-HTTP-Header angeordnet. Die Brokereigenschaften müssen im JSON-Format serialisiert werden. Fügen Sie den folgenden Code wie im vorherigen Beispiel direkt vor dem `webClient.UploadData()`-Aufruf hinzu, um einen **TimeToLive**-Wert von 30 Sekunden anzugeben und der Nachricht die Nachrichtenbezeichnung „M1“ hinzuzufügen:
+1. Standardmäßige Eigenschaften von Brokernachrichten werden in einem `BrokerProperties`-HTTP-Header angeordnet. Die Brokereigenschaften müssen im JSON-Format serialisiert werden. Fügen Sie den folgenden Code wie im vorherigen Beispiel direkt vor dem `webClient.UploadData()`-Aufruf hinzu, um einen **TimeToLive**-Wert von 30 Sekunden anzugeben und der Nachricht die Nachrichtenbezeichnung „M1“ hinzuzufügen:
 
 	```
 	// Add brokered message properties "TimeToLive" and "Label"
@@ -627,11 +629,11 @@ namespace Microsoft.ServiceBus.Samples
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
+- [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
 - [Azure Service Bus – Grundlagen](service-bus-fundamentals-hybrid-solutions.md)
 - [REST-Lernprogramm zu Service Bus Relay](service-bus-relay-rest-tutorial.md)
 
 [klassische Azure-Portal]: http://manage.windowsazure.com
 [klassischen Azure-Portals]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0608_2016-->

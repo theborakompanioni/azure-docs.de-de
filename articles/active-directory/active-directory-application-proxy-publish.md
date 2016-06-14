@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Veröffentlichen von Apps mit Azure AD-Anwendungsproxy | Microsoft Azure"
-	description="Erläutert die Veröffentlichung lokaler Anwendungen mit dem Azure AD-Anwendungsproxy."
+	pageTitle="Veröffentlichen von Apps mit Azure AD-Anwendungsproxy | Microsoft Azure"
+	description="Es wird beschrieben, wie Sie lokale Anwendungen mit dem Azure AD-Anwendungsproxy in der Cloud veröffentlichen."
 	services="active-directory"
 	documentationCenter=""
 	authors="kgremban"
@@ -13,79 +13,73 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/12/2016"
+	ms.date="06/01/2016"
 	ms.author="kgremban"/>
 
 
 # Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy
 
+
+Nachdem Sie den Microsoft Azure Active Directory (AD)-Anwendungsproxy aktiviert haben, können Sie lokale Anwendungen veröffentlichen, damit Remotebenutzer darauf von außerhalb des privaten Netzwerks zugreifen können.
+
+In diesem Artikel werden Sie durch die Schritte zum Veröffentlichen von Anwendungen geführt, die in Ihrem lokalen Netzwerk ausgeführt werden, sowie zum Ermöglichen des sicheren Remotezugriffs von außerhalb Ihres Netzwerks. Führen Sie vor dem Fortfahren die Schritte unter [Aktivieren des Anwendungsproxys im Azure-Portal](active-directory-application-proxy-enable.md) aus, falls Sie den Anwendungsproxy noch nicht eingerichtet und noch keine Connectors installiert haben.
+
+Wenn Sie den Azure AD-Anwendungsproxy zum ersten Mal verwenden, empfiehlt sich ein Test des Connectors, indem Sie vor dem Veröffentlichen von Anwendungen eine Website aus Ihrem privaten Netzwerk veröffentlichen.
+
 > [AZURE.NOTE] Das Feature "Anwendungsproxy" ist nur verfügbar, wenn Sie Azure Active Directory auf die Premium oder Basic Edition aktualisiert haben. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
-
-Nachdem Sie den Microsoft Azure Active Directory-Anwendungsproxy aktiviert haben, können Sie Anwendungen veröffentlichen, um sie für Ihre Benutzer von außerhalb Ihres privaten Netzwerks zugänglich zu machen.
-
-Dieser Artikel führt Sie durch die Schritte zum Veröffentlichen von Anwendungen, die in Ihrem lokalen Netzwerk ausgeführt werden und für die Sie sicheren Remotezugriff von außerhalb Ihres Netzwerks aktivieren möchten.
-
-> [AZURE.NOTE] Um sicherzustellen, dass der Connector ordnungsgemäß ausgeführt wird, sollte die erste Anwendung, die Sie veröffentlichen, eine Website innerhalb Ihres privaten Netzwerks sein. So können Sie sicherstellen, dass Benutzer über das Internet darauf zugreifen können, bevor Sie eine tatsächliche Anwendung veröffentlichen.
-
 
 ## Veröffentlichen einer App mithilfe des Assistenten
 
-1. Öffnen Sie einen Browser Ihrer Wahl, und wechseln Sie zum klassischen Azure-Portal.
-2. Klicken Sie im linken Bereich des klassischen Azure-Portals auf die Registerkarte **Active Directory**.
-3. Klicken Sie auf das Verzeichnis, in dem Sie den Anwendungsproxy aktiviert haben, und für das Sie eine Anwendung (z. B. Wingtip Toys) veröffentlichen möchten.
-4. Klicken Sie auf die Registerkarte **Anwendungen** und dann am unteren Bildschirmrand auf **Hinzufügen**.
+1. Melden Sie sich als Administrator beim [klassischen Azure-Portal](https://manage.windowsazure.com/) an.
+2. Navigieren Sie zu Active Directory, und wählen Sie das Verzeichnis aus, in dem Sie den Anwendungsproxy aktiviert haben.
+
+	![Active Directory – Symbol](./media/active-directory-application-proxy-publish/ad_icon.png)
+
+3. Klicken Sie auf die Registerkarte **Anwendungen** und dann am unteren Bildschirmrand auf **Hinzufügen**.
 
 	![Anwendung hinzufügen](./media/active-directory-application-proxy-publish/aad_appproxy_selectdirectory.png)
 
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Veröffentlichen einer Anwendung, auf die von außerhalb Ihres Netzwerks zugegriffen werden kann**.
+4. Wählen Sie **Eine Anwendung veröffentlichen, die von außerhalb Ihres Netzwerks aufgerufen werden kann**.
 
-	![Neue Anwendung, auf die von außerhalb Ihres Netzwerks zugegriffen werden kann](./media/active-directory-application-proxy-publish/aad_appproxy_addapp.png)
+	![Eine Anwendung veröffentlichen, die von außerhalb Ihres Netzwerks aufgerufen werden kann](./media/active-directory-application-proxy-publish/aad_appproxy_addapp.png)
 
-6. Befolgen Sie die Anweisungen auf dem Bildschirm, um die folgenden Informationen über Ihre Anwendung bereitzustellen:
+5. Geben Sie die folgenden Informationen zur Anwendung an:
 
-| **Eigenschaft** | **Details** |
-|---|---|
-| Externe URL | Dies ist die URL des Clouddiensts, die zum Zugriff auf die Anwendung von außerhalb Ihres privaten Netzwerks verwendet wird. Die URL wird basierend auf dem bereitgestellten Namen automatisch mit dem Suffix "msappproxy.net" generiert. |
-| Präauthentifizierungsmethode | Legen Sie die Art der Präauthentifizierungsmethode fest, die die Anwendung verwenden soll: <br><br> a. Azure Active Directory: Wenn ein Benutzer versucht, auf eine Anwendung zuzugreifen, leitet der Anwendungsproxy den Benutzer zur Anmeldung bei Azure AD um. Dort wird der Benutzer authentifiziert, um sicherzustellen, dass er die erforderlichen Berechtigungen für das Verzeichnis und die Anwendung besitzt. <br><br> b. Passthrough: Es findet keine Präauthentifizierung statt. |
-| Externes URL-Protokoll | Standardmäßig werden Anwendungen mithilfe des HTTPS-Protokolls veröffentlicht. Der Dienst leitet automatisch Benutzer um, die die URL mit „http“ eingeben. <br><br> Zum Aktivieren von HTTP für eine interne Anwendung müssen Sie die Präauthentifizierungsmethode auf „Passthrough“ setzen. Dann können Sie das externe URL-Protokoll von HTTPS in HTTP ändern. Beachten Sie, dass das Veröffentlichen von Anwendungen mithilfe von HTTP Sicherheitsprobleme für Ihre Anwendung und Ihre Benutzer hervorrufen kann. <br><br> Sie können eine benutzerdefinierte Domäne einfügen, anstatt das Standardsuffix „msappproxy.net“ zu verwenden. Weitere Informationen finden Sie unter [Arbeiten mit benutzerdefinierten Domänen](active-directory-application-proxy-custom-domains.md). |
-| Interne URL | Dies ist die interne URL, die der Anwendungsproxyconnector verwendet, um intern auf die Anwendung zuzugreifen. Dies sollte die URL der veröffentlichten Anwendung sein, die von innerhalb Ihres privaten Netzwerks zum Zugriff auf die Anwendung verwendet wird. Dies ist eine gültige URL ohne Leerzeichen oder Symbole. <br><br> Sie können einen bestimmten Pfad auf dem Back-End-Server für die Veröffentlichung angeben, während der Rest des Servers nicht veröffentlicht wird. So können Sie beispielsweise verschiedene Websites, die sich auf demselben SharePoint-Server befinden, mit unterschiedlichen Namen und Zugriffsregeln veröffentlichen. <br><br> Der Pfad wird im Feld für die interne URL angegeben und ist in der externen URL sichtbar. Der interne und externe Pfad müssen identisch sein. |
+	- **Name**: Dies ist der benutzerfreundliche Namen für Ihre Anwendung. Er muss in Ihrem Verzeichnis eindeutig sein.
+	- **Interne URL**: Die Adresse, die vom Anwendungsproxy-Connector verwendet wird, um aus dem internen privaten Netzwerk auf die Anwendung zuzugreifen. Sie können einen bestimmten Pfad auf dem Back-End-Server für die Veröffentlichung angeben, während der Rest des Servers nicht veröffentlicht wird. Auf diese Weise können Sie unterschiedliche Websites auf demselben Server veröffentlichen und jeweils einen eigenen Namen und Zugriffsregeln vergeben.
+	- **Präauthentifizierungsmethode**: Gibt das Verfahren an, wie der Anwendungsproxy Benutzer überprüft, bevor diese Zugriff auf Ihre Anwendung erhalten. Wählen Sie im Dropdownmenü eine Option aus.
 
-  ![Anwendungseigenschaften](./media/active-directory-application-proxy-publish/aad_appproxy_appproperties.png)
+		- Azure Active Directory: Der Anwendungsproxy leitet Benutzer an die Anmeldung mit Azure AD um. Hierbei werden deren Berechtigungen für das Verzeichnis und die Anwendung authentifiziert.
+		- Pass-Through: Benutzer müssen sich nicht authentifizieren, um Zugriff auf die Anwendung zu erhalten.
 
-  Um den Assistenten zu beenden, klicken Sie auf das Häkchen unten im Bildschirm. Die Anwendung ist jetzt in Azure AD definiert.
+	![Anwendungseigenschaften](./media/active-directory-application-proxy-publish/aad_appproxy_appproperties.png)
+
+6. Um den Assistenten zu beenden, klicken Sie auf das Häkchen unten im Bildschirm. Die Anwendung ist jetzt in Azure AD definiert.
 
 
 ## Zuweisen von Benutzern und Gruppen zur Anwendung
 
-1. Für präauthentifizierte Apps müssen Sie Benutzer und Gruppen zuweisen, die Zugriff auf die Anwendung haben. Der Zugriff auf Passthrough-Apps ist für alle Benutzer verfügbar. Damit jedoch ein Benutzer die App in seiner Anwendungsliste sehen kann, müssen Sie die App diesem Benutzer zuweisen.
+Damit Benutzer auf die von Ihnen veröffentlichte Anwendung zugreifen können, müssen Sie diese entweder einzeln oder in Gruppen zuweisen. Bei Apps, für die eine Präauthentifizierung erforderlich ist, werden hierbei Berechtigungen zum Verwenden der App erteilt. Bei Apps, für die keine Präauthentifizierung erforderlich ist, benötigen Benutzer keine Berechtigungen. Sie müssen der App aber zugewiesen sein, damit sie in der Anwendungsliste angezeigt wird.
 
-2. Nach dem Beenden des Assistenten für das Hinzufügen von Apps wird die Schnellstartseite für den Anwendungsproxy angezeigt. Um Benutzer zuzuweisen, klicken Sie auf **Benutzer zuweisen**.
+1. Nach dem Beenden des Assistenten für das Hinzufügen von Apps wird die Schnellstartseite für die Anwendung angezeigt. Wählen Sie die Option **Benutzer und Gruppen**, um zu verwalten, wer Zugriff auf die App hat.
 
-	![Screenshot zum Anwendungsproxy-Schnellstart – Benutzer zuweisen](./media/active-directory-application-proxy-publish/quickstart.png)
+	![Anwendungsproxy-Schnellstart – Benutzer zuweisen – Screenshot](./media/active-directory-application-proxy-publish/aad_appproxy_usersgroups.png)
 
-3. Wählen Sie die einzelnen Benutzer oder Gruppen aus, die Sie dieser App zuweisen möchten, und klicken Sie auf **Zuweisen**.
+2. Suchen Sie in Ihrem Verzeichnis nach bestimmten Gruppen, oder zeigen Sie alle Benutzer an. Klicken Sie auf das Häkchen, um die Ergebnisse anzuzeigen.
 
-> [AZURE.NOTE] Für Apps unter "Integrierte Windows-Authentifizierung" können Sie nur Benutzer und Gruppen zuweisen, die über Ihr lokales Active Directory synchronisiert werden. Benutzer, die sich über ein Microsoft-Konto anmelden, und Gäste können nicht für Apps zugewiesen werden, die mit dem Azure Active Directory-Anwendungsproxy veröffentlicht werden. Stellen Sie sicher, dass die zugewiesenen Benutzer sich mit den Anmeldeinformationen anmelden, die Teil der gleichen Domäne sind wie die Anwendung, die Sie veröffentlichen.
+  	![Nach Gruppen oder Benutzern suchen – Screenshot](./media/active-directory-application-proxy-publish/aad_appproxy_search.png)
+
+2. Wählen Sie die einzelnen Benutzer oder Gruppen aus, die Sie dieser App zuweisen möchten, und klicken Sie auf **Zuweisen**. Sie werden aufgefordert, die Aktion zu bestätigen.
+
+> [AZURE.NOTE] Für Apps mit „Integrierter Windows-Authentifizierung“ können Sie nur Benutzer und Gruppen zuweisen, die über Ihr lokales Active Directory synchronisiert werden. Benutzer, die sich über ein Microsoft-Konto anmelden, und Gäste können nicht für Apps zugewiesen werden, die mit dem Azure Active Directory-Anwendungsproxy veröffentlicht werden. Stellen Sie sicher, dass Ihre Benutzer sich mit Anmeldeinformationen anmelden, die derselben Domäne wie die von Ihnen veröffentlichte App angehören.
 
 
 ## Erweiterte Konfiguration
 
-1. Auf der Seite „Konfigurieren“ können Sie veröffentlichte Apps ändern oder erweiterte Optionen konfigurieren, z. B. SSO für lokale Anwendungen.
+Auf der Seite „Konfigurieren“ können Sie veröffentlichte Apps ändern oder erweiterte Optionen einrichten. Auf dieser Seite können Sie Ihre App anpassen, indem Sie den Namen ändern oder ein Logo hochladen. Außerdem können Sie Zugriffsregeln verwalten, z.B. die Präauthentifizierungsmethode oder die Multi-Factor Authentication.
 
-	![Erweiterte Konfiguration](./media/active-directory-application-proxy-publish/advancedconfig.png)
+![Erweiterte Konfiguration](./media/active-directory-application-proxy-publish/aad_appproxy_configure.png)
 
-2. Wählen Sie die App aus, und klicken Sie auf **Konfigurieren**. Folgende Optionen sind verfügbar:
-
-**Einstellung** | **Details**
----|---
-Name | Geben Sie einen beschreibenden Namen für Ihre Anwendung ein.
-Externe URL | Dies ist die URL des Clouddiensts, die zum Zugriff auf die Anwendung von außerhalb Ihres privaten Netzwerks verwendet wird. Die URL wird basierend auf dem bereitgestellten Namen automatisch mit dem Suffix "msappproxy.net" generiert.
-Präauthentifizierungsmethode | Legen Sie die Art der Präauthentifizierungsmethode fest, die die Anwendung verwenden soll: <br><br> a. Azure Active Directory: Wenn ein Benutzer versucht, auf eine Anwendung zuzugreifen, leitet der Anwendungsproxy den Benutzer zur Anmeldung bei Azure AD um. Dort wird der Benutzer authentifiziert, um sicherzustellen, dass er die erforderlichen Berechtigungen für das Verzeichnis und die Anwendung besitzt. <br><br> b. Passthrough: Es findet keine Präauthentifizierung statt.
-Externes URL-Protokoll | Standardmäßig werden Anwendungen mithilfe des HTTPS-Protokolls veröffentlicht. Der Dienst leitet automatisch Benutzer um, die die URL mit „http“ eingeben. <br><br> Zum Aktivieren von HTTP für eine interne Anwendung müssen Sie die Präauthentifizierungsmethode auf „Passthrough“ setzen. Dann können Sie das externe URL-Protokoll von HTTPS in HTTP ändern. Beachten Sie, dass das Veröffentlichen von Anwendungen mithilfe von HTTP Sicherheitsprobleme für Ihre Anwendung und Ihre Benutzer hervorrufen kann. <br><br> Sie können eine benutzerdefinierte Domäne einfügen, anstatt das Standardsuffix „msappproxy.net“ zu verwenden. Weitere Informationen finden Sie unter [Arbeiten mit benutzerdefinierten Domänen](active-directory-application-proxy-custom-domains.md).
-Interne URL | Dies ist die interne URL, die der Anwendungsproxyconnector verwendet, um intern auf die Anwendung zuzugreifen. Dies sollte die URL der veröffentlichten Anwendung sein, die von innerhalb Ihres privaten Netzwerks zum Zugriff auf die Anwendung verwendet wird. Dies ist eine gültige URL ohne Leerzeichen oder Symbole. <br><br> Sie können einen bestimmten Pfad auf dem Back-End-Server für die Veröffentlichung angeben, während der Rest des Servers nicht veröffentlicht wird. So können Sie beispielsweise verschiedene Websites, die sich auf demselben SharePoint-Server befinden, mit unterschiedlichen Namen und Zugriffsregeln veröffentlichen. <br><br> Der Pfad wird im Feld für die interne URL angegeben und ist in der externen URL sichtbar. Der interne und externe Pfad müssen identisch sein.
-URL in Headern übersetzen | Für Anwendungen (z. B. einige SharePoint-Konfigurationen), die erfordern, dass die HTTP-Hostheader nicht übersetzt werden, setzen Sie diesen Wert auf **Nein**. Dadurch wird die Übersetzung sowohl für Anforderungs- als auch für Antwortheader deaktiviert.
-Interne Authentifizierungsmethode | Wenn Sie den Anwendungsproxy für die Präauthentifizierung verwenden, können Sie eine interne Authentifizierungsmethode festlegen, um Ihren Benutzern die einmalige Anmeldung (SSO) für diese Anwendung zu ermöglichen. <br><br> Wählen Sie **Integrierte Windows-Authentifizierung (IWA)** aus, wenn Ihre Anwendung IWA verwendet. Außerdem können Sie die eingeschränkte Kerberos-Delegierung zum Aktivieren von SSO für diese Anwendung konfigurieren. Anwendungen, die IWA verwenden, müssen mithilfe von KCD konfiguriert werden. Ansonsten kann der Anwendungsproxy diese Anwendungen nicht veröffentlichen. <br><br> Wählen Sie **Keine** aus, wenn Ihre Anwendung IWA nicht verwendet. <br><br> Weitere Informationen finden Sie unter [Einmaliges Anmelden mit App-Proxy](active-directory-application-proxy-sso-using-kcd.md).
-Interner Anwendungs-SPN | Dies ist der Dienstprinzipalname (SPN) der internen Anwendung gemäß Konfiguration im lokalen Anwendungsproxy. Der SPN wird vom Anwendungsproxyconnector verwendet, um Kerberos-Token für die Anwendung mit der eingeschränkten Kerberos-Delegierung abzurufen. <br><br> Weitere Informationen finden Sie unter [Aktivieren des einmaligen Anmeldens](active-directory-application-proxy-sso-using-kcd.md).
 
 Nachdem Sie Anwendungen mit dem Azure Active Directory-Anwendungsproxy veröffentlicht haben, werden sie in der Liste der Anwendungen in Azure AD aufgeführt, und Sie können sie dort verwalten.
 
@@ -95,23 +89,13 @@ Um eine Anwendung anzeigen und den Zugriff darauf sicherzustellen, doppelklicken
 
 Um eine Anwendung zu löschen, wählen Sie eine Anwendung in der Liste aus, und klicken Sie dann auf **Löschen**.
 
-## Weitere Informationen
-Der Anwendungsproxy bietet Ihnen noch viele weitere Möglichkeiten:
+## Nächste Schritte
 
-- [Aktivieren des Anwendungsproxys](active-directory-application-proxy-enable.md)
 - [Veröffentlichen von Anwendungen mit Ihrem eigenen Domänennamen](active-directory-application-proxy-custom-domains.md)
 - [Aktivieren der einmaligen Anmeldung](active-directory-application-proxy-sso-using-kcd.md)
 - [Aktivieren des bedingten Zugriffs](active-directory-application-proxy-conditional-access.md)
 - [Arbeiten mit Anwendungen, die Ansprüche unterstützen](active-directory-application-proxy-claims-aware-apps.md)
-- [Problembehandlung von Anwendungsproxys](active-directory-application-proxy-troubleshoot.md)
 
-## Weitere Informationen zum Anwendungsproxy
-- [Onlinehilfe anzeigen](active-directory-application-proxy-enable.md)
-- [Blog zum Anwendungsproxy aufrufen](http://blogs.technet.com/b/applicationproxyblog/)
-- [Sehen Sie sich unsere Videos auf Channel 9 an!](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
+Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/).
 
-## Zusätzliche Ressourcen
-- [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-- [Informationen zur eingeschränkten Kerberos-Delegierung](http://technet.microsoft.com/library/cc995228.aspx)
-
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0608_2016-->
