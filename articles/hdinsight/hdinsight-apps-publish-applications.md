@@ -64,17 +64,17 @@ Erstellen Sie eine ZIP-Datei mit allen Dateien, die für die Installation der HD
 - [createUiDefinition.json](#define-application).
 - mainTemplate.json. Ein Beispiel finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
 
->[AZURE.IMPORTANT] Der Name der Anwendungsinstallationsskripts muss für einen bestimmten Cluster mit dem unten angegebenen Format eindeutig sein.
+	>[AZURE.IMPORTANT] Der Name der Anwendungsinstallationsskripts muss für einen bestimmten Cluster mit dem unten angegebenen Format eindeutig sein.
 	
 	>	name": "[concat('hue-install-v0','-' ,uniquestring(‘applicationName’)]"
 		
 	>Beachten Sie, dass der Skriptname drei Teile umfasst:
 		
->1. Ein Skriptnamenpräfix, das entweder den Anwendungsnamen oder einen für die Anwendung relevanten Namen enthalten sollte
->2. „-“ für eine bessere Lesbarkeit
->3. Eine eindeutige Zeichenfolgenfunktion mit dem Anwendungsnamen als Parameter
+	>	1. Ein Skriptnamenpräfix, das entweder den Anwendungsnamen oder einen für die Anwendung relevanten Namen enthalten sollte
+	>	2. „-“ für eine bessere Lesbarkeit
+	>	3. Eine eindeutige Zeichenfolgenfunktion mit dem Anwendungsnamen als Parameter
 
->Das oben genannte Beispiel lautet schlussendlich in der Liste persistenter Skriptaktionen wie folgt: hue-install-v0-4wkahss55hlas. Eine Beispiel-JSON-Nutzlast finden Sie unter [https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
+	>	Das oben genannte Beispiel lautet schlussendlich in der Liste persistenter Skriptaktionen wie folgt: hue-install-v0-4wkahss55hlas. Eine Beispiel-JSON-Nutzlast finden Sie unter [https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
 
 - Alle erforderlichen Skripts.
 
@@ -98,4 +98,4 @@ Gehen Sie zum Veröffentlichen einer HDInsight-Anwendung wie folgt vor:
 - [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md): Hier erfahren Sie, wie Sie mithilfe der Skriptaktion zusätzliche Anwendungen installieren.
 - [Erstellen Linux-basierter Hadoop-Cluster in HDInsight mithilfe von ARM-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Hier erfahren Sie, wie Sie ARM-Vorlagen für die Erstellung von HDInsight-Clustern aufrufen.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!----HONumber=AcomDC_0601_2016-->
