@@ -59,9 +59,11 @@ Derzeit unterstützen die folgenden Dienste das Verschieben in eine neue Ressour
 - Operational Insights
 - Redis-Cache
 - Scheduler
-- Suche
-- Storage (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
+- Suchen
+- Speicher
+- Speicher (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 - SQL-Datenbankserver – die Datenbank und der Server müssen sich in derselben Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle zugehörigen Datenbanken verschoben.
+- Virtual Machines
 - Virtual Machines (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 
 ## Dienste, die das Verschieben teilweise unterstützen
@@ -76,8 +78,6 @@ Die folgenden Dienste unterstützen derzeit nicht das Verschieben einer Ressourc
 
 - Application Insights
 - ExpressRoute
-- Speicher
-- Virtual Machines
 - Virtual Networks (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 
 ## App Service-Einschränkungen
@@ -274,4 +274,4 @@ Mit dem Anforderungstext:
 - Weitere Informationen zu Portalfeatures zum Verwalten Ihres Abonnements finden Sie unter [Verwenden des Azure-Portals zum Verwalten von Ressourcen](./azure-portal/resource-group-portal.md).
 - Informationen zum Anwenden einer logischen Organisation auf Ihre Ressourcen finden Sie unter [Verwenden von Tags zum Organisieren von Ressourcen](resource-group-using-tags.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

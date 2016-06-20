@@ -29,7 +29,7 @@ Ein dynamischer Bedarf ist für moderne Anwendungen eine Realität. Ob saisonale
  
 ## Entwickeln
 
-- [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-how-to-use-queues.md) 
+- [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md) 
 - [Verarbeiten unzustellbarer Nachrichten beim Servicebus-Brokermessaging (Blogeintrag vom 21. Oktober 2011)](http://geekswithblogs.net/asmith/articles/147398.aspx) 
 - [Bewährte Methoden zum Schützen von Servicebus-Anwendungen gegen Servicebus-Ausfälle und Notfälle](service-bus-outages-disasters.md)
 - [Brokermessaging: Antwort anfordern (Beispiel)](https://code.msdn.microsoft.com/Brokered-Messaging-Request-0ce8fcaf) 
@@ -46,4 +46,4 @@ Ein dynamischer Bedarf ist für moderne Anwendungen eine Realität. Ob saisonale
 - [Cloud Services](https://azure.microsoft.com/services/cloud-services/) 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

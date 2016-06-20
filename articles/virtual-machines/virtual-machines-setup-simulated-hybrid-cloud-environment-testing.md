@@ -211,6 +211,6 @@ Die simulierte Hybrid Cloud-Umgebung kann jetzt zum Testen verwendet werden.
 
 ## Nächste Schritte
 
-- Sie können dem TestVNET-Subnetz [einen neuen virtuellen Computer hinzufügen](virtual-machines-windows-create-powershell.md), beispielsweise einen Computer unter Microsoft SQL Server.
+- Sie können dem TestVNET-Subnetz [einen neuen virtuellen Computer hinzufügen](virtual-machines-windows-ps-create.md), beispielsweise einen Computer mit Microsoft SQL Server.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

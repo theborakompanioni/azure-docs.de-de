@@ -4,7 +4,7 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="v-shysun"
-	manager="msmets"
+	manager="felixwu"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="06/03/2016"
 	ms.author="v-shysun"/>
 
 # Gewusst wie: Ausführen allgemeiner Verwaltungsaufgaben in Azure SQL-Datenbank
@@ -22,6 +22,8 @@ In diesem Thema finden Sie Kurzanleitungen zum Gewähren und Aufheben des Zugrif
 - [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank](sql-database-manage-logins.md)
 - [Schützen Ihrer SQL-Datenbank](sql-database-security.md)
 - [Sicherheitscenter für SQL Server-Datenbankmodul und Azure SQL-Datenbank](https://msdn.microsoft.com/library/bb510589)
+
+[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ##So ändern Sie das Administratorkennwort für einen logischen Server
 - Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **SQL-Server**, wählen Sie in der Liste den Server aus, und klicken Sie auf **Kennwort zurücksetzen**.
@@ -37,4 +39,4 @@ In diesem Thema finden Sie Kurzanleitungen zum Gewähren und Aufheben des Zugrif
 ## So erstellen Sie zusätzliche Anmeldungen für Benutzer mit hohen Berechtigungen in der virtuellen „master“-Datenbank
 Verwenden Sie die [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx)-Anweisung, und lesen Sie den Abschnitt „Verwalten von Anmeldungen“ in [Verwalten von Datenbanken und Anmeldungen in Azure SQL-Datenbank](sql-database-manage-logins.md), der weitere Details bietet.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

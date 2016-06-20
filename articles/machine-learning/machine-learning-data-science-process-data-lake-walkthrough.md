@@ -158,7 +158,7 @@ Zum Ausführen von U-SQL öffnen Sie Visual Studio, klicken auf **Datei--> Neu--
 
 ### <a name="ingest"></a>Datenerfassung: Einlesen von Daten aus öffentlichem Blob
 
-Der Speicherort der Daten im Azure-Blob wird als „**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**“ referenziert und kann mithilfe von **Extractors.Csv()** extrahiert werden. Geben Sie in den folgenden Skripts für container_name@blob_storage_account_name in der „wasb“-Adresse Ihre eigenen Container- und Speicherkontonamen ein. Da die Dateinamen dasselbe Format haben, können wir **trip\_data\_{*}.csv** verwenden, um alle 12 Fahrtendateien einzulesen.
+Der Speicherort der Daten im Azure-Blob wird als „****wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**“ referenziert und kann mithilfe von **Extractors.Csv()** extrahiert werden. Geben Sie in den folgenden Skripts für container_name@blob_storage_account_name in der „wasb“-Adresse Ihre eigenen Container- und Speicherkontonamen ein. Da die Dateinamen dasselbe Format haben, können wir **trip\_data\_{*}.csv** verwenden, um alle 12 Fahrtendateien einzulesen.
 
 	///Read in Trip data
 	@trip0 =
@@ -181,7 +181,7 @@ Der Speicherort der Daten im Azure-Blob wird als „**wasb://container_name@blob
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-Da die erste Zeile Überschriften enthält, müssen wir die Überschriften entfernen und Spaltentypen entsprechend anpassen. Wir können die verarbeiteten Daten entweder mithilfe von „**swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_“ in Azure Data Lake-Speicher oder mithilfe von „**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**“ im Azure-Blobspeicherkonto speichern.
+Da die erste Zeile Überschriften enthält, müssen wir die Überschriften entfernen und Spaltentypen entsprechend anpassen. Wir können die verarbeiteten Daten entweder mithilfe von „****swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_“ in Azure Data Lake-Speicher oder mithilfe von „****wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**“ im Azure-Blobspeicherkonto speichern.
 
 	// change data types
 	@trip =
@@ -658,7 +658,7 @@ Klicken Sie dann neben der Schaltfläche **Einstellungen** auf **Dashboard**, wo
  ![21](./media/machine-learning-data-science-process-data-lake-walkthrough/21-Hive-Query-Editor-v2.PNG)
 
 
-Fügen Sie zum Erstellen einer Tabelle die folgenden Hive-Skripts ein. Auf den Speicherort der Datenquelle wird in Azure Data Lake-Speicher wie folgt verwiesen: **adl://data_lake_store_name.azuredatalakestore.net:443/folder_name/file_name**.
+Fügen Sie zum Erstellen einer Tabelle die folgenden Hive-Skripts ein. Auf den Speicherort der Datenquelle wird in Azure Data Lake-Speicher wie folgt verwiesen: ****adl://data_lake_store_name.azuredatalakestore.net:443/folder_name/file_name**.
 
 	CREATE EXTERNAL TABLE nyc_stratified_sample
 	(
@@ -701,7 +701,7 @@ Nachdem die Abfrage ausgeführt wurde, werden die Ergebnisse wie folgt angezeigt
 
 Wir können jetzt mit Azure Machine Learning ein Modell erstellen und bereitstellen, das vorhersagt, ob Trinkgeld gezahlt wird oder nicht. Die geschichteten Beispieldaten können für dieses binäre Klassifizierungsproblem (Trinkgeld oder nicht) verwendet werden. Die Vorhersagemodelle mit mehrklassiger Klassifizierung (tip\_class) und Regression (tip\_amount) können auch mit Azure Machine Learning Studio erstellt und bereitgestellt werden, aber hier zeigen wir nur, wie Sie den Fall mithilfe des Modells für binäre Klassifizierung behandeln.
 
-1. Erfassen Sie die Daten in Azure ML mithilfe des **Reader**-Moduls im Abschnitt **Data Input and Output**. Weitere Informationen finden Sie auf der Referenzseite zum [Reader](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)-Modul.
+1. Erfassen Sie die Daten in Azure ML mithilfe des **Import Data**-Moduls im Abschnitt **Data Input and Output**. Weitere Informationen finden Sie auf der Referenzseite zum [Import Data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)-Modul.
 2. Wählen Sie **Hive-Abfrage** als **Datenquelle** im Bereich **Eigenschaften** aus.
 3. Fügen Sie das folgende Hive-Skript in den Editor **Hive-Datenbankabfrage** ein.
 
@@ -741,4 +741,4 @@ Der Lernpfad für den [Cortana-Analyseprozess-Prozess (CAP)](http://aka.ms/datas
 - [Cortana-Analyseprozess (CAP) in Aktion: Verwenden von SQL Server](machine-learning-data-science-process-sql-walkthrough.md)
 - [Übersicht über Data Science mit Spark in Azure HDInsight](machine-learning-data-science-spark-overview.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -16,7 +16,7 @@
 	ms.date="05/15/2016"
 	ms.author="glenga"/>
 
-# Hinzufügen von Pushbenachrichtigungen zu Ihrer universellen Windows Runtime 8.1-App
+# Hinzufügen von Pushbenachrichtigungen zu Ihrer Windows-App
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
@@ -213,4 +213,4 @@ Als nächstes muss die App beim Start für Pushbenachrichtigungen registriert we
 <!-- Images. -->
 ))) )
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

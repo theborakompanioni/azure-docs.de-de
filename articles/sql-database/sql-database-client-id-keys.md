@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="03/15/2016"
+   ms.date="06/06/2016"
    ms.author="sstein"/>
 
 # Abrufen der Client-ID und des Schlüssels für die Verbindung mit der SQL-Datenbank aus dem Code
@@ -250,4 +250,4 @@ Spezifische Codebeispiele für die Azure AD-Authentifizierung finden Sie im [SQL
 [13]: ./media/sql-database-client-id-keys/key-duration.png
 [14]: ./media/sql-database-client-id-keys/web-secrets.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0608_2016-->

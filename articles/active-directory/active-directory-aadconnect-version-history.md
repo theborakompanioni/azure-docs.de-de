@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="05/11/2016"
+   ms.date="06/02/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: Versionsveröffentlichungsverlauf
@@ -29,6 +29,15 @@ Thema |
 Schritte zum Upgrade von Azure AD Connect | Verschiedene Methoden zum [Aktualisieren von einer früheren Version auf die aktuelle Version](active-directory-aadconnect-upgrade-previous-version.md) von Azure AD Connect.
 Erforderliche Berechtigungen | Die zum Anwenden eines Updates erforderlichen Berechtigungen sind unter [Konten und Berechtigungen](active-directory-aadconnect-accounts-permissions.md#upgrade) aufgeführt.
 Herunterladen| [Azure AD Connect herunterladen](http://go.microsoft.com/fwlink/?LinkId=615771)
+
+## 1\.1.189.0
+Veröffentlicht im Juni 2016
+
+**Behobene Probleme und Verbesserungen:**
+
+- Azure AD Connect kann jetzt auf einem FIPS-kompatiblen Server installiert werden.
+    - Informationen zur Kennwortsynchronisierung finden Sie unter [Kennwortsynchronisierung und FIPS](active-directory-aadconnectsync-implement-password-synchronization.md#password-synchronization-and-fips).
+- Ein Problem, bei dem ein NetBIOS-Name im FQDN im Active Directory Connector nicht aufgelöst werden konnte, wurde behoben.
 
 ## 1\.1.180.0
 Veröffentlicht im Mai 2016
@@ -52,7 +61,7 @@ Veröffentlicht im April 2016
 **Neue Features:**
 
 - Unterstützung für mehrwertige Attribute in [Verzeichniserweiterungen](active-directory-aadconnectsync-feature-directory-extensions.md) wurde hinzugefügt.
-- Unterstützung für weitere Konfigurationsvarianten für das [automatische Upgrade](active-directory-aadconnect-feature-automatic-upgrade.md) wurde hinzugefügt, damit diese für ein Upgrade in Frage kommen.
+- Unterstützung für weitere Konfigurationsvarianten für das [automatische Upgrade](active-directory-aadconnect-feature-automatic-upgrade.md) wurde hinzugefügt, damit diese für ein Upgrade infrage kommen.
 - Einige Cmdlets für den [benutzerdefinierten Scheduler](active-directory-aadconnectsync-feature-scheduler.md#custom-scheduler) wurden hinzugefügt.
 
 ## 1\.1.119.0
@@ -70,7 +79,7 @@ Veröffentlicht im Februar 2016
 **Behobene Probleme:**
 
 - Ein Upgrade von früheren Versionen kann nicht ausgeführt werden, wenn die Installation nicht im Standardordner **C:\\Programme** durchgeführt wird.
-- Wenn Sie bei der Installation am Ende des Installations-Assistenten die Option **Start the synchronization process** (Synchronisierung starten) deaktivieren, wird der Scheduler durch erneutes Ausführen des Installations-Assistenten nicht aktiviert.
+- Wenn Sie bei der Installation am Ende des Installations-Assistenten die Option zum **Starten des Synchronisierungsvorgangs** deaktivieren, wird der Scheduler durch erneutes Ausführen des Installations-Assistenten nicht aktiviert.
 - Auf Servern, auf denen das Datums-/Uhrzeitformat nicht dem US-englischen Format entspricht, wird der Planer nicht wie erwartet ausgeführt. Außerdem wird verhindert, dass `Get-ADSyncScheduler` korrekte Zeitangaben zurückgibt.
 - Wenn Sie eine frühere Version von Azure AD Connect mit AD FS als Anmeldeoption und Upgrade installiert haben, können Sie den Installations-Assistenten nicht erneut ausführen.
 
@@ -79,7 +88,7 @@ Veröffentlicht im Februar 2016
 
 **Neue Features:**
 
-- Feature für das [automatische Upgrade](active-directory-aadconnect-feature-automatic-upgrade.md) für Kunden mit Express-Einstellungen.
+- Feature für das [automatische Upgrade](active-directory-aadconnect-feature-automatic-upgrade.md) für Kunden mit Expresseinstellungen.
 - Unterstützung für den globalen Administrator mit MFA und PIM im Installations-Assistenten.
     - Sie müssen für Ihren Proxy festlegen, dass auch Datenverkehr für https://secure.aadcdn.microsoftonline-p.com zulässig ist, wenn Sie MFA verwenden.
     - Sie müssen https://secure.aadcdn.microsoftonline-p.com zur Liste vertrauenswürdiger Websites hinzufügen, damit MFA ordnungsgemäß funktioniert.
@@ -89,8 +98,8 @@ Veröffentlicht im Februar 2016
 
 **Features, die von der Vorschau auf die allgemeine Verfügbarkeit hochgestuft wurden:**
 
-- [Geräterückschreiben](active-directory-aadconnect-feature-device-writeback.md)
-- [Verzeichniserweiterungen](active-directory-aadconnectsync-feature-directory-extensions.md)
+- [Geräterückschreiben](active-directory-aadconnect-feature-device-writeback.md).
+- [Verzeichniserweiterungen](active-directory-aadconnectsync-feature-directory-extensions.md).
 
 **Neue Vorschaufeatures:**
 
@@ -284,4 +293,4 @@ Veröffentlicht im September 2014
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -106,4 +106,4 @@ Bestimmen Sie anhand der Informationen unter [Aktualisieren von Web-/Business-SQ
 [3]: ./media/sql-database-scale-up/scale-notification.png
 [4]: ./media/sql-database-scale-up/new-tier.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

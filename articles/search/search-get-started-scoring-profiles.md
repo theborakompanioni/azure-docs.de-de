@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="02/04/2016" 
+	ms.date="06/04/2016" 
 	ms.author="heidist"/>
 
 # Verwenden von Bewertungsprofilen in Azure Search
@@ -27,7 +27,7 @@ Die Beispielanwendung veranschaulicht Bewertungsverhalten anhand fiktiver Daten,
 <a id="sub-1"></a>
 ## Voraussetzungen
 
-Die Beispielanwendung wird mit Visual Studio 2013 in C# geschrieben. Wenn Sie nicht über Visual Studio verfügen, können Sie die [kostenlose Visual Studio 2013 Express-Edition](http://www.visualstudio.com/products/visual-studio-express-vs.aspx) ausprobieren.
+Die Beispielanwendung wird mit Visual Studio 2013 in C# geschrieben. Wenn Sie nicht über Visual Studio verfügen, können Sie die [kostenlose Visual Studio 2013 Express-Edition](http://www.visualstudio.com/products/visual-studio-express-vs.aspx) ausprobieren.
 
 Sie benötigen ein Azure-Abonnement und einen Azure Search-Dienst zum Abschließen dieses Lernprogramms. Hilfe beim Einrichten des Diensts finden Sie unter [Erstellen eines Search-Diensts im Portal](search-create-service-portal.md).
 
@@ -47,7 +47,7 @@ Klicken Sie auf der Registerkarte "Source Code" (Quellcode) auf **Download**, um
 
 1. Nachdem Sie die Dateien extrahiert haben, öffnen Sie die Projektmappe in Visual Studio, um die Konfigurationsdatei zu bearbeiten.
 1. Doppelklicken Sie im Projektmappen-Explorer auf **app.config**. Diese Datei gibt den Dienstendpunkt und einen `api-key` an, die zur Authentifizierung der Anforderung verwendet werden. Diese Werte erhalten Sie im klassischen Portal.
-1. Melden Sie sich beim [klassischen Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Rufen Sie das Dienst-Dashboard für Azure Search auf.
 1. Klicken Sie auf die Kachel **Eigenschaften**, um die Dienst-URL zu kopieren.
 1. Klicken Sie auf die Kachel **Schlüssel**, um den `api-key` zu kopieren.
@@ -126,4 +126,4 @@ Sie möchten einen Schritt zurückgehen und mehr über die Erstellung eines Inde
 [10]: ./media/search-get-started-scoring-profiles/AzureSearch_XLSX1.PNG
 [9]: ./media/search-get-started-scoring-profiles/AzureSearch_XLSX2.PNG
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0608_2016-->

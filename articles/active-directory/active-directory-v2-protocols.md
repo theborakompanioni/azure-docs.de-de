@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/20/2016"
+	ms.date="05/31/2016"
 	ms.author="dastrock"/>
 
 # v2.0-Protokolle – OAuth 2.0 und OpenID Connect
@@ -80,4 +80,4 @@ Wenn Sie einige Beispielanforderungen sehen möchten, beginnen Sie mit einem der
 
 <!-- - Get tokens using a username & password with the OAuth 2.0 Resource Owner Password Credentials Flow (coming soon) --> 
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0608_2016-->

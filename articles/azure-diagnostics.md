@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/20/2016"
+	ms.date="06/02/2016"
 	ms.author="robb"/>
 
 
@@ -56,6 +56,7 @@ Beachten Sie, dass die Azure-Diagnose nicht von Web-Apps verwendet wird. Entspre
 - [Einrichten der Azure-Diagnose in einer Cloud Services-Anwendung](./cloud-services/cloud-services-dotnet-diagnostics.md)
 
 Fortgeschrittenere Themen finden Sie in folgenden Artikeln:
+
 - [Verwenden der Azure-Diagnose mit Application Insights für Cloud Services](./application-insights/app-insights-cloudservices.md)
 - [Verfolgen des Ablaufs einer Cloud Services-Anwendung mit der Azure-Diagnose](./cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
 - [Verwenden von PowerShell zum Einrichten der Diagnose für Cloud Services](./virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md)
@@ -66,6 +67,7 @@ Fortgeschrittenere Themen finden Sie in folgenden Artikeln:
 - [Einrichten der Azure-Diagnose auf einem virtuellen Azure-Computer](./virtual-machines-dotnet-diagnostics.md)
 
 Fortgeschrittenere Themen finden Sie in folgenden Artikeln:
+
 - [Verwenden von PowerShell zum Einrichten der Diagnose für Azure Virtual Machines](./virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md)
 - [Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure-Ressourcen-Manager-Vorlagen](./virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)
 
@@ -79,4 +81,4 @@ Erste Schritte finden Sie unter [Überwachen einer Service Fabric-Anwendung](./s
 - Erlernen Sie das [Weiterleiten von Azure-Diagnoseinformationen an Application Insights](./azure-diagnostics-configure-applicationinsights.md)
 - Wenn bei der Diagnose Probleme mit dem Starten oder dem Finden von Daten in Azure Storage-Tabellen auftreten, finden Sie weitere Informationen unter [Problembehandlung bei Azure-Diagnose](./azure-diagnostics-troubleshooting.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0608_2016-->

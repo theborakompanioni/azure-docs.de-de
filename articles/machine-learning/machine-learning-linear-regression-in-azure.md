@@ -51,7 +51,7 @@ Wir berechneten den *Mean Absolute % Error* und verwendeten diesen Wert als Leis
 Das Erstellen unseres Experiments in Azure ML verlief in folgenden Schritten:
 
 1.	Hochladen des DataSets als CSV-Datei in Azure ML (sehr kleine Datei)
-2.	Erstellen eines neuen Experiments und Verwenden des [Project Columns][project-columns]-Moduls, um dieselben Datenfunktionen wie in Excel auszuwählen.   
+2.	Erstellen eines neuen Experiments und Verwenden des [Select Columns in Dataset][select-columns]-Moduls, um die gleichen Datenfeatures wie in Excel auszuwählen.   
 3.	Verwenden des [Split Data][split]-Moduls (im Modus *Relative Expression*), um die Daten in ebenso große Trainingssätze wie in Excel aufzugliedern  
 4.	Experimentieren mit dem [Linear Regression][linear-regression]-Modul (nur Standardoptionen), Dokumentieren und Vergleichen mit den Ergebnissen unseres Excel-Regressionsmodells
 
@@ -155,8 +155,8 @@ Im Folgenden finden Sie einige Ressourcen für Ihre Arbeit mit Regression:
 [boosted-decision-tree-regression]: https://msdn.microsoft.com/library/azure/0207d252-6c41-4c77-84c3-73bdf1ac5960/
 [filter-based-feature-selection]: https://msdn.microsoft.com/library/azure/918b356b-045c-412b-aa12-94a1d2dad90f/
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
-[project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
+[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/17/2016"
+	ms.date="06/08/2016"
 	ms.author="jodebrui"/>
 
 
@@ -233,7 +233,7 @@ end
 ```
 
 
-Um die „\_ondisk“-Version des vorherigen T-SQL-Skripts für „ostress.exe“ zu erstellen, müssen Sie beide Vorkommen der Teilzeichenfolge „ *\_inmem* “ durch „ *\_ondisk* “ ersetzen. Diese Austauschvorgänge wirken sich auf die Namen von Tabellen und gespeicherten Prozeduren aus.
+Um die „\_ondisk“-Version des vorherigen T-SQL-Skripts für „ostress.exe“ zu erstellen, müssen Sie beide Vorkommen der Teilzeichenfolge „*\_inmem*“ durch „*\_ondisk*“ ersetzen. Diese Austauschvorgänge wirken sich auf die Namen von Tabellen und gespeicherten Prozeduren aus.
 
 
 ### Installieren von RML-Hilfsprogrammen und ostress
@@ -310,7 +310,7 @@ Sobald Sie über das Ergebnis der Ausführung von „\_inmem“ verfügen, führ
 EXECUTE Demo.usp_DemoReset;
 ```
 
-2. Bearbeiten Sie die „ostress.exe“-Befehlszeile so, dass alle Vorkommen von „ *\_inmem* “ durch „ *\_ondisk* “ ersetzt werden.
+2. Bearbeiten Sie die „ostress.exe“-Befehlszeile so, dass alle Vorkommen von „*\_inmem*“ durch „*\_ondisk*“ ersetzt werden.
 
 3. Führen Sie „ostress.exe“ ein zweites Mal aus, und erfassen Sie die Dauer.
 
@@ -537,4 +537,4 @@ Wenn eine Datenbank eine der folgenden Arten von In-Memory OLTP-Objekten oder -T
 
 - [Überwachen von In-Memory-Speicher](sql-database-in-memory-oltp-monitoring.md) für In-Memory OLTP
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -20,8 +20,7 @@
 
 In diesem Dokument wird erläutert, wie Sie Features für in einem Azure-BLOB-Container gespeicherte Daten mithilfe des [Pandas](http://pandas.pydata.org/)-Python-Pakets erstellen. Nach der Beschreibung des Ladens der Daten in einen Panda-Datenrahmen wird erläutert, wie mithilfe von Python-Skripts mit Indikatorwerten und Klassifizierungsfeatures kategorische Features generiert werden.
 
-[AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
-Dieses **Menü** stellt eine Verknüpfung mit Themen dar, in denen beschrieben wird, wie Features für Daten in verschiedenen Umgebungen erstellt werden. Diese Aufgabe ist ein Teil des [Cortana Analytics-Prozesses (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+[AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]Dieses **Menü** stellt eine Verknüpfung mit Themen dar, in denen beschrieben wird, wie Features für Daten in verschiedenen Umgebungen erstellt werden. Diese Aufgabe ist ein Teil des [Cortana Analytics-Prozesses (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 
 ## Voraussetzungen
@@ -130,11 +129,11 @@ Nachdem Sie die Daten untersucht und die erforderlichen Funktionen erstellt habe
 	    except:	        
 		    print ("Something went wrong with uploading blob:"+BLOBNAME)
 
-3. Die Daten können nun wie im folgenden Screenshot gezeigt mit dem [Reader](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)-Modul von Azure Machine Learning aus dem Blob gelesen werden:
+3. Die Daten können nun wie im folgenden Screenshot gezeigt mit dem [Import Data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)-Modul von Azure Machine Learning aus dem Blob gelesen werden:
  
 ![Reader-Blob](./media/machine-learning-data-science-process-data-blob/reader_blob.png)
 
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

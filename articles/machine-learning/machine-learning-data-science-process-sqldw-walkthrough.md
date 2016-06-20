@@ -544,7 +544,7 @@ Es folgt ein Beispiel zum Aufrufen dieser Funktion, um Features in Ihrer SQL-Abf
 
 ### Vorbereiten von Daten für die Modellerstellung
 
-Die folgende Abfrage führt die Tabellen **nyctaxi\_trip** und **nyctaxi\_fare** zusammen, generiert den Bezeichner **tipped** für die binäre Klassifizierung und den Bezeichner **tip\_class** für die Multiklassenklassifizierung und extrahiert eine Stichprobe aus dem vollständig verbundenen Dataset. Die Stichprobennahme erfolgt durch das Abrufen einer Teilmenge der Fahrten basierend auf der Startzeit. Diese Abfrage kann kopiert und dann direkt in das [Reader][reader]-Modul in [Azure Machine Learning Studio](https://studio.azureml.net) eingefügt werden, um eine direkte Datenerfassung aus der SQL-Datenbankinstanz in Azure zu erzielen. Die Abfrage schließt DataSets mit falschen Koordinaten (0, 0) aus.
+Die folgende Abfrage führt die Tabellen **nyctaxi\_trip** und **nyctaxi\_fare** zusammen, generiert den Bezeichner **tipped** für die binäre Klassifizierung und den Bezeichner **tip\_class** für die Multiklassenklassifizierung und extrahiert eine Stichprobe aus dem vollständig verbundenen Dataset. Die Stichprobennahme erfolgt durch das Abrufen einer Teilmenge der Fahrten basierend auf der Startzeit. Diese Abfrage kann kopiert und dann direkt in das [Import Data][import-data]-Modul in [Azure Machine Learning Studio](https://studio.azureml.net) eingefügt werden, um eine direkte Datenerfassung aus der SQL-Datenbankinstanz in Azure zu erzielen. Die Abfrage schließt DataSets mit falschen Koordinaten (0, 0) aus.
 
 	SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount, 	f.total_amount, f.tip_amount,
 	    CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -563,8 +563,8 @@ Die folgende Abfrage führt die Tabellen **nyctaxi\_trip** und **nyctaxi\_fare**
 
 Wenn Sie bereit sind, mit Azure Machine Learning fortzufahren, können Sie:
 
-1. die letzte SQL-Abfrage zum Extrahieren und Erstellen von Stichprobendaten speichern und per Kopieren und Einfügen direkt in ein [Reader][reader]-Modul in Azure Machine Learning einfügen;
-2. Speichern Sie die extrahierten und verarbeiteten Daten, die Sie für Ihr Modell verwenden möchten, in einer neuen SQL Data Warehouse-Tabelle, und verwenden Sie dann die neue Tabelle im [Reader][reader]-Modul in Azure Machine Learning. Das PowerShell-Skript hat dies in einem früheren Schritt für Sie erledigt. Sie können Daten direkt aus dieser Tabelle in das Reader-Modul einlesen.
+1. die letzte SQL-Abfrage zum Extrahieren und Erstellen von Stichprobendaten speichern und per Kopieren und Einfügen direkt in ein [Import Data][import-data]-Modul in Azure Machine Learning einfügen, oder
+2. Speichern Sie die extrahierten und verarbeiteten Daten, die Sie für Ihr Modell verwenden möchten, in einer neuen SQL Data Warehouse-Tabelle, und verwenden Sie dann die neue Tabelle im [Import Data][import-data]-Modul in Azure Machine Learning. Das PowerShell-Skript hat dies in einem früheren Schritt für Sie erledigt. Sie können Daten direkt aus dieser Tabelle in das „Import Data“-Modul einlesen.
 
 
 ## <a name="ipnb"></a>Durchsuchen von Daten und Entwickeln von Features in IPython Notebook
@@ -869,9 +869,9 @@ Ein typisches Trainingsexperiment umfasst die folgenden Schritte:
 
 Sie haben in dieser Übung bereits die Daten in SQL Data Warehouse untersucht und bearbeitet und sich für eine Stichprobengröße für die Erfassung in Azure ML entschieden. Im Folgenden ist das Verfahren zum Erstellen eines oder mehrerer der Vorhersagemodelle aufgeführt:
 
-1. Erfassen Sie die Daten in Azure ML mithilfe des [Reader][reader]-Moduls im Abschnitt **Data Input and Output**. Weitere Informationen finden Sie auf der Referenzseite zum [Reader][reader]-Modul.
+1. Erfassen Sie die Daten in Azure ML mithilfe des [Import Data][import-data]-Moduls im Abschnitt **Data Input and Output**. Weitere Informationen finden Sie auf der Referenzseite zum [Import Data][import-data]-Modul.
 
-	![Azure ML-Reader][17]
+	![Azure ML – Import Data][17]
 
 2. Wählen Sie **Azure SQL-Datenbank** als **Datenquelle** im **Eigenschaften**bereich aus.
 
@@ -891,7 +891,7 @@ Ein Beispiel für ein binäres Klassifizierungsexperiment zum Lesen von Daten di
 
 > [AZURE.IMPORTANT] In den Modellierungsbeispielen für Datenextraktion und Stichprobengenerierung in den vorherigen Abschnitten sind **alle Bezeichner für die drei Modellierungsübungen in der Abfrage enthalten**. Ein wichtiger (erforderlicher) Schritt in den einzelnen Modellierungsübungen ist das **Ausschließen** unnötiger Bezeichner für die anderen beiden Probleme und alle anderen **Zielverluste**. Wenn Sie z. B. eine binäre Klassifizierung anwenden, verwenden Sie den Bezeichner **tipped** und schließen die Felder **tip\_class**, **tip\_amount** und **total\_amount** aus. Letztere sind Zielverluste, da sie das bezahlte Trinkgeld beinhalten.
 >
-> Um nicht benötigte Spalten oder Zielverluste auszuschließen, können Sie das Modul [Project Columns][project-columns] oder den [Metadata Editor][metadata-editor] verwenden. Weitere Informationen finden Sie auf den Referenzseiten [Project Columns][project-columns] und [Metadaten-Editor][metadata-editor].
+> Um nicht benötigte Spalten oder Zielverluste auszuschließen, können Sie das Modul [Select Columns in Dataset][select-columns] oder [Edit Metadata][edit-metadata] verwenden. Weitere Informationen finden Sie auf den Referenzseiten zu [Select Columns in Dataset][select-columns] und [Edit Metadata][edit-metadata].
 
 ## <a name="mldeploy"></a>Bereitstellen von Modellen in Azure Machine Learning
 
@@ -912,7 +912,7 @@ Azure Machine Learning versucht, ein Bewertungsexperiment basierend auf den Komp
 2. Ermitteln eines logischen **Eingabeports** für das erwartete Eingabedatenschema
 3. Ermitteln eines logischen **Ausgabeport**s für das erwartete Ausgabeschema für den Webdienst
 
-Wenn das Bewertungsexperiment erstellt wurde, überprüfen Sie es und passen es bei Bedarf an. Eine typische Anpassung besteht darin, das Eingabe-DataSet und/oder die Abfrage durch ausgeschlossene Bezeichnerfelder zu ersetzen, da diese nicht verfügbar sein werden, wenn der Dienst aufgerufen wird. Es empfiehlt sich möglicherweise auch, die Größe des Eingabe-DataSets und/oder der Abfrage auf so wenige DataSets zu reduzieren, dass gerade das Eingabeschema ermittelt werden kann. Für den Ausgabeport ist es üblich, alle Eingabefelder auszuschließen und nur die **bewerteten Bezeichner** und die **bewerteten Wahrscheinlichkeiten** mit dem Modul [Project Column][project-columns]s in die Ausgabe einzuschließen.
+Wenn das Bewertungsexperiment erstellt wurde, überprüfen Sie es und passen es bei Bedarf an. Eine typische Anpassung besteht darin, das Eingabe-DataSet und/oder die Abfrage durch ausgeschlossene Bezeichnerfelder zu ersetzen, da diese nicht verfügbar sein werden, wenn der Dienst aufgerufen wird. Es empfiehlt sich möglicherweise auch, die Größe des Eingabe-DataSets und/oder der Abfrage auf so wenige DataSets zu reduzieren, dass gerade das Eingabeschema ermittelt werden kann. Für den Ausgabeport ist es üblich, alle Eingabefelder auszuschließen und nur die **Scored Labels** und die **Scored Probabilities** mit dem Modul [Select Columns in Dataset][select-columns] in die Ausgabe einzuschließen.
 
 In der folgenden Abbildung finden Sie ein Beispiel für ein Bewertungsexperiment. Wenn Sie die Bereitstellung fertig vorbereitet haben, klicken Sie auf der unteren Aktionsleiste auf die Schaltfläche **PUBLISH WEB SERVICE**.
 
@@ -960,8 +960,8 @@ Diese exemplarische Vorgehensweise und die zugehörigen Skripts und IPython Note
 
 
 <!-- Module References -->
-[metadata-editor]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
-[project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
+[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
+[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -280,7 +280,7 @@ Nachdem Sie nun Ihre grundlegende Infrastruktur eingerichtet haben, können Sie 
 Site Recovery verfügt über einen Capacity Planner, der Sie dabei unterstützt, die richtigen Ressourcen für Ihre Quellumgebung, die Site Recovery-Komponenten, das Netzwerk und den Speicher zuzuordnen. Sie können den Planer im Schnellmodus für Schätzungen ausführen, die auf einer durchschnittlichen Anzahl von VMs, Datenträgern und Speicher basieren, oder im ausführlichen Modus, in dem Sie Zahlen auf Workloadebene eingeben. Führen Sie Folgendes aus, bevor Sie beginnen:
 
 - Sammeln Sie Informationen zu Ihrer Replikationsumgebung, z.B. VMs, Datenträger pro VM und Speicher pro Datenträger.
-- Schätzen Sie die tägliche Änderungsrate für replizierte Daten. Als Hilfe können Sie das [Kapazitätstool für Hyper-V-Replikate](https://www.microsoft.com/download/details.aspx?id=39057) verwenden.
+- Schätzen Sie die tägliche Änderungsrate für replizierte Daten. Als Hilfe können Sie den [Capacity Planner für Hyper-V-Replikat](https://www.microsoft.com/download/details.aspx?id=39057) verwenden.
 
 1.	Klicken Sie auf **Herunterladen**, um das Tool herunterzuladen, und führen Sie es aus. [Lesen Sie sich den Artikel durch](site-recovery-capacity-planner.md), der zum Tool gehört.
 2.	Wählen Sie anschließend unter **Have you run the Capacity Planner?** (Haben Sie den Capacity Planner ausgeführt?) die Option **Ja** aus.
@@ -468,4 +468,4 @@ Hier wird beschrieben, wie Sie die Konfigurationseinstellungen, den Status und d
 
 Nachdem die Bereitstellung eingerichtet wurde und ausgeführt wird, können Sie sich über unterschiedliche Arten von Failovern [informieren](site-recovery-failover.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

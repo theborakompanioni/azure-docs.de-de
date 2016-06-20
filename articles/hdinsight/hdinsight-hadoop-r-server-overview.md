@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/29/2016"
+   ms.date="06/01/2016"
    ms.author="jeffstok"/>
 
 
@@ -31,17 +31,19 @@ Um R Server bei einem HDInsight-Cluster verwenden zu können, müssen Sie bei ak
 
 ## Datenspeicheroptionen
 
-Als Standardspeicher für HDInsight-Cluster dient Azure Blob (WASB) mit dem HDFS-Dateisystem, das einem Blobcontainer zugeordnet ist. So wird sichergestellt, dass alle Daten, die in den Clusterspeicher hochgeladen oder in diesen während einer Analyse geschrieben werden, dauerhaft sind. Mithilfe des Dienstprogramms [AzCopy](../storage/storage-use-azcopy/) lassen sich Daten auf einfache Art und Weise in und aus Blobs kopieren.
+Als Standardspeicher für HDInsight-Cluster dient Azure Blob (WASB) mit dem HDFS-Dateisystem, das einem Blobcontainer zugeordnet ist. So wird sichergestellt, dass alle Daten, die in den Clusterspeicher hochgeladen oder in diesen während einer Analyse geschrieben werden, dauerhaft sind. Mithilfe des Dienstprogramms [AzCopy](../storage/storage-use-azcopy.md) lassen sich Daten auf einfache Art und Weise in und aus Blobs kopieren.
 
-Sie können auch [Azure Files](../storage/storage-how-to-use-files-linux.md) als Speicheroption für den Edgeknoten wählen. Mit Azure Files können Sie dem Linux-Dateisystem Dateifreigaben bereitstellen, die mit einem Azure Storage-Konto erstellt wurden. Weitere Informationen zu den Datenspeicheroptionen für R Server bei HDInsight-Clustern finden Sie unter [Azure Storage options for R Server on HDInsight premium](hdinsight-hadoop-r-server-storage.md) (Azure Storage-Optionen für R Server in HDInsight Premium).
+Zusätzlich zum Blob können Sie festlegen, dass Ihr Cluster [Azure Data Lake-Speicher](https://azure.microsoft.com/services/data-lake-store/) (Azure Data Lake Storage, ADLS) nutzt. Wenn Sie die Verwendung von ADLS hinzufügen, können Sie die Verwendung von Blob und ADLS für den HDFS-Speicher kombinieren.
+
+Sie können auch [Azure Files](../storage/storage-how-to-use-files-linux.md) als Speicheroption für den Edgeknoten wählen. Mit Azure Files können Sie dem Linux-Dateisystem Dateifreigaben bereitstellen, die mit einem Azure Storage-Konto erstellt wurden. Weitere Informationen zu den Datenspeicheroptionen für R Server bei HDInsight-Clustern finden Sie unter [Azure Storage-Optionen für R Server in HDInsight (Vorschau)](hdinsight-hadoop-r-server-storage.md).
   
 ## Zugreifen auf R Server im Cluster
 
-Sobald Sie einen Cluster mit R Server erstellt haben, können Sie eine Verbindung zur R-Konsole auf dem Edgeknoten des Clusters herstellen. Dies kann mithilfe von SSH/Putty erfolgen oder alternativ über einen Browser, wenn Sie die integrierte Entwicklungsumgebung (IDE) für RStudio Server auf dem Edgeknoten installieren (optional). Weitere Informationen zur Installation von RStudio Server finden Sie unter [Installing RStudio on HDInsight cluster with R Server](hdinsight-hadoop-r-server-install-r-studio.md) (Installieren von RStudio auf HDInsight-Clustern mit R Server).
+Sobald Sie einen Cluster mit R Server erstellt haben, können Sie eine Verbindung zur R-Konsole auf dem Edgeknoten des Clusters herstellen. Dies kann mithilfe von SSH/Putty erfolgen oder alternativ über einen Browser, wenn Sie die integrierte Entwicklungsumgebung (IDE) für RStudio Server auf dem Edgeknoten installieren (optional). Weitere Informationen zur Installation von RStudio Server finden Sie unter [Installieren von RStudio mit R Server in HDInsight (Vorschau)](hdinsight-hadoop-r-server-install-r-studio.md).
 
 ## Entwickeln und Ausführen von R-Skripts
 
-Von Ihnen geschriebene und ausgeführte R-Skripts können zusätzlich zu den parallelisierten und verteilten Routinen in der ScaleR-Bibliothek mehr als 8000 Open Source-Pakete verwenden. Für die Ausführung von Skripts in R Server auf dem Edgeknoten wird der R-Interpreter verwendet. Dies gilt nicht für diejenigen Schritte, die eine ScaleR-Funktion mit dem Berechnungskontext Hadoop MapReduce (RXHadoopMR) oder Spark (RxSpark) aufrufen. In diesen Fällen wird die Funktion über diejenige Daten(aufgabe)knoten des Clusters ausgeführt, die den Daten zugeordnet sind, auf die verwiesen wird. Weitere Informationen zu den verschiedenen Optionen für Berechnungskontexte finden Sie unter [Optionen für Berechnungskontexte in R Server für HDInsight Premium](hdinsight-hadoop-r-server-compute-contexts.md).
+Von Ihnen geschriebene und ausgeführte R-Skripts können zusätzlich zu den parallelisierten und verteilten Routinen in der ScaleR-Bibliothek mehr als 8000 Open Source-Pakete verwenden. Für die Ausführung von Skripts in R Server auf dem Edgeknoten wird der R-Interpreter verwendet. Dies gilt nicht für diejenigen Schritte, die eine ScaleR-Funktion mit dem Berechnungskontext Hadoop MapReduce (RXHadoopMR) oder Spark (RxSpark) aufrufen. In diesen Fällen wird die Funktion über diejenige Daten(aufgabe)knoten des Clusters ausgeführt, die den Daten zugeordnet sind, auf die verwiesen wird. Weitere Informationen zu den verschiedenen Optionen für Berechnungskontexte finden Sie unter [Rechenkontextoptionen für R Server in HDInsight (Vorschau)](hdinsight-hadoop-r-server-compute-contexts.md).
 
 ## Operationalisieren eines Modells
 
@@ -65,11 +67,11 @@ Um nach der Erstellung Ihres Modells ein lokales Scoring durchzuführen, könnte
 
 Die meisten der R-Pakete, die Sie verwenden, werden auf dem Edgeknoten benötigt, da die Mehrheit Ihrer R-Skripts dort ausgeführt wird. Um auf dem Edgeknoten zusätzliche R-Pakete zu installieren, verwenden Sie in R die Methode `install.packages()`.
   
-Wenn Sie nur Routinen aus der ScaleR-Bibliothek auf den Cluster anwenden, müssen Sie in den meisten Fällen keine zusätzlichen R-Pakete auf den Datenknoten installieren. Jedoch benötigen Sie möglicherweise zusätzliche Pakete, um die Verwendung der **rxExec**- oder **RxDataStep**-Ausführung auf den Datenknoten zu unterstützen. In solchen Fällen müssen diese zusätzlichen Pakete nach dem Erstellen des Clusters mithilfe einer Skriptaktion angegeben werden. Weitere Informationen finden Sie unter [Get started using R Server on HDInsight](hdinsight-hadoop-r-server-get-started.md) (Erste Schritte zum Verwenden von R Server in HDInsight).
+Wenn Sie nur Routinen aus der ScaleR-Bibliothek auf den Cluster anwenden, müssen Sie in den meisten Fällen keine zusätzlichen R-Pakete auf den Datenknoten installieren. Jedoch benötigen Sie möglicherweise zusätzliche Pakete, um die Verwendung der **rxExec**- oder **RxDataStep**-Ausführung auf den Datenknoten zu unterstützen. In solchen Fällen müssen diese zusätzlichen Pakete nach dem Erstellen des Clusters mithilfe einer Skriptaktion angegeben werden. Weitere Informationen finden Sie unter [Erste Schritte mit R Server in HDInsight (Vorschau)](hdinsight-hadoop-r-server-get-started.md).
   
 ### Ändern der Hadoop-MapReduce-Speichereinstellungen 
 
-Ein Cluster kann dahingehend geändert werden, dass er die Speichergröße, die R Server zur Verfügung steht, ändern kann, wenn ein MapReduce-Auftrag ausgeführt wird. Um dies durchzuführen, verwenden Sie die Ambari-Benutzeroberfläche, die Ihnen über das Azure-Portal-Blatt für Ihren Cluster zur Verfügung steht. Informationen zum Zugriff auf die Ambari-Benutzeroberfläche für Ihren Cluster finden Sie unter [Verwalten von HDInsight-Clustern mit der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md).
+Ein Cluster kann dahingehend geändert werden, dass er die Speichergröße, die R Server zur Verfügung steht, ändern kann, wenn ein MapReduce-Auftrag ausgeführt wird. Um dies durchzuführen, verwenden Sie die Ambari-Benutzeroberfläche, die Ihnen über das Azure-Portal-Blatt für Ihren Cluster zur Verfügung steht. Informationen zum Zugriff auf die Ambari-Benutzeroberfläche für Ihren Cluster finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md).
 
 Sie können den für R Server zur Verfügung stehenden Speicher auch beim Aufrufen von **RxHadoopMR** ändern, indem Sie das Argument „Hadoop switches“ wie nachstehend gezeigt verwenden.
  
@@ -87,9 +89,9 @@ Die Wartung wird auf den zugrundeliegenden Linux-VMs in einem HDInsight-Cluster 
 
 Der Linux-Edgeknoten auf einem HDInsight-Premium-Cluster stellt die Landezone für R-basierte Analysen dar. Nach dem Verbinden mit dem Cluster können Sie die Konsolenschnittstelle R Server starten, indem Sie „R“ in die Linux-Eingabeaufforderung eingeben. Die Verwendung der Konsolenschnittstelle wird verbessert, wenn Sie einen Texteditor für die R-Skriptentwicklung in einem anderen Fenster ausführen und Abschnitte Ihres Skripts nach Bedarf ausschneiden und in die R-Konsole einfügen.
   
-Mit einer R-basierten IDE statt einem simplen Texteditor heben Sie die Entwicklung Ihrer R-Skripts auf eine neue Ebene. Beispiele hierfür sind die von Microsoft kürzlich angekündigten [R Tools for Visual Studio](https://www.visualstudio.com/de-DE/features/rtvs-vs.aspx) (RTVS), eine Reihe von Desktop- und Servertools von [RStudio](https://www.rstudio.com/products/rstudio-server/) oder die auf Eclipse basierende Entwicklungsumgebung [StatET](http://www.walware.de/goto/statet) von WalWare.
+Mit einer R-basierten IDE statt einem simplen Texteditor heben Sie die Entwicklung Ihrer R-Skripts auf eine neue Ebene. Beispiele hierfür sind die von Microsoft kürzlich angekündigten [R Tools for Visual Studio](https://www.visualstudio.com/de-DE/features/rtvs-vs.aspx) (RTVS), eine Reihe von Desktop- und Servertools von [RStudio](https://www.rstudio.com/products/rstudio-server/), oder die auf Eclipse basierende Entwicklungsumgebung [StatET](http://www.walware.de/goto/statet) von WalWare.
   
-Eine weitere Möglichkeit ist das Installieren einer IDE auf dem Linux-Edgeknoten selbst. Eine beliebte Wahl in solchen Fällen ist [RStudio Server](https://www.rstudio.com/products/rstudio-server/), der eine browserbasierte IDE zur Verwendung durch Remoteclients bereitstellt. Das Installieren von RStudio Server auf dem Edgeknoten eines HDInsight-Premium-Clusters bietet eine umfassende IDE-Umgebung für die Entwicklung und Ausführung von R-Skripts mit R Server im Cluster und kann die Produktivität im Vergleich zur Standardverwendung der R-Konsole deutlich steigern. Weitere Informationen zur Verwendung von RStudio Server finden Sie unter [Installing RStudio on HDInsight cluster with R Server](hdinsight-hadoop-r-server-install-r-studio.md) (Installieren von RStudio auf HDInsight-Clustern mit R Server).
+Eine weitere Möglichkeit ist das Installieren einer IDE auf dem Linux-Edgeknoten selbst. Eine beliebte Wahl in solchen Fällen ist [RStudio Server](https://www.rstudio.com/products/rstudio-server/), der eine browserbasierte IDE zur Verwendung durch Remoteclients bereitstellt. Das Installieren von RStudio Server auf dem Edgeknoten eines HDInsight-Premium-Clusters bietet eine umfassende IDE-Umgebung für die Entwicklung und Ausführung von R-Skripts mit R Server im Cluster und kann die Produktivität im Vergleich zur Standardverwendung der R-Konsole deutlich steigern. Weitere Informationen zur Verwendung von RStudio Server finden Sie unter [Installieren von RStudio mit R Server in HDInsight (Vorschau)](hdinsight-hadoop-r-server-install-r-studio.md).
 
 ## Preise
  
@@ -99,14 +101,14 @@ Die Gebühren für einen HDInsight Premium-Cluster mit R Server sind ähnlich st
 
 Folgen Sie den nachstehenden Links, um mehr über die Verwendung von R Server mit HDInsight-Clustern zu erfahren.
 
-- [Get started using R Server on HDInsight](hdinsight-hadoop-r-server-get-started.md) (Erste Schritte beim Verwenden von R Server in HDInsight)
+- [Get started using R Server on HDInsight (Erste Schritte beim Verwenden von R Server in HDInsight)](hdinsight-hadoop-r-server-get-started.md)
 
-- [Installing RStudio on HDInsight cluster with R Server](hdinsight-hadoop-r-server-install-r-studio.md) (Installieren von RStudio auf einem HDInsight-Cluster mit R Server)
+- [Installing RStudio on HDInsight cluster with R Server (Installieren von RStudio auf einem HDInsight-Cluster mit R Server)](hdinsight-hadoop-r-server-install-r-studio.md)
 
-- [Compute context options for R Server on HDInsight Premium](hdinsight-hadoop-r-server-compute-contexts.md) (Optionen für Berechnungskontexte für R Server in HDInsight Premium)
+- [Compute context options for R Server on HDInsight Premium (Optionen für Berechnungskontexte für R Server in HDInsight Premium)](hdinsight-hadoop-r-server-compute-contexts.md)
 
-- [Azure Storage options for R Server on HDInsight Premium](hdinsight-hadoop-r-server-storage.md) (Azure Storage-Optionen für R Server in HDInsight Premium)
+- [Azure Storage options for R Server on HDInsight Premium (Azure Storage-Optionen für R Server in HDInsight Premium)](hdinsight-hadoop-r-server-storage.md)
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0608_2016-->

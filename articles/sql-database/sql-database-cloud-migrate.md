@@ -13,8 +13,8 @@
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="data-management"
-   ms.date="05/31/2016"
+   ms.workload="sqldb-migrate"
+   ms.date="06/07/2016"
    ms.author="carlrab"/>
 
 # Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank in der Cloud
@@ -108,4 +108,4 @@ Mit der [SQL Server-Transaktionsreplikation](sql-database-cloud-migrate-compati
 - [SQL-Datenbank V12](sql-database-v12-whats-new.md) [Teilweise oder vollständig unterstützte Transact-SQL-Funktionen](sql-database-transact-sql-information.md)
 - [Migrate non-SQL Server databases using SQL Server Migration Assistant](http://blogs.msdn.com/b/ssma/) (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

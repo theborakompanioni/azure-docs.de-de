@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/26/2016"
+	ms.date="06/06/2016"
 	ms.author="jeedes"/>
 
 
@@ -62,7 +62,7 @@ Zum Konfigurieren der Integration von Showpad in Azure AD müssen Sie Showpad au
 
 1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
 
-	![Active Directory][1]
+	![Anwendungen][1]
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
@@ -80,21 +80,22 @@ Zum Konfigurieren der Integration von Showpad in Azure AD müssen Sie Showpad au
 
 6. Geben Sie im Suchfeld **Showpad** ein.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_01.png)
+	![Anwendungen](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_01.png)
 
 7. Wählen Sie im Ergebnisbereich **Showpad** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
 
+	![Anwendungen](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_02.png)
 
 ##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden von Azure AD in Showpad konfiguriert und getestet werden kann.
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Showpad als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Showpad muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** in Azure AD dem **Benutzernamen** in Showpad zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** in Azure AD als Wert des **Benutzernamens** in Showpad zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Showpad müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines Showpad-Testbenutzers](#creating-a-showpad-test-user)**, um eine Entsprechung von Britta Simon in Showpad zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
@@ -123,7 +124,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
 
     a. Geben Sie im Textfeld **Anmelde-URL** die URL, die von Ihren Benutzern zur Anmeldung bei der Showpad-Anwendung verwendet wird, nach folgendem Muster ein: `https://<company name>.showpad.biz/login`
 
-	b. Geben Sie die URL im Textfeld **Bezeichner** unter Verwendung des folgenden Musters ein: `https://<company name>.showpad.biz`
+	b. Geben Sie im Textfeld **Bezeichner** die URL nach folgendem Muster ein: `https://<company name>.showpad.biz`
 
 	c. Klicken Sie auf **Weiter**.
 
@@ -139,25 +140,25 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
 
 5. Melden Sie sich bei Ihrem Showpad-Mandanten als Administrator an.
 
-6. Klicken Sie im oberen Menü auf **Einstellungen**.
+6. Klicken Sie im oberen Menü auf **Settings**.
 
 	![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_001.png)
 
-7. Navigieren Sie zu **Einmaliges Anmelden**, und klicken Sie auf **Aktivieren**.
+7. Navigieren Sie zu **Single Sign-On**, und klicken Sie auf **Enable**.
  
 	![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_002.png)
 
-8. Führen Sie im Dialogfeld **Add a SAML 2.0 Service** (SAML 2.0-Dienst hinzufügen) die folgenden Schritte aus:
+8. Führen Sie im Dialogfeld **Add a SAML 2.0 Service** die folgenden Schritte aus:
 
 	![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_003.png)
 
 	a. Geben Sie im Textfeld **Name** den Namen der Partei ein, die die ID bereitgestellt hat (z.B. den Namen Ihres Unternehmens).
 
-	b. Wählen Sie für **Metadata Source** (Metadatenquelle) die Option **XML**.
+	b. Wählen Sie für **Metadata Source** die Option **XML**.
 
-	c. Kopieren Sie den Inhalt der heruntergeladenen XML-Metadatendatei, und fügen Sie ihn in das Textfeld **Metadata XML** (Metadaten-XML) ein.
+	c. Kopieren Sie den Inhalt der heruntergeladenen XML-Metadatendatei, und fügen Sie ihn in das Textfeld **Metadata XML** ein.
 
-	d. Wählen Sie **Auto-provision accounts for new users when they log in** (Konten für neue Benutzer bei der Anmeldung automatisch bereitstellen).
+	d. Wählen Sie die Option **Auto-provision accounts for new users when they log in**.
 
 	e. Klicken Sie auf **Senden**.
 
@@ -189,7 +190,7 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
+3. Klicken Sie im Menü oben auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
 
 	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-showpad-tutorial/create_aaduser_03.png)
 
@@ -303,4 +304,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel **Showpad** klicken, sollten Sie auto
 [204]: ./media/active-directory-saas-showpad-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-showpad-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

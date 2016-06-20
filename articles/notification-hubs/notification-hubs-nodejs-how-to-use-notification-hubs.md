@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="03/28/2016"
+	ms.date="05/27/2016"
 	ms.author="wesmc"/>
 
 # Senden von Pushbenachrichtigungen mit Azure Notification Hubs und Node.js
@@ -49,21 +49,9 @@ Um Azure Notification Hubs verwenden zu können, müssen Sie das Node.js-Paket [
 
 ### Verwenden von Node Package Manager (NPM) zum Beziehen des Pakets
 
-1.  Verwenden Sie eine Befehlszeilenschnittstelle, z. B. **PowerShell** (Windows), **Terminal** (Mac) oder **Bash** (Linux), und navigieren Sie zu dem Ordner, in dem Sie die leere Anwendung erstellt haben.
+1.  Verwenden Sie eine Befehlszeilenschnittstelle, z. B. **PowerShell** (Windows), **Terminal** (Mac) oder **Bash** (Linux), und navigieren Sie zu dem Ordner, in dem Sie die leere Anwendung erstellt haben.
 
-2.  Geben Sie **npm install azure** in das Befehlsfenster ein. Die Ausgabe sollte in etwa wie folgt aussehen (die Versionsnummern können abweichen):
-
-        azure@0.7.0 node_modules\azure
-		|-- dateformat@1.0.2-1.2.3
-		|-- xmlbuilder@0.4.2
-		|-- node-uuid@1.2.0
-		|-- mime@1.2.9
-		|-- underscore@1.4.4
-		|-- validator@0.4.28
-		|-- tunnel@0.0.2
-		|-- wns@0.5.3
-		|-- xml2js@0.2.6 (sax@0.4.2)
-		|-- request@2.16.6 (forever-agent@0.2.0, aws-sign@0.2.0, tunnel-agent@0.2.0, oauth-sign@0.2.0, json-stringify-safe@3.0.0, cookie-jar@0.2.0, node-uuid@1.4.0, qs@0.5.5, hawk@0.10.2, form-data@0.0.7)
+2.  Geben Sie **npm install azure-sb** in das Befehlsfenster ein.
 
 3.  Sie können den Befehl **ls** bzw. **dir** manuell ausführen, um zu überprüfen, ob der Ordner **node\_modules** erstellt wurde. In diesem Ordner finden Sie ein **azure**-Paket, das die für den Zugriff auf Notification Hubs benötigten Bibliotheken enthält.
 
@@ -85,7 +73,7 @@ Führen Sie die folgenden Schritte im [Azure-Portal] durch, um den Wert für **c
 
 1. Klicken Sie im linken Navigationsbereich auf **Durchsuchen**.
 
-2. Klicken Sie auf **Notification Hubs**, und wählen Sie den gewünschten Hub für das Beispiel aus. Wenn Sie Hilfe beim Erstellen eines neuen Notification Hubs benötigen, lesen Sie das Tutorial [Windows Store – Erste Schritte](notification-hubs-windows-store-dotnet-get-started.md).
+2. Wählen Sie **Notification Hubs**, und wählen Sie den gewünschten Hub für das Beispiel aus. Wenn Sie Hilfe beim Erstellen eines neuen Notification Hubs benötigen, lesen Sie das Tutorial [Erste Schritte mit Notification Hubs für Windows Store-Apps](notification-hubs-windows-store-dotnet-get-started.md).
 
 3. Wählen Sie **Settings** aus.
 
@@ -112,7 +100,7 @@ Das **GcmService**-Objekt enthält eine **send**-Methode, mit der Sie Pushbenach
 * **Payload:** die Nutzlast der Nachricht als JSON oder unformatierte Zeichenfolge.
 * **Callback:** die Rückruffunktion.
 
-Weitere Informationen zum Nutzlastformat finden Sie im Abschnitt **Nutzlast** im Dokument [Implementing GCM Server](http://developer.android.com/google/gcm/server.html#payload) (Implementieren von GCM-Servern).
+Weitere Informationen zum Nutzlastformat finden Sie im Abschnitt **Payload** (Nutzlast) im Dokument [Implementing GCM Server](http://developer.android.com/google/gcm/server.html#payload) (Implementieren von GCM-Servern).
 
 Der folgende Code verwendet die **GcmService**-Instanz aus **NotificationHubService**, um eine Pushbenachrichtigung an alle registrierten Clients zu senden.
 
@@ -135,7 +123,7 @@ Wie auch bei der oben beschriebenen Android-App enthält das **ApnsService**-Obj
 * **Payload:** die Nutzlast der Nachricht als JSON oder Zeichenfolge.
 * **Callback:** die Rückruffunktion.
 
-Weitere Informationen zum Nutzlastformat finden Sie im Abschnitt **Benachrichtigungs-Nutzlast** im Dokument [Local and Push Notification Programming Guide](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) (Leitfaden zur Programmierung lokaler und Pushbenachrichtigungen).
+Weitere Informationen zum Nutzlastformat finden Sie im Abschnitt **Notification Payload** (Benachrichtigungsnutzlast) im Dokument [Local and Push Notification Programming Guide](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) (Leitfaden zur Programmierung von lokalen und Pushbenachrichtigungen).
 
 Der folgende Code verwendet die **ApnsService**-Instanz aus **NotificationHubService**, um eine Warnungs-Nachricht an alle Clients zu schicken:
 
@@ -155,13 +143,13 @@ Das **MpnsService**-Objekt enthält eine **send**-Methode, mit der Sie Pushbenac
 * **Tags:** die Tag-ID. Falls kein Tag angegeben ist, wird die Benachrichtigung an alle Clients gesendet.
 * **Payload:** die Nutzlast der Nachricht als XML.
 * **TargetName:** `toast` für Popupbenachrichtigungen. `token` für Kachelbenachrichtigungen.
-* **NotificationClass:** die Priorität der Benachrichtigung. Eine Liste der gültigen Werte finden Sie im Abschnitt **HTTP Headerelemente** im Dokument [Push notifications from a server](http://msdn.microsoft.com/library/hh221551.aspx) (Pushbenachrichtigungen von einem Server).
+* **NotificationClass:** die Priorität der Benachrichtigung. Eine Liste der gültigen Werte finden Sie im Abschnitt **HTTP Header Elements** (HTTP-Headerelemente) im Dokument [Push notifications from a server](http://msdn.microsoft.com/library/hh221551.aspx) (Pushbenachrichtigungen von einem Server).
 * **Options:** optionale Anforderungsheader.
 * **Callback:** die Rückruffunktion.
 
 Eine Liste der gültigen Optionen für **TargetName**, **NotificationClass** und „header“ finden Sie auf der Seite [Push notifications from a server](http://msdn.microsoft.com/library/hh221551.aspx) (Pushbenachrichtigungen von einem Server).
 
-Der folgende Beispielcode verwendet die **MpnsService**-Instanz aus **NotificationHubService**, um eine Popup-Pushbenachrichtigung zu senden:
+Der folgende Beispielcode verwendet die **MpnsService**-Instanz aus **NotificationHubService**, um eine Popuppushbenachrichtigung zu senden:
 
 	var payload = '<?xml version="1.0" encoding="utf-8"?><wp:Notification xmlns:wp="WPNotification"><wp:Toast><wp:Text1>string</wp:Text1><wp:Text2>string</wp:Text2></wp:Toast></wp:Notification>';
 	notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
@@ -172,7 +160,7 @@ Der folgende Beispielcode verwendet die **MpnsService**-Instanz aus **Notificati
 
 ### Gewusst wie: Senden von Pushbenachrichtigungen an universelle Windows-Plattform-Anwendungen (UWP)
 
-Das **WnsService**-Objekt enthält eine **send**-Methode, mit der Sie Pushbenachrichtigungen an universelle Windows-Plattform-Apps senden können. Die **send**-Methode nimmt die folgenden Parameter entgegen:
+Das **WnsService**-Objekt enthält eine **send**-Methode, mit der Sie Pushbenachrichtigungen an Apps der Universellen Windows-Plattform senden können. Die **send**-Methode nimmt die folgenden Parameter entgegen:
 
 * **Tags:** die Tag-ID. Falls kein Tag angegeben ist, wird die Benachrichtigung an alle registrierten Clients gesendet.
 * **Payload:** die Nutzlast der Nachricht als XML.
@@ -182,7 +170,7 @@ Das **WnsService**-Objekt enthält eine **send**-Methode, mit der Sie Pushbenach
 
 Eine Liste der gültigen Typen und Anforderungsheader finden Sie unter [Anforderungs- und Antwortheader des Pushbenachrichtigungsdiensts (Windows-Runtime-Apps)](http://msdn.microsoft.com/library/windows/apps/hh465435.aspx).
 
-Der folgende Code verwendet die **WnsService**-Instanz aus **NotificationHubService**, um eine Popup-Pushbenachrichtigung an eine UWP-App zu senden:
+Der folgende Code verwendet die **WnsService**-Instanz aus **NotificationHubService**, um eine Popuppushbenachrichtigung an eine UWP-App zu senden:
 
 	var payload = '<toast><visual><binding template="ToastText01"><text id="1">Hello!</text></binding></visual></toast>';
 	notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
@@ -223,11 +211,11 @@ Mit den obigen Beispielcodeausschnitten können Sie problemlos eine Dienstinfras
   [Azure Service Bus Notification Hubs]: http://msdn.microsoft.com/library/windowsazure/jj927170.aspx
   [SqlFilter]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
   [Website mit WebMatrix]: /develop/nodejs/tutorials/web-site-with-webmatrix/
-  [Node.js Cloud Service]: ../cloud-services-nodejs-develop-deploy-app.md
+  [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Previous Management Portal]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png
   [nodejswebsite]: /develop/nodejs/tutorials/create-a-website-(mac)/
   [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
   [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
   [Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0608_2016-->

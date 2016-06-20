@@ -19,7 +19,7 @@
 # Verwalten von Computeleistung in Azure SQL Data Warehouse (T-SQL)
 
 > [AZURE.SELECTOR]
-- [Übersicht](sql-data-warehouse-overview-manage-compute.md)
+- [Übersicht](sql-data-warehouse-manage-compute-overview.md)
 - [Portal](sql-data-warehouse-manage-compute-portal.md)
 - [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 - [REST](sql-data-warehouse-manage-compute-rest-api.md)
@@ -86,7 +86,7 @@ Andere Verwaltungsaufgaben finden Sie in der [Verwaltungsübersicht][].
 <!--Article references-->
 [Service capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
 [Verwaltungsübersicht]: ./sql-data-warehouse-overview-manage.md
-[Übersicht zum Verwalten von Computeleistung]: ./sql-data-warehouse-overview-manage-compute-power.md
+[Übersicht zum Verwalten von Computeleistung]: ./sql-data-warehouse-manage-compute-overview.md
 
 <!--MSDN references-->
 
@@ -97,4 +97,4 @@ Andere Verwaltungsaufgaben finden Sie in der [Verwaltungsübersicht][].
 
 [Azure portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

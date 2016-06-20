@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="03/29/2016"
+   ms.date="06/01/2016"
    ms.author="derrickv"/>
 
 # Häufig gestellte Fragen zu Power BI Embedded
@@ -50,7 +50,7 @@
 
     Der Power BI Embedded-Dienst ist in Nordamerika ab dem Zeitpunkt unserer Ankündigung von BUILD 2016 (im Rechenzentrum USA, Süden-Mitte) verfügbar. Dieser Dienst wird gleich im Anschluss auf die übrigen Azure-Rechenzentren ausgedehnt.
 
-9.	**Welche SLA ist für den Dienst verfügbar?**
+9. **Welche SLA ist für den Dienst verfügbar?**
 
     Power BI Embedded steht jetzt als Azure-Vorschaudienst ohne formale SLA zur Verfügung. Eine SLA wird bereitgestellt, wenn der Dienst von der Vorschauversion in die allgemeine Verfügbarkeit wechselt.
 
@@ -61,7 +61,8 @@
 
     Sie dürfen den Power BI Embedded-Dienst innerhalb einer von Ihnen entwickelten Anwendung nur dann nutzen, wenn Ihre Anwendung (1) grundlegende und wichtige Funktionalität zu unserem Dienst hinzufügt und nicht in erster Linie ein Ersatz für einen Power BI-Dienst ist, und (2) ausschließlich für externe Benutzer bereitgestellt wird. Der Power BI Embedded-Dienst darf nicht innerhalb interner Geschäftsanwendungen verwendet werden.
 
-    ![](media\power-bi-embedded-faq\price.png)
+
+   ![](media\power-bi-embedded-faq\price.png)
 
 11.	**Was ist ein Renderobjekt, und wie wird es abgerechnet?**
 
@@ -71,7 +72,7 @@
 
     Die Abrechnung erfolgt pro 1.000 Renderobjekte. Wenn weniger als 1.000 Renderobjekte in Anspruch genommen werden, erfolgt die Abrechnung anteilsmäßig. Pro Monat erhalten Kunden ein kostenloses Kontingent von 1.000 Renderobjekten. Kunden, die ihre Lösung über die Volumenlizenzierung erwerben, erhalten Preisinformationen von ihrem Microsoft-Partner oder -Händler.
 
-12.	**Gibt es irgendwelche Tools oder Anleitungen, die mir helfen, die zu erwartende Anzahl von Renderobjekten abzuschätzen? Wie kann ich feststellen, wie viele Renderobjekte abgeschlossen sind?**
+12.	**Gibt es Tools oder Anleitungen, die mir helfen, die zu erwartende Anzahl von Renderobjekten abzuschätzen? Wie kann ich feststellen, wie viele Renderobjekte abgeschlossen sind?**
 
     Das Azure-Portal bietet Abrechnungsinformationen dazu, wie viele Renderobjekte für Ihr Abonnement ausgeführt wurden.
 
@@ -91,7 +92,7 @@
 
 16.	**Wie funktioniert die Benutzerauthentifizierung bei Power BI Embedded?**
 
-    Der Power BI Embedded-Dienst nutzt App-Token zur Authentifizierung und Autorisierung anstelle der expliziten Endbenutzerauthentifizierung. Im App-Token-Modell verwaltet Ihre Anwendung die Authentifizierung und Autorisierung für Ihre Endbenutzer. Bei Bedarf erstellt und sendet Ihre App dann App-Token, die unseren Dienst anweisen, den angeforderten Bericht zu rendern. Bei diesem Konzept muss Ihre App nicht Azure Active Directory für die Authentifizierung und Autorisierung der Benutzer verwenden, auch wenn dies möglich ist. Weitere Informationen zu App-Token finden Sie auf der Dokumentationsseite zu [App-Token](https://azure.microsoft.com/documentation/articles/power-bi-embedded-get-started-sample/#key-flow).
+    Der Power BI Embedded-Dienst nutzt App-Token zur Authentifizierung und Autorisierung anstelle der expliziten Endbenutzerauthentifizierung. Im App-Token-Modell verwaltet Ihre Anwendung die Authentifizierung und Autorisierung für Ihre Endbenutzer. Bei Bedarf erstellt und sendet Ihre App dann App-Token, die unseren Dienst anweisen, den angeforderten Bericht zu rendern. Bei diesem Konzept muss Ihre App nicht Azure Active Directory für die Authentifizierung und Autorisierung der Benutzer verwenden, auch wenn dies möglich ist. Weitere Informationen zu App-Token finden Sie auf der Dokumentationsseite zu [App-Token](https://azure.microsoft.com/de-DE/documentation/articles/power-bi-embedded-get-started-sample/#key-flow).
 
 17.	**Welche Datenquellen werden derzeit mit Power BI Embedded unterstützt?**
 
@@ -101,7 +102,7 @@
 
     Im Power BI Embedded-Modell müssen Ihre Kunden nicht unbedingt in Azure Active Directory-Mandanten (Azure AD) verwaltet werden. Sie können festlegen, ob Azure AD für Ihre Kunden erforderlich ist oder nicht. Daher richtet sich das für Power BI Embedded erforderliche Mandantenmodell nach der Architektur Ihrer Anwendung und Ihrer Infrastruktur.
 
-    Entwickler/Mitarbeiter, die Ihre Anwendung erstellen oder daran arbeiten, benötigen ein Azure AD-Benutzerkonto, damit sie Ihr Azure-Abonnement und Ihre Arbeitsbereichssammlungen über das Azure-Portal verwalten können. Programmgesteuerte APIs, mit denen Entwickler Berichte importieren, Verbindungszeichenfolgen ändern und Einbettungs-URLs abrufen können, verwenden stattdessen App-Token zur Authentifizierung und brauchen Azure AD daher nicht. Details zur Verwendung unserer APIs und des Azure-Portals finden Sie auf der [Power BI Embedded-Dokumentationsseite auf Azure.com](https://azure.microsoft.com/documentation/services/power-bi-embedded/).
+    Entwickler/Mitarbeiter, die Ihre Anwendung erstellen oder daran arbeiten, benötigen ein Azure AD-Benutzerkonto, damit sie Ihr Azure-Abonnement und Ihre Arbeitsbereichssammlungen über das Azure-Portal verwalten können. Programmgesteuerte APIs, mit denen Entwickler Berichte importieren, Verbindungszeichenfolgen ändern und Einbettungs-URLs abrufen können, verwenden stattdessen App-Token zur Authentifizierung und brauchen Azure AD daher nicht. Details zur Verwendung unserer APIs und des Azure-Portals finden Sie auf der [Power BI Embedded-Dokumentationsseite auf Azure.com](https://azure.microsoft.com/de-DE/documentation/services/power-bi-embedded/).
 
 19.	**Wo kann ich mehr erfahren?**
 
@@ -113,7 +114,7 @@
 
 ## Weitere Informationen
 
-- [Was ist Microsoft Power BI Embedded?](power-bi-embedded-what-is-power-bi-embedded.md)
+- [Was ist Microsoft Power BI Embedded](power-bi-embedded-what-is-power-bi-embedded.md)
 - [Erste Schritte mit der Vorschau von Microsoft Power BI Embedded](power-bi-embedded-get-started.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -89,6 +89,6 @@ while(true)
 Weitere Informationen zu Service Bus-Warteschlangen finden Sie in den folgenden Artikeln:
 
 - [Vergleich von Azure-Warteschlangen und Service Bus-Warteschlangen](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
-- Verwenden von [Service Bus-Warteschlangen](service-bus-dotnet-how-to-use-queues.md)
+- Verwenden von [Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0608_2016-->

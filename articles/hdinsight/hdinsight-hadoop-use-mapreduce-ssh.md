@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/18/2016"
+   ms.date="06/06/2016"
    ms.author="larryfr"/>
 
 # Verwenden von MapReduce mit Hadoop in HDInsight über SSH
@@ -31,17 +31,17 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 
 * Einen Linux-basierten HDInsight-Cluster (Hadoop in HDInsight)
 
-* Einen SSH-Client Die Betriebssysteme Linux, Unix und Mac sollten über einen SSH-Client verfügen. Windows-Benutzer müssen einen Client herunterladen, z. B [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+* Einen SSH-Client Die Betriebssysteme Linux, Unix und Mac sollten über einen SSH-Client verfügen. Windows-Benutzer müssen einen Client herunterladen, z. B [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
 ##<a id="ssh"></a>Verbinden mit SSH
 
-Stellen Sie mithilfe des SSH-Befehls eine Verbindung zum vollqualifizierten Domänennamen (FQDN) des HDInsight-Clusters her. Der FQDN entspricht dem Namen, den Sie dem Cluster zugewiesen haben, gefolgt von **.azurehdinsight.net**. Mithilfe des Folgenden wird z. B. eine Verbindung zu einem Cluster namens **myhdinsight** hergestellt:
+Stellen Sie mithilfe des SSH-Befehls eine Verbindung zum vollqualifizierten Domänennamen (FQDN) des HDInsight-Clusters her. Der FQDN entspricht dem Namen, den Sie dem Cluster zugewiesen haben, gefolgt von **.azurehdinsight.net**. Mithilfe des Folgenden wird z. B. eine Verbindung zu einem Cluster namens **myhdinsight** hergestellt:
 
 	ssh admin@myhdinsight-ssh.azurehdinsight.net
 
 **Wenn Sie beim Erstellen des HDInsight-Clusters einen Zertifikatschlüssel für die SSH-Authentifizierung** angegeben haben, müssen Sie möglicherweise den Speicherort des privaten Schlüssels im Clientsystem angeben. Beispiel:
 
-	ssh admin@myhdinsight-ssh.azurehdinsight.net -i ~/mykey.key
+	ssh -i ~/mykey.key admin@myhdinsight-ssh.azurehdinsight.net
 
 **Wenn Sie beim Erstellen des HDInsight-Clusters ein Kennwort für die SSH-Authentifizierung** angegeben haben, müssen Sie nach der entsprechenden Aufforderung das Kennwort angeben.
 
@@ -108,4 +108,4 @@ Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeite
 
 * [Verwenden von Pig mit Hadoop in HDInsight](hdinsight-use-pig.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0608_2016-->

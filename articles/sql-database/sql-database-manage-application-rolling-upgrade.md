@@ -131,4 +131,4 @@ Die beiden in diesem Artikel beschriebenen Upgrademethoden unterscheiden sich hi
 - [Copy database (Kopieren der Datenbank)](https://msdn.microsoft.com/library/azure/mt603644.aspx)
 - [Festlegen des schreibgeschützten bzw. des Lese-/Schreibmodus für die Datenbank](https://msdn.microsoft.com/library/bb522682.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

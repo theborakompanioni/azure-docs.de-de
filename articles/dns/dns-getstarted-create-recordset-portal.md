@@ -28,34 +28,34 @@
 - [Azure-Befehlszeilenschnittstelle](dns-getstarted-create-recordset-cli.md)
 
 
-Dieser Artikel beschreibt das Erstellen von Einträgen und Ressourceneintragssätzen mithilfe des Azure-Portals. Nach dem Erstellen der DNS-Zone müssen Sie die DNS-Einträge für Ihre Domäne hinzufügen. Zu diesem Zweck benötigen Sie zunächst grundlegende Informationen zu DNS-Datensätzen und Datensatzgruppen.
+Dieser Artikel beschreibt das Erstellen von Einträgen und Eintragssätzen mit dem Azure-Portal. Nach dem Erstellen der DNS-Zone fügen Sie die DNS-Ressourceneinträge für Ihre Domäne hinzu. Zu diesem Zweck müssen Sie zunächst Grundlegendes zu DNS-Einträgen und Datensatzgruppen verstehen.
 
 [AZURE.INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
 
-## Erstellen einer Datensatzgruppe und eines Datensatzes
+## Erstellen eines Ressourceneintragssatzes und eines Ressourceneintrags
 
-Im folgende Beispiel wird die Erstellung eines Ressourceneintragssatzes und von Einträgen mit dem Azure-Portal schrittweise erläutert. Wir verwenden den DNS-Eintragstyp „A“.
+Im folgenden Beispiel wird die Erstellung eines Ressourceneintragssatzes und von Einträgen mit dem Azure-Portal schrittweise erläutert. Wir verwenden den DNS-Eintragstyp „A“.
 
-1. Melden Sie sich beim Azure-Portal an.
+1. Melden Sie sich beim Portal an.
 
-2. Navigieren Sie zum Blatt der **DNS-Zone**, in der Sie einen Ressourceneintragssatz erstellen möchten.
+2. Gehen Sie zum Blatt der **DNS-Zone**, in der Sie einen Ressourceneintragssatz erstellen möchten.
 
-3. Klicken Sie oben auf dem Blatt „DNS-Zone“ auf **Ressourceneintragssatz**, um das Blatt **Ressourceneintragssatz hinzufügen** zu öffnen.
- 
+3. Wählen Sie oben auf dem Blatt **DNS-Zone** **Ressourceneintragssatz**, um das Blatt **Ressourceneintragssatz hinzufügen** zu öffnen.
+
 	![Neuer Ressourceneintragssatz](./media/dns-getstarted-create-recordset-portal/newrecordset500.png)
 
-4. Benennen Sie auf dem Blatt **Ressourceneintragssatz hinzufügen** Ihren Ressourceneintragssatz. Sie können dem Ressourceneintragssatz z.B. den Namen **www** geben.
-  
+4. Benennen Sie auf dem Blatt **Ressourceneintragssatz hinzufügen** Ihren Ressourceneintragssatz. Sie können dem Ressourceneintragssatz z.B. den Namen „**www**“ geben.
+
 	![Hinzufügen eines Ressourceneintragssatzes](./media/dns-getstarted-create-recordset-portal/addrecordset500.png)
 
-5. Wählen Sie bei „Typ“ den gewünschten Eintragstyp. Zum Beispiel **A**.
+5. Wählen Sie den gewünschten Eintragstyp. Wählen Sie z.B. **A**.
 
-6. Legen Sie die **Gültigkeitsdauer** fest. Die Standardeinstellung für das Portal ist eine Stunde.
+6. Legen Sie die **Gültigkeitsdauer** fest. Die Gültigkeitsdauer im Portal beträgt standardmäßig eine Stunde.
 
-7. Fügen Sie die IP-Adressen hinzu, eine IP-Adresse pro Zeile. Durch Verwenden des vorgeschlagenen Namens für den Ressourceneintragssatz und den oben angegebenen Eintragstyp wird die IPv4-IP-Adresse dem A-Eintrag für den www-Ressourceneintragssatz hinzugefügt.
+7. Fügen Sie die IP-Adressen hinzu, eine IP-Adresse pro Zeile. Wenn Sie den oben vorgeschlagenen Ressourceneintragssatz-Namen und Eintragstyp wählen, wird die IPv4-IP-Adresse dem **A**-Eintrag für den „www“-Ressourceneintragssatz hinzugefügt.
 
-8. Wenn die IP-Adresse hinzugefügt wurde, klicken Sie unten auf dem Blatt auf **OK**. Der DNS-Ressourceneintragssatz wird erstellt.
+8. Nachdem Sie die IP-Adressen hinzugefügt haben, wählen Sie **OK** am unteren Rand des Blatts. Der DNS-Ressourceneintragssatz wird erstellt.
 
 
 ## Nächste Schritte
@@ -64,4 +64,4 @@ Informationen zur Verwaltung Ihrer Ressourceneintragssätze und Einträge finden
 
 Weitere Informationen zu Azure DNS finden Sie unter [Azure DNS – Übersicht](dns-overview.md).
 
-<!----HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

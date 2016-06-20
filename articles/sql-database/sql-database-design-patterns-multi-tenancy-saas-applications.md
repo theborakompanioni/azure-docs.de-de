@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank"
+   pageTitle="Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen mit Azure SQL-Datenbank | Microsoft Azure" 
    description="In diesem Artikel werden die relevanten Anforderungen und allgemeinen Datenarchitekturmuster von mehrinstanzenfähigen Datenbankanwendungen beschrieben, die in einer Cloudumgebung ausgeführt werden, sowie die unterschiedlichen Vor- und Nachteile dieser Muster. Außerdem wird beschrieben, wie der Azure SQL-Datenbank-Dienst mit seinen Pools für elastische Datenbanken und elastischen Tools eingesetzt werden kann, um diese Anforderungen kompromisslos zu erfüllen."
    keywords=""
    services="sql-database"
@@ -13,8 +13,8 @@
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="data-management"
-   ms.date="03/22/2016"
+   ms.workload="sqldb-design"
+   ms.date="06/07/2016"
    ms.author="carlrab"/>
 
 # Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank
@@ -172,4 +172,4 @@ Bei Fragen erreichen Sie uns im [SQL-Datenbankforum](http://social.msdn.microsof
 
 	
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -10,7 +10,7 @@
 
 <tags
    ms.service="virtual-machines-linux"
-   ms.topic="article"
+   ms.topic="support-article"
    ms.tgt_pltfrm="vm-linux"
    ms.devlang="na"
    ms.workload="required"
@@ -53,7 +53,7 @@ Die Anforderung zum Start des angehaltenen virtuellen Computers muss im Original
 
 *	Wiederholen Sie die Neustartanforderung zu einem späteren Zeitpunkt.
 
-## Problem: Fehler beim Neustart eines vorhandenen virtuellen Computers
+## Problem: Fehler beim Ändern der Größe eines vorhandenen virtuellen Computers
 
 Sie versuchen, die Größe eines angehaltenen virtuellen Computers zu ändern, erhalten aber eine Zuordnungsfehlermeldung.
 
@@ -74,4 +74,4 @@ Die Anforderung zur Größenänderung des virtuellen Computers muss im Originalc
   2. Nachdem alle virtuellen Computer beendet wurden, vergrößern Sie den gewünschten virtuellen Computer.
   3. Wählen Sie den virtuellen Computer mit veränderter Größe aus, und klicken Sie auf **Starten**. Starten Sie dann jeden einzelnen beendeten virtuellen Computer.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

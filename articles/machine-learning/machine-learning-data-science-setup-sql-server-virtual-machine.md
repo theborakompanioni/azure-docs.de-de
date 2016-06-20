@@ -131,7 +131,7 @@ Um zusätzliche Datenträger anzufügen, führen Sie die Schritte unter [Anfüge
 
 ##<a name="SSMS"></a>Herstellen einer Verbindung mit SQL Server Management Studio und Aktivieren der Authentifizierung im gemischten Modus
 
-Das SQL Server-Datenbankmodul kann ohne Domänenumgebung keine Windows-Authentifizierung nutzen. Um eine Verbindung zum Datenbankmodul von einem anderen Computer aus herzustellen, konfigurieren Sie SQL Server für die Authentifizierung mit gemischtem Modus. Die Authentifizierung mit gemischtem Modus ermöglicht sowohl die SQL Server-Authentifizierung als auch die Windows-Authentifizierung. Der SQL-Authentifizierungsmodus ist erforderlich, um Daten direkt aus den Datenbanken des virtuellen SQL Server-Computers in [Azure Machine Learning Studio](https://studio.azureml.net) mithilfe des Reader-Moduls zu erfassen.
+Das SQL Server-Datenbankmodul kann ohne Domänenumgebung keine Windows-Authentifizierung nutzen. Um eine Verbindung zum Datenbankmodul von einem anderen Computer aus herzustellen, konfigurieren Sie SQL Server für die Authentifizierung mit gemischtem Modus. Die Authentifizierung mit gemischtem Modus ermöglicht sowohl die SQL Server-Authentifizierung als auch die Windows-Authentifizierung. Der SQL-Authentifizierungsmodus ist erforderlich, um Daten mithilfe des „Import Data“-Moduls direkt aus den Datenbanken des virtuellen SQL Server-Computers in [Azure Machine Learning Studio](https://studio.azureml.net) zu erfassen.
 
 1.  Verwenden Sie, während der virtuelle Computer über Remotedesktop verbunden ist, den Windows-Bereich **Suche**, und geben Sie dort **SQL Server Management Studio** (SSMS) ein. Klicken Sie auf diese Option, um SQL Server Management Studio (SSMS) zu starten. Sie können für die zukünftige Verwendung eine Verknüpfung mit SSMS auf Ihrem Desktop hinzufügen.
 
@@ -233,7 +233,7 @@ Um sich von einem anderen Computer aus mit dem SQL Server-Datenbankmodul zu verb
 
 1.  Wählen Sie im klassischen Azure-Portal (oder aus dem vorherigen Schritt) **VIRTUELLE COMPUTER**.
 
-2.  Kopieren Sie auf der Seite **INSTANZEN VIRTUELLER COMPUTER** in der Spalte **DNS-NAME** den DNS-Namen für den virtuellen Computer, der auf **http://** folgt. (In der Benutzeroberfläche wird möglicherweise nicht der gesamte Name angezeigt, aber Sie können mit der rechten Maustaste darauf klicken und diese kopieren.)
+2.  Kopieren Sie auf der Seite **INSTANZEN VIRTUELLER COMPUTER** in der Spalte **DNS-NAME** den DNS-Namen für den virtuellen Computer, der auf ****http://** folgt. (In der Benutzeroberfläche wird möglicherweise nicht der gesamte Name angezeigt, aber Sie können mit der rechten Maustaste darauf klicken und diese kopieren.)
 
 ##<a name="cde"></a>Verbinden mit dem Datenbankmodul von einem anderen Computer aus
 
@@ -251,9 +251,9 @@ Um sich von einem anderen Computer aus mit dem SQL Server-Datenbankmodul zu verb
 
 ##<a name="amlconnect"></a>Herstellen einer Verbindung von Azure Machine Learning zum Datenbankmodul
 
-In späteren Phasen des Cortana Analytics-Prozesses verwenden Sie [Azure Machine Learning Studio](https://studio.azureml.net) zum Erstellen und Bereitstellen der Machine Learning-Modelle. Verwenden Sie zum Erfassen von Daten aus den SQL Server-VM-Datenbanken direkt in Azure Machine Learning für das Training oder die Bewertung das **Reader**-Modul in einem neuen [Azure Machine Learning Studio](https://studio.azureml.net)-Experiment. Weitere Informationen zu diesem Thema finden Sie über die Links mit Anleitungen zum Cortana Analytics-Prozess. Eine Einführung finden Sie unter [Was ist Azure Machine Learning Studio?](machine-learning-what-is-ml-studio.md).
+In späteren Phasen des Cortana Analytics-Prozesses verwenden Sie [Azure Machine Learning Studio](https://studio.azureml.net) zum Erstellen und Bereitstellen der Machine Learning-Modelle. Verwenden Sie zum Erfassen von Daten aus den SQL Server-VM-Datenbanken direkt in Azure Machine Learning für das Training oder die Bewertung das **Import Data**-Modul in einem neuen [Azure Machine Learning Studio](https://studio.azureml.net)-Experiment. Weitere Informationen zu diesem Thema finden Sie über die Links mit Anleitungen zum Cortana Analytics-Prozess. Eine Einführung finden Sie unter [Was ist Azure Machine Learning Studio?](machine-learning-what-is-ml-studio.md).
 
-2.	Wählen Sie im Bereich **Properties** des [Reader-Moduls](https://msdn.microsoft.com/library/azure/dn905997.aspx) die Option **Azure SQL Database** aus der Dropdownliste **Data Source** aus.
+2.	Wählen Sie im Bereich **Properties** des [„Import Data“-Moduls](https://msdn.microsoft.com/library/azure/dn905997.aspx) die Option **Azure SQL Database** in der Dropdownliste **Data Source** aus.
 
 3.	Geben Sie im Textfeld **Database server name** die Zeichenfolge `tcp:<DNS name of your virtual machine>,1433` ein.
 
@@ -261,7 +261,7 @@ In späteren Phasen des Cortana Analytics-Prozesses verwenden Sie [Azure Machine
 
 5.	Geben Sie das Kennwort für den SQL-Benutzer im Textfeld **Server user account password** ein.
 
-	![Azure ML-Reader][13]
+	![Azure ML – Import Data][13]
 
 ##<a name="shutdown"></a>Herunterfahren und Freigeben von nicht genutzten virtuellen Computern
 
@@ -306,4 +306,4 @@ Die nächsten Schritte des Datenanalyseprozesses sind unter [Leitfaden: Erweiter
 [15]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/vmshutdown.png
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

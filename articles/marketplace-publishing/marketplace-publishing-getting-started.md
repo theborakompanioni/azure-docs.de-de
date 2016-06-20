@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/29/2016"
+   ms.date="06/01/2016"
    ms.author="hascipio" />
 
 # Veröffentlichen eines Angebots im Azure Marketplace
@@ -44,11 +44,12 @@ Einige Schritte müssen für alle Lösungstypen ausgeführt werden. In diesem Ar
 | **Schritt 4: Bereitstellen des Angebots in Marketplace** | [Bereitstellen des Angebots in Marketplace][link-pushprod] | Private Vorschau | [Bereitstellen des Angebots in Marketplace][link-pushprod] | [Bereitstellen des Angebots in Marketplace][link-pushprod] |
 
 ## Support
-- [Zugriff auf die Publisher-Unterstützung][suppt-general]
+- [Post-production guide for virtual machine offers in the Azure Marketplace](marketplace-publishing-vm-image-post-publishing.md) (Postproduktionsleitfaden für VM-Angebote in Azure Marketplace)
 - [Grundlegendes zu den Verkäufer-Insights-Berichten][suppt-rpt-insights]
 - [Grundlegendes zu den Auszahlungsberichten][suppt-rpt-payouts]
 - [Gewusst wie: Ändern Ihres „Reseller Incentive“ für Cloud-Lösungsanbieter](marketplace-publishing-csp-incentive.md)
 - [Beheben häufiger Probleme bei der Veröffentlichung im Marketplace][suppt-common]
+- [Zugriff auf die Publisher-Unterstützung][suppt-general]
 
 ## Zusätzliche Ressourcen
 - Weitere Informationen zu den verwendeten Portalen finden Sie unter [Portale, die Sie benötigen](marketplace-publishing-portals.md).
@@ -82,4 +83,4 @@ Einige Schritte müssen für alle Lösungstypen ausgeführt werden. In diesem Ar
 [link-pushstaging]: marketplace-publishing-push-to-staging.md
 [link-pushprod]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

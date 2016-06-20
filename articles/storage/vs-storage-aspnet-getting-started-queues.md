@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Erste Schritte mit Warteschlangenspeicher und verbundenen Visual Studio-Diensten (ASP.NET) | Microsoft Azure"
-	description="Erfahren Sie etwas über die ersten Schritte mit Azure-Warteschlangenspeicher in einem ASP.NET 5-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben."
+	description="Erfahren Sie etwas über die ersten Schritte mit Azure-Warteschlangenspeicher in einem ASP.NET 5-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben."
 	services="storage"
 	documentationCenter=""
 	authors="TomArcher"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/21/2016"
+	ms.date="06/01/2016"
 	ms.author="tarcher"/>
 
 # Erste Schritte mit Azure-Warteschlangenspeicher und verbundenen Visual Studio-Diensten
@@ -24,7 +24,7 @@ Dieser Artikel beschreibt, wie die ersten Schritte beim Verwenden von Azure-Wart
 
 Wir zeigen Ihnen, wie Sie eine Azure-Warteschlange in Ihrem Speicherkonto erstellen und darauf zugreifen. Außerdem wird gezeigt, wie Sie grundlegende Warteschlangenvorgänge, etwa Hinzufügen, Ändern, Lesen und Entfernen von Warteschlangennachrichten ausführen. Die Beispiele sind in C# geschrieben und greifen auf die [Microsoft Azure-Speicherclientbibliothek für .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx) zurück. Weitere Informationen zu ASP.NET finden Sie unter [ASP.NET](http://www.asp.net).
 
-Die Warteschlangenspeicherung in Azure ist ein Dienst zur Speicherung großer Anzahlen von Nachrichten, auf die von überall auf der Welt mit authentifizierten Anrufen über HTTP oder HTTPS zugegriffen werden kann. Eine einzelne Warteschlangennachricht kann bis zu 64 KB groß sein, und eine Warteschlange kann Millionen von Nachrichten enthalten. Deren Anzahl ist nur durch die Kapazität des Speicherkontos begrenzt.
+Die Warteschlangenspeicherung in Azure ist ein Dienst zur Speicherung großer Anzahlen von Nachrichten, auf die von überall auf der Welt mit authentifizierten Anrufen über HTTP oder HTTPS zugegriffen werden kann. Eine einzelne Warteschlangennachricht kann bis zu 64 KB groß sein, und eine Warteschlange kann Millionen von Nachrichten enthalten. Deren Anzahl ist nur durch die Kapazität des Speicherkontos begrenzt.
 
 ## Zugriff auf Warteschlangen in Code
 
@@ -82,7 +82,9 @@ Sie können einen Blick auf die Nachricht am Anfang einer Warteschlange werfen, 
 
 ## Lesen und Entfernen von Nachrichten in einer Warteschlange
 
-Ihr Code kann eine Nachricht in zwei Schritten aus der Warteschlange entfernen. 1. Rufen Sie GetMessage() auf, um die nächste Nachricht in einer Warteschlange abzurufen. eine von GetMessage() zurückgegebene Nachricht ist für anderen Code nicht mehr sichtbar, der Nachrichten aus dieser Warteschlange liest. Standardmäßig bleibt die Nachricht 30 Sekunden lang unsichtbar. 2. Wenn Sie die Nachricht endgültig aus der Warteschlange entfernen möchten, rufen Sie **DeleteMessage** auf.
+Ihr Code kann eine Nachricht in zwei Schritten aus der Warteschlange entfernen.
+1. Rufen Sie GetMessage() auf, um die nächste Nachricht in einer Warteschlange abzurufen. eine von GetMessage() zurückgegebene Nachricht ist für anderen Code nicht mehr sichtbar, der Nachrichten aus dieser Warteschlange liest. Standardmäßig bleibt die Nachricht 30 Sekunden lang unsichtbar.
+2.	Wenn Sie die Nachricht endgültig aus der Warteschlange entfernen möchten, rufen Sie **DeleteMessage** auf.
 
 Dieser zweistufige Prozess zum Entfernen von Nachrichten stellt sicher, dass eine andere Codeinstanz dieselbe Nachricht erneut abrufen kann, falls die Verarbeitung aufgrund eines Hardware- oder Softwarefehlers fehlschlägt. Der folgende Code ruft **DeleteMessage** direkt nach der Verarbeitung der Nachricht auf.
 
@@ -154,4 +156,4 @@ Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen S
 
 [AZURE.INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0608_2016-->

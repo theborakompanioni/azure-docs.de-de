@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/22/2016"
+   ms.date="06/07/2016"
    ms.author="joaoma" />
 
 # Erstellen eines benutzerdefinierten Tests für ein Azure Application Gateway (klassisch) mithilfe von PowerShell
@@ -82,7 +82,7 @@ Sie können das Application Gateway per XML oder mit einem Konfigurationsobjekt 
 
 Im folgenden Beispiel verwenden Sie eine XML-Datei, um alle Einstellungen des Application Gateways zu konfigurieren und auf die Application Gateway-Ressource zu übertragen.
 
-### Schritt 1  
+### Schritt 1  
 
 Kopieren Sie den folgenden Text in Editor.
 
@@ -110,7 +110,8 @@ Kopieren Sie den folgenden Text in Editor.
             <Timeout>15</Timeout>
             <UnhealthyThreshold>5</UnhealthyThreshold>
         </Probe>
-    <BackendAddressPools>
+      </Probes>
+     <BackendAddressPools>
         <BackendAddressPool>
             <Name>pool1</Name>
             <IPAddresses>
@@ -151,7 +152,7 @@ Kopieren Sie den folgenden Text in Editor.
 
 Bearbeiten Sie die Werte zwischen den Klammern für die Konfigurationselemente. Speichern Sie die Datei mit der Erweiterung XML.
 
-Das folgende Beispiel zeigt, wie Sie mithilfe einer Konfigurationsdatei das Application Gateway für den Lastenausgleich von HTTP-Datenverkehr am öffentlichen Port 80 und zum Senden des Netzwerkdatenverkehrs an den Back-End-Port 80 zwischen zwei IP-Adressen einrichten, indem Sie einen benutzerdefinierten Test verwenden.
+Das folgende Beispiel zeigt, wie Sie mithilfe einer Konfigurationsdatei das Application Gateway für den Lastenausgleich von HTTP-Datenverkehr am öffentlichen Port 80 und zum Senden des Netzwerkdatenverkehrs an den Back-End-Port 80 zwischen zwei IP-Adressen einrichten, indem Sie einen benutzerdefinierten Test verwenden.
 
 >[AZURE.IMPORTANT] Für die Protokollelemente Http oder Https muss die Groß-/Kleinschreibung beachtet werden.
 
@@ -173,14 +174,14 @@ Auf den Namen des Tests wird in der Konfiguration <BackendHttpSettings> verwiese
 
 Zum Ändern der aktuellen Konfiguration eines Application Gateways sind drei Schritte nötig: das Abrufen der aktuellen XML-Konfigurationsdatei, das Einfügen des benutzerdefinierten Tests in die XML-Datei und das Konfigurieren des Application Gateways mit den neuen XML-Einstellungen.
 
-### Schritt 1
+### Schritt 1
 
 Rufen Sie mit get-AzureApplicationGatewayConfig die XML-Datei ab. Dadurch wird die XML-Konfigurationsdatei exportiert, sodass ihr die Einstellungen für den Test hinzugefügt werden können.
 
 	get-AzureApplicationGatewayConfig -Name <application gateway name> -Exporttofile "<path to file>"
 
 
-### Schritt 2
+### Schritt 2
 
 Öffnen Sie die XML-Datei in einem Texteditor. Fügen Sie nach `<frontendport>` den Abschnitt `<probe>` hinzu.
 
@@ -209,7 +210,7 @@ Fügen Sie den Namen des Tests im Abschnitt „BackendHttpSettings“ der XML-Da
 Speichern Sie die XML-Datei.
 
 
-### Schritt 3
+### Schritt 3
 
 Aktualisieren Sie die Application Gateway-Konfiguration mit der neuen XML-Datei, indem Sie **Set-AzureApplicationGatewayConfig** verwenden. Dadurch wird das Application Gateway mit der neuen Konfiguration aktualisiert.
 
@@ -222,4 +223,4 @@ Wenn Sie die Secure Sockets Layer-Auslagerung (SSL) konfigurieren möchten, ist 
 
 Wenn Sie ein Application Gateway für die Verwendung mit einem internen Load Balancer konfigurieren möchten, ist es ratsam, den Abschnitt [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md) zu lesen.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="05/31/2016"
 	ms.author="priyamo"/>
 
 # Rollover von Signaturschlüsseln in Azure Active Directory
@@ -96,7 +96,7 @@ Gehen Sie folgendermaßen vor, um sicherzustellen, dass die Logik für das Schl�
 ```
 2. Ändern Sie in der Einstellung **<add thumbprint=””>** den Fingerabdruckwert, indem Sie ein Zeichen durch ein anderes ersetzen. Speichern Sie die Datei **Web.config**.
 
-3. Erstellen Sie die Anwendung, und führen Sie sie anschließend aus. Wenn Sie den Anmeldevorgang abschließen, aktualisiert die Anwendung den Schlüssel, indem die erforderlichen Informationen vom Verbundmetadaten-Dokument Ihres Verzeichnisses heruntergeladen werden. Wenn beim Anmelden Probleme auftreten, stellen Sie sicher, dass die Änderungen in Ihrer Anwendung richtig sind. Lesen Sie hierzu das Thema [Adding Sign-On to Your Web Application Using Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) (Hinzufügen der Anmeldung zu einer Web-Anwendung mithilfe von Azure AD), oder laden Sie das folgende Codebeispiel herunter: [Multi-Tenant Cloud Application for Microsoft Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b) (Mehrinstanzenfähige Cloudanwendung für Azure Active Directory).
+3. Erstellen Sie die Anwendung, und führen Sie sie anschließend aus. Wenn Sie den Anmeldevorgang abschließen, aktualisiert die Anwendung den Schlüssel, indem die erforderlichen Informationen vom Verbundmetadaten-Dokument Ihres Verzeichnisses heruntergeladen werden. Wenn beim Anmelden Probleme auftreten, stellen Sie sicher, dass die Änderungen in Ihrer Anwendung richtig sind. Lesen Sie hierzu das Thema [Adding Sign-On to Your Web Application Using Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) (Hinzufügen der Anmeldung zu einer Web-Anwendung mithilfe von Azure AD), oder laden Sie das folgende Codebeispiel herunter: [Multi-Tenant Cloud Application for Windows Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b) (Mehrinstanzenfähige Cloudanwendung für Azure Active Directory).
 
 
 ### Mit Visual Studio 2008 oder 2010 erstellte Webanwendungen und Windows Identity Foundation (WIF) V1. 0 für .NET 3.5
@@ -228,4 +228,4 @@ Wenn Ihr Anwendungstyp oder Ihre Plattform derzeit kein Verfahren für die autom
 
 Dadurch haben Sie das X509-Zertifikat erstellt, das als öffentlicher Schlüssel für Azure AD verwendet wird. Mit den Details des Zertifikats wie etwa Fingerabdruck und Ablaufdatum können Sie manuell oder programmgesteuert prüfen, ob das Zertifikat und der Fingerabdruck Ihrer Anwendung gültig sind.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

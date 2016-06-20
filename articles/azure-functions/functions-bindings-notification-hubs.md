@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Azure Notification Hub-Bindungen in Azure Functions verwendet werden."
 	services="functions"
 	documentationCenter="na"
-	authors="christopheranderson"
+	authors="wesmc7777"
 	manager="erikre"
 	editor=""
 	tags=""
@@ -16,7 +16,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
 	ms.date="05/16/2016"
-	ms.author="chrande"/>
+	ms.author="wesmc"/>
 
 # Azure Functions Notification Hub-Ausgabebindung
 
@@ -24,7 +24,7 @@ Dieser Artikel erläutert das Konfigurieren und Codieren von Azure Notification 
 
 [AZURE.INCLUDE [Einführung](../../includes/functions-bindings-intro.md)]
 
-Ihre Funktionen können über einen konfigurierten Azure Notification Hub mit sehr wenigen Codezeilen Pushbenachrichtigungen senden. Allerdings muss der Notification Hub für die Plattformbenachrichtigungsdienste konfiguriert sein, die Sie verwenden möchten. Weitere Informationen zum Konfigurieren eines Azure Notification Hubs und zum Entwickeln von Clientanwendungen, die sich für Benachrichtigungen registrieren, finden Sie unter [Erste Schritte mit Notification Hubs](../notification-hubs/notification-hubs-windows-store-dotnet-get-started.md). Klicken Sie dabei oben auf Ihre Zielclientplattform.
+Ihre Funktionen können über einen konfigurierten Azure Notification Hub mit sehr wenigen Codezeilen Pushbenachrichtigungen senden. Allerdings muss der Notification Hub für die Plattformbenachrichtigungsdienste konfiguriert sein, die Sie verwenden möchten. Weitere Informationen zum Konfigurieren eines Azure Notification Hubs und zum Entwickeln von Clientanwendungen, die sich für den Empfang von Benachrichtigungen registrieren, finden Sie unter [Erste Schritte mit Notification Hubs](../notification-hubs/notification-hubs-windows-store-dotnet-get-started.md). Klicken Sie dabei oben auf Ihre Zielclientplattform.
 
 ## „function.json“ für Azure Notification Hub-Ausgabebindung
 
@@ -155,4 +155,4 @@ Beispielcode:
 
 [AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

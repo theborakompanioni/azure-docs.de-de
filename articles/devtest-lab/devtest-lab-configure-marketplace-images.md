@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="06/01/2016"
 	ms.author="tarcher"/>
 
 # Konfigurieren von Azure Marketplace-Image-Einstellungen in einem Lab
@@ -26,13 +26,13 @@ DevTest Labs unterstützt die Erstellung neuer VMs auf Basis von Azure Marketpla
 
 1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
-1. Tippen Sie auf **Durchsuchen**, und tippen Sie dann in der Liste auf **DevTest Labs**.
+1. Wählen Sie **Durchsuchen** und dann in der Liste **DevTest Labs**.
 
-1. Tippen Sie in der Liste der Labs auf das gewünschte Lab.
+1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.
 
 1. Das Blatt **Einstellungen** des ausgewählten Labs wird angezeigt.
 
-1. Tippen Sie auf dem Blatt **Einstellungen** auf **Marketplace-Images**.
+1. Wählen Sie auf dem Blatt **Einstellungen** **Marketplace-Images**.
 
 	![Konfigurieren, wie Azure Marketplace-Images verwendet werden](./media/devtest-lab-configure-marketplace-images/lab-settings-marketplace-images.png)
 
@@ -54,4 +54,4 @@ DevTest Labs unterstützt die Erstellung neuer VMs auf Basis von Azure Marketpla
 
 Nachdem Sie konfiguriert haben, wie Azure Marketplace-Images beim Erstellen eines virtuellen Computers zulässig sind, ist der nächste Schritt das [Hinzufügen eines virtuellen Computers zu Ihrem Lab](./devtest-lab-add-vm-with-artifacts.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

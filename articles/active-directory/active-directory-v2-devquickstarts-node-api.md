@@ -13,7 +13,7 @@
   	ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="02/20/2016"
+	ms.date="05/31/2016"
 	ms.author="brandwe"/>
 
 # Schützen einer Web-API mit Node.js
@@ -645,8 +645,7 @@ Vergewissern Sie sich zunächst, dass Ihre MonogoDB-Instanz ausgeführt wird.
 
 Wechseln Sie danach zum Verzeichnis, und beginnen Sie mit dem Curling.
 
-`$ cd azuread`
-`$ node server.js`
+`$ cd azuread` `$ node server.js`
 
 `$ curl -isS http://127.0.0.1:8080 | json`
 
@@ -859,4 +858,4 @@ Weitere Ressourcen:
 
 Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen einzurichten. Rufen Sie dazu [diese Seite](https://technet.microsoft.com/security/dd252948) auf, und abonnieren Sie Sicherheitsempfehlungen.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

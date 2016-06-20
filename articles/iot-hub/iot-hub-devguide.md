@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="04/29/2016"
+ ms.date="05/29/2016" 
  ms.author="dobett"/>
 
 # Entwicklungsleitfaden für Azure IoT Hub
@@ -47,11 +47,13 @@ Im Folgenden finden Sie eine Beschreibung der Endpunkte:
 * **Geräteendpunkte**. Für jedes Gerät, das in der Geräteidentitätsregistrierung bereitgestellt wird, stellt IoT Hub eine Reihe von Endpunkten zur Verfügung, die ein Gerät zum Senden und Empfangen von Nachrichten verwenden kann:
     - *Senden von D2C-Nachrichten*. Verwenden Sie diesen Endpunkt, um D2C-Nachrichten zu senden. Weitere Informationen finden Sie unter [Messaging zwischen Gerät und Cloud](#d2c).
     - *Empfangen von C2D-Nachrichten*. Ein Gerät verwendet diesen Endpunkt, um gezielte C2D-Nachrichten zu empfangen. Weitere Informationen finden Sie unter [Messaging zwischen Cloud und Gerät](#c2d).
+    - *Initiieren von Dateiuploads*. Ein Gerät verwendet diesen Endpunkt zum Empfangen eines Azure Storage-SAS-URIs von IoT Hub, um eine Datei hochzuladen. Weitere Informationen finden Sie unter [Dateiuploads](#fileupload). 
 
-    Diese Endpunkte werden über die Protokolle HTTP 1.1, [MQTT v3.1.1][lnk-mqtt] und [AMQP 1.0][lnk-amqp] verfügbar gemacht. Beachten Sie, dass AMQP auch über [WebSockets][lnk-websockets] an Port 443 verfügbar ist.
+    Diese Endpunkte werden über die Protokolle HTTP 1.1, [MQTT v3.1.1][lnk-mqtt] und [AMQP 1.0][lnk-amqp] verfügbar gemacht. Beachten Sie, dass AMQP auch über [WebSockets][lnk-websockets] an Port 443 verfügbar ist.
 * **Dienstendpunkte**. Jeder IoT-Hub legt eine Reihe von Endpunkten offen, die Ihr Anwendungs-Back-End zur Kommunikation mit Ihren Geräten verwenden kann. Diese Endpunkte werden aktuell nur bei Verwendung des [AMQP][lnk-amqp]-Protokolls verfügbar gemacht.
     - *Empfangen von D2C-Nachrichten*. Dieser Endpunkt ist kompatibel mit [Azure Event Hubs][lnk-event-hubs]. Ein Back-End-Dienst kann ihn zum Lesen aller D2C-Nachrichten verwenden, die Ihre Geräte senden. Weitere Informationen finden Sie unter [Messaging zwischen Gerät und Cloud](#d2c).
     - *Senden von C2D-Nachrichten und Empfangen von Übermittlungsbestätigungen*. Diese Endpunkte ermöglichen Ihrem Anwendungs-Back-End das Senden von zuverlässigen C2D-Nachrichten sowie das Empfangen zugehöriger Übermittlungs- oder Ablaufbestätigungen. Weitere Informationen finden Sie unter [Messaging zwischen Cloud und Gerät](#c2d).
+    - *Empfangen von Dateibenachrichtigungen*. Dieser Messaging-Endpunkt ermöglicht den Empfang von Benachrichtigungen, wenn Ihre Geräte erfolgreich eine Datei hochgeladen haben. 
 
 Im Artikel [Microsoft Azure IoT SDKs][lnk-apis-sdks] werden die verschiedenen Möglichkeiten zum Zugriff auf diese Endpunkte beschrieben.
 
@@ -68,7 +70,7 @@ Wenn Sie SDKs (oder Produktintegrationen) verwenden, die nicht IoT Hub-fähig si
 
     ![D2C-Einstellungen][img-eventhubcompatible]
 
-> [AZURE.NOTE] Wenn das SDK einen Wert für **Hostname** oder **Namespace** benötigt, entfernen Sie das Schema aus dem **Event Hub-kompatiblen Endpunkt**. Wenn es sich bei Ihrem Event Hub-kompatiblen Endpunkt beispielsweise um **sb://iothub-ns-myiothub-1234.servicebus.windows.net/** handelt, lautet der **Hostname** **iothub-ns-myiothub-1234.servicebus.windows.net** und der **Namespace** **iothub-ns-myiothub-1234**.
+> [AZURE.NOTE] Wenn das SDK einen Wert für **Hostname** oder **Namespace** benötigt, entfernen Sie das Schema aus dem **Event Hub-kompatiblen Endpunkt**. Wenn es sich bei Ihrem Event Hub-kompatiblen Endpunkt beispielsweise um ****sb://iothub-ns-myiothub-1234.servicebus.windows.net/** handelt, lautet der **Hostname** **iothub-ns-myiothub-1234.servicebus.windows.net** und der **Namespace** **iothub-ns-myiothub-1234**.
 
 Sie können in diesem Fall eine beliebige gemeinsam genutzte Sicherheitsrichtlinie mit den **ServiceConnect**-Berechtigungen zur Verbindungsherstellung mit dem angegebenen Event Hub verwenden.
 
@@ -90,7 +92,7 @@ Jeder IoT-Hub enthält eine Geräteidentitätsregistrierung. Mit dieser Registri
 
 Auf höherer Ebene ist die Geräteidentitätsregistrierung eine RESTful-fähige Sammlung von Geräteidentitätsressourcen. In den folgenden Abschnitten werden die Eigenschaften von Geräteidentitätsressourcen sowie die Vorgänge beschrieben, die über die Registrierung für Identitäten ausgeführt werden können.
 
-> [AZURE.NOTE] Nähere Informationen zum HTTP-Protokoll und den SDKs, die Sie für die Interaktion mit der Geräteidentitätsregistrierung verwenden können, finden Sie unter [Microsoft Azure IoT SDKs][lnk-apis-sdks].
+> [AZURE.NOTE] Nähere Informationen zum HTTP-Protokoll und den SDKs, die Sie für die Interaktion mit der Geräteidentitätsregistrierung verwenden können, finden Sie unter [IoT Hub-SDKs][lnk-apis-sdks].
 
 ### Geräteidentitätseigenschaften <a id="deviceproperties"></a>
 
@@ -98,7 +100,7 @@ Geräteidentitäten werden als JSON-Dokumente mit den folgenden Eigenschaften da
 
 | Eigenschaft | Optionen | Beschreibung |
 | -------- | ------- | ----------- |
-| deviceId | erforderlich, bei Aktualisierungen schreibgeschützt | Eine Zeichenfolge mit Berücksichtigung von Klein-/Großschreibung (bis zu 128 Zeichen lang), die aus alphanumerischen ASCII-Zeichen (7 Bit) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` besteht. |
+| deviceId | erforderlich, bei Aktualisierungen schreibgeschützt | Eine Zeichenfolge mit Berücksichtigung von Klein-/Großschreibung (bis zu 128 Zeichen lang), die aus alphanumerischen ASCII-Zeichen (7 Bit) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` besteht. |
 | generationId | erforderlich, schreibgeschützt | Eine vom Hub generierte Zeichenfolge mit Berücksichtigung von Klein-/Großschreibung, die bis zu 128 Zeichen lang ist. Diese Zeichenfolge dient zur Unterscheidung von Geräten mit derselben **deviceId**, wenn diese gelöscht und neu erstellt wurden. |
 | etag | erforderlich, schreibgeschützt | Eine Zeichenfolge, die ein schwaches Etag für die Geräteidentität gemäß [RFC7232][lnk-rfc7232] darstellt.|
 | auth | optional | Ein zusammengesetztes Objekt, das Authentifizierungsinformationen und Sicherheitsdaten enthält. |
@@ -106,7 +108,7 @@ Geräteidentitäten werden als JSON-Dokumente mit den folgenden Eigenschaften da
 | status | erforderlich | Zugriffsanzeige. Kann **Aktiviert** oder **Deaktiviert** lauten. Sofern der Status **Aktiviert** lautet, kann das Gerät eine Verbindung herstellen. Lautet die Einstellung **Deaktiviert**, kann dieses Gerät auf keinen geräteseitigen Endpunkt zugreifen. |
 | statusReason | optional | Eine 128 Zeichen lange Zeichenfolge, die die Ursache des Geräteidentitätsstatus speichert. Alle UTF-8-Zeichen sind zulässig. |
 | statusUpdateTime | schreibgeschützt | Eine temporale Anzeige, die Datum und Uhrzeit der letzten Statusaktualisierung anzeigt. |
-| connectionState | schreibgeschützt | Ein Feld, das den Verbindungsstatus anzeigt: entweder **Verbunden** oder **Getrennt**. Dieses Feld stellt den Geräteverbindungsstatus aus IoT Hub-Sicht dar. **Wichtig**: Dieses Feld darf nur für Entwicklungs-/Debuggingzwecke verwendet werden. Der Verbindungszustand wird nur für Geräte aktualisiert, die AMQP oder MQTT verwenden. Er basiert außerdem auf Pings auf Protokollebene (MQTT- oder AMQP-Pings) und kann eine Verzögerung von maximal 5 Minuten haben. Aus diesen Gründen sind falsch positive Rückmeldungen möglich, z.B. als verbunden gemeldete Geräte, die tatsächlich aber getrennt sind. |
+| connectionState | schreibgeschützt | Ein Feld, das den Verbindungsstatus anzeigt: entweder **Verbunden** oder **Getrennt**. Dieses Feld stellt den Geräteverbindungsstatus aus IoT Hub-Sicht dar. **Wichtig:** Dieses Feld darf nur für Entwicklungs-/Debuggingzwecke verwendet werden. Der Verbindungszustand wird nur für Geräte aktualisiert, die AMQP oder MQTT verwenden. Er basiert außerdem auf Pings auf Protokollebene (MQTT- oder AMQP-Pings) und kann eine Verzögerung von maximal 5 Minuten haben. Aus diesen Gründen sind falsch positive Rückmeldungen möglich, z.B. als verbunden gemeldete Geräte, die tatsächlich aber getrennt sind. |
 | connectionStateUpdatedTime | schreibgeschützt | Eine temporale Anzeige, die Datum und Uhrzeit der letzten Aktualisierung des Verbindungsstatus angezeigt. |
 | lastActivityTime | schreibgeschützt | Eine temporale Anzeige, die anzeigt, an welchem Datum und zu welcher Uhrzeit das Gerät sich zuletzt verbunden und eine Nachricht empfangen oder gesendet hat. |
 
@@ -136,7 +138,7 @@ Für die Identitätsregistrierung eines IoT Hub-Geräts gilt Folgendes:
 
 Eine IoT-Lösung verfügt in der Regel über einen lösungsspezifischen Speicher mit anwendungsspezifischen Metadaten. Der lösungsspezifische Speicher in einer Lösung für intelligente Gebäude würde beispielsweise den Raum enthalten, in dem ein Temperatursensor bereitgestellt wird.
 
-> [AZURE.IMPORTANT] Sie dürfen die Geräte-Identitätsregistrierung nur für Geräteverwaltungs- und -bereitstellungsvorgänge nutzen. Vorgänge mit hohem Durchsatz zur Laufzeit dürfen nicht von der Ausführung von Vorgängen in der Geräte-Identitätsregistrierung abhängen. Das Überprüfen des Verbindungsstatus eines Geräts vor dem Senden eines Befehls ist z. B. kein unterstütztes Muster. Überprüfen Sie die [Drosselungsraten](#throttling) für die Geräte-Identitätsregistrierung und das Muster des [Gerätetakts][lnk-guidance-heartbeat].
+> [AZURE.IMPORTANT] Sie dürfen die Geräte-Identitätsregistrierung nur für Geräteverwaltungs- und -bereitstellungsvorgänge nutzen. Vorgänge mit hohem Durchsatz zur Laufzeit dürfen nicht von der Ausführung von Vorgängen in der Geräte-Identitätsregistrierung abhängen. Das Überprüfen des Verbindungsstatus eines Geräts vor dem Senden eines Befehls ist z. B. kein unterstütztes Muster. Überprüfen Sie die [Drosselungsraten](#throttling) für die Geräteidentitätsregistrierung und das Muster des [Gerätetakts][lnk-guidance-heartbeat].
 
 ### Deaktivieren von Geräten
 
@@ -160,7 +162,7 @@ In diesem Abschnitt werden die Optionen zum Schützen von Azure IoT Hub beschrie
 
 ### Zugriffssteuerung <a id="accesscontrol"></a>
 
-IoT Hub verwendet den folgenden Satz an *Berechtigungen*, um Zugriff auf den Endpunkt jedes IoT-Hubs zu gewähren. Berechtigungen beschränkten den Zugriff auf einen IoT Hub basierend auf der Funktionalität.
+IoT Hub verwendet den folgenden Satz an *Berechtigungen*, um Zugriff auf den Endpunkt jedes IoT Hubs zu gewähren. Berechtigungen beschränkten den Zugriff auf einen IoT Hub basierend auf der Funktionalität.
 
 * **RegistryRead**. Diese Berechtigung gewährt Lesezugriff auf die Geräteidentitätsregistrierung. Weitere Informationen finden Sie unter [Geräteidentitätsregistrierung](#device-identity-registry).
 * **RegistryReadWrite**. Diese Berechtigung gewährt Lese- und Schreibzugriff auf die Geräteidentitätsregistrierung. Weitere Informationen finden Sie unter [Geräteidentitätsregistrierung](#device-identity-registry).
@@ -175,7 +177,7 @@ Sie können Berechtigungen auf folgende Weise festlegen:
     - **service**: Richtlinie mit ServiceConnect-Berechtigung.
     - **device**: Richtlinie mit DeviceConnect-Berechtigung.
     - **registryRead**: Richtlinie mit RegistryRead-Berechtigung.
-    - **registryReadWrite**: Richtlinie mit den Berechtigungen RegistryRead und RegistryWrite.
+    - **registryReadWrite**: Richtlinie mit den Berechtigungen „RegistryRead“ und „RegistryWrite“.
 
 
 * **Sicherheitsanmeldeinformationen auf Gerätebasis**. Jeder IoT Hub enthält eine [Geräteidentitätsregistrierung](#device-identity-registry). Sie können für jedes Gerät in dieser Registrierung Sicherheitsanmeldeinformationen konfigurieren, die **DeviceConnect**-Berechtigungen erteilen, deren Gültigkeitsbereich auf die entsprechenden Geräteendpunkte festgelegt ist.
@@ -183,7 +185,7 @@ Sie können Berechtigungen auf folgende Weise festlegen:
 Beispielsweise In einer normalen IoT-Lösung:
 - Die Geräteverwaltungskomponente verwendet die Richtlinie *registryReadWrite*.
 - Die Ereignisprozessorkomponente verwendet die Richtlinie *service*.
-- Die Laufzeit-Geschäftslogikkomponente verwendet die Richtlinie *service*.
+- Die Laufzeit-Geschäftslogikkomponente für Geräte verwendet die Richtlinie *service*.
 - Einzelne Geräte stellen unter Verwendung von Anmeldeinformationen eine Verbindung her, die in der IoT Hub-Identitätsregistrierung gespeichert sind.
 
 Einen Leitfaden zu IoT Hub-Sicherheitsthemen finden Sie im Abschnitt zur Sicherheit unter [Entwerfen der Lösung][lnk-guidance-security].
@@ -221,7 +223,7 @@ Bei Verwenden von MQTT enthält das CONNECT-Paket die deviceId als ClientId, {io
 
 ##### Beispiel: #####
 
-Benutzername (bei deviceId wird Groß-/Kleinschreibung berücksichtigt): `iothubname.azure-devices.net/DeviceId`
+Benutzername (bei der Geräte-ID wird Groß-/Kleinschreibung berücksichtigt): `iothubname.azure-devices.net/DeviceId`
 
 Kennwort (SAS mit dem Geräte-Explorer generieren): `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -236,7 +238,7 @@ Bei Verwendung von SASL PLAIN kann ein Client, der eine Verbindung mit einem IoT
 
 ### Gültigkeitsbereich für Anmeldeinformationen auf Hubebene
 
-Sie können den Bereich für Sicherheitsrichtlinien auf Hubebene festlegen, indem Sie Token mit eingeschränktem Ressourcen-URI erstellen. Beispielsweise ist der Endpunkt zum Senden von D2C-Nachrichten von einem Gerät **/devices/{deviceId}/messages/events**. Sie können eine gemeinsam genutzte Sicherheitsrichtlinie auf Hubebene mit **DeviceConnect**-Berechtigungen auch dazu verwenden, um ein Token zu signieren, dessen resourceURI **/devices/{deviceId}** ist. So wird ein Token erstellt, das nur zum Senden von Gerätenachrichten im Namen des Geräts **deviceId** verwendet werden kann.
+Sie können den Bereich für Sicherheitsrichtlinien auf Hubebene festlegen, indem Sie Token mit eingeschränktem Ressourcen-URI erstellen. Beispielsweise ist der Endpunkt zum Senden von D2C-Nachrichten von einem Gerät **/devices/{deviceId}/messages/events**. Sie können eine gemeinsam genutzte Sicherheitsrichtlinie auf Hubebene mit **DeviceConnect**-Berechtigungen auch dazu verwenden, um ein Token zu signieren, dessen resourceURI-Element **/devices/{deviceId}** ist. So wird ein Token erstellt, das nur zum Senden von Gerätenachrichten im Namen des Geräts **deviceId** verwendet werden kann.
 
 Dieser Mechanismus ist mit einer [Event Hubs-Herausgeberrichtlinie][lnk-event-hubs-publisher-policy] vergleichbar und ermöglicht die Implementierung von benutzerdefinierten Authentifizierungsmethoden. Weitere Informationen finden Sie im Sicherheitsabschnitt von [Entwerfen der Lösung][lnk-guidance-security].
 
@@ -246,6 +248,7 @@ IoT Hub bietet ein einfaches Messaging für die Kommunikation:
 
 - [Cloud-zu-Gerät (C2D):](#c2d) Von einem Anwendungs-Back-End (*Dienst* oder *Cloud*).
 - [Gerät-zu-Cloud (D2C):](#d2c) Von einem Gerät zu einem Anwendungs-Back-End.
+- [Dateiuploads](#fileupload) von einem Gerät in ein zugeordnetes Azure Storage-Konto. 
 
 Die wichtigsten Eigenschaften beim IoT Hub-Messaging sind eine zuverlässige und stabile Übermittlung von Nachrichten. Dies bietet Ausfallsicherheit bei zeitweiligen Verbindungsproblemen auf Geräteseite und Lastspitzen bei der Ereignisverarbeitung auf Cloudseite. IoT Hub implementiert *mindestens einmal* Übermittlungsgarantien für das D2C- und C2D-Messaging.
 
@@ -265,14 +268,15 @@ Die folgende Tabelle zeigt den Satz an Systemeigenschaften in IoT Hub-Nachrichte
 
 | Eigenschaft | Beschreibung |
 | -------- | ----------- |
-| MessageId | Eine vom Benutzer festgelegte Kennung für die Nachricht, wird üblicherweise für Anforderung-Antwort-Muster verwendet. Format: Eine Zeichenfolge mit Berücksichtigung von Klein-/Großschreibung (bis zu 128 Zeichen lang), die aus alphanumerischen ASCII-Zeichen (7 Bit) + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` besteht. |
+| MessageId | Eine vom Benutzer festgelegte Kennung für die Nachricht, wird üblicherweise für Anforderung-Antwort-Muster verwendet. Format: Eine Zeichenfolge mit Berücksichtigung von Klein-/Großschreibung (bis zu 128 Zeichen lang), die aus alphanumerischen ASCII-Zeichen (7 Bit) + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` besteht. |
 | Sequenznummer | Eine Nummer (für jede Gerätewarteschlange eindeutig), die jeder C2D-Nachricht von IoT Hub zugewiesen wird |
-| To | Ein Ziel, das in [C2D](#c2d)-Nachrichten angegeben wird. |
+| To  
+ | Ein Ziel, das in [C2D](#c2d)-Nachrichten angegeben wird. |
 | ExpiryTimeUtc | Datum und Uhrzeit des Nachrichtenablaufs. |
 | EnqueuedTime | Datum und Uhrzeit des Empfangs der Nachricht durch IoT Hub. |
 | CorrelationId | Eine Zeichenfolgeneigenschaft in einer Antwortnachricht, die normalerweise die Nachrichten-ID der Anforderung im Anforderung-Antwort-Muster enthält. |
 | UserId | Eine ID zum Festlegen des Ursprungs von Nachrichten. Wenn IoT Hub Nachrichten generiert, wird diese Eigenschaft auf `{iot hub name}` festgelegt. |
-| Ack | Ein Feedbacknachrichtengenerator. Diese Eigenschaft wird in C2D-Nachrichten verwendet, um IoT Hub anzuweisen, als Ergebnis der Nachrichtenverarbeitung durch das Gerät Feedbacknachrichten zu generieren. Mögliche Werte: **none** (Standardeinstellung): es wird keine Feedbacknachricht generiert, **positive**: Feedbacknachricht empfangen, wenn die Nachricht abgeschlossen wurde, **negative**: Feedbacknachricht empfangen, wenn die Nachricht ohne vollständige Verarbeitung durch das Gerät abgelaufen ist (oder die maximale Anzahl von Zustellversuchen erreicht wurde), oder **full**: Feedback wird sowohl bei erfolgreicher als auch nicht erfolgreicher Nachrichtenverarbeitung generiert. Weitere Informationen finden Sie unter [Nachrichtenfeedback](#feedback). |
+| Ack | Ein Feedbacknachrichtengenerator. Diese Eigenschaft wird in C2D-Nachrichten verwendet, um IoT Hub anzuweisen, als Ergebnis der Nachrichtenverarbeitung durch das Gerät Feedbacknachrichten zu generieren. Mögliche Werte: **none** (Standardeinstellung): Es wird keine Feedbacknachricht generiert. **positive**: Feedbacknachricht empfangen, wenn die Nachricht abgeschlossen wurde. **negative**: Feedbacknachricht empfangen, wenn die Nachricht ohne vollständige Verarbeitung durch das Gerät abgelaufen ist (oder die maximale Anzahl von Zustellversuchen erreicht wurde). **full**: Feedback wird sowohl bei erfolgreicher als auch nicht erfolgreicher Nachrichtenverarbeitung generiert. Weitere Informationen finden Sie unter [Nachrichtenfeedback](#feedback). |
 | ConnectionDeviceId | Eine ID, die von IoT Hub für D2C-Nachrichten festgelegt wird. Diese Eigenschaft enthält die **deviceId** des Geräts, das die Nachricht sendet. |
 | ConnectionDeviceGenerationId | Eine ID, die von IoT Hub für D2C-Nachrichten festgelegt wird. Diese Eigenschaft enthält die **generationId** (gemäß [Geräteidentitätseigenschaften](#deviceproperties)) des Geräts, das die Nachricht gesendet hat. |
 | ConnectionAuthMethod | Eine von IoT Hub für D2C-Nachrichten festgelegte Authentifizierungsmethode. Diese Eigenschaft enthält Informationen zu der Methode, die zum Authentifizieren des Geräts verwendet wird, das die Nachricht sendet. Weitere Informationen finden Sie unter [D2C-Anti-Spoofing](#antispoofing).|
@@ -295,8 +299,8 @@ Im Allgemeinen sollten Sie AMQP (oder AMQP über WebSockets) möglichst immer ve
 #### Hinweise zur MQTT-Unterstützung
 IoT Hub implementiert die MQTT-Protokollversion 3.1.1 mit den folgenden Einschränkungen und einem bestimmten Verhalten:
 
-  * **QoS 2 wird nicht unterstützt**. Wenn ein Geräteclient eine Nachricht mit **QoS 2** veröffentlicht, schließt IoT Hub die Netzwerkverbindung. Wenn ein Geräteclient ein Thema mit **QoS 2** abonniert, gewährt IoT Hub im **SUBACK**-Paket maximal die QoS-Ebene 1.
-  * **Beibehaltungsnachrichten werden nicht beständig speichert**. Wenn ein Geräteclient eine Nachricht mit auf 1 festgelegtem RETAIN-Flag veröffentlicht, fügt IoT Hub der Nachricht die Anwendungseigenschaft **x-opt-retain** hinzu. Dies bedeutet, dass IoT Hub die Beibehaltungsnachricht nicht beständig speichert, sondern an die Back-End-Anwendung übergibt.
+  * **QoS 2 wird nicht unterstützt.** Wenn ein Geräteclient eine Nachricht mit **QoS 2** veröffentlicht, schließt IoT Hub die Netzwerkverbindung. Wenn ein Geräteclient ein Thema mit **QoS 2** abonniert, gewährt IoT Hub im **SUBACK**-Paket maximal die QoS-Ebene 1.
+  * **Beibehaltungsnachrichten werden nicht beständig speichert.** Wenn ein Geräteclient eine Nachricht mit auf 1 festgelegtem RETAIN-Flag veröffentlicht, fügt IoT Hub der Nachricht die Anwendungseigenschaft **x-opt-retain** hinzu. Dies bedeutet, dass IoT Hub die Beibehaltungsnachricht nicht beständig speichert, sondern an die Back-End-Anwendung übergibt.
 
 Weitere Informationen finden Sie unter [IoT Hub MQTT-Unterstützung][lnk-mqtt-support].
 
@@ -304,13 +308,13 @@ Schließlich sollten Sie das [Azure IoT-Protokollgateway][lnk-azure-protocol-gat
 
 ### Gerät an Cloud <a id="d2c"></a>
 
-Wie im Abschnitt [Endpunkte](#endpoints) beschrieben, werden D2C-Nachrichten über einen geräteseitigen Endpunkt (**/devices/{deviceId}/Nachrichten/Ereignisse**) gesendet. Die Nachrichten werden über einen dienstseitigen Endpunkt (**/messages/events**) empfangen, der mit [Event Hubs][lnk-event-hubs] kompatibel ist. Auf diese Weise können Sie standardmäßige Event Hubs-Integration und SDKs zum Empfangen von D2C-Nachrichten verwenden.
+Wie im Abschnitt [Endpunkte](#endpoints) beschrieben, werden D2C-Nachrichten über einen geräteseitigen Endpunkt (**/devices/{deviceId}/messages/events**) gesendet. Die Nachrichten werden über einen dienstseitigen Endpunkt (**/messages/events**) empfangen, der mit [Event Hubs][lnk-event-hubs] kompatibel ist. Auf diese Weise können Sie standardmäßige Event Hubs-Integration und SDKs zum Empfangen von D2C-Nachrichten verwenden.
 
 IoT Hub implementiert D2C-Messaging in einer Weise, die [Event Hubs][lnk-event-hubs] ähnelt. Die D2C-Nachrichten von IoT Hub ähneln eher Event Hubs-*Ereignissen* als [Service Bus][lnk-servicebus]-*Nachrichten*.
 
 Diese Implementierung hat folgende Auswirkungen:
 
-* Ähnlich wie Event Hubs-Ereignisse sind D2C-Nachrichten dauerhaft und werden in einem IoT-Hub maximal sieben Tage aufbewahrt (siehe [Optionen für die D2C-Konfiguration](#d2cconfiguration)).
+* Ähnlich wie Event Hubs-Ereignisse sind D2C-Nachrichten dauerhaft und werden in einem IoT Hub maximal sieben Tage aufbewahrt (siehe [Optionen für die D2C-Konfiguration](#d2cconfiguration)).
 * D2C-Nachrichten werden für einen festen Satz an Partitionen partitioniert, der zum Zeitpunkt der Erstellung festgelegt wird (siehe [Optionen für die D2C-Konfiguration](#d2cconfiguration)).
 * Analog zu Event Hubs müssen Clients, die D2C-Nachrichten lesen, Partitionen und Prüfpunkte verarbeiten können. Siehe [Event Hubs: Ereignisconsumer][lnk-event-hubs-consuming-events].
 * Wie Event Hubs-Ereignisse können D2C-Nachrichten maximal 256 KB umfassen und in Batches gruppiert werden, um Sendevorgänge zu optimieren. Batches können maximal 256 KB groß sein und maximal 500 Nachrichten enthalten.
@@ -319,7 +323,7 @@ Es gibt jedoch einige wichtige Unterschiede zwischen dem D2C-Messaging von IoT H
 
 * Wie im Abschnitt [Sicherheit](#security) erläutert, ermöglicht IoT Hub eine Authentifizierung und Zugriffsteuerung auf Gerätebasis.
 * IoT Hub unterstützt Millionen von gleichzeitig verbundenen Geräten (siehe [Kontingente und Drosselung](#throttling)), während Event Hubs auf 5.000 AMQP-Verbindungen pro Namespace beschränkt ist.
-* IoT Hub ermöglicht keine zufällige Partitionierung mit einem **PartitionKey**. D2C-Nachrichten werden gemäß ihrer Ursprungs-**deviceId** partitioniert.
+* IoT Hub ermöglicht keine zufällige Partitionierung mit einem **PartitionKey**. D2C-Nachrichten werden gemäß ihrer ursprünglichen **deviceId** partitioniert.
 * Die Skalierung funktioniert in IoT Hub etwas anders als in Event Hubs. Weitere Informationen finden Sie unter [Skalieren von IoT Hub][lnk-guidance-scale].
 
 Hinweis: Dies bedeutet nicht, dass Sie in allen Szenarien IoT Hub durch Event Hubs ersetzen können. In einigen Szenarien mit Ereignisverarbeitung kann es beispielsweise erforderlich sein, Ereignisse in Bezug auf eine andere Eigenschaft oder ein anderes Feld neu zu partitionieren, bevor die Datenströme analysiert werden können. In diesem Szenario können Sie mit einem Event Hub zwei Bestandteile der Pipeline zur Datenstromverarbeitung entkoppeln. Weitere Informationen finden Sie unter *Partitionen* in [Übersicht über Azure Event Hubs][lnk-eventhub-partitions].
@@ -412,7 +416,7 @@ Beim Senden einer C2D-Nachricht kann der Dienst das Übermitteln von Feedback au
 - Wenn Sie die **Ack**-Eigenschaft auf **negative** festlegen, generiert IoT Hub nur dann eine Feedbacknachricht, wenn die C2D-Nachricht den Status **Unzustellbar** erreicht.
 - Bei Festlegung der **Ack**-Eigenschaft auf **full** generiert IoT Hub in beiden Fällen eine Feedbacknachricht.
 
-> [AZURE.NOTE] Wenn **Ack** auf **full** festgelegt ist, Sie und keine Feedbacknachricht erhalten, bedeutet dies, dass die Feedbacknachricht abgelaufen ist. Der Dienst kann nicht wissen, was mit der ursprünglichen Nachricht geschehen ist. In der Praxis sollte ein Dienst sicherstellen, dass Feedback verarbeitet werden kann, bevor es abläuft. Die maximale Ablaufzeit beträgt zwei Tage, daher sollte ausreichend Zeit verbleiben, um den Dienst zu starten, wenn ein Fehler auftritt.
+> [AZURE.NOTE] Wenn **Ack** auf **full** festgelegt ist, und Sie keine Feedbacknachricht erhalten, bedeutet dies, dass die Feedbacknachricht abgelaufen ist. Der Dienst kann nicht wissen, was mit der ursprünglichen Nachricht geschehen ist. In der Praxis sollte ein Dienst sicherstellen, dass Feedback verarbeitet werden kann, bevor es abläuft. Die maximale Ablaufzeit beträgt zwei Tage, daher sollte ausreichend Zeit verbleiben, um den Dienst zu starten, wenn ein Fehler auftritt.
 
 Wie im Abschnitt [Endpunkte](#endpoints) erläutert, übermittelt IoT Hub Feedback in Form von Nachrichten über einen dienstseitigen Endpunkt (**/messages/servicebound/feedback**). Die Semantik für den Empfang von Feedback stimmt mit der für C2D-Nachrichten überein und weist den gleichen [Nachrichtenlebenszyklus](#message lifecycle) auf. Nachrichtenfeedback wird nach Möglichkeit in einer einzigen Nachricht zusammengefasst, die das folgende Format aufweist.
 
@@ -470,6 +474,67 @@ Jeder IoT Hub legt die folgenden Konfigurationsoptionen für das C2D-Messaging o
 
 Weitere Informationen finden Sie unter [Verwalten von IoT Hubs][lnk-manage].
 
+### Dateiuploads <a id="fileupload"></a>
+
+Wie im Abschnitt [Endpunkte](#endpoints) ausführlich beschrieben, können Geräte Dateiuploads initiieren, indem sie eine Benachrichtigung über einen geräteseitigen Endpunkt senden (**/devices/{deviceId}/files**). Wenn ein Gerät IoT Hub über einen abgeschlossenen Upload benachrichtigt, generiert IoT Hub Dateiuploadbenachrichtigungen, die Sie über einen dienstseitigen Endpunkt als Nachrichten empfangen können (**/messages/servicebound/filenotifications**).
+
+Statt Nachrichten über IoT Hub selbst zu übertragen, fungiert IoT Hub als Verteiler für ein zugeordnetes Azure Storage-Konto. Ein Gerät fordert ein Speichertoken von IoT Hub an, das spezifisch für die vom Gerät hochgeladene Datei gilt. Das Gerät verwendet den SAS-URI zum Hochladen der Datei in den Speicher. Wenn der Upload abgeschlossen ist, sendet das Gerät eine Benachrichtigung über den Abschluss an IoT Hub. IoT Hub überprüft, ob die Datei hochgeladen wurde, und fügt dann dem neuen dienstseitigen Messaging-Endpunkt für Dateibenachrichtigungen eine Dateiuploadbenachrichtigung hinzu.
+
+#### Zuweisen eines Azure Storage-Kontos zu IoT Hub
+
+Damit Sie die Funktion zum Hochladen von Dateien verwenden können, müssen Sie IoT Hub zunächst ein Azure Storage-Konto zuweisen. Sie können diesen Schritt entweder über das [Azure-Portal][lnk-management-portal] oder programmgesteuert über [Azure IoT Hub-Ressourcenanbieter-APIs][lnk-resource-provider-apis] ausführen. Nachdem Sie IoT Hub ein Speicherkonto zugewiesen haben, gibt der Dienst einen SAS-URI an ein Gerät zurück, wenn das Gerät eine Anforderung zum Dateiupload initiiert.
+
+> [AZURE.NOTE] Die [Azure IoT Hub-SDKs][lnk-apis-sdks] behandeln automatisch das Abrufen des SAS-URIs, das Hochladen der Datei und das Benachrichtigen von IoT Hub über einen abgeschlossenen Upload.
+
+#### Initialisieren eines Dateiuploads
+
+IoT Hub verfügt über zwei REST-Endpunkte, um den Dateiupload zu unterstützen: einen zum Abrufen des SAS-URIs für den Speicher und einen zum Benachrichtigen von IoT Hub über einen abgeschlossenen Upload. Das Gerät initiiert den Dateiupload, indem es eine GET-Anforderung an IoT Hub unter `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}` sendet. Der Hub gibt einen SAS-URI, der speziell für die hochzuladende Datei gilt, und eine Korrelations-ID zurück, die nach Abschluss des Uploads verwendet werden soll.
+
+#### Benachrichtigen von IoT Hub über einen abgeschlossenen Dateiupload
+
+Das Gerät ist verantwortlich für das Hochladen der Datei in den Speicher mithilfe der Azure Storage-SDKs. Nach Abschluss des Uploads sendet das Gerät eine POST-Anforderung an IoT Hub unter `{iot hub}.azure-devices.net/devices/{deviceId}/messages/files/notifications/{correlationId}`. Dabei verwendet es die mit der ursprünglichen GET-Anforderung empfangene Korrelations-ID.
+
+#### Benachrichtigungen zum Dateiupload
+
+Wenn ein Gerät eine Datei hochlädt und IoT Hub über den Abschluss des Uploads informiert, generiert der Dienst optional eine Benachrichtigungsmeldung, die den Namen und den Speicherort der Datei enthält.
+
+Wie im Abschnitt [Endpunkte](#endpoints) erläutert, übermittelt IoT Hub Dateiuploadbenachrichtigungen als Meldungen über einen dienstseitigen Endpunkt (**/messages/servicebound/fileuploadnotifications**). Die Semantik für Dateiuploadbenachrichtigungen stimmt mit der für C2D-Nachrichten überein und weist den gleichen [Nachrichtenlebenszyklus](#message lifecycle) auf. Jede Nachricht, die vom Endpunkt für Dateiuploadbenachrichtigungen abgerufen wird, ist ein JSON-Datensatz mit den folgenden Eigenschaften:
+
+| Eigenschaft | Beschreibung |
+| -------- | ----------- |
+| EnqueuedTimeUtc | Zeitstempel, der die Erstellung der Benachrichtigung angibt. |
+| DeviceId | **DeviceId** des Geräts, das die Datei hochgeladen hat. |
+| BlobUri | Der URI der hochgeladenen Datei. |
+| BlobName | Der Name der hochgeladenen Datei. |
+| LastUpdatedTime | Zeitstempel, der die letzte Aktualisierung der Datei angibt. |
+| BlobSizeInBytes | Die Größe der hochgeladenen Datei. |
+
+**Beispiel**. Hier sehen Sie einen Beispieltext einer Dateiuploadbenachrichtigung:
+
+```
+{
+	"deviceId":"mydevice",
+	"blobUri":"https://{storage account}.blob.core.windows.net/{container name}/mydevice/myfile.jpg",
+	"blobName":"mydevice/myfile.jpg",
+	"lastUpdatedTime":"2016-06-01T21:22:41+00:00",
+	"blobSizeInBytes":1234,
+	"enqueuedTimeUtc":"2016-06-01T21:22:43.7996883Z"
+}
+```
+
+#### Konfigurationsoptionen für Dateiuploadbenachrichtigungen <a id="c2dconfiguration"></a>
+
+Jeder IoT Hub legt die folgenden Konfigurationsoptionen für Dateiuploadbenachrichtigungen offen:
+
+| Eigenschaft | Beschreibung | Bereich und Standardwert |
+| -------- | ----------- | ----------------- |
+| **enableFileUploadNotifications** | Steuert, ob Dateiuploadbenachrichtigungen in den Endpunkt für Dateibenachrichtigungen geschrieben werden. | Bool. Standardwert: TRUE. |
+| **fileNotifications.ttlAsIso8601** | Standardgültigkeitsdauer für Dateiuploadbenachrichtigungen. | ISO\_8601-Intervall bis zu 48 Stunden (mindestens 1 Minute). Standardwert: 1 Stunde. |
+| **fileNotifications.lockDuration** | Sperrdauer für die Warteschlange der Dateiuploadbenachrichtigungen. | 5 bis 300 Sekunden (mindestens 5 Sekunden). Standardwert: 60 Sekunden. |
+| **fileNotifications.maxDeliveryCount** | Maximale Übermittlungsanzahl für die Warteschlange der Dateiuploadbenachrichtigungen. | 1 bis 100. Standardwert: 100. |
+
+Weitere Informationen finden Sie unter [Verwalten von IoT Hubs][lnk-manage].
+
 ## Kontingente und Drosselung <a id="throttling"></a>
 
 Jedes Azure-Abonnement kann maximal 10 IoT Hubs enthalten.
@@ -491,8 +556,9 @@ Die nachfolgende Liste zeigt alle erzwungenen Werte für die Drosselung. Die Wer
 | Senden von Nachrichten von Geräten an die Cloud | 120/Sekunden/Einheit (für S2), 12/Sekunden/Einheit (für S1); <br/>Mindestens 100/Sekunde. <br/> Zwei S1-Einheiten entsprechen beispielsweise 2*12 = 24/Sekunde. Es sind jedoch mindestens 100/Sekunde auf die Einheiten verteilt vorhanden. Mit neun S1-Einheiten erhalten Sie 108/Sekunde (9*12) über alle Einheiten. |
 | C2D-Sendevorgänge | 100/Minute/Einheit. |
 | C2D-Empfangsvorgänge | 1\.000/Minute/Einheit. |
+| Dateiuploadvorgänge | 100 Dateiuploadbenachrichtigungen/Minuten/Einheit<br/> Für ein Speicherkonto können jeweils 10.000 SAS-URIs in Gebrauch sein. <br/> 10 SAS-URIs/Gerät können jeweils in Gebrauch sein. | 
 
-Hier muss gesagt werden, dass die Drosselung der *Geräteverbindungen* nicht die maximale Anzahl gleichzeitig verbundener Geräte bestimmt, sondern die Rate, mit der neue Geräteverbindungen mit einem IoT-Hub eingerichtet werden können. Die Drosselung ist abhängig von der Anzahl der Einheiten, die für den Hub bereitgestellt werden.
+Hier muss gesagt werden, dass die Drosselung der *Geräteverbindungen* nicht die maximale Anzahl gleichzeitig verbundener Geräte bestimmt, sondern die Rate, mit der neue Geräteverbindungen mit einem IoT Hub eingerichtet werden können. Die Drosselung ist abhängig von der Anzahl der Einheiten, die für den Hub bereitgestellt werden.
 
 Wenn Sie beispielsweise eine S1-Einheit erwerben, erhalten Sie eine Drosselung von 100 Verbindungen pro Sekunde. Das bedeutet, dass das Herstellen einer Verbindung mit 100.000 Geräten mindestens 1.000 Sekunden (ca. 16 Minuten) dauert. Es können jedoch so viele Geräte gleichzeitig verbunden sein, wie in der Geräteidentitätsregistrierung registriert sind.
 
@@ -559,4 +625,4 @@ Nachdem Sie in diesem Dokument einen Überblick über die Entwicklung für IoT H
 [lnk-mqtt-support]: iot-hub-mqtt-support.md
 [lnk-throttle-blog]: https://azure.microsoft.com/blog/iot-hub-throttling-and-you/
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

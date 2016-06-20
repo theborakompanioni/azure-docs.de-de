@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Sichern und Wiederherstellen von Stretch-fähigen Datenbanken | Microsoft Azure"
-	description="Erfahren Sie mehr über das Sichern und Wiederherstellen von Stretch-fähigen Datenbanken."
+	pageTitle="Sichern von Stretch-fähigen Datenbanken | Microsoft Azure"
+	description="Erfahren Sie mehr über das Sichern von Stretch-fähigen Datenbanken."
 	services="sql-server-stretch-database"
 	documentationCenter=""
 	authors="douglaslMS"
@@ -13,42 +13,49 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
+	ms.date="06/03/2016"
 	ms.author="douglasl"/>
 
+# Sichern von Stretch-fähigen Datenbanken
 
-# Sichern und Wiederherstellen von Stretch-fähigen Datenbanken
+Mit Sicherungskopien von Datenbanken können Sie Ihre Daten nach vielen Arten von Ausfällen, Fehlern und Notfällen wiederherstellen.
 
-Zum Sichern und Wiederherstellen von Stretch-fähigen Datenbanken können Sie weiterhin die bereits verwendeten Methoden nutzen. Weitere Informationen zum SQL Server-Backup und zur Wiederherstellung finden Sie unter [Sichern und Wiederherstellen von SQL Server-Datenbanken](https://msdn.microsoft.com/library/ms187048.aspx).
+-   Sie müssen die Stretch-fähigen SQL Server-Datenbanken sichern.  
 
-Das Backup einer Stretch-fähigen Datenbank ist ein flaches Backup, das die an den Remoteserver migrierten Daten nicht einschließt.
+-   Microsoft Azure sichert automatisch die Remotedaten, die von der Stretch-Datenbank von SQL Server zu Azure migriert werden.
 
-Stretch-Datenbank bietet vollständige Unterstützung für die Point-in-Time-Wiederherstellung. Nachdem Sie Ihre SQL Server-Datenbank zu einem bestimmten Zeitpunkt wiederhergestellt und die Verbindung mit Azure erneut autorisiert haben, stimmt Stretch-Datenbank die Remotedaten mit demselben Zeitpunkt ab. Weitere Informationen zur Point-in-Time-Wiederherstellung in SQL Server finden Sie unter [Wiederherstellen einer SQL Server-Datenbank zu einem Zeitpunkt (vollständiges Wiederherstellungsmodell)](https://msdn.microsoft.com/library/ms179451.aspx). Informationen über die gespeicherte Prozedur, die Sie zum erneuten Autorisieren der Verbindung mit Azure nach einer Wiederherstellung ausführen müssen, finden Sie unter [sys.sp\_rda\_reauthorize\_db (Transact-SQL)](https://msdn.microsoft.com/library/mt131016.aspx).
+>    [AZURE.NOTE] Die Datensicherung ist nur ein Teil einer vollständigen Lösung für hohe Verfügbarkeit und Geschäftskontinuität. Weitere Informationen zu hoher Verfügbarkeit finden Sie unter [Lösungen für hohe Verfügbarkeit](https://msdn.microsoft.com/library/ms190202.aspx).
 
-## <a name="Reconnect"></a>Wiederherstellen einer Stretch-fähigen Datenbank aus einem Backup
+## Sichern von SQL Server-Daten  
 
-1.  Stellen Sie die Datenbank aus einem Backup wieder her.
+Zum Sichern und Wiederherstellen von Stretch-fähigen SQL Server-Datenbanken können Sie weiterhin die bereits verwendeten SQL Server-Sicherungsmethoden nutzen. Weitere Informationen finden Sie unter [Sichern und Wiederherstellen von SQL Server-Datenbanken](https://msdn.microsoft.com/library/ms187048.aspx).
 
-2.  Führen Sie die gespeicherte Prozedur [sys.sp\_rda\_reauthorize\_db (Transact-SQL)](https://msdn.microsoft.com/library/mt131016.aspx) aus, um die Verbindung der lokalen Stretch-fähigen Datenbank mit Azure erneut herzustellen.
+Sicherungen einer Stretch-fähigen SQL Server-Datenbank enthalten nur die lokalen Daten sowie Daten, die zum Zeitpunkt der Sicherung für die Migration relevant sind. (Bei relevanten Daten handelt es sich um Daten, die noch nicht migriert wurden, für die jedoch basierend auf den Migrationseinstellungen in den Tabellen eine Migration nach Azure geplant ist.) Dies wird als **flache** Sicherung bezeichnet, in der nicht die Daten enthalten sind, die bereits zu Azure migriert wurden.
 
-    -   Geben Sie die vorhandenen datenbankbezogenen Anmeldeinformationen als einen Wert vom Datentyp „sysname“ oder „varchar(128)“ ein. (Verwenden Sie nicht „varchar(max)“.) Sie können den Anmeldenamen in der Ansicht **sys.database\_scoped\_credentials** nachschlagen.
+## Sichern der Azure-Remotedaten   
 
-	-   Geben Sie an, ob eine Kopie der Remotedaten erstellt und eine Verbindung mit der Kopie hergestellt werden soll.
+Microsoft Azure sichert automatisch die Remotedaten, die von der Stretch-Datenbank von SQL Server zu Azure migriert werden.
 
-    ```tsql
-    Declare @credentialName nvarchar(128);
-    SET @credentialName = N'<database_scoped_credential_name_created_previously>';
-    EXEC sp_rda_reauthorize_db @credential = @credentialName, @with_copy = 0;
-    ```
+### Mit automatischer Datensicherung reduziert Azure das Datenverlustrisiko  
+Der Azure-Dienst SQL Server Stretch-Datenbank schützt Ihre Remotedatenbanken mindestens alle 8 Stunden durch automatische Speichermomentaufnahmen. Jede Momentaufnahme wird 7 Tage lang beibehalten, um Ihnen eine Reihe von möglichen Wiederherstellungspunkten zu bieten.
 
-## <a name="MoreInfo"></a>Weitere Informationen zu Sicherung und Wiederherstellung
-Backups für eine Datenbank mit aktiviertem Stretch-Datenbank enthalten nur die lokalen Daten und die berechtigen Daten zu dem Zeitpunkt, an dem das Backup ausgeführt wird. Diese Backups enthalten auch Informationen über den Remoteendpunkt, an dem sich die Remotedaten der Datenbank befinden. Dies wird als „flaches Backup“ bezeichnet. Tiefe Backups, die alle Daten (lokal und remote) der Datenbank enthalten, werden nicht unterstützt.
+### Mit Georedundanz reduziert Azure das Datenverlustrisiko  
+Azure-Datenbanksicherungen werden in georedundantem Azure Storage (RA-GRS) gespeichert und sind daher standardmäßig georedundant. Georedundanter Speicher repliziert Ihre Daten in eine sekundäre Region, die Hunderte von Kilometern von der primären Region entfernt ist. In primären und sekundären Regionen werden Ihre Daten jeweils dreimal in separaten Fehler- und Upgradedomänen repliziert. Dadurch wird sichergestellt, dass Ihre Daten selbst bei vollständigen regionalen Ausfällen oder bei Notfällen, in denen eine Azure-Region nicht zur Verfügung steht, erhalten bleiben.
 
-Beim Wiederherstellen des Backups einer Datenbank mit aktiviertem Stretch-Datenbank werden die lokalen Daten und berechtigten Daten wie erwartet in der Datenbank wiederhergestellt. (Bei berechtigten Daten handelt es sich um Daten, die noch nicht verschoben wurden, für die jedoch eine Verschiebung nach Azure basierend auf der Stretch-Datenbankkonfiguration in den Tabellen geplant ist.) Nachdem der Wiederherstellungsvorgang ausgeführt wurde, enthält die Datenbank lokale und berechtigte Daten von dem Zeitpunkt, an dem das Backup ausgeführt wurde, sie enthält jedoch nicht die erforderlichen Anmeldeinformationen und Artefakte für die Verbindung mit dem Remoteendpunkt.
+### <a name="stretchRPO"></a>Die Stretch-Datenbank reduziert das Verlustrisiko für Ihre Azure-Daten, indem migrierte Zeilen vorübergehend beibehalten werden
+Nachdem die Stretch-Datenbank relevante Zeilen aus SQL Server nach Azure migriert hat, behält sie diese Zeilen mindestens 8 Stunden lang in der Stagingtabelle bei. Wenn Sie eine Sicherungskopie Ihrer Azure-Datenbank wiederherstellen, verwendet die Stretch-Datenbank die in der Stagingtabelle gespeicherten Zeilen, um die SQL Server- und die Azure-Datenbanken abzustimmen.
 
-Sie müssen die gespeicherte Prozedur **sys.sp\_rda\_reauthorize\_db** ausführen, um die Verbindung zwischen der lokalen Datenbank und dem Remoteendpunkt erneut herzustellen. Nur ein db\_owner kann diesen Vorgang ausführen. Für diese gespeicherte Prozedur sind darüber hinaus der Administratorbenutzername und das Kennwort für den Azure-Zielserver erforderlich.
+Nach der Wiederherstellung einer Sicherung Ihrer Azure-Daten müssen Sie die gespeicherte Prozedur [sys.sp\_rda\_reauthorize\_db](https://msdn.microsoft.com/library/mt131016.aspx) ausführen, um die Verbindung zwischen der Stretch-fähigen SQL Server-Datenbank und der Azure-Remotedatenbank wiederherzustellen. Wenn Sie **sys.sp\_rda\_reauthorize\_db** ausführen, stimmt die Stretch-Datenbank automatisch die SQL Server- und die Azure-Datenbanken ab.
 
-Nachdem Sie die Verbindung erneut hergestellt haben, versucht Stretch-Datenbank, berechtigte Daten in der lokalen Datenbank mit Remotedaten abzustimmen, indem eine Kopie der Remotedaten auf dem Remoteendpunkt erstellt und mit der lokalen Datenbank verknüpft wird. Dieser Prozess erfolgt automatisch und erfordert kein Eingreifen des Benutzers. Nachdem diese Abstimmung ausgeführt wurde, haben die lokale Datenbank und der Remoteendpunkt einen konsistenten Zustand.
+Um die Anzahl von Stunden zu erhöhen, für die migrierte Daten von der Stretch-Datenbank vorübergehend in der Stagingtabelle beibehalten werden, führen Sie die gespeicherte Prozedur [sys.sp\_rda\_set\_rpo\_duration](https://msdn.microsoft.com/library/mt707766.aspx) aus, und geben Sie eine Stundenanzahl von über 8 an. Um zu entscheiden, wie viele Daten beibehalten werden sollen, müssen Sie folgende Faktoren berücksichtigen:
+-   Die Häufigkeit der automatischen Azure-Sicherungen (mindestens alle 8 Stunden).
+-   Die erforderliche Zeit, um ein Problem nach seinem Auftreten zu erkennen und zu entscheiden, ob eine Sicherungskopie wiederhergestellt werden soll.
+-   Die Dauer des Azure-Wiederherstellungsvorgangs.
+
+> [AZURE.NOTE] Wird die Datenmenge erhöht, die die Stretch-Datenbank vorübergehend in der Stagingtabelle beibehält, erhöht sich dadurch auch der erforderliche Speicherplatz auf dem SQL Server-Computer.
+
+Um die Anzahl von Stunden zu überprüfen, für die die Daten von der Stretch-Datenbank vorübergehend in der Stagingtabelle beibehalten werden, führen Sie die gespeicherte Prozedur [sys.sp\_rda\_get\_rpo\_duration](https://msdn.microsoft.com/library/mt707767.aspx) aus.  
+
 
 ## Weitere Informationen
 
@@ -58,4 +65,4 @@ Nachdem Sie die Verbindung erneut hergestellt haben, versucht Stretch-Datenbank,
 
 [Sichern und Wiederherstellen von SQL Server-Datenbanken](https://msdn.microsoft.com/library/ms187048.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

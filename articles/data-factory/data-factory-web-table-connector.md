@@ -45,7 +45,7 @@ In diesem Beispiel wird gezeigt, wie Sie Daten aus einer Webtabelle in ein Azure
 	        "typeProperties":
 	        {
 	            "authenticationType": "Anonymous",
-	            "url" : "http://finance.yahoo.com/q/"
+	            "url" : "https://en.wikipedia.org/wiki/"
 	        }
 	    }
 	}
@@ -74,8 +74,8 @@ In diesem Beispiel wird gezeigt, wie Sie Daten aus einer Webtabelle in ein Azure
 	        "type": "WebTable",
 	        "linkedServiceName": "WebLinkedService",
 	        "typeProperties": {
-	            "index": 4,
-	            "path": "hp?s=MSFT+Historical+Prices"
+	            "index": 1,
+	            "path": "AFI's_100_Years...100_Movies"
 	        },
 	        "external": true,
 	        "availability": {
@@ -99,7 +99,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 	        "linkedServiceName": "AzureStorageLinkedService",
 	        "typeProperties":
 	        {
-	            "folderPath": "MSFTHistoricalPrices"
+	            "folderPath": "adfgetstarted/Movies"
 	        },
 	        "availability":
 	        {
@@ -186,7 +186,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 	        "typeProperties":
 	        {
 	            "authenticationType": "Anonymous",
-	            "url" : "http://finance.yahoo.com/q/"
+	            "url" : "https://en.wikipedia.org/wiki/"
 	        }
 	    }
 	}
@@ -231,8 +231,8 @@ index | Der Index der Tabelle in der Ressource. Im Abschnitt [Abrufen des Indexe
 	        "type": "WebTable",
 	        "linkedServiceName": "WebLinkedService",
 	        "typeProperties": {
-	            "index": 4,
-	            "path": "hp?s=MSFT+Historical+Prices"
+	            "index": 1,
+	            "path": "AFI's_100_Years...100_Movies"
 	        },
 	        "external": true,
 	        "availability": {
@@ -286,4 +286,4 @@ Wenn Sie Excel 2013 verwenden, rufen Sie den Index mit [Microsoft Power Query f�
 ## Leistung und Optimierung  
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

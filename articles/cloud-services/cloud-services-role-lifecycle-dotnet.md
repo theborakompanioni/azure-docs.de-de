@@ -12,7 +12,7 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="05/02/2016" 
+ms.date="06/07/2016" 
 ms.author="adegeo"/>
 
 # Anpassen des Lebenszyklus einer Web- oder Workerrolle in .NET
@@ -80,4 +80,4 @@ Sie können die ASP.NET-Lebenszyklusmethoden zusätzlich zu den Methoden der **R
 ## Nächste Schritte
 Hier erfahren Sie, wie Sie ein [Clouddienstpaket erstellen](cloud-services-model-and-package.md).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

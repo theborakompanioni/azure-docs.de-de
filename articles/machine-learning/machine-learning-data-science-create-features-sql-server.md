@@ -22,8 +22,7 @@
 
 Dieses Dokument veranschaulicht das Generieren von Features für Daten auf einem virtuellen SQL Server-Computer in Azure, die dazu beitragen, dass Algorithmen effizienter aus den Daten lernen können. Dies kann mithilfe von SQL oder durch die Verwendung einer Programmiersprache wie Python erreicht werden. Hier werden beide Methoden erläutert.
 
-[AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
-Dieses **Menü** stellt eine Verknüpfung mit Themen dar, in denen beschrieben wird, wie Features für Daten in verschiedenen Umgebungen erstellt werden. Diese Aufgabe ist ein Teil des [Cortana Analytics-Prozesses (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+[AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]Dieses **Menü** stellt eine Verknüpfung mit Themen dar, in denen beschrieben wird, wie Features für Daten in verschiedenen Umgebungen erstellt werden. Diese Aufgabe ist ein Teil des [Cortana Analytics-Prozesses (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 > [AZURE.NOTE] Für ein praktisches Beispiel können Sie das [NYC Taxi-DataSet](http://www.andresmh.com/nyctaxitrips/) verwenden. Eine vollständige Beschreibung finden Sie im IPython Notebook-Beispiel unter [NYC Data wrangling using IPython Notebook and SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb).
 
@@ -102,7 +101,7 @@ Die oben beschriebenen positionsbasierten Funktionen können dann wie oben besch
 
 ###<a name="sql-aml"></a>Herstellen einer Verbindung mit Azure Machine Learning
 
-Die neu generierte Funktion kann als Spalte einer vorhandenen Tabelle hinzugefügt oder in einer neuen Tabelle gespeichert und für Machine Learning mit der ursprünglichen Tabelle zusammengeführt werden. Sie können wie unten dargestellt mit dem [Reader](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)-Modul in Azure ML Funktionen generieren oder, falls sie bereits vorhanden sind, darauf zugreifen:
+Die neu generierte Funktion kann als Spalte einer vorhandenen Tabelle hinzugefügt oder in einer neuen Tabelle gespeichert und für Machine Learning mit der ursprünglichen Tabelle zusammengeführt werden. Sie können wie unten dargestellt mit dem [Import Data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)-Modul in Azure ML Features generieren oder, falls sie bereits vorhanden sind, darauf zugreifen:
 
 ![azureml-Reader](./media/machine-learning-data-science-process-sql-server-virtual-machine/reader_db_featurizedinput.png)
 
@@ -125,4 +124,4 @@ Sie können nun mit dem Pandas-DataFrame arbeiten, wie unter [Erstellen von Feat
 
  
 
-<!-----HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

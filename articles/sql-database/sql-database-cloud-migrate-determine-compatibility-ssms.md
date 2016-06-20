@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Ermitteln der SQL-Datenbankkompatibilität mithilfe von SSMS"
+   pageTitle="Verwenden von SQL Server Management Studio zum Ermitteln der Kompatibilität mit SQL-Datenbank vor der Migration zu Azure SQL-Datenbank | Microsoft Azure"
    description="Microsoft Azure SQL-Datenbank, Datenbankmigration, SQL-Datenbankkompatibilität, Assistent „Datenebenenanwendung exportieren“"
    services="sql-database"
    documentationCenter=""
@@ -12,8 +12,8 @@
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="data-management"
-   ms.date="03/14/2016"
+   ms.workload="sqldb-migrate"
+   ms.date="06/07/2016"
    ms.author="carlrab"/>
 
 # Verwenden Sie SQL Server Management Studio zum Ermitteln der Kompatibilität von SQL-Datenbank vor der Migration zu Azure SQL-Datenbank.
@@ -65,6 +65,6 @@ In diesem Artikel erfahren Sie, wie Sie ermitteln können, ob eine SQL Server-D
 
 - [SQL-Datenbank V12](sql-database-v12-whats-new.md)
 - [Teilweise oder vollständig unterstützte Transact-SQL-Funktionen](sql-database-transact-sql-information.md)
-- [Migrate non-SQL Server databases using SQL Server Migration Assistant](http://blogs.msdn.com/b/ssma/) (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)
+- [Migrate non-SQL Server databases using SQL Server Migration Assistant (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

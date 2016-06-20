@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/18/2016"
+   ms.date="06/06/2016"
    ms.author="larryfr"/>
 
 #Ausführen von Pig-Aufträgen mit Hadoop in HDInsight mithilfe von Curl
@@ -58,7 +58,7 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
     * **-u** – Der Benutzername und das Kennwort für die Authentifizierung der Anforderung
     * **-G**: Gibt an, dass dies eine GET-Anforderung ist
 
-    Der Anfang der URL, **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, ist für alle Anforderungen identisch. Der Pfad **/status** gibt an, dass die Anforderung den Status von WebHCat (auch bekannt als Templeton) für den Server zurückgibt.
+    Der Anfang der URL, ****https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, ist für alle Anforderungen identisch. Der Pfad **/status** gibt an, dass die Anforderung den Status von WebHCat (auch bekannt als Templeton) für den Server zurückgibt.
 
 2. Verwenden Sie den folgenden Code, um einen Pig Latin-Auftrag an den Cluster zu übermitteln.
 
@@ -88,7 +88,7 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 
 ##<a id="results"></a>Anzeigen der Ergebnisse
 
-Sobald der Status des Auftrags zu **SUCCEEDED** wechselt, können Sie die Ergebnisse des Auftrags aus dem Azure-Blobspeicher abrufen. Der mit der Abfrage übergebene Parameter `statusdir` enthält den Speicherort der Ausgabedatei. In diesem Fall **wasb:///example/pigcurl**. Diese Adresse speichert die Ausgabe des Auftrags im Verzeichnis **example/pigcurl** des Standardspeichercontainers, der von Ihrem HDInsight-Cluster verwendet wird.
+Sobald der Status des Auftrags zu **SUCCEEDED** wechselt, können Sie die Ergebnisse des Auftrags aus dem Azure-Blobspeicher abrufen. Der mit der Abfrage übergebene Parameter `statusdir` enthält den Speicherort der Ausgabedatei. In diesem Fall ****wasb:///example/pigcurl**. Diese Adresse speichert die Ausgabe des Auftrags im Verzeichnis **example/pigcurl** des Standardspeichercontainers, der von Ihrem HDInsight-Cluster verwendet wird.
 
 Sie können diese Dateien mithilfe der [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) auflisten und herunterladen. Wenn Sie z. B. Dateien im Verzeichnis **example/pigcurl** auflisten möchten, verwenden Sie den folgenden Befehl:
 
@@ -118,4 +118,4 @@ Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeite
 
 * [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0608_2016-->

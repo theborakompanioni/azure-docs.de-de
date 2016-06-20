@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/04/2016"
+	ms.date="06/06/2016"
 	ms.author="anandy"/>
 
 
@@ -28,7 +28,7 @@ Dieses Thema ist das zentrale Thema zu verbundbezogenen Funktionen für Azure AD
 | Thema | Inhalt und Relevanz |
 |:------|:-----------|
 | **Azure AD Connect-Optionen für die Benutzeranmeldung** ||
-| [Grundlegendes zu Benutzeranmeldeoptionen](active-directory-aadconnect-user-signin.md) | Beschreibung der verschiedenen Benutzeranmeldeoptionen und ihres Einflusses auf die Azure-Benutzeranmeldeerfahrung |
+| [Grundlegendes zu Benutzeranmeldeoptionen](active-directory-aadconnect-user-signin.md) | Beschreibung der verschiedenen Benutzeranmeldeoptionen und ihres Einflusses auf die Benutzerfreundlichkeit der Azure-Anmeldung. |
 | **AD FS-Installation mit Azure AD Connect**||
 | [Voraussetzungen](active-directory-aadconnect-get-started-custom.md#ad-fs-configuration-pre-requisites) | Erforderliche Komponenten für eine erfolgreiche Installation von AD FS über Azure AD Connect|
 | [Konfigurieren einer AD FS-Farm](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-ad-fs) | Installieren einer neuen AD FS-Farm mit Azure AD Connect |
@@ -47,4 +47,4 @@ Dieses Thema ist das zentrale Thema zu verbundbezogenen Funktionen für Azure AD
 
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

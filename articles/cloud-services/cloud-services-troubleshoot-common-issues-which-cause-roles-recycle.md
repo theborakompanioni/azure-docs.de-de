@@ -13,18 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="05/26/2016"
+   ms.date="06/03/2016"
    ms.author="v-six" />
 
 # Allgemeine Probleme, durch die Rollen zyklisch ausgeführt werden
 
 In diesem Artikel sind einige der allgemeinen Ursachen für Bereitstellungsprobleme sowie Tipps zur Problembehandlung aufgeführt, mit denen Sie diese Probleme beheben können. Wenn die Rolleninstanz nicht gestartet wird oder zwischen den Zuständen „Initialisieren“, „Ausgelastet“ und „Beenden“ wechselt, weist dies auf ein Problem mit einer Anwendung hin.
 
-## Kontaktieren des Azure-Kundensupports
-
-Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Ihre Frage im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) stellen, um dort Hilfe von Azure-Experten zu erhalten.
-
-Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](http://azure.microsoft.com/support/options/) auf, und klicken Sie auf **Support erhalten**. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](http://azure.microsoft.com/support/faq/).
+[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## Fehlende Laufzeitabhängigkeiten
 
@@ -70,7 +66,7 @@ Um eine Webrolle unter SSL auszuführen, müssen Sie sicherstellen, dass das exp
 
 ## Nächste Schritte
 
-Sehen Sie sich weitere [Artikel zur Problembehandlung](..\?tag=top-support-issue&service=cloud-services) für Clouddienste an.
+Sehen Sie sich weitere [Artikel zur Problembehandlung](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) für Clouddienste an.
 
 Informieren Sie sich in der [Blogreihe von Kevin Williamson](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx) über weitere Szenarien mit zyklischer Ausführung von Rollen.
 
@@ -82,4 +78,4 @@ Informieren Sie sich in der [Blogreihe von Kevin Williamson](http://blogs.msdn.c
 [OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
 [Run]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

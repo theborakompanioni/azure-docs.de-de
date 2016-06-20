@@ -183,4 +183,4 @@ Wenn Sie noch nicht V12 ausführen, können Sie ein Upgrade des logischen Server
 
 [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

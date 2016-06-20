@@ -25,11 +25,11 @@ Beim Entwerfen des Anwendungsaktualisierungsvorgangs sollte das wichtigste Ziel 
 1.	Maximale zulässige Zeit, während der der Funktionsumfang der Anwendung verringert ist 
 2.	Mindestsatz an Funktionen, die während der Aktualisierung zur Verfügung stehen
 3.	Möglichkeit zum Rollback bei Fehlern während des Upgrades
-4.	Insgesamt anfallende Kosten. Dies schließt die Kosten von zusätzlichen erforderlichen Anwendungskomponenten zum Erstellen einer temporären Kopie (z. B. zusätzliche Premium-Datenbanken für aktive Georeplikation) und die Mehrkosten für temporäre Bereitstellungen während des Aktualisierungsvorgangs ein. 
+4.	Insgesamt anfallende Kosten. Dies schließt die Kosten von zusätzlichen erforderlichen Anwendungskomponenten zum Erstellen einer temporären Kopie (z.B. zusätzliche Datenbanken für aktive Georeplikation) und die Mehrkosten für temporäre Bereitstellungen während des Aktualisierungsvorgangs ein. 
 
 Wenn die Anwendung vorübergehend im schreibgeschützten Modus betrieben werden kann, ist es möglich, den Aktualisierungsablauf so zu entwerfen, dass Ausfallzeiten effektiv vermieden werden können. Ausführliche Informationen zum Implementieren des Aktualisierungsablaufs für Ihre spezifische Anwendungstopologie finden Sie unter [Verwalten von parallelen Upgrades von Cloudanwendungen mithilfe der aktiven Georeplikation von SQL-Datenbank](sql-database-manage-application-rolling-upgrade.md).
  
  
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

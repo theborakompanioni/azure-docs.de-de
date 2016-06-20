@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure-services"
-   ms.date="01/12/2016"
+   ms.date="06/07/2016"
    ms.author="kyliel"/>
 
 # Erstellen und Hochladen einer FreeBSD-VHD in Azure
@@ -50,7 +50,7 @@ Führen Sie auf dem virtuellen Computer, auf dem das FreeBSD-Betriebssystem inst
 
 2. **Aktivieren von SSH**
 
-    SSH wird nach der Installation von einem Datenträger standardmäßig aktiviert. Wenn dies nicht der Fall ist oder Sie FreeBSD VHD direkt verwenden, geben Sie Folgendes ein:
+    SSH wird nach der Installation von einem Datenträger standardmäßig aktiviert. Wenn dies nicht der Fall ist oder Sie FreeBSD VHD direkt verwenden, geben Sie Folgendes ein:
 
 		# echo 'sshd_enable="YES"' >> /etc/rc.conf
 		# ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
@@ -68,39 +68,57 @@ Führen Sie auf dem virtuellen Computer, auf dem das FreeBSD-Betriebssystem inst
 
 		# pkg install sudo
 
-5. Voraussetzungen für den Azure-Agent
+5. **Voraussetzungen für den Azure-Agent**
 
-    5\.1 **Installieren von python**
-
-		# pkg install python27
-		# ln -s /usr/local/bin/python2.7 /usr/bin/python
-
-    5\.2 **Installieren von wget**
-
-		# pkg install wget
+		# pkg install python27  
+		# pkg install Py27-setuptools27   
+		# ln -s /usr/local/bin/python2.7 /usr/bin/python   
+		# pkg install git 
 
 6. **Installieren des Azure-Agents**
 
-    Die neueste Version des Azure-Agents finden Sie immer auf [github](https://github.com/Azure/WALinuxAgent/releases). Version 2.0.10 und höher unterstützt offiziell FreeBSD 10 und höhere Versionen. Die neueste Version des Azure-Agents für FreeBSD ist 2.0.16.
+    Die neueste Version des Azure-Agents finden Sie immer auf [github](https://github.com/Azure/WALinuxAgent/releases). Die Version 2.0.10+ unterstützt offiziell FreeBSD 10 und 10.1, und die Version 2.1.4 unterstützt offiziell FreeBSD 10.2 und neuere Versionen.
 
-		# wget https://raw.githubusercontent.com/Azure/WALinuxAgent/WALinuxAgent-2.0.10/waagent --no-check-certificate
-		# mv waagent /usr/sbin
-		# chmod 755 /usr/sbin/waagent
-		# /usr/sbin/waagent -install
+		# git clone https://github.com/Azure/WALinuxAgent.git  
+		# cd WALinuxAgent  
+		# git tag  
+		…
+		WALinuxAgent-2.0.16
+		…
+		v2.1.4
+		v2.1.4.rc0
+		v2.1.4.rc1
+   
+    Für 2.0 wird hier als Beispiel 2.0.16 verwendet.
+    
+		# git checkout WALinuxAgent-2.0.16
+		# python setup.py install  
+		# ln -sf /usr/local/sbin/waagent /usr/sbin/waagent  
 
-    **Wichtig**: Überprüfen Sie nach der Installation, ob das Programm ausgeführt wird.
+    Für 2.1 wird hier als Beispiel 2.1.4 verwendet.
+    
+		# git checkout v2.1.4
+		# python setup.py install  
+		# ln -sf /usr/local/sbin/waagent /usr/sbin/waagent  
+		# ln -sf /usr/local/sbin/waagent2.0 /usr/sbin/waagent2.0
+   
+    **Wichtig**: Nach der Installation sollten Sie prüfen, welche Version vorliegt und ob sie ausgeführt wird.
 
+		# waagent -version
+		WALinuxAgent-2.1.4 running on freebsd 10.3
+		Python: 2.7.11
 		# service –e | grep waagent
 		/etc/rc.d/waagent
 		# cat /var/log/waagent.log
 
-    Nun können Sie Ihren virtuellen Computer **herunterfahren**. Außerdem könnten Sie Schritt 7 vor dem Herunterfahren ausführen, dieser Schritt ist jedoch optional.
+7. **Aufheben der Bereitstellung**
 
-7. Die Aufhebung der Bereitstellung ist optional. Damit wird das System bereinigt und für eine erneute Bereitstellung vorbereitet.
+    Damit wird das System bereinigt und für eine erneute Bereitstellung vorbereitet. Mit dem folgenden Befehl werden auch das zuletzt bereitgestellte Benutzerkonto und die zugehörigen Daten gelöscht.
 
-    Mit dem folgenden Befehl werden auch das zuletzt bereitgestellte Benutzerkonto und die zugehörigen Daten gelöscht.
-
-		# waagent –deprovision+user
+		# echo "y" |  /usr/local/sbin/waagent -deprovision+user  
+		# echo  'waagent_enable="YES"' >> /etc/rc.conf
+    
+    Nun können Sie Ihren virtuellen Computer **herunterfahren**.
 
 ## Schritt 2: Erstellen eines Speicherkontos in Azure ##
 
@@ -177,7 +195,7 @@ Bevor Sie eine VHD-Datei hochladen können, müssen Sie eine sichere Verbindung 
 
    Weitere Informationen finden Sie unter [Erste Schritte mit Microsoft Azure-Cmdlets](http://msdn.microsoft.com/library/windowsazure/jj554332.aspx).
 
-   Weitere Informationen zur Installation und Konfiguration von PowerShell finden Sie unter [Installieren und Konfigurieren von Microsoft Azure PowerShell](../install-configure-powershell.md).
+   Weitere Informationen zur Installation und Konfiguration von PowerShell finden Sie unter [Installieren und Konfigurieren von Microsoft Azure PowerShell](../powershell-install-configure.md).
 
 ## Schritt 4: Hochladen der VHD-Datei ##
 
@@ -188,7 +206,7 @@ Wenn Sie die VHD-Datei hochladen, können Sie diese VHD-Datei an einem beliebige
 
 		Add-AzureVhd -Destination "<BlobStorageURL>/<YourImagesFolder>/<VHDName>.vhd" -LocalFilePath <PathToVHDFile>
 
-## Schritt 5: Erstellen eines virtuellen Computers mit hochgeladener VHD ##
+## Schritt 5: Erstellen eines virtuellen Computers mit hochgeladener VHD ##
 Nach dem Hochladen fügen Sie die VHD-Datei als Image zu der Ihrem Abonnement zugeordneten Liste benutzerdefinierter Images hinzu, und erstellen Sie einen virtuellen Computer mit diesem benutzerdefinierten Image.
 
 1. Geben Sie über das Azure PowerShell-Fenster, welches Sie im vorherigen Schritt verwendet haben, Folgendes ein:
@@ -209,4 +227,4 @@ Nach dem Hochladen fügen Sie die VHD-Datei als Image zu der Ihrem Abonnement zu
 
 	![FreeBSD-Images in Azure](./media/virtual-machines-linux-classic-freebsd-create-upload-vhd/freebsdimageinazure.png)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0608_2016-->

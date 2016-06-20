@@ -189,7 +189,7 @@ Es gibt zwei Ansichten, mit denen Sie die Ressourcenverwendung für eine SQL-Dat
 ### Verwenden von „sys.dm\_db\_resource\_stats“
 Die Sicht [sys.dm\_db\_resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx) ist in jeder SQL-Datenbank vorhanden und liefert Daten zur letzten Ressourcenverwendung relativ zur Dienstebene. Durchschnittliche Prozentsätze für CPU, Dateneingang/-ausgang, Protokollschreibvorgänge und Arbeitsspeicher werden alle 15 Sekunden aufgezeichnet und eine Stunde lang aufbewahrt.
 
-Da diese Ansicht eine ausführlichere Darstellung der Ressourcenverwendung ist, sollten Sie für alle Analysen des aktuellen Zustands oder für die Problembehandlung zuerst **sys.dm\_db\_resource\_stats** verwenden. Mit der folgenden Abfrage werden beispielsweise die durchschnittliche und maximale Ressourcenverwendung für die aktuelle Datenbank innerhalb der letzten Stunde angezeigt:
+Da diese Ansicht eine ausführlichere Darstellung der Ressourcenverwendung ist, sollten Sie für alle Analysen des aktuellen Zustands oder für die Problembehandlung zuerst **sys.dm\_db\_resource\_stats ** verwenden. Mit der folgenden Abfrage werden beispielsweise die durchschnittliche und maximale Ressourcenverwendung für die aktuelle Datenbank innerhalb der letzten Stunde angezeigt:
 
 	SELECT  
 	    AVG(avg_cpu_percent) AS 'Average CPU Utilization In Percent',
@@ -507,4 +507,4 @@ Einige Datenbankanwendungen enthalten Workloads mit einer hohen Zahl von Lesevor
 
 Dank der Dienstebenen in Azure SQL-Datenbank verfügen Sie in Bezug auf die Typen von Anwendungen, die Sie in der Cloud erstellen, über mehr Flexibilität. In Kombination mit einer sorgfältigen Anwendungsoptimierung können Sie für Ihre Anwendung eine hohe und vorhersagbare Leistung erzielen. In diesem Dokument werden empfohlene Verfahren zum Optimieren des Ressourcenverbrauchs einer Datenbank und Ermitteln der Eignung für eine der Leistungsebenen beschrieben. Die Optimierung ist beim Cloudmodell ein fortlaufender Prozess, und die Dienstebenen und ihre Leistungsebenen ermöglichen Administratoren die Steigerung der Leistung, während die Kosten auf der Microsoft Azure Platform gesenkt werden.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

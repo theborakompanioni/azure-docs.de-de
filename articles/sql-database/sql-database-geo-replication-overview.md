@@ -76,4 +76,4 @@ Aufgrund der hohen Latenz von WANs wird für die fortlaufende Kopie ein asynchro
 - [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

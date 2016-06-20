@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Der Azure AD v2.0-Endpunkt | Microsoft Azure"
+	pageTitle="Der Azure AD v2.0-Endpunkt | Microsoft Azure"
 	description="Ein Vergleich zwischen dem ursprünglichen Azure AD und den v2.0-Endpunkten."
 	services="active-directory"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/20/2016"
+	ms.date="05/31/2016"
 	ms.author="dastrock"/>
 
 # Wo liegen die Unterschiede beim v2.0-Endpunkt?
@@ -43,7 +43,7 @@ Im ursprünglichen Azure Active Directory-Dienst haben Sie möglicherweise mehre
 
 ![Benutzeroberfläche für die Registrierung der alten Anwendung](../media/active-directory-v2-flows/old_app_registration.PNG)
 
-Wenn Sie z. B. sowohl eine Website als auch eine iOS-App erstellt haben, mussten Sie diese separat mit zwei verschiedenen Anwendungs-IDs registrieren. Wenn Sie eine Website und eine Back-End-Web-API hatten, haben Sie diese möglicherweise als separate Apps in Azure AD registriert. Wenn Sie eine App für iOS und Android hatten, kann dies ebenfalls der Fall sein.
+Wenn Sie z. B. sowohl eine Website als auch eine iOS-App erstellt haben, mussten Sie diese separat mit zwei verschiedenen Anwendungs-IDs registrieren. Wenn Sie eine Website und eine Back-End-Web-API hatten, haben Sie diese möglicherweise als separate Apps in Azure AD registriert. Wenn Sie eine App für iOS und Android hatten, kann dies ebenfalls der Fall sein.
 
 <!-- You may have even registered different apps for each of your build environments - one for dev, one for test, and one for production. -->
 
@@ -78,7 +78,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 ...
 ```
 
-wo der **Bereichs**-Parameter angibt, für welche Ressourcen und Berechtigungen die App eine Autorisierung anfordert. Die gewünschte Ressource ist immer noch in der Anforderung vorhanden – sie ist nun einfach von den einzelnen Werten des Bereichsparameters umgeben. Wenn der Bereichsparameter auf diese Weise verwendet wird, entspricht der v2.0-Endpunkt eher der OAuth 2.0-Spezifikation und richtet sich mehr nach den gängigen Methoden der Branche. Dadurch können Apps auch eine [inkrementelle Zustimmung](#incremental-and-dynamic-consent) ausführen, die im nächsten Abschnitt beschrieben wird.
+wo der **Bereichs**-Parameter angibt, für welche Ressourcen und Berechtigungen die App eine Autorisierung anfordert. Die gewünschte Ressource ist immer noch in der Anforderung vorhanden – sie ist nun einfach von den einzelnen Werten des Bereichsparameters umgeben. Wenn der Bereichsparameter auf diese Weise verwendet wird, entspricht der v2.0-Endpunkt eher der OAuth 2.0-Spezifikation und richtet sich mehr nach den gängigen Methoden der Branche. Dadurch können Apps auch eine [inkrementelle Zustimmung](#incremental-and-dynamic-consent) ausführen, die im nächsten Abschnitt beschrieben wird.
 
 ## Inkrementelle und dynamische Zustimmung
 Apps, die im allgemein verfügbaren Azure AD-Dienst registriert sind, mussten die erforderlichen OAuth 2.0-Berechtigungen zum Erstellungszeitpunkt der App im Azure-Portal angeben:
@@ -115,7 +115,7 @@ Um mehr über OAuth 2.0, Aktualisierungstoken und Zugriffstoken zu erfahren, les
 
 #### OpenID, Profil und E-Mail
 
-Im ursprünglichen Azure Active Directory-Dienst wurden im grundlegenden OpenID Connect-Anmeldefluss zahlreiche Benutzerinformationen im resultierenden ID-Token bereitgestellt. Die Ansprüche in einem ID-Token können u. a. Name, bevorzugten Benutzernamen, E-Mail-Adresse, Objekt-ID eines Benutzers enthalten.
+Im ursprünglichen Azure Active Directory-Dienst wurden im grundlegenden OpenID Connect-Anmeldefluss zahlreiche Benutzerinformationen im resultierenden ID-Token bereitgestellt. Die Ansprüche in einem ID-Token können u. a. Name, bevorzugten Benutzernamen, E-Mail-Adresse, Objekt-ID eines Benutzers enthalten.
 
 Die Informationen, auf die der Bereich `openid` Ihrer App Zugriff gewährt, werden nun beschränkt. Der Bereich „openid“ erlaubt Ihrer App nur das Anmelden des Benutzers und das Empfangen eines App-spezifischen Bezeichners für den Benutzer. Falls Sie personenbezogene Informationen (Personally Identifiable Information, PII) über den Benutzer in Ihrer App erhalten möchten, müssen Sie über Ihre App zusätzliche Berechtigungen vom Benutzer einholen. Zu diesem Zweck führen wir zwei neue Bereiche ein: `email` und `profile`.
 
@@ -132,4 +132,4 @@ Weitere Informationen zu den spezifischen Ansprüchen, die in v2.0-Token ausgege
 ## Einschränkungen
 Es gibt einige Einschränkungen, die Sie bei Verwendung des v2.0-Endpunkts kennen sollten. Sehen Sie im [Dokument zu den v2.0-Einschränkungen](active-directory-v2-limitations.md) nach, ob diese Einschränkungen für Ihr spezielles Szenario gelten.
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0608_2016-->

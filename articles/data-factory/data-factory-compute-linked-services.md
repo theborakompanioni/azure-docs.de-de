@@ -336,7 +336,12 @@ Nähere Informationen zu den im Code verwendeten Data Factory-Klassen finden Sie
  
 
 ## Mit Azure SQL verknüpfter Dienst
-
 Sie erstellen einen mit Azure SQL verknüpften Dienst und verwenden ihn mit der [Aktivität "Gespeicherte Prozedur"](data-factory-stored-proc-activity.md) zum Aufrufen einer gespeicherten Prozedur in einer Data Factory-Pipeline. Im Artikel [Azure SQL-Connector](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties) finden Sie weitere Informationen zu diesem verknüpften Dienst.
 
-<!---HONumber=AcomDC_0601_2016-->
+## Mit Azure SQL Data Warehouse verknüpfter Dienst
+Sie erstellen einen mit Azure SQL Data Warehouse verknüpften Dienst und verwenden ihn mit der [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md) zum Aufrufen einer gespeicherten Prozedur in einer Data Factory-Pipeline. Im Artikel [Azure SQL Data Warehouse-Connector](data-factory-azure-sql-data-warehouse-connector.md#azure-sql-data-warehouse-linked-service-properties) finden Sie weitere Informationen zu diesem verknüpften Dienst.
+
+## Mit SQL Server verknüpfter Dienst
+Sie erstellen einen mit SQL Server verknüpften Dienst und verwenden ihn mit der [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md) zum Aufrufen einer gespeicherten Prozedur in einer Data Factory-Pipeline. Im Artikel [SQL Server-Connector](data-factory-sqlserver-connector.md#sql-server-linked-service-properties) finden Sie weitere Informationen zu diesem verknüpften Dienst.
+
+<!---HONumber=AcomDC_0608_2016-->

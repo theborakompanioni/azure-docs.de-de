@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/07/2016" 
+	ms.date="06/06/2016" 
 	ms.author="bharaths"/>
 
 #Veröffentlichung und Verwendung von Machine Learning-Apps im Azure Marketplace: Häufig gestellte Fragen
@@ -49,7 +49,7 @@ Dies ist ein bekanntes Problem mit dem Marketplace im klassischen Azure-Portal. 
 
 **1. Warum werden meine Logo-/Bildertransaktionen für meinen Webdienst nicht aktualisiert?**
 
-Logos und Bilder werden im Veröffentlichungsportal zwischengespeichert, und eine Aktualisierung auf das neue Logo bzw. Bild im Portal kann bis zu 10 Tage dauern.
+Logos und Bilder werden im Veröffentlichungsportal zwischengespeichert, und eine Aktualisierung auf das neue Logo bzw. Bild im Portal kann bis zu 10 Tage dauern.
 
 **2. Warum wird auf der Registerkarte "Details" meines Webdiensts im Marketplace ein Fehler angezeigt?**
 
@@ -77,4 +77,4 @@ Wenden Sie sich unter <datamarketbd@microsoft.com> an das Azure Marketplace-Team
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0608_2016-->

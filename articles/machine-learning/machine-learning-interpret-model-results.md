@@ -79,7 +79,7 @@ Sobald Sie die Vorhersageergebnisse verstanden und als solide eingestuft haben, 
 
 Abbildung 3: Bewertungsexperiment mit Schwertlilien für ein Klassifizierungsproblem mit zwei Klassen
 
-Jetzt müssen Sie die Eingabe und Ausgabe für den Webdienst festlegen. Natürlich erfolgt die Eingabe über den rechten Eingangsport von [Score Model][score-model], also die Eingabe der Schwertlilienfeatures. Die Wahl der Ausgabe hängt davon ab, ob Sie an der vorhergesagten Klasse (ausgewerteter Bezeichner), der ausgewerteten Wahrscheinlichkeit oder an beiden Werten interessiert sind. Hier wird vorausgesetzt, dass Sie an beiden Werten interessiert sind. Um die gewünschten Ausgabespalten auszuwählen, müssen Sie das Modul [Project Columns][project-columns] verwenden. Klicken Sie auf das Modul [Project Columns][project-columns], klicken Sie im rechten Bereich auf **Launch column selector**, und wählen Sie **Scored Labels** und **Scored Probabilities**. Nach dem Festlegen des Ausgangsports für das Modul [Project Columns][project-columns] und erneutem Ausführen sollten Sie das Bewertungsexperiment als Webdienst veröffentlichen können, indem Sie unten auf die Schaltfläche **PUBLISH WEB SERVICE** klicken. Das letzte Experiment sieht aus wie in Abbildung 4.
+Jetzt müssen Sie die Eingabe und Ausgabe für den Webdienst festlegen. Natürlich erfolgt die Eingabe über den rechten Eingangsport von [Score Model][score-model], also die Eingabe der Schwertlilienfeatures. Die Wahl der Ausgabe hängt davon ab, ob Sie an der vorhergesagten Klasse (ausgewerteter Bezeichner), der ausgewerteten Wahrscheinlichkeit oder an beiden Werten interessiert sind. Hier wird vorausgesetzt, dass Sie an beiden Werten interessiert sind. Um die gewünschten Ausgabespalten auszuwählen, müssen Sie das Modul [Select Columns in Dataset][select-columns] verwenden. Klicken Sie auf das Modul [Select Columns in Dataset][select-columns], klicken Sie im rechten Bereich auf **Launch column selector**, und wählen Sie **Scored Labels** und **Scored Probabilities**. Nach dem Festlegen des Ausgangsports für das Modul [Select Columns in Dataset][select-columns] und erneutem Ausführen sollten Sie das Bewertungsexperiment als Webdienst veröffentlichen können, indem Sie unten auf die Schaltfläche **PUBLISH WEB SERVICE** klicken. Das letzte Experiment sieht aus wie in Abbildung 4.
  
 ![screenshot\_of\_experiment](./media/machine-learning-interpret-model-results/4.png)
 
@@ -116,7 +116,7 @@ Die linken sechzehn Spalten stellen die Featurewerte des Testsatzes dar. Die Spa
 
 **Webdienstveröffentlichung**
 
-Statt [Project Columns][project-columns] zu verwenden, um einige Spalten als Ausgabe des Webdiensts auszuwählen, rufen Sie diesmal den ausgewerteten Bezeichner für jeden Eintrag und die Wahrscheinlichkeit des ausgewerteten Bezeichners ab. Die grundlegende Logik ist, die größte Wahrscheinlichkeit unter allen ausgewerteten Wahrscheinlichkeiten zu finden. Zu diesem Zweck müssen Sie das [Execute R Script][execute-r-script]-Modul verwenden. Der R-Code ist in Abbildung 8 dargestellt, das Experiment in Abbildung 9.
+Statt [Select Columns in Dataset][select-columns] zu verwenden, um einige Spalten als Ausgabe des Webdiensts auszuwählen, rufen Sie diesmal den ausgewerteten Bezeichner für jeden Eintrag und die Wahrscheinlichkeit des ausgewerteten Bezeichners ab. Die grundlegende Logik ist, die größte Wahrscheinlichkeit unter allen ausgewerteten Wahrscheinlichkeiten zu finden. Zu diesem Zweck müssen Sie das [Execute R Script][execute-r-script]-Modul verwenden. Der R-Code ist in Abbildung 8 dargestellt, das Experiment in Abbildung 9.
  
 ![screenshot\_of\_experiment](./media/machine-learning-interpret-model-results/8.png)
 
@@ -302,11 +302,11 @@ Abbildung 26: Webdienstergebnis für das Restaurantempfehlungsproblem
 <!-- Module References -->
 [assign-to-clusters]: https://msdn.microsoft.com/library/azure/eed3ee76-e8aa-46e6-907c-9ca767f5c114/
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-[project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
+[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [score-matchbox-recommender]: https://msdn.microsoft.com/library/azure/55544522-9a10-44bd-884f-9a91a9cec2cd/
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
 [train-clustering-model]: https://msdn.microsoft.com/library/azure/bb43c744-f7fa-41d0-ae67-74ae75da3ffd/
 [train-matchbox-recommender]: https://msdn.microsoft.com/library/azure/fa4aa69d-2f1c-4ba4-ad5f-90ea3a515b4c/
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

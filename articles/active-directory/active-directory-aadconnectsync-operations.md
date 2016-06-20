@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/14/2016"
+   ms.date="06/02/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect Sync: Operative Aufgaben und Überlegungen
@@ -30,7 +30,9 @@ Mit einem Server im Stagingmodus können Sie Änderungen an der Konfiguration vo
 
 Während der Installation können Sie festlegen, dass der Server in den **Stagingmodus** versetzt wird. Auf diese Weise wird der Server für Import und Synchronisierung aktiviert, es werden jedoch keine Exporte durchgeführt. Ein Server im Stagingmodus führt keine Kennwortsynchronisierung oder Kennwortrückschreibung durch – selbst dann nicht, wenn Sie diese Funktionen aktivieren. Wenn Sie den Stagingmodus deaktivieren, beginnt der Server mit dem Export und aktiviert die Kennwortsynchronisierung und die Kennwortrückschreibung (sofern ausgewählt).
 
-Ein Server im Stagingmodus empfängt weiterhin Änderungen von Active Directory und Azure AD. Er verfügt deshalb stets über eine Kopie der aktuellen Änderungen und kann die Funktionen eines anderen Servers sehr schnell übernehmen. Wenn Sie Konfigurationsänderungen an Ihrem primären Server vornehmen, liegt es in Ihrer Verantwortung, dieselben Änderungen auch auf den Servern im Stagingmodus durchzuführen.
+Sie können einen Export weiterhin mithilfe des Synchronisierungsdienst-Managers erzwingen.
+
+Ein Server im Stagingmodus empfängt weiterhin Änderungen von Active Directory und Azure AD. Er verfügt stets über eine Kopie der aktuellen Änderungen und kann die Funktionen eines anderen Servers sehr schnell übernehmen. Wenn Sie Konfigurationsänderungen an Ihrem primären Server vornehmen, liegt es in Ihrer Verantwortung, dieselben Änderungen auch auf den Servern im Stagingmodus durchzuführen.
 
 Wenn Sie sich bisher nur mit älteren Synchronisierungstechnologien auskennen, müssen Sie wissen, dass Änderungen für den Stagingmodus gelten, seit dieser über eine eigene SQL-Datenbank verfügt. Dies ermöglicht es, dass der Server im Stagingmodus in einem anderen Datencenter platziert werden kann.
 
@@ -51,17 +53,17 @@ Führen Sie zum Anwenden dieser Methode die folgenden Schritte aus:
 
 1. Wählen Sie **Connectors** aus, und wählen Sie dann den ersten Connector mit dem Typ **Active Directory-Domänendienste** aus. Klicken Sie auf **Ausführen**, wählen Sie **Vollständiger Import** aus, und klicken Sie auf **OK**. Führen Sie diese Schritte für alle Connectors von diesem Typ aus.
 2. Wählen Sie den Connector mit dem Typ **Azure Active Directory (Microsoft)** aus. Klicken Sie auf **Ausführen**, wählen Sie **Vollständiger Import** aus, und klicken Sie auf **OK**.
-4. Stellen Sie sicher, dass "Connectors" weiterhin ausgewählt ist, und klicken Sie für jeden Connector mit dem Typ **Active Directory-Domänendienste** auf **Ausführen**, wählen Sie **Deltasynchronisierung** aus, und klicken Sie auf **OK**.
-5. Wählen Sie den Connector mit dem Typ **Azure Active Directory (Microsoft)** aus. Klicken Sie auf **Ausführen**, wählen Sie **Deltasynchronisierung** aus, und klicken Sie auf "OK".
+3. Stellen Sie sicher, dass "Connectors" weiterhin ausgewählt ist, und klicken Sie für jeden Connector mit dem Typ **Active Directory-Domänendienste** auf **Ausführen**, wählen Sie **Deltasynchronisierung** aus, und klicken Sie auf **OK**.
+4. Wählen Sie den Connector mit dem Typ **Azure Active Directory (Microsoft)** aus. Klicken Sie auf **Ausführen**, wählen Sie **Deltasynchronisierung** aus, und klicken Sie auf "OK".
 
 Sie haben einen Stagingexport der Änderungen an Azure AD und der lokalen Active Directory-Umgebung durchgeführt (wenn Sie eine Exchange-Hybridbereitstellung verwenden). In den nächsten Schritten können Sie überprüfen, was geändert wird, bevor Sie mit dem Export in die Verzeichnisse beginnen.
 
 **Überprüfen**
 
-1. Starten Sie eine Eingabeaufforderung, und wechseln Sie zu: `%Program Files%\Microsoft Azure AD Sync\bin`
-2. Führen Sie diesen Befehl aus: `csexport "Name of Connector" %temp%\export.xml /f:x`<BR/> Sie finden den Namen des Connectors im Synchronisierungsdienst. Für Azure AD lautet dieser ähnlich wie "contoso.com – AAD".
+1. Starten Sie eine Eingabeaufforderung, und wechseln Sie zu: `%ProgramFiles%\Microsoft Azure AD Sync\bin`
+2. Führen Sie diesen Befehl aus: `csexport "Name of Connector" %temp%\export.xml /f:x` Sie finden den Namen des Connectors im Synchronisierungsdienst. Für Azure AD lautet dieser ähnlich wie „contoso.com – AAD“.
 3. Führen Sie diesen Befehl aus: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`
-4. Sie verfügen jetzt im Ordner "%temp%" über eine Datei namens "export.csv", die in Microsoft Excel untersucht werden kann. Diese Datei enthält alle Änderungen, die exportiert werden sollen.
+4. Sie verfügen jetzt im Ordner „%temp%“ über eine Datei namens „export.csv“, die in Microsoft Excel untersucht werden kann. Diese Datei enthält alle Änderungen, die exportiert werden sollen.
 5. Nehmen Sie erforderliche Änderungen an den Daten oder der Konfiguration vor, und führen Sie die oben genannten Schritte erneut aus (Importieren, Synchronisieren, Überprüfen), bis Sie die Änderungen erhalten, die Sie exportieren möchten.
 
 **Grundlegendes zur Datei "export.csv"**
@@ -96,7 +98,7 @@ Da Azure AD Connect Sync von einer SQL-Datenbank abhängt, sollten Sie auch den 
 ### Neuerstellung, falls erforderlich
 Eine sinnvolle Strategie besteht darin, eine ggf. erforderliche Neuerstellung des Servers zu planen. In vielen Fällen können die Installation des Synchronisierungsmoduls und der anfängliche Import sowie die Synchronisierung innerhalb weniger Stunden abgeschlossen werden. Wenn kein Ersatzserver verfügbar ist, kann vorübergehend ein Domänencontroller zum Hosten des Synchronisierungsmoduls eingesetzt werden.
 
-Das Synchronisierungsmodul speichert keine Statusinformationen zu den Objekten, deshalb kann die Datenbank mithilfe der Daten in Active Directory und Azure AD neu erstellt werden. Das Attribut **sourceAnchor** wird verwendet, um die lokalen Objekte und die Cloudobjekte miteinander zu verknüpfen. Wenn Sie den Server mit vorhandenen lokalen Objekten und Cloudobjekten neu erstellen, werden diese vom Synchronisierungsmodul bei der Neuinstallation abgeglichen. Dokumentieren und speichern Sie die am Server vorgenommenen Änderungen, beispielsweise die Filter- und Synchronisierungsregeln. Diese müssen erneut angewendet werden, bevor Sie die Synchronisierung starten.
+Das Synchronisierungsmodul speichert keine Statusinformationen zu den Objekten, deshalb kann die Datenbank mithilfe der Daten in Active Directory und Azure AD neu erstellt werden. Das Attribut **sourceAnchor** wird verwendet, um die lokalen Objekte und die Cloudobjekte miteinander zu verknüpfen. Wenn Sie den Server mit vorhandenen lokalen Objekten und Cloudobjekten neu erstellen, werden diese vom Synchronisierungsmodul bei der Neuinstallation erneut abgeglichen. Dokumentieren und speichern Sie die am Server vorgenommenen Änderungen, beispielsweise die Filter- und Synchronisierungsregeln. Diese müssen erneut angewendet werden, bevor Sie die Synchronisierung starten.
 
 ### Stellen Sie einen Reservestandbyserver bereit (Stagingmodus)
 Wenn Sie über eine komplexere Umgebung verfügen, wird empfohlen, mindestens einen Standbyserver einzurichten. Während der Installation können Sie festlegen, dass ein Server in den **Stagingmodus** versetzt wird.
@@ -114,4 +116,4 @@ Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](
 
 Weitere Informationen zum [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0608_2016-->

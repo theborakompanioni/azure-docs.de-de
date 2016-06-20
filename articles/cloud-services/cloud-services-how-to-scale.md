@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Automatisches Skalieren eines Clouddiensts im Portal | Microsoft Azure"
-	description="Erfahren Sie, wie Sie mit dem Portal Regeln für die automatische Skalierung für eine Clouddienst-Webrolle oder -Workerrolle in Azure konfigurieren."
+	description="(Klassisch) Erfahren Sie, wie Sie mit dem klassischen Portal Regeln für die automatische Skalierung für eine Clouddienst-Webrolle oder -Workerrolle in Azure konfigurieren."
 	services="cloud-services"
 	documentationCenter=""
 	authors="Thraka"
@@ -19,13 +19,17 @@
 
 # Automatisches Skalieren eines Clouddiensts
 
+> [AZURE.SELECTOR]
+- [Azure-Portal](cloud-services-how-to-scale-portal.md)
+- [Klassisches Azure-Portal](cloud-services-how-to-scale.md)
+
 Auf der Seite „Skalieren“ des klassischen Azure-Portals können Sie manuell Ihre Webrolle oder Workerrolle skalieren, oder Sie können die automatische Skalierung basierend auf CPU-Auslastung oder einer Nachrichtenwarteschlange aktivieren.
 
->[AZURE.NOTE] Dieser Artikel konzentriert sich auf Clouddienst-Webrollen und -Workerrollen. Wenn Sie einen virtuellen Computer direkt erstellen, wird er in einem Clouddienst gehostet. Einige dieser Informationen gelten für diese Typen virtueller Computer. Das Skalieren einer Verfügbarkeitsgruppe virtueller Computer besteht eigentlich nur darin, dass Sie sie entsprechend der Skalierungsregeln, die Sie konfigurieren, ein- und ausschalten beendet. Weitere Information zu virtuellen Computern und Verfügbarkeitsgruppen finden Sie unter [Konfigurieren einer Verfügbarkeitsgruppe für virtuelle Computer im klassischen Bereitstellungsmodell](../virtual-machines/virtual-machines-windows-classic-configure-availability.md).
+>[AZURE.NOTE] Dieser Artikel konzentriert sich auf Clouddienst-Webrollen und -Workerrollen. Wenn Sie einen virtuellen Computer (klassisch) direkt erstellen, wird er in einem Clouddienst gehostet. Einige dieser Informationen gelten für diese Typen virtueller Computer. Das Skalieren einer Verfügbarkeitsgruppe virtueller Computer besteht eigentlich nur darin, dass Sie sie entsprechend der Skalierungsregeln, die Sie konfigurieren, ein- und ausschalten beendet. Weitere Informationen zu virtuellen Computern und Verfügbarkeitsgruppen finden Sie unter [Konfigurieren einer Verfügbarkeitsgruppe für virtuelle Computer im klassischen Bereitstellungsmodell](../virtual-machines/virtual-machines-windows-classic-configure-availability.md).
 
 Folgendes ist allerdings zu beachten, bevor die Skalierung einer Anwendung konfiguriert wird:
 
-- Die Skalierung ist abhängig von der Kernspeichernutzung. Größere Rolleninstanzen verwenden mehr Kerne. Sie können eine Anwendung nur innerhalb der für Ihr Abonnement geltenden Kerngrenzwerte skalieren. Wenn als Grenzwert für Ihr Abonnement beispielsweise zwanzig Kerne festgelegt sind, und Sie eine Anwendung mit zwei mittelgroßen Clouddiensten ausführen (insgesamt vier Kerne), stehen für das zentrale Hochskalieren anderer Clouddienstbereitstellungen in Ihrem Abonnement nur noch sechzehn Kerne zur Verfügung. Weitere Informationen finden Sie unter [Größen für Clouddienste](cloud-services-sizes-specs.md).
+- Die Skalierung ist abhängig von der Kernspeichernutzung. Größere Rolleninstanzen verwenden mehr Kerne. Sie können eine Anwendung nur innerhalb der für Ihr Abonnement geltenden Kerngrenzwerte skalieren. Wenn als Grenzwert für Ihr Abonnement beispielsweise zwanzig Kerne festgelegt sind, und Sie eine Anwendung mit zwei mittelgroßen Clouddiensten ausführen (insgesamt vier Kerne), stehen für das zentrale Hochskalieren anderer Clouddienstbereitstellungen in Ihrem Abonnement nur noch sechzehn Kerne zur Verfügung. Weitere Informationen zu Größen finden Sie unter [Größen für Clouddienste](cloud-services-sizes-specs.md).
 
 - Sie müssen eine Warteschlange anlegen und dieser einer Rolle zuweisen, bevor Sie eine Anwendung auf Basis eines Nachrichtenschwellwerts skalieren können. Weitere Informationen finden Sie unter [Verwenden des Warteschlangenspeicherdiensts](../storage/storage-dotnet-how-to-use-queues.md).
 
@@ -66,7 +70,7 @@ Auf der Seite **Skalieren** können Sie die Anzahl der in einem Clouddienst ausg
 
 3. Wählen Sie den Zeitplan, für den Sie die Skalierungsoptionen ändern möchten. Der Standard ist *Keine geplanten Zeiten*, wenn Sie keine Zeitpläne definiert haben.
 
-4. Suchen Sie den Abschnitt **Nach Metrik skalieren**, und wählen Sie **KEINE**. Dies ist die Standardeinstellung für alle Rollen.
+4. Suchen Sie den Abschnitt **Nach Metrik skalieren**, und wählen Sie **KEINE** aus. Dies ist die Standardeinstellung für alle Rollen.
 
 5. Jede Rolle in einem Clouddienst hat einen Regler, über den die Anzahl der verwendbaren Instanzen geändert werden kann.
 
@@ -91,7 +95,7 @@ Hiermit skalieren Sie, ob die durchschnittliche prozentuale CPU-Nutzung bestimmt
 
 3. Wählen Sie den Zeitplan, für den Sie die Skalierungsoptionen ändern möchten. Der Standard ist *Keine geplanten Zeiten*, wenn Sie keine Zeitpläne definiert haben.
 
-4. Suchen Sie den Abschnitt **Nach Metrik skalieren**, und wählen Sie **CPU**.
+4. Suchen Sie den Abschnitt **Nach Metrik skalieren**, und wählen Sie **CPU** aus.
 
 5. Jetzt können Sie einen minimalen und maximalen Bereich von Rolleninstanzen, die Ziel-CPU-Auslastung (um zentrales Hochskalieren auszulösen) und die Anzahl der Instanzen, um die zentral hoch- und herunterskaliert werden soll, konfigurieren.
 
@@ -113,7 +117,7 @@ Dabei wird automatisch skaliert, ob die Anzahl der Nachrichten in einer Wartesch
 
 2. Klicken Sie auf **Skalieren**.
 
-3. Suchen Sie den Abschnitt **Nach Metrik skalieren**, und wählen Sie **CPU**.
+3. Suchen Sie den Abschnitt **Nach Metrik skalieren**, und wählen Sie **CPU** aus.
 
 4. Jetzt können Sie einen minimalen und maximalen Bereich von Rolleninstanzen, die Warteschlange und die Anzahl der Warteschlangennachrichten, die für jede Instanz verarbeitet werden sollen, und die Anzahl der Instanzen, um die zentral hoch- und herunterskaliert werden soll, konfigurieren.
 
@@ -132,7 +136,7 @@ Häufig empfiehlt es sich, beim Skalieren einer Rolle auch die von der Anwendung
 
 2. Klicken Sie auf **Skalieren**.
 
-3. Suchen Sie die **verknüpften Ressourcen** aus, und klicken Sie auf **Skalierung für diese Datenbank verwalten**.
+3. Suchen Sie die **verknüpften Ressourcen**, und klicken Sie auf **Skalierung für diese Datenbank verwalten**.
 
     > [AZURE.NOTE] Wenn Sie keine **verknüpften Ressourcen** sehen, besitzen Sie wahrscheinlich keine verknüpften Ressourcen.
 
@@ -147,4 +151,4 @@ Häufig empfiehlt es sich, beim Skalieren einer Rolle auch die von der Anwendung
 [scale_popup]: ./media/cloud-services-how-to-scale/schedules-dialog.png
 [linked_resource]: ./media/cloud-services-how-to-scale/linked-resources.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -204,8 +204,7 @@ In diesem Abschnitt werden die von Azure-Warteschlangen und Service Bus-Wartesch
 |Vergleichskriterien|Azure-Warteschlangen|Service Bus-Warteschlangen|
 |---|---|---|
 |Verwaltungsprotokoll|**REST über HTTP/HTTPS**|**REST über HTTPS**|
-|Laufzeitprotokoll|**REST über HTTP/HTTPS**|**REST über HTTPS**<br/><br/>** AMQP 1.0 Standard (TCP mit TLS)**| 
-|. NET-verwaltete API|**Ja**<br/><br/>(.NET verwaltete Speicherclient-API)|**Ja**<br/><br/>(.NET-verwaltete API für Brokermessaging)|
+|Laufzeitprotokoll|**REST über HTTP/HTTPS**|**REST über HTTPS**<br/><br/>** AMQP 1.0 Standard (TCP mit TLS)**| |. NET-verwaltete API|**Ja**<br/><br/>(.NET verwaltete Speicherclient-API)|**Ja**<br/><br/>(.NET-verwaltete API für Brokermessaging)|
 |Systemeigenes C++|**Ja**|**Nein**|
 |Java-API|**Ja**|**Ja**|
 |PHP-API|**Ja**|**Ja**|
@@ -301,7 +300,7 @@ Da Service Bus-Warteschlangen eine Vielzahl erweiterter Funktionen wie Sitzungen
 
 Die folgenden Artikel enthalten weitere Anleitungen und Informationen zur Verwendung von Azure-Warteschlangen oder Service Bus-Warteschlangen.
 
-- [Verwenden von Servicebus-Warteschlangen](service-bus-dotnet-how-to-use-queues.md)
+- [Verwenden von Servicebus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
 - [Verwenden des Warteschlangenspeicherdiensts](../storage/storage-dotnet-how-to-use-queues.md)
 - [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus-Brokermessaging](service-bus-performance-improvements.md)
 - [Introducing Queues and Topics in Azure Service Bus (Einführung in Warteschlangen und Themen in Azure Service Bus, in englischer Sprache)](http://www.code-magazine.com/article.aspx?quickid=1112041)
@@ -315,4 +314,4 @@ Die folgenden Artikel enthalten weitere Anleitungen und Informationen zur Verwen
 [klassischen Azure-Portals]: http://manage.windowsazure.com
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

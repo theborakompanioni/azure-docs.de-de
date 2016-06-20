@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/04/2016"
+   ms.date="06/05/2016"
    ms.author="barbkess;sonyama;"/>
 
 # Verwalten von Datenbanken in Azure SQL Data Warehouse
@@ -89,25 +89,7 @@ Weitere Informationen zum Verwalten der Sicherheit finden Sie in der [Sicherheit
 
 ## Sichern und Wiederherstellen
 
-Es gibt zwei Möglichkeiten, eine Datenbank wiederherzustellen. Wenn einige Daten in der Datenbank beschädigt wurden oder wenn Sie einen Fehler gemacht haben, können Sie eine Datenbank-Momentaufnahme wiederherstellen. Liegt ein regionaler Ausfall oder ein Notfall vor, sodass eine Region nicht mehr zur Verfügung stellt, können Sie Ihre Datenbank in einer anderen Region neu erstellen.
-
-SQL Data Warehouse sichert die Datenbank in regelmäßigen Abständen automatisch. Den Zeitplan für die Datensicherung und die Aufbewahrungsrichtlinie finden Sie unter [Hohe Zuverlässigkeit][].
-
-### Georedundanter Speicher
-
-Da SQL Data Warehouse Computer und Speicher trennt, werden alle Ihre Daten direkt georedundant in Azure Storage (RA-GRS) geschrieben. Georedundante Speicher repliziert Ihre Daten in eine sekundäre Region, die Hunderte von Kilometern von der primären Region entfernt ist. In primären und sekundären Regionen werden Ihre Daten jeweils dreimal in separaten Fehler- und Upgradedomänen repliziert. Dadurch wird sichergestellt, dass Ihre Daten selbst bei vollständigen regionalen Ausfällen oder bei Notfällen, in denen eine Region nicht zur Verfügung steht, erhalten bleiben. Weitere Informationen zu georedundantem Speicher mit Lesezugriff finden Sie unter [Redundanzoptionen für Azure-Speicher][].
-
-### Datenbankwiederherstellung
-
-Mit der Datenbankwiederherstellung können Sie die Datenbank in den Zustand zu einem früheren Zeitpunkt wiederherstellen. Der SQL Data Warehouse-Dienst schützt alle Datenbanken durch automatische Speichermomentaufnahmen mindestens alle acht Stunden, die sieben Tage lang aufbewahrt werden und einen diskreten Satz von Wiederherstellungspunkten für Sie bereitstellen. Diese Sicherungen werden in Azure Storage in RA-GRS gespeichert und sind daher standardmäßig georedundant. Die automatischen Funktionen zur Sicherung und Wiederherstellung sind nicht mit zusätzlichen Kosten verbunden und bieten eine kosten- und verwaltungsfreie Möglichkeit, Datenbanken vor versehentlicher Beschädigung oder Löschung zu schützen.
-
-Weitere Informationen zur Datenbankwiederherstellung finden Sie unter [Wiederherstellen aus einer Momentaufnahme][].
-
-### Geografische Wiederherstellung
-
-Die geografische Wiederherstellung soll die Datenbank wiederherstellen, wenn sie aufgrund eines Ausfalls nicht mehr zur Verfügung steht. Sie können sich zum Wiederherstellen einer Datenbank von einer georedundanten Sicherung an den Support wenden, um eine neue Datenbank in einer beliebigen Azure-Region zu erstellen. Da die Sicherung georedundant ist, kann mit ihr eine Datenbank selbst dann wiederhergestellt werden, wenn sie aufgrund eines Ausfalls nicht mehr verfügbar ist. Das Feature zur geografischen Wiederherstellung ist nicht mit zusätzlichen Kosten verbunden.
-
-Informationen zur Geowiederherstellung finden Sie unter [Geowiederherstellung aus einer Momentaufnahme][].
+Zuverlässige Sicherungen Ihrer Daten sind ein wesentlicher Bestandteil jeder Produktionsdatenbank. SQL Data Warehouse schützt Ihre Daten, indem Ihre aktiven Datenbanken in regelmäßigen Abständen automatisch gesichert werden. Diese Sicherungen ermöglichen das Wiederherstellen in Fällen, in denen Sie Ihre Daten beschädigt oder Ihre Daten oder Datenbank versehentlich gelöscht haben. Informationen zum Datensicherungszeitplan und zur Aufbewahrungsrichtlinie finden Sie unter [Hohe Zuverlässigkeit][]. Weitere Informationen zur Wiederherstellung einer Datenbank finden Sie unter [Restore from snapshot (Wiederherstellung aus einer Momentaufnahme)][].
 
 ## Nächste Schritte
 Ein sinnvoller Datenbankentwurf erleichtert die Verwaltung Ihrer Datenbanken in SQL Data Warehouse. Wenn Sie mehr erfahren möchten, finden Sie weitere Informationen in der [Entwicklungsübersicht][].
@@ -115,20 +97,18 @@ Ein sinnvoller Datenbankentwurf erleichtert die Verwaltung Ihrer Datenbanken in 
 <!--Image references-->
 
 <!--Article references-->
-[Redundanzoptionen für Azure-Speicher]: ../storage/storage-redundancy.md#read-access-geo-redundant-storage
 [Erstellen eines SQL Data Warehouse (Azure-Portal)]: sql-data-warehouse-get-started-provision.md
 [Erstellen einer Datenbank (PowerShell)]: sql-data-warehouse-get-started-provision-powershell
 [connection]: sql-data-warehouse-develop-connections.md
 [Herstellen einer Verbindung mit Azure SQL Data Warehouse über Visual Studio]: sql-data-warehouse-get-started-connect.md
 [Verbinden und Abfragen mit SQLCMD]: sql-data-warehouse-get-started-connect-sqlcmd.md
 [Entwicklungsübersicht]: sql-data-warehouse-overview-development.md
-[Geowiederherstellung aus einer Momentaufnahme]: sql-data-warehouse-backup-and-geo-restore-from-snapshot.md
 [Hohe Zuverlässigkeit]: sql-data-warehouse-overview-expectations.md#high-reliability
 [Überwachen Ihrer Workload mit DMVs]: sql-data-warehouse-manage-monitor.md
-[Anhalten von Computeressourcen]: sql-data-warehouse-overview-scalability.md#pause-compute-bk
-[Wiederherstellen aus einer Momentaufnahme]: sql-data-warehouse-backup-and-restore-from-snapshot.md
-[Fortsetzen von Computeressourcen]: sql-data-warehouse-overview-scalability.md#resume-compute-performance-bk
-[Skalieren der Leistung]: sql-data-warehouse-overview-scalability.md#scale-performance-bk
+[Anhalten von Computeressourcen]: sql-data-warehouse-manage-compute-overview.md#pause-compute-bk
+[Restore from snapshot (Wiederherstellung aus einer Momentaufnahme)]: sql-data-warehouse-backup-and-restore-from-snapshot.md
+[Fortsetzen von Computeressourcen]: sql-data-warehouse-manage-compute-overview.md#resume-compute-performance-bk
+[Skalieren der Leistung]: sql-data-warehouse-manage-compute-overview.md#scale-performance-bk
 [Sicherheitsübersicht]: sql-data-warehouse-overview-security.md
 [Bewährte Methoden für SQL Data Warehouse]: sql-data-warehouse-best-practices.md
 [SQL Data Warehouse-Systemsichten]: sql-data-warehouse-reference-tsql-system-views.md
@@ -139,4 +119,4 @@ Ein sinnvoller Datenbankentwurf erleichtert die Verwaltung Ihrer Datenbanken in 
 <!--Other web references-->
 [Azure-Portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

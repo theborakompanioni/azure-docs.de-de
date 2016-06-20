@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/13/2016"
+   ms.date="06/01/2016"
    ms.author="sonyama;barbkess;jrj"/>
 
 # Kapazitätsgrenzen von SQL Data Warehouse
@@ -35,8 +35,8 @@ Die folgenden Tabellen erhalten die maximalen Werte, die für verschiedene Kompo
 
 | Kategorie | Beschreibung | Maximum |
 | :---------------- | :------------------------------------------- | :----------------- |
-| Datenbank | Max. Größe | 60 TB komprimiert auf einem Datenträger<br/><br/>SQL Data Warehouse lässt bis zu 60 TB unformatierten Speicherplatz auf dem Datenträger pro Datenbank zu. Der Speicherplatz auf dem Datenträger ist die komprimierte Größe für permanente Tabellen. Dieser Speicherplatz ist unabhängig von „tempdb“ oder vom Protokollspeicherplatz, und er ist daher für permanente Tabellen reserviert. Die gruppierte Columnstore-Komprimierung wird auf fünffach geschätzt. Dies bedeutet, dass die nicht komprimierte Größe der Datenbank auf ungefähr 300 TB zunehmen kann, wenn alle Tabellen gruppierte Columnstore-Tabellen sind (der standardmäßige Tabellentyp). Der Grenzwert von 60 TB wird am Ende der öffentlichen Vorschau auf 240 TB erhöht. Dadurch werden die meisten Datenbanken auf mehr als 1 PB nicht komprimierter Daten anwachsen können.|
-| Table | Max. Größe | 60 TB komprimiert auf dem Datenträger |
+| Datenbank | Max. Größe | 240 TB komprimiert auf dem Datenträger<br/><br/>Dieser Speicherplatz ist unabhängig von „tempdb“ oder vom Protokollspeicherplatz und daher für permanente Tabellen reserviert. Die gruppierte Columnstore-Komprimierung wird auf fünffach geschätzt. Dies bedeutet, dass die nicht komprimierte Größe der Datenbank auf ungefähr 1 PB zunehmen kann, wenn alle Tabellen gruppierte Columnstore-Tabellen sind (der standardmäßige Tabellentyp).|
+| Tabelle | Max. Größe | 60 TB komprimiert auf dem Datenträger |
 | Tabelle | Tabellen pro Datenbank | 2 Milliarden |
 | Tabelle | Spalten pro Tabelle | 1024 Spalten |
 | Tabelle | Bytes pro Spalte | 8000 Bytes |
@@ -109,4 +109,4 @@ Weitere Referenzinformationen finden Sie unter [SQL Data Warehouse-Referenz – 
 [CREATE TABLE (Azure SQL Data Warehouse)]: https://msdn.microsoft.com/library/mt203953.aspx
 [Interner Fehler: ein Ausdrucksdienstelimit wurde erreicht.]: https://support.microsoft.com/kb/913050
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -133,12 +133,12 @@ Abbildung 8. Kreuzvalidierung eines binären Klassifizierungsmodells.
 Abbildung 9. Ergebnisse der Kreuzvalidierung eines binären Klassifikators.
 
 ##Auswerten eines Modells für die Multiklassenklassifizierung##
-In diesem Experiment wird das beliebte Dataset [Iris](http://archive.ics.uci.edu/ml/datasets/Iris "Iris") verwendet, das Fälle der drei verschiedenen Typen (Klassen) der Iris enthält. Für jeden Fall sind vier Funktionswerte (Länge/Breite des Kelchblatts und Länge/Breite des Blütenblatts) definiert. In den vorhergehenden Experimenten wurden die Modelle mit den gleichen Datasets trainiert und getestet. Hier werden nun mithilfe des Moduls [Split Data][split] zwei Teilmengen der Daten erstellt, das Modell mit der ersten Teilmenge trainiert und anschließend mit der zweiten Teilmenge bewertet und ausgewertet. Das Iris-Dataset wird im [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/index.html) öffentlich zur Verfügung gestellt und kann mit einem [Import Data][reader]-Modul heruntergeladen werden.
+In diesem Experiment wird das beliebte Dataset [Iris](http://archive.ics.uci.edu/ml/datasets/Iris "Iris") verwendet, das Fälle der drei verschiedenen Typen (Klassen) der Iris enthält. Für jeden Fall sind vier Funktionswerte (Länge/Breite des Kelchblatts und Länge/Breite des Blütenblatts) definiert. In den vorhergehenden Experimenten wurden die Modelle mit den gleichen Datasets trainiert und getestet. Hier werden nun mithilfe des Moduls [Split Data][split] zwei Teilmengen der Daten erstellt, das Modell mit der ersten Teilmenge trainiert und anschließend mit der zweiten Teilmenge bewertet und ausgewertet. Das Iris-Dataset wird im [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/index.html) öffentlich zur Verfügung gestellt und kann mit einem [Import Data][import-data]-Modul heruntergeladen werden.
 
 ###Erstellen des Experiments###
 Fügen Sie Ihrem Arbeitsbereich in Azure Machine Learning Studio die folgenden Module hinzu:
 
-- [Daten importieren][reader]
+- [Daten importieren][import-data]
 - [Multiclass Decision Forest][multiclass-decision-forest]
 - [Split Data][split]
 - [Train Model][train-model]
@@ -149,7 +149,7 @@ Verbinden Sie die Ports wie unten in Abbildung 10 dargestellt.
 
 Setzen Sie den Index der Spalte "Label" des Moduls [Train Model][train-model] auf 5. Das Dataset verfügt über keinen Header, wir wissen jedoch, dass sich die Klassenbezeichner in der fünften Spalte befinden.
 
-Klicken Sie auf das [Import Data][reader]-Modul, und legen Sie die *Data source*-Eigenschaft auf *Web URL via HTTP* und die *URL* auf http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data fest.
+Klicken Sie auf das [Import Data][import-data]-Modul, und legen Sie die *Data source*-Eigenschaft auf *Web URL via HTTP* und die *URL* auf http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data fest.
 
 Legen Sie im Modul [Split Data][split] den Anteil der Fälle fest, die für das Training verwendet werden sollen (z. B. 0.7).
  
@@ -182,11 +182,11 @@ Abbildung 13: Ergebnisse der Kreuzvalidierung eines Modells für die Multiklass
 [evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
 [multiclass-decision-forest]: https://msdn.microsoft.com/library/azure/5e70108d-2e44-45d9-86e8-94f37c68fe86/
-[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 [two-class-logistic-regression]: https://msdn.microsoft.com/library/azure/b0fd7660-eeed-43c5-9487-20d9cc79ed5d/
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

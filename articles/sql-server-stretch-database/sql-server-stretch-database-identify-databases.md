@@ -47,7 +47,7 @@ Laden Sie Upgrade Advisor [hier](http://go.microsoft.com/fwlink/?LinkID=613421) 
 
 2.  Wählen Sie in der Liste der empfohlenen Tabellen auf dem Blatt **Analyseergebnisse** eine der empfohlenen Tabellen aus, um das Blatt **Tabellenergebnisse** anzuzeigen.
 
-    Das Blatt **Tabellenergebnisse** enthält Hindernisse für die ausgewählte Tabelle. Informationen zu den Hindernissen, die vom Stretch Database Advisor erkannt werden, finden Sie unter [Oberflächeneinschränkungen und Hindernisse für Stretch-Datenbank](sql-server-stretch-database-limitations.md).
+    Das Blatt **Tabellenergebnisse** enthält Hindernisse für die ausgewählte Tabelle. Informationen zu den Hindernissen, die vom Stretch Database Advisor erkannt werden, finden Sie unter [Einschränkungen für Stretch-Datenbank](sql-server-stretch-database-limitations.md).
 
 3.  Wählen Sie in der Liste der Hindernisse auf dem Blatt **Tabellenergebnisse** eines der Probleme aus, um das Blatt **Regelergebnis** anzuzeigen.
 
@@ -62,10 +62,10 @@ Aktivieren Sie Stretch-Datenbank.
 
 ## Weitere Informationen
 
-[Oberflächeneinschränkungen und Hindernisse für Stretch-Datenbank](sql-server-stretch-database-limitations.md)
+[Einschränkungen für Stretch-Datenbank](sql-server-stretch-database-limitations.md)
 
 [Aktivieren von Stretch-Datenbank für eine Datenbank](sql-server-stretch-database-enable-database.md)
 
 [Aktivieren von Stretch-Datenbank für eine Tabelle](sql-server-stretch-database-enable-table.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

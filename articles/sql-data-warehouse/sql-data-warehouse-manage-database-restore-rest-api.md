@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/05/2016"
-   ms.author="elfish;barbkess;sonyama"/>
+   ms.date="06/01/2016"
+   ms.author="elfish;barbkess;sonyama;kevin"/>
 
 # Sichern und Wiederherstellen einer Datenbank in Azure SQL Data Warehouse (REST-API)
 
@@ -30,11 +30,10 @@ Aufgaben in diesem Thema:
 
 - Wiederherstellen einer Livedatenbank
 - Wiederherstellen einer gelöschten Datenbank
-- Wiederherstellen einer Datenbank, auf die nicht zugegriffen werden kann, von einer anderen geografischen Azure-Region aus
 
 ## Voraussetzungen
 
-**Überprüfen Sie Ihre Kapazität der SQL-Datenbank-DTU.** SQL Data Warehouse führt die Wiederherstellung so aus, dass eine neue Datenbank auf dem logischen Server erstellt wird. Daher sollten Sie sicherstellen, dass der SQL-Server, auf den Sie wiederherstellen, über ausreichend DTU-Kapazität für die neue Datenbank verfügt. Weitere Informationen zum Anzeigen und Erhöhen des DTU-Kontingents finden Sie in [diesem Blogbeitrag][].
+**Überprüfen Sie Ihre Kapazität der SQL-Datenbank-DTU.** SQL Data Warehouse führt die Wiederherstellung so aus, dass eine neue Datenbank auf dem logischen Server erstellt wird. Daher sollten Sie sicherstellen, dass der SQL-Server, auf den Sie wiederherstellen, über ausreichend DTU-Kapazität für die neue Datenbank verfügt. Weitere Informationen zum [Anzeigen und Erhöhen des DTU-Kontingents][] finden Sie in diesem Blogbeitrag.
 
 ## Wiederherstellen einer Livedatenbank
 
@@ -57,25 +56,6 @@ So stellen Sie eine gelöschte Datenbank wieder her
 
 >[AZURE.NOTE] Nachdem die Wiederherstellung abgeschlossen ist, können Sie Ihre wiederhergestellte Datenbank konfigurieren. Befolgen Sie hierzu die Anleitung [Abschließen der wiederhergestellten Azure SQL-Datenbank][].
 
-## Wiederherstellen von einer geografischen Azure-Region aus
-
-So führen Sie eine Geowiederherstellung aus:
-
-1. Rufen Sie die Liste der wiederherstellbaren Datenbanken mithilfe des Vorgangs [List Recoverable Databases][] ab.
-2. Rufen Sie die Datenbank, die wiederhergestellt werden soll, mithilfe des Vorgangs [Get Recoverable Database][] ab.
-3. Erstellen Sie die Wiederherstellungsanforderung mithilfe des Vorgangs [Create Database Recovery Request][].
-4. Verfolgen Sie den Status der Wiederherstellung mithilfe des Vorgangs [Database Operation Status][] nach.
-
-### Konfigurieren der Datenbank nach der Durchführung einer Geowiederherstellung
-Dies ist eine Prüfliste, mit der Sie die wiederhergestellte Datenbank für die Produktion vorbereiten können.
-
-1. **Aktualisieren von Verbindungszeichenfolgen**: Stellen Sie sicher, dass die Verbindungszeichenfolgen Ihrer Clienttools auf die neu wiederhergestellte Datenbank verweisen.
-2. **Ändern von Firewallregeln**: Überprüfen Sie die Firewallregeln auf dem Zielserver, und stellen Sie sicher, dass die Verbindungen von Ihren Clientcomputern oder Azure zum Server und der neu wiederhergestellten Datenbank aktiviert sind.
-3. **Überprüfen von Serveranmeldungen und Datenbankbenutzern**: Überprüfen Sie, ob alle von der Anwendung verwendeten Anmeldungen auf dem Server vorhanden sind, der die wiederhergestellte Datenbank hostet. Erstellen Sie die fehlenden Anmeldungen erneut, und gewähren Sie ihnen entsprechende Berechtigungen auf der wiederhergestellten Datenbank. 
-4. **Aktivieren der Überwachung**: Wenn die Überwachung für den Zugriff auf die Datenbank benötigt wird, müssen Sie nach der Wiederherstellung der Datenbank die Überwachung aktivieren.
-
-Für die wiederhergestellte Datenbank ist TDE aktiviert, wenn für die Quelldatenbank TDE aktiviert ist.
-
 
 ## Nächste Schritte
 Informationen zu den Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank-Editionen finden Sie in der [Azure SQL-Datenbank-Übersicht zur Geschäftskontinuität][].
@@ -89,17 +69,16 @@ Informationen zu den Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank-E
 
 <!--MSDN references-->
 [Datenbankwiederherstellungsanforderung erstellen]: https://msdn.microsoft.com/library/azure/dn509571.aspx
-[Database operation status]: https://msdn.microsoft.com/library/azure/dn720371.aspx
 [Datenbank-Betriebsstatus]: https://msdn.microsoft.com/library/azure/dn720371.aspx
 [Wiederherstellbare gelöschte Datenbank abrufen]: https://msdn.microsoft.com/library/azure/dn509574.aspx
 [Wiederherstellbare gelöschte Datenbanken auflisten]: https://msdn.microsoft.com/library/azure/dn509562.aspx
 [Restore-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt693390.aspx
 
 <!--Blog references-->
-[diesem Blogbeitrag]: https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/
+[Anzeigen und Erhöhen des DTU-Kontingents]: https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/
 
 <!--Other Web references-->
 [Azure Portal]: https://portal.azure.com/
 [Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -102,7 +102,7 @@ Verschiedene Datenspeicher weisen unterschiedliche systemeigene Typsysteme auf. 
 Sie finden die Zuordnung für ein bestimmtes systemeigenes Typsystem zu .NET für den Datenspeicher im entsprechenden Artikel zum Connector des Datenspeichers. Über diese Zuordnungen können Sie beim Erstellen von Tabellen die geeigneten Typen bestimmen, damit während der Kopieraktivität die richtigen Umwandlungen ausgeführt werden.
 
 ### Arbeiten mit unterschiedlichen Dateiformaten
-Bei der Kopieraktivität werden verschiedene Dateiformate unterstützt, einschließlich Binär-, Text-, Avro- und JSON-Formate für dateibasierte Speicher. Sie können mit der Kopieraktivität Daten von einem Format in ein anderes konvertieren. Beispiel: Text (CSV) in Avro. Bei unstrukturierten Daten können Sie die **Structure**-Eigenschaft in der JSON-Definition des [Datasets](data-factory-create-datasets.md) weglassen.
+Bei der Kopieraktivität werden verschiedene Dateiformate unterstützt, einschließlich Binär-, Text-, Avro-, ORC- und JSON-Formate für dateibasierte Speicher. Sie können mit der Kopieraktivität Daten von einem Format in ein anderes konvertieren. Beispiel: Text (CSV) in Avro. Bei unstrukturierten Daten können Sie die **Structure**-Eigenschaft in der JSON-Definition des [Datasets](data-factory-create-datasets.md) weglassen.
 
 ### Eigenschaften der Kopieraktivität
 Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen, verschiedene Richtlinien usw. sind für alle Arten von Aktivitäten verfügbar. Eigenschaften im Abschnitt **typeProperties** der Aktivität können dagegen je nach Aktivitätstyp variieren.
@@ -195,4 +195,4 @@ Sie können auch, wie nachfolgend dargestellt, eine **benutzerdefinierte** Varia
 
 ![Verwenden von benutzerdefinierten Variablen](./media/data-factory-data-movement-activities/blob-custom-variables-in-folder-path.png)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

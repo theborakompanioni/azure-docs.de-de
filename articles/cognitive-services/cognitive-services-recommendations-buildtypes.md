@@ -21,12 +21,15 @@
 <a name="TypeofBuilds"></a>
 ## Welche Art von Empfehlungsbuild sollte ich verwenden? ##
 
-Derzeit unterstützen wir zwei Buildtypen: *Empfehlung* und *FBT*. Beide werden mit unterschiedlichen Algorithmen erstellt und bieten unterschiedliche Vorteile.
+Derzeit unterstützen wir zwei Buildtypen: *Empfehlung* und *FBT*. Beide werden mit unterschiedlichen Algorithmen erstellt und bieten unterschiedliche Vorteile. In diesem Dokument werden alle Builds sowie Techniken zum Vergleichen der Qualität der generierten Modelle beschrieben.
+
+
+> Wenn Sie dies noch nicht getan haben, empfehlen wir Ihnen, die [Kurzanleitung](cognitive-services-recommendations-quick-start.md) durchzugehen.
 
 <a name="RecommendationBuild"></a>
 ### Buildtyp „Empfehlung“ ###
 
-Die Buildtyp *Empfehlung* verwendet die Matrixfaktorisierung, um Empfehlungen bereitzustellen. Kurz gesagt, werden dabei die Transaktionen des Benutzers zum Generieren von [Eigenvektoren von Features](https://en.wikipedia.org/wiki/Latent_variable) verwendet, um jeden Artikel zu beschreiben. Anschließend werden diese Eigenvektoren zum Vergleichen mit ähnlichen Artikeln verwendet.
+Der Buildtyp *Empfehlung* verwendet die Matrixfaktorisierung, um Empfehlungen bereitzustellen. Kurz gesagt, werden dabei die Transaktionen des Benutzers zum Generieren von [Eigenvektoren von Features](https://en.wikipedia.org/wiki/Latent_variable) verwendet, um jeden Artikel zu beschreiben. Anschließend werden diese Eigenvektoren zum Vergleichen mit ähnlichen Artikeln verwendet.
 
 Angenommen, Sie trainieren das Modell basierend auf Käufen in einem Elektromarkt. Wenn Sie zum Bewertungszeitpunkt ein Smartphone des Typs Lumia 650 als Eingabe in das Modell verwenden, wird eine Menge von Artikeln zurückgegeben, die zumeist von Kunden gekauft werden, die ein Lumia 650 wahrscheinlich kaufen. Beachten Sie, dass sich die Artikel möglicherweise nicht ergänzen. Bei diesem Beispiel ist es möglich, dass andere Telefone zurückgegeben werden, da Kunden, denen das Lumia 650 gefällt, ggf. andere Telefone mögen.
 
@@ -155,7 +158,7 @@ Zum Buildzeitpunkt als Teil der entsprechenden Parameter für FTB- oder Empfehlu
 
 2.	Optional können Sie *splitterStrategy* (entweder *RandomSplitter* oder *LastEventSplitter*) auswählen. *RandomSplitter* teilt die Nutzungsdaten basierend auf dem angegebenen Testprozentsatz *randomSplitterParameters* und zufälligen Ausgangswerten in Trainings- und Testdatasets auf. *LastEventSplitter* teilt die Nutzungsdaten basierend auf der letzten Transaktion jedes Benutzers in Trainings- und Testdatasets auf.
 
-Dies löst einen Build aus, der nur eine Teilmenge der Daten für das Training verwendet. Der Rest der Daten wird verwendet, um Auswertungsmetriken zu berechnen. Nachdem der Build abgeschlossen wurde, müssen Sie zum Abrufen der Ausgabe der Auswertung nur die[API zum Abrufen von Buildmetriken](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/573e43bb3e9d4627a8c4bd3e/console) aufrufen und die entsprechende *modelId* und *buildId* übergeben.
+Dies löst einen Build aus, der nur eine Teilmenge der Daten für das Training verwendet. Der Rest der Daten wird verwendet, um Auswertungsmetriken zu berechnen. Nachdem der Build abgeschlossen wurde, müssen Sie zum Abrufen der Ausgabe der Auswertung nur die [API zum Abrufen von Buildmetriken](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/573e43bb3e9d4627a8c4bd3e/console) aufrufen und die entsprechende *modelId* und *buildId* übergeben.
 
  Nachfolgend finden Sie die JSON-Ausgabe unserer Beispielauswertung:
 
@@ -238,4 +241,4 @@ Dies löst einen Build aus, der nur eine Teilmenge der Daten für das Training v
     "IsFaulted": false
     }
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

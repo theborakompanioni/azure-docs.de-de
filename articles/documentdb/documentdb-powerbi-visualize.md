@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/26/2016"
+	ms.date="05/31/2016"
 	ms.author="hawong"/>
 
 # Power BI-Tutorial für DocumentDB: Visualisieren von Daten mithilfe des Power BI-Connectors
@@ -111,8 +111,7 @@ Sind Sie bereit, es zu versuchen? Lassen Sie uns anfangen.
 11. Klicken Sie auf **Bearbeiten**, um den Abfrage-Editor zu starten, damit wir die Daten transformieren können.
 
 ## Vereinfachen und Transformieren von JSON-Dokumenten
-1. Im Abfrage-Editor von Power BI wird im mittleren Bereich die Spalte **Dokument** angezeigt.
-![Power BI Desktop – Abfrage-Editor](./media/documentdb-powerbi-visualize/power_bi_connector_pbiqueryeditor.png)
+1. Im Abfrage-Editor von Power BI wird im mittleren Bereich die Spalte **Dokument** angezeigt. ![Power BI Desktop – Abfrage-Editor](./media/documentdb-powerbi-visualize/power_bi_connector_pbiqueryeditor.png)
 
 2. Klicken Sie auf das Erweiterungssteuerelement rechts in der Spaltenüberschrift **Dokument**. Das Kontextmenü mit einer Liste von Feldern wird angezeigt. Wählen Sie die Felder aus, die Sie für Ihren Bericht benötigen, z. B. „Volcano Name“, „Country“, „Region“, „Location“, „Elevation“, „Type“, „Status“ und „Last Know Eruption“. Klicken Sie dann auf **OK**.
 
@@ -195,4 +194,4 @@ Zum Freigeben des Berichts müssen Sie über ein Konto in PowerBI.com verfügen.
 - Weitere Informationen zu Power BI erhalten Sie [hier](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
 - Um weitere Informationen zu DocumentDB zu erhalten, klicken Sie [hier](https://azure.microsoft.com/documentation/services/documentdb/).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0608_2016-->

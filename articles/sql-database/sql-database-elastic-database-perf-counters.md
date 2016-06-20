@@ -36,14 +36,14 @@ Rufen Sie zum Erstellen der Leistungsindikatoren die CreatePeformanceCategoryAnd
 
 	ShardMapManagerFactory.CreatePerformanceCategoryAndCounters()  
 
-Die Methode erstellt die folgenden Leistungsindikatoren:
+Sie können auch [dieses](https://gallery.technet.microsoft.com/scriptcenter/Elastic-DB-Tools-for-Azure-17e3d283) PowerShell-Skript zum Ausführen der Methode verwenden. Die Methode erstellt die folgenden Leistungsindikatoren:
 
-* **Cached mappings** (Zwischengespeicherte Zuordnungen): Anzahl der Zuordnungen, die für die Shardzuordnung zwischengespeichert werden
+* **Cached mappings** (Zwischengespeicherte Zuordnungen): Anzahl der Zuordnungen, die für die Shardzuordnung zwischengespeichert werden.
 *  **DDR operations/sec** (DDR-Vorgänge/s): Rate der Vorgänge für datenabhängiges Routing für die Shardzuordnung. Dieser Leistungsindikator wird aktualisiert, wenn ein Aufruf von [OpenConnectionForKey()](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx) zu einer erfolgreichen Verbindung mit dem Zielshard führt. 
-*  **Mapping lookup cache hits/sec** (Cachetreffer bei der Zuordnungssuche/s): Anzahl der erfolgreichen Cachesuchvorgänge für Zuordnungen in der Shardzuordnung 
-*  **Mapping lookup cache misses/sec** (Cachefehler bei der Zuordnungssuche/s): Rate der fehlgeschlagenen Cachsuchvorgänge für Zuordnungen in der Shardzuordnung
-*  **Mappings added or updated in cache/sec** (Im Cache hinzugefügte oder aktualisierte Zuordnungen/s): Rate, mit der Zuordnungen im Cache für die Shardzuordnung hinzugefügt oder aktualisiert werden 
-*  **Mappings removed from cache/sec** (Aus dem Cache entfernte Zuordnungen/s): Rate, mit der Zuordnungen aus dem Cache für die Shardzuordnung entfernt werden 
+*  **Mapping lookup cache hits/sec** (Cachetreffer bei der Zuordnungssuche/s): Rate der erfolgreichen Cachesuchvorgänge für Zuordnungen in der Shardzuordnung. 
+*  **Mapping lookup cache misses/sec** (Cachefehler bei der Zuordnungssuche/s): Rate der fehlerhaften Cachsuchvorgänge für Zuordnungen in der Shardzuordnung.
+*  **Mappings added or updated in cache/sec** (Im Cache hinzugefügte oder aktualisierte Zuordnungen/s): Rate, mit der Zuordnungen im Cache für die Shardzuordnung hinzugefügt oder aktualisiert werden. 
+*  **Mappings removed from cache/sec** (Aus dem Cache entfernte Zuordnungen/s): Rate, mit der Zuordnungen aus dem Cache für die Shardzuordnung entfernt werden. 
 
 Leistungsindikatoren werden für jede zwischengespeicherte Shardzuordnung pro Prozess erstellt.
 
@@ -51,8 +51,8 @@ Leistungsindikatoren werden für jede zwischengespeicherte Shardzuordnung pro Pr
 ## Hinweise
 Die folgenden Ereignisse lösen die Erstellung der Leistungsindikatoren aus:
 
-* Initialisierung von [ShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) mit [Eager Loading](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerloadpolicy.aspx) („eifriges Laden“), wenn „ShardMapManager“ Shardzuordnungen enthält. Dazu gehören die Methoden [GetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx?f=255&MSPPError=-2147217396#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerFactory.GetSqlShardMapManager%28System.String,Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerLoadPolicy%29) und [TryGetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx).
-* Erfolgreiche Suche einer Shardzuordnung (unter Verwendung von [GetShardMap()](https://msdn.microsoft.com/library/azure/dn824215.aspx), [GetListShardMap()](https://msdn.microsoft.com/library/azure/dn824212.aspx) oder [GetRangeShardMap()](https://msdn.microsoft.com/library/azure/dn824173.aspx)) 
+* Initialisierung von [ShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) mit [Eager Loading](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerloadpolicy.aspx), wenn der ShardMapManager Shardzuordnungen enthält. Dazu gehören die Methoden [GetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx?f=255&MSPPError=-2147217396#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerFactory.GetSqlShardMapManager%28System.String,Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerLoadPolicy%29) und [TryGetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx).
+* Erfolgreiche Suche einer Shardzuordnung (unter Verwendung von [GetShardMap()](https://msdn.microsoft.com/library/azure/dn824215.aspx), [GetListShardMap()](https://msdn.microsoft.com/library/azure/dn824212.aspx) oder [GetRangeShardMap()](https://msdn.microsoft.com/library/azure/dn824173.aspx)). 
 
 * Erfolgreiche Erstellung einer Shardzuordnung mit „CreateShardMap()“.
 
@@ -73,4 +73,4 @@ Die Leistungsindikatoren werden von allen Cachevorgängen aktualisiert, die für
 <!--Anchors-->
 <!--Image references-->
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

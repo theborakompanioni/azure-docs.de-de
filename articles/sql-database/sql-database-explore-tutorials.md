@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Kennenlernen der SQL-Datenbank-Tutorials"
+   pageTitle="Entdecken Sie die Azure SQL-Datenbank-Tutorials | Microsoft Azure"
    description="Erfahren Sie mehr über die Features und Funktionalität von SQL-Datenbank"
    keywords=""
    services="sql-database"
@@ -14,12 +14,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="05/04/2016"
+   ms.date="06/01/2016"
    ms.author="carlrab"/>
    
-# Kennenlernen der SQL-Datenbank-Tutorials
+# Entdecken Sie Azure SQL-Datenbank-Tutorials
 
-Über folgende Links gelangen Sie zu einer Übersicht über jeden aufgelisteten Funktionsbereich und zu einem Schnellstarttutorial für jeden Bereich.
+Über die folgenden Links gelangen Sie zu einer Übersicht über jeden aufgelisteten Featurebereich und zu einem einfachen schrittweisen Tutorial für jeden Bereich. Lösungsbezogene Schnellstarts, die die Verwendung von SQL-Datenbank in einer vollständigen Lösung basierend auf realen Szenarien veranschaulichen, finden Sie unter [Azure SQL Database Solution Quick Starts](sql-database-solution-quick-starts.md) (Lösungsbezogene Schnellstarts für Azure SQL-Datenbank).
 
 ## Verwenden von SQL Server Management Studio
 
@@ -47,7 +47,7 @@ In den folgenden Tutorials erfahren Sie mehr zur Verwendung von [elastischen Poo
 
 ## Aufträge für die elastische Datenbank
 
-In den folgenden Tutorials erfahren Sie mehr zur Verwendung von [Aufträgen für elastische Datenbanken](sql-database-elastic-jobs-overview.md)
+In den folgenden Tutorials erfahren Sie mehr zur Verwendung von [Aufträgen für elastische Datenbanken](sql-database-elastic-jobs-overview.md).
 
 | Lernprogramm: | Beschreibung |
 |---|---|---|
@@ -61,8 +61,8 @@ In den folgenden Tutorials erfahren Sie mehr zur Ausführung von [elastischen Ab
 
 | Lernprogramm: | Beschreibung |
 |---|---|---|
-| [Abfragen über eine horizontal partitionierte Datenbank (Sharddatenbank)](sql-database-elastic-query-getting-started.md) | In diesem Tutorial erfahren Sie, wie Sie Berichte von allen Datenbanken in einer horizontal partitionierten Datenbank (Sharddatenbank) mithilfe von [elastischen Abfragen](sql-database-elastic-query-overview.md) erstellen |
-| [Abfragen über eine vertikal partitionierte Datenbank](sql-database-elastic-query-getting-started-vertical.md#create-database-objects) | In diesem Tutorial erfahren Sie, wie Sie Berichte von allen Datenbanken in einer vertikalen Datenbank mithilfe von [elastischen Abfragen](sql-database-elastic-query-overview.md) erstellen |
+| [Abfragen über eine horizontal partitionierte Datenbank (Sharddatenbank)](sql-database-elastic-query-getting-started.md) | In diesem Tutorial erfahren Sie, wie Sie Berichte von allen Datenbanken in einer horizontal partitionierten Datenbank (Sharddatenbank) mithilfe von [elastischen Abfragen](sql-database-elastic-query-overview.md) erstellen. |
+| [Abfragen über eine vertikal partitionierte Datenbank](sql-database-elastic-query-getting-started-vertical.md#create-database-objects) | In diesem Tutorial erfahren Sie, wie Sie Berichte von allen Datenbanken in einer vertikalen Datenbank mithilfe von [elastischen Abfragen](sql-database-elastic-query-overview.md) erstellen. |
 | [Migrieren einer vorhandenen Datenbank zum horizontalen Skalieren](sql-database-elastic-convert-to-use-elastic-tools.md)| In diesem Tutorial erfahren Sie, wie Sie eine Azure SQL-Datenbank horizontal skalieren (Shard). |
 ||||
 
@@ -92,12 +92,12 @@ In den folgenden Tutorials erfahren Sie, wie Sie [eine vorhandene SQL Server-Dat
 | [Migrieren von SQL Server-Datenbank auf SQL-Datenbank mit dem Assistenten zum Bereitstellen einer Datenbank unter Microsoft Azure-Datenbank](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md#use-the-deploy-database-to-microsoft-azure-database-wizard) | In diesem Tutorial erfahren Sie, wie Sie eine kompatible SQL Server-Datenbank mithilfe des Assistenten zum Bereitstellen einer Datenbank unter Microsoft Azure-Datenbank in SQL Server Management Studio zu Azure SQL-Datenbank migrieren.
 | [Exportieren einer SQL Server-Datenbank in eine BACPAC-Datei per SSMS](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md) | In diesem Tutorial erfahren Sie, wie Sie eine kompatible SQL Server-Datenbank mithilfe des Assistenten zum Exportieren einer Datenebenenanwendung in SQL Server Management Studio in eine BACPAC-Datei exportieren.|
 | [Exportieren einer SQL Server-Datenbank in eine BACPAC-Datei per SqlPackage](sql-database-cloud-migrate-compatible-export-bacpac-sqlpackage.md) | In diesem Tutorial erfahren Sie, wie Sie eine kompatible SQL Server-Datenbank mithilfe des Befehlszeilenprogramms „SQLPackage.exe“ in eine BACPAC-Datei exportieren.|
-| [Importieren einer BACPAC-Datei nach Azure SQL-­Datenbank mithilfe von PowerShell](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md) | In diesem Tutorial erfahren Sie, wie Sie eine Datenbank mithilfe des Assistenten zum Exportieren einer Datenebenenanwendung in SQL Server Management Studio aus einer BACPAC-Datei in Azure SQL-Datenbank importieren. |
+| [Importieren aus BACPAC zur SQL-Datenbank mithilfe von SSMS](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md) | In diesem Tutorial erfahren Sie, wie Sie eine Datenbank mithilfe des Assistenten zum Exportieren einer Datenebenenanwendung in SQL Server Management Studio aus einer BACPAC-Datei in Azure SQL-Datenbank importieren. |
 | [Importieren einer BACPAC-Datei in Azure SQL-Datenbank mithilfe von SqlPackage](sql-database-cloud-migrate-compatible-import-bacpac-sqlpackage.md#import-from-a-bacpac-file-into-azure-sql-database-using-sqlpackage) | In diesem Tutorial erfahren Sie, wie Sie eine Datenbank mithilfe des Befehlszeilenprogramms „SQLPackage.exe“ von einer BACPAC-Datei in Azure SQL-Datenbank importieren. |
 | [Importieren einer BACPAC-Datei in Azure SQL-Datenbank über das Azure-Portal](sql-database-import.md) | In diesem Tutorial erfahren Sie, wie Sie eine Datenbank mithilfe des Azure-Portals von einer BACPAC-Datei, die in einem Azure-Blob gespeichert ist, in Azure SQL-Datenbank importieren.|
 | [Importieren einer BACPAC-Datei nach Azure SQL-­Datenbank mithilfe von PowerShell](sql-database-import-powershell.md) | In diesem Tutorial erfahren Sie, wie Sie eine Datenbank mithilfe von PowerShell von einer BACPAC-Datei in Azure SQL-Datenbank importieren.|
 | [Archivieren einer Azure SQL-Datenbank mithilfe des Azure-Portals](sql-database-export.md#export-your-database) | In diesem Tutorial erfahren Sie, wie Sie eine Azure SQL-Datenbank mithilfe des Azure-Portals in eine BACPAC-Datei archivieren. |
-| [Archivieren einer Azure SQL-Datenbank mithilfe von PowerShell](sql-database-export-powershell.md) | In diesem Tutorial erfahren Sie, wie Sie eine Azure SQL-Datenbank mithilfe des Azure-Portals in eine BACPAC-Datei archivieren. |
+| [Archivieren einer Azure SQL-Datenbank mithilfe von PowerShell](sql-database-export-powershell.md) | In diesem Tutorial erfahren Sie, wie Sie eine Azure SQL-Datenbank mit PowerShell in einer BACPAC-Datei archivieren. |
 | [Kopieren einer Azure SQL-Datenbank mithilfe des Azure-Portals](sql-database-copy.md#copy-your-sql-database) | In diesem Tutorial erfahren Sie, wie Sie eine Azure SQL-Datenbank mithilfe des Azure-Portals kopieren. |
 | [Kopieren einer Azure SQL-Datenbank mithilfe von PowerShell](sql-database-copy-powershell#copy-your-sql-database) | In diesem Tutorial erfahren Sie, wie Sie eine Azure SQL-Datenbank mithilfe von PowerShell kopieren. |
 | [Kopieren einer Azure SQL-Datenbank mithilfe von Transact-SQL](sql-database-copy-transact-sql.md#copy-your-sql-database) | In diesem Tutorial erfahren Sie, wie Sie eine Azure SQL-Datenbank mithilfe von Transact-SQL kopieren. |
@@ -159,9 +159,9 @@ In den folgenden Tutorials erfahren Sie mehr über die Verwendung der [Geowieder
 | [Wiederherstellen des Zustands einer Azure SQL-Datenbank zu einem früheren Zeitpunkt mit PowerShell](sql-database-point-in-time-restore-powershell.md) | In diesem Tutorial erfahren Sie, wie Sie den Zustand Ihrer Datenbank zu einem früheren Zeitpunkt mithilfe von PowerShell wiederherstellen können.|
 | [Wiederherstellen einer gelöschten Azure SQL-Datenbank im Azure-Portal](sql-database-restore-deleted-database-portal.md) | In diesem Tutorial erfahren Sie, wie Sie eine gelöschte Datenbank mithilfe des Azure-Portals wiederherstellen.|
 | [Wiederherstellen einer gelöschten Azure SQL-Datenbank mithilfe von PowerShell](sql-database-restore-deleted-database-powershell.md) | In diesem Tutorial erfahren Sie, wie Sie eine gelöschte Datenbank mithilfe von PowerShell wiederherstellen.|
-| [Konfigurieren der Georeplikation für eine Azure SQL-Datenbank mit dem Azure-Portal](sql-database-geo-replication-portal.md)| In diesem Tutorial erfahren Sie, wie Sie die aktive Georeplikation mithilfe des Azure-Portals konfigurieren.|
-| [Konfigurieren der Georeplikation für die Azure SQL-Datenbank mit PowerShell](sql-database-geo-replication-powershell.md)| In diesem Tutorial erfahren Sie, wie Sie die aktive Georeplikation mithilfe von Transact-SQL konfigurieren.|
-| [Konfigurieren der Georeplikation für Azure SQL-Datenbank mithilfe von Transact-SQL](sql-database-geo-replication-transact-sql.md)| In diesem Tutorial erfahren Sie, wie Sie die aktive Georeplikation mithilfe von Transact-SQL konfigurieren.|
+| [Konfigurieren der Georeplikation für die Azure SQL-Datenbank mit dem Azure-Portal](sql-database-geo-replication-portal.md)| In diesem Tutorial erfahren Sie, wie Sie die aktive Georeplikation mithilfe des Azure-Portals konfigurieren.|
+| [Konfigurieren der Georeplikation für die Azure SQL-Datenbank mit PowerShell](sql-database-geo-replication-powershell.md)| In diesem Tutorial erfahren Sie, wie Sie die aktive Georeplikation mithilfe von PowerShell konfigurieren.|
+| [Konfigurieren der Georeplikation für Azure SQL-Datenbank mit Transact-SQL](sql-database-geo-replication-transact-sql.md)| In diesem Tutorial erfahren Sie, wie Sie die aktive Georeplikation mithilfe von Transact-SQL konfigurieren.|
 | [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit dem Azure-Portal](sql-database-geo-replication-failover-portal.md) | In diesem Tutorial erfahren Sie, wie Sie mithilfe des Azure-Portals ein Failover auf ein georepliziertes sekundäres Replikat ausführen.|
 | [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit PowerShell](sql-database-geo-replication-failover-powershell.md) | In diesem Tutorial erfahren Sie, wie Sie mithilfe von PowerShell ein Failover auf ein georepliziertes sekundäres Replikat ausführen.|
 | [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit Transact-SQL](sql-database-geo-replication-failover-transact-sql.md) | In diesem Tutorial erfahren Sie, wie Sie mithilfe von Transact-SQL ein Failover auf ein georepliziertes sekundäres Replikat ausführen.|
@@ -176,4 +176,8 @@ In diesem Tutorial erfahren Sie mehr über die [Datensynchronisierung](http://do
 | [Erste Schritte mit Azure SQL-Datensynchronisierung (Vorschauversion)](sql-database-get-started-sql-data-sync.md) | In diesem Tutorial lernen Sie die Grundlagen der Azure SQL-Datensynchronisierung mit dem klassischen Azure-Portal kennen. |
 ||||
 
-<!---HONumber=AcomDC_0518_2016-->
+## Nächste Schritte
+
+[Explore Azure SQL Database Solution Quick Starts](sql-database-solution-quick-starts.md) (Entdecken Sie die lösungsbezogenen Schnellstarts für Azure SQL-Datenbank)
+
+<!---HONumber=AcomDC_0608_2016-->

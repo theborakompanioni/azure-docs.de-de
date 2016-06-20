@@ -22,9 +22,9 @@ Informationen zur Planung der Bereitstellung von HDInsight-Clustern.
 
 > [AZURE.IMPORTANT] Bei den Schritten in diesem Dokument wird das klassische Azure-Portal verwendet. Microsoft empfiehlt die Verwendung des klassischen Azure-Portals nicht für die Erstellung neuer Dienste. Eine Beschreibung der Vorteile des Azure-Portals finden Sie unter [Microsoft Azure-Portal](https://azure.microsoft.com/features/azure-portal/).
 >
-> Dieses Dokument enthält außerdem Informationen zur Verwendung von Azure PowerShell und Azure-Befehlszeilenschnittstelle (CLI, Command Line Interface). Die bereitgestellten Codeausschnitte basieren auf Befehlen, die Azure Service Management (ASM) zur Zusammenarbeit mit HDInsight verwenden, und sind __veraltet__. Diese Befehle werden zum 1. Januar 2017 eingestellt.
+> Dieses Dokument enthält außerdem Informationen zur Verwendung von Azure PowerShell, der Azure-Befehlszeilenschnittstelle (CLI, Command Line Interface) sowie des .NET SDK für HDInsight. Die bereitgestellten Codeausschnitte basieren auf Befehlen, die Azure Service Management (ASM) zur Zusammenarbeit mit HDInsight verwenden, und sind __veraltet__. Diese Befehle werden zum 1. Januar 2017 eingestellt.
 >
->Eine Version dieses Dokuments, die das Azure-Portal verwendet, finden Sie zusammen mit Codeausschnitten von PowerShell und Azure-CLI, die den Azure Resource Manager (ARM) verwenden, unter [Bereitstellen von Hadoop-Clustern in HDInsight](hdinsight-provision-clusters.md).
+>Eine Version dieses Dokuments, die das Azure-Portal verwendet, finden Sie zusammen mit Codeausschnitten von PowerShell, Azure-CLI sowie des .NET SDK für HDInsight, die den Azure Resource Manager (ARM) verwenden, unter [Bereitstellen von Hadoop-Clustern in HDInsight](hdinsight-provision-clusters.md).
 
 **Voraussetzungen:**
 
@@ -300,7 +300,7 @@ Erläuterung der Felder finden Sie in den [grundlegenden Konfigurationsoptionen]
 ### Verwenden von Azure PowerShell
 Azure PowerShell ist eine leistungsstarke Skriptumgebung, mit der Sie die Bereitstellung und Verwaltung Ihrer Arbeitsauslastungen in Azure steuern und automatisieren können. Dieser Abschnitt enthält Anweisungen für die Bereitstellung eines HDInsight-Clusters mit Azure PowerShell. Weitere Informationen zum Konfigurieren einer Arbeitsstation für die Ausführung von HDInsight PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Weitere Informationen zum Verwenden von Azure PowerShell mit HDInsight finden Sie unter [Verwalten von HDInsight mit PowerShell](hdinsight-administer-use-powershell.md). Eine Liste der HDInsight Windows PowerShell-Cmdlets finden Sie unter [HDInsight-Cmdlet-Referenz](https://msdn.microsoft.com/library/azure/dn858087.aspx).
 
-> [AZURE.NOTE] Die Skripts in diesem Abschnitt dienen zum Konfigurieren eines HDInsight-Clusters in einem virtuellen Azure-Netzwerk, jedoch nicht zur Erstellung des virtuellen Azure-Netzwerks. Informationen zur Erstellung von virtuellen Azure-Netzwerken finden Sie unter [Aufgaben bei der Konfiguration virtueller Netzwerke](../services/virtual-machines/).
+> [AZURE.NOTE] Die Skripts in diesem Abschnitt dienen zum Konfigurieren eines HDInsight-Clusters in einem virtuellen Azure-Netzwerk, jedoch nicht zur Erstellung des virtuellen Azure-Netzwerks. Informationen zur Erstellung von virtuellen Azure-Netzwerken finden Sie unter [Aufgaben bei der Konfiguration virtueller Netzwerke](../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
 
 Die folgenden Prozeduren müssen für die Bereitstellung eines HDInsight-Clusters mithilfe von Azure PowerShell ausgeführt werden:
 
@@ -534,7 +534,7 @@ Sie können die Azure-Befehlszeilenschnittstelle entweder über NPM oder Windows
 
 **So installieren Sie die Azure-Befehlszeilenschnittstelle mit Windows Installer**
 
-1.	Navigieren Sie zu **http://azure.microsoft.com/downloads/**.
+1.	Navigieren Sie zu ****http://azure.microsoft.com/downloads/**.
 2.	Führen Sie einen Bildlauf nach unten zum Abschnitt **Befehlszeilentools** durch, und klicken Sie dann auf **Azure-Befehlszeilenschnittstelle**, und führen Sie den Assistenten für den Webplattform-Installer aus.
 
 **Herunterladen und Importieren der Veröffentlichungseinstellungen**
@@ -815,4 +815,4 @@ In diesem Artikel haben Sie mehrere Möglichkeiten zu Bereitstellung von HDInsig
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
 [azure-management-portal]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->
