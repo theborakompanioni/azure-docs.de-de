@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="06/01/2016"
 	ms.author="tarcher"/>
 
 # Verwalten von DevTest Labs-Formeln zum Erstellen virtueller Computer
@@ -42,21 +42,21 @@ Die folgenden Schritte führen Sie durch den Prozess der Erstellung einer neuen 
 
 1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
-1. Tippen Sie auf **Durchsuchen**, und tippen Sie dann in der Liste auf **DevTest Labs**.
+1. Wählen Sie **Durchsuchen** und dann in der Liste **DevTest Labs**.
 
-1. Tippen Sie in der Liste der Labs auf das gewünschte Lab.
+1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.
 
 1. Das Blatt **Einstellungen** des ausgewählten Labs wird angezeigt.
 
-1. Tippen Sie auf dem Blatt **Einstellungen** für das Lab auf **Formeln**.
+1. Wählen Sie auf dem Blatt **Einstellungen** für das Lab **Formeln**.
 
     ![Menü „Formel“](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 
-1. Tippen Sie auf dem Blatt **Labformeln** auf **+ Hinzufügen**.
+1. Wählen Sie auf dem Blatt **Labformeln** **+ Hinzufügen**.
 
     ![Neue Formel hinzufügen](./media/devtest-lab-manage-formulas/add-formula.png)
 
-1. Tippen Sie auf dem Blatt **Basis auswählen** auf das benutzerdefinierte Image oder das Marketplace-Image, aus dem Sie die Formel erstellen möchten.
+1. Wählen Sie auf dem Blatt **Basis auswählen** das benutzerdefinierte Image oder das Marketplace-Image, aus dem Sie die Formel erstellen möchten.
 
     ![Basisliste](./media/devtest-lab-manage-formulas/base-list.png)
 
@@ -65,15 +65,15 @@ Die folgenden Schritte führen Sie durch den Prozess der Erstellung einer neuen 
 	- **Formelname**: Geben Sie einen Namen für die Formel ein. Dieser Wert wird in der Liste der Basisimages angezeigt, wenn Sie einen virtuellen Computer erstellen. Der Name wird während der Eingabe überprüft. Falls er nicht gültig ist, werden Sie in einer Meldung über die Anforderungen für einen gültigen Namen informiert.
 	- **Beschreibung**: Geben Sie eine aussagekräftige Beschreibung für Ihre Formel ein. Dieser Wert steht über das Kontextmenü der Formel zur Verfügung, wenn Sie einen virtuellen Computer erstellen.
 	- **Image**: Dieses Feld zeigt den Namen des Basisimage an, das Sie auf dem vorherigen Blatt ausgewählt haben. 
-	- **VM-Größe**: Tippen Sie auf eines der vordefinierten Elemente aus, mit denen die Prozessorkerne, die RAM-Größe und die Größe der Festplatte des zu erstellenden virtuellen Computers angegeben werden.
-	- **Virtuelles Netzwerk**: Tippen Sie hier, und wählen Sie das gewünschte virtuelle Netzwerk aus.
-	- **Subnetz**: Tippen Sie hier, um das gewünschte Subnetz auszuwählen.
+	- **VM-Größe**: Wählen Sie eines der vordefinierten Elemente aus, mit denen die Prozessorkerne, die RAM-Größe und die Größe der Festplatte des zu erstellenden virtuellen Computers angegeben werden.
+	- **Virtuelles Netzwerk**: Wählen Sie diese Option und das gewünschte virtuelle Netzwerk aus.
+	- **Subnetz**: Wählen Sie diese Option und das gewünschte Subnetz aus.
 	- **Öffentliche IP-Adresse**: Wenn die Labrichtlinie öffentliche IP-Adressen für das ausgewählte Subnetz zulässt, geben Sie durch Auswahl von **Ja** oder **Nein** an, ob die IP-Adresse öffentlich sein soll. Andernfalls ist diese Option deaktiviert und als **Nein** festgelegt.
-	- **Artefakte**: Tippen Sie hier. Wählen Sie aus der Liste der Artefakte die Artefakte aus, die Sie dem Basisimage hinzufügen möchten, und konfigurieren Sie sie. Beachten Sie, dass Artefaktparameter, bei denen es sich um sichere Zeichenfolgen handelt, nicht angezeigt werden, da die Formel keine sicheren Zeichenfolgenwerte speichert. 
+	- **Artefakte**: Wählen Sie diese Option und – aus der Liste der Artefakte – die Artefakte aus, die Sie dem Basisimage hinzufügen möchten, und konfigurieren Sie sie. Beachten Sie, dass Artefaktparameter, bei denen es sich um sichere Zeichenfolgen handelt, nicht angezeigt werden, da die Formel keine sicheren Zeichenfolgenwerte speichert. 
 
     	![Formel erstellen](./media/devtest-lab-manage-formulas/create-formula.png)
 
-1. Tippen Sie auf **Erstellen**, um die Formel zu erstellen. Wenn die Formel erfolgreich erstellt wurde, wird sie auf dem Blatt **Labformeln** aufgeführt.
+1. Wählen Sie **Erstellen**, um die Formel zu erstellen. Wenn die Formel erfolgreich erstellt wurde, wird sie auf dem Blatt **Labformeln** aufgeführt.
 
 	![Neu erstellte Formel](./media/devtest-lab-manage-formulas/newly-created-formula.png)
 
@@ -84,19 +84,19 @@ Die folgenden Schritte führen Sie durch den Prozess der Erstellung einer neuen 
 
 1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
-1. Tippen Sie auf **Durchsuchen**, und tippen Sie dann in der Liste auf **DevTest Labs**.
+1. Wählen Sie **Durchsuchen** und dann in der Liste **DevTest Labs**.
 
-1. Tippen Sie in der Liste der Labs auf das gewünschte Lab.
+1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.
 
-1. Suchen Sie auf dem Blatt des Labs nach dem Abschnitt mit dem Titel **Meine VMs**, und klicken Sie auf den virtuellen Computer, aus dem Sie die neue Formel erstellen möchten.
+1. Suchen Sie auf dem Blatt des Labs nach dem Abschnitt mit dem Titel **Meine VMs**, und wählen Sie den virtuellen Computer, aus dem Sie die neue Formel erstellen möchten.
 
 	![Virtuelle Labs-Computer](./media/devtest-lab-manage-formulas/my-vms.png)
 
-1. Tippen Sie auf dem Blatt **Einstellungen** des virtuellen Computers auf **Formel erstellen**.
+1. Wählen Sie auf dem Blatt **Einstellungen** des virtuellen Computers **Formel erstellen**.
 
 	![Formel erstellen](./media/devtest-lab-manage-formulas/create-formula-menu.png)
 
-1. Geben Sie auf dem Blatt **Formel erstellen** einen **Namen** und eine **Beschreibung** für Ihre neue Formel ein, und tippen Sie auf **OK**. Wenn die Formel erfolgreich erstellt wurde, wird sie auf dem Blatt **Labformeln** aufgeführt.
+1. Geben Sie auf dem Blatt **Formel erstellen** einen **Namen** und eine **Beschreibung** für Ihre neue Formel ein, und wählen Sie **OK**. Wenn die Formel erfolgreich erstellt wurde, wird sie auf dem Blatt **Labformeln** aufgeführt.
 
 	![Blatt „Formel erstellen“](./media/devtest-lab-manage-formulas/create-formula-blade.png)
 
@@ -105,32 +105,32 @@ Um eine Formel zu ändern, gehen Sie folgendermaßen vor:
 
 1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
-1. Tippen Sie auf **Durchsuchen**, und tippen Sie dann in der Liste auf **DevTest Labs**.
+1. Wählen Sie **Durchsuchen** und dann in der Liste **DevTest Labs**.
 
-1. Tippen Sie in der Liste der Labs auf das gewünschte Lab.
+1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.
 
-1. Tippen Sie auf dem Blatt **Einstellungen** für das Lab auf **Formeln**.
+1. Wählen Sie auf dem Blatt **Einstellungen** für das Lab **Formeln**.
 
     ![Menü „Formel“](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 
-1. Tippen Sie auf dem Blatt **Labformeln** auf die Formel, die Sie ändern möchten.
+1. Wählen Sie auf dem Blatt **Labformeln** die Formel, die Sie ändern möchten.
 
-1. Nehmen Sie auf dem Blatt **Formel aktualisieren** die gewünschten Änderungen vor, und tippen Sie auf **Aktualisieren**.
+1. Nehmen Sie auf dem Blatt **Formel aktualisieren** die gewünschten Änderungen vor, und wählen Sie **Aktualisieren**.
 
 ## Löschen einer Formel 
 Um eine Formel zu löschen, gehen Sie folgendermaßen vor:
 
 1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
-1. Tippen Sie auf **Durchsuchen**, und tippen Sie dann in der Liste auf **DevTest Labs**.
+1. Wählen Sie **Durchsuchen** und dann in der Liste **DevTest Labs**.
 
-1. Tippen Sie in der Liste der Labs auf das gewünschte Lab.
+1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.
 
-1. Tippen Sie auf dem Blatt **Einstellungen** für das Lab auf **Formeln**.
+1. Wählen Sie auf dem Blatt **Einstellungen** für das Lab **Formeln**.
 
     ![Menü „Formel“](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 
-1. Klicken Sie auf dem Blatt **Labformeln** auf die Auslassungspunkte rechts neben der Formel, die Sie löschen möchten.
+1. Wählen Sie auf dem Blatt **Labformeln** die Auslassungspunkte rechts neben der Formel, die Sie löschen möchten.
 
     ![Menü „Formel“](./media/devtest-lab-manage-formulas/lab-formulas-blade.png)
 
@@ -138,11 +138,11 @@ Um eine Formel zu löschen, gehen Sie folgendermaßen vor:
 
     ![Kontextmenü „Formel“](./media/devtest-lab-manage-formulas/formula-delete-context-menu.png)
 
-1. Tippen Sie im Bestätigungsdialogfeld auf **Ja**.
+1. Wählen Sie im Bestätigungsdialogfeld **Ja**.
 
     ![Kontextmenü „Formel“](./media/devtest-lab-manage-formulas/formula-delete-confirmation.png)
 
 ## Nächste Schritte
 Nachdem Sie eine Formel erstellt haben, die zum Erstellen virtueller Computer verwendet werden soll, besteht der nächste Schritt darin, [Ihrem Lab einen virtuellen Computer hinzuzufügen](./devtest-lab-add-vm-with-artifacts.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

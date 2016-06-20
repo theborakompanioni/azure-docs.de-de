@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Was ist mit dem MVC-Projekt passiert (verbundene Visual Studio-Dienste für Azure Active Directory)? | Microsoft Azure"
-	description="Beschreibt, was mit dem MVC-Projekt geschieht, wenn Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit Azure AD herstellen "
+	description="Beschreibt, was mit dem MVC-Projekt geschieht, wenn Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit Azure AD herstellen "
 	services="active-directory"
 	documentationCenter="na"
 	authors="TomArcher"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-what-happened"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/28/2016"
+	ms.date="06/01/2016"
 	ms.author="tarcher"/>
 
 # Was ist mit dem MVC-Projekt passiert (verbundene Visual Studio-Dienste für Azure Active Directory)?
@@ -171,4 +171,4 @@ Ihre Azure Active Directory-App wurde aktualisiert und enthält nun die Berechti
 
 [Weitere Informationen zu Azure Active Directory](https://azure.microsoft.com/services/active-directory/)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0608_2016-->

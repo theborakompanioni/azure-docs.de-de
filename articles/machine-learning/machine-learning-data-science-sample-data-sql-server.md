@@ -60,7 +60,7 @@ Sie können auch mit TABLESAMPLE eine Stichprobe erstellen, wie unten veranschau
 
 ###<a name="sql-aml"></a>Herstellen einer Verbindung mit Azure Machine Learning
 
-Sie können die Beispielabfragen oben direkt im Reader-Modul von Azure ML verwenden, um Stichproben aus den Daten dynamisch zu erstellen und in einem Azure ML-Experiment zu verwenden. Dies ist ein Screenshot der Verwendung des Reader-Moduls zum Lesen der erfassten Daten:
+Sie können die Beispielabfragen oben direkt im „Import Data“-Modul von Azure ML verwenden, um Stichproben aus den Daten dynamisch zu erstellen und in einem Azure ML-Experiment zu verwenden. Dies ist ein Screenshot der Verwendung des Reader-Moduls zum Lesen der erfassten Daten:
    
 ![reader sql][1]
 
@@ -83,7 +83,7 @@ Sie können jetzt mit den erfassten Daten im Pandas-DataFrame arbeiten.
 
 ###<a name="python-aml"></a>Herstellen einer Verbindung mit Azure Machine Learning
 
-Mit dem folgenden Beispielcode können Sie die Stichprobendaten in einer Datei speichern und in ein Azure-Blob hochladen. Die Daten im Blob können mit dem *Reader-Modul* direkt in ein Azure ML-Experiment gelesen werden. Die Schritte lauten wie folgt:
+Mit dem folgenden Beispielcode können Sie die Stichprobendaten in einer Datei speichern und in ein Azure-Blob hochladen. Die Daten im Blob können mit dem *„Import Data“-Modul* direkt in ein Azure ML-Experiment gelesen werden. Die Schritte lauten wie folgt:
 
 1. Schreiben Sie den Pandas-DataFrame in eine lokale Datei:
 
@@ -111,7 +111,7 @@ Mit dem folgenden Beispielcode können Sie die Stichprobendaten in einer Datei s
 	    except:	        
 		    print ("Something went wrong with uploading blob:"+BLOBNAME)
 
-3. Lesen Sie die Daten wie in der folgenden Abbildung dargestellt mit dem Azure ML-*Reader*-Modul aus dem Azure-Blob aus:
+3. Lesen Sie die Daten wie in der folgenden Abbildung dargestellt mit dem Azure ML-*Import Data*-Modul aus dem Azure-Blob:
  
 ![Reader-Blob][2]
 
@@ -124,4 +124,4 @@ Eine umfassende exemplarische Vorgehensweise zur Verwendung des Cortana-Analysep
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

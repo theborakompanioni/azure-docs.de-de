@@ -28,7 +28,11 @@ Die folgenden Administratorrollen sind verfügbar:
 
 - **Globaler Administrator**: hat Zugriff auf alle administrativen Funktionen. Die Person, die die Anmeldung für das Azure-Konto vornimmt, wird ein globaler Administrator. Nur globale Administratoren können weitere Administratorrollen zuweisen. In Ihrem Unternehmen können mehrere globale Administratoren vorhanden sein.
 
+	> [AZURE.NOTE] In der Microsoft Graph-API, der Azure AD Graph-API und Azure AD PowerShell wird diese Rolle als „Unternehmensadministrator“ identifiziert.
+
 - **Kennwortadministrator**: setzt Kennwörter zurück, verwaltet Dienstanforderungen und überwacht die Integrität des Diensts. Kennwortadministratoren können Kennwörter nur für Benutzer und andere Kennwortadministratoren zurücksetzen.
+
+	> [AZURE.NOTE] In der Microsoft Graph-API, der Azure AD Graph-API und Azure AD PowerShell wird diese Rolle als „Helpdeskadministrator“ identifiziert.
 
 - **Dienstadministrator**: verwaltet Dienstanforderungen und überwacht die Integrität des Dienstes.
 
@@ -92,7 +96,7 @@ Der globale Administrator hat Zugriff auf alle administrativen Funktionen. Stand
 
 - Weitere Informationen zum Ändern von Administratoren für ein Azure-Abonnement finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](../billing-add-change-azure-subscription-administrator.md).
 
-- Informationen dazu, wie der Zugriff auf Ressourcen in Microsoft Azure gesteuert wird, finden Sie unter [Grundlegendes zum Zugriff auf Ressourcen in Azure](active-directory-understanding-resource-access.md)
+- Informationen dazu, wie der Zugriff auf Ressourcen in Microsoft Azure gesteuert wird, finden Sie unter [Grundlegendes zum Zugriff auf Ressourcen in Azure](active-directory-understanding-resource-access.md).
 
 - Weitere Informationen zur Beziehung zwischen Azure Active Directory und Ihrem Azure-Abonnement finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](active-directory-how-subscriptions-associated-directory.md).
 
@@ -102,4 +106,4 @@ Der globale Administrator hat Zugriff auf alle administrativen Funktionen. Stand
 
 - [Gruppen verwalten](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0608_2016-->

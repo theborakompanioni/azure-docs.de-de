@@ -49,7 +49,7 @@ Sie sollten die Georeplikation verwenden, wenn Ihre Anwendung die folgenden Krit
 2. Die Häufigkeit von Datenänderungen ist hoch (z. B. Transaktionen pro Minute oder Sekunde). Der für den Standardschutz geltende RPO-Wert von einer Stunde führt wahrscheinlich zu nicht akzeptablen Datenverlusten.
 3. Die Kosten für die Verwendung der Georeplikation sind deutlich niedriger als die potenziellen finanziellen Haftungsschäden und die damit einhergehenden Geschäftsverluste.
 
-Informationen zum Aktivieren der aktiven Georeplikation finden Sie unter [Konfigurieren der Georeplikation für Azure SQL-Datenbank](sql-database-geo-replication-portal.md).
+Informationen zum Aktivieren der aktiven Georeplikation finden Sie unter [Konfigurieren der Georeplikation für die Azure SQL-Datenbank mit dem Azure-Portal](sql-database-geo-replication-portal.md).
 
 > [AZURE.NOTE] Die aktive Georeplikation unterstützt auch schreibgeschützten Zugriff auf die sekundäre Datenbank, wodurch zusätzliche Kapazität für die schreibgeschützten Arbeitsauslastungen bereitgestellt wird.
 
@@ -60,4 +60,4 @@ Informationen zum Aktivieren der aktiven Georeplikation finden Sie unter [Konfig
 
 Sie sollten beim Entwerfen der Anwendung für die Geschäftskontinuität verschiedene Konfigurationsoptionen berücksichtigen. Die Auswahl hängt von der Bereitstellungstopologie für die Anwendung ab und davon, welche Teile der Anwendungen am anfälligsten für einen Ausfall sind. Anleitungen finden Sie unter [Entwerfen von Cloudlösungen für die Notfallwiederherstellung mithilfe der Georeplikation](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

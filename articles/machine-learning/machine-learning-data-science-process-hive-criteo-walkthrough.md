@@ -438,17 +438,17 @@ Beim Erstellen von Modellen in Azure Machine Learning führen wir folgende Schri
 5. [Bewerten des Modells](#step5)
 6. [Veröffentlichen des Modells als zu verwendender Webdienst](#step6)
 
-Wir sind nun bereit, in Azure Machine Learning Studio Modelle zu erstellen. Unsere komprimierten Daten wurden als Hive-Tabellen im Cluster gespeichert. Zum Lesen dieser Daten verwenden wir das Azure Machine Learning **Reader**-Modul. Im Folgenden finden Sie die Anmeldeinformationen für den Zugriff auf das Speicherkonto für diesen Cluster.
+Wir sind nun bereit, in Azure Machine Learning Studio Modelle zu erstellen. Unsere komprimierten Daten wurden als Hive-Tabellen im Cluster gespeichert. Zum Lesen dieser Daten verwenden wir das Azure Machine Learning **Import Data**-Modul. Im Folgenden finden Sie die Anmeldeinformationen für den Zugriff auf das Speicherkonto für diesen Cluster.
 
-### <a name="step1"></a> Schritt 1: Abrufen von Daten aus den Hive-Tabellen in Azure Machine Learning mit dem Reader-Modul und Auswählen für ein Computerexperiment
+### <a name="step1"></a> Schritt 1: Abrufen von Daten aus den Hive-Tabellen in Azure Machine Learning mit dem „Import Data“-Modul und Auswählen für ein Computerexperiment
 
-Wählen Sie zunächst **+ NEU** -> **EXPERIMENT**->**Leeres Experiment**. Suchen Sie dann über das Feld **Suche** oben links nach „Reader“. Legen Sie das **Reader**Modul durch Drag & Drop auf der Experiment-Canvas ab (den mittleren Teil des Bildschirms) um das Modul für den Datenzugriff zu verwenden.
+Wählen Sie zunächst **+ NEU** -> **EXPERIMENT**->**Leeres Experiment**. Suchen Sie dann über das Feld **Suche** oben links nach „Import Data“. Legen Sie das **Import Data**-Modul durch Drag & Drop auf der Experimentcanvas ab (dem mittleren Teil des Bildschirms), um das Modul für den Datenzugriff zu verwenden.
 
-So sieht der **Reader** beim Abrufen von Daten aus der Hive-Tabelle aus:
+So sieht **Import Data** beim Abrufen von Daten aus der Hive-Tabelle aus:
 
-![Reader erhält Daten](./media/machine-learning-data-science-process-hive-criteo-walkthrough/i3zRaoj.png)
+![„Import Data“ ruft Daten ab](./media/machine-learning-data-science-process-hive-criteo-walkthrough/i3zRaoj.png)
 
-Für das **Reader**-Modul sind die Werte der in der Grafik enthaltenen Parameter nur Beispiele für Werte, die Sie bereitstellen müssen. Im Folgenden finden Sie allgemeine Anleitungen zum Ausfüllen des Parametersatzes für das **Reader**-Modul.
+Für das **Import Data**-Modul sind die Werte der in der Grafik enthaltenen Parameter nur Beispiele für Werte, die Sie bereitstellen müssen. Im Folgenden finden Sie allgemeine Anleitungen zum Ausfüllen des Parametersatzes für das **Import Data**-Modul.
 
 1. Auswählen von „Hive-Abfrage“ als **Datenquelle**
 2. In Feld mit der **Hive-Datenbankabfrage** reicht ein einfaches „SELECT * FROM <ihr\_datenbankname.ihr\_tabellenname>“ aus.
@@ -461,11 +461,11 @@ Für das **Reader**-Modul sind die Werte der in der Grafik enthaltenen Parameter
 9. **Azure-Containername**: Wenn der Clustername „abc“ ist, gilt in der Regel einfach „abc“.
 
 
-Sobald der **Reader** das Abrufen von Daten beendet (das grüne Häkchen für das Modul wird angezeigt), speichern Sie diese Daten als DataSet (mit einem Namen Ihrer Wahl). Dies sieht folgendermaßen aus:
+Sobald **Import Data** das Abrufen von Daten beendet (das grüne Häkchen für das Modul wird angezeigt), speichern Sie diese Daten als DataSet (mit einem Namen Ihrer Wahl). Dies sieht folgendermaßen aus:
 
-![Reader speichert Daten](./media/machine-learning-data-science-process-hive-criteo-walkthrough/oxM73Np.png)
+![„Import Data“ speichert Daten](./media/machine-learning-data-science-process-hive-criteo-walkthrough/oxM73Np.png)
 
-Klicken Sie mit der rechten Maustaste auf den Ausgabeport des **Reader**-Moduls. Es werden die Optionen **Als Dataset speichern** und **Visualisieren** angezeigt. Wenn die Option **Visualisieren** ausgewählt wurde, werden 100 Datenzeilen sowie rechts eine für einige zusammenfassende Statistiken nützliche Leiste angezeigt. Um Daten zu speichern, wählen Sie einfach **Als Dataset speichern** aus, und befolgen Sie die Anweisungen.
+Klicken Sie mit der rechten Maustaste auf den Ausgabeport des **Import Data**-Moduls. Es werden die Optionen **Als Dataset speichern** und **Visualisieren** angezeigt. Wenn die Option **Visualisieren** ausgewählt wurde, werden 100 Datenzeilen sowie rechts eine für einige zusammenfassende Statistiken nützliche Leiste angezeigt. Um Daten zu speichern, wählen Sie einfach **Als Dataset speichern** aus, und befolgen Sie die Anweisungen.
 
 Um das gespeicherte DataSet für die Verwendung in einem Machine Learning-Experiment zu verwenden, suchen Sie die DataSets mithilfe des unten dargestellten Felds **Suche**. Geben Sie dann einfach teilweise den Namen ein, den Sie dem DataSets gegeben haben, um darauf zuzugreifen, und ziehen es in den Hauptbereich. Durch das Ziehen in den Hauptbereich wird es zur Verwendung für die Machine Learning-Modellierung ausgewählt.
 
@@ -624,13 +624,13 @@ Hinweis: Für das Eingabedatenformat verwenden wir nun die AUSGABE des **Count F
 
 #### Abstimmung des Experiments für den Veröffentlichungswebdienst
 
-Zunächst wird im Folgenden gezeigt, wie dies aussieht. Die grundlegende Struktur ist ein **Score Model**-Modul, das unsere trainierten Modellobjekte und einige Zeilen der in den vorherigen Schritten mit dem **Count Featurizer**-Modul generierten Eingabedaten akzeptiert. Wir verwenden "Project Colums" um die bewerteten Bezeichnungen sowie die Bewertungswahrscheinlichkeiten auszublenden.
+Zunächst wird im Folgenden gezeigt, wie dies aussieht. Die grundlegende Struktur ist ein **Score Model**-Modul, das unsere trainierten Modellobjekte und einige Zeilen der in den vorherigen Schritten mit dem **Count Featurizer**-Modul generierten Eingabedaten akzeptiert. Wir verwenden „Select Columns in Dataset“, um die „Scored Labels“ sowie die „Scored Probabilities“ auszublenden.
 
-![Project Columns](./media/machine-learning-data-science-process-hive-criteo-walkthrough/kRHrIbe.png)
+![„Select Columns in Dataset“](./media/machine-learning-data-science-process-hive-criteo-walkthrough/kRHrIbe.png)
 
-Beachten Sie, dass das **Project Columns**-Modul zum Filtern von Daten aus einem DataSet verwendet werden kann. Im Folgenden finden Sie die Inhalte:
+Beachten Sie, dass das **Select Columns in Dataset**-Modul zum „Filtern“ von Daten aus einem DataSet verwendet werden kann. Im Folgenden finden Sie die Inhalte:
 
-![Filterung mit dem "Project Columns"-Modul](./media/machine-learning-data-science-process-hive-criteo-walkthrough/oVUJC9K.png)
+![Filtern mit dem „Select Columns in Dataset“-Modul](./media/machine-learning-data-science-process-hive-criteo-walkthrough/oVUJC9K.png)
 
 Um die blauen E/A-Ports zu erhalten, klicken Sie einfach unten rechts auf **Webdienst vorbereiten**. Wenn wir dieses Experiment ausführen, können wir zudem den Webdienst veröffentlichen, indem wir unten rechts auf das im Folgenden dargestellte Symbol **PREPARE WEBSERVICE** klicken.
 
@@ -663,4 +663,4 @@ Wir sehen, dass wir für die beiden angefragten Testbeispiele (im JSON-Framework
 
 Damit sind wir am Ende unser ausführlichen exemplarischen Vorgehensweise zum Behandeln umfangreicher DataSets mithilfe von Azure Machine Learning angekommen. Wir haben mit einem Terabyte an Daten begonnen, ein Vorhersagemodell erstellt und dieses als Webdienst in der Cloud bereitgestellt.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/29/2016"
+	ms.date="06/01/2016"
 	ms.author="tdykstra"/>
 
 # Erstellen eines .NET-Webauftrags in Azure App Service
@@ -36,7 +36,13 @@ Das Tutorial wurde für Visual Studio 2013 geschrieben. Falls Sie noch nicht ü
 
 Das Tutorial kann mit Visual Studio 2015 verwendet werden. Bevor Sie die Anwendung jedoch lokal ausführen, müssen Sie den `Data Source`-Teil der Verbindungszeichenfolge "SQL Server LocalDB" in den Dateien "Web.config" und "App.config" von `Data Source=(localdb)\v11.0` zu `Data Source=(LocalDb)\MSSQLLocalDB` ändern.
 
-[AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note2.md)]
+> [AZURE.NOTE] <a name="note"></a>Für dieses Tutorial benötigen Sie ein Azure-Konto:
+  >
+  > + Sie können [ein Azure-Konto kostenlos erstellen](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F): Sie erhalten ein Guthaben, das Sie zum Ausprobieren zahlungspflichtiger Azure-Dienste nutzen können, und Sie können das Konto selbst dann behalten und die kostenlosen Azure-Dienste wie Websites nutzen, wenn das Guthaben aufgebraucht ist. Ihre Kreditkarte wird nur dann belastet, wenn Sie Ihre Einstellungen explizit ändern und mit einer Zahlung einverstanden sind.
+  >
+  > + Sie können Ihre [Vorteile für MSDN-Abonnenten aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F): Ihr MSDN-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste nutzen können.
+  >
+  >Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
 ## <a id="learn"></a>Sie lernen Folgendes
 
@@ -299,7 +305,7 @@ Sie sollten es vermeiden [sensible Daten wie Verbindungszeichenfolgen in Dateien
 
 In diesem Abschnitt verwenden Sie den **Server-Explorer** zum Festlegen der Verbindungszeichenfolgen in Azure.
 
-7. Klicken Sie im **Server-Explorer** unter **Azure > > App Service > {Ihre Ressourcengruppe}** mit der rechten Maustaste auf Ihre Web-App, und klicken Sie dann auf **Ansichtseinstellungen**.
+7. Klicken Sie im **Server-Explorer** unter **Azure > App Service > {Ihre Ressourcengruppe}** mit der rechten Maustaste auf Ihre Web-App, und klicken Sie dann auf **Ansichtseinstellungen**.
 
 	Das Fenster **Azure-Web-App** wird auf der Registerkarte **Konfiguration** geöffnet.
 
@@ -470,7 +476,7 @@ Um Dateien zu einem Projekt oder einem Ordner hinzuzufügen, klicken Sie mit der
 	- *Global.asax.cs*  
 	- Im Ordner *Controllers*: *AdController.cs*
 	- Im Ordner *Views\\Shared*: Datei *\_Layout.cshtml*
-- Im Ordner *Views\\Home*: *Index.cshtml*
+	- Im Ordner *Views\\Home*: *Index.cshtml*
 	- Im Ordner *Views\\Ad* (Ordner zuerst erstellen): fünf *CSHTML*-Dateien<br/><br/>
 
 3. Fügen Sie im Projekt ContosoAdsWebJob die folgenden Dateien aus dem heruntergeladenen Projekt hinzu.
@@ -817,4 +823,4 @@ Weitere Informationen finden Sie unter [Einrichten eines Dashboards für die lok
 
 Weitere Informationen finden Sie unter [Dokumentationsressourcen für Azure WebJobs](http://go.microsoft.com/fwlink/?LinkId=390226).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

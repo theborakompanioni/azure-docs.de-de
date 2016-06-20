@@ -171,7 +171,7 @@ Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
 - [AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]
 - [AMQP in Service Bus für Windows Server]
 
-  [Verwenden von Azure Service Bus-Warteschlangen]: service-bus-dotnet-how-to-use-queues.md
+  [Verwenden von Azure Service Bus-Warteschlangen]: service-bus-dotnet-get-started-with-queues.md
   [DataContractSerializer]: https://msdn.microsoft.com/library/azure/system.runtime.serialization.datacontractserializer.aspx
   [BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
   [Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: https://msdn.microsoft.com/library/azure/jj657638.aspx
@@ -203,4 +203,4 @@ Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
 [AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 [AMQP in Service Bus für Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

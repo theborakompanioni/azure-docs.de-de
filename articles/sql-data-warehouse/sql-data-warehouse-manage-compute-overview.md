@@ -13,13 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/06/2016"
+   ms.date="06/01/2016"
    ms.author="barbkess;sonyama"/>
 
 # Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)
 
 > [AZURE.SELECTOR]
-- [Übersicht](sql-data-warehouse-overview-manage-compute.md)
+- [Übersicht](sql-data-warehouse-manage-compute-overview.md)
 - [Portal](sql-data-warehouse-manage-compute-portal.md)
 - [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 - [REST](sql-data-warehouse-manage-compute-rest-api.md)
@@ -128,19 +128,20 @@ Informationen zu zusätzlichen zentralen Leistung- und Skalierbarkeitskonzepten 
 
 <!--Article references-->
 
-[Skalierung von Computeleistung mit dem Azure-Portal]: ./sql-data-warehouse-manage-compute-tasks-portal.md#task-1-scale-performance
-[Skalierung von Computeleistung mit PowerShell]: ./sql-data-warehouse-manage-compute-tasks-powershell.md#task-1-scale-performance
-[Skalierung von Computeleistung mit REST-APIs]: ./sql-data-warehouse-manage-compute-tasks-rest-api.md#task-1-scale-performance
-[Skalierung von Computeleistung mit TSQL]: ./sql-data-warehouse-manage-compute-tasks-tsql.md
+[Skalierung von Computeleistung mit dem Azure-Portal]: ./sql-data-warehouse-manage-compute-portal.md#scale-compute-bk
+[Skalierung von Computeleistung mit PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#scale-compute-bk
+[Skalierung von Computeleistung mit REST-APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#scale-compute-bk
+[Skalierung von Computeleistung mit TSQL]: ./sql-data-warehouse-manage-compute-tsql.md#scale-compute-bk
 
 [Kapazitätsgrenzen]: ./sql-data-warehouse-service-capacity-limits.md
 
-[Anhalten von Computeressourcen mit dem Azure-Portal]: ./sql-data-warehouse-manage-scale-out-tasks.md#task-2-pause-compute
-[Anhalten von Computeressourcen mit PowerShell]: ./sql-data-warehouse-manage-scale-out-tasks-powershell.md#task-2-pause-compute
-[Anhalten von Computeressourcen mit REST-APIs]: ./sql-data-warehouse-manage-scale-out-tasks-rest-api.md#task-2-pause-compute
-[Fortsetzen von Computeressourcen mit dem Azure-Portal]: ./sql-data-warehouse-manage-scale-out-tasks.md#task-3-resume-compute
-[Fortsetzen von Computeressourcen mit PowerShell]: ./sql-data-warehouse-manage-scale-out-tasks-powershell.md#task-3-resume-compute
-[Fortsetzen von Computeressourcen mit REST-APIs]: ./sql-data-warehouse-manage-scale-out-tasks-rest-api.md#task-3-resume-compute
+[Anhalten von Computeressourcen mit dem Azure-Portal]: ./sql-data-warehouse-manage-compute-portal.md#pause-compute-bk
+[Anhalten von Computeressourcen mit PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#pause-compute-bk
+[Anhalten von Computeressourcen mit REST-APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#pause-compute-bk
+
+[Fortsetzen von Computeressourcen mit dem Azure-Portal]: ./sql-data-warehouse-manage-compute-portal.md#resume-compute-bk
+[Fortsetzen von Computeressourcen mit PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#resume-compute-bk
+[Fortsetzen von Computeressourcen mit REST-APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#resume-compute-bk
 
 [Parallelitätsmodell]: sql-data-warehouse-develop-concurrency.md
 [Entwerfen von Tabellen]: sql-data-warehouse-develop-table-design.md
@@ -157,4 +158,4 @@ Informationen zu zusätzlichen zentralen Leistung- und Skalierbarkeitskonzepten 
 
 [Azure portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

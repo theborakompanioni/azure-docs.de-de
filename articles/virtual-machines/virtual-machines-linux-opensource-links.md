@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Linux und Open-Source-Computing auf Azure | Microsoft Azure"
-	description="Dieses Thema enthält eine Liste von Artikeln zu Linux- und Open Source-Computing auf Azure, u. a. die grundlegende Verwendung von Linux, einige grundlegende Konzepte zum Ausführen oder Hochladen von Linux-Images auf Azure und anderen Inhalten zu bestimmten Technologien und Optimierungen."
+	description="Dieses Thema enthält eine Liste von Artikeln zu Linux- und Open Source-Computing auf Azure, u.a. die grundlegende Verwendung von Linux, einige grundlegende Konzepte zum Ausführen oder Hochladen von Linux-Images auf Azure und anderen Inhalten zu bestimmten Technologien und Optimierungen."
 	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="squillace"
@@ -68,8 +68,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten L
 - [Gewusst wie: Installieren und Ausführen von MySQL](virtual-machines-linux-classic-mysql-on-opensuse.md)
 
 ### CoreOS
-- [Gewusst wie: Verwenden von CoreOS in Azure](virtual-machines-linux-classic-coreos-howto.md)
-- [Gewusst wie: Erste Schritte mit Fleet und Docker unter CoreOS in Azure](virtual-machines-linux-classic-coreos-fleet-get-started.md)
+- [Gewusst wie: Verwenden von CoreOS in Azure](https://coreos.com/os/docs/latest/booting-on-azure.html)
 
 
 ## Planung
@@ -193,4 +192,4 @@ Dieser Bereich ist recht umfangreich und ändert sich sehr schnell. Sie sollten 
 
 - [Packer-Plug-In für Azure](https://github.com/msopentech/packer-azure)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

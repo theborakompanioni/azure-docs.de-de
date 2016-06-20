@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="06/06/2016"
 	ms.author="jeedes"/>
 
 
@@ -62,7 +62,7 @@ Zum Konfigurieren der Integration von Predictix Price Reporting in Azure AD müs
 
 1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
 
-	![Active Directory][1]
+	![Anwendungen][1]
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
 3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
@@ -79,10 +79,11 @@ Zum Konfigurieren der Integration von Predictix Price Reporting in Azure AD müs
 
 6. Geben Sie im Suchfeld als Suchbegriff **Predictix Price Reporting** ein.
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_01.png)
+	![Anwendungen](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_01.png)
+
 7. Wählen Sie im Ergebnisbereich **Predictix Price Reporting** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
 
-
+	![Anwendungen](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_02.png)
 
 ##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Predictix Price Reporting basierend auf einem Testbenutzer mit dem Namen „Britta Simon“.
@@ -95,7 +96,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit Predictix 
 
 1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Predictix Price Reporting-Testbenutzers](#creating-a-predictix-price-reporting-test-user)**, um ein Gegenstück zu Britta Simon in Predictix Price Reporting zu erhalten, das mit ihrer Repräsentation in Azure AD verknüpft ist.
+3. **[Erstellen eines Predictix Price Reporting-Testbenutzers](#creating-a-predictix-price-reporting-test-user)**, um eine Entsprechung von Britta Simon in Predictix Price Reporting zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
@@ -110,7 +111,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klas
 	 
 	![Einmaliges Anmelden konfigurieren][6]
 
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Predictix Price Reporting anmelden** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Predictix Price Reporting anmelden** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
 	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_03.png)
 
@@ -118,11 +119,11 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klas
 
 	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_04.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL, die von Ihren Benutzern zur Anmeldung bei der Predictix Price Reporting-Anwendung verwendet wird, nach folgendem Muster ein: **https://\<Unternehmensname-Preise>.predictix.com/sso/request**
+    a. Geben Sie im Textfeld **Anmelde-URL** die URL, die von Ihren Benutzern zur Anmeldung bei der Predictix Price Reporting-Anwendung verwendet wird, nach folgendem Muster ein: `https://<company name-pricing>.predictix.com/sso/request`
 	
 	b. Klicken Sie auf **Weiter**.
  
-4. Führen Sie auf der Seite **Einmaliges Anmelden bei Predictix Price Reporting konfigurieren** die folgenden Schritte aus:
+4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Predictix Price Reporting** die folgenden Schritte aus:
 
 	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_05.png)
 
@@ -198,7 +199,7 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
 
-	![Erstellen einen Azure AD-Testbenutzers](./media/active-directory-saas-predictixpricereporting-tutorial/create_aaduser_08.png)
+	![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-predictixpricereporting-tutorial/create_aaduser_08.png)
 
     a. Notieren Sie den Wert von **Neues Kennwort**.
 
@@ -219,7 +220,7 @@ In diesem Abschnitt ermöglichen Sie für Britta Simon das einmalige Anmelden vo
 
 **Um Britta Simon zu Predictix Price Reporting zuzuweisen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
+1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal im oberen Menü der Verzeichnisansicht auf **Anwendungen**.
 
 	![Benutzer zuweisen][201]
 
@@ -269,4 +270,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Predictix Price Reporting“ klick
 [204]: ./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0608_2016-->

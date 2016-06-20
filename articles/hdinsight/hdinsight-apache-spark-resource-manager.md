@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/31/2016" 
+	ms.date="06/06/2016" 
 	ms.author="nitinme"/>
 
 
-# Verwalten von Ressourcen für den Apache Spark-Cluster in HDInsight unter Linux (Vorschau)
+# Verwalten von Ressourcen für den Apache Spark-Cluster unter HDInsight (Linux)
 
 In diesem Artikel erfahren Sie, wie Sie auf die mit Ihrem Spark-Cluster verknüpften Benutzeroberflächen wie die Ambari-Benutzeroberfläche, die YARN-Benutzeroberfläche und den Spark-Verlaufsserver zugreifen können. Sie erfahren auch, wie Sie die Clusterkonfiguration für eine optimale Leistung optimieren können.
 
@@ -185,9 +185,19 @@ Da wir die dynamische Zuordnung von Spark verwenden, werden nur die Ressourcen f
 
 * [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen und Übermitteln von Spark Scala-Anwendungen](hdinsight-apache-spark-intellij-tool-plugin.md)
 
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md) (Verwenden von HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Spark-Anwendungen)
+
 * [Verwenden von Zeppelin-Notebooks mit einem Spark-Cluster in HDInsight](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
 * [Verfügbare Kernels für Jupyter-Notebook im Spark-Cluster für HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md)
+
+* [Verwenden von externen Paketen mit Jupyter Notebooks](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+
+* [Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung zum Apache Spark-Cluster in Azure HDInsight (Vorschau)](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
+
+### Verwalten von Ressourcen
+
+* [Track and debug jobs running on an Apache Spark cluster in HDInsight](hdinsight-apache-spark-job-debugging.md) (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)
 
 
 
@@ -202,4 +212,4 @@ Da wir die dynamische Zuordnung von Spark verwenden, werden nur die Ressourcen f
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

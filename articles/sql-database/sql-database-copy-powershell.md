@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="03/21/2016"
+	ms.date="06/06/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -19,7 +19,6 @@
 
 # Kopieren einer Azure SQL-Datenbank mithilfe von PowerShell
 
-**Einzeldatenbank**
 
 > [AZURE.SELECTOR]
 - [Azure-Portal](sql-database-copy.md)
@@ -126,4 +125,4 @@ Nach dem Ausführen von **Start-AzureSqlDatabaseCopy** können Sie den Status de
 - [Warnungen zur Notfallwiederherstellung](sql-database-disaster-recovery-drills.md)
 - [SQL-Datenbankdokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

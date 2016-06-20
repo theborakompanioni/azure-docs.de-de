@@ -521,6 +521,8 @@ Sie müssen sicherstellen, dass die Firewallregeln für die Unternehmensfirewall
 
 Zum Kopieren aus **einem lokalen Datenspeicher in eine Azure SQL-Datenbanksenke oder eine Azure SQL Data Warehouse-Senke** müssen Sie beispielsweise die ausgehende **TCP**-Kommunikation über Port **1433** für die Windows-Firewall und die Unternehmensfirewall zulassen. Außerdem müssen Sie die Firewalleinstellungen des Azure SQL-Servers konfigurieren, um die IP-Adresse des Gatewaycomputers der Liste mit den zulässigen IP-Adressen hinzuzufügen.
 
+Beachten Sie, dass Sie beim Laden von Daten in SQL Data Warehouse die Funktion [Gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy) verwenden können, um das Öffnen zusätzlicher Ports in Ihrer Unternehmensfirewall zu vermeiden.
+
 ### Proxyserver-Aspekte
 Standardmäßig nutzt das Datenverwaltungsgateway die Proxyeinstellungen aus Internet Explorer und verwendet für den Zugriff darauf Standardanmeldeinformationen. Falls dies für Sie nicht geeignet ist, können Sie die **Proxyservereinstellungen** wie unten gezeigt weiter konfigurieren, um sicherzustellen, dass das Gateway eine Verbindung mit Azure Data Factory herstellen kann:
 
@@ -599,10 +601,10 @@ Dieser Abschnitt enthält Anweisungen zum Verschieben des Gatewayclients von ein
 ## Festlegen von Anmeldeinformationen und Sicherheit
 Zum Verschlüsseln der Anmeldeinformationen im Data Factory-Editor gehen Sie wie folgt vor:
 
-1. Klicken Sie in der Strukturansicht auf einen bestehenden **verknüpften Dienst**, um dessen JSON-Definition anzuzeigen, oder erstellen Sie einen neuen verknüpften Dienst, der ein Datenverwaltungsgateway erfordert (z.B. SQL Server oder Oracle). 
+1. Klicken Sie in der Strukturansicht auf einen vorhandenen **verknüpften Dienst**, um dessen JSON-Definition anzuzeigen, oder erstellen Sie einen neuen verknüpften Dienst, der ein Datenverwaltungsgateway erfordert (z.B. SQL Server oder Oracle). 
 2. Geben Sie im JSON-Editor für die **gatewayName**-Eigenschaft den Namen des Gateways ein. 
-3. Geben Sie den Servernamen für die **Data Source**-Eigenschaft in **connectionString** an.
-4. Geben Sie den Datenbanknamen für die **Initial Catalog**-Eigenschaft in **connectionString** an.    
+3. Geben Sie den Servernamen für die **Data Source**-Eigenschaft in **connectionString** ein.
+4. Geben Sie den Datenbanknamen für die **Initial Catalog**-Eigenschaft in **connectionString** ein.    
 5. Klicken Sie auf der Befehlsleiste auf die Schaltfläche **Verschlüsseln**. Sie sollten das Dialogfeld **Anmeldeinformationen festlegen** sehen. ![Dialogfeld "Anmeldeinformationen festlegen"](./media/data-factory-move-data-between-onprem-and-cloud/setting-credentials-dialog.png)
 6. Gehen Sie im Dialogfeld **Anmeldeinformationen festlegen** folgendermaßen vor:  
 	1.	Wählen Sie die **Authentifizierung** aus, die der Data Factory-Dienst für die Verbindung mit der Datenbank verwenden soll. 
@@ -687,4 +689,4 @@ Sie können ein Gateway mit dem **Remove-AzureRmDataFactoryGateway**-Cmdlet entf
 	
 	Remove-AzureRmDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_ResourceGroup -DataFactoryName jasoncopyusingstoredprocedure -Force 
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

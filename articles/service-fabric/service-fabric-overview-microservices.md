@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="03/24/2016"
-   ms.author="msfussell"/>
+   ms.author="mfussell"/>
 
 # Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen
 Für Softwareentwickler gibt es nichts Neues, was das Einbeziehen einer Anwendung in Komponententeile betrifft. Es handelt sich hierbei um ein zentrales Paradigma der Objektorientierung, von Softwareabstrahierungen und der „Komponentisierung“. Heutzutage erfolgt diese Einbeziehung meist in Form von Klassen und Schnittstellen zwischen gemeinsam genutzten Bibliotheken und Technologieschichten. In der Regel wird ein abgestufter Ansatz mit Back-End-Speicher, Geschäftslogik auf mittlerer Ebene und einer Front-End-UI genutzt. Was sich im Laufe der letzten Jahre geändert *hat*, ist die Tatsache, dass wir als Entwickler verteilte Anwendungen für die Cloud erstellen, weil dies geschäftlich geboten ist.
@@ -148,4 +148,4 @@ Das Ziel von Service Fabric ist die Reduzierung der komplexen Anwendungserstellu
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

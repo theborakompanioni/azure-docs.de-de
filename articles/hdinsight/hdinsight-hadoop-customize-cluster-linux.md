@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/25/2016"
+	ms.date="06/03/2016"
 	ms.author="larryfr"/>
 
 # Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen
@@ -22,6 +22,8 @@
 HDInsight verfügt über eine Konfigurationsoption mit der Bezeichnung **Skriptaktion**, mit der benutzerdefinierte Skripts zum Anpassen des Clusters aufgerufen werden. Diese Skripts können während der Erstellung des Clusters oder in einem bereits ausgeführten Cluster verwendet werden und dienen zum Installieren zusätzlicher Komponenten oder Ändern von Konfigurationseinstellungen.
 
 > [AZURE.NOTE] Die Möglichkeit zum Verwenden von Skriptaktionen in einem bereits ausgeführten Cluster ist nur für Linux-basierte HDInsight-Cluster verfügbar. Informationen zur Verwendung von Skriptaktionen mit Windows-basierten Clustern finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen (Windows)](hdinsight-hadoop-customize-cluster.md).
+
+Skriptaktionen können auch als HDInsight-Anwendung im Azure Marketplace veröffentlicht werden. Einige der Beispiele in diesem Dokument zeigen, wie Sie eine HDInsight-Anwendung mit Skriptaktionsbefehlen aus PowerShell und .NET SDK installieren können. Weitere Informationen zu HDInsight-Anwendungen finden Sie unter [Veröffentlichen von HDInsight-Anwendungen im Azure Marketplace](hdinsight-apps-publish-applications.md).
 
 ## Grundlegendes zu Skriptaktionen
 
@@ -35,9 +37,11 @@ Eine Skriptaktion ist einfach ein Bash-Skript, für das Sie eine URL und die Par
     
     Beispiele für den URI für Skripts, die im Blobcontainer (öffentlich lesbar) gespeichert werden, finden Sie im Abschnitt [Script Action-Beispielskripts](#example-script-action-scripts).
 
-* Sie können auf die __Ausführung auf nur bestimmten Knotentypen__ beschränkt werden, z.B. Hauptknoten oder Workerknoten.
+* Sie können auf die __ausschließliche Ausführung auf bestimmten Knotentypen__ beschränkt werden, z.B. Hauptknoten oder Workerknoten.
 
-* Sie können __permanent__ oder __ad-hoc__ sein.
+    > [AZURE.NOTE] Bei Verwendung mit HDInsight Premium können Sie angeben, dass das Skript auf dem Edgeknoten verwendet werden sollte.
+
+* Es kann __permanent__ oder __ad-hoc__ sein.
 
     __Permanente__ Skripts sind Skripts, die auf Workerknoten angewendet und automatisch auf neuen Knoten ausgeführt werden, die beim zentralen Hochskalieren eines Clusters erstellt werden.
 
@@ -112,7 +116,7 @@ Name | Skript
 **Installieren von R** | https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh. Siehe [Installieren und Verwenden von R in HDInsight-Clustern](hdinsight-hadoop-r-scripts-linux.md).
 **Installieren von Solr** | https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh. Siehe [Installieren und Verwenden von Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install-linux.md).
 **Installieren von Giraph** | https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh. Siehe [Installieren und Verwenden von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install-linux.md).
-| **Vorabladen von Hive-Bibliotheken** | https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh. Weitere Informationen finden Sie unter [Hinzufügen von Hive-Bibliotheken während der Erstellung des HDInsight-Clusters](hdinsight-hadoop-add-hive-libraries.md). |
+| **Vorabladen von Hive-Bibliotheken** | https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh. Siehe [Hinzufügen von Hive-Bibliotheken zu HDInsight-Clustern](hdinsight-hadoop-add-hive-libraries.md). |
 
 ## Verwenden einer Skriptaktion während der Clustererstellung
 
@@ -140,6 +144,8 @@ Dieser Abschnitt enthält Beispiele zu den verschiedenen Verwendungsmöglichkeit
 ### Verwenden einer Skriptaktion über Azure-Ressourcen-Manager-Vorlagen
 
 In diesem Abschnitt werden Azure-Ressourcen-Manager (ARM)-Vorlagen verwendet, um einen HDInsight-Cluster zu erstellen. Zudem werden mithilfe einer Skriptaktion benutzerdefinierte Komponenten (in diesem Beispiel R) auf dem Cluster installiert. In diesem Abschnitt wird eine ARM-Beispielvorlage bereitgestellt, um einen Cluster mithilfe von Skriptaktionen zu erstellen.
+
+> [AZURE.NOTE] Die Schritte in diesem Abschnitt veranschaulichen das Erstellen eines Clusters mit einer Skriptaktion. Ein Beispiel für das Erstellen eines Clusters aus einer ARM-Vorlage mit einer HDInsight-Anwendung finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
 
 #### Voraussetzungen
 
@@ -428,7 +434,7 @@ Das HDInsight .NET SDK enthält Clientbibliotheken zur Vereinfachung der Arbeit 
 
 ## Anwenden einer Skriptaktion auf einen ausgeführten Cluster
 
-Dieser Abschnitt enthält Beispiele zu den verschiedenen Anwendungsmöglichkeiten von Skriptaktionen auf einen ausgeführten HDInsight-Cluster – über das Azure-Portal, PowerShell-Cmdlets, die plattformübergreifende Azure-Befehlszeilenschnittstelle (CLI) und das .NET SDK.
+Dieser Abschnitt enthält Beispiele zu den verschiedenen Möglichkeiten der Anwendung von Skriptaktionen auf einen ausgeführten HDInsight-Cluster – über das Azure-Portal, PowerShell-Cmdlets, die plattformübergreifende Azure-Befehlszeilenschnittstelle (CLI) und das .NET SDK.
 
 ### Anwenden einer Skriptaktion auf einen ausgeführten Cluster über das Azure-Portal
 
@@ -468,7 +474,8 @@ Stellen Sie vor dem Fortfahren sicher, dass Azure PowerShell installiert und kon
         $saName = "<ScriptActionName>"                  # Name of the script action
         $saURI = "<URI to the script>"                  # The URI where the script is located
         $nodeTypes = "headnode", "workernode"
-
+        
+    > [AZURE.NOTE] Wenn Sie einen HDInsight-Premium-Cluster verwenden, können Sie einen Knotentyp `"edgenode"` zum Ausführen des Skripts auf dem Edgeknoten verwenden.
 
 2. Verwenden Sie den folgenden Befehl, um das Skript auf einen Cluster anzuwenden:
 
@@ -593,6 +600,8 @@ Im folgenden Beispielskript wird veranschaulicht, wie die Cmdlets zuerst zum Hö
 
 Ein Beispiel für die Verwendung des .NET SDK zum Abrufen des Skriptverlaufs aus einem Cluster sowie zum Höherstufen oder Herabstufen von Skripts finden Sie unter [https://github.com/Azure-Samples/hdinsight-dotnet-script-action](https://github.com/Azure-Samples/hdinsight-dotnet-script-action).
 
+> [AZURE.NOTE] Dieses Beispiel veranschaulicht auch die Installation einer HDInsight-Anwendung mit dem .NET SDK.
+
 ## Problembehandlung
 
 Über die Ambari-Webbenutzeroberfläche können Sie Informationen anzeigen, die von Skriptaktionen protokolliert wurden. Wenn das Skript bei der Clustererstellung verwendet wurde und die Erstellung aufgrund eines Fehlers im Skript nicht erfolgreich war, sind die Protokolle auch im Standardspeicherkonto verfügbar, das dem Cluster zugeordnet ist. Dieser Abschnitt enthält Informationen zum Abrufen der Protokolle mit den folgenden zwei Optionen:
@@ -653,7 +662,7 @@ Es gibt zwei Arten von Open-Source-Komponenten, die im HDInsight-Dienst verfügb
 
 > [AZURE.WARNING] Komponenten, die mit dem HDInsight-Cluster bereitgestellt werden, werden vollständig unterstützt, und Microsoft Support hilft Ihnen, Probleme im Zusammenhang mit diesen Komponenten zu isolieren und zu beheben.
 >
-> Für benutzerdefinierte Komponenten steht kommerziell angemessener Support für eine weiterführende Behebung des Problems zur Verfügung. Auf diese Weise kann das Problem behoben werden, ODER Sie werden aufgefordert, verfügbare Kanäle für Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. So können z. B. viele Communitywebsites verwendet werden, wie: das [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es Projektwebsites auf [http://apache.org](http://apache.org), z.B. [Hadoop](http://hadoop.apache.org/).
+> Für benutzerdefinierte Komponenten steht kommerziell angemessener Support für eine weiterführende Behebung des Problems zur Verfügung. Auf diese Weise kann das Problem behoben werden, ODER Sie werden aufgefordert, verfügbare Kanäle für Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. So können z. B. viele Communitywebsites verwendet werden, wie: das [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [http://apache.org](http://apache.org), z.B. [Hadoop](http://hadoop.apache.org/).
 
 Der HDInsight-Dienst bietet mehrere Möglichkeiten, benutzerdefinierte Komponenten zu verwenden. Unabhängig davon, wie die Komponente verwendet wird oder im Cluster installiert ist, gilt der gleiche Supportumfang. Nachfolgend finden Sie eine Liste der am häufigsten genutzten Möglichkeiten für die Verwendung von benutzerdefinierten Komponenten in HDInsight-Clustern:
 
@@ -690,4 +699,4 @@ Informationen und Beispiele zum Erstellen und Verwenden von Skripts zum Anpassen
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "Phasen während der Clustererstellung"
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

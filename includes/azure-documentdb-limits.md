@@ -1,12 +1,12 @@
 =======
-Entität|Kontingent (Standardangebot)
+Entität|Standardkontingent (Standardangebot)
 ---|---
-Datenbankkonten*|50
-Maximaler Dokumentenspeicher pro Datenbankkonto* |1 TB (oder höher durch Anforderung)
-Bereitgestellter Dokumentspeicher*/Sammlung|250 GB (oder höher durch Anforderung)
-Maximale Anzahl von [Anforderungseinheiten](../articles/documentdb/documentdb-request-units.md)*/Sek. pro Sammlung|250\.000 RU/Sekunde (oder höher durch Anforderung)
-Maximale Anforderungsgröße von Dokumenten |512 KB
-Maximale Ausführungszeit für gespeicherte Prozedur und Trigger|5 Sekunden
-Maximale Antwortgröße|1 MB
+Datenbankkonten|50*
+Dokumentspeicher pro Datenbankkonto|1 TB*
+Dokumentspeicher pro Sammlung|250 GB*
+Durchsatz pro Sammlung, gemessen in [Anforderungseinheiten](../articles/documentdb/documentdb-request-units.md) pro Sekunde pro Sammlung|250\.000 RU/s*
+Ausführungszeit für gespeicherte Prozeduren und Trigger|5 Sekunden
+Größe des Anforderungsdokuments |512 KB
+Größe des Antwortdokuments|1 MB
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -97,7 +97,7 @@ Die folgende Tabelle beschreibt auf allgemeiner Ebene die Arten der Funktionsunt
 
 Da das alles automatisiert werden kann, betrachten Architekten, Entwickler oder IT-Betriebsexperten dies an diesem Punkt möglicherweise als "Rechenzentrum-as-a-Service".
 
-Das kann durchaus zutreffen, und es gibt eine große Anzahl von Systemen, von denen Sie vielleicht viele schon nutzen, die Gruppen von Azure-VMs verwalten und benutzerdefinierten Code mithilfe von Skripts einfügen können, oft mit der [CustomScriptingExtension für Windows](https://msdn.microsoft.com/library/azure/dn781373.aspx) oder der [CustomScriptingExtension für Linux](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/). Sie können (und haben es vielleicht schon getan) Ihre Azure-Bereitstellungen mithilfe von PowerShell oder Azure-Befehlszeilenschnittstellen-Skripts automatisieren, indem Sie [wie hier beschrieben](../articles/virtual-machines/virtual-machines-windows-create-powershell.md) vorgehen.
+Das kann durchaus zutreffen, und es gibt eine große Anzahl von Systemen, von denen Sie vielleicht viele schon nutzen, die Gruppen von Azure-VMs verwalten und benutzerdefinierten Code mithilfe von Skripts einfügen können, oft mit der [CustomScriptingExtension für Windows](https://msdn.microsoft.com/library/azure/dn781373.aspx) oder der [CustomScriptingExtension für Linux](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/). Sie können (und haben es vielleicht schon getan) Ihre Azure-Bereitstellungen mithilfe von PowerShell oder Azure-Befehlszeilenschnittstellen-Skripts automatisieren, indem Sie [wie hier beschrieben](../articles/virtual-machines/virtual-machines-windows-ps-create.md) vorgehen.
 
 Diese Fähigkeiten werden dann oft in Tools wie [Puppet](https://puppetlabs.com/) und [Chef](https://www.chef.io/) migriert, um die skalierte Erstellung und Konfiguration für virtuelle Computer zu automatisieren. (Links zur Verwendung dieser Tools mit Azure finden Sie [hier](#tools-for-working-with-containers).)
 
@@ -122,7 +122,7 @@ Darüber hinaus ist [kubernetes](https://azure.microsoft.com/blog/2014/08/28/hac
 
 [Deis](http://deis.io/overview/) ist eine Open-Source-"Plattform-as-a-Service" (PaaS), die das Bereitstellen und Verwalten von Anwendungen auf Ihren eigenen Servern erleichtert. Deis baut auf Docker und CoreOS auf, um eine einfache PaaS mit einem durch Heroku inspirierten Workflow bereitzustellen. Sie können in Azure auf einfache Weise [eine Azure-VM-Gruppe mit 3 Knoten erstellen und Deis installieren](../articles/virtual-machines/virtual-machines-linux-deis-cluster.md) und dann [eine Hello World-Go-Anwendung installieren](../articles/virtual-machines/virtual-machines-linux-deis-cluster.md#deploy-and-scale-a-hello-world-application).
 
-[CoreOS](../articles/virtual-machines/virtual-machines-linux-classic-coreos-howto.md), eine Linux-Distribution mit optimiertem Ressourcenbedarf, Docker-Unterstützung und einem eigenen Containersystem namens [rkt](https://github.com/coreos/rkt) verfügt ebenfalls über ein Verwaltungstool für Containergruppen namens [fleet](../articles/virtual-machines/virtual-machines-linux-classic-coreos-fleet-get-started.md).
+[CoreOS](https://coreos.com/os/docs/latest/booting-on-azure.html), eine Linux-Distribution mit optimiertem Ressourcenbedarf, Docker-Unterstützung und einem eigenen Containersystem namens [rkt](https://github.com/coreos/rkt) verfügt ebenfalls über ein Verwaltungstool für Containergruppen namens [fleet](https://coreos.com/using-coreos/clustering/).
 
 Ubuntu, eine weitere sehr populäre Linux-Distribution, unterstützt Docker sehr gut, aber auch [Linux-Cluster (LXC-Format)](https://help.ubuntu.com/lts/serverguide/lxc.html).
 
@@ -174,11 +174,11 @@ Docker in Microsoft Azure:
 
 Linux-Distributionen und Azure-Beispiele:
 
-- [CoreOS](../articles/virtual-machines/virtual-machines-linux-classic-coreos-howto.md)
+- [CoreOS](https://coreos.com/os/docs/latest/booting-on-azure.html)
 
 Konfiguration, Clusterverwaltung und Containerorchestrierung:
 
-- [Fleet in CoreOS](../articles/virtual-machines/virtual-machines-linux-classic-coreos-fleet-get-started.md)
+- [Fleet in CoreOS](https://coreos.com/using-coreos/clustering/)
 
 -	Deis
 	- [Erstellen einer Gruppe von virtuellen Azure-Computern mit 3 Knoten, Installieren von Deis und Starten einer Hello World-Go-Anwendung](../articles/virtual-machines/virtual-machines-linux-deis-cluster.md)
@@ -216,4 +216,4 @@ Lesen Sie über [Docker](https://www.docker.com) (in englischer Sprache) und [Wi
 [microservice]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0608_2016-->

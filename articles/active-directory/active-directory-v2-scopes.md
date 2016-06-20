@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure AD v2.0: Bereiche, Berechtigungen und Zustimmung | Microsoft Azure"
-	description="Beschreibung der Autorisierung im Azure AD v2.0-Endpunkt, einschließlich Bereichen, Berechtigungen und Zustimmung."
+	pageTitle="Azure AD v2.0: Bereiche, Berechtigungen und Zustimmung | Microsoft Azure"
+	description="Beschreibung der Autorisierung im Azure AD v2.0-Endpunkt, einschließlich Bereichen, Berechtigungen und Zustimmung."
 	services="active-directory"
 	documentationCenter=""
 	authors="dstrockis"
@@ -13,19 +13,19 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/20/2016"
+	ms.date="05/31/2016"
 	ms.author="dastrock"/>
 
 # Bereiche, Berechtigungen und Zustimmung im v2.0-Endpunkt
 
-Apps, die sich in Azure AD integrieren lassen, folgen einem bestimmten Autorisierungsmodell, mit dem Benutzer festlegen können, wie eine App auf ihre Daten zugreift. Die v2.0-Implementierung dieses Autorisierungsmodells wurde aktualisiert, sodass die Art und Weise, wie eine App mit Azure AD interagieren muss, nun anders ist. In diesem Thema werden die grundlegenden Konzepte dieses Autorisierungsmodells einschließlich der Bereiche, Berechtigungen und Zustimmung behandelt.
+Apps, die sich in Azure AD integrieren lassen, folgen einem bestimmten Autorisierungsmodell, mit dem Benutzer festlegen können, wie eine App auf ihre Daten zugreift. Die v2.0-Implementierung dieses Autorisierungsmodells wurde aktualisiert, sodass die Art und Weise, wie eine App mit Azure AD interagieren muss, nun anders ist. In diesem Thema werden die grundlegenden Konzepte dieses Autorisierungsmodells einschließlich der Bereiche, Berechtigungen und Zustimmung behandelt.
 
 > [AZURE.NOTE]
 	Nicht alle Szenarios und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
 
 ## Bereiche und Berechtigungen
 
-Azure AD implementiert das [OAuth 2.0](active-directory-v2-protocols.md)-Autorisierungsprotokoll – eine Methode, mit der eine Drittanbieter-App im Auftrag eines Benutzers auf im Web gehostete Ressourcen zugreifen kann. Alle im Web gehosteten Ressourcen, die in Azure AD integriert werden können, verfügen über eine Ressourcen-ID oder einen **App-ID-URI**. Zu den von Microsoft im Web gehosteten Ressourcen zählen beispielsweise:
+Azure AD implementiert das [OAuth 2.0](active-directory-v2-protocols.md)-Autorisierungsprotokoll – eine Methode, mit der eine Drittanbieter-App im Auftrag eines Benutzers auf im Web gehostete Ressourcen zugreifen kann. Alle im Web gehosteten Ressourcen, die in Azure AD integriert werden können, verfügen über eine Ressourcen-ID oder einen **App-ID-URI**. Zu den von Microsoft im Web gehosteten Ressourcen zählen beispielsweise:
 
 - die Office 365 Unified Mail-API: `https://outlook.office.com`
 - die Azure AD Graph-API: `https://graph.windows.net`
@@ -110,7 +110,7 @@ Der Bereich `email` kann zusammen mit dem Bereich `openid` und weiteren Bereiche
 
 #### Profil
 
-Der Bereich `profile` kann zusammen mit dem Bereich `openid` und weiteren Bereichen eingefügt werden. Er ermöglicht der App Zugriff auf eine Fülle von Benutzerinformationen. Dazu gehören u. a. Vorname, Nachname, bevorzugter Benutzername und Objekt-ID des Benutzers. Eine vollständige Liste der in ID-Token verfügbaren Profilansprüche für einen bestimmten Benutzer finden Sie in der [v2.0-Tokenreferenz](active-directory-v2-tokens.md).
+Der Bereich `profile` kann zusammen mit dem Bereich `openid` und weiteren Bereichen eingefügt werden. Er ermöglicht der App Zugriff auf eine Fülle von Benutzerinformationen. Dazu gehören u. a. Vorname, Nachname, bevorzugter Benutzername und Objekt-ID des Benutzers. Eine vollständige Liste der in ID-Token verfügbaren Profilansprüche für einen bestimmten Benutzer finden Sie in der [v2.0-Tokenreferenz](active-directory-v2-tokens.md).
 
 #### Offline\_access
 
@@ -120,4 +120,4 @@ Wenn die App den `offline_access`-Bereich nicht anfordert, werden auch keine Akt
 
 Weitere Informationen zum Abrufen und Verwenden von Aktualisierungstoken finden Sie in der [v2.0-Protokollreferenz](active-directory-v2-protocols.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0608_2016-->

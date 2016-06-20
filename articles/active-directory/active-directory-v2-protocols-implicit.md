@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/20/2016"
+	ms.date="05/31/2016"
 	ms.author="dastrock"/>
 
 # v2.0-Protokolle – SPAs unter Verwendung des impliziten Flusses
@@ -23,7 +23,7 @@ Mit dem v2.0-Endpunkt können Sie Benutzer sowohl mit persönlichen Konten als a
 - Zahlreiche Autorisierungsserver und Identitätsanbieter unterstützen keine CORS-Anforderungen.
 - Umleitungen auf ganzseitige Browserseiten stören die Benutzererfahrung erheblich.
 
-Bei diesen Anwendungen (wie etwa AngularJS, Ember.js, React.js usw.) unterstützt Azure AD den Fluss für die implizite OAuth 2.0-Gewährung. Der implizite Fluss wird in der [OAuth 2.0-Spezifikation](http://tools.ietf.org/html/rfc6749#section-4.2) beschrieben. Der größte Vorteil besteht darin, dass die App Token aus Azure AD abrufen kann, ohne dass die Anmeldeinformationen für den Back-End-Server ausgetauscht werden müssen. Dadurch kann die App den Benutzer anmelden, die Sitzung aufrechterhalten und Token für andere Web-APIs abrufen. All dies geschieht innerhalb des Client-JavaScript-Codes. Bei der Verwendung des impliziten Flusses gibt es einige wichtige Sicherheitsaspekte zu beachten, insbesondere in Bezug auf [Clients](http://tools.ietf.org/html/rfc6749#section-10.3) und [Identitätsvortäuschung](http://tools.ietf.org/html/rfc6749#section-10.3).
+Bei diesen Anwendungen (wie etwa AngularJS, Ember.js, React.js usw.) unterstützt Azure AD den Fluss für die implizite OAuth 2.0-Gewährung. Der implizite Fluss wird in der [OAuth 2.0-Spezifikation](http://tools.ietf.org/html/rfc6749#section-4.2) beschrieben. Der größte Vorteil besteht darin, dass die App Token aus Azure AD abrufen kann, ohne dass die Anmeldeinformationen für den Back-End-Server ausgetauscht werden müssen. Dadurch kann die App den Benutzer anmelden, die Sitzung aufrechterhalten und Token für andere Web-APIs abrufen. All dies geschieht innerhalb des Client-JavaScript-Codes. Bei der Verwendung des impliziten Flusses gibt es einige wichtige Sicherheitsaspekte zu beachten, insbesondere in Bezug auf [Clients](http://tools.ietf.org/html/rfc6749#section-10.3) und [Identitätsvortäuschung](http://tools.ietf.org/html/rfc6749#section-10.3).
 
 Wenn Sie mit dem impliziten Fluss und Azure AD Ihrer JavaScript-App eine Authentifizierungsmöglichkeit hinzufügen möchten, sollten Sie unsere Open Source-JavaScript-Bibliothek [adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js) verwenden. [Hier](active-directory-appmodel-v2-overview.md#getting-started) finden Sie einige AngularJS-Tutorials für die ersten Schritte.
 
@@ -158,7 +158,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de7
 | ----------------------- | ------------------------------- | --------------- |
 | tenant | erforderlich | Mit dem `{tenant}`-Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints). |
 | client\_id | erforderlich | Die Anwendungs-ID, die das Registrierungsportal ([apps.dev.microsoft.com](https://apps.dev.microsoft.com)) Ihrer Anwendung zugewiesen hat. |
-| response\_type | erforderlich | Muss das `id_token` für die OpenID Connect-Anmeldung enthalten. Es können auch andere Antworttypen enthalten sein, z. B. `code`. |
+| response\_type | erforderlich | Muss das `id_token` für die OpenID Connect-Anmeldung enthalten. Es können auch andere Antworttypen enthalten sein, z. B. `code`. |
 | redirect\_uri | empfohlen | Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können. Er muss genau mit einer der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. |
 | Bereich | erforderlich | Eine durch Leerzeichen getrennte Liste von Bereichen. Beziehen Sie zum Abrufen von Token alle [Bereiche](active-directory-v2-scopes.md) ein, die für die entsprechende Ressource erforderlich sind. |
 | response\_mode | empfohlen | Gibt die Methode an, die zum Senden des resultierenden Tokens zurück an Ihre App verwendet werden soll. Kann `query`, `form_post` oder `fragment` sein. |
@@ -232,4 +232,4 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 -->
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0608_2016-->

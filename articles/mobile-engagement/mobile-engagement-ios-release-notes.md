@@ -18,13 +18,18 @@
 
 #Versionshinweise
 
+##3\.2.3 (07.06.2016)
+
+-   Der Fehler, dass kein Übermittlungsfeedback gemeldet wird, wenn die App sich im Hintergrund befindet, wurde behoben.
+-   Das Senden technischer Protokolle wurde optimiert.
+
 ##3\.2.2 (07.04.2016)
 
--   Das Problem beim Abbruch der HTTP-Anforderung, das manchmal zum Absturz führte, wurde behoben. 
+-   Das Problem beim Abbruch der HTTP-Anforderung, das manchmal zum Absturz führte, wurde behoben.
 
 ##3\.2.1 (11.12.2015)
 
--   Es wurde eine Verzögerung behoben, wenn eine neue Instanz der App durch eine Benachrichtigung mit Deep-Links ausgelöst wird. 
+-   Es wurde eine Verzögerung behoben, wenn eine neue Instanz der App durch eine Benachrichtigung mit Deep-Links ausgelöst wird.
 
 ##3\.2.0 (08.10.2015)
 
@@ -62,4 +67,4 @@
 -   Verbesserungen der Sicherheit.
 -   SmartAd-Verfolgung entfernt.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0608_2016-->

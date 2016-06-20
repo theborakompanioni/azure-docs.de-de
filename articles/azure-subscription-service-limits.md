@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/25/2016"
+	ms.date="06/03/2016"
 	ms.author="jroth"/>
 
 # Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
@@ -188,18 +188,18 @@ In der folgende Tabelle werden die Grenzwerte für Azure Biztalk Services aufgef
 Die Tarife bestimmen die Kapazität und die Beschränkungen des Suchdiensts. Folgende Tarife sind verfügbar:
 
 - *Free:* Mehrmandantendienst, der mit anderen Azure-Abonnenten gemeinsam genutzt wird und für Bewertung und kleine Entwicklungsprojekte vorgesehen ist
-- *Basic (Vorschau)* bietet spezifische Computerressourcen für Produktionsworkloads mit geringerem Umfang. Dieser Tarif wird derzeit in der Vorschau und zu einem reduzierten Preis angeboten.
-- *Standard (S1 und S2)* ist für Produktionsworkloads vorgesehen. Eine Version mit höherer Kapazität (*S2*) ist auf Anfrage verfügbar (wenden Sie sich an den Support oder an azuresearch_contact@microsoft.com).
+- *Basic* bietet dedizierte Computeressourcen für Produktionsworkloads mit einem kleineren Umfang, mit bis zu drei Replikaten für Abfrageworkloads mit hoher Verfügbarkeit.
+- *Standard (S1, S2, S3, S3 High Density)* ist für größere Produktionsworkloads vorgesehen. Mehrere Ebenen sind im Standard-Tarif vorhanden, damit Sie eine Ressourcenkonfiguration für bestimmte Szenarien auswählen können.
 
-**Tarifgrenzwerte**
+**Grenzwerte pro Abonnement**
 
-[AZURE.INCLUDE [azure-search-limits-all](../includes/azure-search-limits-tier.md)]
+[AZURE.INCLUDE [azure-search-limits-per-subscription](../includes/azure-search-limits-per-subscription.md)]
 
-**Speichergrenzwerte**
+**Grenzwerte pro Suchdienst**
 
-[AZURE.INCLUDE [azure-search-limits-all](../includes/azure-search-limits-storage.md)]
+[AZURE.INCLUDE [azure-search-limits-per-service](../includes/azure-search-limits-per-service.md)]
 
-Informationen zu anderen Einschränkungen, z.B. Dokumentgröße, Abfragen pro Sekunde, Schlüssel, Anforderungen und Antworten, finden Sie unter [Grenzwerte für den Azure Search-Dienst](search/search-limits-quotas-capacity.md).
+Detailliertere Informationen zu anderen Grenzwerten, einschließlich Dokumentgröße, Abfragen pro Sekunde, Schlüssel, Anforderungen und Antworten, finden Sie unter [Grenzwerte für den Azure Search-Dienst](search/search-limits-quotas-capacity.md).
 
 ### Media Services-Grenzwerte
 
@@ -300,4 +300,4 @@ Einschränkungen für SQL-Datenbanken finden Sie unter [Ressourceneinschränkung
 
 [Größen für Cloud Services](cloud-services/cloud-services-sizes-specs.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

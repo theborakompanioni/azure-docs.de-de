@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="03/28/2016" 
+	ms.date="06/01/2016" 
 	ms.author="tarcher"/>
 
 # Lokales Testen der Leistung eines Clouddiensts im Azure-Serveremulator mithilfe des Visual Studio-Profiler
@@ -186,4 +186,4 @@ Die Instrumentierung von Azure-Binärdateien im Emulator wird im Visual Studio-P
 [17]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally08.png
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0608_2016-->

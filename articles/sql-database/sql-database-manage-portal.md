@@ -74,4 +74,4 @@ Azure SQL-Datenbanken können konfiguriert werden, um bereits übergebene Transa
 
 - [SQL-Datenbank](sql-database-technical-overview.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -303,7 +303,7 @@ Wenn ein Benutzer von App Service authentifiziert wird, können Sie in Ihrem .NE
     var claimsPrincipal = this.User as ClaimsPrincipal;
     string sid = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-Die SID leitet sich von der anbieterspezifischen Benutzer-ID ab und ist für einen bestimmten Benutzer und Anmeldeanbieter statisch.
+Die SID leitet sich von der anbieterspezifischen Benutzer-ID ab und ist für einen bestimmten Benutzer und Anmeldeanbieter statisch. Die Benutzereigenschaft gibt null zurück, wenn ein Benutzer anonym auf einen Endpunkt zugreift.
 
 App Service ermöglicht auch die Anforderung bestimmter Ansprüche von Ihrem Anmeldeanbieter. Dadurch können Sie weitere Informationen vom Anbieter anfordern (etwa mithilfe der Facebook-Graph-APIs). Ansprüche können im Portal auf dem Anbieterblatt angegeben werden. Einige Ansprüche erfordern zusätzliche Konfigurationsschritte für den Anbieter.
 
@@ -332,6 +332,19 @@ Der folgende Code ruft die Erweiterungsmethode **GetAppServiceIdentityAsync** au
     }
 
 Beachten Sie, dass für `System.Security.Principal` eine using-Anweisung hinzugefügt werden muss, damit die Erweiterungsmethode **GetAppServiceIdentityAsync** funktioniert.
+
+### <a name="authorize"></a>Vorgehensweise: Einschränken des Datenzugriffs für autorisierte Benutzer
+
+Im vorherigen Abschnitt wurde gezeigt, wie die Benutzer-ID eines authentifizierten Benutzers abgerufen wird. Sie können den Zugriff auf Daten und andere Ressourcen auf der Grundlage dieses Werts einschränken. Beispielsweise ist das Hinzufügen einer userId-Spalte zu Tabellen und das Filtern der Abfrageergebnisse eines Benutzers nach der Benutzer-ID eine einfache Möglichkeit, die zurückgegebenen Daten nur auf autorisierte Benutzer zu beschränken. Der folgende Code gibt nur Datenzeilen zurück, wenn die ID des aktuellen Benutzers mit dem Wert in der Spalte „UserId“ für die Tabelle „TodoItem“ übereinstimmt:
+
+    // Get the SID of the current user.
+    var claimsPrincipal = this.User as ClaimsPrincipal;
+    string sid = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier).Value;
+    
+    // Only return data rows that belong to the current user.
+    return Query().Where(t => t.UserId == sid);
+
+Je nach Szenario möchten Sie vielleicht auch Benutzer oder Rollentabellen erstellen, um ausführlichere Berechtigungsinformationen für Benutzer zu verfolgen, beispielsweise auf welche Endpunkte ein angegebener Benutzer zugreifen darf.
 
 ## Vorgehensweise: Hinzufügen von Pushbenachrichtigungen zu einem Serverprojekt
 
@@ -466,4 +479,4 @@ Ihr lokal ausgeführter Server kann nun Token überprüfen, die der Client vom c
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -92,16 +92,16 @@
 [deployment-guide-3.1.2]: virtual-machines-linux-sap-deployment-guide.md#3688666f-281f-425b-a312-a77e7db2dfab "Bereitstellen eines virtuellen Computers mit einem benutzerdefinierten Image"
 [deployment-guide-3.2]: virtual-machines-linux-sap-deployment-guide.md#db477013-9060-4602-9ad4-b0316f8bb281 "Szenario 1: Bereitstellen eines virtuellen Computers aus dem Azure Marketplace für SAP"
 [deployment-guide-3.3]: virtual-machines-linux-sap-deployment-guide.md#54a1fc6d-24fd-4feb-9c57-ac588a55dff2 "Szenario 2: Bereitstellen eines virtuellen Computers mit einem benutzerdefinierten Image für SAP"
-[deployment-guide-3.4]: virtual-machines-linux-sap-deployment-guide.md#a9a60133-a763-4de8-8986-ac0fa33aa8c1 "Szenario 3: Verschieben eines lokalen virtuellen Computers mithilfe einer nicht generalisierten VHD mit SAP"
+[deployment-guide-3.4]: virtual-machines-linux-sap-deployment-guide.md#a9a60133-a763-4de8-8986-ac0fa33aa8c1 "Szenario 3: Verschieben eines virtuellen lokalen Computers mit einer nicht generalisierten virtuellen Azure-Festplatte mit SAP"
 [deployment-guide-4.1]: virtual-machines-linux-sap-deployment-guide.md#604bcec2-8b6e-48d2-a944-61b0f5dee2f7 "Bereitstellen von Azure PowerShell-Cmdlets"
 [deployment-guide-4.2]: virtual-machines-linux-sap-deployment-guide.md#7ccf6c3e-97ae-4a7a-9c75-e82c37beb18e "Herunterladen und Importieren von SAP-relevanten PowerShell-Cmdlets"
 [deployment-guide-4.3]: virtual-machines-linux-sap-deployment-guide.md#31d9ecd6-b136-4c73-b61e-da4a29bbc9cc "Einbinden virtueller Computer in die lokale Domäne – nur Windows"
-[deployment-guide-4.4]: virtual-machines-linux-sap-deployment-guide.md#c7cbb0dc-52a4-49db-8e03-83e7edc2927d "Herunterladen, Installieren und Aktivieren des Azure VM-Agents"
+[deployment-guide-4.4]: virtual-machines-linux-sap-deployment-guide.md#c7cbb0dc-52a4-49db-8e03-83e7edc2927d "Herunterladen, Installieren und Aktivieren von Azure VM-Agent"
 [deployment-guide-4.4.2]: virtual-machines-linux-sap-deployment-guide.md#6889ff12-eaaf-4f3c-97e1-7c9edc7f7542 "Linux"
-[deployment-guide-4.5]: virtual-machines-linux-sap-deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca "Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP"
+[deployment-guide-4.5]: virtual-machines-linux-sap-deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca "Konfigurieren der erweiterten Azure-Überwachung für SAP"
 [deployment-guide-4.5.1]: virtual-machines-linux-sap-deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4 "Microsoft Azure PowerShell"
 [deployment-guide-4.5.2]: virtual-machines-linux-sap-deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f "Azure-Befehlszeilenschnittstelle"
-[deployment-guide-5.1]: virtual-machines-linux-sap-deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 "Bereitschaftsüberprüfung für die verbesserte Azure-Überwachung für SAP"
+[deployment-guide-5.1]: virtual-machines-linux-sap-deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 "Bereitschaftsüberprüfung für die erweiterte Azure-Überwachung für SAP"
 [deployment-guide-5.2]: virtual-machines-linux-sap-deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 "Integritätsprüfung der Konfiguration für die Azure-Überwachungsinfrastruktur"
 [deployment-guide-5.3]: virtual-machines-linux-sap-deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 "Weitere Problembehandlung für die Azure-Überwachungsinfrastruktur für SAP"
 [deployment-guide-install-vm-agent-windows]: virtual-machines-linux-sap-deployment-guide.md#b2db5c9a-a076-42c6-9835-16945868e866
@@ -142,10 +142,10 @@
 [planning-guide-5.1.1]: virtual-machines-linux-sap-planning-guide.md#4d175f1b-7353-4137-9d2f-817683c26e53 "Verschieben eines virtuellen lokalen Computers mit einem nicht generalisierten Datenträger in Azure"
 [planning-guide-5.1.2]: virtual-machines-linux-sap-planning-guide.md#e18f7839-c0e2-4385-b1e6-4538453a285c "Bereitstellen eines virtuellen Computers mit einem kundenspezifischen Image"
 [planning-guide-5.2]: virtual-machines-linux-sap-planning-guide.md#6ffb9f41-a292-40bf-9e70-8204448559e7 "Vorbereiten virtueller Computer mit SAP für Azure"
-[planning-guide-5.2.1]: virtual-machines-linux-sap-planning-guide.md#1b287330-944b-495d-9ea7-94b83aff73ef "Vorbereitung des Verschiebens eines lokalen virtuellen Computers mit einem nicht generalisierten Datenträger in Azure"
+[planning-guide-5.2.1]: virtual-machines-linux-sap-planning-guide.md#1b287330-944b-495d-9ea7-94b83aff73ef "Vorbereitung des Verschiebens eines virtuellen lokalen Computers mit einem nicht generalisierten Datenträger in Azure"
 [planning-guide-5.2.2]: virtual-machines-linux-sap-planning-guide.md#57f32b1c-0cba-4e57-ab6e-c39fe22b6ec3 "Vorbereitung der Bereitstellung eines virtuellen Computers mit einem kundenspezifischen Image für SAP"
 [planning-guide-5.3.1]: virtual-machines-linux-sap-planning-guide.md#6e835de8-40b1-4b71-9f18-d45b20959b79 "Unterschied zwischen einem Azure-Datenträger und einem Azure-Image"
-[planning-guide-5.3.2]: virtual-machines-linux-sap-planning-guide.md#a43e40e6-1acc-4633-9816-8f095d5a7b6a "Hochladen einer virtuellen Festplatte (VHD) vom lokalen Standort in Azure"
+[planning-guide-5.3.2]: virtual-machines-linux-sap-planning-guide.md#a43e40e6-1acc-4633-9816-8f095d5a7b6a "Hochladen einer virtuellen Festplatte vom lokalen Standort in Azure"
 [planning-guide-5.4.2]: virtual-machines-linux-sap-planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1 "Kopieren von Datenträgern zwischen Azure-Speicherkonten"
 [planning-guide-5.5.1]: virtual-machines-linux-sap-planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646 "VM-/VHD-Struktur für SAP-Bereitstellungen"
 [planning-guide-5.5.3]: virtual-machines-linux-sap-planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d "Festlegen der automatischen Bereitstellung für angefügte Datenträger"
@@ -276,7 +276,7 @@
 [virtual-machines-azure-resource-manager-architecture]: virtual-machines-azure-resource-manager-architecture.md
 [virtual-machines-windows-tutorial]: virtual-machines-windows-hero-tutorial.md
 [virtual-networks-create-vnet-arm-pportal]: virtual-networks-create-vnet-arm-pportal.md
-[virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]: virtual-machines-windows-create-powershell.md
+[virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]: virtual-machines-windows-ps-create.md
 [virtual-machines-linux-tutorial]: virtual-machines-linux-quick-create-cli.md
 
 [msdn-set-azurermvmaemextension]: https://msdn.microsoft.com/library/azure/mt670598.aspx
@@ -442,7 +442,7 @@ Der Assistent führt Sie durch die erforderlichen Parameter zum Erstellen des vi
 Nachdem der Assistent beendet wird, erfolgt die Bereitstellung des virtuellen Computers in der ausgewählten Ressourcengruppe.
 
 #### Erstellen virtueller Computer mithilfe einer Vorlage
-Sie können eine Bereitstellung auch mithilfe der im GitHub-Repository [azure-quickstart-templates][azure-quickstart-templates-github] veröffentlichten SAP-Vorlagen erstellen. Oder Sie erstellen manuell einen virtuellen Computer mithilfe des [Azure-Portals][virtual-machines-windows-tutorial], der [PowerShell][virtual-machines-ps-create-preconfigure-windows-resource-manager-vms] oder über die [Azure-CLI][virtual-machines-linux-tutorial].
+Sie können eine Bereitstellung auch mithilfe der im GitHub-Repository [azure-quickstart-templates][azure-quickstart-templates-github] veröffentlichten SAP-Vorlagen erstellen. Oder Sie erstellen manuell einen virtuellen Computer mithilfe des [Azure-Portals][virtual-machines-windows-tutorial], mit [PowerShell][virtual-machines-ps-create-preconfigure-windows-resource-manager-vms] oder über die [Azure-CLI][virtual-machines-linux-tutorial].
 
 * [Vorlage für die Konfiguration mit 2 Ebenen (nur ein virtueller Computer)][sap-templates-2-tier-marketplace-image] Verwenden Sie diese Vorlage, wenn Sie ein System mit 2 Ebenen und nur einem virtuellen Computer erstellen möchten.
 * [Vorlage für die Konfiguration mit 3 Ebenen (mehrere virtuelle Computer)][sap-templates-3-tier-marketplace-image] Verwenden Sie diese Vorlage, wenn Sie ein System mit 3 Ebenen und mehreren virtuellen Computern erstellen möchten.
@@ -938,4 +938,4 @@ Eine vollständige und aktuelle Liste bekannter Probleme finden Sie im SAP-Hinwe
 
 Falls die Problembehandlung gemäß SAP-Hinweis [1999351] nicht hilfreich war, führen Sie erneut das Konfigurationsskript Set-AzureRmVMAEMExtension aus, wie im Kapitel [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben. Möglicherweise ist eine Wartezeit von 1 Stunde erforderlich, da Speicheranalyse- und Diagnoseindikatoren nicht sofort nach der Aktivierung erstellt werden. Falls das Problem weiterhin besteht, öffnen Sie eine SAP-Kundendienstmeldung für die Komponente BC-OP-NT-AZR für virtuelle Windows-Computer oder BC-OP-LNX-AZR für virtuelle Linux-Computer.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="03/17/2015"
+	ms.date="05/31/2016"
 	ms.author="brandwe"/>
 
 
@@ -86,7 +86,7 @@ Die folgende Abbildung zeigt, wie die Microsoft Identity SDKs zusammen mit dem g
 
 #### Brokergestützte Anmeldungen
 
-Brokergestützte Anmeldungen sind Anmeldeabläufe, die innerhalb der Brokeranwendung stattfinden und auf den Speicher und die Sicherheit des Brokers zurückgreifen, um Anmeldeinformationen für alle Anwendungen auf dem Gerät einzusetzen, die die Microsoft Identity-Plattform nutzen. Das bedeutet, dass Ihre Anwendungen bei der Benutzeranmeldung auf den Broker zurückgreifen. Unter iOS und Android wird diese Funktion über herunterladbare Anwendungen bereitgestellt. Diese Anwendungen können Kunden entweder unabhängig installieren, oder sie werden von Unternehmen, die das Gerät für ihre Benutzer verwalten, per Push auf das Gerät übertragen. Ein Beispiel für diesen Anwendungstyp ist die Azure Authenticator-App unter iOS. Unter Windows wird diese Funktion durch eine Kontoauswahl bereitgestellt, die in das Betriebssystem integriert ist. Die technische Bezeichnung hierfür lautet Webauthentifizierungsbroker. Der Ablauf variiert je nach Plattform, und eine nicht ordnungsgemäße Verwaltung kann die Benutzererfahrung beeinträchtigen. Sie kennen dieses Muster sicherlich, wenn Sie Facebook installiert haben und die Facebook-Anmeldefunktion in einer anderen Anwendung verwenden. Die Microsoft Identity-Plattform bedient sich des gleichen Musters.
+Brokergestützte Anmeldungen sind Anmeldeabläufe, die innerhalb der Brokeranwendung stattfinden und auf den Speicher und die Sicherheit des Brokers zurückgreifen, um Anmeldeinformationen für alle Anwendungen auf dem Gerät einzusetzen, die die Microsoft Identity-Plattform nutzen. Das bedeutet, dass Ihre Anwendungen bei der Benutzeranmeldung auf den Broker zurückgreifen. Unter iOS und Android wird diese Funktion über herunterladbare Anwendungen bereitgestellt. Diese Anwendungen können Kunden entweder unabhängig installieren, oder sie werden von Unternehmen, die das Gerät für ihre Benutzer verwalten, per Push auf das Gerät übertragen. Ein Beispiel für diesen Anwendungstyp ist die Azure Authenticator-App unter iOS. Unter Windows wird diese Funktionalität durch eine Kontoauswahl bereitgestellt, die in das Betriebssystem integriert ist. Die technische Bezeichnung hierfür lautet Webauthentifizierungsbroker. Der Ablauf variiert je nach Plattform, und eine nicht ordnungsgemäße Verwaltung kann die Benutzererfahrung beeinträchtigen. Sie kennen dieses Muster sicherlich, wenn Sie Facebook installiert haben und die Facebook-Anmeldefunktion in einer anderen Anwendung verwenden. Die Microsoft Identity-Plattform bedient sich des gleichen Musters.
 
 Bei iOS führt dies zu einer „Übergangsanimation“, bei der Ihre Anwendung in den Hintergrund und die Azure Authenticator-Anwendungen in den Vordergrund rückt, sodass der Benutzer das gewünschte Konto für die Anmeldung auswählen kann.
 
@@ -98,7 +98,7 @@ Wenn ein kompatibler Broker auf dem Gerät installiert ist (beispielsweise die A
 
 **Der Entwickler kann entscheiden, ob das Microsoft Identity SDK den Broker aufrufen oder den nicht brokergestützten Ablauf verwenden soll.** Wenn sich der Entwickler allerdings gegen den brokergestützten Ablauf entscheidet, verzichtet er auf die Vorteile der Nutzung von SSO-Anmeldeinformationen, die der Benutzer möglicherweise bereits auf dem Gerät hinzugefügt hat. Außerdem kann die Anwendung ohne brokergestützte Anmeldung keine der von Microsoft bereitgestellten Geschäftsfunktionen wie etwa den bedingten Zugriff, Intune-Verwaltungsfunktionen und eine zertifikatbasierte Authentifizierung nutzen.
 
-Diese Anmeldungen bieten folgende Vorteile:
+Diese Anmeldungen bieten die folgenden Vorteile:
 
 -  Benutzer profitieren bei allen ihren Anwendungen von SSO – unabhängig vom Anbieter.
 -  Ihre Anwendung kann mit erweiterten Geschäftsfunktionen wie etwa dem bedingten Zugriff oder der Intune-Produktsuite verwendet werden.
@@ -311,4 +311,4 @@ ADAL prüft mithilfe von „–CanOpenURL:“, ob der Broker auf dem Gerät inst
 
 Das Microsoft Identity SDK verwendet Anmeldeinformationen nun automatisch anwendungsübergreifend und ruft den Broker auf, wenn dieser auf dem Gerät vorhanden ist.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0608_2016-->

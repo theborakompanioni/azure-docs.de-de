@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/29/2016"
+   ms.date="05/24/2016"
    ms.author="alkohli" />
 
 # Verwenden des StorSimple Manager-Diensts zum Überwachen Ihres StorSimple-Geräts 
@@ -27,11 +27,11 @@ Um die Überwachungsinformationen für ein bestimmtes Gerät anzuzeigen, wählen
 
 **E/A-Leistung** verfolgt Metrikdaten nach, die in Zusammenhang mit Lese- und Schreibvorgängen zwischen den iSCSI-Initiatorschnittstellen auf dem Hostserver und dem Gerät oder dem Gerät und der Cloud stehen. Die Leistung kann für ein bestimmtes Volume, einen bestimmten Volumecontainer oder alle Volumecontainer gemessen werden.
 
-Im Diagramm unten sind die EA-Vorgänge für den Initiator Ihres Geräts für alle Volumes für ein Gerät in der Produktionsumgebung aufgeführt. Bei den dargestellten Metriken handelt es sich um gelesene und geschriebene Bytes pro Sekunde, Lese- und Schreib-EA-Vorgänge pro Sekunde und um die Wartezeiten bei Lese- und Schreibzugriffen.
+Im Diagramm unten sind die E/A-Vorgänge für den Initiator Ihres Geräts für alle Volumes für ein Gerät in der Produktionsumgebung aufgeführt. Bei den dargestellten Metriken handelt es sich um gelesene und geschriebene Bytes pro Sekunde, Lese- und Schreib-E/A-Vorgänge pro Sekunde und um die Wartezeiten bei Lese- und Schreibzugriffen.
 
 ![EA-Leistung vom Initiator an das Gerät](./media/storsimple-monitor-device/StorSimple_IO_Performance_For_InitiatorTODevice_For_AllVolumesM.png)
 
-Für das gleiche Gerät sind die EA-Vorgänge für Daten vom Gerät zur Cloud für alle Volumecontainer dargestellt. Auf diesem Gerät befinden sich die Daten nur in der linearen Schicht, und nichts wurde in die Cloud ausgelagert. Es treten keine Lese-/Schreibvorgänge vom Gerät in die Cloud auf. Daher treten die Spitzen im Diagramm im Abstand von 5 Minuten auf, was der Häufigkeit entspricht, mit der das Taktsignal zwischen dem Gerät und dem Dienst überprüft wird.
+Für das gleiche Gerät sind die E/A-Vorgänge für die Daten vom Gerät zur Cloud für alle Volumecontainer dargestellt. Auf diesem Gerät befinden sich die Daten nur in der linearen Schicht, und nichts wurde in die Cloud ausgelagert. Es treten keine Lese-/Schreibvorgänge vom Gerät in die Cloud auf. Daher treten die Spitzen im Diagramm im Abstand von 5 Minuten auf, was der Häufigkeit entspricht, mit der das Taktsignal zwischen dem Gerät und dem Dienst überprüft wird.
 
 ![EA-Leistung vom Gerät in die Cloud](./media/storsimple-monitor-device/StorSimple_IO_Performance_For_DeviceTOCloud_For_AllVolumeContainersM.png)
 
@@ -92,7 +92,7 @@ In diesen Diagrammen ist die Menge des verwendeten Cloudspeichers dargestellt. D
 
 ###Kapazitätsauslastung des Gerätespeichers
 
-In diesen Diagrammen ist die Gesamtauslastung des Geräts dargestellt. Diese Zahl ist höher als die Auslastung des primären Speichers, da sie auch die lineare SSD-Schicht umfasst. Diese Schicht enthält eine Menge an Daten, die auch auf den anderen Schichten des Geräts vorhanden ist. Die Kapazität der linearen SSD-Schicht ist zyklisch angelegt, d. h. wenn neue Daten eintreffen, werden die alten Daten in die HDD-Schicht (und zu diesem Zeitpunkt dedupliziert und komprimiert) und anschließend in die Cloud verschoben.
+In diesen Diagrammen ist die Gesamtauslastung des Geräts dargestellt. Diese Zahl ist höher als die Auslastung des primären Speichers, da sie auch die lineare SSD-Schicht umfasst. Diese Schicht enthält eine Menge an Daten, die auch auf den anderen Schichten des Geräts vorhanden ist. Die Kapazität der linearen SSD-Schicht ist zyklisch angelegt, d.h. wenn neue Daten eintreffen, werden die alten Daten in die HDD-Schicht (und zu diesem Zeitpunkt dedupliziert und komprimiert) und anschließend in die Cloud verschoben.
 
 Im Lauf der Zeit wird sich die Kapazitätsauslastung des Primärspeichers und des Geräts wahrscheinlich parallel erhöhen, bis die ersten Daten in die Cloud verschoben werden. Zu diesem Zeitpunkt wird die Kapazitätsauslastung des Geräts vermutlich auf dem gleichen Niveau bleiben, die Kapazitätsauslastung des Primärspeichers wird sich jedoch erhöhen, da mehr Daten geschrieben werden.
 
@@ -126,4 +126,4 @@ Das Diagramm unten stellt den Netzwerkdurchsatz für „Data 0“ und „Data 4�
 
 - Informationen zum [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0608_2016-->

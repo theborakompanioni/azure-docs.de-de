@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="05/31/2016"
 	ms.author="priyamo"/>
 
 # Fehlerbehandlung in OAuth 2.0
@@ -137,4 +137,4 @@ Die Spezifikation RFC 6750 definiert die folgenden Fehler für Ressourcen, die i
 | 403 | insufficient\_scope | Das Zugriffstoken enthält nicht die erforderlichen Berechtigungen zum Identitätswechsel, um auf die Ressource zuzugreifen. | Senden Sie eine neue Autorisierungsanforderung an den Autorisierungsendpunkt. Wenn die Antwort den Bereichsparameter enthält, verwenden Sie den Bereichswert in der Anforderung für die Ressource. |
 | 403 | insufficient\_access | Der Antragsteller des Tokens besitzt nicht die Berechtigungen, die für den Zugriff auf die Ressource erforderlich sind. | Der Benutzer wird aufgefordert, ein anderes Konto zu verwenden oder Berechtigungen für die angegebene Ressource anzufordern. |
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

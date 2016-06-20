@@ -1,4 +1,4 @@
-## Senden interaktiver Nachrichten vom simulierten Gerät
+## Senden interaktiver Nachrichten von einem simulierten Gerät
 
 In diesem Abschnitt ändern Sie die simulierte Geräteanwendung, die Sie im Tutorial [Erste Schritte mit IoT Hub] erstellt haben, sodass sie interaktive D2C-Nachrichten an IoT Hub sendet.
 
@@ -22,9 +22,9 @@ In diesem Abschnitt ändern Sie die simulierte Geräteanwendung, die Sie im Tuto
     }
     ```
 
-    Diese Methode ähnelt der **SendDeviceToCloudMessagesAsync**-Methode im Projekt **SimulatedDevice**. Die einzigen Unterschiede bestehen darin, dass Sie jetzt die Systemeigenschaft **MessageId** und eine Benutzereigenschaft **messageType** festlegen. Der Code weist der Eigenschaft **MessageId** eine GUID (Globally Unique Identifier) zu, die von Service Bus zum Deduplizieren der empfangenen Nachrichten verwendet werden kann. Im Beispiel wird die Eigenschaft **messageType** verwendet, um interaktive von Datenpunktnachrichten zu unterscheiden. Die Anwendung übergibt diese Informationen in Nachrichteneigenschaften anstatt im Nachrichtentext. Auf diese Weise muss der Ereignisprozessor zum Nachrichtenrouting nicht die gesamte Nachricht deserialisieren.
+    Diese Methode ähnelt der **SendDeviceToCloudMessagesAsync**-Methode im Projekt **SimulatedDevice**. Die einzigen Unterschiede bestehen darin, dass Sie jetzt die Systemeigenschaft **MessageId** und eine Benutzereigenschaft **messageType** festlegen. Der Code weist einen global eindeutigen Bezeichner (GUID) der Eigenschaft **MessageId** zu. Der Service Bus kann damit Nachrichten, die er empfängt, deduplizieren. Im Beispiel wird die Eigenschaft **messageType** verwendet, um interaktive von Datenpunktnachrichten zu unterscheiden. Die Anwendung übergibt diese Informationen in Nachrichteneigenschaften anstatt im Nachrichtentext. Auf diese Weise muss der Ereignisprozessor zum Nachrichtenrouting nicht die gesamte Nachricht deserialisieren.
 
-    > [AZURE.NOTE] Die zum Deduplizieren interaktiver Nachrichten verwendete **MessageId** muss unbedingt im Gerätecode erstellt werden, da Unterbrechungen der Netzwerkverbindung (oder andere Fehler) dazu führen können, dass dieselbe Nachricht vom Gerät mehrmals neu übertragen wird. Sie können auch eine semantische Nachrichten-ID, z. B. einen Hash der relevanten Datenfelder der Nachricht, anstelle einer GUID verwenden.
+    > [AZURE.NOTE] Es ist wichtig, die **MessageId**, die zum Deduplizieren interaktiver Nachrichten verwendet wird, im Gerätecode zu erstellen. Zeitweise Netzwerkkommunikation oder andere Fehler könnten dazu führen, dass mehrere Neuübertragungen der gleichen Nachricht von diesem Gerät erfolgen. Sie können anstelle einer GUID auch eine semantische Nachrichten-ID verwenden, z.B. einen Hash der relevanten Nachrichtendatenfelder.
 
 2. Fügen Sie in der **Main**-Methode unmittelbar vor der Zeile `Console.ReadLine()` folgende Methode hinzu:
 
@@ -38,4 +38,4 @@ In diesem Abschnitt ändern Sie die simulierte Geräteanwendung, die Sie im Tuto
 [Behandeln vorübergehender Fehler]: https://msdn.microsoft.com/library/hh675232.aspx
 [Erste Schritte mit IoT Hub]: ../articles/iot-hub/iot-hub-csharp-csharp-getstarted.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Änderungen am Azure AD v2.0-Endpunkt | Microsoft Azure"
-	description="Enthält eine Beschreibung der Änderungen, die an den Protokollen des App-Modells v2. 0 (öffentliche Vorschau) vorgenommen werden."
+	pageTitle="Änderungen am Azure AD v2.0-Endpunkt | Microsoft Azure"
+	description="Enthält eine Beschreibung der Änderungen, die an den Protokollen des App-Modells v2. 0 (öffentliche Vorschau) vorgenommen werden."
 	services="active-directory"
 	documentationCenter=""
 	authors="dstrockis"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/20/2016"
+	ms.date="05/31/2016"
 	ms.author="dastrock"/>
 
 # Wichtige Updates für die v2.0-Authentifizierungsprotokolle
@@ -67,7 +67,8 @@ Bisher wurde vom v2.0-Endpunkt ein JSON-Objekt mit base64-Codierung in Tokenantw
 https://login.microsoftonline.com/common/oauth2/v2.0/token
 ```
 
-Die Antwort sieht wie das folgende JSON-Objekt aus: ```
+Die Antwort sieht wie das folgende JSON-Objekt aus:
+```
 { 
 	"token_type": "Bearer",
 	"expires_in": 3599,
@@ -100,7 +101,7 @@ Im Laufe der nächsten beiden Wochen sollten Sie Ihre App so codieren, dass die 
 > [AZURE.IMPORTANT] **Ihre Aufgabe: Stellen Sie sicher, dass Ihre App nicht vom Vorhandensein des Werts `profile_info` abhängig ist.**
 
 ### Entfernen von „id\_token\_expires\_in“
-Ähnlich wie `profile_info` entfernen wir auch den Parameter `id_token_expires_in` aus Antworten. Bisher hat der v2.0-Endpunkt einen Wert für `id_token_expires_in` zusammen mit jeder id\_token-Antwort zurückgegeben, z. B. in einer Autorisierungsantwort:
+Ähnlich wie `profile_info` entfernen wir auch den Parameter `id_token_expires_in` aus Antworten. Bisher hat der v2.0-Endpunkt einen Wert für `id_token_expires_in` zusammen mit jeder id\_token-Antwort zurückgegeben, z. B. in einer Autorisierungsantwort:
 
 ```
 https://myapp.com?id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...&id_token_expires_in=3599...
@@ -216,4 +217,4 @@ Viel Spaß beim Programmieren!
 
 Microsoft Identity Division
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Azure Mobile Apps-Bindungen in Azure Functions verwendet werden."
 	services="functions"
 	documentationCenter="na"
-	authors="christopheranderson"
+	authors="ggailey777"
 	manager="erikre"
 	editor=""
 	tags=""
@@ -15,8 +15,8 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="05/16/2016"
-	ms.author="chrande"/>
+	ms.date="06/02/2016"
+	ms.author="glenga"/>
 
 # Mobile Apps-Bindungen in Azure Functions
 
@@ -26,7 +26,25 @@ Dieser Artikel erläutert das Konfigurieren und Codieren von Azure Mobile Apps-B
 
 Mit mobilen Azure App Service-Apps können Sie Tabellenendpunkt-Daten auf mobilen Clients verfügbar machen. Dieselben Tabellendaten können sowohl in Eingabe- als auch in Ausgabebindungen in Azure Functions verwendet werden. Da ein dynamisches Schema unterstützt wird, eignet sich eine mobile Node.js-Back-End-App besonders zum Verfügbarmachen von Tabellendaten für die Verwendung mit Ihren Funktionen. Das dynamische Schema ist standardmäßig aktiviert und sollte in einer mobilen Produktions-App deaktiviert werden. Weitere Informationen zu Tabellenendpunkten in einem Node.js-Back-End finden Sie unter [Übersicht: Tabellenvorgänge](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#TableOperations). In Mobile Apps unterstützt das Node.js-Back-End das portalinterne Durchsuchen und Bearbeiten von Tabellen. Weitere Informationen finden Sie im Abschnitt zur [portalinternen Bearbeitung](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#in-portal-editing) im Thema „Node.js SDK“. Beim Verwenden einer mobilen .NET-Back-End-App mit Azure Functions müssen Sie das Datenmodell entsprechend den Anforderungen der Funktion manuell aktualisieren. Weitere Informationen zu Tabellenendpunkten in einer mobilen .NET-Back-End-App finden Sie unter [Gewusst wie: Definieren eines Tabellencontrollers](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#define-table-controller) im Thema „.NET-Back-End-SDK“.
 
-## <a id="mobiletablesapikey"></a> Verwenden Sie einen API-Schlüssel zum Schützen des Zugriffs auf Ihre Mobile Apps-Tabellenendpunkte.
+## Erstellen einer Umgebungsvariablen für Ihre Back-End-URL für mobile Apps
+
+Für Mobile Apps-Bindungen müssen Sie derzeit eine Umgebungsvariable erstellen, die die URL des Back-Ends der mobilen App selbst zurückgibt. Diese URL finden Sie im [Azure-Portal](https://portal.azure.com), wenn Sie Ihre mobile App suchen und das Blatt öffnen.
+
+![Mobile Apps-Blatt im Azure-Portal](./media/functions-bindings-mobile-apps/mobile-app-blade.png)
+
+So legen Sie diese URL als Umgebungsvariable in Ihrer Funktions-App fest:
+
+1. Klicken Sie in Ihrer Funktions-App im [Azure Functions-Portal](https://functions.azure.com/signin) auf **Funktions-App-Einstellungen** > **Zu App Service-Einstellungen wechseln**. 
+
+	![Funktions-App-Einstellungenblatt](./media/functions-bindings-mobile-apps/functions-app-service-settings.png)
+
+2. Klicken Sie in Ihrer Funktions-App auf **Alle Einstellungen**, scrollen Sie nach unten zu **Anwendungseinstellungen**, und geben Sie dann unter **App-Einstellungen** einen neuen **Namen** für die Umgebungsvariable ein, fügen Sie die URL in **Wert** ein, wobei Sie das HTTPS-Schema verwenden, klicken Sie dann auf **Speichern**, und schließen Sie das Funktions-App-Blatt im Functions-Portal.
+
+	![Hinzufügen einer App-Einstellung zu einer Umgebungsvariablen](./media/functions-bindings-mobile-apps/functions-app-add-app-setting.png)
+
+Nun können Sie diese neue Umgebungsvariable als Feld *connection* in Ihren Bindungen festlegen.
+
+## <a id="mobiletablesapikey"></a> Verwenden Sie einen API-Schlüssel, um den Zugriff auf Ihre Mobile Apps-Tabellenendpunkte zu schützen.
 
 In Azure Functions ermöglichen Ihnen Bindungen mobiler Tabellen, einen API-Schlüssel anzugeben. Dabei handelt es sich um einen gemeinsamen geheimen Schlüssel für Ihre Funktionen. Der unbefugte Zugriff aus anderen Apps wird so verhindert. Mobile Apps bieten keine integrierte Unterstützung für die Authentifizierung von API-Schlüsseln. Sie können jedoch einen API-Schlüssel in der mobilen Node.js-Back-End-App implementieren, indem Sie die Beispiele unter [Azure App Service Mobile Apps backend implementing an API key](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key) (Implementieren eines API-Schlüssels mit dem Azure Mobile App Service-Apps-Back-End) befolgen. In einer [mobilen .NET-Back-End-App](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key) können Sie auf ähnliche Weise einen API-Schlüssel implementieren.
 
@@ -45,7 +63,7 @@ Die Datei *function.json* unterstützt die folgenden Eigenschaften:
 - `tableName`: Tabelle, in der der neue Datensatz erstellt wird.
 - `id`: ID des abzurufenden Datensatzes. Diese Eigenschaft unterstützt Bindungen wie `{queueTrigger}`, die den Zeichenfolgenwert der Warteschlangennachricht als Datensatz-ID verwenden.
 - `apiKey`: Zeichenfolge, die der Anwendungseinstellung entspricht, die den optionalen API-Schlüssel für die mobile App angibt. Dies ist erforderlich, wenn Ihre mobile App einen API-Schlüssel verwendet, um den Clientzugriff einzuschränken.
-- `connection`: Zeichenfolge, die der Anwendungseinstellung entspricht, die den URI für Ihre mobile App angibt.
+- `connection`: Zeichenfolge, die dem Namen der Umgebungsvariablen in den Anwendungseinstellungen entspricht, der die URL Ihres Back-Ends für mobile Apps angibt.
 - `direction`: Bindungsrichtung, die auf *in* festgelegt werden muss.
 
 Beispiel für die Datei *function.json*:
@@ -57,7 +75,7 @@ Beispiel für die Datei *function.json*:
 	      "type": "mobileTable",
 	      "tableName": "MyTable",
 	      "id" : "{queueTrigger}",
-	      "connection": "My_MobileApp_Uri",
+	      "connection": "My_MobileApp_Url",
 	      "apiKey": "My_MobileApp_Key",
 	      "direction": "in"
 	    }
@@ -102,7 +120,7 @@ Die Datei „function.json“ unterstützt die folgenden Eigenschaften:
 - `type`: Bindungstyp, der auf *mobileTable* festgelegt werden muss.
 - `tableName`: Tabelle, in der der neue Datensatz erstellt wird.
 - `apiKey`: Zeichenfolge, die der Anwendungseinstellung entspricht, die den optionalen API-Schlüssel für die mobile App angibt. Dies ist erforderlich, wenn Ihre mobile App einen API-Schlüssel verwendet, um den Clientzugriff einzuschränken.
-- `connection`: Zeichenfolge, die der Anwendungseinstellung entspricht, die den URI für Ihre mobile App angibt.
+- `connection`: Zeichenfolge, die dem Namen der Umgebungsvariablen in den Anwendungseinstellungen entspricht, der die URL Ihres Back-Ends für mobile Apps angibt.
 - `direction`: Bindungsrichtung, die auf *out* festgelegt werden muss.
 
 Beispiel für „function.json“:
@@ -113,7 +131,7 @@ Beispiel für „function.json“:
 	      "name": "record",
 	      "type": "mobileTable",
 	      "tableName": "MyTable",
-	      "connection": "My_MobileApp_Uri",
+	      "connection": "My_MobileApp_Url",
 	      "apiKey": "My_MobileApp_Key",
 	      "direction": "out"
 	    }
@@ -149,4 +167,4 @@ Dieses Node.js-Codebeispiel fügt einen neuen Datensatz mit einer *text*-Eigensc
 
 [AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -701,7 +701,7 @@ Nachdem die Abfrage ausgeführt wurde, werden die Ergebnisse wie folgt angezeigt
 
 Wir können jetzt mit Azure Machine Learning ein Modell erstellen und bereitstellen, das vorhersagt, ob Trinkgeld gezahlt wird oder nicht. Die geschichteten Beispieldaten können für dieses binäre Klassifizierungsproblem (Trinkgeld oder nicht) verwendet werden. Die Vorhersagemodelle mit mehrklassiger Klassifizierung (tip\_class) und Regression (tip\_amount) können auch mit Azure Machine Learning Studio erstellt und bereitgestellt werden, aber hier zeigen wir nur, wie Sie den Fall mithilfe des Modells für binäre Klassifizierung behandeln.
 
-1. Erfassen Sie die Daten in Azure ML mithilfe des **Reader**-Moduls im Abschnitt **Data Input and Output**. Weitere Informationen finden Sie auf der Referenzseite zum [Reader](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)-Modul.
+1. Erfassen Sie die Daten in Azure ML mithilfe des **Import Data**-Moduls im Abschnitt **Data Input and Output**. Weitere Informationen finden Sie auf der Referenzseite zum [Import Data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)-Modul.
 2. Wählen Sie **Hive-Abfrage** als **Datenquelle** im Bereich **Eigenschaften** aus.
 3. Fügen Sie das folgende Hive-Skript in den Editor **Hive-Datenbankabfrage** ein.
 
@@ -741,4 +741,4 @@ Der Lernpfad für den [Cortana-Analyseprozess-Prozess (CAP)](http://aka.ms/datas
 - [Cortana-Analyseprozess (CAP) in Aktion: Verwenden von SQL Server](machine-learning-data-science-process-sql-walkthrough.md)
 - [Übersicht über Data Science mit Spark in Azure HDInsight](machine-learning-data-science-spark-overview.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

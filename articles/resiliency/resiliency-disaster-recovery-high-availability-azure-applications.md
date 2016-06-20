@@ -76,7 +76,7 @@ Bei der Recovery Time Objective (RTO) handelt es sich um die maximal für die Wi
 Bei der Recovery Point Objective (RPO) handelt es sich um den Zeitraum, für den ein Datenverlust im Zuge der Wiederherstellung akzeptabel ist („angestrebter Wiederherstellungspunkt“). Wenn Sie z.B. eine RPO von einer Stunde wünschen, müssen Sie Ihre Daten mindestens jede Stunde vollständig sichern oder replizieren. Nachdem Sie die Anwendung in einer alternativen Region gestartet haben, fehlen in den Daten aus der Datensicherung möglicherweise die Daten einer gesamten Stunde. Ebenso wie bei der RTO wird für unternehmenskritische Anwendungen eine sehr viel geringere RPO angestrebt.
 
 ##Checkliste
-Fassen wir die wichtigsten Punkte aus diesem Artikel und aus den verwandten Artikeln zu [hoher Verfügbarkeit](./resiliency-high-availability-azure-applications.md) und [Notfallwiederherstellung](./resiliency-disaster-recovery-azure-applications.md) für Azure-Anwendungen zusammen. Am besten eignet sich dafür eine Checkliste mit den Aspekten, die Sie bei Ihrer eigenen Planung für Verfügbarkeit und Notfallwiederherstellung berücksichtigen sollten. Dies sind bewährte Methoden, mit denen Kunden ernsthaft und erfolgreich eine entsprechende Lösung implementiert haben. Lösungen dieser Art funktionieren gut, mit ihnen ist eine schnelle und erfolgreiche Wiederherstellung nach Systemausfällen möglich.
+Fassen wir die wichtigsten Punkte aus diesem Artikel und aus den verwandten Artikeln zu [hoher Verfügbarkeit](resiliency-high-availability-azure-applications.md) und [Notfallwiederherstellung](resiliency-disaster-recovery-azure-applications.md) für Azure-Anwendungen zusammen. Am besten eignet sich dafür eine Checkliste mit den Aspekten, die Sie bei Ihrer eigenen Planung für Verfügbarkeit und Notfallwiederherstellung berücksichtigen sollten. Dies sind bewährte Methoden, mit denen Kunden ernsthaft und erfolgreich eine entsprechende Lösung implementiert haben. Lösungen dieser Art funktionieren gut, mit ihnen ist eine schnelle und erfolgreiche Wiederherstellung nach Systemausfällen möglich.
 
 1. Führen Sie für jede Anwendung eine Risikobewertung durch, denn für jede Anwendung können andere Anforderungen gelten. Einige Anwendungen sind wichtiger als andere. Für sie ist sind u.U. Zusatzkosten gerechtfertigt, um eine Architektur für die Notfallwiederherstellung zu entwerfen.
 1. Verwenden Sie die bei der Bewertung gewonnenen Informationen zum Definieren einer RTO (Recovery Time Objective) und einer RPO (Recovery Point Objective) für jede Anwendung.
@@ -99,11 +99,11 @@ Azure erkennt und behandelt viele Ausfälle, aber es gibt auch viele Arten von F
 Berücksichtigen Sie die geschäftlichen Konsequenzen eines Anwendungsausfalls, wenn Sie einen Plan für die Anwendungsverfügbarkeit und die Notfallwiederherstellung erarbeiten. Definieren Sie Prozesse, Richtlinien und Verfahren für die Wiederherstellung unternehmenskritischer Systeme nach Notfällen – das erfordert Zeit, Planung und Engagement. Und wenn Sie die Pläne erarbeitet haben, ist Ihre Aufgabe noch nicht abgeschlossen. Sie müssen die Pläne auf Basis Ihres Anwendungsportfolios, der geschäftlichen Erfordernisse und der verfügbaren Technologien regelmäßig analysieren, testen und fortlaufend verbessern. Azure stellt Sie vor neue Herausforderungen, bietet Ihnen aber auch neue Möglichkeiten beim Erstellen robuster Anwendungen, die Ausfällen standhalten.
 
 ##Zusätzliche Ressourcen
-[Hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](./resiliency-high-availability-azure-applications.md)
+[Hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](resiliency-high-availability-azure-applications.md)
 
-[Notfallwiederherstellung für in Microsoft Azure erstellte Anwendungen](./resiliency-disaster-recovery-azure-applications.md)
+[Notfallwiederherstellung für in Microsoft Azure erstellte Anwendungen](resiliency-disaster-recovery-azure-applications.md)
 
-[Technischer Leitfaden zur Resilienz in Azure](./resiliency-technical-guidance.md)
+[Technischer Leitfaden zur Resilienz in Azure](resiliency-technical-guidance.md)
 
 [Übersicht: Geschäftskontinuität für die Cloud und Notfallwiederherstellung für Datenbanken mit SQL-Datenbank](../sql-database/sql-database-business-continuity.md)
 
@@ -114,6 +114,6 @@ Berücksichtigen Sie die geschäftlichen Konsequenzen eines Anwendungsausfalls, 
 [Best Practices for the design of large-scale services on Azure Cloud Services](https://azure.microsoft.com/blog/best-practices-for-designing-large-scale-services-on-windows-azure/) (Bewährte Methoden für den Entwurf umfangreicher Dienste in Azure Cloud Services)
 
 ##Nächste Schritte
-Dieser Artikel ist Teil einer Reihe von Artikeln mit Fokus auf Notfallwiederherstellung und hohe Verfügbarkeit für Azure-Anwendungen. Der nächste Artikel in dieser Reihe ist [Hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](./resiliency-high-availability-azure-applications.md).
+Dieser Artikel ist Teil einer Reihe von Artikeln mit Fokus auf Notfallwiederherstellung und hohe Verfügbarkeit für Azure-Anwendungen. Der nächste Artikel in dieser Reihe ist [Hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](resiliency-high-availability-azure-applications.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

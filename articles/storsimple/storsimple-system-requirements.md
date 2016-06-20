@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/10/2016"
+   ms.date="05/25/2016"
    ms.author="alkohli"/>
 
 # StorSimple-Software, hohe Verfügbarkeit und Netzwerkanforderungen
@@ -85,7 +85,7 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 | URL-Muster | Komponente/Funktionalität | Geräte-IPs |
 |------------------------------------------------------------------|---------------------------------------------------------------|-----------------------------------------|
 | `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` | StorSimple Manager-Dienst<br>Access Control Service<br>Azure Service Bus| Cloudaktivierte Netzwerkschnittstellen |
-|`http://*.backup.windowsazure.com`|Geräteregistrierung| Nur DATA 0|
+|`https://*.backup.windowsazure.com`|Geräteregistrierung| Nur DATA 0|
 |`http://crl.microsoft.com/pki/*` |Zertifikatswiderruf |Cloudaktivierte Netzwerkschnittstellen |
 | `https://*.core.windows.net/*` | Azure-Speicherkonten und Überwachung | Cloudaktivierte Netzwerkschnittstellen |
 | `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com`| Microsoft Update-Server<br> | Feste IPs des Controllers |
@@ -127,11 +127,11 @@ Update 2 umfasst mehrere netzwerkbezogene Verbesserungen, und die Routingmetrik 
 
 	| Netzwerkschnittstelle | Cloudfähig | Nicht cloudfähig mit Gateway |
 	|-----|---------------|---------------------------|
-	| Data 0 | 1 | - | 
-	| Data 1 | 2 | 20 | 
-	| Data 2 | 3 | 30 | 
-	| Data 3 | 4 | 40 | 
-	| Data 4 | 5 | 50 | 
+	| Data 0 | 1 | - |
+	| Data 1 | 2 | 20 |
+	| Data 2 | 3 | 30 |
+	| Data 3 | 4 | 40 |
+	| Data 4 | 5 | 50 |
 	| Data 5 | 6 | 60 |
 
 
@@ -280,4 +280,4 @@ Lesen Sie sich diese bewährten Methoden sorgfältig durch, um eine hohe Verfüg
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

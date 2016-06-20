@@ -4,7 +4,7 @@
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="v-shysun"
-	manager="msmets"
+	manager="felixwu"
 	editor=""
 	tags="azure-service-management"/>
 
@@ -14,18 +14,20 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="04/27/2016"
+	ms.date="06/03/2016"
 	ms.author="v-shysun"/>
 
 # SQL Server auf virtuellen Azure-Computern – FAQ
 
 Dieses Thema bietet Antworten auf einige der häufigsten Fragen zur Ausführung von [SQL Server auf virtuellen Azure-Computern](https://azure.microsoft.com/services/virtual-machines/sql-server/).
 
+[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+
 ## Häufig gestellte Fragen
 
 1. **Wie erstelle ich einen virtuellen Azure-Computer mit SQL Server?**
 
-	Es gibt hierbei zwei Möglichkeiten. Die einfachste Lösung ist die Erstellung eines virtuellen Computers, der SQL Server enthält. Ein Tutorial für die Anmeldung bei Azure und das Erstellen einer SQL-VM aus dem Portal heraus finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server im Azure-Portal](virtual-machines-windows-portal-sql-server-provision.md). Sie haben auch die Möglichkeit der manuellen Installation von SQL Server auf einem virtuellen Computer und Wiederverwenden einer lokalen Lizenz mit [Lizenzmobilität durch Software Assurance für Azure](https://azure.microsoft.com/pricing/license-mobility/).
+	Es gibt hierbei zwei Möglichkeiten. Die einfachste Lösung ist die Erstellung eines virtuellen Computers, der SQL Server enthält. Ein Tutorial für die Anmeldung bei Azure und das Erstellen einer SQL-VM aus dem Portal heraus finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server im Azure-Portal](virtual-machines-windows-portal-sql-server-provision.md). Sie können SQL Server auch manuell auf einem virtuellen Computer installieren und dafür eine lokale Lizenz wiederverwenden. Dafür nutzen Sie die [Lizenzmobilität durch Software Assurance für Azure](https://azure.microsoft.com/pricing/license-mobility/).
 
 1. **Was ist der Unterschied zwischen SQL-VMs und dem SQL-Datenbank-Dienst?**
 
@@ -33,11 +35,11 @@ Dieses Thema bietet Antworten auf einige der häufigsten Fragen zur Ausführung 
 
 1. **Wie kann ich meine lokale SQL Server-Datenbank zur Cloud migrieren?**
 
-	Erstellen Sie zuerst einen virtuellen Azure-Computer mit einer SQL Server-Instanz. Migrieren Sie dann Ihre lokalen Datenbanken zu dieser Instanz. Datenmigrationsstrategien finden Sie unter [Migrieren einer SQL Server-Datenbank zu SQL Server auf einem virtuellen Azure-Computer](virtual-machines-windows-migrate-sql.md).
+	Erstellen Sie zuerst einen virtuellen Azure-Computer mit einer SQL Server-Instanz. Migrieren Sie dann Ihre lokalen Datenbanken zu dieser Instanz. Datenmigrationsstrategien finden Sie unter [Migrieren einer SQL Server-Datenbank zu SQL Server auf einem virtuellen Azure-Computer](virtual-machines-windows-migrate-sql.md).
 
 2. **Kann ich die installierten Funktionen ändern oder eine zweite Instanz von SQL Server auf dem gleichen virtuellen Computer installieren?**
 
-	Ja. Die SQL Server-Installationsmedien befinden sich in einem Ordner auf dem **C**-Laufwerk. Führen Sie **Setup.exe** von diesem Speicherort aus, um neue SQL Server-Instanzen hinzuzufügen oder andere installierte Features von SQL Server auf dem Computer zu ändern.
+	Ja. Die SQL Server-Installationsmedien befinden sich in einem Ordner auf dem Laufwerk **C**. Führen Sie **Setup.exe** von diesem Speicherort aus, um neue SQL Server-Instanzen hinzuzufügen oder andere installierte Features von SQL Server auf dem Computer zu ändern.
 
 3. **Wie aktualisiere ich auf eine neue Version/Edition von SQL Server auf einer Azure-VM?**
 
@@ -75,4 +77,4 @@ Zu weiteren Ressourcen zählen:
 - [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](virtual-machines-windows-sql-performance.md)
 - [Anwendungsmuster und Entwicklungsstrategien für SQL Server auf Azure Virtual Machines](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

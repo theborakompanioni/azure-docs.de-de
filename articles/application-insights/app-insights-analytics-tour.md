@@ -208,19 +208,24 @@ Beachten Sie, dass Sie `name=` zum Festlegen des Namens einer Ergebnisspalte ver
 
 ## Zählen von Stichprobendaten
 
-`sum(itemCount)` ist die empfohlene Aggregation zum Zählen von Ereignissen. In vielen Fällen gilt „itemCount==1“. Mit der Funktion wird also einfach die Anzahl von Zeilen in der Gruppe gezählt. Wenn jedoch [Stichproben erstellt](app-insights-sampling.md) werden, wird nur ein Bruchteil der ursprünglichen Ereignisse als Datenpunkt in Application Insights beibehalten, sodass für jeden Datenpunkt, den Sie sehen, `itemCount` Ereignisse vorhanden sind. Mit dem Summieren von itemCount erhalten Sie daher eine gute Schätzung der ursprünglichen Anzahl von Ereignissen.
+`sum(itemCount)` ist die empfohlene Aggregation zum Zählen von Ereignissen. In vielen Fällen gilt „itemCount==1“. Mit der Funktion wird also einfach die Anzahl von Zeilen in der Gruppe gezählt. Wenn jedoch [Stichproben erstellt](app-insights-sampling.md) werden, wird nur ein Bruchteil der ursprünglichen Ereignisse als Datenpunkte in Application Insights beibehalten, sodass für jeden Datenpunkt, den Sie sehen, `itemCount`-Ereignisse vorhanden sind.
+
+Wenn z.B. bei der Stichprobenerstellung 75 % der ursprünglichen Ereignisse verworfen werden, gilt „itemCount== 4“ in den beibehaltenen Datensätzen, d.h., für jeden beibehaltenen Datensatz gab es ursprünglich vier Datensätze.
+
+Durch die adaptive Stichprobenerstellung ist itemCount höher, wenn Ihre Anwendung stark ausgelastet ist.
+
+Mit dem Summieren von itemCount erhalten Sie daher eine gute Schätzung der ursprünglichen Anzahl von Ereignissen.
 
 
 ![](./media/app-insights-analytics-tour/510.png)
 
-Es ist auch die Aggregation `count()` (und ein Zählvorgang) für die Fälle vorhanden, in denen Sie wirklich die Anzahl von Zeilen in einer Gruppe ermitteln möchten.
+Zudem ist die Aggregation `count()` (und ein Zählvorgang) für die Fälle vorhanden, in denen Sie wirklich die Anzahl von Zeilen in einer Gruppe ermitteln möchten.
 
 
 Es gibt eine ganze Reihe von [Aggregationsfunktionen](app-insights-analytics-reference.md#aggregations).
 
 
 ## Darstellen der Ergebnisse in Diagrammen
-
 
 
 ```AIQL
@@ -469,4 +474,4 @@ Verwenden Sie [let](./app-insights-analytics-syntax.md#let-statements), um die e
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

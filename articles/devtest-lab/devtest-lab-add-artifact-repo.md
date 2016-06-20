@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="06/01/2016"
 	ms.author="tarcher"/>
 
 # Hinzufügen eines Git-Artefaktrepositorys zu einem Lab
 
-> [AZURE.NOTE] Klicken Sie auf den folgenden Link, um das Video zu diesem Artikel anzuzeigen: [Hinzufügen eines privaten Artefaktrepositorys zu einem Lab in DevTest Labs](/documentation/videos/how-to-add-your-private-artifacts-repository-in-a-devtest-lab).
+> [AZURE.NOTE] Zeigen Sie das Video zu diesem Artikel an: [Hinzufügen eines privaten Artefaktrepositorys zu einem Lab in DevTest Labs](/documentation/videos/how-to-add-your-private-artifacts-repository-in-a-devtest-lab).
 
 ## Übersicht
 
@@ -37,11 +37,11 @@ Um Ihrem Lab ein GitHub-Artefaktrepository hinzuzufügen, rufen Sie zunächst di
 
 1. Speichern Sie auf der Startseite des GitHub-Repositorys, das die Teamartefakte enthält, die **HTTPS-Klon-URL** zur späteren Verwendung.
 
-1. Tippen Sie auf das Profilbild in der oberen rechten Ecke, und wählen Sie **Settings** aus.
+1. Wählen Sie das Profilbild in der oberen rechten Ecke aus, und wählen Sie **Settings**.
 
-1. Tippen Sie im Menü **Personal settings** auf der linken Seite auf **Personal access tokens**.
+1. Wählen Sie im Menü **Personal settings** auf der linken Seite auf **Personal access tokens**.
 
-1. Tippen Sie auf **Generate new token**.
+1. Wählen Sie **Generate new token**.
 
 1. Geben Sie auf der Seite **New personal access token** unter **Token description** eine Tokenbeschreibung ein, akzeptieren Sie die Standardelemente unter **Select scopes**, und wählen Sie dann **Generate Token** aus.
 
@@ -53,13 +53,13 @@ Um Ihrem Lab ein GitHub-Artefaktrepository hinzuzufügen, rufen Sie zunächst di
 
 1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
-1. Tippen Sie auf **Durchsuchen**, und tippen Sie dann in der Liste auf **DevTest Labs**.
+1. Wählen Sie **Durchsuchen** und dann in der Liste **DevTest Labs**.
 
-1. Tippen Sie in der Liste der Labs auf das gewünschte Lab.
+1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.
 
-1. Tippen Sie auf dem Blatt des Labs auf **Einstellungen**.
+1. Wählen Sie auf dem Blatt des Labs **Einstellungen**.
 
-1. Tippen Sie auf dem Blatt **Einstellung** für das Lab auf **Artifacts Repository**.
+1. Wählen Sie auf dem Blatt **Einstellungen** für das Lab **Artifacts Repository**.
 
 1. Gehen Sie auf dem Blatt **Artifacts Repository** folgendermaßen vor:
 
@@ -67,7 +67,7 @@ Um Ihrem Lab ein GitHub-Artefaktrepository hinzuzufügen, rufen Sie zunächst di
     1. Geben Sie die gespeicherte **Git-Klon-URL** ein.
     2. Geben Sie den **Ordnerpfad** im Artefaktrepository ein, der die Artefakte enthält.
     3. Geben Sie das gespeicherte **Persönliche Zugriffstoken** für das Artefaktrepository ein.
-    4. Tippen Sie auf **Speichern**.
+    4. Wählen Sie **Speichern** aus.
 
 Die Artefakte im Repository werden jetzt auf dem Blatt **Artefakte hinzufügen** aufgeführt.
 
@@ -77,19 +77,19 @@ Um Ihrem Lab ein Visual Studio Git-Artefaktrepository hinzuzufügen, rufen Sie z
 
 ### Visual Studio-Webseite des Artefaktprojekts
 
-1. Öffnen Sie die Startseite Ihrer Teamauflistung (z. B. `https://contoso-web-team.visualstudio.com`), und tippen Sie dann auf das Artefaktprojekt.
+1. Öffnen Sie die Startseite Ihrer Teamauflistung (z.B. `https://contoso-web-team.visualstudio.com`), und wählen Sie dann das Artefaktprojekt aus.
 
-2. Tippen Sie auf der Startseite des Projekts auf **Code**.
+2. Wählen Sie auf der Startseite des Projekts **Code**.
 
-1. Um die Klon-URL für das Projekt anzuzeigen, tippen Sie auf der Seite **Code** auf **Klonen**.
+1. Um die Klon-URL für das Projekt anzuzeigen, wählen Sie auf der Seite **Code** **Klonen**.
 
 1. Speichern Sie die URL, da Sie sie später in diesem Lernprogramm benötigen.
 
-1. Um ein persönliches Zugriffstoken zu erstellen, tippen Sie im Dropdownmenü Ihres Benutzerkontos auf **Mein Profil**.
+1. Um ein persönliches Zugriffstoken zu erstellen, wählen Sie im Dropdownmenü Ihres Benutzerkontos **Mein Profil**.
 
-1. Klicken Sie auf der Seite mit den Profilinformationen auf **Sicherheit**.
+1. Wählen Sie auf der Seite mit den Profilinformationen **Sicherheit**.
 
-1. Tippen Sie auf der Registerkarte **Sicherheit** auf **Hinzufügen**.
+1. Wählen Sie auf der Registerkarte **Sicherheit** **Hinzufügen**.
 
 1. Gehen Sie auf der Seite **Persönliches Zugriffstoken erstellen** folgendermaßen vor:
 
@@ -99,15 +99,15 @@ Um Ihrem Lab ein Visual Studio Git-Artefaktrepository hinzuzufügen, rufen Sie z
     4. Wählen Sie die Option **Alle Bereiche** aus.
     5. Wählen Sie **Token erstellen** aus.
 
-1. Nach Abschluss wird das neue Token in der Liste **Persönliche Zugriffstoken** angezeigt. Tippen Sie auf **Token kopieren**, und speichern Sie dann den Tokenwert, da er in Kürze verwendet wird.
+1. Nach Abschluss wird das neue Token in der Liste **Persönliche Zugriffstoken** angezeigt. Wählen Sie **Token kopieren**, und speichern Sie dann den Tokenwert, da er in Kürze verwendet wird.
 
 ### Im Lab
 
-1. Tippen Sie auf dem Blatt des Labs auf **Einstellungen**.
+1. Wählen Sie auf dem Blatt des Labs **Einstellungen**.
 
     ![Einstellungen auswählen](./media/devtest-lab-add-artifact-repo/devtestlab-add-artifacts-repo-open-dtl-settings.png)
 
-1. Tippen Sie auf dem Blatt **Einstellungen** auf **Artifacts Repository**.
+1. Wählen Sie auf dem Blatt **Einstellungen** **Artifacts Repository**.
 
 1. Gehen Sie auf dem Blatt **Artifacts Repository** folgendermaßen vor:
 
@@ -115,6 +115,6 @@ Um Ihrem Lab ein Visual Studio Git-Artefaktrepository hinzuzufügen, rufen Sie z
     1. Geben Sie die gespeicherte **Git-Klon-URL** ein.
     2. Geben Sie den **Ordnerpfad** im Artefaktrepository ein, der die Artefakte enthält.
     3. Geben Sie das gespeicherte **Persönliche Zugriffstoken** für das Artefaktrepository ein.
-    4. Tippen Sie auf **Speichern**.
+    4. Wählen Sie **Speichern** aus.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -1,6 +1,6 @@
 
 <properties
-   pageTitle="Exportieren einer SQL Server-Datenbank in eine BACPAC-Datei per SSMS"
+   pageTitle="Exportieren einer SQL Server-Datenbank in eine BACPAC-Datei mit SQL Server Management Studio | Microsoft Azure"
    description="Microsoft Azure SQL-Datenbank, Datenbankmigration, Datenbank exportieren, BACPAC-Datei exportieren, Assistent „Datenebenenanwendung exportieren“"
    services="sql-database"
    documentationCenter=""
@@ -17,7 +17,7 @@
    ms.date="05/31/2016"
    ms.author="carlrab"/>
 
-# Exportieren einer SQL Server-Datenbank in eine BACPAC-Datei per SSMS
+# Exportieren einer SQL Server-Datenbank in eine BACPAC-Datei mit SQL Server Management Studio
 
 > [AZURE.SELECTOR]
 - [SSMS](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md)
@@ -58,6 +58,6 @@ In diesem Artikel wird beschrieben, wie Sie mithilfe des Assistenten „Datenebe
 
 - [SQL-Datenbank V12](sql-database-v12-whats-new.md)
 - [Teilweise oder vollständig unterstützte Transact-SQL-Funktionen](sql-database-transact-sql-information.md)
-- [Migrate non-SQL Server databases using SQL Server Migration Assistant](http://blogs.msdn.com/b/ssma/) (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)
+- [Migrate non-SQL Server databases using SQL Server Migration Assistant (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

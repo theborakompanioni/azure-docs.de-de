@@ -61,6 +61,7 @@ Sie können die Docker-Registrierung auf zwei unterschiedliche Arten [konfigurie
 Der Einfachheit halber wird in diesem Thema Option 2 mit Umgebungsvariablen genutzt.
 
 Zum Ausführen einer Docker-Registrierungsinstanz, die:
+
 * Ihr Azure-Speicherkonto zum Speichern der Images verwendet
 * Port 5000 des virtuellen Computers überwacht
 * keine Authentifizierung konfiguriert hat (nicht empfohlen, siehe Hinweis unten)
@@ -87,7 +88,7 @@ CONTAINER ID        IMAGE               COMMAND                CREATED          
 
 > [AZURE.IMPORTANT] Das Konfigurieren der Sicherheit für die Docker-Registrierung wird in diesem Dokument nicht behandelt, und auf Ihre Registrierung können standardmäßig alle Benutzer ohne Authentifizierung zugreifen, wenn Sie den Registrierungsport am Endpunkt des virtuellen Computers oder des Lastenausgleichs durch die Verwendung des Bereitstellungsbefehls oben öffnen.
 >
-> Lesen Sie das Dokument zum [Konfigurieren von Docker-Registrierungen][registry-config] \(in englischer Sprache), um zu erfahren, wie Sie die Registrierungsinstanz und Ihre Images schützen.
+> Lesen Sie das Dokument zum [Konfigurieren von Docker-Registrierungen][registry-config] (in englischer Sprache), um zu erfahren, wie Sie die Registrierungsinstanz und Ihre Images schützen.
 
 ## Nächste Schritte
 
@@ -99,4 +100,4 @@ Sobald Sie Ihre Registrierung eingerichtet haben, ist es an der Zeit, sie verst�
 [registry-config]: http://docs.docker.com/registry/configuration/
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0608_2016-->

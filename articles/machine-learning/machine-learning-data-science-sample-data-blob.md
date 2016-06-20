@@ -96,10 +96,10 @@ Mit dem folgenden Beispielcode können Sie ein Downsampling der Daten durchführ
 	    except:	        
 		    print ("Something went wrong with uploading to the blob:"+ BLOBNAME)
 
-3. Lesen Sie die Daten wie in der folgenden Abbildung dargestellt mit dem in Azure ML-[Reader](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) aus dem Azure-Blob aus:
+3. Lesen Sie die Daten wie in der folgenden Abbildung dargestellt mit dem Azure ML-Modul [Import Data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) aus dem Azure-Blob:
  
 ![Reader-Blob](./media/machine-learning-data-science-sample-data-blob/reader_blob.png)
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

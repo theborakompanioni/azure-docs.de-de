@@ -54,7 +54,7 @@ Die Wiederherstellungszeit wird durch verschiedene Faktoren beeinflusst: die Gr�
 
 ## Zusammenfassung
 
-Auch wenn die Geowiederherstellung in allen Diensttarifen verfügbar ist, ist sie die elementarste Notfallwiederherstellungslösung, die in der SQL-Datenbank verfügbar ist. Sie weist die längste RPO und die längste geschätzte Wiederherstellungszeit (ERT) auf. Für Basic-Datenbanken mit einer maximalen Größe von 2 GB bietet die Geowiederherstellung eine angemessene Notfallwiederherstellungslösung mit einer ERT von 12 Stunden. Wenn bei größeren Standard- oder Premium-Datenbanken erheblich kürzere Wiederherstellungszeiten gewünscht werden oder wenn Sie die Wahrscheinlichkeit eines Datenverlusts reduzieren möchten, sollten sie die aktive Georeplikation in Erwägung ziehen. Die aktive Georeplikation bietet eine niedrigere RPO und ERT, da sie nur das Initiieren eines Failovers auf eine kontinuierlich replizierte sekundäre Datenbank erfordert. Weitere Informationen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
+Auch wenn die Geowiederherstellung in allen Diensttarifen verfügbar ist, ist sie die elementarste Notfallwiederherstellungslösung, die in der SQL-Datenbank verfügbar ist. Sie weist die längste RPO und die längste geschätzte Wiederherstellungszeit (ERT) auf. Für Basic-Datenbanken mit einer maximalen Größe von 2 GB bietet die Geowiederherstellung eine angemessene Notfallwiederherstellungslösung mit einer ERT von 12 Stunden. Wenn bei größeren Standard- oder Premium-Datenbanken erheblich kürzere Wiederherstellungszeiten gewünscht werden, oder wenn Sie die Wahrscheinlichkeit eines Datenverlusts reduzieren möchten, sollten sie die aktive Georeplikation in Erwägung ziehen. Die aktive Georeplikation bietet eine niedrigere RPO und ERT, da sie nur das Initiieren eines Failovers auf eine kontinuierlich replizierte sekundäre Datenbank erfordert. Weitere Informationen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
 
 ## Zusätzliche Ressourcen
 
@@ -65,4 +65,4 @@ Auch wenn die Geowiederherstellung in allen Diensttarifen verfügbar ist, ist si
 - [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

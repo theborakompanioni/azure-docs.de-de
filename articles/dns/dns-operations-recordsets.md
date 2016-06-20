@@ -1,10 +1,10 @@
-<properties 
-   pageTitle="Verwalten von DNS-Datensatzgruppen und Einträgen in Azure DNS | Microsoft Azure" 
-   description="Verwalten von DNS-Datensatzgruppen und Einträgen in Azure DNS, wenn Sie Ihre Domäne in Azure DNS hosten. Alle PowerShell-Befehle für Vorgänge für Datensatzgruppen und Einträge." 
-   services="dns" 
-   documentationCenter="na" 
-   authors="cherylmc" 
-   manager="carmon" 
+<properties
+   pageTitle="Verwalten von DNS-Ressourceneintragssätzen und Einträgen mit dem Azure-Portal | Microsoft Azure"
+   description="Verwalten von DNS-Datensatzgruppen und Einträgen in Azure DNS, wenn Sie Ihre Domäne in Azure DNS hosten. Alle PowerShell-Befehle für Vorgänge für Datensatzgruppen und Einträge."
+   services="dns"
+   documentationCenter="na"
+   authors="cherylmc"
+   manager="carmon"
    editor=""/>
 
 <tags
@@ -12,7 +12,7 @@
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services" 
+   ms.workload="infrastructure-services"
    ms.date="05/06/2016"
    ms.author="cherylmc"/>
 
@@ -27,17 +27,17 @@
 
 
 
-In diesem Artikel wird gezeigt, wie Sie Ressourceneintragssätze und Einträge für die DNS-Zone mit Azure PowerShell verwalten.
+In diesem Artikel wird gezeigt, wie Sie Ressourceneintragssätze und Einträge für die DNS-Zone mit Windows PowerShell verwalten.
 
-Es ist wichtig, den Unterschied zwischen DNS-Ressourceneintragssätzen und einzelnen DNS-Einträgen zu verstehen. Eine Datensatzgruppe ist die Auflistung von Einträgen in einer Zone mit dem gleichen Namen und dem gleichen Typ. Weitere Informationen finden Sie unter [Erstellen von DNS-Einträgen und -Ressourceneintragssätzen mit dem Azure-Portal](dns-getstarted-create-recordset-portal.md).
+Es ist wichtig, den Unterschied zwischen DNS-Ressourceneintragssätzen und einzelnen DNS-Ressourceneinträgen zu verstehen. Bei einem Ressourceneintragssatz handelt es sich um die Auflistung von Einträgen in einer Zone, die den gleichen Namen und den gleichen Typ aufweisen. Weitere Informationen finden Sie unter [Erstellen von DNS-Ressourceneintragssätzen und -Einträgen mit dem Azure-Portal](dns-getstarted-create-recordset-portal.md).
 
-Sie müssen die aktuelle Version der PowerShell-Cmdlets für Azure Resource Manager installieren, um Ressourceneintragssätze und Einträge zu verwalten. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Weitere Informationen zur Arbeit mit PowerShell finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../powershell-azure-resource-manager.md).
+Sie benötigen die aktuelle Version der PowerShell-Cmdlets für Azure Resource Manager, um Ressourceneintragssätze und Einträge zu verwalten. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Weitere Informationen zur Arbeit mit PowerShell finden Sie unter [Verwenden von Azure PowerShell mit Azure Resource Manager](../powershell-azure-resource-manager.md).
 
 
 
 ## Erstellen eines neuen Ressourceneintragssatzes und eines Eintrags
 
-Weitere Informationen zum Erstellen eines Ressourceneintragssatzes im Azure-Portal finden Sie unter [Erstellen von DNS-Einträgen mit dem Azure-Portal](dns-getstarted-create-recordset.md).
+Informationen zum Erstellen eines Ressourceneintragssatzes mithilfe von PowerShell finden Sie unter [Erstellen von DNS-Ressourceneintragssätzen und Einträgen über PowerShell](dns-getstarted-create-recordset.md).
 
 ## Abrufen einer Datensatzgruppe
 
@@ -45,53 +45,53 @@ Verwenden Sie `Get-AzureRmDnsRecordSet` zum Abrufen eines vorhandenen Ressourcen
 
 	$rs = Get-AzureRmDnsRecordSet –Name www –RecordType A -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 
-Wie bei `New-AzureRmDnsRecordSet` muss der Name des Eintrags ein relativer Name sein, also ohne Zonenname.
+Wie bei `New-AzureRmDnsRecordSet` muss der Name des Eintrags ein relativer Name sein, also ein Name ohne Zonenname.
 
-Die Zone kann entweder durch den Zonennamen und den Namen der Ressourcengruppe oder ein Zonenobjekt angegeben werden:
+Sie können die Zone entweder durch den Zonennamen und den Namen der Ressourcengruppe oder durch ein Zonenobjekt angeben:
 
 	$zone = Get-AzureRmDnsZone -Name contoso.com -ResouceGroupName MyAzureResourceGroup
 	$rs = Get-AzureRmDnsRecordSet -Name www –RecordType A -Zone $zone
-	
+
 Mit `Get-AzureRmDnsRecordSet` wird ein lokales Objekt zurückgegeben, das den in Azure DNS erstellten Ressourceneintragssatz darstellt.
 
 ## Auflisten von Datensatzgruppen
 
-Durch Auslassen der Parameter *–Name* und/oder *–RecordType* kann `Get-AzureRmDnsRecordSet` auch zum Auflisten von Ressourceneintragssätzen verwendet werden:
+Wenn Sie die Parameter *–Name* und/oder *–RecordType* auslassen, können Sie auch `Get-AzureRmDnsRecordSet` zum Auflisten von Ressourceneintragssätzen verwenden:
 
-### So listen Sie alle Ressourceneintragssätze auf 
+### So listen Sie alle Ressourceneintragssätze auf
 
-Mit diesem Beispiel werden alle Ressourceneintragssätze zurückgegeben, unabhängig vom Namen oder Eintragstyp:
+Dieses Beispiel gibt alle Ressourceneintragssätze unabhängig vom Namen oder Eintragstyp zurück:
 
 	$list = Get-AzureRmDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 
 ### So listen Sie Ressourceneintragssätze eines bestimmten Eintragstyps auf
 
-Mit diesem Beispiel werden alle Ressourceneintragssätze zurückgegeben, die dem angegebenen Eintragstyp entsprechen. In diesem Fall sind es A-Einträge.
+Dadurch werden alle Ressourceneintragssätze zurückgegeben, die dem angegebenen Eintragstyp entsprechen. In diesem Fall handelt es sich beim zurückgegebenen Ressourceneintragssatz um A-Einträge:
 
-	$list = Get-AzureRmDnsRecordSet –RecordType A -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup 
+	$list = Get-AzureRmDnsRecordSet –RecordType A -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 
-Die Zone kann entweder mit den Parametern *–ZoneName* und *–ResourceGroupName* (wie gezeigt) oder mit einem Zonenobjekt angegeben werden.
+Die Zone kann entweder mit den Parametern *–ZoneName* und *–ResourceGroupName* (wie gezeigt) oder mit einem Zonenobjekt angegeben werden:
 
 	$zone = Get-AzureRmDnsZone -Name contoso.com -ResouceGroupName MyAzureResourceGroup
 	$list = Get-AzureRmDnsRecordSet -Zone $zone
 
 ## Hinzufügen eines Eintrags zu einer Datensatzgruppe
 
-Einträge werden mithilfe des Cmdlets `Add-AzureRmDnsRecordConfig` den Ressourceneintragssätzen hinzugefügt. Dies ist ein Offline-Vorgang; nur das lokale Objekt, das die Datensatzgruppe darstellt, wird geändert.
+Einträge werden Ressourceneintragssätzen mithilfe des Cmdlets `Add-AzureRmDnsRecordConfig` hinzugefügt. Dies ist ein Offlinevorgang. Nur das lokale Objekt, das den Ressourceneintragssatz darstellt, wird geändert.
 
-Die Parameter zum Hinzufügen von Einträgen zu einer Datensatzgruppe variieren je nach Typ der Datensatzgruppe. Wenn Sie beispielsweise einen Ressourceneintragssatz des Typs *A* verwenden, können Sie nur Einträge mit dem Parameter *-IPv4Address* angeben.
+Die Parameter zum Hinzufügen von Einträgen zu einer Datensatzgruppe variieren je nach Typ der Datensatzgruppe. Wenn Sie beispielsweise einen Ressourceneintragssatz des Typs „A“ verwenden, können Sie nur Einträge mit dem Parameter *-IPv4Address* angeben.
 
-Weitere Einträge können jedem Ressourceneintragssatz hinzugefügt werden, indem `Add-AzureRmDnsRecordConfig` erneut aufgerufen wird. Sie können einer Datensatzgruppe bis zu 20 Einträge hinzufügen. Ressourceneintragssätze vom Typ *CNAME* können allerdings höchstens einen Eintrag enthalten, und ein Ressourceneintragssatz darf nicht zwei identische Einträge enthalten. Leere Datensatzgruppen (ohne Einträge) können erstellt werden, sie werden jedoch nicht im Azure DNS-Namenserver angezeigt.
+Weitere Einträge können jedem Ressourceneintragssatz hinzugefügt werden, indem `Add-AzureRmDnsRecordConfig` erneut aufgerufen wird. Sie können einer Datensatzgruppe bis zu 20 Einträge hinzufügen. Ressourceneintragssätze vom Typ „CNAME“ können allerdings höchstens einen Eintrag enthalten, und ein Ressourceneintragssatz darf nicht zwei identische Einträge enthalten. Leere Ressourceneintragssätze (ohne Einträge) können erstellt werden, doch werden sie nicht in den Azure DNS-Namenservern angezeigt.
 
-Sobald der Ressourceneintragssatz die gewünschte Sammlung von Einträgen enthält, muss er mit dem Cmdlet `Set-AzureRmDnsRecordSet` übertragen werden. Nachdem ein Ressourceneintragssatz übertragen wurde, wird der vorhandene Ressourceneintragssatz in Azure DNS durch den bereitgestellten Ressourceneintragssatz ersetzt.
+Wenn der Ressourceneintragssatz die gewünschte Sammlung von Einträgen enthält, muss er mit dem Cmdlet `Set-AzureRmDnsRecordSet` übertragen werden. Nach der Übertragung eines Ressourceneintragssatzes ersetzt er den vorhandenen Ressourceneintragssatz in Azure DNS.
 
 ### So erstellen Sie einen A-Ressourceneintragssatz mit einem einzelnen Eintrag
 
-	$rs = New-AzureRmDnsRecordSet -Name "test-a" -RecordType A -Ttl 60 -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup 
+	$rs = New-AzureRmDnsRecordSet -Name "test-a" -RecordType A -Ttl 60 -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 	Add-AzureRmDnsRecordConfig -RecordSet $rs -Ipv4Address "1.2.3.4"
 	Set-AzureRmDnsRecordSet -RecordSet $rs
 
-Die Reihenfolge der Vorgänge zum Erstellen einer Datensatzgruppe kann auch "weitergeleitet" werden, wobei das Datensatzgruppenobjekt über die Pipe anstatt als Parameter übergeben wird. Zum Beispiel:
+Die Reihenfolge der Vorgänge zum Erstellen eines Eintrags kann auch *weitergeleitet* werden. Das bedeutet, Sie übergeben das Ressourceneintragssatz-Objekt über die Pipe anstatt als Parameter. Beispiel:
 
 	New-AzureRmDnsRecordSet -Name "test-a" -RecordType A -Ttl 60 -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup | Add-AzureRmDnsRecordConfig -Ipv4Address "1.2.3.4" | Set-AzureRmDnsRecordSet
 
@@ -101,13 +101,13 @@ Die Reihenfolge der Vorgänge zum Erstellen einer Datensatzgruppe kann auch "wei
 
 ## Ändern von vorhandenen Ressourceneintragssätzen
 
-Das Ändern von vorhandenen Ressourceneintragssätzen folgt einem ähnlichen Muster wie das Erstellen von Ressourceneintragssätzen. Die Reihenfolge der Vorgänge ist folgendermaßen:
+Die Schritte zum Ändern eines vorhandenen Ressourceneintragssatzes ähneln den Schritten zum Erstellen von Einträgen. Die Reihenfolge der Vorgänge ist folgendermaßen:
 
 1.	Verwenden Sie `Get-AzureRmDnsRecordSet` zum Abrufen des vorhandenen Ressourceneintragssatzes.
 
-2.	Ändern Sie den Ressourceneintragssatz durch Hinzufügen von Einträgen, Entfernen von Einträgen, Ändern der Eintragsparameter oder durch Ändern der Gültigkeitsdauer des Ressourceneintragssatzes. Diese Änderungen erfolgen offline; nur das lokale Objekt, das die Datensatzgruppe darstellt, wird geändert.
+2.	Ändern Sie den Ressourceneintragssatz durch Hinzufügen von Einträgen, Entfernen von Einträgen, Ändern der Eintragsparameter oder durch Ändern der Gültigkeitsdauer des Ressourceneintragssatzes. Dies ist ein Offlinevorgang. Nur das lokale Objekt, das den Ressourceneintragssatz darstellt, wird geändert.
 
-3.	Übertragen Sie die Änderungen mit dem Cmdlet `Set-AzureRmDnsRecordSet`. Dadurch wird der vorhandene Ressourceneintragssatz in Azure DNS durch den bereitgestellten Ressourceneintragssatz ersetzt.
+3.	Übertragen Sie die Änderungen mit dem Cmdlet `Set-AzureRmDnsRecordSet`. Dadurch wird der vorhandene Ressourceneintragssatz in Azure DNS ersetzt.
 
 
 ### So aktualisieren Sie einen Eintrag in einem vorhandenen Ressourceneintragssatz
@@ -116,29 +116,29 @@ In diesem Beispiel wird die IP-Adresse eines vorhandenen A-Eintrags geändert:
 
 	$rs = Get-AzureRmDnsRecordSet -name "test-a" -RecordType A -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 	$rs.Records[0].Ipv4Address = "134.170.185.46"
-	Set-AzureRmDnsRecordSet -RecordSet $rs 
+	Set-AzureRmDnsRecordSet -RecordSet $rs
 
-Das Cmdlet `Set-AzureRmDnsRecordSet` verwendet *ETag*-Überprüfungen, um sicherzustellen, dass gleichzeitige Änderungen nicht überschrieben werden. Verwenden Sie das Flag *-Overwrite*, um diese Überprüfungen zu unterdrücken. Weitere Informationen finden Sie unter [About Etags and Tags](dns-getstarted-creatednszone.md#tagetag) (Informationen zu ETags und Tags).
+Das Cmdlet `Set-AzureRmDnsRecordSet` verwendet ETag-Überprüfungen, um sicherzustellen, dass gleichzeitige Änderungen nicht überschrieben werden. Verwenden Sie das Flag *-Overwrite*, um diese Überprüfungen zu unterdrücken. Weitere Informationen finden Sie unter [Informationen zu ETags und Tags](dns-getstarted-create-dnszone.md#tagetag).
 
 ### So ändern Sie einen SOA-Eintrag
 
-Sie können der automatisch erstellten SOA-Datensatzgruppe an der Zonenspitze (Name = „@“) keine Einträge hinzufügen oder daraus entfernen, Sie können jedoch die Parameter im SOA-Eintrag (außer „Host“) und die Gültigkeitsdauer der Datensatzgruppe ändern.
+Sie können dem automatisch erstellten SOA-Ressourceneintragssatz an der Zonenspitze (Name = „@“) weder Einträge hinzufügen noch Einträge daraus entfernen. Allerdings können Sie jeden Parameter im SOA-Eintrag (mit Ausnahme von „Host“) und die Gültigkeitsdauer des Ressourceneintragssatzes ändern.
 
 Im folgenden Beispiel wird veranschaulicht, wie Sie die Eigenschaft *Email* des SOA-Eintrags ändern:
 
 	$rs = Get-AzureRmDnsRecordSet -Name "@" -RecordType SOA -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 	$rs.Records[0].Email = "admin.contoso.com"
-	Set-AzureRmDnsRecordSet -RecordSet $rs 
+	Set-AzureRmDnsRecordSet -RecordSet $rs
 
 ### So ändern Sie NS-Einträge an der Zonenspitze
 
-Sie können dem automatisch erstellten NS-Ressourceneintragssatz an der Zonenspitze (Name = „@“) keine Einträge hinzufügen, Einträge nicht daraus entfernen und keine Einträge dieses Ressourceneintragssatzes ändern. Sie können nur die Gültigkeitsdauer (TTL) der Datensatzgruppe ändern.
+Sie können dem automatisch erstellten NS-Ressourceneintragssatz an der Zonenspitze (Name = "@") keine Einträge hinzufügen, keine Einträge daraus entfernen und keine Einträge ändern. Sie können nur die Gültigkeitsdauer (TTL) des Ressourceneintragssatzes ändern.
 
 Im folgenden Beispiel wird veranschaulicht, wie Sie die Eigenschaft "TTL" der NS-Datensatzgruppe ändern:
 
 	$rs = Get-AzureRmDnsRecordSet -Name "@" -RecordType NS -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 	$rs.Ttl = 300
-	Set-AzureRmDnsRecordSet -RecordSet $rs 
+	Set-AzureRmDnsRecordSet -RecordSet $rs
 
 ### So fügen Sie Einträge zu einem vorhandenen Ressourceneintragssatz hinzu
 
@@ -147,7 +147,7 @@ In diesem Beispiel werden einem vorhandenen Ressourceneintragssatz zwei zusätzl
 	$rs = Get-AzureRmDnsRecordSet -name "test-mx" -RecordType MX -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 	Add-AzureRmDnsRecordConfig -RecordSet $rs -Exchange "mail2.contoso.com" -Preference 10
 	Add-AzureRmDnsRecordConfig -RecordSet $rs -Exchange "mail3.contoso.com" -Preference 20
-	Set-AzureRmDnsRecordSet -RecordSet $rs 
+	Set-AzureRmDnsRecordSet -RecordSet $rs
 
 ## Entfernen eines Eintrags aus einer vorhandenen Datensatzgruppe
 
@@ -160,43 +160,43 @@ Durch Entfernen des letzten Eintrags aus einer Datensatzgruppe wird die Datensat
 	Remove-AzureRmDnsRecordConfig -RecordSet $rs -Ipv4Address "1.2.3.4"
 	Set-AzureRmDnsRecordSet -RecordSet $rs
 
-Die Reihenfolge der Vorgänge zum Entfernen einer Datensatzgruppe kann auch "weitergeleitet" werden, wobei das Datensatzgruppenobjekt über die Pipe anstatt als Parameter übergeben wird. Beispiel:
+Die Reihenfolge der Vorgänge zum Entfernen eines Ressourceneintragssatzes kann auch weitergeleitet werden. Das bedeutet, Sie übergeben das Ressourceneintragssatz-Objekt über die Pipe anstatt als Parameter. Beispiel:
 
 	Get-AzureRmDnsRecordSet -Name "test-a" -RecordType A -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup | Remove-AzureRmDnsRecordConfig -Ipv4Address "1.2.3.4" | Set-AzureRmDnsRecordSet
 
-### Entfernen eines AAAA-Eintrags aus einer Datensatzgruppe
+### Entfernen eines AAAA-Eintrags aus einem Ressourceneintragssatz
 
 	$rs = Get-AzureRmDnsRecordSet -Name "test-aaaa" -RecordType AAAA -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 	Remove-AzureRmDnsRecordConfig -RecordSet $rs -Ipv6Address "2607:f8b0:4009:1803::1005"
 	Set-AzureRmDnsRecordSet -RecordSet $rs
 
-### Entfernen eines CNAME-Eintrags aus einer Datensatzgruppe
+### Entfernen eines CNAME-Eintrags aus einem Ressourceneintragssatz
 
-Da eine CNAME-Datensatzgruppe höchstens einen Eintrag enthalten kann, bleibt beim Entfernen dieses Eintrags eine leere Datensatzgruppe zurück.
+Da ein CNAME-Ressourceneintragssatz höchstens einen Eintrag enthalten kann, bleibt beim Entfernen dieses Eintrags ein leerer Ressourceneintragssatz zurück.
 
-	$rs =  Get-AzureRmDnsRecordSet -name "test-cname" -RecordType CNAME -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup	
+	$rs =  Get-AzureRmDnsRecordSet -name "test-cname" -RecordType CNAME -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 	Remove-AzureRmDnsRecordConfig -RecordSet $rs -Cname "www.contoso.com"
 	Set-AzureRmDnsRecordSet -RecordSet $rs
 
-### Entfernen eines MX-Eintrags aus einer Datensatzgruppe
+### Entfernen eines MX-Eintrags aus einem Ressourceneintragssatz
 
-	$rs = Get-AzureRmDnsRecordSet -name "test-mx" -RecordType MX -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup	
+	$rs = Get-AzureRmDnsRecordSet -name "test-mx" -RecordType MX -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 	Remove-AzureRmDnsRecordConfig -RecordSet $rs -Exchange "mail.contoso.com" -Preference 5
 	Set-AzureRmDnsRecordSet -RecordSet $rs
 
-### Entfernen eines NS-Eintrags aus einer Datensatzgruppe
-	
+### Entfernen eines NS-Eintrags aus einem Ressourceneintragssatz
+
 	$rs = Get-AzureRmDnsRecordSet -Name "test-ns" -RecordType NS -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 	Remove-AzureRmDnsRecordConfig -RecordSet $rs -Nsdname "ns1.contoso.com"
 	Set-AzureRmDnsRecordSet -RecordSet $rs
 
-### Entfernen eines SRV-Eintrags aus einer Datensatzgruppe
+### Entfernen eines SRV-Eintrags aus einem Ressourceneintragssatz
 
 	$rs = Get-AzureRmDnsRecordSet -Name "_sip._tls" -RecordType SRV -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 	Remove-AzureRmDnsRecordConfig -RecordSet $rs –Priority 0 –Weight 5 –Port 8080 –Target "sip.contoso.com"
 	Set-AzureRmDnsRecordSet -RecordSet $rs
 
-### Entfernen eines TXT-Eintrags aus einer Datensatzgruppe
+### Entfernen eines TXT-Eintrags aus einem Ressourceneintragssatz
 
 	$rs = Get-AzureRmDnsRecordSet -Name "test-txt" -RecordType TXT -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 	Remove-AzureRmDnsRecordConfig -RecordSet $rs -Value "This is a TXT record"
@@ -204,9 +204,9 @@ Da eine CNAME-Datensatzgruppe höchstens einen Eintrag enthalten kann, bleibt be
 
 ## Löschen einer Datensatzgruppe
 
-Ressourceneintragssätze können mit dem Cmdlet `Remove-AzureRmDnsRecordSet` gelöscht werden. Sie können die SOA- und NS-Ressourceneintragssätze an der Zonenspitze (Name = „@“) nicht löschen, die beim Erstellen der Zone automatisch erstellt werden. Sie werden automatisch gelöscht, wenn die Zone gelöscht wird.
+Ressourceneintragssätze können mit dem Cmdlet `Remove-AzureRmDnsRecordSet` gelöscht werden. Sie können die SOA- und NS-Ressourceneintragssätze an der Zonenspitze (Name = „@“) nicht löschen, die beim Erstellen der Zone automatisch erstellt wurden. Sie werden automatisch gelöscht, wenn die Zone gelöscht wird.
 
-Verwenden Sie eine der folgenden drei Möglichkeiten, um eine Datensatzgruppe zu löschen:
+Verwenden Sie eine der folgenden drei Methoden zum Entfernen eines Ressourceneintragssatzes:
 
 ### Angeben aller Parameter mit Namen
 
@@ -220,7 +220,7 @@ Mit dem optionalen Switch *-Force* kann die Bestätigungsaufforderung unterdrüc
 	$zone = Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 	Remove-AzureRmDnsRecordSet -Name "test-a" -RecordType A -Zone $zone [-Force]
 
-### Geben Sie den Datensatz mittels Objekt an:
+### Angeben des Ressourceneintragssatzes mittels Objekt
 
 	$rs = Get-AzureRmDnsRecordSet -Name "test-a" -RecordType A -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 	Remove-AzureRmDnsRecordSet –RecordSet $rs [-Overwrite] [-Force]
@@ -235,7 +235,6 @@ Das Datensatzgruppenobjekt kann auch weitergeleitet werden, anstatt als Paramete
 
 Weitere Informationen zu Azure DNS finden Sie unter [Azure DNS – Übersicht](dns-overview.md). Weitere Informationen zum Automatisieren von DNS finden Sie unter [Erstellen von DNS-Zonen und -Ressourceneintragssätzen mithilfe des .NET SDK](dns-sdk.md).
 
-Wenn Sie mit Reverse-DNS-Einträgen arbeiten möchten, finden Sie weitere Informationen unter [Verwalten von Reverse-DNS-Einträgen](dns-reverse-dns-record-operations-ps.md).
- 
+Weitere Informationen zu Reverse-DNS-Einträgen finden Sie unter [Mit PowerShell Ihre Reverse-DNS-Einträge für Ihre Dienste verwalten](dns-reverse-dns-record-operations-ps.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

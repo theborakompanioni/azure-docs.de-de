@@ -15,7 +15,7 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="05/16/2016"
+	ms.date="05/27/2016"
 	ms.author="chrande"/>
 
 # Entwicklerreferenz zu Triggern und Bindungen in Azure Functions
@@ -29,6 +29,7 @@ Die folgenden Artikel erläutern das Konfigurieren und Codieren von Triggern und
 * [Azure Storage-Trigger und -Bindungen (Warteschlangen, Blobs, Tabellen)](functions-bindings-storage.md)
 * [Azure Service Bus-Trigger und -Bindungen (Warteschlangen, Themen)](functions-bindings-service-bus.md)
 * [Azure DocumentDB-Bindungen](functions-bindings-documentdb.md)
+* [Azure Event Hub-Bindungen](functions-bindings-event-hubs.md)
 * [Azure Mobile Apps-Bindungen](functions-bindings-mobile-apps.md)
 * [Azure Notification Hub-Ausgabebindung](functions-bindings-notification-hubs.md)
 
@@ -39,4 +40,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [Testen einer Funktion](functions-test-a-function.md)
 * [Skalieren einer Funktion](functions-scale.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

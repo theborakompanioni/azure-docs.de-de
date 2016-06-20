@@ -32,7 +32,9 @@ Die vorliegende exemplarische Vorgehensweise gilt für:
 
 * Azure Active Directory
 * Azure Active Directory B2C
-* Azure Active Directory B2B Hinweis: In diesem Dokument wird davon ausgegangen, dass Sie wissen, wie [Anwendungen im Vorgängerportal für Azure Active Directory bereitgestellt werden](active-directory-how-to-integrate.md), und dass Sie das [Microsoft Identity Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android) in Ihre Anwendung integriert haben.
+* Azure Active Directory B2B
+
+Hinweis: In diesem Dokument wird davon ausgegangen, dass Sie wissen, wie Sie [Anwendungen im Vorgängerportal für Azure Active Directory bereitstellen](active-directory-how-to-integrate.md), und dass Sie das [Microsoft Identity Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android) in Ihre Anwendung integriert haben.
 
 ## SSO-Konzepte in der Microsoft Identity-Plattform
 
@@ -93,7 +95,7 @@ Unter Android und Windows wird die Kontoauswahl im Vordergrund Ihrer Anwendung a
 
 Wenn ein kompatibler Broker auf dem Gerät installiert ist, beispielsweise die Azure Authenticator-Anwendung, übernehmen die Microsoft Identity SDKs automatisch den Aufruf des Brokers für Sie, wenn ein Benutzer angibt, dass er sich mit einem beliebigen Konto von der Microsoft Identity-Plattform aus anmelden möchte. Hierbei kann es sich um ein persönliches Microsoft-Konto, ein Geschäfts- oder Schulkonto oder um ein Konto handeln, das Sie über eines unserer B2C- und B2B-Produkte in Azure bereitstellen und hosten. Durch die Verwendung extrem sicherer Algorithmen und Verschlüsselungen stellen wir sicher, dass die Anmeldeinformationen auf sichere Weise abgerufen und an Ihre Anwendung zurückgegeben werden. Die technischen Details dieser Mechanismen werden nicht veröffentlicht, wurden aber in Zusammenarbeit mit Apple und Google entwickelt.
 
-**Die Entwickler können entscheiden, ob das Microsoft Identity SDK den Broker aufruft oder den nicht brokergestützten Fluss verwendet.** Wenn sich der Entwickler allerdings gegen den brokergestützten Ablauf entscheidet, verzichtet er auf die Vorteile der Nutzung von SSO-Anmeldeinformationen, die der Benutzer möglicherweise bereits auf dem Gerät hinzugefügt hat. Außerdem kann die Anwendung ohne brokergestützte Anmeldung keine der von Microsoft bereitgestellten Geschäftsfunktionen wie etwa den bedingten Zugriff, Intune-Verwaltungsfunktionen und eine zertifikatbasierte Authentifizierung nutzen.
+**Der Entwickler kann entscheiden, ob das Microsoft Identity SDK den Broker aufrufen oder den nicht brokergestützten Ablauf verwenden soll.** Wenn sich der Entwickler allerdings gegen den brokergestützten Ablauf entscheidet, verzichtet er auf die Vorteile der Nutzung von SSO-Anmeldeinformationen, die der Benutzer möglicherweise bereits auf dem Gerät hinzugefügt hat. Außerdem kann die Anwendung ohne brokergestützte Anmeldung keine der von Microsoft bereitgestellten Geschäftsfunktionen wie etwa den bedingten Zugriff, Intune-Verwaltungsfunktionen und eine zertifikatbasierte Authentifizierung nutzen.
 
 Diese Anmeldungen bieten die folgenden Vorteile:
 
@@ -213,7 +215,7 @@ Das ist alles! Das Microsoft Identity SDK verwendet jetzt Anmeldeinformationen �
 
 ### Aktivieren von SSO für brokergestütztes SSO
 
-Die Fähigkeit einer Anwendung, einen beliebigen der auf dem Gerät installierten Broker zu verwenden, ist **standardmäßig deaktiviert**. Damit Ihre Anwendung mit dem Broker verwendet werden kann, müssen Sie einige zusätzliche Konfigurationsschritte ausführen und Ihrer Anwendung Code hinzufügen.
+Die Fähigkeit einer Anwendung, jeden der auf dem Gerät installierten Broker zu verwenden, ist **standardmäßig deaktiviert**. Damit Ihre Anwendung mit dem Broker verwendet werden kann, müssen Sie einige zusätzliche Konfigurationsschritte ausführen und Ihrer Anwendung Code hinzufügen.
 
 Folgende Schritte sind erforderlich:
 
@@ -238,14 +240,14 @@ Der Umleitungs-URI muss das folgende Format besitzen:
 
 `msauth://packagename/Base64UrlencodedSignature`
 
-ex: **msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
+Beispiel: **msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
 
-Dieser Umleitungs-URI muss in Ihrer App-Registrierung unter Verwendung des [klassischen Azure-Portals](https://manage.windowsazure.com/) angegeben werden. Weitere Informationen zur Azure AD-App-Registrierung finden Sie unter [Integration in Azure Active Directory](active-directory-how-to-integrate.md).
+Dieser Umleitungs-URI muss in Ihrer App-Registrierung über das [klassische Azure-Portal](https://manage.windowsazure.com/) angegeben werden. Weitere Informationen zur Azure AD-App-Registrierung finden Sie unter [Integration in Azure Active Directory](active-directory-how-to-integrate.md).
 
 
 #### Schritt 3: Einrichten der korrekten Berechtigungen in Ihrer Anwendung
 
-Unsere Brokeranwendung in Android verwendet das Feature zur Kontoverwaltung des Android-Betriebssystems, um Anmeldeinformationen anwendungsübergreifend zu verwalten. Damit der Broker in Android verwendet werden kann, muss Ihr App-Manifest über Berechtigungen zum Verwenden von AccountManager-Konten verfügen. Dies wird in der [Google-Dokumentation zu AccountManager](http://developer.android.com/reference/android/accounts/AccountManager.html) ausführlich erläutert.
+Unsere Brokeranwendung in Android verwendet das Feature zur Kontoverwaltung des Android-Betriebssystems, um Anmeldeinformationen anwendungsübergreifend zu verwalten. Damit der Broker in Android verwendet werden kann, muss Ihr App-Manifest über Berechtigungen zum Verwenden von AccountManager-Konten verfügen. Dies wird in der [Google-Dokumentation zu Account Manager](http://developer.android.com/reference/android/accounts/AccountManager.html) ausführlich erläutert.
 
 Insbesondere sind dies folgende Berechtigungen:
 
@@ -259,4 +261,4 @@ MANAGE_ACCOUNTS
 
 Jetzt verwendet das Microsoft Identity SDK Anmeldeinformationen automatisch über Ihre Anwendungen hinweg und ruft den Broker auf, wenn dieser auf dem Gerät vorhanden ist.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="search"
-   ms.date="05/27/2016"
+   ms.date="06/01/2016"
    ms.author="brjohnst"/>
 
 # Azure-Suchdienst-REST-API: Version 2015-02-28-Preview
@@ -52,6 +52,10 @@ Die Azure Search-Dienst-API unterstützt zwei URL-Syntaxversionen für API-Vorg�
 [Indexstatistiken abrufen](#GetIndexStats)
 
     GET /indexes/[index name]/stats?api-version=2015-02-28-Preview
+
+[Testanalysemethode](#TestAnalyzer)
+
+    GET /indexes/[index name]/analyze?api-version=2015-02-28-Preview
 
 [Index löschen](#DeleteIndex)
 
@@ -168,6 +172,7 @@ Dies sind die Hauptbestandteile eines Index:
 - `fields`: Diese werden einschließlich Name, Datentyp und Eigenschaften zum Definieren der für das Feld zulässigen Aktionen in den Index eingelesen.
 - `suggesters`: Diese werden für die automatische Vervollständigung bzw. Eingabevorschläge für Abfragen verwendet.
 - `scoringProfiles`: Hiermit wird die Rangfolge der bewerteten benutzerdefinierten Suchergebnisse festgelegt. Weitere Details finden Sie unter [Hinzufügen von Bewertungsprofilen zu einem Suchindex](https://msdn.microsoft.com/library/azure/dn798928.aspx).
+- `analyzers`, `charFilters`, `tokenizers`, `tokenFilters` definieren, wie Ihre Dokumente/Abfragen in indizierbare/durchsuchbare Token unterteilt werden. Weitere Informationen finden Sie unter [Analyse in Azure Search](https://aka.ms//azsanalysis).
 - `defaultScoringProfile`: Hiermit werden Standardverhalten bei der Bewertung außer Kraft gesetzt.
 - `corsOptions`: Dies ermöglicht ursprungsübergreifende Indexabfragen.
 
@@ -233,6 +238,10 @@ Die Syntax für die Strukturierung der Anforderungsnutzlast ist wie folgt. Eine 
             "sum (default) | average | minimum | maximum | firstMatching"
         }
       ],
+	  "analyzers":(optional)[ ... ],
+	  "charFilters":(optional)[ ... ],
+	  "tokenizers":(optional)[ ... ],
+	  "tokenFilters":(optional)[ ... ],
       "defaultScoringProfile": (optional) "...",
       "corsOptions": (optional) {
         "allowedOrigins": ["*"] | ["origin_1", "origin_2", ...],
@@ -804,6 +813,10 @@ Die für die Indexerstellung verwendete Schemasyntax ist der Einfachheit halber 
             "sum (default) | average | minimum | maximum | firstMatching"
         }
       ],
+	  "analyzers":(optional)[ ... ],
+	  "charFilters":(optional)[ ... ],
+	  "tokenizers":(optional)[ ... ],
+	  "tokenFilters":(optional)[ ... ],
       "defaultScoringProfile": (optional) "...",
       "corsOptions": (optional) {
         "allowedOrigins": ["*"] | ["origin_1", "origin_2", ...],
@@ -817,6 +830,14 @@ Die für die Indexerstellung verwendete Schemasyntax ist der Einfachheit halber 
 Bei erfolgreicher Anforderung: "204 Kein Inhalt".
 
 Standardmäßig ist der Antworttext leer. Wenn der Anforderungsheader `Prefer` jedoch auf `return=representation` gesetzt ist, enthält der Antworttext die JSON für die aktualisierte Indexdefinition. In diesem Fall wird der Erfolgsstatuscode "200 – OK" ausgegeben.
+
+**Updating index definition with custom analyzers** (Aktualisieren der Indexdefinition mit benutzerdefinierten Analysemodulen)
+
+Nach der Definition kann eine Analyse, ein Tokenizer, Tokenfilter oder Char-Filter nicht mehr geändert werden. Neue können nur dann einem vorhandenen Index hinzugefügt werden, wenn das `allowIndexDowntime`-Flag in der Anforderung zur Indexaktualisierung auf „true“ gesetzt ist:
+
+`PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true`
+
+Beachten Sie, dass dieser Vorgang Ihren Index für mindestens ein paar Sekunden offline schaltet, sodass Indizierungs- und Abfrageanforderungen nicht gelingen. Leistung und Schreibverfügbarkeit des Indexes können nach der Indexaktualisierung mehrere Minuten lang eingeschränkt sein, bei sehr großen Indizes auch länger.
 
 <a name="ListIndexes"></a>
 ## Indizes auflisten
@@ -989,6 +1010,100 @@ Der Antworttext hat folgendes Format:
 	  "storageSize": number (size of the index in bytes)
     }
 
+<a name="TestAnalyzer"></a>
+## Testanalysemethode
+
+Die **Analyse-API** zeigt, wie ein Analysemodul Text in einzelne Token unterteilt.
+
+    POST https://[service name].search.windows.net/indexes/[index name]/analyze?api-version=[api-version]
+    Content-Type: application/json
+    api-key: [admin key]
+
+**Anforderung**
+
+HTTPS ist für alle Dienstanforderungen erforderlich. Die Anforderung der **Analyse-API** kann mit der POST-Methode erstellt werden.
+
+`api-version=[string]` (erforderlich). Die Vorschauversion ist `api-version=2015-02-28-Preview`. Details und alternative Versionen finden Sie unter [Versionsverwaltung für den Azure-Suchdienst](http://msdn.microsoft.com/library/azure/dn864560.aspx).
+
+
+**Anforderungsheader**
+
+In der folgenden Liste werden die erforderlichen und optionalen Anforderungsheader beschrieben.
+
+- `api-key`: Mit `api-key` wird die Anforderung bei Ihrem Suchdienst authentifiziert. Es handelt sich um einen für Ihren Dienst eindeutigen Zeichenfolgewert. Die Anforderung der **Analyse-API** muss einen `api-key` enthalten, der auf einen Administratorschlüssel (keinen Abfrageschlüssel) festgelegt ist.
+
+Sie benötigen außerdem den Index- sowie den Dienstnamen, um die URL der Anforderung zu erstellen. Sie können den Dienstnamen und den `api-key` in Ihrem Dienst-Dashboard im Azure-Portal abrufen. Hilfe bei der Seitennavigation finden Sie unter [Erstellen eines Azure-Suchdienstes im Portal](search-create-service-portal.md).
+
+**Anforderungstext**
+
+    {
+      "text": "Text to analyze",
+      "analyzer": "analyzer_name"
+    }
+
+oder
+
+    {
+      "text": "Text to analyze",
+      "tokenizer": "tokenizer_name",
+      "tokenFilters": (optional) [ "token_filter_name" ],
+      "charFilters": (optional) [ "char_filter_name" ]
+    }
+
+`analyzer_name`, `tokenizer_name`, `token_filter_name` und `char_filter_name` müssen gültige Namen von vordefinierten oder benutzerdefinierten Analysen, Tokenizern, Tokenfiltern und Char-Filtern für den Index sein. Weitere Informationen zum Prozess der lexikalischen Analyse finden Sie unter [Analyse in Azure Search](https://aka.ms/azsanalysis).
+
+**Antwort**
+
+Bei erfolgreicher Antwort wird der Statuscode "200 OK" zurückgegeben.
+
+Der Antworttext hat folgendes Format:
+
+    {
+      "tokens": [
+        {
+          "token": string (token),
+          "startOffset": number (index of the first character of the token),
+          "endOffset": number (index of the last character of the token),
+          "position": number (position of the token in the input text)
+        },
+        ...
+      ]
+    }
+
+**Beispiel einer Analyse-API**
+
+**Anforderung**
+
+    {
+      "text": "Text to analyze",
+      "analyzer": "standard"
+    }
+
+**Antwort**
+
+    {
+      "tokens": [
+        {
+          "token": "text",
+          "startOffset": 0,
+          "endOffset": 4,
+          "position": 0
+        },
+        {
+          "token": "to",
+          "startOffset": 5,
+          "endOffset": 7,
+          "position": 1
+        },
+        {
+          "token": "analyze",
+          "startOffset": 8,
+          "endOffset": 15,
+          "position": 2
+        }
+      ]
+    }
+
 ________________________________________
 <a name="DocOps"></a>
 ## Dokumentvorgänge
@@ -1056,7 +1171,7 @@ Der Anforderungstext enthält ein oder mehrere zu indizierende Dokumente. Dokume
 
 **Antwort**
 
-Für eine erfolgreiche Antwort wird als Statuscode „200“ (OK) zurückgeben. Dies bedeutet, dass alle Elemente erfolgreich indiziert wurden. Dies ist daran zu erkennen, dass für die Eigenschaft `status` für alle Elemente „true“ festgelegt ist, und für die Eigenschaft `statusCode` „201“ (für neu hochgeladene Dokumente) oder „200“ (für zusammengeführte oder gelöschte Dokumente):
+Für eine erfolgreiche Antwort wird als Statuscode „200“ (OK) zurückgeben. Dies bedeutet, dass alle Elemente erfolgreich indiziert wurden. Dies ist daran zu erkennen, dass für die Eigenschaft `status` für alle Elemente „true“ und für die Eigenschaft `statusCode` „201“ (für neu hochgeladene Dokumente) oder „200“ (für zusammengeführte oder gelöschte Dokumente) festgelegt ist:
 
     {
       "value": [
@@ -1853,4 +1968,4 @@ Rufen Sie 5 Vorschläge mit der Teilsuche nach "lux" ab.
       "suggesterName": "sg"
     }
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

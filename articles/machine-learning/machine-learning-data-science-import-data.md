@@ -23,7 +23,7 @@
 Um Ihre eigenen Daten in Machine Learning Studio zum Entwickeln und Trainieren einer Predictive Analytics-Lösung zu verwenden, können Sie folgende Aktionen ausführen:
 
 - Hochladen von Daten aus einer **lokalen Datei** von der Festplatte im Voraus, um damit ein DataSet-Modul in Ihrem Arbeitsbereich zu erstellen  
-- Zugreifen auf Daten aus einer von mehreren **Onlinedatenquellen**, während Ihr Experiment mit dem [Reader][reader]-Modul ausgeführt wird 
+- Zugreifen auf Daten aus einer von mehreren **Onlinedatenquellen**, während Ihr Experiment mit dem [Import Data][import-data]-Modul ausgeführt wird. 
 - Verwenden von Daten aus einem anderen Azure Machine Learning-Experiment, die als **DataSet** gespeichert sind 
 
 [AZURE.INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
@@ -65,7 +65,7 @@ Wenn Sie Daten in einem Format wie z. B. ARFF importieren, die Metadaten enthalt
 
 Wenn Sie z. B. Daten im TSV- oder CSV-Format importieren, das diese Metadaten nicht enthält, leitet Machine Learning Studio den Datentyp für jede Spalte ab, indem Stichproben der Daten entnommen werden. Wenn die Daten zudem keine Spaltenüberschriften aufweisen, gibt Machine Learning Studio Standardnamen an.
 
-Sie können die Überschriften und Datentypen für Spalten mit dem [Metadaten-Editor][metadata-editor] explizit angeben oder ändern.
+Sie können die Überschriften und Datentypen für Spalten mit [Edit Metadata][edit-metadata] explizit angeben oder ändern.
 
 Die folgenden **Datentypen** werden von Machine Learning Studio erkannt:
 
@@ -86,7 +86,7 @@ Bei Bedarf können Sie das Data Table-Format mit anderen Konvertierungsmodulen w
 
 <!-- Module References -->
 [convert-to-dataset]: https://msdn.microsoft.com/library/azure/72bf58e0-fc87-4bb1-9704-f1805003b975/
-[metadata-editor]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
-[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
+[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

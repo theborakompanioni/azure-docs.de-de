@@ -30,7 +30,7 @@ Zurzeit können Sie mithilfe des Portals keine Regeln für die automatische Skal
 Führen Sie die folgenden Cmdlets aus, um eine Liste der VM-Skalierungsgruppen abzurufen, aus denen Ihr Cluster besteht:
 
 ```powershell
-Get-AzureRmResource -ResourceGroupName <RGname> -ResourceType Microsoft.Network/VirtualMachineScaleSets
+Get-AzureRmResource -ResourceGroupName <RGname> -ResourceType Microsoft.Compute/VirtualMachineScaleSets
 
 Get-AzureRmVmss -ResourceGroupName <RGname> -VMScaleSetName <VM Scale Set name>
 ```
@@ -74,4 +74,4 @@ Lesen Sie die folgenden Artikel, um mehr über die Kapazitätsplanung von Cluste
 [BrowseServiceFabricClusterResource]: ./media/service-fabric-cluster-scale-up-down/BrowseServiceFabricClusterResource.png
 [ClusterResources]: ./media/service-fabric-cluster-scale-up-down/ClusterResources.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

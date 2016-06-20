@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/23/2016"
+	ms.date="05/31/2016"
 	ms.author="tamram"/>
 
 
@@ -38,7 +38,7 @@ Stellen Sie zunächst sicher, dass Sie die Azure-Speicher-Clientbibliothek für 
 
 Erstellen Sie in Visual Studio eine neue Windows-Konsolenanwendung, und geben Sie Ihr den Namen **GenerateSharedAccessSignatures**. Fügen Sie auf eine der folgenden Weisen Verweise auf **Microsoft.WindowsAzure.Configuration.dll** und **Microsoft.WindowsAzure.Storage.dll** hinzu:
 
-- 	Wenn Sie das NuGet-Paket installieren möchten, installieren Sie zuerst die [NuGet-Paket-Manager-Erweiterung für Visual Studio](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c). Wählen Sie in Visual Studio **Project | Manage NuGet Packages**, suchen Sie online nach **Azure-Speicher**, und befolgen Sie die Installationsanweisungen.
+- 	Wenn Sie das NuGet-Paket installieren möchten, installieren Sie zuerst den [NuGet-Client](https://docs.nuget.org/consume/installing-nuget). Wählen Sie in Visual Studio **Project | Manage NuGet Packages**, suchen Sie online nach **Azure-Speicher**, und befolgen Sie die Installationsanweisungen.
 - 	Suchen Sie alternativ nach den Assemblys in Ihrer Installation des Azure SDK, und fügen Sie Verweise darauf hinzu.
 
 Fügen Sie zu Beginn der Datei "Program.cs" die folgenden **using**-Anweisungen hinzu:
@@ -554,4 +554,4 @@ Führen Sie die Konsolenanwendung aus, und beobachten Sie die Ausgabe, um heraus
 [sas-console-output-1]: ./media/storage-dotnet-shared-access-signature-part-2/sas-console-output-1.PNG
 [sas-console-output-2]: ./media/storage-dotnet-shared-access-signature-part-2/sas-console-output-2.PNG
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

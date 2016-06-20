@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="03/29/2016"
+   ms.date="06/01/2016"
    ms.author="derrickv"/>
 
 # Häufig gestellte Fragen zu Power BI Embedded
@@ -50,7 +50,7 @@
 
     Der Power BI Embedded-Dienst ist in Nordamerika ab dem Zeitpunkt unserer Ankündigung von BUILD 2016 (im Rechenzentrum USA, Süden-Mitte) verfügbar. Dieser Dienst wird gleich im Anschluss auf die übrigen Azure-Rechenzentren ausgedehnt.
 
-9.	**Welche SLA ist für den Dienst verfügbar?**
+9. **Welche SLA ist für den Dienst verfügbar?**
 
     Power BI Embedded steht jetzt als Azure-Vorschaudienst ohne formale SLA zur Verfügung. Eine SLA wird bereitgestellt, wenn der Dienst von der Vorschauversion in die allgemeine Verfügbarkeit wechselt.
 
@@ -61,7 +61,8 @@
 
     Sie dürfen den Power BI Embedded-Dienst innerhalb einer von Ihnen entwickelten Anwendung nur dann nutzen, wenn Ihre Anwendung (1) grundlegende und wichtige Funktionalität zu unserem Dienst hinzufügt und nicht in erster Linie ein Ersatz für einen Power BI-Dienst ist, und (2) ausschließlich für externe Benutzer bereitgestellt wird. Der Power BI Embedded-Dienst darf nicht innerhalb interner Geschäftsanwendungen verwendet werden.
 
-    ![](media\power-bi-embedded-faq\price.png)
+
+   ![](media\power-bi-embedded-faq\price.png)
 
 11.	**Was ist ein Renderobjekt, und wie wird es abgerechnet?**
 
@@ -71,7 +72,7 @@
 
     Die Abrechnung erfolgt pro 1.000 Renderobjekte. Wenn weniger als 1.000 Renderobjekte in Anspruch genommen werden, erfolgt die Abrechnung anteilsmäßig. Pro Monat erhalten Kunden ein kostenloses Kontingent von 1.000 Renderobjekten. Kunden, die ihre Lösung über die Volumenlizenzierung erwerben, erhalten Preisinformationen von ihrem Microsoft-Partner oder -Händler.
 
-12.	**Gibt es irgendwelche Tools oder Anleitungen, die mir helfen, die zu erwartende Anzahl von Renderobjekten abzuschätzen? Wie kann ich feststellen, wie viele Renderobjekte abgeschlossen sind?**
+12.	**Gibt es Tools oder Anleitungen, die mir helfen, die zu erwartende Anzahl von Renderobjekten abzuschätzen? Wie kann ich feststellen, wie viele Renderobjekte abgeschlossen sind?**
 
     Das Azure-Portal bietet Abrechnungsinformationen dazu, wie viele Renderobjekte für Ihr Abonnement ausgeführt wurden.
 
@@ -113,7 +114,7 @@
 
 ## Weitere Informationen
 
-- [Was ist Microsoft Power BI Embedded?](power-bi-embedded-what-is-power-bi-embedded.md)
+- [Was ist Microsoft Power BI Embedded](power-bi-embedded-what-is-power-bi-embedded.md)
 - [Erste Schritte mit der Vorschau von Microsoft Power BI Embedded](power-bi-embedded-get-started.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0608_2016-->

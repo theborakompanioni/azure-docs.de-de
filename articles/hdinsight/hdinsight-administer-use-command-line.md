@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/05/2016"
+	ms.date="05/24/2016"
 	ms.author="jgao"/>
 
 # Verwalten von Hadoop-Clustern in HDInsight mit der Azure-Befehlszeilenschnittstelle
@@ -61,9 +61,14 @@ Mit den folgenden Befehlen können Sie Clusterdetails auflisten und anzeigen:
 
 
 ##Löschen von Clustern
+
 Mit dem folgenden Befehl können Sie ein Cluster löschen:
 
 	azure hdinsight cluster delete <Cluster Name>
+
+Sie können einen Cluster auch löschen, indem Sie die Ressourcengruppe löschen, die den Cluster enthält. Beachten Sie, dass damit alle Ressourcen in der Gruppe, einschließlich des Standardspeicherkontos, gelöscht werden.
+
+	azure group delete <Resource Group Name>
 
 ##Skalieren von Clustern
 
@@ -108,4 +113,4 @@ Sie sind nun in der Lage, verschiedene Verwaltungsaufgaben für HDInsight-Cluste
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
 [image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "Auflisten und Anzeigen von Clustern"
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0608_2016-->

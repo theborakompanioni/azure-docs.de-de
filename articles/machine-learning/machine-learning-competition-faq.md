@@ -73,7 +73,7 @@ Bei den meisten Wettbewerben werden Sie feststellen, dass Sie für jeden Ihrer B
 
 * Das gesamte im Wettbewerb verwendete Dataset wird nach dem Zufallsprinzip mit Schichtung in Trainings- und Testdaten (die restlichen Daten) aufgeteilt. Die Zufallsaufteilung ist geschichtet, um sicherzustellen, dass die Bezeichnungsverteilungen in den Trainings- sowie den Testdaten konsistent sind.
  
-* Die Trainingsdaten werden hochgeladen und Ihnen als Teil des Starterexperiments in der Readermodulkonfiguration zur Verfügung gestellt.
+* Die Trainingsdaten werden hochgeladen und Ihnen als Teil des Starterexperiments in der „Import Data“-Modulkonfiguration zur Verfügung gestellt.
 
 * Die Testdaten werden weiter unterteilt in öffentliche und private Testdaten mit derselben Schichtung.
 
@@ -115,4 +115,4 @@ Die Wettbewerbsplattform unterstützt derzeit nur die Einreichung von Beiträgen
 
 Benutzerbeiträge werden nur zu Bewertungszwecken, also zum Ermitteln der Gewinnerlösungen aufbewahrt. Weitere Informationen finden Sie in unseren [Geschäftsbedingungen](http://aka.ms/comptermsandconditions).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0608_2016-->

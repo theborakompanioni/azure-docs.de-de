@@ -31,15 +31,15 @@ Sie können nur hoffen, nicht auf vorhandene Sicherungen zugreifen oder eine Not
 
 [Dokumentation lesen](sql-database-business-continuity.md)
 
-## Die größte Kompatibilitätsportfolio
+## Das größte Kompatibilitätsportfolio
 
-SQL-Datenbank hat das größte Kompatibilitätsportfolio der Branche. Wenn Sie also HIPPA oder FERPA oder sogar Singapur MTCS Level 3 benötigen, machen Sie sich keine Sorgen – wir helfen Ihnen.
+SQL-Datenbank hat das größte Kompatibilitätsportfolio der Branche. Wenn Sie also HIPPA oder FERPA oder sogar Singapur MTCS Level 3 benötigen, machen Sie sich keine Sorgen – wir decken alle Lösungen ab.
 
 [Dokumentation lesen](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)
 
 ## Schutzebenen
 
-SQL-Datenbank bietet mehrere Datenschutzebenen. Ihre Daten werden durch Verschlüsselung im Ruhezustand, während der Übertragung und der Verwendung geschützt, und nur Benutzer, die sich bei der Datenbank oder Anwendung authentifizieren, erhalten eingeschränkten Zugriff auf die entsprechende Datenteilmenge. Darüber hinaus bietet SQL-Datenbank kontinuierliche Überwachungs- und Überprüfungsaktivitäten, die dabei helfen, potenzielle Risiken zu erkennen und einen Datensatz mit kritischen Ereignissen im Falle einer Verletzung bereitzustellen. Diese Funktionen werden durch die Möglichkeit, Funktionen schnell zu implementieren und Sicherheitsrisiken ohne Gefährdung der Entwicklerproduktivität oder der Kundenerfahrung zu minimieren, ergänzt.
+SQL-Datenbank bietet mehrere Datenschutzebenen. Ihre Daten werden durch Verschlüsselung im Ruhezustand, während der Übertragung und der Verwendung geschützt, und nur Benutzer, die sich bei der Datenbank oder Anwendung authentifizieren, erhalten eingeschränkten Zugriff auf die entsprechende Datenteilmenge. Darüber hinaus bietet SQL-Datenbank kontinuierliche Überwachungs- und Überprüfungsaktivitäten, die dabei helfen, potenzielle Risiken zu erkennen und einen Datensatz mit kritischen Ereignissen im Falle einer Verletzung bereitzustellen. Diesen Funktionen gegenüber steht die Möglichkeit, Funktionen schnell zu implementieren und Sicherheitsrisiken ohne Gefährdung der Entwicklerproduktivität oder der Kundenerfahrung zu minimieren.
 
 [Dokumentation lesen](http://go.microsoft.com/fwlink/?LinkID=787593)
 
@@ -55,4 +55,4 @@ Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/se
  
 Lesen Sie die [Technische Übersicht über SQL-Datenbank](sql-database-technical-overview.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->
