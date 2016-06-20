@@ -66,13 +66,13 @@ Die Beispieldaten werden in einem Azure-Blobspeicher gespeichert, den HDInsight 
 
 Da Azure-Blobspeicher der Standardspeicher für HDInsight ist, können Sie auch über **/example/data/gutenberg/davinci.txt** auf die Datei zugreifen.
 
-> [AZURE.NOTE] In der vorherigen Syntax wird ****wasb:///** für den Zugriff auf Dateien verwendet, die im Standardspeichercontainer für Ihren HDInsight-Cluster gespeichert werden. Wenn Sie beim Bereitstellen Ihres Clusters weitere Speicherkonten angegeben haben und auf die unter diesen Konten gespeicherten Dateien zugreifen möchten, können Sie hierfür den Containernamen und die Speicherkontoadresse angeben. Zum Beispiel ****wasb://mycontainer@mystorage.blob.core.windows.net/example/data/gutenberg/davinci.txt**
+> [AZURE.NOTE] In der vorherigen Syntax wird **wasb:///** für den Zugriff auf Dateien verwendet, die im Standardspeichercontainer für Ihren HDInsight-Cluster gespeichert werden. Wenn Sie beim Bereitstellen Ihres Clusters weitere Speicherkonten angegeben haben und auf die unter diesen Konten gespeicherten Dateien zugreifen möchten, können Sie hierfür den Containernamen und die Speicherkontoadresse angeben. Zum Beispiel **wasb://mycontainer@mystorage.blob.core.windows.net/example/data/gutenberg/davinci.txt**
 
 ##<a id="job"></a>Informationen zum Beispiel-MapReduce
 
-Der MapReduce-Auftrag, der in diesem Beispiel verwendet wird, befindet sich unter ****wasb://example/jars/hadoop-mapreduce-examples.jar**, und er wird mit dem HDInsight-Cluster bereitgestellt. Er enthält ein Wortzählungsbeispiel, das Sie auf **davinci.txt** anwenden.
+Der MapReduce-Auftrag, der in diesem Beispiel verwendet wird, befindet sich unter **wasb://example/jars/hadoop-mapreduce-examples.jar**, und er wird mit dem HDInsight-Cluster bereitgestellt. Er enthält ein Wortzählungsbeispiel, das Sie auf **davinci.txt** anwenden.
 
-> [AZURE.NOTE] In HDInsight 2.1-Clustern lautet der Speicherort ****wasb:///example/jars/hadoop-examples.jar**.
+> [AZURE.NOTE] In HDInsight 2.1-Clustern lautet der Speicherort **wasb:///example/jars/hadoop-examples.jar**.
 
 Zu Referenzzwecken ist im Folgenden der Java-Code für den MapReduce-Auftrag zum Zählen von Wörtern aufgeführt:
 

@@ -497,7 +497,12 @@ Auf Ebene der Unternehmensfirewall müssen Sie die folgenden Domänen und ausgeh
 
 | Domänennamen | Ports | Beschreibung |
 | ------ | --------- | ------------ |
-| **.servicebus.windows.net | 443, 80 | Listener auf Service Bus Relay per TCP (443 für Access Control-Tokenbeschaffung erforderlich) | | *.servicebus.windows.net | 9350-9354, 5671 | Optionales Service Bus Relay per TCP | | *.core.windows.net | 443 | HTTPS | | *.clouddatahub.net | 443 | HTTPS | | graph.windows.net | 443 | HTTPS | | login.windows.net | 443 | HTTPS | 
+| *.servicebus.windows.net | 443, 80 | Listener auf Service Bus Relay per TCP (443 für Access Control-Tokenbeschaffung erforderlich) | 
+| *.servicebus.windows.net | 9350-9354, 5671 | Optionales Service Bus Relay per TCP | 
+| *.core.windows.net | 443 | HTTPS | 
+| *.clouddatahub.net | 443 | HTTPS | 
+| graph.windows.net | 443 | HTTPS | 
+| login.windows.net | 443 | HTTPS | 
 
 Auf Ebene der Windows-Firewall sind diese ausgehenden Ports normalerweise aktiviert. Falls nicht, können Sie die Domänen und Ports auf dem Gatewaycomputer entsprechend konfigurieren.
 

@@ -286,7 +286,7 @@ Ersetzen Sie **runner.java** durch Ihr bevorzugtes STAR-CCM+-Javamodell-Startpro
     exit ${RTNSTS}
 ```
 
-In unserem Test haben wir ein Power-On-Demand-Lizenztoken verwendet. Für dieses Token müssen Sie die Umgebungsvariable **$CDLMD\_LICENSE\_FILE** auf ****1999@flex.cd-adapco.com** und außerdem den Schlüssel in der Befehlszeilenoption **-podkey** festlegen.
+In unserem Test haben wir ein Power-On-Demand-Lizenztoken verwendet. Für dieses Token müssen Sie die Umgebungsvariable **$CDLMD\_LICENSE\_FILE** auf **1999@flex.cd-adapco.com** und außerdem den Schlüssel in der Befehlszeilenoption **-podkey** festlegen.
 
 Nach der Initialisierung extrahiert das Skript aus den von HPC Pack festgelegten Umgebungsvariablen vom Typ **$CCP\_NODES\_CORES** eine Liste mit Knoten zum Erstellen einer Hostdatei für das MPI-Startprogramm. Diese Hostdatei enthält eine Liste mit den Computeknotennamen für den Auftrag (jeweils ein Name pro Zeile).
 

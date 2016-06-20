@@ -72,7 +72,7 @@ Klicken Sie auf **APIs** im Menü **API Management** auf der linken Seite, und k
 
 ![api-management-menu](./media/machine-learning-manage-web-service-endpoints-using-api-management/api-management-menu.png)
 
-Geben Sie **Azure ML-Demo-API** als **Web-API-Namen** ein. Geben Sie ****https://ussouthcentral.services.azureml.net** als **Webdienst-URL** ein. Geben Sie **azureml-demo** als **Web-API-URL-Suffix** ein. Aktivieren Sie **HTTPS** als **Web-API-URL**-Schema. Wählen Sie **Starter** als **Produkte** aus. Wenn Sie fertig sind, klicken Sie auf **Speichern**, um die API zu erstellen.
+Geben Sie **Azure ML-Demo-API** als **Web-API-Namen** ein. Geben Sie **https://ussouthcentral.services.azureml.net** als **Webdienst-URL** ein. Geben Sie **azureml-demo** als **Web-API-URL-Suffix** ein. Aktivieren Sie **HTTPS** als **Web-API-URL**-Schema. Wählen Sie **Starter** als **Produkte** aus. Wenn Sie fertig sind, klicken Sie auf **Speichern**, um die API zu erstellen.
 
 ![add-new-api](./media/machine-learning-manage-web-service-endpoints-using-api-management/add-new-api.png)
 

@@ -791,7 +791,7 @@ Dieser Befehl tauscht zwei Web-App-Steckplätze.
 
 Dieser Befehl unterstützt die folgende zusätzliche Option:
 
-****-q oder **--quiet**: Keine Bestätigungsaufforderungen. Verwenden Sie diese Option in automatisierten Skripts.
+**-q oder **--quiet**: Keine Bestätigungsaufforderungen. Verwenden Sie diese Option in automatisierten Skripts.
 
 
 **site start [Optionen] [Name]**
@@ -814,7 +814,7 @@ Dieser Befehl beendet eine Web-App.
 	info:   Site mysite has been stopped
 	info:   site stop command OK
 
-****site restart [Optionen] [Name]
+**site restart [Optionen] [Name]**
 
 Dieser Befehl beendet die angegebene Web-App und startet sie dann wieder.
 

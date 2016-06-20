@@ -387,7 +387,7 @@ Dieses Muster gilt auch für Szenarien, bei denen Sie eine Branchenanwendung in 
 
 Klicken Sie auf [RealtimeDashboardApp download](http://go.microsoft.com/fwlink/?LinkId=717078), um die Visual Studio-Projektmappe „RealtimeDashboardApp“ zur Verwendung für Anpassungen herunterzuladen.
 
-****So führen Sie die Echtzeit-Dashboardanwendung aus **
+**So führen Sie die Echtzeit-Dashboardanwendung aus**
 
 1.	Klicken Sie in der Diagrammansicht auf den Knoten „Power BI“ und dann im Eigenschaftenbereich auf den Link „Echtzeit-Dashboardanwendung herunterladen“. ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17-vehicle-telematics-powerbi-dashboard-setup.png) *Abbildung 17 – Setupanweisungen zum PowerBI-Dashboard*
 2.	Lokales Extrahieren und Speichern ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig18-vehicle-telematics-realtimedashboardapp-folder.png) *Abbildung 18 – Ordner „RealtimeDashboardApp“*

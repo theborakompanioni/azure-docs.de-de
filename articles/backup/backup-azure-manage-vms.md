@@ -54,7 +54,7 @@ Viele Verwaltungsaufgaben mit einer Sicherung des virtuellen Computers beginnen 
 
     >[AZURE.TIP] Wenn Sie einen Tresor an das Azure-Dashboard anheften, ist der Tresor nach dem Öffnen des Azure-Portals sofort verfügbar. Klicken Sie zum Anheften eines Tresors an das Dashboard in der Tresorliste mit der rechten Maustaste auf den Tresor, und wählen Sie **An Dashboard anheften**.
 
-3. Wählen Sie in der Liste mit den Tresoren den Tresor aus, dessen Dashboard Sie öffnen möchten. Wenn Sie den Tresor ausgewählt haben, werden das Tresor-Dashboard und das Blatt **Einstellungen** geöffnet. In der folgenden Abbildung ist das Dashboard **Contoso-vault***** hervorgehoben.
+3. Wählen Sie in der Liste mit den Tresoren den Tresor aus, dessen Dashboard Sie öffnen möchten. Wenn Sie den Tresor ausgewählt haben, werden das Tresor-Dashboard und das Blatt **Einstellungen** geöffnet. In der folgenden Abbildung ist das Dashboard **Contoso-vault** hervorgehoben.
 
     ![Tresor-Dashboard und Blatt „Einstellungen“ öffnen](./media/backup-azure-manage-vms/full-view-rs-vault.png)
 

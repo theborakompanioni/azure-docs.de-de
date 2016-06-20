@@ -224,7 +224,7 @@ Das Ziel dieses Abschnitts ist es, das einmalige Anmelden von Azure AD im klassi
 
 	![Einmaliges Anmelden konfigurieren][24]
 
-    a. Geben Sie im Textfeld **Attributname** die Zeichenfolge ****https://aws.amazon.com/SAML/Attributes/Role** ein.
+    a. Geben Sie im Textfeld **Attributname** die Zeichenfolge **https://aws.amazon.com/SAML/Attributes/Role** ein.
 
     b. Geben Sie im Textfeld **Attributwert** **[den Rollen-ARN-Wert],[den ARN-Wert für die vertrauenswürdige Entität]** ein.
 
@@ -242,7 +242,7 @@ Das Ziel dieses Abschnitts ist es, das einmalige Anmelden von Azure AD im klassi
 	![Einmaliges Anmelden konfigurieren][25]
 
 
-     a. Geben Sie im Textfeld **Attributname** die Zeichenfolge ****https://aws.amazon.com/SAML/Attributes/RoleSessionName** ein.
+     a. Geben Sie im Textfeld **Attributname** die Zeichenfolge **https://aws.amazon.com/SAML/Attributes/RoleSessionName** ein.
 
      b. Geben Sie im Textfeld **Attributwert** den Wert **userprincipalname** ein.
 

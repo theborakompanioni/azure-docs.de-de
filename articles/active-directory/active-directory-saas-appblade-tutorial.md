@@ -133,7 +133,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD i
     b. Klicken Sie auf **Weiter**.
 
 
-5. Für die Konfiguration von SSO für Ihre Anwendung wenden Sie sich über ****support@appblade.com** an das Supportteam von AppBlade. Fügen Sie die heruntergeladene Metadatendatei an Ihre E-Mail an. Bitten Sie das Supportteam, die **SSO Issuer URL** auf ****https://appblade.com/saml** festzulegen. Diese Einstellung ist erforderlich, damit das einmalige Anmelden funktioniert.
+5. Für die Konfiguration von SSO für Ihre Anwendung wenden Sie sich über **support@appblade.com** an das Supportteam von AppBlade. Fügen Sie die heruntergeladene Metadatendatei an Ihre E-Mail an. Bitten Sie das Supportteam, die **SSO Issuer URL** auf **https://appblade.com/saml** festzulegen. Diese Einstellung ist erforderlich, damit das einmalige Anmelden funktioniert.
 
 
 6. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.

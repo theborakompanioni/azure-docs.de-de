@@ -169,7 +169,7 @@ Bevor Sie die SAML-Assertion konfigurieren können, müssen Sie sich über [serv
 5. Um das einmalige Anmelden (SSO, Single Sign-On) für Ihre Anwendung konfigurieren zu lassen, wenden Sie sich über [servicedesk@merces.nl](emailTo:servicedesk@merces.nl) an das Supportteam von HR2day by Merces, und fügen Sie die heruntergeladene Zertifikatdatei an Ihre E-Mail an. Geben Sie außerdem die SAML-SSO-URL, die Abmelde-URL und die Aussteller-URL an, damit diese für die SSO-Integration (Single Sign-On, einmaliges Anmelden) konfiguriert werden können.
 
 
-> [AZURE.NOTE] Informieren Sie das Merces-Team darüber, dass für diese Integration das Festlegen der Entitäts-ID mit diesem Muster erforderlich ist: ****https://hr2day.force.com/INSTANCENAME**
+> [AZURE.NOTE] Informieren Sie das Merces-Team darüber, dass für diese Integration das Festlegen der Entitäts-ID mit diesem Muster erforderlich ist: **https://hr2day.force.com/INSTANCENAME**
 
 
 

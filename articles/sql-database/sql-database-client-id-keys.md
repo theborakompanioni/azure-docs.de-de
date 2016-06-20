@@ -57,8 +57,8 @@ Führen Sie die folgenden Schritte aus, um eine neue Anwendung zu erstellen und 
 
 1. Scrollen Sie auf der Seite nach unten, und klicken Sie auf **Anwendung hinzufügen**.
 1. Wählen Sie **Microsoft-Apps** aus.
-1. Wählen Sie **Windows Azure-Service-Verwaltungs-API** aus, und schließen Sie dann den Assistenten ab.
-2. Suchen Sie im Abschnitt **Berechtigungen für andere Anwendungen** nach **Windows Azure-Service-Verwaltungs-API**, und klicken Sie auf **Delegierte Berechtigungen**.
+1. Wählen Sie **Microsoft Azure-Service-Verwaltungs-API** aus, und schließen Sie dann den Assistenten ab.
+2. Suchen Sie im Abschnitt **Berechtigungen für andere Anwendungen** nach **Microsoft Azure-Service-Verwaltungs-API**, und klicken Sie auf **Delegierte Berechtigungen**.
 3. Wählen Sie **Auf Azure-Service-Verwaltung zugreifen** aus.
 
     ![Berechtigungen][2]
@@ -108,8 +108,8 @@ Um eine neue Anwendung zu erstellen und im richtigen Active Directory zu registr
 
 1. Scrollen Sie auf der Seite nach unten, und klicken Sie auf **Anwendung hinzufügen**.
 1. Wählen Sie **Microsoft-Apps** aus.
-1. Suchen Sie nach **Windows Azure-Service-Verwaltungs-API**, und wählen Sie sie aus. Schließen Sie dann den Assistenten ab.
-2. Suchen Sie im Abschnitt **Berechtigungen für andere Anwendungen** nach **Windows Azure-Service-Verwaltungs-API**, und klicken Sie auf **Delegierte Berechtigungen**.
+1. Suchen Sie nach **Microsoft Azure-Service-Verwaltungs-API**, und wählen Sie sie aus. Schließen Sie dann den Assistenten ab.
+2. Suchen Sie im Abschnitt **Berechtigungen für andere Anwendungen** nach **Microsoft Azure-Service-Verwaltungs-API**, und klicken Sie auf **Delegierte Berechtigungen**.
 3. Wählen Sie **Auf Azure-Service-Verwaltung zugreifen** aus.
 
     ![Berechtigungen][2]
