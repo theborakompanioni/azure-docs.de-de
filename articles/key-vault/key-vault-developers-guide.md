@@ -64,7 +64,7 @@ Nach erfolgreicher Autorisierung können Sie folgende Aufgaben ausführen:
 
 Die folgenden SDKs sind für die Arbeit mit dem Schlüsseltresor verfügbar:
 
-|[![.NET](./media/key-vault-developers-guide/net.png)](https://msdn.microsoft.com/library/azure/dn903301.aspx)|[![Node.js](./media/key-vault-developers-guide/nodejs.png)](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)
+|[![.NET](./media/key-vault-developers-guide/msft.netlogo_purple.png)](https://msdn.microsoft.com/library/azure/dn903301.aspx)|[![Node.js](./media/key-vault-developers-guide/nodejs.png)](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)
 |:--:|:--:|
 |[Dokumentation zum .NET SDK](https://msdn.microsoft.com/library/azure/dn903301.aspx)|[Dokumentation zum Node.js SDK](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)|
 |[.NET SDK-Paket](https://azure.microsoft.com/documentation/api/)|[Node.js SDK-Paket](https://www.npmjs.com/package/azure-keyvault)|
@@ -97,4 +97,4 @@ Aufgabenspezifische Anleitungen zum Integrieren und Verwenden von Schlüsseltres
 - [Key Vault Blog](http://aka.ms/kvblog)
 - [Key Vault Forum](http://aka.ms/kvforum)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

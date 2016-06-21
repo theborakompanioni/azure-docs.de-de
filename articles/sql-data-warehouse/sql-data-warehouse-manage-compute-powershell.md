@@ -19,7 +19,7 @@
 # Verwalten von Computeleistung für Azure SQL Data Warehouse (PowerShell)
 
 > [AZURE.SELECTOR]
-- [Übersicht](sql-data-warehouse-overview-manage-compute.md)
+- [Übersicht](sql-data-warehouse-manage-compute-overview.md)
 - [Portal](sql-data-warehouse-manage-compute-portal.md)
 - [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 - [REST](sql-data-warehouse-manage-compute-rest-api.md)
@@ -34,7 +34,7 @@ Diese Sammlung von Tasks verwendet das Azure-Portal für folgende Aufgaben:
 - Anhalten von Computeressourcen
 - Fortsetzen von Computeressourcen
 
-Informationen hierzu finden Sie unter [Manage compute power in Azure SQL Data Warehouse (Overview)][] \(Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)).
+Informationen hierzu finden Sie in der [Übersicht über das Verwalten von Computeleistung][].
 
 
 ## Voraussetzungen
@@ -124,7 +124,7 @@ Andere Verwaltungsaufgaben finden Sie in der [Verwaltungsübersicht][].
 <!--Article references-->
 [Service capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
 [Verwaltungsübersicht]: ./sql-data-warehouse-overview-manage.md
-[Performance scalability overview]: ./sql-data-warehouse-overview-scalability.md
+
 
 <!--MSDN references-->
 [Resume-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619347.aspx
@@ -136,4 +136,4 @@ Andere Verwaltungsaufgaben finden Sie in der [Verwaltungsübersicht][].
 
 [Azure portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

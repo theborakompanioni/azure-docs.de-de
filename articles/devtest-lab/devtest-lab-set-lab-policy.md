@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="06/01/2016"
 	ms.author="tarcher"/>
 
 # Definieren von Labrichtlinien.
@@ -28,11 +28,11 @@ Um die Richtlinien für ein Lab anzeigen und ändern zu können, gehen Sie folge
 
 1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
-1. Tippen Sie auf **Durchsuchen**, und tippen Sie dann in der Liste auf **DevTest Labs**.
+1. Wählen Sie **Durchsuchen** und dann in der Liste **DevTest Labs**.
 
-1. Tippen Sie in der Liste der Labs auf das gewünschte Lab.
+1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.
 
-1. Tippen Sie auf **Einstellungen**.
+1. Wählen Sie **Settings** aus.
 
 	![Einstellungen](./media/devtest-lab-set-lab-policy/lab-blade-settings.png)
 
@@ -40,7 +40,7 @@ Um die Richtlinien für ein Lab anzeigen und ändern zu können, gehen Sie folge
 
 	![Einstellungen](./media/devtest-lab-set-lab-policy/policies.png)
 
-	Tippen Sie in der Liste unten auf die gewünschte Richtlinie, um weitere Informationen zum Festlegen zu erhalten:
+	Wählen Sie in der Liste unten die gewünschte Richtlinie, um weitere Informationen zum Festlegen zu erhalten:
 
 	- [Allowed VM Sizes](#set-allowed-vm-sizes): Wählen Sie die Liste der im Lab zulässigen VM-Größen aus. Ein Benutzer kann nur aus dieser Liste virtuelle Computer erstellen.
 
@@ -56,57 +56,57 @@ Um die Richtlinien für ein Lab anzeigen und ändern zu können, gehen Sie folge
 
 Die Richtlinie für die zulässigen VM-Größen hilft dabei, unnötigen Aufwand im Lab zu minimieren, indem sie Ihnen ermöglicht, die im Lab zulässigen VM-Größen anzugeben. Wenn diese Richtlinie aktiviert ist, können nur VM-Größen aus dieser Liste zum Erstellen von virtuellen Computern verwendet werden.
 
-1. Tippen Sie auf dem Blatt **Einstellungen** für das Lab unter **VM Policies** auf **Allowed VM Sizes**.
+1. Wählen Sie auf dem Blatt **Einstellungen** für das Lab unter **VM-Richtlinien** **Zulässige VM-Größen**.
 
 	![Einstellungen](./media/devtest-lab-set-lab-policy/allowed-vm-sizes.png)
  
-1. Tippen Sie auf **Ein**, um diese Richtlinie zu aktivieren, und auf **Aus**, um sie zu deaktivieren.
+1. Wählen Sie **Ein**, um diese Richtlinie zu aktivieren, und **Aus**, um sie zu deaktivieren.
 
-1. Wenn Sie diese Richtlinie aktiviert haben, tippen Sie auf eine oder mehrere VM-Größen, die im Lab erstellt werden können.
+1. Wenn Sie diese Richtlinie aktiviert haben, wählen Sie mindestens eine VM-Größe, die im Lab erstellt werden kann.
 
-1. Tippen Sie auf **Speichern**.
+1. Wählen Sie **Speichern** aus.
 
 ## Festlegen der maximalen Anzahl von VMs pro Benutzer
 
 Mit der Richtlinie für **Maximum VMs per user** können Sie die maximale Anzahl von virtuellen Computern angeben, die von einem einzelnen Benutzer erstellt werden können. Wenn ein Benutzer versucht, einen neuen virtuellen Computer zu erstellen, und die Benutzergrenze erreicht wurde, wird in einer Fehlermeldung darauf hingewiesen, dass der virtuelle Computer nicht erstellt werden kann.
 
-1. Tippen Sie auf dem Blatt **Einstellungen** für das Lab unter **VM Policies** auf **Maximum VMs per user**.
+1. Wählen Sie auf dem Blatt **Einstellungen** für das Lab unter **VM-Richtlinien** **Maximale VM-Anzahl pro Benutzer**.
 
 	![Einstellungen](./media/devtest-lab-set-lab-policy/max-vms-per-user.png)
 
-1. Tippen Sie auf **Ein**, um diese Richtlinie zu aktivieren, und auf **Aus**, um sie zu deaktivieren.
+1. Wählen Sie **Ein**, um diese Richtlinie zu aktivieren, und **Aus**, um sie zu deaktivieren.
 
 1. Wenn Sie diese Richtlinie aktivieren, geben Sie im Textfeld **Maximum VMs allowed per User** einen numerischen Wert für die maximale Anzahl von virtuellen Computern ein, die von einem Benutzer erstellt werden können. Wenn Sie eine ungültige Zahl eingeben, zeigt die Benutzeroberfläche die maximal zulässige Zahl für dieses Feld an.
 
-1. Tippen Sie auf **Speichern**.
+1. Wählen Sie **Speichern** aus.
 
 ## Festlegen der zulässigen Gesamtanzahl von virtuellen Computern
 
 Mit der Richtlinie für **Total VMs allowed** können Sie die maximale Anzahl von virtuellen Computern angeben, die für das aktuelle Lab erstellt werden können. Wenn ein Benutzer versucht, einen neuen virtuellen Computer zu erstellen, und die Labgrenze erreicht wurde, wird in einer Fehlermeldung darauf hingewiesen, dass der virtuelle Computer nicht erstellt werden kann.
 
-1. Tippen Sie auf dem Blatt **Einstellungen** für das Lab unter **VM Policies** auf **Total VMs allowed**.
+1. Wählen Sie auf dem Blatt **Einstellungen** für das Lab unter **VM-Richtlinien** **Zulässige VM-Gesamtzahl**.
 
 	![Einstellungen](./media/devtest-lab-set-lab-policy/total-vms-allowed.png)
 
-1. Tippen Sie auf **Ein**, um diese Richtlinie zu aktivieren, und auf **Aus**, um sie zu deaktivieren.
+1. Wählen Sie **Ein**, um diese Richtlinie zu aktivieren, und **Aus**, um sie zu deaktivieren.
 
 1. Wenn Sie diese Richtlinie aktivieren, geben Sie im Textfeld **Total VMs allowed in this lab** einen numerischen Wert für die maximale Anzahl von virtuellen Computern ein, die für das aktuelle Lab erstellt werden können. Wenn Sie eine ungültige Zahl eingeben, zeigt die Benutzeroberfläche die maximal zulässige Zahl für dieses Feld an.
 
-1. Tippen Sie auf **Speichern**.
+1. Wählen Sie **Speichern** aus.
 
 ## Festlegen des Auto-Shutdowns
 
 Die Auto-Shutdown-Richtlinie hilft dabei, unnötigen Aufwand im Lab zu minimieren, indem sie Ihnen ermöglicht, die Uhrzeit anzugeben, zu der die virtuellen Computer für dieses Lab heruntergefahren werden.
 
-1. Tippen Sie auf dem Blatt **Einstellungen** für das Lab unter **VM Policies** auf **Auto shutdown**.
+1. Wählen Sie auf dem Blatt **Einstellungen** für das Lab unter **VM-Richtlinien** **Automatisches Herunterfahren**.
 
 	![Einstellungen](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
 
-1. Tippen Sie auf **Ein**, um diese Richtlinie zu aktivieren, und auf **Aus**, um sie zu deaktivieren.
+1. Wählen Sie **Ein**, um diese Richtlinie zu aktivieren, und **Aus**, um sie zu deaktivieren.
 
 1. Wenn Sie diese Richtlinie aktivieren, geben Sie die lokale Uhrzeit an, zu der alle virtuellen Computer im derzeitigen Lab heruntergefahren werden sollen.
 
-1. Tippen Sie auf **Speichern**.
+1. Wählen Sie **Speichern** aus.
 
 1. Standardmäßig gilt diese Richtlinie nach der Aktivierung für alle virtuellen Computer im aktuellen Lab. Um diese Einstellung von einem bestimmten virtuellen Computer zu entfernen, öffnen Sie das Blatt des virtuellen Computers, und ändern Sie die Einstellung **Auto shutdown**.
 
@@ -114,15 +114,15 @@ Die Auto-Shutdown-Richtlinie hilft dabei, unnötigen Aufwand im Lab zu minimiere
 
 Mit der Autostart-Richtlinie können Sie angeben, wann die virtuellen Computer im aktuellen Lab gestartet werden sollen.
 
-1. Tippen Sie auf dem Blatt **Einstellungen** für das Lab unter **VM Policies** auf **Auto start**.
+1. Wählen Sie auf dem Blatt **Einstellungen** für das Lab unter **VM-Richtlinien** **Automatisches Starten**.
 
 	![Einstellungen](./media/devtest-lab-set-lab-policy/auto-start.png)
 
-1. Tippen Sie auf **Ein**, um diese Richtlinie zu aktivieren, und auf **Aus**, um sie zu deaktivieren.
+1. Wählen Sie **Ein**, um diese Richtlinie zu aktivieren, und **Aus**, um sie zu deaktivieren.
 
 1. Wenn Sie diese Richtlinie aktivieren, geben Sie die geplante lokale Startzeit und die zugeordneten Tage der Woche an.
 
-1. Tippen Sie auf **Speichern**.
+1. Wählen Sie **Speichern** aus.
 
 1. Nach der Aktivierung wird diese Richtlinie nicht automatisch auf alle virtuellen Computer im aktuellen Lab angewendet. Um diese Einstellung auf einen bestimmten virtuellen Computer anzuwenden, öffnen Sie das Blatt des virtuellen Computers, und ändern Sie die Einstellung **Auto start**.
 
@@ -135,4 +135,4 @@ Sobald Sie die verschiedenen VM-Richtlinieneinstellungen für Ihr Lab definiert 
 - [Konfigurieren von Marketplace-Images](./devtest-lab-configure-marketplace-images.md): DevTest Labs unterstützt die Erstellung neuer virtueller Computer auf der Basis von Azure Marketplace-Images. In diesem Artikel erfahren Sie, wie Sie ggf. angeben, welche Azure Marketplace-Images zum Erstellen neuer virtueller Computer in einem Lab verwendet werden können.
 - [Erstellen eines virtuellen Computers in einem Lab](./devtest-lab-add-vm-with-artifacts.md): In diesem Artikel wird veranschaulicht, wie Sie einen neuen virtuellen Computer aus einem Basisimage erstellen (entweder ein benutzerdefiniertes Image oder ein Marketplace-Image) und wie Sie mit Artefakten im virtuellen Computer arbeiten.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

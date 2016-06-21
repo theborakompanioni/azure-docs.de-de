@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="04/20/2016"
+ ms.date="06/03/2016"
  ms.author="larryfr"/>
 
 #Herstellen einer Verbindung mit Hive unter Azure HDInsight per Hive-JDBC-Treiber
@@ -161,15 +161,15 @@ __Symptome__: Beim Herstellen einer Verbindung mit einem HDInsight-Cluster der V
     at java.util.concurrent.FutureTas...(FutureTask.java:122)
     at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
-__Ursache__: Dieser Fehler wird durch einen Konflikt zwischen der Version der von SQuirreL verwendeten Datei „common-codec.jar“ und der Version verursacht, die von den aus dem HDInsight-Cluster heruntergeladen Hive JDBC-Komponenten benötigt wird.
+__Ursache__: Dieser Fehler wird durch einen Konflikt zwischen der Version der von SQuirreL verwendeten Datei „commons-codec.jar“ und der Version verursacht, die die aus dem HDInsight-Cluster heruntergeladenen Hive JDBC-Komponenten benötigen.
 
 __Lösung__: Führen Sie folgende Schritte aus, um diesen Fehler zu beheben.
 
-1. Laden Sie die common-codec.jar-Datei aus Ihrem HDInsight-Cluster herunter.
+1. Laden Sie die commons-codec.jar-Datei aus Ihrem HDInsight-Cluster herunter.
 
-        scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/common-codec*.jar ./common-codec.jar
+        scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/commons-codec*.jar ./commons-codec.jar
 
-2. Beenden Sie SQuirreL, und wechseln Sie zu dem Verzeichnis, in dem SQuirreL in Ihrem System installiert ist. Ersetzen Sie im SquirreL-Verzeichnis, unterhalb des `lib`-Verzeichnisses, die vorhandene common-codec.jar-Datei durch die Datei, die Sie aus dem HDInsight-Cluster heruntergeladen haben.
+2. Beenden Sie SQuirreL, und wechseln Sie zu dem Verzeichnis, in dem SQuirreL in Ihrem System installiert ist. Ersetzen Sie im SquirreL-Verzeichnis, unterhalb des `lib`-Verzeichnisses, die vorhandene commons-codec.jar-Datei durch die Datei, die Sie aus dem HDInsight-Cluster heruntergeladen haben.
 
 3. Starten Sie SQuirreL neu. Dieser Fehler sollte jetzt nicht mehr auftreten, wenn Sie eine Verbindung mit Hive in HDInsight herstellen.
 
@@ -182,4 +182,4 @@ Nachdem Sie erfahren haben, wie Sie JDBC mit Hive verwenden, können Sie mithilf
 * [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
 * [Verwenden von MapReduce-Aufträgen mit HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0608_2016-->

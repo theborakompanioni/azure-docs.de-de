@@ -11,7 +11,7 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="05/31/2016"
+	ms.date="06/06/2016"
 	ms.author="ashmaka"/>
 
 # Erstellen eines Azure Search-Diensts über das Azure-Portal
@@ -20,7 +20,7 @@ In diesem Leitfaden lernen Sie, wie Sie einen Azure Search-Dienst mithilfe des [
 
 In diesem Leitfaden wird davon ausgegangen, dass Sie bereits über ein Azure-Abonnement verfügen und sich beim Azure-Portal anmelden können.
 
-## I. Suchen Sie Azure Search im Azure-Portal.
+## Suchen Sie Azure Search im Azure-Portal.
 1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com/), und melden Sie sich an.
 1. Klicken Sie in der oberen linken Ecke auf das Pluszeichen („+“).
 2. Wählen Sie „Daten und Speicher“ aus.
@@ -28,7 +28,7 @@ In diesem Leitfaden wird davon ausgegangen, dass Sie bereits über ein Azure-Abo
 
 ![](./media/search-create-service-portal/find-search.png)
 
-## II. Wählen Sie einen Dienstnamen und einen URL-Endpunkt für den Dienst.
+## Wählen Sie einen Dienstnamen und einen URL-Endpunkt für den Dienst.
 1. Ihr Dienstname wird Teil der Endpunkt-URL für den Azure Search-Dienst. Anhand dieser URL führen Sie Ihre API-Aufrufe zum Verwalten und Verwenden des Search-Diensts durch.
 2. Geben Sie den Dienstnamen im Feld „URL“ ein. Der Dienstname:
   * darf nur Kleinbuchstaben, Ziffern oder Bindestriche („-“) enthalten.
@@ -37,25 +37,25 @@ In diesem Leitfaden wird davon ausgegangen, dass Sie bereits über ein Azure-Abo
   * ist auf eine Länge zwischen 2 und 60 Zeichen beschränkt.
 
 
-## III. Wählen Sie ein Abonnement zum Verwalten Ihres Diensts aus.
+## Wählen Sie ein Abonnement zum Verwalten Ihres Diensts aus.
 Wenn Sie über mehrere Abonnements verfügen, können Sie auswählen, welches davon diesen Azure Search-Dienst enthalten soll.
 
-## IV. Erstellen Sie eine Ressourcengruppe für Ihren Dienst.
+## Erstellen Sie eine Ressourcengruppe für Ihren Dienst.
 Erstellen Sie eine neue Ressourcengruppe, oder wählen Sie eine vorhandene Ressourcengruppe aus. Eine Ressourcengruppe ist eine Sammlung von Azure-Diensten und -Ressourcen, die zusammen verwendet werden. Wenn Sie beispielsweise mit Azure Search eine SQL-Datenbank indizieren, sollten diese beiden Dienste der gleichen Ressourcengruppe angehören.
 
-## V. Wählen Sie den Standort aus, an dem Ihr Dienst gehostet wird.
+## Wählen Sie den Standort aus, an dem Ihr Dienst gehostet wird.
 Als Azure-Dienst kann Azure Search in Rechenzentren auf der ganzen Welt gehostet werden. Beachten Sie, dass die [Preise sich je nach geografischer Lage unterscheiden können](https://azure.microsoft.com/pricing/details/search/).
 
-## VI. Wählen Sie Ihren Tarif aus.
+## Wählen Sie Ihren Tarif aus.
 [Azure Search wird derzeit in mehrere Tarifen angeboten](https://azure.microsoft.com/pricing/details/search/): Free, Basic oder Standard. Jeder Tarif verfügt über eigene [Kapazitäten und Grenzwerte](search-limits-quotas-capacity.md).
 
 In diesem Fall haben wir den Standard-Tarif für unseren Dienst gewählt.
 
-## VII. Wählen Sie die Schaltfläche „Erstellen“, um Ihren Dienst bereitzustellen.
+## Wählen Sie die Schaltfläche „Erstellen“, um Ihren Dienst bereitzustellen.
 
 ![](./media/search-create-service-portal/create-service.png)
 
-## VIII. Skalieren Sie den Dienst.
+## Skalieren Sie den Dienst.
 
 Sobald die Bereitstellung Ihres Diensts abgeschlossen ist, können Sie ihn Ihren Anforderungen entsprechend skalieren. Wenn Sie den Standard-Tarif für Ihren Azure Search-Dienst ausgewählt haben, können Sie Ihren Dienst in zwei Dimensionen skalieren: Replikate und Partitionen. Wenn Sie den Basic-Tarif ausgewählt haben, können Sie nur Replikate hinzufügen.
 
@@ -74,4 +74,4 @@ Mit *__Replikaten__* kann Ihr Dienst eine höhere Auslastung von Suchabfragen ve
 ## Weiter
 Nach der Bereitstellung eines Azure Search-Diensts können Sie einen [Azure Search-Index definieren](search-what-is-an-index.md), damit Sie Ihre Daten hochladen und durchsuchen können.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

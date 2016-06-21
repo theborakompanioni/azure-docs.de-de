@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="05/25/2016" 
+	ms.date="06/08/2016" 
 	ms.author="awills"/>
 
 
@@ -31,7 +31,6 @@ Erforderlich:
 Es gibt noch weitere Artikel, die für Sie unter Umständen von Interesse sind:
 
 * [Installieren des Application Insights-Statusmonitors zum Überwachen der Websiteleistung](app-insights-monitor-performance-live-website-now.md) (zum Thema: Instrumentieren einer Web-App zur Laufzeit)
-* [ASP.NET Core](app-insights-asp-net-core.md)
 * [Azure Cloud Services](app-insights-cloudservices.md)
 
 ## <a name="ide"></a> 1. Hinzufügen des Application Insights-SDK
@@ -51,6 +50,7 @@ Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt,
 
 ![Application Insights hinzufügen](./media/app-insights-asp-net/appinsights-03-addExisting.png)
 
+* ASP.NET Core-Projekt? – [Führen Sie diese Anleitung zum Ändern einiger Codezeilen aus](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started#add-application-insights-instrumentation-code-to-startupcs). 
 
 
 
@@ -88,7 +88,7 @@ Das Portal verfügt über eine größere Zahl von Diagrammen, Analysetools und D
 
 Das Portal wird mit einer Ansicht der Telemetriedaten Ihrer App geöffnet: ![](./media/app-insights-asp-net/66.png)
 
-* Einzelne Ereignisse werden unter **Suche** (1) angezeigt. Hier werden die Daten zuerst angegeben (und im Livestream). Klicken Sie auf beliebiges Ereignis, um seine Eigenschaften anzuzeigen. 
+* Einzelne Ereignisse werden unter **Suche** (1) angezeigt. Hier werden die Daten zuerst angegeben (und im [Live Metrics-Datenstrom](app-insights-metrics-explorer.md#live-metrics-stream)). Klicken Sie auf beliebiges Ereignis, um seine Eigenschaften anzuzeigen. 
 * Aggregierte Metriken werden in den Diagrammen (2) angezeigt. Es kann ein oder zwei Minuten dauern, bis die Daten hier angezeigt werden. Klicken Sie auf ein beliebiges Diagramm, um ein Blatt mit mehr Details zu öffnen.
 
 [Erfahren Sie mehr über die Verwendung von Application Insights im Azure-Portal](app-insights-dashboards.md).
@@ -105,7 +105,7 @@ Mit dem Befehl werden also drei Aufgaben erledigt:
 2. Erstellen Sie im [Azure-Portal](https://portal.azure.com/) eine Application Insights-Ressource. Hier werden Ihre Daten angezeigt. Er ruft den *Instrumentationsschlüssel* ab, der die Ressource identifiziert.
 3. Fügt den Instrumentationsschlüssel in `ApplicationInsights.config` ein, damit das SDK Telemetriedaten an das Portal senden kann.
 
-Sie können [diese Schritte auch manuell ausführen](app-insights-asp-net-manual.md).
+Sie können diese Schritte für [ASP.NET 4](app-insights-asp-net-manual.md) oder [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started) auch manuell ausführen.
 
 
 ## Wie geht es weiter?
@@ -116,4 +116,4 @@ Sie können [diese Schritte auch manuell ausführen](app-insights-asp-net-manual
 |**[Navigation und Dashboards im Application Insights-Portal](app-insights-dashboards.md)**<br/> Enthält Informationen zu Dashboards, leistungsstarken Diagnose- und Analysetools, Warnungen, eine Livekarte der Abhängigkeiten Ihrer Anwendung und zum Export von Telemetriedaten. |![Visual Studio](./media/app-insights-asp-net/62.png)
 |**[Hinzufügen weiterer Daten](app-insights-asp-net-more.md)**<br/>Überwachen Sie Nutzung, Verfügbarkeit, Abhängigkeiten und Ausnahmen. Integrieren Sie Ablaufverfolgungen aus Protokollierungsframeworks. Schreiben Sie benutzerdefinierte Telemetriedaten. | ![Visual Studio](./media/app-insights-asp-net/64.png)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

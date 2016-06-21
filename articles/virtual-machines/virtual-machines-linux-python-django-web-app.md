@@ -42,7 +42,7 @@ Unten finden Sie einen Screenshot der vollständigen Anwendung:
 
 ## Erstellen und Konfigurieren eines virtuellen Azure-Computers als Host von Django
 
-1. Befolgen Sie die [hier](virtual-machines-linux-portal-create.md) aufgeführten Anweisungen, um einen virtuellen Azure-Computer der *Ubuntu Server 14.04 LTS*-Distribution zu erstellen. Wenn Sie dies bevorzugen, können Sie die Kennwortauthentifizierung statt eines öffentlichen SSH-Schlüssels wählen.
+1. Befolgen Sie die [hier](virtual-machines-linux-quick-create-portal.md) aufgeführten Anweisungen, um einen virtuellen Azure-Computer der *Ubuntu Server 14.04 LTS*-Distribution zu erstellen. Wenn Sie dies bevorzugen, können Sie die Kennwortauthentifizierung statt eines öffentlichen SSH-Schlüssels wählen.
 
 1. Bearbeiten Sie die Netzwerk-Sicherheitsgruppe wie in der Anleitung [hier](../virtual-network/virtual-networks-create-nsg-arm-pportal.md) beschrieben, um eingehenden http-Datenverkehr an Port 80 zuzulassen.
 
@@ -126,4 +126,4 @@ Auf der Ubuntu Linux-VM ist Python 2.7 bereits vorab installiert; Apache oder D
 
 Wenn Sie mit diesem Lernprogramm fertig sind, fahren Sie den neu erstellten virtuellen Azure-Computer herunter, und/oder entfernen Sie diesen, sodass die Ressourcen für andere Lernprogramme zur Verfügung stehen und anfallende Kosten für die Verwendung von Azure vermieden werden.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

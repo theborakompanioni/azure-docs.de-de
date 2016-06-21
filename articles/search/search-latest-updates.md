@@ -4,7 +4,7 @@
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
-	manager="mblythe"
+	manager="paulettm"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="02/10/2016"
+	ms.date="06/05/2016"
 	ms.author="heidist"/>
 
 #Neuerungen im aktuellen Update zu Azure Search#
@@ -24,7 +24,8 @@ Azure Search ist ein in Microsoft Azure gehosteter Cloudsuchdienst. Er ist allge
 
 Feature|Veröffentlicht|Status|Details
 -------|--------|------|-------
-[.NET SDK 1.1](https://msdn.microsoft.com/library/azure/dn951165.aspx)|Februar 2016|Allgemein verfügbar|Dies ist die erste allgemein verfügbare Version der .NET-Clientbibliothek `Microsoft.Azure.Search.dll`. In dieser Version werden wichtige Änderungen eingeführt. Anweisungen zur Migration finden Sie unter [Upgrade auf Version 1.1 des Azure Search .NET SDK](search-dotnet-sdk-migration.md).
+[SKU-Updates](search-limits-quotas-capacity.md)|Juni 2016|Vorschau und allgemeine Verfügbarkeit|SKUs Basic und Standard 2 (S2), die im März 2016 in der Vorschau verfügbar waren, sind jetzt allgemein verfügbar. <br/><br/>Vorschauversionen einer neuen Standard 3- und S3 High Density-SKU (S3 und S3 HD) werden mit diesem Update eingeführt. Einen Vergleich finden Sie unter [Auswählen einer SKU oder eines Tarifs für Azure Search](search-sku-tier.md).
+[.NET SDK 1.1](https://msdn.microsoft.com/library/azure/dn951165.aspx)|Februar 2016|Allgemein verfügbar|Dies ist die erste allgemein verfügbare Version der .NET-Clientbibliothek, `Microsoft.Azure.Search.dll`. In dieser Version werden wichtige Änderungen eingeführt. Anweisungen zur Migration finden Sie unter [Upgrade auf Version 1.1 des Azure Search .NET SDK](search-dotnet-sdk-migration.md).
 [Unterstützung für die Lucene-Abfragesyntax](https://msdn.microsoft.com/library/azure/mt589323.aspx)|Februar 2016|[ALLGEMEIN VERFÜGBAR](search-api-2015-02-28-preview.md)|Die Lucene-Abfragesyntax ist jetzt sowohl in der REST-API als auch im .NET SDK allgemein verfügbar. Legen Sie in der REST-API den `queryType`-Parameter auf `full` und im .NET SDK die `SearchParameters.QueryType`-Eigenschaft auf `QueryType.Full` fest, um die Lucene-Syntax zu aktivieren.
 [Benutzerdefinierte Analysen](https://azure.microsoft.com/blog/custom-analyzers-in-azure-search/)|Januar 2016|[Vorschau](search-api-2015-02-28-preview.md)|Benutzerdefinierte Konfigurationen von Tokenizern und Tokenfiltern. Weitere Informationen finden Sie auf MSDN unter [Analyse in Azure Search](https://msdn.microsoft.com/library/azure/mt605304.aspx).
 [Azure Blob Storage-Indexer](search-howto-indexing-azure-blob-storage.md)|Januar 2016|[Vorschau](search-api-2015-02-28-preview.md)|PDFs, Office-Dokumente, XML-Dateien, HTML-Dateien oder sogar Video- und Audiodateien können in einem Azure Search-Index zusammengeführt oder erfasst werden.
@@ -71,4 +72,4 @@ Vorschaufeatures und allgemein verfügbare Features sind an eine API-Version der
 
 Features, die allein auf dem Portal oder nur auf Tools aufbauen, werden üblicherweise im Laufe der Zeit geändert und lassen sich weder als allgemein verfügbare Feature noch als Vorschaufeature klassifizieren.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0608_2016-->

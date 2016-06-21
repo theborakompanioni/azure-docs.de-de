@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="05/31/2016"
 	ms.author="priyamo"/>
 
 # Rollover von Signaturschlüsseln in Azure Active Directory
@@ -228,4 +228,4 @@ Wenn Ihr Anwendungstyp oder Ihre Plattform derzeit kein Verfahren für die autom
 
 Dadurch haben Sie das X509-Zertifikat erstellt, das als öffentlicher Schlüssel für Azure AD verwendet wird. Mit den Details des Zertifikats wie etwa Fingerabdruck und Ablaufdatum können Sie manuell oder programmgesteuert prüfen, ob das Zertifikat und der Fingerabdruck Ihrer Anwendung gültig sind.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

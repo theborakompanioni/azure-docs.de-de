@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/03/2016"
+	ms.date="06/14/2016"
 	ms.author="curtand"/>
 
 # Einrichten von Azure Active Directory zur Self-Service-Gruppenverwaltung
@@ -47,10 +47,12 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 
 * [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](active-directory-manage-groups.md)
 
+* [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](active-directory-accessmanagement-groups-settings-cmdlets.md)
+
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
 * [Was ist Azure Active Directory?](active-directory-whatis.md)
 
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

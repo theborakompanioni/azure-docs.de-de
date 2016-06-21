@@ -5,7 +5,7 @@
     keywords="Was sind Gruppenrichtlinien- und MDM-Einstellungen für Enterprise State Roaming, Enterprise State Roaming, Windows-Cloud"
 	documentationCenter=""
 	authors="femila"
-	manager="stevenpo"
+	manager="swadhwa"
 	editor="curtand"/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/04/2016"
+	ms.date="06/07/2016"
 	ms.author="femila"/>
 
 # Gruppenrichtlinien- und MDM-Einstellungen
@@ -24,20 +24,20 @@ Verwenden Sie diese Gruppenrichtlinien- und MDM-Einstellungen (Mobile Device Man
 Unternehmen, die das Roaming für persönliche (nicht verwaltete) Geräte verwalten möchten, können das Azure-Portal zum Aktivieren oder Deaktivieren des Roamings verwenden, anstatt die Gruppenrichtlinie oder MDM. In den folgenden Tabellen sind die verfügbaren Richtlinieneinstellungen beschrieben.
 
 ## MDM-Einstellungen
-Die MDM-Richtlinieneinstellungen gelten sowohl für Windows 10 als auch für Windows 10 Mobile.
+Die MDM-Richtlinieneinstellungen gelten sowohl für Windows 10 als auch für Windows 10 Mobile. Für Windows 10 Mobile wird das auf einem Microsoft-Konto basierende Roaming nur über das OneDrive-Konto eines Benutzers unterstützt. Im Abschnitt „Geräte und Endpunkte“ finden Sie Informationen zu den Geräten, die bei der Azure AD-basierten Synchronisierung unterstützt werden.
 
 | Name | Beschreibung |
 |------------------------------------|----------------------------------------------------------------------|
 | Microsoft-Konto-Verbindung zulassen | Ermöglicht Benutzern die Authentifizierung mit einem Microsoft-Konto auf dem Gerät. |
-| Einstellungen synchronisieren zulassen | Ermöglicht Benutzern das Roaming von Windows-Einstellungen und App-Daten. |
- 
+| Einstellungen synchronisieren zulassen | Ermöglicht Benutzern das Roaming von Windows-Einstellungen und App-Daten; durch Deaktivieren dieser Richtlinie wird die Synchronisierung mobiler Geräte ebenso wie Sicherungen auf mobilen Geräten deaktiviert. |
+
 ## Gruppenrichtlinien-Einstellungen
-Die Gruppenrichtlinien-Einstellungen gelten für Windows 10-Geräte, die einer Active Directory-Domäne beigetreten sind. Die Tabelle enthält Legacyeinstellungen, die scheinbar zum Verwalten von Synchronisierungseinstellungen geeignet sind, aber für Enterprise State Roaming für Windows 10 nicht funktionieren.
+Die Gruppenrichtlinien-Einstellungen gelten für Windows 10-Geräte, die einer Active Directory-Domäne beigetreten sind. Die Tabelle enthält Legacyeinstellungen, die scheinbar zum Verwalten von Synchronisierungseinstellungen geeignet sind, aber für Enterprise State Roaming für Windows 10 nicht funktionieren (in der Beschreibung als „Nicht verwenden“ gekennzeichnet).
 
 | Name | Beschreibung |
 |-------------------------------------|-------------|
 | Konten: Microsoft-Konten blockieren |Diese Richtlinieneinstellung verhindert, dass Benutzer auf diesem Computer neue Microsoft-Konten hinzufügen.|
-| Nicht synchronisieren |Ermöglicht Benutzern das Roaming von Windows-Einstellungen und App-Daten.|
+| Nicht synchronisieren |Verhindert das Roaming von Windows-Einstellungen und App-Daten durch Benutzer.|
 | Personalisierung nicht synchronisieren |Deaktiviert die Synchronisierung der Gruppe „Designs“.|
 | Browsereinstellungen nicht synchronisieren |Deaktiviert die Synchronisierung der Gruppe „Internet Explorer“.|
 | Kennwörter nicht synchronisieren |Deaktiviert die Synchronisierung der Gruppe „Kennwörter“.|
@@ -55,4 +55,4 @@ Die Gruppenrichtlinien-Einstellungen gelten für Windows 10-Geräte, die einer 
 - [Roaming von Einstellungen und Daten – Häufig gestellte Fragen](active-directory-windows-enterprise-state-roaming-faqs.md)
 - [Windows 10-Roamingeinstellungen – Referenz](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0608_2016-->

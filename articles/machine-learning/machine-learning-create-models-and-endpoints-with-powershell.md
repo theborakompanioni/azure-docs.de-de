@@ -36,13 +36,13 @@ Wir verwenden ein Beispiel-[Trainingsexperiment](https://gallery.cortanaintellig
 
 >[AZURE.NOTE] Damit Sie dieses Beispiel nachvollziehen können, empfiehlt es sich, anstelle eines kostenlosen Arbeitsbereichs einen Standardarbeitsbereich zu verwenden. Wir erstellen einen Endpunkt pro Kunde, also insgesamt zehn Endpunkte. Ein Standardarbeitsbereich ist erforderlich, da ein kostenloser Arbeitsbereich auf drei Endpunkte beschränkt ist. Falls Ihnen nur ein kostenloser Arbeitsbereich zur Verfügung steht, können Sie unten einfach die Skripts ändern, um nur drei Standorte zu verwenden.
 
-Im Experiment wird ein **Reader**-Modul zum Importieren des Trainingsdatasets *customer001.csv* aus einem Azure-Speicherkonto verwendet. Angenommen, wir haben Trainingsdatasets für alle Standorte der Fahrradvermietung erfasst und in demselben Blobspeicher in den Dateien *rentalloc001.csv* bis *rentalloc10.csv* gespeichert.
+Im Experiment wird ein **Import Data**-Modul zum Importieren des Trainingsdatasets *customer001.csv* aus einem Azure-Speicherkonto verwendet. Angenommen, wir haben Trainingsdatasets für alle Standorte der Fahrradvermietung erfasst und in demselben Blobspeicher in den Dateien *rentalloc001.csv* bis *rentalloc10.csv* gespeichert.
 
 ![image](./media/machine-learning-create-models-and-endpoints-with-powershell/reader-module.png)
 
 Beachten Sie, dass dem Modul **Train Model** das Modul **Web Service Output** hinzugefügt wurde. Wenn dieses Experiment als Webdienst bereitgestellt wird, gibt der Endpunkt, der dieser Ausgabe zugeordnet ist, das trainierte Modell als ILEARNER-Datei zurück.
 
-Beachten Sie auch, dass wir einen Webdienstparameter für die vom **Reader**-Modul verwendete URL eingerichtet haben. Dies ermöglicht uns die Verwendung des Parameters zum Angeben individueller Trainingsdatasets, um das Modell für jeden Standort zu trainieren. Es gibt auch andere Möglichkeiten, z.B. die Nutzung einer SQL-Abfrage mit einem Webdienstparameter zum Abrufen von Daten aus einer SQL Azure-Datenbank oder einfach die Nutzung des Moduls **Web Service Input** zum Übergeben eines Datasets an den Webdienst.
+Beachten Sie auch, dass wir einen Webdienstparameter für die vom **Import Data**-Modul verwendete URL eingerichtet haben. Dies ermöglicht uns die Verwendung des Parameters zum Angeben individueller Trainingsdatasets, um das Modell für jeden Standort zu trainieren. Es gibt auch andere Möglichkeiten, z.B. die Nutzung einer SQL-Abfrage mit einem Webdienstparameter zum Abrufen von Daten aus einer SQL Azure-Datenbank oder einfach die Nutzung des Moduls **Web Service Input** zum Übergeben eines Datasets an den Webdienst.
 
 ![image](./media/machine-learning-create-models-and-endpoints-with-powershell/web-service-output.png)
 
@@ -159,4 +159,4 @@ Hier ist der vollständige Quellcode angegeben:
 	    Patch-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -ResourceName 'Bike Rental [trained model]' -BaseLocation $baseLoc -RelativeLocation $relativeLoc -SasBlobToken $sasToken
 	}
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

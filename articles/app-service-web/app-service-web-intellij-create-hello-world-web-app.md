@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="05/19/2016" 
+	ms.date="06/07/2016" 
 	ms.author="asirveda;robmcm"/>
 
 # Erstellen einer „Hello World“-Web-App für Azure in IntelliJ
@@ -96,21 +96,21 @@ Es gibt mehrere Möglichkeiten, eine Java-Webanwendung in Azure bereitzustellen.
 
   1. Geben Sie eine **DNS-Bezeichnung** für Ihren Web-App-Container ein; dies ist die Blatt-DNS-Bezeichnung der Host-URL für Ihre Webanwendung in Azure. Hinweis: Der Name muss verfügbar sein und Azure-Web-App-Namenskonventionen entsprechen.
 
-  1. Wählen Sie im Dropdownmenü **Webcontainer** die entsprechende Software für Ihre Anwendung aus.
+  1. Wählen Sie im Dropdownmenü **Web Container** (Webcontainer) die entsprechende Software für Ihre Anwendung aus.
 
         Currently, you can choose from Tomcat 8, Tomcat 7 or Jetty 9. A recent distribution of the selected software will be provided by Azure, and it will run on a recent distribution of JDK 8 created by Oracle and provided by Azure.
 
-  1. Wählen Sie im Dropdownmenü **Abonnement** das Abonnement aus, das Sie für diese Bereitstellung verwenden möchten.
+  1. Wählen Sie im Dropdownmenü **Subscription** (Abonnement) das Abonnement aus, das Sie für diese Bereitstellung verwenden möchten.
 
-  1. Wählen Sie im Dropdownmenü **Ressourcengruppe** die Ressourcengruppe aus, der Sie Ihre Web-App zuordnen möchten.
+  1. Wählen Sie im Dropdownmenü **Resource Group** (Ressourcengruppe) die Ressourcengruppe aus, der Sie Ihre Web-App zuordnen möchten.
 
         Note: Azure Resource Groups allow you to group related resources together so that, for example, they can be deleted together.
 
         You can select an existing Resource Group (if you have any) and skip to step g below, or use the following these steps to create a new Resource Group:
 
-      * Klicken Sie auf **Neu...**
+      * Klicken Sie auf **New...** (Neu...).
 
-      * Das Dialogfeld **Neue Ressourcengruppe** wird angezeigt:
+      * Das Dialogfeld **New Resource Group** (Neue Ressourcengruppe) wird angezeigt:
 
             ![][12]
 
@@ -120,27 +120,27 @@ Es gibt mehrere Möglichkeiten, eine Java-Webanwendung in Azure bereitzustellen.
 
       * Klicken Sie auf **OK**.
 
-  1. Im Dropdownmenü **App Service-Plan** werden die App Service-Pläne aufgelistet, die der ausgewählten Ressourcengruppe zugeordnet sind.
+  1. Im Dropdownmenü **App Service Plan** (App Service-Plan) werden die App Service-Pläne aufgelistet, die der ausgewählten Ressourcengruppe zugeordnet sind.
 
         Note: An App Service Plan specifies information such as the location of your Web App, the pricing tier and the compute instance size. A single App Service Plan can be used for multiple Web Apps, which is why it is maintained separately from a specific Web App deployment.
 
         You can select an existing App Service Plan (if you have any) and skip to step h below, or use the following these steps to create a new App Service Plan:
 
-      * Klicken Sie auf **Neu...**
+      * Klicken Sie auf **New...** (Neu...).
 
-      * Das Dialogfeld **Neuer App Services-Plan** wird angezeigt:
+      * Das Dialogfeld **New App Service Plan** (Neuer App Service-Plan) wird angezeigt:
 
             ![][13]
 
       * Geben Sie im Textfeld **Name** einen Namen für den neuen App Services-Plan ein.
 
-      * Wählen Sie im Dropdownmenü **Standort** den entsprechenden Azure-Rechenzentrumsstandort für den Plan.
+      * Wählen Sie im Dropdownmenü **Location** (Standort) den entsprechenden Azure-Rechenzentrumsstandort für den Plan.
 
-      * Wählen Sie im Dropdown-Menü **Tarif** die entsprechenden Preise für den Plan. Zu Testzwecken können Sie **Free** wählen.
+      * Wählen Sie im Dropdown-Menü **Pricing Tier** (Tarif) die entsprechenden Preise für den Plan. Zu Testzwecken können Sie **Free** wählen.
 
-      * Wählen Sie im Dropdownmenü **Instanzgröße** die entsprechende Instanzgröße für den Plan. Zu Testzwecken können Sie **Klein** wählen.
+      * Wählen Sie im Dropdownmenü **Instance Size** (Instanzgröße) die entsprechende Instanzgröße für den Plan. Zu Testzwecken können Sie **Small** (Klein) wählen.
 
-  1. Wenn Sie alle oben genannten Schritte abgeschlossen haben, sollte das Dialogfeld „Neuer Web-App-Container“ folgender Abbildung ähneln:
+  1. Wenn Sie alle oben genannten Schritte abgeschlossen haben, sollte das Dialogfeld „New Web App Container“ (Neuer Web-App-Container) folgender Abbildung ähneln:
 
         ![][14]
 
@@ -215,18 +215,34 @@ Wenn die Ansicht **Azure Explorer** angezeigt wird, starten oder beenden Sie Ihr
 
 ## Nächste Schritte
 
-Weitere Informationen finden Sie unter den folgenden Links:
+Weitere Informationen zu den Azure-Toolkits für Java-IDEs finden Sie unter den folgenden Links:
 
-* [Java Developer Center]
-* [Web-Apps – Übersicht]
+- [Azure-Toolkit für Eclipse]
+  - [Installieren des Azure-Toolkits für Eclipse]
+  - [Erstellen einer „Hello World“-Web-App für Azure in Eclipse]
+  - [Neuerungen im Azure-Toolkit für Eclipse]
+- [Azure Toolkit für IntelliJ]
+  - [Installieren des Azure Toolkit für IntelliJ]
+  - *Erstellen einer „Hello World“-Web-App für Azure in IntelliJ (dieser Artikel)*
+
+Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center].
+
+Weitere Informationen zum Erstellen von Azure-Web-Apps finden Sie unter [Web-Apps – Übersicht].
 
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
 <!-- URL List -->
 
+[Azure-Toolkit für Eclipse]: ../azure-toolkit-for-eclipse.md
+[Azure Toolkit für IntelliJ]: ../azure-toolkit-for-intellij.md
 [Azure-Toolkits für IntelliJ]: ../azure-toolkit-for-intellij.md
+[Erstellen einer „Hello World“-Web-App für Azure in Eclipse]: ./app-service-web-eclipse-create-hello-world-web-app.md
+[Installieren des Azure-Toolkits für Eclipse]: ../azure-toolkit-for-eclipse-installation.md
+[Installieren des Azure Toolkit für IntelliJ]: ../azure-toolkit-for-intellij-installation.md
 [Installieren des Azure-Toolkits für IntelliJ]: ../azure-toolkit-for-intellij-installation.md
-[Java Developer Center]: https://azure.microsoft.com/develop/java/
+[Neuerungen im Azure-Toolkit für Eclipse]: ../azure-toolkit-for-eclipse-whats-new.md
+
+[Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
 [Web-Apps – Übersicht]: ./app-service-web-overview.md
 
 <!-- IMG List -->
@@ -251,4 +267,4 @@ Weitere Informationen finden Sie unter den folgenden Links:
 [17]: ./media/app-service-web-intellij-create-hello-world-web-app/17-Browse-Web-App.png
 [18]: ./media/app-service-web-intellij-create-hello-world-web-app/18-Stop-Web-App.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

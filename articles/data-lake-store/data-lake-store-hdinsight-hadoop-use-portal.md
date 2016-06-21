@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Erstellen von HDInsight Hadoop-Clustern mit Azure Data Lake-Speicher mithilfe des Portals | Azure"
-   description="Verwenden des Azure-Portals zum Erstellen und Verwenden von HDInsight Hadoop-Clustern mit Azure Data Lake-Speicher"
+   pageTitle="Erstellen von HDInsight-Clustern mit Azure Data Lake-Speicher mithilfe des Portals | Azure"
+   description="Verwenden des Azure-Portals zum Erstellen und Verwenden von HDInsight-Clustern mit Azure Data Lake-Speicher"
    services="data-lake-store,hdinsight" 
    documentationCenter=""
    authors="nitinme"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/11/2016"
+   ms.date="06/03/2016"
    ms.author="nitinme"/>
 
 # Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals
@@ -23,15 +23,15 @@
 - [Mithilfe von PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 
-Erfahren Sie, wie Sie das Azure-Portal zum Erstellen eines HDInsight-Clusters (Hadoop, HBase oder Storm) mit Zugriff auf den Azure Data Lake-Speicher verwenden. Einige wichtige Hinweise zu dieser Version:
+Erfahren Sie, wie Sie das Azure-Portal zum Erstellen eines HDInsight-Clusters (Hadoop, HBase, Spark oder Storm) mit Zugriff auf den Azure Data Lake-Speicher verwenden. Einige wichtige Hinweise zu dieser Version:
 
-* **Bei Hadoop-Clustern (Windows und Linux)** kann der Data Lake-Speicher nur als zusätzliches Speicherkonto verwendet werden. Standardspeicherkonten für solche Cluster sind weiterhin Azure-Speicherblobs (WASB).
+* **Bei Spark-Clustern (Linux) und Hadoop-Clustern (Windows und Linux)** kann der Data Lake-Speicher nur als zusätzliches Speicherkonto verwendet werden. Standardspeicherkonten für solche Cluster sind weiterhin Azure-Speicherblobs (WASB).
 
 * **Bei Storm-Clustern (Windows und Linux)** kann der Data Lake-Speicher zum Schreiben von Daten aus einer Storm-Topologie verwendet werden. Der Data Lake-Speicher kann auch zum Speichern von Verweisdaten verwendet werden, die anschließend von einer Storm-Topologie gelesen werden. Weitere Informationen finden Sie unter [Verwenden des Data Lake-Speichers in einer Storm-Topologie](#use-data-lake-store-in-a-storm-topology).
 
 * Sie können **für HBase-Cluster (Windows und Linux)** den Data Lake-Speicher als Standardspeicher oder als Zusatzspeicher verwenden. Weitere Informationen finden Sie unter [Verwenden des Data Lake-Speichers mit HBase-Clustern](#use-data-lake-store-with-hbase-clusters).
 
-> [AZURE.NOTE] Eine Option zum Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake-Speicher ist nur für HDInsight-Version 3.2 (für Windows und Linux) verfügbar.
+> [AZURE.NOTE] Eine Option zum Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake-Speicher ist nur für die HDInsight-Versionen 3.2 und 3.4 (für Hadoop-, HBase- und Storm-Cluster unter Windows und Linux) verfügbar. Für Spark-Cluster unter Linux ist diese Option nur auf HDInsight 3.4-Clustern verfügbar.
 
 
 ## Voraussetzungen
@@ -258,4 +258,4 @@ Mit HBase-Clustern können Sie den Data Lake-Speicher sowohl als Standardspeiche
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

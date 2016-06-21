@@ -26,7 +26,7 @@ In diesem Leitfaden wird beschrieben, wie die gebrokerten Messagingfunktionen vo
 
 ## Erste Schritte mit Service Bus
 
-In diesem Leitfaden wird davon ausgegangen, dass Sie bereits einen Service Bus-Namespace haben, der eine Warteschlange mit dem Namen **queue1** enthält. Falls nicht, können Sie den Namespace und die Warteschlange im [klassischen Azure-Portal](http://manage.windowsazure.com) erstellen. Weitere Informationen zum Erstellen von Namespaces und Warteschlangen für Service Bus finden Sie unter [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-how-to-use-queues.md).
+In diesem Leitfaden wird davon ausgegangen, dass Sie bereits einen Service Bus-Namespace haben, der eine Warteschlange mit dem Namen **queue1** enthält. Falls nicht, können Sie den Namespace und die Warteschlange im [klassischen Azure-Portal](http://manage.windowsazure.com) erstellen. Weitere Informationen zum Erstellen von Namespaces und Warteschlangen für Service Bus finden Sie unter [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md).
 
 ### Herunterladen der AMQP 1.0 JMS-Clientbibliothek
 
@@ -326,10 +326,10 @@ Sie können Service Bus AMQP 1.0 auch mit anderen Sprachen verwenden, unter ande
 
 ## Nächste Schritte
 
-* [AMQP 1.0-Unterstützung in Azure Service Bus](service-bus-amqp-overview.md)
+* [AMQP 1.0-Unterstützung in Azure Service Bus](service-bus-amqp-overview.md)
 * [Verwenden von AMQP 1.0 mit der .NET-Programmierschnittstelle für Service Bus](service-bus-dotnet-advanced-message-queuing.md)
-* [Entwicklerhandbuch für Service Bus AMQP 1.0](service-bus-amqp-dotnet.md)
-* [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-how-to-use-queues.md)
+* [Entwicklerhandbuch für Service Bus AMQP 1.0](service-bus-amqp-dotnet.md)
+* [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -23,11 +23,11 @@
 
 
 
-Dieses Thema beschreibt das Erstellen eines virtuellen Computers mit der Docker-VM-Erweiterung im ASM-Modus (Azure Service Management) in der Azure-Befehlszeilenschnittstelle auf einer beliebigen Plattform. [Docker](https://www.docker.com/) ist einer der beliebtesten Virtualisierungsansätze, der für das Isolieren von Daten und Computing auf gemeinsamen Ressourcen [Linux-Container](http://en.wikipedia.org/wiki/LXC) statt virtueller Computer verwendet. Verwenden Sie die Docker-VM-Erweiterung des [Azure Linux Agent](virtual-machines-linux-agent-user-guide.md), um einen virtuellen Docker-Computer zu erstellen, der eine beliebige Anzahl von Containern für Ihre Anwendungen in Azure hostet. Eine allgemeine Diskussion über die Container und ihre Vorteile finden Sie unter [Docker High Level Whiteboard](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard) (Whiteboard auf hoher Ebene zu Docker) (in englischer Sprache).
+Dieses Thema beschreibt das Erstellen eines virtuellen Computers mit der Docker-VM-Erweiterung im ASM-Modus (Azure Service Management) in der Azure-Befehlszeilenschnittstelle auf einer beliebigen Plattform. [Docker](https://www.docker.com/) ist einer der beliebtesten Virtualisierungsansätze, der für das Isolieren von Daten und Computing auf gemeinsamen Ressourcen [Linux-Container](http://en.wikipedia.org/wiki/LXC) statt virtueller Computer verwendet. Verwenden Sie die Docker-VM-Erweiterung und den [Azure Linux Agent](virtual-machines-linux-agent-user-guide.md), um einen virtuellen Docker-Computer zu erstellen, der eine beliebige Anzahl von Containern für Ihre Anwendungen in Azure hostet. Eine allgemeine Diskussion über die Container und ihre Vorteile finden Sie unter [Docker High Level Whiteboard](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard) (Whiteboard auf hoher Ebene zu Docker) (in englischer Sprache).
 
 
 ##Verwenden der Docker-VM-Erweiterung mit Azure
-Um die Docker-VM-Erweiterung mit Azure verwenden zu können, müssen Sie eine höhere Version der [Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-sdk-tools-xplat) (Azure-CLI) als 0.8.6 installieren (Bei der Erstellung dieses Dokuments ist die aktuelle Version 0.8.10). Sie können die Azure-CLI auf Mac, Linux und Windows installieren.
+Um die Docker-VM-Erweiterung mit Azure verwenden zu können, müssen Sie eine höhere Version der [Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-sdk-tools-xplat) (Azure-CLI) als 0.8.6 installieren (bei der Erstellung dieses Dokuments ist die aktuelle Version 0.10.0). Sie können die Azure-CLI auf Mac, Linux und Windows installieren.
 
 
 Die Verwendung von Docker auf Azure ist einfach:
@@ -41,7 +41,7 @@ Die Verwendung von Docker auf Azure ist einfach:
 
 Informationen zum Installieren und Konfigurieren der Azure-CLI finden Sie unter [##Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md). Um die Installation zu bestätigen, geben Sie an der Eingabeaufforderung `azure` ein. Nach wenigen Sekunden sollten die ASCII-Zeichnungen der Azure-CLI mit den verfügbaren grundlegenden Befehlen angezeigt werden. Wenn die Installation erfolgreich war, sollten Sie bei Eingabe von `azure help vm` unter den aufgelisteten Befehlen „docker“ finden.
 
-> [AZURE.NOTE] Docker beinhaltet für Windows das Setup-Programm [Boot2Docker](https://docs.docker.com/installation/windows/). Automatisieren Sie damit das Erstellen eines Docker-Clients, mit dem Sie Azure-VMs als Docker-Hosts verwenden können.
+> [AZURE.NOTE] Docker enthält Tools für Windows, die als [Docker Machine](https://docs.docker.com/installation/windows/) bezeichnet werden. Automatisieren Sie damit das Erstellen eines Docker-Clients, mit dem Sie Azure-VMs als Docker-Hosts verwenden können.
 
 ### Verknüpfen der Azure-CLI mit Ihrem Azure-Konto
 Bevor Sie die Azure-CLI nutzen können, müssen Sie Ihre Azure-Anmeldeinformationen mit der Azure-CLI auf Ihrer Plattform verknüpfen. Der Abschnitt [Verbinden mit Ihrem Azure-Abonnement](../xplat-cli-connect.md) erläutert, wie die Datei **.publishsettings** heruntergeladen und importiert wird oder wie Ihre Azure-CLI mit einer Organisations-ID verknüpft wird.
@@ -63,10 +63,10 @@ Verwenden Sie in einer Bash- oder Terminalsitzung den folgenden Azure-CLI-Befehl
 
 `azure vm image list | grep Ubuntu-14_04`
 
-ein, oder wählen Sie einen der Imagenamen aus, z. B. `b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04-LTS-amd64-server-20140724-de-DE-30GB`. Erstellen Sie anschließend mithilfe des folgenden Befehls eine VM mit diesem Image.
+ein, oder wählen Sie einen der Imagenamen aus, z.B. `b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160516-de-DE-30GB`. Erstellen Sie anschließend mithilfe des folgenden Befehls eine VM mit diesem Image.
 
 ```
-azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04-LTS-amd64-server-20140724-de-DE-30GB" <username> <password>
+azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160516-de-DE-30GB" <username> <password>
 ```
 
 Hinweis:
@@ -77,7 +77,7 @@ Hinweis:
 
 + *&lt;password&gt;* ist das Kennwort des Kontos *username*, das die Komplexitätsstandards für Azure erfüllt.
 
-> [AZURE.NOTE] Derzeit muss ein Kennwort aus mindestens 8 Zeichen bestehen und dabei einen Kleinbuchstaben, einen Großbuchstaben, eine Ziffer und eines der folgenden Sonderzeichen enthalten: `!@#$%^&+=`. Der Punkt am Ende des vorhergehenden Satzes zählt nicht zu den Sonderzeichen.
+> [AZURE.NOTE] Derzeit muss ein Kennwort aus mindestens 8 Zeichen bestehen und dabei einen Kleinbuchstaben, einen Großbuchstaben, eine Ziffer und eines der folgenden Sonderzeichen enthalten: `!@#$%^&+=`. Der Punkt am Ende des vorhergehenden Satzes zählt nicht zu den Sonderzeichen.
 
 War die Eingabe erfolgreich, sollte Ihnen in etwa das Folgende angezeigt werden, abhängig von den genauen Argumenten und Optionen, die Sie verwendet haben:
 
@@ -91,7 +91,7 @@ Um den virtuellen Docker-Computer, den Sie in Azure erstellt haben, zu testen, g
 
 *&lt;vm-name-you-used&gt;* ist der Name des virtuellen Computers, den Sie in Ihrem Aufruf von `azure vm docker create` verwendet haben. Es sollte etwas angezeigt werden, das in etwa dem Folgenden entspricht, welches angibt, dass Ihr virtueller Docker-Hostcomputer betriebsbereit ist, in Azure ausgeführt wird und auf Ihre Befehle wartet.
 
-Sie können jetzt versuchen, über den Docker-Client eine Verbindung herzustellen, um Informationen abzurufen (bei einigen Docker-Client-Einrichtungen, z. B. auf dem Mac, müssen Sie möglicherweise `sudo` verwenden):
+Sie können jetzt versuchen, über den Docker-Client eine Verbindung herzustellen, um Informationen abzurufen (bei einigen Docker-Client-Einrichtungen, z.B. auf dem Mac, müssen Sie möglicherweise `sudo` verwenden):
 
 	sudo docker --tls -H tcp://testsshasm.cloudapp.net:2376 info
 	Password:
@@ -173,4 +173,4 @@ Sie sind nun bereit, das [Docker-Benutzerhandbuch] und Ihren virtuellen Docker-C
 [Docker-Benutzerhandbuch]: https://docs.docker.com/userguide/
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0608_2016-->

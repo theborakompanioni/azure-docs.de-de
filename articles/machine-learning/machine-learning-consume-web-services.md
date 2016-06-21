@@ -355,7 +355,7 @@ Ein Batchauftrag, der ausgeführt wird, kann jederzeit abgebrochen werden, indem
 
 Das [BES SDK NuGet-Paket](http://www.nuget.org/packages/Microsoft.Azure.MachineLearning/) bietet Funktionen, die das Aufrufen von BES zur Bewertung im Batchmodus vereinfachen. Um das NuGet-Paket zu installieren, wählen Sie in Visual Studio unter **Tools** den **NuGet-Paket-Manager** aus und klicken dann auf **Paket-Manager-Konsole**.
 
-Azure Machine Learning-Experimente, die als Webdienste bereitgestellt werden, können Webdienst-Eingabemodule einschließen. Dies bedeutet, dass sie erwarten, dass die Eingabe über den Webdienstaufruf in Form eines Verweises auf einen Blobspeicherort bereitgestellt wird. Es gibt auch die Möglichkeit, kein Webdienst-Eingabemodul zu verwenden und stattdessen ein **Reader**-Modul zu nutzen. In diesem Fall liest das **Reader**-Modul in der Regel Daten aus einer SQL-Datenbank, indem zur Laufzeit Daten mithilfe einer Abfrage abgerufen werden. Webdienst-Parameter können verwendet werden, um dynamisch auf andere Server oder Tabellen usw. zu verweisen. Das SDK unterstützt beide dieser Muster.
+Azure Machine Learning-Experimente, die als Webdienste bereitgestellt werden, können Webdienst-Eingabemodule einschließen. Dies bedeutet, dass sie erwarten, dass die Eingabe über den Webdienstaufruf in Form eines Verweises auf einen Blobspeicherort bereitgestellt wird. Es gibt auch die Möglichkeit, kein Webdienst-Eingabemodul zu verwenden und stattdessen ein **Import Data**-Modul zu nutzen. In diesem Fall liest das **Import Data**-Modul in der Regel Daten aus einer SQL-Datenbank, indem zur Laufzeit Daten mithilfe einer Abfrage abgerufen werden. Webdienst-Parameter können verwendet werden, um dynamisch auf andere Server oder Tabellen usw. zu verweisen. Das SDK unterstützt beide dieser Muster.
 
 Im folgenden Codebeispiel wird veranschaulicht, wie Sie einen Batchauftrag anhand eines Azure Machine Learning-Dienstendpunkts mithilfe von BES SDK senden und überwachen können. Beachten Sie die Kommentare für Informationen zu den Einstellungen und Aufrufen.
 
@@ -685,4 +685,4 @@ Jetzt können Sie beliebige Swagger-Tools verwenden. Hier sind die Anweisungen, 
 	        "operationId": "getSwaggerDocument",
 	        
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

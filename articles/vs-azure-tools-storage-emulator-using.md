@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/08/2016"
+   ms.date="06/01/2016"
    ms.author="tarcher" />
 
 # Konfigurieren und Verwenden des Speicheremulators mit Visual Studio
@@ -35,7 +35,7 @@ Sie können angeben, dass beim Ausführen oder Debuggen des Diensts in Visual St
 
 Beim ersten Ausführen oder Debuggen des Diensts von Visual Studio aus wird vom Speicheremulator ein Initialisierungsprozess gestartet. Bei diesem Prozess werden lokale Ports für den Speicheremulator reserviert, und die Speicheremulator-Datenbank wird erstellt. Nach Abschluss dieses Prozesses ist keine erneute Ausführung erforderlich, sofern nicht die Speicheremulator-Datenbank gelöscht wird.
 
->[AZURE.NOTE] Ab der Azure Tools-Version von Juni 2012 wird der Speicheremulator standardmäßig in SQL Express LocalDB ausgeführt. In früheren Versionen von Azure Tools wird der Speicheremulator für eine Standardinstanz von SQL Express 2005 oder 2008 ausgeführt, die vor der Installation des Azure SDK installiert werden muss. Sie können den Speicheremulator auch für eine benannte Instanz von SQL Express oder eine benannte Instanz bzw. Standardinstanz von Microsoft SQL Server ausführen. Wenn Sie den Speicheremulator für die Ausführung mit einer anderen Instanz als der Standardinstanz konfigurieren müssen, finden Sie Informationen hierzu unter [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](./storage/storage-use-emulator/).
+>[AZURE.NOTE] Ab der Azure Tools-Version von Juni 2012 wird der Speicheremulator standardmäßig in SQL Express LocalDB ausgeführt. In früheren Versionen von Azure Tools wird der Speicheremulator für eine Standardinstanz von SQL Express 2005 oder 2008 ausgeführt, die vor der Installation des Azure SDK installiert werden muss. Sie können den Speicheremulator auch für eine benannte Instanz von SQL Express oder eine benannte Instanz bzw. Standardinstanz von Microsoft SQL Server ausführen. Wenn Sie den Speicheremulator für die Ausführung mit einer anderen Instanz als der Standardinstanz konfigurieren müssen, finden Sie Informationen hierzu unter [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](./storage/storage-use-emulator.md).
 
 Der Speicheremulator verfügt über eine Benutzeroberfläche, auf der Sie den Status der lokalen Speicherdienste anzeigen und diese starten, beenden und zurücksetzen können. Nach dem Start des Speicheremulatordiensts können Sie die Benutzeroberfläche anzeigen oder den Dienst starten bzw. beenden, indem Sie auf der Windows-Taskleiste mit der rechten Maustaste auf das Infobereichsymbol für den Microsoft Azure-Emulator klicken.
 
@@ -43,4 +43,4 @@ Der Speicheremulator verfügt über eine Benutzeroberfläche, auf der Sie den St
 
 Der Azure Storage-Knoten im Server-Explorer ermöglicht Ihnen die Anzeige von Daten und das Ändern von Einstellungen für Blob- und Tabellendaten in Ihren Speicherkonten, einschließlich des Speicheremulators. Weitere Informationen finden Sie unter [Durchsuchen und Verwalten von Speicherressourcen mit Server-Explorer](https://msdn.microsoft.com/library/azure/ff683677.aspx).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -12,6 +12,4 @@ SQL Data Warehouse erstellt mit Azure Storage-Momentaufnahmen mindestens alle 8 
 
 SQL Data Warehouse erstellt eine Datenbankmomentaufnahme, bevor eine Datenbank gelöscht wird, und bewahrt diese sieben Tage lang auf. In diesem Fall werden keine Momentaufnahmen der Livedatenbank mehr beibehalten. Auf diese Weise können Sie eine gelöschte Datenbank bis zu dem Punkt wiederherstellen, zu dem sie gelöscht wurde.
 
-SQL Data Warehouse kopiert Momentaufnahmen asynchron in eine andere geografischen Azure-Region, um die Wiederherstellbarkeit bei einem regionalen Ausfall zu erhöhen. Wenn Sie aufgrund eines Fehlers in einer Azure-Region nicht mehr auf Ihre Datenbank zugreifen können, können Sie Ihre Datenbank auf Grundlage einer geografisch redundanten Momentaufnahme wiederherstellen.
-
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -8,8 +8,8 @@ In diesem Abschnitt erfahren Sie, wie Sie Ihre App mithilfe der Echtzeitüberwac
 
 3. Die Überwachung (Monitor) kann Ihnen ein beliebiges Gerät in Echtzeit anzeigen, das Ihre App startet.
 	 
-4. Starten Sie Ihre App im Emulator/Simulator oder auf einem angeschlossenen Gerät. Sie sollten eine Sitzung im Monitor sehen, wenn Ihre Integration richtig ist, was bedeutet, dass Ihre App nun mit dem Mobile Engagement-Back-End verbunden ist und Daten an das Back-End sendet.
+4. Starten Sie jetzt Ihre App. Sie sollten eine Sitzung im Monitor sehen, wenn Ihre Integration richtig ist, was bedeutet, dass Ihre App nun mit dem Mobile Engagement-Back-End verbunden ist und Daten an das Back-End sendet.
 	
 	 ![](./media/mobile-engagement-connect-app-with-monitor/monitor.png)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0615_2016-->

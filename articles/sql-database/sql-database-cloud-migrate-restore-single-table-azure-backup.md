@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/11/2016"
+	ms.date="06/02/2016"
 	ms.author="daleche"/>
 
 
@@ -34,7 +34,7 @@ Es kann Situationen geben, in denen Sie versehentlich einige Daten in einer SQL-
 
 | Datenbankwiederherstellung | Basic-Tarif | Standard-Tarife | Premium-Tarife |
 | :-- | :-- | :-- | :-- |
-| Zeitpunktwiederherstellung | Jeder Wiederherstellungspunkt innerhalb von 7 Tagen|Jeder Wiederherstellungspunkt innerhalb von 14 Tagen| Jeder Wiederherstellungspunkt innerhalb von 35 Tagen|
+| Zeitpunktwiederherstellung | Jeder Wiederherstellungspunkt innerhalb von 7 Tagen|Jeder Wiederherstellungspunkt innerhalb von 14 Tagen| Jeder Wiederherstellungspunkt innerhalb von 35 Tagen|
 
 ## Kopieren der Tabelle aus der wiederhergestellten Datenbank mithilfe des Tools für die SQL-Datenbankmigration
 1. Laden Sie den [SQL-Datenbankmigrations-Assistenten](https://sqlazuremw.codeplex.com) herunter, und installieren Sie ihn.
@@ -44,10 +44,10 @@ Es kann Situationen geben, in denen Sie versehentlich einige Daten in einer SQL-
  - **Servername**: Ihre SQL Azure-Instanz
  - **Authentifizierung**: **SQL Server-Authentifizierung** Geben Sie Ihre Anmeldeinformationen ein.
  - **Datenbank**: **Masterdatenbank (alle Datenbanken auflisten)**.
- - **Hinweis**: Der Assistent speichert standardmäßig Ihre Anmeldeinformationen. Wenn Sie dies nicht möchten, aktivieren Sie **Anmeldeinformationen vergessen**. ![SQL-Datenbankmigrations-Assistent: Quelle auswählen, Schritt 1](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/2.png)
+ - **Hinweis**: Der Assistent speichert standardmäßig Ihre Anmeldeinformationen. Wenn Sie dies nicht möchten, aktivieren Sie **Anmeldeinformationen vergessen**. ![SQL-Datenbankmigrations-Assistent: Quelle auswählen, Schritt 1](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/2.png)
 4. Wählen Sie im Dialogfeld **Quelle auswählen** den Namen der wiederhergestellten Datenbank aus dem Abschnitt **Vorbereitungsschritte** als Quelle aus, und klicken Sie auf **Weiter**.
 
-	![SQL-Datenbankmigrations-Assistent: Quelle auswählen, Schritt 2](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/3.png)
+	![SQL-Datenbankmigrations-Assistent: Quelle auswählen, Schritt 2](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/3.png)
 
 5. Wählen Sie im Dialogfeld **Objekte auswählen** die Option **Bestimmte Datenbankobjekte auswählen**, und wählen Sie dann die Tabelle (oder Tabellen) aus, die Sie zum Zielserver migrieren möchten. ![SQL-Datenbankmigrations-Assistent: Objekte auswählen](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/4.png)
 
@@ -67,4 +67,4 @@ Es kann Situationen geben, in denen Sie versehentlich einige Daten in einer SQL-
 ## Überprüfungsschritt
 1. Testen Sie die neu kopierte Tabelle, und führen Sie Abfragen aus, um sicherzustellen, dass die Daten intakt sind. Wenn Sie sich von der Richtigkeit der Daten überzeugt haben, können Sie die umbenannte Tabelle aus dem Abschnitt **Vorbereitungsschritte** löschen. (Beispielsweise &lt;Tabellenname&gt;\_alt.)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0608_2016-->

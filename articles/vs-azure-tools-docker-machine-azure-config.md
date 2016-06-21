@@ -3,7 +3,7 @@
    description="Beschreibt die Verwendung von Docker Machine zum Erstellen von Docker-Hosts in Azure."
    services="visual-studio-online"
    documentationCenter="na"
-   authors="SteveLas"
+   authors="allclark"
    manager="douge"
    editor="" />
 <tags
@@ -12,8 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="05/16/2016"
-   ms.author="stevelas" />
+   ms.date="06/08/2016"
+   ms.author="allclark;stevelas" />
 
 # Erstellen von Docker-Hosts in Azure mit dem Befehl „docker-machine“
 
@@ -27,14 +27,13 @@ Das Ausführen von [Docker](https://www.docker.com/)-Containern erfordert eine H
 
 Erstellen Sie Docker-Host-VMs in Azure mit dem Befehl `docker-machine create` unter Verwendung des Treibers `azure`.
 
-Für den Azure-Treiber wird Ihre Abonnement-ID benötigt. Sie können die [Azure-Befehlszeilenschnittstelle](xplat-cli-install.md) oder das [Azure-Portal](https:/portal.azure.com) verwenden, um Ihr Azure-Abonnement abzurufen.
+Für den Azure-Treiber wird Ihre Abonnement-ID benötigt. Sie können die [Azure-Befehlszeilenschnittstelle](xplat-cli-install.md) oder das [Azure-Portal](https://portal.azure.com) verwenden, um Ihr Azure-Abonnement abzurufen.
 
 **Verwenden des Azure-Portals**
 - Wählen Sie auf der linken Seite „Abonnements“ aus, und kopieren Sie die Abonnement-ID.
 
 **Verwenden der Azure-Befehlszeilenschnittstelle**
 - Geben Sie ```azure account list``` ein, und kopieren Sie die Abonnement-ID.
-
 
 Geben Sie `docker-machine create --driver azure` ein, um die Optionen und ihre Standardwerte anzuzeigen. In der [Dokumentation für den Azure-Treiber für Docker](https://docs.docker.com/machine/drivers/azure/) finden Sie weitere Informationen.
 
@@ -47,11 +46,13 @@ docker-machine create -d azure --azure-subscription-id <Your AZURE_SUBSCRIPTION_
 ## Wählen eines Docker-Hosts mit docker-maschine
 Sobald Sie in docker-maschine über einen Eintrag für Ihren Host verfügen, können Sie beim Ausführen von Docker-Befehlen den Standardhost festlegen.
 ##Verwenden von PowerShell
+
 ```powershell
 docker-machine env MyDockerHost | Invoke-Expression 
 ```
 
 ##Verwenden von Bash
+
 ```bash
 eval $(docker-machine env MyDockerHost)
 ```
@@ -95,6 +96,7 @@ d5b78f27b335        nginx               "nginx -g 'daemon off"   5 minutes ago  
 ```
 
 Prüfen Sie auch, ob Sie den ausgeführten Container sehen. Geben Sie `docker-machine ip <VM name>` ein, um die IP-Adresse zu suchen, die in den Browser eingegeben werden soll:
+
 ```
 PS C:\> docker-machine ip MyDockerHost
 191.237.46.90
@@ -107,4 +109,4 @@ Mit docker-machine können Sie Docker-Hosts mühelos für einzelne Überprüfung
 
 Informationen zum Entwickeln von .NET Core-Anwendungen mit Visual Studio finden Sie unter [Docker-Tools für Visual Studio](http://aka.ms/DockerToolsForVS).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

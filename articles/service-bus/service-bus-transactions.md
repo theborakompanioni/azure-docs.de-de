@@ -81,6 +81,6 @@ Weitere Informationen zu Service Bus-Warteschlangen finden Sie in den folgenden 
 - [Auto Forward](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/AutoForward) (Automatische Weiterleitung)
 - [Atomic Transactions with Service Bus](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/AtomicTransactions) (Atomare Transaktionen mit Service Bus)
 - [Vergleich von Azure-Warteschlangen und Service Bus-Warteschlangen](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
-- [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-how-to-use-queues.md)
+- [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

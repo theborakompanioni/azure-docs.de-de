@@ -3,7 +3,7 @@
    description="Schrittweise Anweisungen zum Konfigurieren einer Docker-Standardinstanz mithilfe von Docker Machine und VirtualBox"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="TomArcher"
+   authors="allclark"
    manager="douge"
    editor="" />
 <tags
@@ -12,8 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="03/27/2016"
-   ms.author="tarcher" />
+   ms.date="06/08/2016"
+   ms.author="allclark" />
 
 # Konfigurieren eines Docker-Hosts mit VirtualBox
 
@@ -56,4 +56,4 @@ Um einen Docker-Client zu konfigurieren, öffnen Sie einfach Windows PowerShell,
 [0]: ./media/vs-azure-tools-docker-setup/docker-machine-ls.png
 [1]: ./media/vs-azure-tools-docker-setup/docker-ps.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0608_2016-->

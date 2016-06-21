@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="12/04/2015"
+   ms.date="05/31/2016"
    ms.author="mbaldwin"/>
 
 # Problembehandlung: Element "Active Directory" fehlt oder ist nicht verfügbar
@@ -40,7 +40,7 @@ Das Active Directory-Element wird im linken Navigationsmenü angezeigt, wenn ein
 
     OR
 
-* Der Azure-Mandant hat mindestens einen Azure Multi-Factor Authentication-Anbieter. Weitere Informationen finden Sie unter [Verwalten von Azure Multi-Factor Authentication-Anbietern](multi-factor-authentication-get-started-cloud.md/creating-an-azure-multi-factor-auth-provider).
+* Der Azure-Mandant hat mindestens einen Azure Multi-Factor Authentication-Anbieter. Weitere Informationen finden Sie unter [Verwalten von Azure Multi-Factor Authentication-Anbietern](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
 
 Um einen Access Control-Namespace oder einen Multi-Factor Authentication-Anbieter zu erstellen, klicken Sie auf **+NEU** > **App Services** > **Active Directory**.
 
@@ -54,4 +54,4 @@ Während die Seite geladen wird, wird das Element jedoch abgeblendet dargestellt
 
 ![Screenshot: Active Directory ist nicht verfügbar](./media/active-directory-troubleshooting/not-available.png)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="05/19/2016" 
+	ms.date="06/07/2016" 
 	ms.author="robmcm"/>
 
 # Installieren des Azure Toolkit für IntelliJ
@@ -86,19 +86,30 @@ Es gibt zwei Methoden zum Installieren des Azure Toolkit für IntelliJ: über da
 
     ![IntelliJ IDEA neu starten][07]
 
-## Weitere Informationen
+## Siehe auch
 
-[Azure Toolkit für IntelliJ]
+Weitere Informationen zu den Azure-Toolkits für Java-IDEs finden Sie unter den folgenden Links:
 
-[Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]
+- [Azure-Toolkit für Eclipse]
+  - [Installieren des Azure-Toolkits für Eclipse]
+  - [Erstellen einer „Hello World“-Web-App für Azure in Eclipse]
+  - [Neuerungen im Azure-Toolkit für Eclipse]
+- [Azure Toolkit für IntelliJ]
+  - *Installieren des Azure-Toolkits für IntelliJ (dieser Artikel)*
+  - [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]
 
 Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center].
 
 <!-- URL List -->
 
+[Azure-Toolkit für Eclipse]: ./azure-toolkit-for-eclipse.md
 [Azure Toolkit für IntelliJ]: ./azure-toolkit-for-intellij.md
-[Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
+[Erstellen einer „Hello World“-Web-App für Azure in Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
 [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
+[Installieren des Azure-Toolkits für Eclipse]: ./azure-toolkit-for-eclipse-installation.md
+[Neuerungen im Azure-Toolkit für Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
+
+[Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
 
 <!-- IMG List -->
 
@@ -112,4 +123,4 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [06]: ./media/azure-toolkit-for-intellij-installation/06-intellij-settings-dialog.png
 [07]: ./media/azure-toolkit-for-intellij-installation/07-restart-intellij.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

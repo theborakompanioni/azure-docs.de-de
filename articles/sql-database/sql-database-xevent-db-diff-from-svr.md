@@ -15,12 +15,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/25/2016"
+	ms.date="06/07/2016"
 	ms.author="genemi"/>
 
 
 # Erweiterte Ereignisse in Azure SQL-Datenbank
 
+[AZURE.INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
 In diesem Thema wird erläutert, wie sich die Implementierung erweiterter Ereignisse in Azure SQL-Datenbank im Vergleich zu erweiterten Ereignissen in Microsoft SQL Server geringfügig unterscheidet.
 
@@ -36,6 +37,12 @@ In diesem Thema wird erläutert, wie sich die Implementierung erweiterter Ereign
 > [AZURE.NOTE] Ab Oktober 2015 ist das Sitzungsfeature "Erweiterte Ereignisse" in Azure SQL-Datenbank auf Preview-Ebene aktiviert. Das Datum der allgemeinen Verfügbarkeit steht noch nicht fest.
 >
 > Auf der Azure-Seite [Dienstupdates](https://azure.microsoft.com/updates/?service=sql-database) finden Sie Beiträge mit Ankündigungen zur allgemeinen Verfügbarkeit.
+
+
+Weitere Informationen zu erweiterten Ereignissen für Azure SQL-Datenbank und Microsoft SQL Server finden Sie unter:
+
+- [Schnellstart: Erweiterte Ereignisse in Microsoft SQL Server](http://msdn.microsoft.com/library/mt733217.aspx)
+- [Erweiterte Ereignisse](http://msdn.microsoft.com/library/bb630282.aspx)
 
 
 ## Voraussetzungen
@@ -269,4 +276,4 @@ Anderen Codebeispielthemen für erweiterte Ereignisse finden Sie unter den folge
 - Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0608_2016-->

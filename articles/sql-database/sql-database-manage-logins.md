@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Sicherheitsverwaltung für SQL-Datenbank – Anmeldesicherheit | Microsoft Azure"
+   pageTitle="SQL-Datenbank-Authentifizierung und -Autorisierung: Gewähren von Zugriff | Microsoft Azure"
    description="Erfahren Sie mehr über die Sicherheitsverwaltung für SQL-Datenbank und insbesondere dazu, wie der Datenbankzugriff und die Anmeldesicherheit über das Prinzipalkonto auf Serverebene verwaltet wird."
    keywords="Sicherheit für SQL-Datenbank,Datenbanksicherheitsverwaltung,Anmeldesicherheit,Datenbanksicherheit,Datenbankzugriff"
    services="sql-database"
@@ -15,165 +15,146 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="05/12/2016"
+   ms.date="06/06/2016"
    ms.author="rickbyh"/>
 
-# Sicherheit von SQL-Datenbank: Verwalten von Datenbankzugriff und Anmeldesicherheit  
+# SQL-Datenbank-Authentifizierung und -Autorisierung: Gewähren von Zugriff 
 
-Erfahren Sie mehr über die Sicherheitsverwaltung für SQL-Datenbank und insbesondere dazu, wie der Datenbankzugriff und die Anmeldesicherheit über das Prinzipalkonto auf Serverebene verwaltet wird. Sie erhalten grundlegende Informationen zu den Unterschieden und Ähnlichkeiten in Bezug auf die Anmeldesicherheitsoptionen bei SQL-Datenbank und lokalen SQL Server-Instanzen. Unter [Azure SQL Database Tutorial: Get Started with Azure SQL Database Security](sql-database-get-started-security.md) (Azure SQL-Datenbanktutorial: Erste Schritte mit SQL-Datenbanksicherheit) finden Sie ein kurzes Tutorial.
 
-## Datenbankbereitstellung und Prinzipalanmeldung auf Serverebene
+> [AZURE.SELECTOR]
+- [Erste Schritte – Sicherheit](sql-database-get-started-security.md)
+- [Gewähren von Zugriff](sql-database-manage-logins.md)
 
-Wenn Sie sich in Microsoft Azure SQL-Datenbank für den Dienst registrieren, werden vom Bereitstellungsprozess ein Azure SQL-Datenbankserver, eine Datenbank mit dem Namen **master** und eine Anmeldung erstellt, bei der es sich um den Serverebenenprinzipal Ihres Azure SQL-Datenbank-Servers handelt. Diese Anmeldung ähnelt dem Serverebenenprinzipal (**sa**) für eine lokale Instanz von SQL Server. Die in diesem Thema beschriebenen Konzepte gelten auch für Azure SQL Data Warehouse.
 
-Das Serverebenenprinzipal-Konto von Azure SQL-Datenbank verfügt immer über die Berechtigung, die gesamte Sicherheit auf Server- und Datenbankebene zu verwalten. In diesem Thema wird beschrieben, wie Sie den Serverebenenprinzipal und andere Konten verwenden können, um in SQL-Datenbank Anmeldungen und Datenbanken zu verwalten.
+Beginnen Sie hier, um eine Übersicht über Zugriffskonzepte von SQL-Datenbank für Administratoren, Nicht-Administratoren und Rollen zu erhalten.
 
-Azure-Benutzer, die über die rollenbasierte Access Control (Role-Based Access Control, RBAC) von Azure und die Azure Resource Manager-REST-API auf SQL-Datenbank zugreifen, erhalten Berechtigungen gemäß ihren Azure-Rollen. Diese Rollen ermöglichen den Zugriff auf Vorgänge der Verwaltungsebene, jedoch nicht auf Vorgänge der Datenebene. Zu den Vorgängen der Verwaltungsebene zählt u.a. die Möglichkeit, verschiedene Eigenschaften und Schemaelemente in SQL-Datenbank zu lesen. Darüber hinaus werden das Erstellen, Löschen und Konfigurieren einiger Features auf Serverebene im Zusammenhang mit SQL-Datenbank ermöglicht. Bei vielen dieser Vorgänge auf Verwaltungsebene handelt es sich um die Elemente, die Sie bei Verwendung des Azure-Portals sehen und konfigurieren können. Bei Verwendung der RBAC-Rollen werden die Aktionen der Azure-Rollenmitglieder innerhalb der Datenbank (z.B. das Auflisten von Tabellen) vom Datenbankmodul für sie ausgeführt, sodass diese nicht von den GRANT/REVOKE/DENY-Anweisungen des SQL Server-Standardberechtigungssystems betroffen sind. Die RBAC-Rollen beinhalten nicht die Möglichkeit zum Lesen oder Ändern von Daten, da es sich dabei um Vorgänge der Datenebene handelt. Weitere Informationen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md).
+## Uneingeschränkte Administratorkonten
 
-> [AZURE.IMPORTANT] Mit SQL-Datenbank V12 können sich Benutzer gegenüber der Datenbank authentifizieren, indem sie Benutzer für eigenständige Datenbanken verwenden. Benutzer für eigenständige Datenbanken benötigen keine Anmeldungen. Dies verbessert die Portabilität von Datenbanken, reduziert aber auch die Fähigkeit des Serverebenenprinzipals, den Zugriff auf die Datenbank zu steuern. Das Aktivieren von Benutzern für eigenständige Datenbanken ist mit wichtigen Auswirkungen auf die Sicherheit verbunden. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx), [Eigenständige Datenbanken](https://technet.microsoft.com/library/ff929071.aspx) und [CREATE USER (Transact-SQL)](https://technet.microsoft.com/library/ms173463.aspx) und [Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md).
+Es gibt zwei Möglichkeiten für Administratorkonten mit uneingeschränkten Berechtigungen für den Zugriff auf die virtuelle Masterdatenbank und alle Benutzerdatenbanken. Diese Konten werden als Prinzipalkonten auf Serverebene bezeichnet.
 
-## Übersicht über die Verwaltung der Sicherheit von SQL-Datenbank
+### Azure SQL-Datenbank-Abonnentenkonto 
 
-Die Sicherheitsverwaltung von SQL-Datenbank ähnelt der Sicherheitsverwaltung für eine lokale SQL Server-Instanz. Das Verwalten der Sicherheit auf der Datenbankebene ist nahezu identisch. Es bestehen lediglich Unterschiede bei den verfügbaren Parametern. Da SQL-Datenbanken auf einen oder mehrere physische Computer skaliert werden können, verwendet Azure SQL-Datenbank für die Verwaltung auf Serverebene eine andere Strategie. In der folgenden Tabelle ist zusammengefasst, inwiefern sich die Datenbanksicherheitsverwaltung für eine lokale Instanz von SQL Server von der für Azure SQL-Datenbank unterscheidet.
+Bei der Erstellung einer logischen SQL-Instanz wird ein einzelnes Anmeldekonto erstellt, das als Azure SQL-Datenbank-Abonnentenkonto bezeichnet wird. Dieses Konto stellt die Verbindung per SQL Server-Authentifizierung (Benutzername und Kennwort) her. Dieses Konto ist ein Administrator auf der logischen Serverinstanz und in allen Benutzerdatenbanken, die an diese Instanz angefügt sind. Die Berechtigungen des Abonnentenkontos können nicht eingeschränkt werden. Nur eines dieser Konten kann vorhanden sein.
 
-| Unterschied | Lokaler SQL Server | Azure SQL-Datenbank |
-|------------------------------------------------|-----------------------------------------------------------------------------|--------------------------------------------------|
-| Verwalten der Sicherheit auf Serverebene | Ordner **Sicherheit** im Objekt-Explorer von SQL Server Management Studio | Datenbank **master** und über das Azure-Portal |
-| Windows-Authentifizierung | Active Directory-Identitäten | Azure Active Directory-Identitäten |
-| Sicherheitsrolle auf Serverebene zum Erstellen von Anmeldungen | Feste Serverrolle **securityadmin** | Datenbankrolle **loginmanager** in der Datenbank**master** |
-| Befehle zum Verwalten von Benutzernamen | CREATE LOGIN, ALTER LOGIN, DROP LOGIN | CREATE LOGIN, ALTER LOGIN, DROP LOGIN (Es gelten einige Parametereinschränkungen, und es muss eine Verbindung mit der Datenbank **master** bestehen.) |
-| Ansicht mit allen Anmeldungen | sys.server\_principals | sys.sql\_logins (Es muss eine Verbindung mit der Datenbank **master** bestehen.)|
-| Serverebenenrolle zum Erstellen von Datenbanken | Feste Datenbankrolle **dbcreator** | Datenbankrolle **dbmanager** in der Datenbank **master** |
-| Befehl zum Erstellen einer Datenbank | CREATE DATABASE | CREATE DATABASE (Es gelten einige Parametereinschränkungen, und es muss eine Verbindung mit der Datenbank **master** bestehen.) |
-| Ansicht mit allen Datenbanken | sys.databases | sys.databases (Es muss eine Verbindung mit der Datenbank **master** bestehen.) |
+### Azure Active Directory-Administrator
+Ein Azure Active Directory-Konto kann auch als Administrator konfiguriert werden. Bei diesem Konto kann es sich um einen individuellen Azure AD-Benutzer oder eine Azure AD-Gruppe mit mehreren Azure AD-Benutzern handeln. Die Konfiguration eines Azure AD-Administrators ist optional. Ein Azure AD-Administrator muss aber konfiguriert werden, wenn Sie die Windows-Authentifizierung für Azure AD-Konten zum Herstellen der Verbindung mit SQL-Datenbank verwenden möchten. Weitere Informationen zur Konfiguration des Azure Active Directory-Zugriffs finden Sie unter [Herstellen einer Verbindung mit SQL-Datenbank oder SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md).
 
-## Verwaltung auf Serverebene und Masterdatenbank
+### Konfigurieren der Firewall
+Wenn eine Firewall auf Serverebene konfiguriert wird, können für das Azure SQL-Datenbank-Abonnentenkonto und das Azure Active Directory-Konto Verbindungen mit der virtuellen Masterdatenbank und allen Benutzerdatenbanken hergestellt werden. Die Firewall auf Serverebene kann über das Portal konfiguriert werden. Nachdem eine Verbindung hergestellt wurde, können auch weitere Firewallregeln für die Serverebene konfiguriert werden, indem die Transact-SQL-Anweisung [sp\_set\_firewall\_rule](https://msdn.microsoft.com/library/dn270017.aspx) verwendet wird. Weitere Informationen zur Konfiguration der Firewall finden Sie unter [Konfigurieren einer Firewall für die Azure SQL-Datenbank mit dem Azure-Portal](sql-database-configure-firewall-settings.md).
 
-Ihr Azure SQL-Datenbank-Server ist eine Abstraktion, bei der eine Gruppierung von Datenbanken definiert wird. Datenbanken, die Ihrem Azure SQL-Datenbank-Server zugeordnet sind, können sich im Microsoft-Rechenzentrum auf separaten physischen Computern befinden. Führen Sie die Verwaltung auf Serverebene für alle Datenbanken durch, indem Sie eine einzelne Datenbank mit dem Namen **master** verwenden.
+### Administrator-Zugriffspfad
 
-Die Datenbank vom Typ **master** überwacht alle Anmeldungen und verfolgt, welche Anmeldungen zum Erstellen von Datenbanken berechtigt sind, sowie sonstige Anmeldungen. Es muss immer eine Verbindung mit der Datenbank **master** bestehen, wenn Sie Anmeldungen oder Datenbanken erstellen, ändern oder verwerfen. Die Datenbank **master** verfügt auch über die Ansichten ``sys.sql_logins`` und ``sys.databases``, mit denen Sie die Anmeldungen bzw. Datenbanken anzeigen können.
+Wenn die Firewall auf Serverebene richtig konfiguriert ist, können das SQL-Datenbank-Abonnentenkonto und die Azure Active Directory SQL Server-Administratoren Verbindungen mit Tools wie SQL Server Management Studio oder SQL Server Data Tools herstellen. Nur die neuesten Tools verfügen über alle Features und Funktionen. Das folgende Diagramm zeigt eine typische Konfiguration für die beiden Administratorkonten. ![Administrator-Zugriffspfad](./media/sql-database-manage-logins/1sql-db-administrator-access.png)
 
-> [AZURE.NOTE] Der Befehl ``USE`` zum Wechseln zwischen Datenbanken wird nicht unterstützt. Stellen Sie direkt eine Verbindung mit der Zieldatenbank her.
+Bei der Verwendung eines offenen Ports in der Firewall auf Serverebene können Administratoren eine Verbindung mit jeder beliebigen SQL-Datenbank herstellen.
 
-Sie können die Sicherheit auf Datenbankebene für Benutzer und Objekte in Azure SQL-Datenbank genauso verwalten, wie Sie dies für eine lokale Instanz von SQL Server durchführen. Unterschiede bestehen nur in Bezug auf die Parameter, die für die entsprechenden Befehle verfügbar sind. Weitere Informationen finden Sie unter [Sicherheitsrichtlinien und Einschränkungen von Azure SQL-Datenbank](sql-database-security-guidelines.md).
+### Herstellen einer Verbindung mit der Datenbank über SQL Server Management Studio
+Eine exemplarische Vorgehensweise zur Verbindungsherstellung mit SQL Server Management Studio finden Sie unter [Herstellen einer Verbindung mit einer SQL-Datenbank mit SQL Server Management Studio und Ausführen einer T-SQL-Beispielabfrage](sql-database-connect-query-ssms.md).
 
-## Verwalten von Benutzern für eigenständige Datenbanken
 
-Erstellen Sie den ersten Benutzer für eigenständige Datenbanken in einer Datenbank, indem Sie mit dem Serverebenenprinzipal eine Verbindung mit der Datenbank herstellen. Verwenden Sie die Anweisung ``CREATE USER``, ``ALTER USER`` oder ``DROP USER``. Im folgenden Beispiel wird ein Benutzer mit dem Namen „user1“ erstellt.
+## Zusätzliche spezielle Konten
+Mit SQL-Datenbank werden zwei eingeschränkte Administratorrollen in der virtuellen Masterdatenbank bereitgestellt, der Benutzerkonten hinzugefügt werden können.
 
-```
-CREATE USER user1 WITH password='<Strong_Password>';
-```
+### Datenbankersteller
+Über die Administratorkonten können neue Datenbanken erstellt werden. Um ein zusätzliches Konto zu eröffnen, mit dem Datenbanken erstellt werden können, müssen Sie im Master einen Benutzer erstellen und den Benutzer der speziellen Datenbankrolle **dbmanager** hinzufügen. Beim Benutzer kann es sich um einen eigenständigen Datenbankbenutzer oder einen Benutzer basierend auf einer SQL Server-Anmeldung in der virtuellen Masterdatenbank handeln.
 
-> [AZURE.NOTE] Sie müssen ein sicheres Kennwort verwenden, wenn Sie einen Benutzer für eine eigenständige Datenbank erstellen. Weitere Informationen finden Sie unter [Sichere Kennwörter](https://msdn.microsoft.com/library/ms161962.aspx).
+1.	Stellen Sie mit einem Administratorkonto eine Verbindung mit der virtuellen Masterdatenbank her.
+2.	Optionaler Schritt: Erstellen Sie eine SQL Server-Authentifizierungsanmeldung mit der [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx)-Anweisung. Beispielanweisung:
 
-Weitere Benutzer für eigenständige Datenbanken können von jedem Benutzer mit der Berechtigung **ALTER ANY USER** erstellt werden.
+     ```
+     CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
+     ```
 
-SQL-Datenbank, Version 12, unterstützt Azure Active Directory-Identitäten als Vorschaufeature als eigenständige Datenbankbenutzer. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md).
+     > [AZURE.NOTE] Sie müssen ein sicheres Kennwort verwenden, wenn Sie eine Anmeldung oder einen Benutzer für eine eigenständige Datenbank erstellen. Weitere Informationen finden Sie unter [Sichere Kennwörter](https://msdn.microsoft.com/library/ms161962.aspx).
 
-Microsoft empfiehlt die Verwendung von Benutzern für eigenständige Datenbanken mit SQL-Datenbank. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
+3.	Erstellen Sie in der virtuellen Masterdatenbank einen Benutzer, indem Sie die [CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx)-Anweisung verwenden. Der Benutzer kann ein eigenständiger Datenbankbenutzer mit Azure Active Directory-Authentifizierung (bei Konfiguration Ihrer Umgebung für die Azure AD-Authentifizierung), ein eigenständiger Datenbankbenutzer mit SQL Server-Authentifizierung oder ein Benutzer mit SQL Server-Authentifizierung basierend auf einer SQL Server-Authentifizierungsanmeldung (im vorherigen Schritt erstellt) sein. Beispielanweisungen:
 
-## Verwalten von Anmeldungen
+     ```
+     CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
+     CREATE USER Tran WITH PASSWORD = '<strong_password>';
+     CREATE USER Mary FROM LOGIN Mary; 
+     ```
 
-Verwalten Sie Anmeldungen mit der Serverebenenprinzipal-Anmeldung, indem Sie eine Verbindung mit der Masterdatenbank herstellen. Sie können die Anweisung ``CREATE LOGIN``, ``ALTER LOGIN`` oder ``DROP LOGIN`` verwenden. Im folgenden Beispiel wird eine Anmeldung mit dem Namen **login1** erstellt:
+4.	Fügen Sie den neuen Benutzer der Datenbankrolle **dbmanager** hinzu, indem Sie die [ALTER ROLE](https://msdn.microsoft.com/library/ms189775.aspx)-Anweisung verwenden. Beispielanweisungen:
 
-```
--- first, connect to the master database
-CREATE LOGIN login1 WITH password='<ProvidePassword>';
-```
+     ```
+     ALTER ROLE dbmanager ADD MEMBER Mary; 
+     ALTER ROLE dbmanager ADD MEMBER [mike@contoso.com];
+     ```
 
-> [AZURE.NOTE] Sie müssen beim Erstellen einer Anmeldung ein sicheres Kennwort verwenden. Weitere Informationen finden Sie unter [Sichere Kennwörter](https://msdn.microsoft.com/library/ms161962.aspx).
+     > [AZURE.NOTE] „dbmanager“ ist eine Datenbankrolle in der virtuellen Masterdatenbank, sodass Sie einen Benutzer nur der Rolle „dbmanager“ hinzufügen können. Es ist nicht möglich, eine Anmeldung auf Serverebene einer Rolle für die Datenbankebene hinzufügen.
 
-#### Verwenden neuer Anmeldungen
+5.	Konfigurieren Sie bei Bedarf die Firewall der Serverebene, um dem neuen Benutzer das Herstellen der Verbindung zu ermöglichen.
 
-Um mit den von Ihnen erstellten Anmeldungen eine Verbindung mit Microsoft Azure SQL-Datenbank herzustellen, müssen Sie jeder Anmeldung zuerst mit dem Befehl ``CREATE USER`` Berechtigungen auf Datenbankebene gewähren. Weitere Informationen finden Sie weiter unten im Abschnitt **Gewähren von Datenbankzugriff für eine Anmeldung**.
+Nun kann der Benutzer eine Verbindung mit der virtuellen Masterdatenbank herstellen und neue Datenbanken erstellen. Das Konto, mit dem die Datenbank erstellt wird, wird zum Besitzer der Datenbank.
 
-Da einige Tools Tabular Data Stream (TDS) unterschiedlich implementieren, müssen Sie den Namen des Azure SQL-Datenbank-Servers ggf. in der Verbindungszeichenfolge an die Anmeldung anfügen, indem Sie die Notation ``<login>@<server>`` verwenden. Trennen Sie die Anmeldung und den Namen des Azure SQL-Datenbank-Servers durch das Symbol ``@`` voneinander. Wenn die Anmeldung beispielsweise **login1** und der vollqualifizierte Name Ihres Azure SQL-Datenbank-Servers **servername.database.windows.net** lautet, sollte der username-Parameter der Verbindungszeichenfolge wie folgt lauten: **login1@servername**. Der Text, den Sie für den Anmeldenamen auswählen können, wird hierdurch also eingeschränkt. Weitere Informationen finden Sie unter [CREATE LOGIN (Transact-SQL)](https://msdn.microsoft.com/library/ms189751.aspx).
+### Anmeldungs-Manager
 
-## Gewähren von Berechtigungen auf Serverebene für eine Anmeldung
+Bei Bedarf können Sie die gleichen Schritte ausführen (Erstellen einer Anmeldung und eines Benutzers und Hinzufügen eines Benutzers zur Rolle **loginmanager**), um es einem Benutzer zu ermöglichen, im virtuellen Master neue Anmeldungen zu erstellen. In den meisten Fällen ist dies nicht erforderlich, da Microsoft die Verwendung von eigenständigen Datenbankbenutzern empfiehlt, die auf Datenbankebene authentifiziert werden, und keine auf Anmeldungen basierenden Benutzer. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
 
-Damit die Sicherheit auf Serverebene von anderen Anmeldungen als dem Serverebenenprinzipal verwaltet werden kann, verfügt Azure SQL-Datenbank über zwei Sicherheitsrollen: **loginmanager** zum Erstellen von Anmeldungen und **dbmanager** zum Erstellen von Datenbanken. Diesen Datenbankrollen können nur Benutzer in der Datenbank **master** hinzugefügt werden.
+## Benutzer ohne Administratorrechte
 
-> [AZURE.NOTE] Zum Erstellen von Anmeldungen oder Datenbanken müssen Sie mit der Datenbank **master** verbunden sein (einer logischen Darstellung von **master**).
+Im Allgemeinen benötigen Konten ohne Administratorrechte keinen Zugriff auf die virtuelle Masterdatenbank. Erstellen Sie eigenständige Datenbankbenutzer auf Datenbankebene, indem Sie die [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx)-Anweisung verwenden. Der Benutzer kann ein eigenständiger Datenbankbenutzer mit Azure Active Directory-Authentifizierung (bei Konfiguration Ihrer Umgebung für die Azure AD-Authentifizierung), ein eigenständiger Datenbankbenutzer mit SQL Server-Authentifizierung oder ein Benutzer mit SQL Server-Authentifizierung basierend auf einer SQL Server-Authentifizierungsanmeldung (im vorherigen Schritt erstellt) sein. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
 
-### Rolle „loginmanager“
-
-Wie die feste Serverrolle **securityadmin** für eine lokale Instanz von SQL Server verfügt auch die Datenbankrolle **loginmanager** in Azure SQL-Datenbank über die Berechtigung zum Erstellen von Anmeldungen. Nur mit der Serverebenenprinzipal-Anmeldung (per Bereitstellungsprozess erstellt) oder von Mitgliedern der Datenbankrolle **loginmanager** können neue Anmeldungen erstellt werden.
-
-### Rolle „dbmanager“
-
-Die Datenbankrolle **dbmanager** von Azure SQL-Datenbank ähnelt der festen Serverrolle **dbcreator** für eine lokale Instanz von SQL Server. Nur mit der Serverebenenprinzipal-Anmeldung (per Bereitstellungsprozess erstellt) oder von Mitgliedern der Datenbankrolle **dbmanager** können Datenbanken erstellt werden. Sobald ein Benutzer Mitglied der Datenbankrolle **dbmanager** ist, kann er eine Datenbank mit dem Befehl ``CREATE DATABASE`` von Azure SQL-Datenbank erstellen, aber dieser Befehl muss in der Masterdatenbank ausgeführt werden. Weitere Informationen finden Sie unter [CREATE DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/dn268335.aspx).
-
-### Zuweisen von SQL-Datenbank-Serverebenenrollen
-
-Führen Sie die folgenden Schritte aus, um eine Anmeldung und einen dazugehörigen Benutzer zu erstellen, mit der Datenbanken oder andere Anmeldungen erstellt werden können:
-
-1. Stellen Sie eine Verbindung mit der Datenbank **master** her, indem Sie die Anmeldeinformationen der Serverebenenprinzipal-Anmeldung (per Bereitstellungsprozess erstellt) oder die Anmeldeinformationen eines vorhandenen Mitglieds der Datenbankrolle **loginmanager** verwenden.
-2. Erstellen Sie eine Anmeldung mit dem Befehl ``CREATE LOGIN``. Weitere Informationen finden Sie unter [CREATE LOGIN (Transact-SQL)](https://msdn.microsoft.com/library/ms189751.aspx).
-3. Erstellen Sie in der Masterdatenbank einen neuen Benutzer für diese Anmeldung, indem Sie den Befehl ``CREATE USER`` verwenden. Weitere Informationen finden Sie unter [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx).
-4. Verwenden Sie die gespeicherte Prozedur ``sp_addrolememeber``, um der Datenbankrolle **dbmanager**, der Datenbankrolle "loginmanager" oder beiden Rollen einen neuen Benutzer hinzuzufügen.
-
-Im folgenden Codebeispiel wird veranschaulicht, wie Sie eine Anmeldung mit dem Namen **login1** erstellen. Außerdem wird ein entsprechender Datenbankbenutzer mit dem Namen **login1User** erstellt, der Datenbanken oder andere Anmeldungen erstellen kann, während eine Verbindung mit der Datenbank **master** besteht:
+Stellen Sie zum Erstellen von Benutzern eine Verbindung mit der Datenbank her, und führen Sie Anweisungen der folgenden Art aus:
 
 ```
--- first, connect to the master database
-CREATE LOGIN login1 WITH password='<ProvidePassword>';
-CREATE USER login1User FROM LOGIN login1;
-EXEC sp_addrolemember 'dbmanager', 'login1User';
-EXEC sp_addrolemember 'loginmanager', 'login1User';
+CREATE USER Mary FROM LOGIN Mary; 
+CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ```
 
-> [AZURE.NOTE] Sie müssen beim Erstellen einer Anmeldung ein sicheres Kennwort verwenden. Weitere Informationen finden Sie unter [Sichere Kennwörter](https://msdn.microsoft.com/library/ms161962.aspx).
-
-## Gewähren von Datenbankzugriff für eine Anmeldung
-
-Alle Anmeldungen müssen in der Datenbank **master** erstellt werden. Nachdem ein Benutzername erstellt wurde, können Sie für diese Anmeldung ein Benutzerkonto in einer anderen Datenbank erstellen. Azure SQL-Datenbank unterstützt Datenbankrollen genauso, wie dies bei einer lokalen Instanz von SQL Server der Fall ist.
-
-Führen Sie die folgenden Schritte aus, um ein Benutzerkonto in einer anderen Datenbank zu erstellen (vorausgesetzt, Sie haben keine Anmeldung oder Datenbank erstellt):
-
-1. Stellen Sie eine Verbindung mit der Datenbank **master** her (mit einer Anmeldung mit den Rollen **loginmanager** und **dbmanager**).
-2. Erstellen Sie mit dem Befehl ``CREATE LOGIN`` eine neue Anmeldung. Weitere Informationen finden Sie unter [CREATE LOGIN (Transact-SQL)](https://msdn.microsoft.com/library/ms189751.aspx). Windows-Authentifizierung wird nicht unterstützt.
-3. Erstellen Sie mit dem Befehl ``CREATE DATABASE`` eine neue Datenbank. Weitere Informationen finden Sie unter [CREATE DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/dn268335.aspx).
-4. Stellen Sie eine Verbindung mit der neuen Datenbank her (mit der Anmeldung, mit der die Datenbank erstellt wurde).
-5. Erstellen Sie einen neuen Benutzer in der neuen Datenbank, indem Sie den Befehl ``CREATE USER`` verwenden. Weitere Informationen finden Sie unter [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx).
-
-Im folgenden Codebeispiel wird veranschaulicht, wie Sie eine Anmeldung mit dem Namen **login1** und eine Datenbank mit dem Namen **database1** erstellen:
+Zu Beginn kann nur einer der Administratoren oder der Besitzer der Datenbank Benutzer erstellen. Um für weitere Benutzer die Erstellung neuer Benutzer zu genehmigen, gewähren Sie einem ausgewählten Benutzer die Berechtigung `ALTER ANY USER`, indem Sie eine Anweisung wie diese verwenden:
 
 ```
--- first, connect to the master database
-CREATE LOGIN login1 WITH password='<ProvidePassword>';
-CREATE DATABASE database1;
+GRANT ALTER ANY USER TO Mary;
 ```
 
-> [AZURE.NOTE] Sie müssen beim Erstellen einer Anmeldung ein sicheres Kennwort verwenden. Weitere Informationen finden Sie unter [Sichere Kennwörter](https://msdn.microsoft.com/library/ms161962.aspx).
+Um weiteren Benutzern die vollständige Steuerung der Datenbank zu ermöglichen, machen Sie sie mit der `ALTER ROLE`-Anweisung zu einem Mitglied der festen Datenbankrolle **db\_owner**.
 
-Im nächsten Beispiel wird veranschaulicht, wie Sie einen Datenbankbenutzer mit dem Namen **login1User** in der Datenbank **database1** erstellen, der zur Anmeldung **login1** gehört. Um das folgende Beispiel ausführen zu können, müssen Sie zunächst eine neue Verbindung zu „database1“ herstellen, indem Sie eine Anmeldung mit der Berechtigung **ALTER ANY USER** in dieser Datenbank verwenden. Jeder Benutzer, der als Mitglied der **db\_owner**-Rolle eine Verbindung herstellt, verfügt über diese Berechtigung, wie z. B. die Anmeldung, über die die Datenbank erstellt wurde.
+> [AZURE.NOTE] Der Hauptgrund für die Erstellung von Datenbankbenutzern basierend auf Anmeldungen ist, dass Sie ggf. über Benutzer mit SQL Server-Authentifizierung verfügen, die Zugriff auf mehrere Datenbanken benötigen. Auf Anmeldungen basierende Benutzer sind an die Anmeldung und an ein einzelnes Kennwort gebunden, das für diese Anmeldung verwaltet wird. Eigenständige Datenbankbenutzer in einzelnen Datenbanken sind jeweils individuelle Entitäten, für die jeweils ein eigenes Kennwort vorgehalten wird. Dies kann bei eigenständigen Datenbankbenutzern zu Verwirrung führen, wenn sie ihre Kennwörter nicht als identische Kennwörter verwalten.
 
-```
--- Establish a new connection to the database1 database
-CREATE USER login1User FROM LOGIN login1;
-```
+### Konfigurieren der Firewall auf Datenbankebene
 
-Dieses Berechtigungsmodell auf Datenbankebene in Azure SQL-Datenbank ist mit einer lokalen Instanz von SQL Server identisch. Informationen hierzu finden Sie in den folgenden Themen der Referenz in der SQL Server-Onlinedokumentation.
+Es ist eine bewährte Methode, dass Benutzer ohne Administratorrechte nur über die Firewall Zugriff auf die von ihnen verwendeten Datenbanken haben sollten. Verwenden Sie die [sp\_set\_database\_firewall\_rule](https://msdn.microsoft.com/library/dn270010.aspx)-Anweisung, um die Firewall auf Datenbankebene zu konfigurieren, anstatt ihre IP-Adressen über die Firewall auf Serverebene zu autorisieren und ihnen Zugriff auf alle Datenbanken zu gewähren. Die Firewall auf Datenbankebene kann nicht über das Portal konfiguriert werden.
 
-- [Verwalten von Anmeldungen, Benutzern und Schemas: Vorgehensweisen](https://msdn.microsoft.com/library/aa337552.aspx)
-- [Lektion 2: Konfigurieren von Berechtigungen für Datenbankobjekte](https://msdn.microsoft.com/library/ms365345.aspx)
+### Zugriffspfad für Benutzer ohne Administratorrechte
 
-> [AZURE.NOTE] Sicherheitsbezogene Transact-SQL-Anweisungen in Azure SQL-Datenbank können sich in Bezug auf die verfügbaren Parameter leicht unterscheiden. Weitere Informationen finden Sie in der Onlinedokumentation zur Syntax für bestimmte Anweisungen.
+Wenn die Firewall auf Datenbankebene richtig konfiguriert ist, können Datenbankbenutzer eine Verbindung mit Clienttools wie SQL Server Management Studio oder SQL Server Data Tools herstellen. Nur die neuesten Tools verfügen über alle Features und Funktionen. Das folgende Diagramm zeigt einen typischen Zugriffspfad für Benutzer ohne Administratorrechte. ![Zugriffspfad für Benutzer ohne Administratorrechte](./media/sql-database-manage-logins/2sql-db-nonadmin-access.png)
+ 
+## Gruppen und Rollen
+Bei der effizienten Zugriffsverwaltung werden Berechtigungen verwendet, die Gruppen und Rollen zugewiesen sind, anstatt einzelnen Benutzern. Dies kann beispielsweise bei der Azure Active Directory-Authentifizierung der Fall sein:
 
-## Anzeigen von Anmeldungen und Datenbanken
+- Fügen Sie Azure Active Directory-Benutzer in eine Azure Active Directory-Gruppe ein. Erstellen Sie einen eigenständigen Datenbankbenutzer für die Gruppe. Ordnen Sie einen oder mehrere Datenbankbenutzer in einer Datenbankrolle an. Weisen Sie der Datenbankrolle anschließend Berechtigungen zu.
+
+Bei Verwendung der SQL Server-Authentifizierung:
+
+- Erstellen Sie eigenständige Datenbankbenutzer in der Datenbank. Ordnen Sie einen oder mehrere Datenbankbenutzer in einer Datenbankrolle an. Weisen Sie der Datenbankrolle anschließend Berechtigungen zu.
+
+Bei den Datenbankrollen kann es sich um integrierte Rollen handeln, z.B. **db\_owner**, **db\_ddladmin**, **db\_datawriter**, **db\_datareader**, **db\_denydatawriter** und **db\_denydatareader**. **db\_owner** wird normalerweise verwendet, um nur einigen Benutzern eine vollständige Berechtigung zu gewähren. Die anderen festen Datenbankrollen sind hilfreich, um bei der Entwicklung schnell eine einfache Datenbank zu erhalten, aber sie sind auch für die meisten Produktionsdatenbanken zu empfehlen. Die feste Datenbankrolle **db\_datareader** gewährt beispielsweise Lesezugriff auf jede Tabelle der Datenbank. Dies ist im Normalfall nicht unbedingt erforderlich. Es ist viel besser, die [CREATE ROLE](https://msdn.microsoft.com/library/ms187936.aspx)-Anweisung zum Erstellen Ihrer eigenen benutzerdefinierten Datenbankrollen zu verwenden und jeder Rolle sorgfältig nur die Berechtigungen zu gewähren, die für die jeweilige Aufgabe benötigt werden. Wenn ein Benutzer Mitglied mehrerer Rollen ist, verfügt er über die zusammengefassten Berechtigungen all dieser Rollen.
+
+## Berechtigungen
+
+Es gibt mehr als 100 Berechtigungen, die in SQL-Datenbank individuell gewährt oder verweigert werden können. Viele dieser Berechtigungen sind geschachtelt. Die `UPDATE`-Berechtigung für ein Schema enthält beispielsweise für jede Tabelle des Schemas die `UPDATE`-Berechtigung. Wie bei den meisten Berechtigungssystemen wird eine Gewährung durch die Verweigerung einer Berechtigung außer Kraft gesetzt. Aufgrund der Schachtelung und der Anzahl von Berechtigungen muss ein geeignetes Berechtigungssystem sorgfältig entworfen werden, um für Ihre Datenbank den richtigen Schutz sicherzustellen. Beginnen Sie mit der Liste der Berechtigungen unter [Berechtigungen (Datenbankmodul)](https://msdn.microsoft.com/library/ms191291.aspx), und sehen Sie sich die [Grafik in Postergröße](http://go.microsoft.com/fwlink/?LinkId=229142) mit den Berechtigungen an.
 
 
-Verwenden Sie zum Anzeigen von Anmeldungen und Datenbanken auf Ihrem Azure SQL-Datenbank-Server die Ansicht ``sys.sql_logins`` bzw. ``sys.databases`` der Masterdatenbank. Im folgenden Beispiel wird veranschaulicht, wie Sie eine Liste aller Anmeldungen und Datenbanken auf Ihrem Azure SQL-Datenbank-Server anzeigen.
+### Weitere Informationen
 
-```
--- first, connect to the master database
-SELECT * FROM sys.sql_logins;
-SELECT * FROM sys.databases;
-```
+[Sichern der SQL-Datenbank](sql-database-security.md)
 
-## Weitere Informationen
+[Sicherheitscenter für SQL Server-Datenbankmodul und Azure SQL-Datenbank](https://msdn.microsoft.com/library/bb510589.aspx)
 
-[Azure SQL Database Tutorial: Get Started with Azure SQL Database Security](sql-database-get-started-security.md) (Azure SQL-Datenbanktutorial: Erste Schritte mit SQL-Datenbanksicherheit) [Sicherheitsrichtlinien und Einschränkungen von Azure SQL-Datenbank](sql-database-security-guidelines.md) [Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md)
+## Nächste Schritte
 
-<!---HONumber=AcomDC_0518_2016-->
+[Sichern der SQL-Datenbank](sql-database-security.md)
+
+[Erstellen einer Tabelle (Lernprogramm)](https://msdn.microsoft.com/library/ms365315.aspx)
+
+[Einfügen und Aktualisieren von Daten in einer Tabelle (Lernprogramm)](https://msdn.microsoft.com/library/ms365309.aspx)
+
+[Lesen der Daten in einer Tabelle (Lernprogramm)](https://msdn.microsoft.com/library/ms365310.aspx)
+
+[Erstellen von Sichten und gespeicherten Prozeduren](https://msdn.microsoft.com/library/ms365311.aspx)
+
+[Erteilen des Zugriffs auf ein Datenbankobjekt](https://msdn.microsoft.com/library/ms365327.aspx)
+
+<!---HONumber=AcomDC_0608_2016-->

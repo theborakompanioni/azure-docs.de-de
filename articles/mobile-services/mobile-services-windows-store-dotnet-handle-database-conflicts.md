@@ -128,9 +128,9 @@ In manchen Szenarien können zwei oder mehr Clients gleichzeitig versuchen, dass
 	> [AZURE.NOTE] Bei der Verwendung von untypisierten Tabellen können Sie die optimistische Nebenläufigkeit aktivieren, indem sie das Version-Flag zu den Systemeigenschaften der Tabelle hinzufügen.
 	>
 	>`````
-	//Enable optimistic concurrency by retrieving __version
-todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
-`````
+	>//Enable optimistic concurrency by retrieving __version
+	>todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
+	>`````
 
 
 2. Wenn Sie der `TodoItem`-Klasse die `Version`-Eigenschaft hinzufügen, wird die Anwendung während einer Aktualisierung mit einer `MobileServicePreconditionFailedException`-Ausnahme benachrichtigt, falls der Eintrag seit der letzten Abfrage geändert wurde. Diese Ausnahme enthält den die neueste Version des Elements auf dem Server. Fügen Sie den folgenden Code in "MainPage.cs" für das freigegebene Projekt hinzu, um die Ausnahme in der `UpdateToDoItem()`-Methode zu behandeln.
@@ -370,4 +370,4 @@ In diesem Lernprogramm wurden die Grundlagen der Behandlung von Schreibkonflikte
 [Developer Code Samples site]: http://go.microsoft.com/fwlink/p/?LinkId=271146
 [Systemeigenschaften]: http://go.microsoft.com/fwlink/?LinkId=331143
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0608_2016-->

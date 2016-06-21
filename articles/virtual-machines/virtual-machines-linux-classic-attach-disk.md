@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/04/2016"
+	ms.date="06/07/2016"
 	ms.author="iainfou"/>
 
 # Gewusst wie: Anfügen eines Datenträgers an einen virtuellen Linux-Computer
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell. So fügen Sie [einen Datenträger mithilfe des Resource Manager-Bereitstellungsmodell an](virtual-machines-linux-add-disk.md).
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell. Sie können auch [einen Datenträger mithilfe des Resource Manager-Bereitstellungsmodells anfügen](virtual-machines-linux-add-disk.md).
 
 Sie können sowohl leere Datenträger, als auch Datenträger mit Daten an Ihre virtuellen Azure-Computer anfügen. Beide Arten von Datenträgern sind VHD-Dateien, die sich in einem Azure Storage-Konto befinden. Wie bei jedem Hinzufügen von Datenträgern an einen Linux-Computer, müssen Sie nach dem Anfügen des Datenträgers diesen initialisieren und formatieren, damit er verwendet werden kann. In diesem Artikel wird beschrieben, wie Sie sowohl leere Datenträger als auch Datenträger mit Daten an Ihre VMs anfügen, und wie Sie daraufhin einen neuen Datenträger initialisieren und formatieren.
 
@@ -122,7 +122,7 @@ Sie können sowohl leere Datenträger, als auch Datenträger mit Daten an Ihre v
 
 11. Fügen Sie das neue Laufwerk zu /etc/fstab hinzu:
 
-	Um sicherzustellen, dass das Laufwerk nach einem Neustart automatisch wieder eingebunden wird, muss es zur Datei /etc/fstab hinzugefügt werden. Außerdem wird dringend empfohlen, den UUID (Universally Unique IDentifier) in /etc/fstab zu verwenden, um auf das Laufwerk und nicht auf den Gerätenamen (d. h. auf /dev/sdc1) zu verweisen. Sie können das Hilfsprogramm **blkid** verwenden, um den UUID des neuen Laufwerks herauszufinden:
+	Um sicherzustellen, dass das Laufwerk nach einem Neustart automatisch wieder eingebunden wird, muss es zur Datei /etc/fstab hinzugefügt werden. Außerdem wird dringend empfohlen, den UUID (Universally Unique IDentifier) in /etc/fstab zu verwenden, um auf das Laufwerk und nicht auf den Gerätenamen (d.h. auf /dev/sdc1) zu verweisen. Sie können das Hilfsprogramm **blkid** verwenden, um den UUID des neuen Laufwerks herauszufinden:
 
 		# sudo -i blkid
 
@@ -160,15 +160,17 @@ Sie können sowohl leere Datenträger, als auch Datenträger mit Daten an Ihre v
 
 >[AZURE.NOTE] Wenn Sie später einen Datenträger entfernen, ohne "fstab" zu bearbeiteten, kann der Start des virtuellen Computers fehlschlagen. Für den Fall, dass dieses Problem häufiger auftritt, bieten die meisten Verteilungen die fstab-Optionen `nofail` und/oder `nobootwait`, die einen Systemstart auch dann erlauben, wenn der Datenträger zur Startzeit nicht eingebunden werden kann. Weitere Informationen zu diesen Parametern finden Sie in der Dokumentation zu Ihrer Verteilung.
 
-## Zusätzliche Ressourcen
-[Anmelden bei einem mit Linux betriebenen virtuellen Computer][Logon]
+## Nächste Schritte
+Informieren Sie sich in den folgenden Artikeln ausführlicher über das Verwenden von virtuellen Linux-Computern:
 
-[Trennen eines Datenträgers von einem virtuellen Linux-Computer](virtual-machines-linux-classic-detach-disk.md)
+- [Anmelden bei einem mit Linux betriebenen virtuellen Computer][Logon]
 
-[Verwenden der Azure-Befehlszeilenschnittstelle mit der Dienstverwaltungs-API](../virtual-machines-command-line-tools.md)
+- [Trennen eines Datenträgers von einem virtuellen Linux-Computer](virtual-machines-linux-classic-detach-disk.md)
+
+- [Verwenden der Azure-Befehlszeilenschnittstelle beim klassischen Bereitstellungsmodell](../virtual-machines-command-line-tools.md)
 
 <!--Link references-->
 [Agent]: virtual-machines-linux-agent-user-guide.md
 [Logon]: virtual-machines-linux-classic-log-on.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

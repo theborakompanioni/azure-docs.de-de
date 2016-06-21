@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/18/2016"
+	ms.date="06/06/2016"
 	ms.author="markvi"/>
 
 #Azure Active Directory Identity Protection 
@@ -67,7 +67,7 @@ Azure Active Directory Identity Protection ist aber viel mehr als ein Tool für 
 
 - Bereitstellen grundlegender Workflows zum Nachverfolgen von Untersuchungen
 
-- Bereitstellen des einfachen Zugriffs auf Korrekturaktionen, z. B. Kennwortzurücksetzung
+- Bereitstellen des einfachen Zugriffs auf Korrekturaktionen, z. B. Kennwortzurücksetzung
 
 <br>
 
@@ -97,7 +97,7 @@ Einige dieser Risikoereignisse sind über die Berichte zu anomalen Aktivitäten 
 | Anmeldungen von infizierten Geräten | Anmeldungen von möglicherweise infizierten Geräten |
 | Anmeldungen von anonymen IP-Adressen | Anmeldungen von unbekannten Quellen |
 | Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten |	Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten |
-| Anmeldungen von unbekannten Standorten | - | 
+| Anmeldungen von unbekannten Standorten | - |
 | Sperr-Ereignisse (nicht Teil der öffentlichen Vorschau) | - |
 
 Die folgenden Azure AD-Berichte zu anomalen Aktivitäten sind nicht als Risikoereignisse in Azure AD Identity Protection enthalten und daher auch nicht über Identity Protection verfügbar. Diese Berichte sind im Azure-Verwaltungsportal noch enthalten, aber sie werden nach und nach eingestellt, da sie durch Risikoereignisse in Identity Protection ersetzt werden.
@@ -165,7 +165,7 @@ Sie können die Benutzerrisikostufen verwenden, um Richtlinien für den bedingte
 
 ## Manuelles Schließen von Risikoereignissen
 
-In den meisten Fällen führen Sie Korrekturaktionen durch, z. B. das sichere Zurücksetzen des Kennworts, um Risikoereignisse automatisch zu schließen. Allerdings ist dies unter Umständen nicht immer möglich. <br> Dies gilt beispielsweise in folgenden Fällen:
+In den meisten Fällen führen Sie Korrekturaktionen durch, z. B. das sichere Zurücksetzen des Kennworts, um Risikoereignisse automatisch zu schließen. Allerdings ist dies unter Umständen nicht immer möglich. <br> Dies gilt beispielsweise in folgenden Fällen:
 
 - Ein Benutzer mit aktiven Risikoereignissen wurde gelöscht.
 - Eine Untersuchung ergibt, dass ein gemeldetes Risikoereignis vom berechtigten Benutzer durchgeführt wurde.
@@ -180,11 +180,11 @@ Da Risikoereignisse, die den Status **Aktiv** haben, in die Berechnung des Benut
 
 - **Ignorieren:** Falls Sie keine Korrekturaktion durchgeführt haben und das Risikoereignis trotzdem aus der Liste „Aktiv“ entfernen möchten, können Sie ein Risikoereignis mit „Ignorieren“ kennzeichnen. Der Ereignisstatus wird dann in „Geschlossen“ geändert. Ignorierte Ereignisse gehen nicht in das Benutzerrisiko ein. Diese Option sollte nur unter ungewöhnlichen Umständen verwendet werden.
 
-- **Reaktivieren:** Risikoereignisse, die manuell geschlossen wurden (durch Auswahl von **Lösen**, **Falsch positiv** oder **Ignorieren**) können reaktiviert werden. Hierfür wird der Ereignisstatus zurück auf **Aktiv** gesetzt. Reaktivierte Risikoereignisse fließen in die Berechnung des Benutzerrisikos ein. Risikoereignisse, die per Korrekturmaßnahme (z. B. das sichere Zurücksetzen des Kennworts) geschlossen werden, können nicht reaktiviert werden.
+- **Reaktivieren:** Risikoereignisse, die manuell geschlossen wurden (durch Auswahl von **Lösen**, **Falsch positiv** oder **Ignorieren**) können reaktiviert werden. Hierfür wird der Ereignisstatus zurück auf **Aktiv** gesetzt. Reaktivierte Risikoereignisse fließen in die Berechnung des Benutzerrisikos ein. Risikoereignisse, die per Korrekturmaßnahme (z. B. das sichere Zurücksetzen des Kennworts) geschlossen werden, können nicht reaktiviert werden.
 
 **So öffnen Sie das zugehörige Konfigurationsdialogfeld**
 
-1. Klicken Sie auf dem Blatt **Azure AD Identity Protection** auf **Als risikobehaftet gekennzeichnete Benutzer**. <br><br> ![Manuelles Zurücksetzen des Kennworts](./media/active-directory-identityprotection/408.png "Manuelles Zurücksetzen des Kennworts") <br>
+1. Klicken Sie auf dem Blatt **Azure AD Identity Protection** auf **Als risikobehaftet gekennzeichnete Benutzer**. <br><br> ![Manuelles Zurücksetzen des Kennworts](./media/active-directory-identityprotection/408.png "Manuelles Zurücksetzen des Kennworts") <br>
 
 2. Klicken Sie mit der rechten Maustaste auf den betroffenen Benutzer. <br><br> ![Manuelles Zurücksetzen des Kennworts](./media/active-directory-identityprotection/437.png "Manuelles Zurücksetzen des Kennworts") <br>
 
@@ -215,7 +215,7 @@ Das zugehörige Dialogfeld bietet zwei verschiedene Methoden zum Zurücksetzen e
 
 **So öffnen Sie das zugehörige Konfigurationsdialogfeld**
 
-1. Klicken Sie auf dem Blatt **Azure AD Identity Protection** auf **Als risikobehaftet gekennzeichnete Benutzer**. <br><br> ![Manuelles Zurücksetzen des Kennworts](./media/active-directory-identityprotection/408.png "Manuelles Zurücksetzen des Kennworts") <br>
+1. Klicken Sie auf dem Blatt **Azure AD Identity Protection** auf **Als risikobehaftet gekennzeichnete Benutzer**. <br><br> ![Manuelles Zurücksetzen des Kennworts](./media/active-directory-identityprotection/408.png "Manuelles Zurücksetzen des Kennworts") <br>
 
 2. Klicken Sie auf den betroffenen Benutzer. <br><br> ![Manuelles Zurücksetzen des Kennworts](./media/active-directory-identityprotection/404.png "Manuelles Zurücksetzen des Kennworts") <br>
 
@@ -229,7 +229,7 @@ Das zugehörige Dialogfeld bietet zwei verschiedene Methoden zum Zurücksetzen e
 
 Eine Benutzerrisiko-Sicherheitsrichtlinie ist eine Richtlinie für bedingten Zugriff, mit der die Risikostufe für einen bestimmten Benutzer ausgewertet wird und Korrektur- und Lösungsmaßnahmen basierend auf vordefinierten Bedingungen und Regeln angewendet werden. <br><br> ![Benutzerrisiko-Richtlinie](./media/active-directory-identityprotection/500.png "Benutzerrisiko-Richtlinie") <br>
 
-Azure AD Identity Protection dient Ihnen als Unterstützung beim Verwalten der Korrektur- und Lösungsmaßnahmen für Benutzer, die als risikobehaftet eingestuft sind. Sie haben folgende Möglichkeiten:
+Azure AD Identity Protection dient Ihnen als Unterstützung beim Verwalten der Korrektur- und Lösungsmaßnahmen für Benutzer, die als risikobehaftet eingestuft sind. Sie haben folgende Möglichkeiten:
 
 - Festlegen der Benutzer und Gruppen, für die die Richtlinie gilt: <br><br> ![Benutzerrisiko-Richtlinie](./media/active-directory-identityprotection/501.png "Benutzerrisiko-Richtlinie") <br>
 
@@ -265,7 +265,7 @@ Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
 
 **So öffnen Sie das zugehörige Konfigurationsdialogfeld**
 
-1. Klicken Sie auf dem Blatt **Azure AD Identity Protection** auf **Einstellungen**. <br><br> ![Richtlinie zum Benutzerrisiko](./media/active-directory-identityprotection/401.png "Richtlinie zum Benutzerrisiko") <br>
+1. Klicken Sie auf dem Blatt **Azure AD Identity Protection** auf **Einstellungen**. <br><br> ![Richtlinie zum Benutzerrisiko](./media/active-directory-identityprotection/401.png "Richtlinie zum Benutzerrisiko") <br>
 
 2. Klicken Sie im Abschnitt **Sicherheitsrichtlinien** auf **Benutzerrisiko**. <br><br> ![Richtlinie zum Benutzerrisiko](./media/active-directory-identityprotection/500.png "Richtlinie zum Benutzerrisiko") <br>
 
@@ -353,7 +353,7 @@ Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
 
 **So öffnen Sie das zugehörige Konfigurationsdialogfeld**
 
-1. Klicken Sie auf dem Blatt **Azure AD Identity Protection** auf **Einstellungen**. <br><br> ![MFA-Registrierung](./media/active-directory-identityprotection/401.png "MFA-Registrierung") <br>
+1. Klicken Sie auf dem Blatt **Azure AD Identity Protection** auf **Einstellungen**. <br><br> ![MFA-Registrierung](./media/active-directory-identityprotection/401.png "MFA-Registrierung") <br>
 
 1. Klicken Sie im Abschnitt **Sicherheitsrichtlinien** auf **Anmelderisiko**. <br><br> ![MFA-Registrierung](./media/active-directory-identityprotection/700.png "MFA-Registrierung") <br>
 
@@ -371,7 +371,7 @@ Azure Multi-Factor Authentication ist eine Methode zum Überprüfen der Identit�
 Weitere Informationen finden Sie unter [Was ist Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md).
 
 
-Azure AD Identity Protection unterstützt Sie beim Verwalten des Rollouts der Multi-Factor Authentication-Registrierung, indem über eine konfigurierte Richtlinie Folgendes ermöglicht wird:
+Azure AD Identity Protection unterstützt Sie beim Verwalten des Rollouts der Multi-Factor Authentication-Registrierung, indem über eine konfigurierte Richtlinie Folgendes ermöglicht wird:
 
 - Anzeigen des aktuellen Registrierungsstatus: <br><br> ![MFA-Registrierung](./media/active-directory-identityprotection/603.png "MFA-Registrierung") <br>
 
@@ -393,7 +393,7 @@ Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
 
 **So öffnen Sie das zugehörige Konfigurationsdialogfeld**
 
-1. Klicken Sie auf dem Blatt **Azure AD Identity Protection** auf **Einstellungen**. <br><br> ![MFA-Registrierung](./media/active-directory-identityprotection/401.png "MFA-Registrierung") <br>
+1. Klicken Sie auf dem Blatt **Azure AD Identity Protection** auf **Einstellungen**. <br><br> ![MFA-Registrierung](./media/active-directory-identityprotection/401.png "MFA-Registrierung") <br>
 
 2. Klicken Sie im Abschnitt **Multi-Factor Authentication** auf **Registrierung**. <br><br> ![MFA-Registrierung](./media/active-directory-identityprotection/402.png "MFA-Registrierung") <br>
 
@@ -402,7 +402,7 @@ Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
 
 ## Weitere Informationen
 
- - [Channel 9: Azure AD and Identity Show: Identity Protection Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview) (Channel 9: Azure AD- und Identity-Show: Vorschau von Identity Protection)
+ - [Channel 9: Azure AD and Identity Show: Identity Protection Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview) (Channel 9: Azure AD- und Identity-Show: Vorschau von Identity Protection)
  - [Arten von Risikoereignissen, die von Azure Active Directory Identity Protection erkannt werden](active-directory-identityprotection-risk-events-types.md)
  - [Von Azure Active Directory Identity Protection erkannte Sicherheitsrisiken](active-directory-identityprotection-vulnerabilities.md)
  - [Azure Active Directory Identity Protection-Benachrichtigungen](active-directory-identityprotection-notifications.md)
@@ -410,4 +410,4 @@ Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
  - [Azure Active Directory Identity Protection-Playbook](active-directory-identityprotection-playbook.md)
  - [Azure Active Directory Identity Protection – Glossar](active-directory-identityprotection-glossary.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -64,7 +64,7 @@ Ausführliche Informationen zu den Dienstebenen Basic, Standard und Premium find
 
 
 
-### Überprüfen der Konfiguration der geografischen Replikation
+### Überprüfen der Konfiguration der Georeplikation
 
 
 Wenn Ihre Azure SQL-Datenbank für Georeplikation konfiguriert ist, sollten Sie ihre aktuelle Konfiguration dokumentieren und die Georeplikation dann beenden, bevor Sie mit den Vorbereitungsaktionen für das Upgrade beginnen. Nachdem das Upgrade abgeschlossen ist, müssen Sie Ihre Datenbank erneut für Georeplikation konfigurieren.
@@ -253,4 +253,4 @@ Wenn aus einem bestimmten Grund ein Upgradefehler auftritt, bleibt Ihre V11-Date
 <!--Anchors-->
 [Subheading 1]: #subheading-1
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/08/2016"
+	ms.date="06/06/2016"
 	ms.author="markvi"/>
 
 #Azure Active Directory Identity Protection-Playbook 
@@ -55,7 +55,7 @@ Beim Risiko vom Typ „Unbekannter Standort“ handelt es sich um ein Verfahren 
 
 Azure Active Directory Identity Protection:
 
- - benötigt einen anfänglichen Lernzeitraum von 14 Tagen, in dem neue Standorte nicht als unbekannte Orte gekennzeichnet werden.
+ - benötigt einen anfänglichen Lernzeitraum von 14 Tagen, in dem neue Standorte nicht als unbekannte Orte gekennzeichnet werden.
  - ignoriert Anmeldungen von vertrauten Geräten und von Standorten aus, die geografisch nahe an einem vorhandenen bekannten Speicherort liegen.
 
 Um unbekannte Standorte zu simulieren, müssen Sie sich von einem Ort und mit einem Gerät anmelden, der bzw. das für das Konto noch nicht verwendet wurde.
@@ -63,7 +63,7 @@ Um unbekannte Standorte zu simulieren, müssen Sie sich von einem Ort und mit ei
 
 **Gehen Sie folgendermaßen vor, um eine Anmeldung von einem unbekannten Ort zu simulieren**:
 
-1.	Wählen Sie ein Konto aus, das bereits über einen Anmeldeverlauf von mindestens 14 Tagen verfügt. 
+1.	Wählen Sie ein Konto aus, das bereits über einen Anmeldeverlauf von mindestens 14 Tagen verfügt. 
 
 2.	Entscheiden Sie sich für eine der folgenden Optionen:
 	
@@ -74,7 +74,7 @@ Um unbekannte Standorte zu simulieren, müssen Sie sich von einem Ort und mit ei
 Die Anmeldung wird auf dem Identity Protection Dashboard innerhalb von fünf Minuten angezeigt.
  
 ### Unmöglicher Ortswechsel zu atypischen Orten
-Das Simulieren des unmöglichen Ortswechsels ist schwierig, da der Algorithmus einen Machine Learning-Ansatz nutzt, um falsch positive Ergebnisse auszusieben, z. B. der unmögliche Ortswechsel vertrauter Geräte oder Anmeldungen über VPNs, die von anderen Benutzern im Verzeichnis verwendet werden. Außerdem ist für den Algorithmus ein Anmeldeverlauf von 3 bis 14 Tagen des Benutzers erforderlich, bevor mit dem Generieren von Risikoereignissen begonnen wird.
+Das Simulieren des unmöglichen Ortswechsels ist schwierig, da der Algorithmus einen Machine Learning-Ansatz nutzt, um falsch positive Ergebnisse auszusieben, z. B. der unmögliche Ortswechsel vertrauter Geräte oder Anmeldungen über VPNs, die von anderen Benutzern im Verzeichnis verwendet werden. Außerdem ist für den Algorithmus ein Anmeldeverlauf von 3 bis 14 Tagen des Benutzers erforderlich, bevor mit dem Generieren von Risikoereignissen begonnen wird.
 
 **Führen Sie die folgenden Schritte aus, um einen unmöglichen Ortswechsel zu einen atypischen Ort zu simulieren**:
 
@@ -169,4 +169,4 @@ Sicherheitsrisiken sind Schwachstellen in einer Azure AD-Umgebung, die von einem
 
  - [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0608_2016-->

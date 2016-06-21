@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/08/2016"
+   ms.date="06/01/2016"
    ms.author="tarcher" />
 
 # Konfigurieren Ihres Azure-Projekts mit mehreren Dienstkonfigurationen
@@ -55,7 +55,7 @@ Wenn Sie bereits einen HTTPS-Endpunkt hinzugefügt haben, wird die Option "HTTPS
 
 **Diagnose**
 
-Die Diagnosefunktion ist standardmäßig für die Webrolle aktiviert. Das Azure-Clouddienstprojekt und Speicherkonto wurden auf die Verwendung des lokalen Speicheremulators festgelegt. Wenn die Bereitstellung in Azure durchgeführt werden soll, klicken Sie auf die Generatorschaltfläche (**…**), um das Speicherkonto so zu aktualisieren, dass der Azure-Speicher in der Cloud verwendet wird. Sie können die Diagnosedaten entweder bei Bedarf oder in automatisch geplanten Intervallen an das Speicherkonto übertragen. Weitere Informationen zur Azure-Diagnose erhalten Sie unter [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](./cloud-services/cloud-services-dotnet-diagnostics.md).
+Die Diagnosefunktion ist standardmäßig für die Webrolle aktiviert. Das Azure-Clouddienstprojekt und Speicherkonto wurden auf die Verwendung des lokalen Speicheremulators festgelegt. Wenn die Bereitstellung in Azure erfolgen soll, klicken Sie auf die Generatorschaltfläche (**…**), um das Speicherkonto so zu aktualisieren, dass Azure-Speicher in der Cloud verwendet wird. Sie können die Diagnosedaten entweder bei Bedarf oder in automatisch geplanten Intervallen an das Speicherkonto übertragen. Weitere Informationen zur Azure-Diagnose erhalten Sie unter [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](./cloud-services/cloud-services-dotnet-diagnostics.md).
 
 ## Seite "Einstellungen"
 
@@ -110,4 +110,4 @@ Zum Konfigurieren von für ein gesamtes Azure-Clouddienstprojekt gültigen Einst
 |Entwicklung|Auf dieser Seite geben Sie Buildkonfigurationsanweisungen und die Bedingungen an, unter denen Postbuildereignisse ausgeführt werden.|
 |Web|Auf dieser Seite konfigurieren Sie Einstellungen für den Webserver.|
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

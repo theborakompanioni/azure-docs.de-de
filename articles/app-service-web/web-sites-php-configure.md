@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="06/03/2016"
 	ms.author="robmcm"/>
 
 #Konfigurieren von PHP in Azure App Service-Web-Apps
@@ -160,14 +160,34 @@ Anstelle der PHP-Standardlaufzeit können App Service-Web-Apps auch eine PHP-Lau
 
 	![Speichern Sie die Konfigurationseinstellungen][save-button]
 
+<a name="composer" />
+## Gewusst wie: Aktivieren der Composer-Automatisierung in Azure
+
+Standardmäßig wird „composer.json“ (sofern in Ihrem PHP-Projekt vorhanden) von App Service nicht verarbeitet. Wenn Sie die [Git-Bereitstellung](app-service-web-php-get-started.md) nutzen, können Sie während `git push` die Verarbeitung von „composer.json“ aktivieren, indem Sie die Composer-Erweiterung aktivieren.
+
+>[AZURE.NOTE] Sie können [für erstklassigen Support für Composer in App Service abstimmen](https://feedback.azure.com/forums/169385-web-apps-formerly-websites/suggestions/6477437-first-class-support-for-composer-and-pip)!
+
+1. Klicken Sie auf dem Blatt Ihrer PHP-Web-App im [Azure-Portal](https://portal.azure.com) auf **Tools** > **Erweiterungen**.
+
+    ![Blatt mit den Azure-Portal-Einstellungen zum Aktivieren der Composer-Automatisierung in Azure](./media/web-sites-php-configure/composer-extension-settings.png)
+
+2. Klicken Sie auf **Hinzufügen** und anschließend auf **Composer**.
+
+    ![Hinzufügen der Composer-Erweiterung zum Aktivieren der Composer-Automatisierung in Azure](./media/web-sites-php-configure/composer-extension-add.png)
+    
+3. Klicken Sie auf **OK**, um die Geschäftsbedingungen zu akzeptieren. Klicken Sie erneut auf **OK**, um die Erweiterung hinzuzufügen.
+
+    Das Blatt **Installierte Erweiterungen** zeigt nun die Composer-Erweiterung an. ![Akzeptieren der Geschäftsbedingungen zum Aktivieren der Composer-Automatisierung in Azure](./media/web-sites-php-configure/composer-extension-view.png)
+    
+4. Führen Sie nun wie im vorherigen Abschnitt `git add`, `git commit`, und `git push` aus. Nun sehen Sie, dass Composer in composer.json definierte Abhängigkeiten installiert.
+
+    ![Git-Bereitstellung mit Composer-Automatisierung in Azure](./media/web-sites-php-configure/composer-extension-success.png)
+
 ## Nächste Schritte
 
 Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
 
 >[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
-
-## Änderungen
-* Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714).
 
 [ kostenlose Testversion]: https://www.windowsazure.com/pricing/free-trial/
 [phpinfo()]: http://php.net/manual/en/function.phpinfo.php
@@ -188,4 +208,4 @@ Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
 [GETPHPVERPS]: ./media/web-sites-php-configure/ShowPHPVersion-PS.png
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

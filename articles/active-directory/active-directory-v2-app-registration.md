@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/20/2016"
+	ms.date="05/31/2016"
 	ms.author="dastrock"/>
 
 # Registrieren einer App mit dem v2.0-Endpunkt
 
-Um eine App zu erstellen, die sowohl eine MSA- als auch eine Azure AD-Anmeldung zulässt, müssen Sie zunächst eine Anwendung bei Microsoft registrieren. Derzeit können Sie keine in Azure AD oder MSA vorhandenen Apps nutzen, stattdessen müssen Sie eine neue App erstellen.
+Um eine App zu erstellen, die sowohl eine MSA- als auch eine Azure AD-Anmeldung zulässt, müssen Sie zunächst eine Anwendung bei Microsoft registrieren. Derzeit können Sie keine in Azure AD oder MSA vorhandenen Apps nutzen, stattdessen müssen Sie eine neue App erstellen.
 
 > [AZURE.NOTE]
 	Nicht alle Szenarios und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
@@ -30,7 +30,8 @@ Melden Sie sich entweder mit einem persönlichen Microsoft-Konto oder einem Gesc
 
 Fertig? Jetzt sollten Sie Ihre Liste der Microsoft-Apps sehen, die wahrscheinlich noch leer ist. Ändern wir das.
 
-Klicken Sie auf **App hinzufügen**, und geben Sie einen Namen für die App ein. Das Portal weist der App eine global eindeutige Anwendungs-ID zu, die Sie später in Ihrem Code verwenden. Wenn Ihre App eine serverseitige Komponente enthält, die Zugriffstoken für Aufrufe von APIs benötigt (denken Sie an Office, Azure oder Ihre eigene Web-API), möchten Sie möglicherweise auch hier einen **geheimen Anwendungsschlüssel** erstellen. <!-- TODO: Link for app secrets -->
+Klicken Sie auf **App hinzufügen**, und geben Sie einen Namen für die App ein. Das Portal weist der App eine global eindeutige Anwendungs-ID zu, die Sie später in Ihrem Code verwenden. Wenn Ihre App eine serverseitige Komponente enthält, die Zugriffstoken zum Aufrufen von APIs benötigt (denken Sie an Office, Azure oder Ihre eigene Web-API), sollten Sie auch hier einen **geheimen Anwendungsschlüssel** erstellen.
+<!-- TODO: Link for app secrets -->
 
 Fügen Sie dann die Plattformen hinzu, auf denen Ihre App verwendet wird.
 
@@ -46,4 +47,4 @@ Nachdem Sie eine Microsoft-App erstellt haben, können Sie eines unserer Schnell
 
 [AZURE.INCLUDE [active-directory-v2-quickstart-table](../../includes/active-directory-v2-quickstart-table.md)]
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0608_2016-->

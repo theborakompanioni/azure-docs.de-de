@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure-services"
-	ms.date="09/22/2015"
+	ms.date="05/27/2016"
 	ms.author="rasquill"/>
 
 
@@ -45,12 +45,12 @@ Erstellen Sie das Zertifikat und Schlüsseldateien für die Docker-Kommunikation
 Verwenden Sie an der Befehlszeile **`base64`** oder ein anderes bevorzugtes Codierungstool zum Erstellen base64-codierter Themen. Wenn Sie dies mit ein paar einfachen Zertifikaten und Schlüsseldateien vornehmen, sieht das möglicherweise in etwa so aus:
 
 ```
- ~/.docker$ l
+ ~/.docker$ ls
  ca-key.pem  ca.pem  cert.pem  key.pem  server-cert.pem  server-key.pem
  ~/.docker$ base64 ca.pem > ca64.pem
  ~/.docker$ base64 server-cert.pem > server-cert64.pem
  ~/.docker$ base64 server-key.pem > server-key64.pem
- ~/.docker$ l
+ ~/.docker$ ls
  ca64.pem    ca.pem    key.pem            server-cert.pem   server-key.pem
  ca-key.pem  cert.pem  server-cert64.pem  server-key64.pem
 ```
@@ -79,11 +79,11 @@ Geben Sie in den Formularfeldern die base64-codierten Versionen Ihres ZS-Zertifi
 > [AZURE.NOTE] Beachten Sie (analog zur vorherigen Abbildung), dass 2376 standardmäßig aufgefüllt wird. Sie können hier einen beliebigen Endpunkt eingeben. Der nächste Schritt ist jedoch für den übereinstimmenden Endpunkt gedacht. Wenn Sie den Standardwert ändern, müssen Sie die Erschließung des übereinstimmenden Endpunkts im nächsten Schritt sicherstellen.
 
 ## Hinzufügen des Docker-Kommunikationsendpunkts
-Führen Sie beim Anzeigen Ihres virtuellen Computers in der von Ihnen erstellten Ressourcengruppe einen Bildlauf durch, um auf **Endpunkte** zu klicken, um die Endpunkte auf dem virtuellen Computer analog zur hier aufgeführten Darstellung anzuzeigen.
+Wählen Sie beim Anzeigen der von Ihnen erstellten Ressourcengruppe die Netzwerksicherheitsgruppe aus, die Ihrem virtuellen Computer zugeordnet ist. Klicken Sie dann auf **Eingangssicherheitsregeln**, um die Regeln anzuzeigen (siehe Abbildung).
 
 ![](./media/virtual-machines-linux-classic-portal-use-docker/AddingEndpoint.png)
 
-Klicken Sie zum Hinzufügen eines anderen Endpunkts auf **+ Hinzufügen**, und geben Sie im Standardfall einen Namen für den Endpunkt (in diesem Fall **docker**) und „2376“ für den privaten und öffentlichen Port ein. Belassen Sie den Protokollwert bei **TCP**, und klicken Sie auf **OK**, um den Endpunkt zu erstellen.
+Klicken Sie zum Hinzufügen einer weiteren Regel auf **+ Hinzufügen**, und geben Sie im Standardfall einen Namen für den Endpunkt ein (hier: **Docker**). Geben Sie für den Zielportbereich den Wert „2376“ ein. Legen Sie den Wert für das Protokoll auf **TCP** fest, und klicken Sie auf **OK**, um den Regel zu erstellen.
 
 ![](./media/virtual-machines-linux-classic-portal-use-docker/AddEndpointFormFilledOut.png)
 
@@ -147,4 +147,4 @@ Sie sind nun bereit, das [Docker-Benutzerhandbuch] und Ihren virtuellen Docker-C
 [Running Docker with https]: http://docs.docker.com/articles/https/
 [Docker-Benutzerhandbuch]: https://docs.docker.com/userguide/
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -64,10 +64,15 @@ Sie können Data Factorys mithilfe einer der folgenden Methoden erstellen:
 ### Können Data Factorys umbenannt werden?
 Nein. Wie bei anderen Azure-Ressourcen auch kann der Name einer Azure Data Factory nicht geändert werden.
 
+### Kann ich eine Data Factory aus einem Azure-Abonnement in ein anderes verschieben? 
+Ja. Verwenden Sie die Schaltfläche **Verschieben** auf Ihrem Data Factory-Blatt, wie unten dargestellt:
+
+![Data Factory verschieben](media/data-factory-faq/move-data-factory.png)
+
 ## Aktivitäten – Häufig gestellte Fragen
 ### Welche verschiedenen Arten von Aktivitäten können in einer Data Factory-Pipeline verwendet werden? 
 
-- [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) zum Verschieben Daten.
+- [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) zum Verschieben von Daten.
 - [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md) zum Verarbeiten/Transformieren von Daten. 
 
 ### Wann wird eine Aktivität ausgeführt?
@@ -115,11 +120,11 @@ Im obigen Beispiel stellen "otherLinkedServiceName1" und "otherLinkedServiceName
 ## Slices – Häufig gestellte Fragen
 
 ### Wieso weisen meine Eingabeslices nicht den Status „Bereit“ auf? 
-Ein weit verbreiteter Fehler besteht darin, die **external**-Eigenschaft im Eingabedataset nicht auf **TRUE** festzulegen, wenn die Eingabedaten zur Data Factory extern sind (nicht von Data Factory erstellt wurden).
+Ein weit verbreiteter Fehler besteht darin, die **external**-Eigenschaft im Eingabedataset nicht auf **true** festzulegen, wenn die Eingabedaten für die Data Factory extern sind (nicht von Data Factory erstellt wurden).
 
-Im folgenden Beispiel müssen Sie nur im **Dataset1** **external** auf TRUE festlegen.
+Im folgenden Beispiel müssen Sie nur im **Dataset1** den Wert **external** auf „true“ festlegen.
 
-**DataFactory1** Pipeline 1: DataSet1 -> Aktivität1 -> DataSet2 -> Aktivität2 -> DataSet3 Pipeline 2: DataSet3-> Aktivität3 -> DataSet4
+**DataFactory1** Pipeline 1: Dataset1 -> Aktivität1 -> Dataset2 -> Aktivität2 -> Dataset3 Pipeline 2: Dataset3-> Aktivität3 -> Dataset4
 
 Wenn Sie über eine andere Data Factory mit einer Pipeline, die Dataset4 nimmt, verfügen (erstellen von Pipeline 2 in Data Factory 1), müssen Sie Dataset4 als externes Dataset markieren, da das Dataset von einer anderen Data Factory (DataFactory1, nicht DataFactory2) erstellt wird.
 
@@ -144,7 +149,7 @@ Sie können einen Slice auf eine der folgenden Arten erneut ausführen:
 
 - Verwenden Sie die App „Überwachen und Verwalten“, um ein Aktivitätsfenster oder einen Slice erneut auszuführen. Anweisungen finden Sie unter [Wiederholen ausgewählter Aktivitätsfenster](data-factory-monitor-manage-app.md#re-run-selected-activity-windows).   
 - Klicken Sie im Portal auf der Befehlsleiste für den Slice auf dem Blatt **DATENSLICE** auf **Ausführen**.
-- Führen Sie das Cmdlet **Set-AzureRmDataFactorySliceStatus** aus, wobei der Status des Slice auf **Waiting** festgelegt ist.   
+- Führen Sie das Cmdlet **Set-AzureRmDataFactorySliceStatus** aus, wobei der Status des Slices auf **Waiting** festgelegt ist.   
 	
 		Set-AzureRmDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00" 
 
@@ -182,4 +187,4 @@ Wenn Sie alle Ausführungen wirklich sofort beenden möchten, ist die einzige M�
 [hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

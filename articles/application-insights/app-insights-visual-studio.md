@@ -65,7 +65,11 @@ Wenn Sie [Ausnahmeüberwachung eingerichtet haben](app-insights-asp-net-exceptio
 Klicken Sie auf eine Ausnahme, um eine Stapelüberwachung zu erhalten. Wenn der Code der App in Visual Studio geöffnet ist, können Sie sich durch die Stapelüberwachung bis zur entsprechenden Zeile im Code klicken.
 
 
-![](./media/app-insights-visual-studio/17.png)
+![Ausnahmestapelüberwachung](./media/app-insights-visual-studio/17.png)
+
+Außerdem wird in der Codebereichszeile oberhalb jeder Methode die Anzahl von Ausnahmen angezeigt, die von Application Insights innerhalb der letzten 24 Stunden protokolliert wurden.
+
+![Ausnahmestapelüberwachung](./media/app-insights-visual-studio/21.png)
 
 
 ## Lokale Überwachung
@@ -86,8 +90,6 @@ Dies ist ebenfalls hilfreich, wenn Sie über [benutzerdefinierte Telemetriedaten
 
 
 
-
-
 ## So upgraden Sie auf zukünftige SDK-Versionen
 
 Für ein Upgrade auf eine [neue Version des SDK](app-insights-release-notes-dotnet.md) öffnen Sie wieder den NuGet-Paket-Manager und filtern die Ansicht nach installierten Paketen. Wählen Sie "Microsoft.ApplicationInsights.Web" und dann "Upgrade" aus.
@@ -101,9 +103,9 @@ Wenn Sie Anpassungen an der Datei "ApplicationInsights.config" vorgenommen haben
 ||
 |---|---
 |**[Hinzufügen weiterer Daten](app-insights-asp-net-more.md)**<br/>Überwachen Sie Nutzung, Verfügbarkeit, Abhängigkeiten und Ausnahmen. Integrieren Sie Ablaufverfolgungen aus Protokollierungsframeworks. Schreiben Sie benutzerdefinierte Telemetriedaten. | ![Visual Studio](./media/app-insights-asp-net/64.png)
-|**[Arbeiten mit dem Application Insights-Portal](app-insights-dashboards.md)**<br/>Dashboards, leistungsstarke Diagnose- und Analysetools, Warnungen, Livediagramm der Anwendungsabhängigkeiten und Exportieren von Telemetriedaten |![Visual Studio](./media/app-insights-asp-net/62.png)
+|**[Navigation und Dashboards im Application Insights-Portal](app-insights-dashboards.md)**<br/> Enthält Informationen zu Dashboards, leistungsstarken Diagnose- und Analysetools, Warnungen, eine Livekarte der Abhängigkeiten Ihrer Anwendung und zum Export von Telemetriedaten. |![Visual Studio](./media/app-insights-asp-net/62.png)
 
 
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

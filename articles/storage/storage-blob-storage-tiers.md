@@ -135,33 +135,49 @@ In diesem Abschnitt werden die folgenden Szenarien unter Verwendung des Azure-Po
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Wählen Sie im Menü „Hub“ die Option **Neu** -> **Daten und Speicher** -> **Speicherkonto** aus.
+2. Wählen Sie im Menü „Hub“ die Option **Neu** > **Daten und Speicher** > **Speicherkonto** aus.
 
 3. Geben Sie einen Namen für Ihr Speicherkonto ein.
 
+	Dieser Name muss global eindeutig sein. Er wird als Teil der URL verwendet, über die auf die Objekte im Speicherkonto zugegriffen wird.
+
 4. Wählen Sie als Bereitstellungsmodell die Option **Resource Manager** aus.
 
-5. Wählen Sie als Speicherkontotyp die Option **Blob Storage** aus.
+	Mehrstufiger Speicher kann nur mit Resource Manager-Speicherkonten verwendet werden. Dies ist das empfohlene Bereitstellungsmodell für die neuen Ressourcen. Weitere Informationen finden Sie unter [Übersicht über Azure Resource Manager](../resource-group-overview.md).
 
-6. Wählen Sie den Zugriffstarif (**Hot** oder **Cool**) aus. Der Standardwert ist **Hot**.
+5. Wählen Sie in der Dropdownliste „Account Kind“ (Kontoart) die Option **Blob Storage**.
 
-7. Wählen Sie die Replikationsoption für das Speicherkonto aus: **LRS**, **GRS** oder **RA-GRS**. Die Standardeinstellung ist **RA-GRS**. Weitere Details zu den Replikationsoptionen für Azure Storage finden Sie unter [Azure Storage-Replikation](storage-redundancy.md).
+	Hier wählen Sie den Speicherkontotyp aus. Mehrstufiger Speicher ist nicht im allgemeinen Speicher verfügbar, sondern nur im Speicher vom Typ „Blobspeicher“.
+
+	Beachten Sie, dass die Leistungsebene bei dieser Auswahl auf „Standard“ festgelegt ist. Mehrstufiger Speicher ist für die Leistungsebene „Premium“ nicht verfügbar.
+
+6. Wählen Sie die Replikationsoption für das Speicherkonto aus: **LRS**, **GRS** oder **RA-GRS**. Die Standardeinstellung ist **RA-GRS**.
+ 
+	LRS = lokal redundanter Speicher, GRS = georedundanter Speicher (2 Regionen), RA-GRS = georedundanter Speicher mit Lesezugriff (2 Regionen mit Lesezugriff für die zweite Region).
+
+	Weitere Details zu den Replikationsoptionen für Azure Storage finden Sie unter [Azure Storage-Replikation](storage-redundancy.md).
+
+7. Wählen Sie den Zugriffstarif **Cool** oder **Hot** aus. Der Standardwert ist **Hot**.
 
 8. Wählen Sie das Abonnement aus, in dem Sie das neue Speicherkonto erstellen möchten.
 
 9. Geben Sie eine neue Ressourcengruppe an, oder wählen Sie eine vorhandene Ressourcengruppe aus. Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwenden des Azure-Portals zum Bereitstellen und Verwalten Ihrer Azure-Ressourcen](../azure-portal/resource-group-portal.md).
 
-10. Wählen Sie den geografischen Standort für das Speicherkonto aus.
+10. Wählen Sie die Region für Ihr Speicherkonto aus.
 
 11. Klicken Sie auf **Erstellen**, um das Speicherkonto zu erstellen.
 
 #### Ändern des Zugriffstarifs für ein Blob-Speicherkonto mithilfe des Azure-Portals
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrem Speicherkonto.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Klicken Sie auf **Alle Einstellungen** und anschließend auf **Konfiguration**, um die Kontokonfiguration anzuzeigen bzw. zu ändern.
+2. Navigieren Sie zu Ihrem Speicherkonto, wählen Sie „Alle Ressourcen“, und wählen Sie dann Ihr Speicherkonto aus.
 
-3. Geben Sie den gewünschten Zugriffstarif (**Hot** oder **Cool**) an.
+3. Klicken Sie im Blatt „Einstellungen“ auf **Konfiguration**, um die Kontokonfiguration anzuzeigen bzw. zu ändern.
+
+4. Wählen Sie den gewünschten Zugriffstarif aus: **Hot** oder **Cool**.
+
+5. Klicken Sie oben im Blatt auf „Speichern“.
 
     > [AZURE.NOTE] Die Änderung des Zugriffstarifs kann mit zusätzlichen Kosten verbunden sein. Ausführlichere Informationen finden Sie im Abschnitt [Preise und Abrechnung](storage-blob-storage-tiers.md#pricing-and-billing).
 
@@ -240,7 +256,7 @@ Ausführlichere Informationen finden Sie unter [Erste Schritte mit Azure Blob St
 
 9. **Muss ich zur Verwendung von Blob-Speicherkonten meine vorhandenen Anwendungen ändern?**
 
-    Blob-Speicherkonten sind zu 100% API-konsistent mit allgemeinen Speicherkonten für Block- und Anfügeblobs. Solange Sie für Ihre Anwendung Blockblobs oder Anfügeblobs verwenden und Sie Version 2014-02-14 (oder höher) der [REST-API für Speicherdienste](https://msdn.microsoft.com/library/azure/dd894041.aspx) nutzen, sollte Ihre Anwendung problemlos funktionieren. Bei Verwendung einer älteren Protokollversion müssen Sie Ihre Anwendung aktualisieren, sodass sie die neue Version verwendet und beide Arten von Speicherkonten problemlos verwendet werden können. Unabhängig von der Art des verwendeten Speicherkontos empfehlen wir grundsätzlich die Verwendung der neuesten Version.
+    Blob-Speicherkonten sind zu 100% API-konsistent mit allgemeinen Speicherkonten für Block- und Anfügeblobs. Solange Sie für Ihre Anwendung Blockblobs oder Anfügeblobs verwenden und Version 2014-02-14 (oder höher) der [REST-API für Speicherdienste](https://msdn.microsoft.com/library/azure/dd894041.aspx) nutzen, sollte Ihre Anwendung problemlos funktionieren. Bei Verwendung einer älteren Protokollversion müssen Sie Ihre Anwendung aktualisieren, sodass sie die neue Version verwendet und beide Arten von Speicherkonten problemlos verwendet werden können. Unabhängig von der Art des verwendeten Speicherkontos empfehlen wir grundsätzlich die Verwendung der neuesten Version.
 
 10. **Ändert sich etwas für die Benutzer?**
 
@@ -250,13 +266,13 @@ Ausführlichere Informationen finden Sie unter [Erste Schritte mit Azure Blob St
 
 ### Auswerten von Blob-Speicherkonten
 
-Überprüfen der Verfügbarkeit von Blob-Speicherkonten nach Region unter [Azure-Regionen](https://azure.microsoft.com/regions/#services)
+[Überprüfen der Verfügbarkeit von Blob-Speicherkonten nach Region unter Azure-Regionen](https://azure.microsoft.com/regions/#services)
 
 [Auswerten der Nutzung vorhandener Speicherkonten durch Aktivierung von Azure Storage-Metriken](storage-enable-and-view-metrics.md)
 
-Überprüfen der Preise für Blobspeicher nach Region unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/)
+[Überprüfen der Preise für Blobspeicher nach Region unter Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/)
 
-Überprüfen der Preise für Datenübertragungen unter [Datenübertragungen – Preisdetails](https://azure.microsoft.com/pricing/details/data-transfers/)
+[Überprüfen der Preise für Datenübertragungen unter Datenübertragungen – Preisdetails](https://azure.microsoft.com/pricing/details/data-transfers/)
 
 ### Beginnen mit der Nutzung von Blob-Speicherkonten
 
@@ -266,4 +282,4 @@ Ausführlichere Informationen finden Sie unter [Erste Schritte mit Azure Blob St
 
 [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -1,6 +1,6 @@
 <properties
    pageTitle="Erstellen von HDInsight-Clustern mit Azure Data Lake-Speicher mithilfe von PowerShell | Azure"
-   description="Verwenden von Azure PowerShell zum Erstellen und Verwenden von HDInsight Hadoop-Clustern mit Azure Data Lake"
+   description="Verwenden von Azure PowerShell zum Erstellen und Verwenden von HDInsight-Clustern mit Azure Data Lake"
    services="data-lake-store,hdinsight" 
    documentationCenter=""
    authors="nitinme"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/27/2016"
+   ms.date="06/03/2016"
    ms.author="nitinme"/>
 
 # Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe von Azure PowerShell
@@ -25,7 +25,7 @@
 
 Hier erfahren Sie, wie Sie einen HDInsight-Cluster (Hadoop, HBase oder Storm) mithilfe von Azure PowerShell so konfigurieren, dass er auf Azure Data Lake-Speicher zugreifen kann. Einige wichtige Hinweise zu dieser Version:
 
-* **Für Hadoop- und Storm-Cluster (Windows und Linux)** kann der Data Lake-Speicher nur als zusätzliches Speicherkonto verwendet werden. Standardspeicherkonten für solche Cluster sind weiterhin Azure-Speicherblobs (WASB).
+* **Bei Spark-Clustern (Linux) und Hadoop-/Storm-Clustern (Windows und Linux)** kann der Data Lake-Speicher nur als zusätzliches Speicherkonto verwendet werden. Standardspeicherkonten für solche Cluster sind weiterhin Azure-Speicherblobs (WASB).
 
 * Sie können **für HBase-Cluster (Windows und Linux)** den Data Lake-Speicher als Standardspeicher oder als Zusatzspeicher verwenden.
 
@@ -380,4 +380,4 @@ Sie können auch den Befehl `hdfs dfs -put` verwenden, um Dateien in den Data La
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

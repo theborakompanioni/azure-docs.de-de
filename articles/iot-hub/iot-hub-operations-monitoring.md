@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="04/18/2016"
+ ms.date="06/06/2016"
  ms.author="nberdy"/>
 
 # Einführung in Vorgangsüberwachung
@@ -122,6 +122,25 @@ Die Kategorie für Verbindungen verfolgt Fehler nach, wenn Geräte Verbindungen 
          "deviceId": "device-ID"
     }
 
+### Dateiuploads
+
+Die Dateiuploadkategorie dient zum Nachverfolgen von Fehlern, die auf dem IoT Hub auftreten und in Beziehung zur Dateiuploadfunktionalität stehen. Dazu gehören Fehler, die in Verbindung mit dem SAS-URI auftreten (z.B. wenn dieser abläuft, bevor ein Gerät den Hub über einen abgeschlossenen Upload unterrichtet), vom Gerät gemeldete fehlerhafte Uploads, und wenn eine Datei während der Erstellung der IoT Hub-Nachricht nicht im Speicher gefunden wird. Beachten Sie, dass diese Kategorie keine Fehler abfangen kann, die auftreten, während das Gerät eine Datei in den Speicher hochlädt.
+
+    {
+         "authType": "{"scope":"hub","type":"sas","issuer":"iothub"}",
+         "protocol": "HTTP",
+         "time": " UTC timestamp",
+         "operationName": "ingress",
+         "category": "fileUpload",
+         "level": "Error",
+         "statusCode": 4XX,
+         "statusType": 4XX001,
+         "statusDescription": "MessageDescription",
+         "deviceId": "device-ID",
+         "blobUri": "http//bloburi.com",
+         "durationMs": 1234
+    }
+
 ## Nächste Schritte
 
 Nach diesem Überblick über die Vorgangsüberwachung können Sie die folgenden Links nutzen, um mehr über diese Themen zu erfahren:
@@ -139,4 +158,4 @@ Nach diesem Überblick über die Vorgangsüberwachung können Sie die folgenden 
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-dr]: iot-hub-ha-dr.md
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0608_2016-->

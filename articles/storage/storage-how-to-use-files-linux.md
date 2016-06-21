@@ -20,13 +20,13 @@
 
 ## Übersicht
 
-Der Azure-Dateispeicher verfügt über Dateifreigaben in der Cloud unter Verwendung des standardmäßigen SMB-Protokolls. Mit Azure Files können Sie Unternehmensanwendungen migrieren, die auf Dateiservern in Azure basieren. Anwendungen, die in Azure ausgeführt werden, können Dateifreigaben von virtuellen Azure-Computern unter Linux problemlos einbinden. Mit der neuesten Version des Dateispeichers können Sie außerdem eine Dateifreigabe aus einer lokalen Anwendung einbinden, die SMB 3.0 unterstützt.
+Der Azure-Dateispeicher verfügt über Dateifreigaben in der Cloud unter Verwendung des standardmäßigen SMB-Protokolls. Mit Azure Files können Sie Unternehmensanwendungen migrieren, die auf Dateiservern in Azure basieren. Anwendungen, die in Azure ausgeführt werden, können Dateifreigaben von virtuellen Azure-Computern unter Linux problemlos einbinden. Mit der neuesten Version des Dateispeichers können Sie außerdem eine Dateifreigabe aus einer lokalen Anwendung einbinden, die SMB 3.0 unterstützt.
 
 Sie können Azure-Dateifreigaben mit dem [Azure-Portal](https://portal.azure.com), den Azure Storage-PowerShell-Cmdlets, den Azure Storage-Clientbibliotheken oder der Azure Storage-REST-API erstellen. Da es sich bei den Dateifreigaben um SMB-Freigaben handelt, können Sie darauf außerdem über standardmäßige Dateisystem-APIs zugreifen.
 
 Der Dateispeicher beruht auf der gleichen Technologie wie Blob-, Tabellen-, und Warteschlangendienste. Dies bedeutet, dass der Dateispeicher die Verfügbarkeit, Dauerhaftigkeit, Skalierbarkeit und geografische Redundanz bietet, die in die Azure Storage-Plattform integriert ist. Weitere Informationen zu Leistungszielen und Grenzwerten des Dateispeichers finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage-scalability-targets.md).
 
-Der Dateispeicher ist jetzt allgemein verfügbar und unterstützt sowohl SMB 2.1 als auch SMB 3.0. Zusätzliche Informationen zu File Storage finden Sie unter [Dateidienst-REST-API](https://msdn.microsoft.com/library/azure/dn167006.aspx).
+Der Dateispeicher ist jetzt allgemein verfügbar und unterstützt sowohl SMB 2.1 als auch SMB 3.0. Zusätzliche Informationen zu File Storage finden Sie unter [Dateidienst-REST-API](https://msdn.microsoft.com/library/azure/dn167006.aspx).
 
 >[AZURE.NOTE] Weil der Linux-SMB-Client noch keine Verschlüsselung unterstützt, muss sich der Client, wenn eine Dateifreigabe aus Linux eingebunden wird, in derselben Azure-Region befinden wie die Dateifreigabe. Allerdings arbeiten die Linux-Entwickler, die für die SMB-Funktionalität verantwortlich sind, an der Verschlüsselungsunterstützung für Linux. Linux-Distributionen, in denen zukünftig Verschlüsselung unterstützt wird, werden ebenfalls von überall eine Azure-Dateifreigabe einbinden können.
 
@@ -40,10 +40,11 @@ Dieses Video veranschaulicht das Erstellen und Verwenden von Azure-Dateifreigabe
 
 Wenn Sie in Azure einen virtuellen Linux-Computer erstellen, können Sie im Azure-Image-Katalog ein Linux-Image angeben, das SMB 2.1 oder höher unterstützt. Dies ist die Liste der empfohlenen Linux-Images:
 
-- Ubuntu Server 14.04
-- Ubuntu Server 15.04
-- CentOS 7.1
-- Open SUSE 13.2
+- Ubuntu Server 14.04+
+- RHEL 7+
+- CentOS 7+
+- Debian 8
+- openSUSE 13.2+
 - SUSE Linux Enterprise Server 12
 - SUSE Linux Enterprise Server 12 (Premium-Image)
 
@@ -65,7 +66,7 @@ Soll eine Dateifreigabe nach einem Neustart weiterhin eingebunden sein, fügen S
 
     //myaccountname.file.core.windows.net/mysharename /mymountpoint cifs vers=3.0,username= myaccountname,password= StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 
-Wenn Sie z. B. mit dem Linux-Image Ubuntu Server 15.04, das im Azure-Imagekatalog verfügbar ist, einen virtuellen Azure-Computer erstellt haben, können Sie die Datei wie folgt einbinden:
+Wenn Sie z.B. mit dem Linux-Image Ubuntu Server 15.04, das im Azure-Imagekatalog verfügbar ist, einen virtuellen Azure-Computer erstellt haben, können Sie die Datei wie folgt einbinden:
 
     azureuser@azureconubuntu:~$ sudo apt-get install cifs-utils
     azureuser@azureconubuntu:~$ sudo mkdir /mnt/mountpoint
@@ -139,4 +140,4 @@ Weitere Informationen zum Azure-Dateispeicher erhalten Sie über diese Links.
 - [Einführung in den Microsoft Azure-Dateidienst](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Beibehalten von Verbindungen zu Microsoft Azure-Dateien](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0608_2016-->

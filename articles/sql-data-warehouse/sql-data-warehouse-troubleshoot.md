@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Problembehandlung | Microsoft Azure"
-   description="Problembehandlung bei SQL Data Warehouse."
+   pageTitle="Problembehandlung bei Azure SQL Data Warehouse | Microsoft Azure"
+   description="Problembehandlung bei Azure SQL Data Warehouse."
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="sonyam"
@@ -16,8 +16,8 @@
    ms.date="05/15/2016"
    ms.author="mausher;sonyama;barbkess"/>
 
-# Problembehandlung
-In diesem Thema sind einige der Probleme aufgeführt, die bei der Verwendung von Azure SQL Data Warehouse häufiger auftreten.
+# Problembehandlung bei Azure SQL Data Warehouse
+In diesem Thema sind einige der Probleme aufgeführt, die bei der Verwendung von Azure SQL Data Warehouse ggf. auftreten.
 
 ## Konnektivität
 Häufigere Konnektivitätsprobleme beinhalten Folgendes:
@@ -33,13 +33,13 @@ SQL Data Warehouse empfiehlt die Verwendung von [Visual Studio 2013 und 2015][] 
 
 ## Abfrageleistung
 
-Es gibt einige einfache Methoden, die Sie im Datenbankentwurf durchführen können, um sicherzustellen, dass Sie die optimale Abfrageleistung von SQL Data Warehouse erhalten. Der Artikel [Überwachen Ihres Workloads mit dynamischen Verwaltungssichten][] ist ein guter Ausgangspunkt, wenn Sie nachvollziehen möchten, wie gut Ihre Abfragen arbeiten. Damit eine Abfrage schneller ausgeführt werden kann, müssen Sie Ihren Abfragen manchmal mehr Computeleistungen hinzufügen, um [SQL Data Warehouse horizontal zu skalieren][]. Lesen Sie den Artikel [Verwalten von Statistiken in SQL Data Warehouse][], um mehr über diese Optimierungsmöglichkeiten zu erfahren.
+Es gibt einige einfache Methoden, die Sie im Datenbankentwurf durchführen können, um sicherzustellen, dass Sie die optimale Abfrageleistung von SQL Data Warehouse erhalten. Der Artikel [Überwachen Ihres Workloads mit dynamischen Verwaltungssichten][] ist ein guter Ausgangspunkt, wenn Sie nachvollziehen möchten, wie gut Ihre Abfragen arbeiten. Damit eine Abfrage schneller ausgeführt werden kann, müssen Sie Ihren Abfragen manchmal mehr Computeleistung hinzufügen, um Ihr [SQL Data Warehouse zu skalieren][]. Lesen Sie den Artikel [Verwalten von Statistiken in SQL Data Warehouse][], um mehr über diese Optimierungsmöglichkeiten zu erfahren.
 
 Im folgenden sind einige der häufigsten Ursachen für Leistungsprobleme bei Abfragen aufgeführt.
 
 ### Statistiken
 
-[Statistiken][] für Ihre Tabellen erhalten Informationen zum Wertebereich und zur Häufigkeit von Werten in einer Datenbankspalte oder in einer Spaltenkombination. Das Abfragemodul verwendet diese Statistiken, um die Abfrageausführung zu optimieren und die Abfrageleistung zu verbessern. Im Gegensatz zu SQL Server oder SQL DB bietet SQL Data Warehouse keine automatische Erstellung oder kein Update von Statistiken. Statistiken müssen für alle Tabellen manuell verwaltet werden. Weitere Informationen zum Verwalten von Statistiken und zum Identifizieren von Tabellen, die Statistiken benötigen, finden Sie im Artikel [Verwalten von Statistiken in SQL Data Warehouse][].
+[Statistiken][] für Ihre Tabellen erhalten Informationen zum Wertebereich und zur Häufigkeit von Werten in einer Datenbankspalte oder in einer Spaltenkombination. Das Abfragemodul verwendet diese Statistiken, um die Abfrageausführung zu optimieren und die Abfrageleistung zu verbessern. Im Gegensatz zu SQL Server oder SQL-Datenbank bietet SQL Data Warehouse keine automatische Erstellung oder Aktualisierung von Statistiken. Statistiken müssen für alle Tabellen manuell verwaltet werden. Weitere Informationen zum Verwalten von Statistiken und zum Identifizieren von Tabellen, die Statistiken benötigen, finden Sie im Artikel [Verwalten von Statistiken in SQL Data Warehouse][].
 
 ### Tabellenentwurf
 
@@ -109,7 +109,7 @@ Weitere Informationen zur Optimierung Ihrer SQL Data Warehouse-Lösung finden Si
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse horizontal zu skalieren]: ./sql-data-warehouse-overview-scalability.md
+[SQL Data Warehouse zu skalieren]: ./sql-data-warehouse-manage-compute-overview.md
 [Tabellenentwurf]: ./sql-data-warehouse-develop-table-design.md
 [die Auswahl des richtigen Hashverteilungsschlüssels für die Tabelle]: ./sql-data-warehouse-develop-hash-distribution-key
 [development overview]: ./sql-data-warehouse-overview-develop.md
@@ -127,4 +127,4 @@ Weitere Informationen zur Optimierung Ihrer SQL Data Warehouse-Lösung finden Si
 
 <!--Other web references-->
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

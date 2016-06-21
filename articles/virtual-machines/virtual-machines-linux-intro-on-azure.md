@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/01/2016"
+	ms.date="05/27/2016"
 	ms.author="szark"/>
 
 #Einführung in Linux in Azure
@@ -24,7 +24,7 @@ Dieses Thema bietet einen Überblick über einige Aspekte der Verwendung virtuel
 
 ## Authentifizierung: Benutzernamen, Kennwörter und SSH-Schlüssel
 
-Wenn Sie mithilfe des klassischen Azure-Portals einen virtuellen Linux-Computer erstellen, werden Sie aufgefordert, einen Benutzernamen, ein Kennwort oder einen öffentlichen SSH-Schlüssel anzugeben. Bei der Auswahl eines Benutzernamens während der Bereitstellung virtueller Linux-Computer gibt es folgende Einschränkungen: bereits im virtuellen Computer vorhandene Namen von Systemkonten (UID <100) sind nicht zulässig, z. B. 'root'.
+Wenn Sie mithilfe des klassischen Azure-Portals einen virtuellen Linux-Computer erstellen, werden Sie aufgefordert, einen Benutzernamen, ein Kennwort oder einen öffentlichen SSH-Schlüssel anzugeben. Bei der Auswahl eines Benutzernamens während der Bereitstellung virtueller Linux-Computer gibt es folgende Einschränkungen: bereits im virtuellen Computer vorhandene Namen von Systemkonten (UID <100) sind nicht zulässig, z.B. 'root'.
 
 
  - Weitere Informationen finden Sie unter [Erstellen eines virtuellen Linux-Computers](virtual-machines-linux-quick-create-cli.md)
@@ -64,12 +64,12 @@ Der Azure Linux Agent enthält eine Funktion zur automatischen Erkennung dieser 
  - [Benutzerhandbuch für Azure Linux-Agent](virtual-machines-linux-agent-user-guide.md)
 
 ### cloud-init
-**Ubuntu**- und **CoreOS**-Images nutzen cloud-init bei Azure, was zusätzliche Funktionen für das Bootstrapping eines virtuellen Computers bietet.
+**Ubuntu**- und **CoreOS**-Images nutzen cloud-init in Azure, was zusätzliche Funktionen für das Bootstrapping eines virtuellen Computers bietet.
 
  - [Einfügen von benutzerdefinierten Daten](virtual-machines-windows-classic-inject-custom-data.md)
  - [Custom Data and Cloud-Init on Microsoft Azure (Benutzerdefinierte Daten und Cloud-Init in Microsoft Azure, in englischer Sprache)](https://azure.microsoft.com/blog/2014/04/21/custom-data-and-cloud-init-on-windows-azure/)
  - [AzureSwapPartitions (in englischer Sprache)](https://wiki.ubuntu.com/AzureSwapPartitions)
- - [Verwenden von CoreOS in Azure](virtual-machines-linux-classic-coreos-howto.md)
+ - [Verwenden von CoreOS in Azure](https://coreos.com/os/docs/latest/booting-on-azure.html)
 
 
 ## Image-Erfassung virtueller Computer
@@ -98,4 +98,4 @@ Der Datenträger unter Linux kann vom Kernel den Namen `/dev/sdc` erhalten. Die 
 
  - **Siehe auch:** [Konfigurieren des Software-RAID unter Linux](virtual-machines-linux-configure-raid.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0608_2016-->

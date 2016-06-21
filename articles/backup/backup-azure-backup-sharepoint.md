@@ -3,7 +3,7 @@
 	description="Dieser Artikel enthält eine Übersicht über den DPM-/Azure Backup Server-Schutz einer SharePoint-Farm in Azure."
 	services="backup"
 	documentationCenter=""
-	authors="giridharreddy"
+	authors="nkolli1"
 	manager="shreeshd"
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/10/2015"
+	ms.date="06/06/2015"
 	ms.author="giridham;jimpark"/>
 
 
@@ -233,4 +233,4 @@ F: Kann ich eine SharePoint-Datenbank am ursprünglichen Speicherort wiederherst
 - [Versionsanmerkungen für System Center 2012 – Data Protection Manager](https://technet.microsoft.com/library/jj860415.aspx)
 - [Versionsanmerkungen für Data Protection Manager in System Center 2012 SP1](https://technet.microsoft.com/library/jj860394.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

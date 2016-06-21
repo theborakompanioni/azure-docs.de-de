@@ -64,7 +64,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 
 6.  Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/) an.
 
-7.  Lesen Sie die Daten aus den Azure-Blobs mithilfe des [Reader][reader]-Moduls.
+7.  Lesen Sie die Daten aus den Azure-Blobs mithilfe des [Import Data][import-data]-Moduls.
 
 8. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren aufgenommenen Datasets beginnt.
 
@@ -90,7 +90,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 
 8. Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/) an.
 
-9. Lesen Sie die Daten aus den Azure-Blobs mithilfe des [Reader][reader]-Moduls.
+9. Lesen Sie die Daten aus den Azure-Blobs mithilfe des [Import Data][import-data]-Moduls.
 
 10. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren aufgenommenen Datasets beginnt.
 
@@ -132,7 +132,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 
 9. Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/) an.
 
-10. Lesen Sie die Daten mithilfe des [Reader][reader]-Moduls direkt vom SQL Server. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Reader][reader]-Abfrage ein.
+10. Lesen Sie die Daten mithilfe des [Import Data][import-data]-Moduls direkt von der SQL Server-Instanz. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
 
 11. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren aufgenommenen Datasets beginnt.
 
@@ -176,7 +176,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 
 7.  Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/) an.
 
-8. Lesen Sie die Daten mithilfe des [Reader][reader]-Moduls direkt vom SQL Server. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Reader][reader]-Abfrage ein.
+8. Lesen Sie die Daten mithilfe des [Import Data][import-data]-Moduls direkt von der SQL Server-Instanz. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
 
 9. Einfacher Azure Machine Learning-Versuchsablauf, der mit einem hochgeladenen Dataset beginnt.
 
@@ -216,7 +216,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 
 7.  Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/) an.
 
-8. Lesen Sie die Daten mithilfe des [Reader][reader]-Moduls direkt vom SQL Server. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Reader][reader]-Abfrage ein.
+8. Lesen Sie die Daten mithilfe des [Import Data][import-data]-Moduls direkt von der SQL Server-Instanz. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
 
 9. Einfacher Azure Machine Learning-Versuchsablauf, der mit einem hochgeladenen Dataset beginnt.
 
@@ -280,7 +280,7 @@ Um die gesamte SQL Server-Datenbank auf dem virtuellen SQL Server-Computer zu re
 
 8.  Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/) an.
 
-9. Lesen Sie die Daten mithilfe des [Reader][reader]-Moduls direkt aus den `Hive Queries`. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Reader][reader]-Abfrage ein.
+9. Lesen Sie die Daten direkt von `Hive Queries` mithilfe des [Import Data][import-data]-Moduls. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
 
 10. Einfacher Azure Machine Learning-Versuchsablauf, der mit einem hochgeladenen Dataset beginnt.
 
@@ -312,6 +312,6 @@ Umfassende exemplarische Vorgehensweisen zu Azure Machine Learning, die die Adva
 
 
 <!-- Module References -->
-[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

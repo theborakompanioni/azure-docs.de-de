@@ -18,6 +18,6 @@
 
 1. Wählen Sie unter ASP.NET 5-Vorlagen die Option ASP.NET-Webanwendung aus.
 
-1. Tippen Sie auf **OK**.
+1. Klicken Sie auf **OK**.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0608_2016-->

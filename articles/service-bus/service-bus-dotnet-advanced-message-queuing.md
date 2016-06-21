@@ -26,7 +26,7 @@ In diesem Artikel wird erklärt, wie Sie die Brokermessagingfunktionen (Wartesch
 
 ## Erste Schritte mit Service Bus
 
-In diesem Artikel wird davon ausgegangen, dass Sie bereits einen Service Bus-Namespace haben, der eine Warteschlange mit dem Namen "queue1" enthält. Falls nicht, können Sie den Namespace und die Warteschlange im [klassischen Azure-Portal](http://manage.windowsazure.com) erstellen. Weitere Informationen zum Erstellen von Namespaces und Warteschlangen für Service Bus finden Sie unter [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-how-to-use-queues.md).
+In diesem Artikel wird davon ausgegangen, dass Sie bereits einen Service Bus-Namespace haben, der eine Warteschlange mit dem Namen "queue1" enthält. Falls nicht, können Sie den Namespace und die Warteschlange im [klassischen Azure-Portal](http://manage.windowsazure.com) erstellen. Weitere Informationen zum Erstellen von Namespaces und Warteschlangen für Service Bus finden Sie unter [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md).
 
 ## Herunterladen des Servicebus-SDKs
 
@@ -320,8 +320,8 @@ Nachdem Sie sich einen Überblick über Service Bus und AMQP mit .NET verschafft
 
 * [AMQP 1.0-Unterstützung in Azure Service Bus](service-bus-amqp-overview.md)
 * [Verwenden der JMS-Programmierschnittstelle (Java Message Service) mit Service Bus & AMQP 1.0](service-bus-java-how-to-use-jms-api-amqp.md)
-* [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-how-to-use-queues.md)
+* [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
  
 [klassischen Azure-Portal]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

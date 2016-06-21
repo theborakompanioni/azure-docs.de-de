@@ -1,6 +1,6 @@
 <properties 
     pageTitle="Konfigurieren der Georeplikation für eine Azure SQL-Datenbank mit dem Azure-Portal | Microsoft Azure" 
-    description="Konfigurieren der Georeplikation für eine Azure SQL-Datenbank mit dem Azure-Portal" 
+    description="Konfigurieren der Georeplikation für die Azure SQL-Datenbank mit dem Azure-Portal" 
     services="sql-database" 
     documentationCenter="" 
     authors="stevestein" 
@@ -16,7 +16,7 @@
     ms.date="04/27/2016"
     ms.author="sstein"/>
 
-# Konfigurieren der Georeplikation für die Azure SQL-Datenbank mit dem Azure-Portal
+# Konfigurieren der Georeplikation für Azure SQL-Datenbank mit dem Azure-Portal
 
 
 > [AZURE.SELECTOR]
@@ -48,7 +48,7 @@ Zum Hinzufügen einer sekundären Datenbank müssen Sie der Besitzer des Abonnem
 
 Die sekundäre Datenbank hat den gleichen Namen wie die primäre Datenbank und standardmäßig auch den gleichen Servicelevel. Die sekundäre Datenbank kann lesbar oder nicht lesbar und eine Einzeldatenbank oder eine elastische Datenbank sein. Weitere Informationen finden Sie unter [Dienstebenen](sql-database-service-tiers.md). Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beginnt die Replikation der Daten von der primären Datenbank in die neue sekundäre Datenbank.
 
-> [AZURE.NOTE] Wenn die Partnerdatenbank bereits vorhanden ist (z. B. aufgrund der Beendigung einer vorherigen Georeplikationsbeziehung), tritt für den Befehl ein Fehler auf.
+> [AZURE.NOTE] Wenn die Partnerdatenbank bereits vorhanden ist (z.B. aufgrund der Beendigung einer vorherigen Georeplikationsbeziehung), tritt für den Befehl ein Fehler auf.
 
 
 
@@ -115,7 +115,7 @@ Mit diesem Vorgang wird die Replikation zur sekundären Datenbank dauerhaft been
 ## Zusätzliche Ressourcen
 
 - [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
-- [Spotlight auf die neuen Georeplikationsfunktionen](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
+- [Spotlight on new Geo-Replication capabilities](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/) (Die neuen Georeplikationsfunktionen im Überblick)
 - [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
 - [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
 - [Aktive Georeplikation](sql-database-geo-replication-overview.md)
@@ -135,4 +135,4 @@ Mit diesem Vorgang wird die Replikation zur sekundären Datenbank dauerhaft been
 [9]: ./media/sql-database-geo-replication-portal/seeding-complete.png
 [10]: ./media/sql-database-geo-replication-portal/failover.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

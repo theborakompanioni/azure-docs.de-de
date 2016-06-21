@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Vorbereiten der Umgebung für die Sicherung virtueller ARM-Computer | Microsoft Azure"
+	pageTitle="Vorbereiten der Umgebung für die Sicherung von mit Resource Manager bereitgestellten virtuellen Computern | Microsoft Azure"
 	description="Vergewissern Sie sich, dass Ihre Umgebung für die Sicherung virtueller Computer in Azure vorbereitet ist."
 	services="backup"
 	documentationCenter=""
 	authors="markgalioto"
-	manager="jwhit"
+	manager="cfreeman"
 	editor=""
 	keywords="Sicherung; Sichern;"/>
 
@@ -14,23 +14,23 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/03/2016"
+	ms.date="06/03/2016"
 	ms.author="trinadhk; jimpark; markgal;"/>
 
 
-# Vorbereiten der Umgebung für die Sicherung virtueller ARM-Computer
+# Vorbereiten der Umgebung für die Sicherung von mit Resource Manager bereitgestellten virtuellen Computern
 
 > [AZURE.SELECTOR]
 - [Resource Manager-Modell](backup-azure-arm-vms-prepare.md)
 - [Klassisches Modell](backup-azure-vms-prepare.md)
 
-Dieser Artikel enthält die Schritte zum Vorbereiten Ihrer Umgebung zum Sichern eines virtuellen Azure Resource Manager-Computers (ARM-VM). In den im Verfahren dargestellten Schritten wird das Azure-Portal genutzt.
+Dieser Artikel enthält die Schritte zum Vorbereiten Ihrer Umgebung zum Sichern eines mit Resource Manager bereitgestellten virtuellen Computers (VM). In den im Verfahren dargestellten Schritten wird das Azure-Portal genutzt.
 
-Der Azure Backup-Dienst bietet zwei Typen von Tresoren (Sicherungstresore und Recovery Services-Tresore) zum Schutz Ihrer virtuellen Computer. Ein Sicherungstresor schützt VMs, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden. Ein Recovery Services-Tresor schützt **sowohl klassisch als auch ARM-bereitgestellte VMs**. Um eine ARM-bereitgestellte VM zu schützen, müssen Sie einen Recovery Services-Tresor verwenden.
+Der Azure Backup-Dienst bietet zwei Typen von Tresoren (Sicherungstresore und Recovery Services-Tresore) zum Schutz Ihrer virtuellen Computer. Ein Sicherungstresor schützt VMs, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden. Ein Recovery Services-Tresor schützt **sowohl klassisch als auch mit Resource Manager bereitgestellte virtuelle Computer**. Um einen mit Resource Manager bereitgestellten virtuellen Computer zu schützen, müssen Sie einen Recovery Services-Tresor verwenden.
 
 >[AZURE.NOTE] Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../resource-manager-deployment-model.md). Unter [Vorbereiten der Umgebung für die Sicherung virtueller Azure-Computer](backup-azure-vms-prepare.md) finden Sie ausführliche Informationen zum Arbeiten mit VMs, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden.
 
-Bevor Sie einen virtuellen ARM-Computer (VM) schützen oder sichern können, schaffen Sie folgende Voraussetzungen:
+Bevor Sie einen mit Resource Manager bereitgestellten virtuellen Computer (VM) schützen oder sichern können, schaffen Sie folgende Voraussetzungen:
 
 - Erstellen Sie einen Recovery Services-Tresor *am gleichen Speicherort, an dem sich Ihr virtueller Computer befindet* (oder geben Sie einen dort vorhandenen Recovery Services-Tresor an).
 - Wählen Sie ein Szenario aus, definieren Sie die Sicherungsrichtlinie, und definieren Sie die zu schützenden Elemente.
@@ -238,11 +238,11 @@ Damit wird die Proxyserverkonfiguration für das lokale Systemkonto eingerichtet
      ```
     Er öffnet das Internet Explorer-Fenster.
 3. Wechseln Sie zu „Extras -> Internetoptionen -> Verbindungen -> LAN-Einstellungen“.
-4. Überprüfen Sie die Proxyeinstellungen für das Systemkonto. Legen Sie Proxy-IP und Port fest. 
+4. Überprüfen Sie die Proxyeinstellungen für das Systemkonto. Legen Sie Proxy-IP und Port fest.
 5. Schließen Sie Internet Explorer.
 
 Mit diesem Befehl wird eine computerweite Proxykonfiguration eingerichtet und für den gesamten ausgehenden HTTP/HTTPS-Datenverkehr verwendet.
-   
+
 Wenn Sie einen Proxyserver auf einem aktuellen Benutzerkonto (keinem lokalen Systemkonto) eingerichtet haben, verwenden Sie das folgende Skript, um die Einstellungen dem SYSTEMKONTO zuzuweisen:
 
 ```
@@ -256,7 +256,7 @@ Wenn Sie einen Proxyserver auf einem aktuellen Benutzerkonto (keinem lokalen Sys
 
 >[AZURE.NOTE] Wenn das Proxyserverprotokoll den Eintrag „(407) Proxyauthentifizierung erforderlich“ enthält, überprüfen Sie, ob Ihre Authentifizierung korrekt eingerichtet ist.
 
-######Für Linux-Computer 
+######Für Linux-Computer
 
 Fügen Sie die folgende Zeile der ```/etc/environment```-Datei hinzu:
 
@@ -265,7 +265,7 @@ http_proxy=http://<proxy IP>:<proxy port>
 ```
 
 Fügen Sie der Datei ```/etc/waagent.conf``` die folgenden Zeilen hinzu:
-   
+
 ```
 HttpProxy.Host=<proxy IP>
 HttpProxy.Port=<proxy port>
@@ -309,7 +309,7 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 *In diesen Schritten werden bestimmte Namen und Werte für dieses Beispiel verwendet. Verwenden Sie die Namen und Werte für Ihre Bereitstellung beim Eingeben bzw. Ausschneiden und Einfügen von Informationen in Ihren Code.*
 
 
-Da Sie jetzt sichergestellt haben, dass Sie über eine Netzwerkverbindung verfügen, können Sie den virtuellen Computer sichern. Weitere Informationen finden Sie unter [Back up Azure Resource Manager (ARM) VMs](backup-azure-arm-vms.md) (Sichern von Azure Resource Manager-VMs [ARM]).
+Da Sie jetzt sichergestellt haben, dass Sie über eine Netzwerkverbindung verfügen, können Sie den virtuellen Computer sichern. Siehe [Sichern von mit Resource Manager bereitgestellten virtuellen Computern](backup-azure-arm-vms.md).
 
 ## Fragen?
 Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](http://aka.ms/azurebackup_feedback).
@@ -321,4 +321,4 @@ Ihre Umgebung ist jetzt für das Sichern Ihres virtuellen Computers vorbereitet.
 - [Planen der Sicherungsinfrastruktur für virtuelle Computer](backup-azure-vms-introduction.md)
 - [Verwalten der Sicherung virtueller Computer](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

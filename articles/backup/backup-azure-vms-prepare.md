@@ -4,7 +4,7 @@
 	services="backup"
 	documentationCenter=""
 	authors="markgalioto"
-	manager="jwhit"
+	manager="cfreeman"
 	editor=""
 	keywords="Sicherung; Sichern;"/>
 
@@ -14,15 +14,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="06/03/2016"
 	ms.author="trinadhk; jimpark; markgal;"/>
 
 
 # Vorbereiten der Umgebung für die Sicherung virtueller Azure-Computer
 
 > [AZURE.SELECTOR]
-- [Vorbereiten auf das Sichern der ARM-VMs](backup-azure-arm-vms-prepare.md)
-- [Vorbereiten auf das Sichern der Azure-VMs](backup-azure-vms-prepare.md)
+- [Resource Manager-Modell](backup-azure-arm-vms-prepare.md)
+- [Klassisches Modell](backup-azure-vms-prepare.md)
 
 Bevor Sie einen virtuellen Azure-Computer sichern können, müssen drei Bedingungen erfüllt sein.
 
@@ -92,7 +92,7 @@ So erstellen Sie einen Sicherungstresor
 
 Um die VM-Momentaufnahmen zu verwalten, benötigt die Sicherungserweiterung eine Verbindung mit den öffentlichen Azure-IP-Adressen. Ohne die richtige Internetverbindung tritt bei diesen HTTP-Anforderungen des virtuellen Computers ein Timeout auf, und der Sicherungsvorgang funktioniert nicht. Wenn in Ihrer Bereitstellung Zugriffseinschränkungen aktiv sind (z.B. über eine Netzwerksicherheitsgruppe [NSG]), wählen Sie eine der folgenden Optionen für die Bereitstellung eines freien Pfades für den Sicherungsdatenverkehr:
 
-- [Aufnahme der Azure-Datencenter-IP-Bereiche in eine Whitelist](http://www.microsoft.com/de-DE/download/details.aspx?id=41653) – Lesen Sie den Artikel mit Anweisungen zur Aufnahme der IP-Adressen in eine Whitelist.
+- [Whitelist der Azure-Datencenter-IP-Bereiche](http://www.microsoft.com/de-DE/download/details.aspx?id=41653) – Im Artikel finden Sie Anweisungen zum Erstellen einer Whitelist der IP-Adressen.
 - Stellen Sie einen HTTP-Proxyserver zum Weiterleiten des Datenverkehrs bereit.
 
 Bei der Entscheidung, welche Option Sie verwenden, müssen Sie die Kompromisse zwischen Verwaltbarkeit, differenzierter Kontrolle und Kosten abwägen.
@@ -133,11 +133,11 @@ Damit wird die Proxyserverkonfiguration für das lokale Systemkonto eingerichtet
      ```
     Er öffnet das Internet Explorer-Fenster.
 3. Wechseln Sie zu „Extras -> Internetoptionen -> Verbindungen -> LAN-Einstellungen“.
-4. Überprüfen Sie die Proxyeinstellungen für das Systemkonto. Legen Sie Proxy-IP und Port fest. 
+4. Überprüfen Sie die Proxyeinstellungen für das Systemkonto. Legen Sie Proxy-IP und Port fest.
 5. Schließen Sie Internet Explorer.
 
 Mit diesem Befehl wird eine computerweite Proxykonfiguration eingerichtet und für den gesamten ausgehenden HTTP/HTTPS-Datenverkehr verwendet.
-   
+
 Wenn Sie einen Proxyserver auf einem aktuellen Benutzerkonto (keinem lokalen Systemkonto) eingerichtet haben, verwenden Sie das folgende Skript, um die Einstellungen dem SYSTEMKONTO zuzuweisen:
 
 ```
@@ -151,7 +151,7 @@ Wenn Sie einen Proxyserver auf einem aktuellen Benutzerkonto (keinem lokalen Sys
 
 >[AZURE.NOTE] Wenn das Proxyserverprotokoll den Eintrag „(407) Proxyauthentifizierung erforderlich“ enthält, überprüfen Sie, ob Ihre Authentifizierung korrekt eingerichtet ist.
 
-######Für Linux-Computer 
+######Für Linux-Computer
 
 Fügen Sie die folgende Zeile der ```/etc/environment```-Datei hinzu:
 
@@ -160,7 +160,7 @@ http_proxy=http://<proxy IP>:<proxy port>
 ```
 
 Fügen Sie der Datei ```/etc/waagent.conf``` die folgenden Zeilen hinzu:
-   
+
 ```
 HttpProxy.Host=<proxy IP>
 HttpProxy.Port=<proxy port>
@@ -238,4 +238,4 @@ Ihre Umgebung ist jetzt für das Sichern Ihres virtuellen Computers vorbereitet.
 - [Planen der Sicherungsinfrastruktur für virtuelle Computer](backup-azure-vms-introduction.md)
 - [Verwalten der Sicherung virtueller Computer](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

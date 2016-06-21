@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie Sie Visual Studio-Tools für Docker zum Veröffentlichen einer ASP.NET 5-Web-App in einem Docker-Container verwenden, der auf einem Azure-Docker-Hostcomputer ausgeführt wird."   
    services="visual-studio-online"
    documentationCenter=".net"
-   authors="tomarcher"
+   authors="allclark"
    manager="douge"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/08/2016"
-   ms.author="tarcher"/>
+   ms.date="06/08/2016"
+   ms.author="allclark"/>
 
 # Bereitstellen eines ASP.NET-Containers auf einem Docker-Remotehost
 
@@ -57,13 +57,13 @@ Fügen Sie vor der Bereitstellung Ihrer App von Visual Studio an Azure Ihrem vir
 
     1.  Navigieren Sie zum [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885). 
     
-    1.  Tippen Sie auf **VIRTUELLE COMPUTER**
+    1.  Klicken Sie auf **VIRTUELLE COMPUTER**.
     
     1.  Wählen Sie Ihren virtuellen Docker-Hostcomputer aus.
     
-    1.  Tippen Sie auf die Registerkarte **ENDPUNKTE**.
+    1.  Wählen Sie die Registerkarte **ENDPUNKTE** aus.
     
-    1.  Tippen Sie (unten auf der Seite) auf **HINZUFÜGEN**.
+    1.  Klicken Sie (unten auf der Seite) auf **HINZUFÜGEN**.
     
     1.  Führen Sie die Anweisungen aus, um Port 80 verfügbar zu machen, der standardmäßig vom Bereitstellungsskript verwendet wird.
 
@@ -83,7 +83,7 @@ Bei der Bereitstellung auf Remotehosts funktioniert das Volumezuordnungsfeature 
 
 1.  Ändern Sie das Startziel in **Docker**.
 
-1.  Tippen Sie auf das **Docker**-Symbol, um die App zu erstellen und auszuführen.
+1.  Klicken Sie auf das **Docker**-Symbol, um die App zu erstellen und auszuführen.
 
 ![App starten][2]
 
@@ -96,4 +96,4 @@ Die Ergebnisse sollten in etwa wie folgt aussehen:
 [2]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/launch-application.png
 [3]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/view-application.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

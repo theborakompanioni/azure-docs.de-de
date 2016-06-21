@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="05/31/2016"
 	ms.author="priyamo"/>
 
 
@@ -86,4 +86,4 @@ Verwenden Sie zum Auswerten des Werts für das `Issuer`-Element den **App-ID-URI
 
 Azure AD verwendet das `StatusCode`-Element im `Status`-Element, um anzugeben, ob die Abmeldung erfolgreich war. Wenn beim Abmeldeversuch ein Fehler auftritt, kann das `StatusCode`-Element auch benutzerdefinierte Fehlermeldungen enthalten.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -100,15 +100,11 @@ Auf dem Blatt mit den Grundeinstellungen müssen die grundlegenden Details für 
 
 15. Optional: Festlegen der **Service Fabric-Clustereinstellungen** Mit dieser fortgeschrittenen Option können Sie die Standardeinstellungen für den Service Fabric-Cluster ändern. Es wird empfohlen, die Standardeinstellungen unverändert zu lassen, wenn Ihre Anwendung oder Ihr Cluster nicht unbedingt eine Änderung erfordert.
 
-
-
 ## Schritt 3: Konfigurieren der Sicherheitseinstellungen
 
-Zu diesem Zeitpunkt unterstützt Service Fabric die Sicherung von Clustern nur über ein X.509-Zertifikat. Bevor Sie diesen Vorgang starten, müssen Sie Ihr Zertifikat in Key Vault hochladen. Weitere Informationen zur Vorgehensweise finden Sie unter [Service Fabric-Clustersicherheit](service-fabric-cluster-security.md).
+Sicherheitsszenarien und -konzepte finden Sie unter [Service Fabric cluster security (Service Fabric-Clustersicherheit)](service-fabric-cluster-security.md). Zu diesem Zeitpunkt unterstützt Service Fabric das Absichern von Clustern nur über ein X509-Zertifikat. Informationen zur Vorgehensweise finden Sie unter [Secure a Service Fabric cluster on Azure using certificates](service-fabric-secure-azure-cluster-with-certs.md) (Sichern von Service Fabric-Clustern in Azure mithilfe von Zertifikaten).
 
-Die Cluster-Sicherung ist optional, wird jedoch dringend empfohlen. Wenn Sie Ihren Cluster nicht schützen möchten, wählen Sie für **Sicherheitsmodus** die Option **Unsicher** auswählen. Hinweis: Ein unsicherer Cluster kann zu einem späteren Zeitpunkt **nicht** in einen sicheren Cluster aktualisiert werden.
-
-Sicherheitsaspekte und Anweisungen finden Sie unter [Service Fabric cluster security (Service Fabric-Clustersicherheit)](service-fabric-cluster-security.md).
+Die Cluster-Sicherung ist optional, wird jedoch dringend empfohlen. Wenn Sie Ihren Cluster nicht schützen möchten, wählen Sie für **Sicherheitsmodus** die Option **Unsicher** aus. Hinweis: Ein unsicherer Cluster kann zu einem späteren Zeitpunkt **nicht** in einen sicheren Cluster aktualisiert werden.
 
 ![Screenshot der Sicherheitskonfigurationen im Azure-Portal.][SecurityConfigs]
 
@@ -207,7 +203,7 @@ Nachdem Sie die Verbindung hergestellt haben, führen Sie die folgenden Befehle 
 
 ## Herstellen einer Remoteverbindung mit einer Instanz der VM-Skalierungsgruppe oder einem Clusterknoten
 
-Für jeden Knotentyp, den Sie in Ihrem Cluster angeben, wird jeweils eine VM-Skalierungsgruppe eingerichtet. Weitere Informationen finden Sie unter [Herstellen einer Remoteverbindung mit einer VM-Skalierungsgruppeninstanz](service-fabric-cluster-nodetypes.md#remote-connect-to-a-vm-scale-set-instance-or-a-cluster-node).
+Für jeden Knotentyp, den Sie in Ihrem Cluster angeben, wird jeweils eine VM-Skalierungsgruppe eingerichtet. Weitere Informationen finden Sie unter [Herstellen einer Remoteverbindung mit einer VM-Skalierungsgruppeninstanz oder einem Clusterknoten](service-fabric-cluster-nodetypes.md#remote-connect-to-a-vm-scale-set-instance-or-a-cluster-node).
 
 ## Nächste Schritte
 
@@ -229,4 +225,4 @@ Machen Sie sich nach dem Erstellen eines Clusters mit dem Schützen des Clusters
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png
 [SecureConnection]: ./media/service-fabric-cluster-creation-via-portal/SecureConnection.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

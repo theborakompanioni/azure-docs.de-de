@@ -19,8 +19,6 @@
 
 # Problembehandlung bei Fehlern im Zusammenhang mit Azure Windows-VM-Erweiterungen
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
-
 [AZURE.INCLUDE [virtual-machines-common-extensions-troubleshoot](../../includes/virtual-machines-common-extensions-troubleshoot.md)]
 
 ## Anzeigen des Erweiterungsstatus
@@ -70,4 +68,4 @@ Wenn Sie mithilfe der benutzerdefinierten Skripterweiterung Skripts auf dem virt
 
 Nachdem die Erweiterung entfernt wurde, kann die Vorlage erneut ausgeführt werden, um die Skripts auf dem virtuellen Computer auszuführen.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

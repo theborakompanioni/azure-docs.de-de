@@ -48,12 +48,12 @@ Das [Partition and Sample][partition-and-sample]-Modul kann verwendet werden, um
 
 
 ## Definieren der Kennzahl
-Das [Sweep Parameters][sweep-parameters]-Modul bietet Unterstützung für die empirische Auswahl des besten Parametersatzes für einen bestimmten Algorithmus und ein bestimmtes DataSet. Der Eigenschaftenbereich dieses Moduls enthält, zusätzlich zu anderen Informationen zum Trainieren des Modells, die zu verwendende Kennzahl für die Ermittlung des besten Parametersatzes. Er verfügt über zwei verschiedene Dropdownlisten für Klassifizierungs- und Regressionsalgorithmen. Wenn der untersuchte Algorithmus ein Klassifizierungsalgorithmus ist, wird die Regressionskennzahl ignoriert und umgekehrt. In diesem speziellen Beispiel wählten wir **Accuracy** als Kennzahl.
+Das [Tune Model Hyperparameters][tune-model-hyperparameters]-Modul bietet Unterstützung für die empirische Auswahl des besten Parametersatzes für einen bestimmten Algorithmus und ein bestimmtes Dataset. Der Eigenschaftenbereich dieses Moduls enthält, zusätzlich zu anderen Informationen zum Trainieren des Modells, die zu verwendende Kennzahl für die Ermittlung des besten Parametersatzes. Er verfügt über zwei verschiedene Dropdownlisten für Klassifizierungs- und Regressionsalgorithmen. Wenn der untersuchte Algorithmus ein Klassifizierungsalgorithmus ist, wird die Regressionskennzahl ignoriert und umgekehrt. In diesem speziellen Beispiel wählten wir **Accuracy** als Kennzahl.
  
 ![Bild5](./media/machine-learning-algorithm-parameters-optimize/fig5.png)
 
 ## Trainieren, Evaluieren und Vergleichen:  
-Ein und dasselbe [Sweep Parameters][sweep-parameters]-Modul trainiert alle Modelle, die dem Parametersatz entsprechen, wertet verschiedene Kennzahlen aus und gibt dann das am besten trainierte Modell anhand der vom Benutzer ausgewählten Kennzahl aus. Dieses Modul hat zwei obligatorische Eingaben:
+Das gleiche [Tune Model Hyperparameters][tune-model-hyperparameters]-Modul trainiert alle Modelle, die dem Parametersatz entsprechen, wertet verschiedene Kennzahlen aus und gibt dann das am besten trainierte Modell anhand der vom Benutzer ausgewählten Kennzahl aus. Dieses Modul hat zwei obligatorische Eingaben:
 
 * den untrainierten Lernenden 
 * das DataSet 
@@ -67,7 +67,7 @@ Wir sehen die genauen gewählten Parameter in einer Visualisierung des rechten A
 
 <!-- Module References -->
 [partition-and-sample]: https://msdn.microsoft.com/library/azure/a8726e34-1b3e-4515-b59a-3e4a475654b8/
-[sweep-parameters]: https://msdn.microsoft.com/library/azure/038d91b6-c2f2-42a1-9215-1f2c20ed1b40/
+[tune-model-hyperparameters]: https://msdn.microsoft.com/library/azure/038d91b6-c2f2-42a1-9215-1f2c20ed1b40/
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="05/31/2016"
 	ms.author="priyamo"/>
 
 
@@ -58,7 +58,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Parameter | | Beschreibung |
 | ----------------------- | ------------------------------- | --------------- |
 | tenant | erforderlich | Mit dem `{tenant}`-Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Die zulässigen Werte sind Mandantenbezeichner, z.B. `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`, `contoso.onmicrosoft.com` oder `common` für mandantenunabhängige Token. |
-| client\_id | erforderlich | Die Anwendungs-ID, die Ihrer App zugewiesen wird, wenn Sie sie bei Azure AD registrieren. Diese finden Sie im klassischen Azure-Portal. Klicken Sie auf **Active Directory**. Klicken Sie anschließend auf das Verzeichnis, auf die Anwendung und dann auf **Konfigurieren**. |
+| client\_id | erforderlich | Die Anwendungs-Id, die Ihrer App zugewiesen wird, wenn Sie sie mit Azure AD registrieren. Diese finden Sie im klassischen Azure-Portal. Klicken Sie auf **Active Directory**. Klicken Sie anschließend auf das Verzeichnis, auf die Anwendung und dann auf **Konfigurieren**. |
 | response\_type | erforderlich | Muss das `id_token` für die OpenID Connect-Anmeldung enthalten. Es können auch andere Antworttypen enthalten sein, z. B. `code`. |
 | Bereich | erforderlich | Eine durch Leerzeichen getrennte Liste von Bereichen. Für OpenID Connect muss der Bereich `openid` enthalten sein, der in der Berechtigung „Sie werden angemeldet“ in der Zustimmungsbenutzeroberfläche resultiert. Sie können in diese Anforderung auch andere Bereiche für das Anfordern der Zustimmung aufnehmen. |
 | nonce | erforderlich | Ein Wert in der von der App erzeugten Anforderung, die im sich ergebenden `id_token`-Element als Anspruch enthalten ist. Die App kann diesen Wert dann überprüfen, um die Gefahr von Tokenwiedergabeangriffen zu vermindern. Der Wert ist in der Regel eine zufällige, eindeutige Zeichenfolge oder GUID, die verwendet werden kann, um den Ursprung der Anforderung zu identifizieren. |
@@ -197,4 +197,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 Nachdem Sie einen Autorisierungs`code` und einen `id_token` erhalten haben, können Sie den Benutzer anmelden und Zugriffstoken in seinem Namen abrufen. Zum Anmelden des Benutzers müssen Sie das `id_token`-Element genau wie oben beschrieben validieren. Zum Abrufen von Zugriffstoken können Sie die in unserer [OAuth-Protokolldokumentation beschriebenen Schritte](active-directory-protocols-oauth-code.md#Use-the-Authorization-Code-to-Request-an-Access-Token) ausführen
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

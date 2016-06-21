@@ -14,13 +14,12 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/28/2016"
+	ms.date="06/07/2016"
 	ms.author="iainfou"/>
 
 # Installieren und Konfigurieren von Symantec Endpoint Protection auf einem virtuellen Windows-Computer
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
-
 
 In diesem Artikel wird beschrieben, wie der Symantec Endpoint Protection-Client auf einem neuen oder vorhandenen virtuellen Windows Server-Computer installiert und konfiguriert wird. Dies ist der vollständige Client, der Dienste wie Viren- und Spywareschutz, Firewall und Eindringschutz enthält.
 
@@ -98,4 +97,4 @@ So überprüfen Sie, ob die Symantec-Sicherheitserweiterung installiert wurde un
 
 [Ext]: http://go.microsoft.com/fwlink/p/?linkid=390493
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0608_2016-->

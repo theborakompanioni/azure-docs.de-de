@@ -18,9 +18,13 @@
 
 # Verschieben von Daten in und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory
 
-Dieser Artikel beschreibt die Verwendung der Kopieraktivität in Azure Data Factory, um Daten aus Azure SQL Data Warehouse in einen anderen Datenspeicher und aus einem anderen Datenspeicher in Azure SQL zu verschieben. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit Kopieraktivität und unterstützten Datenquellen und Senken für SQL Data Warehouse bietet.
+Dieser Artikel beschreibt die Verwendung der Kopieraktivität in Azure Data Factory, um Daten aus Azure SQL Data Warehouse in einen anderen Datenspeicher und aus einem anderen Datenspeicher in Azure SQL zu verschieben.
+
+Sie können angeben, ob Sie PolyBase beim Laden von Daten in Azure SQL Data Warehouse verwenden möchten. Es wird empfohlen, dass Sie PolyBase verwenden, um beim Laden von Daten in Azure SQL Data Warehouse eine optimale Leistung zu erzielen. Details finden Sie im Abschnitt [Daten unter Verwendung von PolyBase in Azure SQL Data Warehouse laden](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
 
 In den folgenden Beispielen wird veranschaulicht, wie Sie Daten in und aus Azure SQL Data Warehouse und Azure-BLOB-Speicher kopieren. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus beliebigen Quellen in die im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
+
+
 
 > [AZURE.NOTE] 
 Eine Übersicht über den Azure Data Factory-Dienst finden Sie unter [Einführung in Azure Data Factory](data-factory-introduction.md).
@@ -483,9 +487,7 @@ Wenn Sie "sqlReaderQuery" oder "sqlReaderStoredProcedureName" nicht angeben, wer
 ## Daten unter Verwendung von PolyBase in Azure SQL Data Warehouse laden
 **PolyBase** bietet eine effiziente Möglichkeit, um große Datenmengen mit hohem Durchsatz aus Azure Blob Storage in Azure SQL Data Warehouse zu laden. Wenn Sie PolyBase anstelle des standardmäßigen BULKINSERT-Mechanismus verwenden, wird der Durchsatz erheblich gesteigert.
 
-Wenn Sie einen anderen Datenspeicher als Azure Blob Storage verwenden, sollten Sie die Daten gegebenenfalls zunächst aus dem Quelldatenspeicher nach Azure Blob Storage kopieren, um diesen Speicher als Stagingspeicher zu nutzen. Anschließend verwenden Sie PolyBase, um die Daten aus dem Stagingspeicher in Azure SQL Data Warehouse zu laden. In diesem Szenario führen Sie zwei Kopieraktivitäten aus. Mit der ersten Kopieraktivität werden Daten aus dem Quelldatenspeicher nach Azure Blob Storage kopiert, mit der zweiten Kopieraktivität werden Daten unter Verwendung von PolyBase aus Azure Blob Storage nach Azure SQL Data Warehouse kopiert.
-
-Legen Sie für die **allowPolyBase**-Eigenschaft den Wert **true** fest, wie im folgenden Beispiel für Azure Data Factory gezeigt, um PolyBase für das Kopieren von Daten aus Azure Blob Storage nach Azure SQL Data Warehouse zu verwenden. Wenn Sie für „allowPolyBase“ den Wert „true“ festlegen, können Sie über die **polyBaseSettings**-Eigenschaftengruppe PolyBase-spezifische Eigenschaften festlegen. Im Abschnitt [SqlDWSink](#SqlDWSink) oben finden Sie Einzelheiten zu den Eigenschaften, die mit „polyBaseSettings“ verwendet werden können.
+Legen Sie für die **allowPolyBase**-Eigenschaft den Wert **true** fest, wie im folgenden Beispiel für Azure Data Factory gezeigt, um PolyBase für das Kopieren von Daten nach Azure SQL Data Warehouse zu verwenden. Wenn Sie für „allowPolyBase“ den Wert „true“ festlegen, können Sie über die **polyBaseSettings**-Eigenschaftengruppe PolyBase-spezifische Eigenschaften festlegen. Im Abschnitt [SqlDWSink](#SqlDWSink) oben finden Sie Einzelheiten zu den Eigenschaften, die mit „polyBaseSettings“ verwendet werden können.
 
 
     "sink": {
@@ -501,11 +503,14 @@ Legen Sie für die **allowPolyBase**-Eigenschaft den Wert **true** fest, wie im 
 
     }
 
-Azure Data Factory überprüft, ob die Daten die folgenden Anforderungen erfüllen, bevor PolyBase zum Kopieren der Daten nach Azure SQL Data Warehouse verwendet wird. Wenn die Anforderungen nicht erfüllt werden, wird automatisch der BULKINSERT-Mechanismus für die Datenverschiebung verwendet.
+### Direktes Kopieren mithilfe von PolyBase
+Wenn Ihre Daten die folgenden Kriterien erfüllen, können Sie mithilfe von PolyBase direkt aus dem Quelldatenspeicher in Azure SQL Data Warehouse kopieren. Andernfalls können Sie Daten aus dem Quelldatenspeicher in einen Azure-Stagingblobspeicher kopieren, der die folgenden Kriterien erfüllt, und dann PolyBase verwenden, um Daten in Azure SQL Data Warehouse zu laden. Details zum gestaffelten Kopieren finden Sie im Abschnitt [Gestaffeltes Kopieren mit PolyBase](#staged-copy-using-polybase).
+
+Beachten Sie, dass Azure Data Factory die Einstellungen überprüft und automatisch den BULKINSERT-Mechanismus für die Datenverschiebung verwendet, wenn die Anforderungen nicht erfüllt werden.
 
 1.	**Der mit der Quelle verknüpfte Dienst** weist folgenden Typ auf: **Azure Storage**. Außerdem ist dieser Dienst nicht für die Verwendung der SAS-Authentifizierung (Shared Access Signature) konfiguriert. Ausführliche Informationen finden Sie unter [Mit Azure Storage verknüpfter Dienst](data-factory-azure-blob-connector.md#azure-storage-linked-service).  
 2. Das **Eingabedataset** weist folgenden Typ auf: **Azure Blob**. Außerdem erfüllen die Typeigenschaften des Datasets die folgenden Kriterien: 
-	1. Für **Type** muss **TextFormat** festgelegt sein. 
+	1. Für **Type** muss **TextFormat** oder **OrcFormat** festgelegt sein. 
 	2. Für **rowDelimiter** muss **\\n** festgelegt sein. 
 	3. **nullValue** ist auf **empty string** ("") festgelegt. 
 	4. **encodingName** ist auf **utf-8** festgelegt. Dies ist der **Standardwert**, legen Sie also keinen anderen Wert fest. 
@@ -528,7 +533,39 @@ Azure Data Factory überprüft, ob die Daten die folgenden Anforderungen erfüll
 			},
 3.	Unter **BlobSource** ist keine **skipHeaderLineCount**-Einstellung für die Kopieraktivität in der Pipeline vorhanden. 
 4.	Unter **SqlDWSink** ist keine **sliceIdentifierColumnName**-Einstellung für die Kopieraktivität in der Pipeline vorhanden. (PolyBase stellt sicher, dass in einem Durchlauf entweder alle oder keine Daten aktualisiert werden). Um **Wiederholbarkeit** zu erreichen, kann **sqlWriterCleanupScript** verwendet werden.
-5.	In der zugehörigen Kopieraktivität wird keine **columnMapping** verwendet. 
+5.	In der zugehörigen Kopieraktivität wird **columnMapping** nicht verwendet. 
+
+### Gestaffeltes Kopieren mit PolyBase
+Für den PolyBase-Mechanismus müssen die Quelldaten in einem Azure-Blobspeicher vorliegen und eines der unterstützten Formate (DELIMITEDTEXT mit Einschränkung, RCFILE, ORC, PARQUET) aufweisen. Wenn Ihre Quelldaten die im Abschnitt weiter oben aufgeführten Kriterien nicht erfüllen, haben Sie die Möglichkeit, die Daten über einen zwischengeschalteten Azure-Stagingblobspeicher zu kopieren. In diesem Fall führt Azure Data Factory die erforderlichen Transformationen für die Daten durch, um die Anforderungen an das Datenformat von PolyBase erfüllen. Anschließend werden die Daten dann mithilfe von PolyBase in SQL Data Warehouse geladen. Unter [Gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy) finden Sie ausführliche Informationen über die allgemeine Funktionsweise des Kopierens von Daten über einen Azure-Stagingblob.
+
+Um dieses Feature zu verwenden, erstellen Sie einen [verknüpften Azure Storage-Dienst](data-factory-azure-blob-connector.md#azure-storage-linked-service), der auf das Azure Storage-Konto mit dem zwischengeschalteten Blobspeicher verweist. Geben Sie dann die Eigenschaften **enableStaging** und **stagingSettings** für die Kopieraktivität an, wie unten dargestellt:
+
+	"activities":[  
+	{
+		"name": "Sample copy activity from SQL Server to SQL Data Warehouse via PolyBase",
+		"type": "Copy",
+		"inputs": [{ "name": "OnpremisesSQLServerInput" }],
+		"outputs": [{ "name": "AzureSQLDWOutput" }],
+		"typeProperties": {
+			"source": {
+				"type": "SqlSource",
+			},
+			"sink": {
+				"type": "SqlDwSink",
+				"allowPolyBase": true
+			},
+    		"enableStaging": true,
+				"stagingSettings": {
+				"linkedServiceName": "MyStagingBlob"
+			}
+		}
+	}
+	]
+
+
+Hinweis: Beim Kopieren von Daten aus einem lokalen Datenspeicher in Azure SQL Data Warehouse mithilfe von PolyBase und Staging müssen Sie JRE (Java Runtime Environment) auf dem Gatewaycomputer installieren, der verwendet wird, um die Quelldaten in das richtige Format zu transformieren.
+
+
 
 ### Bewährte Methoden bei Verwendung von PolyBase
 
@@ -559,31 +596,6 @@ Das PolyBase-Feature in Data Factory akzeptiert aktuell lediglich dieselbe Anzah
 	All columns of the table must be specified in the INSERT BULK statement.
 
 Der NULL-Wert ist eine Sonderform eines Standardwerts. Wenn die Spalte NULL-Werte zulässt, könnten die Eingabedaten (im Blob) für diese Spalte leer sein (sie dürfen im Eingabedataset nicht fehlen). PolyBase fügt für diese Daten in Azure SQL Data Warehouse „NULL“ ein.
-
-#### Zweistufiger Kopiervorgang für die Verwendung von PolyBase
-Für PolyBase gelten einige Einschränkungen im Hinblick auf die Datenspeicher und Formate, die verwendet werden können. Wenn Ihr Szenario die Anforderungen nicht erfüllt, sollten Sie die Daten über die Kopieraktivität in einen Datenspeicher kopieren, der von PolyBase unterstützt wird, und/oder die Daten in ein Format umwandeln, das von PolyBase unterstützt wird. Nachfolgend finden Sie Beispiele für die möglichen Umwandlungen:
-
--	Wandeln Sie Quelldateien mit anderen Codierungen in UTF-8-codierte Azure-Blobs um
--	Serialisieren Sie Daten in SQL Server/Azure SQL-Datenbank in Azure-Blobs im CSV-Format.
--	Ändern Sie die Spaltenreihenfolge mithilfe der columnMapping-Eigenschaft.
-
-Nachfolgend finden Sie Tipps für das Durchführen dieser Umwandlungen:
-
-- Wählen Sie bei der Umwandlung von Tabellendaten in CSV-Dateien ein geeignetes Trennzeichen.
-
-	Dabei sollten als Spaltentrennzeichen Zeichen verwendet werden, deren Vorkommen in den Daten äußerst unwahrscheinlich ist. Gängige Trennzeichen sind z. B. Komma (,), Tilde (~), Pipe (|) und TAB(\\t). Wenn diese Zeichen in Ihren Daten enthalten sind, können Sie nicht druckbare Zeichen wie „\\u0001“ als Spaltentrennzeichen festlegen. PolyBase akzeptiert Spaltentrennzeichen aus mehreren Zeichen, sodass auch komplexere Spaltentrennzeichen gewählt werden können.	
-- Format von datetime-Objekten
-
-	Beim Serialisieren von datetime-Objekten verwendet die Kopieraktivität standardmäßig das folgende Format: jjjj-MM-tt HH:mm:ss.fffffff. Dieses Format wird standardmäßig nicht von PolyBase unterstützt. Die unterstützten datetime-Formate sind hier aufgeführt: [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx). Wenn das von PolyBase erwartete datetime-Format nicht verwendet wird, tritt ein Fehler auf, wie nachfolgend gezeigt:
-
-		Query aborted-- the maximum reject threshold (0 rows) was reached while reading from an external source: 1 rows rejected out of total 1 rows processed.
-		(/AccountDimension)Column ordinal: 97, Expected data type: DATETIME NOT NULL, Offending value: 2010-12-17 00:00:00.0000000  (Column Conversion Error), Error: Conversion failed when converting the NVARCHAR value '2010-12-17 00:00:00.0000000' to data type DATETIME.
-
-	Um diesen Fehler zu behandeln, geben Sie das datetime-Format wie im folgenden Beispiel gezeigt an:
-	
-		"structure": [
-    		{ "name" : "column", "type" : "int", "format": "yyyy-MM-dd HH:mm:ss" }
-		]
 
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-sql-sources](../../includes/data-factory-type-repeatability-for-sql-sources.md)]
@@ -645,4 +657,4 @@ Die Zuordnung ist mit der [SQL Server-Datentypzuordnung für ADO.NET](https://ms
 ## Leistung und Optimierung  
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0608_2016-->

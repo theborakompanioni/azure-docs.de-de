@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="05/08/2016"
+   ms.date="06/01/2016"
    ms.author="tarcher" />
 
 # Veröffentlichen eines Clouddiensts mit den Azure Tools
@@ -97,7 +97,7 @@ Beim folgenden Verfahren wird davon ausgegangen, dass Sie den Assistenten **Azur
 
     Der Clouddienst wird veröffentlicht. Für den virtuellen Computer, der erstellt wird, sind Remoteverbindungen für IIS aktiviert, damit Web Deploy zum Aktualisieren Ihrer Webrollen verwendet werden kann, ohne dass sie erneut veröffentlicht werden müssen.
 
-    >[AZURE.NOTE] Wenn Sie für eine Webrolle mehr als eine Instanz konfiguriert haben, wird eine Warnmeldung mit folgenden Informationen angezeigt: Jede Webrolle ist im Paket, das zum Veröffentlichen der Anwendung erstellt wird, auf nur eine Instanz beschränkt. Klicken Sie auf OK, um fortzufahren. Wie im Abschnitt „Anforderungen“ beschrieben, können Sie mehr als eine Webrolle verwenden, aber nur eine Instanz jeder Rolle.
+    >[AZURE.NOTE] Wenn Sie für eine Webrolle mehr als eine Instanz konfiguriert haben, wird eine Warnmeldung mit folgenden Informationen angezeigt: Jede Webrolle ist im Paket, das zum Veröffentlichen der Anwendung erstellt wird, auf nur eine Instanz beschränkt. Klicken Sie auf **OK**, um fortzufahren. Wie im Abschnitt „Anforderungen“ beschrieben, können Sie mehr als eine Webrolle verwenden, aber nur eine Instanz jeder Rolle.
 
 ### So aktualisieren Sie Ihre Webrolle mit Web Deploy
 
@@ -125,7 +125,7 @@ Beim folgenden Verfahren wird davon ausgegangen, dass Sie den Assistenten **Azur
 
 1. Führen Sie die folgenden Schritte aus, um ein vertrauenswürdiges SSL-Zertifikat für IIS hinzuzufügen, das für Remoteverbindungen verwendet wird:
 
-  1. Klicken Sie zum Herstellen einer Verbindung mit dem virtuellen Computer, auf dem die Webrolle ausgeführt wird, unter **Cloud Explorer** oder **Server-Explorer** auf die Instanz der Webrolle. Wählen Sie anschließend den Befehl **Mithilfe von Remotedesktop verbinden**. Ausführliche Schritte zum Herstellen einer Verbindung mit dem virtuellen Computer finden Sie unter [Verwenden von Remotedesktop mit Azure-Rollen](vs-azure-tools-remote-desktop-roles.md).
+  1. Klicken Sie zum Herstellen einer Verbindung mit dem virtuellen Computer, auf dem die Webrolle ausgeführt wird, unter **Cloud-Explorer** oder **Server-Explorer** auf die Instanz der Webrolle. Wählen Sie anschließend den Befehl **Mithilfe von Remotedesktop verbinden**. Ausführliche Schritte zum Herstellen einer Verbindung mit dem virtuellen Computer finden Sie unter [Verwenden von Remotedesktop mit Azure-Rollen](vs-azure-tools-remote-desktop-roles.md).
 
       Sie werden im Browser aufgefordert, eine RDP-Datei herunterzuladen.
 
@@ -173,4 +173,4 @@ Unter Umständen müssen Sie bestimmte Dateien in Ihr Dienstpaket einschließen,
 
 Weitere Informationen zum Veröffentlichen in Azure aus Visual Studio finden Sie unter [Assistent zur Veröffentlichung einer Azure-Anwendung](vs-azure-tools-publish-azure-application-wizard.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

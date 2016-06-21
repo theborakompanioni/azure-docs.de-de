@@ -20,7 +20,7 @@
 
 Ein Azure Machine Learning-Webdienst wird erstellt, indem ein Experiment veröffentlicht wird, das Module mit konfigurierbaren Parametern enthält. In einigen Fällen kann es vielleicht erforderlich sein, das Verhalten des Moduls zu ändern, während der Webdienst ausgeführt wird. *Webdienstparameter* erlauben Ihnen, dies zu tun.
 
-Ein typisches Beispiel ist das Einrichten des [Reader][reader]-Moduls, damit die Benutzer des veröffentlichten Webdiensts beim Zugreifen auf den Webdienst eine andere Datenquelle angeben können. Ein weiteres Beispiel ist die Konfiguration des [Writer][writer]-Moduls, damit ein anderes Ziel angegeben werden kann. Zu weiteren Beispielen zählen die Änderung der Anzahl von Bits für das Modul [Feature Hashing][feature-hashing] oder der Anzahl der gewünschten Funktionen für das Modul [Filter-Based Feature Selection][filter-based-feature-selection].
+Ein typisches Beispiel ist das Einrichten des [Import Data][import-data]-Moduls, damit die Benutzer des veröffentlichten Webdiensts beim Zugreifen auf den Webdienst eine andere Datenquelle angeben können. Ein weiteres Beispiel ist die Konfiguration des [Export Data][export-data]-Moduls, damit ein anderes Ziel angegeben werden kann. Zu weiteren Beispielen zählen die Änderung der Anzahl von Bits für das Modul [Feature Hashing][feature-hashing] oder der Anzahl der gewünschten Funktionen für das Modul [Filter-Based Feature Selection][filter-based-feature-selection].
 
 Sie können Webdienstparameter definieren und einem oder mehreren Modulparametern im Experiment zuordnen, und Sie können angeben, ob diese Parameter erforderlich oder optional sind. Benutzer des Webdiensts können dann Werte für diese Parameter bereitstellen, wenn sie den Webdienst aufrufen.
 
@@ -40,9 +40,9 @@ Die Dokumentation für den Webdienst (die über den Link zur **API-Hilfeseite** 
 
 ##Beispiel
 
-Nehmen wir beispielsweise an, wir hätten ein Experiment mit einem [Writer][writer]-Modul, das Informationen zum Azure-Blob-Speicher sendet. Wir definieren einen Webdienstparameter namens "Blob path", mit dem die Benutzer des Webdienst beim Zugriff auf den Dienst den Blob-Speicherpfad ändern können.
+Nehmen wir beispielsweise an, wir hätten ein Experiment mit einem [Export Data][export-data]-Modul, das Informationen zum Azure-Blobspeicher sendet. Wir definieren einen Webdienstparameter namens "Blob path", mit dem die Benutzer des Webdienst beim Zugriff auf den Dienst den Blob-Speicherpfad ändern können.
 
-1.	Klicken Sie in Machine Learning Studio auf das [Writer][writer]-Modul, um es auszuwählen. Die Moduleigenschaften werden rechts neben dem Canvas mit dem Experiment im Eigenschaftenbereich angezeigt.
+1.	Klicken Sie in Machine Learning Studio auf das [Export Data][export-data]-Modul, um es auszuwählen. Die Moduleigenschaften werden rechts neben dem Canvas mit dem Experiment im Eigenschaftenbereich angezeigt.
 
 2.	Geben Sie den Speichertyp an:
 
@@ -57,7 +57,7 @@ Nehmen wir beispielsweise an, wir hätten ein Experiment mit einem [Writer][writ
 
     Wählen Sie "Set as web service parameter" (Als Webdienstparameter festlegen) aus.
 
-    Ein Eintrag wird unter **Web Service Parameters** (Webdienstparameter) am unteren Rand des Eigenschaftenbereichs mit dem Namen "Path to blob beginning with container" (Blob-Pfad beginnt mit Container) hinzugefügt. Dies ist der Webdienstparameter, der nun diesem [Writer][writer]-Modulparameter zugeordnet ist.
+    Ein Eintrag wird unter **Web Service Parameters** (Webdienstparameter) am unteren Rand des Eigenschaftenbereichs mit dem Namen "Path to blob beginning with container" (Blob-Pfad beginnt mit Container) hinzugefügt. Dies ist der Webdienstparameter, der nun diesem [Export Data][export-data]-Modulparameter zugeordnet ist.
 
 4.	Wenn Sie den Webdienstparameter umbenennen möchten, klicken Sie auf den Namen, geben Sie "Blob-Pfad" ein, und drücken Sie die **EINGABETASTE**.
  
@@ -69,7 +69,7 @@ Nehmen wir beispielsweise an, wir hätten ein Experiment mit einem [Writer][writ
 
 7.	Klicken Sie auf **PUBLISH WEB SERVICE** (Webdienst veröffentlichen), um den Webdienst zu veröffentlichen.
 
-Benutzer des Webdiensts können jetzt beim Zugriff auf den Webdienst ein neues Ziel für das [Writer][writer]-Modul angeben.
+Benutzer des Webdiensts können jetzt beim Zugriff auf den Webdienst ein neues Ziel für das [Export Data][export-data]-Modul angeben.
 
 ##Weitere Informationen
 
@@ -87,8 +87,8 @@ Weitere Informationen zum Zugreifen auf einen Machine Learning-Webdienst finden 
 <!-- Module References -->
 [feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/
 [filter-based-feature-selection]: https://msdn.microsoft.com/library/azure/918b356b-045c-412b-aa12-94a1d2dad90f/
-[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-[writer]: https://msdn.microsoft.com/library/azure/7a391181-b6a7-4ad4-b82d-e419c0d6522c/
+[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[export-data]: https://msdn.microsoft.com/library/azure/7a391181-b6a7-4ad4-b82d-e419c0d6522c/
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

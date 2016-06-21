@@ -25,7 +25,7 @@
 
 Wenn Sie versuchen, einen beendeten virtuellen Azure-Computer zu starten oder die Größe eines vorhandenen virtuellen Azure-Computers zu ändern, tritt häufig ein Zuordnungsfehler auf. Dieser Fehler tritt auf, wenn in dem Cluster oder der Region keine Ressourcen verfügbar sind, oder wenn die angeforderte Größe des virtuellen Computers nicht unterstützt werden kann.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Resource Manager-Modell.
 
 [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -57,7 +57,7 @@ Sollte bei der Erstellung eines neuen Clouddiensts ein Fehler auftreten, wiederh
 
 > [AZURE.IMPORTANT] Der neue Clouddienst trägt einen neuen Namen und eine neue VIP, sodass Sie diese Informationen für alle Abhängigkeiten ändern müssen, die diese Informationen für den vorhandenen Clouddienst verwenden.
 
-## Problem: Fehler beim Neustart eines vorhandenen virtuellen Computers
+## Problem: Fehler beim Ändern der Größe eines vorhandenen virtuellen Computers
 
 Sie versuchen, die Größe eines angehaltenen virtuellen Computers zu ändern, erhalten aber eine Zuordnungsfehlermeldung.
 
@@ -81,4 +81,4 @@ Sie können alle Ihre virtuellen Computer im gleichen Clouddienst zusammenführe
 
 Wenn der vorhandene Clouddienst nicht einem regionsbasierten virtuellen Netzwerk zugeordnet ist, müssen Sie die virtuellen Computer im vorhandenen Clouddienst löschen und über die zugehörigen Datenträger im neuen Clouddienst neu erstellen. Berücksichtigen Sie dabei allerdings, dass der neue Clouddienst einen neuen Namen und eine neue VIP besitzt und diese für alle Abhängigkeiten aktualisiert werden müssen, die derzeit diese Informationen für den vorhandenen Clouddienst verwenden.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

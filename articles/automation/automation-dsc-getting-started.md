@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="powershell"
    ms.workload="na" 
-   ms.date="05/05/2016"
-   ms.author="eslesar"/>
+   ms.date="06/06/2016"
+   ms.author="magoedte;eslesar"/>
    
 
 # Erste Schritte mit Azure Automation DSC
@@ -27,7 +27,7 @@ Dieses Thema bietet eine detaillierte Anleitung zur Verwendung von Azure Automat
 
 Um die Beispiele in diesem Thema ausführen zu können, ist Folgendes erforderlich:
 
-- Ein Azure Automation-Konto. Informationen zum Erstellen eines Azure Automation-Kontos finden Sie unter [Konfigurieren von Azure Automation](automation-configuring.md).
+- Ein Azure Automation-Konto. Informationen zum Erstellen eines ausführenden Azure Automation-Kontos finden Sie unter [Azure Run As Account](automation-sec-configure-azure-runas-account.md) (Ausführendes Azure-Konto).
 - Eine Azure Resource Manager-VM (nicht klassisch) unter Windows Server 2008 R2 oder höher. Eine Anleitung zum Erstellen einer VM finden Sie unter [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
 
 ## Erstellen einer DSC-Konfiguration
@@ -266,4 +266,4 @@ Wenn ein Knoten nicht mehr von Azure Automation DSC verwaltet werden soll, könn
 * [Azure Automation DSC-Cmdlets](https://msdn.microsoft.com/library/mt244122.aspx)
 * [Azure Automation DSC – Preise](https://azure.microsoft.com/pricing/details/automation/)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

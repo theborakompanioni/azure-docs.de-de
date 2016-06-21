@@ -124,9 +124,8 @@ Um den Dienst „TodoListService“ in Aktion sehen zu können, müssen Sie den 
 - Erstellen Sie in Ihrem Azure AD-Mandanten eine neue Anwendung, und wählen Sie an der Eingabeaufforderung **Systemeigene Clientanwendung** aus.
     -	Am **Namen** der Anwendung sollten die Endbenutzer die Funktion der Anwendung ablesen können.
     -	Geben Sie als **Umleitungs-URI** `http://TodoListClient/` ein.
-- Nach Abschluss der Registrierung weist AAD Ihrer Anwendung eine eindeutige **App-ID** zu. Diesen Wert benötigen Sie in den nächsten Schritten, weswegen Sie ihn aus der Registerkarte „Konfigurieren“ kopieren sollten.
--	Navigieren Sie nach Abschluss der Registrierung zur Registerkarte **Konfigurieren**, und suchen Sie das Feld **App-ID-URI**. Geben Sie hier eine mandantenspezifische Kennung ein, zum Beispiel `https://contoso.onmicrosoft.com/TodoListService`.
-- Suchen Sie ebenso auf der Registerkarte **Konfigurieren** den Abschnitt „Berechtigungen für andere Anwendungen“. Klicken Sie auf „Anwendung hinzufügen“. Wählen Sie „Sonstiges“ in der Dropdownliste „Anzeigen“ aus, und klicken Sie auf das obere Häkchen. Suchen Sie Ihren „TodoListService“-Dienst, klicken Sie darauf, und klicken Sie auf das untere Häkchen, um die Anwendung hinzuzufügen. Wählen Sie „Auf TodoListService zugreifen“ in der Dropdownliste „Delegierte Berechtigungen“ aus, und speichern Sie die Konfiguration.
+- Nach Abschluss der Registrierung weist AAD Ihrer App eine eindeutige **Client-ID** zu. Diesen Wert benötigen Sie in den nächsten Schritten, weswegen Sie ihn aus der Registerkarte „Konfigurieren“ kopieren sollten.
+- Suchen Sie ebenso auf der Registerkarte **Konfigurieren** den Abschnitt „Berechtigungen für andere Anwendungen“. Klicken Sie auf „Anwendung hinzufügen“. Wählen Sie in der Dropdownliste „Anzeigen“ die Option „Alle Apps“ aus, und klicken Sie auf das obere Häkchen. Suchen Sie Ihren „TodoListService“-Dienst, klicken Sie darauf, und klicken Sie auf das untere Häkchen, um die Anwendung hinzuzufügen. Wählen Sie „Auf TodoListService zugreifen“ in der Dropdownliste „Delegierte Berechtigungen“ aus, und speichern Sie die Konfiguration.
 
 
 - Öffnen Sie in Visual Studio im Projekt „TodoListClient“ die Datei `App.config`, und geben Sie Ihre Konfigurationswerte im Abschnitt `<appSettings>` ein.
@@ -140,4 +139,4 @@ Als Referenz stellen wir [hier](https://github.com/AzureADQuickStarts/WebAPI-Bea
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

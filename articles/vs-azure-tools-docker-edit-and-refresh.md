@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie Sie eine in einem lokalen Docker-Container ausgeführte App ändern, den Container über das Feature zum Bearbeiten und Aktualisieren aktualisieren und Haltepunkte für das Debuggen setzen."
    services="visual-studio-online"
    documentationCenter="na"
-   authors="AllenClark"
+   authors="allclark"
    manager="douge"
    editor="" />
 <tags
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="05/13/2016"
+   ms.date="06/08/2016"
    ms.author="allclark" />
 
 # Debuggen von Apps in einem lokalen Docker-Container
@@ -29,7 +29,7 @@ Die folgenden Tools müssen installiert werden:
 - [Microsoft ASP .NET Core RC 2](http://go.microsoft.com/fwlink/?LinkId=798481)
 - [Visual Studio 2015-Tools für Docker](https://aka.ms/DockerToolsForVS)
 
-Um Docker-Container lokal ausführen zu können, benötigen Sie einen lokalen Docker-Client. Sie können die veröffentlichte [Docker Toolbox](https://www.docker.com/products/overview#/docker_toolbox) verwenden, wofür Hyper-V deaktiviert werden muss. Alternativ können Sie die [Betaversion von Docker für Windows](https://beta.docker.com) nutzen, die Hyper-V verwendet und Windows 10 erfordert.
+Um Docker-Container lokal ausführen zu können, benötigen Sie einen lokalen Docker-Client. Sie können die veröffentlichte [Docker Toolbox](https://www.docker.com/products/overview#/docker_toolbox) verwenden, wofür Hyper-V deaktiviert werden muss. Sie können auch die [Betaversion von Docker für Windows](https://beta.docker.com) nutzen, die Hyper-V verwendet und Windows 10 erfordert.
 
 Wenn Sie die Docker Toolbox verwenden, müssen Sie [den Docker-Client konfigurieren](./vs-azure-tools-docker-setup.md).
 
@@ -56,31 +56,40 @@ Mit den Visual Studio 2015-Tools für Docker können Entwickler von ASP.NET Cor
 
 	![][1]
 
-> [AZURE.NOTE] Bei Verwendung der [Betaversion von Docker für Windows](https://beta.docker.com) öffnen Sie „Properties\\Docker.props“. Entfernen Sie den Standardwert, und starten Sie Visual Studio neu, um die Einstellung zu übernehmen. ![][2]
+> [AZURE.NOTE] Bei Verwendung der [Betaversion von Docker für Windows](https://beta.docker.com) öffnen Sie „Properties\\Docker.props“. Entfernen Sie den Standardwert, und starten Sie Visual Studio neu, um die Einstellung zu übernehmen.
+>
+> ![][2]
 
 ##Bearbeiten und aktualisieren
 Um Änderungen schnell zu durchlaufen, können Sie Ihre Anwendung in einem Container starten, Änderungen weiter vornehmen und wie mithilfe von IIS Express anzeigen.
 
-1. Legen Sie die Projektmappenkonfiguration auf `Debug` fest, und drücken Sie **<STRG+F5>**, um Ihr Docker-Image zu erstellen und lokal auszuführen. Siehe das Ausgabefenster
+1. Legen Sie die Projektmappenkonfiguration auf `Debug` fest, und drücken Sie **<STRG+F5>**, um Ihr Docker-Image zu erstellen und lokal auszuführen.
 
-1. Sobald das Containerimage erstellt wurde und in einem Docker-Container ausgeführt wird, versucht Visual Studio, die Web-App in Ihrem Standardbrowser zu starten. Lesen Sie den Abschnitt [Problembehandlung](vs-azure-tools-docker-troubleshooting-docker-errors.md), wenn Sie den Browser Microsoft Edge verwenden oder sonstige Fehlermeldungen erhalten.
+    Sobald das Containerimage erstellt wurde und in einem Docker-Container ausgeführt wird, startet Visual Studio, die Web-App in Ihrem Standardbrowser. Lesen Sie den Abschnitt [Problembehandlung](vs-azure-tools-docker-troubleshooting-docker-errors.md), wenn Sie den Browser Microsoft Edge verwenden oder sonstige Fehlermeldungen erhalten.
 
-1. Kehren Sie zurück zu Visual Studio, und öffnen Sie `Views\Home\About.cshtml`.
+1. Wechseln Sie zur Seite „Info“, auf der wir unsere Änderungen vornehmen.
 
-1. Fügen Sie den folgenden HTML-Inhalt am Ende der Datei hinzu, und speichern Sie die Änderungen
+1. Kehren Sie zu Visual Studio zurück, und öffnen Sie `Views\Home\About.cshtml`.
+
+1. Fügen Sie den folgenden HTML-Inhalt am Ende der Datei hinzu, und speichern Sie die Änderungen.
 
 	```
 	<h1>Hello from a Docker Container!</h1>
 	```
 
-1.	Sobald der .NET-Build fertig gestellt wurde und `Application started. Press Ctrl+C to shut down` im Ausgabefenster angezeigt wird, kehren Sie zum Browser zurück und aktualisieren die Seite.
+1.	Sobald der .NET-Build fertig gestellt ist, sehen Sie im Ausgabefenster dieses Zeilen. Kehren Sie zu Ihrem Browser zurück, und aktualisieren Sie die Seite „Info“.
 
-1.	Ihre Änderungen sollten übernommen worden sein.
+    ```
+    Now listening on: http://*:80
+    Application started. Press Ctrl+C to shut down
+    ```
+
+1.	Ihre Änderungen wurden übernommen!
 
 ##Debuggen mit Haltepunkten
 Änderungen müssen öfters überprüft werden, wozu die Debugfunktionen von Visual Studio genutzt werden.
 
-1.	Kehren Sie zurück zu Visual Studio, und öffnen Sie `Controllers\HomeController.cs`.
+1.	Kehren Sie zu Visual Studio zurück, und öffnen Sie `Controllers\HomeController.cs`.
 
 1.  Ersetzen Sie den Inhalt der „About()“-Methode durch Folgendes:
 
@@ -89,7 +98,7 @@ Um Änderungen schnell zu durchlaufen, können Sie Ihre Anwendung in einem Conta
 	ViewData["Message"] = message;
     ````
 
-1.  Setzen Sie einen Haltepunkt links neben die Zeile `string message`.
+1.  Setzen Sie links neben die Zeile `string message` einen Haltepunkt.
 
 1.  Drücken Sie **<F5>**, um mit dem Debuggen beginnen.
 
@@ -110,26 +119,26 @@ Die [Visual Studio 2015 Tools für Docker](https://aka.ms/DockerToolsForVS) biet
 - [Docker-Tools für Visual Studio](http://aka.ms/dockertoolsforvs) – Entwicklung von .NET Core-Code in einem Container
 - [Docker-Tools für Visual Studio Team Services](http://aka.ms/dockertoolsforvsts) – Erstellen und Bereitstellen von Docker-Containern
 - [Docker-Tools für Visual Studio Code](http://aka.ms/dockertoolsforvscode) – Sprachdienste für die Bearbeitung von Docker-Dateien, mit weiteren e2e-Szenarien in Planung
-- [Informationen zu Windows-Containern](http://aka.ms/containers) – Informationen zu Windows Server und Nano
+- [Informationen zu Windows-Containern](http://aka.ms/containers) – Informationen zu Windows Server und Nano Server
 - [Azure-Containerdienst](https://azure.microsoft.com/services/container-service/) – [Inhalt des Azure-Containerdiensts](http://aka.ms/AzureContainerService)
 
 ## Verschiedene Docker-Tools
 
-[Some great docker tools (Blog von Steve Lasker)](https://blogs.msdn.microsoft.com/stevelasker/2016/03/25/some-great-docker-tools/) (Einige großartige Docker-Tools)
+[Some great docker tools (Blog von Steve Lasker) (Einige großartige Docker-Tools)](https://blogs.msdn.microsoft.com/stevelasker/2016/03/25/some-great-docker-tools/)
 
 ## Nützliche Artikel
 
-[Introduction to Microservices from NGINX](https://www.nginx.com/blog/introduction-to-microservices/) (Einführung in Microservices von NGINX)
+[Introduction to Microservices from NGINX (Einführung in Microservices von NGINX)](https://www.nginx.com/blog/introduction-to-microservices/)
 
 ## Präsentationen
 
 - [Steve Lasker: VS Live Las Vegas 2016 - Docker e2e](https://github.com/SteveLasker/Presentations/blob/master/VSLive2016/Vegas/)
-- [Introduction to ASP.NET Core @ build 2016 - Where You At Demo](https://channel9.msdn.com/Events/Build/2016/B810) (Einführung in ASP.NET Core auf der Build 2016)
-- [Developing .NET apps in containers, Channel 9](https://blogs.msdn.microsoft.com/stevelasker/2016/02/19/developing-asp-net-apps-in-docker-containers/) (Entwickeln von .NET-Apps in Containern)
+- [Introduction to ASP.NET Core @ build 2016 - Where You At Demo (Einführung in ASP.NET Core auf der Build 2016)](https://channel9.msdn.com/Events/Build/2016/B810)
+- [Developing .NET apps in containers, Channel 9 (Entwickeln von .NET-Apps in Containern)](https://blogs.msdn.microsoft.com/stevelasker/2016/02/19/developing-asp-net-apps-in-docker-containers/)
 
 [0]: ./media/vs-azure-tools-docker-edit-and-refresh/add-docker-support.png
 [1]: ./media/vs-azure-tools-docker-edit-and-refresh/docker-files-added.png
 [2]: ./media/vs-azure-tools-docker-edit-and-refresh/docker-props.png
 [3]: ./media/vs-azure-tools-docker-edit-and-refresh/breakpoint.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

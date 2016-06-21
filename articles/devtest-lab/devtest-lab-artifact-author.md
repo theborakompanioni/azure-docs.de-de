@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="06/01/2016"
 	ms.author="tarcher"/>
 
 #Erstellen von benutzerdefinierten Artefakten für Ihre DevTest Labs-VM
 
-> [AZURE.NOTE] Klicken Sie auf den folgenden Link, um das Video zu diesem Artikel anzuzeigen: [Gewusst wie: Erstellen benutzerdefinierter Artefakte](/documentation/videos/how-to-author-custom-artifacts)
+> [AZURE.NOTE] Zeigen Sie das Video zu diesem Artikel an: [How to author custom artifacts](/documentation/videos/how-to-author-custom-artifacts) (Erstellen benutzerdefinierter Artefakte).
 
 ## Übersicht
 **Artefakte** werden zum Bereitstellen und Konfigurieren Ihrer Anwendung nach der Bereitstellung eines virtuellen Computers verwendet. Ein Artefakt umfasst eine Artefaktdefinitionsdatei und andere Skriptdateien, die in einem Ordner in einem Git-Repository gespeichert sind. Artefaktdefinitionsdateien bestehen aus JSON und Ausdrücken, mit denen Sie angeben können, was Sie auf einem virtuellen Computer installieren möchten. Beispielsweise können Sie den Namen des Artefakts und den auszuführenden Befehl definieren sowie Parameter, die beim Ausführen des Befehls verfügbar gemacht werden. Sie können auf andere Skriptdateien innerhalb der Artefaktdefinitionsdatei anhand ihres Namens verweisen.
@@ -124,4 +124,4 @@ Erstellen Sie Ihr benutzerdefiniertes Artefakt anhand der nachstehend aufgeführ
 
 - Erfahren Sie, wie Sie einem [Lab ein Git-Artefaktrepository hinzufügen](devtest-lab-add-artifact-repo.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

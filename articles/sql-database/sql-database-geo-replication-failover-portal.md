@@ -25,7 +25,7 @@
 - [Transact-SQL](sql-database-geo-replication-failover-transact-sql.md)
 
 
-In diesem Artikel wird beschrieben, wie Sie mit dem [Azure-Portal](http://portal.azure.com) ein Failover zu einer sekundären SQL-Datenbank konfigurieren. Informationen zum Konfigurieren der Georeplikation finden Sie unter [Konfigurieren der Georeplikation für die Azure SQL-Datenbank](sql-database-geo-replication-portal.md).
+In diesem Artikel wird beschrieben, wie Sie mit dem [Azure-Portal](http://portal.azure.com) ein Failover zu einer sekundären SQL-Datenbank konfigurieren. Informationen zum Konfigurieren der Georeplikation finden Sie unter [Konfigurieren der Georeplikation für die Azure SQL-Datenbank mit dem Azure-Portal](sql-database-geo-replication-portal.md).
 
 
 ## Initiieren eines Failovers
@@ -51,7 +51,7 @@ Es gibt einen kurzer Zeitraum, in dem beide Datenbanken während des Rollenwechs
 
 
 - [Warnungen zur Notfallwiederherstellung](sql-database-disaster-recovery-drills.md)
-- [Spotlight auf die neuen Georeplikationsfunktionen](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
+- [Spotlight on new Geo-Replication capabilities](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/) (Die neuen Georeplikationsfunktionen im Überblick)
 - [Entwerfen von Cloudanwendungen zum Sicherstellen der Geschäftskontinuität mithilfe der Georeplikation](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
 - [SQL-Datenbank-Dokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
@@ -61,4 +61,4 @@ Es gibt einen kurzer Zeitraum, in dem beide Datenbanken während des Rollenwechs
 [1]: ./media/sql-database-geo-replication-failover-portal/failover.png
 [2]: ./media/sql-database-geo-replication-failover-portal/secondaries.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

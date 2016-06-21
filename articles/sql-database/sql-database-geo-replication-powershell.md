@@ -1,6 +1,6 @@
 <properties 
     pageTitle="Konfigurieren der aktiven Georeplikation für Azure SQL-Datenbank mit PowerShell | Microsoft Azure" 
-    description="Georeplikation für Azure SQL-Datenbank mit PowerShell" 
+    description="Konfigurieren der aktiven Georeplikation für die Azure SQL-Datenbank mit PowerShell" 
     services="sql-database" 
     documentationCenter="" 
     authors="stevestein" 
@@ -73,7 +73,7 @@ Dieses Cmdlet ersetzt **Start AzureSqlDatabaseCopy** durch den **–IsContinuous
 
 Die replizierte Datenbank auf dem zweiten Server hat den gleichen Namen wie die primäre Datenbank und standardmäßig auch die gleiche Dienstebene. Die sekundäre Datenbank kann lesbar oder nicht lesbar und eine Einzeldatenbank oder eine elastische Datenbank sein. Weitere Informationen finden Sie unter [New-AzureRMSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt603689.aspx) und [Dienstebenen](sql-database-service-tiers.md). Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beginnt die Replikation der Daten von der primären Datenbank in die neue sekundäre Datenbank. Nachfolgend erfahren Sie, wie Sie mithilfe von PowerShell nicht lesbare und lesbare sekundäre Datenbanken erstellen – mit einer Einzeldatenbank oder einer elastischen Datenbank.
 
-Wenn die Partnerdatenbank bereits vorhanden ist (z. B. aufgrund der Beendigung einer vorherigen Georeplikationsbeziehung), tritt für den Befehl ein Fehler auf.
+Wenn die Partnerdatenbank bereits vorhanden ist (z.B. aufgrund der Beendigung einer vorherigen Georeplikationsbeziehung), tritt für den Befehl ein Fehler auf.
 
 
 
@@ -158,11 +158,11 @@ Der folgende Befehl ruft den Status der Replikationsverknüpfung zwischen der pr
 ## Zusätzliche Ressourcen
 
 - [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
-- [Spotlight auf die neuen Georeplikationsfunktionen](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
+- [Spotlight on new Geo-Replication capabilities](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/) (Die neuen Georeplikationsfunktionen im Überblick)
 - [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
 - [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
 - [Aktive Georeplikation](sql-database-geo-replication-overview.md)
 - [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

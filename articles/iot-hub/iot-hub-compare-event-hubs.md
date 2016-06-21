@@ -30,6 +30,7 @@ Allerdings bestehen bei den Diensten viele Unterschiede, die in der folgenden Ta
 | Vorgangsüberwachung | Ermöglicht IoT-Lösungen, einen umfangreichen Satz von Geräte-Identitätsverwaltungs- und -verbindungsereignissen zu abonnieren, z. B. individuelle Authentifizierungsfehler, Drosselung und Ausnahmen bei ungültigen Formaten. Diese Ereignisse ermöglichen Ihnen das rasche Bestimmen von Verbindungsproblemen auf Einzelgerätebene. | Macht nur aggregierte Metriken verfügbar. |
 | Skalieren | Ist für die Unterstützung von Millionen von gleichzeitig verbundenen Geräten optimiert. | Kann eine eingeschränktere Anzahl von gleichzeitigen Verbindungen unterstützen – bis zu 5.000 AMQP-Verbindungen gemäß [Azure Service Bus-Kontingenten][]. Jedoch können Sie mit Event Hubs die Partition für jede gesendete Nachricht angeben. |
 | Geräte-SDKs | Stellt [Geräte-SDKs][Azure IoT Hub SDKs] für viele verschiedene Plattformen und Sprachen bereit. | Wird unter .NET und C unterstützt und verfügt außerdem über AMQP- und HTTP-Sendeschnittstellen. |
+| Dateiupload | Ermöglicht IoT-Lösungen zum Hochladen von Dateien von Geräten in die Cloud. Enthält einen Dateibenachrichtigungs-Endpunkt für die Workflowintegration und eine Vorgangsüberwachungskategorie für die Debugunterstützung. | Verwendet ein Anspruchsprüfungsmuster zur manuellen Anforderung von Dateien bei Geräten, und um Geräten einen Speicherschlüssel für die Transaktion bereitzustellen. |
 
 Zusammengefasst bedeutet dies: Auch wenn nur der D2C-Telemetrieeingang als Anwendungsfall vorhanden ist, bietet IoT Hub einen Dienst, der speziell für die Verbindung von IoT-Geräten ausgelegt ist. Außerdem werden die Wertbeiträge für diese Szenarien mit IoT-spezifischen Features weiter ausgebaut. Event Hubs sind für den Ereigniseingang in großem Umfang ausgelegt, sowohl im Kontext von Szenarien im Rechenzentrum als auch außerhalb davon.
 
@@ -52,4 +53,4 @@ Folgen Sie diesen Links, um mehr über Azure IoT Hub zu erfahren:
 [Was ist Azure IoT Hub?]: iot-hub-what-is-iot-hub.md
 [lnk-azure-protocol-gateway]: iot-hub-protocol-gateway.md
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0608_2016-->

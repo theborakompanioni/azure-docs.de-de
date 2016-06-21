@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/25/2016"
+   ms.date="06/14/2016"
    ms.author="larryfr"/>
 
 #Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows
@@ -235,4 +235,4 @@ Nachdem Sie jetzt wissen, wie die Authentifizierung mithilfe eines SSH-Schlüsse
 
 [preview-portal]: https://portal.azure.com/
 
-<!----HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0615_2016-->

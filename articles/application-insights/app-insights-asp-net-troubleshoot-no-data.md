@@ -12,15 +12,21 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/17/2016" 
+	ms.date="05/27/2016" 
 	ms.author="awills"/>
  
 # Problembehandlung ohne Daten – Application Insights für .NET
 
+## Einige meiner Telemetriedaten fehlen
+
+*In Application Insights wird nur ein Bruchteil der Ereignisse angezeigt, die von meiner App generiert werden.*
+
+* Wenn immer der gleiche Anteil angezeigt wird, ist dies wahrscheinlich auf die adaptive [Stichprobenerstellung](app-insights-sampling.md) zurückzuführen. Um dies zu bestätigen, öffnen Sie „Suchen“ (auf dem Blatt „Übersicht“), und suchen Sie nach einer Instanz einer Anforderung oder eines anderen Ereignisses. Klicken Sie unten im Eigenschaftenbereich auf „...“, um die vollständigen Eigenschaftendetails anzuzeigen. Wenn „Anforderungsanzahl“ kleiner als 1 ist, ist die Stichprobenerstellung aktiviert. 
+* Andernfalls ist es möglich, dass Sie einen [Grenzwert für die Datenrate](app-insights-pricing.md#limits-summary) in Ihrem Tarif erreicht haben. Diese Grenzwerte gelten pro Minute.
 
 ## Statusmonitor-Probleme
 
-*Ich habe [Statusmonitor auf meinem Webserver installiert](app-insights-monitor-performance-live-website-now.md), um vorhandene Apps zu überwachen. Es werden keine Ergebnisse angezeigt.*
+*Ich habe [den Statusmonitor auf meinem Webserver installiert](app-insights-monitor-performance-live-website-now.md), um vorhandene Apps zu überwachen. Es werden keine Ergebnisse angezeigt.*
 
 Siehe [Problembehandlung für den Statusmonitor](app-insights-monitor-performance-live-website-now.md#troubleshooting). Das häufigste Problem sind Firewallports.
 
@@ -29,9 +35,9 @@ Siehe [Problembehandlung für den Statusmonitor](app-insights-monitor-performanc
 
 *Wenn ich in Visual Studio ein neues Projekt erstelle oder im Projektmappen-Explorer mit der rechten Maustaste auf ein vorhandenes Projekt klicke, werden keine Application Insights-Optionen angezeigt.*
 
-+ Nicht alle Typen von .NET-Projekten werden von den Tools unterstützt. Web- und WCF-Projekte werden unterstützt. Für andere Projekttypen, z. B. Desktop- oder Dienstanwendungen, können Sie [Ihrem Projekt trotzdem manuell ein Application Insights-SDK hinzufügen](app-insights-windows-desktop.md).
++ Nicht alle Typen von .NET-Projekten werden von den Tools unterstützt. Web- und WCF-Projekte werden unterstützt. Für andere Projekttypen, z.B. Desktop- oder Dienstanwendungen, können Sie [Ihrem Projekt trotzdem manuell ein Application Insights-SDK hinzufügen](app-insights-windows-desktop.md).
 + Stellen Sie sicher, dass Sie über [Visual Studio 2013 Update 3 oder höher](http://go.microsoft.com/fwlink/?LinkId=397827) verfügen. Dies ist bei den Application Insights-Tools vorinstalliert.
-+ Wählen Sie **Extras** > **Erweiterungen und Updates**, und stellen Sie sicher, dass die **Application Insights-Tools** installiert und aktiviert sind. Wenn dies der Fall ist, klicken Sie auf **Updates**, um zu prüfen, ob ein Update verfügbar ist.
++ Wählen Sie **Extras** > **Erweiterungen und Updates** aus, und stellen Sie sicher, dass die **Application Insights-Tools** installiert und aktiviert sind. Wenn dies der Fall ist, klicken Sie auf **Updates**, um zu prüfen, ob ein Update verfügbar ist.
 + Öffnen Sie das Dialogfeld „Neues Projekt“, und wählen Sie die ASP.NET-Webanwendung aus. Wenn die Application Insights-Option hier angezeigt wird, sind die Tools installiert. Wenn nicht, können Sie versuchen, die Application Insights-Tools zu deinstallieren und dann neu zu installieren.
 
 
@@ -56,7 +62,7 @@ Behebung:
 
 Es scheint ein Fehler aufgetreten zu sein, während Sie Application Insights oder vielleicht einen Protokollierungsadapter installiert haben.
 
-Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf `ApplicationInsights.config`, und wählen Sie die Option **Application Insights konfigurieren**. Ein Dialogfeld wird angezeigt, das Sie zur Anmeldung bei Azure und zum Erstellen einer Application Insights-Ressource oder dem Wiederverwenden einer vorhandenen Ressource einlädt.
+Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf `ApplicationInsights.config`, und wählen Sie die Option **Application Insights konfigurieren** aus. Ein Dialogfeld wird angezeigt, das Sie zur Anmeldung bei Azure und zum Erstellen einer Application Insights-Ressource oder dem Wiederverwenden einer vorhandenen Ressource einlädt.
 
 
 ##<a name="NuGetBuild"></a> „NuGet-Pakete fehlen“ auf meinem Buildserver
@@ -78,11 +84,11 @@ Wahrscheinliche Ursachen:
 Behebung:
 
 * Stellen Sie sicher, dass Sie die Visual Studio-Version 2013 Update 3 oder höher verwenden.
-* Wählen Sie **Extras** > **Erweiterungen und Updates**, und stellen Sie sicher, dass die **Application Insights-Tools** installiert und aktiviert sind. Wenn dies der Fall ist, klicken Sie auf **Updates**, um zu prüfen, ob ein Update verfügbar ist.
+* Wählen Sie **Extras** > **Erweiterungen und Updates** aus, und stellen Sie sicher, dass die **Application Insights-Tools** installiert und aktiviert sind. Wenn dies der Fall ist, klicken Sie auf **Updates**, um zu prüfen, ob ein Update verfügbar ist.
 * Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihr Projekt. Wenn Sie den Befehl **Application Insights konfigurieren** sehen, können Sie ihn verwenden, um Ihr Projekt mit der Ressource im Application Insights-Dienst zu verbinden.
 
 
-Andernfalls wird Ihr Projekttyp von den Application Insights-Tools nicht direkt unterstützt. Melden Sie sich zum Anzeigen Ihrer Telemetriedaten am [Azure-Portal](https://portal.azure.com) an, wählen Sie in der linken Navigationsleiste „Application Insights“, und wählen Sie dann Ihre Anwendung aus.
+Andernfalls wird Ihr Projekttyp von den Application Insights-Tools nicht direkt unterstützt. Melden Sie sich zum Anzeigen Ihrer Telemetriedaten am [Azure-Portal](https://portal.azure.com) an, wählen Sie in der linken Navigationsleiste „Application Insights“ aus, und wählen Sie dann Ihre Anwendung aus.
 
 ## „Zugriff verweigert“ beim Öffnen von Application Insights aus Visual Studio
 
@@ -141,7 +147,7 @@ Behebung:
 
 + Öffnen Sie im Application Insights-Portal die [Diagnosesuche](app-insights-diagnostic-search.md). Hier werden Daten normalerweise zuerst angezeigt.
 + Klicken Sie auf die Schaltfläche "Aktualisieren". Das Blatt aktualisiert sich in regelmäßigen Abständen selbst, doch Sie können es auch manuell aktualisieren. Das Aktualisierungsintervall für größere Zeiträume ist länger.
-+ Überprüfen Sie, ob die Instrumentierungsschlüssel übereinstimmen. Sehen Sie sich im Application Insights-Portal auf dem Hauptblatt Ihrer App in der Dropdownliste **Essentials** den **Instrumentierungsschlüssel** an. Öffnen Sie dann in Ihrem Projekt in Visual Studio die Datei „ApplicationInsights.config“, und suchen Sie nach `<instrumentationkey>`. Überprüfen Sie, ob die beiden Schlüssel identisch sind. Gehen Sie wie folgt vor, falls dies nicht so ist:
++ Überprüfen Sie, ob die Instrumentierungsschlüssel übereinstimmen. Sehen Sie sich im Application Insights-Portal auf dem Hauptblatt Ihrer App in der Dropdownliste **Zusammenfassung** den **Instrumentierungsschlüssel** an. Öffnen Sie dann in Ihrem Projekt in Visual Studio die Datei „ApplicationInsights.config“, und suchen Sie nach `<instrumentationkey>`. Überprüfen Sie, ob die beiden Schlüssel identisch sind. Gehen Sie wie folgt vor, falls dies nicht so ist:
  + Klicken Sie im Portal auf „Application Insights“, und suchen Sie nach der App-Ressource mit dem richtigen Schlüssel. -oder-
  + Klicken Sie im Visual Studio-Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie „Application Insights“ und dann „Konfigurieren“. Setzen Sie die App zurück, um Telemetriedaten an die richtige Ressource zu senden.
  + Gehen Sie wie folgt vor, wenn Sie die übereinstimmenden Schlüssel nicht finden können: Stellen Sie sicher, dass Sie in Visual Studio und im Portal die gleichen Anmeldeinformationen verwenden.
@@ -161,7 +167,7 @@ Die Daten kommen aus Skripts auf den Webseiten.
 
 + Wenn Sie Application Insights zu einem vorhandenen Webprojekt hinzugefügt haben, müssen Sie die [Skripts manuell hinzufügen](app-insights-javascript.md).
 + Stellen Sie sicher, dass Internet Explorer Ihre Website nicht im Kompatibilitätsmodus anzeigt.
-+ Verwenden Sie die Debugfunktion Ihres Browsers (bei einigen Browsern drücken Sie F12 und wählen anschließend „Netzwerk“), um sicherzustellen, dass Daten an `dc.services.visualstudio.com` gesendet werden.
++ Verwenden Sie die Debugfunktion Ihres Browsers (bei einigen Browsern drücken Sie F12 und wählen anschließend „Netzwerk“ aus), um sicherzustellen, dass Daten an `dc.services.visualstudio.com` gesendet werden.
 
 ## Keine Abhängigkeits- oder Ausnahmedaten
 
@@ -189,7 +195,7 @@ Für Azure-Websites sind sie dagegen nicht verfügbar.
 
 ## Nicht alle Daten werden erwartungsgemäß angezeigt.
 
-Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application Insights-SDK für ASP.NET Version 2.0.0-beta3 oder höher verwenden, wird möglicherweise die [adaptive Stichprobenerstellung](app-insights-sampling.md) verwendet, bei der nur ein bestimmter Prozentsatz der Telemetriedaten übermittelt wird.
+Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application Insights-SDK für ASP.NET, Version 2.0.0-beta3 oder höher, verwenden, wird möglicherweise die [adaptive Stichprobenerstellung](app-insights-sampling.md) verwendet, bei der nur ein bestimmter Prozentsatz der Telemetriedaten übermittelt wird.
 
 Sie können diese Funktion deaktivieren, aber dies ist nicht zu empfehlen. Die Stichprobenerstellung ist so konzipiert, dass die zugehörigen Telemetriedaten zu Diagnosezwecken richtig übertragen werden.
 
@@ -205,4 +211,4 @@ Haben Sie für .NET 4.6 erstellt? 4.6 wird nicht automatisch in Azure Cloud Ser
 
 * [Application Insights-Forum](https://social.msdn.microsoft.com/Forums/vstudio/de-DE/home?forum=ApplicationInsights)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

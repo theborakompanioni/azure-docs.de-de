@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/05/2016"
+   ms.date="06/11/2016"
    ms.author="nicw;barbkess;sonyama"/>
 
 
@@ -31,7 +31,7 @@ In der Vorschauphase von SQL Data Warehouse arbeiten wir kontinuierlich an der U
 
 ## Vorhersagbare und skalierbare Leistung
 
-Azure SQL Data Warehouse stellt erstmalig Data Warehouse-Einheiten (DWUs) als Möglichkeit zum Messen von Computerressourcen (CPUs, Arbeitsspeicher, Speicher-E/A) für das Data Warehouse bereit. Je höher die Anzahl der DWUs, desto größer die Ressourcen. Mit zunehmender Anzahl von DWUs führt SQL Data Warehouse Vorgänge parallel (z. B. Laden von Daten oder Abfrage) über stärker verteilte Ressourcen aus. Dadurch verringert sich die Latenz, und die Leistung verbessert sich.
+SQL Data Warehouse stellt erstmalig Data Warehouse-Einheiten (DWUs) als Möglichkeit zum Messen von Computerressourcen (CPUs, Arbeitsspeicher, Speicher-E/A) für das Data Warehouse bereit. Je höher die Anzahl der DWUs, desto größer die Ressourcen. Mit zunehmender Anzahl von DWUs führt SQL Data Warehouse Vorgänge parallel (z. B. Laden von Daten oder Abfrage) über stärker verteilte Ressourcen aus. Dadurch verringert sich die Latenz, und die Leistung verbessert sich.
 
 Für jedes Data Warehouse gibt es zwei grundlegende Messwerte für die Leistung:
 
@@ -42,21 +42,15 @@ Wir haben einige wichtige Leistungsverbesserungen gemessen und werden die voraus
 
 ## Datenschutz
 
-SQL Data Warehouse speichert alle Daten mithilfe von lokal redundantem Speicher im Azure-Speicher. Mehrere synchrone Kopien der Daten werden im lokalen Rechenzentrum behalten, um transparenten Datenschutz bei lokalen Ausfällen sicherzustellen.
-
-## Backups
-
-Azure SQL Data Warehouse sichert sämtliche Daten mindestens alle 8 Stunden mit Azure-Speichermomentaufnahmen. Diese Momentaufnahmen werden 7 Tage lang aufbewahrt. Dadurch können Daten an bis zu 21 Punkten innerhalb der letzten 7 Tage bis zu dem Zeitpunkt wiederhergestellt werden, zu dem die letzte Momentaufnahme erstellt wurde. Mithilfe von PowerShell oder REST-APIs können Sie die Daten aus einer Momentaufnahme wiederherstellen.
+SQL Data Warehouse speichert alle Daten mithilfe von lokal redundantem Speicher in Azure. Mehrere synchrone Kopien der Daten werden im lokalen Rechenzentrum behalten, um transparenten Datenschutz bei lokalen Ausfällen sicherzustellen. Außerdem sichert SQL Data Warehouse in regelmäßigen Abständen automatisch aktive (nicht angehaltene) Datenbanken mithilfe von Azure-Speichermomentaufnahmen. Weitere Informationen zum Sichern und Wiederherstellen finden Sie unter [Sichern und Wiederherstellen – Übersicht][].
 
 ## Abfragezuverlässigkeit
 
 SQL Data Warehouse basiert auf einer MPP-Architektur (Massively Parallel Processing). SQL Data Warehouse erkennt und migriert automatisch Ausfälle von Compute- und Steuerknoten. Ein Vorgang (z.B. Laden oder Abfragen von Daten) kann aufgrund eines Knotenausfalls oder einer Knotenmigration fehlschlagen. Während der Preview nehmen wir fortlaufend Verbesserungen vor, damit Vorgänge trotz Knotenausfällen erfolgreich abgeschlossen werden können.
 
-
 ## Upgrades und Downtime
 
 SQL Data Warehouse wird in regelmäßigen Abständen aktualisiert, um neue Funktionen hinzuzufügen und wichtige Updates zu installieren. Diese Upgrades können störend sein, und derzeit werden Upgrades nicht in einem vorhersehbaren Zeitplan durchgeführt. Wenn Sie feststellen, dass dieser Prozess zu störend ist, empfehlen wir Ihnen, [ein Supportticket zu erstellen][], damit wir Ihnen helfen können, diesen Prozess zu umgehen.
-
 
 ## Nächste Schritte
 
@@ -67,9 +61,10 @@ SQL Data Warehouse wird in regelmäßigen Abständen aktualisiert, um neue Funkt
 <!--Article references-->
 [ein Supportticket zu erstellen]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [Erste Schritte]: ./sql-data-warehouse-get-started-provision.md
+[Sichern und Wiederherstellen – Übersicht]: ./sql-data-warehouse-restore-database-overview.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="06/01/2016"
 	ms.author="tarcher"/>
 
 # Erste Schritte mit Azure-Warteschlangenspeicher und verbundenen Visual Studio-Diensten (WebJob-Projekte)
@@ -515,15 +515,15 @@ Im folgenden Beispiel sind mehrere Möglichkeiten zum Schreiben von Protokollen 
 		    logger.WriteLine("TextWriter - " + logMessage);
 		}
 
-Im WebJobs-SDK-Dashboard wird die Ausgabe aus dem Objekt **TextWriter** angezeigt, wenn Sie die Seite für einen bestimmten Funktionsaufruf anzeigen und auf **Toggle Output** klicken:
+Im Dashboard des WebJobs SDK wird die Ausgabe aus dem Objekt **TextWriter** angezeigt, wenn Sie die Seite für einen bestimmten Funktionsaufruf anzeigen und auf **Toggle Output** klicken:
 
-![Link zum Aufruf der "Click"-Funktion](./media/vs-storage-webjobs-getting-started-queues/dashboardinvocations.png)
+![Aufruflink](./media/vs-storage-webjobs-getting-started-queues/dashboardinvocations.png)
 
 ![Protokolle auf Funktionsaufrufseiten](./media/vs-storage-webjobs-getting-started-queues/dashboardlogs.png)
 
-Im Dashboard des WebJobs-SDK werden die letzten 100 Zeilen der Konsolenausgabe angezeigt, wenn Sie zur Seite für den Webauftrag (nicht für den Funktionsaufruf) wechseln und auf **Toggle Output** klicken.
+Im Dashboard des WebJobs SDK werden die letzten 100 Zeilen der Konsolenausgabe angezeigt, wenn Sie zur Seite für den Webauftrag (nicht für den Funktionsaufruf) wechseln und auf **Toggle Output** klicken.
 
-![Ausgabe von "Click Toggle"](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
+![Ausgabe umschalten](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
 In einem fortlaufenden Webauftrag werden Anwendungsprotokolle in "/data/jobs/continuous/*{webjobname}*/job\_log.txt" im Dateisystem der Web-App angezeigt.
 
@@ -543,4 +543,4 @@ Und in einer Azure-Tabelle sehen **Console.Out**- und **Console.Error**-Protokol
 
 In diesem Artikel wurden Codebeispiele bereitgestellt, in denen veranschaulicht wird, wie häufige Szenarien für das Arbeiten mit Azure-Warteschlangen behandelt werden. Weitere Informationen zur Verwendung von Azure WebJobs und dem WebJobs-SDK finden Sie unter [Dokumentationsressourcen für Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

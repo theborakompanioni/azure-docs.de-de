@@ -22,7 +22,7 @@ Mit Routing auf URL-Pfadbasis können Sie Routen basierend auf URL-Pfad oder Htt
 
 Mit Routing auf URL-Basis wird ein neuer Regeltyp für das Application Gateway eingeführt. Das Application Gateway hat 2 Regeltypen: Basisrouting und PathBasedRouting. Der Basisregeltyp bietet einen Roundrobin-Dienst für die Back-End-Pools, während PathBasedRouting neben der Roundrobin-Verteilung auch Pfadmuster der Anforderungs-URL beim Auswählen des Back-End-Pools berücksichtigt.
 
->[AZURE.IMPORTANT] PathPattern: Die Liste der abzustimmenden Pfadmuster. Jedes muss mit „/“ beginnen, und ein „*“ ist nur auf ein „/“ folgend zulässig. Die Zeichenfolge, die dem Pfadabgleicher eingegeben wird, enthält keinen Text nach dem ersten „?“ oder „#“, und diese Zeichen sind nicht zulässig.
+>[AZURE.IMPORTANT] PathPattern: Die Liste der abzustimmenden Pfadmuster. Jedes muss mit „/“ beginnen, und ein „*“ ist nur am Ende zulässig. Gültige Beispiele sind „/xyz“, „/xyz*“ oder „/xyz/*“. Die Zeichenfolge, die dem Pfadabgleicher eingegeben wird, enthält keinen Text nach dem ersten „?“ oder „#“, und diese Zeichen sind nicht zulässig.
 
 ## Szenario
 Im folgenden Beispiel verarbeitet das Application Gateway Datenverkehr für „contoso.com“ mit zwei Back-End-Pools: Video-Serverpool und Image-Serverpool.
@@ -194,6 +194,6 @@ Erstellen Sie ein Application Gateway mit allen Konfigurationsobjekten aus den v
 	$appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-RG -Location "West US" -BackendAddressPools $pool1,$pool2 -BackendHttpSettingsCollection $poolSetting01, $poolSetting02 -FrontendIpConfigurations $fipconfig01 -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener -UrlPathMaps $urlPathMap -RequestRoutingRules $rule01 -Sku $sku
 
 ## Abrufen des Application Gateways
-	$getgw =  Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+	$getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-RG
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0608_2016-->

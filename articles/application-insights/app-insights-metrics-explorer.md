@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/01/2016" 
+	ms.date="06/03/2016" 
 	ms.author="awills"/>
  
 # Untersuchen von Metriken in Application Insights
@@ -176,6 +176,16 @@ Wenn Sie ein Blatt bearbeiten, aber dann lieber wieder mit den ursprünglich ges
 
 ![In den Schaltflächen am oberen Rand des Metrik-Explorers](./media/app-insights-metrics-explorer/17-reset.png)
 
+## Livedatenstrom: Zeitnahe Metriken für eine genaue Überwachung
+
+Der Livedatenstrom zeigt Ihnen Ihre Anwendungsmetriken für den aktuellen Zeitpunkt an – mit einer Latenz von 1 Sekunde nahezu in Echtzeit. Dies ist äußerst nützlich, wenn Sie einen neuen Build freigeben und sicherstellen möchten, dass alles wie erwartet funktioniert, oder wenn Sie einen Incident in Echtzeit untersuchen möchten.
+
+![Klicken Sie auf dem Blatt „Übersicht“ auf „Livedatenstrom“.](./media/app-insights-metrics-explorer/live-stream.png)
+
+Im Gegensatz zum Metrik-Explorer zeigt der Livedatenstrom einen festen Satz von Metriken an. Die Daten werden nur so lange beibehalten, wie sie im Diagramm angezeigt werden. Anschließend werden sie verworfen.
+
+Der Livedatenstrom steht mit dem Application Insights SDK für ASP.NET, Version 2.1.0 oder höher, zur Verfügung.
+
 ## Festlegen von Benachrichtigungen
 
 Fügen Sie eine Benachrichtigung hinzu, wenn Sie per E-Mail über ungewöhnliche Werte einer beliebigen Metrik informiert werden möchten. Sie können auswählen, ob die E-Mail an die Kontoadministratoren oder an bestimmte E-Mail-Adressen gesendet wird.
@@ -197,7 +207,7 @@ Die Dateien, die Ihnen angezeigt werden, werden exportiert. Ändern Sie den Zeit
 
 *Der Export funktioniert zurzeit nur mit Internet Explorer und Chrome. Unterstützung für weitere Browser wird in Zukunft verfügbar sein.*
 
-### Fortlaufender Export
+## Fortlaufender Export
 
 Wenn Sie Daten zur externen Verarbeitung fortlaufend exportieren möchten, sollten Sie die Funktion [Fortlaufender Export](app-insights-export-telemetry.md) verwenden.
 
@@ -207,7 +217,7 @@ Wenn Sie umfangreichere Ansichten der Daten wünschen, können Sie sie [nach Pow
 
 ## Analyse
 
-Die [Analyse](app-insights-analytics.md) (Analytics) ist eine vielseitigere Möglichkeit zum Analysieren Ihrer Telemetriedaten mit einer leistungsfähigen Abfragesprache. Verwenden Sie sie, wenn Sie Ergebnisse von Metriken kombinieren oder berechnen oder eine eingehende Untersuchung der kürzlich erzielten Leistung Ihrer App durchführen möchten. Verwenden Sie dagegen den Metrik-Explorer, wenn Sie eine automatische Aktualisierung, Diagramme im Dashboard und Warnungen verwenden möchten.
+[Analytics](app-insights-analytics.md) bietet eine vielseitigere Möglichkeit zum Analysieren Ihrer Telemetriedaten mit einer leistungsfähigen Abfragesprache. Verwenden Sie sie, wenn Sie Ergebnisse von Metriken kombinieren oder berechnen oder eine eingehende Untersuchung der kürzlich erzielten Leistung Ihrer App durchführen möchten. Verwenden Sie dagegen den Metrik-Explorer, wenn Sie eine automatische Aktualisierung, Diagramme im Dashboard und Warnungen verwenden möchten.
 
 ## Problembehandlung
 
@@ -236,4 +246,4 @@ Die [Analyse](app-insights-analytics.md) (Analytics) ist eine vielseitigere Mög
 
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0608_2016-->
