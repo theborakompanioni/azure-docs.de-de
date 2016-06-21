@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/12/2016"
+   ms.date="06/09/2016"
    ms.author="ryanwi"/>
 
 # Erste Schritte beim Bereitstellen und Aktualisieren von Anwendungen im lokalen Cluster
@@ -66,7 +66,7 @@ In diesem Tutorial verwenden wir eine vorhandene Beispielanwendung (mit dem Name
     cd c:\ServiceFabric\
     ```
 
-4. [Laden Sie die WordCount-Anwendung](http://aka.ms/servicefabric-wordcountapp) an den Speicherort herunter, den Sie erstellt haben.
+4. [Laden Sie die WordCount-Anwendung](http://aka.ms/servicefabric-wordcountapp) an den Speicherort herunter, den Sie erstellt haben. Hinweis: Der Microsoft Edge-Browser speichert die Datei mit der Erweiterung *.zip*. Sie müssen die Dateierweiterung in *.sfpkg* ändern.
 
 5. Stellen Sie eine Verbindung mit dem lokalen Cluster her:
 
@@ -84,11 +84,11 @@ In diesem Tutorial verwenden wir eine vorhandene Beispielanwendung (mit dem Name
 
     ![Bereitstellen einer Anwendung im lokalen Cluster][deploy-app-to-local-cluster]
 
-7. Um die Anwendung in Aktion zu sehen, starten Sie den Browser, und navigieren Sie zu [http://localhost:8081/wordcount/index.html](http://localhost:8081/wordcount/index.html). Die Ausgabe sollte folgendermaßen aussehen:
+7. Um die Anwendung in Aktion zu sehen, starten Sie den Browser und navigieren zu [http://localhost:8081/wordcount/index.html](http://localhost:8081/wordcount/index.html). Die Ausgabe sollte folgendermaßen aussehen:
 
     ![Benutzeroberfläche der bereitgestellten Anwendung][deployed-app-ui]
 
-    Die WordCount-Anwendung ist sehr einfach. Sie enthält clientseitigen JavaScript-Code zum Generieren von zufälligen „Wörtern“ mit fünf Zeichen, die dann per ASP.NET-Web-API an die Anwendung weitergeleitet werden. Bei einem zustandsbehafteten Dienst wird die Anzahl von Wörtern verfolgt. Sie werden basierend auf dem ersten Buchstaben des Worts partitioniert.
+    Die WordCount-Anwendung ist sehr einfach. Sie enthält clientseitigen JavaScript-Code zum Generieren von zufälligen „Wörtern“ mit fünf Zeichen, die dann per ASP.NET-Web-API an die Anwendung weitergeleitet werden. Bei einem zustandsbehafteten Dienst wird die Anzahl von Wörtern verfolgt. Sie werden basierend auf dem ersten Buchstaben des Worts partitioniert. Den Quellcode für die WordCount-App finden Sie unter [Getting Started Samples](https://azure.microsoft.com/documentation/samples/service-fabric-dotnet-getting-started/) (Beispiele für erste Schritte).
 
     Die Anwendung, die wir bereitgestellt haben, enthält vier Partitionen. Wörter, die mit A bis G beginnen, werden in der ersten Partition gespeichert, Wörter mit H bis N in der zweiten Partition usw.
 
@@ -129,14 +129,14 @@ Nach dem Bereitstellen der Anwendung sehen wir uns nun die App-Details in PowerS
 
     ![Anzeigen von Anwendungsdetails im Service Fabric-Explorer][sfx-service-overview]
 
-    > [AZURE.NOTE] Weitere Informationen zum Service Fabric-Explorer finden Sie unter [Visualisieren des Clusters mit dem Service Fabric-Explorer](service-fabric-visualizing-your-cluster.md).
+    > [AZURE.NOTE] Weitere Informationen zum Service Fabric Explorer finden Sie unter [Visualisieren des Clusters mit dem Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
 
 ## Upgraden einer Anwendung
 Service Fabric ermöglicht Upgrades ohne Ausfallzeit, indem die Integrität der Anwendung überwacht wird, während sie im Cluster bereitgestellt wird. Führen Sie nun ein einfaches Upgrade der WordCount-Anwendung durch.
 
 Die neue Version der Anwendung zählt nur die Wörter, die mit einem Vokal beginnen. Während das Upgrade bereitgestellt wird, sehen wir zwei Änderungen im Verhalten der Anwendung. Erstens sollte sich die Rate verlangsamen, mit der die Anzahl zunimmt, da weniger Wörter gezählt werden. Da die erste Partition zwei Vokale enthält („A“ und „E“) und alle anderen Partitionen nur einen enthalten, sollte zweitens die Anzahl dieser Partition letztlich größer als die der anderen sein.
 
-1. [Laden Sie das Paket für WordCount Version 2](http://aka.ms/servicefabric-wordcountappv2) an denselben Speicherort herunter, an den Sie das Paket für Version 1 heruntergeladen haben.
+1. [Laden Sie das Paket für WordCount Version 2](http://aka.ms/servicefabric-wordcountappv2) an denselben Speicherort herunter, an den Sie das Paket für Version 1 heruntergeladen haben.
 
 2. Kehren Sie zum PowerShell-Fenster zurück, und verwenden Sie den Upgradebefehl des SDK, um die neue Version des Clusters zu registrieren. Beginnen Sie dann mit dem Upgrade der Anwendung „fabric:/WordCount“.
 
@@ -168,6 +168,33 @@ Die neue Version der Anwendung zählt nur die Wörter, die mit einem Vokal begin
 
     ![Anzeigen der neuen Version der Anwendung im Browser][deployed-app-ui-v2]
 
+## Bereinigen
+
+Bevor Sie Ihre Arbeit abschließen, sollten Sie bedenken, dass der lokale Cluster sehr real ist. Anwendungen werden im Hintergrund so lange weiter ausgeführt, bis Sie sie entfernen. Je nach Art Ihrer Apps kann eine ausgeführte App erhebliche Ressourcen auf dem Computer beanspruchen. Sie haben mehrere Möglichkeiten, hier steuernd einzugreifen:
+
+1. Führen Sie Folgendes aus, um eine einzelne Anwendung und alle dazugehörigen Daten zu entfernen:
+
+    ```powershell
+    Unpublish-ServiceFabricApplication -ApplicationName "fabric:/WordCount"
+    ```
+
+    Oder verwenden Sie im Service Fabric Explorer die Aktion **Anwendung löschen**. Rufen Sie dazu in der Anwendungslistenansicht im linken Bereich entweder das Menü **AKTIONEN** oder das Kontextmenü auf.
+
+    ![Löschen einer Anwendung in Service Fabric-Explorer][sfe-delete-application]
+
+2. Nach dem Löschen der Anwendung aus dem Cluster können Sie die Registrierung der Versionen 1.0.0 und 2.0.0 des WordCount-Anwendungstyps aufheben. Die Anwendungspakete werden, einschließlich des Codes und der Konfiguration, aus dem Imagespeicher des Clusters entfernt.
+
+    ```powershell
+    Remove-ServiceFabricApplicationType -ApplicationTypeName WordCount -ApplicationTypeVersion 2.0.0
+    Remove-ServiceFabricApplicationType -ApplicationTypeName WordCount -ApplicationTypeVersion 1.0.0
+    ```
+
+    Oder wählen Sie im Service Fabric Explorer für die Anwendung die Option **Unprovision Type** (Bereitstellung des Typs aufheben).
+
+3. Zum Beenden des Clusters bei Beibehaltung der Anwendungsdaten und Ablaufverfolgungen klicken Sie in der Infobereichs-App auf **Lokalen Cluster beenden**.
+
+4. Zum vollständigen Entfernen des Clusters klicken Sie in der Infobereichs-App auf **Lokalen Cluster entfernen**. Beachten Sie, dass diese Option zu einer weiteren langsamen Bereitstellung führt, wenn Sie das nächste Mal in Visual Studio F5 drücken. Verwenden Sie diese nur, wenn Sie nicht beabsichtigen, den lokalen Cluster einige Zeit zu verwende,n oder wenn Sie Ressourcen freigeben müssen.
+
 ## Nächste Schritte
 - Nachdem Sie nun einige vordefinierte Anwendungen bereitgestellt und aktualisiert haben, können Sie [selbst eine Anwendung in Visual Studio erstellen](service-fabric-create-your-first-application-in-visual-studio.md).
 - Alle Aktionen, die für den lokalen Cluster in diesem Artikel ausgeführt werden, können auch in einem [Azure-Cluster](service-fabric-cluster-creation-via-portal.md) ausgeführt werden.
@@ -189,5 +216,6 @@ Die neue Version der Anwendung zählt nur die Wörter, die mit einem Vokal begin
 [ps-getsfsvc-postupgrade]: ./media/service-fabric-get-started-with-a-local-cluster/PS-GetSFSvc-PostUpgrade.png
 [sfx-upgradeprogress]: ./media/service-fabric-get-started-with-a-local-cluster/SfxUpgradeOverview.png
 [sfx-service-overview]: ./media/service-fabric-get-started-with-a-local-cluster/sfx-service-overview.png
+[sfe-delete-application]: ./media/service-fabric-get-started-with-a-local-cluster/sfe-delete-application.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

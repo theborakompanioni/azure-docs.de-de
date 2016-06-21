@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/26/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # Tutorial: Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio
@@ -130,10 +130,9 @@ Die Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weite
 
 		IntelliSense für Katalogentitäten (Datenbanken, Schemas, Tabellen, UDOs usw.) bezieht sich auf Ihr Compute-Konto. Sie können das aktuelle aktive Compute-Konto, die Datenbank und das Schema in der obersten Symbolleiste überprüfen und über die Dropdownlisten wechseln.
 
-    - **Erweitern von Spalten mit***
+    - **Erweitern von Spalten mit**
 
-        Klicken Sie rechts neben das Sternchen-Symbol („*“), und dann sehen Sie unter dem Sternchen eine blaue Unterstreichung. Zeigen Sie mit dem Mauszeiger auf die blaue Unterstreichung, und klicken Sie auf den Pfeil nach unten. 
-	![Data Lake visual studio tools expand *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
+        Klicken Sie rechts neben das Sternchen-Symbol („*“), und dann sehen Sie unter dem Sternchen eine blaue Unterstreichung. Zeigen Sie mit dem Mauszeiger auf die blaue Unterstreichung, und klicken Sie auf den Pfeil nach unten. ![Data Lake visual studio tools expand *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
         Klicken Sie auf **Spalten erweitern**, und das Tool ersetzt das Sternchen („*“) durch die Spaltennamen.
 
@@ -236,7 +235,7 @@ Das folgende Video veranschaulicht das Feature zum lokalen Ausführen von U-SQL:
 
     - In der Skripteingabe (EXTRACT * FROM "/path/abc"): Sowohl der „DataRoot“-Pfad als auch der Skriptpfad werden durchsucht.
     - In der Skriptausgabe (OUTPUT TO "pfad/abc"): Der „DataRoot“-Pfad wird als Ausgabeordner verwendet.
-    - In der Assemblyregistrierung (CRREATE ASSEMBLY xyz FROM "/path/abc"): Der Skriptpfad wird durchsucht, aber nicht DataRoot.
+    - In der Assemblyregistrierung (CREATE ASSEMBLY xyz FROM "/path/abc"): Der Skriptpfad wird durchsucht, aber nicht DataRoot.
     - In registrierten TVF-/Ansichts- oder anderen Metadatenentitäten: Der „DataRoot“-Pfad wird durchsucht, aber nicht der Skriptpfad.
 
     Bei Skripts, die im Data Lake-Dienst ausgeführt werden, wird das Standardspeicherkonto als Stammordner verwendet und dementsprechend durchsucht.
@@ -292,7 +291,7 @@ Weitere Themen zur Entwicklung:
 
 ##Anhang A: PowerShell-Beispiel zur Vorbereitung des Tutorials
 
-Mit dem folgenden PowerShell-Skript werden das Azure Data Lake Analytics-Konto und die Quelldaten für Sie vorbereitetet, sodass Sie zu [Entwickeln eines U-SQL-Skripts](data-lake-analytics-data-lake-tools-get-started.md#develop-u-sql-scripts) springen können.
+Mit dem folgenden PowerShell-Skript werden das Azure Data Lake Analytics-Konto und die Quelldaten für Sie vorbereitet, sodass Sie zu [Entwickeln eines U-SQL-Skripts](data-lake-analytics-data-lake-tools-get-started.md#develop-u-sql-scripts) springen können.
 
     #region - used for creating Azure service names
     $nameToken = "<Enter an alias>"
@@ -343,7 +342,7 @@ Mit dem folgenden PowerShell-Skript werden das Azure Data Lake Analytics-Konto u
 
     #region - prepare the source data
     Write-Host "Import the source data ..."  -ForegroundColor Green
-    $localFolder = "C:\Tutorials\Downloads\" # A temp location for the file.
+    $localFolder = "C:\Tutorials\Downloads" # A temp location for the file.
     $storageAccount = "adltutorials"  # Don't modify this value.
     $container = "adls-sample-data"  #Don't modify this value.
 
@@ -362,4 +361,4 @@ Mit dem folgenden PowerShell-Skript werden das Azure Data Lake Analytics-Konto u
     Get-AzureRmDataLakeStoreChildItem -Account $dataLakeStoreName -Path  "/Samples/Data/"
     #endregion
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

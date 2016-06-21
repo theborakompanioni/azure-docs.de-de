@@ -81,7 +81,7 @@ Sie können auch einen benutzerdefinierten Domänennamen konfigurieren, den Sie 
 
 8. Geben Sie eine neue Ressourcengruppe an, oder wählen Sie eine vorhandene Ressourcengruppe aus. Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwenden des Azure-Portals zum Bereitstellen und Verwalten Ihrer Azure-Ressourcen](../azure-portal/resource-group-portal.md).
 
-9. Wählen Sie den geografischen Standort für das Speicherkonto aus.
+9. Wählen Sie den geografischen Standort für das Speicherkonto aus. Unter [Azure-Regionen](https://azure.microsoft.com/regions/#services) finden Sie weitere Informationen dazu, welche Dienste in welcher Region verfügbar sind.
 
 10. Klicken Sie auf **Erstellen**, um das Speicherkonto zu erstellen.
 
@@ -95,7 +95,7 @@ Nach dem Erstellen eines Speicherkontos können Sie seine Konfiguration ändern.
 
 Durch Änderung der Replikationsoption ändert sich auch der Preis. Weitere Informationen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
-Wenn Sie für BLOB-Speicherkonten die Zugriffsstufen ändern, fallen unter Umständen zusätzlich zur Preisänderung weitere Gebühren für die Änderung an. Weitere Informationen dazu finden Sie unter [Blob storage accounts – Pricing and Billing](storage-blob-storage-tiers.md#pricing-and-billing) (BLOB-Speicherkonten – Preise und Abrechnung).
+Wenn Sie für BLOB-Speicherkonten die Zugriffsstufen ändern, fallen unter Umständen zusätzlich zur Preisänderung weitere Gebühren für die Änderung an. Weitere Informationen hierzu finden Sie unter [Blob storage accounts – Pricing and Billing](storage-blob-storage-tiers.md#pricing-and-billing) (Blobspeicherkonten – Preise und Abrechnung).
 
 ### Verwalten von Speicherzugriffsschlüsseln
 
@@ -151,10 +151,10 @@ Weitere Informationen finden Sie unter [Dokumentation zu virtuellen Azure-Comput
 
 ## Nächste Schritte
 
-- [Azure Blob Storage: Cool and Hot tiers](storage-blob-storage-tiers.md) (Azure Blob Storage: Stufen für selten genutzte Daten (Cool Data) und häufig genutzte Daten (Hot Data))
+- [Azure Blob Storage: Cool and Hot tiers (Azure Blob Storage: Stufen für selten genutzte Daten (Cool Data) und häufig genutzte Daten (Hot Data))](storage-blob-storage-tiers.md)
 - [Azure Storage-Replikation](storage-redundancy.md)
 - [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage-configure-connection-string.md)
 - [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 - Besuchen Sie den [Blog des Azure-Speicherteams](http://blogs.msdn.com/b/windowsazurestorage/).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

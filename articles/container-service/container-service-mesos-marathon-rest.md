@@ -172,6 +172,7 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 
 ## Nächste Schritte
 
-Informieren Sie sich unter Apache Mesos weiter über [HTTP-Endpunkte](http://mesos.apache.org/documentation/latest/endpoints/). [Weitere Informationen zur Marathon-REST-API](https://mesosphere.github.io/marathon/docs/rest-api.html)
+- Informieren Sie sich unter Apache Mesos weiter über [HTTP-Endpunkte](http://mesos.apache.org/documentation/latest/endpoints/).
+- [Weitere Informationen zur Marathon-REST-API](https://mesosphere.github.io/marathon/docs/rest-api.html)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->
