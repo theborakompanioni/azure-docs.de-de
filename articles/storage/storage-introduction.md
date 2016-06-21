@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/23/2016"
+	ms.date="06/08/2016"
 	ms.author="tamram"/>
 
 # Einführung in Microsoft Azure Storage
@@ -46,7 +46,7 @@ Der Azure-Speicher ist weltweit und von jeder Art von Anwendung erreichbar, egal
 
 Azure Storage unterstützt Kunden mit verschiedenen Betriebssystemen (z.B. Windows und Linux) und einer Vielzahl von Programmiersprachen (darunter .NET, Java, Node.js, Python, Ruby, PHP und C++ sowie mobile Programmiersprachen) für eine problemlose Entwicklung. Azure Storage macht auch Datenressourcen über einfache REST-APIs verfügbar, die auf jedem Client ausgeführt werden können, der Daten über HTTP/HTTPS senden und empfangen kann.
 
-Azure Premium Storage bietet eine leistungsstarke Datenträgerunterstützung mit niedriger Latenz für E/A-intensive Workloads, die auf virtuellen Azure-Computern ausgeführt werden. Mit Azure Premium Storage können Sie mehrere persistente Datenträger an einen virtuellen Computer anfügen und diese gemäß Ihren Leistungsanforderungen konfigurieren. Jeder Datenträger wird für maximale E/A-Leistung von einer SSD-Festplatte in Azure Premium Storage unterstützt. Weitere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../storage-premium-storage-preview-portal).
+Azure Premium Storage bietet eine leistungsstarke Datenträgerunterstützung mit niedriger Latenz für E/A-intensive Workloads, die auf virtuellen Azure-Computern ausgeführt werden. Mit Azure Premium Storage können Sie mehrere persistente Datenträger an einen virtuellen Computer anfügen und diese gemäß Ihren Leistungsanforderungen konfigurieren. Jeder Datenträger wird für maximale E/A-Leistung von einer SSD-Festplatte in Azure Premium Storage unterstützt. Weitere Informationen finden Sie unter Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern.
 
 ## Anwenden der Azure Storage-Dienste
 
@@ -132,7 +132,11 @@ Weitere Informationen zu Shared Access Signatures finden Sie unter [Shared Acces
 
 ## Replikation für Dauerhaftigkeit und hohe Verfügbarkeit
 
-Die Daten in Ihrem Microsoft Azure-Speicherkonto werden stets repliziert, um Beständigkeit und hohe Verfügbarkeit sicherzustellen sowie das [SLA für Speicher](https://azure.microsoft.com/support/legal/sla/storage/) auch bei vorübergehend auftretenden Hardwareausfällen zu erfüllen. Wenn Sie ein Speicherkonto erstellen, müssen Sie eine der folgenden Replikationsoptionen auswählen:
+Die Daten in Ihrem Microsoft Azure-Speicherkonto werden stets repliziert, um Beständigkeit und hohe Verfügbarkeit sicherzustellen sowie das [SLA für Speicher](https://azure.microsoft.com/support/legal/sla/storage/) auch bei vorübergehend auftretenden Hardwareausfällen zu erfüllen.
+
+Darüber hinaus finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/#services) weitere Informationen dazu, welche Dienste in den einzelnen Regionen verfügbar sind.
+
+Wenn Sie ein Speicherkonto erstellen, müssen Sie eine der folgenden Replikationsoptionen auswählen:
 
 - **Lokal redundanter Speicher (LRS)** Lokal redundanter Speicher verwaltet drei Kopien Ihrer Daten. LRS wird innerhalb eines einzelnen Standorts dreimal in einer einzelnen Region repliziert. LRS schützt Ihre Daten vor normalen Hardware-Ausfällen, jedoch nicht vor dem Ausfall eines einzelnen Standorts.  
   
@@ -149,6 +153,7 @@ Die Daten in Ihrem Microsoft Azure-Speicherkonto werden stets repliziert, um Bes
 
 - **Georedundanter Speicher (GRS)**. Nach der Erstellung Ihres Speicherkontos ist geografisch redundanter Speicher standardmäßig aktiviert. GRS bewahrt sechs Kopien Ihrer Daten auf. Mit GRS werden Ihre Daten dreimal innerhalb der primären Region und dreimal in einer sekundären Region hunderte von Kilometern von der primären Region entfernt repliziert, wodurch höchste Stabilität erreicht wird. Im Falle eines Ausfalls in der primären Region führt Azure Storage ein Failover auf die sekundäre Region aus. Durch GRS wird sichergestellt, dass Ihre Daten in zwei separaten Regionen stabil sind.
 
+	Informationen zu den Paaren aus primären und sekundären Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).
 
 - **Georedundanter Speicher mit Lesezugriff (RA-GRS)** Georedundanter Speicher mit Lesezugriff repliziert Ihre Daten an einem sekundären geografischen Standort und stellt Lesezugriff auf die Daten am sekundären Standort bereit. Mithilfe von georedundantem Speicher mit Lesezugriff können Sie entweder vom primären oder vom sekundären Speicherort aus auf Ihre Daten zugreifen, falls einer der Speicherorte nicht verfügbar ist.
 
@@ -260,4 +265,4 @@ Weitere Informationen zu Azure Storage finden Sie in den folgenden Ressourcen:
 - [Verwenden des Warteschlangenspeichers mit Python](storage-python-how-to-use-queue-storage.md)
 - [Gewusst wie: Verwenden von Azure File Storage mit Python](storage-python-how-to-use-file-storage.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

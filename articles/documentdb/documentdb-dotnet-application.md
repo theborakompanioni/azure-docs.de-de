@@ -405,7 +405,7 @@ Wenn Sie die Anwendung jetzt ausführen, werden Sie zum **HomeController** und d
 
 Damit weiß ASP.NET MVC, dass Sie keinen Wert in der URL angegeben haben, um das Routingverhalten zu steuern, dass anstelle von **Home** **Item** als Controller und den Benutzer-**Index** als Ansicht verwendet.
 
-Wenn Sie jetzt die Anwendung ausführen, wird Ihr **ItemController** aufgerufen. In diesem wird die „Repository“-Klasse aufgerufen und die „GetItems“-Methode verwendet, um alle unvollständigen Elemente an die Ansicht **Ansichten** **Element** **Index** zurückzugeben.
+Wenn Sie jetzt die Anwendung ausführen, wird Ihr **ItemController** aufgerufen. In diesem wird die „Repository“-Klasse aufgerufen und die „GetItems“-Methode verwendet, um alle unvollständigen Elemente an die Ansicht **Ansichten**\**Element**\**Index** zurückzugeben.
 
 Wenn Sie dieses Projekt jetzt erstellen und ausführen, sollte ein Ergebnis ähnlich dem folgenden angezeigt werden.
 
@@ -591,4 +591,4 @@ Wenn Sie Ihrer Anwendung zusätzliche Funktionen hinzufügen möchten, sehen Sie
 [Grundlegende CRUD-Vorgänge in ASP.NET MVC]: http://go.microsoft.com/fwlink/?LinkId=317598
 [GitHub]: https://github.com/Azure-Samples/documentdb-net-todo-app
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

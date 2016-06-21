@@ -55,8 +55,8 @@ Nachdem Sie dieses Tutorial zu SQL-Datenbank ausgeführt und eine Datenbank mit 
 - Wenn Sie lokale SQL Server-Datenbanken in Azure verschieben möchten, finden Sie unter [Migrieren von Datenbanken zu Azure SQL-Datenbank](sql-database-cloud-migrate.md) weitere Informationen.
 
 
-## Weitere Informationen
+## Zusätzliche Ressourcen
 
 [Was ist SQL Database?](sql-database-technical-overview.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

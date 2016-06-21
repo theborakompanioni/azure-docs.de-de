@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/18/2016"
+	ms.date="06/13/2016"
 	ms.author="garye"/>
 
 # Häufig gestellte Fragen zu Azure Machine Learning (FAQ): Abrechnung, Funktionen, Einschränkungen und Support
@@ -51,7 +51,9 @@ Abrechnungs- und Preisinformationen finden Sie unter [Machine Learning Preise](h
 
 **Gibt es eine kostenlose Testversion von Machine Learning?**
 
- Wenn Sie sich für die kostenlose Azure-Testversion anmelden, können Sie die Azure-Dienste einen Monat lang ausprobieren. Weitere Informationen zur kostenlosen Azure-Testversion finden Sie in den [häufig gestellten Fragen zur kostenlosen Testversion von Azure](/pricing/free-trial-faq/).
+ Azure Machine Learning verfügt über die Abonnementoption „Free“ (Details unter [Machine Learning – Preise](https://azure.microsoft.com/pricing/details/machine-learning/)), und für Machine Learning Studio wird eine acht Stunden gültige Testversion für die Schnellevaluierung angeboten (melden Sie sich hierzu bei [Machine Learning Studio](https://studio.azureml.net/?selectAccess=true&o=2) an).
+ 
+ Wenn Sie sich für die kostenlose Azure-Testversion anmelden, können Sie außerdem die Azure-Dienste einen Monat lang ausprobieren. Weitere Informationen zur kostenlosen Azure-Testversion finden Sie in den [häufig gestellten Fragen zur kostenlosen Testversion von Azure](/pricing/free-trial-faq/).
 
 ## Fragen zu Machine Learning Studio
 
@@ -100,13 +102,13 @@ Wenn Ihre Daten nicht sehr umfangreich sind und Sie diese über eine HTTP-URL ve
 <SEE CLOUD DS PROCESS>
 -->
 
-**Gibt es eine integrierte Imageeingabefunktion?**
+**Gibt es eine integrierte Bildeingabefunktion?**
 
 Informationen zur Bildeingabefunktion finden Sie in der Referenz unter [Importieren von Bildern][image-reader].
 
 ### Module
 
-**Mein Algorithmus, mein Datenformat oder meine Datentransformation ist nicht in Azure Machine Learning Studio enthalten. Welche Optionen habe ich?**
+**Der gewünschte Algorithmus, das Datenformat oder die Datentransformation ist nicht in Azure Machine Learning Studio enthalten. Welche Optionen habe ich?**
 
 Sie können das [Forum für Benutzer-Feedback](http://go.microsoft.com/fwlink/?LinkId=404231) besuchen, um herauszufinden, welche Featureanfragen wir momentan verfolgen. Stimmen Sie für eine entsprechende Anfrage ab, wenn ein von Ihnen gewünschtes Feature bereits angefordert wurde. Falls das gewünschte Feature nicht vorhanden ist, können Sie eine neue Anfrage erstellen. Sie können den Status Ihrer Anfrage ebenfalls in diesem Forum verfolgen. Wir verfolgen diese Liste regelmäßig und aktualisieren den Verfügbarkeitsstatus von Features häufig. Mit der integrierten Unterstützung für R und Python können außerdem benutzerdefinierte Transformationen nach Bedarf erstellt werden.
 
@@ -170,7 +172,7 @@ Derzeit können neue benutzerdefinierte Module nur in R erstellt werden.
 
 **Welche R-Pakete sind in Machine Learning Studio verfügbar?**
 
-Machine Learning Studio unterstützt bereits über 400 CRAN R-Pakete, und [hier finden Sie die aktuelle Liste](http://az754797.vo.msecnd.net/docs/RPackages.xlsx) aller enthaltenen Pakete. Lesen Sie auch die Anweisungen zum Abrufen dieser Liste unter [Erweitern des Experiments mit R](machine-learning-extend-your-experiment-with-r.md). Falls das gewünschte Paket nicht in der Liste enthalten ist, können Sie den Namen des Pakets im [Forum für Benutzer-Feedback](http://go.microsoft.com/fwlink/?LinkId=404231) hinterlassen.
+Machine Learning Studio unterstützt bereits über 400 CRAN R-Pakete. [Hier finden Sie die aktuelle Liste](http://az754797.vo.msecnd.net/docs/RPackages.xlsx) aller enthaltenen Pakete. Lesen Sie auch die Anweisungen zum Abrufen dieser Liste unter [Erweitern des Experiments mit R](machine-learning-extend-your-experiment-with-r.md). Falls das gewünschte Paket nicht in der Liste enthalten ist, können Sie den Namen des Pakets im [Forum für Benutzer-Feedback](http://go.microsoft.com/fwlink/?LinkId=404231) hinterlassen.
 
 **Ist es möglich, benutzerdefinierte R-Module zu erstellen?**
 
@@ -223,7 +225,7 @@ Sie können auch die APIs zum erneuten Trainieren verwenden. Weitere Information
 
 **Wie überwache ich meinen Webdienst in der Produktionsumgebung?**
 
-Sobald ein Vorhersagemodell bereitgestellt wurde, können Sie es im klassischen Azure-Portal überwachen. Jeder bereitgestellte Dienst hat ein eigenes Dashboard mit Überwachungsinformationen für den jeweiligen Dienst.
+Sobald ein Vorhersagemodell bereitgestellt wurde, können Sie es im klassischen Azure-Portal überwachen. Jeder bereitgestellte Dienst hat ein eigenes Dashboard mit Überwachungsinformationen für den jeweiligen Dienst. Weitere Informationen zum Verwalten der bereitgestellten Webdienste finden Sie unter [Verwalten eines Azure Machine Learning-Arbeitsbereichs](machine-learning-manage-workspace.md).
 
 **Kann ich die Ausgabe meines RRS/BES an einer Stelle einsehen?**
 
@@ -332,4 +334,4 @@ Für Azure Machine Learning gibt es außerdem ein Community-Forum auf MSDN, in d
 [python]: https://msdn.microsoft.com/library/azure/CDB56F95-7F4C-404D-BDE7-5BB972E6F232
 [counts]: https://msdn.microsoft.com/library/azure/dn913056.aspx
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

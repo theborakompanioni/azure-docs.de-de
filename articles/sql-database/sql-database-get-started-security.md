@@ -20,6 +20,11 @@
 
 # SQL Datenbank-Tutorial: Erstellen von SQL-Datenbankbenutzerkonten für den Zugriff auf und die Verwaltung von Datenbanken über das Azure-Portal
 
+
+> [AZURE.SELECTOR]
+- [Lernprogramm zu den ersten Schritten](sql-database-get-started-security.md)
+- [Gewähren von Zugriff](sql-database-manage-logins.md)
+
 In diesem Tutorial erfahren Sie, wie Sie das Azure-Portal für Folgendes verwenden:
 
 - Anmelden bei einer SQL-Datenbank mithilfe einer Prinzipalanmeldung auf Serverebene
@@ -43,6 +48,6 @@ In diesem Tutorial erfahren Sie, wie Sie das Azure-Portal für Folgendes verwend
 
 
 ## Nächste Schritte
-Nachdem Sie dieses Tutorial zur SQL-Datenbank ausgeführt, ein Benutzerkonto erstellt und dem Benutzerkonto DBO-Berechtigungen erteilt haben, lesen Sie mehr über die [Sicherheit von SQL-Datenbanken](sql-database-manage-logins.md).
+Nachdem Sie dieses Tutorial zur SQL-Datenbank ausgeführt, ein Benutzerkonto erstellt und dem Benutzerkonto DBO-Berechtigungen erteilt haben, können Sie sich weiter über die [Sicherheit von SQL-Datenbanken](sql-database-manage-logins.md) informieren.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

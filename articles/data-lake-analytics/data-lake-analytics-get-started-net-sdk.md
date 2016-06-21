@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/21/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # Lernprogramm: Erste Schritte mit Azure Data Lake Analytics mithilfe des .NET SDK
@@ -45,7 +45,7 @@ Ein Beispielsuchprotokoll wurde in einen öffentlichen Azure-Blob-Container kopi
 
 1. Öffnen Sie Visual Studio.
 2. Erstellen Sie eine C#-Konsolenanwendung.
-3. Öffnen Sie die Nuget-Paketverwaltungskonsole, und führen Sie folgende Befehle aus:
+3. Öffnen Sie die NuGet-Paketverwaltungskonsole, und führen Sie folgende Befehle aus:
 
         Install-Package Microsoft.Azure.Management.DataLake.Analytics -Pre
         Install-Package Microsoft.Azure.Management.DataLake.Store -Pre
@@ -360,4 +360,4 @@ Ein Beispielsuchprotokoll wurde in einen öffentlichen Azure-Blob-Container kopi
 - Informationen zu Verwaltungsaufgaben finden Sie unter [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md).
 - Eine Übersicht über Data Lake Analytics finden Sie unter [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0615_2016-->

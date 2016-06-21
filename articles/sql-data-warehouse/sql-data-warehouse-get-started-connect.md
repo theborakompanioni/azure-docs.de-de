@@ -13,14 +13,13 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/13/2016"
+   ms.date="06/09/2016"
    ms.author="sonyama;barbkess"/>
 
 # Herstellen einer Verbindung mit SQL Data Warehouse über Visual Studio
 
 > [AZURE.SELECTOR]
 - [Visual Studio](sql-data-warehouse-get-started-connect.md)
-- [SQLCMD](sql-data-warehouse-get-started-connect-sqlcmd.md)
 - [AAD](sql-data-warehouse-get-started-connect-aad-authentication.md)
 
 In dieser exemplarischen Vorgehensweise wird das Verbinden mit einer Azure SQL Data Warehouse-Instanz veranschaulicht, das mit der SQL Server Data Tools-Erweiterung (SSDT) in Visual Studio nur wenige Minuten dauert. Nachdem die Verbindung hergestellt wurde, führen Sie eine einfache Abfrage aus.
@@ -32,7 +31,7 @@ In dieser exemplarischen Vorgehensweise wird das Verbinden mit einer Azure SQL D
 
 ## Schritt 1: Ermitteln des vollqualifizierten Namens des SQL Azure-Servers
 
-Ihre SQL Data Warehouse-Datenbank ist einem Azure SQL Server zugeordnet. Um eine Verbindung mit Ihrer Datenbank herzustellen, benötigen Sie den vollqualifizierten Namen des Servers (**Servername**.database.windows.net*).
+Ihre SQL Data Warehouse-Datenbank ist einem Azure SQL-Server zugeordnet. Um eine Verbindung mit Ihrer Datenbank herzustellen, benötigen Sie den vollqualifizierten Namen des Servers (**Servername**.database.windows.net*).
 
 So ermitteln Sie den vollqualifizierten Servernamen:
 
@@ -116,4 +115,4 @@ Informationen zum Konfigurieren Ihrer Umgebung für die Windows-Authentifizierun
 [7]: ./media/sql-data-warehouse-get-started-connect/run-query.png
 [8]: ./media/sql-data-warehouse-get-started-connect/query-results.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

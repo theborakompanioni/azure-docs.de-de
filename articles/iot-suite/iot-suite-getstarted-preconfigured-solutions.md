@@ -29,33 +29,7 @@ Sie benötigen ein aktives Azure-Abonnement, um dieses Lernprogramm auszuführen
 
 > [AZURE.NOTE]  Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][lnk_free_trial].
 
-## Bereitstellen einer vorkonfigurierten Lösung für die Remoteüberwachung
-
-1.  Melden Sie sich mit den Anmeldeinformationen für Ihr Azure-Konto bei [azureiotsuite.com][lnk-azureiotsuite] an, und klicken Sie auf **+**, um eine neue Lösung zu erstellen.
-
-    > [AZURE.NOTE] Wenn Sie Probleme mit den Berechtigungen für die Bereitstellung einer Lösung haben, finden Sie unter [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions] weitere Informationen.
-
-2.  Klicken Sie auf der Kachel **Remoteüberwachung** auf **Auswählen**.
-
-3.  Geben Sie einen **Lösungsnamen** für Ihre vorkonfigurierte Remoteüberwachungslösung ein.
-
-4.  Wählen Sie die **Region** und das **Abonnement**, die Sie zum Bereitstellen der Lösung verwenden möchten.
-
-5.  Klicken Sie auf **Lösung erstellen**, um den Bereitstellungsprozess zu beginnen. Dies dauert normalerweise einige Minuten.
-
-## Warten auf den Abschluss des Bereitstellungsvorgangs
-
-1. Klicken Sie auf die Kachel für Ihre Lösung mit dem Status **Bereitstellung**.
- 
-2. Beachten Sie die **Bereitstellungsstatus** während der Bereitstellung von Azure-Dienste im Azure-Abonnement.
-
-3. Nach Abschluss der Bereitstellung ändert sich der Status **Bereit**.
-
-4. Klicken Sie auf die Kachel, um im rechten Bereich Details zur Lösung anzuzeigen.
-
-> [AZURE.NOTE] Falls beim Bereitstellen der vorkonfigurierten Lösung Probleme auftreten, helfen Ihnen die Informationen unter [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions] und die [häufig gestellten Fragen][lnk-faq] weiter. Wenn die Probleme weiterhin auftreten, können Sie im [Portal][lnk-portal] ein Dienstticket erstellen.
-
-Erwarten Sie Informationen zu Ihrer Lösung, die nicht aufgeführt werden? Senden Sie uns Vorschläge für neue Funktionen über den [Feedbackbereich](https://feedback.azure.com/forums/321918-azure-iot) zu.
+[AZURE.INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
 ## Anzeigen des Dashboards der Remoteüberwachungslösung
 
@@ -254,4 +228,4 @@ Nachdem Sie jetzt eine funktionsfähige vorkonfigurierte Lösung erstellt haben,
 [lnk-rmgithub]: https://github.com/Azure/azure-iot-remote-monitoring
 [lnk-faq]: iot-suite-faq.md
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

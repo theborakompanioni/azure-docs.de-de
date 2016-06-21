@@ -14,7 +14,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="03/25/2016"
+	ms.date="06/15/2016"
 	ms.author="carlrab"/>
 
 # Überwachen der Datenbankleistung mithilfe von Azure SQL-Datenbank
@@ -47,4 +47,4 @@ Dieselben Metriken, die im Portal bereitgestellt werden, sind auch über Systems
 
 In Pools für elastische Datenbanken können Sie Einzeldatenbanken im Pool mit den in diesem Abschnitt beschriebenen Methoden überwachen. Sie können den Pool jedoch auch als Ganzes überwachen. Informationen dazu finden Sie unter [Erstellen und Verwalten eines elastischen Azure SQL-Datenbankpools](sql-database-elastic-pool-manage-portal.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0615_2016-->

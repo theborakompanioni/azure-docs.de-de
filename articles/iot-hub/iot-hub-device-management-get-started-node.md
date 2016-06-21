@@ -3,7 +3,7 @@
 	description="Tutorial für den Einstieg in die Azure IoT Hub-Geräteverwaltung mit C#. Implementieren Sie eine Geräteverwaltung mithilfe von Azure IoT Hub, C# und den Microsoft Azure IoT SDKs."
 	services="iot-hub"
 	documentationCenter=".net"
-	authors="ellenfosborne"
+	authors="juanjperez"
 	manager="timlt"
 	editor=""/>
 
@@ -14,28 +14,32 @@
  ms.tgt_pltfrm="na"
  ms.workload="na"
  ms.date="04/29/2016"
- ms.author="elfarber"/>
+ ms.author="juanpere"/>
 
 # Erste Schritte mit der Azure IoT Hub-Geräteverwaltung mithilfe von Node.js (Vorschau)
 
 [AZURE.INCLUDE [iot-hub-device-management-get-started-selector](../../includes/iot-hub-device-management-get-started-selector.md)]
 
 ## Einführung
-Um die Azure IoT Hub-Geräteverwaltung verwenden zu können, müssen Sie zunächst einen Azure IoT Hub erstellen, Geräte im IoT Hub bereitstellen und mehrere simulierte Geräten starten. In diesem Tutorial werden die entsprechenden Schritte erläutert.
+Um die Azure IoT Hub-Geräteverwaltung verwenden zu können, müssen Sie zunächst einen Azure IoT Hub erstellen, Geräte im IoT Hub bereitstellen, mehrere simulierte Geräte starten und diese Geräte in der Beispiel-UI für die Geräteverwaltung anzeigen. In diesem Tutorial werden die entsprechenden Schritte erläutert.
 
 > [AZURE.NOTE]  Die Geräteverwaltungsfunktionen stehen erst nach Erstellung eines neuen IoT Hubs zur Verfügung. Dies gilt auch, wenn bereits ein IoT Hub vorhanden ist, da dieser noch nicht über Geräteverwaltungsfunktionen verfügt. Sobald die Geräteverwaltung allgemein verfügbar ist, werden alle bereits vorhandenen IoT Hubs per Upgrade ebenfalls mit Geräteverwaltungsfunktionen ausgestattet.
 
 ## Voraussetzungen
 
-Für die Schritte muss Folgendes installiert sein:
+In diesem Tutorial wird davon ausgegangen, dass Sie einen Ubuntu Linux-Entwicklungscomputer verwenden.
+
+Für die Schritte muss die folgende Software installiert sein:
 
 - Git
-- node
-- npm
-- CMake (ab Version 2.8). CMake können Sie hier herunterladen: <https://cmake.org/download/>. Vergewissern Sie sich, dass das Kontrollkästchen zum Hinzufügen von CMake zur PATH-Variablen des aktuellen Benutzers aktiviert ist.
-- Ein aktives Azure-Abonnement.
 
-	Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][lnk-free-trial].
+- gcc (Version 4.9 oder höher). Sie können prüfen, welche aktuelle Version in Ihrer Umgebung installiert ist, indem Sie den Befehl `gcc --version` verwenden. Informationen zur Aktualisierung Ihrer Version von gcc unter Ubuntu 14.04 finden Sie unter <http://askubuntu.com/questions/466651/how-do-i-use-the-latest-gcc-4-9-on-ubuntu-14-04>.
+
+- [CMake](https://cmake.org/download/) (Version 2.8 oder höher). Sie können prüfen, welche aktuelle Version in Ihrer Umgebung installiert ist, indem Sie den Befehl `cmake --version` verwenden.
+
+- Node.js 6.1.0 oder höher. Installieren Sie Node.js für Ihre Plattform unter <https://nodejs.org/>.
+
+- Ein aktives Azure-Abonnement. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][lnk-free-trial].
 
 ## Erstellen eines IoT Hubs mit Geräteverwaltungsfunktionen
 
@@ -46,7 +50,7 @@ Sie müssen einen IoT Hub mit Geräteverwaltungsfunktionen erstellen, mit dem Ih
 
 	![][img-new-hub]
 
-3.  Wählen Sie auf dem Blatt **IoT Hub** die gewünschte Konfiguration für Ihren IoT Hub aus.
+3.  Wählen Sie im Blatt **IoT Hub** die gewünschte Konfiguration für Ihren IoT Hub.
 
 	![][img-configure-hub]
 
@@ -58,11 +62,11 @@ Sie müssen einen IoT Hub mit Geräteverwaltungsfunktionen erstellen, mit dem Ih
 
   > [AZURE.NOTE]  Wenn Sie das Kontrollkästchen zum Aktivieren der Geräteverwaltung nicht aktivieren, können die Beispiele nicht ausgeführt werden.
 
-4.  Wenn Sie die Konfigurationsoptionen für Ihren IoT Hub ausgewählt haben, klicken Sie auf **Erstellen**. Die Erstellung des IoT Hubs kann einige Minuten dauern. Den Status können Sie im Startmenü oder im Benachrichtigungsbereich überwachen.
+4.  Wenn Sie die Konfigurationsoptionen für Ihren IoT Hub ausgewählt haben, klicken Sie auf **Erstellen**. Die Erstellung des IoT Hubs kann einige Minuten dauern. Im **Startmenü** oder im Bereich **Benachrichtigungen** können Sie den Fortschritt überwachen und den Status überprüfen.
 
 	![][img-monitor]
 
-5.  Öffnen Sie nach erfolgreicher Erstellung des IoT Hubs das Blatt für den neuen IoT Hub, notieren Sie sich den Hostnamen, und klicken Sie dann auf das Schlüsselsymbol.
+5.  Öffnen Sie nach erfolgreicher Erstellung des IoT Hub das Blatt für den neuen IoT Hub, notieren Sie sich den Hostnamen, und klicken Sie dann auf das Schlüsselsymbol.
 
 	![][img-keys]
 
@@ -80,7 +84,7 @@ In diesem Abschnitt wird ein Skript ausgeführt, das das simulierte Gerät und d
 
 Gehen Sie wie folgt vor, um die Beispiele zu erstellen und Geräte in Ihrem IoT Hub bereitzustellen:
 
-1.  Öffnen Sie das Terminal.
+1.  Öffnen Sie eine Shell.
 
 2.  Klonen Sie das GitHub-Repository. **Das Zielverzeichnis für den Klonvorgang darf keine Leerzeichen enthalten.**
 
@@ -88,10 +92,17 @@ Gehen Sie wie folgt vor, um die Beispiele zu erstellen und Geräte in Ihrem IoT 
 	  git clone --recursive --branch dmpreview https://github.com/Azure/azure-iot-sdks.git
 	  ```
 
-3.  Navigieren Sie in dem Stammordner, in dem Sie das Repository **azure-iot-sdks** geklont haben, zum Verzeichnis **azure-iot-sdks/node/service/samples**, und führen Sie den folgenden Befehl aus. Ersetzen Sie dabei den Platzhalterwert durch die Verbindungszeichenfolge aus dem vorherigen Abschnitt:
+3.  Navigieren Sie aus dem Stammordner, in dem Sie das Repository **azure-iot-sdks** geklont haben, zum Verzeichnis **azure-iot-sdks/c/build\_all/linux**, und führen Sie den folgenden Befehl zum Installieren der Pakete mit den erforderlichen Komponenten und der abhängigen Bibliotheken aus:
 
 	  ```
-	  setup.bat <IoT Hub Connection String>
+	  ./setup.sh
+	  ```
+
+
+4.  Navigieren Sie in dem Stammordner, in dem Sie das Repository **azure-iot-sdks** geklont haben, zum Verzeichnis **azure-iot-sdks/node/service/samples**, und führen Sie den folgenden Befehl aus. Ersetzen Sie dabei den Platzhalterwert durch die Verbindungszeichenfolge aus dem vorherigen Abschnitt:
+
+	  ```
+	  ./setup.sh <IoT Hub Connection String>
 	  ```
 
 Das Skript bewirkt Folgendes:
@@ -100,18 +111,18 @@ Das Skript bewirkt Folgendes:
 
 2.  Es erstellt die ausführbare Datei **iotdm\_simple\_sample** für das simulierte Gerät.
 
-3.  Es führt ``` npm install ``` aus, um die erforderlichen Pakete zu installieren.
+3.  Es führt `npm install` aus, um die erforderlichen Pakete zu installieren.
 
-4.  Es führt ```node generate_devices.js``` aus, um Geräteidentitäten in Ihrem IoT Hub bereitzustellen. Die Geräte werden in **sampledevices.json** beschrieben. Nachdem die Geräte bereitgestellt wurden, werden die Anmeldeinformationen in der Datei **devicecreds.txt** (im Verzeichnis **azure-iot-sdks/node/service/samples**) gespeichert.
+4.  Es führt `node generate_devices.js` aus, um Geräteidentitäten in Ihrem IoT Hub bereitzustellen. Die Geräte werden in **sampledevices.json** beschrieben. Nachdem die Geräte bereitgestellt wurden, werden die Anmeldeinformationen in der Datei **devicecreds.txt** (im Verzeichnis **azure-iot-sdks/node/service/samples**) gespeichert.
 
 ## Starten der simulierten Geräte
 
 Nachdem die Geräte der Geräteregistrierung hinzugefügt wurden, können Sie nun die simulierten verwalteten Geräte starten. Für die im Azure IoT Hub bereitgestellten Geräteidentitäten muss jeweils ein simuliertes Gerät gestartet werden.
 
-Führen Sie im Verzeichnis **azure-iot-sdks/node/service/samples** mithilfe des Terminals Folgendes aus:
+Navigieren Sie mit einer Shell zum Verzeichnis **azure-iot-sdks/node/service/samples**, und führen Sie Folgendes aus:
 
   ```
-  simulate.sh
+  ./simulate.sh
   ```
 
 Dieses Skript gibt die Befehle aus, die Sie ausführen müssen, um **iotdm\_simple\_sample** für jedes in der Datei **devicecreds.txt** aufgeführte Gerät zu starten. Führen Sie die Befehle für jedes simulierte Gerät einzeln in einem separaten Terminalfenster aus. Das simulierte Gerät wird ausgeführt, bis Sie das Befehlsfenster schließen.
@@ -126,31 +137,68 @@ Im Anschluss folgt eine Ausgabe der Beispielanwendung **iotdm\_simple\_sample**.
 
 ![][img-output]
 
-Achten Sie darauf, dass die simulierten Geräte weiter ausgeführt werden, wenn Sie die Tutorials unter „Nächste Schritte“ ausführen.
+Achten Sie darauf, dass alle simulierten Geräte weiter ausgeführt werden, während Sie die folgenden Abschnitte durcharbeiten.
 
-## Nächste Schritte
+## Ausführen der Beispiel-UI für die Geräteverwaltung
 
-Weitere Informationen zu den Geräteverwaltungsfeatures von Azure IoT Hub erhalten Sie in den folgenden Tutorials:
+Nachdem Sie nun einen IoT Hub bereitgestellt haben und mehrere simulierte Geräte ausgeführt werden und für die Verwaltung registriert sind, können Sie die Beispiel-UI für die Geräteverwaltung bereitstellen. Die Beispiel-UI für die Geräteverwaltung enthält ein Arbeitsbeispiel für die Nutzung der Geräteverwaltungs-APIs zum Erstellen einer interaktiven Benutzeroberfläche. Weitere Informationen zur Beispiel-UI für die Geräteverwaltung, z.B. [bekannte Probleme](https://github.com/Azure/azure-iot-device-management#knownissues), finden Sie im GitHub-Repository zur [Azure IoT-UI für die Geräteverwaltung][lnk-dm-github].
 
-- [Gewusst wie: Verwenden des Gerätezwillings][lnk-tutorial-twin]
+Führen Sie die folgenden Schritte aus, um die Beispiel-UI für die Geräteverwaltung abzurufen, zu erstellen und auszuführen:
 
-- [Suchen nach Gerätezwillingen mithilfe von Abfragen][lnk-tutorial-queries]
+1. Öffnen Sie eine Shell.
 
-- [Aktualisieren der Gerätefirmware mithilfe von Geräteaufträgen][lnk-tutorial-jobs]
+2. Vergewissern Sie sich, dass Sie Node.js 6.1.0 oder höher gemäß dem Abschnitt „Voraussetzungen“ installiert haben, indem Sie `node --version` eingeben.
+
+3. Klonen Sie das GitHub-Repository der Azure IoT-UI für die Gerätebereitstellung, indem Sie in der Shell den folgenden Befehl ausführen:
+
+	```
+	git clone https://github.com/Azure/azure-iot-device-management.git
+	```
+	
+4. Führen Sie im Stammordner Ihrer geklonten Kopie des Repositorys der Azure IoT-UI für die Gerätebereitstellung den folgenden Befehl aus, um die abhängigen Pakete abzurufen:
+
+	```
+	npm install
+	```
+
+5. Führen Sie nach Abschluss des Installationsbefehls „npm“ den folgenden Befehl in der Shell aus, um den Code zu erstellen:
+
+	```
+	npm run build
+	```
+
+6. Verwenden Sie einen Text-Editor, um die Datei „user-config.json“ im Stamm des geklonten Ordners zu öffnen. Ersetzen Sie den Text „&lt;YOUR CONNECTION STRING HERE&gt;“ durch die IoT Hub-Verbindungszeichenfolge aus dem vorherigen Abschnitt, und speichern Sie die Datei.
+
+7. Führen Sie in der Shell den folgenden Befehl aus, um die UX-App für die Geräteverwaltung zu starten:
+
+	```
+	npm run start
+	```
+
+8. Wenn in der Eingabeaufforderung die Meldung „Services have started“ angezeigt wird, können Sie einen Webbrowser öffnen und unter der folgenden URL zur Geräteverwaltungs-App navigieren, um die simulierten Geräte anzuzeigen: <http://127.0.0.1:3003>.
+
+	![][img-dm-ui]
+
+Lassen Sie die simulierten Geräte und die Geräteverwaltungs-App laufen, während Sie mit dem nächsten Tutorial für die Geräteverwaltung fortfahren.
+
+
+## Nächster Schritt
+
+Weitere Informationen zu den Features der Azure IoT Hub-Geräteverwaltung finden Sie im Tutorial [Erkunden der Azure IoT Hub-Geräteverwaltung mit der Beispiel-UI][lnk-sample-ui].
 
 <!-- images and links -->
-[img-new-hub]: media/iot-hub-device-management-get-started/image1.png
-[img-configure-hub]: media/iot-hub-device-management-get-started/image2.png
-[img-monitor]: media/iot-hub-device-management-get-started/image3.png
-[img-keys]: media/iot-hub-device-management-get-started/image4.png
-[img-connection]: media/iot-hub-device-management-get-started/image5.png
-[img-output]: media/iot-hub-device-management-get-started/image6.png
+[img-new-hub]: media/iot-hub-device-management-get-started-node/image1.png
+[img-configure-hub]: media/iot-hub-device-management-get-started-node/image2.png
+[img-monitor]: media/iot-hub-device-management-get-started-node/image3.png
+[img-keys]: media/iot-hub-device-management-get-started-node/image4.png
+[img-connection]: media/iot-hub-device-management-get-started-node/image5.png
+[img-output]: media/iot-hub-device-management-get-started-node/image6.png
+[img-dm-ui]: media/iot-hub-device-management-get-started-node/dmui.png
 
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [Azure-Portal]: https://portal.azure.com/
 [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen]: ../azure-portal/resource-group-portal.md
-[lnk-tutorial-twin]: iot-hub-device-management-device-twin.md
-[lnk-tutorial-queries]: iot-hub-device-management-device-query.md
-[lnk-tutorial-jobs]: iot-hub-device-management-device-jobs.md
+[lnk-dm-github]: https://github.com/Azure/azure-iot-device-management
+[lnk-sample-ui]: iot-hub-device-management-ui-sample.md
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

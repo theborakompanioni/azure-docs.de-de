@@ -17,9 +17,9 @@
 	ms.author="juliako"/>
 
 
-# Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mit dem Azure-Portal (Vorschau)
+# Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mit dem Azure-Portal
 
-In diesem Tutorial werden Sie durch die Schritte zum Implementieren eines einfachen Diensts zur Video-on-Demand (VoD)-Inhaltsübermittlung mit der Azure Media Services-Anwendung (AMS) mithilfe des Azure-Portals geführt.
+In diesem Tutorial werden Sie durch die Schritte zum Implementieren eines einfachen Diensts zur Video-on-Demand-Inhaltsübermittlung (VoD) mit der Azure Media Services-Anwendung (AMS) mithilfe des Azure-Portals geführt.
 
 Azure Media Services im Azure-Portal befindet sich derzeit in der Vorschauphase.
 
@@ -40,7 +40,7 @@ Dieses Lernprogramm enthält die folgenden Aufgaben:
 Die Schritte in diesem Abschnitt verdeutlichen, wie Sie ein neues AMS-Konto erstellen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie auf **+Neu** > **Media Service + CDN** (Media Service + CDN) > **Media Services**.
+2. Klicken Sie auf **+Neu** > **Media Service + CDN** > **Media Services**.
 
 	![Media Services – Erstellung](./media/media-services-portal-vod-get-started/media-services-new1.png)
 
@@ -229,4 +229,4 @@ Folgende Überlegungen sollten berücksichtigt werden:
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->
