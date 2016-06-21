@@ -37,7 +37,7 @@ Die folgende Tabelle beschreibt die verfügbaren Kennwortrichtlinieneinstellunge
 
 | Eigenschaft | Anforderungen |
 |   ----------------------- |   ----------------------- |
-| Zulässige Zeichen | <ul><li>A – Z</li><li>a -z </li><li>0 – 9</li> <li>@ # $ % ^ & * - \_ ! + = [ ] { } | \\ : ‘ , . ? / ` ~ “ ( ) ;</li></ul> |
+| Zulässige Zeichen | <ul><li>A – Z</li><li>a -z </li><li>0 – 9</li> <li>@ # $ % ^ & * - \_ ! + = [ ] { } &#124; \\ : ‘ , . ? / ` ~ “ ( ) ;</li></ul> |
 | Unzulässige Zeichen | <ul><li>Unicode-Zeichen</li><li>Leerzeichen</li><li>Leerzeichen</li><li> **Nur für sichere Kennwörter**: Dürfen keinen Punkt (.) unmittelbar vor dem @-Symbol enthalten</li></ul> |
 | Kennworteinschränkungen | <ul><li>Mindestens 8 Zeichen und höchstens 16 Zeichen</li><li>**Nur für sichere Kennwörter**: Es müssen 3 von 4 der folgenden Zeichenarten enthalten sein:<ul><li>Kleinbuchstaben</li><li>Großbuchstaben</li><li>Zahlen (0-9)</li><li>Symbole (siehe Kennworteinschränkungen oben)</li></ul></li></ul> |
 | Zeitraum bis zum Ablauf des Kennworts | <ul><li>Standardwert: **90** Tage </li><li>Der Wert kann im Azure Active Directory-Modul für Windows PowerShell mit dem Cmdlet „Set-MsolPasswordPolicy“ konfiguriert werden.</li></ul> |
