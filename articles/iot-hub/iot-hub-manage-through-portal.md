@@ -13,7 +13,7 @@
 	 ms.topic="article"
 	 ms.tgt_pltfrm="na"
 	 ms.workload="na"
-	 ms.date="03/14/2016"
+	 ms.date="06/06/2016"
 	 ms.author="nasing"/>
 
 # Verwalten von IoT Hubs über das Azure-Portal
@@ -28,7 +28,7 @@ IoT Hubs finden Sie an vielen Stellen.
 
 1. **+ Neu**: **Azure IoT Hub** ist ein IoT-Dienst, den Sie wie andere Dienste unter der Kategorie **Internet der Dinge** unter **+ Neu** finden.
 
-2. Auf IoT Hubs können Sie auch über den Marketplace zugreifen – wie der Hero-Dienst unter **Internet der Dinge**.
+2. Auf IoT Hubs können Sie auch über den Marketplace zugreifen – wie der Hero-Dienst unter **Internet der Dinge**.
 
 ## Erstellen eines IoT Hubs
 
@@ -44,7 +44,7 @@ Sie müssen dem Hub einen Namen geben, um einen IoT Hub zu erstellen. Beachten S
 
 ### Auswählen des Tarifs
 
-Sie können zwischen drei Tarifen wählen: **Free**, **Standard 1** und **Standard 2**. Mit dem Free-Tarif können nur 500 Geräte mit dem IoT Hub verbunden sein, und bis zu 8.000 Nachrichten pro Tag sind möglich.
+Sie können zwischen drei Tarifen wählen: **Free**, **Standard 1** und **Standard 2**. Mit dem Free-Tarif können nur 500 Geräte mit dem IoT Hub verbunden sein, und bis zu 8.000 Nachrichten pro Tag sind möglich.
 
 **S1 (Low Frequency)**: IoT Hubs S1 (Low Frequency) ist auf IoT-Lösungen mit einer großen Anzahl von Geräten ausgelegt, die relativ kleine Datenmengen pro Gerät generieren. Mit jeder Einheit der Edition S1 (niedrige Auslastung) können bis zu 400.000 Nachrichten pro Tag (auf allen verbundenen Geräten) übermittelt werden.
 
@@ -60,7 +60,7 @@ Eine IoT Hub-Einheit enthält eine bestimmte Anzahl von Nachrichten pro Tag. Die
 
 ### Gerät für Cloud-Partitionen und Ressourcengruppe
 
-Sie können die Anzahl der Partitionen für einen IoT Hub ändern. Standardmäßig sind 4 Partitionen festgelegt, Sie können jedoch eine andere Anzahl von Partitionen aus einer Dropdownliste auswählen.
+Sie können die Anzahl der Partitionen für einen IoT Hub ändern. Standardmäßig sind 4 Partitionen festgelegt, Sie können jedoch eine andere Anzahl von Partitionen aus einer Dropdownliste auswählen.
 
 Für Ressourcengruppen muss nicht zwingend eine leere Ressourcengruppe erstellt werden. Beim Erstellen einer neuen Ressource können Sie entweder eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe verwenden.
 
@@ -112,13 +112,31 @@ Klicken Sie auf die **Messaging**-Richtlinien, um eine Liste der Messaging-Eigen
 
 **Event Hub – Kompatibler Name und Endpunkt**: Bei Erstellung des IoT Hubs wird intern ein Event Hub erstellt, auf den der Benutzer unter bestimmten Umständen zugreifen muss. Name und Endpunkt dieses Event Hubs können nicht angepasst werden, stehen jedoch über die Schaltfläche **Kopieren** zur Verfügung.
 
-**Aufbewahrungszeit**: Standardmäßig auf 1 Tag festgelegt, kann aber mithilfe der Dropdownliste in andere Werte geändert werden. Beachten Sie, dass dieser Wert für D2C in Tagen statt Stunden angegeben ist und die Einstellungen für C2D identisch sind.
+**Aufbewahrungszeit**: Standardmäßig auf 1 Tag festgelegt, kann aber mithilfe der Dropdownliste in andere Werte geändert werden. Beachten Sie, dass dieser Wert für D2C in Tagen statt Stunden angegeben ist und die Einstellungen für C2D identisch sind.
 
 **Consumergruppen**: Consumergruppen ähneln als Einstellung anderen Messaging-Systemen, die zum Abrufen von Daten auf bestimmte Weise verwendet werden können, um andere Programme oder Dienste mit IoT Hub zu verbinden. Jeder IoT Hub wird mit einer Standard-Consumergruppe erstellt. Sie können Ihren IoT Hubs jedoch Consumergruppen hinzufügen oder diese daraus löschen.
 
 > [AZURE.NOTE] Die Standard-Consumergruppe kann nicht bearbeitet oder gelöscht werden.
 
 ![][11]
+
+## Dateiupload
+
+Um die Dateiuploadfunktionalität in IoT Hub zu verwenden, müssen Sie zunächst ein Azure Storage-Konto Ihrem Hub zuordnen. Wählen Sie die **Dateiupload**-Einstellungen zum Anzeigen einer Liste der Dateiuploadeigenschaften für den IoT Hub, der geändert wird.
+
+**Speicherkonto**: Verwenden Sie das Portal, um ein Speicherkonto in Ihrem aktuellen Abonnement Ihrem IoT Hub zuzuordnen. IoT Hub erzeugt SAS-URIs aus diesem Speicherkonto, die Geräte beim Hochladen von Dateien verwenden können.
+
+![][14]
+
+**Benachrichtigungen für hochgeladene Dateien empfangen**: Aktivieren oder Deaktivieren über Uploadbenachrichtigungen über die Umschaltfläche.
+
+**SAS-TTL**: Diese Einstellung legt die Gültigkeitsdauer der SAS-URIs fest, die von IoT Hub an das Gerät zurückgegeben werden. Standardmäßig auf 1 Stunde festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
+
+**Standard-TTL für Dateibenachrichtigungen**: Die Gültigkeitsdauer einer Dateiuploadbenachrichtigung, bevor diese abgelaufen ist. Standardmäßig auf 1 Tag festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
+
+**Maximale Zahl gesendeter Dateibenachrichtigungen**: Gibt an, wie oft der IoT Hub versucht, eine Dateiuploadbenachrichtigung zu senden. Standardmäßig auf 10 festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
+
+![][13]
 
 ## Preise und Skalierung
 
@@ -139,7 +157,7 @@ Klicken Sie zum Suchen des zu löschenden IoT Hubs auf **Durchsuchen**, und wäh
 
 Folgen Sie diesen Links, um mehr über Azure IoT Hub zu erfahren:
 
-- [Erste Schritte mit IoT Hub (Lernprogramm)][lnk-get-started]
+- [Erste Schritte mit IoT Hub (Lernprogramm)][lnk-get-started]
 - [Was ist Azure IoT Hub?][]
 
 
@@ -149,8 +167,10 @@ Folgen Sie diesen Links, um mehr über Azure IoT Hub zu erfahren:
   [10]: ./media/iot-hub-manage-through-portal/shared-access-policies.png
   [11]: ./media/iot-hub-manage-through-portal/messaging-settings.png
   [12]: ./media/iot-hub-manage-through-portal/pricing-error.png
+  [13]: ./media/iot-hub-manage-through-portal/file-upload-settings.png
+  [14]: ./media/iot-hub-manage-through-portal/file-upload-container-selection.png
 
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
 [Was ist Azure IoT Hub?]: iot-hub-what-is-iot-hub.md
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -78,7 +78,7 @@ Sie können Netzwerksicherheitsgruppen zum Steuern des ein- und ausgehenden Zugr
 
 Ein virtuelles Gerät ist eine andere VM in Ihrem VNet, die eine softwarebasierte Gerätefunktion ausführt, z. B. eine Firewall, WAN-Optimierung oder Angriffserkennung. Sie können eine Route in Azure erstellen, um den Datenverkehr Ihres VNets über ein virtuelles Gerät weiterzuleiten und dessen Funktionen zu nutzen.
 
-Netzwerksicherheitsgruppen können z. B. verwendet werden, um Sicherheit für das VNet bereitzustellen. Allerdings bieten Netzwerksicherheitsgruppen eine Layer 4-Zugriffssteuerungsliste (ACL) für ein- und ausgehende Pakete. Wenn Sie ein Layer 7-Sicherheitsmodell verwenden möchten, müssen Sie ein Firewallgerät einsetzen.
+Netzwerksicherheitsgruppen können z. B. verwendet werden, um Sicherheit für das VNet bereitzustellen. Allerdings bieten Netzwerksicherheitsgruppen eine Layer 4-Zugriffssteuerungsliste (ACL) für ein- und ausgehende Pakete. Wenn Sie ein Layer 7-Sicherheitsmodell verwenden möchten, müssen Sie ein Firewallgerät einsetzen.
 
 Virtuelle Geräte sind von [benutzerdefinierten Routen und IP-Weiterleitung](virtual-networks-udr-overview.md) abhängig.
 
@@ -95,4 +95,4 @@ Für die Verwendung virtueller Netzwerke in Azure fallen keine Zusatzkosten an. 
 - Weitere Informationen zu [Netzwerksicherheitsgruppen](virtual-networks-nsg.md)
 - Weitere Informationen zu [benutzerdefinierten Routen und IP-Weiterleitung](virtual-networks-udr-overview.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0615_2016-->

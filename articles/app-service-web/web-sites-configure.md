@@ -1,11 +1,11 @@
 <properties 
 	pageTitle="Konfigurieren von Web-Apps in Azure App Service" 
 	description="Konfigurieren einer Web-App in Azure App Service" 
-	services="app-service" 
+	services="app-service\web" 
 	documentationCenter="" 
-	authors="erikre" 
+	authors="rmcmurray" 
 	manager="wpickett" 
-	editor="jimbe"/>
+	editor=""/>
 
 <tags 
 	ms.service="app-service" 
@@ -13,23 +13,22 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/26/2016" 
-	ms.author="tdykstra"/>
-
+	ms.date="06/02/2016" 
+	ms.author="robmcm"/>
 
 # Konfigurieren von Web-Apps in Azure App Service #
 
-In diesem Thema wird erläutert, wie Sie eine Web-App mit dem [Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=529715) konfigurieren.
+In diesem Thema wird erläutert, wie Sie eine Web-App mit dem [Azure-Portal] konfigurieren.
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## Anwendungseinstellungen
 
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) das Blatt für die Web-App.
+1. Öffnen Sie im [Azure-Portal] das Blatt für die Web-App.
 2. Klicken Sie auf **Alle Einstellungen**.
 3. Klicken Sie auf **Anwendungseinstellungen**.
 
-![](./media/web-sites-configure/configure01.png)
+![Anwendungseinstellungen][configure01]
 
 Das Blatt **Anwendungseinstellungen** enthält Einstellungen, die unter verschiedenen Kategorien gruppiert sind.
 
@@ -46,19 +45,17 @@ Aus technischen Gründen werden durch Aktivierung von Java für Ihre App die Opt
 
 <a name="platform"></a> **Plattform**. Bestimmt, ob Ihre Web-App in einer 32-Bit- oder 64-Bit-Umgebung ausgeführt wird. Für die 64-Bit-Umgebung ist der Modus "Basic" oder "Standard" erforderlich. Die Modi "Kostenlos" und "Freigegeben" werden immer in einer 32-Bit-Umgebung ausgeführt.
 
-**Websockets**. Legen Sie **EIN** fest, um das WebSocket-Protokoll zu aktivieren, beispielsweise wenn Ihre Website [ASP.NET SignalR](http://www.asp.net/signalr) oder [socket.io](web-sites-nodejs-chat-app-socketio.md) verwendet.
+**Websockets**. Legen Sie **EIN** fest, um das WebSocket-Protokoll zu aktivieren, beispielsweise wenn Ihre Website [ASP.NET SignalR] oder [socket.io] verwendet.
 
 <a name="alwayson"></a> **Immer aktiviert**. Standardmäßig werden Web-Apps entladen, wenn sie einige Zeit im Leerlauf waren. Dadurch spart das System Ressourcen. Im Modus "Basic" oder "Standard" können Sie **Immer aktiviert** aktivieren, sodass die Web-App permanent geladen bleibt. Wenn Ihre App fortlaufende Webaufträge ausführt, sollten Sie **Immer aktiviert** aktivieren. Ansonsten werden fortlaufende Webaufträge unter Umständen nicht zuverlässig ausgeführt.
 
-**Verwalteter Pipelinemodus**. Legt den IIS-[Pipelinemodus](http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application) fest. Lassen Sie diese Einstellung bei "Integriert" (der Standard), sofern Sie nicht eine ältere App haben, die eine ältere IIS-Version erfordert.
+**Verwalteter Pipelinemodus**. Legt den IIS-[Pipelinemodus] fest. Lassen Sie diese Einstellung bei "Integriert" (der Standard), sofern Sie nicht eine ältere App haben, die eine ältere IIS-Version erfordert.
 
 **Auto Swap**: Wenn Sie "Auto Swap" für einen Bereitstellungsslot aktivieren, ändert App Service den Status der Web-App automatisch in Produktion, wenn Sie eine Aktualisierung an diesen Slot übermitteln. Weitere Informationen finden Sie unter [Bereitstellen von Web-Apps in Azure App Service in Stagingslots](web-sites-staged-publishing.md).
-
 
 ### Debuggen
 
 **Remotedebuggen**. Aktiviert das Remotedebugging. Wenn diese Option aktiviert ist, können Sie mit dem Remotedebugger in Visual Studio direkt eine Verbindung mit Ihrer Web-App herstellen. Das Remotedebuggen bleibt 48 Stunden aktiviert.
-
 
 ### App-Einstellungen
 
@@ -76,10 +73,10 @@ Bei .NET-Apps werden diese Verbindungszeichenfolgen zur Laufzeit in die `connect
 
 Bei PHP-, Python-, Java- und Node-Anwendungen sind diese Einstellungen als Umgebungsvariablen zur Laufzeit mit dem Verbindungstyp als Präfix verfügbar. Die Präfixe der Umgebungsvariable lauten wie folgt:
 
-- SQL Server: SQLCONNSTR\_
-- MySQL: MYSQLCONNSTR\_
-- SQL-Datenbank: SQLAZURECONNSTR\_
-- Benutzerdefiniert: CUSTOMCONNSTR\_
+- SQL Server: `SQLCONNSTR_`
+- MySQL: `MYSQLCONNSTR_`
+- SQL-Datenbank: `SQLAZURECONNSTR_`
+- Benutzerdefiniert: `CUSTOMCONNSTR_`
 
 Wenn beispielsweise eine MySQL-Verbindungszeichenfolge "`connectionstring1`" heißt, wird sie über die Umgebungsvariable `MYSQLCONNSTR_connectionString1` aufgerufen.
 
@@ -129,52 +126,67 @@ Zum Anzeigen der Protokolldateien müssen Sie die FTP-Anmeldeinformationen wie f
 3. Geben Sie einen Benutzernamen und ein Kennwort ein.
 4. Klicken Sie auf **Speichern**.
 
-![](./media/web-sites-configure/configure03.png)
-
+![Anmeldeinformationen für die Bereitstellung zurücksetzen][configure03]
 
 Der vollständige FTP-Benutzername lautet "App\\Benutzername". Dabei ist *App* der Name Ihrer Web-App. Den Benutzernamen finden Sie auf dem Blatt der Web-App unter **Essentials**.
 
-![](./media/web-sites-configure/configure02.png)
+![FTP-Anmeldeinformationen für die Bereitstellung][configure02]
 
 ## Weitere Konfigurationsaufgaben
 
 ### SSL 
 
-Im Modus "Basic" oder "Standard" können Sie SSL-Zertifikate für benutzerdefinierte Domänen hochladen. Weitere Informationen finden Sie unter [Aktivieren von HTTPS für eine Web-App](web-sites-configure-ssl-certificate.md).
+Im Modus "Basic" oder "Standard" können Sie SSL-Zertifikate für benutzerdefinierte Domänen hochladen. Weitere Informationen finden Sie unter [Aktivieren von HTTPS für eine Web-App].
 
 Klicken Sie zum Anzeigen der hochgeladenen Zertifikate auf **Alle Einstellungen** > **Benutzerdefinierte Domänen und SSL**.
 
 ### Domänennamen
 
-Fügen Sie Ihrer Web-App benutzerdefinierte Domänennamen hinzu. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für eine Web-App in Azure App Service](web-sites-custom-domain-name.md).
+Fügen Sie Ihrer Web-App benutzerdefinierte Domänennamen hinzu. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für eine Web-App in Azure App Service].
 
 Klicken Sie zum Anzeigen des Domänennamens auf **Alle Einstellungen** > **Benutzerdefinierte Domänen und SSL**.
 
 ### Bereitstellungen
 
-- Legen Sie die kontinuierliche Bereitstellung fest. Weitere Informationen finden Sie unter [Bereitstellen von Web-Apps in Azure App Service mit Git](web-sites-publish-source-control.md).
-- Bereitstellungsslots. Weitere Informationen finden Sie unter [Bereitstellen von Web-Apps in Azure App Service in Stagingumgebungen](web-sites-staged-publishing.md).
+- Legen Sie die kontinuierliche Bereitstellung fest. Weitere Informationen finden Sie unter [Bereitstellen von Web-Apps in Azure App Service mit Git].
+- Bereitstellungsslots. Weitere Informationen finden Sie unter [Bereitstellen von Web-Apps in Azure App Service in Stagingumgebungen].
 
 Klicken Sie zum Anzeigen der Bereitstellungsslots auf **Alle Einstellungen** > **Bereitstellungsslots**.
-
 
 ### Überwachung
 
 Im Modus "Basic" oder "Standard" können Sie die Verfügbarkeit von HTTP- oder HTTPS-Endpunkten von bis zu drei geografisch verteilten Standorten aus testen. Ein Überwachungstest verläuft nicht erfolgreich, wenn der HTTP-Antwortcode ein Fehler ist (4xx oder 5xx) oder die Antwort länger als 30 Sekunden benötigt. Der Endpunkt wird als verfügbar betrachtet, wenn die Überwachungstests von allen angegebenen Standorten aus erfolgreich waren.
 
-Weitere Informationen finden Sie unter [Vorgehensweise: Überwachen des Web-Endpunktstatus](http://go.microsoft.com/fwLink/?LinkID=279906&clcid=0x409).
+Weitere Informationen finden Sie unter [Vorgehensweise: Überwachen des Web-Endpunktstatus].
 
->[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+>[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen] sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
 ## Nächste Schritte
 
-- [Konfigurieren eines benutzerdefinierten Domänennamens](web-sites-custom-domain-name.md)
-- [Aktivieren von HTTPS](web-sites-configure-ssl-certificate.md)
-- [Skalieren einer Web-App in Azure App Service](web-sites-scale.md)
-- [Grundlagen der Überwachung von Web-Apps in Azure App Service](web-sites-monitor.md)
+- [Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service]
+- [Aktivieren von HTTPS für eine App in Azure App Service]
+- [Skalieren einer Web-App in Azure App Service]
+- [Grundlagen der Überwachung von Web-Apps in Azure App Service]
 
-## Änderungen
-* Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714).
- 
+<!-- URL List -->
 
-<!---HONumber=AcomDC_0518_2016-->
+[ASP.NET SignalR]: http://www.asp.net/signalr
+[Azure-Portal]: https://portal.azure.com/
+[Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service]: ./web-sites-custom-domain-name.md
+[Bereitstellen von Web-Apps in Azure App Service in Stagingumgebungen]: ./web-sites-staged-publishing.md
+[Aktivieren von HTTPS für eine App in Azure App Service]: ./web-sites-configure-ssl-certificate.md
+[Vorgehensweise: Überwachen des Web-Endpunktstatus]: http://go.microsoft.com/fwLink/?LinkID=279906
+[Grundlagen der Überwachung von Web-Apps in Azure App Service]: ./web-sites-monitor.md
+[Pipelinemodus]: http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
+[Skalieren einer Web-App in Azure App Service]: ./web-sites-scale.md
+[socket.io]: ./web-sites-nodejs-chat-app-socketio.md
+[App Service testen]: http://go.microsoft.com/fwlink/?LinkId=523751
+[Bereitstellen von Web-Apps in Azure App Service mit Git]: ./web-sites-publish-source-control.md
+
+<!-- IMG List -->
+
+[configure01]: ./media/web-sites-configure/configure01.png
+[configure02]: ./media/web-sites-configure/configure02.png
+[configure03]: ./media/web-sites-configure/configure03.png
+
+<!---HONumber=AcomDC_0608_2016-->

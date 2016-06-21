@@ -162,15 +162,15 @@ Benennen Sie es um in: **SimpleFeatureHashingExperiment**. Erweitern Sie **Saved
 
 ![simple-feature-hashing-experiment](./media/machine-learning-manage-web-service-endpoints-using-api-management/simple-feature-hashing-experiment.png)
 
-Erweitern Sie **Data Transformation** und **Manipulation**, und ziehen Sie **Project Columns** in Ihr Experiment. Verbinden Sie **Book Reviews from Amazon** mit **Project Columns**.
+Erweitern Sie **Data Transformation** und **Manipulation**, und ziehen Sie **Select Columns in Dataset** in Ihr Experiment. Verbinden Sie **Book Reviews from Amazon** mit **Select Columns in Dataset**.
 
-![project-columns](./media/machine-learning-manage-web-service-endpoints-using-api-management/project-columns.png)
+![select-columns](./media/machine-learning-manage-web-service-endpoints-using-api-management/project-columns.png)
 
-Klicken Sie auf **Project Columns**. Klicken Sie dann auf **Launch column selector**, und wählen Sie **Col2** aus. Klicken Sie auf das Häkchen, um diese Änderungen zu übernehmen.
+Klicken Sie auf **Select Columns in Dataset**. Klicken Sie dann auf **Launch column selector**, und wählen Sie **Col2** aus. Klicken Sie auf das Häkchen, um diese Änderungen zu übernehmen.
 
 ![select-columns](./media/machine-learning-manage-web-service-endpoints-using-api-management/select-columns.png)
 
-Erweitern Sie **Text Analytics**, und ziehen Sie **Feature Hashing** in das Experiment. Verbinden Sie **Project Columns** mit **Feature Hashing**.
+Erweitern Sie **Text Analytics**, und ziehen Sie **Feature Hashing** in das Experiment. Verbinden Sie **Select Columns in Dataset** mit **Feature Hashing**.
 
 ![connect-project-columns](./media/machine-learning-manage-web-service-endpoints-using-api-management/connect-project-columns.png)
 
@@ -384,4 +384,4 @@ Dieser Leitfaden zeigt ein funktionierendes Python-Beispiel. Sie müssen dieses 
 	return
 	invokeBatchExecutionService()
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

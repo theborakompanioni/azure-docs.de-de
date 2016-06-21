@@ -68,6 +68,7 @@ Es gibt drei Azure CDN-Produkte: **Azure CDN Standard von Akamai**, **Azure CDN 
 | [Erweiterte HTTP-Berichte](cdn-advanced-http-reports.md) | | | **&#x2713;** |
 | [Echtzeitstatistiken](cdn-real-time-stats.md) | | | **&#x2713;** |
 
+>[AZURE.TIP] Gibt es eine Funktion, die Sie sich für Azure CDN wünschen? [Geben Sie uns Feedback!](https://feedback.azure.com/forums/169397-cdn)
 
 ## Nächste Schritte
 
@@ -79,6 +80,4 @@ Im [Video zu unserer Build 2016-Veranstaltung](https://azure.microsoft.com/docum
 
 Preisinformationen finden Sie unter [Content Delivery Network (CDN) – Preise](https://azure.microsoft.com/pricing/details/cdn/).
 
-Gibt es eine Funktion, die Sie sich für Azure CDN wünschen? [Geben Sie uns Feedback!](https://feedback.azure.com/forums/169397-cdn)
-
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

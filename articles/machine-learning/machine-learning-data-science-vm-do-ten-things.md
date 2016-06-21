@@ -198,7 +198,7 @@ Weitere Informationen über die Azure Machine Learning-R-Bibliothek finden Sie [
 
 Die DSVM ermöglicht Ihnen nicht nur, Ihre Analyselösung lokal auf dem virtuellen Computer zu erstellen, sondern auch, auf Dienste der Azure-Cloud von Microsoft zuzugreifen. Azure bietet mehrere Compute-, Speicher-, Datenanalyse- und andere Dienste, die Sie von Ihrer DSVM aus verwalten, und auf die Sie von dort aus zugreifen können.
 
-Um Ihr Azure-Abonnement und Ihre Cloudressourcen zu verwalten, können Sie in Ihrem Browser auf das [Azure-Portal](portal.azure.com) zugreifen. Sie können auch Azure PowerShell zur Verwaltung Ihres Azure-Abonnements und Ihrer Ressourcen über ein Skript verwenden. Sie können Azure PowerShell über eine Verknüpfung auf dem Desktop oder im Startmenü „Microsoft Azure Powershell“ ausführen. In der [Microsoft Azure PowerShell-Dokumentation](../powershell-azure-resource-manager.md) finden Sie weitere Informationen dazu, wie Sie Ihr Azure-Abonnement und Ihre Ressourcen mithilfe von Windows PowerShell-Skripts verwalten können.
+Um Ihr Azure-Abonnement und Ihre Cloudressourcen zu verwalten, können Sie in Ihrem Browser auf das [Azure-Portal](https://portal.azure.com) zugreifen. Sie können auch Azure PowerShell zur Verwaltung Ihres Azure-Abonnements und Ihrer Ressourcen über ein Skript verwenden. Sie können Azure PowerShell über eine Verknüpfung auf dem Desktop oder im Startmenü „Microsoft Azure Powershell“ ausführen. In der [Microsoft Azure PowerShell-Dokumentation](../powershell-azure-resource-manager.md) finden Sie weitere Informationen dazu, wie Sie Ihr Azure-Abonnement und Ihre Ressourcen mithilfe von Windows PowerShell-Skripts verwalten können.
 
 
 ## 5\. Erweitern Ihres Speichers mit einem Shared-Dateisystem
@@ -268,7 +268,7 @@ Azure Blob ist ein zuverlässiger, wirtschaftlicher Cloudspeicher für große un
 
 **Voraussetzung**
 
-- **Erstellen Sie Ihr eigenes Azure-Blobspeicherkonto im [Azure-Portal](http://portal.azure.com).**
+- **Erstellen Sie Ihr eigenes Azure-Blobspeicherkonto im [Azure-Portal](https://portal.azure.com).**
 
 ![Create\_Azure\_Blob](./media/machine-learning-data-science-vm-do-ten-things/Create_Azure_Blob.PNG)
 
@@ -287,7 +287,7 @@ Zum Verschieben von Daten zwischen Ihren lokalen Dateien und dem Blobspeicher k�
 
 	AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
 
-Ersetzen Sie **C:\\myfolder** mit dem Pfad, in dem Ihre Datei gespeichert wird, **mystorageaccount** durch Ihren Blobspeicher-Kontonamen, **mycontainer** durch den Containernamen, **storage account key** durch Ihren Blobspeicher-Zugriffsschlüssel. Sie finden die Anmeldeinformationen für Ihr Speicherkonto im [Azure-Portal](http://portal.azure.com).
+Ersetzen Sie **C:\\myfolder** mit dem Pfad, in dem Ihre Datei gespeichert wird, **mystorageaccount** durch Ihren Blobspeicher-Kontonamen, **mycontainer** durch den Containernamen, **storage account key** durch Ihren Blobspeicher-Zugriffsschlüssel. Sie finden die Anmeldeinformationen für Ihr Speicherkonto im [Azure-Portal](https://portal.azure.com).
 
 ![StorageAccountCredential\_v2](./media/machine-learning-data-science-vm-do-ten-things/StorageAccountCredential_v2.png)
 
@@ -318,7 +318,7 @@ Außerdem können Sie Daten aus der lokalen Datei auf Ihrem virtuellen Computer 
 
 **Lesen von Daten aus dem Azure-Blobspeicher: AML-Readermodul**
 
-In Azure Machine Learning Studio können Sie mit einem **Readermodul** Daten aus Ihrem Blobspeicher lesen.
+In Azure Machine Learning Studio können Sie mit einem **„Import Data“-Modul** Daten aus Ihrem Blobspeicher lesen.
 
 
 ![AML\_ReaderBlob\_Module\_v3](./media/machine-learning-data-science-vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
@@ -379,7 +379,7 @@ Azure Data Lake-Speicher ist ein Repository mit Hyperskalierung für Big Data-An
 
 **Voraussetzung**
 
-- Erstellen Sie Ihre Azure Data Lake Analytics im [Azure-Portal](http://portal.azure.com).
+- Erstellen Sie Ihre Azure Data Lake Analytics im [Azure-Portal](https://portal.azure.com).
 
 ![Azure\_Data\_Lake\_Create\_v2](./media/machine-learning-data-science-vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
 
@@ -474,7 +474,7 @@ Azure HDInsight ist ein verwalteter Apache Hadoop-, Spark-, HBase- und Storm-Die
 
 **Voraussetzung**
 
-- Erstellen Sie Ihr eigenes Azure-Blobspeicherkonto im [Azure-Portal](http://portal.azure.com). Dieses Speicherkonto wird zum Speichern von Daten für HDInsight-Cluster verwendet.
+- Erstellen Sie Ihr eigenes Azure-Blobspeicherkonto im [Azure-Portal](https://portal.azure.com). Dieses Speicherkonto wird zum Speichern von Daten für HDInsight-Cluster verwendet.
 
 ![](./media/machine-learning-data-science-vm-do-ten-things/Create_Azure_Blob.PNG)
 
@@ -910,4 +910,4 @@ Sie können andere in diesem Artikel dargestellte Azure-Datendienste und -Analys
 ## Zusammenfassung
 Dies sind nur einige Dinge, die mit der Microsoft Data Science Virtual Machine möglich sind. Sie können viele weitere Dinge tun, um sie als wirksame Analyseumgebung zu nutzen.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -122,7 +122,7 @@ Die Bilder, die Sie zusammen mit Ihrem Experiment übermitteln, werden verwendet
 
 Wenn Ihr Dataset Teil des Experiments ist und nicht über ein Readermodul importiert wird, gehört es zum Experiment und wird mit ihm im Katalog veröffentlicht. Stellen Sie aus diesem Grund sicher, dass für das mit dem Experiment veröffentlichte Dataset entsprechende Lizenzbedingungen verfügbar sind, die das Freigeben und Herunterladen durch alle Benutzer zulassen.
 
-**Ich verwende ein Experiment, das über ein Readermodul Daten aus HDInsight oder SQL abruft. Zum Abrufen der Daten werden meine Anmeldeinformationen verwendet. Wie kann ich ein solches Experiment veröffentlichen und gewährleisten, dass meine Anmeldeinformationen nicht anderen zugänglich werden?**
+**Ich verwende ein Experiment, das über ein „Import Data“-Modul Daten aus HDInsight oder SQL abruft. Zum Abrufen der Daten werden meine Anmeldeinformationen verwendet. Wie kann ich ein solches Experiment veröffentlichen und gewährleisten, dass meine Anmeldeinformationen nicht anderen zugänglich werden?**
 
 Zurzeit ist das Veröffentlichen von Experimenten, die Anmeldeinformationen verwenden, nicht zulässig.
 
@@ -136,4 +136,4 @@ Beschreibungen mit Rich Text-Renderingfunktionen sind nicht für alle Katalogben
 
 **[ZUM KATALOG >>](http://gallery.cortanaintelligence.com)**
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0608_2016-->

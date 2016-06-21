@@ -19,8 +19,6 @@
 
 # Problembehandlung für Fehler bei Azure-Erweiterungen für virtuelle Linux-Computer
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
-
 [AZURE.INCLUDE [virtual-machines-common-extensions-troubleshoot](../../includes/virtual-machines-common-extensions-troubleshoot.md)]
 
 ## Anzeigen des Erweiterungsstatus
@@ -72,4 +70,4 @@ Wobei "publsher-name" dem Erweiterungstyp aus der Ausgabe von "azure vm get-inst
 
 Nachdem die Erweiterung entfernt wurde, kann die Vorlage erneut ausgeführt werden, um die Skripts auf dem virtuellen Computer auszuführen.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0608_2016-->

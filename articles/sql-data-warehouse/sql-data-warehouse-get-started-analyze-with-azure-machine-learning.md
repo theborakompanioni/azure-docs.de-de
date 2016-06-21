@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/18/2016"
+   ms.date="06/09/2016"
    ms.author="shigu;barbkess;sonyama"/>
 
 # Analysieren von Daten mit Azure Machine Learning
@@ -21,6 +21,7 @@
 > [AZURE.SELECTOR]
 - [Power BI][]
 - [Azure Machine Learning][]
+- [SQLCMD][]
 
 In diesem Tutorial erfahren Sie, wie Sie ein prädiktives Machine Learning-Modell mit Azure Machine Learning und Ihren Azure SQL Data Warehouse-Daten erstellen. In diesem Tutorial werden wir eine gezielte Marketingkampagne für Adventure Works, einen Fahrradladen, erstellen und dabei eine Prognose, ob ein Kunde ein Fahrrad kauft.
 
@@ -98,7 +99,7 @@ Wir testen nun die Leistung des Modells mithilfe von Testdaten. Wir vergleichen 
 2. Ziehen Sie das Modul **Two-Class Bayes Point Machine** in den Experimentbereich. Wir sehen uns an, wie dieser Algorithmus im Vergleich zum Modul „Two-Class Boosted Decision Tree“ abschneidet.
 3. Kopieren Sie die Module „Train Model“ und „Score Model“, und fügen Sie sie im Zeichenbereich ein.
 4. Ziehen Sie das Modul **Evaluate Model** in den Zeichenbereich, um die beiden Algorithmen zu vergleichen.
-5. Führen Sie das Experiment mit **Ausführen** aus. ![Ausführen des Experiments][10]
+5. Führen Sie das Experiment mit dem Befehl **Ausführen** aus. ![Ausführen des Experiments][10]
 6. Klicken Sie unten im Modul „Modell evaluieren“ auf den Ausgabeport und anschließend auf „Visualisieren“. ![Anzeigen der Auswertungsergebnisse][11]
 
 Folgende Metriken stehen zur Verfügung: ROC-Kurve, Precision-Recall-Diagramm und Lorenz-Kurve. Anhand dieser Metriken erkennen wir, dass mit dem ersten Modell eine bessere Leistung als mit dem zweiten Modell erzielt wird. Wenn Sie die Vorhersage des ersten Modells anzeigen möchten, klicken Sie im „Bewertungsmodell“ auf den Ausgabeport und anschließend auf „Visualisieren“. ![Anzeigen der Bewertungsergebnisse][12]
@@ -136,5 +137,6 @@ Weitere Informationen zum Erstellen von vorhersehbaren Machine Learning-Vorhersa
 [Erstellen eines SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
 [Power BI]: ./sql-data-warehouse-get-started-visualize-with-power-bi.md
 [Azure Machine Learning]: ./sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md
+[SQLCMD]: ./sql-data-warehouse-get-started-connect-sqlcmd.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/21/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # Lernprogramm: Erste Schritte mit Azure Data Lake Analytics mithilfe des .NET SDK
@@ -45,7 +45,7 @@ Ein Beispielsuchprotokoll wurde in einen öffentlichen Azure-Blob-Container kopi
 
 1. Öffnen Sie Visual Studio.
 2. Erstellen Sie eine C#-Konsolenanwendung.
-3. Öffnen Sie die Nuget-Paketverwaltungskonsole, und führen Sie folgende Befehle aus:
+3. Öffnen Sie die NuGet-Paketverwaltungskonsole, und führen Sie folgende Befehle aus:
 
         Install-Package Microsoft.Azure.Management.DataLake.Analytics -Pre
         Install-Package Microsoft.Azure.Management.DataLake.Store -Pre
@@ -129,7 +129,7 @@ Ein Beispielsuchprotokoll wurde in einen öffentlichen Azure-Blob-Container kopi
                     
                     // Authenticate the user
                     // For more information about applications and instructions on how to get a client ID, see: 
-                    //   https://azure.microsoft.com/de-DE/documentation/articles/resource-group-create-service-principal-portal/
+                    //   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
                     var tokenCreds = AuthenticateUser("common", "https://management.core.windows.net/",
                         "<APPLICATION-CLIENT-ID>", new Uri("https://<APPLICATION-REDIRECT-URI>")); // TODO: Replace bracketed values.
                     
@@ -182,7 +182,7 @@ Ein Beispielsuchprotokoll wurde in einen öffentlichen Azure-Blob-Container kopi
                 // Authenticate the user with AAD through an interactive popup.
                 // You need to have an application registered with AAD in order to authenticate.
                 //   For more information and instructions on how to register your application with AAD, see: 
-                //   https://azure.microsoft.com/de-DE/documentation/articles/resource-group-create-service-principal-portal/
+                //   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
                 public static TokenCredentials AuthenticateUser(string tenantId, string resource, string appClientId, Uri appRedirectUri, string userId = "")
                 {
                     var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
@@ -196,7 +196,7 @@ Ein Beispielsuchprotokoll wurde in einen öffentlichen Azure-Blob-Container kopi
                 // Authenticate the application with AAD through the application's secret key.
                 // You need to have an application registered with AAD in order to authenticate.
                 //   For more information and instructions on how to register your application with AAD, see: 
-                //   https://azure.microsoft.com/de-DE/documentation/articles/resource-group-create-service-principal-portal/
+                //   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
                 public static TokenCredentials AuthenticateApplication(string tenantId, string resource, string appClientId, Uri appRedirectUri, SecureString clientSecret)
                 {
                     var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
@@ -360,4 +360,4 @@ Ein Beispielsuchprotokoll wurde in einen öffentlichen Azure-Blob-Container kopi
 - Informationen zu Verwaltungsaufgaben finden Sie unter [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md).
 - Eine Übersicht über Data Lake Analytics finden Sie unter [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0615_2016-->

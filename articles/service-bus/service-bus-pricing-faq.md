@@ -56,7 +56,7 @@ Im Allgemeinen werden abrechenbare Nachrichten für Relays mit derselben Methode
 
 1. Das Senden einer Nachricht an ein Service Bus Relay wird als „ganz durchgehendes“ Senden an den Relaylistener behandelt, der die Nachricht erhält, und nicht als ein Senden an das Service Bus Relay, gefolgt von einer Zustellung an den Relaylistener. Aus diesem Grund führt ein Dienstaufruf im Anforderungs-/Antwortstil (von bis zu 64 KB) für einen Relaylistener zu zwei abrechenbaren Nachrichten: Eine Nachricht ist für die Anforderung und eine Nachricht für die Antwort abrechenbar (unter der Voraussetzung, dass die Antwort ebenfalls <= 64 KB ist). Dies unterscheidet sich vom Einsatz einer Warteschlange für die Vermittlung zwischen einem Client und einem Dienst. In letzterem Fall würde dasselbe Anforderungs-/Antwort-Muster erfordern, dass eine Anfrage an die Warteschlange gesandt wird, gefolgt von einem Entfernen aus der Warteschlange/einer Zustellung an den Dienst, wiederum gefolgt von einer Antwortsendung an eine andere Warteschlange und einem Entfernen aus der Warteschlange/einer Zustellung an den Client. Mit denselben Annahmen für die Größe (<= 64 KB) würde dieses vermittelte Warteschlangenmuster darum zu vier abrechenbaren Nachrichten führen, also der doppelten Menge im Vergleich zur Anwendung desselben Musters mithilfe eines Relays. Natürlich gibt es Vorteile beim Einsatz von Warteschlangen, wenn man dieses Muster verwenden möchte, wie etwa Dauerhaftigkeit und Lastenausgleich. Diese Vorteile können die zusätzlichen Kosten rechtfertigen.
 
-2. Relays, die anhand der WCF-Bindung **netTCPRelay** geöffnet werden, behandeln Nachrichten nicht als einzelne Nachrichten, sondern als Datenstrom, der durch das System fließt. Anders ausgedrückt: Nur der Absender und der Listener besitzen Einblick in das Framing der einzelnen Nachrichten, die mit dieser Bindung gesendet/empfangen werden. Zum Zweck der Berechnung abrechenbarer Nachrichten werden deshalb für Relays, die die **netTCPRelay**-Bindung verwenden, alle Daten als ein Datenstrom behandelt. In diesem Fall berechnet Service Bus die Gesamtmenge der über die einzelnen Relays gesendeten oder empfangen Daten auf 5-Minuten-Basis und teilt diese Menge durch 64 KB, um so die Anzahl abrechenbarer Nachrichten für das fragliche Relay während dieses Zeitraums zu ermitteln.
+2. Relays, die anhand der WCF-Bindung **netTCPRelay** geöffnet werden, behandeln Nachrichten nicht als einzelne Nachrichten, sondern als Datenstrom, der durch das System fließt. Anders ausgedrückt: Nur der Absender und der Listener besitzen Einblick in das Framing der einzelnen Nachrichten, die mit dieser Bindung gesendet/empfangen werden. Zum Zweck der Berechnung abrechenbarer Nachrichten werden deshalb für Relays, die die **netTCPRelay**-Bindung verwenden, alle Daten als ein Datenstrom behandelt. In diesem Fall berechnet Service Bus die Gesamtmenge der über die einzelnen Relays gesendeten oder empfangen Daten auf 5-Minuten-Basis und teilt diese Menge durch 64 KB, um so die Anzahl abrechenbarer Nachrichten für das fragliche Relay während dieses Zeitraums zu ermitteln.
 
 ## Fallen für Service Bus Speicherkosten an?
 
@@ -88,10 +88,10 @@ Genau wie andere Dienste in Azure erzwingt Service Bus eine Reihe spezifischer [
 
 - **Kontingente für die Nachrichtengröße**
 	- **Warteschlange/Thema/Abonnement**
-		- **Nachrichtengröße**: Jede Nachricht ist auf eine Gesamtgröße von 256 KB einschließlich Nachrichtenheader begrenzt.
-		- **Nachrichtenheadergröße**: Jeder Nachrichtenheader ist auf 64 KB begrenzt.
+		- **Nachrichtengröße**: Jede Nachricht ist auf eine Gesamtgröße von 256 KB einschließlich Nachrichtenheader begrenzt.
+		- **Nachrichtenheadergröße**: Jeder Nachrichtenheader ist auf 64 KB begrenzt.
 
-	- **NetOneway- und NetEvent-Relays**: Jede Nachricht ist auf eine Gesamtgröße von 64 KB einschließlich Nachrichtenheader begrenzt.
+	- **NetOneway- und NetEvent-Relays**: Jede Nachricht ist auf eine Gesamtgröße von 64 KB einschließlich Nachrichtenheader begrenzt.
 	- **Http- und NetTcp-Relays**: Service Bus setzt keine obere Grenze hinsichtlich der Größe von Nachrichten durch.
 
 	Nachrichten, die diese Größenkontingente überschreiten, werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen.
@@ -110,10 +110,10 @@ Weitere Informationen zu Service Bus Messaging finden Sie in folgenden Themen.
 
 - [Einführung in Azure Service Bus Premium-Messaging (Blogbeitrag)](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 - [Einführung in Azure Service Bus Premium-Messaging (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
-- [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
+- [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
 - [Übersicht über die Architektur von Azure Service Bus](service-bus-fundamentals-hybrid-solutions.md)
-- [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-how-to-use-queues.md)
+- [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
 
 [klassische Azure-Portal]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="dotnet"
     ms.topic="get-started-article"
-    ms.date="05/09/2016"
+    ms.date="06/10/2016"
     ms.author="sethm"/>
 
 # Verwenden von Service Bus-Warteschlangen
@@ -32,8 +32,6 @@ Das [Service Bus NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.Servic
 
 1.  Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
 2.  Suchen Sie nach „Service Bus“, und wählen Sie das Element **Microsoft Azure Service Bus** aus. Klicken Sie auf **Installieren**, um die Installation abzuschließen. Schließen Sie danach dieses Dialogfeld.
-
-    ![][7]
 
 Sie können nun Code für Service Bus erstellen.
 
@@ -241,7 +239,6 @@ Nachdem Sie nun mit den Grundlagen der Servicebus-Warteschlangen vertraut sind, 
 -   Laden Sie Service Bus-Beispiele unter [Azure-Beispiele][] herunter, oder sehen Sie sich die [Übersicht über Service Bus-Beispiele][] an.
 
   [klassischen Azure-Portal]: http://manage.windowsazure.com
-  [7]: ./media/service-bus-dotnet-how-to-use-queues/getting-started-multi-tier-13.png
   [Warteschlangen, Themen und Abonnements]: service-bus-queues-topics-subscriptions.md
   [.NET-Tutorial zu Service Bus-Brokermessaging]: service-bus-brokered-tutorial-dotnet.md
   [Azure-Beispiele]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
@@ -253,4 +250,4 @@ Nachdem Sie nun mit den Grundlagen der Servicebus-Warteschlangen vertraut sind, 
   [QueueClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx
   [Complete]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

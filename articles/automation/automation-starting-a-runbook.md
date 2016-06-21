@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/23/2016"
+   ms.date="06/06/2016"
    ms.author="magoedte;bwren"/>
 
 # Starten eines Runbooks in Azure Automation
@@ -25,7 +25,7 @@ Die folgende Tabelle hilft Ihnen dabei herauszufinden, welche Methode zum Starte
 | [Windows PowerShell](https://msdn.microsoft.com/library/dn690259.aspx) | <li>Aufruf über Befehlszeile mit Windows PowerShell-Cmdlets.<br> <li>Kann in eine automatisierte Lösung mit mehreren Schritten eingebunden werden.<br> <li>Anforderung wird über Zertifikat oder OAuth-Benutzerprinzipal/-Dienstprinzipal authentifiziert.<br> <li>Bereitstellen von einfachen und komplexen Parameterwerten.<br> <li>Nachverfolgen des Auftragsstatus.<br> <li>Client erforderlich zur Unterstützung der PowerShell-Cmdlets. |
 | [Azure Automation-API](https://msdn.microsoft.com/library/azure/mt662285.aspx) | <li>Flexibelste Methode, jedoch auch sehr komplex.<br> <li>Aufruf aus jedem benutzerdefinierten Code, der HTTP-Anforderungen ausführen kann.<br> <li>Anforderung wird über Zertifikat oder OAuth-Benutzerprinzipal/-Dienstprinzipal authentifiziert.<br> <li>Bereitstellen von einfachen und komplexen Parameterwerten.<br> <li>Nachverfolgen des Auftragsstatus. |
 | [Webhooks](automation-webhooks.md) | <li>Starten eines Runbooks über eine einzelne HTTP-Anforderung.<br> <li>Authentifizierung über Sicherheitstoken in der URL.<br> <li>Client kann keine Parameterwerte überschreiben, die beim Erstellen des Webhooks festgelegt wurden. Ein Runbook kann einen einzelnen Parameter definieren, der mit den Details zur HTTP-Anforderung aufgefüllt wird.<br> <li>Keine Möglichkeit, den Auftragsstatus über die Webhook-URL nachzuverfolgen. |
-| [Reagieren auf eine Azure-Warnung](automation-webhooks.md) | <li>Starten eines Runbooks als Reaktion auf eine Azure-Warnung.<br> <li>Konfigurieren eines Webhooks für Runbook und Link zum Warnen.<br> <li>Authentifizierung über Sicherheitstoken in der URL.<br> <li>Unterstützt derzeit nur Warnungen für Metriken. |
+| [Reagieren auf eine Azure-Warnung](../log-analytics/log-analytics-alerts.md) | <li>Starten eines Runbooks als Reaktion auf eine Azure-Warnung.<br> <li>Konfigurieren eines Webhooks für Runbook und Link zum Warnen.<br> <li>Authentifizierung über Sicherheitstoken in der URL.<br> <li>Unterstützt derzeit nur Warnungen für Metriken. |
 | [Zeitplan](automation-scheduling-a-runbook.md) | <li>Automatisches Starten eines Runbooks: stündlich, täglich oder wöchentlich.<br> <li>Bearbeiten des Zeitplans über das Azure-Portal, PowerShell-Cmdlets oder die Azure-API.<br> <li>Bereitstellen von Parameterwerten, die mit dem Zeitplan verwendet werden sollen. |
 | [Über ein anderes Runbook](automation-child-runbooks.md) | <li>Verwenden eines Runbooks als Aktivität in einem anderen Runbook.<br> <li>Nützlich bei Funktionen, die von mehreren Runbooks verwendet werden.<br> <li>Bereitstellen von Parameterwerten für untergeordnete Runbooks und Verwenden der Ausgabe im übergeordneten Runbook. |
 
@@ -193,4 +193,4 @@ jsmith
 
 -	Die Runbookarchitektur im aktuellen Artikel bietet eine allgemeine Beschreibung zu Hybrid Runbooks. Weitere Informationen finden Sie unter [Untergeordnete Runbooks in Azure Automation](automation-child-runbooks.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

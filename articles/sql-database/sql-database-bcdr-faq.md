@@ -50,8 +50,8 @@ Verwenden Sie für die Wiederherstellung nach Ausfällen [Get Recoverable Databa
 
 Es gibt keine integrierte Funktion für Massenwiederherstellungen. Das Skript [Azure SQL-Datenbank: Vollständige Serverwiederherstellung](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) ist ein Beispiel für eine Möglichkeit, diese Aufgabe auszuführen.
 
-## 8\. Was ist die Replikationsverzögerung bei der aktiven Georeplikation?
+## 8\. Wie hoch ist die Replikationsverzögerung bei der Georeplikation?
 
 Verwenden Sie die dynamische Verwaltungsansicht (DMV) [sys.dm\_geo\_replication\_link\_status](https://msdn.microsoft.com/library/mt575504.aspx), um den Zeitpunkt der letzten Replikation, die Verzögerung der letzten Replikation und andere Informationen über den Replikationslink zu erhalten.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

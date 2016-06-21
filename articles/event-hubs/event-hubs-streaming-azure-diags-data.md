@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/08/2016"
+   ms.date="06/01/2016"
    ms.author="tarcher" />
 
 # Streamen von Azure-Diagnosedaten im heißen Pfad mithilfe von Event Hubs
@@ -64,7 +64,7 @@ Die Event Hubs-Senke muss ebenfalls im Abschnitt **PrivateConfig** der *.wadcfgx
 	    <EventHub Url="https://diags-mycompany-ns.servicebus.windows.net/diageventhub" SharedAccessKeyName="SendRule" SharedAccessKey="9B3SwghJOGEUvXigc6zHPInl2iYxrgsKHZoy4nm9CUI=" />
 	  </PrivateConfig>
 
-Der **SharedAccessKeyName** muss einem SAS-Schlüssel und einer Richtlinie entsprechen, die im **ServiceBus/EventHub**-Namespace definiert wurden. Wechseln Sie hierzu zum Event Hub-Dashboard im [klassischen Azure-Portal](https://manage.windowsazure.com), klicken Sie auf die Registerkarte **Konfigurieren**, und richten Sie eine benannte Richtlinie ein (z. B. „SendRule“), die die Berechtigung *Senden* umfasst. Das **StorageAccount** wird ebenfalls in **PrivateConfig** konfiguriert. Hier müssen keine Werte geändert werden – vor allem dann nicht, wenn sie funktionieren. In diesem Beispiel lassen wir die Werte leer, wodurch angegeben wird, dass die Werte durch ein Downstreamasset festgelegt werden, d. h. die für die Umgebung geeigneten Namen und Schlüssel werden durch die Datei *ServiceConfiguration.Cloud.cscfg* zur Umgebungskonfiguration festgelegt.
+Der **SharedAccessKeyName** muss einem SAS-Schlüssel und einer Richtlinie entsprechen, die im **ServiceBus/EventHub**-Namespace definiert wurden. Wechseln Sie hierzu zum Event Hub-Dashboard im [klassischen Azure-Portal](https://manage.windowsazure.com), wählen Sie die Registerkarte **Konfigurieren**, und richten Sie eine benannte Richtlinie ein (z.B. „SendRule“), die die Berechtigung *Senden* umfasst. Das **StorageAccount** wird ebenfalls in **PrivateConfig** konfiguriert. Hier müssen keine Werte geändert werden – vor allem dann nicht, wenn sie funktionieren. In diesem Beispiel lassen wir die Werte leer, wodurch angegeben wird, dass die Werte durch ein Downstreamasset festgelegt werden, d. h. die für die Umgebung geeigneten Namen und Schlüssel werden durch die Datei *ServiceConfiguration.Cloud.cscfg* zur Umgebungskonfiguration festgelegt.
 
 >[AZURE.WARNING] Beachten Sie, dass der Event Hub-SAS-Schlüssel als Klartext in der *.wadcfgx*-Datei gespeichert wird. Häufig werden diese Informationen in der Quellcodeverwaltung oder als Asset in Ihrem Buildserver eingecheckt, deshalb sollten die Daten in geeigneter Weise geschützt werden. Es wird empfohlen, hier einen SAS-Schlüssel mit der Berechtigung *Nur senden* zu verwenden, damit böswillige Benutzer allenfalls Schreibvorgänge im Event Hub, aber keinerlei Lauschvorgänge durchführen oder den Event Hub verwalten können.
 
@@ -295,4 +295,4 @@ Die ergänzende Datei *ServiceConfiguration.Cloud.cscfg* für dieses Beispiel si
 <!-- Images. -->
 [0]: ./media/event-hubs-streaming-azure-diags-data/dashboard.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

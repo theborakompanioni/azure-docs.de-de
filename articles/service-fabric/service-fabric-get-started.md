@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/18/2016"
+   ms.date="06/15/2016"
    ms.author="ryanwi"/>
 
 # Vorbereiten Ihrer Entwicklungsumgebung
@@ -34,7 +34,7 @@ Die folgenden Betriebssystemversionen werden bei der Entwicklung unterstützt:
 
 Der Webplattform-Installer bietet drei Konfigurationen für die Service Fabric-Entwicklung:
 
-- [Installieren der Service Fabric-Laufzeit, des SDKs und der Tools für Visual Studio 2015][full-bundle-vs2015]
+- [Installieren der Service Fabric-Laufzeit, des SDK und der Tools für Visual Studio 2015 Update 2][full-bundle-vs2015]
 - [Installieren der Service Fabric-Laufzeit, des SDKs und der Tools für Visual Studio „15“ Preview][full-bundle-dev15]
 - [Installieren der Service Fabric-Laufzeit und des SDKs (keine Visual Studio-Tools)][core-sdk]
 
@@ -59,9 +59,9 @@ Ihre Entwicklungsumgebung ist nun eingerichtet, und Sie können mit der Entwickl
 
 [1]: http://azure.microsoft.com/campaigns/service-fabric/ "Service Fabric-Kampagnenseite"
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
-[full-bundle-vs2015]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "WebPI-Link für VS 2015"
-[full-bundle-dev15]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "WebPI-Link für Dev15"
-[core-sdk]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=ServiceFabricSDK "WebPI-Link für Core SDK"
+[full-bundle-vs2015]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015-2_1 "WebPI-Link für VS 2015"
+[full-bundle-dev15]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15-2_1 "WebPI-Link für Dev15"
+[core-sdk]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=ServiceFabricSDK_2_1 "WebPI-Link für Core SDK"
 [powershell5-download]: https://www.microsoft.com/de-DE/download/details.aspx?id=50395
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -12,14 +12,14 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/26/2016" 
+	ms.date="06/03/2016" 
 	ms.author="awills"/>
  
 # Verwenden der Diagnosesuche in Application Insights
 
-"Diagnosesuche" ist das Blatt in [Application Insights][start], auf dem Sie einzelne Telemetrieelemente wie Seitenaufrufe, Ausnahmen und Webanforderungen suchen und untersuchen. Außerdem können Sie Protokollablaufverfolgungen und Ereignisse anzeigen, die Sie programmiert haben.
+„Diagnosesuche“ ist eine Funktion in [Application Insights][start], mit der Sie einzelne Telemetrieelemente wie Seitenaufrufe, Ausnahmen und Webanforderungen suchen und untersuchen. Außerdem können Sie Protokollablaufverfolgungen und Ereignisse anzeigen, die Sie programmiert haben.
 
-## Wann wird die Diagnosesuche angezeigt?
+## Wo wird die Diagnosesuche angezeigt?
 
 
 ### Im Azure-Portal
@@ -52,10 +52,11 @@ Das Suchfenster bietet dieselben Features wie das Webportal:
 ![](./media/app-insights-diagnostic-search/34.png)
 
 
-### Stichproben
+## Stichproben
 
 Wenn die Anwendung viele Telemetriedaten generiert (und Sie Version 2.0.0-beta3 oder höher des ASP.NET-SDK verwenden), reduziert das adaptive Stichprobenmodul automatisch die an das Portal gesendete Datenmenge, indem nur ein repräsentativer Bruchteil der Ereignisse gesendet wird. Ereignisse, die mit derselben Anforderung im Zusammenhang stehen, werden als Gruppe aus- oder abgewählt, sodass Sie zwischen verwandten Ereignissen navigieren können.
-> [Erfahren Sie mehr über das Erstellen von Stichproben](app-insights-sampling.md).
+
+[Erfahren Sie mehr über das Erstellen von Stichproben](app-insights-sampling.md).
 
 
 ## Überprüfen einzelner Elemente
@@ -157,8 +158,8 @@ Dies sind einige Suchausdrücke, die Sie verwenden können:
 Beispielabfrage | Effekt 
 ---|---
 langsam|Findet alle Ereignisse im Datumsbereich, deren Felder den Begriff „langsam“ enthalten
-Datenbank??|Stimmt mit „Datenbank01“, „DatenbankAB“, ... überein<br/>? ist am Anfang eines Suchbegriffs nicht zulässig.
-Datenbank*|Datenbank, Datenbank01, DatenbankNNNN entspricht<br/> ist am Anfang eines Suchbegriffs nicht zulässig.
+Datenbank|Stimmt mit „Datenbank01“, „DatenbankAB“ usw. überein<br/>? ist am Anfang eines Suchbegriffs nicht zulässig.
+Datenbank* |Stimmt mit „Datenbank“, „Datenbank01“, „DatenbankNNNN“ überein<br/> * ist am Anfang eines Suchbegriffs nicht zulässig.
 Apfel UND Banane|Findet Ereignisse, die beide Begriffe enthalten. Verwenden Sie „AND“ in Großbuchstaben, nicht „and“.
 Apfel OR Banane<br/>Apfel Banane|Findet Ereignisse, die einen der beiden Begriffe enthalten. Verwenden Sie "OR" nicht "or".</br/>Kurzform.
 Apfel NOT Banane<br/>Apfel -Banane|Findet Ereignisse, die den einen Begriff enthalten, aber nicht den anderen.<br/>Kurzform.
@@ -216,8 +217,8 @@ POST-Daten werden nicht automatisch protokolliert. Sie können jedoch ["TrackTra
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 [trace]: app-insights-search-diagnostic-logs.md
-[track]: app-insights-spi-custom-events-metrics.md
+[track]: app-insights-api-custom-events-metrics.md
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0608_2016-->

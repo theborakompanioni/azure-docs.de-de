@@ -18,8 +18,6 @@
 # Überwachen einer SharePoint-Website mit Application Insights
 
 
-[AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
-
 Visual Studio Application Insights überwacht die Verfügbarkeit, Leistung und Nutzung Ihrer Apps. Hier erfahren Sie, wie Sie dieses Tool für eine SharePoint-Website einrichten.
 
 
@@ -87,7 +85,7 @@ Klicken Sie in der Übersicht auf **Nutzungsanalyse**, um Diagramme, Sitzungen u
 
 ![](./media/app-insights-sharepoint/06-usage.png)
 
-Klicken Sie auf ein beliebiges Diagramm, um weitere Details anzuzeigen, z. B. Seitenansichten:
+Klicken Sie auf ein beliebiges Diagramm, um weitere Details anzuzeigen, z. B. Seitenansichten:
 
 ![](./media/app-insights-sharepoint/07-pages.png)
 
@@ -175,4 +173,4 @@ function onRequestFail(sender, args) {
 
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0608_2016-->

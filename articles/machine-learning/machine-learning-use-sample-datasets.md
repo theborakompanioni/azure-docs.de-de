@@ -23,7 +23,7 @@
 
 Beim Erstellen eines neuen Arbeitsbereichs in Azure Machine Learning ist eine Reihe von Beispielexperimenten und -DataSets standardmäßig enthalten. Viele dieser Beispiel-Datasets sind für die Beispielmodelle im [Katalog für Azure Cortana Intelligence](http://gallery.cortanaintelligence.com/) vorgesehen, während andere als Beispiele für verschiedene Arten von Daten für Machine Learning enthalten sind.
 
-Einige dieser DataSets sind im Azure-Blob-Speicher verfügbar. Für diese DataSets finden Sie in der folgende Tabelle einen direkten Link. Diese Datensätze können Sie mithilfe des [Reader][reader]-Moduls in Ihren Experimenten verwenden.
+Einige dieser DataSets sind im Azure-Blob-Speicher verfügbar. Für diese DataSets finden Sie in der folgende Tabelle einen direkten Link. Diese Datasets können Sie mithilfe des [Import Data][import-data]-Moduls in Ihren Experimenten verwenden.
 
 Der Rest dieser Beispiel-DataSets wird in der Modulpalette auf der linken Seite des Experimentcanvas unter **Saved Datasets** angezeigt, wenn Sie in ML Studio ein neues Experiment öffnen oder erstellen. Sie können alle diese DataSets für Ihre eigenen Experimente verwenden, indem Sie sie auf Ihren Experimentcanvas ziehen.
 
@@ -314,6 +314,6 @@ For a list of sample experiments available in ML Studio, see [Machine Learning S
 
 
 <!-- Module References -->
-[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0608_2016-->

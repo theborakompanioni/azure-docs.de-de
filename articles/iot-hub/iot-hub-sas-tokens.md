@@ -1,6 +1,6 @@
 <properties
  pageTitle="Generieren von IoT Hub-Sicherheitstoken | Microsoft Azure"
- description="Beschreibung der verschiedenen Typen von Sicherheitstoken, die von IoT Hub verwendet werden, und deren Erstellung."
+ description="Beschreibung der verschiedenen Typen von Sicherheitstoken (z.B. SAS und X.509), die von IoT Hub verwendet werden, und ihre Erstellung."
  services="iot-hub"
  documentationCenter=".net"
  authors="fsautomata"
@@ -13,22 +13,28 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="tbd"
- ms.date="04/29/2016"
+ ms.date="06/07/2016"
  ms.author="elioda"/>
 
-# Verwenden von IoT Hub-Sicherheitstoken
+# Verwenden von IoT Hub-Sicherheitstoken und X.509-Zertifikaten
 
 IoT Hub verwendet Sicherheitstoken zum Authentifizieren von Geräten und Diensten, um das Senden von Schlüsseln über das Netzwerk zu vermeiden. Darüber hinaus sind Sicherheitstoken im Hinblick auf Gültigkeitszeitraum und Bereich beschränkt. [Azure IoT Hub SDKs][lnk-apis-sdks] generieren Token automatisch, ohne dass eine spezielle Konfiguration erforderlich ist. In einigen Szenarien muss der Benutzer Sicherheitstoken jedoch direkt generieren und verwenden. Dazu gehören die direkte Verwendung von AMQP-, MQTT- oder HTTP-Oberflächen oder die Implementierung des Tokendienstmusters, wie in der [IoT Hub-Anleitung][lnk-guidance-security] erläutert.
+
+IoT Hub ermöglicht Geräten darüber hinaus die Authentifizierung bei IoT Hub mithilfe von X.509-Zertifikaten. IoT Hub unterstützt die X.509-basierte Authentifizierung für Geräte über die Protokolle AMQP, AMQP über WebSockets und HTTP.
 
 Dieser Artikel beschreibt Folgendes:
 
 * Das Format von Sicherheitstoken und deren Erstellung.
 * Die wichtigsten Anwendungsfälle für die Verwendung von Sicherheitstoken zum Authentifizieren von Geräten und Back-End-Diensten.
+* Unterstützte X.509-Zertifikate für die Geräteauthentifizierung
+* Registrierungsprozess für ein an ein bestimmtes Gerät gebundenes X.509-Clientzertifikat
+* Runtime-Workflow zwischen Gerät und IoT Hub unter Verwendung eines X.509-Clientzertifikats für die Authentifizierung
+
 
 ## Struktur von Sicherheitstoken
 Sie verwenden Sicherheitstoken, um zeitlich begrenzten Zugriff auf Geräte und Dienste für bestimmte Funktionen in IoT Hub zu gewähren. Um sicherzustellen, dass nur autorisierte Geräte und Dienste eine Verbindung herstellen können, müssen Sicherheitstoken mit einem SAS-Richtlinienschlüssel oder einem symmetrischen Schlüssel, der mit einer Geräteidentität in der Identitätsregistrierung gespeichert ist, signiert werden.
 
-Ein mit einem SAS-Richtlinienschlüssel signiertes Token gewährt Zugriff auf alle Funktionen, die den SAS-Richtlinienberechtigungen zugeordnet sind. Informationen dazu finden Sie im [Abschnitt über Sicherheit im Entwicklungsleitfaden für IoT Hub][lnk-devguide-security]. Dagegen erteilt ein mit einem symmetrischen Schlüssel der Geräteidentität signiertes Token nur die **DeviceConnect**-Berechtigung für die zugeordnete Identität.
+Ein mit einem SAS-Richtlinienschlüssel signiertes Token gewährt Zugriff auf alle Funktionen, die den SAS-Richtlinienberechtigungen zugeordnet sind. Informationen dazu finden Sie im [Abschnitt über Sicherheit im Entwicklungsleitfaden für IoT Hub][lnk-devguide-security]. Dagegen erteilt ein mit einem symmetrischen Schlüssel der Geräteidentität signiertes Token nur die **DeviceConnect**-Berechtigung für die zugeordnete Geräteidentität.
 
 Das Sicherheitstoken weist das folgende Format auf:
 
@@ -174,6 +180,60 @@ Das Ergebnis, das Lesezugriff für alle Geräteidentitäten gewähren würde, w�
 
     SharedAccessSignature sr=myhub.azure-devices.net%2fdevices&sig=JdyscqTpXdEJs49elIUCcohw2DlFDR3zfH5KqGJo4r4%3D&se=1456973447&skn=registryRead
 
+## Unterstützte X.509-Zertifikate
+
+Sie können ein beliebiges X.509-Zertifikat zum Authentifizieren eines Geräts bei IoT Hub verwenden. Dies umfasst:
+
+-   **Ein vorhandenes X.509-Zertifikat.** Einem Gerät ist möglicherweise bereits ein X.509-Zertifikat zugeordnet. Das Gerät kann dieses Zertifikat für die Authentifizierung bei IoT Hub verwenden.
+
+-   **Ein selbst generiertes und selbstsigniertes X.509-Zertifikat.** Ein Gerätehersteller oder interner Bereitsteller kann diese Zertifikate generieren und den entsprechenden privaten Schlüssel (und das Zertifikat) auf dem Gerät speichern. Sie können Tools wie etwa [OpenSSL] und das Windows-Hilfsprogramm [SelfSignedCertificate] dafür verwenden.
+
+-   **Ein von einer Zertifizierungsstelle signiertes X.509-Zertifikat.** Sie können auch ein von einer Zertifizierungsstelle generiertes und signiertes X.509-Zertifikat verwenden, um ein Gerät zu identifizieren und das Gerät bei IoT Hub zu authentifizieren.
+
+Ein Gerät verwendet entweder ein X.509-Zertifikat oder ein Sicherheitstoken für die Authentifizierung, aber nicht beides.
+
+## Registrieren eines X.509-Clientzertifikats für ein Gerät
+
+Das [Azure IoT-Dienst-SDK für C#][lnk-service-sdk] (mindestens Version 1.0.8) unterstützt Geräte, die ein X.509-Clientzertifikat für die Authentifizierung verwenden. Andere APIs wie beispielsweise für den Import/Export von Geräten unterstützen ebenfalls X.509-Clientzertifikate.
+
+### C#-Unterstützung
+
+Die **RegistryManager**-Klasse stellt eine programmgesteuerte Methode zum Registrieren eines Geräts bereit. Insbesondere die Methoden **AddDeviceAsync** und **UpdateDeviceAsync** ermöglichen einem Benutzer die Registrierung und Aktualisierung eines Geräts in der Iot Hub-Geräteidentitätsregistrierung. Diese beiden Methoden nutzen eine **Device**-Instanz als Eingabe. Die **Device**-Klasse enthält eine **Authentication**-Eigenschaft, die dem Benutzer die Angabe primärer und sekundärer X.509-Zertifikatfingerabdrücke ermöglicht. Der Fingerabdruck stellt einen SHA-1-Hash des X.509-Zertifikats dar (gespeichert mithilfe binärer DER-Codierung). Benutzer haben die Möglichkeit, einen primären Fingerabdruck oder einen sekundären Fingerabdruck oder beides anzugeben. Primäre und sekundäre Fingerabdrücke werden unterstützt, um Szenarios mit Zertifikat-Rollover zu behandeln.
+
+> [AZURE.NOTE] IoT Hub benötigt oder speichert nicht das gesamte X.509-Clientzertifikat, sondern nur den Fingerabdruck.
+
+Hier sehen Sie einen C#-Beispielcodeausschnitt zum Registrieren eines Geräts mithilfe eines X.509-Clientzertifikats:
+
+```
+var device = new Device(deviceId)
+{
+  Authentication = new AuthenticationMechanism()
+  {
+    X509Thumbprint = new X509Thumbprint()
+    {
+      PrimaryThumbprint = "921BC9694ADEB8929D4F7FE4B9A3A6DE58B0790B"
+    }
+  }
+};
+RegistryManager registryManager = RegistryManager.CreateFromConnectionString(deviceGatewayConnectionString);
+await registryManager.AddDeviceAsync(device);
+```
+
+## Verwenden eines X.509-Clientzertifikats während Laufzeitvorgängen
+
+Das [Azure IoT-Geräte-SDK für .NET][lnk-client-sdk] (mindestens Version 1.0.11) unterstützt die Verwendung von X.509-Clientzertifikaten.
+
+### C#-Unterstützung
+
+Die Klasse **DeviceAuthenticationWithX509Certificate** unterstützt die Erstellung von **DeviceClient**-Instanzen mithilfe eines X.509-Clientzertifikats.
+
+Hier sehen Sie ein Beispiel für einen Codeausschnitt:
+
+```
+var authMethod = new DeviceAuthenticationWithX509Certificate("<device id>", x509Certificate);
+
+var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
+```
 
 [lnk-apis-sdks]: https://github.com/Azure/azure-iot-sdks/blob/master/readme.md
 [lnk-guidance-security]: iot-hub-guidance.md#customauth
@@ -181,4 +241,9 @@ Das Ergebnis, das Lesezugriff für alle Geräteidentitäten gewähren würde, w�
 [lnk-azure-protocol-gateway]: iot-hub-protocol-gateway.md
 [lnk-device-explorer]: https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md
 
-<!---HONumber=AcomDC_0504_2016-->
+[OpenSSL]: https://www.openssl.org/
+[SelfSignedCertificate]: https://technet.microsoft.com/library/hh848633
+[lnk-service-sdk]: https://github.com/Azure/azure-iot-sdks/tree/master/csharp/service
+[lnk-client-sdk]: https://github.com/Azure/azure-iot-sdks/tree/master/csharp/device
+
+<!---HONumber=AcomDC_0608_2016-->

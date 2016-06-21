@@ -3,8 +3,8 @@
    description="Erfahren Sie, wie Sie Integritätsberichte aus Ihrem Dienstcode senden und die Integrität Ihres Diensts mithilfe von Integritätsüberwachungstools prüfen können, die von Azure Service Fabric bereitgestellt werden."
    services="service-fabric"
    documentationCenter=".net"
-   authors="punewa"
-   manager="timlt"
+   authors="toddabel"
+   manager="mfussell"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/18/2016"
+   ms.date="06/07/2016"
    ms.author="toddabel"/>
 
 # Melden und Überprüfen der Dienstintegrität
@@ -21,7 +21,7 @@ Wenn in Ihren Diensten Probleme auftreten, hängt Ihre Fähigkeit zum Reagieren 
 
 Es gibt zwei Möglichkeiten, wie Sie Informationen zur Integrität über den Dienst melden können.
 
-- Verwenden Sie [Partition](https://msdn.microsoft.com/library/system.fabric.istatefulservicepartition.aspx)- oder [CodePackageActivationContext](https://msdn.microsoft.com/library/system.fabric.codepackageactivationcontext.aspx)-Objekte. Mit den Objekten `Partition` und `CodePackageActivationContext` können Sie Informationen zur Integrität von Elementen melden, die Teil des aktuellen Kontexts sind. Zum Beispiel kann der Code, der als Teil eines Replikats ausgeführt wird, nur die Informationen zur Integrität dieses Replikats, der Partition, zu der er gehört, und der Anwendung, von der er ein Teil ist, melden.
+- Verwenden Sie [Partition](https://msdn.microsoft.com/library/system.fabric.istatefulservicepartition.aspx)- oder [CodePackageActivationContext](https://msdn.microsoft.com/library/system.fabric.codepackageactivationcontext.aspx)-Objekte. Mit den Objekten `Partition` und `CodePackageActivationContext` können Sie Informationen zur Integrität von Elementen melden, die Teil des aktuellen Kontexts sind. Zum Beispiel kann als Teil eines Replikats ausgeführter Code Informationen zur Integrität nur für dieses Replikat, die dazugehörige Partition und für die Anwendung melden, von der er ein Teil ist.
 
 - Verwenden Sie `FabricClient`. Sie können Integritätsinformationen über den Dienstcode mit `FabricClient` melden, wenn der Cluster nicht [sicher](service-fabric-cluster-security.md) ist, oder der Dienst mit Administratorrechten ausgeführt wird. In den meisten realen Szenarien wird dies nicht der Fall sein. Mit `FabricClient` können Sie Informationen zur Integrität jeder Entität melden, die Teil des Clusters ist. Im Idealfall sollte der Dienstcode jedoch nur Berichte senden, die im Zusammenhang mit seiner eigenen Integrität stehen.
 
@@ -61,7 +61,7 @@ Folgendes müssen Sie installiert haben:
     ![Fehlerfreie Anwendung in PowerShell](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/ps-healthy-app-report.png)
 
 ## So fügen Sie dem Dienstcode benutzerdefinierte Integritätsereignisse hinzu
-Die Service Fabric-Projektvorlagen in Visual Studio enthalten Beispielcode. Die folgenden Schritte zeigen, wie Sie Integritätsereignisse aus dem Dienstcode melden können. Diese Berichte werden automatisch in den Standardtools für die Überwachung der Integrität angezeigt, die Service Fabric bietet, z. B. Service Fabric-Explorer, Integritätsanzeige im Azure-Portal und PowerShell.
+Die Service Fabric-Projektvorlagen in Visual Studio enthalten Beispielcode. Die folgenden Schritte zeigen, wie Sie Integritätsereignisse aus dem Dienstcode melden können. Diese Berichte werden automatisch in den Standardtools für die Überwachung der Integrität angezeigt, die Service Fabric bietet, z. B. Service Fabric-Explorer, Integritätsanzeige im Azure-Portal und PowerShell.
 
 1. Öffnen Sie erneut die Anwendung, die Sie zuvor in Visual Studio erstellt haben, oder erstellen Sie eine neue Anwendung, indem Sie die Visual Studio-Vorlage für einen **Zustandsbehafteten Dienst** verwenden.
 
@@ -75,7 +75,7 @@ Die Service Fabric-Projektvorlagen in Visual Studio enthalten Beispielcode. Die 
     using System.Fabric.Health;
     ```
 
-    b. Fügen Sie nach dem `myDictionary.TryGetValueAsync`-Aufruf folgenden Code hinzu:
+    b. Fügen Sie nach dem `myDictionary.TryGetValueAsync`-Aufruf den folgenden Code hinzu.
 
     ```csharp
     if (!result.HasValue)
@@ -86,7 +86,7 @@ Die Service Fabric-Projektvorlagen in Visual Studio enthalten Beispielcode. Die 
     ```
     Wir melden Informationen zur Replikatintegrität, da die Meldung aus einem zustandsbehafteten Dienst erfolgt. Der Parameter `HealthInformation` speichert Informationen zum gemeldeten Integritätsproblem.
 
-    Verwenden Sie für einen zustandslosen Dienst den folgenden Code.
+    Wenn Sie einen zustandslosen Dienst erstellt haben, verwenden Sie den folgenden Code.
 
     ```csharp
     if (!result.HasValue)
@@ -156,4 +156,4 @@ activationContext.ReportApplicationHealth(healthInformation);
 ## Nächste Schritte
 [Ausführlichere Informationen zur Service Fabric-Integrität](service-fabric-health-introduction.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0608_2016-->

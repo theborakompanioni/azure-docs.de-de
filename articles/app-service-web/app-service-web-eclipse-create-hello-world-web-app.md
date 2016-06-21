@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="05/19/2016" 
+	ms.date="06/07/2016" 
 	ms.author="robmcm"/>
 
 # Erstellen einer „Hello World“-Web-App für Azure in Eclipse
@@ -36,7 +36,7 @@ Wenn Sie dieses Tutorial abgeschlossen haben, entspricht Ihre Anwendung bei der 
 
 Zunächst beginnen wir mit der Erstellung eines Java-Projekts.
 
-1. Starten Sie Eclipse, klicken Sie im Menü auf **File**, auf **New** und anschließend auf **Dynamic Web Project**. (Wenn **Dynamic Web Project** nach Klicken auf **File** und **New** nicht als verfügbares Projekt aufgeführt ist, gehen Sie wie folgt vor: Klicken Sie auf **File**, anschließend auf **New** und dann auf **Project...**. Erweitern Sie die Option **Web**, klicken Sie auf **Dynamic Web Project** und dann auf **Next**.)
+1. Starten Sie Eclipse, klicken Sie im Menü auf **File** (Datei), auf **New** (Neu) und anschließend auf **Dynamic Web Project** (Dynamisches Webprojekt). (Wenn **Dynamic Web Project** (Dynamisches Webprojekt) nach dem Klicken auf **File** (Datei) und **New** (Neu) nicht als verfügbares Projekt aufgeführt ist, gehen Sie wie folgt vor: Klicken Sie auf **File** (Datei), anschließend auf **New** (Neu) und dann auf **Project...** (Projekt...). Erweitern Sie die Option **Web**, klicken Sie auf **Dynamic Web Project** (Dynamisches Webprojekt) und dann auf **Next** (Weiter).)
 
 1. Nennen Sie das Projekt für die Zwecke dieses Tutorials **MyHelloWorld**. Ihr Bildschirm sieht dann in etwa wie folgt aus:
 
@@ -139,7 +139,7 @@ Es gibt mehrere Möglichkeiten, eine Java-Webanwendung in Azure bereitzustellen.
 
       * Wählen Sie im Dropdownmenü **Instanzgröße** die entsprechende Instanzgröße für den Plan aus. Zu Testzwecken können Sie **Klein** auswählen.
 
-  1. Wenn Sie alle oben genannten Schritte abgeschlossen haben, sollte das Dialogfeld „Neuer Web-App-Container“ folgender Abbildung ähneln:
+  1. Wenn Sie alle oben genannten Schritte abgeschlossen haben, sollte das Dialogfeld „New Web App Container“ (Neuer Web-App-Container) folgender Abbildung ähneln:
 
         ![][10]
 
@@ -193,18 +193,34 @@ Wenn die Ansicht **Azure Explorer** angezeigt wird, beenden Sie Ihre Web-App mit
 
 ## Nächste Schritte
 
-Weitere Informationen finden Sie unter den folgenden Links:
+Weitere Informationen zu den Azure-Toolkits für Java-IDEs finden Sie unter den folgenden Links:
 
-* [Java Developer Center]
-* [Web-Apps – Übersicht]
+- [Azure-Toolkit für Eclipse]
+  - [Installieren des Azure-Toolkits für Eclipse]
+  - *Erstellen einer „Hello World“-Web-App für Azure in Eclipse (dieser Artikel)*
+  - [Neuerungen im Azure-Toolkit für Eclipse]
+- [Azure Toolkit für IntelliJ]
+  - [Installieren des Azure Toolkit für IntelliJ]
+  - [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]
+
+Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center].
+
+Weitere Informationen zum Erstellen von Azure-Web-Apps finden Sie unter [Web-Apps – Übersicht].
 
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
 <!-- URL List -->
 
+[Azure-Toolkit für Eclipse]: ../azure-toolkit-for-eclipse.md
 [Azure-Toolkits für Eclipse]: ../azure-toolkit-for-eclipse.md
+[Azure Toolkit für IntelliJ]: ../azure-toolkit-for-intellij.md
+[Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]: ./app-service-web-intellij-create-hello-world-web-app.md
 [Installation des Azure Toolkit für Eclipse]: ../azure-toolkit-for-eclipse-installation.md
-[Java Developer Center]: https://azure.microsoft.com/develop/java/
+[Installieren des Azure-Toolkits für Eclipse]: ../azure-toolkit-for-eclipse-installation.md
+[Installieren des Azure Toolkit für IntelliJ]: ../azure-toolkit-for-intellij-installation.md
+[Neuerungen im Azure-Toolkit für Eclipse]: ../azure-toolkit-for-eclipse-whats-new.md
+
+[Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
 [Web-Apps – Übersicht]: ./app-service-web-overview.md
 
 <!-- IMG List -->
@@ -225,4 +241,4 @@ Weitere Informationen finden Sie unter den folgenden Links:
 [14]: ./media/app-service-web-eclipse-create-hello-world-web-app/14-publishDropdownButton.png
 [15]: ./media/app-service-web-eclipse-create-hello-world-web-app/15-New-Azure-Web-Container.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

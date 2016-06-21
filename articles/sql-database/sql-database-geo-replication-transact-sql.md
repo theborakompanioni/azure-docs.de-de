@@ -1,6 +1,6 @@
 <properties
     pageTitle="Konfigurieren der Georeplikation für Azure SQL-Datenbank mit Transact-SQL | Microsoft Azure"
-    description="Konfigurieren der Georeplikation für Azure SQL-Datenbank mithilfe von Transact-SQL"
+    description="Konfigurieren der Georeplikation für Azure SQL-Datenbank mit Transact-SQL"
     services="sql-database"
     documentationCenter=""
     authors="carlrabeler"
@@ -176,11 +176,11 @@ Gehen Sie folgendermaßen vor, um eine Georeplikationspartnerschaft zu überwach
 ## Zusätzliche Ressourcen
 
 - [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
-- [Spotlight auf die neuen Georeplikationsfunktionen](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
+- [Spotlight on new Geo-Replication capabilities](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/) (Die neuen Georeplikationsfunktionen im Überblick)
 - [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
 - [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
 - [Aktive Georeplikation](sql-database-geo-replication-overview.md)
 - [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

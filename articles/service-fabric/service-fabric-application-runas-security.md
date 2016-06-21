@@ -14,10 +14,10 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="03/24/2016"
-   ms.author="msfussell"/>
+   ms.author="mfussell"/>
 
 # RunAs: Ausführen einer Service Fabric-Anwendung mit verschiedenen Sicherheitsberechtigungen
-Azure Service Fabric bietet die Möglichkeit zum Schützen von Anwendungen, die im Cluster unter verschiedenen Benutzerkonten ausgeführt werden, was auch als **RunAs** (Ausführen als) bezeichnet wird. Mit Service Fabric werden auch die Ressourcen geschützt, die von Anwendungen mit dem Benutzerkonto genutzt werden, z. B. Dateien, Verzeichnisse und Zertifikate.
+Azure Service Fabric bietet die Möglichkeit zum Schützen von Anwendungen, die im Cluster unter verschiedenen Benutzerkonten ausgeführt werden, was auch als **RunAs** (Ausführen als) bezeichnet wird. Mit Service Fabric werden auch die Ressourcen geschützt, die von Anwendungen mit dem Benutzerkonto genutzt werden, z. B. Dateien, Verzeichnisse und Zertifikate.
 
 Standardmäßig werden Service Fabric-Anwendungen unter dem Konto ausgeführt, unter dem der Prozess „Fabric.exe“ ausgeführt wird. Darüber hinaus verfügt Service Fabric über die Möglichkeit zur Ausführung von Anwendungen unter einem lokalen Benutzer- oder Systemkonto, das im Manifest der Anwendung angegeben wird. Unterstützte lokale Systemkontotypen für RunAs sind **LocalUser**, **NetworkService**, **LocalService** und **LocalSystem**.
 
@@ -81,7 +81,7 @@ Nach der Konfiguration des Diensts mit einem SetupEntryPoint können Sie im Anwe
 </ApplicationManifest>
 ~~~
 
-Erstellen Sie zuerst den Abschnitt **Principals** mit einem Benutzernamen, z. B. SetupAdminUser. Dies bedeutet, dass der Benutzer Mitglied der Gruppe „Administratoren“ des Systems ist.
+Erstellen Sie zuerst den Abschnitt **Principals** mit einem Benutzernamen, z. B. SetupAdminUser. Dies bedeutet, dass der Benutzer Mitglied der Gruppe „Administratoren“ des Systems ist.
 
 Konfigurieren Sie als Nächstes im Abschnitt **ServiceManifestImport** eine Richtlinie, gemäß der dieser Prinzipal auf **SetupEntryPoint** angewendet werden kann. Dadurch wird Service Fabric informiert, dass die Datei **MySetup.bat** als RunAs-Vorgang mit Administratorrechten ausgeführt werden soll. Da Sie *keine* Richtlinie auf den primären Einstiegspunkt angewendet haben, wird der Code in **MyServiceHost.exe** unter dem Systemkonto **NetworkService** ausgeführt. Dies ist das Standardkonto, unter dem alle Diensteinstiegspunkte ausgeführt werden.
 
@@ -110,7 +110,7 @@ PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
 MyValue
 ~~~
 
-Notieren Sie anschließend den Namen des Knotens, unter dem der Dienst bereitgestellt und im Service Fabric-Explorer gestartet wurde, z.B. Knoten 2. Navigieren Sie als Nächstes zum Arbeitsordner der Anwendungsinstanz, um die Datei „out.txt“ zu ermitteln, in der der Wert von **TestVariable** angezeigt wird. Wenn die Bereitstellung z. B. auf Knoten 2 erfolgt ist, können Sie für **MyApplicationType** auf diesen Pfad zugreifen:
+Notieren Sie anschließend den Namen des Knotens, unter dem der Dienst bereitgestellt und im Service Fabric-Explorer gestartet wurde, z.B. Knoten 2. Navigieren Sie als Nächstes zum Arbeitsordner der Anwendungsinstanz, um die Datei „out.txt“ zu ermitteln, in der der Wert von **TestVariable** angezeigt wird. Wenn die Bereitstellung z. B. auf Knoten 2 erfolgt ist, können Sie für **MyApplicationType** auf diesen Pfad zugreifen:
 
 ~~~
 C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
@@ -138,7 +138,7 @@ Häufig ist es von Vorteil, das Startskript wie oben gezeigt mithilfe eines loka
 ~~~
 
 ##  Starten von PowerShell-Befehlen aus SetupEntryPoint
-Zum Ausführen von PowerShell über den Punkt **SetupEntryPoint** können Sie **PowerShell.exe** in einer Batchdatei ausführen, die auf eine PowerShell-Datei verweist. Fügen Sie zuerst dem Dienstprojekt eine PowerShell-Datei hinzu, z. B. **MySetup.ps1**. Denken Sie daran, die Eigenschaft *Kopieren, wenn neuer* so festzulegen, dass die Datei in das Dienstpaket einbezogen wird. Das folgende Beispiel zeigt eine Beispielbatchdatei zum Starten einer PowerShell-Datei namens „MySetup.ps1“, die die Systemumgebungsvariable **TestVariable** festlegt.
+Zum Ausführen von PowerShell über den Punkt **SetupEntryPoint** können Sie **PowerShell.exe** in einer Batchdatei ausführen, die auf eine PowerShell-Datei verweist. Fügen Sie zuerst dem Dienstprojekt eine PowerShell-Datei hinzu, z. B. **MySetup.ps1**. Denken Sie daran, die Eigenschaft *Kopieren, wenn neuer* so festzulegen, dass die Datei in das Dienstpaket einbezogen wird. Das folgende Beispiel zeigt eine Beispielbatchdatei zum Starten einer PowerShell-Datei namens „MySetup.ps1“, die die Systemumgebungsvariable **TestVariable** festlegt.
 
 
 MySetup.bat zum Starten der PowerShell-Datei.
@@ -155,14 +155,14 @@ Fügen Sie in der PowerShell-Datei Folgendes ein, um eine Systemumgebungsvariabl
 ~~~
 
 **Hinweis:** Standardmäßig sucht die Batchdatei bei der Ausführung in dem Anwendungsordner **work** nach Dateien. In diesem Fall soll „MySetup.bat“ bei der Ausführung „MySetup.ps1“ im gleichen Ordner suchen, dem Anwendungsordner **CodePackage**. Um diesen Ordner zu ändern, legen Sie den Arbeitsordner wie unten dargestellt fest.
-    
+
 ~~~
 <SetupEntryPoint>
     <ExeHost>
     <Program>MySetup.bat</Program>
     <WorkingFolder>CodePackage</WorkingFolder>
     </ExeHost>
-</SetupEntryPoint> 
+</SetupEntryPoint>
 ~~~
 
 ## Verwenden der Richtlinie zur Konsolenumleitung für lokales Debuggen von Einstiegspunkten
@@ -179,13 +179,13 @@ Das folgende Beispiel zeigt die Einstellung der Umleitung der Konsole mit einem 
     <WorkingFolder>CodePackage</WorkingFolder>
     <ConsoleRedirection FileRetentionCount="10"/>
     </ExeHost>
-</SetupEntryPoint> 
+</SetupEntryPoint>
 ~~~
 
 Wenn Sie nun einen **Echo**-Befehl in die Datei „MySetup.ps1“ einfügen, wird zum Debuggen in die Ausgabedatei geschrieben.
 
 ~~~
-Echo "Test console redirection which writes to the application log folder on the node that the application is deployed to" 
+Echo "Test console redirection which writes to the application log folder on the node that the application is deployed to"
 ~~~
 
 **Nachdem Sie Ihr Skript gedebuggt haben, entfernen Sie sofort diese Richtlinie zur Konsolenumleitung.**
@@ -221,7 +221,7 @@ Es können Benutzergruppen definiert und erstellt werden, die es ermöglichen, d
 ~~~
 
 ### Erstellen lokaler Benutzer
-Sie können einen lokalen Benutzer erstellen, der zum Schützen eines Diensts in der Anwendung dienen kann. Wenn ein Konto vom Typ **LocalUser** im Abschnitt „Principals“ des Anwendungsmanifests angegeben wird, erstellt Service Fabric lokale Benutzerkonten auf Computern, auf denen die Anwendung bereitgestellt wird. Standardmäßig müssen diese Konten nicht die gleichen Namen wie im Anwendungsmanifest haben (z. B. „Customer3“ im folgenden Beispiel). Stattdessen werden sie dynamisch generiert und verfügen über zufällige Kennwörter.
+Sie können einen lokalen Benutzer erstellen, der zum Schützen eines Diensts in der Anwendung dienen kann. Wenn ein Konto vom Typ **LocalUser** im Abschnitt „Principals“ des Anwendungsmanifests angegeben wird, erstellt Service Fabric lokale Benutzerkonten auf Computern, auf denen die Anwendung bereitgestellt wird. Standardmäßig müssen diese Konten nicht die gleichen Namen wie im Anwendungsmanifest haben (z. B. „Customer3“ im folgenden Beispiel). Stattdessen werden sie dynamisch generiert und verfügen über zufällige Kennwörter.
 
 ~~~
 <Principals>
@@ -351,4 +351,4 @@ Das folgende Anwendungsmanifest zeigt viele der zuvor beschriebenen Einstellunge
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/06/2016" 
+	ms.date="06/08/2016" 
 	ms.author="ccompy"/>
 
 # Erstellen einer App Service-Umgebung #
@@ -36,7 +36,7 @@ Für jedes dieser Elemente gibt es einige wichtige Details.
 - Alle Apps, die in einer ASE erstellt werden, befinden sich in demselben Abonnement wie die ASE selbst.
 - Wenn Sie nicht über Zugriff auf das Abonnement verfügen, mit dem die ASE erstellt wurde, können Sie die ASE nicht zum Erstellen von Apps verwenden.
 - VNETs, die für das Hosting einer ASE verwendet werden, müssen regionale, klassische „v1“-VNETs sein. 
-- Das für das Hosting der ASE verwendete Subnetz darf keine anderen Compute-Ressourcen enthalten.
+- **Das für das Hosting der ASE verwendete Subnetz darf keine anderen Compute-Ressourcen enthalten.**
 - In einem Subnetz kann nur eine ASE vorhanden sein.
 - Derzeit werden nur virtuelle Netzwerke mit dem Adressraum RFC1918 (d.h. private Adressen) unterstützt.
 
@@ -59,7 +59,7 @@ Für Front-End-Pools ist P2 oder größer erforderlich. Lassen Sie beim Auswähl
 
 ![][1]
 
-Der Name, der für die ASE angegeben wird, wird für die in der ASE erstellten Apps verwendet. Wenn der Name der App Service-Umgebung "appsvcenvdemo" ist, lautet der Domänenname ".*appsvcenvdemo.p.azurewebsites.net*". Wenn Sie daher eine App namens *mytestapp* erstellt haben, wäre diese unter der Adresse *mytestapp.appsvcenvdemo.p.azurewebsites.net* aufrufbar. Sie dürfen im Namen Ihrer ASE keine Leerzeichen verwenden. Bei Verwendung von Großbuchstaben im Namen wird der entsprechende Domänenname dennoch vollständig in Kleinbuchstaben geschrieben.
+Der Name, der für die ASE angegeben wird, wird für die in der ASE erstellten Apps verwendet. Wenn der Name der App Service-Umgebung "appsvcenvdemo" ist, lautet der Domänenname ".*appsvcenvdemo.p.azurewebsites.net*". Wenn Sie also eine App namens *mytestapp* erstellt haben, wäre diese unter der Adresse *mytestapp.appsvcenvdemo.p.azurewebsites.net* aufrufbar. Sie dürfen im Namen Ihrer ASE keine Leerzeichen verwenden. Bei Verwendung von Großbuchstaben im Namen wird der entsprechende Domänenname dennoch vollständig in Kleinbuchstaben geschrieben.
 
 Die Standardwerte sind für eine Reihe von Fällen sehr nützlich, aber häufig müssen Sie sie anpassen. Die nächsten Abschnitten führen Sie durch die einzelnen Konfigurationsabschnitte, die für die ASE relevant sind.
 
@@ -80,7 +80,7 @@ Nachdem Sie Ihr VNET angegeben oder ausgewählt haben, müssen Sie nach Bedarf e
 - Subnetzname
 - Subnetzbereich in CIDR-Schreibweise
 
-Falls Sie keine Erfahrung mit CIDR (Classless Inter-Domain Routing) besitzen: Es erfordert das Format einer IP-Adresse, die durch einen Schrägstrich vom CIDR-Wert getrennt wird. Ein Beispiel hierfür ist *10.0.0.0/22*. Der CIDR-Wert gibt die Anzahl der führenden Bits an, die für die angezeigte IP-Adresse maskiert dargestellt werden. Einfacher ausgedrückt, stellt der CIDR-Wert einen IP-Adressbereich bereit. In diesem Beispiel kennzeichnet 10.0.0.0/22 einen Bereich von 1024 Adressen oder von 10.0.0.0 bis 10.0.3.255. /23 bedeutet 512 Adressen und so weiter.
+Falls Sie keine Erfahrung mit CIDR (Classless Inter-Domain Routing) besitzen: Es erfordert das Format einer IP-Adresse, die durch einen Schrägstrich vom CIDR-Wert getrennt wird. Es sieht folgendermaßen aus: *10.0.0.0/22*. Der CIDR-Wert gibt die Anzahl der führenden Bits an, die für die angezeigte IP-Adresse maskiert dargestellt werden. Einfacher ausgedrückt, stellt der CIDR-Wert einen IP-Adressbereich bereit. In diesem Beispiel kennzeichnet 10.0.0.0/22 einen Bereich von 1024 Adressen oder von 10.0.0.0 bis 10.0.3.255. /23 bedeutet 512 Adressen und so weiter.
 
 Zur Erinnerung: Wenn Sie ein Subnetz in einem vorhandenen VNET erstellen möchten, befindet sich die ASE in derselben Ressourcengruppe wie das VNET. Damit Ihre ASE sich in einer vom VNET separaten Ressourcengruppe befindet, erstellen Sie einfach das VNET und das Subnetz getrennt von und vor der Erstellung der ASE.
 
@@ -165,4 +165,4 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 [AzureAppService]: http://azure.microsoft.com/documentation/articles/app-service-value-prop-what-is/
 [ASEAutoscale]: http://azure.microsoft.com/documentation/articles/app-service-environment-auto-scale/
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0608_2016-->

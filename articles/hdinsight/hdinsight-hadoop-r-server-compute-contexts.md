@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-services"
-   ms.date="03/28/2016"
+   ms.date="05/31/2016"
    ms.author="jeffstok"
 />
 
@@ -79,4 +79,4 @@ In diesem Artikel haben Sie erfahren, wie Sie einen neuen HDInsight-Cluster mit 
 - [Hinzufügen von RStudio Server zu HDInsight Premium](hdinsight-hadoop-r-server-install-r-studio.md)
 - [Azure Storage options for R Server on HDInsight Premium (Azure Storage-Optionen für R Server in HDInsight Premium)](hdinsight-hadoop-r-server-storage.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0608_2016-->

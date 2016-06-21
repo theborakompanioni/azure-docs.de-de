@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Schritt 5: Bereitstellen des Machine Learning-Webdiensts | Microsoft Azure"
-	description="Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 5: Bereitstellen eines Vorhersageexperiments als Webdienst in Machine Learning Studio."
+	pageTitle="Schritt 5: Bereitstellen des Machine Learning-Webdiensts | Microsoft Azure"
+	description="Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 5: Bereitstellen eines Vorhersageexperiments als Webdienst in Machine Learning Studio."
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
@@ -17,7 +17,7 @@
 	ms.author="garye"/>
 
 
-# Anleitung Schritt 5: Bereitstellen des Azure Machine Learning-Webdiensts
+# Anleitung Schritt 5: Bereitstellen des Azure Machine Learning-Webdiensts
 
 Dies ist der fünfte Schritt der exemplarischen Vorgehensweise zum [Predictive Analytics-Lösung in Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md).
 
@@ -78,7 +78,7 @@ Beim Klicken auf **Webdienst bereitstellen** geschehen mehrere Dinge:
 
 > [AZURE.NOTE] Das Experiment wurde in zwei Teilen unter Registerkarten gespeichert, die oben im Experimentbereich hinzugefügt wurden: das ursprüngliche Trainingsexperiment befindet sich unter der Registerkarte **Trainingsexperiment**, und das neu erstellte Vorhersageexperiment finden Sie unter **Vorhersageexperiment**.
 
-Bei diesem bestimmten Experiment ist ein zusätzlicher Schritt erforderlich. Wir haben zwei [Execute R Script][execute-r-script]-Module hinzugefügt, um die Daten für Training und Tests mit einer Gewichtungsfunktion zu versehen. Im endgültigen Modell ist dies nicht erforderlich. Machine Learning Studio hat ein [Execute R Script][execute-r-script]-Modul beim Entfernen des Moduls [Split Data][split] entfernt. Deshalb können wir jetzt das andere entfernen und [Metadata Editor][metadata-editor] direkt mit dem Modul [Score Model][score-model] verbinden.
+Bei diesem bestimmten Experiment ist ein zusätzlicher Schritt erforderlich. Wir haben zwei [Execute R Script][execute-r-script]-Module hinzugefügt, um die Daten für Training und Tests mit einer Gewichtungsfunktion zu versehen. Im endgültigen Modell ist dies nicht erforderlich. Machine Learning Studio hat ein [Execute R Script][execute-r-script]-Modul beim Entfernen des Moduls [Split Data][split] entfernt. Deshalb können wir jetzt das andere entfernen und [Edit Metadata][edit-metadata] direkt mit dem Modul [Score Model][score-model] verbinden.
 
 Unser Experiment sollte nun wie folgt aussehen:
 
@@ -108,9 +108,9 @@ Klicken Sie auf der Seite **DASHBOARD** unter **Default Endpoint** auf die Schal
 
 Geben Sie eine Reihe von Daten ein, und klicken Sie auf **OK**.
 
-Im Webdienst durchlaufen die Daten das Modul **Web Service Input**, dann das Modul [Metadata Editor][metadata-editor] und schließlich das Modul [Score Model][score-model], in dem sie bewertet werden. Die Ergebnisse werden danach vom Webdienst über das Modul **Web service output** ausgegeben.
+Im Webdienst durchlaufen die Daten das Modul **Web Service Input**, dann das Modul [Edit Metadata][edit-metadata] und schließlich das Modul [Score Model][score-model], in dem sie bewertet werden. Die Ergebnisse werden danach vom Webdienst über das Modul **Web service output** ausgegeben.
 
-> [AZURE.TIP] So wie wir das Vorhersageexperiment konfiguriert haben, gibt das Modul [Score Model][score-model] sämtliche Ergebnisse zurück. Dies schließt alle Eingabedaten sowie den Kreditrisikowert und die Bewertungswahrscheinlichkeit ein. Wenn Sie etwas anderes zurückgeben möchten, z. B. nur den Kreditrisikowert, können Sie ein Modul des Typs [Project Columns][project-columns] zwischen [Score Model][score-model] und **Web service output** einfügen, um Spalten auszuschließen, die der Webdienst nicht zurückgeben soll.
+> [AZURE.TIP] So wie wir das Vorhersageexperiment konfiguriert haben, gibt das Modul [Score Model][score-model] sämtliche Ergebnisse zurück. Dies schließt alle Eingabedaten sowie den Kreditrisikowert und die Bewertungswahrscheinlichkeit ein. Wenn Sie etwas anderes zurückgeben möchten, z.B. nur den Kreditrisikowert, können Sie ein Modul des Typs [Select Columns in Dataset][select-columns] zwischen [Score Model][score-model] und **Web service output** einfügen, um Spalten auszuschließen, die der Webdienst nicht zurückgeben soll.
 
 ## Verwalten des Webdiensts
 Nachdem Sie den Webdienst bereitgestellt haben, können Sie ihn im [klassischen Azure-Portal](https://manage.windowsazure.com) verwalten.
@@ -145,13 +145,13 @@ Weitere Informationen finden Sie unter:
 <!-- Module References -->
 [evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-[metadata-editor]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
+[edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
 [normalize-data]: https://msdn.microsoft.com/library/azure/986df333-6748-4b85-923d-871df70d6aaf/
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 [two-class-boosted-decision-tree]: https://msdn.microsoft.com/library/azure/e3c522f8-53d9-4829-8ea4-5c6a6b75330c/
 [two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
-[project-columns]: https://msdn.microsoft.com/de-DE/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
+[select-columns]: https://msdn.microsoft.com/de-DE/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0608_2016-->

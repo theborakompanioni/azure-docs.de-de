@@ -23,7 +23,7 @@
 
 In diesem Artikel wird beschrieben, wie Sie das [Azure-Portal](https://portal.azure.com/) zum schnellen Erstellen eines virtuellen Linux-Computers verwenden. Die einzigen Voraussetzungen sind [ein Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) und [Dateien mit öffentlichen und privaten Schlüsseln](virtual-machines-linux-mac-create-ssh-keys.md).
 
-[AZURE.NOTE] Wenn Sie ein Kennwort für den sicheren Zugriff auf Ihren virtuellen Computer verwenden möchten, muss das Kennwort mindestens zwölf Zeichen lang sein und mindestens einen Großbuchstaben, einen Kleinbuchstaben, ein Sonderzeichen und eine Zahl enthalten.
+> [AZURE.NOTE] Wenn Sie ein Kennwort für den sicheren Zugriff auf Ihren virtuellen Computer verwenden möchten, muss das Kennwort mindestens zwölf Zeichen lang sein und mindestens einen Großbuchstaben, einen Kleinbuchstaben, ein Sonderzeichen und eine Zahl enthalten.
 
 
 1. Melden Sie sich mit Ihrer Azure-Kontoidentität beim Azure-Portal an, und klicken Sie oben links auf **+ Neu**:
@@ -45,7 +45,7 @@ In diesem Artikel wird beschrieben, wie Sie das [Azure-Portal](https://portal.az
 
     ![Bildschirm 3](../media/virtual-machines-linux-quick-create-portal/screen3.png)
 
-4. Wählen Sie die Größe **DS1** aus, bei der Ubuntu auf einem Premium-SSD installiert wird, und klicken Sie auf **Auswählen**, um die Einstellungen zu konfigurieren.
+4. Wählen Sie die Größe **DS1** aus, bei der Ubuntu auf einem Premium-SSD-Datenträger installiert wird, und klicken Sie auf **Auswählen**, um die Einstellungen zu konfigurieren.
 
     ![Bildschirm 4](../media/virtual-machines-linux-quick-create-portal/screen4.png)
 
@@ -81,4 +81,4 @@ Sie haben nun schnell eine Linux-VM zum Testen und für Demonstrationszwecke ers
 
 Diese Artikel beschreiben die ersten Schritte beim Erstellen einer Azure-Infrastruktur sowie einer beliebigen Anzahl von proprietären und Open Source-Tools zur Infrastrukturbereitstellung, -konfiguration und -orchestrierung.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

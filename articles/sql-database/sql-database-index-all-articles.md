@@ -378,4 +378,4 @@ Dieses Thema führt alle Themen mit direktem Bezug zum SQL-Datenbankdienst in Az
 
 - Lernpfaddiagramm: [sql-database-elastic-scale](http://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

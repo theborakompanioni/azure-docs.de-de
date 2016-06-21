@@ -543,20 +543,20 @@ Um die Inhalte einer bestimmten Datei anzuzeigen, beispielsweise "000000\_0", ve
 
 **Warnung** `copyToLocal` kann für große Dateien sehr langsam sein, deshalb wird eine Verwendung für große Dateien nicht empfohlen.
 
-Das Speichern dieser Daten in einem Azure-Blob bietet den Vorteil, dass die Daten in Azure Machine Learning mit dem [Reader][reader]-Modul untersucht werden können.
+Das Speichern dieser Daten in einem Azure-Blob bietet den Vorteil, dass die Daten in Azure Machine Learning mit dem [Import Data][import-data]-Modul untersucht werden können.
 
 
 ## <a name="#downsample"></a>Komprimieren von Daten und Entwickeln von Modellen in Azure Machine Learning
 
 **Hinweis:** Diese Aufgabe wird typischerweise von einem **Datenanalyst** ausgeführt.
 
-Im Anschluss an die explorative Datenanalyse können wir die Daten komprimieren, um in Azure Machine Learning Modelle zu entwickeln. In diesem Abschnitt wird gezeigt, wie Sie eine Hive-Abfrage zum Komprimieren der Daten verwenden und anschließend mit dem [Reader][reader]-Modul in Azure Machine Learning auf die Daten zugreifen.
+Im Anschluss an die explorative Datenanalyse können wir die Daten komprimieren, um in Azure Machine Learning Modelle zu entwickeln. In diesem Abschnitt wird gezeigt, wie Sie eine Hive-Abfrage zum Komprimieren der Daten verwenden und anschließend mit dem [Import Data][import-data]-Modul in Azure Machine Learning auf die Daten zugreifen.
 
 ### Komprimieren der Daten
 
 Dieses Verfahren umfasst zwei Schritte. Zunächst werden die Tabellen **nyctaxidb.trip** und **nyctaxidb.fare** mithilfe von drei Schlüsseln zusammengeführt, die in allen Datensätzen vorhanden sind: "medallion", "hack\_license" und "pickup\_datetime". Anschließend wird der Bezeichner **tipped** für die binäre Klassifizierung und der Bezeichner **tip\_class** für die Multiklassenklassifizierung generiert.
 
-Um die komprimierten Daten direkt aus dem [Reader][reader]-Modul in Azure Machine Learning verwenden zu können, müssen Sie die Ergebnisse der oben gezeigten Abfrage in einer internen Hive-Tabelle speichern. Im Folgenden erstellen wir eine interne Hive-Tabelle und füllen diese mit den zusammengeführten und komprimierten Daten.
+Um die komprimierten Daten direkt aus dem [Import Data][import-data]-Modul in Azure Machine Learning verwenden zu können, müssen Sie die Ergebnisse der oben gezeigten Abfrage in einer internen Hive-Tabelle speichern. Im Folgenden erstellen wir eine interne Hive-Tabelle und füllen diese mit den zusammengeführten und komprimierten Daten.
 
 Die Abfrage verwendet standardmäßige Hive-Funktionen, um aus dem Feld "pickup\_datetime" Stunde, Woche und Wochentag (hierbei steht 1 für Montag und 7 für Sonntag) sowie die direkte Entfernung zwischen dem Startpunkt und Ziel der Fahrt zu generieren. Eine vollständige Liste solcher Funktionen finden Sie unter [LanguageManual UDF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) (in englischer Sprache).
 
@@ -689,13 +689,13 @@ Führen Sie an der Hive-Eingabeaufforderung den folgenden Befehl aus, um diese A
 
 	hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
 
-Wir verfügen jetzt über eine interne Tabelle namens "nyctaxidb.nyctaxi\_downsampled\_dataset", auf die über das [Reader][reader]-Modul in Azure Machine Learning zugegriffen werden kann. Darüber hinaus können wir dieses Dataset zum Entwickeln von Machine Learning-Modellen nutzen.
+Wir verfügen jetzt über eine interne Tabelle namens „nyctaxidb.nyctaxi\_downsampled\_dataset“, auf die über das [Import Data][import-data]-Modul in Azure Machine Learning zugegriffen werden kann. Darüber hinaus können wir dieses Dataset zum Entwickeln von Machine Learning-Modellen nutzen.
 
-### Verwenden Sie das Reader-Modul in Azure Machine Learning, um auf die komprimierten Daten zuzugreifen.
+### Verwenden Sie das „Import Data“-Modul in Azure Machine Learning, um auf die komprimierten Daten zuzugreifen.
 
-Als Voraussetzung für die Ausführung von Hive-Abfragen im [Reader][reader]-Modul von Azure Machine Learning benötigen wir Zugriff auf einen Azure Machine Learning-Arbeitsbereich sowie Zugriff auf die Anmeldeinformationen des Clusters und das zugeordnete Speicherkonto.
+Als Voraussetzung für die Ausführung von Hive-Abfragen im [Import Data][import-data]-Modul von Azure Machine Learning benötigen wir Zugriff auf einen Azure Machine Learning-Arbeitsbereich sowie Zugriff auf die Anmeldeinformationen des Clusters und das zugeordnete Speicherkonto.
 
-Nachfolgend werden einige Details zum [Reader][reader]-Modul sowie die Parameter für die Eingabe gezeigt:
+Nachfolgend werden einige Details zum [Import Data][import-data]-Modul sowie die Parameter für die Eingabe gezeigt:
 
 **HCatalog-Server-URI**: Wenn der Clustername "abc123" lautet, ist dies einfach: https://abc123.azurehdinsight.net
 
@@ -709,7 +709,7 @@ Nachfolgend werden einige Details zum [Reader][reader]-Modul sowie die Parameter
 
 **Azure-Containername**: Dies ist der standardmäßige Containername für den Cluster. Dieser stimmt üblicherweise mit dem Clusternamen überein. Wenn der Cluster "abc123" heißt, lautet dieser Name "abc123".
 
-**Wichtiger Hinweis:** **Jede Tabelle, die mit dem [Reader][reader]-Modul in Azure Machine Learning abgefragt werden soll, muss eine interne Tabelle sein.** Nachfolgend wird gezeigt, wie Sie ermitteln können, ob es sich bei einer Tabelle "T" in einer Datenbank "D.db" um eine interne Tabelle handelt.
+**Wichtiger Hinweis:** **Jede Tabelle, die mit dem [Import Data][import-data]-Modul in Azure Machine Learning abgefragt werden soll, muss eine interne Tabelle sein.** Nachfolgend wird gezeigt, wie Sie ermitteln können, ob es sich bei einer Tabelle "T" in einer Datenbank "D.db" um eine interne Tabelle handelt.
 
 Führen Sie an der Hive-Eingabeaufforderung den folgenden Befehl aus:
 
@@ -717,7 +717,7 @@ Führen Sie an der Hive-Eingabeaufforderung den folgenden Befehl aus:
 
 Wenn es sich um eine interne Tabelle handelt und diese mit Daten gefüllt ist, müssen die Inhalte angezeigt werden. Alternativ können Sie auch mit dem Azure Storage-Explorer prüfen, ob es sich bei einer Tabelle um eine interne Tabelle handelt. Wechseln Sie im Azure Storage-Explorer zum standardmäßigen Containernamen des Clusters, und filtern Sie anschließend nach dem Tabellennamen. Wenn die Tabelle vorhanden ist und ihre Inhalte angezeigt werden, handelt es sich um eine interne Tabelle.
 
-Nachfolgend sehen Sie einen Screenshot von Hive-Abfrage und [Reader][reader]-Modul:
+Nachfolgend sehen Sie einen Screenshot von Hive-Abfrage und [Import Data][import-data]-Modul:
 
 ![](./media/machine-learning-data-science-process-hive-walkthrough/1eTYf52.png)
 
@@ -733,7 +733,7 @@ Wir können nun mit der Modellentwicklung und -bereitstellung in [Azure Machine 
 
 **Verwendeter Lernansatz:** Logistische Regression mit zwei Klassen
 
-a. Für dieses Problem lautet der Zielbezeichner (oder die Zielklasse) "tipped". Unser ursprüngliches komprimiertes Dataset weist einige Spalten auf, die Datenlecks für dieses Klassifizierungsexperiment darstellen. Dies sind insbesondere: "tip\_class", "tip\_amount" und "total\_amount". Diese Spalten enthalten Informationen zum Zielbezeichner, die zum Testzeitpunkt nicht zur Verfügung stehen. Wir nehmen diese Spalten mit dem [Project Columns][project-columns]-Modul von der Berücksichtigung aus.
+a. Für dieses Problem lautet der Zielbezeichner (oder die Zielklasse) "tipped". Unser ursprüngliches komprimiertes Dataset weist einige Spalten auf, die Datenlecks für dieses Klassifizierungsexperiment darstellen. Dies sind insbesondere: "tip\_class", "tip\_amount" und "total\_amount". Diese Spalten enthalten Informationen zum Zielbezeichner, die zum Testzeitpunkt nicht zur Verfügung stehen. Wir nehmen diese Spalten mit dem [Select Columns in Dataset][select-columns]-Modul von der Berücksichtigung aus.
 
 Der nachstehende Screenshot zeigt unser Experiment zur Vorhersage, ob für eine bestimmte Fahrt ein Trinkgeld gezahlt wurde oder nicht.
 
@@ -753,7 +753,7 @@ Als Ergebnis erhalten wir einen AUC-Wert (Area Under Curve) von 0,987, wie in de
 
 **Verwendeter Lernansatz:** Logistische Regression mit mehreren Klassen
 
-a. Für dieses Problem lautet unser Zielbezeichner (oder die Zielklasse) "tip\_class" und kann einen von fünf Werten annehmen (0,1,2,3,4). Wie bei der binären Klassifizierung sind Spalten vorhanden, die Datenlecks für dieses Experiment darstellen. Dies sind insbesondere: "tip\_class", "tip\_amount" und "total\_amount". Diese Spalten zeigen Informationen zum Zielbezeichner, die zum Testzeitpunkt nicht zur Verfügung stehen. Wir entfernen diese Spalten mit dem [Project Columns][project-columns]-Modul.
+a. Für dieses Problem lautet unser Zielbezeichner (oder die Zielklasse) "tip\_class" und kann einen von fünf Werten annehmen (0,1,2,3,4). Wie bei der binären Klassifizierung sind Spalten vorhanden, die Datenlecks für dieses Experiment darstellen. Dies sind insbesondere: "tip\_class", "tip\_amount" und "total\_amount". Diese Spalten zeigen Informationen zum Zielbezeichner, die zum Testzeitpunkt nicht zur Verfügung stehen. Wir entfernen diese Spalten mit dem [Select Columns in Dataset][select-columns]-Modul.
 
 Der nachstehende Screenshot zeigt unser Experiment zur Vorhersage, wann ein Trinkgeld wahrscheinlich niedriger ausfällt ( Class 0: tip = $0, class 1 : tip > $0 and tip <= $5, Class 2 : tip > $5 and tip <= $10, Class 3 : tip > $10 and tip <= $20, Class 4 : tip > $20)
 
@@ -774,7 +774,7 @@ Beachten Sie Folgendes: Während die Klassengenauigkeit bei den häufig vorkomme
 
 **Verwendeter Lernansatz:** Gewichteter Entscheidungsbaum
 
-a. Für dieses Problem lautet der Zielbezeichner (oder -klasse) "tipped". Die Datenlecks lauten in diesem Fall: "tipped", "tip\_class", "total\_amount". Sämtliche dieser Variablen enthalten Informationen zum Trinkgeldbetrag, die zum Testzeitpunkt normalerweise nicht zur Verfügung stehen. Wir entfernen diese Spalten mit dem [Project Columns][project-columns]-Modul.
+a. Für dieses Problem lautet der Zielbezeichner (oder -klasse) "tipped". Die Datenlecks lauten in diesem Fall: "tipped", "tip\_class", "total\_amount". Sämtliche dieser Variablen enthalten Informationen zum Trinkgeldbetrag, die zum Testzeitpunkt normalerweise nicht zur Verfügung stehen. Wir entfernen diese Spalten mit dem [Select Columns in Dataset][select-columns]-Modul.
 
 Der nachstehende Screenshot zeigt unser Experiment zur Vorhersage des Trinkgeldbetrags.
 
@@ -807,7 +807,7 @@ Diese exemplarische Vorgehensweise und die zugehörigen Skripts werden von Micro
 [15]: ./media/machine-learning-data-science-process-hive-walkthrough/amlreader.png
 
 <!-- Module References -->
-[project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
+[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

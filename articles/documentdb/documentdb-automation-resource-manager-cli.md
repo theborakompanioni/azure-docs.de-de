@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="06/03/2016" 
 	ms.author="mimig"/>
 
 # Automatisieren der Erstellung von DocumentDB-Konten mithilfe von Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI
@@ -37,7 +37,7 @@ Vor der Verwendung der Azure-CLI mit Azure-Ressourcengruppen benötigen Sie die 
 
 ### Aktualisieren der Azure-CLI-Version
 
-Geben Sie an der Eingabeaufforderung `azure --version` ein, um zu überprüfen, ob Sie bereits Version 0.9.11 oder höher installiert haben.
+Geben Sie an der Eingabeaufforderung `azure --version` ein, um zu überprüfen, ob Sie bereits Version 0.9.11 oder höher installiert haben. Sie werden in diesem Schritt vielleicht aufgefordert, an einer Microsoft Azure-CLI-Datensammlung teilzunehmen, und können „j“ oder „n“ wählen.
 
 	azure --version
     0.9.11 (node: 0.12.7)
@@ -56,8 +56,7 @@ Die folgende Ausgabe wird erzeugt:
 
     info:    Executing command login
     |info:    To sign in, use a web browser to open the page https://aka.ms/devicelogin. 
-    Enter the code E1A2B3C4D to authenticate. If you're signing in as an Azure
-    AD application, use the --username and --password parameters.
+    Enter the code E1A2B3C4D to authenticate.
 
 > [AZURE.NOTE] Wenn Sie kein Azure-Konto besitzen, wird eine Fehlermeldung mit dem Hinweis angezeigt, dass Sie einen anderen Kontotyp benötigen. Informationen zum Erstellen eines Kontos auf der Basis Ihres aktuellen Azure-Kontos finden Sie unter [Erstellen von Arbeits- oder Schulidentitäten in Azure Active Directory](../virtual-machines/virtual-machines-windows-create-aad-work-id.md).
 
@@ -78,7 +77,7 @@ Auf der Befehlsshell wird außerdem die folgende Ausgabe angezeigt.
     /info:    Added subscription Visual Studio Ultimate with MSDN
     info:    Setting subscription "Visual Studio Ultimate with MSDN" as default
     +
-    info:    login command OKK
+    info:    login command OK
 
 Zusätzlich zu der hier beschriebenen interaktiven Anmeldemethode sind zusätzliche Azure-CLI-Anmeldemethoden verfügbar. Informationen zu weiteren Methoden und zur Behandlung mehrerer Abonnements finden Sie unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure-Befehlszeilenschnittstelle (Azure-CLI)](../xplat-cli-connect.md).
 
@@ -94,7 +93,7 @@ Die folgende Ausgabe wird zurückgegeben:
     info:    New mode is arm
     info:    config mode command OK
 
-Sie können zum Standardbefehlssatz wechseln, indem Sie `azure config mode asm` eingeben.
+Sie können ggf. zum Standardbefehlssatz wechseln, indem Sie `azure config mode asm` eingeben.
 
 ## <a id="quick-create-documentdb-account"></a>Aufgabe: Erstellen eines DocumentDB-Kontos über Azure CLI
 
@@ -102,7 +101,7 @@ Befolgen Sie die Anweisungen in diesem Abschnitt, um ein DocumentDB-Konto über 
 
 ### Schritt 1: Erstellen oder Abrufen der Ressourcengruppe
 
-Wenn Sie ein DocumentDB-Konto erstellen möchten, benötigen Sie zuerst eine Ressourcengruppe. Wenn Sie den Namen der gewünschten Ressourcengruppe bereits kennen, fahren Sie mit [Schritt 2](#create-documentdb-account-cli) fort.
+Wenn Sie ein DocumentDB-Konto erstellen möchten, benötigen Sie zuerst eine Ressourcengruppe. Wenn Sie den Namen der gewünschten Ressourcengruppe bereits kennen, fahren Sie mit [Schritt 2](#create-documentdb-account-cli) fort.
 
 Wenn Sie eine Liste aller aktuellen Ressourcengruppen anzeigen möchten, führen Sie den folgenden Befehl aus, und notieren Sie sich den Namen der gewünschten Ressourcengruppe:
 
@@ -135,7 +134,7 @@ Die folgende Ausgabe wird erzeugt:
 
 Beim Auftreten von Fehlern finden Sie weitere Informationen unter [Problembehandlung](#troubleshooting).
 
-### <a id="create-documentdb-account-cli"></a> Schritt 2: Erstellen eines DocumentDB-Kontos über die CLI
+### <a id="create-documentdb-account-cli"></a> Schritt 2: Erstellen eines DocumentDB-Kontos über die CLI
 
 Erstellen Sie ein DocumentDB-Konto in der neuen oder vorhandenen Ressourcengruppe, indem Sie den folgenden Befehl an der Eingabeaufforderung eingeben:
 
@@ -144,7 +143,7 @@ Erstellen Sie ein DocumentDB-Konto in der neuen oder vorhandenen Ressourcengrupp
     azure resource create -g <resourcegroupname> -n <databaseaccountname> -r "Microsoft.DocumentDB/databaseAccounts" -o "2015-04-08" -l <databaseaccountlocation> -p "{"databaseAccountOfferType":"Standard"}" 
 
  - `<resourcegroupname>` darf nur alphanumerische Zeichen, Punkte, Unterstriche, den Bindestrich „-“ und Klammern enthalten und darf nicht mit einem Punkt enden. 
- - `<databaseaccountname>` darf nur Kleinbuchstaben, Ziffern und den Bindestrich „-“ enthalten und muss zwischen 3 und 50 Zeichen lang sein.
+ - `<databaseaccountname>` darf nur Kleinbuchstaben, Ziffern und den Bindestrich „-“ enthalten und muss zwischen 3 und 50 Zeichen lang sein.
  - `<databaseaccountlocation>` muss einer der Regionen entsprechen, in denen DocumentDB allgemein verfügbar ist. Die aktuelle Liste der Regionen finden Sie auf der Seite [Azure Regionen](https://azure.microsoft.com/regions/#services).
 
 Beispieleingabe:
@@ -226,7 +225,7 @@ Wenn Sie eine Parameterdatei erstellen möchten, kopieren Sie den folgenden Inha
         }
     }
 
-Ändern Sie in der Datei „azuredeploy.parameters.json“ den Wert „samplearmacct“, sodass er dem gewünschten Datenbanknamen entspricht, und speichern Sie die Datei. `<databaseAccountName>` darf nur Kleinbuchstaben, Ziffern und den Bindestrich „-“ enthalten und muss zwischen 3 und 50 Zeichen lang sein.
+Ändern Sie in der Datei „azuredeploy.parameters.json“ den Wert „samplearmacct“, sodass er dem gewünschten Datenbanknamen entspricht, und speichern Sie die Datei. `"databaseAccountName"` darf nur Kleinbuchstaben, Ziffern und den Bindestrich „-“ enthalten und muss zwischen 3 und 50 Zeichen lang sein.
 
 ### Schritt 2: Erstellen oder Abrufen der Ressourcengruppe
 
@@ -263,7 +262,7 @@ Die folgende Ausgabe wird erzeugt:
 
 Beim Auftreten von Fehlern finden Sie weitere Informationen unter [Problembehandlung](#troubleshooting).
 
-### <a id="create-account-from-template"></a>Schritt 3: Erstellen des DocumentDB-Kontos über eine ARM-Vorlage
+### <a id="create-account-from-template"></a>Schritt 3: Erstellen des DocumentDB-Kontos über eine ARM-Vorlage
 
 Wenn Sie ein DocumentDB-Konto in der Ressourcengruppe erstellen möchten, führen Sie den folgenden Befehl aus, und geben Sie den Pfad der Vorlagendatei, den Pfad der Parameterdatei oder den Parameterwert, den Namen der Ressourcengruppe für die Bereitstellung und einen Bereitstellungsnamen (-n ist optional) an.
 
@@ -271,8 +270,8 @@ So verwenden Sie eine Parameterdatei
 
     azure group deployment create -f <PathToTemplate> -e <PathToParameterFile> -g <resourcegroupname> -n <deploymentname>
 
- - `<PathToTemplate>` ist der Pfad zur Datei „azuredeploy.json“, die in Schritt 1 erstellt wurde. Wenn der Pfadname Leerzeichen enthält, setzen Sie diesen Parameter in doppelte Anführungszeichen.
- - `<PathToParameterFile>` ist der Pfad zur Datei „azuredeploy.parameters.json“, die in Schritt 1 erstellt wurde. Wenn der Pfadname Leerzeichen enthält, setzen Sie diesen Parameter in doppelte Anführungszeichen.
+ - `<PathToTemplate>` ist der Pfad zur Datei „azuredeploy.json“, die in Schritt 1 erstellt wurde. Wenn der Pfadname Leerzeichen enthält, setzen Sie diesen Parameter in doppelte Anführungszeichen.
+ - `<PathToParameterFile>` ist der Pfad zur Datei „azuredeploy.parameters.json“, die in Schritt 1 erstellt wurde. Wenn der Pfadname Leerzeichen enthält, setzen Sie diesen Parameter in doppelte Anführungszeichen.
  - `<resourcegroupname>` ist der Name der vorhandenen Ressourcengruppe, der ein DocumentDB-Datenbankkonto hinzugefügt werden soll. 
  - `<deploymentname>` ist der optionale Name der Bereitstellung.
 
@@ -298,15 +297,21 @@ Bei der Bereitstellung des Kontos werden folgende Informationen angezeigt:
     + Creating a deployment
     info:    Created template deployment "azuredeploy"
     + Waiting for deployment to complete
+    + 
+    + 
+    info:    Resource 'new_res_group' of type 'Microsoft.DocumentDb/databaseAccounts' provisioning status is Running
+    + 
+    info:    Resource 'new_res_group' of type 'Microsoft.DocumentDb/databaseAccounts' provisioning status is Succeeded
     data:    DeploymentName     : azuredeploy
     data:    ResourceGroupName  : new_res_group
     data:    ProvisioningState  : Succeeded
     data:    Timestamp          : 2015-11-30T18:50:23.6300288Z
     data:    Mode               : Incremental
+    data:    CorrelationId      : 4a5d4049-c494-4053-bad4-cc804d454700
+    data:    DeploymentParameters :
     data:    Name                 Type    Value
     data:    -------------------  ------  ------------------
     data:    databaseAccountName  String  samplearmacct
-    data:    location             String  West US
     info:    group deployment create command OK
 
 Beim Auftreten von Fehlern finden Sie weitere Informationen unter [Problembehandlung](#troubleshooting).
@@ -317,7 +322,7 @@ Nachdem der Befehl ausgeführt wurde, befindet sich das Konto einige Minuten im 
 
 Wenn Sie Fehlermeldungen wie `Deployment provisioning state was not successful` beim Erstellen Ihrer Ressourcengruppe oder Ihres Datenbankkontos erhalten, haben Sie einige Möglichkeiten für die Problembehandlung.
 
-> [AZURE.NOTE] Enthält der Name des Datenbankkontos ungültige Zeichen oder wird ein Ort angegeben, an dem DocumentDB nicht verfügbar ist, führt das zu einem Bereitstellungsfehler. Namen von Datenbankkonten dürfen nur Kleinbuchstaben, Ziffern und den Bindestrich „-“ enthalten und müssen zwischen 3 und 50 Zeichen lang sein. Alle gültigen Orte für Datenbank-Konten sind auf der Seite [Azure Regionen](https://azure.microsoft.com/regions/#services) aufgeführt.
+> [AZURE.NOTE] Enthält der Name des Datenbankkontos ungültige Zeichen oder wird ein Ort angegeben, an dem DocumentDB nicht verfügbar ist, führt das zu einem Bereitstellungsfehler. Namen von Datenbankkonten dürfen nur Kleinbuchstaben, Ziffern und den Bindestrich „-“ enthalten und müssen zwischen 3 und 50 Zeichen lang sein. Alle gültigen Orte für Datenbank-Konten sind auf der Seite [Azure Regionen](https://azure.microsoft.com/regions/#services) aufgeführt.
 
 - Die Ausgabe enthält die folgenden `Error information has been recorded to C:\Users\wendy\.azure\azure.err`, und überprüfen Sie dann die Fehlerinformationen in der Datei „azure.err“.
 
@@ -354,4 +359,4 @@ Weitere Informationen zu DocumentDB finden Sie in folgenden Ressourcen:
 
 Weitere Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0608_2016-->

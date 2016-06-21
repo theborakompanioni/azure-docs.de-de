@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/22/2016"
+	ms.date="06/06/2016"
 	ms.author="swkrish"/>
 
 
@@ -43,4 +43,4 @@ Zum Testen verwenden Sie das Feature „Jetzt ausführen“ für eine beliebige 
 > [AZURE.NOTE]
 Die Seiten der Self-Service-Kennwortrücksetzung können mithilfe des [Features für Unternehmensbranding](../active-directory/active-directory-add-company-branding.md) angepasst werden.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0608_2016-->

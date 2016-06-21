@@ -342,4 +342,8 @@ $DAILYBACKUPSTATS | Out-GridView
 
 Wenn Sie der Berichtsausgabe Diagrammfunktionen hinzufügen möchten, erfahren Sie Näheres im TechNet-Blog unter [Charting with PowerShell](http://blogs.technet.com/b/richard_macdonald/archive/2009/04/28/3231887.aspx) (Diagrammerstellung mit PowerShell).
 
-<!---HONumber=AcomDC_0525_2016-->
+## Nächste Schritte
+
+Falls Sie PowerShell für die Arbeit mit Azure-Ressourcen vorziehen, sehen Sie sich den PowerShell-Artikel für den Schutz von Windows Server an: [Bereitstellen und Verwalten der Sicherung für Windows Server](./backup-client-automation-classic.md). Es gibt auch einen PowerShell-Artikel über das Verwalten von DPM-Sicherungen: [Bereitstellen und Verwalten der Sicherung für DPM](./backup-dpm-automation-classic.md). Diese beiden Artikel weisen eine Version für Resource Manager-Bereitstellungen und eine für klassische Bereitstellungen auf.
+
+<!---HONumber=AcomDC_0608_2016-->

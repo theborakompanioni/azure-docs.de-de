@@ -14,11 +14,28 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/13/2016"
+	ms.date="06/06/2016"
 	ms.author="nitinme"/>
 
 
 # Versionshinweise zu Hadoop-Komponenten in Azure HDInsight
+
+## Hinweise für die HDInsight-Version vom 06.06.2016
+
+Die vollständigen Versionsnummern für mit dieser Version bereitgestellte HDInsight-Cluster:
+
+|HDP |HDI-Version |Spark-Version |Ambari-Buildnummer |HDP-Buildnummer|
+|-------|---------------|---------------|-----------------------|----------------|
+|2\.3 |3\.3.1000.0.7702215|	1\.5.2|	2\.2.1.8-2|	2\.3.3.1-18|
+|2\.4 |3\.4.1000.0.7702224|	1\.6.1|	2\.2.1.8-2|	2\.4.2.0|
+
+
+Diese Version enthält die folgenden Updates.
+
+| Titel | Beschreibung | Betroffener Bereich (z. B. Dienst, Komponente oder SDK) | Clustertyp (z.B. Spark, Hadoop, HBase oder Storm) | JIRA (falls zutreffend) |
+|-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
+| Spark unter HDInsight ist jetzt allgemein verfügbar | Diese Version bringt Verbesserungen hinsichtlich Verfügbarkeit, Skalierbarkeit und Produktivität für Open Source-Apache Spark unter HDInsight. <ul><li>Eignung für anspruchsvolle Unternehmensworkloads dank branchenführender Verfügbarkeits-SLA von 99,9%.</li><li>Skalierbare Speicherebene mit Azure Data Lake-Speicher.</li><li>Produktivitätstools für jede Phase des Durchsuchens und der Entwicklung von Daten. Jupyter Notebooks mit benutzerdefiniertem Spark-Kernel ermöglichen interaktives Durchsuchen von Daten, Integration in BI-Dashboards wie Power BI, Tableau und Qlik ist ideal für schnelle Datenfreigabe und kontinuierliche Berichterstellung, IntelliJ-Plug-In ist die zuverlässige Option für langfristige Codeartefaktentwicklung und Debuggen.</li></ul>| Dienst | Spark| –|
+| HDInsight-Tools für IntelliJ | Dies ist ein IntelliJ IDEA-Plug-In für HDInsight Spark-Cluster. Es bietet die folgenden Features.<ul><li>Müheloses Erstellen und Schreiben einer Spark-Anwendung in Scala und Java mit erstklassiger Erstellungsunterstützung für IntelliSense, automatischer Formatierung, Fehlerüberprüfung usw.</li><li>Lokales Testen der Spark-Anwendung.</li><li>Übermitteln von Aufträgen an HDInsight Spark-Cluster und Abrufen der Ergebnisse.</li><li>Anmeldung bei Azure und Zugriff auf alle Spark-Cluster, die Ihren Azure-Abonnements zugeordnet sind.</li><li>Wechseln zu allen zugeordneten Speicherressourcen Ihres HDInsight Spark-Clusters.</li><li>Wechseln zu den Verläufen aller Aufträge und den Auftragsinformationen für Ihren HDInsight Spark-Cluster.</li><li>Remotedebuggen von Spark-Aufträgen von Ihrem Desktopcomputer aus.</li></ul>| Tools | Spark| –
 
 ## Hinweise für die HDInsight-Version vom 13.05.2016
 
@@ -60,7 +77,7 @@ Diese Version enthält die folgenden Updates.
 | Probleme beim Upgrade des benutzerdefinierten Metastores für HDI 3.4 | Die Erstellung eines Clusters schlug fehl, wenn Sie einen benutzerdefinierten Metastore verwendet haben, der zuvor für eine niedrigere Version eines anderen HDInsight-Clusters verwendet wurde. Der Grund dafür lag in einem Skriptfehler beim Upgrade, der nun behoben wurde.| Clustererstellung | Alle | –
 | Wiederherstellung nach Livy-Absturz | Resilienz des Auftragsstatus für jeden über Livy gesendeten Auftrag. | Zuverlässigkeit | Spark unter Linux| –
 | Hohe Verfügbarkeit von Jupyter-Inhalten | Ermöglicht das Speichern und Laden von Jupyter Notebook-Inhalten auf und von dem mit dem Cluster verknüpften Speicherkonto. Weitere Informationen finden Sie unter [Verfügbare Kernels für Jupyter Notebooks](hdinsight-apache-spark-jupyter-notebook-kernels.md).| Notebooks | Spark unter Linux| –
-| Entfernen von hiveContext in Jupyter Notebooks | Verwendung der Magic `%%sql` anstelle von `%%hive`. „sqlContext“ entspricht „hiveContext“. Weitere Informationen finden Sie unter [Verfügbare Kernels für Jupyter Notebooks](hdinsight-apache-spark-jupyter-notebook-kernels.md).| Notebooks | Spark-Cluster unter Linux| –
+| Entfernen von hiveContext in Jupyter Notebooks | Verwenden Sie `%%sql`-Magic anstelle von `%%hive`-Magic. „sqlContext“ entspricht „hiveContext“. Weitere Informationen finden Sie unter [Verfügbare Kernels für Jupyter Notebooks](hdinsight-apache-spark-jupyter-notebook-kernels.md).| Notebooks | Spark-Cluster unter Linux| –
 | Einstellung des Supports für ältere Versionen von Spark | Die ältere Version Spark 1.3.1 wird zum 31.05. aus dem Dienst entfernt. | Dienst | Spark-Cluster unter Windows | –
 
 ## Hinweise für die HDInsight-Version vom 29.03.2016
@@ -1312,7 +1329,7 @@ Anmerkung zur Azure PowerShell- und HDInsight SDK-Fehlermeldung: „*Cluster ist
 
 * Dieser Fehler ist ein bekanntes [Kompatibilitätsproblem](https://social.msdn.microsoft.com/Forums/azure/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight), das auftritt, wenn sich die Version von HDInsight SDK oder Azure PowerShell von der Clusterversion unterscheidet. Alle ab dem 15.8.2014 erstellten Cluster unterstützen die neue Bereitstellungsfunktion für virtuelle Netzwerke. Diese Funktion wird jedoch von älteren Versionen von HDInsight SDK oder Azure PowerShell nicht korrekt interpretiert. Das Resultat ist ein Fehler bei der Übermittlung mancher Aufträge. Wenn Sie Aufträge mit HDInsight-SDK-APIs oder Azure PowerShell-Cmdlets übermitteln (**Use-AzureRmHDInsightCluster** oder **Invoke-AzureRmHDInsightHiveJob**), können diese Vorgänge mit der Fehlermeldung „*Cluster <clustername> wurde nicht für Zugriff auf HTTP-Dienste konfiguriert*“ misslingen. Oder Sie erhalten (abhängig vom Vorgang) andere Fehlermeldungen, z. B. „*Es kann keine Verbindung mit dem Cluster hergestellt werden*“.
 
-* Diese Kompatibilitätsprobleme sind in den neuesten Versionen von HDInsight SDK und Azure PowerShell behoben. Sie sollten daher das HDInsight SDK auf Version 1.3.1.6 oder eine neuere Version und die Azure PowerShell-Tools auf Version 0.8.8 oder eine neuere Version aktualisieren. Sie erhalten das neueste HDInsight SDK über [](http://nuget.codeplex.com/wikipage?title=Getting%20Started) und die Azure PowerShell-Tools unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure/).
+* Diese Kompatibilitätsprobleme sind in den neuesten Versionen von HDInsight SDK und Azure PowerShell behoben. Sie sollten daher das HDInsight SDK auf Version 1.3.1.6 oder eine neuere Version und die Azure PowerShell-Tools auf Version 0.8.8 oder eine neuere Version aktualisieren. Sie erhalten das neueste HDInsight SDK über [](http://nuget.codeplex.com/wikipage?title=Getting%20Started) und die Azure PowerShell-Tools unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
 
 
@@ -1353,7 +1370,7 @@ Diese Kompatibilitätsprobleme sind in den neuesten Versionen von HDInsight SDK 
 	* Ostasien
 	* USA (Mitte/Norden)
 	* USA (Mitte/Süden)
-* HDInsight Version 1.6 (HDP 1.1 und Hadoop 1.0.3) und HDInsight Version 2.1 (HDP1.3 und Hadoop 1.2) werden aus dem Azure-Portal entfernt. Sie können weiterhin Hadoop-Cluster für diese Versionen mithilfe der Azure PowerShell-Cmdlets ([New-AzureRmHDInsightCluster](http://msdn.microsoft.com/library/dn593744.aspx)) oder des [HDInsight SDK](http://msdn.microsoft.com/library/azure/dn469975.aspx) erstellen. Weitere Informationen finden Sie auf der Seite [HDInsight-Komponentenversionen](../hdinsight-component-versioning/).
+* HDInsight Version 1.6 (HDP 1.1 und Hadoop 1.0.3) und HDInsight Version 2.1 (HDP1.3 und Hadoop 1.2) werden aus dem Azure-Portal entfernt. Sie können weiterhin Hadoop-Cluster für diese Versionen mithilfe der Azure PowerShell-Cmdlets ([New-AzureRmHDInsightCluster](http://msdn.microsoft.com/library/dn593744.aspx)) oder des [HDInsight SDK](http://msdn.microsoft.com/library/azure/dn469975.aspx) erstellen. Weitere Informationen finden Sie auf der Seite [HDInsight-Komponentenversionen](hdinsight-component-versioning.md).
 * Änderungen an Hortonworks Data Platform (HDP) in dieser Version:
 
 <table border="1">
@@ -1584,4 +1601,4 @@ Versionshinweise zu den HDPs (Hortonworks Data Platforms), die von den Versionen
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

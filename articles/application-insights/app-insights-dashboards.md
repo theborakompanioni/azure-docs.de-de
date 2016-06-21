@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Verwenden des Application Insights-Portals"
-	description="Zeigen Sie Telemetriedaten aus mehreren Komponenten Ihrer Anwendung in einem Dashboard an."
+	description="Metriken, Suche, Dashboards und Einstellungen im Application Insights-Portal."
 	services="application-insights"
     documentationCenter=""
 	authors="alancameronwills"
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="multiple"
 	ms.topic="article" 
-	ms.date="04/25/2016"
+	ms.date="06/03/2016"
 	ms.author="awills"/>
 
 # Navigation und Dashboards im Application Insights-Portal
@@ -34,11 +34,12 @@ Das Übersichtsblatt (bzw. die Seite) für Ihre App zeigt eine Zusammenfassung d
 
 Klicken Sie auf:
 
-* **ein beliebiges Diagramm oder eine beliebige Kachel**, um weitere Details anzuzeigen.
-* **Einstellungen**, um zu vordefinierten Seiten von anderen Metriken zu gelangen.
+* **Ein Diagramm oder eine Kachel**, um weitere Details darüber anzuzeigen, was im Diagramm dargestellt wird.
+* **Einstellungen**, um vordefinierte Blätter anderer Metriken sowie Konfigurationsseiten anzuzeigen.
 * [**Metrik-Explorer**](app-insights-metrics-explorer.md), um Metrikseiten Ihrer Wahl zu erstellen.
 * [**Suche**](app-insights-diagnostic-search.md), um spezifische Instanzen von Ereignissen zu untersuchen, z.B. Anforderungen, Ausnahmen oder Protokollablaufverfolgungen.
 * [**Analytics**](app-insights-analytics.md) für leistungsfähige Abfragen über Ihre Telemetriedaten.
+* [**Livedatenströme**](app-insights-metrics-explorer.md#live-stream) für einen festen Satz zeitnaher Metriken, die nützlich sind, wenn Sie einen neuen Build bereitstellen oder debuggen.
 
 
 ![Hauptwege zum Anzeigen von Telemetriedaten](./media/app-insights-dashboards/010-oview.png)
@@ -109,4 +110,4 @@ Wenn Sie ein Dashboard erstellt haben, können Sie es für andere Benutzer freig
 
 Erfahren Sie mehr über [Rollen und Zugriffssteuerung](app-insights-resources-roles-access-control.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0608_2016-->

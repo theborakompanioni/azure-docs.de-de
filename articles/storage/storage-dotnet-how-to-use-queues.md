@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Erste Schritte mit Azure Queue Storage mit .NET | Microsoft Azure"
-	description="Asynchrones Senden und Empfangen von Nachrichten zwischen Anwendungskomponenten mit Azure Queue Storage. Hier erfahren Sie mehr zu den ersten Schritten bei einfachen Queue Storage-Vorgängen, einschließlich Erstellen und Löschen von Warteschlangen sowie Hinzufügen, Lesen und Löschen von Warteschlangennachrichten."
+	description="Azure-Warteschlangen ermöglichen zuverlässiges, asynchrones Messaging zwischen Anwendungskomponenten. Das Cloud-Messaging ermöglicht Ihren Anwendungskomponenten die unabhängige Skalierung."
 	services="storage"
 	documentationCenter=".net"
 	authors="robinsh"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="04/07/2016"
+	ms.date="06/09/2016"
 	ms.author="gusapost"/>
 
 # Erste Schritte mit Azure Queue Storage mit .NET
@@ -22,7 +22,7 @@
 
 ## Übersicht
 
-Azure Queue Storage ist ein Dienst, der Messagingwarteschlangen in der Cloud bereitstellt. Bei der Entwicklung von Anwendungen für Skalierungszwecke werden einzelne Anwendungskomponenten oft entkoppelt, damit sie unabhängig skaliert werden können. Der Warteschlangenspeicher bietet eine zuverlässige Messaginglösung für die asynchrone Kommunikation zwischen Anwendungskomponenten, egal ob diese in der Cloud, auf dem Desktop, auf einem lokalen Server oder einem mobilen Gerät ausgeführt werden. Queue Storage unterstützt auch die Verwaltung asynchroner Aufgaben und den Aufbau von Prozessworkflows.
+Azure Queue Storage ermöglicht Cloud-Messaging zwischen Anwendungskomponenten. Bei der Entwicklung von Anwendungen für Skalierungszwecke werden einzelne Anwendungskomponenten oft entkoppelt, damit sie unabhängig skaliert werden können. Queue Storage bietet asynchrones Messaging für die Kommunikation zwischen Anwendungskomponenten, egal ob diese in der Cloud, auf dem Desktop, auf einem lokalen Server oder einem mobilen Gerät ausgeführt werden. Queue Storage unterstützt auch die Verwaltung asynchroner Aufgaben und den Aufbau von Prozessworkflows.
 
 ### Informationen zu diesem Lernprogramm
 
@@ -275,4 +275,4 @@ Nachdem Sie sich nun mit den Grundlagen des Warteschlangenspeichers vertraut gem
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0615_2016-->

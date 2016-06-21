@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="05/08/2016"
+	ms.date="06/01/2016"
 	ms.author="tarcher" />
 
 # Debuggen eines Azure-Clouddiensts oder virtuellen Computers in Visual Studio
@@ -37,7 +37,7 @@ Der Emulator simuliert den Azure-Computedienst und wird in Ihrer lokalen Umgebun
 
     Im linken Bereich der Benutzeroberfläche werden die Dienste angezeigt, die zurzeit im Serveremulator bereitgestellt sind, sowie die Rolleninstanzen, die in jedem Dienst ausgeführt werden. Sie können den Dienst oder die Rollen auswählen, um Lebenszyklus-, Protokollierungs- und Diagnoseinformationen im rechten Bereich anzuzeigen. Wenn Sie den Fokus in den oberen Rand eines enthaltenen Fensters setzen, wird es erweitert und füllt den rechten Bereich aus.
 
-1. Durchlaufen Sie Ihre Anwendung schrittweise, indem Sie auf die Befehle im Menü **Debuggen** klicken und Haltepunkte in Ihrem Code festlegen. Wenn Sie die Anwendung im Debugger schrittweise durchlaufen, werden die Bereiche mit dem aktuellen Status der Anwendung aktualisiert. Wenn Sie das Debuggen beenden, wird die Anwendungsbereitstellung gelöscht. Wenn Ihre Anwendung eine Webrolle umfasst und Sie als Startaktion das Starten des Webbrowsers festgelegt haben, startet Visual Studio Ihre Webanwendung im Browser. Wenn Sie die Anzahl der Instanzen einer Rolle in der Dienstkonfiguration ändern, müssen Sie den Clouddienst beenden und dann das Debuggen neu starten, damit Sie diese neuen Instanzen der Rolle debuggen können.
+1. Durchlaufen Sie Ihre Anwendung schrittweise, indem Sie auf die Befehle im Menü **Debuggen** klicken und Haltepunkte in Ihrem Code setzen. Wenn Sie die Anwendung im Debugger schrittweise durchlaufen, werden die Bereiche mit dem aktuellen Status der Anwendung aktualisiert. Wenn Sie das Debuggen beenden, wird die Anwendungsbereitstellung gelöscht. Wenn Ihre Anwendung eine Webrolle umfasst und Sie als Startaktion das Starten des Webbrowsers festgelegt haben, startet Visual Studio Ihre Webanwendung im Browser. Wenn Sie die Anzahl der Instanzen einer Rolle in der Dienstkonfiguration ändern, müssen Sie den Clouddienst beenden und dann das Debuggen neu starten, damit Sie diese neuen Instanzen der Rolle debuggen können.
 
     **Hinweis:** Wenn Sie das Ausführen oder Debuggen des Diensts beenden, werden der lokale Serveremulator und der Speicheremulator nicht beendet. Sie müssen explizit über den Infobereich beendet werden.
 
@@ -78,13 +78,13 @@ Wenn Sie das Remotedebuggen für einen Clouddienst aktivieren, führt dies nicht
 
     ![Dialogfeld "Codetyp auswählen"](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718346.png)
 
-1. Zum Identifizieren der Prozesse, an die der Debugger angefügt ist, öffnen Sie das Dialogfeld "Prozesse", indem Sie auf der Menüleiste "Debuggen", "Fenster" und dann "Prozesse" auswählen. (Tastatur: Strg+Alt+Z) Um einen bestimmten Prozess zu trennen, öffnen Sie dessen Kontextmenü, und klicken Sie dann auf "Prozess abtrennen". Sie können auch den Instanzknoten im Server-Explorer suchen, dann den Prozess suchen, das Kontextmenü öffnen und auf "Prozess abtrennen" klicken.
+1. Zum Identifizieren der Prozesse, an die der Debugger angefügt ist, öffnen Sie das Dialogfeld "Prozesse", indem Sie auf der Menüleiste "Debuggen", "Fenster" und dann "Prozesse" auswählen. (Tastatur: Strg+Alt+Z) Um einen bestimmten Prozess zu trennen, öffnen Sie dessen Kontextmenü, und klicken Sie dann auf **Prozess abtrennen**. Sie können auch den Instanzknoten im Server-Explorer suchen, dann den Prozess suchen, das Kontextmenü öffnen und auf **Prozess abtrennen** klicken.
 
     ![Prozesse debuggen](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC690787.gif)
 
 >[AZURE.WARNING] Vermeiden Sie es beim Remotedebuggen, lange an Breakpoints anzuhalten. Azure behandelt Prozesse, die länger als einige Minuten angehalten wurden, als nicht reagierend und sendet keinen Datenverkehr mehr an diese Instanz. Wenn Sie zu lange unterbrechen, wird "msvsmon.exe" vom Prozess getrennt.
 
-Um den Debugger von allen Prozessen in Ihrer Instanz oder Rolle zu trennen, öffnen Sie das Kontextmenü für die Rolle oder Instanz, die Sie debuggen, und klicken Sie dann auf "Debugger lösen".
+Um den Debugger von allen Prozessen in Ihrer Instanz oder Rolle zu trennen, öffnen Sie das Kontextmenü für die Rolle oder Instanz, die Sie debuggen, und klicken Sie dann auf **Debugger lösen**.
 
 ## Einschränkungen beim Remotedebuggen in Azure
 
@@ -190,4 +190,4 @@ Visual Studio ASP.NET-Projekte bieten eine Option, einen praktischen virtuellen 
 - Verwenden Sie **IntelliTrace**, um ein Protokoll der Aufrufe und Ereignisse von einem freigegebenen Server zu sammeln. Weitere Informationen finden Sie unter [Debuggen eines veröffentlichten Clouddiensts mit IntelliTrace und Visual Studio](http://go.microsoft.com/fwlink/?LinkID=623016).
 - Verwenden Sie die **Azure-Diagnose**, um ausführliche Informationen zu Code, der in Rollen ausgeführt wird, zu protokollieren, unabhängig davon, ob die Rollen in der Entwicklungsumgebung oder in Azure ausgeführt werden. Weitere Informationen finden Sie unter [Sammeln von Protokollierungsdaten mit der Azure-Diagnose](http://go.microsoft.com/fwlink/p/?LinkId=400450).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

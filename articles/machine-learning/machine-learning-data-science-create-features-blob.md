@@ -130,11 +130,11 @@ Nachdem Sie die Daten untersucht und die erforderlichen Funktionen erstellt habe
 	    except:	        
 		    print ("Something went wrong with uploading blob:"+BLOBNAME)
 
-3. Die Daten können nun wie im folgenden Screenshot gezeigt mit dem [Reader](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)-Modul von Azure Machine Learning aus dem Blob gelesen werden:
+3. Die Daten können nun wie im folgenden Screenshot gezeigt mit dem [Import Data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)-Modul von Azure Machine Learning aus dem Blob gelesen werden:
  
 ![Reader-Blob](./media/machine-learning-data-science-process-data-blob/reader_blob.png)
 
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

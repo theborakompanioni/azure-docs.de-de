@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/24/2016"
+   ms.date="06/03/2016"
    ms.author="telmos" />
 
 # Namensauflösung für virtuelle Computer und Rolleninstanzen
@@ -33,7 +33,7 @@ Welche Art der Namensauflösung Sie verwenden, hängt davon ab, wie die virtuell
 |--------------|--------------|----------|
 | Namensauflösung zwischen Rolleninstanzen oder virtuellen Computern im gleichen Clouddienst oder virtuellen Netzwerk | [Von Azure bereitgestellte Namensauflösung](#azure-provided-name-resolution)| Hostname oder FQDN |
 | Namensauflösung zwischen Rolleninstanzen und virtuellen Computern in unterschiedlichen virtuellen Netzwerken | Vom Kunden verwaltete DNS-Server leiten Abfragen zwischen virtuellen Netzwerken zur Auflösung durch Azure (DNS-Proxy) weiter. Siehe [Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-using-your-own-dns-server).| Nur FQDN |
-| Auflösung lokaler Computer- und Dienstnamen von Rolleninstanzen oder virtuellen Computern in Azure | Vom Kunden verwaltete DNS-Server (z. B. lokale Domänencontroller, lokale schreibgeschützte Domänencontroller oder ein sekundärer DNS-Server, der mithilfe von Zonenübertragungen synchronisiert wird). Siehe [Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-using-your-own-dns-server).|Nur FQDN |
+| Auflösung lokaler Computer- und Dienstnamen von Rolleninstanzen oder virtuellen Computern in Azure | Vom Kunden verwaltete DNS-Server (z.B. lokale Domänencontroller, lokale schreibgeschützte Domänencontroller oder ein sekundärer DNS-Server, der mithilfe von Zonenübertragungen synchronisiert wird). Siehe [Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-using-your-own-dns-server).|Nur FQDN |
 | Auflösung von Azure-Hostnamen von lokalen Computern | Weiterleiten von Abfragen an einen vom Kunden verwalteten DNS-Proxyserver im zugehörigen virtuellen Netzwerk. Der Proxyserver leitet Abfragen zur Auflösung an Azure weiter. Siehe [Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-using-your-own-dns-server).| Nur FQDN |
 | Reverse-DNS für interne IPs | [Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-using-your-own-dns-server) | – |
 | Namensauflösung zwischen virtuellen Computern oder Rolleninstanzen in unterschiedlichen Clouddiensten, nicht in einem virtuellen Netzwerk| Nicht zutreffend Die Konnektivität zwischen virtuellen Computern und Rolleninstanzen in verschiedenen Clouddiensten wird außerhalb eines virtuellen Netzwerks nicht unterstützt.| – |
@@ -70,11 +70,11 @@ Zusammen mit der Auflösung des öffentlichen DNS-Namens bietet Azure die Auflö
 
 - WINS und NetBIOS werden nicht unterstützt. (Ihre virtuellen Computer werden im Windows-Explorer nicht angezeigt.)
 
-- Hostnamen müssen DNS-kompatibel sein. (Es dürfen nur 0-9, a-Z und "-" verwendet werden, und sie dürfen nicht mit "-" beginnen. Siehe RFC 3696 Abschnitt 2).
+- Hostnamen müssen DNS-kompatibel sein. (Es dürfen nur 0-9, a-Z und "-" verwendet werden, und sie dürfen nicht mit "-" beginnen. Siehe RFC 3696 Abschnitt 2).
 
 - Der DNS-Abfragedatenverkehr wird für den jeweiligen virtuellen Computer gedrosselt. Dies sollte auf die meisten Anwendungen keine Auswirkungen haben. Wenn eine Drosselung der Anforderungen festgestellt wird, stellen Sie sicher, dass clientseitiges Zwischenspeichern aktiviert ist. Weitere Informationen finden Sie unter [Getting the most from Azure-provided name resolution](#Getting-the-most-from-Azure-provided-name-resolution) (auf Englisch).
 
-- Nur virtuelle Computer in den ersten 180 Clouddiensten werden für jedes virtuelle Netzwerk in einem klassischen Bereitstellungsmodell registriert. Dies gilt nicht für virtuelle Netzwerke in Resource Manager-Bereitstellungsmodellen.
+- Nur virtuelle Computer in den ersten 180 Clouddiensten werden für jedes virtuelle Netzwerk in einem klassischen Bereitstellungsmodell registriert. Dies gilt nicht für virtuelle Netzwerke in Resource Manager-Bereitstellungsmodellen.
 
 
 ### Die optimale Nutzung der von Azure bereitgestellten Namensauflösung
@@ -84,7 +84,7 @@ Nicht alle DNS-Abfragen müssen über das Netzwerk gesendet werden. Clientseitig
 
 Der standardmäßige DNS-Client von Windows verfügt über einen integrierten DNS-Cache. Einige Linux-Distributionen bieten standardmäßig kein Zwischenspeichern. Deshalb wird empfohlen, diese Funktion zu jedem virtuellen Linux-Computer hinzuzufügen (nachdem Sie sich vergewissert haben, dass noch kein lokaler Cache vorhanden ist).
 
-Es gibt eine Reihe verschiedener DNS-Cachingpakete, z. B. dnsmasq. Es folgen die Schritte zur Installation von dnsmasq auf den am häufigsten verwendeten Distributionen:
+Es gibt eine Reihe verschiedener DNS-Cachingpakete, z.B. dnsmasq. Es folgen die Schritte zur Installation von dnsmasq auf den am häufigsten verwendeten Distributionen:
 
 - **Ubuntu (verwendet resolvconf)**:
 	- Installieren Sie einfach das dnsmasq-Paket ("sudo apt-get install dnsmasq").
@@ -101,7 +101,7 @@ Es gibt eine Reihe verschiedener DNS-Cachingpakete, z. B. dnsmasq. Es folgen die
 	- Fügen Sie "prepend domain-name-servers 127.0.0.1;" zu "/etc/dhclient-eth0.conf" hinzu.
 	- Starten Sie den Netzwerkdienst neu ("service network restart"), um den Cache als lokalen DNS-Auflöser festzulegen.
 
-> [AZURE.NOTE]\: Das dnsmasq-Paket ist nur einer der vielen DNS-Caches, die für Linux verfügbar sind. Bevor Sie es nutzen, überprüfen Sie dessen Eignung für Ihre besonderen Bedürfnisse und außerdem, ob keine anderer Cache installiert ist.
+> [AZURE.NOTE] Das dnsmasq-Paket ist nur einer der vielen DNS-Caches, die für Linux verfügbar sind. Bevor Sie es nutzen, überprüfen Sie dessen Eignung für Ihre besonderen Bedürfnisse und außerdem, ob keine anderer Cache installiert ist.
 
 **Clientseitige Wiederholungsversuche:**
 
@@ -110,7 +110,7 @@ DNS ist in erster Linie ein UDP-Protokoll. Da das UDP-Protokoll keine Nachrichte
  - Windows-Betriebssysteme starten nach 1 Sekunde einen Wiederholungsversuch und dann erneut nach weiteren 2, 4 und weiteren 4 Sekunden. 
  - Das standardmäßige Linux-Setup führt nach 5 Sekunden einen Wiederholungsversuch aus. Es wird empfohlen, dies so zu ändern, dass 5 Mal im Abstand von 1 Sekunde ein Wiederholungsversuch gestartet wird.  
 
-Geben Sie zum Überprüfen der aktuellen Einstellungen auf einem virtuellen Linux-Computer "cat /etc/resolv.conf" ein, und betrachten Sie die Zeile "Optionen", z. B.:
+Geben Sie zum Überprüfen der aktuellen Einstellungen auf einem virtuellen Linux-Computer "cat /etc/resolv.conf" ein, und betrachten Sie die Zeile "Optionen", z.B.:
 
 	options timeout:1 attempts:5
 
@@ -131,11 +131,13 @@ Es gibt verschiedene Situationen, in denen die Namensauflösung über die von Az
 
 DNS-Server innerhalb eines virtuellen Netzwerks können DNS-Abfragen an die rekursiven Resolver von Azure weiterleiten, um Hostnamen innerhalb dieses virtuellen Netzwerks aufzulösen. Beispielsweise kann ein in Azure ausgeführter Domänencontroller (DC) auf DNS-Abfragen für die eigenen Domänen antworten und alle anderen Abfragen an Azure weiterleiten. Auf diese Weise sind sowohl Ihre lokalen Ressourcen (über den DC) als auch die von Azure bereitgestellten Hostnamen (über die Weiterleitung) für die virtuellen Computer sichtbar. Der Zugriff auf die rekursiven Resolver von Azure wird über die virtuelle IP 168.63.129.16 bereitgestellt.
 
-Durch die DNS-Weiterleitung wird außerdem eine DNS-Auflösung zwischen virtuellen Netzwerken ermöglicht, und die lokalen Computer können von Azure bereitgestellte Hostnamen auflösen. Um einen Hostnamen eines virtuellen Computers aufzulösen, muss sich die DNS-Server-VM im selben virtuellen Netzwerk befinden und zur Weiterleitung von Abfragen für Hostnamen an Azure konfiguriert sein. Da jedes virtuelle Netzwerk ein eigenes DNS-Suffix verwendet, können Sie mithilfe von Regeln für die bedingte Weiterleitung DNS-Abfragen zur Auflösung an das richtige virtuelle Netzwerk senden. Die folgende Abbildung zeigt zwei virtuelle Netzwerke und ein lokales Netzwerk, in dem eine DNS-Auflösung zwischen virtuellen Netzwerken mithilfe dieser Methode durchgeführt wird:
+Durch die DNS-Weiterleitung wird außerdem eine DNS-Auflösung zwischen virtuellen Netzwerken ermöglicht, und die lokalen Computer können von Azure bereitgestellte Hostnamen auflösen. Um einen Hostnamen eines virtuellen Computers aufzulösen, muss sich die DNS-Server-VM im selben virtuellen Netzwerk befinden und zur Weiterleitung von Abfragen für Hostnamen an Azure konfiguriert sein. Da jedes virtuelle Netzwerk ein eigenes DNS-Suffix verwendet, können Sie mithilfe von Regeln für die bedingte Weiterleitung DNS-Abfragen zur Auflösung an das richtige virtuelle Netzwerk senden. Die folgende Abbildung zeigt zwei virtuelle Netzwerke und ein lokales Netzwerk, in dem eine DNS-Auflösung zwischen virtuellen Netzwerken mithilfe dieser Methode durchgeführt wird. Ein Beispiel für eine DNS-Weiterleitung steht im [Katalog mit Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/301-dns-forwarder/) und auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder) zur Verfügung.
 
 ![DNS-Auflösung zwischen virtuellen Netzwerken](./media/virtual-networks-name-resolution-for-vms-and-role-instances/inter-vnet-dns.png)
 
-Bei Verwendung der von Azure bereitgestellten Namensauflösung wird jedem virtuellen Computer, der DHCP verwendet, das interne DNS-Suffix bereitgestellt. Wenn Sie eine eigene Lösung für die Namensauflösung verwenden, wird dieses Suffix nicht bereitgestellt, weil es Konflikte mit anderen DNS-Architekturen verursacht. Um per FQDN auf Computer zu verweisen oder das Suffix auf Ihren virtuellen Computern zu konfigurieren, kann das Suffix mithilfe von PowerShell oder der API ermittelt werden:
+Bei Verwendung der von Azure bereitgestellten Namensauflösung wird für jeden virtuellen Computer, der DHCP verwendet, ein internes DNS-Suffix (*.internal.cloudapp.net) bereitgestellt. Dies ermöglicht die Auflösung von Hostnamen, da sich die Einträge für die Hostnamen in der Zone „internal.cloudapp.net“ befinden. Wenn Sie eine eigene Lösung für die Namensauflösung verwenden, wird das interne DNS-Suffix nicht für die virtuellen Computer bereitgestellt, weil es Konflikte mit anderen DNS-Architekturen verursacht (z.B. in Szenarien mit Domäneneinbindung). Stattdessen stellen wir einen nicht funktionsfähigen Platzhalter bereit (reddog.microsoft.com).
+
+Bei Bedarf kann das interne DNS-Suffix mithilfe von PowerShell oder mit der API ermittelt werden:
 
 -  In virtuellen Netzwerken in Resource Manager-Bereitstellungsmodellen steht das Suffix über die [Netzwerkschnittstellenkarte](https://msdn.microsoft.com/library/azure/mt163668.aspx) oder das Cmdlet [Get-AzureRmNetworkInterface](https://msdn.microsoft.com/library/mt619434.aspx) zur Verfügung.    
 -  In klassischen Bereitstellungsmodellen steht das Suffix über einen Aufruf von [Get Deployment-API](https://msdn.microsoft.com/library/azure/ee460804.aspx) oder das Cmdlet [Get-AzureVM -Debug](https://msdn.microsoft.com/library/azure/dn495236.aspx) zur Verfügung.
@@ -143,12 +145,12 @@ Bei Verwendung der von Azure bereitgestellten Namensauflösung wird jedem virtue
 
 Wenn eine Abfrageweiterleitung an Azure nicht Ihren Anforderungen entspricht, müssen Sie eine eigene DNS-Lösung bereitstellen. Ihre DNS-Lösung muss folgende Kriterien erfüllen:
 
--  Bereitstellung einer geeigneten Hostnamensauflösung, z. B. über [DDNS](virtual-networks-name-resolution-ddns.md). Beachten Sie, dass Sie bei der Verwendung von DDNS möglicherweise die DNS-Eintragsbereinigung deaktivieren müssen, da die DHCP-Leases von Azure sehr lange gültig sind und die DNS-Einträge durch eine Bereinigung möglicherweise zu früh entfernt werden. 
+-  Bereitstellung einer geeigneten Hostnamensauflösung, z.B. über [DDNS](virtual-networks-name-resolution-ddns.md). Beachten Sie, dass Sie bei der Verwendung von DDNS möglicherweise die DNS-Eintragsbereinigung deaktivieren müssen, da die DHCP-Leases von Azure sehr lange gültig sind und die DNS-Einträge durch eine Bereinigung möglicherweise zu früh entfernt werden. 
 -  Bereitstellung einer geeigneten rekursiven Lösung, um eine Auflösung externer Domänennamen zu ermöglichen.
--  Möglichkeit zum Zugriff (TCP und UDP auf Port 53) von den Clients, die Dienste beziehen, und Internetzugriff.
+-  Möglichkeit zum Zugriff (TCP und UDP auf Port 53) von den Clients, die Dienste beziehen, und Internetzugriff.
 -  Schutz vor einem Zugriff aus dem Internet, um mögliche Bedrohungen durch externe Agents zu minimieren.
 
-> [AZURE.NOTE] Für eine optimale Leistung bei Verwendung von virtuellen Azure-Computern als DNS-Server sollte IPv6 deaktiviert und eine [öffentliche IP-Adresse auf Instanzebene](virtual-networks-instance-level-public-ip.mp) jedem virtuellen DNS-Servercomputer zugewiesen werden. Wenn Sie Windows Server als DNS-Server verwenden, finden Sie in [diesem Artikel](http://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx) zusätzliche Informationen zur Leistungsanalyse und zu Optimierungsmöglichkeiten.
+> [AZURE.NOTE] Für eine optimale Leistung bei Verwendung von virtuellen Azure-Computern als DNS-Server sollte IPv6 deaktiviert und eine [öffentliche IP-Adresse auf Instanzebene](virtual-networks-instance-level-public-ip.md) jedem virtuellen DNS-Servercomputer zugewiesen werden. Wenn Sie Windows Server als DNS-Server verwenden, finden Sie in [diesem Artikel](http://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx) zusätzliche Informationen zur Leistungsanalyse und zu Optimierungsmöglichkeiten.
 
 
 ### Angeben von DNS-Servern
@@ -158,9 +160,9 @@ Wenn Sie eigene DNS-Server verwenden, bietet Azure die Möglichkeit, für jedes 
 > [AZURE.NOTE] Netzwerkverbindungseigenschaften wie DNS-Server-IP-Adressen sollten nicht direkt in Windows-VMs bearbeitet werden, da sie bei Dienstwartungen gelöscht werden können, wenn der virtuelle Netzwerkadapter ersetzt wird.
 
 
-Wenn Sie das Resource Manager-Bereitstellungsmodell verwenden, können DNS-Server im Portal, der API/Vorlagen ([VNET](https://msdn.microsoft.com/library/azure/mt163661.aspx), [NIC](https://msdn.microsoft.com/library/azure/mt163668.aspx)) oder PowerShell ([VNET](https://msdn.microsoft.com/library/mt603657.aspx), [NIC](https://msdn.microsoft.com/library/mt619370.aspx)) angegeben werden.
+Wenn Sie das Resource Manager-Bereitstellungsmodell verwenden, können DNS-Server im Portal, mit der API/mit Vorlagen ([vnet](https://msdn.microsoft.com/library/azure/mt163661.aspx), [nic](https://msdn.microsoft.com/library/azure/mt163668.aspx)) oder mit PowerShell ([vnet](https://msdn.microsoft.com/library/mt603657.aspx), [nic](https://msdn.microsoft.com/library/mt619370.aspx)) angegeben werden.
 
-Wenn Sie das klassische Bereitstellungsmodell verwenden, können DNS-Server für das virtuelle Netzwerk im Portal oder in der [*Netzwerkkonfigurationsdatei*](https://msdn.microsoft.com/library/azure/jj157100) angegeben werden. Für Clouddienste werden DNS-Server über die [*Dienstkonfigurationsdatei*](https://msdn.microsoft.com/library/azure/ee758710) oder in PowerShell ([New-AzureVM](https://msdn.microsoft.com/library/azure/dn495254.aspx)) angegeben.
+Wenn Sie das klassische Bereitstellungsmodell verwenden, können DNS-Server für das virtuelle Netzwerk im Portal oder in der [*Netzwerkkonfigurationsdatei*](https://msdn.microsoft.com/library/azure/jj157100) angegeben werden. Für Clouddienste werden DNS-Server über die [*Dienstkonfigurationsdatei*](https://msdn.microsoft.com/library/azure/ee758710) oder mit PowerShell ([New-AzureVM](https://msdn.microsoft.com/library/azure/dn495254.aspx)) angegeben.
 
 > [AZURE.NOTE] Wenn Sie die DNS-Einstellungen für virtuelle Netzwerke oder virtuelle Computer ändern, die bereits bereitgestellt wurden, müssen Sie alle betroffenen virtuellen Computer neu starten, damit die Änderungen wirksam werden.
 
@@ -181,4 +183,4 @@ Klassisches Bereitstellungsmodell:
 - [Konfigurationsschema für virtuelle Netzwerke](https://msdn.microsoft.com/library/azure/jj157100)
 - [Konfigurieren eines virtuellen Netzwerks mithilfe einer Netzwerkkonfigurationsdatei](virtual-networks-using-network-configuration-file.md) 
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0608_2016-->

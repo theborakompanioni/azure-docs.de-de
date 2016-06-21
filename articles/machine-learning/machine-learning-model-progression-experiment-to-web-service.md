@@ -128,7 +128,7 @@ Das hängt davon ab, was Sie aktualisieren möchten:
 
 Wenn Sie nicht das Modell ändern möchten, sondern nur die Art und Weise, wie Daten vom Webdienst verarbeitet werden, können Sie das Vorhersageexperiment bearbeiten und dann erneut auf **Deploy Web Service** klicken. Der Webdienst wird beendet, das aktualisierte Vorhersageexperiment wird bereitgestellt, und der Webdienst wird erneut gestartet.
 
-Beispiel: Angenommen, das Vorhersageexperiment gibt die gesamte Zeile der Eingabedaten mit dem vorhergesagten Ergebnis zurück. Sie beschließen, dass der Webdienst nur das Ergebnis zurückgeben soll. Sie können im Vorhersageexperiment direkt vor dem Ausgabeport ein Modul **Project Columns** hinzufügen, um andere Spalten außer dem Ergebnis auszuschließen. Wenn Sie erneut auf **Deploy Web Service** klicken, wird der Webdienst aktualisiert.
+Beispiel: Angenommen, das Vorhersageexperiment gibt die gesamte Zeile der Eingabedaten mit dem vorhergesagten Ergebnis zurück. Sie beschließen, dass der Webdienst nur das Ergebnis zurückgeben soll. Sie können im Vorhersageexperiment direkt vor dem Ausgabeport ein **Select Columns in Dataset**-Modul hinzufügen, um andere Spalten außer dem Ergebnis auszuschließen. Wenn Sie erneut auf **Deploy Web Service** klicken, wird der Webdienst aktualisiert.
 
 **Sie möchten das Modell mit neuen Daten neu trainieren**
 
@@ -160,4 +160,4 @@ Beispiele für den gesamten Prozess finden Sie unter:
 
 -   [Exemplarische Vorgehensweise: Entwickeln einer Lösung zur Vorhersageanalyse für die Kreditrisikobewertung in Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

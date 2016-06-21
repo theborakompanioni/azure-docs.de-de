@@ -22,7 +22,7 @@
 ## Schnellbefehle
 Sie können [diese Schritte auch über Azure PowerShell ausführen](virtual-machines-windows-nsg-quickstart-powershell.md).
 
-Erstellen Sie zuerst Ihre Netzwerksicherheitsgruppe. Wählen Sie im Portal eine Ressourcengruppe aus, klicken Sie auf „Hinzufügen“, und suchen Sie dann nach einer bestimmten Netzwerksicherheitsgruppe:
+Erstellen Sie zuerst Ihre Netzwerksicherheitsgruppe. Wählen Sie im Portal eine Ressourcengruppe aus, klicken Sie auf „Hinzufügen“, suchen Sie nach „Netzwerksicherheitsgruppe“, und wählen Sie diese Option aus:
 
 ![Hinzufügen einer Netzwerksicherheitsgruppe](./media/virtual-machines-windows-nsg-quickstart-portal/add-nsg.png)
 
@@ -54,13 +54,13 @@ Mit diesen Schnellbefehlen können Sie den Datenverkehr zu Ihrem virtuellen Comp
 
 Netzwerksicherheitsgruppen und ACL-Regeln können auch als Teil von Azure Resource Manager-Vorlagen definiert werden. Erfahren Sie mehr über das [Erstellen von Netzwerksicherheitsgruppen mit Vorlagen](../virtual-network/virtual-networks-create-nsg-arm-template.md).
 
-Wenn eine Portweiterleitung notwendig ist, um einem internen Port Ihres virtuellen Computers einen eindeutigen externen Port zuzuordnen, müssen Load Balancer- und NAT-Regeln (Netzwerkadressenübersetzung) verwendet werden. Sie können beispielsweise TCP-Port 8080 extern verfügbar machen und den Datenverkehr an TCP-Port 80 auf einem virtuellen Computer weiterleiten. Hier finden Sie weitere Informationen zum [Erstellen eines Load Balancers mit Internetzugriff](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
+Wenn eine Portweiterleitung notwendig ist, um einem internen Port des virtuellen Computers einen eindeutigen externen Port zuzuweisen, müssen ein Lastenausgleich sowie NAT-Regeln (Network Address Translation, Netzwerkadressübersetzung) verwendet werden. Sie können beispielsweise TCP-Port 8080 extern verfügbar machen und den Datenverkehr an TCP-Port 80 auf einem virtuellen Computer weiterleiten. Hier finden Sie weitere Informationen zum [Erstellen eines Load Balancers mit Internetzugriff](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
 
 ## Nächste Schritte
-In diesem Beispiel haben Sie eine einfache Regel erstellt, die den HTTP-Verkehr ermöglicht. Informationen zum Erstellen von detaillierteren Umgebungen finden Sie in den folgenden Artikeln:
+In diesem Beispiel haben Sie eine einfache Regel erstellt, die HTTP-Datenverkehr zulässt. Informationen zum Erstellen von detaillierteren Umgebungen finden Sie in den folgenden Artikeln:
 
 - [Übersicht über Azure Resource Manager](../resource-group-overview.md)
 - [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md)
 - [Übersicht über Azure Resource Manager für Load Balancer](../load-balancer/load-balancer-arm.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

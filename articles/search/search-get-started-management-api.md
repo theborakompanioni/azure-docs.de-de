@@ -4,7 +4,7 @@
 	services="search" 
 	documentationCenter="" 
 	authors="HeidiSteen" 
-	manager="mblythe" 
+	manager="paulettm" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="02/04/2016" 
+	ms.date="06/08/2016" 
 	ms.author="heidist"/>
 
 # Erste Schritte mit der Azure Search Management-REST-API
@@ -38,7 +38,7 @@ Sie benötigen ein Azure-Konto, um dieses Lernprogramm durchführen zu können:
 
 Dieses Lernprogramm basiert auf einer Windows-Konsolenanwendung, geschrieben in C#, die Sie bearbeiten und in Visual Studio 2012 oder 2013 ausführen können
 
-Die Clientanwendung finden Sie auf Codeplex unter [Azure Search Management API Demo](https://github.com/Azure-Samples/search-dotnet-management-api/).
+Die Clientanwendung finden Sie auf Github unter [Azure Search .NET Management API Demo](https://github.com/Azure-Samples/search-dotnet-management-api/).
 
 
 ##Konfigurieren der Anwendung
@@ -208,4 +208,4 @@ Nach Abschluss dieses Lernprogramms empfiehlt es sich, mehr über die Dienstverw
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0608_2016-->

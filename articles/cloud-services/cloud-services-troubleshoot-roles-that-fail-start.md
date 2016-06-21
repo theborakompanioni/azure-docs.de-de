@@ -13,18 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="05/26/2016"
+   ms.date="06/03/2016"
    ms.author="v-six" />
 
 # Problembehandlung bei Clouddienstrollen, die nicht gestartet werden
 
 In diesem Artikel finden Sie Informationen zu allgemeinen Problemen in Zusammenhang mit nicht gestarteten Azure-Clouddienstrollen sowie zur Lösung dieser Probleme.
 
-## Kontaktieren des Azure-Kundensupports
-
-Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Ihre Frage im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) stellen, um dort Hilfe von Azure-Experten zu erhalten.
-
-Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](http://azure.microsoft.com/support/options/) auf, und klicken Sie auf **Support erhalten**. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](http://azure.microsoft.com/support/faq/).
+[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## Fehlende DLLs oder Abhängigkeiten
 
@@ -115,7 +111,7 @@ Bei dieser Diagnosemethode erzielen Sie die besten Ergebnisse, wenn Sie einen ph
 
 4. Kopieren Sie den CSX-Ordner und die CSCFG-Datei auf den Computer, den Sie zum Debuggen von Problemen verwenden.
 
-5. Öffnen Sie auf dem neu installierten Computer eine Azure SDK-Eingabeaufforderung, und geben Sie `csrun.exe /devstore:start` ein.
+5. Öffnen Sie auf dem neu installierten Computer ein Azure SDK-Eingabeaufforderungsfenster, und geben Sie `csrun.exe /devstore:start` ein.
 
 6. Geben Sie an der Eingabeaufforderung Folgendes ein: `run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser`.
 
@@ -123,7 +119,7 @@ Bei dieser Diagnosemethode erzielen Sie die besten Ergebnisse, wenn Sie einen ph
 
 ## Diagnostizieren von Problemen mit IntelliTrace
 
-Für Worker- und Webrollen, die .NET Framework 4 verwenden, können Sie [IntelliTrace](https://msdn.microsoft.com/library/dd264915.aspx) nutzen. Diese Funktion steht in [Microsoft Visual Studio Ultimate](https://www.visualstudio.com/products/visual-studio-ultimate-with-MSDN-vs) zur Verfügung.
+Für Worker- und Webrollen, die .NET Framework 4 verwenden, können Sie [IntelliTrace](https://msdn.microsoft.com/library/dd264915.aspx) nutzen. Diese Funktion steht in [Microsoft Visual Studio Ultimate](https://www.visualstudio.com/products/visual-studio-ultimate-with-MSDN-vs) zur Verfügung.
 
 Gehen Sie folgendermaßen vor, um den Dienst mit aktiviertem IntelliTrace bereitzustellen:
 
@@ -159,12 +155,12 @@ Um Fehler mit fehlenden DLLs und Assemblys zu beheben, gehen Sie folgendermaßen
 
 5. Stellen Sie den Clouddienst erneut bereit.
 
-Nachdem Sie bestätigt haben, dass alle Fehler korrigiert wurden, können Sie den Dienst bereitstellen, ohne das Kontrollkästchen **IntelliTrace für .NET 4-Rollen aktivieren** zu aktivieren.
+Nachdem Sie bestätigt haben, dass alle Fehler korrigiert wurden, können Sie den Dienst bereitstellen, ohne das Kontrollkästchen **IntelliTrace für .NET 4-Rollen aktivieren** zu aktivieren.
 
 ## Nächste Schritte
 
-Sehen Sie sich weitere [Artikel zur Problembehandlung](..\?tag=top-support-issue&service=cloud-services) für Clouddienste an.
+Sehen Sie sich weitere [Artikel zur Problembehandlung](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) für Clouddienste an.
 
 Erfahren Sie in der [Blogreihe von Kevin Williamson](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx), wie Sie Probleme bei Clouddienstrollen mit den Compute-Diagnosedaten von Azure-PaaS beheben.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

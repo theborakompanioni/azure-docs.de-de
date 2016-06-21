@@ -156,9 +156,6 @@ Beibehalten der eingebundenen Freigabe:
     clusrun /nodegroup:LinuxNodes "echo //<saname>.file.core.windows.net/<sharename> /hpcdata cifs vers=2.1,username=<saname>,password='<sakey>',dir_mode=0777,file_mode=0777 >> /etc/fstab"
 ```
 
-## Aktualisieren der Linux-Treiber
-Die InfiniBand-Treiber der Linux-Computeknoten müssen unter Umständen aktualisiert werden. Weitere Informationen finden Sie im Artikel [Update the Linux RDMA drivers for SLES 12](virtual-machines-linux-classic-rdma-cluster.md/#update-the-linux-rdma-drivers-for-sles-12) (Aktualisieren von Linux-RDMA-Treibern für SLES 12).
-
 ## Installieren von STAR-CCM+
 Die Azure-VM-Instanzen A8 und A9 bieten InfiniBand-Unterstützung und RDMA-Funktionen. Die Kernel-Treiber, die diese Funktionen ermöglichen, stehen im Azure Marketplace für Windows Server 2012 R2-, SUSE 12-, CentOS 6.5- und CentOS 7.1-Images zur Verfügung. Microsoft MPI und Intel MPI (Version 5.x) sind die beiden MPI-Bibliotheken, die diese Treiber in Azure unterstützen.
 
@@ -214,7 +211,7 @@ Die Knoten werden exklusiv für den Auftrag zugeordnet und können nicht für an
 
 Das Eingabemodell und das Skript **runstarccm.sh** werden in der zuvor eingebundenen Freigabe **/hpcdata** gespeichert.
 
-Die Protokolldateien werden mit der Auftrags-ID benannt und zusammen mit den STAR-CCM+-Ausgabedateien in der Freigabe **/hpcdata share** gespeichert.
+Die Protokolldateien werden mit der Auftrags-ID benannt und zusammen mit den STAR-CCM+-Ausgabedateien in der Freigabe **/hpcdata** gespeichert.
 
 
 #### Beispielskript für „SubmitStarccmJob.ps1“
@@ -289,7 +286,7 @@ Ersetzen Sie **runner.java** durch Ihr bevorzugtes STAR-CCM+-Javamodell-Startpro
     exit ${RTNSTS}
 ```
 
-In unserem Test haben wir ein Power-On-Demand-Lizenztoken verwendet. Für dieses Token haben Sie die Umgebungsvariable **$CDLMD\_LICENSE\_FILE** auf **1999@flex.cd-adapco.com** und den Schlüssel in der Befehlszeilenoption**-podkey** festgelegt.
+In unserem Test haben wir ein Power-On-Demand-Lizenztoken verwendet. Für dieses Token müssen Sie die Umgebungsvariable **$CDLMD\_LICENSE\_FILE** auf **1999@flex.cd-adapco.com** und außerdem den Schlüssel in der Befehlszeilenoption **-podkey** festlegen.
 
 Nach der Initialisierung extrahiert das Skript aus den von HPC Pack festgelegten Umgebungsvariablen vom Typ **$CCP\_NODES\_CORES** eine Liste mit Knoten zum Erstellen einer Hostdatei für das MPI-Startprogramm. Diese Hostdatei enthält eine Liste mit den Computeknotennamen für den Auftrag (jeweils ein Name pro Zeile).
 
@@ -317,7 +314,7 @@ Für Intel MPI unter Azure werden folgende MPI-Optionen verwendet:
 
 *   `-cpubind bandwidth,v` zur Optimierung der Bandbreite für MPI mit STAR-CCM+
 
-*   `-mppflags "-ppn $NBCORESPERNODE -genv I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -genv I_MPI_DAPL_UD=0 -genv I_MPI_DYNAMIC_CONNECTION=0"` zum Sicherstellen, dass Intel MPI mit Azure InfiniBand funktioniert, und zum Festlegen der erforderlichen Anzahl an Kernen pro Knoten
+*   `-mppflags "-ppn $NBCORESPERNODE -genv I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -genv I_MPI_DAPL_UD=0 -genv I_MPI_DYNAMIC_CONNECTION=0"` zum Sicherstellen, dass Intel MPI mit Azure InfiniBand funktioniert, und zum Festlegen der erforderlichen Anzahl von Kernen pro Knoten
 
 *   `-batch` zum Starten von STAR-CCM+ im Batchmodus ohne Benutzeroberfläche
 
@@ -348,4 +345,4 @@ Versuchen Sie, andere Linux-Workloads auszuführen. Siehe hierzu z.B.:
 [hndeploy]: ./media/virtual-machines-linux-classic-hpcpack-cluster-starccm/hndeploy.png
 [clustermanager]: ./media/virtual-machines-linux-classic-hpcpack-cluster-starccm/ClusterManager.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

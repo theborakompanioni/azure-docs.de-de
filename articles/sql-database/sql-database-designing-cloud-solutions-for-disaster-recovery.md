@@ -24,7 +24,7 @@
 
 
 
-Erfahren Sie, wie Sie die [Georeplikation](sql-database-geo-replication-overview.md) in der SQL-Datenbank verwenden, um Datenbankanwendungen zu entwerfen, die gegen regionale Ausfälle und schwerwiegende Fehler resistent sind. Für die Planung der Geschäftskontinuität betrachten Sie die Topologie für die Anwendungsbereitstellung, die angestrebte Vereinbarung zum Servicelevel, die Datenverkehrslatenz und die Kosten. In diesem Artikel untersuchen wir die gängigsten Anwendungsmuster und erörtern die Vor- und Nachteile der einzelnen Optionen.
+Erfahren Sie, wie Sie die [aktive Georeplikation](sql-database-geo-replication-overview.md) in der SQL-Datenbank verwenden, um Datenbankanwendungen zu entwerfen, die gegen regionale Ausfälle und schwerwiegende Fehler resistent sind. Für die Planung der Geschäftskontinuität betrachten Sie die Topologie für die Anwendungsbereitstellung, die angestrebte Vereinbarung zum Servicelevel, die Datenverkehrslatenz und die Kosten. In diesem Artikel untersuchen wir die gängigsten Anwendungsmuster und erörtern die Vor- und Nachteile der einzelnen Optionen.
 
 ## Entwurfsmuster 1: Aktiv-/Passiv-Bereitstellung für eine cloudbasierte Notfallwiederherstellung mit zusammengestellter Datenbank
 
@@ -163,4 +163,4 @@ Für Ihre spezifische Strategie einer cloudbasierten Notfallwiederherstellung k�
 - [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
 - [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="05/26/2016"
+   ms.date="06/03/2016"
    ms.author="v-six" />
 
 # Behandeln von Problemen mit der Clouddienstbereitstellung
@@ -27,11 +27,7 @@ Sie finden den Bereich **Eigenschaften** wie folgt:
 
 > [AZURE.NOTE] Sie können den Inhalt des Bereichs **Eigenschaften** in die Zwischenablage kopieren, indem Sie auf das Symbol in der oberen rechten Ecke des Bereichs klicken.
 
-## Kontaktieren des Azure-Kundensupports
-
-Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Ihre Frage im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) stellen, um dort Hilfe von Azure-Experten zu erhalten.
-
-Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](http://azure.microsoft.com/support/options/) auf, und klicken Sie auf **Support erhalten**. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](http://azure.microsoft.com/support/faq/).
+[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## Problem: Ich kann nicht auf meine Website zugreifen, aber die Bereitstellung wurde gestartet, und alle Rolleninstanzen sind bereit.
 
@@ -46,7 +42,7 @@ Die im Portal angezeigte Website-URL enthält den Port nicht. Der Standardport f
 Die Dienstreparatur wird automatisch ausgeführt, wenn Azure Problemknoten erkennt und Rolleninstanzen deshalb auf neue Knoten verschiebt. In diesem Fall werden die Rolleninstanzen möglicherweise automatisch wiederverwendet (recycelt). So finden Sie heraus, ob eine Dienstreparatur ausgeführt wurde:
 
 1. Klicken Sie im Azure-Portal auf die Bereitstellung Ihres Clouddiensts.
-2. Überprüfen Sie die Informationen im Bereich **Eigenschaften** des Azure-Portals, und stellen Sie fest, ob während der Zeitraums, in dem Sie die Wiederverwendung der Rollen beobachtet haben, eine Dienstreparatur durchgeführt wurde.
+2. Überprüfen Sie die Informationen im Bereich **Eigenschaften** des Azure-Portals, und stellen Sie fest, ob während der Zeitraums, in dem Sie die zyklische Ausführung von Rollen beobachtet haben, eine Dienstreparatur durchgeführt wurde.
 
 Rollen werden darüber hinaus etwa einmal pro Monat im Rahmen von Upgrades der Host- und Gastbetriebssysteme wiederverwendet. Weitere Informationen finden Sie im Blogbeitrag [Role Instance Restarts Due to OS Upgrades](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx) (in englischer Sprache).
 
@@ -66,7 +62,7 @@ So finden Sie heraus, ob ein automatisches Update den VIP-Austausch verhindert
 
 ## Problem: Eine Rolleninstanz befindet sich in einer Schleife zwischen „Gestartet“, „Wird initialisiert“, „Ausgelastet“ und „Beendet“.
 
-Diese Bedingung kann auf ein Problem mit dem Anwendungscode, dem Anwendungspaket oder der Konfigurationsdatei hinweisen. In diesem Fall sehen Sie, dass der Status sich alle paar Minuten ändert und im Azure-Portal Meldungen wie **Recycling**, **Ausgelastet** oder **Wird initialisiert** angezeigt werden. Dies weist darauf hin, dass ein Fehler in der Anwendung vorliegt, der verhindert, dass die Rolleninstanz ausgeführt wird.
+Diese Bedingung kann auf ein Problem mit dem Anwendungscode, dem Anwendungspaket oder der Konfigurationsdatei hinweisen. In diesem Fall sehen Sie, dass sich der Status alle paar Minuten ändert und im Azure-Portal Meldungen wie **Recycling**, **Ausgelastet** oder **Wird initialisiert** angezeigt werden. Dies weist darauf hin, dass ein Fehler in der Anwendung vorliegt, der verhindert, dass die Rolleninstanz ausgeführt wird.
 
 Weitere Informationen zum Behandeln dieses Problems finden Sie im Blogbeitrag [Azure PaaS Compute Diagnostics Data](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx) (Azure-PaaS-Compute-Diagnosedaten) und unter [Allgemeine Probleme, durch die Rollen zyklisch ausgeführt werden](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
 
@@ -82,8 +78,8 @@ Weitere Informationen zum Behandeln dieses Problems finden Sie im Blogbeitrag [A
 
 ## Nächste Schritte
 
-Sehen Sie sich weitere [Artikel zur Problembehandlung](..\?tag=top-support-issue&service=cloud-services) für Clouddienste an.
+Sehen Sie sich weitere [Artikel zur Problembehandlung](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) für Clouddienste an.
 
 Erfahren Sie in der [Blogreihe von Kevin Williamson](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx), wie Sie Probleme bei Clouddienstrollen mit den Compute-Diagnosedaten von Azure-PaaS beheben.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

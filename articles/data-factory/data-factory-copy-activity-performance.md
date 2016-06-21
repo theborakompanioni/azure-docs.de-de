@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/27/2016"
+	ms.date="06/03/2016"
 	ms.author="spelluru"/>
 
 
@@ -168,6 +168,68 @@ In den [Beispielen für Anwendungsfälle](#case-study---parallel-copy) finden Si
  
 **Denken Sie daran**, dass Ihnen die Gebühren basierend auf der Gesamtdauer des Kopiervorgangs berechnet werden. Wenn also ein Kopierauftrag bisher mit einer Cloudeinheit eine Stunde gedauert hat und jetzt mit vier Cloudeinheiten 15 Minuten dauert, ist die Gesamtrechnung etwa gleich hoch. Ein anderes Szenario: Angenommen, Sie verwenden vier Cloudeinheiten für eine Kopieraktivität. Die erste und die zweite Einheit benötigen jeweils 10 Minuten und die dritte und vierte jeweils 5 Minuten. In diesem Fall wird Ihnen die Gesamtdauer des Kopiervorgangs (bzw. der Datenverschiebung) berechnet, also 10 + 10 + 5 + 5 = 30 Minuten. Die Verwendung von **parallelCopies** hat keine Auswirkungen auf die Abrechnung.
 
+## Gestaffeltes Kopieren
+Beim Kopieren von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher können Sie einen Azure-Blobspeicher als Stagingzwischenspeicher verwenden. Diese Stagingfunktion ist besonders in folgenden Fällen hilfreich:
+
+1.	**Hybriddatenbewegungen (also die Bewegung aus dem lokalen Datenspeicher in einen Clouddatenspeicher oder umgekehrt) können über eine langsame Netzwerkverbindung eine Weile dauern.** Zur Verbesserung der Leistung solcher Datenbewegungen können Sie Daten lokal komprimieren, damit sie schneller über das Netzwerk an den Stagingdatenspeicher in der Cloud übertragen werden, und die Daten im Stagingspeicher dekomprimieren, bevor sie in den Zieldatenspeicher geladen werden. 
+2.	**Aufgrund von IT-Richtlinien sollen in der Firewall mit Ausnahme der Ports 80 und 443 keine weiteren Ports geöffnet werden.** Ein Beispiel: Beim Kopieren von Daten aus einem lokalen Datenspeicher an eine Azure SQL-Datenbanksenke oder eine Azure SQL Data Warehouse-Senke muss ausgehende TCP-Kommunikation über den Port 1433 sowohl für die Windows-Firewall als auch für die Unternehmensfirewall ermöglicht werden. In einem solchen Szenario können Sie unter Verwendung des Datenverwaltungsgateways zunächst über HTTP(S) (also über den Port 443) Daten in einen Azure-Stagingblobspeicher kopieren und die Daten dann von dort aus in die SQL-Datenbank oder in SQL Data Warehouse laden. Der Port 1433 muss hierzu nicht aktiviert werden. 
+3.	**Erfassung von Daten aus verschiedenen Datenspeichern in Azure SQL Data Warehouse über PolyBase.** Azure SQL Data Warehouse stellt PolyBase als Mechanismus für hohen Durchsatz bereit, um große Datenmengen in SQL Data Warehouse zu laden. Hierzu müssen sich die Quelldaten allerdings im Azure-Blobspeicher befinden und einige zusätzliche Kriterien erfüllen. Wenn Sie Daten aus einem Datenspeicher laden, bei dem es sich nicht um den Azure-Blobspeicher handelt, haben Sie die Möglichkeit, die Daten über einen Azure-Stagingblobspeicher zu kopieren. In diesem Fall führt Azure Data Factory die erforderlichen Transformationen für die Daten durch, um sicherzustellen, dass sie die Anforderungen von PolyBase erfüllen. Anschließend werden die Daten dann mithilfe von PolyBase in SQL Data Warehouse geladen. Ausführlichere Informationen und Beispiele finden Sie unter [Daten unter Verwendung von PolyBase in Azure SQL Data Warehouse laden](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
+
+### Funktionsweise des gestaffelten Kopierens
+Wenn Sie das Staging-Feature aktivieren, werden die Daten zunächst aus dem Quelldatenspeicher in Ihren eigenen Stagingdatenspeicher und anschließend aus dem Stagingdatenspeicher in den Senkendatenspeicher kopiert. Azure Data Factory übernimmt sowohl die Verwaltung dieses zweistufigen Prozesses als auch die Bereinigung der temporären Daten aus dem Stagingspeicher nach Abschluss der Datenbewegung.
+
+Im **Cloudkopierszenario**, in dem sich sowohl der Quell- als auch der Senkendatenspeicher in der Cloud befindet und das Datenverwaltungsgateway nicht verwendet wird, werden die Kopiervorgänge vom **Azure Data Factory-Dienst** durchgeführt.
+
+![Gestaffeltes Kopieren – Cloudszenario](media/data-factory-copy-activity-performance/staged-copy-cloud-scenario.png)
+
+Im **Hybridkopierszenario** (lokale Quelle und Senke in der Cloud) wird die Bewegung der Daten aus dem Quelldatenspeicher in den Stagingdatenspeicher vom **Datenverwaltungsgateway** und die Bewegung der Daten aus dem Stagingdatenspeicher in den Senkendatenspeicher vom **Azure Data Factory-Dienst** durchgeführt.
+
+![Gestaffeltes Kopieren – Hybridszenario](media/data-factory-copy-activity-performance/staged-copy-hybrid-scenario.png)
+
+Wenn Sie die Datenverschiebung unter Verwendung des Stagingspeichers aktivieren, können Sie angeben, ob die Daten vor dem Bewegen aus dem Quelldatenspeicher in den Zwischen-/Stagingdatenspeicher komprimiert und vor dem Bewegen der Daten aus dem Zwischen-/Stagingdatenspeicher in den Senkendatenspeicher wieder dekomprimiert werden sollen.
+
+Das Kopieren von Daten aus einem Clouddatenspeicher in einen lokalen Datenspeicher oder zwischen zwei lokalen Datenspeichern mit Stagingspeicher wird derzeit nicht unterstützt, soll aber in Kürze verfügbar werden.
+
+### Konfiguration
+Sie können für die Kopieraktivität die Einstellung **enableStaging** konfigurieren, um anzugeben, ob die Daten in einem Azure-Blobspeicher bereitgestellt werden sollen, bevor sie in einen Zieldatenspeicher geladen werden. Wenn Sie „enableStaging“ auf „true“ festlegen, müssen Sie zusätzliche Eigenschaften angeben. Diese werden in der folgenden Tabelle aufgeführt. Außerdem müssen Sie einen mit Azure Storage oder Azure Storage SAS verknüpften Dienst als Stagingdienst erstellen, falls noch keiner vorhanden ist.
+
+Eigenschaft | Beschreibung | Standardwert | Erforderlich
+--------- | ----------- | ------------ | --------
+enableStaging | Geben Sie an, ob Sie Daten über einen Stagingzwischenspeicher kopieren möchten. | False | Nein
+linkedServiceName | Geben Sie den Namen eines verknüpften Diensts vom Typ [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) oder [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) an, um auf die Azure Storage-Instanz zu verweisen, die als Stagingzwischenspeicher verwendet werden soll. <br/><br/> Beachten Sie, dass Azure Storage-Instanzen mit SAS (Shared Access Signature) nicht verwendet werden können, um Daten über PolyBase in Azure SQL Data Warehouse zu laden. In allen anderen Szenarien können sie problemlos verwendet werden. | – | Ja, wenn „enableStaging“ auf „true“ festgelegt ist. 
+path | Geben Sie den Pfad im Azure-Blobspeicher an, der die bereitgestellten Daten enthalten soll. Wenn Sie keinen Pfad angeben, erstellt der Dienst einen Container zum Speichern der temporären Daten. <br/><br/> Der Pfad muss nur angegeben werden, wenn Sie Azure Storage mit SAS verwenden oder genau vorgegeben ist, wo sich die temporären Daten befinden müssen. | N/V | Nein
+enableCompression | Geben Sie an, ob die Daten zur Entlastung des Netzwerks komprimiert werden sollen, wenn sie aus dem Quelldatenspeicher an den Senkendatenspeicher bewegt werden. | False | Nein
+
+Hier sehen Sie eine Beispieldefinition für eine Kopieraktivität mit den oben angegebenen Eigenschaften:
+
+	"activities":[  
+	{
+		"name": "Sample copy activity",
+		"type": "Copy",
+		"inputs": [{ "name": "OnpremisesSQLServerInput" }],
+		"outputs": [{ "name": "AzureSQLDBOutput" }],
+		"typeProperties": {
+			"source": {
+				"type": "SqlSource",
+			},
+			"sink": {
+				"type": "SqlSink"
+			},
+	    	"enableStaging": true,
+			"stagingSettings": {
+				"linkedServiceName": "MyStagingBlob",
+				"path": "stagingcontainer/path",
+				"enableCompression": true
+			}
+		}
+	}
+	]
+
+### Auswirkungen auf die Abrechnung
+Die Abrechnung erfolgt auf der Grundlage der Dauer der beiden Kopierphasen sowie auf der Grundlage des jeweiligen Kopiertyps:
+
+- Wenn Sie einen Cloudkopiervorgang (Kopieren von Daten aus einem Clouddatenspeicher in einen anderen Clouddatenspeicher – etwa von Azure Data Lake in Azure SQL Data Warehouse) mit Staging verwenden, gilt folgende Formel: [Gesamtkopierdauer für Schritt 1 und 2] x [Einzelpreis für Cloudkopien]
+- Wenn Sie einen Hybridkopiervorgang (Kopieren von Daten aus einem lokalen Datenspeicher in einen Clouddatenspeicher – etwa aus einer lokalen SQL Server-Datenbank in Azure SQL Data Warehouse) mit Staging verwenden, gilt folgende Formel: [Dauer des Hybridkopiervorgangs] x [Einzelpreis für Hybridkopien] + [Dauer des Cloudkopiervorgangs] x [Einzelpreis für Cloudkopien]
 
 
 ## Hinweise zur Datenquelle
@@ -176,7 +238,7 @@ Stellen Sie sicher, dass der zugrundeliegende Datenspeicher nicht von anderen da
 
 Informationen zu Microsoft-Datenspeichern finden Sie in datenspeicherspezifischen [Themen zur Überwachung und Optimierung](#appendix-data-store-performance-tuning-reference). Diese helfen Ihnen dabei, Leistungsmerkmale, die Minimierung von Antwortzeiten und die Maximierung des Durchsatzes zu verstehen.
 
-Wenn Sie Daten aus einem **Azure-Blobspeicher** in **Azure SQL Data Warehouse** kopieren, könnten Sie **PolyBase** aktivieren, um die Leistung zu steigern. Details finden Sie unter [Daten unter Verwendung von PolyBase in Azure SQL Data Warehouse laden](data-factory-azure-sql-data-warehouse-connector.md###use-polybase-to-load-data-into-azure-sql-data-warehouse).
+Wenn Sie Daten aus einem **Azure-Blobspeicher** in **Azure SQL Data Warehouse** kopieren, könnten Sie **PolyBase** aktivieren, um die Leistung zu verbessern. Details finden Sie unter [Daten unter Verwendung von PolyBase in Azure SQL Data Warehouse laden](data-factory-azure-sql-data-warehouse-connector.md###use-polybase-to-load-data-into-azure-sql-data-warehouse).
 
 
 ### Dateibasierte Datenspeicher
@@ -200,7 +262,7 @@ Stellen Sie sicher, dass der zugrundeliegende Datenspeicher nicht von anderen da
 
 Informationen zu Microsoft-Datenspeichern finden Sie in datenspeicherspezifischen [Themen zur Überwachung und Optimierung](#appendix-data-store-performance-tuning-reference). Diese helfen Ihnen dabei, Leistungsmerkmale, die Minimierung von Antwortzeiten und die Maximierung des Durchsatzes zu verstehen.
 
-Wenn Sie Daten aus einem **Azure-Blobspeicher** in **Azure SQL Data Warehouse** kopieren, könnten Sie **PolyBase** aktivieren, um die Leistung zu steigern. Details finden Sie unter [Daten unter Verwendung von PolyBase in Azure SQL Data Warehouse laden](data-factory-azure-sql-data-warehouse-connector.md###use-polybase-to-load-data-into-azure-sql-data-warehouse).
+Wenn Sie Daten aus einem **Azure-Blobspeicher** in **Azure SQL Data Warehouse** kopieren, könnten Sie **PolyBase** aktivieren, um die Leistung zu verbessern. Details finden Sie unter [Daten unter Verwendung von PolyBase in Azure SQL Data Warehouse laden](data-factory-azure-sql-data-warehouse-connector.md###use-polybase-to-load-data-into-azure-sql-data-warehouse).
 
 
 ### Dateibasierte Datenspeicher
@@ -305,13 +367,13 @@ In diesem Fall könnte die BZIP2-Datenkomprimierung die gesamte Pipeline verlang
 
 **Szenario I:** Kopieren von 1000 Dateien mit 1 MB aus einem lokalen Dateisystem in einen Azure-Blobspeicher
 
-**Analyse und Leistungsoptimierung:** Wenn Sie das Datenverwaltungsgateway auf einem Computer mit vier Kernen installiert haben, verwendet Data Factory standardmäßig 16 parallele Kopien, um Dateien gleichzeitig aus dem Dateisystem in den Azure-Blob zu verschieben. Dies sollte zu einem guten Durchsatz führen. Sie können die Anzahl paralleler Kopien auch explizit angeben. Wenn Sie eine große Anzahl von kleinen Dateien kopieren, können Sie mit parallelen Kopien den Durchsatz erheblich verbessern, indem Sie die beteiligten Ressourcen effektiver nutzen.
+**Analyse und Leistungsoptimierung:** Wenn Sie das Datenverwaltungsgateway auf einem Computer mit vier Kernen installiert haben, verwendet Data Factory standardmäßig 16 parallele Kopien, um Dateien gleichzeitig aus dem Dateisystem in den Azure-Blob zu bewegen. Dies sollte zu einem guten Durchsatz führen. Sie können die Anzahl paralleler Kopien auch explizit angeben. Wenn Sie eine große Anzahl von kleinen Dateien kopieren, können Sie mit parallelen Kopien den Durchsatz erheblich verbessern, indem Sie die beteiligten Ressourcen effektiver nutzen.
 
 ![Szenario 1](./media/data-factory-copy-activity-performance/scenario-1.png)
 
-**Szenario II:** Kopieren von 20 Blobs mit 500 MB aus dem Azure-Blobspeicher in den Azure Data Lake-Speicher
+**Szenario II:** Kopieren von 20 Blobs mit jeweils 500 MB aus dem Azure-Blobspeicher in den Azure Data Lake-Speicher
 
-**Analyse und Leistungsoptimierung:** In diesem Szenario kopiert Data Factory standardmäßig die Daten mit einer Kopie („parallelCopies“ ist 1) aus dem Azure-Blob in Azure Data Lake und nutzt eine Einheit für Clouddatenverschiebungen. Der beobachtete Durchsatz entspricht etwa den Angaben im Abschnitt [Leistungsreferenz](#performance-reference) weiter oben.
+**Analyse und Leistungsoptimierung:** In diesem Szenario kopiert Data Factory die Daten standardmäßig mit einer einzelnen Kopie (parallelCopies = 1) aus dem Azure-Blob in Azure Data Lake und nutzt eine einzelne Einheit für Clouddatenbewegungen. Der Durchsatz entspricht ungefähr den Angaben im Abschnitt [Leistungsreferenz](#performance-reference) weiter oben.
 
 ![Szenario 2:](./media/data-factory-copy-activity-performance/scenario-2.png)
 
@@ -323,10 +385,10 @@ Wenn eine einzelne Datei größer als Dutzende von MB ist und der Gesamtumfang g
 Hier finden Sie einige Referenzen zur Leistungsüberwachung und -optimierung für einige der unterstützten Datenspeicher:
 
 - Azure-Speicher (einschließlich Azure Blob und Azure-Tabelle): [ Skalierbarkeitsziele für Azure-Speicher](../storage/storage-scalability-targets.md) und [Checkliste zu Leistung und Skalierbarkeit für Azure-Speicher](../storage//storage-performance-checklist.md)
-- Azure SQL-Datenbank: Sie können [die Leistung überwachen](../sql-database/sql-database-service-tiers.md#monitoring-performance) und den Prozentsatz der Datenbanktransaktionseinheit (Database Throughput Unit, DTU) überprüfen.
-- Azure SQL Datawarehouse: Die Funktionalität wird in Data Warehouse-Einheiten (Data Warehouse Units, DWUs) gemessen. Informationen finden Sie unter [Flexible Leistung und Skalierbarkeit mit SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-scalability.md).
+- Azure SQL-Datenbank: Sie können [die Leistung überwachen](../sql-database/sql-database-service-tiers.md#monitoring-performance) und den Prozentsatz der Datenbanktransaktionseinheit (Database Transaction Unit, DTU) überprüfen.
+- Azure SQL Datawarehouse: Die Funktionalität wird in Data Warehouse-Einheiten (Data Warehouse Units, DWUs) gemessen. Informationen finden Sie unter [Flexible Leistung und Skalierbarkeit mit SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 - Azure DocumentDB: [Leistungsstufe in DocumentDB](../documentdb/documentdb-performance-levels.md).
 - Lokale SQL Server: [Überwachen und Optimieren der Leistung](https://msdn.microsoft.com/library/ms189081.aspx)
 - Lokaler Dateiserver: [Leistungsoptimierung für Dateiserver](https://msdn.microsoft.com/library/dn567661.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

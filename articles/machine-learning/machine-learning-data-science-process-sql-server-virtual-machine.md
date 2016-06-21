@@ -120,7 +120,7 @@ Die oben beschriebenen positionsbasierten Funktionen können dann wie zuvor besc
 
 ###<a name="sql-aml"></a>Herstellen einer Verbindung mit Azure Machine Learning
 
-Die neu generierte Funktion kann als Spalte einer vorhandenen Tabelle hinzugefügt oder in einer neuen Tabelle gespeichert und für Machine Learning mit der ursprünglichen Tabelle zusammengeführt werden. Sie können wie unten dargestellt mit dem Modul [Daten importieren][reader] in Azure Machine Learning Funktionen generieren oder, falls sie bereits vorhanden sind, darauf zugreifen:
+Die neu generierte Funktion kann als Spalte einer vorhandenen Tabelle hinzugefügt oder in einer neuen Tabelle gespeichert und für Machine Learning mit der ursprünglichen Tabelle zusammengeführt werden. Sie können wie unten dargestellt mit dem Modul [Daten importieren][import-data] in Azure Machine Learning Funktionen generieren oder, falls sie bereits vorhanden sind, darauf zugreifen:
 
 ![azureml-Reader][1]
 
@@ -149,7 +149,7 @@ Ein umfassendes Beispiel für den Azure Data Science Process anhand eines öffen
 
 
 <!-- Module References -->
-[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

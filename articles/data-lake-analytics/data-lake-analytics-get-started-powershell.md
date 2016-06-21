@@ -13,14 +13,14 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/26/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # Lernprogramm: Erste Schritte mit Azure Data Lake Analytics mithilfe von Azure PowerShell
 
 [AZURE.INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Enthält Informationen zum Verwenden von Azure PowerShell zum Erstellen von Azure Data Lake Analytics-Konten, zum Definieren von Data Lake Analytics-Aufträgen in [U-SQL](data-lake-analytics-u-sql-get-started.md) und zum Übermitteln von Aufträgen an Data Lake Analytics-Konten. Weitere Informationen zu Data Lake Analytics finden Sie unter [Übersicht über Azure Data Lake Analytics](data-lake-analytics-overview.md).
+Enthält Informationen zum Verwenden von Azure PowerShell für die Erstellung von Azure Data Lake Analytics-Konten, zum Definieren von Data Lake Analytics-Aufträgen in [U-SQL](data-lake-analytics-u-sql-get-started.md) und zum Übermitteln von Aufträgen an Data Lake Analytics-Konten. Weitere Informationen zu Data Lake Analytics finden Sie unter [Übersicht über Azure Data Lake Analytics](data-lake-analytics-overview.md).
 
 In diesem Tutorial entwickeln Sie einen Auftrag, bei dem eine Datei mit tabulatorgetrennten Werten (TSV) gelesen und in eine Datei mit kommagetrennten Werten (CSV) konvertiert wird. Um das gleiche Lernprogramm unter Verwendung anderer unterstützter Tools zu durchlaufen, klicken Sie auf die Registerkarten oben in diesem Abschnitt.
 
@@ -105,7 +105,7 @@ Eine Beispiel-Suchprotokolldatei wurde in einen öffentlichen Azure-BLOB-Contain
 
 	$dataLakeStoreName = "<The default Data Lake Store account name>"
 	
-	$localFolder = "C:\Tutorials\Downloads\" # A temp location for the file. 
+	$localFolder = "C:\Tutorials\Downloads" # A temp location for the file. 
 	$storageAccount = "adltutorials"  # Don't modify this value.
 	$container = "adls-sample-data"  #Don't modify this value.
 
@@ -186,7 +186,7 @@ Die Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weite
 		
 		Get-AzureRmDataLakeAnalyticsJob -AccountName $dataLakeAnalyticsName -JobId $job.JobId
 
-	Im Skript wird die U-SQL-Skriptdatei unter "c:\tutorials\data-lake-analytics\copyFile.usql" gespeichert. Aktualisieren Sie den Dateipfad entsprechend.
+	Im Skript wird die U-SQL-Skriptdatei unter "c:\\tutorials\\data-lake-analytics\\copyFile.usql" gespeichert. Aktualisieren Sie den Dateipfad entsprechend.
  
 Nachdem der Auftrag abgeschlossen wurde, können Sie die folgenden Cmdlets verwenden, um die Datei anzugeben und herunterzuladen:
 	
@@ -209,4 +209,4 @@ Nachdem der Auftrag abgeschlossen wurde, können Sie die folgenden Cmdlets verwe
 - Informationen zu Verwaltungsaufgaben finden Sie unter [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md).
 - Eine Übersicht über Data Lake Analytics finden Sie unter [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

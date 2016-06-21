@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/27/2016"
+   ms.date="06/09/2016"
    ms.author="ryanwi"/>
 
 # Erstellen Ihrer ersten Azure Service Fabric-Anwendung in Visual Studio
@@ -46,7 +46,7 @@ Eine Service Fabric-Anwendung kann einen oder mehrere Dienste enthalten, die jew
 
 	![Dialogfeld „Neuer Dienst“ in Visual Studio][2]
 
-	>[AZURE.NOTE] Weitere Informationen zu den Optionen finden Sie unter [Auswählen eines Frameworks](service-fabric-choose-framework.md).
+	>[AZURE.NOTE] Weitere Informationen zu den Optionen finden Sie unter [Übersicht über die Service Fabric-Programmiermodelle](service-fabric-choose-framework.md).
 
 	Visual Studio erstellt das Anwendungsprojekt und das Projekt für den zustandsbehafteten Dienst und zeigt sie im Projektmappen-Explorer an.
 
@@ -110,31 +110,19 @@ Jetzt ist eine Anwendung vorhanden, die Sie ausführen können.
 
     ![Diagnoseereignisanzeige nach einem Failover][diagnostic-events-viewer-detail-post-failover]
 
-### Bereinigen
+## Bereinigen
 
-  Bevor Sie Ihre Arbeit abschließen, sollten Sie bedenken, dass der lokale Cluster sehr real ist. Auch nach dem Beenden des Debuggers und dem Schließen von Visual Studio werden Ihre Anwendungen weiterhin im Hintergrund ausgeführt. Je nach Art Ihrer Apps kann diese Hintergrundaktivität erhebliche Ressourcen auf dem Computer beanspruchen. Sie haben mehrere Möglichkeiten, hier steuernd einzugreifen:
+  Bevor Sie Ihre Arbeit abschließen, sollten Sie bedenken, dass der lokale Cluster sehr real ist. Wenn Sie den Debugger beenden, wird Ihre Anwendungsinstanz entfernt, und die Registrierung des Anwendungstyps wird aufgehoben. Der Cluster wird im Hintergrund aber weiter ausgeführt. Sie haben mehrere Möglichkeiten, hier steuernd einzugreifen:
 
-  1. Zum Entfernen einer einzelnen Anwendung und all ihrer Daten verwenden Sie im Service Fabric-Explorer die Aktion **Anwendung löschen**. Rufen Sie dazu in der Anwendungslistenansicht im linken Bereich entweder das Menü **AKTIONEN** oder das Kontextmenü auf.
+  1. Zum Beenden des Clusters bei Beibehaltung der Anwendungsdaten und Ablaufverfolgungen klicken Sie in der Infobereichs-App auf **Lokalen Cluster beenden**.
 
-    ![Löschen einer Anwendung in Service Fabric-Explorer][sfe-delete-application]
-
-  2. Nachdem Sie die Anwendung aus dem Cluster gelöscht haben, können Sie für die Anwendung die **Bereitstellung des Typs aufheben**. Dabei wird das Paket der Anwendung, einschließlich Code und Konfiguration,aus dem Imagespeicher des Clusters entfernt.
-  3. Zum Beenden des Clusters bei Beibehaltung der Anwendungsdaten und Ablaufverfolgungen klicken Sie in der Infobereichs-App auf **Lokalen Cluster beenden**.
-
-  4. Zum vollständigen Entfernen des Clusters klicken Sie in der Infobereichs-App auf **Lokalen Cluster entfernen**. Beachten Sie, dass diese Option zu einer weiteren langsamen Bereitstellung führt, wenn Sie das nächste Mal in Visual Studio F5 drücken. Verwenden Sie diese nur, wenn Sie nicht beabsichtigen, den lokalen Cluster einige Zeit zu verwende,n oder wenn Sie Ressourcen freigeben müssen.
-
-
+  2. Zum vollständigen Entfernen des Clusters klicken Sie in der Infobereichs-App auf **Lokalen Cluster entfernen**. Beachten Sie, dass diese Option zu einer weiteren langsamen Bereitstellung führt, wenn Sie das nächste Mal in Visual Studio F5 drücken. Verwenden Sie diese nur, wenn Sie nicht beabsichtigen, den lokalen Cluster einige Zeit zu verwende,n oder wenn Sie Ressourcen freigeben müssen.
 
 ## Nächste Schritte
 
-<!--
-Temporarily removing this link because we have removed the ASP.NET template.
-
- - [See how you can expose your services to the Internet with a web service front end](service-fabric-add-a-web-frontend.md)
--->
-- [Erfahren Sie, wie Sie einen Cluster in Azure erstellen](service-fabric-cluster-creation-via-portal.md)
-- [Erfahren Sie mehr über Reliable Services](service-fabric-reliable-services-quick-start.md)
-- [Erstellen Sie einen Dienst mit dem Reliable Actors-Programmiermodell](service-fabric-reliable-actors-get-started.md)
+- Informieren Sie sich, wie Sie einen [Cluster in Azure](service-fabric-cluster-creation-via-portal.md) oder einen [eigenständigen Cluster in Windows](service-fabric-cluster-creation-for-windows-server.md) erstellen.
+- Versuchen Sie, einen Dienst zu erstellen, indem Sie das Programmiermodell [Reliable Services](service-fabric-reliable-services-quick-start.md) oder [Reliable Actors](service-fabric-reliable-actors-get-started.md) verwenden.
+- Erfahren Sie, wie Sie Ihre Dienste über ein [Webdienst-Front-End](service-fabric-add-a-web-frontend.md) im Internet verfügbar machen können.
 
 <!-- Image References -->
 
@@ -150,4 +138,4 @@ Temporarily removing this link because we have removed the ASP.NET template.
 [diagnostic-events-viewer-detail-post-failover]: ./media/service-fabric-create-your-first-application-in-visual-studio/diagnostic-events-viewer-detail-post-failover.png
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

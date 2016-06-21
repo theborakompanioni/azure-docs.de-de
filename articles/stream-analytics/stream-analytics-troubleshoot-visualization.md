@@ -30,7 +30,7 @@ Im Visualisierungsbereich werden sowohl die Eingaben als auch die ausgeführte A
 
 Um auf diese Schnellansicht zuzugreifen, klicken Sie auf dem Blatt „Einstellungen“ des Stream Analytics-Auftrags auf die Schaltfläche „Diagnosediagramm“.
 
-![stream-analytics-troubleshoot-visualization-diagnosis-diagram](./media/stream-analytics-troubleshoot-visualization/stream-analytics-troubleshoot-visualization-diagnosis-diagram.png)
+![stream-analytics-troubleshoot-visualization-diagnosis-diagram](./media/stream-analytics-troubleshoot-visualization/stream-analytics-troubleshoot-visualization-diagnosis-diagram1.png)
 
 Die Ein- und Ausgaben sind farbcodiert, um den aktuellen Status der betreffenden Komponente anzugeben, wie unten gezeigt.
 
@@ -51,4 +51,4 @@ Wenn ein Benutzer Zwischenschritte von Abfragen anzeigen möchte, um die Datenfl
 - [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

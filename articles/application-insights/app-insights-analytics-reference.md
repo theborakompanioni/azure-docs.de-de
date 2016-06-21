@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/26/2016" 
+	ms.date="06/07/2016" 
 	ms.author="awills"/>
 
 # Referenz für Analytics
@@ -22,30 +22,32 @@
 
 [AZURE.INCLUDE [app-insights-analytics-top-index](../../includes/app-insights-analytics-top-index.md)]
 
-| | | | | 
-|---|---|---|---|---
-|[abs](#abs)|[dayofweek](#dayofweek)|[isnull](#isnull)|[rand](#rand)|[summarize-Operator](#summarize-operator)
-|[ago](#ago)|[dayofyear](#dayofyear)|[join-Operator](#join-operator)|[range](#range)|[take-Operator](#take-operator)
-|[beliebig](#any)|[dcount](#dcount)|[JSON Path-Ausdrücke](#json-path-expressions)|[range-Operator](#range-operator)|[todatetime](#todatetime)
-|[argmax](#argmax)|[dcountif](#dcountif)|[let-Klausel](#let-clause)|[reduce-Operator](#reduce-operator)|[todouble](#todouble)
-|[argmin](#argmin)|[Dynamische Objekte in Let-Klauseln](#dynamic-objects-in-let-clauses)|[limit-Operator](#limit-operator)|[render-Anweisung](#render-directive)|[todynamic](#todynamic)
-|[Arithmetische Operatoren](#arithmetic-operators)|[endofday](#endofday)|[log](#log)|[replace](#replace)|[toint](#toint)
-|[Array- und Objektliterale](#array-and-object-literals)|[endofmonth](#endofmonth)|[makelist](#makelist)|[restrict-Klausel](#restrict-clause)|[tolong](#tolong)
-|[arraylength](#arraylength)|[endofweek](#endofweek)|[makeset](#makeset)|[Skalare Vergleiche](#scalar-comparisons)|[tolower](#tolower)
-|[avg](#avg)|[endofyear](#endofyear)|[max](#max)|[sort-Operator](#sort-operator)|[top-Operator](#top-operator)
-|[bin](#bin)|[exp](#exp)|[min](#min)|[split](#split)|[top-nested-Operator](#top-nested-operator)
-|[Boolesche Literale](#boolean-literals)|[extend-Operator](#extend-operator)|[mvexpand-Operator](#mvexpand-operator)|[sqrt](#sqrt)|[toscalar](#toscalar)
-|[Boolesche Operatoren](#boolean-operators)|[extract](#extract)|[notempty](#notempty)|[startofday](#startofday)|[totimespan](#totimespan)
-|[buildschema](#buildschema)|[extractjson](#extractjson)|[notnull](#notnull)|[startofmonth](#startofmonth)|[toupper](#toupper)
-|[Typumwandlungen](#casts)|[floor](#floor)|[now](#now)|[startofweek](#startofweek)|[treepath](#treepath)
-|[count](#count)|[getmonth](#getmonth)|[Numerische Literale](#numeric-literals)|[startofyear](#startofyear)|[union-Operator](#union-operator)
-|[count-Operator](#count-operator)|[gettype](#gettype)|[Verborgene Zeichenfolgenliterale](#obfuscated-string-literals)|[stdev](#stdev)|[variance](#variance)
-|[countif](#countif)|[getyear](#getyear)|[parse-Operator](#parse-operator)|[strcat](#strcat)|[weekofyear](#weekofyear)
-|[countof](#countof)|[hash](#hash)|[parsejson](#parsejson)|[Zeichenfolgenvergleiche](#string-comparisons)|[where-Operator](#where-operator)
-|[Datum und Uhrzeit – Ausdrücke](#date-and-time-expressions)|[iff](#iff)|[percentile](#percentile)|[Zeichenfolgenliterale](#string-literals)
-|[Datum und Uhrzeit – Literale](#date-and-time-literals)|[isempty](#isempty)|[percentiles](#percentiles)|[strlen](#strlen)
-|[datepart](#datepart)|[isnotempty](#isnotempty)|[project-Operator](#project-operator)|[substring](#substring)
-|[dayofmonth](#dayofmonth)|[isnotnull](#isnotnull)|[project-away-Operator](#project-away-operator)|[sum](#sum)
+## Index
+
+|Abfragen und Operatoren|Aggregationen|Skalare|Zahlen|Datum und Uhrzeit|String|Arrays, Objekte und Dynamik
+|---|---|---|---|---|---|---
+|[count](#count-operator)|[beliebig](#any)|[Boolesche Literale](#boolean-literals)|[Arithmetische Operatoren](#arithmetic-operators)|[Datum und Uhrzeit – Ausdrücke](#date-and-time-expressions)|[GUIDs](#guids)|[Array- und Objektliterale](#array-and-object-literals)
+|[extend](#extend-operator)|[argmax](#argmax)|[Boolesche Operatoren](#boolean-operators)|[Numerische Literale](#numeric-literals)|[Datum und Uhrzeit – Literale](#date-and-time-literals)|[Verborgene Zeichenfolgenliterale](#obfuscated-string-literals)|[Dynamische Objektfunktionen](#dynamic-object-functions)
+|[join](#join-operator)|[argmin](#argmin)|[Typumwandlungen](#casts)|[abs](#abs)|[ago](#ago)|[Zeichenfolgenliterale](#string-literals)|[Dynamische Objekte in Let-Klauseln](#dynamic-objects-in-let-clauses)
+|[let-Klausel](#let-clause)|[avg](#avg)|[Skalare Vergleiche](#scalar-comparisons)|[bin](#bin)|[datepart](#datepart)|[Zeichenfolgenvergleiche](#string-comparisons)|[JSON Path-Ausdrücke](#json-path-expressions)
+|[limit](#limit-operator)|[buildschema](#buildschema)|[gettype](#gettype)|[exp](#exp)|[dayofmonth](#dayofmonth)|[countof](#countof)|[Namen](#names)
+|[mvexpand](#mvexpand-operator)|[count](#count)|[hash](#hash)|[floor](#floor)|[dayofweek](#dayofweek)|[extract](#extract)|[arraylength](#arraylength)
+|[parse](#parse-operator)|[countif](#countif)|[iff](#iff)|[log](#log)|[dayofyear](#dayofyear)|[isempty](#isempty)|[extractjson](#extractjson)
+|[project](#project-operator)|[dcount](#dcount)|[isnotnull](#isnotnull)|[rand](#rand)|[endofday](#endofday)|[isnotempty](#isnotempty)|[parsejson](#parsejson)
+|[project-away](#project-away-operator)|[dcountif](#dcountif)|[isnull](#isnull)|[sqrt](#sqrt)|[endofmonth](#endofmonth)|[notempty](#notempty)|[range](#range)
+|[range](#range-operator)|[makelist](#makelist)|[notnull](#notnull)|[todouble](#todouble)|[endofweek](#endofweek)|[replace](#replace)|[todynamic](#todynamic)
+|[reduce](#reduce-operator)|[makeset](#makeset)|[toscalar](#toscalar)|[toint](#toint)|[endofyear](#endofyear)|[split](#split)|[treepath](#treepath)
+|[render-Anweisung](#render-directive)|[max](#max)||[tolong](#tolong)|[getmonth](#getmonth)|[strcat](#strcat)|
+|[restrict-Klausel](#restrict-clause)|[min](#min)|||[getyear](#getyear)|[strlen](#strlen)|
+|[sort](#sort-operator)|[percentile](#percentile)|||[now](#now)|[substring](#substring)|
+|[summarize](#summarize-operator)|[percentiles](#percentiles)|||[startofday](#startofday)|[tolower](#tolower)|
+|[take](#take-operator)|[stdev](#stdev)|||[startofmonth](#startofmonth)|[toupper](#toupper)|
+|[top](#top-operator)|[sum](#sum)|||[startofweek](#startofweek)||
+|[top-nested](#top-nested-operator)|[variance](#variance)|||[startofyear](#startofyear)||
+|[union](#union-operator)||||[todatetime](#todatetime)||
+|[Hierbei gilt:](#where-operator)||||[totimespan](#totimespan)||
+|||||[weekofyear](#weekofyear)||
+
 
 
 
@@ -61,7 +63,7 @@ requests // The request table starts this pipeline.
 | count 
 ```
     
-Jeder Filter mit einem senkrechten Strich `|` als Präfix ist eine Instanz eines *Operators* mit einigen Parametern. Die Eingabe des Operators ist die Tabelle, die das Ergebnis der vorhergehenden Pipeline ist. In den meisten Fällen sind alle Parameter [skalare Ausdrücke](##scalars) über die Spalten der Eingabe. In einigen Fällen sind die Parameter die Namen von Eingabespalten, und in einigen Fällen ist der Parameter eine zweite Tabelle. Das Ergebnis einer Abfrage ist immer eine Tabelle, auch wenn sie nur eine Spalte und eine Zeile enthält.
+Jeder Filter mit einem senkrechten Strich (`|`) als Präfix ist eine Instanz eines *Operators* mit einigen Parametern. Die Eingabe des Operators ist die Tabelle, die das Ergebnis der vorhergehenden Pipeline ist. In den meisten Fällen sind alle Parameter [skalare Ausdrücke](#scalars) über die Spalten der Eingabe. In einigen Fällen sind die Parameter die Namen von Eingabespalten, und in einigen Fällen ist der Parameter eine zweite Tabelle. Das Ergebnis einer Abfrage ist immer eine Tabelle, auch wenn sie nur eine Spalte und eine Zeile enthält.
 
 Abfragen können einzelne Zeilenumbrüche enthalten, aber sie werden mit einer Leerzeile beendet. Unter Umständen enthalten sie Kommentare zwischen `//` und dem Ende der Zeile.
 
@@ -90,7 +92,7 @@ Der `count`-Operator gibt die Anzahl von Datensätzen (Zeilen) in der Eingabe-Da
 
 **Argumente**
 
-* *T:* die tabellarischen Daten, deren Datensätze gezählt werden.
+* *T:* Die tabellarischen Daten, deren Datensätze gezählt werden
 
 **Rückgabe**
 
@@ -117,9 +119,9 @@ Fügen Sie eine oder mehrere berechnete Spalten an eine Tabelle an.
 
 **Argumente**
 
-* *T:* die Eingabetabelle.
+* *T:* Die Eingabetabelle.
 * *ColumnName:* der Name einer hinzuzufügenden Spalte. Bei [Namen](#names) muss Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder das Zeichen „\_“ enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
-* *Expression:* eine Berechnung über die vorhandenen Spalten.
+* *Expression:* Eine Berechnung über die vorhandenen Spalten.
 
 **Rückgabe**
 
@@ -154,10 +156,10 @@ Führt die Zeilen zweier Tabellen anhand von übereinstimmenden Werten der angeg
 
 **Argumente**
 
-* *Table1:* die „linke Seite“ der Verknüpfung.
-* *Table2:* die „rechte Seite“ der Verknüpfung. Kann ein geschachtelter Abfrageausdruck sein, der eine Tabelle ausgibt.
-* *CommonColumn:* eine Spalte mit dem gleichen Namen in beiden Tabellen.
-* *Kind:* gibt an, wie Zeilen aus den beiden Tabellen abgeglichen werden.
+* *Table1:* Die „linke Seite“ der Verknüpfung.
+* *Table2:* Die „rechte Seite“ der Verknüpfung. Kann ein geschachtelter Abfrageausdruck sein, der eine Tabelle ausgibt.
+* *CommonColumn:* Eine Spalte mit dem gleichen Namen in beiden Tabellen.
+* *Kind:* Gibt an, wie Zeilen aus den beiden Tabellen abgeglichen werden.
 
 **Rückgabe**
 
@@ -238,7 +240,7 @@ Eine let-Klausel bindet einen [Namen](#names) an ein tabellarisches Ergebnis, ei
     let name = (parameterName : type [, ...]) { plain_query }; query
 
 * *type:* `bool`, `int`, `long`, `double`, `string`, `timespan`, `datetime`, `guid`, [`dynamic`](#dynamic-type)
-* *plain\_query:* eine Abfrage ohne vorangestellte let-Klausel.
+* *plain\_query:* Eine Abfrage ohne vorangestellte let-Klausel.
 
 **Beispiele**
 
@@ -317,10 +319,10 @@ Das Ergebnis lautet:
 **Argumente**
 
 * *ColumnName:* Im Ergebnis werden Arrays in der benannten Spalte auf mehrere Zeilen erweitert. 
-* *ArrayExpression:* ein Ausdruck, der ein Array zurückgibt. Bei Verwendung dieses Formulars wird eine neue Spalte hinzugefügt, und die vorhandene wird beibehalten.
-* *Name:* ein Name für die neue Spalte.
-* *Typename:* wandelt den erweiterten Ausdruck in einen bestimmten Typ um.
-* *RowLimit:* die maximale Anzahl von Zeilen, die aus jeder ursprünglichen Zeile generiert werden. Der Standardwert ist 128.
+* *ArrayExpression:* Ein Ausdruck, der ein Array zurückgibt. Bei Verwendung dieses Formulars wird eine neue Spalte hinzugefügt, und die vorhandene wird beibehalten.
+* *Name:* Ein Name für die neue Spalte.
+* *Typename:* Wandelt den erweiterten Ausdruck in einen bestimmten Typ um.
+* *RowLimit:* Die maximale Anzahl von Zeilen, die aus jeder ursprünglichen Zeile generiert werden. Der Standardwert ist 128.
 
 **Rückgabe**
 
@@ -331,7 +333,7 @@ Die erweiterte Spalte ist immer dynamisch typisiert. Verwenden Sie eine Umwandlu
 Zwei Erweiterungsmodi für Eigenschaftenbehälter werden unterstützt:
 
 * `bagexpansion=bag`: Eigenschaftenbehälter werden zu Eigenschaftenbehältern mit einem einzelnen Eintrag erweitert. Dies ist die Standarderweiterung.
-* `bagexpansion=array`: Eigenschaftenbehälter werden zu Arraystrukturen mit zwei Elementen `[`*Schlüssel*`,`*Wert*`]` erweitert und lassen den einheitlichen Zugriff auf Schlüssel und Werte zu (sowie z.B. auch das Ausführen einer distinct-count-Aggregation über Eigenschaftennamen). 
+* `bagexpansion=array`: Eigenschaftenbehälter werden zu Arraystrukturen mit zwei Elementen `[`*Schlüssel*`,`*Wert*`]` erweitert und lassen den einheitlichen Zugriff auf Schlüssel und Werte zu (sowie z. B. auch das Ausführen einer distinct-count-Aggregation über Eigenschaftsnamen). 
 
 **Beispiele**
 
@@ -365,10 +367,10 @@ Extrahiert Werte aus einer Zeichenfolge. Kann einfache oder reguläre Ausdrücke
 
 **Argumente**
 
-* `T`: Die Eingabetabelle.
+* `T`: Die Eingabetabelle
 * `kind`: 
  * `simple` (Standard): Die `Match`-Zeichenfolgen sind unverschlüsselte Zeichenfolgen.
- * `relaxed`: Wenn der Text nicht als der Typ einer Spalte analysiert wird, wird die Spalte auf null festgelegt und die Analyse fortgesetzt. 
+ * `relaxed`: Wenn der Text nicht als der Typ einer Spalte analysiert wird, wird die Spalte auf NULL festgelegt und die Analyse fortgesetzt. 
  * `regex`: Die `Match`-Zeichenfolgen sind reguläre Ausdrücke.
 * `Text`: Eine Spalte oder ein anderer Ausdruck, die/der als Zeichenfolge ausgewertet wird oder in eine Zeichenfolge konvertiert werden kann.
 * *Übereinstimmung:* Gleichen Sie den nächsten Teil der Zeichenfolge auf Übereinstimmungen ab, und verwerfen Sie sie.
@@ -482,9 +484,9 @@ Wählen Sie die Spalten aus, die einbezogen, umbenannt oder gelöscht werden sol
 
 **Argumente**
 
-* *T:* Die Eingabetabelle.
+* *T:* Die Eingabetabelle
 * *ColumnName:* Der Name einer Spalte, der in der Ausgabe angezeigt wird. Wenn kein *Ausdruck* vorhanden ist, muss die Eingabe eine Spalte mit diesem Namen enthalten. Bei [Namen](#names) muss Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder das Zeichen „\_“ enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
-* *Expression:* Optionaler skalarer Ausdruck, der auf die Eingabespalten verweist. 
+* *Expression:* Optionaler skalarer Ausdruck, der auf die Eingabespalten verweist 
 
     Das Zurückgeben einer neuen berechneten Spalte mit dem gleichen Namen wie eine vorhandene Spalte der Eingabe ist zulässig.
 
@@ -647,7 +649,7 @@ Traces
 | where ActivityId == "479671d99b7b"
 | sort by Timestamp asc
 ```
-Alle Zeilen in der Tabelle „Traces“ mit einer bestimmten `ActivityId`, sortiert nach ihrem Zeitstempel.
+Alle Zeilen in der Tabelle „Traces“ mit einer bestimmten Aktivitäts-ID (`ActivityId`), sortiert nach ihrem Zeitstempel.
 
 ### summarize-Operator
 
@@ -680,7 +682,7 @@ Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0, 10,0], [10,0,
 
 Wenn Sie einen numerischen Ausdruck oder Zeitausdruck ohne `bin()` bereitstellen, wendet Analytics ihn automatisch mit einem Intervall von `1h` für Uhrzeiten oder von `1.0` für Zahlen an.
 
-Wenn Sie keine *GroupExpression* angeben, wird die gesamte Tabelle in einer einzelnen Ausgabezeile zusammengefasst.
+Wenn Sie kein *GroupExpression*-Element angeben, wird die gesamte Tabelle in einer einzelnen Ausgabezeile zusammengefasst.
 
 
 
@@ -721,7 +723,7 @@ Gibt die ersten *N* Datensätze nach den angegebenen Spalten sortiert zurück.
 
 **Tipps**
 
-`top 5 by name` entspricht oberflächlich betrachtet `sort by name | take 5`. Allerdings ist die Ausführung schneller, und es werden immer sortierte Ergebnisse zurückgegeben; dies ist mit `take` nicht garantiert.
+`top 5 by name` entspricht oberflächlich betrachtet `sort by name | take 5`. Allerdings ist die Ausführung schneller, und es werden immer sortierte Ergebnisse zurückgegeben. Dies ist mit `take` nicht garantiert.
 
 ### top-nested operator
 
@@ -759,9 +761,9 @@ Verwendet mindestens zwei Tabellen und gibt die Zeilen aller Tabellen zurück.
 **Argumente**
 
 * *Table1*, *Table2* ...
- *  Der Name einer Tabelle, wie z.B. `requests`, oder eine in einer [let-Klausel](#let-clause) definierte Tabelle; oder
+ *  Der Name einer Tabelle, wie z.B. `requests`, oder eine in einer [let-Klausel](#let-clause) definierte Tabelle oder
  *  Ein Abfrageausdruck, wie z.B. `(requests | where success=="True")`.
- *  Ein Satz von Tabellen, die mit einem Platzhalterzeichen angegeben sind. `e*` bildet z.B. die Vereinigung aller Tabellen, die in den vorhergehenden „let“-Klauseln definiert wurden und deren Namen mit „e“ beginnt, zusammen mit der Tabelle der Ausnahmen.
+ *  Ein Satz von Tabellen, die mit einem Platzhalterzeichen angegeben sind. `e*` bildet z.B. die Vereinigung aller Tabellen, die in den vorhergehenden let-Klauseln definiert wurden und deren Name mit „e“ beginnt, zusammen mit der Tabelle der Ausnahmen.
 * `kind`: 
  * `inner`: Das Ergebnis enthält die Teilmenge der Spalten, die in allen Eingabetabellen vorkommen.
  * `outer`: Das Ergebnis enthält alle Spalten, die in einer der Eingaben vorkommen. Zellen, die nicht durch eine Eingabezeile definiert wurden, werden auf `null` festgelegt.
@@ -821,7 +823,7 @@ Filtert eine Tabelle auf die Teilmenge der Zeilen, die ein Prädikat erfüllen.
 
 **Rückgabe**
 
-Zeilen in *T*, für die *Predicate* `true` ist.
+Zeilen in *T*, für die *Predicate* gleich `true` ist.
 
 **Tipps**
 
@@ -831,7 +833,7 @@ So erzielen Sie die optimale Leistung:
 
     Beispielsweise wird `where Timestamp >= ago(1d)` gegenüber `where floor(Timestamp, 1d) == ago(1d)` bevorzugt.
 
-* **Einfachste Begriffe zuerst:** Wenn Sie mehrere mit `and` verbundene Klauseln haben, stellen Sie die Klauseln, die nur eine Spalte umfassen, an den Anfang. `Timestamp > ago(1d) and OpId == EventId` ist also besser als anders herum.
+* **Einfachste Begriffe zuerst:** Wenn Sie mehrere mit `and` verbundene Klauseln haben, stellen Sie die Klauseln mit nur einer Spalte an den Anfang. `Timestamp > ago(1d) and OpId == EventId` ist also besser als der umgekehrte Fall.
 
 
 **Beispiel**
@@ -1007,7 +1009,7 @@ Gibt die Anzahl von Zeilen zurück, für die *Predicate* als `true` ausgewertet 
 
 **Leistungstipp:** Verwenden Sie `summarize count(filter)` anstelle von `where filter | summarize count()`.
 
-> [AZURE.NOTE] Vermeiden Sie count() zum Ermitteln der Anzahl von Anforderungen, Ausnahmen oder anderen Ereignissen, die aufgetreten sind. Wenn gerade ein [Stichprobe](app-insights-sampling.md) erstellt wird, ist die Anzahl von Datenpunkten geringer als die Anzahl tatsächlicher Ereignisse. Verwenden Sie stattdessen `summarize sum(itemCount)...`. Die Eigenschaft „itemCount“ gibt die Anzahl von ursprünglichen Ereignissen wieder, die von jedem vermerkten Datenpunkt dargestellt werden.
+> [AZURE.NOTE] Vermeiden Sie count() zum Ermitteln der Anzahl von Anforderungen, Ausnahmen oder anderen Ereignissen, die aufgetreten sind. Wenn gerade eine [Stichprobe](app-insights-sampling.md) erstellt wird, ist die Anzahl von Datenpunkten in Application Insights geringer als die Anzahl tatsächlicher Ereignisse. Verwenden Sie stattdessen `summarize sum(itemCount)...`. Die Eigenschaft „itemCount“ gibt die Anzahl von ursprünglichen Ereignissen wieder, die von jedem vermerkten Datenpunkt dargestellt werden.
 
 ### countif
 
@@ -1017,7 +1019,7 @@ Gibt die Anzahl von Zeilen zurück, für die *Predicate* als `true` ausgewertet 
 
 **Leistungstipp:** Verwenden Sie `summarize countif(filter)` anstelle von `where filter | summarize count()`.
 
-> [AZURE.NOTE] Verwenden Sie „countif()“ nicht zum Ermitteln der Anzahl von Anforderungen, Ausnahmen oder anderen Ereignissen, die aufgetreten sind. Wenn gerade ein [Stichprobe](app-insights-sampling.md) erstellt wird, ist die Anzahl von Datenpunkten geringer als die Anzahl tatsächlicher Ereignisse. Verwenden Sie stattdessen `summarize sum(itemCount)...`. Die Eigenschaft „itemCount“ gibt die Anzahl von ursprünglichen Ereignissen wieder, die von jedem vermerkten Datenpunkt dargestellt werden.
+> [AZURE.NOTE] Verwenden Sie „countif()“ nicht zum Ermitteln der Anzahl von Anforderungen, Ausnahmen oder anderen Ereignissen, die aufgetreten sind. Wenn gerade eine [Stichprobe](app-insights-sampling.md) erstellt wird, ist die Anzahl von Datenpunkten geringer als die Anzahl tatsächlicher Ereignisse. Verwenden Sie stattdessen `summarize sum(itemCount)...`. Die Eigenschaft „itemCount“ gibt die Anzahl von ursprünglichen Ereignissen wieder, die von jedem vermerkten Datenpunkt dargestellt werden.
 
 ### dcount
 
@@ -1065,7 +1067,7 @@ Mit *Accuracy* wird, sofern angegeben, der Ausgleich zwischen Geschwindigkeit un
 
 Gibt ein `dynamic`-Array (JSON) aller Werte von *Expr* in der Gruppe zurück.
 
-* *MaxListSize* ist eine optionale Integer-Beschränkung für die maximale Anzahl zurückgegebener Elemente (Standardwert: *128*).
+* *MaxListSize* ist eine optionale Ganzzahlbeschränkung für die maximale Anzahl zurückgegebener Elemente (Standardwert: *128*).
 
 ### makeset
 
@@ -1287,7 +1289,7 @@ Die `iff()`-Funktion wertet das erste Argument (Prädikat) aus und gibt entweder
 
 **Rückgabe**
 
-Diese Funktion gibt den Wert von *ifTrue* zurück, wenn *predicate* als `true` ausgewertet wird, oder andernfalls den Wert von *ifFalse*.
+Diese Funktion gibt den Wert von *ifTrue* zurück, wenn *predicate* als `true` ausgewertet wird, andernfalls den Wert von *ifFalse*.
 
 **Beispiel**
 
@@ -1361,7 +1363,6 @@ Das ausgewertete Argument. Wenn das Argument eine Tabelle ist, wird die erste Sp
 
 
 
-## Boolean 
 
 ### Boolesche Literale
 
@@ -1398,11 +1399,11 @@ Das ausgewertete Argument. Wenn das Argument eine Tabelle ist, wird die erste Sp
 | / | Dividieren |
 | % | Modulo |
 ||
-| `<` | Kleiner
-| `<=` | Kleiner gleich
-| `>` | Größer
-|`>=` | Größer gleich
-| `<>` | Ungleich
+| `<` | Kleiner 
+| `<=` | Kleiner gleich 
+| `>` | Größer 
+|`>=` | Größer gleich 
+| `<>` | Ungleich 
 | `!=` | Ungleich
 
 
@@ -1435,7 +1436,7 @@ Alias `floor`.
 **Argumente**
 
 * *value:* Eine Zahl, ein Datum oder ein Zeitraum. 
-* *roundTo:* Die „bin“-Größe. Eine Zahl, ein Datum oder ein Zeitraum zum Teilen des Werts (*value*). 
+* *roundTo:* Die bin-Größe. Eine Zahl, ein Datum oder ein Zeitraum zum Teilen des Werts (*value*). 
 
 **Rückgabe**
 
@@ -1899,7 +1900,7 @@ Ruft eine Übereinstimmung für einen [regulären Ausdruck](#regular-expressions
 
 * *regex:* Ein [regulärer Ausdruck](#regular-expressions).
 * *captureGroup:* Eine positive `int`-Konstante, die die zu extrahierende Erfassungsgruppe angibt. 0 steht für die vollständige Übereinstimmung, 1 für den mit der ersten „("Klammer")“ übereinstimmenden Wert im regulären Ausdruck, 2 oder höher für nachfolgende Klammern.
-* *text:* Ein zu suchender `string`.
+* *text:* Ein zu suchender `string`-Wert.
 * *typeLiteral:* Ein optionales Typliteral (z.B. `typeof(long)`). Die extrahierte Teilzeichenfolge wird, sofern angegeben, in diesen Typ konvertiert. 
 
 **Rückgabe**
@@ -2091,7 +2092,7 @@ Konvertiert eine Zeichenfolge in Großbuchstaben.
 
 
 
-## GUIDs
+### GUIDs
 
     guid(00000000-1111-2222-3333-055567f333de)
 
@@ -2199,7 +2200,7 @@ T
 ```
 
 
-## Dynamische Objektfunktionen
+### Dynamische Objektfunktionen
 
 |||
 |---|---|
@@ -2327,13 +2328,13 @@ Ein Objekt vom Typ `dynamic`, angegeben durch *json*.
 
 **Beispiel**
 
-Für das folgende Beispiel gilt, wenn `context_custom_metrics` ein `string` ist, der folgendermaßen aussieht:
+Für das folgende Beispiel gilt: Wenn `context_custom_metrics` ein `string`-Element ist, das folgendermaßen aussieht:
 
 ```
 {"duration":{"value":118.0,"count":5.0,"min":100.0,"max":150.0,"stdDev":0.0,"sampledValue":118.0,"sum":118.0}}
 ```
 
-ruft das folgende Fragment zunächst den Wert des `duration`-Slots im Objekt und anschließend zwei Slots daraus ab: `duration.value` und `duration.min` (bzw. `118.0` und `110.0`).
+dann ruft das folgende Fragment zunächst den Wert des `duration`-Slots im Objekt und anschließend zwei Slots daraus ab: `duration.value` und `duration.min` (bzw. `118.0` und `110.0`).
 
 ```AIQL
 T
@@ -2400,7 +2401,7 @@ Ein Array von Path-Ausdrücken.
 
 Beachten Sie, dass „[0]“ auf das Vorhandensein eines Arrays hinweist, aber nicht den von einem bestimmten Pfad verwendeten Index angibt.
 
-## Namen
+### Namen
 
 Namen können bis zu 1024 Zeichen lang sein. Die Groß-/Kleinschreibung wird beachtet, und sie können Buchstaben, Ziffern und Unterstriche (`_`) enthalten.
 
@@ -2425,4 +2426,4 @@ Geben Sie einen Namen mit ['... '] oder [" ... "] an, um andere Zeichen einzubez
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->
