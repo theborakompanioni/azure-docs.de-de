@@ -81,6 +81,6 @@ Sollten die Preis- oder die Speicheranforderungen nicht erfüllt werden, empfieh
 
 Wenn Sie die optimale SKU ermittelt haben, fahren Sie mit den folgenden Schritte fort:
 - [Erstellen eines Azure Search-Diensts über das Azure-Portal](search-create-service-portal.md)
-- [Kapazitätsplanung in Azure Search](search-capacity-planning.md)
+- [Skalieren von Ressourcenebenen für Abfrage und Indizierung von Arbeitslasten in Azure Search](search-capacity-planning.md)
 
 <!---HONumber=AcomDC_0608_2016-->

@@ -53,7 +53,11 @@ Mit Features:
 
 | Name | Erforderlich | Typ | Beschreibung |
 |:---|:---|:---|:---|
-| Element-ID |Ja | [A-z], [a-z], [0-9], [\_] &#40;Unterstrich&#41;, [-] &#40;Bindestrich&#41;<br> Max. Länge: 50 | Eindeutiger Bezeichner eines Artikels. | | Artikelname | Ja | Alle alphanumerischen Zeichen<br> Max. Länge: 255 | Artikelname. | | Artikelkategorie | Ja | Alle alphanumerischen Zeichen <br> Max. Länge: 255 | Kategorie, zu der dieser Artikel gehört (z.B. Kochbücher, Drama…). Darf leer sein. | | Beschreibung | Nein, es sei denn, es sind Features vorhanden (darf jedoch leer sein) | Alle alphanumerischen Zeichen <br> Max. Länge: 4.000 | Dies ist die Beschreibung des Artikels. | | Featureliste | Nein | Alle alphanumerischen Zeichen <br> Max. Länge: 4.000; max. Anzahl von Features: 20 | Dies ist eine kommagetrennte Liste im Format „Featurename=Featurewert“ zum Verbessern der Modellempfehlung.|
+| Artikel-ID |Ja | [A-z], [a-z], [0-9], [\_] &#40;Unterstrich&#41;, [-] &#40;Bindestrich&#41;<br> Max. Länge: 50 | Eindeutiger Bezeichner eines Artikels. | 
+| Artikelname | Ja | Alle alphanumerischen Zeichen<br> Max. Länge: 255 | Artikelname. | 
+| Artikelkategorie | Ja | Alle alphanumerischen Zeichen <br> Max. Länge: 255 | Kategorie, zu der dieser Artikel gehört (z.B. Kochbücher, Drama…). Darf leer sein. | 
+| Beschreibung | Nein, es sei denn, es sind Features vorhanden (darf jedoch leer sein) | Alle alphanumerischen Zeichen <br> Max. Länge: 4.000 | Dies ist die Beschreibung des Artikels. | 
+| Featureliste | Nein | Alle alphanumerischen Zeichen <br> Max. Länge: 4.000; max. Anzahl von Features: 20 | Dies ist eine kommagetrennte Liste im Format „Featurename=Featurewert“ zum Verbessern der Modellempfehlung.|
 
 #### Hochladen einer Katalogdatei
 
@@ -61,7 +65,7 @@ Informationen zum Hochladen einer Katalogdatei finden Sie in der [API-Referenz](
 
 Beachten Sie, dass der Inhalt der Katalogdatei als Anforderungstext übergeben werden sollte.
 
-Wenn Sie durch mehrere Aufrufe mehrere Katalogdateien zum gleichen Modell hochladen, werden nur die neuen Katalogelemente eingefügt. Vorhandene Elemente bleiben innerhalb der ursprünglichen Werte. Mit dieser Methode können Sie keine Katalogdaten aktualisieren.
+Wenn Sie durch mehrere Aufrufe mehrere Katalogdateien zum gleichen Modell hochladen, werden nur die neuen Katalogartikel eingefügt. Vorhandene Artikel bleiben innerhalb der ursprünglichen Werte. Mit dieser Methode können Sie keine Katalogdaten aktualisieren.
 
 >   Hinweis: Die maximale Dateigröße beträgt 200 MB. Der Katalog kann maximal 100.000 Artikel enthalten.
 
@@ -72,7 +76,7 @@ Das Empfehlungsmodul erstellt ein Statistikmodell, das Aufschluss darüber gibt,
 
 Falls das Modul Informationen zu dieser Violine besitzt (etwa, dass es sich um ein Musikinstrument handelt, sie für Kinder im Alter von sieben bis 10 Jahren gedacht ist, es keine teure Violine ist usw.), kann das Modul von anderen Produkten mit ähnlichen Features lernen. Beispiel: Sie haben in der Vergangenheit bereits Violinen verkauft, und Kunden, die eine Violine erwerben, kaufen häufig auch CDs mit klassischer Musik und Notenständer. Das System kann diese Verbindungen zwischen Features ermitteln und Empfehlungen basierend auf den Features aussprechen, während für die neue Violine noch wenig Nutzungsdaten vorliegen.
 
-Features werden als Teil der Katalogdaten importiert, und wenn ein Rangfolgebuild abgeschlossen ist, wird ihnen ein Rang (die Bedeutung des Features im Modell) zugeordnet. Der Rang der Features kann sich je nach Nutzungsdatenmuster und Elementtyp ändern. Bei konsistenter Nutzung und konsistenten Elementen dürfte der Rang jedoch nur geringfügigen Schwankungen unterliegen. Der Rang eines Features ist eine nicht-negative Zahl. Die Zahl 0 bedeutet, dass das Feature noch nicht eingestuft wurde (dies ist der Fall, wenn diese API vor dem Abschluss des ersten Rangfolgebuilds aufgerufen wurde). Das Datum, an dem der Rang zugeordnet wurde, wird als Aktualität der Bewertung bezeichnet.
+Features werden als Teil der Katalogdaten importiert, und wenn ein Rangfolgebuild abgeschlossen ist, wird ihnen ein Rang (die Bedeutung des Features im Modell) zugeordnet. Der Rang der Features kann sich je nach Nutzungsdatenmuster und Artikeltyp ändern. Bei konsistenter Nutzung und konsistenten Artikeln dürfte der Rang jedoch nur geringfügigen Schwankungen unterliegen. Der Rang eines Features ist eine nicht-negative Zahl. Die Zahl 0 bedeutet, dass das Feature noch nicht eingestuft wurde (dies ist der Fall, wenn diese API vor dem Abschluss des ersten Rangfolgebuilds aufgerufen wurde). Das Datum, an dem der Rang zugeordnet wurde, wird als Aktualität der Bewertung bezeichnet.
 
 Wenn Sie Features als Teil Ihres Builds verwenden möchten, müssen Sie folgende Schritte ausführen:
 
@@ -93,7 +97,7 @@ Eine Nutzungsdatei ist eine kommagetrennte Datei (CSV-Datei). Jede Zeile in eine
 
 | Name | Erforderlich | Typ | Beschreibung
 |-------|------------|------|---------------
-|Benutzer-ID| Ja|[A-z], [a-z], [0-9], [\_] &#40;Unterstrich&#41;, [-] &#40;Bindestrich&#41;<br> Max. Länge: 255 |Eindeutiger Bezeichner eines Benutzers. |Element-ID|Ja|[A-z], [a-z], [0-9], [&#95;] &#40;Unterstrich&#41;, [-] &#40;Bindestrich&#41;<br> Max. Länge: 50|Eindeutiger Bezeichner eines Artikels. |Zeit|Ja|Datum im Format: JJJJ/MM/TTTHH:MM:SS (z.B. 2013/06/20T10:00:00)|Zeitpunkt der Daten. |Ereignis|Nein | Eines der folgenden:<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase| Der Transaktionstyp. |
+|Benutzer-ID| Ja|[A-z], [a-z], [0-9], [\_] &#40;Unterstrich&#41;, [-] &#40;Bindestrich&#41;<br> Max. Länge: 255 |Eindeutiger Bezeichner eines Benutzers. |Artikel-ID|Ja|[A-z], [a-z], [0-9], [&#95;] &#40;Unterstrich&#41;, [-] &#40;Bindestrich&#41;<br> Max. Länge: 50|Eindeutiger Bezeichner eines Artikels. |Zeit|Ja|Datum im Format: JJJJ/MM/TTTHH:MM:SS (z.B. 2013/06/20T10:00:00)|Zeitpunkt der Daten. |Ereignis|Nein | Eines der folgenden:<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase| Der Transaktionstyp. |
 
 #### Beispielzeilen in einer Nutzungsdatei
 
