@@ -97,7 +97,10 @@ Eine Nutzungsdatei ist eine kommagetrennte Datei (CSV-Datei). Jede Zeile in eine
 
 | Name | Erforderlich | Typ | Beschreibung
 |-------|------------|------|---------------
-|Benutzer-ID| Ja|[A-z], [a-z], [0-9], [\_] &#40;Unterstrich&#41;, [-] &#40;Bindestrich&#41;<br> Max. Länge: 255 |Eindeutiger Bezeichner eines Benutzers. |Artikel-ID|Ja|[A-z], [a-z], [0-9], [&#95;] &#40;Unterstrich&#41;, [-] &#40;Bindestrich&#41;<br> Max. Länge: 50|Eindeutiger Bezeichner eines Artikels. |Zeit|Ja|Datum im Format: JJJJ/MM/TTTHH:MM:SS (z.B. 2013/06/20T10:00:00)|Zeitpunkt der Daten. |Ereignis|Nein | Eines der folgenden:<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase| Der Transaktionstyp. |
+|Benutzer-ID| Ja|[A-z], [a-z], [0-9], [\_] &#40;Unterstrich&#41;, [-] &#40;Bindestrich&#41;<br> Max. Länge: 255 |Eindeutiger Bezeichner eines Benutzers. 
+|Element-ID|Ja|[A-z], [a-z], [0-9], [&#95;] &#40;Unterstrich&#41;, [-] &#40;Bindestrich&#41;<br> Max. Länge: 50|Eindeutiger Bezeichner eines Artikels. 
+|Zeit|Ja|Datum im Format: JJJJ/MM/TTTHH:MM:SS (z.B. 2013/06/20T10:00:00)|Zeitpunkt der Daten. 
+|Ereignis|Nein | Eines der folgenden:<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase| Der Transaktionstyp. |
 
 #### Beispielzeilen in einer Nutzungsdatei
 
