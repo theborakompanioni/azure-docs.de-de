@@ -21,7 +21,7 @@ Zum Verwenden der [EventProcessorHost]-Klasse müssen Sie über ein Azure-Speich
 
 > [AZURE.NOTE] Stellen Sie beim Kopieren und Einfügen der Speicherkonto-Verbindungszeichenfolge sicher, dass keine Leerzeichen aufgenommen werden.
 
-Sie benötigen außerdem eine Service Bus-Warteschlange, um die zuverlässige Verarbeitung von interaktiven Nachrichten zu aktivieren. Sie können eine Warteschlange programmgesteuert mit einem Deduplizierungsfenster von einer Stunde erstellen. Dies ist unter [Verwenden von Service Bus-Warteschlangen][Service Bus Queue] beschrieben. Alternativ können Sie im [klassischen Azure-Portal] die folgenden Schritte ausführen:
+Sie benötigen außerdem eine Service Bus-Warteschlange, um die zuverlässige Verarbeitung von interaktiven Nachrichten zu aktivieren. Sie können eine Warteschlange programmgesteuert mit einem Deduplizierungsfenster von einer Stunde erstellen. Dies ist unter [Erste Schritte mit Service Bus-Warteschlangen][Service Bus Queue] beschrieben. Alternativ können Sie im [klassischen Azure-Portal] die folgenden Schritte ausführen:
 
 1. Klicken Sie in der Ecke unten links auf **Neu**. Klicken Sie anschließend auf **App Services** > **Service Bus** > **Warteschlange** > **Benutzerdefiniert erstellen**. Geben Sie den Namen **d2ctutorial** ein, wählen Sie eine Region aus, und verwenden Sie einen vorhandenen Namespace, oder erstellen Sie einen neuen Namespace. Wählen Sie auf der nächsten Seite **Doppelte Erkennung aktivieren**, und legen Sie für **Fenster für Duplikaterkennungsverlauf-Zeitpunkt** eine Stunde fest. Klicken Sie dann auf das Kontrollkästchen in der rechten unteren Ecke, um die Warteschlangenkonfiguration zu speichern.
 
