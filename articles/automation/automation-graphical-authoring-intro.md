@@ -19,7 +19,7 @@
 
 ## Einführung
 
-Mithilfe der grafischen Erstellung können Sie ohne die Komplexität des zugrunde liegenden Windows PowerShell- oder PowerShell-Workflow-Codes Runbooks für Azure Automation erstellen. Sie können dem Zeichenbereich Aktivitäten aus einer Bibliothek mit Cmdlets und Runbooks hinzufügen, Verknüpfungen erstellen und die Elemente konfigurieren, um einen Workflow zu erhalten. Wenn Sie schon einmal mit System Center Orchestrator oder Service Management Automation (SMA) gearbeitet haben, dürfte Ihnen das bekannt vorkommen.
+Mithilfe der grafischen Erstellung können Sie ohne die Komplexität des zugrunde liegenden Windows PowerShell- oder PowerShell-Workflow-Codes Runbooks für Azure Automation erstellen. Sie können der Canvas Aktivitäten aus einer Bibliothek mit Cmdlets und Runbooks hinzufügen, Verknüpfungen erstellen und die Elemente konfigurieren, um einen Workflow zu erhalten. Wenn Sie schon einmal mit System Center Orchestrator oder Service Management Automation (SMA) gearbeitet haben, dürfte Ihnen das bekannt vorkommen.
 
 Dieser Artikel bietet eine Einführung in die grafische Erstellung und die Konzepte, die Sie für den Einstieg in die Erstellung eines grafischen Runbooks benötigen.
 
@@ -38,27 +38,27 @@ Sie können den grafischen Editor im Azure-Portal öffnen, indem Sie ein grafisc
 Die folgenden Abschnitte beschreiben die Steuerelemente im grafischen Editor.
 
 
-### Zeichenbereich
-Der Zeichenbereich ist der Bereich, in dem Sie Ihr Runbook entwerfen. Sie fügen über die Knoten im Steuerelement "Bibliothek" Aktivitäten zum Runbook hinzu und verbinden diese mit Verknüpfungen zur Definition der Logik des Runbooks.
+### Canvas
+Die Canvas ist der Bereich, in dem Sie Ihr Runbook entwerfen. Sie fügen über die Knoten im Steuerelement "Bibliothek" Aktivitäten zum Runbook hinzu und verbinden diese mit Verknüpfungen zur Definition der Logik des Runbooks.
 
-Über die Steuerelemente unten im Zeichenbereich können Sie die Ansicht vergrößern und verkleinern.
+Über die Steuerelemente am unteren Rand der Canvas können Sie die Ansicht vergrößern und verkleinern.
 
 ![Grafischer Arbeitsbereich](media/automation-graphical-authoring-intro/runbook-canvas-controls.png)
 
 ### Steuerelement "Bibliothek"
 
-Über das Steuerelement "Bibliothek" wählen Sie die [Aktivitäten](#activities) aus, die Sie Ihrem Runbook hinzufügen möchten. Sie fügen diese zum Zeichenbereich hinzu, wenn Sie sie mit anderen Aktivitäten verbinden. Das Steuerelement enthält vier Abschnitte, die in der folgenden Tabelle beschrieben werden.
+Über das Steuerelement "Bibliothek" wählen Sie die [Aktivitäten](#activities) aus, die Sie Ihrem Runbook hinzufügen möchten. Sie fügen diese zur Canvas hinzu, wenn Sie sie mit anderen Aktivitäten verbinden. Das Steuerelement enthält vier Abschnitte, die in der folgenden Tabelle beschrieben werden.
 
 | Abschnitt | Beschreibung |
 |:---|:---|
 | Cmdlets | Enthält alle Cmdlets, die in Ihrem Runbook verwendet werden können. Die Cmdlets sind nach Modul angeordnet. Es sind alle Module verfügbar, die Sie in Ihrem Automation-Konto installiert haben. |
-| Runbooks | Umfasst die Runbooks in Ihrem Automation-Konto. Diese Runbooks können dem Zeichenbereich hinzugefügt und als untergeordnete Runbooks verwendet werden. Es werden nur Runbooks angezeigt, die den gleichen Kerntyp besitzen wie das gerade bearbeitete Runbook: Für grafische Runbooks werden nur PowerShell-basierte Runbooks angezeigt, für grafische PowerShell-Workflow-Runbooks nur PowerShell-Workflow-basierte Runbooks.
+| Runbooks | Umfasst die Runbooks in Ihrem Automation-Konto. Diese Runbooks können der Canvas hinzugefügt und als untergeordnete Runbooks verwendet werden. Es werden nur Runbooks angezeigt, die den gleichen Kerntyp besitzen wie das gerade bearbeitete Runbook: Für grafische Runbooks werden nur PowerShell-basierte Runbooks angezeigt, für grafische PowerShell-Workflow-Runbooks nur PowerShell-Workflow-basierte Runbooks.
 | Objekte | Enthalten die [Automation-Objekte](http://msdn.microsoft.com/library/dn939988.aspx) in Ihrem Automation-Konto, die im Runbook verwendet werden können. Wenn Sie ein Objekt in ein Runbook einfügen, wird eine Workflowaktivität zum Abrufen des ausgewählten Objekts hinzugefügt. Im Fall von Variablenobjekten können Sie auswählen, ob Sie eine Aktivität zum Abrufen der Variable oder eine Aktivität zum Festlegen der Variable hinzufügen möchten.
 | Steuerelement "Runbook" | Enthält die Runbookaktivitäten, die im aktuellen Runbook verwendet werden können. Eine *Verbindung* akzeptiert mehrere Eingaben und wartet, bis sämtliche dieser Eingaben abgeschlossen wurden, bevor der Workflow fortgesetzt wird. Eine Aktivität vom Typ *Code* führt abhängig von der Art des grafischen Runbooks mindestens eine PowerShell- oder PowerShell-Workflow-Codezeile aus. Sie können diese Aktivität für benutzerdefinierten Code oder für Funktionen nutzen, die sich mit anderen Aktivitäten nur schwer umsetzen lassen.|
 
 ### Steuerelement "Konfiguration"
 
-Das Steuerelement „Konfiguration“ dient zum Angeben von Details für ein im Zeichenbereich ausgewähltes Objekt. Welche Eigenschaften in diesem Steuerelement zur Verfügung stehen, hängt von der Art des ausgewählten Objekts ab. Wenn Sie eine Option im Steuerelement "Konfiguration" auswählen, werden zusätzliche Blätter zum Bereitstellen zusätzlicher Informationen geöffnet.
+Das Steuerelement „Konfiguration“ dient zum Angeben von Details für ein auf der Canvas ausgewähltes Objekt. Welche Eigenschaften in diesem Steuerelement zur Verfügung stehen, hängt von der Art des ausgewählten Objekts ab. Wenn Sie eine Option im Steuerelement "Konfiguration" auswählen, werden zusätzliche Blätter zum Bereitstellen zusätzlicher Informationen geöffnet.
 
 ### Steuerelement "Test"
 
@@ -108,11 +108,11 @@ Sie haben außerdem die Möglichkeit, ein Runbook auf die veröffentlichte Versi
 
 ## Aktivitäten
 
-Aktivitäten sind die Bausteine eines Runbooks. Bei einer Aktivität kann es sich um ein PowerShell-Cmdlet, um ein untergeordnetes Runbook oder um eine Workflowaktivität handeln. Sie fügen dem Runbook eine Aktivität hinzu, indem Sie mit der rechten Maustaste im Steuerelement "Bibliothek" auf das Runbook klicken und die Option **Zu Zeichenbereich hinzufügen** auswählen. Anschließend können Sie die Aktivität per Drag & Drop an einer beliebigen Stelle im Zeichenbereich platzieren. Die Position der Aktivität im Zeichenbereich hat keinerlei Einfluss auf den Vorgang im Runbook. Sie können das Layout Ihres Runbooks so wählen, wie es Ihnen zur visuellen Darstellung der Vorgänge am geeignetsten erscheint.
+Aktivitäten sind die Bausteine eines Runbooks. Bei einer Aktivität kann es sich um ein PowerShell-Cmdlet, um ein untergeordnetes Runbook oder um eine Workflowaktivität handeln. Sie fügen dem Runbook eine Aktivität hinzu, indem Sie mit der rechten Maustaste im Steuerelement "Bibliothek" auf das Runbook klicken und die Option **Zum Zeichenbereich hinzufügen** auswählen. Anschließend können Sie die Aktivität per Drag & Drop an einer beliebigen Stelle auf der Canvas platzieren. Die Position der Aktivität auf der Canvas hat keinerlei Einfluss auf den Vorgang im Runbook. Sie können das Layout Ihres Runbooks so wählen, wie es Ihnen zur visuellen Darstellung der Vorgänge am geeignetsten erscheint.
 
 ![Zum Zeichenbereich hinzufügen](media/automation-graphical-authoring-intro/add-to-canvas-revised20165.png)
 
-Wählen Sie die Aktivität im Zeichenbereich, um ihre Eigenschaften und Parameter im Blatt "Konfigurieren" zu konfigurieren. Sie können die **Bezeichnung** der Aktivität in eine für Sie aussagekräftige Beschreibung ändern. Das ursprüngliche Cmdlet wird weiterhin ausgeführt, Sie ändern lediglich den Anzeigenamen, der im grafischen Editor verwendet wird. Die Bezeichnung muss innerhalb des Runbooks eindeutig sein.
+Wählen Sie die Aktivität auf der Canvas, um ihre Eigenschaften und Parameter im Blatt "Konfigurieren" zu konfigurieren. Sie können die **Bezeichnung** der Aktivität in eine für Sie aussagekräftige Beschreibung ändern. Das ursprüngliche Cmdlet wird weiterhin ausgeführt, Sie ändern lediglich den Anzeigenamen, der im grafischen Editor verwendet wird. Die Bezeichnung muss innerhalb des Runbooks eindeutig sein.
 
 ### Parametersätze
 
@@ -193,7 +193,7 @@ Der folgende Code beispielsweise führt Datumsberechnungen unter Verwendung eine
 
 ## Verknüpfungen und Workflow
 
-Eine **Verknüpfung** in einem grafischen Runbook verbindet zwei Aktivitäten miteinander. Sie wird im Zeichenbereich als Pfeil dargestellt, der von der Quellaktivität zur Zielaktivität zeigt. Die Aktivitäten werden in Richtung des Pfeils ausgeführt, wobei die Zielaktivität gestartet wird, sobald die Quellaktivität abgeschlossen wurde.
+Eine **Verknüpfung** in einem grafischen Runbook verbindet zwei Aktivitäten miteinander. Sie wird auf der Canvas als Pfeil dargestellt, der von der Quellaktivität zur Zielaktivität zeigt. Die Aktivitäten werden in Richtung des Pfeils ausgeführt, wobei die Zielaktivität gestartet wird, sobald die Quellaktivität abgeschlossen wurde.
 
 ### Erstellen einer Verknüpfung
 
@@ -282,11 +282,11 @@ Prüfpunkte stehen nur in grafischen PowerShell-Workflow-Runbooks zur Verfügung
 
 ## Authentifizierung bei Azure-Ressourcen
 
-Zur Verwaltung von Azure-Ressourcen verwendete Runbooks in Azure Automation erfordern eine Authentifizierung bei Azure. Standardmäßig wird das neue Feature [Ausführendes Konto](automation-sec-configure-azure-runas-account.md) (auch als Dienstprinzipal bezeichnet) verwendet, um in Ihrem Abonnement mit Automation-Runbooks auf Azure Resource Manager-Ressourcen zuzugreifen. Diese Funktion können Sie einem grafischen Runbook hinzufügen, indem Sie dem Zeichenbereich das Verbindungsobjekt **AzureRunAsConnection** (verwendet das PowerShell-Cmdlet [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx)) und das Cmdlet [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) hinzufügen. Dies wird im folgenden Beispiel veranschaulicht:<br>![Authentifizierungsaktivitäten für „Ausführen als“](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)<br> Die Aktivität „Get Run As Connection“ (Verbindung für „Ausführen als“ abrufen; also „Get-AutomationConnection“) ist mit einer Datenquelle mit konstantem Wert konfiguriert: AzureRunAsConnection:<br>![Verbindungskonfiguration für „Ausführen als“](media/automation-graphical-authoring-intro/authenticate-runas-parameterset.png)<br> Die nächste Aktivität (Add-AzureRmAccount) fügt das authentifizierte ausführende Konto hinzu, damit es im Runbook verwendet werden kann:<br> ![Parametersatz „Add-AzureRmAccount“](media/automation-graphical-authoring-intro/authenticate-conn-to-azure-parameter-set.png)<br> Für die Parameter **APPLICATIONID**, **CERTIFICATETHUMBPRINT** und **TENANTID** muss der Name der Eigenschaft für den Feldpfad angegeben werden, da die Aktivität ein Objekt mit mehreren Eigenschaften ausgibt. Andernfalls tritt beim Ausführen des Runbooks ein Fehler auf, da die Authentifizierung nicht erfolgreich ist. Dies sind die Mindestanforderungen, die für die Authentifizierung Ihres Runbooks mit dem ausführenden Konto erfüllt sein müssen.
+Zur Verwaltung von Azure-Ressourcen verwendete Runbooks in Azure Automation erfordern eine Authentifizierung bei Azure. Standardmäßig wird das neue Feature [Ausführendes Konto](automation-sec-configure-azure-runas-account.md) (auch als Dienstprinzipal bezeichnet) verwendet, um in Ihrem Abonnement mit Automation-Runbooks auf Azure Resource Manager-Ressourcen zuzugreifen. Diese Funktion können Sie einem grafischen Runbook hinzufügen, indem Sie der Canvas das Verbindungsobjekt **AzureRunAsConnection** (verwendet das PowerShell-Cmdlet [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx)) und das Cmdlet [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) hinzufügen. Dies wird im folgenden Beispiel veranschaulicht:<br>![Authentifizierungsaktivitäten für „Ausführen als“](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)<br> Die Aktivität „Get Run As Connection“ (Verbindung für „Ausführen als“ abrufen; also „Get-AutomationConnection“) ist mit einer Datenquelle mit konstantem Wert konfiguriert: AzureRunAsConnection:<br>![Verbindungskonfiguration für „Ausführen als“](media/automation-graphical-authoring-intro/authenticate-runas-parameterset.png)<br> Die nächste Aktivität (Add-AzureRmAccount) fügt das authentifizierte ausführende Konto hinzu, damit es im Runbook verwendet werden kann:<br> ![Parametersatz „Add-AzureRmAccount“](media/automation-graphical-authoring-intro/authenticate-conn-to-azure-parameter-set.png)<br> Für die Parameter **APPLICATIONID**, **CERTIFICATETHUMBPRINT** und **TENANTID** muss der Name der Eigenschaft für den Feldpfad angegeben werden, da die Aktivität ein Objekt mit mehreren Eigenschaften ausgibt. Andernfalls tritt beim Ausführen des Runbooks ein Fehler auf, da die Authentifizierung nicht erfolgreich ist. Dies sind die Mindestanforderungen, die für die Authentifizierung Ihres Runbooks mit dem ausführenden Konto erfüllt sein müssen.
 
 Um die Abwärtskompatibilität für Abonnenten zu gewährleisten, die ein Automation-Konto mit einem [Azure AD-Benutzerkonto](automation-sec-configure-aduser-account.md) erstellt haben, um Azure Service Management(ASM)- oder Azure Resource Manager-Ressourcen zu verwalten, wird zur Authentifizierung das Cmdlet „Add-AzureAccount“ mit einem [Anmeldeinformationsobjekt](http://msdn.microsoft.com/library/dn940015.aspx) verwendet, das einen Active Directory-Benutzer mit Zugriff auf das Azure-Konto darstellt.
 
-Sie können diese Funktionalität zu einem grafischen Runbook hinzufügen, indem Sie dem Zeichenbereich ein Anmeldeinformationsobjekt gefolgt von einer Add-AzureAccount-Aktivität hinzufügen. "Add-AzureAccount" verwendet die Anmeldeinformationen aus der Aktivität als Eingabe. Dies wird im folgenden Beispiel veranschaulicht.
+Sie können diese Funktionalität zu einem grafischen Runbook hinzufügen, indem Sie der Canvas ein Anmeldeinformationsobjekt gefolgt von einer Add-AzureAccount-Aktivität hinzufügen. "Add-AzureAccount" verwendet die Anmeldeinformationen aus der Aktivität als Eingabe. Dies wird im folgenden Beispiel veranschaulicht.
 
 ![Authentifizierungsaktivitäten](media/automation-graphical-authoring-intro/authentication-activities.png)
 
