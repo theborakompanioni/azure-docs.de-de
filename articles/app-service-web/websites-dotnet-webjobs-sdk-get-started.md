@@ -84,7 +84,7 @@ In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für
 
 3. Melden Sie sich mit Ihren Azure-Anmeldeinformationen an.
 
-5. Klicken Sie mit der rechten Maustaste unter dem Azure-Knoten auf **Speicher**, und klicken Sie dann auf **Speicherkonto erstellen**. 
+5. Klicken Sie mit der rechten Maustaste unter dem Azure-Knoten auf **Speicher**, und klicken Sie dann auf **Speicherkonto erstellen**.  
 ![Speicherkonto erstellen](./media/websites-dotnet-webjobs-sdk-get-started/createstor.png)
 
 3. Geben Sie im Dialogfeld **Speicherkonto erstellen** einen Namen für das Speicherkonto ein.
