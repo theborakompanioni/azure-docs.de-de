@@ -30,7 +30,7 @@ In diesem Abschnitt ändern Sie die simulierte Geräteanwendung, die Sie in [Ers
 
         ReceiveC2dAsync();
 
-> [AZURE.NOTE] Der Einfachheit halber wird in diesem Lernprogramm keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (z.B. einen exponentiellen Backoff), wie im MSDN-Artikel zum Behandeln vorübergehender Fehler beschrieben.
+> [AZURE.NOTE] Der Einfachheit halber wird in diesem Lernprogramm keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (z.B. einen exponentiellen Backoff), wie im MSDN-Artikel zum Behandeln [Vorübergehender Fehler beschrieben](https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx).
 
 <!-- Links -->
 [IoT Hub Developer Guide - C2D]: ../articles/iot-hub/iot-hub-devguide.md#c2d
