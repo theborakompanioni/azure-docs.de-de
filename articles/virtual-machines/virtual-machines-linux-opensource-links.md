@@ -23,7 +23,7 @@
 
 Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten Linux-basierter virtueller Computer im klassischen Bereitstellungsmodell benötigen.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Ressourcen-Manager-Modell.
 
 ## Erste Schritte
 - [Einführung in Linux in Azure](virtual-machines-linux-intro-on-azure.md)

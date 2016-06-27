@@ -147,6 +147,6 @@ Wenn Probleme mit Ihrem Data Warehouse auftreten, können Sie [ein Supportticket
 
 
 <!--Other Web references-->
-[Storage Premium eingeführt, um die Leistung besser vorhersagen zu können]: https://azure.microsoft.com/de-DE/blog/azure-sql-data-warehouse-introduces-premium-storage-for-greater-performance/
+[Storage Premium eingeführt, um die Leistung besser vorhersagen zu können]: https://azure.microsoft.com/blog/azure-sql-data-warehouse-introduces-premium-storage-for-greater-performance/
 
 <!---HONumber=AcomDC_0615_2016-->

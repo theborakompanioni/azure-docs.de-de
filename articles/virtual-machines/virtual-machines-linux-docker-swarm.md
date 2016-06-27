@@ -19,7 +19,7 @@
 
 # Verwenden von Docker mit Swarm
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Ressourcen-Manager-Modell.
 
 
 In diesem Thema wird erläutert, wie Sie mithilfe von [Docker](https://www.docker.com/) mit [Swarm](https://github.com/docker/swarm) auf einfache Weise ein über Swarm verwaltetes Cluster auf Azure erstellen. Hierbei werden vier virtuelle Computer in Azure erstellt, von denen einer als Swarm-Manager fungiert und drei als Bestandteil des Clusters aus Docker-Hosts verwendet werden. Wenn Sie fertig sind, können Sie mithilfe von Swarm den Cluster anzeigen und mit der Verwendung von Docker beginnen. Darüber hinaus werden die Azure-CLI-Aufrufe in diesem Thema im ASM-Modus (Azure Service Management) ausgeführt.

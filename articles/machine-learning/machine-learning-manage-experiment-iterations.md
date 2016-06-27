@@ -72,7 +72,7 @@ Nehmen wir beispielsweise an, Sie haben den Ausführungsverlauf des Experiments 
 
 4. Ändern Sie den Parameter **Number of training epochs** (Anzahl der Trainingsperioden).
 
-5. Klicken Sie auf **RUN ** (AUSFÜHREN).
+5. Klicken Sie auf **RUN** (AUSFÜHREN).
 
 Sie können diese Version des Experiments nun weiterhin ändern und ausführen, wobei ein neuer Ausführungsverlauf zur Dokumentation Ihrer Arbeit erstellt wird.
 

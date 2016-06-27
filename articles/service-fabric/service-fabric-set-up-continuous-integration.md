@@ -194,7 +194,7 @@ Führen Sie zum Installieren von Azure PowerShell die Schritte im vorherigen Abs
 
 1.	Laden Sie „agent.zip“ herunter. Gehen Sie dazu folgendermaßen vor:
 
-    a. Melden Sie sich bei Ihrem Teamprojekt an, z.B. „****https://[your-VSTS-account-name].visualstudio.com**”.
+    a. Melden Sie sich bei Ihrem Teamprojekt an, z.B. „**https://[your-VSTS-account-name].visualstudio.com**”.
 
     b. Wählen Sie das Zahnradsymbol in der rechten oberen Bildschirmecke aus.
 
@@ -401,7 +401,7 @@ Wenn bei einem vorherigen Buildvorgang keine Bereinigung stattgefunden hat (beis
     |Skriptdateiname|Klicken Sie auf die Schaltfläche **...**, und navigieren Sie innerhalb Ihres Anwendungsprojekts zum Verzeichnis **Skripts**. Wählen Sie `Deploy-FabricApplication.ps1` aus.|
     |Argumente|`-PublishProfileFile path/to/MySolution/MyApplicationProject/PublishProfiles/MyPublishProfile.xml -ApplicationPackagePath path/to/MySolution/MyApplicationProject/pkg/$(BuildConfiguration)`|
 
->[AZURE.NOTE] Eine Veröffentlichungsprofil-XML-Datei kann ganz einfach in Visual Studio erstellt werden, wie hier gezeigt: https://azure.microsoft.com/de-DE/documentation/articles/service-fabric-publish-app-remote-cluster
+>[AZURE.NOTE] Eine Veröffentlichungsprofil-XML-Datei kann ganz einfach in Visual Studio erstellt werden, wie hier gezeigt: https://azure.microsoft.com/documentation/articles/service-fabric-publish-app-remote-cluster
 
 >[AZURE.NOTE] Wenn Sie die Bereitstellung der Anwendung in einem Cluster unterstützen möchten, bei der die Anwendung nicht aktualisiert, sondern überschrieben wird, fügen Sie das PowerShell-Argument „-OverwriteBehavior SameAppTypeAndVersion“ hinzu. Achten Sie außerdem darauf, dass das ausgewählte Veröffentlichungsprofil nicht mit einer Upgradeoption konfiguriert ist. Dadurch werden vor dem Installieren des neueren Builds sämtliche Anwendungstypen entfernt.
 

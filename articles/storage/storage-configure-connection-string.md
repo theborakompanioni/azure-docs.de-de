@@ -161,6 +161,6 @@ Ihre Verbindungszeichenfolge sollte beispielsweise der folgenden Verbindungszeic
 ## Nächste Schritte
 
 - [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](storage-use-emulator.md)
-- [Windows Azure-Speicher-Explorer](storage-explorers.md)
+- [Microsoft Azure-Speicher-Explorer](storage-explorers.md)
 
 <!---HONumber=AcomDC_0615_2016-->

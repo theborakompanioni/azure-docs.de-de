@@ -38,4 +38,10 @@ Testen Sie einen virtuellen Computer probeweise aus: Erstellen Sie hierfür in n
 
 Da die Tutorials darauf ausgerichtet sind, in wenigen Schritten einen virtuellen Computer zu erstellen, zeigen sie nur eine von mehreren Möglichkeiten auf. Die verschiedenen Tools, die für die Erstellung virtueller Computers zur Verfügung stehen, werden hingegen nicht beschrieben. Eine Übersicht über diese Tools und Links zu Anweisungen finden Sie unter [Verschiedene Möglichkeiten zum Erstellen eines virtuellen Linux-Computers](virtual-machines-linux-creation-choices.md).
 
+
+<!--links-->
+[App Service]: app-service-choose-me.md
+[Virtuelle Computer]: #tellmevm
+[Cloud-Dienste]: cloud-services-choose-me.md
+
 <!---HONumber=AcomDC_0615_2016-->
