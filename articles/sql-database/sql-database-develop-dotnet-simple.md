@@ -37,4 +37,8 @@ Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie In
 * [Proof of concept connecting to SQL using ADO.NET](https://msdn.microsoft.com/library/mt718320.aspx) (Machbarkeitsstudie für das Herstellen einer Verbindung mit SQL mithilfe von ADO.NET)
 * [Connect resiliently to SQL with ADO.NET](https://msdn.microsoft.com/library/mt703195.aspx) (Stabiles Verbinden mit SQL mithilfe von ADO.NET)
 
-<!---HONumber=AcomDC_0504_2016-->
+## Weitere Ressourcen
+
+Informationen zu gängigen Datenarchitekturmustern von mehrinstanzenfähigen SaaS-Datenbankanwendungen (Software as a Service) finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+
+<!---HONumber=AcomDC_0615_2016-->

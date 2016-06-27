@@ -155,10 +155,10 @@ Nach dem Herstellen der Verbindung können Sie mit dem Entwerfen der Tabellen be
 <!--Azure.com references-->
 [Herstellen einer Verbindung und Durchführen von Abfragen]: ./sql-data-warehouse-get-started-connect.md
 [Tabellenentwurf]: ./sql-data-warehouse-develop-table-design.md
-[Sichern einer Datenbank in SQL Data Warehouse]: ./sql-data-warehouse-overview-security.md
+[Sichern einer Datenbank in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
 
 <!--MSDN references-->
 
 <!--Other references-->
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

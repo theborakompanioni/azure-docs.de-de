@@ -131,7 +131,7 @@ Dieses Beispiel zeigt, wie Sie den in der [Bibliothek für Microsoft Azure Notif
 	  }
 	}
 
-Weitere Informationen zum Hochladen der Datei „project.json“ finden Sie in der [Anleitung zum Hochladen der Datei „project.json“](http://stackoverflow.com/questions/36411536/how-can-i-use-nuget-packages-in-my-azure-functions).
+Weitere Informationen zum Hochladen der Datei „project.json“ finden Sie in der [Anleitung zum Hochladen der Datei „project.json“](functions-reference.md#fileupdate).
 
 Beispielcode:
 
@@ -155,4 +155,4 @@ Beispielcode:
 
 [AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

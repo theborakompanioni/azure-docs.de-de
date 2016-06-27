@@ -48,7 +48,6 @@ Die Azure Machine Learning-Empfehlungs-APIs können in die folgenden logischen G
 - Die maximale Anzahl von Elementen, die ein Katalog aufnehmen kann, beträgt 100.000.
 - Die maximale Menge der Nutzungspunkte, die aufbewahrt werden, beträgt etwa 5.000.000. Die ältesten werden gelöscht, wenn neue hochgeladen oder gemeldet werden.
 - Die maximale Größe der Daten, die in POST gesendet werden können (z. B. Importieren von Katalog- oder Nutzungsdaten), beträgt 200 MB.
-- Die Anzahl der Transaktionen pro Sekunde bei Empfehlungsmodellbuilds, die nicht aktiv sind, beträgt etwa 2 T/s. Bei aktiven Empfehlungsmodellbuilds sind bis zu 20 T/s möglich.
 - Die maximale Anzahl von Elementen, die bei Empfehlungen abgerufen werden können, beträgt 150.
 
 ##3\. APIs – allgemeine Informationen
@@ -93,10 +92,7 @@ Es wird eine Anforderung „Modell erstellen“ erstellt.
 
 |	Parametername |	Gültige Werte |
 |:--------			|:--------								|
-|	modelName |	Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (\_) zulässig.<br>Max. Länge: 20 |
-| apiVersion | 1.0 |
-|||
-| Anforderungstext | NONE |
+|	modelName |	Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (\_) zulässig.<br>Max. Länge: 20 | | apiVersion | 1.0 | ||| | Anforderungstext | NONE |
 
 
 **Antwort**:
@@ -888,18 +884,7 @@ OData-XML
 |	apiVersion | 1,0 |
 |||
 | Anforderungstext | 
-<ins>Wenn Sie Element-IDs für Geschäftsregeln bereitstellen, stellen Sie sicher, dass Sie die externe ID des Elements verwenden (die gleiche ID, die Sie in der Katalogdatei verwendet haben)</ins><br> 
-<ins>So fügen Sie eine BlockList-Regel hinzu:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins> 
-<ins>So fügen Sie eine FeatureBlockList-Regel hinzu:</ins><br> 
-<br> 
-`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins> 
-So fügen Sie eine Upsale-Regel hinzu:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br> 
-<ins>So fügen Sie eine WhiteList-Regel hinzu:</ins><br> 
-`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins> 
-<ins>So fügen Sie eine FeatureWhiteList-Regel hinzu:</ins><br> 
-<br> 
-`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins> 
-So fügen Sie eine PerSeedBlockList-Regel hinzu:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
+<ins>Stellen Sie beim Bereitstellen von Element-IDs für Geschäftsregeln sicher, dass Sie die externe ID des Elements verwenden (die gleiche ID, die Sie in der Katalogdatei verwendet haben)</ins><br> <ins>Zum Hinzufügen einer BlockList-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins> <ins>Zum Hinzufügen einer FeatureBlockList-Regel:</ins><br> <br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins> Zum Hinzufügen einer Upsale-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br> <ins>Zum Hinzufügen einer WhiteList-Regel:</ins><br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins> <ins>Zum Hinzufügen einer FeatureWhiteList-Regel:</ins><br> <br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins> Zum Hinzufügen einer PerSeedBlockList-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
 
 
 **Antwort**:
@@ -989,11 +974,7 @@ Hinweis: Die maximale Dateigröße beträgt 200 MB.
 
 | Name | Erforderlich | Typ | Beschreibung |
 |:---|:---|:---|:---|
-| Element-ID |Ja | [A-z], [a-z], [0-9], [\_] &#40;Unterstrich&#41;, [-] &#40;Bindestrich&#41;<br> Max. Länge: 50 | Eindeutiger Bezeichner eines Elements. | 
-| Elementname | Ja | Alle alphanumerischen Zeichen<br> Max. Länge: 255 | Elementname. | 
-| Elementkategorie | Ja | Alle alphanumerischen Zeichen <br> Max. Länge: 255 | Kategorie, zu der dieses Element gehört (z. B. Kochbücher, Drama …). Darf leer sein. | 
-| Beschreibung | Nein, es sei denn, es sind Features vorhanden (darf jedoch leer sein) | Alle alphanumerischen Zeichen <br> Max. Länge: 4000 | Dies ist die Beschreibung des Elements. | 
-| Featureliste | Nein | Alle alphanumerischen Zeichen <br> Max. Länge: 4000; Max. Anzahl von Features: 20 | Dies ist eine kommagetrennte Liste im Format „Featurename=Featurewert“ zum Verbessern der Modellempfehlung; siehe Abschnitt [Erweiterte Themen](#2-advanced-topics). |
+| Element-ID |Ja | [A-z], [a-z], [0-9], [\_] &#40;Unterstrich&#41;, [-] &#40;Bindestrich&#41;<br> Max. Länge: 50 | Eindeutiger Bezeichner eines Elements. | | Elementname | Ja | Alle alphanumerischen Zeichen<br> Max. Länge: 255 | Elementname. | | Elementkategorie | Ja | Alle alphanumerischen Zeichen <br> Max. Länge: 255 | Kategorie, zu der dieses Element gehört (z. B. Kochbücher, Drama …). Darf leer sein. | | Beschreibung | Nein, es sei denn, es sind Features vorhanden (darf jedoch leer sein) | Alle alphanumerischen Zeichen <br> Max. Länge: 4000 | Dies ist die Beschreibung des Elements. | | Featureliste | Nein | Alle alphanumerischen Zeichen <br> Max. Länge: 4000; Max. Anzahl von Features: 20 | Dies ist eine kommagetrennte Liste im Format „Featurename=Featurewert“ zum Verbessern der Modellempfehlung; siehe Abschnitt [Erweiterte Themen](#2-advanced-topics). |
 
 
 | HTTP-Methode | URI |
@@ -1004,10 +985,7 @@ Hinweis: Die maximale Dateigröße beträgt 200 MB.
 |	Parametername |	Gültige Werte |
 |:--------			|:--------								|
 |	modelId |	Dies ist der eindeutige Bezeichner des Modells. |
-| filename | Textbezeichner des Katalogs.<br>Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstrich (\_) zulässig.<br>Max. Länge: 50 | 
-| apiVersion | 1.0 | 
-||| 
-| Anforderungstext | Beispiel (mit Features):<br/>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book,the book description,author=Richard Wright,publisher=Harper Flamingo Canada,year=2001<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction (Byzantium Book),Book,,author=Nick Bantock,publisher=Harpercollins,year=1997<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book,,author=Timothy Findley, publisher=HarperFlamingo Canada, year=2001<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book,the book description,author=Magnus Mills, publisher=Arcade Publishing, year=1998</pre> |
+| filename | Textbezeichner des Katalogs.<br>Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstrich (\_) zulässig.<br>Max. Länge: 50 | | apiVersion | 1.0 | ||| | Anforderungstext | Beispiel (mit Features):<br/>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book,the book description,author=Richard Wright,publisher=Harper Flamingo Canada,year=2001<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction (Byzantium Book),Book,,author=Nick Bantock,publisher=Harpercollins,year=1997<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book,,author=Timothy Findley, publisher=HarperFlamingo Canada, year=2001<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book,the book description,author=Magnus Mills, publisher=Arcade Publishing, year=1998</pre> |
 
 
 **Antwort**:
@@ -1210,10 +1188,7 @@ In diesem Abschnitt wird gezeigt, wie Nutzungsdaten mithilfe einer Datei hochgel
 |	Parametername |	Gültige Werte |
 |:--------			|:--------								|
 |	modelId |	Dies ist der eindeutige Bezeichner des Modells. |
-| filename | Textbezeichner des Katalogs.<br>Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (_) zulässig.<br>Max. Länge: 50 | 
-| apiVersion | 1.0 | 
-||| 
-| Anforderungstext | Nutzungsdaten. Format:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>Name</th><th>Obligatorisch</th><th>Typ</th><th>Beschreibung</th></tr><tr><td>Benutzer-ID</td><td>Ja</td><td>[A-z], [a-z], [0-9], [_] &#40;Unterstrich&#41;, [-] &#40;Bindestrich&#41;<br> Max. Länge: 255 </td><td>Eindeutiger Bezeichner eines Benutzers.</td></tr><tr><td>Element-ID</td><td>Ja</td><td>[A-z], [a-z], [0-9], [&#95;] &#40;Unterstrich&#41;, [-] &#40;Bindestrich&#41;<br> Max. Länge: 50</td><td>Eindeutiger Bezeichner eines Elements.</td></tr><tr><td>Zeit</td><td>Nein</td><td>Datum im Format: JJJJ/MM/TTTHH:MM:SS (z. B. 2013/06/20T10:00:00)</td><td>Zeitstempel der Daten.</td></tr><tr><td>Ereignis</td><td>Nein; wenn bereitgestellt, muss auch ein Datum angegeben werden</td><td>Eins der Folgenden:<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>Max. Dateigröße: 200MB<br><br>Beispiel:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
+| filename | Textbezeichner des Katalogs.<br>Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (_) zulässig.<br>Max. Länge: 50 | | apiVersion | 1.0 | ||| | Anforderungstext | Nutzungsdaten. Format:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>Name</th><th>Obligatorisch</th><th>Typ</th><th>Beschreibung</th></tr><tr><td>Benutzer-ID</td><td>Ja</td><td>[A-z], [a-z], [0-9], [_] &#40;Unterstrich&#41;, [-] &#40;Bindestrich&#41;<br> Max. Länge: 255 </td><td>Eindeutiger Bezeichner eines Benutzers.</td></tr><tr><td>Element-ID</td><td>Ja</td><td>[A-z], [a-z], [0-9], [&#95;] &#40;Unterstrich&#41;, [-] &#40;Bindestrich&#41;<br> Max. Länge: 50</td><td>Eindeutiger Bezeichner eines Elements.</td></tr><tr><td>Zeit</td><td>Nein</td><td>Datum im Format: JJJJ/MM/TTTHH:MM:SS (z. B. 2013/06/20T10:00:00)</td><td>Zeitstempel der Daten.</td></tr><tr><td>Ereignis</td><td>Nein; wenn bereitgestellt, muss auch ein Datum angegeben werden</td><td>Eins der Folgenden:<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>Max. Dateigröße: 200MB<br><br>Beispiel:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
 
 **Antwort**:
 
@@ -1361,8 +1336,7 @@ In diesem Abschnitt wird gezeigt, wie Ereignisse in Echtzeit an Azure Machine Le
   		</EventData>
 		</Event>
 
-**Antwort**: 
-HTTP-Statuscode: 200
+**Antwort**: HTTP-Statuscode: 200
 
 ###9\.2. Modellnutzungsdateien auflisten
 Hierdurch werden von allen Modellnutzungsdateien Metadaten abgerufen. Die Nutzungsdateien werden Seite für Seite abgerufen. Jede Seite enthält 100 Elemente. Wenn Sie Elemente in einem bestimmten Index abrufen möchten, können Sie den Parameter „$skip odata“ verwenden. Beispiel: Wenn Sie Elemente ab Position 100 abrufen möchten, fügen Sie der Anforderung den Parameter „$skip=100“ hinzu.
@@ -1648,9 +1622,7 @@ Hierdurch werden alle Modellnutzungsdateien gelöscht.
 HTTP-Statuscode: 200
 
 ##10\. Merkmale
-In diesem Abschnitt wird gezeigt, wie Featureinformationen abgerufen werden, z. B. die importierten Features, ihre Werte und ihr Rang, und wann dieser Rang zugeordnet wurde. Features werden als Teil der Katalogdaten importiert, und wenn ein Rangfolgebuild abgeschlossen ist, wird ihnen ein Rang zugeordnet. 
-Der Rang der Features kann sich je nach Nutzungsdatenmuster und Elementtyp ändern. Bei konsistenter Nutzung und konsistenten Elementen dürfte der Rang jedoch nur geringfügigen Schwankungen unterliegen. 
-Der Rang eines Features ist eine nicht-negative Zahl. Die Zahl 0 bedeutet, dass das Feature noch nicht eingestuft wurde (dies ist der Fall, wenn diese API vor dem Abschluss des ersten Rangfolgebuilds aufgerufen wurde). Das Datum, an dem der Rang zugeordnet wurde, wird als Aktualität der Bewertung bezeichnet.
+In diesem Abschnitt wird gezeigt, wie Featureinformationen abgerufen werden, z. B. die importierten Features, ihre Werte und ihr Rang, und wann dieser Rang zugeordnet wurde. Features werden als Teil der Katalogdaten importiert, und wenn ein Rangfolgebuild abgeschlossen ist, wird ihnen ein Rang zugeordnet. Der Rang der Features kann sich je nach Nutzungsdatenmuster und Elementtyp ändern. Bei konsistenter Nutzung und konsistenten Elementen dürfte der Rang jedoch nur geringfügigen Schwankungen unterliegen. Der Rang eines Features ist eine nicht-negative Zahl. Die Zahl 0 bedeutet, dass das Feature noch nicht eingestuft wurde (dies ist der Fall, wenn diese API vor dem Abschluss des ersten Rangfolgebuilds aufgerufen wurde). Das Datum, an dem der Rang zugeordnet wurde, wird als Aktualität der Bewertung bezeichnet.
 
 ###10\.1. Featureinformationen abrufen (für den letzten Rangfolgebuild)
 Hierdurch werden Featureinformationen einschließlich Rang für den letzten erfolgreichen Rangfolgebuild abgerufen.
@@ -1826,7 +1798,7 @@ Empfehlungsbuilds dienen dazu, Empfehlungsmodelle für Vorhersagen zu erstellen.
 
 Rangfolgebuilds sind technische Builds, welche die Nützlichkeit Ihrer Features vermitteln können. Um bei Empfehlungsmodellen mit Features die besten Ergebnisse zu erzielen, sollten Sie die folgenden Schritte ausführen:
 - Lösen Sie einen Rangfolgebuild aus (sofern die Bewertung Ihrer Features nicht stabil ist), und warten Sie, bis Sie die Featurebewertung erhalten.
-- Rufen Sie den Rang Ihrer Features durch einen Aufruf an die [Get Features Info](#101-get-features-info-for-last-rank-build)-API ab.
+- Rufen Sie den Rang Ihrer Features durch einen Aufruf der [Get Features Info](#101-get-features-info-for-last-rank-build)-API ab.
 - Konfigurieren Sie einen Empfehlungsbuild mit den folgenden Parametern:
 	- `useFeatureInModel`: Auf „True“ festlegen.
 	- `ModelingFeatureList`: Auf eine kommagetrennte Liste mit einer Bewertung von mindestens 2.0 festlegen (je nach den im vorigen Schritt abgerufenen Rängen).
@@ -2473,7 +2445,7 @@ Hierdurch werden Empfehlungen des aktiven Builds vom Typ "Recommendation" (Empfe
 |:--------			|:--------								|
 | modelId | Dies ist der eindeutige Bezeichner des Modells. |
 | itemIds | Dies ist eine kommagetrennte Liste der Elemente, für die Empfehlungen erstellt werden sollen. <br>Wenn der aktive Build den Typ „FBT“ aufweist, können Sie nur ein Element senden. <br>Max. Länge: 1024 |
-| numberOfResults | Anzahl der erforderlichen Ergebnisse <br>Max.: 150 |
+| numberOfResults | Anzahl der erforderlichen Ergebnisse <br>Max.: 150 |
 | includeMetatadata | Zur zukünftigen Verwendung, stets „false“ |
 | apiVersion | 1,0 |
 
@@ -2486,7 +2458,7 @@ Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthä
 - `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
 - `Feed\entry\content\properties\Name`: Name des Elements.
 - `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Die folgende Beispielantwort enthält 10 empfohlene Elemente.
 
@@ -2653,7 +2625,7 @@ Hierdurch werden Empfehlungen eines bestimmten Builds vom Typ „Recommendation�
 |:--------			|:--------								|
 | modelId | Dies ist der eindeutige Bezeichner des Modells. |
 | itemIds | Dies ist eine kommagetrennte Liste der Elemente, für die Empfehlungen erstellt werden sollen. <br>Wenn der aktive Build den Typ „FBT“ aufweist, können Sie nur ein Element senden. <br>Max. Länge: 1024 |
-| numberOfResults | Anzahl der erforderlichen Ergebnisse <br>Max.: 150 |
+| numberOfResults | Anzahl der erforderlichen Ergebnisse <br>Max.: 150 |
 | includeMetatadata | Zur zukünftigen Verwendung, stets „false“
 | buildId | Dies ist die Build-ID, die für diese Empfehlungsanforderung verwendet werden soll. |
 | apiVersion | 1,0 |
@@ -2667,7 +2639,7 @@ Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthä
 - `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
 - `Feed\entry\content\properties\Name`: Name des Elements.
 - `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.1.
 
@@ -2699,7 +2671,7 @@ Die Antwort umfasst einen Eintrag pro empfohlenem Elementsatz (ein Satz Elemente
 - `Feed\entry\content\properties\Id2`: ID des zweiten empfohlenen Elements (optional).
 - `Feed\entry\content\properties\Name2`: Name des zweiten Elements (optional).
 - `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Die folgende Beispielantwort enthält 3 empfohlene Elementsätze.
 
@@ -2791,7 +2763,7 @@ Die Antwort umfasst einen Eintrag pro empfohlenem Elementsatz (ein Satz Elemente
 - `Feed\entry\content\properties\Id2`: ID des zweiten empfohlenen Elements (optional).
 - `Feed\entry\content\properties\Name2`: Name des zweiten Elements (optional).
 - `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.3.
 
@@ -2826,7 +2798,7 @@ Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthä
 - `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
 - `Feed\entry\content\properties\Name`: Name des Elements.
 - `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.1.
 
@@ -2863,7 +2835,7 @@ Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthä
 - `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
 - `Feed\entry\content\properties\Name`: Name des Elements.
 - `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.1.
 
@@ -2898,7 +2870,7 @@ Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthä
 - `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
 - `Feed\entry\content\properties\Name`: Name des Elements.
 - `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.1.
 
@@ -2936,13 +2908,12 @@ Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthä
 - `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
 - `Feed\entry\content\properties\Name`: Name des Elements.
 - `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.1.
 
 ##13\. Nutzungsverlauf eines Benutzers
-Nachdem ein Empfehlungsmodell entwickelt wurde, ermöglicht es das System, den Verlauf eines Benutzers (also die mit einem bestimmten Benutzer verknüpften Elemente) abzurufen, der für den Build verwendet wurde. 
-Mit dieser API kann der Nutzungsverlauf abgerufen werden.
+Nachdem ein Empfehlungsmodell entwickelt wurde, ermöglicht es das System, den Verlauf eines Benutzers (also die mit einem bestimmten Benutzer verknüpften Elemente) abzurufen, der für den Build verwendet wurde. Mit dieser API kann der Nutzungsverlauf abgerufen werden.
 
 Hinweis: Der Nutzungsverlauf ist zurzeit nur für Empfehlungsbuilds verfügbar.
 
@@ -2969,8 +2940,8 @@ HTTP-Statuscode: 200
 Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthält die folgenden Daten:
 - `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
 - `Feed\entry\content\properties\Name`: Name des Elements.
-- `Feed\entry\content\properties\Rating` – .
-- `Feed\entry\content\properties\Reasoning` – .
+- `Feed\entry\content\properties\Rating`: N/V.
+- `Feed\entry\content\properties\Reasoning`: N/V.
 
 OData-XML
 
@@ -3099,10 +3070,7 @@ HTTP-Statuscode: 200
 
 
 ##15\. Rechtliche Hinweise
-Dieses Dokument wird so bereitgestellt, wie es ist. Informationen und Stellungnahmen in diesem Dokument einschließlich URLs und anderer Verweise auf Websites können ohne Ankündigung geändert werden.<br><br> 
-Einige der in diesem Dokument dargestellten Beispiele dienen nur zu Illustrationszwecken und sind frei erfunden. Ähnlichkeiten oder Verbindungen sind rein zufällig und nicht beabsichtigt.<br><br> 
-Dieses Dokument gibt Ihnen keinerlei geistige Eigentums- oder anderweitige Rechte an irgendeinem Microsoft-Produkt. Sie dürfen dieses Dokument zu internen Referenzzwecken kopieren und verwenden.<br><br> 
-© 2015 Microsoft. Alle Rechte vorbehalten.
+Dieses Dokument wird so bereitgestellt, wie es ist. Informationen und Stellungnahmen in diesem Dokument einschließlich URLs und anderer Verweise auf Websites können ohne Ankündigung geändert werden.<br><br> Einige der in diesem Dokument dargestellten Beispiele dienen nur zu Illustrationszwecken und sind frei erfunden. Ähnlichkeiten oder Verbindungen sind rein zufällig und nicht beabsichtigt.<br><br> Dieses Dokument gibt Ihnen keinerlei geistige Eigentums- oder anderweitige Rechte an irgendeinem Microsoft-Produkt. Sie dürfen dieses Dokument zu internen Referenzzwecken kopieren und verwenden.<br><br> © 2015 Microsoft. Alle Rechte vorbehalten.
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

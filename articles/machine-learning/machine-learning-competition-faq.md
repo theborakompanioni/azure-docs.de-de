@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/11/2016"
+	ms.date="06/05/2016"
 	ms.author="haining;chlovel;garye"/>
 
 # Microsoft Cortana Intelligence-Wettbewerbe – Häufig gestellte Fragen
@@ -115,4 +115,4 @@ Die Wettbewerbsplattform unterstützt derzeit nur die Einreichung von Beiträgen
 
 Benutzerbeiträge werden nur zu Bewertungszwecken, also zum Ermitteln der Gewinnerlösungen aufbewahrt. Weitere Informationen finden Sie in unseren [Geschäftsbedingungen](http://aka.ms/comptermsandconditions).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

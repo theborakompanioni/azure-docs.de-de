@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="05/03/2016"
+	ms.date="06/13/2016"
 	ms.author="jeffstok"/>
 
 # Verwenden von Verweisdaten oder Nachschlagetabellen in einem Stream Analytics-Eingabedatenstrom
@@ -72,9 +72,16 @@ Um die Verweisdaten zu konfigurieren, müssen Sie zunächst eine Eingabe vom Typ
 
 ## Generieren von Verweisdaten nach einem Zeitplan
 
-Wenn es sich bei Ihren Verweisdaten um ein sich langsam änderndes Dataset handelt, wird die Unterstützung für das Aktualisieren von Verweisdaten aktiviert, indem Sie in der Eingabekonfiguration ein Pfadmuster mit den Token {date} und {time} angeben. Stream Analytics ruft die aktualisierten Definitionen von Verweisdaten auf der Grundlage dieses Pfadmusters ab. Beispiel: Das Muster ````"/sample/{date}/{time}/products.csv"```` mit dem Datumsformat „YYYY-MM-DD“ und dem Zeitformat „HH:mm“ weist Stream Analytics an, das aktualisierte Blob ````"/sample/2015-04-16/17:30/products.csv"```` am 16. April 2015 um 17:30 (UTC-Zeitzone) abzurufen.
+Wenn es sich bei Ihren Verweisdaten um ein sich langsam änderndes Dataset handelt, wird die Unterstützung für das Aktualisieren von Verweisdaten aktiviert, indem Sie in der Eingabekonfiguration ein Pfadmuster mit den Ersetzungstoken „{date}“ und „{time}“ angeben. Stream Analytics ruft die aktualisierten Definitionen von Verweisdaten auf der Grundlage dieses Pfadmusters ab. Beispiel: Das Muster `sample/{date}/{time}/products.csv` mit dem Datumsformat **YYYY-MM-DD** und dem Zeitformat **HH:mm** weist Stream Analytics an, das aktualisierte Blob `sample/2015-04-16/17:30/products.csv` am 16. April 2015 um 17:30 (UTC-Zeitzone) abzurufen.
 
-> [AZURE.NOTE] Stream Analytics-Aufträge suchen derzeit nur dann nach der Blobaktualisierung, wenn die Zeit des Computers mit der in den Blobnamen codierten Zeit zusammenfällt. Der Auftrag sucht beispielsweise zwischen 17:30 Uhr und 17:30:59.9 Uhr am 16. April 2015 UTC-Zeitzone nach "/sample/2015-04-16/17:30/products.csv". Wenn die Uhr auf 17:31 Uhr springt, wird die Suche nach "/sample/2015-04-16/17:30/products.csv" beendet und die Suche nach "/sample/2015-04-16/17:31/products.csv" beginnt. Eine Ausnahme besteht darin, wenn der Auftrag Daten rückwirkend verarbeiten muss oder wenn der Auftrag zum ersten Mal gestartet wird. Zum Startzeitpunkt sucht der Auftrag nach dem aktuellsten Blob, das vor der angegebenen Startzeit des Auftrags erstellt wurde. Damit soll sichergestellt werden, dass es beim Starten des Auftrags kein leeres Verweisdataset gibt. Wird kein Blob gefunden, schlägt der Auftrag fehl, und es wird eine Diagnosemeldung angezeigt:
+> [AZURE.NOTE] Stream Analytics-Aufträge suchen derzeit nur dann nach der Blobaktualisierung, wenn die Zeit des Computers die im Blobnamen codierte Zeit erreicht. Der Auftrag sucht beispielsweise am 16. April 2015 ab 17:30 Uhr (UTC-Zeitzone) zum frühestmöglichen Zeitpunkt nach `sample/2015-04-16/17:30/products.csv`. Er sucht *nie* nach einer Datei mit einer codierten Zeit, die vor der zuletzt erkannten liegt.
+> 
+> Das bedeutet: Nachdem der Auftrag das Blob `sample/2015-04-16/17:30/products.csv` gefunden hat, werden alle Dateien ignoriert, deren codierte Zeit vor 17:30 Uhr am 16. April 2015 liegt. Wenn im gleichen Container also nachträglich das Blob `sample/2015-04-16/17:25/products.csv` erstellt wird, wird es vom Auftrag nicht verwendet.
+> 
+> Analog dazu gilt: Wenn `sample/2015-04-16/17:30/products.csv` erst am 16. April 2015 um 22:03 Uhr erstellt wird und im Container kein Blob mit einer früheren Zeit enthalten ist, verwendet der Auftrag diese Datei ab dem 16. April 2015, 22:03 Uhr. Bis dahin werden die vorherigen Verweisdaten verwendet.
+> 
+> Eine Ausnahme besteht darin, wenn der Auftrag Daten rückwirkend verarbeiten muss oder wenn der Auftrag zum ersten Mal gestartet wird. Zum Startzeitpunkt sucht der Auftrag nach dem aktuellsten Blob, das vor der angegebenen Startzeit des Auftrags erstellt wurde. Damit wird sichergestellt, dass beim Starten des Auftrags ein **nicht leeres** Verweisdataset zur Verfügung steht. Sollte keines gefunden werden, erscheint die folgende Diagnose: `Initializing input without a valid reference data blob for UTC time <start time>`.
+
 
 [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) kann verwendet werden, um die Aufgabe des Erstellens der aktualisierten Blobs zu orchestrieren, die von Stream Analytics zur Aktualisierung der Verweisdatendefinitionen benötigt werden. Data Factory ist ein cloudbasierter Daten-Integrationsdienst, der das Verschieben und Transformieren von Daten organisiert und automatisiert. Data Factory unterstützt [die Verbindung zu einer großen Anzahl von cloudbasierten und lokalen Datenspeichern](../data-factory/data-factory-data-movement-activities.md) und das mühelose Verschieben von Daten in regelmäßigen von Ihnen festgelegten Abständen. Weitere Informationen sowie eine schrittweise Anleitung zum Einrichten einer Data Factory-Pipeline zum Generieren von Verweisdaten für Stream Analytics, die nach einem vordefinierten Zeitplan aktualisiert werden, finden Sie in diesem [GitHub-Beispiel](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs).
 
@@ -103,4 +110,4 @@ Sie haben nun Stream Analytics kennengelernt, einen verwalteten Dienst für Stre
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

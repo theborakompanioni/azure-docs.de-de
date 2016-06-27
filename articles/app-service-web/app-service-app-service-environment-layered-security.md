@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/28/2016" 
+	ms.date="06/14/2016" 
 	ms.author="stefsch"/>
 
 # Implementieren einer mehrstufigen Sicherheitsarchitektur mit App Service-Umgebungen
@@ -89,6 +89,8 @@ Nach Anwendung der Netzwerksicherheitsgruppe auf das Subnetz sind Aufrufe an die
 
 
 ## Zusätzliche Links und Informationen ##
+Alle Artikel und Anleitungen zu App Service-Umgebungen stehen in der [Dokumentation zu App Service-Umgebungen](../app-service/app-service-app-service-environments-readme.md) zur Verfügung.
+
 Konfigurieren von [Netzwerksicherheitsgruppen][NetworkSecurityGroupsClassic] in klassischen virtuellen Netzwerken.
 
 Informationen zu [ausgehenden IP-Adressen][NetworkArchitecture] und App Service-Umgebungen.
@@ -109,4 +111,4 @@ In einer App Service-Umgebung verwendete [Netzwerkports][InboundTraffic].
 [ConceptualArchitecture]: ./media/app-service-app-service-environment-layered-security/ConceptualArchitecture-1.png
 [NSGConfiguration]: ./media/app-service-app-service-environment-layered-security/NSGConfiguration-1.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0615_2016-->

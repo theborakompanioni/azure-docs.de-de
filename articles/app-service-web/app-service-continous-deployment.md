@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Sie die kontinuierliche Bereitstellung in Azure App Service aktivieren."
 	services="app-service"
 	documentationCenter=""
-	authors="dariac"
+	authors="dariagrigoriu"
 	manager="wpickett"
 	editor="mollybos"/>
 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/15/2016"
-	ms.author="dariac"/>
+	ms.date="06/13/2016"
+	ms.author="dariagrigoriu"/>
     
 # Kontinuierliche Bereitstellung in Azure App Service
 
-Die Integration von [Azure App Service] in BitBucket, GitHub und Visual Studio Team Services (VSTS) ermöglicht einen Workflow für die kontinuierliche Bereitstellung. Hierbei werden die neuesten Updates aus Ihrem Projekt, das in einem der genannten Dienste veröffentlicht ist, per Pull nach Azure übertragen. Die kontinuierliche Bereitstellung ist hervorragend für Projekte geeignet, bei denen häufig zahlreiche Beiträge integriert werden.
+In diesem Tutorial erfahren Sie, wie Sie einen Workflow für die kontinuierliche Bereitstellung für Ihre [Azure App Service]-App konfigurieren. Die Integration von App Service in BitBucket, GitHub und Visual Studio Team Services (VSTS) ermöglicht einen Workflow für die kontinuierliche Bereitstellung. Hierbei werden die neuesten Updates aus Ihrem Projekt, das in einem der genannten Dienste veröffentlicht ist, per Pull nach Azure übertragen. Die kontinuierliche Bereitstellung ist hervorragend für Projekte geeignet, bei denen häufig zahlreiche Beiträge integriert werden.
 
 ## <a name="overview"></a>Aktivieren der kontinuierlichen Bereitstellung
 
@@ -26,10 +26,12 @@ Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu
 
 1. Veröffentlichen Sie Ihren App-Inhalt indem Repository, das für die kontinuierliche Bereitstellung verwendet werden soll. Weitere Informationen zum Veröffentlichen Ihres Projekts in einem dieser Dienst finden Sie unter [Create a repo (GitHub)] (Erstellen eines Repositorys), [Create a repo (BitBucket)] (Erstellen eines Repositorys) und [Erste Schritte mit VSTS].
 
-2. Klicken Sie im [Azure-Portal] auf dem Blatt Ihrer App auf **Einstellungen > Bereitstellungsquelle**. Klicken Sie auf **Quelle auswählen** und dann z. B. auf **GitHub**.
+2. Klicken Sie im [Azure-Portal] auf dem Blatt Ihrer App auf **Einstellungen > Bereitstellungsquelle**. Klicken Sie auf **Quelle auswählen** und dann z. B. auf **GitHub**.
 
 	![](./media/app-service-continous-deployment/cd_options.png)
 	
+    > [AZURE.NOTE] Informationen zum Konfigurieren eines VSTS-Kontos für die App Service-Bereitstellung finden Sie in diesem [Tutorial](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+    
 3. Schließen Sie den Autorisierungsworkflow ab.
 
 4. Wählen Sie auf dem Blatt **Bereitstellungsquelle** das Projekt und den Branch für die Bereitstellung aus. Wenn Sie fertig sind, klicken Sie auf **OK**.
@@ -40,7 +42,7 @@ Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu
 
     App Service erstellt eine Verknüpfung mit dem ausgewählten Repository, ruft die Dateien aus dem angegebenen Branch per Pull ab und verwaltet einen Klon Ihres Repositorys für Ihre App Service-App. Wenn Sie VSTS für die kontinuierliche Bereitstellung aus dem Azure-Portal konfigurieren, wird für die Integration das [Kudu-Bereitstellungsmodul](https://github.com/projectkudu/kudu/wiki) von App Service verwendet, das bereits mit jedem `git push` Build- und Bereitstellungsaufgaben automatisiert. Es ist nicht erforderlich, die kontinuierliche Bereitstellung in VSTS separat einzurichten. Nach Abschluss dieses Vorgangs wird im Bereich **Bereitstellung** des Blatts Ihrer App die Meldung **Aktive Bereitstellung** angezeigt, die auf die erfolgreiche Bereitstellung hinweist.
 
-5. Um zu überprüfen, dass die App erfolgreich bereitgestellt wurde, klicken Sie im Azure-Portal oben auf dem Blatt der App auf **URL**.
+5. Um zu überprüfen, ob die App erfolgreich bereitgestellt wurde, klicken Sie im Azure-Portal oben auf dem Blatt der App auf **URL**.
 
 6. Um sicherzustellen, dass die kontinuierliche Bereitstellung aus dem Repository Ihrer Wahl stattfindet, übertragen Sie eine Änderung per Push in das Repository. Ihre App sollte aktualisiert werden und die Änderungen kurz nach dem Push ins Repository widerspiegeln. Sie können auf dem Blatt **Bereitstellungen** Ihrer App überprüfen, ob das Update abgerufen wurde.
 
@@ -58,7 +60,7 @@ Die Schritte zur Pushübertragung der Visual Studio-Projektmappe an App Service 
 
 Nachdem Sie Ihr Repository wie beschrieben eingerichtet und Ihre App in Azure für die kontinuierliche Veröffentlichung aus einem der Online-Git-Repositorys konfiguriert haben, können Sie Ihre ASP.NET-Anwendung lokal in Visual Studio entwickeln und Ihren Code kontinuierlich bereitstellen, indem Sie einfach Ihre Änderungen mithilfe von Push an Ihr Online-Git-Repository übertragen.
 
-## <a name="disableCD"></a>Deaktivieren der kontinuierlichen Bereitstellung
+## <a name="disableCD"></a>Deaktivieren der fortlaufenden Bereitstellung
 
 Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu deaktivieren:
 
@@ -66,7 +68,7 @@ Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu
 
     ![](./media/app-service-continous-deployment/cd_disconnect.png)
 
-2. Nachdem Sie die Aufforderung zum Bestätigen mit **Ja** beantwortet haben, können Sie zum Blatt Ihrer App zurückkehren und auf **Einstellungen > Bereitstellungsquelle** klicken, wenn Sie die Veröffentlichung aus einer anderen Quelle einrichten möchten.
+2. Nachdem Sie die Bestätigungsmeldung mit **Ja** beantwortet haben, können Sie zum Blatt Ihrer App zurückkehren und auf **Einstellungen > Bereitstellungsquelle** klicken, wenn Sie die Veröffentlichung aus einer anderen Quelle einrichten möchten.
 
 ## Zusätzliche Ressourcen
 
@@ -81,7 +83,7 @@ Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu
 [Azure-Portal]: https://portal.azure.com
 [VSTS Portal]: https://www.visualstudio.com/de-DE/products/visual-studio-team-services-vs.aspx
 [Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-[Verwenden von PowerShell für Azure]: ../articles/install-configure-powershell.md
+[Verwenden von PowerShell für Azure]: ../articles/powershell-install-configure.md
 [Verwenden des Azure-Befehlszeilentools für Mac und Linux]: ../articles/xplat-cli-install.md
 [Git-Dokumentation]: http://git-scm.com/documentation
 
@@ -90,4 +92,4 @@ Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu
 [Erste Schritte mit VSTS]: https://www.visualstudio.com/get-started/overview-of-get-started-tasks-vs
 [Continuous delivery to Azure using Visual Studio Team Services]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0615_2016-->

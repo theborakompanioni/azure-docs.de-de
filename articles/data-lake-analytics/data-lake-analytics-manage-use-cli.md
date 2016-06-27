@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/26/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # Erste Schritte mit Azure Data Lake Analytics unter Verwendung der Azure-Befehlszeilenschnittstelle (CLI)
@@ -173,7 +173,7 @@ Der U-SQL-Katalog wird zum Strukturieren von Daten und Code verwendet, damit die
 	#List tables
 	azure datalake analytics catalog list -n "<Data Lake Analytics Account Name>" -t table
 	
-Verfügbare Typen: „database“, „schema“, „assembly“, „externaldatasource“, „table“, „tablevaluedfunction“ und „tablestatistics“.
+Verfügbare Typen: „database“, „schema“, „assembly“, „external data source“, „table“, „table valued function“ und „table statistics“.
 
 ###Erstellen von Katalogschlüsseln
 
@@ -193,7 +193,7 @@ Verfügbare Typen: „database“, „schema“, „assembly“, „externaldata
 
 Anwendungen bestehen normalerweise aus vielen Komponenten, z. B. Web-App, Datenbank, Datenbankserver, Speicher und Drittanbieterdiensten. Mit dem Azure-Ressourcen-Manager (ARM) können Sie mit den Ressourcen in Ihrer Anwendung als Gruppe arbeiten, was als Azure-Ressourcengruppe bezeichnet wird. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren, überwachen oder löschen. Sie verwenden eine Vorlage für die Bereitstellung, die für unterschiedliche Umgebungen geeignet sein kann, z. B. Testing, Staging und Produktion. Sie können die Abrechnung für Ihre Organisation vereinfachen, indem Sie die zusammengefassten Kosten für die gesamte Gruppe anzeigen. Weitere Informationen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md).
 
-Ein Data Lake Analytics-Dienst kann folgende Komponenten enthalten:
+Ein Data Lake Analytics-Dienst kann folgende Komponenten enthalten:
 
 - Azure Data Lake Analytics-Konto
 - Erforderliches Azure Data Lake-Speicherkonto
@@ -214,4 +214,4 @@ Ein Data Lake Analytics-Konto und die dazugehörigen Speicherkonten müssen si
 - [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md)
 - [Überwachen und Problembehandeln von Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

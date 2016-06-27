@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Anfordern von technischem Support vom Application Insights-Entwicklungsteam" 
+	pageTitle="Anfordern von technischem Support vom Application Insights-Entwicklungsteam | Microsoft Azure" 
 	description="Wenn Sie einen Fall haben, der die besondere Unterstützung durch das Application Insights-Entwicklungsteam erfordert, erfahren Sie hier, wie Sie die Details übermitteln können, um Support zu erhalten." 
 	services="application-insights" 
     documentationCenter=""
@@ -42,7 +42,7 @@ Wenn Sie keinen Supportplan haben, wird sich unser Supportteam nach besten Kräf
 
 1. Klicken Sie im [Application Insights-Portal](https://portal.azure.com) rechts oben auf das Smileysymbol:  
 
-    ![image](./media/app-insights-get-dev-support/01.png)
+    ![Schaltfläche „Feedback“](./media/app-insights-get-dev-support/01.png)
 
 2. Geben Sie im Kommentarfeld **AppInsights** in die erste Zeile ein, und fügen Sie dann die folgenden Informationen hinzu:
 
@@ -51,17 +51,16 @@ Wenn Sie keinen Supportplan haben, wird sich unser Supportteam nach besten Kräf
     AppInsights   
     ikey: <instrumentation key>   
     sdk: <SDK that you are using, including name and version>  
-    email: <email address that we should use to contact you. This is the most important field>  
     issue: <please describe the problem you are having>
 
     ```   
 
-    ![image](./media/app-insights-get-dev-support/02.png)
+    ![Dialogfeld „Feedback“](./media/app-insights-get-dev-support/02.png)
 
 3. Aktivieren Sie „Ja, Sie dürfen mich bezüglich meines Feedbacks per E-Mail kontaktieren“.
 
-    ![image](./media/app-insights-get-dev-support/03.png)
+    ![Abschnitt „Senden“](./media/app-insights-get-dev-support/03.png)
 
-Ein Entwickler aus dem Application Insights-Team wird sich rasch bei Ihnen melden. Da wir diesen Service nach besten Kräften bieten, gilt derzeit keine formelle SLA.
+Ein Entwickler aus dem Application Insights-Team wird sich bei Ihnen melden. Da wir diesen Service nach besten Kräften bieten, gilt derzeit keine formelle SLA.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

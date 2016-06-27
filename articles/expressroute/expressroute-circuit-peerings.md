@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="03/21/2016"
+   ms.date="06/13/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute-Verbindungen und Routingdomänen
@@ -61,6 +61,8 @@ Auf der [FAQ-Seite](expressroute-faqs.md) finden Sie weitere Informationen zu Di
  
 ### Microsoft-Peering
 
+[AZURE.INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
+
 Verbindungen mit allen anderen Onlinediensten von Microsoft (z. B. Office 365-Dienste) erfolgen über das Microsoft-Peering. Über die Peeringrouting-Domäne von Microsoft ermöglichen wir eine bidirektionale Konnektivität zwischen Ihrem WAN und den Microsoft-Clouddiensten. Sie dürfen nur über öffentliche IP-Adressen, die Ihnen oder Ihrem Konnektivitätsanbieter gehören, eine Verbindung mit den Microsoft-Clouddiensten herstellen und müssen alle definierten Regeln einhalten. Weitere Informationen finden Sie auf der Seite [ExpressRoute-Voraussetzungen](expressroute-prerequisites.md).
 
 Auf der [FAQ-Seite](expressroute-faqs.md) finden Sie weitere Informationen zu unterstützten Diensten, Kosten und Konfigurationsdetails. Auf der Seite [ExpressRoute-Standorte](expressroute-locations.md) finden Sie Informationen zur Liste der Konnektivitätsanbieter, die Microsoft-Peeringsupport anbieten.
@@ -90,4 +92,4 @@ Wenn Sie sich für alle drei Peeringsitzungen entscheiden, müssen Sie über dre
 	- [Konfigurieren des Routings (Verbindungspeerings)](expressroute-howto-routing-classic.md)
 	- [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

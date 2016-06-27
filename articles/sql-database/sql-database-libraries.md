@@ -21,7 +21,7 @@
 In diesem Thema sind die einzelnen Bibliotheken/Treiber aufgelistet, mit denen Clientprogramme Verbindungen mit Azure SQL-Datenbank oder Microsoft SQL Server herstellen können.
 
 
-| Sprache | Plattform | Weitere Informationen | Herunterladen |
+| Sprache | Plattform | Zusätzliche Ressourcen | Herunterladen |
 | :-- | :-- | :-- | :-- |
 | ADO.NET | Windows, Linux, Mac | [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von .NET (C#)](sql-database-develop-dotnet-simple.md) | [Herunterladen](https://msdn.microsoft.com/vstudio/aa496123.aspx) |
 | Java | Windows | [Herstellen von Verbindungen mit der SQL-Datenbank mithilfe von Java mit JDBC unter Windows](sql-database-develop-java-simple-windows.md) | [Herunterladen](http://go.microsoft.com/fwlink/?LinkId=245496) |
@@ -30,4 +30,4 @@ In diesem Thema sind die einzelnen Bibliotheken/Treiber aufgelistet, mit denen C
 | Python | Windows, Linux, Mac | [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Python](sql-database-develop-python-simple.md) | [Installieren](https://msdn.microsoft.com/library/mt694094.aspx) |
 | Ruby | Windows, Linux, Mac | [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Ruby](sql-database-develop-ruby-simple.md) | [Installieren](https://msdn.microsoft.com/library/mt711041.aspx) |
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -58,7 +58,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten L
 - [Verwenden der Docker-VM-Erweiterung aus der Azure-Befehlszeilenschnittstelle (Azure-CLI)](virtual-machines-linux-classic-cli-use-docker.md)
 - [Verwenden der Docker-VM-Erweiterung über das Azure-Portal](virtual-machines-linux-classic-portal-use-docker.md)
 - [Schneller Einstieg in Docker in Azure Marketplace](virtual-machines-linux-classic-docker-quickstart.md)
-- [Verwenden von "docker-machine" auf Azure](virtual-machines-linux-classic-docker-machine.md)
+- [Verwenden von "docker-machine" auf Azure](virtual-machines-linux-docker-machine.md)
 
 ### Ubuntu
 - [Gewusst wie: MySQL-Cluster](virtual-machines-linux-classic-mysql-cluster.md)
@@ -192,4 +192,4 @@ Dieser Bereich ist recht umfangreich und ändert sich sehr schnell. Sie sollten 
 
 - [Packer-Plug-In für Azure](https://github.com/msopentech/packer-azure)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

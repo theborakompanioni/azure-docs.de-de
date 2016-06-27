@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="05/06/2016" 
+	ms.date="06/14/2016" 
 	ms.author="rnagpal"/>
 
 # DocumentDB SDK
@@ -36,6 +36,14 @@
 
 ## Versionsinformationen
 
+### <a name="1.8.0"/>[1\.8.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.8.0)
+  - Unterstützung für Datenbankkonten in mehreren Regionen hinzugefügt.
+  - Unterstützung für Wiederholungsversuche für gedrosselte Anforderungen hinzugefügt. Benutzer kann die Anzahl von Wiederholungsversuchen und die maximale Wartezeit durch Konfigurieren der ConnectionPolicy.RetryOptions-Eigenschaft anpassen.
+  - Neue IDocumentClient-Schnittstelle hinzugefügt, die die Signaturen aller DocumentClient-Eigenschaften und -Methoden definiert. Im Rahmen dieser Änderung wurden auch die Erweiterungsmethoden zum Erstellen von IQueryable und IOrderedQueryable in Methoden der DocumentClient-Klasse selbst geändert.
+  - Konfigurationsoption zum Festlegen des ServicePoint.ConnectionLimit-Werts für einen bestimmten DocumentDB-Endpunkt-URI hinzugefügt. Verwenden Sie ConnectionPolicy.MaxConnectionLimit zum Ändern des Standardwerts, der auf 50 festgelegt ist.
+  - IPartitionResolver und die zugehörige Implementierung wurden als „veraltet“ markiert. Unterstützung für IPartitionResolver ist jetzt veraltet. Um mehr Speicher und höheren Durchsatz zu erzielen, empfiehlt sich die Verwendung von partitionierten Sammlungen.
+
+
 ### <a name="1.7.1"/>[1\.7.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.7.1)
   - URI basierend auf der „ExecuteStoredProcedureAsync“-Methode eine Überladung hinzugefügt, die „RequestOptions“ als Parameter akzeptiert.
   
@@ -49,7 +57,7 @@
   - [Partitionierte Sammlungen](documentdb-partition-data.md) und [benutzerdefinierte Leistungsstufen](documentdb-performance-levels.md) implementiert. 
 
 ### <a name="1.5.3"/>[1\.5.3](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.5.3)
-  - **[Behoben]** Die Abfrage des DocumentDB-Endpunkts löst Folgendes aus: 'System.Net.Http.HttpRequestException: Fehler beim Kopieren von Inhalt in einen Datenstrom.
+  - **[Behoben]** Die Abfrage des DocumentDB-Endpunkts löst Folgendes aus: 'System.Net.Http.HttpRequestException: Fehler beim Kopieren von Inhalt in einen Stream.
 
 ### <a name="1.5.2"/>[1\.5.2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.5.2)
   - Erweiterte LINQ-Unterstützung, einschließlich neuer Operatoren für Paging, bedingte Ausdrücke und Bereichsvergleiche.
@@ -101,7 +109,7 @@
   
 		**NB: Possible breaking change** 
   
-    	Wenn Sie über vorhandenen Code verfügen, der Sammlungen mit einer benutzerdefinierten Indizierungsrichtlinie bereitstellt, muss Ihr vorhandener Code so aktualisiert werden, dass er die neue IndexingPolicy-Klasse unterstützt.Wenn Sie keine benutzerdefinierte Indizierungsrichtlinie haben, betrifft Sie diese Änderung nicht.
+    	If you have existing code that provisions collections with a custom indexing policy, then your existing code will need to be updated to support the new IndexingPolicy class. If you have no custom indexing policy, then this change does not affect you.
 
 ### <a name="1.1.0"/>[1\.1.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.1.0)
 - Unterstützung für das Partitionieren von Daten mithilfe der neuen Klassen „HashPartitionResolver“ und „RangePartitionResolver“ und von „IPartitionResolver“
@@ -133,24 +141,7 @@ Alle Versionen des Azure DocumentDB-SDK für .NET vor Version **1.0.0** werden a
  
 | Version | Herausgabedatum | Deaktivierungstermine 
 | ---	  | ---	         | ---
-| [1\.7.1](#1.7.1) | 6. Mai 2016 |--- 
-| [1\.7.0](#1.7.0) | 26. April 2016 |--- 
-| [1\.6.3](#1.6.3) | 8. April 2016 |--- 
-| [1\.6.2](#1.6.2) | 29. März 2016 |--- 
-| [1\.5.3](#1.5.3) | 19. Februar 2016 |--- 
-| [1\.5.2](#1.5.2) | 14. Dezember 2015 |--- 
-| [1\.5.1](#1.5.1) | 23. November 2015 |--- 
-| [1\.5.0](#1.5.0) | 5. Oktober 2015 |--- 
-| [1\.4.1](#1.4.1) | 25. August 2015 |--- 
-| [1\.4.0](#1.4.0) | 13. August 2015 |--- 
-| [1\.3.0](#1.3.0) | 5. August 2015 |--- 
-| [1\.2.0](#1.2.0) | 6. Juli 2015 |--- 
-| [1\.1.0](#1.1.0) | 30. April 2015 |--- 
-| [1\.0.0](#1.0.0) | 8. April 2015 |--- 
-| [0\.9.3-prelease](#0.9.x-preview) | 12. März 2015 | 29. Februar 2016 
-| [0\.9.2-prelease](#0.9.x-preview) | Januar 2015 | 29. Februar 2016 
-| [0\.9.1-prelease](#0.9.x-preview) | 13. 29. Februar 2014 | 29. Februar 2016 
-| [0\.9.0-prelease](#0.9.x-preview) | 21. August 2014 | 29. Februar 2016
+| [1\.8.0](#1.8.0) | 14. Juni 2016 |--- | [1\.7.1](#1.7.1) | 6. Mai 2016 |--- | [1\.7.0](#1.7.0) | 26. April 2016 |--- | [1\.6.3](#1.6.3) | 8. April 2016 |--- | [1\.6.2](#1.6.2) | 29. März 2016 |--- | [1\.5.3](#1.5.3) | 19. Februar 2016 |--- | [1\.5.2](#1.5.2) | 14. Dezember 2015 |--- | [1\.5.1](#1.5.1) | 23. November 2015 |--- | [1\.5.0](#1.5.0) | 5. Oktober 2015 |--- | [1\.4.1](#1.4.1) | 25. August 2015 |--- | [1\.4.0](#1.4.0) | 13. August 2015 |--- | [1\.3.0](#1.3.0) | 5. August 2015 |--- | [1\.2.0](#1.2.0) | 6. Juli 2015 |--- | [1\.1.0](#1.1.0) | 30. April 2015 |--- | [1\.0.0](#1.0.0) | 8. April 2015 |--- | [0\.9.3-prelease](#0.9.x-preview) | 12. März 2015 | 29. Februar 2016 | [0\.9.2-prelease](#0.9.x-preview) | Januar 2015 | 29. Februar 2016 | [.9.1-prelease](#0.9.x-preview) | 13. Oktober 2014 | 29. Februar 2016 | [0\.9.0-prelease](#0.9.x-preview) | 21. August 2014 | 29. Februar 2016
 
 ## Häufig gestellte Fragen
 [AZURE.INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]
@@ -159,4 +150,4 @@ Alle Versionen des Azure DocumentDB-SDK für .NET vor Version **1.0.0** werden a
 
 Weitere Informationen zu DocumentDB finden Sie auf der Seite zum Dienst [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

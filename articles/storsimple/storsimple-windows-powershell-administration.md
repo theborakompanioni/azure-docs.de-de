@@ -175,7 +175,7 @@ Im Folgenden finden Sie eine kurze Beschreibung der Hilfetypen für diese Window
 
 - Um Onlinehilfe zu einem beliebigen Cmdlet zu erhalten, verwenden Sie das vorherige Cmdlet mit dem Parameter `-Online`: `Get-Help <cmdlet-name> -Online`
 
-- Vollständige Hilfeinformationen erhalten Sie mit dem Parameter "–Full" und Beispiele mit dem Parameter `–Examples`.
+- Mit dem `–Full`-Parameter können Sie die vollständige Hilfe anzeigen. Der `–Examples`-Parameter dient zum Anzeigen von Beispielen.
 
 #### So aktualisieren Sie die Hilfe
 
@@ -197,4 +197,4 @@ Sie können die Hilfe in der Windows PowerShell-Schnittstelle problemlos aktuali
 ## Nächste Schritte
 Wenn Probleme auf Ihrem StorSimple-Gerät bei einem der zuvor genannten Workflows auftreten, konsultieren Sie die [Tools zur Problembehandlung für StorSimple-Bereitstellungen](storsimple-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

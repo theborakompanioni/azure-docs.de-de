@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/06/2016"
+   ms.date="06/06/2016"
    ms.author="mbaldwin;bryanla" />
 
 # Integrieren von Anwendungen in Azure Active Directory
@@ -51,7 +51,9 @@ Wenn Sie eine Webanwendung entwickeln, für die nur eine Benutzeranmeldung in Az
 
 ## Aktualisieren einer Anwendung
 
-Nachdem Ihre Anwendung in Azure AD registriert wurde, muss sie ggf. aktualisiert werden, um Zugriff auf Web-APIs bereitzustellen, für andere Unternehmen zur Verfügung gestellt zu werden usw. Dieser Abschnitt beschreibt, wie Ihre Anwendung für diese Aufgaben konfiguriert wird. Weitere Informationen zur Funktionsweise der Authentifizierung in Azure AD finden Sie unter [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md).
+Nachdem Ihre Anwendung in Azure AD registriert wurde, muss sie ggf. aktualisiert werden, um Zugriff auf Web-APIs bereitzustellen, für andere Unternehmen zur Verfügung gestellt zu werden usw. In diesem Abschnitt werden verschiedene Möglichkeiten beschrieben, Ihre Anwendung weiter zu konfigurieren. Zunächst erhalten Sie eine Übersicht über das Consent Framework. Dieses müssen Sie kennen, wenn Sie Ressourcen-/API-Anwendungen zur Nutzung durch Clientanwendungen erstellen, die von Entwicklern in Ihrer oder einer anderen Organisation erstellt wurden.
+
+Weitere Informationen zur Funktionsweise der Authentifizierung in Azure AD finden Sie unter [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md).
 
 ### Übersicht über das Consent Framework
 
@@ -103,15 +105,15 @@ Wenn eine Clientanwendung für den Zugriff auf eine Web-API konfiguriert ist, di
 
 1. Scrollen Sie nach unten zum Abschnitt "Berechtigungen für andere Anwendungen". In der ersten Spalte können Sie aus den Ressourcenanwendungen in Ihrem Verzeichnis auswählen, die eine Web-API verfügbar machen. Nach der Auswahl können Sie ggf. die Anwendungs- und Delegierungsberechtigungen auswählen, die die Web-API bereitstellt.
 
-1. Klicken Sie nach der Auswahl auf die Schaltfläche **Speichern** in der Befehlszeile.
+1. Klicken Sie nach der Auswahl auf der Befehlsleiste auf die Schaltfläche **Speichern**.
 
 >[AZURE.NOTE] Wenn Sie auf die Schaltfläche "Speichern" klicken, werden basierend auf den von Ihnen konfigurierten "Berechtigungen für andere Anwendungen" automatisch die Berechtigungen für die Anwendung in Ihrem Verzeichnis festgelegt. Sie können diese Anwendungsberechtigungen auf der Registerkarte mit den Anwendungseigenschaften anzeigen.
 
 ### Konfigurieren einer Ressourcenanwendung zum Bereitstellen von Web-APIs
 
-Sie können eine Web-API entwickeln und sie Clientanwendungen zur Verfügung stellen, indem Sie Ihre Berechtigungsbereiche verfügbar machen. Eine ordnungsgemäß konfigurierte Web-API wird auf die gleiche Weise wie andere Microsoft-Web-APIs (einschließlich der Graph-API und der Office 365-APIs) zur Verfügung gestellt. Berechtigungsbereiche werden durch Ihr Anwendungsmanifest zur Verfügung gestellt. Hierbei handelt es sich um eine JSON-Datei, die die Identitätskonfiguration Ihrer Anwendung repräsentiert. Sie können Ihre Berechtigungsbereiche bereitstellen, indem Sie im klassischen Azure-Portal zu Ihrer Anwendung navigieren und dann auf der Befehlsleiste auf die Schaltfläche „Anwendungsmanifest“ klicken.
+Sie können eine Web-API entwickeln und sie Clientanwendungen zur Verfügung stellen, indem Sie Zugriffsbereiche verfügbar machen. Eine ordnungsgemäß konfigurierte Web-API wird auf die gleiche Weise wie andere Microsoft-Web-APIs (einschließlich der Graph-API und der Office 365-APIs) zur Verfügung gestellt. Zugriffsbereiche werden durch Ihr Anwendungsmanifest verfügbar gemacht. Hierbei handelt es sich um eine JSON-Datei, die die Identitätskonfiguration Ihrer Anwendung repräsentiert. Sie können Ihre Bereiche verfügbar machen, indem Sie im klassischen Azure-Portal zu Ihrer Anwendung navigieren und dann auf der Befehlsleiste auf die Schaltfläche „Anwendungsmanifest“ klicken.
 
-#### Hinzufügen von Berechtigungsbereichen zu Ihrer Ressourcenanwendung
+#### Hinzufügen von Zugriffsbereichen zu Ihrer Ressourcenanwendung
 
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
 
@@ -121,7 +123,7 @@ Sie können eine Web-API entwickeln und sie Clientanwendungen zur Verfügung ste
 
 1. Klicken Sie auf der Befehlsleiste auf die Schaltfläche **Manifest verwalten**, und wählen Sie dann **Manifest herunterladen** aus.
 
-1. Öffnen Sie die JSON-Anwendungsmanifestdatei, und ersetzen Sie den Knoten "oauth2Permissions" durch den folgenden JSON-Codeausschnitt. Dieser Codeausschnitt zeigt, wie ein als Benutzeridentitätswechsel bezeichneter Berechtigungsbereich bereitgestellt wird. Stellen Sie sicher, dass Sie den Text und die Werte für Ihre eigene Anwendung ändern:
+1. Öffnen Sie die JSON-Anwendungsmanifestdatei, und ersetzen Sie den Knoten "oauth2Permissions" durch den folgenden JSON-Codeausschnitt. Dieser Codeausschnitt ist ein Beispiel dafür, wie Sie einen Bereich verfügbar machen, der als „Benutzeridentitätswechsel“ bekannt ist. Damit kann ein Ressourcenbesitzer einer Clientanwendung eine Art delegierten Zugriff auf eine Ressource gewähren. Stellen Sie sicher, dass Sie den Text und die Werte für Ihre eigene Anwendung ändern:
 
 		"oauth2Permissions": [
 		{
@@ -138,7 +140,7 @@ Sie können eine Web-API entwickeln und sie Clientanwendungen zur Verfügung ste
 
     Der Wert „id“ muss eine neu generierte GUID sein. Diese erstellen Sie, indem Sie ein [Tool zum Generieren von GUIDs](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx) oder ein programmgesteuertes Verfahren verwenden. Die GUID repräsentiert einen eindeutigen Bezeichner für die Berechtigung, die von der Web-API bereitgestellt wird. Nachdem der Client ordnungsgemäß zum Anfordern des Zugriffs auf Ihre Web-API konfiguriert wurde und die Web-API-aufruft, stellt er ein OAuth 2.0 JWT-Token bereit, dessen Bereichsanspruch (scp) auf den oben genannten Wert festgelegt ist. In diesem Fall ist dies „user\_impersonation“.
 
-	>[AZURE.NOTE] Sie können später bei Bedarf zusätzliche Berechtigungsbereiche bereitstellen. Berücksichtigen Sie, dass Ihre Web-API verschiedene Berechtigungen bereitstellen kann, die einer Vielzahl von unterschiedlichen Funktionen zugeordnet sind. Jetzt können Sie den Zugriff auf die Web-API steuern, indem Sie den Bereichsanspruch (scp) im empfangenen OAuth 2.0 JWT-Token verwenden.
+	>[AZURE.NOTE] Sie können später bei Bedarf zusätzliche Bereiche verfügbar machen. Berücksichtigen Sie, dass Ihre Web-API verschiedene Berechtigungen verfügbar machen kann, die einer Vielzahl von unterschiedlichen Funktionen zugeordnet sind. Jetzt können Sie den Zugriff auf die Web-API steuern, indem Sie den Bereichsanspruch (scp) im empfangenen OAuth 2.0 JWT-Token verwenden.
 
 1. Speichern Sie die aktualisierte JSON-Datei, und laden Sie sie durch Klicken auf die Schaltfläche **Manifest verwalten** auf der Befehlsleiste hoch. Wählen Sie **Manifest hochladen** aus, navigieren Sie zur aktualisierten Manifestdatei, und wählen Sie sie dann aus. Nach dem Hochladen ist Ihre Web-API jetzt so konfiguriert, dass sie von anderen Anwendungen im Verzeichnis verwendet werden kann.
 
@@ -151,7 +153,7 @@ Sie können eine Web-API entwickeln und sie Clientanwendungen zur Verfügung ste
 ![Anzeige von Aufgabenlistenberechtigungen](./media/active-directory-integrating-applications/listpermissions.png)
 
 #### Weitere Informationen zum Anwendungsmanifest
-Das Anwendungsmanifest ist praktisch ein Mechanismus zum Aktualisieren der Anwendungsentität, der alle Attribute der Identitätskonfiguration einer Azure AD-Anwendung einschließlich der erörterten API-Berechtigungsbereiche definiert. Weitere Informationen zur Anwendungsentität finden Sie in der [Dokumentation zur Anwendungsentität der Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#EntityreferenceApplicationEntity). Dort finden Sie umfassende Referenzinformationen zu den Anwendungsentitätselementen, die verwendet werden, um Berechtigungen für Ihre API anzugeben:
+Das Anwendungsmanifest dient als Mechanismus zum Aktualisieren der Anwendungsentität, der alle Attribute der Identitätskonfiguration einer Azure AD-Anwendung einschließlich der erörterten API-Zugriffsbereiche definiert. Weitere Informationen zur Anwendungsentität finden Sie in der [Dokumentation zur Anwendungsentität der Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#EntityreferenceApplicationEntity). Dort finden Sie umfassende Referenzinformationen zu den Anwendungsentitätselementen, die verwendet werden, um Berechtigungen für Ihre API anzugeben:
 
 - Das appRoles-Mitglied, das eine Sammlung von [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#AppRoleType)-Entitäten darstellt, die zum Definieren der **Anwendungsberechtigungen** für eine Web-API verwendet werden können  
 - Das oauth2Permissions-Mitglied, das eine Sammlung von [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#OAuth2PermissionType)-Entitäten darstellt, die zum Definieren der **delegierten Berechtigungen** für eine Web-API verwendet werden können
@@ -162,10 +164,10 @@ Weitere Informationen zu Anwendungsmanifestkonzepten im Allgemeinen finden Sie u
 
 Wie bereits zuvor erwähnt, können Sie zusätzlich zum Verfügbarmachen von/Zugreifen auf APIs über Ihre eigenen Ressourcenanwendungen auch Ihre Clientanwendung für den Zugriff auf APIs aktualisieren, die von Microsoft-Ressourcen verfügbar gemacht werden. Die Azure AD Graph-API, die in der Liste der Berechtigungen für andere Anwendungen als „Azure Active Directory“ bezeichnet wird, ist standardmäßig für alle Anwendungen verfügbar, die mit Azure AD registriert sind. Wenn Sie Ihre Clientanwendung in einem Azure AD-Mandanten registrieren, der von Office 365 bereitgestellt wurde, können Sie auch auf alle Berechtigungen zugreifen, die durch die APIs für verschiedene Office 365-Ressourcen verfügbar gemacht werden.
 
-Eine vollständige Erläuterung zu Berechtigungsbereichen, die verfügbar gemacht werden durch:
+Eine vollständige Erläuterung zu Zugriffsbereichen, die durch Folgendes verfügbar gemacht werden:
 
-- die Graph-API von Azure AD, finden Sie im Artikel [Berechtigungsbereiche | Graph-API-Konzepte](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes).
-- Office 365-APIs, finden Sie im Artikel [Authentifizierung und Autorisierung mit dem allgemeinen Consent Framework](https://msdn.microsoft.com/office/office365/howto/application-manifest). Unter [Einrichten der Office 365-Entwicklungsumgebung](https://msdn.microsoft.com/office/office365/HowTo/setup-development-environment) finden Sie eine umfangreiche Erörterung zum Erstellen einer Client-App, die in Office 365-APIs integriert wird.
+- Graph-API von Azure AD. Informationen dazu finden Sie im Artikel [Berechtigungsbereiche | Graph-API-Konzepte](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes).
+- Office 365-APIs. Informationen dazu finden Sie im Artikel [Authentifizierung und Autorisierung mit dem allgemeinen Consent Framework](https://msdn.microsoft.com/office/office365/howto/application-manifest). Unter [Einrichten der Office 365-Entwicklungsumgebung](https://msdn.microsoft.com/office/office365/HowTo/setup-development-environment) finden Sie eine umfangreiche Erörterung zum Erstellen einer Client-App, die in Office 365-APIs integriert wird.
 
 >[AZURE.NOTE] Aufgrund einer aktuellen Einschränkung können systemeigene Clientanwendungen die Azure AD Graph-API nur aufrufen, wenn sie die Berechtigung „Zugriff auf das Verzeichnis Ihrer Organisation“ verwenden. Diese Einschränkung gilt nicht für Webanwendungen.
 
@@ -178,13 +180,13 @@ Es ist wichtig, die Unterschiede zwischen einer Einzelinstanzanwendung und einer
 - Eine Einzelinstanzanwendung ist für die Verwendung in einem einzelnen Unternehmen gedacht. Es handelt sich dabei zumeist um eine Branchenanwendung (Line-of-Business, LOB), die von einem Unternehmensentwickler geschrieben wurde. Auf eine Einzelinstanzanwendung greifen nur Benutzer aus einem einzelnen Verzeichnis zu. Daher muss sie auch nur in einem Verzeichnis bereitgestellt werden.
 - Eine mehrinstanzenfähige Anwendung ist für die Verwendung in vielen Organisationen vorgesehen. Hierbei handelt es sich um eine SaaS-Webanwendung (Software-as-a-Service), die in der Regel von einem unabhängigen Softwarehersteller (ISV, Independent Software Vendor) geschrieben wurde. Mehrinstanzenfähige Anwendungen müssen in jedem Verzeichnis bereitgestellt werden, in dem sie verwendet werden. Für die Registrierung ist also jeweils die Zustimmung des Benutzers oder Administrators erforderlich, unterstützt durch das Azure AD-Consent Framework. Beachten Sie, dass alle systemeigenen Clientanwendungen standardmäßig mehrinstanzenfähig sind, da sie auf dem Gerät des Ressourcenbesitzers installiert sind. Weitere Informationen zum Consent Framework finden Sie oben in der „Übersicht über das Consent Framework“.
 
-#### Aktivieren von externen Benutzern für das Gewähren des Zugriffs
+#### Externen Benutzern ermöglichen, Ihrer Anwendung Zugriff auf ihre Ressourcen zu gewähren
 
 Wenn Sie eine Anwendung schreiben, die Sie Ihren Kunden oder Partnern außerhalb Ihrer Organisation zur Verfügung stellen möchten, müssen Sie die Anwendungsdefinition im klassischen Azure-Portal aktualisieren.
 
 >[AZURE.NOTE] Wenn Sie die Mehrinstanzenfähigkeit aktivieren, müssen Sie sicherstellen, dass der App-ID-URI Ihrer Anwendung zu einer überprüften Domäne gehört. Darüber hinaus muss die Rückgabe-URL mit "https://" beginnen. Weitere Informationen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](active-directory-application-objects.md).
 
-##### So aktivieren Sie den Zugriff auf Ihre App für externe Benutzer
+So aktivieren Sie den Zugriff auf Ihre App für externe Benutzer:
 
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
 
@@ -194,11 +196,11 @@ Wenn Sie eine Anwendung schreiben, die Sie Ihren Kunden oder Partnern außerhalb
 
 1. Erweitern Sie auf der Seite „Schnellstart“ den Abschnitt **Mehrinstanzenfähige Anwendung konfigurieren**, und klicken Sie dann im Abschnitt „Zugriff aktivieren“ auf den Link **Jetzt konfigurieren**. Die Seite mit den Anwendungseigenschaften wird angezeigt.
 
-1. Klicken Sie neben „Die Anwendung ist mehrinstanzenfähig“ auf **Ja**, und klicken Sie dann in der Befehlsleiste auf die Schaltfläche **Speichern**.
+1. Klicken Sie neben „Die Anwendung ist mehrinstanzenfähig“ auf **Ja**, und klicken Sie dann auf der Befehlsleiste auf die Schaltfläche **Speichern**.
 
 Nachdem Sie die oben genannten Änderungen vorgenommen haben, können Benutzer und Administratoren in anderen Organisationen Ihrer Anwendung Zugriff auf ihr Verzeichnis und andere Daten gewähren.
 
-### Auslösen von Azure AD-Consent Framework zur Laufzeit
+#### Auslösen von Azure AD-Consent Framework zur Laufzeit
 
 Zur Verwendung des Consent Frameworks müssen mehrinstanzenfähige Clientanwendungen mithilfe von OAuth 2.0 eine Autorisierung anfordern. Es stehen [Codebeispiele](https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multi-tenant) zur Verfügung, die zeigen, wie eine Webanwendung, eine native Anwendung oder eine Server-/Daemonanwendung Autorisierungscodes und Zugriffstoken zum Aufrufen von Web-APIs anfordert.
 
@@ -206,11 +208,13 @@ Ihre Webanwendung kann ggf. auch eine Registrierungsbenutzeroberfläche für Ben
 
 Alternativ kann Ihre Webanwendung auch eine Benutzeroberfläche bereitstellen, die es Administratoren ermöglicht, ihr Unternehmen zu registrieren. Eine solche Benutzeroberfläche würde den Benutzer ebenfalls an den Azure AD-OAuth 2.0-Autorisierungsendpunkt umleiten. In diesem Fall können Sie auch einen Parameter „prompt=admin\_consent“ an den Autorisierungsendpunkt übergeben, um das Aufrufen der Benutzeroberfläche für die Administratorzustimmung zu erzwingen, in der der Administrator die Zustimmung im Namen seiner Organisation erteilt. Nur ein Benutzer, der sich mit einem Konto authentifiziert, das zur globalen Administratorrolle gehört, kann zustimmen; andere Benutzer erhalten eine Fehlermeldung. Bei erfolgter Zustimmung enthält die Antwort "admin\_consent=true". Bei der Einlösung eines Zugriffstokens erhalten Sie ebenfalls ein "id\_token", das Informationen zu der Organisation und zum Administrator bereitstellt, der sich für Ihre Anwendung registriert hat.
 
-#### Aktivieren der impliziten OAuth 2.0-Gewährung für Single-Page-Anwendungen
+### Aktivieren der impliziten OAuth 2.0-Gewährung für Single-Page-Anwendungen
 
-Single-Page-Anwendungen (SPAs) sind in der Regel mit einem JavaScript-intensiven Front-End aufgebaut, das im Browser ausgeführt wird, der das Web-API-Back-End der Anwendung zum Ausführen ihrer Geschäftslogik aufruft. Für SPAs, die in Azure AD gehostet werden, verwenden Sie die implizite OAuth 2.0-Gewährung zum Authentifizieren des Benutzers für Azure AD und rufen ein Token ab, mit dem Sie Aufrufe vom JavaScript-Client der Anwendung an ihre Back-End-Web-API sichern können. Nachdem der Benutzer seine Zustimmung erteilt hat, können mit dem gleichen Authentifizierungsprotokoll Token zum Sichern von Aufrufen zwischen dem Client und anderen für die Anwendung konfigurierten Web-API-Ressourcen abgerufen werden. Die implizite OAuth 2.0-Gewährung ist für Anwendungen standardmäßig deaktiviert. Sie können die implizite OAuth 2.0-Gewährung für Ihre Anwendung aktivieren, indem Sie den Wert `oauth2AllowImplicitFlow` in deren [Anwendungsmanifest](active-directory-application-manifest.md) festlegen. Dabei handelt es sich um eine JSON-Datei, welche die Identitätskonfiguration Ihrer Anwendung darstellt.
+Single-Page-Anwendungen (SPAs) sind in der Regel mit einem JavaScript-intensiven Front-End aufgebaut, das im Browser ausgeführt wird, der das Web-API-Back-End der Anwendung zum Ausführen ihrer Geschäftslogik aufruft. Für SPAs, die in Azure AD gehostet werden, verwenden Sie die implizite OAuth 2.0-Gewährung zum Authentifizieren des Benutzers für Azure AD und rufen ein Token ab, mit dem Sie Aufrufe vom JavaScript-Client der Anwendung an ihre Back-End-Web-API sichern können. Nachdem der Benutzer seine Zustimmung erteilt hat, können mit dem gleichen Authentifizierungsprotokoll Token zum Sichern von Aufrufen zwischen dem Client und anderen für die Anwendung konfigurierten Web-API-Ressourcen abgerufen werden. Weitere Informationen zur impliziten Gewährung der Autorisierung, damit Sie entscheiden können, ob diese sich für Ihr Anwendungsszenario eignet, finden Sie unter [Grundlegendes zum Ablauf der impliziten OAuth2-Gewährung in Azure Active Directory (AD)](active-directory-dev-understanding-oauth2-implicit-grant.md).
 
-##### So aktivieren Sie die implizite OAuth 2.0-Gewährung
+Die implizite OAuth 2.0-Gewährung ist für Anwendungen standardmäßig deaktiviert. Sie können die implizite OAuth 2.0-Gewährung für Ihre Anwendung aktivieren, indem Sie den Wert `oauth2AllowImplicitFlow` in deren [Anwendungsmanifest](active-directory-application-manifest.md) festlegen. Dabei handelt es sich um eine JSON-Datei, welche die Identitätskonfiguration Ihrer Anwendung darstellt.
+
+#### So aktivieren Sie die implizite OAuth 2.0-Gewährung 
 
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
 1. Klicken Sie im linken Menü auf das **Active Directory**-Symbol und anschließend auf das gewünschte Verzeichnis.
@@ -285,7 +289,7 @@ Während der Lebensdauer Ihrer App müssen Sie ggf. die Schlüssel ändern, die 
 
 1. Klicken Sie im oberen Menü auf **Konfigurieren**, um eine Liste der Eigenschaften Ihrer App anzuzeigen. Es wird eine Liste Ihrer Schlüssel angezeigt.
 
-1. Klicken Sie unterhalb von „Schlüssel“ auf die Dropdownliste mit dem Titel **Dauer auswählen**, wählen Sie 1 oder 2 Jahre aus, und klicken Sie dann in der Befehlsleiste auf **Speichern**. Ein neuer Kennwortschlüssel für die App wird generiert. Kopieren Sie diesen neuen Kennwortschlüssel. Zu diesem Zeitpunkt können Sie sowohl den vorhandenen als auch den neuen Schlüssel für die App verwenden, um ein Zugriffstoken aus Azure AD abzurufen.
+1. Klicken Sie unterhalb von „Schlüssel“ auf die Dropdownliste mit dem Titel **Dauer auswählen**, wählen Sie 1 oder 2 Jahre aus, und klicken Sie dann auf der Befehlsleiste auf **Speichern**. Ein neuer Kennwortschlüssel für die App wird generiert. Kopieren Sie diesen neuen Kennwortschlüssel. Zu diesem Zeitpunkt können Sie sowohl den vorhandenen als auch den neuen Schlüssel für die App verwenden, um ein Zugriffstoken aus Azure AD abzurufen.
 
 1. Kehren Sie zu Ihrer App zurück, und aktualisieren Sie die Konfiguration, um mit der Verwendung des neuen Kennwortschlüssels zu beginnen. Ein Beispiel dafür, wo diese Aktualisierung stattfinden sollte, finden Sie unter [Verwenden der Graph-API zum Abfragen von Azure AD](https://msdn.microsoft.com/library/azure/dn151791.aspx).
 
@@ -314,7 +318,7 @@ Dies sind die Anwendungen, die unter den Filter „Anwendungen im Besitz meines 
 
 1. Klicken Sie im oberen Menü auf **Anwendungen**, und klicken Sie dann auf die Anwendung, die Sie konfigurieren möchten. Die Seite "Schnellstart" wird geöffnet und zeigt Informationen zum einmaligen Anmelden (SSO) und weitere Konfigurationsinformationen an.
 
-1. Klicken Sie in der Befehlsleiste auf die Schaltfläche **Löschen**.
+1. Klicken Sie auf der Befehlsleiste auf die Schaltfläche **Löschen**.
 
 1. Klicken Sie in der Bestätigungsmeldung auf **Ja**.
 
@@ -328,7 +332,7 @@ Dies sind die Anwendungen, die unter den Filter „Anwendungen im Besitz meines 
 
 1. Klicken Sie im Abschnitt „Die Anwendung ist mehrinstanzenfähig“ auf **Nein**. Dies konvertiert Ihre Anwendung in eine Einzelinstanzanwendung. Die Anwendung verbleibt jedoch weiterhin in einer Organisation, die bereits ihre Zustimmung für diese Anwendung erteilt hat.
 
-1. Klicken Sie in der Befehlsleiste auf die Schaltfläche **Löschen**.
+1. Klicken Sie auf der Befehlsleiste auf die Schaltfläche **Löschen**.
 
 1. Klicken Sie in der Bestätigungsmeldung auf **Ja**.
 
@@ -347,4 +351,4 @@ Um den Zugriff einer mehrinstanzenfähigen Anwendung auf Ihr Verzeichnis zu entz
 
 - Besuchen Sie das [Entwicklerhandbuch zu Azure Active Directory](active-directory-developers-guide.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0615_2016-->

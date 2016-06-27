@@ -38,6 +38,8 @@ Um die aktuellen Konfigurationseinstellungen anzuzeigen, wechseln Sie zu PowerSh
 
 ![GetSyncScheduler](./media/active-directory-aadconnectsync-feature-scheduler/getsynccyclesettings.png)
 
+Wenn beim Ausführen dieses Cmdlets die Meldung angezeigt wird, dass der Befehl oder das Cmdlet zur Synchronisierung nicht verfügbar ist, ist das PowerShell-Modul nicht geladen. Dies kann passieren, wenn Sie Azure AD Connect auf einem Domänencontroller oder einem Server mit höherer PowerShell-Einschränkungsebene ausführen als in den Standardeinstellungen festgelegt. Wenn dieser Fehler angezeigt wird, führen Sie `Import-Module ADSync` aus, um das Cmdlet verfügbar zu machen.
+
 - **AllowedSyncCycleInterval**. Die höchste von Azure AD zugelassene Synchronisierungshäufigkeit. Eine höhere Synchronisierungsfrequenz als hier angegeben wird nicht unterstützt.
 - **CurrentlyEffectiveSyncCycleInterval**. Der momentan verwendete Zeitplan. Er besitzt den gleichen Wert wie CustomizedSyncInterval (falls festgelegt), falls er keine höhere Häufigkeit als AllowedSyncInterval aufweist. Wenn Sie CustomizedSyncCycleInterval ändern, tritt diese Änderung nach dem nächsten Synchronisierungszyklus in Kraft.
 - **CustomizedSyncCycleInterval**. Wenn der Scheduler mit einer beliebigen anderen Häufigkeit als der Standardfrequenz von 30 Minuten ausgeführt werden soll, konfigurieren Sie diese Einstellung. In der oben gezeigten Abbildung wurde der Scheduler stattdessen auf einmal pro Stunde festgelegt. Wenn Sie diese Einstellung auf einen niedrigeren Wert als AllowedSyncInterval festlegen, wird stattdessen AllowedSyncInterval verwendet.
@@ -46,7 +48,7 @@ Um die aktuellen Konfigurationseinstellungen anzuzeigen, wechseln Sie zu PowerSh
 - **PurgeRunHistoryInterval**. Der Zeitraum, für den die Vorgangsprotokolle aufbewahrt werden sollen. Diese können im Synchronization Service Manager überprüft werden. Standardmäßig werden sie sieben Tage lang gespeichert.
 - **SyncCycleEnabled**. Gibt an, ob der Scheduler die Import-, Synchronisierungs- und Exportprozesse als Teil seiner Operation ausführt.
 - **MaintenanceEnabled**. Zeigt an, ob der Wartungsprozess aktiviert ist. Dabei werden die Zertifikate/Schlüssel aktualisiert und das Vorgangsprotokoll bereinigt.
-- **IsStagingModeEnabled**. Zeigt, ob der [Stagingmodus](active-directory-aadconnectsync-operations.md#staging-mode) aktiviert ist.
+- **IsStagingModeEnabled**. Zeigt an, ob der [Stagingmodus](active-directory-aadconnectsync-operations.md#staging-mode) aktiviert ist.
 
 Sie können einige dieser Einstellungen mit `Set-ADSyncScheduler` ändern. Folgende Parameter können geändert werden:
 
@@ -67,7 +69,7 @@ Der Scheduler wird standardmäßig alle 30 Minuten ausgeführt. In einigen Fäll
 - Deltasynchronisierung auf allen Connectors
 - Export auf allen Connectors
 
-Es kann vorkommen, dass eine dringende Änderung sofort synchronisiert werden muss. In diesem Fall müssen Sie einen Zyklus manuell ausführen. Wenn Sie einen Zyklus manuell ausführen müssen, führen Sie in PowerShell folgenden Befehl aus: `Start-ADSyncSyncCycle -PolicyType Delta`.
+Es kann vorkommen, dass eine dringende Änderung sofort synchronisiert werden muss. In diesem Fall müssen Sie einen Zyklus manuell ausführen. Wenn Sie einen Zyklus manuell ausführen müssen, führen Sie in PowerShell den Befehl `Start-ADSyncSyncCycle -PolicyType Delta` aus.
 
 **Vollständiger Synchronisierungszyklus** – wenn Sie eine der folgenden Konfigurationsänderungen vorgenommen haben, müssen Sie einen vollständigen Synchronisierungszyklus ausführen (auch als Erstsynchronisierung bezeichnet):
 
@@ -142,4 +144,4 @@ Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0615_2016-->

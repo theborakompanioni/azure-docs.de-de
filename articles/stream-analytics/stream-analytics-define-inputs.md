@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="05/03/2016"
+	ms.date="06/15/2016"
 	ms.author="jeffstok"/>
 
 # Datenverbindung: Erfahren Sie mehr über Datenstromeingaben aus Ereignissen in Stream Analytics
@@ -40,7 +40,7 @@ Dabei gilt zu beachten, dass der Standardzeitstempel von Ereignissen, die von Ev
 
 Jede Eingabe an einen Stream Analytics Event Hub sollte für eine eigene Consumergruppe konfiguriert werden. Wenn ein Auftrag Selbstverknüpfungen oder mehrere Eingaben enthält, werden einige Eingaben im weiteren Verlauf möglicherweise von mehreren Lesern gelesen. Dies hat Einfluss auf die Gesamtzahl der Leser in einer einzelnen Consumergruppe. Zur Vermeidung der Überschreitung des Event Hub-Limits von fünf Lesern pro Consumergruppe pro Partition empfiehlt es sich, eine Consumergruppe für jeden Stream Analytics-Auftrag anzugeben. Beachten Sie, dass darüber hinaus ein Limit von 20 Verbrauchergruppen pro Event Hub gilt. Weitere Informationen finden Sie im [Programmierleitfaden für Event Hubs](../event-hubs/event-hubs-programming-guide.md).
 
-## Konfigurieren von Event Hub als Eingabedatenstrom
+### Konfigurieren von Event Hub als Eingabedatenstrom
 
 In der folgenden Tabelle wird jede Eigenschaft in der Event-Eingaberegisterkarte mit einer entsprechenden Beschreibung erläutert:
 
@@ -77,11 +77,13 @@ FROM Input
 
 Azure IoT Hub ist ein hochgradig skalierbares Erfassungsmodul für das Veröffentlichen und Abonnieren von Ereignissen, das für IoT-Szenarien optimiert ist. Dabei gilt zu beachten, dass der Standardzeitstempel von Ereignissen, die von IoT Hubs in Stream Analytics stammen, der Zeitstempel ist, an dem das Ereignis in IoT Hub eingeht, also "EventEnqueuedUtcTime". Zum Verarbeiten der Daten als Datenstrom mit einem Zeitstempel in der Ereignisnutzlast muss das Schlüsselwort [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) verwendet werden.
 
+> [AZURE.NOTE] Nur Nachrichten, die mit der DeviceClient-Eigenschaft gesendet wurden, können verarbeitet werden.
+
 ### Verbrauchergruppen
 
 Jede Eingabe in einen Stream Analytics IoT Hub sollte für eine eigene Consumergruppe konfiguriert werden. Wenn ein Auftrag Selbstverknüpfungen oder mehrere Eingaben enthält, werden einige Eingaben im weiteren Verlauf möglicherweise von mehreren Lesern gelesen. Dies hat Einfluss auf die Gesamtzahl der Leser in einer einzelnen Consumergruppe. Zur Vermeidung der Überschreitung des IoT Hub-Limits von fünf Lesern pro Consumergruppe pro Partition empfiehlt es sich, eine Consumergruppe für jeden Stream Analytics-Auftrag anzugeben.
 
-## Konfigurieren von IoT Hub als Datenstromeingabe
+### Konfigurieren von IoT Hub als Datenstromeingabe
 
 In der folgenden Tabelle wird jede Eigenschaft auf der IoT Hub-Eingaberegisterkarte mit einer entsprechenden Beschreibung erläutert:
 
@@ -209,4 +211,4 @@ Sie haben sich mit Datenverbindungsoptionen in Azure für Ihre Stream Analytics-
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

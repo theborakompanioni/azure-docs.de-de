@@ -4,7 +4,7 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
@@ -16,13 +16,12 @@
 
 #Tutorial: Azure Active Directory-Integration mit ITRP
   
-In diesem Tutorial wird die Integration von Azure und ITRP erläutert.  
-Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Tutorial wird die Integration von Azure und ITRP erläutert. Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
 -   Einen ITRP-Mandanten
   
-Nach Abschluss dieses Tutorials können sich die Azure AD-Benutzer, die Sie ITRP zugewiesen haben, mittels einmaligen Anmeldens auf der ITRP-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
+Nach Abschluss dieses Tutorials können sich die Azure AD-Benutzer, die Sie ITRP zugewiesen haben, mittels einmaligen Anmeldens auf der ITRP-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
   
 Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
@@ -65,9 +64,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für ITR
     ![ITRP](./media/active-directory-saas-itrp-tutorial/IC775566.png "ITRP")
 ##Konfigurieren der einmaligen Anmeldung
   
-In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei ITRP zu authentifizieren.  
-Zum Konfigurieren des einmaligen Anmeldens für ITRP müssen Sie einen Fingerabdruckwert aus einem Zertifikat abrufen.  
-Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Abrufen des Fingerabdruckwerts eines Zertifikats](http://youtu.be/YKQF266SAxI) weitere Informationen.
+In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei ITRP zu authentifizieren. Zum Konfigurieren des einmaligen Anmeldens für ITRP müssen Sie einen Fingerabdruckwert aus einem Zertifikat abrufen. Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Abrufen des Fingerabdruckwerts eines Zertifikats](http://youtu.be/YKQF266SAxI) weitere Informationen.
 
 ###So konfigurieren Sie einmaliges Anmelden
 
@@ -79,7 +76,7 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Abrufen de
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-itrp-tutorial/IC775567.png "Einmaliges Anmelden konfigurieren")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **ITRP-Anmelde-URL** die URL im Format „ *https://\<Mandantenname>.ITRP.com* “ ein, und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **ITRP-Anmelde-URL** die URL im Format „*https://\<Mandantenname>.ITRP.com*“ ein, und klicken Sie dann auf **Weiter**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-itrp-tutorial/IC775568.png "App-URL konfigurieren")
 
@@ -117,8 +114,7 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Abrufen de
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-itrp-tutorial/IC775574.png "Einmaliges Anmelden konfigurieren")
 ##Konfigurieren der Benutzerbereitstellung
   
-Damit sich Azure AD-Benutzer bei ITRP anmelden können, müssen sie in ITRP bereitgestellt werden.  
-Im Fall von ITRP ist die Bereitstellung eine manuelle Aufgabe.
+Damit sich Azure AD-Benutzer bei ITRP anmelden können, müssen sie in ITRP bereitgestellt werden. Im Fall von ITRP ist die Bereitstellung eine manuelle Aufgabe.
 
 ###So stellen Sie Benutzerkonten bereit
 
@@ -163,4 +159,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0615_2016-->

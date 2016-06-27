@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/23/2016"
+	ms.date="06/13/2016"
 	ms.author="jgao"/>
 
 # Erstellen von .NET HDInsight-Anwendungen für die nicht interaktive Authentifizierung
@@ -89,7 +89,7 @@ Sie müssen die Anwendung einer [Rolle](../active-directory/role-based-access-bu
 
 ##Entwickeln der HDInsight-Clientanwendung
 
-Erstellen Sie eine C# .NET-Konsolenanwendung, indem Sie die Schritte unter [Übermitteln von Hadoop-Aufträgen in HDInsight](hdinsight-submit-hadoop-jobs-programmatically/#submit-hivepigsqoop-jobs-using-hdinsight-net-sdk) ausführen. Ersetzen Sie dann die GetTokenCloudCredentials-Methode durch Folgendes:
+Erstellen Sie eine C# .NET-Konsolenanwendung, indem Sie die Schritte unter [Übermitteln von Hadoop-Aufträgen in HDInsight](hdinsight-submit-hadoop-jobs-programmatically.md#submit-hivepigsqoop-jobs-using-hdinsight-net-sdk) ausführen. Ersetzen Sie dann die GetTokenCloudCredentials-Methode durch Folgendes:
 
     public static TokenCloudCredentials GetTokenCloudCredentials(string tenantId, string clientId, SecureString secretKey)
     {
@@ -122,4 +122,4 @@ Oder mit der Azure-Befehlszeilenschnittstelle:
 - [Authentifizieren eines Dienstprinzipals mit Azure Resource Manager](../resource-group-authenticate-service-principal.md)
 - [Rollenbasierte Access Control in Azure](../active-directory/role-based-access-control-configure.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0615_2016-->

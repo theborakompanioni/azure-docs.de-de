@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/12/2016"
+	ms.date="06/08/2016"
 	ms.author="tamram"/>
 
 # Konfigurieren von Azure Storage-Verbindungszeichenfolgen
@@ -80,13 +80,11 @@ Die Verwendung von HTTPS mit einem SAS wird als bewährte Methode empfohlen. Wei
 
 Hier ist ein Beispiel einer Verbindungszeichenfolge, die eine Dienst-SAS für Blobspeicher enthält:
 
-	BlobEndpoint=https://storagesample.blob.core.windows.net;
-	SharedAccessSignature=sv=2015-04-05&sr=b&si=tutorial-policy-635959936145100803&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D
+	BlobEndpoint=https://storagesample.blob.core.windows.net;SharedAccessSignature=sv=2015-04-05&sr=b&si=tutorial-policy-635959936145100803&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D
 
-Und hier ist ein Beispiel für die gleiche Verbindungszeichenfolge mit URL-Codierung:
+Und hier ist ein Beispiel für die gleiche Verbindungszeichenfolge mit codierten Sonderzeichen:
 
-	BlobEndpoint=https://storagesample.blob.core.windows.net;
-	SharedAccessSignature=sv=2015-04-05&amp;sr=b&amp;si=tutorial-policy-635959936145100803&amp;sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D
+	BlobEndpoint=https://storagesample.blob.core.windows.net;SharedAccessSignature=sv=2015-04-05&amp;sr=b&amp;si=tutorial-policy-635959936145100803&amp;sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D
 
 ### Beispiel für Konto-SAS
 
@@ -163,6 +161,6 @@ Ihre Verbindungszeichenfolge sollte beispielsweise der folgenden Verbindungszeic
 ## Nächste Schritte
 
 - [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](storage-use-emulator.md)
-- [Microsoft Azure-Speicher-Explorer](storage-explorers.md)
+- [Windows Azure-Speicher-Explorer](storage-explorers.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0615_2016-->

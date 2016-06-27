@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="06/10/2016"
 	ms.author="davidmu"/>
 
 # Automatisches Skalieren von Computern in einer VM-Skalierungsgruppe
@@ -37,15 +37,13 @@ In diesem Tutorial stellen Sie die folgenden Ressourcen und Erweiterungen bereit
 
 Weitere Informationen zu Ressourcen-Manager-Ressourcen finden Sie unter [Azure-Compute, -Netzwerk- und -Speicheranbieter unter dem Azure-Ressourcen-Manager](../virtual-machines/virtual-machines-windows-compare-deployment-models.md).
 
-Die Vorlage, die Sie in diesem Tutorial erstellen, ähnelt einer Vorlage aus dem Vorlagenkatalog. Weitere Informationen finden Sie unter [Bereitstellen einer einfachen VM-Skalierungsgruppe mit virtuellen Windows-Computern und einer Jumpbox](https://azure.microsoft.com/documentation/templates/201-vmss-windows-jumpbox/).
-
 ## Schritt 1: Installieren von Azure PowerShell
 
-Informationen dazu, wie Sie die aktuelle Version von Azure PowerShell installieren, das gewünschte Abonnement auswählen und sich beim Azure-Konto anmelden, finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+Informationen dazu, wie Sie die aktuelle Version von Azure PowerShell installieren, das gewünschte Abonnement auswählen und sich am Azure-Konto anmelden, finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
 ## Schritt 2: Erstellen einer Ressourcengruppe und eines Speicherkontos
 
-1. **Erstellen einer Ressourcengruppe** – Alle Ressourcen müssen in einer Ressourcengruppe bereitgestellt werden. Geben Sie der Ressourcengruppe für dieses Tutorial den Namen **vmsstestrg1**: Siehe [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx).
+1. **Erstellen einer Ressourcengruppe** – Alle Ressourcen müssen in einer Ressourcengruppe bereitgestellt werden. Geben Sie der Ressourcengruppe für dieses Tutorial den Namen **vmsstestrg1**. Siehe [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx).
 
 2. **Bereitstellen eines Speicherkontos in der neuen Ressourcengruppe** – In diesem Tutorial werden mehrere Speicherkonten für die VM-Skalierungsgruppe verwendet. Verwenden Sie [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx), um ein Speicherkonto mit dem Namen **vmsstestsa** zu erstellen. Lassen Sie das Azure PowerShell-Fenster zur Ausführung weiterer Schritte dieses Tutorials geöffnet.
 
@@ -94,9 +92,8 @@ Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemein
     
 3. Variablen können in einer Vorlage zum Festlegen der Werte verwendet werden, die sich häufig ändern, oder um die Werte festzulegen, die aus einer Kombination von Parameterwerten erstellt werden müssen. Fügen Sie diese Variablen unter dem übergeordneten Variablenelement hinzu, das Sie der Vorlage hinzugefügt haben.
 
-        "apiVersion": "2016-03-30"
-        "dnsName1": "[concat(parameters('resourcePrefix'),'dn1')] ",
-        "dnsName2": "[concat(parameters('resourcePrefix'),'dn2')] ",
+        "dnsName1": "[concat(parameters('resourcePrefix'),'dn1')]",
+        "dnsName2": "[concat(parameters('resourcePrefix'),'dn2')]",
         "vmSize": "Standard_A0",
         "imagePublisher": "MicrosoftWindowsServer",
         "imageOffer": "WindowsServer",
@@ -118,10 +115,10 @@ Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemein
         "frontEndIPConfigID": "[concat(variables('lbID'),'/frontendIPConfigurations/loadBalancerFrontEnd')]",
         "storageAccountType": "Standard_LRS",
         "storageAccountSuffix": [ "a", "g", "m", "s", "y" ],
-        "diagnosticsStorageAccountName": "[concat(parameters('resourcePrefix'), 'saa')]",
+        "diagnosticsStorageAccountName": "[concat(parameters('resourcePrefix'), 'a')]",
         "accountid": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/', resourceGroup().name,'/providers/','Microsoft.Storage/storageAccounts/', variables('diagnosticsStorageAccountName'))]",
 	    "wadlogs": "<WadCfg> <DiagnosticMonitorConfiguration overallQuotaInMB="4096" xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration"> <DiagnosticInfrastructureLogs scheduledTransferLogLevelFilter="Error"/> <WindowsEventLog scheduledTransferPeriod="PT1M" > <DataSource name="Application!*[System[(Level = 1 or Level = 2)]]" /> <DataSource name="Security!*[System[(Level = 1 or Level = 2)]]" /> <DataSource name="System!*[System[(Level = 1 or Level = 2)]]" /></WindowsEventLog>",
-        "wadperfcounter": "<PerformanceCounters scheduledTransferPeriod="PT1M"><PerformanceCounterConfiguration counterSpecifier="\\Processor(_Total)\\% Processor Time" sampleRate="PT15S" unit="Percent"><annotation displayName="CPU utilization" locale="de-DE"/></PerformanceCounterConfiguration>",
+        "wadperfcounter": "<PerformanceCounters scheduledTransferPeriod="PT1M"><PerformanceCounterConfiguration counterSpecifier="\\Processor(_Total)\\% Processor Time" sampleRate="PT15S" unit="Percent"><annotation displayName="CPU utilization" locale="de-DE"/></PerformanceCounterConfiguration></PerformanceCounters>",
         "wadcfgxstart": "[concat(variables('wadlogs'),variables('wadperfcounter'),'<Metrics resourceId="')]",
         "wadmetricsresourceid": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name ,'/providers/','Microsoft.Compute/virtualMachineScaleSets/',parameters('vmssName'))]",
         "wadcfgxend": "[concat('"><MetricAggregation scheduledTransferPeriod="PT1H"/><MetricAggregation scheduledTransferPeriod="PT1M"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>')]"
@@ -153,7 +150,7 @@ Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemein
 5. Fügen Sie die Ressource für das virtuelle Netzwerk hinzu. Weitere Informationen finden Sie unter [Netzwerkressourcenanbieter](../virtual-network/resource-groups-networking.md).
 
         {
-          "apiVersion": "[variables('apiVersion')]",
+          "apiVersion": "2015-06-15",
           "type": "Microsoft.Network/virtualNetworks",
           "name": "[variables('virtualNetworkName')]",
           "location": "[resourceGroup().location]",
@@ -177,7 +174,7 @@ Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemein
 6. Fügen Sie die Ressourcen für die öffentliche IP-Adresse hinzu, die vom Load Balancer und der Netzwerkschnittstelle verwendet werden.
 
         {
-          "apiVersion": "[variables('apiVersion')]",
+          "apiVersion": "2016-03-30",
           "type": "Microsoft.Network/publicIPAddresses",
           "name": "[variables('publicIP1')]",
           "location": "[resourceGroup().location]",
@@ -189,7 +186,7 @@ Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemein
           }
         },
         {
-          "apiVersion": "[variables('apiVersion')]",
+          "apiVersion": "2016-03-30",
           "type": "Microsoft.Network/publicIPAddresses",
           "name": "[variables('publicIP2')]",
           "location": "[resourceGroup().location]",
@@ -204,7 +201,7 @@ Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemein
 7. Fügen Sie die Load Balancer-Ressource hinzu, die von der Skalierungsgruppe verwendet wird. Weitere Informationen finden Sie unter [Unterstützung des Azure-Ressourcen-Managers für Load Balancer](../load-balancer/load-balancer-arm.md).
 
         {
-          "apiVersion": "[variables('apiVersion')]",
+          "apiVersion": "2015-06-15",
           "name": "[variables('loadBalancerName')]",
           "type": "Microsoft.Network/loadBalancers",
           "location": "[resourceGroup().location]",
@@ -247,7 +244,7 @@ Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemein
 8. Fügen Sie die Netzwerkschnittstellen-Ressource hinzu, die vom separaten virtuellen Computer verwendet wird. Da Computer in einer VM-Skalierungsgruppe nicht direkt über eine öffentliche IP-Adresse zugänglich sind, wird im virtuellen Netzwerk der Skalierungsgruppe ein separater virtueller Computer erstellt und genutzt, um per Remoteverbindung auf die Computer der Gruppe zuzugreifen.
 
         {
-          "apiVersion": "[variables('apiVersion')]",
+          "apiVersion": "2016-03-30",
           "type": "Microsoft.Network/networkInterfaces",
           "name": "[variables('nicName1')]",
           "location": "[resourceGroup().location]",
@@ -276,7 +273,7 @@ Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemein
 9. Fügen Sie den separaten virtuellen Computer in dem gleichen Netzwerk wie die Skalierungsgruppe hinzu.
 
         {
-          "apiVersion": "[variables('apiVersion')]",
+          "apiVersion": "2016-03-30",
           "type": "Microsoft.Compute/virtualMachines",
           "name": "[parameters('vmName')]",
           "location": "[resourceGroup().location]",
@@ -302,7 +299,7 @@ Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemein
               "osDisk": {
                 "name": "osdisk1",
                 "vhd": {
-                  "uri":  "[concat('https://',parameters('resourcePrefix'),'saa.blob.core.windows.net/vhds/',parameters('resourcePrefix'),'osdisk1.vhd')]"
+                  "uri":  "[concat('https://',parameters('resourcePrefix'),'sa.blob.core.windows.net/vhds/',parameters('resourcePrefix'),'osdisk1.vhd')]"
                 },
                 "caching": "ReadWrite",
                 "createOption": "FromImage"        
@@ -322,7 +319,7 @@ Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemein
 
             {
               "type": "Microsoft.Compute/virtualMachineScaleSets",
-              "apiVersion": "[variables('apiVersion')]",
+              "apiVersion": "2016-03-30",
               "name": "[parameters('vmSSName')]",
               "location": "[resourceGroup().location]",
               "dependsOn": [
@@ -343,11 +340,11 @@ Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemein
                   "storageProfile": {
                     "osDisk": {
                       "vhdContainers": [
-                        "[concat('https://', parameters('resourcePrefix'), 'saa.blob.core.windows.net/vmss')]",
-                        "[concat('https://', parameters('resourcePrefix'), 'sag.blob.core.windows.net/vmss')]",
-                        "[concat('https://', parameters('resourcePrefix'), 'sam.blob.core.windows.net/vmss')]",
-                        "[concat('https://', parameters('resourcePrefix'), 'sas.blob.core.windows.net/vmss')]",
-                        "[concat('https://', parameters('resourcePrefix'), 'say.blob.core.windows.net/vmss')]"
+                        "[concat('https://', parameters('resourcePrefix'), 'a.blob.core.windows.net/vmss')]",
+                        "[concat('https://', parameters('resourcePrefix'), 'g.blob.core.windows.net/vmss')]",
+                        "[concat('https://', parameters('resourcePrefix'), 'm.blob.core.windows.net/vmss')]",
+                        "[concat('https://', parameters('resourcePrefix'), 's.blob.core.windows.net/vmss')]",
+                        "[concat('https://', parameters('resourcePrefix'), 'y.blob.core.windows.net/vmss')]"
                       ],
                       "name": "vmssosdisk",
                       "caching": "ReadOnly",
@@ -410,7 +407,7 @@ Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemein
                           },
                           "protectedSettings": {
                             "storageAccountName": "[variables('diagnosticsStorageAccountName')]",
-                            "storageAccountKey": "[listkeys(variables('accountid'), variables('apiVersion')).key1]",
+                            "storageAccountKey": "[listkeys(variables('accountid'), '2015-06-15').key1]",
                             "storageAccountEndPoint": "https://core.windows.net"
                           }
                         }
@@ -472,7 +469,7 @@ Mit der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemein
     In diesem Tutorial lauten die wichtigen Werte wie folgt:
 
     - **metricName**: Entspricht dem Leistungsindikator, den wir in der Variablen „wadperfcounter“ definiert haben. Anhand dieser Variablen führt die Diagnose-Erweiterung die Erfassung für den Indikator **Processor(\_Total)\\% Processor Time** durch.
-    - **metricResourceUri**: Dies ist der Ressourcenbezeichner der VM-Skalierungsgruppe.
+- **metricResourceUri**: Dies ist der Ressourcenbezeichner der VM-Skalierungsgruppe.
     - **timeGrain**: Dies ist die Granularität der erfassten Metriken. In dieser Vorlage ist sie auf eine Minute festgelegt.
     - **statistic**: Hiermit wird bestimmt, wie die Metriken für die Durchführung der automatischen Skalierungsaktion kombiniert werden. Mögliche Werte sind: Average, Min, Max. In dieser Vorlage suchen wir nach der durchschnittlichen CPU-Gesamtnutzung für die virtuellen Computer der Skalierungsgruppe.
     - **timeWindow**: Dies ist der Zeitbereich, in dem Instanzdaten gesammelt werden. Der Wert muss zwischen fünf Minuten und zwölf Stunden liegen.
@@ -532,7 +529,7 @@ Wenn Sie die EINGABETASTE drücken, werden Sie aufgefordert, Werte für die von 
 
 Es dauert ungefähr 15 Minuten, bis alle Ressourcen bereitgestellt wurden.
 
->[AZURE.NOTE] Sie können zum Bereitstellen der Ressourcen auch das Portal verwenden. Nutzen Sie dazu diesen Link: „https://portal.azure.com/#create/Microsoft.Template/uri/<link to VM Scale Set JSON template>“
+>[AZURE.NOTE] Sie können zum Bereitstellen der Ressourcen auch das Portal verwenden. Verwenden Sie dazu den folgenden Link: „https://portal.azure.com/#create/Microsoft.Template/uri/<link to VM Scale Set JSON template>“
 
 ## Schritt 6: Überwachen von Ressourcen
 
@@ -568,6 +565,8 @@ Wenn Sie die Ressourcengruppe beibehalten möchten, können Sie auch nur die Ska
 ## Nächste Schritte
 
 - Verwalten Sie die Skalierungsgruppe, die Sie gerade erstellt haben, mithilfe der Informationen unter [Verwalten virtueller Computer in einer VM-Skalierungsgruppe](virtual-machine-scale-sets-windows-manage.md).
-- Erfahren Sie mehr über die vertikale Skalierung, indem Sie [Vertikale automatische Skalierung mit VM-Skalierungsgruppen](virtual-machine-scale-sets-vertical-scale-reprovision.md) lesen.
+- Informieren Sie sich unter [Vertikale automatische Skalierung mit VM-Skalierungsgruppen](virtual-machine-scale-sets-vertical-scale-reprovision.md) ausführlicher über die vertikale Skalierung.
+- Beispiele für Überwachungsfeatures von Azure Insights finden Sie unter [Azure Insights – PowerShell-Schnellstartbeispiele](../azure-portal/insights-powershell-samples.md).
+- Informationen zu Benachrichtigungsfeatures finden Sie unter [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Insights](../azure-portal/insights-autoscale-to-webhook-email.md) sowie unter [Verwenden von Überwachungsprotokollen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Insights](../azure-portal/insights-auditlog-to-webhook-email.md).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

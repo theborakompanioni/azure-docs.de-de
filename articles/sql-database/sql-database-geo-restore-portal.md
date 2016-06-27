@@ -21,12 +21,11 @@
 
 
 > [AZURE.SELECTOR]
+- [Übersicht](sql-database-geo-restore.md)
 - [Azure-Portal](sql-database-geo-restore-portal.md)
 - [PowerShell](sql-database-geo-restore-powershell.md)
 
 In diesem Artikel wird erläutert, wie Sie Ihre Datenbank mit der Geowiederherstellung über das Azure-Portal auf einem neuen Server wiederherstellen können.
-
-Die [Geowiederherstellung](sql-database-geo-restore.md) bietet die Möglichkeit der Wiederherstellung einer Datenbank aus einer georedundanten Sicherung, um eine neue Datenbank zu erstellen. Die Datenbank kann auf einem beliebigen Server in jeder Azure-Region erstellt werden. Da die Quelle eine georedundante Sicherung ist, kann mit ihr eine Datenbank selbst dann wiederhergestellt werden, wenn sie aufgrund eines Ausfalls nicht mehr verfügbar ist. Die Geowiederherstellung ist für alle Diensttarife ohne zusätzliche Kosten automatisch aktiviert.
 
 ## Auswählen der wiederherzustellenden Datenbank
 
@@ -34,7 +33,7 @@ Gehen Sie zum Wiederherstellen einer Datenbank im Azure-Portal wie folgt vor:
 
 1.	Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 2.  Wählen Sie auf der linken Bildschirmseite **Neu** > **Daten und Speicher** > **SQL-Datenbank** aus.
-3.  Wählen Sie **Sicherung** als Quelle und dann die georedundante Sicherung aus, die wiederhergestellt werden soll.
+3.  Wählen Sie als Quelle die Option **Sicherung** und anschließend die georedundante Sicherung aus, die zur Wiederherstellung verwendet werden soll.
 
     ![Wiederherstellen einer Azure SQL-Datenbank](./media/sql-database-geo-restore-portal/geo-restore.png)
 
@@ -50,6 +49,6 @@ Gehen Sie zum Wiederherstellen einer Datenbank im Azure-Portal wie folgt vor:
 
 - [Geografische Wiederherstellung](sql-database-geo-restore.md)
 - [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-- [SQL-Datenbankdokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
+- [SQL-Datenbank-Dokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

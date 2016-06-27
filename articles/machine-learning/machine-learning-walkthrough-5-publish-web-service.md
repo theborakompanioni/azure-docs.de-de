@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/09/2016"
+	ms.date="06/10/2016"
 	ms.author="garye"/>
 
 
@@ -104,7 +104,11 @@ Sie können den Dienst konfigurieren, indem Sie auf die Registerkarte **KONFIGUR
 ![Konfigurieren des Webdiensts][5]
 
 ## Testen des Webdiensts
-Klicken Sie auf der Seite **DASHBOARD** unter **Default Endpoint** auf die Schaltfläche **Test**. Ein Dialogfeld wird geöffnet, in dem Sie nach den Eingabedaten für den Dienst gefragt werden. Dies sind die gleichen Spalten, die im Originaldataset „German Credit Risk“ angezeigt wurden.
+Klicken Sie auf der Seite **DASHBOARD** unter **Default Endpoint** auf die Schaltfläche **Test**.
+
+![Testen des Webdiensts][7]
+
+Ein Dialogfeld wird geöffnet, in dem Sie nach den Eingabedaten für den Dienst gefragt werden. Dies sind die gleichen Spalten, die im Originaldataset „German Credit Risk“ angezeigt wurden.
 
 Geben Sie eine Reihe von Daten ein, und klicken Sie auf **OK**.
 
@@ -140,6 +144,7 @@ Weitere Informationen finden Sie unter:
 [4]: ./media/machine-learning-walkthrough-5-publish-web-service/publish4.png
 [5]: ./media/machine-learning-walkthrough-5-publish-web-service/publish5.png
 [6]: ./media/machine-learning-walkthrough-5-publish-web-service/publish6.png
+[7]: ./media/machine-learning-walkthrough-5-publish-web-service/publish7.png
 
 
 <!-- Module References -->
@@ -154,4 +159,4 @@ Weitere Informationen finden Sie unter:
 [two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
 [select-columns]: https://msdn.microsoft.com/de-DE/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -173,7 +173,7 @@ Erstellen Sie eine Konsolenanwendung, und ersetzen Sie den Inhalt von Program.cs
             Console.WriteLine("Creation of pool " + epool.ElasticPool.Name + ": " + epool.Status.ToString());
 
             // Open the portal so we can see our operations in action
-            string portalPage = @"https://ms.portal.azure.com/#resource/subscriptions/"
+            string portalPage = @"https://portal.azure.com/#resource/subscriptions/"
                 + subscriptionId
                 + @"/resourceGroups/"
                 + resourceGroupName
@@ -432,4 +432,4 @@ Erstellen Sie eine Konsolenanwendung, und ersetzen Sie den Inhalt von Program.cs
 - [Wo sollte ein Pool für elastische Datenbanken verwendet werden?](sql-database-elastic-pool-guidance.md)
 - Unter [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md) finden Sie Informationen zur Verwendung elastischer Datenbanktools für die horizontale Skalierung, zum Verschieben von Daten, für die Abfrage oder zum Erstellen von Transaktionen.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/06/2016"
+	ms.date="06/09/2016"
 	ms.author="nitinme"/>
 
 
@@ -130,7 +130,11 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 
 	Sie können auch eigene Artefakte erstellen, indem Sie auf das in der Abbildung oben hervorgehobene **+**-Symbol klicken.
 
-4. Fügen Sie dem Projekt Bibliotheken hinzu. Klicken Sie zum Hinzufügen einer Bibliothek in der Projektstruktur mit der rechten Maustaste auf den Projektnamen, und klicken Sie dann auf **Open Module Settings** (Moduleinstellungen öffnen). Klicken Sie im Dialogfeld **Projektstruktur** im linken Bereich auf **Bibliotheken**, und klicken Sie dann auf das Symbol „(+)“ und die Option **From Maven** (Von Maven).
+4. Klicken Sie im Dialogfeld **Project Structure** auf **Project**. Wenn **Project SDK** auf 1.8 festgelegt ist, stellen Sie sicher, dass **Project language level** auf **7 - Diamonds, ARM, multi-catch, etc** festgelegt ist.
+
+	![Festlegen der Sprache auf Projektebene](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/set-project-language-level.png)
+
+4. Fügen Sie dem Projekt Bibliotheken hinzu. Klicken Sie zum Hinzufügen einer Bibliothek in der Projektstruktur mit der rechten Maustaste auf den Projektnamen, und klicken Sie dann auf **Open Module Settings** (Moduleinstellungen öffnen). Klicken Sie im Dialogfeld **Projektstruktur** im linken Bereich auf **Bibliotheken**, und klicken Sie dann auf das Symbol „(+)“ und die Option **From Maven** (Aus Maven).
 
 	![Bibliothek hinzufügen](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/add-library.png)
 
@@ -150,7 +154,7 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 
 	Fügen Sie diese Dateien dem Projekt hinzu, indem Sie sie in den Ordner **/src** der Projektstruktur kopieren, z.B. `<your project directory>\src`.
 
-6. Aktualisieren Sie die Datei `core-site.xml`, um die folgenden Änderungen vorzunehmen:
+6. Aktualisieren Sie die Datei `core-site.xml`, um die folgenden Änderungen vorzunehmen.
 
 	1. `core-site.xml` enthält den verschlüsselten Schlüssel für das Speicherkonto, das dem Cluster zugeordnet ist. Ersetzen Sie in der Datei `core-site.xml`, die Sie dem Projekt hinzugefügt haben, den verschlüsselten Schlüssel durch den tatsächlichen Speicherschlüssel, der dem Standardspeicherkonto zugeordnet ist. Weitere Informationen finden Sie unter [Verwalten von Speicherzugriffsschlüsseln](..\storage\storage-create-storage-account.md#manage-your-storage-account).
 
@@ -178,7 +182,7 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 
 	3. Speichern Sie die Datei.
 
-7. Fügen Sie die Hauptklasse (Main) für Ihre Anwendung hinzu. Klicken Sie im **Projektexplorer** mit der rechten Maustaste auf **src**, zeigen Sie auf **New** (Neu), und klicken Sie dann auf **Scala class** (Scala-Klasse).
+7. Fügen Sie die Hauptklasse (Main) für Ihre Anwendung hinzu. Klicken Sie im **Project Explorer** mit der rechten Maustaste auf **src**, zeigen Sie auf **New** (Neu), und klicken Sie dann auf **Scala class** (Scala-Klasse).
 
 	![Hinzufügen von Quellcode](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png)
 
@@ -203,7 +207,7 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 		  }
 		}
 
-10. Wiederholen Sie die obigen Schritte 7 und 8, um ein neues Scala-Objekt mit dem Namen `SparkSample` hinzuzufügen. Fügen Sie dieser Klasse den folgenden Code hinzu. Dieser Code liest die Daten aus der Datei „HVAC.csv“ (die für alle HDInsight Spark-Cluster verfügbar ist), ruft die Zeilen ab, die nur eine Ziffer in der siebten Spalte der CSV-Datei enthalten, und schreibt die Ausgabe in **/HVACOut** unter dem Standardspeichercontainer für den Cluster.
+10. Wiederholen Sie die obigen Schritte 8 und 9, um ein neues Scala-Objekt mit dem Namen `SparkSample` hinzuzufügen. Fügen Sie dieser Klasse den folgenden Code hinzu. Dieser Code liest die Daten aus der Datei „HVAC.csv“ (die für alle HDInsight Spark-Cluster verfügbar ist), ruft die Zeilen ab, die nur eine Ziffer in der siebten Spalte der CSV-Datei enthalten, und schreibt die Ausgabe in **/HVACOut** unter dem Standardspeichercontainer für den Cluster.
 
 		import org.apache.spark.SparkContext
 	
@@ -223,7 +227,7 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 		
 		}
 
-11. Wiederholen Sie die obigen Schritte 7 und 8, um eine neue Klasse mit dem Namen `RemoteClusterDebugging` hinzuzufügen. Mit dieser Klasse wird das Spark-Testframework implementiert, das zum Debuggen von Anwendungen verwendet wird. Fügen Sie der `RemoteClusterDebugging`-Klasse den folgenden Code hinzu.
+11. Wiederholen Sie die obigen Schritte 8 und 9, um eine neue Klasse mit dem Namen `RemoteClusterDebugging` hinzuzufügen. Mit dieser Klasse wird das Spark-Testframework implementiert, das zum Debuggen von Anwendungen verwendet wird. Fügen Sie der `RemoteClusterDebugging`-Klasse den folgenden Code hinzu.
 
 		import org.apache.spark.{SparkConf, SparkContext}
 		import org.scalatest.FunSuite
@@ -338,6 +342,6 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 
-* [Track and debug jobs running on an Apache Spark cluster in HDInsight](hdinsight-apache-spark-job-debugging.md) (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)
+* [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -3,8 +3,8 @@
     description="Dieser Artikel beschreibt das Integrieren von Azure Virtual Machine-Warnungen in Azure Automation-Runbooks und die automatische Problembehandlung."
     services="automation"
     documentationCenter=""
-    authors="csand-msft"
-    manager="stevenka"
+    authors="mgoedtel"
+    manager="jwhit"
     editor="tysonn" />    
 <tags
     ms.service="automation"
@@ -12,10 +12,10 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="infrastructure-services"
-    ms.date="04/24/2016"
+    ms.date="06/14/2016"
     ms.author="csand;magoedte" />
 
-# Azure Automation-Lösung – Wartung nach Azure-VM-Warnungen
+# Azure Automation-Szenario – Wartung nach Azure-VM-Warnungen
 
 In Azure Automation und Azure Virtual Machines wurde ein neues Feature veröffentlicht, mit dem Sie VM-Warnungen für die Ausführung von Automation-Runbooks konfigurieren können. Diese neue Funktion ermöglicht es Ihnen, als Reaktion auf VM-Warnungen automatisch eine Standardwartung durchzuführen, beispielsweise das Neustarten oder Beenden des virtuellen Computers.
 
@@ -172,4 +172,4 @@ Bei der Konfiguration einer Warnung auf einem virtuellen Azure-Computer haben Si
 - Informationen über die ersten Schritte mit PowerShell-Workflow-Runbooks finden Sie unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md).
 - Informationen über die verschiedenen Runbooktypen, ihre Vorteile und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

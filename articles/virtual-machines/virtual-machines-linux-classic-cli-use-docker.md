@@ -150,7 +150,9 @@ Der Docker-Daemon auf dem Host ist so konfiguriert, dass er Clientverbindungen a
 
 ## Nächste Schritte
 
-Sie sind nun bereit, das [Docker-Benutzerhandbuch] und Ihren virtuellen Docker-Computer zu verwenden. Informationen zum Erstellen eines Docker-fähigen virtuellen Computers im neuen Portal finden Sie unter [Gewusst wie: Verwenden der Docker-VM-Erweiterung mit dem Portal].
+* Sie sind nun bereit, das [Docker-Benutzerhandbuch] und Ihren virtuellen Docker-Computer zu verwenden. Informationen zum Erstellen eines Docker-fähigen virtuellen Computers im neuen Portal finden Sie unter [Gewusst wie: Verwenden der Docker-VM-Erweiterung mit dem Portal].
+
+* Die Azure Docker-VM-Erweiterung unterstützt auch Docker Compose. Diese Lösung verwendet eine deklarative YAML-Datei, um eine auf einem Entwicklermodell basierende Anwendung umgebungsübergreifend zu machen und eine einheitliche Bereitstellung zu generieren. Weitere Informationen finden Sie unter [Erste Schritte mit Docker und Compose zum Definieren und Ausführen einer Anwendung mit mehreren Containern auf einem virtuellen Azure-Computer].
 
 <!--Anchors-->
 [Subheading 1]: #subheading-1
@@ -172,5 +174,6 @@ Sie sind nun bereit, das [Docker-Benutzerhandbuch] und Ihren virtuellen Docker-C
 
 [Docker-Benutzerhandbuch]: https://docs.docker.com/userguide/
  
+[Erste Schritte mit Docker und Compose zum Definieren und Ausführen einer Anwendung mit mehreren Containern auf einem virtuellen Azure-Computer]: virtual-machines-linux-docker-compose-quickstart.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -1,0 +1,190 @@
+<properties
+	pageTitle="Eingehende Diagnose für Web-Apps und Dienste mit Application Insights | Microsoft Azure"
+	description="Application Insights im DevOps-Zyklus"
+	services="application-insights"
+    documentationCenter=""
+	authors="alancameronwills"
+	manager="douge"/>
+
+<tags
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="multiple"
+	ms.topic="article" 
+	ms.date="06/09/2016"
+	ms.author="awills"/>
+
+# Eingehende Diagnose für Web-Apps und Dienste mit Application Insights
+
+## Wofür benötigen Sie Application Insights?
+
+Application Insights überwacht Ihre Web-App während der Ausführung. Der Dienst informiert Sie über Fehler und Leistungsprobleme und hilft Ihnen dabei, zu analysieren, wie Kunden Ihre App nutzen. Der Dienst funktioniert mit Apps, die auf unterschiedlichen Plattformen ausgeführt werden (ASP.NET, J2EE, Node.js usw.) und wird entweder in der Cloud oder lokal gehostet.
+
+![](./media/app-insights-devops/010.png)
+
+Es ist von essenzieller Bedeutung, eine moderne Anwendung während der Ausführung zu überwachen. Am wichtigsten ist natürlich, dass Sie Fehler erkennen, bevor die meisten Ihrer Kunden sie entdecken. Sie möchten auch Leistungsprobleme ermitteln und beheben, die zwar keine katastrophalen Folgen haben, aber Ihre Anwendung verlangsamen oder andere Unannehmlichkeiten für Ihre Benutzer verursachen. Und wenn das System zu Ihrer Zufriedenheit ausgeführt wird, möchten Sie wissen, wie die Benutzer die Anwendung nutzen: Verwenden sie die neuesten Features? Sind sie damit erfolgreich?
+
+Moderne Webanwendungen werden in einem Zyklus kontinuierlicher Bereitstellung entwickelt: Sie veröffentlichen ein neues Feature oder eine Verbesserung. Sie beobachten, wie gut das Feature oder die Verbesserung für die Benutzer funktioniert. Sie planen den nächsten Entwicklungsschritt basierend auf diesen Informationen. Die Beobachtungsphase ist ein wichtiger Bestandteil dieses Zyklus. Application Insights stellt Tools bereit, mit denen Sie die Leistung und Nutzung einer Webanwendung überwachen können.
+
+Der wichtigste Aspekt dabei ist die Fehlerermittlung und -diagnose. Wenn bei einer Anwendung ein Fehler auftritt, bedeutet dies zumeist Umsatzverlust. Die wichtigste Funktion eines Überwachungsframeworks ist es daher, Fehler zuverlässig zu erkennen, Sie sofort zu benachrichtigen und Ihnen die Informationen bereitzustellen, die Sie zur Diagnose des Problems benötigen. Genau das macht Application Insights.
+
+### Wo kommen Fehler her?
+
+Fehler in Websystemen entstehen in der Regel aufgrund von Konfigurationsproblemen oder unzureichenden Interaktionen zwischen den vielen beteiligten Komponenten. Die erste Aufgabe beim Beheben von Problemen mit Livewebsites ist es daher, den Ursprung des Fehlers zu identifizieren: Welche Komponente oder Beziehung ist die Ursache?
+
+Einige von uns (die mit den grauen Haaren) können sich noch an einfachere Zeiten erinnern, als ein Computerprogramm einfach auf einem Computer ausgeführt wurde. Damals testeten die Entwickler ein Programm sehr gründlich, bevor es ausgeliefert wurde. Und nach der Auslieferung haben sie kaum jemals wieder über das Programm nachgedacht. Die Benutzer mussten sich mit den verbleibenden Fehlern einfach jahrelang abfinden.
+
+Heute ist das ganz anders. Ihre App kann auf einer Unmenge verschiedener Geräte ausgeführt werden, und es kann schwierig sein, das exakt gleiche Verhalten auf jedem Gerät zu gewährleisten. Indem Apps in der Cloud gehostet werden, können Fehler schnell behoben werden. Gleichzeitig unterliegen Apps dadurch einem ständigen Wettbewerb, und die Benutzer erwarten, dass häufig neue Features entwickelt werden.
+
+Unter diesen Umständen sind automatisierte Unittests die einzige Möglichkeit, die Fehleranzahl unter Kontrolle zu halten. Es wäre unmöglich, sämtliche Aspekte bei jeder Bereitstellung erneut manuell zu testen. Unittests sind heute ein alltäglich Teil des Buildprozesses. Tools wie z.B. Xamarin Test Cloud bieten automatisierte Tests der Benutzeroberfläche in verschiedenen Browserversionen. Durch Einsatz solcher Testsysteme hoffen wir, die Menge an Fehlern in einer App auf ein Minimum zu reduzieren.
+
+Webanwendungen verfügen in der Regel über viele Livekomponenten: Zusätzlich zum Client (in einer Browser- oder Geräte-App) und dem Webserver besteht wahrscheinlich ein hoher Verarbeitungsbedarf im Back-End – möglicherweise eine Komponentenpipeline oder verschiedene voneinander unabhängige, aber ineinandergreifende Bestandteile. Wahrscheinlich können Sie viele dieser Bestandteile nicht selbst steuern, da es sich um externe Dienste handelt, die Sie benötigen, aber nicht kontrollieren können.
+
+In solchen Konfigurationen kann es schwierig und unwirtschaftlich sein, jeden möglichen Fehlermodus vorherzusehen oder zu testen – das kann nur im Livesystem selbst erfolgen.
+
+### Fragen...
+
+Beim Entwickeln eines Websystems stellen sich folgende Fragen:
+
+* Stürzt meine App ab? 
+* Was passiert genau? Wenn bei einer Anforderung ein Fehler aufgetreten ist, möchte ich wissen, wie es dazu gekommen ist. Wir benötigen eine Ereignisablaufverfolgung.
+* Ist meine App schnell genug? Wie lange dauert die Antwort auf typische Anforderungen?
+* Kann der Server die Last bewältigen? Wenn die Anforderungsrate steigt, bleibt die Antwortzeit gleich?
+* Wie reaktionsschnell sind die Abhängigkeiten – REST-APIs, Datenbanken und weitere Komponenten, die meine App aufruft? Insbesondere: Wenn das System langsam reagiert, liegt das an meiner Komponente oder daran, dass ein anderes Element langsam antwortet?
+* Ist meine App betriebsbereit oder ausgefallen? Ist sie von überall auf der Welt aus zugänglich? Ich muss informiert werden, wenn sie ausfällt.
+* Was ist die Ursache? Liegt der Fehler in meiner Komponente oder einer Abhängigkeit? Liegt ein Kommunikationsproblem vor?
+* Wie viele Benutzer sind betroffen? Wenn mehrere Probleme zu lösen sind – welches ist das wichtigste?
+
+
+
+## Was ist Application Insights?
+
+
+![](./media/app-insights-devops/020.png)
+
+
+1. Application Insights instrumentiert Ihre App und sendet während der Ausführung Telemetriedaten über Ihre App. Sie können das Application Insights SDK in die App integrieren oder die Instrumentierung zur Laufzeit anwenden. Die erste Methode ist flexibler, weil Sie den regulären Modulen Ihre eigene Telemetrie hinzufügen können.
+2. Die Telemetriedaten werden an das Application Insights-Portal gesendet und dort gespeichert und verarbeitet. (Application Insights wird zwar in Microsoft Azure gehostet, kann aber jede Web-App überwachen, nicht nur Azure-Apps.)
+3. Die Telemetriedaten werden in Form von Diagrammen und Tabellen zu Ereignissen angezeigt.
+
+Es gibt zwei Arten von Telemetriedaten: aggregierte Daten und unformatierte Instanzdaten.
+
+* Instanzdaten können z.B. einen Bericht zu einer Anforderung umfassen, die von Ihrer Web-App empfangen wurde. Sie können die Details zu einer Anforderung über das Suchtool im Application Insights-Portal suchen und überprüfen. Die Instanz umfasst beispielsweise folgende Daten: Antwortzeit der App nach der Anforderung, angeforderte URL, ungefährer Standort des Clients sowie weitere Daten.
+* Aggregierte Daten enthalten z.B. die Anzahl von Ereignissen pro Zeiteinheit, sodass Sie die Anforderungsrate mit den Antwortzeiten vergleichen können. Zu diesen Daten gehören auch Durchschnittswerte von Metriken, wie etwa Antwortzeiten nach Anforderungen.
+
+Die Daten lassen sich in folgende Hauptkategorien unterteilen:
+
+* Anforderungen an Ihre App (üblicherweise HTTP-Anforderungen) mit Daten zu URL, Antwortzeit und Meldung zu Erfolg bzw. Fehler.
+* Abhängigkeiten: REST- und SQL-Aufrufe Ihrer App, ebenfalls mit URI, Antwortzeiten und Erfolgsmeldung.
+* Ausnahme, einschließlich Stapelüberwachungen.
+* Seitenzugriffsdaten, die aus den Browsern der Benutzer stammen.
+* Metriken wie z.B. Leistungsindikatoren sowie von Ihnen selbst erstellte Metriken. 
+* Benutzerdefinierte Ereignisse, die Sie zum Nachverfolgen von geschäftlichen Ereignissen verwenden können.
+* Protokollablaufverfolgungen, die zum Debuggen verwendet werden.
+
+
+## Fallstudie: Real Madrid CF
+
+Der Webdienst von [Real Madrid](http://www.realmadrid.com/) wird von 450 Millionen Fans auf der ganzen Welt genutzt. Fans greifen sowohl über Webbrowser als auch über die mobilen Apps des Vereins auf die Website zu. Sie können dort nicht nur Eintrittskarten kaufen, sondern auch auf Informationen und Videoclips zu Ergebnissen, Spielern und den nächsten Begegnungen zugreifen. Sie können mithilfe von Filtern z.B. nach der Anzahl der erzielten Tore suchen. Es gibt auch Links zu sozialen Medien. Das Benutzererlebnis ist hochgradig personalisiert und als bidirektionale Kommunikation gestaltet, um die Fans einzubeziehen.
+
+Die Lösung [ist ein System aus Diensten und Anwendungen in Microsoft Azure](https://www.microsoft.com/de-DE/enterprise/microsoftcloud/realmadrid.aspx). Skalierbarkeit ist eine wesentliche Voraussetzung: Der Datenverkehr variiert stark und kann vor, während und nach Spielen sehr hohe Volumen erreichen.
+
+Für Real Madrid ist es von entscheidender Bedeutung, die Leistung des Systems zu überwachen. Visual Studio Application Insights bietet einen umfassenden Überblick über das gesamte System, um eine zuverlässige und leistungsstarke Dienstausführung sicherzustellen.
+
+Der Verein erhält auch detaillierte Erkenntnisse über seine Fans: wo leben sie (nur 3% in Spanien), für welche Spieler, bisherigen Ergebnisse und bevorstehende Begegnungen interessieren sie sich, wie reagieren sie auf Spielergebnisse?
+
+Der Großteil dieser Telemetriedaten wird automatisch ohne zusätzlichen Code erfasst – dadurch wurde die Lösung wesentlich vereinfacht und die operative Komplexität reduziert. Bei Real Madrid verarbeitet Application Insights jeden Monat 3,8 Milliarden Telemetriedaten.
+
+Real Madrid verwendet das Power BI-Modul zur Anzeige dieser Telemetriedaten.
+
+
+![](./media/app-insights-devops/080.png)
+
+## Intelligente Erkennung
+
+Die [intelligente Diagnose](app-insights-nrt-proactive-diagnostics.md) ist ein neues Feature. Application Insights erkennt automatisch eine ungewöhnliche Zunahme der Fehlerraten in Ihrer App und informiert Sie darüber, ohne dass Sie spezielle Konfigurationseinstellungen vornehmen müssen. Der Dienst ist intelligent genug, gelegentliche Fehler sowie eine Fehlerzunahme zu ignorieren, die einfach einer Zunahme an Anforderungen entspricht. Wenn z.B. in einem Dienst, von dem Ihre App abhängig ist, ein Fehler auftritt oder der neue, von Ihnen gerade bereitgestellte Build nicht gut funktioniert, werden Sie per E-Mail darüber informiert. (Mithilfe von Webhooks können Sie andere Apps auslösen.)
+
+Ein weiterer Aspekt: Dieses Feature führt täglich eine detaillierte Analyse Ihrer Telemetrie durch und sucht nach ungewöhnlichen Leistungsmustern, die schwer zu erkennen sind. Das Feature kann beispielsweise unzureichende Leistungsdaten in Zusammenhang mit einer bestimmten geografischen Region oder einer bestimmten Browserversion finden.
+
+In beiden Fällen informiert Sie die Warnung nicht nur über die gefundenen Symptome, sondern stellt Ihnen auch Daten zur Verfügung, die Sie für die Diagnose des Problems benötigen, wie etwa relevante Ausnahmeberichte.
+
+![](./media/app-insights-devops/030.png)
+
+Ein Erfahrungsbericht von Samtec: „Als wir kürzlich einige Features umstellten, fanden wir eine nicht ausreichend skalierte Datenbank, die an die Grenzen ihrer Ressourcen gelangt war und Timeouts verursachte. Als wir das Problem untersuchten, kamen buchstäblich gleichzeitig proaktive Warnungen herein – nahezu in Echtzeit, wie angekündigt. Dank dieser Warnung, zusammen mit den Warnungen der Azure-Plattform, konnten wir das Problem fast sofort beheben. Gesamtausfallzeit: keine 10 Minuten.“
+
+## Live Metrics Stream
+
+Die Bereitstellung des neuesten Builds kann eine nervenaufreibende Angelegenheit sein. Wenn es Probleme gibt, sollten Sie sofort darüber Bescheid wissen, damit Sie die Bereitstellung ggf. rückgängig machen können. Live Metrics Stream zeigt Ihnen wichtige Metriken innerhalb von etwa einer Sekunde an.
+
+![](./media/app-insights-devops/040.png)
+
+## Anwendungszuordnung
+
+Die Anwendungszuordnung ermittelt automatisch Ihre Anwendungstopologie und legt die Leistungsinformationen darüber, sodass Sie Leistungsengpässe und problematische Datenflüsse in Ihrer gesamten verteilten Umgebung leicht identifizieren können. Sie ermöglicht die Ermittlung von Anwendungsabhängigkeiten in Azure-Diensten. Sie können das Problem untersuchen und herausfinden, ob es durch Code oder Abhängigkeiten entsteht. Über die gleiche Benutzeroberfläche können Sie eine Komponente zur Diagnose aufrufen. Ein Beispiel: Bei Ihrer Anwendung tritt aufgrund eines Leistungsabfalls in der SQL-Schicht ein Fehler auf. Mit der Anwendungszuordnung können Sie diesen Fehler anzeigen und direkt den SQL-Indexratgeber oder Query Insights aufrufen.
+
+![](./media/app-insights-devops/050.png)
+
+## Application Insights Analytics
+
+Mit [Analytics](app-insights-analytics.md) können Sie beliebige Abfragen in einer leistungsfähigen SQL-ähnlichen Sprache schreiben. Die Diagnose über den gesamten App-Stapel hinweg wird erheblich vereinfacht, da verschiedene Perspektiven miteinander verknüpft werden und Sie die richtigen Fragen stellen können, um die Leistung des Diensts mit Geschäftsmetriken und Kundenzufriedenheit zu korrelieren.
+
+Sie können alle im Portal gespeicherten Telemetrieinstanz- und Metrikrohdaten abfragen. Die Sprache enthält filter-, join-, aggregation-Operationen sowie weitere Vorgänge. Sie können Felder berechnen und statistische Analysen durchführen. Die Daten können in tabellarischer oder grafischer Form visualisiert werden.
+
+![](./media/app-insights-devops/025.png)
+
+Folgende Vorgänge werden erheblich vereinfacht:
+
+* Segmentieren Sie die Anforderungsleistungsdaten Ihrer Anwendung nach Kundenebene, um mehr über das Kundenerlebnis mit Ihrer Anwendung zu erfahren.
+* Suchen Sie während der Überprüfung der Livewebsite nach bestimmten Fehlercodes oder benutzerdefinierten Ereignisnamen.
+* Zeigen Sie Details zur App-Nutzung durch bestimmte Kunden an, um herauszufinden, wie Features abgerufen und angenommen werden.
+* Verfolgen Sie Sitzungen und Antwortzeiten für bestimmte Benutzer, um den Support- und Betriebsteams zu ermöglichen, den Kunden sofortigen Support zu bieten.
+* Ermitteln Sie häufig genutzte App-Features, um Fragen zur Priorisierung von Features beantworten zu können.
+
+Ein Erfahrungsbericht von DNN: „Application Insights hat uns den fehlenden Teil der Formel geliefert – jetzt können wir Daten nach Bedarf kombinieren, sortieren, abfragen und filtern. Unser Team konnte seine Fähigkeiten und Erfahrungen in Bezug auf das Suchen von Daten optimal in diese leistungsstarke Abfragesprache einbringen – so konnten wir Erkenntnisse gewinnen und Probleme lösen, von denen wir nicht einmal wussten, dass wir sie hatten. Aus Fragen, die mit *,Ich frage mich, ob...‘* beginnen, entstehen viele interessante Antworten.“
+
+## Integration von Entwicklungstools 
+
+### Konfigurieren von Application Insights
+
+Visual Studio und Eclipse bieten Tools, mit denen Sie die richtigen SDK-Pakete für die von Ihnen entwickelten Projekte konfigurieren können. Wenn Sie ein neues Projekt erstellen, haben Sie die Option, Application Insights hinzuzufügen.
+
+Wenn Sie ein Ablaufprotokollierungsframework wie Log4N, NLog oder System.Diagnostics.Trace verwenden, haben Sie die Möglichkeit, die Protokolle zusammen mit den anderen Telemetriedaten an Application Insights zu senden, damit Sie die Ablaufverfolgungen problemlos mit Anforderungen, Abhängigkeitsaufrufen und Ausnahmen korrelieren können.
+
+### Suchen nach Telemetriedaten in Visual Studio
+
+Beim Entwickeln und Debuggen eines Features können Sie die Telemetrie direkt in Visual Studio anzeigen und durchsuchen. Dabei verwenden Sie die gleichen Suchfunktionen wie im Webportal.
+
+Und wenn Application Insights eine Ausnahme protokolliert, können Sie den Datenpunkt in Visual Studio anzeigen und direkt zum entsprechenden Code springen.
+
+![](./media/app-insights-devops/060.png)
+
+Während des Debuggens haben Sie die Option, die Telemetrie auf dem Entwicklungscomputer zu behalten und sie in Visual Studio anzuzeigen, ohne sie an das Portal zu senden. Dadurch vermeiden Sie beim Debuggen eventuelle Verwechslungen mit Produktionstelemetriedaten.
+
+### Erstellen von Anmerkungen
+
+Wenn Sie Visual Studio Team Services verwenden, um Ihre App zu erstellen und bereitzustellen, werden in den Diagrammen im Portal Bereitstellungsanmerkungen angezeigt. Wenn Ihre letzte Version sich auf die Metriken ausgewirkt hat, wird dies sehr offensichtlich.
+
+![](./media/app-insights-devops/070.png)
+
+### Arbeitselemente 
+
+Wenn eine Warnung ausgelöst wird, kann Application Insights automatisch ein Arbeitselement in Ihrem Arbeitsüberwachungssystem erstellen (zurzeit nur Visual Studio Team Services).
+
+## Erste Schritte
+
+Die ersten Schritte mit Application Insights sind sehr einfach. Dies sind die wichtigsten Optionen:
+
+* Instrumentieren Sie eine Web-App, die bereits ausgeführt wird. Dadurch können Sie die gesamte integrierte Leistungstelemetrie nutzen. Dies ist für [Java](app-insights-java-live.md)- und [IIS-Server](app-insights-monitor-performance-live-website-now.md)-Apps sowie für [Azure-Web-Apps](app-insights-azure.md) verfügbar.
+* Instrumentieren Sie Ihr Projekt während der Entwicklung. Dies ist für [ASP.NET](app-insights-asp-net.md)- oder [Java](app-insights-java-get-started.md)-Apps sowie für [Node.js](app-insights-nodejs.md) und eine Vielzahl [weiterer Sprachen und Plattformen](app-insights-platforms.md) möglich. 
+* Instrumentieren Sie [beliebige Webseiten](app-insights-javascript.md) durch Hinzufügen eines kurzen Codeausschnitts.
+
+
+## Aber was ist mit...?
+
+* [Datenschutz und Speicher](app-insights-data-retention-privacy.md): Ihre Telemetrie wird auf sicheren Azure-Servern gespeichert.
+* Leistung: Die Auswirkungen sind sehr gering. Die Telemetrie wird in Batches verarbeitet.
+* [Support](app-insights-get-dev-support.md): Profitieren Sie vom Azure-Supportprogramm, von den lebendigen Foren, in denen unsere Entwickler Ihre Fragen beantworten, und wir können Ihnen auch individuelle Hilfe bieten, insbesondere da wir uns noch in der Betaphase befinden.
+* [Preise](app-insights-pricing.md): Sie können mit einer kostenlosen Version beginnen und diese beibehalten, solange Ihre Datenvolumen gering sind.
+
+<!---HONumber=AcomDC_0615_2016-->

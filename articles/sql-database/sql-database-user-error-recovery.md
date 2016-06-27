@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie Sie die Datenbankwiederherstellung nach einem Benutzerfehler, unbeabsichtigter Datenbeschädigungen oder bei einer gelöschten Datenbank mithilfe der Zeitpunktwiederherstellungsfunktion (PITR) von Azure SQL-Datenbank durchführen." 
    services="sql-database" 
    documentationCenter="" 
-   authors="elfisher" 
+   authors="carlrabeler" 
    manager="jhubbard" 
    editor="monicar"/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
    ms.date="05/10/2016"
-   ms.author="elfish"/>
+   ms.author="carlrab"/>
 
 # Wiederherstellen einer Azure-SQL-Datenbank nach einem Benutzerfehler
 
@@ -43,7 +43,7 @@ Durchführen einer Point-in-Time-Wiederherstellung:
 
 Falls eine Datenbank gelöscht wird, bietet Ihnen die Azure-SQL-Datenbank die Möglichkeit, die gelöschte Datenbank zum Zeitpunkt des Löschens wiederherzustellen. Die Azure-SQL-Datenbank speichert die gelöschte Datenbanksicherung während der Aufbewahrungsdauer der Datenbank.
 
-Die Aufbewahrungsdauer einer gelöschten Datenbank wird anhand der Dienstebene der Datenbank bestimmt, während sie vorhanden war, oder der Anzahl der Tage, während denen die Datenbank vorhanden ist, je nachdem, welcher Wert kleiner ist. Weitere Informationen zur Datenbankaufbewahrungsdauer finden Sie unter [Geschäftskontinuität – Überblick](sql-database-business-continuity.md).
+Die Aufbewahrungsdauer einer gelöschten Datenbank wird anhand der Dienstebene der Datenbank bestimmt, während sie vorhanden war, oder der Anzahl der Tage, während denen die Datenbank vorhanden ist, je nachdem, welcher Wert kleiner ist. Weitere Informationen zur Datenbankaufbewahrungsdauer finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
 
 So stellen Sie eine gelöschte Datenbank wieder her
 
@@ -57,4 +57,4 @@ So stellen Sie eine gelöschte Datenbank wieder her
 - [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
 - [SQL-Datenbankdokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/28/2016"
+   ms.date="06/14/2016"
    ms.author="larryfr"/>
 
 # Informationen zur Verwendung von HDInsight unter Linux
@@ -98,7 +98,7 @@ Da dies der Standardspeicher für HDInsight ist, sind für seine Verwendung in d
 
 	hadoop fs -ls /example/data
 
-Bei einigen Befehlen müssen Sie möglicherweise angeben, dass Sie Blobspeicher verwenden. Diesen Befehle können Sie die Zeichenfolge "**WASB://**" voranstellen.
+Bei einigen Befehlen müssen Sie möglicherweise angeben, dass Sie Blobspeicher verwenden. Diesen Befehle können Sie die Zeichenfolge "****WASB://**" voranstellen.
 
 Mit HDInsight können Sie auch mehrere Blobspeicherkonten einem Cluster zuordnen. Für den Zugriff auf Daten in einem nicht standardmäßigen Blobspeicherkonto können Sie das Format **WASB://&lt;container-name>@&lt;Kontoname>.blob.core.windows.net/** verwenden. Der folgende Befehl listet z. B. den Inhalt des Verzeichnisses **/example/data** für den angegebenen Container und das Blobspeicherkonto auf:
 
@@ -257,4 +257,4 @@ Wenn der Cluster bereits eine Version einer Komponente als eigenständige JAR-Da
 * [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
 * [Verwenden von MapReduce-Aufträgen mit HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

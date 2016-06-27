@@ -1,7 +1,7 @@
 
 
 
-Um auf Oracle-Images basierende virtuelle Computer zu erstellen, melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com/) an, klicken Sie auf **Marketplace**, klicken Sie auf **Compute**, und geben Sie dann im Suchfeld **Oracle** ein. Wählen Sie ein Image aus, und folgen Sie den Anweisungen zum Einrichten des Images in Microsoft Azure. Beachten Sie, dass Oracle-Images von Microsoft im [Azure-Portal](https://ms.portal.azure.com/) unter Windows und Oracle-Images von Oracle unter Oracle Linux ausgeführt werden.
+Um auf Oracle-Images basierende virtuelle Computer zu erstellen, melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, klicken Sie auf **Marketplace**, klicken Sie auf **Compute**, und geben Sie dann im Suchfeld **Oracle** ein. Wählen Sie ein Image aus, und folgen Sie den Anweisungen zum Einrichten des Images in Microsoft Azure. Beachten Sie, dass Oracle-Images von Microsoft im [Azure-Portal](https://portal.azure.com/) unter Windows und Oracle-Images von Oracle unter Oracle Linux ausgeführt werden.
 
 ##Images von virtuellen Windows-Computern
 Die folgende Liste enthält die verfügbaren Images virtueller Oracle-Computer, die unter Windows Server in Azure ausgeführt werden. Für diese Images gilt eine nutzungsbasierte Zahlung, was bedeutet, dass Oracle-Lizenzgebühren in der Nutzung dieser Images inbegriffen sind. Microsoft veröffentlicht keine Oracle Database- oder WebLogic-Images im Azure Marketplace mehr. Sie können weiterhin ein eigenes benutzerdefiniertes Image erstellen und das Bring Your Own License-Modell nutzen, um Oracle-Software in Microsoft Azure auszuführen.
@@ -26,4 +26,4 @@ Die folgende Liste enthält die verfügbaren vorkonfigurierten Images virtueller
 
 [Images virtueller Oracle-Computer – verschiedene Überlegungen](#miscellaneous-considerations-for-oracle-virtual-machine-images-new-article)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

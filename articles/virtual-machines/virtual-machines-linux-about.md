@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/10/2016"
+	ms.date="06/15/2016"
 	ms.author="cynthn"/>
 
 #Über virtuelle Linux-Computer in Azure
@@ -38,4 +38,4 @@ Testen Sie einen virtuellen Computer probeweise aus: Erstellen Sie hierfür in n
 
 Da die Tutorials darauf ausgerichtet sind, in wenigen Schritten einen virtuellen Computer zu erstellen, zeigen sie nur eine von mehreren Möglichkeiten auf. Die verschiedenen Tools, die für die Erstellung virtueller Computers zur Verfügung stehen, werden hingegen nicht beschrieben. Eine Übersicht über diese Tools und Links zu Anweisungen finden Sie unter [Verschiedene Möglichkeiten zum Erstellen eines virtuellen Linux-Computers](virtual-machines-linux-creation-choices.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0615_2016-->

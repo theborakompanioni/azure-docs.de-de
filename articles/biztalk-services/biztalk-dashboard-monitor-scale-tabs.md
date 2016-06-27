@@ -32,16 +32,13 @@ Eventuell stehen nicht alle aufgeführten Optionen für alle BizTalk Services-Ed
 <table border="1">
     <tr>
         <td><strong>Tools herunterladen</strong></td>
-
         <td>Laden Sie das BizTalk Services SDK herunter, um die Visual Studio-Projektvorlagen auf Ihrem lokalen Entwicklungscomputer zu speichern. Mithilfe dieser Vorlagen werden die Visual Studio-Projekte <strong>BizTalk Services</strong> (Brücke) und <strong>BizTalk Service Artifacts</strong> (Transformation) erstellt, die in Ihrem BizTalk Service bereitgestellt werden.
         <br/><br/>
 		Unter <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302335">How do I Start Using the Azure BizTalk Services SDK (Wie verwende ich das Azure BizTalk Servies SDK?, in englischer Sprache)</a> und <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=241589">Installing the Azure BizTalk Services SDK (Installieren des Azure BizTalk Services SDK, in englischer Sprache)</a> werden die ersten Schritte aufgelistet.
         </td>
     </tr>
-
     <tr>
         <td><strong>Erstellen von Partnerverträgen</strong></td>
-
         <td>Öffnet das auf Azure gehostete Azure BizTalk Services-Portal, auf dem Sie Partner hinzufügen und X12-, AS2- und EDIFACT-EDI-Verträge erstellen können.
         <br/><br/>
         Unter <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">Configuring Components for EDI Messaging on BizTalk Services Portal (Konfigurieren der Komponenten für EDI-Messaging im BizTalk Services-Portal)</a> werden die ersten Schritte aufgelistet.
@@ -236,18 +233,14 @@ Sie können auch die **relativen** oder **absoluten** Werte sowie ein **Zeitinte
 
 ##### So zeigen Sie Metriken im Diagramm an oder entfernen diese daraus:
 1. Wählen Sie die Registerkarte **Überwachen** aus.
-2. Klicken Sie auf der Taskleiste auf **Metriken hinzufügen**:
-<br/>
-!["Metriken hinzufügen" auswählen][AddMetrics]
+2. Klicken Sie auf der Taskleiste auf **Metriken hinzufügen**: !["Metriken hinzufügen" auswählen][AddMetrics]
 3. Prüfen Sie die Leistungsmetriken, die Sie anzeigen möchten.
 4. Wählen Sie das Häkchen aus, um zur Registerkarte **Überwachen** zurückzukehren.
 5. Wählen Sie den Kreis neben der Metrik aus, um den Wert dieser Metrik im Diagramm anzuzeigen.  
 
-	Die Metrik **CPU-Auslastung** ist grau unterlegt. Das heißt, ihr Wert wird im Diagramm nicht angezeigt:  
-![Metrik "CPU-.Auslastung" ist deaktiviert][GrayedMetric]
+	Die Metrik **CPU-Auslastung** ist grau unterlegt. Das heißt, ihr Wert wird im Diagramm nicht angezeigt: ![Metrik "CPU-.Auslastung" ist deaktiviert][GrayedMetric]
 
-	Wählen Sie den ausgegrauten Kreis, sodass die Metrik **CPU-Auslastung** ihre Ausgabe im Diagramm anzeigt:  
-![Metrik "CPU-.Auslastung" ist aktiviert][EnabledMetric]
+	Wählen Sie den ausgegrauten Kreis, sodass die Metrik **CPU-Auslastung** ihre Ausgabe im Diagramm anzeigt: ![Metrik "CPU-.Auslastung" ist aktiviert][EnabledMetric]
 
 6. Wenn Sie eine Metrik aus dem Diagramm und der Liste entfernen möchten, wählen Sie in der Taskleiste **Metrik löschen** aus. Um die Metrik der Liste wieder hinzuzufügen, klicken Sie in der Taskleiste auf **Metriken hinzufügen**, markieren die Metrik und wählen das Häkchen aus, um zur Registerkarte **Überwachen** zurückzukehren. Wählen Sie den grau unterlegten Kreis aus, um die Metrik zu aktivieren.
 
@@ -366,4 +359,4 @@ Nun, da Sie mit den verschiedenen Registerkarten vertraut sind, können Sie mehr
 [EnabledMetric]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_EnabledMetric.png
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -51,4 +51,8 @@ Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie In
 
 Weitere Informationen über die Installation und Verwendung von PHP finden Sie unter [Accessing SQL Server Databases with PHP](http://social.technet.microsoft.com/wiki/contents/articles/1258.accessing-sql-server-databases-from-php.aspx) (Zugreifen auf SQL Server-Datenbanken mit PHP, in englischer Sprache).
 
-<!---HONumber=AcomDC_0504_2016-->
+## Zusätzliche Ressourcen
+
+Informationen zu gängigen Datenarchitekturmustern von mehrinstanzenfähigen SaaS-Datenbankanwendungen (Software as a Service) finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+
+<!---HONumber=AcomDC_0615_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/28/2016"
+	ms.date="06/14/2016"
 	ms.author="stefsch"/>
 
 # Einführung in die App Service-Umgebung
@@ -30,13 +30,15 @@ Kunden können mehrere App Service-Umgebungen innerhalb einer einzelnen Azure-Re
 
 Aufgrund der Isolierung werden in App Service-Umgebungen nur Anwendungen eines einzelnen Kunden ausgeführt. Die Umgebungen werden zudem immer in einem virtuellen Netzwerk bereitgestellt. Kunden haben eine genauere Kontrolle über den eingehenden und ausgehenden Anwendungs-Netzwerkdatenverkehr, und Anwendungen können über virtuelle Netzwerke sichere Hochgeschwindigkeitsverbindungen mit lokalen Unternehmensressourcen herstellen.
 
+Alle Artikel und Anleitungen zu App Service-Umgebungen stehen in der [Dokumentation zu App Service-Umgebungen](../app-service/app-service-app-service-environments-readme.md) zur Verfügung.
+
 Eine Übersicht darüber, wie App Service-Umgebungen hochskalierbaren und sicheren Netzwerkzugriff ermöglichen, finden Sie in der [ausführlichen Betrachtung zu AzureCon][AzureConDeepDive] in App Service-Umgebungen.
 
 Eine ausführliche Betrachtung von horizontaler Skalierung mit mehreren App Service-Umgebungen finden Sie im Artikel zum Einrichten einer [geografisch verteilten App][GeodistributedAppFootprint].
 
 Informationen darüber, wie die in AzureCon Deep Dive gezeigte Sicherheitsarchitektur konfiguriert wurde, finden Sie im Artikel über das Implementieren einer [Mehrschicht-Sicherheitsarchitektur](app-service-app-service-environment-layered-security.md) in App Service-Umgebungen.
 
-Der Zugriff von Apps für App-Umgebungen kann durch Upstreamgeräte wie z. B. Web Application Firewalls (WAF) abgegrenzt werden. Im Artikel zum [Konfigurieren einer WAF für App-Umgebungen](app-service-app-service-environment-web-application-firewall.md) wird dieses Szenario behandelt.
+Der Zugriff von Apps für App-Umgebungen kann durch Upstreamgeräte wie z. B. Web Application Firewalls (WAF) abgegrenzt werden. Im Artikel zum [Konfigurieren einer WAF für App-Umgebungen](app-service-app-service-environment-web-application-firewall.md) wird dieses Szenario behandelt.
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -106,4 +108,4 @@ Informationen zur Verwendung einer App Service-Umgebung mit ExpressRoute finden 
 
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0615_2016-->

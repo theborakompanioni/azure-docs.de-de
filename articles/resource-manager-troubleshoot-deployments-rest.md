@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-multiple"
    ms.workload="infrastructure"
-   ms.date="05/19/2016"
+   ms.date="06/13/2016"
    ms.author="tomfitz"/>
 
 # Anzeigen von Bereitstellungsvorgängen mit der Azure Resource Manager-REST-API
@@ -28,6 +28,8 @@
 Wenn Sie einen Fehler beim Bereitstellen von Ressourcen in Azure erhalten haben, empfiehlt es sich, weitere Details zu den ausgeführten Bereitstellungsvorgängen anzuzeigen. Die REST-API bietet Vorgänge, die es Ihnen ermöglichen, die Fehler zu finden und potenzielle Korrekturen zu ermitteln.
 
 [AZURE.INCLUDE [resource-manager-troubleshoot-introduction](../includes/resource-manager-troubleshoot-introduction.md)]
+
+Einige Fehler lassen sich vermeiden, indem Sie Ihre Vorlage und die Infrastruktur vor der Bereitstellung überprüfen. Sie können auch zusätzliche Anforderungs- und Antwortinformationen während der Bereitstellung protokollieren, die später für die Problembehandlung hilfreich sein können. Unter [Bereitstellen eine Ressourcengruppe mit Azure Resource Manager-Vorlage](resource-group-template-deploy-rest.md) erfahren Sie mehr über die Überprüfung und Protokollierung von Anforderungs- und Antwortinformationen.
 
 ## Problembehandlung mit der REST-API
 
@@ -111,6 +113,6 @@ Wenn Sie einen Fehler beim Bereitstellen von Ressourcen in Azure erhalten haben,
 
 - Unterstützung beim Beheben bestimmter Bereitstellungsfehler finden Sie unter [Beheben von häufigen Fehlern beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager](resource-manager-common-deployment-errors.md).
 - Informationen zur Überwachung anderer Arten von Aktionen anhand der Überwachungsprotokolle finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).
-- Informationen zum Überprüfen der Bereitstellung vor der Ausführung finden Sie unter [Bereitstellen einer Ressourcengruppe mit einer Azure Resource Manager-Vorlage](resource-group-template-deploy.md).
+- Informationen zum Überprüfen der Bereitstellung vor der Ausführung finden Sie unter [Bereitstellen einer Ressourcengruppe mit Azure Resource Manager-Vorlagen](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

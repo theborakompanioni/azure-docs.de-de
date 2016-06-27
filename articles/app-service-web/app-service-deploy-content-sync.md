@@ -3,7 +3,7 @@
 	description="Erfahren Sie, wie Sie Ihre App in Azure App Service durch Inhaltssynchronisierung aus einem Cloudordner bereitstellen."
 	services="app-service"
 	documentationCenter=""
-	authors="dariac"
+	authors="dariagrigoriu"
 	manager="wpickett"
 	editor="mollybos"/>
 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/18/2016"
-	ms.author="dariac"/>
+	ms.date="06/13/2016"
+	ms.author="dariagrigoriu"/>
     
 # Synchronisieren von Inhalt aus einem Cloudordner in Azure App Service
 
-Eine der Möglichkeiten für die Bereitstellung auf[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714), ist die Synchronisierung Ihrer Inhalte aus beliebten Cloudspeicherdiensten wie Dropbox und OneDrive.
+In diesem Tutorial erfahren Sie, wie Sie Ihre Inhalte in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) bereitstellen, in dem Sie die Inhalte aus beliebten Cloudspeicherdiensten wie Dropbox und OneDrive synchronisieren.
 
 ## <a name="overview"></a>Übersicht über die Bereitstellung von Inhaltssynchronisierung
 
@@ -41,4 +41,4 @@ Um die Inhaltssynchronisierung aus dem [Azure-Portal](https://portal.azure.com) 
  
 Weitere Informationen zur Dropbox-Bereitstellung finden Sie unter [Deploy from Dropbox](http://blogs.msdn.com/b/windowsazure/archive/2013/03/19/new-deploy-to-windows-azure-web-sites-from-dropbox.aspx) (Bereitstellen von Dropbox).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0615_2016-->

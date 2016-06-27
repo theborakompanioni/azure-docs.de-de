@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/03/2016"
+	ms.date="06/08/2016"
 	ms.author="jroth"/>
 
 # Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
@@ -53,6 +53,7 @@ Daher sollten Sie gegebenenfalls überlegen, wie hoch Ihre Azure-Ressourcengrupp
 - [Data Lake Analytics](#data-lake-analytics-limits)
 - [DNS](#dns-limits)
 - [DocumentDB](#documentdb-limits)
+- [Event Hubs](#event-hubs-limits)
 - [IoT Hub](#iot-hub-limits)
 - [Schlüsseltresor](#key-vault-limits)
 - [Media Services](#media-services-limits)
@@ -177,6 +178,7 @@ In der folgende Tabelle werden die Grenzwerte für Azure Biztalk Services aufgef
 
 [AZURE.INCLUDE [azure-documentdb-limits](../includes/azure-documentdb-limits.md)]
 
+Kontingente mit einem Sternchen (*) [können angepasst werden. Wenden Sie sich dafür an den Azure-Support](./documentdb/documentdb-increase-limits.md).
 
 ### Mobile Engagement-Grenzwerte
 
@@ -187,7 +189,7 @@ In der folgende Tabelle werden die Grenzwerte für Azure Biztalk Services aufgef
 
 Die Tarife bestimmen die Kapazität und die Beschränkungen des Suchdiensts. Folgende Tarife sind verfügbar:
 
-- *Free:* Mehrmandantendienst, der mit anderen Azure-Abonnenten gemeinsam genutzt wird und für Bewertung und kleine Entwicklungsprojekte vorgesehen ist
+- *Free:* Mehrinstanzenfähiger Dienst, der mit anderen Azure-Abonnenten gemeinsam genutzt wird und für Bewertung und kleine Entwicklungsprojekte vorgesehen ist.
 - *Basic* bietet dedizierte Computeressourcen für Produktionsworkloads mit einem kleineren Umfang, mit bis zu drei Replikaten für Abfrageworkloads mit hoher Verfügbarkeit.
 - *Standard (S1, S2, S3, S3 High Density)* ist für größere Produktionsworkloads vorgesehen. Mehrere Ebenen sind im Standard-Tarif vorhanden, damit Sie eine Ressourcenkonfiguration für bestimmte Szenarien auswählen können.
 
@@ -217,6 +219,9 @@ Detailliertere Informationen zu anderen Grenzwerten, einschließlich Dokumentgr�
 
 [AZURE.INCLUDE [notification-hub-limits](../includes/notification-hub-limits.md)]
 
+### Event Hubs-Grenzwerte
+
+[AZURE.INCLUDE [azure-servicebus-limits](../includes/event-hubs-limits.md)]
 
 ### Service Bus-Grenzwerte
 
@@ -300,4 +305,4 @@ Einschränkungen für SQL-Datenbanken finden Sie unter [Ressourceneinschränkung
 
 [Größen für Cloud Services](cloud-services/cloud-services-sizes-specs.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -32,7 +32,7 @@ Um die Azure Storage-iOS-Bibliothek zu verwenden, müssen Sie zunächst die Fram
 
 1. Laden Sie zuerst das [azure-storage-ios-repo](https://github.com/azure/azure-storage-ios) herunter, oder klonen Sie es.
 
-2. Wechseln Sie zu *azure-storage-ios* -> *Lib* -> *Azure Storage-Client-Bibliothek*, und öffnen Sie `Azure Storage Client Library.xcodeproj` in Xcode.
+2. Wechseln Sie zu *azure-storage-ios* -> *Lib* -> *Azure Storage-Client-Bibliothek*, und öffnen Sie `Azure Storage Client Library.xcodeproj` in Xcode.
 
 3. Ändern Sie oben links in Xcode das aktive Schema von "Azure Storage-Client Library" in "Framework".
 
@@ -58,7 +58,7 @@ Sie können die Azure Storage-iOS-Bibliothek folgendermaßen in Ihre Anwendung i
 Sie müssen die folgende Import-Anweisung in die Datei einschließen, in der Sie die Azure Storage-API aufrufen möchten.
 
     // Include the following import statement to use blob APIs.
-    #import <Azure Storage Client Library/Azure_Storage_Client_Library.h>
+    #import <AZSClient/AZSClient.h>
 
 ## Konfigurieren der Anwendung für den Zugriff auf Blob-Speicher
 
@@ -76,7 +76,7 @@ Wenn Sie die Authentifizierung mit gemeinsam verwendetem Schlüssel nutzen, erst
 
 - dem **DefaultEndpointsProtocol** – Sie können zwischen HTTP oder HTTPS wählen. Die Verwendung von HTTPS wird jedoch unbedingt empfohlen.
 - dem **Kontonamen** – der Name Ihres Storage-Kontos
-- dem **Kontoschlüssel** – Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, und klicken Sie auf das Symbol **Schlüssel**, um diese Informationen zu erhalten. Wenn Sie das [klassische Azure-Portal](https://manage.windowsazure.com) verwenden, navigieren Sie zu Ihrem Speicherkonto im Portal und klicken Sie auf **Zugriffsschlüssel verwalten**. 
+- dem** Kontoschlüssel** – Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, und klicken Sie auf das Symbol **Schlüssel**, um diese Informationen zu erhalten. Wenn Sie das [klassische Azure-Portal](https://manage.windowsazure.com) verwenden, navigieren Sie zu Ihrem Speicherkonto im Portal und klicken Sie auf **Zugriffsschlüssel verwalten**. 
 
 Und so sieht es in Ihrer Anwendung aus:
 
@@ -355,4 +355,4 @@ Nachdem Sie sich nun mit den Grundlagen des Blob-Speichers vertraut gemacht habe
 
 Stellen Sie Fragen zu dieser Bibliothek in unserem [MSDN Azure-Forum](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) oder unter [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files). Vorschläge für Azure Storage-Funktionen können Sie unter [Feedback zu Azure Storage](https://feedback.azure.com/forums/217298-storage/) machen.
 
-<!----HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

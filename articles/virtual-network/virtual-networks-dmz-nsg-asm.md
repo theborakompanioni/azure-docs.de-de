@@ -66,7 +66,7 @@ Diese Regeln sind an jedes Subnetz gebunden. Wenn also eine HTTP-Anforderung aus
 
 Es gibt eine Standardregel für ausgehenden Datenverkehr, die das Senden von Datenverkehr an das Internet zulässt. In diesem Beispiel wird ausgehender Datenverkehr zugelassen, und es werden keine ausgehenden Regeln geändert. Um den Datenverkehr in beide Richtungen zu sperren, ist benutzerdefiniertes Routing (User Defined Routing, UDR) erforderlich. Dies wird in Beispiel 3 erläutert.
 
-Jede Regel wird im Folgenden detailliert beschrieben (Hinweis: Jedes Element in der unten gezeigten Liste, das mit einem Dollarzeichen beginnt, wie etwa $NSGName, ist eine benutzerdefinierte Variable aus dem Skript im Referenzabschnitt dieses Dokuments):
+Jede Regel wird im Folgenden detailliert beschrieben. (**Hinweis**: Jedes Element in der folgenden Liste, das mit einem Dollarzeichen beginnt [Beispiel: $NSGName], ist eine benutzerdefinierte Variable aus dem Skript im Referenzabschnitt dieses Dokuments.)
 
 1. Zuerst muss eine Netzwerksicherheitsgruppe zum Speichern der Regeln erstellt werden:
 
@@ -550,4 +550,4 @@ Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installier
 [HOME]: ../best-practices-network-security.md
 [SampleApp]: ./virtual-networks-sample-app.md
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0615_2016-->

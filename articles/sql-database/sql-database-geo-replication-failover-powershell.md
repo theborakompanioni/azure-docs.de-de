@@ -23,7 +23,7 @@
 > [AZURE.SELECTOR]
 - [Azure-Portal](sql-database-geo-replication-failover-portal.md)
 - [PowerShell](sql-database-geo-replication-failover-powershell.md)
-- [Transact-SQL](sql-database-geo-replication-failover-transact-sql.md)
+- [T-SQL](sql-database-geo-replication-failover-transact-sql.md)
 
 
 Dieser Artikel erläutert das Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit PowerShell. Informationen zum Konfigurieren der Georeplikation finden Sie unter [Konfigurieren der Georeplikation für die Azure SQL-Datenbank mit PowerShell](sql-database-geo-replication-powershell.md).
@@ -87,4 +87,4 @@ Mit dem folgenden Befehl tauschen Sie die Rollen der „mydb“-Datenbank, wenn 
 - [SQL-Datenbankdokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
 - [Warnungen zur Notfallwiederherstellung](sql-database-disaster-recovery-drills.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

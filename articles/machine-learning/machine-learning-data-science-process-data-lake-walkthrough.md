@@ -82,19 +82,19 @@ Dieser Abschnitt enthält Anweisungen zum Erstellen dieser Ressourcen. Bei Auswa
 
 ### Erstellen eines Azure Data Lake-Speichers
 
-Erstellen Sie einen Azure Data Lake-Speicher im [Azure-Portal](http://ms.portal.azure.com). Einzelheiten dazu finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md). Richten Sie die AAD-Identität des Clusters auf dem hier beschriebenen Blatt **Datenquelle** des Blatts **Optionale Konfiguration** ein.
+Erstellen Sie im [Azure-Portal](http://portal.azure.com) einen Azure Data Lake-Speicher. Einzelheiten dazu finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md). Richten Sie die AAD-Identität des Clusters auf dem hier beschriebenen Blatt **Datenquelle** des Blatts **Optionale Konfiguration** ein.
 
  ![3](./media/machine-learning-data-science-process-data-lake-walkthrough/3-create-ADLS.PNG)
 
 
 ### Erstellen eines Azure Data Lake Analytics-Kontos
-Erstellen Sie ein Azure Data Lake Analytics-Konto im [Azure-Portal](http://ms.portal.azure.com). Einzelheiten finden Sie im [Tutorial: Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
+Erstellen Sie im [Azure-Portal](http://portal.azure.com) ein Azure Data Lake Analytics-Konto. Einzelheiten finden Sie im [Tutorial: Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
 
  ![4](./media/machine-learning-data-science-process-data-lake-walkthrough/4-create-ADLA-new.PNG)
 
 
 ### Erstellen eines Azure Blob Storage-Kontos
-Erstellen Sie ein Azure-Blobspeicherkonto im [Azure-Portal](http://ms.portal.azure.com). Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md) im Abschnitt „Erstellen eines Speicherkontos“.
+Erstellen Sie im [Azure-Portal](http://portal.azure.com) ein Azure-Blobspeicherkonto. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md) im Abschnitt „Erstellen eines Speicherkontos“.
 	
  ![5](./media/machine-learning-data-science-process-data-lake-walkthrough/5-Create-Azure-Blob.PNG)
 
@@ -158,7 +158,7 @@ Zum Ausführen von U-SQL öffnen Sie Visual Studio, klicken auf **Datei--> Neu--
 
 ### <a name="ingest"></a>Datenerfassung: Einlesen von Daten aus öffentlichem Blob
 
-Der Speicherort der Daten im Azure-Blob wird als „**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**“ referenziert und kann mithilfe von **Extractors.Csv()** extrahiert werden. Geben Sie in den folgenden Skripts für container_name@blob_storage_account_name in der „wasb“-Adresse Ihre eigenen Container- und Speicherkontonamen ein. Da die Dateinamen dasselbe Format haben, können wir **trip\_data\_{*}.csv** verwenden, um alle 12 Fahrtendateien einzulesen.
+Der Speicherort der Daten im Azure-Blob wird als „****wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**“ referenziert und kann mithilfe von **Extractors.Csv()** extrahiert werden. Geben Sie in den folgenden Skripts für container_name@blob_storage_account_name in der „wasb“-Adresse Ihre eigenen Container- und Speicherkontonamen ein. Da die Dateinamen dasselbe Format haben, können wir **trip\_data\_{*}.csv** verwenden, um alle 12 Fahrtendateien einzulesen.
 
 	///Read in Trip data
 	@trip0 =
@@ -181,7 +181,7 @@ Der Speicherort der Daten im Azure-Blob wird als „**wasb://container_name@blob
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-Da die erste Zeile Überschriften enthält, müssen wir die Überschriften entfernen und Spaltentypen entsprechend anpassen. Wir können die verarbeiteten Daten entweder mithilfe von „**swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_“ in Azure Data Lake-Speicher oder mithilfe von „**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**“ im Azure-Blobspeicherkonto speichern.
+Da die erste Zeile Überschriften enthält, müssen wir die Überschriften entfernen und Spaltentypen entsprechend anpassen. Wir können die verarbeiteten Daten entweder mithilfe von „****swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_“ in Azure Data Lake-Speicher oder mithilfe von „****wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**“ im Azure-Blobspeicherkonto speichern.
 
 	// change data types
 	@trip =
@@ -640,7 +640,7 @@ Azure Machine Learning Studio kann Daten direkt aus Azure Data Lake-Speicher ein
 
 ### Erstellen eines HDInsight Linux-Clusters
 
-Erstellen Sie einen HDInsight-Cluster (Linux) im [Azure Portal](http://ms.portal.azure.com). Ausführliche Informationen finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md) im Abschnitt **Erstellen eines HDInsight-Clusters mit Zugriff auf Azure Data Lake-Speicher**.
+Erstellen Sie im [Azure Portal](http://portal.azure.com) einen HDInsight-Cluster (Linux). Ausführliche Informationen finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md) im Abschnitt **Erstellen eines HDInsight-Clusters mit Zugriff auf Azure Data Lake-Speicher**.
 
  ![18](./media/machine-learning-data-science-process-data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
@@ -658,7 +658,7 @@ Klicken Sie dann neben der Schaltfläche **Einstellungen** auf **Dashboard**, wo
  ![21](./media/machine-learning-data-science-process-data-lake-walkthrough/21-Hive-Query-Editor-v2.PNG)
 
 
-Fügen Sie zum Erstellen einer Tabelle die folgenden Hive-Skripts ein. Auf den Speicherort der Datenquelle wird in Azure Data Lake-Speicher wie folgt verwiesen: **adl://data_lake_store_name.azuredatalakestore.net:443/folder_name/file_name**.
+Fügen Sie zum Erstellen einer Tabelle die folgenden Hive-Skripts ein. Auf den Speicherort der Datenquelle wird in Azure Data Lake-Speicher wie folgt verwiesen: ****adl://data_lake_store_name.azuredatalakestore.net:443/folder_name/file_name**.
 
 	CREATE EXTERNAL TABLE nyc_stratified_sample
 	(
@@ -741,4 +741,4 @@ Der Lernpfad für den [Cortana-Analyseprozess-Prozess (CAP)](http://aka.ms/datas
 - [Cortana-Analyseprozess (CAP) in Aktion: Verwenden von SQL Server](machine-learning-data-science-process-sql-walkthrough.md)
 - [Übersicht über Data Science mit Spark in Azure HDInsight](machine-learning-data-science-spark-overview.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

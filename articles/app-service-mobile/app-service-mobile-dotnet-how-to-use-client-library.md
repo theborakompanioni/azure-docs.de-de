@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/25/2016"
+	ms.date="06/11/2016"
 	ms.author="glenga"/>
 
 # Verwenden des verwalteten Clients für Azure Mobile Apps
@@ -47,13 +47,25 @@ Der entsprechende typisierte clientseitige Typ in C# sieht wie folgt aus:
 
 Beachten Sie, dass [JsonPropertyAttribute] verwendet wird, um die *PropertyName*-Zuordnung zwischen dem Clienttyp und der Tabelle zu definieren.
 
-Informationen zum Erstellen neuer Tabellen in Ihrem Mobile Apps-Back-End finden Sie unter [Arbeiten Sie mit der Back-End-Server-SDK für Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#define-table-controller) oder [Verwenden des Azure Mobile Apps SDK für Node.js](app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-dynamicschema). Wenn Sie Ihr Mobile App-Back-End im Azure-Portal mithilfe des Schnellstarts erstellt haben, können Sie auch die Einstellung **Einfache Tabellen** im [Azure-Portal] verwenden.
+Informationen zum Erstellen neuer Tabellen in Ihrem Mobile Apps-Back-End finden Sie im Thema zum [.NET Server SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#define-table-controller) oder zum [Node.js Server SDK](app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-dynamicschema). Wenn Sie Ihr Mobile App-Back-End im Azure-Portal mithilfe des Schnellstarts erstellt haben, können Sie auch die Einstellung **Einfache Tabellen** im [Azure-Portal] verwenden.
 
-###<a name="symbolsource"></a>Arbeiten mit Debugsymbolen in Visual Studio
+###Gewusst wie: Installieren des SDK-Pakets für verwaltete Clients
 
-Die Symbole für den Namespace „Microsoft.Azure.Mobile“ sind unter [SymbolSource] verfügbar. Integrieren Sie SymbolSource gemäß der [SymbolSource-Anweisungen] in Visual Studio.
+Verwenden Sie eine der folgenden Methoden, um das SDK-Paket für verwaltete Clients für Mobile Apps von [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) zu installieren:
 
-##<a name="create-client"></a>Erstellen des Mobile App-Clients
++ **Visual Studio**: Klicken Sie mit der rechten Maustaste auf Ihr Projekt, klicken Sie auf **NuGet-Pakete verwalten**, suchen Sie nach dem `Microsoft.Azure.Mobile.Client`-Paket, und klicken Sie anschließend auf **Installieren**.
+
++ **Xamarin Studio**: Klicken Sie mit der rechten Maustaste auf Ihr Projekt, klicken Sie auf **Hinzufügen** > **NuGet-Pakete hinzufügen**, suchen Sie nach dem `Microsoft.Azure.Mobile.Client `-Paket, und klicken Sie anschließend auf **Paket hinzufügen**.
+
+Denken Sie daran, in der Datei Ihrer Hauptaktivität die folgende **using**-Anweisung hinzuzufügen:
+
+	using Microsoft.WindowsAzure.MobileServices;
+
+###<a name="symbolsource"></a>Gewusst wie: Arbeiten mit Debugsymbolen in Visual Studio
+
+Die Symbole für den Namespace „Microsoft.Azure.Mobile“ sind unter [SymbolSource] verfügbar. Integrieren Sie SymbolSource gemäß den [SymbolSource-Anweisungen] in Visual Studio.
+
+##<a name="create-client"></a>Erstellen des Mobile Apps-Clients
 
 Der folgende Code erstellt das [MobileServiceClient]-Objekt, das für den Zugriff auf Ihr Mobile App-Back-End verwendet wird.
 
@@ -226,7 +238,7 @@ Die [LookupAsync]-Funktion kann verwendet werden, um Objekte mit einer bestimmte
 
 ### <a name="untypedqueries"></a>Ausführen von nicht typisierten Abfragen
 
-Beim Ausführen einer Abfrage mit einem nicht typisierten Tabellenobjekt müssen Sie die OData-Abfragezeichenfolge wie im folgenden Beispiel durch Aufruf von [ReadAsync] explizit angeben:
+Beim Ausführen einer Abfrage mit einem nicht typisierten Tabellenobjekt müssen Sie die OData-Abfragezeichenfolge durch Aufruf von [ReadAsync] explizit angeben, wie im folgenden Beispiel veranschaulicht:
 
 	// Lookup untyped data using OData
 	JToken untypedItems = await untypedTodoTable.ReadAsync("$filter=complete eq 0&$orderby=text");
@@ -273,11 +285,11 @@ Wenn der ID-Wert einer Zeichenfolge für keine eingefügten Datensätze festgele
 
 ###<a name="modifying"></a>Ändern von Daten in einem Mobile App-Back-End
 
-Der folgende Code zeigt, wie Sie mit der [UpdateAsync]-Methode einen vorhandenen Datensatz mit der gleichen ID und neuen Daten aktualisieren können. Der Parameter enthält die zu aktualisierenden Daten als .NET-Objekt.
+Der folgende Code zeigt, wie Sie mit der [UpdateAsync]-Methode einen vorhandenen Datensatz, der die gleiche ID aufweist, mit neuen Daten aktualisieren können. Der Parameter enthält die zu aktualisierenden Daten als .NET-Objekt.
 
 	await todoTable.UpdateAsync(todoItem);
 
-Zum Löschen von nicht typisierten Daten können Sie [Json.NET] wie folgt verwenden:
+Zum Einfügen von nicht typisierten Daten können Sie [Json.NET] wie folgt verwenden:
 
 	JObject jo = new JObject();
 	jo.Add("id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
@@ -285,7 +297,7 @@ Zum Löschen von nicht typisierten Daten können Sie [Json.NET] wie folgt verwen
 	jo.Add("Complete", false);
 	var inserted = await table.UpdateAsync(jo);
 
-Beim Ausführen eines Updates muss ein `id`-Feld angegeben werden. Sie wird benötigt, damit das Back-End erkennen kann, welche Instanz aktualisiert werden soll. Das `id`-Feld können Sie dem Ergebnis des `InsertAsync`-Aufrufs entnehmen. Es wird eine `ArgumentException` ausgelöst, wenn Sie versuchen, ein Element ohne Angabe des `id`-Werts zu aktualisieren.
+Beim Ausführen eines Updates muss ein `id`-Feld angegeben werden. Dies wird benötigt, damit das Back-End erkennen kann, welche Instanz aktualisiert werden soll. Sie finden das `id`-Feld im Ergebnis des `InsertAsync`-Aufrufs. Es wird eine `ArgumentException` ausgelöst, wenn Sie versuchen, ein Element ohne Angabe des `id`-Werts zu aktualisieren.
 
 ###<a name="deleting"></a>Löschen von Daten in einem Mobile App-Back-End
 
@@ -305,7 +317,7 @@ Beachten Sie, dass Sie bei einer Löschanforderung eine ID angeben müssen. Ande
 
 Zwei oder mehr Clients können gleichzeitig versuchen, das gleiche Element zu bearbeiten. Ohne Konflikterkennung würde der letzte Schreibvorgang alle vorherigen Aktualisierungen überschreiben, selbst wenn dies nicht so gewollt wäre. Die *Steuerung für optimistische Parallelität* nimmt an, dass jede Transaktion Commits ausführen kann und sperrt daher keine Ressourcen. Vor dem Commit einer Transaktion prüft die Steuerung für optimistische Parallelität, ob die Daten von einer anderen Transaktion geändert wurden. Falls die Daten geändert wurden, wird für die Transaktion, die den Commit durchführen sollte, ein Rollback durchgeführt.
 
-Mobile Apps unterstützt die Steuerung für optimistische Parallelität, indem Änderungen an Elementen in der Spalte `version` mit den Systemeigenschaften nachverfolgt werden, die für jede Tabelle im Mobile App-Back-End definiert wird. Bei jeder Aktualisierung eines Datensatzes wird die `version`-Eigenschaft des entsprechenden Datensatzes von Mobile Apps auf einen neuen Wert festgelegt. Bei jeder Aktualisierungsanforderung wird die `\version`-Eigenschaft des in der Anforderung enthaltenen Datensatzes mit der Eigenschaft des Datensatzes auf dem Server verglichen. Wenn die mit der Anforderung übergebene Version nicht mit dem Back-End übereinstimmt, löst die Clientbibliothek eine `MobileServicePreconditionFailedException<T>` aus. Der in der Ausnahme enthaltene Typ ist der Datensatz des Back-Ends, der die Serverversion des entsprechenden Datensatzes enthält. Anschließend kann die Anwendung anhand dieser Informationen entscheiden, ob die Updateanforderung erneut mit dem korrekten `version`-Wert vom Back-End ausgeführt werden soll, um Commits für die Änderungen auszuführen.
+Mobile Apps unterstützt die Steuerung für optimistische Parallelität, indem Änderungen an Elementen in der Spalte `version` mit den Systemeigenschaften nachverfolgt werden, die für jede Tabelle im Mobile App-Back-End definiert wird. Bei jeder Aktualisierung eines Datensatzes wird die `version`-Eigenschaft des entsprechenden Datensatzes von Mobile Apps auf einen neuen Wert festgelegt. Bei jeder Aktualisierungsanforderung wird die `\version`-Eigenschaft des in der Anforderung enthaltenen Datensatzes mit der Eigenschaft des Datensatzes auf dem Server verglichen. Wenn die mit der Anforderung übergebene Version nicht mit dem Back-End übereinstimmt, löst die Clientbibliothek eine `MobileServicePreconditionFailedException<T>`-Ausnahme aus. Der in der Ausnahme enthaltene Typ ist der Datensatz des Back-Ends, der die Serverversion des entsprechenden Datensatzes enthält. Anschließend kann die Anwendung anhand dieser Informationen entscheiden, ob die Updateanforderung erneut mit dem korrekten `version`-Wert vom Back-End ausgeführt werden soll, um Commits für die Änderungen auszuführen.
 
 Definieren Sie eine Spalte in der Tabellenklasse für die `version`-Systemeigenschaft, um optimistische Parallelität zu aktivieren. Beispiel:
 
@@ -386,7 +398,7 @@ Zusätzlich zum Aktivieren der optimistischen Parallelität müssen Sie auch die
 	    await msgDialog.ShowAsync();
 	}
 
-Weitere Informationen finden Sie in dem Thema [Synchronisieren von Offlinedaten in Azure Mobile Apps].
+Weitere Informationen finden Sie im Thema [Synchronisieren von Offlinedaten in Azure Mobile Apps].
 
 ###<a name="binding"></a>Binden von Mobile Apps-Daten an eine Windows-Benutzeroberfläche
 
@@ -447,7 +459,7 @@ Beachten Sie, dass dies ein typisierter Methodenaufruf ist, der erfordert, dass 
 
 Mobile Apps unterstützt Authentifizierung und Autorisierung von App-Benutzern mit einer Vielzahl externer Identitätsanbieter: Facebook, Google, Microsoft Account, Twitter und Azure Active Directory. Sie können Berechtigungen für Tabellen vergeben, um den Zugriff auf bestimmte Operationen auf authentifizierte Benutzer zu beschränken. Außerdem können Sie die Identität authentifizierter Benutzer verwenden, um Autorisierungsregeln in Serverskripts zu implementieren. Weitere Informationen finden Sie im Lernprogramm [Authentifizierung zu Ihrer App hinzufügen].
 
-Zwei Authentifizierungsflüsse werden unterstützt: _Vom Client verwaltet_ und _vom Server verwaltet_. Der Serverfluss bietet die einfachste Authentifizierungsform, da in diesem Fall die Authentifizierungs-Webschnittstelle des Anbieters verwendet wird. Der Clientfluss ermöglicht eine tiefere Integration mit gerätespezifischen Fähigkeiten, da in diesem Fall anbieterspezifische und gerätespezifische SDKs verwendet werden.
+Es werden zwei Authentifizierungsflüsse unterstützt: _vom Client verwaltet_ und _vom Server verwaltet_. Der Serverfluss bietet die einfachste Authentifizierungsform, da in diesem Fall die Authentifizierungs-Webschnittstelle des Anbieters verwendet wird. Der Clientfluss ermöglicht eine tiefere Integration mit gerätespezifischen Fähigkeiten, da in diesem Fall anbieterspezifische und gerätespezifische SDKs verwendet werden.
 
 >[AZURE.NOTE] In Ihren Produktions-Apps sollten Sie einen vom Client verwalteten Fluss nutzen.
 
@@ -469,19 +481,19 @@ Für die folgenden clientflussbezogenen Authentifizierungsmuster werden Beispiel
 + [Facebook oder Google](#client-facebook)
 + [Live SDK](#client-livesdk)
 
-#### <a name="adal"></a>Authentifizieren von Benutzern mit der Active Directory-Authentifizierungsbibliothek
+#### <a name="adal"></a>Authentifizieren von Benutzern mit der Active Directory Authentication Library
 
 Nutzen Sie die Active Directory-Authentifizierungsbibliothek (Active Directory Authentication Library, ADAL), um die Benutzerauthentifizierung auf dem Client mithilfe der Azure Active Directory-Authentifizierung einzuleiten.
 
-1. Konfigurieren Sie Ihr mobiles App-Back-End für die AAD-Anmeldung, indem Sie die im Tutorial [So konfigurieren Sie Ihre App Service-Anwendung zur Verwendung der Azure Active Directory-Anmeldung] beschriebenen Schritte ausführen. Schließen Sie auch den optionalen Schritt zur Registrierung einer nativen Clientanwendung ab.
+1. Konfigurieren Sie Ihr Mobile App-Back-End für die AAD-Anmeldung, indem Sie die im Tutorial [So konfigurieren Sie Ihre App Service-Anwendung zur Verwendung der Azure Active Directory-Anmeldung] beschriebenen Schritte ausführen. Schließen Sie auch den optionalen Schritt zur Registrierung einer nativen Clientanwendung ab.
 
 2. Öffnen Sie Ihr Projekt in Visual Studio oder Xamarin Studio, und fügen Sie einen Verweis auf das NuGet-Paket `Microsoft.IdentityModel.CLients.ActiveDirectory` hinzu. Nehmen Sie in die Suche auch Vorabversionen auf.
 
 3. Fügen Sie auf Grundlage der verwendeten Plattform den unten stehenden Code zu Ihrer Anwendung hinzu. Nehmen Sie dabei die folgenden Änderungen vor:
 
-	* Ersetzen Sie **INSERT-AUTHORITY-HERE** durch den Namen des Mandanten, unter dem Sie Ihre Anwendung bereitgestellt haben. Das Format sollte https://login.windows.net/contoso.onmicrosoft.com entsprechen. Sie können diesen Wert auf der Registerkarte „Domäne“ in Ihrer Azure Active Directory-Instanz im [klassischen Azure-Portal] kopieren.
+	* Ersetzen Sie **INSERT-AUTHORITY-HERE** durch den Namen des Mandanten, unter dem Sie Ihre Anwendung bereitgestellt haben. Verwenden Sie dabei das folgende Format: https://login.windows.net/contoso.onmicrosoft.com. Sie können diesen Wert auf der Registerkarte „Domäne“ in Ihrer Azure Active Directory-Instanz im [klassischen Azure-Portal] kopieren.
 	
-	* Ersetzen Sie **INSERT-RESOURCE-ID-HERE** durch die Client-ID Ihres mobilen App-Back-Ends. Sie finden diese im Portal unter **Azure Active Directory-Einstellungen** auf der Registerkarte **Erweitert**.
+	* Ersetzen Sie **INSERT-RESOURCE-ID-HERE** durch die Client-ID für Ihr Mobile App-Back-End. Sie finden diese im Portal unter **Azure Active Directory-Einstellungen** auf der Registerkarte **Erweitert**.
 	
 	* Ersetzen Sie **INSERT-CLIENT-ID-HERE** durch die Client-ID, die Sie aus der nativen Clientanwendung kopiert haben.
 	
@@ -703,7 +715,7 @@ In einem Serverfluss verwaltet Azure App Service den OAuth 2.0-Authentifizierung
 
 In einigen Fällen kann der Aufruf der Anmeldemethode nach der ersten erfolgreichen Authentifizierung vermieden werden, indem bei Verwendung des Clientflusses das Authentifizierungstoken und sogar das Zugriffstoken des Anbieters gespeichert werden.
 
-Windows Store- und UWP-Apps können nach einer erfolgreichen Anmeldung [PasswordVault] zum Zwischenspeichern des aktuellen Authentifizierungstokens wie folgt verwenden:
+Windows Store- und UWP-Apps können nach einer erfolgreichen Anmeldung [PasswordVault] wie folgt zum Zwischenspeichern des aktuellen Authentifizierungstokens verwenden:
 
 	await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook);		
 
@@ -744,7 +756,7 @@ Wenn Sie die vom Client verwaltete Authentifizierung verwenden, können Sie auch
 	await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
 
 
-##<a name="pushnotifications">Pushbenachrichtigungen
+##<a name="pushnotifications"></a>Pushbenachrichtigungen
 
 Die folgenden Themen behandeln Pushbenachrichtigungen:
 
@@ -954,4 +966,4 @@ Um Ihr spezielles App-Szenario zu unterstützen, müssen Sie unter Umständen di
 [SymbolSource]: http://www.symbolsource.org/
 [SymbolSource-Anweisungen]: http://www.symbolsource.org/Public/Wiki/Using
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -112,7 +112,7 @@ In diesem Thema werden die Unterschiede bei der Clientverbindung zwischen SQL-Da
 - [Liste der TDS-Protokollversionen](http://www.freetds.org/userguide/tdshistory.htm)
 
 
-- [Verbindungen mit SQL-Datenbanken: Wichtige Empfehlungen](sql-database-connect-central-recommendations.md)
+- [Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md)
 
 
 - [Firewall für die Azure SQL-Datenbank](sql-database-firewall-configure.md)
@@ -120,4 +120,4 @@ In diesem Thema werden die Unterschiede bei der Clientverbindung zwischen SQL-Da
 
 - [Konfigurieren der Firewalleinstellungen für Azure SQL-Datenbank](sql-database-configure-firewall-settings.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0615_2016-->

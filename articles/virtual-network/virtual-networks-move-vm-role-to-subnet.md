@@ -31,7 +31,7 @@ Führen Sie zum Verschieben eines virtuellen Computers das PowerShell-Cmdlet „
 	| Set-AzureSubnet –SubnetNames Subnet-2 `
 	| Update-AzureVM
 
-Wenn Sie eine statische DIP für Ihren virtuellen Computer angegeben haben, müssen Sie diese Einstellung deaktivieren, bevor Sie den virtuellen Computer in ein neues Subnetz verschieben können. Verwenden Sie in diesem Fall Folgendes:
+Wenn Sie eine statische interne private IP-Adresse für Ihren virtuellen Computer angegeben haben, müssen Sie diese Einstellung deaktivieren, bevor Sie den virtuellen Computer in ein neues Subnetz verschieben können. Verwenden Sie in diesem Fall Folgendes:
 
 	Get-AzureVM -ServiceName TestVMCloud -Name TestVM `
 	| Remove-AzureStaticVNetIP `
@@ -53,4 +53,4 @@ Bearbeiten Sie zum Verschieben einer Rolleninstanz die CSCFG-Datei. Im folgenden
 	    </AddressAssignments>
 	</NetworkConfiguration> 
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0615_2016-->

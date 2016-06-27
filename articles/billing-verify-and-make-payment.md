@@ -40,6 +40,6 @@
 
 Wenn Sie eine Kredit- oder Debitkarte als Zahlungsmethode festgelegt haben, erfolgt die Zahlung automatisch. Unter [Ändern von Zahlungen oder Gutschriften für ein Azure-Abonnement](billing-how-to-change-credit-card.md) erfahren Sie, wie Sie Karten beliebig ändern können.
 
-Wenn Sie per Rechnung zahlen, senden Sie Ihre Zahlung an den Empfänger, der unten auf der Rechnung aufgeführt ist. Wenn Sie weitere Hilfe benötigen, wenden Sie sich an den [Microsoft-Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Wenn Sie per Rechnung zahlen, senden Sie Ihre Zahlung an den Empfänger, der unten auf der Rechnung aufgeführt ist. Wenn Sie weitere Hilfe benötigen, wenden Sie sich an den [Microsoft-Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0615_2016-->

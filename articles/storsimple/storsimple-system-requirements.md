@@ -86,7 +86,7 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 |------------------------------------------------------------------|---------------------------------------------------------------|-----------------------------------------|
 | `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` | StorSimple Manager-Dienst<br>Access Control Service<br>Azure Service Bus| Cloudaktivierte Netzwerkschnittstellen |
 |`https://*.backup.windowsazure.com`|Geräteregistrierung| Nur DATA 0|
-|`http://crl.microsoft.com/pki/*` |Zertifikatswiderruf |Cloudaktivierte Netzwerkschnittstellen |
+|`http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*`|Zertifikatswiderruf |Cloudaktivierte Netzwerkschnittstellen |
 | `https://*.core.windows.net/*` | Azure-Speicherkonten und Überwachung | Cloudaktivierte Netzwerkschnittstellen |
 | `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com`| Microsoft Update-Server<br> | Feste IPs des Controllers |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |Feste IPs des Controllers |
@@ -96,7 +96,7 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 
 Eine Routingmetrik ist den Schnittstellen und dem Gateway zugeordnet, die die Daten an die angegebenen Netzwerke weiterleiten. Das Routingprotokoll errechnet anhand der Routingmetrik die beste Route für ein bestimmtes Ziel, wenn festgestellt wird, dass mehrere Pfade zum gleichen Ziel vorhanden sind. Je niedriger die Routingmetrik, desto höher ist die Voreinstellung.
 
-Im Kontext von StorSimple gilt: Wenn mehrere Netzwerkschnittstellen und Gateways für das Weiterleiten von Datenverkehr konfiguriert sind, wird die Routingmetrik eingesetzt, um die relative Reihenfolge für die Verwendung der Schnittstellen festzulegen. Die Routingmetrik kann vom Benutzer nicht geändert werden. Mit dem `Get-HcsRoutingTable`-Cmdlet können Sie jedoch die Routingtabelle (und die Metrik) auf Ihrem StorSimple-Gerät ausgeben. Weitere Informationen zum Cmdlet Get-HcsRoutingTable finden Sie unter [Problembehandlung bei der StorSimple-Bereitstellung](storsimple-troubleshoot-deployment.md).
+Im Kontext von StorSimple gilt: Wenn mehrere Netzwerkschnittstellen und Gateways für das Weiterleiten von Datenverkehr konfiguriert sind, wird die Routingmetrik eingesetzt, um die relative Reihenfolge für die Verwendung der Schnittstellen festzulegen. Die Routingmetrik kann vom Benutzer nicht geändert werden. Mit dem `Get-HcsRoutingTable`-Cmdlet können Sie jedoch die Routingtabelle (und die Metrik) auf Ihrem StorSimple-Gerät ausgeben. Weitere Informationen zum Get-HcsRoutingTable-Cmdlet finden Sie unter [Beheben von Problemen mit der Bereitstellung von StorSimple-Geräten](storsimple-troubleshoot-deployment.md).
 
 Die Algorithmen der Routingmetrik unterscheiden sich je nach Version der Software auf Ihrem StorSimple-Gerät.
 
@@ -127,12 +127,7 @@ Update 2 umfasst mehrere netzwerkbezogene Verbesserungen, und die Routingmetrik 
 
 	| Netzwerkschnittstelle | Cloudfähig | Nicht cloudfähig mit Gateway |
 	|-----|---------------|---------------------------|
-	| Data 0 | 1 | - |
-	| Data 1 | 2 | 20 |
-	| Data 2 | 3 | 30 |
-	| Data 3 | 4 | 40 |
-	| Data 4 | 5 | 50 |
-	| Data 5 | 6 | 60 |
+	| Data 0 | 1 | - | | Data 1 | 2 | 20 | | Data 2 | 3 | 30 | | Data 3 | 4 | 40 | | Data 4 | 5 | 50 | | Data 5 | 6 | 60 |
 
 
 - Der Clouddatenverkehr wird in folgender Reihenfolge über die Netzwerkschnittstellen weitergeleitet:
@@ -280,4 +275,4 @@ Lesen Sie sich diese bewährten Methoden sorgfältig durch, um eine hohe Verfüg
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

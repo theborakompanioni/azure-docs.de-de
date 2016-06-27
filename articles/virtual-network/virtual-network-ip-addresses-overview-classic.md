@@ -23,10 +23,10 @@ Sie können Azure-Ressourcen IP-Adressen zuweisen, um die Kommunikation mit ande
 
 Private IP-Adressen werden für die Kommunikation innerhalb eines virtuellen Azure-Netzwerks (VNet), Clouddiensts und Ihres lokalen Netzwerks verwendet, wenn Sie Ihr Netzwerk mithilfe eines VPN-Gateways oder einer ExpressRoute-Verbindung auf Azure ausdehnen.
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)] [Ressourcen-Manager-Bereitstellungsmodell](virtual-network-ip-addresses-overview-arm.md).
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager deployment model](virtual-network-ip-addresses-overview-arm.md).
 
 ## Öffentliche IP-Adressen
-Öffentliche IP-Adressen ermöglichen Azure-Ressourcen die Kommunikation mit dem Internet und öffentlichen Azure-Diensten wie [Azure Redis Cache](https://azure.microsoft.com/services/cache), [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs), [SQL-Datenbanken](sql-database-technical-overview.md) und [Azure Storage](storage-introduction.md).
+Öffentliche IP-Adressen ermöglichen Azure-Ressourcen die Kommunikation mit dem Internet und öffentlichen Azure-Diensten wie [Azure Redis Cache](https://azure.microsoft.com/services/cache/), [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [SQL-Datenbanken](../sql-database/sql-database-technical-overview.md) und [Azure Storage](../storage/storage-introduction.md).
 
 Eine öffentliche IP-Adresse wird folgenden Ressourcentypen zugeordnet:
 
@@ -134,7 +134,7 @@ Die folgende Tabelle gibt Aufschluss über die einzelnen Ressourcentypen, die m�
 
 ## Grenzen
 
-Folgende Tabelle zeigt die Einschränkungen für die IP-Adressierung in Azure gemäß Abonnement. Sie können sich [an den Support wenden](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um die Standardlimits Ihren Unternehmensanforderungen entsprechend auf die maximalen Grenzwerte zu erhöhen.
+Folgende Tabelle zeigt die Einschränkungen für die IP-Adressierung in Azure gemäß Abonnement. Sie können sich [an den Support wenden](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um die Standardgrenzwerte je nach Ihren Unternehmensanforderungen bis auf die maximalen Grenzwerte zu erhöhen.
 
 ||Standardlimit|Maximales Limit|
 |---|---|---|
@@ -166,4 +166,4 @@ Im Folgenden werden IP-Adressfeatures im Ressourcen-Manager-Bereitstellungsmodel
 ## Nächste Schritte
 - [Bereitstellen einer VM mit einer statischen privaten IP-Adresse](virtual-networks-static-private-ip-classic-pportal.md) mithilfe des klassischen Portals.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0615_2016-->

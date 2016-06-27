@@ -62,7 +62,6 @@ Wenn Sie die Entwicklungsartikel durchgearbeitet haben, finden Sie auf der Seite
 [Bezeichnungen]: sql-data-warehouse-develop-label.md
 [Schleifen]: sql-data-warehouse-develop-loops.md
 [Pivotieren von Daten]: sql-data-warehouse-develop-pivot-unpivot.md
-[Umbenennen von Objekten]: sql-data-warehouse-develop-rename.md
 [Statistiken]: sql-data-warehouse-develop-statistics.md
 [Gespeicherte Prozeduren]: sql-data-warehouse-develop-stored-procedures.md
 [Tabellenentwurf]: sql-data-warehouse-develop-table-design.md
@@ -76,7 +75,8 @@ Wenn Sie die Entwicklungsartikel durchgearbeitet haben, finden Sie auf der Seite
 [Transact-SQL-Referenz]: sql-data-warehouse-overview-reference.md
 
 <!--MSDN references-->
+[Umbenennen von Objekten]: https://msdn.microsoft.com/library/mt631611.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0615_2016-->

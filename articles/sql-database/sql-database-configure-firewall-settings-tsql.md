@@ -22,6 +22,7 @@
 
 
 > [AZURE.SELECTOR]
+- [Übersicht](sql-database-firewall-configure.md)
 - [Azure-Portal](sql-database-configure-firewall-settings.md)
 - [TSQL](sql-database-configure-firewall-settings-tsql.md)
 - [PowerShell](sql-database-configure-firewall-settings-powershell.md)
@@ -52,11 +53,11 @@ Firewallregeln auf Serverebene über Transact-SQL können nur über die Prinzipa
  
 		EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
  
- Weitere Informationen zu diesen gespeicherten Prozeduren finden Sie unter [sp\_set\_firewall\_rule](https://msdn.microsoft.com/library/dn270017.aspx) und [sp\_delete\_firewall\_rule](https://msdn.microsoft.com/library/dn270024.aspx).
+ Weitere Informationen zu diesen gespeicherten Prozeduren finden Sie unter [sp\_set\_firewall\_rule](https://msdn.microsoft.com/library/dn270017.aspx) sowie unter [sp\_delete\_firewall\_rule](https://msdn.microsoft.com/library/dn270024.aspx).
 
 ## Firewallregeln auf Datenbankebene
 
-Firewallregeln auf Datenbankebene können nur von Datenbankbenutzern mit der Berechtigung **CONTROL** für die Datenbank (z.B. Datenbankbesitzer) erstellt werden.
+Firewallregeln auf Datenbankebene können nur von Datenbankbenutzern erstellt werden, die für die Datenbank über die Berechtigung **CONTROL** verfügen (also beispielsweise von Datenbankbesitzern).
 
 1. Starten Sie nach dem Erstellen einer Firewall auf Serverebene für Ihre IP-Adresse ein Abfragefenster über das klassische Portal oder über SQL Server Management Studio.
 2. Stellen Sie eine Verbindung mit der Datenbank her, für die Sie eine Firewallregel auf Datenbankebene erstellen möchten.
@@ -70,10 +71,10 @@ Firewallregeln auf Datenbankebene können nur von Datenbankbenutzern mit der Ber
  
 		EXEC sp_delete_database_firewall_rule @name = N'ContosoFirewallRule'
 
-Weitere Informationen zu diesen gespeicherten Prozeduren finden Sie unter [sp\_set\_database\_firewall\_rule](https://msdn.microsoft.com/library/dn270010.aspx) und [sp\_delete\_database\_firewall\_rule](https://msdn.microsoft.com/library/dn270030.aspx).
+Weitere Informationen zu diesen gespeicherten Prozeduren finden Sie unter [sp\_set\_database\_firewall\_rule](https://msdn.microsoft.com/library/dn270010.aspx) sowie unter [sp\_delete\_database\_firewall\_rule](https://msdn.microsoft.com/library/dn270030.aspx).
 
 ## Nächste Schritte
 
-Ein Tutorial zum Erstellen einer Datenbank finden Sie unter [Erstellen einer SQL-Datenbank in Minuten mit dem Azure-Portal](sql-database-get-started.md). Hilfe beim Herstellen einer Verbindung mit Azure SQL-Datenbank über Open-Source-Anwendungen oder Anwendungen von Drittanbietern finden Sie unter [Clientcodebeispiele für die ersten Schritte mit SQL-Datenbank](https://msdn.microsoft.com/library/azure/ee336282.aspx). Informationen zum Navigieren zu Datenbanken finden Sie unter [Verwalten von Datenbankzugriff und Anmeldesicherheit](https://msdn.microsoft.com/library/azure/ee336235.aspx).
+Ein Tutorial zum Erstellen einer Datenbank finden Sie unter [Erstellen einer SQL-Datenbank in Minuten mit dem Azure-Portal](sql-database-get-started.md). Hilfe beim Herstellen einer Verbindung mit einer Azure SQL-Datenbank über Open-Source-Anwendungen oder Anwendungen von Drittanbietern finden Sie unter [Clientcodebeispiele für die ersten Schritte mit SQL-Datenbank](https://msdn.microsoft.com/library/azure/ee336282.aspx). Informationen zum Navigieren zu Datenbanken finden Sie unter [Verwalten von Datenbankzugriff und Anmeldesicherheit](https://msdn.microsoft.com/library/azure/ee336235.aspx).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

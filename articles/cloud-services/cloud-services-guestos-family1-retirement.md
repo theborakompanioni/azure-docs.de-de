@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="04/19/2015"
+   ms.date="06/10/2016"
    ms.author="yuemlu"/>
 
 
@@ -81,4 +81,4 @@ Clouddienste unter Gastbetriebssystemfamilie 1 werden nicht mehr unterstützt. 
 ## Nächste Schritte
 Überprüfen Sie die neuesten [Gastbetriebssystemreleases](cloud-services-guestos-update-matrix.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0615_2016-->

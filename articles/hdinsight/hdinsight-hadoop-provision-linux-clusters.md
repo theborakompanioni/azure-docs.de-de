@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="05/02/2016"
+   	ms.date="06/09/2016"
    	ms.author="jgao"/>
 
 
@@ -242,18 +242,29 @@ Ein [virtuelles Azure-Netzwerk](https://azure.microsoft.com/documentation/servic
     | -------------------------- | --------------------------- |
     | In einer Site-to-Site-Konfiguration können Sie mehrere Ressourcen aus Ihrem Datencenter über ein Hardware-VPN oder den Routing- und RAS-Dienst mit dem virtuellen Azure-Netzwerk verbinden.<br />![Diagramm der Standort-zu-Standort-Konfiguration](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-vnet-site-to-site.png) | In einer Point-to-Site-Konfiguration können Sie eine bestimmte Ressource über ein Software-VPN mit dem virtuellen Azure-Netzwerk verbinden.<br />![Diagramm der Punkt-zu-Standort-Konfiguration](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-vnet-point-to-site.png) |
 
+Für Windows-basierte Cluster ist ein virtuelles Azure-Netzwerk der Version 1 (klassisch) erforderlich, für Linux-basierte Cluster dagegen ein virtuelles Azure-Netzwerk der Version 2 (Azure-Ressourcen-Manager). Wenn nicht der richtige Netzwerktyp vorhanden ist, kann das Netzwerk nicht zum Erstellen des Clusters verwendet werden.
+
 Weitere Informationen zur Verwendung von HDInsight mit einem virtuellen Netzwerk, einschließlich spezifischer Konfigurationsanforderungen für das virtuelle Netzwerk, finden Sie unter [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md).
 
 ## Anpassen von Clustern mithilfe der HDInsight-Clusteranpassung (Bootstrap)
 
 Mitunter möchten Sie die Konfigurationsdateien bearbeiten:
 
+- clusterIdentity.xml
 - core-site.xml
+- gateway.xml
+- hbase-env.xml
+- hbase-site.xml
 - hdfs-site.xml
-- mapred-site.xml
-- yarn-site.xml
+- hive-env.xml
 - hive-site.xml
+- mapred-site
 - oozie-site.xml
+- oozie-env.xml
+- storm-site.xml
+- tez-site.xml
+- webhcat-site.xml
+- yarn-site.xml
 
 Um die Änderungen für die Laufzeit des Clusters beizubehalten, können Sie während des Erstellungsprozesses die HDInsight-Clusteranpassung nutzen. Alternativ dazu können Sie Ambari in Linux-basierten Clustern verwenden. Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md).
 
@@ -283,4 +294,4 @@ In diesem Artikel haben Sie grundlegende Informationen zum Erstellen eines Linux
 | [.NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) | &nbsp; | &nbsp; | &nbsp; | ✔ | ✔ | ✔ |
 | [ARM-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md) | &nbsp; | ✔ | &nbsp; | &nbsp; | ✔ | ✔ |
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -42,7 +42,7 @@ In diesem Artikel erfahren Sie, wie Sie Ihre DSVM nutzen können, um verschieden
 
 - Sie benötigen ein Azure-Abonnement. Sie können sich [hier](https://azure.microsoft.com/free/) für eine kostenlose Testversion registrieren.
 
-- Anleitungen für die Bereitstellung einer Data Science Virtual Machine in Ihrem Azure-Portal finden Sie unter [Creating a virtual machine](https://ms.portal.azure.com/#create/microsoft-ads.standard-data-science-vmstandard-data-science-vm) (Erstellen eines virtuellen Computers).
+- Anleitungen für die Bereitstellung einer Data Science Virtual Machine in Ihrem Azure-Portal finden Sie unter [Creating a virtual machine](https://portal.azure.com/#create/microsoft-ads.standard-data-science-vmstandard-data-science-vm) (Erstellen eines virtuellen Computers).
 
 ## 1\. Durchsuchen von Daten und Entwickeln von Modellen mit Microsoft R Server oder Python
 
@@ -404,7 +404,7 @@ Wenn Ihre Daten sich im Azure-Blobspeicher befinden, können Sie die Daten mit e
 ![](./media/machine-learning-data-science-vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
 
-In Visual Studio können Sie Daten aus dem Blobspeicher lesen, einige Datenmanipulationen ausführen, Features entwickeln und die resultierenden Daten entweder in Azure Data Lake oder im Azure-Blobspeicher ausgeben. Wenn Sie auf die Daten im Blobspeicher verweisen, verwenden Sie **wasb://**; wenn Sie auf die Daten in Azure Data Lake verweisen, verwenden Sie **swbhdfs://**.
+In Visual Studio können Sie Daten aus dem Blobspeicher lesen, einige Datenmanipulationen ausführen, Features entwickeln und die resultierenden Daten entweder in Azure Data Lake oder im Azure-Blobspeicher ausgeben. Wenn Sie auf die Daten im Blobspeicher verweisen, verwenden Sie ****wasb://**; wenn Sie auf die Daten in Azure Data Lake verweisen, verwenden Sie ****swbhdfs://**.
 
 ![](./media/machine-learning-data-science-vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 
@@ -910,4 +910,4 @@ Sie können andere in diesem Artikel dargestellte Azure-Datendienste und -Analys
 ## Zusammenfassung
 Dies sind nur einige Dinge, die mit der Microsoft Data Science Virtual Machine möglich sind. Sie können viele weitere Dinge tun, um sie als wirksame Analyseumgebung zu nutzen.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

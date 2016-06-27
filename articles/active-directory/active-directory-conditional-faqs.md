@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
-	manager="stevenpo"
+	manager="swadhwa"
 	editor=""/>
 
 <tags
@@ -13,13 +13,21 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/10/2016"
+	ms.date="06/15/2016"
 	ms.author="femila"/>
 
 # Häufig gestellte Fragen zum bedingten Zugriff
 
-**Kann ich die Gerätebedingungen in Azure AD verwenden, wenn ich die mobile Geräteverwaltung für Office 365 einsetze?**
- 
-Mit der mobilen Geräteverwaltung für Office 365 werden alle Geräterichtlinien als Teil von Office 365 verwaltet. Um einen Richtlinienkonflikt zwischen den Einstellungen in Office 365 und den Einstellungen in Azure AD zu vermeiden, ist das Festlegen dieser Richtlinien in Azure AD zurzeit nicht gestattet, wenn Sie die mobile Geräteverwaltung für Office 365 verwenden.
+## Welche Anwendungen arbeiten mit Richtlinien für den bedingten Zugriff?
+Informationen dazu finden Sie im Thema [Bedingter Zugriff – unterstützte Anwendungen](active-directory-conditional-access-supported-apps.md).
 
-<!---HONumber=AcomDC_0218_2016-->
+## Werden Richtlinien für den bedingten Zugriff für B2B-Zusammenarbeits- und Gastbenutzer erzwungen?
+Richtlinien werden für B2B-Zusammenarbeitsbenutzer erzwungen. In einigen Fällen erfüllt ein Benutzer möglicherweise die Richtlinienanforderungen nicht, beispielsweise dann, wenn die Organisation des Benutzers keine mehrstufige Authentifizierung unterstützt. Richtlinien werden zurzeit für SharePoint-Gastbenutzer nicht erzwungen. Die Gastbeziehung wird innerhalb von SharePoint verwaltet, Gastbenutzerkonten unterliegen daher keinen Zugriffsrichtlinien auf dem Authentifizierungsserver. Der Gastzugriff kann auf SharePoint verwaltet werden.
+
+## Gelten SharePoint Online-Richtlinien auch für OneDrive for Business?
+Ja.
+ 
+## Warum kann ich keine Richtlinien für Clientanwendungen wie Word oder Outlook festlegen?
+Eine Richtlinie für den bedingten Zugriff legt Anforderungen für den Zugriff auf einen Dienst fest und wird erzwungen, wenn die Authentifizierung für diesen Dienst erfolgt. Die Richtlinie wird also nicht direkt in einer Clientanwendung festgelegt, sondern wird beim Aufrufen eines Diensts angewendet. Eine für SharePoint festgelegte Richtlinie wird auf Clients angewendet, die SharePoint aufrufen. Eine für Exchange festgelegte Richtlinie wird auf Outlook angewendet.
+
+<!---HONumber=AcomDC_0615_2016-->

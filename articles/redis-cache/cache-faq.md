@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/20/2016" 
+	ms.date="06/13/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache – häufig gestellte Fragen
@@ -47,21 +47,22 @@ Aus dieser Tabelle können folgende Schlussfolgerungen gezogen werden.
 -	Mit dem Redis-Clustering steigt der Durchsatz linear, je mehr Shards (Knoten) Sie im Cluster verwenden. Wenn Sie z. B. einen P4-Cluster mit 10 Shards erstellen, beträgt der verfügbare Durchsatz 250 KB * 10 = 2,5 Millionen RPS.
 -	Der Durchsatz für größere Schlüsselgrößen ist im Premium-Tarif höher als im Standard-Tarif.
 
-| Tarif | Größe | Verfügbare Bandbreite | 1 KB Schlüsselgröße |
-|----------------------|--------|----------------------------|--------------------------------|
-| **Standard-Cachegröße** | &nbsp; |**Megabits pro Sekunde (MBit/s)/Megabyte pro Sekunde (MB/s)** | **Anforderungen pro Sekunde (RPS)** |
-| C0 | 250 MB | 5 / 0,625 | 600 |
-| C1 | 1 GB | 100 / 12,5 | 12\.200 |
-| C2 | 2,5 GB | 200 / 25 | 24\.000 |
-| C3 | 6 GB | 400 / 50 | 49\.000 |
-| C4 | 13 GB | 500 / 62,5 | 61\.000 |
-| C5 | 26 GB | 1\.000 / 125 | 115\.000 |
-| C6 | 53 GB | 2\.000 / 250 | 150\.000 |
-| **Premium-Cachegröße** | &nbsp; | &nbsp; | **Anforderungen pro Sekunde (RPS), pro Shard** |
-| P1 | 6 GB | 1\.000 / 125 | 140\.000 |
-| P2 | 13 GB | 2\.000 / 250 | 220\.000 |
-| P3 | 26 GB | 2\.000 / 250 | 220\.000 |
-| P4 | 53 GB | 4\.000 / 500 | 250\.000 |
+| Tarif | Größe | CPU-Kerne | Verfügbare Bandbreite | 1 KB Schlüsselgröße |
+|--------------------------|--------|-----------|--------------------------------------------------------|------------------------------------------|
+| **Standard-Cachegröße** | | | **Megabits pro Sekunde (MBit/s)/Megabyte pro Sekunde (MB/s)** | **Anforderungen pro Sekunde (RPS)** |
+| C0 | 250 MB | Shared  
+ | 5 / 0,625 | 600 |
+| C1 | 1 GB | 1 | 100 / 12,5 | 12\.200 |
+| C2 | 2,5 GB | 2 | 200 / 25 | 24\.000 |
+| C3 | 6 GB | 4 | 400 / 50 | 49\.000 |
+| C4 | 13 GB | 2 | 500 / 62,5 | 61\.000 |
+| C5 | 26 GB | 4 | 1\.000 / 125 | 115\.000 |
+| C6 | 53 GB | 8 | 2\.000 / 250 | 150\.000 |
+| **Premium-Cachegröße** | | **CPU-Kerne pro Shard** | | **Anforderungen pro Sekunde (RPS), pro Shard** |
+| P1 | 6 GB | 2 | 1\.000 / 125 | 140\.000 |
+| P2 | 13 GB | 4 | 2\.000 / 250 | 220\.000 |
+| P3 | 26 GB | 4 | 2\.000 / 250 | 220\.000 |
+| P4 | 53 GB | 8 | 4\.000 / 500 | 250\.000 |
 
 
 Anweisungen zum Herunterladen von Redis-Tools wie beispielsweise `redis-benchmark.exe` finden Sie im Abschnitt [Wie führe ich Redis-Befehle aus?](#cache-commands).
@@ -168,9 +169,9 @@ Vor dem Hintergrund dieser Informationen empfehlen wir dringend, als minimalen W
 
 So konfigurieren Sie diese Einstellung:
 
--	Verwenden Sie in ASP.NET in „web.config“ unter dem Konfigurationselement `<processModel>` die [Konfigurationseinstellung „minIoThreads“][]. Wenn die Ausführung in Azure Websites stattfindet, steht diese Einstellung nicht in den Konfigurationsoptionen zur Verfügung. Sie sollten dennoch in der Lage sein, sie programmgesteuert über die „Application\_Start“-Methode in „global.asax.cs“ vorzunehmen (siehe unten).
+-	Verwenden Sie in ASP.NET die [Konfigurationseinstellung „minIoThreads“][] unter dem Konfigurationselement `<processModel>` in „web.config“. Wenn die Ausführung in Azure Websites stattfindet, steht diese Einstellung nicht in den Konfigurationsoptionen zur Verfügung. Sie sollten dennoch in der Lage sein, sie programmgesteuert über die „Application\_Start“-Methode in „global.asax.cs“ vorzunehmen (siehe unten).
 
-> **Wichtiger Hinweis:** Der in diesem Konfigurationselement angegebene Wert gilt als Einstellung *pro Kern*. Wenn Ihr Computer z. B. über vier Kerne verfügt und Sie eine Einstellung von minimal 200 E/A-Threads zur Laufzeit festlegen möchten, müssen Sie `<processModel minIoThreads="50"/>` verwenden.
+> **Wichtiger Hinweis:** Der in diesem Konfigurationselement angegebene Wert ist die Einstellung *pro Kern*. Wenn Ihr Computer z.B. über vier Kerne verfügt und Sie eine minIOThreads-Einstellung von minimal 200 zur Laufzeit festlegen möchten, müssen Sie `<processModel minIoThreads="50"/>` verwenden.
 
 -	Außerhalb von ASP.NET verwenden Sie die [ThreadPool.SetMinThreads(…)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx)-API.
 
@@ -285,4 +286,4 @@ Weitere Informationen zu den ersten Schritten mit Azure Redis Cache finden Sie u
 
 [Konfigurationseinstellung „minIoThreads“]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0615_2016-->
