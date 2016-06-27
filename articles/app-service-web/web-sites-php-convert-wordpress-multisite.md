@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="01/12/2016" 
+	ms.date="04/08/2016" 
 	ms.author="robmcm"/>
 
 
@@ -24,7 +24,7 @@
 
 *Von [Ben Lobaugh][ben-lobaugh], [Microsoft Open Technologies Inc.][ms-open-tech]*
 
-In diesem Lernprogramm erfahren Sie, wie Sie eine vorhandene WordPress-Web-App, die über die Galerie in Azure erstellt wurde, in eine WordPress Multisite-Installation konvertieren. Darüber hinaus erfahren Sie, wie Sie den einzelnen Unterwebsites eine benutzerdefinierte Domäne in Ihrer Installation zuweisen.
+In diesem Tutorial erfahren Sie, wie Sie eine vorhandene WordPress-Web-App, die über den Katalog in Azure erstellt wurde, in eine WordPress Multisite-Installation konvertieren. Darüber hinaus erfahren Sie, wie Sie den einzelnen Unterwebsites eine benutzerdefinierte Domäne in Ihrer Installation zuweisen.
 
 Es wird davon ausgegangen, dass Sie WordPress installiert haben. Wenn dies nicht der Fall ist, folgen Sie der Anleitung unter [Erstellen einer WordPress-Website über die Galerie in Azure][website-from-gallery].
 
@@ -105,7 +105,7 @@ Wenn die *SSL-Einstellungen* angezeigt werden, sehen Sie auch alle Felder, in di
 
 ![Dialogfeld zum Verwalten benutzerdefinierter Domänen][wordpress-manage-domains]
 
-Nachdem Sie die Domäne in das Textfeld eingegeben haben, überprüft Azure den CNAME-Eintrag , den Sie zuvor erstellt haben. Wenn der DNS nicht vollständig ausgefüllt wurde, wird eine rote Markierung angezeigt. Wenn der Vorgang erfolgreich abgeschlossen wurde, wird ein grünes Häkchen angezeigt.
+Nachdem Sie die Domäne in das Textfeld eingegeben haben, überprüft Azure den CNAME-Eintrag , den Sie zuvor erstellt haben. Wenn das DNS nicht vollständig ausgefüllt wurde, wird eine rote Markierung angezeigt. Wenn der Vorgang erfolgreich abgeschlossen wurde, wird ein grünes Häkchen angezeigt.
 
 Notieren Sie sich die IP-Adresse, die unten im Dialogfeld aufgeführt wird. Sie benötigen diese IP-Adresse zum Einrichten des A-Datensatzes für Ihre Domäne.
 
@@ -132,7 +132,7 @@ Die neue Domäne wird standardmäßig neu in die automatisch generierte Standort
 
 ## Noch einmal
 
-Azure-Web-Apps ermöglichen Ihnen, eine unbegrenzte Anzahl von Domänen zu einer Web-App hinzuzufügen. Um eine weitere Domäne hinzuzufügen, müssen Sie die in den Abschnitten **Überprüfen der Domäne** und ** Einrichten des A-Datensatzes der Domäne** aufgeführten Schritte für jede Domäne erneut durchführen.
+Azure-Web-Apps ermöglichen Ihnen, eine unbegrenzte Anzahl von Domänen zu einer Web-App hinzuzufügen. Um eine weitere Domäne hinzuzufügen, müssen Sie die in den Abschnitten **Überprüfen der Domäne** und **Einrichten des A-Datensatzes der Domäne** aufgeführten Schritte für jede Domäne erneut durchführen.
 
 >[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
@@ -153,4 +153,4 @@ Azure-Web-Apps ermöglichen Ihnen, eine unbegrenzte Anzahl von Domänen zu einer
 
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0615_2016-->

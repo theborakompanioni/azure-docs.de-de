@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/22/2016"
+	ms.date="06/13/2016"
 	ms.author="guybo"/>
 
 # Bereitstellen einer VM-Skalierungsgruppe in Visual Studio
@@ -75,7 +75,7 @@ Jetzt können Sie die Vorlage an die Anforderungen Ihrer Anwendung anpassen, bei
 
 	![Neue Ressourcengruppe][new_resource]
 
-9. Wählen Sie als Nächstes die Schaltfläche **Parameter bearbeiten**, um Parameter einzugeben, die an die Vorlage übergeben werden. Bestimmte Werte, wie der Benutzername und das Kennwort für das Betriebssystem, sind zum Erstellen der Bereitstellung erforderlich.
+9. Wählen Sie als Nächstes die Schaltfläche **Parameter bearbeiten**, um Parameter einzugeben, die an die Vorlage übergeben werden. Bestimmte Werte, wie der Benutzername und das Kennwort für das Betriebssystem, sind zum Erstellen der Bereitstellung erforderlich. Falls die PowerShell-Tools für Visual Studio nicht installiert sind, empfiehlt es sich, das Kontrollkästchen „Kennwörter speichern“ zu aktivieren, um eine ausgeblendete PowerShell-Eingabeaufforderung zu vermeiden. Alternativ können Sie auch den [KeyVault-Unterstützung](https://azure.microsoft.com/blog/keyvault-support-for-arm-templates/) verwenden.
 
 	![Parameter bearbeiten][edit_parameters]
 
@@ -85,7 +85,7 @@ Jetzt können Sie die Vorlage an die Anforderungen Ihrer Anwendung anpassen, bei
 
 ## Untersuchen der VM-Skalierungsgruppe
 
-Nachdem die Bereitstellung abgeschlossen ist, sehen Sie die neue VM-Skalierungsgruppe im **Cloud-Explorer** von Visual Studio (aktualisieren Sie die Liste). Mit dem Cloud-Explorer können Sie Azure-Ressourcen in Visual Studio verwalten und gleichzeitig Anwendungen entwickeln. Sie können außerdem Ihre VM-Skalierungsgruppe im [Azure-Portal](https://portal.azure.com) und im [Azure-Ressourcen-Explorer](https://resources.azure.com/) anzeigen.
+Nachdem die Bereitstellung abgeschlossen ist, sehen Sie die neue VM-Skalierungsgruppe im **Cloud-Explorer** von Visual Studio (aktualisieren Sie die Liste). Mit dem Cloud-Explorer können Sie Azure-Ressourcen in Visual Studio verwalten und gleichzeitig Anwendungen entwickeln. Sie können Ihre VM-Skalierungsgruppe auch im [Azure-Portal](https://portal.azure.com) und im [Azure-Ressourcen-Explorer](https://resources.azure.com/) anzeigen.
 
 ![Cloud-Explorer][cloud_explorer]
 
@@ -107,4 +107,4 @@ Nachdem Sie VM-Skalierungsgruppen erfolgreich über Visual Studio bereitgestellt
 [output_window]: ./media/virtual-machine-scale-sets-vs-create/9-Output.png
 [cloud_explorer]: ./media/virtual-machine-scale-sets-vs-create/12-CloudExplorer.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

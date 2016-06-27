@@ -261,6 +261,8 @@ Führen Sie zum Installieren von Azure PowerShell die Schritte im vorherigen Abs
 
 3. Fügen Sie die neuen Dateien der Quellcodeverwaltung hinzu, und schieben Sie sie nach VSTS.
 
+>[AZURE.NOTE] Falls Sie für die Verwaltung Ihres Service Fabric-Clusters ein anderes Zertifikat verwendet haben, wiederholen Sie die Schritte unter „Importieren Ihres Automation-Zertifikats“ mit diesem Zertifikat.
+
 ### Erstellen der Builddefinition
 
 1.	Erstellen Sie eine leere Builddefinition. Gehen Sie dazu folgendermaßen vor:
@@ -292,7 +294,7 @@ Führen Sie zum Installieren von Azure PowerShell die Schritte im vorherigen Abs
 
 1. Wählen Sie auf der Registerkarte **Erstellen** den Befehl **Buildschritt hinzufügen...** aus.
 
-2. Wählen Sie **Paket** > **NuGet-Installer**.
+2. Wählen Sie **Paket** > **NuGet-Installer** aus.
 
 3. Wählen Sie neben dem Namen des Buildschritts das Stiftsymbol aus, und ändern Sie den Namen in **NuGet-Pakete wiederherstellen**.
 
@@ -306,13 +308,13 @@ Führen Sie zum Installieren von Azure PowerShell die Schritte im vorherigen Abs
 
 2.	Wählen Sie **Erstellen** > **MSBuild** aus.
 
-3.	Wählen Sie neben dem Namen des Buildschritts das Stiftsymbol aus, und ändern Sie dann den Namen zu **Build**.
+3.	Wählen Sie neben dem Namen des Buildschritts das Stiftsymbol aus, und ändern Sie dann den Namen in **Build**.
 
 4. Kopieren Sie diese Werte:
 
     |Name der Einstellung|Wert|
     |---|---|
-    |Lösung|Klicken Sie auf die Schaltfläche **...**, und wählen Sie die `.sln`-Datei für Ihre Lösung.|
+    |Lösung|Klicken Sie auf die Schaltfläche **...**, und wählen Sie die `.sln`-Datei für Ihre Lösung aus.|
     |Plattform|`$(BuildPlatform)`|
     |Konfiguration|`$(BuildConfiguration)`|
 
@@ -341,6 +343,8 @@ Führen Sie zum Installieren von Azure PowerShell die Schritte im vorherigen Abs
 
 Wenn bei einem vorherigen Buildvorgang keine Bereinigung stattgefunden hat (beispielsweise, weil der Buildvorgang vor der Bereinigung abgebrochen wurde), ist unter Umständen eine Ressourcengruppe vorhanden, die einen Konflikt mit der neuen Ressourcengruppe verursachen könnte. Bereinigen Sie zur Vermeidung von Konflikten alle übrig gebliebenen Ressourcengruppen (und die dazugehörigen Ressourcen), bevor Sie eine neue erstellen.
 
+>[AZURE.NOTE] Überspringen Sie diesen Schritt, wenn Sie den Cluster erstellen und für jeden Build verwenden möchten.
+
 1.	Wählen Sie auf der Registerkarte **Erstellen** den Befehl **Buildschritt hinzufügen...** aus.
 
 2.	Wählen Sie **Bereitstellen** > **Bereitstellung einer Azure-Ressourcengruppe** aus.
@@ -355,7 +359,7 @@ Wenn bei einem vorherigen Buildvorgang keine Bereinigung stattgefunden hat (beis
     |Azure RM-Abonnement|Wählen Sie den Verbindungsendpunkt aus, den Sie im Abschnitt **Erstellen eines Dienstprinzipals** erstellt haben.|
     |Aktion|**Ressourcengruppe löschen**|
     |Ressourcengruppe|Geben Sie einen nicht verwendeten Namen ein. Sie müssen den gleichen Namen im nächsten Schritt verwenden.|
-    |Bei Fehler fortsetzen|Bei diesem Schritt tritt ein Fehler auf, wenn die Ressourcengruppe nicht vorhanden ist. Aktivieren Sie **Bei Fehler fortsetzen** in dem Abschnitt **Steuerungsoptionen** aus, um dies zu vermeiden.|
+    |Bei Fehler fortsetzen|Bei diesem Schritt tritt ein Fehler auf, wenn die Ressourcengruppe nicht vorhanden ist. Aktivieren Sie im Abschnitt **Steuerungsoptionen** die Option **Bei Fehler fortsetzen**, um dies zu vermeiden.|
 
 5.	Speichern Sie die Builddefinition.
 
@@ -389,13 +393,17 @@ Wenn bei einem vorherigen Buildvorgang keine Bereinigung stattgefunden hat (beis
 
 3.	Wählen Sie neben dem Namen des Buildschritts das Stiftsymbol aus, und ändern Sie dann den Namen in **Bereitstellen**.
 
-4. Kopieren Sie diese Werte:
+4. Wählen Sie die folgenden Werte aus, und ersetzen Sie dabei den Wert von „-PublishProfile“ und „-ApplicationPackagePath“ durch die tatsächlichen Pfade:
 
     |Name der Einstellung|Wert|
     |---|---|
     |Typ|**Dateipfad**|
-    |Skriptdateiname|Klicken Sie auf die Schaltfläche **...**, und navigieren Sie zum Verzeichnis **Skripts** innerhalb Ihres Anwendungsprojekts. Wählen Sie `Deploy-FabricApplication.ps1` aus.|
+    |Skriptdateiname|Klicken Sie auf die Schaltfläche **...**, und navigieren Sie innerhalb Ihres Anwendungsprojekts zum Verzeichnis **Skripts**. Wählen Sie `Deploy-FabricApplication.ps1` aus.|
     |Argumente|`-PublishProfileFile path/to/MySolution/MyApplicationProject/PublishProfiles/MyPublishProfile.xml -ApplicationPackagePath path/to/MySolution/MyApplicationProject/pkg/$(BuildConfiguration)`|
+
+>[AZURE.NOTE] Eine Veröffentlichungsprofil-XML-Datei kann ganz einfach in Visual Studio erstellt werden, wie hier gezeigt: https://azure.microsoft.com/documentation/articles/service-fabric-publish-app-remote-cluster
+
+>[AZURE.NOTE] Wenn Sie die Bereitstellung der Anwendung in einem Cluster unterstützen möchten, bei der die Anwendung nicht aktualisiert, sondern überschrieben wird, fügen Sie das PowerShell-Argument „-OverwriteBehavior SameAppTypeAndVersion“ hinzu. Achten Sie außerdem darauf, dass das ausgewählte Veröffentlichungsprofil nicht mit einer Upgradeoption konfiguriert ist. Dadurch werden vor dem Installieren des neueren Builds sämtliche Anwendungstypen entfernt.
 
 5.	Speichern Sie die Builddefinition.
 
@@ -405,7 +413,7 @@ Wenn bei einem vorherigen Buildvorgang keine Bereinigung stattgefunden hat (beis
   
 ### Hinzufügen des abschließenden Schritts „Bereinigen“
 
-1. Führen Sie die gleichen Schritte aus wie in dem Abschnitt [Hinzufügen des Schritts „Clusterressourcengruppe entfernen“](#RemoveClusterResourceGroup). Damit werden alle bereitgestellten Azure-Ressourcen bereinigt, die während des Builds erstellt wurden.
+1. Führen Sie die im Abschnitt [Hinzufügen des Schritts „Clusterressourcengruppe entfernen“](#RemoveClusterResourceGroup) beschriebenen Schritte aus. Damit werden alle bereitgestellten Azure-Ressourcen bereinigt, die während des Builds erstellt wurden.
 
 ### Ausprobieren
 
@@ -415,7 +423,7 @@ Wählen Sie **Build zur Warteschlange hinzufügen** aus, um einen Build zu start
 
 Mit den oben aufgeführten Anweisungen wird für jeden Buildvorgang ein neuer Cluster erstellt und am Ende des Buildvorgangs wieder entfernt. Wenn Sie stattdessen bei jedem Buildvorgang ein Anwendungsupgrade (für einen vorhandenen Cluster) durchführen möchten, führen Sie die folgenden Schritte aus:
 
-1.	Erstellen Sie manuell einen Testcluster über das Azure-Portal oder über Azure PowerShell gemäß [dieser Anweisungen](service-fabric-cluster-creation-via-portal.md).
+1.	Erstellen Sie anhand [dieser Anweisungen](service-fabric-cluster-creation-via-portal.md) manuell einen Testcluster über das Azure-Portal oder über Azure PowerShell.
 
 2.	Konfigurieren Sie Ihr Veröffentlichungsprofil für die Unterstützung von Anwendungsupgrades. Entsprechende Anweisungen finden Sie [hier](service-fabric-visualstudio-configure-upgrade.md).
 
@@ -429,4 +437,4 @@ Weitere Informationen zu Continuous Integration für Service Fabric-Anwendungen 
  - [Bereitstellen eines Build-Agents](https://msdn.microsoft.com/Library/vs/alm/Build/agents/windows)
  - [Erstellen und Konfigurieren einer Builddefinition](https://msdn.microsoft.com/Library/vs/alm/Build/vs/define-build)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

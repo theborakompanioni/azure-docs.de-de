@@ -54,10 +54,10 @@ Führen Sie die unten angegebenen Schritte aus, um das Befehlszeilen-Hilfsprogra
 - [Neueste Version von SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
 - [Neueste Version von SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
 
-## Weitere Informationen
+## Weitere Ressourcen
 
 - [SQL-Datenbank V12](sql-database-v12-whats-new.md)
 - [Teilweise oder vollständig unterstützte Transact-SQL-Funktionen](sql-database-transact-sql-information.md)
 - [Migrate non-SQL Server databases using SQL Server Migration Assistant](http://blogs.msdn.com/b/ssma/) (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -20,6 +20,10 @@
 
 # NodeJS-Entwicklerreferenz zu Azure Functions
 
+> [AZURE.SELECTOR]
+- [C#-Skript](../articles/azure-functions/functions-reference-csharp.md)
+- [Node.js](../articles/azure-functions/functions-reference-node.md)
+
 Mit der Node-/JavaScript-Benutzeroberfläche für Azure Functions können Sie ganz einfach eine Funktion exportieren, der ein `context`-Objekt für die Kommunikation mit der Laufzeit sowie für das Empfangen oder Senden von Daten über Bindungen übergeben wird.
 
 In diesem Artikel wird davon ausgegangen, dass Sie bereits die [Entwicklerreferenz zu Azure Functions](functions-reference.md) gelesen haben.
@@ -42,7 +46,7 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 };
 ```
 
-Bindungen von `direction === "in"` werden als Funktionsargumente übergeben, sodass Sie mit [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) neue Eingaben dynamisch verarbeiten können (z. B. durch Verwendung von `arguments.length` zum Durchlaufen all Ihrer Eingaben). Diese Funktion ist sehr praktisch, wenn Sie nur einen Trigger ohne weitere Eingaben verwenden, da Sie zuverlässig auf Ihre Triggerdaten zugreifen können, ohne auf Ihr `context`-Objekt zu verweisen.
+Bindungen von `direction === "in"` werden als Funktionsargumente übergeben, sodass Sie mit [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) neue Eingaben dynamisch verarbeiten können (z.B. durch Verwendung von `arguments.length` zum Durchlaufen all Ihrer Eingaben). Diese Funktion ist sehr praktisch, wenn Sie nur einen Trigger ohne weitere Eingaben verwenden, da Sie zuverlässig auf Ihre Triggerdaten zugreifen können, ohne auf Ihr `context`-Objekt zu verweisen.
 
 Die Argumente werden in der Reihenfolge an die Funktion übergeben, in der sie in *function.json* auftreten. Dies gilt auch dann, wenn Sie sie in der Exportanweisung nicht angeben. Wenn Sie beispielsweise `function(context, a, b)` verwenden und dies in `function(context, a)` ändern, können Sie dennoch den Wert von `b` im Funktionscode abrufen, indem Sie auf `arguments[3]` verweisen.
 
@@ -52,7 +56,7 @@ Alle Bindungen werden unabhängig von der Richtung auch mit dem `context`-Objekt
 
 Die Laufzeit verwendet ein `context`-Objekt, um Daten an und von Ihrer Funktion zu übergeben und Ihnen die Kommunikation mit der Laufzeit zu ermöglichen.
 
-Das Kontextobjekt ist immer der erste Parameter in einer Funktion und sollte immer einbezogen werden, weil es Methoden wie `context.done` und `context.log` enthält, die die Laufzeit ordnungsgemäß verwenden müssen. Sie können das Objekt beliebig benennen (z. B. `ctx` oder `c`).
+Das Kontextobjekt ist immer der erste Parameter in einer Funktion und sollte immer einbezogen werden, weil es Methoden wie `context.done` und `context.log` enthält, die die Laufzeit ordnungsgemäß verwenden müssen. Sie können das Objekt beliebig benennen (z.B. `ctx` oder `c`).
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -63,7 +67,7 @@ module.exports = function(context) {
 
 ## context.bindings
 
-Das `context.bindings`-Objekt erfasst alle Eingabe- und Ausgabedaten. Die Daten werden dem `context.bindings`-Objekt über die `name`-Eigenschaft der Bindung hinzugefügt. Wenn z. B. die folgende Bindungsdefinition in *function.json* vorliegt, können Sie über `context.bindings.myInput` auf den Inhalt der Warteschlange zugreifen.
+Das `context.bindings`-Objekt erfasst alle Eingabe- und Ausgabedaten. Die Daten werden dem `context.bindings`-Objekt über die `name`-Eigenschaft der Bindung hinzugefügt. Wenn z.B. die folgende Bindungsdefinition in *function.json* vorliegt, können Sie über `context.bindings.myInput` auf den Inhalt der Warteschlange zugreifen.
 
 ```json
     {
@@ -142,7 +146,7 @@ Sie können Pakete in Ihre Funktion einschließen, indem Sie die Datei *package.
 
 Sie können auch `npm install` an der SCM-Befehlszeilenschnittstelle (Kudu) der Funktionen-App verwenden:
 
-1. Navigieren Sie zu: `https://<function_app_name>.scm.azurewebsites.net`.
+1. Navigieren Sie zu `https://<function_app_name>.scm.azurewebsites.net`.
 
 2. Klicken Sie auf **Debugkonsole > CMD**.
 
@@ -150,7 +154,7 @@ Sie können auch `npm install` an der SCM-Befehlszeilenschnittstelle (Kudu) der 
 
 4. Führen Sie `npm install` aus.
 
-Nach der Installation der benötigten Pakete importieren Sie Ihre Funktion auf übliche Weise (z. B. über `require('packagename')`).
+Nach der Installation der benötigten Pakete importieren Sie Ihre Funktion auf übliche Weise (z.B. über `require('packagename')`).
 
 ```javascript
 // Import the underscore.js library
@@ -196,4 +200,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [C#-Entwicklerreferenz zu Azure Functions](functions-reference-csharp.md)
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

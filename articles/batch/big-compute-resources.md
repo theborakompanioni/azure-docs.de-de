@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="big-compute"
-   ms.date="04/29/2016"
+   ms.date="06/08/2016"
    ms.author="danlep"/>
 
 # Big Compute in Azure: Technische Ressourcen für Batch und HPC (High Performance Computing)
@@ -34,11 +34,11 @@ Erfahren Sie mehr über Big Compute-Optionen in Azure, und wählen Sie den richt
 
 * [Dokumentation](https://azure.microsoft.com/documentation/services/batch/)
 
-* Referenz zu [.NET](https://msdn.microsoft.com/library/azure/mt348682.aspx), [Python](http://azure-sdk-for-python.readthedocs.io/latest/), [Node.js](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/) und [REST](https://msdn.microsoft.com/library/azure/dn820158.aspx)-API
+* Referenz zu [.NET](https://msdn.microsoft.com/library/azure/mt348682.aspx), [Python](http://azure-sdk-for-python.readthedocs.io/latest/), [Node.js](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/), [Java](http://azure.github.io/azure-sdk-for-java/) und [REST](https://msdn.microsoft.com/library/azure/dn820158.aspx)-API
 
 * Referenz zur [Batch Management .NET-Bibliothek](https://msdn.microsoft.com/library/mt463120.aspx)
 
-* [Tutorial: Erste Schritte mit der Azure Batch-Bibliothek für .NET](batch-dotnet-get-started.md)
+* Tutorials: Erste Schritte mit der [Azure Batch-Bibliothek für .NET](batch-dotnet-get-started.md) und dem [Batch Python-Client](batch-python-tutorial.md)
 
 * [Batch-Forum](https://social.msdn.microsoft.com/Forums/de-DE/home?forum=azurebatch)
 
@@ -157,4 +157,4 @@ Azure bietet zum Ausführen Ihrer Linux- und Windows-HPC-Workloads [eine Reihe u
 * Die neuesten Ankündigungen finden Sie im [Blog des HPC- und Batch-Teams von Microsoft](http://blogs.technet.com/b/windowshpc/) und im [Azure-Blog](https://azure.microsoft.com/blog/tag/hpc/).
 * Weitere Informationen finden Sie auch unter [Neuigkeiten bei Batch](https://azure.microsoft.com/updates/?service=batch) oder indem Sie den [RSS-Feed](https://azure.microsoft.com/updates/feed/?service=batch) abonnieren.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

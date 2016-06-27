@@ -3,7 +3,7 @@
  description="Überblick über die Azure IoT Hub-Geräteverwaltung: Gerätezwillinge, Geräteabfragen, Geräteaufträge"
  services="iot-hub"
  documentationCenter=""
- authors="ellenfosborne"
+ authors="juanjperez"
  manager="timlt"
  editor=""/>
 
@@ -14,7 +14,7 @@
  ms.tgt_pltfrm="na"
  ms.workload="na"
  ms.date="04/29/2016"
- ms.author="elfarber"/>
+ ms.author="juanpere"/>
 
 # Überblick über die Azure IoT Hub-Geräteverwaltung (Vorschau)
 
@@ -24,7 +24,7 @@ Die drei wichtigsten Konzepte für die Geräteverwaltung in Azure IoT sind:
 
 1.  **Gerätezwillinge**: die Darstellung des physischen Geräts in IoT Hub.
 
-2.  **Geräteabfragen**: Sie können Gerätezwillinge suchen und aggregierte Kenntnisse von Gerätezwillingen generieren. Beispielsweise könnten Sie alle Gerätezwillinge mit Firmwareversion 1.0 ermitteln.
+2.  **Geräteabfragen**: Sie können Gerätezwillinge suchen und aggregierte Kenntnisse mehrerer Gerätezwillinge generieren. Beispielsweise können Sie eine Abfrage ausführen, um alle Gerätezwillinge mit Firmwareversion 1.0 zu ermitteln.
 
 3.  **Geräteaufträge**: eine für ein oder mehrere physische Geräte durchgeführte Aktion, z.B. Firmwareupdate, Neustart und Zurücksetzung auf Werkseinstellungen.
 
@@ -86,7 +86,7 @@ Es gibt sechs Typen von Geräteaufträgen, die zurzeit von der Azure IoT Hub-Ger
 
 Weitere Informationen zur Verwendung jedes dieser Aufträge finden Sie in der [API-Dokumentation für C# und node.js][lnk-apidocs].
 
-Ein Auftrag kann für mehrere Geräte ausgeführt werden. Beim Starten eines Auftrags wird ein untergeordneter Auftrag für jedes dieser Geräte erstellt. Ein untergeordneter Auftrag wird auf einem einzelnen Gerät ausgeführt. Jeder untergeordnete Auftrag verfügt über einen Zeiger auf den übergeordneten Auftrag. Der übergeordnete Auftrag ist nur ein Container für die untergeordneten Aufträge, er implementiert keine Logik zur Unterscheidung zwischen Gerätetypen (z.B. Unterscheidung zwischen Aktualisieren eines Intel Edison-Geräts und Aktualisieren eines Raspberry Pi-Geräts). Das folgende Diagramm veranschaulicht die Beziehung zwischen einem übergeordneten Auftrag, den ihm untergeordneten Aufträgen und den zugehörigen physischen Geräten.
+Ein Auftrag kann für mehrere Geräte ausgeführt werden. Beim Starten eines Auftrags wird ein untergeordneter Auftrag für jedes dieser Geräte erstellt. Ein untergeordneter Auftrag wird auf einem einzelnen Gerät ausgeführt. Jeder untergeordnete Auftrag verfügt über einen Zeiger auf den übergeordneten Auftrag. Der übergeordnete Auftrag ist nur ein Container für die untergeordneten Aufträge. Er implementiert keine Logik zur Unterscheidung zwischen Gerätetypen (z.B. Unterscheidung zwischen Aktualisieren eines Intel Edison-Geräts und Aktualisieren eines Raspberry Pi-Geräts). Das folgende Diagramm veranschaulicht die Beziehung zwischen einem übergeordneten Auftrag, den ihm untergeordneten Aufträgen und den zugehörigen physischen Geräten.
 
 ![][img-jobs]
 
@@ -103,17 +103,9 @@ Die Clientbibliothek der Geräteverwaltung hat zwei Hauptaufgaben:
 
 Weitere Informationen zu diesen Aufgaben und der Implementierung auf dem physischen Gerät finden Sie unter [Einführung in die Clientbibliothek der Azure IoT Hub-Geräteverwaltung für C][lnk-library-c].
 
-## Nächste Schritte
+## Nächster Schritt
 
-Weitere Informationen zu den Geräteverwaltungsfeatures von Azure IoT Hub erhalten Sie in den folgenden Tutorials:
-
-- [Erste Schritte mit der Azure IoT Hub-Geräteverwaltung][lnk-get-started]
-
-- [Verwenden des Gerätezwillings][lnk-tutorial-twin]
-
-- [Suchen nach Gerätezwillingen mithilfe von Abfragen][lnk-tutorial-queries]
-
-- [Aktualisieren der Gerätefirmware mithilfe von Geräteaufträgen][lnk-tutorial-jobs]
+Weitere Informationen zu den Features der Azure IoT Hub-Geräteverwaltung finden Sie im Tutorial [Erste Schritte mit der Azure IoT Hub-Geräteverwaltung][lnk-get-started].
 
 <!-- Images and links -->
 [img-twin]: media/iot-hub-device-management-overview/image1.png
@@ -124,9 +116,7 @@ Weitere Informationen zu den Geräteverwaltungsfeatures von Azure IoT Hub erhalt
 [lnk-library-c]: iot-hub-device-management-library.md
 [lnk-get-started]: iot-hub-device-management-get-started.md
 [lnk-tutorial-twin]: iot-hub-device-management-device-twin.md
-[lnk-tutorial-queries]: iot-hub-device-management-device-query.md
-[lnk-tutorial-jobs]: iot-hub-device-management-device-jobs.md
 [lnk-apidocs]: http://azure.github.io/azure-iot-sdks/
 [lnk-query-samples]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/doc/get_started/dm_queries/query-samples.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

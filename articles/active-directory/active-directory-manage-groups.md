@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/17/2016"
+	ms.date="06/14/2016"
 	ms.author="curtand"/>
 
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) ist eine umfassende Lösung für die Identitä
 > [AZURE.NOTE] Um Azure Active Directory verwenden zu können, benötigen Sie ein Azure-Konto. Wenn Sie nicht über ein Azure-Konto verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/pricing/free-trial/).
 
 
-Eines der wichtigsten Features in Azure AD ist die Möglichkeit, den Zugriff auf Ressourcen zu verwalten. Diese Ressourcen können Teil des Verzeichnisses sein, wie im Fall von Berechtigungen zum Verwalten von Objekten mithilfe von Rollen im Verzeichnis, oder externe Ressourcen, z. B. SaaS-Anwendungen, Azure-Dienste und SharePoint-Websites oder lokale Ressourcen. Es gibt vier Möglichkeiten, einem Benutzer Zugriffsrechte auf eine Ressource zuzuweisen:
+Eines der wichtigsten Features in Azure AD ist die Möglichkeit, den Zugriff auf Ressourcen zu verwalten. Diese Ressourcen können Teil des Verzeichnisses sein, wie im Fall von Berechtigungen zum Verwalten von Objekten mithilfe von Rollen im Verzeichnis, oder externe Ressourcen, z. B. SaaS-Anwendungen, Azure-Dienste und SharePoint-Websites oder lokale Ressourcen. Es gibt vier Möglichkeiten, einem Benutzer Zugriffsrechte auf eine Ressource zuzuweisen:
 
 
 1. Direkte Zuweisung
@@ -89,4 +89,6 @@ Da Sie nun die Grundlagen der Zugriffsverwaltung kennen, können Sie sich jetzt 
 
 * [Graph-API-Referenz für Gruppen](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/groups-operations#GroupFunctions)
 
-<!---HONumber=AcomDC_0330_2016-->
+* [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](active-directory-accessmanagement-groups-settings-cmdlets.md)
+
+<!---HONumber=AcomDC_0615_2016-->

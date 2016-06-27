@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="06/10/2016"
 	ms.author="davidmu"/>
 
 # Erstellen einer Windows-VM-Skalierungsgruppe mithilfe von Azure PowerShell
@@ -84,7 +84,7 @@ Eine VM-Skalierungsgruppe muss in einer Ressourcengruppe enthalten sein.
 
 ### Speicherkonto
 
-Für die in einer Skalierungsgruppe erstellten virtuellen Computer ist ein Speicherkonto zum Speichern der zugehörigen Datenträger erforderlich.
+Ein Speicherkonto wird von einem virtuellen Computer verwendet, um den Betriebssystemdatenträger und die Diagnosedaten für die Skalierung zu speichern. Nach Möglichkeit sollte in einer Skalierungsgruppe für jeden virtuellen Computer ein Speicherkonto erstellt werden. Sollte dies nicht möglich sein, planen Sie mit maximal 20 virtuellen Computern pro Speicherkonto. In dem Beispiel in diesem Artikel werden für drei virtuelle Computer in einer Skalierungsgruppe drei Speicherkonten erstellt.
 
 1. Ersetzen Sie den Wert von **saName** durch den Namen, den Sie für das Speicherkonto verwenden möchten, und erstellen Sie dann die Variable: 
 
@@ -127,6 +127,8 @@ Für die in einer Skalierungsgruppe erstellten virtuellen Computer ist ein Speic
         Tags                : {}
         Context             : Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext
 
+5. Wiederholen Sie die Schritte 1 bis 4, um drei Speicherkonten (beispielsweise „myst1“, „myst2“ und „myst3“) zu erstellen.
+
 ### Virtuelles Netzwerk
 
 Für die virtuellen Computer in der Skalierungsgruppe ist ein virtuelles Netzwerk erforderlich.
@@ -163,7 +165,7 @@ Bevor eine Netzwerkschnittstelle erstellt werden kann, müssen Sie eine öffentl
     
         Test-AzureRmDnsAvailability -DomainQualifiedName $domName -Location $locName
 
-    Ist die Antwort **True**, ist der vorgeschlagene Name eindeutig.
+    Lautet die Antwort **True**, ist der vorgeschlagene Name eindeutig.
 
 3. Ersetzen Sie den Wert von **$pipName** durch den Namen, den Sie für die öffentliche IP-Adresse verwenden möchten, und erstellen Sie dann die Variable.
 
@@ -205,7 +207,7 @@ Sie haben alle Ressourcen, die Sie für die Skalierungsgruppenkonfiguration ben�
 
         $vmss = New-AzureRmVmssConfig -Location $locName -SkuCapacity 3 -SkuName "Standard_A0" -UpgradePolicyMode "manual"
         
-    In diesem Beispiel wird veranschaulicht, wie eine Skalierungsgruppe mit drei virtuellen Computern erstellt wird. Weitere Informationen über die Kapazität von Skalierungsgruppen finden Sie unter [Übersicht über VM-Skalierungsgruppen](virtual-machine-scale-sets-overview.md). In diesem Schritt wird auch die Größe der virtuellen Computer in der Gruppe festgelegt (wird als „SkuName“ bezeichnet). Suchen Sie unter [Größen für virtuelle Computer](..\virtual-machines\virtual-machines-windows-sizes.md) die Größe, die Ihre Anforderungen erfüllt.
+    In diesem Beispiel wird veranschaulicht, wie eine Skalierungsgruppe mit drei virtuellen Computern erstellt wird. Weitere Informationen zur Kapazität von Skalierungsgruppen finden Sie unter [Übersicht über VM-Skalierungsgruppen](virtual-machine-scale-sets-overview.md). In diesem Schritt wird auch die Größe der virtuellen Computer in der Gruppe festgelegt (wird als „SkuName“ bezeichnet). Ermitteln Sie unter [Größen für virtuelle Computer](../virtual-machines/virtual-machines-windows-sizes.md) die passende Größe für Ihre Anforderungen.
     
 4. Fügen Sie die Konfiguration der Netzwerkschnittstelle der Skalierungsgruppenkonfiguration hinzu:
         
@@ -254,15 +256,15 @@ Sie haben alle Ressourcen, die Sie für die Skalierungsgruppenkonfiguration ben�
         $imageOffer = "WindowsServer"
         $imageSku = "2012-R2-Datacenter"
         
-    Weitere Informationen zum zu verwendenden Image finden Sie unter [Navigieren zwischen und Auswählen von Images virtueller Azure-Computer mit Windows PowerShell und der Azure-Befehlszeilenschnittstelle](..\virtual-machines\virtual-machines-windows-cli-ps-findimage.md).
+    Weitere Informationen zum zu verwendenden Image finden Sie unter [Navigieren zwischen und Auswählen von Images virtueller Azure-Computer mit Windows PowerShell und der Azure-Befehlszeilenschnittstelle](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md).
         
-3. Ersetzen Sie den Wert von **$vhdContainer** durch den Pfad, in dem die virtuellen Festplatten gespeichert sind, z.B. „https://mystorage.blob.core.windows.net/vhds“, und erstellen Sie dann die Variable:
+3. Ersetzen Sie den Wert von **$vhdContainers** durch eine Liste mit den Pfaden, an denen die virtuellen Festplatten gespeichert sind (beispielsweise „https://mystorage.blob.core.windows.net/vhds), und erstellen Sie dann die Variable:
        
-        $vhdContainer = "URI of storage container"
+        $vhdContainers = @("https://myst1.blob.core.windows.net/vhds","https://myst2.blob.core.windows.net/vhds","https://myst3.blob.core.windows.net/vhds")
         
 4. Erstellen Sie das Speicherprofil:
 
-        Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet $vmss -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion "latest" -Name $storeProfile -VhdContainer $vhdContainer -OsDiskCreateOption "FromImage" -OsDiskCaching "None"  
+        Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet $vmss -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion "latest" -Name $storeProfile -VhdContainer $vhdContainers -OsDiskCreateOption "FromImage" -OsDiskCaching "None"  
 
 ### VM-Skalierungsgruppe
 
@@ -295,15 +297,20 @@ Jetzt können Sie die Skalierungsgruppe erstellen.
 Untersuchen Sie die eben erstellte VM-Skalierungsgruppe mithilfe der folgenden Ressourcen:
 
 - Azure-Portal: Eine begrenzte Menge an Informationen steht im Portal zur Verfügung.
-- [Azure-Ressourcen-Explorer](https://resources.azure.com/): Dies ist das Tool, das zum Untersuchen des aktuellen Zustands Ihrer Skalierungsgruppe am besten geeignet ist.
+- [Azure-Ressourcen-Explorer](https://resources.azure.com/): Dies ist das Tool, das am besten zum Untersuchen des aktuellen Zustands Ihrer Skalierungsgruppe geeignet ist.
 - Azure PowerShell: Verwenden Sie den folgenden Befehl, um Informationen zu erhalten:
 
         Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
+        
+        Or 
+        
+        Get-AzureRmVmssVM -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
+        
 
 ## Nächste Schritte
 
 - Verwalten Sie die Skalierungsgruppe, die Sie gerade erstellt haben, mithilfe der Informationen unter [Verwalten virtueller Computer in einer VM-Skalierungsgruppe](virtual-machine-scale-sets-windows-manage.md).
-- Ziehen Sie die automatische Skalierung Ihrer Skalierungsgruppe in Betracht. Lesen Sie dazu die Informationen unter [Automatic scaling and virtual machine scale sets](virtual-machine-scale-sets-autoscale-overview.md) (Automatische Skalierung und VM-Skalierungsgruppen).
-- Erfahren Sie mehr über die vertikale Skalierung, indem Sie [Vertikale automatische Skalierung mit VM-Skalierungsgruppen](virtual-machine-scale-sets-vertical-scale-reprovision.md) lesen.
+- Ziehen Sie die automatische Skalierung Ihrer Skalierungsgruppe in Betracht. Lesen Sie dazu die Informationen unter [Automatische Skalierung und Skalierungsgruppen für virtuelle Computer](virtual-machine-scale-sets-autoscale-overview.md).
+- Informieren Sie sich unter [Vertikale automatische Skalierung mit VM-Skalierungsgruppen](virtual-machine-scale-sets-vertical-scale-reprovision.md) ausführlicher über die vertikale Skalierung.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Azure Redis Cache – Beispiele" 
+	pageTitle="Azure Redis Cache – Beispiele | Microsoft Azure" 
 	description="Erfahren Sie, wie Sie Azure Redis Cache verwenden." 
 	services="redis-cache" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="erikre" 
+	manager="douge" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="03/22/2016" 
+	ms.date="06/09/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache – Beispiele 
@@ -74,4 +74,4 @@ Das Beispiel [Retwis](https://github.com/SyntaxC4-MSFT/retwis) ist die Hello-Wor
 
 Das Beispiel [Bandbreitenüberwachung](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor) ermöglicht die Überwachung der auf dem Client genutzten Bandbreite. Um die Bandbreite zu messen, führen Sie das Beispiel auf dem Cacheclientcomputer aus, rufen Sie den Cache auf, und beobachten Sie die durch das Beispiel gemeldete Bandbreite.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0615_2016-->

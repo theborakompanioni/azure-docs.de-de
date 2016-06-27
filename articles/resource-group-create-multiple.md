@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/09/2016"
+   ms.date="06/13/2016"
    ms.author="tomfitz"/>
 
 # Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager
@@ -74,7 +74,7 @@ Verwenden Sie die folgende Vorlage:
 
 ## Versetzen des Indexwerts
 
-Im obigen Beispiel wird Ihnen auffallen, dass der Indexwert von 0 bis 2 reicht. Zum Versetzen des Indexwerts können Sie einen Wert in der **copyIndex()**-Funktion übergeben, z. B. **copyIndex(1)**. Die Anzahl von durchzuführenden Durchläufen wird weiterhin im copy-Element angegeben, aber der Wert von copyIndex wird um den angegebenen Wert versetzt. Wenn Sie dieselbe Vorlage wie im vorherigen Beispiel verwenden, dieses Mal aber **copyIndex(1)** angeben, werden also drei Websites mit den folgenden Namen bereitgestellt:
+Im obigen Beispiel wird Ihnen auffallen, dass der Indexwert von 0 bis 2 reicht. Zum Versetzen des Indexwerts können Sie einen Wert in der **copyIndex()**-Funktion übergeben, z. B. **copyIndex(1)**. Die Anzahl von durchzuführenden Durchläufen wird weiterhin im copy-Element angegeben, aber der Wert von copyIndex wird um den angegebenen Wert versetzt. Wenn Sie dieselbe Vorlage wie im vorherigen Beispiel verwenden, dieses Mal aber **copyIndex(1)** angeben, werden also drei Websites mit den folgenden Namen bereitgestellt:
 
 - examplecopy-1
 - examplecopy-2
@@ -297,7 +297,7 @@ Die relevanten Abschnitte der Bereitstellungsvorlage sind unten aufgeführt. Ein
       ]
     }
 
-Die verknüpfte Vorlage definiert das zurückzugebende Array. In der unten gezeigten Vorlage wurde die Wiederholung der Datenträgerdefinitionen zwischen 3 und 32 ausgelassen. Ihre Vorlage muss jedoch alle diese Definitionen enthalten. Wenn Sie mehr als 32 Datenträger benötigen, können Sie das Muster fortsetzen. Beachten Sie, dass mit dieser Vorlage keine Ressourcen bereitgestellt werden. Stattdessen wird nur ein Array mit der angeforderten Anzahl von Objekten zurückgegeben, die den Datenträger definieren.
+Die verknüpfte Vorlage definiert das zurückzugebende Array. In der unten gezeigten Vorlage wurde die Wiederholung der Datenträgerdefinitionen zwischen 3 und 32 ausgelassen. Ihre Vorlage muss jedoch alle diese Definitionen enthalten. Wenn Sie mehr als 32 Datenträger benötigen, können Sie das Muster fortsetzen. Beachten Sie, dass mit dieser Vorlage keine Ressourcen bereitgestellt werden. Stattdessen wird nur ein Array mit der angeforderten Anzahl von Objekten zurückgegeben, die den Datenträger definieren.
 
 ```
 {
@@ -488,4 +488,4 @@ Die verknüpfte Vorlage definiert das zurückzugebende Array. In der unten gezei
 - Unter [Funktionen von Azure-Ressourcen-Manager-Vorlagen](./resource-group-template-functions.md) finden Sie alle Funktionen, die Sie in einer Vorlage verwenden können.
 - Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -20,6 +20,10 @@
 
 # C#-Entwicklerreferenz zu Azure Functions
 
+> [AZURE.SELECTOR]
+- [C#-Skript](../articles/azure-functions/functions-reference-csharp.md)
+- [Node.js](../articles/azure-functions/functions-reference-node.md)
+ 
 Die C#-Benutzeroberfläche für Azure Functions basiert auf dem Azure WebJobs-SDK. Daten fließen über Methodenargumente in Ihre C#-Funktion ein. Argumentnamen werden in `function.json` angegeben, und es gibt vordefinierte Namen für den Zugriff auf Elemente wie die Funktionsprotokollierung und Abbruchtoken.
 
 In diesem Artikel wird davon ausgegangen, dass Sie bereits die [Entwicklerreferenz zu Azure Functions](functions-reference.md) gelesen haben.
@@ -47,12 +51,12 @@ public class MyClass
 
 ## Protokollierung
 
-Zum Protokollieren der Ausgabe in Ihren Streamingprotokollen in C# können Sie ein Argument vom Typ `TraceWriter` angeben. Es wird empfohlen, dafür den Namen `log` zu verwenden. Es wird davon abgeraten, `Console.Write` in Azure Functions zu verwenden.
+Zum Protokollieren der Ausgabe in Ihren Streamingprotokollen in C# können Sie ein Argument des Typs `TraceWriter` angeben. Es wird empfohlen, dafür den Namen `log` zu verwenden. Es wird davon abgeraten, `Console.Write` in Azure Functions zu verwenden.
 
 ```csharp
 public static void Run(string myBlob, TraceWriter log)
 {
-    log.Verbose($"C# Blob trigger function processed: {myBlob}");
+    log.Info($"C# Blob trigger function processed: {myBlob}");
 }
 ```
 
@@ -72,7 +76,7 @@ public async static Task ProcessQueueMessageAsync(
 
 ## Abbruchtoken
 
-Manche Vorgänge reagieren empfindlich auf das Herunterfahren. Es empfiehlt sich grundsätzlich, Code zu schreiben, der Abstürze verarbeiten kann. In Fällen, in denen Anforderungen zum ordnungsgemäßen Herunterfahren verarbeitet werden sollen, definieren Sie ein Argument vom Typ [`CancellationToken`](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx). Ein `CancellationToken` wird bereitgestellt, wenn ein Herunterfahren des Hosts ausgelöst wird.
+Manche Vorgänge reagieren empfindlich auf das Herunterfahren. Es empfiehlt sich grundsätzlich, Code zu schreiben, der Abstürze verarbeiten kann. In Fällen, in denen Anforderungen zum ordnungsgemäßen Herunterfahren verarbeitet werden sollen, definieren Sie ein Argument des Typs [`CancellationToken`](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx). Ein `CancellationToken` wird bereitgestellt, wenn ein Herunterfahren des Hosts ausgelöst wird.
 
 ```csharp
 public async static Task ProcessQueueMessageAsyncCancellationToken(
@@ -134,7 +138,7 @@ Die folgenden Assemblys werden automatisch von der Azure Functions-Hostumgebung 
 * `System.Web.Http`
 * `System.Net.Http.Formatting`.
 
-Darüber hinaus sind die folgenden Assemblys besondere Fälle, die über „SimpleName“ referenziert werden können (z. B. `#r "AssemblyName"`):
+Darüber hinaus sind die folgenden Assemblys besondere Fälle, die über „SimpleName“ referenziert werden können (z.B. `#r "AssemblyName"`):
 
 * `Newtonsoft.Json`
 * `Microsoft.WindowsAzure.Storage`
@@ -142,7 +146,7 @@ Darüber hinaus sind die folgenden Assemblys besondere Fälle, die über „Simp
 * `Microsoft.AspNet.WebHooks.Receivers`
 * `Microsoft.AspNEt.WebHooks.Common`.
 
-Wenn Sie auf eine private Assembly verweisen müssen, können Sie die Assemblydatei in einen `bin`-Ordner relativ zu Ihrer Funktion hochladen und anhand des Dateinamens (z. B. `#r "MyAssembly.dll"`) darauf verweisen. Informationen zum Hochladen von Dateien in Ihren Funktionenordner finden Sie im folgenden Abschnitt zur Paketverwaltung.
+Wenn Sie auf eine private Assembly verweisen müssen, können Sie die Assemblydatei in einen `bin`-Ordner relativ zu Ihrer Funktion hochladen und anhand des Dateinamens (z.B. `#r "MyAssembly.dll"`) darauf verweisen. Informationen zum Hochladen von Dateien in Ihren Funktionenordner finden Sie im folgenden Abschnitt zur Paketverwaltung.
 
 ## Paketverwaltung
 
@@ -254,4 +258,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [NodeJS-Entwicklerreferenz zu Azure Functions](functions-reference-node.md)
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="05/03/2016"
+	ms.date="06/13/2016"
 	ms.author="jeffstok"/>
 
 
@@ -432,31 +432,35 @@ Abfragen in Azure Stream Analytics werden in einer SQL-ähnlichen Abfragesprache
 
 **Ausgabe**:
 
-| StartFault | EndFault | FaultDurationSeconds |
-| --- | --- | --- |
-| 2015-01-01T00:00:01.0000000Z | 2015-01-01T00:00:08.0000000Z | 7 |
-| 2015-01-01T00:00:01.0000000Z | 2015-01-01T00:00:08.0000000Z | 7 |
-| 2015-01-01T00:00:01.0000000Z | 2015-01-01T00:00:08.0000000Z | 7 |
-| 2015-01-01T00:00:01.0000000Z | 2015-01-01T00:00:08.0000000Z | 7 |
-| 2015-01-01T00:00:01.0000000Z | 2015-01-01T00:00:08.0000000Z | 7 |
-| 2015-01-01T00:00:01.0000000Z | 2015-01-01T00:00:08.0000000Z | 7 |
+| StartFault | EndFault |
+| --- | --- |
+| 2015-01-01T00:00:02.000Z | 2015-01-01T00:00:07.000Z |
 
 **Lösung**:
 
 ````
-SELECT 
-    LAG(time) OVER (LIMIT DURATION(hour, 24) WHEN weight < 20000 ) [StartFault],
-    [time] [EndFault]
-FROM input
-WHERE
-    [weight] < 20000
-    AND LAG(weight) OVER (LIMIT DURATION(hour, 24)) > 20000
+	WITH SelectPreviousEvent AS
+	(
+	SELECT
+	*,
+		LAG([time]) OVER (LIMIT DURATION(hour, 24)) as previousTime,
+		LAG([weight]) OVER (LIMIT DURATION(hour, 24)) as previousWeight
+	FROM input TIMESTAMP BY [time]
+	)
+
+	SELECT 
+    	LAG(time) OVER (LIMIT DURATION(hour, 24) WHEN previousWeight < 20000 ) [StartFault],
+    	previousTime [EndFault]
+	FROM SelectPreviousEvent
+	WHERE
+    	[weight] < 20000
+	    AND previousWeight > 20000
 ````
 
-**Erläuterung**: Verwenden Sie LAG, um den Eingabedatenstrom für 24 Stunden anzusehen und suchen Sie nach Instanzen, bei denen „StartFault“ und „StopFault“ von Gewichten unter 20.000 umgeben sind.
+**Erläuterung**: Verwenden Sie LAG, um den Eingabedatenstrom für 24 Stunden anzusehen, und suchen Sie nach Instanzen, bei denen „StartFault“ und „StopFault“ von Gewichtungen unter 20.000 umgeben sind.
 
 ## Beispiel für eine Abfrage: Ausfüllen der fehlenden Werte
-**Beschreibung**: Für den Ereignisdatenstrom mit fehlenden Werten erzeugen Sie einen Ereignisdatenstrom mit regelmäßigen Intervallen. Generieren Sie z. B. alle 5 Sekunden ein Ereignis, das den zuletzt angezeigten Datenpunkt meldet.
+**Beschreibung**: Erstellen Sie für den Ereignisdatenstrom mit fehlenden Werten einen Ereignisdatenstrom mit regelmäßigen Intervallen. Generieren Sie z. B. alle 5 Sekunden ein Ereignis, das den zuletzt angezeigten Datenpunkt meldet.
 
 **Eingabe**:
 
@@ -469,7 +473,7 @@ WHERE
 | "2014-01-01T06:01:30" | 5 |
 | "2014-01-01T06:01:35" | 6 |
 
-**Ausgabe (erste 10 Zeilen)**:
+**Ausgabe (erste zehn Zeilen)**:
 
 | windowend | lastevent.t | lastevent.value |
 |--------------------------|--------------------------|--------|
@@ -495,7 +499,7 @@ WHERE
     GROUP BY HOPPINGWINDOW(second, 300, 5)
 
 
-**Erklärung**: Diese Abfrage generiert Ereignisse alle 5 Sekunden und gibt das letzte Ereignis aus, das zuvor empfangen wurde. Die Dauer des [springenden Fensters](https://msdn.microsoft.com/library/dn835041.aspx "Springendes Fenster – Azure Stream Analytics") legt fest, wie weit die Abfrage zurückreicht, um das letzte Ereignis zu suchen (in diesem Beispiel 300 Sekunden).
+**Erläuterung**: Diese Abfrage generiert alle fünf Sekunden Ereignisse und gibt das letzte zuvor empfangene Ereignis aus. Die Dauer des [springenden Fensters](https://msdn.microsoft.com/library/dn835041.aspx "Springendes Fenster – Azure Stream Analytics") legt fest, wie weit die Abfrage zurückreicht, um das letzte Ereignis zu suchen (in diesem Beispiel 300 Sekunden).
 
 
 ## Hier erhalten Sie Hilfe
@@ -510,4 +514,4 @@ Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://
 - [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

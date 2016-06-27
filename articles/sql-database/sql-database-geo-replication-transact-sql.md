@@ -13,32 +13,27 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="data-management"
-    ms.date="04/27/2016"
+    ms.date="06/14/2016"
     ms.author="carlrab"/>
 
 # Konfigurieren der Georeplikation für Azure SQL-Datenbank mit Transact-SQL
 
-
-
 > [AZURE.SELECTOR]
+- [Übersicht](sql-database-geo-replication-overview.md)
 - [Azure-Portal](sql-database-geo-replication-portal.md)
 - [PowerShell](sql-database-geo-replication-powershell.md)
-- [Transact-SQL](sql-database-geo-replication-transact-sql.md)
+- [T-SQL](sql-database-geo-replication-transact-sql.md)
 
-
-Dieser Artikel beschreibt, wie Sie die Georeplikation für eine Azure SQL-Datenbank mithilfe von Transact-SQL konfigurieren.
+Dieser Artikel beschreibt, wie Sie die aktive Georeplikation für eine Azure SQL-Datenbank mithilfe von Transact-SQL konfigurieren.
 
 Informationen zum Initiieren eines Failovers finden Sie unter [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank](sql-database-geo-replication-failover-transact-sql.md).
 
 >[AZURE.NOTE] Die aktive Georeplikation (lesbare sekundäre Datenbanken) ist jetzt für alle Datenbanken in allen Diensttarifen verfügbar. Im April 2017 wird der nicht lesbare sekundäre Typ eingestellt, und vorhandene nicht lesbare Datenbanken werden automatisch auf lesbare sekundäre Datenbanken aktualisiert.
 
-Sie können bis zu vier lesbare sekundäre Datenbanken in derselben oder in verschiedenen Standorten von Rechenzentren (Regionen) konfigurieren. Sekundäre Datenbanken stehen zur Verfügung, wenn ein Datencenter ausgefallen ist oder keine Verbindung mit der primären Datenbank möglich ist.
+Wenn Sie die aktive Georeplikation mithilfe von Transact-SQL konfigurieren möchten, benötigen Sie Folgendes:
 
-
-Zum Konfigurieren der Georeplikation benötigen Sie Folgendes:
-
-- Ein Azure-Abonnement: Wenn Sie kein Azure-Abonnement haben, klicken Sie einfach oben auf dieser Seite auf den Link **KOSTENLOSE TESTVERSION** und kehren dann zu diesem Artikel zurück.
-- Einen logische Azure SQL-Datenbankserver <MyLocalServer> und eine Azure SQL-Datenbank <MyDB>: Die primäre Datenbank, die in eine andere geografische Region repliziert werden soll.
+- Ein Azure-Abonnement.
+- Einen logischen Azure SQL-Datenbankserver (<MyLocalServer>) und eine Azure SQL-Datenbank (<MyDB>): Die primäre Datenbank, die Sie replizieren möchten.
 - Ein oder mehrere logische Azure SQL-Datenbankserver <MySecondaryServer(n)>: Die logischen Server, die als Partnerserver fungieren, in denen Sie sekundäre Datenbanken erstellen.
 - Eine Anmeldung mit der Berechtigung „DBManager“ für die primäre Datenbank, mit der Berechtigung „db\_ownership“ für die lokale Datenbank für die Georeplikation und der Berechtigung „DBManager“ für die Partnerserver, für die Sie die Georeplikation konfigurieren.
 - Neueste Version von SQL Server Management Studio: Die neueste Version von SQL Server Management Studio (SSMS) finden Sie unter [Herunterladen von SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx). Informationen zur Verwendung von SQL Server Management Studio zum Verwalten von logischen Azure SQL-Datenbankservern und Datenbanken finden Sie unter [Verwalten von Azure SQL-Datenbank mit SQL Server Management Studio](sql-database-manage-azure-ssms.md).
@@ -61,7 +56,7 @@ Führen Sie zum Erstellen einer nicht lesbaren sekundären Datenbank als Einzeld
 
 2. Öffnen Sie den Ordner „Datenbanken“, erweitern Sie den Ordner **Systemdatenbanken**, klicken Sie mit der rechten Maustaste auf **master**, und klicken Sie anschließend auf **Neue Abfrage**.
 
-3. Verwenden Sie die folgende **ALTER DATABASE**-Anweisung, um eine lokale Datenbank in eine primäre Datenbank mit Georeplikation und nicht lesbarer sekundärer Datenbank auf „MySecondaryServer1“ zu ändern. Hierbei steht „MySecondaryServer1“ für den Anzeigenamen des Servers.
+3. Verwenden Sie die folgende **ALTER DATABASE**-Anweisung, um eine lokale Datenbank in eine primäre Datenbank mit Georeplikation und nicht lesbarer sekundärer Datenbank auf „MySecondaryServer1“ zu ändern. „MySecondaryServer1“ steht hierbei für den Anzeigenamen des Servers.
 
         ALTER DATABASE <MyDB>
            ADD SECONDARY ON SERVER <MySecondaryServer1> WITH (ALLOW_CONNECTIONS = NO);
@@ -176,11 +171,11 @@ Gehen Sie folgendermaßen vor, um eine Georeplikationspartnerschaft zu überwach
 ## Zusätzliche Ressourcen
 
 - [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
-- [Spotlight on new Geo-Replication capabilities](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/) (Die neuen Georeplikationsfunktionen im Überblick)
+- [Spotlight on new Geo-Replication capabilities (Die neuen Georeplikationsfunktionen im Überblick)](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
 - [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
 - [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
 - [Aktive Georeplikation](sql-database-geo-replication-overview.md)
 - [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

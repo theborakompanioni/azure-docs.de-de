@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Diagnosesuche öffnen" 
+	pageTitle="Verwenden der Diagnosesuche | Microsoft Azure" 
 	description="Suchen und Filtern Sie einzelne Ereignisse, Anforderungen und Protokollablaufverfolgungen." 
 	services="application-insights" 
     documentationCenter=""
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/03/2016" 
+	ms.date="06/09/2016" 
 	ms.author="awills"/>
  
 # Verwenden der Diagnosesuche in Application Insights
@@ -63,9 +63,22 @@ Wenn die Anwendung viele Telemetriedaten generiert (und Sie Version 2.0.0-beta3 
 
 Wählen Sie ein beliebiges Telemetrieelement aus, um Schlüsselfelder und verwandte Elemente anzuzeigen. Wenn Sie alle Felder anzeigen möchten, klicken Sie auf "...".
 
-![Diagnosesuche öffnen](./media/app-insights-diagnostic-search/10-detail.png)
+
+![Klicken Sie auf „Neues Arbeitselement“, bearbeiten Sie die Felder, und klicken Sie dann auf „OK“.](./media/app-insights-diagnostic-search/10-detail.png)
 
 Um alle Felder zu finden, verwenden Sie einfache Zeichenfolgen (ohne Platzhalterzeichen). Die verfügbaren Felder hängen vom Typ der Telemetrie ab.
+
+## Erstellen eines Arbeitselements
+
+Sie können einen Fehler mit den Details aus einem beliebigen Telemetrieelement in Visual Studio Team Services erstellen.
+
+![Klicken Sie auf „Neues Arbeitselement“, bearbeiten Sie die Felder, und klicken Sie dann auf „OK“.](./media/app-insights-diagnostic-search/42.png)
+
+Wenn Sie diesen Vorgang zum ersten Mal ausführen, werden Sie aufgefordert, einen Link zu Ihrem Team Services-Konto und -Projekt zu konfigurieren.
+
+![Geben Sie die URL Ihres Team Services-Servers und den Projektnamen ein, und klicken Sie auf „Autorisieren“.](./media/app-insights-diagnostic-search/41.png)
+
+(Sie können auch über „Einstellungen“ > „Arbeitselemente“ auf das Konfigurationsblatt zugreifen.)
 
 ## Filtern von Ereignistypen
 
@@ -158,10 +171,10 @@ Dies sind einige Suchausdrücke, die Sie verwenden können:
 Beispielabfrage | Effekt 
 ---|---
 langsam|Findet alle Ereignisse im Datumsbereich, deren Felder den Begriff „langsam“ enthalten
-Datenbank|Stimmt mit „Datenbank01“, „DatenbankAB“ usw. überein<br/>? ist am Anfang eines Suchbegriffs nicht zulässig.
-Datenbank* |Stimmt mit „Datenbank“, „Datenbank01“, „DatenbankNNNN“ überein<br/> * ist am Anfang eines Suchbegriffs nicht zulässig.
+Datenbank|Entspricht „Datenbank01“, „DatenbankAB“ ...?<br/> ist am Anfang eines Suchbegriffs nicht zulässig.
+Datenbank* |Entspricht „Datenbank“, „Datenbank01“, „DatenbankNNNN“*<br/> ist am Anfang eines Suchbegriffs nicht zulässig.
 Apfel UND Banane|Findet Ereignisse, die beide Begriffe enthalten. Verwenden Sie „AND“ in Großbuchstaben, nicht „and“.
-Apfel OR Banane<br/>Apfel Banane|Findet Ereignisse, die einen der beiden Begriffe enthalten. Verwenden Sie "OR" nicht "or".</br/>Kurzform.
+Apfel OR Banane<br/>Apfel Banane|Findet Ereignisse, die einen der beiden Begriffe enthalten. Verwenden Sie "OR", nicht "or".</br/>Kurzform.
 Apfel NOT Banane<br/>Apfel -Banane|Findet Ereignisse, die den einen Begriff enthalten, aber nicht den anderen.<br/>Kurzform.
 Apf* AND Banane -(Traube Birne)|Logische Operatoren und Klammern.
 "Metrik": 0 BIS 500<br/>"Metrik": 500 BIS * | Suchen Sie Ereignisse, die die benannte Messung im Wertebereich enthalten.
@@ -221,4 +234,4 @@ POST-Daten werden nicht automatisch protokolliert. Sie können jedoch ["TrackTra
 
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

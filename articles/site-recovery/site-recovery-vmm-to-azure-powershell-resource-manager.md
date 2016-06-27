@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/15/2016"
+	ms.date="06/13/2016"
 	ms.author="rajanaki"/>
 
 # Replizieren virtueller Hyper-V-Computer in VMM-Clouds nach Azure mithilfe von PowerShell und Azure Resource Manager
@@ -186,7 +186,7 @@ Beachten Sie, dass sich das Speicherkonto in der gleichen Region wie der Azure S
 
 ## Schritt 6: Installieren des Azure Recovery Services-Agent
 
-1. Laden Sie den Azure Recovery Services-Agent unter [http:/aka.ms/latestmarsagent](http:/aka.ms/latestmarsagent "http:/aka.ms/latestmarsagent") herunter, und installieren Sie ihn auf jedem Hyper-V-Hostserver in den VMM-Clouds, die Sie schützen möchten.
+1. Laden Sie unter [http:/aka.ms/latestmarsagent](http://aka.ms/latestmarsagent) den Azure Recovery Services-Agent herunter, und installieren Sie ihn auf jedem Hyper-V-Hostserver in den VMM-Clouds, die Sie schützen möchten.
 
 2. Führen Sie den folgenden Befehl auf allen VMM-Hosts aus.
 
@@ -238,7 +238,7 @@ Um den Abschluss des Vorgangs zu überprüfen, führen Sie die Schritte in [Übe
 
 Bevor Sie mit der Netzwerkzuordnung beginnen, stellen Sie sicher, dass virtuelle Computer auf dem VMM-Quellserver mit einem VM-Netzwerk verbunden sind. Erstellen Sie außerdem ein oder mehrere virtuelle Azure-Netzwerke.
 
-Weitere Informationen zum Erstellen eines virtuellen Netzwerks über Azure Resource Manager und PowerShell finden Sie unter [Erstellen eines virtuellen Netzwerks mit einer Standort-zu-Standort-VPN-Verbindung mit Azure Resource Manager und PowerShell](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell/).
+Weitere Informationen zum Erstellen eines virtuellen Netzwerks über Azure Resource Manager und PowerShell finden Sie unter [Erstellen eines virtuellen Netzwerks mit einer Standort-zu-Standort-VPN-Verbindung mit Azure Resource Manager und PowerShell](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md).
 
 Beachten Sie, dass einem einzelnen Azure-Netzwerk mehrere VM-Netzwerke zugeordnet werden können. Wenn das Zielnetzwerk mehrere Subnetze enthält und eines dieser Subnetze den gleichen Namen besitzt wie das Subnetz des virtuellen Quellcomputers, wird der virtuelle Replikatcomputer nach dem Failover mit diesem Zielsubnetz verbunden. Gibt es kein Zielsubnetz mit einem übereinstimmenden Namen, wird der virtuelle Computer mit dem ersten Subnetz im Netzwerk verbunden.
 
@@ -266,7 +266,7 @@ Nach der korrekten Konfiguration der Server, Clouds und Netzwerke können Sie de
 
  Beachten Sie Folgendes:
 
- - Die virtuellen Computer müssen die Azure-Anforderungen erfüllen. Unter [Voraussetzungen und Support](../site-recovery-best-practices) im Planungshandbuch können Sie diese prüfen.
+ - Die virtuellen Computer müssen die Azure-Anforderungen erfüllen. Diese finden Sie im Planungshandbuch unter [Voraussetzungen und Support](site-recovery-best-practices.md).
 
  - Um den Schutz zu aktivieren, müssen die Eigenschaften „Betriebssystem“ und „Betriebssystem-Datenträger“ für den virtuellen Computer festgelegt sein. Sie können diese Eigenschaften setzen, wenn Sie den virtuellen Computer in VMM mithilfe einer Vorlage für virtuelle Computer erstellen. Außerdem können Sie diese Eigenschaften für vorhandene virtuelle Computer auf den Registerkarten **Allgemein** und **Hardwarekonfiguration** in den Eigenschaften der virtuellen Computer festlegen. Falls diese Eigenschaften in VMM nicht angezeigt werden, sollten Sie sie dennoch im Azure Site Recovery-Portal konfigurieren können.
 
@@ -343,6 +343,6 @@ Verwenden Sie die folgenden Befehle zum Überwachen der Aktivität. Beachten Sie
 
 ## Nächste Schritte
 
-[Erfahren Sie mehr](https://msdn.microsoft.com/library/dn850420.aspx) über PowerShell-Cmdlets für Azure Site Recovery</a>.
+[Erfahren Sie mehr](https://msdn.microsoft.com/library/azure/mt637930.aspx) über Azure Site Recovery mit PowerShell-Cmdlets für Azure Resource Manager.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

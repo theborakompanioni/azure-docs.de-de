@@ -81,7 +81,7 @@ Microsoft-Konten (beispielsweise "outlook.com", "hotmail.com", "live.com") oder 
 - Es kann immer nur ein einzelner Azure AD-Administrator (Benutzer oder Gruppe) für eine Azure SQL Server- oder Azure SQL Data Warehouse-Instanz konfiguriert werden.
 - Nur ein Azure Active Directory-Administrator kann unter Verwendung eines Azure Active Directory-Kontos erstmals eine Verbindung mit der Azure SQL Server- oder Azure SQL Data Warehouse-Instanz herstellen. Der Active Directory-Administrator kann weitere Azure Active Directory-Datenbankbenutzer konfigurieren.
 - Es wird empfohlen, das Verbindungstimeout auf 30 Sekunden festzulegen.
-- SQL Server 2016 Management Studio und SQL Server Data Tools für Visual Studio 2015 (ab Version 14.0.60311.1April 2016) unterstützen die Azure Active Directory-Authentifizierung. (Die Azure Active Directory-Authentifizierung wird vom **.NET Framework-Datenanbieter für SqlServer** ab .NET Framework 4.6 unterstützt.) Daher können die neuesten Versionen dieser Tools und Datenschichtanwendungen (DAC und .bacpac) die Azure Active Directory-Authentifizierung verwenden, **sqlcmd.exe** und **bcp.exe** können jedoch keine Verbindung herstellen, da sie den ODBC-Anbieter verwenden.
+- SQL Server 2016 Management Studio und SQL Server Data Tools für Visual Studio 2015 (ab Version 14.0.60311.1April 2016) unterstützen die Azure Active Directory-Authentifizierung. (Die Azure Active Directory-Authentifizierung wird vom **.NET Framework-Datenanbieter für SqlServer** ab .NET Framework 4.6 unterstützt.) Daher können die neuesten Versionen dieser Tools und Datenschichtanwendungen (DAC und BACPAC) die Azure Active Directory-Authentifizierung verwenden, **sqlcmd.exe** und **bcp.exe** können jedoch keine Verbindung herstellen, da sie den ODBC-Anbieter verwenden.
 - SQL Server Data Tools für Visual Studio 2015 erfordert mindestens die Data Tools-Version von April 2016 (Version 14.0.60311.1). Azure Active Directory-Benutzer werden derzeit nicht im SSDT-Objekt-Explorer angezeigt. Die Benutzer können aber in [database\_principals](https://msdn.microsoft.com/library/ms187328.aspx) angezeigt werden.
 - [Microsoft JDBC-Treiber 6.0 für SQL Server](https://blogs.technet.microsoft.com/dataplatforminsider/2016/04/04/preview-the-microsoft-jdbc-driver-6-0-for-sql-server/) unterstützt die Azure Active Directory-Authentifizierung.
 - PolyBase kann sich nicht per Azure Active Directory-Authentifizierung authentifizieren.
@@ -367,4 +367,4 @@ Weitere Informationen finden Sie im [SQL Server Security Blog](https://blogs.msd
 [11]: ./media/sql-database-aad-authentication/11connect-using-int-auth.png
 [12]: ./media/sql-database-aad-authentication/12connect-using-pw-auth.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

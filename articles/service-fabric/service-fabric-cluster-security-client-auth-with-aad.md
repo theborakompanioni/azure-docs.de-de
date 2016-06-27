@@ -14,42 +14,40 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/22/2016"
+   ms.date="06/13/2016"
    ms.author="seanmck"/>
 
-# VORSCHAU: Erstellen eines Service Fabric-Clusters mit Azure Active Directory für die Clientauthentifizierung
+# Erstellen eines Service Fabric-Clusters mit Azure Active Directory für die Clientauthentifizierung
 
 Sie können den Zugriff auf die Verwaltungsendpunkte eines Service Fabric-Clusters mit Azure Active Directory (AAD) schützen. In diesem Artikel wird beschrieben, wie Sie die erforderlichen AAD-Artefakte erstellen, diese bei der Clustererstellung auffüllen und anschließend eine Verbindung damit herstellen.
-
->[AZURE.IMPORTANT] Die AAD-Integration in Service Fabric-Cluster befindet sich derzeit in der Vorschauphase. Alle Features, die in diesem Artikel beschrieben werden, sind in der Service Fabric 5.0-Laufzeit verfügbar, aber wir empfehlen Ihnen, sie noch nicht für Produktionscluster einzusetzen.
 
 ## Modellieren eines Service Fabric-Clusters in AAD
 
 AAD ermöglicht Organisationen (als Mandanten bezeichnet) die Verwaltung des Benutzerzugriffs auf Anwendungen, die in Anwendungen mit einer webbasierten Anmeldebenutzeroberfläche und Anwendungen mit einer nativen Clientbenutzeroberfläche unterteilt sind. In diesem Dokument wird davon ausgegangen, dass Sie bereits einen Mandanten erstellt haben. Falls nicht, sollten Sie sich zuerst den Artikel [Einrichten eines Azure Active Directory-Mandanten](../active-directory/active-directory-howto-tenant.md) durchlesen.
 
-Für Service Fabric-Cluster sind unterschiedliche Einstiegspunkte für die Verwaltungsfunktionalität vorhanden, z.B. der webbasierte [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) und [Visual Studio](service-fabric-manage-application-in-visual-studio.md). Daher erstellen Sie zwei AAD-Anwendungen, um den Zugriff auf den Cluster zu steuern: eine Webanwendung und eine native Anwendung.
+Service Fabric-Cluster bieten unterschiedliche Einstiegspunkte für die Verwaltungsfunktionen. Hierzu zählen etwa der webbasierte [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) und [Visual Studio](service-fabric-manage-application-in-visual-studio.md). Daher erstellen Sie zwei AAD-Anwendungen, um den Zugriff auf den Cluster zu steuern: eine Webanwendung und eine native Anwendung.
 
 Wir haben einen Satz mit Windows PowerShell-Skripts erstellt, um einige Schritte der Konfiguration von AAD mit einem Service Fabric-Cluster zu vereinfachen.
 
->[AZURE.NOTE] Sie müssen diese Schritte ausführen, *bevor* Sie den Cluster erstellen. Falls für die Skripts Clusternamen und Endpunkte verwendet werden, sollte es sich dabei also um geplante Werte handeln, nicht um bereits erstellte Werte.
+>[AZURE.NOTE] Diese Schritte müssen *vor* der Clustererstellung ausgeführt werden. Falls für die Skripts Clusternamen und Endpunkte verwendet werden, sollte es sich dabei also um geplante Werte handeln, nicht um bereits erstellte Werte.
 
-1. [Laden Sie die Skripts][sf-aad-ps-script-download] auf Ihren Computer herunter.
+1. [Laden Sie die Skripts auf Ihren Computer herunter.][sf-aad-ps-script-download]
 
-2. Klicken Sie mit der rechten Maustaste auf die ZIP-Datei, wählen Sie **Eigenschaften**, aktivieren Sie anschließend das Kontrollkästchen **Zulassen**, und wenden Sie es an.
+2. Klicken Sie mit der rechten Maustaste auf die ZIP-Datei, wählen Sie **Eigenschaften** aus, aktivieren Sie das Kontrollkästchen **Zulassen**, und übernehmen Sie die Änderung.
 
 3. Extrahieren Sie die ZIP-Datei.
 
-4. Führen Sie `SetupApplications.ps1` aus, und geben Sie TenantId, ClusterName und WebApplicationReplyUrl als Parameter an. Beispiel:
+4. Führen Sie `SetupApplications.ps1` aus, und geben Sie „TenantId“, „ClusterName“ und „WebApplicationReplyUrl“ als Parameter an. Beispiel:
 
     ```powershell
     .\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html'
     ```
 
-    Sie können Ihre **TenantId** ermitteln, indem Sie sich die URL für den Mandanten im klassischen Azure-Portal ansehen. Die GUID, die in diese URL eingebettet ist, ist die TenantId. Beispiel:
+    Die **TenantId** können Sie anhand der URL für den Mandanten im klassischen Azure-Portal ermitteln. Die GUID, die in diese URL eingebettet ist, ist die TenantId. Beispiel:
 
     https://<i></i>manage.windowsazure.com/microsoft.onmicrosoft.com#Workspaces/ActiveDirectoryExtension/Directory/**690ec069-8200-4068-9d01-5aaf188e557a**/users
 
-    Der **ClusterName** wird verwendet, um die vom Skript erstellten AAD-Anwendungen mit einem Präfix zu versehen. Dies muss keine exakte Übereinstimmung mit dem tatsächlichen Clusternamen sein. Er dient lediglich als Hilfe, um Ihnen die Zuordnung von AAD-Artefakten zu dem Service Fabric-Cluster zu erleichtern, für den sie verwendet werden.
+    **ClusterName** wird verwendet, um die vom Skript erstellten AAD-Anwendungen mit einem Präfix zu versehen. Dies muss keine exakte Übereinstimmung mit dem tatsächlichen Clusternamen sein. Er dient lediglich als Hilfe, um Ihnen die Zuordnung von AAD-Artefakten zu dem Service Fabric-Cluster zu erleichtern, für den sie verwendet werden.
 
     **WebApplicationReplyUrl** ist der Standardendpunkt, an den Ihre Benutzer von AAD nach Abschluss des Anmeldevorgangs zurückgeleitet werden. Sie sollten diesen Wert auf den Service Fabric Explorer-Endpunkt für Ihren Cluster festlegen, also standardmäßig:
 
@@ -68,9 +66,9 @@ Wir haben einen Satz mit Windows PowerShell-Skripts erstellt, um einige Schritte
 
 Nachdem Sie nun die AAD-Anwendungen erstellt haben, können Sie den Service Fabric-Cluster erstellen. Derzeit wird die Konfiguration der AAD-Authentifizierung für Service Fabric-Cluster vom Azure-Portal nicht unterstützt, sodass Sie diesen Schritt mit einer ARM-Vorlage in PowerShell oder Visual Studio ausführen müssen.
 
-Beachten Sie, dass AAD nur für die Clientauthentifizierung im Cluster verwendet wird. Zum Erstellen eines sicheren Clusters müssen Sie auch ein Zertifikat angeben. Es wird zum Schützen der Kommunikation zwischen den Knoten im Cluster und zum Ermöglichen der Serverauthentifizierung für die Verwaltungsendpunkte des Clusters verwendet. Sie finden eine [ARM-Vorlage für einen sicheren Cluster im Azure-Schnellstartkatalog][secure-cluster-arm-template], oder Sie können die Anleitung in der Infodatei unter [Service Fabric-Ressourcengruppenprojekt in Visual Studio](service-fabric-cluster-creation-via-visual-studio.md) befolgen.
+Beachten Sie, dass AAD nur für die Clientauthentifizierung im Cluster verwendet wird. Zum Erstellen eines sicheren Clusters müssen Sie auch ein Zertifikat angeben. Es wird zum Schützen der Kommunikation zwischen den Knoten im Cluster und zum Ermöglichen der Serverauthentifizierung für die Verwaltungsendpunkte des Clusters verwendet. Sie finden eine [ARM-Vorlage für einen sicheren Cluster im Azure-Schnellstartkatalog][secure-cluster-arm-template]. Alternativ können Sie die Anleitung in der Infodatei unter [Service Fabric-Ressourcengruppenprojekt in Visual Studio](service-fabric-cluster-creation-via-visual-studio.md) befolgen.
 
-Fügen Sie die Ausgabe des ARM-Vorlagenausschnitts aus dem `SetupApplication`-Skript als Peer zu fabricSettings, managementEndpoint usw. hinzu. Der Ausschnitt ist auch hier angegeben, falls Sie das Fenster bereits geschlossen haben:
+Fügen Sie die Ausgabe des ARM-Vorlagenausschnitts aus dem `SetupApplication`-Skript als Peer zu „fabricSettings“, „managementEndpoint“ usw. hinzu. Der Ausschnitt ist auch hier angegeben, falls Sie das Fenster bereits geschlossen haben:
 
 ```json
   "azureActiveDirectory": {
@@ -80,7 +78,7 @@ Fügen Sie die Ausgabe des ARM-Vorlagenausschnitts aus dem `SetupApplication`-Sk
   }
 ```
 
-clusterApplication bezieht sich auf die Webanwendung, die im vorherigen Abschnitt erstellt wurde. Sie finden die dazugehörige ID in der Ausgabe des SetupApplication-Skripts, wo sie als `WebAppId` bezeichnet wird. clientApplication bezieht sich auf die native Anwendung, und die dazugehörige Client-ID ist in der SetupApplication-Ausgabe als NativeClientAppId enthalten.
+clusterApplication bezieht sich auf die Webanwendung, die im vorherigen Abschnitt erstellt wurde. Die entsprechende ID finden Sie in der Ausgabe des SetupApplication-Skripts, wo sie als `WebAppId` bezeichnet wird. clientApplication bezieht sich auf die native Anwendung, und die dazugehörige Client-ID ist in der SetupApplication-Ausgabe als NativeClientAppId enthalten.
 
 ## Zuweisen von Benutzern zu Rollen
 
@@ -141,12 +139,12 @@ Bei der Authentifizierung über einen nativen Client, z.B. Visual Studio oder Po
 
 *Die Antwortadresse http://localhost/ stimmt nicht mit der Antwortadresse überein, die für die Anwendung &lt;GUID der Clusterclientanwendung&gt; konfiguriert ist.*
 
-Zur Problemumgehung fügen Sie als Umleitungs-URI **http://<i></i>localhost** zu der Definition der Clusterclientanwendung in AAD hinzu, und zwar zusätzlich zu der bereits vorhandenen Adresse „urn:ietf:wg:oauth:2.0:oob“.
+Fügen Sie zur Umgehung dieses Problems als Umleitungs-URI **http://<i></i>localhost** zu der Definition der Clusterclientanwendung in AAD hinzu, und zwar zusätzlich zu der bereits vorhandenen Adresse „urn:ietf:wg:oauth:2.0:oob“.
 
 ## Nächste Schritte
 
-- Erfahren Sie mehr über die [Service Fabric-Clustersicherheit](service-fabric-cluster-security.md).
-- Erfahren Sie, wie Sie [in einem Remotecluster mit Visual Studio veröffentlichen](service-fabric-publish-app-remote-cluster.md).
+- Informieren Sie sich ausführlicher über die [Service Fabric-Clustersicherheit](service-fabric-cluster-security.md).
+- Informieren Sie über das [Veröffentlichen einer Anwendung in einem Remotecluster mit Visual Studio](service-fabric-publish-app-remote-cluster.md).
 
 <!-- Links -->
 [sf-aad-ps-script-download]: http://servicefabricsdkstorage.blob.core.windows.net/publicrelease/MicrosoftAzureServiceFabric-AADHelpers.zip
@@ -160,4 +158,4 @@ Zur Problemumgehung fügen Sie als Umleitungs-URI **http://<i></i>localhost** zu
 [setupapp-script-output]: ./media/service-fabric-cluster-security-client-auth-with-aad/setupapp-script-arm-json-output.png
 [vs-publish-aad-login]: ./media/service-fabric-cluster-security-client-auth-with-aad/vs-login-prompt.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

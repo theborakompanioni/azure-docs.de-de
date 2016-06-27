@@ -3,7 +3,7 @@
    description="Dieser Abschnitt enthält eine Anleitung zum Vermeiden von Ausfallzeiten während eines Anwendungsupgrades." 
    services="sql-database"
    documentationCenter="" 
-   authors="elfisher" 
+   authors="carlrabeler" 
    manager="jhubbard" 
    editor="monicar"/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
    ms.date="05/27/2016"
-   ms.author="elfish"/>
+   ms.author="carlrab"/>
 
 #Aktualisieren einer Anwendung ohne Ausfallzeiten
 
@@ -32,4 +32,4 @@ Wenn die Anwendung vorübergehend im schreibgeschützten Modus betrieben werden 
  
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

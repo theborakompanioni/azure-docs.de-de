@@ -3,8 +3,8 @@
    description="Point-in-Time-Wiederherstellung, Microsoft Azure SQL-Datenbank, Datenbank wiederherstellen, Datenbankwiederherstellung, klassisches Azure-Portal, klassisches Azure-Portal"
    services="sql-database"
    documentationCenter=""
-   authors="elfisher"
-   manager="jeffreyg"
+   authors="carlrabeler"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="storage-backup-recovery"
    ms.date="02/09/2016"
-   ms.author="elfish"/>
+   ms.author="carlrab"/>
 
 # Abschließen der wiederhergestellten Azure SQL-Datenbank
 
@@ -29,7 +29,7 @@ Dieser Artikel enthält eine Aufgabenprüfliste, die Sie durchgehen müssen, bev
   + Die wiederhergestellte Datenbank verwendet einen anderen Namen als den Namen der Quelldatenbank
   + Die wiederhergestellte Datenbank befindet sich auf einem anderen Server als dem Quellserver
 
-Weitere Informationen zum Ändern von Verbindungszeichenfolgen finden Sie unter [Richtlinien zum programmgesteuerten Herstellen einer Verbindung mit Azure SQL-Datenbank](https://msdn.microsoft.com/library/azure/ee336282.aspx) und [Verbindungen mit der Azure SQL-Datenbank: Zentrale Empfehlungen](sql-database-connect-central-recommendations.md).
+Weitere Informationen zum Ändern von Verbindungszeichenfolgen finden Sie unter [Richtlinien zum programmgesteuerten Herstellen einer Verbindung mit Azure SQL-Datenbank](https://msdn.microsoft.com/library/azure/ee336282.aspx) und in der [Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md).
  
 ## Ändern von Firewallregeln
 Überprüfen Sie die Firewallregeln auf Server- und Datenbankebene, und stellen Sie sicher, dass Verbindungen von Ihrem Clientcomputer oder Azure zum Server und der neu wiederhergestellten Datenbank aktiviert sind. Weitere Informationen finden Sie unter [Azure SQL-Datenbank-Firewall](https://msdn.microsoft.com/library/azure/ee621782.aspx) und [Vorgehensweise: Konfigurieren der Firewall-Einstellungen (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/azure/jj553530.aspx).
@@ -56,4 +56,4 @@ Weitere Informationen zu Datenbank-Warnungsregeln finden Sie unter [Vorgehenswei
 Wenn für den Zugriff auf die Datenbank Überwachung erforderlich ist, müssen Sie nach der Wiederherstellung der Datenbank die Überwachung aktivieren. Es ist ein guter Indikator für die Notwendigkeit von Überwachung, wenn Clientanwendungen sichere Verbindungszeichenfolgen in einem Muster von *.database.secure.windows.net verwenden. Weitere Informationen finden Sie unter [Erste Schritte mit der SQL-Datenbanküberwachung](sql-database-auditing-get-started.md).
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0615_2016-->

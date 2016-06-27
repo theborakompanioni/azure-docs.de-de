@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="ibiza"
     ms.devlang="na"
     ms.topic="article"
-	ms.date="03/03/2016"
+	ms.date="06/09/2016"
     ms.author="awills"/>
 
 # Versionsanmerkungen in Application Insights
@@ -96,4 +96,4 @@ Klicken Sie auf einen Anmerkungsmarker, um Details zur Version, einschließlich 
 
 ![Klicken Sie auf einen Versionsanmerkungsmarker.](./media/app-insights-annotations/60.png)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0615_2016-->

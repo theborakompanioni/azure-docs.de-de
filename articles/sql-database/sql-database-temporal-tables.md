@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="sql-database"
-   ms.date="03/28/2016"
+   ms.date="06/15/2016"
    ms.author="carlrab"/>
 
 #Erste Schritte mit temporalen Tabellen in der Azure SQL-Datenbank
@@ -99,7 +99,7 @@ ON dbo.WebsiteUserInfoHistory
 WITH (DROP_EXISTING = ON); 
 ````
 
-##Schritt 2: Reguläres Ausführen Ihrer Workload
+##Schritt 2: Reguläres Ausführen Ihrer Workload
 
 Der Hauptvorteil von temporalen Tabellen ist, dass Sie Ihre Website zum Nachverfolgen von Änderungen in keiner Weise ändern oder anpassen müssen. Nach der Erstellung behalten temporale Tabellen jedes Mal transparent vorherige Zeilenversionen bei, wenn Sie Änderungen an Ihren Daten ausführen.
 
@@ -195,4 +195,4 @@ Mit temporalen Tabellen mit Systemversionsverwaltung kann die Verlaufstabelle di
 
 Ausführliche Informationen zu temporalen Tabellen finden Sie in der [MSDN-Dokumentation](https://msdn.microsoft.com/library/dn935015.aspx). Auf Channel 9 können Sie einen [Kundenerfahrungsbericht zur Temporal-Implementierung](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) hören und eine [Temporal-Live-Demo](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016) sehen.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -29,7 +29,7 @@ Ein Entwickler möchte auf keinen Fall etwas Neues lernen, nur um die Verbindung
 
 Wenn Sie eine Datenbank auswählen, sollten Sie keine neue Sprache lernen müssen. Azure SQL-Datenbank verfügt über viele Codebeispiele für die ersten Schritte mit der Plattform, auf der Sie arbeiten (d. h. Linux, Mac OS oder Windows). Zusätzlich erreichen Sie mit dem Azure-Verwaltungsportal, mit PowerShell und REST-APIs beim Entwickeln zusätzliche Produktivität.
 
-[Dokumentation lesen](https://msdn.microsoft.com/library/mt654049%28v=sql.1%29.aspx)
+[Dokumentation lesen](sql-database-develop-overview.md)
 
 ## Die richtigen Tools für die Aufgabe
 
@@ -39,7 +39,7 @@ Mit SQL-Datenbank müssen Sie kein neues Tool erlernen, wenn Sie eine App entwic
 
 Mit garantierten Ressourcen, Lernprogrammen zum Erstellen Ihrer ersten SQL-Datenbank, Problembehandlungsabfragen und Schnellstart-Codebeispielen ist es stets einfach, die richtige Antwort auf Ihre Datenbankfragen zu erhalten.
 
-[Dokumentation lesen](sql-database-connect-central-recommendations.md)
+[Dokumentation lesen](sql-database-technical-overview.md)
 
 Wechseln Sie zur Startseite, um zu erfahren, welche weiteren Features SQL-Datenbank zu bieten hat. [Weitere Informationen](https://azure.microsoft.com/services/sql-database/)
 
@@ -47,10 +47,10 @@ Wechseln Sie zur Startseite, um zu erfahren, welche weiteren Features SQL-Datenb
 
 Erhalten Sie ein [kostenloses Azure-Abonnement](https://azure.microsoft.com/get-started/) und [erstellen Sie Ihre erste Azure SQL-Datenbank](sql-database-get-started.md).
 
-## Weitere Informationen
+## Zusätzliche Ressourcen
 
 Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/services/sql-database/).
  
 Lesen Sie die [Technische Übersicht über SQL-Datenbank](sql-database-technical-overview.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

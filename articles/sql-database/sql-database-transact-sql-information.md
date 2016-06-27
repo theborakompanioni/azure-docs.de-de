@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="05/12/2016"
+   ms.date="06/13/2016"
    ms.author="rick.byham@microsoft.com"/>
 
 # Azure SQL-Datenbank – Abweichungen bei Transact-SQL
@@ -36,7 +36,7 @@ In diesem Thema werden die Features behandelt, die mit Azure SQL-Datenbank bei e
 
 ## In Azure SQL-Datenbank V12 teilweise unterstützte Funktionen
 
-Azure SQL-Datenbank V12 unterstützt einige, aber nicht alle Argumente, die in den entsprechenden SQL Server 2016-Transact-SQL-Anweisungen vorhanden sind. Beispielsweise steht die CREATE PROCEDURE-Anweisung zur Verfügung, jedoch ohne die Option WITH ENCRYPTION. In den verlinkten Syntaxthemen finden Sie Einzelheiten zu den unterstützten Bereichen jeder Anweisung.
+Azure SQL-Datenbank V12 unterstützt einige, aber nicht alle Argumente, die in den entsprechenden SQL Server 2016-Transact-SQL-Anweisungen vorhanden sind. Beispielsweise steht die CREATE PROCEDURE-Anweisung zur Verfügung, die Optionen von CREATE PROCEDURE dagegen nicht. In den verlinkten Syntaxthemen finden Sie Einzelheiten zu den unterstützten Bereichen jeder Anweisung.
 
 - Datenbanken: [CREATE](https://msdn.microsoft.com/library/dn268335.aspx)/[ALTER](https://msdn.microsoft.com/library/ms174269.aspx)
 - Dynamische Verwaltungssichten stehen im Allgemeinen für verfügbare Features zur Verfügung.
@@ -64,7 +64,7 @@ Azure SQL-Datenbank V12 unterstützt einige, aber nicht alle Argumente, die in d
 - Ereignisse: Ereignisse, Ereignisbenachrichtigungen, Abfragebenachrichtigungen
 - Features im Zusammenhang mit der Ablage von Datenbankdateien, Größe und Datenbankdateien, die automatisch von Microsoft Azure verwaltet werden.
 - Features im Zusammenhang mit hoher Verfügbarkeit, die über Ihr Microsoft Azure-Konto verwaltet werden: Sicherung, Wiederherstellung, AlwaysOn, Datenbankspiegelung, Protokollversand, Wiederherstellungsmodi. Weitere Informationen finden Sie unter "Sichern und Wiederherstellen der Azure SQL-Datenbank".
-- Features, die vom Protokollleser abhängig sind: Replikation, Erfassung geänderter Daten.
+- Features, die vom in der SQL-Datenbank ausgeführten Protokollleser abhängig sind: Pushreplikation, Erfassung geänderter Daten.
 - Features, die vom SQL Server-Agent oder der MSDB-Datenbank abhängen: Aufträge, Warnungen, Operatoren, richtlinienbasierte Verwaltung, Datenbank-E-Mail, zentrale Verwaltungsserver.
 - FILESTREAM
 - Funktionen: fn\_get\_sql, fn\_virtualfilestats, fn\_virtualservernodes
@@ -108,4 +108,4 @@ Die Transact-SQL-Referenz umfasst Themen zu SQL Server-Versionen ab 2008. Unter 
 
 In einigen Fällen kann der allgemeine Gegenstand eines Themas in einem Produkt verwendet werden, es liegen jedoch kleine Unterschiede im Hinblick auf die verschiedenen Produkte vor. Die Unterschiede werden dann im Thema entsprechend angegeben.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -192,11 +192,14 @@ Im Folgenden werden häufige Fehler aufgeführt, die passieren können, sowie de
 -   [Out-of-Band-Vorgang auf einem virtuellen Computer und Fehler bei Übergabe des Failovers](http://social.technet.microsoft.com/wiki/contents/articles/25507.the-virtual-machine-isn-t-ready-for-planned-failover.aspx)
 -   Test-Failover
     -   [Failover konnte nicht initiiert werden, da das Testfailover ausgeführt wird.](http://social.technet.microsoft.com/wiki/contents/articles/31111.failover-could-not-be-initiated-since-test-failover-is-in-progress.aspx)
+-   <span style="color:green;">NEU</span> Beim Failover tritt aufgrund der Konfigurationseigenschaften der Netzwerksicherheitsgruppe, die dem virtuellen Computer oder dem Subnetz für den virtuellen Computer zugeordnet ist, ein Timeout mit der Meldung „PreFailoverWorkflow task WaitForScriptExecutionTask timed out“ (Timeout bei der PreFailoverWorkflow-Aufgabe „WaitForScriptExecutionTask“) auf. Ausführlichere Informationen finden Sie unter [PreFailoverWorkflow task WaitForScriptExecutionTask timed out](https://aka.ms/troubleshoot-nsg-issue-azure-site-recovery) (Timeout bei der PreFailoverWorkflow-Aufgabe „WaitForScriptExecutionTask“).
+
 
 ### Konfigurationsserver, Prozessserver, Masterziel
-Konfigurationsserver (Configuration Server, CS), Prozessserver (Process Server, PS), Masterziel (Master Target, MT): [Der ESXi-Host, auf dem der PS/CS als virtueller Computer gehostet wird, schlägt mit einem violetten Bildschirm fehl.](http://social.technet.microsoft.com/wiki/contents/articles/31107.vmware-esxi-host-experiences-a-purple-screen-of-death.aspx)
+Konfigurationsserver (Configuration Server, CS), Prozessserver (Process Server, PS), Masterziel (Master Target, MT)
+-   [Der ESXi-Host, auf dem der PS/CS als virtueller Computer gehostet wird, schlägt mit einem violetten Bildschirm fehl.](http://social.technet.microsoft.com/wiki/contents/articles/31107.vmware-esxi-host-experiences-a-purple-screen-of-death.aspx)
 
 ### Remotedesktop-Problembehandlung nach einem Failover
 -   Viele Kunden haben Probleme beim Herstellen einer Verbindung mit dem virtuellen Computer in Azure festgestellt, für den ein Failover ausgeführt wurde. [Stellen Sie anhand des Dokuments für die Problembehandlung eine RDP-Verbindung mit dem virtuellen Computer her.](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)
 
-<!-----HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0615_2016-->

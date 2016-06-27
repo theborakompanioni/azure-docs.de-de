@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/26/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # Verwenden des U-SQL-Katalogs
@@ -73,7 +73,7 @@ Sie können die Data Lake-Tools für Visual Studio zur Katalogverwaltung nutzen.
 - U-SQL und Entwicklung
     - [Erste Schritte mit der Sprache U-SQL für Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md)
     - [Verwenden von U-SQL-Fensterfunktionen für Azure Data Lake Analytics-Aufträge](data-lake-analytics-use-window-functions.md)
-    - [Entwickeln von benutzerdefinierten U-SQL-Operatoren für Data Lake Analytics-Aufträge](data-lake-analtyics-u-sql-user-defined-operators.md)
+    - [Entwickeln von benutzerdefinierten U-SQL-Operatoren für Data Lake Analytics-Aufträge](data-lake-Analytics-u-sql-user-defined-operators.md)
 
 - Verwaltung
     - [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-use-portal.md)
@@ -84,4 +84,4 @@ Sie können die Data Lake-Tools für Visual Studio zur Katalogverwaltung nutzen.
     - [Verwenden interaktiver Lernprogramme zu Azure Data Lake Analytics](data-lake-analytics-use-interactive-tutorials.md)
     - [Analysieren von Websiteprotokollen mit Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

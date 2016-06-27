@@ -53,10 +53,10 @@ Wechseln Sie zur Startseite, um zu erfahren, welche weiteren Features SQL-Datenb
 
 Erhalten Sie ein [kostenloses Azure-Abonnement](https://azure.microsoft.com/get-started/) und [erstellen Sie Ihre erste Azure SQL-Datenbank](sql-database-get-started.md).
 
-## Weitere Informationen
+## Zusätzliche Ressourcen
 
 Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/services/sql-database/).
  
 Lesen Sie die [Technische Übersicht über SQL-Datenbank](sql-database-technical-overview.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

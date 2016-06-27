@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/06/2016"
+	ms.date="06/09/2016"
 	ms.author="nitinme"/>
 
 
@@ -73,7 +73,7 @@ Informationen zu den ersten Schritten finden Sie auch in diesem [Video](https://
 
 	* Klicken Sie auf **Fertig stellen**.
 
-3. Das Spark-Projekt erstellt automatisch ein Artefakt für Sie. Gehen Sie folgendermaßen vor, um das Artefakt anzuzeigen.
+3. Das Spark-Projekt erstellt automatisch ein Artefakt für Sie. Gehen Sie wie folgt vor, um das Artefakt anzuzeigen:
 
 	1. Klicken Sie im Menü **Datei** auf **Projektstruktur**.
 	2. Klicken Sie im Dialogfeld **Project Structure** auf **Artifacts**, um das Standardartefakt zu sehen, das erstellt wird.
@@ -82,13 +82,17 @@ Informationen zu den ersten Schritten finden Sie auch in diesem [Video](https://
 
 	Sie können auch eigene Artefakte erstellen, indem Sie auf das in der Abbildung oben hervorgehobene **+**-Symbol klicken.
 
-4. Fügen Sie den Quellcode der Anwendung hinzu.
+4. Klicken Sie im Dialogfeld **Project Structure** auf **Project**. Wenn **Project SDK** auf 1.8 festgelegt ist, stellen Sie sicher, dass **Project language level** auf **7 - Diamonds, ARM, multi-catch, etc** festgelegt ist.
 
-	1. Klicken Sie im **Project Explorer** mit der rechten Maustaste auf **src**, zeigen Sie auf **New**, und klicken Sie dann auf **Scala class**.
+	![Festlegen der Sprache auf Projektebene](./media/hdinsight-apache-spark-intellij-tool-plugin/set-project-language-level.png)
+
+5. Fügen Sie den Quellcode der Anwendung hinzu.
+
+	1. Klicken Sie im **Project Explorer** mit der rechten Maustaste auf **src**, zeigen Sie auf **New** (Neu), und klicken Sie dann auf **Scala class** (Scala-Klasse).
 
 		![Hinzufügen von Quellcode](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-scala-code.png)
 
-	2. Geben Sie im Dialogfeld **Create New Scala Class** einen Namen ein. Wählen Sie **Object** für **Kind** aus, und klicken Sie dann auf **OK**.
+	2. Geben Sie im Dialogfeld **Create New Scala Class** (Neue Scala-Klasse erstellen) einen Namen ein. Wählen Sie **Object** (Objekt) für **Kind** (Variante) aus, und klicken Sie dann auf **OK**.
 
 		![Hinzufügen von Quellcode](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-scala-code-object.png)
 
@@ -168,7 +172,7 @@ Sie können eine Vielzahl von Vorgängen mit dem HDInsight-Plug-In ausführen.
 
 	![Zugreifen auf Auftragsansicht](./media/hdinsight-apache-spark-intellij-tool-plugin/view-job-logs.png)
 
-3. Die Felder für **Error Message**, **Job Output**, **Livy Job Logs** und **Spark Driver Logs** werden gemäß der Anwendung, die Sie auswählen, aufgefüllt.
+3. Die Felder für **Error Message**, **Job Output**, **Livy Job Logs** und **Spark Driver Logs** werden gemäß der Anwendung aufgefüllt, die Sie auswählen.
 
 4. Sie können auch die **Spark History UI** und **YARN UI** (auf Anwendungsebene) öffnen, indem Sie auf die entsprechenden Schaltflächen am oberen Bildschirmrand klicken.
 
@@ -208,8 +212,8 @@ Beim lokalen Ausführen der Spark Scala-Anwendung auf einem Windows-Computer erh
 2. Geben Sie im nächsten Fenster die Projektdetails an.
 
 	* Geben Sie einen Projektnamen und den Projektspeicherort an.
-	* Geben Sie für **Project SDK** eine höhere Java-Version als 7 an.
-	* Klicken Sie für **Scala SDK** auf **Create**, dann auf **Download**, und wählen Sie die zu verwendende Version von Scala aus. **Verwenden Sie nicht die Version 2.11.x**. In diesem Beispiel wird Version **2.10.6** verwendet.
+	* Geben Sie für **Project SDK** eine Java-Version höher als 7 an.
+	* Klicken Sie für **Scala SDK** auf **Create** (Erstellen) und dann auf **Download**, und wählen Sie die zu verwendende Version von Scala aus. **Verwenden Sie nicht die Version 2.11.x**. In diesem Beispiel wird Version **2.10.6** verwendet.
 
 		![Erstellen einer Spark Scala-Anwendung](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-version.png)
 
@@ -301,7 +305,7 @@ Falls Sie Vorschläge oder Feedback haben oder bei Verwendung dieses Tools Probl
 
 ### Tools und Erweiterungen
 
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md) (Verwenden von HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Spark-Anwendungen)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely (Verwenden von HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Spark-Anwendungen)](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 
 * [Verwenden von Zeppelin-Notebooks mit einem Spark-Cluster in HDInsight](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -315,6 +319,6 @@ Falls Sie Vorschläge oder Feedback haben oder bei Verwendung dieses Tools Probl
 
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 
-* [Track and debug jobs running on an Apache Spark cluster in HDInsight](hdinsight-apache-spark-job-debugging.md) (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)
+* [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

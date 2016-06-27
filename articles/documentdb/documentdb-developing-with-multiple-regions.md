@@ -1,0 +1,146 @@
+<properties
+   pageTitle="Entwickeln mit regionsübergreifenden DocumentDB-Konten | Microsoft Azure"
+   description="Erfahren Sie, wie Sie über Azure DocumentDB, einen vollständig verwalteten NoSQL-Datenbankdienst, auf Ihre auf mehrere Regionen verteilten Daten zugreifen."
+   services="documentdb"
+   documentationCenter=""
+   authors="kiratp"
+   manager="jhubbard"
+   editor=""/>
+
+<tags
+   ms.service="documentdb"
+   ms.devlang="multiple"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="06/14/2016"
+   ms.author="kipandya"/>
+   
+# Entwickeln mit regionsübergreifenden DocumentDB-Konten
+
+Um von der [globalen Verteilung](documentdb-distribute-data-globally.md) zu profitieren, können Clientanwendungen in einer Liste die Reihenfolge angeben, in der Regionen bei Dokumentvorgängen bevorzugt verwendet werden sollen. Dies lässt sich durch Einrichten einer Verbindungsrichtlinie erreichen. Basierend auf der DocumentDB-Kontokonfiguration, der aktuellen regionalen Verfügbarkeit und der angegebenen Reihenfolgeliste der bevorzugten Regionen wählt das SDK den optimalen Endpunkt für Schreib- und Lesevorgänge aus.
+
+Diese Liste wird beim Initialisieren einer Verbindung mithilfe der DocumentDB-Client-SDKs angegeben. Die SDKs akzeptieren einen optionalen Parameter „PreferredLocations“, bei dem es sich um eine sortierte Liste von Azure-Regionen handelt.
+
+Das SDK sendet automatisch alle Schreibvorgänge an die aktuell für solche Vorgänge ausgewählte Region.
+
+Alle Lesevorgänge werden an die erste verfügbare Region in der Liste der bevorzugten Regionen gesendet. Wenn bei der Anforderung ein Fehler auftritt, führt der Client ein Failover zur nächsten Region auf der Liste durch, usw.
+
+Die Client-SDKs senden Leseanforderungen nur an die in der PreferredLocations-Liste angegebenen Regionen. Wenn ein Datenbankkonto in drei Regionen verfügbar ist, der Client aber nur zwei Leseregionen für PreferredLocations angibt, werden auch bei einem Failover keine Lesevorgänge außerhalb der Schreibregion verarbeitet.
+
+Die Anwendung kann die vom SDK ausgewählten aktuellen Schreib- und Leseendpunkte anhand von zwei Eigenschaften überprüfen: WriteEndpoint und ReadEndpoint. Diese stehen im SDK der Version 1.8 und höher zur Verfügung.
+
+Wenn die PreferredLocations-Eigenschaft nicht festgelegt ist, werden alle Anforderungen von der aktuellen Schreibregion verarbeitet.
+
+
+## .NET SDK
+Das SDK kann ohne Codeänderungen verwendet werden. In diesem Fall sendet das SDK sowohl Lese- als auch Schreibvorgänge an die aktuelle Schreibregion.
+
+Im .NET SDK, Version 1.8 oder höher, besitzt der ConnectionPolicy-Parameter für den DocumentClient-Konstruktor folgende Eigenschaft: Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Diese Eigenschaft weist den Typ „Collection `<string>`“ auf und sollte eine Liste mit Regionsnamen enthalten. Die Zeichenfolgenwerte sind gemäß der Spalte mit den Regionsnamen auf der Seite [Azure-Regionen][regions] formatiert und enthalten keine Leerzeichen vor und nach dem letzten Zeichen.
+
+Die aktuellen Schreib- und Leseendpunkte sind in DocumentClient.WriteEndpoint bzw. DocumentClient.ReadEndpoint verfügbar.
+
+> [AZURE.NOTE] Die URLs für die Endpunkte sollten nicht als langfristige Konstanten betrachtet werden. Sie können jederzeit vom Dienst aktualisiert werden. Das SDK verarbeitet diese Änderung automatisch.
+
+    // Getting endpoints from application settings or other configuration location
+    Uri accountEndPoint = new Uri(Properties.Settings.Default.GlobalDatabaseUri);
+    string accountKey = Properties.Settings.Default.GlobalDatabaseKey;
+
+    //Setting read region selection preference 
+    connectionPolicy.PreferredLocations.Add("West US"); // first preference
+    connectionPolicy.PreferredLocations.Add("East US"); // second preference
+    connectionPolicy.PreferredLocations.Add("North Europe"); // third preference
+
+    // initialize connection
+    DocumentClient docClient = new DocumentClient(
+        accountEndPoint,
+        accountKey,
+        connectionPolicy);
+
+    // connect to DocDB 
+    await docClient.OpenAsync().ConfigureAwait(false);
+
+
+## NodeJS-, JavaScript- und Python-SDKs
+Das SDK kann ohne Codeänderungen verwendet werden. In diesem Fall sendet das SDK sowohl Lese- als auch Schreibvorgänge an die aktuelle Schreibregion.
+
+In Version 1.8 oder höher jedes SDKs weist der ConnectionPolicy-Parameter für den DocumentClient-Konstruktor eine neue Eigenschaft auf: DocumentClient.ConnectionPolicy.PreferredLocations. Bei diesem Parameter handelt es sich um ein Zeichenfolgenarray, das eine Liste mit Regionsnamen akzeptiert. Die Namen sind gemäß der Spalte mit den Regionsnamen auf der Seite [Azure-Regionen][regions] formatiert. Sie können auch die vordefinierten Konstanten im bereitgestellten AzureDocuments.Regions-Objekt verwenden.
+
+Die aktuellen Schreib- und Leseendpunkte sind in DocumentClient.getWriteEndpoint bzw. DocumentClient.getReadEndpoint verfügbar.
+
+> [AZURE.NOTE] Die URLs für die Endpunkte sollten nicht als langfristige Konstanten betrachtet werden. Sie können jederzeit vom Dienst aktualisiert werden. Das SDK verarbeitet diese Änderung automatisch.
+
+Im Folgenden finden Sie ein Codebeispiel für NodeJS/Javascript. Python und Java folgen demselben Muster.
+
+    // Creating a ConnectionPolicy object
+    var connectionPolicy = new DocumentBase.ConnectionPolicy();
+    
+    // Setting read region selection preference, in the following order -
+    // 1 - West US
+    // 2 - East US
+    // 3 - North Europe
+    connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe'];
+    
+    // initialize the connection
+    var client = new DocumentDBClient(host, { masterKey: masterKey }, connectionPolicy);
+
+
+## REST 
+Sobald ein Datenbankkonto in mehreren Regionen zur Verfügung gestellt wurde, können Clients mithilfe einer GET-Anforderung in folgendem URI die Verfügbarkeit des Kontos abfragen.
+
+    https://{databaseaccount}.documents.azure.com/dbs
+
+Der Dienst gibt eine Liste der Regionen und der zugehörigen DocumentDB-Endpunkt-URIs für die Replikate zurück. Die aktuelle Schreibregion wird in der Antwort angegeben. Der Client kann dann wie folgt den geeigneten Endpunkt für alle weiteren REST-API-Anforderungen auswählen.
+
+Beispielantwort
+
+    {
+        "_dbs": "//dbs/",
+        "media": "//media/",
+        "writableLocations": [
+            {
+                "Name": "West US",
+                "DatabaseAccountEndpoint": "https://globaldbexample-westus.documents.azure.com:443/"
+            }
+        ],
+        "readableLocations": [
+            {
+                "Name": "East US",
+                "DatabaseAccountEndpoint": "https://globaldbexample-eastus.documents.azure.com:443/"
+            }
+        ],
+        "MaxMediaStorageUsageInMB": 2048,
+        "MediaStorageUsageInMB": 0,
+        "ConsistencyPolicy": {
+            "defaultConsistencyLevel": "Session",
+            "maxStalenessPrefix": 100,
+            "maxIntervalInSeconds": 5
+        },
+        "addresses": "//addresses/",
+        "id": "globaldbexample",
+        "_rid": "globaldbexample.documents.azure.com",
+        "_self": "",
+        "_ts": 0,
+        "_etag": null
+    }
+
+
+-	Alle PUT-, POST- und DELETE-Anforderungen müssen an den angegebenen Schreib-URI gesendet werden.
+-	Alle GET-Anforderungen sowie weitere Anforderungen ohne Schreibzugriff (z.B. Abfragen) können an einen beliebigen vom Client ausgewählten Endpunkt gesendet werden.
+
+Bei Schreibanforderungen an schreibgeschützte Regionen tritt der HTTP-Fehler 403 („Verboten“) auf.
+
+Wenn sich nach der anfänglichen Ermittlungsphase des Clients die Schreibregion ändert, tritt bei nachfolgenden Schreibanforderungen an die vorherige Schreibregion der HTTP-Fehler 403 („Verboten“) auf. Der Client sollte dann erneut eine GET-Anforderung senden, um die Liste der Regionen erneut abzurufen und die aktualisierte Schreibregion zu empfangen.
+
+## Nächste Schritte
+
+In den folgenden Artikeln erfahren Sie mehr über die globale Verteilung von Daten mit DocumentDB:
+
+- [Globale Verteilung von Daten mit DocumentDB](documentdb-distribute-data-globally.md)
+- [Konsistenzebenen](documentdb-consistency-levels.md)
+- [So funktioniert der Durchsatz mit mehreren Regionen](documentdb-manage.md#how-throughput-works-with-multiple-regions)
+- [Hinzufügen von Regionen über das Azure-Portal](documentdb-manage-account.md#addregion)
+
+[regions]: https://azure.microsoft.com/regions/
+
+<!---HONumber=AcomDC_0615_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/17/2016"
+   ms.date="06/13/2016"
    ms.author="tomfitz"/>
 
 # Erstellen von Azure-Ressourcen-Manager-Vorlagen
@@ -86,8 +86,6 @@ Im Abschnitt „Parameter“ der Vorlage geben Sie an, welche Werte Sie beim Ber
 
 Sie können diese Parameterwerte in der Vorlage zum Festlegen von Werten für die bereitgestellten Ressourcen verwenden. Nur die im Parameterabschnitt deklarierten Parameter können in anderen Abschnitten der Vorlage verwendet werden.
 
-Im Parameterabschnitt können Sie mit Parameterwerten keine anderen Parameterwerte erstellen. Neue Werte erstellen Sie im Abschnitt „Variablen“.
-
 Sie definieren Parameter mit der folgenden Struktur:
 
     "parameters": {
@@ -125,7 +123,7 @@ Die zulässigen Typen und Werte lauten folgendermaßen:
 - "object" oder "secureObject" – ein gültiges JSON-Objekt
 - "array" – ein gültige JSON-Array
 
-Um einen Parameter als optional anzugeben, legen Sie seinen defaultValue als leere Zeichenfolge fest.
+Um einen Parameter als optional anzugeben, geben Sie einen Standardwert (kann eine leere Zeichenfolge sein) an.
 
 Wenn Sie einen Parameternamen angeben, der einem Parameter im Befehl zum Bereitstellen der Vorlage entspricht (z.B. den Namen **ResourceGroupName** in Ihrer Vorlage, der dem **ResourceGroupName**-Parameter im Cmdlet [New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) entspricht), werden Sie aufgefordert, einen Wert für einen Parameter mit dem Postfix **FromTemplate** anzugeben (z.B. **ResourceGroupNameFromTemplate**). Im Allgemeinen sollten Sie diese Verwirrung vermeiden, indem Sie Parametern nicht dieselben Namen wie Parametern für Bereitstellungsvorgänge geben.
 
@@ -134,37 +132,37 @@ Wenn Sie einen Parameternamen angeben, der einem Parameter im Befehl zum Bereits
 Im folgenden Beispiel wird veranschaulicht, wie Sie Parameter definieren:
 
     "parameters": {
-       "siteName": {
-          "type": "string",
-          "minLength": 2,
-          "maxLength": 60
-       },
-       "siteLocation": {
-          "type": "string",
-          "minLength": 2
-       },
-       "hostingPlanName": {
-          "type": "string"
-       },  
-       "hostingPlanSku": {
-          "type": "string",
-          "allowedValues": [
-            "Free",
-            "Shared",
-            "Basic",
-            "Standard",
-            "Premium"
-          ],
-          "defaultValue": "Free"
-       },
-       "instancesCount": {
-          "type": "int",
-          "maxValue": 10
-       },
-       "numberOfWorkers": {
-          "type": "int",
-          "minValue": 1
-       }
+      "siteName": {
+        "type": "string",
+        "defaultValue": "[concat('site', uniqueString(resourceGroup().id))]"
+      },
+      "hostingPlanName": {
+        "type": "string",
+        "defaultValue": "[concat(parameters('siteName'),'-plan')]"
+      },
+      "skuName": {
+        "type": "string",
+        "defaultValue": "F1",
+        "allowedValues": [
+          "F1",
+          "D1",
+          "B1",
+          "B2",
+          "B3",
+          "S1",
+          "S2",
+          "S3",
+          "P1",
+          "P2",
+          "P3",
+          "P4"
+        ]
+      },
+      "skuCapacity": {
+        "type": "int",
+        "defaultValue": 1,
+        "minValue": 1
+      }
     }
 
 Informationen zum Eingeben der Parameterwerte während der Bereitstellung finden Sie unter [Bereitstellen von Ressourcen mit einer Azure Resource Manager-Vorlage](resource-group-template-deploy.md#parameter-file).
@@ -283,7 +281,7 @@ Der Abschnitt „Ressourcen“ enthält ein Array mit den bereitzustellenden Res
 
 
 
-Das folgende Beispiel enthält eine Ressource **Microsoft.Web/serverfarms** und eine Ressource **Microsoft.Web/sites** mit einer untergeordneten Ressource **Extensions**: Beachten Sie, dass die Website als abhängig von der Serverfarm markiert ist, da die Serverfarm vorhanden sein muss, bevor die Website bereitgestellt werden kann. Beachten Sie auch, dass die Ressource **Extensions** ein untergeordnetes Element der Website ist.
+Das folgende Beispiel enthält eine **Microsoft.Web/serverfarms**-Ressource und eine **Microsoft.Web/Sites**-Ressource mit einer untergeordneten **Extensions**-Ressource: Beachten Sie, dass die Website als abhängig von der Serverfarm markiert ist, da die Serverfarm vorhanden sein muss, bevor die Website bereitgestellt werden kann. Sie sehen auch, dass die **Extensions**-Ressource ein untergeordnetes Element der Website ist.
 
     "resources": [
       {
@@ -377,4 +375,4 @@ Das folgende Beispiel zeigt einen Wert, der im Ausgabeabschnitt zurückgegeben w
 - Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
 - Möglicherweise müssen Sie Ressourcen verwenden, die in einer anderen Ressourcengruppe enthalten sind. Dies geschieht normalerweise bei der Arbeit mit Speicherkonten oder virtuellen Netzwerken, die in mehreren Ressourcengruppen gemeinsam verwendet werden. Weitere Informationen finden Sie unter der [resourceId-Funktion](resource-group-template-functions.md#resourceid).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -89,7 +89,7 @@ Falls Sie weiterhin Ihre benutzerdefinierten Einstellungen nutzen möchten, helf
 
 [Einblicke in die SQL-Datenbankleistung](sql-database-performance.md)
 
-## Weitere Informationen
+## Weitere Ressourcen
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
@@ -101,4 +101,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - [Überwachen der Leistung mit dem Abfragespeicher](https://msdn.microsoft.com/library/dn817826.aspx)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

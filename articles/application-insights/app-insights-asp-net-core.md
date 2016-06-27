@@ -60,4 +60,4 @@ Die Ansichten im Portal lassen sich in zwei Hauptkategorien unterteilen:
 
 [Lesen und Hinzufügen von Code](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -25,7 +25,7 @@ Das folgende Beispiel zeigt, wie Sie eine Oracle Database-Instanz auf einem virt
 
 ##So erstellen Sie Ihre Datenbank mit dem virtuellen Oracle Database-Computer in Azure
 
-1.	Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com/) an.
+1.	Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 2.	Klicken Sie auf **Virtuelle Computer**.
 
@@ -117,7 +117,7 @@ Um Remoteverbindungen mit Ihrer Datenbank zuzulassen (z. B. für einen Clientco
 
 ### Erstellen Sie einen öffentlichen Endpunkt für Port 1521:
 
-1.	Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com/) an.
+1.	Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 2.	Klicken Sie auf **Durchsuchen**.
 
@@ -146,7 +146,7 @@ Um Remoteverbindungen mit Ihrer Datenbank zuzulassen (z. B. für einen Clientco
 ##Aktivieren des Remotezugriffs auf Oracle Database Enterprise Manager
 Wenn Sie den Remotezugriff für Oracle Database Enterprise Manager aktivieren möchten, öffnen Sie Port 5500 in der Firewall, und erstellen Sie im klassischen Azure-Portal einen VM-Endpunkt für 5500. (Verwenden Sie dazu die weiter oben angegebenen Schritte für das Öffnen von Port 1521 und das Erstellen eines Endpunkts für 1521.) Öffnen Sie dann einen Browser mit der URL im Format `http://<<unique_domain_name>>:5500/em`, um Oracle Enterprise Manager auf dem Remotecomputer auszuführen.
 
-> [AZURE.NOTE] Sie können den Wert für *<<unique\_domain\_name>>* im [klassischen Azure-Portal](https://ms.portal.azure.com/) festlegen, indem Sie auf **Virtuelle Computer** klicken und dann den virtuellen Computer auswählen, den Sie zum Ausführen von Oracle Database verwenden.
+> [AZURE.NOTE] Sie können den Wert für *<<unique\_domain\_name>>* im [klassischen Azure-Portal](https://portal.azure.com/) festlegen, indem Sie auf **Virtuelle Computer** klicken und dann den virtuellen Computer auswählen, den Sie zum Ausführen von Oracle Database verwenden.
 
 ##Konfigurieren von Popular Options- und Advanced Options-Bündeln
 Wenn Sie das Bündel **Oracle Database with Popular Options** oder **Oracle Database with Advanced Options** verwenden, müssen Sie als Nächstes die Add-On-Funktionen in der Oracle-Installation konfigurieren. Anweisungen zum Einrichten dieser Funktionen unter Windows finden Sie in der Oracle-Dokumentation. Die Konfigurationen können je nach Anforderungen der einzelnen Komponenten stark variieren.
@@ -168,4 +168,4 @@ Nachdem Sie den virtuellen Computer eingerichtet und die Datenbank erstellt habe
 
 -	[Oracle Database 2 Day DBA 12c Release 1](http://docs.oracle.com/cd/E16655_01/server.121/e17643/toc.htm)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

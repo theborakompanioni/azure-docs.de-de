@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Konsistenzebenen in DocumentDB | Microsoft Azure"
-	description="Erfahren Sie, wie DocumentDB über vier Konsistenzebenen mit zugehörigen Leistungsstufen verfügt, um vorhersehbare Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz eingehen zu können."
-	keywords="Eventual Consistency,DocumentDB,Azure,Microsoft Azure"
+	description="DocumentDB bietet vier Konsistenzebenen, um für vorhersehbare Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz sorgen zu können."
+	keywords="Eventual Consistency, DocumentDB, Azure, Microsoft Azure"
 	services="documentdb"
 	authors="mimig1"
 	manager="jhubbard"
@@ -14,55 +14,82 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/27/2016"
+	ms.date="06/15/2016"
 	ms.author="mimig"/>
 
-# Verwenden von Konsistenzebenen zum Maximieren der Verfügbarkeit und Leistung in DocumentDB
+# Konsistenzebenen in DocumentDB
 
-Entwickler werden oft mit der Herausforderung konfrontiert, zwischen zwei Extremen, der strikten und der letztendlichen Konsistenz (Eventual Consistency), zu wählen. In der Realität liegen mehrere Konsistenzebenen zwischen diesen zwei Extremen. In den meisten realen Szenarien profitieren Anwendungen von gut ausbalancierten Kompromissen zwischen Konsistenz, Verfügbarkeit und Latenz. DocumentDB bietet vier klar abgegrenzte Konsistenzebenen mit den dazugehörigen Leistungsstufen. Damit können Anwendungsentwickler vorhersagbare Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz schließen.
+DocumentDB ist von Grund auf für eine globale Verteilung konzipiert. Ziel ist das Bieten vorhersehbarer Garantien niedriger Latenz, einer SLA mit einer Verfügbarkeit von 99,99% und mehrerer überlegt definierter gelockerter Konsistenzmodelle. DocumentDB bietet derzeit vier Konsistenzebenen: STARK, BEGRENZTE VERALTUNG, SITZUNG und LETZTLICH. Neben den Konsistenzmodellen **STARK** und **LETZTLICH**, die meist von anderen NoSQL-Datenbanken geboten werden, bietet DocumentDB auch zwei sorgfältig programmierte und operationalisierte Modelle, **BEGRENZTE VERALTUNG** und **SITZUNG**, die ihren Nutzen in praktischen Anwendungsfällen unter Beweis gestellt haben. Diese vier Konsistenzebenen ermöglichen Ihnen, fundierte Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz zu finden.
 
-Alle Systemressourcen wie Datenbankkonten, Datenbanken, Sammlungen, Benutzer und Berechtigungen sind für Lesevorgänge und Abfragen strikt konsistent. Die Konsistenzebenen werden nur auf benutzerdefinierte Ressourcen angewendet. Für Abfragen und Lesevorgänge für benutzerdefinierte Ressourcen wie Dokumente, Anhänge, gespeicherte Prozeduren, Trigger und UDFs bietet DocumentDB vier eigene Konsistenzebenen:
+## Umfang der Konsistenz
 
- - Konsistenzebene "Strong"
- - Konsistenzebene "Bounded staleness"
- - Konsistenzebene "Session"
- - Konsistenzebene "Eventual"
+Die Granularität der Konsistenz wird auf eine einzelne Benutzeranforderung beschränkt. Eine Schreibanforderung kann einer Transaktion des Typs „Einfügen“, „Ersetzen“, „Einfügen/Aktualisieren (Upsert)“ oder „Löschen“ (mit oder ohne Ausführung eines zugehörigen vor- oder nachgelagerten Triggers) entsprechen. Eine Schreibanforderung kann auch eine Transaktionsausführung einer gespeicherten JavaScript-Prozedur sein, die auf mehrere Dokumente in einer Partition angewendet wird. Wie Schreibvorgänge ist eine Lese-/Abfragetransaktion auch auf eine einzelne Benutzeranforderung beschränkt. Der Benutzer muss ggf. ein großes Resultset paginieren, das sich über mehrere Partitionen erstreckt, doch jede Lesetransaktion ist auf eine einzelne Seite beschränkt und erfolgt innerhalb einer einzelnen Partition.
 
-Mit diesen genau definierten und abgegrenzten Konsistenzebenen können fundierte Kompromisse zwischen Konsistenz, Verfügbarkeit und Leistung geschlossen werden. Diese Konsistenzebenen stützen sich auf vorhersagbare Leistungsstufen und stellen konsistente Ergebnisse für Ihre Anwendung sicher.
+## Konsistenzebenen
 
-## Konsistenzebenen für Datenbanken
+Sie können eine Standardkonsistenzebene für Ihr Datenbankkonto konfigurieren, die für alle Sammlungen (in allen Datenbanken) in diesem Datenbankkonto gilt. Standardmäßig wird für alle Lesevorgänge und Abfragen für benutzerdefinierte Ressourcen die Standardkonsistenzebene verwendet, die für das Datenbankkonto festgelegt ist. Die Konsistenzebene einer bestimmten Lese-/Abfrageanforderung kann jedoch durch Angabe des Anforderungsheaders [[x-ms-consistency-level]](https://msdn.microsoft.com/library/azure/mt632096.aspx) gelockert werden. Vom DocumentDB-Replikationsprotokoll werden vier Arten von Konsistenzebenen unterstützt, die wie nachfolgend beschrieben einen klaren Kompromiss zwischen bestimmten Konsistenzgarantien und Leistung bieten.
 
-Sie können eine Standardkonsistenzebene für Ihr Datenbankkonto konfigurieren, die für alle Sammlungen (in allen Datenbanken) in diesem Datenbankkonto gilt. Standardmäßig wird für alle Lesevorgänge und Abfragen für benutzerdefinierte Ressourcen die Standardkonsistenzebene verwendet, die für das Datenbankkonto festgelegt ist. Die Konsistenzebene einer bestimmten Lese-/Abfrageanforderung kann jedoch durch Angabe des [x-ms-consistency-level]-Anforderungsheaders herabgesetzt werden. Es werden vier Arten von Konsistenzebenen vom DocumentDB-Replikationsprotokoll unterstützt. Sie werden weiter unten genauer beschrieben.
+![DocumentDB bietet mehrere überlegt definierte (gelockerte) Konsistenzmodelle.][1]
 
->[AZURE.NOTE] In zukünftigen Versionen soll das Überschreiben der Standardkonsistenzebene basierend auf einer Sammlung unterstützt werden.
+**STARK (Strong)**:
 
-**Strong**: Mit der Konsistenzebene "Strong" wird gewährleistet, dass ein Schreibvorgang erst sichtbar ist, nachdem er dauerhaft vom Mehrheitsquorum der Replikate bestätigt wurde. Ein Schreibvorgang wird entweder synchron dauerhaft sowohl von den primären und dem Quorum der sekundären Replikate bestätigt oder abgebrochen. Ein Lesevorgang wird immer von dem Mehrheitslesequorum bestätigt. Ein Client kann niemals einen unbestätigten oder unvollständigen Schreibvorgang sehen, wodurch gewährleistet wird, dass er immer auf die neuesten bestätigten Schreibvorgänge zugreift.
+- STARK bietet garantierte [Linearisierbarkeit](https://aphyr.com/posts/313-strong-consistency-models), was heißt, dass die Lesevorgänge auf jeden Fall die neueste Version eines Dokuments zurückgeben. 
+- Mit der Konsistenzebene STARK wird gewährleistet, dass ein Schreibvorgang erst sichtbar ist, nachdem er dauerhaft vom Mehrheitsquorum der Replikate bestätigt wurde. Ein Schreibvorgang wird entweder synchron dauerhaft sowohl vom primären Replikat als auch vom Quorum der sekundären Replikate bestätigt oder abgebrochen. Ein Lesevorgang wird immer von dem Mehrheitslesequorum bestätigt. Ein Client kann niemals einen unbestätigten oder unvollständigen Schreibvorgang sehen, wodurch gewährleistet wird, dass er immer auf die neuesten bestätigten Schreibvorgänge zugreift. 
+- DocumentDB-Konten, die mit dem Konsistenzmodell STARK konfiguriert sind, kann nur eine Azure-Region zugeordnet werden. 
+- Die Kosten eines Lesevorgangs (im Sinne genutzter [Anforderungseinheiten](documentdb-request-units.md)) mit der Konsistenzebene STARK sind höher als bei SITZUNG und LETZTLICH, jedoch identisch mit BEGRENZTE VERALTUNG.
+ 
 
-Mit der Konsistenzebene "Strong" wird eine absolute Datenkonsistenz gewährleistet, jedoch die niedrigste Stufe an Lese- und Schreibleistung geboten.
+**Begrenzte Veraltung (Bounded staleness)**:
 
-**Bounded staleness**: Mit der Konsistenzebene "Bounded staleness" wird die Gesamtreihenfolge bei der Weitergabe von Schreibvorgängen gewährleistet, wobei die Lesevorgänge gegenüber den Schreibvorgängen um höchstens K-Präfixe verzögert sein können. Der Lesevorgang wird immer vom Mehrheitsquorum der Replikate bestätigt. Die Antwort auf diese Leseanforderung gibt ihre relative Aktualität (in Form von K) an. Mit Bounded Staleness können Sie konfigurierbare Schwellenwerte für die Alterung (als Präfixe oder Zeitwerte) von Lesevorgängen einstellen, um einen Kompromiss zwischen Latenz und Konsistenz im stabilen Zustand herzustellen.
+- Die Konsistenzebene BEGRENZTE VERALTUNG garantiert, dass Lesevorgänge hinter Schreibvorgängen höchstens *K* Versionen oder Präfixe eines Dokuments oder mit dem Zeitintervall *t* zurückbleiben. 
+- Bei Wahl von BEGRENZTE VERALTUNG kann „Veraltung“ deshalb auf zwei Weisen konfiguriert werden: 
+    - Anzahl der *K* Versionen des Dokuments, um die die Lesevorgänge hinter den Schreibvorgängen zurückbleiben
+    - Zeitintervall *t* 
+- BEGRENZTE VERALTUNG bietet eine vollständige globale Reihenfolge außer innerhalb des „Veraltungsfensters“. Beachten Sie, dass die monotonen Lesegarantien innerhalb einer Region sowohl innerhalb als auch außerhalb des „Veraltungsfensters“ vorliegen. 
+- BEGRENZTE VERALTUNG bietet eine stärkere Konsistenzgarantie als die Konsistenzebenen SITZUNG und LETZTLICH. Für global verteilte Anwendungen wird empfohlen, BEGRENZTE VERALTUNG in Szenarien zu nutzen, in denen Sie eine hohe Konsistenz, aber auch eine Verfügbarkeit von 99,99% und niedrige Latenz wünschen. 
+- DocumentDB-Konten, die mit der Konsistenzebene BEGRENZTE VERALTUNG konfiguriert sind, kann eine beliebige Anzahl von Azure-Regionen zugeordnet werden. 
+- Die Kosten eines Lesevorgangs (im Sinne genutzter Anforderungseinheiten) mit der Konsistenzebene STARK sind höher als bei SITZUNG und LETZTLICH, jedoch identisch mit BEGRENZTE VERALTUNG.
 
-"Bounded staleness" bietet besser vorhersagbares Verhalten für die Lesekonsistenz mit der niedrigsten Latenz bei Schreibvorgängen. Da Lesevorgänge von einem Mehrheitsquorum bestätigt werden, ist die Leselatenz nicht die niedrigste, die vom System geboten wird. Bounded Staleness ist eine Option für Szenarios, bei denen starke Konsistenz gefragt, jedoch nicht praktikabel ist. Wenn Sie das „Staleness Interval“ in der Konsistenzebene „Bounded Staleness“ beliebig hoch konfigurieren, wird dabei die globale Größenordnung der Schreibvorgänge beibehalten. Dadurch entsteht eine stärkere Gewährleistung als bei „Session“ oder „Eventual“.
+**Sitzung (Session)**:
 
->[AZURE.NOTE] "Bounded staleness" garantiert gleichbleibende Lesevorgänge nur auf explizite Leseanforderungen. Die wiederholte Serverantwort für Schreibanforderungen bietet keine Garantien für "Bounded staleness".
+- Anders als die globalen Konsistenzmodelle, die von den Konsistenzebenen STARK und BEGRENZTE VERALTUNG geboten werden, ist die Konsistenzebene SITZUNG auf eine bestimmte Clientsitzung beschränkt. 
+- Die Konsistenzebene SITZUNG ist ideal für alle Szenarien, an denen eine Geräte- oder Benutzersitzung beteiligt ist, da sie monotone Lese- und Schreibvorgänge garantiert und RYW-Garantien bietet (Read Your Own Writes, eigene Schreibvorgänge lesen). 
+- Die Konsistenzebene SITZUNG bietet vorhersagbare Konsistenz für eine Sitzung, einen maximalen Lesedurchsatz und Lese- und Schreibvorgänge mit niedrigster Latenz. 
+- DocumentDB-Konten, die mit der Konsistenzebene SITZUNG konfiguriert sind, kann eine beliebige Anzahl von Azure-Regionen zugeordnet werden. 
+- Die Kosten für einen Lesevorgang (hinsichtlich genutzter Anforderungseinheiten) mit der Konsistenzebene SITZUNG sind niedriger als bei STARK und BEGRENZTE VERALTUNG, aber höher als bei LETZTLICH.
+ 
 
-**Session**: Die Konsistenzebene "Session" bietet kein globales Konsistenzmodell wie die Konsistenzebenen "Strong" und "Bounded Staleness", sondern ist auf eine bestimmte Clientsitzung zugeschnitten. Die Konsistenzebene "Session" ist meistens ausreichend, da sie monotone Lese- und Schreibvorgänge gewährleistet, sowie das Lesen der eigenen Schreibvorgänge ermöglicht. Eine Leseanforderung für die Konsistenzebene "Session" wird bei einem Replikat verwendet, das als die vom Client geforderte Version (Bestandteil des Sitzungscookies) dienen kann.
+**Letztlich (Eventual)**:
 
-Die Konsistenzebene "Session" bietet vorhersagbare Lesedatenkonsistenz für eine Sitzung mit der niedrigsten Latenz bei Schreibvorgängen. Die Latenz bei Lesevorgängen ist ebenfalls niedrig, da der Schreibvorgang bis auf wenige Ausnahmen von einem einzelnen Replikat verarbeitet wird.
+- Die Konsistenzebene LETZTLICH garantiert bei Fehlen weiterer Schreibvorgänge, dass es bei den Replikaten innerhalb der Gruppe letztendlich zur Konvergenz kommt. 
+- Die Konsistenzebene LETZTLICH stellt die schwächste Form von Konsistenz dar, bei der ein Client ggf. ältere Werte als die ihm zuvor angezeigten abruft.
+- Die Konsistenzebene LETZTLICH bietet die schwächste Lesekonsistenz, jedoch die niedrigste Latenz für Lese- und Schreibvorgänge.
+- DocumentDB-Konten, die mit der Konsistenzebene LETZTLICH konfiguriert sind, kann eine beliebige Anzahl von Azure-Regionen zugeordnet werden. 
+- Die Kosten für einen Lesevorgang (hinsichtlich genutzter Anforderungseinheiten) mit der Konsistenzebene LETZTLICH sind die niedrigsten aller Konsistenzebenen von DocumentDB.
 
-**Eventual**: Die Konsistenzebene "Eventual" stellt die schwächste Form von Konsistenz dar, bei der ein Client im Laufe der Zeit ältere Werte als die ihm zuvor angezeigten abrufen kann. Wenn keine weiteren Schreibvorgänge vorhanden sind, kommt es bei den Replikaten innerhalb einer Gruppe letztendlich zur Konvergenz. Die Leseanforderung wird von jedem sekundären Index verarbeitet.
 
-Die Konsistenzebene "Eventual" bietet die schwächste Lesekonsistenz, jedoch die niedrigste Latenz für Lese- und Schreibvorgänge.
+## Konsistenzgarantien
 
-### Ändern der Konsistenzebene einer Datenbank
+In der folgenden Tabelle sind die verschiedenen Konsistenzgarantien entsprechend den vier Konsistenzebenen beschrieben.
+
+| Garantie | Stark (Strong) | Begreznte Veraltung (Bounded Staleness) | Sitzung (Session) | Letztlich (Eventual) |
+|----------------------------------------------------------|-------------------------------------------------|------------------------------------------------------------------------------------------------|--------------------------------------------------|--------------------------------------------------|
+| **Vollständige globale Reihenfolge** | Ja | Ja, außerhalb des „Veraltungsfensters“ | Nein, teilweise Sitzungsreihenfolge | Nein |
+| **Konsistente Präfixgarantie** | Ja | Ja | Ja | Ja |
+| **Monotone Lesevorgänge** | Ja | Ja, in Regionen außerhalb des „Veraltungsfensters“ und durchweg innerhalb einer Region. | Ja, für die angegebene Sitzung | Nein |
+| **Monotone Schreibvorgänge** | Ja | Ja | Ja | Ja |
+| **Lesen der eigenen Schreibvorgänge** | Ja | Ja | Ja (in der Region des Schreibvorgangs) | Nein |
+
+
+## Konfigurieren der Standardkonsistenzebene
 
 1.  Klicken Sie im [Azure-Portal](https://portal.azure.com/) in der Navigationsleiste auf **DocumentDB-Konten**.
 
 2. Wählen Sie auf dem Blatt **DocumentDB-Konten** das zu ändernde Datenbankkonto aus.
 
-3. Falls auf dem Blatt „Konto“ das Blatt **Einstellungen** nicht bereits geöffnet ist, klicken Sie auf das Symbol **Einstellungen** auf der oberen Befehlsleiste.
+3. Klicken Sie auf dem Blatt „Konto“, falls das Blatt **Alle Einstellungen** nicht bereits geöffnet ist, auf der oberen Befehlsleiste auf das Symbol **Einstellungen**.
 
-4. Klicken Sie auf dem Blatt **Alle Einstellungen** auf den Eintrag **Standardkonsistenz** unter **Feature**.
+4. Klicken Sie auf dem Blatt **Alle Einstellungen** unter **Feature** auf den Eintrag **Standardkonsistenz**.
 
 	![Screenshot mit dem Symbol „Einstellungen“ und dem Eintrag „Standardkonsistenz“](./media/documentdb-consistency-levels/database-consistency-level-1.png)
 
@@ -72,23 +99,27 @@ Die Konsistenzebene "Eventual" bietet die schwächste Lesekonsistenz, jedoch die
 
 ## Konsistenzebenen für Abfragen
 
-Bei benutzerdefinierten Ressourcen entspricht die Konsistenzebene der Abfragen standardmäßig der der Lesevorgänge. Der Index wird bei jedem Einfügen, Ersetzen oder Löschen eines Dokuments der Sammlung standardmäßig synchron aktualisiert. Auf diese Weise können die Abfragen dieselbe Konsistenzebene wie die von Dokumentlesevorgängen berücksichtigen. Obwohl DocumentDB für Schreibvorgänge optimiert ist und beständige Mengen an Dokumentschreibvorgängen zusammen mit der synchronen Indexwartung und der Bereitstellung konsistenter Abfragen unterstützt, können Sie bestimmte Sammlungen so konfigurieren, dass ihr Index flexibel aktualisiert wird. Die verzögerte Indizierung steigert die Schreibleistung noch weiter und ist ideal für Sammelerfassungsszenarien mit einer starken Lesearbeitsauslastung geeignet.
+Bei benutzerdefinierten Ressourcen entspricht die Konsistenzebene für Abfragen standardmäßig der Konsistenzebene für Lesevorgänge. Der Index wird bei jedem Einfügen, Ersetzen oder Löschen eines Dokuments der Sammlung standardmäßig synchron aktualisiert. Auf diese Weise können die Abfragen dieselbe Konsistenzebene wie die von Dokumentlesevorgängen berücksichtigen. Obwohl DocumentDB für Schreibvorgänge optimiert ist und beständige Mengen an Dokumentschreibvorgängen, die synchrone Indexwartung und Bereitstellung konsistenter Abfragen unterstützt, können Sie bestimmte Sammlungen so konfigurieren, dass ihr Index verzögert aktualisiert wird. Die verzögerte Indizierung steigert die Schreibleistung noch weiter und ist ideal für Sammelerfassungsszenarien mit einer starken Lesearbeitsauslastung geeignet.
 
 Indizierungsmodus|	Lesevorgänge|	Abfragen  
 -------------|-------|---------
-Konsistent (Standard)|	Wählen Sie "Strong", "Bounded Staleness", "Session" oder "Eventual".|	Wählen Sie "Strong", "Bounded Staleness", "Session" oder "Eventual".|
-Verzögert|	Wählen Sie "Strong", "Bounded Staleness", "Session" oder "Eventual".|	Eventual  
+Konsistent (Standard)|	Wählen Sie STARK, BEGRENZTE VERALTUNG, SITZUNG oder LETZTLICH.|	Wählen Sie STARK, BEGRENZTE VERALTUNG, SITZUNG oder LETZTLICH.|
+Verzögert|	Wählen Sie STARK, BEGRENZTE VERALTUNG, SITZUNG oder LETZTLICH.|	Eventual  
 
-Wie bei Leseanforderungen kann die Konsistenzebene einer bestimmten Abfrageanforderung durch Angabe des [x-ms-consistency-level]-Anforderungsheaders herabgesetzt werden.
+Wie bei Leseanforderungen kann die Konsistenzebene einer bestimmten Abfrageanforderung durch Angabe des Anforderungsheaders [x-ms-consistency-level](https://msdn.microsoft.com/library/azure/mt632096.aspx) heruntergestuft werden.
 
 ## Nächste Schritte
 
 Wenn Sie weitere Informationen zu Konsistenzebenen und deren Vor- und Nachteile möchten, empfehlen wir die folgenden Ressourcen:
 
+-	Doug Terry. Replicated Data Consistency explained through baseball (Video) [https://www.youtube.com/watch?v=gluIh8zd26I](https://www.youtube.com/watch?v=gluIh8zd26I) (Konsistenz replizierter Daten – erläutert am Beispiel Baseball)
 -	Doug Terry. Replicated Data Consistency explained through baseball. [http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf](http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf)
 -	Doug Terry. Sitzungsgarantien für schwach konsistente replizierte Daten. [http://dl.acm.org/citation.cfm?id=383631](http://dl.acm.org/citation.cfm?id=383631)
 -	Daniel Abadi. Konsistenzkompromisse im Design moderner verteilter Datenbanksysteme: CAP ist nur ein Teil der Wahrheit. [http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html](http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html)
 -	Peter Bailis, Shivaram Venkataraman, Michael J. Franklin, Joseph M. Hellerstein, Ion Stoica. Probabilistic Bounded Staleness (PBS) for Practical Partial Quorums. [http://vldb.org/pvldb/vol5/p776\_peterbailis\_vldb2012.pdf](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 -	Werner Vogels. Eventual Consistent - Revisited. [http://allthingsdistributed.com/2008/12/eventually\_consistent.html](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
 
-<!---HONumber=AcomDC_0601_2016-->
+
+[1]: ./media/documentdb-consistency-levels/consistency-tradeoffs.png
+
+<!---HONumber=AcomDC_0615_2016-->

@@ -31,7 +31,7 @@ Sie benötigen Folgendes:
 
 ## Wie wird die Ambari-Webbenutzeroberfläche gestartet?
 
-1. Klicken Sie im [Azure-Portal](https://ms.portal.azure.com/) im Startmenü auf die Kachel für Ihren Spark-Cluster (sofern Sie die Kachel ans Startmenü angeheftet haben). Sie können auch unter **Alle durchsuchen** > **HDInsight-Cluster** zu Ihrem Cluster navigieren. 
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) im Startmenü auf die Kachel für Ihren Spark-Cluster (sofern Sie die Kachel ans Startmenü angeheftet haben). Sie können auch unter **Alle durchsuchen** > **HDInsight-Cluster** zu Ihrem Cluster navigieren. 
  
 2. Klicken Sie auf dem Blatt für den Spark-Cluster auf **Dashboard**. Geben Sie bei Aufforderung die Anmeldeinformationen für den Spark-Cluster ein.
 
@@ -43,7 +43,7 @@ Sie benötigen Folgendes:
 
 ## Wie starte ich den Spark-Verlaufsserver?
 
-1. Klicken Sie im [Azure-Portal](https://ms.portal.azure.com/) im Startmenü auf die Kachel für Ihren Spark-Cluster (sofern Sie die Kachel ans Startmenü angeheftet haben).
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) im Startmenü auf die Kachel für Ihren Spark-Cluster (sofern Sie die Kachel ans Startmenü angeheftet haben).
 
 2. Klicken Sie auf dem Clusterblatt unter **Quicklinks** auf **Clusterdashboard**. Klicken Sie auf dem Blatt **Clusterdashboard** auf **Spark-Verlaufsserver**.
 
@@ -212,4 +212,4 @@ Da wir die dynamische Zuordnung von Spark verwenden, werden nur die Ressourcen f
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

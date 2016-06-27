@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/03/2016"
+   ms.date="06/14/2016"
    ms.author="ryanwi"/>
 
 # Bereitstellen von Anwendungen
@@ -30,7 +30,9 @@ Sobald der [Anwendungstyp gepackt][10] wurde, ist die Anwendung für die Bereits
 
 Beim Hochladen des Anwendungspakets wird das Paket an einem Speicherort gespeichert, an dem interne Service Fabric-Komponenten auf das Paket zugreifen können. Zum Hochladen können Sie PowerShell verwenden. Bevor Sie die in diesem Artikel aufgeführten Befehle ausführen, stellen Sie immer zuerst eine Verbindung zum Service Fabric-Cluster mit **Connect-ServiceFabricCluster** her.
 
-Angenommen, Sie haben einen Ordner namens *MyApplicationType*, der die erforderlichen Anwendungs- und Dienstmanifeste sowie Code-/Konfigurations-/Datenpakete enthält. Mit dem Befehl **Copy-ServiceFabricApplicationPackage** wird das Paket hochgeladen. Beispiel:
+Angenommen, Sie haben einen Ordner namens *MyApplicationType*, der die erforderlichen Anwendungs- und Dienstmanifeste sowie Code-/Konfigurations-/Datenpakete enthält. Mit dem Befehl **Copy-ServiceFabricApplicationPackage** wird das Paket an den Clusterimagespeicher hochgeladen. Das Cmdlet **Get-ImageStoreConnectionStringFromClusterManifest** ist Teil des Service Fabric-SDK-PowerShell-Moduls und wird verwendet, um die Imagespeicher-Verbindungszeichenfolge abzurufen. Führen Sie zum Importieren des SDK-Moduls den folgenden Befehl aus: *Import-Module "$ENV:ProgramFiles\\Microsoft SDKs\\Service Fabric\\Tools\\PSModule\\ServiceFabricSDK\\ServiceFabricSDK.psm1"*.
+
+Im folgenden Beispiel wird das Paket hochgeladen:
 
 ~~~
 PS D:\temp> dir
@@ -175,12 +177,6 @@ DefaultParameters      : {}
 PS D:\temp>
 ~~~
 
-<!--
-## Next steps
-
-TODO [Upgrade applications][11]
--->
-
 ## Problembehandlung
 
 ### Copy-ServiceFabricApplicationPackage fordert einen ImageStoreConnectionString an
@@ -225,4 +221,4 @@ PS D:\temp>
 [10]: service-fabric-application-model.md
 [11]: service-fabric-application-upgrade.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

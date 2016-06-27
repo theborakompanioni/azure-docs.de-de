@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/07/2016"
+   ms.date="06/13/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute – FAQ
@@ -61,6 +61,7 @@ ExpressRoute unterstützt die meisten Azure-Dienste.
 	- CDN
 	- Visual Studio Team Services-Auslastungstests
 	- Multi-Factor Authentication
+	- Traffic Manager
 
 ## Daten und Verbindungen
 
@@ -177,7 +178,7 @@ Sie können die Bandbreite der ExpressRoute-Verbindung mithilfe der API zum Aktu
 ### Was ist ExpressRoute Premium?
 ExpressRoute Premium ist eine Sammlung der unten aufgeführten Features.
 
- - Höheres Routingtabellen-Limit von 4000 Routen auf 10.000 Routen für öffentliches und privates Peering.
+ - Erhöhung des Grenzwerts für Routingtabellen von 4.000 auf 10.000 Routen für privates Peering.
  - Größere Anzahl an VNets, die mit der ExpressRoute-Verbindung verbunden werden können. (Der Standardwert ist 10.) Weitere Details finden Sie in der Tabelle unten.
  - Globale Konnektivität über das Microsoft-Kernnetzwerk. Jetzt können Sie ein VNet in einer geopolitischen Region mit einer ExpressRoute-Verbindung in einer anderen Region verknüpfen. **Beispiel:** Sie können ein in Westeuropa erstelltes VNet mit einer ExpressRoute-Verbindung verknüpfen, die im Silicon Valley erstellt wurde.
  - Verbindung mit Office 365-Diensten und CRM Online.
@@ -217,12 +218,14 @@ Ja. Für ExpressRoute Premium werden neben den ExpressRoute-Verbindungsgebühren
 
 ## ExpressRoute mit Office 365-Diensten und CRM Online
 
+[AZURE.INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
+
 ### Wie erstelle ich eine ExpressRoute-Verbindung mit Office 365-Diensten und CRM Online?
 
 1. Überprüfen Sie die Anforderungen auf der Seite mit den [ExpressRoute-Voraussetzungen](expressroute-prerequisites.md), um sicherzustellen, dass Sie die Anforderungen erfüllen.
 2. Überprüfen Sie die Liste der Dienstanbieter und Standorte unter [ExpressRoute-Partner und -Standorte](expressroute-locations.md), um sicherzustellen, dass Ihre Konnektivitätsanforderungen erfüllt werden.
 3. Planen Sie Ihre Kapazitätsanforderungen mithilfe der Informationen unter [Netzwerkplanung und Leistungsoptimierung für Office 365](http://aka.ms/tune/).
-4. Befolgen Sie die Schritte in den unten stehenden Workflows zum Einrichten der Verbindung: [ExpressRoute-Workflows für die Verbindungsbereitstellung und Verbindungszustände](expressroute-workflows.md).
+4. Befolgen Sie die Schritte in den folgenden Workflows zum Einrichten der Verbindung: [ExpressRoute-Workflows für die Verbindungsbereitstellung und Verbindungszustände](expressroute-workflows.md).
 
 >[AZURE.IMPORTANT] Stellen Sie sicher, dass das ExpressRoute Premium-Add-On aktiviert ist, wenn Sie eine Verbindung mit Office 365-Diensten und CRM Online konfigurieren.
 
@@ -248,4 +251,4 @@ Ja. Office 365-Dienstendpunkte sind über das Internet erreichbar, selbst wenn E
 ### Kann über eine ExpressRoute-Verbindung auf Dynamics AX zugegriffen werden?
 Nein, dies wird nicht unterstützt.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

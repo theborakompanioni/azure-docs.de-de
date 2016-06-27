@@ -30,7 +30,7 @@ Die Dateien werden in einem Verzeichnis mit dem Namen **Microsoft.Azure.SqlDatab
 
 ## Voraussetzungen
 
-1. Erstellen Sie eine Azure SQL-Datenbank, die als Split-Merge-Statusdatenbank verwendet wird. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com). Erstellen Sie eine neue **SQL-Datenbank**. Geben Sie einen Namen für die Datenbank ein, und erstellen Sie einen neuen Administrator und ein neues Kennwort. Achten Sie darauf, dass Sie den Namen und das Kennwort zur späteren Verwendung notieren.
+1. Erstellen Sie eine Azure SQL-Datenbank, die als Split-Merge-Statusdatenbank verwendet wird. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Erstellen Sie eine neue **SQL-Datenbank**. Geben Sie einen Namen für die Datenbank ein, und erstellen Sie einen neuen Administrator und ein neues Kennwort. Achten Sie darauf, dass Sie den Namen und das Kennwort zur späteren Verwendung notieren.
 
 2. Achten Sie darauf, dass Ihr Azure SQL-Datenbankserver Verbindungen mit Azure-Diensten zulässt. Stellen Sie im Portal in den **Firewalleinstellungen** sicher, dass die Einstellung **Zugriff auf Azure-Dienste erlauben** auf **Ein** eingestellt ist. Klicken Sie auf das Symbol "Speichern".
 
@@ -339,4 +339,4 @@ Wenn Sie keine Anforderungen übermitteln können, wird möglicherweise Folgende
 [5]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/storage.png
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

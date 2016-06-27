@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/26/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # Dokumentationsrückstand bei Azure Data Lake Analytics
@@ -62,4 +62,4 @@ Für das Senden von Feedback bezüglich des Rückstands stehen mehrere Optionen 
 * Senden Sie im [Azure-Inhaltsrepository](https://github.com/Azure/azure-content/blob/master/articles/data-lake-analytics/data-lake-analytics-documentation-backlog.md) eine Pull-Anforderung für dieses Dokument.
 * Senden Sie eine E-Mail an [adlafeedback@microsoft.com](mailto:adlafeedback@microsoft.com?subject=DocBacklog).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

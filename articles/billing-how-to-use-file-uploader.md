@@ -19,9 +19,9 @@
 
 # Neue Microsoft Azure Supportanfrage – Richtlinien zur Verwendung des Dienstprogramms für den Dateiupload
 
-Wenn Sie [eine neue Supportanfrage erstellen](https://ms.portal.azure.com/#create/Microsoft.Support), kann das Dateiupload-Dienstprogramm Ihnen dabei helfen, problemlos Diagnosedateien oder andere Dateien hochzuladen, die Ihrer Meinung nach für den Vorfall relevant sind.
+Wenn Sie [eine neue Supportanfrage erstellen](https://portal.azure.com/#create/Microsoft.Support), kann das Dateiupload-Hilfsprogramm Ihnen dabei helfen, problemlos Diagnosedateien oder andere Dateien hochzuladen, die Ihrer Meinung nach für den Incident relevant sind.
 
->[AZURE.NOTE]Um Ihre Privatsphäre zu schützen, fügen Sie bitte keine persönlichen Informationen in Ihren Upload ein.
+>[AZURE.NOTE] Um Ihre Privatsphäre zu schützen, fügen Sie bitte keine persönlichen Informationen in Ihren Upload ein.
 
 Befolgen Sie diese Richtlinien, wenn Sie das Dateiupload-Dienstprogramm verwenden:
 
@@ -63,4 +63,4 @@ Befolgen Sie diese Richtlinien, wenn Sie das Dateiupload-Dienstprogramm verwende
 | | | | | | | .zix |
 | | | | | | | .zzz |
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0615_2016-->

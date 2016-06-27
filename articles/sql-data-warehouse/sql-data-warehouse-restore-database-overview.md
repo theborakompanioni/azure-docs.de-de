@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Wiederherstellen einer Datenbank in Azure SQL Data Warehouse (Übersicht) | Microsoft Azure"
+   pageTitle="Wiederherstellen einer Azure SQL Data Warehouse-Instanz (Übersicht) | Microsoft Azure"
    description="Übersicht über die Wiederherstellungsoptionen zur Wiederherstellung einer Datenbank in Azure SQL Data Warehouse."
    services="sql-data-warehouse"
    documentationCenter="NA"
@@ -13,58 +13,63 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/04/2016"
+   ms.date="06/14/2016"
    ms.author="elfish;barbkess;sonyama"/>
 
 
-# Wiederherstellen einer Datenbank in Azure SQL Data Warehouse (Übersicht)
+# Wiederherstellen einer Azure SQL Data Warehouse-Instanz (Übersicht)
 
 > [AZURE.SELECTOR]
-- [Übersicht](sql-data-warehouse-restore-database-overview.md)
-- [Portal](sql-data-warehouse-restore-database-portal.md)
-- [PowerShell](sql-data-warehouse-restore-database-powershell.md)
-- [REST](sql-data-warehouse-manage-restore-database-rest-api.md)
+- [Übersicht][]
+- [Portal][]
+- [PowerShell][]
+- [REST][]
 
-Beschreibt die Optionen zum Wiederherstellen einer Datenbank in Azure SQL Data Warehouse. Dazu gehören das Wiederherstellen eines Live- und gelöschten Data Warehouse. Live- und gelöschte Data Warehouses werden aus den Momentaufnahmen wiederhergestellt, die für alle Data Warehouses automatisch erstellt werden.
+Azure SQL Data Warehouse schützt Ihre Daten sowohl durch lokal redundanten Speicher als auch durch automatisierte Sicherungen. Mit automatisierte Sicherungen können Sie Datenbanken ohne Verwaltungsaufwand vor versehentlicher Beschädigung oder Löschung schützen. Falls ein Benutzer versehentlich oder nebenbei Daten ändert oder löscht, können Sie einen früheren Zustand der Datenbank wiederherstellen und so die Geschäftskontinuität gewährleisten. SQL Data Warehouse verwendet Azure Storage-Momentaufnahmen, um Ihre Datenbank nahtlos und ohne Ausfallzeiten zu sichern.
 
-## Wiederherstellungsszenarien
+## Automatisierte Sicherungen
 
-**Wiederherstellung bei Fehlern in der Infrastruktur**: Dieses Szenario bezieht sich auf das Wiederherstellen nach Infrastrukturproblemen wie Datenträgerfehlern usw. Ein Kunde möchte Geschäftskontinuität mit einer fehlertoleranten und hoch verfügbaren Infrastruktur gewährleisten.
+Ihre **aktiven** Datenbanken werden spätestens alle acht Stunden automatisch gesichert und die Sicherungen sieben Tage lang aufbewahrt. Dadurch können Sie Ihre aktive Datenbank auf einen von mehreren Wiederherstellungspunkten der letzten sieben Tage wiederherstellen.
 
-**Wiederherstellung nach Benutzerfehlern**: Dieses Szenario bezieht sich auf die Wiederherstellung nach unbeabsichtigten oder beiläufigen Datenbeschädigungen oder -löschungen. Ein Kunde möchte für den Fall, dass ein Benutzer versehentlich oder beiläufig Daten ändert oder löscht, Geschäftskontinuität durch Wiederherstellen der Datenbank zu einem früheren Zeitpunkt sicherstellen.
+Wenn eine Datenbank angehalten wird, werden keine neuen Momentaufnahmen erstellt, und vorherige Momentaufnahmen laufen aus, wenn sie ein Alter von sieben Tagen erreichen. Wird eine Datenbank länger als sieben Tage angehalten, wird die letzte Momentaufnahme gespeichert, sodass Ihnen immer mindestens eine Sicherung zur Verfügung steht.
 
-## Momentaufnahmen-Richtlinien
+Wird eine Datenbank gelöscht, wird die letzte Momentaufnahme sieben Tage lang gespeichert.
 
-[AZURE.INCLUDE [SQL Data Warehouse-Aufbewahrungsrichtlinie für die Sicherung](../../includes/sql-data-warehouse-backup-retention-policy.md)]
+Mit der folgenden Abfrage können Sie ermitteln, wann die letzte Sicherung für Ihre Instanz erstellt wurde:
 
+```sql
+select top 1 *
+from sys.pdw_loader_backup_runs 
+order by run_id desc;
+```
 
-## Wiederherstellungsfunktionen für Datenbanken
+Wenn eine Sicherung für mehr als sieben Tage aufbewahrt werden soll, können Sie einfach einen Ihrer Wiederherstellungspunkte in einer neuen Datenbank wiederherstellen und diese Datenbank ggf. anhalten, damit Sie nur für den Speicherplatz dieser Sicherung bezahlen.
 
-Wir untersuchen nun, wie SQL Data Warehouse in den oben genannten Szenarios die Zuverlässigkeit Ihrer Datenbank erhöht und die Wiederherstellbarkeit und die fortlaufende Ausführung des Systems ermöglicht.
+## Datenredundanz
 
+Zusätzlich zu Sicherungen schützt SQL Data Warehouse Ihre Daten auch durch [lokal redundanten][] Azure Premium-Speicher. Mehrere synchrone Kopien der Daten werden im lokalen Rechenzentrum behalten, um transparenten Datenschutz bei lokalen Ausfällen sicherzustellen. Die Datenredundanz gewährleistet, dass Ihre Daten gegen Infrastrukturprobleme wie Datenträgerausfälle oder Ähnliches geschützt sind. Außerdem gewährleistet die Datenredundanz Geschäftskontinuität mit einer fehlertoleranten und hoch verfügbaren Infrastruktur.
 
-### Datenredundanz
+## Wiederherstellen einer Datenbank
 
-SQL Data Warehouse speichert drei Kopien aller Ihrer Daten in [lokal redundantem Speicher (LRS)](../storage/storage-redundancy.md) des Typs Azure Storage Premium.
+Die Wiederherstellung einer SQL Data Warehouse-Instanz ist ganz einfach und kann entweder über das Azure-Portal durchgeführt oder mithilfe von PowerShell oder REST-APIs automatisiert werden.
 
-### Datenbankwiederherstellung
-
-Mit der Datenbankwiederherstellung können Sie die Datenbank in den Zustand zu einem früheren Zeitpunkt wiederherstellen. Der Azure SQL Data Warehouse-Dienst schützt alle Datenbanken durch automatische Speichermomentaufnahmen mindestens alle acht Stunden, die sieben Tage lang aufbewahrt werden und einen diskreten Satz von Wiederherstellungspunkten für Sie bereitstellen. Die Funktionen für die automatische Momentaufnahme und Wiederherstellung bieten eine verwaltungsfreie Möglichkeit, Datenbanken vor versehentlicher Beschädigung oder Löschung zu schützen. Weitere Informationen zur Datenbankwiederherstellung finden Sie unter [Database restore tasks][] (Aufgaben zur Datenbankwiederherstellung).
 
 ## Nächste Schritte
-Andere wichtige Verwaltungsaufgaben finden Sie in der [Verwaltungsübersicht][].
+Informationen zu den Geschäftskontinuitätsfeatures von Azure SQL-Datenbank-Editionen finden Sie in der [Übersicht über die Geschäftskontinuität der Azure SQL-Datenbank][].
 
 <!--Image references-->
 
 <!--Article references-->
-[Azure storage redundancy options]: ../storage/storage-redundancy.md#read-access-geo-redundant-storage
-[Backup and restore tasks]: sql-data-warehouse-database-restore-portal.md
-[Verwaltungsübersicht]: sql-data-warehouse-overview-management.md
-[Database restore tasks]: sql-data-warehouse-manage-database-restore-portal.md
+[Übersicht über die Geschäftskontinuität der Azure SQL-Datenbank]: ./sql-database-business-continuity.md
+[lokal redundanten]: ../storage/storage-redundancy.md
+[Übersicht]: ./sql-data-warehouse-restore-database-overview.md
+[Portal]: ./sql-data-warehouse-restore-database-portal.md
+[PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
+[REST]: ./sql-data-warehouse-restore-database-rest-api.md
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

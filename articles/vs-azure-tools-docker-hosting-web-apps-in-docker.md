@@ -24,7 +24,7 @@ Docker ist ein einfaches Containermodul, in gewisser Weise mit einem virtuellen 
 ## 1\. Voraussetzungen
 Folgendes ist zum Durchführen dieses Tutorials erforderlich:
 
-- Erstellen eines virtuellen Azure-Docker-Hostcomputers gemäß der Beschreibung in [Verwenden von „docker-machine“ mit Azure](./virtual-machines/virtual-machines-linux-classic-docker-machine.md)
+- Erstellen eines virtuellen Azure-Docker-Hostcomputers gemäß der Beschreibung in [Verwenden von „docker-machine“ mit Azure](./virtual-machines/virtual-machines-linux-docker-machine.md)
 - Installieren von [Visual Studio 2015](https://www.visualstudio.com/de-DE/downloads/download-visual-studio-vs.aspx)
 - Installieren von [Visual Studio 2015-Tools für Docker – Preview](http://aka.ms/DockerToolsForVS)
 
@@ -96,4 +96,4 @@ Die Ergebnisse sollten in etwa wie folgt aussehen:
 [2]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/launch-application.png
 [3]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/view-application.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

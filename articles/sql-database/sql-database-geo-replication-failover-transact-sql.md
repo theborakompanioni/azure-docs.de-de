@@ -22,7 +22,7 @@
 > [AZURE.SELECTOR]
 - [Azure-Portal](sql-database-geo-replication-failover-portal.md)
 - [PowerShell](sql-database-geo-replication-failover-powershell.md)
-- [Transact-SQL](sql-database-geo-replication-failover-transact-sql.md)
+- [T-SQL](sql-database-geo-replication-failover-transact-sql.md)
 
 
 In diesem Artikel wird beschrieben, wie Sie mit Transact-SQL ein Failover zu einer sekundären SQL-Datenbank konfigurieren. Informationen zum Konfigurieren der Georeplikation finden Sie unter [Konfigurieren der Georeplikation für Azure SQL-Datenbank mit Transact-SQL](sql-database-geo-replication-transact-sql.md).
@@ -98,4 +98,4 @@ Führen Sie die folgenden Schritte aus, um ein ungeplantes Failover auszulösen.
 - [SQL-Datenbankdokumentation](https://azure.microsoft.com/services/sql-database/)
 - [Warnungen zur Notfallwiederherstellung](sql-database-disaster-recovery-drills.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

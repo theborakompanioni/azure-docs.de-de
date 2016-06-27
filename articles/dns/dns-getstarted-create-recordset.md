@@ -145,4 +145,4 @@ Die folgenden Beispiele zeigen, wie Sie einen Eintragssatz jedes Eintragstyps er
 
 [Automatisieren von Azure-Vorgängen mit dem .NET SDK](dns-sdk.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

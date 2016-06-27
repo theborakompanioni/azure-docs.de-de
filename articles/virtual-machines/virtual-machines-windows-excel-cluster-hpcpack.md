@@ -46,7 +46,7 @@ Wir zeigen Ihnen zwei Methoden für die Clustereinrichtung. Bei der ersten komme
 ### Mit einer Schnellstartvorlage
 Verwenden Sie eine Azure-Schnellstartvorlage, um schnell und einfach einen HPC Pack-Cluster im Azure-Portal bereitzustellen. Wenn Sie die Vorlage im Vorschauportal öffnen, wird eine einfache Benutzeroberfläche angezeigt, über die Sie die Einstellungen für Ihren Cluster angeben können. Gehen Sie wie folgt vor:
 
->[AZURE.TIP]Wenn Sie möchten, verwenden Sie eine [Azure Marketplace-Vorlage](https://ms.portal.azure.com/?feature.relex=*%2CHubsExtension#create/microsofthpc.newclusterexcelcn), die einen ähnlichen Cluster speziell für Excel-Workloads erstellt. Die Schritte unterscheiden sich geringfügig von den folgenden.
+>[AZURE.TIP]Verwenden Sie ggf. eine [Azure Marketplace-Vorlage](https://portal.azure.com/?feature.relex=*%2CHubsExtension#create/microsofthpc.newclusterexcelcn), die einen ähnlichen Cluster speziell für Excel-Workloads erstellt. Die Schritte unterscheiden sich geringfügig von den folgenden.
 
 1.  Besuchen Sie bei GitHub die [Seite mit der Vorlage für die HPC-Clustererstellung](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster). Machen Sie sich ggf. mit den Informationen zur Vorlage sowie mit dem Quellcode vertraut.
 
@@ -382,4 +382,4 @@ Für die SOA-Clientanwendung muss lediglich der Hauptname auf den vollständigen
 [endpoint]: ./media/virtual-machines-windows-excel-cluster-hpcpack/endpoint.png
 [udf]: ./media/virtual-machines-windows-excel-cluster-hpcpack/udf.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

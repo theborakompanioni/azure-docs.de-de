@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Datenbankwiederherstellung in Azure SQL Data Warehouse (PowerShell) | Microsoft Azure"
-   description="Aufgaben von PowerShell zum Wiederherstellen einer Livedatenbank, einer gelöschten Datenbank oder einer Datenbank, auf die nicht zugegriffen werden kann, in Azure SQL Data Warehouse"
+   pageTitle="Wiederherstellen einer Azure SQL Data Warehouse-Instanz (PowerShell) | Microsoft Azure"
+   description="PowerShell-Aufgaben zum Wiederherstellen einer Azure SQL Data Warehouse-Instanz."
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="elfisher"
@@ -13,40 +13,32 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/05/2016"
+   ms.date="06/11/2016"
    ms.author="elfish;barbkess;sonyama"/>
 
-# Sichern und Wiederherstellen einer Datenbank in Azure SQL Data Warehouse (PowerShell)
+# Wiederherstellen einer Azure SQL Data Warehouse-Instanz (PowerShell)
 
 > [AZURE.SELECTOR]
-- [Übersicht](sql-data-warehouse-overview-manage-database-restore.md)
-- [Portal](sql-data-warehouse-manage-database-restore-portal.md)
-- [PowerShell](sql-data-warehouse-manage-database-restore-powershell.md)
-- [REST](sql-data-warehouse-manage-database-restore-rest-api.md)
+- [Übersicht][]
+- [Portal][]
+- [PowerShell][]
+- [REST][]
 
-Aufgaben mit PowerShell zum Wiederherstellen einer Live-Datenbank, einer gelöschten Datenbank oder einer Datenbank, auf die nicht zugegriffen werden kann, in SQL Data Warehouse
-
-Aufgaben in diesem Thema:
-
-- Wiederherstellen einer Livedatenbank
-- Wiederherstellen einer gelöschten Datenbank
-- Wiederherstellen einer Datenbank, auf die nicht zugegriffen werden kann, von einer anderen geografischen Azure-Region aus
-
-[AZURE.INCLUDE [SQL Data Warehouse-Aufbewahrungsrichtlinie für die Sicherung](../../includes/sql-data-warehouse-backup-retention-policy.md)]
-
+In diesem Artikel erfahren Sie, wie Sie eine Azure SQL Data Warehouse-Instanz mithilfe von PowerShell wiederherstellen.
 
 ## Voraussetzungen
 
 ### Überprüfen Sie Ihre Kapazität der SQL-Datenbank-DTU. 
-SQL Data Warehouse führt die Wiederherstellung so aus, dass eine neue Datenbank auf dem logischen Server erstellt wird. Daher sollten Sie sicherstellen, dass der SQL-Server, auf den Sie wiederherstellen, über ausreichend DTU-Kapazität für die neue Datenbank verfügt. Weitere Informationen zum Anzeigen und Erhöhen des DTU-Kontingents finden Sie in [diesem Blogbeitrag][].
+
+Jede SQL Data Warehouse-Instanz wird von einem logischen Server mit SQL Server gehostet. Dieser logische Server verfügt über ein in DTU gemessenes Kapazitätslimit. Vor dem Wiederherstellen einer SQL Data Warehouse-Instanz muss zunächst geprüft werden, ob die DTU-Kapazität des logischen Servers mit SQL Server, der als Host für Ihre Datenbank fungiert, für die wiederherzustellende Datenbank ausreicht. Weitere Informationen zum Anzeigen und Erhöhen des DTU-Kontingents finden Sie in [diesem Blogbeitrag][].
 
 ### Installieren von PowerShell
 
-Damit Sie Azure PowerShell mit SQL Data Warehouse verwenden können, müssen Sie Azure PowerShell Version 1.0 oder höher installieren. Sie können die Version überprüfen, indem Sie **Get-Module -ListAvailable -Name Azure** ausführen. Sie können die neueste Version installieren, indem Sie sie über [Microsoft-Web Platform Installer][] herunterladen. Weitere Informationen zum Installieren der neuesten Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][].
+Damit Sie Azure PowerShell mit SQL Data Warehouse verwenden können, müssen Sie Azure PowerShell Version 1.0 oder höher installieren. Sie können die Version überprüfen, indem Sie **Get-Module -ListAvailable -Name Azure** ausführen. Die neueste Version können Sie über den [Microsoft-Webplattform-Installer][] installieren. Weitere Informationen zum Installieren der neuesten Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][].
 
-## Wiederherstellen einer Livedatenbank
+## Wiederherstellen einer aktiven oder angehaltenen Datenbank
 
-Verwenden Sie das PowerShell-Cmdlet [Restore-AzureRmSqlDatabase][], um eine Datenbank aus einer Momentaufnahme wiederherzustellen.
+Verwenden Sie das PowerShell-Cmdlet [Restore-AzureRmSqlDatabase][], um eine Datenbank auf der Grundlage einer Momentaufnahme wiederherzustellen.
 
 1. Öffnen Sie Windows PowerShell.
 2. Stellen Sie eine Verbindung mit Ihrem Azure-Konto her, und listen Sie alle Abonnements auf, die Ihrem Konto zugeordnet sind.
@@ -88,8 +80,6 @@ $RestoredDatabase.status
 
 ```
 
->[AZURE.NOTE] Verwenden Sie in den oben aufgeführten PowerShell-Cmdlets „foo“ als „-ServerName“ für den Server „foo.database.windows.net“.
-
 Nachdem die Wiederherstellung abgeschlossen ist, können Sie Ihre wiederhergestellte Datenbank konfigurieren. Befolgen Sie hierzu die Anleitung [Abschließen der wiederhergestellten Azure SQL-Datenbank][].
 
 ## Wiederherstellen einer gelöschten Datenbank
@@ -126,9 +116,7 @@ $RestoredDatabase.status
 
 ```
 
->[AZURE.NOTE] Verwenden Sie in den oben aufgeführten PowerShell-Cmdlets „foo“ als „-ServerName“ für den Server „foo.database.windows.net“.
-
-Nachdem die Wiederherstellung abgeschlossen ist, können Sie Ihre wiederhergestellte Datenbank konfigurieren. Befolgen Sie hierzu die Anleitung [Abschließen der wiederhergestellten Azure SQL-Datenbank][].
+Nach Abschluss der Wiederherstellung können Sie Ihre wiederhergestellte Datenbank konfigurieren. Befolgen Sie hierzu die Anleitung [Abschließen der wiederhergestellten Azure SQL-Datenbank][].
 
 ## Wiederherstellen von einer geografischen Azure-Region aus
 
@@ -159,6 +147,7 @@ $GeoRestoredDatabase.status
 ```
 
 ### Konfigurieren der Datenbank nach der Durchführung einer Geowiederherstellung
+
 Dies ist eine Prüfliste, mit der Sie die wiederhergestellte Datenbank für die Produktion vorbereiten können.
 
 1. **Aktualisieren von Verbindungszeichenfolgen**: Stellen Sie sicher, dass die Verbindungszeichenfolgen Ihrer Clienttools auf die neu wiederhergestellte Datenbank verweisen.
@@ -170,21 +159,20 @@ Für die wiederhergestellte Datenbank ist TDE aktiviert, wenn für die Quelldate
 
 
 ## Nächste Schritte
-Weitere Informationen finden Sie unter [Azure SQL-Datenbank-Geschäftskontinuität][] und [Verwaltungsübersicht][].
+Informationen zu den Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank-Editionen finden Sie in der [Azure SQL-Datenbank-Übersicht zur Geschäftskontinuität][].
 
 <!--Image references-->
 
 <!--Article references-->
-[Azure SQL-Datenbank-Geschäftskontinuität]: sql-database-business-continuity.md
+[Azure SQL-Datenbank-Übersicht zur Geschäftskontinuität]: sql-database-business-continuity.md
 [Abschließen der wiederhergestellten Azure SQL-Datenbank]: sql-database-recovered-finalize.md
 [Installieren und Konfigurieren von Azure PowerShell]: powershell-install-configure.md
-[Verwaltungsübersicht]: sql-data-warehouse-overview-manage.md
+[Übersicht]: ./sql-data-warehouse-restore-database-overview.md
+[Portal]: ./sql-data-warehouse-restore-database-portal.md
+[PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
+[REST]: ./sql-data-warehouse-restore-database-rest-api.md
 
 <!--MSDN references-->
-[Create database restore request]: https://msdn.microsoft.com/library/azure/dn509571.aspx
-[Database operation status]: https://msdn.microsoft.com/library/azure/dn720371.aspx
-[Get restorable dropped database]: https://msdn.microsoft.com/library/azure/dn509574.aspx
-[List restorable dropped databases]: https://msdn.microsoft.com/library/azure/dn509562.aspx
 [Restore-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt693390.aspx
 
 <!--Blog references-->
@@ -192,6 +180,6 @@ Weitere Informationen finden Sie unter [Azure SQL-Datenbank-Geschäftskontinuit�
 
 <!--Other Web references-->
 [Azure Portal]: https://portal.azure.com/
-[Microsoft-Web Platform Installer]: https://aka.ms/webpi-azps
+[Microsoft-Webplattform-Installer]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/15/2016"
+   ms.date="06/13/2016"
    ms.author="mausher;sonyama;barbkess"/>
 
 # Problembehandlung bei Azure SQL Data Warehouse
@@ -116,7 +116,7 @@ Weitere Informationen zur Optimierung Ihrer SQL Data Warehouse-Lösung finden Si
 [Überwachen Ihres Workloads mit dynamischen Verwaltungssichten]: ./sql-data-warehouse-manage-monitor.md
 [Verwalten von Statistiken in SQL Data Warehouse]: ./sql-data-warehouse-develop-statistics.md
 [Bereitstellungsanweisungen]: ./sql-data-warehouse-get-started-provision.md
-[Erstellen einer neuen Azure SQL-Firewall auf Serverebene]: ./sql-data-warehouse-get-started-provision.md/#create-a-new-azure-sql-server-level-firewall
+[Erstellen einer neuen Azure SQL-Firewall auf Serverebene]: ./sql-data-warehouse-get-started-provision.md#create-a-new-azure-sql-server-level-firewall
 [Visual Studio 2013 und 2015]: ./sql-data-warehouse-get-started-connect.md
 [Bewährte Methoden für SQL Data Warehouse]: ./sql-data-warehouse-best-practices.md
 [Verwalten von Statistiken in SQL Data Warehouse]: ./sql-data-warehouse-best-practices.md
@@ -127,4 +127,4 @@ Weitere Informationen zur Optimierung Ihrer SQL Data Warehouse-Lösung finden Si
 
 <!--Other web references-->
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

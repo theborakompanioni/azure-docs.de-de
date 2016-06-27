@@ -27,7 +27,7 @@
 
 Die folgenden Schritte veranschaulichen, wie Sie eine SQL-Datenbank über das [Azure-Portal](https://portal.azure.com) kopieren. Mit dem Vorgang zum Kopieren einer Datenbank wird eine neue SQL-Datenbank erstellt. Die Kopie ist eine Snapshotsicherung Ihrer Datenbank, die Sie entweder auf demselben Server oder auf einem anderen Server erstellen.
 
-> [AZURE.NOTE] Azure SQL-Datenbank erstellt und verwaltet automatisch Sicherungen für jede Benutzerdatenbank, die Sie wiederherstellen können. Weitere Informationen finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
+> [AZURE.NOTE] Die Azure SQL-Datenbank [erstellt und verwaltet automatisch Sicherungen](sql-database-automated-backups.md) für jede Benutzerdatenbank, die Sie wiederherstellen können.
 
 Wenn der Kopiervorgang abgeschlossen ist, handelt es sich bei der neuen Datenbank um eine voll funktionsfähige Datenbank, die unabhängig von der Quelldatenbank ist. Die neue Datenbank entspricht in Bezug auf Transaktionen mit der Quelldatenbank für den Zeitpunkt überein, an dem die Erstellung der Kopie abgeschlossen ist. Die Dienstebene und die Leistungsebene (Tarif) der Datenbankkopie stimmen mit den Ebenen der Quelldatenbank überein. Nachdem der Kopiervorgang abgeschlossen ist, wird die Kopie zu einer voll funktionsfähigen, unabhängigen Datenbank. Anmeldungen, Benutzer und Berechtigungen können unabhängig verwaltet werden.
 
@@ -100,4 +100,4 @@ Zum Kopieren einer SQL-Datenbank benötigen Sie Folgendes:
 [3]: ./media/sql-database-copy/copy-notification.png
 [4]: ./media/sql-database-copy/monitor-copy.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

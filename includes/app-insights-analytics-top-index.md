@@ -1,7 +1,8 @@
 > [AZURE.SELECTOR]
 - [Übersicht](../articles/application-insights/app-insights-analytics.md)
-- [Überblick über Analytics](../articles/application-insights/app-insights-analytics-tour.md)
-- [Verwenden von Analytics](../articles/application-insights/app-insights-analytics-using.md)
+- [Einführung](../articles/application-insights/app-insights-analytics-tour.md)
+- [Verwenden](../articles/application-insights/app-insights-analytics-using.md)
 - [Sprachreferenz](../articles/application-insights/app-insights-analytics-reference.md)
+- [Problembehandlung](../articles/application-insights/app-insights-analytics-troubleshooting.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

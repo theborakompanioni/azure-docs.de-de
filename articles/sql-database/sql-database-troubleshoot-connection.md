@@ -31,7 +31,7 @@ Dieser Fehler tritt auf, wenn die Azure-Datenbank verschoben (oder neu konfiguri
 
 ## Schritte zum Beheben vorübergehender Verbindungsprobleme
 1.	Ziehen Sie das [Microsoft Azure Service-Dashboard](https://azure.microsoft.com/status) für alle bekannten Ausfälle zu Rat, die während der Fehlermeldung durch die Anwendung aufgetreten sind.
-2. Für Anwendungen, die Verbindungen zu einem Clouddienst wie Azure SQL-Datenbank herstellen, sollten Sie regelmäßige Rekonfigurationsereignisse erwarten. Daher sollten Sie eine Wiederholungslogik zur Fehlerbehandlung implementieren, anstatt Benutzern diese Anwendungsfehler anzuzeigen. Weitere Informationen und allgemeine Wiederholungsstrategien finden Sie in dem Abschnitt [Vorübergehende Fehler](sql-database-connectivity-issues.md) und in den [Wichtigen Empfehlungen](sql-database-connect-central-recommendations.md). Tiefer gehende Informationen finden Sie anschließend in den Codebeispielen in den [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md).
+2. Für Anwendungen, die Verbindungen zu einem Clouddienst wie Azure SQL-Datenbank herstellen, sollten Sie regelmäßige Rekonfigurationsereignisse erwarten. Daher sollten Sie eine Wiederholungslogik zur Fehlerbehandlung implementieren, anstatt Benutzern diese Anwendungsfehler anzuzeigen. Weitere Informationen und allgemeine Wiederholungsstrategien finden Sie im Abschnitt [Vorübergehende Fehler](sql-database-connectivity-issues.md) sowie in den bewährten Methoden und Design-Richtlinien der [Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md). Tiefer gehende Informationen finden Sie anschließend in den Codebeispielen in den [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md).
 3.	Wenn sich eine Datenbank ihren Ressourcenbegrenzungen nähert, kann dies wie ein vorübergehendes Verbindungsproblem aussehen. Siehe [Problembehandlung bei Leistungsproblemen](sql-database-troubleshoot-performance.md).
 4.	Wenn Verbindungsprobleme weiterhin bestehen, die Fehlerdauer 60 Sekunden überschreitet oder der Fehler an einem Tag mehrfach auftritt, schicken Sie eine Azure-Supportanforderung, indem Sie auf der [Azure-Support](https://azure.microsoft.com/support/options)-Website **Support erhalten** auswählen.
 
@@ -39,4 +39,4 @@ Dieser Fehler tritt auf, wenn die Azure-Datenbank verschoben (oder neu konfiguri
 - Wenn es sich um einen anderen Fehler handelt, überprüfen Sie die [Fehlermeldung](sql-database-develop-error-messages.md) bezüglich der Hinweise auf mögliche Ursachen.
 - Wenn der Fehler dauerhaft ist, lesen Sie die Hilfestellungen in dem Artikel [Troubleshoot common connection issues to SQL Azure Database](sql-database-troubleshoot-common-connection-issues.md) (Behandlung häufiger Verbindungsprobleme mit Azure SQL-Datenbanken).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

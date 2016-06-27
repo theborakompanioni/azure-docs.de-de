@@ -48,7 +48,6 @@ Die Azure Machine Learning-Empfehlungs-APIs können in die folgenden logischen G
 - Die maximale Anzahl von Elementen, die ein Katalog aufnehmen kann, beträgt 100.000.
 - Die maximale Menge der Nutzungspunkte, die aufbewahrt werden, beträgt etwa 5.000.000. Die ältesten werden gelöscht, wenn neue hochgeladen oder gemeldet werden.
 - Die maximale Größe der Daten, die in POST gesendet werden können (z. B. Importieren von Katalog- oder Nutzungsdaten), beträgt 200 MB.
-- Die Anzahl der Transaktionen pro Sekunde bei Empfehlungsmodellbuilds, die nicht aktiv sind, beträgt etwa 2 T/s. Bei aktiven Empfehlungsmodellbuilds sind bis zu 20 T/s möglich.
 - Die maximale Anzahl von Elementen, die bei Empfehlungen abgerufen werden können, beträgt 150.
 
 ##3\. APIs – allgemeine Informationen
@@ -93,9 +92,9 @@ Es wird eine Anforderung „Modell erstellen“ erstellt.
 
 |	Parametername |	Gültige Werte |
 |:--------			|:--------								|
-|	modelName |	Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (\_) zulässig.<br>Max. Länge: 20 |
-| apiVersion | 1.0 |
-|||
+|	modelName |	Es sind nur Buchstaben (A-Z, a-z), Zahlen (0-9), Bindestriche (-) und Unterstriche (\_) zulässig.<br>Max. Länge: 20 | 
+| apiVersion | 1.0 | 
+||| 
 | Anforderungstext | NONE |
 
 
@@ -888,18 +887,7 @@ OData-XML
 |	apiVersion | 1,0 |
 |||
 | Anforderungstext | 
-<ins>Wenn Sie Element-IDs für Geschäftsregeln bereitstellen, stellen Sie sicher, dass Sie die externe ID des Elements verwenden (die gleiche ID, die Sie in der Katalogdatei verwendet haben)</ins><br> 
-<ins>So fügen Sie eine BlockList-Regel hinzu:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins> 
-<ins>So fügen Sie eine FeatureBlockList-Regel hinzu:</ins><br> 
-<br> 
-`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins> 
-So fügen Sie eine Upsale-Regel hinzu:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br> 
-<ins>So fügen Sie eine WhiteList-Regel hinzu:</ins><br> 
-`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins> 
-<ins>So fügen Sie eine FeatureWhiteList-Regel hinzu:</ins><br> 
-<br> 
-`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins> 
-So fügen Sie eine PerSeedBlockList-Regel hinzu:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
+<ins>Stellen Sie beim Bereitstellen von Element-IDs für Geschäftsregeln sicher, dass Sie die externe ID des Elements verwenden (die gleiche ID, die Sie in der Katalogdatei verwendet haben)</ins><br> <ins>Zum Hinzufügen einer BlockList-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins> <ins>Zum Hinzufügen einer FeatureBlockList-Regel:</ins><br> <br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins> Zum Hinzufügen einer Upsale-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br> <ins>Zum Hinzufügen einer WhiteList-Regel:</ins><br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins> <ins>Zum Hinzufügen einer FeatureWhiteList-Regel:</ins><br> <br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins> Zum Hinzufügen einer PerSeedBlockList-Regel:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
 
 
 **Antwort**:
@@ -1361,8 +1349,7 @@ In diesem Abschnitt wird gezeigt, wie Ereignisse in Echtzeit an Azure Machine Le
   		</EventData>
 		</Event>
 
-**Antwort**: 
-HTTP-Statuscode: 200
+**Antwort**: HTTP-Statuscode: 200
 
 ###9\.2. Modellnutzungsdateien auflisten
 Hierdurch werden von allen Modellnutzungsdateien Metadaten abgerufen. Die Nutzungsdateien werden Seite für Seite abgerufen. Jede Seite enthält 100 Elemente. Wenn Sie Elemente in einem bestimmten Index abrufen möchten, können Sie den Parameter „$skip odata“ verwenden. Beispiel: Wenn Sie Elemente ab Position 100 abrufen möchten, fügen Sie der Anforderung den Parameter „$skip=100“ hinzu.
@@ -1826,7 +1813,7 @@ Empfehlungsbuilds dienen dazu, Empfehlungsmodelle für Vorhersagen zu erstellen.
 
 Rangfolgebuilds sind technische Builds, welche die Nützlichkeit Ihrer Features vermitteln können. Um bei Empfehlungsmodellen mit Features die besten Ergebnisse zu erzielen, sollten Sie die folgenden Schritte ausführen:
 - Lösen Sie einen Rangfolgebuild aus (sofern die Bewertung Ihrer Features nicht stabil ist), und warten Sie, bis Sie die Featurebewertung erhalten.
-- Rufen Sie den Rang Ihrer Features durch einen Aufruf an die [Get Features Info](#101-get-features-info-for-last-rank-build)-API ab.
+- Rufen Sie den Rang Ihrer Features durch einen Aufruf der [Get Features Info](#101-get-features-info-for-last-rank-build)-API ab.
 - Konfigurieren Sie einen Empfehlungsbuild mit den folgenden Parametern:
 	- `useFeatureInModel`: Auf „True“ festlegen.
 	- `ModelingFeatureList`: Auf eine kommagetrennte Liste mit einer Bewertung von mindestens 2.0 festlegen (je nach den im vorigen Schritt abgerufenen Rängen).
@@ -2473,7 +2460,7 @@ Hierdurch werden Empfehlungen des aktiven Builds vom Typ "Recommendation" (Empfe
 |:--------			|:--------								|
 | modelId | Dies ist der eindeutige Bezeichner des Modells. |
 | itemIds | Dies ist eine kommagetrennte Liste der Elemente, für die Empfehlungen erstellt werden sollen. <br>Wenn der aktive Build den Typ „FBT“ aufweist, können Sie nur ein Element senden. <br>Max. Länge: 1024 |
-| numberOfResults | Anzahl der erforderlichen Ergebnisse <br>Max.: 150 |
+| numberOfResults | Anzahl der erforderlichen Ergebnisse <br>Max.: 150 |
 | includeMetatadata | Zur zukünftigen Verwendung, stets „false“ |
 | apiVersion | 1,0 |
 
@@ -2486,7 +2473,7 @@ Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthä
 - `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
 - `Feed\entry\content\properties\Name`: Name des Elements.
 - `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Die folgende Beispielantwort enthält 10 empfohlene Elemente.
 
@@ -2653,7 +2640,7 @@ Hierdurch werden Empfehlungen eines bestimmten Builds vom Typ „Recommendation�
 |:--------			|:--------								|
 | modelId | Dies ist der eindeutige Bezeichner des Modells. |
 | itemIds | Dies ist eine kommagetrennte Liste der Elemente, für die Empfehlungen erstellt werden sollen. <br>Wenn der aktive Build den Typ „FBT“ aufweist, können Sie nur ein Element senden. <br>Max. Länge: 1024 |
-| numberOfResults | Anzahl der erforderlichen Ergebnisse <br>Max.: 150 |
+| numberOfResults | Anzahl der erforderlichen Ergebnisse <br>Max.: 150 |
 | includeMetatadata | Zur zukünftigen Verwendung, stets „false“
 | buildId | Dies ist die Build-ID, die für diese Empfehlungsanforderung verwendet werden soll. |
 | apiVersion | 1,0 |
@@ -2667,7 +2654,7 @@ Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthä
 - `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
 - `Feed\entry\content\properties\Name`: Name des Elements.
 - `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.1.
 
@@ -2699,7 +2686,7 @@ Die Antwort umfasst einen Eintrag pro empfohlenem Elementsatz (ein Satz Elemente
 - `Feed\entry\content\properties\Id2`: ID des zweiten empfohlenen Elements (optional).
 - `Feed\entry\content\properties\Name2`: Name des zweiten Elements (optional).
 - `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Die folgende Beispielantwort enthält 3 empfohlene Elementsätze.
 
@@ -2791,7 +2778,7 @@ Die Antwort umfasst einen Eintrag pro empfohlenem Elementsatz (ein Satz Elemente
 - `Feed\entry\content\properties\Id2`: ID des zweiten empfohlenen Elements (optional).
 - `Feed\entry\content\properties\Name2`: Name des zweiten Elements (optional).
 - `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.3.
 
@@ -2826,7 +2813,7 @@ Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthä
 - `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
 - `Feed\entry\content\properties\Name`: Name des Elements.
 - `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.1.
 
@@ -2863,7 +2850,7 @@ Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthä
 - `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
 - `Feed\entry\content\properties\Name`: Name des Elements.
 - `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.1.
 
@@ -2898,7 +2885,7 @@ Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthä
 - `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
 - `Feed\entry\content\properties\Name`: Name des Elements.
 - `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.1.
 
@@ -2936,13 +2923,12 @@ Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthä
 - `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
 - `Feed\entry\content\properties\Name`: Name des Elements.
 - `Feed\entry\content\properties\Rating`: Bewertung der Empfehlung (höhere Werte bedeuten höheres Zutrauen).
-- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z. B. Erklärungen für die Empfehlung).
+- `Feed\entry\content\properties\Reasoning`: Empfehlungsargumentation (z.B. Erklärungen für die Empfehlung).
 
 Eine Beispielantwort finden Sie unter 12.1.
 
 ##13\. Nutzungsverlauf eines Benutzers
-Nachdem ein Empfehlungsmodell entwickelt wurde, ermöglicht es das System, den Verlauf eines Benutzers (also die mit einem bestimmten Benutzer verknüpften Elemente) abzurufen, der für den Build verwendet wurde. 
-Mit dieser API kann der Nutzungsverlauf abgerufen werden.
+Nachdem ein Empfehlungsmodell entwickelt wurde, ermöglicht es das System, den Verlauf eines Benutzers (also die mit einem bestimmten Benutzer verknüpften Elemente) abzurufen, der für den Build verwendet wurde. Mit dieser API kann der Nutzungsverlauf abgerufen werden.
 
 Hinweis: Der Nutzungsverlauf ist zurzeit nur für Empfehlungsbuilds verfügbar.
 
@@ -2969,8 +2955,8 @@ HTTP-Statuscode: 200
 Die Antwort enthält einen Eintrag pro empfohlenem Element. Jeder Eintrag enthält die folgenden Daten:
 - `Feed\entry\content\properties\Id`: ID des empfohlenen Elements.
 - `Feed\entry\content\properties\Name`: Name des Elements.
-- `Feed\entry\content\properties\Rating` – .
-- `Feed\entry\content\properties\Reasoning` – .
+- `Feed\entry\content\properties\Rating`: N/V.
+- `Feed\entry\content\properties\Reasoning`: N/V.
 
 OData-XML
 
@@ -3099,10 +3085,7 @@ HTTP-Statuscode: 200
 
 
 ##15\. Rechtliche Hinweise
-Dieses Dokument wird so bereitgestellt, wie es ist. Informationen und Stellungnahmen in diesem Dokument einschließlich URLs und anderer Verweise auf Websites können ohne Ankündigung geändert werden.<br><br> 
-Einige der in diesem Dokument dargestellten Beispiele dienen nur zu Illustrationszwecken und sind frei erfunden. Ähnlichkeiten oder Verbindungen sind rein zufällig und nicht beabsichtigt.<br><br> 
-Dieses Dokument gibt Ihnen keinerlei geistige Eigentums- oder anderweitige Rechte an irgendeinem Microsoft-Produkt. Sie dürfen dieses Dokument zu internen Referenzzwecken kopieren und verwenden.<br><br> 
-© 2015 Microsoft. Alle Rechte vorbehalten.
+Dieses Dokument wird so bereitgestellt, wie es ist. Informationen und Stellungnahmen in diesem Dokument einschließlich URLs und anderer Verweise auf Websites können ohne Ankündigung geändert werden.<br><br> Einige der in diesem Dokument dargestellten Beispiele dienen nur zu Illustrationszwecken und sind frei erfunden. Ähnlichkeiten oder Verbindungen sind rein zufällig und nicht beabsichtigt.<br><br> Dieses Dokument gibt Ihnen keinerlei geistige Eigentums- oder anderweitige Rechte an irgendeinem Microsoft-Produkt. Sie dürfen dieses Dokument zu internen Referenzzwecken kopieren und verwenden.<br><br> © 2015 Microsoft. Alle Rechte vorbehalten.
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

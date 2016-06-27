@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
-	manager="stevenpo"
+	manager="swadhwa"
 	editor=""/>
 
 <tags
@@ -13,30 +13,30 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="06/15/2016"
 	ms.author="femila"/>
 
 # Bedingter Zugriff unter Azure – Vorschau für SaaS-Apps
 
-Die Azure-Funktion für bedingten Zugriff für SaaS-Apps steht jetzt als öffentliche Vorschau zur Verfügung. Die Vorschau ermöglicht die anwendungsspezifische Konfiguration von Zugriffsregeln für die mehrstufige Authentifizierung und das Blockieren des Zugriffs für Benutzer, die nicht zu einem vertrauenswürdigen Netzwerk gehören.
+Die Azure-Funktion für bedingten Zugriff für SaaS-Apps steht jetzt als öffentliche Vorschau zur Verfügung. Die Vorschau ermöglicht die anwendungsspezifische Konfiguration von Zugriffsregeln für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) und das Blockieren des Zugriffs für Benutzer, die nicht zu einem vertrauenswürdigen Netzwerk gehören.
 
 Die Regeln für die mehrstufige Authentifizierung können auf alle Benutzer angewendet werden, die einer Anwendung zugewiesen sind, oder nur auf Benutzer in angegebenen Sicherheitsgruppen. Benutzer können von der Pflicht zur mehrstufigen Authentifizierung ausgenommen werden, wenn sie von einer IP-Adresse innerhalb des Netzwerks der Organisation auf die Anwendung zugreifen. Diese Funktionen stehen Kunden zur Verfügung, die eine Azure Active Directory Premium-Lizenz erworben haben.
 
 ## Voraussetzungen für das Szenario
-* Azure Active Directory Premium-Abonnement
+* Lizenz für Azure Active Directory Premium
 
 * Verbundmandant oder verwalteter Azure Active Directory-Mandant
 
-* Verbundmandanten erfordern die Aktivierung der mehrstufigen Authentifizierung (MFA).
+* Verbundmandanten erfordern die Aktivierung der mehrstufigen Authentifizierung.
 
 ## Bekannte Probleme in dieser Vorschauversion
-Diese Vorschau gilt nur für vorab integrierte Verbund-SaaS-Anwendungen, Anwendungen, die einmaliges Anmelden mit Kennwort verwenden, registrierte entwickelte und Branchenanwendungen und den Azure AD-Anwendungsproxy. Einige zusätzliche Anwendungen werden noch aktiviert.
+Diese Vorschau gilt für vorab integrierte SaaS-Verbundanwendungen, Anwendungen, die einmaliges Anmelden mit Kennwort verwenden, registrierte entwickelte Anwendungen und Branchenanwendungen sowie den Azure AD-Anwendungsproxy. Zusätzliche Anwendungen werden noch aktiviert.
 
-##Konfigurieren anwendungsspezifischer Zugriffsregeln
+## Konfigurieren anwendungsspezifischer Zugriffsregeln
 
 Dieser Abschnitt beschreibt die Konfiguration anwendungsspezifischer Zugriffsregeln.
 
-1. Melden Sie sich beim Microsoft Azure-Portal als Administrator an.
+1. Melden Sie sich beim klassischen Azure-Portal mit einem Konto an, das ein globaler Administrator für Azure AD ist.
 2. Wählen Sie im linken Bereich **Active Directory** aus.
 3. Wählen Sie auf der Registerkarte "Verzeichnis" Ihr Verzeichnis aus.
 4. Wählen Sie die Registerkarte **Anwendungen** aus.
@@ -58,20 +58,20 @@ Sicherheitsgruppen können auch explizit von der Richtlinie ausgeschlossen werde
 
 ![Festlegen bedingter Zugriffsregeln mit MFA](./media/active-directory-conditional-access/conditionalaccess-saas-apps.png)
 
-##Bedingte Zugriffsregeln mit MFA
-Wenn ein Benutzer mit dem benutzerspezifischen Feature der mehrstufigen Authentifizierung konfiguriert wurde, hat diese Einstellung für den Benutzer Vorrang vor den Regeln für die mehrstufige Authentifizierung auf App-Basis. Dies bedeutet, dass ein Benutzer, für den die benutzerspezifische mehrstufige Authentifizierung konfiguriert wurde, auch dann die mehrstufige Authentifizierung ausführen muss, wenn er aus den anwendungsspezifischen Regeln für die mehrstufige Authentifizierung ausgenommen wurde. Hier erfahren Sie mehr über die mehrstufige Authentifizierung und benutzerspezifische Einstellungen.
+## Bedingte Zugriffsregeln mit MFA
+Wenn ein Benutzer mit der benutzerspezifischen mehrstufigen Authentifizierung konfiguriert wurde, wird diese Einstellung für den Benutzer mit den Regeln der App für die mehrstufige Authentifizierung kombiniert. Dies bedeutet, dass ein Benutzer, für den die benutzerspezifische mehrstufige Authentifizierung konfiguriert wurde, auch dann die mehrstufige Authentifizierung ausführen muss, wenn er aus den anwendungsspezifischen Regeln für die mehrstufige Authentifizierung ausgenommen wurde. Hier erfahren Sie mehr über die mehrstufige Authentifizierung und benutzerspezifische Einstellungen.
 
-###Zugriffsregeloptionen
+### Zugriffsregeloptionen
 Die aktuelle Vorschau unterstützt folgende Optionen:
 
 * **Erfordert mehrstufige Authentifizierung**: Mit dieser Option müssen die Benutzer, für die die Zugriffsregeln gelten, die mehrstufige Authentifizierung durchlaufen, bevor sie auf die Anwendung zugreifen, für die die Richtlinie gilt.
 
-* **Erfordert mehrstufige Authentifizierung, wenn nicht bei der Arbeit**: Mit dieser Option muss ein Benutzer, der von einer vertrauenswürdigen IP-Adresse aus zugreift, die mehrstufige Authentifizierung nicht durchführen. Die vertrauenswürdigen IP-Adressbereiche können auf der Einstellungenseite für die mehrstufige Authentifizierung konfiguriert werden.
+* **Erfordert mehrstufige Authentifizierung, wenn nicht bei der Arbeit**: Mit dieser Option muss ein Benutzer, der von einer vertrauenswürdigen IP-Adresse aus zugreift, die mehrstufige Authentifizierung nicht durchführen. Die vertrauenswürdigen IP-Adressbereiche können auf der Seite mit den Einstellungen für die mehrstufige Authentifizierung oder durch Konfigurieren der öffentlichen IP-Adressbereiche auf der Registerkarte „Konfigurieren“ des Verzeichnisses konfiguriert werden.
 
-* **Zugriff blockieren, wenn nicht gearbeitet wird**: Mit dieser Option wird ein Benutzer blockiert, der nicht von einer vertrauenswürdigen IP-Adresse stammt. Die vertrauenswürdigen IP-Adressbereiche können auf der Einstellungenseite für die mehrstufige Authentifizierung konfiguriert werden.
+* **Zugriff blockieren, wenn nicht gearbeitet wird**: Mit dieser Option wird ein Benutzer blockiert, der nicht von einer vertrauenswürdigen IP-Adresse aus zugreift. Die Bereiche für vertrauenswürdige IP-Adressen können auf den Einstellungsseiten für die mehrstufige Authentifizierung konfiguriert werden.
 
-###Festlegen des Regelstatus
-Über den Zugriffsregelstatus können die Regeln aktiviert oder deaktiviert werden. Wenn die Zugriffsregeln deaktiviert sind, wird die Pflicht zur mehrstufigen Authentifizierung nicht erzwungen.
+### Festlegen des Regelstatus
+Über den Zugriffsregelstatus können die Regeln aktiviert oder deaktiviert werden. Wenn die Zugriffsregeln deaktiviert sind, wird die Anforderung der mehrstufigen Authentifizierung nicht erzwungen.
 
 ### Zugriffsregelauswertung
 
@@ -87,9 +87,9 @@ Im folgenden Beispiel wird veranschaulicht, wie lokale MFA mithilfe des [Set-Mso
 
 Zusätzlich zum Festlegen dieses Kennzeichens muss die AD FS-Instanz des Verbundmandanten für die Ausführung der mehrstufigen Authentifizierung konfiguriert werden. Befolgen Sie die Anleitungen für die lokale Bereitstellung von Azure Multi-Factor Authentication.
 
-##Verwandte Artikel
+## Verwandte Artikel
 
 - [Sichern des Zugriffs auf Office 365 und andere mit Azure Active Directory verbundene Apps](active-directory-conditional-access.md)
 - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0615_2016-->

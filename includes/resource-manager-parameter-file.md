@@ -1,6 +1,6 @@
-## Parameter file
+## Parameterdatei
 
-If you use a parameter file to pass the parameter values to your template during deployment, you'll need to create a JSON file with a format similar to the following example.
+Bei der Verwendung einer Parameterdatei zum Übergeben von Parameterwerten an Ihre Vorlage während der Bereitstellung müssen Sie eine JSON-Datei in einem Format wie im folgenden Beispiel erstellen.
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -26,4 +26,6 @@ If you use a parameter file to pass the parameter values to your template during
        }
     }
 
-The size of the parameter file cannot be more than 64 KB.
+Die Parameterdatei darf nicht größer als 64 KB sein.
+
+<!---HONumber=AcomDC_0615_2016-->

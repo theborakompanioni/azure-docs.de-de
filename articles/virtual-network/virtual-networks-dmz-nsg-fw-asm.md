@@ -28,7 +28,7 @@ In diesem Beispiel wird eine DMZ mit einer Firewall, vier Windows-Servern und Ne
 Dieses Beispiel umfasst ein Abonnement, das Folgendes enthält:
 
 - Zwei Clouddienste: "FrontEnd001" und "BackEnd001"
-- Ein virtuelles Netzwerk, "CorpNetwork", mit zwei Subnetzen: "FrontEnd" und "BackEnd"
+- Ein virtuelles Netzwerk namens „CorpNetwork“ mit zwei Subnetzen: „FrontEnd“ und „BackEnd“
 - Eine einzelne Netzwerksicherheitsgruppe, die auf beide Subnetze angewendet wird
 - Ein virtuelles Netzwerkgerät, in diesem Fall eine Barracuda NextGen-Firewall, das mit dem Front-End-Subnetz verbunden ist
 - Eine Windows Server-Instanz, die einen Anwendungswebserver darstellt ("IIS01")
@@ -39,7 +39,7 @@ Dieses Beispiel umfasst ein Abonnement, das Folgendes enthält:
 
 Der Referenzabschnitt enthält ein PowerShell-Skript, mit dem sich der größte Teil der oben beschriebenen Umgebung erstellen lässt. Die Erstellung der virtuellen Computer und Netzwerke wird zwar durch das Beispielskript ausgeführt, aber dies wird in diesem Dokument nicht im Einzelnen beschrieben.
  
-So erstellen Sie die Umgebung
+So erstellen Sie die Umgebung:
 
   1.	Speichern Sie die im Referenzabschnitt enthaltene und mit dem Namen, dem Speicherort und den IP-Adressen für das jeweilige Szenario aktualisierte XML-Netzwerkkonfigurationsdatei.
   2.	Aktualisieren Sie die Benutzervariablen im Skript gemäß der Umgebung, in der das Skript ausgeführt werden soll (Abonnements, Dienstnamen usw.).
@@ -47,7 +47,7 @@ So erstellen Sie die Umgebung
 
 **Hinweis**: Die im PowerShell-Skript angegebene Region muss der Region in der XML-Netzwerkkonfigurationsdatei entsprechen.
 
-Nachdem das Skript erfolgreich ausgeführt wurde, können im Anschluss folgende Schritte ausgeführt werden:
+Nachdem das Skript erfolgreich ausgeführt wurde, können folgende Schritte ausgeführt werden:
 
 1.	Richten Sie die Firewallregeln ein. Dieses Thema wird unten im Abschnitt „Firewallregeln“ beschrieben.
 2.	Optional stehen im Referenzabschnitt zwei Skripts zum Einrichten des Webservers und des Anwendungsservers mit einer einfachen Webanwendung zur Verfügung, um Tests mit dieser DMZ-Konfiguration zu ermöglichen.
@@ -566,4 +566,4 @@ Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installier
 [SampleApp]: ./virtual-networks-sample-app.md
 [Example1]: ./virtual-networks-dmz-nsg-asm.md
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0615_2016-->

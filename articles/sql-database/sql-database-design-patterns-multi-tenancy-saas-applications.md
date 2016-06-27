@@ -150,13 +150,17 @@ Unter [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elasti
 
 Informationen zum Umwandeln von vorhandenen Datenbanken für die Verwendung der Tools finden Sie unter [Migrieren von vorhandenen Datenbanken zu horizontaler Hochskalierung](sql-database-elastic-convert-to-use-elastic-tools.md).
 
-Dieses [Tutorial](sql-database-elastic-pool-create-portal.md) enthält Informationen zum Erstellen eines neuen Pools.
+Informationen zum Erstellen eines neuen elastischen Pools finden Sie in [diesem Tutorial](sql-database-elastic-pool-create-portal.md).
 
-## Weitere Informationen
+Informationen zum Überwachen und Verwalten eines Pools für elastische Datenbanken finden Sie unter [Überwachen und Verwalten eines Pools für elastische Datenbanken über das Azure-Portal](sql-database-elastic-pool-manage-portal.md).
 
-[Was ist ein Azure-Pool für elastische Datenbanken?](sql-database-elastic-pool.md)
+## Zusätzliche Ressourcen
 
-[Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md)
+- [Was ist ein Azure-Pool für elastische Datenbanken?](sql-database-elastic-pool.md)
+- [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md)
+- [Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit](sql-database-elastic-tools-multi-tenant-row-level-security.md)
+- [Authentication in multitenant apps, using Azure AD and OpenID Connect](../guidance/guidance-multitenant-identity-authenticate.md) (Authentifizierung in mehrinstanzenfähigen Apps mithilfe von Azure AD und OpenID Connect)
+- [Tailspin-Anwendung „Surveys“](../guidance/guidance-multitenant-identity-tailspin.md)
 
 ## Fragen und Funktionswünsche
 
@@ -172,4 +176,4 @@ Bei Fragen erreichen Sie uns im [SQL-Datenbankforum](http://social.msdn.microsof
 
 	
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->
