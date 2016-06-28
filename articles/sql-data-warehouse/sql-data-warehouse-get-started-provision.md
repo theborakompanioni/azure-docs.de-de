@@ -44,7 +44,7 @@ In diesem Tutorial verwenden Sie das Azure-Portal zum Erstellen eines SQL Data W
 
 	- **Datenbankname**: Der Name, mit dem auf das SQL Data Warehouse verwiesen wird. Dieser Name muss für den Server eindeutig sein.
 	
-    - **Leistung**: Es wird empfohlen, mit 400 DWUs zu beginnen. Bewegen Sie den Schieberegler nach links oder rechts, um die Leistung Ihres Data Warehouse anzupassen oder nach dem Erstellen hoch- oder herunterzuskalieren. Weitere Informationen zu DWUs finden Sie in der Dokumentation zur [Skalierung](./sql-data-warehouse-manage-compute-overview.md) oder auf der Seite mit unseren [Preisen](https://azure.microsoft.com/de-DE/pricing/details/sql-data-warehouse/).
+    - **Leistung**: Es wird empfohlen, mit 400 DWUs zu beginnen. Bewegen Sie den Schieberegler nach links oder rechts, um die Leistung Ihres Data Warehouse anzupassen oder nach dem Erstellen hoch- oder herunterzuskalieren. Weitere Informationen zu DWUs finden Sie in der Dokumentation zur [Skalierung](./sql-data-warehouse-manage-compute-overview.md) oder auf der Seite mit unseren [Preisen](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
     - **Abonnement**: Wählen Sie das Abonnement aus, dem das SQL Data Warehouse in Rechnung gestellt wird.
 
