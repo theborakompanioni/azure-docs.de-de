@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="mobile-android"
     ms.devlang="na"
     ms.topic="get-started-article"
-	ms.date="03/17/2016"
+	ms.date="06/20/2016"
     ms.author="awills"/>
 
 # Analysen für Android-Apps
@@ -30,8 +30,8 @@ Wechseln Sie zu:
 
 Wenn Ihre App serverseitige Komponenten hat, verwenden Sie [Application Insights](app-insights-overview.md) zum Überwachen der Webserverseite der App in [ASP.NET](app-insights-asp-net.md) oder [J2EE](app-insights-java-get-started.md).
 
-> [AZURE.NOTE] Am 15. Juni 2016 wird die Anzeige von Daten in Application Insights für iOS-, Android-, Windows Store- und Windows Phone-Apps beendet.
+> [AZURE.NOTE] In Kürze können Sie [Application Insights Analytics](app-insights-analytics.md) und den [fortlaufenden Export](app-insights-export-telemetry.md) mit vom HockeyApp SDK gesendeten Telemetriedaten verwenden.
 >
-> [Weitere Informationen zu dieser Änderung](https://azure.microsoft.com/blog/transitioning-mobile-apps-from-application-insights-to-hockeyapp/)
+> [Weitere Informationen zu dieser Änderung](https://azure.microsoft.com/blog/update-on-transitioning-mobile-apps-from-application-insights-to-hockeyapp/)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0622_2016-->

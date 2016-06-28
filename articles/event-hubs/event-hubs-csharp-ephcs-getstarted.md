@@ -28,14 +28,13 @@ Dieses Tutorial zeigt, wie Sie mit dem klassischen Azure-Portal einen Event Hub 
 
 Zum Durchführen dieses Lernprogramms benötigen Sie Folgendes:
 
-+ Microsoft Visual Studio 2013 oder höher oder Microsoft Visual Studio Express für Windows. In den Beispielen in diesem Artikel wird Visual Studio 2015 verwendet.
++ [Microsoft Visual Studio](http://visualstudio.com)
 
 + Ein aktives Azure-Konto. <br/>Falls Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Konto erstellen. Weitere Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fde-DE%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F target="\_blank").
 
 [AZURE.INCLUDE [event-hubs-create-event-hub](../../includes/event-hubs-create-event-hub.md)]
 
 [AZURE.INCLUDE [service-bus-event-hubs-get-started-send-csharp](../../includes/service-bus-event-hubs-get-started-send-csharp.md)]
-
 
 [AZURE.INCLUDE [service-bus-event-hubs-get-started-receive-ephcs](../../includes/service-bus-event-hubs-get-started-receive-ephcs.md)]
 
@@ -59,7 +58,7 @@ Sie können jetzt die Anwendung ausführen.
 
 	![][20]
 
-7. Klicken Sie auf **OK**, um das Dialogfeld mit den **Eigenschaften** zu schließen.
+7. Klicken Sie auf **OK**, um das Dialogfeld **Eigenschaften** zu schließen.
 
 1.	Drücken Sie F5, um das Projekt **Receiver** in Visual Studio auszuführen, und warten Sie dann, bis die Empfänger für alle Partitionen gestartet wurden.
 
@@ -95,4 +94,4 @@ Nachdem Sie eine funktionierende Anwendung erstellt haben, die einen Ereignis-Hu
 [Messaginglösung mit Warteschlange]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/05/2016"
+   ms.date="06/20/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Erstellen einer Azure SQL Data Warehouse-Instanz
@@ -62,10 +62,10 @@ In diesem Tutorial verwenden Sie das Azure-Portal zum Erstellen eines SQL Data W
 
 ## Nächste Schritte
 
-Nachdem Sie ein SQL Data Warehouse erstellt haben, können Sie eine [Verbindung](./sql-data-warehouse-get-started-connect.md) herstellen und Abfragen durchführen.
+Nachdem Sie ein SQL Data Warehouse erstellt haben, können Sie eine [Verbindung](./sql-data-warehouse-connect-overview.md) herstellen und Abfragen durchführen.
 
 Um Daten in SQL Data Warehouse zu laden, lesen Sie [Laden von Daten in SQL Data Warehouse](./sql-data-warehouse-overview-load.md).
 
 Wenn Sie versuchen, eine vorhandene Datenbank zu SQL Data Warehouse zu migrieren, lesen Sie die [Übersicht über die Migration](./sql-data-warehouse-overview-migrate.md), oder verwenden Sie das [Migrationshilfsprogramm ](./sql-data-warehouse-migrate-migration-utility.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

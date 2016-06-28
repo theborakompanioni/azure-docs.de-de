@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Stretch-Datenbank-Übersicht | Microsoft Azure"
-	description="Finden Sie heraus, wie Stretch-Datenbank Ihre historischen Daten transparent und sicher zu Microsoft Azure Cloud migriert."
+	description="Erfahren Sie, wie Stretch-Datenbank Ihre inaktiven Daten transparent und sicher zu Microsoft Azure Cloud migriert."
 	services="sql-server-stretch-database"
 	documentationCenter=""
 	authors="douglaslMS"
@@ -18,7 +18,7 @@
 
 # Übersicht über Stretch-Datenbank
 
-Stretch-Datenbank migriert Ihre historischen Daten transparent und sicher zu Microsoft Azure Cloud.
+Stretch-Datenbank migriert Ihre inaktiven Daten (Cold Data) transparent und sicher zu Microsoft Azure Cloud.
 
 Wenn Sie sofort mit Stretch-Datenbank beginnen möchten, lesen Sie [Erste Schritte mit der Datenbank aktivieren für Stretch-Assistenten](sql-server-stretch-database-wizard.md).
 
@@ -34,17 +34,17 @@ Stretch-Datenbank bietet die folgenden Vorteile:
 **Sichert Ihre Daten sogar während der Migration** – Verlagern Sie Ihre wichtigsten Anwendungen sicher und unbesorgt in die Cloud. Always Encrypted in SQL Server verschlüsselt Ihre sich in Bewegung befindlichen Daten. Sicherheit auf Zeilenebene (RLS) und andere erweiterte Sicherheitsfunktionen von SQL Server funktionieren auch mit Stretch-Datenbank zum Schutz Ihrer Daten.
 
 ## Wie funktioniert Stretch-Datenbank?
-Nachdem Sie Stretch-Datenbank für eine SQL Server-Instanz, eine Datenbank, und mindestens eine Tabelle aktivieren, beginnt die Anwendung im Hintergrund historische Daten zu Azure zu migrieren.
+Nachdem Sie Stretch-Datenbank für eine SQL Server-Instanz, eine Datenbank und mindestens eine Tabelle aktiviert haben, beginnt die Anwendung im Hintergrund inaktive Daten zu Azure zu migrieren.
 
--   Wenn Sie Ihre historischen Daten in einer separaten Tabelle speichern, können Sie die ganze Tabelle migrieren.
+-   Wenn Sie Ihre inaktiven Daten in einer separaten Tabelle speichern, können Sie die ganze Tabelle migrieren.
 
--   Wenn die Tabelle alte und aktuelle Daten enthält, können Sie ein Filterprädikat zum Auswählen der Zeilen zum Migrieren angeben.
+-   Wenn die Tabelle sowohl aktive als auch inaktive Daten enthält, können Sie ein Filterprädikat zum Auswählen der zu migrierenden Zeilen angeben.
 
 Stretch-Datenbank stellt sicher, dass keine Daten verloren gehen, falls ein Failover während der Migration auftritt. Stretch-Datenbank enthält außerdem die Wiederholungslogik, um mit Verbindungsproblemen umzugehen, die während der Migration auftreten können. Eine dynamische Verwaltungsansicht zeigt den Status der Migration.
 
 Sie können die Datenmigration anhalten, um Probleme auf dem lokalen Server zu behandeln, oder um die verfügbare Netzwerkbandbreite zu maximieren.
 
-Sie müssen vorhandene Abfragen und Clientanwendungen nicht ändern. Sie haben weiterhin unkomplizierten Zugriff, sowohl auf lokale als auch auf Remotedaten, sogar während der Migration. Bei Remoteabfragen ist mit einer kurzen Latenzzeit zu rechnen, die allerdings nur bei der Abfrage von historischen Daten auftritt.
+Sie müssen vorhandene Abfragen und Clientanwendungen nicht ändern. Sie haben weiterhin unkomplizierten Zugriff, sowohl auf lokale als auch auf Remotedaten, sogar während der Migration. Bei Remoteabfragen ist mit einer kurzen Latenzzeit zu rechnen, die allerdings nur bei der Abfrage von inaktiven Daten auftritt.
 
 ![Stretch-Datenbank-Übersicht][StretchOverviewImage1]
 
@@ -54,12 +54,12 @@ Wenn die folgenden Aussagen auf Sie zutreffen, kann Ihnen Stretch-Datenbank helf
 |Wenn Sie ein Entscheidungsträger sind|Wenn Sie ein Datenbankadministrator sind|
 |------------------------------|-------------------|
 |Ich muss Transaktionsdaten lange aufbewahren.|Die Größe meiner Tabellen artet aus.|
-|Manchmal muss ich die historische Daten abfragen.|Meine Benutzer sagen, dass sie Zugriff auf historische Daten möchten, aber sie nutzen diesen nur selten.|
+|Manchmal ist es erforderlich, die inaktiven Daten abzufragen.|Meine Benutzer sagen, dass sie Zugriff auf inaktive Daten haben möchten, aber sie nutzen diesen nur selten.|
 |Ich habe Apps, inklusive älteren Apps, die ich nicht aktualisieren möchte.|Ich muss immer wieder neuen Speicherplatz kaufen und hinzufügen.|
 |Ich will eine Möglichkeit finden, um beim Speichern Geld zu sparen.|Innerhalb meiner SLA kann ich solch große Tabellen weder sichern noch wiederherstellen.|
 
 ## Welche Art von Datenbanken und Tabellen eignen sich für Stretch-Datenbank?
-Stretch-Datenbank ist für Transaktionsdatenbanken mit großen Mengen an historische Daten gedacht, wobei diese Datenmengen in der Regel in wenigen Tabellen gespeichert werden. Diese Tabellen können mehr als eine Milliarde Zeilen enthalten.
+Stretch-Datenbank ist für Transaktionsdatenbanken mit großen Mengen an inaktiven Daten gedacht, wobei diese Datenmengen in der Regel in wenigen Tabellen gespeichert werden. Diese Tabellen können mehr als eine Milliarde Zeilen enthalten.
 
 Falls Sie die Funktion „temporale Tabelle“ von SQL Server 2016 verwenden, verwenden Sie Stretch-Datenbank, um die ganze oder einen Teil der zugehörigen Verlaufstabelle zur kostengünstigen Speicherung in Azure zu migrieren. Weitere Informationen finden Sie unter [Manage Retention of Historical Data in System-Versioned Temporal Tables](https://msdn.microsoft.com/library/mt637341.aspx) (Verwalten der Aufbewahrung historischer Daten in temporalen Tabellen mit Systemversionsverwaltung).
 
@@ -123,4 +123,4 @@ Stretch-Datenbank ändert das Berechtigungsmodell einer vorhandenen Datenbank ni
 [StretchOverviewImage2]: ./media/sql-server-stretch-database-overview/StretchDBOverview1.png
 [StretchOverviewImage3]: ./media/sql-server-stretch-database-overview/StretchDBOverview2.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

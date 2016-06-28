@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Verschiedene Möglichkeiten zum Erstellen eines virtuellen Linux-Computers | Microsoft Azure"
-	description="Listet die verschiedenen Möglichkeiten zum Erstellen eines virtuellen Linux-Computers in Azure auf und enthält Links zu weiteren Anweisungen."
+	description="Enthält eine Liste mit den verschiedenen Möglichkeiten zum Erstellen eines virtuellen Linux-Computers unter Azure und für jede Methode Links zu Tools und Tutorials."
 	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="iainfoulds"
@@ -14,18 +14,16 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure-services"
-	ms.date="04/12/2016"
+	ms.date="06/14/2016"
 	ms.author="iainfou"/>
 
 # Verschiedene Möglichkeiten zum Erstellen eines virtuellen Linux-Computers mit Resource Manager
 
 Virtuelle Computer können mit Azure und dem Resource Manager-Bereitstellungsmodell auf unterschiedliche Arten erstellt werden, um den Anforderungen unterschiedlicher Benutzer und Szenarien gerecht zu werden. Dieser Artikel fasst die Unterschiede und die Entscheidungen zusammen, die Sie beim Erstellen Ihres virtuellen Linux-Computers treffen können.
 
-## Tool-Optionen
+## Azure-Befehlszeilenschnittstelle 
 
-### Befehlsshell: Azure-Befehlszeilenschnittstelle 
-
-Verwenden Sie an der CLI die Azure-Befehlszeilenschnittstelle. Weitere Informationen zum Installieren der Azure-Befehlszeilenschnittstelle mittels npm, Docker-Container oder Installationsskript finden Sie [hier](../xplat-cli-install.md). In den folgenden Tutorials wird die Verwendung der Azure-Befehlszeilenschnittstelle anhand von Beispielen veranschaulicht:
+Weitere Informationen zum Installieren der Azure-Befehlszeilenschnittstelle mittels npm, Docker-Container oder Installationsskript finden Sie [hier](../xplat-cli-install.md). In den folgenden Tutorials wird die Verwendung der Azure-Befehlszeilenschnittstelle anhand von Beispielen veranschaulicht:
 
 * [Erstellen eines virtuellen Linux-Computers in Azure mithilfe der Befehlszeilenschnittstelle](virtual-machines-linux-quick-create-cli.md) 
 
@@ -33,7 +31,7 @@ Verwenden Sie an der CLI die Azure-Befehlszeilenschnittstelle. Weitere Informati
 
 * [Erstellen einer Linux-VM von Grund auf mit der Azure-Befehlszeilenschnittstelle](virtual-machines-linux-create-cli-complete.md)
 
-### GUI: Azure-Portal
+## Azure-Portal
 
 Die grafische Benutzeroberfläche des [Azure-Portals](https://portal.azure.com) bietet eine einfache Möglichkeit zum Testen eines virtuellen Computers. Dies gilt insbesondere dann, wenn Sie noch nicht viel Erfahrung mit Azure haben, da hierzu keine Installation auf Ihrem System erforderlich ist. Verwenden Sie das Azure-Portal, um den virtuellen Computer zu erstellen:
 
@@ -49,7 +47,7 @@ In allen obigen Artikeln können Sie einfach ein vorhandenes Azure-Image verwend
 
 ### Verwenden eines eigenen Image
 
-Sollten Sie spezielle Anpassungen benötigen, verwenden Sie ein Image, das auf einem vorhandenen virtuellen Azure-Computer basiert, indem Sie diesen virtuellen Computer *erfassen* oder ein eigenes, auf einer virtuellen Festplatte (Virtual Hard Disk, VHD) gespeichertes Image hochladen. Weitere Informationen zu unterstützten Distributionen und zur Verwendung eigener Images finden Sie in den folgenden Artikeln:
+Sollten Sie spezielle Anpassungen benötigen, verwenden Sie ein Image, das auf einem vorhandenen virtuellen Azure-Computer basiert. Hierzu können Sie diesen virtuellen Computer *erfassen* oder ein eigenes, auf einer virtuellen Festplatte (Virtual Hard Disk, VHD) gespeichertes Image hochladen. Weitere Informationen zu unterstützten Distributionen und zur Verwendung eigener Images finden Sie in den folgenden Artikeln:
 
 * [Von Azure unterstützte Distributionen](virtual-machines-linux-endorsed-distros.md)
 
@@ -65,4 +63,4 @@ Sollten Sie spezielle Anpassungen benötigen, verwenden Sie ein Image, das auf e
 
 * Schritte zum schnellen Zurücksetzen von Kennwörtern oder SSH-Schlüsseln sowie zum Verwalten von Benutzern finden Sie [hier](virtual-machines-linux-using-vmaccess-extension.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->
