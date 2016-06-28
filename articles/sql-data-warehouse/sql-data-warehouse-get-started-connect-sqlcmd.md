@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Abfragen mit SQLCMD | Microsoft Azure"
-   description="Es wird beschrieben, wie Sie Data Warehouse mit SQLCMD abfragen."
+   pageTitle="Abfragen von Azure SQL Data Warehouse (sqlcmd) | Microsoft Azure"
+   description="Es wird beschrieben, wie Sie Azure SQL Data Warehouse mit dem Befehlszeilenprogramm sqlcmd abfragen."
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="sonyam"
@@ -13,23 +13,26 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/09/2016"
+   ms.date="06/16/2016"
    ms.author="mausher;barbkess;sonyama"/>
 
-# Abfragen mit SQLCMD
+# Abfragen von Azure SQL Data Warehouse (sqlcmd)
 
 > [AZURE.SELECTOR]
-- [Power BI][]
-- [Azure Machine Learning][]
-- [SQLCMD][]
+- [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
+- [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
+- [Visual Studio](sql-data-warehouse-query-visual-studio.md)
+- [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
 
-In dieser exemplarischen Vorgehensweise wird gezeigt, wie Sie Azure SQL Data Warehouse mit dem Hilfsprogramm „sqlcmd.exe“ abfragen.
+In dieser exemplarischen Vorgehensweise wird das Befehlszeilenprogramm sqlcmd verwendet, um ein Azure SQL Data Warehouse abzufragen.
 
 ## Voraussetzungen
 
-+ Informationen zum Herunterladen von [sqlcmd.exe][] finden Sie unter [Microsoft-Befehlszeilenprogramme 11 für SQL Server][].
+Für dieses Lernprogramm ist Folgendes erforderlich:
 
-## Verbinden
+-  [sqlcmd.exe][]. Informationen zum Herunterladen finden Sie unter [Microsoft Befehlszeilenprogramme 11 für SQL Server][].
+
+## 1\. Verbinden
 
 Öffnen Sie zur Nutzung von „sqlcmd“ zuerst die Befehlseingabeaufforderung, und geben Sie **sqlcmd** gefolgt von der Verbindungszeichenfolge für Ihre SQL Data Warehouse-Datenbank ein. Die Verbindungszeichenfolge muss die folgenden Parameter enthalten:
 
@@ -47,7 +50,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@s
 
 > [AZURE.NOTE] Die Option „-I“, mit der Bezeichner in Anführungszeichen aktiviert werden, ist derzeit erforderlich, um eine Verbindung mit SQL Data Warehouse herzustellen.
 
-## Abfrage
+## 2\. Abfrage
 
 Nach dem Herstellen der Verbindung können Sie alle unterstützten Transact-SQL-Anweisungen für die Instanz ausgeben. In diesem Beispiel werden Abfragen im interaktiven Modus gesendet.
 
@@ -73,17 +76,14 @@ C:\>"SELECT name FROM sys.tables;" | sqlcmd -S MySqlDw.database.windows.net -d A
 Weitere Informationen zu allen sqlcmd-Optionen finden Sie in der [sqlcmd-Dokumentation][sqlcmd.exe].
 
 <!--Articles-->
-[connecting with PowerBI]: ./sql-data-warehouse-integrate-power-bi.md
-[Visual Studio]: ./sql-data-warehouse-get-started-connect.md
-[Power BI]: ./sql-data-warehouse-get-started-visualize-with-power-bi.md
-[Azure Machine Learning]: ./sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md
-[SQLCMD]: ./sql-data-warehouse-get-started-connect-sqlcmd.md
+[connecting with PowerBI]: sql-data-warehouse-integrate-power-bi.md
+
 
 <!--Other-->
-[sqlcmd.exe]: https://msdn.microsoft.com/de-DE/library/ms162773.aspx
-[Microsoft-Befehlszeilenprogramme 11 für SQL Server]: http://go.microsoft.com/fwlink/?LinkId=321501
+[sqlcmd.exe]: https://msdn.microsoft.com/library/ms162773.aspx
+[Microsoft Befehlszeilenprogramme 11 für SQL Server]: http://go.microsoft.com/fwlink/?LinkId=321501
 [Azure portal]: https://portal.azure.com
 
 <!--Image references-->
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

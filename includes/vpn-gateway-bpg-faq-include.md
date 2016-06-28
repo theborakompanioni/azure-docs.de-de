@@ -10,11 +10,18 @@ Nein. BGP wird nur für routenbasierte VPN-Gateways unterstützt.
 
 Ja. Sie können eigene öffentliche ASNs oder private ASNs verwenden – sowohl für Ihre lokalen Netzwerke als auch für Ihre virtuellen Azure-Netzwerke.
 
+#### Werden ASNs von Azure reserviert?
+
+Ja. Die folgenden ASNs werden von Azure sowohl für interne als auch für externe Peerings reserviert:
+
+- Öffentliche ASNs: 8075, 8076, 12076
+- Private ASNs: 65515, 65517, 65518, 65519, 65520
+
+Sie können diese ASNs beim Herstellen einer Verbindung mit Azure VPN Gateways nicht für Ihre lokalen VPN-Geräte angeben.
+
 ### Kann ich die gleiche ASN sowohl für lokale VPN-Netzwerke als auch für Azure-VNETs verwenden?
 
 Nein. Lokalen Netzwerken und Azure-VNETs muss jeweils eine unterschiedliche ASN zugewiesen werden, wenn diese per BGP miteinander verbunden werden. Azure-VPN-Gateways ist standardmäßig die ASN 65515 zugewiesen. Dabei spielt es keine Rolle, ob BGP für Ihre standortübergreifende Konnektivität aktiviert ist. Diesen Standardwert können Sie überschreiben, indem Sie beim Erstellen des VPN-Gateways eine andere ASN zuweisen oder die ASN nach der Gatewayerstellung ändern. Ihre lokalen ASNs müssen den entsprechenden lokalen Azure-Netzwerkgateways zugewiesen werden.
-
-
 
 ### Welche Adresspräfixe kündigen Azure-VPN-Gateways mir gegenüber an?
 
@@ -22,7 +29,15 @@ Das Azure-VPN-Gateway kündigt Ihren lokalen BGP-Geräten gegenüber folgende Ro
 
 - Ihre VNET-Adresspräfixe
 - Adresspräfixe für die einzelnen lokalen Netzwerkgateways, die mit dem Azure-VPN-Gateway verbunden sind
-- Routen, die in anderen, mit dem Azure-VPN-Gateway verbundenen BGP-Peeringsitzungen ermittelt wurden (**mit Ausnahme der Standardrouten oder Routen, die sich mit VNET-Präfixen überschneiden**)
+- Routen, die in anderen, mit dem Azure VPN Gateway verbundenen BGP-Peeringsitzungen ermittelt wurden (**mit Ausnahme der Standardrouten oder Routen, die sich mit VNET-Präfixen überschneiden**)
+
+#### Kann ich die Standardroute (0.0.0.0/0) für Azure VPN Gateways ankündigen?
+
+Derzeit leider nicht.
+
+#### Kann ich die gleichen Präfixe wie meine Virtual Network-Präfixe ankündigen?
+
+Nein. Das Ankündigen der gleichen Präfixe wie Ihre Virtual Network-Adresspräfixe wird von der Azure-Plattform blockiert oder gefiltert.
 
 ### Kann ich BGP mit meinen VNET-zu-VNET-Verbindungen verwenden?
 
@@ -54,7 +69,7 @@ Das Azure-VPN-Gateway ordnet eine einzelne IP-Adresse aus dem für das virtuelle
 
 ### Welche Anforderungen müssen die BGP-Peer-IP-Adressen auf meinem VPN-Gerät erfüllen?
 
-Ihre lokale BGP-Peeradresse **DARF NICHT** der öffentlichen IP-Adresse Ihres VPN-Geräts entsprechen. Verwenden Sie als BGP-Peer-IP-Adresse eine andere IP-Adresse für das VPN-Gerät. Dabei kann es sich um eine Adresse handeln, die der Loopback-Schnittstelle des Geräts zugewiesen ist. Geben Sie diese Adresse im entsprechenden lokalen Netzwerkgateway an, das den Standort darstellt.
+Ihre lokale BGP-Peeradresse darf **NICHT** der öffentlichen IP-Adresse Ihres VPN-Geräts entsprechen. Verwenden Sie als BGP-Peer-IP-Adresse eine andere IP-Adresse für das VPN-Gerät. Dabei kann es sich um eine Adresse handeln, die der Loopback-Schnittstelle des Geräts zugewiesen ist. Geben Sie diese Adresse im entsprechenden lokalen Netzwerkgateway an, das den Standort darstellt.
 
 ### Was muss ich bei Verwendung von BGP als Adresspräfixe für das lokale Netzwerkgateway angeben?
 
@@ -63,3 +78,5 @@ Das lokale Azure-Netzwerkgateway gibt die anfänglichen Adresspräfixe für das 
 ### Was muss ich meinem lokalen VPN-Gerät für die BGP-Peeringsitzung hinzufügen?
 
 Sie müssen eine Hostroute der Azure-BGP-Peer-IP-Adresse auf Ihrem VPN-Gerät hinzufügen, die auf den IPsec-S2S-VPN-Tunnel verweist. Lautet die Azure-VPN-Peer-IP-Adresse also etwa 10.12.255.30, müssen Sie eine Hostroute für 10.12.255.30 mit einer Nexthop-Schnittstelle der entsprechenden IPSec-Tunnelschnittstelle auf Ihrem VPN-Gerät hinzufügen.
+
+<!---HONumber=AcomDC_0622_2016-->

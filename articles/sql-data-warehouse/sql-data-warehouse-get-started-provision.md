@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/05/2016"
+   ms.date="06/20/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Erstellen einer Azure SQL Data Warehouse-Instanz
@@ -44,7 +44,7 @@ In diesem Tutorial verwenden Sie das Azure-Portal zum Erstellen eines SQL Data W
 
 	- **Datenbankname**: Der Name, mit dem auf das SQL Data Warehouse verwiesen wird. Dieser Name muss für den Server eindeutig sein.
 	
-    - **Leistung**: Es wird empfohlen, mit 400 DWUs zu beginnen. Bewegen Sie den Schieberegler nach links oder rechts, um die Leistung Ihres Data Warehouse anzupassen oder nach dem Erstellen hoch- oder herunterzuskalieren. Weitere Informationen zu DWUs finden Sie in der Dokumentation zur [Skalierung](./sql-data-warehouse-manage-compute-overview.md) oder auf der Seite mit unseren [Preisen](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+    - **Leistung**: Es wird empfohlen, mit 400 DWUs zu beginnen. Bewegen Sie den Schieberegler nach links oder rechts, um die Leistung Ihres Data Warehouse anzupassen oder nach dem Erstellen hoch- oder herunterzuskalieren. Weitere Informationen zu DWUs finden Sie in der Dokumentation zur [Skalierung](./sql-data-warehouse-manage-compute-overview.md) oder auf der Seite mit unseren [Preisen](https://azure.microsoft.com/de-DE/pricing/details/sql-data-warehouse/).
 
     - **Abonnement**: Wählen Sie das Abonnement aus, dem das SQL Data Warehouse in Rechnung gestellt wird.
 
@@ -62,10 +62,10 @@ In diesem Tutorial verwenden Sie das Azure-Portal zum Erstellen eines SQL Data W
 
 ## Nächste Schritte
 
-Nachdem Sie ein SQL Data Warehouse erstellt haben, können Sie eine [Verbindung](./sql-data-warehouse-get-started-connect.md) herstellen und Abfragen durchführen.
+Nachdem Sie ein SQL Data Warehouse erstellt haben, können Sie eine [Verbindung](./sql-data-warehouse-connect-overview.md) herstellen und Abfragen durchführen.
 
 Um Daten in SQL Data Warehouse zu laden, lesen Sie [Laden von Daten in SQL Data Warehouse](./sql-data-warehouse-overview-load.md).
 
 Wenn Sie versuchen, eine vorhandene Datenbank zu SQL Data Warehouse zu migrieren, lesen Sie die [Übersicht über die Migration](./sql-data-warehouse-overview-migrate.md), oder verwenden Sie das [Migrationshilfsprogramm ](./sql-data-warehouse-migrate-migration-utility.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->
