@@ -1,10 +1,10 @@
 <properties
    pageTitle="Sicherheit in Azure – bewährte Methoden und Muster | Microsoft Azure"
-   description="Dieser Artikel beschreibt bewährte Methoden und nützliche Muster, die zur Verbesserung der Sicherheit von Azure-Bereitstellungen hilfreich sind."
-   services="security"
+   description="Der Artikel enthält eine Einführung zu bewährten Methoden und Mustern zur Sicherheit in Azure und eine Aufstellung der bewährten Sicherheitsmethoden für verschiedene Azure-Ressourcen."
+   services="azure-security"
    documentationCenter="na"
    authors="TomShinder"
-   manager="StevenPo"
+   manager="MBaldwin"
    editor="TomSh"/>
 
 <tags
@@ -13,10 +13,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/25/2016"
+   ms.date="06/14/2016"
    ms.author="terrylan"/>
 
 # Sicherheit in Azure – bewährte Methoden und Muster
+
+Wir stellen Ihnen derzeit die folgenden Artikel zu bewährten Methoden und Muster zur Azure-Sicherheit zur Verfügung. Besuchen Sie unbedingt regelmäßig diese Website, um stets über Updates unserer wachsenden Liste bewährter Methoden und Muster zur Azure-Sicherheit informiert zu sein:
+
+- [Bewährte Methoden für die Azure-Netzwerksicherheit](azure-security-network-security-best-practices.md)
+- [Empfohlene Vorgehensweisen für Datensicherheit und Verschlüsselung in Azure](azure-security-data-encryption-best-practices.md)
+- [Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden](azure-security-identity-management-best-practices.md)
+- [Internet der Dinge – bewährte Methoden für die Sicherheit](azure-security-iot-best-practices.md)
+- [Best Practices für Softwareupdates in Microsoft Azure IaaS](azure-security-best-practices-software-updates-iaas.md)
+- [Microsoft-Clouddienste und Netzwerksicherheit](../best-practices-network-security.md)
+- [Implementing a secure hybrid network architecture in Azure](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md) (Implementieren einer sicheren Hybrid-Netzwerkarchitektur in Azure)
 
 Azure bietet eine sichere Plattform, auf der Sie Ihre Lösungen erstellen können. Außerdem bieten wir Ihnen viele Dienste und Technologien an, die Sie verwenden können, um die Dienste, die Sie in Azure erstellen, sicherer zu machen. Wegen der zahlreichen verfügbaren Optionen haben viele von Ihnen ihr Interesse geäußert, zu erfahren, was Microsoft als bewährte Methoden und Muster zur Verbesserung der Sicherheit ihrer Azure-Bereitstellungen empfehlen kann.
 
@@ -30,15 +40,8 @@ Für jede bewährte Methode erläutern wir Folgendes:
 - Warum Sie die bewährte Methode nutzen sollten
 - Was die Folge sein könnte, wenn Sie die bewährte Methode nicht aktivieren
 - Mögliche Alternativen zur bewährten Methode
-- Wie Sie erfahren können, wie Sie die bewährte Methode aktivieren
+- Wie Sie erfahren können, wie Sie die empfohlenen Vorgehensweisen aktivieren
 
-Wir stellen Ihnen derzeit die folgenden Artikel zu bewährten Methoden und Muster zur Azure-Sicherheit zur Verfügung. Besuchen Sie unbedingt regelmäßig diese Website, um stets über Updates unserer wachsenden Liste bewährter Methoden und Muster zur Azure-Sicherheit informiert zu sein:
+Das Angebot an Artikeln zur Sicherheitsarchitektur von Azure sowie zu bewährten Methoden wird in Zukunft noch erweitert. Themenwünsche können im Diskussionsbereich am Ende dieser Seite geäußert werden.
 
-- [Bewährte Methoden für die Azure-Netzwerksicherheit](azure-security-network-security-best-practices.md)
-- [Empfohlene Vorgehensweisen für Datensicherheit und Verschlüsselung in Azure](azure-security-data-encryption-best-practices.md)
-- [Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden](azure-security-identity-management-best-practices.md)
-- [Internet der Dinge – bewährte Methoden für die Sicherheit](azure-security-iot-best-practices.md)
-- [Best Practices für Softwareupdates in Microsoft Azure IaaS](azure-security-best-practices-software-updates-iaas.md)
-- [Microsoft-Clouddienste und Netzwerksicherheit](../best-practices-network-security.md)
-
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

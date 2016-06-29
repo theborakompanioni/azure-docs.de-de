@@ -21,7 +21,7 @@ Komponenten der **Aufträge für die elastische Datenbank** können wahlweise mi
 
 ##Deinstallieren von Komponenten der Aufträge für die elastische Datenbank mithilfe des Azure-Portals
 
-1. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com/).
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/).
 2. Navigieren Sie zu dem Abonnement, das die Komponenten der **Aufträge für die elastische Datenbank** enthält, also dem Abonnement, in dem die Komponenten der Aufträge für die elastische Datenbank installiert wurden.
 3. Klicken Sie auf **Durchsuchen** und dann auf **Ressourcengruppen**.
 4. Wählen Sie die Ressourcengruppe mit dem Namen "\_\_ElasticDatabaseJob".
@@ -64,4 +64,4 @@ Weitere Informationen zu Aufträgen für die elastische Datenbank finden Sie unt
 
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

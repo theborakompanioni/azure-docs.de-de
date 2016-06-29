@@ -58,11 +58,13 @@ Dieses Beispiel ruft ein Token von Live Connect ab und übergibt das Token in ei
 
 ###<a name="auth-getinfo"></a>Vorgehensweise: Abrufen von Informationen zum authentifizierten Benutzer
 
-Die Authentifizierungsinformationen für den aktuellen Benutzer können mit einer AJAX-Methode vom `/.auth/me`-Endpunkt abgerufen werden. Geben Sie beispielsweise Folgendes ein, um die API abzurufen:
+Die Authentifizierungsinformationen für den aktuellen Benutzer können mit einer AJAX-Methode vom `/.auth/me`-Endpunkt abgerufen werden. Stellen Sie sicher, dass der `X-ZUMO-AUTH`-Header auf Ihr Authentifizierungstoken festgelegt ist. Das Authentifizierungstoken wird in `client.currentUser.mobileServiceAuthenticationToken` gespeichert. Geben Sie beispielsweise Folgendes ein, um die API abzurufen:
 
 ```
 var url = client.applicationUrl + '/.auth/me';
-fetch(url)
+var headers = new Headers();
+headers.append('X-ZUMO-AUTH', client.currentUser.mobileServiceAuthenticationToken);
+fetch(url, { headers: headers })
     .then(function (data) {
         return data.json()
     }).then(function (user) {
@@ -70,6 +72,6 @@ fetch(url)
     });
 ```
 
-Sie können auch JQuery oder eine andere AJAX-API zum Abrufen der Informationen verwenden. Daten werden als JSON-Objekt empfangen.
+Der Abruf ist als npm-Paket oder zum Download im Browser von CDNJS verfügbar. Sie können auch JQuery oder eine andere AJAX-API zum Abrufen der Informationen verwenden. Daten werden als JSON-Objekt empfangen.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0615_2016-->

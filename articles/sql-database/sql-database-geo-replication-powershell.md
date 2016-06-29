@@ -13,31 +13,29 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="04/27/2016"
+    ms.date="06/14/2016"
     ms.author="sstein"/>
 
 # Konfigurieren der Georeplikation für die Azure SQL-Datenbank mit PowerShell
 
-
-
 > [AZURE.SELECTOR]
+- [Übersicht](sql-database-geo-replication-overview.md)
 - [Azure-Portal](sql-database-geo-replication-portal.md)
 - [PowerShell](sql-database-geo-replication-powershell.md)
-- [Transact-SQL](sql-database-geo-replication-transact-sql.md)
+- [T-SQL](sql-database-geo-replication-transact-sql.md)
 
+In diesem Artikel erfahren Sie, wie Sie die aktive Georeplikation der SQL-Datenbank mit PowerShell konfigurieren.
 
-In diesem Artikel wird beschrieben, wie Sie die Georeplikation der SQL-Datenbank mit PowerShell konfigurieren.
-
-Informationen zum Initiieren eines Failovers finden Sie unter [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank](sql-database-geo-replication-failover-powershell.md).
+Informationen zum Initiieren eines Failovers finden Sie unter [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit PowerShell](sql-database-geo-replication-failover-powershell.md).
 
 >[AZURE.NOTE] Die aktive Georeplikation (lesbare sekundäre Datenbanken) ist jetzt für alle Datenbanken in allen Diensttarifen verfügbar. Im April 2017 wird der nicht lesbare sekundäre Typ eingestellt, und vorhandene nicht lesbare Datenbanken werden automatisch auf lesbare sekundäre Datenbanken aktualisiert.
 
-Sie können bis zu vier lesbare sekundäre Datenbanken in derselben oder in verschiedenen Standorten von Rechenzentren (Regionen) konfigurieren. Sekundäre Datenbanken stehen zur Verfügung, wenn ein Datencenter ausgefallen ist oder keine Verbindung mit der primären Datenbank möglich ist.
 
-Zum Konfigurieren der Georeplikation benötigen Sie Folgendes:
 
-- Ein Azure-Abonnement. Wenn Sie ein Azure-Abonnement benötigen, müssen Sie lediglich oben auf dieser Seite auf den Link **KOSTENLOSES KONTO** klicken. Lesen Sie anschließend diesen Artikel zu Ende.
-- Eine Azure SQL-Datenbank: Die primäre Datenbank, die in eine andere geografische Region repliziert werden soll.
+Wenn Sie die aktive Georeplikation mithilfe von PowerShell konfigurieren möchten, benötigen Sie Folgendes:
+
+- Ein Azure-Abonnement. 
+- Eine Azure SQL-Datenbank: Die primäre Datenbank, die Sie replizieren möchten.
 - Azure PowerShell 1.0 oder höher Sie können die Azure-PowerShell-Module herunterladen und installieren, indem Sie Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) befolgen.
 
 
@@ -158,11 +156,11 @@ Der folgende Befehl ruft den Status der Replikationsverknüpfung zwischen der pr
 ## Zusätzliche Ressourcen
 
 - [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
-- [Spotlight on new Geo-Replication capabilities](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/) (Die neuen Georeplikationsfunktionen im Überblick)
+- [Spotlight on new Geo-Replication capabilities (Die neuen Georeplikationsfunktionen im Überblick)](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
 - [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
 - [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
 - [Aktive Georeplikation](sql-database-geo-replication-overview.md)
 - [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

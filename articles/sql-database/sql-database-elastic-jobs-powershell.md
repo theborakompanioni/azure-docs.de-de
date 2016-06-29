@@ -17,7 +17,7 @@
 # Erstellen und Verwalten von Aufträgen für die elastische SQL-Datenbank mithilfe von PowerShell (Vorschau)
 
 > [AZURE.SELECTOR]
-- [Klassisches Azure-Portal](sql-database-elastic-jobs-create-and-manage.md)
+- [Azure-Portal](sql-database-elastic-jobs-create-and-manage.md)
 - [PowerShell](sql-database-elastic-jobs-powershell.md)
 
 
@@ -236,23 +236,9 @@ Verwenden Sie bei einer Kennwortänderung das Cmdlet [**Set-AzureSqlJobCredentia
 
 ## So definieren Sie ein Shardzuordnungsziel für die elastische Datenbank
 
-Führen Sie einen Auftrag für alle Datenbanken in einem Shardsatz (der mithilfe der [Clientbibliothek für die elastische Datenbank](sql-database-elastic-database-client-library.md) erstellt wurde) aus. Verwenden Sie dazu eine Shardzuordnung als Datenbankziel. Dieses Beispiel erfordert eine Anwendung, die Sharding unterstützt und mithilfe der Clientbibliothek für die elastische Datenbank erstellt wurde. Weitere Informationen finden Sie unter [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md).
+Führen Sie einen Auftrag für alle Datenbanken in einem Shardsatz (der mithilfe der [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md) erstellt wurde) aus. Verwenden Sie dazu eine Shardzuordnung als Datenbankziel. Dieses Beispiel erfordert eine Anwendung, die Sharding unterstützt und mithilfe der Clientbibliothek für die elastische Datenbank erstellt wurde. Weitere Informationen finden Sie unter [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md).
 
-###Erstellen eines Shardzuordnungs-Managers mithilfe der Beispiel-App
-
-Dieses Beispiel erstellt einen Shardzuordnungs-Manager und mehrere Shards und fügt anschließend Daten in die Shards ein.
-
-1. Erstellen Sie die Beispielanwendung aus **Erste Schritte mit den Tools für die elastische Datenbank**, und führen Sie sie aus. Führen Sie die Schritte bis Schritt 7 im Abschnitt [Herunterladen und Ausführen der Beispiel-App](sql-database-elastic-scale-get-started.md#Getting-started-with-elastic-database-tools) aus. Am Ende von Schritt 7 wird die folgende Eingabeaufforderung angezeigt:
-
-	![Eingabeaufforderung][1]
-
-2.  Geben Sie im Befehlsfenster "1" ein, und drücken Sie die **EINGABETASTE**. Dadurch wird der Shardzuordnungs-Manager erstellt, und es werden zwei Shards zum Server hinzugefügt. Geben Sie dann "3" ein, und drücken Sie die **EINGABETASTE**. Wiederholen Sie den Vorgang viermal. Dadurch werden Beispieldatenzeilen in die Shards eingefügt.
-  
-3.  Im [Azure-Portal](https://portal.azure.com) sollten drei neue Datenbanken auf dem V12-Server angezeigt werden:
-
-	![Visual Studio-Bestätigung][2]
-
-Erstellen Sie mithilfe des Cmdlets [**New-AzureSqlJobCredential**](https://msdn.microsoft.com/library/mt346063.aspx) ein Shardzuordnungsziel. Die Datenbank des Shardzuordnungs-Managers muss dann als Datenbankziel festgelegt und die spezifische Shardzuordnung anschließend als Ziel angegeben werden.
+Die Datenbank des Shardzuordnungs-Managers muss dann als Datenbankziel festgelegt und die spezifische Shardzuordnung anschließend als Ziel angegeben werden.
 
 	$shardMapCredentialName = "{Credential Name}"
 	$shardMapDatabaseName = "{ShardMapDatabaseName}" #example: ElasticScaleStarterKit_ShardMapManagerDb
@@ -694,4 +680,4 @@ Nach der Erstellung eines DACPACs in Aufträge für die elastische Datenbank kan
 [2]: ./media/sql-database-elastic-jobs-powershell/portal.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

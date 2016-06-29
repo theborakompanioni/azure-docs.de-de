@@ -3,4 +3,18 @@
 - [Java](../articles/iot-hub/iot-hub-java-java-getstarted.md)
 - [Node.js](../articles/iot-hub/iot-hub-node-node-getstarted.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+## Einführung
+
+Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von IoT-Geräten und einem Lösungs-Back-End ermöglicht. Eines der größten Probleme im Zusammenhang mit IoT-Projekten ist die sichere und zuverlässige Verbindung von Geräten mit dem Lösungs-Back-End. Um diese Herausforderungen zu meistern, bietet IoT Hub:
+
+- Ein zuverlässiges, hyperskalierbares Messaging zwischen Geräten und Cloud (Device-to-Cloud, D2C) sowie zwischen Cloud und Geräten (Cloud-to-Device, C2D)
+- Eine sichere Kommunikation unter Verwendung von Zugriffssteuerung und Sicherheitsanmeldeinformationen auf Gerätebasis
+- Gerätebibliotheken für die gängigsten Sprachen und Plattformen
+
+Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
+
+- Erstellen eines IoT Hubs mit dem Azure-Portal
+- Erstellen einer Geräteidentität im IoT Hub
+- Erstellen eines simulierten Geräts, das Telemetrie an das Cloud-Back-End sendet und vom Cloud-Back-End Befehle empfängt
+
+<!---HONumber=AcomDC_0622_2016-->

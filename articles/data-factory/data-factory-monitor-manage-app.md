@@ -23,7 +23,8 @@
 
 In diesem Artikel wird beschrieben, wie Sie mithilfe der **App „Überwachung und Verwaltung“** Ihre Pipelines überwachen, verwalten und debuggen sowie Warnungen erstellen, um bei Fehlern benachrichtigt zu werden. Sie können sich auch das folgende Video ansehen, um Informationen zur Verwendung der App „Überwachung und Verwaltung“ zu erhalten.
    
-> [AZURE.VIDEO how-to-monitor--manage-big-data-pipelines-with-azure-data-factory]
+
+> [AZURE.VIDEO azure-data-factory-monitoring-and-managing-big-data-piplines]
       
 ## Starten der App „Überwachung und Verwaltung“
 Klicken Sie zum Starten der App „Überwachung und Verwaltung“ auf dem Blatt **DATA FACTORY** für Ihre Data Factory auf die Kachel **Überwachung & Verwaltung**.
@@ -313,4 +314,4 @@ Bedarfsgesteuert erstellten HDI-Cluster gelöscht | Succeeded | &nbsp; |
     
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0615_2016-->

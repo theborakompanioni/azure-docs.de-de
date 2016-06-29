@@ -20,7 +20,7 @@
 Wenn Probleme mit Ihrer Microsoft Azure StorSimple-Lösung auftreten, können Sie eine Serviceanfrage für den technischen Support erstellen. In einer Onlinesitzung mit dem Supporttechniker müssen Sie darüber hinaus eine Supportsitzung auf Ihrem StorSimple-Gerät starten. In diesem Artikel wird Folgendes beschrieben:
 
 - Erstellen einer Supportanfrage
-- Starten einer Supportsitzung in der Windows PowerShell-Schnittstelle Ihres StorSimple-Geräts
+- Starten einer Supportsitzung in der Windows PowerShell-Schnittstelle Ihres StorSimple-Geräts
 
 Lesen Sie die [Support-SLAs und Informationen für die StorSimple 8000-Serie](https://msdn.microsoft.com/library/mt433077.aspx), bevor Sie eine Supportanfrage erstellen.
 
@@ -34,7 +34,7 @@ Führen Sie die folgenden Schritte aus, um eine Supportanfrage zu erstellen.
 
 	![Kontaktieren des Supports von MS über das Verwaltungsportal](./media/storsimple-contact-microsoft-support/Ibiza1.png)
 
-2. Sie werden zum neuen Azure-Portal (ms.portal.azure.com) weitergeleitet. Klicken Sie auf die Kachel **Neue Supportanfrage**.
+2. Sie werden zum neuen Azure-Portal (portal.azure.com) weitergeleitet. Klicken Sie auf die Kachel **Neue Supportanfrage**.
 
 	![Kontaktieren des Supports von MS über das neue Portal](./media/storsimple-contact-microsoft-support/Ibiza2.png)
 
@@ -86,7 +86,7 @@ Führen Sie zum Starten einer Supportsitzung die folgenden Schritte aus:
 
 2. Drücken Sie in der Sitzung, die geöffnet wird, die **EINGABETASTE**, um eine Eingabeaufforderung zu öffnen.
 
-3. Wählen Sie im Menü der seriellen Konsole Option 1 aus, d. h. die **Anmeldung mit Vollzugriff**.
+3. Wählen Sie im Menü der seriellen Konsole Option 1 aus, d. h. die **Anmeldung mit Vollzugriff**.
 
 4. Geben Sie an der Eingabeaufforderung das folgende Kennwort ein:
 
@@ -100,6 +100,6 @@ Führen Sie zum Starten einer Supportsitzung die folgenden Schritte aus:
 
 7. Speichern Sie diese Zeichenfolge, und senden Sie sie in einer E-Mail-Nachricht an den Microsoft-Support.
 
-> [AZURE.IMPORTANT] Sie können den Supportzugriff deaktivieren, indem Sie `Disable-HcsSupportAccess` deaktivieren. Das StorSimple-Gerät versucht acht Stunden nach dem Initiieren der Sitzung ebenfalls, den Supportzugriff zu deaktivieren. Es wird empfohlen, die Anmeldeinformationen für das StorSimple-Gerät nach dem Initiieren einer Supportsitzung zu ändern.
+> [AZURE.IMPORTANT] Sie können den Supportzugriff deaktivieren, indem Sie `Disable-HcsSupportAccess` deaktivieren. Das StorSimple-Gerät versucht acht Stunden nach dem Initiieren der Sitzung ebenfalls, den Supportzugriff zu deaktivieren. Es wird empfohlen, die Anmeldeinformationen für das StorSimple-Gerät nach dem Initiieren einer Supportsitzung zu ändern.
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0615_2016-->

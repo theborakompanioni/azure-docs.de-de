@@ -485,7 +485,7 @@ Wenn Sie "sqlReaderQuery" oder "sqlReaderStoredProcedureName" nicht angeben, wer
     }
 
 ## Daten unter Verwendung von PolyBase in Azure SQL Data Warehouse laden
-**PolyBase** bietet eine effiziente Möglichkeit, um große Datenmengen mit hohem Durchsatz aus Azure Blob Storage in Azure SQL Data Warehouse zu laden. Wenn Sie PolyBase anstelle des standardmäßigen BULKINSERT-Mechanismus verwenden, wird der Durchsatz erheblich gesteigert.
+Die Verwendung von **PolyBase** ist eine effiziente Möglichkeit, große Datenmengen mit hohem Durchsatz in Azure SQL Data Warehouse zu laden. Wenn Sie PolyBase anstelle des standardmäßigen BULKINSERT-Mechanismus verwenden, wird der Durchsatz erheblich gesteigert.
 
 Legen Sie für die **allowPolyBase**-Eigenschaft den Wert **true** fest, wie im folgenden Beispiel für Azure Data Factory gezeigt, um PolyBase für das Kopieren von Daten nach Azure SQL Data Warehouse zu verwenden. Wenn Sie für „allowPolyBase“ den Wert „true“ festlegen, können Sie über die **polyBaseSettings**-Eigenschaftengruppe PolyBase-spezifische Eigenschaften festlegen. Im Abschnitt [SqlDWSink](#SqlDWSink) oben finden Sie Einzelheiten zu den Eigenschaften, die mit „polyBaseSettings“ verwendet werden können.
 
@@ -504,18 +504,17 @@ Legen Sie für die **allowPolyBase**-Eigenschaft den Wert **true** fest, wie im 
     }
 
 ### Direktes Kopieren mithilfe von PolyBase
-Wenn Ihre Daten die folgenden Kriterien erfüllen, können Sie mithilfe von PolyBase direkt aus dem Quelldatenspeicher in Azure SQL Data Warehouse kopieren. Andernfalls können Sie Daten aus dem Quelldatenspeicher in einen Azure-Stagingblobspeicher kopieren, der die folgenden Kriterien erfüllt, und dann PolyBase verwenden, um Daten in Azure SQL Data Warehouse zu laden. Details zum gestaffelten Kopieren finden Sie im Abschnitt [Gestaffeltes Kopieren mit PolyBase](#staged-copy-using-polybase).
+Wenn Ihre Quelldaten die folgenden Kriterien erfüllen, können Sie die Daten mithilfe von PolyBase direkt aus dem Quelldatenspeicher in Azure SQL Data Warehouse kopieren. Beziehen Sie sich dabei auf die oben stehende Beispielkonfiguration. Andernfalls können Sie einen [gestaffelten Kopiervorgang mit PolyBase](#staged-copy-using-polybase) nutzen.
 
 Beachten Sie, dass Azure Data Factory die Einstellungen überprüft und automatisch den BULKINSERT-Mechanismus für die Datenverschiebung verwendet, wenn die Anforderungen nicht erfüllt werden.
 
 1.	**Der mit der Quelle verknüpfte Dienst** weist folgenden Typ auf: **Azure Storage**. Außerdem ist dieser Dienst nicht für die Verwendung der SAS-Authentifizierung (Shared Access Signature) konfiguriert. Ausführliche Informationen finden Sie unter [Mit Azure Storage verknüpfter Dienst](data-factory-azure-blob-connector.md#azure-storage-linked-service).  
-2. Das **Eingabedataset** weist folgenden Typ auf: **Azure Blob**. Außerdem erfüllen die Typeigenschaften des Datasets die folgenden Kriterien: 
-	1. Für **Type** muss **TextFormat** oder **OrcFormat** festgelegt sein. 
-	2. Für **rowDelimiter** muss **\\n** festgelegt sein. 
-	3. **nullValue** ist auf **empty string** ("") festgelegt. 
-	4. **encodingName** ist auf **utf-8** festgelegt. Dies ist der **Standardwert**, legen Sie also keinen anderen Wert fest. 
-	5. **escapeChar** und **quoteChar** sind nicht angegeben. 
-	6. **Compression** weist einen anderen Wert als **BZIP2** auf.
+2. Das **Eingabedataset** weist den Typ **Azure-Blob** auf, und der Formattyp unter Typeigenschaften lautet **OrcFormat** oder **TextFormat** mit folgenden Konfigurationen:
+	1. **rowDelimiter** muss **\\n** sein. 
+	2. **nullValue** ist auf **empty string** ("") festgelegt. 
+	3. **encodingName** ist auf **utf-8** festgelegt. Dies ist der **Standardwert**, legen Sie also keinen anderen Wert fest. 
+	4. **escapeChar** und **quoteChar** sind nicht angegeben. 
+	5. **Compression** weist einen anderen Wert als **BZIP2** auf.
 	 
 			"typeProperties": {
 				"folderPath": "<blobpath>",
@@ -536,7 +535,9 @@ Beachten Sie, dass Azure Data Factory die Einstellungen überprüft und automati
 5.	In der zugehörigen Kopieraktivität wird **columnMapping** nicht verwendet. 
 
 ### Gestaffeltes Kopieren mit PolyBase
-Für den PolyBase-Mechanismus müssen die Quelldaten in einem Azure-Blobspeicher vorliegen und eines der unterstützten Formate (DELIMITEDTEXT mit Einschränkung, RCFILE, ORC, PARQUET) aufweisen. Wenn Ihre Quelldaten die im Abschnitt weiter oben aufgeführten Kriterien nicht erfüllen, haben Sie die Möglichkeit, die Daten über einen zwischengeschalteten Azure-Stagingblobspeicher zu kopieren. In diesem Fall führt Azure Data Factory die erforderlichen Transformationen für die Daten durch, um die Anforderungen an das Datenformat von PolyBase erfüllen. Anschließend werden die Daten dann mithilfe von PolyBase in SQL Data Warehouse geladen. Unter [Gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy) finden Sie ausführliche Informationen über die allgemeine Funktionsweise des Kopierens von Daten über einen Azure-Stagingblob.
+Wenn Ihre Quelldaten die im Abschnitt weiter oben aufgeführten Kriterien nicht erfüllen, haben Sie die Möglichkeit, die Daten über einen zwischengeschalteten Azure-Stagingblobspeicher zu kopieren. In diesem Fall führt Azure Data Factory die erforderlichen Transformationen für die Daten durch, um die Anforderungen an das Datenformat von PolyBase erfüllen. Anschließend werden die Daten dann mithilfe von PolyBase in SQL Data Warehouse geladen. Unter [Gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy) finden Sie ausführliche Informationen über die allgemeine Funktionsweise des Kopierens von Daten über ein Azure-Stagingblob.
+
+> [AZURE.IMPORTANT] Beim Kopieren von Daten aus einem lokalen Datenspeicher in Azure SQL Data Warehouse mithilfe von PolyBase und einem Stagingverfahren müssen Sie die JRE (Java Runtime Environment) auf dem Gatewaycomputer installieren, der verwendet wird, um die Quelldaten in das richtige Format zu transformieren. Hinweis: Für ein 64-Bit-Gateway ist die 64-Bit-JRE erforderlich, für ein 32-Bit-Gateway die 32-Bit-JRE. Beide Versionen finden Sie [hier](http://go.microsoft.com/fwlink/?LinkId=808605). Wählen Sie bitte die geeignete Version aus.
 
 Um dieses Feature zu verwenden, erstellen Sie einen [verknüpften Azure Storage-Dienst](data-factory-azure-blob-connector.md#azure-storage-linked-service), der auf das Azure Storage-Konto mit dem zwischengeschalteten Blobspeicher verweist. Geben Sie dann die Eigenschaften **enableStaging** und **stagingSettings** für die Kopieraktivität an, wie unten dargestellt:
 
@@ -555,16 +556,12 @@ Um dieses Feature zu verwenden, erstellen Sie einen [verknüpften Azure Storage-
 				"allowPolyBase": true
 			},
     		"enableStaging": true,
-				"stagingSettings": {
+			"stagingSettings": {
 				"linkedServiceName": "MyStagingBlob"
 			}
 		}
 	}
 	]
-
-
-Hinweis: Beim Kopieren von Daten aus einem lokalen Datenspeicher in Azure SQL Data Warehouse mithilfe von PolyBase und Staging müssen Sie JRE (Java Runtime Environment) auf dem Gatewaycomputer installieren, der verwendet wird, um die Quelldaten in das richtige Format zu transformieren.
-
 
 
 ### Bewährte Methoden bei Verwendung von PolyBase
@@ -657,4 +654,4 @@ Die Zuordnung ist mit der [SQL Server-Datentypzuordnung für ADO.NET](https://ms
 ## Leistung und Optimierung  
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

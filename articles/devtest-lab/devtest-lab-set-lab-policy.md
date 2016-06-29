@@ -36,7 +36,7 @@ Um die Richtlinien für ein Lab anzeigen und ändern zu können, gehen Sie folge
 
 	![Einstellungen](./media/devtest-lab-set-lab-policy/lab-blade-settings.png)
 
-1. Auf dem Blatt **Einstellungen** wird eine Gruppierung von Einstellungen mit dem Namen **VM Policies** angezeigt.
+1. Auf dem Blatt **Einstellungen** wird eine Gruppierung von Einstellungen mit dem Namen **VM-Richtlinien** angezeigt.
 
 	![Einstellungen](./media/devtest-lab-set-lab-policy/policies.png)
 
@@ -135,4 +135,4 @@ Sobald Sie die verschiedenen VM-Richtlinieneinstellungen für Ihr Lab definiert 
 - [Konfigurieren von Marketplace-Images](./devtest-lab-configure-marketplace-images.md): DevTest Labs unterstützt die Erstellung neuer virtueller Computer auf der Basis von Azure Marketplace-Images. In diesem Artikel erfahren Sie, wie Sie ggf. angeben, welche Azure Marketplace-Images zum Erstellen neuer virtueller Computer in einem Lab verwendet werden können.
 - [Erstellen eines virtuellen Computers in einem Lab](./devtest-lab-add-vm-with-artifacts.md): In diesem Artikel wird veranschaulicht, wie Sie einen neuen virtuellen Computer aus einem Basisimage erstellen (entweder ein benutzerdefiniertes Image oder ein Marketplace-Image) und wie Sie mit Artefakten im virtuellen Computer arbeiten.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

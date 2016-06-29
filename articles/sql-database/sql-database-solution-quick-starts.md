@@ -32,8 +32,24 @@ Dieser Lösungsschnellstart bietet eine Lösung für ein SaaS-Szenario (Software
 
 Unter [Saas-scenario-with-elastic-pools](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools) im GitHub-Beispielrepository zu SQL Server finden Sie eine Last-Generator- und eine Überwachungs-Web-App sowie Dokumentation zu Funktionen und Verwendung.
 
+## Erstellen einer Azure SQL-Datenbank unter Verwendung von Entity Framework und Code First-Entwicklung
+
+Dieses Video und das dazugehörige Beispiel bieten eine Einführung in die Code First-Entwicklung für eine neue Datenbank. Das Szenario umfasst die zielgerichtete Entwicklung für eine Datenbank, die noch nicht vorhanden ist und mittels Code First erstellt wird, bzw. für eine leere Datenbank, der mit Code First neue Tabellen hinzugefügt werden. Mit Code First können Sie Modelle unter Verwendung von C#- oder VB.NET-Klassen definieren. Optional können zusätzliche Konfigurationsschritte ausgeführt werden – beispielsweise durch Anwendung von Attributen auf Klassen und Eigenschaften oder durch die Verwendung einer Fluent-API. Weitere Informationen finden Sie unter [Code First für eine neue Datenbank](https://msdn.microsoft.com/data/jj193542.aspx).
+
+## Integrieren von Tools für elastische Datenbanken in eine Entity Framework-Anwendung
+
+Dieses Beispiel zeigt, welche Änderungen in einer Entity Framework-Anwendung erforderlich sind, damit diese die Funktionen der [Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md) nutzen kann. Der Schwerpunkt liegt auf der Erstellung der [Shard-Zuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md) und des [datenabhängigen Routings](sql-database-elastic-scale-data-dependent-routing.md) mit dem Code First-Ansatz von Entity Framework. Das [Code First-Beispiel für eine neue Datenbank für EF](http://msdn.microsoft.com/data/jj193542.aspx) wird im gesamten Dokument als Beispiel verwendet. Der zu diesem Dokument gehörige Beispielcode ist Teil der Beispielserie der Tools für elastische Datenbanken in den Visual Studio-Codebeispielen. Weitere Informationen finden Sie unter [Clientbibliothek für elastische Datenbanken mit Entity Framework](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md).
+
+## Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit
+
+Dieses Beispiel zeigt, welche Änderungen in einer Entity Framework-Anwendung erforderlich sind, damit [Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md) mit [Sicherheit auf Zeilenebene](https://msdn.microsoft.com/library/dn765131) integriert werden können. Dieses Beispiel veranschaulicht, wie die Technologien zusammen verwendet werden, um eine Anwendung mit einer hochgradig skalierbaren Datenebene zu erstellen, die mehrinstanzenfähige Shards mit ADO.NET SqlClient und/oder Entity Framework unterstützt. Dieses Beispiel erweitert die [Clientbibliothek für elastische Datenbanken mit Entity Framework](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) durch Hinzufügen von Unterstützung für Shard-Datenbanken mit mehreren Mandanten. Hierzu wird eine einfache Konsolenanwendung zum Erstellen von Blogs und Beiträgen mit vier Mandanten und zwei Shard-Datenbanken mit mehreren Mandanten erstellt. Weitere Informationen finden Sie unter [Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit](sql-database-elastic-tools-multi-tenant-row-level-security.md).
+
+## Tailspin-Anwendung „Surveys“
+
+Bei diesem Beispiel handelt es sich um eine mehrinstanzenfähige Webanwendung namens „Surveys“, die Benutzern die Erstellung von Onlineumfragen ermöglicht. Das Beispiel veranschaulicht einige wichtige Aspekte der Verwaltung von Benutzeridentitäten in einer mehrinstanzenfähigen Anwendung (einschließlich Registrierung, Authentifizierung, Autorisierung und App-Rollen). Informationen zu Ausführen dieses Beispiels finden Sie unter [How to run the Tailspin Surveys sample application](https://github.com/Azure-Samples/guidance-identity-management-for-multitenant-apps/blob/master/docs/running-the-app.md) (So wird's gemacht: Ausführen der Tailspin-Beispielanwendung „Surveys“).
+
 ## Nächste Schritte
 
 [Kennenlernen der Azure SQL-Datenbank-Tutorials](sql-database-explore-tutorials.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

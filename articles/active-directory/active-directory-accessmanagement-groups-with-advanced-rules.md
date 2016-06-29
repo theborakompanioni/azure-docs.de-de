@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/17/2016"
+	ms.date="06/14/2016"
 	ms.author="curtand"/>
 
 
@@ -45,10 +45,10 @@ Eine vollständige erweiterte Regel sieht etwa wie folgt aus: (leftParameter bin
 
 Eine vollständige Liste der unterstützten Parameter und Ausdrucksregeloperatoren finden Sie in den folgenden Abschnitten.
 
-Die Gesamtlänge des Texts der erweiterten Regel darf 2048 Zeichen nicht überschreiten.
+Die Gesamtlänge des Texts der erweiterten Regel darf 2048 Zeichen nicht überschreiten.
 
 > [AZURE.NOTE]
-Bei string- und regex-Vorgängen wird die Groß-und Kleinschreibung nicht beachtet. Sie können auch NULL-Prüfungen durchführen, indem Sie "$null" als Konstante verwenden, z. B.: user.department -eq $null. Zeichenfolgen mit Anführungszeichen (") sollten mit dem Escapezeichen ' maskiert werden, z.B.: user.department -eq '"Sales".
+Bei string- und regex-Vorgängen wird die Groß-und Kleinschreibung nicht beachtet. Sie können auch NULL-Prüfungen durchführen, indem Sie "$null" als Konstante verwenden, z. B.: user.department -eq $null. Zeichenfolgen mit Anführungszeichen (") sollten mit einem Escapezeichen (') maskiert werden, z.B.: user.department -eq '"Sales".
 
 ## Unterstützte Ausdrucksregeloperatoren
 Die folgende Tabelle enthält alle Ausdrucksregeloperatoren und ihre Syntax zur Verwendung im Text der erweiterten Regel:
@@ -164,11 +164,11 @@ Zulässige Operatoren
 ## Erweiterungsattribute und benutzerdefinierte Attribute
 Erweiterungsattribute und benutzerdefinierte Attribute werden in Regeln für dynamische Mitgliedschaft unterstützt.
 
-Erweiterungsattributes werden von einer lokalen Windows Server AD-Instanz synchronisiert und erhalten folgendes Format: ExtensionAttributeX. Dabei entspricht X 1 bis 15. Beispiel für eine Regel, die ein Erweiterungsattribut verwendet:
+Erweiterungsattributes werden von einer lokalen Windows Server AD-Instanz synchronisiert und erhalten folgendes Format: ExtensionAttributeX. Dabei entspricht X 1 bis 15. Beispiel für eine Regel, die ein Erweiterungsattribut verwendet:
 
 (user.extensionAttribute15 -eq "Marketing")
 
-Benutzerdefinierte Attribute werden von einer lokalen Windows Server AD-Instanz oder von einer verbundenen SaaS-Anwendung aus synchronisiert und erhalten das Format „user.extension\_[GUID]\_\_[Attribute]“. Dabei ist [GUID] der eindeutige Bezeichner in AAD für die Anwendung, die das Attribut in AAD erstellt hat, und [Attribute] ist der Name des Attributs bei seiner Erstellung. Beispiel für eine Regel, die ein benutzerdefiniertes Attribut verwendet:
+Benutzerdefinierte Attribute werden von einer lokalen Windows Server AD-Instanz oder von einer verbundenen SaaS-Anwendung aus synchronisiert und erhalten das Format „user.extension\_[GUID]\_\_[Attribute]“. Dabei ist [GUID] der eindeutige Bezeichner in AAD für die Anwendung, die das Attribut in AAD erstellt hat, und [Attribute] ist der Name des Attributs bei seiner Erstellung. Beispiel für eine Regel, die ein benutzerdefiniertes Attribut verwendet:
 
 user.extension\_c272a57b722d4eb29bfe327874ae79cb\_\_OfficeNumber
 
@@ -203,10 +203,10 @@ Diese Artikel enthalten zusätzliche Informationen zum Azure Active Directory.
 
 * [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](active-directory-manage-groups.md)
 
+* [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](active-directory-accessmanagement-groups-settings-cmdlets.md)
+
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-* [Was ist Azure Active Directory?](active-directory-whatis.md)
+* [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-* [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md)
-
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0615_2016-->

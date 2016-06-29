@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Verwenden von Analytics, das leistungsfähige Suchtool von Application Insights" 
+	pageTitle="Verwenden von Analytics, dem leistungsfähigen Suchtool von Application Insights | Microsoft Azure" 
 	description="Verwenden von Analytics, dem leistungsfähigen Diagnosesuchtool von Application Insights" 
 	services="application-insights" 
     documentationCenter=""
@@ -23,7 +23,6 @@
 
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
-[AZURE.INCLUDE [app-insights-analytics-top-index](../../includes/app-insights-analytics-top-index.md)]
 
 ## Öffnen von Analytics
 
@@ -45,7 +44,7 @@ Schreiben Sie eine Abfrage, indem Sie mit den Namen der Tabellen auf der linken 
 * Verwenden Sie keine Leerzeilen in Ihrer Abfrage.
 * Einzelne Zeilenumbrüche können Sie in einer Abfrage verwenden.
 * Außerdem können Sie mehrere Abfragen im Fenster beibehalten, indem Sie sie durch Leerzeilen trennen.
-* Zum Ausführen einer Abfrage **setzen Sie den Cursor in die Mitte oder an das Ende der Abfrage**, und klicken Sie auf „Weiter“.
+* Zum Ausführen einer Abfrage **setzen Sie den Cursor in die Mitte oder an das Ende der Abfrage**, und klicken Sie auf „Los“.
 
 
 ![](./media/app-insights-analytics-using/130.png)
@@ -62,7 +61,7 @@ Sie können die Spalten auswählen, die Sie anzeigen möchten. Erweitern Sie ein
 
 > [AZURE.NOTE] Klicken Sie auf den Anfang einer Spalte, um die im Webbrowser zur Verfügung stehenden Ergebnisse schnell neu zu ordnen. Beachten Sie jedoch, dass die Anzahl von in den Browser heruntergeladen Zeilen bei einem großen Resultset beschränkt ist. Diese Sortierung zeigt Ihnen aus diesem Grund nicht unbedingt die tatsächlichen höchsten oder niedrigsten Elemente an. Dazu sollten Sie den [top](app-insights-analytics-reference.md#top-operator)- oder [sort](app-insights-analytics-reference.md#sort-operator)-Operator verwenden.
 
-Es ist allerdings üblich, die [take](app-insights-analytics-reference.md#take-operator)-, [top](app-insights-analytics-reference.md#top-operator)- oder [summarize](app-insights-analytics-reference.md#summarize-operator)-Operatoren zu verwenden, um zu vermeiden, dass riesige Tabellen vom Server heruntergeladen werden. Die automatische Beschränkung liegt ohnehin bei 10.000 Zeilen pro Abfrage.
+Es ist allerdings üblich, den [take](app-insights-analytics-reference.md#take-operator)-, [top](app-insights-analytics-reference.md#top-operator)- oder [summarize](app-insights-analytics-reference.md#summarize-operator)-Operator zu verwenden, um zu vermeiden, dass sehr große Tabellen vom Server heruntergeladen werden. Die automatische Beschränkung liegt ohnehin bei 10.000 Zeilen pro Abfrage.
 
 
 ## Diagramme
@@ -79,7 +78,7 @@ Die Ergebnisse werden standardmäßig zunächst als Tabelle angezeigt. Sie wähl
 
 ## Exportieren in Excel
 
-Nachdem Sie eine Abfrage ausgeführt haben, können Sie eine CSV-Datei herunterladen. Klicken Sie auf **In Excel Exportieren**.
+Nachdem Sie eine Abfrage ausgeführt haben, können Sie eine CSV-Datei herunterladen. Klicken Sie auf **Nach Excel exportieren**.
 
 ## Exportieren nach Power BI
 
@@ -104,4 +103,4 @@ Nachdem Sie eine Abfrage ausgeführt haben, können Sie eine CSV-Datei herunterl
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

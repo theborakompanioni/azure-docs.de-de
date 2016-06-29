@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/26/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # Tutorial: Erste Schritte mit Azure Data Lake Analytics-U-SQL-Sprache
@@ -112,7 +112,7 @@ Verwenden Sie **SELECT**, um Rowsets zu transformieren:
         TO "/output/SearchLog-transform-rowsets.csv"
         USING Outputters.Csv();
 
-Für die WHERE-Klausel wird ein [boolescher C#-Ausdruck](https://msdn.microsoft.com/library/6a71f45d.aspx) verwendet. Sie können die C#-Ausdruckssprache nutzen, um Ihre eigenen Ausdrücke und Funktionen zu erstellen. Sie können sogar komplexere Filtervorgänge durchführen, indem Sie sie mit logischen Konjunktionen (und) und Disjunktionen (oder) kombinieren.
+Für die WHERE-Klausel wird ein [boolescher C#-Ausdruck](https://msdn.microsoft.com/library/6a71f45d.aspx) verwendet. Sie können die C#-Ausdruckssprache nutzen, um Ihre eigenen Ausdrücke und Funktionen zu erstellen. Sie können sogar komplexere Filtervorgänge durchführen, indem Sie die Ausdrücke und Funktionen mit logischen Konjunktionen (AND) und Disjunktionen (OR) kombinieren.
 
 Im folgenden Skript werden die DateTime.Parse()-Methode und eine Konjunktion verwendet.
 
@@ -247,7 +247,7 @@ U-SQL unterstützt nur die ANSI-kompatible Verknüpfungssyntax: „Rowset1 JOIN 
 
 Bei U-SQL können Sie Daten im Kontext einer Datenbank und eines Schemas verwenden. Es ist dann nicht immer erforderlich, aus Dateien zu lesen oder in Dateien zu schreiben.
 
-Alle U-SQL-Skripts werden mit einer Standarddatenbank (master) und einem Standardschema (dbo) als Standardkontext ausgeführt. Sie können Ihre eigene Datenbank bzw. Ihr eigenes Schema erstellen. Verwenden Sie zum Ändern des Kontexts die **USE**-Anweisung.
+Alle U-SQL-Skripts werden mit einer Standarddatenbank (master) und einem Standardschema (DBO) als Standardkontext ausgeführt. Sie können Ihre eigene Datenbank bzw. Ihr eigenes Schema erstellen. Verwenden Sie zum Ändern des Kontexts die **USE**-Anweisung.
 
 
 ### Erstellen einer Tabellenwertfunktion (Table-Valued Function, TVF)
@@ -409,7 +409,7 @@ In diesem Tutorial wurde nur ein kleiner Teil von U-SQL behandelt. Aufgrund des 
 
 - [Übersicht über Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 - [Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
-- [Verwenden von U-SQL-Fensterfunktionen für Azure Data Lake Analytics-Aufträge](data-lake-analytics-use-window-functions.md)
+- [Verwenden von U-SQL-Funktionen für Azure Data Lake Analytics-Aufträge](data-lake-analytics-use-window-functions.md)
 - [Überwachen und Problembehandeln von Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
 ## Teilen Sie uns Ihre Meinung mit
@@ -419,4 +419,4 @@ In diesem Tutorial wurde nur ein kleiner Teil von U-SQL behandelt. Aufgrund des 
 - [Hilfe in Foren](http://aka.ms/adlaforums)
 - [Feedback zu U-SQL](http://aka.ms/usqldiscuss)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

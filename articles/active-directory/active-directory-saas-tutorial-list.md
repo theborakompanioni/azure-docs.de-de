@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-    ms.date="06/08/2016"
+    ms.date="06/15/2016"
     ms.author="markvi"/>
 
 #Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory
@@ -60,6 +60,7 @@ Die umfassende Liste bereits in Azure AD integrierter SaaS-Apps finden Sie im [A
 | ![Logo](./media/active-directory-saas-tutorial-list/SaaSApp_Canvas.jpg)| [Canvas LMS](https://go.microsoft.com/fwLink/?LinkID=510249&clcid=0x409)|
 | ![Logo](./media/active-directory-saas-tutorial-list/SaaSApp_Capriza.jpg)| [Capriza](https://go.microsoft.com/fwLink/?LinkID=708671&clcid=0x409)|
 | ![Logo](./media/active-directory-saas-tutorial-list/SaaSApp_Central_Desktop.jpg)| [Central Desktop](https://go.microsoft.com/fwLink/?LinkID=403249&clcid=0x409)|
+| ![Logo](./media/active-directory-saas-tutorial-list/SaaSApp_Ceridian.jpg)| [Ceridian Dayforce HCM](https://go.microsoft.com/fwLink/?LinkID=733445&clcid=0x409)|
 | ![Logo](./media/active-directory-saas-tutorial-list/SaaSApp_Certify.jpg)| [Certify](http://go.microsoft.com/fwlink/?LinkID=708681&clcid=0x409)|
 | ![Logo](./media/active-directory-saas-tutorial-list/SaaSApp_Cherwell.jpg)| [Cherwell](https://go.microsoft.com/fwLink/?LinkID=530225&clcid=0x409)|
 | ![Logo](./media/active-directory-saas-tutorial-list/SaaSApp_Chromeriver.png)| [Chromeriver](https://go.microsoft.com/fwLink/?LinkID=530233&clcid=0x409)|
@@ -234,12 +235,9 @@ Die umfassende Liste bereits in Azure AD integrierter SaaS-Apps finden Sie im [A
 | ![Logo](./media/active-directory-saas-tutorial-list/SaaSApp_Zscaler.jpg)| [Zscaler](https://go.microsoft.com/fwLink/?LinkID=510254&clcid=0x409)|
 
 
-
-
-
 ##Verwandte Artikel
 
 - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 - [Liste der Tutorials zur Integration von SaaS-Apps](active-directory-saas-tutorial-list.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

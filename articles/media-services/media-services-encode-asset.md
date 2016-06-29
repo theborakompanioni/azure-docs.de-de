@@ -220,7 +220,7 @@ ErrorCancelingTask|Kategorie von Fehlern, die auftreten, wenn versucht wird, die
 TransientError|Kategorie von Fehlern, mit der vorübergehende Probleme abgedeckt werden (z. B. temporäre Netzwerkprobleme mit Azure Storage).
 
 
-Öffnen Sie ein [Supportticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um Hilfe vom **Media Services**-Team zu erhalten.
+Öffnen Sie ein [Supportticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um Hilfe vom **Media Services**-Team anzufordern.
 
 
 
@@ -242,4 +242,4 @@ TransientError|Kategorie von Fehlern, mit der vorübergehende Probleme abgedeckt
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

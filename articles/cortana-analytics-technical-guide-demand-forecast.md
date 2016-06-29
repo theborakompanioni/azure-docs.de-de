@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/24/2016"
+	ms.date="05/16/2016"
 	ms.author="inqiu;yijichen;ilanr9"/>
 
 # Technischer Leitfaden zur Cortana Intelligence-Lösungsvorlage für die Prognose des Energiebedarfs
@@ -198,11 +198,11 @@ In den folgenden Schritten wird erklärt, wie Sie die Echtzeit-Datenausgabe aus 
 
 1.  Fügen Sie die Power BI-Ausgabe in Azure Stream Analytics hinzu.
 
-    -  Sie müssen die Anweisungen unter [Azure Stream Analytics und Power BI: Ein Dashboard mit Echtzeitanalyse und -sichtbarkeit von Streamingdaten](stream-analytics\stream-analytics-power-bi-dashboard.md) ausführen, um die Ausgabe des Azure Stream Analytics-Auftrags an Ihr Power BI-Dashboard einzurichten.
+    -  Folgen Sie den Anweisungen unter [Stream Analytics und Power BI: Ein Dashboard mit Echtzeitanalyse von Streamingdaten](stream-analytics-power-bi-dashboard.md), um die Ausgabe Ihrer Azure Stream Analytics-Aufträge als Power BI-Dashboard einzurichten.
 
 	- Suchen Sie den Stream Analytics-Auftrag im [Azure-Verwaltungsportal](https://manage.windowsazure.com). Der Name des Auftrags sollte folgendermaßen lauten: NameIhrerLösung + „streamingjob“ + Zufallszahl + „asapbi“ (d. h. demostreamingjob123456asapbi).
 
-	- Richten Sie die Ausgabe der ASA-Abfrage ein, die **PBIoutput** lautet. Stellen Sie sicher, dass der **Ausgabealias** mit dem Ihrer Abfrage übereinstimmt. Sie können als **Datasetname** und **Tabellenname** den Namen **EnergyStreamData** angeben. Nachdem Sie die Ausgabe hinzugefügt haben, klicken Sie im unteren Seitenbereich auf **Starten**, um den Stream Analytics-Auftrag zu starten. Sie sollten eine Bestätigungsmeldung erhalten (*z. B.* „Stream Analytics-Auftrag myteststreamingjob12345asablob wurde erfolgreich gestartet.“).
+	- Fügen Sie eine Power BI-Ausgabe für den ASA-Auftrag hinzu. Legen Sie den **Ausgabealias** auf **PBIoutput** fest. Legen Sie **Datasetname** und **Tabellenname** auf **EnergyStreamData** fest. Nachdem Sie die Ausgabe hinzugefügt haben, klicken Sie im unteren Seitenbereich auf **Starten**, um den Stream Analytics-Auftrag zu starten. Sie sollten eine Bestätigungsmeldung erhalten (*z. B.* „Stream Analytics-Auftrag myteststreamingjob12345asablob wurde erfolgreich gestartet.“).
 
 2. Melden Sie sich bei [Power BI Online](http://www.powerbi.com) an.
 
@@ -225,8 +225,7 @@ In den folgenden Schritten wird erklärt, wie Sie die Echtzeit-Datenausgabe aus 
 
 	-	Bewegen Sie den Mauszeiger auf diese Kachel im Dashboard, klicken Sie in der oberen rechten Ecke auf das Symbol „Bearbeiten“, und ändern Sie den Titel in „Bedarf nach Zeitstempel“.
 
-4.	Erstellen Sie weitere Dashboardkacheln auf Basis der entsprechenden Datasets. Die endgültige Dashboardansicht ist unten dargestellt.
-![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic5.png)
+4.	Erstellen Sie weitere Dashboardkacheln auf Basis der entsprechenden Datasets. Die endgültige Dashboardansicht ist unten dargestellt. ![](media\cortana-analytics-technical-guide-demand-forecast\PBIFullScreen.png)
 
 
 ### Einrichten des Dashboards für kalte Daten
@@ -253,8 +252,7 @@ In einer Pipeline mit kalten Daten besteht das grundlegende Ziel darin, die Beda
 
 	-	Doppelklicken Sie im heruntergeladenen Ordner **DemandForecastingDataGeneratorv1.0** auf die Datei **Power BI Template\\DemandForecastPowerBI.pbix**. Die anfänglichen Visualisierungen basieren auf unechten Daten. **Hinweis:** Wenn eine Fehlermeldung angezeigt wird, stellen Sie sicher, dass Sie die neueste Version von Power BI Desktop installiert haben.
 
-		Klicken Sie nach dem Öffnen des Programms über der Datei auf **Abfragen bearbeiten**. Doppelklicken Sie im Ausklappfenster im rechten Bereich auf **Quelle**.
-![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic1.png)
+		Klicken Sie nach dem Öffnen des Programms über der Datei auf **Abfragen bearbeiten**. Doppelklicken Sie im Ausklappfenster im rechten Bereich auf **Quelle**. ![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic1.png)
 
 	-   Ersetzen Sie im Ausklappfenster **Server** und **Datenbank** durch Ihre eigenen Server- und Datenbanknamen, und klicken Sie dann auf **OK**. Geben Sie beim Servernamen unbedingt den Port 1433 an (**NameIhrerLösung.database.windows.net, 1433**). Ignorieren Sie die auf dem Bildschirm angezeigten Warnmeldungen.
 
@@ -282,6 +280,9 @@ In einer Pipeline mit kalten Daten besteht das grundlegende Ziel darin, die Beda
 	-   Legen Sie einen geeigneten Zeitplan für die Aktualisierung fest. Weitere Informationen finden Sie unter [Aktualisieren von Daten in Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/).
 
 
+## **Löschen der Lösung**
+Stellen Sie sicher, dass Sie den Datengenerator beenden, wenn Sie die Lösung nicht aktiv nutzen, da das Ausführen des Datengenerators höhere Kosten verursacht. Löschen Sie die Lösung, wenn Sie sie nicht verwenden. Beim Löschen Ihrer Lösung werden alle dafür in Ihrem Abonnement bereitgestellten Komponenten gelöscht. Klicken Sie zum Löschen der Lösung im linken Bereich der Lösungsvorlage auf deren Namen und dann auf „Löschen“.
+
 ## **Kostenschätzungstools**
 
 Es stehen zwei Tools zur Verfügung, mit denen Sie die Gesamtkosten zum Ausführen der Lösungsvorlage zur Prognose des Energiebedarfs im Rahmen Ihres Abonnements ermitteln können:
@@ -290,4 +291,7 @@ Es stehen zwei Tools zur Verfügung, mit denen Sie die Gesamtkosten zum Ausführ
 
 -   [Microsoft Azure-Kostenschätzungstool (Desktopversion)](http://www.microsoft.com/download/details.aspx?id=43376)
 
-<!---HONumber=AcomDC_0413_2016-->
+## **Bestätigungen**
+Dieser Artikel wurde von der Datenanalystin Yijing Chen und dem Softwareentwickler Qiu Min bei Microsoft verfasst.
+
+<!---HONumber=AcomDC_0615_2016-->

@@ -23,7 +23,7 @@ Microsoft bietet Support für eine Vielzahl von Produkten und Diensten. Um eine 
 
 - Wenn Sie Azure Marketplace-Publisher sind und sich Ihr virtueller Computer noch in der Entwicklung befindet, sollten Sie sich mit den Teams von Microsoft Onboarding oder Compute in Verbindung setzen.
 
-- Wenn Sie als Marketplace-Publisher eine Frage von einem Kunden erhalten haben, bitten Sie ihn darum, über die Supportlinks unter https://ms.portal.azure.com/ Unterstützung anzufordern.
+- Wenn Sie als Marketplace-Publisher eine Frage von einem Kunden erhalten haben, bitten Sie ihn darum, über die Supportlinks unter https://portal.azure.com/ Unterstützung anzufordern.
 
 - Wenn Sie ein Publisher im Marketplace sind und eine Frage im Zusammenhang mit Ihrer App oder Ihrem Dienst haben, lesen Sie unten weiter.
 
@@ -79,7 +79,9 @@ Beschreiben Sie das Problem möglichst umfassend, und stellen Sie ggf. Dateien w
 
 Nach der Übermittlung Ihres Problems bestätigen wir den Erhalt innerhalb von 24 Stunden und weisen ihm eine Priorität und einen Schweregrad zu. Unser engagiertes Team von Supporttechnikern unterstützt Sie gemäß der in unserer Vereinbarung zum Servicelevel festgelegten Antwortzeiten bei der Lösung des Problems.
 
-![Bestätigung][6] + Geben Sie in jeder problembezogenen Korrespondenz die Bestätigungsnummer an. + Sie können jederzeit den Status Ihres Problems einsehen.
+![Bestätigung][6]
++ Geben Sie in jeder problembezogenen Korrespondenz die Bestätigungsnummer an.
++ Sie können den Status Ihres Problems jederzeit einsehen.
 
 ## Nächste Schritte
 
@@ -92,4 +94,4 @@ Informationen zur Lösung bestimmter Supportprobleme finden Sie unter [Beheben v
 [5]: ./media/marketplace-publishing-get-publisher-support/step5.png
 [6]: ./media/marketplace-publishing-get-publisher-support/step6.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0615_2016-->

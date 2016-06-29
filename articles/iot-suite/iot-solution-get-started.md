@@ -2,16 +2,16 @@
 	pageTitle="MyDriving-Beispiel für Azure IoT – Schnellstart | Microsoft Azure"
 	description="Erste Schritte mit einer App, die in einer umfassenden Demonstration zeigt, wie Sie mit Microsoft Azure ein IoT-System einschließlich Stream Analytics, Machine Learning und Event Hubs zusammenstellen."
 	services=""
-    documentationCenter=""
-    suite="iot-suite"
+    documentationCenter=".net"
+    suite=""
 	authors="alancameronwills"
 	manager="douge"/>
 
 <tags
-	ms.service="iot-suite"
+	ms.service="multiple"
 	ms.workload="tbd"
 	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
+	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.date="03/25/2016"
 	ms.author="awills"/>
@@ -170,4 +170,4 @@ Wir freuen uns darauf, von Ihnen zu hören!
   [HockeyApp-Portal]: https://rink.hockeyapp.org
   [Problem bei GitHub]: https://github.com/Azure-Samples/MyDriving/issues
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0615_2016-->

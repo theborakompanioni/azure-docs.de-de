@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/09/2016"
+   ms.date="06/17/2016"
    ms.author="cherylmc" />
 
 # ExpressRoute-Partner und Peeringstandorte
@@ -31,7 +31,7 @@ Wenn Sie mit mindestens einem ExpressRoute-Standort innerhalb der geopolitischen
 |---|---|---|
 |**Nordamerika**|USA, Osten; USA, Westen; USA, Osten 2; USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; Kanada, Mitte; Kanada, Osten|Atlanta, Chicago, Dallas, Las Vegas+, Los Angeles, New York, Seattle, Silicon Valley, Washington DC, Montreal+, Quebec City+, Toronto|
 |**Südamerika**|Brasilien Süd|Sao Paulo|
-|**Europa**|Nordeuropa, Westeuropa|Amsterdam, Dublin, London, Newport(Wales)+, Paris+|
+|**Europa**|Nordeuropa, Westeuropa|Amsterdam, Dublin, London, Newport(Wales)+, Paris|
 |**Asien**|Ostasien, Südostasien|Hongkong, Singapur|
 |**Japan**|Japan West, Japan Ost|Osaka, Tokio|
 |**Australien**|Südostaustralien, Ostaustralien|Melbourne, Sydney|
@@ -62,16 +62,18 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
 | **[British Telecom](http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** | Unterstützt | Unterstützt | Amsterdam, Hongkong, London, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
 |**CenturyLink** | In Kürze verfügbar | In Kürze verfügbar| Silicon Valley |
 |**China Telecom Global** | Unterstützt | Nicht unterstützt | Hongkong |
-|**Cologix** | Unterstützt | In Kürze verfügbar | Montreal+, Toronto |
+|**[Cologix](http://www.cologix.com/solutions/cloud-connect/public-clouds/microsoft-cloud/)** | Unterstützt | In Kürze verfügbar | Montreal+, Toronto |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** | Unterstützt | Unterstützt | Amsterdam, Dublin, London, Tokio |
 | **Comcast** | Unterstützt | Unterstützt | Chicago, Silicon Valley, Washington, D.C. |
 | **[CoreSite](http://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** | Unterstützt | Unterstützt | Los Angeles | 
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | Unterstützt | Unterstützt | Amsterdam, Atlanta, Chicago, Dallas, Hong Kong, London, Los Angeles, Melbourne, New York, Osaka, Sao Paulo, Seattle, Silicon Valley, Singapore, Sydney, Tokyo, Toronto, Washington DC |
 | **euNetworks** | Unterstützt | Unterstützt | Amsterdam |
+| **GÉANT** | In Kürze verfügbar | In Kürze verfügbar | Amsterdam+ |
 | **[Internet Initiative Japan Inc. - IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** | Unterstützt | Unterstützt | Osaka, Tokio |
 | **[InterCloud](https://www.intercloud.com/)** | Unterstützt | Unterstützt | Amsterdam, London, Singapur, Washington, D.C. |
 | **Internet Solutions – Cloud Connect** | Unterstützt | Unterstützt | Amsterdam, London |
-| **Interxion** | Unterstützt | Unterstützt | Amsterdam, London |
+| **Interxion** | Unterstützt | Unterstützt | Amsterdam, London, Paris |
+| **Jisc** | In Kürze verfügbar | In Kürze verfügbar | London+ | 
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | Unterstützt | Unterstützt | Amsterdam, Chicago, Dallas, Las Vegas+, London, Seattle, Silicon Valley, Washington DC |
 | **Megaport** | Unterstützt | Unterstützt | Dallas, Las Vegas+, Los Angeles, Melbourne, New York, Seattle, Singapur, Sydney, Washington DC |
 | **MTN** | Unterstützt | Unterstützt | London |
@@ -99,9 +101,9 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
 | **Service Provider** |**Microsoft Azure** | **Office 365** | **Standorte** |
 |-----------------------|--------------------|----------------|---------------|
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | Unterstützt | Unterstützt | Chicago, Washington DC |
-| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | Unterstützt | Unterstützt | Chicago, New York, Washington DC |
+| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | Unterstützt | Unterstützt | Chicago, Dallas+, New York, Washington DC |
 | **[Level 3 Communications - IPVPN](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | Unterstützt | In Kürze verfügbar | Chicago, New York+, Washington DC |
-| **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | Unterstützt | Unterstützt | Chicago, New York, Washington DC |
+| **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | Unterstützt | Unterstützt | Chicago, Dallas+, New York, Washington DC |
 
 #### China
 
@@ -130,6 +132,7 @@ Wenn Ihr Konnektivitätsanbieter nicht in den vorherigen Abschnitten enthalten i
 	- [InterXion](http://www.interxion.com/)
 	- [NextDC](http://www.nextdc.com/)
 	- [CoreSite](http://www.coresite.com/)
+	- [Cologix](http://www.cologix.com/)
 - Bitten Sie Ihren Konnektivitätsanbieter, Ihr Netzwerk auf den Peeringstandort Ihrer Wahl zu erweitern.
 	- Stellen Sie sicher, dass Ihr Konnektivitätsanbieter Ihre Konnektivität mit hoher Verfügbarkeit erweitert, sodass es keine einzelnen Fehlerquellen mehr gibt.
 - Bestellen Sie eine ExpressRoute-Verbindung mit der Exchange als Konnektivitätsanbieter für die Verbindung mit Microsoft.
@@ -148,7 +151,7 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 |---|---|
 |**[Avanade Inc.](http://www.avanade.com/)**| Asien, Europa, USA |
 |**[Dotnet Solutions](http://www.dotnetsolutions.co.uk/)**| Europa |
-|**[Nimbo](http://www.nimbo.com/)**|US||
+|**[Equinix Professional Services](http://www.equinix.com/services/consulting/)**|US||
 |**[OneAs1a](http://www.oneas1a.com/express-connect-any-cloud-ecac)** | Asien |
 |**[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | US |
 |**[Project Leadership](http://www.projectleadership.net/azure)** | US |
@@ -161,4 +164,4 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 <!--Image References-->
 [0]: ./media/expressroute-locations/expressroute-locations-map.png "Standortkarte"
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

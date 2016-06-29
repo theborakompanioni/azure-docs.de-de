@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/08/2016" 
+	ms.date="06/12/2016" 
 	ms.author="awills"/>
  
 # Verwendungsanalyse für Webanwendungen mit Application Insights
@@ -152,32 +152,22 @@ Aber dennoch soll Application Insights weiter protokollieren, wie oft jedes Spie
 
 ## Benutzerdefinierte Ereignisse
 
-Verwenden Sie auch benutzerdefinierte Ereignisse. Sie können diese von Geräte-Apps, Webseiten oder einem Webserver senden:
-
-*JavaScript*
+Schreiben Sie benutzerdefinierte Telemetrie, um bestimmte Ereignisse zu überwachen. Insbesondere in Single-Page-Apps benötigen Informationen darüber, wie häufig ein Benutzer bestimmte Aktionen ausführt oder bestimmte Ziele erreicht.
 
     appInsights.trackEvent("GameEnd");
 
-*C#*
+So protokollieren Sie z.B. Klicks auf einen Link:
 
-    var tc = new Microsoft.ApplicationInsights.TelemetryClient(); 
-    tc.TrackEvent("GameEnd");
-
-*VB*
-
-    Dim tc = New Microsoft.ApplicationInsights.TelemetryClient()
-    tc.TrackEvent("GameEnd")
+    <a href="target.htm" onclick="appInsights.trackEvent('linkClick');return true;">my link</a>
 
 
-Die häufigsten benutzerdefinierten Ereignisse werden auf dem Blatt "Übersicht" aufgeführt.
+## Anzeigen der Anzahl von benutzerdefinierten Ereignissen
 
-![Führen Sie auf dem Blatt "Übersicht" einen Bildlauf nach unten durch, und klicken Sie auf "Benutzerdefinierte Ereignisse".](./media/app-insights-web-track-usage/04-events.png)
-
-Klicken Sie auf die Kopfzeile der Tabelle, um die Gesamtanzahl von Ereignissen anzuzeigen. Sie können das Diagramm anhand verschiedener Attribute wie z. B. des Ereignisnamens segmentieren:
+Öffnen Sie den Metrik-Explorer, und fügen Sie ein Diagramm zur Anzeige von Ereignissen hinzu. Segmentieren Sie das Diagramm nach Namen:
 
 ![Wählen Sie ein Diagramm aus, das nur eine Metrik anzeigt. Schalten Sie "Gruppieren" ein. Wählen Sie eine Eigenschaft aus. Nicht alle Eigenschaften sind verfügbar.](./media/app-insights-web-track-usage/06-eventsSegment.png)
 
-Das besonders Nützliche an Zeitachsen ist, dass Sie Änderungen mit anderen Metriken und Ereignissen in Beziehung setzen können. Zu Zeiten, in denen mehr Spiele gespielt werden, erwarten Sie z. B. auch einen Anstieg abgebrochener Spiele. Aber wenn der Anstieg abgebrochener Spiele unverhältnismäßig ist, möchten Sie herausfinden, ob die hohe Auslastung Probleme verursacht, die Benutzer nicht akzeptabel finden.
+
 
 ## Detailsuche bei bestimmten Ereignissen
 
@@ -376,4 +366,4 @@ Wenn Sie mit Analysen arbeiten, werden diese zu einem integrierten Bestandteil I
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0615_2016-->

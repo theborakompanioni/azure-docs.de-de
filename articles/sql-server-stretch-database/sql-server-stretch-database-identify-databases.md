@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
+	ms.date="06/14/2016"
 	ms.author="douglasl"/>
 
 # Identifizieren von Datenbanken und Tabellen für Stretch-Datenbank durch Ausführen von Stretch Database Advisor
@@ -68,4 +68,4 @@ Aktivieren Sie Stretch-Datenbank.
 
 [Aktivieren von Stretch-Datenbank für eine Tabelle](sql-server-stretch-database-enable-table.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

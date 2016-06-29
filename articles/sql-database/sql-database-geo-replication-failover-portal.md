@@ -22,7 +22,7 @@
 > [AZURE.SELECTOR]
 - [Azure-Portal](sql-database-geo-replication-failover-portal.md)
 - [PowerShell](sql-database-geo-replication-failover-powershell.md)
-- [Transact-SQL](sql-database-geo-replication-failover-transact-sql.md)
+- [T-SQL](sql-database-geo-replication-failover-transact-sql.md)
 
 
 In diesem Artikel wird beschrieben, wie Sie mit dem [Azure-Portal](http://portal.azure.com) ein Failover zu einer sekundären SQL-Datenbank konfigurieren. Informationen zum Konfigurieren der Georeplikation finden Sie unter [Konfigurieren der Georeplikation für die Azure SQL-Datenbank mit dem Azure-Portal](sql-database-geo-replication-portal.md).
@@ -61,4 +61,4 @@ Es gibt einen kurzer Zeitraum, in dem beide Datenbanken während des Rollenwechs
 [1]: ./media/sql-database-geo-replication-failover-portal/failover.png
 [2]: ./media/sql-database-geo-replication-failover-portal/secondaries.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

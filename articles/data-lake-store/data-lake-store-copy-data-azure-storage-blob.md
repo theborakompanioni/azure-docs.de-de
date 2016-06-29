@@ -110,7 +110,7 @@ Beispiel:
 
 ## Überlegungen zur Verwendung von AdlCopy
 
-* Das Kopieren von Daten aus Quellen, die gemeinsam mehr als 1000 Dateien und Ordner enthalten, wird von AdlCopy nicht unterstützt. Alternativ können Sie die Dateien und Ordner in verschiedene Unterordner verteilen und den Pfad zu diesen Unterordnern als Quelle angeben.
+* AdlCopy (für Version 1.0.4) unterstützt das Kopieren von Daten aus Quellen, die zusammen mehrere Tausend Dateien und Ordner aufweisen. Wenn beim Kopieren eines umfangreichen Datasets jedoch Probleme auftreten, können Sie die Dateien und Ordner in verschiedene Unterordner verteilen und den Pfad zu diesen Unterordnern als Quelle angeben.
 
 ## Nächste Schritte
 
@@ -118,4 +118,4 @@ Beispiel:
 - [Verwenden von Azure Data Lake Analytics mit Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0615_2016-->

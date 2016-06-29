@@ -1,11 +1,11 @@
 <properties
-   pageTitle="Verknüpfte Vorlagen mit Azure Resource Manager | Microsoft Azure"
+   pageTitle="Verknüpfte Vorlagen mit Resource Manager | Microsoft Azure"
    description="Beschreibt, wie verknüpfte Vorlagen in einer Azure-Ressourcen-Manager-Vorlage zum Erstellen einer modularen Vorlagenprojektmappe verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden."
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
-   manager="wpickett"
-   editor=""/>
+   manager="timlt"
+   editor="tysonn"/>
 
 <tags
    ms.service="azure-resource-manager"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/04/2016"
+   ms.date="06/08/2016"
    ms.author="tomfitz"/>
 
 # Verwenden von verknüpften Vorlagen mit Azure-Ressourcen-Manager
@@ -51,6 +51,29 @@ Der Ressourcen-Manager-Dienst muss in der Lage sein, auf die verknüpften Vorlag
         "contentVersion": "1.0.0.0",
     }
 
+Obwohl die verknüpfte Vorlage extern verfügbar sein muss, muss sie der Öffentlichkeit nicht allgemein zur Verfügung stehen. Sie können Ihre Vorlage einem privates Speicherkonto hinzufügen, auf das nur der Speicherkontobesitzer Zugriff hat, und anschließend ein SAS-Token (Shared Access Signature) erstellen, um den Zugriff während der Bereitstellung zu ermöglichen. Sie fügen dieses SAS-Token dem URI für die verknüpfte Vorlage hinzu. Schritte zum Einrichten einer Vorlage in einem Speicherkonto und zum Generieren eines SAS-Tokens finden Sie unter [Bereitstellen von Ressourcen mit dem Resource Manager-Vorlagen und Azure PowerShell](resource-group-template-deploy.md) oder [Bereitstellen von Ressourcen mit Resource Manager-Vorlage und Azure-CLI](resource-group-template-deploy-cli.md).
+
+Im folgenden Beispiel wird eine übergeordnete Vorlage gezeigt, die mit einer anderen Vorlage verknüpft ist. Der Zugriff auf die geschachtelte Vorlage erfolgt mithilfe eines SAS-Tokens, das als Parameter übergeben wird.
+
+    "parameters": {
+        "sasToken": { "type": "securestring" }
+    },
+    "resources": [
+        {
+            "apiVersion": "2015-01-01",
+            "name": "nestedTemplate",
+            "type": "Microsoft.Resources/deployments",
+            "properties": {
+              "mode": "incremental",
+              "templateLink": {
+                "uri": "[concat('https://storagecontosotemplates.blob.core.windows.net/templates/helloworld.json', parameters('sasToken'))]",
+                "contentVersion": "1.0.0.0"
+              }
+            }
+        }
+    ],
+
+Obwohl das Token als sichere Zeichenfolge übergeben wird, wird der URI der verknüpften Vorlage samt SAS-Token in den Bereitstellungsvorgängen für diese Ressourcengruppe protokolliert. Legen Sie ein Ablaufdatum für das Token fest, um den Zugriff zu beschränken.
 
 ## Verknüpfen mit einer Parameterdatei
 
@@ -75,7 +98,7 @@ Im nächsten Beispiel wird die **parametersLink**-Eigenschaft genutzt, um eine V
       } 
     ] 
 
-Der URI-Wert für die verknüpfte Parameterdatei darf keine lokale Datei sein und muss entweder **http** oder **https** enthalten.
+Der URI-Wert für die verknüpfte Parameterdatei darf keine lokale Datei sein und muss entweder **http** oder **https** enthalten. Für die Parameterdatei kann auch die Einschränkung gelten, dass der Zugriff nur mithilfe eines SAS-Tokens möglich ist.
 
 ## Verwenden von Variablen für das Verknüpfen von Vorlagen
 
@@ -102,18 +125,78 @@ Das folgende Beispiel zeigt, wie Sie eine Basis-URL verwenden können, um zwei U
         }
     }
 
-Sie können auch [Bereitstellung()](../resource-group-template-functions/#deployment) verwenden, um die Basis-URL für die aktuelle Vorlage zu erhalten. Mit dieser können Sie die URL für die anderen Vorlagen am gleichen Speicherort abrufen. Dies ist hilfreich, wenn sich der Speicherort der Vorlage ändert (möglicherweise aufgrund einer Versionsverwaltung) oder wenn Sie es vermeiden möchten, URLs in der Vorlagendatei fest programmieren zu müssen.
+Sie können auch [Bereitstellung()](resource-group-template-functions.md#deployment) verwenden, um die Basis-URL für die aktuelle Vorlage zu erhalten. Mit dieser können Sie die URL für die anderen Vorlagen am gleichen Speicherort abrufen. Dies ist hilfreich, wenn sich der Speicherort der Vorlage ändert (möglicherweise aufgrund einer Versionsverwaltung) oder wenn Sie es vermeiden möchten, URLs in der Vorlagendatei fest programmieren zu müssen.
 
     "variables": {
         "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
     }
 
-## Zurückgeben von Werten aus einer verknüpften Vorlage
+## Vollständiges Beispiel
 
-Wenn Sie einen Wert aus der verknüpften Vorlage an die Hauptvorlage übergeben müssen, können Sie einen Wert im **outputs**-Abschnitt der verknüpften Vorlage erstellen. Ein Beispiel finden Sie unter [Freigeben des Status in Azure-Ressourcen-Manager-Vorlagen](best-practices-resource-manager-state.md).
+Die folgenden Beispielvorlagen zeigen eine vereinfachte Anordnung verknüpfter Vorlagen zum Erläutern verschiedener Konzepte in diesem Artikel. Es wird davon ausgegangen, dass die Vorlagen demselben Container in einem Speicherkonto mit aktiviertem öffentlichen Zugriff hinzugefügt wurden. Im Abschnitt **outputs** übergibt die verknüpfte Vorlage einen Wert zurück an die Hauptvorlage.
+
+Die Datei **parent.json** besteht aus Folgendem:
+
+    {
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "containerSasToken": { "type": "string" }
+      },
+      "resources": [
+        {
+          "apiVersion": "2015-01-01",
+          "name": "nestedTemplate",
+          "type": "Microsoft.Resources/deployments",
+          "properties": {
+            "mode": "incremental",
+            "templateLink": {
+              "uri": "[concat(uri(deployment().properties.templateLink.uri, 'helloworld.json'), parameters('containerSasToken'))]",
+              "contentVersion": "1.0.0.0"
+            }
+          }
+        }
+      ],
+      "outputs": {
+        "result": {
+          "type": "object",
+          "value": "[reference('nestedTemplate').outputs.result]"
+        }
+      }
+    }
+
+Die Datei **helloworld.json** besteht aus Folgendem:
+
+    {
+	  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	  "contentVersion": "1.0.0.0",
+	  "parameters": {},
+	  "variables": {},
+	  "resources": [],
+	  "outputs": {
+		"result": {
+			"value": "Hello World",
+			"type" : "string"
+		}
+	  }
+    }
+    
+In PowerShell rufen Sie ein Token für den Container ab und stellen die Vorlagen mit folgendem Code bereit:
+
+    Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
+    $token = New-AzureStorageContainerSASToken -Name templates -Permission r -ExpiryTime (Get-Date).AddMinutes(30.0)
+    New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ("https://storagecontosotemplates.blob.core.windows.net/templates/parent.json" + $token) -containerSasToken $token
+
+An der Azure-Befehlszeilenschnittstelle (CLI) rufen Sie ein Token für den Container ab und stellen die Vorlagen mit folgendem Code bereit. Derzeit müssen Sie einen Namen für die Bereitstellung angeben, wenn Sie eine URI-Vorlage nutzen, die ein SAS-Token enthält.
+
+    expiretime=$(date -I'minutes' --date "+30 minutes")  
+    azure storage container sas create --container templates --permissions r --expiry $expiretime --json | jq ".sas" -r
+    azure group deployment create -g ExampleGroup --template-uri "https://storagecontosotemplates.blob.core.windows.net/templates/parent.json?{token}" -n tokendeploy  
+
+Sie werden aufgefordert, das SAS-Token als Parameter anzugeben. Sie müssen dem Token **?** voranstellen.
 
 ## Nächste Schritte
 - Informationen zum Definieren der Bereitstellungsreihenfolge Ihrer Ressourcen finden Sie unter [Definieren von Abhängigkeiten in Azure-Ressourcen-Manager-Vorlagen](resource-group-define-dependencies.md).
 - Informationen, wie Sie eine Ressource definieren und von dieser viele Instanzen erstellen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0615_2016-->

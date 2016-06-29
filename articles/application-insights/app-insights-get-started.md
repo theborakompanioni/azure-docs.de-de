@@ -61,8 +61,9 @@ Ziel | Vorgehensweise | Ergebnis
 
 
 
-## <a name="video"></a>Videos
+## <a name="video"></a>Video
 
+[![Animierte Einführung](./media/app-insights-get-started/video-front-1.png)](https://www.youtube.com/watch?v=fX2NtGrh-Y0)
 
 > [AZURE.VIDEO 218]
 
@@ -76,4 +77,4 @@ Ziel | Vorgehensweise | Ergebnis
 
 [qna]: app-insights-troubleshoot-faq.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0622_2016-->

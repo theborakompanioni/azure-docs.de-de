@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Einführung in Analytics in Application Insights" 
+	pageTitle="Einführung in Analytics in Application Insights | Microsoft Azure" 
 	description="Kurze Beispiele für alle Hauptabfragen in Analytics, dem leistungsfähigen Suchtool für Application Insights." 
 	services="application-insights" 
     documentationCenter=""
@@ -22,8 +22,6 @@
 
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
-
-[AZURE.INCLUDE [app-insights-analytics-top-index](../../includes/app-insights-analytics-top-index.md)]
  
 Sehen Sie sich zu Beginn einige grundlegende Abfragen im Detail an.
 
@@ -151,7 +149,7 @@ Sie können sie vereinfachen, indem Sie nur die für Sie interessanten Eigenscha
 
 ## Benutzerdefinierte Eigenschaften und Messungen
 
-Wenn Ihre Anwendung [benutzerdefinierte Dimensionen (Eigenschaften) und benutzerdefinierte Messungen](app-insights-api-custom-events-metrics.md#properties) an Ereignisse anfügt, dann sehen Sie sie im `customDimensions`-Objekt und `customMeasurements`-Objekt.
+Wenn Ihre Anwendung [benutzerdefinierte Dimensionen (Eigenschaften) und benutzerdefinierte Messungen](app-insights-api-custom-events-metrics.md#properties) an Ereignisse anfügt, sehen Sie diese in den Objekten `customDimensions` und `customMeasurements`.
 
 
 Zum Beispiel kann Ihre App Folgendes einfügen:
@@ -175,7 +173,7 @@ Und so extrahieren Sie diese Werte in Analytics:
 
 ``` 
 
-> [AZURE.NOTE] Im [Metrik-Explorer](app-insights-metrics-explorer.md) werden im Blatt „Metriken“ alle benutzerdefinierten und an einen Telemetrietyp angefügten Messungen zusammen mit den Metriken angezeigt, die mithilfe von `TrackMetric()` gesendet wurden. In Analytics hingegen bleiben die benutzerdefinierten Messungen weiterhin an den jeweiligen Telemetrietyp gebunden, und die Metriken werden in ihrem eigenen `metrics`-Datenstrom angezeigt.
+> [AZURE.NOTE] Im [Metrik-Explorer](app-insights-metrics-explorer.md) werden auf dem Blatt „Metriken“ alle benutzerdefinierten und an einen Telemetrietyp angefügten Messungen zusammen mit den Metriken angezeigt, die mithilfe von `TrackMetric()` gesendet wurden. In Analytics hingegen bleiben die benutzerdefinierten Messungen weiterhin an den jeweiligen Telemetrietyp gebunden, und die Metriken werden in ihrem eigenen `metrics`-Datenstrom angezeigt.
 
 
 ## [summarize:](app-insights-analytics-reference.md#summarize-operator) Aggregieren von Zeilengruppen
@@ -197,7 +195,7 @@ Außerdem können Ergebnisse nach der Tageszeit gruppiert werden:
 
 ![](./media/app-insights-analytics-tour/430.png)
 
-Beachten Sie, dass wir die `bin`-Funktion (auch `floor`) verwenden. Wenn wir nur `by timestamp` verwenden, wird jede Eingabezeile in einer eigenen kleinen Gruppe angeordnet. Für alle kontinuierlichen Skalare, z.B. Zeiten oder Zahlen, müssen wir den fortlaufenden Bereich in eine verwaltbare Anzahl von diskreten Werten unterteilen. Die Verwendung von `bin`, wobei es sich eigentlich nur um die vertraute `floor`-Funktion zum Abrunden handelt, ist hierfür die einfachste Möglichkeit.
+Beachten Sie, wie wir die `bin`-Funktion (auch `floor`) verwenden. Wenn wir nur `by timestamp` verwenden, wird jede Eingabezeile in einer eigenen kleinen Gruppe angeordnet. Für alle kontinuierlichen Skalare, z.B. Zeiten oder Zahlen, müssen wir den fortlaufenden Bereich in eine verwaltbare Anzahl von diskreten Werten unterteilen. Die Verwendung von `bin`, wobei es sich eigentlich nur um die vertraute `floor`-Funktion zum Abrunden handelt, ist hierfür die einfachste Möglichkeit.
 
 Wir können dasselbe Verfahren anwenden, um Bereiche für Zeichenfolgen zu reduzieren:
 
@@ -265,7 +263,7 @@ Sehen Sie sich nur die vom Browser gemeldeten Ausnahmen an:
 
 Der `where`-Operator akzeptiert einen booleschen Ausdruck. Dazu einige wichtige Punkte:
 
- * `and`, `or`: boolesche Operatoren
+ * `and`, `or`: Boolesche Operatoren
  * `==`, `<>`: gleich und ungleich
  * `=~`, `!=`: Zeichenfolge ohne Beachtung der Groß-/Kleinschreibung, gleich und ungleich. Es gibt viele weitere Zeichenfolgenvergleichsoperatoren.
 
@@ -281,7 +279,7 @@ Suchen Sie nach nicht erfolgreichen Anforderungen:
     | where isnotempty(resultCode) and toint(resultCode) >= 400
 ```
 
-`responseCode` ist vom Typ „String“, sodass wir das Element für einen numerischen Vergleich [umwandeln](app-insights-analytics-reference.md#casts) müssen.
+`responseCode` ist vom Typ „string“, sodass wir das Element für einen numerischen Vergleich [umwandeln](app-insights-analytics-reference.md#casts) müssen.
 
 Fassen Sie die unterschiedlichen Antworten zusammen:
 
@@ -457,7 +455,7 @@ Es ist üblich, `project` zu verwenden, um vor dem Verknüpfen nur die Spalten a
 
 ## [let:](app-insights-analytics-reference.md#let-clause) Zuweisen eines Ergebnisses zu einer Variablen
 
-Verwenden Sie [let](./app-insights-analytics-syntax.md#let-statements), um die einzelnen Teile des vorherigen Ausdrucks auszusortieren. Die Ergebnisse sind wie folgt unverändert:
+Verwenden Sie [let](./app-insights-analytics-syntax.md#let-statements), um die einzelnen Teile des vorherigen Ausdrucks zu separieren. Die Ergebnisse sind wie folgt unverändert:
 
 ```AIQL
 
@@ -474,4 +472,4 @@ Verwenden Sie [let](./app-insights-analytics-syntax.md#let-statements), um die e
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

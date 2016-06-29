@@ -2,16 +2,16 @@
 	pageTitle="MyDriving-Beispiel für Azure IoT – Buildvorgang | Microsoft Azure"
 	description="Erstellen Sie eine App, bei der es sich um eine umfassende Demonstration handelt, wie Sie mit Microsoft Azure ein IoT-System einschließlich Stream Analytics, Machine Learning und Event Hubs zusammenstellen."
 	services=""
-    documentationCenter=""
-    suite="iot-suite"
+    documentationCenter=".net"
+    suite=""
 	authors="alancameronwills"
 	manager="douge"/>
 
 <tags
-	ms.service="iot-suite"
+	ms.service="multiple"
 	ms.workload="tbd"
 	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
+	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.date="03/25/2016"
 	ms.author="awills"/>
@@ -438,7 +438,7 @@ Wir treffen folgende Annahmen:
 
 Weitere Informationen finden Sie unter:
 
--   Zusammenfassung der [Kontingente und Limits für Azure-Dienste](../azure-subscription-service-limits/#iot-hub-limits)
+-   Zusammenfassung der [Kontingente und Limits für Azure-Dienste](../azure-subscription-service-limits.md#iot-hub-limits)
 
 -   [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 
@@ -462,4 +462,4 @@ Wir freuen uns darauf, von Ihnen zu hören!
 
 Wir empfehlen Ihnen den [MyDriving-Referenzleitfaden](http://aka.ms/mydrivingdocs), bei dem es sich um eine umfassende Beschreibung des Systemdesigns und der dazugehörigen Komponenten handelt.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

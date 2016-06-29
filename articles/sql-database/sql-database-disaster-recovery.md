@@ -3,7 +3,7 @@
    description="Erfahren Sie, wie Sie eine Datenbank nach Störungen in einem regionalen Rechenzentrum oder dessen Ausfall mithilfe der aktiven Georeplikation oder der geografischen Wiederherstellung von Azure SQL-Datenbank wiederherstellen." 
    services="sql-database" 
    documentationCenter="" 
-   authors="elfisher" 
+   authors="carlrabeler" 
    manager="jhubbard" 
    editor="monicar"/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
    ms.date="05/10/2016"
-   ms.author="elfish"/>
+   ms.author="carlrab"/>
 
 # Wiederherstellen einer Azure SQL-Datenbank oder Failover auf eine sekundäre Datenbank
 
@@ -72,7 +72,7 @@ Wenn Sie ein Georeplikationsfailover mit Optionen für die geografische Wiederhe
 
 Da Ihre wiederhergestellte Datenbank auf einem anderen Server vorliegt, müssen Sie die Verbindungszeichenfolge Ihrer Anwendung so anpassen, dass sie auf den neuen Server zeigt.
 
-Weitere Informationen zum Ändern von Verbindungszeichenfolgen finden Sie unter [Verbindungen mit der Azure SQL-Datenbank: Wichtige Empfehlungen](sql-database-connect-central-recommendations.md).
+Weitere Informationen zum Ändern von Verbindungszeichenfolgen finden Sie unter der entsprechenden Entwicklungssprache für Ihre [Verbindungsbibliothek](sql-database-libraries.md).
 
 ### Konfigurieren von Firewallregeln
 
@@ -110,4 +110,4 @@ Wenn für den Zugriff auf die Datenbank Überwachung erforderlich ist, müssen S
 - [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
 - [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

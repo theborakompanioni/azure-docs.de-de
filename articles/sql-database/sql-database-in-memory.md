@@ -507,7 +507,7 @@ Wenn eine Datenbank eine der folgenden Arten von In-Memory OLTP-Objekten oder -T
  - [Von In-Memory OLTP nicht unterstützte Transact-SQL-Konstrukte.](http://msdn.microsoft.com/library/dn246937.aspx)
 
 
-## Weitere Schritte
+## Nächste Schritte
 
 
 - Lesen Sie [Verwenden von In-Memory OLTP in einer vorhandenen Azure SQL-Anwendung](sql-database-in-memory-oltp-migration.md).
@@ -537,4 +537,4 @@ Wenn eine Datenbank eine der folgenden Arten von In-Memory OLTP-Objekten oder -T
 
 - [Überwachen von In-Memory-Speicher](sql-database-in-memory-oltp-monitoring.md) für In-Memory OLTP
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

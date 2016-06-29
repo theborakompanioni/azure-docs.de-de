@@ -59,7 +59,9 @@ Tritt beim Verbinden mit SQL-Datenbank ein vorübergehender Fehler auf, muss der
 ## Datensharding mit elastischer Skalierung
 Die elastische Skalierung vereinfacht das horizontale Hoch- und Herunterskalieren.
 
+[Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank]
+* (./sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md)
 * [Datenabhängiges Routing](sql-database-elastic-scale-data-dependent-routing.md)
 * [Erste Schritte mit der Vorschauversion von Elastic Scale für Azure SQL-Datenbank](sql-database-elastic-scale-get-started.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

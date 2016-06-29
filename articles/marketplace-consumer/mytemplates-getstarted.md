@@ -99,7 +99,7 @@ Sie können alle **Vorlagen** bereitstellen, für die Sie über die Berechtigung
 
 ## Freigeben einer Vorlagenressource
 
-Sie können eine **Vorlagen**ressource für andere Benutzer freigeben. Das Verhalten bei der Freigabe ähnelt der [Rollenzuweisung für Ressourcen unter Azure](../active-directory/role-based-access-control-configure.md). Der Besitzer der **Vorlage** gewährt anderen Benutzern Berechtigungen, die dann mit einer Vorlagenressource interagieren können. Die Person oder Gruppe, für die Sie die **Vorlage** freigeben, kann die Resource Manager-Vorlage und die Katalogeigenschaften anzeigen.
+Sie können eine **Vorlagen**ressource für andere Benutzer freigeben. Das Verhalten bei der Freigabe ähnelt der [Rollenzuweisung für Ressourcen unter Azure](../active-directory/role-based-access-control-configure.md). Der Besitzer der **Vorlage** gewährt anderen Benutzern Berechtigungen zur Interaktion mit einer Vorlagenressource. Die Person oder Gruppe, für die Sie die **Vorlage** freigeben, kann die Resource Manager-Vorlage und die Katalogeigenschaften anzeigen.
 
 ### Zugriffssteuerung für die Microsoft.Gallery-Ressourcen
 
@@ -113,7 +113,7 @@ Wählen Sie für den Eintrag die Option **Freigeben**, indem Sie mit der rechten
 
 ![Vorlage freigeben](media/share-template-portal1a.png) <br />
 
- Sie können jetzt eine Rolle und einen Benutzer oder eine Gruppe auswählen, um Zugriff auf eine bestimmte **Vorlage** zu gewähren. Die verfügbaren Rollen sind „Besitzer“, „Leser“ und „Mitwirkender“. Weitere Informationen finden Sie unten im Abschnitt [Zugriffssteuerung](#access-control-for-a-tenant-resource-provider).
+ Sie können jetzt eine Rolle und einen Benutzer oder eine Gruppe auswählen, um Zugriff auf eine bestimmte **Vorlage** zu gewähren. Die verfügbaren Rollen sind „Besitzer“, „Leser“ und „Mitwirkender“. Weitere Informationen finden Sie oben im Abschnitt [Zugriffssteuerung](#access-control-for-a-tenant-resource-provider).
 
 ![Vorlage freigeben](media/share-template-portal2b.png) <br />
 
@@ -131,4 +131,4 @@ Klicken Sie auf **Auswählen** und **OK**. Die Benutzer oder Gruppen, die Sie hi
 - Grundlegende Informationen zu den Funktionen, die Sie in einer Resource Manager-Vorlage verwenden können, finden Sie unter [Vorlagenfunktionen](../resource-group-template-functions.md).
 - Anleitungen zum Entwerfen von Vorlagen finden Sie unter [Bewährte Methoden für das Entwerfen von Azure-Ressourcen-Manager-Vorlagen](../best-practices-resource-manager-design-templates.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0622_2016-->

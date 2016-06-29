@@ -151,11 +151,11 @@ Derzeit gelten für elastische Datenbanktransaktionen in SQL-DB folgende Einschr
 * Nur Datenbanken für Azure SQL DB V12 werden unterstützt.
 * Transaktionen über WCF-Dienste werden nicht unterstützt. Nehmen wir beispielsweise eine WCF-Dienstmethode, die eine Transaktion ausführt. Das Umschließen des Aufrufs innerhalb eines Transaktionsbereichs schlägt als [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception) fehl.
 
-## Weitere Informationen
+## Zusätzliche Ressourcen
 
 Sie verwenden noch keine elastischen Datenbankfunktionen für Ihre Azure-Anwendungen? Sehen Sie sich unsere [Dokumentationsübersicht](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/) an. Bei Fragen erreichen Sie uns im [SQL-Datenbankforum](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted), Featureanforderungen können Sie im [SQL-Datenbank-Feedbackforum](https://feedback.azure.com/forums/217321-sql-database/) einreichen.
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -127,7 +127,7 @@ Ereignisse werden auch in den Diagnose- und Ausgabefenstern angezeigt.
 
 Kehren Sie zum Blatt Ihrer Anwendung im Azure-Portal zurück.
 
-Im Fenster für den Livedatenstrom werden die ersten Ereignisse angezeigt.
+Im [Live Metrics Stream](app-insights-metrics-explorer.md#live-metrics-stream) werden die ersten Ereignisse angezeigt.
 
 
 ## Persistenzkanal 
@@ -256,4 +256,4 @@ Den Code für den Persistenzkanal finden Sie auf [GitHub](https://github.com/Mic
 [CoreNuGet]: https://www.nuget.org/packages/Microsoft.ApplicationInsights
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

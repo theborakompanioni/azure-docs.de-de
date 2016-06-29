@@ -843,7 +843,7 @@ Zum Ausführen des Bereitschaftstests stellen Sie über SSH eine Verbindung mit 
             * sollte einen Eintrag auflisten, z.B. „python /var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-2.0.92/diagnostic.py -daemon“
     * Achten Sie darauf, dass die Azure-Erweiterung zur verbesserten Überwachung installiert ist und gestartet wurde.
         * sudo ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/
-    * sollte den Inhalt des Ordners der Azure-Erweiterung zur verbesserten Überwachung auflisten
+            * sollte den Inhalt des Ordners der Azure-Erweiterung zur verbesserten Überwachung auflisten
         * ps -ax | grep AzureEnhanced
             * sollte einen Eintrag auflisten, z.B. „python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon“
 * Installieren Sie den SAP-Host-Agent gemäß dem SAP-Hinweis 1031096, und überprüfen Sie die Ausgabe von saposcol.
@@ -938,4 +938,4 @@ Eine vollständige und aktuelle Liste bekannter Probleme finden Sie im SAP-Hinwe
 
 Falls die Problembehandlung gemäß SAP-Hinweis [1999351] nicht hilfreich war, führen Sie erneut das Konfigurationsskript Set-AzureRmVMAEMExtension aus, wie im Kapitel [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben. Möglicherweise ist eine Wartezeit von 1 Stunde erforderlich, da Speicheranalyse- und Diagnoseindikatoren nicht sofort nach der Aktivierung erstellt werden. Falls das Problem weiterhin besteht, öffnen Sie eine SAP-Kundendienstmeldung für die Komponente BC-OP-NT-AZR für virtuelle Windows-Computer oder BC-OP-LNX-AZR für virtuelle Linux-Computer.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!----HONumber=AcomDC_0608_2016-->

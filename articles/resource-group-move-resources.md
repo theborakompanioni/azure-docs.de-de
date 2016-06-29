@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/31/2016" 
+	ms.date="06/08/2016" 
 	ms.author="tomfitz"/>
 
 # Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
@@ -65,20 +65,18 @@ Derzeit unterstützen die folgenden Dienste das Verschieben in eine neue Ressour
 - SQL-Datenbankserver – die Datenbank und der Server müssen sich in derselben Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle zugehörigen Datenbanken verschoben.
 - Virtual Machines
 - Virtual Machines (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
-
-## Dienste, die das Verschieben teilweise unterstützen
-
-Die folgenden Dienste unterstützen das Verschieben in eine neue Ressourcengruppe, jedoch nicht in ein neues Abonnement:
-
 - Virtuelle Netzwerke
 
 ## Dienste, die das Verschieben nicht unterstützen
 
 Die folgenden Dienste unterstützen derzeit nicht das Verschieben einer Ressource:
 
+- Application Gateway
 - Application Insights
 - ExpressRoute
-- Virtual Networks (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
+- Skalierungsgruppen für virtuelle Computer
+- Virtuelle Netzwerke (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
+- VPN Gateway
 
 ## App Service-Einschränkungen
 
@@ -274,4 +272,4 @@ Mit dem Anforderungstext:
 - Weitere Informationen zu Portalfeatures zum Verwalten Ihres Abonnements finden Sie unter [Verwenden des Azure-Portals zum Verwalten von Ressourcen](./azure-portal/resource-group-portal.md).
 - Informationen zum Anwenden einer logischen Organisation auf Ihre Ressourcen finden Sie unter [Verwenden von Tags zum Organisieren von Ressourcen](resource-group-using-tags.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

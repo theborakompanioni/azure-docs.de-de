@@ -57,7 +57,7 @@ Beim Erstellen eines Clusters werden Azure-Computeressourcen erstellt, die Hadoo
 
 **So erstellen Sie einen Hadoop-Cluster**
 
-1. Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com/) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie auf **NEU**, auf **Datenanalyse** und anschließend auf **HDInsight**. Das Portal öffnet ein Blatt **Neuer HDInsight-Cluster**.
 
     ![Erstellen eines neuen Clusters im Azure-Portal](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.CreateCluster.1.png "Erstellen eines neuen Clusters im Azure-Portal")
@@ -97,7 +97,7 @@ Nachdem Sie nun einen HDInsight-Cluster erstellt haben, ist der nächste Schritt
 
 **So führen Sie einen Hive-Job über das Clusterdashboard aus**
 
-1. Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com/) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie auf **ALLE DURCHSUCHEN** und dann auf **HDInsight-Cluster**, um eine Liste der Cluster, einschließlich des im vorherigen Abschnitt erstellten Clusters, anzuzeigen.
 3. Klicken Sie auf den Namen des Clusters, in dem Sie den Hive-Auftrag ausführen möchten, und klicken Sie anschließend oben auf dem Blatt auf **Dashboard**.
 4. Eine Webseite wird in einer anderen Browserregisterkarte geöffnet. Geben Sie das Hadoop-Benutzerkonto und das zugehörige Kennwort ein. Der Standardbenutzername ist **admin**, und das Kennwort haben Sie bei der Erstellung des Clusters angegeben.
@@ -222,7 +222,7 @@ In diesem Hadoop-Tutorial haben Sie erfahren, wie ein Hadoop-Cluster unter Windo
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[azure-management-portal]: https://ms.portal.azure.com/
+[azure-management-portal]: https://portal.azure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account.md
 
 [apache-hadoop]: http://go.microsoft.com/fwlink/?LinkId=510084
@@ -255,4 +255,4 @@ In diesem Hadoop-Tutorial haben Sie erfahren, wie ein Hadoop-Cluster unter Windo
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

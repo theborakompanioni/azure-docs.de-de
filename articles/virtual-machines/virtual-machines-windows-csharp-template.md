@@ -454,8 +454,8 @@ In diesem Schritt verwenden Sie die [ResourceGroup](https://msdn.microsoft.com/l
           credential,
           groupName",
           storageName,
-          deploymentName}",
-          subscriptionId}");
+          deploymentName,
+          subscriptionId);
         Console.ReadLine();
 
 ##Schritt 7: Hinzufügen von Code zum Löschen der Ressourcen
@@ -497,4 +497,4 @@ Da in Azure die genutzten Ressourcen in Rechnung gestellt werden, empfiehlt es s
 - Falls bei der Bereitstellung Probleme aufgetreten sind, können Sie beispielsweise mit dem Artikel [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md) fortfahren.
 - Informationen zum Verwalten des gerade erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -33,34 +33,36 @@ Erstellen Sie zunächst eine Ressourcengruppe.
 
 1. Rufen Sie eine Liste mit den verfügbaren Standorten ab, an denen Ressourcen erstellt werden können.
 
-	    Get-AzureLocation | sort Name | Select Name
+	    Get-AzureRmLocation | sort Location | Select Location
         
     Die Ausgabe sollte folgendermaßen aussehen:
     
-        Name
-        ----
-        Australia East
-        Australia Southeast
-        Brazil South
-        Central India
-        Central US
-        East Asia
-        East US
-        East US 2
-        Japan East
-        Japan West
-        North Central US
-        North Europe
-        South Central US
-        South India
-        Southeast Asia
-        West Europe
-        West India
-        West US
+        Location
+        --------
+        australiaeast
+        australiasoutheast
+        brazilsouth
+        canadacentral
+        canadaeast
+        centralindia
+        centralus
+        eastasia
+        eastus
+        eastus2
+        japaneast
+        japanwest
+        northcentralus
+        northeurope
+        southcentralus
+        southeastasia
+        southindia
+        westeurope
+        westindia
+        westus
 
 2. Ersetzen Sie den Wert von **$locName** durch einen Standort aus der Liste. Erstellen Sie die Variable.
 
-        $locName = "Central US"
+        $locName = "centralus"
         
 3. Ersetzen Sie den Wert von **$rgName** durch den Namen der neuen Ressourcengruppe. Erstellen Sie die Variable und die Ressourcengruppe.
 
@@ -74,13 +76,13 @@ Ein [Speicherkonto](../storage/storage-introduction.md) wird zum Speichern der v
 1. Ersetzen Sie den Wert von **$rgName** durch den Namen des Speicherkontos. Testen Sie den Namen auf Eindeutigkeit.
 
         $stName = "mystorage1"
-        Test-AzureName -Storage $stName
+        Get-AzureRmStorageAccountNameAvailability $stName
 
-    Wenn dieser Befehl **False** zurückgibt, ist der vorgeschlagene Name in Azure eindeutig. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten.
+    Wenn dieser Befehl **True** zurückgibt, ist der vorgeschlagene Name in Azure eindeutig. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten.
     
 2. Führen Sie nun den Befehl zum Erstellen des Speicherkontos aus.
     
-        $storageAcc = New-AzureRmStorageAccount -ResourceGroupName $rgName -Name $stName -Type "Standard_LRS" -Location $locName
+        $storageAcc = New-AzureRmStorageAccount -ResourceGroupName $rgName -Name $stName -SkuName "Standard_LRS" -Kind "Storage" -Location $locName
         
 ## Schritt 4: Erstellen eines virtuellen Netzwerks
 
@@ -170,4 +172,4 @@ Nachdem Sie nun alle Komponenten eingerichtet haben, können Sie den virtuellen 
 - Informationen zum Verwalten des gerade erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
 - Nutzen Sie die Vorteile der Erstellung eines virtuellen Computers per Vorlage, indem Sie sich die Informationen unter [Erstellen eines virtuellen Windows-Computers mit einer Resource Manager-Vorlage](virtual-machines-windows-ps-template.md) durchlesen.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -26,14 +26,13 @@ Dieser Artikel erläutert das Konfigurieren von Triggern mit Timer in Azure Func
 
 ## „function.json“ für Trigger mit Timer
 
-Die Datei *function.json* enthält einen Zeitplanausdruck und einen Schalter, der angibt, ob die Funktion sofort ausgelöst werden soll.
+Die Datei *function.json* enthält einen Zeitplanausdruck.
 
 ```json
 {
   "bindings": [
     {
       "schedule": "0 * * * * *",
-      "runOnStartup": true,
       "name": "myTimer",
       "type": "timerTrigger",
       "direction": "in"
@@ -54,15 +53,13 @@ Hier sind einige Beispiele für Zeitplanausdrücke aufgeführt.
 Alle 5 Minuten auslösen:
 
 ```json
-"schedule": "0 */5 * * * *",
-"runOnStartup": false,
+"schedule": "0 */5 * * * *"
 ```
 
-Sofort und anschließend alle zwei Stunden auslösen:
+So erfolgt die Auslösung alle zwei Stunden
 
 ```json
 "schedule": "0 0 */2 * * *",
-"runOnStartup": true,
 ```
 
 ## C#-Codebeispiel für Trigger mit Timer
@@ -80,4 +77,4 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
 
 [AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

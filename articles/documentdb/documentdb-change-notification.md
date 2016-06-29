@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="rest-api" 
     ms.topic="article" 
-    ms.date="03/17/2016" 
+    ms.date="06/14/2016" 
     ms.author="b-hoedid"/>
 
 # Benachrichtigungen über neue oder geänderte DocumentDB-Ressourcen mit Logik-Apps
@@ -1156,4 +1156,4 @@ Bitte verwenden Sie den Logik-App-Code, den Sie bei [Github](https://github.com/
 
 Weitere Informationen zu DocumentDB finden Sie im [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/documentdb/).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0615_2016-->

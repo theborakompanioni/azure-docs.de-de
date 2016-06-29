@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/28/2016"
+   ms.date="06/14/2016"
    ms.author="larryfr"/>
 
 # Informationen zur Verwendung von HDInsight unter Linux
@@ -257,4 +257,4 @@ Wenn der Cluster bereits eine Version einer Komponente als eigenständige JAR-Da
 * [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
 * [Verwenden von MapReduce-Aufträgen mit HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

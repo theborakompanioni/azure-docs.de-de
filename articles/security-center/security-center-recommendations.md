@@ -4,7 +4,7 @@
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
-   manager="StevenPo"
+   manager="MBaldwin"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/02/2016"
+   ms.date="06/13/2016"
    ms.author="terrylan"/>
 
 # Verwalten von Sicherheitsempfehlungen in Azure Security Center
@@ -38,7 +38,7 @@ Unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-c
 - Aktivieren der Datensammlung
 - Auswählen der Empfehlungen, die Sie als Teil Ihrer Sicherheitsrichtlinie verwenden möchten
 
-Aktuelle Richtlinienempfehlungen beziehen sich auf Systemupdates, Grundregeln, Antischadsoftware, [ACLs für Endpunkte](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md), [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md) für Subnetze und Netzwerkschnittstellen, Überwachung der SQL-Datenbank, Transparent Data Encryption für die SQL-Datenbank und Web Application Firewalls. [Einrichten von Sicherheitsrichtlinien](security-center-policies.md) enthält eine Beschreibung der einzelnen Empfehlungsoptionen.
+Aktuelle Richtlinienempfehlungen beziehen sich auf Systemupdates, Grundregeln, Antischadsoftware, [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md) für Subnetze und Netzwerkschnittstellen, Überwachung der SQL-Datenbank, Transparent Data Encryption für die SQL-Datenbank und Web Application Firewalls. [Einrichten von Sicherheitsrichtlinien](security-center-policies.md) enthält eine Beschreibung der einzelnen Empfehlungsoptionen.
 
 ### Überwachen von Empfehlungen
 Nach Einstellung einer Sicherheitsrichtlinie analysiert Security Center den Sicherheitsstatus Ihrer Ressourcen, um potenzielle Sicherheitsrisiken zu erkennen. Auf der Kachel **Empfehlungen** des Blatts **Security Center** können Sie die Gesamtzahl der von Security Center identifizierten Empfehlungen sehen.
@@ -51,31 +51,30 @@ So zeigen Sie die Details jeder Empfehlung an:
 
 Die Empfehlungen werden in einem Tabellenformat angezeigt, wobei jede Zeile eine bestimmte Empfehlung darstellt. Die Spalten dieser Tabelle sind:
 
-- **BESCHREIBUNG**: Eine Erläuterung der Empfehlung und der erforderlichen Schritte, um sie zu befolgen.
-- **RESSOURCE**: Eine Liste der Ressourcen, für die diese Empfehlung gilt.
+- **BESCHREIBUNG**: Eine Erläuterung der Empfehlung und der erforderlichen Schritte.
+- **RESSOURCE**: Eine Liste mit den Ressourcen, für die diese Empfehlung gilt.
 - **STATUS**: Beschreibt den aktuellen Status der Empfehlung:
-    - **Offen**: Die Empfehlung wurde noch nicht verarbeitet.
+    - **Offen**: Die Empfehlung wurde noch nicht bearbeitet.
     - **In Bearbeitung**: Die Empfehlung wird derzeit auf die Ressourcen angewendet, und es ist keine Aktion Ihrerseits erforderlich.
-    - **Gelöst**: Die Empfehlung wurde bereits abgeschlossen (in diesem Fall wird die Zeile abgeblendet).
+    - **Gelöst**: Die Empfehlung wurde bereits abgeschlossen. (In diesem Fall ist die Zeile abgeblendet.)
 - **SCHWEREGRAD**: Beschreibt den Schweregrad der jeweiligen Empfehlung:
-    - **Hoch**: Ein Sicherheitsrisiko betrifft eine bedeutsame Ressource (z. B. eine Anwendung, VM oder Netzwerksicherheitsgruppe) und erfordert Aufmerksamkeit.
+    - **Hoch**: Ein Sicherheitsrisiko betrifft eine wichtige Ressource (etwa eine Anwendung, einen virtuellen Computer oder eine Netzwerksicherheitsgruppe) und erfordert eine Aktion.
     - **Mittel**: Es besteht ein Sicherheitsrisiko, und es sind nicht kritische bzw. weitere Schritte erforderlich, um es zu beseitigen oder einen Prozess abzuschließen.
-    - **Niedrig**: Es besteht ein Sicherheitsrisiko, das behandelt werden sollte, aber es ist keine unmittelbare Aufmerksamkeit erforderlich. (Standardmäßig werden Empfehlungen mit dem Status „Niedrig“ nicht angezeigt, aber Sie können bei Bedarf nach diesen Empfehlungen filtern.)
+    - **Niedrig**: Es besteht ein Sicherheitsrisiko, das behandelt werden sollte, aber es ist keine unmittelbare Aktion erforderlich. (Standardmäßig werden Empfehlungen mit dem Status „Niedrig“ nicht angezeigt, aber Sie können bei Bedarf nach diesen Empfehlungen filtern.)
 
 Der folgenden Tabelle können Sie entnehmen, welche Empfehlungen verfügbar sind und welche Aktionen jeweils ausgeführt werden, wenn Sie sie anwenden:
 
-> [AZURE.NOTE] Erfahren Sie mehr über das [klassische und das Resource Manager-Bereitstellungsmodell](../azure-classic-rm.md) für Azure-Ressourcen.
+> [AZURE.NOTE] Es empfiehlt sich, sich mit dem [klassischen Bereitstellungsmodell und dem Resource Manager-Bereitstellungsmodell](../azure-classic-rm.md) für Azure-Ressourcen vertraut zu machen.
 
 |Empfehlungen|Beschreibung|
 |-----|-----|
-|Sammlung von Daten für Abonnements/virtuelle Computer aktivieren|Empfiehlt Ihnen, in der Sicherheitsrichtlinie die Datensammlung für alle Abonnements oder für ausgewählte virtuelle Maschinen zu aktivieren.|
+|[Sammlung von Daten für Abonnements aktivieren](security-center-enable-data-collection.md)|Empfiehlt Ihnen, in der Sicherheitsrichtlinie die Datensammlung für alle Abonnements und alle virtuellen Computer in Ihren Abonnements zu aktivieren.|
 |Grundregelkonflikte lösen|Empfiehlt Ihnen, OS-Konfigurationen an den empfohlenen Grundregeln zu orientieren, z. B. nicht zuzulassen, dass Kennwörter gespeichert werden.|
-|Systemupdates anwenden|Empfiehlt Ihnen, fehlende Systemupdates und kritische Updates für virtuelle Maschinen (nur Windows-VMs) bereitzustellen.|
-|ACLs für Endpunkte konfigurieren|Empfiehlt Ihnen, Zugriffssteuerungslisten zu konfigurieren, um den eingehenden Zugriff auf virtuelle Maschinen (nur klassische VMs) einzuschränken.|
+|Systemupdates anwenden|Empfiehlt Ihnen, fehlende Systemupdates und kritische Updates für virtuelle Computer bereitzustellen.|
 |[Web Application Firewall hinzufügen](security-center-add-web-application-firewall.md)|Empfiehlt Ihnen, eine Web Application Firewall (WAF) für Webendpunkte bereitzustellen. Sie können mehrere Webanwendungen in Security Center schützen, indem Sie diese Anwendungen Ihren vorhandenen WAF-Bereitstellungen hinzufügen. WAF-Geräte (erstellt mit dem Ressourcen-Manager-Bereitstellungsmodell) müssen in einem separaten virtuellen Netzwerk bereitgestellt werden. WAF-Geräte (erstellt mit dem klassischen Bereitstellungsmodell) sind auf die Verwendung einer Netzwerksicherheitsgruppe beschränkt. Diese Unterstützung wird in Zukunft auf eine vollständig angepasste Bereitstellung eines WAF-Geräts (klassisch) erweitert.|
 |Web Application Firewall-Setup abschließen|Um die Konfiguration einer WAF abzuschließen, muss Datenverkehr an das WAF-Gerät umgeleitet werden. Nach dieser Empfehlung werden die erforderlichen Setupänderungen vorgenommen.|
 |[Antischadsoftware aktivieren](security-center-enable-antimalware.md)|Empfiehlt Ihnen, Antischadsoftware für virtuelle Maschinen bereitzustellen (nur Windows-VMs).|
-|Netzwerksicherheitsgruppen für Subnetze/Netzwerkschnittstellen aktivieren|Empfiehlt Ihnen, Netzwerksicherheitsgruppen (NSGs) für Subnetze und Netzwerkschnittstellen zu aktivieren (nur Ressourcen-Manager-VMs).|
+|Netzwerksicherheitsgruppen für Subnetze/Netzwerkschnittstellen aktivieren|Empfiehlt Ihnen, Netzwerksicherheitsgruppen (NSGs) für Subnetze und Netzwerkschnittstellen zu aktivieren.|
 |Zugriff über öffentliche externe Endpunkte einschränken|Empfiehlt Ihnen, Regeln für eingehenden Datenverkehr für NSGs zu konfigurieren.|
 |Überwachung von SQL-Server aktivieren|Empfiehlt Ihnen, die Überwachung für Azure SQL-Server zu aktivieren (nur Azure SQL-Dienst, keine Ausführung von SQL auf Ihren virtuellen Maschinen).|
 |Überwachung der SQL-Datenbank aktivieren|Empfiehlt Ihnen, die Überwachung für Azure SQL-Datenbanken zu aktivieren (nur Azure SQL-Dienst, keine Ausführung von SQL auf Ihren virtuellen Maschinen).|
@@ -110,12 +109,12 @@ Nach Auswertung aller Empfehlungen entscheiden Sie, welche zuerst angewendet wer
 ## Nächste Schritte
 In diesem Dokument wurden Ihnen die Sicherheitsempfehlungen in Security Center vorgestellt. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
-- [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md): Hier erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+- [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md): Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
 - [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 - [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md): Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
-- [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) (Überwachen von Partnerlösungen mit Azure Security Center): Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
+- [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md): Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
 - [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/): Suchen Sie nach Blogbeiträgen über Azure-Sicherheit und -Compliance.
+- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
 
 <!--Image references-->
 [2]: ./media/security-center-recommendations/recommendations-tile.png
@@ -124,4 +123,4 @@ In diesem Dokument wurden Ihnen die Sicherheitsempfehlungen in Security Center v
 [5]: ./media/security-center-recommendations/select-enable-antimalware.png
 [6]: ./media/security-center-recommendations/install-antimalware.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

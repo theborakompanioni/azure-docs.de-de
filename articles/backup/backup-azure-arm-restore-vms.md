@@ -34,7 +34,7 @@ Sie schützen Ihre Daten über den Backup-Dienst, indem Sie in festgelegten Abst
 
 ## Wiederherstellen eines Wiederherstellungspunkts
 
-1. Melden Sie sich beim [Azure-Portal](http://ms.portal.azure.com/) an.
+1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com/) an.
 
 2. Klicken Sie im Azure-Menü auf **Durchsuchen**, und geben Sie in der Liste mit den Diensten **Recovery Services** ein. Die Liste der Dienste wird während der Eingabe angepasst. Wählen Sie **Recovery Services-Tresore**, wenn der Eintrag angezeigt wird.
 
@@ -167,4 +167,4 @@ Jetzt können Sie Ihre virtuellen Computer wiederherstellen. Informationen zu h�
 - [Problembehandlung](backup-azure-vms-troubleshoot.md#restore)
 - [Verwalten virtueller Computer](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

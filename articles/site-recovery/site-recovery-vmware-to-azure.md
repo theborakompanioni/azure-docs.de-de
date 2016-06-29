@@ -533,7 +533,8 @@ Die Installationsprogramme stehen auf dem Prozessserver unter **C:\\Programme (x
 Quellbetriebssystem | Installationsdatei für den Mobilitätsdienst
 --- | ---
 Windows Server (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_Windows\_* release.exe
-CentOS 6.4, 6.5, 6.6 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz SUSE Linux Enterprise Server 11 SP3 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_SLES11-SP3-64\_*release.tar.gz
+CentOS 6.4, 6.5, 6.6 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz 
+SUSE Linux Enterprise Server 11 SP3 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_SLES11-SP3-64\_*release.tar.gz
 Oracle Enterprise Linux 6.4, 6.5 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_OL6-64\_*release.tar.gz
 
 
@@ -724,7 +725,9 @@ Gehen Sie wie folgt vor, wenn Sie nach dem Failover auf eine Azure-VM mit Linux 
 - Es sollte ein öffentlicher Endpunkt erstellt werden, um eingehende Verbindungen für den SSH-Port (standardmäßig TCP-Port 22) zuzulassen.
 - Wenn auf die VM über eine VPN-Verbindung (Express Route- oder Site-to-Site-VPN-Verbindung) zugegriffen wird, kann der Client verwendet werden, um per SSH eine direkte Verbindung mit der VM herzustellen.
 
+**Auf dem virtuellen Azure-Computer mit Windows/Linux nach dem Failover**:
 
+Wenn dem virtuellen Computer oder dem Subnetz, dem der Computer angehört, eine Netzwerksicherheitsgruppe zugeordnet ist, vergewissern Sie sich, dass die Netzwerksicherheitsgruppe über eine ausgehende Regel verfügt, die HTTP/HTTPS zulässt. Vergewissern Sie sich außerdem, dass das DNS des Netzwerks, das als Ziel für das Failover des virtuellen Computers fungiert, korrekt konfiguriert ist. Andernfalls kann ein Failover-Timeout mit dem Fehler „PreFailoverWorkflow task WaitForScriptExecutionTask timed out“ (Timeout bei der PreFailoverWorkflow-Aufgabe „WaitForScriptExecutionTask“) auftreten. Ausführlichere Informationen finden Sie im [Leitfaden zur Überwachung und Problembehandlung](site-recovery-monitoring-and-troubleshooting.md#recovery) im Abschnitt „Wiederherstellen“.
 
 ## Ausführen eines Testfailovers
 
@@ -753,13 +756,13 @@ Gehen Sie wie folgt vor, wenn Sie nach dem Failover auf eine Azure-VM mit Linux 
 
 
 6. Nach Abschluss des Failovers sollte der Azure-Replikatcomputer im Azure-Portal unter **Virtuelle Computer** angezeigt werden. Stellen Sie sicher, dass die VM die richtige Größe hat, mit dem richtigen Netzwerk verbunden ist und ausgeführt wird.
-7. Wenn Sie die [Vorbereitung für Verbindungen nach dem Failover](#prepare-to-connect-to-azure-vms-after-failover) durchgeführt haben, können Sie die Verbindung mit dem virtuellen Azure-Computer herstellen.
+7. Wenn Sie die [Vorbereitung für Verbindungen nach dem Failover](#prepare-to-connect-to-azure-vms-after-failover) durchgeführt haben, können Sie eine Verbindung mit dem virtuellen Azure-Computer herstellen.
 
 ## Überwachen der Bereitstellung
 
 Hier wird beschrieben, wie Sie die Konfigurationseinstellungen, den Status und die Integrität für die Site Recovery-Bereitstellung überwachen können:
 
-1. Klicken Sie auf den Tresornamen, um auf das Dashboard **Essentials** (Zusammenfassung) zuzugreifen. In diesem Dashboard werden Site Recovery-Aufträge, Replikationsstatus, Wiederherstellungspläne, Serverzustand und Ereignisse angezeigt. Sie können die Zusammenfassung so anpassen, dass die nützlichsten Kacheln und Layouts angezeigt werden, z.B. auch der Status anderer Site Recovery- und Backup-Tresore.
+1. Klicken Sie auf den Tresornamen, um auf das Dashboard **Zusammenfassung** zuzugreifen. In diesem Dashboard werden Site Recovery-Aufträge, Replikationsstatus, Wiederherstellungspläne, Serverzustand und Ereignisse angezeigt. Sie können die Zusammenfassung so anpassen, dass die nützlichsten Kacheln und Layouts angezeigt werden, z.B. auch der Status anderer Site Recovery- und Backup-Tresore.
 
 ![Zusammenfassung](./media/site-recovery-vmware-to-azure/essentials.png)
 
@@ -785,7 +788,7 @@ Wenn Sie Ihre Bereitstellung über 200 Quellcomputer oder eine gesamte tägliche
 
 3. Laden Sie die Datei für das einheitliche Setup von Site Recovery herunter, führen Sie sie zum Installieren des Prozessservers aus, und registrieren Sie sie im Tresor.
 4. Wählen Sie unter **Vorbereitung** die Option **Weitere Prozessserver zum horizontalen Hochskalieren der Bereitstellung hinzufügen** aus.
-5. Schließen Sie den Assistenten genau wie beim [Einrichten des Konfigurationsservers](#step-2-set-up-the-source-environment) ab.
+5. Schließen Sie den Assistenten genau wie beim [Einrichten](#step-2-set-up-the-source-environment) des Konfigurationsservers ab.
 
 	![Prozessserver hinzufügen](./media/site-recovery-vmware-to-azure/add-ps1.png)
 
@@ -812,12 +815,12 @@ Der Prozessserver kann virtuelle Computer auf einem vCenter-Server automatisch e
 **Rolle** | **Details** | **Berechtigungen**
 --- | --- | ---
 Rolle „Azure\_Site\_Recovery“ | Ermittlung von virtuellen VMware-Computern |Weisen Sie die folgenden Berechtigungen für den vCenter-Server zu:<br/><br/>Datastore -> Allocate space, Browse datastore, Low level file operations, Remove file, Update virtual machine files<br/><br/>Network -> Network assign<br/><br/>Resource -> Assign virtual machine to resource pool, Migrate powered off virtual machine, Migrate powered on virtual machine<br/><br/>Tasks -> Create task, update task<br/><br/>Virtual machine -> Configuration<br/><br/>Virtual machine -> Interact -> Answer question, Device connection, Configure CD media, Configure floppy media, Power off, Power on, VMware tools install<br/><br/>Virtual machine -> Inventory -> Create, Register, Unregister<br/><br/>Virtual machine -> Provisioning -> Allow virtual machine download, Allow virtual machine files upload<br/><br/>Virtual machine -> Snapshots -> Remove snapshots
-vCenter-Benutzerrolle | Ermittlung von virtuellen VMware-Computern/Failover ohne Herunterfahren der Quell-VM | Weisen Sie die folgenden Berechtigungen für den vCenter-Server zu:<br/><br/>Data Center object –> Propagate to Child Object, role= Read-only <br/><br/>Der Benutzer wird auf Rechenzentrumsebene zugewiesen und hat daher Zugriff auf alle Objekte im Rechenzentrum. Wenn Sie den Zugriff einschränken möchten, weisen Sie die Rolle **No access** mit dem Objekt **Propagate to child** den untergeordneten Objekten zu (vSphere-Hosts, Datenspeicher, VMs und Netzwerke).
-vCenter-Benutzerrolle | Failover und Failback | Weisen Sie die folgenden Berechtigungen für den vCenter-Server zu:<br/><br/>Datacenter object – Propagate to child object, role= Azure\_Site\_Recovery<br/><br/>Der Benutzer wird auf Rechenzentrumsebene zugewiesen und hat daher Zugriff auf alle Objekte im Rechenzentrum. Wenn Sie den Zugriff einschränken möchten, weisen Sie die Rolle **No access** mit dem Objekt **Propagate to child** dem untergeordneten Objekt zu (vSphere-Hosts, Datenspeicher, VMs und Netzwerke). 
+vCenter-Benutzerrolle | Ermittlung von virtuellen VMware-Computern/Failover ohne Herunterfahren der Quell-VM | Weisen Sie die folgenden Berechtigungen für den vCenter-Server zu:<br/><br/>Data Center object –> Propagate to Child Object, role= Read-only <br/><br/>Der Benutzer wird auf Rechenzentrumsebene zugewiesen und hat daher Zugriff auf alle Objekte im Rechenzentrum. Wenn Sie den Zugriff einschränken möchten, weisen Sie den untergeordneten Objekten (vSphere-Hosts, Datenspeicher, virtuelle Computer und Netzwerke) die Rolle **No access** mit **Propagate to child object** zu.
+vCenter-Benutzerrolle | Failover und Failback | Weisen Sie die folgenden Berechtigungen für den vCenter-Server zu:<br/><br/>Datacenter object – Propagate to child object, role= Azure\_Site\_Recovery<br/><br/>Der Benutzer wird auf Rechenzentrumsebene zugewiesen und hat daher Zugriff auf alle Objekte im Rechenzentrum. Wenn Sie den Zugriff einschränken möchten, weisen Sie den untergeordneten Objekten (vSphere-Hosts, Datenspeicher, virtuelle Computer und Netzwerke) die Rolle **No access** mit **Propagate to child object** zu. 
 ## Nächste Schritte
 
 - [Informieren Sie sich](site-recovery-failover.md) über verschiedene Arten von Failovern.
-- [Erfahren Sie mehr zum Failback](site-recovery-failback-azure-to-vmware.md) von unter Azure ausgeführten Computern auf die lokale Umgebung.
+- [Informieren Sie sich über das Failback](site-recovery-failback-azure-to-vmware.md) von unter Azure ausgeführten Computern zur lokalen Umgebung.
 
 ## Hinweise und Informationen zu Drittanbietersoftware
 
@@ -831,4 +834,4 @@ The information in Section B is regarding Third Party Code components that are b
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428). Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

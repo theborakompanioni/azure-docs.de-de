@@ -44,8 +44,7 @@ Wenn Sie sich für ein kostenloses Azure-Testabonnement registrieren möchten, m
 
 1. Öffnen Sie die [Seite mit der kostenlosen Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/), und wählen Sie dann **Jetzt testen**.
 2. Melden Sie sich mit Ihrem Microsoft-Konto oder Schul-/Geschäftskonto an.
-3. Geben Sie im Abschnitt **Persönliche Informationen** Ihre persönlichen Informationen ein.
-![Screenshot der persönlichen Informationen](./media/billing-buy-sign-up-azure-subscription/AboutYou.png)
+3. Geben Sie im Abschnitt **Persönliche Informationen** Ihre persönlichen Informationen ein. ![Screenshot der persönlichen Informationen](./media/billing-buy-sign-up-azure-subscription/AboutYou.png)
 
  **Hinweis:** Die E-Mail-Adresse und das Land, die bzw. das Sie bei der Registrierung für ein Azure-Abonnement angeben, sind dem Abonnement immer zugeordnet und können später nicht mehr geändert werden.</br>
 4. Im Abschnitt **Überprüfung per Telefon** müssen Sie eine Telefonnummer angeben, um einen Überprüfungscode zu erhalten, den Sie beim Durchführen des Überprüfungsvorgangs eingeben können.
@@ -62,11 +61,11 @@ Wenn Sie sich für ein kostenloses Azure-Testabonnement registrieren möchten, m
  ![Kartenverifizierung](./media/billing-buy-sign-up-azure-subscription/VardVerify.png)</br>
 6. Aktivieren Sie im Abschnitt **Vereinbarung** das Kontrollkästchen, wenn Sie der Abonnementvereinbarung, den Angebotsdetails und der Datenschutzerklärung zustimmen. Klicken Sie anschließend auf **Registrieren**. Der Beispiel-Screenshot zeigt die englische Version der Vereinbarung. Das Formular für die Vereinbarung kann sich von Land zu Land unterscheiden.
 
- ![Anmeldung](./media/billing-buy-sign-up-azure-subscription/Signup.png)</br></br> Es kann einige Minuten dauern, bis Ihr Abonnement eingerichtet ist. Wenn die Abonnementeinrichtung nicht innerhalb von 15 Minuten abgeschlossen ist, wenden Sie sich an den [Azure-Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade). </br> Wenn Sie eine Fehlermeldung erhalten, führen Sie die in der Meldung angegebenen Schritte aus, um das Problem zu beheben. Eine typische Fehlermeldung lautet:
+ ![Anmeldung](./media/billing-buy-sign-up-azure-subscription/Signup.png)</br></br> Es kann einige Minuten dauern, bis Ihr Abonnement eingerichtet ist. Wenn die Abonnementeinrichtung nicht innerhalb von 15 Minuten abgeschlossen ist, wenden Sie sich an den [Azure-Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade). </br> Wenn Sie eine Fehlermeldung erhalten, führen Sie die in der Meldung angegebenen Schritte aus, um das Problem zu beheben. Eine typische Fehlermeldung lautet:
 
  **Wir konnten den Vorgang leider nicht abschließen. Versuchen Sie es später noch einmal, oder laden Sie die Webseite neu.** </br>
 
- Versuchen Sie in diesem Fall, den Registrierungsvorgang in einem anderen Browser abzuschließen. Falls das Problem weiterhin auftritt, wenden Sie sich an den [Azure-Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).</br>
+ Versuchen Sie in diesem Fall, den Registrierungsvorgang in einem anderen Browser abzuschließen. Falls das Problem weiterhin auftritt, wenden Sie sich an den [Azure-Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).</br>
 7. Wenn das Abonnement bereitsteht, wählen Sie **Mit der Verwaltung meines Diensts beginnen** aus, um zu beginnen. </br> ![Dienst starten](./media/billing-buy-sign-up-azure-subscription/startservice.png)
 
 <a name="UpgradeFreeToPYG"></a>
@@ -89,4 +88,4 @@ Wenn Sie Azure in Open-Gutschriften über einen Händler erworben und einen Akti
 
 3. Geben Sie den Product Key ein, und aktivieren Sie dann das Kontrollkästchen für die Vereinbarung.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -13,7 +13,7 @@
 	ms.workload="data-services" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="get-started-article" 
+	ms.topic="article" 
 	ms.date="03/30/2016" 
 	ms.author="mimig"/>
 
@@ -60,7 +60,7 @@ Es gibt kein theoretisches Limit für den Gesamtdurchsatz, der von einer Sammlun
 Ausführliche Informationen dazu finden Sie auf der Seite [DocumentDB – Preise](https://azure.microsoft.com/pricing/details/documentdb/). Die Nutzungsgebühren für DocumentDB werden von der verwendeten Anzahl von Sammlungen, der Anzahl von Stunden, die die Sammlungen online waren, und dem genutzten Speicher und bereitgestellten Durchsatz für jede Sammlung bestimmt.
 
 ### Ist ein kostenloses Konto verfügbar?
-Wenn Azure für Sie neu ist, können Sie sich für ein [kostenloses Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren. Sie erhalten ein Guthaben von 200 US-Dollar für 30 Tage, in denen Sie alle Azure-Dienste ausprobieren können. Wenn Sie ein Visual Studio-Abonnement besitzen, haben Sie Anspruch auf ein [kostenloses Azure-Guthaben von 150 US-Dollar pro Monat](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), das Sie für beliebige Azure-Dienste nutzen können.
+Wenn Azure für Sie neu ist, können Sie sich für ein [kostenloses Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren. Sie erhalten ein Guthaben von 200 US-Dollar für 30 Tage, in denen Sie alle Azure-Dienste ausprobieren können. Wenn Sie ein Visual Studio-Abonnement besitzen, haben Sie Anspruch auf ein [kostenloses Azure-Guthaben von 150 US-Dollar pro Monat](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), das Sie für beliebige Azure-Dienste nutzen können.
 
 ### Wie kann ich zusätzliche Hilfe zu DocumentDB erhalten?
 Wenn Sie Hilfe benötigen, wenden Sie sich auf [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-documentdb) oder in den [MSDN-Foren für Entwickler zu Azure DocumentDB](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB) an uns, oder terminieren Sie einen [1:1-Chat mit dem Entwicklungsteam von DocumentDB](http://www.askdocdb.com/). Um bei den neuesten Features von DocumentDB auf dem Laufenden zu bleiben, folgen Sie uns auf [Twitter](https://twitter.com/DocumentDB).
@@ -120,4 +120,4 @@ Ja. Da es sich bei DocumentDB um einen RESTful-Dienst handelt, sind Ressourcenli
 [query]: documentdb-sql-query.md
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -40,4 +40,8 @@ Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie In
 
 [Proof of Concept connecting to SQL using Ruby](http://msdn.microsoft.com/library/mt715797.aspx) (Machbarkeitsstudie für das Herstellen einer Verbindung mit SQL mithilfe von Ruby)
 
-<!---HONumber=AcomDC_0518_2016-->
+## Weitere Ressourcen
+
+Informationen zu gängigen Datenarchitekturmustern von mehrinstanzenfähigen SaaS-Datenbankanwendungen (Software as a Service) finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+
+<!---HONumber=AcomDC_0615_2016-->

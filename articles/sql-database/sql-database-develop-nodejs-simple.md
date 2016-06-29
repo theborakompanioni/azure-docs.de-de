@@ -38,4 +38,8 @@ Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie In
 
 [Proof of Concept connecting to SQL using Node.js](https://msdn.microsoft.com/library/mt715784.aspx) (Machbarkeitsstudie für das Herstellen einer Verbindung mit SQL mithilfe von Node.js)
 
-<!---HONumber=AcomDC_0518_2016-->
+## Zusätzliche Ressourcen
+
+Informationen zu gängigen Datenarchitekturmustern von mehrinstanzenfähigen SaaS-Datenbankanwendungen (Software as a Service) finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+
+<!---HONumber=AcomDC_0615_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Analytics, das leistungsfähige Suchtool von Application Insights" 
+	pageTitle="Analytics, das leistungsfähige Suchtool von Application Insights | Microsoft Azure" 
 	description="Übersicht über Analytics, das leistungsfähige Diagnosesuchtool von Application Insights." 
 	services="application-insights" 
     documentationCenter=""
@@ -21,10 +21,9 @@
 
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
-[AZURE.INCLUDE [app-insights-analytics-top-index](../../includes/app-insights-analytics-top-index.md)]
 
  
-Eine übliche Abfrage ist eine *Quelle*-Tabelle, gefolgt von einer Reihe von *Operatoren*, die durch `|` getrennt sind.
+Eine typische Abfrage ist eine *Quelltabelle*, gefolgt von einer Reihe von *Operatoren*, die durch `|` getrennt sind.
 
 Finden wir also heraus, zu welcher Tageszeit die Einwohner von Hyderabad unsere Web-App testen. Und während wir damit beschäftigt sind, sehen wir, welche Ergebniscodes an ihre HTTP-Anfragen zurückgegeben werden.
 
@@ -53,7 +52,7 @@ Es gibt auch leistungsstarke statistische Vorgänge:
 
 Die Sprache verfügt über viele attraktive Features:
 
-* [Filtern](app-insights-analytics-reference.md#where-operator) Ihrer rohen App-Telemetrie nach beliebigen Feldern, einschließlich Ihrer benutzerdefinierten Eigenschaften und Metriken.
+* [Filtern](app-insights-analytics-reference.md#where-operator) der Rohdaten Ihrer App-Telemetrie nach beliebigen Feldern, einschließlich Ihrer benutzerdefinierten Eigenschaften und Metriken.
 * [Verbinden](app-insights-analytics-reference.md#join-operator) mehrerer Tabellen – Korrelation von Anforderungen mit Seitenansichten, Aufrufen von Abhängigkeiten, Ausnahmen und Protokollablaufverfolgungen.
 * Leistungsstarke statistische [Aggregationen](app-insights-analytics-reference.md#aggregations).
 * Genauso leistungsstark wie SQL, aber viel einfacher für komplexe Abfragen: anstelle der Schachtelung von Anweisungen übergeben Sie die Daten aus einem elementaren Vorgang an den nächsten.
@@ -69,7 +68,7 @@ Die Sprache verfügt über viele attraktive Features:
 ## Verbinden mit Ihren Application Insights-Daten
 
 
-Öffnen Sie die Analyse über das [Blatt „Übersicht“](app-insights-dashboards.md) Ihrer App in Application Insights:
+Öffnen Sie Analytics über das [Blatt „Übersicht“](app-insights-dashboards.md) Ihrer App in Application Insights:
 
 ![Öffnen Sie unter „portal.azure.com“ die Application Insights-Ressource, und wählen Sie „Analytics“.](./media/app-insights-analytics/001.png)
 
@@ -82,4 +81,4 @@ Derzeit sind Abfrageergebnisse auf eine Woche alte Daten beschränkt.
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

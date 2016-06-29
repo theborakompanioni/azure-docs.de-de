@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Referenz in Analytics in Application Insights" 
+	pageTitle="Referenz in Analytics in Application Insights | Microsoft Azure" 
 	description="Referenz für Anweisungen in Analytics, dem leistungsfähigen Suchtool von Application Insights." 
 	services="application-insights" 
     documentationCenter=""
@@ -20,33 +20,22 @@
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
 
-[AZURE.INCLUDE [app-insights-analytics-top-index](../../includes/app-insights-analytics-top-index.md)]
-
 ## Index
 
-|Abfragen und Operatoren|Aggregationen|Skalare|Zahlen|Datum und Uhrzeit|String|Arrays, Objekte und Dynamik
-|---|---|---|---|---|---|---
-|[count](#count-operator)|[beliebig](#any)|[Boolesche Literale](#boolean-literals)|[Arithmetische Operatoren](#arithmetic-operators)|[Datum und Uhrzeit – Ausdrücke](#date-and-time-expressions)|[GUIDs](#guids)|[Array- und Objektliterale](#array-and-object-literals)
-|[extend](#extend-operator)|[argmax](#argmax)|[Boolesche Operatoren](#boolean-operators)|[Numerische Literale](#numeric-literals)|[Datum und Uhrzeit – Literale](#date-and-time-literals)|[Verborgene Zeichenfolgenliterale](#obfuscated-string-literals)|[Dynamische Objektfunktionen](#dynamic-object-functions)
-|[join](#join-operator)|[argmin](#argmin)|[Typumwandlungen](#casts)|[abs](#abs)|[ago](#ago)|[Zeichenfolgenliterale](#string-literals)|[Dynamische Objekte in Let-Klauseln](#dynamic-objects-in-let-clauses)
-|[let-Klausel](#let-clause)|[avg](#avg)|[Skalare Vergleiche](#scalar-comparisons)|[bin](#bin)|[datepart](#datepart)|[Zeichenfolgenvergleiche](#string-comparisons)|[JSON Path-Ausdrücke](#json-path-expressions)
-|[limit](#limit-operator)|[buildschema](#buildschema)|[gettype](#gettype)|[exp](#exp)|[dayofmonth](#dayofmonth)|[countof](#countof)|[Namen](#names)
-|[mvexpand](#mvexpand-operator)|[count](#count)|[hash](#hash)|[floor](#floor)|[dayofweek](#dayofweek)|[extract](#extract)|[arraylength](#arraylength)
-|[parse](#parse-operator)|[countif](#countif)|[iff](#iff)|[log](#log)|[dayofyear](#dayofyear)|[isempty](#isempty)|[extractjson](#extractjson)
-|[project](#project-operator)|[dcount](#dcount)|[isnotnull](#isnotnull)|[rand](#rand)|[endofday](#endofday)|[isnotempty](#isnotempty)|[parsejson](#parsejson)
-|[project-away](#project-away-operator)|[dcountif](#dcountif)|[isnull](#isnull)|[sqrt](#sqrt)|[endofmonth](#endofmonth)|[notempty](#notempty)|[range](#range)
-|[range](#range-operator)|[makelist](#makelist)|[notnull](#notnull)|[todouble](#todouble)|[endofweek](#endofweek)|[replace](#replace)|[todynamic](#todynamic)
-|[reduce](#reduce-operator)|[makeset](#makeset)|[toscalar](#toscalar)|[toint](#toint)|[endofyear](#endofyear)|[split](#split)|[treepath](#treepath)
-|[render-Anweisung](#render-directive)|[max](#max)||[tolong](#tolong)|[getmonth](#getmonth)|[strcat](#strcat)|
-|[restrict-Klausel](#restrict-clause)|[min](#min)|||[getyear](#getyear)|[strlen](#strlen)|
-|[sort](#sort-operator)|[percentile](#percentile)|||[now](#now)|[substring](#substring)|
-|[summarize](#summarize-operator)|[percentiles](#percentiles)|||[startofday](#startofday)|[tolower](#tolower)|
-|[take](#take-operator)|[stdev](#stdev)|||[startofmonth](#startofmonth)|[toupper](#toupper)|
-|[top](#top-operator)|[sum](#sum)|||[startofweek](#startofweek)||
-|[top-nested](#top-nested-operator)|[variance](#variance)|||[startofyear](#startofyear)||
-|[union](#union-operator)||||[todatetime](#todatetime)||
-|[Hierbei gilt:](#where-operator)||||[totimespan](#totimespan)||
-|||||[weekofyear](#weekofyear)||
+**Abfragen und Operatoren** [count](#count-operator) | [extend](#extend-operator) | [join](#join-operator) | [let clause](#let-clause) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict clause](#restrict-clause) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator)
+
+**Aggregationen** [any](#any) | [argmax](#argmax) | [argmin](#argmin) | [avg](#avg) | [buildschema](#buildschema) | [count](#count) | [countif](#countif) | [dcount](#dcount) | [dcountif](#dcountif) | [makelist](#makelist) | [makeset](#makeset) | [max](#max) | [min](#min) | [percentile](#percentile) | [percentiles](#percentiles) | [percentilesw](#percentilesw) | [percentilew](#percentilew) | [stdev](#stdev) | [sum](#sum) | [variance](#variance)
+
+**Skalare** [Boolesche Literale](#boolean-literals) | [Boolesche Operatoren](#boolean-operators) | [Typumwandlungen](#casts) | [Skalare Vergleiche](#scalar-comparisons) | [gettype](#gettype) | [hash](#hash) | [iff](#iff) | [isnotnull](#isnotnull) | [isnull](#isnull) | [notnull](#notnull) | [toscalar](#toscalar)
+
+**Zahlen** [Arithmetische Operatoren](#arithmetic-operators) | [Numerische Literale](#numeric-literals) | [abs](#abs) | [bin](#bin) | [exp](#exp) | [floor](#floor) | [log](#log) | [rand](#rand) | [sqrt](#sqrt) | [todouble](#todouble) | [toint](#toint) | [tolong](#tolong)
+
+**Datum und Uhrzeit** [Datums- und Uhrzeitausdrücke](#date-and-time-expressions) | [Datums- und Uhrzeitliterale](#date-and-time-literals) | [ago](#ago) | [datepart](#datepart) | [dayofmonth](#dayofmonth) | [dayofweek](#dayofweek) | [dayofyear](#dayofyear) | [endofday](#endofday) | [endofmonth](#endofmonth) | [endofweek](#endofweek) | [endofyear](#endofyear) | [getmonth](#getmonth) | [getyear](#getyear) | [now](#now) | [startofday](#startofday) | [startofmonth](#startofmonth) | [startofweek](#startofweek) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan) | [weekofyear](#weekofyear)
+
+**Zeichenfolge** [GUIDs](#guids) | [Verborgene Zeichenfolgenliterale](#obfuscated-string-literals) | [Zeichenfolgenliterale](#string-literals) | [Zeichenfolgenvergleiche](#string-comparisons) | [countof](#countof) | [extract](#extract) | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [toupper](#toupper)
+
+**Arrays, Objekte und Dynamik** [Array- und Objektliterale](#array-and-object-literals) | [Dynamische Objektfunktionen](#dynamic-object-functions) | [Dynamische Objekte in let-Klauseln](#dynamic-objects-in-let-clauses) | [JSON Path-Ausdrücke](#json-path-expressions) | [Namen](#names) | [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [todynamic](#todynamic) | [treepath](#treepath)
+
 
 
 
@@ -92,7 +81,7 @@ Der `count`-Operator gibt die Anzahl von Datensätzen (Zeilen) in der Eingabe-Da
 
 **Argumente**
 
-* *T:* Die tabellarischen Daten, deren Datensätze gezählt werden
+* *T:* Die tabellarischen Daten, deren Datensätze gezählt werden.
 
 **Rückgabe**
 
@@ -120,7 +109,7 @@ Fügen Sie eine oder mehrere berechnete Spalten an eine Tabelle an.
 **Argumente**
 
 * *T:* Die Eingabetabelle.
-* *ColumnName:* der Name einer hinzuzufügenden Spalte. Bei [Namen](#names) muss Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder das Zeichen „\_“ enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
+* *ColumnName:* der Name einer hinzuzufügenden Spalte. Bei [Namen](#names) muss Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder einen Unterstrich („\_“) enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
 * *Expression:* Eine Berechnung über die vorhandenen Spalten.
 
 **Rückgabe**
@@ -333,7 +322,7 @@ Die erweiterte Spalte ist immer dynamisch typisiert. Verwenden Sie eine Umwandlu
 Zwei Erweiterungsmodi für Eigenschaftenbehälter werden unterstützt:
 
 * `bagexpansion=bag`: Eigenschaftenbehälter werden zu Eigenschaftenbehältern mit einem einzelnen Eintrag erweitert. Dies ist die Standarderweiterung.
-* `bagexpansion=array`: Eigenschaftenbehälter werden zu Arraystrukturen mit zwei Elementen `[`*Schlüssel*`,`*Wert*`]` erweitert und lassen den einheitlichen Zugriff auf Schlüssel und Werte zu (sowie z. B. auch das Ausführen einer distinct-count-Aggregation über Eigenschaftsnamen). 
+* `bagexpansion=array`: Eigenschaftenbehälter werden zu Arraystrukturen mit zwei Elementen `[`*Schlüssel*`,`*Wert*`]` erweitert und lassen den einheitlichen Zugriff auf Schlüssel und Werte zu (sowie z.B. auch das Ausführen einer distinct-count-Aggregation über Eigenschaftsnamen). 
 
 **Beispiele**
 
@@ -351,7 +340,7 @@ Teilt einen Ausnahmedatensatz für jedes Element im Feld „Details“ in Zeilen
     with * "got" counter:long " " present "for" * "was" year:long *
 
 
-    T | parse kind="relaxed"
+    T | parse kind=relaxed
           "I got no socks for my birthday when I was 63 years old" 
     with * "got" counter:long " " present "for" * "was" year:long * 
 
@@ -367,7 +356,7 @@ Extrahiert Werte aus einer Zeichenfolge. Kann einfache oder reguläre Ausdrücke
 
 **Argumente**
 
-* `T`: Die Eingabetabelle
+* `T`: Die Eingabetabelle.
 * `kind`: 
  * `simple` (Standard): Die `Match`-Zeichenfolgen sind unverschlüsselte Zeichenfolgen.
  * `relaxed`: Wenn der Text nicht als der Typ einer Spalte analysiert wird, wird die Spalte auf NULL festgelegt und die Analyse fortgesetzt. 
@@ -484,9 +473,9 @@ Wählen Sie die Spalten aus, die einbezogen, umbenannt oder gelöscht werden sol
 
 **Argumente**
 
-* *T:* Die Eingabetabelle
-* *ColumnName:* Der Name einer Spalte, der in der Ausgabe angezeigt wird. Wenn kein *Ausdruck* vorhanden ist, muss die Eingabe eine Spalte mit diesem Namen enthalten. Bei [Namen](#names) muss Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder das Zeichen „\_“ enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
-* *Expression:* Optionaler skalarer Ausdruck, der auf die Eingabespalten verweist 
+* *T:* Die Eingabetabelle.
+* *ColumnName:* Der Name einer Spalte, der in der Ausgabe angezeigt wird. Wenn kein *Ausdruck* vorhanden ist, muss die Eingabe eine Spalte mit diesem Namen enthalten. Bei [Namen](#names) muss Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder einen Unterstrich („\_“) enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
+* *Expression:* Optionaler skalarer Ausdruck, der auf die Eingabespalten verweist. 
 
     Das Zurückgeben einer neuen berechneten Spalte mit dem gleichen Namen wie eine vorhandene Spalte der Eingabe ist zulässig.
 
@@ -676,7 +665,7 @@ Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0, 10,0], [10,0,
 
 **Argumente**
 
-* *Column:* Optionaler Name für eine Ergebnisspalte. Nimmt standardmäßig den vom Ausdruck abgeleiteten Namen an. Bei [Namen](#names) muss Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder das Zeichen „\_“ enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
+* *Column:* Optionaler Name für eine Ergebnisspalte. Nimmt standardmäßig den vom Ausdruck abgeleiteten Namen an. Bei [Namen](#names) muss Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder einen Unterstrich („\_“) enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
 * *Aggregation:* Ein Aufruf einer Aggregationsfunktion wie z.B. `count()` oder `avg()` mit Spaltennamen als Argumente. Siehe [Aggregationen](#aggregations).
 * *GroupExpression:* Ein Ausdruck für die Spalten, der einen Satz von unterschiedlichen Werten bereitstellt. Normalerweise handelt es sich entweder um einen Spaltennamen, der bereits einen eingeschränkten Satz von Werten bereitstellt, oder um `bin()` mit einer numerischen Spalte oder Zeitspalte als Argument. 
 
@@ -690,7 +679,7 @@ Wenn Sie kein *GroupExpression*-Element angeben, wird die gesamte Tabelle in ein
 
 Die Eingabezeilen sind in Gruppen mit denselben Werten der `by`-Ausdrücke angeordnet. Anschließend werden die angegebenen Aggregationsfunktionen über jede Gruppe berechnet, dabei wird eine Zeile für jede Gruppe erzeugt. Das Ergebnis enthält die `by`-Spalten und auch mindestens eine Spalte für jedes berechnete Aggregat. (Einige Aggregationsfunktionen geben mehrere Spalten zurück.)
 
-Das Ergebnis umfasst genau so viele Zeilen wie unterschiedliche Kombinationen von `by`-Werten vorhanden sind. Wenn Sie Zusammenfassungen über Bereiche von numerischen Werten erstellen möchten, verwenden Sie `bin()`, um Bereiche auf diskrete Werte zu reduzieren.
+Das Ergebnis umfasst genauso viele Zeilen, wie unterschiedliche Kombinationen von `by`-Werten vorhanden sind. Wenn Sie Zusammenfassungen über Bereiche von numerischen Werten erstellen möchten, verwenden Sie `bin()`, um Bereiche auf diskrete Werte zu reduzieren.
 
 **Hinweis**
 
@@ -829,7 +818,7 @@ Zeilen in *T*, für die *Predicate* gleich `true` ist.
 
 So erzielen Sie die optimale Leistung:
 
-* **Verwenden Sie einfache Vergleiche** zwischen Spaltennamen und Konstanten. („Konstant“ bedeutet konstant innerhalb der Tabelle, d.h. `now()` und `ago()` sind ebenso verwendbar wie skalare Werte, die mithilfe einer [`let`-Klausel](#let-clause) zugewiesen werden.)
+* **Verwenden Sie einfache Vergleiche** zwischen Spaltennamen und Konstanten. („konstant“ bedeutet konstant innerhalb der Tabelle, d.h. `now()` und `ago()` sind ebenso verwendbar wie skalare Werte, die mithilfe einer [`let`-Klausel](#let-clause) zugewiesen werden.)
 
     Beispielsweise wird `where Timestamp >= ago(1d)` gegenüber `where floor(Timestamp, 1d) == ago(1d)` bevorzugt.
 
@@ -1067,7 +1056,7 @@ Mit *Accuracy* wird, sofern angegeben, der Ausgleich zwischen Geschwindigkeit un
 
 Gibt ein `dynamic`-Array (JSON) aller Werte von *Expr* in der Gruppe zurück.
 
-* *MaxListSize* ist eine optionale Ganzzahlbeschränkung für die maximale Anzahl zurückgegebener Elemente (Standardwert: *128*).
+* *MaxListSize* ist eine optionale Ganzzahlbegrenzung für die maximale Anzahl zurückgegebener Elemente (Standardwert: *128*).
 
 ### makeset
 
@@ -1075,7 +1064,7 @@ Gibt ein `dynamic`-Array (JSON) aller Werte von *Expr* in der Gruppe zurück.
 
 Gibt ein `dynamic`-Array (JSON) des Satzes eindeutiger Werte zurück, die *Expr* in der Gruppe annimmt. (Tipp: Verwenden Sie zum Zählen der eindeutigen Werte [`dcount`](#dcount).)
   
-*  *MaxSetSize* ist eine optionale Ganzzahlbeschränkung der maximalen Anzahl zurückgegebener Elemente (Standardwert: *128*).
+*  *MaxSetSize* ist eine optionale Ganzzahlbegrenzung für die maximale Anzahl zurückgegebener Elemente (Standardwert: *128*).
 
 **Beispiel**
 
@@ -1101,16 +1090,24 @@ Berechnet das Minimum von *Expr*.
 **Tipp:** Damit erhalten Sie die Mindest- oder Maximalwerte, z.B. den höchsten oder niedrigsten Preis. Wenn Sie jedoch andere Spalten in der Zeile abrufen möchten, z.B. den Namen des Lieferanten mit dem niedrigsten Preis, verwenden Sie [argmin oder argmax](#argmin-argmax).
 
 
-<a name="percentile"></a> <a name="percentiles"></a>
-### percentile, percentiles
+<a name="percentile"></a> <a name="percentiles"></a> <a name="percentilew"></a> <a name="percentilesw"></a>
+### percentile, percentiles, percentilew, percentilesw
 
     percentile(Expression, Percentile)
 
-Gibt eine Schätzung für *Expression* des angegebenen Quantils in der Gruppe zurück. Die Genauigkeit hängt von der Bevölkerungsdichte in der Region des Quantils ab.
+Gibt eine Schätzung für *Expression* des angegebenen Perzentils in der Gruppe zurück. Die Genauigkeit hängt von der Bevölkerungsdichte in der Region des Quantils ab.
     
-    percentiles(Expression, Percentile1 [ , Percentile2 ] )
+    percentiles(Expression, Percentile1 [ , Percentile2 ...] )
 
-Ähnlich wie `percentile()`, berechnet jedoch eine Reihe von Quantilwerten (was schneller ist, als jedes Quantil einzeln zu berechnen).
+Ähnlich wie `percentile()`, berechnet jedoch eine Reihe von Perzentilwerten (was schneller ist, als jedes Perzentil einzeln zu berechnen).
+
+    percentilew(Expression, WeightExpression, Percentile)
+
+Gewichtetes Perzentil. Verwenden Sie dieses für vorab aggregierte Daten. `WeightExpression` ist eine Ganzzahl, die angibt, wie viele ursprüngliche Zeilen von jeder aggregierten Zeile dargestellt werden.
+
+    percentilesw(Expression, WeightExpression, Percentile1, [, Percentile2 ...])
+
+Wie `percentilew()`, berechnet aber eine Anzahl von Perzentilwerten.
 
 **Beispiele**
 
@@ -1135,7 +1132,6 @@ Berechnen Sie gleichzeitig mehrere Quantile für andere Anforderungsnamen:
 
 Die Ergebnisse zeigen, dass für die Anforderung „/Events/Index“ auf 5 % der Anforderungen in weniger als 2,44 Sekunden reagiert wird, auf die Hälfte in 3,52 Sekunden und auf 5 % langsamer als 6,85 Sekunden.
 
-
 Berechnen Sie mehrere Statistiken:
 
     requests 
@@ -1145,9 +1141,45 @@ Berechnen Sie mehrere Statistiken:
         percentiles(Duration, 5, 50, 95)
       by name
 
-##### Schätzungsfehler in Quantilen
+#### Gewichtete Perzentile
 
-Das Quantilaggregat bietet einen ungefähren Wert mithilfe von [T-Digest](https://github.com/tdunning/t-digest/blob/master/docs/t-digest-paper/histo.pdf).
+Verwenden Sie die Funktionen für gewichtete Perzentile in Fällen, in denen die Daten vorab aggregiert wurden.
+
+Angenommen, Ihre App führt mehrere Tausend Vorgänge pro Sekunde aus, und Sie möchten die Latenzzeit dieser Vorgänge wissen. Eine einfache Lösung wäre es, eine Application Insights-Anforderung oder ein benutzerdefiniertes Ereignis für jeden Vorgang zu generieren. Das würde zu viel Datenverkehr führen, obwohl dieser durch adaptives Sampling reduziert würde. Wenn Sie jedoch eine bessere Lösung implementieren möchten, schreiben Sie Code in Ihre App, mit dem die Daten vor dem Senden an Application Insights aggregiert werden. Die aggregierte Zusammenfassung wird in regelmäßigen Abständen gesendet, sodass die Datenrate auf wenige Punkte pro Minute reduziert wird.
+
+Ihr Code verwendet einen Datenstrom von Latenzmessungen in Millisekunden. Zum Beispiel:
+    
+     { 15, 12, 2, 21, 2, 5, 35, 7, 12, 22, 1, 15, 18, 12, 26, 7 }
+
+Es werden die Messungen in den folgenden Containern berücksichtigt: `{ 10, 20, 30, 40, 50, 100 }`
+
+In regelmäßigen Abständen wird eine Serie von TrackEvent-Aufrufen ausgeführt – einer pro Bucket, mit benutzerdefinierten Messungen in jedem Aufruf:
+
+    foreach (var latency in bins.Keys)
+    { telemetry.TrackEvent("latency", null, 
+         new Dictionary<string, double>
+         ({"latency", latency}, {"opCount", bins[latency]}}); }
+
+In Analytics wird eine Gruppe von Ereignissen wie die folgende angezeigt:
+
+`opCount` | `latency`| Bedeutung
+---|---|---
+8 | 10 | = 8 Vorgänge im 10-ms-Container
+6 | 20 | = 6 Vorgänge im 20-ms-Container
+3 | 30 | = 3 Vorgänge im 30-ms-Container
+1 | 40 | = 1 Vorgang im 40-ms-Container
+
+Um ein exaktes Bild der ursprünglichen Verteilung der Ereignislatenzen zu erhalten, verwenden wir `percentilesw`:
+
+    customEvents | summarize percentilesw(latency, opCount, 20, 50, 80)
+
+Die Ergebnisse sind die gleichen, als hätten wir einfache `percentiles`-Elemente im ursprünglichen Messungssatz verwendet.
+
+> [AZURE.NOTE] Gewichtete Perzentile gelten nicht für [Stichprobendaten](app-insights-sampling.md), bei denen jede erfasste Zeile eine zufällige Stichprobe der ursprünglichen Zeilen darstellt, keinen Container. Die einfachen Perzentilfunktionen eignen sich für Stichprobendaten.
+
+#### Schätzungsfehler in Quantilen
+
+Das Perzentilaggregat bietet einen ungefähren Wert mithilfe von [T-Digest](https://github.com/tdunning/t-digest/blob/master/docs/t-digest-paper/histo.pdf).
 
 Einige wichtige Punkte:
 
@@ -1175,7 +1207,7 @@ Gibt die Summe von *Expr* für die Gruppe zurück.
 
 ## Skalare
 
-[casts](#casts) | [comparisons](#scalar-comparisons) <br/> [gettype](#gettype) | [hash](#hash) | [iff](#iff) | [isnull](#isnull) | [isnotnull](#isnotnull) | [notnull](#notnull) | [toscalar](#toscalar)
+[Typumwandlungen](#casts) | [Vergleiche](#scalar-comparisons) <br/> [gettype](#gettype) | [hash](#hash) | [iff](#iff) | [isnull](#isnull) | [isnotnull](#isnotnull) | [notnull](#notnull) | [toscalar](#toscalar)
 
 Die unterstützten Typen sind:
 
@@ -1274,7 +1306,7 @@ hash(datetime("2015-01-01"))    // 1380966698541616202
 ```
 ### iff
 
-Die `iff()`-Funktion wertet das erste Argument (Prädikat) aus und gibt entweder den Wert der zweiten oder dritten Argumente zurück, abhängig davon, ob das Prädikat `true` oder `false` ist. Die zweiten und dritten Argumente müssen vom gleichen Typ sein.
+Die `iff()`-Funktion wertet das erste Argument (Prädikat) aus und gibt entweder den Wert des zweiten oder den Wert des dritten Arguments zurück, abhängig davon, ob das Prädikat `true` oder `false` ist. Die zweiten und dritten Argumente müssen vom gleichen Typ sein.
 
 **Syntax**
 
@@ -1394,11 +1426,11 @@ Das ausgewertete Argument. Wenn das Argument eine Tabelle ist, wird die erste Sp
 || |
 |---|-------------|
 | + | Hinzufügen |
-| - | Subtrahieren |
-| * | Multiplizieren |
-| / | Dividieren |
-| % | Modulo |
-||
+| - | Subtrahieren | 
+| * | Multiplizieren | 
+| / | Dividieren | 
+| % | Modulo | 
+|| 
 | `<` | Kleiner 
 | `<=` | Kleiner gleich 
 | `>` | Größer 
@@ -1480,7 +1512,7 @@ Ein Alias für [`bin()`](#bin).
     log10(v)  // Logarithm base 10 of v
 
 
-`v` muss eine reelle Zahl > 0 sein. Andernfalls wird Null zurückgegeben.
+`v` sollte eine reelle Zahl > 0 sein. Andernfalls wird Null zurückgegeben.
 
 ### rand
 
@@ -1806,7 +1838,7 @@ Die Regeln sind mit JavaScript identisch.
 
 Zeichenfolgen können entweder in einfachen oder doppelten Anführungszeichen eingeschlossen sein.
 
-Es wird ein umgekehrter Schrägstrich (``) verwendet, um Zeichen wie z.B. `\t` (Tabstopp), `\n` (Zeilenvorschub) und Instanzen der einschließenden Anführungszeichen mit einem Escapezeichen zu versehen.
+Es wird ein umgekehrter Schrägstrich (``) verwendet, um Zeichen wie z.B. `\t` (Tabstopp), `\n` (Zeilenvorschub) und Instanzen des einschließenden Anführungszeichens mit einem Escapezeichen zu versehen.
 
 * `'this is a "string" literal in single \' quotes'`
 * `"this is a 'string' literal in double " quotes"`
@@ -1814,7 +1846,7 @@ Es wird ein umgekehrter Schrägstrich (``) verwendet, um Zeichen wie z.B. `\t` (
 
 ### Verborgene Zeichenfolgenliterale
 
-Verborgene Zeichenfolgenliterale sind Zeichenfolgen, die Analytics bei der Ausgabe der Zeichenfolge ausblendet (etwa bei der Ablaufverfolgung). Beim Ausblenden werden alle verborgenen Zeichen durch ein Start-Zeichen (`*`) ersetzt.
+Verborgene Zeichenfolgenliterale sind Zeichenfolgen, die Analytics bei der Ausgabe der Zeichenfolge ausblendet (etwa bei der Ablaufverfolgung). Bei diesem Vorgang werden alle verborgenen Zeichen durch ein Start-Zeichen (`*`) ersetzt.
 
 Stellen Sie zum Erstellen eines verborgenen Zeichenfolgenliterals `h` oder „H“ voran. Beispiel:
 
@@ -2099,7 +2131,7 @@ Konvertiert eine Zeichenfolge in Großbuchstaben.
 
 ## Arrays, Objekte und Dynamik
 
-[literals](#dynamic-literals) | [casting](#casting-dynamic-objects) | [operators](#operators) | [let clauses](#dynamic-objects-in-let-clauses) <br/> [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [treepath](#treepath) | [todynamic](#todynamic)
+[Literale](#dynamic-literals) | [Typumwandlung](#casting-dynamic-objects) | [Operatoren](#operators) | [let-Klauseln](#dynamic-objects-in-let-clauses) <br/> [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [treepath](#treepath) | [todynamic](#todynamic)
 
 
 Hier ist das Ergebnis einer Abfrage für eine Application Insights-Ausnahme. Der Wert unter `details` ist ein Array.
@@ -2115,7 +2147,7 @@ Hier ist das Ergebnis einer Abfrage für eine Application Insights-Ausnahme. Der
 
 * Verwenden Sie jedoch `arraylength` und andere Analytics-Funktionen (nicht „.length“!).
 
-**Umwandlung:** In einigen Fällen ist es erforderlich, ein Element umzuwandeln, das Sie aus einem Objekt extrahieren, da der Typ variieren kann. `summarize...to` benötigt beispielsweise einen bestimmten Typ:
+**Typumwandlung:** In einigen Fällen ist es erforderlich, ein Element umzuwandeln, das Sie aus einem Objekt extrahieren, da der Typ variieren kann. `summarize...to` benötigt beispielsweise einen bestimmten Typ:
 
     exceptions 
     | summarize count() 
@@ -2426,4 +2458,4 @@ Geben Sie einen Namen mit ['... '] oder [" ... "] an, um andere Zeichen einzubez
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

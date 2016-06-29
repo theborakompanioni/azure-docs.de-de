@@ -297,22 +297,23 @@ In diesem Abschnitt wird gezeigt, wie Ereignisse in Echtzeit an Azure Machine Le
   		</EventData>
 		</Event>
 
-- Beispiel für das Ereignis „Purchase“: 
-		 <Event xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-		 <ModelId>2779c063-48fb-46c1-bae3-74acddc8c1d1</ModelId>
-		 <SessionId>11112222</SessionId>
-		 <EventData>
-		 <EventData>
-			 <Name>Purchase</Name>
-			 <PurchaseItems>
-			 <PurchaseItems>
-				 <ItemId>21BF8088-B6C0-4509-870C-E1C7AC78304A</ItemId>
-				 <Count>3</Count>
-			 </PurchaseItems>
-		 </PurchaseItems>
-		 </EventData>
-		 </EventData>
-		 </Event>
+- Beispiel für das Ereignis „Purchase“:
+
+		<Event xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		<ModelId>2779c063-48fb-46c1-bae3-74acddc8c1d1</ModelId>
+		<SessionId>11112222</SessionId>
+		<EventData>
+		<EventData>
+			<Name>Purchase</Name> 
+			<PurchaseItems>
+			<PurchaseItems>
+				<ItemId>21BF8088-B6C0-4509-870C-E1C7AC78304A</ItemId>
+				<Count>3</Count>
+			</PurchaseItems>
+		</PurchaseItems>
+		</EventData>
+		</EventData>
+		</Event>
 
 - Beispiel für das Senden von 2 Ereignissen („Click“ und „AddShopCart“):
 
@@ -715,4 +716,4 @@ Dieses Dokument gibt keine Rechte an geistigem Eigentum an irgendeinem Microsoft
 © 2014 Microsoft. Alle Rechte vorbehalten.
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -54,10 +54,10 @@ In diesem Artikel wird beschrieben, wie Sie mithilfe des Assistenten „Datenebe
 - [Importieren einer BACPAC-Datei in Azure SQL-Datenbank mithilfe des Azure-Portals](sql-database-import.md)
 - [Importieren einer BACPAC-Datei in Azure SQL-Datenbank mithilfe von PowerShell](sql-database-import-powershell.md)
 
-## Weitere Informationen
+## Zusätzliche Ressourcen
 
 - [SQL-Datenbank V12](sql-database-v12-whats-new.md)
 - [Teilweise oder vollständig unterstützte Transact-SQL-Funktionen](sql-database-transact-sql-information.md)
 - [Migrate non-SQL Server databases using SQL Server Migration Assistant (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

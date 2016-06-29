@@ -4,7 +4,7 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
@@ -22,7 +22,7 @@ Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über 
 -   Ein gültiges Azure-Abonnement
 -   Einen ITRP-Mandanten
   
-Nach Abschluss dieses Tutorials können sich die Azure AD-Benutzer, die Sie ITRP zugewiesen haben, mittels einmaligen Anmeldens auf der ITRP-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
+Nach Abschluss dieses Tutorials können sich die Azure AD-Benutzer, die Sie ITRP zugewiesen haben, mittels einmaligen Anmeldens auf der ITRP-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
   
 Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
@@ -163,4 +163,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0615_2016-->

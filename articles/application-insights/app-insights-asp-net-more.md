@@ -40,7 +40,7 @@ Im Folgenden finden Sie eine Zusammenfassung der Funktionen, die Sie möglicherw
 |[**Diagnosesuche nach Instanzdaten**](app-insights-visual-studio.md)<br/>Suchen und filtern Sie Ereignisse wie Anforderungen, Ausnahmen, Abhängigkeitsaufrufe, Protokollablaufverfolgungen und Seitenaufrufe. Wechseln Sie in Visual Studio von Stapelüberwachungen zum Code.|![Visual Studio](./media/app-insights-asp-net/61.png)
 |[**Metrik-Explorer für aggregierte Daten**](app-insights-metrics-explorer.md)<br/>Durchsuchen, filtern und segmentieren Sie aggregierte Daten wie z.B. Raten von Anforderungen, Fehlern und Ausnahmen, Antwortzeiten, Seitenladezeiten.|![Visual Studio](./media/app-insights-asp-net-more/060.png)
 |[**Dashboards**](app-insights-dashboards.md#dashboards)<br/>Kombinieren Sie Daten aus mehreren Ressourcen, und geben Sie sie für andere frei. Dies ist sehr gut für Anwendungen mit mehreren Komponenten und für die kontinuierliche Anzeige im Teamraum geeignet. |![Beispiel für Dashboards](./media/app-insights-asp-net/62.png)
-|[**Livedatenstrom**](app-insights-metrics-explorer.md#live-stream)<br/>Wenn Sie einen neuen Build bereitstellen, sehen Sie sich diese beinahe in Echtzeit verfügbaren Leistungsindikatoren an, um sicherzustellen, dass alles wie erwartet funktioniert.|![Beispiel für Analysen](./media/app-insights-asp-net-more/050.png)
+|[**Live Metrics Stream**](app-insights-metrics-explorer.md#live-metrics-stream)<br/>Wenn Sie einen neuen Build bereitstellen, sehen Sie sich diese beinahe in Echtzeit verfügbaren Leistungsindikatoren an, um sicherzustellen, dass alles wie erwartet funktioniert.|![Beispiel für Analysen](./media/app-insights-asp-net-more/050.png)
 |[**Analytics**](app-insights-analytics.md)<br/>Beantworten Sie schwierige Fragen zur Leistung und Nutzung Ihrer App mithilfe dieser leistungsstarken Abfragesprache.|![Beispiel für Analysen](./media/app-insights-asp-net-more/010.png)
 |[**Automatische und manuelle Warnungen**](app-insights-alerts.md)<br/>Automatische Warnungen sind an die normalen Telemetriemuster Ihrer App angepasst und werden ausgelöst, wenn etwas nicht den üblichen Mustern entspricht. Sie können auch Warnungen auf bestimmten Ebenen von benutzerdefinierten oder standardmäßigen Metriken festlegen.|![Beispiel für Warnungen](./media/app-insights-asp-net-more/020.png)
 
@@ -52,4 +52,4 @@ Im Folgenden finden Sie eine Zusammenfassung der Funktionen, die Sie möglicherw
 |**API für den Datenzugriff**<br/>In Kürze verfügbar.|
 |[**Stichprobenerstellung**](app-insights-sampling.md)<br/>Reduziert die Datenrate und hilft Ihnen dabei, innerhalb der Grenzwerte Ihres Tarifs zu bleiben.|![Kachel für Stichproben](./media/app-insights-asp-net-more/030.png)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="05/16/2016"
+   ms.date="06/06/2016"
    ms.author="mbaldwin"/>
 
 # Authentifizierungsszenarien für Azure AD
@@ -203,10 +203,9 @@ Die Sitzung des Benutzers läuft ab, wenn die Gültigkeitsdauer des von Azure A
 
 ### Single-Page-Anwendung (SPA)
 
+Dieser Abschnitt beschreibt die Authentifizierung für eine Single-Page-Anwendung, bei der Azure AD und die implizite Gewährung der OAuth 2.0-Autorisierung verwendet wird, um das Web-API-Back-End zu sichern. Single-Page-Anwendungen setzen sich in der Regel aus einer im Browser ausgeführten JavaScript-Darstellungsschicht (Front-End) und einem Web-API-Back-End zusammen, das auf einem Server ausgeführt wird und die Geschäftslogik der Anwendung implementiert. Weitere Informationen zur impliziten Gewährung der Autorisierung, damit Sie entscheiden können, ob diese sich für Ihr Anwendungsszenario eignet, finden Sie unter [Grundlegendes zum Ablauf der impliziten OAuth2-Gewährung in Azure Active Directory (AD)](active-directory-dev-understanding-oauth2-implicit-grant.md).
 
-Dieser Abschnitt beschreibt die Authentifizierung für eine Single-Page-Anwendung, deren Web-API-Back-End von Azure AD gesichert wird. Single-Page-Anwendungen setzen sich in der Regel aus einer im Browser ausgeführten JavaScript-Darstellungsschicht (Front-End) und einem Web-API-Back-End zusammen, das auf einem Server ausgeführt wird und die Geschäftslogik der Anwendung implementiert. In diesem Szenario verwendet das JavaScript-Front-End bei der Benutzeranmeldung die [Active Directory-Authentifizierungsbibliothek für JavaScript (ADAL. JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js/tree/dev) und das implizite OAuth 2.0-Gewährungsprotokoll, um ein ID-Token (id\_token) von Azure AD zu erhalten. Das Token wird zwischengespeichert und der Anforderung als Trägertoken angefügt, wenn der Client Aufrufe an das durch die OWIN-Middleware gesicherte Web-API-Back-End sendet.
-
-
+In diesem Szenario verwendet das JavaScript-Front-End bei der Benutzeranmeldung die [Active Directory Authentication Library für JavaScript (ADAL.JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js/tree/dev) und die implizite Gewährung der Autorisierung, um ein ID-Token (id\_token) von Azure AD zu erhalten. Das Token wird zwischengespeichert und der Anforderung als Bearertoken angefügt, wenn der Client Aufrufe an das durch die OWIN-Middleware gesicherte Web-API-Back-End sendet.
 #### Diagramm
 
 ![Single-Page-Anwendung – Diagramm](./media/active-directory-authentication-scenarios/single_page_app.png)
@@ -326,7 +325,7 @@ Dieser Abschnitt beschreibt eine Webanwendung, die Ressourcen von einer Web-API 
 
 *Anwendungsidentität:* In diesem Szenario werden OAuth 2.0-Clientanmeldeinformationen verwendet, um die Anwendung zu authentifizieren und auf die Web-API zuzugreifen. Da die Web-API bei Verwendung einer Anwendungsidentität keine Informationen zum Benutzer erhält, kann sie nur erkennen, dass sie von der Webanwendung aufgerufen wird. Wenn die Anwendung Informationen zum Benutzer erhält, werden diese über das Anwendungsprotokoll gesendet und nicht von Azure AD signiert. Die Web-API vertraut darauf, dass die Webanwendung den Benutzer authentifiziert hat. Aus diesem Grund wird dieses Modell als vertrauenswürdiges Subsystem bezeichnet.
 
-*Delegierte Benutzeridentität:* Dieses Szenario lässt sich auf zwei Arten realisieren: mit OpenID Connect oder mit OAuth 2.0-Autorisierungscodegewährung und einem vertraulichen Client. Die Webanwendung ruft ein Zugriffstoken für den Benutzer ab, um gegenüber der Web-API zu belegen, dass der Benutzer erfolgreich bei der Webanwendung authentifiziert wurde und die Webanwendung für den Aufruf der Web-API eine delegierte Benutzeridentität erhalten hat. Dieses Zugriffstoken wird in der Anforderung an die Web-API gesendet, die den Benutzer autorisiert und die gewünschte Ressource zurückgibt.
+*Delegierte Benutzeridentität:* Dieses Szenario lässt sich auf zwei Arten realisieren – mit OpenID Connect oder mit der Gewährung über einen OAuth 2.0-Autorisierungscode und einem vertraulichen Client. Die Webanwendung ruft ein Zugriffstoken für den Benutzer ab, um gegenüber der Web-API zu belegen, dass der Benutzer erfolgreich bei der Webanwendung authentifiziert wurde und die Webanwendung für den Aufruf der Web-API eine delegierte Benutzeridentität erhalten hat. Dieses Zugriffstoken wird in der Anforderung an die Web-API gesendet, die den Benutzer autorisiert und die gewünschte Ressource zurückgibt.
 
 #### Diagramm
 
@@ -469,4 +468,4 @@ Wenn die erste Anwendung mithilfe ihres Autorisierungscodes ein JWT-Zugriffstoke
 
 [OAuth 2.0 in Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

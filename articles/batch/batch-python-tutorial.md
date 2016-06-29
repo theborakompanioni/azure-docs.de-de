@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-compute"
-	ms.date="06/08/2016"
+	ms.date="06/17/2016"
 	ms.author="marsma"/>
 
 # Erste Schritte mit dem Azure Batch-Python-Client
@@ -58,11 +58,7 @@ Geben Sie den folgenden **pip**-Befehl aus, um die Batch- und Storage-Pakete zu 
 
 Sie können die [azure-batch][pypi_batch]- und [azure-storage][pypi_storage]-Python-Pakete auch manuell installieren.
 
-> [AZURE.TIP] Unter Umständen müssen Sie Ihren Befehlen das Präfix `sudo` voranstellen (z.B. `sudo pip install -r requirements.txt`), wenn Sie ein nicht privilegiertes Konto verwenden (empfohlen). Weitere Informationen zur Installation von Python-Paketen finden Sie unter [Installing Packages][pypi_install] \(Installieren von Paketen) auf „readthedocs.io“.
-
-### Azure Batch-Explorer (optional)
-
-Der [Azure Batch-Explorer][github_batchexplorer] ist ein kostenloses Hilfsprogramm, das auf GitHub im Repository [azure-batch-samples][github_samples] zur Verfügung steht. Zum Durchführen dieses Tutorials ist es zwar nicht erforderlich, es kann aber beim Entwickeln und Debuggen Ihrer Batch-Lösungen hilfreich sein.
+> [AZURE.TIP] Unter Umständen müssen Sie Ihren Befehlen das Präfix `sudo` voranstellen (z.B. `sudo pip install -r requirements.txt`), wenn Sie ein nicht privilegiertes Konto verwenden (empfohlen). Weitere Informationen zur Installation von Python-Paketen finden Sie unter [Installing Packages][pypi_install] (Installieren von Paketen) auf „readthedocs.io“.
 
 ## Python-Tutorial für Batch – Codebeispiel
 
@@ -123,7 +119,7 @@ Batch enthält integrierte Unterstützung für die Interaktion mit Azure Storage
 - **input:** Die zu verarbeitenden Datendateien werden von den Aufgaben aus dem Container *input* heruntergeladen.
 - **output:** Nach Abschluss der Verarbeitung der Eingabedateien werden die Ergebnisse in den Container *output* hochgeladen.
 
-Für die Interaktion mit einem Storage-Konto und die Containererstellung verwenden wir die das Paket [azure-storage][pypi_storage], um ein [BlockBlobService][py_blockblobservice]-Objekt zu erstellen – den „Blob-Client“. Anschließend erstellen wir mithilfe des Blob-Clients im Storage-Konto drei Container.
+Für die Interaktion mit einem Storage-Konto und die Containererstellung verwenden wir das Paket [azure-storage][pypi_storage], um ein [BlockBlobService][py_blockblobservice]-Objekt zu erstellen – den „Blob-Client“. Anschließend erstellen wir mithilfe des Blob-Clients im Storage-Konto drei Container.
 
 ```python
  # Create the blob client, for use in obtaining references to
@@ -321,7 +317,7 @@ Wenn Sie einen Pool erstellen, definieren Sie mit [PoolAddParameter][py_pooladdp
 
 - **ID** des Pools (*id* – erforderlich)<p/>Wie die meisten Entitäten in Batch muss der neue Pool über eine eindeutige ID in Ihrem Batch-Konto verfügen. Ihr Code verweist mit seiner ID auf diesen Pool. So wird der Pool im Azure-[Portal][azure_portal] identifiziert.
 
-- **Anzahl von Computeknoten** (*target\_dedicated* – erforderlich)<p/>Dies gibt an, wie viele virtuelle Computer im Pool bereitgestellt werden sollen. Beachten Sie, dass alle Batch-Konten über ein Standard**kontingent** verfügen, das die Anzahl von **Kernen** (und somit auch von Computeknoten) in einem Batch-Konto begrenzt. Die Standardkontingente und eine Anleitung zum [Erhöhen des Kontingents](batch-quota-limit.md#increase-a-quota) (wie etwa der Anzahl von Kernen in Ihrem Batch-Konto) finden Sie unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md). Wenn Sie sich z.B. die Frage stellen, weshalb Ihr Pool nur eine bestimmte Anzahl von Knoten erreicht, liegt dies möglicherweise am Kernkontingent.
+- **Anzahl von Computeknoten** (*target\_dedicated* – erforderlich)<p/>Gibt an, wie viele virtuelle Computer im Pool bereitgestellt werden sollen. Beachten Sie, dass alle Batch-Konten über ein Standard**kontingent** verfügen, das die Anzahl von **Kernen** (und somit auch von Computeknoten) in einem Batch-Konto begrenzt. Die Standardkontingente und eine Anleitung zum [Erhöhen des Kontingents](batch-quota-limit.md#increase-a-quota) (wie etwa der Anzahl von Kernen in Ihrem Batch-Konto) finden Sie unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md). Wenn Sie sich z.B. die Frage stellen, weshalb Ihr Pool nur eine bestimmte Anzahl von Knoten erreicht, liegt dies möglicherweise am Kernkontingent.
 
 - **Betriebssystem** für Knoten (*virtual\_machine\_configuration* **oder** *cloud\_service\_configuration* – erforderlich)<p/>In *python\_tutorial\_client.py* haben wir einen Pool von Linux-Knoten mithilfe eines [VirtualMachineConfiguration][py_vm_config]-Elements erstellt, das mit der Hilfsfunktion `get_vm_config_for_distro` abgerufen wurde. Diese Hilfsfunktion verwendet [list\_node\_agent\_skus][py_list_skus], um ein Image aus einer Liste kompatibler Images aus dem [Marketplace für virtuelle Computer][vm_marketplace] abzurufen und auszuwählen. Sie haben jedoch auch die Möglichkeit, stattdessen [CloudServiceConfiguration][py_cs_config] festzulegen und einen Pool mit Windows-Knoten aus Cloud Services zu erstellen. Unter [Bereitstellen von Linux-Computeknoten in Azure Batch-Pools](batch-linux-nodes.md) finden Sie weitere Informationen zu den beiden verschiedenen Konfigurationen.
 
@@ -329,7 +325,7 @@ Wenn Sie einen Pool erstellen, definieren Sie mit [PoolAddParameter][py_pooladdp
 
 - **Startaufgabe** (*start\_task* – nicht erforderlich)<p/>Zusammen mit den o.g. Eigenschaften des physischen Knotens können Sie auch eine [StartTask][py_starttask]-Aufgabe für den Pool festlegen (nicht erforderlich). Die StartTask wird auf jedem Knoten ausgeführt, wenn dieser dem Pool hinzugefügt wird, sowie bei jedem Neustart eines Knotens. Die StartTask-Aufgabe ist insbesondere hilfreich, um Computeknoten auf die Ausführung von Aufgaben vorzubereiten, z.B. die Installation von Anwendungen, die von Ihren Aufgaben ausgeführt werden.<p/>In dieser Beispielanwendung kopiert die StartTask-Aufgabe die Dateien, die aus Storage heruntergeladen werden (und die mit der **resource\_files**-Eigenschaft von StartTask angegeben werden), aus dem StartTask-*Arbeitsverzeichnis* in das *freigegebene* Verzeichnis. Auf dieses Verzeichnis können alle auf dem Knoten ausgeführten Aufgaben zugreifen. Im Wesentlichen wird dadurch `python_tutorial_task.py` in das freigegebene Verzeichnis jedes Knotens kopiert, wenn der Knoten dem Pool beitritt. So können alle Aufgaben, die auf dem Knoten ausgeführt werden, darauf zugreifen.
 
-Wie Sie sehen, wird die Hilfsfunktion `wrap_commands_in_shell` aufgerufen. Diese Funktion erstellt mit einer Sammlung separater Befehle eine einzelne Befehlszeile, die für die Befehlszeileneigenschaft einer Aufgabe geeignet ist.
+Wie Sie vielleicht sehen, wird die Hilfsfunktion `wrap_commands_in_shell` aufgerufen. Diese Funktion erstellt mit einer Sammlung separater Befehle eine einzelne Befehlszeile, die für die Befehlszeileneigenschaft einer Aufgabe geeignet ist.
 
 Beachten Sie im obigen Codeausschnitt auch die Verwendung von zwei Umgebungsvariablen in der **command\_line**-Eigenschaft von StartTask: `AZ_BATCH_TASK_WORKING_DIR` und `AZ_BATCH_NODE_SHARED_DIR`. Jeder Computeknoten in einem Batch-Pool wird automatisch mit verschiedenen Umgebungsvariablen konfiguriert, die speziell für Batch gelten. Für alle Prozesse, die von einer Aufgabe ausgeführt werden, besteht Zugriff auf diese Umgebungsvariablen.
 
@@ -376,7 +372,7 @@ Nachdem ein Auftrag erstellt wurde, werden Aufgaben zum Durchführen der Arbeits
 
 Batch-**Aufgaben** sind die einzelnen Arbeitseinheiten, die auf den Computeknoten ausgeführt werden. Eine Aufgabe verfügt über eine Befehlszeile und führt die Skripts oder ausführbaren Dateien aus, die Sie in der Befehlszeile festlegen.
 
-Zum eigentlichen Ausführen der Arbeitsschritte müssen die Aufgaben einem Auftrag hinzugefügt werden. Jede [CloudTask][py_task]-Aufgabe wird mit einer Befehlszeileneigenschaft und [ResourceFiles][py_resource_file] \(wie bei der StartTask-Aufgabe des Pools) konfiguriert, die von der Aufgabe auf den Knoten heruntergeladen werden, bevor die Befehlszeile automatisch ausgeführt wird. Im Beispiel verarbeitet jede Aufgabe nur eine Datei. Daher enthält die ResourceFiles-Sammlung in diesem Fall ein einzelnes Element.
+Zum eigentlichen Ausführen der Arbeitsschritte müssen die Aufgaben einem Auftrag hinzugefügt werden. Jede [CloudTask][py_task]-Aufgabe wird mit einer Befehlszeileneigenschaft und [ResourceFiles][py_resource_file] (wie bei der StartTask-Aufgabe des Pools) konfiguriert, die von der Aufgabe auf den Knoten heruntergeladen werden, bevor die Befehlszeile automatisch ausgeführt wird. Im Beispiel verarbeitet jede Aufgabe nur eine Datei. Daher enthält die ResourceFiles-Sammlung in diesem Fall ein einzelnes Element.
 
 ```python
 def add_tasks(batch_service_client, job_id, input_files,
@@ -420,7 +416,7 @@ def add_tasks(batch_service_client, job_id, input_files,
     batch_service_client.task.add_collection(job_id, tasks)
 ```
 
-> [AZURE.IMPORTANT] Beim Zugreifen auf Umgebungsvariablen (beispielsweise `$AZ_BATCH_NODE_SHARED_DIR`) oder bei der Ausführung einer Anwendung, die nicht im `PATH` des Knotens enthalten ist, müssen Aufgabenbefehlszeilen mit dem Präfix `/bin/bash` (Linux) oder `cmd /c` (Windows) versehen werden. Hiermit wird die Befehlsshell explizit ausgeführt und angewiesen, den Vorgang nach dem Ausführen Ihres Befehls zu beenden. Diese Anforderung ist nicht relevant, falls Ihre Aufgaben eine Anwendung im `PATH` des Knotens (wie etwa *python* im o.g. Ausschnitt) ausführen.
+> [AZURE.IMPORTANT] Beim Zugreifen auf Umgebungsvariablen (beispielsweise `$AZ_BATCH_NODE_SHARED_DIR`) oder beim Ausführen einer Anwendung, die nicht im `PATH` des Knotens enthalten ist, müssen Aufgabenbefehlszeilen die Shell explizit aufrufen, z.B. mit `/bin/sh -c MyTaskApplication $MY_ENV_VAR`. Diese Anforderung ist nicht relevant, falls Ihre Aufgaben eine Anwendung im `PATH` des Knotens ausführen und nicht auf Umgebungsvariablen verweisen.
 
 In der `for`-Schleife im obigen Codeausschnitt sehen Sie, dass die Befehlszeile für die Aufgabe mit fünf Befehlszeilenargumenten erstellt wurde, die an *python\_tutorial\_task.py* übergeben werden:
 
@@ -558,7 +554,7 @@ if query_yes_no('Delete pool?') == 'yes':
 
 ## Ausführen des Beispiel-Skripts
 
-Beim Ausführen des Skripts *python\_tutorial\_client.py* ähnelt die Konsolenausgabe folgender Ausgabe: Sie sehen eine Pause bei `Monitoring all tasks for 'Completed' state, timeout in 0:20:00...`, wenn der Pool mit Computeknoten erstellt und gestartet wird und die Befehle in der Startaufgabe des Pools ausgeführt werden. Verwenden Sie das [Azure-Portal][azure_portal] oder den [Batch-Explorer][github_batchexplorer], um den Pool, die Computeknoten, den Auftrag und die Aufgaben während und nach der Ausführung zu überwachen. Verwenden Sie das [Azure-Portal][azure_portal] oder den [Microsoft Azure-Speicher-Explorer][storage_explorer], um die von der Anwendung erstellten Speicherressourcen (Container und Blobs) anzuzeigen.
+Beim Ausführen des Skripts *python\_tutorial\_client.py* ähnelt die Konsolenausgabe folgender Ausgabe: Sie sehen eine Pause bei `Monitoring all tasks for 'Completed' state, timeout in 0:20:00...`, wenn der Pool mit Computeknoten erstellt und gestartet wird und die Befehle in der Startaufgabe (Starttask) des Pools ausgeführt werden. Verwenden Sie das [Azure-Portal][azure_portal], um den Pool, die Computeknoten, den Auftrag und die Aufgaben während und nach der Ausführung zu überwachen. Verwenden Sie das [Azure-Portal][azure_portal] oder den [Microsoft Azure-Speicher-Explorer][storage_explorer], um die von der Anwendung erstellten Speicherressourcen (Container und Blobs) anzuzeigen.
 
 Die normale Ausführungsdauer beträgt **ca. 5 bis 7 Minuten**, wenn die Anwendung in der Standardkonfiguration ausgeführt wird.
 
@@ -592,7 +588,7 @@ Press ENTER to exit...
 
 ## Nächste Schritte
 
-Nehmen Sie Änderungen an *python\_tutorial\_client.py* und *python\_tutorial\_task.py* vor, um mit verschiedenen Computeszenarien zu experimentieren. Versuchen Sie beispielsweise, *python\_tutorial\_task.py* eine Ausführungsverzögerung hinzuzufügen, um Aufgaben mit langer Ausführungsdauer zu simulieren, und überwachen Sie diese mit dem Feature *Heat Map* des Batch-Explorers. Versuchen Sie, weitere Aufgaben hinzuzufügen oder die Anzahl von Computeknoten anzupassen. Fügen Sie logische Abläufe hinzu, um einen bestehenden Pool zu suchen und dessen Verwendung zur Beschleunigung der Ausführungszeit zuzulassen.
+Nehmen Sie Änderungen an *python\_tutorial\_client.py* und *python\_tutorial\_task.py* vor, um mit verschiedenen Computeszenarien zu experimentieren. Versuchen Sie beispielsweise, *python\_tutorial\_task.py* eine Ausführungsverzögerung hinzuzufügen, um Aufgaben mit langer Ausführungsdauer zu simulieren und im Portal zu überwachen. Versuchen Sie, weitere Aufgaben hinzuzufügen oder die Anzahl von Computeknoten anzupassen. Fügen Sie logische Abläufe hinzu, um einen bestehenden Pool zu suchen und dessen Verwendung zur Beschleunigung der Ausführungszeit zuzulassen.
 
 Nachdem Sie sich jetzt mit dem grundlegenden Workflow einer Batch-Lösung vertraut gemacht haben, können wir uns mit den zusätzlichen Features des Batch-Diensts beschäftigen.
 
@@ -603,10 +599,8 @@ Nachdem Sie sich jetzt mit dem grundlegenden Workflow einer Batch-Lösung vertra
 [azure_batch]: https://azure.microsoft.com/services/batch/
 [azure_free_account]: https://azure.microsoft.com/free/
 [azure_portal]: https://portal.azure.com
-[batch_explorer_blog]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
 [batch_learning_path]: https://azure.microsoft.com/documentation/learning-paths/batch/
 [blog_linux]: http://blogs.technet.com/b/windowshpc/archive/2016/03/30/introducing-linux-support-on-azure-batch.aspx
-[github_batchexplorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_samples_common]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/Common
 [github_samples_zip]: https://github.com/Azure/azure-batch-samples/archive/master.zip
@@ -664,4 +658,4 @@ Nachdem Sie sich jetzt mit dem grundlegenden Workflow einer Batch-Lösung vertra
 [10]: ./media/batch-dotnet-get-started/credentials_storage_sm.png "Storage-Anmeldeinformationen im Portal"
 [11]: ./media/batch-dotnet-get-started/batch_workflow_minimal_sm.png "Batch-Lösungsworkflow (reduziertes Diagramm)"
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

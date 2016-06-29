@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Application Insights-API für benutzerdefinierte Ereignisse und Metriken" 
+	pageTitle="Application Insights-API für benutzerdefinierte Ereignisse und Metriken | Microsoft Azure" 
 	description="Fügen Sie einige Codezeilen in Ihrer Geräte- oder Desktop-App, Webseite oder dem Webdienst ein, um Nutzungs- und Diagnoseprobleme nachzuverfolgen." 
 	services="application-insights"
     documentationCenter="" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="04/18/2016" 
+	ms.date="06/07/2016" 
 	ms.author="awills"/>
 
 # Application Insights-API für benutzerdefinierte Ereignisse und Metriken 
@@ -366,7 +366,9 @@ In einer ASP.NET-MVC-Webanwendung, beispielsweise:
         @if (Request.IsAuthenticated)
         {
             <script>
-                appInsights.setAuthenticatedUserContext("@User.Identity.Name".replace(/[,;=| ]+/g, "_"));
+                appInsights.setAuthenticatedUserContext("@User.Identity.Name
+                   .Replace("\", "\\")"
+                   .replace(/[,;=| ]+/g, "_"));
             </script>
         }
 
@@ -748,4 +750,4 @@ Wenn Sie diese Werte selbst festlegen, empfiehlt es sich, die entsprechende Zeil
 
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

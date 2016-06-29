@@ -176,15 +176,16 @@ Wenn Sie ein Blatt bearbeiten, aber dann lieber wieder mit den ursprünglich ges
 
 ![In den Schaltflächen am oberen Rand des Metrik-Explorers](./media/app-insights-metrics-explorer/17-reset.png)
 
-## Livedatenstrom: Zeitnahe Metriken für eine genaue Überwachung
+<a name="live-metrics-stream"></a>
+## Live Metrics Stream: sofortige Metriken für eine genaue Überwachung
 
-Der Livedatenstrom zeigt Ihnen Ihre Anwendungsmetriken für den aktuellen Zeitpunkt an – mit einer Latenz von 1 Sekunde nahezu in Echtzeit. Dies ist äußerst nützlich, wenn Sie einen neuen Build freigeben und sicherstellen möchten, dass alles wie erwartet funktioniert, oder wenn Sie einen Incident in Echtzeit untersuchen möchten.
+Live Metrics Stream zeigt Ihnen Ihre Anwendungsmetriken für den aktuellen Zeitpunkt an – nahezu in Echtzeit, mit einer Latenz von 1 Sekunde. Dies ist äußerst nützlich, wenn Sie einen neuen Build freigeben und sicherstellen möchten, dass alles wie erwartet funktioniert, oder wenn Sie einen Incident in Echtzeit untersuchen möchten.
 
 ![Klicken Sie auf dem Blatt „Übersicht“ auf „Livedatenstrom“.](./media/app-insights-metrics-explorer/live-stream.png)
 
-Im Gegensatz zum Metrik-Explorer zeigt der Livedatenstrom einen festen Satz von Metriken an. Die Daten werden nur so lange beibehalten, wie sie im Diagramm angezeigt werden. Anschließend werden sie verworfen.
+Im Gegensatz zum Metrik-Explorer zeigt Live Metrics Stream einen festen Satz von Metriken an. Die Daten werden nur so lange beibehalten, wie sie im Diagramm angezeigt werden. Anschließend werden sie verworfen.
 
-Der Livedatenstrom steht mit dem Application Insights SDK für ASP.NET, Version 2.1.0 oder höher, zur Verfügung.
+Live Metrics Stream steht mit dem Application Insights SDK für ASP.NET, Version 2.1.0 oder höher, zur Verfügung.
 
 ## Festlegen von Benachrichtigungen
 
@@ -246,4 +247,4 @@ Wenn Sie umfangreichere Ansichten der Daten wünschen, können Sie sie [nach Pow
 
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->
