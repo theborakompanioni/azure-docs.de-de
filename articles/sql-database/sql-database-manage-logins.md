@@ -22,7 +22,7 @@
 
 
 > [AZURE.SELECTOR]
-- [Erste Schritte – Sicherheit](sql-database-get-started-security.md)
+- [Lernprogramm zu den ersten Schritten](sql-database-get-started-security.md)
 - [Gewähren von Zugriff](sql-database-manage-logins.md)
 
 
@@ -137,12 +137,6 @@ Bei den Datenbankrollen kann es sich um integrierte Rollen handeln, z.B. **db\_o
 Es gibt mehr als 100 Berechtigungen, die in SQL-Datenbank individuell gewährt oder verweigert werden können. Viele dieser Berechtigungen sind geschachtelt. Die `UPDATE`-Berechtigung für ein Schema enthält beispielsweise für jede Tabelle des Schemas die `UPDATE`-Berechtigung. Wie bei den meisten Berechtigungssystemen wird eine Gewährung durch die Verweigerung einer Berechtigung außer Kraft gesetzt. Aufgrund der Schachtelung und der Anzahl von Berechtigungen muss ein geeignetes Berechtigungssystem sorgfältig entworfen werden, um für Ihre Datenbank den richtigen Schutz sicherzustellen. Beginnen Sie mit der Liste der Berechtigungen unter [Berechtigungen (Datenbankmodul)](https://msdn.microsoft.com/library/ms191291.aspx), und sehen Sie sich die [Grafik in Postergröße](http://go.microsoft.com/fwlink/?LinkId=229142) mit den Berechtigungen an.
 
 
-### Weitere Informationen
-
-[Sichern der SQL-Datenbank](sql-database-security.md)
-
-[Sicherheitscenter für SQL Server-Datenbankmodul und Azure SQL-Datenbank](https://msdn.microsoft.com/library/bb510589.aspx)
-
 ## Nächste Schritte
 
 [Sichern der SQL-Datenbank](sql-database-security.md)
@@ -157,4 +151,11 @@ Es gibt mehr als 100 Berechtigungen, die in SQL-Datenbank individuell gewährt o
 
 [Erteilen des Zugriffs auf ein Datenbankobjekt](https://msdn.microsoft.com/library/ms365327.aspx)
 
-<!---HONumber=AcomDC_0608_2016-->
+
+## Weitere Ressourcen
+
+[Sichern der SQL-Datenbank](sql-database-security.md)
+
+[Sicherheitscenter für SQL Server-Datenbankmodul und Azure SQL-Datenbank](https://msdn.microsoft.com/library/bb510589.aspx)
+
+<!---HONumber=AcomDC_0615_2016-->

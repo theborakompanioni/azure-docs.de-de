@@ -27,7 +27,7 @@ Dieses Thema erläutert, wie ein benutzerdefiniertes R-Modul in Azure Machine Le
 ## Was ist ein benutzerdefiniertes R-Modul?
 Ein **benutzerdefiniertes Modul** ist ein vom Benutzer bestimmtes Modul, dass in Ihrem Arbeitsbereich hochgeladen und als Teil eines Azure Machine Learning Experiments ausgeführt werden kann. Ein **benutzerdefiniertes R-Modul** ist ein benutzerdefiniertes Modul, das eine vom Benutzer erstellte R-Funktion ausführt. R ist eine Programmiersprache für statistische Verarbeitung und Grafiken, die häufig von Statistikern und Datenanalysten für die Implementierung von Algorithmen verwendet wird. Derzeit ist R die einzige Sprache, die von benutzerdefinierten Modulen unterstützt wird, doch ist für zukünftige Versionen die Unterstützung weiterer Sprachen vorgesehen.
 
-Benutzerdefinierte Module haben insofern einen **erstrangigen Status** in Azure Machine Learning, als dass sie genau wie andere Module verwendet werden können. Sie können mit anderen Modulen ausgeführt werden, einschließlich in veröffentlichten Experimenten oder Visualisierungen. Benutzer haben die Kontrolle über den vom Modul implementierten Algorithmus, die verwendeten Eingangs- und Ausgangsports, die Parameter für die Modellierung und andere Laufzeitmerkmale. Ein benutzerdefiniertes Modul ist nur in dem Arbeitsbereich verfügbar, in dem es erstellt wurde, und kann nicht für Community-Experimente veröffentlicht werden.
+Benutzerdefinierte Module haben insofern einen **erstrangigen Status** in Azure Machine Learning, als dass sie genau wie andere Module verwendet werden können. Sie können mit anderen Modulen ausgeführt werden, einschließlich in veröffentlichten Experimenten oder Visualisierungen. Benutzer haben die Kontrolle über den vom Modul implementierten Algorithmus, die verwendeten Eingangs- und Ausgangsports, die Parameter für die Modellierung und andere Laufzeitmerkmale. Ein Experiment mit benutzerdefinierten Modulen kann für eine einfache Freigabe auch im Cortana Intelligence-Katalog veröffentlicht werden.
 
 ## Dateien in einem benutzerdefinierten R-Modul
 Ein benutzerdefiniertes R-Modul wird durch eine ZIP-Datei definiert, die mindestens zwei Dateien enthält:
@@ -363,4 +363,4 @@ Die Ausführungsumgebung für das R-Skript verwendet die gleiche Version von R w
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

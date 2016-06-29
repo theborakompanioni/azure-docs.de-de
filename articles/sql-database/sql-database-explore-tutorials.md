@@ -105,7 +105,7 @@ In den folgenden Tutorials erfahren Sie, wie Sie [eine vorhandene SQL Server-Dat
 
 ##Entwickeln
 
-In den folgenden Tutorials erfahren Sie mehr über die [Clientkonnektivität mit Azure SQL-Datenbank](sql-database-connect-central-recommendations.md) und die Verwendung von [Verbindungsbibliotheken](sql-database-libraries.md).
+In den folgenden Tutorials erfahren Sie mehr über die [SQL-Datenbankentwicklung](sql-database-develop-overview.md) und die Verwendung von [Verbindungsbibliotheken](sql-database-libraries.md).
 
 | Lernprogramm: | Beschreibung |
 |---|---|---|
@@ -180,4 +180,4 @@ In diesem Tutorial erfahren Sie mehr über die [Datensynchronisierung](http://do
 
 [Explore Azure SQL Database Solution Quick Starts](sql-database-solution-quick-starts.md) (Entdecken Sie die lösungsbezogenen Schnellstarts für Azure SQL-Datenbank)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

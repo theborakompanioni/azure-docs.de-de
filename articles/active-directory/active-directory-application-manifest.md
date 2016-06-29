@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="05/26/2016"
+   ms.date="06/06/2016"
    ms.author="dkershaw;bryanla"/>
 
 # Grundlegendes zum Azure Active Directory-Anwendungsmanifest
@@ -37,7 +37,7 @@ Um deshalb das Format und die Eigenschaften des Anwendungsmanifests verstehen zu
 - **Deklarieren Sie Anwendungsrollen (appRoles), die von Ihrer App verfügbar gemacht werden**. Die appRoles-Eigenschaft der Anwendungsentität ist eine Auflistung vom Typ [AppRole][APPLICATION-ENTITY-APP-ROLE]. Ein Implementierungsbeispiel finden Sie unter [Roles based access control in cloud applications using Azure AD][RBAC-CLOUD-APPS-AZUREAD] (in englischer Sprache).
 - **Deklarieren bekannter Clientanwendungen (knownClientApplications)**, mit deren Hilfe Sie die Zustimmung der angegebenen Clientanwendungen logisch an die Ressourcen-/Web-API binden können
 - **Fordern Sie bei Azure AD die Ausgabe eines Anspruchs für die Gruppenmitgliedschaften** des angemeldeten Benutzers an (groupMembershipClaims). HINWEIS: Durch eine zusätzliche Konfiguration kann ein Anspruch für die Verzeichnisrollenmitgliedschaften des Benutzers ausgegeben werden. Ein Implementierungsbeispiel finden Sie im Artikel [Authorization in Cloud Applications using AD Groups][AAD-GROUPS-FOR-AUTHORIZATION] (in englischer Sprache).
-- **Ermöglichen Sie für Ihre Anwendung die Unterstützung von impliziten OAuth 2.0-Gewährungsworkflows** (oauth2AllowImplicitFlow). Diese Art von Code Grant-Datenflüssen wird mit eingebetteten JavaScript-Webseiten oder Single-Page-Anwendungen (SPA) verwendet.
+- **Ermöglichen Sie für Ihre Anwendung die Unterstützung von impliziten OAuth 2.0-Gewährungsworkflows** (oauth2AllowImplicitFlow). Diese Art von Code Grant-Datenflüssen wird mit eingebetteten JavaScript-Webseiten oder Single-Page-Anwendungen (SPA) verwendet. Weitere Informationen zur impliziten Gewährung der Autorisierung finden Sie unter [Grundlegendes zum Ablauf der impliziten OAuth2-Gewährung in Azure Active Directory (AD)][IMPLICIT-GRANT].
 - **Aktivieren Sie die Verwendung von X509-Zertifikaten als geheimer Schlüssel** (keyCredentials). Beispiele für die Implementierung finden Sie in den Artikeln [Builddienst und Daemon-Apps in Office 365][O365-SERVICE-DAEMON-APPS] und [Entwicklerhandbuch für die Authentifizierung mit Azure-Ressourcen-Manager-API][DEV-GUIDE-TO-AUTH-WITH-ARM].
 - **Fügen Sie einen neuen App-ID-URI für Ihre Anwendung hinzu** (identifierURIs). Mit App-ID-URIs wird eine Anwendung in ihrem Azure AD-Mandanten eindeutig identifiziert (bzw. in Szenarios mit mehreren Mandanten wird die Anwendung in mehreren Azure AD-Mandanten identifiziert, wenn sie über eine überprüfte benutzerdefinierte Domäne qualifiziert wurde). Sie werden beim Anfordern von Berechtigungen für eine Ressourcenanwendung oder beim Abrufen eines Zugriffstokens für eine Ressourcenanwendung genutzt. Bei der Aktualisierung dieses Elements wird auch die entsprechende servicePrincipalNames-Sammlung des Dienstprinzipals aktualisiert, die sich im Home-Mandanten der Anwendung befindet.
 
@@ -141,9 +141,10 @@ Verwenden Sie den unten angezeigten DISQUS-Kommentarabschnitt, um uns Feedback z
 [AZURE-CLASSIC-PORTAL]: https://manage.windowsazure.com
 [DEV-GUIDE-TO-AUTH-WITH-ARM]: http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/
 [GRAPH-API]: active-directory-graph-api.md
+[IMPLICIT-GRANT]: active-directory-dev-understanding-oauth2-implicit-grant.md
 [INTEGRATING-APPLICATIONS-AAD]: https://azure.microsoft.com/documentation/articles/active-directory-integrating-applications/
 [O365-PERM-DETAILS]: https://msdn.microsoft.com/office/office365/HowTo/application-manifest
 [O365-SERVICE-DAEMON-APPS]: https://msdn.microsoft.com/office/office365/howto/building-service-apps-in-office-365
 [RBAC-CLOUD-APPS-AZUREAD]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

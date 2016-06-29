@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="backup-recovery"
-	ms.date="03/16/2016"
+	ms.date="06/13/2016"
 	ms.author="bsiva"/>
 
 # Replizieren zwischen lokalen virtuellen Hyper-V-Computern und Azure mithilfe von PowerShell und Azure Resource Manager
@@ -33,9 +33,9 @@ Azure PowerShell ist ein Modul, das Cmdlets zum Verwalten von Azure durch Window
 
 Mit PowerShell-Cmdlets für Site Recovery, die mit Azure PowerShell für den Azure Resource Manager verfügbar sind, können Sie Ihre Server in Azure schützen und wiederherstellen.
 
-Dieser Artikel beschreibt, wie Sie Site Recovery mithilfe von Windows PowerShell und Azure Resource Manager bereitstellen, um den Serverschutz in Azure zu konfigurieren und koordinieren. Das Beispiel in diesem Artikel zeigt Ihnen, wie Sie virtuelle Computer auf einem Hyper-V-Host mithilfe von Azure PowerShell in Verbindung mit Azure Resource Manager in Azure schützen, für sie ein Failover ausführen und sie wiederherstellen.
+Dieser Artikel beschreibt, wie Sie Site Recovery mithilfe von Windows PowerShell und Azure Resource Manager bereitstellen, um den Serverschutz in Azure zu konfigurieren und zu koordinieren. Das Beispiel in diesem Artikel zeigt Ihnen, wie Sie virtuelle Computer auf einem Hyper-V-Host mithilfe von Azure PowerShell in Verbindung mit Azure Resource Manager in Azure schützen, für sie ein Failover ausführen und sie wiederherstellen.
 
-> [AZURE.NOTE] Die PowerShell-Cmdlets für Site Recovery bietet Ihnen gegenwärtig die folgenden Konfigurationsmöglichkeiten: von einem Virtual Machine Manager-Standort zu einem anderen, von einem Virtual Machine Manager-Standort zu Azure und von einem Hyper-V-Standort zu Azure.
+> [AZURE.NOTE] Die PowerShell-Cmdlets für Site Recovery bieten Ihnen gegenwärtig die folgenden Konfigurationsmöglichkeiten: von einem Virtual Machine Manager-Standort zu einem anderen, von einem Virtual Machine Manager-Standort zu Azure und von einem Hyper-V-Standort zu Azure.
 
 Sie müssen kein PowerShell-Experte sein, um diesen Artikel verwenden zu können. Sie müssen jedoch mit den grundlegenden Konzepten wie Modulen, Cmdlets und Sitzungen vertraut sein. Weitere Informationen zu Windows PowerShell finden Sie unter [Erste Schritte mit Windows PowerShell](http://technet.microsoft.com/library/hh857337.aspx).
 
@@ -47,15 +47,15 @@ Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit Azure
 
 Stellen Sie sicher, dass diese Voraussetzungen erfüllt werden:
 
-- Ein [Microsoft Azure](https://azure.microsoft.com/)-Konto. Für den Einstieg steht eine [kostenlose Testversion](pricing/free-trial/) zur Verfügung. Darüber hinaus können Sie sich über die [Preisgestaltung für Azure Site Recovery-Manager](https://azure.microsoft.com/pricing/details/site-recovery/) informieren.
+- Ein [Microsoft Azure](https://azure.microsoft.com/)-Konto. Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung. Darüber hinaus können Sie sich über die [Preisgestaltung für Azure Site Recovery-Manager](https://azure.microsoft.com/pricing/details/site-recovery/) informieren.
 - Azure PowerShell 1.0. Informationen zu dieser Version, und wie Sie diese installieren, finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/).
 - Die Module [AzureRM.SiteRecovery](https://www.powershellgallery.com/packages/AzureRM.SiteRecovery/) und [AzureRM.RecoveryServices](https://www.powershellgallery.com/packages/AzureRM.RecoveryServices/). Sie erhalten die neuesten Versionen dieser Module im [PowerShell-Katalog](https://www.powershellgallery.com/).
 
-In diesem Artikel wird das Verwenden von Azure Powershell mit Azure Resource Manager zum Konfigurieren und Verwalten des Schutzes Ihrer Server veranschaulicht. Das Beispiel in diesem Artikel zeigt, wie Sie einen auf einem Hyper-V-Host ausgeführten virtuellen Computer in Azure schützen. Die folgenden Anforderungen sind für dieses Beispiel spezifisch. Eine umfassendere Aufstellung von Voraussetzungen für die verschiedenen Site Recovery-Szenarien finden Sie in der Dokumentation zum jeweiligen Szenario.
+In diesem Artikel wird das Verwenden von Azure PowerShell mit Azure Resource Manager zum Konfigurieren und Verwalten des Schutzes Ihrer Server veranschaulicht. Das Beispiel in diesem Artikel zeigt, wie Sie einen auf einem Hyper-V-Host ausgeführten virtuellen Computer in Azure schützen. Die folgenden Anforderungen sind für dieses Beispiel spezifisch. Eine umfassendere Aufstellung von Voraussetzungen für die verschiedenen Site Recovery-Szenarien finden Sie in der Dokumentation zum jeweiligen Szenario.
 
 - Ein Hyper-V-Host unter Windows Server 2012 R2 mit einem oder mehreren virtuellen Computern.
-- Ein entweder direkt oder über einen Proxy mit dem Internet verbundenen Hyper-V-Server.
-- Die zu schützenden virtuellen Computer sollten die [Voraussetzungen für virtuelle Computer](site-recovery-best-practices.md#virtual-machines) erfüllen.
+- Direkt oder über einen Proxy mit dem Internet verbundene Hyper-V-Server.
+- Die zu schützenden virtuellen Computer müssen die [Voraussetzungen für virtuelle Computer](site-recovery-best-practices.md#virtual-machines) erfüllen.
 
 
 ## Schritt 1: Anmelden bei Ihrem Azure-Konto
@@ -71,7 +71,7 @@ In diesem Artikel wird das Verwenden von Azure Powershell mit Azure Resource Man
 
 		Login-AzureRmAccount -Tenant "fabrikam.com"
 
-2. Da ein Konto mehrere Abonnements enthalten kann, sollten Sie das Abonnement, das Sie verwenden möchten, dem Konto zuordnen.
+2. Da ein Konto mehrere Abonnements enthalten kann, müssen Sie das Abonnement, das Sie verwenden möchten, dem Konto zuordnen.
 
     	Select-AzureRmSubscription -SubscriptionName $SubscriptionName
 
@@ -80,17 +80,17 @@ In diesem Artikel wird das Verwenden von Azure Powershell mit Azure Resource Man
 	- `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.RecoveryServices`
 	-  `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.SiteRecovery`
 
-	Wenn **RegistrationState** in der Ausgabe dieser beiden Befehle auf **Registered** festgelegt ist, können Sie mit Schritt 2 fortfahren. Andernfalls sollten Sie den fehlenden Anbieter in Ihrem Abonnement registrieren.
+	Wenn **RegistrationState** in der Ausgabe dieser beiden Befehle auf **Registered** festgelegt ist, können Sie mit Schritt 2 fortfahren. Andernfalls müssen Sie den fehlenden Anbieter in Ihrem Abonnement registrieren.
 
 	Führen Sie den folgenden Befehl aus, um den Azure-Anbieter für Site Recovery zu registrieren:
 
     	Register-AzureRmResourceProvider -ProviderNamespace Microsoft.SiteRecovery
 
-	Wenn Sie die Recovery Services-Cmdlets zum ersten Mal in Ihrem Abonnement verwenden, sollten Sie den Azure-Anbieter für Recovery Services registrieren. Bevor Sie dies tun können, aktivieren Sie zunächst den Zugriff auf den Recovery Services-Anbieter in Ihrem Abonnement mit folgendem Befehl:
+	Wenn Sie die Recovery Services-Cmdlets zum ersten Mal in Ihrem Abonnement verwenden, müssen Sie den Azure-Anbieter für Recovery Services registrieren. Bevor Sie dies tun können, aktivieren Sie zunächst den Zugriff auf den Recovery Services-Anbieter in Ihrem Abonnement mit folgendem Befehl:
 
 		Register-AzureRmProviderFeature -FeatureName betaAccess -ProviderNamespace Microsoft.RecoveryServices
 
-	>[AZURE.TIP] Es kann nach erfolgreicher Ausführung des obigen Befehls bis zu einer Stunde dauern, den Zugriff auf den Recovery Services-Anbieter in Ihrem Abonnement zu aktivieren. In der Zwischenzeit kann bei Versuchen, den Recovery Services-Anbieter in Ihrem Abonnement mit dem Befehl `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices` zu registrieren, ein Fehler auftreten. Warten Sie in diesem Fall eine Stunde, und wiederholen Sie den Versuch.
+	>[AZURE.TIP] Es kann nach erfolgreicher Ausführung des obigen Befehls bis zu einer Stunde dauern, bis der Zugriff auf den Recovery Services-Anbieter in Ihrem Abonnement aktiviert ist. In der Zwischenzeit kann bei Versuchen, den Recovery Services-Anbieter in Ihrem Abonnement mit dem Befehl `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices` zu registrieren, ein Fehler auftreten. Warten Sie in diesem Fall eine Stunde, und wiederholen Sie den Versuch.
 
 	Sobald Sie den Zugriff auf den Recovery Services-Anbieter in Ihrem Abonnement aktiviert haben, registrieren Sie den Anbieter in Ihrem Abonnement mit folgendem Befehl:
 
@@ -102,7 +102,7 @@ In diesem Artikel wird das Verwenden von Azure Powershell mit Azure Resource Man
 
 ## Schritt 2: Einrichten des Recovery Services-Tresors
 
-1. Erstellen Sie eine Azure Resource Manager-Ressourcengruppe, in der Sie den Tresor erstellen, oder verwenden Sie eine vorhandene Ressourcengruppe. Sie können mithilfe des folgenden Codeausschnitts eine neue Ressourcengruppe erstellen:
+1. Erstellen Sie eine Azure Resource Manager-Ressourcengruppe, in der Sie den Tresor erstellen, oder verwenden Sie eine vorhandene Ressourcengruppe. Sie können mithilfe des folgenden Befehls eine neue Ressourcengruppe erstellen:
 
 		New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Geo  
 
@@ -166,7 +166,7 @@ In diesem Artikel wird das Verwenden von Azure Powershell mit Azure Resource Man
 
 	Überprüfen Sie den zurückgegebenen Auftrag, um sicherzustellen, dass die Replikationsrichtlinie erfolgreich erstellt wurde.
 
-	>[AZURE.IMPORTANT] Das angegebene Speicherkonto sollte sich in der gleichen Azure-Region wie Ihr Recovery Services-Tresor befinden, und die Georeplikation sollte hierfür aktiviert sein.
+	>[AZURE.IMPORTANT] Das angegebene Speicherkonto muss sich in der gleichen Azure-Region wie Ihr Recovery Services-Tresor befinden, und die Georeplikation muss hierfür aktiviert sein.
 	>
 	> - Wenn es sich bei dem angegebenen Speicherkonto für die Wiederherstellung um den Typ „Azure Storage (klassisch)“ handelt, werden die geschützten Computer bei einem Failover auf „Azure IaaS (klassisch)“ wiederhergestellt.
 	> - Wenn es sich bei dem angegebenen Speicherkonto für die Wiederherstellung um den Typ „Azure Storage (Azure Resource Manager)“ handelt, werden die geschützten Computer bei einem Failover auf „Azure IaaS (Azure Resource Manager)“ wiederhergestellt.
@@ -193,14 +193,14 @@ In diesem Artikel wird das Verwenden von Azure Powershell mit Azure Resource Man
 		$Ostype = "Windows"                                 # "Windows" or "Linux"
 		$DRjob = Set-AzureRmSiteRecoveryProtectionEntity -ProtectionEntity $protectionEntity -Policy $Policy -Protection Enable -RecoveryAzureStorageAccountId $storageaccountID  -OS $OStype -OSDiskName $protectionEntity.Disks[0].Name
 
-	>[AZURE.IMPORTANT] Das angegebene Speicherkonto sollte sich in der gleichen Azure-Region wie Ihr Recovery Services-Tresor befinden, und die Georeplikation sollte hierfür aktiviert sein.
+	>[AZURE.IMPORTANT] Das angegebene Speicherkonto muss sich in der gleichen Azure-Region wie Ihr Recovery Services-Tresor befinden, und die Georeplikation muss hierfür aktiviert sein.
 	>
 	> - Wenn es sich bei dem angegebenen Speicherkonto für die Wiederherstellung um den Typ „Azure Storage (klassisch)“ handelt, werden die geschützten Computer bei einem Failover auf „Azure IaaS (klassisch)“ wiederhergestellt.
 	> - Wenn es sich bei dem angegebenen Speicherkonto für die Wiederherstellung um den Typ „Azure Storage (Azure Resource Manager)“ handelt, werden die geschützten Computer bei einem Failover auf „Azure IaaS (Azure Resource Manager)“ wiederhergestellt.
 
 	> Wenn dem geschützten virtuellen Computer mehrere Datenträger angefügt sind, geben Sie den Betriebssystemdatenträger mit dem *OSDiskName*-Parameter an.
 
-3. Warten Sie, bis die virtuellen Computer nach der ersten Replikation einen geschützten Zustand erreicht haben. Abhängig von Faktoren wie die Menge der zu replizierenden Daten und die verfügbare Upstreambandbreite zu Azure kann dies länger dauern. Die Aufträge „State“ und „StateDescription“ werden wie folgt aktualisiert, sobald die VM einen geschützten Zustand erreicht.
+3. Warten Sie, bis die virtuellen Computer nach der ersten Replikation einen geschützten Zustand erreicht haben. Abhängig von Faktoren wie der Menge der zu replizierenden Daten und der verfügbare Upstreambandbreite zu Azure kann dies länger dauern. Die Aufträge „State“ und „StateDescription“ werden wie folgt aktualisiert, sobald die VM einen geschützten Zustand erreicht.
 
 		PS C:\> $DRjob = Get-AzureRmSiteRecoveryJob -Job $DRjob
 
@@ -261,4 +261,9 @@ In diesem Artikel wird das Verwenden von Azure Powershell mit Azure Resource Man
 
     	$TFjob = Resume-AzureRmSiteRecoveryJob -Job $TFjob
 
-<!---HONumber=AcomDC_0518_2016-->
+
+##Nächste Schritte
+
+[Erfahren Sie mehr](https://msdn.microsoft.com/library/azure/mt637930.aspx) über Azure Site Recovery mit PowerShell-Cmdlets für Azure Resource Manager.
+
+<!---HONumber=AcomDC_0615_2016-->

@@ -111,4 +111,4 @@ Zunächst müssen Sie den Datenträger an den virtuellen Computer anfügen.
 ## Nächste Schritte
 - Sie können den Speicher erhöhen, der für den virtuellen Computer verfügbar ist, indem Sie [einen zusätzlichen Datenträger anfügen](virtual-machines-windows-attach-disk-portal.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0615_2016-->

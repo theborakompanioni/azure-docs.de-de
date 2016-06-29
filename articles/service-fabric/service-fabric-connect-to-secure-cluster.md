@@ -37,6 +37,7 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPe
 -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
 ```
 
+<a id="connectsecurecluster"></a>
 ## Herstellen einer Verbindung mit einem sicheren Cluster mit PowerShell
 
 Führen Sie den folgenden PowerShell-Befehl aus, um eine Verbindung mit einem sicheren Cluster herzustellen. Die Details des Zertifikats müssen mit einem Zertifikat auf den Clusterknoten übereinstimmen.
@@ -108,4 +109,4 @@ static X509Credentials GetCredentials(string thumb, string name)
 - [Einführung in das Service Fabric-Integritätsmodell](service-fabric-health-introduction.md)
 - [Anwendungssicherheit und RunAs](service-fabric-application-runas-security.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

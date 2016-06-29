@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/14/2016"
+	ms.date="06/21/2016"
 	ms.author="carlrab"/>
 
 # Wählen Sie eine SQL Server-Cloudoption: Azure SQL-Datenbank (PaaS) oder SQL Server auf Azure-VMs (IaaS)
@@ -154,5 +154,6 @@ Entscheiden Sie sich für **SQL Server auf Azure Virtual Machines**, wenn für S
 - Erste Schritte für die SQL-Datenbank finden Sie unter [SQL-Datenbank-Tutorial: Erstellen einer SQL-Datenbank in Minuten mit dem Azure-Portal](sql-database-get-started.md).
 - Informationen finden Sie unter [Preise für SQL-Datenbank](https://azure.microsoft.com/pricing/details/sql-database/).
 - Informationen zu den ersten Schritten mit SQL Server auf virtuellen Azure-Computern finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](../virtual-machines/virtual-machines-windows-portal-sql-server-provision.md).
+- Weitere Informationen finden Sie unter [SQL Server auf Azure Virtual Machines: Lernpfad](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

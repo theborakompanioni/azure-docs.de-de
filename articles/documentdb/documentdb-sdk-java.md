@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="05/02/2016" 
+	ms.date="06/14/2016" 
 	ms.author="andrl"/>
 
 # DocumentDB SDK
@@ -35,6 +35,11 @@
 </table></br>
 
 ## Versionsinformationen
+
+### <a name="1.8.0"/>[1\.8.0](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.8.0)
+  - Unterstützung für Datenbankkonten in mehreren Regionen hinzugefügt.
+  - Unterstützung für automatische Wiederholungsversuche für gedrosselte Anforderungen hinzugefügt, mit Optionen zum Anpassen der maximalen Anzahl von Wiederholungsversuchen und der maximalen Wartezeit. Weitere Informationen unter „RetryOptions“ und „ConnectionPolicy.getRetryOptions()“. 
+  - Auf IPartitionResolver basierender benutzerdefinierter Partitionierungscode als „veraltet“ markiert. Verwenden Sie partitionierte Sammlungen, um mehr Speicher und höheren Durchsatz zu erzielen. 
 
 ### <a name="1.7.1"/>[1\.7.1](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.7.1)
 - Unterstützung für Wiederholungsrichtlinie für Drosselung hinzugefügt.  
@@ -83,6 +88,7 @@ Alle Versionen des Azure DocumentDB SDK für Java vor Version **1.0.0** werden a
 
 | Version | Herausgabedatum | Deaktivierungstermine 
 | ---	  | ---	         | ---
+| [1\.8.0](#1.8.0) | 14. Juni 2016 |--- 
 | [1\.7.1](#1.7.1) | 30. April 2016 |--- 
 | [1\.7.0](#1.7.0) | 27. April 2016 |--- 
 | [1\.6.0](#1.6.0) | 29. März 2016 |--- 
@@ -99,7 +105,7 @@ Alle Versionen des Azure DocumentDB SDK für Java vor Version **1.0.0** werden a
 | 0.9.3-prelease | 13. Januar 2015 | 29. Februar 2016 
 | 0.9.2-prelease | 19. Dezember 2014 | 29. Februar 2016 
 | 0.9.1-prelease | 19. Dezember 2014 | 29. Februar 2016 
-| 0.9.0-prelease | 19. Dezember 2014 | 29. Februar 2016
+| 0.9.0-prelease | 10. Dezember 2014 | 29. Februar 2016
 
 ## Häufig gestellte Fragen
 [AZURE.INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]
@@ -108,4 +114,4 @@ Alle Versionen des Azure DocumentDB SDK für Java vor Version **1.0.0** werden a
 
 Weitere Informationen zu DocumentDB finden Sie auf der Seite zum Dienst [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

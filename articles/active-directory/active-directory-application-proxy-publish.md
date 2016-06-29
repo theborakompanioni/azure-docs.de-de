@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/01/2016"
+	ms.date="06/17/2016"
 	ms.author="kgremban"/>
 
 
@@ -24,7 +24,7 @@ Nachdem Sie den Microsoft Azure Active Directory (AD)-Anwendungsproxy aktiviert 
 
 In diesem Artikel werden Sie durch die Schritte zum Veröffentlichen von Anwendungen geführt, die in Ihrem lokalen Netzwerk ausgeführt werden, sowie zum Ermöglichen des sicheren Remotezugriffs von außerhalb Ihres Netzwerks. Führen Sie vor dem Fortfahren die Schritte unter [Aktivieren des Anwendungsproxys im Azure-Portal](active-directory-application-proxy-enable.md) aus, falls Sie den Anwendungsproxy noch nicht eingerichtet und noch keine Connectors installiert haben.
 
-Wenn Sie den Azure AD-Anwendungsproxy zum ersten Mal verwenden, empfiehlt sich ein Test des Connectors, indem Sie vor dem Veröffentlichen von Anwendungen eine Website aus Ihrem privaten Netzwerk veröffentlichen.
+Wenn Sie den Azure AD-Anwendungsproxy zum ersten Mal verwenden, sollten Sie den Connector testen, indem Sie vor dem Veröffentlichen von Anwendungen eine Website aus Ihrem privaten Netzwerk veröffentlichen.
 
 > [AZURE.NOTE] Das Feature "Anwendungsproxy" ist nur verfügbar, wenn Sie Azure Active Directory auf die Premium oder Basic Edition aktualisiert haben. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
 
@@ -59,13 +59,13 @@ Wenn Sie den Azure AD-Anwendungsproxy zum ersten Mal verwenden, empfiehlt sich e
 
 ## Zuweisen von Benutzern und Gruppen zur Anwendung
 
-Damit Benutzer auf die von Ihnen veröffentlichte Anwendung zugreifen können, müssen Sie diese entweder einzeln oder in Gruppen zuweisen. Bei Apps, für die eine Präauthentifizierung erforderlich ist, werden hierbei Berechtigungen zum Verwenden der App erteilt. Bei Apps, für die keine Präauthentifizierung erforderlich ist, benötigen Benutzer keine Berechtigungen. Sie müssen der App aber zugewiesen sein, damit sie in der Anwendungsliste angezeigt wird.
+Damit Benutzer auf die von Ihnen veröffentlichte Anwendung zugreifen können, müssen Sie diese entweder einzeln oder in Gruppen zuweisen. Bei Apps, für die eine Präauthentifizierung erforderlich ist, werden hierbei Berechtigungen zum Verwenden der App erteilt. Bei Apps, für die keine Präauthentifizierung erforderlich ist, müssen Benutzer der App trotzdem zugewiesen sein, damit sie in der Anwendungsliste angezeigt wird.
 
 1. Nach dem Beenden des Assistenten für das Hinzufügen von Apps wird die Schnellstartseite für die Anwendung angezeigt. Wählen Sie die Option **Benutzer und Gruppen**, um zu verwalten, wer Zugriff auf die App hat.
 
 	![Anwendungsproxy-Schnellstart – Benutzer zuweisen – Screenshot](./media/active-directory-application-proxy-publish/aad_appproxy_usersgroups.png)
 
-2. Suchen Sie in Ihrem Verzeichnis nach bestimmten Gruppen, oder zeigen Sie alle Benutzer an. Klicken Sie auf das Häkchen, um die Ergebnisse anzuzeigen.
+2. Suchen Sie in Ihrem Verzeichnis nach bestimmten Gruppen, oder zeigen Sie alle Benutzer an. Klicken Sie zum Anzeigen der Suchergebnisse auf das Häkchen.
 
   	![Nach Gruppen oder Benutzern suchen – Screenshot](./media/active-directory-application-proxy-publish/aad_appproxy_search.png)
 
@@ -83,9 +83,9 @@ Auf der Seite „Konfigurieren“ können Sie veröffentlichte Apps ändern oder
 
 Nachdem Sie Anwendungen mit dem Azure Active Directory-Anwendungsproxy veröffentlicht haben, werden sie in der Liste der Anwendungen in Azure AD aufgeführt, und Sie können sie dort verwalten.
 
-Wenn Sie Anwendungsproxydienste deaktivieren, nachdem Sie Anwendungen veröffentlicht haben, werden die Anwendungen zwar nicht gelöscht, aber der Zugriff darauf von außerhalb Ihres privaten Netzwerks ist nicht mehr möglich.
+Wenn Sie Anwendungsproxydienste deaktivieren, nachdem Sie Anwendungen veröffentlicht haben, ist der Zugriff darauf von außerhalb Ihres privaten Netzwerks nicht mehr möglich. Die Anwendungen werden hierbei nicht gelöscht.
 
-Um eine Anwendung anzeigen und den Zugriff darauf sicherzustellen, doppelklicken Sie auf den Namen der Anwendung. Wenn der Anwendungsproxydienst deaktiviert und die Anwendung nicht verfügbar ist, wird am oberen Bildschirmrand eine Warnmeldung angezeigt.
+Um eine Anwendung anzuzeigen und den Zugriff darauf sicherzustellen, doppelklicken Sie auf den Namen der Anwendung. Wenn der Anwendungsproxydienst deaktiviert und die Anwendung nicht verfügbar ist, wird am oberen Bildschirmrand eine Warnmeldung angezeigt.
 
 Um eine Anwendung zu löschen, wählen Sie eine Anwendung in der Liste aus, und klicken Sie dann auf **Löschen**.
 
@@ -98,4 +98,4 @@ Um eine Anwendung zu löschen, wählen Sie eine Anwendung in der Liste aus, und 
 
 Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

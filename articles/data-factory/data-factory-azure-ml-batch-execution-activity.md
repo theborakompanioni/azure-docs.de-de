@@ -86,9 +86,9 @@ In diesem Szenario werden mit dem Azure Machine Learning-Webdienst anhand der Da
 	        "linkedServiceName": "MyAzureMLLinkedService",
             "typeProperties":
             {
-                "webServiceInput": "DecisionTreeInputBlob ",
+                "webServiceInput": "DecisionTreeInputBlob",
                 "webServiceOutputs": {
-                    "output1": "DecisionTreeResultBlob "
+                    "output1": "DecisionTreeResultBlob"
                 }                
             },
 	        "policy": {
@@ -242,9 +242,9 @@ Es wird empfohlen, dass Sie zunächst das Lernprogramm [Erstellen der ersten Pip
 		        "linkedServiceName": "MyAzureMLLinkedService",
                 "typeProperties":
                 {
-                    "webServiceInput": "DecisionTreeInputBlob ",
+                    "webServiceInput": "DecisionTreeInputBlob",
                     "webServiceOutputs": {
-                        "output1": "DecisionTreeResultBlob "
+                        "output1": "DecisionTreeResultBlob"
                     }                
                 },
 		        "policy": {
@@ -772,4 +772,4 @@ Sie können auch [Data Factory-Funktionen ](https://msdn.microsoft.com/library/d
 
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0615_2016-->

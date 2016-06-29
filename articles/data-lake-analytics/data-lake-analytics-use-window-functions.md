@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/26/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 
@@ -23,7 +23,7 @@ Fensterfunktionen wurden 2003 in den ISO/ANSI SQL-Standard eingeführt. U-SQL ü
 
 Fensterfunktionen werden verwendet, um Berechnungen in Gruppen von Zeilen durchzuführen, die *Fenster* genannt werden. Fenster werden von der OVER-Klausel definiert. Fensterfunktionen bieten für verschiedene wichtige Szenarien Lösungen auf überaus effiziente Weise.
 
-In diesem Tutorial werden zwei Beispieldatasets verwendet, mit deren Hilfe Sie ein Beispielszenario durchlaufen, in dem Sie Fensterfunktionen anwenden können. Weitere Informationen finden Sie in der [U-SQL-Referenz](http://go.microsoft.com/fwlink/p/?LinkId=691348).
+In diesem Leitfaden werden zwei Beispieldatasets verwendet, mit deren Hilfe Sie ein Beispielszenario durchlaufen, in dem Sie Fensterfunktionen anwenden können. Weitere Informationen finden Sie in der [U-SQL-Referenz](http://go.microsoft.com/fwlink/p/?LinkId=691348).
 
 Die Fensterfunktionen sind in die folgenden Kategorien unterteilt:
 
@@ -743,4 +743,4 @@ PERCENTILE\_DISC interpoliert keine Werte, weshalb der Median für „Web“ 200
 - [Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
 - [Überwachen und Problembehandeln von Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

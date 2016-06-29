@@ -89,7 +89,7 @@ Fügen Sie zunächst in der Datei "Program.cs" am Anfang der C#-Anwendung folgen
 
 > [AZURE.IMPORTANT] Um dieses NoSQL-Tutorial abzuschließen, müssen Sie die oben genannten Abhängigkeiten hinzufügen.
 
-Fügen Sie diese beiden Konstanten und Ihre *Client*variable nun unter der öffentlichen *Program*-Klasse hinzu.
+Fügen Sie diese beiden Konstanten und Ihre *Client* variable nun unter der öffentlichen *Program* - Klasse hinzu.
 
 	public class Program
 	{
@@ -486,15 +486,15 @@ Kopieren Sie die **ReplaceFamilyDocument**-Methode, und fügen Sie sie unterhalb
 	// ADD THIS PART TO YOUR CODE
 	private async Task ReplaceFamilyDocument(string databaseName, string collectionName, string familyName, Family updatedFamily)
 	{
-			try
-			{
-					await this.client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, familyName), updatedFamily);
-					this.WriteToConsoleAndPromptToContinue("Replaced Family {0}", familyName);
-			}
-			catch (DocumentClientException de)
-			{
-					throw de;
-			}
+		try
+		{
+			await this.client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, familyName), updatedFamily);
+			this.WriteToConsoleAndPromptToContinue("Replaced Family {0}", familyName);
+		}
+		catch (DocumentClientException de)
+		{
+			throw;
+		}
 	}
 
 Kopieren Sie den folgenden Code, und fügen Sie ihn in die **GetStartedDemo**-Methode unterhalb der Abfrageausführung ein. Nach dem Ersetzen des Dokuments wird dieselbe Abfrage erneut ausgeführt, um das geänderte Dokument anzuzeigen.
@@ -524,15 +524,15 @@ Kopieren Sie die **DeleteFamilyDocument**-Methode, und fügen Sie sie unterhalb 
 	// ADD THIS PART TO YOUR CODE
 	private async Task DeleteFamilyDocument(string databaseName, string collectionName, string documentName)
 	{
-			try
-			{
-					await this.client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, documentName));
-					Console.WriteLine("Deleted Family {0}", documentName);
-			}
-			catch (DocumentClientException de)
-			{
-							throw de;
-			}
+		try
+		{
+			await this.client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, documentName));
+			Console.WriteLine("Deleted Family {0}", documentName);
+		}
+		catch (DocumentClientException de)
+		{
+			throw;
+		}
 	}
 
 Kopieren Sie den folgenden Code, und fügen Sie ihn in die **GetStartedDemo**-Methode unterhalb der zweiten Abfrageausführung ein.
@@ -616,4 +616,4 @@ Um die Verweise auf das DocumentDB .NET SDK in Visual Studio wiederherzustellen,
 [documentdb-manage]: documentdb-manage.md
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

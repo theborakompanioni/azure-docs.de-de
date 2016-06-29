@@ -114,7 +114,7 @@ Vor Kurzem wurde die REST-API der [Azure Ressourcenverwaltung](../articles/virtu
 
 Es gibt mehrere beliebte Systeme, die ganze Gruppen von virtuellen Computern bereitstellen und auf diesen Docker (oder andere Linux-Containerhostsysteme) als automatisierbare Gruppe installieren können. Direkte Links finden Sie im Abschnitt [Container und Tools](#containers-and-vm-technologies) weiter unten. Es gibt eine Reihe von Systemen, die dies in größerem oder weniger großem Umfang können. Diese Liste ist nicht vollständig. Wie nützlich sie sind, hängt von Ihren Kenntnissen und Szenarios ab.
 
-Docker verfügt über einen eigenen Satz von Tools zur Erstellung von virtuellen Computern ([docker-machine](../articles/virtual-machines/virtual-machines-linux-classic-docker-machine.md)) und über ein Clusterverwaltungstool für Lastenausgleich und Docker-Container ([swarm](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md)). Darüber hinaus bietet die [Azure VM-Erweiterung für Docker](https://github.com/Azure/azure-docker-extension/blob/master/README.md) standardmäßig Unterstützung für[`docker-compose`](https://docs.docker.com/compose/), womit konfigurierte Anwendungscontainer über mehrere Container hinweg bereitgestellt werden können.
+Docker verfügt über einen eigenen Satz von Tools zur Erstellung von virtuellen Computern ([docker-machine](../articles/virtual-machines/virtual-machines-linux-docker-machine.md)) und über ein Clusterverwaltungstool für Lastenausgleich und Docker-Container ([swarm](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md)). Darüber hinaus bietet die [Azure VM-Erweiterung für Docker](https://github.com/Azure/azure-docker-extension/blob/master/README.md) standardmäßig Unterstützung für[`docker-compose`](https://docs.docker.com/compose/), womit konfigurierte Anwendungscontainer über mehrere Container hinweg bereitgestellt werden können.
 
 Außerdem können Sie auch [Data Center Operating System (DCOS) von Mesosphere](http://docs.mesosphere.com/install/azurecluster/) testen. DCOS basiert auf dem "Open-Source-Kernel für verteilte Systeme" [mesos](http://mesos.apache.org/), der es Ihnen ermöglicht, Ihr Rechenzentrum als einen adressierbaren Dienst zu behandeln. DCOS verfügt über integrierte Pakete für verschiedene wichtige Systeme wie [Spark](http://spark.apache.org/) und [Kafka](http://kafka.apache.org/) (und andere) sowie über integrierte Dienste wie [Marathon](https://mesosphere.github.io/marathon/) (ein Containersteuerungssystem) und [Chronos](https://mesosphere.github.io/chronos/) (ein verteilter Scheduler). Mesos entstand auf Basis von Erfahrungen mit Twitter, AirBnb und anderen im Web operierenden Unternehmen.
 
@@ -165,7 +165,7 @@ Docker in Microsoft Azure:
 - [Verwenden der Docker-VM-Erweiterung aus der Azure-Befehlszeilenschnittstelle (Azure-CLI)](../articles/virtual-machines/virtual-machines-linux-classic-cli-use-docker.md)
 - [Verwenden der Docker-VM-Erweiterung über das Azure-Portal](../articles/virtual-machines/virtual-machines-linux-classic-portal-use-docker.md)
 - [Schneller Einstieg in Docker in Azure Marketplace](../articles/virtual-machines/virtual-machines-linux-classic-docker-quickstart.md)
-- [Verwenden von "docker-machine" auf Azure](../articles/virtual-machines/virtual-machines-linux-classic-docker-machine.md)
+- [Verwenden von "docker-machine" auf Azure](../articles/virtual-machines/virtual-machines-linux-docker-machine.md)
 - [Verwenden von Docker mit Swarm auf Azure](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md)
 - [Erste Schritte mit Docker und Compose auf einem virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-linux-docker-compose-quickstart.md)
 - [Using an Azure resource group template to create a Docker host on Azure quickly ("Verwenden einer Azure-Ressourcengruppenvorlage zur schnellen Erstellung eines Docker-Hosts in Azure", in englischer Sprache)](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)
@@ -216,4 +216,4 @@ Lesen Sie über [Docker](https://www.docker.com) (in englischer Sprache) und [Wi
 [microservice]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

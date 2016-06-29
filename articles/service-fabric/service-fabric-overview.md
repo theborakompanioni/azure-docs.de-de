@@ -24,7 +24,7 @@ Service Fabric ermöglicht das Erstellen und Verwalten skalierbarer und zuverlä
 
 Warum ist ein Microserviceansatz wichtig? Die beiden wichtigsten Gründe sind:
 
-1. Mit Microservices können Sie verschiedene Teile einer Anwendung je nach den entsprechenden Anforderungen skalieren.
+1. Mit Microservices können Sie verschiedene Teile einer Anwendung nach Bedarf skalieren.
 
 2. Entwicklungsteams können beim Einführen von Änderungen flexibler vorgehen und dadurch Funktionen für Ihre Kunden schneller und häufiger bereitstellen.
 
@@ -71,7 +71,7 @@ Mit Service Fabric können Sie Folgendes tun:
 
 - Hochgradig skalierbare Anwendungen mit Selbstreparatur entwickeln.
 
-- Aus Microservices bestehende Anwendungen mit dem Service Fabric-Programmiermodell entwickeln oder ausführbare Gastanwendungsdateien und andere Anwendungsframeworks Ihrer Wahl schlicht hosten, z.B. ASP.NET Core 1 oder Node.js etc.
+- Aus Microservices bestehende Anwendungen mit dem Service Fabric-Programmiermodell entwickeln oder ausführbare Gastanwendungsdateien und andere Anwendungsframeworks Ihrer Wahl hosten, etwa ASP.NET Core 1 oder Node.js.
 
 - Zustandslose und zustandsbehaftete hoch zuverlässige Microservices entwickeln.
 
@@ -103,11 +103,11 @@ Mit Service Fabric können Sie Folgendes tun:
 ## Nächste Schritte
 
 * Weitere Informationen:
-	* [Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen](service-fabric-overview-microservices.md)
-	* [Technische Übersicht](service-fabric-technical-overview.md)
+    * [Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen](service-fabric-overview-microservices.md)
+    * [Technische Übersicht](service-fabric-technical-overview.md)
 * Einrichten der Service Fabric-[Entwicklungsumgebung](service-fabric-get-started.md)  
 * [Auswählen eines Frameworks](service-fabric-choose-framework.md) für Ihren Dienst
 
 [Image1]: media/service-fabric-overview/Service-Fabric-Overview.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

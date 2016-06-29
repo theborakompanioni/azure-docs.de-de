@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/27/2016" 
+	ms.date="06/08/2016" 
 	ms.author="arramac"/>
 
 
@@ -25,4 +25,4 @@ In der folgenden Tabelle sind die Standardkontingente für DocumentDB-Ressourcen
 
 Kontingente mit einem Sternchen (*) [können angepasst werden. Wenden Sie sich dafür an den Azure-Support](documentdb-increase-limits.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

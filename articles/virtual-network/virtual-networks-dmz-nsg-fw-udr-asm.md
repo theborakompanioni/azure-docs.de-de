@@ -28,7 +28,7 @@ In diesem Beispiel wird eine DMZ mit einer Firewall, vier Windows-Servern, benut
 Dieses Beispiel umfasst ein Abonnement, das Folgendes enthält:
 
 - Drei Clouddienste: "SecSvc001", "FrontEnd001" und "BackEnd001"
-- Ein virtuelles Netzwerk, "CorpNetwork", mit drei Subnetzen: "SecNet", "FrontEnd" und "BackEnd"
+- Ein virtuelles Netzwerk namens „CorpNetwork“ mit drei Subnetzen: „SecNet“, „FrontEnd“ und „BackEnd“
 - Ein virtuelles Netzwerkgerät, in diesem Beispiel eine Firewall, das mit dem Subnetz "SecNet" verbunden ist
 - Eine Windows Server-Instanz, die einen Anwendungswebserver darstellt ("IIS01")
 - Zwei Windows Server-Instanzen, die Back-End-Anwendungsserver darstellen ("AppVM01", "AppVM02")
@@ -36,7 +36,7 @@ Dieses Beispiel umfasst ein Abonnement, das Folgendes enthält:
 
 Der Referenzabschnitt enthält ein PowerShell-Skript, mit dem sich der größte Teil der oben beschriebenen Umgebung erstellen lässt. Die Erstellung der virtuellen Computer und Netzwerke wird zwar durch das Beispielskript ausgeführt, aber dies wird in diesem Dokument nicht im Einzelnen beschrieben.
 
-So erstellen Sie die Umgebung
+So erstellen Sie die Umgebung:
 
   1.	Speichern Sie die im Referenzabschnitt enthaltene und mit dem Namen, dem Speicherort und den IP-Adressen für das jeweilige Szenario aktualisierte XML-Netzwerkkonfigurationsdatei.
   2.	Aktualisieren Sie die Benutzervariablen im Skript gemäß der Umgebung, in der das Skript ausgeführt werden soll (Abonnements, Dienstnamen usw.).
@@ -44,7 +44,7 @@ So erstellen Sie die Umgebung
 
 **Hinweis**: Die im PowerShell-Skript angegebene Region muss der Region in der XML-Netzwerkkonfigurationsdatei entsprechen.
 
-Nachdem das Skript erfolgreich ausgeführt wurde, können im Anschluss folgende Schritte ausgeführt werden:
+Nachdem das Skript erfolgreich ausgeführt wurde, können folgende Schritte ausgeführt werden:
 
 1.	Richten Sie die Firewallregeln ein. Dieses Thema wird im unten stehenden Abschnitt "Firewallregeln" beschrieben.
 2.	Optional stehen im Referenzabschnitt zwei Skripts zum Einrichten des Webservers und des Anwendungsservers mit einer einfachen Webanwendung zur Verfügung, um Tests mit dieser DMZ-Konfiguration zu ermöglichen.
@@ -110,22 +110,22 @@ In diesem Beispiel werden die folgenden Befehle verwendet, um die Routingtabelle
 
 2.	Nachdem die Routingtabelle erstellt wurde, können bestimmte benutzerdefinierte Routen hinzugefügt werden. In diesem Codeausschnitt wird der gesamte Datenverkehr (0.0.0.0/0) über das virtuelle Gerät weitergeleitet (mithilfe einer Variablen, $VMIP[0], wird die IP-Adresse übergeben, die weiter oben im Skript bei der Erstellung des virtuellen Geräts zugewiesen wurde). Im Skript wird auch eine entsprechende Regel in der Front-End-Tabelle erstellt.
 
-		Get-AzureRouteTable $BERouteTableName |`
+		Get-AzureRouteTable $BERouteTableName | `
 		    Set-AzureRoute -RouteName "All traffic to FW" -AddressPrefix 0.0.0.0/0 `
 		    -NextHopType VirtualAppliance `
 		    -NextHopIpAddress $VMIP[0]
 
 3. Der oben stehende Routeneintrag überschreibt die Standardroute "0.0.0.0/0". Da aber die Standardroute "10.0.0.0/16" noch vorhanden ist, kann der Datenverkehr im VNet ohne Umweg über das virtuelle Netzwerkgerät direkt an das Ziel weitergeleitet werden. Um dieses Verhalten zu korrigieren, muss folgende Regel hinzugefügt werden.
 
-	    Get-AzureRouteTable $BERouteTableName `
-	        |Set-AzureRoute -RouteName "Internal traffic to FW" -AddressPrefix $VNetPrefix `
+	    Get-AzureRouteTable $BERouteTableName | `
+	        Set-AzureRoute -RouteName "Internal traffic to FW" -AddressPrefix $VNetPrefix `
 	        -NextHopType VirtualAppliance `
 	        -NextHopIpAddress $VMIP[0]
 
 4. An diesem Punkt muss eine Auswahl getroffen werden. Mit den beiden oben angegebenen Routen wird der gesamte Datenverkehr zur Bewertung an die Firewall geleitet, sogar Datenverkehr innerhalb eines einzelnen Subnetzes. Dies ist möglicherweise erwünscht. Um jedoch eine lokale Weiterleitung des Datenverkehrs innerhalb eines Subnetzes ohne Beteiligung einer Firewall zu ermöglichen, kann eine dritte, sehr spezifische Regel hinzugefügt werden. Diese Route gibt an, dass Datenverkehr an jede Adresse, die für das lokalen Netzwerk bestimmt ist, direkt dorthin geleitet werden kann (NextHopType = VNETLocal).
 
-	    Get-AzureRouteTable $BERouteTableName `
-	        |Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $BEPrefix `
+	    Get-AzureRouteTable $BERouteTableName | `
+	        Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $BEPrefix `
 	        -NextHopType VNETLocal
 
 5.	Wenn die Routingtabelle erstellt und mit benutzerdefinierten Routen aufgefüllt wurde, muss sie an ein Subnetz gebunden werden. Im Skript wird auch die Front-End-Routingtabelle an das Front-End-Subnetz gebunden. Hier sehen Sie das Bindungsskript für das Back-End-Subnetz.
@@ -145,8 +145,8 @@ Die Einrichtung der IP-Weiterleitung erfolgt über einen einzigen Befehl und kan
 
 1.	Rufen Sie die VM-Instanz auf, die Ihr virtuelles Gerät darstellt – in diesem Fall die Firewall –, und aktivieren Sie die IP-Weiterleitung (Hinweis: Jedes rote Element, das mit einem Dollarzeichen beginnt, wie etwa $VMName[0], ist eine benutzerdefinierte Variable aus dem Skript im Referenzabschnitt dieses Dokuments. Die in eckigen Klammern eingeschlossene Null, [0], repräsentiert den ersten virtuellen Computer im VM-Array. Damit das Beispielskript ohne Änderung funktioniert, muss es sich beim ersten virtuellen Computer, VM 0, um die Firewall handeln):
 
-		Get-AzureVM -Name $VMName[0] -ServiceName $ServiceName[0] `
-		   |Set-AzureIPForwarding -Enable
+		Get-AzureVM -Name $VMName[0] -ServiceName $ServiceName[0] | `
+		   Set-AzureIPForwarding -Enable
 
 ## Netzwerksicherheitsgruppen
 In diesem Beispiel wird eine Netzwerksicherheitsgruppe erstellt und dann mit einer einzigen Regel geladen. Diese Gruppe wird dann nur an die Front-End- und Back-End-Subnetze (nicht an SecNet) gebunden. Die folgende Regel wird deklarativ erstellt:
@@ -941,4 +941,4 @@ Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installier
 [HOME]: ../best-practices-network-security.md
 [SampleApp]: ./virtual-networks-sample-app.md
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -65,15 +65,6 @@ Wenn „hdiuser“ einen Auftrag mit „spark-submit“ übermittelt, tritt der 
 
 Im Folgenden sind einige Probleme im Zusammenhang mit Jupyter Notebooks genannt.
 
-### Jupyter Notebooks können nicht als IPYNB-Datei heruntergeladen werden.
-
-Wenn Sie die neueste Version von Jupyter Notebooks für HDInsight Spark ausführen und versuchen, eine Kopie des Notebooks als **IPYNB**-Datei von der Jupyter Notebook-Benutzeroberfläche herunterzuladen, tritt möglicherweise ein interner Serverfehler auf.
-
-**Lösung:**
-
-1.	Das Notebook kann in einem anderen Format als IPYNB (beispielsweise als TXT-Datei) heruntergeladen werden.  
-2.	Wenn Sie die IPYNB-Datei benötigen, können Sie diese aus Ihrem Clustercontainer in Ihrem Speicherkonto unter **/HdiNotebooks** herunterladen. Dies gilt nur für die neueste Version von Jupyter Notebooks für HDInsight, die Sicherungen von Notebooks im Speicherkonto unterstützt. Bei vorherigen Versionen von Jupyter Notebooks für HDInsight Spark tritt dieses Problem allerdings nicht auf.
-
 
 ### Notebooks mit Nicht-ASCII-Zeichen in Dateinamen
 
@@ -113,10 +104,6 @@ Wenn dem Spark-Cluster nicht genügend Ressourcen zur Verfügung stehen, tritt b
 
 2. Starten Sie das Notebook, das Sie starten wollten, neu. Nun sollten genügend Ressourcen für die Sitzungserstellung verfügbar sein.
 
-### Möglicher Fehler beim Zurücksetzen auf einen Wiederherstellungspunkt
-
-Sie können Prüfpunkte in Jupyter Notebooks für den Fall erstellen, dass Sie auf eine frühere Version des Notebooks wiederherstellen müssen. Falls die aktuelle Version des Notebooks jedoch eine SQL-Abfrage mit automatischer Visualisierung enthält, kann das Wiederherstellen auf einen zuvor gespeicherten Prüfpunkt zu einem Fehler führen.
-
 ##Weitere Informationen
 
 * [Übersicht: Apache Spark in Azure HDInsight](hdinsight-apache-spark-overview.md)
@@ -143,7 +130,7 @@ Sie können Prüfpunkte in Jupyter Notebooks für den Fall erstellen, dass Sie a
 
 * [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen und Übermitteln von Spark Scala-Anwendungen](hdinsight-apache-spark-intellij-tool-plugin.md)
 
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md) (Verwenden von HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Spark-Anwendungen)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely (Verwenden von HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Spark-Anwendungen)](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 
 * [Verwenden von Zeppelin-Notebooks mit einem Spark-Cluster in HDInsight](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -157,6 +144,6 @@ Sie können Prüfpunkte in Jupyter Notebooks für den Fall erstellen, dass Sie a
 
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 
-* [Track and debug jobs running on an Apache Spark cluster in HDInsight](hdinsight-apache-spark-job-debugging.md) (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)
+* [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

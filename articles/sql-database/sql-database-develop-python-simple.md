@@ -47,4 +47,8 @@ Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie In
 
 Weitere Informationen finden Sie im [Python Developer Center](/develop/python/).
 
-<!---HONumber=AcomDC_0518_2016-->
+## Zusätzliche Ressourcen
+
+Informationen zu gängigen Datenarchitekturmustern von mehrinstanzenfähigen SaaS-Datenbankanwendungen (Software as a Service) finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+
+<!---HONumber=AcomDC_0615_2016-->

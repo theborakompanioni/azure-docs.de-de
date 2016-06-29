@@ -4,7 +4,7 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="nadavhelfman"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
@@ -72,4 +72,4 @@ Der neue Datenbank-IP-Endpunkt ist abhängig von der Region der Datenbank:
 | Kanada, Mitte | 13\.88.248.106 |
 | Kanada, Osten | 40\.86.227.82 |
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -13,7 +13,7 @@ ms.workload="data-services"
 ms.tgt_pltfrm="na"
 ms.devlang="na"
 ms.topic="article"
-ms.date="05/25/2016"
+ms.date="06/14/2016"
 ms.author="garye;krishnan"/>
 
 # Durchführen der erweiterten Analyse mit Azure Machine Learning mit Daten aus einer lokalen SQL Server-Datenbank
@@ -57,14 +57,14 @@ Sie sollten beim Einrichten und Verwenden eines Datenverwaltungsgateways Folgend
 
 - Sie müssen das Datenverwaltungsgateway auch dann für Azure Machine Learning verwenden, wenn Sie Azure ExpressRoute für andere Daten verwenden. Auch wenn Sie ExpressRoute einsetzen und mit dem Datenverwaltungsgateway eine Verbindung zwischen Machine Learning und der Datenquelle herstellen, sollten Sie Ihre Datenquelle wie eine lokale Datenquelle behandeln (die sich hinter einer Firewall befindet).
 
-Ausführliche Informationen zu Installationsvoraussetzungen, Installationsschritten und Tipps zur Problembehandlung finden Sie in den Anfangsabschnitten des Artikels [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](../data-factory/data-factory-move-data-between-onprem-and-cloud.md).
+Ausführliche Informationen zu Installationsvoraussetzungen, Installationsschritten und Tipps zur Problembehandlung finden Sie im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](../data-factory/data-factory-move-data-between-onprem-and-cloud.md#considerations-for-using-data-management-gateway) beginnend mit dem Abschnitt [Überlegungen zur Verwendung des Datenverwaltungsgateways](../data-factory/data-factory-move-data-between-onprem-and-cloud.md#considerations-for-using-data-management-gateway).
 
 ## <span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>Eingang von Daten aus einer lokalen SQL Server-Datenbank in Azure Machine Learning
 
 
 In dieser exemplarischen Vorgehensweise richten Sie ein Datenverwaltungsgateway in einem Azure Machine Learning-Arbeitsbereich ein, konfigurieren es und lesen dann Daten aus einer lokalen SQL Server-Datenbank.
 
-> [AZURE.TIP] Bevor Sie beginnen, deaktivieren Sie den Popupblocker Ihres Browsers für `studio.azureml.net`. Wenn Sie den Google Chrome-Browser verwenden, laden Sie eines der verschiedenen Plug-ins herunter, die im Google Chrome WebStore unter [ClickOnce-App-Erweiterungen](https://chrome.google.com/webstore/search/clickonce?_category=extensions) verfügbar sind, und installieren Sie es.
+> [AZURE.TIP] Bevor Sie beginnen, deaktivieren Sie den Popupblocker Ihres Browsers für `studio.azureml.net`. Wenn Sie den Browser Google Chrome verwenden, laden Sie eines der Plug-Ins herunter, die im Google Chrome WebStore unter [ClickOnce-App-Erweiterungen](https://chrome.google.com/webstore/search/clickonce?_category=extensions) verfügbar sind, und installieren Sie es.
 
 ### Schritt 1: Erstellen eines Gateways
 
@@ -72,7 +72,7 @@ Der erste Schritt ist das Erstellen und Einrichten des Gateways für den Zugriff
 
 1.  Melden Sie sich bei [Azure Machine Learning Studio](https://studio.azureml.net/Home/) an, und wählen Sie den Arbeitsbereich, in dem Sie arbeiten möchten.
 
-2.  Klicken Sie links auf das Blatt **SETTINGS**, und klicken Sie dann oben auf die Registerkarte **DATA GATEWAYS**.
+2.  Klicken Sie links auf das Blatt **SETTINGS** und dann oben auf die Registerkarte **DATA GATEWAYS**.
 
 3.  Klicken Sie am unteren Bildschirmrand auf **NEW DATA GATEWAY**.
 
@@ -140,7 +140,7 @@ Nachdem Sie das Gateway eingerichtet haben, können Sie ein **Import Data**-Modu
 
     ![](media\machine-learning-use-data-from-an-on-premises-sql-server\experiment-save-as.png)
 
-4.  Klicken Sie auf das **Import Data**-Modul, um es auszuwählen, wählen Sie dann rechts neben dem Bereich in **Properties** in der Dropdown-Liste **Data source** „On-Premises SQL Database“.
+4.  Klicken Sie auf das **Import Data**-Modul, um es auszuwählen, wählen Sie dann rechts neben dem Bereich in **Properties** in der Einblendliste **Data source** „On-Premises SQL Database“ aus.
 
 5.  Wählen Sie das **Data gateway**, das sie installiert und registriert haben. Sie können ein anderes Gateway einrichten, indem Sie „(add new Data Gateway…)“ auswählen.
 
@@ -158,8 +158,8 @@ Nachdem Sie das Gateway eingerichtet haben, können Sie ein **Import Data**-Modu
 
 8.  Klicken Sie auf **RUN**, um das Experiment auszuführen.
 
-Nach Abschluss der Experimentausführung können Sie die Daten, die Sie aus der Datenbank importiert haben, durch Klicken auf den Ausgabeport des **Import Data**-Moduls und Auswählen von **Visualize** visuell darstellen.
+Nach Abschluss der Ausführung des Experiments können Sie die Daten, die Sie aus der Datenbank importiert haben, durch Klicken auf den Ausgabeport des **Import Data**-Moduls und Auswählen von **Visualize** visuell darstellen.
 
 Wenn Sie die Entwicklung des Experiments abgeschlossen haben, können Sie Ihr Modell bereitstellen und in Betrieb nehmen. Mit dem Batchausführungsdienst werden Daten aus der im **Import Data**-Modul konfigurierten lokalen SQL Server-Datenbank gelesen und für die Bewertung verwendet. Sie können zwar den Request Response Service zur Bewertung lokaler Daten verwenden, aber Microsoft empfiehlt stattdessen die Verwendung des [Excel-Add-Ins](machine-learning-excel-add-in-for-web-services.md). Derzeit wird das Schreiben in eine lokale SQL Server-Datenbank über **Export Data** weder in Ihren Experimenten noch in veröffentlichten Webdiensten unterstützt.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

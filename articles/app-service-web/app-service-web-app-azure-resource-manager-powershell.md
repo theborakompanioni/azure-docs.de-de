@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/23/2016"
+	ms.date="06/14/2016"
 	ms.author="aelnably"/>
 
 # Verwenden von auf Azure Resource Manager basierenden PowerShell-Befehlen zum Verwalten von Azure-Web-Apps#
@@ -42,11 +42,22 @@ Beispiel für die Verwendung dieses Cmdlets:
 
     New-AzureRmAppServicePlan -Name ContosoAppServicePlan -Location "South Central US" -ResourceGroupName ContosoAzureResourceGroup -Tier Premium -WorkerSize Large -NumberofWorkers 10
 
+### Erstellen eines App Service-Plans in einer App Service-Umgebung ###
+Zum Erstellen eines neuen App Service-Plans in einer App Service-Umgebung kann der Befehl **New-AzureRmAppServicePlan** mit zusätzlichen Parametern zum Angeben des Namens der App Service-Umgebung und der Ressourcengruppe verwendet werden, zu der die App Service-Umgebung gehört.
+
+Beispiel für die Verwendung dieses Cmdlets:
+
+    New-AzureRmAppServicePlan -Name ContosoAppServicePlan -Location "South Central US" -ResourceGroupName ContosoAzureResourceGroup -AseName constosoASE -AseResourceGroupName contosoASERG -Tier Premium -WorkerSize Large -NumberofWorkers 10
+
+Informationen zur App Service-Umgebung finden Sie unter [Einführung in die App Service-Umgebung](app-service-app-service-environment-intro.md).
+
 ### Auflisten vorhandener App Service-Pläne ###
 
 Verwenden Sie zum Auflisten vorhandener App Service-Pläne das Cmdlet **Get-AzureRmAppServicePlan**.
 
-Verwenden Sie zum Auflisten aller App Service-Pläne in Ihrem Abonnement **Get-AzureRmAppServicePlan**.
+Verwenden Sie Folgendes zum Auflisten aller App Service-Pläne in Ihrem Abonnement:
+
+    Get-AzureRmAppServicePlan
 
 Verwenden Sie zum Auflisten aller App Service-Pläne in einer bestimmten Ressourcengruppe Folgendes:
 
@@ -59,7 +70,7 @@ Verwenden Sie zum Abrufen eines bestimmten App Service-Plans Folgendes:
 
 ### Konfigurieren eines vorhandenen App Service-Plans ###
 
-Um die Einstellungen eines vorhandenen App Service-Plans zu ändern, verwenden Sie das Cmdlet **Set-AzureRmAppServicePlan**. Sie können den Tarif, die Workergröße und Anzahl der Worker ändern.
+Verwenden Sie zum Ändern der Einstellungen eines vorhandenen App Service-Plans das Cmdlet **Set-AzureRmAppServicePlan**. Sie können den Tarif, die Workergröße und Anzahl der Worker ändern.
 
     Set-AzureRmAppServicePlan -Name ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup -Tier Standard -WorkerSize Medium -NumberofWorkers 9
 
@@ -98,7 +109,7 @@ Es folgen Beschreibungen der verschiedenen Parameter:
 - **Name**: Name der Web-App.
 - **AppServicePlan**: Name des Service-Plans, der zum Hosten der Web-App verwendet wird.
 - **ResourceGroupName**: Ressourcengruppe, die den App Service-Plan hostet.
-- **Location**: Die Region der Web-App.
+- **Location**: Der Speicherort der Web-App.
 
 Beispiel für die Verwendung dieses Cmdlets:
 
@@ -110,7 +121,7 @@ Zum Erstellen einer neuen Web-App in einer App Service-Umgebung kann der Befehl 
 
     New-AzureRmWebApp -Name ContosoWebApp -AppServicePlan ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup -Location "South Central US"  -ASEName ContosoASEName -ASEResourceGroupName ContosoASEResourceGroupName
 
-Informationen zur App Service-Umgebung finden Sie unter [Einführung in die App Service-Umgebung](app-service-app-service-environment-intro.md)
+Informationen zur App Service-Umgebung finden Sie unter [Einführung in die App Service-Umgebung](app-service-app-service-environment-intro.md).
 
 ### Löschen einer vorhandenen Web-App ###
 
@@ -200,8 +211,8 @@ Informationen zum Verwalten von Web-App-Zertifikaten finden Sie unter [SSL-Zerti
 
 ### Nächste Schritte ###
 - Weitere Informationen zur PowerShell-Unterstützung von Azure Resource Manager finden Sie unter [Verwenden von Azure PowerShell mit Azure Resource Manager](../powershell-azure-resource-manager.md).
-- Informationen zu App Service-Umgebungen finden Sie in der [Einführung in die App Service-Umgebung](app-service-app-service-environment-intro.md)
-- Informationen zum Verwalten von App Service-SSL-Zertifikaten mit PowerShell finden Sie unter [SSL-Zertifikatbindung mithilfe von PowerShell.](app-service-web-app-powershell-ssl-binding.md)
+- Informationen zu App Service-Umgebungen finden Sie in der [Einführung in die App Service-Umgebung](app-service-app-service-environment-intro.md).
+- Informationen zum Verwalten von App Service-SSL-Zertifikaten mit PowerShell finden Sie unter [SSL-Zertifikatbindung mithilfe von PowerShell](app-service-web-app-powershell-ssl-binding.md).
 - Die vollständige Liste von Azure Resource Manager-basierten PowerShell-Cmdlets für Azure-Web-Apps finden Sie in der [Azure-Cmdlet-Referenz für die Azure Resource Manager-basierten PowerShell-Cmdlets für Web-Apps](https://msdn.microsoft.com/library/mt619237.aspx).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

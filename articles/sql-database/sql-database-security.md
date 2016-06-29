@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="04/25/2016"
+   ms.date="06/09/2016"
    ms.author="thmullan;jackr"/>
 
 
@@ -85,10 +85,6 @@ Die Verwaltung von Datenbanken und logischen Servern über das klassische Azure-
 Durch [transparente Datenverschlüsselung](http://go.microsoft.com/fwlink/?LinkId=526242) kann die Azure SQL-Datenbank helfen, Ihre Daten zu schützen, indem ruhende oder in Datenbankdateien und Sicherungen gespeicherte Daten verschlüsselt werden. Um Ihre Datenbank zu verschlüsseln, stellen Sie als Datenbankbesitzer eine Verbindung her und führen Folgendes aus:
 
 ```
-CREATE DATABASE ENCRYPTION KEY
-   WITH ALGORITHM = AES_256
-   ENCRYPTION BY SERVER CERTIFICATE ##MS_TdeCertificate##;
-
 ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ```
 
@@ -108,4 +104,4 @@ Mit der Bedrohungserkennung von SQL-Datenbank wird die Überwachung um eine zus�
 
 Zusätzlich zu den oben aufgeführten Features und Funktionalitäten, mit denen Ihre Anwendung eine Reihe von Security Compliance-Anforderungen erfüllen kann, wird Azure SQL-Datenbank außerdem regelmäßigen Überprüfungen unterzogen und ist für eine Reihe von Compliance-Standards zertifiziert. Weitere Informationen finden Sie im [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/), wo die aktuellste Liste von [Compliance-Zertifizierungen für SQL-Datenbank](https://azure.microsoft.com/support/trust-center/services/) angezeigt wird.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

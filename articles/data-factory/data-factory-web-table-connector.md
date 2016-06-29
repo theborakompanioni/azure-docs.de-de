@@ -171,10 +171,9 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | -------- | ----------- | -------- | 
 | Typ | Die Typeigenschaft muss auf **Web** festgelegt sein. | Ja | 
 | Url | URL der Webquelle | Ja |
+| authenticationType | Anonym oder Standard. | Ja |
 | userName | Benutzername für die Standardauthentifizierung. | Ja (für die Standardauthentifizierung)
 | Kennwort | Kennwort für die Standardauthentifizierung. | Ja (für die Standardauthentifizierung)
-| authenticationType | „Anonymous“, „Basic“ oder „WebAPI“. | Ja |
-| apiKey | „ApiKey“ für die WebAPI-Authentifizierung. | Ja (für WebAPI-Authentifizierung)|   
 
 ### Verwenden der anonymen Authentifizierung
 
@@ -214,7 +213,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 
 Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie "structure", "availability" und "policy" des JSON-Codes eines Datasets sind bei allen Typen von Datasets (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
-Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset des Typs **WebTable** hat die folgenden Eigenschaften.
+Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der typeProperties-Abschnitt für ein Dataset des Typs **WebTable** hat die folgenden Eigenschaften.
 
 Eigenschaft | Beschreibung | Erforderlich
 :-------- | :----------- | :--------
@@ -252,16 +251,16 @@ Wenn bei der Kopieraktivität die Quelle vom Typ **WebSource** ist, werden zu di
 
 ## Abrufen des Indexes einer Tabelle auf einer HTML-Seite
 
-1. Starten Sie **Excel 2016** und wechseln Sie zur Registerkarte **Daten**.  
+1. Starten Sie **Excel 2016**, und wechseln Sie zur Registerkarte **Daten**.  
 2. Klicken Sie in der Symbolleiste auf **Neue Abfrage**, zeigen Sie auf **Aus anderen Quellen**, und klicken Sie auf **Aus dem Web**.
 	
 	![Power Query-Menü](./media/data-factory-web-table-connector/PowerQuery-Menu.png) 
-3. Geben Sie im Dialogfeld **Aus dem Web** die **URL**, die Sie im verknüpften Dienst JSON verwenden würden (z. B.: https://en.wikipedia.org/wiki/) zusammen mit den Pfad ein, den Sie für das Dataset angeben würden (z. B.: AFI%27s\_100\_Years... 100\_Movies), und klicken Sie auf **OK**. 
+3. Geben Sie im Dialogfeld **Aus dem Web** die **URL**, die Sie im JSON für den verknüpften Dienst verwenden möchten (z.B.: https://en.wikipedia.org/wiki/) zusammen mit den Pfad ein, den Sie für das Dataset angeben möchten (z.B.: AFI%27s\_100\_Years... 100\_Movies), und klicken Sie auf **OK**. 
 
 	![Aus dem Web (Dialogfeld)](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 
 	In diesem Beispiel verwendete URL: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies 
-4.  Wenn Sie das Dialogfeld **Webinhalt aufrufen** sehen, wählen Sie rechts **URL**, **Authentifizierung**, und klicken Sie auf **Verbinden**. 
+4.  Wenn Sie das Dialogfeld **Auf Webinhalt zugreifen** sehen, wählen Sie rechts **URL** und **Authentifizierung**, und klicken Sie auf **Verbinden**. 
 
 	![Webinhalt aufrufen (Dialogfeld)](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
 5.  Klicken Sie in der Strukturansicht auf ein **Tabellenelement**, um Inhalt aus der Tabelle anzuzeigen, und klicken Sie dann unten auf **Bearbeiten**.  
@@ -277,7 +276,7 @@ Wenn bei der Kopieraktivität die Quelle vom Typ **WebSource** ist, werden zu di
 	![Erweiterter Editor – Index](./media/data-factory-web-table-connector/AdvancedEditor-Index.png)
 
 
-Wenn Sie Excel 2013 verwenden, rufen Sie den Index mit [Microsoft Power Query für Excel](https://www.microsoft.com/download/details.aspx?id=39379) ab. Nähere Informationen finden Sie im Artikel [Verbinden Sie mit einer Webseite (Power Query)](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8). Die Schritte sind ähnlich wie bei Verwendung von [Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/).
+Wenn Sie Excel 2013 verwenden, rufen Sie den Index mit [Microsoft Power Query für Excel](https://www.microsoft.com/download/details.aspx?id=39379) ab. Nähere Informationen finden Sie im Artikel [Verbinden mit einer Webseite](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8). Die Schritte sind ähnlich wie bei Verwendung von [Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/).
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
@@ -286,4 +285,4 @@ Wenn Sie Excel 2013 verwenden, rufen Sie den Index mit [Microsoft Power Query f�
 ## Leistung und Optimierung  
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

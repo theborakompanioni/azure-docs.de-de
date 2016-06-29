@@ -112,9 +112,9 @@ Führen Sie die folgenden Schritte auf dem Client aus, um die Remoteverwaltung z
 
 7. Starten Sie eine Windows PowerShell-Sitzung auf dem Gerät, indem Sie den folgenden Befehl eingeben:
 
-     `Enter-pssession -Credential $cred -ConfigurationName SSAdminConsole -ComputerName <device_ip>`
+     `Enter-PSSession -Credential $cred -ConfigurationName SSAdminConsole -ComputerName <device_ip>`
 
-     >[AZURE.NOTE] Fügen Sie zum Erstellen einer Windows PowerShell-Sitzung für die Verwendung mit dem virtuellen StorSimple-Gerät den `–port`-Parameter an, und geben Sie den öffentlichen Port an, den Sie zum Remoting für das virtuelle StorSimple-Gerät konfiguriert haben.
+     >[AZURE.NOTE] Fügen Sie zum Erstellen einer Windows PowerShell-Sitzung für die Verwendung mit dem virtuellen StorSimple-Gerät den `–Port`-Parameter an, und geben Sie den öffentlichen Port an, den Sie zum Remoting für das virtuelle StorSimple-Gerät konfiguriert haben.
 
      Jetzt sollten Sie über eine aktive Windows PowerShell-Remotesitzung auf dem Gerät verfügen.
 
@@ -172,7 +172,7 @@ Führen Sie die folgenden Schritte auf der seriellen Gerätekonsole aus, um die 
 
      `Get-HcsSystem`
 
-    Stellen Sie sicher, dass im Feld **RemoteManagementMode** der Wert **HttpsEnabled** angezeigt wird. Die folgende Abbildung veranschaulicht diese Einstellungen in PuTTY.
+    Vergewissern Sie sich, dass das Feld **RemoteManagementMode** den Wert **HttpsEnabled** enthält. Die folgende Abbildung veranschaulicht diese Einstellungen in PuTTY:
 
      ![HTTPS (seriell) aktiviert](./media/storsimple-remote-connect/HCS_SerialHttpsEnabled.png)
 
@@ -250,15 +250,15 @@ Führen Sie die folgenden Schritte auf dem Computer aus, über den Sie die Windo
 
 3. Erstellen Sie neue Anmeldeinformationen, indem Sie Folgendes eingeben:
 
-     `$cred = new-object pscredential @("<IP of target device>\SSAdmin", (convertto-securestring -force -asplaintext "<Device Administrator Password>"))`
+     `$cred = New-Object pscredential @("<IP of target device>\SSAdmin", (ConvertTo-SecureString -Force -AsPlainText "<Device Administrator Password>"))`
 
     Dabei ist <*IP of target device*> die IP-Adresse von DATA 0 für Ihr Gerät, beispielsweise **10.126.173.90**, wie in der obigen Abbildung der Datei "hosts" dargestellt. Geben Sie auch das Administratorkennwort für Ihr Gerät an.
 
 4. Erstellen Sie eine Sitzung, indem Sie Folgendes eingeben:
 
-     `$session = new-pssession -usessl -CN <Serial number of target device> -credential $cred -configurationname "SSAdminConsole"`
+     `$session = New-PSSession -UseSSL -ComputerName <Serial number of target device> -Credential $cred -ConfigurationName "SSAdminConsole"`
 
-    Geben Sie im Cmdlet die <*Seriennummer des Zielgeräts*> als CN-Namen an. Diese Seriennummer wurde der IP-Adresse von DATA 0 in der Datei "hosts" auf dem Remotehost zugeordnet, beispielsweise **SHX0991003G44MT**, wie in der folgenden Abbildung dargestellt.
+    Geben Sie für den Parameter „-ComputerName“ im Cmdlet die *Seriennummer des Zielgeräts* an. Diese Seriennummer wurde der IP-Adresse von DATA 0 in der Datei "hosts" auf dem Remotehost zugeordnet, beispielsweise **SHX0991003G44MT**, wie in der folgenden Abbildung dargestellt.
 
 5. Geben Sie Folgendes ein:
 
@@ -274,4 +274,4 @@ Führen Sie die folgenden Schritte auf dem Computer aus, über den Sie die Windo
 
 - Erfahren Sie mehr über das [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0615_2016-->

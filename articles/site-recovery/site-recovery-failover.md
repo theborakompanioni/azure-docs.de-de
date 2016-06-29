@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="03/14/2016" 
+	ms.date="06/10/2016" 
 	ms.author="raynew"/>
 
 # Failover in Site Recovery
@@ -49,8 +49,8 @@ VMM-Standort zu Azure | Unterstützt | Unterstützt | Unterstützt
 Azure zu VMM-Standort | Nicht unterstützt | Unterstützt | Nicht unterstützt 
 Hyper-V-Standort zu Azure | Unterstützt | Unterstützt | Unterstützt
 Azure zu Hyper-V-Standort | Nicht unterstützt | Unterstützt | Nicht unterstützt
-VMware-Standort zu Azure | Unterstützt (erweitertes Szenario)<br/><br/> Nicht unterstützt (älteres Szenario) |Da in diesem Szenario eine fortlaufende Replikation verwendet wird, wird nicht zwischen geplantem und nicht geplantem Failover unterschieden. Wählen Sie **Failover** aus. | k. A.
-Physischer Server zu Azure | Nicht unterstützt | Da in diesem Szenario eine fortlaufende Replikation verwendet wird, wird nicht zwischen geplantem und nicht geplantem Failover unterschieden. Wählen Sie **Failover** aus. | k. A.
+VMware-Standort zu Azure | Unterstützt (erweitertes Szenario)<br/><br/> Nicht unterstützt (älteres Szenario) |Nicht unterstützt | Unterstützt
+Physischer Server zu Azure | Unterstützt (erweitertes Szenario)<br/><br/> Nicht unterstützt (älteres Szenario) | Nicht unterstützt | Unterstützt
 
 ## Failover und Failback
 
@@ -256,4 +256,4 @@ Wenn Sie den Schutz zwischen einem [Hyper-V-Standort und Azure](site-recovery-hy
 	>[AZURE.NOTE] Wenn Sie den Failbackauftrag während der Datensynchronisierung abbrechen, wird der lokale virtuelle Computer als beschädigt angezeigt. Das liegt daran, dass bei der Datensynchronisierung die aktuellen Daten von den Datenträgern virtueller Azure-Computer auf die lokalen Datenträger kopiert werden. Bis zum Abschluss der Synchronisierung befinden sich die Datenträgerdaten unter Umständen nicht in einem konsistenten Zustand. Wenn der lokale virtuelle Computer nach dem Abbruch der Datensynchronisierung gestartet wird, ist das Starten unter Umständen nicht möglich. Lösen Sie zum Abschließen der Datensynchronisierung das Failover erneut aus.
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0615_2016-->

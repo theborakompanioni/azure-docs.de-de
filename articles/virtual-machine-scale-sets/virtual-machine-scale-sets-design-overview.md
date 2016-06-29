@@ -37,12 +37,11 @@ Während dies die Erfolgsraten bei der Bereitstellung verbessert, kann es ein ve
 Wenn Sie die Überbereitstellung deaktivieren, erhalten Sie ein größeres Verhältnis von VMs pro Speicherkonto, aber Sie sollten nicht über 40 gehen.
 
 
-## Grenzen (Plattform im Vergleich zu benutzerdefiniert)
-Eine Skalierungsgruppe, die auf einem Plattformimage erstellt wird, ist auf 100 virtuelle Computer beschränkt, und wir empfehlen 5 Speicherkonten für diese Skalierung. Aber eine Skalierungsgruppe, die auf einem (von Ihnen erstellten) benutzerdefinierten Image erstellt wird, muss alle Betriebssystem-Datenträger-VHDs in einem Speicherkonto erstellen. Folglich ist 20 die maximale Anzahl von virtuellen Computern in einer Skalierungsgruppe, die auf einem benutzerdefinierten Image erstellt wird. Wenn Sie die Überbereitstellung deaktivieren, können Sie bis zu 40 gehen.
+## Grenzen
+Eine Skalierungsgruppe, die auf der Grundlage eines (von Ihnen erstellten) benutzerdefinierten Images erstellt wird, muss alle Betriebssystem-Datenträger-VHDs in einem einzelnen Speicherkonto erstellen. Folglich ist 20 die maximal empfohlene Anzahl von virtuellen Computern in einer Skalierungsgruppe, die auf einem benutzerdefinierten Image basiert. Wenn Sie die Überbereitstellung deaktivieren, können Sie bis zu 40 gehen.
 
+Eine Skalierungsgruppe, die auf der Grundlage eines Plattformimages erstellt wird, ist auf 100 virtuelle Computer beschränkt. (Wir empfehlen fünf Speicherkonten für diese Skalierung.)
 
-## Großer Maßstab
+Wenn die Anzahl benötigter virtueller Computer über diese Grenzwerte hinausgeht, müssen Sie mehrere Skalierungsgruppen bereitstellen. Eine exemplarische Vorgehensweise finden Sie in [dieser Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale).
 
-Eine Skalierungsgruppe ist auf 100 virtuelle Computer für Plattformimages, 20 für benutzerdefinierte Images (40 ohne Überbereitstellung) beschränkt. Wenn Sie weitere wünschen, müssen Sie mehrere Skalierungsgruppen bereitstellen. Ein Beispiel hierzu finden Sie in dieser Vorlage: https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale.
-
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0615_2016-->

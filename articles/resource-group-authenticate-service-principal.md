@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="05/26/2016"
+   ms.date="06/13/2016"
    ms.author="tomfitz"/>
 
 # Verwenden von Azure PowerShell zum Erstellen einer Active Directory-Anwendung zum Zugreifen auf Ressourcen
@@ -115,7 +115,7 @@ Sie haben eine Active Directory-Anwendung und einen Dienstprinzipal für diese A
 
 In diesem Abschnitt führen Sie die Schritte zum Erstellen einer AD-Anwendung mit einem Zertifikat aus.
 
-1. Erstellen eines selbstsignierten Zertifikats
+1. Erstellen eines selbstsignierten Zertifikats Wenn Sie Windows 10 oder Windows Server 2016 Technical Preview einsetzen, führen Sie den folgenden Befehl aus: 
 
         $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=exampleapp" -KeySpec KeyExchange
        
@@ -126,6 +126,12 @@ In diesem Abschnitt führen Sie die Schritte zum Erstellen einer AD-Anwendung mi
         Thumbprint                                Subject
         ----------                                -------
         724213129BD2B950BB3F64FAB0C877E9348B16E9  CN=exampleapp
+
+     Wenn nicht mit Windows 10 oder Windows Server 2016 Technical Preview arbeiten, laden Sie das PowerShell-Skript [Self-signed certificate generator](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6) herunter. Führen Sie die folgenden Befehle aus, um ein Zertifikat zu generieren.
+     
+        Import-Module -Name c:\New-SelfSignedCertificateEx.ps1
+        New-SelfSignedCertificateEx -Subject "CN=exampleapp" -KeySpec "Exchange" -FriendlyName "exampleapp"
+        $cert = Get-ChildItem -Path cert:\CurrentUser\My* -DnsName exampleapp
 
 2. Rufen Sie den Schlüsselwert aus dem Zertifikat ab.
 
@@ -209,4 +215,4 @@ Sie sind nun als Dienstprinzipal für die Active Directory-Anwendung authentifiz
 - Beispiele für die REST-Authentifizierung finden Sie unter [Resource Manager-REST-APIs](resource-manager-rest-api.md).
 - Ausführliche Schritte zum Integrieren einer Anwendung in Azure zur Verwaltung von Ressourcen finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](resource-manager-api-authentication.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

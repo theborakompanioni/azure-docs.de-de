@@ -58,11 +58,11 @@ Die Transaktionsreplikation ist eine Technologie, die seit SQL Server 6.5 in SQ
 - [Neueste Version von SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
 - [SQL Server 2016 – Vorschau](http://www.microsoft.com/server-cloud/products/sql-server-2016/)
 
-## Weitere Informationen
+## Weitere Ressourcen
 
 - [Transaktionsreplikation](https://msdn.microsoft.com/library/mt589530.aspx)
 - [SQL-Datenbank V12](sql-database-v12-whats-new.md)
 - [Teilweise oder vollständig unterstützte Transact-SQL-Funktionen](sql-database-transact-sql-information.md)
 - [Migrate non-SQL Server databases using SQL Server Migration Assistant (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -24,7 +24,7 @@ Das Spark-Streaming ist eine Erweiterung der Spark-Kern-API zum Erstellen von sk
 
 In diesem Tutorial erfahren Sie, wie Sie einen Azure Event Hub erstellen, Nachrichten mit einer Konsolenanwendung in Java für einen Event Hub erfassen und mit einer Spark-Anwendung, geschrieben in Scala, parallel abrufen. Diese Anwendung verwendet die Daten, die über Event Hubs gestreamt werden, und leitet sie an verschiedene Ausgaben weiter (Azure Storage Blob, Hive-Tabelle und SQL-Tabelle).
 
-> [AZURE.NOTE] Für die Anweisungen in diesem Artikel benötigen Sie beide Versionen des Azure-Portals. Verwenden Sie das [klassische Azure-Portal](https://manage.windowsazure.com), um einen Event Hub zu erstellen. Verwenden Sie das [Azure-Portal](https://ms.portal.azure.com/), um mit dem HDInsight Spark-Cluster zu arbeiten.
+> [AZURE.NOTE] Für die Anweisungen in diesem Artikel benötigen Sie beide Versionen des Azure-Portals. Verwenden Sie das [klassische Azure-Portal](https://manage.windowsazure.com), um einen Event Hub zu erstellen. Verwenden Sie das [Azure-Portal](https://portal.azure.com/), um mit dem HDInsight Spark-Cluster zu arbeiten.
 
 **Voraussetzungen:**
 
@@ -391,4 +391,4 @@ Eine Ausgabe ähnlich der folgenden sollte angezeigt werden:
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

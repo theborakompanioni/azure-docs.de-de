@@ -156,7 +156,7 @@ Nachdem Sie einen [elastischen Datenbankpool erstellt](sql-database-elastic-pool
 
 **Geschätzter Zeitaufwand:** 10 Minuten.
 
-1. Klicken Sie in der Dashboardansicht des elastischen Datenbankpools im [Azure-Portal](https://ms.portal.azure.com/#) auf **Auftrag erstellen**.
+1. Klicken Sie in der Dashboardansicht des elastischen Datenbankpools im [Azure-Portal](https://portal.azure.com/#) auf **Auftrag erstellen**.
 2. Wenn Sie zum ersten Mal einen Auftrag erstellen, müssen Sie **Aufträge für die elastische Datenbank** installieren, indem Sie auf **PREVIEW TERMS** klicken.
 3. Akzeptieren Sie die Bedingungen, indem Sie das Kontrollkästchen aktivieren.
 4. Klicken Sie in der Ansicht "Dienste installieren" auf **JOB CREDENTIALS**.
@@ -187,4 +187,4 @@ Stellen Sie sicher, dass Anmeldeinformationen mit den passenden Rechten für die
 [3]: ./media/sql-database-elastic-jobs-service-installation/start-board.png
 [4]: ./media/sql-database-elastic-jobs-service-installation/not-done.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

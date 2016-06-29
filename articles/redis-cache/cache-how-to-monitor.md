@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016" 
+	ms.date="06/13/2016" 
 	ms.author="sdanie"/>
 
 # Überwachen von Azure Redis Cache
@@ -54,7 +54,7 @@ Klicken Sie auf den Pfeil rechts neben **Speicherkonto**, um ein Speicherkonto a
 
 Wenn die Diagnoseeinstellungen konfiguriert sind, klicken Sie auf **Speichern**, um die Konfiguration zu speichern. Beachten Sie, dass es einen Moment dauern kann, bis die Änderungen wirksam werden.
 
->[AZURE.IMPORTANT] Caches innerhalb derselben Region und desselben Abonnements nutzen ein gemeinsames Speicherkonto für Diagnosedaten. Wenn die Konfiguration dieses Kontos geändert wird, gilt diese Änderung für alle Caches dieses Abonnements in dieser Region.
+>[AZURE.IMPORTANT] Für Caches innerhalb derselben Region und desselben Abonnements gelten die gleichen Speichereinstellungen für Diagnosedaten. Wenn die Konfiguration geändert wird (durch Aktivieren/Deaktivieren der Diagnose oder Ändern des Speicherkontos), gilt diese Änderung für alle Caches dieses Abonnements in dieser Region.
 
 Um die gespeicherten Metriken anzuzeigen, untersuchen Sie die Tabellen in Ihrem Speicherkonto, deren Namen mit `WADMetrics` beginnen. Weitere Informationen zum Zugriff auf die gespeicherten Metriken außerhalb des Azure-Portals finden Sie im Beispiel [Access Redis Cache Monitoring data](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) (in englischer Sprache).
 
@@ -259,4 +259,4 @@ Weitere Informationen zu Warnungen in Azure finden Sie unter [Empfangen von Warn
 
 [redis-cache-premium-point-shard]: ./media/cache-how-to-monitor/redis-cache-premium-point-shard.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

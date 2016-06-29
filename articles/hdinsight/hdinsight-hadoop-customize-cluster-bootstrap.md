@@ -14,21 +14,30 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/18/2016"
+	ms.date="06/09/2016"
 	ms.author="jgao"/>
 
 # Anpassen von HDInsight-Clustern mithilfe von Bootstrap
 
 Mitunter möchten Sie die Konfigurationsdateien bearbeiten, die im Folgenden aufgeführt sind:
 
+- clusterIdentity.xml
 - core-site.xml
+- gateway.xml
+- hbase-env.xml
+- hbase-site.xml
 - hdfs-site.xml
-- mapred-site.xml
-- yarn-site.xml
+- hive-env.xml
 - hive-site.xml
+- mapred-site
 - oozie-site.xml
+- oozie-env.xml
+- storm-site.xml
+- tez-site.xml
+- webhcat-site.xml
+- yarn-site.xml
 
-Die Cluster können die Änderungen aufgrund des Re-Imagings nicht beibehalten. Weitere Informationen zum Re-Imaging finden Sie unter [Role Instance Restarts Due to OS Upgrades](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx). Um die Änderungen für die Laufzeit des Clusters beizubehalten, können Sie während des Erstellungsprozesses die HDInsight-Clusteranpassung nutzen. Dies ist die empfohlene Methode zum Ändern der Konfiguration eines Clusters, die über die Neustartereignisse des Azure-Reimaging hinweg beibehalten werden. Diese Konfigurationsänderungen werden vor dem Starten des Diensts angewendet, sodass Dienste nicht neu gestartet werden müssen.
+Die Cluster können die Änderungen aufgrund des Re-Imagings nicht beibehalten. Weitere Informationen zum Re-Imaging finden Sie unter [Role Instance Restarts Due to OS Upgrades](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx) (Neustarts von Rolleninstanzen aufgrund von Betriebssystemupgrades). Um die Änderungen für die Laufzeit des Clusters beizubehalten, können Sie während des Erstellungsprozesses die HDInsight-Clusteranpassung nutzen. Dies ist die empfohlene Methode zum Ändern der Konfiguration eines Clusters, die über die Neustartereignisse des Azure-Reimaging hinweg beibehalten werden. Diese Konfigurationsänderungen werden vor dem Starten des Diensts angewendet, sodass Dienste nicht neu gestartet werden müssen.
 
 Es gibt drei Methoden zum Verwenden von Bootstrap:
 
@@ -103,7 +112,7 @@ Weitere Informationen finden Sie im Blog von Azim Uddin mit dem Titel [Customizi
 
 ## Verwenden von .NET SDK
 
-Informationen hierzu finden Sie unter [Erstellen von Linux-basierten Clustern in HDInsight mit dem .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk#use-bootstrap).
+Informationen hierzu finden Sie unter [Erstellen von Linux-basierten Clustern in HDInsight mit dem .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-bootstrap).
 
 ## Verwenden von Azure-Ressourcen-Manager-Vorlagen
 
@@ -252,4 +261,4 @@ Dieses PowerShell-Skript erstellt einen HDInsight-Cluster und passt eine Hive-Ei
 
     #endregion
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

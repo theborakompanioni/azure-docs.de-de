@@ -3,7 +3,7 @@
    description="Allgemeine Fragen und Antworten, die Kunden über integrierte und optionale Funktionen für Geschäftskontinuität und Notfallwiederherstellung mit Azure SQL-Datenbank stellen." 
    services="sql-database" 
    documentationCenter="" 
-   authors="elfisher" 
+   authors="carlrabeler" 
    manager="jhubbard" 
    editor="monicar"/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
    ms.date="04/25/2016"
-   ms.author="elfish"/>
+   ms.author="carlrab"/>
 
 # Häufig gestellte Fragen zur Geschäftskontinuität
 
@@ -54,4 +54,4 @@ Es gibt keine integrierte Funktion für Massenwiederherstellungen. Das Skript [A
 
 Verwenden Sie die dynamische Verwaltungsansicht (DMV) [sys.dm\_geo\_replication\_link\_status](https://msdn.microsoft.com/library/mt575504.aspx), um den Zeitpunkt der letzten Replikation, die Verzögerung der letzten Replikation und andere Informationen über den Replikationslink zu erhalten.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -24,17 +24,9 @@ Azure Functions vermittelt eine durch Ereignissteuerung und Bedarfsabhängigkeit
 
 In diesem Thema wird gezeigt, wie Sie eine neue Funktion in C# erstellen, die basierend auf einem Ereignistimer ausgeführt wird, um Nachrichten einer Speicherwarteschlange hinzuzufügen.
 
-Sie können sich auch ein kurzes Video ansehen, das die Ausführung dieser Schritte im Portal zeigt.
-
-## Video ansehen
-
-Das folgende Video zeigt die Ausführung der grundlegenden Schritte in diesem Tutorial.
-
-[AZURE.VIDEO create-an-event-processing-azure-function]
-
 ## Voraussetzungen 
 
-Bevor Sie eine Funktion erstellen können, müssen Sie über ein aktives Azure-Konto verfügen. Wenn Sie noch kein Azure-Konto haben, [erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/).
+Bevor Sie eine Funktion erstellen können, müssen Sie über ein aktives Azure-Konto verfügen. Wenn Sie noch kein Azure-Konto haben, [können Sie ein kostenloses Konto erstellen](https://azure.microsoft.com/free/).
 
 ## Erstellen einer per Timer ausgelösten Funktion aus der Vorlage
 
@@ -42,7 +34,7 @@ Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Bevor Sie e
 
 1. Rufen Sie das [Azure Functions-Portal](https://functions.azure.com/signin) auf, und melden Sie sich mit Ihrem Azure-Konto an.
 
-2. Wenn Sie bereits eine Funktionen-App besitzen, wählen Sie diese in **Ihre Funktionen-App** aus, und klicken Sie dann auf **Öffnen**. Um eine neue Funktionen-App zu erstellen, geben Sie einen eindeutigen **Namen** für Ihre neue Funktionen-App ein. Sie können auch den generierten Namen übernehmen. Wählen Sie anschließend die bevorzugte **Region** aus, und klicken Sie auf **Erstellen und starten**.
+2. Wenn Sie bereits eine Funktions-App besitzen, wählen Sie diese in **Ihre Funktions-Apps** aus, und klicken Sie dann auf **Öffnen**. Um eine neue Funktions-App zu erstellen, geben Sie einen eindeutigen **Namen** für Ihre neue Funktions-App ein, oder nehmen Sie den generierten Namen an, wählen Sie die bevorzugte **Region** aus, und klicken Sie anschließend auf **Erstellen und starten**.
 
 3. Klicken Sie in Ihrer Funktionen-App auf **+ Neue Funktion** > **TimerTrigger – C#** > **Erstellen**. Eine Funktion mit einem Standardnamen wird erstellt, die nach dem Standardzeitplan einmal pro Minute ausgeführt wird.
 
@@ -85,8 +77,8 @@ Weitere Informationen zu Azure Functions finden Sie in diesen Themen.
 
 + [Entwicklerreferenz zu Azure Functions](functions-reference.md) Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen.
 + [Testen von Azure Functions](functions-test-a-function.md) Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen.
-+ [Skalieren von Azure Functions](functions-scale.md) Beschreibt die für Azure Functions verfügbaren Servicepläne (einschließlich des dynamischen Serviceplans) sowie die Ermittlung des passenden Plans.  
++ [Skalieren von Azure Functions](functions-scale.md) Beschreibt die für Azure Functions verfügbaren Servicepläne, einschließlich des dynamischen Serviceplans, und wie Sie den richtigen Plan finden.  
 
 [AZURE.INCLUDE [Hinweis zu den ersten Schritten](../../includes/functions-get-help.md)]
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

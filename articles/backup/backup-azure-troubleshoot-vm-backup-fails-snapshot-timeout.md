@@ -109,7 +109,7 @@ Kann die Sicherungserweiterung immer noch nicht aktualisiert oder geladen werden
 
 ### So deinstallieren Sie die Erweiterung
 
-1. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com/).
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/).
 2. Suchen Sie nach dem bestimmten virtuellen Computer, auf dem Sicherungsprobleme auftreten.
 3. Klicken Sie auf **Einstellungen**.
 4. Klicken Sie auf **Erweiterungen**.
@@ -132,4 +132,4 @@ Die folgenden Umstände können zu Fehlern bei Momentaufnahmeaufgaben führen:
 | Der virtuelle Computer wird bei hoher CPU-/Arbeitsspeicherauslastung ausgeführt. | Wird der virtuelle Computer bei hoher CPU-Auslastung (über 90 Prozent) oder hoher Arbeitsspeicherauslastung ausgeführt, wird die Momentaufnahmeaufgabe der Warteschlange hinzugefügt und verzögert, bis schließlich eine Zeitüberschreitung auftritt. Versuchen Sie es in diesem Fall mit bedarfsgesteuerten Sicherungen. |
 |Der virtuelle Computer kann keine Host-/Fabric-Adresse aus DHCP abrufen.|Für die VM-Sicherung mithilfe von IaaS muss im Gastbetriebssystem die DHCP-Option aktiviert sein. Wenn der virtuelle Computer die Host-/Fabric-Adresse nicht aus DHCP-Antwort 245 abrufen kann, können keine Erweiterungen heruntergeladen oder ausgeführt werden. Wenn Sie eine statische private IP-Adresse benötigen, sollten Sie diese über die Plattform konfigurieren. Die DHCP-Option innerhalb des virtuellen Computers sollte aktiviert bleiben. Lesen Sie weitere Informationen zum [Festlegen einer statischen internen privaten IP-Adresse](../virtual-network/virtual-networks-reserved-private-ip.md).|
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

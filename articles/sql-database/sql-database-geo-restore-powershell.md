@@ -19,33 +19,33 @@
 # Wiederherstellen einer Azure SQL-Datenbank aus einer georedundanten Sicherung mit PowerShell
 
 > [AZURE.SELECTOR]
+- [Übersicht](sql-database-geo-restore.md)
 - [Azure-Portal](sql-database-geo-restore-portal.md)
 - [PowerShell](sql-database-geo-restore-powershell.md)
 
-In diesem Artikel wird erläutert, wie Sie Ihre Datenbank mit der Geowiederherstellung mithilfe von PowerShell auf einem neuen Server wiederherstellen können.
 
-Die [Geowiederherstellung](sql-database-geo-restore.md) bietet die Möglichkeit der Wiederherstellung einer Datenbank aus einer georedundanten Sicherung, um eine neue Datenbank zu erstellen. Die Datenbank kann auf einem beliebigen Server in jeder Azure-Region erstellt werden. Da die Quelle eine georedundante Sicherung ist, kann mit ihr eine Datenbank selbst dann wiederhergestellt werden, wenn sie aufgrund eines Ausfalls nicht mehr verfügbar ist. Die Geowiederherstellung ist für alle Diensttarife ohne zusätzliche Kosten automatisch aktiviert.
+In diesem Artikel wird erläutert, wie Sie Ihre Datenbank mit der Geowiederherstellung mithilfe von PowerShell auf einem neuen Server wiederherstellen können.
 
 [AZURE.INCLUDE [Starten der PowerShell-Sitzung](../../includes/sql-database-powershell.md)]
 
 ## Geowiederherstellung der Datenbank in einer eigenständigen Datenbank
 
-1. Rufen Sie die georedundante Sicherung der wiederherzustellenden Datenbank mit dem Cmdlet [Get-AzureRmSqlDatabaseGeoBackup](https://msdn.microsoft.com/library/azure/mt693388.aspx) ab.
+1. Rufen Sie mit dem Cmdlet [Get-AzureRmSqlDatabaseGeoBackup](https://msdn.microsoft.com/library/azure/mt693388.aspx) die georedundante Sicherung der wiederherzustellenden Datenbank ab.
 
         $GeoBackup = Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName "resourcegroup01" -ServerName "server01" -DatabaseName "database01"
 
-2. Starten Sie die Wiederherstellung aus der georedundanten Sicherung mit dem Cmdlet [Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx).
+2. Starten Sie mit dem Cmdlet [Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx) die Wiederherstellung auf der Grundlage der georedundanten Sicherung.
     
         Restore-AzureRmSqlDatabase –FromGeoBackup -ResourceGroupName "TargetResourceGroup" -ServerName "TargetServer" -TargetDatabaseName "RestoredDatabase" –ResourceId $GeoBackup.ResourceID -Edition "Standard" -RequestedServiceObjectiveName "S2"
 
 
 ## Geowiederherstellung der Datenbank in einem Pool für elastische Datenbanken
 
-1. Rufen Sie die georedundante Sicherung der wiederherzustellenden Datenbank mit dem Cmdlet [Get-AzureRmSqlDatabaseGeoBackup](https://msdn.microsoft.com/library/azure/mt693388.aspx) ab.
+1. Rufen Sie mit dem Cmdlet [Get-AzureRmSqlDatabaseGeoBackup](https://msdn.microsoft.com/library/azure/mt693388.aspx) die georedundante Sicherung der wiederherzustellenden Datenbank ab.
 
         $GeoBackup = Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName "resourcegroup01" -ServerName "server01" -DatabaseName "database01"
 
-2. Starten Sie die Wiederherstellung aus der georedundanten Sicherung mit dem Cmdlet [Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx). Geben Sie den Namen des Pools an, in dem Sie die Datenbank wiederherstellen möchten.
+2. Starten Sie mit dem Cmdlet [Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx) die Wiederherstellung auf der Grundlage der georedundanten Sicherung. Geben Sie den Namen des Pools an, in dem Sie die Datenbank wiederherstellen möchten.
     
         Restore-AzureRmSqlDatabase –FromGeoBackup -ResourceGroupName "TargetResourceGroup" -ServerName "TargetServer" -TargetDatabaseName "RestoredDatabase" –ResourceId $GeoBackup.ResourceID –ElasticPoolName "elasticpool01"  
 
@@ -60,4 +60,4 @@ Die [Geowiederherstellung](sql-database-geo-restore.md) bietet die Möglichkeit 
 - [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
 - [SQL-Datenbankdokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

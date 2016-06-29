@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/21/2016"
+	ms.date="06/13/2016"
 	ms.author="tomfitz"/>
 
 # Überwachen von Vorgängen mit dem Ressourcen-Manager
@@ -125,4 +125,4 @@ Die REST-Vorgänge für die Arbeit mit Überwachungsprotokollen gehören zur [In
 - Weitere Informationen zu den Befehlen zur Problembehandlung bei Bereitstellungen finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure](resource-manager-troubleshoot-deployments-portal.md).
 - Informationen zum Verhindern von Löschvorgängen für eine Ressource für alle Benutzer finden Sie unter [Sperren von Ressourcen mit Azure Resource Manager](resource-group-lock-resources.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0615_2016-->

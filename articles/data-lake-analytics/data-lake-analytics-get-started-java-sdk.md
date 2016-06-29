@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/22/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # Tutorial: Erste Schritte mit Azure Data Lake Analytics mithilfe des Java-SDK
@@ -38,7 +38,7 @@ In diesem Tutorial entwickeln Sie eine Java-Konsolenanwendung, die Beispiele fü
 
 Der unten angegebene Codeausschnitt enthält Code für die **nicht interaktive** Authentifizierung, bei der die Anwendung eigene Anmeldeinformationen bereitstellt.
 
-Sie müssen Ihrer Anwendung die Berechtigung zum Erstellen von Ressourcen in Azure erteilen, damit dieses Tutorial funktioniert. Es wird **dringend empfohlen**, dass Sie dieser Anwendung für die Zwecke dieses Tutorials nur die Berechtigung „Mitwirkender“ für eine neue, ungenutzte und leere Ressourcengruppe in Ihrem Azure-Abonnement gewähren.
+Sie müssen Ihrer Anwendung die Berechtigung zum Erstellen von Ressourcen in Azure erteilen, damit dieses Tutorial funktioniert. Es wird **dringend empfohlen**, dass Sie dieser Anwendung für die Zwecke dieses Tutorials die Berechtigung „Mitwirkender“ nur für eine neue, unbenutzte und leere Ressourcengruppe in Ihrem Azure-Abonnement gewähren.
 
 ## Erstellen einer Java-Anwendung
 
@@ -75,7 +75,17 @@ Sie müssen Ihrer Anwendung die Berechtigung zum Erstellen von Ressourcen in Azu
 	        <dependency>
 	            <groupId>com.microsoft.azure</groupId>
 	            <artifactId>azure-client-authentication</artifactId>
-	            <version>1.0.0-SNAPSHOT</version>
+	            <version>1.0.0-20160513.000802-24</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>com.microsoft.azure</groupId>
+	            <artifactId>azure-client-runtime</artifactId>
+	            <version>1.0.0-20160513.000812-28</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>com.microsoft.rest</groupId>
+	            <artifactId>client-runtime</artifactId>
+	            <version>1.0.0-20160513.000825-29</version>
 	        </dependency>
 	        <dependency>
 	            <groupId>com.microsoft.azure</groupId>
@@ -95,7 +105,9 @@ Sie müssen Ihrer Anwendung die Berechtigung zum Erstellen von Ressourcen in Azu
 5. Öffnen Sie die Datei **Main.java**, und ersetzen Sie den vorhandenen Codeblock durch den unten angegebenen Code. Geben Sie zudem die im Codeausschnitt genannten Werte für Parameter an, z.B. **localFolderPath**, **\_adlaAccountName**, **\_adlsAccountName**, **\_resourceGroupName**, und ersetzen Sie die Platzhalter für **CLIENT-ID**, **CLIENT-SECRET**, **TENANT-ID** und **SUBSCRIPTION-ID**.
 
 	Mit diesem Code werden Konten für Data Lake-Speicher und Data Lake Analytics erstellt und Dateien im Speicher erstellt. Zudem wird ein Auftrag ausgeführt, der Auftragsstatus abgerufen und die Auftragsausgabe heruntergeladen. Schließlich wird das Konto gelöscht.
- 
+
+>[AZURE.NOTE] Derzeit besteht ein bekanntes Problem mit dem Azure Data Lake-Dienst. Wenn die Beispiel-App unterbrochen wird oder ein Fehler auftritt, müssen Sie das Data Lake-Speicherkonto und das Data Lake Analytics-Konto, die vom Skript erstellt werden, möglicherweise manuell löschen. Wenn Sie mit dem Portal noch nicht vertraut sind, erhalten Sie erste wichtige Informationen im Artikel [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md).
+
 
 		package com.company;
 
@@ -255,6 +267,8 @@ Sie müssen Ihrer Anwendung die Berechtigung zum Erstellen von Ressourcen in Azu
 		        adlaParameters.setName(_adlaAccountName);
 		        adlaParameters.setProperties(adlaProperties);
 		
+				/* If this line generates an error message like "The deep update for property 'DataLakeStoreAccounts' is not supported", please delete the ADLS and ADLA accounts via the portal and re-run your script. */
+ 
 		        _adlaClient.getAccountOperations().create(_resourceGroupName, _adlaAccountName, adlaParameters);
 		    }
 		
@@ -389,4 +403,4 @@ Sie müssen Ihrer Anwendung die Berechtigung zum Erstellen von Ressourcen in Azu
 - Informationen zu Verwaltungsaufgaben finden Sie unter [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md).
 - Eine Übersicht über Data Lake Analytics finden Sie unter [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

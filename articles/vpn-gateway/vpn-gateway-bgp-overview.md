@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/26/2016"
+   ms.date="06/16/2016"
    ms.author="yushwang"/>
 
 # Übersicht über BGP mit Azure-VPN-Gateways
@@ -35,7 +35,9 @@ BGP bietet einige Vorteile und neue Möglichkeiten:
 
 Mit BGP müssen Sie lediglich ein Mindestpräfix für einen bestimmten BGP-Peer über den IPsec-S2S-VPN-Tunnel deklarieren. Das Präfix muss mindestens die Größe eines Hostpräfix (/32) der BGP-Peer-IP-Adresse Ihres lokalen VPN-Geräts besitzen. Sie können steuern, welche lokalen Netzwerkpräfixe sie gegenüber Azure ankündigen möchten, um Ihrem virtuellen Azure-Netzwerk den Zugriff darauf zu ermöglichen.
 	
-Sie können auch größere Präfixe ankündigen, die ggf. einige Ihrer VNET-Adresspräfixe umfassen – beispielsweise die Standardroute (0.0.0.0/0) oder einen großen privaten IP-Adressraum (etwa 10.0.0.0/8). Beachten Sie jedoch, dass die Präfixe keinem Ihrer VNET-Präfixe entsprechen dürfen. Mit Ihren VNET-Präfixen identische Routen werden abgelehnt.
+Sie können auch größere Präfixe ankündigen, die ggf. einige Ihrer VNET-Adresspräfixe umfassen, z.B. einen großen privaten IP-Adressraum (etwa 10.0.0.0/8). Beachten Sie jedoch, dass die Präfixe keinem Ihrer VNET-Präfixe entsprechen dürfen. Mit Ihren VNET-Präfixen identische Routen werden abgelehnt.
+
+>[AZURE.IMPORTANT] Das Ankündigen der Standardroute (0.0.0.0/0) für Azure VPN Gateways ist derzeit blockiert. Weitere Updates werden bereitgestellt, sobald diese Funktion aktiviert wurde.
 
 #### Unterstützung mehrerer Tunnel zwischen einem VNET und einem lokalen Standort mit automatischem Failover auf der Grundlage von BGP
 
@@ -63,6 +65,6 @@ Das folgende Diagramm veranschaulicht ein Beispiel für eine Mehrfachhop-Topolog
 
 ## Nächste Schritte
 
-Schritte zum Konfigurieren von BGP für standortübergreifende Verbindungen und VNET-zu-VNET-Verbindungen finden Sie unter [Getting started with BGP on Azure VPN gateways](./vpn-gateway-bgp-resource-manager-ps.md) (Erste Schritte mit BGP für Azure-VPN-Gateways).
+Schritte zum Konfigurieren von BGP für standortübergreifende Verbindungen und VNET-zu-VNET-Verbindungen finden Sie unter [Konfigurieren von BGP auf Azure VPN Gateways mithilfe von Azure Resource Manager und PowerShell](./vpn-gateway-bgp-resource-manager-ps.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0622_2016-->

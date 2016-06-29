@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/01/2016"
+   ms.date="06/20/2016"
    ms.author="ganesr"/>
 
 # Umstellen von ExpressRoute-Verbindungen vom klassischen Bereitstellungsmodell auf das Resource Manager-Bereitstellungsmodell
@@ -110,4 +110,4 @@ Folgen Sie den Anweisungen unter [Verschieben von ExpressRoute-Verbindungen vom 
 	- [Konfigurieren des Routings](expressroute-howto-routing-arm.md)
 	- [Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0622_2016-->

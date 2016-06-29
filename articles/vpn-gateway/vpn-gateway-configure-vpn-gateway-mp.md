@@ -52,7 +52,7 @@ Das folgende Verfahren führt Sie durch die Konfiguration des VPN-Gateways im kl
 
 Vor dem Konfigurieren Ihres Gateways müssen Sie zuerst Ihr virtuelles Netzwerk erstellen. Die Schritte zum Erstellen eines virtuellen Netzwerks für standortübergreifende Verbindungen finden Sie unter [Konfigurieren eines virtuellen Netzwerks mit einer Standort-zu-Standort-VPN-Verbindung](vpn-gateway-site-to-site-create.md) bzw. unter [Konfigurieren eines virtuellen Netzwerks mit einer Punkt-zu-Standort-VPN-Verbindung](vpn-gateway-point-to-site-create.md). Führen Sie anschließend die folgenden Schritte durch, um das VPN-Gateway zu konfigurieren und die Informationen zu sammeln, die Sie zum Konfigurieren des VPN-Geräts benötigen.
 
-Wenn Sie bereits über ein VPN Gateway verfügen und den Routingtyp ändern möchten, lesen Sie unter [Gewusst wie: Ändern des VPN-Routingtyps für das Gateway](#how-to-change-your-vpn-gateway-type) weiter.
+Wenn Sie bereits über ein VPN Gateway verfügen und den Routingtyp ändern möchten, lesen Sie unter [Gewusst wie: Ändern des VPN-Routingtyps für Ihr Gateway](#how-to-change-the-vpn-routing-type-for-your-gateway) weiter.
 
 ## Erstellen eines VPN-Gateways
 
@@ -168,4 +168,4 @@ Wenn Sie eine Punkt-zu-Standort-VPN-Verbindung konfigurieren möchten, helfen Ih
 
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

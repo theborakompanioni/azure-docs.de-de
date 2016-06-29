@@ -24,7 +24,7 @@ Das folgende Beispiel zeigt, wie Sie eine WebLogic Server 12c-Instanz auf einem 
 
 ##Konfigurieren eines virtuellen Oracle WebLogic Server 12c-Computers in Azure
 
-1. Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com/) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 2.	Klicken Sie auf **Virtuelle Computer**.
 
@@ -101,7 +101,7 @@ Das folgende Beispiel zeigt, wie Sie eine WebLogic Server 12c-Instanz auf einem 
 
 10.	Erstellen Sie einen Endpunkt für den virtuellen Computer:
 
-	1. Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com/) an.
+	1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 	2.	Klicken Sie auf **Durchsuchen**.
 
@@ -145,7 +145,7 @@ Das folgende Beispiel zeigt, wie Sie eine WebLogic Server 12c-Instanz auf einem 
 
 	8.	Geben Sie einen Namen für die Regel und optional eine Beschreibung ein, und klicken Sie dann auf **Fertig stellen**.
 
-12.	Um die ausgeführte Warenkorbanwendung im Internet anzuzeigen, öffnen Sie einen Browser mit der URL in Form von `http://<<unique_domain_name>>/shoppingcart`. (Sie können den Wert für <<*unique\_domain\_name*>> im [Azure-Portal](https://ms.portal.azure.com/) festlegen, indem Sie auf **Virtuelle Computer** klicken und dann den virtuellen Computer auswählen, den Sie zum Ausführen von Oracle WebLogic Server verwenden.)
+12.	Um die ausgeführte Warenkorbanwendung im Internet anzuzeigen, öffnen Sie einen Browser mit der URL in Form von `http://<<unique_domain_name>>/shoppingcart`. (Sie können den Wert für <<*unique\_domain\_name*>> im [Azure-Portal](https://portal.azure.com/) festlegen, indem Sie auf **Virtuelle Computer** klicken und dann den virtuellen Computer auswählen, den Sie zum Ausführen von Oracle WebLogic Server verwenden.)
 
 
 ##Zusätzliche Ressourcen
@@ -159,4 +159,4 @@ Nachdem Sie den virtuellen Computer mit Oracle WebLogic Server eingerichtet habe
 
 -	[Oracle Virtual Machine images for Azure (Images von virtuellen Oracle-Computern für Azure; in englischer Sprache)](virtual-machines-linux-classic-oracle-images.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

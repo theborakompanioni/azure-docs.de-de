@@ -81,14 +81,12 @@ Die folgenden Features werden für die öffentliche Vorschau nicht unterstützt.
 
 Ressourcenanbieter | Funktion
 ---------- | ------------
-Compute | Startdiagnose.
 Compute | Nicht zugeordnete VM-Datenträger.
 Compute | VM-Images.
 Netzwerk | Nicht zugeordnete reservierte IP-Adressen (falls nicht einem virtuellen Computer zugeordnet). Reservierte IP-Adressen, die virtuellen Computern zugeordnet sind, werden unterstützt.
 Netzwerk | Nicht zugeordnete Netzwerksicherheitsgruppen (falls nicht einem virtuellen Netzwerk oder einer Netzwerkschnittstelle zugeordnet). NSGs, auf die von virtuellen Netzwerken verwiesen wird, werden unterstützt.
 Netzwerk | Endpunkt-ACLs.
 Netzwerk | Gateways des virtuellen Netzwerks (Standort-zu-Standort, Azure ExpressRoute, Punkt-zu-Standort).
-Speicher | Speicherkonten.
 
 ### Nicht unterstützte Konfigurationen
 
@@ -103,7 +101,6 @@ Compute | Virtuelle Computer mit Warnungen, Richtlinien für automatische Skalie
 Compute | XML-VM-Erweiterungen (Visual Studio Debugger, Web Deploy und Remotedebuggen) | Dies wird nicht unterstützt. Wir empfehlen, diese Erweiterungen vom virtuellen Computer zu entfernen, um die Migration fortzusetzen.
 Compute | Clouddienste, die Web-/Workerrollen enthalten | Dies wird derzeit nicht unterstützt.
 Netzwerk | Virtuelle Netzwerke, die virtuelle Computer und Web-/Workerrollen enthalten | Dies wird derzeit nicht unterstützt.
-Netzwerk | Subnetze, die Leerzeichen im Namen enthalten | Dies wird derzeit nicht unterstützt.
 Azure App Service | Virtuelle Netzwerke, die App Service-Umgebungen enthalten | Dies wird derzeit nicht unterstützt.
 Azure HDInsight | Virtuelle Netzwerke, die HDInsight-Dienste enthalten | Dies wird derzeit nicht unterstützt.
 Microsoft Dynamics Lifecycle Services | Virtuelle Netzwerke, die virtuelle Computer enthalten, die von Dynamics Lifecycle Services verwaltet werden | Dies wird derzeit nicht unterstützt.
@@ -161,7 +158,7 @@ Der Abbruch ist ein optionaler Schritt, mit dem Sie Ihre Änderungen auf das kla
 
 Nach Abschluss der Überprüfung können Sie einen Commit für die Migration durchführen. Die Ressourcen werden nicht mehr im klassischen Bereitstellungsmodell angezeigt und stehen nur noch im Resource Manager-Bereitstellungsmodell zur Verfügung. Dies bedeutet auch, dass die migrierten Ressourcen nur im neuen Portal verwaltet werden können.
 
-Wenn dieser Vorgang nicht erfolgreich ist, raten wir Ihnen, es einige Male erneut zu versuchen. Falls weiterhin Fehler auftreten, sollten Sie ein Supportticket oder einen Eintrag im Forum mit dem Tag „ClassicIaaSMigration“ erstellen. Dies ist in unserem [VM-Forum](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=WAVirtualMachinesforWindows) möglich.
+Wenn dieser Vorgang nicht erfolgreich ist, raten wir Ihnen, es einige Male erneut zu versuchen. Sollten weiterhin Fehler auftreten, erstellen Sie ein Supportticket, oder erstellen Sie einen Eintrag in unserem [VM-Forum](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=WAVirtualMachinesforWindows) mit dem Tag „ClassicIaaSMigration“.
 
 ## Häufig gestellte Fragen
 
@@ -187,7 +184,7 @@ Sie können die Migration abbrechen, solange sich die Ressourcen im Zustand „V
 
 **Kann ich für meine Migration einen Rollback durchführen, wenn beim Commitvorgang ein Fehler auftritt?**
 
-Sie können die Migration nicht abbrechen, wenn für den Commitvorgang ein Fehler auftritt. Alle Migrationsvorgänge, einschließlich des Commitvorgangs, sind idempotent. Daher wird empfohlen, den Vorgang nach einer kurzen Wartezeit zu wiederholen. Falls der Fehler weiterhin auftritt, sollten Sie ein Supportticket oder einen Eintrag im Forum mit dem Tag „ClassicIaaSMigration“ erstellen. Dies ist in unserem [VM-Forum](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=WAVirtualMachinesforWindows) möglich.
+Sie können die Migration nicht abbrechen, wenn für den Commitvorgang ein Fehler auftritt. Alle Migrationsvorgänge, einschließlich des Commitvorgangs, sind idempotent. Daher wird empfohlen, den Vorgang nach einer kurzen Wartezeit zu wiederholen. Sollte weiterhin ein Fehler auftreten, erstellen Sie ein Supportticket, oder erstellen Sie einen Eintrag in unserem [VM-Forum](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=WAVirtualMachinesforWindows) mit dem Tag „ClassicIaaSMigration“.
 
 **Muss ich eine weitere ExpressRoute-Verbindung erwerben, wenn ich IaaS unter Resource Manager verwenden muss?**
 
@@ -215,7 +212,7 @@ Posten Sie Ihre Probleme und Fragen zur Migration in unserem [VM-Forum](https://
 
 **Was passiert, wenn mir die Namen der Ressourcen nicht gefallen, die von der Plattform während der Migration ausgewählt wurden?**
 
-Für alle Ressourcen, für die Sie unter dem klassischen Bereitstellungsmodell explizit Namen angeben, werden diese während der Migration beibehalten. In einigen Fällen werden neue Ressourcen erstellt. Beispiel: Für jeden virtuellen Computer wird eine Netzwerkschnittstelle erstellt. Derzeit wird es nicht unterstützt, die Namen dieser neuen Ressourcen, die während der Migration erstellt werden, zu steuern. Geben Sie Ihre Stimme für dieses Feature im [Azure-Feedbackforum](http://feedback.azure.com) ab.
+Für alle Ressourcen, für die Sie unter dem klassischen Bereitstellungsmodell explizit Namen angeben, werden diese während der Migration beibehalten. In einigen Fällen werden neue Ressourcen erstellt. Beispiel: Für jeden virtuellen Computer wird eine Netzwerkschnittstelle erstellt. Derzeit wird es nicht unterstützt, die Namen dieser neuen Ressourcen, die während der Migration erstellt werden, zu steuern. Besuchen Sie das [Azure-Feedbackforum](http://feedback.azure.com), um für dieses Feature abzustimmen.
 
 
 ## Nächste Schritte
@@ -226,4 +223,4 @@ Nachdem Sie nun eine Vorstellung von der Migration klassischer IaaS-Ressourcen z
 - [Migrieren von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe der Befehlszeilenschnittstelle](virtual-machines-linux-cli-migration-classic-resource-manager.md)
 - [Klonen eines klassischen virtuellen Computers nach Azure Resource Manager mithilfe von PowerShell-Skripts aus der Community](virtual-machines-windows-migration-scripts.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

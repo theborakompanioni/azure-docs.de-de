@@ -25,7 +25,7 @@ Für die lokale Entwicklung müssen Sie die Betriebssystem-VHD des erstellten vi
 ### Suchen einer Blob-URL
 Um die VHD-Datei herunterzuladen, müssen Sie zuerst nach der Blob-URL für den Betriebssystem-Datenträger suchen.
 
-Suchen Sie die Blob-URL im neuen [Microsoft Azure-Portal](https://ms.portal.azure.com):
+Suchen Sie die Blob-URL im neuen [Microsoft Azure-Portal](https://portal.azure.com):
 
 1.	Wechseln Sie zu **Durchsuchen** > **VMs**, und wählen Sie dann den bereitgestellten virtuellen Computer aus.
 2.	Wählen Sie unter **Konfigurieren** die Kachel **Datenträger** aus. Dadurch wird das Blatt „Datenträger“ geöffnet.
@@ -72,8 +72,7 @@ Zusätzlich zur Verwendung des Azure-Portals können Sie das Cmdlet [Save-AzureV
         Save-AzureVhd –Source <storageURIOfVhd> `
         -LocalFilePath <diskLocationOnWorkstation> `
         -StorageKey <keyForStorageAccount>
-Beispiel: 
-        Save-AzureVhd -Source „https://baseimagevm.blob.core.windows.net/vhds/BaseImageVM-6820cq00-BaseImageVM-os-1411003770191.vhd“ -LocalFilePath „C:\\Users\\Administrator\\Desktop\\baseimagevm.vhd“ -StorageKey <String>
+Beispiel: Save-AzureVhd -Source „https://baseimagevm.blob.core.windows.net/vhds/BaseImageVM-6820cq00-BaseImageVM-os-1411003770191.vhd“ -LocalFilePath „C:\\Users\\Administrator\\Desktop\\baseimagevm.vhd“ -StorageKey <String>
 
 > [AZURE.NOTE] **Save-AzureVhd** verfügt auch über eine **NumberOfThreads**-Option, mit der die Parallelität so erhöht wird, dass die verfügbare Bandbreite optimal für den Download eingesetzt wird.
 
@@ -133,11 +132,10 @@ Verwenden Sie das Cmdlet [Add-AzureVhd](http://msdn.microsoft.com/library/dn4951
         Add-AzureVhd –Destination “http://mystorageaccount.blob.core.windows.net/containername/vmsku.vhd” -LocalFilePath “C:\Users\Administrator\Desktop\vmsku.vhd”
 
 ### Hochladen einer virtuellen Festplatte über das Befehlszeilentool für Mac und Linux
-Verwenden Sie folgenden Befehl im [Linux-Befehlszeilentool](../virtual-machines/command-line-tools/): 
-azure vm image create <image name> --location <Location of the data center> --OS Linux <LocationOfLocalVHD>
+Verwenden Sie folgenden Befehl im [Linux-Befehlszeilentool](../virtual-machines/command-line-tools/): azure vm image create <image name> --location <Location of the data center> --OS Linux <LocationOfLocalVHD>
 
 ## Weitere Informationen
 - [Erstellen eines Images eines virtuellen Computers für den Marketplace](marketplace-publishing-vm-image-creation.md)
 - [Einrichten von Azure PowerShell](marketplace-publishing-powershell-setup.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

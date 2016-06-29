@@ -53,7 +53,7 @@ In diesem Tutorial wird Folgendes vorausgesetzt:
 * Zugriff auf eine **Azure SQL-Datenbank**. Wenn Sie eine Azure SQL-Datenbank einrichten müssen, finden Sie in [Erste Schritte mit Microsoft Azure SQL-Datenbank](../sql-database/sql-database-get-started.md) Informationen dazu, wie Sie eine neue Instanz einer Azure SQL-Datenbank bereitstellen.
 * Lokal installierte und konfigurierte **Azure PowerShell**. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
-> [AZURE.NOTE] In diesem Verfahren wird das [Azure-Portal](https://ms.portal.azure.com/) verwendet.
+> [AZURE.NOTE] In diesem Verfahren wird das [Azure-Portal](https://portal.azure.com/) verwendet.
 
 
 ##<a name="upload-data"></a> Hochladen der Daten auf Ihren lokalen SQL Server
@@ -66,7 +66,7 @@ Sie können entweder das hier beschriebene Verfahren auf einen Satz Ihrer eigene
 
 ##<a name="create-adf"></a> Erstellen einer Azure Data Factory
 
-Die Schritte zum Erstellen einer neuen Azure Data Factory und einer Ressourcengruppe im [Azure-Portal](https://ms.portal.azure.com/) finden Sie unter [Create an Azure Data Factory](../data-factory/data-factory-build-your-first-pipeline-using-editor.md#step-1-creating-the-data-factory). Nennen Sie die neue ADF-Instanz *adfdsp*, und nennen Sie die erstellte Ressourcengruppe *adfdsprg*.
+Die Schritte zum Erstellen einer neuen Azure Data Factory und einer Ressourcengruppe im [Azure-Portal](https://portal.azure.com/) finden Sie unter [Create an Azure Data Factory](../data-factory/data-factory-build-your-first-pipeline-using-editor.md#step-1-creating-the-data-factory). Nennen Sie die neue ADF-Instanz *adfdsp*, und nennen Sie die erstellte Ressourcengruppe *adfdsprg*.
 
 
 ## Installieren und Konfigurieren das Datenverwaltungsgateways
@@ -310,4 +310,4 @@ Sobald die Pipeline ausgeführt wird, sollten Sie die Daten sehen können, die i
 
 Beachten Sie, dass wir nicht die Funktionalität von ADF zum inkrementellen Übertragen von Daten per Pipe genutzt haben. Weitere Detailinformationen zur Vorgehensweise sowie zu weiteren von ADF bereitgestellten Funktionen finden Sie in der [ADF-Dokumentation](https://azure.microsoft.com/services/data-factory/).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

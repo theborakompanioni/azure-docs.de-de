@@ -101,4 +101,8 @@ Erste Schritte mit dem Azure Container Service:
 
 > [AZURE.VIDEO connect-2015-getting-started-developing-with-docker-and-azure-container-service]
 
-<!---HONumber=AcomDC_0525_2016-->
+Erstellen von Anwendungen mithilfe von Azure Container Service
+
+> [https://channel9.msdn.com/Events/Build/2016/B822]
+
+<!---HONumber=AcomDC_0615_2016-->

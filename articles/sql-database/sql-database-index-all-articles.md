@@ -103,7 +103,7 @@ Dieses Thema führt alle Themen mit direktem Bezug zum SQL-Datenbankdienst in Az
 | 44 | [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Node.js](sql-database-develop-nodejs-simple.md) | Zeigt ein Node.js-Codebeispiel zum Herstellen einer Verbindung mit Azure SQL-Datenbank. |
 | 45 | [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Python](sql-database-develop-python-simple.md) | Zeigt ein Python-Codebeispiel zum Herstellen einer Verbindung mit Azure SQL-Datenbank. |
 | 46 | [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Ruby](sql-database-develop-ruby-simple.md) | Geben Sie ein Ruby-Codebeispiel an, das zum Herstellen einer Verbindung mit Azure SQL-Datenbank ausgeführt werden kann. |
-| 47 | [Verbindungen mit SQL-Datenbanken: Wichtige Empfehlungen](sql-database-connect-central-recommendations.md) | Ein Themeneinstieg, der Links und bewährte Empfehlungen für Client-Programme für das Aufbauen von Verbindungen mit Azure SQL-Datenbank mit Technologien wie ADO.NET und PHP zusammenfasst. |
+| 47 | [Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md) | Ein Themeneinstieg, der Links und bewährte Empfehlungen für Client-Programme für das Aufbauen von Verbindungen mit Azure SQL-Datenbank mit Technologien wie ADO.NET und PHP zusammenfasst. |
 | 48 | [Erstellen und Bereitstellen einer sicheren ASP.NET Web Forms-App mit Mitgliedschaft, OAuth und SQL-Datenbank in Azure-App-Dienst](web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database.md) | In diesem Lernprogramm wird gezeigt, wie Sie eine sichere ASP.NET 4.5 Web Forms-Anwendung erstellen, die eine SQL-Datenbank beinhaltet, und die Anwendung dann auf Azure bereitstellen. |
 | 49 | [Abrufen der Client-ID und des Schlüssels für die Verbindung mit der SQL-Datenbank aus dem Code](sql-database-client-id-keys.md) | Abrufen der Client-ID und des Schlüssels für den Zugriff auf die SQL-Datenbank aus dem Code. |
 | 50 | [Erste Schritte mit temporalen Tabellen in der Azure SQL-Datenbank](sql-database-temporal-tables.md) | Lernen Sie die ersten Schritte mit temporalen Tabellen in der Azure SQL-Datenbank. |
@@ -378,4 +378,4 @@ Dieses Thema führt alle Themen mit direktem Bezug zum SQL-Datenbankdienst in Az
 
 - Lernpfaddiagramm: [sql-database-elastic-scale](http://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -13,29 +13,27 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="data-management" 
-    ms.date="04/27/2016"
+    ms.date="06/14/2016"
     ms.author="sstein"/>
 
 # Konfigurieren der Georeplikation für Azure SQL-Datenbank mit dem Azure-Portal
 
 
 > [AZURE.SELECTOR]
+- [Übersicht](sql-database-geo-replication-overview.md)
 - [Azure-Portal](sql-database-geo-replication-portal.md)
 - [PowerShell](sql-database-geo-replication-powershell.md)
-- [Transact-SQL](sql-database-geo-replication-transact-sql.md)
+- [T-SQL](sql-database-geo-replication-transact-sql.md)
 
+In diesem Artikel erfahren Sie, wie Sie die aktive Georeplikation für eine SQL-Datenbank mit dem [Azure-Portal](http://portal.azure.com) konfigurieren.
 
-In diesem Artikel wird beschrieben, wie Sie die Georeplikation für eine SQL-Datenbank mit dem [Azure-Portal](http://portal.azure.com) konfigurieren.
-
-Informationen zum Initiieren eines Failovers finden Sie unter [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank](sql-database-geo-replication-failover-portal.md).
+Informationen zum Initiieren eines Failovers finden Sie unter [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit dem Azure-Portal](sql-database-geo-replication-failover-portal.md).
 
 >[AZURE.NOTE] Die aktive Georeplikation (lesbare sekundäre Datenbanken) ist jetzt für alle Datenbanken in allen Diensttarifen verfügbar. Im April 2017 wird der nicht lesbare sekundäre Typ eingestellt, und vorhandene nicht lesbare Datenbanken werden automatisch auf lesbare sekundäre Datenbanken aktualisiert.
 
-Sie können bis zu vier lesbare sekundäre Datenbanken in derselben oder in verschiedenen Standorten von Rechenzentren (Regionen) konfigurieren. Sekundäre Datenbanken stehen zur Verfügung, wenn ein Datencenter ausgefallen ist oder keine Verbindung mit der primären Datenbank möglich ist.
+Wenn Sie die Georeplikation über das Azure-Portal konfigurieren möchten, benötigen Sie Folgendes:
 
-Zum Konfigurieren der Georeplikation benötigen Sie Folgendes:
-
-- Ein Azure-Abonnement. Wenn Sie ein Azure-Abonnement benötigen, müssen Sie lediglich oben auf dieser Seite auf den Link **Kostenlose Testversion** klicken. Lesen Sie anschließend den Artikel weiter.
+- Ein Azure-Abonnement. 
 - Eine Azure SQL-Datenbank: Die primäre Datenbank, die in eine andere geografische Region repliziert werden soll.
 
 
@@ -63,7 +61,7 @@ Die sekundäre Datenbank hat den gleichen Namen wie die primäre Datenbank und s
     ![Sekundäre Datenbank hinzufügen][1]
 
 
-4. Konfigurieren Sie den **sekundären Typ** (**Lesbar** oder **Nicht lesbar**)
+4. Konfigurieren Sie den sekundären Typ (**Lesbar** oder **Nicht lesbar**).
 5. Wählen Sie den Server für die sekundäre Datenbank aus bzw. konfigurieren Sie ihn.
 
     ![Sekundäre Datenbank erstellen][3]
@@ -96,7 +94,7 @@ Mit diesem Vorgang wird die Replikation zur sekundären Datenbank dauerhaft been
     ![Sekundäre Datenbank entfernen][7]
 
 
-5. Wenn Sie auf **Replikation beenden** klicken, wird ein Bestätigungsfenster geöffnet. Klicken Sie auf **Ja**, um die Datenbank aus der Georeplikationspartnerschaft zu entfernen (Festlegung auf eine Datenbank mit Lese-/Schreibzugriff, die nicht Teil einer Replikation ist).
+5. Wenn Sie auf **Replikation beenden** klicken, wird ein Bestätigungsfenster geöffnet. Klicken Sie auf **Ja**, um die Datenbank aus der Georeplikationspartnerschaft zu entfernen und als Datenbank mit Lese-/Schreibzugriff zu konfigurieren, die nicht Teil einer Replikation ist.
 
 
     ![Entfernen bestätigen][8]
@@ -115,7 +113,7 @@ Mit diesem Vorgang wird die Replikation zur sekundären Datenbank dauerhaft been
 ## Zusätzliche Ressourcen
 
 - [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
-- [Spotlight on new Geo-Replication capabilities](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/) (Die neuen Georeplikationsfunktionen im Überblick)
+- [Spotlight on new Geo-Replication capabilities (Die neuen Georeplikationsfunktionen im Überblick)](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
 - [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
 - [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
 - [Aktive Georeplikation](sql-database-geo-replication-overview.md)
@@ -135,4 +133,4 @@ Mit diesem Vorgang wird die Replikation zur sekundären Datenbank dauerhaft been
 [9]: ./media/sql-database-geo-replication-portal/seeding-complete.png
 [10]: ./media/sql-database-geo-replication-portal/failover.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

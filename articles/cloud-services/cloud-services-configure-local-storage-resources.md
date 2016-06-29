@@ -17,9 +17,9 @@ ms.author="cristyg"/>
 
 # Konfigurieren lokaler Speicherressourcen
 
-Eine lokale Speicherressource ist ein reserviertes Verzeichnis im Dateisystem des virtuellen Computers, in dem eine Instanz einer Rolle ausgeführt wird. Sie können Informationen in der Instanz des virtuellen Computers speichern, sodass Code, der in der Instanz ausgeführt wird, auf die lokale Speicherressource zugreifen kann, wenn Daten aus einer Datei gelesen oder geschrieben werden müssen. Beispielsweise kann eine lokale Speicherressource zum Zwischenspeichern von Daten verwendet werden, auf die möglicherweise erneut zugegriffen werden muss, während der Dienst in Azure ausgeführt wird. Sie können die lokale Speicherressource auch zum Speichern von Dateien während des Startvorgangs konfigurieren. Weitere Informationen zum Konfigurieren von lokalen Speicherressourcen während des Startvorgangs finden Sie unter [Verwenden von lokalem Speicher zum Speichern von Dateien während des Startvorgangs](https://msdn.microsoft.com/library/azure/hh974419.aspx).
+Eine lokale Speicherressource ist ein reserviertes Verzeichnis im Dateisystem des virtuellen Computers, in dem eine Instanz einer Rolle ausgeführt wird. Sie können Informationen in der Instanz des virtuellen Computers speichern, sodass Code, der in der Instanz ausgeführt wird, auf die lokale Speicherressource zugreifen kann, wenn Daten aus einer Datei gelesen oder geschrieben werden müssen. Beispielsweise kann eine lokale Speicherressource zum Zwischenspeichern von Daten verwendet werden, auf die möglicherweise erneut zugegriffen werden muss, während der Dienst in Azure ausgeführt wird. Sie können die lokale Speicherressource auch zum Speichern von Dateien während des Startvorgangs konfigurieren. Weitere Informationen zum Konfigurieren von lokalen Speicherressourcen während des Startvorgangs finden Sie unter [Verwenden von lokalem Speicher zum Speichern von Dateien während des Startvorgangs](cloud-services-startup-tasks-common.md#create-files-in-local-storage-from-a-startup-task).
 
-Eine lokale Speicherressource wird in der Dienstdefinitionsdatei deklariert. Sie können eine beliebige Anzahl lokaler Speicherressourcen für eine Rolle deklarieren. Jede lokale Speicherressource wird für jede Instanz dieser Rolle reserviert. Die Mindestmenge an Speicherplatz, die Sie einer lokalen Speicherressource zuordnen können, ist 1 MB. Die maximale Menge, die Sie einer beliebigen lokalen Ressource zuordnen können, hängt von der Größe des virtuellen Computers ab, der für die Rolle angegeben wird. Für jede virtuelle Computergröße gibt es eine entsprechende Gesamtspeicherplatzzuweisung. Der gesamte Speicherplatz, der allen lokalen Speicherressourcen zugeordnet ist, die für eine Rolle deklariert sind, darf nicht die Gesamtgröße überschreiten, die dieser virtuellen Computergröße zugewiesen ist. Weitere Informationen zur maximalen Menge an lokalem Speicherplatz, der den einzelnen virtuellen Computergrößen zugewiesen ist, finden Sie unter [Konfigurieren von Größen für Clouddienste](https://msdn.microsoft.com/library/azure/ee814754.aspx).
+Eine lokale Speicherressource wird in der Dienstdefinitionsdatei deklariert. Sie können eine beliebige Anzahl lokaler Speicherressourcen für eine Rolle deklarieren. Jede lokale Speicherressource wird für jede Instanz dieser Rolle reserviert. Die Mindestmenge an Speicherplatz, die Sie einer lokalen Speicherressource zuordnen können, ist 1 MB. Die maximale Menge, die Sie einer beliebigen lokalen Ressource zuordnen können, hängt von der Größe des virtuellen Computers ab, der für die Rolle angegeben wird. Für jede virtuelle Computergröße gibt es eine entsprechende Gesamtspeicherplatzzuweisung. Der gesamte Speicherplatz, der allen lokalen Speicherressourcen zugeordnet ist, die für eine Rolle deklariert sind, darf nicht die Gesamtgröße überschreiten, die dieser virtuellen Computergröße zugewiesen ist. Weitere Informationen zur maximalen Menge an lokalem Speicherplatz, der den einzelnen virtuellen Computergrößen zugewiesen ist, finden Sie unter [Größen für Clouddienste](cloud-services-sizes-specs.md).
 
 > [AZURE.NOTE]
 >
@@ -56,7 +56,7 @@ Die folgende Dienstdefinitionsdatei zeigt zwei lokale Speicherressourcen, die f�
 
 Unter [Azure-Dienstdefinitionsschema (CSDEF-Datei)](https://msdn.microsoft.com/library/azure/ee758711.aspx) finden Sie weitere Informationen zur Dienstdefinitionsdatei.
 
-> [AZURE.NOTE] Bei Verwendung der Azure-Tools für Microsoft Visual Studio können Sie eine lokale Speicherressource auf den Seiten mit den **Eigenschaften** der Rolle definieren. Weitere Informationen finden Sie unter [Konfigurieren der Azure-Anwendung mit Visual Studio](https://msdn.microsoft.com/library/ee405486.aspx).
+> [AZURE.NOTE] Bei Verwendung der Azure-Tools für Microsoft Visual Studio können Sie eine lokale Speicherressource auf den Seiten mit den **Eigenschaften** der Rolle definieren.
 
 ## Programmgesteuertes Zugreifen auf eine lokale Speicherressource
 
@@ -102,6 +102,6 @@ In einer Rolleninstanz ausgeführter Code kann auf eine lokale Speicherressource
 
 ## Nächste Schritte
 
-- [Einrichten eines Clouddiensts für Azure](https://msdn.microsoft.com/library/azure/hh124108.aspx)
+- [Einrichten eines Clouddiensts für Azure](cloud-services-model-and-package.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0615_2016-->

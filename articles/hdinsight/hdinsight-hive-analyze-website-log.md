@@ -39,7 +39,7 @@ In diesem Beispiel analysieren Sie Websiteprotokolle in einem HDInsight-Cluster,
 
 ##So führen Sie das Beispiel aus
 
-1. Klicken Sie im [Azure-Portal](https://ms.portal.azure.com/) im Startmenü (sofern Sie den Cluster dort angeheftet haben) auf die Clusterkachel, für die Sie das Beispiel ausführen möchten.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) im Startmenü (sofern Sie den Cluster dort angeheftet haben) auf die Clusterkachel, für die Sie das Beispiel ausführen möchten.
 
 2. Klicken Sie auf dem Blatt für den Cluster unter **Quicklinks** auf **Clusterdashboard** und auf dem Blatt **Clusterdashboard** auf **HDInsight-Cluster-Dashboard**. Alternativ können Sie das Dashboard direkt über die folgende URL öffnen:
 
@@ -61,4 +61,4 @@ Versuchen Sie es mit dem folgenden Beispiel: [Analysieren von Sensordaten mit Hi
 [img-hdi-weblogs-sample]: ./media/hdinsight-hive-analyze-website-log/hdinsight-weblogs-sample.png
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

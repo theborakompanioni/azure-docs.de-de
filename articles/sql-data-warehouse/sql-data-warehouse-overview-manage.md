@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/05/2016"
+   ms.date="06/13/2016"
    ms.author="barbkess;sonyama;"/>
 
 # Verwalten von Datenbanken in Azure SQL Data Warehouse
@@ -89,10 +89,10 @@ Weitere Informationen zum Verwalten der Sicherheit finden Sie in der [Sicherheit
 
 ## Sichern und Wiederherstellen
 
-Zuverlässige Sicherungen Ihrer Daten sind ein wesentlicher Bestandteil jeder Produktionsdatenbank. SQL Data Warehouse schützt Ihre Daten, indem Ihre aktiven Datenbanken in regelmäßigen Abständen automatisch gesichert werden. Diese Sicherungen ermöglichen das Wiederherstellen in Fällen, in denen Sie Ihre Daten beschädigt oder Ihre Daten oder Datenbank versehentlich gelöscht haben. Informationen zum Datensicherungszeitplan und zur Aufbewahrungsrichtlinie finden Sie unter [Hohe Zuverlässigkeit][]. Weitere Informationen zur Wiederherstellung einer Datenbank finden Sie unter [Restore from snapshot (Wiederherstellung aus einer Momentaufnahme)][].
+Zuverlässige Sicherungen Ihrer Daten sind ein wesentlicher Bestandteil jeder Produktionsdatenbank. SQL Data Warehouse schützt Ihre Daten, indem Ihre aktiven Datenbanken in regelmäßigen Abständen automatisch gesichert werden. Diese Sicherungen ermöglichen das Wiederherstellen in Fällen, in denen Sie Ihre Daten beschädigt oder Ihre Daten oder Datenbank versehentlich gelöscht haben. Informationen zum Datensicherungszeitplan, zur Aufbewahrungsrichtlinie und zur Wiederherstellung einer Datenbank finden Sie unter [Wiederherstellung von einer Momentaufnahme][].
 
 ## Nächste Schritte
-Ein sinnvoller Datenbankentwurf erleichtert die Verwaltung Ihrer Datenbanken in SQL Data Warehouse. Wenn Sie mehr erfahren möchten, finden Sie weitere Informationen in der [Entwicklungsübersicht][].
+Ein sinnvoller Datenbankentwurf erleichtert die Verwaltung Ihrer Datenbanken in SQL Data Warehouse. Weitere Informationen finden Sie in der [Entwicklungsübersicht][].
 
 <!--Image references-->
 
@@ -103,13 +103,12 @@ Ein sinnvoller Datenbankentwurf erleichtert die Verwaltung Ihrer Datenbanken in 
 [Herstellen einer Verbindung mit Azure SQL Data Warehouse über Visual Studio]: sql-data-warehouse-get-started-connect.md
 [Verbinden und Abfragen mit SQLCMD]: sql-data-warehouse-get-started-connect-sqlcmd.md
 [Entwicklungsübersicht]: sql-data-warehouse-overview-development.md
-[Hohe Zuverlässigkeit]: sql-data-warehouse-overview-expectations.md#high-reliability
 [Überwachen Ihrer Workload mit DMVs]: sql-data-warehouse-manage-monitor.md
 [Anhalten von Computeressourcen]: sql-data-warehouse-manage-compute-overview.md#pause-compute-bk
-[Restore from snapshot (Wiederherstellung aus einer Momentaufnahme)]: sql-data-warehouse-backup-and-restore-from-snapshot.md
+[Wiederherstellung von einer Momentaufnahme]: sql-data-warehouse-restore-database-overview.md
 [Fortsetzen von Computeressourcen]: sql-data-warehouse-manage-compute-overview.md#resume-compute-performance-bk
 [Skalieren der Leistung]: sql-data-warehouse-manage-compute-overview.md#scale-performance-bk
-[Sicherheitsübersicht]: sql-data-warehouse-overview-security.md
+[Sicherheitsübersicht]: sql-data-warehouse-overview-manage-security.md
 [Bewährte Methoden für SQL Data Warehouse]: sql-data-warehouse-best-practices.md
 [SQL Data Warehouse-Systemsichten]: sql-data-warehouse-reference-tsql-system-views.md
 
@@ -119,4 +118,4 @@ Ein sinnvoller Datenbankentwurf erleichtert die Verwaltung Ihrer Datenbanken in 
 <!--Other web references-->
 [Azure-Portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

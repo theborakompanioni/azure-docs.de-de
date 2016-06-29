@@ -82,19 +82,19 @@ Dieser Abschnitt enthält Anweisungen zum Erstellen dieser Ressourcen. Bei Auswa
 
 ### Erstellen eines Azure Data Lake-Speichers
 
-Erstellen Sie einen Azure Data Lake-Speicher im [Azure-Portal](http://ms.portal.azure.com). Einzelheiten dazu finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md). Richten Sie die AAD-Identität des Clusters auf dem hier beschriebenen Blatt **Datenquelle** des Blatts **Optionale Konfiguration** ein.
+Erstellen Sie im [Azure-Portal](http://portal.azure.com) einen Azure Data Lake-Speicher. Einzelheiten dazu finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md). Richten Sie die AAD-Identität des Clusters auf dem hier beschriebenen Blatt **Datenquelle** des Blatts **Optionale Konfiguration** ein.
 
  ![3](./media/machine-learning-data-science-process-data-lake-walkthrough/3-create-ADLS.PNG)
 
 
 ### Erstellen eines Azure Data Lake Analytics-Kontos
-Erstellen Sie ein Azure Data Lake Analytics-Konto im [Azure-Portal](http://ms.portal.azure.com). Einzelheiten finden Sie im [Tutorial: Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
+Erstellen Sie im [Azure-Portal](http://portal.azure.com) ein Azure Data Lake Analytics-Konto. Einzelheiten finden Sie im [Tutorial: Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
 
  ![4](./media/machine-learning-data-science-process-data-lake-walkthrough/4-create-ADLA-new.PNG)
 
 
 ### Erstellen eines Azure Blob Storage-Kontos
-Erstellen Sie ein Azure-Blobspeicherkonto im [Azure-Portal](http://ms.portal.azure.com). Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md) im Abschnitt „Erstellen eines Speicherkontos“.
+Erstellen Sie im [Azure-Portal](http://portal.azure.com) ein Azure-Blobspeicherkonto. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md) im Abschnitt „Erstellen eines Speicherkontos“.
 	
  ![5](./media/machine-learning-data-science-process-data-lake-walkthrough/5-Create-Azure-Blob.PNG)
 
@@ -640,7 +640,7 @@ Azure Machine Learning Studio kann Daten direkt aus Azure Data Lake-Speicher ein
 
 ### Erstellen eines HDInsight Linux-Clusters
 
-Erstellen Sie einen HDInsight-Cluster (Linux) im [Azure Portal](http://ms.portal.azure.com). Ausführliche Informationen finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md) im Abschnitt **Erstellen eines HDInsight-Clusters mit Zugriff auf Azure Data Lake-Speicher**.
+Erstellen Sie im [Azure Portal](http://portal.azure.com) einen HDInsight-Cluster (Linux). Ausführliche Informationen finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md) im Abschnitt **Erstellen eines HDInsight-Clusters mit Zugriff auf Azure Data Lake-Speicher**.
 
  ![18](./media/machine-learning-data-science-process-data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
@@ -741,4 +741,4 @@ Der Lernpfad für den [Cortana-Analyseprozess-Prozess (CAP)](http://aka.ms/datas
 - [Cortana-Analyseprozess (CAP) in Aktion: Verwenden von SQL Server](machine-learning-data-science-process-sql-walkthrough.md)
 - [Übersicht über Data Science mit Spark in Azure HDInsight](machine-learning-data-science-spark-overview.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

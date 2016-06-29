@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="05/10/2016"
+	ms.date="06/09/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -21,12 +21,11 @@
 
 
 > [AZURE.SELECTOR]
+- [Übersicht](sql-database-point-in-time-restore.md)
 - [Azure-Portal](sql-database-point-in-time-restore-portal.md)
 - [PowerShell](sql-database-point-in-time-restore-powershell.md)
 
-In diesem Artikel wird erläutert, wie Sie den Zustand Ihrer Datenbank zu einem früheren Zeitpunkt über das Azure-Portal wiederherstellen können.
-
-Die [**Point-in-Time-Wiederherstellung**](sql-database-point-in-time-restore.md) ist eine Self-Service-Funktion zum Wiederherstellen einer Datenbank aus den automatischen Sicherungen, die wir für alle Datenbanken zu jedem Zeitpunkt innerhalb der Aufbewahrungsdauer Ihrer Datenbank erstellen. Weitere Informationen zu automatischen Sicherungen und zur Datenbankaufbewahrungsdauer finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
+In diesem Artikel erfahren Sie, wie Sie auf der [Grundlage automatisierter SQL-Datenbanksicherungen](sql-database-automated-backups.md) über das Azure-Portal einen früheren Zustand Ihrer Datenbank wiederherstellen.
 
 ## Auswählen einer Datenbank für die Wiederherstellung des Zustands zu einem früheren Zeitpunkt
 
@@ -47,13 +46,16 @@ Gehen Sie zum Wiederherstellen einer Datenbank im Azure-Portal wie folgt vor:
 ## Nächste Schritte
 
 - [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
-- [Herstellen einer Verbindung mit einer Azure SQL-Datenbank mit SQL Server Management Studio und Ausführen einer T-SQL-Beispielabfrage](sql-database-connect-query-ssms.md)
-
-
+- [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md)
+- [Point-in-time restore using the REST API](https://msdn.microsoft.com/library/azure/mt163685.aspx) (Point-in-Time-Wiederherstellung mithilfe der REST-API)
+- [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md)
 
 ## Zusätzliche Ressourcen
 
+- [Wiederherstellen einer gelöschten Datenbank](sql-database-restore-deleted-database.md)
 - [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-- [SQL-Datenbankdokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
+- [Geografische Wiederherstellung](sql-database-geo-restore.md)
+- [Aktive Georeplikation](sql-database-geo-replication-overview.md)
+- [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="01/26/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell
@@ -392,4 +392,4 @@ Die folgende ARM-Vorlage kann zum Bereitstellen eines Data Lake Analytics-Kontos
 	  }
 	}
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->
