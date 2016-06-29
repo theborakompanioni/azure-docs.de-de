@@ -145,7 +145,7 @@ Der Site Recovery-Prozessserver kann virtuelle VMware-Computer auf vSphere-Hosts
 1.	Stellen Sie sicher, dass der Computer, den Sie für den Konfigurationsserver verwenden die [Voraussetzungen](#configuration-server-prerequisites) erfüllt. Stellen Sie insbesondere sicher, dass der Computer mit diesen Einstellungen mit dem Internet verbunden ist:
 
 	- Erlauben Sie den Zugriff auf diese URLs: *.hypervrecoverymanager.windowsazure.com; *.accesscontrol.windows.net; *.backup.windowsazure.com; *.blob.core.windows.net; *.store.core.windows.net
-- Lassen Sie zum Herunterladen von MySQL den Zugriff auf [http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi](http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi) zu.
+	- Lassen Sie zum Herunterladen von MySQL den Zugriff auf [http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi](http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi) zu.
 	- Lassen Sie mithilfe der [IP-Adressbereiche des Azure-Rechenzentrums](https://www.microsoft.com/download/confirmation.aspx?id=41653) und des HTTPS-Protokolls (433) die Firewallkommunikation mit Azure zu.
 
 2.	Laden Sie [VMware vSphere PowerCLI 6.0](https://developercenter.vmware.com/tool/vsphere_powercli/6.0) herunter, und installieren Sie es auf dem Konfigurationsserver.
