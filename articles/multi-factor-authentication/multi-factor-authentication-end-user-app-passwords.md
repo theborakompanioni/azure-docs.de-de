@@ -45,7 +45,7 @@ Während der ersten Anmeldung wird ein App-Kennwort erstellt, das Sie direkt ver
 Verwendung von Multi-Factor Authentication|Beschreibung
 :------------- | :------------- | 
 <a href="#verwende">Ich verwende sie mit Office 365</a> | Erstellen Sie Ihre App-Kennwörter über das Office 365-Portal.
-[Nicht bekannt](#so-löschen-sie-ein-app-kennwort mithilfe-des-myapps-portals)|Erstellen Sie Ihre App-Kennwörter unter [https://myapps.microsoft.com](https://myapps.microsoft.com)
+<a href="#Natch">Nicht bekannt</a> |Erstellen Sie Ihre App-Kennwörter unter [https://myapps.microsoft.com](https://myapps.microsoft.com)
 <a href="#mit">Ich verwende sie mit Microsoft Azure</a>| Erstellen Sie Ihre App-Kennwörter über das Azure-Portal.
 
 <h2 id="verwende">Erstellen und Löschen von App-Kennwörtern mit Office 365</h2> 
@@ -81,7 +81,7 @@ Wenn Sie Multi-Factor Authentication mit Office 365 verwenden, können Sie App-
 9. Sobald das App-Kennwort gelöscht wurde, klicken Sie auf **Schließen**. ![Schließen](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
 
 
-## Erstellen und Löschen von App-Kennwörtern mit Myapps-Portal.
+<h2 id="Natch">Erstellen und Löschen von App-Kennwörtern mit Myapps-Portal.</h2>
 Wenn Sie nicht sicher sind, wie Sie die mehrstufige Authentifizierung verwenden, können Sie jederzeit ADN zum Löschen von App-Kenwörtern über das Portal "Meine Apps" erstellen.
 
 ### So erstellen Sie ein App-Kennwort mithilfe des Myapps-Portals
