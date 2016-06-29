@@ -24,7 +24,8 @@ In diesem Artikel richten wir ein Web-Front-End ein, das zentral hochskaliert we
 
 ## Voraussetzungen
 
-[Stellen Sie eine Instanz von Azure Container Service mit dem Orchestratortyp DC/OS bereit](container-service-deployment.md), und [stellen Sie sicher, dass der Client eine Verbindung mit Ihrem Cluster herstellen kann](container-service-connect.md). Führen Sie außerdem die folgenden Schritte aus:[AZURE.INCLUDE [Installieren der DC/OS-Befehlszeilenschnittstelle (CLI)](../../includes/container-service-install-dcos-cli-include.md)]
+[Stellen Sie eine Instanz von Azure Container Service mit dem Orchestratortyp DC/OS bereit](container-service-deployment.md), und [stellen Sie sicher, dass der Client eine Verbindung mit Ihrem Cluster herstellen kann](container-service-connect.md). Führen Sie außerdem die folgenden Schritte aus:
+[AZURE.INCLUDE [Installieren der DC/OS-Befehlszeilenschnittstelle (CLI)](../../includes/container-service-install-dcos-cli-include.md)]
 
 
 ## Lastenausgleich
