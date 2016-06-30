@@ -532,10 +532,10 @@ Die Installationsprogramme stehen auf dem Prozessserver unter **C:\\Programme (x
 
 Quellbetriebssystem | Installationsdatei für den Mobilitätsdienst
 --- | ---
-Windows Server (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_Windows\_* release.exe
-CentOS 6.4, 6.5, 6.6 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz 
-SUSE Linux Enterprise Server 11 SP3 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_SLES11-SP3-64\_*release.tar.gz
-Oracle Enterprise Linux 6.4, 6.5 (nur 64 Bit) | Microsoft-ASR\_UA\_9.*.0.0\_OL6-64\_*release.tar.gz
+Windows Server (nur 64 Bit) | Microsoft-ASR_UA_9.*.0.0_Windows_* release.exe
+CentOS 6.4, 6.5, 6.6 (nur 64 Bit) | Microsoft-ASR_UA_9.*.0.0_RHEL6-64_*release.tar.gz 
+SUSE Linux Enterprise Server 11 SP3 (nur 64 Bit) | Microsoft-ASR_UA_9.*.0.0_SLES11-SP3-64_*release.tar.gz
+Oracle Enterprise Linux 6.4, 6.5 (nur 64 Bit) | Microsoft-ASR_UA_9.*.0.0_OL6-64_*release.tar.gz
 
 
 #### Manuelles Installieren auf einem Windows-Server
