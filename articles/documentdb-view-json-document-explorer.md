@@ -158,4 +158,4 @@ Weitere Informationen zur DocumentDB-SQL-Grammatik, die im Dokument-Explorer unt
 
 Der [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/documentdb/) ist auch ein nützlicher Anhaltspunkt, um mehr über DocumentDB zu erfahren.
 
-<!-------HONumber=AcomDC_0413_2016--->
+<!--------HONumber=AcomDC_0413_2016--->
