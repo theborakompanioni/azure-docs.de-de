@@ -63,7 +63,7 @@ Dieser Artikel enthält eine Übersicht über den [Microsoft Azure DocumentDB](h
 
     Wenn Sie ein Dokument bearbeiten und dann die Änderungen verwerfen möchten, klicken Sie im Blatt **Dokument** einfach auf den Befehl **Verwerfen** und bestätigen das Verwerfen. Die vorherige Version des Dokuments wird dann neu geladen.
 
-    ![Screenshot des Dokument-Explorers – Befehl "Verwerfen"](./media/documentdb-view-JSON-document-explorer/discardedit.png)
+    ![Screenshot des Dokument-Explorers – Befehl "Verwerfen"](./media/documentdb-view-json-document-explorer/discardedit.png)
 
 ## Löschen eines Dokuments
 
