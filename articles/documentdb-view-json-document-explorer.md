@@ -19,7 +19,7 @@
 
 # Anzeigen, Bearbeiten, Erstellen und Hochladen von JSON-Dokumenten mithilfe von DocumentDB-Dokument-Explorer
 
-Dieser Artikel enthält eine Übersicht über den [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)-Dokument-Explorer, ein Tool im Azure-Portal zum Anzeigen, Bearbeiten, Erstellen, Hochladen und Filtern von JSON-Dokumenten mit DocumentDB.
+Dieser Artikel enthält eine Übersicht über den [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/./documentdb/)-Dokument-Explorer, ein Tool im Azure-Portal zum Anzeigen, Bearbeiten, Erstellen, Hochladen und Filtern von JSON-Dokumenten mit DocumentDB.
 
 ## Starten von Dokument-Explorer
 
@@ -130,19 +130,19 @@ Dokument-Explorer unterstützt die Sammelerfassung von einem oder mehreren JSON-
 
 2. Klicken Sie zum Starten des Uploadvorgangs auf **Dokument hochladen**.
 
-	![screenshot17](articles/documentdb/media/documentdb-view-json-document-explorer/uploaddocument1.png)
+	![screenshot17](documentdb/media/documentdb-view-json-document-explorer/uploaddocument1.png)
 
     Das Blatt **Dokument hochladen** wird geöffnet.
 
 2. Klicken Sie auf die Schaltfläche „Durchsuchen“, um ein Datei-Explorer-Fenster zu öffnen, wählen Sie die JSON-Dokumente aus, die hochgeladen werden sollen, und klicken Sie dann auf **Öffnen**.
 
-	![screenshot18](articles/documentdb/media/documentdb-view-json-document-explorer/uploaddocument2.png)
+	![screenshot18](documentdb/media/documentdb-view-json-document-explorer/uploaddocument2.png)
 
 	> [AZURE.NOTE] Dokument-Explorer unterstützt derzeit bis zu 100 JSON-Dokumente pro einzelnen Hochladevorgang.
 
 3. Sobald Sie mit der Auswahl fertig sind, klicken Sie auf die Schaltfläche **Hochladen**. Die Dokumente werden automatisch zum Dokument-Explorer-Raster hinzugefügt, und die Hochladeergebnisse werden angezeigt, während der Prozess weiterläuft. Importfehler werden für einzelne Dateien gemeldet.
 
-	![screenshot19](articles/documentdb/media/documentdb-view-json-document-explorer/uploaddocument3.png)
+	![screenshot19](documentdb/media/documentdb-view-json-document-explorer/uploaddocument3.png)
 
 4. Sobald der Vorgang abgeschlossen ist, können Sie bis zu 100 weitere Dokumente auswählen, die Sie hochladen möchten.
 
