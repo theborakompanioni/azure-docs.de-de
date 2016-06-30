@@ -71,7 +71,7 @@ Dieser Artikel enthält eine Übersicht über den [Microsoft Azure DocumentDB](h
 
 2. Wählen Sie das Dokument im **Dokument-Explorer** aus, und klicken Sie auf **Löschen**. Bestätigen Sie anschließend den Löschvorgang. Nach der Bestätigung wird das Dokument sofort aus der Liste im Dokument-Explorer entfernt.
 
-	![Screenshot des Dokument-Explorers – Befehl "Löschen"](./media/documentdb-view-json-document-explorer/deletedocument.png)
+	![Screenshot des Dokument-Explorers Befehl Löschen](./media/documentdb-view-json-document-explorer/deletedocument.png)
 
 ## Verwenden von JSON-Dokumenten
 
