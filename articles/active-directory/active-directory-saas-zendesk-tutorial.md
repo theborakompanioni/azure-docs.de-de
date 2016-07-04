@@ -2,7 +2,7 @@
     pageTitle="Tutorial: Azure Active Directory-Integration mit Zendesk | Microsoft Azure" 
     description="Hier erfahren Sie, wie Sie Zendesk mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen." 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="06/20/2016" 
+    ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit Zendesk
   
@@ -78,11 +78,17 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-zendesk-tutorial/IC773087.png "Einmaliges Anmelden konfigurieren")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Zendesk-Anmelde-URL** die URL im Format „*https://\<Mandantenname>.Zendesk.com*“ ein, und klicken Sie dann auf **Weiter**.
+3.  Führen Sie auf der Seite **App-URL konfigurieren** die folgenden Schritte aus:
 
     ![App-URL konfigurieren](./media/active-directory-saas-zendesk-tutorial/IC773088.png "App-URL konfigurieren")
+  
+	a. Geben Sie im Textfeld **Zendesk-Anmelde-URL** die URL im folgenden Format ein: `https://<tenant-name>.zendesk.com`
 
-4.  Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Einmaliges Anmelden konfigurieren für Zendesk** auf **Zertifikat herunterladen**, und speichern Sie die Zertifikatsdatei lokal unter **c:\\Zendesk.cer**.
+	b. Klicken Sie auf **Weiter**.
+
+
+
+4.  Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für Zendesk** auf **Zertifikat herunterladen**, und speichern Sie die Zertifikatsdatei lokal auf Ihrem Computer.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-zendesk-tutorial/IC777534.png "Einmaliges Anmelden konfigurieren")
 
@@ -94,7 +100,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Sicherheit](./media/active-directory-saas-zendesk-tutorial/IC773089.png "Sicherheit")
 
-8.  Wählen Sie auf der Seite **Sicherheit** die Registerkarte **Administratoren und Agents**.
+8.  Klicken Sie auf der Seite **Sicherheit** auf die Registerkarte **Administratoren und Agents**.
 
 9.  Wählen Sie **Einmaliges Anmelden (SSO) und SAML**, und wählen Sie dann **SAML**.
 
@@ -106,7 +112,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 12. Kopieren Sie den **Fingerabdruckwert** aus dem exportierten Zertifikat, und fügen Sie ihn in das Textfeld **Fingerabdruck des Zertifikats** ein.
 
-	>[AZURE.TIP]Weitere Informationen finden Sie unter [Abrufen des Fingerabdruckwerts eines Zertifikats](http://youtu.be/YKQF266SAxI).
+	>[AZURE.TIP] Weitere Informationen finden Sie unter [Abrufen des Fingerabdruckwerts eines Zertifikats](http://youtu.be/YKQF266SAxI).
 
 13. Klicken Sie auf **Speichern**.
 
@@ -132,7 +138,7 @@ Damit sich Azure AD-Benutzer bei **Zendesk** anmelden können, müssen sie in **
 
     ![Neuer Benutzer](./media/active-directory-saas-zendesk-tutorial/IC773633.png "Neuer Benutzer")
 
->[AZURE.NOTE]Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Zendesk-Benutzerkonten oder mithilfe der von Zendesk bereitgestellten APIs erstellen.
+>[AZURE.NOTE] Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Zendesk-Benutzerkonten oder mithilfe der von Zendesk bereitgestellten APIs erstellen.
 
 ##Zuweisen von Benutzern
   
@@ -152,4 +158,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -31,34 +31,30 @@ Laden Sie Upgrade Advisor [hier](http://go.microsoft.com/fwlink/?LinkID=613421) 
 
 3.  Klicken Sie auf dem Blatt **Stretch Database Advisor ausführen** auf **DATENBANK ZUM ANALYSIEREN AUSWÄHLEN**.
 
-4.  Klicken Sie auf dem Blatt **Datenbanken auswählen** auf **SQL-INSTANZ**.
+4.  Geben Sie auf dem Blatt **Datenbanken auswählen** den Servernamen und die Authentifizierungsinformationen ein, bzw. wählen Sie beides aus. Klicken Sie auf **Verbinden**.
 
-5.  Geben Sie auf dem Blatt **Mit SQL-Instanz verbinden** den Namen der SQL Server-Instanz ein. Klicken Sie auf **Verbinden**.
+5.  Eine Liste der Datenbanken auf dem ausgewählten Server wird angezeigt. Wählen Sie die Datenbanken aus, die Sie analysieren möchten. Klicken Sie auf **Auswählen**.
 
-6.  Wählen Sie auf dem Blatt **Datenbanken auswählen** die zu analysierende Datenbanken aus. Klicken Sie dann auf **Auswählen**.
-
-7.  Klicken Sie auf dem Blatt **Stretch Database Advisor ausführen** auf **Ausführen**. Die Analyse wird ausgeführt.
+6.  Klicken Sie auf dem Blatt **Stretch Database Advisor ausführen** auf **Ausführen**. Die Analyse wird ausgeführt.
 
 ## Überprüfen der Ergebnisse
 
-1.  Wenn die Analyse abgeschlossen ist, wählen Sie auf dem Blatt **Stretch Database Advisor** eine der analysierten Datenbanken aus, um das Blatt **Analyseergebnisse** anzuzeigen.
+1.  Wenn die Analyse abgeschlossen ist, wählen Sie auf dem Blatt **Analysierte Datenbanken** eine der analysierten Datenbanken aus, um das Blatt **Analyseergebnisse** anzuzeigen.
 
-    Auf dem Blatt **Analyseergebnisse** werden die empfohlenen Tabellen in der ausgewählten Datenbank aufgelistet, die den standardmäßigen Empfehlungskriterien entsprechen. Passen Sie optional die Mindestgröße und die Zeilenzahl an, um die die Liste der empfohlenen Tabellen erweitert oder verringert werden soll.
+    Auf dem Blatt **Analyseergebnisse** werden die empfohlenen Tabellen in der ausgewählten Datenbank aufgelistet, die den standardmäßigen Empfehlungskriterien entsprechen.
 
-2.  Wählen Sie in der Liste der empfohlenen Tabellen auf dem Blatt **Analyseergebnisse** eine der empfohlenen Tabellen aus, um das Blatt **Tabellenergebnisse** anzuzeigen.
+2.  Wählen Sie in der Liste der Tabellen auf dem Blatt **Analyseergebnisse** eine der empfohlenen Tabellen aus, um das Blatt **Tabellenergebnisse** anzuzeigen.
 
-    Das Blatt **Tabellenergebnisse** enthält Hindernisse für die ausgewählte Tabelle. Informationen zu den Hindernissen, die vom Stretch Database Advisor erkannt werden, finden Sie unter [Einschränkungen für Stretch-Datenbank](sql-server-stretch-database-limitations.md).
+    Wenn Hindernisse vorliegen, enthält das Blatt **Tabellenergebnisse** Hindernisse für die ausgewählte Tabelle. Informationen zu den Hindernissen, die vom Stretch Database Advisor erkannt werden, finden Sie unter [Einschränkungen für Stretch-Datenbank](sql-server-stretch-database-limitations.md).
 
-3.  Wählen Sie in der Liste der Hindernisse auf dem Blatt **Tabellenergebnisse** eines der Probleme aus, um das Blatt **Regelergebnis** anzuzeigen.
-
-    Auf dem Blatt **Regelergebnis** wird das ausgewählte Problem beschrieben, und es werden Schritte zur Behebung vorgeschlagen. Implementieren Sie die empfohlenen Maßnahmen, wenn Sie die ausgewählte Tabelle für Stretch-Datenbank konfigurieren möchten.
+3.  Wählen Sie in der Liste der Hindernisse auf dem Blatt **Tabellenergebnisse** eines der Probleme aus, um weitere Informationen über das ausgewählte Problem und mögliche Gegenmaßnahmen anzuzeigen. Implementieren Sie die empfohlenen Maßnahmen, wenn Sie die ausgewählte Tabelle für Stretch-Datenbank konfigurieren möchten.
 
 ## Nächster Schritt
 Aktivieren Sie Stretch-Datenbank.
 
 -   Informationen zum Aktivieren von Stretch-Datenbank für eine **Datenbank** finden Sie unter [Aktivieren von Stretch-Datenbank für eine Datenbank](sql-server-stretch-database-enable-database.md).
 
--   Informationen zum Aktivieren von Stretch-Datenbank für eine andere **Tabelle**, bei bereits aktiviertem Stretch für die Datenbank, finden Sie unter [Aktivieren von Stretch-Datenbank für eine Tabelle](sql-server-stretch-database-enable-table.md).
+-   Informationen zum Aktivieren von Stretch-Datenbank für eine andere **Tabelle**, wenn Stretch bereits für die Datenbank aktiviert ist, finden Sie unter [Aktivieren von Stretch-Datenbank für eine Tabelle](sql-server-stretch-database-enable-table.md).
 
 ## Weitere Informationen
 
@@ -68,4 +64,4 @@ Aktivieren Sie Stretch-Datenbank.
 
 [Aktivieren von Stretch-Datenbank für eine Tabelle](sql-server-stretch-database-enable-table.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="03/25/2016"
+   ms.date="06/14/2016"
    ms.author="mcoskun"/>
 
 # Einführung in Reliable Collections in zustandsbehafteten Azure Service Fabric-Diensten
@@ -87,9 +87,11 @@ Zuverlässige Auflistungen verwenden immer exklusive Sperren. Für Lesevorgänge
 
 Die Kompatibilitätsmatrix für Sperren finden Sie unten:
 
-| Anforderung\Gewährt | Keine | Shared | Aktualisieren | Exklusiv |
+| Anforderung\\Gewährt | Keine | Shared  
+ | Aktualisieren | Exklusiv |
 | ----------------- | :----------- | :----------- | :---------- | :----------- |
-| Shared  | Kein Konflikt | Kein Konflikt | Konflikt: | Konflikt: |
+| Shared  
+ | Kein Konflikt | Kein Konflikt | Konflikt: | Konflikt: |
 | Aktualisieren | Kein Konflikt | Kein Konflikt | Konflikt: | Konflikt: |
 | Exklusiv | Kein Konflikt | Konflikt: | Konflikt: | Konflikt: |
 
@@ -102,6 +104,8 @@ Das vorangegangene Deadlockszenario ist ein hervorragendes Beispiel, wie Aktuali
 - Ändern Sie kein benutzerdefiniertes Objekt, das von Lesevorgängen (z.B. `TryPeekAsync` oder `TryGetValueAsync`) zurückgegeben wurde. Zuverlässige Auflistungen geben ebenso wie gleichzeitige Auflistungen anstelle einer Kopie einen Verweis auf die Objekte zurück.
 - Tiefenkopieren Sie zurückgegebene benutzerdefinierte Objekte, bevor Sie diese ändern. Da bei Strukturen und integrierten Typen eine Wertübergabe erfolgt, ist hier keine Tiefenkopie erforderlich.
 - Verwenden Sie `TimeSpan.MaxValue` nicht für Timeouts. Timeouts sollten verwendet werden, um Deadlocks zu erkennen.
+- Verwenden Sie keine Transaktion, nachdem für sie ein Commit ausgeführt bzw. sie verworfen oder abgebrochen wurde.
+- Innerhalb eines Transaktionsbereichs erstellte Enumeratoren dürfen nicht außerhalb des Transaktionsbereichs verwendet werden.
 - Erstellen Sie keine Transaktion innerhalb der `using`-Anweisung einer anderen Transaktion, da dies zu Deadlocks führen kann.
 - Stellen Sie sicher, die Ihre `IComparable<TKey>`-Implementierung richtig ist. Dies ist erforderlich, damit das System Prüfpunkte zusammenfügen kann.
 - Sie sollten zwecks Notfallwiederherstellung die Verwendung der Funktionen „Backup“ und „Wiederherstellung“ in Betracht ziehen.
@@ -110,7 +114,7 @@ hier folgen einige Punkte, die es zu beachten gilt:
 
 - Das Standardtimeout beträgt 4 Sekunden für alle Reliable Collections-APIs. Die meisten Benutzer sollten diesen Wert nicht überschreiben.
 - Das Standardabbruchtoken ist `CancellationToken.None` in allen APIs für zuverlässige Auflistungen.
-- Der Schlüsseltyp-Parameter (*TKey*) für ein zuverlässiges Wörterbuch muss `GetHashCode()` und `Equals()` richtig implementieren. Schlüssel müssen unveränderlich sein.
+- Der Schlüsseltyp-Parameter (*TKey*) für ein zuverlässiges Wörterbuch muss `GetHashCode()` und `Equals()` ordnungsgemäß implementieren. Schlüssel müssen unveränderlich sein.
 - Zum Erreichen einer hohen Verfügbarkeit der zuverlässigen Auflistungen sollte jeder Dienst mindestens ein Ziel und eine Mindestgröße von 3 bei der Replikatgruppe haben.
 - Lesevorgänge auf dem sekundären Replikat dürfen Versionen lesen, die nicht im Quorum committet wurden. Dies bedeutet, dass Datenversionen, die von einem einzelnen sekundären Replikat gelesen werden, falsch weiterverarbeitet werden können. Da Lesevorgänge von primären Replikaten immer stabil sind, können hier nie fehlerhafte Versionen auftreten.
 
@@ -123,4 +127,4 @@ hier folgen einige Punkte, die es zu beachten gilt:
 - [Erweiterte Verwendung des Reliable Services-Programmiermodells](service-fabric-reliable-services-advanced-usage.md)
 - [Entwicklerreferenz für zuverlässige Auflistungen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

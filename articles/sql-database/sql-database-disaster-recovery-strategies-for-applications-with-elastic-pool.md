@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
-   ms.date="04/29/2016"
+   ms.date="06/16/2016"
    ms.author="sashan"/>
 
 # Strategien für die Notfallwiederherstellung für Anwendungen mit elastischem SQL-Datenbankpool 
 
-Im Laufe der Jahre haben wir gelernt, dass Clouddienste nicht narrensicher sind und dass es zu schwerwiegenden Vorfällen kommen kann. SQL-Datenbank verfügt über eine Reihe von Funktionen, mit denen für die geschäftliche Kontinuität Ihrer Anwendung gesorgt werden kann, wenn Vorfälle dieser Art auftreten. Elastische Pools und eigenständige Datenbanken unterstützen die gleichen Funktionen für die Notfallwiederherstellung. In diesem Artikel werden mehrere Notfallwiederherstellungsstrategien für elastische Pools beschrieben, bei denen diese SQL-Datenbankfunktionen zur Sicherstellung der geschäftlichen Kontinuität verwendet werden.
+Im Laufe der Jahre haben wir gelernt, dass Clouddienste nicht narrensicher sind und dass es zu schwerwiegenden Vorfällen kommen kann. SQL-Datenbank verfügt über eine Reihe von Funktionen, mit denen für die geschäftliche Kontinuität Ihrer Anwendung gesorgt werden kann, wenn Vorfälle dieser Art auftreten. [Elastische Pools](sql-database-elastic-pool.md) und eigenständige Datenbanken unterstützen die gleichen Funktionen für die Notfallwiederherstellung. In diesem Artikel werden mehrere Notfallwiederherstellungsstrategien für elastische Pools beschrieben, bei denen diese SQL-Datenbankfunktionen zur Sicherstellung der geschäftlichen Kontinuität verwendet werden.
 
 Im Rahmen dieses Artikels verwenden wir das kanonische SaaS-ISV-Anwendungsmuster:
 
@@ -159,7 +159,10 @@ Die **Hauptnachteile** lauten:
 
 ## Zusammenfassung
 
-In diesem Artikel geht es um die Notfallwiederherstellungsstrategien für die Datenbankebene, die für eine mehrinstanzenfähige SaaS-ISV-Anwendung verwendet werden. Die gewählte Strategie sollte auf den Anforderungen der Anwendung basieren, z.B. dem Geschäftsmodell, dem SLA, das Sie Ihren Kunden anbieten möchten, Budgetbeschränkungen usw. Für jede Strategie werden die Vor- und Nachteile beschrieben, damit Sie eine fundierte Entscheidung treffen können. Ihre Anwendung umfasst wahrscheinlich noch weitere Azure-Komponenten. Es ist ratsam, die damit verbundenen Hinweise zur Geschäftskontinuität zu beachten und die Wiederherstellung der Datenbankebene mit ihnen zu orchestrieren. Weitere Informationen zum Verwalten der Wiederherstellung von Datenbankanwendungen in Azure finden Sie unter [Entwerfen von Cloud-Lösungen für die Notfallwiederherstellung](./sql-database-designing-cloud-solutions-for-disaster-recovery.md).
+In diesem Artikel geht es um die Notfallwiederherstellungsstrategien für die Datenbankebene, die für eine mehrinstanzenfähige SaaS-ISV-Anwendung verwendet werden. Die gewählte Strategie sollte auf den Anforderungen der Anwendung basieren, z.B. dem Geschäftsmodell, dem SLA, das Sie Ihren Kunden anbieten möchten, Budgetbeschränkungen usw. Für jede Strategie werden die Vor- und Nachteile beschrieben, damit Sie eine fundierte Entscheidung treffen können. Ihre Anwendung umfasst wahrscheinlich noch weitere Azure-Komponenten. Es ist ratsam, die damit verbundenen Hinweise zur Geschäftskontinuität zu beachten und die Wiederherstellung der Datenbankebene mit ihnen zu orchestrieren. Weitere Informationen zum Verwalten der Wiederherstellung von Datenbankanwendungen in Azure finden Sie unter [Entwerfen von Cloudlösungen für die Notfallwiederherstellung](./sql-database-designing-cloud-solutions-for-disaster-recovery.md).
+
+
+## Nächste Schritte
 
 Die einzelnen Schritte für jedes Szenario umfassen Vorgänge für eine große Anzahl von Datenbanken. Für die zuverlässige Verwaltung sollten Sie daher die Verwendung elastischer SQL-Datenbankaufträge in Betracht ziehen. Weitere Informationen finden Sie unter [Verwalten horizontal hochskalierter Clouddatenbanken](./sql-database-elastic-jobs-overview.md). Auf den folgenden Seiten können Sie sich über die speziellen Vorgänge informieren, die zum Implementieren der in diesem Artikel beschriebenen Szenarien erforderlich sind:
 
@@ -169,4 +172,15 @@ Die einzelnen Schritte für jedes Szenario umfassen Vorgänge für eine große A
 - [Drop database (Verwerfen der Datenbank)](https://msdn.microsoft.com/library/azure/mt619368.aspx)
 - [Copy database (Kopieren der Datenbank)](https://msdn.microsoft.com/library/azure/mt603644.aspx)
 
-<!---HONumber=AcomDC_0511_2016-->
+## Weitere Ressourcen
+
+- [Geschäftskontinuität und Notfallwiederherstellung mit SQL-Datenbank](sql-database-business-continuity.md)
+- [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md)
+- [Geografische Wiederherstellung](sql-database-geo-restore.md)
+- [Aktive Georeplikation](sql-database-geo-replication-overview.md)
+- [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
+- [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
+- [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
+
+<!---HONumber=AcomDC_0622_2016-->

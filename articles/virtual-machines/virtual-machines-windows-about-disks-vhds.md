@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/10/2016"
+	ms.date="06/16/2016"
 	ms.author="cynthn"/>
 
 # Informationen zu Datenträgern und VHDs für virtuelle Azure-Computer
@@ -30,4 +30,4 @@ Virtuelle Computer in Azure verwenden wie alle anderen Computer auch einen Daten
 -  [Hochladen eines Windows-VM-Images in Azure](virtual-machines-windows-upload-image.md), das beim Erstellen eines neuen virtuellen Computers verwendet wird
 -  [Ändern des Laufwerkbuchstabens des temporären Windows-Datenträgers](virtual-machines-windows-classic-change-drive-letter.md), damit die Anwendung das Laufwerk „D:“ für Daten verwenden kann
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0622_2016-->

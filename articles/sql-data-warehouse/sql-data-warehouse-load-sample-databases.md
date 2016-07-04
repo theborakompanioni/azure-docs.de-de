@@ -13,16 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="06/17/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 #Laden von Beispieldaten in SQL Data Warehouse
 
-Sobald Sie [eine Instanz der SQL Data Warehouse-Datenbank erstellt haben][create a SQL Data Warehouse database instance], besteht der nächste Schritt darin, einige Tabellen zu erstellen und zu laden. Sie können die Adventure Works-Beispielskripts verwenden, die wir für SQL Data Warehouse erstellt haben, um Tabellen für das fiktive Unternehmen namens Adventure Works zu erstellen und zu laden. Diese Skripts verwenden „sqlcmd“ zum Ausführen von SQL und „bcp“, um Daten zu laden. Wenn Sie diese Tools bereits installiert haben, folgen Sie diesen Links, um [bcp][] und [sqlcmd][] zu installieren.
+Befolgen Sie diese einfachen Schritte, um die Adventure Works-Beispieldatenbank zu laden und abzufragen. Zunächst verwenden diese Skripts „sqlcmd“, um SQL auszuführen und so Tabellen und Ansichten zu erstellen. Nachdem die Tabellen erstellt wurden, verwenden die Skripts „bcp“, um Daten zu laden. Wenn Sie „sqlcmd“ und „bcp“ noch nicht installiert haben, folgen Sie diesen Links, um [bcp][] und [sqlcmd][] zu installieren.
 
-Befolgen Sie diese einfachen Schritte, um die Adventure Works-Beispieldatenbank in SQL DW zu laden ...
+##Laden von Beispieldaten
 
-1. Laden Sie die [Adventure Works-Beispielskripts für die SQL Data Warehouse][] herunter.
+1. Laden Sie die ZIP-Datei mit [Adventure Works-Beispielskripts für SQL Data Warehouse][] herunter.
 
 2. Extrahieren Sie die Dateien aus der heruntergeladenen ZIP-Datei in ein Verzeichnis auf Ihrem lokalen Computer.
 
@@ -85,11 +85,10 @@ Da Sie jetzt Gelegenheit hatten, einige Abfragen mit Beispieldaten auszuprobiere
 [laden]: ./sql-data-warehouse-overview-load.md
 [Verbindungsdokument]: ./sql-data-warehouse-get-started-connect.md
 [Migrieren von Code]: ./sql-data-warehouse-migrate-code.md
-[create a SQL Data Warehouse database instance]: ./sql-data-warehouse-get-started-provision.md
 [bcp]: ./sql-data-warehouse-load-with-bcp.md
 [sqlcmd]: ./sql-data-warehouse-get-started-connect-sqlcmd.md
 
 <!--Other Web references-->
-[Adventure Works-Beispielskripts für die SQL Data Warehouse]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksSQLDW2012.zip
+[Adventure Works-Beispielskripts für SQL Data Warehouse]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksSQLDW2012.zip
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -1,7 +1,7 @@
 <properties
    pageTitle="Konfigurieren eines Docker-Hosts mit VirtualBox | Microsoft Azure"
    description="Schrittweise Anweisungen zum Konfigurieren einer Docker-Standardinstanz mithilfe von Docker Machine und VirtualBox"
-   services="visual-studio-online"
+   services="azure-container-service"
    documentationCenter="na"
    authors="allclark"
    manager="douge"
@@ -37,23 +37,29 @@ Um einen Docker-Client zu konfigurieren, öffnen Sie einfach Windows PowerShell,
  
 1. Stellen Sie sicher, dass die Standardinstanz konfiguriert ist und ausgeführt wird. (Für eine Instanz mit dem Namen „default“ sollte angezeigt werden, dass sie ausgeführt wird.)
 
-		docker-machine ls 
+    ```PowerShell
+	docker-machine ls 
+    ```
 		
-	![][0]
+	![docker-machine ls output][0]
  
 1. Legen Sie „default“ als aktuellen Host fest, und konfigurieren Sie die Shell.
 
-        docker-machine env default | Invoke-Expression
+    ```PowerShell
+    docker-machine env default | Invoke-Expression
+    ```
 
 1. Zeigen Sie die aktiven Docker-Container an. Die Liste sollte leer sein.
 
-		docker ps
+    ```PowerShell
+	docker ps
+    ```
 
-	![][1]
+	![docker ps output][1]
  
-> [AZURE.NOTE] Bei jedem Neustart Ihres Entwicklungscomputers müssen Sie Ihren lokalen Docker-Host neu starten. Führen Sie dazu an einer Eingabeaufforderung den folgenden Befehl aus: `docker-machine start default`
+> [AZURE.NOTE] Bei jedem Neustart Ihres Entwicklungscomputers müssen Sie Ihren lokalen Docker-Host neu starten. Führen Sie dazu an einer Eingabeaufforderung den folgenden Befehl aus: `docker-machine start default`.
 
 [0]: ./media/vs-azure-tools-docker-setup/docker-machine-ls.png
 [1]: ./media/vs-azure-tools-docker-setup/docker-ps.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

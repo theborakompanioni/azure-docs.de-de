@@ -18,7 +18,7 @@
 
 # Aktivieren von Stretch-Datenbank für eine Datenbank
 
-Um eine Datenbank für Stretch-Datenbank zu konfigurieren, wählen Sie **Aufgaben | Stretch | Aktivieren** für eine Datenbank in SQL Server Management Studio, um den Assistenten zum **Aktivieren einer Datenbank für Stretch** zu öffnen. Sie können auch Transact-SQL verwenden, um Stretch-Datenbank für eine Datenbank zu aktivieren.
+Um eine vorhandene Datenbank für Stretch-Datenbank zu konfigurieren, wählen Sie **Aufgaben | Stretch | Aktivieren** für eine Datenbank in SQL Server Management Studio aus, um den Assistenten zum **Aktivieren einer Datenbank für Stretch** zu öffnen. Sie können auch Transact-SQL verwenden, um Stretch-Datenbank für eine Datenbank zu aktivieren.
 
 Wenn Sie **Aufgaben | Stretch | Aktivieren** für eine Tabelle auswählen und Sie die Datenbank noch nicht für Stretch-Datenbank aktiviert haben, konfiguriert der Assistent die Datenbank für Stretch-Datenbank und ermöglicht das Konfigurieren von Tabellen als Teil des Prozesses. Führen Sie die Schritte in diesem Thema anstelle der Schritte in [Aktivieren von Stretch-Datenbank für eine Tabelle](sql-server-stretch-database-enable-database.md) aus.
 
@@ -133,4 +133,4 @@ Aktivieren von zusätzlichen Tabellen für Stretch-Datenbank Überwachen der Dat
 
 [ALTER DATABASE SET-Optionen (Transact-SQL)](https://msdn.microsoft.com/library/bb522682.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

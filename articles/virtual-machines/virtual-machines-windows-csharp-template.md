@@ -39,8 +39,8 @@ Alle Ressourcen müssen in einer Ressourcengruppe bereitgestellt werden. Weitere
 
 1. Rufen Sie eine Liste mit den verfügbaren Standorten ab, an denen Ressourcen erstellt werden können.
 
-	    Get-AzureLocation | sort Name | Select Name
-
+	    Get-AzureRmLocation | sort Location | Select Location
+        
 2. Ersetzen Sie den Wert von **$locName** durch einen Standort aus der Liste, z. B. **USA, Mitte**. Erstellen Sie die Variable.
 
         $locName = "location name"
@@ -65,13 +65,13 @@ Ein Speicherkonto ist erforderlich, um die Vorlage zu speichern, die Sie erstell
 1. Ersetzen Sie den Wert von „$stName“ (nur Kleinbuchstaben und Zahlen) durch den Namen des Speicherkontos. Testen Sie den Namen auf Eindeutigkeit.
 
         $stName = "storage account name"
-        Test-AzureName -Storage $stName
+        Get-AzureRmStorageAccountNameAvailability $stName
 
-    Wenn dieser Befehl **False** zurückgibt, ist der vorgeschlagene Name eindeutig.
+    Wenn dieser Befehl **True** zurückgibt, ist der vorgeschlagene Name eindeutig.
     
 2. Führen Sie nun den Befehl zum Erstellen des Speicherkontos aus.
     
-        New-AzureRmStorageAccount -ResourceGroupName $rgName -Name $stName -Type "Standard_LRS" -Location $locName
+        New-AzureRmStorageAccount -ResourceGroupName $rgName -Name $stName -SkuName "Standard_LRS" -Kind "Storage" -Location $locName
         
 3. Ersetzen Sie {blob-storage-endpoint} durch den Endpunkt des Blobspeichers in Ihrem Konto. Ersetzen Sie {storage-account-name} durch den Namen Ihres Speicherkontos. Ersetzen Sie {primary-storage-key} durch den primären Zugriffsschlüssel. Führen Sie diese Befehle zum Erstellen des Containers aus, in dem die Dateien gespeichert sind. Sie können die Endpunkt- und Schlüsselwerte aus dem Azure-Portal abrufen.
 
@@ -497,4 +497,4 @@ Da in Azure die genutzten Ressourcen in Rechnung gestellt werden, empfiehlt es s
 - Falls bei der Bereitstellung Probleme aufgetreten sind, können Sie beispielsweise mit dem Artikel [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md) fortfahren.
 - Informationen zum Verwalten des gerade erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -41,13 +41,13 @@ Für VNets mit bestehender Affinitätsgruppenzuordnung ist die Migration zu regi
 	
 	Bearbeiten Sie die folgenden Zeilen Ihrer Netzwerkkonfigurationsdatei, und ersetzen Sie dabei die Werte durch Ihre eigenen Werte:
 
-	**Alter Wert:** \<VirtualNetworkSitename="VNetUSWest" AffinityGroup="VNetDemoAG"\>
+	**Alter Wert:** <VirtualNetworkSitename="VNetUSWest" AffinityGroup="VNetDemoAG">
 
-	**Neuer Wert:** \<VirtualNetworkSitename="VNetUSWest" Location="West US"\>
+	**Neuer Wert:** <VirtualNetworkSitename="VNetUSWest" Location="West US">
 
-1. Speichern Sie die Änderungen, und [importieren](virtual-networks-using-network-configuration-file.md) Sie die Netzwerkkonfiguration in Azure.
+1. Speichern Sie die Änderungen, und importieren[](virtual-networks-using-network-configuration-file.md) Sie die Netzwerkkonfiguration in Azure.
 
->[AZURE.INFO] Bei dieser Migration kommt es zu keinerlei Ausfallzeiten für Ihre Dienste.
+>[AZURE.NOTE] Bei dieser Migration kommt es zu keinerlei Ausfallzeiten für Ihre Dienste.
 
 ## Affinitätsgruppen und virtuelle Computer
 
@@ -66,4 +66,4 @@ Virtuelle Computer, die sich derzeit in einer Affinitätsgruppe befinden, müsse
 Die Bereitstellung eines virtuellen Computers erfolgt in einer einzelnen Skalierungseinheit. Affinitätsgruppen können zwar den Satz verfügbarer VM-Größen für eine neue VM-Bereitstellung einschränken, alle vorhandenen und bereits bereitgestellten virtuellen Computer sind jedoch bereits auf den Satz von VM-Größen beschränkt, der in der entsprechenden Skalierungseinheit verfügbar ist. Daher hat das Entfernen eines virtuellen Computers aus der Affinitätsgruppe keinerlei Auswirkungen.
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0622_2016-->

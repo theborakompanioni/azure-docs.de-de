@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Notfallwiederherstellungsverfahren für SQL-Datenbank" 
+   pageTitle="Notfallwiederherstellungsverfahren für SQL-Datenbank | Microsoft Azure" 
    description="Hier erhalten Sie Anleitungen und bewährte Methoden für die Verwendung von Azure SQL-Datenbank zum Ausführen von Notfallwiederherstellungsverfahren, mit denen Sie wichtige Geschäftsanwendungen vor Fehlern und Ausfällen schützen." 
    services="sql-database" 
    documentationCenter="" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
-   ms.date="04/18/2016"
+   ms.date="06/16/2016"
    ms.author="mihaelab"/>
 
 #Ausführen von Notfallwiederherstellungsverfahren
@@ -63,4 +63,21 @@ Um die Ausfallzeit zu simulieren, können Sie die Web-Anwendung oder den virtuel
 
 - Führen Sie das Verfahren aus, indem Sie die Anwendungsintegrität nach der Wiederherstellung sicherstellen (Verbindungszeichenfolgen, Anmeldungen, grundlegende Funktionstests oder andere Überprüfungen, die Teil der Standardabmeldeverfahren von Anwendungen sind).
 
-<!---HONumber=AcomDC_0420_2016-->
+
+## Nächste Schritte
+
+- Informationen zur Verwendung und Konfiguration der aktiven Georeplikation für die Notfallwiederherstellung finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
+- Informationen zur Verwendung der Geowiederherstellung für die Notfallwiederherstellung finden Sie unter [Geowiederherstellung](sql-database-geo-restore.md).
+
+## Zusätzliche Ressourcen
+
+- [Geschäftskontinuität und Notfallwiederherstellung mit SQL-Datenbank](sql-database-business-continuity.md)
+- [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md)
+- [Geografische Wiederherstellung](sql-database-geo-restore.md)
+- [Aktive Georeplikation](sql-database-geo-replication-overview.md)
+- [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
+- [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
+- [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
+
+<!---HONumber=AcomDC_0622_2016-->

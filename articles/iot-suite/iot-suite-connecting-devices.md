@@ -311,6 +311,7 @@ Sie müssen nun den Code hinzufügen, der das im Modell definierte Verhalten imp
     ```
     
     Zu Referenzzwecken finden Sie nachstehend ein Beispiel für die **DeviceInfo**-Nachricht, die beim Start an IoT Hub gesendet wurde:
+
     ```
     {
       "ObjectType":"DeviceInfo",
@@ -329,11 +330,13 @@ Sie müssen nun den Code hinzufügen, der das im Modell definierte Verhalten imp
     ```
     
     Zu Referenzzwecken finden Sie nachstehend ein Beispiel für die **Telemetrie**-Nachricht, die an IoT Hub gesendet wurde:
+
     ```
     {"DeviceId":"mydevice01", "Temperature":50, "Humidity":50, "ExternalTemperature":55}
     ```
     
     Zu Referenzzwecken finden Sie nachstehend ein Beispiel für einen **Befehl**, der von IoT Hub empfangen wurde:
+    
     ```
     {
       "Name":"SetHumidity",
@@ -361,4 +364,4 @@ Sie müssen nun den Code hinzufügen, der das im Modell definierte Verhalten imp
 
 [lnk-setup-windows]: https://github.com/azure/azure-iot-sdks/blob/develop/c/doc/devbox_setup.md#windows
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0622_2016-->

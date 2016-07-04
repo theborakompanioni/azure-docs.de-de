@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016" 
+	ms.date="06/14/2016" 
 	ms.author="bradsev" />
 
 
@@ -144,7 +144,7 @@ Mit den folgenden Schritten können Sie noch mehr lernen und entdecken.
 * Verschaffen Sie sich einen Überblick über die verschiedenen Tools, die auf der Data Science-VM installiert sind, indem Sie das Startmenü öffnen und sich die Liste der installierten Tools ansehen.
 * Navigieren Sie zu **C:\\Programme\\Microsoft\\MRO-for-RRE\\8.0\\R-3.2.2\\library\\RevoScaleR\\demoScripts**, um Beispiele der RevoScaleR-Bibliothek in R zu erhalten, die Datenanalysen auf Unternehmensebene unterstützt.  
 * Lesen Sie den Artikel [Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können](http://aka.ms/dsvmtenthings).
-* Erfahren Sie, wie Sie mithilfe des Data Science-Ablaufs ([Data Science Process](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)) systematisch vollständige Analyselösungen erstellen.
+* Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) vollständige Analyselösungen systematisch erstellen.
 * Öffnen Sie den [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com), um Beispiel der Cortana Intelligence Suite für die Bereiche Machine Learning und Datenanalyse zu erhalten. Für den einfachen Zugriff haben wir auch ein Symbol auf dem Desktop und im Startmenü der virtuellen Maschine bereitgestellt. 
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

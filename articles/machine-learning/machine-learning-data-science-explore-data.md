@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Durchsuchen von Daten im Cortana-Analyseprozess | Microsoft Azure" 
-	description="Informationen zum Durchsuchen von Daten in verschiedenen Speicherumgebungen." 
+	pageTitle="Untersuchen von Daten im Team Data Science-Prozess | Microsoft Azure" 
+	description="Informationen zum Untersuchen von Daten in verschiedenen Speicherumgebungen." 
 	services="machine-learning,storage" 
 	documentationCenter="" 
 	authors="bradsev" 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016" 
+	ms.date="06/14/2016" 
 	ms.author="bradsev" />
 
-#Durchsuchen von Daten im Cortana-Analyseprozess
+#Untersuchen von Daten im Team Data Science-Prozess
 
-Dieses Dokument beschreibt die Vorgehensweise beim Durchsuchen von Daten in vier unterschiedlichen Umgebungen, die in der Regel im Cortana-Analyseprozess verwendet werden:
+Dieses Dokument beschreibt die Vorgehensweise beim Untersuchen von Daten in vier unterschiedlichen Umgebungen, die in der Regel im Team Data Science-Prozess verwendet werden:
 
 - **Azure Blob-Container**: Daten werden mithilfe des [Pandas](http://pandas.pydata.org/)-Python-Pakets untersucht.
 - **SQL Server-Daten**: Daten werden mithilfe von SQL und einer Programmiersprache wie Python untersucht.
@@ -29,4 +29,4 @@ Dieses **Menü** enthält Links zu den Themen, in denen die Verwendung dieser To
 
 [AZURE.INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

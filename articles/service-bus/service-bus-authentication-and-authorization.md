@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="Service Bus-Authentifizierung und -Autorisierung | Microsoft Azure"
-   description="Übersicht über die SAS-Authentifizierung (Shared Access Signature)."
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" />
+    pageTitle="Service Bus-Authentifizierung und -Autorisierung | Microsoft Azure"
+    description="Übersicht über die SAS-Authentifizierung (Shared Access Signature)."
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" />
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="03/09/2016"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="06/22/2016"
+    ms.author="sethm" />
 
 # Service Bus-Authentifizierung und -Autorisierung
 
@@ -73,4 +73,4 @@ Eine allgemeine Übersicht über SAS in Service Bus finden Sie unter [SAS (Share
 
 Weitere Informationen zu ACS-Token finden Sie unter [Vorgehensweise: Anfordern eines Tokens bei ACS mithilfe des OAuth-WRAP-Protokolls](https://msdn.microsoft.com/library/hh674475.aspx).
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0622_2016-->

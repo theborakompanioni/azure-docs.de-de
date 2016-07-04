@@ -1,7 +1,7 @@
 <properties
    pageTitle="Debuggen von Apps in einem lokalen Docker-Container | Microsoft Azure"
    description="Erfahren Sie, wie Sie eine in einem lokalen Docker-Container ausgeführte App ändern, den Container über das Feature zum Bearbeiten und Aktualisieren aktualisieren und Haltepunkte für das Debuggen setzen."
-   services="visual-studio-online"
+   services="azure-container-service"
    documentationCenter="na"
    authors="allclark"
    manager="douge"
@@ -31,36 +31,19 @@ Die folgenden Tools müssen installiert werden:
 
 Um Docker-Container lokal ausführen zu können, benötigen Sie einen lokalen Docker-Client. Sie können die veröffentlichte [Docker Toolbox](https://www.docker.com/products/overview#/docker_toolbox) verwenden, wofür Hyper-V deaktiviert werden muss. Sie können auch die [Betaversion von Docker für Windows](https://beta.docker.com) nutzen, die Hyper-V verwendet und Windows 10 erfordert.
 
-Wenn Sie die Docker Toolbox verwenden, müssen Sie [den Docker-Client konfigurieren](./vs-azure-tools-docker-setup.md).
+Wenn Sie Docker Toolbox verwenden, müssen Sie [den Docker-Client konfigurieren](./vs-azure-tools-docker-setup.md).
 
-## Bearbeiten einer App, die in einem lokalen Docker-Container ausgeführt wird
-Mit den Visual Studio 2015-Tools für Docker können Entwickler von ASP.NET Core RC2-Web-Apps ihre Anwendung in einem Docker-Container testen und ausführen, Änderungen an der Anwendung in Visual Studio vornehmen und den Browser aktualisieren, um die Änderungen anzuzeigen, die auf die im Container ausgeführte App angewendet wurden. Mit .NET Core und der Visual Studio-Tools für Docker-Version 0.20 können Sie auch Haltepunkte im Code setzen, der im Docker-Container ausgeführt wird.
+## 1\. Erstellen einer Web-App
 
-1. Wählen Sie im Visual Studio-Menü **Datei > Neu > Projekt** aus.
+[AZURE.INCLUDE [create-aspnet5-app](../includes/create-aspnet5-app.md)]
 
-1. Wählen Sie im Abschnitt **Vorlagen** des Dialogfelds **Neues Projekt** die Option **Visual C# > Web** aus.
+## 2\. Hinzufügen der Docker-Unterstützung
 
-1. Wählen Sie **ASP.NET Core-Webanwendung (.NET Core)**.
+[AZURE.INCLUDE [Hinzufügen der Docker-Unterstützung](../includes/vs-azure-tools-docker-add-docker-support.md)]
 
-1. Weisen Sie Ihrer neuen Anwendung einen Namen zu (oder übernehmen Sie den Standardnamen), und tippen Sie auf **OK**.
 
-1. Wählen Sie unter **ASP.NET Core-Vorlagen** den Eintrag **Webanwendung** aus, und tippen Sie auf **OK**.
+## 3\. Bearbeiten des Codes und Aktualisieren
 
-1. Deaktivieren Sie **In der Cloud hosten**, da Sie Docker als Bereitstellungslösung verwenden möchten.
-
-1. Klicken Sie im Projektmappen-Explorer von Visual Studio mit der rechten Maustaste auf das Projekt, und wählen Sie **Hinzufügen > Docker-Unterstützung** aus.
-
-	![][0]
-
-1. Unterhalb des Projektknotens werden die folgenden Dateien erstellt:
-
-	![][1]
-
-> [AZURE.NOTE] Bei Verwendung der [Betaversion von Docker für Windows](https://beta.docker.com) öffnen Sie „Properties\\Docker.props“. Entfernen Sie den Standardwert, und starten Sie Visual Studio neu, um die Einstellung zu übernehmen.
->
-> ![][2]
-
-##Bearbeiten und aktualisieren
 Um Änderungen schnell zu durchlaufen, können Sie Ihre Anwendung in einem Container starten, Änderungen weiter vornehmen und wie mithilfe von IIS Express anzeigen.
 
 1. Legen Sie die Projektmappenkonfiguration auf `Debug` fest, und drücken Sie **<STRG+F5>**, um Ihr Docker-Image zu erstellen und lokal auszuführen.
@@ -86,7 +69,8 @@ Um Änderungen schnell zu durchlaufen, können Sie Ihre Anwendung in einem Conta
 
 1.	Ihre Änderungen wurden übernommen!
 
-##Debuggen mit Haltepunkten
+## 4\. Debuggen mit Haltepunkten
+
 Änderungen müssen öfters überprüft werden, wozu die Debugfunktionen von Visual Studio genutzt werden.
 
 1.	Kehren Sie zu Visual Studio zurück, und öffnen Sie `Controllers\HomeController.cs`.
@@ -106,12 +90,14 @@ Um Änderungen schnell zu durchlaufen, können Sie Ihre Anwendung in einem Conta
 
 1.  Kehren Sie zu Visual Studio zurück, um den Haltepunkt anzuzeigen, und untersuchen Sie den Wert der Nachricht.
 
-	![][3]
+	![][2]
 
 ##Zusammenfassung
+
 Die [Visual Studio 2015 Tools für Docker](https://aka.ms/DockerToolsForVS) bieten die Produktivität einer lokalen Umgebung und realitätsnahe Entwicklung innerhalb eines Docker-Containers.
 
 ## Problembehandlung
+
 [Problembehandlung bei der Visual Studio Docker-Entwicklung](vs-azure-tools-docker-troubleshooting-docker-errors.md)
 
 ## Weitere Informationen zu Docker mit Visual Studio und Azure
@@ -136,9 +122,6 @@ Die [Visual Studio 2015 Tools für Docker](https://aka.ms/DockerToolsForVS) biet
 - [Introduction to ASP.NET Core @ build 2016 - Where You At Demo (Einführung in ASP.NET Core auf der Build 2016)](https://channel9.msdn.com/Events/Build/2016/B810)
 - [Developing .NET apps in containers, Channel 9 (Entwickeln von .NET-Apps in Containern)](https://blogs.msdn.microsoft.com/stevelasker/2016/02/19/developing-asp-net-apps-in-docker-containers/)
 
-[0]: ./media/vs-azure-tools-docker-edit-and-refresh/add-docker-support.png
-[1]: ./media/vs-azure-tools-docker-edit-and-refresh/docker-files-added.png
-[2]: ./media/vs-azure-tools-docker-edit-and-refresh/docker-props.png
-[3]: ./media/vs-azure-tools-docker-edit-and-refresh/breakpoint.png
+[2]: ./media/vs-azure-tools-docker-edit-and-refresh/breakpoint.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

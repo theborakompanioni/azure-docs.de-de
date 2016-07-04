@@ -21,20 +21,12 @@
 
 
 > [AZURE.SELECTOR]
-- [Azure-Portal](sql-database-copy.md)
+- [Übersicht](sql-database-copy.md)
+- [Azure-Portal](sql-database-copy-portal.md)
 - [PowerShell](sql-database-copy-powershell.md)
 - [T-SQL](sql-database-copy-transact-sql.md)
 
-
-
-Die folgenden Schritte verdeutlichen, wie Sie eine Kopie einer SQL-Datenbank mit PowerShell erstellen. Beim Kopiervorgang für die Datenbank wird eine SQL-Datenbank in eine neue Datenbank kopiert, indem das [Start-AzureSqlDatabaseCopy](https://msdn.microsoft.com/library/dn720220.aspx)-Cmdlet verwendet wird. Die Kopie ist eine Snapshotsicherung Ihrer Datenbank, die Sie entweder auf demselben Server oder auf einem anderen Server erstellen.
-
-> [AZURE.NOTE] Die Azure SQL-Datenbank [erstellt und verwaltet automatisch Sicherungen](sql-database-automated-backups.md) für jede Benutzerdatenbank, die Sie wiederherstellen können.
-
-Wenn der Kopiervorgang abgeschlossen ist, handelt es sich bei der neuen Datenbank um eine voll funktionsfähige Datenbank, die unabhängig von der Quelldatenbank ist. Die neue Datenbank entspricht in Bezug auf Transaktionen mit der Quelldatenbank für den Zeitpunkt überein, an dem die Erstellung der Kopie abgeschlossen ist. Die Dienstebene und die Leistungsebene (Tarif) der Datenbankkopie stimmen mit den Ebenen der Quelldatenbank überein. Nachdem der Kopiervorgang abgeschlossen ist, wird die Kopie zu einer voll funktionsfähigen, unabhängigen Datenbank. Anmeldungen, Benutzer und Berechtigungen können unabhängig verwaltet werden.
-
-
-Wenn Sie eine Datenbank auf denselben logischen Server kopieren, können für beide Datenbanken die gleichen Anmeldedaten verwendet werden. Das Sicherheitsprinzipal, das Sie zum Kopieren der Datenbank verwenden, wird zum Datenbankbesitzer (DBO) der neuen Datenbank. Alle Datenbankbenutzer, ihre Berechtigungen und ihre Sicherheits-IDs (SIDs) werden in die Kopie der Datenbank kopiert.
+Die folgenden Schritte veranschaulichen, wie Sie eine SQL-Datenbank mit PowerShell auf den gleichen oder einen anderen Server kopieren. Beim Kopieren der Datenbank wird das Cmdlet [Start-AzureSqlDatabaseCopy](https://msdn.microsoft.com/library/dn720220.aspx) verwendet.
 
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
@@ -87,6 +79,10 @@ Nach dem Ausführen von **Start-AzureSqlDatabaseCopy** können Sie den Status de
 
     Get-AzureSqlDatabaseOperation -ServerName $ServerName -DatabaseName $DatabaseName
 
+## Auflösen von Anmeldungen
+
+Informationen zum Auflösen von Anmeldungen, nachdem der Kopiervorgang abgeschlossen wurde, finden Sie unter [Auflösen von Anmeldungen](sql-database-copy-transact-sql.md#resolve-logins-after-the-copy-operation-completes).
+
 
 ## PowerShell-Beispielskript
 
@@ -115,14 +111,18 @@ Nach dem Ausführen von **Start-AzureSqlDatabaseCopy** können Sie den Status de
 
 ## Nächste Schritte
 
-- [Herstellen einer Verbindung mit einer Azure SQL-Datenbank mit SQL Server Management Studio und Ausführen einer T-SQL-Beispielabfrage](sql-database-connect-query-ssms.md)
-- [Exportieren der Datenbank in eine BACPAC-Datei](sql-database-export-powershell.md)
+- Einen Überblick über das Kopieren einer Azure SQL-Datenbank finden Sie unter [Kopieren einer Azure SQL-Datenbank](sql-database-copy.md).
+- Informationen zum Kopieren einer Datenbank mithilfe des Azure-Portals finden Sie unter [Kopieren einer Azure SQL-Datenbank mithilfe des Azure-Portals](sql-database-copy-portal.md).
+- Informationen zum Kopieren einer Datenbank mithilfe von Transact-SQL finden Sie unter [Kopieren einer Azure SQL-Datenbank mithilfe von T-SQL](sql-database-copy-transact-sql.md).
+- Informationen zum Verwalten von Benutzern und Anmeldungen beim Kopieren einer Datenbank auf einen anderen logischen Server finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md).
 
 
 ## Zusätzliche Ressourcen
 
+- [Verwalten von Anmeldungen](sql-database-manage-logins.md)
+- [Herstellen einer Verbindung mit einer Azure SQL-Datenbank mit SQL Server Management Studio und Ausführen einer T-SQL-Beispielabfrage](sql-database-connect-query-ssms.md)
+- [Exportieren der Datenbank in eine BACPAC-Datei](sql-database-export.md)
 - [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-- [Warnungen zur Notfallwiederherstellung](sql-database-disaster-recovery-drills.md)
 - [SQL-Datenbankdokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/11/2016"
+	ms.date="06/20/2016"
 	ms.author="maheshu"/>
 
 # Einbinden eines virtuellen Red Hat Enterprise Linux 7-Computers in eine verwaltete Domäne
@@ -111,7 +111,7 @@ Wenn die Verbindung mit dem virtuellen Computer hergestellt wurde, besteht die n
 
 4. **Installieren von Kerberos**: Geben Sie in Ihrem PuTTY-Terminal folgenden Befehl ein.
 
-    sudo yum install krb5-workstation krb5-libs krb5-auth-dialog
+    sudo yum install krb5-workstation krb5-libs
 
 	![Kerberos installieren](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-install-kerberos.png)
 
@@ -177,4 +177,4 @@ Informationen finden Sie im Artikel [Problembehandlung beim Domänenbeitritt](ac
 - [Installing Kerberos](https://access.redhat.com/documentation/de-DE/Red_Hat_Enterprise_Linux/6/html/Managing_Smart_Cards/installing-kerberos.html) (Installieren von Kerberos)
 - [Red Hat Enterprise Linux 7 - Windows Integration Guide](https://access.redhat.com/documentation/de-DE/Red_Hat_Enterprise_Linux/7/html/Windows_Integration_Guide/index.html) (Red Hat Enterprise Linux 7 – Windows-Integrationsleitfaden)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0622_2016-->

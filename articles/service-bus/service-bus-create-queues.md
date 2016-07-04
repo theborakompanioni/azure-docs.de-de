@@ -5,14 +5,14 @@
     documentationCenter="na"
     authors="sethmanheim"
     manager="timlt"
-    editor="tysonn" />
+    editor="" />
 <tags 
     ms.service="service-bus"
     ms.devlang="na"
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="03/16/2016"
+    ms.date="06/21/2016"
     ms.author="sethm" />
 
 # Erstellen von Anwendungen, die Service Bus-Warteschlangen verwenden
@@ -53,17 +53,17 @@ Die Verwendung von Nachrichtenwarteschlangen als Zwischenglied zwischen Nachrich
 
 In den folgenden Abschnitten wird erläutert, wie diese Anwendung mithilfe von Service Bus erstellt werden kann.
 
-### Registrieren für ein Service Bus-Konto und -Abonnement
+### Registrieren für ein Azure-Konto
 
 Zur Verwendung von Service Bus benötigen Sie ein Azure-Konto. Wenn Sie über kein Abonnement verfügen, können Sie sich [hier](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF) für ein kostenloses Konto registrieren.
 
 ### Erstellen eines Dienstnamespaces
 
-Sobald Sie über ein Abonnement verfügen, können Sie einen neuen Namespace erstellen. Versehen Sie den neuen Namespace mit einem Namen, der für alle Service Bus-Konten eindeutig ist. Jeder Namespace ist ein Bereichscontainer für eine Gruppe von Service Bus-Entitäten.
+Sobald Sie über ein Abonnement verfügen, können Sie [einen neuen Namespace erstellen](service-bus-create-namespace-portal.md). Jeder Namespace ist ein Bereichscontainer für eine Gruppe von Service Bus-Entitäten. Versehen Sie den neuen Namespace mit einem Namen, der für alle Service Bus-Konten eindeutig ist.
 
 ### Installieren des NuGet-Pakets
 
-Zur Verwendung eines Service Bus-Namespaces muss eine Anwendung auf die Service Bus-Assembly (genauer: auf „Microsoft.ServiceBus.dll“) verweisen. Diese Assembly ist Bestandteil des Microsoft Azure SDK und kann auf der [Azure SDK-Downloadseite](https://azure.microsoft.com/downloads/) heruntergeladen werden. Das [Service Bus NuGet-Paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus) stellt jedoch die einfachste Möglichkeit zum Erhalten der Service Bus-API und zum Konfigurieren der Anwendung mit allen Service Bus-Abhängigkeiten dar.
+Zur Verwendung eines Service Bus-Namespaces muss eine Anwendung auf die Service Bus-Assembly (genauer: auf „Microsoft.ServiceBus.dll“) verweisen. Diese Assembly ist Bestandteil des Microsoft Azure SDK und kann auf der [Azure SDK-Downloadseite](https://azure.microsoft.com/downloads/) heruntergeladen werden. Das [NuGet-Paket für Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) stellt jedoch die einfachste Möglichkeit zum Abrufen der Service Bus-API und Konfigurieren der Anwendung mit allen Service Bus-Abhängigkeiten dar.
 
 ### Erstellen der Warteschlange
 
@@ -88,7 +88,7 @@ Beachten Sie die Überladungen der [CreateQueue](https://msdn.microsoft.com/libr
 
 ### Senden von Nachrichten an die Warteschlange
 
-Für Vorgänge zur Laufzeit für Service Bus-Entitäten, z. B. Senden und Empfangen von Nachrichten, muss eine Anwendung zunächst ein [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx)-Objekt erstellen. Ähnlich wie die [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Klasse wird die [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx)-Instanz aus der Basisadresse des Dienstnamespaces und dem Tokenanbieter erstellt.
+Für Vorgänge zur Laufzeit für Service Bus-Entitäten, z. B. Senden und Empfangen von Nachrichten, muss eine Anwendung zunächst ein [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx)-Objekt erstellen. Ähnlich wie die [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Klasse wird die [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx)-Instanz aus der Basisadresse des Dienstnamespaces und dem Tokenanbieter erstellt.
 
 ```
  BrokeredMessage bm = new BrokeredMessage(salesData);
@@ -97,7 +97,7 @@ Für Vorgänge zur Laufzeit für Service Bus-Entitäten, z. B. Senden und Empfan
  bm.Properties["MachineID"] = "POS_1";
 ```
 
-Die Nachrichten, die an die Service Bus-Warteschlangen gesendet werden (und von diesen empfangen werden), sind Instanzen der [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx)-Klasse. Diese Klasse besteht aus einem Satz von Standardeigenschaften (z. B. [Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx) und [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx)), einem Wörterbuch, in dem Anwendungseigenschaften enthalten sind, und einem Bestand beliebiger Anwendungsdaten. Eine Anwendung kann durch Übergeben eines beliebigen serialisierbaren Objekts den Bestand festlegen (im folgenden Beispiel wird ein **SalesData**-Objekt übergeben, das die Verkaufsdaten vom POS-Terminal darstellt), der mithilfe von [DataContractSerializer](https://msdn.microsoft.com/library/azure/system.runtime.serialization.datacontractserializer.aspx) das Objekt serialisiert. Alternativ kann ein [Stream](https://msdn.microsoft.com/library/azure/system.io.stream.aspx)-Objekt angegeben werden.
+Die Nachrichten, die an die Service Bus-Warteschlangen gesendet werden (und von diesen empfangen werden), sind Instanzen der [BrokeredMessage](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx)-Klasse. Diese Klasse besteht aus einem Satz von Standardeigenschaften (z. B. [Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx) und [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx)), einem Wörterbuch, in dem Anwendungseigenschaften enthalten sind, und einem Bestand beliebiger Anwendungsdaten. Eine Anwendung kann durch Übergeben eines beliebigen serialisierbaren Objekts den Bestand festlegen (im folgenden Beispiel wird ein **SalesData**-Objekt übergeben, das die Verkaufsdaten vom POS-Terminal darstellt), der mithilfe von [DataContractSerializer](https://msdn.microsoft.com/library/azure/system.runtime.serialization.datacontractserializer.aspx) das Objekt serialisiert. Alternativ kann ein [Stream](https://msdn.microsoft.com/library/azure/system.io.stream.aspx)-Objekt angegeben werden.
 
 Die einfachste Möglichkeit zum Senden von Nachrichten an eine bestimmte Warteschlange, in unserem Fall die **DataCollectionQueue**-Warteschlange, ist die Verwendung von [CreateMessageSender](https://msdn.microsoft.com/library/azure/hh322659.aspx) zum Erstellen eines [MessageSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesender.aspx)-Objekts direkt aus der [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx)-Instanz.
 
@@ -108,14 +108,14 @@ sender.Send(bm);
 
 ### Empfangen von Nachrichten aus der Warteschlange
 
-Die einfachste Möglichkeit zum Empfangen von Nachrichten aus der Warteschlange ist die Verwendung eines [MessageReceiver](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx)-Objekts, das Sie unter Verwendung von [CreateMessageReceiver](https://msdn.microsoft.com/library/azure/hh322642.aspx) direkt aus [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) erstellen können. Nachrichtenempfänger können zwei unterschiedliche Modi verwenden: **ReceiveAndDelete** und **PeekLock**. [ReceiveMode](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) wird beim Erstellen des Nachrichtenempfängers als Parameter für den [CreateMessageReceiver](https://msdn.microsoft.com/library/azure/hh322642.aspx)-Aufruf festgelegt.
+Zum Empfangen von Nachrichten aus der Warteschlange können Sie ein [MessageReceiver](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx)-Objekt verwenden, das Sie mithilfe von [CreateMessageReceiver](https://msdn.microsoft.com/library/azure/hh322642.aspx) direkt aus [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) erstellen können. Nachrichtenempfänger können zwei unterschiedliche Modi verwenden: **ReceiveAndDelete** und **PeekLock**. [ReceiveMode](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) wird beim Erstellen des Nachrichtenempfängers als Parameter für den [CreateMessageReceiver](https://msdn.microsoft.com/library/azure/hh322642.aspx)-Aufruf festgelegt.
 
 
 Bei Verwendung des **ReceiveAndDelete**-Modus ist der Nachrichtenempfang ein einstufiger Vorgang. Wenn Service Bus also die Anforderung erhält, wird die Nachricht als verarbeitet gekennzeichnet und an die Anwendung zurückgegeben. Der **ReceiveAndDelete**-Modus ist das einfachste Modell. Er wird am besten für Szenarios eingesetzt, bei denen die Anwendung es tolerieren kann, wenn eine Nachricht beim Auftreten eines Fehlers nicht verarbeitet wird. Um dieses Verfahren zu verstehen, stellen Sie sich ein Szenario vor, in dem der Consumer die Empfangsanforderung ausstellt und dann abstürzt, bevor diese verarbeitet wird. Da die Nachricht von Service Bus als verarbeitet gekennzeichnet wurde, wird die vor dem Absturz verarbeitete Nachricht nicht berücksichtigt, wenn die Anwendung neu gestartet und die Verarbeitung von Nachrichten wieder aufgenommen wird.
 
 Im **PeekLock**-Modus ist der Nachrichtenempfang zweistufig. Dadurch können Anwendungen unterstützt werden, die fehlende Nachrichten nicht tolerieren können. Wenn Service Bus die Anforderung erhält, ermittelt der Dienst die nächste zu verarbeitende Nachricht, sperrt diese, um zu verhindern, dass andere Consumer sie erhalten, und sendet sie dann an die Anwendung zurück. Nachdem die Anwendung die Verarbeitung der Nachricht abgeschlossen hat (oder sie zwecks zukünftiger Verarbeitung zuverlässig gespeichert hat), führt Sie die zweite Phase des Empfangsprozesses durch Aufruf von [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) für die empfangene Nachricht durch. Wenn Service Bus den [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx)-Aufruf erkennt, wird die Nachricht als verarbeitet markiert.
 
-Zwei weitere Abläufe sind möglich. Wenn die Anwendung die Nachricht aus einem bestimmten Grund nicht verarbeiten kann, kann sie erstens [Abandon](https://msdn.microsoft.com/library/azure/hh181837.aspx) für die empfangene Nachricht aufrufen (anstelle von [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx)). Dies führt dazu, dass Service Bus die Nachricht entsperrt und verfügbar macht, damit sie erneut empfangen werden kann, und zwar entweder von demselben Consumer oder von einem anderen den Vorgang abschließenden Consumer. Der Sperre ist zweitens ein Timeout zugeordnet. Wenn die Anwendung die Nachricht nicht vor Ablauf des Timeouts verarbeiten kann (z. B. wenn die Anwendung abstürzt), entsperrt Service Bus die Nachricht und macht sie verfügbar, sodass sie erneut empfangen werden kann.
+Zwei weitere Abläufe sind möglich. Wenn die Anwendung die Nachricht aus einem bestimmten Grund nicht verarbeiten kann, kann sie erstens [Abandon](https://msdn.microsoft.com/library/azure/hh181837.aspx) für die empfangene Nachricht aufrufen (anstelle von [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx)). Dies führt dazu, dass Service Bus die Nachricht entsperrt und verfügbar macht, damit sie erneut empfangen werden kann, und zwar entweder von demselben Consumer oder von einem anderen den Vorgang abschließenden Consumer. Der Sperre ist zweitens ein Timeout zugeordnet. Wenn die Anwendung die Nachricht nicht vor Ablauf des Timeouts verarbeiten kann (z.B. wenn die Anwendung abstürzt), entsperrt Service Bus die Nachricht und macht sie verfügbar, sodass sie erneut empfangen werden kann (im Wesentlichen erfolgt standardmäßig der Vorgang [Verwerfen](https://msdn.microsoft.com/library/azure/hh181837.aspx)).
 
 Beachten Sie, dass falls die Anwendung nach der Verarbeitung der Nachricht, aber vor der Ausgabe der [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx)-Anforderung abstürzt, wird die Nachricht erneut an die Anwendung übermittelt, wenn diese neu gestartet wird. Dies wird häufig als *At Least Once*-Verarbeitung bezeichnet. Das bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei dieselbe Nachricht in bestimmten Fällen möglicherweise erneut übermittelt wird. Wenn eine doppelte Verarbeitung in dem Szenario nicht zulässig ist, ist in der Anwendung zusätzliche Logik für die Erkennung doppelter Nachrichten erforderlich. Dies kann durch Verwendung der [MessageId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx)-Eigenschaft der Nachricht erreicht werden. Der Wert dieser Eigenschaft bleibt über mehrere Übermittlungsversuche konstant. Dies wird als *Exactly Once*-Verarbeitung (genau einmal) bezeichnet.
 
@@ -137,7 +137,7 @@ catch (Exception e)
 
 ### Verwenden des Warteschlangenclients
 
-In den Beispielen weiter oben wurden [MessageSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesender.aspx)- und [MessageReceiver](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx)-Objekte direkt aus [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) erstellt, um Nachrichten aus der Warteschlange zu senden bzw. zu empfangen. Eine andere Möglichkeit besteht in der Verwendung der [QueueClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx)-Klasse, die sowohl Sende- als auch Empfangsvorgänge sowie erweiterte Funktionen (z. B. Sitzungen) unterstützt.
+In den Beispielen weiter oben wurden [MessageSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesender.aspx)- und [MessageReceiver](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx)-Objekte direkt aus [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) erstellt, um Nachrichten aus der Warteschlange zu senden bzw. zu empfangen. Eine andere Möglichkeit besteht in der Verwendung der [QueueClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx)-Klasse, die sowohl Sende- als auch Empfangsvorgänge sowie erweiterte Funktionen (z. B. Sitzungen) unterstützt.
 
 ```
 QueueClient queueClient = factory.CreateQueueClient("DataCollectionQueue");
@@ -160,4 +160,4 @@ catch (Exception e)
 
 Nachdem Sie sich mit den Grundlagen in Bezug auf Warteschlangen vertraut gemacht haben, finden Sie unter [Erstellen von Anwendungen, die Service Bus-Themen und -Abonnements verwenden](service-bus-create-topics-subscriptions.md) weiterführende Informationen zur Verwendung der Funktionen zum Veröffentlichen/Abonnieren der Service Bus-Themen und -Abonnements.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0622_2016-->

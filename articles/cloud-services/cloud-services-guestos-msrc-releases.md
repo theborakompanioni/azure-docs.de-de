@@ -13,12 +13,41 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd" 
-   ms.date="04/18/2016"
+   ms.date="06/21/2016"
    ms.author="yuemlu"/>
 
 # Azure-Gastbetriebssystem 
 
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
+
+## Gastbetriebssystem Juni 
+
+| Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| ----------- | ------------------- | --------------------------------------------------------------------------- | ---------------- | --------------------- |
+| MS16-035 | [3141780] | Sicherheitsupdate für .NET Framework zum Unterbinden einer Umgehung von Sicherheitsfunktionen | 4\.33, 3.40, 2.52 | 14\. Juni 2016 |
+| Empfehlung | [3155527] | Aktualisierung der Verschlüsselungssammlungen für „FalseStart“ | 4\.33, 3.40 | 14\. Juni 2016 |
+| MS16-063 | [3163649] | Kumulatives Sicherheitsupdate für Internet Explorer | 4\.33, 3.40, 2.52 | 14\. Juni 2016 |
+| MS16-069 | [3163640] | Kumulatives Sicherheitsupdate für JScript und VBScript | 2\.52 | 14\. Juni 2016 |
+| MS16-071 | [3164065] | Sicherheitsupdate für Microsoft Windows DNS-Server | 4\.33, 3.40 | 14\. Juni 2016 |
+| MS16-072 | [3163622] | Sicherheitsupdate für Gruppenrichtlinie | 4\.33, 3.40, 2.52 | 14\. Juni 2016 |
+| MS16-073 | [3164028] | Sicherheitsupdate für Kernelmodustreiber | 4\.33, 3.40, 2.52 | 14\. Juni 2016 |
+| MS16-074 | [3164036] | Sicherheitsupdate für Microsoft-Grafikkomponente | 4\.33, 3.40, 2.52 | 14\. Juni 2016 |
+| MS16-075 | [3164038] | Sicherheitsupdate für Windows-SMB-Server | 4\.33, 3.40, 2.52 | 14\. Juni 2016 |
+| MS16-076 | [3167691] | Sicherheitsupdate für Netlogon | 4\.33 | 14\. Juni 2016 |
+| MS16-077 | [3165191] | Sicherheitsupdate für WPAD | 4\.33, 3.40, 2.52 | 14\. Juni 2016 |
+| MS16-080 | [3164302] | Sicherheitsupdate für Microsoft Windows-PDF | 4\.33, 3.40 | 14\. Juni 2016 |
+| MS16-081 | [3160352] | Sicherheitsupdate für Active Directory | 4\.33, 3.40, 2.52 | 14\. Juni 2016 |
+| | [2922223] | Sie können die Systemzeit nicht ändern, wenn der Registrierungseintrag „RealTimeIsUniversal“ in Windows aktiviert ist. | 2\.52 | 14\. Juni 2016 |
+| | [3121255] | Abbruchfehler „0x00000024“ in „FsRtlNotifyFilterReportChange“ und mögliche Fehler beim Kopieren von Dateien unter Windows | 2\.52 | 14\. Juni 2016 |
+| | [3125424] | LSASS-Deadlocks führen dazu, dass Windows Server 2012 R2 oder Windows Server 2012 nicht reagiert | 4\.33, 3.40 | 14\. Juni 2016 |
+| | [3125574] | Praktisches Rollup-Update für Windows 7 SP1 und Windows Server 2008 R2 SP1 | 2\.52 | 14\. Juni 2016 |
+| | [3140245] | Update zur Aktivierung von TLS 1.1 und TLS 1.2 als sichere Standardprotokolle in WinHTTP unter Windows | 3\.40, 2.52 | 14\. Juni 2016 |
+| | [3146604] | Der WMI-Dienst stürzt in Windows Server 2012 R2 oder Windows Server 2012 ohne erkennbaren Grund ab. | 4\.33, 3.40 | 14\. Juni 2016 |
+| | [3149157] | Verbesserungen der Zuverlässigkeit und Skalierbarkeit in TCP/IP für Windows 8.1 und Windows Server 2012 R2 | 4\.33 | 14\. Juni 2016 |
+| | [3156416] | Updaterollup vom Mai 2016 für Windows Server 2012 | 3\.40 | 14\. Juni 2016 |
+| | [3156418] | Updaterollup vom Mai 2016 für Windows RT 8.1, Windows 8.1 und Windows Server 2012 R2 | 4\.33 | 14\. Juni 2016 |
+| | [3153731] | DST-Update vom Mai 2016 für Aserbaidschan, Chile, Haiti und Marokko in Windows | 4\.33, 3.40, 2.52 | 14\. Juni 2016 |
+
 
 ## Gastbetriebssystem Mai 
 
@@ -288,6 +317,32 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | – | [2999802][2999802] | In Windows werden durchgezogene Linien statt gepunktete Linien gedruckt | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
 | – | [2896881][2896881] | Lange Anmeldezeit bei der Verwendung des VBScript-Befehls "AddPrinterConnection" zum Zuordnen von Druckern zu Benutzern während des Anmeldeprozesses in Windows | 4\.15, 3.22, 2.34 | 13\. Januar 2015 |
 
+
+[3141780]: http://support.microsoft.com/kb/3141780
+[3155527]: http://support.microsoft.com/kb/3155527
+[3163649]: http://support.microsoft.com/kb/3163649
+[3163640]: http://support.microsoft.com/kb/3163640
+[3164065]: http://support.microsoft.com/kb/3164065
+[3163622]: http://support.microsoft.com/kb/3163622
+[3164028]: http://support.microsoft.com/kb/3164028
+[3164036]: http://support.microsoft.com/kb/3164036
+[3164038]: http://support.microsoft.com/kb/3164038
+[3167691]: http://support.microsoft.com/kb/3167691
+[3165191]: http://support.microsoft.com/kb/3165191
+[3164302]: http://support.microsoft.com/kb/3164302
+[3160352]: http://support.microsoft.com/kb/3160352
+[2922223]: http://support.microsoft.com/kb/2922223
+[3121255]: http://support.microsoft.com/kb/3121255
+[3125424]: http://support.microsoft.com/kb/3125424
+[3125574]: http://support.microsoft.com/kb/3125574
+[3140245]: http://support.microsoft.com/kb/3140245
+[3146604]: http://support.microsoft.com/kb/3146604
+[3149157]: http://support.microsoft.com/kb/3149157
+[3156416]: http://support.microsoft.com/kb/3156416
+[3156418]: http://support.microsoft.com/kb/3156418
+[3153731]: http://support.microsoft.com/kb/3153731
+
+
 [3155533]: http://support.microsoft.com/kb/3155533
 [3156764]: http://support.microsoft.com/kb/3156764
 [3156754]: http://support.microsoft.com/kb/3156754
@@ -489,4 +544,4 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-and-release-explanation
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

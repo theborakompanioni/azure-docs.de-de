@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/08/2016"
+	ms.date="06/15/2016"
 	ms.author="danlep"/>
 
 # Befehle der Azure-Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“ (Azure Service Management, ASM)
@@ -25,19 +25,19 @@ Dieser Artikel enthält die Syntax und Optionen für Befehle der Azure-Befehlsze
 
 Führen Sie zuerst die [Installation der Azure-Befehlszeilenschnittstelle](xplat-cli-install.md) durch, und [stellen Sie die Verbindung mit Ihrem Azure-Abonnement her](xplat-cli-connect.md).
 
-Geben Sie zum Anzeigen der aktuellen Befehlssyntax und Optionen in der Befehlszeile im Service Management-Modus `azure help` oder der Hilfe für einen bestimmten Befehl `azure help [command]` ein. In der Dokumentation finden Sie auch CLI-Beispiele zum Erstellen und Verwalten bestimmter Azure-Dienste.
+Geben Sie zum Anzeigen der aktuellen Befehlssyntax und Optionen in der Befehlszeile im ASM-Modus `azure help` oder zum Anzeigen der Hilfe für einen bestimmten Befehl `azure help [command]` ein. In der Dokumentation finden Sie auch CLI-Beispiele zum Erstellen und Verwalten bestimmter Azure-Dienste.
 
 Optionale Parameter sind in eckigen Klammern angegeben (Beispiel: `[parameter]`). Alle anderen Parameter müssen angegeben werden.
 
 Neben den hier dokumentierten befehlsspezifischen optionalen Parametern gibt es drei weitere optionale Parameter für die Anzeige detaillierter Ausgaben wie z.B. Anforderungsoptionen und Statuscodes. Der Parameter `-v` liefert eine ausführliche Ausgabe. Bei Verwendung des Parameters `-vv` fällt die Ausgabe sogar noch ausführlicher aus. Mit der Option `--json` erfolgt die Ausgabe im reinen JSON-Format.
 
-## Festlegen des Service Management-Modus
+## Festlegen des ASM-Modus
 
-Der Dienstverwaltungsmodus wird bei der Erstinstallation der Befehlszeilenschnittstelle standardmäßig aktiviert. Verwenden Sie bei Bedarf den folgenden Befehl, um die Dienstverwaltungsbefehle der Azure-Befehlszeilenschnittstelle zu aktivieren:
+Der ASM-Modus wird bei der Erstinstallation der CLI standardmäßig aktiviert. Verwenden Sie bei Bedarf den folgenden Befehl zum Festlegen des ASM-Modus.
 
 	azure config mode asm
 
->[AZURE.NOTE] Der Azure-Ressourcen-Manager-Modus und der Azure-Dienstverwaltungsmodus schließen sich gegenseitig aus. Das heißt, dass Ressourcen, die in einem Modus erstellt wurden, nicht im anderen Modus verwaltet werden können.
+>[AZURE.NOTE] Der Azure Resource Manager-Modus der CLI und der ASM-Modus schließen sich gegenseitig aus. Das heißt, dass Ressourcen, die in einem Modus erstellt wurden, nicht im anderen Modus verwaltet werden können.
 
 ## Verwalten Ihrer Kontoinformationen und Veröffentlichen von Einstellungen
 Eine Möglichkeit, wie für die CLI eine Verbindung mit Ihrem Konto hergestellt werden kann, ist die Verwendung Ihrer Azure-Abonnementinformationen. (Weitere Optionen finden Sie unter [Herstellen einer Verbindung mit einem Azure-Abonnement über die Azure-Befehlszeilenschnittstelle](xplat-cli-connect.md).) Sie finden diese Informationen im klassischen Azure-Portal in einer Einstellungsveröffentlichungsdatei, wie hier beschrieben. Sie können die Einstellungsveröffentlichungsdatei als persistente lokale Konfigurationseinstellung importieren, die von der CLI dann in späteren Vorgängen verwendet wird. Sie müssen Ihre Veröffentlichungseinstellungen nur einmal importieren.
@@ -791,7 +791,7 @@ Dieser Befehl tauscht zwei Web-App-Steckplätze.
 
 Dieser Befehl unterstützt die folgende zusätzliche Option:
 
-**-q oder **--quiet**: Keine Bestätigungsaufforderungen. Verwenden Sie diese Option in automatisierten Skripts.
+****-q oder **--quiet**: Keine Bestätigungsaufforderungen. Verwenden Sie diese Option in automatisierten Skripts.
 
 
 **site start [Optionen] [Name]**
@@ -814,7 +814,7 @@ Dieser Befehl beendet eine Web-App.
 	info:   Site mysite has been stopped
 	info:   site stop command OK
 
-**site restart [Optionen] [Name]**
+****site restart [Optionen] [Name]
 
 Dieser Befehl beendet die angegebene Web-App und startet sie dann wieder.
 
@@ -1879,10 +1879,8 @@ Dieser Befehl unterstützt die folgenden zusätzlichen Optionen:
 + **-e** oder **--label** &lt;Beschriftung>: Die Beschriftung für das Speicherkonto.
 + **-d** oder **--description** &lt;Beschreibung>: Die Beschreibung für das Speicherkonto.
 + **-l** oder **--location** &lt;Name>: Die geografische Region, in der das Speicherkonto erstellt werden soll.
-+ **-a** oder **--affinity-group** &lt;Name>: Die Affinitätsgruppe, der das Speicherkonto zugeordnet werden soll.
-+ **--kind**: Der Kontotyp: entweder Storage oder Storage Blob 
-+ **--sku-name**: Gibt den Typ des zu erstellenden Kontos an: entweder Storage Standard mit Redundanzoption (LRS/ZRS/GRS/RAGRS) oder Storage Premium (PLRS).
-+ **--access-tier**: Gibt die Speicherebene an: entweder „Hot“ oder „Cool“
++ **-a** oder **--affinity-group** &lt;Name>:Die Affinitätsgruppe, der das Speicherkonto zugeordnet werden soll. 
++ **--type**: Gibt den Typ des zu erstellenden Kontos an: entweder Standardspeicher mit Redundanzoption (LRS/ZRS/GRS/RAGRS) oder Premium-Speicher (PLRS).
 
 **storage account set [Optionen] <name>**
 
@@ -1898,8 +1896,7 @@ Dieser Befehl unterstützt die folgenden zusätzlichen Optionen:
 + **-e** oder **--label** &lt;Beschriftung>: Die Beschriftung für das Speicherkonto.
 + **-d** oder **--description** &lt;Beschreibung>: Die Beschreibung für das Speicherkonto.
 + **-l** oder **--location** &lt;Name>: Die geografische Region, in der das Speicherkonto erstellt werden soll.
-+ **--sku-name**: gibt den neuen Typ des Kontos an: entweder Storage Standard mit Redundanzoption (LRS/ZRS/GRS/RAGRS) oder Storage Premium (PLRS).
-+ **--access-tier**: Gibt die Speicherebene an: entweder „Hot“ oder „Cool“
++ **--type**: gibt den neuen Typ des Kontos an: entweder Standardspeicher mit Redundanzoption (LRS/ZRS/GRS/RAGRS) oder Premium-Speicher (PLRS).
 
 **storage account delete [Optionen] <name>**
 
@@ -2353,4 +2350,4 @@ Löscht einen DNS-Servereintrag aus der Netzwerkkonfiguration.
 	+ Deleting the DNS server entry dns-4 ( 77.88.99.11 )
 	info:    network dnsserver unregister command OK
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

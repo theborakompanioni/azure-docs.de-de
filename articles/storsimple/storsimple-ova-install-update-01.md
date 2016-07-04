@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Installieren von Update 0.1 auf Ihrem StorSimple Virtual Array | Microsoft Azure"
-   description="Hier wird beschrieben, wie Sie über die Webbenutzeroberfläche von StorSimple Virtual Array Update 0.1 über das Portal und die Hotfix-Methode anwenden."
+   pageTitle="Installieren von Updates auf einem StorSimple Virtual Array | Microsoft Azure"
+   description="Hier wird beschrieben, wie Sie die Webbenutzeroberfläche des StorSimple Virtual Arrays verwenden, um Updates und Hotfixes über das Portal anzuwenden."
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -12,63 +12,23 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/26/2016"
+   ms.date="06/16/2016"
    ms.author="alkohli" />
 
-# Installieren Sie Update 0.1 auf Ihrem StorSimple Virtual Array
+# Installieren von Updates auf einem StorSimple Virtual Array
 
 ## Übersicht
 
-Dieser Artikel beschreibt die erforderlichen Schritte zum Installieren von Update 0.1 auf Ihrem StorSimple Virtual Array. Er erklärt die Updateverfahren über das klassische Azure-Portal und über die lokale Webbenutzeroberfläche. Beide Updateverfahren dauern jeweils weniger als 2 Minuten.
+Dieser Artikel beschreibt die erforderlichen Schritte zum Installieren von Updates auf Ihrem StorSimple Virtual Array über die lokale Webbenutzeroberfläche. Dieses Verfahren dauert weniger als zwei Minuten. Sie müssen Softwareupdates oder -hotfixes installieren, um Ihr StorSimple Virtual Array auf dem neuesten Stand zu halten.
 
-In der Regel müssen Sie Softwareupdates oder Hotfixes installieren, um StorSimple Virtual Array auf dem neuesten Stand zu halten. Im Allgemeinen wird empfohlen, Updates über das klassische Azure-Portal zu installieren. Wenn das Portal nicht verfügbar ist, können Sie zum Anwenden von Hotfixes oder Updates jedoch auch die lokale Webbenutzeroberfläche verwenden.
-
-Beachten Sie, dass das Gerät bei der Update- oder Hotfixinstallation neu gestartet wird. Da es sich bei StorSimple Virtual Array um ein Gerät mit einem Einzelknoten handelt, werden alle aktuellen IOs unterbrochen, was zu einer gewissen Ausfallzeit führt.
+Beachten Sie, dass das Gerät bei der Installation des Updates oder Hotfixes neu gestartet wird. Da es sich bei einem StorSimple Virtual Array um ein Gerät mit einem Einzelknoten handelt, werden alle aktuellen E/A-Vorgänge unterbrochen, was zu einer gewissen Ausfallzeit führt.
 
 Außerdem wird empfohlen, die Volumes oder Freigaben vor dem Anwenden eines Updates auf dem Host und dann auf dem Gerät offline zu nehmen. So wird das Risiko einer Datenbeschädigung minimiert.
 
-## Verwenden des klassischen Azure-Portals
-
-Wir empfehlen Ihnen, Updates über das klassische Azure-Portal zu installieren. Beim Verfahren über das Portal muss der Benutzer die Updates suchen, herunterladen und anschließend installieren. Führen Sie die folgenden Schritte aus, um Updates oder Hotfixes zu installieren.
-
-#### So installieren Sie Updates über das klassische Azure-Portal
-
-1. Wählen Sie auf der Seite **Geräte** das Gerät aus, für das Sie Updates installieren möchten.
-
-2. Navigieren Sie zu **Geräte** > **Wartung** > **Softwareupdates**.
-
-3. Wenn Softwareupdates verfügbar sind, wird eine Meldung angezeigt. Klicken Sie am unteren Rand der Seite auf **Updates scannen**, um nach Updates zu suchen.
-
-	![Updates scannen](./media/storsimple-ova-install-update-01/aupdate1m.png)
-
-4. Klicken Sie unten auf der Seite auf **Updates herunterladen**. Der Benutzer wird mit einem Dialogfeld darauf hingewiesen, dass das Update zu einer Unterbrechung führt. Da es sich bei StorSimple Virtual Array um ein Gerät mit einem Einzelknoten handelt, wird das Gerät nach dem Update neu gestartet. Dadurch werden alle ausgeführt IOs unterbrochen. Klicken Sie auf das Häkchensymbol, um einen Auftrag zum Herunterladen der verfügbaren Updates zu starten.
-
-	![Herunterladen von Updates bestätigen](./media/storsimple-ova-install-update-01/aupdate3m.png)
-
-	Sie werden benachrichtigt, nachdem die Updates heruntergeladen wurden.
-
-	![Updates herunterladen](./media/storsimple-ova-install-update-01/aupdate5m.png)
-
-5. Klicken Sie unten auf der Seite auf **Updates installieren**, um mit dem Update des Geräts zu beginnen. Das Dialogfeld erscheint erneut. Klicken Sie auf das Häkchensymbol, um einen Auftrag zum Installieren der Updates zu starten.
- 
- 	![Installieren von Updates bestätigen](./media/storsimple-ova-install-update-01/aupdate6m.png)
- 
- 
-	Sie werden benachrichtigt, wenn der Auftrag erstellt wurde.
-
-	![Installieren von Updates](./media/storsimple-ova-install-update-01/aupdate8m.png)
-	
-6. Klicken Sie auf den Link **Auftrag anzeigen**, und wechseln Sie zur Seite **Aufträge**, um den Installationsstatus zu prüfen. Klicken Sie auf **Details**, um detaillierte Informationen zum Updateauftrag zu erhalten.
-
-	![Updates überwachen](./media/storsimple-ova-install-update-01/aupdate9m.png)
-
-6. Wechseln Sie nach Abschluss der Installation (wenn der Auftragsstatus bei 100 % ist) zu **Geräte** > **Wartung** > **Softwareupdates**. Die angezeigte Softwareversion sollte **10.0.10279.0** lauten.
-
-	![Updates überprüfen](./media/storsimple-ova-install-update-01/aupdate13m.png)
-
 ## Verwenden der lokalen Webbenutzeroberfläche 
+Sie müssen die lokale Webbenutzeroberfläche verwenden, um Hotfixes oder Updates zu installieren (zurzeit können Sie Updates nicht über das klassische Azure-Portal installieren).
 
-Verwenden Sie die lokale Webbenutzeroberfläche, um Updates anzuwenden, wenn das klassische Azure-Portal nicht verfügbar ist. Die Verwendung der lokalen Webbenutzeroberfläche umfasst zwei Schritte:
+Die Verwendung der lokalen Webbenutzeroberfläche umfasst zwei Schritte:
 
 - Herunterladen des Updates oder Hotfixes
 - Installieren des Updates oder Hotfixes
@@ -85,7 +45,7 @@ Führen Sie die folgenden Schritte aus, um das Softwareupdate aus dem Microsoft 
    
 	![Katalog installieren](./media/storsimple-ova-install-update-01/install-catalog.png)
 
-3. Geben Sie im Suchfeld des Microsoft Update-Katalogs die KB-Nummer des Hotfixes ein, den Sie herunterladen möchten (beispielsweise **3160441**), und klicken Sie anschließend auf **Suchen**.
+3. Geben Sie im Suchfeld des Microsoft Update-Katalogs die KB-Nummer (Knowledge Base) des Hotfixes ein, den Sie herunterladen möchten. Geben Sie **3160441** für Update 0.2 bzw. **3160441** für Update 0.1 ein, und klicken Sie anschließend auf **Suchen**.
 
     Die Hotfixliste wird angezeigt, z.B. **StorSimple Virtual Array Update 0.1**.
 
@@ -118,14 +78,14 @@ Stellen Sie vor der Update- oder Hotfixinstallation sicher, dass das Update oder
 
     ![Gerät aktualisieren](./media/storsimple-ova-install-update-01/update6m.png)
 
-4. Nach dem Neustart wird die Anmeldeseite angezeigt. Sie können anschließend die Version der Software prüfen. Wechseln Sie zu **Wartung** > **Softwareupdate**. Die Buildnummer sollte **10.0.0.0.10279** sein.
+4. Nach dem Neustart wird die Anmeldeseite angezeigt. Sie können anschließend die Version der Software prüfen. Wechseln Sie zu **Wartung** > **Softwareupdate**. Die angezeigte Softwareversion sollte **10.0.10280.0** für Update 0.2 bzw. **10.0.10279.0** für Update 0.1 lauten.
 
-	> [AZURE.NOTE] Die Softwareversionen werden in der lokalen Webbenutzeroberfläche und im klassischen Azure-Portal etwas unterschiedlich angegeben. Die lokale Webbenutzeroberfläche gibt **10.0.0.0.10279** an, und das klassische Azure-Portal **10.0.10279.0**, obwohl die Version die gleiche ist.
+	> [AZURE.NOTE] Die Softwareversionen werden in der lokalen Webbenutzeroberfläche und im klassischen Azure-Portal etwas unterschiedlich angegeben. Beispiel: Die lokale Webbenutzeroberfläche gibt **10.0.0.0.10279** an, und das klassische Azure-Portal **10.0.10279.0**, obwohl die Version die gleiche ist.
 
 	![Gerät aktualisieren](./media/storsimple-ova-install-update-01/update9m.png)
 
 ## Nächste Schritte
 
-Weitere Informationen zur [Verwaltung des StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
+Erfahren Sie, wie Sie [Ihr StorSimple Virtual Array verwalten](storsimple-ova-web-ui-admin.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="05/27/2016"
+    ms.date="06/22/2016"
     ms.author="srinia"/>
 
 # Überwachen und Verwalten eines Pools für elastische Datenbanken mit PowerShell 
@@ -107,6 +107,8 @@ So rufen Sie die Metriken ab
 
 Sie können Regeln zu Ressourcen hinzufügen, um E-Mail-Benachrichtigungen oder Warnzeichenfolgen an [URL-Endpunkte](https://msdn.microsoft.com/library/mt718036.aspx) zu senden, wenn die Ressource einen von Ihnen eingerichteten Nutzungsschwellenwert erreicht. Verwenden Sie das Cmdlet Add-AzureRmMetricAlertRule.
 
+> [AZURE.IMPORTANT]Bei der Überwachung der Ressourcenverwendung für elastische Pools gibt es eine Verzögerung von mindestens 20 Minuten. Das Festlegen von Warnungen von weniger als 30 Minuten für elastische Pools wird derzeit nicht unterstützt. Warnungen für elastische Pools mit einem Zeitraum (Parameter namens „-WindowSize“ in der PowerShell-API) von weniger als 30 Minuten werden möglicherweise nicht ausgelöst. Stellen Sie sicher, dass alle Warnungen, die Sie für elastische Pools definieren, einen Zeitraum (WindowSize) von 30 Minuten oder mehr verwenden.
+
 Dieses Beispiel fügt eine Warnung hinzu, damit eine Benachrichtigung gesendet wird, wenn die eDTU-Nutzung eines Pools einen bestimmten Schwellenwert überschreitet.
 
     # Set up your resource ID configurations
@@ -126,11 +128,13 @@ Dieses Beispiel fügt eine Warnung hinzu, damit eine Benachrichtigung gesendet w
     $alertName = $poolName + "- DTU consumption rule"
 
     # Create an alert rule for DTU_consumption_percent
-    Add-AzureRMMetricAlertRule -Name $alertName -Location $location -ResourceGroup $resourceGroupName -TargetResourceId $ResourceID -MetricName "DTU_consumption_percent"  -Operator GreaterThan -Threshold 80 -TimeAggregationOperator Average -WindowSize 00:05:00 -Actions $actionEmail 
+    Add-AzureRMMetricAlertRule -Name $alertName -Location $location -ResourceGroup $resourceGroupName -TargetResourceId $ResourceID -MetricName "DTU_consumption_percent"  -Operator GreaterThan -Threshold 80 -TimeAggregationOperator Average -WindowSize 00:60:00 -Actions $actionEmail 
 
 ## Hinzufügen von Warnungen zu allen Datenbanken in einem Pool
 
-Sie können Regeln zu allen Datenbanken in einem elastischen Pool hinzufügen, um E-Mail-Benachrichtigungen oder Warnzeichenfolgen an [URL-Endpunkte](https://msdn.microsoft.com/library/mt718036.aspx) zu senden, wenn eine Ressource einen durch die Warnung eingerichteten Nutzungsschwellenwert erreicht.
+Sie können Warnungsregeln zu allen Datenbanken in einem elastischen Pool hinzufügen, um E-Mail-Benachrichtigungen oder Warnzeichenfolgen an [URL-Endpunkte](https://msdn.microsoft.com/library/mt718036.aspx) zu senden, wenn eine Ressource einen durch die Warnung eingerichteten Nutzungsschwellenwert erreicht.
+
+> [AZURE.IMPORTANT] Bei der Überwachung der Ressourcenverwendung für elastische Pools gibt es eine Verzögerung von mindestens 20 Minuten. Das Festlegen von Warnungen von weniger als 30 Minuten für elastische Pools wird derzeit nicht unterstützt. Warnungen für elastische Pools mit einem Zeitraum (Parameter namens „-WindowSize“ in der PowerShell-API) von weniger als 30 Minuten werden möglicherweise nicht ausgelöst. Stellen Sie sicher, dass alle Warnungen, die Sie für elastische Pools definieren, einen Zeitraum (WindowSize) von 30 Minuten oder mehr verwenden.
 
 Dieses Beispiel fügt jeder Datenbank in einem Pool eine Warnung hinzu, damit eine Benachrichtigung gesendet wird, wenn die DTU-Nutzung einer Datenbank einen bestimmten Schwellenwert überschreitet.
 
@@ -156,7 +160,7 @@ Dieses Beispiel fügt jeder Datenbank in einem Pool eine Warnung hinzu, damit ei
     $alertName = $db.DatabaseName + "- DTU consumption rule"
 
     # Create an alert rule for DTU_consumption_percent
-    Add-AzureRMMetricAlertRule -Name $alertName  -Location $location -ResourceGroup $resourceGroupName -TargetResourceId $dbResourceId -MetricName "dtu_consumption_percent"  -Operator GreaterThan -Threshold 80 -TimeAggregationOperator Average -WindowSize 00:05:00 -Actions $actionEmail
+    Add-AzureRMMetricAlertRule -Name $alertName  -Location $location -ResourceGroup $resourceGroupName -TargetResourceId $dbResourceId -MetricName "dtu_consumption_percent"  -Operator GreaterThan -Threshold 80 -TimeAggregationOperator Average -WindowSize 00:60:00 -Actions $actionEmail
 
     # drop the alert rule
     #Remove-AzureRmAlertRule -ResourceGroup $resourceGroupName -Name $alertName
@@ -171,7 +175,7 @@ Wenn Sie über eine große Anzahl von Datenbanken in einem Abonnement verfügen,
 Um diese Beispielimplementierung zu verwenden, führen Sie die nachfolgend aufgeführten Schritte aus.
 
 
-1. Laden Sie [Skripts und Dokumentation](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools) herunter:
+1. Laden Sie [Skripts und die Dokumentation](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools) herunter:
 2. Ändern Sie die Skripts für Ihre Umgebung ab. Geben Sie einen oder mehrere Server an, auf denen elastische Pools gehostet werden.
 3. Geben Sie eine Telemetriedatenbank an, in der die gesammelten Metriken gespeichert werden. 
 4. Passen Sie das Skript an, um die Dauer der Skriptausführung festzulegen.
@@ -270,6 +274,6 @@ Mit dem Cmdlet „Stop-“ wird der Vorgang abgebrochen, nicht angehalten. Ein U
 ## Nächste Schritte
 
 - [Erstellen elastischer Aufträge](sql-database-elastic-jobs-overview.md): Elastische Aufträge ermöglichen die Ausführung von T-SQL-Skripts für eine beliebige Anzahl von Datenbanken im Pool.
-- Unter [Horizontales Hochskalieren mit Azure SQL-Datenbank](sql-database-elastic-scale-introduction.md) finden Sie weitere Informationen über die Verwendung elastischer Datenbanktools für die horizontale Skalierung, für die Verschiebung von Daten, für Abfragen oder für die Erstellung von Transaktionen.
+- Unter [Horizontales Hochskalieren mit Azure SQL-Datenbank](sql-database-elastic-scale-introduction.md) finden Sie Informationen zur Verwendung elastischer Datenbanktools für die horizontale Hochskalierung, zum Verschieben von Daten, für die Abfrage oder zum Erstellen von Transaktionen.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0622_2016-->
