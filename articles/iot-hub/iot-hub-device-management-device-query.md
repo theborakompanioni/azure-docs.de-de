@@ -3,7 +3,7 @@
 	description="Tutorial zur Azure IoT Hub-Geräteverwaltung, in dem das Suchen von Gerätezwillingen mit Abfragen beschrieben wird."
 	services="iot-hub"
 	documentationCenter=".net"
-	authors="ellenfosborne"
+	authors="juanjperez"
 	manager="timlt"
 	editor=""/>
 
@@ -14,7 +14,7 @@
  ms.tgt_pltfrm="na"
  ms.workload="na"
  ms.date="04/29/2016"
- ms.author="elfarber"/>
+ ms.author="juanpere"/>
 
 # Tutorial: Gewusst wie: Suchen nach Gerätezwillingen mithilfe von Abfragen mit C# (Vorschau)
 
@@ -221,4 +221,4 @@ Weitere Informationen zu den Geräteverwaltungsfeatures von Azure IoT Hub erhalt
 [lnk-query-samples]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/doc/get_started/dm_queries/query-samples.md
 [lnk-query-expression-guide]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/node/service/devdoc/query_expression_requirements.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -77,7 +77,7 @@ Auf dem Blatt mit den Grundeinstellungen müssen die grundlegenden Details für 
 
 	c. Die Mindestanzahl von VMs für den primären Knotentyp hängt von der Zuverlässigkeitsstufe ab, die Sie für den Cluster wählen. Der Standardwert für die Zuverlässigkeitsstufe ist „Silber“. Erfahren Sie mehr über das [Auswählen der Service Fabric-Clusterzuverlässigkeit und -dauerhaftigkeit](service-fabric-cluster-capacity.md).
 
-	c. Wählen Sie die Anzahl von VMs für den Knotentyp aus. Sie können die Anzahl von VMs auf einem Knotentyp später zentral hoch- oder herunterskalieren, beim primären Knotentyp wird die Mindestanzahl jedoch durch die gewählte Zuverlässigkeitsstufe bestimmt. Die anderen Knotentypen können über mindestens einen virtuellen Computer verfügen.
+	c. Wählen Sie die Anzahl von VMs für den Knotentyp aus. Sie können die Anzahl von VMs auf einem Knotentyp später zentral hoch- oder herunterskalieren, beim primären Knotentyp wird die Mindestanzahl jedoch durch die gewählte Zuverlässigkeitsstufe bestimmt. Andere Knotentypen können über mindestens einen virtuellen Computer verfügen.
 
 
   	![Screenshot der Erstellung eines Knotentyps.][CreateNodeType]
@@ -225,4 +225,4 @@ Machen Sie sich nach dem Erstellen eines Clusters mit dem Schützen des Clusters
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png
 [SecureConnection]: ./media/service-fabric-cluster-creation-via-portal/SecureConnection.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

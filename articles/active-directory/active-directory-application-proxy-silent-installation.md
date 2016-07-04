@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="kgremban"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,12 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="06/22/2016"
 	ms.author="kgremban"/>
 
 # Installieren des Azure AD-Anwendungsproxyconnectors im Hintergrund
-
-> [AZURE.NOTE] Das Feature "Anwendungsproxy" ist nur verfügbar, wenn Sie Azure Active Directory auf die Premium oder Basic Edition aktualisiert haben. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
 
 Sie möchten ein Installationsskript an mehrere Windows-Server senden können oder an Windows-Server, auf denen keine Benutzeroberfläche aktiviert ist. In diesem Thema wird das Erstellen eines Windows PowerShell-Skripts erläutert, das eine unbeaufsichtigte Installation zum Installieren und Registrieren des Azure AD-Anwendungsproxyconnectors ermöglicht.
 
@@ -134,4 +132,4 @@ Dies lässt sich mit einer folgenden Methoden bewirken:
 
 Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0622_2016-->

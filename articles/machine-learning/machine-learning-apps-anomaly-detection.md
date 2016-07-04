@@ -3,7 +3,7 @@
 	description="Die Anomaly Detection-API ist ein mit Microsoft Azure Machine Learning erstelltes Beispiel, das Anomalien in Zeitreihendaten erkennt, wenn die numerischen Daten zeitlich gleich verteilt sind." 
 	services="machine-learning" 
 	documentationCenter="" 
-	authors="pingf" 
+	authors="alokkirpal" 
 	manager="paulettm"
 	editor="cgronlun" />
 
@@ -13,8 +13,8 @@
 	ms.topic="reference" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="multiple" 
-	ms.date="06/01/2016" 
-	ms.author="pingf"/>
+	ms.date="06/21/2016" 
+	ms.author="alokkirpal"/>
 
 
 # Machine Learning Anomaly Detection Service#
@@ -89,4 +89,4 @@ Time|Data|Tspike|Zspike|Martingale values|Alert indicator|Martingale values (2)|
 
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

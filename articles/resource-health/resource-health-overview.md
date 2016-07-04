@@ -3,7 +3,7 @@
    description="Übersicht über Azure Resource Health"
    services="Resource health"
    documentationCenter="dev-center-name"
-   authors="bernardm"
+   authors="BernardoAMunoz"
    manager=""
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="Supportability"
    ms.date="06/01/2016"
-   ms.author="bernardm"/>
+   ms.author="BernardoAMunoz"/>
 
 # Übersicht über Azure Resource Health
 
@@ -59,22 +59,28 @@ Wenn Sie auf die Kachel klicken, wird das Blatt „Ressourcenintegrität“ für
 ![Kachel „Ressourcenintegrität“](./media/resource-health-overview/resourceHealthTile.png)
 
 ### API für Ressourcenintegrität
-Zusätzlich zur Benutzeroberfläche des Azure-Portals gibt es auch eine API, die zum Abfragen der Ressourcenintegrität verwendet werden kann. Die API unterstützt Aufrufe zum Ermitteln der Integrität für alle Ressourcen eines Abonnements, alle Ressourcen einer Ressourcengruppe oder einer bestimmten Ressource.
+Zusätzlich zur Benutzeroberfläche des Azure-Portals gibt es auch eine Gruppe von APIs, die zum Abfragen der Ressourcenintegrität verwendet werden kann. Die verfügbaren APIs ermöglichen Benutzern das Abfragen der aktuellen Integrität aller Ressourcen in einem Abonnement oder in einer Ressourcengruppe bzw. der Integrität einer einzelnen Ressource.
 
-Bevor die API zum Abfragen der Ressourcenintegrität verwendet werden kann, muss das Abonnement beim Dienst registriert werden, indem eine POST-Anforderung an die folgende URL gesendet wird:
+Eine andere API ermöglicht Benutzern das Abfragen des Integritätsverlaufs einer einzelnen Ressource. Die Antwort ist eine Sammlung der Ressourcenintegritätstatus der letzten 14 Tage. Wenn die Ressource ggf. von einem Ausfall beeinträchtigt wurde, enthält der Integritätsstatus eine Anmerkung namens „serviceImpactingEvents“ mit weiteren Details zum Ausfall.
 
-        https://management.azure.com/subscriptions/<SubID>/providers/Microsoft.ResourceHealth/register?api-version=2015-01-01
+Bevor die API zum Abfragen der Ressourcenintegrität verwendet werden kann, muss das Abonnement beim Dienst registriert werden, indem eine POST-Anforderung an die folgende URL gesendet wird: volume
+ 
+        //Register the subscription with the Resource health resource provider
+        https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ResourceHealth/register?api-version=2015-01-01
         
 Unten sind Beispiele zum Aufrufen der API für die Ressourcenintegrität angegeben.
 
         // GET health of all resources in a subscription:
-        https://management.azure.com/subscriptions/<SubID>/providers/Microsoft.ResourceHealth/availabilityStatuses?api-version=2015-01-01
+        https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ResourceHealth/availabilityStatuses?api-version=2015-01-01
         
         //GET health of all resources in a resource group:
-        https://management.azure.com/subscriptions/<SubID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.ResourceHealth/availabilityStatuses?api-version=2015-01-01
+        https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.ResourceHealth/availabilityStatuses?api-version=2015-01-01
         
         //GET the health of a single resource:
-        https://management.azure.com/subscriptions/<SubID>/resourceGroups/<ResourceGroupName>/providers/<ResourceProvider>/<ResourceType>/<ResourceName>/providers/Microsoft.ResourceHealth/availabilityStatuses/current?api-version=2015-01-01
+        https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/providers/Microsoft.ResourceHealth/availabilityStatuses/current?api-version=2015-01-01
+        
+        //GET the historical health of a single resource:
+        https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/providers/Microsoft.ResourceHealth/availabilityStatuses?api-version=2015-01-01
 
 
 ## Was bedeutet der angezeigte Status der Ressourcenintegrität?
@@ -111,7 +117,7 @@ Es ist wichtig zu beachten, dass dies kein definitiver Hinweis darauf ist, dass 
 ![Integrität der Ressource ist unbekannt](./media/resource-health-overview/unknown.png)
 
 ## Ereignisse mit Beeinträchtigung von Diensten
-Falls die Ressource durch ein dauerhaftes Ereignis beeinträchtigt wird, wird oben auf dem Blatt „Ressourcenintegrität“ ein Banner angezeigt. Wenn Sie auf das Banner klicken, wird das Blatt „Überwachungsereignisse“ geöffnet, auf dem Sie auf weitere Informationen zugreifen können.
+Falls die Ressource durch ein dauerhaftes Ereignis beeinträchtigt wird, wird oben auf dem Blatt „Ressourcenintegrität“ ein Banner angezeigt. Wenn Sie auf das Banner klicken, wird das Blatt „Überwachungsereignisse“ geöffnet, auf dem Sie weitere Informationen zum Ausfall finden.
 
 ![Ressourcenintegrität ggf. durch ein vom Dienst initiiertes Ereignis beeinträchtigt](./media/resource-health-overview/serviceImpactingEvent.png)
 
@@ -126,4 +132,4 @@ Die Ressourcenintegrität meldet den Status der SQL-Datenbank, nicht von SQL Ser
 ## Feedback
 Wir sind stets offen für Feedback und Vorschläge. Sie können uns gern Ihre [Vorschläge](https://feedback.azure.com/forums/266794-support-feedback) senden. Außerdem erreichen Sie uns über [Twitter](https://twitter.com/azuresupport) oder die [MSDN-Foren](https://social.msdn.microsoft.com/Forums/azure).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

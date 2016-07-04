@@ -55,9 +55,6 @@ A10- und A11-Instanzen besitzen einen einzelnen 10-GBit/s-Ethernet-Netzwerkadapt
 
 * **Größenänderung** – Sie können einer rechenintensiven Instanz (A8-A11) nur die Größe A8 bis A11 zuweisen, und Sie können eine rechenintensive Instanz nicht in eine nicht rechenintensive Instanz ändern. Dies liegt an der speziellen Hardware und den Leistungsoptimierungen, die für rechenintensive Instanzen typisch sind.
 
-* **RDMA-Netzwerkadressbereich**: Für das RDMA-Netzwerk in Azure wird der Adressbereich 172.16.0.0/12 reserviert. Wenn Sie beabsichtigen, MPI-Anwendungen auf A8- und A9-Instanzen in einem virtuellen Azure-Netzwerk auszuführen, stellen Sie sicher, dass der Adressbereich des virtuellen Netzwerks sich nicht mit dem RDMA-Netzwerk überschneidet.
+* **RDMA-Netzwerkadressbereich**: Für das RDMA-Netzwerk in Azure wird der Adressbereich 172.16.0.0/16 reserviert. Wenn Sie beabsichtigen, MPI-Anwendungen auf A8- und A9-Instanzen in einem virtuellen Azure-Netzwerk auszuführen, stellen Sie sicher, dass der Adressbereich des virtuellen Netzwerks sich nicht mit dem RDMA-Netzwerk überschneidet.
 
-
-
-
-
+<!---HONumber=AcomDC_0622_2016-->

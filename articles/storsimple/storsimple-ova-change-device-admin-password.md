@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="03/02/2016"
+   ms.date="06/17/2016"
    ms.author="alkohli" />
 
 # Ändern des StorSimple Virtual Array-Geräteadministratorkennworts
@@ -31,7 +31,7 @@ Führen Sie die folgenden Schritte aus, um das Geräteadministratorkennwort übe
 
 1. Klicken Sie im Portal für Ihr Gerät auf **Geräte** > **Konfiguration**.
 
-2. Scrollen Sie bis zum Abschnitt **Geräteadministratorkennwort** nach unten. Geben Sie ein Administratorkennwort ein, das zwischen 8 und 15 Zeichen lang ist. Beim Kennwort muss es sich um eine Kombination aus Großbuchstaben, Kleinbuchstaben, Zahlen und Sonderzeichen handeln.
+2. Scrollen Sie bis zum Abschnitt **Geräteadministratorkennwort** nach unten. Geben Sie ein Administratorkennwort ein, das zwischen 8 und 15 Zeichen lang ist. Beim Kennwort muss es sich um eine Kombination aus Großbuchstaben, Kleinbuchstaben, Zahlen und Sonderzeichen handeln.
 
 3. Bestätigen Sie das Kennwort.
 
@@ -69,4 +69,4 @@ Führen Sie die folgenden Schritte aus, um das Geräteadministratorkennwort übe
 
 Erfahren Sie, wie Sie [StorSimple Virtual Array verwalten](storsimple-ova-web-ui-admin.md).
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0622_2016-->

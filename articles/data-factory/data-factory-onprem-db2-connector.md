@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/01/2016" 
+	ms.date="06/16/2016" 
 	ms.author="spelluru"/>
 
 # Verschieben von Daten aus DB2 mithilfe von Azure Data Factory
@@ -29,7 +29,7 @@ Data Factory unterstützt derzeit nur das Verschieben von Daten aus DB2 in ander
 
 Damit sich das Datenverwaltungsgateway mit der DB2-Datenbank verbindet, müssen Sie den [IBM DB2 Data Server-Treiber](http://go.microsoft.com/fwlink/p/?LinkID=274911) auf dem System mit dem Datenverwaltungsgateway installieren.
 
-IBM hat bekannte Probleme bei der Installation des IBM DB2 Data Server-Treibers unter Windows 8 gemeldet, die zusätzliche Installationsschritte erforderlich machen. Weitere Informationen zum IBM DB2 Data Server-Treiber für Windows 8 finden Sie unter [http://www-01.ibm.com/support/docview.wss?uid=swg21618434](http://www-01.ibm.com/support/docview.wss?uid=swg21618434).
+IBM hat bekannte Probleme bei der Installation des IBM DB2 Data Server-Treibers unter Windows 8 gemeldet, die zusätzliche Installationsschritte erforderlich machen. Weitere Informationen zum IBM DB2 Data Server-Treiber für Windows 8 finden Sie unter [http://www-01.ibm.com/support/docview.wss?uid=swg21618434](http://www-01.ibm.com/support/docview.wss?uid=swg21618434).
 
 > [AZURE.NOTE] Unter [Problembehandlung bei Gateways](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.
 
@@ -223,7 +223,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | type | Die "type"-Eigenschaft muss auf **OnPremisesDB2** festgelegt sein. | Ja |
 | server | Name des DB2-Servers. | Ja |
 | database | Name der DB2-Datenbank. | Ja |
-| schema | Name des Schemas in der Datenbank. | Nein |
+| schema | Name des Schemas in der Datenbank. Beim Schemanamen wird die Groß- und Kleinschreibung beachtet. | Nein |
 | authenticationType | Typ der Authentifizierung für die Verbindung mit der DB2-Datenbank. Mögliche Werte: Anonymous, Basic und Windows. | Ja |
 | username | Geben Sie den Benutzernamen an, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. | Nein |
 | password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. | Nein |
@@ -240,7 +240,7 @@ Der Abschnitt "typeProperties" unterscheidet sich bei jedem Typ von Dataset und 
 
 | Eigenschaft | Beschreibung | Erforderlich |
 | -------- | ----------- | -------- | 
-| tableName | Name der Tabelle in der DB2-Datenbankinstanz, auf die der verknüpfte Dienst verweist. | Nein (wenn **query** von **RelationalSource** angegeben ist) |
+| tableName | Name der Tabelle in der DB2-Datenbankinstanz, auf die der verknüpfte Dienst verweist. Beim Tabellennamen wird die Groß- und Kleinschreibung beachtet. | Nein (wenn **query** von **RelationalSource** angegeben ist) |
 
 ## Eigenschaften des DB2-Kopieraktivitätstyps
 
@@ -253,7 +253,14 @@ Wenn bei der Kopieraktivität "source" den Typ **RelationalSource** hat (zu dem 
 
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
 | -------- | ----------- | -------- | -------------- |
-| query | Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. | SQL-Abfragezeichenfolge. Beispiel: select * from MyTable. | Nein (wenn **tableName** von **Dataset** angegeben ist)|
+| query | Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. | SQL-Abfragezeichenfolge. Beispiel: "query": "select * from "MySchema"."MyTable"". | Nein (wenn **tableName** von **Dataset** angegeben ist)|
+
+> [AZURE.NOTE] Bei Schema- und Tabellennamen muss die Groß- und Kleinschreibung beachtet werden, und sie müssen in der Abfrage in doppelte Anführungszeichen eingeschlossen werden ("").
+
+**Beispiel:**
+
+ "query": "select * from "DB2ADMIN"."Customers""
+
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangular-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
@@ -314,4 +321,7 @@ Char | String
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=AcomDC_0316_2016-->
+## Leistung und Optimierung  
+Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
+
+<!---HONumber=AcomDC_0622_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Verwalten der Sicherheit nach der Notfallwiederherstellung"
-	description="In diesem Thema werden Sicherheitsaspekte für die Verwaltung von Szenarien der aktiven Georeplikation für die SQL-Datenbank erläutert."
+	pageTitle="Verwalten der Sicherheit nach der Wiederherstellung einer Datenbank auf einem neuen Server oder nach einem Failover einer Datenbank in eine sekundäre Datenbankkopie | Microsoft Azure"
+	description="In diesem Thema werden Sicherheitsaspekte bei der Verwaltung der Sicherheit nach einer Wiederherstellung oder einem Failover einer Datenbank erläutert."
 	services="sql-database"
 	documentationCenter="na"
 	authors="carlrabeler"
@@ -14,10 +14,10 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="05/10/2016"
+	ms.date="06/16/2016"
 	ms.author="carlrab" />
 
-# Verwalten der Sicherheit nach der Notfallwiederherstellung
+# Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung
 
 >[AZURE.NOTE] [Active Geo-Replication](sql-database-geo-replication-overview.md) ist jetzt für alle Datenbanken in allen Diensttarifen verfügbar.
 
@@ -27,7 +27,7 @@ In diesem Thema werden die Authentifizierungsanforderungen zum Konfigurieren und
 
 ## Notfallwiederherstellung mit eigenständigen Benutzern
 
-Mit der [V12-Version von Azure SQL-Datenbank](sql-database-v12-whats-new.md) unterstützt SQL-Datenbank jetzt eigenständige Benutzer. Im Gegensatz zu herkömmlichen Benutzern, die Anmeldungen in der „master“-Datenbank zugeordnet werden müssen, wird ein eigenständiger Benutzer vollständig von der Datenbank selbst verwaltet. Dies hat zwei Vorteile. Beim Notfallwiederherstellungs-Szenario können sich die Benutzer weiter ohne zusätzliche Konfiguration mit der neuen primären Datenbank bzw. mit der Geowiederherstellung wiederhergestellten Datenbank verbinden, da die Datenbank die Benutzer verwaltet. Es gibt bei dieser Konfiguration auch vom Standpunkt der Anmeldung potenzielle Skalierbarkeits- und Leistungsvorteile. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
+Im Gegensatz zu herkömmlichen Benutzern, die Anmeldungen in der „master“-Datenbank zugeordnet werden müssen, wird ein eigenständiger Benutzer vollständig von der Datenbank selbst verwaltet. Dies hat zwei Vorteile. Beim Notfallwiederherstellungs-Szenario können sich die Benutzer weiter ohne zusätzliche Konfiguration mit der neuen primären Datenbank bzw. mit der Geowiederherstellung wiederhergestellten Datenbank verbinden, da die Datenbank die Benutzer verwaltet. Es gibt bei dieser Konfiguration auch vom Standpunkt der Anmeldung potenzielle Skalierbarkeits- und Leistungsvorteile. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
 
 Der Hauptaspekt des Kompromisses ist, dass die Verwaltung des Notfallwiederherstellungs-Prozesses im Verhältnis eine größere Herausforderung darstellt. Wenn mehrere Ihrer Datenbanken dieselben Anmeldedaten verwenden, kann sich die Verwaltung der Anmeldeinformationen anhand von eigenständigen Benutzern in mehreren Datenbanken nachteilig auswirken. Die Kennwortrotationsrichtlinie erfordert beispielsweise, dass Änderungen konsistent in mehreren Datenbanken durchgeführt werden, anstatt das Kennwort für die Anmeldung einmal in der Masterdatenbank zu ändern. Wenn Sie mehrere Datenbanken mit dem gleichen Benutzernamen und Kennwort verwenden, sollten Sie darum keine eigenständigen Benutzer verwenden.
 
@@ -46,7 +46,6 @@ Die Vorbereitung des Benutzerzugriffs auf eine mit Georeplikation erzeugte sekun
 >[AZURE.NOTE] Wenn Sie das Failover zu einem Server oder die Geowiederherstellung auf einem Server ausführen, für den die Anmeldenamen nicht ordnungsgemäß konfiguriert sind, beschränkt sich der Zugriff auf das Serveradministratorkonto.
 
 Das Einrichten von Anmeldenamen auf dem Zielserver umfasst die unten beschriebenen drei Schritte:
-
 
 #### 1\. Bestimmen der Anmeldungen mit Zugriff auf die primäre Datenbank:
 Der erste Schritt des Prozesses ist das Bestimmen, welche Anmeldungen auf dem Zielserver dupliziert werden müssen. Dies geschieht mit zwei SELECT-Anweisungen, die auf die logische „master“-Datenbank auf dem Quellserver und auf die primäre Datenbank selbst angewendet werden.
@@ -91,13 +90,18 @@ Der letzte Schritt besteht darin, auf dem oder den Zielservern die Anmeldungen m
 
 - Weitere Informationen zum Verwalten von Datenbankzugriff und Anmeldungen finden Sie unter [Sicherheit von SQL-Datenbank: Verwalten von Datenbankzugriff und Anmeldesicherheit](sql-database-manage-logins.md).
 - Weitere Informationen zu eigenständigen Datenbankbenutzern finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
+- Informationen zur Verwendung und Konfiguration der aktiven Georeplikation finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
+- Informationen zur Verwendung der Geowiederherstellung finden Sie unter [Geowiederherstellung](sql-database-geo-restore.md)
 
 ## Zusätzliche Ressourcen
 
-- [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
+- [Geschäftskontinuität und Notfallwiederherstellung mit SQL-Datenbank](sql-database-business-continuity.md)
+- [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md)
+- [Geografische Wiederherstellung](sql-database-geo-restore.md)
 - [Aktive Georeplikation](sql-database-geo-replication-overview.md)
 - [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
+- [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
 - [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

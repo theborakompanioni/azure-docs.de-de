@@ -10,9 +10,9 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="05/10/2016"
+	ms.date="06/17/2016"
 	ms.author="sstein"
-	ms.workload="data-management"
+	ms.workload="sqldb-bcdr"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"/>
 
@@ -41,14 +41,12 @@ Gehen Sie zum Wiederherstellen einer Datenbank im Azure-Portal wie folgt vor:
 
 ## Nächste Schritte
 
-- [Herstellen einer Verbindung mit einer Azure SQL-Datenbank mit SQL Server Management Studio und Ausführen einer T-SQL-Beispielabfrage](sql-database-connect-query-ssms.md)
-- [Warnungen zur Notfallwiederherstellung](sql-database-disaster-recovery-drills.md)
+- Ausführliche Schritte zum Wiederherstellen einer Azure SQL-Datenbank aus einer georedundanten Sicherung mit dem Azure-Portal finden Sie unter [Geowiederherstellung über das Azure-Portal](sql-database-geo-restore-portal.md).
+- Ausführliche Informationen zum Wiederherstellen einer Azure SQL-Datenbank aus einer georedundanten Sicherung finden Sie unter [Geowiederherstellung mithilfe von PowerShell](sql-database-geo-restore.md).
+- Eine vollständige Erläuterung der Wiederherstellung nach einem Ausfall finden Sie unter [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md).
 
+## Weitere Ressourcen
 
-## Zusätzliche Ressourcen
+- [Szenarien für die Geschäftskontinuität](sql-database-business-continuity-scenarios.md)
 
-- [Geografische Wiederherstellung](sql-database-geo-restore.md)
-- [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-- [SQL-Datenbank-Dokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
-
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

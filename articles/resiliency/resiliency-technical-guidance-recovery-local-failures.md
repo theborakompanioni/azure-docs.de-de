@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/13/2016"
+   ms.date="06/20/2016"
    ms.author="patw;jroth;aglick"/>
 
 #Technischer Leitfaden zur Resilienz in Azure – Wiederherstellung nach lokalen Ausfällen in Azure
@@ -98,7 +98,7 @@ Dienste profitieren bereits durch die reine Verwendung von Azure Storage von der
 
 ###Ressourcenverwaltung
 
-Speicherkonten, die nach dem 7. Juni 2012 erstellt wurden, können auf bis zu 200 TB skaliert werden (zuvor lag die Höchstgrenze bei 100 TB). Wenn zusätzlicher Speicherplatz erforderlich ist, müssen Anwendungen so entworfen werden, dass sie mehrere Speicherkonten verwenden.
+Speicherkonten, die nach Mai 2014 erstellt wurden, können auf bis zu 500 TB skaliert werden (zuvor lag die Höchstgrenze bei 200 TB). Wenn zusätzlicher Speicherplatz erforderlich ist, müssen Anwendungen so entworfen werden, dass sie mehrere Speicherkonten verwenden.
 
 ###VM-Datenträger
 
@@ -114,7 +114,7 @@ Azure SQL-Datenbank ermöglicht „Database as a Service“. Hierbei können Anw
 
 ####Replikation
 
-Azure SQL-Datenbank stellt integrierte Resilienz gegenüber Fehlern auf Knotenebene bereit. Alle Schreibvorgänge in eine Datenbank werden automatisch mithilfe eines Commitverfahrens per Quorum auf mindestens zwei Hintergrundknoten repliziert. (Der primäre Knoten und mindestens ein sekundärer Knoten müssen bestätigen, dass die Aktivität in das Transaktionsprotokoll geschrieben wird, bevor die Transaktion als erfolgreich betrachtet und zurückgegeben wird.) Im Fall eines Knotenfehlers führt die Datenbank automatisch ein Failover auf eins der sekundären Replikate durch. Dies verursacht eine vorübergehende Unterbrechung der Verbindung für Clientanwendungen. Aus diesem Grund müssen alle Azure SQL-Datenbank-Clients die Verarbeitung vorübergehender Verbindungen in irgendeiner Form implementieren. Weitere Informationen finden Sie unter [Wiederholen der spezifischen Anleitung](../best-practices-retry-service-specific.md).
+Azure SQL-Datenbank stellt integrierte Resilienz gegenüber Fehlern auf Knotenebene bereit. Alle Schreibvorgänge in eine Datenbank werden automatisch mithilfe eines Commitverfahrens per Quorum auf mindestens zwei Hintergrundknoten repliziert. (Der primäre Knoten und mindestens ein sekundärer Knoten müssen bestätigen, dass die Aktivität in das Transaktionsprotokoll geschrieben wird, bevor die Transaktion als erfolgreich betrachtet und zurückgegeben wird.) Im Fall eines Knotenfehlers führt die Datenbank automatisch ein Failover auf eins der sekundären Replikate durch. Dies verursacht eine vorübergehende Unterbrechung der Verbindung für Clientanwendungen. Aus diesem Grund müssen alle Azure SQL-Datenbank-Clients die Verarbeitung vorübergehender Verbindungen in irgendeiner Form implementieren. Weitere Informationen finden Sie unter [Anleitung zu dienstspezifischen Wiederholungsmechanismen](../best-practices-retry-service-specific.md).
 
 ####Ressourcenverwaltung
 
@@ -223,4 +223,4 @@ Die mit Azure HDInsight verknüpften Daten werden standardmäßig in Azure Blob 
 
 Dieser Artikel gehört zu einer Reihe von Artikeln, die als [Technischer Leitfaden zur Resilienz in Azure](./resiliency-technical-guidance.md) dienen. Der nächste Artikel dieser Reihe ist [Wiederherstellung nach einer regionsweiten Dienstunterbrechung](./resiliency-technical-guidance-recovery-loss-azure-region.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

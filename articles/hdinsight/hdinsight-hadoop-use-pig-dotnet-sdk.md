@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/06/2016"
+   ms.date="06/17/2016"
    ms.author="larryfr"/>
 
 #Ausführen von Pig-Aufträgen mithilfe des .NET SDK für Hadoop in HDInsight
@@ -128,7 +128,7 @@ Das HDInsight .NET SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HD
 
 ## Zusammenfassung
 
-Wie Sie sehen, können Sie mit dem .NET SDK für Hadoop .NET-Anwendungen erstellen, die Pig-Aufträge an einen HDInsight-Cluster übermitteln, den Auftragsstatus überwachen und die Ausgabe abrufen.
+Wie Sie sehen, können Sie mit dem .NET SDK für Hadoop .NET-Anwendungen erstellen, die Pig-Aufträge an einen HDInsight-Cluster übermitteln, und den Auftragsstatus überwachen.
 
 ## Nächste Schritte
 
@@ -143,4 +143,4 @@ Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeite
 * [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md)
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0622_2016-->

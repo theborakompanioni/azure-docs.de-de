@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/01/2016" 
+	ms.date="06/20/2016" 
 	ms.author="spelluru"/>
 
 # Erstellen, Überwachen und Verwalten von Azure Data Factorys mithilfe des Data Factory .NET SDK
@@ -393,4 +393,4 @@ Die Kopieraktivität führt die Datenverschiebung in Azure Data Factory durch, u
 [azure-developer-center]: http://azure.microsoft.com/downloads/
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -247,8 +247,7 @@ Bei zwischengeschalteten Geräteoberflächen für die physische Kontrolle wird d
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - [SDL Threat Modeling Tool (SDL-Tool für die Bedrohungsmodellierung)](https://www.microsoft.com/sdl/adopt/threatmodeling.aspx)
-
 - [Microsoft Azure IoT reference architecture available (Microsoft Azure IoT-Referenzarchitektur verfügbar)](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/)
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -36,7 +36,7 @@ Azure SQL-Datenbank stellt Ressourcen zum Einschränken des Zugriffs, zum Schüt
 * Weitere Informationen: [Sichern der SQL-Datenbank](sql-database-security.md)
 
 ## Authentifizierung
-* Die Windows-Authentifizierung ist nicht in Azure SQL-Datenbank verfügbar. Verwenden Sie daher stattdessen die SQL-Datenbankauthentifizierung.
+* Azure SQL-Datenbank unterstützt Benutzer und Anmeldungen mit SQL Server-Authentifizierung sowie Benutzer und Anmeldungen mit [Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md).
 * Sie müssen eine bestimmte Datenbank angeben, anstatt automatisch die *master*-Datenbank zu verwenden.
 * Sie können die Transact-SQL-Anweisung **USE myDatabaseName;** in SQL-Datenbanken nicht verwenden, um zu einer anderen Datenbank zu wechseln.
 * Weitere Informationen: [Sicherheit von SQL-Datenbank: Verwalten von Datenbankzugriff und Anmeldesicherheit](sql-database-manage-logins.md)
@@ -64,4 +64,8 @@ Die elastische Skalierung vereinfacht das horizontale Hoch- und Herunterskaliere
 * [Datenabhängiges Routing](sql-database-elastic-scale-data-dependent-routing.md)
 * [Erste Schritte mit der Vorschauversion von Elastic Scale für Azure SQL-Datenbank](sql-database-elastic-scale-get-started.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+## Nächste Schritte
+
+Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/services/sql-database/).
+
+<!---HONumber=AcomDC_0622_2016-->

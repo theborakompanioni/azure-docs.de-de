@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="04/11/2016"
+   ms.date="06/21/2016"
    ms.author="carlrab" />
 
 # Azure SQL-Datenbanken – Allgemeine Einschränkungen und Leitlinien
@@ -35,7 +35,7 @@ Microsoft Azure SQL-Datenbank unterstützt nicht den SQL Server-Agent und keine 
 
 ## Unterstützung der SQL Server-Sortierung
 
-Die standardmäßige Datenbanksortierung von Microsoft Azure SQL-Datenbank ist **SQL\_LATIN1\_GENERAL\_CP1\_CI\_AS**, wobei **LATIN1\_GENERAL** für Englisch (USA), **CP1** für Codepage 1252, **CI** für keine Unterscheidung von Groß-/Kleinschreibung und **AS** für die Unterscheidung nach Akzent steht. Es ist möglich, die Sortierung für V12-Datenbanken mithilfe von Transact-SQL zu ändern. Weitere Informationen zum Festlegen der Sortierung finden Sie unter [COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx).
+Die standardmäßige Datenbanksortierung von Microsoft Azure SQL-Datenbank ist **SQL\_LATIN1\_GENERAL\_CP1\_CI\_AS**, wobei **LATIN1\_GENERAL** für Englisch (USA), **CP1** für Codepage 1252, **CI** für keine Unterscheidung von Groß-/Kleinschreibung und **AS** für die Unterscheidung nach Akzent steht. Es ist nicht möglich, die Sortierung für V12-Datenbanken zu ändern. Weitere Informationen zum Festlegen der Sortierung finden Sie unter [COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx).
 
 ## Benennungsanforderungen
 
@@ -63,4 +63,4 @@ Darüber hinaus dürfen Anmelde- und Benutzernamen nicht das Zeichen „\\“ en
 
 - Informationen zur Verfügbarkeit von Treibern und Unterstützung für SQL-Datenbank finden Sie unter [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0622_2016-->

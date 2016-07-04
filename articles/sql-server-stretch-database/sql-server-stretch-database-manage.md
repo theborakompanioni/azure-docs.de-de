@@ -28,7 +28,10 @@ Verwenden Sie zum Verwalten von Stretch-Datenbank und zur Behandlung von Problem
 Führen Sie die folgende Anweisung aus, um zu ermitteln, wie viel Speicherplatz eine Stretch-fähige Tabelle in SQL Server belegt.
 
  ```tsql
- EXEC sp_spaceused '<table name>', 'true', 'LOCAL_ONLY';
+USE <Stretch-enabled database name>;
+GO
+EXEC sp_spaceused '<Stretch-enabled table name>', 'true', 'LOCAL_ONLY';
+GO
  ```
 ## Verwalten der Datenmigration
 
@@ -48,6 +51,15 @@ Empfehlungen zur Problembehandlung finden Sie unter [Überwachen und Behandeln v
 ### <a name="RemoteInfo"></a>Abrufen von Informationen zu Remotedatenbanken und -tabellen, die von Stretch-Datenbank verwendet werden
 Öffnen Sie die Katalogsichten **sys.remote\_data\_archive\_databases** und **sys.remote\_data\_archive\_tables**, um Informationen über die Remotedatenbanken und -tabellen anzuzeigen, in denen migrierte Daten gespeichert werden. Weitere Informationen finden Sie unter [sys.remote\_data\_archive\_databases (Transact-SQL)](https://msdn.microsoft.com/library/dn934995.aspx) und [sys.remote\_data\_archive\_tables (Transact-SQL)](https://msdn.microsoft.com/library/dn935003.aspx).
 
+Führen Sie die folgende Anweisung aus, um zu ermitteln, wie viel Speicherplatz eine für Stretch aktivierte Tabelle in Azure belegt.
+
+ ```tsql
+USE <Stretch-enabled database name>;
+GO
+EXEC sp_spaceused '<Stretch-enabled table name>', 'true', 'REMOTE_ONLY';
+GO
+ ```
+
 ### Löschen migrierter Daten  
 Wenn Sie bereits zu Azure migrierte Daten löschen möchten, führen Sie die unter [sys.sp\_rda\_reconcile\_batch](https://msdn.microsoft.com/library/mt707768.aspx) beschriebenen Schritte aus.
 
@@ -57,11 +69,11 @@ Wenn Sie bereits zu Azure migrierte Daten löschen möchten, führen Sie die unt
 Ändern Sie nicht das Schema einer Azure-Remotetabelle, die mit einer SQL Server-Tabelle verknüpft ist, die für Stretch-Datenbank konfiguriert wurde. Ändern Sie insbesondere nicht den Namen oder den Datentyp einer Spalte. Für die Stretch-Datenbank-Funktion gelten verschiedene Annahmen hinsichtlich des Schemas einer Remotetabelle in Bezug auf das Schema der SQL Server-Tabelle. Wenn Sie das Remoteschema ändern, funktioniert Stretch-Datenbank nicht mehr für die geänderte Tabelle.
 
 ### Abstimmen von Tabellenspalten  
-Wenn Sie versehentlich Spalten aus der Remotetabelle gelöscht haben, führen Sie **sp\_rda\_reconcile\_columns** aus, um der Remotetabelle Spalten hinzuzufügen, die in der Stretch-fähigen SQL Server-Tabelle, aber nicht in der Remotetabelle vorhanden sind. Weitere Informationen finden Sie unter [sys.sp\_rda\_reconcile\_columns](https://msdn.microsoft.com/library/mt707765.aspx).
+Wenn Sie versehentlich Spalten aus der Remotetabelle gelöscht haben, führen Sie **sp\_rda\_reconcile\_columns** aus, um der Remotetabelle Spalten hinzuzufügen, die in der für Stretch aktivierten SQL Server-Tabelle, aber nicht in der Remotetabelle vorhanden sind. Weitere Informationen finden Sie unter [sys.sp\_rda\_reconcile\_columns](https://msdn.microsoft.com/library/mt707765.aspx).
 
-  > [!WICHTIG] Wenn **sp\_rda\_reconcile\_columns** erneut Spalten erstellt, die Sie versehentlich aus der Remotetabelle gelöscht haben, werden dabei nicht die Daten wiederhergestellt, die zuvor in den gelöschten Spalten enthalten waren.
+  > [WICHTIG] Wenn **sp\_rda\_reconcile\_columns** erneut Spalten erstellt, die Sie versehentlich aus der Remotetabelle gelöscht haben, werden dabei nicht die Daten wiederhergestellt, die zuvor in den gelöschten Spalten enthalten waren.
 
-**sp\_rda\_reconcile\_columns** löscht keine Spalten aus der Remotetabelle, die in der Remotetabelle, aber nicht in der Stretch-fähigen SQL Server-Tabelle vorhanden sind. Wenn die Azure-Remotetabelle Spalten enthält, die in der Stretch-fähigen SQL Server-Tabelle nicht mehr vorhanden sind, verhindern diese zusätzlichen Spalten nicht die normale Funktionsweise der Stretch-Datenbank. Sie können die zusätzlichen Spalten manuell entfernen (optional).
+**sp\_rda\_reconcile\_columns** löscht keine Spalten aus der Remotetabelle, die in der Remotetabelle, aber nicht in der für Stretch aktivierten SQL Server-Tabelle vorhanden sind. Wenn die Azure-Remotetabelle Spalten enthält, die in der Stretch-fähigen SQL Server-Tabelle nicht mehr vorhanden sind, verhindern diese zusätzlichen Spalten nicht die normale Funktionsweise der Stretch-Datenbank. Sie können die zusätzlichen Spalten manuell entfernen (optional).
 
 ## Verwalten von Leistung und Kosten  
 
@@ -85,7 +97,7 @@ Wenn Sie einen Index für eine große Tabelle, die für Stretch-Datenbank konfig
  Um den Bereich für alle Abfragen von allen Benutzern zu ändern, führen Sie die gespeicherte Prozedur **sys.sp\_rda\_set\_query\_mode** aus. Sie können den Bereich reduzieren, um nur lokale Daten abzufragen, alle Abfragen zu deaktivieren oder die Standardeinstellungen wiederherzustellen. Weitere Informationen finden Sie unter [sys.sp\_rda\_set\_query\_mode](https://msdn.microsoft.com/library/mt703715.aspx).
 
 ### <a name="queryHints"></a>Ändern des Abfragebereichs für eine einzelne Abfrage von einem Administrator  
- Um den Bereich einer einzelnen Abfrage von einem Mitglied der Rolle „db\_owner“ zu ändern, fügen Sie den Abfragehinweis **WITH ( REMOTE\_DATA\_ARCHIVE\_OVERRIDE = *value* )** zur SELECT-Anweisung hinzu. Der REMOTE\_DATA\_ARCHIVE\_OVERRIDE-Abfragehinweis kann folgende Werte haben:
+ Um den Bereich einer einzelnen Abfrage von einem Mitglied der Rolle „db\_owner“ zu ändern, fügen Sie den Abfragehinweis **WITH ( REMOTE\_DATA\_ARCHIVE\_OVERRIDE = *Wert* )** zur SELECT-Anweisung hinzu. Der REMOTE\_DATA\_ARCHIVE\_OVERRIDE-Abfragehinweis kann folgende Werte haben:
  -   **LOCAL\_ONLY**. Nur lokale Daten werden abgefragt.  
 
  -   **REMOTE\_ONLY**. Nur Remotedaten werden abgefragt.
@@ -95,11 +107,14 @@ Wenn Sie einen Index für eine große Tabelle, die für Stretch-Datenbank konfig
 Die folgende Abfrage gibt beispielsweise nur lokale Ergebnisse zurück:
 
  ```tsql  
-SELECT * FROM Stretch_enabled_table WITH (REMOTE_DATA_ARCHIVE_OVERRIDE = LOCAL_ONLY) WHERE ...  
+ USE <Stretch-enabled database name>;
+ GO
+ SELECT * FROM <Stretch_enabled table name> WITH (REMOTE_DATA_ARCHIVE_OVERRIDE = LOCAL_ONLY) WHERE ... ;
+ GO
 ```  
 
 ## <a name="adminHints"></a>Ausführen administrativer Updates und Löschvorgänge  
- Die Befehle UPDATE oder DELETE können standardmäßig nicht für zur Migration berechtigte Zeilen oder für bereits migrierte Zeilen in einer Tabelle ausgeführt werden, für die Stretch aktiviert ist. Zum Beheben eines Problems kann ein Mitglied der Rolle „db\_owner“ einen UPDATE- oder DELETE-Vorgang durch Hinzufügen des Abfragehinweises **WITH ( REMOTE\_DATA\_ARCHIVE\_OVERRIDE = *value* )** zur Anweisung ausführen. Der REMOTE\_DATA\_ARCHIVE\_OVERRIDE-Abfragehinweis kann folgende Werte haben:
+ Die Befehle UPDATE oder DELETE können standardmäßig nicht für zur Migration berechtigte Zeilen oder für bereits migrierte Zeilen in einer Tabelle ausgeführt werden, für die Stretch aktiviert ist. Zum Beheben eines Problems kann ein Mitglied der Rolle „db\_owner“ einen UPDATE- oder DELETE-Vorgang durch Hinzufügen des Abfragehinweises **WITH ( REMOTE\_DATA\_ARCHIVE\_OVERRIDE = *Wert* )** zur Anweisung ausführen. Der REMOTE\_DATA\_ARCHIVE\_OVERRIDE-Abfragehinweis kann folgende Werte haben:
  -   **LOCAL\_ONLY**. Nur lokale Daten werden aktualisiert oder gelöscht.  
 
  -   **REMOTE\_ONLY**. Nur Remotedaten werden aktualisiert oder gelöscht.
@@ -114,4 +129,4 @@ SELECT * FROM Stretch_enabled_table WITH (REMOTE_DATA_ARCHIVE_OVERRIDE = LOCAL_O
 
 [Wiederherstellen von Stretch-fähigen Datenbanken](sql-server-stretch-database-restore.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -24,7 +24,7 @@ Dieser Artikel erläutert das Konfigurieren und Codieren von Azure Notification 
 
 [AZURE.INCLUDE [Einführung](../../includes/functions-bindings-intro.md)]
 
-Ihre Funktionen können über einen konfigurierten Azure Notification Hub mit sehr wenigen Codezeilen Pushbenachrichtigungen senden. Allerdings muss der Notification Hub für die Plattformbenachrichtigungsdienste konfiguriert sein, die Sie verwenden möchten. Weitere Informationen zum Konfigurieren eines Azure Notification Hubs und zum Entwickeln von Clientanwendungen, die sich für den Empfang von Benachrichtigungen registrieren, finden Sie unter [Erste Schritte mit Notification Hubs](../notification-hubs/notification-hubs-windows-store-dotnet-get-started.md). Klicken Sie dabei oben auf Ihre Zielclientplattform.
+Ihre Funktionen können über einen konfigurierten Azure Notification Hub mit sehr wenigen Codezeilen Pushbenachrichtigungen senden. Allerdings muss der Notification Hub für die Plattformbenachrichtigungsdienste konfiguriert sein, die Sie verwenden möchten. Weitere Informationen zum Konfigurieren eines Azure Notification Hubs und zum Entwickeln von Clientanwendungen, die sich für den Empfang von Benachrichtigungen registrieren, finden Sie unter [Erste Schritte mit Notification Hubs](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md). Klicken Sie dabei oben auf Ihre Zielclientplattform.
 
 ## „function.json“ für Azure Notification Hub-Ausgabebindung
 
@@ -32,7 +32,7 @@ Die Datei „function.json“ stellt die folgenden Eigenschaften bereit:
 
 - `name`: Variablenname, der im Funktionscode für die Notification Hub-Nachricht verwendet wird.
 - `type`: muss auf *"notificationHub"* festgelegt werden.
-- `tagExpression`: Mit Tagausdrücken können Sie Benachrichtigungen an eine Gruppe von Geräten übermitteln lassen, die sich für den Empfang von Benachrichtigungen entsprechend dem Tagausdruck registriert haben. Weitere Informationen finden Sie unter [Weiterleitung und Tagausdrücke](../notification-hubs/notification-hubs-routing-tag-expressions.md).
+- `tagExpression`: Mit Tagausdrücken können Sie Benachrichtigungen an eine Gruppe von Geräten übermitteln lassen, die sich für den Empfang von Benachrichtigungen entsprechend dem Tagausdruck registriert haben. Weitere Informationen finden Sie unter [Weiterleitung und Tagausdrücke](../notification-hubs/notification-hubs-tags-segment-push-message.md).
 - `hubName`: Name der Notification Hub-Ressource im Azure-Portal.
 - `connection`: Diese Verbindungszeichenfolge muss eine Verbindungszeichenfolge für die **Anwendungseinstellung** sein, die auf den *DefaultFullSharedAccessSignature*-Wert Ihres Notifications Hubs festgelegt ist.
 - `direction`: muss auf *"out"* festgelegt werden. 
@@ -68,7 +68,7 @@ Sie können eine Verbindungszeichenfolge für einen vorhandenen Hub auch manuell
 
 ## Azure Notification Hub-Codebeispiel für einen Node.js-Trigger mit Timer 
 
-In diesem Beispiel wird eine Benachrichtigung für eine [Vorlagenregistrierung](../notification-hubs/notification-hubs-templates.md) gesendet, die `location` und `message` enthält.
+In diesem Beispiel wird eine Benachrichtigung für eine [Vorlagenregistrierung](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) gesendet, die `location` und `message` enthält.
 
 	module.exports = function (context, myTimer) {
 	    var timeStamp = new Date().toISOString();
@@ -87,7 +87,7 @@ In diesem Beispiel wird eine Benachrichtigung für eine [Vorlagenregistrierung](
 
 ## Azure Notification Hub-Codebeispiel für einen C#-Warteschlangentrigger
 
-In diesem Beispiel wird eine Benachrichtigung für eine [Vorlagenregistrierung](../notification-hubs/notification-hubs-templates.md) gesendet, die `message` enthält.
+In diesem Beispiel wird eine Benachrichtigung für eine [Vorlagenregistrierung](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) gesendet, die `message` enthält.
 
 
 	using System;
@@ -107,7 +107,7 @@ In diesem Beispiel wird eine Benachrichtigung für eine [Vorlagenregistrierung](
 	    return templateProperties;
 	}
 
-In diesem Beispiel wird eine Benachrichtigung für eine [Vorlagenregistrierung](../notification-hubs/notification-hubs-templates.md), die `message` enthält, über eine gültige JSON-Zeichenfolge gesendet.
+In diesem Beispiel wird eine Benachrichtigung für eine [Vorlagenregistrierung](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md), die `message` enthält, über eine gültige JSON-Zeichenfolge gesendet.
 
 	using System;
 	 
@@ -155,4 +155,4 @@ Beispielcode:
 
 [AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

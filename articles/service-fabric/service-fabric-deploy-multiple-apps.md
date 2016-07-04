@@ -1,6 +1,6 @@
 <properties
    pageTitle="Bereitstellen einer Node.js-Anwendung mit MongoDB | Microsoft Azure"
-   description="Exemplarische Vorgehensweise zum Verpacken mehrerer ausführbarer Gastanwendungsdateien, um sie in einem Azure Service Fabric-Cluster bereitzustellen"
+   description="Exemplarische Vorgehensweise zum Packen mehrerer ausführbarer Gastanwendungsdateien, um sie in einem Azure Service Fabric-Cluster bereitzustellen"
    services="service-fabric"
    documentationCenter=".net"
    authors="bmscholl"
@@ -13,13 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/06/2016"
+   ms.date="06/20/2016"
    ms.author="bscholl;mikhegn"/>
 
 
 # Bereitstellen mehrerer ausführbarer Gastanwendungsdateien
 
-In diesem Artikel wird das Verpacken mehrerer ausführbarer Gastanwendungsdateien sowie ihre Bereitstellung in Azure Service Fabric mithilfe der Vorschauversion des Service Fabric-Packtools erläutert, die unter [http://aka.ms/servicefabricpacktool](http://aka.ms/servicefabricpacktool) verfügbar ist.
+In diesem Artikel wird das Packen mehrerer ausführbarer Gastanwendungsdateien sowie ihre Bereitstellung in Azure Service Fabric mithilfe der Vorschauversion des Service Fabric-Packtools erläutert, die unter [http://aka.ms/servicefabricpacktool](http://aka.ms/servicefabricpacktool) verfügbar ist.
 
 Informationen zum manuellen Erstellen eines Service Fabric-Pakets finden Sie im Abschnitt zum [Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric](service-fabric-deploy-existing-app.md).
 
@@ -67,7 +67,7 @@ Es folgt eine Beschreibung der verwendeten Parameter:
 - **/ma**: Gibt das Argument an, das verwendet wird, um die ausführbare Datei zu starten. Da Node.js nicht installiert ist, muss Service Fabric den Node.js-Webserver durch Ausführen von `node.exe bin/www` starten. `/ma:'bin/www'` weist das Packtool an, `bin/ma` als Argument für „node.exe“ zu verwenden.
 - **/AppType**: Bestimmt den Namen des Service Fabric-Anwendungstyps.
 
->[AZURE.NOTE] Das Anwendungspaket kann auch mithilfe von Visual Studio als Teil eines Anwendungsprojekts erstellt werden. Wenn Sie die Quelle im Visual Studio-Projekt verknüpfen und die Visual Studio-Projektmappe erstellen, wird Ihr Anwendungspaket mit den Änderungen in der Quelle aktualisiert.
+>[AZURE.NOTE] Das Anwendungspaket kann auch mithilfe von Visual Studio als Teil eines Anwendungsprojekts erstellt werden. Wenn Sie die Quelle im Visual Studio-Projekt verknüpfen und die Visual Studio-Projektmappe erstellen, wird Ihr Anwendungspaket mit den Änderungen in der Quelle aktualisiert. [Verwenden von Visual Studio zum Packen einer vorhandenen Anwendung](service-fabric-deploy-existing-app.md#using-visual-studio-to-package-an-existing-application)
 
 Wenn Sie zum Verzeichnis navigieren, das im Parameter „/target“ angegeben wurde, sehen Sie, dass das Tool ein voll funktionsfähiges Service Fabric-Paket erstellt hat (siehe unten):
 
@@ -111,7 +111,7 @@ In diesem Beispiel lauscht der Node.js-Webserver an Port 3000. Deshalb müssen S
       </Endpoints>
 </Resources>
 ```
-Nachdem Sie das Node.js-Anwendungspaket erstellt haben, können Sie nun das MongoDB-Paket erstellen. Wie bereits erwähnt, gelten die jetzt auszuführenden Schritte nicht speziell für Node.js und MongoDB. Sie gelten für alle Anwendungen, die zu einer Service Fabric-Anwendung verpackt werden sollen.
+Nachdem Sie das Node.js-Anwendungspaket erstellt haben, können Sie nun das MongoDB-Paket erstellen. Wie bereits erwähnt, gelten die jetzt auszuführenden Schritte nicht speziell für Node.js und MongoDB. Sie gelten für alle Anwendungen, die zu einer Service Fabric-Anwendung gepackt werden sollen.
 
 Für das MongoDB-Paket müssen Sie „Mongod.exe“ und „Mongo.exe“ packen. Beide Binärdateien befinden sich im Verzeichnis `bin` des MongoDB-Installationsverzeichnisses. Die Verzeichnisstruktur sieht ähnlich wie folgt aus.
 
@@ -137,7 +137,7 @@ mongod.exe --dbpath [path to data]
 
 Um MongoDB Ihrem Service Fabric-Anwendungspaket hinzuzufügen, müssen Sie sicherstellen, dass der Parameter „/target“ auf dasselbe Verzeichnis verweist, das bereits das Anwendungsmanifest und die Node.js-Anwendung enthält. Sie müssen auch sicherstellen, dass Sie denselben Namen für „ApplicationType“ verwenden.
 
->[AZURE.NOTE] Das Anwendungspaket kann auch mithilfe von Visual Studio als Teil eines Anwendungsprojekts erstellt werden. Wenn Sie die Quelle im Visual Studio-Projekt verknüpfen und die Visual Studio-Projektmappe erstellen, wird Ihr Anwendungspaket mit den Änderungen in der Quelle aktualisiert.
+>[AZURE.NOTE] Das Anwendungspaket kann auch mithilfe von Visual Studio als Teil eines Anwendungsprojekts erstellt werden. Wenn Sie die Quelle im Visual Studio-Projekt verknüpfen und die Visual Studio-Projektmappe erstellen, wird Ihr Anwendungspaket mit den Änderungen in der Quelle aktualisiert. [Verwenden von Visual Studio zum Packen einer vorhandenen Anwendung](service-fabric-deploy-existing-app.md#using-visual-studio-to-package-an-existing-application)
 
 Lassen Sie uns zum Verzeichnis wechseln und untersuchen, was das Tool erstellt hat.
 
@@ -198,10 +198,10 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationType
 
 Nach der erfolgreichen Veröffentlichung der Anwendung im lokalen Cluster können Sie auf die Node.js-Anwendung an dem Port zugreifen, den Sie in das Dienstmanifest der Node.js-Anwendung eingegeben haben, z. B.: http://localhost:3000.
 
-In diesem Tutorial haben Sie gelernt, wie Sie zwei vorhandene Anwendungen leicht zu einer Service Fabric-Anwendung verpacken können. Sie haben auch gelernt, wie Sie die Bereitstellung für Service Fabric durchführen, um von den Service Fabric-Features zu profitieren. Beispiele hierfür sind hohe Verfügbarkeit und die Integration des Integritätssystems.
+In diesem Tutorial haben Sie gelernt, wie Sie zwei vorhandene Anwendungen leicht zu einer Service Fabric-Anwendung Packen können. Sie haben auch gelernt, wie Sie die Bereitstellung für Service Fabric durchführen, um von den Service Fabric-Features zu profitieren. Beispiele hierfür sind hohe Verfügbarkeit und die Integration des Integritätssystems.
 
 ## Nächste Schritte
 
-- Informieren Sie sich darüber, wie Sie [eine Gastanwendung manuell verpacken](service-fabric-deploy-existing-app.md).
+- Informieren Sie sich darüber, wie Sie [eine Gastanwendung manuell packen](service-fabric-deploy-existing-app.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

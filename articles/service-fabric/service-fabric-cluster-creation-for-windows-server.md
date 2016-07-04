@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/14/2016"
+   ms.date="06/21/2016"
    ms.author="chackdan"/>
 
 
@@ -36,11 +36,19 @@ Im Downloadpaket finden Sie die folgenden Dateien:
 |**Dateiname**|**Kurzbeschreibung**|
 |-----------------------|--------------------------|
 |MicrosoftAzureServiceFabric.cab|Die CAB-Datei, die die Binärdateien enthält, die für jeden Computer im Cluster bereitgestellt werden.|
-|ClusterConfig.JSON|Datei zur Clusterkonfiguration, die alle Einstellungen für den Cluster enthält, einschließlich der Informationen für jeden Computer, der Teil des Clusters ist.|
-|EULA.txt|Die Lizenzbedingungen für die Verwendung des eigenständigen Pakets für Microsoft Azure Service Fabric. Klicken Sie [hier](http://go.microsoft.com/fwlink/?LinkID=733084), wenn Sie jetzt eine Kopie der Lizenzbedingungen herunterladen möchten.|
+|ClusterConfig.Unsecure.DevCluster.JSON|Beispiel einer Clusterkonfigurationsdatei, die alle Einstellungen für einen unsicheren Entwicklungscluster mit einem virtuellen oder physischen Computer und drei Knoten enthält, einschließlich der Informationen für jeden Knoten, der Teil des Clusters ist. |
+|ClusterConfig.Unsecure.MultiMachine.JSON|Beispiel einer Clusterkonfigurationsdatei, die alle Einstellungen für den Cluster enthält, einschließlich der Informationen für jeden Computer, der Teil eines unsicheren Clusters mit mehreren virtuellen oder physischen Computern ist.|
+|ClusterConfig.Windows.DevCluster.JSON|Beispiel einer Clusterkonfigurationsdatei, die alle Einstellungen für einen sicheren Entwicklungscluster mit einem virtuellen oder physischen Computer und drei Knoten enthält, einschließlich der Informationen für jeden Knoten, der Teil des Clusters ist. Der Cluster wird mittels [Windows-Identitäten](https://msdn.microsoft.com/library/ff649396.aspx) geschützt.|
+|ClusterConfig.Windows.MultiMachine.JSON|Beispiel einer Clusterkonfigurationsdatei, die alle Einstellungen für den sicheren Cluster enthält, einschließlich der Informationen für jeden Computer, der Teil eines sicheren Clusters mit mehreren virtuellen oder physischen Computern ist. Der Cluster wird mittels [Windows-Identitäten](https://msdn.microsoft.com/library/ff649396.aspx) geschützt.|
+|ClusterConfig.x509.DevCluster.JSON|Beispiel einer Clusterkonfigurationsdatei, die alle Einstellungen für einen sicheren Entwicklungscluster mit einem virtuellen oder physischen Computer und drei Knoten enthält, einschließlich der Informationen für jeden Knoten, der Teil des Clusters ist. Der Cluster wird mittels X.509-Windows-Zertifikaten geschützt.|
+|ClusterConfig.x509.MultiMachine.JSON|Beispiel einer Clusterkonfigurationsdatei, die alle Einstellungen für den sicheren Cluster enthält, einschließlich der Informationen für jeden Computer, der Teil eines sicheren Clusters mit mehreren virtuellen oder physischen Computern ist. Der Cluster wird mittels X.509-Zertifikaten geschützt.|
+|EULA.txt|Die Lizenzbedingungen für die Verwendung des eigenständigen Pakets für Microsoft Azure Service Fabric. [Klicken Sie hier](http://go.microsoft.com/fwlink/?LinkID=733084), wenn Sie jetzt eine Kopie der Lizenzbedingungen herunterladen möchten.|
 |Readme.txt|Link zu Versionshinweisen und grundlegenden Installationsanweisungen. Es ist ein kleiner Teil der Anweisungen, die Sie auf dieser Seite finden.|
 |CreateServiceFabricCluster.ps1|PowerShell-Skript, das den Cluster mit den Einstellungen in der Datei „ClusterConfig.JSON“ erstellt.|
 |RemoveServiceFabricCluster.ps1|PowerShell-Skript zur Clusterentfernung, das die Einstellungen in „ClusterConfig.JSON“ nutzt.|
+|AddNode.ps1|PowerShell-Skript zum Hinzufügen eines Knotens zu einem vorhandenen Cluster.|
+|RemoveNode.ps1|PowerShell-Skript zum Entfernen eines Knotens aus einem Cluster.|
+
 
 ## Planen und Vorbereiten der Clusterbereitstellung
 Die folgenden Schritte müssen ausgeführt werden, bevor Sie den Cluster erstellen.
@@ -76,7 +84,7 @@ Eine **Upgradedomäne (UD)** ist eine logische Einheit von Knoten. Während eine
 
 Die einfachste Möglichkeit, sich diese Konzepte vorzustellen, besteht darin, FDs als Einheit des ungeplanten Ausfalls und UDs als Einheit der geplanten Wartung zu betrachten.
 
-Beim Angeben von UDs in *ClusterConfig.JSON* können Sie den Namen der UD wählen. Beispielsweise sind die folgenden zulässig:
+Beim Angeben von UDs in *ClusterConfig.JSON** können Sie den Namen der UD wählen. Beispielsweise sind die folgenden zulässig:
 
 - „upgradeDomain“: „UD0“
 - „upgradeDomain“: „UD1A“
@@ -97,7 +105,7 @@ Nachdem Sie die oben im Planungs- und Vorbereitungsabschnitt beschriebenen Schri
 |**Konfigurationseinstellung**|**Beschreibung**|
 |-----------------------|--------------------------|
 |NodeTypes|Mit Knotentypen können Sie die Clusterknoten in verschiedene Gruppen unterteilen. Ein Cluster muss über mindestens einen Knotentyp verfügen. Alle Knoten in einer Gruppe haben die folgenden gemeinsamen Merkmale. <br> *Name*: Der Name des Knotentyps. <br>*EndPoints*: Verschiedene benannte Endpunkte (Ports), die diesem Knotentyp zugeordnet sind. Sie können eine beliebige Portnummer verwenden, solange sie nicht mit anderen Elementen in diesem Manifest in Konflikt steht und nicht bereits von einem anderen Programm auf dem (virtuellen) Computer verwendet wird. <br> *PlacementProperties*: Eigenschaften für diesen Knotentyp, die Sie später als Platzierungseinschränkungen für Systemdienste oder eigene Dienste verwenden. Diese Eigenschaften sind benutzerdefinierte Schlüssel-Wert-Paare, mit denen für einen bestimmten Knoten zusätzliche Metadaten bereitgestellt werden. Beispiele für Knoteneigenschaften: Vorhandensein einer Festplatte oder Grafikkarte am Knoten, Spindelanzahl des Festplattenlaufwerks, Kerne und andere physische Eigenschaften. <br> *Capacities*: Knotenkapazitäten definieren Name und Menge einer bestimmten Ressource, die ein bestimmter Knoten nutzen kann. Ein Knoten definiert z. B., dass er über Kapazität für eine Metrik mit dem Namen „MemoryInMb“ verfügt und standardmäßig 2.048 MB an verfügbarem Arbeitsspeicher aufweist. Diese Kapazitäten werden zur Laufzeit verwendet, um sicherzustellen, dass Dienste, die bestimmte Ressourcenmengen beanspruchen, auf Knoten mit den verfügbaren Ressourcen platziert werden.|
-|Nodes|Die Details für jeden Knoten, der Teil des Clusters ist (Knotentyp, Knotenname, IP-Adresse, Fehlerdomäne und Upgradedomäne des Knotens). Die Computer, aus denen Sie den Cluster erstellen möchten, müssen mit ihren IP-Adressen hier aufgeführt werden. <br> Wenn Sie die gleichen IP-Adressen für alle Knoten verwenden, wird ein One-Box-Cluster erstellt, den Sie für Tests verwenden können. One-Box-Cluster sollten nicht zur Bereitstellung von Produktions-Workloads verwendet werden.|
+|Nodes|Die Details für jeden Knoten, der Teil des Clusters ist (Knotentyp, Knotenname, IP-Adresse, Fehlerdomäne und Upgradedomäne des Knotens). Die Computer, aus denen Sie den Cluster erstellen möchten, müssen mit ihren IP-Adressen hier aufgeführt werden. <br> Wenn Sie die gleichen IP-Adressen für alle Knoten verwenden, wird ein Cluster mit einem Computer erstellt, den Sie für Tests verwenden können. Cluster mit einem Computer dürfen nicht zur Bereitstellung von Produktionsworkloads verwendet werden.|
 
 ### Schritt 2: Ausführen des Clustererstellungsskripts
 Sobald Sie die Clusterkonfiguration im JSON-Dokument geändert und alle Knoteninformationen hinzugefügt haben, führen Sie das PowerShell-Skript zur Erstellung des Clusters aus dem Paketordner heraus aus, und übergeben Sie ihm den Pfad zur Konfigurationsdatei und zum Speicherort des Stammverzeichnisses des Pakets.
@@ -105,19 +113,47 @@ Sobald Sie die Clusterkonfiguration im JSON-Dokument geändert und alle Knotenin
 Dieses Skript kann auf jedem Computer ausgeführt werden, der Administratorzugriffsrechte auf alle Computer hat, die als Knoten in der Clusterkonfigurationsdatei aufgeführt sind. Der Computer, auf dem dieses Skript ausgeführt wird, kann, muss jedoch nicht Teil des Clusters sein.
 
 ```
-.\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath C:\Microsoft.Azure.ServiceFabric.WindowsServer.5.0.135.9590\ClusterConfig.JSON -MicrosoftServiceFabricCabFilePath C:\Microsoft.Azure.ServiceFabric.WindowsServer.5.0.135.9590\MicrosoftAzureServiceFabric.cab
+.\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.JSON -MicrosoftServiceFabricCabFilePath .\MicrosoftAzureServiceFabric.cab
 ```
 
+>[AZURE.NOTE] Die Bereitstellungsprotokolle sind lokal auf dem virtuellen bzw. physischen Computer verfügbar, auf dem Sie den PowerShell-Befehl „CreateServiceFabricCluster“ ausgeführt haben. Sie befinden sich in einen Unterordner namens „DeploymentTraces“ im Ordner, in dem Sie den PS-Befehl ausgeführt haben.
+
+## Hinzufügen von Knoten zum Service Fabric-Cluster 
+
+1. Bereiten Sie den virtuellen bzw. physischen Computer vor, den Sie dem Cluster hinzufügen möchten (siehe Schritt 2 im vorherigen Abschnitt „Planen und Vorbereiten der Clusterbereitstellung“). 
+2. Planen Sie, welcher Fehlerdomäne und Upgradedomäne Sie diesen virtuellen bzw. physischen Computer hinzufügen werden.
+3. [Laden Sie das eigenständige Paket für Service Fabric für Windows Server herunter](http://go.microsoft.com/fwlink/?LinkId=730690), und entpacken Sie das Paket entweder auf dem virtuellen oder dem physischen Computer, den Sie dem Cluster hinzufügen möchten. 
+4. Öffnen Sie eine PowerShell-Administratoreingabeaufforderung, und navigieren Sie zum Speicherort des extrahierten Pakets.
+5. Führen Sie „AddNode.ps1“ aus.
+
+```
+.\AddNode.ps1 -MicrosoftServiceFabricCabFilePath .\MicrosoftAzureServiceFabric.cab -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClusterConnectionEndPoint 182.17.34.52:19000 -UpgradeDomain UD1 -FaultDomain FD1
+```
+
+## Entfernen von Knoten aus Ihrem Service Fabric-Cluster 
+
+1. Verbinden Sie sich per Terminaldienste mit dem virtuellen bzw. physischen Computer, den Sie aus dem Cluster entfernen möchten.
+2. Öffnen Sie eine PowerShell-Administratoreingabeaufforderung, und navigieren Sie zum Speicherort des extrahierten Pakets.
+5. Führen Sie „RemoveNode.ps1“ aus.
+
+```
+.\RemoveNode.ps1 -MicrosoftServiceFabricCabFilePath .\MicrosoftAzureServiceFabric.cab -ExistingClusterConnectionEndPoint 182.17.34.52:19000
+```
+
+## Löschen Ihres Service Fabric-Clusters 
+1. Verbinden Sie sich per Terminaldienste mit dem virtuellen bzw. physischen Computer, der Teil des Clusters ist.
+2. Öffnen Sie eine PowerShell-Administratoreingabeaufforderung, und navigieren Sie zum Speicherort des extrahierten Pakets.
+5. Führen Sie „RemoveNode.ps1“ aus.
+
+```
+.\RemoveNode.ps1 -MicrosoftServiceFabricCabFilePath .\MicrosoftAzureServiceFabric.cab -ExistingClusterConnectionEndPoint 182.17.34.52:19000
+```
+
+
 ## Nächste Schritte
-
-Nachdem Sie einen Cluster erstellt haben, achten Sie auch darauf, ihn zu sichern:
-- [Clustersicherheit](service-fabric-cluster-security.md)
-
-Lesen Sie die folgenden Dokumente zur Vorbereitung auf die ersten Schritte der Entwicklung und Bereitstellung von Apps:
+- [Grundlegendes zur Clustersicherheit](service-fabric-cluster-security.md)
 - [ Service Fabric-SDK und erste Schritte](service-fabric-get-started.md)
 - [Verwalten von Service Fabric-Anwendungen in Visual Studio](service-fabric-manage-application-in-visual-studio.md)
-
-Weitere Informationen über Azure-Cluster und eigenständige Cluster finden Sie unter:
 - [Umgebungsunabhängige Bereitstellung (Deploy Anywhere) unter Windows Server und Linux mit Service Fabric](service-fabric-deploy-anywhere.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

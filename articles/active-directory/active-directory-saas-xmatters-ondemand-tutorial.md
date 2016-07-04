@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="04/06/2016" 
+    ms.date="06/20/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit xMatters OnDemand
@@ -38,7 +38,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für xMa
 
 ###So aktivieren Sie die Anwendungsintegration für xMatters OnDemand
 
-1.  Klicken Sie im linken Navigationsbereich des Azure-Verwaltungsportals auf **Active Directory**.
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-xmatters-ondemand-tutorial/IC700993.png "Active Directory")
 
@@ -70,7 +70,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 ###So konfigurieren Sie einmaliges Anmelden
 
-1.  Klicken Sie im Azure AD-Portal auf der Anwendungsintegrationsseite für **xMatters OnDemand** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **xMatters OnDemand** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776791.png "Einmaliges Anmelden konfigurieren")
 
@@ -78,9 +78,14 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776792.png "Einmaliges Anmelden konfigurieren")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **xMatters OnDemand-Anmelde-URL** die URL im Format „ *https://\<Mandantenname\>.xMatters OnDemandapp.com* “ ein, und klicken Sie dann auf **Weiter**.
+3.  Führen Sie auf der Seite **App-URL konfigurieren** die folgenden Schritte aus:
 
     ![App-URL konfigurieren](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776793.png "App-URL konfigurieren")
+
+	a. Geben Sie im Textfeld **xMatters OnDemand-Anmelde-URL** die URL im folgenden Format ein: `https://<tenant-name>.XMattersOnDemandapp.com`
+
+	b. Klicken Sie auf **Weiter**.
+
 
 4.  Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Einmaliges Anmelden konfigurieren für xMatters OnDemand** auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat lokal als: **c:\\XMatters OnDemand.cer**.
 
@@ -99,13 +104,12 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     ![SAML-Konfiguration](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776796.png "SAML-Konfiguration")
 
     1.  Wählen Sie **SAML aktivieren**.
-    2.  Kopieren Sie im Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für xMatters OnDemand** den Wert der **Identitätsanbieter-ID**, und fügen Sie ihn in das Textfeld **Identitätsanbieter-ID** ein.
-    3.  Kopieren Sie im Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für xMatters OnDemand** den Wert für **Dienst-URL für einmaliges Anmelden**, und fügen Sie ihn in das Textfeld **URL für einmaliges Anmelden** ein.
-    4.  Kopieren Sie im Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für xMatters OnDemand** den Wert für **Dienst-URL für einmaliges Abmelden**, und fügen Sie ihn in das Textfeld **URL für einmaliges Abmelden** ein.
-    5.  Klicken Sie auf der Seite „Unternehmensdetails“ oben auf **Speichern**.
-![Unternehmensdetails](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776797.png "Unternehmensdetails")
+    2.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für xMatters OnDemand** den Wert der **Identitätsanbieter-ID**, und fügen Sie ihn in das Textfeld **Identitätsanbieter-ID** ein.
+    3.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für xMatters OnDemand** den Wert für **Dienst-URL für einmaliges Anmelden**, und fügen Sie ihn in das Textfeld **URL für einmaliges Anmelden** ein.
+    4.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für xMatters OnDemand** den Wert für **Dienst-URL für einmaliges Abmelden**, und fügen Sie ihn in das Textfeld **URL für einmaliges Abmelden** ein.
+    5.  Klicken Sie auf der Seite „Unternehmensdetails“ oben auf **Speichern**. ![Unternehmensdetails](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776797.png "Unternehmensdetails")
 
-8.  Wählen Sie im Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
+8.  Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776798.png "Einmaliges Anmelden konfigurieren")
 
@@ -140,7 +144,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 ###So weisen Sie xMatters OnDemand Benutzer zu
 
-1.  Erstellen Sie im Azure AD-Portal ein Testkonto.
+1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
 2.  Klicken Sie auf der Anwendungsintegrationsseite für **xMatters OnDemand** auf **Benutzer zuweisen**.
 
@@ -152,4 +156,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/17/2016"
+   ms.date="06/20/2016"
    ms.author="hanuk;jroth;aglick"/>
 
 #Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen
@@ -54,9 +54,9 @@ Betrachten Sie die folgenden SLAs für einen Azure-Dienst, der folgende Azure-Di
 
 |Azure-Dienst|SLA |Potenzielle Ausfallzeit in Minuten/Monat (30 Tage)|
 |:------------|:-----|:----------------------------------------:|
-|Compute |99,95 %|21,6 |
-|SQL-Datenbank |99,90 %|43,2 |
-|Storage |99,90 %|43,2 |
+|Compute |99,95 %|21,6 Minuten |
+|SQL-Datenbank |99,99 %|4,3 Minuten |
+|Speicher |99,90 %|43,2 Minuten |
 
 Sie müssen bei Ihrer Planung bedenken, dass alle Dienste möglicherweise zu verschiedenen Zeiten ausfallen. In diesem vereinfachten Beispiel kann die Anwendung insgesamt pro Monat 108 Minuten ausfallen. Ein Monat mit 30 Tagen hat insgesamt 43.200 Minuten. 108 Minuten entsprechen 0,25 Prozent der Gesamtanzahl von Minuten in einem Monat mit 30 Tagen (43.200 Minuten). Dies ergibt für den Clouddienst eine effektive Verfügbarkeit von 99,75 Prozent.
 
@@ -131,4 +131,4 @@ Berücksichtigen Sie die geschäftlichen Konsequenzen eines Anwendungsausfalls, 
 
 Dieser Artikel ist Teil einer Reihe von Artikeln mit Fokus auf Notfallwiederherstellung und hohe Verfügbarkeit für Azure-Anwendungen. Der nächste Artikel in dieser Reihe ist [Hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](resiliency-high-availability-azure-applications.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

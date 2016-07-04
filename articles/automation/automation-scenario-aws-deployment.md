@@ -12,10 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/13/2016"
+   ms.date="06/21/2016"
    ms.author="tiandert; bwren" />
 
-# Azure Automation-Lösung – Bereitstellen eines virtuellen AWS-Computers 
+# Azure Automation-Szenario – Bereitstellen eines virtuellen AWS-Computers 
 
 In diesem Artikel wird gezeigt, wie Sie Azure Automation zur Bereitstellung eines virtuellen Computers in Ihrem AWS-Abonnement (Amazon Web Services) nutzen und für diese VM einen bestimmten Namen festlegen können – ein Vorgang, der in AWS als „Tagging“ des virtuellen Computers bezeichnet wird.
 
@@ -72,14 +72,14 @@ Nach der Bereitstellung des AWS-PowerShell-Moduls kann nun ein Runbook erstellt 
 		#Sample to get the AWS VM available images
 		#Please provide the path where you have downloaded the AWS PowerShell module
 		Import-Module AWSPowerShell
-		$AWSRegion = "us-west-2"
+		$AwsRegion = "us-west-2"
 		$AwsCred = Get-Credential
 		$AwsAccessKeyId = $AwsCred.UserName
 		$AwsSecretKey = $AwsCred.GetNetworkCredential().Password
 
 		# Set up the environment to access AWS
-		Set-AWSCredentials -AccessKey $AwsAccessKeyId -SecretKey $AwsSecretKey -StoreAs AWSProfile
-		Set-DefaultAWSRegion -Region $AWSRegion
+		Set-AwsCredentials -AccessKey $AwsAccessKeyId -SecretKey $AwsSecretKey -StoreAs AWSProfile
+		Set-DefaultAWSRegion -Region $AwsRegion
 
 		Get-EC2ImageByName -ProfileName AWSProfile
 Die folgende Ausgabe wird zurückgegeben:<br> ![AWS-Images abrufen](./media/automation-scenario-aws-deployment/powershell-ise-output.png)  
@@ -90,7 +90,7 @@ Die folgende Ausgabe wird zurückgegeben:<br> ![AWS-Images abrufen](./media/auto
 ### Testen des AWS-VM-Runbooks
 Bevor wir mit dem Testen des Runbooks fortfahren, müssen einige Dinge überprüft werden. Dies gilt insbesondere in folgenden Fällen:
 
-   -  Es wurden Assets für die Authentifizierung gegenüber AWS erstellt und **AWScred** genannt, oder das Skript wurde aktualisiert, um auf den Namen Ihres Anmeldeinformationsassets zu verweisen.  
+   -  Ein Asset namens **AWScred** wurde für die Authentifizierung gegenüber AWS erstellt, oder das Skript wurde aktualisiert, um auf den Namen Ihres Anmeldeinformationsassets zu verweisen.  
    -  Das AWS-PowerShell-Modul wurde in Azure Automation importiert.
    -  Es wurde ein neues Runbook erstellt, und Parameterwerte wurden bei Bedarf überprüft und aktualisiert.
    -  Für **Ausführliche Datensätze protokollieren** und optional **Statusdatensätze protokollieren** unter der Runbookeinstellung **Protokollierung und Nachverfolgung** wurde **Ein** festgelegt.<br> ![Runbookprotokollierung und -nachverfolgung](./media/automation-scenario-aws-deployment/runbook-settings-logging-and-tracing.png)
@@ -107,4 +107,4 @@ Bevor wir mit dem Testen des Runbooks fortfahren, müssen einige Dinge überprü
 -	Informationen über die verschiedenen Runbooktypen, ihre Vorteile und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md).
 -	Weitere Informationen zur PowerShell-Skriptunterstützung finden Sie unter [Native PowerShell Script Support in Azure Automation (Native PowerShell-Skriptunterstützung in Azure Automation)](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0622_2016-->

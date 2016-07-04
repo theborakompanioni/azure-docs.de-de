@@ -294,4 +294,4 @@ Es stehen zwei Tools zur Verfügung, mit denen Sie die Gesamtkosten zum Ausführ
 ## **Bestätigungen**
 Dieser Artikel wurde von der Datenanalystin Yijing Chen und dem Softwareentwickler Qiu Min bei Microsoft verfasst.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

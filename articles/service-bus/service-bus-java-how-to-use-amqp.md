@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="03/09/2016" 
+	ms.date="06/20/2016" 
 	ms.author="sethm"/>
 
 # Verwenden der JMS (Java Message Service)-API mit Service Bus und AMQP 1.0
@@ -124,100 +124,102 @@ InitialContext context = new InitialContext(env);
 
 Das folgende Beispielprogramm sendet JMS-TextMessages an eine Service Bus-Warteschlange mit dem logischen JNDI-Namen QUEUE und empfängt die zurückkommenden Nachrichten.
 
-	// SimpleSenderReceiver.java
+```
+// SimpleSenderReceiver.java
 	
-	import javax.jms.*;
-	import javax.naming.Context;
-	import javax.naming.InitialContext;
-	import java.io.BufferedReader;
-	import java.io.InputStreamReader;
-	import java.util.Hashtable;
-	import java.util.Random;
+import javax.jms.*;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Hashtable;
+import java.util.Random;
 	
-	public class SimpleSenderReceiver implements MessageListener {
-	    private static boolean runReceiver = true;
-	    private Connection connection;
-	    private Session sendSession;
-	    private Session receiveSession;
-	    private MessageProducer sender;
-	    private MessageConsumer receiver;
-	    private static Random randomGenerator = new Random();
+public class SimpleSenderReceiver implements MessageListener {
+    private static boolean runReceiver = true;
+    private Connection connection;
+    private Session sendSession;
+    private Session receiveSession;
+    private MessageProducer sender;
+    private MessageConsumer receiver;
+    private static Random randomGenerator = new Random();
 	
-	    public SimpleSenderReceiver() throws Exception {
-	        // Configure JNDI environment
-	        Hashtable<String, String> env = new Hashtable<String, String>();
-	        env.put(Context.INITIAL_CONTEXT_FACTORY, 
-                    "org.apache.qpid.amqp_1_0.jms.jndi.PropertiesFileInitialContextFactory");
-	        env.put(Context.PROVIDER_URL, "servicebus.properties");
-	        Context context = new InitialContext(env);
+    public SimpleSenderReceiver() throws Exception {
+        // Configure JNDI environment
+        Hashtable<String, String> env = new Hashtable<String, String>();
+        env.put(Context.INITIAL_CONTEXT_FACTORY, 
+                   "org.apache.qpid.amqp_1_0.jms.jndi.PropertiesFileInitialContextFactory");
+        env.put(Context.PROVIDER_URL, "servicebus.properties");
+        Context context = new InitialContext(env);
 	
-	        // Lookup ConnectionFactory and Queue
-	        ConnectionFactory cf = (ConnectionFactory) context.lookup("SBCF");
-	        Destination queue = (Destination) context.lookup("QUEUE");
+        // Lookup ConnectionFactory and Queue
+        ConnectionFactory cf = (ConnectionFactory) context.lookup("SBCF");
+        Destination queue = (Destination) context.lookup("QUEUE");
 	
-	        // Create Connection
-	        connection = cf.createConnection();
+        // Create Connection
+        connection = cf.createConnection();
 	
-	        // Create sender-side Session and MessageProducer
-	        sendSession = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-	        sender = sendSession.createProducer(queue);
+        // Create sender-side Session and MessageProducer
+        sendSession = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+        sender = sendSession.createProducer(queue);
 	
-	        if (runReceiver) {
-	            // Create receiver-side Session, MessageConsumer,and MessageListener
-	            receiveSession = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
-	            receiver = receiveSession.createConsumer(queue);
-	            receiver.setMessageListener(this);
-	            connection.start();
-	        }
-	    }
+        if (runReceiver) {
+            // Create receiver-side Session, MessageConsumer,and MessageListener
+            receiveSession = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+            receiver = receiveSession.createConsumer(queue);
+            receiver.setMessageListener(this);
+            connection.start();
+        }
+    }
 	
-	    public static void main(String[] args) {
-	        try {
+    public static void main(String[] args) {
+        try {
 	
-	            if ((args.length > 0) && args[0].equalsIgnoreCase("sendonly")) {
-	                runReceiver = false;
-	            }
+            if ((args.length > 0) && args[0].equalsIgnoreCase("sendonly")) {
+                runReceiver = false;
+            }
 	
-	            SimpleSenderReceiver simpleSenderReceiver = new SimpleSenderReceiver();
-	            System.out.println("Press [enter] to send a message. Type 'exit' + [enter] to quit.");
-	            BufferedReader commandLine = new java.io.BufferedReader(new InputStreamReader(System.in));
+            SimpleSenderReceiver simpleSenderReceiver = new SimpleSenderReceiver();
+            System.out.println("Press [enter] to send a message. Type 'exit' + [enter] to quit.");
+            BufferedReader commandLine = new java.io.BufferedReader(new InputStreamReader(System.in));
 	
-	            while (true) {
-	                String s = commandLine.readLine();
-	                if (s.equalsIgnoreCase("exit")) {
-	                    simpleSenderReceiver.close();
-	                    System.exit(0);
-	                } else {
-	                    simpleSenderReceiver.sendMessage();
-	                }
-	            }
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-	    }
+            while (true) {
+                String s = commandLine.readLine();
+                if (s.equalsIgnoreCase("exit")) {
+                    simpleSenderReceiver.close();
+                    System.exit(0);
+                } else {
+                    simpleSenderReceiver.sendMessage();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 	
-	    private void sendMessage() throws JMSException {
-	        TextMessage message = sendSession.createTextMessage();
-	        message.setText("Test AMQP message from JMS");
-	        long randomMessageID = randomGenerator.nextLong() >>>1;
-	        message.setJMSMessageID("ID:" + randomMessageID);
-	        sender.send(message);
-	        System.out.println("Sent message with JMSMessageID = " + message.getJMSMessageID());
-	    }
+    private void sendMessage() throws JMSException {
+        TextMessage message = sendSession.createTextMessage();
+        message.setText("Test AMQP message from JMS");
+        long randomMessageID = randomGenerator.nextLong() >>>1;
+        message.setJMSMessageID("ID:" + randomMessageID);
+        sender.send(message);
+        System.out.println("Sent message with JMSMessageID = " + message.getJMSMessageID());
+    }
 	
-	    public void close() throws JMSException {
-	        connection.close();
-	    }
+    public void close() throws JMSException {
+        connection.close();
+    }
 	
-	    public void onMessage(Message message) {
-	        try {
-	            System.out.println("Received message with JMSMessageID = " + message.getJMSMessageID());
-	            message.acknowledge();
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-	    }
-	}	
+    public void onMessage(Message message) {
+        try {
+            System.out.println("Received message with JMSMessageID = " + message.getJMSMessageID());
+            message.acknowledge();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}	
+```
 
 ### Ausführen der Anwendung
 
@@ -251,7 +253,7 @@ Weitere Informationen zum plattformübergreifenden Messaging mit Service Bus und
 So funktioniert das Messaging von JMS nach .NET:
 
 * Starten Sie die .NET-Beispielanwendung ohne Befehlszeilenargumente.
-* Starten Sie anschließend die Java-Beispielanwendung mit dem Befehlszeilenargument "sendonly". Die Anwendung empfängt in diesem Modus keine Nachrichten aus der Warteschlange, sie sendet lediglich Nachrichten.
+* Starten Sie anschließend die beispielhafte Java-Anwendung mit dem Befehlszeilenargument "sendonly". Die Anwendung empfängt in diesem Modus keine Nachrichten aus der Warteschlange, sie sendet lediglich Nachrichten.
 * Drücken Sie mehrmals die **Eingabetaste** in der Java-Anwendungskonsole, sodass die Nachrichten gesendet werden.
 * Diese Nachrichten werden anschließend von der .NET-Anwendung empfangen.
 
@@ -332,4 +334,4 @@ Sie können Service Bus AMQP 1.0 auch mit anderen Sprachen verwenden, unter ande
 * [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

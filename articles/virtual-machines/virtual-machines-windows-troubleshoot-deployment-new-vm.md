@@ -14,7 +14,7 @@
   ms.tgt_pltfrm="vm-windows"
   ms.devlang="na"
   ms.topic="article"
-  ms.date="05/06/2016"
+  ms.date="06/20/2016"
   ms.author="cjiang"/>
 
 # Behandeln von Problemen beim Erstellen eines neuen virtuellen Windows-Computers in Azure (Resource Manager-Bereitstellungsmodell)
@@ -81,4 +81,7 @@ Dieser Fehler tritt auf, wenn die Anforderung für einen neuen virtuellen Comput
   - Erstellen Sie einen neuen virtuellen Computer in einer anderen Verfügbarkeitsgruppe (in derselben Region).
   - Fügen Sie den neuen virtuellen Computer zum gleichen virtuellen Netzwerk hinzu.
 
-<!---HONumber=AcomDC_0601_2016-->
+## Nächste Schritte
+Wenn beim Starten eines beendeten virtuellen Windows-Computers oder beim Ändern der Größe eines vorhandenen virtuellen Windows-Computers in Azure Probleme auftreten, finden Sie Informationen unter [Behandeln von Problemen beim Neustart oder Ändern der Größe eines vorhandenen virtuellen Windows-Computers in Azure (Resource Manager-Bereitstellungsmodell)](virtual-machines-windows-restart-resize-error-troubleshooting.md).
+
+<!---HONumber=AcomDC_0622_2016-->

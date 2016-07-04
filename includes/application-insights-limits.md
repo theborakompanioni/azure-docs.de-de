@@ -4,11 +4,11 @@ Die Beschränkungen hängen von dem von Ihnen ausgewählten [Tarif](https://azur
 
 **Ressource** | **Standardlimit** | **Maximales Limit**
 -------- | ------------- | -------------
-Sitzungsdatenpunkte<sup>1</sup> pro Monat | Unbegrenzt | 
-Andere Datenpunkte pro Monat | 5 Mio. | 50 Mio.<sup>2</sup>
-Datenrate für [Ablaufverfolgung oder Protokolle](../articles/application-insights/app-insights-search-diagnostic-logs.md) | 200 DP/s | 500 DP/s
+Sitzungsdatenpunkte<sup>1, 2</sup> pro Monat | Unbegrenzt | 
+Datenpunkte insgesamt pro Monat für Anforderungen, Ereignisse, Abhängigkeiten, Ablaufverfolgungen, Ausnahmen und Seitenansichten | 5 Mio. | 50 Mio.<sup>3</sup>
+Datenrate für [Ablaufverfolgung und Protokolle](../articles/application-insights/app-insights-search-diagnostic-logs.md) | 200 DP/s | 500 DP/s
 Datenrate für [Ausnahmen](../articles/application-insights/app-insights-asp-net-exceptions.md) | 50 DP/s | 50 DP/s
-Sonstige Telemetriedatenrate | 200 DP/s | 500 DP/s
+Gesamtdatenrate für Anforderungen, Ereignisse, Abhängigkeiten, Seitenansichten und Telemetrie | 200 DP/s | 500 DP/s
 Aufbewahrung von [Rohdaten](../articles/application-insights/app-insights-diagnostic-search.md) | 7 Tage
 Aufbewahrung von [aggregierten Daten](../articles/application-insights/app-insights-metrics-explorer.md) | 90 Tage
 Anzahl der Namen von [Eigenschaften](../articles/application-insights/app-insights-api-custom-events-metrics.md#properties) | 100 |
@@ -21,8 +21,10 @@ Länge von Metriknamen | 100 |
 
 <sup>1</sup> Ein Datenpunkt ist ein einzelner Metrikwert oder ein einzelnes Ereignis mit den zugehörigen Eigenschaften und Messwerten.
 
-<sup>2</sup> Sie können zusätzliche Kapazitäten über 50 Mio. erwerben.
+<sup>2</sup> Ein Sitzungsdatenpunkt protokolliert Anfang oder Ende einer Sitzung sowie die Benutzeridentität.
+
+<sup>3</sup> Sie können zusätzliche Kapazitäten (über 50 Mio. hinaus) erwerben.
  
 [Informationen zu Preisen und Kontingenten für Application Insights](../articles/application-insights/app-insights-pricing.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0622_2016-->

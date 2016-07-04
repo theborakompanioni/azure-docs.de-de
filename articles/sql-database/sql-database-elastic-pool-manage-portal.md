@@ -11,7 +11,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="05/09/2016"
+	ms.date="06/22/2016"
 	ms.author="ninarn"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -105,6 +105,8 @@ In der Datenbankliste auf dem Blatt mit der Ressourcenverwendung der Datenbank k
 
 Sie können Regeln zu Ressourcen hinzufügen, die E-Mails an Personen verschicken, oder Warnzeichenfolgen zu einem URL-Endpunkt, wenn die Ressource einen Verwendungsschwellenwert erreicht, den Sie eingerichtet haben.
 
+> [AZURE.IMPORTANT]Bei der Überwachung der Ressourcenverwendung für elastische Pools gibt es eine Verzögerung von mindestens 20 Minuten. Das Festlegen von Warnungen von weniger als 30 Minuten für elastische Pools wird derzeit nicht unterstützt. Warnungen für elastische Pools mit einem Zeitraum (Parameter namens „-WindowSize“ in der PowerShell-API) von weniger als 30 Minuten werden möglicherweise nicht ausgelöst. Stellen Sie sicher, dass alle Warnungen, die Sie für elastische Pools definieren, einen Zeitraum (WindowSize) von 30 Minuten oder mehr verwenden.
+
 **So fügen Sie eine Warnung zu einer Ressource hinzu:**
 
 1. Klicken Sie auf das Diagramm **Ressourcenverwendung**, um das Blatt **Metrik** zu öffnen. Klicken Sie auf **Warnung hinzufügen**, und füllen Sie dann die Informationen auf dem Blatt **Warnungsregel hinzufügen** aus (**Ressource** wird automatisch auf den Pool festgelegt, mit dem Sie arbeiten).
@@ -131,7 +133,7 @@ Sie können Datenbanken in einem vorhandenen Pool hinzufügen oder entfernen. Da
 	![Klicken auf „Zu Pool hinzufügen“](./media/sql-database-elastic-pool-manage-portal/add-to-pool.png)
 
 	
-3. Wählen Sie auf dem Blatt **Datenbanken hinzufügen** die Datenbanken aus, die dem Pool hinzugefügt werden sollen. Klicken Sie auf **Auswählen**.
+3. Wählen Sie auf dem Blatt **Datenbanken hinzufügen** die Datenbanken aus, die dem Pool hinzugefügt werden sollen. Klicken Sie dann auf **Auswählen**.
 
 	![Auswählen hinzuzufügender Datenbanken](./media/sql-database-elastic-pool-manage-portal/add-databases-pool.png)
 
@@ -187,7 +189,7 @@ Elastische Aufträge ermöglichen die Ausführung von Transact-SQL-Skripts für 
 
 Vor der Verwendung von Aufträgen installieren Sie die Komponenten für elastische Aufträge, und geben Sie Ihre Anmeldeinformationen an. Weitere Informationen finden Sie unter [Übersicht über elastische Datenbankaufträge](sql-database-elastic-jobs-overview.md).
 
-Unter [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md) finden Sie Informationen zum horizontalen Skalieren, zum Verschieben von Daten, zum Durchführen von Abfragen sowie zum Erstellen von Transaktionen mithilfe elastischer Datenbanktools.
+Unter [Horizontales Hochskalieren mit Azure SQL-Datenbank](sql-database-elastic-scale-introduction.md) finden Sie Informationen zur Verwendung elastischer Datenbanktools für die horizontale Hochskalierung, zum Verschieben von Daten, für die Abfrage oder zum Erstellen von Transaktionen.
 
 
 
@@ -211,4 +213,4 @@ Unter [Übersicht über Features für elastische Datenbanken](sql-database-elast
 [8]: ./media/sql-database-elastic-pool-manage-portal/db-utilization.png
 [9]: ./media/sql-database-elastic-pool-manage-portal/metric.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -12,27 +12,29 @@
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="data-management"
-   ms.date="05/10/2016"
+   ms.workload="sqldb-bcdr"
+   ms.date="06/17/2016"
    ms.author="sstein"/>
 
-# Übersicht: SQL-Datenbank – Geowiederherstellung
+# Übersicht: Wiederherstellen einer Azure SQL-Datenbank aus einer georedundanten Sicherung
+
+> [AZURE.SELECTOR]
+- [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
+- [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md)
+- [Wiederherstellen einer gelöschten Datenbank](sql-database-restore-deleted-database.md)
+- [Geografische Wiederherstellung](sql-database-geo-restore.md)
+- [Aktive Georeplikation](sql-database-geo-replication-overview.md)
+- [Szenarios für die Geschäftskontinuität](sql-database-business-continuity-scenarios.md)
+
+
+Mit der Geowiederherstellung können Sie eine SQL-Datenbank auf einem beliebigen Server in einer beliebigen Azure-Region mit der letzten [automatischen täglichen Sicherung](sql-database-automated-backups.md) wiederherstellen. Die Geowiederherstellung verwendet eine georedundante Sicherung als Quelle und kann selbst dann zum Wiederherstellen einer Datenbank verwendet werden, wenn die Datenbank oder das Rechenzentrum aufgrund eines Ausfalls nicht mehr verfügbar ist. Sie können dazu entweder das [Azure-Portal](sql-database-geo-restore-portal.md), [PowerShell](sql-database-geo-restore-powershell.md) oder [REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) verwenden.
 
 > [AZURE.SELECTOR]
 - [Übersicht](sql-database-geo-restore.md)
 - [Azure-Portal](sql-database-geo-restore-portal.md)
 - [PowerShell](sql-database-geo-restore-powershell.md)
 
-Mit der Geowiederherstellung können Sie eine SQL-Datenbank aus der letzten täglichen Sicherung wiederherstellen. Sie wird ohne zusätzliche Kosten automatisch für alle Diensttarife aktiviert. Die Geowiederherstellung verwendet eine georedundante Sicherung als Quelle und kann selbst dann zum Wiederherstellen einer Datenbank verwendet werden, wenn die Datenbank oder das Rechenzentrum aufgrund eines Ausfalls nicht mehr verfügbar ist.
-
-Durch die Einleitung der Geowiederherstellung können Sie eine neue SQL-Datenbank auf einem beliebigen Server in einer beliebigen Azure-Region erstellen.
-
-> [AZURE.NOTE] Sie können auch [REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) verwenden.
-
-
-Die Geowiederherstellung ist die Standardoption für die Wiederherstellung, wenn eine Datenbank aufgrund eines Incidents in der Region, in der die Datenbank gehostet wird, nicht verfügbar ist. Die Datenbank kann auf einem beliebigen Server in jeder Azure-Region erstellt werden. Die Geowiederherstellung nutzt [automatisierte Datenbanksicherungen](sql-database-automated-backups.md) in geografisch redundantem Azure-Speicher, und Daten werden auf der Grundlage der geografisch replizierten Sicherungskopie wiederhergestellt, wodurch sie gegen Speicherausfälle in der primären Region abgesichert ist.
-
-
+Die Geowiederherstellung ist die Standardoption für die Wiederherstellung, wenn eine Datenbank aufgrund eines Incidents in der Region, in der die Datenbank gehostet wird, nicht verfügbar ist. Die Datenbank kann auf einem beliebigen Server in jeder Azure-Region erstellt werden. Die Geowiederherstellung nutzt [automatisierte Datenbanksicherungen](sql-database-automated-backups.md) in georedundantem Azure-Speicher, und Daten werden auf der Grundlage der georeplizierten Sicherungskopie wiederhergestellt, wodurch sie gegen Speicherausfälle in der primären Region abgesichert sind.
 
 ## Geowiederherstellung im Detail
 
@@ -46,29 +48,24 @@ Wenn Ihre Datenbankanwendung durch einen umfangreichen Incident in einer Region 
 
 ![Geowiederherstellung](./media/sql-database-geo-restore/geo-restore-2.png)
 
-
+Verwenden Sie [Get Recoverable Database](https://msdn.microsoft.com/library/dn800985.aspx) (*LastAvailableBackupDate*) zum Abrufen des neuesten georeplizierten Wiederherstellungspunkts.
 
 ## Wiederherstellungszeit für eine Geowiederherstellung
 
-Die Wiederherstellungszeit wird durch verschiedene Faktoren beeinflusst: die Größe und Leistungsebene der Datenbank und die Anzahl der gleichzeitigen Wiederherstellungsanforderungen, die in der Zielregion verarbeitet werden. Wenn es sich um einen längeren Ausfall in einer Region handelt, müssen möglicherweise andere Regionen eine große Anzahl von Geowiederherstellungsanforderungen verarbeiten. Wenn eine große Anzahl von Anforderungen vorliegt, kann dies die Wiederherstellungszeit für Datenbanken in dieser Region erhöhen.
-
+Die Wiederherstellungszeit wird durch verschiedene Faktoren beeinflusst: die Größe und Leistungsebene der Datenbank und die Anzahl der gleichzeitigen Wiederherstellungsanforderungen, die in der Zielregion verarbeitet werden. Wenn es sich um einen längeren Ausfall in einer Region handelt, müssen möglicherweise andere Regionen eine große Anzahl von Geowiederherstellungsanforderungen verarbeiten. Wenn eine große Anzahl von Anforderungen vorliegt, kann dies die Wiederherstellungszeit für Datenbanken in dieser Region erhöhen. Die benötigte Dauer zum Wiederherstellen einer DB hängt von mehreren Faktoren wie z. B. der Größe der Datenbank, der Anzahl der Transaktionsprotokolle, der Netzwerkbandbreite usw. ab. Der Großteil der Datenbankwiederherstellungen erfolgt innerhalb von 12 Stunden.
 
 ## Zusammenfassung
 
-Auch wenn die Geowiederherstellung in allen Diensttarifen verfügbar ist, ist sie die elementarste Notfallwiederherstellungslösung, die in der SQL-Datenbank verfügbar ist. Sie weist die längste RPO und die längste geschätzte Wiederherstellungszeit (ERT) auf. Für Basic-Datenbanken mit einer maximalen Größe von 2 GB bietet die Geowiederherstellung eine angemessene Notfallwiederherstellungslösung mit einer ERT von 12 Stunden. Wenn bei größeren Standard- oder Premium-Datenbanken erheblich kürzere Wiederherstellungszeiten gewünscht werden, oder wenn Sie die Wahrscheinlichkeit eines Datenverlusts reduzieren möchten, sollten sie die aktive Georeplikation in Erwägung ziehen. Die aktive Georeplikation bietet eine niedrigere RPO und ERT, da sie nur das Initiieren eines Failovers auf eine kontinuierlich replizierte sekundäre Datenbank erfordert. Weitere Informationen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
+Auch wenn die Geowiederherstellung in allen Dienstebenen verfügbar ist, ist sie die elementarste Notfallwiederherstellungslösung, die in der SQL-Datenbank verfügbar ist. Sie weist die längste RPO und die längste geschätzte Wiederherstellungszeit (ERT) auf. Für Basic-Datenbanken mit einer maximalen Größe von 2 GB bietet die Geowiederherstellung eine angemessene Notfallwiederherstellungslösung mit einer ERT von 12 Stunden. Wenn bei größeren Standard- oder Premium-Datenbanken erheblich kürzere Wiederherstellungszeiten gewünscht werden, oder wenn Sie die Wahrscheinlichkeit eines Datenverlusts reduzieren möchten, sollten sie die aktive Georeplikation in Erwägung ziehen. Die aktive Georeplikation bietet eine niedrigere RPO und ERT, da sie nur das Initiieren eines Failovers auf eine kontinuierlich replizierte sekundäre Datenbank erfordert. Weitere Informationen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
 
 ## Nächste Schritte
 
-- [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
-- [Geowiederherstellung einer Azure SQL-Datenbank aus einer georedundanten Sicherung über das Azure-Portal](sql-database-geo-restore-portal.md)
-- [Wiederherstellen einer Azure SQL-Datenbank aus einer georedundanten Sicherung mit PowerShell](sql-database-geo-restore-powershell.md)
+- Ausführliche Schritte zum Wiederherstellen einer Azure SQL-Datenbank aus einer georedundanten Sicherung mit dem Azure-Portal finden Sie unter [Geowiederherstellung über das Azure-Portal](sql-database-geo-restore-portal.md).
+- Ausführliche Schritte zum Wiederherstellen einer Azure SQL-Datenbank aus einer georedundanten Sicherung mit PowerShell finden Sie unter [Geowiederherstellung mithilfe von PowerShell](sql-database-geo-restore-powershell.md).
+- Eine vollständige Erläuterung der Wiederherstellung nach einem Ausfall finden Sie unter [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md).
 
-## Weitere Ressourcen
+## Zusätzliche Ressourcen
 
-- [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
-- [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-- [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md)
-- [Aktive Georeplikation](sql-database-geo-replication-overview.md)
-- [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [Szenarien für die Geschäftskontinuität](sql-database-business-continuity-scenarios.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/06/2016"
+   ms.date="06/16/2016"
    ms.author="tomfitz"/>
 
 # Vorlagenfunktionen im Azure-Ressourcen-Manager
@@ -93,30 +93,6 @@ Im folgenden Beispiel wird der vom Benutzer angegebene Parameterwert in eine gan
     }
 
 
-<a id="length" />
-### Länge
-
-**Länge ("Array" oder "String")**
-
-Gibt die Anzahl der Elemente in einem Array oder die Anzahl der Zeichen in einer Zeichenfolge zurück. Sie können diese Funktion mit einem Array verwenden, um bei der Erstellung von Ressourcen die Anzahl der Iterationen anzugeben. Im folgenden Beispiel bezieht sich der Parameter **siteNames** auf ein Array von Namen, die bei der Erstellung der Websites verwendet werden.
-
-    "copy": {
-        "name": "websitescopy",
-        "count": "[length(parameters('siteNames'))]"
-    }
-
-Weitere Informationen zur Verwendung dieser Funktion mit einem Array finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
-
-Sie können auch eine Zeichenfolge verwenden:
-
-    "parameters": {
-        "appName": { "type": "string" }
-    },
-    "variables": { 
-        "nameLength": "[length(parameters('appName'))]"
-    }
-
-
 <a id="mod" />
 ### mod
 
@@ -163,6 +139,7 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit Zei
 
 - [base64](#base64)
 - [concat](#concat)
+- [Länge](#length)
 - [padLeft](#padleft)
 - [replace](#replace)
 - [split](#split)
@@ -465,11 +442,96 @@ Im folgenden Beispiel wird veranschaulicht, wie basierend auf dem Wert der über
 
 Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit Arraywerten bereit:
 
-Zum Kombinieren mehrerer Arrays in einem Array, verwenden Sie [concat](#concat).
+- [concat](#concat)
+- [Länge](#length)
+- [take](#take)
+- [skip](#skip)
+- [split](#split)
 
-Um die Anzahl der Elemente in einem Array zu erhalten, verwenden Sie [length](#length).
+<a id="length" />
+### Länge
 
-Um einen Zeichenfolgenwert in ein Array von Zeichenfolgenwerten zu unterteilen, verwenden Sie [split](#split).
+**Länge ("Array" oder "String")**
+
+Gibt die Anzahl der Elemente in einem Array oder die Anzahl der Zeichen in einer Zeichenfolge zurück. Sie können diese Funktion mit einem Array verwenden, um bei der Erstellung von Ressourcen die Anzahl der Iterationen anzugeben. Im folgenden Beispiel bezieht sich der Parameter **siteNames** auf ein Array von Namen, die bei der Erstellung der Websites verwendet werden.
+
+    "copy": {
+        "name": "websitescopy",
+        "count": "[length(parameters('siteNames'))]"
+    }
+
+Weitere Informationen zur Verwendung dieser Funktion mit einem Array finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
+
+Sie können auch eine Zeichenfolge verwenden:
+
+    "parameters": {
+        "appName": { "type": "string" }
+    },
+    "variables": { 
+        "nameLength": "[length(parameters('appName'))]"
+    }
+
+<a id="take" />
+### take
+**take(originalValue, numberToTake)**
+
+Gibt ein Array oder eine Zeichenfolge mit der angegebenen Anzahl von Elementen oder Zeichen vom Anfang des Arrays oder der Zeichenfolge zurück.
+
+| Parameter | Erforderlich | Beschreibung
+| :--------------------------------: | :------: | :----------
+| originalValue | Ja | Das Array oder die Zeichenfolge, aus dem bzw. der die Elemente oder Zeichen verwendet werden sollen.
+| numberToTake | Ja | Die Anzahl der zu verwendenden Elemente oder Zeichen. Ist dieser Wert 0 oder kleiner, wird ein leeres Array oder eine leere Zeichenfolge zurückgegeben. Ist der Wert größer als die Länge des entsprechenden Arrays oder der entsprechenden Zeichenfolge, werden alle Elemente im Array oder der Zeichenfolge zurückgegeben.
+
+Im folgenden Beispiel wird die angegebene Anzahl von Elementen aus dem Array verwendet.
+
+    "parameters": {
+      "first": {
+        "type": "array",
+        "defaultValue": [ "one", "two", "three" ]
+      },
+      "second": {
+        "type": "int"
+      }
+    },
+    "resources": [
+    ],
+    "outputs": {
+      "return": {
+        "type": "array",
+        "value": "[take(parameters('first'),parameters('second'))]"
+      }
+    }
+
+<a id="skip" />
+### skip
+**skip(originalValue, numberToSkip)**
+
+Gibt ein Array oder eine Zeichenfolge mit allen Elementen oder Zeichen nach der angegebenen Anzahl im Array oder in der Zeichenfolge zurück.
+
+| Parameter | Erforderlich | Beschreibung
+| :--------------------------------: | :------: | :----------
+| originalValue | Ja | Das Array oder die Zeichenfolge, das bzw. die für das Überspringen der Elemente oder Zeichen verwendet werden soll.
+| numberToSkip | Ja | Die Anzahl der zu überspringenden Elemente oder Zeichen. Wenn dieser Wert 0 oder kleiner ist, werden alle Elemente im Array oder in der Zeichenfolge zurückgegeben. Ist der Wert größer als die Länge des Arrays oder der Zeichenfolge, wird ein leeres Array oder eine leere Zeichenfolge zurückgegeben. 
+
+Im folgenden Beispiel wird die angegebene Anzahl von Elementen im Array übersprungen.
+
+    "parameters": {
+      "first": {
+        "type": "array",
+        "defaultValue": [ "one", "two", "three" ]
+      },
+      "second": {
+        "type": "int"
+      }
+    },
+    "resources": [
+    ],
+    "outputs": {
+      "return": {
+        "type": "array",
+        "value": "[skip(parameters('first'),parameters('second'))]"
+      }
+    }
 
 ## Funktionen für Bereitstellungswerte
 
@@ -815,4 +877,4 @@ Das folgende Beispiel zeigt ein Abrufen der Abonnement-Funktion im Ausgabeabschn
 - Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
 - Informationen zum Bereitstellen der erstellten Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0622_2016-->

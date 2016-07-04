@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Notfallwiederherstellung einer SQL-Datenbank" 
+   pageTitle="Notfallwiederherstellung für SQL-Datenbank | Microsoft Azure" 
    description="Erfahren Sie, wie Sie eine Datenbank nach Störungen in einem regionalen Rechenzentrum oder dessen Ausfall mithilfe der aktiven Georeplikation oder der geografischen Wiederherstellung von Azure SQL-Datenbank wiederherstellen." 
    services="sql-database" 
    documentationCenter="" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
-   ms.date="05/10/2016"
+   ms.date="06/16/2016"
    ms.author="carlrab"/>
 
 # Wiederherstellen einer Azure SQL-Datenbank oder Failover auf eine sekundäre Datenbank
@@ -34,6 +34,8 @@ Der Wiederherstellungsvorgang wirkt sich auf die Anwendung aus. Er erfordert ein
 3.	Der Azure SQL-Datenbankserver wird als beeinträchtigt gekennzeichnet. 
 
 Je nach Toleranz Ihrer Anwendung gegenüber einer Downtime und einer möglichen geschäftlichen Haftung können Sie die folgenden Wiederherstellungsoptionen in Betracht ziehen.
+
+Verwenden Sie [Get Recoverable Database](https://msdn.microsoft.com/library/dn800985.aspx) (*LastAvailableBackupDate*) zum Abrufen des neuesten georeplizierten Wiederherstellungspunkts.
 
 ## Warten auf die Dienstwiederherstellung
 
@@ -66,13 +68,13 @@ In den folgenden Leitfäden finden Sie Informationen zur geografischen Wiederher
 
 ## Konfigurieren der Datenbank nach der Wiederherstellung
 
-Wenn Sie ein Georeplikationsfailover mit Optionen für die geografische Wiederherstellung ausführen, um Ihre Anwendung nach einem Ausfall wiederherzustellen, müssen Sie sicherstellen, dass die Verbindung mit der neuen Datenbank ordnungsgemäß konfiguriert ist, sodass der normale Anwendungsbetrieb wieder aufgenommen werden kann. Dies ist eine Prüfliste mit Aufgaben, anhand derer Sie die wiederhergestellte Datenbank für die Produktion vorbereiten können.
+Wenn Sie ein Georeplikationsfailover oder die Geowiederherstellung ausführen, um Ihre Anwendung nach einem Ausfall wiederherzustellen, müssen Sie sicherstellen, dass die Verbindung mit der neuen Datenbank ordnungsgemäß konfiguriert ist, sodass der normale Anwendungsbetrieb wieder aufgenommen werden kann. Dies ist eine Prüfliste mit Aufgaben, anhand derer Sie die wiederhergestellte Datenbank für die Produktion vorbereiten können.
 
 ### Aktualisieren von Verbindungszeichenfolgen
 
-Da Ihre wiederhergestellte Datenbank auf einem anderen Server vorliegt, müssen Sie die Verbindungszeichenfolge Ihrer Anwendung so anpassen, dass sie auf den neuen Server zeigt.
+Da Ihre wiederhergestellte Datenbank auf einem anderen Server vorliegt, müssen Sie die Verbindungszeichenfolge Ihrer Anwendung so anpassen, dass sie auf den neuen Server verweist.
 
-Weitere Informationen zum Ändern von Verbindungszeichenfolgen finden Sie unter der entsprechenden Entwicklungssprache für Ihre [Verbindungsbibliothek](sql-database-libraries.md).
+Weitere Informationen zum Ändern von Verbindungszeichenfolgen finden Sie unter der entsprechenden Programmiersprache für Ihre [Verbindungsbibliothek](sql-database-libraries.md).
 
 ### Konfigurieren von Firewallregeln
 
@@ -81,9 +83,9 @@ Sie müssen sicherstellen, dass die für den Server und die Datenbank konfigurie
 
 ### Konfigurieren von Anmeldungen und Datenbankbenutzern
 
-Stellen Sie sicher, dass alle von der Anwendung verwendeten Anmeldungen auf dem Server vorhanden sind, der die wiederhergestellte Datenbank hostet. Weitere Informationen finden Sie unter „Verwalten der Sicherheit bei einer Notfallwiederherstellung“. Weitere Informationen finden Sie unter [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md).
+Stellen Sie sicher, dass alle von der Anwendung verwendeten Anmeldungen auf dem Server vorhanden sind, der die wiederhergestellte Datenbank hostet. Weitere Informationen finden Sie unter [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md).
 
->[AZURE.NOTE] Wenn Sie die geografische Wiederherstellung zum Wiederherstellen nach einem Ausfall verwenden, sollten Sie im Rahmen des Verfahrens für die Notfallwiederherstellung Ihre Firewallregeln und Anmeldungen konfigurieren, um sicherzustellen, dass der primäre Server weiterhin seine Konfiguration abrufen kann. Da bei der geografischen Wiederherstellung Datenbanksicherungen verwendet werden, steht die Konfiguration auf Serverebene während des Ausfalls möglicherweise nicht zur Verfügung. Nach Abschluss der Notfallwiederherstellung können Sie die wiederhergestellten Datenbanken entfernen, halten Sie jedoch den Server und seine Konfiguration für den Wiederherstellungsvorgang bereit. Weitere Informationen finden Sie unter [Ausführen von Notfallwiederherstellungsverfahren](sql-database-disaster-recovery-drills.md).
+>[AZURE.NOTE] Konfigurieren und Testen Sie die Serverfirewallregeln und -anmeldungen (sowie deren Berechtigungen) während eines Notfallwiederherstellungverfahrens. Diese Objekte auf Serverebene und deren Konfiguration sind während des Ausfalls möglicherweise nicht verfügbar. Weitere Informationen finden Sie unter [Ausführen von Notfallwiederherstellungsverfahren](sql-database-disaster-recovery-drills.md).
 
 ### Einrichten von Telemetrie-Warnungen
 
@@ -96,10 +98,12 @@ Weitere Informationen zu Datenbankwarnungsregeln finden Sie unter [Empfangen von
 Wenn für den Zugriff auf die Datenbank Überwachung erforderlich ist, müssen Sie nach der Wiederherstellung der Datenbank die Überwachung aktivieren. Ein guter Indikator für die Notwendigkeit einer Überwachung ist es, wenn Clientanwendungen sichere Verbindungszeichenfolgen mit dem Muster „*.database.secure.windows.net“ verwenden. Weitere Informationen finden Sie unter [Erste Schritte mit der SQL-Datenbanküberwachung](sql-database-auditing-get-started.md).
 
 
+## Nächste Schritte
 
+- Informationen zur Verwendung und Konfiguration der aktiven Georeplikation für die Notfallwiederherstellung finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
+- Informationen zur Verwendung der Geowiederherstellung für die Notfallwiederherstellung finden Sie unter [Geowiederherstellung](sql-database-geo-restore.md).
 
 ## Zusätzliche Ressourcen
-
 
 - [Geschäftskontinuität und Notfallwiederherstellung mit SQL-Datenbank](sql-database-business-continuity.md)
 - [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md)
@@ -110,4 +114,4 @@ Wenn für den Zugriff auf die Datenbank Überwachung erforderlich ist, müssen S
 - [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
 - [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

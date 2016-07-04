@@ -33,7 +33,7 @@ Die klassische Version dieses Themas finden Sie unter [Erstellen eines virtuelle
 Für dieses Tutorial benötigen Sie Folgendes:
 
 - Ein Azure-Konto und ein Azure-Abonnement, bevor Sie beginnen. Falls Sie diese benötigen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) registrieren.
-- [Azure PowerShell](../powershell-install-configure.md) (mindestens Version 1.0.0). Dieses Tutorial wurde für Version 1.0.4 geschrieben.
+- [Azure PowerShell](../powershell-install-configure.md) (mindestens Version 1.4.0). Dieses Tutorial wurde für Version 1.5.0 geschrieben.
     - Geben Sie zum Abrufen Ihrer Version den Befehl **Get-Module Azure -ListAvailable** ein.
 
 ## Konfigurieren Ihres Abonnements
@@ -69,7 +69,7 @@ Definieren Sie mithilfe der folgenden Variablen das Speicherkonto und die Art de
 Ändern Sie die Werte nach Bedarf, und führen Sie das folgende Cmdlet aus, um die Variablen zu initialisieren. In diesem Beispiel verwenden wir mit [Storage Premium](../storage/storage-premium-storage.md) die empfohlene Option für Produktionsworkloads. Ausführliche Informationen zu dieser Richtlinie sowie andere Empfehlungen finden Sie unter [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](virtual-machines-windows-sql-performance.md).
 
     $StorageName = $ResourceGroupName + "storage"
-    $StorageType = "Premium_LRS"
+    $StorageSku = "Premium_LRS"
 
 ### Netzwerkeigenschaften
 
@@ -125,11 +125,11 @@ Führen Sie das folgende Cmdlet aus, um Ihre neue Ressourcengruppe zu erstellen:
 
 ## Speicherkonto erstellen
 
-Der virtuelle Computer benötigt Speicherressourcen für den Betriebssystemdatenträger sowie für die SQL Server-Daten und -Protokolldateien. Der Einfachheit halber erstellen wir für beides einen einzelnen Datenträger. Zusätzliche Datenträger können später mithilfe des Cmdlets [Add-Azure Disk](https://msdn.microsoft.com/library/azure/dn495252.aspx) angefügt werden, um Ihre SQL Server-Daten und -Protokolldateien auf dedizierten Datenträgern zu platzieren. Wir erstellen mithilfe des Cmdlets [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) das Speicherkonto in Ihrer neuen Ressourcengruppe und mit dem Speicherkontonamen, Speichernamen und Speicherort, die durch die zuvor initialisierten Variablen definiert werden.
+Der virtuelle Computer benötigt Speicherressourcen für den Betriebssystemdatenträger sowie für die SQL Server-Daten und -Protokolldateien. Der Einfachheit halber erstellen wir für beides einen einzelnen Datenträger. Zusätzliche Datenträger können später mithilfe des Cmdlets [Add-Azure Disk](https://msdn.microsoft.com/library/azure/dn495252.aspx) angefügt werden, um Ihre SQL Server-Daten und -Protokolldateien auf dedizierten Datenträgern zu platzieren. Wir erstellen mithilfe des Cmdlets [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) ein Standardspeicherkonto in Ihrer neuen Ressourcengruppe mit dem Speicherkontonamen, Speichernamen und Speicherort, die durch die zuvor initialisierten Variablen definiert werden.
 
 Führen Sie das folgende Cmdlet aus, um Ihr neues Speicherkonto zu erstellen:
 
-    $StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName -Type $StorageType -Location $Location
+    $StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName -SkuName $StorageSku -Kind "Storage" -Location $Location
 
 ## Erstellen von Netzwerkressourcen
 
@@ -258,7 +258,7 @@ Das folgende Skript enthält das vollständige PowerShell-Skript für dieses Tut
     $ResourceGroupName = "sqlvm1"
     ## Storage
     $StorageName = $ResourceGroupName + "storage"
-    $StorageType = "Premium_LRS"
+    $StorageSku = "Premium_LRS"
 
     ## Network
     $InterfaceName = $ResourceGroupName + "ServerInterface"
@@ -285,7 +285,7 @@ Das folgende Skript enthält das vollständige PowerShell-Skript für dieses Tut
     New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
 
     # Storage
-    $StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName -Type $StorageType -Location $Location
+    $StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName -SkuName $StorageSku -Kind "Storage" -Location $Location
 
     # Network
     $SubnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $VNetSubnetAddressPrefix
@@ -310,4 +310,4 @@ Das folgende Skript enthält das vollständige PowerShell-Skript für dieses Tut
 ## Nächste Schritte
 Nach Erstellung des virtuellen Computers können Sie über RDP eine Verbindung mit dem virtuellen Computer herstellen und die Konnektivität einrichten. Weitere Informationen finden Sie unter [Verbinden mit SQL Server-Instanzen auf virtuellen Azure-Maschinen (Ressourcen-Manager)](virtual-machines-windows-sql-connect.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0622_2016-->

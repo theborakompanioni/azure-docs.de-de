@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="06/21/2016"
 	ms.author="curtand"/>
 
 
@@ -96,7 +96,7 @@ Mit diesen Schritten werden auf Verzeichnisebene Einstellungen aktualisiert, die
 
 2. Abrufen des zu aktualisierenden Werts:
 
-	`$value = Setting.GetSettingsValue()`
+	`$value = $Setting.GetSettingsValue()`
 
 3. Aktualisieren des Werts:
 
@@ -143,4 +143,4 @@ Zusätzliche Anleitungen des Microsoft-Programmmanagers Rob de Jong stehen unter
 
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

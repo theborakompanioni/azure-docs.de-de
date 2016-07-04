@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="backup-recovery"
-	ms.date="06/13/2016"
+	ms.date="06/15/2016"
 	ms.author="bsiva"/>
 
 # Replizieren zwischen lokalen virtuellen Hyper-V-Computern und Azure mithilfe von PowerShell und Azure Resource Manager
@@ -82,19 +82,10 @@ In diesem Artikel wird das Verwenden von Azure PowerShell mit Azure Resource Man
 
 	Wenn **RegistrationState** in der Ausgabe dieser beiden Befehle auf **Registered** festgelegt ist, können Sie mit Schritt 2 fortfahren. Andernfalls müssen Sie den fehlenden Anbieter in Ihrem Abonnement registrieren.
 
-	Führen Sie den folgenden Befehl aus, um den Azure-Anbieter für Site Recovery zu registrieren:
+	Führen Sie den folgenden Befehl aus, um den Azure-Anbieter für Site Recovery und Recovery Services zu registrieren:
 
     	Register-AzureRmResourceProvider -ProviderNamespace Microsoft.SiteRecovery
-
-	Wenn Sie die Recovery Services-Cmdlets zum ersten Mal in Ihrem Abonnement verwenden, müssen Sie den Azure-Anbieter für Recovery Services registrieren. Bevor Sie dies tun können, aktivieren Sie zunächst den Zugriff auf den Recovery Services-Anbieter in Ihrem Abonnement mit folgendem Befehl:
-
-		Register-AzureRmProviderFeature -FeatureName betaAccess -ProviderNamespace Microsoft.RecoveryServices
-
-	>[AZURE.TIP] Es kann nach erfolgreicher Ausführung des obigen Befehls bis zu einer Stunde dauern, bis der Zugriff auf den Recovery Services-Anbieter in Ihrem Abonnement aktiviert ist. In der Zwischenzeit kann bei Versuchen, den Recovery Services-Anbieter in Ihrem Abonnement mit dem Befehl `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices` zu registrieren, ein Fehler auftreten. Warten Sie in diesem Fall eine Stunde, und wiederholen Sie den Versuch.
-
-	Sobald Sie den Zugriff auf den Recovery Services-Anbieter in Ihrem Abonnement aktiviert haben, registrieren Sie den Anbieter in Ihrem Abonnement mit folgendem Befehl:
-
-		Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+    	Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
 
 	Überprüfen Sie mit den Befehlen `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.RecoveryServices` und `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.SiteRecovery`, ob die Anbieter erfolgreich registriert wurden.
 
@@ -108,7 +99,7 @@ In diesem Artikel wird das Verwenden von Azure PowerShell mit Azure Resource Man
 
 	Dabei enthält die Variable „$ResourceGroupName“ den Namen der zu erstellenden Ressourcengruppe und die Variable „$Geo“ die Azure-Region, in der die Ressourcengruppe erstellt wird (z.B. „Brasilien, Süden“).
 
-	Sie können mit dem `Get-AzureRmResourceGroup`-Cmdlet eine Liste der Ressourcengruppen in Ihrem Abonnement abrufen.
+	Sie können mit dem Cmdlet `Get-AzureRmResourceGroup` eine Liste der Ressourcengruppen in Ihrem Abonnement abrufen.
 
 2. Erstellen Sie einen neuen Azure Recovery Services-Tresor wie folgt:
 
@@ -266,4 +257,4 @@ In diesem Artikel wird das Verwenden von Azure PowerShell mit Azure Resource Man
 
 [Erfahren Sie mehr](https://msdn.microsoft.com/library/azure/mt637930.aspx) über Azure Site Recovery mit PowerShell-Cmdlets für Azure Resource Manager.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

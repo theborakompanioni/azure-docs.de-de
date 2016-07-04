@@ -13,20 +13,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/01/2016"
+   ms.date="06/07/2016"
    ms.author="alkohli"/>
 
 # Wiederherstellen aus einer Sicherung des StorSimple Virtual Array
 
 ## Übersicht 
 
-Dieser Artikel bezieht sich auf Microsoft Azure StorSimple Virtual Array (auch als „lokales virtuelles StorSimple-Gerät“ oder „virtuelles StorSimple-Gerät“ bezeichnet) mit der Version von März 2016 (allgemeine Verfügbarkeit). In diesem Artikel wird Schritt für Schritt beschrieben, wie Sie die Wiederherstellung aus einem Sicherungssatz Ihrer Freigaben oder Volumes für das StorSimple Virtual Array durchführen. Im Artikel wird auch ausführlich beschrieben, wie die Wiederherstellung auf Elementebene auf Ihrem StorSimple Virtual Array funktioniert, wenn dies als Dateiserver konfiguriert ist.
+Dieser Artikel bezieht sich auf das Microsoft Azure StorSimple Virtual Array (auch als „lokales virtuelles StorSimple-Gerät“ oder „virtuelles StorSimple-Gerät“ bezeichnet) mit der Version vom März 2016 (allgemeine Verfügbarkeit) oder höher. In diesem Artikel wird Schritt für Schritt beschrieben, wie Sie die Wiederherstellung aus einem Sicherungssatz Ihrer Freigaben oder Volumes auf dem StorSimple Virtual Array durchführen. Im Artikel wird auch ausführlich beschrieben, wie die Wiederherstellung auf Elementebene auf Ihrem StorSimple Virtual Array funktioniert, wenn dies als Dateiserver konfiguriert ist.
 
 
 ## Wiederherstellen von Freigaben aus einem Sicherungssatz
 
 
-Bevor Sie versuchen, die Freigaben wiederherzustellen, sollten Sie sich vergewissern, dass auf dem Gerät ausreichend Speicherplatz zum Durchführen dieses Vorgangs vorhanden ist. Führen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) die folgenden Schritte aus, um die Wiederherstellung aus einer Sicherung durchzuführen.
+**Bevor Sie versuchen, die Freigaben wiederherzustellen, sollten Sie sich vergewissern, dass auf dem Gerät ausreichend Speicherplatz zum Durchführen dieses Vorgangs vorhanden ist.** Führen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) die folgenden Schritte aus, um die Wiederherstellung aus einer Sicherung durchzuführen.
 
 #### So führen Sie die Wiederherstellung von einer Freigabe durch
 
@@ -37,12 +37,12 @@ Bevor Sie versuchen, die Freigaben wiederherzustellen, sollten Sie sich vergewis
 
 2.  Klicken Sie unten auf der Seite auf **Als neu wiederherstellen**.
 
-3.  Der Assistent **Als neue Freigabe wiederherstellen** wird initiiert. Auf der Seite **Namen und Speicherort angeben**:
+3.  Der Assistent **Als neue Freigabe wiederherstellen** wird gestartet. Gehen Sie auf der Seite **Namen und Speicherort angeben** folgendermaßen vor:
 
 
 	1.  Überprüfen Sie den Namen des Quellgeräts. Dies sollte das Gerät mit der wiederherzustellenden Freigabe sein. Die Geräteauswahl ist deaktiviert. Um ein anderes Quellgerät auszuwählen, müssen Sie den Assistenten beenden und den Sicherungssatz erneut auswählen.
 
-	2.  Geben Sie einen Freigabenamen an. Der Freigabename kann 3 bis 127 Zeichen lang sein.
+	2.  Geben Sie einen Freigabenamen an. Der Freigabename kann 3 bis 127 Zeichen lang sein.
 
 	3.  Überprüfen Sie Größe, Typ und Berechtigungen der Freigabe, die Sie wiederherstellen möchten. Sie können die Freigabeeigenschaften mit dem Windows-Explorer ändern, nachdem die Wiederherstellung abgeschlossen ist.
 
@@ -52,7 +52,7 @@ Bevor Sie versuchen, die Freigaben wiederherzustellen, sollten Sie sich vergewis
 
 1.  Nachdem der Wiederherstellungsauftrag abgeschlossen ist, wird die Wiederherstellung gestartet, und es wird eine weitere Benachrichtigung angezeigt. Klicken Sie auf **Auftrag anzeigen**, um den Fortschritt der Wiederherstellung zu überwachen. Sie gelangen auf die Seite **Aufträge**.
 
-2.  Hier können Sie den Fortschritt des Wiederherstellungsauftrags verfolgen. Wenn die Wiederherstellung 100 % erreicht hat, navigieren Sie zurück zur Seite **Freigaben** auf Ihrem Gerät.
+2.  Hier können Sie den Fortschritt des Wiederherstellungsauftrags verfolgen. Wenn die Wiederherstellung 100% erreicht hat, navigieren Sie zurück zur Seite **Freigaben** auf Ihrem Gerät.
 
 3.  Sie können nun die neu wiederhergestellte Freigabe in der Liste mit den Freigaben auf Ihrem Gerät anzeigen. Beachten Sie, dass bei der Wiederherstellung derselbe Freigabentyp verwendet wird. Eine mehrstufige Freigabe wird auch mehrstufig wiederhergestellt, und eine lokale Freigabe wird als lokale Freigabe wiederhergestellt.
 
@@ -72,14 +72,14 @@ Führen Sie im klassischen Azure-Portal die folgenden Schritte aus, um die Wiede
 
 3.  Navigieren Sie zurück zur Registerkarte **Sicherungskatalog**, und wählen Sie einen Sicherungssatz aus.
 
-5.  Klicken Sie unten auf der Seite auf **Als neu wiederherstellen**. Der Assistent **Als neues Volumes wiederherstellen** wird gestartet.
+5.  Klicken Sie unten auf der Seite auf **Als neu wiederherstellen**. Der Assistent **Als neues Volume wiederherstellen** wird gestartet.
 
-1.  Auf der Seite **Namen und Speicherort angeben**:
+1.  Gehen Sie auf der Seite **Namen und Speicherort angeben** folgendermaßen vor:
 
 
 	1.  Überprüfen Sie den Namen des Quellgeräts. Dies sollte das Gerät mit dem wiederherzustellenden Volume sein. Die Geräteauswahl ist nicht verfügbar. Um ein anderes Quellgerät auszuwählen, müssen Sie den Assistenten beenden und den Sicherungssatz erneut auswählen.
 
-	2.  Geben Sie einen Namen für das Volume an. Der Volumename kann 3 bis 127 Zeichen lang sein.
+	2.  Geben Sie einen Namen für das Volume an. Der Volumename kann 3 bis 127 Zeichen lang sein.
 
 	3.  Klicken Sie auf das Pfeilsymbol.
 
@@ -93,7 +93,7 @@ Führen Sie im klassischen Azure-Portal die folgenden Schritte aus, um die Wiede
 
 2.  Nachdem der Wiederherstellungsauftrag abgeschlossen ist, wird die Wiederherstellung gestartet, und es wird eine weitere Benachrichtigung angezeigt. Klicken Sie auf **Auftrag anzeigen**, um den Fortschritt der Wiederherstellung zu überwachen. Sie gelangen auf die Seite **Aufträge**.
 
-3.  Hier können Sie den Fortschritt des Wiederherstellungsauftrags verfolgen. Wenn die Wiederherstellung 100 % erreicht hat, navigieren Sie zurück zur Seite **Volumes** auf Ihrem Gerät.
+3.  Hier können Sie den Fortschritt des Wiederherstellungsauftrags verfolgen. Wenn die Wiederherstellung 100% erreicht hat, navigieren Sie zurück zur Seite **Volumes** auf Ihrem Gerät.
 
 4.  Sie können nun das neu wiederhergestellte Volume in der Liste mit den Volumes auf Ihrem Gerät anzeigen. Beachten Sie, dass bei der Wiederherstellung derselbe Volumetyp verwendet wird. Ein mehrstufiges Volume wird auch als mehrstufiges Volume wiederhergestellt, und ein lokales Volume bleibt ein lokales Volume.
 
@@ -103,16 +103,16 @@ Führen Sie im klassischen Azure-Portal die folgenden Schritte aus, um die Wiede
 
 Mit dieser Version wird die Wiederherstellung auf Elementebene (Item-Level Recovery, ILR) auf einem virtuellen StorSimple-Gerät eingeführt, das als Dateiserver konfiguriert ist. Mit diesem Feature können Sie die Dateien und Ordner einer Cloudsicherung für alle Freigaben des StorSimple-Geräts präzise wiederherstellen. Benutzer können gelöschte Dateien aus kürzlich erfolgten Sicherungen per Self-Service wiederherstellen.
 
-Jede Freigabe verfügt über den Ordner *.backups*, der die letzten Sicherungen enthält. Der Benutzer kann zur gewünschten Sicherung navigieren, relevante Dateien und Ordner aus der Sicherung kopieren und diese dann wiederherstellen. Es ist dann nicht mehr erforderlich, sich wegen der Wiederherstellung von Dateien aus Sicherungen an den Administrator zu wenden.
+Jede Freigabe verfügt über einen *.backups*-Ordner, der die letzten Sicherungen enthält. Der Benutzer kann zur gewünschten Sicherung navigieren, relevante Dateien und Ordner aus der Sicherung kopieren und diese dann wiederherstellen. Es ist dann nicht mehr erforderlich, sich wegen der Wiederherstellung von Dateien aus Sicherungen an den Administrator zu wenden.
 
 1.  Wenn Sie die Wiederherstellung auf Elementebene durchführen, können Sie die Sicherungen per Windows-Explorer anzeigen. Klicken Sie auf die jeweilige Freigabe, für die Sie sich die Sicherungen ansehen möchten. Sie sehen den Ordner *.backups*, der unter der Freigabe erstellt wurde und alle Sicherungen enthält. Erweitern Sie den Ordner *.backups*, um die Sicherungen anzuzeigen. Im Ordner wird dann die Explosionsansicht der gesamten Sicherungshierarchie angezeigt. Diese Ansicht wird bei Bedarf erstellt, was normalerweise nur wenige Sekunden dauert.
 
-	Auf diese Weise werden die letzten fünf Sicherungen angezeigt. Hierzu gehören sowohl die standardmäßig geplanten als auch die manuellen Sicherungen.
+	Auf diese Weise werden die letzten fünf Sicherungen angezeigt und können zur Wiederherstellung auf Elementebene verwendet werden. Zu den fünf letzten Sicherungen gehören sowohl die standardmäßig geplanten als auch die manuellen Sicherungen.
 
 	
-	-   **Geplante Sicherungen** haben die Bezeichnung „&lt;Gerätename&gt;DailySchedule-YYYYMMDD-HHMMSS-UTC“.
+	-   **Geplante Sicherungen** weisen die Bezeichnung „&lt;Gerätename&gt;DailySchedule-YYYYMMDD-HHMMSS-UTC“ auf.
 
-	-   **Manuelle Sicherungen** haben die Bezeichnung „Ad-hoc-YYYYMMDD-HHMMSS-UTC“.
+	-   **Manuelle Sicherungen** weisen die Bezeichnung „Ad-hoc-YYYYMMDD-HHMMSS-UTC“ auf.
 	
 		![](./media/storsimple-ova-restore/image14.png)
 
@@ -130,6 +130,6 @@ In diesem Video wird gezeigt, wie Sie Freigaben erstellen, Freigaben sichern und
 
 ## Nächste Schritte
 
-Erfahren Sie mehr darüber, wie Sie das [StorSimple Virtual Array mit der lokalen Webbenutzeroberfläche verwalten](storsimple-ova-web-ui-admin.md).
+Erfahren Sie mehr darüber, wie Sie Ihr [StorSimple Virtual Array über die lokale Webbenutzeroberfläche verwalten](storsimple-ova-web-ui-admin.md).
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -1,54 +1,54 @@
-This article outlines a set of proven practices for running a Linux virtual machine (VM) on Azure, paying attention to scalability, availability, manageability, and security. Azure supports running a number of popular Linux distributions, including CentOS, Debian, Red Hat Enterprise, Ubuntu, and FreeBSD. For more information, see [Azure and Linux][azure-linux].
+In diesem Artikel werden verschiedene bewährte Methoden zur Ausführung einer Linux-VM in Azure beschrieben. Dabei geht es vor allem um Skalierbarkeit, Verfügbarkeit, Verwaltbarkeit und Sicherheit. Azure unterstützt die Ausführung verschiedener beliebter Linux-Distributionen, so z.B. CentOS, Debian, Red Hat Enterprise, Ubuntu und FreeBSD. Weitere Informationen finden Sie unter [Azure und Linux][azure-linux].
 
-> [AZURE.NOTE] Azure has two different deployment models: [Resource Manager][resource-manager-overview] and classic. This article uses Resource Manager, which Microsoft recommends for new deployments.
+> [AZURE.NOTE] Azure bietet zwei verschiedene Bereitstellungsmodelle: [Resource Manager][resource-manager-overview] und klassisch. In diesem Artikel wird Resource Manager verwendet, der von Microsoft für neue Bereitstellungen empfohlen wird.
 
-We don't recommend using a single VM for production workloads, because there is no up-time SLA for single VMs on Azure. To get the SLA, you must deploy multiple VMs in an availability set. For more information, see [Running multiple VMs on Azure][multi-vm]. 
+Wir empfehlen nicht den Einsatz einer einzelnen VM für Produktionsworkloads, da es für einzelne VMs in Azure keine SLA zur Betriebszeit gibt. Um die SLA zu erhalten, müssen Sie mehrere VMs in einer Verfügbarkeitsgruppe bereitstellen. Weitere Informationen finden Sie unter [Ausführen mehrerer VMs in Azure][multi-vm].
 
-## Architecture diagram
+## Architekturdiagramm
 
-Provisioning a VM in Azure involves more moving parts than just the VM itself. There are compute, networking, and storage elements.  
+Die Bereitstellung einer einzelnen VM in Azure umfasst mehr „bewegliche Teile“ als die VM selbst. Es sind Compute-, Netzwerk- und Speicherelemente vorhanden.
 
-![IaaS: single VM](./media/guidance-blueprints/compute-single-vm.png)
+![IaaS: einzelne VM](./media/guidance-blueprints/compute-single-vm.png)
 
-- **Resource group.** A [_resource group_][resource-manager-overview] is a container that holds related resources. Create a resource group to hold the resources for this VM.
+- **Ressourcengruppe:** Eine [_Ressourcengruppe_][resource-manager-overview] ist ein Container, der verwandte Ressourcen enthält. Erstellen Sie eine Ressourcengruppe für die Ressourcen dieser VM.
 
-- **VM**. You can provision a VM from a list of published images or from a VHD file that you upload to Azure blob storage.
+- **VM**. Sie können eine VM über eine Liste mit veröffentlichten Images oder über eine VHD-Datei bereitstellen, die Sie in Azure Blob Storage hochladen.
 
-- **OS disk.** The OS disk is a VHD stored in [Azure storage][azure-storage]. That means it persists even if the host machine goes down. The OS disk is `/dev/sda1`
+- **Betriebssystem-Datenträger:** Der Betriebssystem-Datenträger ist eine virtuelle Festplatte (VHD), die in [Azure-Speicher][azure-storage] gespeichert ist. Dies bedeutet, dass er auch dann noch vorhanden ist, wenn der Hostcomputer ausfällt. Der Betriebssystemdatenträger ist `/dev/sda1`.
 
-- **Temporary disk.** The VM is created with a temporary disk. This disk is stored on a physical drive on the host machine. It is _not_ saved in Azure storage, and might go away during reboots and other VM lifecycle events. Use this disk only for temporary data, such as page or swap files. The temporary disk is `/dev/sdb1` and is mounted at `/mnt/resource` or `/mnt`.
+- **Temporärer Datenträger.** Die VM wird mit einem temporären Datenträger erstellt. Dieser Datenträger wird auf dem Hostcomputer auf einem physischen Laufwerk gespeichert. Er wird _nicht_ in Azure-Speicher gespeichert und kann bei Neustarts und anderen Ereignissen während des VM-Lebenszyklus verloren gehen. Verwenden Sie diesen Datenträger nur für temporäre Daten, z. B. Auslagerungsdateien. Der temporäre Datenträger ist `/dev/sdb1` und wird bei `/mnt/resource` oder `/mnt` bereitgestellt.
 
-- **Data disks.** A [data disk][data-disk] is a persistent VHD used for application data. Data disks are stored in Azure storage, like the OS disk.
+- **Datenträger:** Bei einem [Datenträger für Daten][data-disk] handelt es sich um eine permanente VHD, die für Anwendungsdaten verwendet wird. Datenträger werden im Azure-Speicher gespeichert, z. B. auf dem Betriebssystem-Datenträger.
 
-- **Virtual network (VNet) and subnet.** Every VM in Azure is deployed into a virtual network (VNet), which is further divided into subnets.
+- **Virtuelles Netzwerk (VNet) und Subnetz\_** Jede VM in Azure wird in einem virtuellen Netzwerk (VNet) bereitgestellt, das weiter in Subnetze unterteilt wird.
 
-- **Public IP address.** A public IP address is needed to communicate with the VM&mdash;for example over ssh.
+- **Öffentliche IP-Adresse.** Eine öffentliche IP-Adresse wird für die Kommunikation mit der VM benötigt, z.B. über SSH.
 
-- **Network interface (NIC)**. The NIC enables the VM to communicate with the virtual network.
+- **Netzwerkschnittstelle (NIC)**. Die NIC ermöglicht der VM die Kommunikation mit dem virtuellen Netzwerk.
 
-- **Network security group (NSG)**. The [NSG][nsg] is used to allow/deny network traffic to the subnet. You can associate an NSG with an individual NIC or with a subnet. If you associate it with a subnet, the NSG rules apply to all VMs in that subnet.
+- **Netzwerksicherheitsgruppe (NSG)**. Die [NSG][nsg] wird verwendet, um den Netzwerk-Datenverkehr in das Subnetz zuzulassen oder zu verweigern. Sie können eine NSG einer einzelnen NIC oder einem Subnetz zuordnen. Wenn Sie sie einem Subnetz zuordnen, gelten die NSG-Regeln für alle VMs in diesem Subnetz.
  
-- **Diagnostics.** Diagnostic logging is crucial for managing and troubleshooting the VM.
+- **Diagnose:** Diagnoseprotokolle sind für die Verwaltung und Problembehandlung des virtuellen Computers von entscheidender Bedeutung.
 
-## Recommendations
+## Empfehlungen
 
-### VM recommendations
+### Empfehlungen für virtuelle Computer
 
-- We recommend the DS- and GS-series, unless you have a specialized workload such as high-performance computing. For details, see [Virtual machine sizes][virtual-machine-sizes]. When moving an existing workload to Azure, start with the VM size that's the closest match to your on-premise servers. Then measure the performance of your actual workload with respect to CPU, memory, and disk IOPS, and adjust the size if needed. Also, if you need multiple NICs, be aware of the NIC limit for each size.  
+- Wir empfehlen die DS- und GS-Serie, es sei denn, Sie haben einen speziellen Workload, z.B. High Performance Computing. Ausführliche Informationen finden Sie unter [Größen virtueller Computer][virtual-machine-sizes]. Starten Sie beim Verlagern eines vorhandenen Workloads in Azure mit der VM-Größe, die Ihren lokalen Servern am ehesten entspricht. Messen Sie dann die Leistung Ihres tatsächlichen Workloads hinsichtlich CPU, Arbeitsspeicher und Datenträger-IOPS, und passen Sie die Größe bei Bedarf an. Wenn Sie mehrere NICs benötigen, beachten Sie zudem den NIC-Grenzwert für jede Größe.  
 
-- When you provision the VM and other resources, you must specify a location. Generally, choose a location closest to your internal users or customers. However, not all VM sizes may be available in all locations. For details, see [Services by region][services-by-region]. To list the VM sizes available in a given location, run the following Azure CLI command:
+- Wenn Sie die VM und anderen Ressourcen bereitstellen, müssen Sie einen Standort angeben. Es ist im Allgemeinen ratsam, einen Standort zu wählen, der sich in der Nähe Ihrer internen Benutzer oder Ihrer Kunden befindet. Es sind jedoch nicht alle VM-Größen an allen Standorten verfügbar. Weitere Informationen finden Sie unter [Dienste nach Region][services-by-region]. Führen Sie den folgenden Azure-CLI-Befehl aus, um die an einem bestimmten Standort verfügbaren VM-Größen aufzulisten:
 
     ```
     azure vm sizes --location <location>
     ```
 
-- For information about choosing a published VM image, see [Navigate and select Azure virtual machine images][select-vm-image].
+- Informationen zur Auswahl eines veröffentlichten VM-Image finden Sie unter [Navigieren zwischen und Auswählen von Images für virtuelle Azure-Computer][select-vm-image].
 
-### Disk and storage recommendations
+### Empfehlungen für Datenträger und Speicher
 
-- For best disk I/O performance, we recommend [Premium Storage][premium-storage], which stores data on solid state drives (SSDs). Cost is based on the size of the provisioned disk. IOPS and throughput (i.e., data transfer rate) also depend on disk size, so when you provision a disk, consider all three factors (capacity, IOPS, and throughput). 
+- Für eine optimale E/A-Leistung empfehlen wir [Storage Premium][premium-storage] zum Speichern von Daten auf SSD-Laufwerken. Die Kosten basieren auf der Größe des bereitgestellten Datenträgers. IOPS und Durchsatz (also die Datenübertragungsrate) richten sich ebenfalls nach der Datenträgergröße. Berücksichtigen Sie beim Bereitstellen eines Datenträgers also alle drei Faktoren (Kapazität, IOPS und Durchsatz). 
 
-- Add one or more data disks. When you create a new VHD, it is unformatted. Log into the VM to format the disk. The data disks will show as `/dev/sdc`, `/dev/sdd`, and so on. You can run `lsblk` to list the block devices, including the disks. To use a data disk, create a new partition and file system, and mount the disk. For example:
+- Fügen Sie einen oder mehrere Datenträger hinzu. Wenn Sie eine neue virtuelle Festplatte (VHD) erstellen, ist sie nicht formatiert. Melden Sie sich an der VM an, um den Datenträger zu formatieren. Die Datenträger für Daten werden als `/dev/sdc`, `/dev/sdd` usw. angezeigt. Sie können `lsblk` ausführen, um die Blockgeräte einschließlich Datenträger aufzulisten. Um einen Datenträger für Daten zu verwenden, erstellen Sie eine neue Partition und ein Dateisystem, und binden Sie den Datenträger ein. Beispiel:
 
     ```bat
     # Create a partition.
@@ -62,106 +62,106 @@ Provisioning a VM in Azure involves more moving parts than just the VM itself. T
     sudo mount /dev/sdc1 /data1
     ```
 
-- If you have a large number of data disks, be aware of the total I/O limits of the storage account. For more information, see [Virtual Machine Disk Limits][vm-disk-limits].
+- Wenn Sie über eine große Zahl von Datenträgern verfügen, sollten Sie sich über die E/A-Grenzwerte des Speicherkontos bewusst sein. Weitere Informationen finden Sie unter [Einschränkungen für Datenträger virtueller Computer][vm-disk-limits].
 
-- When you add a data disk, a logical unit number (LUN) ID is assigned to the disk. Optionally, you can specify the LUN ID &mdash; for example, if you're replacing a disk and want to retain the same LUN ID, or you have an app that looks for a specific LUN ID. However, remember that LUN IDs must be unique for each disk.
+- Wenn Sie einen Datenträger für Daten hinzufügen, wird dem Datenträger eine logische Einheitennummer (Logical Unit Number, LUN) zugewiesen. Optional können Sie die LUN-ID angeben, z.B. wenn Sie einen Datenträger austauschen und dieselbe LUN-ID beibehalten möchten oder über eine verfügen, die eine bestimmte LUN-ID sucht. Beachten Sie jedoch, dass die LUN-IDs für jeden Datenträger eindeutig sein muss.
 
-- You may want to change the I/O scheduler, to optimize for performance on SSDs (used by Premium Storage). A common recommendation is to use the NOOP scheduler for SSDs, but you should use a tool such as [iostat] to monitor disk I/O performance for your particular workload.
+- Nach Wunsch können Sie den E/A-Scheduler ändern, um die Leistung der (von Storage Premium verwendeten) SSD-Laufwerke zu optimieren. Eine übliche Empfehlung ist die Verwendung des NOOP-Schedulers für SSD-Laufwerke. Sie sollten jedoch ein Tool wie [Iostat] zur Überwachung der E/A-Datenträgerleistung bestimmter Workloads einsetzen.
 
-- For best performance, create a separate storage account to hold diagnostic logs. A standard locally redundant storage (LRS) account is sufficient for diagnostic logs.
+- Erstellen Sie ein separates Speicherkonto zum Speichern der Diagnoseprotokolle, um eine optimale Leistung zu erzielen. Ein standardmäßiger lokal redundanter Speicher (LRS) reicht für Diagnoseprotokolle aus.
 
 
-### Network recommendations
+### Netzwerkempfehlungen
 
-- The public IP address can be dynamic or static. The default is dynamic.
+- Die öffentliche IP-Adresse kann dynamisch oder statisch sein. Die Standardeinstellung ist „Dynamisch“.
 
-    - Reserve a [static IP address][static-ip] if you need a fixed IP address that won't change &mdash; for example, if you need to create an A record in DNS, or need the IP address to be whitelisted.
+    - Reservieren Sie eine [statische IP-Adresse][static-ip], falls Sie eine feste IP-Adresse benötigen, die sich nicht ändert. Es kann beispielsweise sein, dass Sie einen A-Eintrag in DNS erstellen oder die IP-Adresse auf eine Positivliste setzen müssen.
 
-    - You can also create a fully qualified domain name (FQDN) for the IP address. You can then register a [CNAME record][cname-record] in DNS that points to the FQDN. For more information, see [Create a Fully Qualified Domain Name in the Azure portal][fqdn].
+    - Sie können auch einen vollständig qualifizierten Domänennamen (FQDN) für die IP-Adresse erstellen. Sie können anschließen einen [CNAME-Eintrag][cname-record] im DNS registrieren, der auf den FQDN verweist. Weitere Informationen finden Sie unter [Erstellen eines vollständig qualifizierten Domänennamens im Azure-Portal][fqdn].
 
-- All NSGs contain a set of [default rules][nsg-default-rules], including a rule that blocks all inbound Internet traffic. The default rules cannot be deleted, but other rules can override them. To enable Internet traffic, create rules that allow inbound traffic to specific ports &mdash; for example, port 80 for HTTP.  
+- Alle NSGs enthalten eine Reihe von [Standardregeln][nsg-default-rules], einschließlich einer Regel, die den gesamten eingehenden Internetverkehr blockiert. Die Standardregeln können nicht gelöscht, aber von anderen Regeln überschrieben werden. Um Internetdatenverkehr zu ermöglichen, erstellen Sie Regeln, die eingehenden Datenverkehr an bestimmten Ports zulassen, z.B. Port 80 für HTTP.
 
-- To enable ssh, add a rule to the NSG that allows inbound traffic to TCP port 22.
+- Fügen Sie zum Aktivieren von SSH der NSG eine Regel hinzu, die den eingehenden Datenverkehr am TCP-Port 22 zulässt.
 
-## Scalability considerations
+## Überlegungen zur Skalierbarkeit
 
-- You can scale a VM up or down by [changing the VM size][vm-resize]. 
+- Sie können eine VM zentral hoch- oder herunterskalieren, indem Sie [die VM-Größe ändern][vm-resize]. 
 
-- To scale out horizontally, put two or more VMs into an availability set behind a load balancer. For details, see [Running multiple VMs on Azure][multi-vm].
+- Um horizontal zu skalieren, platzieren Sie zwei oder mehr VMs in einer Verfügbarkeitsgruppe hinter einem Load Balancer. Weitere Informationen finden Sie unter [Ausführen mehrerer VMs in Azure][multi-vm].
 
-## Availability considerations
+## Überlegungen zur Verfügbarkeit
 
-- As noted above, there is no SLA for a single VM. To get the SLA, you must deploy multiple VMs into an availability set.
+- Wie bereits erwähnt, gibt es keine SLA für eine einzelne VM. Um die SLA zu erhalten, müssen Sie mehrere VMs in einer Verfügbarkeitsgruppe bereitstellen.
 
-- Your VM may be affected by [planned maintenance][planned-maintenance] or [unplanned maintenance][manage-vm-availability]. You can use [VM reboot logs][reboot-logs] to determine whether a VM reboot was caused by planned maintenance.
+- Ihre VM kann von einer [geplanten Wartung][planned-maintenance] oder [ungeplanten Wartung][manage-vm-availability] betroffen sein. Sie können [VM-Neustartprotokolle][reboot-logs] verwenden, um zu ermitteln, ob ein VM-Neustart durch einen geplanten Wartungsvorgang verursacht wurde.
 
-- VHDs are backed by [Azure Storage][azure-storage], which is replicated for durability and availability.
+- VHDs werden mithilfe von [Azure Storage][azure-storage] gesichert, der repliziert wird, um die Dauerhaftigkeit und Verfügbarkeit sicherzustellen.
 
-- To protect against accidental data loss during normal operations (e.g., because of user error), you should also implement point-in-time backups, using [blob snapshots][blob-snapshot] or another tool.
+- Als Schutz vor versehentlichen Datenverlusten während des normalen Betriebs (z.B. aufgrund eines Benutzerfehlers) sollten Sie auch Point-in-Time-Sicherungen implementieren, indem Sie [Blobmomentaufnahmen][blob-snapshot] oder ein anderes Tool verwenden.
 
-## Manageability considerations
+## Überlegungen zur Verwaltbarkeit
 
-- **Resource groups.** Put tightly coupled resources that share the same life cycle into a same [resource group][resource-manager-overview]. Resource groups allow you to deploy and monitor resources as a group, and roll up billing costs by resource group. You can also delete resources as a set, which is very useful for test deployments. Give resources meaningful names. That makes it easier to locate a specific resource and understand its role. See [Recommended Naming Conventions for Azure Resources][naming conventions].
+- **Ressourcengruppen.** Legen Sie eng verknüpfte Ressourcen mit demselben Lebenszyklus in derselben [Ressourcengruppe][resource-manager-overview] ab. Ressourcengruppen ermöglichen Ihnen das Bereitstellen und Überwachen von Ressourcen und das Zusammenfassen von Abrechnungskosten nach Ressourcengruppe. Sie können auch Ressourcen als Gruppe löschen, was für Testbereitstellungen sehr nützlich ist. Versehen Sie Ressourcen mit aussagekräftigen Namen. Dies vereinfacht das Auffinden einer bestimmten Ressource und Verstehen ihrer Rolle. Siehe [Empfohlene Benennungskonventionen für Azure-Ressourcen][naming conventions].
 
-- **ssh**. Before you create a Linux VM, generate a 2048-bit RSA public-private key pair. Use the public key file when you create the VM. For more information, see [How to Use SSH with Linux and Mac on Azure][ssh-linux].
+- **SSH**. Bevor Sie eine Linux-VM erstellen, wird ein 2048-Bit-RSA-Paar aus privatem und öffentlichem Schlüssel generiert. Verwenden Sie die öffentliche Schlüsseldatei bei der Erstellung der VM. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux und Mac in Azure][ssh-linux].
 
-- **VM diagnostics.** Enable monitoring and diagnostics, including basic health metrics, diagnostics infrastructure logs, and [boot diagnostics][boot-diagnostics]. Boot diagnostics can help you diagnose boot failure if your VM gets into a non-bootable state. For more information, see [Enable monitoring and diagnostics][enable-monitoring].  
+- **VM-Diagnose.** Ermöglichen Sie die Überwachung und Diagnose, einschließlich grundlegender Integritätsmetriken, Diagnose-Infrastrukturprotokolle und [Startdiagnose][boot-diagnostics]. Startdiagnosen dienen dazu, einen Fehler beim Startvorgang zu untersuchen, wenn Ihre VM einen nicht startfähigen Zustand hat. Weitere Informationen finden Sie unter [Aktivieren von Überwachung und Diagnose][enable-monitoring].
 
-    The following CLI command enables diagnostics:
+    Der folgende CLI-Befehl aktiviert die Diagnose:
 
     ```text
     azure vm enable-diag <resource-group> <vm-name>
     ```
 
-- **Stopping a VM.** Azure makes a distinction between "Stopped" and "De-allocated" states. You are charged when the VM status is "Stopped". You are not charged when the VM de-allocated.
+- **Beenden einer VM.** Unter Azure wird zwischen den Zuständen „Stopped“ (Beendet) und „De-allocated“ (Zuordnung aufgehoben) unterschieden. Wenn der VM-Status „Stopped“ lautet, fallen für Sie Kosten an. Wenn der VM-Status „De-allocated“ lautet, fallen für Sie keine Kosten an.
 
-    Use the following CLI command to de-allocate a VM:
+    Verwenden Sie den folgenden CLI-Befehl, um die Zuordnung für eine VM aufzuheben:
 
     ```text
     azure vm deallocate <resource-group> <vm-name>
     ```
 
-    The **Stop** button in the Azure portal also deallocates the VM. However, if you shut down through the OS while logged in, the VM is stopped but _not_ de-allocated, so you will still be charged.
+    Mit der Schaltfläche **Beenden** im Azure-Portal können Sie die VM auch freigeben. Wenn das Herunterfahren über das Betriebssystem erfolgt, während Sie angemeldet sind, wird die VM zwar beendet, aber die Zuordnung wird _nicht_ aufgehoben. Es fallen also weiter Kosten an.
 
-- **Deleting a VM.** If you delete a VM, the VHDs are not deleted. That means you can safely delete the VM without losing data. However, you will still be charged for storage. To delete the VHD, delete the file from [blob storage][blob-storage].
+- **Löschen einer VM.** Wenn Sie eine VM löschen, werden die VHDs nicht gelöscht. Dies bedeutet, dass Sie die VM problemlos löschen können, ohne dass Daten verloren gehen. Allerdings wird Ihnen der Speicherplatz weiter in Rechnung gestellt. Um die VHD zu löschen, löschen Sie die Datei aus dem [Blobspeicher][blob-storage].
 
-  To prevent accidental deletion, use a [resource lock][resource-lock] to lock the entire resource group or lock individual resources, such as the VM. 
+  Um ein versehentliches Löschen zu verhindern, verwenden Sie eine [Ressourcensperre][resource-lock], um die gesamte Ressourcengruppe oder einzelne Ressourcen wie die VM zu sperren.
 
 
 
-## Security considerations
+## Sicherheitshinweise
 
-- Automate OS updates by using the [OSPatching] VM extension. Install this extension when you provision the VM. You can specify how often to install patches and whether to reboot after patching.
+- Automatisieren Sie Betriebssystemupdates mithilfe der VM-Erweiterung [OSPatching]. Installieren Sie diese Erweiterung, wenn Sie die VM bereitstellen. Sie können angeben, wie oft Patches installiert werden sollen und ob im Anschluss daran ein Neustart erfolgen soll.
 
-- Use [role-based access control][rbac] (RBAC) to control access to the Azure resources that you deploy. RBAC lets you assign authorization roles to members of your DevOps team. For example, the Reader role can view Azure resources but not create, manage, or delete them. Some roles are specific to particular Azure resource types. For example, the Virtual Machine Contrubutor role can restart or deallocate a VM, reset the administrator password, create a new VM, and so forth. Other [built-in RBAC roles][rbac-roles] that might be useful for this reference architecture include [DevTest Lab User][rbac-devtest] and [Network Contributor][rbac-network]. A user can be assigned to multiple roles, and you can create custom roles for even more fine-grained permissions.
+- Arbeiten Sie mit der [rollenbasierten Zugriffssteuerung][rbac] \(Role-based Access Control, RBAC) zum Steuern des Zugriffs auf Azure-Ressourcen, die Sie bereitstellen. Mithilfe der RBAC können Sie Mitglieder Ihres DevOps-Teams Autorisierungsrollen zuweisen. Die Rolle „Leser“ kann beispielsweise Azure-Ressourcen anzeigen, diese aber nicht erstellen, verwalten oder löschen. Einige Rollen sind für bestimmte Azure-Ressourcentypen spezifisch. Die VM-Rolle „Mitwirkender“ kann z.B. eine VM neu starten oder freigeben, das Administratorkennwort zurücksetzen, eine neue VM erstellen usw. Andere [integrierte RBAC-Rollen][rbac-roles], die für diese Referenzarchitektur nützlich sein können, sind u.a. [DevTest Lab-Benutzer][rbac-devtest] und [Netzwerkmitwirkender][rbac-network]. Ein Benutzer kann mehreren Rollen zugewiesen werden. Außerdem können Sie für noch präzisere Berechtigungen benutzerdefinierte Rollen erstellen.
 
-    > [AZURE.NOTE] RBAC does not limit the actions that a user logged into a VM can perform. Those permissions are determined by the account type on the guest OS.   
+    > [AZURE.NOTE] Die RBAC schränkt nicht die Aktionen eines Benutzers ein, der bei einer VM angemeldet ist. Diese Berechtigungen werden vom Kontotyp im Gastbetriebssystem bestimmt.
 
-- Use [audit logs][audit-logs] to see provisioning actions and other VM events.
+- Nutzen Sie [Überwachungsprotokolle][audit-logs], um Bereitstellungsaktionen und andere VM-Ereignisse zu verfolgen.
 
-- Consider [Azure Disk Encryption][disk-encryption] if you need to encrypt the OS and data disks. 
+- Ziehen Sie [Azure Disk Encryption][disk-encryption] in Betracht, wenn Sie die Datenträger für Betriebssystem und Daten verschlüsseln müssen.
 
-## Example deployment script
+## Beispiel eines Bereitstellungsskripts
 
-The following Bash script executes the [Azure CLI][azure-cli] commands to deploy a single VM instance and the related network and storage resources, as shown in the previous diagram.
+Mit dem folgenden Bash-Skript werden die [Azure-CLI][azure-cli]-Befehle ausgeführt, um eine einzelne VM-Instanz und die dazugehörigen Netzwerk- und Speicherressourcen bereitzustellen (siehe das vorherige Diagramm).
 
-The script uses the naming conventions described in [Recommended Naming Conventions for Azure Resources][naming conventions].
+Das Skript verwendet die Benennungskonventionen, die unter [Empfohlene Benennungskonventionen für Azure-Ressourcen][naming conventions] beschrieben sind.
 
-To run the script:
+So führen Sie das Skript aus
 
-1. Generate a 2048-bit RSA authentication key.
+1. Generieren Sie einen 2048-Bit-RSA-Authentifizierungsschlüssel.
 
         ssh-keygen -t rsa -b 2048
 
-2. Pass your Azure subscription ID and the name of public key file as parameters to the script.
+2. Übergeben Sie Ihre Azure-Abonnement-ID und den Namen der öffentlichen Schlüsseldatei als Parameter an das Skript.
 
         ./azurecli-single-vm-sample.sh <subscription ID> ~/.ssh/id_rsa.pub
 
-3. When the script completes, log into the VM using ssh. Use the private key to authenticate.
+3. Sobald das Skript abgeschlossen ist, melden Sie sich über SSH an der VM an. Verwenden Sie zur Authentifizierung den privaten Schlüssel.
 
         ssh testuser@<app>-vm1.<location>.cloudapp.azure.com -i ~/.ssh/id_rsa
 
-    where `<app>` is the value of the `APP_NAME` script variable, and `<location>` is the value of the `LOCATION` variable.
+    Dabei ist `<app>` der Wert der Skriptvariablen `APP_NAME` und `<location>` der Wert der Variablen `LOCATION`.
 
 ```bat
 #!/bin/bash
@@ -310,20 +310,20 @@ azure vm extension set --name OSPatchingForLinux --publisher-name Microsoft.OSTC
 --public-config $PATCH_CONFIG --vm-name $VM_NAME --version 2.0 $POSTFIX
 ```
 
-## Next steps
+## Nächste Schritte
 
-In order for the [SLA for Virtual Machines][vm-sla] to apply, you must deploy two or more instances in an Availability Set. For more information, see [Running multiple VMs on Azure][multi-vm].
+Damit die [SLA für virtuelle Computer][vm-sla] gilt, müssen Sie in einer Verfügbarkeitsgruppe mindestens zwei Instanzen bereitstellen. Weitere Informationen finden Sie unter [Ausführen mehrerer VMs in Azure][multi-vm].
 
 <!-- links -->
 
 [arm-templates]: ../articles/virtual-machines/virtual-machines-linux-cli-deploy-templates.md
-[audit-logs]: https://azure.microsoft.com/en-us/blog/analyze-azure-audit-logs-in-powerbi-more/
+[audit-logs]: https://azure.microsoft.com/de-DE/blog/analyze-azure-audit-logs-in-powerbi-more/
 [azure-cli]: ../articles/virtual-machines-command-line-tools.md
 [azure-linux]: ../articles/virtual-machines/virtual-machines-linux-azure-overview.md
 [azure-storage]: ../articles/storage/storage-introduction.md
 [blob-snapshot]: ../articles/storage/storage-blob-snapshots.md
 [blob-storage]: ../articles/storage/storage-introduction.md
-[boot-diagnostics]: https://azure.microsoft.com/en-us/blog/boot-diagnostics-for-virtual-machines-v2/
+[boot-diagnostics]: https://azure.microsoft.com/de-DE/blog/boot-diagnostics-for-virtual-machines-v2/
 [cname-record]: https://en.wikipedia.org/wiki/CNAME_record
 [data-disk]: ../articles/virtual-machines/virtual-machines-linux-about-disks-vhds.md
 [disk-encryption]: ../articles/azure-security-disk-encryption.md
@@ -342,17 +342,19 @@ In order for the [SLA for Virtual Machines][vm-sla] to apply, you must deploy tw
 [rbac-roles]: ../articles/active-directory/role-based-access-built-in-roles.md
 [rbac-devtest]: ../articles/active-directory/role-based-access-built-in-roles.md#devtest-lab-user
 [rbac-network]: ../articles/active-directory/role-based-access-built-in-roles.md#network-contributor
-[reboot-logs]: https://azure.microsoft.com/en-us/blog/viewing-vm-reboot-logs/
-[Resize-VHD]: https://technet.microsoft.com/en-us/library/hh848535.aspx
-[Resize virtual machines]: https://azure.microsoft.com/en-us/blog/resize-virtual-machines/
+[reboot-logs]: https://azure.microsoft.com/de-DE/blog/viewing-vm-reboot-logs/
+[Resize-VHD]: https://technet.microsoft.com/de-DE/library/hh848535.aspx
+[Resize virtual machines]: https://azure.microsoft.com/de-DE/blog/resize-virtual-machines/
 [resource-lock]: ../articles/resource-group-lock-resources.md
 [resource-manager-overview]: ../articles/resource-group-overview.md
 [select-vm-image]: ../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md
-[services-by-region]: https://azure.microsoft.com/en-us/regions/#services
+[services-by-region]: https://azure.microsoft.com/de-DE/regions/#services
 [ssh-linux]: ../articles/virtual-machines/virtual-machines-linux-ssh-from-linux.md
 [static-ip]: ../articles/virtual-network/virtual-networks-reserved-public-ip.md
 [storage-price]: https://azure.microsoft.com/pricing/details/storage/
 [virtual-machine-sizes]: ../articles/virtual-machines/virtual-machines-linux-sizes.md
 [vm-disk-limits]: ../articles/azure-subscription-service-limits.md#virtual-machine-disk-limits
 [vm-resize]: ../articles/virtual-machines/virtual-machines-linux-change-vm-size.md
-[vm-sla]: https://azure.microsoft.com/en-us/support/legal/sla/virtual-machines/v1_0/
+[vm-sla]: https://azure.microsoft.com/de-DE/support/legal/sla/virtual-machines/v1_0/
+
+<!---HONumber=AcomDC_0622_2016-->

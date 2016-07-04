@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="SAS-Authentifizierung bei Service Bus | Microsoft Azure"
-   description="Details zur SAS-Authentifizierung mit Service Bus."
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="" />
+    pageTitle="SAS-Authentifizierung bei Service Bus | Microsoft Azure"
+    description="Details zur SAS-Authentifizierung mit Service Bus."
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" />
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="03/09/2016"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="06/22/2016"
+    ms.author="sethm" />
 
 # SAS-Authentifizierung bei Service Bus
 
@@ -25,17 +25,17 @@ Die Unterstützung der SAS-Authentifizierung ist im Azure SDK, Version 2.0 oder 
 
 Die SAS-Authentifizierung in Service Bus umfasst die Konfiguration eines kryptografischen Schlüssels mit den zugehörigen Rechten für eine Service Bus-Ressource. Clients beanspruchen Zugriff auf Service Bus-Ressourcen, indem sie ein SAS-Token bereitstellen. Dieses Token besteht aus dem Ressourcen-URI, auf den zugegriffen wird, und einer Ablaufangabe, die mit dem konfigurierten Schlüssel signiert wird.
 
-Sie können SAS-Autorisierungsregeln für Service Bus [Relays](service-bus-fundamentals-hybrid-solutions.md#relays), -[Warteschlangen](service-bus-fundamentals-hybrid-solutions.md#queues), -[Themen](service-bus-fundamentals-hybrid-solutions.md#topics) und -[Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/) konfigurieren.
+Sie können SAS-Autorisierungsregeln für Service Bus [Relays](service-bus-fundamentals-hybrid-solutions.md#relays), -[Warteschlangen](service-bus-fundamentals-hybrid-solutions.md#queues), -[Themen](service-bus-fundamentals-hybrid-solutions.md#topics) und -[Event Hubs](service-bus-fundamentals-hybrid-solutions.md#event-hubs) konfigurieren.
 
 Die SAS-Authentifizierung verwendet die folgenden Elemente:
 
-- [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx): ein primärer 256-Bit-Kryptografieschlüssel in Base64-Darstellung, ein optionaler sekundärer Schlüssel und ein Schlüsselname sowie zugehörige Rechte (eine Auflistung von Lausch-, Sende- oder Verwaltungsrechten, d. h. *Listen*, *Send* und *Manage*).
+- [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx): ein primärer 256-Bit-Kryptografieschlüssel in Base64-Darstellung, ein optionaler sekundärer Schlüssel und ein Schlüsselname sowie zugehörige Rechte (eine Auflistung von Lausch-, Sende- oder Verwaltungsrechten, d. h. *Listen*, *Send* und *Manage*).
 
 - [SharedAccessSignature](https://msdn.microsoft.com/library/azure/microsoft.servicebus.sharedaccesssignaturetokenprovider.sharedaccesssignature.aspx)-Token: Wird mithilfe des HMAC-SHA256-Codes einer Ressourcenzeichenfolge generiert und besteht aus dem URI der Ressource, auf die zugegriffen wird, sowie einer Ablaufangabe mit dem kryptografischen Schlüssel. Die Signatur und andere in den folgenden Abschnitten beschriebene Elemente werden als Zeichenfolge formatiert, um das [SharedAccessSignature](https://msdn.microsoft.com/library/azure/microsoft.servicebus.sharedaccesssignaturetokenprovider.sharedaccesssignature.aspx)-Token zu bilden.
 
 ## Konfiguration für SAS-Authentifizierung (Shared Access Signature)
 
-Sie können die Regel [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) für Service Bus-Namespaces, -Warteschlangen oder -Themen konfigurieren. Die Konfiguration einer [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) für ein Service Bus-Abonnement wird zurzeit nicht unterstützt. Sie können die Regeln, die für einen Namespace oder ein Thema konfiguriert wurden, jedoch verwenden, um den Zugriff auf Abonnements abzusichern. Ein praktisches Beispiel für dieses Verfahren finden Sie unter [Using Shared Access Signature (SAS) authentication with Service Bus Subscriptions](http://code.msdn.microsoft.com/windowsazure/Using-Shared-Access-e605b37c) (in englischer Sprache).
+Sie können die Regel [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) für Service Bus-Namespaces, -Warteschlangen oder -Themen konfigurieren. Die Konfiguration einer [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) für ein Service Bus-Abonnement wird zurzeit nicht unterstützt. Sie können die Regeln, die für einen Namespace oder ein Thema konfiguriert wurden, jedoch verwenden, um den Zugriff auf Abonnements abzusichern. Ein praktisches Beispiel für dieses Verfahren finden Sie unter [Using Shared Access Signature (SAS) authentication with Service Bus Subscriptions](http://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) (in englischer Sprache).
 
 Maximal zwölf solcher Regeln können für einen Service Bus-Namespace, eine Service Bus-Warteschlange oder ein Service Bus-Thema konfiguriert werden. Regeln, die für einen Service Bus-Namespace konfiguriert werden, gelten für alle Entitäten in dem jeweiligen Namespace.
 
@@ -52,7 +52,7 @@ Die folgenden Schlüsselparameter gelten für ein [SharedAccessAuthorizationRule
 |*SecondaryKey*|Ein sekundärer Base64-codierter 256-Bit-Schlüssel zum Signieren und Überprüfen des SAS-Tokens.|
 |*AccessRights*|Eine Liste der Zugriffsrechte, die von der Autorisierungsregel erteilt werden. Bei diesen Rechten kann es sich um eine beliebige Auflistung von Lausch-, Sende- und Verwaltungsrechten ("Listen", "Send" und "Manage") handeln.|
 
-Wenn ein Service Bus-Namespace bereitgestellt wird, wird standardmäßig eine [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) erstellt, in der [KeyName](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.keyname.aspx) auf **RootManageSharedAccessKey** festgelegt ist. Zwei [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx)-Objekte werden ebenfalls für Notification Hubs konfiguriert: ein Objekt mit Lausch-, Sende- und Verwaltungsrechten und ein weiteres Objekt mit Lauschrechten.
+Wenn ein Service Bus-Namespace bereitgestellt wird, wird standardmäßig eine [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) erstellt, in der [KeyName](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.keyname.aspx) auf **RootManageSharedAccessKey** festgelegt ist.
 
 ## Erneutes Generieren und Widerrufen von Schlüsseln für SAS-Autorisierungsregeln
 
@@ -76,7 +76,7 @@ StringToSign = <resourceURI> + "\n" + expiry;
 
 Beachten Sie, dass Sie den codierten Ressourcen-URI für diesen Vorgang verwenden sollten. Der Ressourcen-URI ist der vollständige URI der Service Bus-Ressource, auf die der Zugriff beansprucht wird. Beispiel: `http://<namespace>.servicebus.windows.net/<entityPath>` oder `sb://<namespace>.servicebus.windows.net/<entityPath>`, also `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`.
 
-Der Ablaufwert wird als die Anzahl der Sekunden seit dem 1. Januar 1970 um 00:00:00 UTC dargestellt.
+Der Ablaufwert wird als die Anzahl der Sekunden seit dem 1. Januar 1970 um 00:00:00 UTC dargestellt.
 
 Die zum Signieren verwendete SAS-Autorisierungsregel muss für die durch diesen URI angegebene Entität oder eines seiner hierarchisch übergeordneten Elemente konfiguriert werden. Beispiel: `http://contoso.servicebus.windows.net/contosoTopics/T1` oder `http://contoso.servicebus.windows.net` im vorherigen Beispiel.
 
@@ -258,4 +258,4 @@ Weitere Hintergrundinformationen zur Service Bus-Authentifizierung finden Sie un
 
 [klassischen Azure-Portals]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0622_2016-->

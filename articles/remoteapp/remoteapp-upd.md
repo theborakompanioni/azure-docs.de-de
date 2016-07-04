@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="03/30/2016" 
+    ms.date="06/13/2016" 
     ms.author="elizapo" />
 
 # Wie speichert Azure RemoteApp Benutzerdaten und -einstellungen?
@@ -159,4 +159,4 @@ Sie können Ihre Anmeldeinformationen außerdem wie folgt speichern:
 
 So können Sie das Parameter „-Credential“ im New-PSDrive-Cmdlet überspringen.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0622_2016-->

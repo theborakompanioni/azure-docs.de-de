@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016" 
+	ms.date="06/14/2016" 
 	ms.author="bradsev" />
 
 
 # Bestimmen von Szenarien und Planen der Datenverarbeitung für die erweiterte Analyse
 
-Welche Ressourcen sollten Sie einplanen, wenn Sie eine Umgebung für die Verarbeitung erweiterter Analysen für ein Dataset einrichten? In diesem Artikel werden verschiedene zu stellende Fragen vorgeschlagen, mit deren Hilfe Sie die für Ihr Szenario relevanten Aufgaben und Ressourcen bestimmen können. Die Reihenfolge der allgemeinen Schritte für Predictive Analytics werden im Artikel [Was ist der Cortana-Analyseprozess (CAP)?](machine-learning-data-science-the-cortana-analytics-process.md) vorgestellt. Jeder dieser Schritte erfordert bestimmte Ressourcen für die Aufgaben, die für Ihr spezielles Szenario relevant sind. Die wichtigsten Fragen zum Bestimmen Ihres Szenarios betreffen die Datenlogistik, Merkmale, Qualität der Datasets sowie die Tools und Sprachen, die für die Analyse verwendet werden sollen.
+Welche Ressourcen sollten Sie einplanen, wenn Sie eine Umgebung für die Verarbeitung erweiterter Analysen für ein Dataset einrichten? In diesem Artikel werden verschiedene zu stellende Fragen vorgeschlagen, mit deren Hilfe Sie die für Ihr Szenario relevanten Aufgaben und Ressourcen bestimmen können. Die Reihenfolge der allgemeinen Schritte für Predictive Analytics werden im Dokument [Was ist der Team Data Science-Prozess (TDSP)?](data-science-process-overview.md) vorgestellt. Jeder dieser Schritte erfordert bestimmte Ressourcen für die Aufgaben, die für Ihr spezielles Szenario relevant sind. Die wichtigsten Fragen zum Bestimmen Ihres Szenarios betreffen die Datenlogistik, Merkmale, Qualität der Datasets sowie die Tools und Sprachen, die für die Analyse verwendet werden sollen.
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -47,7 +47,7 @@ Die logistischen Fragen betreffen den Speicherort der **Datenquelle**, das **Zie
 
 4. **Müssen die Daten nach einem regelmäßigen Zeitplan verschoben oder während der Migration geändert werden?** Sie sollten die Verwendung von Azure Data Factory (ADF) in Betracht ziehen, wenn Daten insbesondere in einem Hybridszenario kontinuierlich migriert werden müssen, das sowohl auf lokale als auch Cloudressourcen zugreift. Gleiches gilt, wenn die Daten Transaktionen unterworfen werden oder geändert werden müssen, oder wenn ihnen im Rahmen der Migration eine Geschäftslogik hinzugefügt wird. Weitere Informationen finden Sie unter [Verschieben von Daten von einem lokalen SQL Server zu SQL Azure mithilfe von Azure Data Factory](machine-learning-data-science-move-sql-azure-adf.md).
 
-5. **Wie viele Daten werden in Azure verschoben?** Sehr große Datasets können die Speicherkapazität bestimmter Umgebungen überschreiten. Ein Beispiel finden Sie in der Erörterung von Größenbeschränkungen für Machine Learning Studio im nächsten Abschnitt. In solchen Fällen kann eine Stichprobe der Daten während der Analyse verwendet werden. Details zum Erstellen von Stichproben in verschiedenen Azure-Umgebungen finden Sie unter [Stichprobendaten im Cortana-Analyseprozess](machine-learning-data-science-sample-data.md).
+5. **Wie viele Daten werden in Azure verschoben?** Sehr große Datasets können die Speicherkapazität bestimmter Umgebungen überschreiten. Ein Beispiel finden Sie in der Erörterung von Größenbeschränkungen für Machine Learning Studio im nächsten Abschnitt. In solchen Fällen kann eine Stichprobe der Daten während der Analyse verwendet werden. Details zum Erstellen von Stichproben in verschiedenen Azure-Umgebungen finden Sie unter [Stichprobendaten im Team Data Science-Prozess](machine-learning-data-science-sample-data.md).
 
 
 ## Fragen zu Datenmerkmalen: Typ, Format und Größe
@@ -80,7 +80,7 @@ Informationen zu den Einschränkungen anderer Azure-Dienste, die im Analyseproze
 
 ## Fragen zur Datenqualität: Untersuchung und Vorverarbeitung
 
-1. **Was wissen Sie über Ihre Daten?** Untersuchen Sie Daten, wenn Sie ihre grundlegenden Merkmale verstehen müssen: Welche Muster oder Trends sind erkennbar, welche Ausreißer sind vorhanden und wie viele Werte fehlen? Dieser Schritt ist wichtig, um das Ausmaß der erforderlichen Vorverarbeitung zu bestimmen, um Hypothesen zu formulieren, die auf die geeignetsten Features bzw. den geeignetsten Analysetyp hindeuten, oder um Pläne für eine zusätzliche Datensammlung zu definieren. Die Berechnung beschreibender Statistiken und Zeichnung von Visualisierungen sind nützliche Techniken für die Datenuntersuchung. Details zum Untersuchen eines Datasets in verschiedenen Azure-Umgebungen finden Sie unter [Durchsuchen von Daten im Cortana-Analyseprozess](machine-learning-data-science-explore-data.md).
+1. **Was wissen Sie über Ihre Daten?** Untersuchen Sie Daten, wenn Sie ihre grundlegenden Merkmale verstehen müssen: Welche Muster oder Trends sind erkennbar, welche Ausreißer sind vorhanden und wie viele Werte fehlen? Dieser Schritt ist wichtig, um das Ausmaß der erforderlichen Vorverarbeitung zu bestimmen, um Hypothesen zu formulieren, die auf die geeignetsten Features bzw. den geeignetsten Analysetyp hindeuten, oder um Pläne für eine zusätzliche Datensammlung zu definieren. Die Berechnung beschreibender Statistiken und Zeichnung von Visualisierungen sind nützliche Techniken für die Datenuntersuchung. Details zum Untersuchen eines Datasets in verschiedenen Azure-Umgebungen finden Sie unter [Durchsuchen von Daten im Team Data Science-Prozess](machine-learning-data-science-explore-data.md).
 
 2. **Erfordern die Daten eine Vorverarbeitung oder Bereinigung?** Die Vorverarbeitung und Bereinigung von Daten ist eine wichtige Aufgabe, die vor dem effektiven Verwenden eines Datasets für Machine Learning durchgeführt werden muss. Unformatierte Daten enthalten oft unnötige bzw. fehlende Werte und sind unzuverlässig. Die Verwendung dieser Daten für die Modellierung kann zu falschen Ergebnissen führen. Eine Beschreibung finden Sie unter [Aufgaben zur Vorbereitung von Daten für erweitertes Machine Learning](machine-learning-data-science-prepare-data.md).
 
@@ -114,4 +114,4 @@ Nachdem Sie die Fragen im vorherigen Abschnitt beantwortet haben, können Sie be
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

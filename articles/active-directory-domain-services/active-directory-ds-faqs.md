@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/31/2016"
+	ms.date="06/20/2016"
 	ms.author="maheshu"/>
 
 # Vorschau von Azure Active Directory-Domänendienste: häufig gestellte Fragen
@@ -78,4 +78,4 @@ Auf unserer [Seite für Regionen](active-directory-ds-regions.md) finden Sie ein
 #### Wann wird Azure AD-Domänendienste allgemein verfügbar sein?
 Wir können derzeit keine Zeitpläne für die allgemeine Verfügbarkeit des Diensts bekannt geben.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0622_2016-->

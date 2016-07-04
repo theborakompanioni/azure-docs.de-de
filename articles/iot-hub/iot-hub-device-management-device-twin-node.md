@@ -3,7 +3,7 @@
 	description="Tutorial zur Azure IoT Hub-Geräteverwaltung, in dem die Verwendung von Gerätezwillingen beschrieben wird."
 	services="iot-hub"
 	documentationCenter=".net"
-	authors="ellenfosborne"
+	authors="juanjperez"
 	manager="timlt"
 	editor=""/>
 
@@ -14,7 +14,7 @@
  ms.tgt_pltfrm="na"
  ms.workload="na"
  ms.date="04/29/2016"
- ms.author="elfarber"/>
+ ms.author="juanpere"/>
 
 # Tutorial: Gewusst wie: Verwenden des Gerätezwillings mit Node.js (Vorschau)
 
@@ -145,4 +145,4 @@ Weitere Informationen zu den Geräteverwaltungsfeatures von Azure IoT Hub erhalt
 [lnk-dm-jobs]: iot-hub-device-management-device-jobs.md
 [lnk-edison]: https://github.com/Azure/azure-iot-sdks/tree/dmpreview/c/iotdm_client/samples/iotdm_edison_sample
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

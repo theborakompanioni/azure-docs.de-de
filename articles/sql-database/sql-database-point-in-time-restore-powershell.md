@@ -12,11 +12,16 @@
     ms.devlang="NA"
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
-    ms.workload="data-management" 
-    ms.date="06/09/2016"
+    ms.workload="sqldb-bcdr" 
+    ms.date="06/17/2016"
     ms.author="sstein"/>
 
 # Wiederherstellen des Zustands einer Azure SQL-Datenbank zu einem früheren Zeitpunkt mit PowerShell
+
+> [AZURE.SELECTOR]
+- [Übersicht](sql-database-point-in-time-restore.md)
+- [Azure-Portal](sql-database-point-in-time-restore-portal.md)
+- [PowerShell](sql-database-point-in-time-restore-powershell.md)
 
 In diesem Artikel erfahren Sie, wie Sie auf der [Grundlage automatisierter SQL-Datenbanksicherungen](sql-database-automated-backups.md) mithilfe von PowerShell einen früheren Zustand Ihrer Datenbank wiederherstellen.
 
@@ -24,39 +29,34 @@ In diesem Artikel erfahren Sie, wie Sie auf der [Grundlage automatisierter SQL-D
 
 ## Wiederherstellen des Zustands der Datenbank zu einem bestimmten Zeitpunkt als eigenständige Datenbank
 
-1. Rufen Sie mit dem Cmdlet [Get-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt603648.aspx) die wiederherzustellende Datenbank ab.
+1. Rufen Sie die wiederherzustellende Datenbank mit dem Cmdlet [Get-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt603648.aspx) ab.
 
         $Database = Get-AzureRmSqlDatabase -ResourceGroupName "resourcegroup01" -ServerName "server01" -DatabaseName "database01"
 
-2. Stellen Sie mit dem Cmdlet [Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx) den Zustand der Datenbank zu einem bestimmten Zeitpunkt wieder her.
+2. Stellen Sie den Zustand der Datenbank zu einem bestimmten Zeitpunkt mit dem Cmdlet [Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx) wieder her.
     
         Restore-AzureRmSqlDatabase –FromPointInTimeBackup –PointInTime UTCDateTime -ResourceGroupName $Database.ResourceGroupName -ServerName $Database.ServerName -TargetDatabaseName "RestoredDatabase" –ResourceId $Database.ResourceID -Edition "Standard" -ServiceObjectiveName "S2"
 
 
 ## Wiederherstellen des Zustands der Datenbank zu einem bestimmten Zeitpunkt in einem Pool für elastische Datenbanken
    
-1. Rufen Sie mit dem Cmdlet [Get-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt603648.aspx) die wiederherzustellende Datenbank ab.
+1. Rufen Sie die wiederherzustellende Datenbank mit dem Cmdlet [Get-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt603648.aspx) ab.
 
         $Database = Get-AzureRmSqlDatabase -ResourceGroupName "resourcegroup01" -ServerName "server01" -DatabaseName "database01"
 
-2. Stellen Sie mit dem Cmdlet [Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx) den Zustand der Datenbank zu einem bestimmten Zeitpunkt wieder her.
+2. Stellen Sie den Zustand der Datenbank zu einem bestimmten Zeitpunkt mit dem Cmdlet [Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx) wieder her.
     
         Restore-AzureRmSqlDatabase –FromPointInTimeBackup –PointInTime UTCDateTime -ResourceGroupName $Database.ResourceGroupName -ServerName $Database.ServerName -TargetDatabaseName "RestoredDatabase" –ResourceId $Database.ResourceID –ElasticPoolName "elasticpool01"
 
 ## Nächste Schritte
 
-- [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
-- [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md)
-- [Wiederherstellen des Zustands einer Azure SQL-Datenbank zu einem früheren Zeitpunkt über das Azure-Portal](sql-database-point-in-time-restore-portal.md)
-- [Point-in-time restore using the REST API](https://msdn.microsoft.com/library/azure/mt163685.aspx) (Point-in-Time-Wiederherstellung mithilfe der REST-API)
-- [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md)
+- Ausführliche Schritte zur Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt mithilfe des Azure-Portals finden Sie unter [Point-in-Time-Wiederherstellung mithilfe des Azure-Portals](sql-database-point-in-time-restore-portal.md).
+- Informationen zur Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt mithilfe der REST-API finden Sie unter [Point-In-Time-Wiederherstellung mithilfe der REST-API](https://msdn.microsoft.com/library/azure/mt163685.aspx).
+- Einen Überblick über die Point-in-Time-Wiederherstellung finden Sie unter [Point-In-Time-Wiederherstellung](sql-database-point-in-time-restore.md).
+- Eine vollständige Erläuterung der Wiederherstellung nach einem Benutzer- oder Anwendungsfehler finden Sie unter [Wiederherstellen einer Azure-SQL-Datenbank nach einem Benutzerfehler](sql-database-user-error-recovery.md).
 
-## Weitere Ressourcen
+## Zusätzliche Ressourcen
 
-- [Wiederherstellen einer gelöschten Datenbank](sql-database-restore-deleted-database.md)
-- [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-- [Geografische Wiederherstellung](sql-database-geo-restore.md)
-- [Aktive Georeplikation](sql-database-geo-replication-overview.md)
-- [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [Szenarios für die Geschäftskontinuität](sql-database-business-continuity-scenarios.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->
