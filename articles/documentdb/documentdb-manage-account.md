@@ -33,7 +33,7 @@ Die Auswahl der richtigen Konsistenzebene richtet sich nach der Semantik Ihrer A
 3. Klicken Sie auf dem Blatt **Alle Einstellungen** auf den Eintrag **Standardkonsistenz** unter **Feature**. ![Standardkonsistenz - Sitzung][6]
 
 4. Wählen Sie im Blatt **Standardkonsistenz** die neue Konsistenzebene aus und klicken Sie auf **Speichern**.
-5. Sie können den Fortschritt des Vorgangs im Notification Hub des Azure-Portals überwachen.
+
 
 > [AZURE.NOTE] Beachten Sie, dass es einige Minuten dauern kann, bis sich die Änderung der Standardkonsistenz auf Ihr DocumentDB-Konto auswirkt.
 
