@@ -95,7 +95,7 @@ Nach den oben genannten Schritten führen Sie manuell die `VMAccessForLinux`-Erw
 ```
 azure vm extension set <resource group> <vmname> VMAccessForLinux Microsoft.OSTCExtensions "1.2" --private-config-path PrivateConf.json
 ```
-
+
 ### Erneutes Bereitstellen eines virtuellen Computers
 Sie können einen virtuellen Computer in Azure auf einem anderen Knoten erneut bereitstellen und dadurch möglicherweise zugrunde liegende Netzwerkprobleme beheben. Um einen virtuellen Computer im Azure-Portal erneut bereitzustellen, wählen Sie **Durchsuchen** > **Virtuelle Computer** > *Ihr virtueller Linux-Computer* > **Erneut bereitstellen**. Informationen hierzu finden Sie unter [Einen virtuellen Computer in einem neuen Azure-Knoten erneut bereitstellen](virtual-machines-windows-redeploy-to-new-node.md). Zurzeit können Sie virtuelle Computer nicht über die Azure-Befehlszeilenschnittstelle erneut bereitstellen.
 
@@ -134,4 +134,4 @@ Führen Sie die folgenden Schritte aus, um die häufigsten SSH-Verbindungsfehler
 
 - Weitere Informationen zur Problembehandlung bei virtuellen Computern, die mit dem klassischen Bereitstellungsmodell erstellt wurden, finden Sie unter [Zurücksetzen eines Kennworts oder eines SSH-Schlüssels für Linux-basierte virtuelle Computer](virtual-machines-linux-classic-reset-access.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!----HONumber=AcomDC_0622_2016-->
