@@ -70,7 +70,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 ###So konfigurieren Sie einmaliges Anmelden
 
-1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für ** TalentLMS** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **TalentLMS** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-talentlms-tutorial/IC777292.png "Einmaliges Anmelden konfigurieren")
 
@@ -78,7 +78,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-talentlms-tutorial/IC777293.png "Einmaliges Anmelden konfigurieren")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die ** TalentLMS-Anmelde-URL** die URL im Format „*https://\<Mandantenname>. TalentLMSapp.com*“ ein, und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **TalentLMS-Anmelde-URL** die URL im Format „*https://\<Mandantenname>. TalentLMSapp.com*“ ein, und klicken Sie dann auf **Weiter**.
 
     ![Anmelde-URL](./media/active-directory-saas-talentlms-tutorial/IC777294.png "Anmelde-URL")
 
@@ -106,10 +106,10 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     4.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für TalentLMS** den Wert für **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **Remoteanmelde-URL** ein.
     5.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für TalentLMS** den Wert für **Remoteabmelde-URL**, und fügen Sie ihn in das Textfeld **Remoteabmelde-URL** ein.
-    6.  Geben Sie in das Textfeld **TargetedID** ****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name** ein.
-7.  Geben Sie in das Textfeld **Vorname** ****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** ein.
-8.  Geben Sie in das Textfeld **Nachname** ****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** ein.
-9.  Geben Sie in das Textfeld **E-Mail** ****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** ein.
+    6.  Geben Sie in das Textfeld **TargetedID** **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name** ein.
+7.  Geben Sie in das Textfeld **Vorname** **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** ein.
+8.  Geben Sie in das Textfeld **Nachname** **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** ein.
+9.  Geben Sie in das Textfeld **E-Mail** **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** ein.
 10. Klicken Sie auf **Speichern**.
 
 9.  Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
@@ -124,7 +124,7 @@ Damit sich Azure AD-Benutzer bei TalentLMS anmelden können, müssen sie in Tale
 
 1.  Melden Sie sich bei Ihrem **TalentLMS**-Mandanten an.
 
-2.  Klicken Sie auf **Benutzer** und dann auf ** Benutzer hinzufügen**.
+2.  Klicken Sie auf **Benutzer** und dann auf **Benutzer hinzufügen**.
 
 3.  Führen Sie auf der Dialogfeldseite **Benutzer hinzufügen** die folgenden Schritte aus:
 

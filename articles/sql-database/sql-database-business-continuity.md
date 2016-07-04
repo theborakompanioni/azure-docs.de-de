@@ -68,7 +68,7 @@ Ich gebe ein größeres Upgrade meiner Anwendung frei. Es umfasst Änderungen am
 Die folgende Tabelle enthält die Geschäftskontinuitätsfeatures der SQL-Datenbank und verdeutlicht die jeweiligen Unterschiede in den verschiedenen [Dienstebenen](sql-database-service-tiers.md):
 
 | Funktion | Basic-Tarif | Standard-Tarif |Premium-Tarif
-| --- |--- | --- | ---
+| --- | --- | --- | ---
 | Zeitpunktwiederherstellung | Jeder Wiederherstellungspunkt innerhalb von 7 Tagen | Jeder Wiederherstellungspunkt innerhalb von 14 Tagen | Jeder Wiederherstellungspunkt innerhalb von 35 Tagen
 | Geografische Wiederherstellung | Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h | Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h | Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h
 | Aktive Georeplikation | Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s | Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s | Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s

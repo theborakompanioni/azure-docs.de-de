@@ -44,7 +44,7 @@ Standardmäßig wird die Verbindung mit der Masterdatenbank hergestellt, nicht m
 1. Geben Sie die Standarddatenbank an, wenn Sie Ihren Server mit dem SQL Server-Objekt-Explorer in SSDT registrieren, oder in Ihrer Verbindungszeichenfolge für die Anwendung. Fügen Sie für eine ODBC-Verbindung beispielsweise den InitialCatalog-Parameter ein.
 2. Markieren Sie zuerst die Benutzerdatenbank, bevor Sie eine Sitzung in SSDT erstellen.
 
-> [AZURE.NOTE] Eine Anleitung zum Herstellen einer Verbindung mit SQL Data Warehouse per SSDT finden Sie im Artikel [Query Azure SQL Data Warehouse (Visual Studio)][] (Abfragen von Azure SQL Data Warehouse (Visual Studio)).
+> [AZURE.NOTE] Eine Anleitung zum Herstellen einer Verbindung mit SQL Data Warehouse per SSDT finden Sie im Artikel [Query Azure SQL Data Warehouse (Visual Studio)][] \(Abfragen von Azure SQL Data Warehouse (Visual Studio)).
 
 Hierbei ist es wiederum wichtig zu beachten, dass die Transact-SQL-Anweisung **USE <your DB>** zum Ändern der Datenbank für eine Verbindung nicht unterstützt wird.
 
@@ -86,7 +86,7 @@ Der wesentliche Unterschied zwischen der Verwendung von Azure Active Directory-A
 
 ## Nächste Schritte
 
-Informationen zum Abfragen des Data Warehouse mit Visual Studio und anderen Anwendungen finden Sie unter [Query Azure SQL Data Warehouse (Visual Studio)][] (Abfragen von Azure SQL Data Warehouse (Visual Studio)).
+Informationen zum Abfragen des Data Warehouse mit Visual Studio und anderen Anwendungen finden Sie unter [Query Azure SQL Data Warehouse (Visual Studio)][] \(Abfragen von Azure SQL Data Warehouse (Visual Studio)).
 
 <!-- Article references -->
 [Sichern einer Datenbank in SQL Data Warehouse]: sql-data-warehouse-overview-manage-security.md

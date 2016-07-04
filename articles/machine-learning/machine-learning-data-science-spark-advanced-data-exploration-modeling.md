@@ -1464,7 +1464,7 @@ Löschen Sie mit `unpersist()` zwischengespeicherte Objekte aus dem Arbeitsspeic
 PythonRDD[122] at RDD at PythonRDD.scala:43
 
 
-****Drucken Sie den Pfad zu den Modelldateien für die Verwendung im Consumption Notebook. ** Um für ein unabhängiges Dataset den Verbrauch und die Bewertung zu erhalten, müssen Sie diese Dateinamen kopieren und in das „Consumption Notebook“ einfügen.
+**Drucken Sie den Pfad zu den Modelldateien für die Verwendung im Consumption Notebook.** Um für ein unabhängiges Dataset den Verbrauch und die Bewertung zu erhalten, müssen Sie diese Dateinamen kopieren und in das „Consumption Notebook“ einfügen.
 
 
 	# PRINT MODEL FILE LOCATIONS FOR CONSUMPTION

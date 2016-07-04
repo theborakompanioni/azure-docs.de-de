@@ -57,7 +57,7 @@ Sie sollten die folgenden Lernprogramme durcharbeiten, um sich mit den Konzepten
 
 ###Beispielcode
 
-Der vollständige Beispielcode ist unter [Notification Hubs Samples] (in englischer Sprache) verfügbar. Der Code ist in drei Komponenten aufgeteilt:
+Der vollständige Beispielcode ist unter [Notification Hubs Samples] \(in englischer Sprache) verfügbar. Der Code ist in drei Komponenten aufgeteilt:
 
 1. **EnterprisePushBackendSystem**
 

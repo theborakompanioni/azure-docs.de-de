@@ -41,9 +41,9 @@ Für VNets mit bestehender Affinitätsgruppenzuordnung ist die Migration zu regi
 	
 	Bearbeiten Sie die folgenden Zeilen Ihrer Netzwerkkonfigurationsdatei, und ersetzen Sie dabei die Werte durch Ihre eigenen Werte:
 
-	**Alter Wert:** <VirtualNetworkSitename="VNetUSWest" AffinityGroup="VNetDemoAG">
+	**Alter Wert:** \<VirtualNetworkSitename="VNetUSWest" AffinityGroup="VNetDemoAG"\>
 
-	**Neuer Wert:** <VirtualNetworkSitename="VNetUSWest" Location="West US">
+	**Neuer Wert:** \<VirtualNetworkSitename="VNetUSWest" Location="West US"\>
 
 1. Speichern Sie die Änderungen, und importieren[](virtual-networks-using-network-configuration-file.md) Sie die Netzwerkkonfiguration in Azure.
 

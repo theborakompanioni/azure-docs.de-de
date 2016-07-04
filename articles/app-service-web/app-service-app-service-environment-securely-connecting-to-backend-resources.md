@@ -46,7 +46,7 @@ Eine gängige SQL Server-Konfiguration verfügt über einen Endpunkt, der an Por
 Es gibt zwei Ansätze zum Einschränken des Datenverkehrs zu diesem Endpunkt:
 
 
-- [Netzwerk-Zugriffssteuerungslisten][NetworkAccessControlLists] (Netzwerk-ACLs)
+- [Netzwerk-Zugriffssteuerungslisten][NetworkAccessControlLists] \(Netzwerk-ACLs)
 
 - [Netzwerksicherheitsgruppen][NetworkSecurityGroups]
 

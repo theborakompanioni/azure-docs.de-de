@@ -60,7 +60,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## Nächste Schritte
 
-Informationen zum Abfragen des Data Warehouse mit Visual Studio und anderen Anwendungen finden Sie unter [Query Azure SQL Data Warehouse (Visual Studio)][] (Abfragen von Azure SQL Data Warehouse (Visual Studio)).
+Informationen zum Abfragen des Data Warehouse mit Visual Studio und anderen Anwendungen finden Sie unter [Query Azure SQL Data Warehouse (Visual Studio)][] \(Abfragen von Azure SQL Data Warehouse (Visual Studio)).
 
 <!--Image references-->
 

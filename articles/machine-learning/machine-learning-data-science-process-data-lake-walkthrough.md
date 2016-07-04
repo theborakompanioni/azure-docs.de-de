@@ -158,7 +158,7 @@ Zum Ausführen von U-SQL öffnen Sie Visual Studio, klicken auf **Datei--> Neu--
 
 ### <a name="ingest"></a>Datenerfassung: Einlesen von Daten aus öffentlichem Blob
 
-Der Speicherort der Daten im Azure-Blob wird als „****wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**“ referenziert und kann mithilfe von **Extractors.Csv()** extrahiert werden. Geben Sie in den folgenden Skripts für container_name@blob_storage_account_name in der „wasb“-Adresse Ihre eigenen Container- und Speicherkontonamen ein. Da die Dateinamen dasselbe Format haben, können wir **trip\_data\_{*}.csv** verwenden, um alle 12 Fahrtendateien einzulesen.
+Der Speicherort der Daten im Azure-Blob wird als „**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**“ referenziert und kann mithilfe von **Extractors.Csv()** extrahiert werden. Geben Sie in den folgenden Skripts für container_name@blob_storage_account_name in der „wasb“-Adresse Ihre eigenen Container- und Speicherkontonamen ein. Da die Dateinamen dasselbe Format haben, können wir **trip\_data\_{*}.csv** verwenden, um alle 12 Fahrtendateien einzulesen.
 
 	///Read in Trip data
 	@trip0 =
@@ -181,7 +181,7 @@ Der Speicherort der Daten im Azure-Blob wird als „****wasb://container_name@bl
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-Da die erste Zeile Überschriften enthält, müssen wir die Überschriften entfernen und Spaltentypen entsprechend anpassen. Wir können die verarbeiteten Daten entweder mithilfe von „****swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_“ in Azure Data Lake-Speicher oder mithilfe von „****wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**“ im Azure-Blobspeicherkonto speichern.
+Da die erste Zeile Überschriften enthält, müssen wir die Überschriften entfernen und Spaltentypen entsprechend anpassen. Wir können die verarbeiteten Daten entweder mithilfe von „****swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_“ in Azure Data Lake-Speicher oder mithilfe von „**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**“ im Azure-Blobspeicherkonto speichern.
 
 	// change data types
 	@trip =

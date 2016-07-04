@@ -176,7 +176,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 	a. Aktivieren Sie das **private Schlüsselpaar „X. 509“**.
 
-	b. Geben Sie im Textfeld **Dienstanbieter-ID** ****http://www.workday.com** ein.
+	b. Geben Sie im Textfeld **Dienstanbieter-ID** **http://www.workday.com** ein.
 
 	c. Wählen Sie **SP-initiierte SAML-Authentifizierung aktivieren**.
 
