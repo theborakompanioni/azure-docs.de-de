@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article"
- 	ms.date="06/05/2016" 
+	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 
@@ -28,7 +28,7 @@ Azure Media Services im Azure-Portal befindet sich derzeit in der Vorschauphase.
 
 Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt sein:
 
-- Ein Azure-Konto. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/). 
+- Ein Azure-Konto. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 - Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Erstellen eines Media Services Kontos](media-services-create-account.md).
 - Eine Webcam. Beispielsweise den [Telestream Wirecast-Encoder](http://www.telestream.net/wirecast/overview.htm).
 
@@ -48,10 +48,10 @@ In den folgenden Schritten werden Aufgaben beschrieben, die beim Erstellen von g
 	Dieser Schritt kann auch nach der Erstellung des Kanals ausgeführt werden.
 
 1. Erstellen und starten Sie einen Pass-Through-Kanal.
-1. Rufen Sie die Erfassungs-URL des Kanals ab. 
+1. Rufen Sie die Erfassungs-URL des Kanals ab.
 
 	Die Erfassungs-URL wird vom Liveencoder verwendet, um den Datenstrom an den Kanal zu senden.
-1. Rufen Sie die Vorschau-URL des Kanals ab. 
+1. Rufen Sie die Vorschau-URL des Kanals ab.
 
 	Verwenden Sie diese URL, um sicherzustellen, dass der Livedatenstrom ordnungsgemäß vom Kanal empfangen wird.
 
@@ -63,7 +63,7 @@ In den folgenden Schritten werden Aufgaben beschrieben, die beim Erstellen von g
 1. Wenn Sie zum Starten von Streaming und Archivierung bereit sind, starten Sie das Ereignis bzw. Programm.
 2. Optional kann vom Liveencoder eine Ankündigung gestartet werden. Die Ankündigung wird in den Ausgabedatenstrom eingefügt.
 1. Sie können das Ereignis/Programm und damit das Streaming und die Archivierung des Ereignisses jederzeit beenden.
-1. Löschen Sie das Ereignis/Programm (und optional das Medienobjekt).     
+1. Löschen Sie das Ereignis/Programm (und optional das Medienobjekt).
 
 >[AZURE.IMPORTANT] Lesen Sie sich den Artikel [Livestreaming mit lokalen Encodern, die Multi-Bitrate-Datenströme erstellen](media-services-live-streaming-with-onprem-encoders.md) durch, um sich über die Konzepte und Aspekte zu informieren, die für das Livestreaming mit lokalen Encodern und Pass-Through-Kanälen wichtig sind.
 
@@ -81,7 +81,7 @@ Um die dynamische Paketerstellung nutzen zu können, ist mindestens eine Streami
 
 Gehen Sie wie folgt vor, um die Anzahl von Einheiten zu erstellen und zu ändern, die für das Streaming reserviert sind:
 
-1. Klicken Sie im Fenster **Einstellungen** auf **Streamingendpunkte**. 
+1. Klicken Sie im Fenster **Einstellungen** auf **Streamingendpunkte**.
 
 2. Klicken Sie auf den Standard-Streamingendpunkt.
 
@@ -121,7 +121,7 @@ In diesem Abschnitt wird gezeigt, wie Sie die Option **Schnellerfassung** zum Er
 
 Weitere Informationen zu Pass-Through-Kanälen finden Sie unter [Livestreaming mit lokalen Encodern, die Multi-Bitrate-Datenströme erstellen](media-services-live-streaming-with-onprem-encoders.md).
 
-1. Klicken Sie im Fenster **Einstellungen** auf **Livestreaming**. 
+1. Klicken Sie im Fenster **Einstellungen** auf **Livestreaming**.
 
 	![Erste Schritte](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
 	
@@ -130,7 +130,7 @@ Weitere Informationen zu Pass-Through-Kanälen finden Sie unter [Livestreaming m
 3. Klicken Sie auf **Schnellerfassung**, um einen Pass-Through-Kanal mit dem RTMP-Erfassungsprotokoll zu erstellen.
 
 	Das Fenster **CREATE A NEW CHANNEL** (NEUEN KANAL ERSTELLEN) wird angezeigt.
-4. Geben Sie dem neuen Kanal einen Namen, und klicken Sie auf **Erstellen**. 
+4. Geben Sie dem neuen Kanal einen Namen, und klicken Sie auf **Erstellen**.
 
 	Der Pass-Through-Kanal mit dem RTMP-Erfassungsprotokoll wird erstellt.
 
@@ -175,4 +175,4 @@ Wählen Sie zum Verwalten der Objekte die Option **Einstellung**, und klicken Si
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

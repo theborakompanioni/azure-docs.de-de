@@ -14,7 +14,7 @@
    	ms.topic="hero-article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="06/01/2016"
+   	ms.date="06/28/2016"
    	ms.author="jgao"/>
 
 # Veröffentlichen von HDInsight-Anwendungen im Azure Marketplace
@@ -55,7 +55,7 @@ Die Veröffentlichung von Anwendungen im Azure Marketplace umfasst zwei Schritte
 |-------|---------------|----------------|
 |types |Die Clustertypen, mit denen die Anwendung kompatibel ist. |Hadoop, HBase, Storm, Spark (oder eine beliebige Kombination dieser Werte)|
 |tiers |Die Clustertarife, mit denen die Anwendung kompatibel ist. |Standard, Premium (oder beides)|
-|versions|	Die HDInsight-Clustertypen, mit denen die Anwendung kompatibel ist. |3.4|
+|versions|	Die HDInsight-Clustertypen, mit denen die Anwendung kompatibel ist. |3\.4|
 
 ## Packen der Anwendung
 
@@ -64,17 +64,17 @@ Erstellen Sie eine ZIP-Datei mit allen Dateien, die für die Installation der HD
 - [createUiDefinition.json](#define-application).
 - mainTemplate.json. Ein Beispiel finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
 
-	>[AZURE.IMPORTANT] Der Name der Anwendungsinstallationsskripts muss für einen bestimmten Cluster mit dem unten angegebenen Format eindeutig sein.
+	>[AZURE.IMPORTANT] Der Name der Anwendungsinstallationsskripts muss für einen bestimmten Cluster mit dem unten angegebenen Format eindeutig sein. Darüber hinaus müssen Aktionen für Installations- und Deinstallationsskripts idempotent sein. Das bedeutet, dass die Skripts wiederholt aufgerufen werden können und immer das gleiche Ergebnis zurückgeben.
 	
 	>	name": "[concat('hue-install-v0','-' ,uniquestring(‘applicationName’)]"
 		
 	>Beachten Sie, dass der Skriptname drei Teile umfasst:
 		
-	>	1. Ein Skriptnamenpräfix, das entweder den Anwendungsnamen oder einen für die Anwendung relevanten Namen enthalten sollte
-	>	2. „-“ für eine bessere Lesbarkeit
-	>	3. Eine eindeutige Zeichenfolgenfunktion mit dem Anwendungsnamen als Parameter
+	>	1. A script name prefix, which shall include either the application name or a name relevant to the application.
+	>	2. A "-" for readability.
+	>	3. A unique string function with the application name as the parameter.
 
-	>	Das oben genannte Beispiel lautet schlussendlich in der Liste persistenter Skriptaktionen wie folgt: hue-install-v0-4wkahss55hlas. Eine Beispiel-JSON-Nutzlast finden Sie unter [https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
+	>	An example is the above ends up becoming: hue-install-v0-4wkahss55hlas in the persisted script action list. For a sample JSON payload, see [https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
 
 - Alle erforderlichen Skripts.
 
@@ -87,9 +87,9 @@ Gehen Sie zum Veröffentlichen einer HDInsight-Anwendung wie folgt vor:
 1. Melden Sie sich beim [Azure-Veröffentlichungsportal](https://publish.windowsazure.com/) an.
 2. Klicken Sie auf **Lösungsvorlagen**, um eine neue Lösungsvorlage zu erstellen.
 3. Klicken Sie auf **Create Dev Center account and join the Azure program** (Dev Center-Konto erstellen und am Azure-Programm teilnehmen), um Ihr Unternehmen zu registrieren, sofern Sie diesen Schritt noch nicht ausgeführt haben. Weitere Informationen finden Sie unter [Erstellen eines Microsoft-Entwicklerkontos](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md).
-4. Klicken Sie auf **Define some Topologies to get Started** (Definieren einiger Topologien für den Einstieg). Eine Lösungsvorlage ist allen zugehörigen Topologien übergeordnet. Sie können in einem Angebot/einer Lösungsvorlage mehrere Topologien definieren. Wenn ein Angebot in die Stagingumgebung überführt wird, werden alle Topologien einbezogen. 
+4. Klicken Sie auf **Define some Topologies to get Started** (Definieren einiger Topologien für den Einstieg). Eine Lösungsvorlage ist allen zugehörigen Topologien übergeordnet. Sie können in einem Angebot/einer Lösungsvorlage mehrere Topologien definieren. Wenn ein Angebot in die Stagingumgebung überführt wird, werden alle Topologien einbezogen.
 5. Fügen Sie eine neue Version hinzu.
-6. Laden Sie die ZIP-Datei hoch, die Sie im Schritt [Packen der Anwendung](#package-application) vorbereitet haben.  
+6. Laden Sie die ZIP-Datei hoch, die Sie im Schritt [Packen der Anwendung](#package-application) vorbereitet haben.
 7. Klicken Sie auf **Zertifizierung anfordern**. Das Microsoft-Zertifizierungsteam prüft die Dateien und zertifiziert die Topologie.
 
 ## Nächste Schritte
@@ -98,4 +98,4 @@ Gehen Sie zum Veröffentlichen einer HDInsight-Anwendung wie folgt vor:
 - [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md): Hier erfahren Sie, wie Sie mithilfe der Skriptaktion zusätzliche Anwendungen installieren.
 - [Erstellen Linux-basierter Hadoop-Cluster in HDInsight mithilfe von ARM-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Hier erfahren Sie, wie Sie ARM-Vorlagen für die Erstellung von HDInsight-Clustern aufrufen.
 
-<!----HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="hero-article" 
- 	ms.date="05/03/2016" 
+	ms.date="06/22/2016"
 	ms.author="juliako;anilmur"/>
 
 #Azure Media Services – Übersicht und häufige Szenarios
@@ -29,13 +29,13 @@ Sie können Ihre Inhalte live streamen oder sie bei Bedarf bereitstellen. In die
 Zum Entwickeln von Media Services-Lösungen können Sie folgende Komponenten verwenden:
 
 - [Media Services-REST-API](https://msdn.microsoft.com/library/azure/hh973617.aspx)
-- Eines der verfügbaren Client-SDKs: 
-	- [Azure Media Services SDK für .NET](https://github.com/Azure/azure-sdk-for-media-services), 
-	- [Azure SDK für Java](https://github.com/Azure/azure-sdk-for-java), 
-	- [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php), 
-	- [Azure Media Services für Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (dies ist eine nicht von Microsoft stammende Version des Node.js SDK. Sie wird von einer Community verwaltet und bietet derzeit keine 100 %-ige Abdeckung der AMS-APIs). 
-- Vorhandene Tools: 
-	- [Klassisches Azure-Portal](http://manage.windowsazure.com/) 
+- Eines der verfügbaren Client-SDKs:
+	- [Azure Media Services SDK für .NET](https://github.com/Azure/azure-sdk-for-media-services),
+	- [Azure SDK für Java](https://github.com/Azure/azure-sdk-for-java),
+	- [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php),
+	- [Azure Media Services für Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (dies ist eine nicht von Microsoft stammende Version des Node.js SDK. Sie wird von einer Community verwaltet und bietet derzeit keine 100 %-ige Abdeckung der AMS-APIs).
+- Vorhandene Tools:
+	- [Klassisches Azure-Portal](http://manage.windowsazure.com/)
 	- [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Azure Media Services Explorer [AMSE] ist eine Winforms-/ C#-Anwendung für Windows)
 
 ##Media Services-Lernpfade
@@ -49,9 +49,9 @@ Sie können sich die AMS-Lernpfade hier ansehen:
 
 Um mit Azure Media Services loszulegen, sollten Sie Folgendes haben:
  
-3. Ein Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](azure.microsoft.com).
+3. Ein Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com).
 2. Ein Azure Media Services-Konto. Verwenden Sie das klassische Azure-Portal, .NET oder die REST-API zum Erstellen eines Azure Media Services-Kontos. Weitere Informationen finden Sie unter [Erstellen von Konten](media-services-create-account.md).
-3. (Optional) Eine eingerichtete Entwicklungsumgebung. Wählen Sie .NET oder REST-API für Ihre Entwicklungsumgebung. Weitere Informationen finden Sie unter [Einrichten der Umgebung](media-services-dotnet-how-to-use.md). 
+3. (Optional) Eine eingerichtete Entwicklungsumgebung. Wählen Sie .NET oder REST-API für Ihre Entwicklungsumgebung. Weitere Informationen finden Sie unter [Einrichten der Umgebung](media-services-dotnet-how-to-use.md).
 
 	Erfahren Sie darüber hinaus, wie Sie programmgesteuert eine [Verbindung](media-services-dotnet-connect-programmatically.md) herstellen können.
 4. (Empfohlen) Eine oder mehrere zugewiesene Skalierungseinheiten. Es wird empfohlen, für Anwendungen in der Produktionsumgebung eine oder mehrere Skalierungseinheiten zu reservieren. Weitere Informationen finden Sie unter [Verwalten von Streamingendpunkten](media-services-manage-origins.md).
@@ -99,7 +99,7 @@ Damit Sie die dynamische Verschlüsselung verwenden können, müssen Sie zunäch
 2. Konfigurieren Sie Autorisierungsrichtlinien für Inhaltsschlüssel.
 1. Konfigurieren Sie Übermittlungsrichtlinien für Medienobjekte (wird zur dynamischen Paketerstellung und zur dynamischen Verschlüsselung verwendet).
 1. Veröffentlichen Sie das Medienobjekt durch Erstellen eines OnDemand-Locators.
-1. Streamen Sie die veröffentlichten Inhalte. 
+1. Streamen Sie die veröffentlichten Inhalte.
 
 ###Gewinnen nützlicher Erkenntnisse aus Ihren Videos mithilfe von Media Analytics 
 
@@ -113,7 +113,7 @@ Media Analytics ist eine Sammlung aus Sprach- und Bildanalysekomponenten, mit de
 	- **Bewegungserkennung** – [Bewegungserkennung für Azure Media Analytics](media-services-motion-detection.md)
 	- **Gesichtserkennung und Gesichtsausdrücke** – [Gesichts- und Emotionenerkennung mit Azure Media Analytics](media-services-face-and-emotion-detection.md)
 	- **Videozusammenfassung** – [Verwenden von Azure Media Video Thumbnails zum Erstellen einer Videozusammenfassung](media-services-video-summarization.md)
-3. Media Analytics-Medienprozessoren generieren MP4- oder JSON-Dateien. Wenn ein Medienprozessor eine MP4-Datei erstellt hat, können Sie die Datei progressiv herunterladen. Wenn ein Medienprozessor eine JSON-Datei erstellt hat, können Sie die Datei aus dem Azure-Blobspeicher herunterladen. 
+3. Media Analytics-Medienprozessoren generieren MP4- oder JSON-Dateien. Wenn ein Medienprozessor eine MP4-Datei erstellt hat, können Sie die Datei progressiv herunterladen. Wenn ein Medienprozessor eine JSON-Datei erstellt hat, können Sie die Datei aus dem Azure-Blobspeicher herunterladen.
 
 
 ###Bereitstellen eines progressiven Downloads 
@@ -153,7 +153,7 @@ In Azure Media Services verarbeiten die **Kanäle**, **Programme** und **Streami
 
 Ein **Kanal** stellt eine Pipeline zum Verarbeiten von Livestreaming-Inhalten dar. Ein Kanal kann Live-Eingabedatenströme auf folgende Arten empfangen:
 
-- Von einem lokalen Liveencoder wird Multi-Bitrate-basiertes **RTMP** oder **Smooth Streaming** (fragmentiertes MP4) an den für **Pass-Through** konfigurierten Kanal gesendet. Bei der **Pass-Through-Übertragung** durchlaufen die erfassten Datenströme die **Kanäle** ohne weitere Verarbeitung. Sie können die folgenden Liveencoder verwenden, von denen Multi-Bitrate-Smooth Streaming ausgegeben werden kann: Elemental, Envivio, Cisco. Von den folgenden Liveencodern wird RTMP ausgegeben: Adobe Flash Live, Telestream Wirecast und Tricaster-Transcoder. Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für Live Encoding konfiguriert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
+- Von einem lokalen Liveencoder wird Multi-Bitrate-basiertes **RTMP** oder **Smooth Streaming** (fragmentiertes MP4) an den für **Pass-Through** konfigurierten Kanal gesendet. Bei der **Pass-Through-Übertragung** durchlaufen die erfassten Datenströme die **Kanäle** ohne weitere Verarbeitung. Sie können die folgenden Liveencoder verwenden, von denen Multi-Bitrate-Smooth Streaming ausgegeben werden kann: Elemental, Envivio, Cisco. Von den folgenden Liveencodern wird RTMP ausgegeben: Adobe Flash Live, Telestream Wirecast und Tricaster-Transcoder. Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für die Livecodierung konfiguriert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 
 	>[AZURE.NOTE] Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings, wenn mehrere Ereignisse über einen längeren Zeitraum gestreamt werden und Sie bereits in lokale Encoder investiert haben. Preisdetails finden Sie [hier](/pricing/details/media-services/).
 	
@@ -220,4 +220,4 @@ Weitere Informationen finden Sie im [Microsoft Azure-SLA](https://azure.microsof
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

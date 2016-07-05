@@ -13,7 +13,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-compute"
-	ms.date="06/17/2016"
+	ms.date="06/29/2016"
 	ms.author="marsma"/>
 
 # Übersicht über Batch-Features für Entwickler
@@ -133,7 +133,7 @@ Wenn Sie einen Pool erstellen, können Sie die folgenden Attribute angeben:
 
 	In den meisten Szenarien werden Tasks unabhängig voneinander ausgeführt und müssen nicht miteinander kommunizieren. Es sind jedoch auch einige Anwendungen denkbar, in denen Tasks kommunizieren müssen (z.B. in [MPI-Szenarien](batch-mpi.md)).
 
-	Sie können einen Pool derart konfigurieren, dass die Kommunikation zwischen den darin enthaltenen Knoten zugelassen wird. Dies ist die so genannte „Kommunikation zwischen Knoten“ (Inter-Node Communication). Wenn die Kommunikation zwischen Knoten aktiviert ist, können Knoten in Pools vom Typ „Clouddienstkonfiguration“ miteinander über Ports kommunizieren, die über 1100 liegen, und in Pools vom Typ „Konfiguration des virtuellen Computers“ bestehen keine Portbeschränkungen für Datenverkehr.
+	Sie können einen Pool so konfigurieren, dass die Kommunikation zwischen den darin enthaltenen Knoten zugelassen wird. Dies ist die so genannte **Kommunikation zwischen Knoten** (Inter-Node Communication). Wenn die Kommunikation zwischen Knoten aktiviert ist, können Knoten in Pools vom Typ „Clouddienstkonfiguration“ miteinander über Ports kommunizieren, die über 1100 liegen, und in Pools vom Typ „Konfiguration des virtuellen Computers“ bestehen keine Portbeschränkungen für Datenverkehr.
 
 	Beachten Sie, dass sich die Aktivierung der Kommunikation zwischen Knoten auch auf die Anordnung der Knoten in Clustern auswirkt. Aufgrund von Bereitstellungsbeschränkungen wird unter Umständen die maximale Anzahl von Knoten in einem Pool begrenzt. Wenn für Ihre Anwendung keine Kommunikation zwischen Knoten erforderlich ist, kann der Batch-Dienst potenziell eine große Anzahl von Knoten in vielen verschiedenen Clustern oder Datencentern für den Pool reservieren, um die Möglichkeit zur parallelen Verarbeitung zu erhöhen.
 
@@ -207,7 +207,7 @@ Ein wesentlicher Vorteil von Starttasks besteht darin, dass sie alle Information
 
 Wie bei jedem anderen Azure Batch-Task kann zusätzlich zu einer auszuführenden **Befehlszeile** eine Liste mit **Ressourcendateien** in [Azure Storage][azure_storage] angegeben werden. Batch kopiert zunächst die Ressourcendateien aus Azure Storage auf den Knoten und führt dann die Befehlszeile aus. Bei einem poolbezogenen Starttask enthält die Dateiliste üblicherweise die Taskanwendung und die damit verbundenen Abhängigkeiten. Sie kann aber auch Referenzdaten für alle Tasks enthalten, die auf dem Computeknoten ausgeführt werden. Die Befehlszeile eines Starttasks kann beispielsweise einen `robocopy`-Vorgang zum Kopieren von Anwendungsdateien durchführen, die als Ressourcendateien angegeben und auf den Knoten heruntergeladen wurden. Der Kopiervorgang wird aus dem [Arbeitsverzeichnis](#files-and-directories) des Starttasks in den [freigegebenen Ordner](#files-and-directories) durchgeführt, und anschließend wird ein MSI oder `setup.exe` ausgeführt.
 
-> [AZURE.IMPORTANT] Von Batch wird derzeit *ausschließlich* der Speicherkontotyp **Allgemein** unterstützt, wie in [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md) unter Schritt 5 ([Erstellen Sie ein Speicherkonto](../storage/storage-create-storage-account.md#create-a-storage-account)) beschrieben. In Ihren Batch-Tasks (einschließlich Standardtasks, Starttasks und Tasks zur Auftragsvorbereitung und -freigabe) müssen Ressourcendateien angegeben werden, die sich *ausschließlich* in Speicherkonten vom Typ **Allgemein** befinden.
+> [AZURE.IMPORTANT] Von Batch wird derzeit *ausschließlich* der Speicherkontotyp **Allgemein** unterstützt, wie in [Informationen zu Azure-Speicherkonten](../storage/storage-create-storage-account.md) unter Schritt 5 ([Erstellen Sie ein Speicherkonto.](../storage/storage-create-storage-account.md#create-a-storage-account)) beschrieben. In Ihren Batch-Tasks (einschließlich Standardtasks, Starttasks und Tasks zur Auftragsvorbereitung und -freigabe) müssen Ressourcendateien angegeben werden, die sich *ausschließlich* in Speicherkonten vom Typ **Allgemein** befinden.
 
 In der Regel ist es wünschenswert, dass der Batch-Dienst auf den Abschluss des Starttasks wartet und erst dann davon ausgeht, dass der Knoten nun für die Taskzuweisung bereit ist. Dieses Verhalten ist jedoch konfigurierbar.
 
@@ -250,7 +250,7 @@ Ausführliche Informationen zum Ausführen von MPI-Aufträgen in Batch mithilfe 
 
 #### Abhängigkeiten von Aufgaben
 
-Mithilfe von Abhängigkeiten von Aufgaben können Sie, wie der Name schon sagt, angeben, dass die Ausführung einer Aufgabe vom Abschluss einer anderen Aufgaben abhängig ist. Dieses Feature bietet Unterstützung in Situationen, in denen eine Downstreamaufgabe die Ausgabe einer Upstreamaufgabe nutzt oder eine Upstreamaufgabe eine Initialisierung ausführt, die für einer Downstreamaufgabe erforderlich ist. Um dieses Feature verwenden zu können, müssen Sie zuerst Aufgabenabhängigkeiten für den Batchauftrag aktivieren. Geben Sie dann für jede Aufgabe, die von einer (oder mehreren) anderen abhängt, die übergeordneten Aufgaben an.
+Mithilfe von [Abhängigkeiten von Aufgaben](batch-task-dependencies.md) können Sie – wie der Name schon vermuten lässt – angeben, dass die Ausführung einer Aufgabe vom Abschluss einer anderen Aufgaben abhängig ist. Dieses Feature bietet Unterstützung in Situationen, in denen eine Downstreamaufgabe die Ausgabe einer Upstreamaufgabe nutzt oder eine Upstreamaufgabe eine Initialisierung ausführt, die für einer Downstreamaufgabe erforderlich ist. Um dieses Feature verwenden zu können, müssen Sie zuerst Aufgabenabhängigkeiten für den Batchauftrag aktivieren. Geben Sie dann für jede Aufgabe, die von einer (oder mehreren) anderen abhängt, die übergeordneten Aufgaben an.
 
 Mit Abhängigkeiten von Aufgaben können Sie Szenarien wie etwa die folgenden konfigurieren:
 
@@ -258,13 +258,13 @@ Mit Abhängigkeiten von Aufgaben können Sie Szenarien wie etwa die folgenden ko
 * *TaskC* hängt sowohl von *TaskA* als auch von *TaskB* ab.
 * *TaskD* hängt vor der Ausführung von einem Taskbereich ab, z.B. den Tasks *1* bis *10*.
 
-Sehen Sie sich hierzu das Codebeispiel [TaskDependencies][github_sample_taskdeps] im GitHub-Repository [azure-batch-samples][github_samples] an. Dort erfahren Sie, wie Sie mithilfe der [Batch .NET][batch_net_api]-Bibliothek Tasks konfigurieren, die von anderen Tasks abhängen.
+Weitere ausführliche Informationen zu diesem Feature finden Sie unter [Abhängigkeiten von Aufgaben in Azure Batch](batch-task-dependencies.md) und im Codebeispiel [TaskDependencies][github_sample_taskdeps] im GitHub-Repository [azure-batch-samples][github_samples].
 
 ## Umgebungseinstellungen für Tasks
 
 Jeder Task, der in einem Batch-Auftrag ausgeführt wird, hat Zugriff auf Umgebungsvariablen, die sowohl durch den Batch-Dienst (dienstdefiniert, siehe Tabelle unten) als auch durch benutzerdefinierte Umgebungsvariablen festgelegt werden, die Sie für Ihre Tasks angeben können. Die Anwendungen und Skripts, die von Ihren Tasks auf den Knoten ausgeführt werden, haben während der Ausführung Zugriff auf diese Umgebungsvariablen.
 
-Sie können benutzerdefinierte Umgebungsvariablen auf Task- oder Auftragsebene festlegen, indem Sie die Eigenschaft *Umgebungseinstellungen* für diese Entitäten auffüllen. Informieren Sie sich beispielsweise über den Vorgang zum [Hinzufügen einer Aufgabe zu einem Auftrag][rest_add_task] (Batch REST-API) oder die Eigenschaften [CloudTask.EnvironmentSettings][net_cloudtask_env] und [CloudJob.CommonEnvironmentSettings][net_job_env] in Batch .NET.
+Sie können benutzerdefinierte Umgebungsvariablen auf Task- oder Auftragsebene festlegen, indem Sie die Eigenschaft *Umgebungseinstellungen* für diese Entitäten auffüllen. Informieren Sie sich beispielsweise über den Vorgang zum [Hinzufügen einer Aufgabe zu einem Auftrag][rest_add_task] (Batch REST-API) oder über die Eigenschaften [CloudTask.EnvironmentSettings][net_cloudtask_env] und [CloudJob.CommonEnvironmentSettings][net_job_env] in Batch .NET.
 
 Die Clientanwendung bzw. der Dienst kann die Umgebungsvariablen eines Tasks abrufen – sowohl dienstdefiniert als auch benutzerdefiniert –, indem der Vorgang [Abrufen von Informationen zu einer Aufgabe][rest_get_task_info] (Batch REST) verwendet oder auf die Eigenschaft [CloudTask.EnvironmentSettings][net_cloudtask_env] (Batch .NET) zugegriffen wird. Prozesse, die auf einem Computeknoten ausgeführt werden, können auf diese und andere Umgebungsvariablen auf dem Knoten zugreifen, z.B. mit der vertrauten `%VARIABLE_NAME%`-Syntax (Windows) oder `$VARIABLE_NAME`-Syntax (Linux).
 
@@ -285,11 +285,11 @@ Die folgenden Umgebungsvariablen werden vom Batch-Dienst festgelegt und sind fü
 | `AZ_BATCH_TASK_ID` | Die ID des aktuellen Tasks |
 | `AZ_BATCH_TASK_WORKING_DIR` | Der vollständige Pfad des Aufgabenarbeitsverzeichnisses auf dem Knoten. |
 
->[AZURE.IMPORTANT] Diese Umgebungsvariablen sind nur im Kontext des **Taskbenutzers** verfügbar. Dies ist das Benutzerkonto auf dem Knoten, unter dem eine Task ausgeführt wird. Sie werden **nicht** angezeigt, wenn Sie eine [Remoteverbindung](#connecting-to-compute-nodes) mit einem Computeknoten per RDP oder SSH herstellen und die Umgebungsvariablen auflisten.
+>[AZURE.IMPORTANT] Diese Umgebungsvariablen sind nur im Kontext des **Taskbenutzers** verfügbar. Dies ist das Benutzerkonto auf dem Knoten, unter dem ein Task ausgeführt wird. Sie werden **nicht** angezeigt, wenn Sie eine [Remoteverbindung](#connecting-to-compute-nodes) mit einem Computeknoten per RDP oder SSH herstellen und die Umgebungsvariablen auflisten. Dies liegt daran, dass das Benutzerkonto für die Remoteverbindung nicht dem vom Task verwendeten Konto entspricht.
 
 ## Dateien und Verzeichnisse
 
-Jeder Task verfügt über ein Arbeitsverzeichnis, unter dem null oder mehr Dateien und Verzeichnisse für das Speichern des von einem Task ausgeführten Programms, der von einem Task verarbeiteten Daten und der Ausgabe der von einem Task ausgeführten Verarbeitung erstellt werden. Diese Dateien und Verzeichnisse sind dann während der Ausführung eines Auftrags für andere Tasks verfügbar. Alle Tasks, Dateien und Verzeichnisse auf einem Knoten gehören einem einzelnen Benutzerkonto.
+Jeder Task verfügt über ein *Arbeitsverzeichnis*, unter dem null oder mehr Dateien und Verzeichnisse erstellt werden. Dieses Arbeitsverzeichnis kann für das Speichern des von einem Task ausgeführten Programms, der dabei verarbeiteten Daten und der Ausgabe der Verarbeitung verwendet werden. Alle Dateien und Verzeichnisse eines Tasks befinden sich im Besitz des Taskbenutzers.
 
 Der Batch-Dienst stellt einen Teil des Dateisystems auf einem Knoten als Stammverzeichnis bereit. Das Stammverzeichnis ist für einen Task durch den Zugriff auf die `AZ_BATCH_NODE_ROOT_DIR`-Umgebungsvariable verfügbar. Weitere Informationen zur Verwendung von Umgebungsvariablen finden Sie unter [Umgebungseinstellungen für Tasks](#environment-settings-for-tasks).
 
@@ -483,4 +483,4 @@ Wenn bei einigen Ihrer Tasks Fehler auftreten, kann Ihre Batch-Clientanwendung o
 
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

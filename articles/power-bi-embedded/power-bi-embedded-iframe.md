@@ -3,7 +3,7 @@
    description="Microsoft Power BI Embedded Preview – Grundlegender Code zum Einbetten eines Berichts in Ihre App, Authentifizieren mit Power BI Embedded-App-Token, Abrufen von Berichten"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="dvana"
+   authors="minewiskan"
    manager="NA"
    editor=""
    tags=""/>
@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="05/16/2016"
-   ms.author="derrickv"/>
+   ms.date="06/28/2016"
+   ms.author="owend"/>
 
 # Einbetten eines Power BI-Berichts mit einem IFrame
 Dieser Artikel enthält grundlegenden Code, um einen Bericht mithilfe der REST-API **Power BI Embedded**, App-Token, einem IFrame und JavaScript-Code in Ihre App zu integrieren (einzubetten).
@@ -228,4 +228,4 @@ In diesem Artikel haben Sie den Code kennengelernt, mit dem Sie einen **Power BI
 - [System.IdentityModel.Tokens.JwtSecurityTokenHandler](https://msdn.microsoft.com/library/system.identitymodel.tokens.signingcredentials.aspx)
 - [Get Reports (Berichte abrufen)](https://msdn.microsoft.com/library/mt711510.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

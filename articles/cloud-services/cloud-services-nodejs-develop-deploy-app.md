@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs"
 	ms.topic="hero-article"
-	ms.date="05/03/2016" 
+	ms.date="06/24/2016" 
 	ms.author="robmcm"/>
 
 # Erstellen und Bereitstellen einer Node.js-Anwendung in einem Azure-Clouddienst
@@ -198,4 +198,4 @@ Weitere Informationen finden Sie im [Node.js Developer Center].
 [The status of the Stop-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node48.png
 [The status of the Remove-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node49.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->
