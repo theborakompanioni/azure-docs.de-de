@@ -12,7 +12,7 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="03/25/2016" 
+ms.date="06/22/2016" 
 ms.author="adegeo"/>
 
 # Ermöglichen der Kommunikation für Rolleninstanzen in Azure
@@ -93,7 +93,7 @@ Die verwaltete Azure-Bibliothek enthält Methoden, mit deren Hilfe Rolleninstanz
 
 Sie können die [Instances](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx)-Eigenschaft verwenden, um Instanzen einer Rolle abzurufen. Verwenden Sie zuerst [CurrentRoleInstance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx), um einen Verweis auf die aktuelle Rolleninstanz zurückzugeben, und anschließend die [Role](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx)-Eigenschaft, um einen Verweis auf die Rolle selbst zurückzugeben.
 
-Wenn Sie programmgesteuert über das .NET-SDK eine Verbindung mit einer Rolleninstanz herstellen, ist es relativ einfach, auf die Endpunktinformationen zuzugreifen. Nachdem Sie eine Verbindung mit einer bestimmten Rollenumgebung hergestellt haben, können Sie z. B. mit folgendem Code den Port eines bestimmten Endpunkts abrufen:
+Wenn Sie programmgesteuert über das .NET-SDK eine Verbindung mit einer Rolleninstanz herstellen, ist es relativ einfach, auf die Endpunktinformationen zuzugreifen. Nachdem Sie eine Verbindung mit einer bestimmten Rollenumgebung hergestellt haben, können Sie z. B. mit folgendem Code den Port eines bestimmten Endpunkts abrufen:
 
 ```csharp
 int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].IPEndpoint.Port;
@@ -246,7 +246,7 @@ Das folgende Codebeispiel zeigt Rollendefinitionen für die im obigen Diagramm d
 
 Standardmäßig ist der Kommunikationsfluss von beliebigen Rollen zum internen Endpunkt einer Rolle ohne Einschränkungen möglich, nachdem ein interner Endpunkt definiert wurde. Wenn Sie die Kommunikation einschränken möchten, fügen Sie dem **ServiceDefinition**-Element in der Dienstdefinitionsdatei ein **NetworkTrafficRules**-Element hinzu.
 
-### Szenario 1
+### Szenario 1
 Dieses Beispiel lässt nur Netzwerkdatenverkehr von **WebRole1** zu **WorkerRole1** zu.
 
 ```xml
@@ -265,7 +265,7 @@ Dieses Beispiel lässt nur Netzwerkdatenverkehr von **WebRole1** zu **WorkerRole
 </ServiceDefinition>
 ```
 
-### Szenario 2:
+### Szenario 2:
 Dieses Beispiel lässt nur Netzwerkdatenverkehr von **WebRole1** zu **WorkerRole1** und **WorkerRole2** zu.
 
 ```xml
@@ -284,7 +284,7 @@ Dieses Beispiel lässt nur Netzwerkdatenverkehr von **WebRole1** zu **WorkerRole
 </ServiceDefinition>
 ```
 
-### Szenario 3
+### Szenario 3
 Dieses Beispiel lässt nur Netzwerkdatenverkehr von **WebRole1** zu **WorkerRole1** und von **WorkerRole1** zu **WorkerRole2** zu.
 
 ```xml
@@ -313,7 +313,7 @@ Dieses Beispiel lässt nur Netzwerkdatenverkehr von **WebRole1** zu **WorkerRole
 </ServiceDefinition>
 ```
 
-### Szenario 4
+### Szenario 4
 Dieses Beispiel lässt nur Netzwerkdatenverkehr von **WebRole1** zu **WorkerRole1**, von **WebRole1** zu **WorkerRole2** und von **WorkerRole1** zu **WorkerRole2** zu.
 
 ```xml
@@ -359,4 +359,4 @@ Eine XML-Schemareferenz für die oben verwendeten Elemente finden Sie [hier](htt
 ## Nächste Schritte
 Erfahren Sie mehr über das [Clouddienstmodell](cloud-services-model-and-package.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0622_2016-->

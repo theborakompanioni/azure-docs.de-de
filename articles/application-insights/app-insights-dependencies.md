@@ -68,6 +68,10 @@ Aus den Feldern können Sie zur relevanten Abhängigkeit und zu anderen Diagramm
 
 Klicken Sie auf das kleine [x], um eine Unterstruktur zu reduzieren.
 
+Heften Sie die Zuordnung an das [Dashboard](app-insights-dashboards.md) an, und nutzen Sie alle ihre Funktionen.
+
+[Weitere Informationen](app-insights-app-map.md).
+
 ## <a name="diagnosis"></a> Diagnostizieren von Leistungsproblemen der Abhängigkeit auf dem Webserver
 
 So bewerten Sie die Leistung der Anforderungen an den Server
@@ -150,4 +154,4 @@ Siehe [Webseiten](app-insights-javascript.md).
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

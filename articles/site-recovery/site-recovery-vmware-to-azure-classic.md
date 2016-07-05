@@ -307,10 +307,10 @@ Wenn Sie virtuelle VMware-Computer replizieren möchten, installieren Sie die fo
 >[AZURE.WARNING] Der Proxy des Agents der Microsoft Azure Recovery Services muss eingerichtet werden. Starten Sie nach Abschluss der Installation über das Windows-Startmenü die Anwendung „Microsoft Azure Recovery Services Shell“. Führen Sie im daraufhin geöffneten Befehlsfenster den folgenden Befehlssatz aus, um die Proxyservereinstellungen einzurichten.
 >
 	$pwd = ConvertTo-SecureString -String ProxyUserPassword
-	 Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumb – ProxyUserName domain\\username -ProxyPassword $pwd 
-	 net stop obengine 
-	 net start obengine
-
+	Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumb – ProxyUserName domain\\username -ProxyPassword $pwd
+	net stop obengine
+	net start obengine
+	 
 
 
 ### Ausführen des Setupprogramms über die Befehlszeile
@@ -761,4 +761,4 @@ The complete file may be found on the [Microsoft Download Center](http://go.micr
 
 [Erfahren Sie mehr zum Failback](site-recovery-failback-azure-to-vmware-classic.md) von unter Azure ausgeführten Computern auf die lokale Umgebung.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

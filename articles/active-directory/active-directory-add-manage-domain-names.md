@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeffsta"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/20/2016"
+	ms.date="06/21/2016"
 	ms.author="curtand;jeffsta"/>
 
 # Verwalten von benutzerdefinierten Domänennamen in Azure Active Directory
@@ -80,4 +80,4 @@ Die meisten Verwaltungsaufgaben für Domänennamen in Azure Active Directory kö
 
 -   [Verwalten von benutzerdefinierten Domänennamen](active-directory-add-manage-domain-names.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0622_2016-->

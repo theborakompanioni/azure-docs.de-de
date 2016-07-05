@@ -131,7 +131,7 @@ Derzeit werden die folgenden Aliase unterstützt:
 
 | Aliasname | Beschreibung |
 | ---------- | ----------- |
-| {resourceType}/sku.name | Unterstützte Ressourcentypen: Microsoft.Compute/virtualMachines,<br />Microsoft.Storage/storageAccounts,<br />Microsoft.Scheduler/jobcollections,<br />Microsoft.DocumentDB/databaseAccounts,<br />Microsoft.Cache/Redis,<br />Microsoft..CDN/profiles |
+| {resourceType}/sku.name | Unterstützte Ressourcentypen: Microsoft.Compute/virtualMachines,<br />Microsoft.Storage/storageAccounts,<br />Microsoft.Web/serverFarms,<br /> Microsoft.Scheduler/jobcollections,<br />Microsoft.DocumentDB/databaseAccounts,<br />Microsoft.Cache/Redis,<br />Microsoft..CDN/profiles |
 | {resourceType}/sku.family | Unterstützter Ressourcentyp: Microsoft.Cache/Redis |
 | {resourceType}/sku.capacity | Unterstützter Ressourcentyp: Microsoft.Cache/Redis |
 | Microsoft.Compute/virtualMachines/imagePublisher | |
@@ -140,9 +140,15 @@ Derzeit werden die folgenden Aliase unterstützt:
 | Microsoft.Compute/virtualMachines/imageVersion | |
 | Microsoft.Cache/Redis/enableNonSslPort | |
 | Microsoft.Cache/Redis/shardCount | |
+| Microsoft.SQL/servers/version | |
+| Microsoft.SQL/servers/databases/requestedServiceObjectiveId | |
+| Microsoft.SQL/servers/databases/requestedServiceObjectiveName | |
+| Microsoft.SQL/servers/databases/edition | |
+| Microsoft.SQL/servers/databases/elasticPoolName | |
+| Microsoft.SQL/servers/elasticPools/dtu | |
+| Microsoft.SQL/servers/elasticPools/edition | |
 
-
-Weitere Informationen zu Aktionen finden Sie unter [RBAC – Integrierte Rollen](active-directory/role-based-access-built-in-roles.md). Derzeit gilt die Richtlinie nur bei PUT-Anforderungen.
+Derzeit gilt die Richtlinie nur bei PUT-Anforderungen.
 
 ## Effekt
 Die Richtlinie unterstützt drei Arten von Auswirkungen: **deny**, **audit** und **append**.
@@ -385,7 +391,7 @@ Der Anforderungstext sollte dem folgenden ähneln:
     }
 
 
-Die Richtliniendefinition kann als eines der oben aufgeführten Beispiele definiert werden. Verwenden Sie als „api-version“ die Einstellung *2016-04-01*. Weitere Beispiele und Informationen finden Sie unter [Policy Definitions](https://msdn.microsoft.com/library/azure/mt588471.aspx) (in englischer Sprache).
+Die Richtliniendefinition kann als eines der oben aufgeführten Beispiele definiert werden. Verwenden Sie als API-Version *2016-04-01*. Weitere Beispiele und Informationen finden Sie unter [Policy Definitions](https://msdn.microsoft.com/library/azure/mt588471.aspx) (in englischer Sprache).
 
 ### Erstellen der Richtliniendefinition mit der PowerShell
 
@@ -418,7 +424,7 @@ Führen Sie zum Erstellen einer neuen Richtlinienzuweisung Folgendes aus:
 
     PUT https://management.azure.com /subscriptions/{subscription-id}/providers/Microsoft.authorization/policyassignments/{policyAssignmentName}?api-version={api-version}
 
-"{policy-assignment}" ist der Name der Richtlinienzuweisung. Verwenden Sie als „api-version“ die Einstellung *2016-04-01*.
+"{policy-assignment}" ist der Name der Richtlinienzuweisung. Verwenden Sie als API-Version *2016-04-01*.
 
 Der Anforderungstext sollte dem folgenden ähneln:
 
@@ -462,4 +468,4 @@ Zum Anzeigen aller Ereignisse, die mit dem Überwachungseffekt in Verbindung ste
     Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/audit/action"} 
     
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

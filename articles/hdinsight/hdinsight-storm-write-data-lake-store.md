@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="01/28/2016"
+ms.date="06/17/2016"
 ms.author="larryfr"/>
 
 #Verwenden von Azure Data Lake-Speicher mit Apache Storm und HDInsight
@@ -27,15 +27,15 @@ Azure Data Lake-Speicher ist ein mit HDFS-kompatibler Cloudspeicherdienst, der f
 * [Java JDK 1.7](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) oder höher
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 * Ein Azure-Abonnement
-* Ein Storm-in-HDInsight-Cluster Erstellen Sie einen neuen Storm-in-HDInsight-Cluster, indem Sie die Schritte im Dokument [Bereitstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md) ausführen. Anhand der Schritte in diesem Dokument erstellen Sie einen neuen HDInsight-Cluster und Azure Data Lake-Speicher.  
+* Ein Storm-in-HDInsight-Cluster der Version 3.2. Erstellen Sie einen neuen Storm-in-HDInsight-Cluster, indem Sie die Schritte im Dokument [Bereitstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md) ausführen. Anhand der Schritte in diesem Dokument erstellen Sie einen neuen HDInsight-Cluster und Azure Data Lake-Speicher.  
 
-    > [AZURE.IMPORTANT] Wenn Sie den HDInsight-Cluster erstellen, müssen Sie __Storm__ als Clustertyp auswählen. Das Betriebssystem kann Windows oder Linux sein.
+    > [AZURE.IMPORTANT] Wenn Sie den HDInsight-Cluster erstellen, müssen Sie __Storm__ als Clustertyp und __3.2__ als Version auswählen. Das Betriebssystem kann Windows oder Linux sein.
 
 ###Konfigurieren von Umgebungsvariablen
 
 Bei der Installation von Java und dem JDK auf Ihrer Entwicklungsworkstation können die folgenden Umgebungsvariablen festgelegt werden. Sie sollten dennoch prüfen, ob die Variablen vorhanden sind und korrekte Werte für Ihr System enthalten.
 
-* __JAVA\_HOME__ – sollte auf das Verzeichnis verweisen, in dem die Java-Laufzeitumgebung (Java Runtime Environment, JRE) installiert ist. Für eine Unix- oder Linux-Distribution sollte z. B. ein Wert wie `/usr/lib/jvm/java-7-oracle` verwendet werden. Unter Windows sollte der Wert in etwa `c:\Program Files (x86)\Java\jre1.7` lauten.
+* __JAVA\_HOME__ – sollte auf das Verzeichnis verweisen, in dem die Java-Laufzeitumgebung (Java Runtime Environment, JRE) installiert ist. Für eine Unix- oder Linux-Distribution sollte z. B. ein Wert wie `/usr/lib/jvm/java-7-oracle` verwendet werden. Unter Windows sollte der Wert so ähnlich sein wie `c:\Program Files (x86)\Java\jre1.7`.
 
 * __PATH__ – sollte die folgenden Pfade enthalten:
 
@@ -137,9 +137,9 @@ Wenn Sie einen auf Linux basierenden Storm-in-HDInsight-Cluster erstellt haben, 
 
 ##Bereitstellen und Ausführen in auf Windows basierendem HDInsight
 
-1. Öffnen Sie einen Webbrowser, und navigieren Sie zu HTTPS://CLUSTERNAME.azurehdinsight.net, wobei __CLUSTERNAME__ der Name Ihres HDInsight-Clusters ist. Geben Sie bei Aufforderung den Benutzernamen „admin“ (`admin`) und das Kennwort ein, das Sie für dieses Konto verwendet haben, als der Cluster erstellt wurde.
+1. Öffnen Sie einen Webbrowser, und navigieren Sie zu HTTPS://CLUSTERNAME.azurehdinsight.net, wobei __CLUSTERNAME__ der Name Ihres HDInsight-Clusters ist. Geben Sie bei entsprechender Aufforderung den Administratorbenutzernamen (`admin`) und das Kennwort ein, die Sie für dieses Konto verwendet haben, als der Cluster erstellt wurde.
 
-2. Wählen Sie im Storm-Dashboard __Durchsuchen__ in der Dropdownliste __JAR-Datei__ aus, und wählen Sie im Verzeichnis `target` die Datei „StormToDataLakeStore-1.0-SNAPSHOT.jar“ aus. Verwenden Sie die folgenden Werte für die weiteren Einträge im Formular:
+2. Wählen Sie im Storm-Dashboard in der Dropdownliste __JAR-Datei__ die Option __Durchsuchen__, und wählen Sie im Verzeichnis `target` die Datei „StormToDataLakeStore-1.0-SNAPSHOT.jar“ aus. Verwenden Sie die folgenden Werte für die weiteren Einträge im Formular:
 
     * Klassenname: com.microsoft.example.StormToDataLakeStore
     * Zusätzliche Parameter: datalakewriter
@@ -203,9 +203,9 @@ Führen Sie in einer SSH-Sitzung mit dem Cluster den folgenden Befehl aus:
 
 __Für Windows-basiertes HDInsight__:
 
-1. Wählen Sie im Storm-Dashboard (https://CLUSTERNAME.azurehdinsight.net,) oben auf der Seiten den Link __Storm-Benutzeroberfläche__ aus.
+1. Wählen Sie im Storm-Dashboard (https://CLUSTERNAME.azurehdinsight.net,) oben auf der Seiten den Link __Storm-Benutzeroberfläche__.
 
-2. Nachdem die Storm-Benutzeroberfläche geladen wurde, wählen Sie den Link __datalakewriter__ aus.
+2. Nachdem die Storm-Benutzeroberfläche geladen wurde, wählen Sie den Link __datalakewriter__.
 
     ![Link zu datalakewriter](./media/hdinsight-storm-write-data-lake-store/selecttopology.png)
 
@@ -221,4 +221,4 @@ __Für Windows-basiertes HDInsight__:
 
 Nachdem Sie erfahren haben, wie Daten mithilfe von Storm in Azure Data Lake-Speicher geschrieben werden, können Sie sich mit anderen [Storm-Beispielen für HDInsight](hdinsight-storm-example-topology.md) beschäftigen.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0622_2016-->

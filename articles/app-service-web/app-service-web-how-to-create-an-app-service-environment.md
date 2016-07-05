@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/08/2016" 
+	ms.date="06/20/2016" 
 	ms.author="ccompy"/>
 
 # Erstellen einer App Service-Umgebung #
@@ -38,7 +38,7 @@ Für jedes dieser Elemente gibt es einige wichtige Details.
 - VNETs, die für das Hosting einer ASE verwendet werden, müssen regionale, klassische „v1“-VNETs sein. 
 - **Das für das Hosting der ASE verwendete Subnetz darf keine anderen Compute-Ressourcen enthalten.**
 - In einem Subnetz kann nur eine ASE vorhanden sein.
-- Derzeit werden nur virtuelle Netzwerke mit dem Adressraum RFC1918 (d.h. private Adressen) unterstützt.
+- Infolge einer im Juni 2016 vorgenommenen Änderung können nun ASEs in virtuellen Netzwerken bereitgestellt werden, die *entweder* öffentliche Adressbereiche *oder* RFC1918-Adressräume (d.h. private Adressen) verwenden. Um ein virtuelles Netzwerk mit einem öffentlichen Adressbereich zu verwenden, müssen Sie das Subnetz vorab erstellen und dann das Subnetz auf der UX für die ASE-Erstellung auswählen.
 
 Jede Bereitstellung einer App Service-Umgebung ist ein gehosteter Dienst, der von Azure verwaltet und gewartet wird. Die Compute-Ressourcen, welche die Systemrollen der App Service-Umgebung hosten, sind für den Kunden nicht zugänglich. Der Kunde verwaltet jedoch die Menge der Instanzen und deren Größen.
 
@@ -49,7 +49,7 @@ Wenn Sie möchten, dass das VNET eine von der ASE separate Ressourcengruppe verw
 ### Schnellerfassung ###
 Die Erstellungsoberfläche für eine ASE bietet eine Reihe von Standardeinstellungen, um eine rasche Erstellung zu ermöglichen. Sie können schnell eine ASE erstellen, indem Sie einfach einen Namen für die Bereitstellung eingeben. Dadurch wird wiederum eine ASE in der Ihnen am nächsten gelegenen Region erstellt mit:
 
-- einem VNET mit 512 Adressen 
+- VNET mit 512 Adressen, die einen privaten RFC1918-Adressraum nutzen
 - einem Subnetz mit 256 Adressen
 - einem Front-End-Pool mit 2 P2-Computeressourcen
 - einem Workerpool mit 2 P1-Computeressourcen
@@ -64,7 +64,9 @@ Der Name, der für die ASE angegeben wird, wird für die in der ASE erstellten A
 Die Standardwerte sind für eine Reihe von Fällen sehr nützlich, aber häufig müssen Sie sie anpassen. Die nächsten Abschnitten führen Sie durch die einzelnen Konfigurationsabschnitte, die für die ASE relevant sind.
 
 ### Virtuelles Netzwerk ###
-Auch wenn es eine schnelle Funktion zum automatischen Erstellen eines neuen VNET gibt, unterstützt die Funktion auch die Auswahl eines vorhandenen VNET und die manuelle Erstellung eines VNET. Sie können ein vorhandenes VNET auswählen (nur klassische virtuelle „v1“-Netzwerke werden derzeit unterstützt), wenn es für die Unterstützung der Bereitstellung einer App Service-Umgebung groß genug ist. Das VNET muss mindestens acht Adressen aufweisen. Derzeit werden nur virtuelle Netzwerke mit dem Adressraum RFC1918 (d.h. private Adressen) unterstützt.
+Auch wenn es eine schnelle Funktion zum automatischen Erstellen eines neuen VNET gibt, unterstützt die Funktion auch die Auswahl eines vorhandenen VNET und die manuelle Erstellung eines VNET. Sie können ein vorhandenes VNET auswählen (nur klassische virtuelle „v1“-Netzwerke werden derzeit unterstützt), wenn es für die Unterstützung der Bereitstellung einer App Service-Umgebung groß genug ist. Das VNET muss mindestens acht Adressen aufweisen.
+
+Infolge einer im Juni 2016 vorgenommenen Änderung können nun ASEs in virtuellen Netzwerken bereitgestellt werden, die *entweder* öffentliche Adressbereiche *oder* RFC1918-Adressräume (d.h. private Adressen) verwenden. Um ein virtuelles Netzwerk mit einem öffentlichen Adressbereich zu verwenden, müssen Sie das Subnetz vorab erstellen und dann das Subnetz auf der UX für die ASE-Erstellung auswählen.
 
 Wenn Sie ein bereits vorhandenes VNET auswählen, müssen Sie auch ein Subnetz angeben oder ein neues erstellen. Das Subnetz muss mindestens acht Adressen aufweisen, und es dürfen keine anderen Ressourcen bereits darin enthalten sein. Die ASE-Erstellung funktioniert nicht, wenn Sie ein Subnetz verwenden, dem bereits virtuelle Computer zugewiesen sind.
 
@@ -135,7 +137,7 @@ Folgende Einstellungen können Sie nicht ändern:
 - Verwendetes VNET
 - Verwendetes Subnetz
 
-Weitere Informationen zur manuellen Skalierung, Verwaltung und Überwachung von App Service-Umgebungen finden Sie unter: [Konfigurieren einer App Service-Umgebung][ASEConfig]
+Weitere Informationen zur manuellen Skalierung, Verwaltung und Überwachung von App Service-Umgebungen finden Sie unter [Konfigurieren einer App Service-Umgebung][ASEConfig].
 
 Weitere Informationen zur automatischen Skalierung finden Sie in diesem Leitfaden: [Konfigurieren der automatischen Skalierung für eine App Service-Umgebung][ASEAutoscale].
 
@@ -143,6 +145,7 @@ Es gibt zusätzliche Abhängigkeiten, die nicht zur Anpassung zur Verfügung ste
 
 
 ## Erste Schritte
+Alle Artikel und Anleitungen zu App Service-Umgebungen stehen in der [Dokumentation zu App Service-Umgebungen](../app-service/app-service-app-service-environments-readme.md) zur Verfügung.
 
 Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Einführung in App Service-Umgebungen][WhatisASE]
 
@@ -165,4 +168,4 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 [AzureAppService]: http://azure.microsoft.com/documentation/articles/app-service-value-prop-what-is/
 [ASEAutoscale]: http://azure.microsoft.com/documentation/articles/app-service-environment-auto-scale/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/14/2016"
+   ms.date="06/21/2016"
    ms.author="nicw;barbkess;sonyama"/>
 
 # Details zur Migration zu Storage Premium
@@ -37,24 +37,27 @@ Bei den unten angegebenen Details handelt es sich um Schritte, die Microsoft fü
 > [AZURE.NOTE] Diese Einstellungen werden im Rahmen der Migration nicht übernommen:
 > 
 >	-  Auditing at the Database level will need to be re-enabled
->	-  Firewall rules at the Database level will need to be re-added
+>	-  Firewall rules at the **Database** level will need to be re-added.  Firewall rules at the **Server** level will not be impacted.
 
 ### Zeitplan für die automatische Migration
 Die automatische Migration wird zwischen 18:00 und 6:00 Uhr (Ortszeit der Region) an einem Punkt des unten angegebenen Ausfallzeitplans durchgeführt.
 
-| Region | Geschätztes Startdatum | Geschätztes Enddatum |
+| **Region** | **Geschätztes Startdatum** | **Geschätztes Enddatum** |
 | :------------------ | :--------------------------- | :--------------------------- |
-| Australien (Ost) | Noch nicht festgelegt | Noch nicht festgelegt |
+| Australien (Osten) | Noch nicht festgelegt | Noch nicht festgelegt |
 | Australien (Südost) | Noch nicht festgelegt | Noch nicht festgelegt |
+| Brasilien Süd | Noch nicht festgelegt | Noch nicht festgelegt |
 | Kanada, Mitte | 23\. Juni 2016 | 1\. Juli 2016 |
 | Kanada, Osten | 23\. Juni 2016 | 1\. Juli 2016 |
 | USA (Mitte) | 23\. Juni 2016 | 1\. Juli 2016 |
 | China, Osten | Noch nicht festgelegt | Noch nicht festgelegt |
+| China, Norden | Noch nicht festgelegt | Noch nicht festgelegt |
 | Ostasien | 23\. Juni 2016 | 1\. Juli 2016 |
 | USA (Ost) | 23\. Juni 2016 | 1\. Juli 2016 |
 | USA (Ost 2) | 23\. Juni 2016 | 1\. Juli 2016 |
 | Indien, Mitte | 23\. Juni 2016 | 1\. Juli 2016 |
 | Indien, Süden | 23\. Juni 2016 | 1\. Juli 2016 |
+| Indien, Westen | Noch nicht festgelegt | Noch nicht festgelegt |
 | Japan Ost | Noch nicht festgelegt | Noch nicht festgelegt |
 | Japan (Westen) | Noch nicht festgelegt | Noch nicht festgelegt |
 | USA (Mitte/Norden) | Noch nicht festgelegt | Noch nicht festgelegt |
@@ -67,24 +70,27 @@ Die automatische Migration wird zwischen 18:00 und 6:00 Uhr (Ortszeit der Region
 ## Selbst durchgeführte Migration zu Storage Premium
 Wenn Sie den Zeitpunkt der Ausfallzeiten steuern möchten, können Sie die unten angegebenen Schritte ausführen, um ein vorhandenes Data Warehouse unter Storage Standard zu Storage Premium zu migrieren. Falls Sie sich für die selbst durchgeführte Migration entscheiden, müssen Sie diesen Vorgang vor Beginn der automatischen Migration in dieser Region durchführen. So vermeiden Sie das Risiko, dass die automatische Migration einen Konflikt verursacht (siehe [Zeitplan für die automatische Migration][]).
 
-> [AZURE.NOTE] SQL Data Warehouse Storage Premium ist derzeit nicht georedundant. Dies bedeutet, dass sich die Daten nach der Migration Ihrer Data Warehouse-Instanz zu Storage Premium nur noch in der aktuellen Region befinden. Nachdem die Verfügbarkeit hergestellt ist, wird Ihr Data Warehouse per Geo-Backup alle 24 Stunden in die [gekoppelte Azure-Region][] kopiert, sodass Sie die Wiederherstellung aus dem Geo-Backup für jede Region in Azure durchführen können. Nachdem die Geo-Backup-Funktionalität für selbst durchgeführte Migrationen verfügbar ist, wird sie auf der [Hauptseite der Dokumentation][] angekündigt. Für automatische Migrationen gilt diese Einschränkung dagegen nicht.
+> [AZURE.NOTE] SQL Data Warehouse Storage Premium ist derzeit nicht georedundant. Dies bedeutet, dass sich die Daten nach der Migration Ihrer Data Warehouse-Instanz zu Storage Premium nur noch in der aktuellen Region befinden. Nachdem die Verfügbarkeit hergestellt ist, wird Ihr Data Warehouse per Geo-Backup alle 24 Stunden in die [gekoppelte Azure-Region][] kopiert, sodass Sie die Wiederherstellung aus dem Geo-Backup für jede Region in Azure durchführen können. Sobald die Geo-Backup-Funktionalität für selbst durchgeführte Migrationen verfügbar ist, wird sie auf der [Hauptseite der Dokumentation][] angekündigt. Für automatische Migrationen gilt diese Einschränkung dagegen nicht.
 
 ### Bestimmen des Speichertyps
 Wenn Sie ein DW vor den unten angegebenen Daten erstellt haben, verwenden Sie derzeit Storage Standard.
 
-| Region | Vor diesem Datum erstelltes DW |
+| **Region** | **Vor diesem Datum erstelltes DW** |
 | :------------------ | :-------------------------------- |
-| Australien (Ost) | Storage Premium noch nicht verfügbar |
+| Australien (Osten) | Storage Premium noch nicht verfügbar |
 | Australien (Südost) | Storage Premium noch nicht verfügbar |
+| Brasilien Süd | Storage Premium noch nicht verfügbar |
 | Kanada, Mitte | 25\. Mai 2016 |
 | Kanada, Osten | 26\. Mai 2016 |
 | USA (Mitte) | 26\. Mai 2016 |
 | China, Osten | Storage Premium noch nicht verfügbar |
+| China, Norden | Storage Premium noch nicht verfügbar |
 | Ostasien | 25\. Mai 2016 |
 | USA (Ost) | 26\. Mai 2016 |
 | USA (Ost 2) | 27\. Mai 2016 |
 | Indien, Mitte | 27\. Mai 2016 |
 | Indien, Süden | 26\. Mai 2016 |
+| Indien, Westen | Storage Premium noch nicht verfügbar |
 | Japan Ost | Storage Premium noch nicht verfügbar |
 | Japan (Westen) | Storage Premium noch nicht verfügbar |
 | USA (Mitte/Norden) | Storage Premium noch nicht verfügbar |
@@ -105,7 +111,7 @@ Wenn Sie Ihre Ausfallzeiten selbst steuern möchten, können Sie die Migration f
 > [AZURE.NOTE] Diese Einstellungen werden im Rahmen der Migration nicht übernommen:
 > 
 >	-  Auditing at the Database level will need to be re-enabled
->	-  Firewall rules at the Database level will need to be re-added
+>	-  Firewall rules at the **Database** level will need to be re-added.  Firewall rules at the **Server** level will not be impacted.
 
 #### Optional: Problemumgehung in Bezug auf die Umbenennung 
 Zwei Datenbanken auf demselben logischen Server können nicht den gleichen Namen haben. SQL Data Warehouse unterstützt derzeit nicht die Möglichkeit zum Umbenennen eines DW. Mit der Anleitung unten können Sie diese fehlende Funktion bei der selbst durchgeführten Migration ausgleichen. (Hinweis: Automatische Migrationen verfügen nicht über diese Einschränkung.)
@@ -117,13 +123,13 @@ Stellen Sie sich für dieses Beispiel vor, dass Ihr vorhandenes DW mit Storage S
 3.	Löschen Sie „MyDW“. **Wenn Sie diesen Schritt nicht ausführen, werden Ihnen beide Data Warehouses berechnet.**
 4.	Da „MyDWTemp“ ein neu erstelltes DW ist, ist die Sicherung für einen bestimmten Zeitraum nicht für die Wiederherstellung verfügbar. Es wird empfohlen, die Vorgänge einige Stunden lang unter „MyDWTemp“ fortzusetzen und dann mit den Schritten 5 und 6 fortzufahren.
 5.	[Halten Sie „MyDWTemp“ an][], damit eine automatische Sicherung erstellt wird.
-6.	Führen Sie basierend auf der letzten „MyDWTemp“-Momentaufnahme die [Wiederherstellung][] aus einer neuen Datenbank mit dem Namen „MyDW“ durch.
+6.	Führen Sie basierend auf der letzten „MyDWTemp“-Momentaufnahme die [Wiederherstellung][] einer neuen Datenbank mit dem Namen „MyDW“ durch.
 7.	Löschen Sie „MyDWTemp“. **Wenn Sie diesen Schritt nicht ausführen, werden Ihnen beide Data Warehouses berechnet.**
 
 > [AZURE.NOTE] Diese Einstellungen werden im Rahmen der Migration nicht übernommen:
 > 
 >	-  Auditing at the Database level will need to be re-enabled
->	-  Firewall rules at the Database level will need to be re-added
+>	-  Firewall rules at the **Database** level will need to be re-added.  Firewall rules at the **Server** level will not be impacted.
 
 ## Nächste Schritte
 Wenn Probleme mit Ihrem Data Warehouse auftreten, können Sie [ein Supportticket erstellen][] und als möglichen Grund „Migration zu Storage Premium“ angeben.
@@ -147,6 +153,6 @@ Wenn Probleme mit Ihrem Data Warehouse auftreten, können Sie [ein Supportticket
 
 
 <!--Other Web references-->
-[Storage Premium eingeführt, um die Leistung besser vorhersagen zu können]: https://azure.microsoft.com/blog/azure-sql-data-warehouse-introduces-premium-storage-for-greater-performance/
+[Storage Premium eingeführt, um die Leistung besser vorhersagen zu können]: https://azure.microsoft.com/de-DE/blog/azure-sql-data-warehouse-introduces-premium-storage-for-greater-performance/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

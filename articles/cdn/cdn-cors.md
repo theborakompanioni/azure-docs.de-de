@@ -65,7 +65,7 @@ In diesem Fall erstellen Sie einen regulären Ausdruck, der alle Ursprünge enth
  
 > [AZURE.TIP] **Azure CDN von Verizon** verwendet [Perl Compatible Regular Expressions](http://pcre.org/) als Modul für reguläre Ausdrücke. Sie können ein Tool wie [Regular Expressions 101](https://regex101.com/) verwenden, um Ihre regulären Ausdrücke zu überprüfen. Beachten Sie, dass das Zeichen „/“ in regulären Ausdrücken zulässig ist und nicht mit Escapezeichen versehen werden muss. Dieses Zeichen in Escapezeichen zu setzen ist jedoch die beste Methode und wird von einigen RegEx-Validierern erwartet.
 
-Wenn der reguläre Ausdruck übereinstimmt, ersetzt der CDN-Edgeserver Ihrer Regel den **Access-Control-Allow-Origin**-Header (sofern vorhanden) des Ursprungs mit dem des Ursprungs, der die Anforderung gesendet hat. Sie können zusätzliche CORS-Header hinzufügen, wie z.B. **Access-Control-Allow-Methods**.
+Wenn der reguläre Ausdruck übereinstimmt, ersetzt Ihre Regel den **Access-Control-Allow-Origin**-Header (sofern vorhanden) des Ursprungs mit dem des Ursprungs, der die Anforderung gesendet hat. Sie können zusätzliche CORS-Header hinzufügen, wie z.B. **Access-Control-Allow-Methods**.
 
 ![Beispiel für Regeln mit regulären Ausdruck](./media/cdn-cors/cdn-cors-regex.png)
  
@@ -81,4 +81,4 @@ Statt reguläre Ausdrücke können Sie stattdessen eine separate Regel für jede
 
 Auf Azure CDN-Standardprofilen ist der einzige Mechanismus, um mehrere Ursprünge ohne Verwendung des Platzhalterursprungs zuzulassen, die Verwendung der [Zwischenspeicherung von Abfragezeichenfolgen](cdn-query-string.md). Sie müssen Abfragezeichenfolgen für den CDN-Endpunkt aktivieren und anschließend eine eindeutige Abfragezeichenfolge für Anforderungen von jeder zulässigen Domäne verwenden. Dadurch speichert das CDN ein separates Objekt für jede eindeutige Abfragezeichenfolge zwischen. Dieser Ansatz ist jedoch nicht ideal, da so mehrere Kopien derselben Datei im CDN zwischengespeichert werden.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0622_2016-->

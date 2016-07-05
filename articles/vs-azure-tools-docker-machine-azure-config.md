@@ -1,7 +1,7 @@
 <properties
    pageTitle="Erstellen von Docker-Hosts in Azure mit Docker Machine | Microsoft Azure"
    description="Beschreibt die Verwendung von Docker Machine zum Erstellen von Docker-Hosts in Azure."
-   services="visual-studio-online"
+   services="azure-container-service"
    documentationCenter="na"
    authors="allclark"
    manager="douge"
@@ -109,4 +109,4 @@ Mit docker-machine können Sie Docker-Hosts mühelos für einzelne Überprüfung
 
 Informationen zum Entwickeln von .NET Core-Anwendungen mit Visual Studio finden Sie unter [Docker-Tools für Visual Studio](http://aka.ms/DockerToolsForVS).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

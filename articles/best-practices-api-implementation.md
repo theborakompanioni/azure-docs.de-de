@@ -958,7 +958,7 @@ Eine Web-API kann von vielen Clientanwendungen, die weltweit an den unterschiedl
 
 	Falls Sie es vorziehen, Benachrichtigungen zu implementieren, können Sie beispielsweise die folgenden verfügbaren Optionen verwenden:
 
-	- Verwenden Sie ein Azure Notification Hub, um asynchrone Antworten per Pushvorgang an Clientanwendungen zu übertragen. Ausführlichere Informationen finden Sie auf der Microsoft-Website unter [Azure Notification Hubs – Benachrichtigen von Benutzern](notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-notify-users.md).
+	- Verwenden Sie ein Azure Notification Hub, um asynchrone Antworten per Pushvorgang an Clientanwendungen zu übertragen. Ausführlichere Informationen finden Sie auf der Microsoft-Website unter [Azure Notification Hubs – Benachrichtigen von Benutzern](notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md).
 
 	- Verwenden Sie das Comet-Modell, um eine dauerhafte Netzwerkverbindung zwischen dem Client und dem Hostserver der Web-API aufrechtzuerhalten. Nutzen Sie diese Verbindung, um Nachrichten vom Server zurück an den Client zu übertragen. Eine Beispiellösung ist im Artikel [Erstellen einer einfachen Comet-Anwendung in Microsoft .NET Framework](https://msdn.microsoft.com/magazine/jj891053.aspx) des MSDN-Magazins enthalten.
 
@@ -1143,7 +1143,7 @@ Anhand dieser Informationen können Sie bestimmen, ob eine bestimmte Web-API ode
 - Ausführliche Informationen zur Behandlung von HTTP-Ausnahmen mit der ASP.NET-Web-API finden Sie auf der Microsoft-Website unter [Ausnahmebehandlung in der ASP.NET-Web-API](http://www.asp.net/web-api/overview/error-handling/exception-handling).
 - Im Artikel [Globale Fehlerbehandlung für die Web-API](http://www.asp.net/web-api/overview/error-handling/web-api-global-error-handling) auf der Microsoft-Website wird beschrieben, wie Sie eine globale Strategie zur Fehlerbehandlung und Protokollierung für eine Web-API implementieren.
 - Die Seite [Ausführen von Hintergrundaufgaben mit WebJobs](../articles/app-service-web/web-sites-create-web-jobs.md) auf der Microsoft-Website enthält Informationen und Beispiele zur Verwendung von WebJobs zum Durchführen von Hintergrundvorgängen auf einer Azure-Website.
-- Auf der Seite [Azure Notification Hubs – Benachrichtigen von Benutzern](notification-hubs-aspnet-backend-windows-dotnet-notify-users.md) der Microsoft-Website wird beschrieben, wie Sie ein Azure Notification Hub zum Übertragen von asynchronen Antworten per Pushvorgang auf Clientanwendungen verwenden können.
+- Auf der Seite [Azure Notification Hubs – Benachrichtigen von Benutzern](notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) der Microsoft-Website wird beschrieben, wie Sie ein Azure Notification Hub zum Übertragen von asynchronen Antworten per Pushvorgang auf Clientanwendungen verwenden können.
 - Auf der Seite [API Management](https://azure.microsoft.com/services/api-management/) der Microsoft-Website wird beschrieben, wie Sie ein Produkt veröffentlichen, das kontrollierten und sicheren Zugriff auf eine Web-API ermöglicht.
 - Auf der Seite [Azure API-Verwaltung für REST-API-Referenz](https://msdn.microsoft.com/library/azure/dn776326.aspx) der Microsoft-Website wird beschrieben, wie Sie die API Management-REST-API zum Erstellen von benutzerdefinierten Verwaltungsanwendungen verwenden.
 - Auf der Seite [Traffic Manager-Routingmethoden](../articles/traffic-manager/traffic-manager-routing-methods.md) auf der Microsoft-Website wird zusammengefasst, wie Azure Traffic Manager verwendet werden kann, um für mehrere Instanzen einer Website, auf der eine Web-API gehostet wird, den Lastenausgleich für Anforderungen durchzuführen.
@@ -1151,4 +1151,4 @@ Anhand dieser Informationen können Sie bestimmen, ob eine bestimmte Web-API ode
 - Auf der Seite [Überprüfen von Code mithilfe von Komponententests](https://msdn.microsoft.com/library/dd264975.aspx) der Microsoft-Website werden ausführliche Informationen zum Erstellen und Verwalten von Komponententests mit Visual Studio bereitgestellt.
 - Auf der Seite [Ausführen von Leistungstests für Ihre App](https://msdn.microsoft.com/library/dn250793.aspx) der Microsoft-Website wird beschrieben, wie Sie Visual Studio Ultimate zum Erstellen eines Projekts zum Testen der Webleistung und Auslastung verwenden.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

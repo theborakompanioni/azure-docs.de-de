@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="03/08/2016"
+	ms.date="06/21/2016"
 	ms.author="pratshar"/>
 
 #  Entwerfen Ihrer Netzwerkinfrastruktur für die Notfallwiederherstellung
@@ -44,21 +44,21 @@ Wenn Administratoren die Bereitstellung einer Lösung für die Notfallwiederhers
 
 Beim Entwerfen des Netzwerks für den Wiederherstellungsstandort haben Administratoren zwei Möglichkeiten:
 
-## Option 1: Beibehalten der IP-Adressen 
+## Option 1: Beibehalten der IP-Adressen 
 
 Aus Sicht des Prozesses für die Notfallwiederherstellung ist die Verwendung feststehender IP-Adressen scheinbar die am einfachsten zu implementierende Methode. Sie ist aber mit einer Reihe potenzieller Herausforderungen verbunden, sodass es in der Praxis der am wenigsten beliebte Ansatz ist. Azure Site Recovery bietet die Möglichkeit, die IP-Adressen in allen Szenarien beizubehalten. Bevor Sie sich für die Beibehaltung der IP-Adressen entscheiden, sollten Sie sich über die Einschränkungen im Klaren sein, die sich daraus für die Failoverfunktionen ergeben. Wir sehen uns nun die Faktoren an, die Ihnen bei der Entscheidungsfindung in Bezug auf die Beibehaltung von IP-Adressen behilflich sein können. Dies kann auf zwei Arten erfolgen: mit einem gestreckten Subnetz oder durch Ausführen eines vollständigen Subnetzfailovers.
 
 ### Gestrecktes Subnetz
 
-Hier wird das Subnetz gleichzeitig sowohl am primären Standort als auch am Standort für die Notfallwiederherstellung verfügbar gemacht. Einfach ausgedrückt bedeutet dies, dass Sie einen Server und seine IP-Konfiguration (Layer 3) an den zweiten Standort verschieben können und der Datenverkehr im Netzwerk automatisch an den neuen Standort weitergeleitet wird. Dies ist sehr einfach in der Handhabung aus Sicht des Servers, es bestehen jedoch eine Reihe von Herausforderungen:
+Hier wird das Subnetz gleichzeitig sowohl am primären Standort als auch am Standort für die Notfallwiederherstellung verfügbar gemacht. Einfach ausgedrückt bedeutet dies, dass Sie einen Server und seine IP-Konfiguration (Layer 3) an den zweiten Standort verschieben können und der Datenverkehr im Netzwerk automatisch an den neuen Standort weitergeleitet wird. Dies ist sehr einfach in der Handhabung aus Sicht des Servers, es bestehen jedoch eine Reihe von Herausforderungen:
 
-- Aus Sicht von Schicht 2 (Sicherungsschicht) sind Netzwerkgeräte erforderlich, die ein gestrecktes VLAN verwalten können. Dies stellt jedoch kein größeres Problem mehr dar, da diese Geräte jetzt allgemein verfügbar sind. Das zweite und schwierigere Problem ist, dass sich die potenzielle Fehlerdomäne durch Strecken das VLANs auf beide Standorte ausweitet und im Grunde zu einer einzigen Fehlerquelle wird. Dies ist zwar ein relativ unwahrscheinlicher Fall, aber es ist schon passiert, dass ein Broadcast-Storm gestartet wurde und nicht isoliert werden konnte. Wir haben zu diesem letzten Problem gemischte Rückmeldungen erhalten. Es gibt viele erfolgreiche Implementierungen, aber auch Aussagen der Art „Wir werden diese Technologie bei uns niemals implementieren“.
+- Aus Sicht von Schicht 2 (Sicherungsschicht) sind Netzwerkgeräte erforderlich, die ein gestrecktes VLAN verwalten können. Dies stellt jedoch kein größeres Problem mehr dar, da diese Geräte jetzt allgemein verfügbar sind. Das zweite und schwierigere Problem ist, dass sich die potenzielle Fehlerdomäne durch Strecken das VLANs auf beide Standorte ausweitet und im Grunde zu einer einzigen Fehlerquelle wird. Dies ist zwar ein relativ unwahrscheinlicher Fall, aber es ist schon passiert, dass ein Broadcast-Storm gestartet wurde und nicht isoliert werden konnte. Wir haben zu diesem letzten Problem gemischte Rückmeldungen erhalten. Es gibt viele erfolgreiche Implementierungen, aber auch Aussagen der Art „Wir werden diese Technologie bei uns niemals implementieren“.
 - Gestreckte Subnetze sind nicht möglich, wenn Sie Microsoft Azure als Standort für die Notfallwiederherstellung verwenden.
 
 
 ### Subnetzfailover
 
-Die Implementierung des Subnetzfailovers ist möglich, um von den oben beschriebenen Vorteilen der Lösung mit gestrecktem Subnetz zu profitieren, ohne dass das Subnetz über mehrere Standorte gestreckt wird. Hierbei ist ein Subnetz an Standort 1 oder 2 vorhanden, aber nie an beiden Standorten gleichzeitig. Um den IP-Adressraum im Falle eines Failovers beizubehalten, können Sie programmgesteuert dafür sorgen, dass die Routerinfrastruktur die Subnetze von einem Standort an einen anderen verschiebt. In einem Failoverszenario werden die Subnetze mit den zugeordneten, geschützten virtuellen Computern verschoben. Der größte Nachteil dieses Ansatzes ist, dass Sie bei Auftreten eines Fehlers das gesamte Subnetz verschieben müssen. Dies ist unter Umständen kein Problem, kann sich aber auf Überlegungen im Hinblick auf die Failovergranularität auswirken.
+Die Implementierung des Subnetzfailovers ist möglich, um von den oben beschriebenen Vorteilen der Lösung mit gestrecktem Subnetz zu profitieren, ohne dass das Subnetz über mehrere Standorte gestreckt wird. Hierbei ist ein Subnetz an Standort 1 oder 2 vorhanden, aber nie an beiden Standorten gleichzeitig. Um den IP-Adressraum im Falle eines Failovers beizubehalten, können Sie programmgesteuert dafür sorgen, dass die Routerinfrastruktur die Subnetze von einem Standort an einen anderen verschiebt. In einem Failoverszenario werden die Subnetze mit den zugeordneten, geschützten virtuellen Computern verschoben. Der größte Nachteil dieses Ansatzes ist, dass Sie bei Auftreten eines Fehlers das gesamte Subnetz verschieben müssen. Dies ist unter Umständen kein Problem, kann sich aber auf Überlegungen im Hinblick auf die Failovergranularität auswirken.
 
 Wir untersuchen nun, wie ein fiktives Unternehmen mit dem Namen Contoso seine virtuellen Computer während der Ausführung eines Failovers des gesamten Subnetzes an einen Wiederherstellungsstandort replizieren kann. Zuerst wird beschrieben, wie Contoso seine Subnetze während der Replikation von VMs zwischen zwei lokalen Standorten verwaltet. Anschließend wird erläutert, wie ein Subnetzfailover funktioniert, wenn [Azure als Standort für die Notfallwiederherstellung verwendet wird](#failover-to-azure).
 
@@ -90,7 +90,7 @@ Wenn Ihr sekundärer Standort lokal ist und Sie einen VMM-Server für die Verwal
 	
 Abbildung 5
 
-Abbildung 5 zeigt die TCP/IP-Failovereinstellungen für den virtuellen Replikatcomputer (auf der Hyper-V-Konsole). Diese Einstellungen werden unmittelbar vor dem Starten des virtuellen Computers nach einem Failover aufgefüllt.
+Abbildung 5 zeigt die TCP/IP-Failovereinstellungen für den virtuellen Replikatcomputer (auf der Hyper-V-Konsole). Diese Einstellungen werden unmittelbar vor dem Starten des virtuellen Computers nach einem Failover aufgefüllt.
 
 Falls die gleiche IP-Adresse nicht verfügbar ist, ordnet ASR eine andere verfügbare IP-Adresse aus dem definierten IP-Adresspool zu.
 
@@ -133,7 +133,7 @@ Nach dem Failover
 Wenn „Azure Network“ nicht wie in der Abbildung oben dargestellt wird, können Sie nach dem Failover eine Standort-zu-Standort-VPN-Verbindung zwischen Ihrem primären Standort und dem Wiederherstellungsnetzwerk herstellen.
 
 
-## Option 2: Ändern der IP-Adressen
+## Option 2: Ändern der IP-Adressen
 
 Dieser Ansatz scheint nach unserem Erkenntnisstand am weitesten verbreitet zu sein. Hierbei wird die IP-Adresse jedes virtuellen Computers geändert, der am Failover beteiligt ist. Ein Nachteil bei diesem Ansatz ist, dass das eingehende Netzwerk „lernen“ muss, dass sich die Anwendung, die sich unter IPx befunden hat, jetzt unter IPy befindet. Auch wenn IPx und IPy logische Namen sind, müssen DNS-Einträge normalerweise im gesamten Netzwerk geändert oder gelöscht werden, und zwischengespeicherte Einträge in Netzwerktabellen müssen aktualisiert oder gelöscht werden. Aus diesem Grund kann es je nach Einrichtung der DNS-Infrastruktur zu Ausfallzeiten kommen. Sie können diese Probleme abmildern, indem Sie für Intranetanwendungen niedrige TTL-Werte und für internetbasierte Anwendungen [Azure Traffic Manager mit ASR](http://azure.microsoft.com/blog/2015/03/03/reduce-rto-by-using-azure-traffic-manager-with-azure-site-recovery/) verwenden.
 
@@ -143,15 +143,15 @@ Wir sehen uns nun das Szenario an, bei dem Sie die Verwendung von unterschiedlic
 
 ![Andere IP-Adresse – vor dem Failover](./media/site-recovery-network-design/network-design10.png)
 
-Abbildung 11
+Abbildung 11
 
-In Abbildung 11 werden einige Anwendungen im Subnetz 192.168.1.0/24 am primären Standort gehostet und wurden so konfiguriert, dass sie nach einem Failover am Wiederherstellungsstandort im Subnetz 172.16.1.0/24 wieder hochgefahren werden. VPN-Verbindungen/Netzwerkrouten wurden entsprechend konfiguriert, damit alle drei Standorte aufeinander zugreifen können.
+In Abbildung 11 werden einige Anwendungen im Subnetz 192.168.1.0/24 am primären Standort gehostet und wurden so konfiguriert, dass sie nach einem Failover am Wiederherstellungsstandort im Subnetz 172.16.1.0/24 wieder hochgefahren werden. VPN-Verbindungen/Netzwerkrouten wurden entsprechend konfiguriert, damit alle drei Standorte aufeinander zugreifen können.
  
-In Abbildung 12 ist zu sehen, dass Anwendungen nach einem Failover einer oder mehrerer Anwendungen im Wiederherstellungssubnetz wiederhergestellt werden. In diesem Fall besteht nicht die Einschränkung, das Failover für das gesamte Subnetz zur gleichen Zeit durchführen zu müssen. Es sind keine Änderungen erforderlich, um VPN- oder Netzwerkrouten neu zu konfigurieren. Mit einem Failover und einigen DNS-Updates wird sichergestellt, dass Zugriff auf die Anwendungen besteht. Wenn der DNS so konfiguriert ist, dass er dynamische Updates zulässt, registrieren die virtuellen Computer sich unter Verwendung der neuen IP-Adresse selbst, sobald sie nach einem Failover gestartet werden.
+In Abbildung 12 ist zu sehen, dass Anwendungen nach einem Failover einer oder mehrerer Anwendungen im Wiederherstellungssubnetz wiederhergestellt werden. In diesem Fall besteht nicht die Einschränkung, das Failover für das gesamte Subnetz zur gleichen Zeit durchführen zu müssen. Es sind keine Änderungen erforderlich, um VPN- oder Netzwerkrouten neu zu konfigurieren. Mit einem Failover und einigen DNS-Updates wird sichergestellt, dass Zugriff auf die Anwendungen besteht. Wenn der DNS so konfiguriert ist, dass er dynamische Updates zulässt, registrieren die virtuellen Computer sich unter Verwendung der neuen IP-Adresse selbst, sobald sie nach einem Failover gestartet werden.
 
 ![Andere IP-Adresse – nach dem Failover](./media/site-recovery-network-design/network-design11.png)
 
-Abbildung 12
+Abbildung 12
 
 Nach dem Failover weist die Replikat-VM möglicherweise eine IP-Adresse auf, die nicht der IP-Adresse des primären virtuellen Computers entspricht. Virtuelle Computer aktualisieren den DNS-Server, den sie nach dem Start verwenden. DNS-Einträge müssen in der Regel im gesamten Netzwerk geändert oder gelöscht werden, und zwischengespeicherte Einträge in Netzwerktabellen müssen aktualisiert oder gelöscht werden, daher ist es nicht ungewöhnlich, dass es während dieser Zustandsänderungen zu Ausfallzeiten kommt. Dieses Problem kann mit folgenden Maßnahmen vermieden werden:
 
@@ -179,4 +179,4 @@ Im Blogbeitrag [Networking Infrastructure Setup for Microsoft Azure as a Disaste
 
 [Erfahren Sie](site-recovery-network-mapping.md), wie Site Recovery Quell- und Zielnetzwerke zuordnet, wenn der primäre Standort mit einem VMM-Server verwaltet wird.
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0622_2016-->

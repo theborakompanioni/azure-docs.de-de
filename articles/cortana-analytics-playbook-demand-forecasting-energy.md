@@ -105,13 +105,13 @@ In der folgenden Tabelle werden die wichtigsten Attribute von STLF und LTLF verg
 
 |Attribut|Kurzfristige Vorhersage der Last|Langfristige Vorhersage der Last|
 |---|---|---|
-|Vorhersagehorizont|1 Stunde bis zu 48 Stunden|1 Woche bis zu 6 Monaten oder mehr|
+|Vorhersagehorizont|1 Stunde bis zu 48 Stunden|1 bis 6 Monate oder mehr|
 |Granularität der Daten|Stündlich|Stündlich oder täglich|
 |Typische Anwendungsfälle|<ul><li>Balance von Bedarf und Nachfrage</li><li>Vorhersage von Spitzenstunden</li><li>Demand Response</li></ul>|<ul><li>Langfristige Planung</li><li>Planung von Netzressourcen</li><li>Ressourcenplanung</li></ul>|
 |Typische Prädiktoren|<ul><li>Tag oder Woche</li><li>Tageszeit</li><li>Stündliche Temperatur</li></ul>|<ul><li>Monat des Jahres</li><li>Tag des Monats</li><li>Langfristige Temperatur bzw. Klima</li></ul>|
 |Verlaufsdatenbereich|Daten für zwei bis drei Jahre|Daten für fünf bis zehn Jahre|
-|Typische Genauigkeit|MAPE* von mindestens 95 %|MAPE* von mindestens 75 %|
-|Vorhersagehäufigkeit|Stündlich oder alle 24 Stunden|Wöchentlich, monatlich oder vierteljährlich|
+|Typische Genauigkeit|MAPE* von maximal 5 %|MAPE* von maximal 25 %|
+|Vorhersagehäufigkeit|Stündlich oder alle 24 Stunden|Einmal monatlich, vierteljährlich oder jährlich|
 *[MAPE](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error) – Mean Absolute Percentage Error
 
 Diese Tabelle verdeutlicht die Wichtigkeit der Unterscheidung zwischen kurzfristigen und langfristigen Vorhersageszenarien, da diese für unterschiedliche Geschäftsanforderungen bestimmt sind und ggf. über unterschiedliche Bereitstellungs- und Verbrauchsmuster verfügen.
@@ -167,8 +167,7 @@ In vielen Fällen sind Kunden unter Umständen daran interessiert, eine Business
 
 Andererseits ist ein gutes Verständnis des geschäftlichen Nutzens einer Vorhersage des Energiebedarfs (kurz- oder langfristig) unerlässlich. Es ist sogar wichtig, sich den geschäftlichen Nutzen jedes Vorhersagevorgangs klar zu machen. Durch das genaue Vorhersagen der Stromlast für die nächsten 24 Stunden kann beispielsweise eine Überproduktion verhindert werden, oder es können Überlastungen im Netz vermieden werden. Dies kann dann in Form von täglichen Kosteneinsparungen quantifiziert werden.
 
-Eine einfache Formel zur Berechnung des finanziellen Vorteils einer Lösung für die Bedarfsvorhersage lautet wie folgt:
-![Einfache Formel zur Berechnung des finanziellen Vorteils von Lösungen zur Bedarfsvorhersage](media/cortana-analytics-playbook-demand-forecasting-energy/financial-benefit-formula.png)
+Eine einfache Formel zur Berechnung des finanziellen Vorteils einer Lösung für die Bedarfsvorhersage lautet wie folgt: ![Einfache Formel zur Berechnung des finanziellen Vorteils von Lösungen zur Bedarfsvorhersage](media/cortana-analytics-playbook-demand-forecasting-energy/financial-benefit-formula.png)
 
 Da die Cortana Intelligence Suite über ein Preismodell mit nutzungsbasierter Bezahlung verfügt, ist es nicht erforderlich, in diese Formel eine Festkostenkomponente einzufügen. Diese Formel kann für die tägliche, monatliche oder jährliche Abrechnung verwendet werden.
 
@@ -385,4 +384,4 @@ Im folgenden Diagramm ist eine typische Architektur auf Basis von Cortana Intell
 
 Weitere Informationen zu den einzelnen Komponenten und zur gesamten Architektur finden Sie unter der „Vorlage für Energielösungen“.
 
-<!----HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0622_2016-->

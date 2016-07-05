@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="06/14/2016"
 	ms.author="gokuma;bradsev" />
 
 # Bereitstellen der Linux Data Science Virtual Machine 
@@ -177,7 +177,7 @@ Sie können zwischen mehreren Code-Editoren wählen. Beispiele hierfür sind vi/
 
 **vim** und **Emacs** sind textbasierte Editoren. Unter Emacs haben wir ein Add-On-Paket mit dem Namen Emacs Speaks Statistics (ESS) installiert, um die Nutzung von R im Emacs-Editor zu vereinfachen. Weitere Informationen finden Sie bei [ESS](http://ess.r-project.org/).
 
-**Eclipse** ist eine erweiterbare Open-Source-IDE, die mehrere Sprachen unterstützt. Die Java-Entwickler-Edition ist die auf dem virtuellen Computer installierte Instanz. Es sind Plug-Ins für mehrere beliebte Sprachen vorhanden, die installiert werden können, um die Eclipse-Umgebung zu erweitern. Außerdem ist unter Eclipse ein Plug-In mit dem Namen **Azure Toolkit für Eclipse** installiert, mit dem Sie Azure-Anwendungen einfach erstellen, entwickeln, testen und bereitstellen können, indem Sie die Eclipse-Entwicklungsumgebung verwenden, die Sprachen wie Java unterstützt. Es ist auch ein **Azure SDK für Java** vorhanden, das den Zugriff auf unterschiedliche Azure-Dienste aus einer Java-Umgebung ermöglicht. Weitere Informationen zum Azure-Toolkit für Eclipse finden Sie unter [Azure-Toolkit für Eclipse](../azure-toolkit-for-eclipse/).
+**Eclipse** ist eine erweiterbare Open-Source-IDE, die mehrere Sprachen unterstützt. Die Java-Entwickler-Edition ist die auf dem virtuellen Computer installierte Instanz. Es sind Plug-Ins für mehrere beliebte Sprachen vorhanden, die installiert werden können, um die Eclipse-Umgebung zu erweitern. Außerdem ist unter Eclipse ein Plug-In mit dem Namen **Azure Toolkit für Eclipse** installiert, mit dem Sie Azure-Anwendungen einfach erstellen, entwickeln, testen und bereitstellen können, indem Sie die Eclipse-Entwicklungsumgebung verwenden, die Sprachen wie Java unterstützt. Es ist auch ein **Azure SDK für Java** vorhanden, das den Zugriff auf unterschiedliche Azure-Dienste aus einer Java-Umgebung ermöglicht. Weitere Informationen zum Azure-Toolkit für Eclipse finden Sie unter [Azure-Toolkit für Eclipse](../azure-toolkit-for-eclipse.md).
 
 **LaTeX** wird über das texlive-Paket zusammen mit einem [auctex](https://www.gnu.org/software/auctex/manual/auctex/auctex.html)-Paket als Emacs-Add-On installiert. Es dient zum Vereinfachen der Erstellung Ihrer LaTeX-Dokumente in Emacs.
 
@@ -228,7 +228,7 @@ So greifen Sie auf **Postgres** zu
 ### Azure-Tools 
 Die folgenden Azure-Tools werden auf dem virtuellen Computer installiert:
 
-- **Azure-Befehlszeilenschnittstelle:** Mit der Azure-Befehlszeilenschnittstelle können Sie Azure-Ressourcen über Shellbefehle erstellen und verwalten. Geben Sie zum Aufrufen der Azure-Tools einfach ***azure help*** ein. Weitere Informationen finden Sie auf der [Seite mit der Azure CLI-Dokumentation](../virtual-machines-command-line-tools/).
+- **Azure-Befehlszeilenschnittstelle:** Mit der Azure-Befehlszeilenschnittstelle können Sie Azure-Ressourcen über Shellbefehle erstellen und verwalten. Geben Sie zum Aufrufen der Azure-Tools einfach ***azure help*** ein. Weitere Informationen finden Sie auf der [Seite mit der Azure CLI-Dokumentation](../virtual-machines-command-line-tools.md).
 - **Microsoft Azure-Speicher-Explorer:** Der Microsoft Azure-Speicher-Explorer ist ein grafisches Tool zum Navigieren durch die Objekte, die Sie in Ihrem Azure-Speicherkonto gespeichert haben, und zum Hoch- und Herunterladen der Daten in und aus Azure-Blobs. Sie können über das Verknüpfungssymbol auf dem Desktop auf den Speicher-Explorer zugreifen. Sie können ihn über eine Shell-Eingabeaufforderung aufrufen, indem Sie ***StorageExplorer*** eingeben. Sie müssen über einen X2Go-Client angemeldet sein oder die X11-Weiterleitung eingerichtet haben. 
 - **Azure-Bibliotheken:** Nachstehend sind einige Bibliotheken angegeben, die installiert wurden und für Sie verfügbar sind:
 
@@ -354,7 +354,7 @@ Sie können Rattle und R jetzt beenden. Als Nächstes können Sie das generierte
 Mit den folgenden Schritten können Sie noch mehr lernen und entdecken.
 
 * Informieren Sie sich über die unterschiedlichen Data Science-Tools auf der Data Science VM, indem Sie die in diesem Artikel beschriebenen Tools ausprobieren. Sie können auch *dsvm-more-info* in der Shell auf dem virtuellen Computer ausführen, um eine grundlegende Einführung und Hinweise auf weitere Informationen zu den Tools auf der VM zu erhalten.  
-* Erfahren Sie, wie Sie mithilfe des [Cortana Analytics-Prozesses](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) systematisch vollständige Analyselösungen erstellen.
+* Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) vollständige Analyselösungen systematisch erstellen.
 * Öffnen Sie den [Cortana Analytics-Katalog](http://gallery.cortanaanalytics.com), um Anwendungsbeispiele der Cortana Analytics Suite für die Bereiche maschinelles Lernen und Datenanalysen zu erhalten. 
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

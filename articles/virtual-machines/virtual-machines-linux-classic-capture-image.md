@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/12/2016"
+	ms.date="06/14/2016"
 	ms.author="iainfou"/>
 
 
@@ -22,19 +22,18 @@
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-machines-linux-capture-image.md).
 
-
 In diesem Artikel wird erläutert, wie Sie einen klassischen virtuellen Azure-Computer, auf dem Linux ausgeführt wird, als Image erfassen, um weitere virtuelle Computer zu erstellen. Dieses Image umfasst den Betriebssystemdatenträger und die an den virtuellen Computer angefügten Datenträger. Da das Image keine Netzwerkkonfiguration enthält, müssen Sie die Konfiguration später vornehmen, wenn Sie die anderen virtuellen Computer auf der Basis dieses Images erstellen.
 
 Azure speichert das Image unter **Images**. Hier werden sämtliche Images abgelegt, die Sie hochladen. Weitere Informationen zu Images finden Sie unter [Informationen zu virtuellen Computern in Azure][].
 
 ## Voraussetzungen
 
-Diese Schritte setzen voraus, dass Sie bereits mithilfe des klassischen Bereitstellungsmodells einen virtuellen Azure-Computer erstellt, das Betriebssystem konfiguriert und beliebige Datenträger angefügt haben. Falls Sie dies noch nicht getan haben, lesen Sie sich [Erstellen einer virtuellen Linux-Maschine][] durch.
+Diese Schritte setzen voraus, dass Sie bereits mithilfe des klassischen Bereitstellungsmodells einen virtuellen Azure-Computer erstellt, das Betriebssystem konfiguriert und Datenträger angefügt haben. Falls Sie dies noch nicht getan haben, lesen Sie sich [Erstellen einer virtuellen Linux-Maschine][] durch.
 
 
 ## Erfassen des virtuellen Computers
 
-1. Stellen Sie mit einem SSH-Client Ihrer Wahl eine Verbindung mit dem virtuellen Computer her. Ausführliche Informationen finden Sie unter [Anmelden bei einem virtuellen Computer, auf dem Linux ausgeführt wird][].
+1. Stellen Sie über einen SSH-Client Ihrer Wahl eine [Verbindung mit dem virtuellen Computer](virtual-machines-linux-classic-log-on.md) her.
 
 2. Geben Sie im SSH-Fenster den folgenden Befehl ein. Beachten Sie, dass die Ausgabe von `waagent` je nach Version dieses Hilfsprogramms geringfügig abweichen kann:
 
@@ -55,7 +54,6 @@ Diese Schritte setzen voraus, dass Sie bereits mithilfe des klassischen Bereitst
 3. Geben Sie **y** ein, um fortzufahren. Sie können den Parameter `-force` hinzufügen, um diesen Bestätigungsschritt zu vermeiden.
 
 4. Geben Sie **Exit** ein, um den SSH-Client zu schließen.
-
 
 	>[AZURE.NOTE] Bei den nächsten Schritten wird davon ausgegangen, dass Sie [die Azure-Befehlszeilenschnittstelle auf dem Clientcomputer installiert haben](../xplat-cli-install.md). Die folgenden Schritte können Sie auch im [klassischen Azure-Portal][] ausführen.
 
@@ -93,10 +91,9 @@ Das Image kann jetzt zum Erstellen virtueller Computer verwendet werden. Sie kö
 
 [klassische Azure-Portal]: http://manage.windowsazure.com
 [klassischen Azure-Portal]: http://manage.windowsazure.com
-[Anmelden bei einem virtuellen Computer, auf dem Linux ausgeführt wird]: virtual-machines-linux-classic-log-on.md
 [Informationen zu virtuellen Computern in Azure]: virtual-machines-linux-classic-about-images.md
 [Erstellen eines benutzerdefinierten virtuellen Computers]: virtual-machines-linux-classic-create-custom.md
 [How to Attach a Data Disk to a Virtual Machine]: virtual-machines-windows-classic-attach-disk.md
 [Erstellen einer virtuellen Linux-Maschine]: virtual-machines-linux-classic-create-custom.md
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="06/14/2016"
 	ms.author="xibingao;bradsev" />
 
 # Einrichten eines virtuellen Azure SQL Server-Computers als IPython Notebook-Server für die erweiterte Analyse
@@ -251,7 +251,7 @@ Um sich von einem anderen Computer aus mit dem SQL Server-Datenbankmodul zu verb
 
 ##<a name="amlconnect"></a>Herstellen einer Verbindung von Azure Machine Learning zum Datenbankmodul
 
-In späteren Phasen des Cortana Analytics-Prozesses verwenden Sie [Azure Machine Learning Studio](https://studio.azureml.net) zum Erstellen und Bereitstellen der Machine Learning-Modelle. Verwenden Sie zum Erfassen von Daten aus den SQL Server-VM-Datenbanken direkt in Azure Machine Learning für das Training oder die Bewertung das **Import Data**-Modul in einem neuen [Azure Machine Learning Studio](https://studio.azureml.net)-Experiment. Weitere Informationen zu diesem Thema finden Sie über die Links mit Anleitungen zum Cortana Analytics-Prozess. Eine Einführung finden Sie unter [Was ist Azure Machine Learning Studio?](machine-learning-what-is-ml-studio.md).
+In späteren Phasen des Cloud Team Data Science-Prozesses verwenden Sie [Azure Machine Learning Studio](https://studio.azureml.net) zum Erstellen und Bereitstellen von Machine Learning-Modellen. Verwenden Sie zum Erfassen von Daten aus den SQL Server-VM-Datenbanken direkt in Azure Machine Learning für das Training oder die Bewertung das **Import Data**-Modul in einem neuen [Azure Machine Learning Studio](https://studio.azureml.net)-Experiment. In diesem Thema werden weitere Einzelheiten über Links im Leitfaden zum Team Data Science-Prozess bereitgestellt. Eine Einführung finden Sie unter [Was ist Azure Machine Learning Studio?](machine-learning-what-is-ml-studio.md).
 
 2.	Wählen Sie im Bereich **Properties** des [„Import Data“-Moduls](https://msdn.microsoft.com/library/azure/dn905997.aspx) die Option **Azure SQL Database** in der Dropdownliste **Data Source** aus.
 
@@ -285,9 +285,9 @@ Der virtuelle Computer wird freigegeben, aber nicht gelöscht. Sie können den v
 
 ## Ihre Azure SQL Server-VM ist damit einsatzbereit. Wie lauten die nächsten Schritte?
 
-Sie können Ihren virtuellen Computer jetzt in Ihren Data Science-Übungen verwenden. Der virtuelle Computer kann auch als IPython Notebook-Server für das Durchsuchen und Verarbeiten von Daten und für andere Aufgaben in Verbindung mit Azure Machine Learning und dem Cortana-Analyseprozess (CAP) verwendet werden.
+Sie können Ihren virtuellen Computer jetzt in Ihren Data Science-Übungen verwenden. Der virtuelle Computer kann auch als IPython Notebook-Server für das Durchsuchen und Verarbeiten von Daten und für andere Aufgaben in Verbindung mit Azure Machine Learning und dem Team Data Science-Prozess (TDSP) verwendet werden.
 
-Die nächsten Schritte des Datenanalyseprozesses sind unter [Leitfaden: Erweiterte Datenverarbeitung in Azure](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) aufgeführt. Dazu gehören auch das Verschieben von Daten nach HDInsight und das Verarbeiten und Extrahieren von Stichproben für den Erhalt von Informationen anhand der Daten mit Azure Machine Learning.
+Die nächsten Schritte im Data Science-Prozess sind unter [Team Data Science-Prozess](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) aufgeführt. Dazu gehören u.a. auch das Verschieben von Daten nach HDInsight sowie das Verarbeiten und Extrahieren von Stichproben, um anschließend mithilfe von Azure Machine Learning Erkenntnisse aus den Daten zu ziehen.
 
 
 [1]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/selectsqlvmimg.png
@@ -306,4 +306,4 @@ Die nächsten Schritte des Datenanalyseprozesses sind unter [Leitfaden: Erweiter
 [15]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/vmshutdown.png
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

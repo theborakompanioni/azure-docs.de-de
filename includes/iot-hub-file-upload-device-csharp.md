@@ -1,77 +1,53 @@
+## Zuweisen eines Azure Storage-Kontos zu IoT Hub
+
+Da vom simulierten Gerät eine Datei in ein Azure Storage-Blob hochgeladen wird, müssen Sie über ein Azure-Speicherkonto verfügen, das IoT Hub zugeordnet ist. Sie können ein vorhandenes Speicherkonto verwenden oder mithilfe der Anweisungen unter [Informationen zu Azure Storage] ein neues Konto erstellen. Sie können IoT Hub ein Azure Storage-Konto zuordnen, indem Sie die Anweisungen unter [Verwalten von IoT Hubs über das Azure-Portal] befolgen.
+
 ## Hochladen einer Datei von einem simulierten Gerät
 
 In diesem Abschnitt ändern Sie die simulierte Geräteanwendung, die Sie in [Senden von Cloud-zu-Gerät-Nachrichten mit IoT Hub] erstellt haben, um Cloud-zu-Gerät-Nachrichten von IoT Hub zu empfangen.
 
-1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das **SimulatedDevice**-Projekt, und klicken Sie dann auf **NuGet-Pakete verwalten**. 
+1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt **SimulatedDevice**. Klicken Sie auf **Hinzufügen** und dann auf **Vorhandenes Element**. Navigieren Sie zu einer Bilddatei, und fügen Sie sie Ihrem Projekt hinzu. In diesem Tutorial wird vorausgesetzt, dass das Bild `image.jpg` heißt.
 
-    Daraufhin wird das Fenster "NuGet-Pakete verwalten" angezeigt.
+2. Klicken Sie mit der rechten Maustaste auf das Bild, und klicken Sie dann auf **Eigenschaften**. Stellen Sie sicher, dass **In Ausgabeverzeichnis kopieren** auf **Immer kopieren** festgelegt ist.
 
-2. Suchen Sie nach `WindowsAzure.Storage`, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
-
-    Daraufhin wird das [Microsoft Azure Storage SDK](https://www.nuget.org/packages/WindowsAzure.Storage/) heruntergeladen, installiert und mit einem Verweis versehen.
+    ![][1]
 
 3. Fügen Sie zu Beginn der Datei **Program.cs** die folgenden Anweisungen hinzu:
 
         using System.IO;
-        using Microsoft.WindowsAzure.Storage;
-        using Microsoft.WindowsAzure.Storage.Blob;
 
-4. Ändern Sie in der **Program**-Klasse die **ReceiveC2dAsync**-Methode wie folgt:
+4. Fügen Sie der **Program**-Klasse die folgende Methode hinzu:
          
-        private static async void ReceiveC2dAsync()
+        private static async void SendToBlobAsync()
         {
-            Console.WriteLine("\nReceiving cloud to device messages from service");
-            while (true)
+            string fileName = "image.jpg";
+            Console.WriteLine("Uploading file: {0}", fileName);
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
+            using (var sourceData = new FileStream(@"image.jpg", FileMode.Open))
             {
-                Message receivedMessage = await deviceClient.ReceiveAsync();
-                if (receivedMessage == null) continue;
-
-                if (receivedMessage.Properties.ContainsKey("command") && receivedMessage.Properties["command"] == "FileUpload")
-                {
-                    UploadFileToBlobAsync(receivedMessage);
-                    continue;
-                }
-
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Received message: {0}", Encoding.ASCII.GetString(receivedMessage.GetBytes()));
-                Console.ResetColor();
+                await deviceClient.UploadToBlobAsync(fileName, sourceData);
             }
+
+            watch.Stop();
+            Console.WriteLine("Time to upload file: {0}ms\n", watch.ElapsedMilliseconds);
         }
 
-    Auf diese Weise kann **ReceiveC2dAsync** Nachrichten unterscheiden, deren `command`-Eigenschaft auf `FileUpload` festgelegt ist und die von der **UploadFileToBlobAsync**-Methode behandelt werden.
+    Die `UploadToBlobAsync`-Methode verwendet den Dateinamen und die Datenstromquelle der hochzuladenden Datei und verarbeitet das Hochladen in Speicher. Die Konsolenanwendung zeigt den Zeitaufwand für das Hochladen der Datei an.
 
-    Fügen Sie die Methode unten hinzu, um die Befehle für Dateiuploads zu behandeln.
-   
-        private static async Task UploadFileToBlobAsync(Message fileUploadCommand)
-        {
-            var fileUri = fileUploadCommand.Properties["fileUri"];
-            var blob = new CloudBlockBlob(new Uri(fileUri));
+5. Fügen Sie in der **Main**-Methode unmittelbar vor der Zeile `Console.ReadLine()` die folgende Methode hinzu:
 
-            byte[] data = new byte[10 * 1024 * 1024];
-            Random rng = new Random();
-            rng.NextBytes(data);
+        SendToBlobAsync();
 
-            MemoryStream msWrite = new MemoryStream(data);
-            msWrite.Position = 0;
-            using (msWrite)
-            {
-                await blob.UploadFromStreamAsync(msWrite);
-            }
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Uploaded file to: {0}", fileUri);
-            Console.ResetColor();
-
-            await deviceClient.CompleteAsync(fileUploadCommand);
-        }
-
-    Diese Methode verwendet das Azure Storage SDK zum Hochladen eines zufällig generierten 10 MB-BLOBs unter dem angegebenen URI. Weitere Informationen zum Hochladen von BLOBs finden Sie unter [Azure Storage – Verwenden von BLOBs].
-
-> [AZURE.NOTE] Beachten Sie, dass diese Implementierung des simulierten Geräts die Cloud-zu-Gerät-Nachricht erst abschließt, nachdem das BLOB hochgeladen wurde. Dieser Ansatz vereinfacht die Verarbeitung der hochgeladenen Dateien im Back-End, da die Übermittlungsbestätigung die Verfügbarkeit der hochgeladenen Datei für die Verarbeitung bestätigt. Wie allerdings im [Entwicklungsleitfaden für IoT Hub][IoT Hub Developer Guide - C2D] beschrieben, wird eine Nachricht, die nicht vor dem *Sichtbarkeitstimeout* (normalerweise 1 Minute) abgeschlossen ist, zurück in die Gerätewarteschlange gestellt und erneut an die **ReceiveAsync()**-Methode übergeben. Bei Szenarien, in denen der Dateiupload länger dauern kann, empfiehlt es sich u. U. für das simulierte Gerät, die aktuellen Uploadaufträge in einem permanenten Speicher vorzuhalten. Dadurch kann das simulierte Gerät die Cloud-zu-Gerät-Nachricht vor Beendigung des Dateiuploads abschließen und dann das Back-End in einer Gerät-zu-Cloud-Nachricht über den Abschluss informieren.
+> [AZURE.NOTE] Der Einfachheit halber wird in diesem Lernprogramm keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (z.B. einen exponentiellen Backoff), wie im MSDN-Artikel zum [Behandeln vorübergehender Fehler] beschrieben.
 
 <!-- Links -->
-[IoT Hub Developer Guide - C2D]: ../articles/iot-hub/iot-hub-devguide.md#c2d
-[Azure Storage – Verwenden von BLOBs]: ../articles/storage/storage-dotnet-how-to-use-blobs.md#upload-a-blob-into-a-container
+[IoT Hub Developer Guide - C2D]: iot-hub-devguide.md#c2d
+[Behandeln vorübergehender Fehler]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
+[Informationen zu Azure Storage]: ../storage/storage-create-storage-account.md#create-a-storage-account
+[Verwalten von IoT Hubs über das Azure-Portal]: ../articles/iot-hub-manage-through-portal/#file-upload
 
 <!-- Images -->
+[1]: ../articles/iot-hub/media/iot-hub-csharp-csharp-file-upload/image-properties.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0622_2016-->

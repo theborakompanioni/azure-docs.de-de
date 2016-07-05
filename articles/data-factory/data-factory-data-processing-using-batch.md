@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="04/26/2016"
+    ms.date="06/17/2016"
     ms.author="spelluru"/>
 # HPC und Datenorchestrierung mit Azure Batch und Data Factory
 
@@ -380,7 +380,7 @@ Die Methode verfügt über einige wichtige Komponenten, die Sie kennen müssen.
 
 	![](./media/data-factory-data-processing-using-batch/image5.png)
 
-13.  Laden Sie **MyDotNetActivity.zip** als Blob in den Blobcontainer **customactivitycontainer** im Azure-Blobspeicher hoch, den der verknüpfte Dienst **StorageLinkedService** in der **ADFTutorialDataFactory** verwendet. Erstellen Sie den Blobcontainer **customactivitycontainer**, sofern er noch nicht vorhanden ist.
+13.  Laden Sie **MyDotNetActivity.zip** als Blob in den Blobcontainer **customactivitycontainer** im Azure-Blobspeicher hoch, den der verknüpfte Dienst **StorageLinkedService** in **ADFTutorialDataFactory** verwendet. Erstellen Sie den Blobcontainer **customactivitycontainer**, sofern er noch nicht vorhanden ist.
 
 ### Execute-Methode
 
@@ -541,9 +541,9 @@ In diesem Schritt erstellen Sie einen verknüpften Dienst für Ihr **Azure Batch
 
     3.  Geben Sie die ID des Pools für die **poolName**-Eigenschaft ein**. **Für diese Eigenschaft können Sie entweder den Poolnamen oder die Pool-ID eingeben.
 
-    4.  Geben Sie die Batch-URI für die JSON-Eigenschaft **batchUri** ein. 
+    4.  Geben Sie die Batch-URI für die JSON-Eigenschaft **batchUri** ein.
     
-        >[AZURE.IMPORTANT] Die **URL** auf dem Blatt **Azure-Batch-Konto** hat folgendes Format: \<Kontoname\>.\<Region\>.batch.azure.com. Für die **batchUri** -Eigenschaft in JSON müssen Sie aus der URL **„Kontoname“ entfernen**. Beispiel: Example: „batchUri“: „https://eastus.batch.azure.com“.
+		> [AZURE.IMPORTANT] Die **URL** auf dem Blatt **Azure-Batch-Konto** hat folgendes Format: <Kontoname>.<Region>.batch.azure.com. Für die **batchUri** -Eigenschaft in JSON müssen Sie aus der URL **„Kontoname“ entfernen**. Beispiel: Example: „batchUri“: „https://eastus.batch.azure.com“.
 
         ![](./media/data-factory-data-processing-using-batch/image9.png)
 
@@ -797,11 +797,7 @@ In diesem Schritt testen Sie die Pipeline durch Ablegen von Dateien in die Einga
 
     ![](./media/data-factory-data-processing-using-batch/image13.png)
 
-6.  Verwenden Sie [Azure Batch-Explorer](http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx), um die **Aufgaben** anzuzeigen, die den **Slices** zugeordnet sind, und herauszufinden, auf welcher virtuellen Maschine jedes Slice ausgeführt wurde. Ein Auftrag mit dem Namen **adf-<poolname>** wird erstellt. Dieser Auftrag wird eine Aufgabe für jeden Slice besitzen. Dieses Beispiel umfasst 5 Slices, also 5 Aufgaben in Azure Batch. Wenn für die **Parallelität** in der Pipeline-JSON in Azure Data Factory **5** festgelegt wird und als **maximale Anzahl an Aufgaben pro virtueller Maschine** auf **2** in einem Azure Batch-Pool mit **2** VMs festgelegt ist, werden die Aufgaben sehr schnell ausgeführt (siehe **erstellte** Zeit).
-
-    ![](./media/data-factory-data-processing-using-batch/image14.png)
-
-	> [AZURE.NOTE] Laden Sie den Quellcode für das [Azure Batch-Explorer-Tool][batch-explorer] herunter, kompilieren Sie ihn, und erstellen und überwachen Sie damit Batch-Pools. Unter [Azure Batch-Explorer – Beispiel für eine exemplarische Vorgehensweise][batch-explorer-walkthrough] finden Sie Schritt-für-Schritt-Anweisungen zur Verwendung des Azure Batch-Explorers.
+6.  Verwenden Sie das Azure-Portal, um die den **Slices** zugeordneten **Aufgaben** anzuzeigen und herauszufinden, auf welchem virtuellen Computer jedes Slice ausgeführt wurde. Ausführliche Informationen finden Sie unter [Data Factory und Batch-Integration](#data-factory-and-batch-integration).
 
 7.  Die Ausgabedateien sollten im **outputfolder** von **mycontainer** in Ihrem Azure Blob-Speicher angezeigt werden.
 
@@ -833,6 +829,19 @@ In diesem Schritt testen Sie die Pipeline durch Ablegen von Dateien in die Einga
 
 
     **Hinweis:** Wenn Sie die Ausgabedatei 2015-11-16-01.txt nicht gelöscht haben, bevor Sie es mit 5 Eingabedateien versuchen, sehen Sie eine Zeile aus der vorherigen Sliceausführung und fünf Zeilen aus der aktuellen Sliceausführung. Der Inhalt wird standardmäßig an die Ausgabedatei angefügt, wenn sie bereits vorhanden ist.
+
+### Data Factory und Batch-Integration
+Der Data Factory-Dienst erstellt in Azure Batch einen Auftrag mit dem Namen: **adf-poolname:job-xxx**.
+
+![Azure Data Factory – Batch-Aufträge](media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png)
+
+Bei jeder Aktivitätsausführung eines Slices wird eine Aufgabe im Auftrag erstellt. Wenn zehn Slices zur Verarbeitung bereitstehen, werden zehn Aufgaben im Auftrag erstellt. Sie können mehrere Slices parallel ausführen, wenn Sie über mehrere Compute-Knoten im Pool verfügen. Sie können auch mehrere Slices auf dem gleichen Compute-Knoten ausführen, wenn die maximale Anzahl der Aufgaben pro Compute-Knoten auf mehr als 1 festgelegt ist.
+
+Dieses Beispiel umfasst 5 Slices, also 5 Aufgaben in Azure Batch. Wenn für die **Parallelität** in der Pipeline-JSON in Azure Data Factory **5** festgelegt wird und als **maximale Anzahl an Aufgaben pro virtuellem Computer** auf **2** in einem Azure Batch-Pool mit **2** VMs festgelegt ist, werden die Aufgaben sehr schnell ausgeführt (überprüfen Sie die Start- und Endzeit der Aufgaben).
+
+Verwenden Sie das Portal, um den Batch-Auftrag und die den **Slices** zugeordneten Aufgaben anzuzeigen und herauszufinden, auf welchem virtuellen Computer jedes Slice ausgeführt wurde.
+
+![Azure Data Factory – Aufgaben des Batch-Auftrags](media/data-factory-data-processing-using-batch/data-factory-batch-job-tasks.png)
 
 ## Debuggen der Pipeline
 
@@ -877,7 +886,7 @@ Das Debuggen umfasst einige grundlegende Verfahren:
     ![](./media/data-factory-data-processing-using-batch/image21.png)
 
     **Hinweis:** sehen Sie einen **Container** im Azure Blob-Speicher **adfjobs**. Dieser Container wird nicht automatisch gelöscht, jedoch können Sie ihn nach dem Testen der Lösung problemlos löschen. Ebenso erstellt die Data Factory-Lösung einen Azure Batch-**Auftrag** mit dem Namen: **adf-< Pool-ID/Name>:job-0000000001**. Sie können diesen Auftrag bei Belieben löschen, nachdem Sie die Lösung getestet haben.
-7. Die benutzerdefinierte Aktivität verwendet nicht die **app.config**-Datei aus Ihrem Paket. Wenn Ihr Code also Verbindungszeichenfolgen aus der Konfigurationsdatei liest, funktioniert er während der Laufzeit nicht. Die bewährte Methode bei der Verwendung von Azure Batch ist die Aufbewahrung aller geheimen Schlüssel in **Azure KeyVault**, die Verwendung eines zertifikatsbasierten Dienstprinzipals zum Schützen des Schlüsseltresors und die Verteilung des Zertifikats an Azure Batch-Pool. Die benutzerdefinierte .NET-Aktivität kann anschließend auf die geheimen Schlüssel aus dem Schlüsseltresor während der Laufzeit zugreifen. Dabei handelt es sich um eine generische Lösung, die auf jede Art von geheimem Schlüssel skalieren kann, nicht nur auf eine Verbindungszeichenfolge.
+7. Die benutzerdefinierte Aktivität verwendet nicht die **app.config**-Datei aus Ihrem Paket. Wenn Ihr Code also Verbindungszeichenfolgen aus der Konfigurationsdatei liest, funktioniert er während der Laufzeit nicht. Die bewährte Methode bei der Verwendung von Azure Batch ist die Aufbewahrung aller geheimen Schlüssel in **Azure KeyVault**, die Verwendung eines zertifikatbasierten Dienstprinzipals zum Schützen des Schlüsseltresors und die Verteilung des Zertifikats an Azure Batch-Pool. Die benutzerdefinierte .NET-Aktivität kann anschließend auf die geheimen Schlüssel aus dem Schlüsseltresor während der Laufzeit zugreifen. Dabei handelt es sich um eine generische Lösung, die auf jede Art von geheimem Schlüssel skalieren kann, nicht nur auf eine Verbindungszeichenfolge.
 
 	Es existiert eine einfachere Problemumgehung (aber keine bewährte Methode): Sie können einen neuen **mit Azure SQL verknüpften Dienst** mit Verbindungszeichenfolgen-Einstellungen erstellen, ein den verknüpften Dienst verwendendes Dataset erstellen und das Dataset als Dummyeingabedataset mit der benutzerdefinierten .NET-Aktivität verketten. Sie können anschließend auf die Verbindungszeichenfolge des verknüpften Diensts im Code der benutzerdefinierten Aktivität zugreifen. Sie sollte während der Laufzeit problemlos funktionieren.
 
@@ -940,4 +949,4 @@ Nachdem Sie Daten verarbeitet haben, können Sie sie mit Online-Tools wie **Micr
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
 
-<!----HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0622_2016-->

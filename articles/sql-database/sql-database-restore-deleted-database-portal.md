@@ -12,7 +12,7 @@
 	ms.devlang="NA"
 	ms.date="06/09/2016"
 	ms.author="sstein"
-	ms.workload="data-management"
+	ms.workload="sqldb-bcdr"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"/>
 
@@ -23,6 +23,7 @@
 - [Übersicht](sql-database-restore-deleted-database.md)
 - [Azure-Portal](sql-database-restore-deleted-database-portal.md)
 - [PowerShell](sql-database-restore-deleted-database-powershell.md)
+
 
 ## Auswählen der wiederherzustellenden Datenbank 
 
@@ -39,11 +40,10 @@ Gehen Sie zum Wiederherstellen einer Datenbank im Azure-Portal wie folgt vor:
 
 ## Nächste Schritte
 
-- [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
-- [Wiederherstellen einer gelöschten Datenbank](sql-database-restore-deleted-database.md)
-- [Wiederherstellen einer gelöschten Azure SQL-Datenbank mit PowerShell](sql-database-restore-deleted-database-powershell.md)
-- [Restore a deleted database using the REST API](https://msdn.microsoft.com/library/azure/mt163685.aspx) (Wiederherstellen einer gelöschten Datenbank mithilfe der REST-API)
-- [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md)
+- Ausführliche Schritte zum Wiederherstellen einer gelöschten Datenbank mithilfe von PowerShell finden Sie unter [Wiederherstellen einer gelöschten Azure SQL-Datenbank mit PowerShell](sql-database-restore-deleted-database-powershell.md).
+- Informationen zum Wiederherstellen einer gelöschten Datenbank finden Sie unter [Wiederherstellen einer gelöschten Datenbank mithilfe der REST-API](https://msdn.microsoft.com/library/azure/mt163685.aspx).
+- Detaillierte Informationen zum Wiederherstellen einer gelöschten Datenbank finden Sie unter [Wiederherstellen einer gelöschten Datenbank](sql-database-restore-deleted-database.md).
+- Detaillierte Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
 
 ## Zusätzliche Ressourcen
 
@@ -53,4 +53,4 @@ Gehen Sie zum Wiederherstellen einer Datenbank im Azure-Portal wie folgt vor:
 - [Aktive Georeplikation](sql-database-geo-replication-overview.md)
 - [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

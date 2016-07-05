@@ -43,6 +43,10 @@ Die folgenden Schritte beschreiben den am häufigsten verwendeten Workflow, der 
 
 	Senden Sie nachfolgende API-Aufrufe an https://wamsbayclus001rest-hs.cloudapp.net/api/.
 
+##Zugriffssteuerungsadresse
+
+Die Media Services-Zugriffssteuerungsadresse ist https://wamsprodglobal001acs.accesscontrol.windows.net mit Ausnahme der Region Nordchina, für die sie https://wamsprodglobal001acs.accesscontrol.chinacloudapi.cn ist.
+
 ##Abrufen eines Zugriffstokens
 
 Um direkt über die REST-API auf Media Services zuzugreifen, rufen Sie das Zugriffstoken von ACS ab und verwenden es während jeder im Dienst ausgeführten HTTP-Anforderung. Dieses Token ähnelt anderen Token, die von ACS auf der Basis von Zugriffsansprüchen im HTTP-Anforderungsheader und mit dem OAuth v2-Protokoll bereitgestellt werden. Für die direkte Verbindung mit Media Services gelten keine weiteren Voraussetzungen.
@@ -173,4 +177,4 @@ Das folgende Beispiel veranschaulicht die HTTP-Anforderung an den Stamm-URI für
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0622_2016-->

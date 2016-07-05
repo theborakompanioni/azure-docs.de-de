@@ -14,12 +14,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/18/2016"
+   ms.date="06/15/2016"
    ms.author="tomfitz"/>
 
 # Problembehandlung bei häufigen Fehlern beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager
 
-In diesem Thema wird beschrieben, wie Sie einige der häufigsten Fehler beheben können, die beim Bereitstellen von Ressourcen in Azure auftreten können. Hoffentlich haben Sie bereits eine hilfreiche Fehlermeldung gesehen. Falls Ihnen noch keine hilfreiche Fehlermeldung angezeigt wurde oder Sie weitere Einzelheiten zur Ursache des Bereitstellungsfehlers benötigen, lesen Sie zunächst [Anzeigen von Bereitstellungsvorgängen](resource-manager-troubleshoot-deployments-portal.md). Kehren Sie anschließend zu diesem Artikel zurück, um Unterstützung beim Beheben des Fehlers zu erhalten.
+In diesem Thema wird beschrieben, wie Sie einige allgemeine Fehler beheben können, die beim Bereitstellen von Ressourcen in Azure auftreten können. Falls Sie weitere Einzelheiten zum Bereitstellungsfehler benötigen, lesen Sie zunächst [Anzeigen von Bereitstellungsvorgängen](resource-manager-troubleshoot-deployments-portal.md). Kehren Sie anschließend zu diesem Artikel zurück, um Unterstützung beim Beheben des Fehlers zu erhalten.
 
 ## Ungültige Vorlage oder Ressource
 
@@ -31,7 +31,7 @@ Wenn Sie nicht die entsprechende Syntax bereitstellen, wird die Vorlage einen We
 
 Je nachdem, wo sich das fehlende Zeichen in Ihrer Vorlage befindet, erhalten Sie eine Fehler, dass die Vorlage oder eine Ressource ungültig ist. Der Fehler kann auch darauf angeben, dass der Bereitstellungsprozess den Vorlagensprachausdruck nicht verarbeiten konnte. Wenn Sie diese Art von Fehler erhalten, überprüfen Sie sorgfältig die Ausdruckssyntax.
 
-## Der Ressourcenname ist bereits vorhanden
+## Der Ressourcenname ist bereits vorhanden oder wird bereits von einer anderen Ressource verwendet.
 
 Bei einigen Ressourcen, insbesondere Speicherkonten, Datenbankservern und Websites, müssen Sie einen im gesamten Azure-Dienst eindeutigen Namen für die Ressource angeben. Sie können einen eindeutigen Namen erstellen, indem Sie die Benennungskonvention mit dem Ergebnis der [uniqueString](resource-group-template-functions.md#uniquestring)-Funktion verketten.
  
@@ -52,65 +52,78 @@ Resource Manager optimiert die Bereitstellung, indem, sofern möglich, gleichzei
       ...
     }
 
-## Speicherort für die Ressource nicht verfügbar
+## Member „copy“ wurde für das Objekt nicht gefunden.
 
-Verwenden Sie beim Angeben eines Standorts für eine Ressource einen von der Ressource unterstützten Standort. Bevor Sie einen Standort für eine Ressource eingeben, überprüfen Sie mit einem der folgenden Befehle, ob der Standort den Ressourcentyp unterstützt.
+Dieser Fehler tritt auf, wenn Sie das Element **copy** auf einen Teil der Vorlage angewendet haben, der dieses Element nicht unterstützt. Sie können das copy-Element nur auf einen Ressourcentyp anwenden. Sie können „copy“ nicht auf eine Eigenschaft in einem Ressourcentyp anwenden. Beispiel: Sie wenden „copy“ auf einen virtuellen Computer an, können das Element aber nicht auf die Betriebssystem-Datenträger für einen virtuellen Computer anwenden. In einigen Fällen können Sie eine untergeordnete Ressource in eine übergeordnete Ressource umwandeln, um eine Kopierschleife zu erstellen. Weitere Informationen zur Verwendung von „copy“ finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen in Azure Resource Manager](resource-group-create-multiple.md).
+
+## SKU nicht verfügbar
+
+Beim Bereitstellen einer Ressource (in der Regel ein virtueller Computer) werden möglicherweise der folgende Fehlercode und die folgende Fehlermeldung angezeigt:
+
+    Code: SkuNotAvailable
+    Message: The requested tier for resource '<resource>' is currently not available in location '<location>' for subscription '<subscriptionID>'. Please try another tier or deploy to a different location.
+
+Sie erhalten diesen Fehler, wenn die ausgewählte Ressourcen-SKU (z.B. die Größe des virtuellen Computers) für den ausgewählten Standort nicht verfügbar ist. Sie haben zwei Optionen, dieses Problem zu beheben:
+
+1.	Melden Sie sich beim Portal an, und beginnen Sie mit dem Hinzufügen einer neuen Ressource über die UI. Beim Festlegen der Werte werden die verfügbaren SKUs für die Ressource angezeigt. 
+
+    ![Verfügbare SKUs](./media/resource-manager-common-deployment-errors/view-sku.png)
+
+2.	Wenn Sie keine geeignete SKU in dieser Region oder einer anderen Region finden, die Ihre Geschäftsanforderungen erfüllt, wenden Sie sich an den [Azure-Support](https://portal.azure.com/#create/Microsoft.Support).
+
+
+## Kein registrierter Anbieter gefunden
+
+Beim Bereitstellen von Ressourcen werden möglicherweise der folgende Fehlercode und die folgende Fehlermeldung angezeigt:
+
+    Dode: NoRegisteredProviderFound
+    Message: No registered resource provider found for location '<location>' and API version '<api-version>' for type '<resource-type>'.
+
+Für diesen Fehler gibt es drei Gründe:
+
+1. Der Standort wird für den Ressourcentyp nicht unterstützt.
+2. Die API-Version wird für den Ressourcentyp nicht unterstützt.
+3. Der Ressourcenanbieter wurde für Ihr Abonnement nicht registriert.
+
+Die Fehlermeldung enthält in der Regel Vorschläge für die unterstützten Standorte und API-Versionen. Sie können Ihre Vorlage in einen der vorgeschlagenen Werte ändern. Die meisten Anbieter werden automatisch über das Azure-Portal oder die verwendete Befehlszeilenschnittstelle registriert. Wenn Sie zuvor noch keinen bestimmten Ressourcenanbieter verwendet haben, müssen Sie diesen Anbieter unter Umständen registrieren. Mit den folgenden Befehlen können Sie weitere Informationen zu Ressourcenanbietern anzeigen.
 
 ### PowerShell
 
-Verwenden Sie **Get-AzureRmResourceProvider**, um unterstützte Typen und Speicherorte für einen bestimmten Ressourcenanbieter abzurufen.
+Verwenden Sie zum Anzeigen des Registrierungsstatus **Get-AzureRmResourceProvider**.
 
-    Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web
+    Get-AzureRmResourceProvider -ListAvailable
 
-Sie erhalten eine Liste der Ressourcentypen für diesen Ressourcenanbieter.
+Um einen Anbieter zu registrieren, verwenden Sie **Register-AzureRmResourceProvider**, und geben Sie den Namen des zu registrierenden Ressourcenanbieters an.
 
-    ProviderNamespace RegistrationState ResourceTypes               Locations
-    ----------------- ----------------- -------------               ---------
-    Microsoft.Web     Registered        {sites/extensions}          {Brazil South, ...
-    Microsoft.Web     Registered        {sites/slots/extensions}    {Brazil South, ...
-    Microsoft.Web     Registered        {sites/instances}           {Brazil South, ...
-    ...
+    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Cdn
 
-Verwenden Sie Folgendes, um sich auf die Speicherorte für einen bestimmten Ressourcentyp zu konzentrieren:
+Verwenden Sie zum Abrufen der unterstützten Standorte für einen bestimmten Ressourcentyp Folgendes:
 
     ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 
-Dies gibt die unterstützten Speicherorte zurück:
+Verwenden Sie zum Abrufen der unterstützten API-Versionen für einen bestimmten Ressourcentyp Folgendes:
 
-    Brazil South
-    East Asia
-    East US
-    Japan East
-    Japan West
-    North Central US
-    North Europe
-    South Central US
-    West Europe
-    West US
-    Southeast Asia
+    ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
 
 ### Azure-Befehlszeilenschnittstelle
 
-Verwenden Sie bei der Azure-Befehlszeilenschnittstelle den Befehl **azure location list**. Da die Liste der Speicherorte lang sein kann und es viele Anbieter gibt, können Sie Tools verwenden, um Anbieter und Speicherorte zu überprüfen, bevor Sie einen Speicherort nutzen, der noch nicht zur Verfügung steht. Das folgende Skript ermittelt mithilfe von **jq** die Standorte, an denen der Ressourcenanbieter für virtuelle Azure-Computer verfügbar ist.
+Mit dem Befehl `azure provider list` können Sie feststellen, ob der Anbieter registriert ist.
 
-    azure location list --json | jq '.[] | select(.name == "Microsoft.Compute/virtualMachines")'
+    azure provider list
+        
+Um einen Ressourcenanbieter zu registrieren, verwenden Sie den Befehl `azure provider register`, und geben Sie den zu registrierenden *Namespace* an.
+
+    azure provider register Microsoft.Cdn
+
+Verwenden Sie zum Anzeigen der unterstützten Standorte und API-Versionen für einen Ressourcenanbieter Folgendes:
+
+    azure provider show -n Microsoft.Compute --json > compute.json
     
-Dies gibt die unterstützten Speicherorte zurück:
-    
-    {
-      "name": "Microsoft.Compute/virtualMachines",
-      "location": "East US,East US 2,West US,Central US,South Central US,North Europe,West Europe,East Asia,Southeast Asia,Japan East,Japan West"
-    }
-
-### REST-API
-
-Informationen zur REST-API finden Sie unter [Abrufen von Informationen zu einem Ressourcenanbieter](https://msdn.microsoft.com/library/azure/dn790534.aspx).
-
 ## Das Kontingent wurde überschritten
 
 Probleme können auftreten, wenn eine Bereitstellung ein Kontingent überschreitet (etwa für eine Ressourcengruppe, ein Abonnement, ein Konto oder Ähnliches). Ihr Abonnement kann beispielsweise so konfiguriert werden, um die Anzahl der Kerne für eine Region zu begrenzen. Wenn Sie versuchen, einen virtuellen Computer mit mehr Kernen als der zulässigen Anzahl bereitzustellen, erhalten Sie eine Fehlermeldung, die darauf hinweist, dass das Kontingent überschritten wurde. Die vollständigen Kontingentinformationen finden Sie unter [Grenzwerte, Kontingente und Einschränkungen für Azure-Abonnements und -Dienste](azure-subscription-service-limits.md).
 
-Zum Untersuchen der Kontingente Ihres eigenen Abonnements für Kerne können Sie den Befehl `azure vm list-usage` in der Azure-Befehlszeilenschnittstelle verwenden. Im folgenden Beispiel wird veranschaulicht, dass das Kernkontingent für ein kostenloses Testkonto 4 ist:
+Zum Untersuchen der Kontingente Ihres eigenen Abonnements für Kerne können Sie den Befehl `azure vm list-usage` in der Azure-CLI verwenden. Im folgenden Beispiel wird veranschaulicht, dass das Kernkontingent für ein kostenloses Testkonto 4 ist:
 
     azure vm list-usage
     
@@ -158,74 +171,35 @@ Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Ro
 
 Neben rollenbasierter Zugriffssteuerung können Ihre Bereitstellungsaktionen auch durch Richtlinien für das Abonnement eingeschränkt werden. Durch Richtlinien kann der Administrator Konventionen für alle Ressourcen durchsetzen, die in dem Abonnement bereitgestellt sind. Ein Administrator kann beispielsweise fordern, dass ein bestimmter Tagwert für einen Ressourcentyp angegeben wird. Wenn Sie die Richtlinienanforderungen nicht erfüllt haben, wird während der Bereitstellung ein Fehler ausgegeben. Weitere Informationen zu Richtlinien finden Sie unter [Verwenden von Richtlinien zum Verwalten von Ressourcen und Steuern des Zugriffs](resource-manager-policy.md).
 
-## Überprüfen der Ressourcenanbieterregistrierung
+## Problembehandlung bei virtuellen Computern 
 
-Ressourcen werden von Ressourcenanbietern verwaltet, und ein Konto oder Abonnement muss für die Verwendung eines bestimmten Anbieters registriert werden. Die meisten Anbieter werden automatisch über das Azure-Portal oder die verwendete Befehlszeilenschnittstelle registriert.
+| Error | Artikel |
+| -------- | ----------- |
+| Fehler der benutzerdefinierten Skripterweiterung | [Problembehandlung bei Fehlern im Zusammenhang mit Azure Windows-VM-Erweiterungen](./virtual-machines/virtual-machines-windows-extensions-troubleshoot.md)<br />oder<br />[Problembehandlung für Fehler bei Azure-Erweiterungen für virtuelle Linux-Computer](./virtual-machines/virtual-machines-linux-extensions-troubleshoot.md) | 
+| Fehler bei der Bereitstellung des Betriebssystemimage | [Behandeln von Problemen beim Erstellen eines neuen virtuellen Windows-Computers in Azure (Resource Manager-Bereitstellungsmodell)](./virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md)<br />oder<br />[Behandeln von Ressourcen-Manager-Bereitstellungsproblemen beim Erstellen eines neuen virtuellen Linux-Computers in Azure](./virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm.md) | 
+| Fehler bei der Zuordnung | [Problembehandlung für Zuordnungsfehler beim Erstellen, Neustarten oder Ändern der Größe von virtuellen Windows-Computern in Azure](./virtual-machines/virtual-machines-windows-allocation-failure.md)<br />oder<br />[Problembehandlung für Zuordnungsfehler beim Erstellen, Neustarten oder Ändern der Größe von virtuellen Linux-Computern in Azure](./virtual-machines/virtual-machines-linux-allocation-failure.md) | 
+| Secure Shell (SSH)-Fehler beim Herstellen einer Verbindung | [Problembehandlung für SSH-Verbindungen (Secure Shell) mit einem Linux-basierten virtuellen Azure-Computer](./virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md) | 
+| Fehler beim Herstellen einer Verbindung mit einer Anwendung, die auf einem virtuellen Computer ausgeführt wird | [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird (Windows)](./virtual-machines/virtual-machines-windows-troubleshoot-app-connection.md)<br />oder<br />[Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird (Linux)](./virtual-machines/virtual-machines-linux-troubleshoot-app-connection.md) | 
+| Fehler bei Remotedesktopverbindungen | [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](./virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md) | 
+| Verbindungsfehler, die durch eine erneute Bereitstellung behoben werden | [Einen virtuellen Computer in einem neuen Azure-Knoten erneut bereitstellen](./virtual-machines/virtual-machines-windows-redeploy-to-new-node.md) | 
+| Clouddienstfehler | [Behandeln von Problemen mit der Clouddienstbereitstellung](./cloud-services/cloud-services-troubleshoot-deployment-problems.md) | 
 
-### PowerShell
+## Problembehandlung bei anderen Diensten 
 
-Verwenden Sie zum Anzeigen des Registrierungsstatus **Get-AzureRmResourceProvider**.
+Die folgende Tabelle ist keine vollständige Liste der Problembehandlung für Azure. Stattdessen konzentriert sie sich auf Probleme im Zusammenhang mit der Bereitstellung oder Konfiguration von Ressourcen. Wenn Sie Hilfe bei der Problembehandlung von Laufzeitproblemen mit einer Ressource benötigen, lesen Sie die Informationen in der Dokumentation für den jeweiligen Azure-Dienst.
 
-    Get-AzureRmResourceProvider -ListAvailable
-
-Dies gibt alle verfügbaren Ressourcenanbieter und Ihren Registrierungsstatus zurück:
-
-    ProviderNamespace               RegistrationState ResourceTypes
-    -----------------               ----------------- -------------
-    Microsoft.ApiManagement         Unregistered      {service, validateServiceName, checkServiceNameAvailability}
-    Microsoft.AppService            Registered        {apiapps, appIdentities, gateways, deploymenttemplates...}
-    Microsoft.Batch                 Registered        {batchAccounts}
-
-Um einen Anbieter zu registrieren, verwenden Sie **Register-AzureRmResourceProvider**, und geben Sie den Namen des zu registrierenden Ressourcenanbieters an.
-
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Cdn
-
-Sie werden aufgefordert, die Registrierung zu bestätigen, und dann wird ein Status zurückgegeben.
-
-    Confirm
-    Are you sure you want to register the provider 'Microsoft.Cdn'
-    [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
-
-    ProviderNamespace RegistrationState ResourceTypes
-    ----------------- ----------------- -------------
-    Microsoft.Cdn     Registering       {profiles, profiles/endpoints,...
-
-### Azure-Befehlszeilenschnittstelle
-
-Um mithilfe der Azure-Befehlszeilenschnittstelle zu sehen, ob der Anbieter zur Nutzung registriert ist, verwenden Sie den `azure provider list` Befehl (es folgt ein gekürztes Beispiel für eine Ausgabe).
-
-    azure provider list
-        
-Dies gibt alle verfügbaren Ressourcenanbieter und Ihren Registrierungsstatus zurück:
-        
-    info:    Executing command provider list
-    + Getting ARM registered providers
-    data:    Namespace                        Registered
-    data:    -------------------------------  -------------
-    data:    Microsoft.Compute                Registered
-    data:    Microsoft.Network                Registered  
-    data:    Microsoft.Storage                Registered
-    data:    microsoft.visualstudio           Registered
-    ...
-    info:    provider list command OK
-
-Um einen Ressourcenanbieter zu registrieren, verwenden Sie den Befehl `azure provider register`, und geben Sie den zu registrierenden *Namespace* an.
-
-    azure provider register Microsoft.Cdn
-
-### REST-API
-
-Informationen zum Registrierungsstatus finden Sie unter [Abrufen von Informationen zu einem Ressourcenanbieter](https://msdn.microsoft.com/library/azure/dn790534.aspx).
-
-Informationen zum Registrieren eines Anbieters finden Sie unter [Registrieren eines Abonnements bei einem Ressourcenanbieter](https://msdn.microsoft.com/library/azure/dn790548.aspx).
-
-## Fehler der benutzerdefinierten Skripterweiterung
-
-Bei einem Fehler für eine benutzerdefinierte Skripterweiterung beim Bereitstellen eines virtuellen Computers finden Sie weitere Informationen unter [Problembehandlung bei Fehlern im Zusammenhang mit Azure Windows-VM-Erweiterungen](./virtual-machines/virtual-machines-windows-extensions-troubleshoot.md) und [Problembehandlung für Fehler bei Azure-Erweiterungen für virtuelle Linux-Computer](./virtual-machines/virtual-machines-linux-extensions-troubleshoot.md).
-
-## Fehler bei der Bereitstellung und Zuordnung von virtuellen Computern
-
-Wenn Sie einen virtuellen Computer bereitstellen möchten und ein Fehler bei der Bereitstellung des Betriebssystemimages aufgetreten ist, finden Sie weitere Informationen unter [Problembehandlung beim Erstellen einer neuen VM](./virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md) und [Problembehandlung bei Zuordnungsfehlern](./virtual-machines/virtual-machines-windows-allocation-failure.md).
+| Dienst | Artikel |
+| -------- | -------- |
+| Automation | [Tipps zur Problembehandlung für häufige Fehler in Azure Automation](./automation/automation-troubleshooting-automation-errors.md) | 
+| Azure Stack | [Microsoft Azure Stack troubleshooting](./azure-stack/azure-stack-troubleshooting.md) (Problembehandlung für Microsoft Azure Stack) | 
+| Azure Stack | [Web Apps and Azure Stack](./azure-stack/azure-stack-webapps-troubleshoot-known-issues.md) (Web-Apps und Azure Stack) | 
+| Data Factory | [Problembehandlung bei Data Factory](./data-factory/data-factory-troubleshoot.md) | 
+| Service Fabric | [Häufig auftretende Probleme und Problembehandlung beim Bereitstellen von Diensten in Azure Service Fabric](./service-fabric/service-fabric-diagnostics-troubleshoot-common-scenarios.md) | 
+| Site Recovery | [Überwachung und Problembehandlung für den Schutz von virtuellen Computern und physischen Servern](./site-recovery/site-recovery-monitoring-and-troubleshooting.md) |
+| Speicher | [Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung](./storage/storage-monitoring-diagnosing-troubleshooting.md) |
+| StorSimple | [Beheben von Problemen mit der Bereitstellung von StorSimple-Geräten](./storsimple/storsimple-troubleshoot-deployment.md) | 
+| SQL-Datenbank | [Beheben von Verbindungsproblemen mit der Azure SQL-Datenbank](./sql-database/sql-database-troubleshoot-common-connection-issues.md) | 
+| SQL Data Warehouse | [Problembehandlung bei Azure SQL Data Warehouse](./sql-data-warehouse/sql-data-warehouse-troubleshoot.md) | 
 
 ## Verstehen, wann eine Bereitstellung bereit ist 
 
@@ -237,7 +211,5 @@ Sie können jedoch Azure daran hindern, einen erfolgreichen Bereitstellungsstatu
 
 - Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).
 - Weitere Informationen zu Aktionen zum Bestimmen der Fehler während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen](resource-manager-troubleshoot-deployments-portal.md).
-- Informationen zur Problembehandlung bei Remotedesktopprotokoll-Fehlern auf Windows-basierten virtuellen Computern finden Sie unter [Problembehandlung bei Remotedesktopverbindungen](./virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md).
-- Informationen zur Problembehandlung bei Secure Shell-Fehlern auf Linux-basierten virtuellen Computern finden Sie unter [Problembehandlung bei Secure Shell-Verbindungen](./virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -51,3 +51,4 @@ Die Funktionen der einzelnen IoT-Geräte variieren. Manche Geräte sind möglich
 
 Manche ältere und eingeschränkte Geräte sind möglicherweise nicht speziell auf die IoT-Bereitstellung ausgelegt. Diese Geräte können möglicherweise keine Daten verschlüsseln, keine Verbindung mit dem Internet herstellen, keine erweiterte Überwachung durchführen usw. In diesen Fällen kann ein modernes und sicheres Bereichsgateway zum Aggregieren von Daten auf älteren Geräten für die erforderliche Sicherheit dieser über das Internet verbundenen Geräte verwendet werden. In diesem Fall ermöglichen Bereichsgateways eine sichere Authentifizierung, Aushandlung von verschlüsselten Sitzungen, Empfang von Befehlen aus der Cloud und viele andere Sicherheitsfunktionen.
 
+<!---HONumber=AcomDC_0622_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/09/2016"
+   ms.date="06/15/2016"
    ms.author="aglick"/>
 
 #Checkliste für hohe Verfügbarkeit
@@ -29,7 +29,7 @@ __Was passiert, wenn Sie Traffic Manager nicht nutzen?__ Wenn Sie Ihren Anwendun
 ###Haben Sie es vermieden, einen einzelnen virtuellen Computer für eine Rolle zu verwenden?
 Bei einem guten Entwurf wird dafür gesorgt, dass einzelne Fehlerquellen („Single Point of Failure“) vermieden werden. Dies ist bei allen Dienstentwürfen wichtig (ob lokal oder in der Cloud). Besonders nützlich ist diese Vorgehensweise aber in der Cloud, da Sie die Skalierbarkeit und Resilienz durch das horizontale Hochskalieren (Hinzufügen virtueller Computer) erhöhen können, anstatt das zentrale Hochskalieren durchzuführen (Nutzung eines virtuellen Computers mit höherer Leistung). Weitere Informationen zu skalierbaren Anwendungsentwürfen finden Sie unter [Hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](resiliency-high-availability-azure-applications.md).
 
-__Was passiert, wenn Sie einen einzelnen virtuellen Computer für eine Rolle verwenden?__ Ein einzelner Computer ist eine einzelne Fehlerquelle (Single Point of Failure). Im besten Fall wird Ihre Anwendung richtig ausgeführt. Dies ist aber kein robuster Entwurf, und mit jeder einzelnen Fehlerquelle steigt die Wahrscheinlichkeit eines Ausfalls bei einem Fehler.
+__Was passiert, wenn Sie einen einzelnen virtuellen Computer für eine Rolle verwenden?__ Ein einzelner Computer ist ein Single Point of Failure und für die [Vereinbarung zum Servicelevel von Azure Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/) nicht verfügbar. Im besten Fall wird Ihre Anwendung wie gewünscht ausgeführt. Dies ist aber kein robuster Entwurf, der nicht von der Vereinbarung zum Servicelevel für Azure Virtual Machines abgedeckt ist. Mit jedem Single Point of Failure steigt die Wahrscheinlichkeit von Ausfallzeiten.
 
 ###Verwenden Sie einen Load Balancer, der den VMs mit Internetzugriff Ihrer Anwendung vorgeschaltet ist?
 Load Balancer ermöglichen Ihnen das Verteilen des eingehenden Datenverkehrs für die Anwendung auf eine beliebige Anzahl von Computern. Sie können dem Load Balancer jederzeit Computer hinzufügen oder diese entfernen. Dies funktioniert gut für virtuelle Computer (und für die automatische Skalierung mit Skalierungsgruppen für virtuelle Computer), um Ihnen das einfache Behandeln von Datenverkehrszunahmen oder VM-Ausfällen zu ermöglichen. Weitere Informationen zu Load Balancern finden Sie unter [Übersicht über Azure Load Balancer](../load-balancer/load-balancer-overview.md) sowie unter [Running multiple VMs on Azure for scalability and availability](../guidance/guidance-compute-multi-vm.md) (Skalierbarkeit und Verfügbarkeit durch Ausführen mehrerer virtueller Computer unter Azure).
@@ -69,7 +69,7 @@ Wenn die Anwendung über eine hohe Datenbanklast verfügt, bei der die meisten D
 ###Haben Sie sich an den Microsoft Azure Support gewendet, wenn Sie ein Ereignis größeren Umfangs erwarten?
 Der Support von Azure kann Sie beim Heraufsetzen Ihrer Diensteinschränkungen unterstützen, um geplante Ereignisse mit einem hohen Aufkommen an Datenverkehr zu bewältigen (z.B. Einführung neuer Produkte oder besondere Anlässe). Darüber hinaus kann Sie der Support von Azure auch mit Experten in Kontakt bringen, die Sie beim Prüfen des Entwurfs mit Ihrem Kundenteam und der Ermittlung der besten Lösung für Ihre speziellen Anforderungen in Bezug auf das Ereignis unterstützen können. Weitere Informationen zur Kontaktaufnahme mit dem Support von Azure finden Sie unter [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq/).
 
-__Was passiert, wenn Sie sich bei einem Ereignis mit hohem Datenverkehrsaufkommen nicht an den Support von Azure wenden?__ Wenn Sie die Informationen zu einem Ereignis mit hohem Datenverkehrsaufkommen nicht weitergeben bzw. dieses Ereignis nicht planen, besteht das Risiko, dass Sie bestimmte [Azure-Diensteinschränkungen](../azure-subscription-service-limits.md) erreichen und während des Ereignisses die Benutzerfreundlichkeit leidet (oder es sogar zu einem Ausfall kommt). Sie können dieses Risiko verringern, wenn Sie die Architektur prüfen und hohe Datenverkehrsaufkommen ankündigen.
+__Was passiert, wenn Sie sich bei einem Ereignis mit hohem Datenverkehrsaufkommen nicht an den Support von Azure wenden?__ Wenn Sie die Informationen zu einem Ereignis mit hohem Datenverkehrsaufkommen nicht weitergeben bzw. dieses Ereignis nicht einplanen, besteht das Risiko, dass Sie bestimmte [Azure-Diensteinschränkungen](../azure-subscription-service-limits.md) erreichen und während des Ereignisses die Benutzerfreundlichkeit leidet (oder es sogar zu einem Ausfall kommt). Sie können dieses Risiko verringern, wenn Sie die Architektur prüfen und hohe Datenverkehrsaufkommen ankündigen.
 
 ###Haben Sie Ihren Speicherblobs und statischen Assets ein Content Delivery Network (Azure CDN) vorgeschaltet?
 Mit einem CDN können Sie die Last für die Server verringern, indem Sie Inhalte an den CDN POP/edge-Standorten zwischenspeichern, die weltweit verteilt sind. Dies können Sie tun, um die Latenz zu verringern, die Skalierbarkeit zu erhöhen und die Serverlast zu verringern. Außerdem kann dies Teil einer Strategie zum Schützen vor Denial-of-Service-Angriffen (DOS) sein. Weitere Informationen dazu, wie Sie Azure CDN zum Erhöhen der Resilienz sowie zum Verringern der Kundenlatenz verwenden, finden Sie unter [Übersicht über das Azure Content Delivery Network (CDN)](../cdn/cdn-overview.md).
@@ -79,4 +79,4 @@ __Was passiert, wenn Sie kein CDN verwenden?__ Wenn Sie kein CDN verwenden, gela
 ##Nächste Schritte:
 Weitere Informationen dazu, wie Sie Ihre Anwendungen für hohe Verfügbarkeit konzipieren, finden Sie unter [Hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](resiliency-high-availability-azure-applications.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->
