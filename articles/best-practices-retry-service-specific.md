@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Wiederholen der spezifischen Dienstanleitung | Microsoft Azure"
+   pageTitle="Anleitung zu dienstspezifischen Wiederholungsmechanismen | Microsoft Azure"
    description="Spezifische Dienstanleitung für die Festlegung des Wiederholungsmechanismus."
    services=""
    documentationCenter="na"
@@ -17,7 +17,7 @@
    ms.date="04/01/2016"
    ms.author="masashin"/>
 
-# Wiederholen der spezifischen Anleitung
+# Anleitung zu dienstspezifischen Wiederholungsmechanismen
 
 [AZURE.INCLUDE [pnp-header](../includes/guidance-pnp-header-include.md)]
 
