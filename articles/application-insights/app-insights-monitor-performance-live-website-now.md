@@ -143,24 +143,7 @@ Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application I
 
 ### Verbindungsfehler
 
-Sie müssen einige ausgehende Ports in der Firewall des Servers öffnen, damit der Statusmonitor funktioniert:
-
-+ Telemetrie – die folgenden sind jederzeit erforderlich:
- +	`dc.services.visualstudio.com:80`
- +	`dc.services.visualstudio.com:443`
- +	`dc.applicationinsights.microsoft.com`
-+ Konfiguration – nur erforderlich, wenn Änderungen vorgenommen werden:
- -	`management.core.windows.net:443`
- -	`management.azure.com:443`
- -	`login.windows.net:443`
- -	`login.microsoftonline.com:443`
- -	`secure.aadcdn.microsoftonline-p.com:443`
- -	`auth.gfx.ms:443`
- -	`login.live.com:443`
-+ Installation:
- +	`packages.nuget.org:443`
-
-Diese Liste kann sich von Zeit zu Zeit ändern.
+Sie müssen [einige ausgehende Ports](app-insights-ip-addresses.md#outgoing-ports) in der Firewall des Servers öffnen, damit der Statusmonitor funktioniert:
 
 ### Keine Telemetriedaten?
 
@@ -244,7 +227,7 @@ Sie können die Überwachung mit PowerShell starten und beenden.
 `Update-ApplicationInsightsMonitoring -Name appName [-InstrumentationKey "0000000-0000-000-000-0000"`]
 
 * `-Name`: Dies ist der Name einer Web-App in IIS.
-* `-InstrumentationKey` (Optional.) Verwenden Sie dieses Element zum Ändern der Ressource, an die die Telemetriedaten der App gesendet werden.
+* `-InstrumentationKey` (Optional) Verwenden Sie dieses Element zum Ändern der Ressource, an die die Telemetriedaten der App gesendet werden.
 * Mit diesem Cmdlet wird Folgendes durchgeführt:
  * Aktualisiert die benannte App auf die Version des SDK, die zuletzt auf den Computer heruntergeladen wurde. (Funktioniert nur, wenn `SdkState==EnabledAfterDeployment` gilt.)
  * Wenn Sie einen Instrumentierungsschlüssel angeben, wird die benannte App neu konfiguriert, um Telemetriedaten an die Ressource mit diesem Schlüssel zu senden. (Funktioniert, wenn `SdkState != Disabled` gilt.)
@@ -301,4 +284,4 @@ Wenn sich die Web-App in Azure befindet und Sie Ihre Ressourcen mit einer Azure 
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

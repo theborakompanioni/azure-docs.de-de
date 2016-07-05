@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mit dem Azure-Portal | Microsoft Azure"
+	pageTitle=" Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mit dem Azure-Portal | Microsoft Azure"
 	description="In diesem Tutorial werden Sie durch die Schritte zum Implementieren eines einfachen Diensts zur Video-on-Demand-Inhaltsübermittlung (VoD) mit der Azure Media Services-Anwendung (AMS) mithilfe des Azure-Portals geführt."
 	services="media-services"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/05/2016"
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -31,7 +31,7 @@ Dieses Lernprogramm enthält die folgenden Aufgaben:
 2.  Konfigurieren eines Streamingendgeräts
 1.  Hochladen einer Videodatei
 1.  Codieren der Quelldatei in einen Satz von MP4-Dateien mit adaptiver Bitrate
-1.  Veröffentlichen des Medienobjekts und Abrufen von URLs für Streaming und progressiven Download  
+1.  Veröffentlichen des Medienobjekts und Abrufen von URLs für Streaming und progressiven Download
 1.  Wiedergeben Ihrer Inhalte
 
 
@@ -52,7 +52,7 @@ Die Schritte in diesem Abschnitt verdeutlichen, wie Sie ein neues AMS-Konto erst
 	2. Wählen Sie unter „Abonnement“ das Azure-Abonnement aus, auf das Sie Zugriff haben.
 	
 	2. Wählen Sie unter **Ressourcengruppe** die neue oder die vorhandene Ressource aus. Eine Ressourcengruppe ist eine Sammlung von Ressourcen, die in Bezug auf Lebenszyklus, Berechtigungen und Richtlinien gleich sind. [Hier](resource-group-overview.md#resource-groups) erhalten Sie weitere Informationen.
-	3. Wählen Sie unter **Standort** die geografische Region aus, in der die Medien- und Metadaten-Datensätze für Ihr Media Services-Konto gespeichert werden sollen. Dieser Bereich wird zum Verarbeiten und Streamen Ihrer Medien verwendet. Im Dropdownlistenfeld werden nur die verfügbaren Media Services-Regionen angezeigt. 
+	3. Wählen Sie unter **Standort** die geografische Region aus, in der die Medien- und Metadaten-Datensätze für Ihr Media Services-Konto gespeichert werden sollen. Dieser Bereich wird zum Verarbeiten und Streamen Ihrer Medien verwendet. Im Dropdownlistenfeld werden nur die verfügbaren Media Services-Regionen angezeigt.
 	
 	3. Wählen Sie unter **Speicherkonto** ein Speicherkonto aus, das als Blobspeicher für die Medieninhalte aus Ihrem Media Services-Konto dienen soll. Sie können ein vorhandenes Speicherkonto in derselben geografischen Region wie Ihr Media Services-Konto auswählen oder ein neues Speicherkonto erstellen. Ein neues Speicherkonto wird in derselben Region erstellt. Für Namen von Speicherkonten gelten die gleichen Regeln wie für Namen von Media Services-Konten.
 
@@ -72,13 +72,13 @@ Die Schritte in diesem Abschnitt verdeutlichen, wie Sie ein neues AMS-Konto erst
 
 Sie benötigen den Kontonamen und den Primärschlüssel, um programmgesteuert auf das Media Services-Konto zugreifen zu können.
 
-1. Wählen Sie Ihr Konto im Azure-Portal aus. 
+1. Wählen Sie Ihr Konto im Azure-Portal aus.
 
 	Das Fenster **Einstellungen** wird auf der rechten Seite angezeigt.
 
 2. Wählen Sie im Fenster **Einstellungen** die Option **Schlüssel**.
 
-	Im Fenster **Schlüssel verwalten** werden der Kontoname und die Primär- und Sekundärschlüssel angezeigt. 
+	Im Fenster **Schlüssel verwalten** werden der Kontoname und die Primär- und Sekundärschlüssel angezeigt.
 3. Betätigen Sie die Schaltfläche „Kopieren“, um die Werte zu kopieren.
 	
 	![Media Services – Schlüssel](./media/media-services-portal-vod-get-started/media-services-keys.png)
@@ -91,7 +91,7 @@ Media Services bietet dynamische Paketerstellung für die Just-in-Time-Übermitt
 
 Um die dynamische Paketerstellung nutzen zu können, müssen Sie folgende Schritte ausführen:
 
-- Codieren Ihrer Zwischendatei (Quelle) in einen Satz von MP4-Dateien mit adaptiver Bitrate (die Codierungsschritte werden weiter unten in diesem Tutorial beschrieben)  
+- Codieren Ihrer Zwischendatei (Quelle) in einen Satz von MP4-Dateien mit adaptiver Bitrate (die Codierungsschritte werden weiter unten in diesem Tutorial beschrieben)
 - Erstellen von mindestens einer Streamingeinheit für den *Streamingendpunkt*, von dem aus Sie die Bereitstellung Ihrer Inhalte planen In den folgenden Schritten wird gezeigt, wie Sie die Anzahl von Streamingeinheiten ändern.
 
 Mit der dynamischen Paketerstellung müssen Sie die Dateien nur in einem Speicherformat speichern und bezahlen. Media Services erstellt und verarbeitet die entsprechende Antwort basierend auf Anforderungen von einem Client.
@@ -99,7 +99,7 @@ Mit der dynamischen Paketerstellung müssen Sie die Dateien nur in einem Speiche
 Gehen Sie wie folgt vor, um die Anzahl von Einheiten zu erstellen und zu ändern, die für das Streaming reserviert sind:
 
 
-1. Klicken Sie im Fenster **Einstellungen** auf **Streamingendpunkte**. 
+1. Klicken Sie im Fenster **Einstellungen** auf **Streamingendpunkte**.
 
 2. Klicken Sie auf den Standard-Streamingendpunkt.
 
@@ -143,13 +143,13 @@ Media Services umfasst auch die dynamische Paketerstellung, bei der Sie MP4-Date
 Um die dynamische Paketerstellung nutzen zu können, müssen Sie folgende Schritte ausführen:
 
 - Codieren Ihrer Quelldatei in einen Satz von MP4-Dateien mit variablen Bitraten (die Codierungsschritte werden weiter unten in diesem Abschnitt beschrieben)
-- Abrufen von mindestens einer Streamingeinheit für den Streamingendpunkt, von dem aus Sie die Bereitstellung Ihrer Inhalte planen Weitere Informationen finden Sie unter [Konfigurieren von Streamingendpunkten](media-services-portal-vod-get-started.md#configure-streaming-endpoints). 
+- Abrufen von mindestens einer Streamingeinheit für den Streamingendpunkt, von dem aus Sie die Bereitstellung Ihrer Inhalte planen Weitere Informationen finden Sie unter [Konfigurieren von Streamingendpunkten](media-services-portal-vod-get-started.md#configure-streaming-endpoints).
 
 ### So verwenden Sie das Portal zum Codieren
 
 In diesem Abschnitt werden die Schritte beschrieben, die Sie ausführen können, um Ihre Inhalte mit Media Encoder Standard zu codieren.
 
-1.  Wählen Sie im Fenster **Einstellungen** die Option **Ressourcen**.  
+1.  Wählen Sie im Fenster **Einstellungen** die Option **Ressourcen**.
 2.  Wählen Sie im Fenster **Ressourcen** das Objekt aus, das Sie codieren möchten.
 3.  Betätigen Sie die Schaltfläche **Codieren**.
 4.  Wählen Sie im Fenster **Encode an asset** (Ressource codieren) den Prozessor „Media Encoder Standard“ und eine Voreinstellung aus. Wenn Sie beispielsweise wissen, dass das Eingabevideo eine Auflösung von 1920x1080 Pixel hat, können Sie die Voreinstellung „H264 Multiple Bitrate 1080p“ wählen. Weitere Informationen zu Voreinstellungen finden Sie in [diesem Artikel](https://msdn.microsoft.com/library/azure/mt269960.aspx). Es ist wichtig, dass Sie die Voreinstellung auswählen, die für Ihr Eingabevideo am besten geeignet ist. Wenn Sie über ein Video mit niedriger Auflösung (640x360) verfügen, sollten Sie nicht die standardmäßige Voreinstellung „H264 Multiple Bitrate 1080p“ verwenden.
@@ -169,7 +169,7 @@ Klicken Sie zum Überwachen des Codierauftragsstatus auf **Einstellungen** (oben
 
 Um Ihren Benutzern eine URL für das Streaming bzw. Herunterladen des Inhalts angeben zu können, müssen Sie zunächst das Medienobjekt "veröffentlichen", indem Sie einen Locator erstellen. Locators ermöglichen den Zugriff auf Dateien im Medienobjekt. Media Services unterstützt zwei Arten von Locatorobjekten:
 
-- Streaminglocators (OnDemandOrigin), die für das adaptive Streaming verwendet werden (z.B. zum Streamen von MPEG DASH, HLS oder Smooth Streaming). Für die Erstellung eines Streaminglocators muss das Objekt eine ISM-Datei enthalten. 
+- Streaminglocators (OnDemandOrigin), die für das adaptive Streaming verwendet werden (z.B. zum Streamen von MPEG DASH, HLS oder Smooth Streaming). Für die Erstellung eines Streaminglocators muss das Objekt eine ISM-Datei enthalten.
 - Progressive Locators (SAS), die für die Bereitstellung von Videos per progressivem Download verwendet werden.
 
 
@@ -229,4 +229,4 @@ Folgende Überlegungen sollten berücksichtigt werden:
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->
