@@ -234,15 +234,12 @@ Sie können auch die **relativen** oder **absoluten** Werte sowie ein **Zeitinte
 ##### So zeigen Sie Metriken im Diagramm an oder entfernen diese daraus:
 1. Wählen Sie die Registerkarte **Überwachen** aus.
 2. Klicken Sie auf der Taskleiste auf **Metriken hinzufügen**:  
-
-!["Metriken hinzufügen" auswählen][AddMetrics]
-
+	!["Metriken hinzufügen" auswählen][AddMetrics]
 3. Prüfen Sie die Leistungsmetriken, die Sie anzeigen möchten.
 4. Wählen Sie das Häkchen aus, um zur Registerkarte **Überwachen** zurückzukehren.
 5. Wählen Sie den Kreis neben der Metrik aus, um den Wert dieser Metrik im Diagramm anzuzeigen.  
 
 	Die Metrik **CPU-Auslastung** ist grau unterlegt. Das heißt, ihr Wert wird im Diagramm nicht angezeigt:  
-
 ![Metrik "CPU-.Auslastung" ist deaktiviert][GrayedMetric]  
 
 	Wählen Sie den ausgegrauten Kreis, sodass die Metrik **CPU-Auslastung** ihre Ausgabe im Diagramm anzeigt:  
