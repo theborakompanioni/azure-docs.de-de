@@ -53,12 +53,12 @@ Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Eine Pipeline k
 
 
 3.	Wählen Sie das **Azure-Abonnement**, in dem die Data Factory erstellt werden soll.
-4.	Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder erstellen Sie eine neue Ressourcengruppe. Erstellen Sie im Rahmen des Tutorials eine Ressourcengruppe mit dem Namen: **ADFGetStartedRG**.
+4.	Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder erstellen Sie eine neue Ressourcengruppe. Erstellen Sie im Rahmen des Tutorials eine Ressourcengruppe mit dem Namen: **ADFGetStartedRG**.    
 5.	Klicken Sie auf dem Blatt **Neue Data Factory** auf **Erstellen**.
-6.	Sie sehen die erstellte Data Factory folgendermaßen im **Startmenü** des Azure-Portals:
+6.	Sie sehen die erstellte Data Factory folgendermaßen im **Startmenü** des Azure-Portals:   
 
 	![Erstellen des Data Factory-Status](./media/data-factory-build-your-first-pipeline-using-editor/creating-data-factory-image.png)
-7. Glückwunsch! Sie haben erfolgreich Ihre erste Data Factory erstellt. Nachdem die Data Factory erfolgreich erstellt wurde, sehen Sie die Data Factory-Seite mit dem Inhalt der Data Factory.
+7. Glückwunsch! Sie haben erfolgreich Ihre erste Data Factory erstellt. Nachdem die Data Factory erfolgreich erstellt wurde, sehen Sie die Data Factory-Seite mit dem Inhalt der Data Factory. 
 
 	![Blatt "Data Factory"](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-blade.png)
 
@@ -84,7 +84,8 @@ Ein-/Ausgabedaten und die HQL-Skriptdatei zu speichern.
 
 	![Schaltfläche "Bereitstellen"](./media/data-factory-build-your-first-pipeline-using-editor/deploy-button.png)
 
-   Nach erfolgreicher Bereitstellung des verknüpften Diensts sollte das Fenster **Draft-1** nicht mehr angezeigt werden, und Sie sehen **AzureStorageLinkedService** in der Strukturansicht links. ![Mit Storage verknüpfter Dienst im Menü](./media/data-factory-build-your-first-pipeline-using-editor/StorageLinkedServiceInTree.png)
+   Nach erfolgreicher Bereitstellung des verknüpften Diensts sollte das Fenster **Draft-1** nicht mehr angezeigt werden, und Sie sehen **AzureStorageLinkedService** in der Strukturansicht links.
+        ![Mit Storage verknüpfter Dienst im Menü](./media/data-factory-build-your-first-pipeline-using-editor/StorageLinkedServiceInTree.png)
 
  
 ### Erstellen des mit Azure-HDInsight verknüpften Diensts

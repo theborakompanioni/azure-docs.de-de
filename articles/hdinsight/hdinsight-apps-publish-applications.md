@@ -89,7 +89,7 @@ Gehen Sie zum Veröffentlichen einer HDInsight-Anwendung wie folgt vor:
 3. Klicken Sie auf **Create Dev Center account and join the Azure program** (Dev Center-Konto erstellen und am Azure-Programm teilnehmen), um Ihr Unternehmen zu registrieren, sofern Sie diesen Schritt noch nicht ausgeführt haben. Weitere Informationen finden Sie unter [Erstellen eines Microsoft-Entwicklerkontos](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md).
 4. Klicken Sie auf **Define some Topologies to get Started** (Definieren einiger Topologien für den Einstieg). Eine Lösungsvorlage ist allen zugehörigen Topologien übergeordnet. Sie können in einem Angebot/einer Lösungsvorlage mehrere Topologien definieren. Wenn ein Angebot in die Stagingumgebung überführt wird, werden alle Topologien einbezogen.
 5. Fügen Sie eine neue Version hinzu.
-6. Laden Sie die ZIP-Datei hoch, die Sie im Schritt [Packen der Anwendung](#package-application) vorbereitet haben.
+6. Laden Sie die ZIP-Datei hoch, die Sie im Schritt [Packen der Anwendung](#package-application) vorbereitet haben.  
 7. Klicken Sie auf **Zertifizierung anfordern**. Das Microsoft-Zertifizierungsteam prüft die Dateien und zertifiziert die Topologie.
 
 ## Nächste Schritte

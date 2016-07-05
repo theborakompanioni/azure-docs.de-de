@@ -43,18 +43,18 @@ Im Folgenden werden grundlegende Schritte zum Erstellen allgemeiner Livestreamin
 1. Rufen Sie die Erfassungs-URL des Kanals ab.
 
 	Die Erfassungs-URL wird vom Liveencoder verwendet, um den Datenstrom an den Kanal zu senden.
-1. Rufen Sie die Vorschau-URL des Kanals ab.
+1. Rufen Sie die Vorschau-URL des Kanals ab. 
 
 	Verwenden Sie diese URL, um sicherzustellen, dass der Livedatenstrom ordnungsgemäß vom Kanal empfangen wird.
 
 3. Erstellen Sie ein Programm (dadurch wird auch ein Medienobjekt erstellt).
-1. Veröffentlichen Sie das Programm (dadurch wird ein OnDemand-Locator für das zugehörige Medienobjekt erstellt).
+1. Veröffentlichen Sie das Programm (dadurch wird ein OnDemand-Locator für das zugehörige Medienobjekt erstellt).  
 
 	Stellen Sie sicher, dass auf dem Streamingendpunkt, von dem Sie Inhalte streamen möchten, mindestens eine für das Streaming reservierte Einheit verfügbar ist.
 1. Wenn Sie zum Starten von Streaming und Archivierung bereit sind, starten Sie das Programm.
 2. Optional kann vom Liveencoder eine Ankündigung gestartet werden. Die Ankündigung wird in den Ausgabedatenstrom eingefügt.
 1. Sie können das Programm und damit das Streaming und die Archivierung des Ereignisses jederzeit beenden.
-1. Löschen Sie das Programm (und optional das Medienobjekt).
+1. Löschen Sie das Programm (und optional das Medienobjekt).   
 
 ##Dieses Lernprogramm umfasst folgende Punkte
 
@@ -64,8 +64,8 @@ In diesem Lernprogramm wird das klassische Azure-Portal verwendet, um die folgen
 3.  Erstellen eines Kanals, der zum Ausführen von Livecodierung aktiviert ist
 1.  Abrufen der Erfassungs-URL, um sie dem Liveencoder bereitzustellen Diese URL wird vom Liveencoder verwendet, um den Datenstrom in den Kanal zu leiten.
 1.  Erstellen eines Programms (und eines Medienobjekts)
-1.  Veröffentlichen des Medienobjekts und Abrufen von Streaming-URLs
-1.  Wiedergeben Ihrer Inhalte
+1.  Veröffentlichen des Medienobjekts und Abrufen von Streaming-URLs  
+1.  Wiedergeben Ihrer Inhalte 
 2.  Bereinigen
 
 ##Voraussetzungen

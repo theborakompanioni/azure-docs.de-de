@@ -43,7 +43,7 @@ Im folgenden Verfahren wird eine Azure ARM-Vorlage verwendet, um einen HBase-Clu
 
 1. Klicken Sie auf die folgende Abbildung, um eine ARM-Vorlage im Azure-Portal zu öffnen. Die ARM-Vorlage befindet sich in einem öffentlichen Blobcontainer.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/de-DE/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 2. Geben Sie auf dem Blatt **Parameter** Folgendes ein:
 
@@ -185,8 +185,8 @@ Sie können Daten in HBase-Tabellen mit Hive abfragen. In diesem Abschnitt erste
 
 	Folgende Parameter werden in diesem Befehl verwendet:
 
-	* **-u** – Der Benutzername und das Kennwort für die Authentifizierung der Anforderung
-	* **-G** – Gibt an, dass dies eine GET-Anforderung ist
+    * **-u** – Der Benutzername und das Kennwort für die Authentifizierung der Anforderung
+    * **-G** – Gibt an, dass dies eine GET-Anforderung ist
 
 2. Verwenden Sie den folgenden Befehl, um die vorhandenen HBase-Tabellen aufzulisten:
 
@@ -238,7 +238,7 @@ SSH kann auch zum Tunneln lokaler Anforderungen, z. B. Webanforderungen, zum HDI
 
 **So richten Sie eine SSH-Tunnelsitzung ein**
 
-1. Öffnen Sie **PuTTY**.
+1. Öffnen Sie **PuTTY**.  
 2. Wenn Sie während des Erstellungsprozesses beim Erstellen des Benutzerkontos einen SSH-Schlüssel bereitgestellt haben, müssen Sie den folgenden Schritt ausführen, um den privaten Schlüssel auszuwählen, der zum Authentifizieren beim Cluster verwendet wird:
 
 	Erweitern Sie in **Category** erst **Connection**, dann **SSH**, und wählen Sie anschließend **Auth** aus. Klicken Sie abschließend auf **Browse**, und wählen Sie die PPK-Datei aus, die Ihren privaten Schlüssel enthält.
@@ -247,7 +247,7 @@ SSH kann auch zum Tunneln lokaler Anforderungen, z. B. Webanforderungen, zum HDI
 4. Geben Sie für die grundlegenden Optionen im PuTTY-Sitzungsbildschirm die folgenden Werte ein:
 
 	- **Hostname**: Die SSH-Adresse des HDInsight-Servers im Feld "Hostname" (oder "IP-Adresse"). Die SSH-Adresse ist Ihr Clustername, gefolgt von **-ssh.azurehdinsight.net**. Beispiel: *mycluster-ssh.azurehdinsight.net*.
-	- **Port**: 22. Der SSH-Port auf dem Hauptknoten 0 ist „22“.
+	- **Port**: 22. Der SSH-Port auf dem Hauptknoten 0 ist „22“.  
 5. Erweitern Sie auf der linken Seite des Dialogfelds im Abschnitt **Category** erst **Connection**, dann **SSH**, und klicken Sie anschließend auf **Tunnels**.
 6. Geben Sie die folgenden Informationen in das Formular "Options controlling SSH port forwarding" ein:
 
