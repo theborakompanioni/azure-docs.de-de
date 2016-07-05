@@ -9,11 +9,11 @@
 
 <tags
 	ms.service="sql-database"
-	ms.workload="sql-database"
+	ms.workload="drivers"
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/20/2016"
+	ms.date="06/16/2016"
 	ms.author="tobiast"/>
 
 # Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von .NET (C#)
@@ -37,8 +37,16 @@ Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie In
 * [Proof of concept connecting to SQL using ADO.NET](https://msdn.microsoft.com/library/mt718320.aspx) (Machbarkeitsstudie für das Herstellen einer Verbindung mit SQL mithilfe von ADO.NET)
 * [Connect resiliently to SQL with ADO.NET](https://msdn.microsoft.com/library/mt703195.aspx) (Stabiles Verbinden mit SQL mithilfe von ADO.NET)
 
-## Weitere Ressourcen
+## Nächste Schritte
 
-Informationen zu gängigen Datenarchitekturmustern von mehrinstanzenfähigen SaaS-Datenbankanwendungen (Software as a Service) finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+* [Erstellen einer ASP.NET MVC-App mit Authentifizierung, SQL-Datenbank und Bereitstellung in Azure App Service](../app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)
+* [Erstellen eines Diensts mithilfe einer vorhandenen SQL-Datenbank mit dem Mobile Services .NET-Backend](../mobile-services/mobile-services-dotnet-backend-use-existing-sql-database.md)
+* Lesen Sie die [Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md)
+* Weitere Informationen zum [Microsoft ADO.NET-Treiber für SQL Server](https://msdn.microsoft.com/library/mt657768.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+## Weitere Ressourcen 
+
+* [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md)
+* Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/services/sql-database/).
+
+<!---HONumber=AcomDC_0622_2016-->

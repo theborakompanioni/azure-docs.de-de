@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/30/2016" 
+	ms.date="06/20/2016" 
 	ms.author="anhoh"/>
 
 # Hierarchisches Ressourcenmodell und Konzepte von DocumentDB
@@ -196,7 +196,7 @@ Das Abfragemodell von DocumentDB versucht die Balance zwischen Funktionalität, 
 ### Mehrdokumenttransaktionen
 Datenbanktransaktionen bieten ein sicheres und berechenbares Programmiermodell zur Behandlung von gleichzeitig an den Daten vorgenommenen Änderungen. In RDBMS umfasst die herkömmliche Vorgehensweise zum Erstellen der Geschäftslogik das Schreiben von **gespeicherten Prozeduren** und/oder **Triggern** sowie deren Übermittlung an den Datenbankserver zur transaktionalen Ausführung. In RDBMS muss der Anwendungsprogrammierer mit zwei verschiedenen Programmiersprachen umgehen:
 
-- Die (nicht transaktionale) Anwendungsprogrammiersprache (z. B. JavaScript, Python, C#, Java usw.)
+- Die (nicht transaktionale) Anwendungsprogrammiersprache (z. B. JavaScript, Python, C#, Java usw.)
 - T-SQL, die transaktionale Programmiersprache, die intern von der Datenbank ausgeführt wird
 
 Aufgrund seiner direkt im Datenbankmodul verankerten starken Bindung an JavaScript und JSON bietet DocumentDB ein intuitives Programmiermodell zur Ausführung von JavaScript-basierter Anwendungslogik, die über gespeicherte Prozeduren und Trigger direkt in den Sammlungen erfolgt. Dies ermöglicht Folgendes:
@@ -315,7 +315,7 @@ Das Aufheben der Registrierung für eine gespeicherte Prozedur erfolgt über das
 
 
 ### Registrieren eines vorangestellten Triggers
-Die Registrierung eines Triggers umfasst das Erstellen einer neuen Triggerressource für eine Sammlung über HTTP POST. Sie können angeben, ob es sich um einen vorangestellten oder nachgestellten Trigger handelt. Zudem können Sie die Art des Vorgangs angeben, der dem Trigger zugeordnet ist (z. B. Erstellen, Ersetzen, Löschen oder Alle).
+Die Registrierung eines Triggers umfasst das Erstellen einer neuen Triggerressource für eine Sammlung über HTTP POST. Sie können angeben, ob es sich um einen vorangestellten oder nachgestellten Trigger handelt. Zudem können Sie die Art des Vorgangs angeben, der dem Trigger zugeordnet ist (z. B. Erstellen, Ersetzen, Löschen oder Alle).
 
 	var preTrigger = {
 	    id: "upperCaseId",
@@ -397,7 +397,7 @@ Obwohl die obigen Codeausschnitte die Registrierung (POST), die Aufhebung der Re
 ## Dokumente
 Sie können beliebige JSON-Dokumente zu einer Sammlung hinzufügen, sie dort ersetzen, löschen, lesen, aufzählen und abfragen. DocumentDB erfordert weder Schema noch sekundäre Indizes, um die dokumentübergreifende Abfrage in einer Sammlung zu unterstützen.
 
-DocumentDB ist ein ganz und gar offener Datenbankdienst, der keine speziellen Datentypen (z. B. Datum/Uhrzeit) oder bestimmte Codierungen für JSON-Dokumente einführt. Beachten Sie, dass für DocumentDB keine speziellen JSON-Konventionen erforderlich sind, um die Beziehungen zwischen verschiedenen Dokumenten festzuschreiben. Die SQL-Syntax von DocumentDB bietet sehr leistungsstarke hierarchische und relationale Abfrageoperatoren, um Dokumente ohne spezielle Anmerkungen oder die Festschreibung der Beziehungen zwischen Dokumenten mithilfe unterschiedlicher Eigenschaften abzufragen und zu projizieren.
+DocumentDB ist ein ganz und gar offener Datenbankdienst, der keine speziellen Datentypen (z. B. Datum/Uhrzeit) oder bestimmte Codierungen für JSON-Dokumente einführt. Beachten Sie, dass für DocumentDB keine speziellen JSON-Konventionen erforderlich sind, um die Beziehungen zwischen verschiedenen Dokumenten festzuschreiben. Die SQL-Syntax von DocumentDB bietet sehr leistungsstarke hierarchische und relationale Abfrageoperatoren, um Dokumente ohne spezielle Anmerkungen oder die Festschreibung der Beziehungen zwischen Dokumenten mithilfe unterschiedlicher Eigenschaften abzufragen und zu projizieren.
  
 Wie die anderen Ressourcen können Dokumente mithilfe der REST-APIs oder eines [Client-SDKs](https://msdn.microsoft.com/library/azure/dn781482.aspx) einfach erstellt, ersetzt, gelöscht, gelesen, aufgezählt und abgefragt werden. Durch das Löschen eines Dokuments wird sofort das Kontingent freigegeben, das allen geschachtelten Anhängen entspricht. Der Grad der Lesekonsistenz von Dokumenten folgt der Konsistenzrichtlinie des Datenbankkontos. Diese Richtlinie kann anforderungsbasiert in Abhängigkeit von den Anforderungen Ihrer Anwendung an die Datenkonsistenz außer Kraft gesetzt werden. Bei der Abfrage von Dokumenten folgt die Lesekonsistenz dem für die Sammlung festgelegten Indizierungsmodus. Die Konsistenz folgt der Konsistenzrichtlinie des Kontos.
 
@@ -409,12 +409,12 @@ DocumentDB gestattet es Ihnen, binäre Blobs/Medien mit DocumentDB oder in einem
 Betrachten Sie eine soziale Leseanwendung, die DocumentDB zum Speichern von Anmerkungen und Metadaten verwendet, einschließlich der Kommentare, Lesezeichen, Bewertungen usw., die einem E-Book für einen bestimmten Benutzer zugeordnet sind.
 
 -	Der Buchinhalt selbst wird im Medienspeicher entweder als Teil des DocumentDB-Datenbankkontos oder eines Remotemedienspeicher zur Verfügung gestellt. 
--	Ein Anwendung kann die Metadaten der einzelnen Benutzer als individuelles Dokument speichern. Die Metadaten von Johannes für Buch1 können z. B. in einem Dokument gespeichert werden, auf das über "/sammlungen/johannes/dokumente/buch1" verwiesen wird. 
--	Anhänge, die auf die Inhaltsseiten eines bestimmten Buchs für einen Benutzer verweisen, werden unter dem entsprechenden Dokument gespeichert, z. B. "/sammlungen/johannes/dokumente/buch1/kapitel1", "/sammlungen/johannes/dokumente/buch1/kapitel2" usw. 
+-	Ein Anwendung kann die Metadaten der einzelnen Benutzer als individuelles Dokument speichern. Die Metadaten von Johannes für Buch1 können z. B. in einem Dokument gespeichert werden, auf das über "/sammlungen/johannes/dokumente/buch1" verwiesen wird. 
+-	Anhänge, die auf die Inhaltsseiten eines bestimmten Buchs für einen Benutzer verweisen, werden unter dem entsprechenden Dokument gespeichert, z. B. "/sammlungen/johannes/dokumente/buch1/kapitel1", "/sammlungen/johannes/dokumente/buch1/kapitel2" usw. 
 
-Beachten Sie, dass die Beispiele benutzerfreundliche IDs verwenden, um die Ressourcenhierarchie zu vermitteln. Der Zugriff auf Ressourcen erfolgt mithilfe eindeutiger Ressourcen-IDs über REST-APIs.
+Beachten Sie, dass die oben aufgeführten Beispiele benutzerfreundliche IDs verwenden, um die Ressourcenhierarchie zu verdeutlichen. Der Zugriff auf Ressourcen erfolgt mithilfe eindeutiger Ressourcen-IDs über REST-APIs.
 
-Für die von DocumentDB verwalteten Medien verweist die "\_media"-Eigenschaft des Anhangs über seinen URI auf das Medium. DocumentDB stellt die Garbage Collection für die Medien sicher, wenn alle ausstehenden Referenzen entfernt werden. Der Anhang wird automatisch von DocumentDB generiert, wenn Sie neue Medien hochladen. Zudem wird die "\_media"-Eigenschaft gefüllt, um auf das neu hinzugefügte Medium zu verweisen. Wenn Sie die Medien in einem von Ihnen verwalteten Remote-BLOB-Speicher speichern (z. B. OneDrive, Azure Storage, DropBox usw.), können Sie weiterhin Anhänge verwenden, um auf die Medien zu verweisen. In diesem Fall erstellen Sie den Anhang selbst und füllen seine "\_media"-Eigenschaft.
+Für die von DocumentDB verwalteten Medien verweist die "\_media"-Eigenschaft des Anhangs über seinen URI auf das Medium. DocumentDB stellt die Garbage Collection für die Medien sicher, wenn alle ausstehenden Referenzen entfernt werden. Der Anhang wird automatisch von DocumentDB generiert, wenn Sie neue Medien hochladen. Zudem wird die "\_media"-Eigenschaft gefüllt, um auf das neu hinzugefügte Medium zu verweisen. Wenn Sie die Medien in einem von Ihnen verwalteten Remote-BLOB-Speicher speichern (z. B. OneDrive, Azure Storage, DropBox usw.), können Sie weiterhin Anhänge verwenden, um auf die Medien zu verweisen. In diesem Fall erstellen Sie den Anhang selbst und füllen seine "\_media"-Eigenschaft.
 
 Wie die anderen Ressourcen können Anhänge mithilfe der REST-APIs oder eines Client-SDKs einfach erstellt, ersetzt, gelöscht, gelesen und aufgezählt werden. Wie bei Dokumenten folgt der Grad der Lesekonsistenz von Anhängen der Konsistenzrichtlinie des Datenbankkontos. Diese Richtlinie kann anforderungsbasiert in Abhängigkeit von den Anforderungen Ihrer Anwendung an die Datenkonsistenz außer Kraft gesetzt werden. Bei der Abfrage von Anhängen folgt die Lesekonsistenz dem für die Sammlung festgelegten Indizierungsmodus. Die Konsistenz folgt der Konsistenzrichtlinie des Kontos.
 ## Benutzer
@@ -451,4 +451,4 @@ Weitere Informationen zum Arbeiten mit Ressourcen mithilfe von HTTP-Befehlen fin
 [2]: media/documentdb-resources/resources2.png
 [3]: media/documentdb-resources/resources3.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0622_2016-->

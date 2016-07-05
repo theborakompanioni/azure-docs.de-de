@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/13/2016"
+	ms.date="06/16/2016"
 	ms.author="sethm"/>
 
 # Erste Schritte mit Event Hubs
@@ -32,14 +32,13 @@ Zur Ausführung dieses Lernprogramms benötigen Sie Folgendes:
 
 + Eine Java-Entwicklungsumgebung. In diesem Lernprogramm wird von [Eclipse](https://www.eclipse.org/) ausgegangen.
 
-+ Microsoft Visual Studio Express für Windows
++ [Microsoft Visual Studio](http://visualstudio.com)
 
-+ Ein aktives Azure-Konto. <br/>Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Konto erstellen. Ausführliche Informationen finden Sie unter <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fde-DE%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Kostenlose Azure-Testversion</a>.
++ Ein aktives Azure-Konto. <br/>Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Konto erstellen. Ausführliche Informationen finden Sie unter <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fde-DE%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Kostenlose Azure-Testversion</a>.
 
 [AZURE.INCLUDE [event-hubs-create-event-hub](../../includes/event-hubs-create-event-hub.md)]
 
 [AZURE.INCLUDE [service-bus-event-hubs-get-started-send-java](../../includes/service-bus-event-hubs-get-started-send-java.md)]
-
 
 [AZURE.INCLUDE [service-bus-event-hubs-get-started-receive-ephcs](../../includes/service-bus-event-hubs-get-started-receive-ephcs.md)]
 
@@ -51,7 +50,7 @@ Sie können jetzt die Anwendung ausführen.
 
 	![][21]
 
-2.	Führen Sie das Programm **Sender** aus, drücken Sie im Konsolenfenster die **Eingabetaste**, und sehen Sie sich die im Empfängerfenster angezeigten Ereignisse an.
+2.	Führen Sie das Projekt **Sender** aus.
 
 	![][22]
 
@@ -67,7 +66,7 @@ Weitere Informationen finden Sie im [Java Developer Center](/develop/java/).
 
 <!-- Images. -->
 [21]: ./media/event-hubs-java-ephcs-getstarted/run-csharp-ephcs1.png
-[22]: ./media/event-hubs-java-ephcs-getstarted/run-csharp-ephcs2.png
+[22]: ./media/event-hubs-java-ephcs-getstarted/java-send.png
 
 <!-- Links -->
 [Azure classic portal]: https://manage.windowsazure.com/
@@ -78,4 +77,4 @@ Weitere Informationen finden Sie im [Java Developer Center](/develop/java/).
 [Messaginglösung mit Warteschlange]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/22/2016"
+   ms.date="06/17/2016"
    ms.author="alkohli" />
 
 # Ändern des Gerätemodus auf Ihrem StorSimple-Gerät
@@ -70,7 +70,7 @@ Sie können das StorSimple-Gerät (vom normalen Modus) in den Wartungsmodus vers
 
 1. Melden Sie sich bei der seriellen Gerätekonsole an, indem Sie die Schritte unter [Verwenden von PuTTY für das Herstellen einer Verbindung mit der seriellen Gerätekonsole](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console) ausführen.
 
-2. Wählen Sie im Menü der seriellen Konsole Option 1 aus, d. h. die** Anmeldung mit Vollzugriff**. Geben Sie das **Geräteadministratorkennwort** an, wenn Sie dazu aufgefordert werden. Das Standardkennwort lautet `Password1`.
+2. Wählen Sie im Menü der seriellen Konsole Option 1 aus, d. h. die** Anmeldung mit Vollzugriff**. Geben Sie das **Geräteadministratorkennwort** an, wenn Sie dazu aufgefordert werden. Das Standardkennwort lautet `Password1`.
 
 3. Geben Sie an der Eingabeaufforderung Folgendes ein:
 
@@ -98,4 +98,4 @@ Sie können das StorSimple-Gerät (vom normalen Modus) in den Wartungsmodus vers
 
 Hier erfahren Sie, wie Sie auf Ihrem StorSimple-Gerät [Updates im normalen Modus und im Wartungsmodus installieren](storsimple-update-device.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0622_2016-->

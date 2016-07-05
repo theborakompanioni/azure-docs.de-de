@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="06/14/2016"
 	ms.author="bradsev" />
 
 # Verschieben von Daten in und aus Azure Blob Storage mithilfe von SSIS-Connectors
@@ -87,4 +87,4 @@ Hier sei angemerkt, dass das SSIS Feature Pack komplexere zu verarbeitende Ablä
 - Verwenden Sie zum Anwenden eines Hive-Skripts auf einen Azure HDInsight-Cluster mit SSIS die [Hive-Aufgabe in Azure HDInsight](https://msdn.microsoft.com/library/mt146771.aspx).
 - Verwenden Sie zum Anwenden eines Pig-Skripts auf einen Azure HDInsight-Cluster mit SSIS die [Pig-Aufgabe in Azure HDInsight](https://msdn.microsoft.com/library/mt146781.aspx).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="03/28/2016"
+    ms.date="06/13/2016"
     ms.author="elizapo" />
 
 # Bewährte Methoden zum Konfigurieren und Verwenden von Azure RemoteApp
@@ -43,4 +43,4 @@ Die folgenden Informationen sollen Ihnen bei der Konfiguration und der produktiv
 	- Konfigurieren Sie systemweite Einstellungen im Vorlagenimage und nicht auf einzelnen virtuellen Computern in einem Dienst.
 	- Deaktivieren Sie automatische Softwareupdates für veröffentlichte Anwendungen – wenden Sie Updates stattdessen manuell auf das Vorlagenimage an, und testen Sie sie, bevor Sie sie über die Vorlage bereitstellen.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0622_2016-->

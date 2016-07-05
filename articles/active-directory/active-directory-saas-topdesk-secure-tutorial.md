@@ -2,17 +2,17 @@
     pageTitle="Tutorial: Azure Active Directory-Integration mit TOPdesk - Secure | Microsoft Azure"
     description="Hier erfahren Sie, wie Sie TOPdesk - Secure mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen." 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="06/21/2016" 
+    ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit TOPdesk - Secure
   
@@ -38,7 +38,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für TOP
 
 ###So aktivieren Sie die Anwendungsintegration für TOPdesk - Secure:
 
-1.  Klicken Sie im linken Navigationsbereich des Azure-Verwaltungsportals auf **Active Directory**.
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-topdesk-secure-tutorial/IC700993.png "Active Directory")
 
@@ -95,7 +95,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
         >[AZURE.NOTE] Sie benötigen den Wert später im Tutorial im Abschnitt **App-URL konfigurieren**.
 
-6.  Melden Sie sich in einem anderen Webbrowserfenster beim **Azure Active Directory** Portal als Administrator an.
+6.  Melden Sie sich in einem anderen Webbrowserfenster beim **klassischen Azure-Portal** als Administrator an.
 
 7.  Klicken Sie auf der Anwendungsintegrationsseite für **TOPdesk - Secure** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
@@ -153,7 +153,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     5.  Geben Sie in das Textfeld **Anzeigenname** einen Namen für die Konfiguration ein.
     6.  Klicken Sie auf **Speichern**.
 
-17. Wählen Sie im Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
+17. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-topdesk-secure-tutorial/IC790609.png "Einmaliges Anmelden konfigurieren")
 
@@ -187,7 +187,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 ###So weisen Sie TOPdesk - Secure Benutzer zu
 
-1.  Erstellen Sie im Azure AD-Portal ein Testkonto.
+1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
 2.  Klicken Sie auf der Anwendungsintegrationsseite für TOPdesk - Secure auf **Benutzer zuweisen**.
 
@@ -199,4 +199,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0622_2016-->

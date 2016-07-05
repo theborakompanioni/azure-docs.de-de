@@ -867,7 +867,7 @@ VHD-Dateien, die ein generalisiertes Betriebssystem enthalten, werden in Azure-S
 
 Für die Vorbereitung Ihres eigenen Azure-VM-Image gelten folgende Anforderungen:
 
-* Bislang war die VHD mit dem Betriebssystem auf eine Größe von maximal 127 GB beschränkt. Diese Einschränkung gilt seit Ende März 2015 nicht mehr. Die VHD mit dem Betriebssystem kann nun wie jede andere im Azure-Speicher bereitgestellte VHD bis zu 1 TB groß sein kann.
+* Bislang war die VHD mit dem Betriebssystem auf eine Größe von maximal 127 GB beschränkt. Diese Einschränkung gilt seit Ende März 2015 nicht mehr. Die VHD mit dem Betriebssystem kann nun wie jede andere im Azure-Speicher bereitgestellte VHD bis zu 1 TB groß sein kann. 
 [comment]: <> (MShermannd TODO have to check if CLI also converts to static )
 * Das VHD-Format muss jedoch statisch sein. Dynamische VHDs oder VHDs im VHDx-Format werden von Azure noch nicht unterstützt. Dynamische VHDs werden beim Hochladen mit PowerShell-Cmdlets bzw. der Befehlszeilenschnittstelle in statische VHDs konvertiert.
 * Auch auf der VM bereitgestellte VHDs, die in Azure weiterhin bereitgestellt werden sollen, müssen ein statisches VHD-Format aufweisen. Die Größeneinschränkung für Betriebssystem-Datenträger gilt auch für Datenträger mit ganz normalen Daten. Die Größe von VHDs ist auf 1 TB beschränkt. Dynamische VHDs werden beim Hochladen mit PowerShell-Cmdlets bzw. der Befehlszeilenschnittstelle in statische VHDs konvertiert.
@@ -1300,7 +1300,7 @@ New-AzureRmResourceGroup -Name $rgName -Location "North Europe"
 
 ```powershell
 $suffix = Get-Random -Minimum 100000 -Maximum 999999
-$account = New-AzureRmStorageAccount -ResourceGroupName $rgName -Name "saperpdemo$suffix" -Type Standard_LRS -Location "North Europe"
+$account = New-AzureRmStorageAccount -ResourceGroupName $rgName -Name "saperpdemo$suffix" -SkuName Standard_LRS -Kind "Storage" -Location "North Europe"
 ```
 
 * Erstellen Sie für jede Schulungs-/Demoumgebung ein neues virtuelles Netzwerk, so dass der gleiche Hostname und die gleichen IP-Adressen verwendet werden können. Das virtuelle Netzwerk wird durch eine Netzwerksicherheitsgruppe geschützt, die nur Datenverkehr an Port 3389 (für Remotedesktopzugriff) und Port 22 (für SSH) zulässt. 
@@ -1505,7 +1505,7 @@ In der nachfolgenden Tabelle sind typische SAP-Kommunikationsports aufgeführt. 
 
 **) nn = SAP-Instanznummer
 
-****) sid = SAP-System-ID
+**) sid = SAP-System-ID
 
 Ausführlichere Informationen zu den für unterschiedliche SAP-Produkte oder Dienste von SAP-Produkten erforderlichen Ports finden Sie hier: <http://scn.sap.com/docs/DOC-17124>. Mit diesem Dokument sollten Sie auf dem VPN-Gerät dedizierte Ports für bestimmte SAP-Produkte und -Szenarien öffnen können.
 
@@ -1807,7 +1807,7 @@ Die SIOS DataKeeper-Lösung bietet eine freigegebene Cluster-Datenträgerressour
 * Die Konfiguration der SIOS DataKeeper Cluster Edition in einer Weise, die synchron den Inhalt des zusätzlich angehängten VHD-Volumes von virtuellen Quellcomputern im zusätzlich angehängten VHD-Volume des virtuellen Zielcomputers widerspiegelt.
 * SIOS DataKeeper abstrahiert die lokalen Quell- und Zielvolumes und präsentiert diese dem Windows-Failovercluster als einen einzelnen freigegebenen Datenträger.
  
-Alle Details zum Installieren eines Windows-Failoverclusters mit SIOS Datakeeper und SAP finden Sie im Whitepaper [Clustering SAP ASCS Instance using Windows Server Failover Cluster on Azure with SIOS DataKeeper][ha-guide-classic] (Clustering der SAP-ASCS-Instanz mithilfe des Windows Server-Failoverclusters in Azure mit SIOS DataKeeper).
+Alle Details zum Installieren eines Windows-Failoverclusters mit SIOS Datakeeper und SAP finden Sie im Whitepaper [Clustering SAP ASCS Instance using Windows Server Failover Cluster on Azure with SIOS DataKeeper][ha-guide-classic] \(Clustering der SAP-ASCS-Instanz mithilfe des Windows Server-Failoverclusters in Azure mit SIOS DataKeeper).
 
 #### Hohe Verfügbarkeit für die SAP-(A)SCS-Instanz unter Linux
  
@@ -1930,4 +1930,4 @@ Hier die wichtigsten Punkte der hohen Verfügbarkeit für SAP-Systeme in Azure:
 * Das Sichern von SAP-Dialoginstanzen ist nicht sinnvoll, da es bei einfachen Dialoginstanzen in der Regel schneller geht, sie erneut bereitzustellen.
 * Es ist empfehlenswert, den virtuellen Computer, der das globale Verzeichnis des SAP-Systems enthält, einschließlich aller Profile der unterschiedlichen Instanzen zu sichern. Dies sollte beispielsweise mit der Windows-Sicherung oder unter Linux mit "tar" durchgeführt werden. Aufgrund von Unterschieden zwischen Windows Server 2008 (R2) und Windows Server 2012 (R2) ist die Sicherung mit den neueren Windows Server-Versionen einfacher. Es wird daher empfohlen, Windows Server 2012 (R2) als Windows-Gastbetriebssystem ausgeführt. 
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

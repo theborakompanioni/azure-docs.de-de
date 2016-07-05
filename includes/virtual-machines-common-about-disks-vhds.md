@@ -2,13 +2,15 @@
 
 ## Betriebssystem-Datenträger
 
-Jedem virtuellen Computer ist ein Betriebssystem-Datenträger zugeordnet. Der Datenträger ist als SATA-Laufwerk registriert und als Laufwerk C: gekennzeichnet. Dieser Datenträger hat eine maximale Kapazität von 1023 Gigabytes (GB). Wenn Azure einen Betriebssystem-Datenträger erstellt wird, werden drei Kopien des Datenträgers für hohe Stabilität erstellt. Wenn Sie den virtuellen Computer für Georeplikation konfigurieren, wird die VHD außerdem auf verschiedenen weit entfernten Websites repliziert.
+Jedem virtuellen Computer ist ein Betriebssystem-Datenträger zugeordnet. Der Datenträger ist standardmäßig als SATA-Laufwerk registriert und als Laufwerk „C:“ gekennzeichnet. Dieser Datenträger hat eine maximale Kapazität von 1023 Gigabytes (GB).
 
 ##Temporärer Datenträger
 
-Der temporäre Datenträger wird automatisch für Sie erstellt. Auf virtuellen Windows-Computern ist dieser Datenträger als Laufwerk „D:“ gekennzeichnet. Er wird zum Speichern von „pagefile.sys“ verwendet. Auf virtuellen Linux-Computern lautet der Datenträger in der Regel "/dev/sdb". Er wird vom Azure Linux Agent formatiert und an /mnt/resource angefügt.
+Der temporäre Datenträger wird automatisch für Sie erstellt. Auf virtuellen Windows-Computern ist dieser Datenträger standardmäßig als Laufwerk „D:“ gekennzeichnet. Er wird zum Speichern von „pagefile.sys“ verwendet. Auf virtuellen Linux-Computern lautet der Datenträger in der Regel "/dev/sdb". Er wird vom Azure Linux Agent formatiert und an /mnt/resource angefügt.
 
->[AZURE.WARNING] Speichern Sie keine Daten auf dem temporären Datenträger. Er dient als temporärer Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z. B. Seiten-oder Auslagerungsdateien zu speichern. Informationen zum erneuten Zuordnen dieses Datenträgers zu einem virtuellen Windows-Computer finden Sie unter [Ändern des Datenträgerbuchstabens des temporären Windows-Datenträgers](../articles/virtual-machines/virtual-machines-windows-classic-change-drive-letter.md).
+Die Größe des temporären Datenträgers variiert basierend auf der Größe des virtuellen Computers. Weitere Informationen finden Sie unter [Linux-VM-Größen](../articles/virtual-machines/virtual-machines-linux-sizes.md) und [Windows-VM-Größen](../articles/virtual-machines/virtual-machines-windows-sizes.md).
+
+>[AZURE.WARNING] Speichern Sie keine Daten auf dem temporären Datenträger. Er dient als temporärer Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z. B. Seiten-oder Auslagerungsdateien zu speichern. Informationen zum erneuten Zuordnen dieses Datenträgers zu einem anderen Laufwerkbuchstaben für einen virtuellen Windows-Computer finden Sie unter [Ändern des Laufwerkbuchstabens des temporären Windows-Datenträgers](../articles/virtual-machines/virtual-machines-windows-classic-change-drive-letter.md).
 
 Weitere Informationen zur Verwendung des temporären Datenträgers in Azure finden Sie unter [Understanding the temporary drive on Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/) (Grundlegendes zum temporären Laufwerk in Microsoft Azure Virtual Machines).
 
@@ -16,17 +18,17 @@ Weitere Informationen zur Verwendung des temporären Datenträgers in Azure find
 
 Ein Datenträger ist eine VHD, die zum Speichern von Anwendungsdaten oder anderen Daten, die Sie aufbewahren müssen, an einen virtuellen Computer angebunden ist. Datenträger werden als SCSI-Laufwerke registriert und mit einem von Ihnen ausgewählten Buchstaben gekennzeichnet. Jeder Datenträger hat eine maximale Kapazität von 1023 GB. Die Größe des virtuellen Computers bestimmt die Anzahl der Datenträger, die Sie anfügen können, und den Typ des Speichers, den Sie zum Hosten der Datenträger verwenden können.
 
->[AZURE.NOTE] Weitere Informationen zu Kapazitäten virtueller Computer finden Sie unter [Größen für virtuelle Computer](../articles/virtual-machines/virtual-machines-linux-sizes.md).
+>[AZURE.NOTE] Weitere Informationen zu Kapazitäten virtueller Computer finden Sie unter [Linux-VM-Größen](../articles/virtual-machines/virtual-machines-linux-sizes.md) und [Windows-VM-Größen](../articles/virtual-machines/virtual-machines-windows-sizes.md).
 
-Azure erstellt einen Betriebssystem-Datenträger, wenn Sie einen virtuellen Computer aus einem Image erstellen. Wenn das verwendete Image Datenträger enthält, erstellt Azure auch diese Datenträger beim Erstellen des virtuellen Computers. (Sie können ein Image von Azure oder einem Partner oder ein eigenes Image verwenden.) Andernfalls fügen Sie die Datenträger nach dem Erstellen des virtuellen Computers hinzu.
+Azure erstellt einen Betriebssystem-Datenträger, wenn Sie einen virtuellen Computer aus einem Image erstellen. Wenn das verwendete Image Datenträger enthält, erstellt Azure auch diese Datenträger beim Erstellen des virtuellen Computers. Andernfalls fügen Sie die Datenträger nach dem Erstellen des virtuellen Computers hinzu.
 
-Sie können jederzeit Datenträger zum virtuellen Computer hinzufügen, indem Sie den Datenträger an den virtuellen Computer anfügen. Sie können eine VHD verwenden, die Sie in das Speicherkonto hochgeladen oder kopiert haben, oder eine VHD, die Azure für Sie erstellt hat. Beim Anfügen eines Datenträgers wird die VHD-Datei aus dem Speicherkonto mit dem virtuellen Computer durch eine 'Lease' auf der VHD verknüpft, sodass die VHD nicht aus dem Speicher gelöscht werden kann, solange Sie an einen virtuellen Computer angefügt ist.
+Sie können jederzeit Datenträger zu einem virtuellen Computer hinzufügen, indem Sie den Datenträger an den virtuellen Computer **anfügen**. Sie können eine VHD verwenden, die Sie in das Speicherkonto hochgeladen oder kopiert haben, oder eine VHD, die Azure für Sie erstellt hat. Beim Anfügen eines Datenträgers wird die VHD-Datei aus dem Speicherkonto durch eine „Lease“ auf der VHD mit dem virtuellen Computer verknüpft, sodass die VHD nicht aus dem Speicher gelöscht werden kann, solange sie angefügt ist.
 
 ## Informationen zu VHDs
 
-Die in Azure verwendeten VHDs sind VHD-Dateien, die als Seiten-Blobs in einem Standard- oder Premium-Speicherkonto in Azure gespeichert sind. (Premium-Speicher ist in bestimmten Regionen verfügbar.) Informationen zu Seitenblobs finden Sie unter [Grundlegendes zu Blockblobs und Seitenblobs](https://msdn.microsoft.com/library/ee691964.aspx). Informationen zu Premium-Speicher finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Workloads virtueller Azure-Computer](../articles/storage/storage-premium-storage.md).
+Die in Azure verwendeten VHDs sind VHD-Dateien, die als Seiten-Blobs in einem Standard- oder Premium-Speicherkonto in Azure gespeichert sind. Informationen zu Seitenblobs finden Sie unter [Grundlegendes zu Blockblobs und Seitenblobs](https://msdn.microsoft.com/library/ee691964.aspx). Informationen zu Premium-Speicher finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Workloads virtueller Azure-Computer](../articles/storage/storage-premium-storage.md).
 
-Azure unterstützt das VHD-Format; feste Datenträger. Das feste Format legt den logischen Datenträger in der Datei linear aus, daher wird Datenträger-Offset X bei Blob-Offset X gespeichert. Eine kleinere Fußzeile am Ende des Blobs beschreibt die Eigenschaften der VHD. Oftmals verschwendet das feste Format Speicherplatz, da die meisten Datenträger über große ungenutzte Bereiche davon verfügen. Azure speichert VHD-Dateien jedoch in einem platzsparenden Format. Daher profitieren Sie gleichzeitig von den Vorteilen fester und dynamischer Datenträger. Nähere Informationen finden Sie unter [Erste Schritte mit virtuellen Festplatten](https://technet.microsoft.com/library/dd979539.aspx).
+Azure unterstützt das VHD-Format mit eingebauten („festen“) Datenträgern. Das feste Format legt den logischen Datenträger in der Datei linear aus, daher wird Datenträger-Offset X bei Blob-Offset X gespeichert. Eine kleinere Fußzeile am Ende des Blobs beschreibt die Eigenschaften der VHD. Oftmals verschwendet das feste Format Speicherplatz, da die meisten Datenträger über große ungenutzte Bereiche davon verfügen. Azure speichert VHD-Dateien jedoch in einem platzsparenden Format. Daher profitieren Sie gleichzeitig von den Vorteilen fester und dynamischer Datenträger. Nähere Informationen finden Sie unter [Erste Schritte mit virtuellen Festplatten](https://technet.microsoft.com/library/dd979539.aspx).
 
 Alle VHD-Dateien in Azure, die Sie als Quelle zum Erstellen von Datenträgern oder Images verwenden möchten, sind schreibgeschützt. Beim Erstellen eines Datenträgers oder Images werden Kopien der VHD-Dateien von Azure erstellt. Diese Kopien sind je nach Verwendung der VHD entweder schreibgeschützt oder ermöglichen Lese- und Schreibvorgänge.
 
@@ -36,4 +38,4 @@ Um eine VHD-Quelldatei löschen zu können, müssen Sie die Lease entfernen, ind
 
 >[AZURE.WARNING] Wenn Sie eine VHD-Quelldatei aus dem Speicher löschen oder das Speicherkonto löschen, kann Microsoft diese Daten nicht wiederherstellen.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0622_2016-->

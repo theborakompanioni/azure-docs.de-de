@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/04/2016" 
+	ms.date="06/21/2016" 
 	ms.author="stefsch"/>
 
 # Geografisch verteilte Skalierung mit App Service-Umgebungen
@@ -107,6 +107,8 @@ Die Konsolenabbildung unten zeigt eine DNS-Suche nach der benutzerdefinierten Do
 ![DNS-Suche][DNSLookup]
 
 ## Zusätzliche Links und Informationen ##
+Alle Artikel und Anleitungen zu App Service-Umgebungen stehen in der [Dokumentation zur App Service-Umgebung](../app-service/app-service-app-service-environments-readme.md) zur Verfügung.
+
 Dokumentation zur [Azure-Ressourcen-Manager-Unterstützung (ARM) für Azure Traffic Manager][ARMTrafficManager] der Vorschau-PowerShell.
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
@@ -116,7 +118,7 @@ Dokumentation zur [Azure-Ressourcen-Manager-Unterstützung (ARM) für Azure Traf
 <!-- LINKS -->
 [AzureTrafficManagerProfile]: https://azure.microsoft.com/documentation/articles/traffic-manager-manage-profiles/
 [ARMTrafficManager]: https://azure.microsoft.com/documentation/articles/traffic-manager-powershell-arm/
-[RegisterCustomDomain]: https://azure.microsoft.com/documentation/articles/web-sites-custom-domain-name/
+[RegisterCustomDomain]: https://azure.microsoft.com/de-DE/documentation/articles/web-sites-custom-domain-name/
 
 
 <!-- IMAGES -->
@@ -125,4 +127,4 @@ Dokumentation zur [Azure-Ressourcen-Manager-Unterstützung (ARM) für Azure Traf
 [DNSLookup]: ./media/app-service-app-service-environment-geo-distributed-scale/DNSLookup-1.png
 [CustomDomain]: ./media/app-service-app-service-environment-geo-distributed-scale/CustomDomain-1.png
 
-<!---HONumber=AcomDC_0406_2016--->
+<!---HONumber=AcomDC_0622_2016-->

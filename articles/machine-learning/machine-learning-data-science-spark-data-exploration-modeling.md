@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/05/2016"
+	ms.date="06/14/2016"
 	ms.author="deguhath;bradsev" />
 
 # Durchsuchen von Daten und Modellierung mit Spark
@@ -90,15 +90,15 @@ Zum Setup gehört auch das Importieren erforderlicher Bibliotheken. Legen Sie de
 
 ### Vorab festgelegter Spark-Kontext und PySpark-Magics
 
-Die PySpark-Kernel, die mit Jupyter-Notebooks verfügbar sind, verfügen über einen vorab festgelegten Kontext. Sie müssen die Spark- oder Hive-Kontexte also nicht mehr ausdrücklich festlegen, um mit der Anwendung, die Sie entwickeln, arbeiten zu können. Diese Kontexte stehen standardmäßig zur Verfügung. Diese Kontexte sind:
+Die PySpark-Kernel, die mit Jupyter Notebooks bereitgestellt werden, verfügen über einen vorab festgelegten Kontext. Sie müssen die Spark- oder Hive-Kontexte also nicht mehr explizit festlegen, um mit der Anwendung, die Sie entwickeln, arbeiten zu können. Diese Kontexte stehen standardmäßig zur Verfügung. Diese Kontexte sind:
 
 - sc – für Spark 
 - sqlContext – für Hive
 
-Der PySpark-Kernel bietet einige vordefinierte „Magics“. Dies sind spezielle Befehle, die Sie mit %% aufrufen können. Es gibt zwei Befehle dieser Art, die in den Codebeispielen verwendet werden.
+Der PySpark-Kernel bietet einige so genannte „Magic-Befehle“, die vordefiniert sind. Dies sind spezielle Befehle, die Sie mit %% aufrufen können. Es gibt zwei Befehle dieser Art, die in den Codebeispielen verwendet werden.
 
 - **%%local** gibt an, dass der Code in den nachfolgenden Zeilen lokal ausgeführt wird. Der Code muss gültiger Python-Code sein.
-- **%%sql -o <variable name>** führt eine Hive-Abfrage für den sqlContext aus. Wenn der Parameter -o übergeben wird, wird das Ergebnis der Abfrage im Python-Kontext „%%local“ als Pandas-Datenrahmen beibehalten.
+- **%%sql -o <variable name>** führt eine Hive-Abfrage für den sqlContext aus. Wenn der Parameter -o übergeben wird, wird das Ergebnis der Abfrage im %%local-Python-Kontext als Pandas-Dataframe beibehalten.
  
 
 Weitere Informationen zu den Kerneln für Jupyter-Notebooks und den zugehörigen vordefinierten Magics, die mit %% aufgerufen werden (z.B. „%%local“), finden Sie unter [Verfügbare Kernels für Jupyter-Notebooks mit HDInsight Spark-Linux-Clustern in HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md).
@@ -187,10 +187,10 @@ Nachdem die Daten in Spark eingegeben wurden, besteht der nächste Schritt im Da
 
 ### Zeichnen eines Histogramms der Häufigkeit der Fahrgastzahlen im Taxifahrtenbeispiel
 
-In diesem Code und den nachfolgenden Codeausschnitten wird SQL-Magic verwendet, um das Beispiel und die lokale Magic zum Plotten der Daten abzufragen.
+In diesem Code und den nachfolgenden Codeausschnitten werden SQL-Magic-Befehle verwendet, um das Beispiel abzufragen, und lokale Magic-Befehle, um die Daten in einem Diagramm darzustellen.
 
 - **SQL-Magic (`%%sql`)** Der HDInsight PySpark-Kernel unterstützt einfache HiveQL-Inlineabfragen für den sqlContext. Mit dem Argument (-o VARIABLE\_NAME) wird die Ausgabe der SQL-Abfrage als Pandas-Dataframe auf dem Jupyter-Server beibehalten. Das bedeutet, dass die Daten im lokalen Modus verfügbar sind.
-- Die **Magic `%%local`** wird genutzt, um Code lokal auf dem Jupyter-Server auszuführen. Dieser ist der Hauptknoten des HDInsight-Clusters. Normalerweise verwenden Sie die Magic `%%local` zusammen mit der Magic `%%sql` mit dem Parameter -o. Mit dem Parameter -o wird die Ausgabe der SQL-Abfrage lokal beibehalten. Anschließend löst die Magic %%local die nächste Gruppe von Codeausschnitten aus, damit diese lokal für die Ausgabe der lokal gespeicherten SQL-Abfragen ausgeführt werden können.
+- Die **Magic `%%local`** wird genutzt, um Code lokal auf dem Jupyter-Server auszuführen. Dieser ist der Hauptknoten des HDInsight-Clusters. Normalerweise verwenden Sie die Magic `%%local` zusammen mit der Magic `%%sql` mit dem Parameter -o. Mit dem Parameter -o wird die Ausgabe der SQL-Abfrage lokal beibehalten. Anschließend löst der Magic-Befehl %%local die nächste Gruppe von Codeausschnitten aus, damit diese lokal für die Ausgabe der lokal gespeicherten SQL-Abfragen ausgeführt werden können.
 
 Die Ausgabe wird automatisch visualisiert, nachdem Sie den Code ausgeführt haben.
 
@@ -205,9 +205,9 @@ Mit dieser Abfrage werden die Fahrten nach der Fahrgastanzahl abgerufen.
 	WHERE passenger_count > 0 and passenger_count < 7 
 	GROUP BY passenger_count 
 
-Mit dem Code wird aus der Ausgabe der Abfrage ein lokaler Dataframe erstellt, und die Daten werden geplottet. Die Magic `%%local` erstellt den lokalen Dataframe `sqlResults`, der für das Plotten mit matplotlib verwendet werden kann.
+Mit dem Code wird aus der Ausgabe der Abfrage ein lokaler Dataframe erstellt, und die Daten werden in einem Diagramm dargestellt („geplottet“). Die Magic `%%local` erstellt den lokalen Dataframe `sqlResults`, der für das Plotten mit matplotlib verwendet werden kann.
 
->[AZURE.NOTE] Diese PySpark-Magic wird in dieser exemplarischen Vorgehensweise mehrfach genutzt. Bei einer großen Datenmenge sollten Sie Stichproben verwenden, um einen Dataframe zu erstellen, der in den lokalen Arbeitsspeicher passt.
+>[AZURE.NOTE] Dieser PySpark-Magic-Befehl wird in dieser exemplarischen Vorgehensweise mehrfach genutzt. Bei einer großen Datenmenge sollten Sie Stichproben verwenden, um einen Dataframe zu erstellen, der nicht zu groß für den lokalen Arbeitsspeicher ist.
 
 	#CREATE LOCAL DATA-FRAME AND USE FOR MATPLOTLIB PLOTTING
 
@@ -622,7 +622,7 @@ Coefficients: [0.0082065285375, -0.0223675576104, -0.0183812028036, -3.481245780
 
 Intercept: -0.0111216486893
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 14,43 Sekunden
+Time taken to execute above cell: 14.43 seconds
 
 **Evaluieren des binären Klassifizierungsmodells mit Standardmetriken**
 
@@ -963,7 +963,7 @@ Für die Ausführung der obigen Zelle benötigte Zeit: 49,21 Sekunden
 
 Der Code in diesem Abschnitt zeigt, wie ein Gradient-Boosted-Strukturmodell, das den Trinkgeldbetrag für die NYC-Taxifahrtendaten vorhersagt, trainiert, evaluiert und gespeichert werden kann.
 
-**Trainieren und bewerten**
+****Trainieren und bewerten**
 
 	#PREDICT TIP AMOUNTS USING GRADIENT BOOSTING TREES
 
@@ -1105,4 +1105,4 @@ Da Sie nun Regressions- und Klassifizierungsmodelle mit der Spark MlLib erstellt
 
 **Übergreifende Validierung und Hyper-Parameter-Sweeping:** Unter [Erweitertes Durchsuchen und Modellieren von Daten mit Spark](machine-learning-data-science-spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit übergreifender Validierung und Hyper-Parameter-Sweeping trainiert werden können.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

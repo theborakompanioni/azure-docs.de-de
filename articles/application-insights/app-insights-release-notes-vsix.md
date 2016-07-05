@@ -16,7 +16,18 @@
 
 # Versionshinweise – Developer Analytics Tools
 ##### Application Insights- und HockeyApp-Analysen in Visual Studio
-## Version 7.0.1
+## Version 7.0
+###Application Insights-Trends
+Application Insights-Trends ist ein neues Tool in Visual Studio für die Analyse des Verhaltens Ihrer App im Laufe der Zeit. Wählen Sie zum Einstieg auf der Application Insights-Symbolleiste oder im Application Insights-Suchfenster die Schaltfläche „Telemetrietrends untersuchen“. Alternativ können Sie unter „Ansicht > Andere Fenster“ die Option „Application Insights-Trends“ wählen. Wählen Sie eine der fünf allgemeinen Abfragen aus, um zu beginnen. Sie können unterschiedliche Datasets basierend auf Telemetrietypen, Zeiträumen und anderen Eigenschaften analysieren. Wählen Sie zum Ermitteln von Anomalien in Ihren Daten in der Dropdownliste „Ansichtstyp“ eine Anomalieoption. Mit den Filteroptionen am unteren Rand des Fensters ist es einfach, bestimmte Teilmengen Ihrer Telemetriedaten anzuzeigen.
+
+![Application Insights-Trends](./media/app-insights-release-notes-vsix/Trends.PNG)
+
+###Ausnahmen in CodeLens
+Telemetriedaten zu Ausnahmen werden jetzt in CodeLens angezeigt. Wenn Sie Ihr Projekt mit dem Application Insights-Dienst verknüpft haben, wird die Anzahl von Ausnahmen angezeigt, die in den letzten 24 Stunden in den einzelnen Methoden in der Produktion aufgetreten sind. Von CodeLens können Sie zur Suche oder zu den Trends wechseln, um die Ausnahmen genauer zu untersuchen.
+
+![Ausnahmen in CodeLens](./media/app-insights-release-notes-vsix/ExceptionsCodeLens.png)
+
+###Unterstützung für ASP.NET Core
 Application Insights unterstützt jetzt ASP.NET Core RC2-Projekte in Visual Studio. Sie können Application Insights über das Dialogfeld „Neue Projekte“ einem neuen ASP.NET Core RC2-Projekt hinzufügen. Um Application Insights einem vorhandenen Projekt hinzuzufügen, klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie „Application Insights-Telemetrie hinzufügen...“ aus.
 
 ![Unterstützung für .NET Core](./media/app-insights-release-notes-vsix/NetCoreSupport.PNG)
@@ -25,11 +36,15 @@ Für ASP.NET 5 RC1- und ASP.NET Core RC2-Projekte steht im Fenster „Diagnoseto
 
 ![Unterstützung für Diagnosetools](./media/app-insights-release-notes-vsix/DiagnosticTools.PNG)
 
+###HockeyApp für universelle Windows-Apps
+Zusätzlich zur Betaverteilung und zum Benutzerfeedback bietet HockeyApp Absturzberichte in Form von Symbolen für Ihre universellen Windows-Apps. Das Hinzufügen des HockeyApp SDK ist jetzt noch einfacher: Klicken Sie mit der rechten Maustaste auf Ihr universelles Windows-Projekt, und wählen Sie „Hockey App - Enable Crash Analytics...“ (HockeyApp > Absturzanalyse aktivieren...). Dadurch wird das SDK installiert, die Absturzsammlung eingerichtet und eine HockeyApp-Ressource in der Cloud bereitgestellt. Ihre App wird dabei nicht in den HockeyApp-Dienst hochgeladen.
+
 Weitere neue Features:
 
 * Wir haben die Application Insights Search-Benutzeroberfläche wurde schneller und intuitiver gestaltet – Zeiträume und Detailfilter werden bei Auswahl jetzt automatisch angewendet.
 * Application Insights Search bietet jetzt eine Option, aus der Anforderungstelemetrie direkt zum Code zu wechseln.
 * Wir haben die Benutzeroberfläche zur Anmeldung bei HockeyApp verbessert.
+* In Diagnosetools werden jetzt Produktionstelemetriedaten für Ausnahmen angezeigt.
 
 ## Version 5.2
 Wir freuen uns, die Einführung von HockeyApp-Szenarien in Visual Studio ankündigen zu können. Die erste Integration, die wir ermöglicht haben, ist die Beta-Distribution von universellen Windows-Apps und Windows Forms-Apps in VS.
@@ -164,4 +179,4 @@ Im Rahmen der *Connect();* 2015 haben wir [angekündigt](https://azure.microsoft
 
 In zukünftigen Versionen der Application Insights-Erweiterung werden wir neue Funktionen einführen, die eine stärkere Integration zwischen HockeyApp und Visual Studio ermöglichen. Beginnen Sie mit HockeyApp, indem Sie einfach den NuGet-Verweis hinzufügen. Weitere Informationen finden Sie in der [Dokumentation](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

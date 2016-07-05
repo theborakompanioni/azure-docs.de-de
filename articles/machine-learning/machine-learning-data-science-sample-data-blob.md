@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016" 
+	ms.date="06/14/2016" 
 	ms.author="sunliangms;fashah;garye;bradsev" />
 
 #<a name="heading"></a>Datenstichproben im Azure-Blob-Speicher
@@ -27,7 +27,7 @@ Das nachstehende **Menü** enthält Links zu Themen, die beschreiben, wie Datens
 
 [AZURE.INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
 
-Diese Datenstichprobenaufgabe ist ein Teil des [Cortana Analytics-Prozesses (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+Dieser Stichprobentask ist ein Schritt im [Team Data Science-Prozess (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 
 ## Download und Downsampling von Daten
@@ -102,4 +102,4 @@ Mit dem folgenden Beispielcode können Sie ein Downsampling der Daten durchführ
 
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

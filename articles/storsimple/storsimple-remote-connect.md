@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/08/2016"
+   ms.date="06/21/2016"
    ms.author="alkohli" />
 
 # Herstellen einer Remoteverbindung mit dem StorSimple-Gerät
@@ -274,4 +274,4 @@ Führen Sie die folgenden Schritte auf dem Computer aus, über den Sie die Windo
 
 - Erfahren Sie mehr über das [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

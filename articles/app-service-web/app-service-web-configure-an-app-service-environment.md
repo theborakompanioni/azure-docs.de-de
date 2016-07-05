@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/04/2016" 
+	ms.date="06/20/2016" 
 	ms.author="ccompy"/>
 
 
@@ -38,7 +38,7 @@ Die Computeressourcen werden für Ihre vier Ressourcenpools verwendet. Jede App 
 - Eine App Service-Umgebung verfügt anfänglich über zwei (2) P2-Einheiten. Diese Größe ist für Dev/Test-Workloads und einfache Produktionsworkloads ausreichend. P3-Einheiten werden dringend für mittlere bis große Produktionsworkloads empfohlen.
 - Für mittlere bis große Produktionsworkloads werden mindestens vier P3-Einheiten empfohlen, um sicherzustellen, dass bei einer geplanten Wartung genügend Front-Ends ausgeführt werden. Bei geplanten Wartungsaktivitäten wird jeweils ein (1) Front-End außer Betrieb genommen, sodass die Gesamtkapazität der Front-Ends während der Wartungsaktivitäten reduziert ist.
 - Es ist nicht möglich, umgehend eine neue Front-End-Instanz hinzuzufügen. Die Bereitstellung dieser Instanzen kann 2-3 Stunden dauern.
-- Für eine genauere Skalierung sollten Kunden den CPU-Prozentsatz, den Arbeitsspeicherprozentsatz und Metriken zu aktiven Anforderungen für den Front-End-Pool überwachen. Wenn der CPU- oder Arbeitsspeicherprozentsatz bei Ausführung von P3-Einheiten die Schwelle von 70 % überschreitet, sollten weitere Front-Ends hinzugefügt werden. Wenn die Anzahl von aktiven Anforderungen durchschnittlich bei 15.000 bis 20.000 Anforderungen pro Front-End liegt, sollten ebenfalls weitere Front-Ends hinzugefügt werden. Bei Ausführung von P3-Einheiten ist das Ziel also, für CPU und Arbeitsspeicher einen Prozentsatz von weniger als 70 % und für aktive Anforderungen im Durchschnittlich eine Anzahl von weniger als 15.000 Anforderungen pro Front-End zu erreichen.  
+- Für eine genauere Skalierung sollten Kunden den CPU-Prozentsatz, den Arbeitsspeicher-Prozentsatz und Metriken zu aktiven Anforderungen für den Front-End-Pool überwachen. Wenn der CPU- oder Arbeitsspeicherprozentsatz bei Ausführung von P3-Einheiten die Schwelle von 70 % überschreitet, sollten weitere Front-Ends hinzugefügt werden. Wenn die Anzahl von aktiven Anforderungen durchschnittlich bei 15.000 bis 20.000 Anforderungen pro Front-End liegt, sollten ebenfalls weitere Front-Ends hinzugefügt werden. Bei Ausführung von P3-Einheiten ist das Ziel also, für CPU und Arbeitsspeicher einen Prozentsatz von weniger als 70 % und für aktive Anforderungen im Durchschnitt eine Anzahl von weniger als 15.000 Anforderungen pro Front-End zu erreichen.  
 
 **Worker** In den Workern werden Ihre Apps ausgeführt. Wenn Sie Ihre App Service-Pläne zentral hochskalieren, werden für diesen Vorgang Worker im zugeordneten Workerpool genutzt.
 
@@ -57,11 +57,11 @@ Wenn für Ihre Apps mehr Computeressourcen erforderlich sind, sind die vorstehen
 - Weisen Sie Ihre App Service-Pläne, über die die Apps mit den höheren Ressourcenanforderungen gehostet werden, dem neu konfigurierten Workerpool zu. Dies ist ein schneller Vorgang, der in weniger als einer Minute abgeschlossen sein sollte.  
 - Skalieren Sie den ersten Workerpool zentral herunter, wenn Sie die nicht genutzten Instanzen nicht mehr benötigen. Dieser Vorgang dauert ca. 30 Minuten.
 
-**Automatische Skalierung** Die automatische Skalierung kann genutzt werden, um die Nutzung von Computeressourcen zu verwalten. Dieses Tool kann für Front-Ends oder Workerpools verwendet werden. Sie können z. B. die Instanzen in einem beliebigen Pooltyp morgens erhöhen und abends verringern oder Instanzen hinzufügen, wenn die Anzahl von verfügbaren Workern in einem Workerpool unter einen bestimmten Schwellenwert fällt. Wenn Sie für Metriken eines Computeressourcenpools Regeln für eine automatische Skalierung festlegen möchten, sollten Sie den erforderlichen Zeitaufwand für die Bereitstellung beachten. Weitere Einzelheiten zur automatischen Skalierung von App Service-Umgebungen finden Sie hier: [How to configure autoscale in an App Service Environment (Konfigurieren der automatischen Skalierung in einer App Service-Umgebung)][ASEAutoscale]
+**Automatische Skalierung** Die automatische Skalierung kann eingesetzt werden, um die Nutzung von Computeressourcen zu verwalten. Dieses Tool kann für Front-Ends oder Workerpools verwendet werden. Sie können z.B. die Instanzen in einem beliebigen Pooltyp morgens erhöhen und abends verringern oder Instanzen hinzufügen, wenn die Anzahl von verfügbaren Workern in einem Workerpool unter einen bestimmten Schwellenwert fällt. Wenn Sie für Metriken eines Computeressourcenpools Regeln für eine automatische Skalierung festlegen möchten, sollten Sie den erforderlichen Zeitaufwand für die Bereitstellung beachten. Weitere Einzelheiten zur automatischen Skalierung von App Service-Umgebungen finden Sie hier: [How to configure autoscale in an App Service Environment (Konfigurieren der automatischen Skalierung in einer App Service-Umgebung)][ASEAutoscale]
 
 ### Speicher
 
-Jede App Service-Umgebung ist mit 500 GB Speicherplatz konfiguriert. Dieser Speicherplatz wird von allen Apps in der App Service-Umgebung verwendet. Er ist Teil der App Service-Umgebung und kann derzeit nicht anders genutzt werden (z. B. als Speicherplatz für den Kunden). Wenn Sie Anpassungen am VNET-Routing oder an der VNET-Sicherheit vornehmen, muss sichergestellt sein, dass weiterhin auf Azure Storage zugegriffen werden kann. Andernfalls ist die App Service-Umgebung nicht funktionsfähig.
+Jede App Service-Umgebung ist mit 500 GB Speicherplatz konfiguriert. Dieser Speicherplatz wird von allen Apps in der App Service-Umgebung verwendet. Er ist Teil der App Service-Umgebung und kann derzeit nicht anders genutzt werden (z.B. als Speicherplatz für den Kunden). Wenn Sie Anpassungen am VNET-Routing oder an der VNET-Sicherheit vornehmen, muss sichergestellt sein, dass weiterhin auf Azure Storage zugegriffen werden kann. Andernfalls ist die App Service-Umgebung nicht funktionsfähig.
 
 ### Datenbank
 
@@ -75,9 +75,10 @@ Für VNETs, die für eine App Service-Umgebung verwendet werden, gelten einige E
 
 - Zurzeit werden nur klassische V1-VNETs unterstützt
 - Das VNET muss ein regionales VNET sein
-- VNETs, die zum Hosten einer App Service-Umgebung eingesetzt werden, müssen RFC1918-Adressen verwenden (d. h. private Adressen)
-- Es muss ein Subnetz mit mindestens 8 Adressen vorhanden sein, in dem die App Service-Umgebung bereitgestellt wird
-- Sobald ein Subnetz zum Hosten einer App Service-Umgebung verwendet wird, kann der Adressbereich des Subnetzes nicht mehr geändert werden. Um zukünftigem Wachstum der App Service-Umgebung gerecht werden zu können, sollte das Subnetz daher mindestens 64 Adressen umfassen 
+- Infolge einer im Juni 2016 vorgenommenen Änderung können nun ASEs in virtuellen Netzwerken bereitgestellt werden, die *entweder* öffentliche Adressbereiche *oder* RFC1918-Adressräume (d.h. private Adressen) verwenden. Um ein virtuelles Netzwerk mit einem öffentlichen Adressbereich zu verwenden, müssen Sie das Subnetz vorab erstellen und dann das Subnetz auf der UX für die ASE-Erstellung auswählen.
+- Es muss ein Subnetz mit mindestens acht Adressen vorhanden sein, in dem die ASE bereitgestellt wird.
+- Sobald ein Subnetz zum Hosten einer App Service-Umgebung verwendet wird, kann der Adressbereich des Subnetzes nicht mehr geändert werden. Um zukünftigem Wachstum der ASE gerecht werden zu können, sollte das Subnetz daher mindestens 64 Adressen umfassen 
+- **Das für das Hosting der ASE verwendete Subnetz darf keine anderen Compute-Ressourcen enthalten.**
 
 Anders als beim gehosteten Dienst, der die App Service-Umgebung umfasst, werden das [virtuelle Netzwerk][virtualnetwork] und das Subnetz vom Benutzer gesteuert. Die Verwaltung Ihres VNET erfolgt über die Virtual Network-Benutzeroberfläche oder über PowerShell.
 
@@ -97,7 +98,7 @@ Sie können das Symbol verwenden oder unten in der Randleiste auf das Chevron (G
 
 ![][2]
 
-Das erste Blatt zeigt einige Eigenschaften der App Service-Umgebung zusammen mit einem Metrikdiagramm pro Ressourcenpool. Einige Eigenschaften im Block „Zusammenfassung“ sind auch Links, mit denen Sie das entsprechende Blatt öffnen können. Sie können z. B. auf den VNET-Namen klicken und dadurch die Benutzeroberfläche für das VNET öffnen, in dem Ihre App Service-Umgebung ausgeführt wird. Mit „App Service-Pläne“ und „Apps“ öffnen Sie jeweils Blätter mit Auflistungen dieser in Ihrer App Service-Umgebung enthaltenen Elemente.
+Das erste Blatt zeigt einige Eigenschaften der App Service-Umgebung zusammen mit einem Metrikdiagramm pro Ressourcenpool. Einige Eigenschaften im Block „Zusammenfassung“ sind auch Links, mit denen Sie das entsprechende Blatt öffnen können. Sie können z.B. auf den VNET-Namen klicken und dadurch die Benutzeroberfläche für das VNET öffnen, in dem Ihre App Service-Umgebung ausgeführt wird. Mit „App Service-Pläne“ und „Apps“ öffnen Sie jeweils Blätter mit Auflistungen dieser in Ihrer App Service-Umgebung enthaltenen Elemente.
 
 ### Überwachung
 
@@ -117,9 +118,9 @@ Das Blatt „App Service-Umgebung“ umfasst einen Abschnitt „Einstellungen“
 
 ![][4]
 
-**Einstellungen > IP-Adressen** Wenn Sie eine IP-SSL-App in Ihrer App Service-Umgebung erstellen, benötigen Sie eine IP-SSL-Adresse. Damit das möglich wird, muss die App Service-Umgebung über eigene IP-SSL-Adressen verfügen, die zugewiesen werden können. Beim Erstellen einer App Service-Umgebung verfügt diese über 1 IP-SSL-Adresse für diesen Zweck. Sie können jedoch weitere Adressen hinzufügen. Für zusätzliche IP-SSL-Adressen fallen Gebühren an. Diese sind im Abschnitt zu SSL-Verbindungen unter [App Service – Preise][AppServicePricing] aufgeführt. Der IP-SSL-Preis ist der zusätzliche Preis.
+**Einstellungen > IP-Adressen** Wenn Sie eine IP-SSL-App in Ihrer ASE erstellen, benötigen Sie eine IP-SSL-Adresse. Damit das möglich wird, muss die App Service-Umgebung über eigene IP-SSL-Adressen verfügen, die zugewiesen werden können. Beim Erstellen einer App Service-Umgebung verfügt diese über 1 IP-SSL-Adresse für diesen Zweck. Sie können jedoch weitere Adressen hinzufügen. Für zusätzliche IP-SSL-Adressen fallen Gebühren an. Diese sind im Abschnitt zu SSL-Verbindungen unter [App Service – Preise][AppServicePricing] aufgeführt. Der IP-SSL-Preis ist der zusätzliche Preis.
 
-**Einstellungen > Front-End-Pool / Workerpools** Auf jedem dieser Ressourcenpoolblätter werden nur die Informationen für den jeweiligen Ressourcenpool angezeigt. Außerdem enthalten die Blätter Steuerelemente, mit denen dieser Ressourcenpool skaliert werden kann.
+**Einstellungen > Front-End-Pool/Workerpools** Auf jedem dieser Ressourcenpoolblätter werden nur die Informationen für den jeweiligen Ressourcenpool angezeigt. Außerdem enthalten die Blätter Steuerelemente, mit denen dieser Ressourcenpool skaliert werden kann.
 
 Das Grundlagenblatt für jeden Ressourcenpool enthält ein Diagramm mit den Metriken zu diesem Ressourcenpool. Ähnlich wie bei den Diagrammen im App Service-Umgebungsblatt können Sie auch hier das Diagramm öffnen und wie gewünscht Warnungen einrichten. Ob Sie eine Warnung im App Service-Umgebungsblatt für einen bestimmten Ressourcenpool einrichten oder dafür das Blatt für den Ressourcenpool verwenden, spielt keine Rolle – das Ergebnis ist dasselbe. Im Blatt „Einstellungen“ für den Workerpool können Sie alle Apps oder App Service-Pläne auflisten, die in diesem Workerpool ausgeführt werden.
 
@@ -143,7 +144,7 @@ Um den Skalierungsvorgang auf dem Blatt „App Service-Umgebung“ zu verwenden,
 
 ![][6]
 
-Wenn Sie die Funktionen für die manuelle oder die automatische Skalierung verwenden möchten, wechseln Sie zu *Einstellungen > Front-End-Pool bzw. Workerpools*, und öffnen Sie den Pool, den Sie ändern möchten. Wählen Sie *Einstellungen > Horizontal hochskalieren bzw. Einstellungen > Zentral hochskalieren*. Auf dem Blatt *Horizontal hochskalieren* können Sie die Anzahl von Instanzen steuern. Die Option *Zentral hochskalieren* ermöglicht die Festlegung der Ressourcengröße.
+Wenn Sie die Funktionen für die manuelle oder die automatische Skalierung in einem bestimmten Ressourcenpool verwenden möchten, wechseln Sie zu *Einstellungen > Front-End-Pool bzw. Workerpools*, und öffnen Sie den Pool, den Sie ändern möchten. Wählen Sie *Einstellungen > Horizontal hochskalieren bzw. Einstellungen > Zentral hochskalieren*. Auf dem Blatt *Horizontal hochskalieren* können Sie die Anzahl von Instanzen steuern. Die Option *Zentral hochskalieren* ermöglicht die Festlegung der Ressourcengröße.
 
 ![][7]
 
@@ -176,6 +177,7 @@ Wenn Sie eine App Service-Umgebung löschen möchten, verwenden Sie einfach die 
 ![][9]
 
 ## Erste Schritte
+Alle Artikel und Anleitungen zu App Service-Umgebungen stehen in der [Dokumentation zu App Service-Umgebungen](../app-service/app-service-app-service-environments-readme.md) zur Verfügung.
 
 Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Erstellen einer App Service-Umgebung](app-service-web-how-to-create-an-app-service-environment.md)
 
@@ -208,4 +210,4 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 [ASEAutoscale]: http://azure.microsoft.com/documentation/articles/app-service-environment-auto-scale/
 [ExpressRoute]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-network-configuration-expressroute/
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0622_2016-->

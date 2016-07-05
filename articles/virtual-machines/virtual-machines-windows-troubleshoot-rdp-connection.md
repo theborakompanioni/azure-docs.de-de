@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="support-article"
-	ms.date="04/12/2016"
+	ms.date="06/14/2016"
 	ms.author="iainfou"/>
 
 # Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer
@@ -195,4 +195,4 @@ Wenn keiner dieser Fehler auftritt und Sie trotzdem keine Verbindung mit dem vir
 
 [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird](virtual-machines-linux-troubleshoot-app-connection.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

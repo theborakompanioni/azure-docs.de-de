@@ -3,7 +3,7 @@
    description="Informieren Sie sich über integrierte Sicherungen der SQL-Datenbank, mit denen Sie einen früheren Zustand einer Azure SQL-Datenbank wiederherstellen oder eine Datenbank in eine neue Datenbank in einer geografischen Region kopieren können (bis zu 35 Tage)."
    services="sql-database"
    documentationCenter=""
-   authors="stevestein"
+   authors="carlrabeler"
    manager="jhubbard"
    editor="monicar"/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="sqldb-features"
-   ms.date="06/09/2016"
-   ms.author="sstein"/>
+   ms.date="06/16/2016"
+   ms.author="carlrab"/>
 
 # Übersicht: Automatisierte SQL-Datenbanksicherungen
 
@@ -30,11 +30,20 @@ Microsoft Azure SQL-Datenbanken bieten bis zu 200 Prozent Ihres maximal bereitg
 
 Alle Basic-, Standard- und Premium-Datenbanken werden durch automatische Sicherungen geschützt. Vollständige Sicherungen werden wöchentlich, differenzielle Sicherungen täglich und Protokollsicherungen alle fünf Minuten erstellt. Die erste vollständige Sicherung wird unmittelbar nach der Datenbankerstellung geplant. Sie wird üblicherweise innerhalb von 30 Minuten abgeschlossen, kann aber auch länger dauern. Falls die Datenbank bereits groß ist (etwa, weil sie durch Kopieren einer Datenbank oder durch Wiederherstellen einer großen Datenbank erstellt wurde), dauert die erste vollständige Sicherung unter Umständen länger. Nach der ersten vollständigen Sicherung werden alle weiteren Sicherungen automatisch geplant und im Hintergrund verwaltet. Der genaue Zeitpunkt für vollständige und differenzielle Sicherungen wird vom System unter Berücksichtigung allgemeiner Lastaspekte bestimmt. Die Sicherungsdateien werden in einem georedundanten Speicherkonto mit Lesezugriff (RA-GRS) gespeichert, um die Verfügbarkeit für eine Notfallwiederherstellung zu gewährleisten.
 
-## Weitere Ressourcen
+## Nächste Schritte
 
 - [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
+- [Wiederherstellen einer gelöschten Datenbank](sql-database-restore-deleted-database.md)
+- [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md)
 - [Geografische Wiederherstellung](sql-database-geo-restore.md)
 - [Aktive Georeplikation](sql-database-geo-replication-overview.md)
+- [Kopieren von Datenbanken](sql-database-copy.md)
+
+## Zusätzliche Ressourcen
+
+- [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md)
+- [Wiederherstellen nach einem Benutzerfehler](sql-database-user-error-recovery.md)
+- [Ausführen von Notfallwiederherstellungsverfahren](sql-database-disaster-recovery-drills.md)
 - [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

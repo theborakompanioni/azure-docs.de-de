@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/10/2016"
+	ms.date="06/16/2016"
 	ms.author="cynthn"/>
 
 # Informationen zu Datenträgern und VHDs für virtuelle Azure-Computer
@@ -31,4 +31,4 @@ Virtuelle Computer in Azure verwenden wie alle anderen Computer auch einen Daten
 -  [Konfigurieren von Software-RAID](virtual-machines-linux-configure-raid.md) für Redundanz
 -  [Erfassen eines virtuellen Linux-Computers](virtual-machines-linux-classic-capture-image.md) für die schnelle Bereitstellung zusätzlicher virtueller Computer
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0622_2016-->

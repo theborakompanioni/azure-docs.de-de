@@ -15,8 +15,8 @@ Wenn beim Herstellen der Verbindung mit einer Anwendung Probleme auftreten, füh
 
 - Starten Sie den virtuellen Computer neu.
 - Erstellen Sie den Endpunkt, die Firewallregeln und die Regeln für die Netzwerksicherheitsgruppen (NSG) neu.
-	- [Verwalten der Endpunkte der Clouddienste](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
-	- [Verwalten der Netzwerksicherheitsgruppen](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+	- [Klassisches Modell: Verwalten der Endpunkte der Clouddienste](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
+	- [Resource Manager-Modell: Verwalten von Netzwerksicherheitsgruppen](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
 - Stellen Sie die Verbindung über einen anderen Ort her, z.B. über ein anderes virtuelles Azure-Netzwerk.
 - Stellen Sie den virtuellen Computer erneut bereit.
 	- [Erneutes Bereitstellen von virtuellen Windows-Computern](../articles/virtual-machines/virtual-machines-windows-redeploy-to-new-node.md)
@@ -74,8 +74,8 @@ Wenn kein Zugriff auf die Anwendung möglich ist, überprüfen Sie Folgendes:
 - Die Hostfirewall auf der Ziel-VM lässt die eingehende Anforderung und den ausgehenden Antwortdatenverkehr zu.
 - Software zur Angriffserkennung oder Netzwerküberwachung, die auf der Ziel-VM ausgeführt wird, lässt den Datenverkehr zu.
 - Die Endpunkte der Clouddienste oder die Netzwerksicherheitsgruppen lassen den Datenverkehr zu.
-	- [Verwalten der Endpunkte der Clouddienste](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
-	- [Verwalten der Netzwerksicherheitsgruppen](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+	- [Klassisches Modell: Verwalten der Endpunkte der Clouddienste](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
+	- [Resource Manager-Modell: Verwalten von Netzwerksicherheitsgruppen](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
 - Eine separate Komponente, die auf Ihrer VM auf dem Pfad zwischen der Test-VM und Ihrer VM ausgeführt wird, z.B. ein Load Balancer oder eine Firewall, lässt den Datenverkehr zu.
 
 Verwenden Sie auf einem Windows-basierten virtuellen Computer die Windows-Firewall mit erweiterter Sicherheit, um zu bestimmen, ob die Firewallregeln den eingehenden und ausgehenden Datenverkehr der Anwendung ausschließen.
@@ -90,12 +90,14 @@ Wenn es sich bei der Anwendung beispielsweise um einen Webserver handelt, versuc
 
 Wenn kein Zugriff auf die Anwendung möglich ist, überprüfen Sie Folgendes:
 
-- Bei VMs, die mithilfe des klassischen Bereitstellungsmodells erstellt wurden, muss die Endpunktkonfiguration für die VM eingehenden Datenverkehr zulassen, insbesondere das Protokoll (TCP oder UDP) und die öffentlichen und privaten Portnummern.
+- Bei virtuellen Computern, die mit dem klassischen Bereitstellungsmodell erstellt wurden:
+	- Die Endpunktkonfiguration für den virtuellen Computer muss eingehenden Datenverkehr zulassen, insbesondere das Protokoll (TCP oder UDP) und die öffentlichen und privaten Portnummern.
+	- Die Zugriffssteuerungslisten (Access Control Lists, ACLs) auf dem Endpunkt dürfen aus dem Internet eingehenden Datenverkehr nicht verhindern.
 	- Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md).
-- Bei VMs, die mithilfe des klassischen Bereitstellungsmodells erstellt wurden, dürfen Zugriffssteuerungslisten (ACLs) auf dem Endpunkt aus dem Internet eingehenden Datenverkehr nicht verhindern.
-	- Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md).
-- Bei VMs, die mithilfe des Resource Manager-Bereitstellungsmodells erstellt wurden, muss die eingehende NAT-Regelkonfiguration für die VM den eingehenden Verkehr zulassen, insbesondere das Protokoll (TCP oder UDP) und die öffentlichen und privaten Portnummern.
-- Netzwerksicherheitsgruppen lassen die eingehende Anforderung und den ausgehende Antwortdatenverkehr zu.
+	
+- Bei virtuellen Computern, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden:
+	- Die Konfiguration der eingehenden NAT-Regel für den virtuellen Computer muss eingehenden Datenverkehr zulassen, insbesondere das Protokoll (TCP oder UDP) und die öffentlichen und privaten Portnummern.
+	- Netzwerksicherheitsgruppen lassen die eingehende Anforderung und den ausgehende Antwortdatenverkehr zu.
 	- Weitere Informationen finden Sie unter [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../articles/virtual-network/virtual-networks-nsg.md).
 
 Wenn der virtuelle Computer oder der Endpunkt Mitglied einer Gruppe mit Lastenausgleich ist:
@@ -115,3 +117,5 @@ Wenn Sie auf die Anwendung zugreifen können, stellen Sie sicher, dass Ihre Inte
 [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md)
 
 [Behandeln von Problemen mit Secure Shell (SSH)-Verbindungen mit einem Linux-basierten virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)
+
+<!---HONumber=AcomDC_0622_2016-->

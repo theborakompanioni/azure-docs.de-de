@@ -248,7 +248,7 @@ Sie haben alle Ressourcen, die Sie für die Skalierungsgruppenkonfiguration ben�
 
 1. Ersetzen Sie den Wert von **$storageProfile** durch den Namen, den Sie für das Speicherprofil verwenden möchten, und erstellen Sie dann die Variable:  
 
-        $storeProfile = "storage profile name"
+        $storageProfile = "storage profile name"
         
 2. Erstellen Sie die Variablen, die das zu verwendende Image definieren:
       
@@ -264,7 +264,7 @@ Sie haben alle Ressourcen, die Sie für die Skalierungsgruppenkonfiguration ben�
         
 4. Erstellen Sie das Speicherprofil:
 
-        Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet $vmss -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion "latest" -Name $storeProfile -VhdContainer $vhdContainers -OsDiskCreateOption "FromImage" -OsDiskCaching "None"  
+        Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet $vmss -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion "latest" -Name $storageProfile -VhdContainer $vhdContainers -OsDiskCreateOption "FromImage" -OsDiskCaching "None"  
 
 ### VM-Skalierungsgruppe
 
@@ -298,7 +298,7 @@ Untersuchen Sie die eben erstellte VM-Skalierungsgruppe mithilfe der folgenden R
 
 - Azure-Portal: Eine begrenzte Menge an Informationen steht im Portal zur Verfügung.
 - [Azure-Ressourcen-Explorer](https://resources.azure.com/): Dies ist das Tool, das am besten zum Untersuchen des aktuellen Zustands Ihrer Skalierungsgruppe geeignet ist.
-- Azure PowerShell: Verwenden Sie den folgenden Befehl, um Informationen zu erhalten:
+- Azure PowerShell: Verwenden Sie diesen Befehl, um Informationen zu erhalten:
 
         Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
         
@@ -313,4 +313,4 @@ Untersuchen Sie die eben erstellte VM-Skalierungsgruppe mithilfe der folgenden R
 - Ziehen Sie die automatische Skalierung Ihrer Skalierungsgruppe in Betracht. Lesen Sie dazu die Informationen unter [Automatische Skalierung und Skalierungsgruppen für virtuelle Computer](virtual-machine-scale-sets-autoscale-overview.md).
 - Informieren Sie sich unter [Vertikale automatische Skalierung mit VM-Skalierungsgruppen](virtual-machine-scale-sets-vertical-scale-reprovision.md) ausführlicher über die vertikale Skalierung.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

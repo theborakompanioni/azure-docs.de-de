@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="06/09/2016"
+	ms.date="06/12/2016"
 	ms.author="mikeray" />
 
 # Automatisches Konfigurieren der AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern – Resource Manager
@@ -27,7 +27,6 @@
 <br/>
 
 Dieses End-to-End-Tutorial zeigt Ihnen, wie Sie eine SQL Server-Verfügbarkeitsgruppe mit Azure-Ressourcen-Manager-VMs erstellen. Das Tutorial verwendet Azure-Blätter zum Konfigurieren einer Vorlage. Während Sie dieses Tutorial absolvieren, überprüfen Sie Standardeinstellungen, geben erforderliche Einstellungen ein und aktualisieren die Blätter im Portal.
-
 
 Am Ende des Tutorials besteht Ihre SQL Server-Verfügbarkeitsgruppenlösung in Azure aus folgenden Elementen:
 
@@ -67,6 +66,9 @@ In diesem Tutorial verwenden Sie das Azure-Portal zu folgenden Zwecken:
 
 - Verbinden mit einem der Domänencontroller und dann mit einer der SQL Server-Instanzen
 
+[AZURE.INCLUDE [availability-group-template](../../includes/virtual-machines-windows-portal-sql-alwayson-ag-template.md)]
+
+
 ## Bereitstellen des Clusters über den Katalog
 
 Azure bietet ein Katalogimage für die gesamte Lösung. Um die Vorlage zu suchen:
@@ -105,13 +107,13 @@ Diese Azure-Katalog-Vorlage erstellt eine neue Domäne mit neuen Domänencontrol
 
 - **Gesamtstruktur-Stammdomänenname** ist der Domänenname, der für die AD-Domäne verwendet wird, die den Cluster hostet. Verwenden Sie für das Tutorial **contoso.com**.
 
-- **Name des virtuellen Netzwerks** ist der Netzwerkname für das virtuelle Azure-Netzwerk. Verwenden Sie für dieses Tutorial **autohaVNET**.
+- **Name des virtuellen Netzwerks** ist der Netzwerkname für das virtuelle Azure-Netzwerk. Verwenden Sie für dieses Tutorial **autoHAVNET**.
 
 - **Domänencontroller-Subnetzname** ist der Name eines Teils des virtuellen Netzwerks, der den Domänencontroller hostet. Verwenden Sie für dieses Tutorial **subnet-1**. Dieses Subnetz verwendet das Adresspräfix **10.0.0.0/24**.
 
 - **SQL Server-Subnetzname** ist der Name eines Teils des virtuellen Netzwerks, der die SQL Server-Instanzen und den Dateifreigabenzeugen hostet. Verwenden Sie für dieses Tutorial **subnet-2**. Dieses Subnetz verwendet das Adresspräfix **10.0.1.0/26**.
 
-Weitere Informationen zu virtuellen Netzwerken finden Sie unter [Virtuelle Netzwerke im Überblick](../virtual-network/virtual-networks-overview.md).
+Weitere Informationen zu virtuellen Netzwerken in Azure finden Sie unter [Virtuelle Netzwerke im Überblick](../virtual-network/virtual-networks-overview.md).
 
 Die **Domänen- und Netzwerkeinstellungen** sollten wie folgt aussehen:
 
@@ -127,7 +129,7 @@ Bei Bedarf können Sie diese Werte ändern. Für dieses Tutorial verwenden wir d
 
 - **Name der Verfügbarkeitsgruppe** ist der Name der Clusterressource für die Verfügbarkeitsgruppe. Verwenden Sie für dieses Tutorial **Contoso-ag**.
 
-- **Listenername der Verfügbarkeitsgruppe** wird von Cluster und internem Load Balancer verwendet. Clients, die sich mit SQL Server verbinden, können diesen Namen für die Verbindung mit dem entsprechenden Replikat der Datenbank verwenden. Verwenden Sie für dieses Tutorial **Contoso-listener**.
+- **Listenername der Verfügbarkeitsgruppe** wird vom Cluster und dem internen Load Balancer verwendet. Clients, die sich mit SQL Server verbinden, können diesen Namen für die Verbindung mit dem entsprechenden Replikat der Datenbank verwenden. Verwenden Sie für dieses Tutorial **Contoso-listener**.
 
 -  **Port des Verfügbarkeitsgruppenlisteners** gibt den TCP-Port an, den der SQL Server-Listener verwendet. Verwenden Sie für dieses Tutorial den Standardport **1433**.
 
@@ -192,7 +194,7 @@ Weitere Informationen zu optimalen Verfahren für die SQL Server-Konfiguration f
 
 ###SQL Server-Einstellungen
 
-Überprüfen und ändern Sie unter **SQL Server-Einstellungen** das Präfix des SQL Server-VM-Namens, die SQL Server-Version, das SQL Server-Dienstkonto und -Kennwort sowie den Wartungszeitplan für das automatisierte SQL-Patchen.
+Überprüfen und ändern Sie unter **SQL Server-Einstellungen** das Präfix des SQL Server-VM-Namens, die SQL Server-Version, das SQL Server-Dienstkonto und -Kennwort sowie den Wartungszeitplan für automatisches SQL-Patchen.
 
 - Das **SQL Server-Namenspräfix** wird verwendet, um einen Namen für jede SQL Server-Instanz zu erstellen. Verwenden Sie für dieses Tutorial **Contoso-ag**. Die SQL Server-Namen sind *Contoso-ag-0* und *Contoso-ag-1*.
 
@@ -202,9 +204,9 @@ Weitere Informationen zu optimalen Verfahren für die SQL Server-Konfiguration f
 
 - **Kennwort** ist das Kennwort für das SQL Server-Dienstkonto. Verwenden Sie ein komplexes Kennwort. Bestätigen Sie das Kennwort.
 
-- **Wartungszeitplan für das automatisierte SQL-Patchen** gibt den Wochentag an, an dem Azure die SQL Server-Instanzen automatisch patcht. Geben Sie für dieses Tutorial **Sunday** ein.
+- **Wartungszeitplan für automatisches SQL-Patchen** gibt den Wochentag an, an dem Azure automatisch Patches für die SQL Server-Instanzen aufspielt. Geben Sie für dieses Tutorial **Sunday** ein.
 
-- **Wartungsstartzeit für das automatisierte SQL-Patchen** ist die Uhrzeit für die Azure-Region, zu der das automatisierte Patchen beginnt.
+- **Wartungsstartzeit für automatisches SQL-Patchen** ist die Uhrzeit für die Azure-Region, zu der das automatische Patchen beginnt.
 
 >[AZURE.NOTE]Die Patchfenster der einzelnen VMs sind im Abstand von einer Stunde gestaffelt. Es wird nur jeweils ein virtueller Computer gepatcht, um eine Unterbrechung der Dienste zu vermeiden.
 
@@ -238,18 +240,18 @@ Um eine RDP-Verbindung mit dem primären Domänencontroller herzustellen, gehen 
 
 1.	Klicken Sie auf **Ressourcen**.
 
-1.	Klicken Sie auf dem Blatt **Ressourcen** auf **ad-primary-dc**. (Dies ist der Computername des virtuellen Computers für den primären Domänencontroller.)
+1.	Klicken Sie auf dem Blatt **Ressourcen** auf **ad-primary-dc** – dies ist der Computername des virtuellen Computers für den primären Domänencontroller.
 
 1.	Klicken Sie auf dem Blatt **ad-primary-dc** auf **Verbinden**. Ihr Browser fragt, ob Sie das Remoteverbindungsobjekt öffnen oder speichern möchten. Klicken Sie auf **Öffnen**. ![Verbindung mit DC herstellen](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/13-ad-primary-dc-connect.png)
-1.	Von **Remotedesktopverbindung** werden Sie möglicherweise darauf hingewiesen, dass der Herausgeber dieser Remoteverbindung nicht identifiziert werden kann. Klicken Sie auf **Verbinden**.
+1.	Von der **Remotedesktopverbindung** werden Sie möglicherweise darauf hingewiesen, dass der Herausgeber dieser Remoteverbindung nicht identifiziert werden kann. Klicken Sie auf **Verbinden**.
 
 1.	Die Windows-Sicherheit fordert Sie auf, zur Verbindung mit der IP-Adresse des primären Domänencontrollers Ihre Anmeldeinformationen einzugeben. Klicken Sie auf **Anderes Konto verwenden**. Geben Sie unter **Benutzername** die Zeichenfolge **contoso\\DomainAdmin** ein. Dieses Konto haben Sie für den Administratorbenutzernamen ausgewählt. Verwenden Sie das komplexe Kennwort, das Sie beim Konfigurieren der Vorlage ausgewählt haben.
 
-1.	Von **Remotedesktop** werden Sie möglicherweise darauf hingewiesen, dass der Remotecomputer aufgrund von Problemen mit dem Sicherheitszertifikat nicht authentifiziert werden konnte. Der Name des Sicherheitszertifikats wird angezeigt. Wenn Sie das Tutorial ausgeführt haben, lautet der Name **ad-primary-dc.contoso.com**. Klicken Sie auf **Ja**.
+1.	Vom **Remotedesktop** werden Sie möglicherweise darauf hingewiesen, dass der Remotecomputer aufgrund von Problemen mit dem Sicherheitszertifikat nicht authentifiziert werden konnte. Der Name des Sicherheitszertifikats wird angezeigt. Wenn Sie das Tutorial ausgeführt haben, lautet der Name **ad-primary-dc.contoso.com**. Klicken Sie auf **Ja**.
 
 Sie sind jetzt mit dem primären Domänencontroller verbunden. Gehen Sie folgendermaßen vor, um eine RDP-Verbindung mit der SQL Server-Instanz herzustellen:
 
-1.	Öffnen Sie auf dem Domänencontroller **Remotedesktopverbindung**.
+1.	Öffnen Sie auf dem Domänencontroller die **Remotedesktopverbindung**.
 
 1.	Geben Sie für **Computer** den Namen einer der SQL Server-Instanzen ein. Geben Sie für dieses Tutorial **sqlserver-0** ein.
 
@@ -257,4 +259,4 @@ Sie sind jetzt mit dem primären Domänencontroller verbunden. Gehen Sie folgend
 
 Sie sind jetzt über eine RDP-Verbindung mit der SQL Server-Instanz verbunden. Sie können jetzt das SQL Server-Management Studio öffnen, eine Verbindung mit der Standardinstanz von SQL Server herstellen und sicherstellen, dass die Verfügbarkeitsgruppe konfiguriert ist.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

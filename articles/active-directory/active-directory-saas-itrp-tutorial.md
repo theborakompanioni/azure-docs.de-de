@@ -11,12 +11,12 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="03/16/2016" 
+    ms.date="06/17/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit ITRP
   
-In diesem Tutorial wird die Integration von Azure und ITRP erläutert.  
+In diesem Tutorial wird die Integration von Azure und ITRP erläutert.
 Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
@@ -79,7 +79,7 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Abrufen de
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-itrp-tutorial/IC775567.png "Einmaliges Anmelden konfigurieren")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **ITRP-Anmelde-URL** die URL im Format „ *https://\<Mandantenname>.ITRP.com* “ ein, und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **ITRP-Anmelde-URL** die URL im Format „* https://\<Mandantenname>.ITRP.com* “ ein, und klicken Sie dann auf **Weiter**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-itrp-tutorial/IC775568.png "App-URL konfigurieren")
 
@@ -163,4 +163,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

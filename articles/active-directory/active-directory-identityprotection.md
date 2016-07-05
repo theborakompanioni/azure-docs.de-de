@@ -5,7 +5,7 @@
 	keywords="Azure Active Directory Identity Protection, Cloud App Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie"
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/06/2016"
+	ms.date="06/17/2016"
 	ms.author="markvi"/>
 
 #Azure Active Directory Identity Protection 
@@ -97,7 +97,7 @@ Einige dieser Risikoereignisse sind über die Berichte zu anomalen Aktivitäten 
 | Anmeldungen von infizierten Geräten | Anmeldungen von möglicherweise infizierten Geräten |
 | Anmeldungen von anonymen IP-Adressen | Anmeldungen von unbekannten Quellen |
 | Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten |	Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten |
-| Anmeldungen von unbekannten Standorten | - |
+| Anmeldungen von unbekannten Standorten | - | 
 | Sperr-Ereignisse (nicht Teil der öffentlichen Vorschau) | - |
 
 Die folgenden Azure AD-Berichte zu anomalen Aktivitäten sind nicht als Risikoereignisse in Azure AD Identity Protection enthalten und daher auch nicht über Identity Protection verfügbar. Diese Berichte sind im Azure-Verwaltungsportal noch enthalten, aber sie werden nach und nach eingestellt, da sie durch Risikoereignisse in Identity Protection ersetzt werden.
@@ -409,5 +409,6 @@ Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
  - [Azure Active Directory Identity Protection-Abläufe](active-directory-identityprotection-flows.md)
  - [Azure Active Directory Identity Protection-Playbook](active-directory-identityprotection-playbook.md)
  - [Azure Active Directory Identity Protection – Glossar](active-directory-identityprotection-glossary.md)
+ - [Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

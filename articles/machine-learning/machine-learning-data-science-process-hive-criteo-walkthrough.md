@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Cortana-Analyseprozess in Aktion – Verwenden von HDInsight Hadoop-Clustern in einem 1-TB-DataSet | Microsoft Azure"
-	description="Verwenden der erweiterten Analyseprozesse und -technologien (Advanced Analytics Process and Technology, ADAPT) für ein End-to-End-Szenario mit einem HDInsight Hadoop-Cluster zum Erstellen und Bereitstellen eines Modells unter Verwendung eines großen (1 TB) öffentlich zugänglichen DataSets"
+	pageTitle="Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-Dataset von Criteo | Microsoft Azure"
+	description="Verwenden des Team Data Science-Prozesses für ein vollständiges Szenario mit einem HDInsight Hadoop-Cluster zum Erstellen und Bereitstellen eines Modells unter Verwendung eines (1 TB) großen öffentlich zugänglichen Datasets"
 	services="machine-learning,hdinsight"
 	documentationCenter=""
 	authors="bradsev"
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="06/14/2016"
 	ms.author="ginathan;bradsev" />
 
-# Cortana-Analyseprozess in Aktion – Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-DataSet
+# Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-Dataset
 
-In dieser exemplarischen Vorgehensweise wird die End-to-End-Verwendung des Cortana-Analyseprozesses (CAP) in einem [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/) zum Speichern, Durchsuchen, Verarbeiten und Komprimieren von Daten aus einem der öffentlich zugänglichen [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/)-DataSets veranschaulicht. Mithilfe von Azure Machine Learning erstellen wir ein binäres Klassifizierungsmodell für diese Daten. Zudem zeigen wir auf, wie eines dieser Modelle als Webdienst veröffentlicht wird.
+In dieser exemplarischen Vorgehensweise wird das Verwenden des Team Data Science-Prozesses in einem vollständigen Szenario mit einem [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/) gezeigt, der zum Speichern, Untersuchen, Entwickeln von Features und Downsampling von Beispieldaten aus einem der öffentlich zugänglichen [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/)-Datasets genutzt wird. Mithilfe von Azure Machine Learning erstellen wir ein binäres Klassifizierungsmodell für diese Daten. Zudem zeigen wir auf, wie eines dieser Modelle als Webdienst veröffentlicht wird.
 
 Die in dieser exemplarischen Vorgehensweise vorgestellten Aufgaben können auch mit einem IPython-Notizbuch umgesetzt werden. Benutzer, die diesem Ansatz folgen möchten, sollten das Thema [Criteo walkthrough using a Hive ODBC connection](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb) (in englischer Sprache) beachten.
 
@@ -663,4 +663,4 @@ Wir sehen, dass wir für die beiden angefragten Testbeispiele (im JSON-Framework
 
 Damit sind wir am Ende unser ausführlichen exemplarischen Vorgehensweise zum Behandeln umfangreicher DataSets mithilfe von Azure Machine Learning angekommen. Wir haben mit einem Terabyte an Daten begonnen, ein Vorhersagemodell erstellt und dieses als Webdienst in der Cloud bereitgestellt.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

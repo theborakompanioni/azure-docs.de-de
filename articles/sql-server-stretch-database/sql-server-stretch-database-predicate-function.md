@@ -18,7 +18,7 @@
 
 # Auswählen von Zeilen für die Migration mit einem Filterprädikat (Stretch-Datenbank)
 
-Wenn Sie Verlaufsdaten in einer separaten Tabelle speichern, können Sie Stretch-Datenbank so konfigurieren, dass die gesamte Tabelle migriert wird. Wenn die Tabelle aktuelle und Verlaufsdaten enthält, können Sie anderenfalls ein Filterprädikat zum Auswählen der zu migrierenden Zeilen angeben. Das Filterprädikat ist eine Inline-Tabellenwertfunktion. In diesem Thema wird beschrieben, wie Sie eine Inline-Tabellenwertfunktion zum Auswählen von zu migrierenden Zeilen schreiben.
+Wenn Sie inaktive Daten in einer separaten Tabelle speichern, können Sie Stretch-Datenbank so konfigurieren, dass die gesamte Tabelle migriert wird. Wenn die Tabelle dagegen aktive und inaktive Daten enthält, können Sie ein Filterprädikat zum Auswählen der zu migrierenden Zeilen angeben. Das Filterprädikat ist eine Inline-Tabellenwertfunktion. In diesem Thema wird beschrieben, wie Sie eine Inline-Tabellenwertfunktion zum Auswählen von zu migrierenden Zeilen schreiben.
 
 >   [AZURE.NOTE] Falls Sie ein Filterprädikat mit schlechter Leistung angeben, wird die Datenmigration ebenfalls mit schlechter Leistung durchgeführt. Stretch-Datenbank wendet das Filterprädikat mithilfe des CROSS APPLY-Operators auf die Tabelle an.
 
@@ -567,4 +567,4 @@ Ein kompromittiertes Konto mit db\_owner-Berechtigungen kann folgende Aktionen a
 
 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

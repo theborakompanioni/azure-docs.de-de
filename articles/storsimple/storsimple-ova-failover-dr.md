@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/14/2016"
+   ms.date="06/07/2016"
    ms.author="alkohli"/>
 
 # Notfallwiederherstellung und Gerätefailover für das StorSimple Virtual Array
@@ -72,7 +72,7 @@ Vor Beginn der Notfallwiederherstellung werden auf dem Gerät Vorüberprüfungen
 
 - Überprüfen des verfügbaren Speicherplatzes auf dem Zielgerät
 
-- Überprüfen, ob ein iSCSI-Server-Quellgerät über gültige ACR-Namen, IQN (nicht länger als 220 Zeichen) und ein CHAP-Kennwort (12 bis 16 Zeichen) für die Volumes verfügt
+- Überprüfen, ob ein iSCSI-Server-Quellgerät über gültige ACR-Namen, IQN (nicht länger als 220 Zeichen) und ein CHAP-Kennwort (12 bis 16 Zeichen) für die Volumes verfügt
 
 Falls eine der obigen Vorüberprüfungen fehlschlägt, kann die Notfallwiederherstellung nicht durchgeführt werden. Sie müssen diese Fehler beheben und den Vorgang dann wiederholen.
 
@@ -80,11 +80,11 @@ Nachdem die Notfallwiederherstellung erfolgreich abgeschlossen wurde, gehen die 
 
 > [AZURE.IMPORTANT]
 > 
-> Auch wenn das Gerät nicht mehr verfügbar ist, werden von der virtuellen Maschine, die Sie auf dem Hostsystem bereitgestellt haben, noch Ressourcen verbraucht. Nachdem die Notfallwiederherstellung erfolgreich abgeschlossen wurde, können Sie die virtuelle Maschine aus Ihrem Hostsystem löschen.
+> Auch wenn das Gerät nicht mehr verfügbar ist, werden von der virtuellen Maschine, die Sie auf dem Hostsystem bereitgestellt haben, noch Ressourcen verbraucht. Nachdem die Notfallwiederherstellung erfolgreich abgeschlossen wurde, können Sie den virtuellen Computer aus Ihrem Hostsystem löschen.
 
-## Durchführen eines Failovers auf ein virtuelles Gerät
+## Durchführen eines Failovers auf ein virtuelles Array
 
-Es wird empfohlen, ein virtuelles StorSimple-Gerät bereitzustellen, über die lokale Webbenutzeroberfläche zu konfigurieren und beim StorSimple Manager-Dienst zu registrieren, bevor Sie diesen Vorgang ausführen.
+Es wird empfohlen, ein weiteres virtuelles StorSimple-Array bereitzustellen, über die lokale Webbenutzeroberfläche zu konfigurieren und beim StorSimple Manager-Dienst zu registrieren, bevor Sie diesen Vorgang ausführen.
 
 
 > [AZURE.IMPORTANT]
@@ -116,7 +116,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät auf einem virtuellen StorS
 
     1. Wählen Sie in der Dropdownliste mit den verfügbaren Geräten ein **Zielgerät** aus. Nur die Geräte, die über ausreichende Kapazität verfügen, werden in der Dropdownliste angezeigt.
 
-    2. Überprüfen Sie die Details des Quellgeräts, z. B. Gerätename, Gesamtkapazität und die Namen der Freigaben, die am Failover beteiligt sind.
+    2. Überprüfen Sie die Details des Quellgeräts, z. B. Gerätename, Gesamtkapazität und die Namen der Freigaben, die am Failover beteiligt sind.
 
 		![](./media/storsimple-ova-failover-dr/image21.png)
 
@@ -175,4 +175,4 @@ Falls eine der Vorüberprüfungen nicht erfolgreich ist, werden Vorüberprüfung
 
 Erfahren Sie mehr darüber, wie Sie das [StorSimple Virtual Array mit der lokalen Webbenutzeroberfläche verwalten](storsimple-ova-web-ui-admin.md).
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/11/2016"
+   ms.date="06/17/2016"
    ms.author="elfish;barbkess;sonyama"/>
 
 # Wiederherstellen einer Azure SQL Data Warehouse-Instanz (PowerShell)
@@ -80,7 +80,8 @@ $RestoredDatabase.status
 
 ```
 
-Nachdem die Wiederherstellung abgeschlossen ist, können Sie Ihre wiederhergestellte Datenbank konfigurieren. Befolgen Sie hierzu die Anleitung [Abschließen der wiederhergestellten Azure SQL-Datenbank][].
+>[AZURE.NOTE] Wenn die Wiederherstellung abgeschlossen ist, können Sie Ihre wiederhergestellte Datenbank konfigurieren. Befolgen Sie hierzu die Anleitung [Abschließen der wiederhergestellten Azure SQL-Datenbank][].
+
 
 ## Wiederherstellen einer gelöschten Datenbank
 
@@ -116,7 +117,8 @@ $RestoredDatabase.status
 
 ```
 
-Nach Abschluss der Wiederherstellung können Sie Ihre wiederhergestellte Datenbank konfigurieren. Befolgen Sie hierzu die Anleitung [Abschließen der wiederhergestellten Azure SQL-Datenbank][].
+>[AZURE.NOTE] Wenn die Wiederherstellung abgeschlossen ist, können Sie Ihre wiederhergestellte Datenbank konfigurieren. Befolgen Sie hierzu die Anleitung [Abschließen der wiederhergestellten Azure SQL-Datenbank][].
+
 
 ## Wiederherstellen von einer geografischen Azure-Region aus
 
@@ -146,14 +148,8 @@ $GeoRestoredDatabase.status
 
 ```
 
-### Konfigurieren der Datenbank nach der Durchführung einer Geowiederherstellung
+>[AZURE.NOTE] Wenn die Wiederherstellung abgeschlossen ist, können Sie Ihre wiederhergestellte Datenbank konfigurieren. Befolgen Sie hierzu die Anleitung [Abschließen der wiederhergestellten Azure SQL-Datenbank][].
 
-Dies ist eine Prüfliste, mit der Sie die wiederhergestellte Datenbank für die Produktion vorbereiten können.
-
-1. **Aktualisieren von Verbindungszeichenfolgen**: Stellen Sie sicher, dass die Verbindungszeichenfolgen Ihrer Clienttools auf die neu wiederhergestellte Datenbank verweisen.
-2. **Ändern von Firewallregeln**: Überprüfen Sie die Firewallregeln auf dem Zielserver, und stellen Sie sicher, dass die Verbindungen von Ihren Clientcomputern oder Azure zum Server und der neu wiederhergestellten Datenbank aktiviert sind.
-3. **Überprüfen von Serveranmeldungen und Datenbankbenutzern**: Überprüfen Sie, ob alle von der Anwendung verwendeten Anmeldungen auf dem Server vorhanden sind, der die wiederhergestellte Datenbank hostet. Erstellen Sie die fehlenden Anmeldungen erneut, und gewähren Sie ihnen entsprechende Berechtigungen auf der wiederhergestellten Datenbank. 
-4. **Aktivieren der Überwachung**: Wenn die Überwachung für den Zugriff auf die Datenbank benötigt wird, müssen Sie nach der Wiederherstellung der Datenbank die Überwachung aktivieren.
 
 Für die wiederhergestellte Datenbank ist TDE aktiviert, wenn für die Quelldatenbank TDE aktiviert ist.
 
@@ -165,12 +161,13 @@ Informationen zu den Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank-E
 
 <!--Article references-->
 [Azure SQL-Datenbank-Übersicht zur Geschäftskontinuität]: sql-database-business-continuity.md
-[Abschließen der wiederhergestellten Azure SQL-Datenbank]: sql-database-recovered-finalize.md
+[Finalize a recovered database]: sql-database-recovered-finalize.md
 [Installieren und Konfigurieren von Azure PowerShell]: powershell-install-configure.md
 [Übersicht]: ./sql-data-warehouse-restore-database-overview.md
 [Portal]: ./sql-data-warehouse-restore-database-portal.md
 [PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
 [REST]: ./sql-data-warehouse-restore-database-rest-api.md
+[Abschließen der wiederhergestellten Azure SQL-Datenbank]: ./sql-database-recovered-finalize.md
 
 <!--MSDN references-->
 [Restore-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt693390.aspx
@@ -182,4 +179,4 @@ Informationen zu den Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank-E
 [Azure Portal]: https://portal.azure.com/
 [Microsoft-Webplattform-Installer]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

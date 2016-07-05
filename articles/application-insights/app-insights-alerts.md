@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/05/2016" 
+	ms.date="06/20/2016" 
 	ms.author="awills"/>
  
 # Einrichten von Warnungen in Application Insights
@@ -41,14 +41,14 @@ Um eine E-Mail zu erhalten, wenn eine Metrik einen Schwellenwert überschreitet,
 * Legen Sie die Ressource vor den anderen Eigenschaften fest. **Wählen Sie die Ressource "(Komponenten)" aus**, wenn Sie Benachrichtigungen für Leistungs- oder Nutzungsmetriken festlegen möchten.
 * Achten Sie auf die Einheiten, die beim Eingeben des Schwellenwerts gefordert sind.
 * Der Name, den Sie der Warnung zuweisen, muss innerhalb der Ressourcengruppe (nicht nur in Ihrer Anwendung) eindeutig sein.
-* Wenn Sie das Feld „E-Mail an Besitzer...“ aktivieren, werden Warnungen per E-Mail an alle Benutzer gesendet, die Zugriff auf diese Ressource haben.
+* Wenn Sie das Feld „E-Mail an Besitzer...“ aktivieren, werden Warnungen per E-Mail an alle Benutzer gesendet, die Zugriff auf diese Ressourcengruppe haben. Wenn Sie diese Personengruppe erweitern möchten, fügen Sie die entsprechenden Benutzer der [Ressourcengruppe oder dem Abonnement](app-insights-resources-roles-access-control.md) (nicht der Ressource) hinzu.
 * Wenn Sie „Weitere E-Mail-Adressen“ angeben, werden Warnungen an diese Einzelpersonen oder Gruppen gesendet (unabhängig davon, ob Sie das Kontrollkästchen „E-Mail an Besitzer“ aktiviert haben). 
-* Legen Sie eine [Webhookadresse](../azure-portal/insights-webhooks-alerts.md) fest, wenn Sie eine Web-App eingerichtet haben, die auf Warnungen reagiert. Der Aufruf erfolgt, wenn die Warnung aktiviert (ausgelöst) und wenn sie gelöst wird.
+* Legen Sie eine [Webhookadresse](../azure-portal/insights-webhooks-alerts.md) fest, wenn Sie eine Web-App eingerichtet haben, die auf Warnungen reagiert. Der Aufruf erfolgt, wenn die Warnung aktiviert (ausgelöst) und wenn sie gelöst wird. (Beachten Sie aber, dass Abfrageparameter derzeit nicht als Webhook-Eigenschaften übergeben werden.)
 * Sie können die Warnung deaktivieren oder aktivieren: Die zugehörigen Schaltflächen finden Sie oben auf dem Blatt.
 
 *Die Schaltfläche "Warnung hinzufügen" wird nicht angezeigt.* – Verwenden Sie ein Organisationskonto? Sie können Warnungen festlegen, wenn Sie für diese Anwendungsressource über Zugriffsberechtigungen für Besitzer oder Mitwirkende verfügen. Sehen Sie unter "Einstellungen" -> "Benutzer" nach. [Erfahren Sie mehr über die Zugriffssteuerung][roles].
 
-> [AZURE.NOTE] Auf dem Blatt „Warnungen“ sehen Sie, dass bereits eine Warnung festlegen ist: [Proaktive NRT-Diagnose](app-insights-nrt-proactive-diagnostics.md). Dies ist eine automatische Benachrichtigung, die eine bestimmte Metrik überwacht,nämlich die Anforderungsfehlerrate. Sofern Sie nicht entscheiden, diese Funktion zu deaktivieren, müssen Sie also keine eigene Warnung für die Anforderungsfehlerrate festlegen.
+> [AZURE.NOTE] Auf dem Blatt „Warnungen“ sehen Sie, dass bereits eine Warnung festgelegt ist: [Proaktive NRT-Diagnose](app-insights-nrt-proactive-diagnostics.md). Dies ist eine automatische Benachrichtigung, die eine bestimmte Metrik überwacht, nämlich die Anforderungsfehlerrate. Sofern Sie nicht entscheiden, diese Funktion zu deaktivieren, müssen Sie also keine eigene Warnung für die Anforderungsfehlerrate festlegen.
 
 ## Anzeigen Ihrer Warnungen
 
@@ -126,4 +126,4 @@ Zu den gängigen Warnungen zählen Folgende:
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0622_2016-->

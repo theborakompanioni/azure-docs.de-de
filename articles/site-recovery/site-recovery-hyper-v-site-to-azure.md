@@ -403,7 +403,7 @@ Gehen Sie wie folgt vor, wenn Sie die Verbindung mit Azure-VMs nach dem Failover
 
 **Auf der Azure-VM nach einem Failover**:
 
-- Fügen Sie einen öffentlichen Endpunkt für das RDP-Protokoll (Port 3389) hinzu, und geben Sie die Anmeldeinformationen für die Anmeldung an.
+- Fügen Sie der Netzwerkschnittstellenkarte, die dem virtuellen Azure-Computer zugeordnet ist, eine öffentliche IP-Adresse hinzu, um RDP zuzulassen.
 - Stellen Sie sicher, dass keine Domänenrichtlinien vorhanden sind, die das Verbinden mit einem virtuellen Computer über eine öffentliche Adresse verhindern.
 - Versuchen Sie, eine Verbindung herzustellen. Wenn Sie keine Verbindung herstellen können, sollten Sie überprüfen, ob der virtuelle Computer ausgeführt wird. Weitere Tipps zur Problembehandlung finden Sie in [diesem Artikel](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
@@ -468,4 +468,4 @@ Hier wird beschrieben, wie Sie die Konfigurationseinstellungen, den Status und d
 
 Nachdem die Bereitstellung eingerichtet wurde und ausgeführt wird, können Sie sich über unterschiedliche Arten von Failovern [informieren](site-recovery-failover.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

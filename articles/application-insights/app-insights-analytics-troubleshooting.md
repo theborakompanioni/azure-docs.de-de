@@ -72,9 +72,7 @@ Es ist ein authentifizierungsbezogener Fehler aufgetreten (während der Authenti
 
     Wenn sich eine der folgenden URLs in der Liste der Websites befindet, stellen Sie sicher, dass auch die anderen URLs in dieser Liste aufgeführt sind:
 
-    * https://login.microsoftonline.com
-    * https://login.windows.net
-    * https://analytics.applicationinsights.io 
+    https://analytics.applicationinsights.io<br/> https://login.microsoftonline.com<br/> https://login.windows.net
 
 
 ## 404 ... Ressource nicht gefunden
@@ -126,4 +124,4 @@ Die URL ist ungültig.
  
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

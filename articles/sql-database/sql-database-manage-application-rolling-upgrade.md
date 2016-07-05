@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="05/10/2016"
+   ms.date="06/16/2016"
    ms.author="sashan"/>
 
 # Verwalten von parallelen Upgrades von Cloudanwendungen mithilfe der aktiven Georeplikation von SQL-Datenbank
@@ -120,8 +120,9 @@ Der wichtigste **Vorteil** dieser Option ist, dass Sie die Anwendung und ihre ge
 
 Die beiden in diesem Artikel beschriebenen Upgrademethoden unterscheiden sich hinsichtlich der Komplexität und der anfallenden Kosten. Beide legen jedoch den Fokus auf die Minimierung der Zeit, in der die Endbenutzer auf schreibgeschützte Vorgänge eingeschränkt sind. Diese Zeit wird direkt durch die Dauer des Upgradeskripts definiert. Sie hängt nicht von der Datenbankgröße, der gewählten Dienstebene, der Websitekonfiguration oder anderen Faktoren ab, die Sie nicht einfach steuern können. Das liegt daran, dass alle Vorbereitungsschritte von den Upgradeschritten entkoppelt sind und ohne Auswirkungen auf die Produktionsanwendung durchgeführt werden können. Die Effizienz des Upgradeskripts ist der wichtigste Faktor, der die Endbenutzerfreundlichkeit während Upgrades bestimmt. Die beste Möglichkeit diese zu verbessern ist daher, sich darauf zu konzentrieren, das Upgradeskript so effizient wie möglich zu gestalten.
 
-## Zusätzliche Ressourcen
- Auf den folgenden Seiten können Sie sich über die speziellen Vorgänge informieren, die zum Implementieren des Upgradeworkflows erforderlich sind:
+
+## Nächste Schritte
+Auf den folgenden Seiten können Sie sich über die speziellen Vorgänge informieren, die zum Implementieren des Upgradeworkflows erforderlich sind:
 
 - [Hinzufügen einer sekundären Datenbank ](https://msdn.microsoft.com/library/azure/mt603689.aspx) 
 - [Failover database to secondary (Failover für die Datenbank in eine sekundäre Datenbank)](https://msdn.microsoft.com/library/azure/mt619393.aspx)
@@ -131,4 +132,15 @@ Die beiden in diesem Artikel beschriebenen Upgrademethoden unterscheiden sich hi
 - [Copy database (Kopieren der Datenbank)](https://msdn.microsoft.com/library/azure/mt603644.aspx)
 - [Festlegen des schreibgeschützten bzw. des Lese-/Schreibmodus für die Datenbank](https://msdn.microsoft.com/library/bb522682.aspx)
 
-<!---HONumber=AcomDC_0608_2016-->
+## Weitere Ressourcen
+
+- [Geschäftskontinuität und Notfallwiederherstellung mit SQL-Datenbank](sql-database-business-continuity.md)
+- [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md)
+- [Geografische Wiederherstellung](sql-database-geo-restore.md)
+- [Aktive Georeplikation](sql-database-geo-replication-overview.md)
+- [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
+- [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
+- [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
+
+<!---HONumber=AcomDC_0622_2016-->

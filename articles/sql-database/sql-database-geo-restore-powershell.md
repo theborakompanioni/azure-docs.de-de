@@ -12,17 +12,17 @@
     ms.devlang="NA"
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
-    ms.workload="data-management" 
-    ms.date="05/10/2016"
+    ms.workload="sqldb-bcdr" 
+    ms.date="06/17/2016"
     ms.author="sstein"/>
 
 # Wiederherstellen einer Azure SQL-Datenbank aus einer georedundanten Sicherung mit PowerShell
+
 
 > [AZURE.SELECTOR]
 - [Übersicht](sql-database-geo-restore.md)
 - [Azure-Portal](sql-database-geo-restore-portal.md)
 - [PowerShell](sql-database-geo-restore-powershell.md)
-
 
 In diesem Artikel wird erläutert, wie Sie Ihre Datenbank mit der Geowiederherstellung mithilfe von PowerShell auf einem neuen Server wiederherstellen können.
 
@@ -51,13 +51,13 @@ In diesem Artikel wird erläutert, wie Sie Ihre Datenbank mit der Geowiederherst
 
 ## Nächste Schritte
 
-- [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
-- [Herstellen einer Verbindung mit einer Azure SQL-Datenbank mit SQL Server Management Studio und Ausführen einer T-SQL-Beispielabfrage](sql-database-connect-query-ssms.md)
+- Ausführliche Schritte zum Wiederherstellen einer Azure SQL-Datenbank aus einer georedundanten Sicherung mit dem Azure-Portal finden Sie unter [Geowiederherstellung über das Azure-Portal](sql-database-geo-restore-portal.md).
+- Ausführliche Informationen zum Wiederherstellen einer Azure SQL-Datenbank aus einer georedundanten Sicherung finden Sie unter [Geowiederherstellung mithilfe von PowerShell](sql-database-geo-restore.md).
+- Eine vollständige Erläuterung der Wiederherstellung nach einem Ausfall finden Sie unter [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md).
 
 
 ## Zusätzliche Ressourcen
 
-- [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-- [SQL-Datenbankdokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
+- [Szenarien für die Geschäftskontinuität](sql-database-business-continuity-scenarios.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -15,10 +15,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="06/10/2016"
+   ms.date="06/22/2016"
    ms.author="rickbyh"/>
 
-# So wird's gemacht: Konfigurieren einer Azure SQL Server-Firewall – Übersicht
+# Konfigurieren von Firewallregeln für Azure SQL-Datenbank – Übersicht
 
 
 > [AZURE.SELECTOR]
@@ -68,13 +68,13 @@ Wenn eine Azure-Anwendung versucht, eine Verbindung mit dem Datenbankserver herz
 
 Sie können Verbindungen über Azure auf zwei Arten ermöglichen:
 
-- Aktivieren Sie im [Microsoft Azure-Portal](https://portal.azure.com/) beim Erstellen eines neuen Servers das Kontrollkästchen **Azure-Diensten Zugriff auf den Server erlauben**.
+- Aktivieren Sie im [Microsoft Azure-Portal](https://portal.azure.com/) beim Erstellen eines neuen Servers das Kontrollkästchen **Azure-Diensten Zugriff auf den Server erlauben**. **Wichtig:** Mit dieser Option wird die Firewall so konfiguriert, dass alle Verbindungen von Azure zugelassen werden, einschließlich der Verbindungen von Abonnements anderer Kunden. Wenn Sie diese Option auswählen, stellen Sie sicher, dass die Anmelde- und die Benutzerberechtigungen den Zugriff nur auf autorisierte Benutzer beschränken.
 
 - Klicken Sie im [klassischen Portal](http://go.microsoft.com/fwlink/p/?LinkID=161793) auf der Registerkarte **Konfigurieren** eines Servers im Abschnitt **Zulässige Dienste** für **Microsoft Azure-Dienste** auf **Ja**.
 
 ## Erstellen der ersten Firewallregel auf Serverebene
 
-Die erste Firewalleinstellung auf Serverebene kann mit dem [Azure-Portal](https://portal.azure.com/) oder programmgesteuert mithilfe der REST-API oder Azure PowerShell erstellt werden. Nachfolgende Firewallregeln auf Serverebene können anhand dieser Methoden sowie über Transact-SQL erstellt und verwaltet werden. Weitere Informationen zu Firewallregeln auf Serverebene finden Sie unter [So wird's gemacht: Konfigurieren einer Azure SQL Server-Firewall über das Azure-Portal](sql-database-configure-firewall-settings.md).
+Die erste Firewalleinstellung auf Serverebene kann mit dem [Azure-Portal](https://portal.azure.com/) oder programmgesteuert mithilfe der REST-API oder Azure PowerShell erstellt werden. Nachfolgende Firewallregeln auf Serverebene können anhand dieser Methoden sowie über Transact-SQL erstellt und verwaltet werden. Weitere Informationen zu Firewallregeln auf Serverebene finden Sie unter [Konfigurieren einer Firewall für die Azure SQL-Datenbank mit dem Azure-Portal](sql-database-configure-firewall-settings.md).
 
 ## Erstellen von Firewallregeln auf Datenbankebene
 
@@ -135,13 +135,25 @@ Wenn der Zugriff auf den Microsoft Azure SQL-Datenbankdienst nicht das erwartete
 
  - Verwenden Sie stattdessen die statische IP-Adressierung für die Clientcomputer, und fügen Sie dann die IP-Adressen als Firewallregeln hinzu.
 
-## Weitere Informationen
+## Nächste Schritte
 
-[So wird's gemacht: Konfigurieren einer Azure SQL Server-Firewall über das Azure-Portal](sql-database-configure-firewall-settings.md)
+Artikel mit Anleitungen zum Erstellen von Firewallregeln auf Serverebene und auf Datenbankebene finden Sie unter:
 
-[Sicherheitscenter für SQL Server-Datenbankmodul und Azure SQL-Datenbank](https://msdn.microsoft.com/library/bb510589)
+- [Konfigurieren von Firewallregeln auf Serverebene für Azure SQL-Datenbank mithilfe des Azure-Portals](sql-database-configure-firewall-settings.md)
+- [Konfigurieren von Firewallregeln auf Serverebene und Datenbankebene für Azure SQL-Datenbank mithilfe von T-SQL](sql-database-configure-firewall-settings-tsql.md)
+- [Konfigurieren von Firewallregeln auf Serverebene für Azure SQL-Datenbank mithilfe von PowerShell](sql-database-configure-firewall-settings-powershell.md)
+- [Konfigurieren von Firewallregeln auf Serverebene für Azure SQL-Datenbank mithilfe der REST-API](sql-database-configure-firewall-settings-rest.md)
+
+Ein Tutorial zum Erstellen einer Datenbank finden Sie unter [Erstellen einer SQL-Datenbank in Minuten mit dem Azure-Portal](sql-database-get-started.md). Hilfe beim Herstellen einer Verbindung mit einer Azure SQL-Datenbank über Open-Source-Anwendungen oder Anwendungen von Drittanbietern finden Sie unter [Clientcodebeispiele für die ersten Schritte mit SQL-Datenbank](https://msdn.microsoft.com/library/azure/ee336282.aspx). Informationen zum Navigieren zu Datenbanken finden Sie unter [Verwalten von Datenbankzugriff und Anmeldesicherheit](https://msdn.microsoft.com/library/azure/ee336235.aspx).
+
+
+
+## Zusätzliche Ressourcen
+
+- [Sichern der Datenbank](sql-database-security.md)
+- [Sicherheitscenter für SQL Server-Datenbankmodul und Azure SQL-Datenbank](https://msdn.microsoft.com/library/bb510589)
 
 <!--Image references-->
 [1]: ./media/sql-database-firewall-configure/sqldb-firewall-1.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

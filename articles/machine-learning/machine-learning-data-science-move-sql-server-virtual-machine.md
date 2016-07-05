@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016" 
+	ms.date="06/14/2016" 
 	ms.author="fashah;bradsev" />
 
 # Verschieben von Daten zu SQL Server auf einem virtuellen Azure-Computer
 
-In diesem Thema werden die Optionen zum Verschieben von Daten aus Flatfiles (CSV- oder TSV-Format) oder von einer lokalen SQL Server-Instanz in SQL Server auf einem virtuellen Azure-Computer beschrieben. Diese Aufgaben zum Verschieben von Daten in die Cloud gehören zum Cortana-Analyseprozess, der von Azure bereitgestellt wird.
+In diesem Thema werden die Optionen zum Verschieben von Daten aus Flatfiles (CSV- oder TSV-Format) oder von einer lokalen SQL Server-Instanz in SQL Server auf einem virtuellen Azure-Computer beschrieben. Diese Tasks zum Verschieben von Daten in die Cloud sind Teil des Team Data Science-Prozesses.
 
 Ein Thema, in dem die Optionen für das Verschieben von Daten in eine Azure SQL-Datenbank für Machine Learning beschrieben werden, finden Sie unter [Verschieben von Daten in eine Azure SQL-Datenbank für Azure Machine Learning](machine-learning-data-science-move-sql-azure.md).
 
-Das nachstehende **Menü** bietet Links zu Themen, in denen beschrieben wird, wie Daten in anderen Zielumgebungen erfasst werden, in denen die Daten während des Cortana Analytics-Prozesses (CAP) gespeichert und verarbeitet werden.
+Das nachstehende **Menü** bietet Links zu Themen, in denen beschrieben wird, wie Daten in anderen Zielumgebungen erfasst werden, in denen die Daten während des Team Data Science-Prozesses (TDSP) gespeichert und verarbeitet werden.
 
 [AZURE.INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
@@ -224,4 +224,4 @@ Einen Screenshot der Optionen für das Sichern/Wiederherstellen von Datenbanken 
 [1]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/database_migration_wizard.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

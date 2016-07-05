@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="na" 
-    ms.date="03/16/2016"
+    ms.date="06/21/2016"
     ms.author="clemensv;sethm"/>
 
 # Übersicht über Service Bus-Warteschlangen für unzustellbare Nachrichten
@@ -45,7 +45,7 @@ Anwendungen können ihre eigenen Codes für die `DeadLetterReason`-Eigenschaft d
 
 ## Überschreiten von MaxDeliveryCount
 
-Warteschlangen und Subscriptions enthalten eine Eigenschaft [QueueDescription.MaxDeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.maxdeliverycount.aspx) bzw. [SubscriptionDescription.MaxDeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount.aspx); der jeweilige Standardwert ist 10. Jedes Mal, wenn eine Nachricht unter einer Sperre übermittelt wurde ([ReceiveMode.PeekLock](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx)), aber entweder explizit abgebrochen wurde oder die Sperre abgelaufen ist, wird der Wert [BrokeredMessage.DeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.deliverycount.aspx) für die Nachricht erhöht. Wenn [DeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.deliverycount.aspx) den Wert [MaxDeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.maxdeliverycount.aspx) überschreitet, wird die Nachricht in die Warteschlange für unzustellbare Nachrichten verschoben, und der Ursachencode `MaxDeliveryCountExceeded` wird angegeben.
+Warteschlangen und Subscriptions haben die Eigenschaft [QueueDescription.MaxDeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.maxdeliverycount.aspx) bzw. [SubscriptionDescription.MaxDeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount.aspx). Der jeweilige Standardwert ist 10. Jedes Mal, wenn eine Nachricht unter einer Sperre übermittelt wurde ([ReceiveMode.PeekLock](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx)), aber entweder explizit abgebrochen wurde oder die Sperre abgelaufen ist, wird der Wert [BrokeredMessage.DeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.deliverycount.aspx) für die Nachricht erhöht. Wenn [DeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.deliverycount.aspx) den Wert [MaxDeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.maxdeliverycount.aspx) überschreitet, wird die Nachricht in die Warteschlange für unzustellbare Nachrichten verschoben, und der Ursachencode `MaxDeliveryCountExceeded` wird angegeben.
 
 Dieses Verhalten kann nicht deaktiviert werden, aber Sie können [MaxDeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.maxdeliverycount.aspx) auf eine sehr hohe Zahl festlegen.
 
@@ -88,7 +88,7 @@ while(true)
 
 Weitere Informationen zu Service Bus-Warteschlangen finden Sie in den folgenden Artikeln:
 
+- [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
 - [Vergleich von Azure-Warteschlangen und Service Bus-Warteschlangen](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
-- Verwenden von [Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

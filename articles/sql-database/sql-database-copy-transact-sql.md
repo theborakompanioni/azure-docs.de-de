@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="06/06/2016"
+	ms.date="06/16/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -21,23 +21,13 @@
 
 
 > [AZURE.SELECTOR]
-- [Azure-Portal](sql-database-copy.md)
+- [Übersicht](sql-database-copy.md)
+- [Azure-Portal](sql-database-copy-portal.md)
 - [PowerShell](sql-database-copy-powershell.md)
 - [T-SQL](sql-database-copy-transact-sql.md)
 
 
-
-Die folgenden Schritte verdeutlichen, wie Sie eine Kopie einer SQL-Datenbank mit Transact-SQL erstellen. Beim Kopiervorgang für die Datenbank wird eine SQL-Datenbank in eine neue Datenbank kopiert, indem die [CREATE DATABASE]()-Anweisung verwendet wird. Die Kopie ist eine Snapshotsicherung Ihrer Datenbank, die Sie entweder auf demselben Server oder auf einem anderen Server erstellen.
-
-
-> [AZURE.NOTE] Die Azure SQL-Datenbank [erstellt und verwaltet automatisch Sicherungen](sql-database-automated-backups.md) für jede Benutzerdatenbank, die Sie wiederherstellen können.
-
-
-Wenn der Kopiervorgang abgeschlossen ist, handelt es sich bei der neuen Datenbank um eine voll funktionsfähige Datenbank, die unabhängig von der Quelldatenbank ist. Die neue Datenbank entspricht in Bezug auf Transaktionen mit der Quelldatenbank für den Zeitpunkt überein, an dem die Erstellung der Kopie abgeschlossen ist. Die Dienstebene und die Leistungsebene (Tarif) der Datenbankkopie stimmen mit den Ebenen der Quelldatenbank überein. Nachdem der Kopiervorgang abgeschlossen ist, wird die Kopie zu einer voll funktionsfähigen, unabhängigen Datenbank. Anmeldungen, Benutzer und Berechtigungen können unabhängig verwaltet werden.
-
-
-Wenn Sie eine Datenbank auf denselben logischen Server kopieren, können für beide Datenbanken die gleichen Anmeldedaten verwendet werden. Das Sicherheitsprinzipal, das Sie zum Kopieren der Datenbank verwenden, wird zum Datenbankbesitzer (DBO) der neuen Datenbank. Alle Datenbankbenutzer, ihre Berechtigungen und ihre Sicherheits-IDs (SIDs) werden in die Kopie der Datenbank kopiert.
-
+Die folgenden Schritte veranschaulichen, wie Sie eine SQL-Datenbank mit Transact-SQL auf den gleichen oder einen anderen Server kopieren. Beim Kopieren der Datenbank wird die Anweisung [CREATE DATABASE](https://msdn.microsoft.com/library/ms176061.aspx) verwendet.
 
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
@@ -46,13 +36,11 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms174173.aspx). Wenn Sie nicht über SSMS verfügen oder in diesem Artikel beschriebene Funktionen nicht verfügbar sind, können Sie die [aktuelle Version herunterladen](https://msdn.microsoft.com/library/mt238290.aspx).
 
 
-
-
 ## Kopieren der SQL-Datenbank
 
-Melden Sie sich an der Datenbank „master“ an, indem Sie die Prinzipalanmeldung auf Serverebene oder die Anmeldung verwenden, mit der die zu kopierende Datenbank erstellt wurde. Anmeldungen, bei denen das Prinzipal auf Serverebene nicht verwendet wird, müssen Mitglieder der Rolle „dbmanager“ sein, um Datenbanken zu kopieren. Weitere Informationen zu Anmeldungen und zur Verbindungsherstellung mit dem Server finden Sie unter „Verwalten von Datenbanken, Anmeldungen und Benutzern in Azure SQL-Datenbank“ bzw. „Azure SQL-Datenbankentwicklung: Gewusst-wie-Themen“.
+Melden Sie sich an der Datenbank „master“ an, indem Sie die Prinzipalanmeldung auf Serverebene oder die Anmeldung verwenden, mit der die zu kopierende Datenbank erstellt wurde. Anmeldungen, bei denen das Prinzipal auf Serverebene nicht verwendet wird, müssen Mitglieder der Rolle „dbmanager“ sein, um Datenbanken zu kopieren. Weitere Informationen zu Anmeldungen und zum Herstellen einer Verbindung mit dem Server finden Sie unter [Verwalten von Anmeldungen](sql-database-manage-logins.md).
 
-Starten Sie das Kopieren der Quelldatenbank mit der CREATE DATABASE-Anweisung. Durch das Ausführen dieser Anweisung wird der Kopiervorgang für die Datenbank initiiert. Da das Kopieren einer Datenbank ein asynchroner Prozess ist, erfolgt die Rückgabe der CREATE DATABASE-Anweisung, bevor die Datenbank den Kopiervorgang abgeschlossen hat.
+Starten Sie das Kopieren der Quelldatenbank mit der Anweisung [CREATE DATABASE](https://msdn.microsoft.com/library/ms176061.aspx). Durch das Ausführen dieser Anweisung wird der Kopiervorgang für die Datenbank initiiert. Da das Kopieren einer Datenbank ein asynchroner Prozess ist, erfolgt die Rückgabe der CREATE DATABASE-Anweisung, bevor die Datenbank den Kopiervorgang abgeschlossen hat.
 
 
 ### Kopieren einer SQL-Datenbank auf denselben Server
@@ -85,21 +73,31 @@ Mit diesem Befehl wird „Database1“ auf „Server1“ in eine neue Datenbank 
 - Wenn der Kopiervorgang nicht erfolgreich ist, wird die Spalte „state\_desc“ der Ansicht „sys.databases“ für die neue Datenbank auf SUSPECT gesetzt. Führen Sie in diesem Fall die DROP-Anweisung in der neuen Datenbank aus, und wiederholen Sie den Vorgang später noch einmal.
 - Wenn der Kopiervorgang erfolgreich ist, wird die Spalte „state\_desc“ der Ansicht „sys.databases“ für die neue Datenbank auf ONLINE gesetzt. In diesem Fall ist der Kopiervorgang abgeschlossen, und die neue Datenbank ist eine normale Datenbank, die unabhängig von der Quelldatenbank geändert werden kann.
 
+> [AZURE.NOTE] - Wenn Sie den Kopiervorgang während der Ausführung abbrechen möchten, können Sie die Anweisung [DROP DATABASE](https://msdn.microsoft.com/library/ms178613.aspx) für die neue Datenbank ausführen. Alternativ dazu kann der Kopiervorgang auch abgebrochen werden, indem die DROP DATABASE-Anweisung in der Quelldatenbank ausgeführt wird.
+
+
+## Auflösen von Anmeldungen nach Abschluss des Kopiervorgangs
+
+Nachdem die neue Datenbank auf dem Zielserver online ist, können Sie die [ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx)-Anweisung verwenden, um die Benutzer aus der neuen Datenbank den Anmeldungen auf dem Zielserver zuzuordnen. Informationen zum Auflösen von verwaisten Benutzern finden Sie unter [Problembehandlung bei verwaisten Benutzern](https://msdn.microsoft.com/library/ms175475.aspx). Siehe auch [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md).
+
+Für alle Benutzer werden in der neuen Datenbank die Berechtigungen beibehalten, über die sie auch in der Quelldatenbank verfügt haben. Der Benutzer, der das Kopieren der Datenbank initiiert hat, wird zum Datenbankbesitzer der neuen Datenbank und erhält eine neue Sicherheits-ID (SID). Nachdem der Kopiervorgang erfolgreich abgeschlossen wurde und bevor andere Benutzer neu zugeordnet werden, kann nur die Anmeldung, über die der Kopiervorgang initiiert wurde (also der Datenbankbesitzer (DBO)), zum Anmelden an der neuen Datenbank verwendet werden.
 
 
 ## Nächste Schritte
 
-
-- Wenn Sie den Kopiervorgang während der Ausführung abbrechen möchten, können Sie die [DROP DATABASE](https://msdn.microsoft.com/library/ms178613.aspx) -Anweisung für die neue Datenbank ausführen. Alternativ dazu kann der Kopiervorgang auch abgebrochen werden, indem die DROP DATABASE-Anweisung in der Quelldatenbank ausgeführt wird.
-- Nachdem die neue Datenbank auf dem Zielserver online ist, können Sie die [ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx)-Anweisung verwenden, um die Benutzer aus der neuen Datenbank den Anmeldungen auf dem Zielserver zuzuordnen. Für alle Benutzer werden in der neuen Datenbank die Berechtigungen beibehalten, über die sie auch in der Quelldatenbank verfügt haben. Der Benutzer, der das Kopieren der Datenbank initiiert hat, wird zum Datenbankbesitzer der neuen Datenbank und erhält eine neue Sicherheits-ID (SID). Nachdem der Kopiervorgang erfolgreich abgeschlossen wurde und bevor andere Benutzer neu zugeordnet werden, kann nur die Anmeldung, über die der Kopiervorgang initiiert wurde (also der Datenbankbesitzer (DBO)), zum Anmelden an der neuen Datenbank verwendet werden.
-
+- Einen Überblick über das Kopieren einer Azure SQL-Datenbank finden Sie unter [Kopieren einer Azure SQL-Datenbank](sql-database-copy.md).
+- Informationen zum Kopieren einer Datenbank mithilfe des Azure-Portals finden Sie unter [Kopieren einer Azure SQL-Datenbank mithilfe des Azure-Portals](sql-database-copy-portal.md).
+- Informationen zum Kopieren einer Datenbank mithilfe von PowerShell finden Sie unter [Kopieren einer Azure SQL-Datenbank mithilfe von PowerShell](sql-database-copy-powershell.md).
+- Informationen zum Verwalten von Benutzern und Anmeldungen beim Kopieren einer Datenbank auf einen anderen logischen Server finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md).
 
 
 
 ## Zusätzliche Ressourcen
 
+- [Verwalten von Anmeldungen](sql-database-manage-logins.md)
+- [Herstellen einer Verbindung mit einer Azure SQL-Datenbank mit SQL Server Management Studio und Ausführen einer T-SQL-Beispielabfrage](sql-database-connect-query-ssms.md)
+- [Exportieren der Datenbank in eine BACPAC-Datei](sql-database-export.md)
 - [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-- [Warnungen zur Notfallwiederherstellung](sql-database-disaster-recovery-drills.md)
 - [SQL-Datenbankdokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

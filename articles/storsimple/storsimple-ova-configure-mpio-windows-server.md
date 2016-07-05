@@ -1,6 +1,6 @@
 <properties 
    pageTitle="Konfigurieren von MPIO auf Ihrem virtuellen StorSimple-Arrayhost | Microsoft Azure"
-   description="Beschreibt, wie Sie Multipfad-E/A (MPIO) für Ihr virtuelles StorSimple-Array konfigurieren, das mit einem Host unter Windows Server 2012 R2 verbunden ist."
+   description="Beschreibt, wie Sie Multipfad-E/A (MPIO) für Ihr virtuelles StorSimple-Array konfigurieren, das mit einem Host unter Windows Server 2012 R2 verbunden ist."
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/22/2016"
+   ms.date="06/20/2016"
    ms.author="alkohli" />
 
 # Konfigurieren von Multipfad-E/A auf Windows Server-Host für das virtuelle StorSimple-Array
@@ -29,11 +29,11 @@ Führen Sie die folgenden Schritte aus, um MPIO zu konfigurieren:
 
 - Konfigurationsvoraussetzungen
 
-- Schritt 1: Installieren von MPIO auf dem Windows Server-Host
+- Schritt 1: Installieren von MPIO auf dem Windows Server-Host
 
-- Schritt 2: Konfigurieren von MPIO für StorSimple-Volumes
+- Schritt 2: Konfigurieren von MPIO für StorSimple-Volumes
 
-- Schritt 3: Bereitstellen von StorSimple-Volumes auf dem Host
+- Schritt 3: Bereitstellen von StorSimple-Volumes auf dem Host
 
 Jeder der oben genannten Schritte wird in den folgenden Abschnitten erläutert.
 
@@ -73,22 +73,22 @@ Die Abbildung oben zeigt Folgendes:
 	
 	Notieren Sie sich die IPv4-Adressen der aktivierten Netzwerkschnittstellen (Ethernet, Ethernet 2 in der Standardeinstellung), und legen Sie die Notiz für die spätere Verwendung auf dem Host zurück.
 
-- Auf Ihrem Windows Server-Host sind zwei Netzwerkschnittstellen aktiviert. Wenn die verbundenen Schnittstellen für Host und Array sich im gleichen Subnetz befinden, dann sind 4 Pfade verfügbar. Dies ist in diesem Verfahren der Fall. Wenn sich jedoch jede Netzwerkschnittstelle des Arrays und die Hostschnittstelle in einem unterschiedlichen IP-Subnetz befinden (und nicht routingfähig sind), stehen nur 2 Pfade zur Verfügung.
+- Auf Ihrem Windows Server-Host sind zwei Netzwerkschnittstellen aktiviert. Wenn die verbundenen Schnittstellen für Host und Array sich im gleichen Subnetz befinden, dann sind 4 Pfade verfügbar. Dies ist in diesem Verfahren der Fall. Wenn sich jedoch jede Netzwerkschnittstelle des Arrays und die Hostschnittstelle in einem unterschiedlichen IP-Subnetz befinden (und nicht routingfähig sind), stehen nur 2 Pfade zur Verfügung.
 
-## Schritt 1: Installieren von MPIO auf dem Windows Server-Host
+## Schritt 1: Installieren von MPIO auf dem Windows Server-Host
 
 MPIO ist ein optionales Feature und wird unter Windows Server nicht standardmäßig installiert. Diese Funktion sollte als Feature über den Server-Manager installiert werden. Gehen Sie folgendermaßen vor, um dieses Feature auf Ihrem Windows Server-Host zu installieren.
 
 [AZURE.INCLUDE [storsimple-install-mpio-windows-server-host](../../includes/storsimple-install-mpio-windows-server-host.md)]
 
 
-## Schritt 2: Konfigurieren von MPIO für StorSimple-Volumes
+## Schritt 2: Konfigurieren von MPIO für StorSimple-Volumes
 
 MPIO muss konfiguriert werden, um StorSimple-Volumes zu erkennen. Führen Sie zum Konfigurieren von MPIO für die Erkennung von StorSimple-Geräten die folgenden Schritte aus.
 
 [AZURE.INCLUDE [storsimple-configure-mpio-volumes](../../includes/storsimple-configure-mpio-volumes.md)]
 
-## Schritt 3: Bereitstellen von StorSimple-Volumes auf dem Host
+## Schritt 3: Bereitstellen von StorSimple-Volumes auf dem Host
 
 Nachdem MPIO unter Windows Server konfiguriert wurde, können auf dem StorSimple-Array erstellte Volumes bereitgestellt werden und anschließend MPIO für Redundanz nutzen. Führen Sie die folgenden Schritte aus, um ein Volume bereitzustellen.
 
@@ -103,7 +103,7 @@ Nachdem MPIO unter Windows Server konfiguriert wurde, können auf dem StorSimple
 
 	>[AZURE.IMPORTANT] **Wenn Sie ein privates Netzwerk für iSCSI-Verbindungen verwenden, geben Sie die IP-Adresse des DATA-Ports ein, der mit dem privaten Netzwerk verbunden ist.**
 
-4. Wiederholen Sie die Schritte 2 bis 3 für eine zweite Netzwerkschnittstelle (z. B. Ethernet 2) auf Ihrem Array.
+4. Wiederholen Sie die Schritte 2 bis 3 für eine zweite Netzwerkschnittstelle (z. B. Ethernet 2) auf Ihrem Array.
 
 5. Wählen Sie die Registerkarte **Ziele** im Dialogfeld **Eigenschaften des iSCSI-Initiators** aus. Für das virtuelle Array sollten Sie jede Volumeoberfläche als Ziel unter **Erkannte Ziele** sehen. In diesem Fall würden drei Ziele (entspricht drei Volumes) erkannt werden.
 
@@ -178,4 +178,4 @@ Nachdem MPIO unter Windows Server konfiguriert wurde, können auf dem StorSimple
 Weitere Informationen finden Sie unter [Verwalten des StorSimple Virtual Array mithilfe des StorSimple Manager-Diensts](storsimple-ova-manager-service-administration.md).
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0622_2016-->

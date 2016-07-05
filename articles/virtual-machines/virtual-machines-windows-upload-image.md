@@ -30,7 +30,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über Folgendes verfügen:
 
 - **Ein Azure-Abonnement**: Falls Sie noch nicht über ein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto erstellen](/pricing/free-trial/?WT.mc_id=A261C142F) und [MSDN-Abonnentenvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
-- **Azure PowerShell ab Version 1.0**: Informationen zum Installieren finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+- **Azure PowerShell ab Version 1.4**: Informationen zum Installieren finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
 - **Virtueller Windows-Computer**: Virtuelle Computer können mit verschiedensten Tools lokal erstellt werden. Informationen hierzu finden Sie beispielsweise unter [Installieren der Hyper-V-Rolle und Konfigurieren eines virtuellen Computers](http://technet.microsoft.com/library/hh846766.aspx). Informationen zu von Azure unterstützen Windows-Betriebssystemen finden Sie unter [Microsoft Server Software-Support für virtuelle Microsoft Azure-Computer](https://support.microsoft.com/kb/2721672).
 
@@ -108,7 +108,7 @@ Sie benötigen ein Speicherkonto in Azure, um das VM-Image hochzuladen. Sie kön
 
 ### So erstellen oder finden Sie ein Speicherkonto mithilfe von PowerShell
 
-1. Öffnen Sie Azure PowerShell 1.0.x, und melden Sie sich bei Ihrem Azure-Konto an.
+1. Öffnen Sie Azure PowerShell, und melden Sie sich bei Ihrem Azure-Konto an.
 
 		Login-AzureRmAccount
 
@@ -142,7 +142,7 @@ Sie benötigen ein Speicherkonto in Azure, um das VM-Image hochzuladen. Sie kön
 
 	3. Erstellen Sie ein neues Speicherkonto in dieser Ressourcengruppe mit:
 
-			New-AzureRmStorageAccount -ResourceGroupName YourResourceGroup -Name YourStorageAccountName -Location "West US" -Type "Standard_GRS"
+			New-AzureRmStorageAccount -ResourceGroupName YourResourceGroup -Name YourStorageAccountName -Location "West US" -SkuName "Standard_GRS" -Kind "Storage"
 
 
 </br> <a id="uploadvm"></a>
@@ -261,4 +261,4 @@ Der neu erstellte virtuelle Computer müsste nun im [Azure-Portal](https://porta
 
 Informationen zum Verwalten des neuen virtuellen Computers mithilfe von Azure PowerShell finden Sie unter [Verwalten von virtuellen Azure-Computern mit Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0622_2016-->

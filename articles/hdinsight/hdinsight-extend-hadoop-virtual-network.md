@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/19/2016"
+   ms.date="06/20/2016"
    ms.author="larryfr"/>
 
 
@@ -67,10 +67,6 @@ Weitere Informationen zu Features, Vorteilen und Funktionen von virtuellen Netzw
 ###Standortbasierte virtuelle Netzwerke
 
 Azure HDInsight unterstützt nur standortbasierte virtuelle Netzwerke und kann momentan nicht mit affinitätsgruppenbasierten virtuellen Netzwerken verwendet werden.
-
-###Subnetze
-
-Es wird empfohlen, jeweils ein einzelnes Subnetz für die einzelnen HDInsight-Cluster zu erstellen.
 
 ###Klassisches oder virtuelles Netzwerk der Version 2
 
@@ -173,7 +169,7 @@ __Verwenden von Azure PowerShell__
 
 __Verwenden der Azure-Befehlszeilenschnittstelle__
 
-1. Verwenden Sie den folgenden Befehl, um eine neue Netzwerksicherheitsgruppe namens `hdisecure` zu erstellen. Ersetzen Sie __RESOURCEGROUPNAME__ und __LOCATION__ mit der Ressourcengruppe, die das Azure Virtual Network enthält, und dem Speicherort (Region), wo die Gruppe erstellt wurde.
+1. Verwenden Sie den folgenden Befehl, um eine neue Netzwerksicherheitsgruppe namens `hdisecure` zu erstellen. Ersetzen Sie __RESOURCEGROUPNAME__ und __LOCATION__ durch die Ressourcengruppe, die das virtuelle Azure-Netzwerk enthält, und den Standort (Region), an dem die Gruppe erstellt wurde.
 
         azure network nsg create RESOURCEGROUPNAME hdisecure LOCATION
     
@@ -188,7 +184,7 @@ __Verwenden der Azure-Befehlszeilenschnittstelle__
         azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule3 -p "*" -o "*" -u "443" -f "168.61.48.131" -e "VirtualNetwork" -c "Allow" -y 302 -r "Inbound"
         azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule4 -p "*" -o "*" -u "443" -f "138.91.141.162" -e "VirtualNetwork" -c "Allow" -y 303 -r "Inbound"
 
-3. Nachdem die Regeln erstellt wurden, gehen Sie wie folgt vor, um die neue Netzwerksicherheitsgruppe einem Subnetz zuzuordnen. Ersetzen Sie __RESOURCEGROUPNAME__ durch den Namen der Ressourcengruppe, die das Azure Virtual Network enthält. Ersetzen Sie __VNETNAME__ und __SUBNETNAME__ durch den Namen des virtuellen Azure-Netzwerks und des Subnetzes, das Sie bei der Installation von HDInsight verwenden.
+3. Nachdem die Regeln erstellt wurden, gehen Sie wie folgt vor, um die neue Netzwerksicherheitsgruppe einem Subnetz zuzuordnen. Ersetzen Sie __RESOURCEGROUPNAME__ durch den Namen der Ressourcengruppe, die das virtuelle Azure-Netzwerk enthält. Ersetzen Sie __VNETNAME__ und __SUBNETNAME__ durch den Namen des virtuellen Azure-Netzwerks und des Subnetzes, die Sie bei der Installation von HDInsight verwenden.
 
         azure network vnet subnet set RESOURCEGROUPNAME VNETNAME SUBNETNAME -w "/subscriptions/GUID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
     
@@ -199,7 +195,7 @@ __Verwenden der Azure-Befehlszeilenschnittstelle__
 > Um beispielsweise den SSH-Zugriff über das Internet zu ermöglichen, müssen Sie eine Regel ähnlich der folgenden hinzufügen:
 >
 > * Azure PowerShell – ```Add-AzureRmNetworkSecurityRuleConfig -Name "SSSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 304 -Direction Inbound```
-> * Azure-Befehlszeilenschnittstelle – ```azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule4 -p "*" -o "*" -u "22" -f "*" -e "VirtualNetwork" -c "Allow" -y 304 -r "Inbound"```
+> * Azure-CLI – ```azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule4 -p "*" -o "*" -u "22" -f "*" -e "VirtualNetwork" -c "Allow" -y 304 -r "Inbound"```
 
 Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie in der [Übersicht über Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md). Informationen zum Steuern des Routings in einem virtuellen Azure-Netzwerk finden Sie unter [Benutzerdefinierte Routen und IP-Weiterleitung](../virtual-network/virtual-networks-udr-overview.md).
 
@@ -309,4 +305,4 @@ In den folgenden Beispielen wird die Verwendung von HDInsight mit Azure Virtual 
 
 Weitere Informationen zu virtuellen Azure Virtual-Netzwerken finden Sie unter [Überblick über Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0622_2016-->

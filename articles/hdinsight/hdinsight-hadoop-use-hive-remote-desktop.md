@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/03/2016"
+   ms.date="06/16/2016"
    ms.author="larryfr"/>
 
 # Verwenden von Hive mit Hadoop in HDInsight über den Remotedesktop
@@ -51,6 +51,7 @@ Nachdem die Verbindung mit dem Desktop für den HDInsight-Cluster hergestellt wu
 
 3. Geben Sie die folgenden Anweisungen zum Erstellen einer neuen Tabelle namens **log4jLogs** mithilfe der Befehlszeilenschnittstelle ein, wobei Sie die Beispieldaten verwenden:
 
+        set hive.execution.engine=tez;
         DROP TABLE log4jLogs;
         CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
         ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
@@ -149,4 +150,4 @@ Wenn Sie mit Tez mit Hive verwenden, finden Sie in den folgenden Dokumenten Info
 [Powershell-install-configure]: ../powershell-install-configure.md
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0622_2016-->

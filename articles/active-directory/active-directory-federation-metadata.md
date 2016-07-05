@@ -163,4 +163,4 @@ Auf ähnliche Weise werden die Endpunkte für die gemeinsamen SAML 2.0-Protokol
   </IDPSSODescriptor>
 ```
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

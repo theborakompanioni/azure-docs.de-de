@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="06/14/2016"
 	ms.author="xibingao;bradsev" />
 
 # Einrichten eines virtuellen Azure-Computers als IPython Notebook-Server für die erweiterte Analyse
@@ -125,9 +125,9 @@ Der virtuelle Computer wird freigegeben, aber nicht gelöscht. Sie können den v
 
 ## Ihre Azure-VM ist damit einsatzbereit. Wie lauten die nächsten Schritte?
 
-Sie können Ihren virtuellen Computer jetzt in Ihren Data Science-Übungen verwenden. Der virtuelle Computer kann auch als IPython Notebook-Server für das Durchsuchen und Verarbeiten von Daten und für andere Aufgaben in Verbindung mit Azure Machine Learning und dem Cortana Analytics-Prozess verwendet werden.
+Sie können Ihren virtuellen Computer jetzt in Ihren Data Science-Übungen verwenden. Der virtuelle Computer kann auch als IPython Notebook-Server für das Durchsuchen und Verarbeiten von Daten und für andere Aufgaben in Verbindung mit Azure Machine Learning und dem Team Data Science-Prozess verwendet werden.
 
-Die nächsten Schritte im Cortana Analytics-Prozess sind unter dem [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) aufgeführt. Dazu gehören u.a. das Verschieben von Daten nach HDInsight sowie das Verarbeiten und Extrahieren von Stichproben, um anschließend mithilfe von Azure Machine Learning Erkenntnisse aus den Daten zu ziehen.
+Die nächsten Schritte im Team Data Science-Prozess sind unter dem [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) aufgeführt. Dazu gehören u.a. das Verschieben von Daten nach HDInsight sowie das Verarbeiten und Extrahieren von Stichproben, um anschließend mithilfe von Azure Machine Learning Erkenntnisse aus den Daten zu ziehen.
 
 
 [15]: ./media/machine-learning-data-science-setup-virtual-machine/vmshutdown.png
@@ -145,4 +145,4 @@ Die nächsten Schritte im Cortana Analytics-Prozess sind unter dem [Lernpfad](ht
 [28]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-5.png
 [29]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-6.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="03/01/2016"
+   ms.date="06/07/2016"
    ms.author="alkohli" />
 
 # Sichern des StorSimple Virtual Array
 
 ## Übersicht 
 
-Dieses Tutorial bezieht sich auf Microsoft Azure StorSimple Virtual Array (auch als „lokales virtuelles StorSimple-Gerät“ oder „virtuelles StorSimple-Gerät“ bezeichnet) mit der Version vom März 2016 (allgemeine Verfügbarkeit).
+Dieses Tutorial bezieht sich auf das Microsoft Azure StorSimple Virtual Array (auch als „lokales virtuelles StorSimple-Gerät“ oder „virtuelles StorSimple-Gerät“ bezeichnet) mit der Version vom März 2016 (allgemeine Verfügbarkeit) oder höher.
 
 Das StorSimple Virtual Array ist ein lokales virtuelles Cloudspeichergerät, das als Dateiserver oder iSCSI-Server konfiguriert werden kann. Es dient zum Erstellen von Sicherungen, zum Wiederherstellen aus Sicherungen und zum Durchführen eines Gerätefailovers, wenn eine Notfallwiederherstellung erforderlich ist. Wenn als Dateiserver konfiguriert ist, ermöglicht es auch die Wiederherstellung auf Elementebene. Dieses Lernprogramm beschreibt das Erstellen geplanter und manueller Sicherungen Ihres StorSimple Virtual Array mit dem klassischen Azure-Portal oder der StorSimple-Web-UI.
 
@@ -64,7 +64,7 @@ Neben geplanten Sicherungen können Sie jederzeit eine manuelle bedarfsgesteuert
 
     ![Sicherungsauftrag erstellt](./media/storsimple-ova-backup/image7.png)
 
-3. Klicken Sie auf das Symbol **Auftrag anzeigen**, um den Fortschritt des Auftrags nachzuverfolgen.
+3. Klicken Sie auf **Auftrag anzeigen**, um den Fortschritt des Auftrags nachzuverfolgen.
 
 4. Nachdem der Sicherungsauftrag abgeschlossen wurde, navigieren Sie zur Registerkarte **Sicherungskatalog**. Die abgeschlossene Sicherung sollte angezeigt werden.
 
@@ -104,4 +104,4 @@ In diesem Video wird gezeigt, wie Sie Freigaben erstellen, Freigaben sichern und
 
 Erfahren Sie, wie Sie [StorSimple Virtual Array verwalten](storsimple-ova-web-ui-admin.md).
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0622_2016-->

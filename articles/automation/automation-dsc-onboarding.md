@@ -20,7 +20,7 @@
 
 ## Gründe für das Verwalten von Computern mit Azure Automation DSC
 
-Wie [PowerShell DSC](https://technet.microsoft.com/library/dn249912.aspx) (Desired State Configuration, Konfiguration des gewünschten Zustands) ist Azure Automation DSC ein einfacher, aber leistungsfähiger Konfigurationsverwaltungsdienst für DSC-Knoten (physische und virtuelle Computer) in jedem beliebigen Cloud- oder lokalen Datencenter. Sie können damit Skalierbarkeit über Tausende von Computern schnell und einfach von einem zentralen, sicheren Ort aus erreichen. Sie können problemlos Computer integrieren, ihnen deklarative Konfigurationen zuweisen und Berichte dazu anzeigen, inwieweit jeder Computer mit dem gewünschten Zustand, den Sie angegeben haben, kompatibel ist. Die Azure Automation DSC-Verwaltungsebene ist für DSC, was die Azure Automation-Verwaltungsebene für PowerShell-Skripts ist. So hilft Azure Automation auf die gleiche Weise wie beim Verwalten von PowerShell-Skripts bei der Verwaltung von DSC-Konfigurationen. Weitere Informationen zu den Vorteilen von Azure Automation DSC finden Sie unter [Azure Automation DSC – Übersicht](automation-dsc-overview/).
+Wie [PowerShell DSC](https://technet.microsoft.com/library/dn249912.aspx) (Desired State Configuration, Konfiguration des gewünschten Zustands) ist Azure Automation DSC ein einfacher, aber leistungsfähiger Konfigurationsverwaltungsdienst für DSC-Knoten (physische und virtuelle Computer) in jedem beliebigen Cloud- oder lokalen Datencenter. Sie können damit Skalierbarkeit über Tausende von Computern schnell und einfach von einem zentralen, sicheren Ort aus erreichen. Sie können problemlos Computer integrieren, ihnen deklarative Konfigurationen zuweisen und Berichte dazu anzeigen, inwieweit jeder Computer mit dem gewünschten Zustand, den Sie angegeben haben, kompatibel ist. Die Azure Automation DSC-Verwaltungsebene ist für DSC, was die Azure Automation-Verwaltungsebene für PowerShell-Skripts ist. So hilft Azure Automation auf die gleiche Weise wie beim Verwalten von PowerShell-Skripts bei der Verwaltung von DSC-Konfigurationen. Weitere Informationen zu den Vorteilen von Azure Automation DSC finden Sie unter [Azure Automation DSC – Übersicht](automation-dsc-overview.md).
 
 Azure Automation DSC kann verwendet werden, um eine Vielzahl von Computern zu verwalten:
 
@@ -104,7 +104,7 @@ Informationen zum Suchen von Registrierungs-URL und Registrierungsschlüssel fü
      -VM $vm `
      -Publisher Microsoft.Powershell `
      -ExtensionName DSC `
-     -Version 2.15 `
+     -Version 2.19 `
      -PublicConfiguration $PublicConfiguration `
      -PrivateConfiguration $PrivateConfiguration `
      -ForceUpdate
@@ -379,4 +379,4 @@ Eine erneute Registrierung kann auf die gleiche Weise wie beim ersten Registrier
 * [Azure Automation DSC-Cmdlets](https://msdn.microsoft.com/library/mt244122.aspx)
 * [Azure Automation DSC – Preise](https://azure.microsoft.com/pricing/details/automation/)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->
