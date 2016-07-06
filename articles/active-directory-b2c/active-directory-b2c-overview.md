@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="06/06/2016"
+	ms.date="06/27/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C-Vorschau: Registrieren und Anmelden von Kunden in den Anwendungen
@@ -54,7 +54,7 @@ Informieren Sie sich über die Verwendung bestimmter Features der Azure Active D
 
 Unter den folgenden Links finden Sie ausführliche Informationen zum Dienst:
 
-- Hier finden Sie [Active Directory B2C-Preisinformationen](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+- Hier finden Sie [Azure Active Directory B2C-Preisinformationen](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
 - Hilfe zu Stack Overflow mit [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory)- oder [adal](http://stackoverflow.com/questions/tagged/adal)-Tags
 - Teilen Sie uns Ihre Meinung zur Vorschauversion über [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/) mit. Verwenden Sie den Ausdruck "AzureADB2C:" im Titel Ihres Beitrags, damit wir ihn einfacher finden können.
 - Azure Active Directory B2C unterstützt Protokolle gemäß den Branchenstandards OpenID Connect und OAuth 2.0 über ein Anwendungsregistrierungsmodell, das als „App-Modell v2.0“ bezeichnet wird.
@@ -67,4 +67,4 @@ Unter den folgenden Links finden Sie ausführliche Informationen zum Dienst:
 
 Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen einzurichten. Rufen Sie dazu [diese Seite](https://technet.microsoft.com/security/dd252948) auf, und abonnieren Sie Sicherheitsempfehlungen.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

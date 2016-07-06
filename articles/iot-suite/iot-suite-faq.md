@@ -14,29 +14,29 @@
   ms.topic="get-started-article"
   ms.tgt_pltfrm="na"
   ms.workload="na"
-  ms.date="05/09/2016"
+  ms.date="06/27/2016"
   ms.author="araguila"/>
    
 # Häufig gestellte Fragen zu IoT Suite
 
 ### Was ist der Unterschied zwischen dem Löschen einer Ressourcengruppe im Azure-Portal und dem Klicken auf "Löschen" für eine vorkonfigurierte Lösung in "azureiotsuite.com"?
 
-- Wenn Sie in [azureiotsuite.com][lnk-azureiotsuite] eine vorkonfigurierte Lösung löschen, werden alle Ressourcen gelöscht, die bereitgestellt waren, als Sie die vorkonfigurierte Lösung erstellt haben. Wenn Sie dieser Ressourcengruppe weitere Ressourcen hinzugefügt haben, werden diese ebenfalls gelöscht. 
+- Wenn Sie in [azureiotsuite.com][lnk-azureiotsuite] eine vorkonfigurierte Lösung löschen, werden alle Ressourcen gelöscht, die bereitgestellt waren, als Sie die vorkonfigurierte Lösung erstellt haben. Wenn Sie dieser Ressourcengruppe weitere Ressourcen hinzugefügt haben, werden diese ebenfalls gelöscht.
 
 - Wenn Sie die Ressourcengruppe im [Azure-Portal][lnk-azure-portal] löschen, werden nur die Ressourcen in dieser Ressourcengruppe gelöscht. Sie müssen im klassischen [Azure-Portal][lnk-classic-portal] außerdem die Azure Active Directory-Anwendung löschen, die der vorkonfigurierten Lösung zugeordnet ist.
 
 ### Wie viele Instanzen von DocumentDB kann ich in einem Abonnement bereitstellen?
 
-Fünf. Sie können ein [Azure-Support-Ticket][link-azuresupportticket] erstellen, um dieses Limit zu erhöhen. Doch standardmäßig können Sie nur fünf DocumentDB-Instanzen pro Abonnement bereitstellen. Daher können Sie in einem bestimmten Abonnement nur bis zu fünf vorkonfigurierte Remoteüberwachungslösungen bereitstellen.
+50\. Sie können ein [Azure-Supportticket][link-azuresupportticket] erstellen, um dieses Limit zu erhöhen. Doch standardmäßig können Sie nur 50 DocumentDB-Instanzen pro Abonnement bereitstellen. Daher können Sie in einem bestimmten Abonnement nur bis zu fünf vorkonfigurierte Remoteüberwachungslösungen bereitstellen.
 
 ### Wie viele Bing Maps-APIs im Tarif „Free“ kann ich in einem Abonnement bereitstellen?
 
-Zwei. Sie können nur zwei Bing Maps-APIs im Tarif „Free“ in einem Abonnement erstellen. Die Remoteüberwachungslösung wird standardmäßig mit einer Bing Maps-API im Tarif „Free“ bereitgestellt. Daher können Sie in einem Abonnement ohne Modifikationen nur bis zu zwei vorkonfigurierte Remoteüberwachungslösungen bereitstellen.
+Zwei. In einem Azure-Abonnement können für Bing Karten für Unternehmen nur zwei Tarife für die erste interne Transaktionsebene erstellt werden. Die Remoteüberwachungslösung wird standardmäßig mit dem Tarif für die erste interne Transaktionsebene bereitgestellt. Daher können Sie in einem Abonnement ohne Modifikationen nur bis zu zwei vorkonfigurierte Remoteüberwachungslösungen bereitstellen.
 
 ### Ich habe eine Lösungsbereitstellung zur Remoteüberwachung mit einer statischen Karte. Wie kann ich eine interaktive Bing-Karte hinzufügen? 
-1. Rufen Sie Ihren Bing Maps-API for Enterprise QueryKey aus dem [Azure-Portal][lnk-azure-portal] ab: 
+1. Rufen Sie Ihren Bing Maps-API for Enterprise QueryKey aus dem [Azure-Portal][lnk-azure-portal] ab:
  1. Navigieren Sie zur Ressourcengruppe, in der Sich Bing Maps API for Enterprise im [Azure-Portal][lnk-azure-portal] befindet.
- 2. Klicken Sie auf „Alle Einstellungen“ und anschließend auf „Schlüsselverwaltung“. 
+ 2. Klicken Sie auf „Alle Einstellungen“ und anschließend auf „Schlüsselverwaltung“.
  3. Sie sehen zwei Schlüssel: MasterKey und QueryKey. Kopieren Sie den Wert für QueryKey.
 
      > [AZURE.NOTE] Sie haben kein Bing Maps API for Enterprise-Konto? Erstellen Sie ein Konto im [Azure-Portal][lnk-azure-portal], indem Sie auf „+ Neu“ klicken, nach Bing Maps API for Enterprise suchen, und die Anweisungen für die Erstellung befolgen.
@@ -67,4 +67,4 @@ Siehe den Blogbeitrag von Eric Golpe [Walkthrough of Deleting an Azure AD Tenant
 [lnk-30daytrial]: https://azure.microsoft.com/free/
 [lnk-delete-aad-tennant]: http://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

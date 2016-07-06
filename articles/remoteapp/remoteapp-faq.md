@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="04/08/2016" 
+	ms.date="06/27/2016" 
 	ms.author="elizapo"/>
 
 # Azure RemoteApp – Häufig gestellte Fragen
@@ -31,16 +31,16 @@ Folgende Fragen wurden zu Azure RemoteApp an uns gestellt. Haben Sie weitere Fra
 ## Informationen zu Azure RemoteApp-Abonnements ##
 
 - **Was sind die Dienstgrenzwerte?** Informationen zu den Standardeinstellungen und Dienstbeschränkungen für Azure RemoteApp finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md). Sie können sich gern an uns wenden, wenn Sie weitere Fragen haben.
-- **Wie viele Benutzer benötige ich?** Es sind mindestens 20 Benutzer erforderlich. Ich wiederhole dies noch einmal, damit es klar verständlich ist: das MINIMUM beträgt 20. Ihnen werden 20 Benutzer berechnet. 
+- **Wie viele Benutzer benötige ich?** Es sind mindestens 20 Benutzer erforderlich. Ich wiederhole dies noch einmal, damit es klar verständlich ist: das MINIMUM beträgt 20. Ihnen werden 20 Benutzer berechnet.
 - **Wie hoch sind die Kosten für RemoteApp?** Beachten Sie die [Preisdetails für Azure RemoteApp](https://azure.microsoft.com/pricing/details/remoteapp/).
-- **Sind bestimmte Sammlungstypen teurer als andere?** Ja, dies kann abhängig von Ihren Anforderungen an Sammlungen der Fall sein. Für eine Hybridsammlung ist eine Verbindung von Azure RemoteApp zu Ihrem lokalen Netzwerk erforderlich. Wenn Sie ein vorhandenes VNET/ExpressRoute verwenden, fallen keine zusätzlichen Kosten an. Wenn Sie jedoch ein neues Azure-VNET und ein Gateway oder ExpressRoute verwenden, fallen für das [VPN-Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway) oder [ExpressRoute](../../../pricing/details/expressroute/) Kosten an. Diese Kosten (siehe Links) werden zusätzlich zu Ihren monatlichen Kosten für Azure RemoteApp berechnet.
+- **Sind bestimmte Sammlungstypen teurer als andere?** Ja, dies kann abhängig von Ihren Anforderungen an Sammlungen der Fall sein. Für eine Hybridsammlung ist eine Verbindung von Azure RemoteApp zu Ihrem lokalen Netzwerk erforderlich. Wenn Sie ein vorhandenes VNET/ExpressRoute verwenden, fallen keine zusätzlichen Kosten an. Wenn Sie jedoch ein neues Azure-VNET und ein Gateway oder ExpressRoute verwenden, fallen für das [VPN-Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway) oder [ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute/) Kosten an. Diese Kosten (siehe Links) werden zusätzlich zu Ihren monatlichen Kosten für Azure RemoteApp berechnet.
 
 ## Sammlungen: Was wird unterstützt, welche sollten Sie verwenden usw.
 - **Werden benutzerdefinierte Line-of-Business-Anwendungen (LOB) unterstützt?** Ja. Zum Verwenden einer benutzerdefinierten Anwendung in Azure RemoteApp müssen Sie ein [benutzerdefiniertes Vorlagenimage](remoteapp-create-custom-image.md) erstellen und anschließend in die RemoteApp-Sammlung hochladen.
 - **Kann ich meine benutzerdefinierte LOB-Anwendung in Azure RemoteApp ausführen?** Dies lässt sich am besten im Rahmen eines Tests ermitteln. Informieren Sie sich im [RD-Kompatibilitätscenter](http://www.rdcompatibility.com/compatibility/default.aspx).
 - **Welche Bereitstellungsmethode (Cloud oder Hybrid) eignet sich am besten für mein Unternehmen?** Hybridsammlungen sind die umfassendste Lösung, wenn Sie eine vollständige Integration mit einmaligem Anmelden und einer sicheren lokalen Netzwerkverbindung anstreben. Cloudsammlungen sind eine flexible und einfache Möglichkeit, Ihre Bereitstellung mithilfe mehrerer Authentifizierungsmethoden zu isolieren. Erfahren Sie mehr über die [Bereitstellungsoptionen](remoteapp-whatis.md).
 - **Wir haben eine SQL- oder andere Datenbank entweder lokal oder in Azure. Welchen Bereitstellungstyp sollten wir verwenden?** Das hängt davon ab, wo sich Ihre SQL- oder Back-End-Datenbank befindet. Befindet sich die Datenbank in einem privaten Netzwerk, sollten Sie die Hybridsammlung verwenden. Wenn die Datenbank über das Internet verfügbar ist und Clientverbindungen zulässt, können Sie die Cloudsammlung verwenden.
-- **Wie sieht es mit der Laufwerkzuordnung, USB und seriellen Ports, der Freigabe der Zwischenablage und der Druckerumleitung aus?** Alle diese Funktionen werden in Azure RemoteApp unterstützt. Die Freigabe der Zwischenablage und die Druckerumleitung sind standardmäßig aktiviert. [Hier](remoteapp-redirection.md) erfahren Sie mehr über die Umleitung. 
+- **Wie sieht es mit der Laufwerkzuordnung, USB und seriellen Ports, der Freigabe der Zwischenablage und der Druckerumleitung aus?** Alle diese Funktionen werden in Azure RemoteApp unterstützt. Die Freigabe der Zwischenablage und die Druckerumleitung sind standardmäßig aktiviert. [Hier](remoteapp-redirection.md) erfahren Sie mehr über die Umleitung.
 
 
 ## Vorlagenimages
@@ -64,7 +64,7 @@ Folgende Fragen wurden zu Azure RemoteApp an uns gestellt. Haben Sie weitere Fra
 ## Clients: Mit welchen Geräten kann ich auf Azure RemoteApp zugreifen?
 Unter [Zugreifen auf Anwendungen in Azure RemoteApp](remoteapp-clients.md) finden Sie Informationen zu Clients sowie Schritte zum Installieren der verschiedenen Clients.
 
-- **Welche Geräte und Betriebssysteme werden von den Clientanwendungen unterstützt?** Zunächst Computer und Tablets: 
+- **Welche Geräte und Betriebssysteme werden von den Clientanwendungen unterstützt?** Zunächst Computer und Tablets:
 	- Windows 10 (Clientvorschau)
 	- Windows 8.1 und Windows 8
 	- Windows 7 Service Pack 1
@@ -88,7 +88,7 @@ Unter [Zugreifen auf Anwendungen in Azure RemoteApp](remoteapp-clients.md) finde
 ##Support und Feedback
 
 
-- **Wie lautet der Support-Plan für RemoteApp?** Der Support für die Abrechnungs- und Abonnementverwaltung wird kostenlos bereitgestellt. Der technische Support ist über die [Azure-Servicepläne](https://azure.microsoft.com/support/plans/) verfügbar. Über unser [Azure-Diskussionsforum](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=AzureRemoteApp) erhalten Sie zudem eine kostenlose Unterstützung durch die Community. 
+- **Wie lautet der Support-Plan für RemoteApp?** Der Support für die Abrechnungs- und Abonnementverwaltung wird kostenlos bereitgestellt. Der technische Support ist über die [Azure-Servicepläne](https://azure.microsoft.com/support/plans/) verfügbar. Über unser [Azure-Diskussionsforum](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=AzureRemoteApp) erhalten Sie zudem eine kostenlose Unterstützung durch die Community.
 - **Wie übermittle ich Feedback?** Besuchen Sie das [Feedbackforum](https://feedback.azure.com/forums/247748-azure-remoteapp/).
 - **Von wem erfahre ich mehr über Azure RemoteApp?** Neben unserem [Diskussionsforum](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=AzureRemoteApp), das ein idealer Ausgangspunkt für Fragestellungen ist, können Sie am wöchentlichen [Webinar "Ask the Experts"](https://azureinfo.microsoft.com/US-Azure-WBNR-FY15-11Nov-AzureRemoteAppAskTheExperts-Registration-Page.html) teilnehmen, bei dem alle Themen bezüglich RemoteApp behandelt werden.
 - **Gibt es eine RemoteApp-Dokumentation?** Gut, dass Sie danach fragen. Neben den Inhalten im Portal-Hilfefach (klicken Sie einfach auf einer beliebigen Seite im Portal auf das Fragezeichen **?**) sind die folgenden Artikel verfügbar, in denen Sie alles über RemoteApp erfahren:
@@ -106,7 +106,7 @@ Unter [Zugreifen auf Anwendungen in Azure RemoteApp](remoteapp-clients.md) finde
 		- [Veröffentlichen einer App in RemoteApp](remoteapp-publish.md)
 	- **Verwalten:**
 		- [Hinzufügen von Benutzern](remoteapp-user.md)
-		- [Bewährte Methoden zum Konfigurieren und Verwenden von Azure RemoteApp](remoteapp-bestpractices.md)	
+		- [Bewährte Methoden zum Konfigurieren und Verwenden von Azure RemoteApp](remoteapp-bestpractices.md)
 
 	Videos! Wir haben auch eine Reihe von Videos zu RemoteApp. Einige enthalten eine Einführung ([Einführung in Azure RemoteApp](https://azure.microsoft.com/documentation/videos/cloud-cover-ep-150-azure-remote-app-with-thomas-willingham-and-nihar-namjoshi/)), während andere die Bereitstellung erläutern ([Cloud-Bereitstellung](https://www.youtube.com/watch?v=3NAv2iwZtGc&feature=youtu.be) und [Hybrid-Bereitstellung](https://www.youtube.com/watch?v=GCIMxPUvg0c&feature=youtu.be)). Schauen Sie sie an!
 
@@ -114,4 +114,4 @@ Unter [Zugreifen auf Anwendungen in Azure RemoteApp](remoteapp-clients.md) finde
 ### Helfen Sie uns, Ihnen zu helfen 
 Wussten Sie schon, dass Sie diesen Artikel im Bereich unten nicht nur bewerten und kommentieren, sondern ihn auch selbst ändern können? Fehlt etwas? Ist etwas nicht ganz richtig? Habe ich etwas geschrieben, das eher verwirrend ist? Scrollen Sie nach oben, und klicken Sie auf **Edit on GitHub**, um die gewünschten Änderungen vorzunehmen. Ihr Vorschlag wird uns vorgelegt, und wenn wir ihn bestätigt haben, werden Ihre Änderungen und Verbesserungen hier angezeigt.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

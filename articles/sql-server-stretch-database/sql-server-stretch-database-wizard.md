@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="06/14/2016"
+	ms.date="06/27/2016"
 	ms.author="douglasl"/>
 
 # Ausführen des Assistenten zum Aktivieren einer Datenbank für Stretch
@@ -51,25 +51,25 @@ Tabellen mit vielen Zeilen werden in der sortierten Liste oben angezeigt. Bevor 
 |**Name**|Gibt den Namen der Spalte in der Tabelle an.|
 |(ohne Titel)|Ein Symbol in dieser Spalte kann eine Warnung darstellen, durch die nicht verhindert wird, dass Sie die ausgewählte Tabelle für Stretch aktivieren. Es kann auch für ein Hindernis stehen, durch das die Aktivierung der ausgewählten Tabelle für Stretch verhindert wird. Der Grund kann beispielsweise sein, dass in der Tabelle ein nicht unterstützter Datentyp verwendet wird. Zeigen Sie auf das Symbol, um weitere Informationen in einer QuickInfo anzuzeigen. Weitere Informationen finden Sie unter [Einschränkungen für Stretch-Datenbank](sql-server-stretch-database-limitations.md).|
 |**Gestreckt**|Gibt an, ob die Tabelle bereits für Stretch aktiviert ist.|
-|**Migrieren**|Sie können eine gesamte Tabelle migrieren (**Ganze Tabelle**) oder einen Filter für eine vorhandene Spalte in der Tabelle angeben. Wenn Sie ein anderes Filterprädikat verwenden möchten, um die zu migrierenden Spalten auszuwählen, führen Sie die Anweisung ALTER TABLE aus, um das Filterprädikat nach Beenden des Assistenten festzulegen. Weitere Informationen zum Filterprädikat finden Sie unter [Auswählen von Zeilen für die Migration mit einem Filterprädikat](sql-server-stretch-database-predicate-function.md). Weitere Informationen zum Anwenden des Prädikats finden Sie unter [Aktivieren von Stretch-Datenbank für eine Tabelle](sql-server-stretch-database-enable-table.md) oder [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx).|
+|**Migrieren**|Sie können eine gesamte Tabelle migrieren (**Ganze Tabelle**) oder einen Filter für eine vorhandene Spalte in der Tabelle angeben. Wenn Sie eine andere Filterfunktion verwenden möchten, um die zu migrierenden Spalten auszuwählen, führen Sie die Anweisung ALTER TABLE aus, um die Filterfunktion nach dem Beenden des Assistenten festzulegen. Weitere Informationen zur Filterfunktion finden Sie unter [Auswählen von Zeilen für die Migration mit einer Filterfunktion](sql-server-stretch-database-predicate-function.md). Weitere Informationen zum Anwenden der Funktion finden Sie unter [Aktivieren von Stretch-Datenbank für eine Tabelle](sql-server-stretch-database-enable-table.md) oder [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx).|
 |**beibehalten**|Gibt die Anzahl der Zeilen in der Tabelle an|
 |**Größe (KB)**|Gibt die Größe der Tabelle in KB an.|
 
 ## <a name="Filter"></a>Optionales Bereitstellen eines Zeilenfilters
 
-Führen Sie auf der Seite **Tabellen auswählen** die folgenden Schritte aus, wenn Sie zum Auswählen von zu migrierenden Spalten ein Filterprädikat angeben möchten.
+Führen Sie auf der Seite **Tabellen auswählen** die folgenden Schritte aus, wenn Sie zum Auswählen von zu migrierenden Spalten eine Filterfunktion angeben möchten.
 
 1.  Klicken Sie in der Liste **Zu streckende Tabellen auswählen** in der Spalte für die Tabelle auf **Ganze Tabelle**. Das Dialogfeld **Zu streckende Zeilen auswählen** wird geöffnet.
 
-    ![Filterprädikat definieren][StretchWizardImage2a]
+    ![Definieren einer Filterfunktion][StretchWizardImage2a]
 
 2.  Wählen Sie im Dialogfeld **Zu streckende Zeilen auswählen** die Option **Zeilen auswählen** aus.
 
-3.  Geben Sie im **Namensfeld** einen Namen für das Filterprädikat an.
+3.  Geben Sie im **Namensfeld** einen Namen für die Filterfunktion an.
 
 4.  Wählen Sie für die **WHERE**-Klausel eine Spalte der Tabelle und anschließend einen Operator aus, und geben Sie einen Wert an.
 
-5. Klicken Sie zum Prüfen des Prädikats auf **Überprüfen**. Wenn das Prädikat aus der Tabelle Ergebnisse zurückgibt (also wenn zu migrierende Zeilen vorhanden sind, auf die die Bedingung zutrifft), meldet der Test **Erfolg**.
+5. Klicken Sie zum Prüfen der Funktion auf **Überprüfen**. Wenn die Funktion aus der Tabelle Ergebnisse zurückgibt (also wenn zu migrierende Zeilen vorhanden sind, auf die die Bedingung zutrifft), meldet der Test **Erfolg**.
 
     >   [AZURE.NOTE] Das Textfeld, in dem die Filterabfrage angezeigt wird, ist schreibgeschützt. Es ist nicht möglich, die Abfrage im Textfeld zu bearbeiten.
 
@@ -77,13 +77,13 @@ Führen Sie auf der Seite **Tabellen auswählen** die folgenden Schritte aus, we
 
 Die Filterfunktion wird in SQL Server nur erstellt, wenn Sie den Assistenten abschließen. Bis zu diesem Punkt können Sie zur Seite **Tabellen auswählen** zurückkehren, um die Filterfunktion zu ändern oder umzubenennen.
 
-![Seite „Tabellen auswählen“ nach dem Definieren des Filterprädikats][StretchWizardImage2b]
+![Seite „Tabellen auswählen“ nach dem Definieren einer Filterfunktion][StretchWizardImage2b]
 
-Führen Sie einen der folgenden Schritte aus, wenn Sie eine andere Art von Filterprädikat für die Auswahl der zu migrierenden Zeilen verwenden.
+Führen Sie einen der folgenden Schritte aus, wenn Sie eine andere Art von Filterfunktion für die Auswahl der zu migrierenden Zeilen verwenden möchten.
 
--   Beenden Sie den Assistenten, und führen Sie die ALTER TABLE-Anweisung aus, um Stretch für die Tabelle zu aktivieren und ein Prädikat anzugeben. Weitere Informationen finden Sie unter [Aktivieren von Stretch-Datenbank für eine Tabelle](sql-server-stretch-database-enable-table.md).  
+-   Beenden Sie den Assistenten, und führen Sie die ALTER TABLE-Anweisung aus, um Stretch für die Tabelle zu aktivieren und eine Filterfunktion anzugeben. Weitere Informationen finden Sie unter [Aktivieren von Stretch-Datenbank für eine Tabelle](sql-server-stretch-database-enable-table.md).
 
--   Führen Sie die ALTER TABLE-Anweisung aus, um ein Prädikat anzugeben, nachdem Sie den Assistenten beendet haben. Die erforderlichen Schritte finden Sie unter [Hinzufügen eines Filterprädikats nach dem Ausführen des Assistenten](sql-server-stretch-database-predicate-function.md#addafterwiz).
+-   Führen Sie die ALTER TABLE-Anweisung aus, um eine Filterfunktion anzugeben, nachdem Sie den Assistenten beendet haben. Die erforderlichen Schritte finden Sie unter [Hinzufügen einer Filterfunktion nach dem Ausführen des Assistenten](sql-server-stretch-database-predicate-function.md#addafterwiz).
 
 ## <a name="Configure"></a>Konfigurieren der Azure-Bereitstellung
 
@@ -94,7 +94,7 @@ Führen Sie einen der folgenden Schritte aus, wenn Sie eine andere Art von Filte
 2.  Wählen Sie das vorhandene Azure-Abonnement aus, das für Stretch-Datenbank verwendet werden soll.
 
 3.  Wählen Sie eine Azure-Region.
-    -   Wenn Sie einen neuen Server erstellen, wird der Server in dieser Region erstellt.  
+    -   Wenn Sie einen neuen Server erstellen, wird der Server in dieser Region erstellt.
     -   Wenn Sie in der ausgewählten Region über Server verfügen, werden diese vom Assistenten aufgeführt, wenn Sie **Vorhandener Server** wählen.
 
     Um Latenz zu minimieren, wählen Sie die Azure-Region, in der sich Ihr SQL Server befindet. Weitere Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).
@@ -190,4 +190,4 @@ Aktivieren von zusätzlichen Tabellen für Stretch-Datenbank Überwachen der Dat
 [StretchWizardImage8]: ./media/sql-server-stretch-database-wizard/stretchwiz8.png
 [StretchWizardImage9]: ./media/sql-server-stretch-database-wizard/stretchwiz9.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

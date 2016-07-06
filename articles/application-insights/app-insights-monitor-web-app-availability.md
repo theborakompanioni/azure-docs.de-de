@@ -221,12 +221,12 @@ In allen Fällen sollten Sie ein Konto erstellen, das nur Testzwecken dient. Sch
 
 * Einfacher Benutzername und einfaches Kennwort: Zeichnen Sie einfach einen Webtest auf die übliche Weise auf. Löschen Sie zuerst Cookies.
 * SAML-Authentifizierung Dazu können Sie das für Webtests verfügbare SAML-Plug-In verwenden.
-* Geheimer Clientschlüssel: Wenn die Anmelderoute Ihrer App einen geheimen Clientschlüssel umfasst, verwenden Sie diesen. Azure Active Directory Premium stellt diese Funktion bereit. 
+* Geheimer Clientschlüssel: Wenn die Anmelderoute Ihrer App einen geheimen Clientschlüssel umfasst, verwenden Sie diesen. Azure Active Directory Premium stellt diese Funktion bereit.
 * Offene Authentifizierung – z. B. Anmeldung mit Ihrem Microsoft- oder Google-Konto Viele Apps, die OAuth verwenden, stellen die Alternative mit dem geheimen Clientschlüssel bereit; die erste Taktik besteht also darin, dies zu untersuchen. Ist bei Ihrem Test die Anmeldung mit OAuth erforderlich, ist die allgemeine Vorgehensweise wie folgt:
- * Verwenden Sie ein Tool wie Fiddler, um den Datenverkehr zwischen Ihrem Webbrowser, der Authentifizierungswebsite und Ihrer App zu untersuchen. 
+ * Verwenden Sie ein Tool wie Fiddler, um den Datenverkehr zwischen Ihrem Webbrowser, der Authentifizierungswebsite und Ihrer App zu untersuchen.
  * Führen Sie mindestens zwei Anmeldungen auf verschiedenen Computern bzw. in verschiedenen Browsern oder mit großen zeitlichen Abständen durch (damit Token ablaufen können).
- * Vergleichen Sie verschiedene Sitzungen, um das von der authentifizierenden Website zurückgegebene Token zu identifizieren, das nach der Anmeldung dann an Ihren App-Server übergeben wird. 
- * Zeichnen Sie einen Webtests mit Visual Studio auf. 
+ * Vergleichen Sie verschiedene Sitzungen, um das von der authentifizierenden Website zurückgegebene Token zu identifizieren, das nach der Anmeldung dann an Ihren App-Server übergeben wird.
+ * Zeichnen Sie einen Webtests mit Visual Studio auf.
  * Parametrisieren Sie die Token, indem Sie den Parameter festlegen, wenn das Token vom Authentifikator zurückgegeben wird, und ihn in der Abfrage an die Website verwenden. (Visual Studio versucht, den Test zu parametrisieren, die Token werden jedoch nicht ordnungsgemäß parametrisiert.)
 
 
@@ -249,7 +249,7 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 
 ## Automation
 
-* [Verwenden Sie PowerShell-Skripts zum automatischen Einrichten eines Webtests](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/). 
+* [Verwenden Sie PowerShell-Skripts zum automatischen Einrichten eines Webtests](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/).
 * Richten Sie einen [Webhook](../azure-portal/insights-webhooks-alerts.md) ein, der bei einer Warnung aufgerufen wird.
 
 ## Fragen? Probleme?
@@ -268,7 +268,7 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 
 * *Ich möchte Verfügbarkeitstests auf unserem internen Server verwenden, der hinter einer Firewall ausgeführt wird.*
 
-    Konfigurieren Sie die Firewall, um Anfragen von den IP-Adressen in der Liste am Ende dieses Artikels zuzulassen.
+    Konfigurieren Sie die Firewall, um Anfragen von den [IP-Adressen der Webtest-Agents](app-insights-ip-addresses.md#availability) zuzulassen.
 
 * *Fehler beim Hochladen eines Webtests mit mehreren Schritten*
 
@@ -302,125 +302,7 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 
 [Problembehandlung][qna]
 
-
-## IP-Adressen von Webtests
-
-Wenn Sie eine Firewall zum Zulassen von Webtests öffnen müssen, sehen Sie sich die aktuelle Liste der IP-Adressen an. Sie kann sich von Zeit zu Zeit ändern.
-
-Öffnen Sie Port 80 (http) und 443 (https).
-
-```
-
-213.199.178.54
-213.199.178.55
-213.199.178.56
-213.199.178.61
-213.199.178.57
-213.199.178.58
-213.199.178.59
-213.199.178.60
-213.199.178.63
-213.199.178.64
-207.46.98.158
-207.46.98.159
-207.46.98.160
-207.46.98.157
-207.46.98.152
-207.46.98.153
-207.46.98.156
-207.46.98.162
-207.46.98.171
-207.46.98.172
-65.55.244.40
-65.55.244.17
-65.55.244.42
-65.55.244.37
-65.55.244.15
-65.55.244.16
-65.55.244.44
-65.55.244.18
-65.55.244.46
-65.55.244.47
-207.46.14.60
-207.46.14.61
-207.46.14.62
-207.46.14.55
-207.46.14.63
-207.46.14.64
-207.46.14.51
-207.46.14.52
-207.46.14.56
-207.46.14.65
-157.55.14.60
-157.55.14.61
-157.55.14.62
-157.55.14.47
-157.55.14.64
-157.55.14.65
-157.55.14.43
-157.55.14.44
-157.55.14.49
-157.55.14.50
-65.54.66.56
-65.54.66.57
-65.54.66.58
-65.54.66.61
-207.46.71.54
-207.46.71.52
-207.46.71.55
-207.46.71.38
-207.46.71.51
-207.46.71.57
-207.46.71.58
-207.46.71.37
-202.89.228.67
-202.89.228.68
-202.89.228.69
-202.89.228.57
-65.54.78.49
-65.54.78.50
-65.54.78.51
-65.54.78.54
-94.245.82.32
-94.245.82.33
-94.245.82.37
-94.245.82.38
-94.245.72.44
-94.245.72.45
-94.245.72.46
-94.245.72.49
-207.46.56.57
-207.46.56.58
-207.46.56.59
-207.46.56.67
-207.46.56.61
-207.46.56.62
-207.46.56.63
-207.46.56.64
-65.55.82.84
-65.55.82.85
-65.55.82.86
-65.55.82.81
-65.55.82.87
-65.55.82.88
-65.55.82.89
-65.55.82.90
-65.55.82.91
-65.55.82.92
-94.245.78.40
-94.245.78.41
-94.245.78.42
-94.245.78.45
-70.37.147.43
-70.37.147.44
-70.37.147.45
-70.37.147.48
-94.245.66.43
-94.245.66.44
-94.245.66.45
-94.245.66.48
-
-```
+[IP-Adressen von Webtest-Agents](app-insights-ip-addresses.md)
 
 
 <!--Link references-->
@@ -430,4 +312,4 @@ Wenn Sie eine Firewall zum Zulassen von Webtests öffnen müssen, sehen Sie sich
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

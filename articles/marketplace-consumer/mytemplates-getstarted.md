@@ -33,7 +33,7 @@ Die folgenden Vorschläge helfen Ihnen, bei der Arbeit mit Lösungen die Vorteil
 - Eine **Vorlage** ist eine kapselnde Ressource, die eine Resource Manager-Vorlage und zusätzliche Metadaten enthält. Sie verhält sich ähnlich wie ein Element im Marketplace. Der wesentliche Unterschied besteht darin, dass es im Gegensatz zu den öffentlichen Marketplace-Elementen ein privates Element ist.
 - Die Bibliothek **Vorlagen** eignet sich gut für Benutzer, die die Bereitstellung anpassen müssen.
 - **Vorlagen** sind auch gut für Benutzer geeignet, die in Azure ein einfaches Repository benötigen.
-- Beginnen Sie mit einer vorhandenen Resource Manager-Vorlage. Suchen Sie bei [GitHub](https://github.com/Azure/azure-quickstart-templates) nach Vorlagen, oder [exportieren Sie Vorlagen](https://azure.microsoft.com/blog/export-template/) aus einer vorhandenen Ressourcengruppe.
+- Beginnen Sie mit einer vorhandenen Resource Manager-Vorlage. Suchen Sie bei [GitHub](https://github.com/Azure/azure-quickstart-templates) nach Vorlagen, oder [exportieren Sie Vorlagen](../resource-manager-export-template.md) aus einer vorhandenen Ressourcengruppe.
 - **Vorlagen** sind an den Benutzer gebunden, von dem sie veröffentlicht werden. Der Herausgebername ist für alle Benutzer sichtbar, die über Lesezugriff darauf verfügen.
 - **Vorlagen** sind Resource Manager-Ressourcen und können nach dem Veröffentlichen nicht mehr umbenannt werden.
 
@@ -44,7 +44,7 @@ Es gibt zwei Methoden zum Erstellen einer Ressource vom Typ **Vorlage** im Azure
 ### Methode 1: Erstellen einer neuen Vorlagenressource aus einer ausgeführten Ressourcengruppe
 
 1. Navigieren Sie im Azure-Portal zu einer vorhandenen Ressourcengruppe. Wählen Sie unter **Einstellungen** die Option **Vorlage exportieren**.
-2. Nachdem die Resource Manager-Vorlage exportiert wurde, können Sie die Schaltfläche **Vorlage speichern** verwenden, um sie im Repository **Vorlagen** zu speichern. Alle Details zum Exportieren der Vorlage finden Sie [hier](https://azure.microsoft.com/blog/export-template/). <br /><br /> ![Ressourcengruppe exportieren](media/rg-export-portal1.PNG) <br />
+2. Nachdem die Resource Manager-Vorlage exportiert wurde, können Sie die Schaltfläche **Vorlage speichern** verwenden, um sie im Repository **Vorlagen** zu speichern. Alle Details zum Exportieren der Vorlage finden Sie [hier](../resource-manager-export-template.md). <br /><br /> ![Ressourcengruppe exportieren](media/rg-export-portal1.PNG) <br />
 
 3. Wählen Sie die Befehlsschaltfläche **Save to Template** (In Vorlage speichern). <br /><br />
 
@@ -131,4 +131,4 @@ Klicken Sie auf **Auswählen** und **OK**. Die Benutzer oder Gruppen, die Sie hi
 - Grundlegende Informationen zu den Funktionen, die Sie in einer Resource Manager-Vorlage verwenden können, finden Sie unter [Vorlagenfunktionen](../resource-group-template-functions.md).
 - Anleitungen zum Entwerfen von Vorlagen finden Sie unter [Bewährte Methoden für das Entwerfen von Azure-Ressourcen-Manager-Vorlagen](../best-practices-resource-manager-design-templates.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->
