@@ -30,7 +30,7 @@ Um Azure Multi-Factor Authentication für Ihre Benutzer aktivieren zu können, m
 
 
 - [Registrieren Sie sich für ein Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/): Falls Sie noch nicht über ein Azure-Abonnement verfügen, müssen Sie sich für ein Abonnement registrieren. Wenn Sie die Verwendung von Azure MFA testen möchten, können Sie ein Testabonnement verwenden.
-2. [Erstellen Sie einen Multi-Factor Authentication-Anbieter](multi-factor-authentication-get-started-auth-provider.md), und weisen Sie ihn Ihrem Verzeichnis zu, oder [weisen Sie Benutzern Lizenzen zu](multi-factor-authentication-get-started-assign-licenses.md). 
+2. [Erstellen Sie einen Multi-Factor Authentication-Anbieter](multi-factor-authentication-get-started-auth-provider.md), und weisen Sie ihn Ihrem Verzeichnis zu, oder [weisen Sie Benutzern Lizenzen zu](multi-factor-authentication-get-started-assign-licenses.md).
 
 > [AZURE.NOTE]  Lizenzen sind für Benutzer verfügbar, die über Azure MFA, Azure AD Premium oder Enterprise Mobility Suite (EMS) verfügen. MFA ist in Azure AD Premium und in EMS enthalten. Wenn Sie über genügend Lizenzen verfügen, müssen Sie keinen Authentifizierungsanbieter erstellen.
 		
@@ -57,12 +57,12 @@ Gehen Sie wie unten angegeben vor, um MFA für die Benutzer zu aktivieren.
 
 ## Automatisieren der Aktivierung von Multi-Factor Authentication mithilfe von PowerShell
 
-Sie können den Zustand[](multi-factor-authentication-whats-next.md) mithilfe von [Azure AD PowerShell](powershell-install-configuremd) auf folgende Weise ändern. `$st.State` kann auf einen der folgenden Zustände festgelegt werden:
+Sie können den Zustand[](multi-factor-authentication-whats-next.md) mithilfe von [Azure AD PowerShell](../powershell-install-configure.md) auf folgende Weise ändern. `$st.State` kann auf einen der folgenden Zustände festgelegt werden:
 
 
 - Aktiviert
 - Erzwungen
-- Deaktiviert  
+- Deaktiviert
 
 > [AZURE.IMPORTANT]  Hinweis: Bei einem direkten Wechsel von „Deaktiviert“ zu „Erzwungen“ können ältere Authentifizierungsclients nicht mehr verwendet werden, da der Benutzer die MFA-Registrierung nicht durchlaufen und kein [App-Kennwort](multi-factor-authentication-whats-next.md#app-passwords) bezogen hat. Sollten Sie über ältere Authentifizierungsclients verfügen und App-Kennwörter benötigen, empfiehlt es sich, von „Deaktiviert“ zu „Aktiviert“ zu wechseln. So können sich Benutzer registrieren und ihr App-Kennwort beziehen.
 		
@@ -90,4 +90,4 @@ Weitere Informationen zu Benutzerzuständen finden Sie unter [User States in Azu
 ## Nächste Schritte
 Nachdem Sie die Multi-Factor Authentication in der Cloud eingerichtet haben, können Sie die Bereitstellung konfigurieren und einrichten. Weitere Informationen finden Sie unter [Konfigurieren von Azure Multi-Factor Authentication].
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

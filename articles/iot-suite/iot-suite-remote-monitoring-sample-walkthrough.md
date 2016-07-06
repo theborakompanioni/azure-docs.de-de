@@ -14,7 +14,7 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="03/02/2016"
+ ms.date="06/23/2016"
  ms.author="stevehob"/>
 
 # Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für Remoteüberwachung
@@ -233,4 +233,4 @@ In den folgenden TechNet-Blogbeiträgen finden Sie weitere Informationen zur Rem
 - [IoT Suite - Under The Hood - Remote Monitoring](http://social.technet.microsoft.com/wiki/contents/articles/32941.iot-suite-under-the-hood-remote-monitoring.aspx) (IoT Suite – Weitere Informationen – Remoteüberwachung)
 - [IoT Suite - Remote Monitoring - Adding Live and Simulated Devices](http://social.technet.microsoft.com/wiki/contents/articles/32975.iot-suite-remote-monitoring-adding-live-and-simulated-devices.aspx) (IoT Suite – Remoteüberwachung – Hinzufügen von simulierten und Live-Geräten)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

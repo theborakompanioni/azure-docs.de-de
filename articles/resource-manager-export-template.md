@@ -13,18 +13,25 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/10/2016"
+	ms.date="06/28/2016"
 	ms.author="tomfitz"/>
 
 # Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen
 
-Die Erstellung von Azure Resource Manager-Vorlagen mag auf den einen oder anderen abschreckend wirken. Glücklicherweise unterstützt Sie Resource Manager bei dieser Aufgabe aber durch die Möglichkeit, eine Vorlage aus bereits vorhandenen Ressourcen in Ihrem Abonnement zu exportieren. Auf der Grundlage dieser generierten Vorlage können Sie sich über die Vorlagensyntax informieren oder ggf. die erneute Bereitstellung Ihrer Lösung automatisieren.
+Mit Resource Manager können Sie eine Resource Manager-Vorlage aus vorhandenen Ressourcen in Ihrem Abonnement exportieren. Auf der Grundlage dieser generierten Vorlage können Sie sich über die Vorlagensyntax informieren oder ggf. die erneute Bereitstellung Ihrer Lösung automatisieren.
+
+Es ist wichtig zu beachten, dass es zwei Möglichkeiten zum Exportieren einer Vorlage gibt:
+
+- Sie können die Vorlage exportieren, die für eine Bereitstellung verwendet wurde. Die exportierte Vorlage enthält alle Parameter und Variablen genauso, wie sie in der Originalvorlage definiert wurden. Dieser Ansatz ist besonders hilfreich, wenn Sie Ressourcen über das Portal bereitgestellt haben und jetzt ermitteln möchten, wie Sie die Vorlage zum Erstellen dieser Ressourcen erstellen können.
+- Sie können eine Vorlage exportieren, die den aktuellen Zustand der Ressourcengruppe darstellt. Die exportierte Vorlage basiert nicht auf einer Vorlage, die für die Bereitstellung verwendet wurde. Stattdessen wird eine Vorlage erstellt, bei der es sich um eine Momentaufnahme der Ressourcengruppe handelt. Die exportierte Vorlage verfügt über viele hartcodierte Werte und vermutlich nicht über so viele Parameter, wie Sie sonst definieren. Dieser Ansatz ist nützlich, wenn Sie die Ressourcengruppe über das Portal oder mit Skripts geändert haben und die Ressourcengruppe nun als Vorlage erfassen müssen.
+
+In diesem Thema werden beide Ansätze beschrieben. Im Artikel [Anpassen einer exportierten Azure Resource Manager-Vorlage](resource-manager-customize-template.md) wird gezeigt, wie Sie eine Vorlage, die aus dem aktuellen Zustand der Ressourcengruppe generiert wurde, nützlicher für die erneute Bereitstellung Ihrer Lösung gestalten.
 
 In diesem Tutorial melden Sie sich beim Azure-Portal an, erstellen ein Speicherkonto und exportieren die Vorlage für dieses Speicherkonto. Außerdem fügen Sie ein virtuelles Netzwerk hinzu, um die Ressourcengruppe zu ändern. Und schließlich exportieren Sie eine neue Vorlage, die den aktuellen Zustand darstellt. In diesem Artikel geht es zwar hauptsächlich um eine vereinfachte Infrastruktur, die beschriebenen Schritte können aber auch zum Exportieren einer Vorlage für eine kompliziertere Lösung verwendet werden.
 
 ## Erstellen Sie ein Speicherkonto.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) Folgendes aus: **Neu** > **Daten und Speicher** > **Speicherkonto** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) Folgendes aus: **Neu** > **Daten und Speicher** > **Speicherkonto**.
 
       ![Speicher erstellen](./media/resource-manager-export-template/create-storage.png)
 
@@ -34,7 +41,7 @@ In diesem Tutorial melden Sie sich beim Azure-Portal an, erstellen ein Speicherk
 
 Nach Abschluss der Bereitstellung enthält das Abonnement das Speicherkonto.
 
-## Exportieren der Vorlage für die Bereitstellung
+## Exportieren der Vorlage aus dem Bereitstellungsverlauf
 
 1. Navigieren Sie zum Blatt „Ressourcengruppe“ für die neue Ressourcengruppe. Hier wird das Ergebnis der letzten Bereitstellung angezeigt. Wählen Sie diesen Link aus.
 
@@ -50,15 +57,11 @@ Nach Abschluss der Bereitstellung enthält das Abonnement das Speicherkonto.
 
 4. Resource Manager ruft die folgenden fünf Dateien ab:
 
-   - Die Vorlage, mit der die Infrastruktur für Ihre Lösung definiert wird. Wenn Sie das Speicherkonto über das Portal erstellt haben, hat Resource Manager eine Vorlage für die Bereitstellung verwendet und die Vorlage zur späteren Verwendung gespeichert.
-
-   - Eine Parameterdatei, die Sie zum Übergeben von Werten während der Bereitstellung verwenden können. Sie enthält die Werte, die Sie bei der ersten Bereitstellung angegeben haben. Diese Werte können aber geändert werden, wenn Sie die Vorlage erneut bereitstellen.
-
-   - Eine Azure PowerShell-Skriptdatei, die Sie zum Bereitstellen der Vorlage verwenden können.
-
-   - Eine Skriptdatei der Azure-Befehlszeilenschnittstelle, die Sie zum Bereitstellen der Vorlage verwenden können.
-
-   - Ein .NET-Klasse, die Sie zum Bereitstellen der Vorlage verwenden können.
+   1. **Vorlage**: Die Vorlage, mit der die Infrastruktur für Ihre Lösung definiert wird. Wenn Sie das Speicherkonto über das Portal erstellt haben, hat Resource Manager eine Vorlage für die Bereitstellung verwendet und die Vorlage zur späteren Verwendung gespeichert.
+   2. **Parameter**: Eine Parameterdatei, die Sie zum Übergeben von Werten während der Bereitstellung verwenden können. Sie enthält die Werte, die Sie bei der ersten Bereitstellung angegeben haben. Diese Werte können aber geändert werden, wenn Sie die Vorlage erneut bereitstellen.
+   3. **CLI**: Eine Skriptdatei der Azure-Befehlszeilenschnittstelle, die Sie zum Bereitstellen der Vorlage verwenden können.
+   4. **PowerShell**: Eine Azure PowerShell-Skriptdatei, die Sie zum Bereitstellen der Vorlage verwenden können.
+   5. **.NET**: Eine .NET-Klasse, die Sie zum Bereitstellen der Vorlage verwenden können.
 
      Die Dateien sind über die Links im Blatt verfügbar. Standardmäßig ist die Vorlage ausgewählt.
 
@@ -107,24 +110,27 @@ Nach Abschluss der Bereitstellung enthält das Abonnement das Speicherkonto.
             }
           ]
         }
+ 
+Dies ist die Vorlage, die zum Erstellen Ihres Speicherkontos verwendet wurde. Beachten Sie, dass sie Parameter enthält, mit denen Sie unterschiedliche Arten von Speicherkonten bereitstellen können. Weitere Informationen zur Struktur einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md). Unter [Funktionen von Azure Resource Manager-Vorlagen](resource-group-template-functions.md) finden Sie eine vollständige Liste mit den Funktionen, die Sie in einer Vorlage verwenden können.
 
-     Wie Sie sehen, definiert die Vorlage Parameter für Name, Art und Ort des Speicherkontos. Ein Parameter gibt auch an, ob die Verschlüsselung aktiviert ist (Standardwert: **false**). Der Abschnitt **resources** enthält die Definition für das bereitzustellende Speicherkonto.
-
-In rechteckigen Klammern ist ein Ausdruck enthalten, der während der Bereitstellung ausgewertet wird. Mit den in Klammern gesetzten Ausdrücken in der Vorlage werden während der Bereitstellung Parameterwerte abgerufen. Sie können noch viele andere Ausdrücke verwenden. Entsprechende Beispiele finden Sie weiter unten in diesem Artikel. Eine vollständige Liste finden Sie unter [Azure Resource Manager-Vorlagenfunktionen](resource-group-template-functions.md).
-
-Weitere Informationen zur Struktur einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 
 ## Hinzufügen eines virtuellen Netzwerks
 
 Die im vorherigen Abschnitt heruntergeladene Vorlage stellt die Infrastruktur für die ursprüngliche Bereitstellung dar, berücksichtigt aber keine Änderungen, die nach der Bereitstellung vorgenommen werden. Um dieses Problem zu veranschaulichen, ändern wir die Ressourcengruppe, indem wir über das Portal ein virtuelles Netzwerk hinzufügen.
 
-1. Wählen Sie auf dem Blatt „Ressourcengruppe“ die Option **Hinzufügen** und anschließend in den verfügbaren Ressourcen die Option **Virtuelles Netzwerk** aus.
+1. Wählen Sie auf dem Blatt „Ressourcengruppe“ die Option **Hinzufügen**.
+
+      ![Ressource hinzufügen](./media/resource-manager-export-template/add-resource.png)
+
+2. Wählen Sie **Virtuelles Netzwerk** aus den verfügbaren Ressourcen aus.
+
+      ![Virtuelles Netzwerk auswählen](./media/resource-manager-export-template/select-vnet.png)
 
 2. Geben Sie dem virtuellen Netzwerk den Namen **VNET**, und übernehmen Sie für die anderen Eigenschaften die Standardwerte. Klicken Sie auf **Erstellen**.
 
       ![Warnung festlegen](./media/resource-manager-export-template/create-vnet.png)
 
-3. Sehen Sie sich den Bereitstellungsverlauf erneut an, nachdem das virtuelle Netzwerk erfolgreich für die Ressourcengruppe bereitgestellt wurde. Jetzt werden zwei Bereitstellungen angezeigt. Wählen Sie die neuere Bereitstellung aus.
+3. Sehen Sie sich den Bereitstellungsverlauf erneut an, nachdem das virtuelle Netzwerk erfolgreich für die Ressourcengruppe bereitgestellt wurde. Jetzt werden zwei Bereitstellungen angezeigt. Falls die zweite Bereitstellung nicht angezeigt wird, müssen Sie das Blatt „Ressourcengruppe“ ggf. schließen und erneut öffnen. Wählen Sie die neuere Bereitstellung aus.
 
       ![Bereitstellungsverlauf](./media/resource-manager-export-template/deployment-history.png)
 
@@ -133,13 +139,17 @@ Die im vorherigen Abschnitt heruntergeladene Vorlage stellt die Infrastruktur f�
 Die bewährte Methode besteht im Allgemeinen in der Verwendung einer einzelnen Vorlage, die die gesamte Infrastruktur für die Lösung mit nur einem Vorgang bereitstellt, anstatt mit einer Vielzahl unterschiedlicher Vorlagen zu jonglieren.
 
 
-## Exportieren der Vorlage für die Ressourcengruppe
+## Exportieren der Vorlage aus der Ressourcengruppe
 
 Auch wenn für jede Bereitstellung nur die Änderungen angezeigt werden, die Sie an der Ressourcengruppe vorgenommen haben, können Sie jederzeit eine Vorlage exportieren, um die Attribute der gesamten Ressourcengruppe anzuzeigen.
 
 1. Wählen Sie zum Anzeigen der Vorlage für eine Ressourcengruppe die Option **Vorlage exportieren** aus.
 
       ![Ressourcengruppe exportieren](./media/resource-manager-export-template/export-resource-group.png)
+
+     Nicht alle Ressourcentypen unterstützen die Funktion zum Exportieren von Vorlagen. Wenn die Ressourcengruppe wie in diesem Artikel gezeigt nur das Speicherkonto und das virtuelle Netzwerk enthält, wird kein Fehler angezeigt. Falls Sie andere Ressourcentypen erstellt haben, wird aber unter Umständen ein Fehler mit dem Hinweis angezeigt, dass ein Problem mit dem Export besteht. Informationen zum Umgang mit diesen Problemen finden Sie im Abschnitt [Beheben von Exportproblemen](#fixing-export-issues).
+
+      
 
 2. Es werden wieder die fünf Dateien angezeigt, die Sie zum erneuten Bereitstellen der Lösung verwenden können. Dieses Mal sieht die Vorlage allerdings etwas anders aus. Diese Vorlage verfügt nur über zwei Parameter: einen für den Speicherkontonamen und einen für den Namen des virtuellen Netzwerks.
 
@@ -154,7 +164,7 @@ Auch wenn für jede Bereitstellung nur die Änderungen angezeigt werden, die Sie
           }
         },
 
-     Resource Manager hat die bei der Bereitstellung verwendeten Vorlagen nicht abgerufen. Stattdessen wurde basierend auf der aktuellen Konfiguration der Ressourcen eine neue Vorlage generiert. Resource Manager ist nicht bekannt, welche Werte Sie als Parameter übergeben möchten. Daher werden die meisten Werte auf der Grundlage des Werts in der Ressourcengruppe hartcodiert. Der Standort des Speicherkontos und der Replikationswert werden beispielsweise wie folgt festgelegt:
+     Resource Manager hat die bei der Bereitstellung verwendeten Vorlagen nicht abgerufen. Stattdessen wurde basierend auf der aktuellen Konfiguration der Ressourcen eine neue Vorlage generiert. Der Standort des Speicherkontos und der Replikationswert werden beispielsweise wie folgt festgelegt:
 
         "location": "northeurope",
         "tags": {},
@@ -168,12 +178,168 @@ Auch wenn für jede Bereitstellung nur die Änderungen angezeigt werden, die Sie
 
 4. Suchen Sie nach der ZIP-Datei, die Sie heruntergeladen haben, und extrahieren Sie den Inhalt. Mit dieser heruntergeladenen Vorlage können Sie die Infrastruktur erneut bereitstellen.
 
+## Beheben von Exportproblemen
+
+Nicht alle Ressourcentypen unterstützen die Funktion zum Exportieren von Vorlagen. Einige Ressourcentypen werden absichtlich nicht exportiert, um zu verhindern, dass vertrauliche Daten offengelegt werden. Wenn Sie in Ihrer Websitekonfiguration beispielsweise über eine Verbindungszeichenfolge verfügen, möchten Sie vermutlich nicht, dass sie in einer exportierten Vorlage explizit angezeigt wird. Sie können dieses Problem beheben, indem Sie die fehlenden Ressourcen der Vorlage manuell erneut hinzufügen.
+
+> [AZURE.NOTE] Exportprobleme treten nur dann auf, wenn Sie aus einer Ressourcengruppe exportieren, anstatt aus Ihrem Bereitstellungsverlauf. Falls die letzte Bereitstellung genau den aktuellen Status der Ressourcengruppe widerspiegelt, sollten Sie die Vorlage nicht aus der Ressourcengruppe, sondern aus dem Bereitstellungsverlauf exportieren. Führen Sie den Export aus einer Ressourcengruppe nur dann durch, wenn Sie Änderungen an der Ressourcengruppe vorgenommen haben, die in einer einzelnen Vorlage nicht definiert sind.
+
+Wenn Sie beispielsweise eine Vorlage für eine Ressourcengruppe exportieren, die eine Web-App, SQL-Datenbank und eine Verbindungszeichenfolge in der Websitekonfiguration enthält, wird die folgende Meldung angezeigt:
+
+![show error](./media/resource-manager-export-template/show-error.png)
+
+Wenn Sie die Meldung auswählen, wird genau angezeigt, welche Ressourcentypen nicht exportiert wurden.
+     
+![show error](./media/resource-manager-export-template/show-error-details.png)
+
+Unten sind einige häufige Fixes aufgeführt. Zum Implementieren dieser Ressourcen müssen Sie der Vorlage Parameter hinzufügen. Weitere Informationen finden Sie unter [Anpassen und erneutes Bereitstellen der exportierten Vorlage](resource-manager-customize-template.md).
+
+### Verbindungszeichenfolge
+
+Fügen Sie in der Websiteressource eine Definition für die Verbindungszeichenfolge der Datenbank hinzu:
+
+```
+{
+  "type": "Microsoft.Web/sites",
+  ...
+  "resources": [
+    {
+      "apiVersion": "2015-08-01",
+      "type": "config",
+      "name": "connectionstrings",
+      "dependsOn": [
+          "[concat('Microsoft.Web/Sites/', parameters('<site-name>'))]"
+      ],
+      "properties": {
+          "DefaultConnection": {
+            "value": "[concat('Data Source=tcp:', reference(concat('Microsoft.Sql/servers/', parameters('<database-server-name>'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('<database-name>'), ';User Id=', parameters('<admin-login>'), '@', parameters('<database-server-name>'), ';Password=', parameters('<admin-password>'), ';')]",
+              "type": "SQLServer"
+          }
+      }
+    }
+  ]
+}
+```    
+
+### Websiteerweiterung
+
+Fügen Sie in der Websiteressource eine Definition für den zu installierenden Code hinzu:
+
+```
+{
+  "type": "Microsoft.Web/sites",
+  ...
+  "resources": [
+    {
+      "name": "MSDeploy",
+      "type": "extensions",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2015-08-01",
+      "dependsOn": [
+        "[concat('Microsoft.Web/sites/', parameters('<site-name>'))]"
+      ],
+      "properties": {
+        "packageUri": "[concat(parameters('<artifacts-location>'), '/', parameters('<package-folder>'), '/', parameters('<package-file-name>'), parameters('<sas-token>'))]",
+        "dbType": "None",
+        "connectionString": "",
+        "setParameters": {
+          "IIS Web Application Name": "[parameters('<site-name>')]"
+        }
+      }
+    }
+  ]
+}
+```
+
+### VM-Erweiterung
+
+Beispiele für VM-Erweiterungen finden Sie unter [Konfigurationsbeispiele für Windows-VM-Erweiterungen in Azure](./virtual-machines/virtual-machines-windows-extensions-configuration-samples.md).
+
+### Gateway des virtuellen Netzwerks
+
+Fügen Sie einen Ressourcentyp für das Gateway des virtuellen Netzwerks hinzu.
+
+```
+{
+  "type": "Microsoft.Network/virtualNetworkGateways",
+  "name": "[parameters('<gateway-name>')]",
+  "apiVersion": "2015-06-15",
+  "location": "[resourceGroup().location]",
+  "properties": {
+    "gatewayType": "[parameters('<gateway-type>')]",
+    "ipConfigurations": [
+      {
+        "name": "default",
+        "properties": {
+          "privateIPAllocationMethod": "Dynamic",
+          "subnet": {
+            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('<vnet-name>'), parameters('<new-subnet-name>'))]"
+          },
+          "publicIpAddress": {
+            "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('<new-public-ip-address-Name>'))]"
+          }
+        }
+      }
+    ],
+    "enableBgp": false,
+    "vpnType": "[parameters('<vpn-type>')]"
+  },
+  "dependsOn": [
+    "Microsoft.Network/virtualNetworks/codegroup4/subnets/GatewaySubnet",
+    "[concat('Microsoft.Network/publicIPAddresses/', parameters('<new-public-ip-address-Name>'))]"
+  ]
+},
+```
+
+### Lokales Netzwerkgateway
+
+Fügen Sie einen Ressourcentyp für das lokale Netzwerkgateway hinzu.
+
+```
+{
+    "type": "Microsoft.Network/localNetworkGateways",
+    "name": "[parameters('<local-network-gateway-name>')]",
+    "apiVersion": "2015-06-15",
+    "location": "[resourceGroup().location]",
+    "properties": {
+      "localNetworkAddressSpace": {
+        "addressPrefixes": "[parameters('<address-prefixes>')]"
+      }
+    }
+}
+```
+
+### Verbindung
+
+Fügen Sie einen Ressourcentyp für die Verbindung hinzu.
+
+```
+{
+    "apiVersion": "2015-06-15",
+    "name": "[parameters('<connection-name>')]",
+    "type": "Microsoft.Network/connections",
+    "location": "[resourceGroup().location]",
+    "properties": {
+        "virtualNetworkGateway1": {
+        "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('<gateway-name>'))]"
+      },
+      "localNetworkGateway2": {
+        "id": "[resourceId('Microsoft.Network/localNetworkGateways', parameters('<local-gateway-name>'))]"
+      },
+      "connectionType": "IPsec",
+      "routingWeight": 10,
+      "sharedKey": "[parameters('<shared-key>')]"
+    }
+},
+```
+
+
 ## Nächste Schritte
 
 Glückwunsch! Sie haben gelernt, wie Sie eine Vorlage aus Ressourcen exportieren, die Sie im Portal erstellt haben.
 
 - Im zweiten Teil dieses Tutorials passen Sie die gerade heruntergeladene Vorlage an, indem Sie weitere Parameter hinzufügen und die erneute Bereitstellung per Skript durchführen. Weitere Informationen finden Sie unter [Anpassen und erneutes Bereitstellen der exportierten Vorlage](resource-manager-customize-template.md).
-- Informationen zum Exportieren einer Vorlage mithilfe von PowerShell finden Sie unter [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](powershell-azure-resource-manager.md).
+- Informationen zum Exportieren einer Vorlage mithilfe von PowerShell finden Sie unter [Verwenden von Azure PowerShell mit dem Azure Resource Manager](powershell-azure-resource-manager.md).
 - Informationen zum Exportieren einer Vorlage mithilfe der Azure-Befehlszeilenschnittstelle finden Sie unter [Verwenden der plattformübergreifenden Azure-Befehlszeilenschnittstelle mit dem Azure Resource Manager](xplat-cli-azure-resource-manager.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

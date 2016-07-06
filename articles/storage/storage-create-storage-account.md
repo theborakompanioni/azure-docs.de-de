@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/09/2016"
+	ms.date="06/23/2016"
 	ms.author="robinsh"/>
 
 
@@ -51,9 +51,9 @@ Wenn Ihr Speicherkonto beispielsweise *meinspeicherkonto* heißt, dann sind die 
 
 Die URL für den Zugriff auf ein Objekt in einem Speicherkonto wird durch Anhängen des Objektstandorts im Speicherkonto an den Endpunkt generiert. Eine Blob-Adresse kann beispielsweise folgendes Format haben: http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*
 
-Sie können auch einen benutzerdefinierten Domänennamen konfigurieren, den Sie mit Ihrem Speicherkonto verwenden. Details für klassische Speicherkonten finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt](storage-custom-domain-name.md). Für ARM-Speicherkonten wurde diese Funktion im [Azure-Portal](https://portal.azure.com) noch nicht hinzugefügt, Sie können jedoch PowerShell für die Konfiguration verwenden. Weitere Informationen finden Sie unter dem Cmdlet [Set-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607146.aspx).
+Sie können auch einen benutzerdefinierten Domänennamen konfigurieren, den Sie mit Ihrem Speicherkonto verwenden. Informationen zu klassischen Speicherkonten finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt](storage-custom-domain-name.md). Für Resource Manager-Speicherkonten wurde diese Funktion im [Azure-Portal](https://portal.azure.com) noch nicht hinzugefügt, Sie können jedoch PowerShell für die Konfiguration verwenden. Weitere Informationen finden Sie unter dem Cmdlet [Set-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607146.aspx).
 
-## Erstellen Sie ein Speicherkonto.
+## Speicherkonto erstellen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -131,7 +131,7 @@ Mit dem folgenden Prozess wechseln Sie Ihre Speicherzugriffsschlüssel:
 
 ## Löschen eines Speicherkontos
 
-Um ein Speicherkonto zu entfernen, das Sie nicht mehr verwenden, wechseln Sie im [Azure-Portal](https://portal.azure.com) zu dem Speicherkonto , und klicken Sie auf **Löschen**. Durch das Löschen eines Speicherkontos wird das gesamte Konto gelöscht, einschließlich aller Daten im Konto.
+Um ein Speicherkonto zu entfernen, das Sie nicht mehr verwenden, wechseln Sie im [Azure-Portal](https://portal.azure.com) zum entsprechenden Speicherkonto, und klicken Sie auf **Löschen**. Durch das Löschen eines Speicherkontos wird das gesamte Konto gelöscht, einschließlich aller Daten im Konto.
 
 > [AZURE.WARNING] Es ist nicht möglich, ein gelöschtes Speicherkonto wiederherzustellen oder Inhalte abzurufen, die das Konto vor dem Löschen enthielt. Sichern Sie alle Inhalte, die Sie speichern möchten, bevor Sie das Konto löschen. Dies gilt auch für alle Ressourcen im Konto – gelöschte Blobs, Tabellen, Warteschlangen oder Dateien können nicht wiederhergestellt werden.
 
@@ -141,7 +141,7 @@ Um ein Speicherkonto löschen zu können, das einer virtuellen Azure-Maschine zu
 
 Wenn das Speicherkonto das klassische Bereitstellungsmodell verwendet, können Sie den Datenträger des virtuellen Computers entfernen, indem Sie folgende Schritte im [Azure-Portal](https://manage.windowsazure.com) ausführen:
 
-1. Navigieren Sie zum [klassischen Portal](https://manage.windowsazure.com).
+1. Navigieren Sie zum [klassischen Azure-Portal](https://manage.windowsazure.com).
 2. Navigieren Sie zur Registerkarte „Virtuelle Computer“.
 3. Klicken Sie auf die Registerkarte „Datenträger“.
 4. Wählen Sie Ihren Datenträger aus, und klicken Sie dann auf „Datenträger löschen“.
@@ -157,4 +157,4 @@ Weitere Informationen finden Sie unter [Dokumentation zu virtuellen Azure-Comput
 - [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 - Besuchen Sie den [Blog des Azure-Speicherteams](http://blogs.msdn.com/b/windowsazurestorage/).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

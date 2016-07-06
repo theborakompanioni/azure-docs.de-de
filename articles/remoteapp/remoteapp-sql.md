@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="05/02/2016"
+   ms.date="06/27/2016"
    ms.author="elizapo"/>
 
 # SQL Azure mit Azure RemoteApp
@@ -27,12 +27,12 @@ Beginnen Sie mit [Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank](.
 ## Konfigurieren von Azure RemoteApp
 Hosten Sie Ihre Windows-Anwendung in Azure RemoteApp. Unten ist eine grobe Schritt-für-Schritt-Anleitung angegeben:
 
-1.     Erstellen Sie die [Azure RemoteApp-Vorlagen-VM](remoteapp-imageoptions.md). 
+1.     Erstellen Sie die [Azure RemoteApp-Vorlagen-VM](remoteapp-imageoptions.md).
 2.     Installieren Sie die erforderliche Anwendung auf der virtuellen Maschine.
 3.     Konfigurieren Sie die Anwendung so, dass eine Verbindung mit der SQL-Datenbank hergestellt wird, und vergewissern Sie sich, dass sie funktioniert.
 4.     Führen Sie Sysprep für die VM durch, und fahren Sie sie herunter. Erfassen Sie sie als Image für die Verwendung mit Azure. **Hinweis:** Sie müssen darauf achten, dass die Anwendung die Informationen für die Datenbankverbindung über den Sysprep-Prozess beibehalten kann. Falls die Anwendung die Informationen für die Datenbankverbindung nicht beibehalten kann, müssen Sie sich unter Umständen an den Anbieter der Anwendung wenden und erfragen, wie die Verbindungszeichenfolge angegeben werden kann.
-5.     Importieren Sie das benutzerdefinierte Image in Ihre Azure RemoteApp-Bibliothek, indem Sie den richtigen geografischen Standort auswählen, unter dem sich Ihre SQL Azure-Bereitstellung befindet. 
-6.     Stellen Sie eine RemoteApp-Sammlung in demselben Rechenzentrum wie Ihre SQL Azure-Bereitstellung bereit, indem Sie die oben angegebene Vorlage verwenden und die Anwendung veröffentlichen. Durch das Bereitstellen von Azure RemoteApp in demselben Rechenzentrum wie Ihre SQL Azure-Bereitstellung können Sie sicherstellen, dass die höchsten Verbindungsgeschwindigkeiten erreicht werden und die Latenz verringert wird. 
+5.     Importieren Sie das benutzerdefinierte Image in Ihre Azure RemoteApp-Bibliothek, indem Sie den richtigen geografischen Standort auswählen, unter dem sich Ihre SQL Azure-Bereitstellung befindet.
+6.     Stellen Sie eine RemoteApp-Sammlung in demselben Rechenzentrum wie Ihre SQL Azure-Bereitstellung bereit, indem Sie die oben angegebene Vorlage verwenden und die Anwendung veröffentlichen. Durch das Bereitstellen von Azure RemoteApp in demselben Rechenzentrum wie Ihre SQL Azure-Bereitstellung können Sie sicherstellen, dass die höchsten Verbindungsgeschwindigkeiten erreicht werden und die Latenz verringert wird.
 
 ## Aspekte der App- und SQL-Konfiguration:
 Beim Verwenden von Azure SQL mit RemoteApp sind einige Punkte zu beachten:
@@ -46,8 +46,8 @@ Befolgen Sie die Schritt-für-Schritt-Anleitung unter [Konfigurieren der Firewal
 ## Problembehandlung
 Falls die Verwendung einer unter Azure RemoteApp gehosteten Clientanwendung mit Verbindung mit einer SQL-Datenbank, die unter Azure oder lokal gehostet wird, langsam ist, kann dies verschiedene Gründe haben.
 
-- Die Netzwerklatenz von Ihrem Gerät zu Azure ist hoch. Wechseln Sie zur besten und schnellsten Netzwerkverbindung, um die höchstmögliche Leistung zu erzielen. Verwenden Sie [azurespeed.com](http://azurespeed.com/) als allgemeines Tool zum Testen der Latenz Ihrer Geräte gegenüber dem Azure-Rechenzentrum.  
+- Die Netzwerklatenz von Ihrem Gerät zu Azure ist hoch. Wechseln Sie zur besten und schnellsten Netzwerkverbindung, um die höchstmögliche Leistung zu erzielen. Verwenden Sie [azurespeed.com](http://azurespeed.com/) als allgemeines Tool zum Testen der Latenz Ihrer Geräte gegenüber dem Azure-Rechenzentrum.
 - Die unter Azure RemoteApp gehostete Client-App ist ausgelastet. Die Leistung verbessert sich, wenn Sie einen anderen Abrechnungsplan auswählen, z. B. Premium-Abrechnung. Ein anderer Trick zur Überwachung Ihrer Anwendung ist das Verfolgen der Verbrauchswerte: Drücken Sie während einer aktiven Sitzung die Tastenkombination STRG+ALT+ENDE, um den SAS-Bildschirm zu starten. Wählen Sie den Task-Manager aus, und beobachten Sie die Ressourcenauslastung für Ihre App.
-- Der SQL-Server ist ausgelastet oder nicht optimiert. Führen Sie die Schritte der SQL-Anleitung für die Problembehandlung aus. 
+- Der SQL-Server ist ausgelastet oder nicht optimiert. Führen Sie die Schritte der SQL-Anleitung für die Problembehandlung aus.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->
