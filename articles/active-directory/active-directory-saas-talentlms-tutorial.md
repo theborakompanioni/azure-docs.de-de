@@ -78,7 +78,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-talentlms-tutorial/IC777293.png "Einmaliges Anmelden konfigurieren")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **TalentLMS-Anmelde-URL** die URL im Format „*https://\<Mandantenname\>.TalentLMSapp.com*“ ein, und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **TalentLMS-Anmelde-URL** die URL im Format „ *https://\<Mandantenname\>.TalentLMSapp.com* “ ein, und klicken Sie dann auf **Weiter**.
 
     ![Anmelde-URL](./media/active-directory-saas-talentlms-tutorial/IC777294.png "Anmelde-URL")
 
