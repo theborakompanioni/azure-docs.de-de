@@ -405,7 +405,7 @@ Eine SAS-URL weist das folgende Format auf:
 Folgende Überlegungen sollten berücksichtigt werden:
 
 - Einem bestimmten Medienobjekt können jeweils nicht mehr als fünf eindeutige Locators zugeordnet sein. Weitere Informationen finden Sie unter "Locator".
-- Wenn Sie Ihre Dateien sofort hochladen müssen, sollten Sie Ihren StartTime-Wert auf fünf Minuten vor der aktuellen Uhrzeit festlegen. Dies ist erforderlich, weil ggf. eine Uhrzeitabweichung zwischen dem Clientcomputer und Media Services vorliegen kann. Zudem muss der StartTime-Wert das folgende DateTime-Format haben: JJJJ-MM-TTTHH:mm:ssZ (z. B. "2014-05-23T17:53:50Z").
+- Wenn Sie Ihre Dateien sofort hochladen müssen, sollten Sie Ihren StartTime-Wert auf fünf Minuten vor der aktuellen Uhrzeit festlegen. Dies ist erforderlich, weil ggf. eine Uhrzeitabweichung zwischen dem Clientcomputer und Media Services vorliegen kann. Zudem muss der StartTime-Wert das folgende DateTime-Format haben: JJJJ-MM-TTTHH:mm:ssZ (z. B. "2014-05-23T17:53:50Z").	
 - Gegebenenfalls tritt eine Verzögerung von 30 bis 40 Sekunden zwischen dem Erstellen eines Locators und seiner Verfügbarkeit auf. Dies gilt für die SAS-URL sowie für Ursprungslocators.
 
 Das folgende Beispiel zeigt, wie Sie einen SAS URL-Locator gemäß der Type-Eigenschaft im Anforderungstext (1 für einen SAS-Locator und 2 für einen On-Demand-Ursprungslocator) erstellen können. Die zurückgegebene **Path**-Eigenschaft enthält die URL, die Sie für den Upload der Datei verwenden müssen.
@@ -497,7 +497,8 @@ Nachdem Sie Ihre Datei nun hochgeladen haben, sollten Sie die FileAsset-Größe 
 
 **HTTP-Antwort**
 
-Im Erfolgsfall wird Folgendes zurückgegeben: HTTP/1.1 204 Kein Inhalt
+Im Erfolgsfall wird Folgendes zurückgegeben: 
+	HTTP/1.1 204 Kein Inhalt
 
 ## Löschen von AccessPolicy und Locator 
 
@@ -549,7 +550,7 @@ Media Services bietet dynamische Paketerstellung zum Übermitteln Ihrer MP4-Date
 Um die dynamische Paketerstellung nutzen zu können, müssen Sie folgende Schritte ausführen:
 
 - Abrufen von mindestens einer Streamingeinheit für den **Streamingendpunkt**, von dem aus Sie die Bereitstellung Ihrer Inhalte (wie in diesem Abschnitt beschrieben) planen.
-- Codieren oder Transcodieren Ihrer Zwischendatei (Quelle) in einen Satz von MP4-Dateien oder Smooth Streaming-Dateien mit adaptiver Bitrate (die Codierungsschritte werden weiter unten in diesem Lernprogramm veranschaulicht).
+- Codieren oder Transcodieren Ihrer Zwischendatei (Quelle) in einen Satz von MP4-Dateien oder Smooth Streaming-Dateien mit adaptiver Bitrate (die Codierungsschritte werden weiter unten in diesem Lernprogramm veranschaulicht).  
 
 Mit der dynamischen Paketerstellung müssen Sie die Dateien nur in einem Speicherformat speichern und bezahlen. Media Services erstellt und verarbeitet die entsprechende Antwort basierend auf Anforderungen von einem Client.
 
@@ -667,8 +668,8 @@ Wie bereits erwähnt, besteht beim Arbeiten mit Azure Media Services eines der h
 
 Um die dynamische Paketerstellung nutzen zu können, müssen Sie folgende Schritte ausführen:
 
-- Codieren oder Transcodieren Ihrer Zwischendatei (Quelldatei) in einen Satz von MP4-Dateien oder Smooth Streaming-Dateien mit adaptiver Bitrate
-- Abrufen von mindestens einer Streamingeinheit für den Streamingendpunkt, von dem aus Sie die Bereitstellung Ihrer Inhalte planen.
+- Codieren oder Transcodieren Ihrer Zwischendatei (Quelldatei) in einen Satz von MP4-Dateien oder Smooth Streaming-Dateien mit adaptiver Bitrate  
+- Abrufen von mindestens einer Streamingeinheit für den Streamingendpunkt, von dem aus Sie die Bereitstellung Ihrer Inhalte planen. 
 
 Der folgende Abschnitt veranschaulicht die Erstellung eines Auftrags, der eine Codierungsaufgabe enthält. Die Aufgabe gibt an, dass die Zwischendatei mit **Media Encoder Standard** in einen MP4-Dateisatz mit adaptiver Bitrate transcodiert werden soll. Außerdem wird in diesem Abschnitt erläutert, wie Sie den Fortschritt der Auftragsverarbeitung überwachen. Nachdem Sie den Auftrag abgeschlossen haben, können Sie Locators erstellen, die für den Zugriff auf Ihre Medienobjekte erforderlich sind.
 

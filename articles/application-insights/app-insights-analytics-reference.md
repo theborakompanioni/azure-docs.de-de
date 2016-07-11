@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Referenz in Analytics in Application Insights | Microsoft Azure" 
-	description="Referenz für Anweisungen in Analytics, dem leistungsfähigen Suchtool von Application Insights. " 
+	description="Referenz für Anweisungen in Analytics, dem leistungsfähigen Suchtool von Application Insights." 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
@@ -342,7 +342,7 @@ Das Ergebnis lautet:
 
 **Argumente**
 
-* *ColumnName:* Im Ergebnis werden Arrays in der benannten Spalte auf mehrere Zeilen erweitert.
+* *ColumnName:* Im Ergebnis werden Arrays in der benannten Spalte auf mehrere Zeilen erweitert. 
 * *ArrayExpression:* Ein Ausdruck, der ein Array zurückgibt. Bei Verwendung dieses Formulars wird eine neue Spalte hinzugefügt, und die vorhandene wird beibehalten.
 * *Name:* Ein Name für die neue Spalte.
 * *Typename:* Wandelt den erweiterten Ausdruck in einen bestimmten Typ um.
@@ -510,7 +510,7 @@ Wählen Sie die Spalten aus, die einbezogen, umbenannt oder gelöscht werden sol
 
 * *T:* Die Eingabetabelle.
 * *ColumnName:* Der Name einer Spalte, der in der Ausgabe angezeigt wird. Wenn kein *Ausdruck* vorhanden ist, muss die Eingabe eine Spalte mit diesem Namen enthalten. Bei [Namen](#names) muss die Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder einen Unterstrich („\_“) enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
-* *Expression:* Optionaler skalarer Ausdruck, der auf die Eingabespalten verweist.
+* *Expression:* Optionaler skalarer Ausdruck, der auf die Eingabespalten verweist. 
 
     Das Zurückgeben einer neuen berechneten Spalte mit dem gleichen Namen wie eine vorhandene Spalte der Eingabe ist zulässig.
 
@@ -562,7 +562,7 @@ Erzeugt eine einspaltige Tabelle mit Werten. Beachten Sie, dass keine Pipeline-E
 * *ColumnName:* Der Name der einzelnen Spalte in der Ausgabetabelle.
 * *Start:* Der kleinste Wert in der Ausgabe.
 * *Stop:* Der höchste in der Ausgabe generierte Wert (oder eine Grenze für den höchsten Wert, wenn *step* diesen Wert überschreitet).
-* *Step:* Die Differenz zwischen zwei aufeinanderfolgenden Werten.
+* *Step:* Die Differenz zwischen zwei aufeinanderfolgenden Werten. 
 
 Die Argumente müssen numerische Werte, Datums- oder TimeSpan-Werte sein. Sie können nicht auf die Spalten einer Tabelle verweisen. (Wenn Sie den Bereich basierend auf einer Eingabetabelle berechnen möchten, verwenden Sie die [range*-Funktion*](#range), ggf. mit dem [mvexpand-Operator](#mvexpand-operator).)
 
@@ -615,7 +615,7 @@ Versucht, ähnliche Datensätze zu gruppieren. Der Operator gibt für jede Grupp
 **Argumente**
 
 * *ColumnName:* Die zu untersuchende Spalte. Sie muss vom Typ „Zeichenfolge“ sein.
-* *Threshold:* Ein Wert im Bereich {0..1}. Der Standardwert ist 0,001. Bei großen Eingaben sollte der Schwellenwert klein sein.
+* *Threshold:* Ein Wert im Bereich {0..1}. Der Standardwert ist 0,001. Bei großen Eingaben sollte der Schwellenwert klein sein. 
 
 **Rückgabe**
 
@@ -1923,7 +1923,7 @@ Zählt die Vorkommnisse einer Teilzeichenfolge in einer Zeichenfolge. Einfache Z
 
 * *text:* Eine Zeichenfolge.
 * *search:* Die einfache Zeichenfolge oder der reguläre Ausdruck, die bzw. der in *text* abgeglichen werden soll.
-* *kind:* `"normal"|"regex"`, Standardwert: `normal`.
+* *kind:* `"normal"|"regex"`, Standardwert: `normal`. 
 
 **Rückgabe**
 
@@ -2121,7 +2121,7 @@ Extrahiert eine Teilzeichenfolge aus einer angegebenen Quellzeichenfolge, beginn
 
 * *source:* Die Quellzeichenfolge, aus der die Teilzeichenfolge entnommen wird.
 * *startingIndex:* Die nullbasierte Position des Anfangszeichens der angeforderten Teilzeichenfolge.
-* *length:* Ein optionaler Parameter, der zur Angabe der angeforderten Anzahl von Zeichen in der Teilzeichenfolge verwendet werden kann.
+* *length:* Ein optionaler Parameter, der zur Angabe der angeforderten Anzahl von Zeichen in der Teilzeichenfolge verwendet werden kann. 
 
 **Rückgabe**
 
@@ -2241,7 +2241,7 @@ Beachten Sie, dass mit `indexer` markiert wird, an welcher Stelle Sie einen nume
 Verwenden Sie `parsejson` zum Erstellen eines dynamischen Literals (Alias `todynamic`) mit einem JSON-Zeichenfolgenargument:
 
 * `parsejson('[43, 21, 65]')`: Ein Array von Zahlen
-* `parsejson('{"name":"Alan", "age":21, "address":{"street":432,"postcode":"JLK32P"}}')`
+* `parsejson('{"name":"Alan", "age":21, "address":{"street":432,"postcode":"JLK32P"}}')` 
 * `parsejson('21')`: Ein einzelner Wert vom Typ „dynamic“ mit einer Zahl
 * `parsejson('"21"')`: Ein einzelner Wert vom Typ „dynamic“ mit einer Zeichenfolge
 
@@ -2412,7 +2412,7 @@ Die `range()`-Funktion (nicht zu verwechseln mit dem `range`-Operator) erzeugt e
 
 **Argumente**
 
-* *start:* Der Wert des ersten Elements im resultierenden Array.
+* *start:* Der Wert des ersten Elements im resultierenden Array. 
 * *stop:* Der Wert des letzten Elements im resultierenden Array oder der kleinste Wert, der größer ist als das letzte Element im resultierenden Array und in einem ganzzahligen Vielfachen von *step* von *start* enthalten ist.
 * *step:* Die Differenz zwischen zwei aufeinanderfolgenden Elementen des Arrays.
 

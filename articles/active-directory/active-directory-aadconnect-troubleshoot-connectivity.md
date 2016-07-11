@@ -26,8 +26,8 @@ In diesem Artikel zeigen wir Ihnen, wie Fabrikam durch seinen Proxy mit Azure AD
 
 Zunächst stellen wir sicher, dass [**machine.config**](active-directory-aadconnect-prerequisites.md#connectivity) richtig konfiguriert ist. ![machineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/machineconfig.png)
 
->[AZURE.NOTE]
-In einigen Nicht-Microsoft-Blogs ist dokumentiert, dass Änderungen stattdessen an „miiserver.exe.config“ vorgenommen werden sollen. Diese Datei wird jedoch mit jeder Aktualisierung überschrieben. Selbst wenn das System nach der Erstinstallation funktionieren sollte, ist das nach der ersten Aktualisierung nicht mehr der Fall. Daher wird empfohlen, stattdessen „machine.config“ zu aktualisieren.
+
+>[AZURE.NOTE]In einigen Nicht-Microsoft-Blogs ist dokumentiert, dass Änderungen stattdessen an „miiserver.exe.config“ vorgenommen werden sollen. Diese Datei wird jedoch mit jeder Aktualisierung überschrieben. Selbst wenn das System nach der Erstinstallation funktionieren sollte, ist das nach der ersten Aktualisierung nicht mehr der Fall. Daher wird empfohlen, stattdessen „machine.config“ zu aktualisieren.
 
 Der Proxyserver muss die erforderlichen URLs geöffnet haben. Die offizielle Liste ist unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) zu finden.
 
@@ -39,7 +39,7 @@ mscrl.microsoft.com | HTTP/80 | Wird verwendet um CRL-Listen (Zertifikatsperrlis
 *.verisign.com | HTTP/80 | Wird verwendet um CRL-Listen (Zertifikatsperrlisten) herunterzuladen.
 *.entrust.com | HTTP/80 | Wird verwendet um CRL-Listen (Zertifikatsperrlisten) für MFA herunterzuladen.
 *.windows.net | HTTPS/443 | Wird für die Anmeldung bei Azure AD verwendet.
-secure.aadcdn.microsoftonline-p.com | HTTPS/443 | Wird für MFA verwendet.
+*secure.aadcdn.microsoftonline-p.com | HTTPS/443 | Wird für MFA verwendet.
 *.microsoftonline.com | HTTPS/443 | Wird zum Konfigurieren Ihres Azure AD-Verzeichnisses und zum Importieren/Exportieren von Daten verwendet.
 
 ## Fehler im Assistenten

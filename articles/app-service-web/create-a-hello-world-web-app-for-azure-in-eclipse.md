@@ -52,7 +52,7 @@ Zunächst beginnen wir mit der Erstellung eines Java-Projekts.
 
 1. Wenn in Eclipse die Datei „index.jsp“ geöffnet wird, geben Sie den Text **Hello World!** ein, damit er dynamisch im vorhandenen `<body>`-Element angezeigt wird. Der aktualisierte `<body>`-Inhalt sollte in etwa wie folgt aussehen:
 
-    `<body><b><% out.println("Hello World!"); %></b></body>`
+    `<body><b><% out.println("Hello World!"); %></b></body>` 
 
 1. Speichern Sie die Datei „index.jsp“.
 

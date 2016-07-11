@@ -255,7 +255,7 @@ Weitere Informationen zu Azure Active Directory:
 
 Bei der Implementierung sind bestimmte Aspekte zu beachten. Die folgende Liste soll Ihnen helfen, eventuell auftretende Probleme zu beheben.
 
-1. Die URL zu **Issuer** muss mit **„/“** enden.
+1. Die URL zu **Issuer** muss mit **„/“** enden.  
 
 	**Audience** muss die Client-ID der Playeranwendung enthalten. Zudem sollten Sie auch **„/“** an das Ende der URL von „Issuer“ anhängen.
 
@@ -361,15 +361,15 @@ In der Tat beziehen wir das Zugriffstoken von Azure AD. Nach erfolgreicher Benut
 
 1.	Gehen Sie im Azure AD-Mandanten so vor:
 
-	- Fügen Sie eine Anwendung (Ressource) mit einer Anmelde-URL:
+	- Fügen Sie eine Anwendung (Ressource) mit einer Anmelde-URL: 
 
 	https://[resource_name].azurewebsites.net/ und
 
-	- App-ID-URL hinzu:
+	- App-ID-URL hinzu: 
 	
-	https://[aad_tenant_name].onmicrosoft.com/[resource_name];
+	https://[aad_tenant_name].onmicrosoft.com/[resource_name]; 
 2.	Fügen Sie einen neuen Schlüssel für die Ressourcen-App hinzu.
-3.	Aktualisieren Sie die Manifestdatei der App so, dass die „groupMembershipClaims“-Eigenschaft den folgenden Wert hat: „groupMembershipClaims“: „All“.
+3.	Aktualisieren Sie die Manifestdatei der App so, dass die „groupMembershipClaims“-Eigenschaft den folgenden Wert hat: „groupMembershipClaims“: „All“.  
 4.	Fügen Sie in der Azure AD-App, die auf die Player-Web-App zeigt, im Abschnitt „Berechtigungen für andere Anwendungen“ die Ressourcen-App hinzu, die zuvor in Schritt 1 hinzugefügt wurde. Aktivieren Sie unter „Berechtigungen der Stellvertretung“ das Kontrollkästchen „Auf [Ressourcenname] zugreifen“. Dadurch erhält die Web-App die Berechtigung zum Erstellen von Zugriffstoken für den Zugriff auf die Ressourcen-App. Dies muss für die lokale und bereitgestellte Version der Web-App erfolgen, wenn Sie mit Visual Studio und einer Azure-Web-App entwickeln.
 	
 Daher ist das von Azure AD ausgestellte JWT-Token tatsächlich das Zugriffstoken für den Zugriff auf diese „Zeiger“-Ressource.
@@ -386,7 +386,7 @@ Es ist bekannt, dass Sie für Livestreaming in Azure Media Services erst einen K
 
 Kunden haben möglicherweise in eine Lizenzserverfarm investiert, die sich entweder in ihrem eigenen Rechenzentrum befindet oder von DRM-Dienstanbietern gehostet wird. Glücklicherweise lässt Azure Media Services Content Protection einen Betrieb im Hybridmodus zu. Dabei werden Inhalte in Azure Media Services gehostet und dynamisch geschützt, während die DRM-Lizenzen von Servern außerhalb von Azure Media Services bereitgestellt werden. In diesem Fall müssen die folgenden Änderungen berücksichtigt werden:
 
-1. Der Secure Token Service (STS) muss Token ausstellen, die zulässig sind und von der Lizenzserverfarm überprüft werden können. Beispielsweise erfordern die von Axinom bereitgestellten Widevine-Lizenzserver ein spezifisches JWT-Token, das „entitlement message“ enthält. Aus diesem Grund benötigen Sie einen STS zum Ausstellen solcher JWT-Token. Die Entwickler haben diese Implementierung abgeschlossen. Informationen finden Sie im folgenden Dokument im [Azure-Dokumentationscenter](https://azure.microsoft.com/documentation/): [Bereitstellen von Widevine-Lizenzen für Azure Media Services mithilfe von Axinom](media-services-axinom-integration.md).
+1. Der Secure Token Service (STS) muss Token ausstellen, die zulässig sind und von der Lizenzserverfarm überprüft werden können. Beispielsweise erfordern die von Axinom bereitgestellten Widevine-Lizenzserver ein spezifisches JWT-Token, das „entitlement message“ enthält. Aus diesem Grund benötigen Sie einen STS zum Ausstellen solcher JWT-Token. Die Entwickler haben diese Implementierung abgeschlossen. Informationen finden Sie im folgenden Dokument im [Azure-Dokumentationscenter](https://azure.microsoft.com/documentation/): [Bereitstellen von Widevine-Lizenzen für Azure Media Services mithilfe von Axinom](media-services-axinom-integration.md). 
 1. Sie müssen den Lizenzbereitstellungsdienst (ContentKeyAuthorizationPolicy) nicht mehr in Azure Media Services konfigurieren. Sie müssen die Lizenzerwerbs-URLs (für PlayReady, Widevine und FairPlay) bei der Konfiguration von „AssetDeliveryPolicy“ während der Einrichtung von CENC mit mehreren DRM-Systemen bereitstellen.
  
 ### Was geschieht, wenn ich einen benutzerdefinierten STS verwenden möchte?

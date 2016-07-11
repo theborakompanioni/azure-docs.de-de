@@ -17,7 +17,7 @@
 	ms.date="06/24/2016"
 	ms.author="robmcm"/>
 
-# Erstellen einer PHP-MySQL-Web-App in Azure App Service und Bereitstellen über Git
+#Erstellen einer PHP-MySQL-Web-App in Azure App Service und Bereitstellen über Git
 
 In diesem Lernprogramm erfahren Sie, wie Sie eine PHP-MySQL-Web-App erstellen und über Git in [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) bereitstellen. Dazu verwenden Sie [PHP][install-php], das MySQL-Befehlszeilentool (Teil von [MySQL][install-mysql]) und [Git][install-git] auf Ihrem Computer. Die Anweisungen in diesem Lernprogramm lassen sich von jedem Betriebssystem aus befolgen, einschließlich Windows, Max und Linux. Nachdem Sie diese Anleitung durchgearbeitet haben, verfügen Sie über eine in Azure ausgeführte PHP-/MySQL-Web-App.
 
@@ -31,7 +31,7 @@ Mithilfe dieses Lernprogramms erstellen Sie eine einfache Web-App für die Regis
 
 ![Azure-PHP-Website][running-app]
 
-## Einrichten der Entwicklungsumgebung
+##Einrichten der Entwicklungsumgebung
 
 Voraussetzung für dieses Tutorial sind [PHP][install-php], das MySQL-Befehlszeilentool (Teil von [MySQL][install-mysql]) und [Git][install-git] auf Ihrem Computer.
 
@@ -75,7 +75,7 @@ Befolgen Sie diese Schritte, um eine Web-App und eine MySQL-Datenbank zu erstell
 	![Anmeldedaten für die Veröffentlichung erstellen][credentials]
 
 
-## Abrufen von MySQL-Remoteverbindungsinformationen
+##Abrufen von MySQL-Remoteverbindungsinformationen
 
 Um eine Verbindung mit der in Web-Apps ausgeführten MySQL-Datenbank herzustellen, benötigen Sie die Verbindungsinformationen. Befolgen Sie die folgenden Schritte, um MySQL-Verbindungsinformationen abzurufen:
 
@@ -91,7 +91,7 @@ Um eine Verbindung mit der in Web-Apps ausgeführten MySQL-Datenbank herzustelle
 
     ![Eigenschaften notieren][note-properties]
 
-## Lokales Erstellen und Testen der App
+##Lokales Erstellen und Testen der App
 
 Nach der Erstellung einer Web-App können Sie Ihre Anwendung lokal entwickeln und nach dem Testen bereitstellen.
 
@@ -209,12 +209,12 @@ Befolgen Sie die unten stehenden Schritte, um die Anwendung lokal zu erstellen u
 Nun können Sie zu **http://localhost:8000/** navigieren, um die Anwendung zu testen.
 
 
-## Veröffentlichen der App
+##Veröffentlichen der App
 
 Nachdem Sie Ihre App lokal getestet haben, können Sie sie über Git in Web-Apps veröffentlichen. Sie initialisieren Ihr lokales Git-Verzeichnis und veröffentlichen die Anwendung.
 
-> [AZURE.NOTE]
-Dies sind dieselben Schritte, die am Ende des obigen Abschnitts „Erstellen einer Web-App und Einrichten der Git-Veröffentlichung“ im Azure-Portal gezeigt werden.
+
+> [AZURE.NOTE] Dies sind dieselben Schritte, die am Ende des obigen Abschnitts „Erstellen einer Web-App und Einrichten der Git-Veröffentlichung“ im Azure-Portal gezeigt werden.
 
 1. (Optional) Sollten Sie Ihre Git-Remoteverzeichnis-URL vergessen oder verlegt haben, navigieren Sie zu den Web-App-Eigenschaften im Azure-Portal.
 
@@ -236,7 +236,7 @@ Dies sind dieselben Schritte, die am Ende des obigen Abschnitts „Erstellen ein
 
 Nach Veröffentlichung Ihrer Anwendung können Sie Änderungen an ihr vornehmen und diese über Git veröffentlichen.
 
-## Veröffentlichen von Änderungen an der Anwendung
+##Veröffentlichen von Änderungen an der Anwendung
 
 Befolgen Sie die folgenden Schritte, um Änderungen an der Anwendung zu veröffentlichen:
 

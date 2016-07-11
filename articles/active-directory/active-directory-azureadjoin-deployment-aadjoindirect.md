@@ -42,7 +42,7 @@ Unternehmen können Nur-Cloud-Konten für Partnerunternehmen und Organisationen 
 ### Voraussetzungen
 **Auf Unternehmensebene (Administrator)**
 
-*	Azure-Abonnement mit Azure Active Directory
+*	Azure-Abonnement mit Azure Active Directory  
 
 **Auf Benutzerebene**
 

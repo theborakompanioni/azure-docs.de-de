@@ -22,7 +22,9 @@
 
 Dieser Artikel enthält Schritte zum Erstellen eines virtuellen Computers mit SQL Server in Azure durch Verwenden von PowerShell-Cmdlets.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Die Version dieses Themas zum Resource Manager finden Sie unter [Bereitstellen eines virtuellen SQL Server-Computers mit Azure PowerShell (Resource Manager)](virtual-machines-windows-ps-sql-create.md).
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 
+
+Die Version dieses Themas zum Resource Manager finden Sie unter [Bereitstellen eines virtuellen SQL Server-Computers mit Azure PowerShell (Resource Manager)](virtual-machines-windows-ps-sql-create.md).
 
 ## Installieren und Konfigurieren von PowerShell
 

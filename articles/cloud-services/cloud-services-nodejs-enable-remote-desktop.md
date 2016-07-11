@@ -95,7 +95,7 @@ Wenn Sie die Remotedesktopverbindungen zu den Rolleninstanzen in der Cloud nicht
 
 ## Zusätzliche Ressourcen
 
-- [Fernzugriff auf Rolleninstanzen in Azure]
+- [Fernzugriff auf Rolleninstanzen in Azure] 
 - [Verwenden von Remotedesktop mit Azure-Rollen]
 - [Node.js Developer Center](/develop/nodejs/)
 

@@ -57,7 +57,7 @@ Zum Vorbereiten Ihres Medienobjekts auf dynamisches Streaming haben Sie zwei Mö
 
 ODER
  
-1. Laden Sie vorcodierte MP4-Dateien hoch.
+1. Laden Sie vorcodierte MP4-Dateien hoch. 
 
 	>[AZURE.NOTE] Diese Option wird jedoch nicht empfohlen.
 	

@@ -298,7 +298,7 @@ Azure Data Factory bietet verschiedene Mechanismen zum Erstellen und Bereitstell
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wechseln Sie zu Ihrer Azure Data Factory-Instanz, in der Sie eine Pipeline erstellen möchten.
-3. Klicken Sie im Fokus **Zusammenfassung** auf die Kachel **Erstellen und bereitstellen**.
+3. Klicken Sie im Fokus **Zusammenfassung** auf die Kachel **Erstellen und bereitstellen**. 
  
 	![Kachel "Erstellen und bereitstellen"](./media/data-factory-create-pipelines/author-deploy-tile.png)
 
@@ -343,9 +343,9 @@ Sobald eine Pipeline bereitgestellt wird, können Sie Ihre Pipelines, Slices und
 
 ## Nächste Schritte
 
-- Erfahren Sie mehr über die [Planung und Ausführung in Azure Data Factory](data-factory-scheduling-and-execution.md).
+- Erfahren Sie mehr über die [Planung und Ausführung in Azure Data Factory](data-factory-scheduling-and-execution.md).  
 - Informieren Sie sich über die Möglichkeiten zur [Datenverschiebung](data-factory-data-movement-activities.md) und [Datentransformation](data-factory-data-transformation-activities.md) in Azure Data Factory.
 - Erfahren Sie mehr über die [Verwaltung und Überwachung in Azure Data Factory](data-factory-monitor-manage-pipelines.md).
-- [Erstellen Sie Ihre erste Pipeline, und stellen Sie sie bereit](data-factory-build-your-first-pipeline.md).
+- [Erstellen Sie Ihre erste Pipeline, und stellen Sie sie bereit](data-factory-build-your-first-pipeline.md). 
 
 <!---HONumber=AcomDC_0629_2016-->

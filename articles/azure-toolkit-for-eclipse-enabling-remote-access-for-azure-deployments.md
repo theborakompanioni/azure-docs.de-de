@@ -52,7 +52,7 @@ Zum Aktivieren des Remotezugriffs nach der Bereitstellung in Azure gehen Sie fol
     * Aktivieren Sie das Kontrollkästchen **Enable Remote Desktop**.
     * Geben Sie den Benutzernamen mit Kennwort an, für den Sie den Remotezugriff aktivieren möchten.
     * Wählen Sie das Zertifikat aus.
-1. Klicken Sie auf **OK**.
+1. Klicken Sie auf **OK**. 
 
 Es wird eine Meldung angezeigt, die besagt, dass Ihre Konfigurationsänderung verarbeitet wird, was einige Minuten in Anspruch nehmen kann. Folgen Sie nach Abschluss der Konfigurationsänderung den Schritten im Abschnitt **Remote anmelden** weiter unten in diesem Artikel.
 	

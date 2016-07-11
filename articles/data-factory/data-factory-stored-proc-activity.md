@@ -135,7 +135,7 @@ Nach dem Erstellen der Data Factory erstellen Sie einen mit Azure SQL verknüpft
 Erstellen wir jetzt eine Pipeline mit der Aktivität "SqlServerStoredProcedure".
  
 9. Klicken Sie in der Befehlsleiste auf **...** und dann auf **Neue Pipeline**.
-9. Kopieren Sie folgenden JSON-Codeausschnitt, und fügen Sie ihn ein. **storedProcedureName** wird auf **sp\_sample** festgelegt. Name und Schreibweise des Parameters **DateTime** muss mit dem Namen und der Schreibweise des Parameters in der Definition der gespeicherten Prozedur übereinstimmen.
+9. Kopieren Sie folgenden JSON-Codeausschnitt, und fügen Sie ihn ein. **storedProcedureName** wird auf **sp\_sample** festgelegt. Name und Schreibweise des Parameters **DateTime** muss mit dem Namen und der Schreibweise des Parameters in der Definition der gespeicherten Prozedur übereinstimmen.  
 
 		{
 		    "name": "SprocActivitySamplePipeline",
@@ -166,7 +166,7 @@ Erstellen wir jetzt eine Pipeline mit der Aktivität "SqlServerStoredProcedure".
 		        "isPaused": false
 		    }
 		}
-9. Klicken Sie in der Symbolleiste auf **Bereitstellen**, um die Pipeline bereitzustellen.
+9. Klicken Sie in der Symbolleiste auf **Bereitstellen**, um die Pipeline bereitzustellen.  
 
 ### Überwachen der Pipeline
 

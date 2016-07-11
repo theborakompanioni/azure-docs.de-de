@@ -108,9 +108,12 @@ Anders gesagt: sie gibt in allen Fällen 0 zurück, außer wenn die entsprechend
 
 **Hinweise:** Wenn die Auswertung des Ausdrucks einen Wert ungleich 0 ergibt, dann gibt CBool TRUE zurück, andernfalls FALSE.
 
+
 **Beispiel:** `CBool([attrib1] = [attrib2])`
 
 Gibt True zurück, wenn beide Attribute den gleichen Wert haben.
+
+
 
 ----------
 ### CDate

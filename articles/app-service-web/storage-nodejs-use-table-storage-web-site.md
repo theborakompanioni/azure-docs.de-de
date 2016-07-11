@@ -72,7 +72,7 @@ In diesem Abschnitt erstellen Sie eine neue Node-Anwendung und fügen Modulpaket
 
 ### Installieren von Express und Generieren des Gerüsts
 
-1. Erstellen Sie über die Befehlszeile ein neues Verzeichnis namens **tasklist**, und wechseln Sie zu diesem Verzeichnis.
+1. Erstellen Sie über die Befehlszeile ein neues Verzeichnis namens **tasklist**, und wechseln Sie zu diesem Verzeichnis.  
 
 2. Geben Sie den folgenden Befehl ein, um das Express-Modul zu installieren.
 

@@ -85,9 +85,9 @@ Nach der Aktualisierung des Back-Ends können Sie die neuen Loopback-URLs in Ihr
 <!-- URLs. -->
 [Schnellstart von Azure Mobile Apps]: app-service-mobile-cordova-get-started.md
 [Erste Schritte mit der Authentifizierung]: app-service-mobile-cordova-get-started-users.md
-[Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
+[Hinzufügen von Authentifizierung zu Ihrer App]: app-service-mobile-cordova-get-started-users.md
 
 [JavaScript-SDKs für Azure Mobile Apps]: https://www.npmjs.com/package/azure-mobile-apps-client
-[Query object documentation]: https://msdn.microsoft.com/de-DE/library/azure/jj613353.aspx
+[Dokumentation „Query-Objekt“]: https://msdn.microsoft.com/de-DE/library/azure/jj613353.aspx
 
 <!---HONumber=AcomDC_0629_2016-->
