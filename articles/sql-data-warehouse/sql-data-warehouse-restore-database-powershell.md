@@ -3,7 +3,7 @@
    description="PowerShell-Aufgaben zum Wiederherstellen einer Azure SQL Data Warehouse-Instanz."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="elfisher"
+   authors="sonyam"
    manager="barbkess"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/17/2016"
-   ms.author="elfish;barbkess;sonyama"/>
+   ms.date="06/28/2016"
+   ms.author="sonyama;barbkess"/>
 
 # Wiederherstellen einer Azure SQL Data Warehouse-Instanz (PowerShell)
 
@@ -95,7 +95,6 @@ Verwenden Sie das Cmdlet [Restore-AzureRmSqlDatabase][], um eine gelöschte Date
 6. Überprüfen Sie, ob die wiederhergestellte Datenbank online ist.
 
 ```Powershell
-
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.windows.net
@@ -114,7 +113,6 @@ $RestoredDatabase = Restore-AzureRmSqlDatabase –FromDeletedDatabaseBackup –D
 
 # Verify the status of restored database
 $RestoredDatabase.status
-
 ```
 
 >[AZURE.NOTE] Wenn die Wiederherstellung abgeschlossen ist, können Sie Ihre wiederhergestellte Datenbank konfigurieren. Befolgen Sie hierzu die Anleitung [Abschließen der wiederhergestellten Azure SQL-Datenbank][].
@@ -132,7 +130,6 @@ Verwenden Sie das Cmdlet [Restore-AzureRmSqlDatabase][], um eine Datenbank wiede
 6. Überprüfen Sie den Status der mittels Geowiederherstellung wiederhergestellten Datenbank.
 
 ```Powershell
-
 Login-AzureRmAccount
 Get-AzureRmSubscription
 Select-AzureRmSubscription -SubscriptionName "<Subscription_name>"
@@ -145,7 +142,6 @@ $GeoRestoredDatabase = Restore-AzureRmSqlDatabase –FromGeoBackup -ResourceGrou
 
 # Verify that the geo-restored database is online
 $GeoRestoredDatabase.status
-
 ```
 
 >[AZURE.NOTE] Wenn die Wiederherstellung abgeschlossen ist, können Sie Ihre wiederhergestellte Datenbank konfigurieren. Befolgen Sie hierzu die Anleitung [Abschließen der wiederhergestellten Azure SQL-Datenbank][].
@@ -179,4 +175,4 @@ Informationen zu den Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank-E
 [Azure Portal]: https://portal.azure.com/
 [Microsoft-Webplattform-Installer]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

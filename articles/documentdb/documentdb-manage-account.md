@@ -33,7 +33,7 @@ Die Auswahl der richtigen Konsistenzebene richtet sich nach der Semantik Ihrer A
 3. Klicken Sie auf dem Blatt **Alle Einstellungen** auf den Eintrag **Standardkonsistenz** unter **Feature**. ![Standardkonsistenz - Sitzung][6]
 
 4. Wählen Sie im Blatt **Standardkonsistenz** die neue Konsistenzebene aus und klicken Sie auf **Speichern**.
-
+5. Sie können den Fortschritt des Vorgangs im Notification Hub des Azure-Portals überwachen.
 
 > [AZURE.NOTE] Beachten Sie, dass es einige Minuten dauern kann, bis sich die Änderung der Standardkonsistenz auf Ihr DocumentDB-Konto auswirkt.
 
@@ -86,7 +86,7 @@ Zudem enthält es Nur-Lese-Schlüssel, um Benutzern den schreibgeschützten Zugr
 
 ### Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal
 
-1. Greifen Sie im [Azure-Portal](https://portal.azure.com/) auf Ihr DocumentDB-Konto zu. 
+1. Greifen Sie im [Azure-Portal](https://portal.azure.com/) auf Ihr DocumentDB-Konto zu.
 2. Klicken Sie auf der Leiste **Essentials** des Blatts **DocumentDB-Konto** auf **Schlüssel**.
 3. Klicken Sie im Blatt **Schlüssel** rechts neben dem Schlüssel, den Sie kopieren möchten, auf die Schaltfläche **Kopieren**. ![Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal, Blatt „Schlüssel“](./media/documentdb-manage-account/copykeys.png)
 
@@ -99,11 +99,17 @@ Sie sollten regelmäßig die Zugriffsschlüssel für Ihr DocumentDB-Konto änder
 Falls Sie über Webanwendungen oder Cloud-Dienste verfügen, die das DocumentDB-Konto verwenden, verlieren Sie die Verbindungen beim erneuten Generieren von Schlüsseln – es sei denn, Sie führen einen Rollup für die Schlüssel aus. Die folgenden Schritte stellen den Prozess für das Rollup der Schlüssel dar.
 
 1. Aktualisieren Sie den Zugriffsschlüssel im Anwendungscode, damit er auf den sekundären Zugriffsschlüssel des DocumentDB-Kontos verweist.
+
 2. Generieren Sie den primären Zugriffsschlüssel für Ihr DocumentDB-Konto neu. Greifen Sie im [Azure-Portal](https://portal.azure.com/) auf Ihr DocumentDB-Konto zu.
+
 3. Klicken Sie auf der Leiste **Essentials** des Blatts **DocumentDB-Konto** auf **Schlüssel**.
+
 4. Klicken Sie im Blatt **Schlüssel** auf den Befehl **Primären Zugriffsschlüssel neu generieren**, und klicken Sie dann auf **OK**, um das Generieren eines neuen Schlüssels zu bestätigen.
+
 5. Sobald Sie sichergestellt haben, dass der neue Schlüssel verwendet werden kann (etwa 5 Minuten nach der erneuten Erzeugung), aktualisieren Sie den Zugriffsschlüssel im Anwendungscode, damit er auf den neuen primären Zugriffsschlüssel verweist.
+
 6. Generieren Sie den sekundären Zugriffsschlüssel neu.
+
 
 > [AZURE.NOTE] Die Bereitstellung eines neu generierten Schlüssels kann einige Minuten dauern, bevor Sie damit auf Ihr DocumentDB-Konto zugreifen können.
 
@@ -136,7 +142,7 @@ Weitere Informationen zu DocumentDB finden Sie in der Azure DocumentDB-Dokumenta
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 [bcdr]: https://azure.microsoft.com/documentation/articles/best-practices-availability-paired-regions/
 [consistency]: https://azure.microsoft.com/documentation/articles/documentdb-consistency-levels/
-[azureregions]: https://azure.microsoft.com/regions/#services
-[offers]: https://azure.microsoft.com/pricing/details/documentdb/
+[azureregions]: https://azure.microsoft.com/de-DE/regions/#services
+[offers]: https://azure.microsoft.com/de-DE/pricing/details/documentdb/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/05/2016" 
+	ms.date="06/27/2016" 
 	ms.author="spelluru"/>
 
 # SQL Server-Aktivität "Gespeicherte Prozedur"
@@ -21,9 +21,9 @@
 Sie können die SQL Server-Aktivität „Gespeicherte Prozedur“ in einer Data Factory-[Pipeline](data-factory-create-pipelines.md) verwenden, um eine gespeicherte Prozedur in einem der folgenden Datenspeicher aufzurufen.
 
 
-- Azure SQL-Datenbank 
-- Azure SQL Data Warehouse  
-- SQL Server-Datenbank in Ihrem Unternehmen oder auf einem virtuellen Azure-Computer Sie müssen das Datenverwaltungsgateway auf dem Computer installieren, der die Datenbank hostet, oder auf einem separaten Computer, um zu vermeiden, dass der Computer mit der Datenbank um Ressourcen konkurriert. Das Datenverwaltungsgateway ist eine Software, die lokale Datenquellen oder Datenquellen auf virtuellen Azure-Computern auf sichere, verwaltete Weise mit Cloud-Diensten verbindet. Weitere Informationen zum Datenverwaltungsgateway finden Sie im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md). 
+- Azure SQL-Datenbank
+- Azure SQL Data Warehouse
+- SQL Server-Datenbank in Ihrem Unternehmen oder auf einem virtuellen Azure-Computer Sie müssen das Datenverwaltungsgateway auf dem Computer installieren, der die Datenbank hostet, oder auf einem separaten Computer, um zu vermeiden, dass der Computer mit der Datenbank um Ressourcen konkurriert. Das Datenverwaltungsgateway ist eine Software, die lokale Datenquellen oder Datenquellen auf virtuellen Azure-Computern auf sichere, verwaltete Weise mit Cloud-Diensten verbindet. Weitere Informationen zum Datenverwaltungsgateway finden Sie im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md).
 
 Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md) auf, der einen allgemeinen Überblick über die Datentransformation und die unterstützten Transformationsaktivitäten bietet.
 
@@ -62,7 +62,7 @@ storedProcedureParameters | Geben Sie Werte für Parameter der gespeicherten Pro
 ### Beispiel für eine Tabelle und eine gespeicherte Prozedur
 > [AZURE.NOTE] Dieses Beispiel verwendet Azure SQL-Datenbank, funktioniert aber auf gleiche Weise für Azure SQL Data Warehouse und eine SQL Server-Datenbank.
 
-1. Erstellen Sie die folgende **Tabelle** in der Azure SQL-Datenbank mithilfe von SQL Server Management Studio oder anderen Tools, mit denen Sie vertraut sind. Die Spalte "datetimestamp" enthält das Datum und die Uhrzeit, zu der die entsprechende ID generiert wird. 
+1. Erstellen Sie die folgende **Tabelle** in der Azure SQL-Datenbank mithilfe von SQL Server Management Studio oder anderen Tools, mit denen Sie vertraut sind. Die Spalte "datetimestamp" enthält das Datum und die Uhrzeit, zu der die entsprechende ID generiert wird.
 
 		CREATE TABLE dbo.sampletable
 		(
@@ -74,8 +74,7 @@ storedProcedureParameters | Geben Sie Werte für Parameter der gespeicherten Pro
 		CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable(Id);
 		GO
 
-	"Id" ist der eindeutige Bezeichner, und die Spalte "datetimestamp" enthält das Datum und die Uhrzeit, zu der die entsprechende ID generiert wird. 
-	![Beispieldaten](./media/data-factory-stored-proc-activity/sample-data.png)
+	"Id" ist der eindeutige Bezeichner, und die Spalte "datetimestamp" enthält das Datum und die Uhrzeit, zu der die entsprechende ID generiert wird. ![Beispieldaten](./media/data-factory-stored-proc-activity/sample-data.png)
 
 2. Erstellen Sie die folgende **gespeicherte Prozedur**, mit welcher Daten in **sampletable** eingefügt werden.
 
@@ -91,10 +90,10 @@ storedProcedureParameters | Geben Sie Werte für Parameter der gespeicherten Pro
 	
 ### Erstellen einer Data Factory  
 4. Nach der Anmeldung beim [Azure-Portal](https://portal.azure.com/) gehen Sie wie folgt vor:
-	1.	Klicken Sie im linken Menü auf **NEU**. 
+	1.	Klicken Sie im linken Menü auf **NEU**.
 	2.	Klicken Sie auf dem Blatt **Erstellen** auf **Datenanalyse**.
 	3.	Klicken Sie auf dem Blatt **Datenanalyse** auf **Data Factory**.
-4.	Geben Sie auf dem Blatt **Neue Data Factory** unter "Name" die Zeichenfolge **SProcDF** ein. Azure Data Factory-Namen sind global eindeutig. Sie müssen dem Namen der Data Factory Ihren Namen voranstellen, um die erfolgreiche Erstellung der Factory zu aktivieren. 
+4.	Geben Sie auf dem Blatt **Neue Data Factory** unter "Name" die Zeichenfolge **SProcDF** ein. Azure Data Factory-Namen sind global eindeutig. Sie müssen dem Namen der Data Factory Ihren Namen voranstellen, um die erfolgreiche Erstellung der Factory zu aktivieren.
 3.	Wenn Sie noch keine Ressourcengruppe erstellt haben, müssen Sie eine Ressourcengruppe erstellen. Gehen Sie dazu folgendermaßen vor:
 	1.	Klicken Sie auf **RESSOURCENGRUPPENNAME**.
 	2.	Wählen Sie auf dem Blatt **Ressourcengruppe** die Option **Neue Ressourcengruppe erstellen** aus.
@@ -107,9 +106,9 @@ storedProcedureParameters | Geben Sie Werte für Parameter der gespeicherten Pro
 ### Erstellen eines mit Azure SQL verknüpften Diensts  
 Nach dem Erstellen der Data Factory erstellen Sie einen mit Azure SQL verknüpften Dienst, der Ihre Azure SQL-Datenbank mit der Data Factory verknüpft. Dies ist die Datenbank, die die Beispieltabelle "sampletable" und die gespeicherte Prozedur "sp\_sample" enthält.
 
-7.	Klicken Sie auf dem Blatt **DATA FACTORY** für **SProcDF** auf **Erstellen und bereitstellen**. Der Data Factory-Editor wird gestartet. 
-2.	Klicken Sie in der Befehlsleiste auf **Neuer Datenspeicher**, und wählen Sie **Azure SQL**. Das JSON-Skript zum Erstellen eines mit Azure SQL verknüpften Diensts wird im Editor angezeigt. 
-4. Ersetzen Sie **servername** durch den Namen Ihres Azure SQL-Datenbankservers, **databasename** durch die Datenbank, in der Sie die Tabelle und die gespeicherte Prozedur erstellt haben, ****username@servername** durch das Benutzerkonto, das Zugriff auf die Datenbank besitzt, und **password** durch das Kennwort für das Benutzerkonto.
+7.	Klicken Sie auf dem Blatt **DATA FACTORY** für **SProcDF** auf **Erstellen und bereitstellen**. Der Data Factory-Editor wird gestartet.
+2.	Klicken Sie in der Befehlsleiste auf **Neuer Datenspeicher**, und wählen Sie **Azure SQL**. Das JSON-Skript zum Erstellen eines mit Azure SQL verknüpften Diensts wird im Editor angezeigt.
+4. Ersetzen Sie **servername** durch den Namen Ihres Azure SQL-Datenbankservers, **databasename** durch die Datenbank, in der Sie die Tabelle und die gespeicherte Prozedur erstellt haben, **username@servername** durch das Benutzerkonto, das Zugriff auf die Datenbank besitzt, und **password** durch das Kennwort für das Benutzerkonto.
 5. Klicken Sie auf der Befehlsleiste auf **Bereitstellen**, um den verknüpften Dienst bereitzustellen.
 
 ### Erstellen eines Ausgabedatasets
@@ -130,13 +129,13 @@ Nach dem Erstellen der Data Factory erstellen Sie einen mit Azure SQL verknüpft
 				}
 			}
 		}
-7. Klicken Sie in der Befehlsleiste auf **Bereitstellen**, um das Dataset bereitzustellen. 
+7. Klicken Sie in der Befehlsleiste auf **Bereitstellen**, um das Dataset bereitzustellen.
 
 ### Erstellen einer Pipeline mit der Aktivität "SqlServerStoredProcedure"
 Erstellen wir jetzt eine Pipeline mit der Aktivität "SqlServerStoredProcedure".
  
-9. Klicken Sie in der Befehlsleiste auf **...** und dann auf **Neue Pipeline**. 
-9. Kopieren Sie folgenden JSON-Codeausschnitt, und fügen Sie ihn ein. **storedProcedureName** wird auf **sp\_sample** festgelegt. Name und Schreibweise des Parameters **DateTime** muss mit dem Namen und der Schreibweise des Parameters in der Definition der gespeicherten Prozedur übereinstimmen.  
+9. Klicken Sie in der Befehlsleiste auf **...** und dann auf **Neue Pipeline**.
+9. Kopieren Sie folgenden JSON-Codeausschnitt, und fügen Sie ihn ein. **storedProcedureName** wird auf **sp\_sample** festgelegt. Name und Schreibweise des Parameters **DateTime** muss mit dem Namen und der Schreibweise des Parameters in der Definition der gespeicherten Prozedur übereinstimmen.
 
 		{
 		    "name": "SprocActivitySamplePipeline",
@@ -167,14 +166,14 @@ Erstellen wir jetzt eine Pipeline mit der Aktivität "SqlServerStoredProcedure".
 		        "isPaused": false
 		    }
 		}
-9. Klicken Sie in der Symbolleiste auf **Bereitstellen**, um die Pipeline bereitzustellen.  
+9. Klicken Sie in der Symbolleiste auf **Bereitstellen**, um die Pipeline bereitzustellen.
 
 ### Überwachen der Pipeline
 
 6. Klicken Sie auf **X**, um die Data Factory Editor-Blätter zu schließen und zum Blatt "Data Factory" zurückzugelangen, und klicken Sie auf **Diagramm**.
-7. In der Diagrammansicht sehen Sie eine Übersicht über die in diesem Tutorial verwendeten Pipelines und Datasets. 
-8. Doppelklicken Sie in der Diagrammansicht auf das Dataset **sprocsampleout**. Die Slices werden im Zustand "Bereit" angezeigt. Da für jede Stunde zwischen 2015/01/02 und 2015/01/03 ein Slice erzeugt wurde, sollten 24 Slices angezeigt werden. 
-10. Wenn ein Slice sich im Zustand **Bereit** befindet, führen Sie eine Abfrage **select * from sampledata** für die Azure SQL-Datenbank aus, um sicherzustellen, dass die Daten von der gespeicherten Prozedur in die Tabelle eingefügt wurden.
+7. In der Diagrammansicht sehen Sie eine Übersicht über die in diesem Tutorial verwendeten Pipelines und Datasets.
+8. Doppelklicken Sie in der Diagrammansicht auf das Dataset **sprocsampleout**. Die Slices werden im Zustand "Bereit" angezeigt. Da für jede Stunde zwischen 2015/01/02 und 2015/01/03 ein Slice erzeugt wurde, sollten 24 Slices angezeigt werden.
+10. Wenn sich ein Slice im Zustand **Bereit** befindet, führen Sie eine Abfrage vom Typ **select* from sampledata** für die Azure SQL-Datenbank aus, um sicherzustellen, dass die Daten von der gespeicherten Prozedur in die Tabelle eingefügt wurden.
 
 	![Ausgabedaten](./media/data-factory-stored-proc-activity/output.png)
 
@@ -208,4 +207,4 @@ Um dies zu erreichen, übergeben Sie den Parameter "Scenario" und den Wert aus d
 		}
 	}
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0629_2016-->

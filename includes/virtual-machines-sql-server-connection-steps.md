@@ -1,8 +1,11 @@
 ### Öffnen der TCP-Ports in der Windows-Firewall für die Standardinstanz des Datenbankmoduls
 
-1. Stellen Sie mit Windows Remotedesktop eine Verbindung zum virtuellen Computer her. Geben Sie nach der Anmeldung auf dem Startbildschirm **WF.msc** ein, und drücken Sie dann die EINGABETASTE. 
+1. Herstellen der Verbindung mit dem virtuellen Computer über Remotedesktop Weitere Informationen zum Herstellen einer Verbindung mit dem virtuellen Computer finden Sie unter [Öffnen der VM mit Remotedesktop](virtual-machines-windows-portal-sql-server-provision.md#open-the-vm-with-remote-desktop).
+
+1. Geben Sie nach der Anmeldung auf dem Startbildschirm **WF.msc** ein, und drücken Sie dann die EINGABETASTE.
 
 	![Starten des Firewall-Programms](./media/virtual-machines-sql-server-connection-steps/12Open-WF.png)
+
 2. Klicken Sie in **Windows-Firewall mit erweiterter Sicherheit** im linken Bereich mit der rechten Maustaste auf **Eingehende Regeln**, und klicken Sie dann im Aktionsbereich auf **Neue Regel**.
 
 	![Neue Regel](./media/virtual-machines-sql-server-connection-steps/13New-FW-Rule.png)
@@ -37,12 +40,12 @@
 ### Konfigurieren von SQL Server für das Lauschen des TCP-Protokolls
 
 1. Geben Sie während der Verbindung mit dem virtuellen Computer auf der Startseite **SQL Server-Konfigurations-Manager ** ein, und drücken Sie die EINGABETASTE.
-	
+
 	![SSCM öffnen](./media/virtual-machines-sql-server-connection-steps/9Click-SSCM.png)
 
 2. Erweitern Sie im SQL Server-Konfigurationsmanager im Konsolenbereich **SQL Server-Netzwerkkonfiguration**.
 
-3. Klicken Sie im Konsolenbereich auf **Protokolle für MSSQLSERVER** (der Standardinstanzenname). Klicken Sie im Detailbereich mit der rechten Maustaste auf TCP, dies sollte standardmäßig für Katalogimages aktiviert sein. Klicken Sie für eigene Images auf **Aktivieren**, falls der Status Deaktiviert ist.
+3. Klicken Sie im Konsolenbereich auf **Protokolle für MSSQLSERVER** (der Standardinstanzenname). Klicken Sie im Detailbereich mit der rechten Maustaste auf **TCP**, und klicken Sie auf **Aktivieren**, wenn die Option noch nicht aktiviert ist.
 
 	![TCP aktivieren](./media/virtual-machines-sql-server-connection-steps/10Enable-TCP.png)
 
@@ -60,13 +63,11 @@ Das SQL Server-Datenbankmodul kann ohne Domänenumgebung keine Windows-Authentif
 
 >[AZURE.NOTE] Die Konfiguration der Authentifizierung mit gemischtem Modus ist möglicherweise nicht notwendig, wenn Sie ein Azure Virtual Network mit einer konfigurierten Domänenumgebung eingerichtet haben.
 
-1. Geben Sie während der Verbindung mit dem virtuellen Computer auf der Startseite **SQL Server 2014 Management Studio** ein, und klicken Sie auf das ausgewählte Symbol.
-
-	![SSMS starten](./media/virtual-machines-sql-server-connection-steps/18Start-SSMS.png)
+1. Geben Sie während der Verbindung mit dem virtuellen Computer auf der Startseite **SQL Server Management Studio** ein, und klicken Sie auf das ausgewählte Symbol.
 
 	Wenn Sie Management Studio erstmalig öffnen, muss dieses eine Management Studio-Benutzerumgebung erstellen. Dies kann einige Zeit dauern.
 
-2. Management Studio zeigt das Dialogfeld **Verbindung mit Server herstellen** an. Geben Sie im Feld **Servername** den Namen des virtuellen Computers ein, um das Datenbankmodul mit dem Objekt-Explorer zu verbinden. (Anstelle des Namen des virtuellen Computers können Sie auch **(lokal)** oder einen einzigen Punkt als **Servername** verwenden. Wählen Sie **Windows-Authentifizierung**, und lassen Sie **_your\_VM\_name_\\your\_local\_administrator** im Feld **Benutzername**. Klicken Sie auf **Verbinden**.
+2. Management Studio zeigt das Dialogfeld **Verbindung mit Server herstellen** an. Geben Sie im Feld **Servername** den Namen des virtuellen Computers ein, der über den Objekt-Explorer mit dem Datenbankmodul verbunden werden soll. (Statt des Namens des virtuellen Computers können Sie auch **(lokal)** oder einen einzelnen Punkt als **Servername** verwenden.) Wählen Sie **Windows-Authentifizierung**, und lassen Sie **_your\_VM\_name_\\your\_local\_administrator** im Feld **Benutzername**. Klicken Sie auf **Verbinden**.
 
 	![Mit Server verbinden](./media/virtual-machines-sql-server-connection-steps/19Connect-to-Server.png)
 
@@ -102,21 +103,15 @@ Um von einem anderen Computer aus eine Verbindung zum Datenbankmodul herzustelle
 
 5. Geben Sie im Feld **Kennwort** ein Kennwort für den neuen Benutzer ein. Geben Sie dieses Kennwort erneut im Feld **Kennwort bestätigen** ein.
 
-6. Wählen Sie **Kennwortrichtlinie erzwingen** (empfohlen) aus, um die Kennwortrichtlinienoptionen bezüglich Komplexität und Durchführung durchzusetzen. Dies ist eine Standardoption, wenn die SQL Server-Authentifizierung ausgewählt wurde.
-
-7. Wählen Sie **Ablauf des Kennwortes erzwingen** (empfohlen) aus, um die Kennwortrichtlinienoptionen bezüglich des Ablaufs durchzusetzen. Kennwortrichtlinie erzwingen muss ausgewählt werden, um dieses Kontrollkästchen zu aktivieren. Dies ist eine Standardoption, wenn die SQL Server-Authentifizierung ausgewählt wurde.
-
-8. Wählen Sie **Benutzer muss das Kennwort bei der nächsten Anmeldung ändern**, damit der Benutzer gezwungen wird, ein neues Kennwort nach der erstmaligen Verwendung des Anmeldenamens zu erstellen (Wird empfohlen, falls dieser Anmeldenamen von einer anderen Person verwendet wird. Wenn Sie den Anmeldenamen selbst verwenden werden, sollten Sie diese Option nicht auswählen). Ablauf des Kennwortes erzwingen muss ausgewählt werden, um dieses Kontrollkästchen zu aktivieren. Dies ist eine Standardoption, wenn die SQL Server-Authentifizierung ausgewählt wurde.
+6. Wählen Sie die erforderlichen Optionen aus, die im Zusammenhang mit dem Kennwort erzwungen werden sollen (**Kennwortrichtlinie erzwingen**, **Ablauf des Kennwortes erzwingen** und **Benutzer muss das Kennwort bei der nächsten Anmeldung ändern**). Wenn Sie diese Anmeldung für sich selbst verwenden, ist eine Änderung des Kennworts bei der nächsten Anmeldung nicht erforderlich.
 
 9. Wählen Sie aus der Liste **Standarddatenbank** eine Standarddatenbank für den Anmeldenamen aus. **master** ist die Standardoption. Falls Sie noch keine Benutzerdatenbank erstellt haben, lassen Sie diese Einstellung auf **master**.
 
-10. Belassen Sie in der Liste **Standardsprache** den Wert **Standard**.
-    
 	![Anmeldenameneigenschaften](./media/virtual-machines-sql-server-connection-steps/24Test-Login.png)
 
 11. Falls es sich um den ersten Anmeldenamen handelt, den Sie erstellen, werden Sie diesen Anmeldenamen wahrscheinlich als SQL Server-Administrator bezeichnen. Prüfen Sie in diesem Fall **sysadmin** auf der Seite **Serverrollen**.
 
-	**Sicherheitshinweis:** Mitglieder der festen Serverrolle sysadmin haben vollständige Kontrolle über das Datenbankmodul. Sie sollten die Mitgliedschaft zu dieser Rolle sorgfältig beschränken.
+	>[AZURE.NOTE] Mitglieder der festen Serverrolle sysadmin haben vollständige Kontrolle über das Datenbankmodul. Sie sollten die Mitgliedschaft zu dieser Rolle sorgfältig beschränken.
 
 	![sysadmin](./media/virtual-machines-sql-server-connection-steps/25sysadmin.png)
 
@@ -124,4 +119,4 @@ Um von einem anderen Computer aus eine Verbindung zum Datenbankmodul herzustelle
 
 Weitere Informationen zu Anmeldenamen für SQL Server finden Sie unter [Erstellen eines Anmeldenamens](http://msdn.microsoft.com/library/aa337562.aspx).
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0629_2016-->

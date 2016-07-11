@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="04/18/2016"  
+	ms.date="06/22/2016"  
 	ms.author="juliako"/>
 
 #Übersicht über die Widevine-Lizenzvorlage
@@ -210,4 +210,4 @@ Das folgende Beispiel zeigt, wie Sie .NET-APIs verwenden, um eine einfache Widev
 
 [Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine](media-services-protect-with-drm.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

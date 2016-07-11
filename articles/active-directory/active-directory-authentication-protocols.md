@@ -22,7 +22,7 @@ Azure Active Directory (Azure AD) unterstützt mehrere der am häufigsten verwen
 
 ## Authentifizierungsprotokolle, Artikel und Referenz
 
-- [Wichtige Informationen zum Signieren vom Schlüssel-Rollover in Azure AD](https://msdn.microsoft.com/library/azure/dn641920.aspx) – Erfahren Sie mehr über das Signieren der Schlüssel-Rolloverkadenz von Azure AD, die Änderungen zum automatischen Update des Schlüssels und die Erläuterungen zum Aktualisieren der häufigsten Anwendungsszenarien.
+- [Wichtige Informationen zum Signieren vom Schlüssel-Rollover in Azure AD](active-directory-signing-key-rollover.md) – Erfahren Sie mehr über das Signieren der Schlüssel-Rolloverkadenz von Azure AD, die Änderungen zum automatischen Update des Schlüssels und die Erläuterungen zum Aktualisieren der häufigsten Anwendungsszenarien.
 
 
 - [Unterstützte Token und Anspruchstypen](active-directory-token-and-claims.md) – Erfahren Sie mehr über die Ansprüche in den Token, die von Azure AD ausgegeben werden.
@@ -55,4 +55,4 @@ Azure Active Directory (Azure AD) unterstützt mehrere der am häufigsten verwen
 
 [Active Directory-Codebeispiele](active-directory-code-samples.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

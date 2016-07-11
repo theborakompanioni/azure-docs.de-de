@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016"
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -32,23 +32,23 @@ Mit Microsoft Azure Media Services können Inhalte im DASH-, Smooth Streaming- u
 Weitere Informationen:
 
 - [Azure Media Player](http://aka.ms/ampinfo)
-- [Azure Media Player-Dokumentation](http://aka.ms/ampdocs) 
+- [Azure Media Player-Dokumentation](http://aka.ms/ampdocs)
 - [Azure Media Player – Blog für die ersten Schritte](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/)
 - [Melden Sie sich an, um immer über die neuesten Informationen zu Azure Media Player auf dem Laufenden zu sein.](http://aka.ms/ampsignup)
-- [Hinzufügen von neuen Funktionsanfragen, Ideen und Feedback](http://aka.ms/ampuservoice) 
+- [Hinzufügen von neuen Funktionsanfragen, Ideen und Feedback](http://aka.ms/ampuservoice)
 
 
 ##Weitere Tools zum Erstellen von Playeranwendungen
 
 Sie können auch die folgenden SDKs verwenden:
 
-- [Smooth Streaming Client SDK](http://www.iis.net/downloads/microsoft/smooth-streaming) 
+- [Smooth Streaming Client SDK](http://www.iis.net/downloads/microsoft/smooth-streaming)
 - [Smooth Streaming Windows Store-App](media-services-build-smooth-streaming-apps.md)
-- [Microsoft Media-Plattform: Player-Framework](http://playerframework.codeplex.com/) 
-- [HTML5 Player Framework-Dokumentation](http://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation) 
-- [Microsoft Smooth Streaming-Plug-In für OSMF](https://www.microsoft.com/download/details.aspx?id=36057) 
-- [Lizenzierung des Microsoft® Smooth Streaming Client Porting Kit](http://aka.ms/sspk) 
-- [Entwickeln von Videoanwendungen für Xbox](http://xbox.create.msdn.com/) 
+- [Microsoft Media-Plattform: Player-Framework](http://playerframework.codeplex.com/)
+- [HTML5 Player Framework-Dokumentation](http://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation)
+- [Microsoft Smooth Streaming-Plug-In für OSMF](https://www.microsoft.com/download/details.aspx?id=36057)
+- [Lizenzierung des Microsoft® Smooth Streaming Client Porting Kit](http://aka.ms/sspk)
+- [Entwickeln von Videoanwendungen für Xbox](http://xbox.create.msdn.com/)
  
 
 ##Werbung
@@ -81,4 +81,4 @@ Informationen zu Untertiteln und der Unterstützung von Werbeeinblendungen in Li
 [dash.js-Repository von GitHub (in englischer Sprache)](https://github.com/Dash-Industry-Forum/dash.js)
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

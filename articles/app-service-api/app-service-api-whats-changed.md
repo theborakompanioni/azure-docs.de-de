@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/13/2016"
+	ms.date="06/29/2016"
 	ms.author="mohisri"/>
 
 # App Service-API-Apps – Änderungen
@@ -32,7 +32,7 @@ Die vorhandenen fertigen Authentifizierungsfunktionen für API-Apps, Mobile Serv
 
 Für API-Szenarien gibt es einige relevante neue Funktionen:
 
-- **Unterstützung für die direkte Verwendung von Azure Active Directory**, ohne dass per Clientcode das AAD-Token gegen ein Sitzungstoken ausgetauscht werden muss: Ihr Client kann auch nur die AAD-Token im Autorisierungsheader gemäß Bearertokenspezifikation enthalten. Dies bedeutet auch, dass auf Client- oder Serverseite kein App Service-spezifisches SDK erforderlich ist. 
+- **Unterstützung für die direkte Verwendung von Azure Active Directory**, ohne dass per Clientcode das AAD-Token gegen ein Sitzungstoken ausgetauscht werden muss: Ihr Client kann auch nur die AAD-Token im Autorisierungsheader gemäß Bearertokenspezifikation enthalten. Dies bedeutet auch, dass auf Client- oder Serverseite kein App Service-spezifisches SDK erforderlich ist.
 - **Dienst-zu-Dienst oder „interner“ Zugriff**: Wenn Sie über einen Daemonprozess oder einen anderen Client verfügen, der Zugriff auf APIs ohne Schnittstelle benötigt, können Sie ein Token mit einem AAD-Dienstprinzipal anfordern und zur Authentifizierung mit Ihrer Anwendung an App Service übergeben.
 - **Verzögerte Autorisierung**: Viele Anwendungen verfügen über unterschiedliche Zugriffsbeschränkungen für unterschiedliche Teile der Anwendung. Es kann sein, dass einige APIs bei Ihnen öffentlich verfügbar sein sollen, während für andere eine Anmeldung erforderlich ist. Für die ursprüngliche Authentifizierungs- bzw. Autorisierungsfunktion galt das Prinzip „ganz oder gar nicht“, sodass die Anmeldung für die gesamte Website erforderlich war. Diese Option ist immer noch vorhanden, aber Sie können alternativ dazu für Ihren Anwendungscode zulassen, dass Zugriffsentscheidungen gefällt werden, nachdem der Benutzer von App Service authentifiziert wurde.
  
@@ -85,13 +85,13 @@ Wenn Ihre benutzerdefinierte API mit der vorherigen Vorschauversion von API-Apps
 Die Schritte für die erneute Bereitstellung entsprechen den Schritten zum Bereitstellen einer vorhandenen Web-API für App Service. Schritte:
 
 1. Erstellen Sie eine leere API-App. Hierfür können Sie im Portal die Option „Neu“ > „API-App“, in Visual Studio die Veröffentlichungsfunktion oder die Ressourcen-Manager-Tools verwenden. Legen Sie beim Verwenden der Ressourcen-Manager-Tools oder -Vorlagen den Wert **kind** für den Ressourcentyp **Microsoft.Web/sites** auf **api** fest, damit die Schnellstarts und Einstellungen im Verwaltungsportal auf API-Szenarien ausgerichtet sind.
-2. Verbinden Sie Ihr Projekt mit der leeren API-App, und stellen Sie es bereit, indem Sie einen der von App Service unterstützten Bereitstellungsmechanismen verwenden. Weitere Informationen finden Sie in der [Dokumentation zur Azure App Service-Bereitstellung](../app-service-web/web-sites-deploy.md). 
+2. Verbinden Sie Ihr Projekt mit der leeren API-App, und stellen Sie es bereit, indem Sie einen der von App Service unterstützten Bereitstellungsmechanismen verwenden. Weitere Informationen finden Sie in der [Dokumentation zur Azure App Service-Bereitstellung](../app-service-web/web-sites-deploy.md).
   
 ### Authentifizierung
 Die App Service-Authentifizierungsdienste unterstützen die gleichen Funktionen, die auch für das vorherige API-Apps-Modell verfügbar waren. Verwenden Sie die folgenden Client- und Server-SDKs, wenn Sie Sitzungstoken verwenden und SDKs benötigen:
 
 - Client: [Azure Mobile Client-SDK](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/)
-- Server: [Microsoft Azure Mobile App-.NET-Authentifizierungserweiterung](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/) 
+- Server: [Microsoft Azure Mobile App-.NET-Authentifizierungserweiterung](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/)
 
 Falls Sie stattdessen die App Service-Alpha-SDKs verwendet haben, sollten Sie den Hinweis beachten, dass diese jetzt als veraltet gelten:
 
@@ -122,4 +122,4 @@ Weitere Informationen finden Sie in den Artikeln im [Abschnitt zur API-Apps-Doku
 - [MSDN-Forum](https://social.msdn.microsoft.com/Forums/de-DE/home?forum=AzureAPIApps)
 - [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-api-apps)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0629_2016-->

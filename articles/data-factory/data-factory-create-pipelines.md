@@ -1,6 +1,7 @@
 <properties 
-	pageTitle="Pipelines und Aktivitäten in Azure Data Factory | Microsoft Azure" 
-	description="Informieren Sie sich über Azure Data Factory-Pipelines. Erfahren Sie, wie Sie sie erstellen, um Daten zu verschieben und zu transformieren und somit Informationen generieren, die Ihnen Einblicke verschaffen." 
+	pageTitle="Erstellen/Planen von Pipelines, Kettenaktivitäten in Data Factory | Microsoft Azure" 
+	description="Es wird beschrieben, wie Sie eine Datenpipeline in Azure Data Factory erstellen, um Daten zu verschieben und zu transformieren. Erstellen Sie einen datengesteuerten Workflow zum Erzeugen von fertigen Informationen." 
+    keywords="Datenpipeline, datengesteuerter Workflow"
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -13,18 +14,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article"
-	ms.date="04/08/2016" 
+	ms.date="06/27/2016" 
 	ms.author="spelluru"/>
 
-# Pipelines und Aktivitäten in Azure Data Factory
-In diesem Artikel erhalten Sie Informationen zu Pipelines und Aktivitäten in Azure Data Factory und erfahren, wie diese zum Erstellen datengesteuerter End-to-End-Workflows für Ihr Szenario oder Ihr Unternehmen genutzt werden können.
+# Pipelines und Aktivitäten in Azure Data Factory: Erstellen/Planen von Pipelines und Kettenaktivitäten
+In diesem Artikel wird beschrieben, wie Datenpipelines und Aktivitäten in Azure Data Factory eingesetzt werden und wie Sie sie verwenden, um datengesteuerte End-to-End-Workflows für Ihr Szenario bzw. Unternehmen zu erstellen – von personalisierten Produktempfehlungen bis zur Analyse einer Marketingkampagne.
 
 > [AZURE.NOTE] In diesem Artikel wird davon ausgegangen, dass Sie die Artikel [Einführung in den Azure Data Factory-Dienst](data-factory-introduction.md) und [Datasets in Azure Data Factory](data-factory-create-datasets.md) bereits gelesen haben. Wenn Sie noch nicht über praktische Erfahrung mit dem Erstellen von Data Factorys verfügen, hilft Ihnen das Tutorial [Erstellen der ersten Data Factory ](data-factory-build-your-first-pipeline.md) dabei, den vorliegenden Artikel besser zu verstehen.
 
-## Was ist eine Pipeline?
+## Was ist eine Datenpipeline?
 **Pipelines sind logische Gruppierungen von Aktivitäten**. Sie dienen zum Gruppieren von Aktivitäten zu einer Einheit, die zum Ausführen einer Aufgabe verwendet wird. Um Pipelines besser zu verstehen, müssen Sie sich zunächst mit Aktivitäten befassen.
 
-### Was ist eine Aktivität?
+## Was ist eine Aktivität?
 Aktivitäten definieren die Aktionen, die Sie auf Ihre Daten anwenden. Jede Aktivität verwendet von null bis zu mehreren [Datasets](data-factory-create-datasets.md) als Eingaben und erzeugt von ein bis zu mehreren Datasets als Ausgaben. **Eine Aktivität ist eine Einheit für die Orchestrierung in Azure Data-Factory.**
 
 Beispielsweise können Sie eine Kopieraktivität verwenden, um das Kopieren von Daten aus einem Dataset in ein anderes zu orchestrieren. Auf ähnliche Weise können Sie eine HDInsight Hive-Aktivität verwenden, die eine Hive-Abfrage auf einem Azure HDInsight-Cluster ausführt, um Ihre Daten zu transformieren oder zu analysieren. Azure Data Factory bietet eine Vielzahl von [Aktivitäten zur Datentransformation, -analyse](data-factory-data-transformation-activities.md) und [-verschiebung](data-factory-data-movement-activities.md). Sie können auch eine benutzerdefinierte .NET-Aktivität erstellen, um eigenen Code auszuführen.
@@ -226,24 +227,24 @@ In der folgenden Tabelle werden die Eigenschaften in der Aktivität und den Pipe
 
 Tag | Beschreibung | Erforderlich
 --- | ----------- | --------
-Name | Der Name der Aktivität oder der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, für deren Durchführung die Aktivität oder die Pipeline konfiguriert ist.<br/><ul><li>Maximale Anzahl von Zeichen: 260</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen</li><li>Folgende Zeichen sind nicht zulässig: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":" , "\"</li></ul> | Ja 
-description | Beschreibung des Verwendungszwecks der Aktivität oder der Pipeline | Ja 
-type | Gibt den Typ der Aktivität an. Verschiedene Typen von Aktivitäten finden Sie in den Artikeln [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) und [Transformationsaktivitäten von Daten](data-factory-data-transformation-activities.md). | Ja 
-inputs | Von der Aktivität verwendete Eingabetabellen<br/><br/>// eine Eingabetabelle<br/>"inputs": [ { "name": "inputtable1" } ],<br/><br/>// zwei Eingabetabellen <br/>"inputs": [ { "name": "inputtable1" }, { "name": "inputtable2" } ], | Ja 
-outputs | Von der Aktivität verwendete Ausgabetabellen// eine Ausgabetabelle<br/>"outputs": [ { "name": "outputtable1" } ],<br/><br/>//two output tables<br/>"outputs": [ { "name": "outputtable1" }, { "name": "outputtable2" } ], | Ja 
-linkedServiceName | Name des verknüpften Diensts, der von der Aktivität verwendet wird. <br/><br/>Für eine Aktivität kann es erforderlich sein, den verknüpften Dienst anzugeben, der mit der erforderlichen Computeumgebung verknüpft ist. | Ja für die HDInsight-Aktivität und die Azure Machine Learning-Aktivität zur Batchbewertung <br/><br/>Nein für alle übrigen 
-typeProperties | Eigenschaften im Abschnitt „typeProperties“ sind abhängig vom Typ der Aktivität. Weitere Informationen finden Sie im Artikel zu den einzelnen Aktivitäten | Nein 
-policy | Richtlinien, die das Laufzeitverhalten der Aktivität beeinflussen. Falls dies nicht angegeben wird, werden Standardrichtlinien verwendet. Weitere Informationen finden Sie unten | Nein 
-start | Startdatum/-uhrzeit für die Pipeline. Muss im [ISO-Format](http://en.wikipedia.org/wiki/ISO_8601) angegeben werden. Beispiel: 2014-10-14T16:32:41Z. <br/><br/>Es ist möglich, eine lokale Zeit anzugeben, z. B. eine EST-Zeit. Beispiel: „2016-02-27T06:00:00**-05:00**“ steht für 6:00 Uhr EST. <br/><br/>Die Eigenschaften „start“ und „end“ geben zusammen den aktiven Zeitraum der Pipeline an. Ausgabeslices werden nur in diesem aktiven Zeitraum erstellt. | Nein<br/><br/>Wenn Sie einen Wert für die end-Eigenschaft angeben, müssen Sie auch einen Wert für die start-Eigenschaft angeben.<br/><br/>Sowohl die Start- als auch die Endzeiten zum Erstellen einer Pipeline können leer sein, aber beide müssen Werte enthalten, um für die Pipeline einen aktiven Zeitraum für die Ausführung festzulegen. Wenn Sie beim Erstellen einer Pipeline keine Start- und Endzeiten angeben, können Sie später zum Festlegen der Werte das Cmdlet Set-AzureRmDataFactoryPipelineActivePeriod verwenden. 
-end | Datum und Uhrzeit für das Ende der Pipeline. Muss, falls gewünscht, im ISO-Format angegeben werden. Beispiel: 2014-10-14T17:32:41Z <br/><br/>Es ist möglich, eine lokale Zeit anzugeben, z. B. eine EST-Zeit. Beispiel: „2016-02-27T06:00:00**-05:00**“ steht für 6:00 Uhr EST.<br/><br/>Zum Ausführen der Pipeline auf unbestimmte Zeit geben Sie „9999-09-09“ als Wert für die end-Eigenschaft an.| Nein <br/><br/>Wenn Sie einen Wert für die start-Eigenschaft angeben, müssen Sie auch einen Wert für die end-Eigenschaft angeben.<br/><br/>Lesen Sie auch die Hinweise zur **start**-Eigenschaft. 
-isPaused | Wenn als Wert „true“ festgelegt ist, wird die Pipeline nicht ausgeführt. Standardwert = false. Sie können diese Eigenschaft zum Aktivieren oder Deaktivieren verwenden. | Nein 
-scheduler | Die Eigenschaft "scheduler" wird verwendet, um die gewünschte Planung für die Aktivität zu definieren. Die untergeordneten Eigenschaften sind identisch mit denen der [availability-Eigenschaft in einem Dataset](data-factory-create-datasets.md#Availability). | Nein | 
+Name | Der Name der Aktivität oder der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, für deren Durchführung die Aktivität oder die Pipeline konfiguriert ist.<br/><ul><li>Maximale Anzahl von Zeichen: 260</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“ , „\\“</li></ul> | Ja
+description | Beschreibung des Verwendungszwecks der Aktivität oder der Pipeline | Ja
+Typ | Gibt den Typ der Aktivität an. Verschiedene Typen von Aktivitäten finden Sie in den Artikeln [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) und [Transformationsaktivitäten von Daten](data-factory-data-transformation-activities.md). | Ja
+inputs | Von der Aktivität verwendete Eingabetabellen<br/><br/>// eine Eingabetabelle<br/>"inputs": [ { "name": "inputtable1" } ],<br/><br/>// zwei Eingabetabellen <br/>"inputs": [ { "name": "inputtable1" }, { "name": "inputtable2" } ], | Ja
+outputs | Von der Aktivität verwendete Ausgabetabellen.// eine Ausgabetabelle<br/>"outputs": [ { "name": “outputtable1” } ],<br/><br/>//zwei Ausgabetabellen<br/>"outputs": [ { "name": “outputtable1” }, { "name": “outputtable2” } ], | Ja
+linkedServiceName | Name des verknüpften Diensts, der von der Aktivität verwendet wird. <br/><br/>Für eine Aktivität kann es erforderlich sein, den verknüpften Dienst anzugeben, der mit der erforderlichen Computeumgebung verknüpft ist. | „Ja“ für die HDInsight-Aktivität und die Azure Machine Learning-Aktivität zur Batchbewertung <br/><br/>„Nein“ für alle übrigen
+typeProperties | Eigenschaften im Abschnitt „typeProperties“ sind abhängig vom Typ der Aktivität. Weitere Informationen finden Sie im Artikel zu den einzelnen Aktivitäten. | Nein
+policy | Richtlinien, die das Laufzeitverhalten der Aktivität beeinflussen. Falls dies nicht angegeben wird, werden Standardrichtlinien verwendet. Weitere Informationen finden Sie unten. | Nein
+start | Startdatum/-uhrzeit für die Pipeline. Muss im [ISO-Format](http://en.wikipedia.org/wiki/ISO_8601) angegeben werden. Beispiel: 2014-10-14T16:32:41Z. <br/><br/>Es ist möglich, eine lokale Zeit anzugeben, z.B. eine EST-Zeit. Beispiel: „2016-02-27T06:00:00**-05:00**“ steht für 6:00 Uhr EST.<br/><br/>Die Eigenschaften „start“ und „end“ geben zusammen den aktiven Zeitraum der Pipeline an. Ausgabeslices werden nur in diesem aktiven Zeitraum erstellt. | Nein<br/><br/>Wenn Sie einen Wert für die end-Eigenschaft angeben, müssen Sie auch einen Wert für die start-Eigenschaft angeben.<br/><br/>Sowohl die Start- als auch die Endzeiten zum Erstellen einer Pipeline können leer sein, aber beide müssen Werte enthalten, um für die Pipeline einen aktiven Zeitraum für die Ausführung festzulegen. Wenn Sie beim Erstellen einer Pipeline keine Start- und Endzeiten angeben, können Sie später zum Festlegen der Werte das Set-AzureRmDataFactoryPipelineActivePeriod-Cmdlet verwenden.
+end | Datum und Uhrzeit für das Ende der Pipeline. Muss, falls gewünscht, im ISO-Format angegeben werden. Beispiel: 2014-10-14T17:32:41Z <br/><br/>Es ist möglich, eine lokale Zeit anzugeben, z.B. eine EST-Zeit. Beispiel: „2016-02-27T06:00:00**-05:00**“ steht für 6:00 Uhr EST.<br/><br/>Um die Pipeline auf unbestimmte Zeit auszuführen, geben Sie als Wert für die end-Eigenschaft 9999-09-09 an. | Nein <br/><br/>Wenn Sie einen Wert für die start-Eigenschaft angeben, müssen Sie auch einen Wert für die end-Eigenschaft angeben.<br/><br/>Lesen Sie auch die Hinweise zur **start**-Eigenschaft.
+isPaused | Wenn als Wert „true“ festgelegt wird, wird die Pipeline nicht ausgeführt. Standardwert = false. Sie können diese Eigenschaft zum Aktivieren oder Deaktivieren verwenden. | Nein 
+scheduler | Die „scheduler“-Eigenschaft wird verwendet, um die gewünschte Planung für die Aktivität zu definieren. Die untergeordneten Eigenschaften sind identisch mit denen der [availability-Eigenschaft in einem Dataset](data-factory-create-datasets.md#Availability). | Nein |   
 | pipelineMode | Die Methode zum Planen von Ausführungen für die Pipeline. Zulässige Werte sind: „scheduled“ (Standard) und „onetime“.<br/><br/>„scheduled“ bedeutet, dass die Pipeline in einem bestimmten Zeitintervall gemäß ihrem aktiven Zeitraum (Start- und Endzeit) ausgeführt wird. „onetime“ bedeutet, dass die Pipeline nur einmal ausgeführt wird. Pipelines mit einmaliger Ausführung können derzeit nach der Erstellung nicht geändert oder aktualisiert werden. Informationen zur Einstellung der einmaligen Ausführung finden Sie unter [Pipeline mit einmaliger Ausführung](data-factory-scheduling-and-execution.md#onetime-pipeline). | Nein | 
-| expirationTime | Zeitraum, für den die Pipeline nach der Erstellung gültig ist und für den Bereitstellung aufrechterhalten werden sollte. Die Pipeline wird bei Erreichen der Ablaufzeit automatisch gelöscht, wenn sie keine aktiven, fehlerhaften oder ausstehenden Ausführungen enthält. | Nein | 
-| datasets | Liste der Datasets, die von den in der Pipeline definierten Aktivitäten verwendet werden sollen. Dies kann verwendet werden, um Datasets zu definieren, die spezifisch für diese Pipeline und nicht innerhalb der Data Factory definiert sind. In dieser Pipeline definierte Datasets können nicht gemeinsam genutzt, sondern nur von dieser Pipeline verwendet werden. Informationen dazu finden Sie unter [Scoped datasets](data-factory-create-datasets.md#scoped-datasets) (Bereichsbasierte Datasets).| Nein | 
+| expirationTime | Zeitraum, für den die Pipeline nach der Erstellung gültig ist und für den die Bereitstellung aufrechterhalten werden sollte. Die Pipeline wird bei Erreichen der Ablaufzeit automatisch gelöscht, wenn sie keine aktiven, fehlerhaften oder ausstehenden Ausführungen enthält. | Nein | 
+| datasets | Liste der Datasets, die von den in der Pipeline definierten Aktivitäten verwendet werden sollen. Dies kann verwendet werden, um Datasets zu definieren, die spezifisch für diese Pipeline und nicht innerhalb der Data Factory definiert sind. In dieser Pipeline definierte Datasets können nicht gemeinsam genutzt, sondern nur von dieser Pipeline verwendet werden. Informationen hierzu finden Sie unter [Zugeordnete Datasets](data-factory-create-datasets.md#scoped-datasets).| Nein |  
  
 
-### Aktivitätstypen
+## Aktivitätstypen für Datenverschiebung und Datentransformation
 Azure Data Factory bietet eine Vielzahl von Aktivitäten zur [Datenverschiebung](data-factory-data-movement-activities.md) und [Datentransformation](data-factory-data-transformation-activities.md).
 
 ### Richtlinien
@@ -251,12 +252,12 @@ Richtlinien beeinflussen das Laufzeitverhalten einer Aktivität, besonders dann,
 
 Eigenschaft | Zulässige Werte | Standardwert | Beschreibung
 -------- | ----------- | -------------- | ---------------
-Parallelität | Ganze Zahl <br/><br/>Höchstwert: 10 | 1 | Anzahl der gleichzeitigen Ausführungen der Aktivität.<br/><br/>Legt die Anzahl der parallelen Ausführungen einer Aktivität fest, die für verschiedene Slices stattfinden können. Wenn eine Aktivität beispielsweise eine große Menge verfügbarer Daten durchlaufen muss, kann die Datenverarbeitung durch eine höhere Anzahl gleichzeitiger Ausführungen beschleunigt werden. 
+Parallelität | Ganze Zahl <br/><br/>Höchstwert: 10 | 1 | Anzahl von gleichzeitigen Ausführungen der Aktivität.<br/><br/>Legt die Anzahl der parallelen Ausführungen einer Aktivität fest, die für verschiedene Slices stattfinden können. Wenn eine Aktivität beispielsweise eine große Menge verfügbarer Daten durchlaufen muss, kann die Datenverarbeitung durch eine höhere Anzahl gleichzeitiger Ausführungen beschleunigt werden. 
 executionPriorityOrder | NewestFirst<br/><br/>OldestFirst | OldestFirst | Bestimmt die Reihenfolge der Datenslices, die verarbeitet werden.<br/><br/>Nehmen Sie beispielsweise an, Sie haben zwei Slices (einen um 16:00 Uhr und einen weiteren um 17:00 Uhr), und beide warten auf ihre Ausführung. Wenn Sie "executionPriorityOrder" auf "NewestFirst" setzen, wird der Slice von 17 Uhr zuerst verarbeitet. Wenn Sie executionPriorityOrder auf OldestFirst festlegen, wird der Slice von 16:00 Uhr zuerst verarbeitet. 
 retry | Ganze Zahl<br/><br/>Höchstwert ist 10. | 3 | Anzahl der Wiederholungsversuche, bevor die Datenverarbeitung für den Slice als Fehler markiert wird. Die Ausführung der Aktivitäten für einen Datenslice wird bis zur angegebenen Anzahl der Wiederholungsversuche wiederholt. Die Wiederholung erfolgt so bald wie möglich nach dem Fehler.
-timeout | TimeSpan | 00:00:00 | Timeout für die Aktivität. Beispiel: 00:10:00 (Timeout nach 10 Minuten)<br/><br/>Wenn der Wert nicht angegeben wird oder 0 lautet, ist das Zeitlimit unendlich.<br/><br/>Wenn die Datenverarbeitungszeit für einen Slice den Timeoutwert überschreitet, wird der Vorgang abgebrochen, und das System versucht, die Verarbeitung zu wiederholen. Die Anzahl der Wiederholungsversuche hängt von der Eigenschaft "retry" ab. Wenn ein Timeout auftritt, lautet der Status TimedOut.
-delay | TimeSpan | 00:00:00 | Geben Sie die Verzögerung an, mit der die Datenverarbeitung des Slice beginnt.<br/><br/>Die Ausführung der Aktivität für einen Datenslice wird gestartet, nachdem die Verzögerung die erwartete Ausführungszeit überschreitet.<br/><br/>Beispiel: 00:10:00 (Verzögerung von 10 Minuten).
-longRetry | Ganze Zahl<br/><br/>Höchstwert: 10 | 1 | Die Anzahl langer Wiederholungsversuche, bevor die Sliceausführung einen Fehler verursacht.<br/><br/>longRetry-Versuche werden durch longRetryInterval über einen Zeitraum verteilt. Wenn Sie eine Zeit zwischen den Wiederholungsversuchen angeben müssen, verwenden Sie "longRetry". Wenn sowohl „retry“ als auch „longRetry“ angegeben werden, umfasst jeder longRetry-Versuch retry-Versuche, und die maximale Anzahl der Versuche errechnet sich aus „retry * longRetry“.<br/><br/>Beispiel: Die Richtlinie für die Aktivität enthält Folgendes:<br/>retry: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Nehmen Sie an, dass nur ein Slice auszuführen ist (Status lautet „Waiting“) und dass die Ausführung der Aktivität jedes Mal einen Fehler verursacht. Zunächst würden drei aufeinander folgende Ausführungsversuche durchgeführt. Nach jedem Versuch wäre der Slicestatus "Retry". Nachdem die ersten drei Versuche durchgeführt sind, lautet der Slicestatus "LongRetry".<br/><br/>Nach einer Stunde (Wert von "longRetryInterval") würden drei weitere aufeinander folgende Ausführungsversuche unternommen. Danach würde der Slicestatus "Failed" lauten, und es fänden keine weiteren Versuche statt. Somit wurden insgesamt sechs Versuche unternommen.<br/><br/>Hinweis: Bei einer erfolgreichen Ausführung lautet der Slicestatus "Ready", und es werden keine weiteren Versuche durchgeführt.<br/><br/>"longRetry" kann in Situationen verwendet werden, bei denen abhängige Daten zu nicht festgelegten Zeiten eingehen oder die gesamte Umgebung, in der die Datenverarbeitung erfolgt, relativ unzuverlässig ist. In solchen Fällen ist die Durchführung von aufeinander folgenden Wiederholungen möglicherweise nicht hilfreich, und die Wiederholung nach einem bestimmten Zeitraum führt vielleicht zur gewünschten Ausgabe.<br/><br/>Vorsicht: Legen Sie für "longRetry" und "longRetryInterval" keine hohen Werte fest. In der Regel weisen höhere Werte auf andere Systemprobleme hin. 
+timeout | TimeSpan | 00:00:00 | Timeout für die Aktivität. Beispiel: 00:10:00 (Timeout nach 10 Minuten)<br/><br/>Wenn der Wert nicht angegeben wird oder 0 lautet, ist das Zeitlimit unendlich.<br/><br/>Wenn die Datenverarbeitungszeit für einen Slice den Timeoutwert überschreitet, wird der Vorgang abgebrochen, und das System versucht, die Verarbeitung zu wiederholen. Die Anzahl der Wiederholungsversuche hängt von der Eigenschaft "retry" ab. Wenn ein Timeout auftritt, lautet der Status TimedOut.
+delay | TimeSpan | 00:00:00 | Geben Sie die Verzögerung an, mit der die Datenverarbeitung des Slice beginnt.<br/><br/>Die Ausführung der Aktivität für einen Datenslice wird gestartet, nachdem die Verzögerung die erwartete Ausführungszeit überschreitet.<br/><br/>Beispiel: 00:10:00 (Verzögerung von 10 Minuten).
+longRetry | Ganze Zahl<br/><br/>Höchstwert: 10 | 1 | Die Anzahl von langen Wiederholungsversuchen, bevor die Sliceausführung einen Fehler verursacht.<br/><br/>longRetry-Versuche werden durch longRetryInterval über einen Zeitraum verteilt. Wenn Sie eine Zeit zwischen den Wiederholungsversuchen angeben müssen, verwenden Sie "longRetry". Wenn sowohl „retry“ als auch „longRetry“ angegeben werden, umfasst jeder longRetry-Versuch retry-Versuche, und die maximale Anzahl von Versuchen errechnet sich aus „retry * longRetry“.<br/><br/>Beispiel: Die Richtlinie für die Aktivität enthält Folgendes:<br/>retry: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Nehmen Sie an, dass nur ein Slice auszuführen ist (Status lautet „Waiting“) und dass die Ausführung der Aktivität jedes Mal einen Fehler verursacht. Zunächst würden drei aufeinander folgende Ausführungsversuche durchgeführt. Nach jedem Versuch wäre der Slicestatus "Retry". Nachdem die ersten drei Versuche durchgeführt sind, lautet der Slicestatus "LongRetry".<br/><br/>Nach einer Stunde (Wert von "longRetryInterval") würden drei weitere aufeinander folgende Ausführungsversuche unternommen. Danach würde der Slicestatus "Failed" lauten, und es fänden keine weiteren Versuche statt. Somit wurden insgesamt sechs Versuche unternommen.<br/><br/>Hinweis: Bei einer erfolgreichen Ausführung lautet der Slicestatus "Ready", und es werden keine weiteren Versuche durchgeführt.<br/><br/>"longRetry" kann in Situationen verwendet werden, bei denen abhängige Daten zu nicht festgelegten Zeiten eingehen oder die gesamte Umgebung, in der die Datenverarbeitung erfolgt, relativ unzuverlässig ist. In solchen Fällen ist die Durchführung von aufeinander folgenden Wiederholungen möglicherweise nicht hilfreich, und die Wiederholung nach einem bestimmten Zeitraum führt vielleicht zur gewünschten Ausgabe.<br/><br/>Vorsicht: Legen Sie für "longRetry" und "longRetryInterval" keine hohen Werte fest. In der Regel weisen höhere Werte auf andere Systemprobleme hin. 
 longRetryInterval | TimeSpan | 00:00:00 | Die Verzögerung zwischen langen Wiederholungsversuchen 
 
 ## Verketten von Aktivitäten
@@ -266,8 +267,8 @@ Sie können zwei Aktivitäten verketten, indem Sie das Ausgabedataset einer Akti
 
 Betrachten Sie beispielsweise den folgenden Fall:
  
-1.	Die Pipeline P1 verfügt über die Aktivität A1, die das externe Eingabedataset D1 erfordert und das **Ausgabedataset** **D2** generiert.
-2.	Die Pipeline P2 verfügt über die Aktivität A2, die eine **Eingabe** aus dem Dataset **D2** erfordert und das Ausgabedataset D3 generiert.
+1.	Die Pipeline P1 verfügt über die Aktivität A1, für die das externe Eingabedataset D1 erforderlich ist und die das **Ausgabedataset** **D2** generiert.
+2.	Die Pipeline P2 verfügt über die Aktivität A2, für die eine **Eingabe** aus dem Dataset **D2** erforderlich ist und die das Ausgabedataset D3 generiert.
  
 In diesem Szenario wird die Aktivität A1 ausgeführt, wenn die externen Daten verfügbar sind und die Häufigkeit für die geplante Verfügbarkeit erreicht ist. Die Aktivität A2 wird ausgeführt, wenn die geplanten Slices von D2 verfügbar werden und die Häufigkeit für die geplante Verfügbarkeit erreicht ist. Wenn ein Fehler in einem der Slices im Dataset D2 auftritt, wird A2 für diesen Slice nicht ausgeführt, bis er verfügbar wird.
 
@@ -297,7 +298,7 @@ Azure Data Factory bietet verschiedene Mechanismen zum Erstellen und Bereitstell
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wechseln Sie zu Ihrer Azure Data Factory-Instanz, in der Sie eine Pipeline erstellen möchten.
-3. Klicken Sie im Fokus **Zusammenfassung** auf die Kachel **Erstellen und bereitstellen**. 
+3. Klicken Sie im Fokus **Zusammenfassung** auf die Kachel **Erstellen und bereitstellen**.
  
 	![Kachel "Erstellen und bereitstellen"](./media/data-factory-create-pipelines/author-deploy-tile.png)
 
@@ -342,34 +343,9 @@ Sobald eine Pipeline bereitgestellt wird, können Sie Ihre Pipelines, Slices und
 
 ## Nächste Schritte
 
-- Erfahren Sie mehr über die [Planung und Ausführung in Azure Data Factory](data-factory-scheduling-and-execution.md).  
+- Erfahren Sie mehr über die [Planung und Ausführung in Azure Data Factory](data-factory-scheduling-and-execution.md).
 - Informieren Sie sich über die Möglichkeiten zur [Datenverschiebung](data-factory-data-movement-activities.md) und [Datentransformation](data-factory-data-transformation-activities.md) in Azure Data Factory.
 - Erfahren Sie mehr über die [Verwaltung und Überwachung in Azure Data Factory](data-factory-monitor-manage-pipelines.md).
-- [Erstellen Sie Ihre erste Pipeline, und stellen Sie sie bereit](data-factory-build-your-first-pipeline.md). 
+- [Erstellen Sie Ihre erste Pipeline, und stellen Sie sie bereit](data-factory-build-your-first-pipeline.md).
 
-
- 
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
- 
-
-
- 
-
- 
-
-<!----HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0629_2016-->

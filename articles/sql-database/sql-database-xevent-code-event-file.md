@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/08/2016" 
+	ms.date="06/24/2016" 
 	ms.author="genemi"/>
 
 
@@ -292,7 +292,7 @@ Beim Beenden des PowerShell-Skripts wurden einige benannte Werte ausgegeben. Sie
 &nbsp;
 
 
-> [AZURE.WARNING] Der durch das vorangehende PowerShell-Skript generierte SAS-Schlüsselwert beginnt unter Umständen mit einem Fragezeichen. Wenn Sie den SAS-Schlüssel im folgenden T-SQL-Skript verwenden, müssen Sie das vorangestellte Fragezeichen entfernen.
+> [AZURE.WARNING] Der durch das vorangehende PowerShell-Skript generierte SAS-Schlüsselwert beginnt unter Umständen mit einem Fragezeichen. Wenn Sie den SAS-Schlüssel im folgenden T-SQL-Skript verwenden, müssen Sie *das vorangestellte Fragezeichen entfernen*. Andernfalls kann die Ausführung des Skripts aus Sicherheitsgründen blockiert werden.
 
 
 &nbsp;
@@ -559,9 +559,17 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 </event>
 ```
 
+&nbsp;
 
 
+Im vorherigen Transact-SQL-Skript wurde die folgende Systemfunktion verwendet, um die Ereignisdatei zu lesen:
 
+- [sys.fn\_xe\_file\_target\_read\_file (Transact-SQL)](http://msdn.microsoft.com/library/cc280743.aspx)
+
+
+Eine Erläuterung der erweiterten Optionen zum Anzeigen von Daten aus erweiterten Ereignissen finden Sie unter:
+
+- [Advanced Viewing of Target Data from Extended Events](http://msdn.microsoft.com/library/mt752502.aspx) (Erweiterte Anzeige von Zieldaten aus erweiterten Ereignissen)
 
 &nbsp;
 
@@ -585,20 +593,15 @@ Angenommen, Sie möchten das vorhergehende Transact-SQL-Codebeispiel in Microsof
 ## Weitere Informationen
 
 
-Hauptthemen für erweiterte Ereignisse in Azure SQL-Datenbank:
-
-- [Erweitere Ereignisse in SQL-Datenbank](sql-database-xevent-db-diff-from-svr.md): das Hauptthema für erweiterte Ereignisse in Azure SQL-Datenbank.
- - In diesem Thema werden Aspekte von erweiterten Ereignissen, die sich zwischen Azure SQL-Datenbank und Microsoft SQL Server unterscheiden, einander gegenübergestellt.
-
-
-- [Ringpuffer-Zielcode für erweitere Ereignisse in SQL-Datenbank](sql-database-xevent-code-ring-buffer.md): enthält ein weiteres Codebeispiel, das sich schnell und einfach anwenden lässt, jedoch eher für kurze Tests vorgesehen und bei umfangreicherer Aktivität weniger stabil ist.
-
-
 Weitere Informationen zu Konten und Containern im Azure Storage-Dienst finden Sie in den folgenden Artikeln:
 
 - [Verwenden des Blob-Speichers mit .NET](../storage/storage-dotnet-how-to-use-blobs.md)
 - [Benennen von Containern, BLOBs und Metadaten und Verweisen auf diese](http://msdn.microsoft.com/library/azure/dd135715.aspx)
 - [Arbeiten mit dem Stammcontainer](http://msdn.microsoft.com/library/azure/ee395424.aspx)
+- [Lektion 1: Erstellen einer gespeicherten Zugriffsrichtlinie und einer Shared Access Signature für einen Azure-Container](http://msdn.microsoft.com/library/dn466430.aspx)
+    - [Lektion 2: Erstellen von SQL Server-Anmeldeinformationen mit einer Shared Access Signature](http://msdn.microsoft.com/library/dn466435.aspx)
+
+
 
 
 <!--
@@ -607,4 +610,4 @@ Image references.
 
 [30_powershell_ise]: ./media/sql-database-xevent-code-event-file/event-file-powershell-ise-b30.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

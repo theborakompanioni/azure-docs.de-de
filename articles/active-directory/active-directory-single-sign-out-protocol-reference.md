@@ -13,13 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="06/23/2016"
 	ms.author="priyamo"/>
 
 
 # SAML-Protokoll für einmaliges Abmelden
-
-[AZURE.INCLUDE [active-directory-protocols](../../includes/active-directory-protocols.md)]
 
 Azure Active Directory (Azure AD) unterstützt das SAML 2.0-Webbrowserprofil für einmaliges Abmelden. Damit das einmalige Abmelden richtig funktioniert, muss Azure AD seine Metadaten-URL während der Anwendungsregistrierung registrieren. Azure AD ruft die Abmelde-URL und den Signaturschlüssel des Clouddiensts aus den Metadaten ab. Azure AD verwendet den Signaturschlüssel zum Überprüfen der Signatur für das eingehende LogoutRequest-Element. Die LogoutURL wird dann verwendet, um Benutzer nach dem Abmelden umzuleiten.
 
@@ -44,17 +42,17 @@ Der Clouddienst sendet eine `LogoutRequest`-Nachricht an Azure AD, um anzugeben,
 
 Für das an Azure AD gesendete `LogoutRequest`-Element sind die folgenden Attribute erforderlich:
 
-- `ID`: Dient zum Identifizieren der Abmeldeanforderung. Der Wert von `ID` sollte nicht mit einer Zahl beginnen. Die übliche Vorgehensweise besteht darin, **id** an die Zeichenfolgendarstellung einer GUID anzufügen.
+- `ID`: Dient zum Identifizieren der Abmeldeanforderung. Der Wert von `ID` darf nicht mit einer Zahl beginnen. Die übliche Vorgehensweise besteht darin, **id** an die Zeichenfolgendarstellung einer GUID anzufügen.
 
 - `Version`: Legen Sie den Wert dieses Elements auf **2.0** fest. Dieser Wert ist erforderlich.
 
-- `IssueInstant`: Dies ist eine `DateTime`-Zeichenfolge mit einem UTC-Wert (Coordinated Universal Time) und [Roundtrip-Format („o“)](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD erwartet einen Wert dieses Typs, aber der Wert wird nicht erzwungen.
+- `IssueInstant`: Eine `DateTime`-Zeichenfolge mit einem UTC-Wert (Coordinated Universal Time) und [Roundtrip-Format („o“)](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD erwartet einen Wert dieses Typs, aber der Wert wird nicht erzwungen.
 
 - Die Attribute `Consent`, `Destination`, `NotOnOrAfter` und `Reason` werden ignoriert, wenn sie in ein `LogoutRequest`-Element eingebunden sind.
 
 ### Aussteller
 
-Das `Issuer`-Element in einem `LogoutRequest`-Element muss genau mit einem der **ServicePrincipalNames** im Clouddienst von Azure AD übereinstimmen. Normalerweise ist es auf den **App-ID-URI** festgelegt, der während der Anwendungsregistrierung angegeben wird.
+Das `Issuer`-Element in einem `LogoutRequest`-Element muss mit einem der **ServicePrincipalNames** im Clouddienst von Azure AD exakt übereinstimmen. Normalerweise ist es auf den **App-ID-URI** festgelegt, der bei der Anwendungsregistrierung angegeben wird.
 
 ### NameID
 
@@ -80,10 +78,10 @@ Azure AD legt die Werte `ID`, `Version` und `IssueInstant` im `LogoutResponse`-E
 
 Azure AD legt diesen Wert auf `https://login.microsoftonline.com/<TenantIdGUID>/` fest, wobei <TenantIdGUID> die Mandanten-ID des Azure AD-Mandanten ist.
 
-Verwenden Sie zum Auswerten des Werts für das `Issuer`-Element den **App-ID-URI**-Wert, der während der Anwendungsregistrierung bereitgestellt wurde.
+Verwenden Sie zum Auswerten des Werts für das `Issuer`-Element den Wert für **App-ID-URI**, der bei der Anwendungsregistrierung angegeben wurde.
 
 ### Status
 
-Azure AD verwendet das `StatusCode`-Element im `Status`-Element, um anzugeben, ob die Abmeldung erfolgreich war. Wenn beim Abmeldeversuch ein Fehler auftritt, kann das `StatusCode`-Element auch benutzerdefinierte Fehlermeldungen enthalten.
+Azure AD verwendet das `StatusCode`-Element im `Status`-Element, um anzugeben, ob die Abmeldung erfolgreich war. Wenn beim Abmelden ein Fehler auftritt, kann das `StatusCode`-Element auch benutzerdefinierte Fehlermeldungen enthalten.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

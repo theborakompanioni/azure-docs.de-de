@@ -34,7 +34,7 @@ Dieses Tutorial baut auf dem Mobile App-Schnellstart auf. Bevor Sie mit diesem L
 
 Bevor Sie Pushbenachrichtigungen von Azure an Ihre Windows-Apps senden können, müssen Sie Ihre App an den Windows Store übermitteln. Sie können dann das Serverprojekt zur Integration mit dem WNS konfigurieren.
 
-1. Klicken Sie im Projektmappen-Explorer von Visual Studio mit der rechten Maustaste auf das UWP-App-Projekt, und klicken Sie dann auf **Store** > **App mit Store verknüpfen...** 
+1. Klicken Sie im Projektmappen-Explorer von Visual Studio mit der rechten Maustaste auf das UWP-App-Projekt, und klicken Sie dann auf **Store** > **App mit Store verknüpfen...**
 
     ![Zuordnen der App zu Windows Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
     
@@ -200,10 +200,21 @@ Als nächstes muss die App beim Start für Pushbenachrichtigungen registriert we
 [AZURE.INCLUDE [app-service-mobile-windows-universal-test-push](../../includes/app-service-mobile-windows-universal-test-push.md)]
 
 
-##<a id="more"></a>Weitere Informationen
+##<a id="more"></a>Nächste Schritte
 
-* Vorlagen ermöglichen Ihnen, flexibel plattformübergreifende Pushvorgänge und lokalisierte Pushvorgänge zu senden. In [Verwenden des verwalteten Clients für Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md#how-to-register-push-templates-to-send-cross-platform-notifications) wird erklärt, wie Sie Vorlagen registrieren.
-* Mit Tags können Sie für segmentierte Kunden Pushvorgänge auswählen. In [Arbeiten Sie mit der .NET-Back-End-Server-SDK für Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-add-tags-to-a-device-installation-to-enable-push-to-tags) wird erklärt, wie Sie einer Geräteinstallation Tags hinzufügen.
+Informieren Sie sich ausführlicher über Pushbenachrichtigungen:
+
+* [Verwenden des verwalteten Clients für Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md#how-to-register-push-templates-to-send-cross-platform-notifications): Mithilfe von Vorlagen können Sie flexibel plattformübergreifende Pushvorgänge und lokalisierte Pushvorgänge senden. Hier erfahren Sie, wie Sie Vorlagen registrieren.
+
+* [Verwenden des .NET-Back-End-Server-SDKs für Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-add-tags-to-a-device-installation-to-enable-push-to-tags): Mit Tags können Sie Pushvorgänge auf segmentierte Kunden ausrichten. Hier erfahren Sie, wie Sie einer Geräteinstallation Tags hinzufügen.
+
+* [Azure Notification Hubs - Diagnosis guidelines](../notification-hubs/notification-hubs-push-notification-fixer.md) (Azure Notification Hubs – Diagnoserichtlinien): Benachrichtigungen können aus unterschiedlichen Gründen verloren gehen oder nicht bei Geräten ankommen. In diesem Thema erfahren Sie, wie Sie die Ursache für Fehler bei Pushbenachrichtigungen analysieren und ermitteln.
+
+Sie können mit einem der folgenden Tutorials fortfahren:
+
++ [Hinzufügen von Authentifizierung zur App](app-service-mobile-windows-store-dotnet-get-started-users.md) Hier erhalten Sie Informationen zur Authentifizierung von Benutzern der App mit einem Identitätsanbieter.
+
++ [Aktivieren der Offlinesynchronisierung für Ihre App](app-service-mobile-windows-store-dotnet-get-started-offline-data.md) Hier erfahren Sie, wie Sie Ihrer App mithilfe eines Mobile App-Back-Ends Offlineunterstützung hinzufügen. Die Offlinesynchronisierung ermöglicht Endbenutzern die Interaktion mit einer mobilen App (Anzeigen, Hinzufügen und Ändern von Daten), auch wenn keine Netzwerkverbindung vorhanden ist.
 
 <!-- Anchors. -->
 
@@ -211,6 +222,5 @@ Als nächstes muss die App beim Start für Pushbenachrichtigungen registriert we
 [Azure Portal]: https://portal.azure.com/
 
 <!-- Images. -->
-))) )
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="06/23/2016"
 	ms.author="robinsh"/>
 
 # Azure Storage Service Encryption für ruhende Daten (Vorschau)
@@ -25,7 +25,7 @@ Die folgenden Abschnitte enthalten eine ausführliche Anleitung zur Verwendung d
 ## Übersicht
 
 
-Azure Storage bietet einen umfassenden Satz von Sicherheitsfunktionen, die Entwicklern das Erstellen sicherer Anwendungen ermöglichen. Daten können während der Übertragung zwischen einer Anwendung und Azure mit [clientseitiger Verschlüsselung](storage-client-side-encryption.md), HTTPS oder SMB 3.0 geschützt werden. Storage Service Encryption ist ein neues Feature von Azure Storage, das Daten verschlüsselt, wenn sie in Azure Storage geschrieben werden, mit Unterstützung von Blockblobs, Seitenblobs und Anfügeblobs. Dieses Feature kann für neue Speicherkonten aktiviert werden, die mit dem Bereitstellungsmodell von Azure Resource Manager (ARM) erstellt werden, und ist für alle Redundanzebenen (LRS, ZRS, GRS und RA-GRS) verfügbar. Storage Service Encryption ist für Standard Storage und Premium Storage, Verschlüsselung, Entschlüsselung und Schlüsselverwaltung auf vollständig transparente Weise verfügbar. Sämtliche Daten werden mittels 256-Bit-[AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) verschlüsselt, einem der sichersten verfügbaren Blockverschlüsselungsverfahren. Der Abschnitt „Vorschau“ im Folgenden beschreibt im Detail, wie Sie in das Vorschauprogramm für Storage Service Encryption einsteigen können.
+Azure Storage bietet einen umfassenden Satz von Sicherheitsfunktionen, die Entwicklern das Erstellen sicherer Anwendungen ermöglichen. Daten können während der Übertragung zwischen einer Anwendung und Azure mit [clientseitiger Verschlüsselung](storage-client-side-encryption.md), HTTPS oder SMB 3.0 geschützt werden. Storage Service Encryption ist ein neues Feature von Azure Storage, das Daten verschlüsselt, wenn sie in Azure Storage geschrieben werden, mit Unterstützung von Blockblobs, Seitenblobs und Anfügeblobs. Dieses Feature kann für neue Speicherkonten aktiviert werden, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt werden, und ist für alle Redundanzebenen (LRS, ZRS, GRS und RA-GRS) verfügbar. Storage Service Encryption ist für Standard Storage und Premium Storage, Verschlüsselung, Entschlüsselung und Schlüsselverwaltung auf vollständig transparente Weise verfügbar. Sämtliche Daten werden mittels 256-Bit-[AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) verschlüsselt, einem der sichersten verfügbaren Blockverschlüsselungsverfahren. Der Abschnitt „Vorschau“ im Folgenden beschreibt im Detail, wie Sie in das Vorschauprogramm für Storage Service Encryption einsteigen können.
 
 Dieser Screenshot zeigt, wo Sie die Storage Service Encryption-Einstellung mit dem [Azure-Portal](https://azure.portal.com) finden. Klicken Sie auf diesem Bildschirm auf „Verschlüsselung“, um fortzufahren.
 
@@ -37,7 +37,11 @@ Nach Klicken auf die Einstellung „Verschlüsselung“ können Sie Storage Serv
 
 ##Availability
 
-Beachten Sie, dass dieses Feature derzeit in den Regionen Asien, Osten und Europa, Westen für Standard Storage und in der Region Japan, Osten für Storage Premium verfügbar ist. Wenn wir dieses Feature in weiteren Regionen einführen, werden wir dieses Dokument entsprechend aktualisieren.
+Für den Standardspeicher ist dieses Feature derzeit in den Regionen „USA, Mitte“, „USA, Westen“, „Asien, Osten“ und „Europa, Westen“ verfügbar.
+
+Für Storage Premium ist dieses Feature derzeit in den Regionen „USA, Mitte“, „USA, Westen“ und „Japan, Osten“ verfügbar.
+
+Wenn wir dieses Feature in weiteren Regionen einführen, werden wir dieses Dokument entsprechend aktualisieren.
 
 ##Verschlüsselungsszenarien
 
@@ -53,21 +57,21 @@ Die öffentliche Vorschau hat folgende Einschränkungen:
 
 -   Verschlüsselung von klassischen Speicherkonten wird nicht unterstützt.
 
--   Verschlüsselung von klassischen, zu ARM-Speicherkonten migrierten Speicherkonten wird nicht unterstützt.
+-   Verschlüsselung von klassischen, zu Resource Manager-Speicherkonten migrierten Speicherkonten wird nicht unterstützt.
 
--   Vorhandene Daten – SSE verschlüsselt nur nach Aktivierung der Verschlüsselung neu erstellte Daten. Wenn Sie z. B. ein neues ARM-Speicherkonto erstellen, jedoch keine Verschlüsselung aktivieren, und dann Blobs oder archivierte VHDs in das Speicherkonto hochladen und SSE erneut aktivieren, werden diese Blobs nicht verschlüsselt, sofern sie nicht neu geschrieben oder kopiert werden.
+-   Vorhandene Daten – SSE verschlüsselt nur nach Aktivierung der Verschlüsselung neu erstellte Daten. Wenn Sie z.B. ein neues Resource Manager-Speicherkonto erstellen, jedoch keine Verschlüsselung aktivieren, und dann Blobs oder archivierte VHDs in das Speicherkonto hochladen und SSE aktivieren, werden diese Blobs nicht verschlüsselt, sofern sie nicht neu geschrieben oder kopiert werden.
 
--   Unterstützung für Marketplace – Aktivieren der Verschlüsselung von virtuellen Computern, die über den Marketplace mittels (Azure-Portal) [https://portal.azure.com), PowerShell und Azure-Befehlszeilenschnittstelle erstellt werden. Das VHD-Basisimage bleibt unverschlüsselt. Allerdings werden alle Schreibvorgänge verschlüsselt, die nach Erstellen der VM stattfinden.
+-   Unterstützung für Marketplace – Aktivieren der Verschlüsselung von virtuellen Computern, die über den Marketplace mittels (Azure-Portal) [https://portal.azure.com], PowerShell und Azure-Befehlszeilenschnittstelle erstellt werden. Das VHD-Basisimage bleibt unverschlüsselt. Allerdings werden alle Schreibvorgänge verschlüsselt, die nach Erstellen der VM stattfinden.
 
 -   Tabellen, Warteschlangen und Dateidaten werden nicht verschlüsselt.
 
 ##Vorschau
 
-Dieses Feature wird nur für neu erstellte Azure Storage-Konten unterstützt, die mit dem Bereitstellungsmodell von Azure Resource Manager erstellt wurden. Klassische Speicherkonten werden nicht unterstützt. Um dieses neue Feature verwenden zu können, müssen Sie Ihr Abonnement mithilfe von PowerShell-Cmdlets registrieren. Nach Genehmigung Ihres Abonnements können Sie SSE für Ihr Speicherkonto unter dem zugelassenen Abonnement aktivieren. Wie bei fast jeder Vorschau gilt: Die Verwendung in der Produktion sollte erst dann beginnen, wenn das Feature allgemein verfügbar ist. Sie können unserer Storage Service Encryption-Vorschaugruppe auf Yammer beitreten, um über Ihre Erfahrungen zu berichten.
+Dieses Feature wird nur für neu erstellte Resource Manager-Speicherkonten unterstützt. Klassische Speicherkonten werden nicht unterstützt. Um dieses neue Feature verwenden zu können, müssen Sie Ihr Abonnement mithilfe von PowerShell-Cmdlets registrieren. Nach Genehmigung Ihres Abonnements können Sie SSE für Ihr Speicherkonto unter dem zugelassenen Abonnement aktivieren. Wie bei fast jeder Vorschau gilt: Die Verwendung in der Produktion sollte erst dann beginnen, wenn das Feature allgemein verfügbar ist. Sie können unserer Storage Service Encryption-Vorschaugruppe auf Yammer beitreten, um über Ihre Erfahrungen zu berichten.
 
 ### Registrierung für die Vorschau
 
--   [Installieren Sie die Azure PowerShell-Cmdlets](../powershell-install-configure.md). 
+-   [Installieren Sie die Azure PowerShell-Cmdlets](../powershell-install-configure.md).
 
 -   Führen Sie PowerShell unter Windows 10 als Administrator aus.
 
@@ -95,7 +99,7 @@ Wenn der Registrierungsstatus „Registriert“ zurückgegeben wird, wurde Ihr A
 
 Sie können die Verschlüsselung im [Azure-Portal](https://portal.azure.com) aktivieren.
 
-> [AZURE.NOTE] Wenn Sie Storage Service Encryption programmgesteuert für ein Speicherkonto aktivieren oder deaktivieren möchten, können Sie die [Azure-Speicherressourcenanbieter-REST-API](https://msdn.microsoft.com/library/azure/mt163683.aspx) verwenden. Wir fügen diese Möglichkeit der [Speicherressourcenanbieter-Clientbibliothek für .NET](https://msdn.microsoft.com/library/azure/mt131037.aspx), Azure PowerShell und Azure-CLI bald hinzu.
+> [AZURE.NOTE] Wenn Sie Storage Service Encryption programmgesteuert für ein Speicherkonto aktivieren oder deaktivieren möchten, können Sie die [REST-API des Azure Storage-Ressourcenanbieters](https://msdn.microsoft.com/library/azure/mt163683.aspx) verwenden. Wir fügen diese Möglichkeit der [Speicherressourcenanbieter-Clientbibliothek für .NET](https://msdn.microsoft.com/library/azure/mt131037.aspx), Azure PowerShell und Azure-CLI bald hinzu.
 
 ###Schritt 4: Kopieren von Daten in das Speicherkonto
 
@@ -113,7 +117,7 @@ Weitere Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mi
 
 #### Verwenden eines Storage-Explorers
 
-Mit einem Storage-Explorer können Sie Speicherkonten erstellen, Daten hoch- und herunterladen, Inhalt von Blobs anzeigen und durch Verzeichnisse navigieren. Viele unterstützen klassische und ARM-Speicherkonten.
+Mit einem Storage-Explorer können Sie Speicherkonten erstellen, Daten hoch- und herunterladen, Inhalt von Blobs anzeigen und durch Verzeichnisse navigieren. Viele unterstützen klassische und Resource Manager-Speicherkonten.
 
 Sie können eines dieser Konten zum Hochladen von Blobs in Ihr Speicherkonto mit aktivierter Verschlüsselung verwenden. Mit einigen Storage-Explorern können Sie auch Daten aus Ihrem vorhandenen Speicherkonto in Ihr neues Speicherkonto kopieren, in dem SSE aktiviert ist.
 
@@ -123,7 +127,7 @@ Weitere Informationen finden Sie unter [Microsoft Azure-Speicher-Explorer](stora
 
 Sobald SSE allgemein verfügbar ist, wird eine aktualisierte Version der Speicherclientbibliotheken bereitgestellt, mit denen Sie den Status eines Objekts ermitteln können, um zu bestimmen, ob es verschlüsselt ist oder nicht.
 
-Rufen Sie in der Zwischenzeit [Kontoeigenschaften abrufen](https://msdn.microsoft.com/library/azure/mt163553.aspx) auf, um zu überprüfen, ob die Verschlüsselung für das Speicherkonto aktiviert wurde, oder die Eigenschaften des Speicherkontos im Azure-Portal anzuzeigen.
+Rufen Sie in der Zwischenzeit [Kontoeigenschaften abrufen](https://msdn.microsoft.com/library/azure/mt163553.aspx) auf, um zu überprüfen, ob die Verschlüsselung für das Speicherkonto aktiviert wurde, oder zeigen Sie die Eigenschaften des Speicherkontos im Azure-Portal an.
 
 ##Verschlüsselungs- und Entschlüsselungsworkflow
 
@@ -143,19 +147,19 @@ Hier ist eine kurze Beschreibung des Verschlüsselungs-/Entschlüsselungsworkflo
 
 **F: Ich habe ein klassisches Speicherkonto. Kann ich dafür SSE aktivieren?**
 
-A: Nein, SSE wird in der Vorschau nur auf neu erstellten ARM-Speicherkonten unterstützt.
+A: Nein, SSE wird in der Vorschau nur für neu erstellte Resource Manager-Speicherkonten unterstützt.
 
 **F: Wie kann ich Daten in meinem klassischen Speicherkonto verschlüsseln?**
 
-A: Sie können ein neues ARM-Speicherkonto erstellen und Ihre Daten mit [AzCopy](storage-use-azcopy.md) aus Ihrem vorhandenen klassischen Speicherkonto in Ihr neu erstelltes ARM-Speicherkonto kopieren.
+A: Sie können ein neues Resource Manager-Speicherkonto erstellen und Ihre Daten mit [AzCopy](storage-use-azcopy.md) aus Ihrem vorhandenen klassischen Speicherkonto in Ihr neu erstelltes Resource Manager-Speicherkonto kopieren.
 
-**F: Ich habe ein ARM-Speicherkonto. Kann ich dafür SSE aktivieren?**
+**F: Ich habe ein vorhandenes Resource Manager-Speicherkonto. Kann ich dafür SSE aktivieren?**
 
 A: Während der SSE-Vorschau müssen Sie ein neues Konto erstellen, um auf die neue SSE-Funktion zuzugreifen.
 
-**F: Kann ich die aktuellen Daten in einem vorhandenen ARM-Speicherkonto verschlüsseln?**
+**F: Kann ich die aktuellen Daten in einem vorhandenen Resource Manager-Speicherkonto verschlüsseln?**
 
-A: Wenn Ihr vorhandenes ARM-Speicherkonto vor dieser Vorschauankündigung erstellt wurde, können Sie ein neues ARM-Speicherkonto erstellen und die Verschlüsselung aktivieren. Sie können dann die Daten aus dem vorherigen Speicherkonto kopieren, und sie werden automatisch verschlüsselt. Wenn Ihr vorhandenes ARM-Speicherkonto jedoch nach dieser Vorschauankündigung erstellt wurde, und Sie sich entschieden, die Verschlüsselung zu einem späteren Zeitpunkt zu aktivieren, können Sie die Verschlüsselung für dieses Speicherkonto mithilfe des Azure-Portals aktivieren und unverschlüsselte Daten wieder in das Speicherkonto schreiben.
+A: Wenn Ihr vorhandenes Resource Manager-Speicherkonto vor dieser Vorschauankündigung erstellt wurde, können Sie ein neues Resource Manager-Speicherkonto erstellen und die Verschlüsselung aktivieren. Sie können dann die Daten aus dem vorherigen Speicherkonto kopieren, und sie werden automatisch verschlüsselt. Wenn Ihr vorhandenes Resource Manager-Speicherkonto jedoch nach dieser Vorschauankündigung erstellt wurde und Sie sich entschieden haben, die Verschlüsselung zu einem späteren Zeitpunkt zu aktivieren, können Sie die Verschlüsselung für dieses Speicherkonto mithilfe des Azure-Portals aktivieren und unverschlüsselte Daten wieder in das Speicherkonto schreiben.
 
 **F: Ich verwende Storage Premium; kann ich SSE verwenden?**
 
@@ -225,4 +229,4 @@ A: Bitte wenden Sie sich in allen Angelegenheiten, die Storage Service Encryptio
 
 Azure Storage bietet einen umfassenden Satz von Sicherheitsfunktionen, die Entwicklern das Erstellen sicherer Anwendungen ermöglichen. Weitere Informationen finden Sie im [Azure Storage-Sicherheitsleitfaden](storage-security-guide.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

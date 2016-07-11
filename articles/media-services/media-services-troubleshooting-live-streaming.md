@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="03/02/2016"  
+	ms.date="06/22/2016"  
 	ms.author="juliako"/>
 
 #Anleitung zur Behandlung von Problemen bei Livestreaming
@@ -28,19 +28,19 @@ Dieser Abschnitt enthält Empfehlungen zum Beheben von Problemen im Zusammenhang
 
 - **Mögliches Problem:** Encoderprotokolle, mit denen möglicherweise Fehler behoben werden können, können nicht gefunden werden.
 	
-	- **Telestream Wirecast**: Normalerweise finden Sie Protokolle unter „C:\\Benutzer{Benutzername}\\AppData\\Roaming\\Wirecast\\“. 
-	- **Elemental Live**: Sie finden im Verwaltungsportal Links zu Protokollen. Klicken Sie auf **Stats** und dann auf **Protokolle**. Auf der Seite **Protokolldateien** sehen Sie eine Liste der Protokolle für alle LiveEvent-Elemente. Wählen Sie das Protokoll für Ihre aktuelle Sitzung aus. 
+	- **Telestream Wirecast**: Normalerweise finden Sie Protokolle unter „C:\\Benutzer{Benutzername}\\AppData\\Roaming\\Wirecast\\“.
+	- **Elemental Live**: Sie finden im Verwaltungsportal Links zu Protokollen. Klicken Sie auf **Stats** und dann auf **Protokolle**. Auf der Seite **Protokolldateien** sehen Sie eine Liste der Protokolle für alle LiveEvent-Elemente. Wählen Sie das Protokoll für Ihre aktuelle Sitzung aus.
 	- **Flash Media Live-Encoder**: Sie finden das **... Protokollverzeichnis** auf der Registerkarte **Encoding Log**.
 	
 ###Problem: Es ist keine Option zum Ausgeben eines progressiven Datenstroms vorhanden
 
-- **Mögliches Problem**: Der verwendete Encoder führt kein automatisches Deinterlacing aus. 
+- **Mögliches Problem**: Der verwendete Encoder führt kein automatisches Deinterlacing aus.
 
 	**Problembehandlungsschritte**: Suchen Sie auf der Encoder-Benutzeroberfläche nach einer Option für Deinterlacing. Sobald Deinterlacing aktiviert ist, suchen Sie erneut nach Einstellungen für die progressive Ausgabe.
  
 ###Problem: Ich habe verschiedene Encoderausgabeeinstellungen ausprobiert und kann immer noch keine Verbindung herstellen. 
 
-- **Mögliches Problem**: Der Azure-Codierungskanal wurde nicht ordnungsgemäß zurückgesetzt. 
+- **Mögliches Problem**: Der Azure-Codierungskanal wurde nicht ordnungsgemäß zurückgesetzt.
 
 	**Problembehandlungsschritte**: Stellen Sie sicher, dass der Encoder keine Push-Übertragung an AMS mehr ausführt, beenden Sie den Kanal, und setzen Sie ihn zurück. Sobald er erneut ausgeführt wird, versuchen Sie mit den neuen Einstellungen, den Encoder zu verbinden. Wenn das Problem damit immer noch nicht behoben ist, erstellen Sie einen vollkommen neuen Kanal. Manchmal werden Kanäle nach mehreren fehlgeschlagenen Versuchen beschädigt.
 
@@ -55,7 +55,7 @@ Dieser Abschnitt enthält Empfehlungen zum Beheben von Problemen im Zusammenhang
 
 ###Problem: Beim Konfigurieren des Encoders für Streaming per RTP besteht keine Möglichkeit zur Eingabe eines Hostnamens. 
 
-- **Mögliches Problem**: Viele RTP-Encoder lassen die Angabe von Hostnamen nicht zu, und es muss eine IP-Adresse bezogen werden.  
+- **Mögliches Problem**: Viele RTP-Encoder lassen die Angabe von Hostnamen nicht zu, und es muss eine IP-Adresse bezogen werden.
 
 	**Problembehandlungsschritte**: Um die IP-Adresse zu suchen, öffnen Sie ein Eingabeaufforderungsfenster auf einem beliebigen Computer. Öffnen Sie zu diesem Zweck das Dialogfeld "Ausführen" (Windows-Taste+R), und geben Sie zum Öffnen der Eingabeaufforderung "cmd" ein.
 
@@ -69,7 +69,7 @@ Dieser Abschnitt enthält Empfehlungen zum Beheben von Problemen im Zusammenhang
 
 ###Problem: Der veröffentlichte Datenstrom kann nicht wiedergegeben werden.
  
-- **Mögliches Problem**: Es wird kein Streamingendpunkt ausgeführt, oder es sind keine Streamingeinheiten (Skalierungseinheiten) zugeordnet. 
+- **Mögliches Problem**: Es wird kein Streamingendpunkt ausgeführt, oder es sind keine Streamingeinheiten (Skalierungseinheiten) zugeordnet.
 
 	**Problembehandlungsschritte**: Navigieren Sie im AMSE-Tool zur Registerkarte "Streamingendpunkt", und stellen Sie sicher, dass ein Streamingendpunkt mit einer Streamingeinheit ausgeführt wird.
 	
@@ -85,4 +85,4 @@ Dieser Abschnitt enthält Empfehlungen zum Beheben von Problemen im Zusammenhang
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

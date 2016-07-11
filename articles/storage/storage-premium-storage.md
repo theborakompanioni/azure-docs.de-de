@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="06/23/2016"
 	ms.author="prkhad"/>
 
 
@@ -39,7 +39,7 @@ Informationen zu den ersten Schritten mit Azure Premium-Speicher finden Sie auf 
 
 **Storage Premium-Seitenblob:** Storage Premium unterstützt Azure-Seitenblobs, die verwendet werden, um persistente Datenträger für virtuelle Azure-Computer zu speichern. Storage Premium unterstützt derzeit nicht Azure Block Blobs, Azure Append Blobs, Azure Files, Azure Tables oder Azure Queues. Alle anderen Objekte in einem Storage Premium-Konto sind Seitenblobs. Die Objekte werden an einer der unterstützten bereitgestellten Größen ausgerichtet. Das Storage Premium-Konto eignet sich daher nicht zum Speichern sehr kleiner Blobs.
 
-**Storage Premium-Konto:** Um Storage Premium verwenden zu können, müssen Sie ein Storage Premium-Konto erstellen. Wenn Sie lieber das [Azure-Portal](https://portal.azure.com) verwenden möchten, können Sie ein Storage Premium-Konto erstellen, indem Sie als Leistungsstufe „Premium“ und als Replikatsoption „lokal redundanter Speicher (LRS)“ angeben. Sie können auch ein Storage Premium-Konto erstellen, indem Sie mithilfe der [Azure Storage-Rest-API](http://msdn.microsoft.com//library/azure/dd179355.aspx) in der Version 2014-02-14 oder neuer; der [REST-API der Dienstverwaltung](http://msdn.microsoft.com/library/azure/ee460799.aspx) in der Version 2014-10-01 oder neuer (klassisches Bereitstellungsmodell); der [Referenz zur REST-API von Azure Storage Resource Provider ](http://msdn.microsoft.com/library/azure/mt163683.aspx)(ARM-Bereitstellungen) und der [Azure PowerShell](../powershell-install-configure.md) in der Version 0.8.10 oder neuer den Typ „Premium\_LRS“ angeben. Informationen zu den Begrenzungen von Storage Premium-Konten finden Sie im folgenden Abschnitt über [Skalierbarkeits- und Leistungsziele für Storage Premium](#premium-storage-scalability-and-performance-targets).
+**Storage Premium-Konto:** Um Storage Premium verwenden zu können, müssen Sie ein Storage Premium-Konto erstellen. Wenn Sie lieber das [Azure-Portal](https://portal.azure.com) verwenden möchten, können Sie ein Storage Premium-Konto erstellen, indem Sie als Leistungsstufe „Premium“ und als Replikationsoption „Lokal redundanter Speicher (LRS)“ angeben. Sie können auch ein Storage Premium-Konto erstellen, indem Sie mithilfe der [Azure Storage-Rest-API](http://msdn.microsoft.com//library/azure/dd179355.aspx) in der Version 2014-02-14 oder höher, der [REST-API der Dienstverwaltung](http://msdn.microsoft.com/library/azure/ee460799.aspx) in der Version 2014-10-01 oder höher (klassische Bereitstellungen), der [Referenz zur REST-API des Azure Storage-Ressourcenanbieters](http://msdn.microsoft.com/library/azure/mt163683.aspx) (Resource Manager-Bereitstellungen) und [Azure PowerShell](../powershell-install-configure.md) in der Version 0.8.10 oder höher den Typ „Premium\_LRS“ angeben. Informationen zu den Begrenzungen von Storage Premium-Konten finden Sie im folgenden Abschnitt über [Skalierbarkeits- und Leistungsziele für Storage Premium](#premium-storage-scalability-and-performance-targets).
 
 **Lokal redundanter Storage Premium:** Ein Storage Premium-Konto unterstützt nur den lokal redundanten Speicher (LRS) als die Replikatsoption und verwaltet drei Kopien der Daten innerhalb einer einzelnen Region. Überlegungen zur Georeplikation bei der Verwendung von Storage Premium finden Sie in diesem Artikel im Abschnitt [Momentaufnahmen und Kopieren von Blobs](#snapshots-and-copy-blob).
 
@@ -85,7 +85,7 @@ Informationen zu Datenträgern des Premium-Speichers und ihren IOPs und Durchsat
 
 In diesem Abschnitt werden alle Skalierbarkeits- und Leistungsziele beschrieben, die Sie bei der Verwendung von Storage Premium berücksichtigen müssen.
 
-### Storage Premium-Kontobegrenzungen
+### Grenzwerte für Storage Premium-Konten
 
 Storage Premium-Konten weisen folgende Skalierbarkeitsziele auf:
 
@@ -112,7 +112,7 @@ Storage Premium-Konten weisen folgende Skalierbarkeitsziele auf:
 
 Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungszielen für Azure Storage](storage-scalability-targets.md).
 
-Wenn die Anforderungen Ihrer Anwendung die Skalierbarkeitsziele eines einzelnen Speicherkontos überschreiten, erstellen Sie die Anwendung so, dass mehrere Speicherkonten verwendet werden, und partitionieren Sie Ihre Daten in diesen Speicherkonten. Wenn Sie z.B. Datenträger mit einer Kapazität von 51 Terabyte (TB) an mehrere virtuelle Computer anfügen möchten, verteilen Sie diese auf zwei Speicherkonten, da 35 TB der Grenzwert für ein einzelnes Premium-Speicherkonto ist. Stellen Sie sicher, dass ein Premium-Speicherkonto stets Datenträger mit einer Größe von maximal 35 TB enthält.
+Wenn die Anforderungen Ihrer Anwendung die Skalierbarkeitsziele eines einzelnen Speicherkontos überschreiten, erstellen Sie die Anwendung so, dass mehrere Speicherkonten verwendet werden, und partitionieren Sie Ihre Daten in diesen Speicherkonten. Wenn Sie z.B. Datenträger mit einer Kapazität von 51 Terabyte (TB) an mehrere virtuelle Computer anfügen möchten, verteilen Sie diese auf zwei Speicherkonten, da 35 TB der Grenzwert für ein einzelnes Storage Premium-Konto ist. Stellen Sie sicher, dass ein Premium-Speicherkonto stets Datenträger mit einer Größe von maximal 35 TB enthält.
 
 ### Grenzwerte für Storage Premium-Datenträger
 
@@ -163,24 +163,24 @@ Es folgen einige wichtige Punkte, die Sie in Bezug auf die Skalierbarkeits- und 
 <table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
 <tbody>
 <tr>
-	<td><strong>Max. Durchsatz pro P10-Datenträger</strong></td>
-	<td><strong>Nicht vom Cache verarbeitete Lesevorgänge vom Datenträger</strong></td>
-	<td><strong>Nicht vom Cache verarbeitete Schreibvorgänge vom Datenträger</strong></td>
+<td><strong>Max. Durchsatz pro P10-Datenträger</strong></td>
+<td><strong>Nicht vom Cache verarbeitete Lesevorgänge vom Datenträger</strong></td>
+<td><strong>Nicht vom Cache verarbeitete Schreibvorgänge vom Datenträger</strong></td>
 </tr>
 <tr>
-	<td>100 MB pro Sekunde</td>
-	<td>100 MB pro Sekunde</td>
-	<td>0</td>
+<td>100 MB pro Sekunde</td>
+<td>100 MB pro Sekunde</td>
+<td>0</td>
 </tr>
 <tr>
-	<td>100 MB pro Sekunde</td>
-	<td>0</td>
-	<td>100 MB pro Sekunde</td>
+<td>100 MB pro Sekunde</td>
+<td>0</td>
+<td>100 MB pro Sekunde</td>
 </tr>
 <tr>
-	<td>100 MB pro Sekunde </td>
-	<td>60 MB pro Sekunde </td>
-	<td>40&#160;MB pro Sekunde </td>
+<td>100 MB pro Sekunde </td>
+<td>60 MB pro Sekunde </td>
+<td>40&#160;MB pro Sekunde </td>
 </tr>
 </tbody>
 </table>
@@ -234,7 +234,7 @@ Für Momentaufnahmen von Storage Premium-Blobs gelten folgende Grenzwerte:
 </tbody>
 </table>
 
-Um georedundante Kopien Ihrer Momentaufnahmen aufzubewahren, können Sie Momentaufnahmen aus einem Premium-Speicherkonto mithilfe von "AzCopy" oder "Copy Blob" in ein georedundantes Standardspeicherkonto kopieren. Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md) und [Copy Blob](http://msdn.microsoft.com/library/azure/dd894037.aspx).
+Um georedundante Kopien Ihrer Momentaufnahmen aufzubewahren, können Sie Momentaufnahmen aus einem Storage Premium-Konto mithilfe von „AzCopy“ oder „Copy Blob“ in ein georedundantes Standardspeicherkonto kopieren. Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md) und [Copy Blob](http://msdn.microsoft.com/library/azure/dd894037.aspx).
 
 Detaillierte Informationen zum Durchführen von REST-Vorgängen für Seitenblobs in Premium-Speicherkonten finden Sie in der MSDN-Bibliothek unter [Verwenden von Blob-Dienstvorgängen mit Azure Premium-Speicher](http://go.microsoft.com/fwlink/?LinkId=521969).
 
@@ -366,13 +366,13 @@ Ausführliche Informationen zu den Preisen für Storage Premium und für virtuel
 
 ## Erstellen und Verwenden eines Premium-Speicherkontos für den Datenträger eines virtuellen Computers
 
-In diesem Abschnitt werden die folgenden Szenarios unter Verwendung des Azure-Portals, von Azure PowerShell und der Azure-Befehlszeilenschnittstelle veranschaulicht:
+In diesem Abschnitt werden die folgenden Szenarien unter Verwendung des Azure-Portals, von Azure PowerShell und der Azure-Befehlszeilenschnittstelle veranschaulicht:
 
 - Gewusst wie: Erstellen eines Storage Premium-Kontos.
 - Gewusst wie: Erstellen eines virtuellen Computers und Anfügen eines Datenträgers an den virtuellen Computer bei Verwendung von Storage Premium.
 - Gewusst wie: Ändern der Datenträger-Cacherichtlinie eines an einen virtuellen Computer angefügten Datenträgers.
 
-### Erstellen eines virtuellen Azure-Computers mit Storage Premium-Speicher über das Azure-Portal
+### Erstellen eines virtuellen Azure-Computers mit Storage Premium über das Azure-Portal
 
 #### I. Erstellen eines Storage Premium-Kontos im Azure-Portal
 
@@ -390,35 +390,35 @@ In diesem Abschnitt wird gezeigt, wie ein Storage Premium-Konto mit dem Azure-Po
 
 4. Geben Sie das Bereitstellungsmodell an, das verwendet werden soll: **Resource Manager** oder **Klassisch**. **Ressourcen-Manager** ist das empfohlene Bereitstellungsmodell. Weitere Informationen finden Sie unter [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../resource-manager-deployment-model.md).
 
-5. Geben Sie als Leistungsebene für das Speicherkonto **Premium** an.
+5. Geben Sie als Leistungsstufe für das Speicherkonto **Premium** an.
 
-6. **Lokal redundanter Speicher (LRS)** ist die einzige verfügbare Replikationsoption mit Storage Premium. Weitere Details zu den Replikationsoptionen für Azure Storage finden Sie unter [Azure Storage-Replikation](storage-redundancy.md).
+6. **Lokal redundanter Speicher (LRS)** ist die einzige verfügbare Replikationsoption für Storage Premium. Weitere Details zu den Replikationsoptionen für Azure Storage finden Sie unter [Azure Storage-Replikation](storage-redundancy.md).
 
 7. Wählen Sie das Abonnement aus, in dem Sie das neue Speicherkonto erstellen möchten.
 
 8. Geben Sie eine neue Ressourcengruppe an, oder wählen Sie eine vorhandene Ressourcengruppe aus. Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwenden des Azure-Portals zum Bereitstellen und Verwalten Ihrer Azure-Ressourcen](../azure-portal/resource-group-portal.md).
 
-9. Wählen Sie den geografischen Standort für das Speicherkonto aus. Unter [Azure-Regionen](https://azure.microsoft.com/regions/#services) können Sie überprüfen, ob Storage Premium am ausgewählten Standort verfügbar ist.
+9. Wählen Sie den geografischen Standort für das Speicherkonto aus. Unter [Azure-Regionen – Dienste](https://azure.microsoft.com/regions/#services) können Sie überprüfen, ob Storage Premium am ausgewählten Standort verfügbar ist.
 
 10. Klicken Sie auf **Erstellen**, um das Speicherkonto zu erstellen.
 
 #### II. Erstellen eines virtuellen Azure-Computers über das Azure-Portal
 
-Sie müssen einen virtuellen Computer der DS-, DSv2- oder GS-Serie erstellen, um Storage Premium verwenden zu können. Führen Sie die unter [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md) beschriebenen Schritte aus, um einen neuen virtuellen Computer der DS-, DSv2- oder GS-Serie zu erstellen.
+Sie müssen einen virtuellen Computer der DS-, DSv2- oder GS-Serie erstellen, um Storage Premium verwenden zu können. Führen Sie die unter [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md) beschriebenen Schritte aus, um einen neuen virtuellen DS-, DSv2- oder GS-Computer zu erstellen.
 
 #### III. Anfügen eines Storage Premium-Datenträgers über das Azure-Portal
 
-1. Suchen Sie den neu erstellten oder einen bereits vorhandenen virtuellen Computer der DS-, DSv2- oder GS-Serie im Azure-Portal.
-2. Gehen Sie unter **Alle Einstellungen** für den virtuellen Computer zu **Datenträger**, und klicken Sie auf **Neuen anfügen**.
+1. Suchen Sie den neu erstellten oder einen bereits vorhandenen virtuellen DS-, DSv2- oder GS-Computer im Azure-Portal.
+2. Wechseln Sie unter **Alle Einstellungen** für den virtuellen Computer zu **Datenträger**, und klicken Sie auf **Neuen anfügen**.
 3. Geben Sie den Namen des Datenträgers ein, und wählen Sie unter **Typ** die Option **Premium** aus. Wählen Sie die gewünschte Einstellung für **Größe** und **Hostzwischenspeicherung** aus.
 
 	![Premium-Datenträger][Image1]
 
-Weitere ausführlichere Schritte finden Sie unter [Anfügen eines Datenträgers an eine Windows-VM im Azure-Portal](../virtual-machines/virtual-machines-windows-attach-disk-portal.md).
+Ausführlichere Schritte finden Sie unter [Anfügen eines Datenträgers an eine Windows-VM im Azure-Portal](../virtual-machines/virtual-machines-windows-attach-disk-portal.md).
 
 #### IV. Ändern der Datenträger-Cacherichtlinie über das Azure-Portal
 
-1. Suchen Sie den neu erstellten oder einen bereits vorhandenen virtuellen Computer der DS-, DSv2- oder GS-Serie im Azure-Portal.
+1. Suchen Sie den neu erstellten oder einen bereits vorhandenen virtuellen DS-, DSv2- oder GS-Computer im Azure-Portal.
 2. Navigieren Sie unter „Alle Einstellungen“ für den virtuellen Computer zu „Datenträger“, und klicken Sie auf den zu ändernden Datenträger.
 3. Legen Sie für die Option „Hostzwischenspeicherung“ den gewünschten Wert fest: „None“, „ReadOnly“ oder „ReadWrite“.
 
@@ -429,7 +429,7 @@ Weitere ausführlichere Schritte finden Sie unter [Anfügen eines Datenträgers 
 Dieses PowerShell-Beispiel zeigt, wie Sie ein neues Premium-Speicherkonto erstellen und einen Datenträger, der dieses Konto verwendet, an einen neuen virtuellen Azure-Computer anschließen.
 
 1. Richten Sie die PowerShell-Umgebung mithilfe der unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) beschriebenen Schritte ein.
-2. Starten Sie die PowerShell-Konsole, stellen Sie eine Verbindung mit Ihrem Abonnement her, und führen Sie dann das folgende PowerShell-Cmdlet im Konsolenfenster aus. Wie diese PowerShell-Anweisung zeigt, müssen Sie den Parameter **Type** als **Premium\_LRS** angeben, wenn Sie ein Premium-Speicherkonto erstellen.
+2. Starten Sie die PowerShell-Konsole, stellen Sie eine Verbindung mit Ihrem Abonnement her, und führen Sie dann das folgende PowerShell-Cmdlet im Konsolenfenster aus. Wie diese PowerShell-Anweisung zeigt, müssen Sie den Parameter **Type** als **Premium\_LRS** angeben, wenn Sie ein Storage Premium-Konto erstellen.
 
 		New-AzureStorageAccount -StorageAccountName "yourpremiumaccount" -Location "West US" -Type "Premium_LRS"
 
@@ -469,7 +469,7 @@ Um die Datenträger-Cacherichtlinie zu aktualisieren, notieren Sie sich die LUN-
 
 ### Erstellen eines virtuellen Azure-Computers mit Premium-Speicher über die Azure-Befehlszeilenschnittstelle
 
-Die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) (Azure CLI) stellt eine Reihe von plattformübergreifenden Open Source-Befehlen für die Arbeit mit der Azure-Plattform bereit. Die folgenden Beispiele zeigen, wie Sie mit der Azure-Befehlszeilenschnittstelle (Version 0.8.14 und höher) ein Premium-Speicherkonto und einen neuen virtuellen Computer erstellen und einen neuen Datenträger aus einem Premium-Speicherkonto anfügen.
+Die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) (Azure-CLI) stellt eine Reihe von plattformübergreifenden Open Source-Befehlen für die Arbeit mit der Azure-Plattform bereit. Die folgenden Beispiele zeigen, wie Sie mit der Azure-Befehlszeilenschnittstelle (Version 0.8.14 und höher) ein Storage Premium-Konto und einen neuen virtuellen Computer erstellen und einen neuen Datenträger aus einem Storage Premium-Konto anfügen.
 
 #### I. Erstellen eines Storage Premium-Kontos über die Azure-Befehlszeilenschnittstelle
 
@@ -540,7 +540,7 @@ Beachten Sie, dass die Cacherichtlinienoptionen „ReadOnly“, „None“ oder 
 
 9. **Wie kann ich einen virtuellen Computer der D-Serie in einen virtuellen Computer der DS-Serie ändern?**
 
-	Im Migrationsleitfaden [Migrieren zu Azure Premium-Speicher](storage-migration-to-premium-storage.md) finden Sie Anweisungen zum Verschieben Ihrer Workload von einem virtuellen Computer der D-Serie mit einem Standardspeicherkonto auf einen virtuellen Computer der DS-Serie mit einem Storage Premium-Konto.
+	Im Migrationsleitfaden [Migrieren zu Azure Storage Premium](storage-migration-to-premium-storage.md) finden Sie Anweisungen zum Verschieben Ihrer Workload von einem virtuellen Computer der D-Serie mit einem Standardspeicherkonto auf einen virtuellen Computer der DS-Serie mit einem Storage Premium-Konto.
 
 ## Nächste Schritte
 
@@ -562,4 +562,4 @@ Weitere Informationen zu Azure Storage Premium finden Sie in den folgenden Artik
 
 [Image1]: ./media/storage-premium-storage/Azure_attach_premium_disk.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

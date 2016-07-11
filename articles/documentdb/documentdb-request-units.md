@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/31/2016" 
+	ms.date="06/29/2016" 
 	ms.author="stbaro"/>
 
 #Anforderungseinheiten in DocumentDB
@@ -64,6 +64,9 @@ Damit Kunden ihre Durchsatzschätzungen optimieren können, gibt es einen webbas
 - Erstellen von Dokumenten (Schreiben)
 - Lesen von Dokumenten
 - Löschen von Dokumenten
+- Aktualisieren von Dokumenten
+
+Das Tool unterstützt auch die Schätzung des Datenspeicherbedarfs auf der Grundlage der bereitgestellten Beispieldokumente.
 
 Die Verwendung des Tools ist einfach:
 
@@ -71,15 +74,17 @@ Die Verwendung des Tools ist einfach:
 
 	![Hochladen von Dokumenten in den Rechner für Anforderungseinheiten][2]
 
-2. Geben Sie die Anzahl der Erstellungs-, Lese- und Löschvorgänge für das Dokument an, die Sie (pro Sekunde) benötigen.
+2. Geben Sie zum Schätzen des Speicherplatzbedarfs die Gesamtanzahl von Dokumenten ein, die Sie voraussichtlich speichern werden.
+
+3. Geben Sie die pro Sekunde benötige Anzahl von Erstellungs-, Lese-, Aktualisierungs- und Löschvorgängen für Dokumente an. Laden Sie zum Ermitteln der bei Dokumentaktualisierungen voraussichtlich anfallenden Gebühren für Anforderungseinheiten eine Kopie des Beispieldokuments aus Schritt 1 mit typischen Feldaktualisierungen hoch. Wenn bei Dokumentaktualisierungen also üblicherweise die beiden Eigenschaften „lastLogin“ und „userVisits“ geändert werden, kopieren Sie einfach das Beispieldokument, aktualisieren Sie die Werte für diese beiden Eigenschaften, und laden Sie das kopierte Dokument anschließend hoch.
 
 	![Eingeben der Durchsatzanforderungen in den Rechner für Anforderungseinheiten][3]
 
-3. Klicken Sie auf „Berechnen“, und prüfen Sie die Ergebnisse.
+4. Klicken Sie auf „Berechnen“, und prüfen Sie die Ergebnisse.
 
 	![Ergebnisse des Rechners für Anforderungseinheiten][4]
 
->[AZURE.NOTE]Wenn sich die Dokumenttypen im Hinblick auf Größe und Anzahl indizierter Eigenschaften erheblich voneinander unterscheiden, laden Sie ein Beispiel für jeden *Typ* eines normalen Dokuments in das Tools hoch, und berechnen Sie dann die Ergebnisse.
+>[AZURE.NOTE]Wenn sich die Dokumenttypen im Hinblick auf Größe und Anzahl indizierter Eigenschaften erheblich voneinander unterscheiden, laden Sie ein Beispiel für jeden *Typ* eines normalen Dokuments an das Tools hoch, und berechnen Sie dann die Ergebnisse.
 
 ###Verwenden des DocumentDB-Antwortheaders „request-charge“
 Jede Antwort des DocumentDB-Diensts enthält einen benutzerdefinierten Header (x-ms-request-charge), der die für die Anforderung verbrauchten Anforderungseinheiten enthält. Auf diesen Header kann auch über die DocumentDB-SDKs zugegriffen werden. Im .Net SDK ist „RequestCharge“ eine Eigenschaft des ResourceResponse-Objekts. Für Abfragen stellt der DocumentDB-Abfrage-Explorer im Azure-Portal Informationen zu Anforderungsgebühren für ausgeführten Abfragen bereit.
@@ -88,11 +93,11 @@ Jede Antwort des DocumentDB-Diensts enthält einen benutzerdefinierten Header (x
 
 Vor diesem Hintergrund besteht eine Methode zum Abschätzen des von der Anwendung benötigten Durchsatzes darin, typische Vorgänge mit einem repräsentativen, von Ihrer Anwendung verwendeten Dokument auszuführen, dabei die berechneten Anforderungseinheiten zu notieren und anschließend die Anzahl von Vorgängen zu schätzen, die erwartungsgemäß pro Sekunde ausgeführt werden. Stellen Sie sicher, dass auch typische Abfragen und die Nutzung von DocumentDB-Skripts gemessen und berücksichtigt werden.
 
->[AZURE.NOTE]Wenn sich die Dokumenttypen im Hinblick auf Größe und Anzahl indizierter Eigenschaften erheblich voneinander unterscheiden, notieren Sie die jedem *Typ* von normalem Dokument zugeordneten berechneten Anforderungseinheiten für einen Vorgang.
+>[AZURE.NOTE]Wenn sich die Dokumenttypen im Hinblick auf Größe und Anzahl indizierter Eigenschaften erheblich voneinander unterscheiden, erfassen Sie für jeden typischen Dokumenttyp jeweils die berechneten Anforderungseinheiten des jeweiligen Vorgangs.
 
 Beispiel:
 
-1. Notieren Sie die berechneten Anforderungseinheiten für das Erstellen (Einfügen) eines typischen Dokuments. 
+1. Notieren Sie die berechneten Anforderungseinheiten für das Erstellen (Einfügen) eines typischen Dokuments.
 2. Notieren Sie die berechneten Anforderungseinheiten für das Lesen eines typischen Dokuments.
 3. Notieren Sie die berechneten Anforderungseinheiten für das Aktualisieren eines typischen Dokuments.
 3. Notieren Sie die berechneten Anforderungseinheiten für typische, häufig ausgeführte Dokumentabfragen.
@@ -185,7 +190,7 @@ Nach Nahrungsmittelgruppe auswählen|10|700
 In diesem Fall erwarten wir einen durchschnittlichen Durchsatzbedarf von 1,275 RU/s. Wir runden auf den nächsten Hunderter auf und würden für die Sammlung dieser Anwendung 1.300 RU/s bereitstellen.
 
 ##Überschreiten von Grenzwerten für den reservierten Durchsatz
-Der Verbrauch von Anforderungseinheiten wird als Rate pro Sekunde bemessen. Für Anwendungen, die die bereitgestellte Anforderungseinheitsrate für eine Sammlung überschreiten, werden Anforderungen an die Sammlung gedrosselt, bis die Rate unter das reservierte Niveau fällt. Bei einer Drosselung beendet der Server die Anforderung präemptiv mit RequestRateTooLarge (HTTP-Statuscode 429) und gibt den x-ms-retry-after-ms-Header zurück. Darin ist die Zeitspanne in Millisekunden angegeben, die der Benutzer abwarten muss, bevor ein neuer Anforderungsversuch unternommen werden kann.
+Der Verbrauch von Anforderungseinheiten wird als Rate pro Sekunde bemessen. Für Anwendungen, die die bereitgestellte Anforderungseinheitsrate für eine Sammlung überschreiten, werden Anforderungen an die Sammlung gedrosselt, bis die Rate unter das reservierte Niveau fällt. Bei einer Drosselung beendet der Server die Anforderung präemptiv mit „RequestRateTooLargeException“ (HTTP-Statuscode 429) und gibt den x-ms-retry-after-ms-Header zurück. Darin ist die Zeitspanne in Millisekunden angegeben, die der Benutzer abwarten muss, bevor ein neuer Anforderungsversuch unternommen werden kann.
 
 	HTTP Status 429
 	Status Line: RequestRateTooLarge
@@ -200,13 +205,13 @@ Wenn mehrere Clients kumulativ oberhalb der Anforderungsrate arbeiten, reicht da
 Weitere Informationen zum reservierten Durchsatz mit Azure DocumentDB finden Sie in folgenden Ressourcen:
  
 - [DocumentDB-Preise](https://azure.microsoft.com/pricing/details/documentdb/)
-- [Verwalten der DocumentDB-Kapazität](documentdb-manage.md) 
+- [Verwalten der DocumentDB-Kapazität](documentdb-manage.md)
 - [Modellieren von Daten in DocumentDB](documentdb-modeling-data.md)
 - [Leistungsebenen in DocumentDB](documentdb-partition-data.md)
 
 Weitere Informationen zu DocumentDB finden Sie in der Azure DocumentDB-[Dokumentation](https://azure.microsoft.com/documentation/services/documentdb/).
 
-Im Artikel [Performance and Scale Testing with Azure DocumentDB](documentdb-performance-testing.md) (Leistungs- und Skalierungstests mit Azure DocumentDB) finden Sie Informationen zu den ersten Schritten beim Testen von Skalierung und Leistung mit DocumentDB.
+Im Artikel [Leistungs- und Skalierungstests mit Azure DocumentDB](documentdb-performance-testing.md) finden Sie eine Einführung in Leistungs- und Skalierungstests mit DocumentDB.
 
 
 [1]: ./media/documentdb-request-units/queryexplorer.png
@@ -215,4 +220,4 @@ Im Artikel [Performance and Scale Testing with Azure DocumentDB](documentdb-perf
 [4]: ./media/documentdb-request-units/RUEstimatorResults.png
 [5]: ./media/documentdb-request-units/RUCalculator2.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

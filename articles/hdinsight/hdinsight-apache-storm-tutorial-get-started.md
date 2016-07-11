@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/20/2016"
+   ms.date="06/22/2016"
    ms.author="larryfr"/>
 
 
@@ -81,7 +81,7 @@ Storm in HDInsight verwendet Azure-Blobspeicher zum Speichern der an den Cluster
 
 	Klicken Sie auf __Auswählen__, um die Informationen zu den __Knotenpreistarifen__ zu speichern.
 
-8. Wählen Sie __Optionale Konfiguration__ aus. Auf diesem Blatt können Sie die Clusterversion auswählen und andere optionale Einstellungen konfigurieren. Sie können den Cluster z. B. einem __virtuellen Netzwerk__ hinzufügen oder einen __externen Metastore__ zum Speichern von Daten für Hive und Oozie einrichten.
+8. Wählen Sie __Optionale Konfiguration__ aus. Auf diesem Blatt können Sie die Clusterversion auswählen und andere optionale Einstellungen konfigurieren. Sie können den Cluster z.B. einem __virtuellen Netzwerk__ hinzufügen.
 
 	![Blatt "Optionale Konfiguration"](./media/hdinsight-apache-storm-tutorial-get-started/optionalconfiguration.png)
 
@@ -245,4 +245,4 @@ In diesem Lernprogramm zu Apache Storm lernen Sie anhand der Storm-Starter-Beisp
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

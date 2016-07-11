@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="05/10/2016"
+	ms.date="06/22/2016" 
 	ms.author="cenkdin;juliako"/>
 
 #Livestreaming mit lokalen Encodern, die Multi-Bitrate-Datenströme erstellen
@@ -55,10 +55,10 @@ Die folgenden Schritte beschreiben die Aufgaben zum Erstellen von gebräuchliche
 	Dieser Schritt kann auch nach der Erstellung des Kanals ausgeführt werden.
 
 1. Erstellen Sie einen Kanal, und starten Sie ihn.
-1. Rufen Sie die Erfassungs-URL des Kanals ab. 
+1. Rufen Sie die Erfassungs-URL des Kanals ab.
 
 	Die Erfassungs-URL wird vom Liveencoder verwendet, um den Datenstrom an den Kanal zu senden.
-1. Rufen Sie die Vorschau-URL des Kanals ab. 
+1. Rufen Sie die Vorschau-URL des Kanals ab.
 
 	Verwenden Sie diese URL, um sicherzustellen, dass der Livestream ordnungsgemäß vom Kanal empfangen wird.
 
@@ -66,14 +66,14 @@ Die folgenden Schritte beschreiben die Aufgaben zum Erstellen von gebräuchliche
 
 	Im klassischen Azure-Portal wird beim Erstellen eines Programms auch ein Medienobjekt erstellt.
 
-	Wenn Sie hingegen .NET SDK oder REST verwenden, müssen Sie beim Erstellen eines Programms ein Medienobjekt erstellen und angeben, dass es verwendet werden soll. 
-1. Veröffentlichen Sie das mit dem Programm verknüpfte Medienobjekt.   
+	Wenn Sie hingegen .NET SDK oder REST verwenden, müssen Sie beim Erstellen eines Programms ein Medienobjekt erstellen und angeben, dass es verwendet werden soll.
+1. Veröffentlichen Sie das mit dem Programm verknüpfte Medienobjekt.
 
 	Stellen Sie sicher, dass auf dem Streamingendpunkt, von dem Sie Inhalte streamen möchten, mindestens eine für das Streaming reservierte Einheit verfügbar ist.
 1. Wenn Sie zum Starten von Streaming und Archivierung bereit sind, starten Sie das Programm.
 2. Optional kann vom Liveencoder eine Ankündigung gestartet werden. Die Ankündigung wird in den Ausgabedatenstrom eingefügt.
 1. Sie können das Programm und damit das Streaming und die Archivierung des Ereignisses jederzeit beenden.
-1. Löschen Sie das Programm (und optional das Medienobjekt).     
+1. Löschen Sie das Programm (und optional das Medienobjekt).
 
 ##<a id="channel"></a>Beschreibung von Kanälen und zugehörigen Komponenten
 
@@ -112,12 +112,12 @@ Informationen zu RTMP-Liveencodern finden Sie unter [Azure Media Services RTMP S
 
 Es gelten die folgenden Bedingungen:
 
-- Stellen Sie sicher, dass Sie ausreichend ungenutzte Internetbandbreite zum Senden an die Erfassungspunkte haben. 
-- Das Verwenden einer sekundären Erfassungs-URL erfordert zusätzlichen Bandbreite. 
+- Stellen Sie sicher, dass Sie ausreichend ungenutzte Internetbandbreite zum Senden an die Erfassungspunkte haben.
+- Das Verwenden einer sekundären Erfassungs-URL erfordert zusätzlichen Bandbreite.
 - Der eingehende Stream mit mehreren Bitraten kann maximal zehn Ebenen (oder Schichten) der Videoqualität und maximal fünf Audiospuren aufweisen.
 - Die höchste durchschnittliche Bitrate für die Videoqualitätsebenen oder -schichten sollte unter 10 Mbit/s liegen.
 - Die zusammengezählten durchschnittlichen Bitraten für alle Video- und Audiostreams sollten unter 25 Mbit/s liegen.
-- Sie können das Eingabeprotokoll nicht ändern, während der Kanal oder seine zugehörigen Programme ausgeführt werden. Wenn Sie andere Protokolle benötigen, erstellen Sie für jedes Eingabeprotokoll einen separaten Kanal. 
+- Sie können das Eingabeprotokoll nicht ändern, während der Kanal oder seine zugehörigen Programme ausgeführt werden. Wenn Sie andere Protokolle benötigen, erstellen Sie für jedes Eingabeprotokoll einen separaten Kanal.
 - Sie können auch eine einzelne Bitrate in Ihrem Kanal erfassen, aber da der Datenstrom nicht vom Kanal verarbeitet wird, erhalten die Clientanwendungen ebenfalls einen Datenstrom mit nur einer Bitrate (diese Option wird nicht empfohlen).
 
 ####Erfassungs-URLs (Endpunkte) 
@@ -277,4 +277,4 @@ Wählen Sie **Portal**, **.NET** oder **REST API**, um auf Informationen zum Ers
 
 [live-overview]: ./media/media-services-manage-channels-overview/media-services-live-streaming-current.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

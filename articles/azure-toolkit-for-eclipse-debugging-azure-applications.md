@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="05/04/2016" 
+    ms.date="06/24/2016" 
     ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690949.aspx -->
@@ -48,7 +48,7 @@ Wir verwenden die Anwendung aus dem Tutorial [Verwenden der Azure-Dienstlaufzeit
     1. Wählen Sie bei **Java project to debug** das Projekt **MyHelloWorld** aus.
     1. Bei **Configure debugging for** aktivieren Sie **Azure cloud (staging)**.
     1. Vergewissern Sie sich, dass **Azure compute emulator** deaktiviert ist.
-    1. Geben Sie bei **Host**, den DNS-Namen Ihrer Stagingbereitstellung ein, aber ohne das vorangestellte **http://**. Beispiel (Ersetzen Sie die hier gezeigte GUID durch Ihre eigene GUID.): **4e616d65-6f6e-6d65-6973-526f62657274.cloudapp.net**
+    1. Geben Sie für **Host** den DNS-Namen Ihrer Stagingbereitstellung ohne das vorangestellte **http://** ein. Beispiel: **4e616d65-6f6e-6d65-6973-526f62657274.cloudapp.net** (Ersetzen Sie die hier gezeigte GUID durch Ihre eigene GUID.)
 1. Klicken Sie auf **OK**, um das Dialogfeld **Azure Debug Configuration** zu schließen.
 1. Klicken Sie auf **OK**, um das Dialogfeld **Properties for WorkerRole1 Debugging** zu schließen.
 1. Wenn Sie in „index.jsp“ noch keinen Haltepunkt festgelegt haben, legen Sie ihn jetzt fest:
@@ -56,7 +56,7 @@ Wir verwenden die Anwendung aus dem Tutorial [Verwenden der Azure-Dienstlaufzeit
     1. Klicken Sie in „index.jsp“ mit der rechten Maustaste auf den blauen Balken links vom Java-Code, und klicken Sie auf **Toggle Breakpoints**, wie in der folgenden Abbildung gezeigt: ![][ic551537]
 1. Klicken Sie im Eclipse-Menü auf **Run** und dann auf **Debug Configurations**.
 1. Erweitern Sie im Dialogfeld **Debug Configurations** im linken Bereich den Eintrag **Remote Java Application**, wählen Sie **Azure Cloud (WorkerRole1)** aus, und klicken Sie auf **Debug**.
-1. Öffnen Sie einen Browser, und führen Sie darin die Staginganwendung **http://***&lt;guid&gt;***.cloudapp.net/MyHelloWorld** aus, wobei Sie *&lt;guid&gt;* durch die GUID aus Ihrem DNS-Namen ersetzen müssen. Wenn Sie im Dialogfeld **Confirm Perspective Switch** zum Bestätigen des Perspektivwechsels aufgefordert werden, klicken Sie auf **Yes**. Ihre Debugsitzung sollte nun bis zu der Codezeile ausgeführt werden, für die der Haltepunkt festgelegt wurde.
+1. Öffnen Sie einen Browser, und führen Sie darin die Staginganwendung **http://***&lt;guid&gt;***.cloudapp.net/MyHelloWorld** aus. Ersetzen Sie dabei *&lt;guid&gt;* durch die GUID aus Ihrem DNS-Namen. Wenn Sie im Dialogfeld **Confirm Perspective Switch** (Perspektivwechsel bestätigen) zum Bestätigen des Perspektivwechsels aufgefordert werden, klicken Sie auf **Yes** (Ja). Ihre Debugsitzung sollte nun bis zu der Codezeile ausgeführt werden, für die der Haltepunkt festgelegt wurde.
 
 >[AZURE.NOTE] Wenn Sie versuchen, eine Remotedebugverbindung mit einer Bereitstellung herzustellen, von der mehrere Instanzen ausgeführt werden, können Sie derzeit nicht steuern, mit welcher Instanz der Debugger zuerst verbunden wird. Der Azure Load Balancer wählt die Instanz nach dem Zufallsprinzip aus. Wenn die Verbindung mit einer Instanz hergestellt ist, wird das Debuggen jedoch bei dieser Instanz fortgesetzt. Allerdings beendet Azure die Verbindung möglicherweise, wenn eine Inaktivität länger als 4 Minuten anhält (z. B. wenn die Unterbrechung an einem Haltepunkt zu lange dauert).
 
@@ -70,7 +70,7 @@ In einem Szenario dieser Art können Sie die Vorteile von Instanzeingabe-Endpunk
 
 Angenommen, Sie möchten bis zu 5 Rolleninstanzen Ihrer Bereitstellung ausführen. Dann erstellen Sie im Dialogfeld „Role Properties“ auf der Eigenschaftenseite **Endpoints** einen Instanzeingabe-Endpunkt und weisen ihm nicht nur eine einzige Portnummer, sondern einen Bereich von öffentlichen Ports zu. Geben Sie z. B. im Eingabefeld **Public port** den Wert **81-85** ein.
 
-Nach dem Bereitstellen der Anwendung mit diesem Instanzendpunkt weist Azure jeder Rolleninstanz eine eindeutige Portnummer aus diesem Bereich zu. Um herauszufinden, welcher Instanz welche Portnummer zuwiesen wurde, verwenden Sie die automatisch vom Toolkit in Ihrer Bereitstellung konfigurierte Umgebungsvariable *InstanceEndpointName***\_PUBLICPORT** (wobei *InstanceEndpointName* der Name ist, den Sie beim Erstellen des Instanzendpunkts zugewiesen haben). Sie können z. B. den Wert dieser Variablen in der Fußzeile einer Webseite zurückgeben, sodass Sie ihn beim Anzeigen der Seite im Browser lesen können.
+Nach dem Bereitstellen der Anwendung mit diesem Instanzendpunkt weist Azure jeder Rolleninstanz eine eindeutige Portnummer aus diesem Bereich zu. Um herauszufinden, welcher Instanz welche Portnummer zuwiesen wurde, verwenden Sie die automatisch vom Toolkit in Ihrer Bereitstellung konfigurierte Umgebungsvariable *InstanceEndpointName***\_PUBLICPORT** (wobei *InstanceEndpointName* der Name ist, den Sie beim Erstellen des Instanzendpunkts zugewiesen haben). Sie können beispielsweise den Wert dieser Variablen in der Fußzeile einer Webseite zurückgeben, sodass Sie ihn beim Anzeigen der Seite im Browser lesen können.
 
 Wenn Sie die Nummer des öffentlichen Ports kennen, die der Instanz zugeordnet wurde, können Sie in der Debugkonfiguration in Eclipse darauf verweisen. Dazu fügen Sie sie an den Hostnamen Ihres Diensts an. Dadurch kann der Eclipse-Debugger eine Verbindung mit dieser bestimmten Instanz herstellen, ohne die anderen Instanzen zu berücksichtigen.
 
@@ -96,11 +96,11 @@ Wenn Sie die Nummer des öffentlichen Ports kennen, die der Instanz zugeordnet w
     1. Erweitern Sie im Projektexplorer von Eclipse **MyHelloWorld**, erweitern Sie **WebContent**, und doppelklicken Sie auf **index.jsp**.
     1. Klicken Sie in „index.jsp“ mit der rechten Maustaste auf den blauen Balken links vom Java-Code, und klicken Sie auf **Toggle Breakpoints**, wie in der folgenden Abbildung gezeigt: ![][ic551537]
 
-    Ein Haltepunkt ist festgelegt, wenn Sie auf der blauen Leiste links vom Java-Code ein Haltepunktsymbol sehen.
+       Ein Haltepunkt ist festgelegt, wenn Sie auf der blauen Leiste links vom Java-Code ein Haltepunktsymbol sehen.
 1. Starten Sie die Anwendung im Serveremulator, indem Sie in der Azure-Symbolleiste auf die Schaltfläche **Run in Azure Emulator** klicken.
 1. Klicken Sie im Eclipse-Menü auf **Run** und dann auf **Debug Configurations**.
 1. Erweitern Sie im Dialogfeld **Debug Configurations** im linken Bereich den Eintrag **Remote Java Application**, wählen Sie **Azure Emulator (WorkerRole1)** aus, und klicken Sie auf **Debug**.
-1. Wenn der Serveremulator anzeigt, dass Ihre Anwendung ausgeführt wird, führen Sie in einem Browser **http://localhost:8080/MyHelloWorld** aus. Wenn Sie im Dialogfeld **Confirm Perspective Switch** zum Bestätigen des Perspektivwechsels aufgefordert werden, klicken Sie auf **Yes**. Ihre Debugsitzung sollte nun bis zu der Codezeile ausgeführt werden, für die der Haltepunkt festgelegt wurde.
+1. Wenn der Serveremulator anzeigt, dass Ihre Anwendung ausgeführt wird, führen Sie in einem Browser **http://localhost:8080/MyHelloWorld** aus. Wenn Sie im Dialogfeld **Confirm Perspective Switch** (Perspektivwechsel bestätigen) zum Bestätigen des Perspektivwechsels aufgefordert werden, klicken Sie auf **Yes** (Ja). Ihre Debugsitzung sollte nun bis zu der Codezeile ausgeführt werden, für die der Haltepunkt festgelegt wurde.
 
 Hier wurde veranschaulicht, wie Sie beim Debuggen im Serveremulator vorgehen. Der folgende Abschnitt veranschaulicht das Debuggen einer in Azure bereitgestellten Anwendung.
 
@@ -133,4 +133,4 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [ic719504]: ./media/azure-toolkit-for-eclipse-debugging-azure-applications/ic719504.png
 [ic551537]: ./media/azure-toolkit-for-eclipse-debugging-azure-applications/ic551537.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

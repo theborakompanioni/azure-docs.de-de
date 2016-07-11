@@ -22,8 +22,7 @@
 
 [AZURE.INCLUDE [azure-probe-intro-include](../../includes/application-gateway-create-probe-intro-include.md)].
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](application-gateway-create-probe-ps.md).
-
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)] Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](application-gateway-create-probe-ps.md).
 
 [AZURE.INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
@@ -157,18 +156,18 @@ Das folgende Beispiel zeigt, wie Sie mithilfe einer Konfigurationsdatei das Appl
 >[AZURE.IMPORTANT] Für die Protokollelemente Http oder Https muss die Groß-/Kleinschreibung beachtet werden.
 
 
-Es wird ein neues Konfigurationselement <Probe> hinzugefügt, um benutzerdefinierte Tests zu konfigurieren.
+Es wird ein neues Konfigurationselement vom Typ <Probe> hinzugefügt, um benutzerdefinierte Tests zu konfigurieren.
 
 Die Konfigurationsparameter sind:
 
-- **Name**: Der Verweisname für den benutzerdefinierten Test.
-- **Protocol**: Das verwendete Protokoll (mögliche Werte sind „HTTP“ oder „HTTPS“).
+- **Name**: Der Referenzname für den benutzerdefinierten Test.
+- **Protocol**: Das verwendete Protokoll. (Mögliche Werte: „HTTP“ und „HTTPS“)
 - **Host** und **Path**: Vollständiger URL-Pfad, der vom Application Gateway aufgerufen wird, um die Integrität der Instanz zu ermitteln. Beispiel: Bei der Website http://contoso.com/ können Sie den benutzerdefinierten Test für „http://contoso.com/path/custompath.htm“ konfigurieren, damit die HTTP-Antwort bei den Prüfungen des Tests erfolgreich ist.
 - **Interval**: Konfiguriert die Intervalle für die Prüfungen des Tests (in Sekunden).
 - **Timeout**: Definiert das Timeout des Tests für eine HTTP-Antwortprüfung.
-- **UnhealthyThreshold**: Die Anzahl der Fehler bei HTTP-Antworten, ab der die Back-End-Instanz als *fehlerhaft* gekennzeichnet wird.
+- **UnhealthyThreshold**: Die Anzahl von Fehlern bei HTTP-Antworten, ab der die Back-End-Instanz als *fehlerhaft* gekennzeichnet wird.
 
-Auf den Namen des Tests wird in der Konfiguration <BackendHttpSettings> verwiesen, um festzulegen, welcher Back-End-Pool die Einstellungen für den benutzerdefinierten Test verwenden soll.
+Auf den Namen des Tests wird in der <BackendHttpSettings>-Konfiguration verwiesen, um festzulegen, welcher Back-End-Pool die Einstellungen für den benutzerdefinierten Test verwenden soll.
 
 ## Hinzufügen der Konfiguration eines benutzerdefinierten Tests zu einem vorhandenen Application Gateway
 
@@ -223,4 +222,4 @@ Wenn Sie die Secure Sockets Layer-Auslagerung (SSL) konfigurieren möchten, ist 
 
 Wenn Sie ein Application Gateway für die Verwendung mit einem internen Load Balancer konfigurieren möchten, ist es ratsam, den Abschnitt [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md) zu lesen.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

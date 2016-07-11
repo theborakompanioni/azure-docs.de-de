@@ -1,6 +1,6 @@
 <properties
   pageTitle="Verbinden eines Clouddiensts mit einem benutzerdefinierten Domänencontroller | Microsoft Azure"
-  description="Erfahren Sie, wie Sie mithilfe von PowerShell und der AD-Domänenerweiterung eine Verbindung zwischen Ihren Web-/Workerrollen und einer benutzerdefinierten AD-Domäne herstellen."
+  description="Hier erfahren Sie, wie Sie mithilfe von PowerShell und der AD-Domänenerweiterung eine Verbindung zwischen Ihren Web-/Workerrollen und einer benutzerdefinierten AD-Domäne herstellen."
   services="cloud-services"
   documentationCenter=""
   authors="Thraka"
@@ -22,7 +22,7 @@ Zunächst richten wir ein Virtual Network (VNet) in Azure ein. Anschließend fü
 
 Bedenken Sie vor dem Start Folgendes:
 
-1.	In diesem Lernprogramm wird PowerShell verwendet, stellen Sie also sicher, dass Azure PowerShell installiert und einsatzbereit ist. Unterstützung bei der Einrichtung von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+1.	In diesem Tutorial wird PowerShell verwendet. Vergewissern Sie sich daher, dass Azure PowerShell installiert und einsatzbereit ist. Unterstützung bei der Einrichtung von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
 2.	Ihr AD-Domänencontroller und Ihre Web-/Workerrolleninstanzen müssen sich im VNet befinden.
 
@@ -30,7 +30,7 @@ Befolgen Sie diese Schrittanleitung, und fügen Sie unten einen Kommentar ein, f
 
 ## Erstellen eines virtuellen Netzwerks
 
-Sie können ein virtuelles Netzwerk in Azure über PowerShell oder das klassische Azure-Portal erstellen. In diesem Lernprogramm wird PowerShell verwendet. Informationen zum Erstellen eines virtuellen Netzwerks über das klassische Azure-Portal finden Sie unter [Erstellen eines virtuellen Netzwerks](../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
+Sie können ein virtuelles Netzwerk in Azure über das klassische Azure-Portal oder über PowerShell erstellen. In diesem Tutorial wird PowerShell verwendet. Informationen zum Erstellen eines virtuellen Netzwerks über das klassische Azure-Portal finden Sie unter [Erstellen eines virtuellen Netzwerks](../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
 
 ```powershell
 #Create Virtual Network
@@ -56,14 +56,14 @@ $vnetStr =
 "@;
 
 $vnetConfigPath = "<path-to-vnet-config>"
-Set-AzureVNetConfig -ConfigurationPath $vnetConfigPath;
+Set-AzureVNetConfig -ConfigurationPath $vnetConfigPath
 ```
 
 ## Erstellen eines virtuellen Computers
 
 Nachdem Sie das Virtual Network fertig eingerichtet haben, müssen Sie einen AD-Domänencontroller erstellen. In diesem Lernprogramm richten wir einen AD-Domänencontroller auf einem virtuellen Azure-Computer ein.
 
-Erstellen Sie zu diesem Zweck über PowerShell mithilfe der unten stehenden Befehle einen virtuellen Computer.
+Erstellen Sie zu diesem Zweck über PowerShell mithilfe der folgenden Befehle einen virtuellen Computer:
 
 ```powershell
 # Initialize variables
@@ -78,7 +78,7 @@ $affgrp = '<your- affgrp>'
 
 # Create a VM and add it to the Virtual Network
 
-New-AzureQuickVM -Windows -ServiceName $vmsvc1 -name $vm1 -ImageName $imgname -AdminUsername $username -Password $password -AffinityGroup $affgrp -SubnetNames $subnetname -VNetName $vnetname
+New-AzureQuickVM -Windows -ServiceName $vmsvc1 -Name $vm1 -ImageName $imgname -AdminUsername $username -Password $password -AffinityGroup $affgrp -SubnetNames $subnetname -VNetName $vnetname
 ```
 
 ## Heraufstufen des virtuellen Computers zu einem Domänencontroller
@@ -129,7 +129,7 @@ Anschließend erstellen Sie Ihr Clouddienstprojekt und stellen es in Azure berei
 
 ## Verbinden der Web- und Workerrollen mit der Domäne
 
-Sobald Ihr Clouddienstprojekt auf Azure bereitgestellt ist, verbinden Sie Ihre Rolleninstanzen mithilfe der AD-Domänenerweiterung mit der benutzerdefinierten AD-Domäne. Um die AD-Domänenerweiterung zu Ihrer vorhandenen Clouddienstbereitstellung hinzuzufügen und der benutzerdefinierten Domäne beizutreten, führen Sie folgende Befehle in PowerShell aus:
+Sobald Ihr Clouddienstprojekt auf Azure bereitgestellt ist, verbinden Sie Ihre Rolleninstanzen mithilfe der AD-Domänenerweiterung mit der benutzerdefinierten AD-Domäne. Führen Sie in PowerShell folgende Befehle aus, um die AD-Domänenerweiterung zu Ihrer vorhandenen Clouddienstbereitstellung hinzuzufügen und der benutzerdefinierten Domäne beizutreten:
 
 ```powershell
 # Initialize domain variables
@@ -156,4 +156,4 @@ help New-AzureServiceADDomainExtensionConfig
 
 Wir möchten gerne von Ihnen wissen, ob Sie eine Erweiterung nützlich fänden, mit der ein virtueller Computer zu einem Domänencontroller heraufgestuft werden kann. Wenn Sie also der Meinung sind, eine solche Erweiterung wäre nützlich, geben Sie uns bitte Feedback im Kommentarbereich.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

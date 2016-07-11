@@ -15,11 +15,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/12/2016"
+	ms.date="06/22/2016"
 	ms.author="genli"/>
 
 # Warum haben Sie eine Benachrichtigung erhalten, dass Ihr Azure-Abonnement einen überfälligen Saldo aufweist?
 Wenn Sie der Kontoadministrator für das Azure-Abonnement sind und Ihre Zahlung nicht rechtzeitig erfolgt ist, erhalten Sie eine E-Mail-Benachrichtigung über Ihren überfälligen Saldo, oder unter [https://account.windowsazure.com](https://account.windowsazure.com) oder [https://portal.azure.com](https://portal.azure.com) wird eine Warnung angezeigt.
+
+Wenn wir Ihre Zahlung aus irgendeinem Grund nicht bearbeiten können, erhalten Sie möglicherweise eine E-Mail, deren Inhalt ähnlich wie folgt lautet:
+
+**Wir konnten Ihre Kreditkarte zur Zahlung Ihres Abonnements nicht belasten. Aktualisieren Sie Ihre Zahlungsinformationen, um Dienstunterbrechungen zu vermeiden.**
+
+Vergewissern Sie sich, dass Sie E-Mail-Benachrichtigungen erhalten. Sollten Sie keine E-Mail-Benachrichtigungen erhalten, verwenden Sie für die Anmeldung und den Kontoadministrator möglicherweise unterschiedliche E-Mail-Adressen. Die E-Mail-Adresse im Profil des Kontoadministrators wird von Microsoft dazu verwendet, Sie über wichtige abrechnungsbezogene Aktualisierungen für das Abonnement zu benachrichtigen. Es wird empfohlen, dass Sie eine Kontakt-E-Mail-Adresse angeben, die Sie häufig überprüfen.
 
 ## Was geschieht, wenn Sie vergessen zu bezahlen?
 Der Dienst wird beendet, und Ihre Ressourcen sind nicht mehr verfügbar. Sämtliche Daten werden 90 Tage nach dem Beenden des Diensts gelöscht.
@@ -37,4 +43,6 @@ Anweisungen zum Ändern der Zahlungsmethode in Azure finden Sie unter [Ändern d
 
 **Szenario 3**: Wenn die Rechnung nicht eingegangen ist, weil der Kontoadministrator aus dem Unternehmen ausgeschieden ist oder die Rolle gewechselt hat, wenden Sie sich an den [Azure-Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem zu beheben.
 
-<!---HONumber=AcomDC_0615_2016-->
+> [AZURE.NOTE] Wenn Ihr Abonnement deaktiviert wird, können Sie es mit den Schritten des folgenden Artikels wieder aktivieren: [Was kann ich tun, wenn mein Abonnement deaktiviert wird?](billing-subscription-become-disable.md)
+
+<!---HONumber=AcomDC_0629_2016-->

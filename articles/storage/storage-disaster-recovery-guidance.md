@@ -25,9 +25,9 @@ Bei Microsoft arbeiten wir hart, um sicherzustellen, dass unsere Dienste immer v
 
 Es ist wichtig für jeden Kunden, den eigenen Notfallwiederherstellungsplan zu erstellen. Die Wiederherstellung nach einem Speicherausfall erfordert üblicherweise sowohl Personal für den Betrieb als auch automatisierte Vorgehensweise, um wieder funktionsfähige Anwendungen zu erhalten. Weitere Informationen zum Erstellen eines Notfallwiederherstellungsplans finden Sie in der Azure-Dokumentation weiter unten:
 
--   [Notfallwiederherstellung und hohe Verfügbarkeit für Azure-Anwendungen](https://msdn.microsoft.com/library/azure/dn251004.aspx)
+-   [Notfallwiederherstellung und hohe Verfügbarkeit für Azure-Anwendungen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
 
--   [Azure-Geschäftskontinuität – Technische Anleitung](https://msdn.microsoft.com/library/azure/hh873027.aspx)
+-   [Technischer Leitfaden zur Resilienz in Azure](../resiliency/resiliency-technical-guidance.md)
 
 -   [Azure Site Recovery-Dienste](https://azure.microsoft.com/services/site-recovery/)
 
@@ -81,4 +81,4 @@ Es gibt einige empfohlenen Vorgehensweisen, um die Speicherdaten in regelmäßig
 
 -   Dateien – Verwenden Sie [AzCopy](storage-use-azcopy.md) oder [Azure PowerShell](storage-powershell-guide-full.md), um die Dateien in ein anderes Speicherkonto in einer anderen Region zu kopieren.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

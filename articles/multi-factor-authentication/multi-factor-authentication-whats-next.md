@@ -32,7 +32,7 @@ Funktion| Beschreibung| Inhalt
 [Betrugswarnung](#fraud-alert)|Die Betrugswarnung kann so konfiguriert und eingerichtet werden, dass Ihre Benutzer betrügerische Versuche, auf ihre Ressourcen zuzugreifen, melden können.|Einrichtung, Konfiguration und Betrugsberichte
 [Einmalumgehung](#one-time-bypass) |Mit einer Einmalumgehung kann sich ein Benutzer ein einziges Mal authentifizieren, indem er die mehrstufige Authentifizierung "umgeht".|Einrichten und Konfigurieren einer Einmalumgehung
 [Benutzerdefinierte Sprachnachrichten](#custom-voice-messages) |Mit benutzerdefinierten Sprachnachrichten können Sie Ihre eigenen Aufzeichnungen oder Begrüßungen mit mehrstufiger Authentifizierung verwenden. |Einrichten und Konfigurieren von benutzerdefinierten Begrüßungen und Nachrichten
-[Zwischenspeichern](#caching)|Durch Zwischenspeichern können Sie einen bestimmten Zeitraum festlegen, sodass nachfolgende Authentifizierungsversuche automatisch erfolgreich sind. |Einrichten und Konfigurieren des Zwischenspeicherns zur Authentifizierung
+[Zwischenspeichern](#caching-in-azure-multi-factor-authentication)|Durch Zwischenspeichern können Sie einen bestimmten Zeitraum festlegen, sodass nachfolgende Authentifizierungsversuche automatisch erfolgreich sind. |Einrichten und Konfigurieren des Zwischenspeicherns zur Authentifizierung
 [Vertrauenswürdige IPs](#trusted-ips)|Vertrauenswürdige IP-Adressen ist ein Feature der mehrstufigen Authentifizierung, mit der Administratoren eines verwalteten oder verbundenen Mandanten die mehrstufige Authentifizierung für Benutzer umgehen können, die sich vom lokalen Intranet des Unternehmens aus anmelden.|Konfigurieren und Einrichten von IP-Adressen, die von der mehrstufigen Authentifizierung ausgenommen sind	
 [App-Kennwörter](#app-passwords)|Mit App-Kennwörtern kann eine Anwendung, die die mehrstufige Authentifizierung nicht erkennt, diese umgehen und weiter ausgeführt werden.|Informationen zu App-Kennwörter.
 [Speichern der Multi-Factor Authentication für gespeicherte Geräte und Browser](#remember-multi-factor-authentication-for-devices-users-trust)|Mit dieser Funktion können Sie Geräte für eine festgelegte Anzahl von Tagen speichern, nachdem ein Benutzer erfolgreich mit MFA angemeldet wurde.|Informationen zum Aktivieren dieser Funktion und zum Einrichten der Anzahl von Tagen.
@@ -50,7 +50,7 @@ Die Betrugswarnung kann so konfiguriert und eingerichtet werden, dass Ihre Benut
 3.	Klicken Sie im Abschnitt „Konfigurieren“ des Azure Multi-Factor Authentication-Verwaltungsportals auf „Einstellungen“.
 4.	Aktivieren Sie das Kontrollkästchen „Benutzern gestatten, Betrugswarnungen zu übermitteln“ im Abschnitt „Betrugswarnung“ auf der Seite „Einstellungen“.
 5.	Wenn ein Benutzer gesperrt werden soll, so aktivieren Sie das Kontrollkästchen "Benutzer sperren", sobald ein Betrug gemeldet wurde.
-6.	Geben Sie im Textfeld „**Code zur Meldung von Betrug während der Begrüßung**“ einen Nummerncode ein, der während der Anrufüberprüfung genutzt werden kann. Wenn ein Benutzer diesen Code anstelle des #-Zeichens oder zusätzlich zu diesem eingibt, wird eine Betrugswarnung gemeldet. 
+6.	Geben Sie im Textfeld „**Code zur Meldung von Betrug während der Begrüßung**“ einen Nummerncode ein, der während der Anrufüberprüfung genutzt werden kann. Wenn ein Benutzer diesen Code anstelle des #-Zeichens oder zusätzlich zu diesem eingibt, wird eine Betrugswarnung gemeldet.
 7.	Klicken Sie unten auf "Speichern".
 
 >[AZURE.NOTE]
@@ -67,7 +67,7 @@ Eine Betrugswarnung kann auf zwei Arten gemeldet werden. Entweder über die mobi
 
 
 1. Wenn eine Überprüfung an Ihr Telefon gesendet wird, klicken Sie darauf, sodass die Azure Authenticator-App gestartet wird.
-2. Zum Melden eines Betrugs klicken Sie auf "Abbrechen und Betrug melden". Hierdurch wird ein Feld mit dem Hinweis angezeigt, dass der IT-Support Ihres Unternehmens benachrichtigt wird. 
+2. Zum Melden eines Betrugs klicken Sie auf "Abbrechen und Betrug melden". Hierdurch wird ein Feld mit dem Hinweis angezeigt, dass der IT-Support Ihres Unternehmens benachrichtigt wird.
 3. Klicken Sie auf "Betrug melden".
 4. Klicken Sie in der App auf "Schließen".
 
@@ -194,7 +194,7 @@ Außerhalb des Unternehmensnetzwerks|Für Browserflüsse, für die eine mehrstuf
 5. Klicken Sie im Abschnitt "Multi-Factor Authentication" auf "Diensteinstellungen verwalten".
 6. Wählen Sie auf der Seite „Diensteinstellungen“ unter „Vertrauenswürdige IPs“ entweder:
 
-	- Für Anforderungen von verbundene Benutzern, die aus meinem Intranet stammen – Alle Verbundbenutzer, die sich vom Unternehmensnetzwerk aus anmelden, umgehen die mehrstufige Authentifizierung mithilfe eines von AD FS ausgestellten Anspruchs. 
+	- Für Anforderungen von verbundene Benutzern, die aus meinem Intranet stammen – Alle Verbundbenutzer, die sich vom Unternehmensnetzwerk aus anmelden, umgehen die mehrstufige Authentifizierung mithilfe eines von AD FS ausgestellten Anspruchs.
 	- Für Anforderungen aus einem bestimmten Bereich öffentlicher IPs – Geben Sie mithilfe der CIDR-Notation die IP-Adressen in die Textfelder ein. Beispiel: xxx.xxx.xxx.0/24 für IP-Adressen im Bereich xxx.xxx.xxx. 1 – xxx.xxx.xxx. 254 oder xxx.xxx.xxx.xxx/32 für eine einzelne IP-Adresse. Sie können bis zu 50 IP-Adressbereiche eingeben.
 
 7. Klicken Sie auf "Speichern".
@@ -321,7 +321,7 @@ Darüber hinaus können Benutzer App-Kennwörter auch später erstellen, durch �
 
 ### Erstellen von App-Kennwörtern ohne Office 365- oder Azure-Abonnement
 --------------------------------------------------------------------------------
-1. Melden Sie sich an bei [https://myapps.microsoft.com](https://myapps.microsoft.com).	
+1. Melden Sie sich an bei [https://myapps.microsoft.com](https://myapps.microsoft.com).
 2. Wählen Sie oben das Profil aus.
 3. Klicken Sie auf Ihren Benutzernamen, und wählen Sie "Zusätzliche Sicherheitsüberprüfung".
 5. Wählen Sie auf der Seite „Proofup“ oben „App-Kennwörter“
@@ -376,4 +376,4 @@ Methode|Beschreibung
 9. Klicken Sie auf "Speichern".
 10. Klicken Sie auf "Schließen".
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

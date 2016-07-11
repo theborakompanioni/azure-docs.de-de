@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="04/18/2016"  
+ 	ms.date="06/22/2016"  
 	ms.author="juliako"/>
 
 #Media Services PlayReady-Lizenzvorlage – Übersicht
@@ -23,10 +23,10 @@ Azure Media Services bietet jetzt einen Dienst für die Bereitstellung von Micro
 Media Services bietet außerdem APIs, mit denen Sie Ihre PlayReady-Lizenzen konfigurieren können. Lizenzen enthalten die Rechte und Einschränkungen, die von der PlayReady-DRM-Laufzeit durchgesetzt werden sollen, wenn ein Benutzer versucht, geschützte Inhalte wiederzugeben. Im Folgenden finden Sie einige Beispiele für Einschränkungen für PlayReady-Lizenzen, die Sie angeben können:
 
 - Der DateTime-Wert, ab dem die Lizenz gültig ist.
-- Der DateTime-Wert für den Ablauf der Lizenz. 
+- Der DateTime-Wert für den Ablauf der Lizenz.
 - Ob die Lizenz im permanenten Speicher auf dem Client gespeichert werden soll. Permanente Lizenzen werden üblicherweise verwendet, um die Offline-Wiedergabe des Inhalts zu ermöglichen.
-- Die Sicherheitsstufe, die ein Player zum Wiedergeben Ihres Inhalts mindestens aufweisen muss. 
-- Die Schutzebene für die Ausgabesteuerelemente für Audio-/Videoinhalte. 
+- Die Sicherheitsstufe, die ein Player zum Wiedergeben Ihres Inhalts mindestens aufweisen muss.
+- Die Schutzebene für die Ausgabesteuerelemente für Audio-/Videoinhalte.
 - Weitere Informationen finden Sie im Abschnitt zu Ausgabesteuerelementen (3.5) im Dokument zu [PlayReady-Kompatibilitätsregeln](https://www.microsoft.com/playready/licensing/compliance/).
 
 >[AZURE.NOTE]Derzeit können Sie nur PlayRight der PlayReady-Lizenz konfigurieren (diese Berechtigung ist erforderlich). PlayRight ermöglicht es dem Client, den Inhalt wiederzugeben. PlayRight ermöglicht außerdem das Konfigurieren von für die Wiedergabe spezifischen Einschränkungen. Weitere Informationen finden Sie unter [PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight).
@@ -311,4 +311,4 @@ Ein Beispiel für die von Silverlight unterstützten Schutzebenen finden Sie unt
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

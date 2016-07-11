@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/31/2016" 
+	ms.date="06/29/2016" 
 	ms.author="stbaro"/>
 
 # Verwenden von MongoChef mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB
@@ -28,23 +28,27 @@ Voraussetzungen für das Herstellen einer Verbindung mit einem DocumentDB-Konto 
 
 Führen Sie die folgenden Schritte aus, um dem Verbindungs-Manager von MongoChef Ihr DocumentDB-Konto mit Protokollunterstützung für MongoDB hinzuzufügen.
 
-1. Klicken Sie auf **Connect**, um den Verbindungs-Manager zu öffnen, klicken Sie dann auf **New Connection**.
+1. Rufen Sie anhand der [hier](documentdb-connect-mongodb-account.md) bereitgestellten Anweisungen die Verbindungsinformationen für Ihr DocumentDB-Konto mit Protokollunterstützung für MongoDB ab.
+
+	![Screenshot des Blatts „Verbindungszeichenfolge“](./media/documentdb-connect-mongodb-account/ConnectionStringBlade.png)
+
+2. Klicken Sie auf **Connect** (Verbinden), um den Verbindungs-Manager zu öffnen, und klicken Sie anschließend auf **New Connection** (Neue Verbindung).
 
 	![Screenshot des Verbindungs-Managers von MongoChef](./media/documentdb-mongodb-mongochef/ConnectionManager.png)
 	
-2. Geben Sie im Fenster **New Connection** auf der Registerkarte **Server** den FQDN des DocumentDB-Kontos mit Protokollunterstützung für MongoDB und den Port ein.
+2. Geben Sie im Fenster **New Connection** (Neue Verbindung) auf der Registerkarte **Server** den Host (FQDN) des DocumentDB-Kontos mit Protokollunterstützung für MongoDB sowie den Port ein.
 	
 	![Screenshot der Registerkarte „Server“ des Verbindungs-Managers von MongoChef](./media/documentdb-mongodb-mongochef/ConnectionManagerServerTab.png)
 
-3. Wählen Sie im Fenster **New Connection** auf der Registerkarte **Authentication** den Authentifizierungsmodus **Standard (MONGODB-CR oder SCARM-SHA-1)** aus, und geben Sie die Informationen zu Benutzername und Kennwort ein. Übernehmen Sie den Standardwert für Authentifizierungs-DB („admin“), oder geben Sie einen eigenen Wert ein.
+3. Wählen Sie im Fenster **New Connection** (Neue Verbindung) auf der Registerkarte **Authentication** (Authentifizierung) den Authentifizierungsmodus **Standard (MONGODB-CR or SCARM-SHA-1)** (Standard [MONGODB-CR oder SCARM-SHA-1]) aus, und geben Sie Benutzername und Kennwort ein. Übernehmen Sie den Standardwert für Authentifizierungs-DB („admin“), oder geben Sie einen eigenen Wert ein.
 
 	![Screenshot der Registerkarte „Authentication“ des Verbindungs-Managers von MongoChef](./media/documentdb-mongodb-mongochef/ConnectionManagerAuthenticationTab.png)
 
-4. Aktivieren Sie im Fenster **New Connection** auf der Registerkarte **SSL** das Kontrollkästchen **Use SSL protocol to connect** und das Optionsfeld **Accept self-signed SSL certificates**.
+4. Aktivieren Sie im Fenster **New Connection** (Neue Verbindung) auf der Registerkarte **SSL** das Kontrollkästchen **Use SSL protocol to connect** (Verbindung über SSL-Protokoll herstellen) und das Optionsfeld **Accept self-signed SSL certificates** (Selbstsignierte SSL-Zertifikate akzeptieren).
 
 	![Screenshot der Registerkarte „SSL“ des Verbindungs-Managers von MongoChef](./media/documentdb-mongodb-mongochef/ConnectionManagerSSLTab.png)
 
-5. Klicken Sie auf die Schaltfläche **Test Connection**, um die Verbindungsinformationen zu überprüfen, klicken Sie auf **OK**, um zum Fenster für neue Verbindungen zurückzukehren, und klicken Sie auf **Save**.
+5. Klicken Sie auf die Schaltfläche **Test Connection** (Verbindung testen), um die Verbindungsinformationen zu überprüfen, klicken Sie auf **OK**, um zum Fenster für neue Verbindungen zurückzukehren, und klicken Sie anschließend auf **Save** (Speichern).
 
 	![Screenshot des MongoChef-Fensters „Test Connection“](./media/documentdb-mongodb-mongochef/TestConnectionResults.png)
 
@@ -52,23 +56,23 @@ Führen Sie die folgenden Schritte aus, um dem Verbindungs-Manager von MongoChef
 
 Führen Sie die folgenden Schritte aus, um Datenbanken, Sammlungen und Dokumente mithilfe von MongoChef zu erstellen.
 
-1. Markieren Sie die Verbindung in **Connection Manager**, und klicken Sie auf **Connect**.
+1. Markieren Sie die Verbindung im Verbindungs-Manager, und klicken Sie auf **Connect** (Verbinden).
 
 	![Screenshot des Verbindungs-Managers von MongoChef](./media/documentdb-mongodb-mongochef/ConnectToAccount.png)
 
-2. Klicken Sie mit der rechten Maustaste auf den Host, und wählen Sie **Add Database** aus. Geben Sie einen Datenbanknamen an, und klicken Sie auf **OK**.
+2. Klicken Sie mit der rechten Maustaste auf den Host, und wählen Sie **Add Database** (Datenbank hinzufügen) aus. Geben Sie einen Datenbanknamen an, und klicken Sie auf **OK**.
 	
 	![Screenshot der MongoChef-Option „Add Database“](./media/documentdb-mongodb-mongochef/AddDatabase1.png)
 
-3. Klicken Sie mit der rechten Maustaste auf die Datenbank, und wählen Sie **Add Collection** aus. Geben Sie einen Sammlungsnamen an, und klicken Sie auf **Create**.
+3. Klicken Sie mit der rechten Maustaste auf die Datenbank, und wählen Sie **Add Collection** (Sammlung hinzufügen) aus. Geben Sie einen Sammlungsnamen an, und klicken Sie auf **Create** (Erstellen).
 
 	![Screenshot der MongoChef-Option „Add Collection“](./media/documentdb-mongodb-mongochef/AddCollection.png)
 
-4. Klicken Sie auf das Menüelement **Collection**, klicken Sie dann auf **Add Document**.
+4. Klicken Sie auf das Menüelement **Collection** (Sammlung) und anschließend auf **Add Document** (Dokument hinzufügen).
 
 	![Screenshot des MongoChef-Menüelements „Add Document“](./media/documentdb-mongodb-mongochef/AddDocument1.png)
 
-5. Fügen Sie im Dialogfeld zum Hinzufügen von Dokumenten Folgendes ein, und klicken Sie dann auf **Add Document**.
+5. Fügen Sie im Dialogfeld zum Hinzufügen von Dokumenten Folgendes ein, und klicken Sie dann auf **Add Document** (Dokument hinzufügen).
 
 		{
     	"_id": "AndersenFamily",
@@ -123,9 +127,9 @@ Führen Sie die folgenden Schritte aus, um Datenbanken, Sammlungen und Dokumente
 
 ## Nächste Schritte
 
-- Untersuchen Sie DocumentDB mit Protokollunterstützung für MongoDB anhand von [Beispielen](documentdb-mongodb-samples.md).
-- Informieren Sie sich über [Entwicklungsrichtlinien (Vorschau)](documentdb-mongodb-guidelines.md) für DocumentDB-Konten mit Protokollunterstützung für MongoDB.
+- Machen Sie sich anhand von [Beispielen](documentdb-mongodb-samples.md) mit DocumentDB mit Protokollunterstützung für MongoDB vertraut.
+- Informieren Sie sich über [Entwicklungsrichtlinien (Vorschau)](documentdb-mongodb-guidelines.md) für DocumentDB mit Protokollunterstützung für MongoDB.
 
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -85,12 +85,8 @@ Die Kontingente für virtuelle Computer, virtuelle Netzwerke und Speicherkonten,
 
 Die Automatisierungen und Skripts, die Sie erstellt haben, bleiben für die vorhandenen virtuellen Computer und virtuellen Netzwerke funktionsfähig, die im Azure-Dienstverwaltungsmodus erstellt wurden. Die Skripts müssen jedoch aktualisiert werden, damit das neue Schema zum Erstellen der gleichen Ressourcen über den neuen Azure-Ressourcen-Manager-Modus verwendet werden kann.
 
-**Können die mit den neuen Azure-Ressourcen-Manager-APIs erstellten virtuellen Netzwerke mit meinem Express Route-Schaltkreis verbunden werden?**
-
-Dies wird zurzeit nicht unterstützt. Die mit den neuen Azure-Ressourcen-Manager-APIs erstellten virtuellen Netzwerke können nicht mit Express Route-Schaltkreisen verbunden werden Dies wird zukünftig unterstützt.
-
 **Wo finde ich Beispiele für Vorlagen für den Azure-Ressourcen-Manager?**
 
 Einen umfassenden Satz von Startervorlagen finden Sie unter [Schnellstartvorlagen für den Azure-Ressourcen-Manager](https://azure.microsoft.com/documentation/templates/).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

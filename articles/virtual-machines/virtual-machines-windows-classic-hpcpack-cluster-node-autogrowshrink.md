@@ -23,7 +23,7 @@ ms.service="virtual-machines-windows"
 
 Wenn Sie Azure-Burstknoten im HPC Pack-Cluster bereitstellen oder einen HPC Pack-Cluster in virtuellen Azure-Computern erstellen, möchten Sie möglicherweise die Anzahl der Azure-Computeressourcen, wie Kerne, entsprechend der aktuellen Workload im Cluster automatisch vergrößern oder verkleinern. Auf diese Weise können Sie die Azure-Ressourcen effizienter nutzen und die Kosten kontrollieren. Richten Sie zu diesem Zweck die HPC Pack-Cluster-Eigenschaft **AutoGrowShrink** ein. Führen Sie hierzu das HPC PowerShell-Skript **AzureAutoGrowShrink.ps1** aus, das mit HPC Pack installiert wird.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell. Darüber hinaus können Sie derzeit nur die HPC Pack-Computeknoten automatisch vergrößern oder verkleinern, auf denen ein Windows Server-Betriebssystem ausgeführt wird.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]. Darüber hinaus können Sie derzeit nur die HPC Pack-Computeknoten automatisch vergrößern oder verkleinern, auf denen ein Windows Server-Betriebssystem ausgeführt wird.
 
 ## Festlegen der AutoGrowShrink-Clustereigenschaft
 
@@ -70,7 +70,7 @@ Starten Sie zum Ausführen dieser Befehle HPC PowerShell auf dem Clusterhauptkno
 Im Folgenden werden AutoGrowShrink-Parameter aufgeführt, die Sie mit dem **Set-HpcClusterProperty**-Befehl ändern können.
 
 * **EnableGrowShrink** – Schalter zum Aktivieren oder Deaktivieren der **AutoGrowShrink**-Eigenschaft.
-* **ParamSweepTasksPerCore** – Anzahl der Parameter-Sweep-Aufgaben zum Vergrößern eines Kerns. Standardmäßig wird ein Kern pro Aufgabe vergrößert. 
+* **ParamSweepTasksPerCore** – Anzahl der Parameter-Sweep-Aufgaben zum Vergrößern eines Kerns. Standardmäßig wird ein Kern pro Aufgabe vergrößert.
  
     >[AZURE.NOTE] HPC Pack QFE KB3134307 ändert **ParamSweepTasksPerCore** in **TasksPerResourceUnit**. Dies basiert auf dem Auftragsressourcentyp, wobei es sich um einen Knoten, einen Socket oder einen Kern handeln kann.
     
@@ -78,9 +78,9 @@ Im Folgenden werden AutoGrowShrink-Parameter aufgeführt, die Sie mit dem **Set-
 * **GrowInterval** – Intervall in Minuten zum Auslösen der automatischen Vergrößerung. Das Standardintervall beträgt 5 Minuten.
 * **ShrinkInterval** – Intervall in Minuten zum Auslösen der automatischen Verkleinerung. Das Standardintervall beträgt 5 Minuten.
 * **ShrinkIdleTimes** – Anzahl der fortlaufenden Verkleinerungsüberprüfungen, um anzugeben, dass die Knoten inaktiv sind. Der Standardwert ist 3 Mal. Wenn **ShrinkInterval** 5 Minuten beträgt, überprüft HPC Pack beispielsweise alle 5 Minuten, ob der Knoten inaktiv ist. Wenn die Knoten nach 3 fortlaufenden Prüfungen (15 Minuten) inaktiv sind, verkleinert HPC Pack diesen Knoten.
-* **ExtraNodesGrowRatio** – Zusätzlicher Prozentsatz an zu vergrößernden Knoten für Aufträge des Message Passing Interface (MPI). Der Standardwert ist 1, d. h. dass die MPI-Aufträge durch das HPC Pack um 1 % zusätzliche Knoten erweitert werden. 
+* **ExtraNodesGrowRatio** – Zusätzlicher Prozentsatz an zu vergrößernden Knoten für Aufträge des Message Passing Interface (MPI). Der Standardwert ist 1, d. h. dass die MPI-Aufträge durch das HPC Pack um 1 % zusätzliche Knoten erweitert werden.
 * **GrowByMin** – Schalter, um anzugeben, ob die Richtlinie für die automatische Vergrößerung auf den für den Auftrag erforderlichen Mindestressourcen basiert. Der Standardwert ist „false“, was bedeutet, dass das HPC Pack Knoten für Aufträge basierend auf den für die Aufträge erforderlichen Maximalressourcen vergrößert.
-* **SoaJobGrowThreshold** – Schwellenwert von eingehenden SOA-Anforderungen zum Auslösen des automatischen Vergrößerungsprozesses. Der Standardwert ist 50000.  
+* **SoaJobGrowThreshold** – Schwellenwert von eingehenden SOA-Anforderungen zum Auslösen des automatischen Vergrößerungsprozesses. Der Standardwert ist 50000.
     
     >[AZURE.NOTE] Dieser Parameter wird ab HPC Pack 2012 R2 Update 3 unterstützt.
     
@@ -179,4 +179,4 @@ Im folgenden Beispiel werden die mit der Standardvorlage "ComputeNode" bereitges
 .\AzureAutoGrowShrink.ps1 -NodeTemplates 'Default ComputeNode Template' -JobTemplates 'Default' -NodeType ComputeNodes -NumOfActiveQueuedTasksPerNodeToGrow 10 -NumOfActiveQueuedTasksToGrowThreshold 15 -NumOfInitialNodesToGrow 5 -GrowCheckIntervalMins 1 -ShrinkCheckIntervalMins 1 -ShrinkCheckIdleTimes 10 -ArgFile 'IaaSVMComputeNodes_Arg.xml' -LogFilePrefix 'IaaSVMComputeNodes_log'
 ```
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

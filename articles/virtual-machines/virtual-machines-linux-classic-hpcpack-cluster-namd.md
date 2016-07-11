@@ -1,6 +1,6 @@
 <properties
  pageTitle="NAMD mit Microsoft HPC Pack auf virtuellen Linux-Computern | Microsoft Azure"
- description="Sie stellen einen Microsoft HPC Pack-Cluster in Azure bereit und führen eine NAMD-Simulation mit ";charmrun"; auf mehreren Linux-Computeknoten aus."
+ description="Sie stellen einen Microsoft HPC Pack-Cluster in Azure bereit und führen eine NAMD-Simulation mit „charmrun“ auf mehreren Linux-Computeknoten aus."
  services="virtual-machines-linux"
  documentationCenter=""
  authors="dlepow"
@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="vm-linux"
  ms.workload="big-compute"
- ms.date="03/22/2016"
+ ms.date="06/23/2016"
  ms.author="danlep"/>
 
 # Ausführen von NAMD mit dem Microsoft HPC Pack auf Linux-Computeknoten in Azure
@@ -29,16 +29,16 @@ Microsoft HPC Pack bietet eine Vielzahl von umfangreichen HPC- und parallelen An
 
 ## Voraussetzungen
 
-* **HPC Pack-Cluster mit Linux-Computeknoten**: Stellen Sie einen HPC Pack-Cluster mit Linux-Computeknoten in Azure entweder mit einer [Azure Resource Manager-Vorlage](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) oder einem [Azure PowerShell-Skript](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md) bereit. Voraussetzungen und Schritte für beide Optionen finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md). Falls Sie sich für die Bereitstellungsoption mit dem PowerShell-Skript entscheiden, hilft Ihnen die Datei mit der Beispielkonfiguration am Ende dieses Artikels weiter. Hiermit können Sie einen Azure-basierten HPC Pack-Cluster bereitstellen, der aus einem Windows Server 2012 R2-Hauptknoten und vier großen (A3) CentOS 6.6-Computeknoten besteht. Passen Sie dies je nach Bedarf für Ihre Umgebung an.
+* **HPC Pack-Cluster mit Linux-Computeknoten**: Stellen Sie einen HPC Pack-Cluster mit Linux-Computeknoten in Azure entweder mit einer [Azure Resource Manager-Vorlage](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) oder einem [Azure PowerShell-Skript](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md) bereit. Voraussetzungen und Schritte für beide Optionen finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md). Falls Sie sich für die Bereitstellungsoption mit dem PowerShell-Skript entscheiden, hilft Ihnen die Datei mit der Beispielkonfiguration am Ende dieses Artikels weiter. Hiermit können Sie einen Azure-basierten HPC Pack-Cluster bereitstellen, der aus einem Windows Server 2012 R2-Hauptknoten und vier großen CentOS 6.6-Computeknoten besteht. Passen Sie dies je nach Bedarf für Ihre Umgebung an.
 
 
-* **NAMD-Software und Lernprogrammdateien**: Sie können die NAMD-Software für Linux von der [NAMD](http://www.ks.uiuc.edu/Research/namd/)-Website herunterladen (Registrierung erforderlich). Dieser Artikel basiert auf NAMD, Version 2.10, und verwendet das Archiv [Linux-x86\_64 (64-Bit-Intel/AMD mit Ethernet)](http://www.ks.uiuc.edu/Development/Download/download.cgi?UserID=&AccessCode=&ArchiveID=1310), das Sie zum Ausführen von NAMD auf mehrere Linux-Computeknoten in einem Clusternetzwerk verwenden. Laden Sie auch die [NAMD-Lernprogrammdateien](http://www.ks.uiuc.edu/Training/Tutorials/#namd) herunter. Da es sich bei den Downloads um TAR-Dateien handelt, benötigen Sie ein Windows-Tool, um die Dateien auf dem Hauptknoten des Clusters zu extrahieren. Folgen Sie hierzu den Anweisungen weiter unten in diesem Artikel.
+* **NAMD-Software und Lernprogrammdateien**: Sie können die NAMD-Software für Linux von der [NAMD](http://www.ks.uiuc.edu/Research/namd/)-Website herunterladen (Registrierung erforderlich). Dieser Artikel basiert auf NAMD, Version 2.10, und verwendet das Archiv [Linux-x86\_64 (64-Bit-Intel/AMD mit Ethernet)](http://www.ks.uiuc.edu/Development/Download/download.cgi?UserID=&AccessCode=&ArchiveID=1310), das Sie zum Ausführen von NAMD auf mehrere Linux-Computeknoten in einem Clusternetzwerk verwenden. Laden Sie auch die [NAMD-Lernprogrammdateien](http://www.ks.uiuc.edu/Training/Tutorials/#namd) herunter. Bei den Downloads handelt es sich um TAR-Dateien, und Sie benötigen ein Windows-Tool, um die Dateien auf dem Hauptknoten des Clusters zu extrahieren. Folgen Sie hierzu den Anweisungen weiter unten in diesem Artikel.
 
 * **VMD** (optional) – zum Anzeigen der Ergebnisse des NAMD-Auftrags laden Sie das Programm zur Molekularvisualisierung, [VMD](http://www.ks.uiuc.edu/Research/vmd/), auf einen Computer Ihrer Wahl herunter und installieren es. Die aktuelle Version ist 1.9.2. Informationen zu den ersten Schritten finden Sie auf der Downloadwebsite von VMD.
 
 
 ## Einrichten der gegenseitigen Vertrauensstellung zwischen Computeknoten
-Für das Ausführen eines knotenübergreifenden Auftrags auf mehreren Linux-Knoten müssen die Knoten sich gegenseitig vertrauen (per **rsh** oder **ssh**). Wenn Sie den HPC Pack-Cluster mit dem IaaS-Bereitstellungsskript für Microsoft HPC Pack erstellen, richtet das Skript automatisch dauerhafte gegenseitige Vertrauensstellungen für das angegebene Administratorkonto ein. Für Benutzer ohne Administratorrechte, die Sie in der Domäne des Clusters erstellen, müssen Sie temporäre gegenseitige Vertrauensstellungen zwischen den Knoten einrichten, wenn diesen ein Auftrag zugewiesen wird, und diese Beziehung nach Abschluss des Auftrags wieder entfernen. Wenn Sie dies für alle Benutzer durchführen möchten, geben Sie ein RSA-Schlüsselpaar für den Cluster an, den HPC Pack zum Einrichten der Vertrauensstellung verwendet.
+Für das Ausführen eines knotenübergreifenden Auftrags auf mehreren Linux-Knoten müssen die Knoten sich gegenseitig vertrauen (per **rsh** oder **ssh**). Wenn Sie den HPC Pack-Cluster mit dem IaaS-Bereitstellungsskript für Microsoft HPC Pack erstellen, richtet das Skript automatisch dauerhafte gegenseitige Vertrauensstellungen für das angegebene Administratorkonto ein. Für Benutzer ohne Administratorrechte, die Sie in der Domäne des Clusters erstellen, müssen Sie temporäre gegenseitige Vertrauensstellungen zwischen den Knoten einrichten, wenn diesen ein Auftrag zugewiesen wird, und diese Beziehung nach Abschluss des Auftrags wieder entfernen. Wenn Sie dies für alle Benutzer durchführen möchten, geben Sie ein RSA-Schlüsselpaar für den Cluster an, den HPC Pack zum Einrichten der Vertrauensstellung verwendet. Befolgen Sie die Anweisungen.
 
 ### Generieren eines RSA-Schlüsselpaars
 Das Generieren eines RSA-Schlüsselpaars, das einen öffentlichen Schlüssel und einen privaten Schlüssel enthält, ist mit dem Linux-Befehl **ssh-keygen** sehr einfach.
@@ -60,11 +60,11 @@ Das Generieren eines RSA-Schlüsselpaars, das einen öffentlichen Schlüssel und
     ![Private und öffentliche Schlüssel][keys]
 
 ### Hinzufügen des Schlüsselpaars zum HPC Pack-Cluster
-1.	Stellen Sie mit dem HPC Pack-Administratorkonto (das Administratorkonto, das Sie mit dem Bereitstellungsskript eingerichtet haben) eine Remotedesktopverbindung mit dem Hauptknoten her.
+1.	Stellen Sie mit dem HPC Pack-Administratorkonto (das Administratorkonto, das Sie beim Bereitstellen des Clusters eingerichtet haben) eine Remotedesktopverbindung mit dem Hauptknoten her.
 
-2. Verwenden Sie Windows Server-Standardverfahren zum Erstellen eines Domänenbenutzerkontos in der Active Directory-Domäne des Clusters. Verwenden Sie z. B. das Tool Active Directory-Benutzer und -Computer auf dem Hauptknoten. In den Beispielen in diesem Artikel wird davon ausgegangen, dass Sie einen Domänenbenutzer mit dem Namen "hpclab\\hpcuser" erstellen.
+2. Verwenden Sie Windows Server-Standardverfahren zum Erstellen eines Domänenbenutzerkontos in der Active Directory-Domäne des Clusters. Verwenden Sie z. B. das Tool Active Directory-Benutzer und -Computer auf dem Hauptknoten. In den Beispielen in diesem Artikel wird davon ausgegangen, dass Sie einen Domänenbenutzer mit dem Namen „hpcuser“ in der Domäne „hpclab“ („hpclab\\hpcuser“) erstellen.
 
-3. Fügen Sie den Domänenbenutzer dem HPC Pack-Cluster als Clusterbenutzer hinzu. Weitere Informationen finden Sie unter [Add or Remove Cluster Users](https://technet.microsoft.com/library/ff919330.aspx) (Hinzufügen oder Entfernen von Clusterbenutzern).
+3. Fügen Sie den Domänenbenutzer dem HPC Pack-Cluster als Clusterbenutzer hinzu. Anweisungen finden Sie unter [Add or Remove Cluster Users](https://technet.microsoft.com/library/ff919330.aspx) (Hinzufügen oder Entfernen von Clusterbenutzern).
 
 2.	Erstellen Sie die Datei "C:\\cred.xml", und kopieren Sie die RSA-Schlüsseldaten in diese Datei. Ein Beispiel finden Sie in den Beispieldateien am Ende dieses Artikels.
 
@@ -75,7 +75,7 @@ Das Generieren eines RSA-Schlüsselpaars, das einen öffentlichen Schlüssel und
     </ExtendedData>
     ```
 
-3.	Öffnen Sie eine Eingabeaufforderung, und geben Sie den folgenden Befehl ein, um die Anmeldeinformationen für das Konto „hpclab\\hpcuser“ festzulegen. Verwenden Sie den **extendeddata**-Parameter, um den Namen der für die Schlüsseldaten erstellten Datei "C:\\cred.xml" zu übergeben.
+3.	Öffnen Sie eine Eingabeaufforderung, und geben Sie den folgenden Befehl ein, um die Anmeldeinformationen für das Konto „hpclab\\hpcuser“ festzulegen. Verwenden Sie den **extendeddata**-Parameter, um den Namen der für die Schlüsseldaten erstellten Datei „C:\\cred.xml“ zu übergeben.
 
     ```
     hpccred setcreds /extendeddata:c:\cred.xml /user:hpclab\hpcuser /password:<UserPassword>
@@ -89,13 +89,18 @@ Das Generieren eines RSA-Schlüsselpaars, das einen öffentlichen Schlüssel und
 
 ## Einrichten einer Dateifreigabe für Linux-Knoten
 
-Richten Sie nun eine SMB-Standardfreigabe ein, und stellen Sie den freigegebenen Ordner für alle Linux-Knoten bereit, damit die Linux-Knoten auf NAMD-Dateien mit einem gemeinsamen Pfad zugreifen können. Weitere Informationen zu Dateifreigabeoptionen und den zugehörigen Schritten finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md). Mit den folgenden Schritten stellen Sie einen freigegebenen Ordner auf dem Hauptknoten bereit. Dies wird für Distributionen wie CentOS 6.6 empfohlen, die den Azure-Dateidienst derzeit nicht unterstützen. Wenn Ihre Linux-Knoten eine Azure-Dateifreigabe unterstützen, helfen Ihnen die Informationen unter [Verwenden von Azure File Storage unter Linux](../storage/storage-how-to-use-files-linux.md) weiter.
+Richten Sie nun eine SMB-Standardfreigabe ein, und stellen Sie den freigegebenen Ordner für alle Linux-Knoten bereit, damit die Linux-Knoten auf NAMD-Dateien mit einem gemeinsamen Pfad zugreifen können. Mit den folgenden Schritten stellen Sie einen freigegebenen Ordner auf dem Hauptknoten bereit. Dies wird für Distributionen wie CentOS 6.6 empfohlen, die den Azure-Dateidienst derzeit nicht unterstützen. Wenn Ihre Linux-Knoten eine Azure-Dateifreigabe unterstützen, helfen Ihnen die Informationen unter [Verwenden von Azure File Storage unter Linux](../storage/storage-how-to-use-files-linux.md) weiter. Weitere Dateifreigabeoptionen für HPC Pack finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md).
 
-1.	Erstellen Sie auf dem Hauptknoten einen Ordner, und geben Sie ihn für alle Benutzer mit Lese-/Schreibberechtigungen frei. In diesem Beispiel ist "\\\CentOS66HN\\Namd" der Name des Ordners, wobei "CentOS66HN" der Hostname des Hauptknotens ist.
+1.	Erstellen Sie auf dem Hauptknoten einen Ordner, und geben Sie ihn für alle Benutzer frei, indem Sie Lese-/Schreibberechtigungen festlegen. In diesem Beispiel ist "\\\CentOS66HN\\Namd" der Name des Ordners, wobei "CentOS66HN" der Hostname des Hauptknotens ist.
 
-2. Extrahieren Sie die NAMD-Dateien in dem Ordner. Verwenden Sie dazu eine Windows-Version von **tar** oder ein anderes Windows-Dienstprogramm, das TAR-Archive verarbeiten kann. Extrahieren Sie das NAMD-TAR-Archiv nach "\\\CentOS66HN\\Namd\\namd2" und die Dateien des Lernprogramms nach "\\\CentOS66HN\\Namd\\namd2\\namdsample".
+2. Erstellen Sie einen Unterordner namens „namd2“ im freigegebenen Ordner. Erstellen Sie in „namd2“ einen weiteren Unterordner mit dem Namen „namdsample“.
 
-2.	Öffnen Sie ein Windows PowerShell-Fenster, und führen Sie die folgenden Befehle aus, um den freigegebenen Ordner bereitzustellen.
+3. Extrahieren Sie die NAMD-Dateien in dem Ordner. Verwenden Sie dazu eine Windows-Version von **tar** oder ein anderes Windows-Dienstprogramm, das TAR-Archive verarbeiten kann.
+    * Extrahieren Sie das NAMD-TAR-Archiv in „\\\CentOS66HN\\Namd\\namd2“.
+    
+    * Extrahieren Sie die Dateien des Tutorials unter „\\\CentOS66HN\\Namd\\namd2\\namdsample“.
+
+4. Öffnen Sie ein Windows PowerShell-Fenster, und führen Sie die folgenden Befehle aus, um den freigegebenen Ordner auf dem Linux-Knoten bereitzustellen.
 
     ```
     clusrun /nodegroup:LinuxNodes mkdir -p /namd2
@@ -110,13 +115,13 @@ Der erste Befehl erstellt einen Ordner namens "/namd2" auf allen Knoten in der G
 
 ## Erstellen eines Bash-Skripts zum Ausführen eines NAMD-Auftrags
 
-Der NAMD-Auftrag benötigt eine *nodelist*-Datei für **charmrun**, um die Anzahl von Knoten zu ermitteln, die beim Starten von NAMD-Prozessen verwendet werden. Sie verwenden ein Bash-Skript, das die Datei mit der Knotenliste generiert und **charmrun** mit dieser nodelist-Datei ausführt. Sie können dann einen NAMD-Auftrag in HPC-Cluster-Manager übermitteln, der dieses Skript aufruft.
+Der NAMD-Auftrag benötigt eine *nodelist*-Datei für **charmrun**, um die Anzahl von Knoten zu ermitteln, die beim Starten von NAMD-Prozessen verwendet werden. Sie verwenden ein Bash-Skript, das die nodelist-Datei generiert und **charmrun** mit dieser nodelist-Datei ausführt. Sie können dann einen NAMD-Auftrag in HPC-Cluster-Manager übermitteln, der dieses Skript aufruft.
 
-Erstellen Sie mit einem Text-Editor Ihrer Wahl ein Bash-Skript im Ordner mit den NAMD-Programmdateien, und geben Sie ihm den Namen „hpccharmrun.sh“. Sie können einfach das Beispiel kopieren, das in den Beispieldateien am Ende dieses Artikels angegeben ist.
+Erstellen Sie mit einem Text-Editor Ihrer Wahl ein Bash-Skript im Ordner „/namd2“ mit den NAMD-Programmdateien, und geben Sie ihm den Namen „hpccharmrun.sh“. Sie können einfach das Beispiel kopieren, das in den Beispieldateien am Ende dieses Artikels angegeben ist.
 
 >[AZURE.TIP] Speichern Sie das Skript als Textdatei mit Linux-Zeilenenden (nur LF, nicht CR-LF). Dadurch wird sichergestellt, dass es auf den Linux-Knoten ordnungsgemäß ausgeführt wird.
 
-Es folgen Details dazu, was mit diesem Bash-Skript durchgeführt wird. Wenn Sie eine Machbarkeitsstudie durchführen und lediglich einen NAMD-Auftrag ausführen möchten, können Sie Ihr Skript „hpccharmrun.sh“ auf der Dateifreigabe speichern und zu [Übermitteln eines NAMD-Auftrags](#submit-a-namd-job) wechseln.
+Es folgen Details dazu, was mit diesem Bash-Skript durchgeführt wird. Wenn Sie eine Machbarkeitsstudie durchführen und lediglich einen NAMD-Auftrag ausführen möchten, können Sie Ihr Skript „hpccharmrun.sh“ im Ordner „/namd2“ auf der Dateifreigabe speichern und zu [Übermitteln eines NAMD-Auftrags](#submit-a-namd-job) wechseln.
 
 1.	Definieren Sie einige Variablen.
 
@@ -241,11 +246,11 @@ Jetzt können Sie einen NAMD-Auftrag in HPC-Cluster-Manager übermitteln.
 5. Klicken Sie im linken Navigationsbereich auf **Aufgaben bearbeiten**, und klicken Sie dann zum Hinzufügen einer Aufgabe zum Auftrag auf **Hinzufügen**.
 
 
-6. Legen Sie auf der Seite **Aufgabendetails und E/A-Umleitung** die folgenden Werte fest:
+6. Legen Sie auf der Seite **Aufgabendetails und E/A-Umleitung** die folgenden Werte fest.
 
     * **Befehlszeile** – `/namd2/hpccharmrun.sh ++remote-shell ssh /namd2/namd2 /namd2/namdsample/1-2-sphere/ubq_ws_eq.conf > /namd2/namd2_hpccharmrun.log`
 
-    >[AZURE.TIP] Die obige Befehlszeile ist ein einzelner Befehl ohne Zeilenumbrüche. Unter **Befehlszeile** wird sie umgebrochen und in mehreren Zeilen angezeigt.
+        >[AZURE.TIP] Die obige Befehlszeile ist ein einzelner Befehl ohne Zeilenumbrüche. Unter **Befehlszeile** wird sie umbrochen und in mehreren Zeilen angezeigt.
 
     * **Arbeitsverzeichnis** – /namd2
 
@@ -255,7 +260,7 @@ Jetzt können Sie einen NAMD-Auftrag in HPC-Cluster-Manager übermitteln.
 
     >[AZURE.NOTE] Sie legen das Arbeitsverzeichnis hier fest, da **charmrun** versucht, auf jedem Knoten zum gleichen Arbeitsverzeichnis zu navigieren. Wenn das Arbeitsverzeichnis nicht festgelegt ist, startet HPC Pack den Befehl in einem zufällig benannten Ordner, der auf einem der Linux-Knoten erstellt wurde. Dadurch kann der folgende Fehler auf den anderen Knoten auftreten: `/bin/bash: line 37: cd: /tmp/nodemanager_task_94_0.mFlQSN: No such file or directory.` Um dies zu vermeiden, geben Sie einen Ordnerpfad an, auf den von allen Knoten als Arbeitsverzeichnis zugegriffen werden kann.
 
-5.	Klicken Sie auf **Senden**, um diesen Auftrag auszuführen.
+5.	Klicken Sie auf **OK** und dann auf **Senden**, um diesen Auftrag auszuführen.
 
     Standardmäßig sendet HPC Pack den Auftrag unter dem Konto des aktuell angemeldeten Benutzers. Sie werden nach dem Klicken auf **Senden** möglicherweise in einem Dialogfeld aufgefordert, den Benutzernamen und das Kennwort einzugeben.
 
@@ -269,7 +274,7 @@ Jetzt können Sie einen NAMD-Auftrag in HPC-Cluster-Manager übermitteln.
 
 6.	Der Auftrag nimmt mehrere Minuten in Anspruch.
 
-7.	Sie finden das Auftragsprotokoll in "\<headnodeName>\\Namd\\namd2\\namd2\_hpccharmrun.log" und die Ausgabedateien in "\<headnode>\\Namd\\namd2\\namdsample\\1-2-sphere".
+7.	Sie finden das Auftragsprotokoll in „\\<Hauptknotenname>\\Namd\\namd2\\namd2\_hpccharmrun.log“ und die Ausgabedateien in „\\<Hauptknotenname>\\Namd\\namd2\\namdsample\\1-2-sphere“.
 
 8.	Starten Sie gegebenenfalls VMD, um die Auftragsergebnisse anzuzeigen. Die Schritte zur Visualisierung der NAMD-Ausgabedateien (in diesem Fall ein Molekül des Proteins Ubiquitin in einer Wasserkugel) gehen über den Rahmen dieses Artikels hinaus. Weitere Einzelheiten finden Sie im [NAMD-Lernprogramm](http://www.life.illinois.edu/emad/biop590c/namd-tutorial-unix-590C.pdf).
 
@@ -415,4 +420,4 @@ exit ${RTNSTS}
 [task_details]: ./media/virtual-machines-linux-classic-hpcpack-cluster-namd/task_details.png
 [vmd_view]: ./media/virtual-machines-linux-classic-hpcpack-cluster-namd/vmd_view.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

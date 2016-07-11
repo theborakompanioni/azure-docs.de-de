@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/26/2016"
+   ms.date="06/24/2016"
    ms.author="bwren" />
 
 # Grundlagen des Windows PowerShell-Workflows
@@ -239,12 +239,41 @@ Im folgenden Beispiel werden mehrere Dateien an einen Netzwerkspeicherort kopier
 		Write-Output "All files copied."
 	}
 
+Da Benutzernamen aus Anmeldeinformationen nicht über das Aufrufen der Aktivität [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) bzw. über den letzten Prüfpunkt hinaus gespeichert werden, müssen Sie die Anmeldeinformationen auf NULL festlegen und sie nach dem Aufrufen der Aktivität **Suspend-Workflow** oder des letzten Prüfpunkts erneut aus dem Objektspeicher abrufen. Andernfalls erscheint möglicherweise die folgende Fehlermeldung: *Der Workflowauftrag kann nicht fortgesetzt werden, weil Persistenzdaten nicht vollständig gespeichert werden konnten oder gespeicherte Persistenzdaten beschädigt wurden. Sie müssen den Workflow neu starten.*
+
+Der folgende Code veranschaulicht die Behandlung dieses Aspekts in PowerShell-Workflow-Runbooks.
+
+       
+    workflow CreateTestVms
+    {
+       $Cred = Get-AzureAutomationCredential -Name "MyCredential"
+       $null = Add-AzureRmAccount -Credential $Cred
+
+       $VmsToCreate = Get-AzureAutomationVariable -Name "VmsToCreate"
+
+       foreach ($VmName in $VmsToCreate)
+         {
+          # Do work first to create the VM (code not shown)
+        
+          # Now add the VM
+          New-AzureRmVm -VM $Vm -Location "WestUs" -ResourceGroupName "ResourceGroup01"
+
+          # Checkpoint so that VM creation is not repeated if workflow suspends
+          $Cred = $null
+          Checkpoint-Workflow
+          $Cred = Get-AzureAutomationCredential -Name "MyCredential"
+          $null = Add-AzureRmAccount -Credential $Cred
+         }
+     } 
+
+
+Dies ist nicht erforderlich, wenn die Authentifizierung mithilfe eines ausführenden Kontos erfolgt, das mit einem Dienstprinzipal konfiguriert ist.
 
 Weitere Informationen zu Prüfpunkten finden Sie unter [Hinzufügen von Prüfpunkten zu einem Skriptworkflow](http://technet.microsoft.com/library/jj574114.aspx).
 
 
 ## Nächste Schritte
 
-- Informationen über die ersten Schritte mit PowerShell-Workflow-Runbooks finden Sie unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md). 
+- Informationen zu den ersten Schritten mit PowerShell-Workflow-Runbooks finden Sie unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

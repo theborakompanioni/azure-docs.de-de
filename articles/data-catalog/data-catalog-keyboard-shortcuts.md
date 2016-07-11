@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
 	ms.workload="data-catalog"
-	ms.date="03/31/2016"
+	ms.date="06/27/2016"
 	ms.author="spelluru"/>
 
 # Tastenkombinationen für Azure Data Catalog
@@ -92,4 +92,4 @@
 |Menü **Öffnen In** ein-/ausblenden | ALT+O
 |Container untersuchen, wenn das Objekt ein Container ist | ALT+L
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

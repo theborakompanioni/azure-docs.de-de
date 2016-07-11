@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="xpouyat,vsood" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/21/2016"  
+	ms.date="06/22/2016"  
 	ms.author="xpouyat"/>
 
 #Lizenzierung des Microsoft® Smooth Streaming Client Porting Kit
@@ -30,19 +30,19 @@ Nachfolgend finden Sie eine allgemeine Architektur. IIS Smooth Streaming Porting
 
 SSPK ist zu Bedingungen lizenziert, die einen großen Mehrwert für Ihr Unternehmen schaffen. Die SSPK-Lizenz umfasst:
 
-- Smooth Streaming Porting Kit-Quelle in C++ 
+- Smooth Streaming Porting Kit-Quelle in C++
   - implementiert Smooth Streaming Client-Funktionen
   - bietet Formatanalyse, Heuristik, Pufferungslogik usw.
-- Playeranwendungs-APIs 
+- Playeranwendungs-APIs
   -	Programmierschnittstellen für die Interaktion mit einer Medienwiedergabeanwendung
-- Plattformabstraktionsschicht (PAL)-Schnittstelle 
+- Plattformabstraktionsschicht (PAL)-Schnittstelle
   -	Programmierschnittstellen für die Interaktion mit dem Betriebssystem (Threads, Sockets)
-- Hardwareabstraktionsschicht (HAL)-Schnittstelle 
+- Hardwareabstraktionsschicht (HAL)-Schnittstelle
   -	Programmierschnittstellen für die Interaktion mit Hardware-A/V-Decodern (Decodieren, Rendern)
-- Digital Rights Management (DRM)-Schnittstelle 
+- Digital Rights Management (DRM)-Schnittstelle
   -	Programmierschnittstellen für die Handhabung von DRM über die DRM-Abstraktionsschicht (DRM Abstraction Layer, DAL)
   -	Das Microsoft PlayReady Porting Kit ist separat erhältlich und wird über diese Schnittstelle integriert. Weitere Informationen zur Lizenzierung von Microsoft PlayReady Device finden Sie [hier](http://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl).
-- Beispiele für die Implementierung 
+- Beispiele für die Implementierung
   -	PAL-Implementierungsbeispiel für Linux
   -	HAL-Implementierungsbeispiel für GStreamer
 
@@ -71,7 +71,7 @@ Finale Smooth Streaming Client-Produkte werden mit dem folgenden Lizenzmodell an
 
 - 0,10 US-Dollar pro gelieferte Geräteimplementierung
 - Die Lizenz ist pro Jahr auf 50.000 US-Dollar begrenzt.
-- Für die ersten 10.000 Geräteimplementierungen im Jahr fällt keine Lizenzgebühr an. 
+- Für die ersten 10.000 Geräteimplementierungen im Jahr fällt keine Lizenzgebühr an.
 
 ##Lizenzierungsverfahren und SSPK-Zugriff
 
@@ -164,4 +164,4 @@ Lizenznehmer von SSPK-Lizenzen (Interim und final) können sich bei technischen 
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="05/04/2016" 
+	ms.date="06/24/2016" 
 	ms.author="robmcm"/>
 
 # Hochladen einer benutzerdefinierten Java Web-App in Azure
@@ -30,7 +30,7 @@ Im Folgenden werden die Einstellungen beschrieben, die für benutzerdefinierte J
 - Bis auf den einzelnen HTTP-Listener sollten alle Überwachungsports deaktiviert sein. In Tomcat umfassen diese die Shutdown-, HTTPS- und AJP-Ports.
 - Der Container darf nur für IPv4-Verkehr konfiguriert sein.
 - Der Befehl für den **Start** der Anwendung muss in der Konfiguration festgelegt sein.
-- Anwendungen, die Verzeichnisse mit Schreibberechtigungen benötigen, müssen im Inhaltsverzeichnis der Azure-Web-App abgelegt werden, d.h. unter **D:\\home**. Die Umgebungsvariable `HOME` verweist auf "D:\\home".  
+- Anwendungen, die Verzeichnisse mit Schreibberechtigungen benötigen, müssen im Inhaltsverzeichnis der Azure-Web-App abgelegt werden, d.h. unter **D:\\home**. Die Umgebungsvariable `HOME` verweist auf "D:\\home".
 
 Sie können Umgebungsvariablen wie in der web.config-Datei erforderlich festlegen.
 
@@ -257,4 +257,4 @@ Weitere Informationen zu Java finden Sie im [Java Developer Center](/develop/jav
 <!-- External Links -->
 [Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
- 	ms.date="04/18/2016" 
+	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 
@@ -57,7 +57,7 @@ Zum Vorbereiten Ihres Medienobjekts auf dynamisches Streaming haben Sie zwei Mö
 
 ODER
  
-1. Laden Sie vorcodierte MP4-Dateien hoch. 
+1. Laden Sie vorcodierte MP4-Dateien hoch.
 
 	>[AZURE.NOTE] Diese Option wird jedoch nicht empfohlen.
 	
@@ -80,4 +80,4 @@ Die folgenden Quelldateiformate werden von der dynamischen Paketerstellung nicht
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

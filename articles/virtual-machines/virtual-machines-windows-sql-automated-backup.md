@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Automatisierte Sicherung für virtuelle SQL Server-Computer (Resource Manager) | Microsoft Azure"
-	description="Erläutert das Feature „Automatisierte Sicherung“ für SQL Server auf virtuellen Azure-Computern unter Verwendung des Resource Manager."
+	description="Erläutert das Feature „Automatisierte Sicherung“ für SQL Server auf virtuellen Azure-Computern unter Verwendung des Resource Manager. "
 	services="virtual-machines-windows"
 	documentationCenter="na"
 	authors="rothja"
@@ -24,9 +24,7 @@
 
 Die automatisierte Sicherung konfiguriert automatisch [Managed Backup für Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) für alle vorhandenen und neuen Datenbanken auf einer Azure-VM, auf der SQL Server 2014 Standard oder Enterprise ausgeführt wird. Dies bietet Ihnen die Möglichkeit, reguläre Datenbanksicherungen zu konfigurieren, die permanenten Azure-Blob-Speicher nutzen. Die automatische Sicherung basiert auf der [Erweiterung für den SQL Server-IaaS-Agent](virtual-machines-windows-sql-server-agent-extension.md).
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
-
-Klassisches Bereitstellungsmodell. Den Artikel zum klassischen Bereitstellungsmodell finden Sie unter [Automatisierte Sicherung für SQL Server auf virtuellen Azure-Computern (klassisch)](virtual-machines-windows-classic-sql-automated-backup.md).
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] Klassisches Bereitstellungsmodell. Den Artikel zum klassischen Bereitstellungsmodell finden Sie unter [Automatisierte Sicherung für SQL Server auf virtuellen Azure-Computern (klassisch)](virtual-machines-windows-classic-sql-automated-backup.md).
 
 ## Voraussetzungen
 
@@ -82,7 +80,7 @@ Für vorhandene virtuelle SQL Server-Computer müssen Sie die Einstellungen für
 
 ## Konfiguration mit PowerShell
 
-Nach der Bereitstellung des virtuellen SQL-Computers können Sie die automatisierte Batchverarbeitung mithilfe von PowerShell konfigurieren.
+Nach der Bereitstellung des virtuellen SQL-Computers können Sie die automatisierte Sicherung mithilfe von PowerShell konfigurieren.
 
 Im folgenden PowerShell-Beispiel wird die automatisierte Sicherung für eine vorhandene SQL Server 2014-VM konfiguriert. Der Befehl **AzureRM.Compute\\New-AzureVMSqlServerAutoBackupConfig** konfiguriert die Einstellungen der automatisierten Sicherung zum Speichern von Sicherungen in dem mit dem virtuellen Computer verknüpften Azure-Speicherkonto. Die Sicherungen werden für 10 Tage beibehalten. Der Befehl **Set-AzureRmVMSqlServerExtension** aktualisiert den angegebenen virtuellen Azure-Computer mit diesen Einstellungen.
 
@@ -118,4 +116,4 @@ Informationen zu anderen verfügbaren Automatisierungsaufgaben finden Sie unter 
 
 Ausführlichere Informationen zur Verwendung von SQL Server auf virtuellen Azure-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!----HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

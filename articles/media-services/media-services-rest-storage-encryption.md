@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="05/02/2016"   
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -26,8 +26,8 @@ Dieser Artikel bietet einen Überblick über die AMS-Speicherverschlüsselung un
 - Erstellen Sie einen Inhaltsschlüssel.
 - Erstellen Sie ein Medienobjekt. Legen Sie AssetCreationOption auf StorageEncryption fest, wenn Sie das Medienobjekt erstellen.
 
-	Verschlüsselte Medienobjekte müssen Inhaltsschlüsseln zugeordnet werden.
-- Verknüpfen Sie den Inhaltsschlüssel mit dem Medienobjekt.  
+	 Verschlüsselte Medienobjekte müssen Inhaltsschlüsseln zugeordnet werden.
+- Verknüpfen Sie den Inhaltsschlüssel mit dem Medienobjekt.
 - Legen Sie die Parameter für die Verschlüsselung in den AssetFile-Entitäten fest.
  
 >[AZURE.NOTE]Wenn Sie ein speicherverschlüsseltes Medienobjekt übermitteln möchten, müssen Sie die Übermittlungsrichtlinie des Medienobjekts konfigurieren. Bevor das Medienobjekt gestreamt werden kann, wird die Speicherverschlüsselung vom Streamingserver entfernt und der Inhalt mithilfe der angegebenen Übermittlungsrichtlinie gestreamt. Weitere Informationen finden Sie unter [Konfigurieren von Übermittlungsrichtlinien für Medienobjekte](media-services-rest-configure-asset-delivery-policy.md).
@@ -53,11 +53,11 @@ Verschlüsselte Medienobjekte müssen einem Speicherverschlüsselungsschlüssel 
 
 Im Folgenden finden Sie allgemeine Schritte zum Generieren von Inhaltsschlüsseln, die Sie den zu verschlüsselnden Medienobjekten zuordnen.
 
-1. Generieren Sie für die Speicherverschlüsselung einen 32-Byte-AES-Schlüssel nach dem Zufallsprinzip. 
+1. Generieren Sie für die Speicherverschlüsselung einen 32-Byte-AES-Schlüssel nach dem Zufallsprinzip.
 
-	Dies ist der Inhaltsschlüssel für Ihr Medienobjekt. Das bedeutet, dass alle mit diesem Medienobjekt verknüpften Dateien denselben Inhaltsschlüssel zur Entschlüsselung verwenden müssen. 
+	Dies ist der Inhaltsschlüssel für Ihr Medienobjekt. Das bedeutet, dass alle mit diesem Medienobjekt verknüpften Dateien denselben Inhaltsschlüssel zur Entschlüsselung verwenden müssen.
 2.	Rufen Sie die [GetProtectionKeyId](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkeyid)-Methode und die [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey)-Methode auf, um das richtige X.509-Zertifikat zur Verschlüsselung Ihres Inhaltsschlüssels abzurufen.
-3.	Verschlüsseln Sie Ihren Inhaltsschlüssel mit dem öffentlichen Schlüssel des X.509-Zertifikats. 
+3.	Verschlüsseln Sie Ihren Inhaltsschlüssel mit dem öffentlichen Schlüssel des X.509-Zertifikats.
 
 	Das Media Services .NET SDK verwendet RSA mit OAEP zur Verschlüsselung. Ein .NET-Beispiel finden Sie in der [EncryptSymmetricKeyData-Funktion](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
 4.	Erstellen Sie einen Prüfsummenwert, der mithilfe der Schlüsselkennung und des Inhaltsschlüssels berechnet wird. Im folgenden .NET-Beispiel wird die Prüfsumme anhand des GUID-Abschnitts der Schlüsselkennung und des unverschlüsselten Inhaltsschlüssels berechnet.
@@ -97,7 +97,7 @@ Im Folgenden finden Sie allgemeine Schritte zum Generieren von Inhaltsschlüssel
 	 
 	Eigenschaft im Anforderungstext | Beschreibung
 	---|---
-	ID | Die ContentKey-ID, die wir selbst in folgendem Format generieren: „nb:kid:UUID:<NEW GUID>“.
+	ID | Die ContentKey-ID, die wir selbst in folgendem Format generieren: „nb:kid:UUID:<NEUE GUID>“.
 	ContentKeyType | Dies ist der Inhaltsschlüsseltyp für diesen Inhaltsschlüssel in Form einer Ganzzahl. Wir übergeben den Wert 1 für die Speicherverschlüsselung.
 	EncryptedContentKey | Wir erstellen einen neuen Inhaltsschlüsselwert mit einer Länge von 256 Bits (32 Bytes). Der Schlüssel wird mithilfe des X.509-Speicherverschlüsselungszertifikats verschlüsselt, das wir von Microsoft Azure Media Services abrufen, indem wir eine HTTP-GET-Anforderung für die Methoden "GetProtectionKeyId" und "GetProtectionKey" ausführen. Folgender .NET-Code dient als Beispiel: die **EncryptSymmetricKeyData**-Methode, die [hier](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs) definiert ist.
 	ProtectionKeyId | Dies ist die Schutzschlüssel-ID für das X.509-Speicherverschlüsselungszertifikat, das zur Verschlüsselung des Inhaltsschlüssels verwendet wurde.
@@ -375,4 +375,4 @@ Nachdem Sie Ihre digitale Mediendatei in einen Blobcontainer hochgeladen haben, 
 	   "ContentChecksum":null
 	}
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

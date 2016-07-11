@@ -259,7 +259,7 @@ Im folgenden Beispiel werden unterschiedliche Wege veranschaulicht, wie Sie die 
 
 3. Mit den obigen Informationen zu den Durchschnitts- und Höchstwerten der Ressourcenmetriken können Sie bewerten, wie gut Ihre Workload zur gewählten Leistungsebene passt. In den meisten Fällen erhalten Sie mit den Durchschnittswerten aus „sys.resource\_stats“ eine gute Grundlage gegenüber der Zielgröße. Dies sollte Ihre primäre Messlatte sein. Wenn Sie beispielsweise die Dienstebene Standard mit Leistungsebene S2 verwenden, die durchschnittlichen Auslastungsprozentsätze für CPU, Lesevorgänge und Schreibvorgänge unter 40 % liegen, die durchschnittliche Anzahl von Workern unter 50 und die durchschnittliche Anzahl von Sitzungen unter 200 liegt, ist Ihre Workload unter Umständen gut für die Leistungsebene S1 geeignet. Es ist leicht zu erkennen, ob Ihre Datenbank die Grenzen für Worker und Sitzungen einhält. Um zu ermitteln, ob eine Datenbank in Bezug auf CPU, Lesevorgänge und Schreibvorgänge zu einer niedrigeren Leistungsebene passt, dividieren Sie die DTU-Anzahl der niedrigeren Leistungsebene durch die DTU-Anzahl Ihrer aktuellen Leistungsebene und multiplizieren das Ergebnis mit 100:
 
-	**S1 DTU/S2 DTU*100 = 20/50*100 = 40**
+	**S1 DTU/S2 DTU * 100 = 20/50 * 100 = 40**
 
 	Das Ergebnis ist der relative Leistungsunterschied zwischen den beiden Leistungsebenen in Prozent. Wenn Ihre Auslastung diesen Prozentsatz nicht überschreitet, passt Ihre Workload ggf. in die niedrigere Leistungsebene. Sie sollten sich jedoch auch alle Bereiche der Ressourcenverwendung ansehen und in Prozent ermitteln, wie oft Ihre Datenbankworkload in die niedrigere Leistungsebene passt. Mit der folgenden Abfrage wird der Prozentsatz für die Eignung pro Ressourcendimension basierend auf dem oben berechneten Schwellenwert von 40 % ausgegeben.
 
@@ -307,11 +307,11 @@ Die Dienstebenen sind für die Verbesserung der Leistungsstabilität und Vorhers
 ## Optimierungsverfahren
 In diesem Abschnitt werden einige Verfahren beschrieben, mit denen Sie Azure SQL-Datenbank so optimieren können, dass Sie für Ihre Anwendung die beste Leistung erzielen und für die Ausführung die kleinstmögliche Leistungsebene wählen können. Einige Verfahren sind mit herkömmlichen bewährten Methoden zum Optimieren von SQL Server identisch, aber die anderen Verfahren gelten speziell für Azure SQL-Datenbank. In einigen Fällen können herkömmliche SQL Server-Verfahren so erweitert werden, dass sie auch für Azure SQL-Datenbank funktionieren. Hierzu werden die verbrauchten Ressourcen für eine Datenbank untersucht, um Bereiche zu ermitteln, in denen eine weitere Optimierung möglich ist.
 
-### Query Performance Insight und SQL-Datenbank-Ratgeber
+### Query Performance Insight und SQL-Datenbankratgeber
 SQL-Datenbank umfasst zwei Tools im Azure-Portal, mit denen Leistungsprobleme Ihrer Datenbank analysiert und behoben werden können:
 
 - [Query Performance Insight](sql-database-query-performance.md)
-- [SQL-Datenbank-Ratgeber](sql-database-index-advisor.md)
+- [SQL-Datenbankratgeber](sql-database-advisor.md)
 
 Weitere Informationen zu den beiden Tools und zu ihrer Verwendung finden Sie unter den oben angegebenen Links. In den folgenden beiden Abschnitten zu fehlenden Indizes und zur Abfragenoptimierung wird auf weitere Möglichkeiten hingewiesen, wie Sie ähnliche Leistungsprobleme manuell finden und beheben können. Es ist ratsam, zuerst die Tools im Portal auszuprobieren, um Probleme effizienter diagnostizieren und beheben zu können. Verwenden Sie den Ansatz der manuellen Optimierung für besondere Fälle.
 
@@ -340,7 +340,7 @@ Im folgenden Beispiel wird ein Fall erstellt, in dem der ausgewählte Abfragepla
 
 Azure SQL-Datenbank enthält Funktionen, mit denen Datenbankadministratoren Hinweise dazu erhalten können, wie sie allgemeine fehlende Indexbedingungen finden und dies beheben können. Mit in Azure SQL-Datenbank integrierten dynamischen Verwaltungssichten (DMVs) wird die Abfragenkompilierung daraufhin untersucht, ob ein Index die geschätzten Kosten zum Ausführen einer Abfrage erheblich reduzieren würde. Während der Abfragenausführung wird nachverfolgt, wie häufig jeder Abfrageplan ausgeführt wird. Außerdem wird die geschätzte Differenz zwischen dem ausgeführten Abfrageplan und dem imaginären Abfrageplan mit dem Index ermittelt. So kann ein Datenbankadministrator schnell abschätzen, welche Änderungen am physischen Datenbankdesign zu einer Verbesserung der Workload-Gesamtkosten für eine bestimmte Datenbank und der tatsächlichen Workload führen können.
 
->[AZURE.NOTE] Lesen Sie sich zuerst den Abschnitt [Query Performance Insight und SQL-Datenbank-Ratgeber](#query-performance-insight-and-index-advisor) durch, bevor Sie DMVs zum Suchen nach fehlenden Indizes verwenden.
+>[AZURE.NOTE] Lesen Sie sich zuerst den Abschnitt [Query Performance Insight und SQL-Datenbankratgeber](#query-performance-insight-and-index-advisor) durch, bevor Sie DMVs zum Suchen nach fehlenden Indizes verwenden.
 
 Die folgende Abfrage kann verwendet werden, um potenzielle fehlende Indizes zu ermitteln.
 
@@ -507,4 +507,4 @@ Einige Datenbankanwendungen enthalten Workloads mit einer hohen Zahl von Lesevor
 
 Dank der Dienstebenen in Azure SQL-Datenbank verfügen Sie in Bezug auf die Typen von Anwendungen, die Sie in der Cloud erstellen, über mehr Flexibilität. In Kombination mit einer sorgfältigen Anwendungsoptimierung können Sie für Ihre Anwendung eine hohe und vorhersagbare Leistung erzielen. In diesem Dokument werden empfohlene Verfahren zum Optimieren des Ressourcenverbrauchs einer Datenbank und Ermitteln der Eignung für eine der Leistungsebenen beschrieben. Die Optimierung ist beim Cloudmodell ein fortlaufender Prozess, und die Dienstebenen und ihre Leistungsebenen ermöglichen Administratoren die Steigerung der Leistung, während die Kosten auf der Microsoft Azure Platform gesenkt werden.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

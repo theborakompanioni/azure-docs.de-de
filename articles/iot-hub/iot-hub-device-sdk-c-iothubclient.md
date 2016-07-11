@@ -26,6 +26,8 @@ Am Ende dieses Artikels werden verschiedene Themen besprochen, u. a. weitere In
 
 Zur Erläuterung dieser Themen verwenden wir die **IoTHubClient**-SDK-Beispiele. Sehen Sie sich für weitere Informationen die **iothub\_client\_sample\_http**- und **iothub\_client\_sample\_amqp**-Anwendungen an, die im Azure IoT-Geräte-SDK für C enthalten sind. Alles nachfolgend Beschriebene wird in diesen Beispielen veranschaulicht.
 
+Das **Azure IoT-Geräte-SDK für C** finden Sie im GitHub-Repository mit [Microsoft Azure IoT SDKs](https://github.com/Azure/azure-iot-sdks) und ausführliche Informationen zur API in der [C-API-Referenz](http://azure.github.io/azure-iot-sdks/c/api_reference/index.html).
+
 ## Die Low-Level-APIs
 
 Im vorherigen Artikel haben wir die grundlegende Funktionsweise des **IotHubClient** im Kontext der **iothub\_client\_sample\_amqp**-Anwendung beschrieben. So wurde beispielsweise erklärt, wie die Bibliothek mit dem folgenden Code initialisiert wurde.
@@ -115,7 +117,7 @@ while ((IoTHubClient_LL_GetSendStatus(iotHubClientHandle, &status) == IOTHUB_CLI
 }
 ```
 
-Dieser Code ruft **IoTHubClient\_LL\_DoWork** auf, bis alle Ereignisse im Puffer an den IoT Hub gesendet wurden. Achtung: Das bedeutet nicht, dass alle Nachrichten in der Warteschlange empfangen wurden. Das liegt zum Teil daran, dass die Überprüfung auf „alle“ Nachrichten keine allzu deterministische Aktion ist. Was würde geschehen, wenn Sie „alle“ Nachrichten abrufen und dann eine weitere direkt danach an das Gerät gesendet wird? Eine bessere Möglichkeit für dieses Problem ist ein programmierter Timeout. Die Nachrichtenrückruffunktion könnte beispielsweise jedes Mal einen Timer zurücksetzen, wenn sie aufgerufen wird. Anschließend schreiben Sie die Logik, um die Verarbeitung fortzusetzen, wenn z. B. in den letzten *x* Sekunden keine Nachrichten empfangen wurden.
+Dieser Code ruft **IoTHubClient\_LL\_DoWork** auf, bis alle Ereignisse im Puffer an den IoT Hub gesendet wurden. Achtung: Das bedeutet nicht, dass alle Nachrichten in der Warteschlange empfangen wurden. Das liegt zum Teil daran, dass die Überprüfung auf „alle“ Nachrichten keine allzu deterministische Aktion ist. Was würde geschehen, wenn Sie „alle“ Nachrichten abrufen und dann eine weitere direkt danach an das Gerät gesendet wird? Eine bessere Möglichkeit für dieses Problem ist ein programmierter Timeout. Die Nachrichtenrückruffunktion könnte beispielsweise jedes Mal einen Timer zurücksetzen, wenn sie aufgerufen wird. Anschließend schreiben Sie die Logik, um die Verarbeitung fortzusetzen, wenn z. B. in den letzten *x* Sekunden keine Nachrichten empfangen wurden.
 
 Stellen Sie nach Abschluss der Übergabe von Ereignissen und des Empfangs von Nachrichten sicher, dass Sie die entsprechende Funktion aufrufen, um die Ressourcen zu bereinigen.
 
@@ -268,7 +270,7 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 Es gibt eine Reihe von Optionen, die häufig verwendet werden:
 
--   **SetBatching** (boolesch): Bei **true** werden an den IoT Hub gesendete Daten in Batches gesendet. Bei **false** werden Nachrichten einzeln gesendet. Die Standardeinstellung ist **false**. Beachten Sie, dass die Option **SetBatching** nur für das Protokoll HTTP und nicht für die Protokolle AMQP und MQTT gilt.
+-   **SetBatching** (boolesch): Bei **true** werden an den IoT Hub gesendete Daten in Batches gesendet. Bei **false** werden Nachrichten einzeln gesendet. Die Standardeinstellung ist **false**. Beachten Sie, dass die Option **SetBatching** nur für das HTTP-Protokoll und nicht für die Protokolle AMQP und MQTT gilt.
 
 -   **Timeout** (ganze Zahl ohne Vorzeichen): Dieser Wert wird in Millisekunden dargestellt. Wenn das Senden einer HTTP-Anforderung oder der Empfang einer Antwort länger dauert, kommt es zu einem Timeout der Verbindung.
 
@@ -278,4 +280,4 @@ Die Batchverarbeitung ist eine wichtige Option. Standardmäßig übergibt die Bi
 
 In diesem Artikel wird das Verhalten der **IoTHubClient**-Bibliothek im **Azure IoT-Geräte-SDK für C** ausführlich beschrieben. Diese Informationen sollten Ihnen eine umfassende Übersicht über die Funktionen der **IoTHubClient**-Bibliothek bieten. Im [nächsten Artikel](iot-hub-device-sdk-c-serializer.md) stellen wir ähnliche Details zur Bibliothek des **Serialisierungsprogramms** vor.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

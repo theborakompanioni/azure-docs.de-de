@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/05/2016"
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 #Livestreaming mit Azure Media Services zum Erstellen von Multi-Bitrate-Datenströmen
@@ -51,7 +51,7 @@ Dies ist der aktuelle Status des Kanals. Mögliche Werte sind:
 
 - **Stopped** (Beendet): Dies ist der anfängliche Status des Kanals nach seiner Erstellung (es sei denn, im Portal wurde das automatische Starten gewählt). In diesem Status werden keine Gebühren berechnet. In diesem Status können die Eigenschaften des Kanals aktualisiert werden. Ein Streaming ist jedoch nicht zulässig.
 - **Starting** (Wird gestartet): Der Kanal wird gestartet. In diesem Status werden keine Gebühren berechnet. In diesem Status sind weder Updates noch Streaming zulässig. Wenn ein Fehler auftritt, wird der Kanal in den Status „Stopped“ (Angehalten) geschaltet.
-- **Running** (Wird ausgeführt): Vom Kanal können Livestreams verarbeitet werden. Die Nutzung wird jetzt berechnet. Sie müssen den Kanal beenden, um zu verhindern, dass weiter Gebühren berechnet werden. 
+- **Running** (Wird ausgeführt): Vom Kanal können Livestreams verarbeitet werden. Die Nutzung wird jetzt berechnet. Sie müssen den Kanal beenden, um zu verhindern, dass weiter Gebühren berechnet werden.
 - **Stopping** (Wird beendet): Der Kanal wird beendet. In diesem Übergangszustand erfolgt keine Berechnung. In diesem Status sind weder Updates noch Streaming zulässig.
 - **Deleting** (Wird gelöscht): Der Kanal wird gelöscht. In diesem Übergangszustand erfolgt keine Berechnung. In diesem Status sind weder Updates noch Streaming zulässig.
 
@@ -89,7 +89,7 @@ Im Folgenden werden grundlegende Schritte zum Erstellen allgemeiner Livestreamin
 
 >[AZURE.NOTE] Die maximal empfohlene Dauer eines Liveereignisses beträgt derzeit 8 Stunden. Wenden Sie sich an „AMSLiveD at Microsoft.com“, wenn Sie einen Kanal für längere Zeit laufen lassen müssen. Beachten Sie, dass für das Live Encoding Gebühren berechnet werden und dass diese Gebühren stundenweise anfallen, wenn Sie einen Live Encoding-Kanal im Zustand „Wird ausgeführt“ belassen. Es wird empfohlen, die Ausführung der Kanäle sofort zu beenden, wenn das Livestreaming-Ereignis abgeschlossen ist, um das Anfallen zusätzlicher Stundengebühren zu vermeiden.
 
-1. Schließen Sie eine Videokamera an einen Computer an. Starten und konfigurieren Sie einen lokalen Liveencoder, von dem ein **Single**-Bitrate-Datenstrom in einem der folgenden Protokolle ausgegeben wird: RTMP, Smooth Streaming oder RTP (MPEG-TS). 
+1. Schließen Sie eine Videokamera an einen Computer an. Starten und konfigurieren Sie einen lokalen Liveencoder, von dem ein **Single**-Bitrate-Datenstrom in einem der folgenden Protokolle ausgegeben wird: RTMP, Smooth Streaming oder RTP (MPEG-TS).
 	
 	Dieser Schritt kann auch nach der Erstellung des Kanals ausgeführt werden.
 
@@ -98,7 +98,7 @@ Im Folgenden werden grundlegende Schritte zum Erstellen allgemeiner Livestreamin
 1. Rufen Sie die Erfassungs-URL des Kanals ab.
 
 	Die Erfassungs-URL wird vom Liveencoder verwendet, um den Datenstrom an den Kanal zu senden.
-1. Rufen Sie die Vorschau-URL des Kanals ab. 
+1. Rufen Sie die Vorschau-URL des Kanals ab.
 
 	Verwenden Sie diese URL, um sicherzustellen, dass der Livestream ordnungsgemäß vom Kanal empfangen wird.
 
@@ -106,14 +106,14 @@ Im Folgenden werden grundlegende Schritte zum Erstellen allgemeiner Livestreamin
 
 	Im klassischen Azure-Portal wird beim Erstellen eines Programms auch ein Medienobjekt erstellt.
 
-	Wenn Sie hingegen .NET SDK oder REST verwenden, müssen Sie beim Erstellen eines Programms ein Medienobjekt erstellen und angeben, dass es verwendet werden soll. 
-1. Veröffentlichen Sie das mit dem Programm verknüpfte Medienobjekt.   
+	Wenn Sie hingegen .NET SDK oder REST verwenden, müssen Sie beim Erstellen eines Programms ein Medienobjekt erstellen und angeben, dass es verwendet werden soll.
+1. Veröffentlichen Sie das mit dem Programm verknüpfte Medienobjekt.
 
 	Stellen Sie sicher, dass auf dem Streamingendpunkt, von dem Sie Inhalte streamen möchten, mindestens eine für das Streaming reservierte Einheit verfügbar ist.
 1. Wenn Sie zum Starten von Streaming und Archivierung bereit sind, starten Sie das Programm.
 2. Optional kann vom Liveencoder eine Ankündigung gestartet werden. Die Ankündigung wird in den Ausgabedatenstrom eingefügt.
 1. Sie können das Programm und damit das Streaming und die Archivierung des Ereignisses jederzeit beenden.
-1. Löschen Sie das Programm (und optional das Medienobjekt).   
+1. Löschen Sie das Programm (und optional das Medienobjekt).
 
 >[AZURE.NOTE]Es ist sehr wichtig, das Beenden eines Live Encoding-Kanals nicht zu vergessen. Beachten Sie, dass das Live Encoding stundenweise abgerechnet wird und dass die Beibehaltung des Status „Wird ausgeführt“ für einen Live Encoding-Kanal mit Gebühren verbunden ist. Es wird empfohlen, die Ausführung der Kanäle sofort zu beenden, wenn das Livestreaming-Ereignis abgeschlossen ist, um das Anfallen zusätzlicher Stundengebühren zu vermeiden.
 
@@ -124,7 +124,7 @@ Im Folgenden werden grundlegende Schritte zum Erstellen allgemeiner Livestreamin
 
 Wenn der **Encodertyp** die Einstellung **Standard** aufweist, gibt es folgende gültige Optionen:
 
-- **RTP** (MPEG-TS): MPEG-2-Transportdatenstrom über RTP  
+- **RTP** (MPEG-TS): MPEG-2-Transportdatenstrom über RTP
 - Single-Bitrate **RTMP**
 - Single-Bitrate **Fragmentiertes MP4** (Smooth Streaming)
 
@@ -136,12 +136,12 @@ Professionelle Sendeanstalten arbeiten in der Regel mit lokalen High-End-Liveenc
 
 Überlegungen:
 
-- Es wird dringend empfohlen, als Eingabe einen Single-Program-Transportdatenstrom (SPTS) zu verwenden. 
-- Sie können bis zu 8 Audiodatenströme mit MPEG-2 TS über RTP eingeben. 
+- Es wird dringend empfohlen, als Eingabe einen Single-Program-Transportdatenstrom (SPTS) zu verwenden.
+- Sie können bis zu 8 Audiodatenströme mit MPEG-2 TS über RTP eingeben.
 - Der Videodatenstrom muss eine durchschnittliche Bitrate unter 15-Mbit/s aufweisen.
 - Die aggregierte durchschnittliche Bitrate der Audiodatenströme muss unter 1 Mbit/s liegen.
 - Folgende Codecs werden unterstützt:
-	- MPEG-2/H.262-Video 
+	- MPEG-2/H.262-Video
 		
 		- Main Profile (4:2:0)
 		- High Profile (4:2:0, 4:2:2)
@@ -310,13 +310,13 @@ Durch **Default720p** wird das Video in die folgenden 7 Ebenen codiert:
 
 BitRate|Breite|Höhe|Max. Bilder/s|Profil|Name des Ausgabedatenstroms
 ---|---|---|---|---|---
-3500|1280|720|30|Hoch|Video\_1280x720\_3500kbps
-2200|960|540|30|Main|Video\_960x540\_2200kbps
-1350|704|396|30|Main|Video\_704x396\_1350kbps
-850|512|288|30|Main|Video\_512x288\_850kbps
-550|384|216|30|Main|Video\_384x216\_550kbps
-350|340|192|30|Grundwert|Video\_340x192\_350kbps
-200|340|192|30|Grundwert|Video\_340x192\_200kbps
+3500|1280|720|30|Hoch|Video_1280x720_3.500 Kbit/s
+2200|960|540|30|Main|Video_960x540_2.200 Kbit/s
+1350|704|396|30|Main|Video_704 x 396_1.350 Kbit/s
+850|512|288|30|Main|Video_512x288_850 Kbit/s
+550|384|216|30|Main|Video_384x216_550 Kbit/s
+350|340|192|30|Grundwert|Video_340x192_350 Kbit/s
+200|340|192|30|Grundwert|Video_340x192_200 Kbit/s
 
 
 ####Ausgabe-Audiodatenstrom
@@ -476,4 +476,4 @@ Wählen Sie **Portal**, **.NET** oder **REST API**, um auf Informationen zum Ers
 
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

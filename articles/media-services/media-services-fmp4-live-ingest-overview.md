@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="04/18/2016"    
+	ms.date="06/22/2016"     
 	ms.author="cenkdin;juliako"/>
 
 #Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services
@@ -52,7 +52,7 @@ Es folgt eine Liste der speziellen Formatdefinitionen, die für die Echtzeiterfa
 5. Im Abschnitt 3.3.6 in [1] wird das Feld mit der Bezeichnung MovieFragmentRandomAccessBox („mfra“) definiert, das am Ende der Echtzeiterfassung gesendet werden KANN, um das Ende des Streams (End-of-Stream, EOS) für den Kanal anzugeben. Aufgrund der Erfassungslogik von Azure Media Services ist die Verwendung von EOS (End-of-Stream) veraltet, und das Feld "mfra" für die Echtzeiterfassung SOLLTE NICHT gesendet werden. Wenn es dennoch gesendet wird, wird es in Azure Media Services ohne Meldung ignoriert. Es wird empfohlen, [Channel Reset](https://msdn.microsoft.com/library/azure/dn783458.aspx#reset_channels) zu verwenden, um den Status des Erfassungspunkts zurückzusetzen. Es wird auch empfohlen, [Program Stop](https://msdn.microsoft.com/library/azure/dn783463.aspx#stop_programs) zum Beenden einer Präsentation und eines Streams zu verwenden.
 6. Die Dauer des MP4-Fragments SOLLTE konstant sein, um die Größe der Clientmanifeste zu reduzieren und die Clientdownloadheuristik durch Verwendung von Wiederholungstags zu verbessern. Die Dauer KANN schwanken, um nicht ganzzahlige Frameraten auszugleichen.
 7. Die Dauer des MP4-Fragments SOLLTE zwischen ca. 2 und 6 Sekunden liegen.
-8. Zeitstempel und Indizes des MP4-Fragments (fragment\_absolute\_time und fragment\_index für TrackFragmentExtendedHeaderBox) SOLLTEN in aufsteigender Reihenfolge eingehen. Obwohl Fragmente in Azure Media Services dupliziert werden können, sind die Möglichkeiten, Fragmente entsprechend der Medienzeitachse neu anzuordnen, nur sehr begrenzt.
+8. Zeitstempel und Indizes des MP4-Fragments (fragment\__absolute_\_time und fragment\_index für TrackFragmentExtendedHeaderBox) MÜSSEN in aufsteigender Reihenfolge eingehen. Obwohl Fragmente in Azure Media Services dupliziert werden können, sind die Möglichkeiten, Fragmente entsprechend der Medienzeitachse neu anzuordnen, nur sehr begrenzt.
 
 ##4\. Protokollformat – HTTP
 
@@ -66,9 +66,9 @@ Es folgen die detaillierten Anforderungen:
 
 1. Der Encoder SOLLTE die Übertragung starten, indem eine HTTP POST-Anforderung mit leerem "Hauptteil" (Inhaltslänge = 0) mit der gleichen Erfassungs-URL gesendet wird. Damit kann schnell erkannt werden, ob der Echtzeiterfassungsendpunkt gültig ist und ob Authentifizierung oder andere Bedingungen erforderlich sind. Über das HTTP-Protokoll kann der Server erst eine HTTP-Antwort zurücksenden, wenn die gesamte Anforderung, einschließlich des POST-Texts, empfangen wurde. Aufgrund der Langfristigkeit von Liveereignissen kann der Encoder ohne diesen Schritt Fehler möglicherweise erst erkennen, nachdem alle Daten gesendet wurden.
 2. Der Encoder MUSS alle als Ergebnis von (1) ausgegebenen Fehler oder Authentifizierungsanforderungen behandeln. Wenn (1) mit dem Antwortcode "200" erfolgreich ausgeführt wird, wird der Vorgang fortgesetzt.
-3. Der Encoder MUSS eine neue HTTP POST-Anforderung mit dem Fragmented MP4-Stream beginnen. Die Nutzlast MUSS mit den Headerfeldern, gefolgt von Fragmenten, beginnen. Beachten Sie, dass die Felder "ftyp", "Live Server Manifest Box" und "moov" (in dieser Reihenfolge) mit jeder Anforderung gesendet werden MÜSSEN, selbst wenn der Encoder erneut eine Verbindung herstellen muss, weil die vorhergehende Anforderung vor dem Ende des Streams beendet wurde. 
+3. Der Encoder MUSS eine neue HTTP POST-Anforderung mit dem Fragmented MP4-Stream beginnen. Die Nutzlast MUSS mit den Headerfeldern, gefolgt von Fragmenten, beginnen. Beachten Sie, dass die Felder "ftyp", "Live Server Manifest Box" und "moov" (in dieser Reihenfolge) mit jeder Anforderung gesendet werden MÜSSEN, selbst wenn der Encoder erneut eine Verbindung herstellen muss, weil die vorhergehende Anforderung vor dem Ende des Streams beendet wurde.
 4. Der Encoder MUSS für das Hochladen die segmentierte Transfercodierung verwenden, da es nicht möglich ist, die gesamte Inhaltslänge des Liveereignisses vorherzusagen.
-5. Nach dem Ende des Ereignisses und dem Senden des letzten Fragments MUSS der Encoder die Nachrichtensequenz für die segmentierte Transfercodierung beenden (bei den meisten HTTP-Clientstapeln erfolgt dies automatisch). Der Encoder MUSS warten, bis der Dienst den letzten Antwortcode zurückgibt, und dann die Verbindung beenden. 
+5. Nach dem Ende des Ereignisses und dem Senden des letzten Fragments MUSS der Encoder die Nachrichtensequenz für die segmentierte Transfercodierung beenden (bei den meisten HTTP-Clientstapeln erfolgt dies automatisch). Der Encoder MUSS warten, bis der Dienst den letzten Antwortcode zurückgibt, und dann die Verbindung beenden.
 6. Der Encoder DARF das in Abschnitt 9.2 in [1] beschriebene Events()-Nomen NICHT für die Echtzeiterfassung in Microsoft Azure Media Services verwenden.
 7. Wenn die HTTP POST-Anforderung vor dem Ende des Streams mit einem TCP-Fehler beendet wird oder das Zeitlimit überschreitet, MUSS der Encoder unter Verwendung einer neuen Verbindung eine neue Anforderung ausgeben und dabei die oben genannten Anforderungen erfüllen. Zudem gilt die zusätzliche Anforderung, dass der Encoder die vorherigen zwei MP4-Fragmente für jede Spur im Stream erneut senden und den Stream ohne Fehlstellen in der Medienzeitachse fortsetzen MUSS. Durch das erneute Senden der letzten beiden MP4-Fragmente für jede Spur wird sichergestellt, dass keine Daten verloren gehen. Mit anderen Worten: Wenn ein Stream eine Audio- und eine Videospur enthält und bei der aktuellen POST-Anforderung ein Fehler auftritt, muss der Encoder eine neue Verbindung herstellen und die letzten zwei zuvor erfolgreich gesendeten Fragmente für die Audiospur sowie die letzten zwei zuvor erfolgreich gesendeten Fragmente für die Videospur erneut senden, um sicherzustellen, dass keine Daten verloren gehen. Der Encoder MUSS einen vorausschauenden Puffer der Medienfragmente beibehalten, den er beim Wiederherstellen der Verbindung erneut sendet.
 
@@ -119,8 +119,8 @@ Angesichts der Eigenschaften des Live-Streamings ist eine gute Failoverunterstü
 In diesem Abschnitt werden Szenarios für Dienstfailover erörtert. In diesem Fall erfolgt der Fehler innerhalb des Diensts und tritt als Netzwerkfehler zutage. Es folgen einige Empfehlungen für die Encoder-Implementierung zur Behebung des Dienstfailovers:
 
 
-1. Verwenden Sie für die Herstellung der TCP-Verbindung ein Timeout von 10 Sekunden. Wenn ein Versuch zum Herstellen der Verbindung länger als 10 Sekunden dauert, wird der Vorgang abgebrochen und wiederholt. 
-2. Verwenden Sie ein kurzes Timeout für das Senden der HTTP-Anforderungsnachrichtenabschnitte. Wenn die Dauer des MP4-Zielfragments N Sekunden ist, verwenden Sie für das Senden ein Timeout zwischen N und 2N Sekunden. Verwenden Sie z. B. ein Timeout von 6 bis 12 Sekunden, wenn die Dauer des MP4-Fragments 6 Sekunden beträgt. Wenn eine Zeitüberschreitung auftritt, setzen Sie die Verbindung zurück, öffnen Sie eine neue Verbindung, und setzen Sie die Erfassung des Streams über die neue Verbindung fort. 
+1. Verwenden Sie für die Herstellung der TCP-Verbindung ein Timeout von 10 Sekunden. Wenn ein Versuch zum Herstellen der Verbindung länger als 10 Sekunden dauert, wird der Vorgang abgebrochen und wiederholt.
+2. Verwenden Sie ein kurzes Timeout für das Senden der HTTP-Anforderungsnachrichtenabschnitte. Wenn die Dauer des MP4-Zielfragments N Sekunden ist, verwenden Sie für das Senden ein Timeout zwischen N und 2N Sekunden. Verwenden Sie z. B. ein Timeout von 6 bis 12 Sekunden, wenn die Dauer des MP4-Fragments 6 Sekunden beträgt. Wenn eine Zeitüberschreitung auftritt, setzen Sie die Verbindung zurück, öffnen Sie eine neue Verbindung, und setzen Sie die Erfassung des Streams über die neue Verbindung fort.
 3. Definieren Sie für jede Spur einen kontinuierlichen Puffer, der jeweils die letzten zwei Fragmente enthält, die erfolgreich und vollständig an den Dienst gesendet wurden. Wenn die HTTP POST-Anforderung für einen Stream vor dem Ende des Streams beendet wird oder das Zeitlimit überschreitet, öffnen Sie eine neue Verbindung, und starten Sie eine neue HTTP POST-Anforderung. Senden Sie die Header des Streams sowie die letzten zwei Fragmente für jede Spur erneut, und setzen Sie den Stream ohne Fehlstellen in der Medienzeitachse fort. Dadurch verringert sich die Wahrscheinlichkeit eines Datenverlusts.
 4. Es wird empfohlen, dass der Encoder die Anzahl der Wiederholungsversuche zum Herstellen einer Verbindung oder zum Fortsetzen des Streamings nach dem Auftreten eines TCP-Fehlers NICHT begrenzt.
 5. Nach einem TCP-Fehler gilt Folgendes:
@@ -144,7 +144,7 @@ Im Folgenden sind die Erwartungen im Hinblick auf den Echtzeiterfassungsendpunkt
 3. Die POST-Anforderung des neuen Encoders MUSS die gleichen Fragmented MP4-Headerfelder enthalten wie die Instanz, bei der der Fehler aufgetreten ist.
 4. Der neue Encoder MUSS ordnungsgemäß mit allen anderen für die gleiche Livepräsentation ausgeführten Encodern synchronisiert werden, sodass synchronisierte Audio- und Videobeispiele mit abgeglichenen Fragmentgrenzen generiert werden.
 5. Der neue Stream MUSS dem vorherigen Stream semantisch entsprechen und auf Header- und Fragmentebene austauschbar sein.
-6. Der neue Encoder SOLLTE versuchen, den Datenverlust zu minimieren. Die Werte für "fragment\_absolute\_time" und "fragment\_index" von Medienfragmenten SOLLTEN sich ab dem Punkt erhöhen, an dem der Encoder zuletzt beendet wurde. Die Werte für "fragment\_absolute\_time" und "fragment\_index" SOLLTEN sich kontinuierlich erhöhen, können jedoch bei Bedarf eine Fehlstelle aufweisen. Azure Media Services ignoriert Fragmente, die bereits empfangen und verarbeitet wurden. Daher ist es besser, im Zweifelsfall Fragmente erneut zu senden, als Fehlstellen in die Medienzeitachse einzuführen. 
+6. Der neue Encoder SOLLTE versuchen, den Datenverlust zu minimieren. Die Werte für "fragment\_absolute\_time" und "fragment\_index" von Medienfragmenten SOLLTEN sich ab dem Punkt erhöhen, an dem der Encoder zuletzt beendet wurde. Die Werte für "fragment\_absolute\_time" und "fragment\_index" SOLLTEN sich kontinuierlich erhöhen, können jedoch bei Bedarf eine Fehlstelle aufweisen. Azure Media Services ignoriert Fragmente, die bereits empfangen und verarbeitet wurden. Daher ist es besser, im Zweifelsfall Fragmente erneut zu senden, als Fehlstellen in die Medienzeitachse einzuführen.
 
 ##9\. Encoder-Redundanz 
 
@@ -177,12 +177,12 @@ Es folgt eine empfohlene Implementierung für die Erfassung von platzsparenden S
 3. Im Feld "Live Server Manifest Box" MUSS "manifestOutput" auf "true" gesetzt werden.
 4. Aufgrund des seltenen Eintretens des Signalisierungsereignisses wird Folgendes empfohlen:
 	1. Zu Beginn des Liveereignisses sendet der Encoder die ursprünglichen Headerfelder an den Dienst, sodass der Dienst die platzsparende Spur im Clientmanifest registrieren kann.
-	2. Der Encoder SOLLTE die HTTP POST-Anforderung beenden, wenn keine Daten gesendet werden. Eine lang ausgeführte HTTP POST-Anforderung, die keine Daten sendet, kann verhindern, dass Azure Media Services im Fall einer Aktualisierung des Diensts oder eines Serverneustarts die Verbindung mit dem Encoder schnell trennt, da der Medienserver vorübergehend in einem Empfangsvorgang im Socket blockiert ist. 
-	3. In dem Zeitraum, in dem keine Signalisierungsdaten vorhanden sind, SOLLTE der Encoder die HTTP POST-Anforderung schließen. Während die POST-Anforderung aktiv ist, SOLLTE der Encoder Daten senden. 
+	2. Der Encoder SOLLTE die HTTP POST-Anforderung beenden, wenn keine Daten gesendet werden. Eine lang ausgeführte HTTP POST-Anforderung, die keine Daten sendet, kann verhindern, dass Azure Media Services im Fall einer Aktualisierung des Diensts oder eines Serverneustarts die Verbindung mit dem Encoder schnell trennt, da der Medienserver vorübergehend in einem Empfangsvorgang im Socket blockiert ist.
+	3. In dem Zeitraum, in dem keine Signalisierungsdaten vorhanden sind, SOLLTE der Encoder die HTTP POST-Anforderung schließen. Während die POST-Anforderung aktiv ist, SOLLTE der Encoder Daten senden.
 	4. Beim Senden von platzsparenden Fragmenten kann der Encoder den expliziten Header "Content-Length" festlegen, sofern dieser vorhanden ist.
 	5. Beim Senden von platzsparenden Fragmenten über eine neue Verbindung SOLLTE der Encoder das Senden mit den Headerfeldern starten, gefolgt von den neuen Fragmenten. Dies ist notwendig für den Fall, dass inzwischen ein Failover aufgetreten ist und die neue Verbindung mit einem neuen Server hergestellt wird, auf dem die platzsparende Spur noch nicht bekannt ist.
 	6. Das Fragment der platzsparenden Spur wird für den Client zur Verfügung gestellt, wenn das Fragment der entsprechenden übergeordneten Spur mit dem gleichen oder einem größeren Zeitstempelwert für den Client zur Verfügung gestellt wird. Wenn für das platzsparende Fragment beispielsweise der Zeitstempel t = 1.000 festgelegt ist, wird erwartet, dass der Client das platzsparende Fragment mit geringer Dichte mit t = 1.000 herunterladen kann, nachdem der Client das Video-Fragment (angenommen, der Name der übergeordneten Spur lautet "Video") mit dem Zeitstempel 1.000 oder höher erkannt hat. Beachten Sie, dass das tatsächliche Signal sehr wohl auch für eine andere Position in der Zeitachse der Präsentation für seinen eigentlichen Zweck verwendet werden kann. Im Beispiel oben ist es möglich, dass das platzsparende Fragment mit t = 1.000 eine XML-Nutzlast aufweist, die für das Einfügen einer Werbung in einer Position definiert ist, die zeitlich einige Sekunden später folgt.
-	7. Die Nutzlast des platzsparenden Fragments kann je nach Szenario in unterschiedlichen Formaten vorliegen (z. B. XML, Text oder binär). 
+	7. Die Nutzlast des platzsparenden Fragments kann je nach Szenario in unterschiedlichen Formaten vorliegen (z. B. XML, Text oder binär).
 
 
 ###Redundante Audiospur
@@ -198,7 +198,7 @@ Es folgt eine empfohlene Implementierung für redundante Audiospuren:
 
 1. Senden Sie jede eindeutige Audiospur allein in einem separaten Stream. Senden Sie auch einen redundanten Stream für jeden dieser Audiospurstreams, wobei sich der zweite Stream vom ersten Stream nur durch den Bezeichner in der HTTP POST-URL unterscheidet: {protocol}://{server address}/{publishing point path}/Streams({identifier}).
 2. Verwenden Sie separate Streams, um die Videos mit den beiden niedrigsten Bitraten zu senden. Jeder dieser Streams SOLLTE auch eine Kopie jeder eindeutigen Audiospur enthalten. Wenn beispielsweise mehrere Sprachen unterstützt werden, SOLLTEN diese Streams Audiospuren für jede Sprache enthalten.
-3. Verwenden Sie separate Serverinstanzen (Encoder) zum Codieren und Senden der in (1) und (2) genannten redundanten Streams. 
+3. Verwenden Sie separate Serverinstanzen (Encoder) zum Codieren und Senden der in (1) und (2) genannten redundanten Streams.
 
 
 
@@ -221,4 +221,4 @@ Es folgt eine empfohlene Implementierung für redundante Audiospuren:
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

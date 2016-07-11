@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/21/2016" 
+	ms.date="06/27/2016" 
 	ms.author="stefsch"/>
 
 # Details zur Netzwerkkonfiguration für App Service-Umgebungen mit ExpressRoute 
@@ -29,13 +29,15 @@ Kunden können eine [Azure ExpressRoute][ExpressRoute]-Verbindung mit ihrer virt
 Es gibt Netzwerkverbindungsanforderungen für App Service-Umgebungen, die ursprünglich nicht von einem virtuellen Netzwerk erfüllt werden konnten, das mit einer ExpressRoute verbunden war. App Service-Umgebungen erfordern für einen ordnungsgemäßen Betrieb Folgendes:
 
 
--  Ausgehende Netzwerkverbindungen mit Azure Storage-Endpunkten in der ganzen Welt an Port 80 und Port 443. Dies beinhaltet sowohl Endpunkte, die sich in der gleichen Region wie die App Service-Umgebung befinden, als auch Speicherendpunkte in **anderen** Azure-Regionen. Azure Storage-Endpunkte werden unter den folgenden DNS-Domänen aufgelöst: *table.core.windows.net*, *blob.core.windows.net*, *queue.core.windows.net* und *file.core.windows.net*.  
--  Ausgehende Netzwerkverbindungen mit SQL-Datenbankendpunkten, die sich in der gleichen Region wie die App Service-Umgebung befinden. SQL-Datenbankendpunkte werden unter der folgenden Domäne aufgelöst: *database.windows.net*.
--  Ausgehende Netzwerkverbindungen mit den Endpunkten auf der Azure-Verwaltungsebene (ASM- und ARM-Endpunkte). Dies beinhaltet ausgehende Verbindungen mit *management.core.windows.net* und *management.azure.com*. 
--  Ausgehende Netzwerkverbindung mit *ocsp.msocsp.com*, *mscrl.microsoft.com* und *crl.microsoft.com*. Dies ist zur Unterstützung von SSL-Funktionen erforderlich.
+-  Ausgehende Netzwerkverbindungen mit Azure Storage-Endpunkten in der ganzen Welt an Port 80 und Port 443. Dies beinhaltet sowohl Endpunkte, die sich in der gleichen Region wie die App Service-Umgebung befinden, als auch Speicherendpunkte in **anderen** Azure-Regionen. Azure Storage-Endpunkte werden unter den folgenden DNS-Domänen aufgelöst: *table.core.windows.net*, *blob.core.windows.net*, *queue.core.windows.net* und *file.core.windows.net*.
+-  Ausgehende Netzwerkverbindungen mit dem Azure Files-Dienst an Port 445.
+-  Ausgehende Netzwerkverbindungen mit SQL-Datenbankendpunkten, die sich in der gleichen Region wie die App Service-Umgebung befinden. SQL-Datenbankendpunkte werden unter der folgenden Domäne aufgelöst: *database.windows.net*. Hierzu müssen die Ports 1433, 11000-11999 und 14000-14999 für den Zugriff geöffnet werden. Weitere Informationen finden Sie in [diesem Artikel zur Portverwendung in SQL-Datenbank V12](../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).
+-  Ausgehende Netzwerkverbindungen mit den Endpunkten auf der Azure-Verwaltungsebene (ASM- und ARM-Endpunkte). Dies beinhaltet ausgehende Verbindungen mit *management.core.windows.net* und *management.azure.com*.
+-  Ausgehende Netzwerkverbindungen mit *ocsp.msocsp.com*, *mscrl.microsoft.com* und *crl.microsoft.com*. Dies ist zur Unterstützung von SSL-Funktionen erforderlich.
 -  Die DNS-Konfiguration für das virtuelle Netzwerk muss alle der zuvor genannten Endpunkte und Domänen auflösen können. Können diese Endpunkte nicht aufgelöst werden, schlägt die Erstellung von App Service-Umgebungen fehl, und vorhandene App Service-Umgebungen werden als fehlerhaft gekennzeichnet.
--  Falls ein benutzerdefinierter DNS-Server am anderen Ende eines VPN-Gateways vorhanden ist, muss der DNS-Server über das Subnetz mit der App Service-Umgebung erreichbar sein. 
--  Der ausgehende Netzwerkpfad kann weder durch interne Unternehmensproxys laufen noch zwangsweise zur lokalen Infrastruktur getunnelt werden. Andernfalls wird die tatsächliche NAT-Adresse des ausgehenden Netzwerkdatenverkehrs der App Service-Umgebung geändert. Das Ändern der NAT-Adresse des ausgehenden Netzwerkdatenverkehrs einer App Service-Umgebung verursacht bei vielen der oben genannten Endpunkte Verbindungsfehler. Dies führt zu Fehlern bei der Erstellung von App Service-Umgebungen und dazu, dass zuvor fehlerfreie App Service-Umgebungen als fehlerhaft gekennzeichnet werden.  
+-  Ausgehender Zugriff über Port 53 wird für die Kommunikation mit DNS-Servern benötigt.
+-  Falls ein benutzerdefinierter DNS-Server am anderen Ende eines VPN-Gateways vorhanden ist, muss der DNS-Server über das Subnetz mit der App Service-Umgebung erreichbar sein.
+-  Der ausgehende Netzwerkpfad kann weder durch interne Unternehmensproxys laufen noch zwangsweise zur lokalen Infrastruktur getunnelt werden. Andernfalls wird die tatsächliche NAT-Adresse des ausgehenden Netzwerkdatenverkehrs der App Service-Umgebung geändert. Das Ändern der NAT-Adresse des ausgehenden Netzwerkdatenverkehrs einer App Service-Umgebung verursacht bei vielen der oben genannten Endpunkte Verbindungsfehler. Dies führt zu Fehlern bei der Erstellung von App Service-Umgebungen und dazu, dass zuvor fehlerfreie App Service-Umgebungen als fehlerhaft gekennzeichnet werden.
 -  Eingehender Netzwerkzugriff auf die erforderlichen Ports für App Service-Umgebungen muss entsprechend diesem [Artikel][requiredports] zugelassen werden.
 
 Die DNS-Anforderungen können erfüllt werden, indem Sie sicherstellen, dass eine gültige DNS-Infrastruktur für das virtuelle Netzwerk konfiguriert und beibehalten wird. Falls die DNS-Konfiguration nach der Erstellung einer App Service-Umgebung geändert wird, können Entwickler erzwingen, dass eine App Service-Umgebung die neue DNS-Konfiguration übernimmt. Wird im [Azure-Portal][NewPortal] über das Symbol „Neu starten“ oben auf dem Verwaltungsblatt der App Service-Umgebung ein paralleler Neustart der Umgebung ausgelöst, übernimmt diese die neue DNS-Konfiguration.
@@ -68,7 +70,7 @@ Details zum Erstellen und Konfigurieren benutzerdefinierter Routen finden Sie in
 
 **Voraussetzungen**
 
-1. Installieren Sie die aktuellste Azure PowerShell über die [Seite mit den Azure-Downloads][AzureDownloads] \(vom Juni 2015 oder später). Unter "Befehlszeilentools" befindet sich unter "Windows PowerShell" der Link "Installieren", über den die aktuellen PowerShell-Cmdlets installiert werden.
+1. Installieren Sie die aktuellste Azure PowerShell über die [Seite mit den Azure-Downloads][AzureDownloads] (vom Juni 2015 oder später). Unter "Befehlszeilentools" befindet sich unter "Windows PowerShell" der Link "Installieren", über den die aktuellen PowerShell-Cmdlets installiert werden.
 
 2. Es wird empfohlen, ein eindeutiges Subnetz für die ausschließliche Verwendung durch eine App Service-Umgebung zu erstellen. Dadurch wird sichergestellt, dass die im Subnetz eingerichteten benutzerdefinierten Routen nur für ausgehenden Datenverkehr für die App Service-Umgebung geöffnet werden.
 3. **Wichtig**: Stellen Sie die App Service-Umgebung erst bereit, **nachdem** die folgenden Konfigurationsschritte erfolgt sind. Dadurch wird sichergestellt, dass ausgehende Netzwerkverbindungen verfügbar sind, bevor Sie versuchen, eine App Service-Umgebung bereitzustellen.
@@ -106,8 +108,8 @@ Der letzte Konfigurationsschritt ist das Zuordnen der Routentabelle zum Subnetz,
 Sobald die Routentabelle an das Subnetz gebunden ist, wird empfohlen, die gewünschte Auswirkung zunächst zu testen und zu bestätigen. Stellen Sie beispielsweise einen virtuellen Computer im Subnetz bereit, und bestätigen Sie Folgendes:
 
 
-- Ausgehender Datenverkehr zu den weiter oben genannten Azure-Endpunkten und Nicht-Azure-Endpunkten wird **nicht** über die ExpressRoute-Verbindung übertragen. Dieses Verhalten muss unbedingt überprüft werden, da die Erstellung von App Service-Umgebungen fehlschlägt, wenn ausgehender Datenverkehr aus dem Subnetz weiterhin zwangsweise lokal getunnelt wird. 
-- DNS-Suchen nach den zuvor genannten Endpunkten werden alle korrekt aufgelöst. 
+- Ausgehender Datenverkehr zu den weiter oben genannten Azure-Endpunkten und Nicht-Azure-Endpunkten wird **nicht** über die ExpressRoute-Verbindung übertragen. Dieses Verhalten muss unbedingt überprüft werden, da die Erstellung von App Service-Umgebungen fehlschlägt, wenn ausgehender Datenverkehr aus dem Subnetz weiterhin zwangsweise lokal getunnelt wird.
+- DNS-Suchen nach den zuvor genannten Endpunkten werden alle korrekt aufgelöst.
 
 Nachdem Sie die obigen Schritte ausgeführt und überprüft haben, müssen Sie den virtuellen Computer löschen, da das Subnetz bei der Erstellung der App Service-Umgebung „leer“ sein muss.
  
@@ -138,4 +140,4 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 
 <!-- IMAGES -->
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="06/24/2016"
 	ms.author="bradsev;hangzh;weig"/>
 
 
@@ -84,7 +84,7 @@ Zum Einrichten Ihrer Azure Data Science-Umgebung führen Sie die folgenden Schri
 
 **Stellen Sie Ihre Azure SQL Data Warehouse-Instanz bereit.** Befolgen Sie die Dokumentation unter [Erstellen eines SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md), um eine SQL Data Warehouse-Instanz bereitzustellen. Notieren Sie sich unbedingt die folgenden Anmeldeinformationen für SQL Data Warehouse, die in späteren Schritten verwendet werden.
 
-  - **Servername**: <server Name>.database.windows.net
+  - **Servername**: <Servername>.database.windows.net
   - **SQLDW-Name (Datenbank)**
   - **Benutzername**
   - **Kennwort**
@@ -93,7 +93,7 @@ Zum Einrichten Ihrer Azure Data Science-Umgebung führen Sie die folgenden Schri
 
 **Stellen Sie mit Visual Studio eine Verbindung mit Ihrem Azure SQL Data Warehouse her.** Eine Anleitung hierzu finden Sie unter [Herstellen einer Verbindung mit Azure SQL Data Warehouse über Visual Studio](../sql-data-warehouse/sql-data-warehouse-connect-overview.md) in den Schritten 1 und 2.
 
->[AZURE.NOTE] Führen Sie die folgende SQL-Abfrage für die Datenbank aus, die Sie in SQL Data Warehouse erstellt haben (anstelle der Abfrage, die in Schritt 3 des Verbindungsthemas bereitgestellt wird), um **einen Hauptschlüssel zu erstellen**.
+>[AZURE.NOTE] Führen Sie die folgende SQL-Abfrage für die Datenbank aus, die Sie in SQL Data Warehouse erstellt haben(anstelle der Abfrage, die in Schritt 3 des Verbindungsthemas bereitgestellt wird), um **einen Hauptschlüssel zu erstellen**.
 
 	BEGIN TRY
 	       --Try to create the master key
@@ -107,9 +107,9 @@ Zum Einrichten Ihrer Azure Data Science-Umgebung führen Sie die folgenden Schri
 
 ## <a name="getdata"></a>Laden der Daten in SQL Data Warehouse
 
-Öffnen Sie eine Windows PowerShell-Befehlskonsole. Führen Sie die folgenden PowerShell-Befehle zum Herunterladen der SQL-Beispielskriptdateien aus, die wir für Sie auf GitHub bereitstellen. Speichern Sie sie in einem lokalen Verzeichnis, das Sie mit dem Parameter *-DestDir* angeben. Sie können den Wert des Parameters *-DestDir* in ein beliebiges lokales Verzeichnis ändern. Wenn *-DestDir* nicht vorhanden ist, wird es vom PowerShell-Skript erstellt.
+Öffnen Sie eine Windows PowerShell-Befehlskonsole. Führen Sie die folgenden PowerShell-Befehle zum Herunterladen der Beispiel-SQL-Skriptdateien aus, die wir für Sie auf Github bereitstellen. Speichern Sie sie in einem lokalen Verzeichnis, das Sie mit dem Parameter *-DestDir* angeben. Sie können den Wert des Parameters *-DestDir* in ein beliebiges lokales Verzeichnis ändern. Wenn *-DestDir* nicht vorhanden ist, wird es vom PowerShell-Skript erstellt.
 
->[AZURE.NOTE] Möglicherweise müssen Sie beim Ausführen des folgenden PowerShell-Skripts die Option **Als Administrator ausführen** verwenden, wenn Sie Administratorrechte benötigen, um Ihr *DestDir*-Verzeichnis zu erstellen oder darin zu schreiben.
+>[AZURE.NOTE] Möglicherweise müssen Sie beim Ausführen des folgenden PowerShell-Skripts die Option **Als Administrator ausführen** verwenden, wenn Sie Administratorrechte benötigen, um Ihr *DestDir* zu erstellen oder darin zu schreiben.
 
 	$source = "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/Download_Scripts_SQLDW_Walkthrough.ps1"
 	$ps1_dest = "$pwd\Download_Scripts_SQLDW_Walkthrough.ps1"
@@ -131,7 +131,7 @@ Bei der ersten Ausführung des PowerShell-Skripts werden Sie aufgefordert, die I
 
 Diese **PowerShell-Skriptdatei** führt folgende Aufgaben aus:
 
-- **Herunterladen und Installieren von AzCopy**, falls AzCopy noch nicht installiert ist.
+- **Herunterladen und Installieren von AzCopy**, falls AzCopy noch nicht installiert ist
 
 		$AzCopy_path = SearchAzCopy
     	if ($AzCopy_path -eq $null){
@@ -153,7 +153,7 @@ Diese **PowerShell-Skriptdatei** führt folgende Aufgaben aus:
 					$env_path = $env:Path
 				}
 
-- **Kopieren von Daten in Ihr privates Blobspeicherkonto** aus dem öffentlichen Blob mit AzCopy.
+- **Kopieren von Daten in Ihr privates Blobspeicherkonto** aus dem öffentlichen Blob mit AzCopy
 
 		Write-Host "AzCopy is copying data from public blob to yo storage account. It may take a while..." -ForegroundColor "Yellow"
 		$start_time = Get-Date
@@ -165,7 +165,7 @@ Diese **PowerShell-Skriptdatei** führt folgende Aufgaben aus:
     	Write-Host "This step (copying data from public blob to your storage account) takes $total_seconds seconds." -ForegroundColor "Green"
 
 
-- **Laden von Daten mithilfe von Polybase (durch Ausführen von LoadDataToSQLDW.sql) in Ihr Azure SQL Data Warehouse** aus Ihrem privaten Blobspeicherkonto mit den folgenden Befehlen.
+- **Laden von Daten mithilfe von Polybase (durch Ausführen von LoadDataToSQLDW.sql) in Ihr Azure SQL Data Warehouse** aus Ihrem privaten Blob-Speicherkonto mit den folgenden Befehlen.
 
 	- Erstellen eines Schemas
 
@@ -314,13 +314,18 @@ Diese **PowerShell-Skriptdatei** führt folgende Aufgaben aus:
 			)
 			;
 
+Der geografische Standort Ihrer Speicherkonten wirkt sich auf Ladezeiten aus.
+
 >[AZURE.NOTE] Je nach dem geografischen Standort Ihres privaten Blobspeicherkontos dauert der Kopiervorgang der Daten aus einem öffentlichen Blob in Ihr privates Speicherkonto ca. 15 Minuten oder auch länger, und der Vorgang zum Laden von Daten aus Ihrem Speicherkonto in Ihr Azure SQL Data Warehouse kann 20 Minuten oder länger dauern.
+
+Sie müssen entscheiden, was erfolgen soll, wenn Sie über doppelte Quell- und Zieldateien verfügen.
 
 >[AZURE.NOTE] Wenn die CSV-Dateien, die aus dem öffentlichen Blobspeicher in Ihr privates Blobspeicherkonto kopiert werden sollen, bereits in Ihrem privaten Blobspeicherkonto vorhanden sind, werden Sie von AzCopy gefragt, ob Sie sie überschreiben möchten. Wenn Sie sie nicht überschreiben möchten, geben Sie bei Aufforderung **n** ein. Wenn Sie **alle** Dateien überschreiben möchten, geben Sie bei Aufforderung **a** ein. Sie können auch **y** eingeben, um die CSV-Dateien einzeln zu überschreiben.
 
 ![Grafik 21][21]
 
->[AZURE.TIP] **Verwenden eigener Daten:** Wenn Ihre Daten auf Ihrem lokalen Computer in einer realen Anwendung gespeichert sind, können Sie AzCopy dennoch zum Hochladen lokaler Daten in Ihren privaten Azure-Blobspeicher verwenden. Sie müssen im AzCopy-Befehl der PowerShell-Skriptdatei nur den **Quellspeicherort**, `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`, in das lokale Verzeichnis ändern, das Ihre Daten enthält.
+Sie können Ihre eigenen Daten verwenden. Wenn Ihre Daten auf Ihrem lokalen Computer in einer realen Anwendung gespeichert sind, können Sie AzCopy dennoch zum Hochladen lokaler Daten in Ihren privaten Azure-Blobspeicher verwenden. Sie müssen im AzCopy-Befehl der PowerShell-Skriptdatei nur den **Quellspeicherort**, `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`, in das lokale Verzeichnis ändern, das Ihre Daten enthält.
+
 
 >[AZURE.TIP] Wenn Ihre Daten sich bereits in Ihrem privaten Azure-Blobspeicher in einer realen Anwendung befinden, können Sie den AzCopy-Schritt im PowerShell-Skript überspringen und die Daten direkt in Azure SQL Data Warehouse hochladen. Dies erfordert zusätzliche Bearbeitung des Skripts, um es dem Format Ihrer Daten anzupassen.
 
@@ -452,7 +457,7 @@ In diesem Beispiel werden die Werte von "longitude" und "latitude" für Start- u
 	GO
 
 	-- User-defined function to calculate the direct distance  in mile between two geographical coordinates.
-	CREATE FUNCTION [dbo].[fnCalculateDistance] \(@Lat1 float, @Long1 float, @Lat2 float, @Long2 float)
+	CREATE FUNCTION [dbo].[fnCalculateDistance] (@Lat1 float, @Long1 float, @Lat2 float, @Long2 float)
 
 	RETURNS float
 	AS
@@ -499,7 +504,7 @@ Hier sehen Sie das SQL-Skript, in dem die Funktion „distance“ definiert wird
 	GO
 
 	-- User-defined function calculate the direct distance between two geographical coordinates.
-	CREATE FUNCTION [dbo].[fnCalculateDistance] \(@Lat1 float, @Long1 float, @Lat2 float, @Long2 float)
+	CREATE FUNCTION [dbo].[fnCalculateDistance] (@Lat1 float, @Long1 float, @Lat2 float, @Long2 float)
 
 	RETURNS float
 	AS
@@ -626,7 +631,7 @@ Hier ist die Verbindungszeichenfolge aufgeführt, die die Verbindung mit der Dat
     CONNECTION_STRING = 'DRIVER={'+DRIVER+'};SERVER='+SERVER_NAME+';DATABASE='+DATABASE_NAME+';UID='+USERID+';PWD='+PASSWORD
     conn = pyodbc.connect(CONNECTION_STRING)
 
-### Melden der Anzahl von Zeilen und Spalten in der Tabelle <nyctaxi_trip>
+### Melden der Anzahl von Zeilen und Spalten in der Tabelle <nyctaxi\_trip>
 
     nrows = pd.read_sql('''
 		SELECT SUM(rows) FROM sys.partitions
@@ -642,10 +647,10 @@ Hier ist die Verbindungszeichenfolge aufgeführt, die die Verbindung mit der Dat
 
 	print 'Total number of columns = %d' % ncols.iloc[0,0]
 
-- Gesamtanzahl von Zeilen = 173.179.759  
+- Gesamtanzahl von Zeilen = 173.179.759
 - Gesamtanzahl von Spalten = 14
 
-### Melden der Anzahl von Zeilen und Spalten in der Tabelle <nyctaxi_fare>
+### Melden der Anzahl von Zeilen und Spalten in der Tabelle <nyctaxi\_fare>
 
     nrows = pd.read_sql('''
 		SELECT SUM(rows) FROM sys.partitions
@@ -661,7 +666,7 @@ Hier ist die Verbindungszeichenfolge aufgeführt, die die Verbindung mit der Dat
 
 	print 'Total number of columns = %d' % ncols.iloc[0,0]
 
-- Gesamtanzahl von Zeilen = 173.179.759  
+- Gesamtanzahl von Zeilen = 173.179.759
 - Gesamtanzahl von Spalten = 11
 
 ### Einlesen einer kleinen Datenprobe aus der SQL Data Warehouse-Datenbank
@@ -689,7 +694,7 @@ Zeit für das Einlesen der Beispieltabelle = 14,096495 Sekunden Anzahl der abge
 
 ### Deskriptive Statistik
 
-Jetzt können die erfassten Daten durchsucht werden. Wir beginnen mit einem Blick auf einige deskriptive Statistiken für das Feld **trip\_distance** (oder andere Felder, die Sie angeben möchten):
+Jetzt können die erfassten Daten durchsucht werden. Wir beginnen mit einem Blick auf einige deskriptive Statistiken für das Feld **trip\_distance** (oder andere Felder, die Sie angeben möchten).
 
     df1['trip_distance'].describe()
 
@@ -889,7 +894,7 @@ Ein Beispiel für ein binäres Klassifizierungsexperiment zum Lesen von Daten di
 
 ![Azure ML-Schulung][10]
 
-> [AZURE.IMPORTANT] In den Modellierungsbeispielen für Datenextraktion und Stichprobengenerierung in den vorherigen Abschnitten sind **alle Bezeichner für die drei Modellierungsübungen in der Abfrage enthalten**. Ein wichtiger (erforderlicher) Schritt in den einzelnen Modellierungsübungen ist das **Ausschließen** unnötiger Bezeichner für die anderen beiden Probleme und alle anderen **Zielverluste**. Wenn Sie z. B. eine binäre Klassifizierung anwenden, verwenden Sie den Bezeichner **tipped** und schließen die Felder **tip\_class**, **tip\_amount** und **total\_amount** aus. Letztere sind Zielverluste, da sie das bezahlte Trinkgeld beinhalten.
+> [AZURE.IMPORTANT] In den Modellierungsbeispielen für Datenextraktion und Stichprobengenerierung in den vorherigen Abschnitten sind **alle Bezeichner für die drei Modellierungsübungen in der Abfrage enthalten**. Ein wichtiger (erforderlicher) Schritt in den einzelnen Modellierungsübungen ist das **Ausschließen** unnötiger Bezeichner für die anderen beiden Probleme und alle anderen **Zielverluste**. Wenn Sie z.B. eine binäre Klassifizierung anwenden, verwenden Sie den Bezeichner **tipped** und schließen die Felder **tip\_class**, **tip\_amount** und **total\_amount** aus. Letztere sind Zielverluste, da sie das bezahlte Trinkgeld beinhalten.
 >
 > Um nicht benötigte Spalten oder Zielverluste auszuschließen, können Sie das Modul [Select Columns in Dataset][select-columns] oder [Edit Metadata][edit-metadata] verwenden. Weitere Informationen finden Sie auf den Referenzseiten zu [Select Columns in Dataset][select-columns] und [Edit Metadata][edit-metadata].
 
@@ -964,4 +969,4 @@ Diese exemplarische Vorgehensweise und die zugehörigen Skripts und IPython Note
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

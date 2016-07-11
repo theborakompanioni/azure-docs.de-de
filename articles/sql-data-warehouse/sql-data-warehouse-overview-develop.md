@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="06/14/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Entwurfsentscheidungen und Programmiertechniken für SQL Data Warehouse
@@ -42,8 +42,6 @@ In diesen Artikeln werden bestimmte Programmiertechniken, Tipps und Empfehlungen
 - [Temporäre Tabellen][]
 - [Dynamisches SQL][]
 - [Schleifen][]
-- [Umbenennen von Objekten][]
-- [Pivotieren von Daten][]
 - [Gruppierungsoptionen][]
 - [Variablenzuweisung][]
 
@@ -61,7 +59,6 @@ Wenn Sie die Entwicklungsartikel durchgearbeitet haben, finden Sie auf der Seite
 [Hashverteilungsschlüssel]: sql-data-warehouse-develop-hash-distribution-key.md
 [Bezeichnungen]: sql-data-warehouse-develop-label.md
 [Schleifen]: sql-data-warehouse-develop-loops.md
-[Pivotieren von Daten]: sql-data-warehouse-develop-pivot-unpivot.md
 [Statistiken]: sql-data-warehouse-develop-statistics.md
 [Gespeicherte Prozeduren]: sql-data-warehouse-develop-stored-procedures.md
 [Tabellenentwurf]: sql-data-warehouse-develop-table-design.md
@@ -75,8 +72,8 @@ Wenn Sie die Entwicklungsartikel durchgearbeitet haben, finden Sie auf der Seite
 [Transact-SQL-Referenz]: sql-data-warehouse-overview-reference.md
 
 <!--MSDN references-->
-[Umbenennen von Objekten]: https://msdn.microsoft.com/library/mt631611.aspx
+[renaming objects]: https://msdn.microsoft.com/library/mt631611.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

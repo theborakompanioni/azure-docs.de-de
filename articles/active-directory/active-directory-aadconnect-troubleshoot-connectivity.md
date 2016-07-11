@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/19/2016"
+	ms.date="06/27/2016"
 	ms.author="andkjell"/>
 
 # Problembehebung bei Konnektivitätsproblemen mit Azure AD Connect
@@ -39,7 +39,7 @@ mscrl.microsoft.com | HTTP/80 | Wird verwendet um CRL-Listen (Zertifikatsperrlis
 *.verisign.com | HTTP/80 | Wird verwendet um CRL-Listen (Zertifikatsperrlisten) herunterzuladen.
 *.entrust.com | HTTP/80 | Wird verwendet um CRL-Listen (Zertifikatsperrlisten) für MFA herunterzuladen.
 *.windows.net | HTTPS/443 | Wird für die Anmeldung bei Azure AD verwendet.
-*.secure.aadcdn.microsoftonline-p.com | HTTPS/443 | Wird für MFA verwendet.
+secure.aadcdn.microsoftonline-p.com | HTTPS/443 | Wird für MFA verwendet.
 *.microsoftonline.com | HTTPS/443 | Wird zum Konfigurieren Ihres Azure AD-Verzeichnisses und zum Importieren/Exportieren von Daten verwendet.
 
 ## Fehler im Assistenten
@@ -175,4 +175,4 @@ Dieser Fehler tritt auf, wenn der Anmelde-Assistent den Proxy nicht erreichen ka
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

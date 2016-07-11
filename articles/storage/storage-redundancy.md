@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/08/2016"
+	ms.date="06/23/2016"
 	ms.author="tamram"/>
 
 # Azure Storage-Replikation
@@ -31,7 +31,7 @@ Die folgende Tabelle bietet eine schnelle Übersicht über die Unterschiede zwis
 
 
 | Replikationsstrategie | LRS | ZRS | GRS | RA-GRS |
-|:-----------------------------------------------------------------------------------|:----|:----|:----|:-------|
+|:----------------------------------------------------------------------------------|:---|:---|:---|:------|
 | Daten werden in mehreren Datencentern repliziert. | Nein | Ja | Ja | Ja |
 | Daten können vom sekundären Standort sowie vom primären Standort aus gelesen werden. | Nein | Nein | Nein | Ja |
 | Anzahl von Datenkopien, die auf separaten Knoten aufbewahrt werden. | 3 | 3 | 6 | 6 |
@@ -65,23 +65,55 @@ Georedundanter Speicher (GRS) repliziert Ihre Daten in eine sekundäre Region, d
 
 Bei ein Speicherkonto mit aktiviertem GRS wird für ein Update zuerst ein Commit in der primären Region ausgeführt, in der es drei Mal repliziert wird. Danach wird das Update in die sekundäre Region repliziert, in der es auch dreimal in getrennten Fehler- und Upgradedomänen repliziert wird.
 
-
 > [AZURE.NOTE] Bei GRS werden Anforderungen zum Schreiben von Daten asynchron in die sekundäre Region repliziert. Wichtig ist der Hinweis, dass die Entscheidung für GRS die Latenz von Anforderungen an die primäre Region nicht beeinflusst. Da eine asynchrone Replikation eine Verzögerung einschließt, ist es bei einem regionalen Notfall möglich, dass Änderungen, die noch nicht in die sekundäre Region repliziert wurden, möglicherweise verloren gehen, wenn die Daten nicht aus der primären Region wiederhergestellt werden können.
  
-Wenn Sie ein Speicherkonto erstellen, wählen Sie die primäre Region für das Konto aus. Die sekundäre Region wird basierend auf der primären Region bestimmt und kann nicht geändert werden. Aktuelle Informationen zu den Paaren aus primären und sekundären Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).
+Wenn Sie ein Speicherkonto erstellen, wählen Sie die primäre Region für das Konto aus. Die sekundäre Region wird basierend auf der primären Region bestimmt und kann nicht geändert werden. In der folgenden Tabelle werden die Paare primärer und sekundärer Regionen gezeigt:
+
+| Primär | Sekundär |
+|---------------------|---------------------|
+| USA (Mitte/Norden) | USA (Mitte/Süden) |
+| USA (Mitte/Süden) | USA (Mitte/Norden) |
+| USA (Ost) | USA (West) |
+| USA (West) | USA (Ost) |
+| USA (Ost 2) | USA (Mitte) |
+| USA (Mitte) | USA (Ost 2) |
+| Nordeuropa | Westeuropa |
+| Westeuropa | Nordeuropa |
+| Südostasien | Ostasien |
+| Ostasien | Südostasien |
+| Ostchina | Nordchina |
+| Nordchina | Ostchina |
+| Japan Ost | Japan (Westen) |
+| Japan (Westen) | Japan Ost |
+| Brasilien Süd | USA (Mitte/Süden) |
+| Australien (Ost) | Australien (Südost) |
+| Australien (Südost) | Australien (Ost) |
+| Indien, Süden | Indien, Mitte |
+| Indien, Mitte | Indien, Süden |
+| US Government, Iowa | US Government, Virginia |
+| US Government, Virginia | US Government, Iowa |
+| Kanada, Mitte | Kanada, Osten |
+| Kanada, Osten | Kanada, Mitte |
+| Großbritannien, Norden | Großbritannien, Süden 2 |
+| Großbritannien, Süden 2 | Großbritannien, Norden |
+| Deutschland, Mitte | Deutschland, Nordosten |
+| Deutschland, Nordosten | Deutschland, Mitte |
+
+
+Aktuelle Informationen zu von Azure unterstützten Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).
  
 ## Georedundanter Speicher mit Lesezugriff
 
 Georedundanter Speicher mit Lesezugriff (RA-GRS) maximiert die Verfügbarkeit für das Speicherkonto, indem ein schreibgeschützter Zugriff auf Daten am sekundären Standort zusätzlich zur von GRS gebotenen Replikation in zwei Regionen bereitgestellt wird. Falls Daten in der primären Region nicht verfügbar sind, kann Ihre Anwendung Daten aus der sekundären Region lesen.
 
-Wenn Sie den schreibgeschützten Zugriff auf Ihre Daten in der sekundären Region aktivieren, sind Ihre Daten zusätzlich zum primären Endpunkt für Ihr Speicherkonto auf einem sekundären Endpunkt verfügbar. Der sekundäre Endpunkt ähnelt dem primären Endpunkt, wobei das Suffix `–secondary` an den Kontonamen angefügt wird. Wenn Ihr primärer Endpunkt für den Blob-Dienst z.B. `myaccount.blob.core.windows.net` ist, dann ist Ihr sekundärer Endpunkt `myaccount-secondary.blob.core.windows.net`. Die Zugriffsschlüssel für das Speicherkonto sind für die primären und sekundären Endpunkte identisch.
+Wenn Sie den schreibgeschützten Zugriff auf Ihre Daten in der sekundären Region aktivieren, sind Ihre Daten zusätzlich zum primären Endpunkt für Ihr Speicherkonto auf einem sekundären Endpunkt verfügbar. Der sekundäre Endpunkt ähnelt dem primären Endpunkt, wobei das Suffix `–secondary` an den Kontonamen angefügt wird. Wenn Ihr primärer Endpunkt für den Blob-Dienst z. B. `myaccount.blob.core.windows.net` ist, dann ist Ihr sekundärer Endpunkt `myaccount-secondary.blob.core.windows.net`. Die Zugriffsschlüssel für das Speicherkonto sind für die primären und sekundären Endpunkte identisch.
 
 ## Nächste Schritte
 
 - [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/)
 - [Informationen zu Azure-Speicherkonten](storage-create-storage-account.md)
 - [Skalierbarkeits- und Leistungsziele für Azure-Speicher](storage-scalability-targets.md)
-- [Microsoft Azure Storage Redundancy Options and Read Access Geo Redundant Storage (in englischer Sprache)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)  
-- [SOSP Paper - Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency (SOSP-Dokument – Azure Storage: ein hochverfügbarer Cloudspeicherdienst mit starker Konsistenz)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)  
+- [Microsoft Azure Storage Redundancy Options and Read Access Geo Redundant Storage (in englischer Sprache)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
+- [SOSP Paper - Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency (SOSP-Dokument – Azure Storage: ein hochverfügbarer Cloudspeicherdienst mit starker Konsistenz)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -18,8 +18,7 @@
 
 # SQL Server-Business Intelligence in Azure Virtual Machines
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
-
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 Der Microsoft Azure Virtual Machine-Katalog verfügt über Images, die SQL Server-Installationen enthalten. Die in den Katalogimages unterstützten SQL Server-Editionen sind die gleichen Installationsdateien, die Sie auf lokalen Computern und virtuellen Computern installieren können. In diesem Thema sind die SQL Server Business Intelligence (BI)-Features zusammengefasst, die in den Images installiert sind, und es enthält die Konfigurationsschritte, die nach dem Bereitstellen eines virtuellen Computers erforderlich sind. Außerdem werden in diesem Thema die unterstützten Bereitstellungstopologien für BI-Funktionen und bewährte Methoden beschrieben.
 
@@ -316,7 +315,7 @@ Führen Sie den SQL Server-Setup-Assistenten aus, um zusätzliche SQL Server-Die
 
 1. Klicken Sie auf **SQL Server-Installationscenter**.
 
-Sie können auch „C:\\SQLServer\_13.0\_full\\setup.exe“, „C:\\SQLServer\_12.0\_full\\setup.exe“ oder „C:\\SQLServer\_11.0\_full\\setup.exe“ ausführen.
+Sie können auch „C:\\SQLServer\_13.0_full\\setup.exe“, „C:\\SQLServer_12.0_full\\setup.exe“ oder „C:\\SQLServer\_11.0_full\\setup.exe“ ausführen.
 
 >[AZURE.NOTE] Beim ersten Ausführen des SQL Server-Setups können mehr Setupdateien heruntergeladen werden und erfordern einen Neustart des virtuellen Computers und einen Neustart des SQL Server-Setups.
 >
@@ -334,7 +333,7 @@ Die Schritte in diesem Abschnitt sind eine **Zusammenfassung** der Installation 
 
 1. Klicken Sie im SQL Server-Installations-Assistenten im linken Bereich auf **Installation**, und klicken Sie dann auf **Neue eigenständige SQL Server-Installation oder Hinzufügen von Features zu einer vorhandenen Installation**.
 
-	- Wenn **Ordner suchen** angezeigt wird, navigieren Sie zu „c:\\SQLServer\_13.0\_full“, „c:\\SQLServer\_12.0\_full“ oder „c:\\SQLServer\_11.0\_full“, und klicken Sie dann auf **OK**.
+	- Wenn **Ordner suchen** angezeigt wird, navigieren Sie zu „c:\\SQLServer\_13.0_full“, „c:\\SQLServer_12.0_full“ oder „c:\\SQLServer_11.0\_full“, und klicken Sie dann auf **OK**.
 
 1. Klicken Sie auf der Seite mit den Produktupdates auf **Weiter**.
 
@@ -392,8 +391,8 @@ In diesem Abschnitt werden die zu erstellenden Microsoft Azure Virtual Machine-E
 
 	|Port|Typ|Beschreibung|
 |---|---|---|
-|**80**|TCP|Remotezugriff auf den Berichtsserver (*).| 
-|**1433**|TCP|SQL Server Management Studio (*).| 
+|**80**|TCP|Remotezugriff auf den Berichtsserver (*).|
+|**1433**|TCP|SQL Server Management Studio (*).|
 |**1434**|UDP|SQL Server-Browser. Ist erforderlich, wenn der virtuelle Computer einer Domäne beigetreten ist.|
 |**2382**|TCP|SQL Server-Browser.|
 |**2383**|TCP|SQL Server Analysis Services-Standardinstanz und gruppierte benannte Instanzen.|
@@ -437,4 +436,4 @@ Im folgenden Diagramm sind die Ports dargestellt, die in der Firewall des virtue
 
 - [Verwalten von Azure SQL-Datenbank mit PowerShell](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

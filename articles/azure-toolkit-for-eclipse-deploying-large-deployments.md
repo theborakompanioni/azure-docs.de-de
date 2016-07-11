@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="05/04/2016" 
+    ms.date="06/24/2016" 
     ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/dn268601.aspx -->
@@ -31,7 +31,7 @@ Falls die Bereitstellung zu groß für den Standardordner „approot“ ist, kan
 
 Wenn Sie **DEPLOYROOT** für das Feld *Name* Ihrer lokalen Ressource verwenden und den Namen der automatisch generierten Umgebungsvariablen nicht ändern (die in diesem Fall auf **DEPLOYROOT\_PATH** festgelegt wird), funktioniert Ihre Anwendung auch.
 
-Weitere Informationen zum Erstellen einer lokalen Speicherressource finden Sie unter [Local Storage Properties][] \(in englischer Sprache).
+Weitere Informationen zum Erstellen einer lokalen Speicherressource finden Sie unter [Local Storage Properties][] (in englischer Sprache).
 
 ## Weitere Informationen ##
 
@@ -55,4 +55,4 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 
 [ic667943]: ./media/azure-toolkit-for-eclipse-deploying-large-deployments/ic667943.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

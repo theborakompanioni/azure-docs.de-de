@@ -13,13 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="06/23/2016"
 	ms.author="priyamo"/>
 
 
 # Autorisieren des Zugriffs auf Webanwendungen mit OAuth 2.0 und Azure Active Directory
-
-[AZURE.INCLUDE [active-directory-protocols](../../includes/active-directory-protocols.md)]
 
 Azure Active Directory (Azure AD) verwendet OAuth 2.0, um den Zugriff auf Webanwendungen und Web-APIs in Ihrem Azure AD-Mandanten zu autorisieren. Diese sprachunabhängige Anleitung beschreibt das Senden und Empfangen von HTTP-Nachrichten ohne Verwendung unserer Open Source-Bibliotheken.
 
@@ -47,22 +45,22 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=code
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &response_mode=query
-&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
+&resource=https%3A%2F%2Fservice.contoso.com%2F
 &state=12345
 ```
 
 | Parameter | | Beschreibung |
 | ----------------------- | ------------------------------- | --------------- |
-| tenant | erforderlich | Mit dem `{tenant}`-Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Die zulässigen Werte sind Mandantenbezeichner, z.B. `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`, `contoso.onmicrosoft.com` oder `common` für mandantenunabhängigen Token. |
-| client\_id | erforderlich | Die Anwendungs-Id, die Ihrer App zugewiesen wird, wenn Sie sie mit Azure AD registrieren. Diese finden Sie im Azure-Verwaltungsportal. Klicken Sie auf **Active Directory**. Klicken Sie anschließend auf das Verzeichnis, danach auf die Anwendung und anschließend auf **Konfigurieren**. |
+| tenant | erforderlich | Mit dem `{tenant}`-Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Die zulässigen Werte sind Mandantenbezeichner, z.B. `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`, `contoso.onmicrosoft.com` oder `common` für mandantenunabhängige Token. |
+| client\_id | erforderlich | Die Anwendungs-Id, die Ihrer App zugewiesen wird, wenn Sie sie mit Azure AD registrieren. Diese finden Sie im Azure-Verwaltungsportal. Klicken Sie auf **Active Directory**. Klicken Sie anschließend auf das Verzeichnis, auf die Anwendung und dann auf **Konfigurieren**. |
 | response\_type | erforderlich | Muss `code` für den Autorisierungscodefluss enthalten. |
 | redirect\_uri | empfohlen | Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können. Er muss genau mit einer der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. Für native und mobile Apps sollten Sie den Standardwert `urn:ietf:wg:oauth:2.0:oob` verwenden. |
-| Bereich | erforderlich | Eine durch Leerzeichen getrennte Liste mit [Bereichen](active-directory-v2-scopes.md), denen der Benutzer zustimmen soll. |
 | response\_mode | empfohlen | Gibt die Methode an, die zum Senden des resultierenden Tokens zurück an Ihre App verwendet werden soll. Kann `query` oder `form_post` sein. |
-| state | empfohlen | Ein in der Anforderung enthaltener Wert, der auch in der Antwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Ein zufällig generierter eindeutiger Wert wird normalerweise verwendet, [um websiteübergreifende Anforderungsfälschungsangriffe zu verhindern](http://tools.ietf.org/html/rfc6749#section-10.12). Der Status wird auch verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z. B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
-| Eingabeaufforderung | optional | Gibt den Typ der erforderlichen Benutzerinteraktion an. Zu diesem Zeitpunkt sind die einzigen gültigen Werte „login“, „none“ und „consent“. `prompt=login` zwingt den Benutzer, die Anmeldeinformationen in dieser Anforderung einzugeben. Einmaliges Anmelden ist dadurch nicht möglich. `prompt=none` ist genau das Gegenteil: Dieser Wert stellt sicher, dass dem Benutzer keine interaktive Eingabeaufforderung angezeigt wird. Wenn die Anforderung nicht über einmaliges Anmelden im Hintergrund abgeschlossen werden kann, gibt der v2.0-Endpunkt einen Fehler zurück. `prompt=consent` löst nach der Anmeldung des Benutzers das OAuth-Zustimmungsdialogfeld aus, in dem der Benutzer aufgefordert wird, der App Berechtigungen zu gewähren. |
+| state | empfohlen | Ein in der Anforderung enthaltener Wert, der auch in der Antwort zurückgegeben wird. Ein zufällig generierter eindeutiger Wert wird normalerweise verwendet, um [websiteübergreifende Anforderungsfälschungsangriffe zu verhindern](http://tools.ietf.org/html/rfc6749#section-10.12). Der Status wird auch verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z. B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
+| Ressource | optional | Der App-ID-URI der Web-API (geschützte Ressource). Klicken Sie zum Ermitteln des App-ID-URI der Web-API im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis, die Anwendung und dann auf **Konfigurieren**. |
+| Eingabeaufforderung | optional | Geben Sie den Typ der erforderlichen Benutzerinteraktion an.<p> Gültige Werte sind: <p> *login*: Der Benutzer sollte zum erneuten Authentifizieren aufgefordert werden. <p> *consent*: Die Benutzerzustimmung wurde erteilt, muss aber aktualisiert werden. Der Benutzer sollte zur Erteilung der Zustimmung aufgefordert werden. <p> *admin\_consent*: Ein Administrator sollte aufgefordert werden, die Zustimmung im Namen aller Benutzer der Organisation zu erteilen. |
 | login\_hint | optional | Dieser Wert kann verwendet werden, um das Feld für den Benutzernamen oder die E-Mail-Adresse auf der Anmeldeseite vorab für den Benutzer auszufüllen, wenn dessen Benutzername im Vorfeld bekannt ist. Apps verwenden diesen Parameter häufig für die wiederholte Authentifizierung, nachdem sie den Benutzernamen aus einer vorherigen Anmeldung mithilfe des Anspruchs `preferred_username` extrahiert haben. |
-| domain\_hint | optional | Kann entweder `consumers` oder `organizations` sein. Wenn dieser Parameter vorhanden ist, wird der E-Mail-basierte Ermittlungsvorgang übersprungen, den der Benutzer auf der v2.0-Anmeldeseite durchläuft, was die Benutzerfreundlichkeit verbessert. Apps verwenden diesen Parameter häufig für die wiederholte Authentifizierung, indem sie `tid` aus einer vorherigen Anmeldung extrahieren. Verwenden Sie `domain_hint=consumers`, wenn der Anspruch `tid` den Wert `9188040d-6c67-4c5b-b112-36a304b66dad` hat. Verwenden Sie andernfalls `domain_hint=organizations`. |
+| domain\_hint | optional | Stellt einen Hinweis zum Mandanten oder zur Domäne bereit, die der Benutzer zum Anmelden verwenden sollte. Der Wert von „domain\_hint“ ist eine registrierte Domäne für den Mandanten. Wenn der Mandant mit einem lokalen Verzeichnis verbunden ist, führt AAD eine Umleitung an den angegebenen Mandantenverbundserver durch. |
 
 > [AZURE.NOTE] Wenn der Benutzer Teil einer Organisation ist, kann ein Administrator der Organisation im Auftrag des Benutzers zustimmen oder ablehnen oder dem Benutzer die Zustimmung erlauben. Der Benutzer erhält die Option zur Zustimmung nur dann, wenn der Administrator dies zulässt.
 
@@ -73,10 +71,8 @@ Nun wird der Benutzer zur Eingabe der Anmeldeinformationen und zur Zustimmung zu
 Eine erfolgreiche Antwort sieht wie folgt aus:
 
 ```
-http://localhost:12345/?
-code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrqqf_ZT_p5uEAEJJ_nZ3UmphWygRNy2C3jJ239gV_DBnZ2syeg95Ki-374WHUP-i3yIhv5i-7KU2CEoPXwURQp6IVYMw-DjAOzn7C3JCu5wpngXmbZKtJdWmiBzHpcO2aICJPu1KvJrDLDP20chJBXzVYJtkfjviLNNW7l7Y3ydcHDsBRKZc3GuMQanmcghXPyoDg41g8XbwPudVh7uCmUponBQpIhbuffFP_tbV8SNzsPoFz9CLpBCZagJVXeqWoYMPe2dSsPiLO9Alf_YIe5zpi-zY4C3aLw5g9at35eZTfNd0gBRpR5ojkMIcZZ6IgAA
-&state=12345
-&session_state=733ad279-b681-49c3-9215-951abf94d2c5
+GET  HTTP/1.1 302 Found
+Location: http://localhost/myapp/?code= AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrqqf_ZT_p5uEAEJJ_nZ3UmphWygRNy2C3jJ239gV_DBnZ2syeg95Ki-374WHUP-i3yIhv5i-7KU2CEoPXwURQp6IVYMw-DjAOzn7C3JCu5wpngXmbZKtJdWmiBzHpcO2aICJPu1KvJrDLDP20chJBXzVYJtkfjviLNNW7l7Y3ydcHDsBRKZc3GuMQanmcghXPyoDg41g8XbwPudVh7uCmUponBQpIhbuffFP_tbV8SNzsPoFz9CLpBCZagJVXeqWoYMPe2dSsPiLO9Alf_YIe5zpi-zY4C3aLw5g9at35eZTfNd0gBRpR5ojkMIcZZ6IgAA&session_state=7B29111D-C220-4263-99AB-6F6E135D75EF&state=D79E5777-702E-4260-9A62-37F75FF22CCE
 ```
 
 | Parameter | Beschreibung |
@@ -84,8 +80,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrqqf_ZT_p5uEAEJJ_nZ3Umph
 | admin\_consent | Der Wert ist „true“, wenn ein Administrator einer Aufforderung zu einer Zustimmungsanforderung zugestimmt hat.|
 | Code | Der Autorisierungscode, den die App angefordert hat. Die Anwendung kann den Autorisierungscode zum Anfordern eines Zugriffstokens für die Zielressource verwenden. |
 | session\_state | Ein eindeutiger Wert, der die aktuelle Benutzersitzung identifiziert. Dieser Wert ist eine GUID, sollte jedoch als opaker Wert behandelt werden, der ohne Prüfung übergeben wird. |
-| state | Wenn ein Statusparameter in der Anforderung enthalten ist, sollte der gleiche Wert in der Antwort angezeigt werden. Die Anwendung sollte die Statuswerte in der Anforderung überprüfen.
-Wenn ein Statusparameter in der Anforderung enthalten ist, wird der gleiche Wert in der Antwort angezeigt. Es hat sich bewährt, wenn die Anwendung überprüft, ob die Statuswerte in der Anforderung und in der Antwort identisch sind.
+| state | Wenn ein Statusparameter in der Anforderung enthalten ist, sollte der gleiche Wert in der Antwort angezeigt werden. Es hat sich bewährt, wenn die Anwendung überprüft, ob die Statuswerte in der Anforderung und in der Antwort identisch sind, bevor die Antwort verwendet wird. Dies trägt zur Erkennung von [Angriffen vom Typ „websiteübergreifende Anforderungsfälschung“](https://tools.ietf.org/html/rfc6749#section-10.12) auf den Client bei.  
 
 ### Fehlerantwort
 
@@ -97,6 +92,26 @@ error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
 
+| Parameter | Beschreibung |
+|-----------|-------------|
+| Fehler | Ein in Abschnitt 5.2 definierter Fehlercodewert des [OAuth 2.0-Autorisierungsframeworks](http://tools.ietf.org/html/rfc6749). In der folgenden Tabelle finden Sie die Fehlercodes, die von Azure AD ausgegeben werden. |
+| error\_description | Detailliertere Beschreibung des Fehlers. Diese Meldung ist nicht für den Endbenutzer ausgelegt. |
+| state | Der Statuswert ist ein zufällig generierter, nicht wiederverwendeter Wert, der in der Anforderung versendet und in der Antwort zurückgegeben wird, um webseitenübergreifende Anforderungsfälschungen (CSFR) zu vermeiden. |
+
+#### Fehlercodes beim Autorisierungsendpunktfehler
+
+In der folgenden Tabelle sind die verschiedenen Fehlercodes beschrieben, die im `error`-Parameter der Fehlerantwort zurückgegeben werden können.
+
+| Fehlercode | Beschreibung | Clientaktion |
+|------------|-------------|---------------|
+| invalid\_request | Protokollfehler, z.B. ein fehlender erforderlicher Parameter. | Korrigieren Sie die Anforderung, und senden Sie sie erneut. Dies ist ein Entwicklungsfehler, der in der Regel bei den Eingangstest entdeckt wird.|
+| unauthorized\_client | Die Clientanwendung darf keinen Autorisierungscode anfordern. | Dies tritt in der Regel auf, wenn die Clientanwendung nicht in Azure AD registriert ist oder dem Azure AD-Mandanten des Benutzers nicht hinzugefügt wird. Die Anwendung kann den Benutzer zum Installieren der Anwendung und zum Hinzufügen zu Azure AD auffordern. |
+| access\_denied | Der Ressourcenbesitzer hat die Zustimmung verweigert. | Die Clientanwendung kann den Benutzer benachrichtigen, dass sie ohne Zustimmung des Benutzers nicht fortfahren kann. |
+| unsupported\_response\_type | Der Autorisierungsserver unterstützt den Antworttyp in der Anforderung nicht. | Korrigieren Sie die Anforderung, und senden Sie sie erneut. Dies ist ein Entwicklungsfehler, der in der Regel bei den Eingangstest entdeckt wird.|
+|server\_error | Der Server hat einen unerwarteten Fehler erkannt. | Wiederholen Sie die Anforderung. Diese Fehler werden durch temporäre Bedingungen verursacht. Die Clientanwendung kann dem Benutzer erklären, dass ihre Antwort aufgrund eines temporären Fehlers verzögert ist. |
+| temporarily\_unavailable | Der Server ist vorübergehend überlastet und kann die Anforderung nicht verarbeiten. | Wiederholen Sie die Anforderung. Die Clientanwendung kann dem Benutzer erklären, dass ihre Antwort aufgrund einer temporären Bedingung verzögert ist. |
+| invalid\_resource |Die Zielressource ist ungültig, da sie nicht vorhanden ist, Azure AD sie nicht findet oder sie nicht ordnungsgemäß konfiguriert ist.| Dies gibt an, dass die Ressource, falls vorhanden, im Mandanten nicht konfiguriert wurde. Die Anwendung kann den Benutzer zum Installieren der Anwendung und zum Hinzufügen zu Azure AD auffordern. |
+
 ## Fordern Sie ein Zugriffstoken mithilfe des Autorisierungscodes an.
 
 Wenn Sie einen Autorisierungscode erworben und die Berechtigung vom Benutzer erhalten haben, können Sie den Code für ein Zugriffstoken auf die gewünschte Ressource einlösen, indem Sie eine POST-Anforderung an den `/token`-Endpunkt senden:
@@ -107,26 +122,32 @@ Wenn Sie einen Autorisierungscode erworben und die Berechtigung vom Benutzer erh
 POST /{tenant}/oauth2/token HTTP/1.1
 Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
+grant_type=authorization_code
+&client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
+&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrqqf_ZT_p5uEAEJJ_nZ3UmphWygRNy2C3jJ239gV_DBnZ2syeg95Ki-374WHUP-i3yIhv5i-7KU2CEoPXwURQp6IVYMw-DjAOzn7C3JCu5wpngXmbZKtJdWmiBzHpcO2aICJPu1KvJrDLDP20chJBXzVYJtkfjviLNNW7l7Y3ydcHDsBRKZc3GuMQanmcghXPyoDg41g8XbwPudVh7uCmUponBQpIhbuffFP_tbV8SNzsPoFz9CLpBCZagJVXeqWoYMPe2dSsPiLO9Alf_YIe5zpi-zY4C3aLw5g9at35eZTfNd0gBRpR5ojkMIcZZ6IgAA
+&redirect_uri=https%3A%2F%2Flocalhost%2Fmyapp%2F
+&resource=https%3A%2F%2Fservice.contoso.com%2F
+&client_secret=p@ssw0rd
 
-client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
-&code=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq3n8b2JRLk4OxVXr...
-&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
-&grant_type=authorization_code
-&client_secret=JqQX2PNo9bpM0uEihUPzyrh    // NOTE: client_secret only required for web apps
+//NOTE: client_secret only required for web apps
 ```
 
 | Parameter | | Beschreibung |
 | ----------------------- | ------------------------------- | --------------------- |
-| tenant | erforderlich | Mit dem `{tenant}`-Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Die zulässigen Werte sind Mandantenbezeichner, z.B. `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`, `contoso.onmicrosoft.com` oder `common` für mandantenunabhängigen Token. |
-| client\_id | erforderlich | Die Anwendungs-Id, die Ihrer App zugewiesen wird, wenn Sie sie mit Azure AD registrieren. Diese finden Sie im klassischen Azure-Portal. Klicken Sie auf **Active Directory**. Klicken Sie anschließend auf das Verzeichnis, danach auf die Anwendung und anschließend auf **Konfigurieren**. |
+| tenant | erforderlich | Mit dem `{tenant}`-Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Die zulässigen Werte sind Mandantenbezeichner, z.B. `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`, `contoso.onmicrosoft.com` oder `common` für mandantenunabhängige Token. |
+| client\_id | erforderlich | Die Anwendungs-Id, die Ihrer App zugewiesen wird, wenn Sie sie mit Azure AD registrieren. Diese finden Sie im klassischen Azure-Portal. Klicken Sie auf **Active Directory**. Klicken Sie anschließend auf das Verzeichnis, auf die Anwendung und dann auf **Konfigurieren**. |
 | grant\_type | erforderlich | Muss der `authorization_code` für den Autorisierungscodefluss sein. |
-| Code | erforderlich | Der `authorization_code`, den die Sie im vorherigen Abschnitt abgerufen haben |
-| redirect\_uri | erforderlich | Der `redirect_uri`-Wert, den Sie zum Abrufen von `authorization_code` verwendet haben |
+| Code | erforderlich | Der `authorization_code`, den Sie im vorherigen Abschnitt abgerufen haben. |
+| redirect\_uri | erforderlich | Der `redirect_uri`-Wert, den Sie zum Abrufen von `authorization_code` verwendet haben. |
 | client\_secret | erforderlich für Web-Apps | Der geheime App-Schlüssel, den Sie im App-Registrierungsportal für Ihre App erstellt haben. Er sollte nicht in einer systemeigenen App verwendet werden, da geheime Client-Schlüssel nicht zuverlässig auf Geräten gespeichert werden können. Er ist für Web-Apps und Web-APIs erforderlich, die die Möglichkeit haben, `client_secret` sicher auf dem Server zu speichern. |
-
+| Ressource | Erforderlich bei Angabe in der Autorisierungscodeanforderung, ansonsten optional | Der App-ID-URI der Web-API (geschützte Ressource).
+Klicken Sie zum Ermitteln des App-ID-URI im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis, die Anwendung und dann auf **Konfigurieren**.
 
 ### Erfolgreiche Antwort
+
+Azure AD gibt bei einer erfolgreichen Antwort ein Zugriffstoken zurück. Um die Anzahl von Netzwerkaufrufen der Clientanwendung und die damit verbundene Latenz zu verringern, sollte die Clientanwendung Zugriffstoken für die Tokenlebensdauer zwischenspeichern, die in der OAuth 2.0-Antwort angegeben ist. Verwenden Sie zum Bestimmen der Tokenlebensdauer entweder den Parameterwert `expires_in` oder `expires_on`.
+
+Wenn eine Web-API-Ressource den Fehlercode `invalid_token` zurückgibt, kann dies darauf hinweisen, dass von der Ressource ein abgelaufenes Token ermittelt wurde. Falls sich die Zeiten der Client- und Ressourcenuhr unterscheiden (als „zeitlicher Versatz“ bezeichnet), wird das Token von der Ressource ggf. als abgelaufen angesehen, bevor das Token aus dem Clientcache entfernt wird. Löschen Sie das Token in diesem Fall auch dann aus dem Cache, wenn der berechnete Lebensdauerzeitraum noch nicht abgelaufen ist.
 
 Eine erfolgreiche Antwort sieht wie folgt aus:
 
@@ -149,6 +170,8 @@ Eine erfolgreiche Antwort sieht wie folgt aus:
 | access\_token | Das angeforderte Zugriffstoken. Die App kann dieses Token zur Authentifizierung auf geschützten Ressourcen verwenden, wie z. B. eine Web-API. |
 | token\_type | Gibt den Wert des Tokentyps an. Bearertoken ist der einzige Typ, den Azure AD unterstützt. Weitere Informationen zu Bearertoken finden Sie unter [OAuth2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt) (OAuth2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)). |
 | expires\_in | Gibt an, wie lange das Zugriffstoken (in Sekunden) gültig ist. |
+| expires\_on | Die Uhrzeit, zu der das Zugriffstoken abläuft. Das Datum wird als Anzahl der Sekunden ab 1970-01-01T0:0:0Z UTC bis zur Ablaufzeit dargestellt. Dieser Wert wird verwendet, um die Lebensdauer von zwischengespeicherten Token zu bestimmen. |
+| Ressource | Der App-ID-URI der Web-API (geschützte Ressource).|
 | Bereich | Die Identitätswechselberechtigungen, die der Clientanwendung gewährt wurden. Die Standardberechtigung ist `user_impersonation`. Der Besitzer der gesicherten Ressource kann zusätzliche Werte in Azure AD registrieren.|
 | refresh\_token | Ein Aktualisierungstoken von OAuth 2.0. Die App kann dieses Token verwenden, um nach Ablauf der aktuellen Zugriffstoken zusätzliche Zugriffstoken zu erhalten. Aktualisierungstoken sind langlebig und können verwendet werden, um den Zugriff auf Ressourcen für längere Zeit beizubehalten. |
 | id\_token | Ein unsigniertes JSON-Webtoken (JWT). Die App kann die Segmente dieses Tokens mit einer base64-URL decodieren, um Informationen über den angemeldeten Benutzer abzurufen. Die App kann die Werte zwischenspeichern und sie anzeigen, sollte sich jedoch nicht für Autorisierungs- und Sicherheitsgrenzen auf sie verlassen. |
@@ -178,7 +201,7 @@ Das JWT-Token im Wert des Parameters `id_token` kann in die folgenden Ansprüche
 }.
 ```
 
-Der Parameter `id_token` beinhaltet die folgenden Anspruchstypen. Weitere Informationen zu JSON-Webtoken finden Sie im [JWT IETF-Spezifikationsentwurf](http://go.microsoft.com/fwlink/?LinkId=392344). Weitere Informationen zu den Tokentypen und Ansprüchen finden Sie unter [Unterstützte Token- und Anspruchstypen](active-directory-token-and-claims.md).
+Der Parameter `id_token` umfasst die folgenden Anspruchstypen. Weitere Informationen zu JSON-Webtoken finden Sie im [JWT IETF-Spezifikationsentwurf](http://go.microsoft.com/fwlink/?LinkId=392344). Weitere Informationen zu den Tokentypen und Ansprüchen finden Sie unter [Unterstützte Token- und Anspruchstypen](active-directory-token-and-claims.md).
 
 | Anspruchstyp | Beschreibung |
 |------------|-------------|
@@ -197,6 +220,8 @@ Der Parameter `id_token` beinhaltet die folgenden Anspruchstypen. Weitere Inform
 | ver | Version. Die Version des JWT-Tokens, in der Regel 1.0. |
 
 ### Fehlerantwort
+
+Die Fehler am Tokenausstellungs-Endpunkt sind HTTP-Fehlercodes, da der Client den Tokenausstellungs-Endpunkt direkt aufruft. Zusätzlich zum HTTP-Statuscode gibt der Azure AD-Tokenausstellungs-Endpunkt auch ein JSON-Dokument mit Objekten zurück, die den Fehler beschreiben.
 
 Eine Beispiel für eine Fehlerantwort sieht wie folgt aus:
 
@@ -222,9 +247,33 @@ Eine Beispiel für eine Fehlerantwort sieht wie folgt aus:
 | trace\_id | Ein eindeutiger Bezeichner für die Anforderung, die bei der Diagnose helfen kann |
 | correlation\_id | Ein eindeutiger Bezeichner für die Anforderung, die bei der komponentenübergreifenden Diagnose helfen kann|
 
+#### HTTP-Statuscodes
+
+Die folgende Tabelle enthält die HTTP-Statuscodes, die vom Tokenausstellungs-Endpunkt zurückgegeben werden. In einigen Fällen ist der Fehlercode ausreichend, um die Antwort zu beschreiben. Wenn Fehler auftreten, müssen Sie jedoch die zugehörigen JSON-Dokumente analysieren und den Fehlercode überprüfen.
+
+| HTTP-Code | Beschreibung |
+|-----------|-------------|
+| 400 | Standard-HTTP-Code. Wird in den meisten Fällen verwendet und wird in der Regel aufgrund einer fehlerhaften Anforderung ausgegeben. Korrigieren Sie die Anforderung, und senden Sie sie erneut. |
+| 401 | Fehler bei der Authentifizierung. Tritt beispielsweise auf, wenn die Anforderung den Parameter „client\_secret“ nicht enthält.|
+| 403 | Fehler bei der Autorisierung. Der Benutzer verfügt beispielsweise nicht über die Berechtigung zum Zugriff auf die Ressource. |
+| 500 | Ein interner Fehler ist beim Dienst aufgetreten. Wiederholen Sie die Anforderung. |
+
+#### Fehlercodes für Token-Endpunktfehler
+
+| Fehlercode | Beschreibung | Clientaktion |
+|------------|-------------|---------------|
+| invalid\_request | Protokollfehler, z.B. ein fehlender erforderlicher Parameter. | Korrigieren Sie die Anforderung, und senden Sie sie erneut. |
+| invalid\_grant | Der Autorisierungscode ist ungültig oder abgelaufen. | Versuchen Sie, eine neue Anforderung an den `/authorize`-Endpunkt zu senden. |
+| unauthorized\_client | Der authentifizierte Client ist zur Verwendung dieses Autorisierungsgewährungstyps nicht autorisiert. | Dies tritt in der Regel auf, wenn die Clientanwendung nicht in Azure AD registriert ist oder dem Azure AD-Mandanten des Benutzers nicht hinzugefügt wird. Die Anwendung kann den Benutzer zum Installieren der Anwendung und zum Hinzufügen zu Azure AD auffordern. |
+| invalid\_client | Clientauthentifizierung fehlgeschlagen. | Die Client-Anmeldeinformationen sind nicht gültig. Um das Problem zu beheben, aktualisiert der Anwendungsadministrator die Anmeldeinformationen. |
+| unsupported\_grant\_type | Der Autorisierungsserver unterstützt den Autorisierungsgewährungstyp nicht. | Ändern Sie den Gewährungstyp in der Anforderung. Diese Art von Fehler sollte nur während der Entwicklung auftreten und bei den ersten Tests erkannt werden. |
+| invalid\_resource | Die Zielressource ist ungültig, da sie nicht vorhanden ist, Azure AD sie nicht findet oder sie nicht ordnungsgemäß konfiguriert ist. | Dies gibt an, dass die Ressource, falls vorhanden, im Mandanten nicht konfiguriert wurde. Die Anwendung kann den Benutzer zum Installieren der Anwendung und zum Hinzufügen zu Azure AD auffordern. |
+| interaction\_required | Die Anforderung erfordert eine Benutzerinteraktion. Beispielsweise ist ein zusätzlicher Schritt zur Authentifizierung erforderlich. | Wiederholen Sie die Anforderung mit der gleichen Ressource. |
+| temporarily\_unavailable | Der Server ist vorübergehend überlastet und kann die Anforderung nicht verarbeiten. | Wiederholen Sie die Anforderung. Die Clientanwendung kann dem Benutzer erklären, dass ihre Antwort aufgrund einer temporären Bedingung verzögert ist.|
+
 ## Verwenden des Zugriffstokens für den Zugriff auf die Ressource
 
-Nachdem Sie erfolgreich ein `access_token` abgerufen haben, können Sie das Token für Anforderungen an Web-APIs verwenden, indem Sie es in den `Authorization`-Header einbeziehen. Die Spezifikation [RFC 6750](http://www.rfc-editor.org/rfc/rfc6750.txt) erklärt, wie Bearertoken in HTTP-Anforderungen für den Zugriff auf geschützte Ressourcen verwendet werden.
+Nachdem Sie erfolgreich ein `access_token` abgerufen haben, können Sie das Token für Anforderungen an Web-APIs verwenden, indem Sie es in den `Authorization`-Header einschließen. Die Spezifikation [RFC 6750](http://www.rfc-editor.org/rfc/rfc6750.txt) erklärt, wie Bearertoken in HTTP-Anforderungen für den Zugriff auf geschützte Ressourcen verwendet werden.
 
 ### Beispiel für eine Anforderung
 
@@ -234,13 +283,46 @@ Host: service.contoso.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1THdqcHdBSk9NOW4tQSJ9.eyJhdWQiOiJodHRwczovL3NlcnZpY2UuY29udG9zby5jb20vIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvN2ZlODE0NDctZGE1Ny00Mzg1LWJlY2ItNmRlNTdmMjE0NzdlLyIsImlhdCI6MTM4ODQ0MDg2MywibmJmIjoxMzg4NDQwODYzLCJleHAiOjEzODg0NDQ3NjMsInZlciI6IjEuMCIsInRpZCI6IjdmZTgxNDQ3LWRhNTctNDM4NS1iZWNiLTZkZTU3ZjIxNDc3ZSIsIm9pZCI6IjY4Mzg5YWUyLTYyZmEtNGIxOC05MWZlLTUzZGQxMDlkNzRmNSIsInVwbiI6ImZyYW5rbUBjb250b3NvLmNvbSIsInVuaXF1ZV9uYW1lIjoiZnJhbmttQGNvbnRvc28uY29tIiwic3ViIjoiZGVOcUlqOUlPRTlQV0pXYkhzZnRYdDJFYWJQVmwwQ2o4UUFtZWZSTFY5OCIsImZhbWlseV9uYW1lIjoiTWlsbGVyIiwiZ2l2ZW5fbmFtZSI6IkZyYW5rIiwiYXBwaWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0yNzRhNzJhNzMwOWUiLCJhcHBpZGFjciI6IjAiLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJhY3IiOiIxIn0.JZw8jC0gptZxVC-7l5sFkdnJgP3_tRjeQEPgUn28XctVe3QqmheLZw7QVZDPCyGycDWBaqy7FLpSekET_BftDkewRhyHk9FW_KeEz0ch2c3i08NGNDbr6XYGVayNuSesYk5Aw_p3ICRlUV1bqEwk-Jkzs9EEkQg4hbefqJS6yS1HoV_2EsEhpd_wCQpxK89WPs3hLYZETRJtG5kvCCEOvSHXmDE6eTHGTnEgsIk--UlPe275Dvou4gEAwLofhLDQbMSjnlV5VLsjimNBVcSRFShoxmQwBJR_b2011Y5IuD6St5zPnzruBbZYkGNurQK63TJPWmRd3mbJsGM0mf3CUQ
 ```
 
+### Fehlerantwort
+
+Gesicherte Ressourcen, die RFC 6750 implementieren, geben HTTP-Statuscodes zurück. Wenn die Anforderung keine Authentifizierungsinformationen enthält oder wenn das Token fehlt, enthält die Antwort einen `WWW-Authenticate`-Header. Wenn eine Anforderung fehlschlägt, antwortet der Ressourcenserver mit einem HTTP-Statuscode und einem Fehlercode.
+
+Im Folgenden finden Sie ein Beispiel für eine nicht erfolgreiche Antwort, wenn die Clientanforderung das Bearertoken nicht enthält:
+
+```
+HTTP/1.1 401 Unauthorized
+WWW-Authenticate: Bearer authorization_uri="https://login.window.net/contoso.com/oauth2/authorize",  error="invalid_token",  error_description="The access token is missing.",
+```
+
+#### Fehlerparameter
+
+| Parameter | Beschreibung |
+|-----------|-------------|
+| authorization\_uri | Der URI (physische Endpunkt) des Autorisierungsservers. Dieser Wert wird auch als Suchschlüssel verwendet, um weitere Informationen über den Server aus einem Discovery-Endpunkt zu erhalten. <p><p> Der Client muss überprüfen, ob der Autorisierungsserver vertrauenswürdig ist. Wenn die Ressource von Azure AD geschützt wird, ist die Prüfung ausreichend, ob die URL mit https://login.windows.net oder einem anderen Hostnamen beginnt, den Azure AD unterstützt. Eine mandantenspezifische Ressource sollte immer einen mandantenspezifischen Autorisierungs-URI zurückgeben. |
+| Fehler | Ein in Abschnitt 5.2 definierter Fehlercodewert des [OAuth 2.0-Autorisierungsframeworks](http://tools.ietf.org/html/rfc6749).|
+| error\_description | Detailliertere Beschreibung des Fehlers. Diese Meldung ist nicht für den Endbenutzer ausgelegt.|
+| resource\_id | Gibt den eindeutigen Bezeichner der Ressource zurück. Die Clientanwendung kann diesen Bezeichner als Wert für den `resource`-Parameter verwenden, wenn sie ein Token für die Ressource anfordert. <p><p> Es ist sehr wichtig, dass die Clientanwendung diesen Wert überprüft, da andernfalls ein schädlicher Dienst möglicherweise einen Angriff mit einer **Erhöhung von Rechten** ausführt.<p><p> Die empfohlene Strategie zum Verhindern von Angriffen besteht darin zu überprüfen, ob die `resource_id` der Basis der Web-API-URL entspricht, auf die zugegriffen wird. Wenn auf https://service.contoso.com/data zugegriffen wird, kann `resource_id` beispielsweise htttps://service.contoso.com/ lauten. Die Clientanwendung muss eine `resource_id` ablehnen, die nicht mit der Basis-URL beginnt, sofern es kein zuverlässiges alternatives Verfahren zum Überprüfen der ID gibt. |
+
+#### Bearerschema-Fehlercodes
+
+Die Spezifikation RFC 6750 definiert die folgenden Fehler für Ressourcen, die in der Antwort das WWW-Authenticate-Header und das Bearerschema verwenden.
+
+| HTTP-Statuscode | Fehlercode | Beschreibung | Clientaktion |
+|------------------|------------|-------------|---------------|
+| 400 | invalid\_request | Die Anforderung ist nicht richtig formatiert. Möglicherweise fehlt ein Parameter, oder der gleiche Parameter wird zweimal verwendet. | Beheben Sie den Fehler, und wiederholen Sie die Anforderung. Diese Art von Fehler sollte nur während der Entwicklung auftreten und bei den ersten Tests erkannt werden. |
+| 401 | invalid\_token | Das Zugriffstoken ist nicht vorhanden, ungültig oder wurde widerrufen. Der Wert des Parameters „error\_description“ enthält weitere Details. | Fordern Sie ein neues Token vom Autorisierungsserver an. Wenn das neue Token fehlschlägt, ist ein unerwarteter Fehler aufgetreten. Sendet eine Fehlermeldung an den Benutzer. Eine Wiederholung erfolgt nach einer beliebigen Zeitspanne. |
+| 403 | insufficient\_scope | Das Zugriffstoken enthält nicht die erforderlichen Berechtigungen zum Identitätswechsel, um auf die Ressource zuzugreifen. | Senden Sie eine neue Autorisierungsanforderung an den Autorisierungsendpunkt. Wenn die Antwort den Bereichsparameter enthält, verwenden Sie den Bereichswert in der Anforderung für die Ressource. |
+| 403 | insufficient\_access | Der Antragsteller des Tokens besitzt nicht die Berechtigungen, die für den Zugriff auf die Ressource erforderlich sind. | Der Benutzer wird aufgefordert, ein anderes Konto zu verwenden oder Berechtigungen für die angegebene Ressource anzufordern. |
+
 ## Aktualisieren der Zugriffstoken
 
-Zugriffstoken sind kurzlebig und müssen nach Ablauf aktualisiert werden, damit Sie weiterhin auf Ressourcen zugreifen können. Übermitteln Sie zum Aktualisieren von `access_token` eine weitere `POST`-Anforderung an den `/token`-Endpunkt, dieses Mal unter Angabe des `refresh_token` statt des `code`:
+Zugriffstoken sind kurzlebig und müssen nach Ablauf aktualisiert werden, damit Sie weiterhin auf Ressourcen zugreifen können. Übermitteln Sie zum Aktualisieren von `access_token` eine weitere `POST`-Anforderung an den `/token`-Endpunkt, und zwar dieses Mal unter Angabe des `refresh_token` anstelle von `code`.
 
-Die Gültigkeitsdauer eines Aktualisierungstokens wird nicht bereitgestellt und variiert ausgehend von den Richtlinieneinstellungen und dem Zeitpunkt, zu dem die Autorisierungscodegewährung von Azure AD zurückgezogen wird. Ihre Anwendung sollte es auch verarbeiten können, wenn die Anforderung für ein neues Zugriffstoken fehlschlägt. In dem Fall kehrt sie zu dem Code zurück, der ein neues Zugriffstoken anfordert.
+Für Aktualisierungstoken werden keine Lebensdauern angegeben. Normalerweise verfügen Aktualisierungstoken über relativ lange Lebensdauern. In einigen Fällen laufen Aktualisierungstoken aber ab, werden widerrufen oder verfügen nicht über ausreichende Berechtigungen für die gewünschte Aktion. Von Ihrer Anwendung müssen Fehler, die vom Tokenausstellungs-Endpunkt zurückgegeben werden, erwartet und richtig behandelt werden.
 
-Ein Beispiel für eine Anforderung an den **mandantenspezifischen** Endpunkt (Sie können auch den **allgemeinen** Endpunkt verwenden), um ein neues Zugriffstoken mithilfe eines Aktualisierungstokens abzurufen, sieht folgendermaßen aus:
+Wenn Sie eine Antwort mit einem Aktualisierungstokenfehler erhalten, sollten Sie das aktuelle Aktualisierungstoken verwerfen und einen neuen Autorisierungscode oder ein neues Zugriffstoken anfordern. Wenn Sie ein Aktualisierungstoken im Ablauf der Autorisierungscodeerteilung verwenden und eine Antwort mit dem Fehlercode `interaction_required` oder `invalid_grant` erhalten, sollten Sie besonders darauf achten, dass Sie das Aktualisierungstoken verwerfen und einen neuen Autorisierungscode anfordern.
+
+Ein Beispiel für eine Anforderung an den **mandantenspezifischen** Endpunkt (Sie können auch den **allgemeinen** Endpunkt verwenden), um ein neues Zugriffstoken mithilfe eines Aktualisierungstokens abzurufen, sieht wie folgt aus:
 
 ```
 // Line breaks for legibility only
@@ -262,7 +344,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | expires\_on | Datum und Uhrzeit, wenn das Token abläuft. Das Datum wird als Anzahl der Sekunden ab 1970-01-01T0:0:0Z UTC bis zur Ablaufzeit dargestellt. |
 | refresh\_token | Ein neues OAuth 2.0-Aktualisierungstoken, das zum Anfordern neuer Zugriffstoken verwendet werden kann, wenn das Token in dieser Antwort abläuft. |
 | resource | Gibt die gesicherte Ressource an, die das Zugriffstoken für den Zugriff verwenden kann. |
-| Bereich | Die Identitätswechselberechtigungen, die der nativen Clientanwendung gewährt wurden. Die Standardberechtigung ist **user\_impersonation**. Der Besitzer der Zielressource kann alternative Werte in Azure AD registrieren. |
+| Bereich | Die Identitätswechselberechtigungen, die der nativen Clientanwendung gewährt wurden. Die Standardberechtigung lautet **user\_impersonation**. Der Besitzer der Zielressource kann alternative Werte in Azure AD registrieren. |
 | token\_type | Der Tokentyp. Der einzige derzeit unterstützte Wert ist **bearer**. |
 
 ### Erfolgreiche Antwort
@@ -297,4 +379,15 @@ Eine Beispiel für eine Fehlerantwort sieht wie folgt aus:
 }
 ```
 
-<!---HONumber=AcomDC_0608_2016-->
+| Parameter | Beschreibung |
+| ----------------------- | ------------------------------- |
+| Fehler | Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
+| error\_description | Eine spezifische Fehlermeldung, mit der Entwickler die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
+| error\_codes | Eine Liste der spezifischen STS-Fehlercodes, die bei der Diagnose helfen können |
+| timestamp | Der Zeitpunkt, zu dem der Fehler aufgetreten ist |
+| trace\_id | Ein eindeutiger Bezeichner für die Anforderung, die bei der Diagnose helfen kann |
+| correlation\_id | Ein eindeutiger Bezeichner für die Anforderung, die bei der komponentenübergreifenden Diagnose helfen kann|
+
+Eine Beschreibung der Fehlercodes und der empfohlenen Clientaktion finden Sie unter [Fehlercodes für Token-Endpunktfehler](#error-codes-for-token-endpoint-errors).
+
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/10/2016"
+   ms.date="06/23/2016"
    ms.author="navale;tomfitz;"/>
    
 # Resource Manager-REST-APIs
@@ -240,4 +240,4 @@ Content-Type: application/json
 
 Die relativ lange JSON-Antwort auf diese Anforderung wurde weggelassen, um die Lesbarkeit dieser Dokumentation zu verbessern. Die Antwort enthält Informationen zu der Bereitstellung mit Vorlage, die Sie eben erstellt haben.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0629_2016-->

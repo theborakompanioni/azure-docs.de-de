@@ -20,7 +20,7 @@
 
 # Erfassen eines klassischen virtuellen Linux-Computers als Image
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-machines-linux-capture-image.md).
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](virtual-machines-linux-capture-image.md).
 
 In diesem Artikel wird erläutert, wie Sie einen klassischen virtuellen Azure-Computer, auf dem Linux ausgeführt wird, als Image erfassen, um weitere virtuelle Computer zu erstellen. Dieses Image umfasst den Betriebssystemdatenträger und die an den virtuellen Computer angefügten Datenträger. Da das Image keine Netzwerkkonfiguration enthält, müssen Sie die Konfiguration später vornehmen, wenn Sie die anderen virtuellen Computer auf der Basis dieses Images erstellen.
 
@@ -28,7 +28,7 @@ Azure speichert das Image unter **Images**. Hier werden sämtliche Images abgele
 
 ## Voraussetzungen
 
-Diese Schritte setzen voraus, dass Sie bereits mithilfe des klassischen Bereitstellungsmodells einen virtuellen Azure-Computer erstellt, das Betriebssystem konfiguriert und Datenträger angefügt haben. Falls Sie dies noch nicht getan haben, lesen Sie sich [Erstellen einer virtuellen Linux-Maschine][] durch.
+Diese Schritte setzen voraus, dass Sie bereits mithilfe des klassischen Bereitstellungsmodells einen virtuellen Azure-Computer erstellt, das Betriebssystem konfiguriert und Datenträger angefügt haben. Falls Sie dies noch nicht getan haben, lesen Sie sich [Erstellen eines benutzerdefinierten virtuellen Linux-Computers][] durch.
 
 
 ## Erfassen des virtuellen Computers
@@ -94,6 +94,6 @@ Das Image kann jetzt zum Erstellen virtueller Computer verwendet werden. Sie kö
 [Informationen zu virtuellen Computern in Azure]: virtual-machines-linux-classic-about-images.md
 [Erstellen eines benutzerdefinierten virtuellen Computers]: virtual-machines-linux-classic-create-custom.md
 [How to Attach a Data Disk to a Virtual Machine]: virtual-machines-windows-classic-attach-disk.md
-[Erstellen einer virtuellen Linux-Maschine]: virtual-machines-linux-classic-create-custom.md
+[Erstellen eines benutzerdefinierten virtuellen Linux-Computers]: virtual-machines-linux-classic-create-custom.md
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

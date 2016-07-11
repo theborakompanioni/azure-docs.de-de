@@ -65,7 +65,7 @@ Derzeit leider nicht.
 
 ### Welche Adresse verwendet das Azure-VPN-Gateway als BGP-Peer-IP-Adresse?
 
-Das Azure-VPN-Gateway ordnet eine einzelne IP-Adresse aus dem für das virtuelle Netzwerk definierten GatewaySubnet-Bereich zu. Dabei handelt es sich standardmäßig um die vorletzte Adresse des Bereichs. Wenn also beispielsweise der GatewaySubnet-Bereich 10.12.255.0.0/27 von 10.42.255.0.0 bis 10.42.255.31 reicht, wird 10.12.255.30 als BGP-Peer-IP-Adresse für das Azure-VPN-Gateway verwendet. Diese Information können Sie der Liste mit den Azure-VPN-Gateway-Informationen entnehmen.
+Das Azure-VPN-Gateway ordnet eine einzelne IP-Adresse aus dem für das virtuelle Netzwerk definierten GatewaySubnet-Bereich zu. Dabei handelt es sich standardmäßig um die vorletzte Adresse des Bereichs. Wenn also beispielsweise der GatewaySubnet-Bereich 10.12.255.0/27 von 10.12.255.0 bis 10.12.255.31 reicht, wird 10.12.255.30 als BGP-Peer-IP-Adresse für das Azure-VPN-Gateway verwendet. Diese Information können Sie der Liste mit den Azure-VPN-Gateway-Informationen entnehmen.
 
 ### Welche Anforderungen müssen die BGP-Peer-IP-Adressen auf meinem VPN-Gerät erfüllen?
 
@@ -79,4 +79,4 @@ Das lokale Azure-Netzwerkgateway gibt die anfänglichen Adresspräfixe für das 
 
 Sie müssen eine Hostroute der Azure-BGP-Peer-IP-Adresse auf Ihrem VPN-Gerät hinzufügen, die auf den IPsec-S2S-VPN-Tunnel verweist. Lautet die Azure-VPN-Peer-IP-Adresse also etwa 10.12.255.30, müssen Sie eine Hostroute für 10.12.255.30 mit einer Nexthop-Schnittstelle der entsprechenden IPSec-Tunnelschnittstelle auf Ihrem VPN-Gerät hinzufügen.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

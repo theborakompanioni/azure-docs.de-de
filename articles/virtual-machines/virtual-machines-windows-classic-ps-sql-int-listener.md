@@ -26,7 +26,7 @@
 
 In diesem Thema erfahren Sie, wie Sie mit dem **internen Load Balancer (ILB)** einen Listener für eine AlwaysOn-Verfügbarkeitsgruppe konfigurieren.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell. Informationen zum Konfigurieren eines ILB-Listeners für eine AlwaysOn-Verfügbarkeitsgruppe im Resource Manager-Modell finden Sie unter [Konfigurieren eines internen Load Balancers für eine AlwaysOn-Verfügbarkeitsgruppe in Azure](virtual-machines-windows-portal-sql-alwayson-int-listener.md).
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Informationen zum Konfigurieren eines ILB-Listeners für eine AlwaysOn-Verfügbarkeitsgruppe im Resource Manager-Modell finden Sie unter [Konfigurieren eines internen Load Balancers für eine AlwaysOn-Verfügbarkeitsgruppe in Azure](virtual-machines-windows-portal-sql-alwayson-int-listener.md).
 
 
 Ihre Verfügbarkeitsgruppe kann Replikate enthalten, die ausschließlich lokal, ausschließlich in Azure oder sowohl lokal als auch in Azure verfügbar sind (Hybridkonfigurationen). Azure-Replikate können sich innerhalb derselben Region oder in mehreren Regionen befinden, wobei mehrere virtuelle Netzwerke (VNets) verwendet werden. Bei den nachfolgenden Schritten wird davon ausgegangen, dass bereits eine [Verfügbarkeitsgruppe konfiguriert wurde](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md), Sie jedoch noch keinen Listener konfiguriert haben.
@@ -138,4 +138,4 @@ Sie müssen für ILB zunächst den internen Load Balancer einrichten. Verwenden 
 
 [AZURE.INCLUDE [Listener-Next-Steps](../../includes/virtual-machines-ag-listener-next-steps.md)]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

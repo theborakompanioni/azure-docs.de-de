@@ -23,8 +23,8 @@ Dieser Artikel beschreibt wichtige Faktoren, die sich auf die Leistung der Daten
 Mit der Kopieraktivität erreichen Sie einen hohen Durchsatz bei Datenverschiebungen, wie in den folgenden Beispielen dargestellt:
 
 - Erfassen von 1 TB Daten in einem Azure-Blobspeicher aus einem lokalen Dateisystem und einem Azure-Blobspeicher in weniger als 3 Stunden (also mit 100 MBit/s)
-- Erfassen von 1 TB Daten in einem Azure Data Lake-Speicher aus einem lokalen Dateisystem und einem Azure-Blobspeicher in weniger als 3 Stunden (also mit 100 MBit/s) 
-- Erfassen von 1 TB Daten in Azure SQL Data Warehouse aus einem Azure-Blobspeicher in weniger als 3 Stunden (also mit 100 MBit/s) 
+- Erfassen von 1 TB Daten in einem Azure Data Lake-Speicher aus einem lokalen Dateisystem und einem Azure-Blobspeicher in weniger als 3 Stunden (also mit 100 MBit/s)
+- Erfassen von 1 TB Daten in Azure SQL Data Warehouse aus einem Azure-Blobspeicher in weniger als 3 Stunden (also mit 100 MBit/s)
 
 In den folgenden Abschnitten erfahren Sie mehr über die Leistung der Kopieraktivität und über Optimierungstipps, um sie weiter zu verbessern.
 
@@ -49,7 +49,7 @@ Nachfolgend finden Sie die typischen Schritte, die wir zur Optimierung der Leist
 	- [Gateway zur Datenverwaltung](#considerations-on-data-management-gateway)
 	- [Weitere Überlegungen](#other-considerations)
 	- [Parallele Kopie](#parallel-copy)
-	- [Einheiten für Clouddatenverschiebungen](#cloud-data-movement-units)    
+	- [Einheiten für Clouddatenverschiebungen](#cloud-data-movement-units)
 
 3. **Erweitern der Konfiguration auf Ihre gesamten Daten** Sobald Sie mit den Ergebnissen und der Leistung der Ausführung zufrieden sind, können Sie die Datasetdefinition und den aktiven Zeitraum der Pipeline erweitern, um die gesamten Daten in der Abbildung abzudecken.
 
@@ -171,8 +171,8 @@ In den [Beispielen für Anwendungsfälle](#case-study---parallel-copy) finden Si
 ## Gestaffeltes Kopieren
 Beim Kopieren von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher können Sie einen Azure-Blobspeicher als Stagingzwischenspeicher verwenden. Diese Stagingfunktion ist besonders in folgenden Fällen hilfreich:
 
-1.	**Hybriddatenbewegungen (also die Bewegung aus dem lokalen Datenspeicher in einen Clouddatenspeicher oder umgekehrt) können über eine langsame Netzwerkverbindung eine Weile dauern.** Zur Verbesserung der Leistung solcher Datenbewegungen können Sie Daten lokal komprimieren, damit sie schneller über das Netzwerk an den Stagingdatenspeicher in der Cloud übertragen werden, und die Daten im Stagingspeicher dekomprimieren, bevor sie in den Zieldatenspeicher geladen werden. 
-2.	**Aufgrund von IT-Richtlinien sollen in der Firewall mit Ausnahme der Ports 80 und 443 keine weiteren Ports geöffnet werden.** Ein Beispiel: Beim Kopieren von Daten aus einem lokalen Datenspeicher an eine Azure SQL-Datenbanksenke oder eine Azure SQL Data Warehouse-Senke muss ausgehende TCP-Kommunikation über den Port 1433 sowohl für die Windows-Firewall als auch für die Unternehmensfirewall ermöglicht werden. In einem solchen Szenario können Sie unter Verwendung des Datenverwaltungsgateways zunächst über HTTP(S) (also über den Port 443) Daten in einen Azure-Stagingblobspeicher kopieren und die Daten dann von dort aus in die SQL-Datenbank oder in SQL Data Warehouse laden. Der Port 1433 muss hierzu nicht aktiviert werden. 
+1.	**Hybriddatenbewegungen (also die Bewegung aus dem lokalen Datenspeicher in einen Clouddatenspeicher oder umgekehrt) können über eine langsame Netzwerkverbindung eine Weile dauern.** Zur Verbesserung der Leistung solcher Datenbewegungen können Sie Daten lokal komprimieren, damit sie schneller über das Netzwerk an den Stagingdatenspeicher in der Cloud übertragen werden, und die Daten im Stagingspeicher dekomprimieren, bevor sie in den Zieldatenspeicher geladen werden.
+2.	**Aufgrund von IT-Richtlinien sollen in der Firewall mit Ausnahme der Ports 80 und 443 keine weiteren Ports geöffnet werden.** Ein Beispiel: Beim Kopieren von Daten aus einem lokalen Datenspeicher an eine Azure SQL-Datenbanksenke oder eine Azure SQL Data Warehouse-Senke muss ausgehende TCP-Kommunikation über den Port 1433 sowohl für die Windows-Firewall als auch für die Unternehmensfirewall ermöglicht werden. In einem solchen Szenario können Sie unter Verwendung des Datenverwaltungsgateways zunächst über HTTP(S) (also über den Port 443) Daten in einen Azure-Stagingblobspeicher kopieren und die Daten dann von dort aus in die SQL-Datenbank oder in SQL Data Warehouse laden. Der Port 1433 muss hierzu nicht aktiviert werden.
 3.	**Erfassung von Daten aus verschiedenen Datenspeichern in Azure SQL Data Warehouse über PolyBase.** Azure SQL Data Warehouse stellt PolyBase als Mechanismus für hohen Durchsatz bereit, um große Datenmengen in SQL Data Warehouse zu laden. Hierzu müssen sich die Quelldaten allerdings im Azure-Blobspeicher befinden und einige zusätzliche Kriterien erfüllen. Wenn Sie Daten aus einem Datenspeicher laden, bei dem es sich nicht um den Azure-Blobspeicher handelt, haben Sie die Möglichkeit, die Daten über einen Azure-Stagingblobspeicher zu kopieren. In diesem Fall führt Azure Data Factory die erforderlichen Transformationen für die Daten durch, um sicherzustellen, dass sie die Anforderungen von PolyBase erfüllen. Anschließend werden die Daten dann mithilfe von PolyBase in SQL Data Warehouse geladen. Ausführlichere Informationen und Beispiele finden Sie unter [Daten unter Verwendung von PolyBase in Azure SQL Data Warehouse laden](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
 
 ### Funktionsweise des gestaffelten Kopierens
@@ -224,6 +224,7 @@ Hier sehen Sie eine Beispieldefinition für eine Kopieraktivität mit den oben a
 		}
 	}
 	]
+
 
 ### Auswirkungen auf die Abrechnung
 Die Abrechnung erfolgt auf der Grundlage der Dauer der beiden Kopierphasen sowie auf der Grundlage des jeweiligen Kopiertyps:
@@ -391,4 +392,4 @@ Hier finden Sie einige Referenzen zur Leistungsüberwachung und -optimierung fü
 - Lokale SQL Server: [Überwachen und Optimieren der Leistung](https://msdn.microsoft.com/library/ms189081.aspx)
 - Lokaler Dateiserver: [Leistungsoptimierung für Dateiserver](https://msdn.microsoft.com/library/dn567661.aspx)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

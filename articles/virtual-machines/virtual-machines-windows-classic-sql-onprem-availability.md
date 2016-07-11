@@ -31,7 +31,7 @@ Dieses Lernprogramm setzt voraus, dass Sie über die folgenden Punkte verfügen:
 
 - Konnektivität zwischen dem lokalen Netzwerk und Ihrem virtuellen Azure-Netzwerk. Weitere Informationen zum Erstellen dieses virtuellen Netzwerks finden Sie unter [Konfigurieren eines Standort-zu-Standort-VPN im klassischen Azure-Portal](../vpn-gateway/vpn-gateway-site-to-site-create.md).
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 ## Assistent zum Hinzufügen von Azure-Replikaten
 
@@ -103,4 +103,4 @@ Nach dem Erstellen der Verfügbarkeitsgruppe sollten Sie einen Listener für Cli
 
 Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Computern finden Sie unter [SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

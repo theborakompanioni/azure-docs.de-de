@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/30/2016"
+   ms.date="06/30/2016"
    ms.author="sumukhs"/>
 
 # Konfigurieren zustandsbehafteter Reliable Services
@@ -162,4 +162,4 @@ Die Einstellungen SharedLogId und SharedLogPath werden immer zusammen verwendet.
  - [Debuggen einer Service Fabric-Anwendung in Visual Studio](service-fabric-debugging-your-application.md)
  - [Entwicklerreferenz für zuverlässige Dienste](https://msdn.microsoft.com/library/azure/dn706529.aspx)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0629_2016-->

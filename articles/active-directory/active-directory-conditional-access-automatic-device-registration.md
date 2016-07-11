@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
-	manager="stevenpo"
+	manager="swadhwa"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/07/2016"
+	ms.date="06/23/2016"
 	ms.author="femila"/>
 
 # Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows-Geräte
@@ -48,7 +48,7 @@ Konfigurieren eines zusätzlichen Authentifizierungsklassenverweises für die Ve
 
   `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 
-Dabei ist <RPObjectName> der Objektname der vertrauenden Seite für Ihr Azure Active Directory-Vertrauensstellungsobjekt der vertrauenden Seite. Dieses Objekt trägt normalerweise den Namen "Microsoft Office 365 Identity Platform".
+Dabei ist „<RPObjectName>“ der Objektname der vertrauenden Seite für Ihr Azure Active Directory-Vertrauensstellungsobjekt der vertrauenden Seite. Dieses Objekt trägt normalerweise den Namen "Microsoft Office 365 Identity Platform".
 
 Globale Authentifizierungsrichtlinie für AD FS
 -----------------------------------------------------------------------------
@@ -105,4 +105,4 @@ Unternehmen, die sowohl mobile als auch herkömmliche Geräte oder Office 365, A
 - [Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 8.1-Geräte](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
 - [Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows 10-Geräte](active-directory-azureadjoin-devices-group-policy.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

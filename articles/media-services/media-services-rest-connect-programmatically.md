@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
- 	ms.date="04/18/2016"   
+	ms.date="06/22/2016"  
 	ms.author="juliako"/>
 
 
@@ -29,8 +29,8 @@ Für den Zugriff auf Microsoft Azure Media Services benötigen Sie: ein von Azur
 
 Die folgenden Schritte beschreiben den am häufigsten verwendeten Workflow, der bei der Verbindung mit Media Services über die Media Services-REST-API zur Anwendung kommt:
 
-1. Abrufen eines Zugriffstokens 
-2. Herstellen einer Verbindung mit dem Media Services-URI 
+1. Abrufen eines Zugriffstokens
+2. Herstellen einer Verbindung mit dem Media Services-URI
 
 	>[AZURE.NOTE] Nach der erfolgreichen Verbindung mit https://media.windows.net erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Nachfolgende Aufrufe müssen an den neuen URI gesendet werden. Möglicherweise empfangen Sie auch eine HTTP/1.1 200-Antwort, die die Beschreibung der ODATA-API-Metadaten enthält.
 
@@ -177,4 +177,4 @@ Das folgende Beispiel veranschaulicht die HTTP-Anforderung an den Stamm-URI für
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

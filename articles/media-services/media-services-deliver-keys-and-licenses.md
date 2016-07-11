@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/24/2016" 
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -351,4 +351,4 @@ Das Codebeispiel in diesem Thema zeigt, wie ein allgemeiner Inhaltsschlüssel er
 
 [Übermitteln von Widevine-Lizenzen an Azure Media Services mithilfe von Partnern](media-services-licenses-partner-integration.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0629_2016-->

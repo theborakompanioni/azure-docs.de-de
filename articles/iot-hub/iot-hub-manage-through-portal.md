@@ -122,19 +122,19 @@ Klicken Sie auf die **Messaging**-Richtlinien, um eine Liste der Messaging-Eigen
 
 ## Dateiupload
 
-Um die Dateiuploadfunktionalität in IoT Hub zu verwenden, müssen Sie zunächst ein Azure Storage-Konto Ihrem Hub zuordnen. Wählen Sie die **Dateiupload**-Einstellungen zum Anzeigen einer Liste der Dateiuploadeigenschaften für den IoT Hub, der geändert wird.
+Damit Sie die Dateiuploadfunktion in IoT Hub verwenden können, müssen Sie Ihrem Hub zunächst ein Azure Storage-Konto zuordnen. Wählen Sie die **Dateiupload**-Einstellungen zum Anzeigen einer Liste der Dateiuploadeigenschaften für den IoT Hub, der geändert wird.
 
-**Speicherkonto**: Verwenden Sie das Portal, um ein Speicherkonto in Ihrem aktuellen Abonnement Ihrem IoT Hub zuzuordnen. IoT Hub erzeugt SAS-URIs aus diesem Speicherkonto, die Geräte beim Hochladen von Dateien verwenden können.
+**Speichercontainer**: Verwenden Sie das Portal, um einen Blobcontainer in einem Speicherkonto in Ihrem aktuellen Abonnement Ihrer IoT Hub-Instanz zuzuordnen. Erstellen Sie bei Bedarf auf dem Blatt **Speicherkonten** ein neues Speicherkonto und auf dem Blatt **Container** einen neuen Blobcontainer. IoT Hub generiert automatisch SAS-URIs mit Schreibberechtigungen für diesen Blobcontainer, die Geräte beim Hochladen von Dateien verwenden können.
 
 ![][14]
 
-**Benachrichtigungen für hochgeladene Dateien empfangen**: Aktivieren oder Deaktivieren über Uploadbenachrichtigungen über die Umschaltfläche.
+**Receive notifications for uploaded files** (Benachrichtigungen für hochgeladene Dateien empfangen): Aktivieren oder deaktivieren Sie Dateiuploadbenachrichtigungen über den Umschalter.
 
-**SAS-TTL**: Diese Einstellung legt die Gültigkeitsdauer der SAS-URIs fest, die von IoT Hub an das Gerät zurückgegeben werden. Standardmäßig auf 1 Stunde festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
+**SAS TTL** (SAS-TTL): Diese Einstellung dient zum Festlegen der Gültigkeitsdauer der SAS-URIs, die von IoT Hub an das Gerät zurückgegeben werden. Standardmäßig auf 1 Stunde festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
 
-**Standard-TTL für Dateibenachrichtigungen**: Die Gültigkeitsdauer einer Dateiuploadbenachrichtigung, bevor diese abgelaufen ist. Standardmäßig auf 1 Tag festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
+**File notification settings default TTL** (Standard-TTL für Dateibenachrichtigungseinstellungen): Die Gültigkeitsdauer einer Dateiuploadbenachrichtigung (Zeit bis zum Ablauf). Standardmäßig auf 1 Tag festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
 
-**Maximale Zahl gesendeter Dateibenachrichtigungen**: Gibt an, wie oft der IoT Hub versucht, eine Dateiuploadbenachrichtigung zu senden. Standardmäßig auf 10 festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
+**File notification maximum delivery count** (Maximale Zahl gesendeter Dateibenachrichtigungen): Gibt an, wie oft IoT Hub versucht, eine Dateiuploadbenachrichtigung zu senden. Standardmäßig auf 10 festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
 
 ![][13]
 
@@ -173,4 +173,4 @@ Folgen Sie diesen Links, um mehr über Azure IoT Hub zu erfahren:
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
 [Was ist Azure IoT Hub?]: iot-hub-what-is-iot-hub.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

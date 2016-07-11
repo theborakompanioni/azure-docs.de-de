@@ -50,7 +50,7 @@ Azure Multi-Factor Authentication ist eine benutzerfreundliche, skalierbare und 
 - **Benutzerfreundlich**: Azure Multi-Factor Authentication ist einfach einzurichten und zu verwenden. Der zusätzliche Schutz, der mit Azure Multi-Factor Authentication einhergeht, ermöglicht Benutzern, ihre eigenen Geräte zu verwenden und zu verwalten, und in vielen Fällen ist die Einrichtung mit wenigen Klicks erledigt.
 - **Skalierbar**: Azure Multi-Factor Authentication nutzt Cloudfunktionen und integriert sich nahtlos in Ihr lokales Active Directory und benutzerdefinierte Anwendungen. Dieser Schutz wirkt sich sogar auf Ihre umfangreichen unternehmenswichtigen Szenarios aus.
 - **Immer geschützt**: Azure Multi-Factor Authentication bietet sichere Authentifizierung unter Verwendung der strengsten Branchenstandards.
-- **Zuverlässig**: Wir garantieren 99,9 % Verfügbarkeit für Azure Multi-Factor Authentication. Der Dienst gilt als nicht verfügbar, wenn keine Authentifizierungsanforderungen für die Multi-Factor Authentication empfangen oder verarbeitet werden können.  
+- **Zuverlässig**: Wir garantieren 99,9 % Verfügbarkeit für Azure Multi-Factor Authentication. Der Dienst gilt als nicht verfügbar, wenn keine Authentifizierungsanforderungen für die Multi-Factor Authentication empfangen oder verarbeitet werden können.
 
 Weitere Informationen zu den Verwendungsgründen für Azure Multi-Factor Authentication finden Sie im folgenden Video.
 
@@ -137,7 +137,7 @@ Wenn Sie einen Azure Multi-Factor Authentication-Anbieter verwenden, sind zwei N
 - **Pro Benutzer**. Diese Option ist für Unternehmen geeignet, die Multi-Factor Authentication für eine feste Anzahl von Mitarbeitern aktivieren möchten, die regelmäßig eine Authentifizierung benötigen.
 - **Pro Authentifizierung**. Diese Option ist für Unternehmen geeignet, die Multi-Factor Authentication für eine große Gruppe externer Benutzer aktivieren möchten, die seltener oder unregelmäßig eine Authentifizierung benötigen.
 
-Azure Multi-Factor Authentication umfasst auswählbare Überprüfungsmethoden für die Cloud und für Server. Dies bedeutet, dass Sie auswählen können, welche Methoden für Ihre Benutzer zur Verwendung mit Multi-Factor Authentication verfügbar sind. Diese Funktion befindet sich derzeit in der öffentlichen Vorschau für die Cloudversion von Multi-Factor Authentication. Weitere Informationen finden Sie unter [Auswählbare Überprüfungsmethoden](multi-factor-authentication-whats-next.md#selectable-verification-methods-public-preview).
+Azure Multi-Factor Authentication umfasst auswählbare Überprüfungsmethoden für die Cloud und für Server. Dies bedeutet, dass Sie auswählen können, welche Methoden für Ihre Benutzer zur Verwendung mit Multi-Factor Authentication verfügbar sind. Diese Funktion befindet sich derzeit in der öffentlichen Vorschau für die Cloudversion von Multi-Factor Authentication. Weitere Informationen finden Sie unter [Auswählbare Überprüfungsmethoden](multi-factor-authentication-whats-next.md#selectable-verification-methods).
 
 Ausführliche Preisinformationen finden Sie unter [Preise für Azure MFA](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
 
@@ -209,4 +209,4 @@ Sie haben nun ermittelt, ob Sie Multi-Factor Authentication in der Cloud oder de
 
 <center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

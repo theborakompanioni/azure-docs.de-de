@@ -36,7 +36,7 @@ Das Redis-Ausgabecacheanbieter-NuGet-Paket steht in einer Abhängigkeitsbeziehun
 Das NuGet-Paket wird heruntergeladen und fügt die erforderlichen Assemblyverweise sowie den folgenden Abschnitt zu Ihrer web.config-Datei hinzu. Dieser Abschnitt enthält die Konfiguration, die Ihre ASP.NET-Anwendung für die Verwendung des Redis-Ausgabecacheanbieters benötigt.
 
     <caching>
-      <outputCachedefaultProvider="MyRedisOutputCache">
+      <outputCachedefault Provider="MyRedisOutputCache">
         <providers>
           <!--
           <add name="MyRedisOutputCache"
@@ -50,7 +50,7 @@ Das NuGet-Paket wird heruntergeladen und fügt die erforderlichen Assemblyverwei
             operationTimeoutInMilliseconds = "5000" [number]
           />
           -->
-          <add name="MyRedisOutputCache"type="Microsoft.Web.Redis.RedisOutputCacheProvider"host="127.0.0.1"accessKey="" ssl="false"/>
+          <add name="MyRedisOutputCache" type="Microsoft.Web.Redis.RedisOutputCacheProvider" host="127.0.0.1" accessKey="" ssl="false"/>
         </providers>
       </outputCache>
     </caching>
@@ -65,7 +65,7 @@ Konfigurieren Sie die Attribute mit den Werten vom Blatt „Cache“ im Microsof
 -	**ssl**: Geben Sie „true“ an, wenn Sie die Kommunikation zwischen Cache und Client mit SSL absichern möchten, andernfalls „false“. Achten Sie darauf, dass Sie den richtigen Port angeben.
 	-	Der Nicht-SSL-Port ist für neue Caches standardmäßig deaktiviert. Geben Sie für diese Einstellung „true“ an, wenn Sie den SSL-Port verwenden möchten. Weitere Informationen zum Aktivieren des Nicht-SSL-Ports finden Sie im Abschnitt [Zugriffsports](cache-configure.md#access-ports) des Themas [Konfigurieren eines Caches](cache-configure.md).
 -	**databaseId**: Geben Sie an, welche Datenbank für die Cacheausgabedaten verwendet werden soll. Wenn Sie hier nichts angeben, wird der Standardwert 0 verwendet.
--	**applicationName**: Schlüssel werden in Redis als „<AppName>\_<SessionId>\_Data“ gespeichert. Dadurch wird es möglich, dass mehrere Anwendungen denselben Schlüssel gemeinsam nutzen. Dieser Parameter ist optional, und wenn Sie ihn nicht angeben, wird der Standardwert verwendet.
+-	**applicationName**: Schlüssel werden in Redis als „<App-Name>\_<Sitzungs-ID>\_Data“ gespeichert. Dadurch wird es möglich, dass mehrere Anwendungen denselben Schlüssel gemeinsam nutzen. Dieser Parameter ist optional, und wenn Sie ihn nicht angeben, wird der Standardwert verwendet.
 -	**connectionTimeoutInMilliseconds**: Diese Einstellung ermöglicht Ihnen, die connectTimeout-Einstellung im StackExchange.Redis-Client zu überschreiben. Wenn Sie sie nicht angegeben, wird die connectTimeout-Standardeinstellung „5000“ verwendet. Weitere Informationen finden Sie unter [StackExchange.Redis-Konfigurationsmodell](http://go.microsoft.com/fwlink/?LinkId=398705).
 -	**operationTimeoutInMilliseconds**: Diese Einstellung ermöglicht Ihnen, die syncTimeout-Einstellung im StackExchange.Redis-Client zu überschreiben. Wenn Sie sie nicht angegeben, wird die syncTimeout-Standardeinstellung „1000“ verwendet. Weitere Informationen finden Sie unter [StackExchange.Redis-Konfigurationsmodell](http://go.microsoft.com/fwlink/?LinkId=398705).
 
@@ -79,6 +79,6 @@ Nach Abschluss dieser Schritte ist Ihre Anwendung für die Verwendung des Redis-
 
 ## Nächste Schritte
 
-Lesen Sie die Seite [ASP.NET Session State Provider for Azure Redis Cache](cache-aspnet-session-state-provider.md) (ASP.NET-Sitzungszustandsanbieter für Azure Redis Cache).
+Lesen Sie die Seite [ASP.NET-Sitzungszustandsanbieter für Azure Redis Cache](cache-aspnet-session-state-provider.md).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -22,11 +22,11 @@ Bei Microsoft setzen wir uns mit großem Engagement dafür ein, dass unsere Dien
 
 Microsoft stellt für seine Dienste Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) bereit, um dem Engagement für Verfügbarkeit und Konnektivität Nachdruck zu verleihen. Die SLAs für einzelne Azure-Dienste finden Sie unter [Vereinbarungen zum Servicelevel (SLAs)](https://azure.microsoft.com/support/legal/sla/).
 
-Azure weist bereits viele integrierte Plattformfunktionen auf, die hoch verfügbare Anwendungen unterstützen. Weitere Informationen zu diesen Diensten finden Sie unter [Notfallwiederherstellung und hohe Verfügbarkeit für Azure-Anwendungen](https://aka.ms/drtechguide).
+Azure weist bereits viele integrierte Plattformfunktionen auf, die hoch verfügbare Anwendungen unterstützen. Weitere Informationen zu diesen Diensten finden Sie unter [Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
 Dieser Artikel behandelt ein echtes Szenario der Notfallwiederherstellung für den Fall, dass eine ganze Region aufgrund einer Naturkatastrophe oder einer umfangreichen Dienstunterbrechung von einem Ausfall betroffen ist. So etwas kommt zwar äußerst selten vor, dennoch müssen Sie für den Ausfall einer gesamten Region vorbereitet sein. Falls eine ganze Region von einer Dienstunterbrechung betroffen ist, sind die lokal redundanten Kopien Ihrer Daten vorübergehend nicht verfügbar. Bei aktivierter Georeplikation sind drei zusätzliche Kopien Ihrer Azure Storage-Blobs und -Tabellen in einer anderen Region gespeichert. Sollte eine gesamte Region ausfallen oder die primäre Region aufgrund einer Katastrophe nicht wiederherstellbar sein, ordnet Azure alle DNS-Einträge der georeplizierten Region zu.
 
->[AZURE.NOTE]Denken Sie daran, dass Sie keine Kontrolle über diesen Prozess haben. Er tritt nur bei einer regionsweiten Dienstunterbrechung auf. Setzen Sie daher auch auf andere anwendungsspezifische Sicherungsstrategien, um eine möglichst hohe Verfügbarkeit zu erreichen. Weitere Informationen finden Sie im Abschnitt zu [Datenstrategien für die Notfallwiederherstellung](https://aka.ms/drtechguide#DSDR).
+>[AZURE.NOTE]Denken Sie daran, dass Sie keine Kontrolle über diesen Prozess haben. Er tritt nur bei einer regionsweiten Dienstunterbrechung auf. Setzen Sie daher auch auf andere anwendungsspezifische Sicherungsstrategien, um eine möglichst hohe Verfügbarkeit zu erreichen. Weitere Informationen finden Sie im Abschnitt zu [Datenstrategien für die Notfallwiederherstellung](../resiliency/resiliency-disaster-recovery-azure-applications.md#data-strategies-for-disaster-recovery).
 
 In den folgenden Informationen zu virtuellen Azure-Computern erfahren Sie, welche Möglichkeiten Sie haben, wenn die gesamte Region, in der Ihre virtuelle Azure-Computeranwendung bereitgestellt wurde, von einer Dienstunterbrechung betroffen ist.
 
@@ -52,9 +52,9 @@ Wenn Sie Azure Site Recovery für Ihre betroffenen virtuellen Azure-Computer kon
 >[AZURE.NOTE]Datenträger mit Betriebssystemen oder mit Daten von virtuellen Azure-Computern werden zwar auf einer sekundären VHD repliziert, aber wenn sie in einem georedundanten Speicher oder einem georedundanten Speicherkonto mit Lesezugriff vorliegen, wird jede VHD separat repliziert. Diese Replikationsebene garantiert keine Konsistenz über die replizierten VHDs hinweg. Wenn Ihre Anwendung und/oder Ihre Datenbanken, die diese Datenträger verwenden, voneinander abhängig sind, ist nicht gewährleistet, dass alle virtuellen Festplatten als einzelne Momentaufnahme repliziert werden. Außerdem ist nicht garantiert, dass das VHD-Replikat aus georedundantem Speicher oder georedundantem Speicher mit Lesezugriff zu einer für Anwendungen konsistenten Momentaufnahme zum Starten der VM führt.
 
 ##Nächste Schritte
-Weitere Informationen zur Implementierung einer Strategie für Notfallwiederherstellung und Hochverfügbarkeit finden Sie unter [Notfallwiederherstellung und hohe Verfügbarkeit für Azure-Anwendungen](https://aka.ms/drtechguide).
+Weitere Informationen zur Implementierung einer Strategie für Notfallwiederherstellung und hohe Verfügbarkeit finden Sie unter [Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-Im [technischen Leitfaden zur Geschäftskontinuität in Azure](http://aka.ms/bctechguide) können Sie detaillierte technische Kenntnisse hinsichtlich der Funktionen einer Cloudplattform erwerben.
+Im [technischen Leitfaden zur Resilienz in Azure](../resiliency/resiliency-technical-guidance.md) können Sie detaillierte technische Kenntnisse hinsichtlich der Funktionen einer Cloudplattform erwerben.
 
 Informationen zum Sichern von VMs finden Sie unter [Sichern von virtuellen Azure-Computern](../backup/backup-azure-vms.md).
 
@@ -62,4 +62,4 @@ Informationen zur Verwendung von Azure Site Recovery zum Orchestrieren und Autom
 
 Wenden Sie sich an den [Kundensupport](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls die Anweisungen nicht klar sein sollten oder Microsoft die Schritte für Sie ausführen soll.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

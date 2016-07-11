@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="02/25/2016"  
+	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 #Azure On-Demand Media Encoder – Überblick und Vergleich
@@ -211,7 +211,7 @@ ErrorDetail.Code|Mögliche Ursachen des Fehlers
 Unknown| Unbekannter Fehler beim Ausführen der Aufgabe
 ErrorDownloadingInputAssetMalformedContent|Kategorie von Fehlern, die Fehler beim Herunterladen von Eingabe-Assets abdeckt, z. B. fehlerhafte Dateinamen, Dateien mit Nulllänge, falsche Formate usw.
 ErrorDownloadingInputAssetServiceFailure|Kategorie von Fehlern, die Probleme auf der Dienstseite abdeckt, z. B. Netzwerk- oder Speicherfehler beim Herunterladen.
-ErrorParsingConfiguration|Kategorie von Fehlern, bei denen die Aufgabe <see cref="MediaTask.PrivateData"/> (Konfiguration) nicht gültig ist, z. B. wenn die Konfiguration keine gültige Systemvoreinstellung ist oder ungültige XML-Daten enthält.
+ErrorParsingConfiguration|Kategorie von Fehlern, bei denen die Aufgabe <siehe cref="MediaTask.PrivateData"/> (Konfiguration) nicht gültig ist, z.B. wenn die Konfiguration keine gültige Systemvoreinstellung ist oder ungültige XML-Daten enthält.
 ErrorExecutingTaskMalformedContent|Kategorie von Fehlern während der Ausführung der Aufgabe, wenn Probleme in den Eingabemediendateien zu Fehlern führen.
 ErrorExecutingTaskUnsupportedFormat|Kategorie von Fehlern, bei denen die bereitgestellten Dateien mit dem Medienprozessor nicht verarbeitet werden können: keine Unterstützung des Medienformats oder fehlende Übereinstimmung mit der Konfiguration. Beispiel: Der Versuch, eine Audioausgabe für ein Asset zu erstellen, die nur Video ermöglicht.
 ErrorProcessingTask|Kategorie anderer Fehler, die für den Medienprozessor beim Verarbeiten der Aufgabe auftreten und sich nicht auf den Inhalt beziehen.
@@ -242,4 +242,4 @@ TransientError|Kategorie von Fehlern, mit der vorübergehende Probleme abgedeckt
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->
