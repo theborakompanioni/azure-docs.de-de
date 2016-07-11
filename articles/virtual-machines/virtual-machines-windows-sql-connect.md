@@ -25,7 +25,10 @@
 
 Dieses Thema beschreibt, wie eine Verbindung mit einer SQL Server-Instanz hergestellt wird, die auf einem virtuellen Azure-Computer ausgeführt wird. Es behandelt eine Reihe [allgemeiner Konnektivitätsszenarien](#connection-scenarios) und beschreibt dann [ausführliche Schritte für das Konfigurieren von SQL Server-Konnektivität auf einer Azure-VM](#steps-for-manually-configuring-sql-server-connectivity-in-an-azure-vm).
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] Klassisches Bereitstellungsmodell. Den Artikel zum klassischen Bereitstellungsmodell finden Sie unter [Herstellen einer Verbindung mit einem virtuellen SQL Server-Computer in Azure (klassische Bereitstellung)](virtual-machines-windows-classic-sql-connect.md).
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] Klassisches Bereitstellungsmodell. 
+
+
+Den Artikel zum klassischen Bereitstellungsmodell finden Sie unter [Herstellen einer Verbindung mit einem virtuellen SQL Server-Computer in Azure (klassische Bereitstellung)](virtual-machines-windows-classic-sql-connect.md).
 
 Eine vollständige exemplarische Vorgehensweise, die Bereitstellung und Konnektivität behandelt, finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server im Azure-Portal](virtual-machines-windows-portal-sql-server-provision.md).
 
