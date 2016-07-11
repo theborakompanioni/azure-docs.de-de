@@ -20,7 +20,7 @@
 
 Es gibt zwei Arten von [Azure RemoteApp-Sammlungen](remoteapp-collections.md):
 
-- Cloud: vollständige Speicherung in Azure. Sie können alle Daten in der Cloud speichern (also eine reine Cloudsammlung), oder Sie verbinden Ihre Sammlung mit einem VNET und speichern die Daten dort.   
+- Cloud: vollständige Speicherung in Azure. Sie können alle Daten in der Cloud speichern (also eine reine Cloudsammlung), oder Sie verbinden Ihre Sammlung mit einem VNET und speichern die Daten dort.
 - Hybrid: Umfasst ein virtuelles Netzwerk für den lokalen Zugriff – dies erfordert die Verwendung von Azure AD und einer lokalen Active Directory-Umgebung.
 
 Dieses Lernprogramm beschreibt die Schritte zur Erstellung einer Cloudsammlung. Es sind vier Schritte notwendig:
@@ -35,9 +35,9 @@ Dieses Lernprogramm beschreibt die Schritte zur Erstellung einer Cloudsammlung. 
 
 Bevor Sie mit der Erstellung der Sammlung beginnen, benötigen Sie Folgendes:
 
-- [Registrieren](https://azure.microsoft.com/services/remoteapp/) Sie sich für Azure RemoteApp. 
+- [Registrieren](https://azure.microsoft.com/services/remoteapp/) Sie sich für Azure RemoteApp.
 - Sammeln Sie Informationen zu den Benutzern, denen Sie Zugriff gewähren möchten. Dies können Informationen zu Microsoft-Konten oder Active Directory-Geschäftskonten für Benutzer sein.
-- Voraussetzung ist, dass Sie entweder eins der im Rahmen Ihres Abonnements bereitgestellten Vorlagenimages verwenden oder das gewünschte Vorlagenimage bereits hochgeladen haben. Falls Sie eine andere Abbildvorlage hochladen möchten, können Sie dies auf der Seite für Abbildvorlagen tun. Klicken Sie auf **Abbildvorlage hochladen** und folgen Sie den Schritten im Assistenten. 
+- Voraussetzung ist, dass Sie entweder eins der im Rahmen Ihres Abonnements bereitgestellten Vorlagenimages verwenden oder das gewünschte Vorlagenimage bereits hochgeladen haben. Falls Sie eine andere Abbildvorlage hochladen möchten, können Sie dies auf der Seite für Abbildvorlagen tun. Klicken Sie auf **Abbildvorlage hochladen** und folgen Sie den Schritten im Assistenten.
 - Möchten Sie das Office 365 ProPlus-Image verwenden? Informationen dazu finden Sie [hier](remoteapp-officesubscription.md).
 - Möchten Sie benutzerdefinierte Apps oder LOB-Programme bereitstellen? Erstellen Sie ein neues [Image](remoteapp-imageoptions.md), und verwenden Sie es in Ihrer Cloud-Sammlung.
 - Ermitteln Sie, ob Sie eine Verbindung mit einem VNET herstellen müssen. Wenn Sie eine Verbindung mit einem VNET herstellen möchten, stellen Sie sicher, dass die [Richtlinien zum Festlegen der Größe](remoteapp-vnetsizing.md) eingehalten werden und dass eine [Verbindung mit RemoteApp](remoteapp-vnet.md) hergestellt werden kann. Weitere Informationen finden Sie im [Artikel zur VNET-Planung](remoteapp-planvnet.md).
@@ -52,7 +52,7 @@ Führen Sie die folgenden Schritte aus, um **eine reine Cloudsammlung zu erstell
 2. Klicken Sie auf **Neu > Schnellerfassung**.
 3. Geben Sie einen Namen für Ihre Sammlung ein, und wählen Sie Ihre Region aus.
 4. Wählen Sie den Plan aus, den Sie verwenden möchten: "Standard" oder "Einfach".
-5. Wählen Sie die Vorlage für diese Sammlung aus. 
+5. Wählen Sie die Vorlage für diese Sammlung aus.
 
 	**Tipp:** Ihr RemoteApp-Abonnement enthält bereits [Vorlagenimages](remoteapp-images.md) mit Office 365- oder Office 2013-Programmen (zu Testzwecken), von denen einige bereits veröffentlicht (z. B. Word) und andere bereit für die Veröffentlichung sind. Sie können auch ein neues [Image](remoteapp-imageoptions.md) erstellen und es in der Cloud-Sammlung verwenden.
 
@@ -76,7 +76,7 @@ Führen Sie die folgenden Schritte aus, um **eine Cloud- und VNET-Sammlung zu er
 
 ## Schritt 2: Konfigurieren der Active Directory-Verzeichnissynchronisierung (optional) ##
 
-Falls Sie Active Directory verwenden möchten, benötigt Azure RemoteApp eine Verzeichnissynchronisierung zwischen Azure Active Directory und Ihrem lokalen Active Directory. Dadurch können Benutzer, Kontakte und Kennwörter mit Ihrem Active Directory-Mandanten in Azure synchronisiert werden. Informationen zur Planung finden Sie unter [Konfigurieren von Active Directory für Azure RemoteApp](remoteapp-ad.md). Informationen finden Sie auch direkt unter [AD Connect](http://blogs.technet.com/b/ad/archive/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect.aspx).
+Falls Sie Active Directory verwenden möchten, benötigt Azure RemoteApp eine Verzeichnissynchronisierung zwischen Azure Active Directory und Ihrem lokalen Active Directory. Dadurch können Benutzer, Kontakte und Kennwörter mit Ihrem Active Directory-Mandanten in Azure synchronisiert werden. Informationen zur Planung finden Sie unter [Konfigurieren von Active Directory für Azure RemoteApp](remoteapp-ad.md). Informationen finden Sie auch direkt unter [AD Connect](https://blogs.technet.microsoft.com/enterprisemobility/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect/).
 
 ## Schritt 3: Veröffentlichen von Apps ##
 
@@ -90,7 +90,7 @@ Sie können in Ihrer Azure RemoteApp-Sammlung mehrere Apps veröffentlichen. Um 
 
 Nach dem Erstellen der Sammlung müssen Sie nun die Benutzer hinzufügen, die Zugriff auf die Remoteressourcen haben sollen. Falls Sie Active Directory verwenden, müssen die entsprechenden Benutzer in dem Active Directory-Mandanten vorhanden sein, der dem Abonnement zugeordnet ist, mit dem Sie diese Sammlung erstellt haben.
 
-1.	Klicken Sie auf der Seite "Schnellstart" auf **Benutzerzugriff konfigurieren**. 
+1.	Klicken Sie auf der Seite "Schnellstart" auf **Benutzerzugriff konfigurieren**.
 2.	Geben Sie das Geschäftskonto (aus Active Directory) oder das Microsoft-Konto ein, dem Sie Zugriff gewähren möchten.
 
 	**Hinweise:**
@@ -109,4 +109,4 @@ Geschafft – Sie haben Ihre Azure RemoteApp-Cloudsammlung erfolgreich erstellt 
 ### Helfen Sie uns, Ihnen zu helfen 
 Wussten Sie schon, dass Sie diesen Artikel im Bereich unten nicht nur bewerten und kommentieren, sondern ihn auch selbst ändern können? Fehlt etwas? Ist etwas nicht ganz richtig? Habe ich etwas geschrieben, das eher verwirrend ist? Scrollen Sie nach oben, und klicken Sie auf **Edit on GitHub**, um die gewünschten Änderungen vorzunehmen. Ihr Vorschlag wird uns vorgelegt, und wenn wir ihn bestätigt haben, werden Ihre Änderungen und Verbesserungen hier angezeigt.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

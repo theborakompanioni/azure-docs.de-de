@@ -19,7 +19,7 @@
 
 # Verwenden von Gruppen mit Lastenausgleich zum Gruppieren von MySQL auf Linux
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
 Der Zweck dieses Artikels besteht darin, die unterschiedlichen verfügbaren Ansätze für die Bereitstellung hoch verfügbarer Linux-basierter Dienste auf Microsoft Azure zu untersuchen und zu veranschaulichen, wobei primär die hohe Verfügbarkeit von MySQL Server untersucht wird. Ein Video, das diesen Ansatz veranschaulicht, steht unter [Channel 9](http://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL) zur Verfügung.
@@ -53,9 +53,9 @@ Ein neues Netzwerk wird erstellt, und ein Subnetz wird im Netzwerk erstellt. Wir
 
 ### Virtuelle Computer
 
-Der erste virtuelle Computer unter Ubuntu 13.10 wird mithilfe eines unterstützten Ubuntu Gallery-Images erstellt und heißt `hadb01`. Während des Vorgangs wird der neue Clouddienst "hadb" erstellt. Wir haben ihn so benannt, um seine freigegebene Art mit Lastenausgleich zu veranschaulichen, die der Dienst aufweist, wenn wir weitere Ressourcen hinzufügen. Das Erstellen von `hadb01` ist einfach und erfolgt über das Portal. Für SSH wird automatisch ein Endpunkt erstellt, und unser erstelltes Netzwerk wird ausgewählt. Wir entscheiden uns zudem für das Erstellen einer neuen Verfügbarkeitsgruppe für die virtuellen Computer.
+Der erste virtuelle Computer unter Ubuntu 13.10 wird mithilfe eines unterstützten Ubuntu Gallery-Images erstellt und heißt `hadb01`. Während des Vorgangs wird der neue Clouddienst "hadb" erstellt. Wir haben ihn so benannt, um seine freigegebene Art mit Lastenausgleich zu veranschaulichen, die der Dienst aufweist, wenn wir weitere Ressourcen hinzufügen. Das Erstellen von `hadb01` ist einfach und erfolgt über das Portal. Für SSH wird automatisch ein Endpunkt erstellt, und unser erstelltes Netzwerk wird ausgewählt. Wir entscheiden uns zudem für das Erstellen einer neuen Verfügbarkeitsgruppe für die virtuellen Computer.
 
-Nachdem der erste virtuelle Computer erstellt wurde (im Prinzip während der Erstellung des Clouddiensts), fahren wir mit dem Erstellen des zweiten virtuellen Computers, `hadb02`, fort. Beim zweiten virtuellen Computer verwenden wir ebenfalls den virtuellen Computer unter Ubuntu 13.10 aus dem Katalog mithilfe des Portals. Wir wählen jedoch den vorhandenen Clouddienst `hadb.cloudapp.net` aus, anstatt einen neuen zu erstellen. Das Netzwerk und die Verfügbarkeitsgruppe sollten automatisch ausgewählt sein. Es wird auch ein SSH-Endpunkt erstellt.
+Nachdem der erste virtuelle Computer erstellt wurde (im Prinzip während der Erstellung des Clouddiensts), fahren wir mit dem Erstellen des zweiten virtuellen Computers, `hadb02`, fort. Beim zweiten virtuellen Computer verwenden wir ebenfalls den virtuellen Computer unter Ubuntu 13.10 aus dem Katalog mithilfe des Portals. Wir wählen jedoch den vorhandenen Clouddienst `hadb.cloudapp.net` aus, anstatt einen neuen zu erstellen. Das Netzwerk und die Verfügbarkeitsgruppe sollten automatisch ausgewählt sein. Es wird auch ein SSH-Endpunkt erstellt.
 
 Nachdem beide virtuellen Computer erstellt wurden, nehmen wir den SSH-Port für `hadb01` (TCP 22) und `hadb02` (automatisch durch Azure zugewiesen) zur Kenntnis.
 
@@ -258,7 +258,7 @@ Beim ersten Installieren von Pacemaker sollte Ihre Konfiguration einfach genug s
     node $id="2" hadb02
       attributes standby="off"
 
-Führen Sie zur Überprüfung `sudo crm configure show` aus. Erstellen Sie jetzt eine Datei (z. B. `/tmp/cluster.conf`) mit den folgenden Ressourcen:
+Führen Sie zur Überprüfung `sudo crm configure show` aus. Erstellen Sie jetzt eine Datei (z. B. `/tmp/cluster.conf`) mit den folgenden Ressourcen:
 
     primitive drbd_mysql ocf:linbit:drbd \
           params drbd_resource="r0" \
@@ -313,7 +313,7 @@ Und dieser Screenshot zeigt beide Knoten, einen Master- und einen Detailknoten:
 
 Nun sind wir bereit für eine automatische Failoversimulation. Dies kann auf zwei Arten erreicht werden: "soft" und "hard". Die Variante "soft" verwendet die Funktion zum Herunterfahren des Clusters: ``crm_standby -U `uname -n` -v on`` Wenn diese auf dem Master verwendet wird, übernimmt der Detailknoten. Denken Sie daran, dies wieder auf "off" zurückzusetzen. (Ansonsten informiert Sie "crm\_mon", dass sich ein Knoten im Standbymodus befindet.)
 
-Bei der harten Variante wird der primäre virtuelle Computer („hadb01“) über das Portal heruntergefahren, oder es wird die Ausführungsebene des virtuellen Computers geändert (d. h. Anhalten, Herunterfahren), dann helfen wir Corosync und Pacemaker, indem wir signalisieren, dass der Master herunterfährt. Sie können dies testen (nützlich für Wartungsfenster). Wir können das Szenario jedoch auch erzwingen, indem wir einfach den virtuellen Computer einfrieren.
+Bei der harten Variante wird der primäre virtuelle Computer („hadb01“) über das Portal heruntergefahren, oder es wird die Ausführungsebene des virtuellen Computers geändert (d. h. Anhalten, Herunterfahren), dann helfen wir Corosync und Pacemaker, indem wir signalisieren, dass der Master herunterfährt. Sie können dies testen (nützlich für Wartungsfenster). Wir können das Szenario jedoch auch erzwingen, indem wir einfach den virtuellen Computer einfrieren.
 
 ## STONITH
 
@@ -336,8 +336,8 @@ Es gelten die folgenden Einschränkungen:
 - Das Ressourcenskript "linbit DRBD", das DRBD als eine Ressource in Pacemaker verwaltet, verwendet beim Herunterfahren eines Knotens `drbdadm down`, selbst wenn der Knoten gerade in den Standbymodus wechselt. Dies ist nicht optimal, da der Detailknoten die DRBD-Ressource nicht synchronisiert, während der Master Schreibvorgänge abruft. Wenn der Master keinen normalen Fehler aufweist, kann der Slave einen älteren Dateisystemstatus übernehmen. Zur Behebung dieses Problems stehen zwei potenzielle Möglichkeiten zur Verfügung:
   - Erzwingen eines `drbdadm up r0` in allen Clusterknoten über einen lokalen (nicht gruppierten) Watchdog oder
   - Bearbeiten des Skripts "linbit DRBD", wodurch sichergestellt wird, dass `down` nicht in `/usr/lib/ocf/resource.d/linbit/drbd` aufgerufen wird.
-- Der Lastenausgleich benötigt mindestens 5 Sekunden, um zu antworten. Anwendungen sollten daher clusterfähig und in Bezug auf eine Zeitüberschreitung toleranter sein. Auch andere Architekturen können hilfreich sein, beispielsweise In-App-Warteschlangen, Middleware-Abfragen usw.
+- Der Lastenausgleich benötigt mindestens 5 Sekunden, um zu antworten. Anwendungen sollten daher clusterfähig und in Bezug auf eine Zeitüberschreitung toleranter sein. Auch andere Architekturen können hilfreich sein, beispielsweise In-App-Warteschlangen, Middleware-Abfragen usw.
 - Die MySQL-Feinabstimmung ist erforderlich, um sicherzustellen, dass der Schreibvorgang in einer vernünftigen Geschwindigkeit erfolgt und Zwischenspeicherungen möglichst häufig auf den Datenträger übertragen werden, um Speicherverluste zu vermeiden.
 - Die Schreibleistung hängt vom Interconnect des virtuellen Computers im virtuellen Switch ab, da es sich hierbei um den Mechanismus handelt, der durch DRBD zum Replizieren des Geräts verwendet wird.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0629_2016-->

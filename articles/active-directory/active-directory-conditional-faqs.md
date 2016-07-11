@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Häufig gestellte Fragen zum bedingten Zugriff | Microsoft Azure"
-	description="Häufig gestellte Fragen zum bedingten Zugriff"
+	description="Häufig gestellte Fragen zum bedingten Zugriff "
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/15/2016"
+	ms.date="06/23/2016"
 	ms.author="femila"/>
 
 # Häufig gestellte Fragen zum bedingten Zugriff
@@ -30,4 +30,4 @@ Ja.
 ## Warum kann ich keine Richtlinien für Clientanwendungen wie Word oder Outlook festlegen?
 Eine Richtlinie für den bedingten Zugriff legt Anforderungen für den Zugriff auf einen Dienst fest und wird erzwungen, wenn die Authentifizierung für diesen Dienst erfolgt. Die Richtlinie wird also nicht direkt in einer Clientanwendung festgelegt, sondern wird beim Aufrufen eines Diensts angewendet. Eine für SharePoint festgelegte Richtlinie wird auf Clients angewendet, die SharePoint aufrufen. Eine für Exchange festgelegte Richtlinie wird auf Outlook angewendet.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

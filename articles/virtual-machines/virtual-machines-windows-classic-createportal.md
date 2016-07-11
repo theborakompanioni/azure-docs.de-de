@@ -19,7 +19,7 @@
 
 # Erstellen eines benutzerdefinierten virtuellen Computers mit Windows
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 [AZURE.INCLUDE [virtual-machines-common-classic-createportal](../../includes/virtual-machines-common-classic-createportal.md)]
 
@@ -30,4 +30,4 @@
 
 Sie können mit dem klassischen Portal auch [einen benutzerdefinierten virtuellen Computer unter Linux erstellen](virtual-machines-linux-classic-createportal.md).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

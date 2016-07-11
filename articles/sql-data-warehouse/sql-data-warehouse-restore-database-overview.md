@@ -3,7 +3,7 @@
    description="Übersicht über die Wiederherstellungsoptionen zur Wiederherstellung einer Datenbank in Azure SQL Data Warehouse."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="elfisher"
+   authors="sonyam"
    manager="barbkess"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/15/2016"
-   ms.author="elfish;barbkess;sonyama"/>
+   ms.date="06/28/2016"
+   ms.author="sonyama;barbkess"/>
 
 
 # Wiederherstellen einer Azure SQL Data Warehouse-Instanz (Übersicht)
@@ -23,7 +23,9 @@
 - [Übersicht][]
 - [Portal][]
 - [PowerShell][]
-- [REST][] Azure SQL Data Warehouse schützt Ihre Daten sowohl durch lokal redundanten Speicher als auch durch automatisierte Sicherungen. Mit automatisierte Sicherungen können Sie Datenbanken ohne Verwaltungsaufwand vor versehentlicher Beschädigung oder Löschung schützen. Falls ein Benutzer versehentlich oder nebenbei Daten ändert oder löscht, können Sie einen früheren Zustand der Datenbank wiederherstellen und so die Geschäftskontinuität gewährleisten. SQL Data Warehouse verwendet Azure Storage-Momentaufnahmen, um Ihre Datenbank nahtlos und ohne Ausfallzeiten zu sichern.
+- [REST][]
+
+Azure SQL Data Warehouse schützt Ihre Daten sowohl durch lokal redundanten Speicher als auch durch automatisierte Sicherungen. Mit automatisierte Sicherungen können Sie Datenbanken ohne Verwaltungsaufwand vor versehentlicher Beschädigung oder Löschung schützen. Falls ein Benutzer versehentlich oder nebenbei Daten ändert oder löscht, können Sie einen früheren Zustand der Datenbank wiederherstellen und so die Geschäftskontinuität gewährleisten. SQL Data Warehouse verwendet Azure Storage-Momentaufnahmen, um Ihre Datenbank nahtlos und ohne Ausfallzeiten zu sichern.
 
 ## Automatisierte Sicherungen
 
@@ -45,7 +47,7 @@ Wenn eine Sicherung für mehr als sieben Tage aufbewahrt werden soll, können Si
 
 ## Datenredundanz
 
-Zusätzlich zu Sicherungen schützt SQL Data Warehouse Ihre Daten auch durch [lokal redundanten (LRS)][] Azure Premium-Speicher. Mehrere synchrone Kopien der Daten werden im lokalen Rechenzentrum behalten, um transparenten Datenschutz bei lokalen Ausfällen sicherzustellen. Die Datenredundanz gewährleistet, dass Ihre Daten gegen Infrastrukturprobleme wie Datenträgerausfälle oder Ähnliches geschützt sind. Außerdem gewährleistet die Datenredundanz Geschäftskontinuität mit einer fehlertoleranten und hoch verfügbaren Infrastruktur.
+Zusätzlich zu Sicherungen schützt SQL Data Warehouse Ihre Daten auch durch [lokal redundanten][] Azure Premium-Speicher. Mehrere synchrone Kopien der Daten werden im lokalen Rechenzentrum behalten, um transparenten Datenschutz bei lokalen Ausfällen sicherzustellen. Die Datenredundanz gewährleistet, dass Ihre Daten gegen Infrastrukturprobleme wie Datenträgerausfälle oder Ähnliches geschützt sind. Außerdem gewährleistet die Datenredundanz Geschäftskontinuität mit einer fehlertoleranten und hoch verfügbaren Infrastruktur.
 
 ## Wiederherstellen einer Datenbank
 
@@ -53,13 +55,13 @@ Die Wiederherstellung einer SQL Data Warehouse-Instanz ist ganz einfach und kann
 
 
 ## Nächste Schritte
-Informationen zu den Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank-Editionen finden Sie in der [Azure SQL-Datenbank-Übersicht zur Geschäftskontinuität][].
+Informationen zu den Geschäftskontinuitätsfeatures von Azure SQL-Datenbank-Editionen finden Sie in der [Übersicht über die Geschäftskontinuität der Azure SQL-Datenbank][].
 
 <!--Image references-->
 
 <!--Article references-->
-[Azure SQL-Datenbank-Übersicht zur Geschäftskontinuität]: ./sql-database-business-continuity.md
-[lokal redundanten (LRS)]: ../storage/storage-redundancy.md
+[Übersicht über die Geschäftskontinuität der Azure SQL-Datenbank]: ./sql-database-business-continuity.md
+[lokal redundanten]: ../storage/storage-redundancy.md
 [Übersicht]: ./sql-data-warehouse-restore-database-overview.md
 [Portal]: ./sql-data-warehouse-restore-database-portal.md
 [PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
@@ -70,4 +72,4 @@ Informationen zu den Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank-E
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

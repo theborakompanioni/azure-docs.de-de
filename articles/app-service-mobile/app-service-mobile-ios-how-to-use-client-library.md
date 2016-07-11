@@ -24,7 +24,7 @@ Dieser Artikel beschreibt gängige Szenarien für die Verwendung des aktuellsten
 
 ## Referenzdokumentation
 
-Das Referenzdokumentation für das iOS-Client-SDK finden Sie hier: [Azure Mobile Apps iOS-Client-Referenz](http://azure.github.io/azure-mobile-services/iOS/v3/).
+Das Referenzdokumentation für das iOS-Client-SDK finden Sie hier: [Azure Mobile Apps iOS-Client-Referenz](http://azure.github.io/azure-mobile-apps-ios-client/).
 
 ##<a name="Setup"></a>Einrichtung und Voraussetzungen
 
@@ -525,7 +525,7 @@ und der Pod:
 
 * Ersetzen Sie **INSERT-CLIENT-ID-HERE** durch die Client-ID, die Sie aus der nativen Clientanwendung kopiert haben.
 
-* Ersetzen Sie mithilfe des HTTPS-Schemas **INSERT-REDIRECT-URI-HERE** durch den Endpunkt _/.auth/login/done_ Ihrer Website. Dieser Wert sollte etwa so aussehen: \__https://contoso.azurewebsites.net/.auth/login/done_.
+* Ersetzen Sie mithilfe des HTTPS-Schemas **INSERT-REDIRECT-URI-HERE** durch den Endpunkt _/.auth/login/done_ Ihrer Website. Dieser Wert sollte etwa so aussehen: \_https://contoso.azurewebsites.net/.auth/login/done_.
 
 **Objective-C**:
 
@@ -792,4 +792,4 @@ Mithilfe von Fabric für iOS können Sie Benutzer über Twitter bei Ihrer App an
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md#Mobile_Tables
 [Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="04/05/2016"
+    ms.date="06/27/2016"
     ms.author="elizapo" />
 
 
@@ -28,7 +28,7 @@ Dieses Thema enthält die derzeit unterstützten Clients sowie Informationen zum
 
 Sie können mit einem der folgenden Schritte auf RemoteApp zugreifen, wenn auf dem Gerät eines dieser Betriebssysteme ausgeführt wird:
 
- - Windows 10 
+ - Windows 10
  - Windows 8.1
  - Windows 8
  - Windows 7 Service Pack 1
@@ -58,7 +58,7 @@ Nachdem Sie den Client auf Ihrem Gerät installiert und gestartet haben, können
 
 Nachdem Sie die Microsoft Remotedesktop-App aus dem Google Play Store installiert haben, wird sie in Ihrer App-Liste unter **Remotedesktop** aufgeführt.
 
-1. Wenn Sie die App starten, gelangen Sie zu einem leeren Connection Center, es sei denn, Sie haben die App bereits verwendet. Um Azure RemoteApp zu verwenden, tippen Sie auf die Schaltfläche „Hinzufügen“ (**""+""**) und dann auf **Azure RemoteApp**.	
+1. Wenn Sie die App starten, gelangen Sie zu einem leeren Connection Center, es sei denn, Sie haben die App bereits verwendet. Um Azure RemoteApp zu verwenden, tippen Sie auf die Schaltfläche „Hinzufügen“ (**""+""**) und dann auf **Azure RemoteApp**.
 
 	 ![Leeres Connection Center](./media/remoteapp-clients/Android1.png)
 
@@ -207,4 +207,4 @@ Nachdem Sie die Microsoft Remotedesktop-App aus dem Windows Phone 8.1 Store ins
 	![Demofeed für Azure RemoteApp](./media/remoteapp-clients/WinPhone8.png)
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0629_2016-->

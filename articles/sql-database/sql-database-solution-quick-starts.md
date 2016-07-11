@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="sqldb-quickstart"
-   ms.date="06/01/2016"
+   ms.date="06/22/2016"
    ms.author="carlrab"/>
 
 # Übersicht über die Schnellstarts zur Azure SQL-Datenbanklösung
@@ -30,7 +30,7 @@ Unter [Verwalten mehrerer elastischer Pools in der SQL-Datenbank mithilfe von Po
 
 Dieser Lösungsschnellstart bietet eine Lösung für ein SaaS-Szenario (Software-as-a-Solution), das elastische Pools nutzt, um ein kostengünstiges, skalierbares Datenbank-Back-End einer SaaS-Anwendung bereitzustellen. Im Rahmen dieser Lösung werden Sie durch die Implementierung einer Web-App geführt, mit der Sie die durch einen Last-Generator auf einen elastischen Pool ausgeübte Last anhand eines benutzerdefinierten Dashboards, das das Azure-Portal ergänzt, visualisieren können.
 
-Unter [Saas-scenario-with-elastic-pools](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools) im GitHub-Beispielrepository zu SQL Server finden Sie eine Last-Generator- und eine Überwachungs-Web-App sowie Dokumentation zu Funktionen und Verwendung.
+Im GitHub-Beispielrepository zu SQL Server finden Sie unter [Elastic Pool Custom Dashboard for Saas](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools-custom-dashboard) (Benutzerdefiniertes Dashboard für SaaS mit elastischem Pool) eine Last-Generator- und eine Überwachungs-Web-App sowie Dokumentation zu Funktionen und Verwendung.
 
 ## Erstellen einer Azure SQL-Datenbank unter Verwendung von Entity Framework und Code First-Entwicklung
 
@@ -52,4 +52,4 @@ Bei diesem Beispiel handelt es sich um eine mehrinstanzenfähige Webanwendung na
 
 [Kennenlernen der Azure SQL-Datenbank-Tutorials](sql-database-explore-tutorials.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

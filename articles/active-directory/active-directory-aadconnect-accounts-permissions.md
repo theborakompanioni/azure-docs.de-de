@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="05/19/2016"
+   ms.date="06/27/2016"
    ms.author="andkjell;billmath"/>
 
 
@@ -107,7 +107,7 @@ Wenn Sie Express-Einstellungen verwenden, wird ein Konto für die Synchronisieru
 ![AD-Konto](./media/active-directory-aadconnect-accounts-permissions/adsyncserviceaccount.png)
 
 ### Azure AD Connect-Synchronisierungsdienstkonten
-Der Installations-Assistent erstellt ein lokales Dienstkonto (sofern das Konto nicht zur Verwendung in benutzerdefinierten Einstellungen angegeben wird). Das Konto ist mit dem Präfix **AAD\_** versehen und wird zur Ausführung des eigentlichen Synchronisierungsdiensts verwendet. Wenn Sie Azure AD Connect auf einem Domänencontroller installieren, wird das Konto in der Domäne erstellt. Wenn Sie SQL Server auf einem Remoteserver verwenden oder wenn Sie einen Proxy verwenden, für den eine Authentifizierung erforderlich ist, muss sich das Dienstkonto **AAD\_** in der Domäne befinden.
+Der Installations-Assistent erstellt ein lokales Dienstkonto (sofern das Konto nicht zur Verwendung in benutzerdefinierten Einstellungen angegeben wird). Das Konto ist mit dem Präfix **AAD_** versehen und wird zur Ausführung des eigentlichen Synchronisierungsdiensts verwendet. Wenn Sie Azure AD Connect auf einem Domänencontroller installieren, wird das Konto in der Domäne erstellt. Wenn Sie einen Remoteserver mit SQL Server oder einen Proxy verwenden, für den eine Authentifizierung erforderlich ist, muss sich das Dienstkonto **AAD_** in der Domäne befinden.
 
 ![Synchronisierungsdienstkonto](./media/active-directory-aadconnect-accounts-permissions/syncserviceaccount.png)
 
@@ -134,4 +134,4 @@ Das Dienstkonto wird mit einem langen komplexen Kennwort erstellt, das nicht abl
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

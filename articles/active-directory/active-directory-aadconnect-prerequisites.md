@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="05/24/2016"
+   ms.date="06/27/2016"
    ms.author="andkjell;billmath"/>
 
 # Voraussetzungen für Azure AD Connect
@@ -45,8 +45,8 @@ Vor der Installation von Azure AD Connect gibt es einige Dinge, die Sie benötig
 - Azure AD Connect erfordert eine SQL Server-Datenbank zum Speichern von Identitätsdaten. Standardmäßig wird SQL Server 2012 Express LocalDB (eine Light-Version von SQL Server Express) installiert, und das Dienstkonto für den Dienst wird auf dem lokalen Computer erstellt. Für SQL Server Express gilt ein 10-GB-Limit, mit dem Sie etwa 100.000 Objekte verwalten können. Wenn Sie eine höhere Anzahl von Verzeichnisobjekten verwalten möchten, müssen Sie im Installations-Assistenten auf eine andere Version von SQL Server verweisen.
 - Wenn Sie eine separate SQL Server-Instanz verwenden, gelten die folgenden Anforderungen:
     - Azure AD Connect unterstützt sämtliche Versionen von Microsoft SQL Server – von SQL Server 2008 (mit SP4) bis hin zu SQL Server 2014. Microsoft Azure SQL-Datenbank wird als Datenbank **nicht unterstützt**.
-    - Sie müssen eine SQL-Sortierung ohne Berücksichtigung der Groß- und Kleinschreibung verwenden. Diese werden durch „\_CI\_“ in ihrem Namen identifiziert. Eine Sortierung mit Berücksichtigung der Groß- und Kleinschreibung wird **nicht unterstützt**. Sie erkennen sie am „\_CS\_“ im Namen.
-    - Sie können jeweils nur ein Synchronisationsmodul pro Datenbankinstanz haben. Es wird **nicht unterstützt**, die Datenbankinstanz mit FIM/MIM-Synchronisierung, DirSync oder Azure AD Sync freizugeben.
+    - Sie müssen eine SQL-Sortierung ohne Berücksichtigung der Groß- und Kleinschreibung verwenden. Diese werden durch „\_CI_“ in ihrem Namen identifiziert. Eine Sortierung mit Berücksichtigung der Groß- und Kleinschreibung und „\_CS_“ im Namen wird **nicht unterstützt**.
+    - Sie können jeweils nur ein Synchronisationsmodul pro Datenbankinstanz haben. Die Freigabe der Datenbankinstanz mit FIM/MIM Sync, DirSync oder Azure AD Sync wird **nicht unterstützt**.
 
 ### Konten
 - Ein globales Azure AD-Administratorkonto für das Azure AD-Verzeichnis, das Sie integrieren möchten. Dabei muss es sich um ein **Schul- oder Geschäftskonto** handeln, und es darf kein **Microsoft-Konto** sein.
@@ -54,14 +54,14 @@ Vor der Installation von Azure AD Connect gibt es einige Dinge, die Sie benötig
 - [Konten in Active Directory](active-directory-aadconnect-accounts-permissions.md), wenn Sie den Installationspfad für benutzerdefinierte Einstellungen verwenden.
 
 ### Azure AD Connect-Serverkonfiguration
-- Wenn Ihre globalen Administratoren MFA aktiviert haben, muss die URL **https://secure.aadcdn.microsoftonline-p.com** in der Liste der vertrauenswürdigen Websites aufgeführt sein. Andernfalls werden Sie aufgefordert, sie der Liste vertrauenswürdiger Websites hinzuzufügen, bevor Sie zu einer MFA-Überprüfung aufgefordert werden. Sie können dafür den Internet Explorer verwenden.
+- Wenn für Ihre globalen Administratoren die MFA aktiviert ist, muss die URL **https://secure.aadcdn.microsoftonline-p.com** in der Liste der vertrauenswürdigen Websites enthalten sein. Andernfalls werden Sie aufgefordert, sie der Liste vertrauenswürdiger Websites hinzuzufügen, bevor Sie zu einer MFA-Überprüfung aufgefordert werden. Sie können dafür den Internet Explorer verwenden.
 
 ### Konnektivität
 - Der Azure AD Connect-Server benötigt die DNS-Auflösung sowohl für das Intranet als auch für das Internet. Der DNS-Server muss Namen sowohl zu Ihrem lokalen Active Directory als auch zu den Azure AD-Endpunkten auflösen können.
 - Wenn Sie in Ihrem Intranet Firewalls verwenden und die Ports zwischen den Azure AD Connect-Servern und Ihren Domänencontrollern öffnen müssen, finden Sie Informationen hierzu unter [Azure AD Connect-Ports](active-directory-aadconnect-ports.md).
 - Wenn Ihr Proxy den Zugriff auf bestimmte URLs beschränkt, müssen die unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) dokumentierten URLs im Proxy geöffnet werden.
     - Wenn Sie die Microsoft Cloud in Deutschland oder die Microsoft Azure Government-Cloud verwenden, finden Sie die URLs unter [Azure AD Connect: besondere Überlegungen zu Synchronisierungsdienstinstanzen](active-directory-aadconnect-instances.md).
-- Azure AD Connect verwendet standardmäßig TLS 1.0 für die Kommunikation mit Azure AD. Sie können dies in TLS 1.2 ändern, indem Sie die Schritte in [Aktivieren von TLS 1.2 für Azure AD Connect](#enable-tls-12-for-azure-ad-connect) befolgen.
+- Azure AD Connect verwendet standardmäßig TLS 1.0 für die Kommunikation mit Azure AD. Sie können dies in TLS 1.2 ändern, indem Sie die Schritte in [Aktivieren von TLS 1.2 für Azure AD Connect](#enable-tls-12-for-azure-ad-connect) ausführen.
 - Wenn Sie einen ausgehenden Proxy für die Verbindung mit dem Internet verwenden, muss die folgende Einstellung in der Datei **C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\Config\\machine.config** für den Installations-Assistenten und die Azure AD Connect-Synchronisierung hinzugefügt werden, um die Verbindung mit dem Internet und Azure AD zu ermöglichen. Dieser Text muss am Ende der Datei eingegeben werden. In diesem Codeabschnitt steht „&lt;PROXYADRESS&gt;“ für die Proxy-IP-Adresse oder den Hostnamen.
 
 ```
@@ -92,7 +92,7 @@ Vor der Installation von Azure AD Connect gibt es einige Dinge, die Sie benötig
 
 Weitere Informationen über das [<defaultProxy>-Element](https://msdn.microsoft.com/library/kd3cf2ex.aspx) finden Sie bei MSDN.
 
-Falls Verbindungsprobleme auftreten, sehen Sie unter [Problembehebung bei Konnektivitätsproblemen](active-directory-aadconnect-troubleshoot-connectivity.md) nach.
+Informationen zu ggf. auftretenden Konnektivitätsproblemen finden Sie unter [Problembehebung bei Konnektivitätsproblemen mit Azure AD Connect](active-directory-aadconnect-troubleshoot-connectivity.md).
 
 ### Andere
 - Optional: Ein Testbenutzerkonto zur Überprüfung der Synchronisierung.
@@ -106,7 +106,7 @@ Azure AD Connect ist abhängig von Microsoft PowerShell und .NET Framework 4.
   - Microsoft PowerShell ist standardmäßig installiert, es ist keine Aktion erforderlich.
   - .NET Framework 4.5.1 und neuere Versionen werden über Windows Update angeboten. Stellen Sie in der Systemsteuerung sicher, dass die neuesten Updates von Windows Server installiert sind.
 - Windows Server 2008 R2 und Windows Server 2012
-  - Die neueste Version von Microsoft PowerShell steht unter **Windows Management Framework 4.0** im [Microsoft Download Center](http://www.microsoft.com/downloads) zur Verfügung.
+  - Die neueste Version von Microsoft PowerShell steht im [Microsoft Download Center](http://www.microsoft.com/downloads) unter **Windows Management Framework 4.0** zur Verfügung.
   - .NET Framework 4.5.1 und neuere Versionen sind im [Microsoft Download Center](http://www.microsoft.com/downloads) verfügbar.
 - Windows Server 2008
   - Die neueste unterstützte Version von PowerShell steht im **Windows Management Framework 3.0** im [Microsoft Download Center](http://www.microsoft.com/downloads) zur Verfügung.
@@ -127,7 +127,7 @@ Azure AD Connect verwendet standardmäßig TLS 1.0 für die Verschlüsselung der
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319
 "SchUseStrongCrypto"=dword:00000001
 ```
-4. Wenn Sie TLS 1.2 auch zwischen dem Server mit dem Synchronisierungsmodul und einer SQL Server-Remoteinstanz aktivieren möchten, stellen Sie sicher, dass die erforderlichen Versionen für die [TLS 1.2-Unterstützung für Microsoft SQL Server](https://support.microsoft.com/kb/3135244) installiert sind.
+4. Wenn Sie TLS 1.2 auch zwischen dem Server mit dem Synchronisierungsmodul und einer SQL Server-Remoteinstanz aktivieren möchten, vergewissern Sie sich, dass die erforderlichen Versionen für die [TLS 1.2-Unterstützung für Microsoft SQL Server](https://support.microsoft.com/kb/3135244) installiert sind.
 
 ## Voraussetzungen für die Verbundinstallation und -konfiguration
 
@@ -154,7 +154,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319
 - Sie können ein selbstsigniertes Zertifikat für Verbundserver in einer Testumgebung verwenden. Bei einer Produktionsumgebung wird jedoch empfohlen, dass Sie das Zertifikat von einer öffentlichen Zertifizierungsstelle beziehen.
     - Wenn Sie ein Zertifikat verwenden, das nicht öffentlich vertrauenswürdig ist, stellen Sie sicher, dass dem auf jedem Webanwendungsproxy-Server installierten Zertifikat sowohl auf dem lokalen Server als auch auf allen Verbundservern vertraut wird.
 - Die Identität des Zertifikats muss mit dem Namen des Verbunddiensts (z. B. „sts.contoso.com“) übereinstimmen.
-    - Die Identität ist die Erweiterung eines alternativen Antragstellernamens (SAN) des Typs "dNSName". Wenn keine SAN-Einträge vorhanden sind, wird der Name des Antragstellers als allgemeiner Name angegeben.  
+    - Die Identität ist die Erweiterung eines alternativen Antragstellernamens (SAN) des Typs "dNSName". Wenn keine SAN-Einträge vorhanden sind, wird der Name des Antragstellers als allgemeiner Name angegeben.
     - Im Zertifikat können mehrere SAN-Einträge hinterlegt werden, sofern einer von ihnen mit dem Namen des Verbunddiensts übereinstimmt.
     - Wenn Sie die Arbeitsbereichverknüpfung verwenden möchten, ist ein zusätzliches SAN mit dem Wert **enterpriseregistration** gefolgt vom UPN-Suffix des Unternehmens erforderlich, z. B. **enterpriseregistration.contoso.com**.
 - Auf CNG-Schlüsseln (CryptoAPI Next Generation) und Schlüsselspeicheranbietern basierende Zertifikate werden nicht unterstützt. Dies bedeutet, dass Sie ein CSP-basiertes Zertifikat (Kryptografie-Service Provider) verwenden müssen, kein Zertifikat von einem Schlüsselspeicheranbieter.
@@ -197,4 +197,4 @@ Im Folgenden sind die Mindestanforderungen für Computer mit AD FS oder Webanwe
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

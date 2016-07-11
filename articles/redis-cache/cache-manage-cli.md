@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/13/2016" 
+	ms.date="06/28/2016" 
 	ms.author="sdanie"/>
 
 # Erstellen und Verwalten von Azure Redis Cache mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI)
@@ -50,9 +50,9 @@ Die folgenden Eigenschaften werden beim Erstellen und Aktualisieren von Redis Ca
 | Shard-Anzahl | -r, --shard-count | Die Anzahl der zu erstellenden Shards auf einem Premium-Clustercache mit Clustering. |
 | Virtuelles Netzwerk | -v, --virtual-network | Gibt die genaue ARM-Ressourcen-ID des Virtual Network an, in dem der Cache bereitgestellt wird, wenn Sie den Redis-Cache in einem VNET hosten. Beispielformat: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | key type | -t, --key-type | Der Typ des zu erneuernden Schlüssels. Gültige Werte: [Primary, Secondary] |
-| StaticIP | -p, --static-ip <static-ip> | Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit eine eindeutige IP-Adresse im Subnetz für den Cache an. Wird keine IP-Adresse angegeben, wird eine für Sie aus dem Subnetz ausgewählt. |
-| Subnetz | t, --subnet <subnet> | Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit den Namen des Subnetzes an, in dem der Cache bereitgestellt wird. |
-| VirtualNetwork | -v, --virtual-network <virtual-network> | Gibt die genaue ARM-Ressourcen-ID des Virtual Network an, in dem der Cache bereitgestellt wird, wenn Sie den Redis-Cache in einem VNET hosten. Beispielformat: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| StaticIP | -p, --static-ip <Statische IP-Adresse> | Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit eine eindeutige IP-Adresse im Subnetz für den Cache an. Wird keine IP-Adresse angegeben, wird eine für Sie aus dem Subnetz ausgewählt. |
+| Subnetz | t, --subnet <Subnetz> | Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit den Namen des Subnetzes an, in dem der Cache bereitgestellt wird. |
+| VirtualNetwork | -v, --virtual-network <virtuelles Netzwerk> | Gibt die genaue ARM-Ressourcen-ID des Virtual Network an, in dem der Cache bereitgestellt wird, wenn Sie den Redis-Cache in einem VNET hosten. Beispielformat: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | Abonnement | -s, --subscription | Die Abonnement-ID. |
 
 ## Übersicht über alle Redis Cache-Befehle
@@ -271,4 +271,4 @@ Wenn Sie weitere Informationen zu diesem Befehl benötigen, führen Sie den `azu
 	help:
 	help:    Current Mode: arm (Azure Resource Management)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

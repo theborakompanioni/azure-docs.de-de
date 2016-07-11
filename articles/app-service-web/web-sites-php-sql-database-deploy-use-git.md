@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="02/09/2016" 
+	ms.date="06/24/2016" 
 	ms.author="robmcm"/>
 
 # Erstellen einer PHP-SQL-Web-App und Bereitstellen in Azure App Service mit Git
@@ -52,7 +52,7 @@ Befolgen Sie diese Schritte, um eine Azure-Web-App und eine SQL-Datenbank zu ers
 
 6. Klicken Sie auf die einzelnen Bereiche (**Ressourcengruppe**, **Web-App**, **Datenbank** und **Abonnement**), und geben Sie die Werte für die erforderlichen Felder ein, oder wählen Sie sie aus:
 	
-	- Geben Sie den gewünschten URL-Namen ein.	
+	- Geben Sie den gewünschten URL-Namen ein.
 	- Konfigurieren der Anmeldeinformationen für die Datenbank
 	- Wählen Sie die Ihnen am nächsten gelegene Region aus.
 
@@ -131,13 +131,13 @@ Gehen Sie wie unten beschrieben vor, um die Anwendung lokal zu erstellen und aus
 		echo "<h3>Table created.</h3>";
 		?>
 
-	Die Werte für <code>$user</code> und <code>$pwd</code> müssen durch den lokalen SQL Server-Benutzernamen und das dazugehörige Kennwort ersetzt werden.
+	Die Werte für <code>$user</code> und <code>$pwd</code> müssen durch den lokalen SQL Server-Benutzernamen und das dazugehörige Kennwort ersetzt werden.
 
 4. Geben Sie in einer Terminalsitzung im Stammverzeichnis der Anwendung den folgenden Befehl ein:
 
 		php -S localhost:8000
 
-4. Öffnen Sie einen Webbrowser, und navigieren Sie zu ****http://localhost:8000/createtable.php**. Dadurch wird die Tabelle `registration_tbl` in der Datenbank erstellt.
+4. Öffnen Sie einen Webbrowser, und navigieren Sie zu **http://localhost:8000/createtable.php**. Dadurch wird die Tabelle `registration_tbl` in der Datenbank erstellt.
 
 5. Öffnen Sie die Datei **index.php** in einem Texteditor oder IDE, und fügen Sie den Basis-HTML- und CSS-Code für die Seite hinzu (der PHP-Code wird in einem späteren Schritt hinzugefügt).
 
@@ -233,7 +233,7 @@ Gehen Sie wie unten beschrieben vor, um die Anwendung lokal zu erstellen und aus
 			echo "<h3>No one is currently registered.</h3>";
 		}
 
-Nun können Sie zu ****http://localhost:8000/index.php** navigieren, um die Anwendung zu testen.
+Nun können Sie zu **http://localhost:8000/index.php** navigieren, um die Anwendung zu testen.
 
 ##Veröffentlichen der Anwendung
 
@@ -298,4 +298,4 @@ Befolgen Sie die folgenden Schritte, um Änderungen an der Anwendung zu veröffe
 [pdo-sqlsrv]: http://php.net/pdo_sqlsrv
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -19,9 +19,8 @@
 # Wiederherstellen des Zustands einer Azure SQL-Datenbank zu einem früheren Zeitpunkt mit PowerShell
 
 > [AZURE.SELECTOR]
-- [Übersicht](sql-database-point-in-time-restore.md)
-- [Azure-Portal](sql-database-point-in-time-restore-portal.md)
-- [PowerShell](sql-database-point-in-time-restore-powershell.md)
+- [Übersicht](sql-database-recovery-using-backups.md)
+- [Point-in-Time-Wiederherstellung: im Azure-Portal](sql-database-point-in-time-restore-portal.md)
 
 In diesem Artikel erfahren Sie, wie Sie auf der [Grundlage automatisierter SQL-Datenbanksicherungen](sql-database-automated-backups.md) mithilfe von PowerShell einen früheren Zustand Ihrer Datenbank wiederherstellen.
 
@@ -48,15 +47,14 @@ In diesem Artikel erfahren Sie, wie Sie auf der [Grundlage automatisierter SQL-D
     
         Restore-AzureRmSqlDatabase –FromPointInTimeBackup –PointInTime UTCDateTime -ResourceGroupName $Database.ResourceGroupName -ServerName $Database.ServerName -TargetDatabaseName "RestoredDatabase" –ResourceId $Database.ResourceID –ElasticPoolName "elasticpool01"
 
+
 ## Nächste Schritte
 
-- Ausführliche Schritte zur Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt mithilfe des Azure-Portals finden Sie unter [Point-in-Time-Wiederherstellung mithilfe des Azure-Portals](sql-database-point-in-time-restore-portal.md).
-- Informationen zur Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt mithilfe der REST-API finden Sie unter [Point-In-Time-Wiederherstellung mithilfe der REST-API](https://msdn.microsoft.com/library/azure/mt163685.aspx).
-- Einen Überblick über die Point-in-Time-Wiederherstellung finden Sie unter [Point-In-Time-Wiederherstellung](sql-database-point-in-time-restore.md).
-- Eine vollständige Erläuterung der Wiederherstellung nach einem Benutzer- oder Anwendungsfehler finden Sie unter [Wiederherstellen einer Azure-SQL-Datenbank nach einem Benutzerfehler](sql-database-user-error-recovery.md).
+- Eine Übersicht zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
+- Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
+- Informationen über Entwurfs- und Wiederherstellungsszenarien für die Geschäftskontinuität finden Sie unter [Geschäftskontinuitätsszenarien](sql-database-business-continuity-scenarios.md).
+- Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).
+- Informationen über schnellere Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
+- Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
 
-## Zusätzliche Ressourcen
-
-- [Szenarios für die Geschäftskontinuität](sql-database-business-continuity-scenarios.md)
-
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

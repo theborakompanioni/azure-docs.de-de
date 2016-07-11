@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016"
+	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 
@@ -89,7 +89,7 @@ Eine VAST-Datei gibt an, welche Werbeeinblendung bzw. Werbeeinblendungen angezei
 	  </Ad>
 	</VAST>
 	
-Die lineare Werbeeinblendung wird durch das **<Linear>**-Element beschrieben. Dieses gibt die Dauer der Werbeeinblendung, Nachverfolgungsereignisse, die Durchklickrate, die Klickprotokollierung sowie eine Anzahl von **<MediaFile>**-Elementen an. Nachverfolgungsereignisse werden im **<TrackingEvents>**-Element angegeben und ermöglichen es einem Adserver, verschiedene Ereignisse zu verfolgen, die während der Anzeige der Werbung eintreten. In diesem Fall werden die Start-, Mittelpunkt-, Abschluss- und Erweiterungsereignisse nachverfolgt. Das Startereignis tritt ein, wenn die Anzeige angezeigt wird. Das Mittelpunktereignis tritt ein, wenn mindestens 50 % der Zeitleiste der Werbeeinblendung angezeigt wurden. Das Abschlussereignis tritt ein, wenn die Werbung bis zum Ende wiedergegeben wurde. Das Erweiterungsereignis tritt ein, wenn der Benutzer den Videoplayer in den Vollbildmodus erweitert. Durchklickraten werden in einem **<ClickThrough>**-Element innerhalb eines **<VideoClicks>**-Elements angegeben und geben einen URI zu einer Ressource an, die angezeigt werden soll, wenn der Benutzer auf die Anzeige klickt. Die Klickprotokollierung wird in einem **<ClickTracking>**-Element ebenfalls innerhalb des **<VideoClicks>**-Elements angegeben und gibt eine Nachverfolgungsressource an, die der Player anfordern soll, wenn der Benutzer auf die Anzeige klickt. Die **<MediaFile>**-Elemente geben Informationen zu einer bestimmten Codierung einer Werbeeinblendung an. Wenn mehre **<MediaFile>**-Element vorhanden sind, kann der Videoplayer die beste Codierung für die Plattform auswählen.
+Die lineare Werbeeinblendung wird durch das **<Linear>**-Element beschrieben. Es gibt die Dauer der Werbeeinblendung, Nachverfolgungsereignisse, die Durchklickrate, die Klickprotokollierung sowie eine Anzahl von **<MediaFile>**-Elementen an. Nachverfolgungsereignisse werden im **<TrackingEvents>**-Element angegeben und ermöglichen es einem Adserver, verschiedene Ereignisse zu verfolgen, die während der Anzeige der Werbung eintreten. In diesem Fall werden die Start-, Mittelpunkt-, Abschluss- und Erweiterungsereignisse nachverfolgt. Das Startereignis tritt ein, wenn die Anzeige angezeigt wird. Das Mittelpunktereignis tritt ein, wenn mindestens 50 % der Zeitleiste der Werbeeinblendung angezeigt wurden. Das Abschlussereignis tritt ein, wenn die Werbung bis zum Ende wiedergegeben wurde. Das Erweiterungsereignis tritt ein, wenn der Benutzer den Videoplayer in den Vollbildmodus erweitert. Durchklickraten werden in einem **<ClickThrough>**-Element innerhalb eines **<VideoClicks>**-Elements angegeben und geben einen URI zu einer Ressource an, die angezeigt werden soll, wenn der Benutzer auf die Anzeige klickt. Die Klickprotokollierung wird in einem **<ClickTracking>**-Element ebenfalls innerhalb des **<VideoClicks>**-Elements angegeben und gibt eine Nachverfolgungsressource an, die der Player anfordern soll, wenn der Benutzer auf die Anzeige klickt. Die **<MediaFile>**-Elemente geben Informationen zu einer bestimmten Codierung einer Werbeeinblendung an. Wenn mehrere **<MediaFile>**-Elemente vorhanden sind, kann der Videoplayer die beste Codierung für die Plattform auswählen.
 
 Lineare Werbeeinblendungen können in einer bestimmten Reihenfolge angezeigt werden. Zu diesem Zweck fügen Sie der VAST-Datei zusätzliche <Ad>-Elemente hinzu und geben die Reihenfolge mit dem Reihenfolgeattribut an. Das folgende Beispiel veranschaulicht dies:
 	
@@ -152,7 +152,7 @@ Nicht lineare Werbeeinblendungen werden ebenfalls in einem <Creative>-Element an
 	</Creative>
 
  
-Das **<NonLinearAds>**-Element kann ein oder mehrere **<NonLinear>**-Elemente enthalten, von denen jedes eine nicht lineare Werbeeinblendung beschreiben kann. Das **<NonLinear>**-Element gibt die Ressource für die nicht lineare Werbeeinblendung an. Die Ressource kann **<StaticResouce>**, **<IFrameResource>** oder **<HTMLResouce>** sein. **<StaticResource>** beschreibt eine Nicht-HTML-Ressource und definiert ein creativeType-Attribut, das angibt, wie die Ressource angezeigt wird:
+Das **<NonLinearAds>**-Element kann ein oder mehrere **<NonLinear>**-Elemente enthalten, von denen jedes eine nicht lineare Werbeeinblendung beschreiben kann. Das **<NonLinear>**-Element gibt die Ressource für die nicht lineare Werbeeinblendung an. Die Ressource kann **<StaticResouce>**, **<IFrameResource>** oder **<HTMLResouce>** sein. **<StaticResource>** beschreibt eine Nicht-HTML-Ressource und definiert ein „creativeType“-Attribut, das angibt, wie die Ressource angezeigt wird:
 
 Image/gif, image/jpeg, image/png: Die Ressource wird in einem HTML-**<img>**-Tag angezeigt.
 
@@ -160,9 +160,9 @@ Application/x-javascript: Die Ressource wird in einem HTML-<**script**>-Tag ange
 
 Application/x-shockwave-flash: Die Ressource wird in einem Flash-Player angezeigt.
 
-**<IFrameResource>** beschreibt eine HTML-Ressource, die in einem IFrame angezeigt werden kann. **<HTMLResource>** beschreibt einen HTML-Code, der in eine Webseite eingefügt werden kann. **<TrackingEvents>** gibt Nachverfolgungsereignisse sowie den URI an, der angefordert wird, wenn das Ereignis eintritt. In diesem Beispiel werden die acceptInvitation- und collapse-Ereignisse verfolgt. Weitere Informationen zum **<NonLinearAds>**-Element und zu dessen untergeordneten Elementen finden Sie unter "IAB.NET/VAST". Beachten Sie, dass sich das **<TrackingEvents>**-Element im** <NonLinearAds>**-Element und nicht im **<NonLinear>**-Element befindet.
+**<IFrameResource>** beschreibt eine HTML-Ressource, die in einem IFrame angezeigt werden kann. **<HTMLResource>** beschreibt einen HTML-Code, der in eine Webseite eingefügt werden kann. **<TrackingEvents>** gibt Nachverfolgungsereignisse sowie den URI an, der angefordert wird, wenn das Ereignis eintritt. In diesem Beispiel werden die acceptInvitation- und collapse-Ereignisse verfolgt. Weitere Informationen zum **<NonLinearAds>**-Element und zu dessen untergeordneten Elementen finden Sie unter „IAB.NET/VAST“. Beachten Sie, dass sich das **<TrackingEvents>**-Element im **<NonLinearAds>**-Element und nicht im **<NonLinear>**-Element befindet.
 
-Begleitende Werbeeinblendungen werden in einem <CompanionAds>-Element definiert. Das <CompanionAds>-Element kann ein oder mehrere <Companion>-Elemente enthalten. Jedes <Companion>-Element beschreibt eine begleitende Werbeeinblendung und kann eine <StaticResource>, <IFrameResource> oder <HTMLResource> enthalten, die auf die gleiche Weise wie bei einer nichtlinearen Werbeeinblendung angegeben werden. Eine VAST-Datei kann mehrere begleitende Werbeeinblendungen enthalten und die Playeranwendung kann die für die Anzeige am besten geeignete Werbeeinblendung auswählen. Weitere Informationen zu VAST finden Sie unter [VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf).
+Begleitende Werbeeinblendungen werden in einem <CompanionAds>-Element definiert. Das <CompanionAds>- Element kann ein oder mehrere <Companion>-Elemente enthalten. Jedes <Companion>-Element beschreibt eine begleitende Werbeeinblendung und kann eine <StaticResource>, <IFrameResource> oder <HTMLResource> enthalten, die auf die gleiche Weise wie bei einer nicht linearen Werbeeinblendung angegeben werden. Eine VAST-Datei kann mehrere begleitende Werbeeinblendungen enthalten und die Playeranwendung kann die für die Anzeige am besten geeignete Werbeeinblendung auswählen. Weitere Informationen zu VAST finden Sie unter [VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf).
 
 ###Verwenden einer VMAP-Datei (Digital Video Multiple Ad Playlist)
 
@@ -232,7 +232,7 @@ Das <**AdSource**>-Element stellt dem Player eine Inline-Anzeigenantwort oder ei
 
 - <VASTAdData>: Gibt an, dass eine VAST-Anzeigenantwort in der VMAP-Datei eingebettet ist.
 - <AdTagURI>: Ein URI, der auf eine Anzeigenantwort aus einem anderen System verweist.
-- <CustomAdData>: Eine beliebige Zeichenfolge, die eine nicht-VAST-Antwort darstellt.
+- <CustomAdData>: Eine beliebige Zeichenfolge, die eine Nicht-VAST-Antwort darstellt.
 
 In diesem Beispiel wird eine Inline-Anzeigenantwort mit einem <VASTAdData>-Element angegeben, das eine VAST-Anzeigenantwort enthält. Weitere Informationen zu den anderen Elementen finden Sie unter [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
 
@@ -269,7 +269,7 @@ Weitere Informationen zum <**TrackingEvents**>-Element und zu dessen untergeordn
 
 ###Verwenden einer MAST-Datei (Media Abstract Sequencing Template)
 
-Mithilfe einer MAST-Datei können Sie Auslöser angeben, die definieren, wann eine Werbeeinblendung angezeigt wird. Im Folgenden finden Sie eine MAST-Beispieldatei, die Auslöser für eine Pre-Roll-, eine Mid-Roll- und eine Post-Roll-Werbeeinblendung enthält.
+Mithilfe einer MAST-Datei können Sie Trigger angeben, die definieren, wann eine Werbeeinblendung angezeigt wird. Im Folgenden finden Sie eine MAST-Beispieldatei, die Trigger für eine Pre-Roll-, eine Mid-Roll- und eine Post-Roll-Werbeeinblendung enthält.
 
 	<MAST xsi:schemaLocation="http://openvideoplayer.sf.net/mast http://openvideoplayer.sf.net/mast/mast.xsd" xmlns="http://openvideoplayer.sf.net/mast" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	  <triggers>
@@ -316,14 +316,14 @@ Mithilfe einer MAST-Datei können Sie Auslöser angeben, die definieren, wann ei
 
 Eine MAST-Datei beginnt mit einem **<MAST>**-Element, das ein **<triggers>**-Element enthält. Das <triggers>-Element enthält ein oder mehrere **<trigger>**-Elemente, die definieren, wann eine Werbeeinblendung abgespielt werden soll.
 
-Das **<trigger>**-Element enthält ein **<startConditions>**-Element, das angibt, wann die Wiedergabe einer Werbeeinblendung beginnen soll. Das **<startConditions>**-Element enthält ein oder mehrere <condition>-Elemente. Wenn jede <condition> "true" ergibt, wird ein Auslöser initiiert oder widerrufen, abhängig davon, ob <condition> in einem **<startConditions**>-Element oder in einem **<endConditions>**-Element enthalten ist. Wenn mehrere <condition>-Elemente vorhanden sind, werden diese als implizit behandelt, ODER alle Bedingungen, die "true" ergeben, führen zur Initiierung des Auslösers. <condition>-Elemente können geschachtelt werden. Wenn untergeordnete <condition>-Elemente vordefiniert werden, werden diese als implizit behandelt UND alle Bedingungen müssen "true" ergeben, damit der Auslöser initiiert wird. Das <condition>-Element enthält die folgenden Attribute, die die Bedingung definieren:
+Das **<trigger>**-Element enthält ein **<startConditions>**-Element, das angibt, wann die Wiedergabe einer Werbeeinblendung beginnen soll. Das **<StartConditions>**-Element enthält ein oder mehrere <condition>-Elemente. Wenn jede <condition> mit „true“ ausgewertet wird, wird ein Trigger abhängig davon ausgelöst oder widerrufen, ob die <condition> in einem **<startConditions**>-Element oder **<endConditions>**-Element enthalten ist. Wenn mehrere <condition>-Elemente vorhanden sind, werden diese als implizit behandelt, ODER alle Bedingungen, die „true“ ergeben, führen zur Auslösung des Triggers. <condition>-Elemente können geschachtelt werden. Wenn untergeordnete <condition>-Elemente vordefiniert sind, werden diese als implizit behandelt UND alle Bedingungen müssen „true“ ergeben, damit der Trigger ausgelöst wird. Das <condition>-Element enthält die folgenden Attribute, die die Bedingung definieren:
 
 1. **type**: Gibt den Typ der Bedingung, des Ereignisses oder der Eigenschaft an.
 1. **name**: Der Name der Eigenschaft oder des Ereignisses, die bzw. das während der Auswertung verwendet wird.
 1. **value**: Der Wert, der für die Auswertung einer Eigenschaft verwendet wird.
 1. **operator**: Der während der Auswertung zu verwendende Vorgang: EQ (gleich), NEQ (nicht gleich), GTR (größer als), GEQ (größer oder gleich), LT (kleiner als), LEQ (kleiner oder gleich), MOD (Modulo)
 
-**<endConditions>** enthalten auch <condition>-Elemente. Wenn eine Bedingung als "true" ausgewertet wird, wird der Auslöser zurückgesetzt. Das <trigger>-Element enthält ein <sources>-Element, das ein oder mehrere <source>-Elemente enthält. Die <source>-Elemente definieren den URI und den Typ der Anzeigenantwort. In diesem Beispiel wird einer VAST-Antwort ein URI zugewiesen.
+**<endConditions>** enthält auch <condition>-Elemente. Wenn eine Bedingung mit „true“ ausgewertet wird, wird der Trigger zurückgesetzt. Das <trigger>-Element enthält ein <sources>-Element, das ein oder mehrere <source>-Elemente enthält. Die <source>-Elemente definieren den URI und den Typ der Anzeigenantwort. In diesem Beispiel wird einer VAST-Antwort ein URI zugewiesen.
 
 
 	<trigger id="postroll" description="postroll"  >
@@ -342,7 +342,7 @@ Das **<trigger>**-Element enthält ein **<startConditions>**-Element, das angibt
 
 VPAID ist eine API, mit der die Kommunikation von ausführbaren Werbeeinheiten mit einem Videoplayer aktiviert wird. Dies ermöglicht hochgradig interaktive Werbeerfahrungen. Der Benutzer kann mit der Werbeeinblendung interagieren und die Werbeeinblendung kann auf Aktionen des Betrachters reagieren. Beispielsweise können in einer Werbeeinblendung Schaltflächen angezeigt werden, über die der Benutzer weitere Informationen oder eine längere Version der Werbeeinblendung anzeigen kann. Der Videoplayer muss die VPAID-API unterstützen und die ausführbare Werbeeinheit muss die API implementieren. Wenn ein Player eine Werbeeinblendung von einem Adserver anfordert, kann der Server mit einer VAST-Antwort antworten, die eine VPAID-Werbung enthält.
 
-Im Code wird eine ausführbare Werbeeinheit erstellt, die in einer Laufzeitumgebung wie Adobe Flash™ oder JavaScript ausgeführt werden muss, die in einem Webbrowser ausgeführt werden kann. Wenn ein Adserver eine VAST-Antwort zurückgibt, die eine VPAID-Werbung enthält, muss der Wert des apiFramework-Attributs im <MediaFile>-Element "VPAID" sein. Dieses Attribut gibt an, dass die enthaltene Werbeeinheit eine ausführbare VPAID-Werbung ist. Das type-Attribut muss auf den MIME-Typ der ausführbaren Datei festgelegt werden, z. B. "application/x-shockwave-flash" oder "application/x-javascript". Der folgende XML-Codeausschnitt zeigt das <MediaFile>-Element aus einer VAST-Antwort, die eine ausführbare VPAID-Werbung enthält.
+Im Code wird eine ausführbare Werbeeinheit erstellt, die in einer Laufzeitumgebung wie Adobe Flash™ oder JavaScript ausgeführt werden muss, die in einem Webbrowser ausgeführt werden kann. Wenn ein Adserver eine VAST-Antwort zurückgibt, die eine VPAID-Werbung enthält, muss der Wert des „apiFramework“-Attributs im <MediaFile>-Element „VPAID“ sein. Dieses Attribut gibt an, dass die enthaltene Werbeeinheit eine ausführbare VPAID-Werbung ist. Das type-Attribut muss auf den MIME-Typ der ausführbaren Datei festgelegt werden, z. B. "application/x-shockwave-flash" oder "application/x-javascript". Der folgende XML-Codeausschnitt zeigt das <MediaFile>-Element aus einer VAST-Antwort, die eine ausführbare VPAID-Werbung enthält.
 
 	
 	<MediaFiles>
@@ -353,7 +353,7 @@ Im Code wird eine ausführbare Werbeeinheit erstellt, die in einer Laufzeitumgeb
 	</MediaFiles>
  
 
-Eine ausführbare Werbung kann mit dem <AdParameters>-Element innerhalb des <Linear>-Elements oder des <NonLinear>-Elements in einer VAST-Antwort initialisiert werden. Weitere Informationen zum <AdParameters>-Element finden Sie unter [VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf). Weitere Informationen über die VPAID-API finden Sie unter [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
+Eine ausführbare Werbung kann mit dem <AdParameters>-Element innerhalb des <Linear>- oder <NonLinear>-Elements in einer VAST-Antwort initialisiert werden. Weitere Informationen zum <AdParameters>-Element finden Sie unter [VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf). Weitere Informationen über die VPAID-API finden Sie unter [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
 
 ##Implementieren eines Windows- oder Windows Phone 8-Players mit Unterstützung für Werbeeinblendungen
 
@@ -399,7 +399,7 @@ Weitere Informationen zu "AdSchedulerPlugin" finden Sie unter [Advertising in th
 
 ###AdSchedulingPage
 
-In diesem Beispiel wird ebenfalls "AdSchedulerPlugin" verwendet. Geplant werden drei Werbeeinblendungen: eine Pre-Roll-, eine Mid-Roll- und eine Post-Roll-Werbeeinblendung. Der URI für die VAST-Datei für die einzelnen Werbeeinblendungen wird in einem <RemoteAdSource>-Element angegeben.
+In diesem Beispiel wird ebenfalls "AdSchedulerPlugin" verwendet. Geplant werden drei Werbeeinblendungen: eine Pre-Roll-, eine Mid-Roll- und eine Post-Roll-Werbeeinblendung. Der URI für die VAST-Datei für jede Anzeige wird in einem <RemoteAdSource>-Element angegeben.
 	
 	<mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
 	            <mmppf:MediaPlayer.Plugins>
@@ -537,7 +537,7 @@ Dieses Beispiel veranschaulicht, wie Sie "AdSchedulerPlugin" verwenden, um eine 
 
 ###VastLinearNonLinearPage
 
-In diesem Beispiel wird "AdSchedulerPlugin" zum Planen einer linearen und einer nicht linearen Werbeeinblendung verwendet. Der Speicherort der VAST-Datei wird mit dem <RemoteAdSource>-Element angegeben.
+In diesem Beispiel wird "AdSchedulerPlugin" zum Planen einer linearen und einer nicht linearen Werbeeinblendung verwendet. Der Speicherort der VAST-Datei wird im <RemoteAdSource>-Element angegeben.
 	
 	<mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
 	            <mmppf:MediaPlayer.Plugins>
@@ -558,7 +558,7 @@ In diesem Beispiel wird "AdSchedulerPlugin" zum Planen einer linearen und einer 
 
 ###VMAPPage
 
-In diesem Beispiel wird "VmapSchedulerPlugin" verwendet, um Werbeeinblendungen mithilfe einer VMAP-Datei zu planen. Der URI der VMAP-Datei wird im Quellattribut des <VmapSchedulerPlugin>-Elements angegeben.
+In diesem Beispiel wird "VmapSchedulerPlugin" verwendet, um Werbeeinblendungen mithilfe einer VMAP-Datei zu planen. Der URI der VMAP-Datei wird im „Source“-Attribut des <VmapSchedulerPlugin>-Elements angegeben.
 	
 	<mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
 	            <mmppf:MediaPlayer.Plugins>
@@ -813,4 +813,4 @@ Das folgende Beispiel zeigt, wie eine Mid-Roll-Overlay-Werbeeinblendung geplant 
 
 [Entwickeln von Videoplayeranwendungen](media-services-develop-video-players.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

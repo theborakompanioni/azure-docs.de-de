@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Navigieren zu und Auswählen von Linux-VM-Images | Microsoft Azure"
+   pageTitle="Auswählen von Linux-VM-Images mit der Azure-CLI | Microsoft Azure"
    description="Erfahren Sie, wie Sie den Herausgeber, das Angebot und die SKU für Images ermitteln, wenn Sie mit dem Resource Manager-Bereitstellungsmodell einen virtuellen Linux-Computer erstellen."
    services="virtual-machines-linux"
    documentationCenter=""
@@ -18,7 +18,7 @@
    ms.date="06/06/2016"
    ms.author="rasquill"/>
 
-# Navigieren zu und Auswählen von Images virtueller Linux-Computer in Azure mithilfe der Befehlszeilenschnittstelle oder PowerShell
+# Auswählen von Linux-VM-Images mit der Azure-CLI
 
 In diesem Thema wird beschrieben wie Sie Herausgeber, Angebote, SKUs und Versionen für jeden Ort finden, an dem Sie etwas bereitstellen möchten. Beispielsweise sind einige der häufig verwendeten Linux-VM-Images die folgenden:
 
@@ -38,4 +38,4 @@ In diesem Thema wird beschrieben wie Sie Herausgeber, Angebote, SKUs und Version
 
 [AZURE.INCLUDE [virtual-machines-common-cli-ps-findimage](../../includes/virtual-machines-common-cli-ps-findimage.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

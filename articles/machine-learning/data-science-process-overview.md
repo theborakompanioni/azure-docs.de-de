@@ -23,7 +23,7 @@ Der Team Data Science-Prozess (TDSP) bietet einen systematischen Ansatz für das
 
 Insbesondere bietet der TDSP Data Science-Teams derzeit Folgendes:
 
-- **Methodik**: Eine Abfolge von Schritten zum Definieren des Entwicklungslebenszyklus und einen Leitfaden zum Bestimmen des Problems, Analysieren relevanter Daten, Erstellen und Bewerten von Vorhersagemodellen und anschließenden Bereitstellen dieser Modelle in Unternehmensanwendungen. 
+- **Methodik**: Eine Abfolge von Schritten zum Definieren des Entwicklungslebenszyklus und einen Leitfaden zum Bestimmen des Problems, Analysieren relevanter Daten, Erstellen und Bewerten von Vorhersagemodellen und anschließenden Bereitstellen dieser Modelle in Unternehmensanwendungen.
 - **Ressourcen**: Tools und Technologien, wie z.B. die Data Science-VM, zum Vereinfachen der Einrichtung von Umgebungen für Data Science-Aktivitäten und praktische Tipps für die Integration neuer Technologien.
 
 Hier ist der Entwicklungszyklus des TDSP:
@@ -47,9 +47,9 @@ Starten Sie ein Analyseprojekt, indem Sie geschäftliche Ziele und Probleme best
 
 Eine Analyse-Umgebung für den Team Data Science-Prozess umfasst mehrere Komponenten:
 
-- **Datenarbeitsbereiche**, in denen die Daten für die Analyse und Modellierung bereitgestellt werden 
+- **Datenarbeitsbereiche**, in denen die Daten für die Analyse und Modellierung bereitgestellt werden
 - eine **Verarbeitungsinfrastruktur** für die Vorverarbeitung, Untersuchung und Modellierung von Daten
-- eine **Laufzeitinfrastruktur** zum Operationalisieren der Analysemodelle und Ausführen intelligenter Clientanwendungen, die die Modelle nutzen.  
+- eine **Laufzeitinfrastruktur** zum Operationalisieren der Analysemodelle und Ausführen intelligenter Clientanwendungen, die die Modelle nutzen.
 
 Die einzurichtende Analyse-Infrastruktur ist häufig Teil einer Umgebung, die von den Hauptsystemen getrennt ist. Doch in der Regel nutzt sie Daten aus mehreren Systemen innerhalb des Unternehmens sowie aus Quellen außerhalb des Unternehmens. Die Analyse-Infrastruktur kann rein cloudbasiert, lokal oder eine Kombination aus beidem sein. Optionen finden Sie unter [Einrichten von Data Science-Umgebungen für die Verwendung im Team Data Science-Prozess](machine-learning-data-science-environment-setup.md).
 
@@ -79,9 +79,9 @@ Datenwissenschaftler erstellen Analysemodelle zum Vorhersagen der Hauptvariablen
 
 Datenwissenschaftler müssen das am besten geeignete Modell für die jeweilige Vorhersageaufgabe wählen. Es ist nicht ungewöhnlich, dass Ergebnisse aus mehreren Modellen kombiniert werden müssen, um die besten Ergebnisse zu erzielen. Die Eingabedaten für die Modellierung sind in der Regel nach dem Zufallsprinzip in drei Teile unterteilt:
 
-- ein Dataset für das Training 
-- ein Dataset für die Überprüfung 
-- ein Datasets für Tests 
+- ein Dataset für das Training
+- ein Dataset für die Überprüfung
+- ein Datasets für Tests
 
 Die Modelle werden mithilfe des **Datasets für das Training** erstellt. Die optimale Kombination von Modellen (mit optimierten Parametern) wird ausgewählt, indem die Modelle ausgeführt und die Vorhersagefehler für das **Dataset für die Überprüfung** gemessen werden. Schließlich wird das **Dataset für Tests** verwendet, um die Leistung des ausgewählten Modells für unabhängige Daten auswerten, die nicht zum Trainieren oder Überprüfen des Modells verwendet wurden. Verfahren finden Sie unter [Auswerten der Modellleistung in Azure Machine Learning](machine-learning-evaluate-model-performance.md).
 
@@ -97,11 +97,6 @@ Der [Team Data Science-Prozess](https://azure.microsoft.com/documentation/learni
 
 Wenngleich der TDSP nicht bestimmte Arten von **Dokumentationsinhalten** vorschreibt, ist es eine bewährte Methode, die Ergebnisse der Datenuntersuchung, Modellierung und Auswertung zu dokumentieren und den dazugehörigen Code zu speichern, damit die Analyse bei Bedarf wiederholt kann. Dies ermöglicht außerdem die Wiederverwendung der Analyseergebnisse bei der Arbeit mit anderen Anwendungen mit ähnlichen Daten und Vorhersageaufgaben.
 
-Vollständige exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für **bestimmte Szenarien** gezeigt werden, sind ebenfalls verfügbar. Siehe z.B.:
+Vollständige exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für **bestimmte Szenarien** gezeigt werden, sind ebenfalls verfügbar. Sie sind mit Miniaturansichtsbeschreibungen im Thema [Exemplarische Vorgehensweisen für den Team Data Science-Prozess](data-science-process-walkthroughs.md) aufgeführt.
 
-- [Der Team Data Science-Prozess in Aktion: Verwenden von SQL Server](machine-learning-data-science-process-sql-walkthrough.md)
-- [Der Team Data Science-Prozess in Aktion: Verwenden von HDInsight Hadoop-Clustern](machine-learning-data-science-process-hive-walkthrough.md)
-- [Data Science mit Spark in Azure HD.mdnsight](machine-learning-data-science-spark-overview.md)
-- [Skalierbare Data Science in Azure Data Lake: lückenlose exemplarische Vorgehensweise](machine-learning-data-science-process-data-lake-walkthrough.md)
-
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

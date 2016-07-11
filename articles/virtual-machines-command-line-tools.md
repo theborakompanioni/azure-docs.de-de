@@ -19,7 +19,7 @@
 
 # Befehle der Azure-Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“ (Azure Service Management, ASM)
 
-[AZURE.INCLUDE [learn-about-deployment-models](../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-machines/azure-cli-arm-commands.md).
+[AZURE.INCLUDE [learn-about-deployment-models](../includes/learn-about-deployment-models-classic-include.md)] Sie können sich auch [über alle Befehle des Resource Manager-Modells informieren](virtual-machines/azure-cli-arm-commands.md).
 
 Dieser Artikel enthält die Syntax und Optionen für Befehle der Azure-Befehlszeilenschnittstelle (Azure CLI), die Sie normalerweise zum Erstellen und Verwalten von Azure-Ressourcen im klassischen Bereitstellungsmodell verwenden. Sie können auf diese Befehle zugreifen, indem Sie die Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“ (Azure Service Management, ASM) ausführen. Dies ist keine vollständige Referenz, und Ihre CLI-Version kann unter Umständen einige etwas andere Befehle oder Parameter aufweisen.
 
@@ -29,7 +29,7 @@ Geben Sie zum Anzeigen der aktuellen Befehlssyntax und Optionen in der Befehlsze
 
 Optionale Parameter sind in eckigen Klammern angegeben (Beispiel: `[parameter]`). Alle anderen Parameter müssen angegeben werden.
 
-Neben den hier dokumentierten befehlsspezifischen optionalen Parametern gibt es drei weitere optionale Parameter für die Anzeige detaillierter Ausgaben wie z.B. Anforderungsoptionen und Statuscodes. Der Parameter `-v` liefert eine ausführliche Ausgabe. Bei Verwendung des Parameters `-vv` fällt die Ausgabe sogar noch ausführlicher aus. Mit der Option `--json` erfolgt die Ausgabe im reinen JSON-Format.
+Neben den hier dokumentierten befehlsspezifischen optionalen Parametern gibt es drei weitere optionale Parameter für die Anzeige detaillierter Ausgaben wie z.B. Anforderungsoptionen und Statuscodes. Der Parameter `-v` liefert eine ausführliche Ausgabe. Bei Verwendung des Parameters `-vv` fällt die Ausgabe sogar noch ausführlicher aus. Mit der Option `--json` erfolgt die Ausgabe im JSON-Rohformat.
 
 ## Festlegen des ASM-Modus
 
@@ -40,7 +40,7 @@ Der ASM-Modus wird bei der Erstinstallation der CLI standardmäßig aktiviert. V
 >[AZURE.NOTE] Der Azure Resource Manager-Modus der CLI und der ASM-Modus schließen sich gegenseitig aus. Das heißt, dass Ressourcen, die in einem Modus erstellt wurden, nicht im anderen Modus verwaltet werden können.
 
 ## Verwalten Ihrer Kontoinformationen und Veröffentlichen von Einstellungen
-Eine Möglichkeit, wie für die CLI eine Verbindung mit Ihrem Konto hergestellt werden kann, ist die Verwendung Ihrer Azure-Abonnementinformationen. (Weitere Optionen finden Sie unter [Herstellen einer Verbindung mit einem Azure-Abonnement über die Azure-Befehlszeilenschnittstelle](xplat-cli-connect.md).) Sie finden diese Informationen im klassischen Azure-Portal in einer Einstellungsveröffentlichungsdatei, wie hier beschrieben. Sie können die Einstellungsveröffentlichungsdatei als persistente lokale Konfigurationseinstellung importieren, die von der CLI dann in späteren Vorgängen verwendet wird. Sie müssen Ihre Veröffentlichungseinstellungen nur einmal importieren.
+Eine Möglichkeit, wie für die CLI eine Verbindung mit Ihrem Konto hergestellt werden kann, ist die Verwendung Ihrer Azure-Abonnementinformationen. (Weitere Optionen finden Sie unter [Herstellen einer Verbindung mit einem Azure-Abonnement von der Azure-Befehlszeilenschnittstelle (Azure-CLI)](xplat-cli-connect.md).) Sie finden diese Informationen im klassischen Azure-Portal in einer Einstellungsveröffentlichungsdatei, wie hier beschrieben. Sie können die Einstellungsveröffentlichungsdatei als persistente lokale Konfigurationseinstellung importieren, die von der CLI dann in späteren Vorgängen verwendet wird. Sie müssen Ihre Veröffentlichungseinstellungen nur einmal importieren.
 
 **account download [Optionen]**
 
@@ -208,7 +208,7 @@ Virtuelle Windows-Computer können RDP später aktivieren, indem Port 3389 als E
 
 Der Befehl unterstützt die folgenden optionalen Parameter:
 
-**-c, --connect** Erstellt den virtuellen Computer in einer bereits erstellten Bereitstellung in einem Hostingdienst. Bei der Verwendung dieser Option ohne -vmname wird der Name des neuen virtuellen Computers automatisch generiert.<br /> **-n, --vm-name** Geben Sie den Namen des virtuellen Computers an. Dieser Parameter nimmt standardmäßig den Namen des Hostingdiensts entgegen. Ohne Angabe von -vmname wird der Name des neuen virtuellen Computers als &lt;Dienstname>&lt;ID> generiert, wobei &lt;ID> die Anzahl existierender virtueller Computer im Dienst plus 1 ist. Wenn Sie mit diesem Befehl beispielsweise einen neuen virtuellen Computer zum Hostingdienst MyService hinzufügen, der bereits einen virtuellen Computer enthält, erhält der neue virtuelle Computer den Namen MyService2.<br /> **-u, --blob-url** Geben Sie die URL des Blobspeichers an, in dem das Systemlaufwerk des virtuellen Computers erstellt werden soll. <br /> **-z, --vm-size** Geben Sie die Größe des virtuellen Computers an. Gültige Werte sind: "ExtraSmall", "Small", "Medium", "Large", "ExtraLarge", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "Basic\_A0", "Basic\_A1", "Basic\_A2", "Basic\_A3", "Basic\_A4", "Standard\_D1", "Standard\_D2", "Standard\_D3", "Standard\_D4", "Standard\_D11", "Standard\_D12", "Standard\_D13", "Standard\_D14", "Standard\_DS1", "Standard\_DS2", "Standard\_DS3", "Standard\_DS4", "Standard\_DS11", "Standard\_DS12", "Standard\_DS13", "Standard\_DS14", "Standard\_G1", "Standard\_G2", "Standard\_G3", "Standard\_G4", "Standard\_G55". Der Standardwert ist "Small". <br /> **-r** Fügt einem virtuellen Windows-Computer RDP-Konnektivität hinzu <br /> **-e, --ssh** Fügt einem virtuellen Windows-Computer SSH-Konnektivität hinzu <br /> **-t, --ssh-cert** Legt das SSH-Zertifikat fest <br /> **-s** Das Abonnement <br /> **-o, --community** Das angegebene Bild ist ein Community-Image. <br /> **-w** Der Name des virtuellen Netzwerks <br/> **-l, --location** Gibt den Speicherort an (z.B. "Norden-Mitte USA") <br /> **-a, --affinity-group** Gibt die Affinitätsgruppe an<br /> **-w, --virtual-network-name** Gibt das virtuelle Netzwerk an, dem der neue virtuelle Computer hinzugefügt werden soll Virtuelle Netzwerke können im klassischen Azure-Portal eingerichtet und verwaltet werden.<br /> **-b, --subnet-names** Gibt die Subnetznamen an, die dem virtuellen Computer zugewiesen werden sollen.
+**-c, --connect** Erstellt den virtuellen Computer in einer bereits erstellten Bereitstellung in einem Hostingdienst. Bei der Verwendung dieser Option ohne -vmname wird der Name des neuen virtuellen Computers automatisch generiert.<br /> **-n, --vm-name** Geben Sie den Namen des virtuellen Computers an. Dieser Parameter nimmt standardmäßig den Namen des Hostingdiensts entgegen. Ohne Angabe von -vmname wird der Name des neuen virtuellen Computers als &lt;Dienstname>&lt;ID> generiert, wobei &lt;ID> die Anzahl existierender virtueller Computer im Dienst plus 1 ist. Wenn Sie mit diesem Befehl beispielsweise einen neuen virtuellen Computer zum Hostingdienst MyService hinzufügen, der bereits einen virtuellen Computer enthält, erhält der neue virtuelle Computer den Namen MyService2.<br /> **-u, --blob-url** Geben Sie die URL des Blobspeichers an, in dem das Systemlaufwerk des virtuellen Computers erstellt werden soll. <br /> **-z, --vm-size** Geben Sie die Größe des virtuellen Computers an. Gültige Werte sind: "ExtraSmall", "Small", "Medium", "Large", "ExtraLarge", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "Basic\_A0", "Basic\_A1", "Basic\_A2", "Basic\_A3", "Basic\_A4", "Standard\_D1", "Standard\_D2", "Standard\_D3", "Standard\_D4", "Standard\_D11", "Standard\_D12", "Standard\_D13", "Standard\_D14", "Standard\_DS1", "Standard\_DS2", "Standard\_DS3", "Standard\_DS4", "Standard\_DS11", "Standard\_DS12", "Standard\_DS13", "Standard\_DS14", "Standard\_G1", "Standard\_G2", "Standard\_G3", "Standard\_G4", "Standard\_G55". Der Standardwert ist "Small". <br /> **-r** Fügt einem virtuellen Windows-Computer RDP-Konnektivität hinzu <br /> **-e, --ssh** Fügt einem virtuellen Windows-Computer SSH-Konnektivität hinzu <br /> **-t, --ssh-cert** Legt das SSH-Zertifikat fest <br /> **-s** Das Abonnement <br /> **-o, --community** Das angegebene Bild ist ein Community-Image. <br /> **-w** Der Name des virtuellen Netzwerks <br/> **-l, --location** Gibt den Speicherort an (z. B. "Norden-Mitte USA") <br /> **-a, --affinity-group** Gibt die Affinitätsgruppe an<br /> **-w, --virtual-network-name** Gibt das virtuelle Netzwerk an, dem der neue virtuelle Computer hinzugefügt werden soll Virtuelle Netzwerke können im klassischen Azure-Portal eingerichtet und verwaltet werden.<br /> **-b, --subnet-names** Gibt die Subnetznamen an, die dem virtuellen Computer zugewiesen werden sollen.
 
 In diesem Beispiel wird das Image MSFT\_\_Win2K8R2SP1-120514-1520-141205-01-de-DE-30GB von der Plattform bereitgestellt. Weitere Informationen zu Betriebssystem-Images finden Sie in der VM-Imageliste.
 
@@ -466,7 +466,7 @@ Dieser Befehl löscht ein Image eines virtuellen Computers.
 
 Dieser Befehl erstellt ein Image eines virtuellen Computers. Ihre benutzerdefinierten .vhd-Dateien werden in einen Blobspeicher hochgeladen, und das Image wird anschließend von dort aus erstellt. Anschließend können Sie das Image verwenden, um einen virtuellen Computer zu erstellen. Die Parameter für Ort und Betriebssystem müssen angegeben werden.
 
->[AZURE.NOTE]Dieser Befehl unterstützt derzeit nur das Hochladen von VHD-Dateien fester Größe. Um eine dynamische VHD-Datei hochzuladen, verwenden Sie die [Azure VHD-Hilfsprogramme für Go](https://github.com/Microsoft/azure-vhd-utils-for-go).
+>[AZURE.NOTE]Dieser Befehl unterstützt derzeit nur das Hochladen von VHD-Dateien fester Größe. Verwenden Sie zum Hochladen einer dynamischen VHD-Datei die [Azure VHD-Hilfsprogramme für Go](https://github.com/Microsoft/azure-vhd-utils-for-go).
 
 Manche Systeme haben Grenzen für Dateideskriptoren pro Prozess. Wenn diese Grenze überschritten wird, zeigt das Tool einen entsprechenden Fehler an. Sie können den Befehl erneut ausführen und mit dem Parameter -p &lt;Anzahl> die Anzahl der parallelen Uploads begrenzen. Der Standardwert für parallele Uploads ist 96.
 
@@ -791,7 +791,7 @@ Dieser Befehl tauscht zwei Web-App-Steckplätze.
 
 Dieser Befehl unterstützt die folgende zusätzliche Option:
 
-**-q oder** **--quiet**: Keine Bestätigungsaufforderungen. Verwenden Sie diese Option in automatisierten Skripts.
+**-q oder **--quiet**: Keine Bestätigungsaufforderungen. Verwenden Sie diese Option in automatisierten Skripts.
 
 
 **site start [Optionen] [Name]**
@@ -814,7 +814,7 @@ Dieser Befehl beendet eine Web-App.
 	info:   Site mysite has been stopped
 	info:   site stop command OK
 
-****site restart [Optionen] [Name]
+**site restart [Optionen] [Name]
 
 Dieser Befehl beendet die angegebene Web-App und startet sie dann wieder.
 
@@ -1011,7 +1011,7 @@ Dieser Befehl unterstützt die folgenden zusätzlichen Optionen:
 + **-q** oder **--quiet**: Keine Bestätigungsaufforderungen. Verwenden Sie diese Option in automatisierten Skripts.
 + **--slot** &lt;Steckplatz>: Der Name der Steckplatzes, der neu gestartet werden soll.
 
-**site job upload [Optionen] &lt;Auftragsname> &lt;Auftragstyp> <jobFile> [Name]**
+**site job upload [Optionen] &lt;Auftragsname> &lt;Auftragstyp> <Auftragsdatei> [Name]**
 
 Dieser Befehl löscht den angegebenen Webauftrag.
 
@@ -1861,11 +1861,11 @@ Dieser Befehl zeigt die Speicherkonten für Ihr Abonnement an.
 	data:    mybasestorage           West US
 	info:    storage account list command OK
 
-**storage account show [Optionen] <name>**
+**storage account show [Optionen] <Name>**
 
 Dieser Befehl zeigt Informationen zum angegebenen Speicherkonto einschließlich des URI und der Kontoeigenschaften an.
 
-**storage account create [Optionen] <name>**
+**storage account create [Optionen] <Name>**
 
 Dieser Befehl erstellt ein Speicherkonto auf Grundlage der angegebenen Optionen.
 
@@ -1879,10 +1879,10 @@ Dieser Befehl unterstützt die folgenden zusätzlichen Optionen:
 + **-e** oder **--label** &lt;Beschriftung>: Die Beschriftung für das Speicherkonto.
 + **-d** oder **--description** &lt;Beschreibung>: Die Beschreibung für das Speicherkonto.
 + **-l** oder **--location** &lt;Name>: Die geografische Region, in der das Speicherkonto erstellt werden soll.
-+ **-a** oder **--affinity-group** &lt;Name>:Die Affinitätsgruppe, der das Speicherkonto zugeordnet werden soll. 
++ **-a** oder **--affinity-group** &lt;Name>:Die Affinitätsgruppe, der das Speicherkonto zugeordnet werden soll.
 + **--type**: Gibt den Typ des zu erstellenden Kontos an: entweder Standardspeicher mit Redundanzoption (LRS/ZRS/GRS/RAGRS) oder Premium-Speicher (PLRS).
 
-**storage account set [Optionen] <name>**
+**storage account set [Optionen] <Name>**
 
 Dieser Befehl aktualisiert das angegebene Speicherkonto.
 
@@ -1898,7 +1898,7 @@ Dieser Befehl unterstützt die folgenden zusätzlichen Optionen:
 + **-l** oder **--location** &lt;Name>: Die geografische Region, in der das Speicherkonto erstellt werden soll.
 + **--type**: gibt den neuen Typ des Kontos an: entweder Standardspeicher mit Redundanzoption (LRS/ZRS/GRS/RAGRS) oder Premium-Speicher (PLRS).
 
-**storage account delete [Optionen] <name>**
+**storage account delete [Optionen] <Name>**
 
 Dieser Befehl löscht das angegebene Speicherkonto.
 
@@ -1908,11 +1908,11 @@ Dieser Befehl unterstützt die folgende zusätzliche Option:
 
 ###Befehle zum Verwalten Ihrer Speicherkontoschlüssel
 
-**storage account keys list [Optionen] <name>**
+**storage account keys list [Optionen] <Name>**
 
 Dieser Befehl listet die primären und sekundären Schlüssel für das angegebene Speicherkonto auf.
 
-**storage account keys renew [Optionen] <name>**
+**storage account keys renew [Optionen] <Name>**
 
 ###Befehle zum Verwalten Ihres Speichercontainers
 
@@ -2350,4 +2350,4 @@ Löscht einen DNS-Servereintrag aus der Netzwerkkonfiguration.
 	+ Deleting the DNS server entry dns-4 ( 77.88.99.11 )
 	info:    network dnsserver unregister command OK
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

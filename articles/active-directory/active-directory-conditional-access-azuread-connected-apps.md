@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Bedingter Zugriff unter Azure – Vorschau für SaaS-Apps | Microsoft Azure"
-	description="Der bedingte Zugriff in Azure AD ermöglicht Ihnen die anwendungsspezifische Konfiguration von Zugriffsregeln für die mehrstufige Authentifizierung und das Blockieren des Zugriffs für Benutzer, die nicht zu einem vertrauenswürdigen Netzwerk gehören."
+	description="Der bedingte Zugriff in Azure AD ermöglicht Ihnen die anwendungsspezifische Konfiguration von Zugriffsregeln für die mehrstufige Authentifizierung und das Blockieren des Zugriffs für Benutzer, die nicht zu einem vertrauenswürdigen Netzwerk gehören. "
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
@@ -13,19 +13,21 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/15/2016"
+	ms.date="06/23/2016"
 	ms.author="femila"/>
 
-# Bedingter Zugriff unter Azure – Vorschau für SaaS-Apps
+# Erste Schritte mit bedingtem Zugriff auf Azure AD  
 
-Die Azure-Funktion für bedingten Zugriff für SaaS-Apps steht jetzt als öffentliche Vorschau zur Verfügung. Die Vorschau ermöglicht die anwendungsspezifische Konfiguration von Zugriffsregeln für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) und das Blockieren des Zugriffs für Benutzer, die nicht zu einem vertrauenswürdigen Netzwerk gehören.
+Der bedingte Zugriff mit Azure Active Directory für SaaS-Apps und verbundene Azure AD-Apps ist als öffentliche Vorschau verfügbar. In der Vorschauversion kann bedingter Zugriff auf der Grundlage von Gruppe, Standort und Anwendungsvertraulichkeit konfiguriert werden.
 
-Die Regeln für die mehrstufige Authentifizierung können auf alle Benutzer angewendet werden, die einer Anwendung zugewiesen sind, oder nur auf Benutzer in angegebenen Sicherheitsgruppen. Benutzer können von der Pflicht zur mehrstufigen Authentifizierung ausgenommen werden, wenn sie von einer IP-Adresse innerhalb des Netzwerks der Organisation auf die Anwendung zugreifen. Diese Funktionen stehen Kunden zur Verfügung, die eine Azure Active Directory Premium-Lizenz erworben haben.
+Die Regeln für die Multi-Factor Authentication können auf alle Benutzer angewendet werden, die einer Anwendung zugewiesen sind, oder nur auf Benutzer in angegebenen Sicherheitsgruppen. Mit bedingtem Zugriff auf der Grundlage der Anwendungsvertraulichkeit können Sie anwendungsspezifische MFA-Zugriffsregeln festlegen und so den Zugriff für Benutzer blockieren, die sich nicht in einem vertrauenswürdigen Netzwerk befinden. Benutzer können von der Pflicht zur mehrstufigen Authentifizierung ausgenommen werden, wenn sie von einer IP-Adresse innerhalb des Netzwerks der Organisation auf die Anwendung zugreifen.
+
+Diese Funktionen stehen Kunden zur Verfügung, die eine Azure Active Directory Premium-Lizenz erworben haben.
 
 ## Voraussetzungen für das Szenario
 * Lizenz für Azure Active Directory Premium
 
-* Verbundmandant oder verwalteter Azure Active Directory-Mandant
+* Verbundbasierter oder verwalteter Azure Active Directory-Mandant
 
 * Verbundmandanten erfordern die Aktivierung der mehrstufigen Authentifizierung.
 
@@ -64,11 +66,11 @@ Wenn ein Benutzer mit der benutzerspezifischen mehrstufigen Authentifizierung ko
 ### Zugriffsregeloptionen
 Die aktuelle Vorschau unterstützt folgende Optionen:
 
-* **Erfordert mehrstufige Authentifizierung**: Mit dieser Option müssen die Benutzer, für die die Zugriffsregeln gelten, die mehrstufige Authentifizierung durchlaufen, bevor sie auf die Anwendung zugreifen, für die die Richtlinie gilt.
+* **Erfordert mehrstufige Authentifizierung**: Mit dieser Option müssen die Benutzer, für die die Zugriffsregeln gelten, die Multi-Factor Authentication durchlaufen, um auf die Anwendung zugreifen zu können, für die die Richtlinie gilt.
 
-* **Erfordert mehrstufige Authentifizierung, wenn nicht bei der Arbeit**: Mit dieser Option muss ein Benutzer, der von einer vertrauenswürdigen IP-Adresse aus zugreift, die mehrstufige Authentifizierung nicht durchführen. Die vertrauenswürdigen IP-Adressbereiche können auf der Seite mit den Einstellungen für die mehrstufige Authentifizierung oder durch Konfigurieren der öffentlichen IP-Adressbereiche auf der Registerkarte „Konfigurieren“ des Verzeichnisses konfiguriert werden.
+* **Erfordert mehrstufige Authentifizierung, wenn nicht bei der Arbeit**: Mit dieser Option muss ein Benutzer, der von einer vertrauenswürdigen IP-Adresse aus zugreift, keine Multi-Factor Authentication durchlaufen. Die vertrauenswürdigen IP-Adressbereiche können auf der Seite mit den Einstellungen für die mehrstufige Authentifizierung oder durch Konfigurieren der öffentlichen IP-Adressbereiche auf der Registerkarte „Konfigurieren“ des Verzeichnisses konfiguriert werden.
 
-* **Zugriff blockieren, wenn nicht gearbeitet wird**: Mit dieser Option wird ein Benutzer blockiert, der nicht von einer vertrauenswürdigen IP-Adresse aus zugreift. Die Bereiche für vertrauenswürdige IP-Adressen können auf den Einstellungsseiten für die mehrstufige Authentifizierung konfiguriert werden.
+* **Zugriff blockieren, wenn nicht gearbeitet wird**: Mit dieser Option werden Benutzer blockiert, die nicht von einer vertrauenswürdigen IP-Adresse aus zugreifen. Die Bereiche für vertrauenswürdige IP-Adressen können auf den Einstellungsseiten für die mehrstufige Authentifizierung konfiguriert werden.
 
 ### Festlegen des Regelstatus
 Über den Zugriffsregelstatus können die Regeln aktiviert oder deaktiviert werden. Wenn die Zugriffsregeln deaktiviert sind, wird die Anforderung der mehrstufigen Authentifizierung nicht erzwungen.
@@ -79,7 +81,7 @@ Zugriffsregeln werden ausgewertet, wenn ein Benutzer auf eine Verbundanwendung z
 
 Für Verbundmandanten kann die mehrstufige Authentifizierung von Azure Active Directory oder den lokalen AD FS-Server durchgeführt werden.
 
-Standardmäßig erfolgt die MFA auf einer Seite, die von Azure Active Directory gehostet wird. Um MFA lokal zu konfigurieren, muss die Eigenschaft „–SupportsMFA“ in Azure Active Directory mithilfe des Azure AD-Moduls für Windows PowerShell auf **TRUE** festgelegt werden.
+Standardmäßig erfolgt die MFA auf einer Seite, die von Azure Active Directory gehostet wird. Um die MFA lokal zu konfigurieren, muss die Eigenschaft „–SupportsMFA“ in Azure Active Directory mithilfe des Azure AD-Moduls für Windows PowerShell auf **true** festgelegt werden.
 
 Im folgenden Beispiel wird veranschaulicht, wie lokale MFA mithilfe des [Set-MsolDomainFederationSettings-Cmdlets](https://msdn.microsoft.com/library/azure/dn194088.aspx) auf dem Mandanten "contoso.com" aktiviert wird:
 
@@ -92,4 +94,4 @@ Zusätzlich zum Festlegen dieses Kennzeichens muss die AD FS-Instanz des Verbund
 - [Sichern des Zugriffs auf Office 365 und andere mit Azure Active Directory verbundene Apps](active-directory-conditional-access.md)
 - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

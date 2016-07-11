@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="03/29/2016"
+   ms.date="06/28/2016"
    ms.author="mthalman" />
 
 # Einrichten der Continuous Integration für eine Service Fabric-Anwendung mit Visual Studio Team Services
@@ -401,7 +401,7 @@ Wenn bei einem vorherigen Buildvorgang keine Bereinigung stattgefunden hat (beis
     |Skriptdateiname|Klicken Sie auf die Schaltfläche **...**, und navigieren Sie innerhalb Ihres Anwendungsprojekts zum Verzeichnis **Skripts**. Wählen Sie `Deploy-FabricApplication.ps1` aus.|
     |Argumente|`-PublishProfileFile path/to/MySolution/MyApplicationProject/PublishProfiles/MyPublishProfile.xml -ApplicationPackagePath path/to/MySolution/MyApplicationProject/pkg/$(BuildConfiguration)`|
 
->[AZURE.NOTE] Eine Veröffentlichungsprofil-XML-Datei kann ganz einfach in Visual Studio erstellt werden, wie hier gezeigt: https://azure.microsoft.com/documentation/articles/service-fabric-publish-app-remote-cluster
+>[AZURE.NOTE] Eine Veröffentlichungsprofil-XML-Datei kann ganz einfach in Visual Studio erstellt werden, wie hier gezeigt: https://azure.microsoft.com/de-DE/documentation/articles/service-fabric-publish-app-remote-cluster
 
 >[AZURE.NOTE] Wenn Sie die Bereitstellung der Anwendung in einem Cluster unterstützen möchten, bei der die Anwendung nicht aktualisiert, sondern überschrieben wird, fügen Sie das PowerShell-Argument „-OverwriteBehavior SameAppTypeAndVersion“ hinzu. Achten Sie außerdem darauf, dass das ausgewählte Veröffentlichungsprofil nicht mit einer Upgradeoption konfiguriert ist. Dadurch werden vor dem Installieren des neueren Builds sämtliche Anwendungstypen entfernt.
 
@@ -437,4 +437,4 @@ Weitere Informationen zu Continuous Integration für Service Fabric-Anwendungen 
  - [Bereitstellen eines Build-Agents](https://msdn.microsoft.com/Library/vs/alm/Build/agents/windows)
  - [Erstellen und Konfigurieren einer Builddefinition](https://msdn.microsoft.com/Library/vs/alm/Build/vs/define-build)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -23,7 +23,7 @@
 
 ## Übersicht über die Authentifizierungsanforderungen für die Notfallwiederherstellung
 
-In diesem Thema werden die Authentifizierungsanforderungen zum Konfigurieren und Steuern der [aktiven Georeplikation](sql-database-geo-replication-overview.md) sowie die erforderlichen Schritte zum Einrichten des Benutzerzugriffs auf die sekundäre Datenbank beschrieben. Außerdem wird beschrieben, wie nach der Geowiederherstellung der Zugriff auf die wiederhergestellte Datenbank aktiviert wird. Weitere Informationen zu Wiederherstellungsoptionen finden Sie unter [Restore an Azure SQL Database or failover to a secondary](sql-database-disaster-recovery.md) (Wiederherstellen einer Azure SQL-Datenbank oder Failover zu einer sekundären Datenbank).
+In diesem Thema werden die Authentifizierungsanforderungen zum Konfigurieren und Steuern der [aktiven Georeplikation](sql-database-geo-replication-overview.md) sowie die erforderlichen Schritte zum Einrichten des Benutzerzugriffs auf die sekundäre Datenbank beschrieben. Außerdem wird beschrieben, wie nach der [Geowiederherstellung](sql-database-recovery-using-backups.md#geo-restore) der Zugriff auf die wiederhergestellte Datenbank aktiviert wird. Weitere Informationen zu Wiederherstellungsoptionen finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank nach einem Ausfall](sql-database-disaster-recovery.md).
 
 ## Notfallwiederherstellung mit eigenständigen Benutzern
 
@@ -82,7 +82,7 @@ Der letzte Schritt besteht darin, auf dem oder den Zielservern die Anmeldungen m
 
 >[AZURE.NOTE] Wenn Sie Benutzerzugriff auf die sekundäre Datenbank, aber nicht auf die primäre gewähren möchten, ändern Sie dazu die Benutzeranmeldung auf dem primären Server mithilfe der folgenden Syntax.
 >
->ALTER LOGIN <login name> DISABLE
+>ALTER LOGIN <Anmeldename> DISABLE
 >
 >DISABLE ändert nicht das Kennwort, sodass Sie sie bei Bedarf stets aktivieren können.
 
@@ -91,17 +91,8 @@ Der letzte Schritt besteht darin, auf dem oder den Zielservern die Anmeldungen m
 - Weitere Informationen zum Verwalten von Datenbankzugriff und Anmeldungen finden Sie unter [Sicherheit von SQL-Datenbank: Verwalten von Datenbankzugriff und Anmeldesicherheit](sql-database-manage-logins.md).
 - Weitere Informationen zu eigenständigen Datenbankbenutzern finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
 - Informationen zur Verwendung und Konfiguration der aktiven Georeplikation finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
-- Informationen zur Verwendung der Geowiederherstellung finden Sie unter [Geowiederherstellung](sql-database-geo-restore.md)
+- Informationen zur Verwendung der Geowiederherstellung finden Sie unter [Geowiederherstellung](sql-database-recovery-using-backups.md#geo-restore)
 
 ## Zusätzliche Ressourcen
 
-- [Geschäftskontinuität und Notfallwiederherstellung mit SQL-Datenbank](sql-database-business-continuity.md)
-- [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md)
-- [Geografische Wiederherstellung](sql-database-geo-restore.md)
-- [Aktive Georeplikation](sql-database-geo-replication-overview.md)
-- [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
-- [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
-- [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
-
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

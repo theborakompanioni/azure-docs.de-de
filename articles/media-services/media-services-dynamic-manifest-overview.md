@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
- 	ms.date="05/03/2016" 
+	ms.date="06/22/2016" 
 	ms.author="cenkdin;juliako"/>
 
 #Filter und dynamische Manifeste
@@ -26,8 +26,8 @@ In diesem Thema werden allgemeine Szenarios behandelt, bei denen die Verwendung 
 
 Bei der Übermittlung Ihrer Inhalte für Kunden (Streaming von Liveereignissen oder Video-on-Demand) besteht Ihr Ziel darin, qualitativ hochwertige Videos für unterschiedliche Geräte unter verschiedenen Netzwerkbedingungen zu übermitteln. Gehen Sie wie folgt vor, um dieses Ziel zu erreichen:
 
-- Codieren Sie den Stream in einen Videostream mit mehreren Bitraten ([mit adaptiver Bitrate](http://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) (dies betrifft die Qualität und die Netzwerkbedingungen), und 
-- verwenden Sie [Media Services Dynamic Packaging](media-services-dynamic-packaging-overview.md), um den Stream dynamisch erneut in verschiedene Protokolle zu packen (dies betrifft das Streaming auf verschiedenen Geräten). Media Services unterstützt die Übermittlung der folgenden Streamingtechnologien mit adaptiver Bitrate: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH und HDS (nur mit Adobe PrimeTime/Access-Lizenz). 
+- Codieren Sie den Stream in einen Videostream mit mehreren Bitraten ([mit adaptiver Bitrate](http://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) (dies betrifft die Qualität und die Netzwerkbedingungen), und
+- verwenden Sie [Media Services Dynamic Packaging](media-services-dynamic-packaging-overview.md), um den Stream dynamisch erneut in verschiedene Protokolle zu packen (dies betrifft das Streaming auf verschiedenen Geräten). Media Services unterstützt die Übermittlung der folgenden Streamingtechnologien mit adaptiver Bitrate: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH und HDS (nur mit Adobe PrimeTime/Access-Lizenz).
 
 ###Manifestdateien 
 
@@ -71,7 +71,7 @@ Hier ein Beispiel für eine Manifestdatei:
 
 Es gibt bestimmte [Szenarios](media-services-dynamic-manifest-overview.md#scenarios), für die Ihre Kunden eine größere Flexibilität benötigen, als dies in den Einstellungen der Standardmanifestdatei des Medienobjekts beschrieben ist. Beispiel:
 
-- Gerätespezifisch: Übermitteln nur der angegebenen Wiedergaben und/oder Sprachen, die von dem Gerät unterstützt werden, das für die Wiedergabe der Inhalte verwendet wird ("Filtern der Wiedergabe"). 
+- Gerätespezifisch: Übermitteln nur der angegebenen Wiedergaben und/oder Sprachen, die von dem Gerät unterstützt werden, das für die Wiedergabe der Inhalte verwendet wird ("Filtern der Wiedergabe").
 - Reduzieren des Manifests, um einen Subclip eines Liveereignisses anzuzeigen ("Filtern von Subclips").
 - Kürzen des Starts eines Videos ("Kürzen eines Videos").
 - Anpassen des Präsentationsfensters (DVR), um eine begrenzte Größe des DVR-Fensters im Player anzugeben ("Anpassen des Präsentationsfensters").
@@ -97,8 +97,8 @@ Weitere Informationen zum Übermitteln Ihrer Inhalte und zum Erstellen von Strea
 
 Es gibt zwei Typen von Filtern für Medienobjekte:
 
-- Globale Filter (können auf jedes Medienobjekt im Azure Media Services-Konto angewendet werden und haben die Lebensdauer des Kontos) und 
-- Lokale Filter (können nur auf ein Medienobjekt angewendet werden, dem der Filter bei der Erstellung zugeordnet wurde, und haben die Lebensdauer des Medienobjekts) 
+- Globale Filter (können auf jedes Medienobjekt im Azure Media Services-Konto angewendet werden und haben die Lebensdauer des Kontos) und
+- Lokale Filter (können nur auf ein Medienobjekt angewendet werden, dem der Filter bei der Erstellung zugeordnet wurde, und haben die Lebensdauer des Medienobjekts)
 
 Globale und lokale Filter verfügen über genau die gleichen Eigenschaften. Der Hauptunterschied zwischen den beiden Filtern liegt in ihrer jeweils besseren Tauglichkeit für verschiedene Szenarios. Globale Filter eignen sich in der Regel für Geräteprofile (Filtern der Wiedergabe), lokale Filter hingegen können zum Kürzen eines bestimmten Medienobjekts eingesetzt werden.
 
@@ -107,7 +107,7 @@ Globale und lokale Filter verfügen über genau die gleichen Eigenschaften. Der 
 
 Wie bereits zuvor erwähnt, besteht Ihr Ziel bei der Übermittlung Ihrer Inhalte für Kunden (Streaming von Liveereignissen oder Video-on-Demand) darin, qualitativ hochwertige Videos für unterschiedliche Geräte unter verschiedenen Netzwerkbedingungen zu übermitteln. Darüber hinaus haben Sie möglicherweise andere Anforderungen, beispielsweise die Filterung Ihrer Medienobjekte oder die Verwendung **dynamischer Manifeste**. In den folgenden Abschnitten erhalten Sie einen kurzen Überblick über verschiedene Filterungsszenarios.
 
-- Angeben einer spezifischen Teilmenge von Audio- und Videowiedergaben (anstatt aller mit dem Medienobjekt verknüpften Wiedergaben), die für bestimmte Geräte geeignet sind. 
+- Angeben einer spezifischen Teilmenge von Audio- und Videowiedergaben (anstatt aller mit dem Medienobjekt verknüpften Wiedergaben), die für bestimmte Geräte geeignet sind.
 - Wiedergeben von nur einem Abschnitt eines Videos (anstelle des gesamten Videos).
 - Anpassen des DVR-Präsentationsfensters.
 
@@ -182,8 +182,8 @@ Sie können auch mehrere Filter in einer einzelnen URL kombinieren.
 
 Das folgende Szenario zeigt, warum es sinnvoll sein kann, Filter zu kombinieren:
 
-1. Sie müssen Ihre Videoqualitäten für mobile Geräte wie Android oder iPAD filtern (um die Videoqualitäten einzuschränken). Zum Entfernen der unerwünschten Qualitäten würden Sie einen globalen Filter erstellen, der für die Geräteprofile geeignet ist. Wie bereits oben erwähnt, können globale Filter für alle Medienobjekte desselben Mediendienstkontos ohne weitere Zuordnung verwendet werden. 
-2. Sie möchten außerdem die Start- und Endzeit Zeit eines Medienobjekts kürzen. Zu diesem Zweck erstellen Sie einen lokalen Filter und legen die Start- bzw. Endzeit fest. 
+1. Sie müssen Ihre Videoqualitäten für mobile Geräte wie Android oder iPAD filtern (um die Videoqualitäten einzuschränken). Zum Entfernen der unerwünschten Qualitäten würden Sie einen globalen Filter erstellen, der für die Geräteprofile geeignet ist. Wie bereits oben erwähnt, können globale Filter für alle Medienobjekte desselben Mediendienstkontos ohne weitere Zuordnung verwendet werden.
+2. Sie möchten außerdem die Start- und Endzeit Zeit eines Medienobjekts kürzen. Zu diesem Zweck erstellen Sie einen lokalen Filter und legen die Start- bzw. Endzeit fest.
 3. Sie möchten die beiden Filter kombinieren (ohne Kombination müssten Sie den Qualitätsfilter zum Kürzungsfilter hinzufügen, was die Verwendung des Filters erschweren würde).
 
 Um Filter zu kombinieren, müssen Sie die Filternamen, durch Semikolons getrennt, zur Manifest-/Wiedergabelisten-URL hinzufügen. Angenommen, Sie verfügen über einen Filter mit dem Namen *MyMobileDevice* zum Filtern der Qualitäten und über einen weiteren Filter mit dem Namen *MyStartTime* zum Festlegen einer bestimmten Startzeit. Sie können diese Filter folgendermaßen kombinieren:
@@ -197,7 +197,7 @@ Weitere Informationen finden Sie in [diesem](https://azure.microsoft.com/blog/az
 
 ##Bekannte Probleme und Einschränkungen
 
-- Dynamische Manifeste werden in GOP-Grenzen (Keyframes) ausgeführt, daher weisen Kürzungen GOP-Genauigkeit auf. 
+- Dynamische Manifeste werden in GOP-Grenzen (Keyframes) ausgeführt, daher weisen Kürzungen GOP-Genauigkeit auf.
 - Sie können die gleichen Filternamen für lokale und globale Filter verwenden. Beachten Sie, dass lokale Filter Vorrang vor globalen Filtern haben und diese überschreiben.
 - Wenn Sie einen Filter aktualisieren, kann es bis zu 2 Minuten dauern, bis die Regeln am Streamingendpunkt aktualisiert wurden. Wenn der Inhalt mit einigen Filtern verarbeitet (und in Proxys und CDN-Caches zwischengespeichert) wurde, können durch Aktualisieren dieser Filter Player-Fehler auftreten. Es wird empfohlen, den Cache nach dem Aktualisieren des Filters zu leeren. Wenn dies nicht möglich ist, empfiehlt sich die Verwendung eines anderen Filters.
 
@@ -236,4 +236,4 @@ Weitere Informationen finden Sie in [diesem](https://azure.microsoft.com/blog/az
 [skiing]: ./media/media-services-dynamic-manifest-overview/media-services-skiing.png
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

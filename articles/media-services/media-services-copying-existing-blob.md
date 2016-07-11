@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="03/14/2016" 
+	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 #Kopieren eines vorhandenen Blobs in ein Media Services-Medienobjekt
@@ -39,7 +39,7 @@ Laden Sie [hier](https://azure.microsoft.com/documentation/samples/media-service
 
 In diesem Abschnitt werden Sie ein C#-Konsolenanwendungsprojekt erstellen und einrichten.
 
-1. Verwenden Sie Visual Studio, um eine neue Projektmappe zu erstellen, die das C#-Konsolenanwendungsprojekt enthält. 
+1. Verwenden Sie Visual Studio, um eine neue Projektmappe zu erstellen, die das C#-Konsolenanwendungsprojekt enthält.
 2. Geben Sie "CopyExistingBlobsIntoAsset" als Namen ein, und klicken Sie dann auf "OK".
 1. Verwenden Sie Nuget, um Verweise auf die mit Media Services verknüpften DLLs hinzuzufügen. Klicken Sie im Hauptmenü in Visual Studio auf EXTRAS -> Bibliothekspaket-Manager -> Paket-Manager-Konsole. Geben Sie im Konsolenfenster "Install-Package windowsazure.mediaservices" ein, und drücken Sie die Eingabetaste.
 1. Fügen Sie andere Verweise hinzu, die für dieses Projekt erforderlich sind: System.Configuration.
@@ -76,7 +76,7 @@ In diesem Abschnitt werden Sie ein C#-Konsolenanwendungsprojekt erstellen und ei
 
 Mit dem Codebeispiel unten werden die folgenden Aufgaben ausgeführt:
 
-1. Erstellen der CloudMediaContext-Instanz. 
+1. Erstellen der CloudMediaContext-Instanz.
 1. Erstellen der CloudStorageAccount-Instanzen: sourceStorageAccount und destinationStorageAccount.
 1. Hochladen von Smooth Streaming-Dateien aus einem lokalen Verzeichnis in einen Blob-Container, der sich in sourceStorageAccount befindet.
 1. Erstellen eines neuen Medienobjekts. Der Blob-Container, der für dieses Medienobjekt erstellt wird, befindet sich in destinationStorageAccount.
@@ -85,7 +85,7 @@ Mit dem Codebeispiel unten werden die folgenden Aufgaben ausgeführt:
 	>[AZURE.NOTE]Der Kopiervorgang löst keine Ausnahme aus, wenn der Locator abgelaufen ist.
 
 1. Da wir in diesem Beispiel Smooth Streaming-Dateien kopieren, zeigt das Beispiel, wie die ISM-Datei als primäre Datei festgelegt wird. Wenn wir z. B. eine MP4-Datei kopiert hätten, würde die MP4-Datei als primäre Datei festgelegt werden.
-1. Erstellen der Smooth Streaming-URL für den mit dem Medienobjekt verknüpften OnDemandOrigin-Locator. 
+1. Erstellen der Smooth Streaming-URL für den mit dem Medienobjekt verknüpften OnDemandOrigin-Locator.
 			
 		class Program
 	        {
@@ -322,4 +322,4 @@ Mit dem Codebeispiel unten werden die folgenden Aufgaben ausgeführt:
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0629_2016-->

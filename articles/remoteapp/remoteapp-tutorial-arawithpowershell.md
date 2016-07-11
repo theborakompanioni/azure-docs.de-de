@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="05/05/2016"
+   ms.date="06/27/2016"
    ms.author="elizapo"/>
 
 
@@ -36,8 +36,8 @@ Für den Schnelleinstieg können Sie die folgenden Schritte ausführen:
 
 1.	Laden Sie die [Azure PowerShell-Cmdlets](http://go.microsoft.com/?linkid=9811175) herunter, und installieren Sie sie.
 2.	Starten Sie Microsoft Azure PowerShell.
-3.	Führen Sie **Add-AzureAccount** aus, um sich bei Ihrem Azure-Abonnement zu authentifizieren. Geben Sie bei der entsprechenden Aufforderung den Benutzernamen und das Kennwort ein, die Sie auch bei der Anmeldung beim Azure-Portal verwenden.  
-4.	Führen Sie **Get-AzureSubscription** aus, um die Ihrem Benutzerkonto zugeordneten Abonnements anzuzeigen. 
+3.	Führen Sie **Add-AzureAccount** aus, um sich bei Ihrem Azure-Abonnement zu authentifizieren. Geben Sie bei der entsprechenden Aufforderung den Benutzernamen und das Kennwort ein, die Sie auch bei der Anmeldung beim Azure-Portal verwenden.
+4.	Führen Sie **Get-AzureSubscription** aus, um die Ihrem Benutzerkonto zugeordneten Abonnements anzuzeigen.
 5.	Führen Sie **Select-AzureSubscription** aus, und geben Sie den Abonnementnamen oder die ID an, der bzw. die in der PowerShell-Konsole verwendet wird.
 
 Herzlichen Glückwunsch, damit ist die Azure PowerShell-Konsole konfiguriert und einsatzbereit. Beachten Sie, dass Sie die Schritte 2 bis 5 bei jedem Start der Azure PowerShell-Konsole wiederholen müssen.
@@ -111,4 +111,4 @@ Andere RemoteApp-Cmdlets:
 - Get-AzureRemoteAppOperationResult
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

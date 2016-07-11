@@ -74,7 +74,7 @@ In den folgenden Tutorials erfahren Sie, wie Sie die [Leistung von Einzeldatenba
 |---|---|---|
 | [Ändern der Dienstebene und Leistungsstufe Ihrer Datenbank](sql-database-scale-up.md#change-the-service-tier-and-performance-level-of-your-database) | In diesem Tutorial erfahren Sie, wie Sie die Leistung einer Azure SQL-Datenbank mithilfe von Dienstebenen zentral hoch- bzw. herunterskalieren können. |
 | [SQL Datenbank-Ratgeber – Query Performance Insight](sql-database-performance.md#performance-overview) | In diesem Tutorial erfahren Sie, wie Sie Query Performance Insight des SQL-Datenbank-Ratgebers öffnen und verwenden.|
-| [SQL-Datenbank-Ratgeber – Anzeigen von Empfehlungen](sql-database-index-advisor.md#viewing-recommendations) | In diesem Tutorial erfahren Sie, wie Sie Empfehlungen des SQL-Datenbank-Ratgebers zur Leistung anzeigen und anwenden. |
+| [SQL-Datenbank-Ratgeber – Anzeigen von Empfehlungen](sql-database-advisor.md#viewing-recommendations) | In diesem Tutorial erfahren Sie, wie Sie Empfehlungen des SQL-Datenbank-Ratgebers zur Leistung anzeigen und anwenden. |
 | [Überprüfen von Abfragen mit der höchster CPU-Auslastung](sql-database-query-performance.md#review-top-cpu-consuming-queries)| In diesem Tutorial erfahren Sie, wie Sie Query Performance Insight des SQL-Datenbank-Ratgebers verwenden, um Abfragen mit der höchsten CPU-Auslastung zu überprüfen.|
 | [Anzeigen von Details einzelner Abfragen](sql-database-query-performance.md#viewing-individual-query-details)| In diesem Tutorial erfahren Sie, wie Sie Query Performance Insight des SQL-Datenbank-Ratgebers verwenden, um Details zu der Leistung einzelner Abfragen anzuzeigen.|
 ||||
@@ -180,4 +180,4 @@ In diesem Tutorial erfahren Sie mehr über die [Datensynchronisierung](http://do
 
 [Explore Azure SQL Database Solution Quick Starts](sql-database-solution-quick-starts.md) (Entdecken Sie die lösungsbezogenen Schnellstarts für Azure SQL-Datenbank)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

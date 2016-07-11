@@ -5,7 +5,7 @@ Azure bietet Ihnen hervorragende Cloudlösungen auf Basis virtueller Computer �
 
 **Aber das ist nichts Neues.** Die tatsächliche *Neuigkeit* ist, dass Azure Ihnen noch mehr Docker-Vorteile bietet:
 
-- [Viele](../articles/virtual-machines/virtual-machines-linux-classic-cli-use-docker.md) [verschiedene](../articles/virtual-machines/virtual-machines-linux-classic-portal-use-docker.md) [Möglichkeiten](../articles/virtual-machines/virtual-machines-linux-classic-docker-quickstart.md) zum [Erstellen von Docker-Hosts](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu) für Container, die zu Ihren individuellen Anforderungen passen
+- [Viele](../articles/virtual-machines/virtual-machines-linux-docker-machine.md) [verschiedene](../articles/virtual-machines/virtual-machines-linux-dockerextension.md) Möglichkeiten zum Erstellen von Docker-Hosts für Container, die zu Ihren individuellen Anforderungen passen
 - [Azure-Ressourcen-Manager](../articles/resource-group-overview.md) und [Ressourcengruppenvorlagen](../articles/resource-group-authoring-templates.md) zur Vereinfachung von Bereitstellung und Updates von komplexen verteilten Anwendungen
 - Integration einer großen Anzahl von proprietären und Open-Source-Tools für die Konfigurationsverwaltung
 
@@ -116,7 +116,7 @@ Es gibt mehrere beliebte Systeme, die ganze Gruppen von virtuellen Computern ber
 
 Docker verfügt über einen eigenen Satz von Tools zur Erstellung von virtuellen Computern ([docker-machine](../articles/virtual-machines/virtual-machines-linux-docker-machine.md)) und über ein Clusterverwaltungstool für Lastenausgleich und Docker-Container ([swarm](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md)). Darüber hinaus bietet die [Azure VM-Erweiterung für Docker](https://github.com/Azure/azure-docker-extension/blob/master/README.md) standardmäßig Unterstützung für[`docker-compose`](https://docs.docker.com/compose/), womit konfigurierte Anwendungscontainer über mehrere Container hinweg bereitgestellt werden können.
 
-Außerdem können Sie auch [Data Center Operating System (DCOS) von Mesosphere](http://docs.mesosphere.com/install/azurecluster/) testen. DCOS basiert auf dem "Open-Source-Kernel für verteilte Systeme" [mesos](http://mesos.apache.org/), der es Ihnen ermöglicht, Ihr Rechenzentrum als einen adressierbaren Dienst zu behandeln. DCOS verfügt über integrierte Pakete für verschiedene wichtige Systeme wie [Spark](http://spark.apache.org/) und [Kafka](http://kafka.apache.org/) (und andere) sowie über integrierte Dienste wie [Marathon](https://mesosphere.github.io/marathon/) (ein Containersteuerungssystem) und [Chronos](https://mesosphere.github.io/chronos/) (ein verteilter Scheduler). Mesos entstand auf Basis von Erfahrungen mit Twitter, AirBnb und anderen im Web operierenden Unternehmen.
+Außerdem können Sie auch [Data Center Operating System (DCOS) von Mesosphere](http://docs.mesosphere.com/install/azurecluster/) testen. DCOS basiert auf dem "Open-Source-Kernel für verteilte Systeme" [mesos](http://mesos.apache.org/), der es Ihnen ermöglicht, Ihr Rechenzentrum als einen adressierbaren Dienst zu behandeln. DCOS verfügt über integrierte Pakete für verschiedene wichtige Systeme wie [Spark](http://spark.apache.org/) und [Kafka](http://kafka.apache.org/) (und andere) sowie über integrierte Dienste wie [Marathon](https://mesosphere.github.io/marathon/) (ein Containersteuerungssystem) und [Chronos](https://mesos.github.io/chronos/) (ein verteilter Scheduler). Mesos entstand auf Basis von Erfahrungen mit Twitter, AirBnb und anderen im Web operierenden Unternehmen.
 
 Darüber hinaus ist [kubernetes](https://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure/) ein Open-Source-System für die VM- und Containergruppenverwaltung, das auf Grundlage der gewonnenen Erkenntnisse bei Google entstand. Möglich ist auch die [Verwendung von kubernetes mit weave, um Netzwerkunterstützung bereitzustellen](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave).
 
@@ -164,7 +164,6 @@ Docker in Microsoft Azure:
 - [Benutzerhandbuch für die Azure-Docker-VM-Erweiterung](https://github.com/Azure/azure-docker-extension/blob/master/README.md)
 - [Verwenden der Docker-VM-Erweiterung aus der Azure-Befehlszeilenschnittstelle (Azure-CLI)](../articles/virtual-machines/virtual-machines-linux-classic-cli-use-docker.md)
 - [Verwenden der Docker-VM-Erweiterung über das Azure-Portal](../articles/virtual-machines/virtual-machines-linux-classic-portal-use-docker.md)
-- [Schneller Einstieg in Docker in Azure Marketplace](../articles/virtual-machines/virtual-machines-linux-classic-docker-quickstart.md)
 - [Verwenden von "docker-machine" auf Azure](../articles/virtual-machines/virtual-machines-linux-docker-machine.md)
 - [Verwenden von Docker mit Swarm auf Azure](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md)
 - [Erste Schritte mit Docker und Compose auf einem virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-linux-docker-compose-quickstart.md)
@@ -196,10 +195,6 @@ Konfiguration, Clusterverwaltung und Containerorchestrierung:
 	- [Drittanbieter: Hudson Slave-Plug-In für Azure](http://wiki.hudson-ci.org/display/HUDSON/Azure+Slave+Plugin)
 	- [Drittanbieter: Hudson Speicher-Plug-In für Azure](https://github.com/hudson3-plugins/windows-azure-storage-plugin)
 
--	[Chef](https://docs.chef.io/index.html)
-	- [Chef und Virtual Machines](../articles/virtual-machines/virtual-machines-windows-install-chef-client.md)
-	- [Video: Was ist Chef, und wie funktioniert es?](https://msopentech.com/blog/2014/03/31/using-chef-to-manage-azure-resources/)
-
 -	[Azure Automation](https://azure.microsoft.com/services/automation/)
 	- [Video: How to Use Azure Automation with Linux VMs (Video: Verwenden von Azure Automation mit virtuellen Linux-Computern, in englischer Sprache)](http://channel9.msdn.com/Shows/Azure-Friday/Azure-Automation-104-managing-Linux-and-creating-Modules-with-Joe-Levy)
 
@@ -216,4 +211,4 @@ Lesen Sie über [Docker](https://www.docker.com) (in englischer Sprache) und [Wi
 [microservice]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

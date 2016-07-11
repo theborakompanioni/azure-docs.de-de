@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016"    
+	ms.date="06/22/2016"  
 	ms.author="Mingfeiy;willzhan;Juliako"/>
 
 
@@ -37,10 +37,10 @@ In der folgenden Abbildung ist eine allgemeine Azure Media Services- und castLab
 
 - Medieninhalte werden in AMS gespeichert.
 - Schlüssel-IDs der Inhaltsschlüssel werden in castLabs und AMS gespeichert.
-- castLabs sowie AMS verfügen über eine integrierte Tokenauthentifizierung. In den folgenden Abschnitten werden Authentifizierungstoken erörtert. 
+- castLabs sowie AMS verfügen über eine integrierte Tokenauthentifizierung. In den folgenden Abschnitten werden Authentifizierungstoken erörtert.
 - Wenn ein Kunde das Streaming eines Videos anfordert, wird der Inhalt mit **CENC** (Common Encryption, allgemeine Verschlüsselung) dynamisch verschlüsselt und von AMS dynamisch in Smooth Streaming und DASH verpackt. Wir stellen auch eine elementare Streamverschlüsselung per PlayReady M2TS für das HLS-Streamingprotokoll bereit.
-- Die PlayReady-Lizenz wird vom AMS-Lizenzserver abgerufen und die Widevine-Lizenz vom castLabs-Lizenzserver. 
-- Abhängig von der Plattform des Kunden ruft Media Player automatisch die entsprechende Lizenz ab. 
+- Die PlayReady-Lizenz wird vom AMS-Lizenzserver abgerufen und die Widevine-Lizenz vom castLabs-Lizenzserver.
+- Abhängig von der Plattform des Kunden ruft Media Player automatisch die entsprechende Lizenz ab.
 
 ##Generierung von Authentifizierungstoken zum Abrufen einer Lizenz
 
@@ -107,7 +107,7 @@ Ein durch allgemeine Verschlüsselung (PlayReady und/oder Widevine) verschlüsse
 3.	Fügen Sie die Streaming-URL ein.
 4.	Klicken Sie auf das Kontrollkästchen **Erweiterte Optionen**.
 5.	Wählen Sie in der Dropdownliste **Schutz** die Option „PlayReady and/or Widevine“ aus.
-6.	Fügen Sie im Textfeld "Token" das Token ein, das Sie vom STS abgerufen haben. 
+6.	Fügen Sie im Textfeld "Token" das Token ein, das Sie vom STS abgerufen haben.
 	
 	Für den castLabs-Lizenzserver ist das Präfix "Bearer=" vor dem Token nicht erforderlich. Entfernen Sie dieses Präfix vor dem Übermitteln des Tokens.
 7.	Aktualisieren Sie den Player.
@@ -122,4 +122,4 @@ Ein durch allgemeine Verschlüsselung (PlayReady und/oder Widevine) verschlüsse
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

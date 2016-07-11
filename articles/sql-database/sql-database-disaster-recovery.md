@@ -1,6 +1,6 @@
 <properties 
    pageTitle="Notfallwiederherstellung für SQL-Datenbank | Microsoft Azure" 
-   description="Erfahren Sie, wie Sie eine Datenbank nach Störungen in einem regionalen Rechenzentrum oder dessen Ausfall mithilfe der aktiven Georeplikation oder der geografischen Wiederherstellung von Azure SQL-Datenbank wiederherstellen." 
+   description="Erfahren Sie, wie Sie eine Datenbank nach Störungen in einem regionalen Rechenzentrum oder dessen Ausfall mithilfe der aktiven Georeplikation oder der Geowiederherstellung von Azure SQL-Datenbank wiederherstellen." 
    services="sql-database" 
    documentationCenter="" 
    authors="carlrabeler" 
@@ -12,7 +12,7 @@
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="data-management" 
+   ms.workload="sqldb-bcdr" 
    ms.date="06/16/2016"
    ms.author="carlrab"/>
 
@@ -21,9 +21,9 @@
 Azure SQL-Datenbank bietet die folgenden Features zur Wiederherstellung nach einem Ausfall:
 
 - [Aktive Georeplikation](sql-database-geo-replication-overview.md)
-- [Geografische Wiederherstellung](sql-database-geo-restore.md)
+- [Geowiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore)
 
-Informationen zur Vorbereitung auf Notfälle und zur Wiederherstellung der Datenbanken finden Sie auf der Seite [Entwurf für Geschäftskontinuität](sql-database-business-continuity-design.md).
+Informationen zur Vorbereitung auf Notfälle und zur Wiederherstellung der Datenbanken finden Sie unter [Geschäftskontinuität](sql-database-business-continuity.md) und [Geschäftskontinuitätsszenarien]().
 
 ## Startzeitpunkt für die Wiederherstellung
 
@@ -31,7 +31,7 @@ Der Wiederherstellungsvorgang wirkt sich auf die Anwendung aus. Er erfordert ein
 
 1.	Permanente Verbindungsfehler zwischen Anwendungsebene und Datenbank.
 2.	Das Azure-Portal zeigt eine Warnung zu einem Incident in der Region, der weit reichende Auswirkungen hat.
-3.	Der Azure SQL-Datenbankserver wird als beeinträchtigt gekennzeichnet. 
+3.	Der Azure SQL-Datenbankserver wird als beeinträchtigt gekennzeichnet.
 
 Je nach Toleranz Ihrer Anwendung gegenüber einer Downtime und einer möglichen geschäftlichen Haftung können Sie die folgenden Wiederherstellungsoptionen in Betracht ziehen.
 
@@ -52,18 +52,18 @@ In den folgenden Leitfäden finden Sie Informationen zum Failover auf eine geore
 
 - [Failover auf eine georeplizierte sekundäre Datenbank mit dem Azure-Portal](sql-database-geo-replication-portal.md)
 - [Failover auf eine georeplizierte sekundäre Datenbank mit PowerShell](sql-database-geo-replication-powershell.md)
-- [Failover auf eine georeplizierte sekundäre Datenbank mit T-SQL](sql-database-geo-replication-transact-sql.md) 
+- [Failover auf eine georeplizierte sekundäre Datenbank mit T-SQL](sql-database-geo-replication-transact-sql.md)
 
 
 
-## Wiederherstellen mit geografischer Wiederherstellung
+## Wiederherstellen mit Geowiederherstellung
 
-Wenn eine Downtime Ihrer Anwendung keine geschäftliche Haftung nach sich zieht, können Sie die geografische Wiederherstellung als Methode zum Wiederherstellen Ihrer Anwendungsdatenbank(en) nutzen. Hierbei wird eine Kopie der Datenbank aus der letzten georedundanten Sicherung erstellt.
+Wenn eine Downtime Ihrer Anwendung keine geschäftliche Haftung nach sich zieht, können Sie die Geowiederherstellung als Methode zum Wiederherstellen Ihrer Anwendungsdatenbank(en) nutzen. Hierbei wird eine Kopie der Datenbank aus der letzten georedundanten Sicherung erstellt.
 
-In den folgenden Leitfäden finden Sie Informationen zur geografischen Wiederherstellung einer Datenbank in einer neuen Region:
+In den folgenden Leitfäden finden Sie Informationen zur Geowiederherstellung einer Datenbank in einer neuen Region:
 
-- [Geografische Wiederherstellung einer Datenbank in einer neuen Region mit dem Azure-Portal](sql-database-geo-restore-portal.md)
-- [Geografische Wiederherstellung einer Datenbank in einer neuen Region mit PowerShell](sql-database-geo-restore-powershell.md) 
+- [Geowiederherstellung einer Datenbank in einer neuen Region mit dem Azure-Portal](sql-database-geo-restore-portal.md)
+- [Geowiederherstellung einer Datenbank in einer neuen Region mit PowerShell](sql-database-geo-restore-powershell.md)
 
 
 ## Konfigurieren der Datenbank nach der Wiederherstellung
@@ -100,18 +100,10 @@ Wenn für den Zugriff auf die Datenbank Überwachung erforderlich ist, müssen S
 
 ## Nächste Schritte
 
-- Informationen zur Verwendung und Konfiguration der aktiven Georeplikation für die Notfallwiederherstellung finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
-- Informationen zur Verwendung der Geowiederherstellung für die Notfallwiederherstellung finden Sie unter [Geowiederherstellung](sql-database-geo-restore.md).
+- Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
+- Informationen über Entwurfs- und Wiederherstellungsszenarien für die Geschäftskontinuität finden Sie unter [Geschäftskontinuitätsszenarien](sql-database-business-continuity-scenarios.md).
+- Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).
+- Informationen über schnellere Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
+- Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
 
-## Zusätzliche Ressourcen
-
-- [Geschäftskontinuität und Notfallwiederherstellung mit SQL-Datenbank](sql-database-business-continuity.md)
-- [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md)
-- [Geografische Wiederherstellung](sql-database-geo-restore.md)
-- [Aktive Georeplikation](sql-database-geo-replication-overview.md)
-- [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
-- [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
-- [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
-
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

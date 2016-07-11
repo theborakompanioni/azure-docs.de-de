@@ -58,7 +58,7 @@ Unser Ziel ist es, dass dies zu einer vereinfachten App-Verwaltung und Entwicklu
 Im ursprünglichen Azure AD-Dienst kann sich eine App als **Ressource** oder als Empfänger von Token verhalten. Eine Ressource kann eine Anzahl von **Bereichen** oder **OAuth 2.0-Berechtigungen** definieren, die sie versteht, sodass Client-Apps Token für diese Ressource für einen bestimmten Satz von Bereichen anfordern können. Betrachten Sie als Beispiel für eine Ressource die Azure AD Graph-API:
 
 - Ressourcenbezeichner, oder `AppID URI`: `https://graph.windows.net/`
-- Bereiche, oder `OAuth2Permissions`: `Directory.Read`, `Directory.Write`, usw.  
+- Bereiche, oder `OAuth2Permissions`: `Directory.Read`, `Directory.Write`, usw.
 
 All dies gilt auch für den v2.0-Endpunkt. Eine App kann sich immer noch als Ressource verhalten, Bereiche definieren und durch einen URI identifiziert werden. Clientanwendungen können immer noch den Zugriff auf diese Bereiche anfordern. Allerdings hat sich die Art und Weise geändert, auf die ein Client solche Berechtigungen anfordert. In der Vergangenheit sah eine OAuth 2.0-Autorisierungsanforderung an Azure AD etwa wie folgt aus:
 
@@ -72,7 +72,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 wo der **Ressourcen**-Parameter anzeigt, für welche Ressource die Client-App eine Autorisierung anfordert. Azure AD hat die von der App benötigten Berechtigungen berechnet, und zwar basierend auf einer statischen Konfiguration im Azure-Portal. Die Token wurden entsprechend ausgestellt. Dieselbe OAuth 2.0-Autorisierungsanforderung sieht wie folgt aus:
 
 ```
-GET https://login.microsoftonline.com/common/v2.0/oauth2/authorize?
+GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 &scope=https%3A%2F%2Fgraph.windows.net%2Fdirectory.read%20https%3A%2F%2Fgraph.windows.net%2Fdirectory.write
 ...
@@ -94,7 +94,7 @@ Die für eine App erforderlichen Berechtigungen wurden **statisch** konfiguriert
 Beim v2.0-Endpunkt können Sie die von Ihrer App benötigten Berechtigungen **dynamisch** zur Laufzeit angeben, während Ihre App normal genutzt wird. Zu diesem Zweck können Sie die Bereiche angeben, die Ihre App zu einem bestimmten Zeitpunkt benötigt, indem Sie sie in den `scope`-Parameter einer Autorisierungsanforderung einschließen:
 
 ```
-GET https://login.microsoftonline.com/common/v2.0/oauth2/authorize?
+GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 &scope=https%3A%2F%2Fgraph.windows.net%2Fdirectory.read%20https%3A%2F%2Fgraph.windows.net%2Fdirectory.write
 ...
@@ -132,4 +132,4 @@ Weitere Informationen zu den spezifischen Ansprüchen, die in v2.0-Token ausgege
 ## Einschränkungen
 Es gibt einige Einschränkungen, die Sie bei Verwendung des v2.0-Endpunkts kennen sollten. Sehen Sie im [Dokument zu den v2.0-Einschränkungen](active-directory-v2-limitations.md) nach, ob diese Einschränkungen für Ihr spezielles Szenario gelten.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

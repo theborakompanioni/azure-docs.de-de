@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016" 
+	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 #<a id="monitormediaservicesaccount"></a>Überwachen eines Media Services-Kontos
@@ -26,7 +26,7 @@ Sie können die Anzahl der Codierungsjobs in der Warteschlange, fehlgeschlagene 
 
 ##<a id="configuremonitoring"></a>Überwachen eines Media Services-Kontos
 
-1. Klicken Sie im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=256666) auf **Media Services** und dann auf den Media Services-Kontonamen, um das Dashboard zu öffnen. 
+1. Klicken Sie im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=256666) auf **Media Services** und dann auf den Media Services-Kontonamen, um das Dashboard zu öffnen.
 
 	![MediaServices\_Dashboard][dashboard]
 
@@ -62,7 +62,7 @@ Sie können die Anzahl der Codierungsjobs in der Warteschlange, fehlgeschlagene 
 
 ##Feedback geben
 
-[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]On-Demand-Streaming-Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)] On-Demand-Streaming-Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
 
 <!-- Images -->
@@ -71,4 +71,4 @@ Sie können die Anzahl der Codierungsjobs in der Warteschlange, fehlgeschlagene 
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

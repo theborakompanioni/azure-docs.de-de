@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="05/04/2016" 
+    ms.date="06/24/2016" 
     ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh698319.aspx -->
@@ -30,8 +30,8 @@ Dieses Verfahren setzt voraus, dass Sie bereits die Azure-Bibliothek für Java z
 * Klicken Sie auf **Eigenschaften**.
 * Klicken Sie im Dialogfeld **Eigenschaften** im linken Bereich auf **Javadoc-Speicherort**. Das Dialogfeld **Javadoc-Speicherort** wird angezeigt.
 * Sie können eine **Javadoc-URL** oder ein **archiviertes Javadoc** angeben.
-    * Wenn Sie eine **Javadoc-URL** möchten, verwenden Sie eine URL wie z. B. **http://dl.windowsazure.com/javadoc** oder **http://dl.windowsazure.com/storage/javadoc**.
-* Wenn Sie die Option **archiviertes Javadoc** wählen,können Sie eine externe Datei oder eine Arbeitsbereichsdatei angeben. Treffen Sie Ihre Auswahl und durchsuchen und überprüfen Sie sie nach Bedarf. Im folgenden Beispiel wird den Azure-Bibliotheken für Java das entsprechende Javadoc-JAR zugeordnet, das lokal in einen Ordner namens **c:\\MyAzureJARs** heruntergeladen wurde. ![][ic553487]
+    * Wenn Sie eine **Javadoc-URL** angeben möchten, verwenden Sie eine URL wie z.B. **http://dl.windowsazure.com/javadoc** oder **http://dl.windowsazure.com/storage/javadoc**.
+    * Wenn Sie die Option **archiviertes Javadoc** wählen,können Sie eine externe Datei oder eine Arbeitsbereichsdatei angeben. Treffen Sie Ihre Auswahl und durchsuchen und überprüfen Sie sie nach Bedarf. Im folgenden Beispiel wird den Azure-Bibliotheken für Java das entsprechende Javadoc-JAR zugeordnet, das lokal in einen Ordner namens **c:\\MyAzureJARs** heruntergeladen wurde. ![][ic553487]
 * *Optional*: Klicken Sie auf **Überprüfen**. Mögliche Probleme mit dem Javadoc-JAR können hier angezeigt werden.
 * Klicken Sie auf **OK**.
 
@@ -61,4 +61,4 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [ic553487]: ./media/azure-toolkit-for-eclipse-displaying-javadoc-content-for-azure-libraries/ic553487.png
 [ic553488]: ./media/azure-toolkit-for-eclipse-displaying-javadoc-content-for-azure-libraries/ic553488.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

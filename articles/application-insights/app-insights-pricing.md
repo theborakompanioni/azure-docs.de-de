@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/17/2016" 
+	ms.date="06/22/2016" 
 	ms.author="awills"/>
 
 # Verwalten von Preisen und Kontingenten für Application Insights
@@ -48,7 +48,7 @@ Sie können jederzeit zur kostenlosen 30-Tage-Testversion des Premium-Tarifs wec
 
 ## Monatliches Kontingent
 
-* In jedem Kalendermonat kann Ihre Anwendung maximal eine bestimmte Menge an Telemetriedaten an Application Insights senden. Derzeit liegt das Kontingent für den kostenlosen Tarif (Tarif „Free“) bei 5 Mio. Datenpunkten pro Monat. Bei den anderen Tarifen ist es deutlich höher. Ist das Kontingent erreicht, können Sie weitere dazukaufen. Die genauen Zahlen können Sie der [Preisübersicht][pricing] entnehmen. 
+* In jedem Kalendermonat kann Ihre Anwendung maximal eine bestimmte Menge an Telemetriedaten an Application Insights senden. Derzeit liegt das Kontingent für den kostenlosen Tarif (Tarif „Free“) bei 5 Mio. Datenpunkten pro Monat. Bei den anderen Tarifen ist es deutlich höher. Ist das Kontingent erreicht, können Sie weitere dazukaufen. Die genauen Zahlen können Sie der [Preisübersicht][pricing] entnehmen.
 * Das Kontingent hängt von dem Tarif ab, den Sie ausgewählt haben.
 * Das Kontingent beginnt um Mitternacht UTC am ersten Tag jedes Monats.
 * Das Datenpunktediagramm zeigt, wie viel von Ihrem Kontingent in diesem Monat verwendet wurde.
@@ -64,7 +64,7 @@ Sie können jederzeit zur kostenlosen 30-Tage-Testversion des Premium-Tarifs wec
  * Jede Rohmessung einer [Metrik](app-insights-metrics-explorer.md), etwa eines Leistungsindikators. (Die Punkte, die Sie in den Diagrammen sehen, sind normalerweise Aggregate von mehreren Rohdatenpunkten).
  * Jeder Punkt auf einem Web-Verfügbarkeitsdiagramm ist auch ein Aggregat von mehreren Datenpunkten.
 * Sie können auch einzelne Datenpunkte in der Quelle während des Debuggens überprüfen:
- * Wenn Sie Ihre App im Debugmodus in Visual Studio ausführen, werden die Datenpunkte im Ausgabefenster protokolliert. 
+ * Wenn Sie Ihre App im Debugmodus in Visual Studio ausführen, werden die Datenpunkte im Ausgabefenster protokolliert.
  * Um Clientdatenpunkte anzuzeigen, öffnen Sie den Debuggingbereich Ihres Browserfensters (in der Regel über F12) und die Registerkarte „Netzwerk“.
 * Die Datenrate wird möglicherweise (standardmäßig) durch die [adaptive Stichprobenerstellung](app-insights-sampling.md) reduziert. Dies bedeutet, dass bei steigender Verwendung Ihrer App die Telemetrierate nicht in dem von Ihnen erwarteten Maß ansteigt.
 
@@ -119,7 +119,7 @@ Wenn Begrenzungsdrosselungen auftreten, können Sie verschiedene Schritte ausfü
 * Verwenden Sie [Stichproben](app-insights-sampling.md). Diese Technologie verringert die Datenrate, ohne die Metriken zu verzerren und ohne die Navigation zwischen verwandten Elementen bei der Suche zu stören.
 * [Begrenzen Sie die Anzahl der gemeldeten AJAX-Aufrufe](app-insights-javascript.md#detailed-configuration) für jeden Seitenaufruf, oder deaktivieren Sie AJAX-Berichte.
 * Deaktivieren Sie nicht benötigte Erfassungsmodule durch [Bearbeiten von „ApplicationInsights.config“](app-insights-configuration-with-applicationinsights-config.md). Das kann z. B. für Leistungsindikator- oder Abhängigkeitsdaten gelten.
-* Aggregieren Sie Metriken vorab. Wenn Sie Ihrer App Aufrufe an TrackMetric eingefügt haben, können Sie Datenverkehr reduzieren, indem Sie die Überladung verwenden, die Ihre Berechnung des Durchschnitts und die Standardabweichung eines Batches von Messungen akzeptiert. Oder Sie können ein [vorab aggregierendes Paket](https://www.myget.org/gallery/applicationinsights-sdk-labs) verwenden. 
+* Aggregieren Sie Metriken vorab. Wenn Sie Ihrer App Aufrufe an TrackMetric eingefügt haben, können Sie Datenverkehr reduzieren, indem Sie die Überladung verwenden, die Ihre Berechnung des Durchschnitts und die Standardabweichung eines Batches von Messungen akzeptiert. Oder Sie können ein [vorab aggregierendes Paket](https://www.myget.org/gallery/applicationinsights-sdk-labs) verwenden.
 
 
 ## Stichproben
@@ -145,10 +145,11 @@ Die Gebühren für Application Insights werden Ihrer Azure-Rechnung hinzugefügt
 
 ## Begrenzungen von Namen
 
-1.	Bis zu 200 eindeutige Metriknamen und 200 eindeutige Eigenschaftennamen für Ihre Anwendung. Zu den Metriken gehören Daten, die über TrackMetric gesendet werden, sowie Messungen für andere Datentypen wie z. B. Ereignisse. [Metriken und Eigenschaftennamen][api] gelten global pro Instrumentationsschlüssel und werden nicht auf den Datentyp begrenzt.
-2.	[Eigenschaften][apiproperties] können nur zur Filterung und zur Gruppierung verwendet werden, solange sie weniger als 100 eindeutige Werte für jede Eigenschaft aufweisen. Sobald es mehr als 100 eindeutige Werte gibt, kann die Eigenschaft zwar noch zur Suche und Filterung, jedoch nicht mehr für Filter verwendet werden.
-3.	Standardeigenschaften wie z. B. RequestName und die Seiten-URL, sind auf 1000 eindeutige Werte pro Woche beschränkt. Nach 1000 eindeutigen Werten werden zusätzliche Werte als „Andere Werte“ gekennzeichnet. Der ursprüngliche Wert kann nach wie vor für die Volltextsuche und die Filterung verwendet werden.
+1.	Bis zu 200 eindeutige Metriknamen und 200 eindeutige Eigenschaftennamen für Ihre Anwendung. Zu den Metriken gehören Daten, die über TrackMetric gesendet werden, sowie Messungen für andere Datentypen wie z. B. Ereignisse. [Metriken und Eigenschaftennamen][api] gelten global pro Instrumentationsschlüssel.
+2.	[Eigenschaften][apiproperties] können nur zur Filterung und zur Gruppierung verwendet werden, solange sie pro Eigenschaft weniger als 100 eindeutige Werte aufweisen. Sind mehr als 100 eindeutige Werte vorhanden, können Sie die Eigenschaft zwar weiterhin für Suchvorgänge, aber nicht mehr zum Filtern oder Gruppieren verwenden.
+3.	Standardeigenschaften wie z. B. RequestName und die Seiten-URL, sind auf 1000 eindeutige Werte pro Woche beschränkt. Nach 1000 eindeutigen Werten werden zusätzliche Werte als „Andere Werte“ gekennzeichnet. Die ursprünglichen Werte können nach wie vor für die Volltextsuche und die Filterung verwendet werden.
 
+Sollte Ihre Anwendung diese Grenzwerte überschreiten, können Sie Ihre Daten auf verschiedene Instrumentationsschlüssel aufteilen (also [neue Application Insights-Ressourcen erstellen](app-insights-create-new-resource.md) und einen Teil der Daten an die neuen Instrumentationsschlüssel senden). Dadurch ergibt sich unter Umständen auch eine bessere Struktur. Mithilfe von [Dashboards](app-insights-dashboards.md#dashboards) können Sie die unterschiedlichen Metriken auf einem einzelnen Bildschirm anzeigen und so problemlos verschiedene Metriken miteinander vergleichen.
 
 ## Zusammenfassung der Grenzwerte
 
@@ -164,4 +165,4 @@ Die Gebühren für Application Insights werden Ihrer Azure-Rechnung hinzugefügt
 
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

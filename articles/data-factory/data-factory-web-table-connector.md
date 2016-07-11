@@ -21,11 +21,13 @@ Dieser Artikel beschreibt, wie Sie die Kopieraktivität in einer Azure Data Fact
 
 Data Factory unterstützt derzeit nur das Verschieben von Daten aus einer Webtabelle in andere Datenspeicher, aber nicht das Verschieben aus anderen Datenspeichern in eine Webtabelle.
 
+> [AZURE.NOTE] Dieser Web-Connector unterstützt derzeit nur das Extrahieren von Tabelleninhalten einer HTML-Seite.
+
 ## Beispiel: Kopieren von Daten aus einer Webtabelle in ein Azure-Blob
 
 Das nachstehende Beispiel zeigt Folgendes:
 
-1.	Einen verknüpften Dienst des Typs [Web](#web-linked-service-properties).
+1.	Einen verknüpften Dienst des Typs [Web](#web-linked-service-properties)
 2.	Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)
 3.	Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [WebTable](#WebTable-dataset-properties)
 4.	Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)
@@ -35,7 +37,7 @@ Im Beispiel werden stündlich Daten aus einer Webtabelle in ein Azure-Blob kopie
 
 In diesem Beispiel wird gezeigt, wie Sie Daten aus einer Webtabelle in ein Azure-Blob kopieren. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory direkt in die im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) aufgeführten Senken kopiert werden.
 
-**Verknüpfter Webdienst** In diesem Beispiel wird der verknüpfte Webdienst mit anonymer Authentifizierung verwendet. Informationen zu den verschiedenen Authentifizierungstypen finden Sie im Abschnitt [Eigenschaften des Verknüpften Webdiensts](#web-linked-service-properties).
+**Verknüpfter Webdienst** In diesem Beispiel wird der verknüpfte Webdienst mit anonymer Authentifizierung verwendet. Informationen zu den verschiedenen Authentifizierungstypen finden Sie im Abschnitt [Eigenschaften des verknüpften Webdiensts](#web-linked-service-properties).
 
 	{
 	    "name": "WebLinkedService",
@@ -63,7 +65,7 @@ In diesem Beispiel wird gezeigt, wie Sie Daten aus einer Webtabelle in ein Azure
 	  }
 	}
 
-**WebTable-Eingabedataset** Durch Festlegen von **external** auf **true** und (optionales) Angeben der Richtlinie **externalData** wird dem Data Factory-Dienst mitgeteilt, dass dies eine Tabelle ist, die für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
+**WebTable-Eingabedataset** Durch Festlegen von **external** auf **true** und (optionales) Angeben der Richtlinie **externalData** wird dem Data Factory-Dienst mitgeteilt, dass dies für die Data Factory eine externe Tabelle ist, die nicht durch eine Aktivität in der Data Factory erzeugt wird.
 
 > [AZURE.NOTE] Im Abschnitt [Abrufen des Indexes einer Tabelle auf einer HTML-Seite](#get-index-of-a-table-in-an-html-page) werden die Schritte zum Abrufen des Indexes einer Tabelle auf einer HTML-Seite beschrieben.
 
@@ -116,7 +118,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 
 Die Pipeline enthält eine Kopieraktivität, die für das Verwenden der oben genannten Ein- und Ausgabedatasets und für eine stündliche Ausführung konfiguriert ist. In der JSON-Definition der Pipeline ist der Typ **source** auf **WebSource** und der Typ **sink** auf **BlobSink** festgelegt.
 
-Unter [WebSource-Typeigenschaften](#websource-copy-activity-type-properties) finden Sie die Liste der Eigenschaften, die von WebSource unterstützt werden.
+Unter [WebSource-Typeigenschaften](#websource-copy-activity-type-properties) finden Sie die Liste der Eigenschaften, die von „WebSource“ unterstützt werden.
 	
 	{  
 	    "name":"SamplePipeline",
@@ -213,7 +215,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 
 Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie "structure", "availability" und "policy" des JSON-Codes eines Datasets sind bei allen Typen von Datasets (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
-Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der typeProperties-Abschnitt für ein Dataset des Typs **WebTable** hat die folgenden Eigenschaften.
+Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der typeProperties-Abschnitt für ein Dataset des Typs **WebTable** hat die folgenden Eigenschaften:
 
 Eigenschaft | Beschreibung | Erforderlich
 :-------- | :----------- | :--------
@@ -247,27 +249,27 @@ Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Akt
 
 Im Abschnitt "typeProperties" der Aktivität verfügbare Eigenschaften variieren hingegen bei jedem Aktivitätstyp. Bei der Kopieraktivität variieren sie je nach Typ der Quellen und Senken.
 
-Wenn bei der Kopieraktivität die Quelle vom Typ **WebSource** ist, werden zu diesem Zeitpunkt keine zusätzlichen Eigenschaften unterstützt.
+Wenn bei der Kopieraktivität eine Quelle vom Typ **WebSource** verwendet wird, werden zu diesem Zeitpunkt keine zusätzlichen Eigenschaften unterstützt.
 
 ## Abrufen des Indexes einer Tabelle auf einer HTML-Seite
 
-1. Starten Sie **Excel 2016**, und wechseln Sie zur Registerkarte **Daten**.  
-2. Klicken Sie in der Symbolleiste auf **Neue Abfrage**, zeigen Sie auf **Aus anderen Quellen**, und klicken Sie auf **Aus dem Web**.
+1. Starten Sie **Excel 2016**, und wechseln Sie zur Registerkarte **Daten**.
+2. Klicken Sie auf der Symbolleiste auf **Neue Abfrage**, zeigen Sie auf **Aus anderen Quellen**, und klicken Sie auf **Aus dem Web**.
 	
-	![Power Query-Menü](./media/data-factory-web-table-connector/PowerQuery-Menu.png) 
-3. Geben Sie im Dialogfeld **Aus dem Web** die **URL**, die Sie im JSON für den verknüpften Dienst verwenden möchten (z.B.: https://en.wikipedia.org/wiki/) zusammen mit den Pfad ein, den Sie für das Dataset angeben möchten (z.B.: AFI%27s\_100\_Years... 100\_Movies), und klicken Sie auf **OK**. 
+	![Power Query-Menü](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
+3. Geben Sie im Dialogfeld **Aus dem Web** die **URL**, die Sie im JSON für den verknüpften Dienst verwenden möchten (Beispiel: https://en.wikipedia.org/wiki/), sowie den Pfad ein, den Sie für das Dataset angeben möchten (Beispiel: AFI%27s\_100\_Years... 100\_Movies), und klicken Sie auf **OK**.
 
 	![Aus dem Web (Dialogfeld)](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 
-	In diesem Beispiel verwendete URL: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies 
-4.  Wenn Sie das Dialogfeld **Auf Webinhalt zugreifen** sehen, wählen Sie rechts **URL** und **Authentifizierung**, und klicken Sie auf **Verbinden**. 
+	In diesem Beispiel verwendete URL: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
+4.  Falls das Dialogfeld **Auf Webinhalt zugreifen** erscheint, wählen Sie die richtige **URL** und **Authentifizierung** aus, und klicken Sie auf **Verbinden**.
 
 	![Webinhalt aufrufen (Dialogfeld)](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
-5.  Klicken Sie in der Strukturansicht auf ein **Tabellenelement**, um Inhalt aus der Tabelle anzuzeigen, und klicken Sie dann unten auf **Bearbeiten**.  
+5.  Klicken Sie in der Strukturansicht auf ein **Tabellenelement**, um Inhalt aus der Tabelle anzuzeigen, und klicken Sie dann unten auf **Bearbeiten**.
 
 	![Navigator (Dialogfeld)](./media/data-factory-web-table-connector/Navigator-DialogBox.png)
 
-5. Klicken Sie im **Abfrage-Editor**-Fenster auf der Symbolleiste auf die Schaltfläche **Erweiterter Editor**.
+5. Klicken Sie im Fenster **Abfrage-Editor** auf der Symbolleiste auf die Schaltfläche **Erweiterter Editor**.
 
 	![Erweiterter Editor (Schaltfläche)](./media/data-factory-web-table-connector/QueryEditor-AdvancedEditorButton.png)
 
@@ -276,7 +278,7 @@ Wenn bei der Kopieraktivität die Quelle vom Typ **WebSource** ist, werden zu di
 	![Erweiterter Editor – Index](./media/data-factory-web-table-connector/AdvancedEditor-Index.png)
 
 
-Wenn Sie Excel 2013 verwenden, rufen Sie den Index mit [Microsoft Power Query für Excel](https://www.microsoft.com/download/details.aspx?id=39379) ab. Nähere Informationen finden Sie im Artikel [Verbinden mit einer Webseite](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8). Die Schritte sind ähnlich wie bei Verwendung von [Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/).
+Rufen Sie den Index bei Verwendung von Excel 2013 mit [Microsoft Power Query für Excel](https://www.microsoft.com/download/details.aspx?id=39379) ab. Ausführlichere Informationen finden Sie im Artikel [Connect to a web page](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) (Verbinden mit einer Webseite). Bei Verwendung von [Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/) werden ähnliche Schritte verwendet.
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
@@ -285,4 +287,4 @@ Wenn Sie Excel 2013 verwenden, rufen Sie den Index mit [Microsoft Power Query f�
 ## Leistung und Optimierung  
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

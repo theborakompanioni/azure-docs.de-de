@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/25/2016"  
+	ms.date="06/22/2016"  
 	ms.author="xstof;xpouyat;juliako"/>
 
 #Erweiterte Media Encoder Premium Workflow-Tutorials
@@ -27,7 +27,7 @@ Dieses Dokument enthält exemplarische Vorgehensweisen, die veranschaulichen, wi
 Die folgenden Themen werden behandelt:
 
 - [Codieren einer MXF-Datei in eine Single-Bitrate-MP4-Datei](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)
-	- [Starten eines neuen Workflows](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_start_new) 
+	- [Starten eines neuen Workflows](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_start_new)
 	- [Verwenden von „Media File Input“](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_file_input)
 	- [Untersuchen von Mediendatenströmen](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_streams)
 	- [Hinzufügen eines Videoencoders für die Generierung von MP4-Dateien](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_file_generation)
@@ -77,7 +77,7 @@ Im neuen Workflow werden drei Elemente angezeigt:
 
 - Primary Source File
 - Clip List XML
-- Output File/Asset  
+- Output File/Asset
 
 ![Neuer Workflow für Codierung](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-transcode-blueprint.png)
 
@@ -791,7 +791,7 @@ Dies wurde mit normalen Vorgängen zum Ändern von Zeichenfolgen erreicht. Die s
 
 *Protokollieren der sich ergebenden Clipliste*
 
-Führen Sie einen Testlauf durch, um anzuzeigen, wie die Video- und Audiodatenströme gekürzt wurden. Wenn Sie mehr als einen Testlauf mit unterschiedlichen Werten für die Kürzungspunkte durchführen, werden Sie aber merken, dass diese nicht berücksichtigt werden. Dies liegt daran, dass der Designer – im Gegensatz zur Azure-Laufzeit – die Cliplisten-XML-Datei NICHT bei jeder Ausführung überschreibt. Dies bedeutet Folgendes: Nur das erstmalige Festlegen der Start- und Endpunkte führt zu einer Transformation der XML-Datei. In den nachfolgenden Fällen verhindert unsere Schutzklausel (if(clipListXML.indexOf("<trim>") == -1)), dass vom Workflow ein weiteres trim-Element hinzugefügt wird, wenn bereits ein trim-Element vorhanden ist.
+Führen Sie einen Testlauf durch, um anzuzeigen, wie die Video- und Audiodatenströme gekürzt wurden. Wenn Sie mehr als einen Testlauf mit unterschiedlichen Werten für die Kürzungspunkte durchführen, werden Sie aber merken, dass diese nicht berücksichtigt werden. Dies liegt daran, dass der Designer – im Gegensatz zur Azure-Laufzeit – die Cliplisten-XML-Datei NICHT bei jeder Ausführung überschreibt. Dies bedeutet Folgendes: Nur das erstmalige Festlegen der Start- und Endpunkte führt zu einer Transformation der XML-Datei. In den nachfolgenden Fällen verhindert unsere Schutzklausel (if(clipListXML.indexOf("<trim>") == -1)), dass vom Workflow ein weiteres „trim“-Element hinzugefügt wird, wenn bereits ein „trim“-Element vorhanden ist.
 
 Um das lokale Testen für unseren Workflow zu vereinfachen, fügen wir am besten Wartungscode hinzu, mit dem das Vorhandensein eines trim-Elements untersucht werden kann. Wenn dies der Fall ist, können wir es vor dem Fortfahren entfernen, indem wir die XML-Datei mit den neuen Werten ändern. Anstatt eine normale Zeichenfolgenänderung durchzuführen, ist es meistens sicherer, hierfür eine echte XML-Objektmodellanalyse zu verwenden.
 
@@ -986,4 +986,4 @@ Mit der folgenden einfachen Wächterklausel können wir überprüfen, ob das Kü
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0629_2016-->

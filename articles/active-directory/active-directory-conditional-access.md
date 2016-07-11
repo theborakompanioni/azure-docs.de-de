@@ -14,7 +14,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="06/15/2016"
+	ms.date="06/23/2016"
 	ms.author="femila"/>
 
 
@@ -32,10 +32,10 @@ In jedem Unternehmen ist das Sichern des Zugriffs auf Unternehmensressourcen von
 
 ## Benutzerbasierter Zugriffs auf Ressourcen
   
-- **Benutzerattribute**: Auf Ebene der Benutzerattribute können Sie Richtlinien anwenden, um sicherzustellen, dass nur autorisierte Benutzer auf Unternehmensressourcen zugreifen können.   
-- **Gruppenmitgliedschaft eines Benutzers**: Sie können die Zugriffsebene für einen Benutzer auch über dessen Mitgliedschaft in einer oder mehreren Gruppen steuern.   
-- **Multi-Factor Authentication (MFA)**: Sie können auch Richtlinien erzwingen, bei denen ein Benutzer seine Identität über ein mehrstufiges Authentifizierungssystem authentifizieren muss. Beispielsweise können Sie einen Benutzer zum Bestätigen einer PIN auf einem persönlichen Mobiltelefon zwingen, um eine zusätzliche Sicherheitsebene zu gewährleisten. Die MFA schützt Ihre Ressourcen vor dem Zugriff durch einen nicht autorisierten Benutzer, der Zugriff auf den Benutzernamen und das Kennwort eines gültigen Benutzers erlangt hat. 
-- **Anmeldungs- und Benutzerrisiken**: Richtlinien zu Risiken beim bedingten Zugriff stehen mit Azure AD Identity Protection zur Verfügung und bieten erweiterten Schutz basierend auf Risikoereignissen und ungewöhnlichen Anmeldeaktivitäten. 
+- **Benutzerattribute**: Auf Ebene der Benutzerattribute können Sie Richtlinien anwenden, um sicherzustellen, dass nur autorisierte Benutzer auf Unternehmensressourcen zugreifen können.
+- **Gruppenmitgliedschaft eines Benutzers**: Sie können die Zugriffsebene für einen Benutzer auch über dessen Mitgliedschaft in einer oder mehreren Gruppen steuern.
+- **Multi-Factor Authentication (MFA)**: Sie können auch Richtlinien erzwingen, bei denen ein Benutzer seine Identität über ein mehrstufiges Authentifizierungssystem authentifizieren muss. Beispielsweise können Sie einen Benutzer zum Bestätigen einer PIN auf einem persönlichen Mobiltelefon zwingen, um eine zusätzliche Sicherheitsebene zu gewährleisten. Die MFA schützt Ihre Ressourcen vor dem Zugriff durch einen nicht autorisierten Benutzer, der Zugriff auf den Benutzernamen und das Kennwort eines gültigen Benutzers erlangt hat.
+- **Anmeldungs- und Benutzerrisiken**: Richtlinien zu Risiken beim bedingten Zugriff stehen mit Azure AD Identity Protection zur Verfügung und bieten erweiterten Schutz basierend auf Risikoereignissen und ungewöhnlichen Anmeldeaktivitäten.
  
 
 ## Gerätebasierter bedingter Zugriff 
@@ -51,9 +51,9 @@ In der folgenden Inhaltszuordnung werden Dokumente aufgeführt, in denen Sie wei
 
 | Szenario | Artikel |
 |------------------------------------------------------|----------|
-| Schützen von Ressourcen basierend auf Authentifizierungsstärke oder Benutzer |[Erste Schritte mit dem bedingten Zugriff auf Azure AD-SaaS-Apps mit MFA und Extranet](active-directory-conditional-access-azuread-connected-apps.md)<br><br>[Unterstützte Anwendungen](active-directory-conditional-access-supported-apps.md)|
+| Schützen von Ressourcen basierend auf Authentifizierungsstärke oder Benutzer |[Bedingter Zugriff unter Azure – Vorschau für SaaS-Apps](active-directory-conditional-access-azuread-connected-apps.md)<br><br>[Unterstützung des bedingten Zugriffs für Anwendungen](active-directory-conditional-access-supported-apps.md)|
 | Schützen von Unternehmensdaten auf verloren gegangenen/gestohlenen Geräten |[Schützen Ihrer Daten mit vollständigem oder selektivem Löschen über Microsoft Intune](https://docs.microsoft.com/intune/deploy-use/use-remote-wipe-to-help-protect-data-using-microsoft-intune)|
 |Schützen von Ressource basierend auf dem Anmelderisiko |[Azure AD Identity Protection](active-directory-identityprotection.md) |
-| Additional Info |[Häufig gestellte Fragen zum bedingten Zugriff](active-directory-conditional-faqs.md)|
+| Additional Info |[Häufig gestellte Fragen zum bedingten Zugriff](active-directory-conditional-faqs.md)<br><br>[Technische Referenz](active-directory-conditional-access-technical-reference.md) |
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

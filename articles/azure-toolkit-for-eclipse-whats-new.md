@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="05/04/2016" 
+	ms.date="06/24/2016" 
 	ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh694270.aspx -->
@@ -160,7 +160,7 @@ Die Vorschauversion des Azure-Plug-Ins für Eclipse vom Februar 2014 wird verö
 * **Paketupdate 45 für Azul Zulu OpenJDK.** Ab dieser Version ist zusätzlich zu den bereits verfügbaren Updates 40 und 25 das Update 45 für Zulu (OpenJDK v7-Paket) von Azul Systems verfügbar.
 * **Unterstützung der Automatikfunktion für private Endpunktports.** Sie können einen privaten Port für Eingabeendpunkte und interne Endpunkte auf „Automatisch“ festlegen, um eine automatische Portzuweisung durch Azure zu ermöglichen. Bislang konnte lediglich eine bestimmte Portnummer zugewiesen werden.
 * **Unterstützung der Anpassung des Zertifikatnamens (Certificate Name, CN) auf der Benutzeroberfläche zum Erstellen selbst signierter Zertifikate.** Bislang wurde für alle neuen Zertifikate der gleiche hartcodierte Name verwendet. Nun können Sie einen eigenen Zertifikatnamen angeben, um für unterschiedliche Zwecke verwendete Zertifikate im Azure-Portal besser unterscheiden zu können.
-* **Azure-Symbolleiste**: Die Azure-Symbolleiste wurde wie folgt aktualisiert: 
+* **Azure-Symbolleiste**: Die Azure-Symbolleiste wurde wie folgt aktualisiert:
     * ![][ic710876] Dieses Symbol wurde für **Neues Azure-Bereitstellungsprojekt** hinzugefügt.
     * ![][ic710877] Dieses Symbol wurde zum schnellen Aufrufen des Dialogfelds für die Erstellung selbstsignierter Zertifikate hinzugefügt.
 * **Unterstützung virtueller Azure-Maschinen der Größe A5.** Clouddienste können nun auf virtuellen Maschinen mit umfangreichem Arbeitsspeicher (Größe A5) bereitgestellt werden. Weitere Informationen zu dieser VM-Größe finden Sie unter [Größen virtueller Maschinen und Clouddienste für Azure].
@@ -278,9 +278,9 @@ Die CTP-Version des Azure-Plug-Ins für Eclipse vom Juni 2012 wird veröffentli
 * **Microsoft JDBC Driver 4.0 für SQL Server bei der Plug-In-Installation verfügbar:** Im Rahmen der Installation des neuen Plug-Ins kann auch die neueste Version des Microsoft JDBC-Treibers für SQL Server installiert werden.
 * **Azure Access Control Service-Filter bei der Plug-In-Installation verfügbar:** Diese neue Komponente ist als Eclipse-Bibliothek im Toolkit enthalten und ermöglicht Ihrer Java-Webanwendung die nahtlose Verwendung der Azure Access Control Service (ACS)-Authentifizierung mit verschiedenen Identitätsanbietern wie Google, Live.com und Yahoo!. Sie müssen keine eigene Authentifizierungslogik schreiben. Konfigurieren Sie einfach ein paar Optionen, und überlassen Sie den Rest (die ACS-basierte Benutzeranmeldung) dem Filter. Sie können sich ganz auf das Schreiben von Code konzentrieren, der den Benutzern auf der Grundlage ihrer Identität (gemäß Rückgabe des Filters an Ihre Anwendung im Anforderungsobjekt) den Zugriff auf Ressourcen ermöglicht. Ein Tutorial zur Verwendung des ACS-Filters finden Sie unter [Authentifizieren von Webbenutzern mit dem Azure Access Control Service über Eclipse].
 * **Automatische Erkennung von Azure SDK 1.7 (erforderliche Komponente):** Bei der Erstellung eines neuen Azure-Bereitstellungsprojekts wird Azure SDK 1.7 automatisch heruntergeladen, sofern es nicht bereits installiert ist.
-* **Instanzendpunkte:** Ermöglichen direkten Port-Endpunktzugriff für die Kommunikation mit Rolleninstanzen mit Lastenausgleich. Instanzendpunkte können über die Endpunkte-Benutzeroberfläche (auf der Eigenschaftenseite[ ]für Endpunkte) hinzugefügt werden. Dies vereinfacht die Aktivierung von Remotedebuggen und JMX-Diagnosen für bestimmte, in der Cloud ausgeführte Compute-Instanzen in Szenarien mit Bereitstellungen mit mehreren Instanzen. 
+* **Instanzendpunkte:** Ermöglichen direkten Port-Endpunktzugriff für die Kommunikation mit Rolleninstanzen mit Lastenausgleich. Instanzendpunkte können über die Endpunkte-Benutzeroberfläche (auf der Eigenschaftenseite[ ]für Endpunkte) hinzugefügt werden. Dies vereinfacht die Aktivierung von Remotedebuggen und JMX-Diagnosen für bestimmte, in der Cloud ausgeführte Compute-Instanzen in Szenarien mit Bereitstellungen mit mehreren Instanzen.
 * **Benutzeroberfläche für Komponenten:** Erleichtert fortgeschrittenen Benutzern die Einrichtung von Projektabhängigkeiten zwischen einzelnen Azure-Rollen im Projekt und anderen externen Ressourcen wie Java-Anwendungsprojekten sowie die Beschreibung ihrer Bereitstellungslogik. Weitere Informationen finden Sie unter [Eigenschaften für Komponenten].
-* **Automatisches Upgrade älterer Projektversionen:** Beim Öffnen eines Arbeitsbereichs mit Azure-Projekten, die mit einer älteren Version des Plug-Ins erstellt wurden, werden die alten Projekte in Eclipse als geschlossen angezeigt, da ältere Projektversionen nicht mit der neuen Version kompatibel sind. Beim Versuch, eines dieser alten Projekte zu öffnen, wird ein Upgrade-Assistent gestartet. Wenn Sie dem Upgrade zustimmen, wird ein neues Projekt mit dem Namenszusatz „\_Upgraded“ erstellt und automatisch für die Verwendung mit der neuen Version aktualisiert. Das neue Projekt kann bei Bedarf umbenannt werden. Das ursprüngliche Projekt wird dabei nicht geändert (und bleibt geschlossen).
+* **Automatisches Upgrade älterer Projektversionen:** Beim Öffnen eines Arbeitsbereichs mit Azure-Projekten, die mit einer älteren Version des Plug-Ins erstellt wurden, werden die alten Projekte in Eclipse als geschlossen angezeigt, da ältere Projektversionen nicht mit der neuen Version kompatibel sind. Beim Versuch, eines dieser alten Projekte zu öffnen, wird ein Upgrade-Assistent gestartet. Wenn Sie dem Upgrade zustimmen, wird ein neues Projekt mit dem Namenszusatz **\_Upgraded** erstellt und automatisch für die Verwendung mit der neuen Version aktualisiert. Das neue Projekt kann bei Bedarf umbenannt werden. Das ursprüngliche Projekt wird dabei nicht geändert (und bleibt geschlossen).
 
 ### 10\. Dezember 2011
 
@@ -293,7 +293,7 @@ Die CTP-Version des Azure-Plug-Ins für Eclipse vom Dezember 2011 wird veröffe
 * **Konfigurationsbenutzeroberfläche für das Remotedebuggen von Java-Apps:** Hiermit können Sie dem Eclipse-Remotedebugger komfortabel Zugriff auf Ihre im Emulator oder in der Azure-Cloud ausgeführte Java-App geben und Ihren Java-Code schrittweise in Echtzeit durchlaufen und debuggen. Weitere Informationen finden Sie unter [Debuggen von Azure-Anwendungen in Eclipse].
 * **Konfigurationsbenutzeroberfläche für lokale Speicherressourcen:** Erspart die direkte Bearbeitung von XML-Code zum Konfigurieren lokaler Ressourcen. Dieses Feature ermöglicht auch den Zugriff auf den tatsächlichen Dateipfad Ihrer lokalen Ressource nach der Bereitstellung über eine Umgebungsvariable, auf die Sie direkt in Ihrem Startskript verweisen können. Weitere Informationen finden Sie unter [Eigenschaften für lokalen Speicher].
 * **Konfigurationsbenutzeroberfläche für Umgebungsvariablen:** Erspart die manuelle Bearbeitung des XML-Konfigurationscodes zum Festlegen von Umgebungsvariablen. Weitere Informationen finden Sie unter [Eigenschaften für Umgebungsvariablen].
-* **JDBC-Treiber für SQL Azure:** Wird zusammen mit dem Plug-In als nahtlos integrierte Eclipse-Bibliothek installiert und vereinfacht die Programmierung für SQL Azure. 
+* **JDBC-Treiber für SQL Azure:** Wird zusammen mit dem Plug-In als nahtlos integrierte Eclipse-Bibliothek installiert und vereinfacht die Programmierung für SQL Azure.
 * **Schneller Kontextmenüzugriff auf die Benutzeroberfläche für die Rollenkonfiguration**: Klicken Sie einfach mit der rechten Maustaste auf den Rollenordner, und klicken Sie anschließend auf **Eigenschaften**.
 * **Benutzerdefinierte Symbole für Azure-Projekt und Rollenordner:** Zur besseren Erkennbarkeit und einfacheren Navigation in Ihrem Arbeitsbereich und Projekt.
 
@@ -356,4 +356,4 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [ic710882]: ./media/azure-toolkit-for-eclipse-whats-new/ic710882.png
 [ic710883]: ./media/azure-toolkit-for-eclipse-whats-new/ic710883.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -580,7 +580,7 @@ Im folgenden Beispiel wird der Cache mit dem Namen `myCache` entfernt.
 <a name="classic"></a>
 ## Verwalten von Azure Redis Cache-Instanzen mit dem klassischen Bereitstellungsmodell von PowerShell
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](cache-howto-manage-redis-cache-powershell.md) wird am Anfang dieses Artikels beschrieben.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Erfahren Sie, wie Sie [diese Schritte mithilfe des Resource Manager-Modells ausführen](cache-howto-manage-redis-cache-powershell.md), das am Anfang dieses Artikels beschrieben wird.
 
 Das folgende Skript veranschaulicht das Erstellen, Aktualisieren und Löschen eines Azure Redis Caches mit dem klassischen Bereitstellungsmodell.
 		
@@ -636,4 +636,4 @@ Weitere Informationen zur Verwendung von Windows PowerShell mit Azure finden Sie
 - [Windows PowerShell-Blog](http://blogs.msdn.com/powershell): Informationen zu neuen Funktionen in Windows PowerShell.
 - ["Hey, Scripting Guy!"- Blog](http://blogs.technet.com/b/heyscriptingguy/): Praktische Tipps und Tricks aus der Windows PowerShell-Community.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

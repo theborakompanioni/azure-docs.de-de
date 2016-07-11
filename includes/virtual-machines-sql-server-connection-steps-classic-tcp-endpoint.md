@@ -4,19 +4,22 @@ Für den Zugriff auf SQL Server über das Internet benötigt der virtuelle Compu
 
 >[AZURE.NOTE] Wenn die Verbindung innerhalb desselben Clouddiensts oder innerhalb desselben virtuellen Netzwerks erfolgt, müssen Sie keinen Endpunkt mit öffentlichem Zugriff erstellen. In diesem Fall können Sie mit dem nächsten Schritt fortfahren. Weitere Informationen finden Sie unter [Verbindungsszenarien](../articles/virtual-machines/virtual-machines-windows-classic-sql-connect.md#connection-scenarios).
 
-1. Klicken Sie im Azure-Verwaltungsportal auf **VIRTUELLE COMPUTER**.
-	
-2. Klicken Sie auf den neu erstellten virtuellen Computer. Informationen zu Ihrem virtuellen Computer werden angezeigt.
-	
-3. Wählen Sie oben auf der Seite die Seite **ENDPUNKTE** aus, und klicken Sie dann unten auf **HINZUFÜGEN**.
-	
-4. Klicken Sie auf der Seite **Einem virtuellen Computer einen Endpunkt hinzufügen** auf **Eigenständigen Endpunkt hinzufügen**, und klicken Sie dann auf „Weiter“, um fortzufahren.
-	
-5. Geben Sie auf der Seite zum Angeben der Details des Endpunkts folgende Informationen ein:
+1. Wählen Sie im Azure-Portal **Virtuelle Computer (klassisch)** aus.
 
-	- Geben Sie unter **NAME** einen Namen für den Endpunkt ein.
-	- Wählen Sie im Feld **PROTOKOLL** den Eintrag **TCP**. Sie können zudem **57500** im Feld **ÖFFENTLICHER PORT** eingeben. Sie können den Standard-Überwachungsport **1433** von SQL Server im Feld **Privater Port** eingeben. Viele Organisationen verwenden unterschiedliche Portnummern, um böswillige Sicherheitsangriffe zu vermeiden. 
+2. Wählen Sie dann Ihren virtuellen Computer mit SQL Server aus.
 
-6. Klicken Sie auf das Häkchen, um fortzufahren. Der Endpunkt wurde erstellt.
+3. Wählen Sie **Endpunkte** aus, und klicken Sie dann oben auf dem Blatt „Endpunkte“ auf die Schaltfläche **Hinzufügen**.
 
-<!---HONumber=AcomDC_0323_2016-->
+	![Schritte im Portal für die Endpunkterstellung](./media/virtual-machines-sql-server-connection-steps/portal-endpoint-creation.png)
+
+4. Geben Sie auf dem Blatt **Endpunkt hinzufügen** einen **Namen** wie „SQLEndpoint“ ein.
+
+5. Wählen Sie **TCP** als **Protokoll** aus.
+
+6. Geben Sie für **Öffentlicher Port** eine Portnummer wie **57500** an.
+
+7. Geben Sie für **Privater Port** den SQL Server-Lauschport an. Standardmäßig ist es **1433**.
+
+6. Klicken Sie auf **OK**, um den Endpunkt zu erstellen.
+
+<!---HONumber=AcomDC_0629_2016-->

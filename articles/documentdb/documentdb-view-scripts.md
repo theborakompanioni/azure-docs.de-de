@@ -1,6 +1,6 @@
 <properties
 	pageTitle="DocumentDB-Skript-Explorer, ein JavaScript-Editor | Microsoft Azure"
-	description="Erfahren Sie mehr über den DocumentDB-Skript-Explorer, ein Azure-Portaltool, das Ihnen die Verwaltung von serverseitigen DocumentDB-Programmierartefakten ermöglicht, z. B. gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen."
+	description="Erfahren Sie mehr über den DocumentDB-Skript-Explorer, ein Azure-Portaltool, das Ihnen die Verwaltung von serverseitigen DocumentDB-Programmierartefakten ermöglicht, z. B. gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen."
 	keywords="JavaScript-Editor"
 	services="documentdb"
 	authors="AndrewHoh"
@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="06/28/2016"
 	ms.author="anhoh"/>
 
 # Erstellen und Ausführen von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen mit dem DocumentDB-Skript-Explorer
 
-Dieser Artikel bietet eine Übersicht über den [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)-Skript-Explorer, einen JavaScript-Editor im Azure-Portal, der Ihnen die Anzeige von serverseitigen DocumentDB-Programmierartefakten ermöglicht, z. B. gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen. Im Artikel [DocumentDB-serverseitige Programmierung: gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen](documentdb-programming.md) erfahren Sie mehr über DocumentDB-serverseitige Programmierung.
+Dieser Artikel bietet eine Übersicht über den [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)-Skript-Explorer, einen JavaScript-Editor im Azure-Portal, der Ihnen die Anzeige von serverseitigen DocumentDB-Programmierartefakten ermöglicht, z. B. gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen. Im Artikel [DocumentDB-serverseitige Programmierung: gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen](documentdb-programming.md) erfahren Sie mehr über DocumentDB-serverseitige Programmierung.
 
 ## Starten des Skript-Explorers
 
@@ -31,7 +31,7 @@ Dieser Artikel bietet eine Übersicht über den [Microsoft Azure DocumentDB](htt
  
     >[AZURE.NOTE] Der Skript-Explorer wird auch auf den Blättern für Datenbanken und Sammlungen angezeigt.
 
-    Die Dropdown-Listen **Datenbank** und **Sammlung** werden basierend auf dem Kontext, in dem der Skript-Explorer gestartet wird, automatisch ausgefüllt. Wenn Sie diesen z. B. aus einem Datenbankblatt starten, sind die Felder der aktuellen Datenbank bereits ausgefüllt. Wenn Sie diesen aus einem Auflistungsblatt starten, sind die Felder der aktuellen Auflistung ausgefüllt.
+    Die Dropdown-Listen **Datenbank** und **Sammlung** werden basierend auf dem Kontext, in dem der Skript-Explorer gestartet wird, automatisch ausgefüllt. Wenn Sie diesen z. B. aus einem Datenbankblatt starten, sind die Felder der aktuellen Datenbank bereits ausgefüllt. Wenn Sie diesen aus einem Auflistungsblatt starten, sind die Felder der aktuellen Auflistung ausgefüllt.
 
 	![Screenshot des Skript-Explorers](./media/documentdb-view-scripts/scriptexplorerinitial.png)
 
@@ -119,4 +119,4 @@ Im Artikel [Gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Fun
 
 Der [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/documentdb/) ist auch ein nützlicher Anhaltspunkt, um mehr über DocumentDB zu erfahren.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="04/18/2016"  
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -42,10 +42,10 @@ Verfahren Sie zum Erstellen des OnDemand-Streaminglocators und Abrufen von URLs 
 
    1. Wenn der Inhalt verschlüsselt ist, definieren Sie eine Zugriffsrichtlinie.
    2. Erstellen Sie einen OnDemand-Streaminglocator.
-   3. Wenn Sie ein Streaming planen, rufen Sie die Streaming-Manifestdatei (ISM) im Medienobjekt ab. 
+   3. Wenn Sie ein Streaming planen, rufen Sie die Streaming-Manifestdatei (ISM) im Medienobjekt ab.
    		
-	Wenn Sie einen progressiven Download ausführen möchten, rufen Sie die Namen der MP4-Dateien im Medienobjekt ab. 
-   4. Erstellen Sie URLs für die Manifestdatei oder MP4-Dateien. 
+	Wenn Sie einen progressiven Download ausführen möchten, rufen Sie die Namen der MP4-Dateien im Medienobjekt ab.
+   4. Erstellen Sie URLs für die Manifestdatei oder MP4-Dateien.
    5. Beachten Sie, dass Sie keinen Streaminglocator mit einer Zugriffsrichtlinie erstellen können, die Schreib- oder Leseberechtigungen umfasst.
 
 
@@ -191,4 +191,4 @@ Beispiel:
 
 [Konfigurieren der Übermittlungsrichtlinie für Medienobjekte](media-services-rest-configure-asset-delivery-policy.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

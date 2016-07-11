@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](load-balancer-get-started-ilb-arm-ps.md).
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)] Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](load-balancer-get-started-ilb-arm-ps.md).
 
 [AZURE.INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -82,7 +82,7 @@ Wenn Sie die IP-Adresse während der Erstellung der ILB-Instanz angegeben haben,
 
 
 
-Um diese Befehle zu verwenden, geben Sie die Werte ein und entfernen die Symbole < and >. Beispiel:
+Geben Sie zum Verwenden dieser Befehle die entsprechenden Werte ein, und entfernen Sie die Symbole „<“ und „>“. Beispiel:
 
 	$svc="mytestcloud"
 	Get-AzureService -ServiceName $svc | Get-AzureInternalLoadBalancer
@@ -139,7 +139,7 @@ Um einen virtuellen Computer als Endpunkt aus einer internen Load Balancer-Insta
 	$epname="<Name of the endpoint>"
 	Get-AzureVM -ServiceName $svc -Name $vmname | Remove-AzureEndpoint -Name $epname | Update-AzureVM
 
-Um diese Befehle zu verwenden, geben Sie die Werte ein und entfernen die Symbole < and >.
+Geben Sie zum Verwenden dieser Befehle die entsprechenden Werte ein, und entfernen Sie dabei die Symbole „<“ und „>“.
 
 Beispiel:
 
@@ -153,7 +153,7 @@ Um eine interne Load Balancer-Instanz aus einem Clouddienst zu entfernen, verwen
 	$svc="<Cloud service name>"
 	Remove-AzureInternalLoadBalancer -ServiceName $svc
 
-Um diese Befehle zu verwenden, geben Sie den Wert ein und entfernen die Symbole < and >.
+Geben Sie zum Verwenden dieser Befehle den entsprechenden Wert ein, und entfernen Sie die Symbole „<“ und „>“.
 
 Beispiel:
 
@@ -181,4 +181,4 @@ Um weitere Informationen zu ILB-Cmdlets zu erhalten, führen Sie die folgenden B
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/19/2016"    
+	ms.date="06/22/2016"   
 	ms.author="juliako"/>
 
 
@@ -43,7 +43,7 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
 
 		// Load the XML (or JSON) from the local file.
 	    string configuration = File.ReadAllText(fileName);  
-- Hinzufügen einer Codierungsaufgabe zum Auftrag 
+- Hinzufügen einer Codierungsaufgabe zum Auftrag
 - Geben Sie das zu codierende Asset an.
 - Erstellen Sie ein Ausgabeasset, das das codierte Asset enthalten soll.
 - Fügen Sie einen Ereignishandler hinzu, um den Auftragsstatus zu überprüfen.
@@ -980,7 +980,7 @@ Das folgende Beispiel veranschaulicht, wie Sie eine Voreinstellung generieren, u
 - Der Codeausschnitt und die JSON-Voreinstellung zeigen ein Beispiel für das Verketten von zwei Videodateien. Sie können den Vorgang folgendermaßen auf mehr als zwei Videos erweitern:
 
 	1. Wiederholtes Aufrufen von task.InputAssets.Add(), um weitere Videos in einer bestimmten Reihenfolge hinzuzufügen.
-	2. Ändern des Sources-Elements in der JSON-Voreinstellung durch Hinzufügen weiterer Einträge in der gleichen Reihenfolge. 
+	2. Ändern des Sources-Elements in der JSON-Voreinstellung durch Hinzufügen weiterer Einträge in der gleichen Reihenfolge.
 
 
 ###.NET code
@@ -1086,4 +1086,4 @@ Aktualisieren Sie Ihre benutzerdefinierte Voreinstellung mit den IDs der Medieno
 
 [Media Services-Codierung (Übersicht)](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/25/2016"   
+	ms.date="06/22/2016"  
 	ms.author="juliako"/>
 
 
@@ -40,14 +40,14 @@ In diesem Thema wird erläutert, wie Sie die folgenden Inhaltsvorgänge direkt �
 
 
 1. Klicken Sie im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409) auf **Media Services** und dann auf den Media Services-Kontonamen.
-2. Wählen Sie die Seite "INHALT" aus. 
-3. Klicken Sie auf der Seite oder unten im Portal auf **Hochladen**. 
+2. Wählen Sie die Seite "INHALT" aus.
+3. Klicken Sie auf der Seite oder unten im Portal auf **Hochladen**.
 4. Navigieren Sie im Dialogfeld **Inhalte hochladen** zur gewünschten Ressourcendatei. Klicken Sie auf die Datei, und klicken Sie dann auf **Öffnen**, oder drücken Sie **Eingabe**.
 
 	![Dialogfeld "Inhalte hochladen"][uploadcontent]
 
 5. Klicken Sie im Dialogfeld "Inhalte hochladen" auf das Häkchen, um die Datei und den Inhaltsnamen zu akzeptieren.
-6. Das Hochladen beginnt, und Sie können den Fortschritt unten im Portal verfolgen.  
+6. Das Hochladen beginnt, und Sie können den Fortschritt unten im Portal verfolgen.
 
 	![Auftragsstatus][status]
 
@@ -125,7 +125,7 @@ Wenn Sie Medienobjekte für Media Services dynamisch mit einem AES-Schlüssel od
 
 - Codieren Sie Ihre Zwischendatei (Quelle) in einen Satz von MP4-Dateien oder Smooth Streaming-Dateien mit adaptiver Bitrate (die Codierungsschritte werden weiter unten im Abschnitt [Codieren](#encode) gezeigt).
 - Abrufen von mindestens einer On-Demand-Streamingeinheit für den Streamingendpunkt, von dem aus Sie die Bereitstellung Ihrer Inhalte planen. Weitere Informationen finden Sie unter [Skalieren von reservierten Einheiten für bedarfsgesteuertes Streaming](media-services-manage-origins.md#scale_streaming_endpoints/).
-- Konfigurieren Sie die Standardrichtlinie für den Dienst für unverschlüsselte AES-Schlüssel bzw. die für den Dienst für PlayReady-Lizenzen. Weitere Informationen finden Sie unter [Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel](media-services-portal-configure-content-key-auth-policy.md).  
+- Konfigurieren Sie die Standardrichtlinie für den Dienst für unverschlüsselte AES-Schlüssel bzw. die für den Dienst für PlayReady-Lizenzen. Weitere Informationen finden Sie unter [Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel](media-services-portal-configure-content-key-auth-policy.md).
 
 
 	Wenn Sie die Verschlüsselung aktivieren möchten, klicken Sie auf die Schaltfläche **VERSCHLÜSSELUNG** auf der Seite **INHALT**.
@@ -179,8 +179,8 @@ Verwenden Sie zum Aktualisieren des Ablaufdatums für einen Locator die [REST](h
 
 So veröffentlichen Sie ein Medienobjekt über das Portal:
 
-1. Wählen Sie das Medienobjekt aus. 
-2. Klicken Sie dann auf die Schaltfläche "Veröffentlichen". 
+1. Wählen Sie das Medienobjekt aus.
+2. Klicken Sie dann auf die Schaltfläche "Veröffentlichen".
 	
  ![Veröffentlichte Inhalte][publishedcontent]
 
@@ -222,4 +222,4 @@ Folgende Überlegungen sollten berücksichtigt werden:
 [encrypt]: ./media/media-services-manage-content/media-services-encrypt-content.png
 [AMSPlayer]: ./media/media-services-manage-content/media-services-portal-player.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

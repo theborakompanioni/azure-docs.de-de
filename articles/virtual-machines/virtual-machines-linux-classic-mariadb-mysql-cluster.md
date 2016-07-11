@@ -19,7 +19,7 @@
 
 # MariaDB (MySQL)-Cluster - Azure-Lernprogramm
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 > [AZURE.NOTE]  Das MariaDB Enterprise-Cluster ist jetzt in Azure Marketplace verfügbar. Mit dem neuen Angebot wird automatisch ein MariaDB Galera-Cluster im ARM bereitgestellt. Verwenden Sie nach Möglichkeit das Angebot unter https://azure.microsoft.com/de-DE/marketplace/partners/mariadb/cluster-maxscale/.
 
@@ -211,7 +211,7 @@ Die Ausgabe sieht in etwa wie folgt aus: `5112500ae3b842c8b9c604889f8753c3__Open
 
 	- Bearbeiten Sie den Abschnitt **[mariadb]**, und fügen Sie Folgendes an:
 
-	> [AZURE.NOTE] Es empfiehlt sich, **innodb\_buffer\_pool\_size** auf 70 Prozent des Arbeitsspeichers Ihres virtuellen Computers festzulegen. In diesem Fall wurde sie für den mittleren virtuellen Azure-Computer mit 3,5 GB RAM auf 2,45 GB festgelegt.
+	> [AZURE.NOTE] Es empfiehlt sich, **innodb\_buffer\_pool\_size** auf 70 Prozent des Arbeitsspeichers Ihres virtuellen Computers festzulegen. In diesem Fall wurde sie für den mittleren virtuellen Azure-Computer mit 3,5 GB RAM auf 2,45 GB festgelegt.
 
 	        innodb_buffer_pool_size = 2508M # The buffer pool contains buffered data and the index. This is usually set to 70% of physical memory.
             innodb_log_file_size = 512M #  Redo logs ensure that write operations are fast, reliable, and recoverable after a crash
@@ -227,7 +227,7 @@ Die Ausgabe sieht in etwa wie folgt aus: `5112500ae3b842c8b9c604889f8753c3__Open
         chkconfig mysql off
 		waagent -deprovision
 
-11. Erfassen Sie den virtuellen Computer über das Portal: (Derzeit wird unter dem [Problem 1268] für die Tools der Azure-Befehlszeilenschnittstelle beschrieben, dass bei Images, die mit den Tools der Azure-Befehlszeilenschnittstelle erfasst werden, die angeschlossenen Datenträger nicht erfasst werden.
+11. Erfassen Sie den virtuellen Computer über das Portal: (Derzeit wird unter dem [Problem 1268] für die Tools der Azure-Befehlszeilenschnittstelle beschrieben, dass bei Images, die mit den Tools der Azure-Befehlszeilenschnittstelle erfasst werden, die angeschlossenen Datenträger nicht erfasst werden.
 
 	- Fahren Sie den Computer über das Portal herunter.
     - Klicken Sie auf „Erfassen“, und geben Sie den Namen des Image als **mariadb-galera-image** an. Geben Sie auch eine Beschreibung ein, und aktivieren Sie „Ich habe waagent ausgeführt“. ![Erfassen des virtuellen Computers](./media/virtual-machines-linux-classic-mariadb-mysql-cluster/Capture.png) ![Erfassen des virtuellen Computers](./media/virtual-machines-linux-classic-mariadb-mysql-cluster/Capture2.PNG)
@@ -236,7 +236,7 @@ Die Ausgabe sieht in etwa wie folgt aus: `5112500ae3b842c8b9c604889f8753c3__Open
 
 Erstellen Sie drei virtuelle Computer aus der Vorlage, die Sie gerade erstellt haben, und konfigurieren und starten Sie dann den Cluster.
 
-1. Erstellen Sie den ersten virtuellen CentOS 7-Computer auf der Grundlage des erstellten Image **mariadb-galera-image**, und geben Sie den Namen des virtuellen Netzwerks (**mariadbvnet**), das Subnetz (**mariadb**) und die Computergröße **Mittel** an. Übergeben Sie den Namen des Clouddiensts als **mariadbha** (bzw. als beliebigen Namen, auf den über „mariadbha.cloudapp.net“ zugegriffen werden soll), wobei der Name dieses Computers **mariadb1** und der Benutzername **azureuser** lauten und der SSH-Zugriff aktiviert sein soll, die PEM-SSH-Zertifikatsdatei übergeben wird und **/path/to/key.pem** durch den Pfad ersetzt wird, an dem Sie den generierten PEM-SSH-Schlüssel gespeichert haben.
+1. Erstellen Sie den ersten virtuellen CentOS 7-Computer auf der Grundlage des erstellten Image **mariadb-galera-image**, und geben Sie den Namen des virtuellen Netzwerks (**mariadbvnet**), das Subnetz (**mariadb**) und die Computergröße **Mittel** an. Übergeben Sie den Namen des Clouddiensts als **mariadbha** (bzw. als beliebigen Namen, auf den über „mariadbha.cloudapp.net“ zugegriffen werden soll), wobei der Name dieses Computers **mariadb1** und der Benutzername **azureuser** lauten und der SSH-Zugriff aktiviert sein soll, die PEM-SSH-Zertifikatsdatei übergeben wird und **/path/to/key.pem** durch den Pfad ersetzt wird, an dem Sie den generierten PEM-SSH-Schlüssel gespeichert haben.
 
 	> [AZURE.NOTE] Die folgenden Befehle sind aus Gründen der Übersichtlichkeit auf mehrere Zeilen aufgeteilt, Sie sollten jedoch jeden Befehl als eine Zeile eingeben.
 
@@ -307,7 +307,7 @@ Führen Sie die folgenden Befehle auf Ihrem Computer mithilfe der Azure-Befehlsz
     azure vm endpoint create-multiple mariadb2 3306:3306:tcp:false:MySQL:tcp:3306
     azure vm endpoint create-multiple mariadb3 3306:3306:tcp:false:MySQL:tcp:3306
 
-Da das Testintervall des Lastenausgleichs von der Befehlszeilenschnittstelle auf 15 Sekunden festgelegt wird (was möglicherweise etwas zu lang ist), ändern Sie es als letzten Schritt im Portal unter **Endpunkte** für alle virtuellen Computer,
+Da das Testintervall des Lastenausgleichs von der Befehlszeilenschnittstelle auf 15 Sekunden festgelegt wird (was möglicherweise etwas zu lang ist), ändern Sie es als letzten Schritt im Portal unter **Endpunkte** für alle virtuellen Computer,
 
 ![Endpunkt bearbeiten](./media/virtual-machines-linux-classic-mariadb-mysql-cluster/Endpoint.PNG)
 
@@ -371,7 +371,7 @@ Es empfiehlt sich unter Umständen, sich über eine [weitere Möglichkeit zur Gr
 [einen SSH-Schlüssel für die Authentifizierung erstellen]: http://www.jeff.wilcox.name/2013/06/secure-linux-vms-with-ssh-certificates/
 [diesem Artikel zur Strategie für die Leistungsoptimierung]: virtual-machines-linux-optimize-mysql-perf.md
 [Möglichkeiten zum Optimieren und Testen der MySQL-Leistung auf virtuellen Azure-Computern mit Linux]: virtual-machines-linux-optimize-mysql-perf.md
-[Problem 1268]: https://github.com/Azure/azure-xplat-cli/issues/1268
+[Problem 1268]: https://github.com/Azure/azure-xplat-cli/issues/1268
 [weitere Möglichkeit zur Gruppierung von MySQL unter Linux]: virtual-machines-linux-mysql-cluster.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0629_2016-->

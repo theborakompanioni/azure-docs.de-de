@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/05/2016"
+   ms.date="06/23/2016"
    ms.author="tomfitz"/>
 
 # Vorlagenschema für einen geheimen Schlüssel in einem Schlüsseltresor
@@ -41,10 +41,10 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 | Name | Wert |
 | ---- | ---- | 
 | type | Enum<br />Erforderlich<br />**secrets** (wenn als untergeordnete Ressource eines Schlüsseltresors bereitgestellt) oder<br /> **Microsoft.KeyVault/vaults/secrets** (wenn als Ressource der obersten Ebene bereitgestellt)<br /><br />Der zu erstellende Ressourcentyp. |
-| apiVersion | Enum<br />Erforderlich<br />**2015-06-01** oder **2014-12-19-preview**<br /><br />Die zum Erstellen der Ressource zu verwendende API-Version. | 
+| "apiVersion": | Enum<br />Erforderlich<br />**2015-06-01** oder **2014-12-19-preview**<br /><br />Die API-Version zum Erstellen der Ressource. | 
 | name | String<br />Erforderlich<br />Ein einzelnes Wort, wenn als untergeordnete Ressource eines Schlüsseltresors bereitgestellt, oder im Format **{Schlüsseltresorname}/{Name des geheimen Schlüssels}**, wenn als Ressource der obersten Ebene zum Hinzufügen zu einem vorhandenen Schlüsseltresor bereitgestellt.<br /><br />Der Name des zu erstellenden geheimen Schlüssels. |
 | Eigenschaften | Object<br />Erforderlich<br />[properties-Objekt](#properties)<br /><br />Ein Objekt, das den Wert des zu erstellenden geheimen Schlüssels angibt. |
-| dependsOn | Array<br />Optional<br />Eine durch Kommas getrennte Liste von Ressourcennamen oder eindeutigen Ressourcenbezeichnern.<br /><br />Die Sammlung von Ressourcen, von denen dieser Link abhängt. Wenn der Schlüsseltresor für den geheimen Schlüssel in der gleichen Vorlage bereitgestellt wird, fügen Sie den Namen des Schlüsseltresors in diesem Element ein, um sicherzustellen, dass der Tresor zuerst bereitgestellt wird. |
+| dependsOn | Array<br />Optional<br />Eine durch Kommas getrennte Liste mit Ressourcennamen oder eindeutigen Ressourcenbezeichnern.<br /><br />Die Sammlung von Ressourcen, von denen dieser Link abhängt. Wenn der Schlüsseltresor für den geheimen Schlüssel in der gleichen Vorlage bereitgestellt wird, fügen Sie den Namen des Schlüsseltresors in diesem Element ein, um sicherzustellen, dass der Tresor zuerst bereitgestellt wird. |
 
 <a id="properties" />
 ### properties-Objekt
@@ -71,13 +71,13 @@ Im ersten Beispiel wird ein geheimer Schlüssel als untergeordnete Ressource ein
             "tenantId": {
                 "type": "string",
                 "metadata": {
-                   "description": "Tenant Id for the subscription and use assigned access to the vault. Available from the Get-AzureRMSubscription PowerShell cmdlet"
+                   "description": "Tenant ID for the subscription and use assigned access to the vault. Available from the Get-AzureRmSubscription PowerShell cmdlet"
                 }
             },
             "objectId": {
                 "type": "string",
                 "metadata": {
-                    "description": "Object Id of the AAD user or service principal that will have access to the vault. Available from the Get-AzureRMADUser or the Get-AzureRMADServicePrincipal cmdlets"
+                    "description": "Object ID of the AAD user or service principal that will have access to the vault. Available from the Get-AzureRmADUser or the Get-AzureRmADServicePrincipal cmdlets"
                 }
             },
             "keysPermissions": {
@@ -227,4 +227,4 @@ Im zweiten Beispiel wird der geheime Schlüssel als Ressource der obersten Ebene
 - Allgemeine Informationen zu Schlüsseltresoren finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](./key-vault/key-vault-get-started.md).
 - Ein Beispiel für das Verweisen auf einen geheimen Schlüssel in einem Schlüsseltresor beim Bereitstellen von Vorlagen finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

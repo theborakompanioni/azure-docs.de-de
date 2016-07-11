@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/14/2016"   
+	ms.date="06/22/2016"   
 	ms.author="milanga;juliako;"/>
 
 #Verwenden von Azure Media Video Thumbnails zum Erstellen einer Videozusammenfassung
@@ -76,7 +76,7 @@ Die folgende JSON legt verfügbare Parameter fest.
 Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
 1. Sie ein Asset erstellen und eine Mediendatei in das Asset hochladen.
-1. Erstellt einen Auftrag mit einer Video-Miniaturansicht anhand einer Konfigurationsdatei, die die folgende JSON-Voreinstellung enthält. 
+1. Erstellt einen Auftrag mit einer Video-Miniaturansicht anhand einer Konfigurationsdatei, die die folgende JSON-Voreinstellung enthält.
 		
 		{				
 			"version": "1.0",
@@ -273,4 +273,4 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
 [Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

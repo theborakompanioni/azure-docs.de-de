@@ -66,7 +66,7 @@ Bevor Sie mit diesem Lernprogramm zu HBase beginnen können, benötigen Sie Folg
 
 4. Klicken Sie auf **Erstellen**.
 
->[AZURE.NOTE] Nachdem Sie einen HBase-Cluster gelöscht haben, können Sie mit dem gleichen Standardspeicherkonto und dem Standardblobcontainer einen neuen HBase-Cluster erstellen. Der neue Cluster übernimmt die im vorherigen Cluster erstellten HBase-Tabellen.
+>[AZURE.NOTE] Nachdem Sie einen HBase-Cluster gelöscht haben, können Sie mit dem gleichen Standardspeicherkonto und dem Standardblobcontainer einen neuen HBase-Cluster erstellen. Der neue Cluster übernimmt die im vorherigen Cluster erstellten HBase-Tabellen. Es wird empfohlen, die HBase-Tabellen vor dem Löschen des Clusters zu deaktivieren, um Inkonsistenzen zu vermeiden.
 
 ## Erstellen von Tabellen und Einfügen von Daten
 
@@ -163,7 +163,7 @@ Sie können in HBase gespeicherte Daten mit Hive abfragen. In diesem Abschnitt e
 
 **So öffnen Sie das Cluster-Dashboard**
 
-1. Navigieren Sie zu **https://<HDInsight Cluster Name>.azurehdinsight.net/**.
+1. Navigieren Sie zu **https://<HDInsight-Clustername>.azurehdinsight.net/**.
 5. Geben Sie den Benutzernamen und das Kennwort des Hadoop-Benutzerkontos ein. Der Standardbenutzername ist **admin**, und das Kennwort haben Sie bei der Erstellung ausgewählt. Im Browser wird eine neue Registerkarte geöffnet.
 6. Klicken Sie oben auf der Seite auf **Hive-Editor**. Der Hive-Editor sieht wie folgt aus:
 
@@ -294,8 +294,7 @@ Zum Öffnen der Web-Benutzeroberfläche müssen Sie eine RDP-Sitzung zum Cluster
 In einem Cluster mit hoher Verfügbarkeit gibt es einen Link zum aktuellen aktiven HBase-Masterknoten, unter dem die Web-Benutzeroberfläche gehostet wird.
 
 ##Löschen des Clusters
-
-[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+Es wird empfohlen, die HBase-Tabellen vor dem Löschen des Clusters zu deaktivieren, um Inkonsistenzen zu vermeiden. [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 
 ## Wie geht es weiter?
@@ -335,4 +334,4 @@ Weitere Informationen finden Sie unter:
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

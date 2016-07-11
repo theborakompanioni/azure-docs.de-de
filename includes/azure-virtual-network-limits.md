@@ -34,7 +34,7 @@ NSG-Regeln pro NSG | 200 | 500
 Benutzerdefinierte Routentabellen | 100 | 400
 Benutzerdefinierte Routen pro Routentabelle | 100 | 400
 Öffentliche IP-Adressen (dynamisch) | 60 | Support kontaktieren
-Reservierte öffentliche IP-Adressen | 20 | Support kontaktieren
+Öffentliche IP-Adressen (statisch) | 20 | Support kontaktieren
 Lastenausgleichsmodule (intern und Internet) | 100 | Support kontaktieren
 Regeln für Lastenausgleichsmodule pro Lastenausgleichsmodul | 150 | 150
 Öffentliche Front-End-IP pro Lastenausgleichsmodul | 5 | Support kontaktieren
@@ -43,4 +43,4 @@ Anwendungsgateways | 50 | 50
 
 Wenden Sie sich an den Support, falls Sie Limits gegenüber den Standardwerten erhöhen müssen.
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0629_2016-->

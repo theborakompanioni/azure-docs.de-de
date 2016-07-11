@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="05/04/2016" 
+	ms.date="06/24/2016" 
 	ms.author="robmcm"/>
 
 # Hinzufügen einer Java-Anwendung in Azure App Service-Web-Apps
@@ -22,8 +22,8 @@ Nachdem Sie Ihre Java Web-App in [Azure App Service][] wie unter [Erstellen eine
 
 iiDer Navigationspfad zum Ordner **webapps** hängt davon ab, wie Sie Ihre Web-Apps-Instanz einrichten.
 
-- Wenn Sie Ihre Web-App mithilfe von Azure Marketplace einrichten, hat der Pfad zum Ordner **webapps** das Format **d:\\home\\site\\wwwroot\\bin\\application\_server\\webapps**, wobei **application\_server** für den Namen des Anwendungsservers steht, der für Ihre Web-Apps-Instanz verwendet wird. 
-- Wenn Sie Ihre Web-App über die Azure-Konfigurationsbenutzeroberfläche einrichten, hat der Pfad zum Ordner **webapps** das Format **d:\\home\\site\\wwwroot\\webapps**. 
+- Wenn Sie Ihre Web-App mithilfe von Azure Marketplace einrichten, hat der Pfad zum Ordner **webapps** das Format **d:\\home\\site\\wwwroot\\bin\\application\_server\\webapps**, wobei **application\_server** für den Namen des Anwendungsservers steht, der für Ihre Web-Apps-Instanz verwendet wird.
+- Wenn Sie Ihre Web-App über die Azure-Konfigurationsbenutzeroberfläche einrichten, hat der Pfad zum Ordner **webapps** das Format **d:\\home\\site\\wwwroot\\webapps**.
 
 Beachten Sie, dass Sie die Quellcodeverwaltung zum Hochladen Ihrer Anwendung oder Webseiten verwenden können, auch in Szenarien mit fortlaufender Integration. Anweisungen zur Verwendung der Quellcodeverwaltung mit Ihrer Web-App finden Sie unter [Fortlaufende Bereitstellung mit GIT in Azure App Service](web-sites-publish-source-control.md). FTP stellt ebenfalls eine Möglichkeit zum Hochladen Ihrer Anwendung oder Webseiten dar.
 
@@ -40,4 +40,4 @@ Weitere Informationen finden Sie im [Java Developer Center](/develop/java/).
 <!-- External Links -->
 [Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

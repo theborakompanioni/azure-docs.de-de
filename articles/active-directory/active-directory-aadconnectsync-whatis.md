@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/19/2016"
+	ms.date="06/27/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -51,6 +51,8 @@ Thema | Inhalt und Relevanz
 **Vorgänge und Benutzeroberfläche** |
 [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) | Beschreibt die Benutzeroberfläche von Synchronization Service Manager, einschließlich der Registerkarten [Operations](active-directory-aadconnectsync-service-manager-ui-operations.md), [Connectors](active-directory-aadconnectsync-service-manager-ui-connectors.md), [Metaverse Designer](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md) und [Metaverse Search](active-directory-aadconnectsync-service-manager-ui-mvsearch.md).
 [Operative Aufgaben und Überlegungen](active-directory-aadconnectsync-operations.md) | Es werden operative Aspekte beschrieben, z. B. die Notfallwiederherstellung.
+**Gewusst wie...** |
+[Zurücksetzen des Azure AD-Kontos](active-directory-aadconnectsync-howto-azureadaccount.md) | Informationen zum Zurücksetzen der Anmeldeinformationen des Dienstkontos, das für das Herstellen einer Verbindung zwischen Azure AD Connect-Synchronisierung und Azure AD verwendet wird
 **Weitere Informationen und Referenzen** |
 [Ports](active-directory-aadconnect-ports.md) | Enthält eine Liste der Ports, die Sie zwischen dem Synchronisierungsmodul und Ihren lokalen Verzeichnissen und Azure AD geöffnet sein müssen.
 [Mit Azure Active Directory synchronisierte Attribute](active-directory-aadconnectsync-attributes-synchronized.md) | Enthält eine Liste aller Attribute, die zwischen lokalem AD und Azure AD synchronisiert werden.
@@ -60,4 +62,4 @@ Thema | Inhalt und Relevanz
 
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

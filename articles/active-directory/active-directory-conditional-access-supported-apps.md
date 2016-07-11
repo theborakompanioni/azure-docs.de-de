@@ -14,12 +14,15 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="06/15/2016"
+	ms.date="06/23/2016"
 	ms.author="femila"/>
 
 
 # Unterstützung des bedingten Zugriffs für Anwendungen
-Der bedingte Zugriff funktioniert für mobile und Desktopanwendungen, die moderne Authentifizierungsverfahren verwenden. Anwendungen mit moderner Authentifizierung können Azure AD-Anmeldeseiten anzeigen. Dadurch können Benutzer inline aufgefordert werden, sich per MFA (Multi-Factor Authentication, mehrstufige Authentifizierung) zu authentifizieren, oder Endbenutzern können Meldungen angezeigt werden, wenn der Zugriff blockiert wird. Es ist wichtig zu wissen, welche Anwendungen unterstützt werden, und die Schritte zu kennen, die möglicherweise zum Sichern weiterer Zugangspunkte erforderlich sind.
+
+Regeln für bedingten Zugriff werden übergreifend für verbundene Azure AD-Anwendungen, für vorab integrierte SaaS-Verbundanwendungen, für Anwendungen, die einmaliges Anmelden mit Kennwort verwenden, sowie für Branchenanwendungen und für den Azure AD-Anwendungsproxy unterstützt. Eine detaillierte Liste mit Anwendungen, für die der bedingte Zugriff aktiviert werden kann, finden Sie unter [Dienste mit aktiviertem bedingtem Zugriff](active-directory-conditional-access-technical-reference.md#Services-enabled-with-conditional-access). Der bedingte Zugriff kann sowohl für mobile Anwendungen als auch für Desktopanwendungen mit modernen Authentifizierungsverfahren verwendet werden. In diesem Thema erfahren Sie, was hinsichtlich der mobilen und desktopbasierten Version dieser Apps unterstützt wird.
+
+ Anwendungen mit moderner Authentifizierung können Azure AD-Anmeldeseiten anzeigen. Dadurch können Benutzer inline aufgefordert werden, sich per MFA (Multi-Factor Authentication, mehrstufige Authentifizierung) zu authentifizieren, oder Endbenutzern können Meldungen angezeigt werden, wenn der Zugriff blockiert wird. Es ist wichtig zu wissen, welche Anwendungen unterstützt werden, und die Schritte zu kennen, die möglicherweise zum Sichern weiterer Zugangspunkte erforderlich sind.
 
 ## Anwendung mit moderner Authentifizierung
 Die folgenden Anwendungen wurden mit MFA und einer auf den Zieldienst festgelegten Standortrichtlinie getestet.
@@ -43,7 +46,7 @@ Zurzeit muss für Apps, die keine moderne Authentifizierungsverfahren verwenden,
 ## SharePoint
 Bei SharePoint können ältere Protokolle mithilfe des Cmdlets Set-SPOTenant deaktiviert werden. Dieses Cmdlet verhindert, dass Office-Clients, die keine modernen Authentifizierungsprotokolle verwenden, auf SharePoint Online-Ressourcen zugreifen.
 
-**Beispielbefehl**: `Set-SPOTenant -LegacyAuthProtocolsEnabled $false`
+**Beispielbefehl:** `Set-SPOTenant -LegacyAuthProtocolsEnabled $false`
  
 ## Exchange
 
@@ -102,4 +105,4 @@ Regel 3
 	c2:[Type == "http://schemas.microsoft.com/2012/01/requestcontext/claims/x-ms-endpoint-absolute-path", Value =~ "(/adfs/ls)|(/adfs/oauth2)"] 
 	=> issue(Type = "http://schemas.microsoft.com/authorization/claims/permit", Value = "true");
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

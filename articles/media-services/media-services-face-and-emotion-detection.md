@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/14/2016"   
+	ms.date="06/22/2016"   
 	ms.author="milanga;juliako;"/>
  
 #Gesichts- und Emotionenerkennung mit Azure Media Analytics
@@ -68,7 +68,7 @@ X, Y|Die oberen linken X- und Y-Koordinaten des Rahmens, der das Gesicht umgibt,
 Width, Height|Die Breite und Höhe des Rahmens, der das Gesicht umgibt, in einem normalisierten Maßstab von 0,0 bis 1,0.
 facesDetected|Dieses Element befindet sich am Ende der JSON-Ergebnisse und fasst die Anzahl der Gesichter zusammen, die der Algorithmus während des Videos erkannt hat. Da die IDs unabsichtlich zurückgesetzt werden können, wenn ein Gesicht nicht mehr erkannt wird (z. B. wenn das Gesicht sich aus dem Bild bewegt, die Person sich abwendet), entspricht diese Zahl möglicherweise nicht immer der tatsächlichen Anzahl der Gesichter im Video.
 
-Face Detector verwendet Techniken der Fragmentierung (wobei die Metadaten in zeitbasierte Segmente unterteilt werden können, sodass Sie nichts herunterladen müssen, was Sie nicht benötigen) und Segmentierung (wobei die Ereignisse aufgeteilt werden, falls sie zu groß werden). Einige einfache Berechnungen können Ihnen helfen, die Daten zu transformieren. Wenn ein Ereignis beispielsweise mit 6.300 (Ticks), einer Zeitskala von 2.997 (Ticks/s) und Framerate von 29,97 (Bilder/s) begonnen hat, dann gilt:
+Face Detector verwendet Techniken der Fragmentierung (wobei die Metadaten in zeitbasierte Blöcke unterteilt werden können, sodass Sie nichts herunterladen müssen, was Sie nicht benötigen) und Segmentierung (wobei die Ereignisse aufgeteilt werden, falls sie zu groß werden). Einige einfache Berechnungen können Ihnen helfen, die Daten zu transformieren. Wenn ein Ereignis beispielsweise mit 6.300 (Ticks), einer Zeitskala von 2.997 (Ticks/s) und Framerate von 29,97 (Bilder/s) begonnen hat, dann gilt:
 
 - Start/Zeitskala = 2,1 Sekunden
 - Sekunden x (Framerate/Zeitskala) = 63 Bilder
@@ -351,7 +351,7 @@ JSON-Ausgabe für Emotionsaggregierung (abgeschnitten):
 Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
 1. Erstellen eines Assets und Hochladen einer Mediendatei in das Asset.
-1. Erstellen eines Auftrags mit einer Gesichtserkennungsaufgabe auf Basis einer Konfigurationsdatei, die die folgende JSON-Voreinstellung enthält. 
+1. Erstellen eines Auftrags mit einer Gesichtserkennungsaufgabe auf Basis einer Konfigurationsdatei, die die folgende JSON-Voreinstellung enthält.
 					
 		{
 		    "version": "1.0"
@@ -537,4 +537,4 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
 [Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -1,10 +1,10 @@
-<properties 
-   pageTitle="Azure Government – Imagekatalog" 
-   description="Dieser Artikel bietet einen Überblick über den Imagekatalog von Azure Government und die darin enthaltenen Images." 
-   services="Azure-Government" 
-   documentationCenter="" 
-   authors="joharve2" 
-   manager="chrisnie" 
+<properties
+   pageTitle="Azure Government – Imagekatalog | Microsoft Azure"
+   description="Dieser Artikel bietet einen Überblick über den Imagekatalog von Azure Government und die darin enthaltenen Images."
+   services="Azure-Government"
+   documentationCenter=""
+   authors="joharve2"
+   manager="chrisnie"
    editor=""/>
 
 <tags
@@ -12,7 +12,7 @@
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="azure-government" 
+   ms.workload="azure-government"
    ms.date="06/01/2016"
    ms.author="brendalee"/>
 
@@ -118,7 +118,7 @@ Visual Studio|Visual Studio Enterprise 2015 Update 2 mit Azure SDK 2.9 unter Win
 
 Die folgenden Ressourcen bieten nähere Informationen zur Bereitstellung über den Imagekatalog oder zur Erstellung Ihrer eigenen VHDs. Informationen zu den programmatischen Unterschieden zu Endpunkten bei der Arbeit mit Azure Government finden Sie im <a href="../azure-government-developer-guide">Azure Government-Entwicklerhandbuch</a>.
 
-###Weitere Ressourcen: 
+###Weitere Ressourcen:
 
 - [Bereitstellen eines virtuellen Windows-Rechners](virtual-machines/virtual-machines-windows-hero-tutorial.md)
 
@@ -141,4 +141,4 @@ Die folgenden Ressourcen bieten nähere Informationen zur Bereitstellung über d
 [Link 2 to another azure.microsoft.com documentation topic]: app-service-web/web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

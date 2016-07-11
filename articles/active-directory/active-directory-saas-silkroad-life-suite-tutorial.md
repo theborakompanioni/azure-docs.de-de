@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/06/2016"
+	ms.date="06/29/2016"
 	ms.author="jeedes"/>
 
 
 # Tutorial: Azure Active Directory-Integration in die SilkRoad Life Suite
 
-In diesem Tutorial erfahren Sie, wie Sie die SilkRoad Life Suite in Azure Active Directory (Azure AD) integrieren können.<br>Die Integration der SilkRoad Life Suite in Azure AD bietet Ihnen folgende Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie die SilkRoad Life Suite in Azure Active Directory (Azure AD) integrieren. Die Integration der SilkRoad Life Suite in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer auf die SilkRoad Life Suite zugreifen kann. 
+- Sie können in Azure AD steuern, wer auf die SilkRoad Life Suite zugreifen kann.
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei der SilkRoad Life Suite anzumelden (einmaliges Anmelden).
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -40,13 +40,13 @@ Um die Azure AD-Integration in die SilkRoad Life Suite konfigurieren zu können,
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern. 
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 
  
 ## Beschreibung des Szenarios
-Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen. <br> Das in diesem Tutorial beschriebene Szenario besteht aus zwei großen Bausteinen:
+Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-1. Hinzufügen der SilkRoad Life Suite aus dem Katalog 
+1. Hinzufügen der SilkRoad Life Suite aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 
@@ -55,64 +55,94 @@ Zum Konfigurieren der Integration der SilkRoad Life Suite in Azure AD müssen Si
 
 **Führen Sie die folgenden Schritte aus, um die SilkRoad Life Suite aus dem Katalog hinzuzufügen:**
 
-1. Klicken Sie im linken Navigationsbereich des **Azure-Verwaltungsportals** auf **Active Directory**. <br><br> ![Active Directory][1]<br>
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+
+	![Active Directory][1]
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.<br><br> ![Anwendungen][2]<br>
-4. Klicken Sie unten auf der Seite auf **Hinzufügen**.<br><br> ![Anwendungen][3]<br>
-5. Klicken Sie im Dialogfeld **What do you want to do** auf **Anwendung aus dem Katalog hinzufügen**.<br><br> ![Anwendungen][4]<br>
-6. Geben Sie in das Suchfeld **SilkRoad Life Suite** ein.<br><br> ![Anwendungen][5]<br>
-7. Wählen Sie im Ergebnisbereich **SilkRoad Life Suite** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen. <br><br>![Anwendungen][50]<br>
+3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
+
+	![Anwendungen][2]
+
+4. Klicken Sie unten auf der Seite auf **Hinzufügen**.
+
+	![Anwendungen][3]
+
+5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
+
+	![Anwendungen][4]
+
+6. Geben Sie in das Suchfeld **SilkRoad Life Suite** ein.
+
+	![Anwendungen][5]
+
+7. Wählen Sie im Ergebnisbereich **SilkRoad Life Suite** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
+
+	![Anwendungen][50]
 
 
 ##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 In diesem Abschnitt soll veranschaulicht werden, wie basierend auf einem Testbenutzer namens „Britta Simon“ das einmalige Anmelden von Azure AD in der SilkRoad Life Suite konfiguriert und getestet werden kann.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in der SilkRoad Life Suite einem Benutzer in Azure AD entspricht. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in der SilkRoad Life Suite muss eine Linkbeziehung eingerichtet werden.<br> Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** in Azure AD dem **Benutzernamen** in der SilkRoad Life Suite als Wert zuweisen.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in der SilkRoad Life Suite einem Benutzer in Azure AD entspricht. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in der SilkRoad Life Suite muss eine Linkbeziehung eingerichtet werden. Diese Linkbeziehung wird hergestellt, indem Sie den Benutzernamen in Azure AD dem Benutzernamen in der SilkRoad Life Suite zuweisen.
  
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei der SilkRoad Life Suite müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Erstellen eines SilkRoad Life Suite-Testbenutzers](#creating-a-silkroad-life-suite-test-user)**, um eine Entsprechung von Britta Simon in der SilkRoad Life Suite zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-5. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### Konfigurieren des einmaligen Anmeldens von Azure AD
 
-Das Ziel dieses Abschnitts ist es, das einmalige Anmelden von Azure AD im Azure AD-Portal zu aktivieren und das einmalige Anmelden in Azure in Ihrer Anwendung der SilkRoad Life Suite zu konfigurieren.<br>
+Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in der SilkRoad Life Suite-Anwendung zu konfigurieren.
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei der SilkRoad Life Suite die folgenden Schritte aus:**
 
-5. Melden Sie sich bei Ihrer SilkRoad Life Suite-Unternehmenswebsite als Administrator an. 
+5. Melden Sie sich bei Ihrer SilkRoad Life Suite-Unternehmenswebsite als Administrator an.
 
 
     > [AZURE.NOTE] Um Zugriff auf die Authentifizierungsanwendung der Anwendung SilkRoad Life Suite zu erhalten und den Verbund mit Microsoft Azure AD zu konfigurieren, wenden Sie sich an den SilkRoad-Support oder Ihren Vertriebsmitarbeiter für SilkRoad-Dienste.
 
 
-6. Wechseln Sie zu **Dienstanbieter**, und klicken Sie dann auf **Verbunddetails**. <br><br>![Azure AD – einmaliges Anmelden][10] <br>
+6. Wechseln Sie zu **Dienstanbieter**, und klicken Sie dann auf **Verbunddetails**.
+
+	![Azure AD – einmaliges Anmelden][10]
 
 
-1. Klicken Sie auf **Verbundmetadaten Herunterladen**, und speichern Sie die Metadatendatei dann auf Ihrem Computer. <br><br>![Azure AD – einmaliges Anmelden][11] <br>
+1. Klicken Sie auf **Download Federation Metadata** (Verbundmetadaten herunterladen), und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-3. Klicken Sie im Azure AD-Portal auf der Anwendungsintegrationsseite **SilkRoad Life Suite** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen. <br><br> ![Einmaliges Anmelden konfigurieren][6] <br>
+	![Azure AD – einmaliges Anmelden][11]
 
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei SilkRoad Life Suite anmelden** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**. <br><br> ![Azure AD – einmaliges Anmelden][7] <br>
+3. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **SilkRoad Life Suite** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
-3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus: <br><br>![Azure AD – einmaliges Anmelden][8] <br>
+	![Einmaliges Anmelden konfigurieren][6]
+
+2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei SilkRoad Life Suite anmelden** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+
+	![Azure AD – einmaliges Anmelden][7]
+
+3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
+
+	![Azure AD – einmaliges Anmelden][8]
  
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei der SilkRoad Life Suite-Website verwenden (z. B. **https://defcompanytest-test-redcarpet.silkroad-eng.com/Authentication/*)).
+    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei der SilkRoad Life Suite-Website verwenden (beispielsweise *https://defcompanytest-test-redcarpet.silkroad-eng.com/Authentication/*).
 
     b. Öffnen Sie die heruntergeladene **Silkroad**-Metadatendatei.
 
-    c. Suchen Sie das Tag **AssertionConsumerService**, und kopieren Sie dann das Attribut **Location**. <br><br>![Azure AD – einmaliges Anmelden][21] <br>
+    c. Suchen Sie das Tag **AssertionConsumerService**, und kopieren Sie dann das Attribut **Location**.
+
+	![Azure AD – einmaliges Anmelden][21]
    
     d. Fügen Sie den Wert im Textfeld **Antwort-URL** ein.
  
     e. Klicken Sie auf **Weiter**.
  
-4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren bei SilkRoad Life Suite** die folgenden Schritte aus: <br><br>![Azure AD – einmaliges Anmelden][9] <br>
+4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für SilkRoad Life Suite** die folgenden Schritte aus:
+
+	![Azure AD – einmaliges Anmelden][9]
 
     a. Klicken Sie auf "Zertifikat herunterladen", und speichern Sie das Zertifikat auf Ihrem Computer.
 
@@ -121,57 +151,83 @@ Das Ziel dieses Abschnitts ist es, das einmalige Anmelden von Azure AD im Azure 
 
 
 
-1. Klicken Sie in der Anwendung **SilkRoad** auf **Authentication Sources**. <br><br>![Azure AD – einmaliges Anmelden][12] <br>
+1. Klicken Sie in der Anwendung **SilkRoad** auf **Authentication Sources** (Authentifizierungsquellen).
+
+	![Azure AD – einmaliges Anmelden][12]
 
 
 
-1. Klicken Sie auf **Authentifizierungsquelle hinzufügen**. <br><br>![Azure AD – einmaliges Anmelden][13] <br>
+1. Klicken Sie auf **Add Authentication Source** (Authentifizierungsquelle hinzufügen).
+
+	![Azure AD – einmaliges Anmelden][13]
 
 
 
-1. Führen Sie im Abschnitt **Authentifizierungsquelle hinzufügen** die folgenden Schritte aus: <br><br>![Azure AD – einmaliges Anmelden][14] <br>
+1. Führen Sie im Abschnitt **Add Authentication Source** (Authentifizierungsquelle hinzufügen) die folgenden Schritte aus:
 
-    a. Klicken Sie unter **Option 2 – Metadatendatei** auf **Durchsuchen**, um die heruntergeladene Metadatendatei hochzuladen.
+	![Azure AD – einmaliges Anmelden][14]
 
-    b. Klicken Sie auf **Identitätsanbieter mithilfe von Dateidaten erstellen**.
+    a. Klicken Sie unter **Option 2 - Metadata File** (Option 2 – Metadatendatei) auf **Browse** (Durchsuchen), um die heruntergeladene Metadatendatei hochzuladen.
 
-
-
-1. Klicken Sie im Abschnitt **Authentifizierungsquellen** auf **Bearbeiten**. <br><br>![Azure AD – einmaliges Anmelden][15] <br>
+    b. Klicken Sie auf **Create Identity Provider using File Data** (Identitätsanbieter mithilfe von Dateidaten erstellen).
 
 
-1. Führen Sie im Dialogfeld **Authentifizierungsquellen bearbeiten** die folgenden Schritte aus: <br><br>![Azure AD – einmaliges Anmelden][16] <br>
 
-    a. Wählen Sie für **Aktiviert** die Option **Ja**.
+1. Klicken Sie im Abschnitt **Authentication Sources** (Authentifizierungsquellen) auf **Edit** (Bearbeiten).
 
-    b. Geben Sie im Textfeld **IdP Beschreibung** eine Beschreibung für die Konfiguration ein (z. B. *Azure AD SSO*).
+	![Azure AD – einmaliges Anmelden][15]
 
-    c. Geben Sie im Textfeld **IdP Name** einen Namen ein, der für Ihre Konfiguration spezifisch ist (z. B. *Azure SP*).
+
+1. Führen Sie im Dialogfeld **Edit Authentication Source** (Authentifizierungsquelle bearbeiten) die folgenden Schritte aus:
+
+	![Azure AD – einmaliges Anmelden][16]
+
+    a. Wählen Sie für **Enabled** (Aktiviert) die Option **Yes** (Ja) aus.
+
+    b. Geben Sie im Textfeld **IdP Description** (IdP-Beschreibung) eine Beschreibung für die Konfiguration ein (etwa *Azure AD SSO*).
+
+    c. Geben Sie im Textfeld **IdP Name** (IdP-Name) einen für Ihre Konfiguration spezifischen Namen ein (etwa *Azure SP*).
 
     d. Klicken Sie auf **Speichern**.
 
 
-6. Deaktivieren Sie alle anderen Authentifizierungsquellen. <br><br>![Azure AD – einmaliges Anmelden][17]<br>
+6. Deaktivieren Sie alle anderen Authentifizierungsquellen.
 
-7. Klicken Sie im Azure AD-Portal auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Weiter**. <br><br>![Azure AD – einmaliges Anmelden][18]
+	![Azure AD – einmaliges Anmelden][17]
 
-1. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**. <br><br>![Azure AD – einmaliges Anmelden][19]
+7. Klicken Sie im klassischen Azure-Portal auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Weiter**.
+
+	![Azure AD – einmaliges Anmelden][18]
+
+1. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
+
+	![Azure AD – einmaliges Anmelden][19]
 
 
-### Erstellen einen Azure AD-Testbenutzers
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.<br> Wählen Sie in der Benutzerliste **Britta Simon** aus.<br><br>![Azure AD-Benutzer erstellen][20]<br>
+### Erstellen eines Azure AD-Testbenutzers
+In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens Britta Simon erstellt.
+
+![Azure AD-Benutzer erstellen][20]
 
 **Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **Azure-Verwaltungsportals** auf **Active Directory**. <br><br>![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_09.png) <br> 
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_09.png)
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**. <br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_03.png) <br>
- 
-4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**. <br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_04.png) <br>
+3. Klicken Sie zum Anzeigen der Benutzerliste im oberen Menü auf **Benutzer**.
 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus: <br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_05.png) <br>
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_03.png)
+ 
+4. Klicken Sie am unteren Rand auf der Symbolleiste auf **Benutzer hinzufügen**, um das Dialogfeld **Benutzer hinzufügen** zu öffnen.
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_04.png)
+
+5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_05.png)
 
     a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
 
@@ -179,7 +235,9 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Klicken Sie auf **Weiter**.
 
-6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus: <br><br>![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_06.png) <br>
+6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_06.png)
  
     a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.
 
@@ -189,9 +247,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     d. Wählen Sie in der Liste **Rolle** die Rolle **Benutzer** aus. e. Klicken Sie auf **Weiter**.
 
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**. <br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_07.png) <br>
+7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_07.png)
  
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus: <br><br>![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_08.png) <br>
+8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
+
+	![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-silkroad-life-suite-tutorial/create_aaduser_08.png)
   
     a. Notieren Sie den Wert von **Neues Kennwort**.
 
@@ -201,32 +263,45 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### Erstellen eines SilkRoad Life Suite-Testbenutzers
 
-Das Ziel dieses Abschnitts ist das Erstellen einer Benutzerin namens Britta Simon in der SilkRoad Life Suite. Britta benötigt eine SSO-ID (auch bezeichnet als *AuthParam*), die Brittas **E-Mail-Adresse** in Azure AD entspricht.
+Das Ziel dieses Abschnitts ist das Erstellen einer Benutzerin namens Britta Simon in der SilkRoad Life Suite. Britta benötigt eine SSO-ID (auch *AuthParam* genannt), die Brittas **E-Mail-Adresse** in Azure AD entspricht.
 
 **Führen Sie die folgenden Schritte aus, um eine Benutzerin namens Britta Simon in der SilkRoad Life Suite zu erstellen:**
 
-1. Bitten Sie das SilkRoad Life Suite-Supportteam, einen Benutzer zu erstellen, dessen Attribut für die **SSO-ID** der **E-Mail-Adresse** von Britta Simon in Azure AD entspricht.
+1. Bitten Sie das SilkRoad Life Suite-Supportteam, einen Benutzer zu erstellen, dessen Attribut für die **SSO-ID** der **E-Mail-Adresse** von Britta Simon in Azure AD entspricht.
 
 
 
 ### Zuweisen des Azure AD-Testbenutzers
 
-Das Ziel dieses Abschnitts besteht darin, Britta Simon für das einmalige Anmelden bei Azure zu aktivieren, indem sie Zugriff auf die SilkRoad Life Suite erhält. <br><br>![Benutzer zuweisen][200] <br>
+Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens von Azure zu ermöglichen, indem ihr Zugriff auf die SilkRoad Life Suite gewährt wird.
+
+![Benutzer zuweisen][200]
 
 **Führen Sie die folgenden Schritte aus, um Britta Simon der SilkRoad Life Suite zuzuweisen:**
 
-1. Klicken Sie zum Öffnen der Anwendungsansicht im Azure-Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**. <br><br>![Benutzer zuweisen][201] <br>
-2. Wählen Sie in der Anwendungsliste **SilkRoad Life Suite** aus. <br><br>![Benutzer zuweisen][202] <br>
-1. Klicken Sie im oberen Menü auf **Benutzer**. <br><br>![Benutzer zuweisen][203] <br>
+1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
+
+	![Benutzer zuweisen][201]
+
+2. Wählen Sie in der Anwendungsliste **SilkRoad Life Suite** aus.
+
+	![Benutzer zuweisen][202]
+
+1. Klicken Sie im oberen Menü auf **Benutzer**.
+
+	![Benutzer zuweisen][203]
+
 1. Wählen Sie in der Benutzerliste **Britta Simon** aus.
 
-2. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**. <br><br>![Benutzer zuweisen][205]
+2. Klicken Sie am unteren Rand auf der Symbolleiste auf **Zuweisen**.
+
+	![Benutzer zuweisen][205]
 
 
 
 ### Testen der einmaligen Anmeldung
 
-Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden mithilfe des Zugriffsbereichs.<br> Wenn Sie im Zugriffsbereich auf die Kachel für die SilkRoad Life Suite klicken, sollten Sie automatisch an Ihrer SilkRoad Life Suite-Anwendung angemeldet werden.
+In diesem Abschnitt soll Ihre Azure AD-Konfiguration für das einmalige Anmelden mithilfe des Zugriffsbereichs getestet werden. Wenn Sie im Zugriffsbereich auf die Kachel für die SilkRoad Life Suite klicken, sollten Sie automatisch an Ihrer SilkRoad Life Suite-Anwendung angemeldet werden.
 
 
 ## Zusätzliche Ressourcen
@@ -271,4 +346,4 @@ Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einm
 [204]: ./media/active-directory-saas-silkroad-life-suite-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-silkroad-life-suite-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

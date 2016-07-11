@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="05/03/2016" 
+	ms.date="06/22/2016"
 	ms.author="juliako;cenkdin;anilmur"/>
 
 #Verwenden des FMLE zum Senden eines Single-Bitrate-Livedatenstroms
@@ -69,16 +69,16 @@ In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restl
 
 **Video**:
  
-- Codec: H.264 
-- Profil: Hoch (Level 4.0) 
-- Bitrate: 5.000 KBit/s 
-- Keyframe: 2 Sekunden (60 Sekunden) 
+- Codec: H.264
+- Profil: Hoch (Level 4.0)
+- Bitrate: 5.000 KBit/s
+- Keyframe: 2 Sekunden (60 Sekunden)
 - Bildfrequenz: 30
  
 **Audio**:
 
-- Codec: AAC (LC) 
-- Bit Rate: 192 Kbit/s 
+- Codec: AAC (LC)
+- Bit Rate: 192 Kbit/s
 - Abtastrate: 44,1 kHz
 
 
@@ -88,9 +88,9 @@ In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restl
 
 	Die Benutzeroberfläche besteht aus einer Hauptseite mit Einstellungen. Beachten Sie die folgenden empfohlenen Einstellungen, wenn Sie mit Streaming per FMLE beginnen.
 	
-	- Format: H.264 Frame Rate: 30.00 
-	- Input Size: 1280 x 720 
-	- Bit Rate: 5000 Kbit/s (kann je nach Netzwerkbeschränkungen angepasst werden)  
+	- Format: H.264 Frame Rate: 30.00
+	- Input Size: 1280 x 720
+	- Bit Rate: 5000 Kbit/s (kann je nach Netzwerkbeschränkungen angepasst werden)
 
 	![fmle](./media/media-services-fmle-live-encoder/media-services-fmle3.png)
 
@@ -100,13 +100,13 @@ In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restl
 
 	- Profile: Main
 	- Level: 4.0
-	- Keyframe Frequency: 2 Sekunden 
+	- Keyframe Frequency: 2 Sekunden
 	
 	![fmle](./media/media-services-fmle-live-encoder/media-services-fmle4.png)
 
 3. Legen Sie die folgenden wichtigen Audioeinstellungen fest:
 	
-	- Format: AAC 
+	- Format: AAC
 	- Sample Rate: 44100 Hz
 	- Bit Rate: 192 Kbit/s
 	
@@ -131,7 +131,7 @@ In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restl
 
 ##Testen der Wiedergabe
   
-1. Navigieren Sie zum AMSE-Tool, und klicken Sie mit der rechten Maustaste auf den Kanal, der getestet werden soll. Bewegen Sie den Mauszeiger im Menü über **Wiedergabevorschau**, und wählen Sie **mit Azure Media Player** aus.  
+1. Navigieren Sie zum AMSE-Tool, und klicken Sie mit der rechten Maustaste auf den Kanal, der getestet werden soll. Bewegen Sie den Mauszeiger im Menü über **Wiedergabevorschau**, und wählen Sie **mit Azure Media Player** aus.
 
 	![fmle](./media/media-services-fmle-live-encoder/media-services-fmle8.png)
 
@@ -141,18 +141,18 @@ Wenn eine Fehlermeldung angezeigt wird, müssen Sie den Kanal zurücksetzen und 
 
 ##Erstellen eines Programms
 
-1. Nachdem die Kanalwiedergabe überprüft wurde, erstellen Sie ein Programm. Klicken Sie im AMSE-Tool auf der Registerkarte **Live** mit der rechten Maustaste in den Programmbereich, und wählen Sie **Neues Programm erstellen** aus.  
+1. Nachdem die Kanalwiedergabe überprüft wurde, erstellen Sie ein Programm. Klicken Sie im AMSE-Tool auf der Registerkarte **Live** mit der rechten Maustaste in den Programmbereich, und wählen Sie **Neues Programm erstellen** aus.
 
 	![fmle](./media/media-services-fmle-live-encoder/media-services-fmle9.png)
 
 2. Benennen Sie die Anwendung, und passen Sie ggf. die **Archivfensterlänge** an (standardmäßig auf 4 Stunden festgelegt). Sie können außerdem einen Speicherort angeben oder die Standardeinstellung beibehalten.
 3. Aktivieren Sie das Kontrollkästchen **Programm jetzt starten**.
-4. Klicken Sie auf **Programm erstellen**.  
+4. Klicken Sie auf **Programm erstellen**.
   
 	Hinweis: Die Programmerstellung erfordert weniger Zeit als die Kanalerstellung.
  
 5. Sobald die Anwendung ausgeführt wird, bestätigen Sie die Wiedergabe, indem Sie mit der rechten Maustaste auf das Programm klicken, zu **Programm(e) wiedergeben** navigieren und dann **mit Azure Media Player** auswählen.
-6. Nach der Bestätigung klicken Sie mit der rechten Maustaste erneut auf das Programm, und wählen Sie **Ausgabe-URL in die Zwischenablage kopieren** aus (bzw. rufen Sie diese Informationen über das Menü mit der Option **Programminformationen und -einstellungen** ab). 
+6. Nach der Bestätigung klicken Sie mit der rechten Maustaste erneut auf das Programm, und wählen Sie **Ausgabe-URL in die Zwischenablage kopieren** aus (bzw. rufen Sie diese Informationen über das Menü mit der Option **Programminformationen und -einstellungen** ab).
 
 Der Datenstrom kann jetzt in einen Player eingebettet oder an eine Zielgruppe für die Livewiedergabe verteilt werden.
 
@@ -170,4 +170,4 @@ Eine Anleitung finden Sie im Thema [Problembehandlung](media-services-troublesho
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

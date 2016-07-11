@@ -1,6 +1,6 @@
 <properties
    pageTitle="Entwicklerhandbuch zu Schlüsseltresor | Microsoft Azure"
-   description="Mit Azure-Schlüsseltresor können Entwickler kryptografische Schlüssel in der Microsoft Azure-Umgebung verwalten."
+   description="Mit Azure-Schlüsseltresor können Entwickler kryptografische Schlüssel in der Microsoft Azure-Umgebung verwalten. "
    services="key-vault"
    documentationCenter=""
    authors="BrucePerlerMS"
@@ -87,6 +87,13 @@ Die folgenden Artikel und Szenarios bieten aufgabenspezifische Anleitungen für 
 
 Aufgabenspezifische Anleitungen zum Integrieren und Verwenden von Schlüsseltresoren mit Azure finden Sie unter [Ryan Jones ARM template examples for Key Vault](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples) (ARM-Vorlagenbeispiele von Ryan Jones für den Schlüsseltresor).
 
+## Key Vault-Integration
+
+Diese Artikel enthalten Informationen zu anderen Szenarien und Diensten, in denen Key Vault oder eine Key Vault-Integration zum Einsatz kommt.
+
+- [Azure Disk Encryption](../azure-security-disk-encryption.md) nutzt das branchenübliche Feature [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) von Windows und das Feature [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) von Linux, um Volumeverschlüsselung für das Betriebssystem und die Datenträger bereitzustellen. Die Lösung ist in Azure Key Vault integriert, damit Sie die Schlüssel für die Datenträgerverschlüsselung und die geheimen Schlüssel unter Ihrem Schlüsseltresorabonnement steuern und verwalten können. Gleichzeitig können Sie sicherstellen, dass alle Daten auf den Datenträgern von virtuellen Computern im Ruhezustand in Ihrem Azure-Speicher verschlüsselt sind.
+
+
 ## Unterstützung von Bibliotheken
 
 - Die [Microsoft Azure Key Vault Core Library](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/1.0.0) (Microsoft Azure Key Vault-Kernbibliothek) bietet `IKey`- und `IKeyResolver`-Schnittstellen, um Schlüssel von Bezeichnern zu ermitteln und mit diesen Schlüsseln Vorgänge auszuführen.
@@ -97,4 +104,4 @@ Aufgabenspezifische Anleitungen zum Integrieren und Verwenden von Schlüsseltres
 - [Key Vault Blog](http://aka.ms/kvblog)
 - [Key Vault Forum](http://aka.ms/kvforum)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

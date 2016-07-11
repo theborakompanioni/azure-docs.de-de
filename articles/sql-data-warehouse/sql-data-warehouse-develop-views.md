@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="06/27/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 
@@ -22,6 +22,8 @@
 Sichten sind in SQL Data Warehouse besonders nützlich. Sie können auf verschiedene Weisen zur Verbesserung der Qualität der Lösung verwendet werden.
 
 In diesem Artikel werden einige Beispiele zum Verbessern der Lösung mit einer Implementierung von Sichten dargestellt. Es gibt einige Einschränkungen, die ebenfalls berücksichtigt werden müssen.
+
+> [AZURE.NOTE] Die Syntax für `CREATE VIEW` wird in diesem Artikel nicht erörtert. Sie finden diese Informationen unter [CREATE VIEW][] auf MSDN.
 
 ## Architekturabstraktion
 Ein häufig verwendetes Anwendungsmuster ist das erneute Erstellen von Tabellen mit CREATE TABLE AS SELECT (CTAS) gefolgt von einem Muster zur Objektumbenennung beim Laden von Daten.
@@ -63,7 +65,7 @@ Daher sind die folgenden Optionen nicht verfügbar:
 
 
 ## Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklungsübersicht][].
+Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklungsübersicht][]. Die Syntax für `CREATE VIEW` finden Sie unter [CREATE VIEW][].
 
 <!--Image references-->
 
@@ -71,7 +73,8 @@ Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklu
 [SQL Data Warehouse-Entwicklungsübersicht]: sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
+[CREATE VIEW]: https://msdn.microsoft.com/de-DE/library/ms187956.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0629_2016-->

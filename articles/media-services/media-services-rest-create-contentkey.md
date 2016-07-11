@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="04/18/2016"   
+	ms.date="06/22/2016"  
 	ms.author="juliako"/>
 
 
@@ -35,11 +35,11 @@ Verschlüsselte Medienobjekte müssen **ContentKeys** zugeordnet werden. In dies
 
 Im Folgenden finden Sie allgemeine Schritte zum Generieren von Inhaltsschlüsseln, die Sie den zu verschlüsselnden Medienobjekten zuordnen.
 
-1. Generieren Sie nach dem Zufallsprinzip einen 16-Byte-AES-Schlüssel (für die allgemeine und Umschlagsverschlüsselung) oder einen 32-Byte-AES-Schlüssel (für die Speicherverschlüsselung). 
+1. Generieren Sie nach dem Zufallsprinzip einen 16-Byte-AES-Schlüssel (für die allgemeine und Umschlagsverschlüsselung) oder einen 32-Byte-AES-Schlüssel (für die Speicherverschlüsselung).
 
-	Dies ist der Inhaltsschlüssel für Ihr Medienobjekt. Das bedeutet, dass alle mit diesem Medienobjekt verknüpften Dateien denselben Inhaltsschlüssel zur Entschlüsselung verwenden müssen. 
+	Dies ist der Inhaltsschlüssel für Ihr Medienobjekt. Das bedeutet, dass alle mit diesem Medienobjekt verknüpften Dateien denselben Inhaltsschlüssel zur Entschlüsselung verwenden müssen.
 2.	Rufen Sie die [GetProtectionKeyId](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkeyid)-Methode und die [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey)-Methode auf, um das richtige X.509-Zertifikat zur Verschlüsselung Ihres Inhaltsschlüssels abzurufen.
-3.	Verschlüsseln Sie Ihren Inhaltsschlüssel mit dem öffentlichen Schlüssel des X.509-Zertifikats. 
+3.	Verschlüsseln Sie Ihren Inhaltsschlüssel mit dem öffentlichen Schlüssel des X.509-Zertifikats.
 
 	Das Media Services .NET SDK verwendet RSA mit OAEP zur Verschlüsselung. Ein Beispiel finden Sie in der [EncryptSymmetricKeyData-Funktion](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
 4.	Erstellen Sie einen Prüfsummenwert (basierend auf den Prüfsummenalgorithmus des PlayReady AES-Schlüssels), der anhand der Schlüsselkennung und des Inhaltsschlüssels berechnet wird. Weitere Informationen finden Sie [hier](http://www.microsoft.com/playready/documents/) im Abschnitt "Prüfsummenalgorithmus für den PlayReady AES-Schlüssel" zum PlayReady-Headerobjekt.
@@ -262,4 +262,4 @@ Antwort:
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

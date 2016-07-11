@@ -23,7 +23,7 @@ Dieser Artikel beschreibt, wie Sie die Data Factory-Kopieraktivität zum Verschi
 ## Installation 
 Damit der Azure Data Factory-Dienst eine Verbindung mit Ihrer lokalen Oracle-Datenbank herstellen kann, muss Folgendes installiert werden:
 
-- Datenverwaltungsgateway auf dem Computer, der die Datenbank hostet, oder auf einem separaten Computer, um zu vermeiden, dass der Computer mit der Datenbank um Ressourcen konkurriert. Datenverwaltungsgateway ist eine Software, die lokale Datenquellen mit Cloud-Diensten auf sichere, verwaltete Weise verbindet. Weitere Informationen zum Datenverwaltungsgateway finden Sie im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md). 
+- Datenverwaltungsgateway auf dem Computer, der die Datenbank hostet, oder auf einem separaten Computer, um zu vermeiden, dass der Computer mit der Datenbank um Ressourcen konkurriert. Datenverwaltungsgateway ist eine Software, die lokale Datenquellen mit Cloud-Diensten auf sichere, verwaltete Weise verbindet. Weitere Informationen zum Datenverwaltungsgateway finden Sie im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md).
 - Oracle-Datenanbieter für .NET. Dieser ist in [Oracle Data Access Components (ODAC) für Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/) enthalten. Installieren Sie die geeignete Version (32/64 Bit) auf dem Hostcomputer, auf dem das Gateway installiert ist. [Oracle Data Provider .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) kann auf Oracle Database 10g, Version 2 oder höher, zugreifen.
 
 > [AZURE.NOTE] Unter [Problembehandlung bei Gateways](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.
@@ -35,7 +35,7 @@ Das Beispiel enthält die folgenden Data Factory-Entitäten:
 
 1.	Einen verknüpften Dienst des Typs [OnPremisesOracle](data-factory-onprem-oracle-connector.md#oracle-linked-service-properties)
 2.	Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)
-3.	Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [OracleTable](data-factory-onprem-oracle-connector.md#oracle-dataset-type-properties) 
+3.	Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [OracleTable](data-factory-onprem-oracle-connector.md#oracle-dataset-type-properties)
 4.	Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)
 5.	Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [OracleSource](data-factory-onprem-oracle-connector.md#oracle-copy-activity-type-properties) als Quelle und [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) als Senke verwendet
 
@@ -224,7 +224,7 @@ Das Beispiel enthält die folgenden Data Factory-Entitäten:
 1.	Einen verknüpften Dienst des Typs [OnPremisesOracle](data-factory-onprem-oracle-connector.md#oracle-linked-service-properties)
 2.	Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)
 3.	Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)
-4.	Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [OracleTable](data-factory-onprem-oracle-connector.md#oracle-dataset-type-properties) 
+4.	Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [OracleTable](data-factory-onprem-oracle-connector.md#oracle-dataset-type-properties)
 5.	Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) als Quelle und [OracleSink](data-factory-onprem-oracle-connector.md#oracle-copy-activity-type-properties) als Senke verwendet
 
 Das Beispiel kopiert Daten stündlich aus einem Blob in eine Tabelle in einer lokalen Oracle-Datenbank. Weitere Informationen zu den verschiedenen Eigenschaften, die im folgenden Beispiel verwendet werden, werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
@@ -432,8 +432,8 @@ oracleReaderQuery | Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten
 
 Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-writeBatchTimeout | Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird. | (Einheit = Zeitspanne) Beispiel: 00:30:00 (30 Minuten). | Nein
-writeBatchSize | Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße "writeBatchSize" erreicht. Ganze Zahl. | (Einheit = Zeilenanzahl) | Nein (Standard = 10000)  
+writeBatchTimeout | Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird. | Zeitraum<br/><br/> Beispiel: 00:30:00 (30 Minuten) | Nein
+writeBatchSize | Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße "writeBatchSize" erreicht. | Integer | Nein (Standard = 10000)  
 sqlWriterCleanupScript | Benutzerdefinierte Abfrage, die Kopieraktivität so auszuführen, dass Daten von einem bestimmten Slice bereinigt werden. | Eine Abfrageanweisung. | Nein
 sliceIdentifierColumnName | Benutzerdefinierter Spaltenname, den die Kopieraktivität mit einem automatisch generierten Slicebezeichner füllen soll, der bei erneuter Ausführung zum Bereinigen von Daten eines bestimmten Slices verwendet wird. | Spaltenname einer Spalte mit binärem Datentyp (32). | Nein
 
@@ -477,21 +477,21 @@ XML | String
 
 ## Tipps zur Problembehandlung
 
-**Problem:** Folgende **Fehlermeldung** wird angezeigt: Bei der Kopieraktivität wurden ungültige Parameter gefunden: UnknownParameterName. Detaillierte Meldung: Der angeforderte .Net Framework-Datenprovider kann nicht gefunden werden. Er ist ggf. nicht installiert.
+**Problem:** Folgende **Fehlermeldung** wird angezeigt: Bei der Kopieraktivität wurden ungültige Parameter gefunden: UnknownParameterName. Detaillierte Meldung: Der angeforderte .NET Framework-Datenanbieter wurde nicht gefunden. Er ist ggf. nicht installiert.
 
 **Mögliche Ursachen**
 
 1. Der .NET Framework-Datenanbieter für Oracle wurde nicht installiert.
-2. Der .NET Framework-Datenanbieter für Oracle wurde für .NET Framework 2.0 installiert und in den Ordnern für .NET Framework 4.0 nicht gefunden. 
+2. Der .NET Framework-Datenanbieter für Oracle wurde für .NET Framework 2.0 installiert und in den Ordnern für .NET Framework 4.0 nicht gefunden.
 
 **Lösung/Problemumgehung**
 
-1. Falls Sie den .NET Framework-Datenanbieter für Oracle nicht installiert haben, [Installieren Sie ihn](http://www.oracle.com/technetwork/topics/dotnet/downloads/), und wiederholen Sie anschließend das Szenario. 
-2. Falls Sie die Fehlermeldung auch nach der Installation des Anbieters erhalten, führen Sie folgende Schritte aus: 
-	1. Öffnen Sie die Computerkonfiguration von .NET 2.0 im folgenden Ordner: <system disk>:\\Windows\\Microsoft.NET\\Framework64\\v2.0.50727\\CONFIG\\machine.config.
-	2. Suchen Sie nach **Oracle-Datenanbieter für .NET**. Daraufhin sollte unter **system.data** -> **DbProviderFactories** ein Eintrag wie der Folgende angezeigt werden: „<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />“
-2.	Kopieren Sie diesen Eintrag in die Datei „machine.config“ im v4.0-Ordner „<system disk>:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\Config\\machine.config“, und ändern Sie die Version in „4.xxx.x.x“.
-3.	Führen Sie „gacutil /i [Anbieterpfad]“ aus, um „<ODP.NET Installed Path>\\11.2.0\\client\_1\\odp.net\\bin\\4\\Oracle.DataAccess.dll“ im globalen Assemblycache (GAC) zu installieren.
+1. Falls Sie den .NET Framework-Datenanbieter für Oracle nicht installiert haben, [Installieren Sie ihn](http://www.oracle.com/technetwork/topics/dotnet/downloads/), und wiederholen Sie anschließend das Szenario.
+2. Falls Sie die Fehlermeldung auch nach der Installation des Anbieters erhalten, führen Sie folgende Schritte aus:
+	1. Öffnen Sie die Computerkonfiguration von .NET 2.0 im folgenden Ordner: <Systemdatenträger>:\\Windows\\Microsoft.NET\\Framework64\\v2.0.50727\\CONFIG\\machine.config.
+	2. Suchen Sie nach **Oracle-Datenanbieter für .NET**. Daraufhin sollte unter **system.data** -> **DbProviderFactories** ein Eintrag wie der Folgende angezeigt werden: <add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />
+2.	Kopieren Sie diesen Eintrag in die Datei „machine.config“ im v4.0-Ordner „<Systemdatenträger>:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\Config\\machine.config“, und ändern Sie die Version in „4.xxx.x.x“.
+3.	Führen Sie „gacutil /i [Anbieterpfad]“ aus, um „<ODP.NET-Installationspfad>\\11.2.0\\client\_1\\odp.net\\bin\\4\\Oracle.DataAccess.dll“ im globalen Assemblycache (GAC) zu installieren.
 
 
 
@@ -501,4 +501,4 @@ XML | String
 ## Leistung und Optimierung  
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -27,7 +27,7 @@
 
 <br>
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
  
 
 In diesem Lernprogramm erfahren Sie, wie Sie eine Django-basierte Website unter Microsoft Azure mithilfe eines virtuellen Windows Server-Computers hosten können. Bei diesem Lernprogramm wird davon ausgegangen, dass Sie noch keine Erfahrung mit der Verwendung von Azure haben. Nach Abschluss dieses Lernprogramms verfügen Sie über eine Django-basierte Anwendung, die in der Cloud ausgeführt wird.
@@ -49,12 +49,12 @@ Nachstehend finden Sie einen Screenshot der vollständigen Anwendung:
 
 1. Befolgen Sie die [hier](virtual-machines-windows-classic-tutorial.md) aufgeführten Anweisungen, um einen virtuellen Azure-Computer mit der Windows Server 2012 R2 Datacenter-Distribution zu erstellen.
 
-1. Weisen Sie Azure an, den Port 80-Datenverkehr aus dem Web an Port 80 auf dem virtuellen Computer zu leiten.
+1. Weisen Sie Azure an, den Port 80-Datenverkehr aus dem Web an Port 80 auf dem virtuellen Computer zu leiten.
  - Navigieren Sie im klassischen Azure-Portal zu Ihrem neu erstellten virtuellen Computer, und klicken Sie auf die Registerkarte **ENDPUNKTE**.
  - Klicken Sie unten auf der Seite auf **HINZUFÜGEN**. ![Endpunkt hinzufügen](./media/virtual-machines-windows-classic-python-django-web-app/django-helloworld-addendpoint.png)
 
- - Öffnen Sie **ÖFFENTLICHER PORT 80** des **TCP**-Protokolls als **PRIVATER PORT 80**. ![][port80]
-1. Klicken Sie auf der Registerkarte **DASHBOARD** auf **Verbinden** zum Verwenden von **Remotedesktop**, um sich beim neu erstellten virtuellen Azure-Computer remote anzumelden.  
+ - Öffnen Sie **ÖFFENTLICHER PORT 80 ** des **TCP**-Protokolls als **PRIVATER PORT 80**. ![][port80]
+1. Klicken Sie auf der Registerkarte **DASHBOARD** auf **Verbinden** zum Verwenden von **Remotedesktop**, um sich beim neu erstellten virtuellen Azure-Computer remote anzumelden.
 
 **Wichtiger Hinweis:** Für alle nachfolgend aufgeführten Anweisungen müssen Sie ordnungsgemäß beim virtuellen Computer angemeldet sein und Befehle dort anstatt von Ihrem lokalen Computer aus eingeben.
 
@@ -184,4 +184,4 @@ Wenn Sie mit diesem Lernprogramm fertig sind, fahren Sie den neu erstellten virt
 [python.org]: https://www.python.org/downloads/
 [wfastcgi]: https://pypi.python.org/pypi/wfastcgi
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0629_2016-->

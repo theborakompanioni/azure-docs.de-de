@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
- 	ms.date="06/16/2016" 
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 #Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts
@@ -39,11 +39,11 @@ Dieses Thema richtet sich an Entwickler, die an Anwendungen arbeiten, die gesch�
 
 Die folgenden allgemeinen Schritte müssen Sie ausführen, wenn Sie Medienobjekte mit AES verschlüsseln und dabei den Media Services-Schlüsselübermittlungsdienst sowie dynamische Verschlüsselung verwenden möchten.
 
-1. [Erstellen eines Medienobjekts und Hochladen von Dateien in das Medienobjekt](media-services-protect-with-aes128.md#create_asset). 
+1. [Erstellen eines Medienobjekts und Hochladen von Dateien in das Medienobjekt](media-services-protect-with-aes128.md#create_asset).
 1. [Codieren eines Medienobjekts, das die Sammlung von MP4-Dateien mit adaptiver Bitrate enthält](media-services-protect-with-aes128.md#encode_asset).
 1. [Erstellen eines Inhaltsschlüssels und Zuordnen des Schlüssels zum codierten Medienobjekt](media-services-protect-with-aes128.md#create_contentkey). In Media Services enthält der Inhaltsschlüssel den Verschlüsselungsschlüssel des Medienobjekts.
-1. [Konfigurieren der Autorisierungsrichtlinie des Inhaltsschlüssels](media-services-protect-with-aes128.md#configure_key_auth_policy). Die Inhaltsschlüssel-Authentifizierungsrichtlinie muss von Ihnen konfiguriert und vom Client erfüllt werden, damit der Inhaltsschlüssel an den Client übermittelt wird. 
-1. [Konfigurieren der Übermittlungsrichtlinie für ein Medienobjekt](media-services-protect-with-aes128.md#configure_asset_delivery_policy). Die Konfiguration der Übermittlungsrichtlinie umfasst Folgendes: URL für den Schlüsselerwerb und Initialisierungsvektor (IV) (für AES 128 muss beim Ver- und Entschlüsseln der gleiche IV bereitgestellt werden), Übermittlungsprotokoll (z. B. MPEG DASH, HLS, HDS, Smooth Streaming oder alle) sowie der Typ der dynamischen Verschlüsselung (z. B. Umschlag oder keine dynamische Verschlüsselung). 
+1. [Konfigurieren der Autorisierungsrichtlinie des Inhaltsschlüssels](media-services-protect-with-aes128.md#configure_key_auth_policy). Die Inhaltsschlüssel-Authentifizierungsrichtlinie muss von Ihnen konfiguriert und vom Client erfüllt werden, damit der Inhaltsschlüssel an den Client übermittelt wird.
+1. [Konfigurieren der Übermittlungsrichtlinie für ein Medienobjekt](media-services-protect-with-aes128.md#configure_asset_delivery_policy). Die Konfiguration der Übermittlungsrichtlinie umfasst Folgendes: URL für den Schlüsselerwerb und Initialisierungsvektor (IV) (für AES 128 muss beim Ver- und Entschlüsseln der gleiche IV bereitgestellt werden), Übermittlungsprotokoll (z. B. MPEG DASH, HLS, HDS, Smooth Streaming oder alle) sowie der Typ der dynamischen Verschlüsselung (z. B. Umschlag oder keine dynamische Verschlüsselung).
 
 	Sie können unterschiedliche Richtlinien für jedes Protokoll für das gleiche Medienobjekt anwenden. Sie können z. B. PlayReady-Verschlüsselung auf Smooth/DASH und AES Envelope auf HLS anwenden. Alle Protokolle, die nicht in einer Übermittlungsrichtlinie definiert sind (wenn Sie z. B. eine einzelne Richtlinie hinzufügen, die nur HLS als Protokoll angibt), werden vom Streaming ausgeschlossen. Die einzige Ausnahme besteht darin, wenn Sie überhaupt keine Übermittlungsrichtlinie für Medienobjekte definiert haben. In diesem Fall sind alle Protokolle ohne Verschlüsselung zulässig.
 
@@ -91,10 +91,10 @@ Weitere Informationen finden Sie unter [Konfigurieren einer Autorisierungsrichtl
 
 Konfigurieren Sie die Übermittlungsrichtlinie für Medienobjekte. Die Konfiguration der Übermittlungsrichtlinie für Medienobjekte umfasst Folgendes:
 
-- URL für den Schlüsselerwerb. 
-- Initialisierungsvektor (IV) für die Umschlagverschlüsselung. Für AES 128 muss beim Ver- und Entschlüsseln der gleiche IV bereitgestellt werden. 
+- URL für den Schlüsselerwerb.
+- Initialisierungsvektor (IV) für die Umschlagverschlüsselung. Für AES 128 muss beim Ver- und Entschlüsseln der gleiche IV bereitgestellt werden.
 - Übermittlungsprotokoll für Medienobjekte (z. B. MPEG DASH, HLS, HDS, Smooth Streaming oder alle).
-- Typ der dynamischen Verschlüsselung (z. B. AES-Umschlag) oder keine dynamische Verschlüsselung. 
+- Typ der dynamischen Verschlüsselung (z. B. AES-Umschlag) oder keine dynamische Verschlüsselung.
 
 Weitere Informationen finden Sie unter [Konfigurieren der Übermittlungsrichtlinie für Medienobjekte](media-services-rest-configure-asset-delivery-policy.md).
 
@@ -630,4 +630,4 @@ Im folgenden Code wird gezeigt, wie Sie eine Anforderung an den Media Services-S
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

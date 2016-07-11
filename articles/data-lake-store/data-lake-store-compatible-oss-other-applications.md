@@ -34,10 +34,11 @@ In diesem Artikel werden Open Source-Big Data-Anwendungen aufgelistet, die mit A
 | [Apache Zookeeper](http://zookeeper.apache.org/) | HDInsight 3.2 und 3.4 |
 | [Apache HBase](http://hbase.apache.org/) | HDInsight 3.2 und 3.4 |
 | [Apache Tez](http://tez.apache.org/) | HDInsight 3.2 und 3.4 |
+| [Apache Spark](http://spark.apache.org/) | HDInsight 3.4 |
 
 
 ## Weitere Informationen
 
 - [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->
