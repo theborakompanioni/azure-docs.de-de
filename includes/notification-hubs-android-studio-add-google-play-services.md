@@ -17,7 +17,7 @@
 
 5. Klicken Sie auf der Symbolleiste auf das Symbol **Sync Project with Gradle Files**.
 
-6. Öffnen Sie die Datei **AndroidManifest.xml**, und fügen Sie dem *application*-Tag das folgende Tag hinzu.
+6. Öffnen Sie die Datei **AndroidManifest.xml**, und fügen Sie dem *application* -Tag das folgende Tag hinzu.
 
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
