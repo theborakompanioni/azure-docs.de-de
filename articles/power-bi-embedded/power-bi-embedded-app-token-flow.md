@@ -3,7 +3,7 @@
    description="Power BI Embedded über App-Token zur Authentifizierung und Autorisierung"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="dvana"
+   authors="minewiskan"
    manager="NA"
    editor=""
    tags=""/>
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="03/29/2016"
-   ms.author="derrickv"/>
+   ms.date="06/28/2016"
+   ms.author="owend"/>
 
 # Ablauf der Authentifizierung mithilfe eines App-Tokens in Power BI Embedded
 
@@ -56,4 +56,4 @@ Nachdem **Power BI Embedded** einen Bericht an den Benutzer geschickt hat, kann 
 - [Häufige Microsoft Power BI Embedded Preview-Szenarios](power-bi-embedded-scenarios.md)
 - [Get started with Microsoft Power BI Embedded Preview](power-bi-embedded-get-started.md) (Erste Schritte mit Microsoft Power BI Embedded Preview)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

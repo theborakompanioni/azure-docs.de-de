@@ -1,11 +1,12 @@
 <properties
-	pageTitle="Erstellen der ersten Data Factory | Microsoft Azure"
-	description="Dieses Tutorial zeigt, wie Sie eine Data Factory mit einer Datenpipeline erstellen, die Daten mithilfe von Azure HDInsight transformiert."
+	pageTitle="Data Factory-Tutorial: erste Datenpipeline | Microsoft Azure"
+	description="In diesem Azure Data Factory-Tutorial erfahren Sie, wie Sie eine Data Factory erstellen und planen, die Daten unter Verwendung eines Hive-Skripts in einem Hadoop-Cluster verarbeitet."
 	services="data-factory"
+	keywords="Azure Data Factory-Tutorial, Hadoop-Cluster, Hadoop-Hive"
 	documentationCenter=""
 	authors="spelluru"
-	manager="jhubbard"
-	editor="monicar"/>
+	manager=""
+	editor=""/>
 
 <tags
 	ms.service="data-factory"
@@ -13,10 +14,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="05/23/2016"
+	ms.date="06/17/2016"
 	ms.author="spelluru"/>
 
-# Tutorial: Erstellen der ersten Data Factory (Übersicht)
+# Azure Data Factory-Tutorial: Erstellen einer Datenpipeline zur Datenverarbeitung mit Hadoop-Cluster 
 > [AZURE.SELECTOR]
 - [Übersicht über das Tutorial](data-factory-build-your-first-pipeline.md)
 - [Verwenden des Data Factory-Editors](data-factory-build-your-first-pipeline-using-editor.md)
@@ -24,7 +25,7 @@
 - [Verwenden von Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 - [Verwenden der Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
 
-Dieser Artikel hilft Ihnen beim Einstieg in die Erstellung Ihrer ersten Azure Data Factory.
+In diesem Tutorial erstellen Sie Ihre erste Azure Data Factory mit einer Datenpipeline zur Datenverarbeitung mittels Ausführung eines Hive-Skripts in einem Azure HDInsight (Hadoop)-Cluster.
 
 > [AZURE.NOTE] Dieser Artikel bietet keine grundlegende Übersicht über den Azure Data Factory-Dienst. Eine ausführliche Übersicht über den Dienst finden Sie unter [Einführung in Azure Data Factory](data-factory-introduction.md).
 
@@ -43,14 +44,14 @@ Bevor Sie mit diesem Tutorial beginnen, müssen folgende Voraussetzungen erfüll
 
 In diesem Tutorial führen Sie die folgenden Schritte aus:
 
-1.	Erstellen Sie die **Data Factory**. Eine Data Factory kann eine oder mehrere Datenpipelines enthalten, die Daten verschieben und verarbeiten. 
-2.	Erstellen Sie die **verknüpften Dienste**. Sie erstellen einen verknüpften Dienst, um einen Datenspeicher oder einen Computedienst mit der Data Factory zu verknüpfen. Ein Datenspeicher wie Azure Storage hält Ein-/Ausgabedaten von Aktivitäten in der Pipeline. Ein Computedienst wie Azure HDInsight verarbeitet/transformiert Daten.    
+1.	Erstellen Sie die **Data Factory**. Eine Data Factory kann eine oder mehrere Datenpipelines enthalten, die Daten verschieben und verarbeiten.
+2.	Erstellen Sie die **verknüpften Dienste**. Sie erstellen einen verknüpften Dienst, um einen Datenspeicher oder einen Computedienst mit der Data Factory zu verknüpfen. Ein Datenspeicher wie Azure Storage hält Ein-/Ausgabedaten von Aktivitäten in der Pipeline. Ein Computedienst wie Azure HDInsight verarbeitet/transformiert Daten.
 3.	Erstellen von **Datasets** für Eingabe und Ausgabe Ein Eingabedataset stellt die Eingabe für eine Aktivität in der Pipeline dar, und ein Ausgabedataset stellt die Ausgabe für die Aktivität dar.
 3.	Erstellen Sie die **Pipeline**. Eine Pipeline kann eine oder mehrere Aktivitäten wie z. B. Kopieraktivität zum Kopieren von Daten aus einer Quelle an ein Ziel oder HDInsight Hive-Aktivität zum Transformieren von Eingabedaten mithilfe des Hive-Skripts zum Erzeugen von Ausgabedaten aufweisen. Dieses Beispiel verwendet die HDInsight-Hive-Aktivität, die ein Hive-Skript ausführt. Das Skript erstellt zuerst eine externe Tabelle, die auf die Webprotokollrohdaten im Azure-Blobspeicher verweist, und partitioniert die Rohdaten dann nach Jahr und Monat.
 
 Ihre erste Pipeline mit dem Namen **MyFirstPipeline** verwendet eine Hive-Aktivität zum Transformieren und Analysieren eines Webprotokolls, das Sie in den Ordner **inputdata** im Container **adfgetstarted** (adfgetstarted/inputdata) in Ihrem Azure-Blobspeicher hochladen.
  
-![Diagrammansicht](./media/data-factory-build-your-first-pipeline/diagram-view.png)
+![Diagrammansicht im Data Factory-Tutorial](./media/data-factory-build-your-first-pipeline/data-factory-tutorial-diagram-view.png)
 
 
 In diesem Tutorial enthält „adfgetstarted“ (Container) = > „inputdata“ (Ordner) eine Datei mit dem Namen „input.log“. Diese Protokolldatei enthält Einträge von drei Monaten: Januar, Februar und März 2014. Hier sind die Beispielzeilen für jeden Monat in der Eingabedatei.
@@ -73,11 +74,11 @@ Bevor Sie mit dem Tutorial beginnen, müssen Sie den Azure-Speicher mit Dateien 
 In diesem Abschnitt werden Sie Folgendes ausführen:
 
 2. Hochladen der Hive-Abfragedatei (HQL) in den Ordner **script** des Containers **adfgetstarted**.
-3. Hochladen der Eingabedatei in den Ordner **inputdata** des Containers **adfgetstarted**. 
+3. Hochladen der Eingabedatei in den Ordner **inputdata** des Containers **adfgetstarted**.
 
 ### Erstellen der HQL-Skriptdatei 
 
-1. Starten Sie **Editor**, und fügen Sie das folgende HQL-Skript ein. Mit diesem Hive-Skript werden zwei externe Tabellen erstellt: **WebLogsRaw** und **WebLogsPartitioned**. Klicken Sie im Menü auf **Datei**, und wählen Sie **Speichern unter** aus. Wechseln Sie zum Ordner **C:\\adfgetstarted** auf Ihrer Festplatte. Wählen Sie **Alle Dateien (*.*)** im Feld **Dateityp** aus. Geben Sie **partitionweblogs.hql** als **Dateinamen** ein. Überprüfen Sie, ob im Feld **Codierung** unten im Dialogfeld **ANSI** festgelegt ist. Falls nicht, legen Sie es auf **ANSI** fest.  
+1. Starten Sie **Editor**, und fügen Sie das folgende HQL-Skript ein. Mit diesem Hive-Skript werden zwei externe Tabellen erstellt: **WebLogsRaw** und **WebLogsPartitioned**. Klicken Sie im Menü auf **Datei**, und wählen Sie **Speichern unter** aus. Wechseln Sie zum Ordner **C:\\adfgetstarted** auf Ihrer Festplatte. Wählen Sie **Alle Dateien (*.*)** im Feld **Dateityp** aus. Geben Sie **partitionweblogs.hql** als **Dateinamen** ein. Überprüfen Sie, ob im Feld **Codierung** unten im Dialogfeld **ANSI** festgelegt ist. Falls nicht, legen Sie es auf **ANSI** fest.
 	
 		set hive.exec.dynamic.partition.mode=nonstrict;
 		
@@ -185,11 +186,11 @@ Erstellen Sie mithilfe des Editors eine Datei namens **input.log** in **c:\\adfg
 
 ### Hochladen von Eingabe- und HQL-Datei in Ihren Azure-Blobspeicher
 
-Sie können jedes Tool Ihrer Wahl für diese Aufgabe verwenden (z. B. [Microsoft Azure Storage-Explorer](http://storageexplorer.com/) oder CloudXPlorer von ClumsyLeaf Software). Dieser Abschnitt enthält Anweisungen zur Verwendung des AzCopy-Tools.
+Für diese Aufgabe können Sie ein beliebiges Tool verwenden (etwa [Microsoft Azure-Speicher-Explorer](http://storageexplorer.com/) oder CloudXPlorer von ClumsyLeaf Software). Dieser Abschnitt enthält Anweisungen zur Verwendung des AzCopy-Tools.
 	 
 2. So bereiten Sie den Azure-Speicher für das Tutorial vor:
 	1. Laden Sie die [neueste Version von **AzCopy**](http://aka.ms/downloadazcopy) oder die [neueste Vorschauversion](http://aka.ms/downloadazcopypr) herunter. Im Artikel [Verwenden von AzCopy ](../storage/storage-use-azcopy.md) finden Sie eine Anleitung zur Verwendung des Hilfsprogramms.
-	2. Nach der Installation von AzCopy können Sie das Tool dem Systempfad hinzufügen, indem Sie den folgenden Befehl an der Eingabeaufforderung ausführen. 
+	2. Nach der Installation von AzCopy können Sie das Tool dem Systempfad hinzufügen, indem Sie den folgenden Befehl an der Eingabeaufforderung ausführen.
 	
 			set path=%path%;C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy
 
@@ -209,7 +210,7 @@ Sie können jedes Tool Ihrer Wahl für diese Aufgabe verwenden (z. B. [Microsof
 			Transfer skipped:        0
 			Transfer failed:         0
 			Elapsed time:            00.00:00:01
-	1. Führen Sie zum Hochladen der Datei **partitionweblogs.hql** in den Ordner **Script** des Containers **adfgetstarted** den folgenden Befehl aus. Hier ist der Befehl: 
+	1. Führen Sie den folgenden Befehl aus, um die Datei **partitionweblogs.hql** in den Ordner **script** des Containers **adfgetstarted** hochzuladen. Hier ist der Befehl:
 	
 			AzCopy /Source:. /Dest:https://<storageaccountname>.blob.core.windows.net/adfgetstarted/script /DestKey:<storagekey>  /Pattern:partitionweblogs.hql
 
@@ -220,6 +221,6 @@ Jetzt können Sie mit dem Tutorial beginnen. Klicken Sie oben auf eine der Regis
 - Azure Portal (Data Factory-Editor)
 - Azure PowerShell
 - Visual Studio
-- Azure-Ressourcen-Manager-Vorlagen 
+- Azure-Ressourcen-Manager-Vorlagen
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

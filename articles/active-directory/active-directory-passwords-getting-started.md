@@ -195,10 +195,10 @@ Bevor Sie das Zurückschreiben von Kennwörtern aktivieren und verwenden können
 
 
 ### Schritt 1: Herunterladen der aktuellen Version von Azure AD Connect
-Das Zurückschreiben von Kennwörtern steht in Versionen von Azure AD Connect oder im Azure AD Sync-Tool mit Versionsnummer **1.0.0419.0911** oder höher zur Verfügung. Das Zurückschreiben von Kennwörtern mit automatischer Entsperrung von Konten steht in Versionen von Azure AD Connect oder im Azure AD Sync-Tool mit Versionsnummer **1.0.0485.0222** oder höher zur Verfügung. Wenn Sie eine ältere Version verwenden, führen Sie ein Upgrade auf diese oder eine höhere Version durch, bevor Sie fortfahren. [Klicken Sie hier, um die aktuelle Version von Azure AD Connect herunterzuladen](active-directory-aadconnect.md#download-azure-ad-connect).
+Das Zurückschreiben von Kennwörtern steht in Versionen von Azure AD Connect oder im Azure AD Sync-Tool mit Versionsnummer **1.0.0419.0911** oder höher zur Verfügung. Das Zurückschreiben von Kennwörtern mit automatischer Entsperrung von Konten steht in Versionen von Azure AD Connect oder im Azure AD Sync-Tool mit Versionsnummer **1.0.0485.0222** oder höher zur Verfügung. Wenn Sie eine ältere Version verwenden, führen Sie ein Upgrade auf diese oder eine höhere Version durch, bevor Sie fortfahren. [Klicken Sie hier, um die aktuelle Version von Azure AD Connect herunterzuladen](active-directory-aadconnect.md#install-azure-ad-connect).
 
 #### So überprüfen Sie die Version von Azure AD Sync
-1.	Navigieren Sie zu **%ProgramFiles%\Azure Active Directory Sync**. 
+1.	Navigieren Sie zu **%Programme%\\Azure Active Directory Sync**.
 2.	Suchen Sie nach der ausführbaren Datei **ConfigWizard.exe**.
 3.	Klicken Sie mit der rechten Maustaste auf die ausführbare Datei, und wählen Sie im Kontextmenü die Option **Eigenschaften** aus.
 4.	Klicken Sie auf die Registerkarte **Details**.
@@ -248,7 +248,7 @@ Nachdem Sie das Zurückschreiben von Kennwörtern in Azure AD Connect aktiviert 
 1.	Wenn Sie nach dem Abschluss der Installation in Ihrer Umgebung unbekannte ausgehende Verbindungen blockieren, müssen Sie außerdem Änderungen an den folgenden Regeln Ihrer Firewall vornehmen. Stellen Sie sicher, dass Sie Ihren AAD Connect-Computer nach dem Durchführen dieser Änderungen neu starten:
    - Lassen Sie ausgehende Verbindungen über TCP-Port 443 zu.
    - Lassen Sie ausgehende Verbindungen mit https://ssprsbprodncu-sb.accesscontrol.windows.net/ zu.
-   - Wenn Sie einen Proxy verwenden oder allgemeine Verbindungsprobleme vorliegen, lassen Sie ausgehende Verbindungen über TCP-Port 9350-9354 zu.
+   - Wenn Sie einen Proxy verwenden oder allgemeine Verbindungsprobleme vorliegen, lassen Sie ausgehende Verbindungen über TCP-Port 9350-9354 und 5671 zu.
 
 ### Schritt 4: Einrichten der geeigneten Active Directory-Berechtigungen
 Bei der anfänglichen Konfiguration mit dem Konfigurations-Assistenten wird ein Konto X eingerichtet. Für jede Gesamtstruktur, die Benutzer enthält, deren Kennwörter zurückgesetzt werden, müssen X die Berechtigungen **Kennwort zurücksetzen**, **Kennwort ändern**, **Kennwort schreiben** für `lockoutTime` sowie die erweiterten Rechte **Berechtigungen schreiben** für `pwdLastSet` für das Stammobjekt jeder Domäne in dieser Gesamtstruktur erteilt werden. Die Rechte müssen hierbei so festgelegt werden, dass sie an alle Benutzerobjekte vererbt werden.
@@ -354,4 +354,4 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 [031]: ./media/active-directory-passwords-getting-started/031.jpg "Image_031.jpg"
 [032]: ./media/active-directory-passwords-getting-started/032.jpg "Image_032.jpg"
 
-<!----HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

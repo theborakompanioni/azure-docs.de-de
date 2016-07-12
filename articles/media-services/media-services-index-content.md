@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/08/2016"   
+	ms.date="06/22/2016"   
 	ms.author="adsolank;juliako;johndeu"/>
 
 
@@ -154,9 +154,9 @@ Wenn mehrere Eingabemediendateien vorhanden sind, generiert Indexer die Manifest
 Dateiname | Beschreibung
 ----------|------------
 __InputFileName.aib__ | AIB (Audio Indexing Blob)-Datei <br /><br /> Die Audio Indexing Blob (AIB)-Datei ist eine binäre Datei, die in Microsoft SQL Server mithilfe der Volltextsuche durchsucht werden kann. Die AIB-Datei ist leistungsfähiger als einfache Untertiteldateien, da sie Alternativen für jedes Wort enthält, was eine bessere Sucherfahrung ermöglicht. <br/> <br/>Sie erfordert die Installation des Indexer SQL-Add-Ons auf einem Computer unter Microsoft SQL Server 2008 oder höher. Das Durchsuchen der AIB-Datei mithilfe der Microsoft SQL Server-Volltextsuche bietet genauere Suchergebnisse als das Durchsuchen der mittels WAMI generierten Untertiteldateien. Der Grund hierfür ist, dass die AIB-Datei Wortalternativen enthält, die ähnlich klingen, wohingegen Untertiteldateien das höchste Konfidenzwort für jedes Segment der Audiospur enthalten. Wenn die Suche nach gesprochenen Wörtern besonders wichtig ist, empfiehlt sich die gemeinsame Verwendung von AIB und Microsoft SQL Server.<br/><br/> Klicken Sie zum Herunterladen des Add-Ons auf <a href="http://aka.ms/indexersql">Azure Media Indexer-SQL-Add-On</a>. <br/><br/>Es ist auch möglich, andere Suchmaschinen wie Apache Lucene/Solr zu verwenden, um das Video einfach auf Basis der Untertitel- und Stichwort-XML-Dateien zu indizieren. Dies hat jedoch ungenauere Suchergebnisse zur Folge.
-__InputFileName.smi__<br />\_\_InputFileName.ttml\_\_<br />\_\_InputFileName.vtt\_\_ |Untertiteldateien (Closed Caption, CC) im SAMI-, TTML-, und WebVTT-Format.<br/><br/>Sie können verwendet werden, um Hörgeschädigten Audio- und Videodateien zugänglich zu machen.<br/><br/>Untertiteldateien enthalten ein Tag namens <b>Recognizability</b>, das einen Indizierungsauftrag basierend darauf bewertet, wie gut die Sprache im Quellvideo erkennbar ist. Sie können den Wert von <b>Recognizability</b> nutzen, um Ausgabedateien auf ihre Verwendbarkeit zu prüfen. Eine niedrige Bewertung steht für schlechte Indizierungsergebnisse aufgrund der Audioqualität.
+__Name\_der\_Eingabedatei.smi__<br />__Name\_der\_Eingabedatei.ttml__<br />__Name\_der\_Eingabedatei.vtt__ |Untertiteldateien (Closed Caption, CC) im SAMI-, TTML-, und WebVTT-Format.<br/><br/>Sie können verwendet werden, um Hörgeschädigten Audio- und Videodateien zugänglich zu machen.<br/><br/>Untertiteldateien enthalten ein Tag namens <b>Recognizability</b>, das einen Indizierungsauftrag basierend darauf bewertet, wie gut die Sprache im Quellvideo erkennbar ist. Sie können den Wert von <b>Recognizability</b> nutzen, um Ausgabedateien auf ihre Verwendbarkeit zu prüfen. Eine niedrige Bewertung steht für schlechte Indizierungsergebnisse aufgrund der Audioqualität.
 __InputFileName.kw.xml<br />InputFileName.info__ |Stichwort- und Informationsdateien. <br/><br/>Die Stichwortdatei ist eine XML-Datei, die Stichwörter enthält, welche aus dem Sprachinhalt mit Frequenz- und Abstandsinformationen extrahiert wurden. <br/><br/>Die Informationsdatei ist eine Nur-Text-Datei und enthält detaillierte Informationen zu jedem erkannten Begriff. Die erste Zeile unterscheidet sich von den anderen Zeilen und enthält die Bewertung für „Recognizability“. Jede nachfolgende Zeile ist eine tabstoppgetrennte Auflistung der folgenden Daten: Startzeit, Endzeit, Wort/Ausdruck, Konfidenz. Die Zeiten sind in Sekunden und die Konfidenzwerte als Zahl zwischen 0 und 1 angegeben. <br/><br/>Beispielzeile: „1.20 1.45 word 0.67“ <br/><br/>Diese Dateien können für unterschiedliche Zwecke verwendet werden (etwa zum Ausführen einer Sprachanalyse). Zudem können sie für Suchmaschinen wie Bing, Google oder Microsoft SharePoint verfügbar gemacht werden, damit die Mediendateien leichter zu finden sind, oder auch zum Bereitstellen von Werbeanzeigen mit höherer Relevanz verwendet werden.
-__JobResult.txt__ |Ausgabemanifest, nur beim Indizieren mehrerer Dateien vorhanden, enthält die folgenden Informationen:<br/><br/><table border="1"><tr><th>InputFile</th><th>Alias</th><th>MediaLength</th><th>Error</th></tr><tr><td>a.mp4</td><td>Media\_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media\_2</td><td>0</td><td>3000</td></tr><tr><td>c.mp4</td><td>Media\_3</td><td>600</td><td>0</td></tr></table><br/>
+__JobResult.txt__ |Ausgabemanifest, nur beim Indizieren mehrerer Dateien vorhanden, enthält die folgenden Informationen:<br/><br/><table border="1"><tr><th>Eingabedatei</th><th>Alias</th><th>MediaLength</th><th>Fehler</th></tr><tr><td>a.mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c.mp4</td><td>Media\_3</td><td>600</td><td>0</td></tr></table><br/>
 
 
 
@@ -298,4 +298,4 @@ Derzeit werden die Sprachen Englisch und Spanisch unterstützt. Weitere Informat
 
 [Indizieren von Mediendateien mit der Vorschauversion von Azure Media Indexer 2 ](media-services-process-content-with-indexer2.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

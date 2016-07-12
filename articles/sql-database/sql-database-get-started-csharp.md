@@ -46,7 +46,7 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 Für die Einrichtung einer SQL-Datenbank mit C# erhalten Sie die erforderlichen Verwaltungsbibliotheken, indem Sie über die [Paket-Manager-Konsole](http://docs.nuget.org/Consume/Package-Manager-Console) in Visual Studio (**Extras** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**) die folgenden Pakete installieren:
 
     Install-Package Microsoft.Azure.Management.Sql –Pre
-    Install-Package Microsoft.Azure.Management.ResourceManager –Pre
+    Install-Package Microsoft.Azure.Management.ResourceManager –Pre -Version 1.1.1-preview
     Install-Package Microsoft.Azure.Common.Authentication –Pre
 
 
@@ -456,4 +456,4 @@ Nachdem Sie SQL-Datenbank ausprobiert und mit C# eine Datenbank erstellt haben, 
 [8]: ./media/sql-database-get-started-csharp/add-application2.png
 [9]: ./media/sql-database-get-started-csharp/clientid.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -68,9 +68,7 @@ Führen Sie im klassischen Azure-Portal die folgenden Schritte aus, um die Wiede
 
 1.  Navigieren Sie zum **Sicherungskatalog**. Filtern Sie nach dem entsprechenden Geräte- und Uhrzeitbereich, um nach Ihren Sicherungen zu suchen. Klicken Sie auf das Häkchensymbol ![](./media/storsimple-ova-restore/image1.png), um die Abfrage durchzuführen.
 
-2.  Klicken Sie in der angezeigten Liste mit den Sicherungssätzen auf eine Sicherung, um sie auszuwählen. Erweitern Sie die Sicherung, um die darunter angeordneten Volumes anzuzeigen. Sie müssen diese Volumes auf dem Host und Gerät offline schalten, bevor sie wiederhergestellt werden können. Greifen Sie auf der Seite **Volumes** auf die Volumes zu, und versetzen Sie sie in den Offlinezustand.
-
-3.  Navigieren Sie zurück zur Registerkarte **Sicherungskatalog**, und wählen Sie einen Sicherungssatz aus.
+2.  Klicken Sie in der angezeigten Liste mit den Sicherungssätzen auf eine Sicherung, um sie auszuwählen. Erweitern Sie die Sicherung, um die darunter angeordneten Volumes anzuzeigen. Wählen Sie das Volume aus, das Sie wiederherstellen möchten.
 
 5.  Klicken Sie unten auf der Seite auf **Als neu wiederherstellen**. Der Assistent **Als neues Volume wiederherstellen** wird gestartet.
 
@@ -79,7 +77,7 @@ Führen Sie im klassischen Azure-Portal die folgenden Schritte aus, um die Wiede
 
 	1.  Überprüfen Sie den Namen des Quellgeräts. Dies sollte das Gerät mit dem wiederherzustellenden Volume sein. Die Geräteauswahl ist nicht verfügbar. Um ein anderes Quellgerät auszuwählen, müssen Sie den Assistenten beenden und den Sicherungssatz erneut auswählen.
 
-	2.  Geben Sie einen Namen für das Volume an. Der Volumename kann 3 bis 127 Zeichen lang sein.
+	2.  Geben Sie einen Volumenamen für das Volume ein, das als neues Volume wiederhergestellt wird. Der Volumename kann 3 bis 127 Zeichen lang sein.
 
 	3.  Klicken Sie auf das Pfeilsymbol.
 
@@ -93,9 +91,15 @@ Führen Sie im klassischen Azure-Portal die folgenden Schritte aus, um die Wiede
 
 2.  Nachdem der Wiederherstellungsauftrag abgeschlossen ist, wird die Wiederherstellung gestartet, und es wird eine weitere Benachrichtigung angezeigt. Klicken Sie auf **Auftrag anzeigen**, um den Fortschritt der Wiederherstellung zu überwachen. Sie gelangen auf die Seite **Aufträge**.
 
-3.  Hier können Sie den Fortschritt des Wiederherstellungsauftrags verfolgen. Wenn die Wiederherstellung 100% erreicht hat, navigieren Sie zurück zur Seite **Volumes** auf Ihrem Gerät.
+3.  Hier können Sie den Fortschritt des Wiederherstellungsauftrags verfolgen. Navigieren Sie zurück zur Seite **Volumes** auf Ihrem Gerät.
 
 4.  Sie können nun das neu wiederhergestellte Volume in der Liste mit den Volumes auf Ihrem Gerät anzeigen. Beachten Sie, dass bei der Wiederherstellung derselbe Volumetyp verwendet wird. Ein mehrstufiges Volume wird auch als mehrstufiges Volume wiederhergestellt, und ein lokales Volume bleibt ein lokales Volume.
+
+5.  Sobald das Volume in der Liste der Volumes online angezeigt wird, ist das Volume für die Verwendung verfügbar. Aktualisieren Sie auf dem iSCSI-Initiatorhost die Liste der Ziele im Fenster mit den iSCSI-Initiatoreigenschaften. Ein neues Ziel, das den Namen des wiederhergestellten Volumes enthält, sollte in der Statusspalte als „inaktiv“ angezeigt werden.
+
+6.  Wählen Sie das Ziel aus, und klicken Sie auf **Verbinden**. Wenn der Initiator mit dem Ziel verbunden ist, sollte sich der Status in **Verbunden** ändern.
+
+7.  Im Fenster **Datenträgerverwaltung** werden die bereitgestellten Volumes wie in der folgenden Abbildung dargestellt angezeigt. Klicken Sie mit der rechten Maustaste auf das ermittelte Volume (klicken Sie auf den Datenträgernamen), und klicken Sie dann auf **Online**.
 
 > [AZURE.IMPORTANT] Wenn Sie versuchen, ein Volume oder eine Freigabe aus einer Sicherung wiederherzustellen, und der Wiederherstellungsauftrag fehlschlägt, wird möglicherweise dennoch ein Zielvolume bzw. eine -freigabe im Portal erstellt. Es ist wichtig, dass Sie dieses Zielvolume bzw. die -freigabe im Portal löschen, um zukünftige Probleme mit diesem Element zu minimieren.
 
@@ -103,9 +107,9 @@ Führen Sie im klassischen Azure-Portal die folgenden Schritte aus, um die Wiede
 
 Mit dieser Version wird die Wiederherstellung auf Elementebene (Item-Level Recovery, ILR) auf einem virtuellen StorSimple-Gerät eingeführt, das als Dateiserver konfiguriert ist. Mit diesem Feature können Sie die Dateien und Ordner einer Cloudsicherung für alle Freigaben des StorSimple-Geräts präzise wiederherstellen. Benutzer können gelöschte Dateien aus kürzlich erfolgten Sicherungen per Self-Service wiederherstellen.
 
-Jede Freigabe verfügt über einen *.backups*-Ordner, der die letzten Sicherungen enthält. Der Benutzer kann zur gewünschten Sicherung navigieren, relevante Dateien und Ordner aus der Sicherung kopieren und diese dann wiederherstellen. Es ist dann nicht mehr erforderlich, sich wegen der Wiederherstellung von Dateien aus Sicherungen an den Administrator zu wenden.
+Jede Freigabe verfügt über einen Ordner *.backups*, der die letzten Sicherungen enthält. Der Benutzer kann zur gewünschten Sicherung navigieren, relevante Dateien und Ordner aus der Sicherung kopieren und diese dann wiederherstellen. Es ist dann nicht mehr erforderlich, sich wegen der Wiederherstellung von Dateien aus Sicherungen an den Administrator zu wenden.
 
-1.  Wenn Sie die Wiederherstellung auf Elementebene durchführen, können Sie die Sicherungen per Windows-Explorer anzeigen. Klicken Sie auf die jeweilige Freigabe, für die Sie sich die Sicherungen ansehen möchten. Sie sehen den Ordner *.backups*, der unter der Freigabe erstellt wurde und alle Sicherungen enthält. Erweitern Sie den Ordner *.backups*, um die Sicherungen anzuzeigen. Im Ordner wird dann die Explosionsansicht der gesamten Sicherungshierarchie angezeigt. Diese Ansicht wird bei Bedarf erstellt, was normalerweise nur wenige Sekunden dauert.
+1.  Wenn Sie die Wiederherstellung auf Elementebene durchführen, können Sie die Sicherungen per Windows-Explorer anzeigen. Klicken Sie auf die jeweilige Freigabe, für die Sie sich die Sicherungen ansehen möchten. Sie sehen den Ordner *.backups*, der in der Freigabe erstellt wurde und alle Sicherungen enthält. Erweitern Sie den Ordner *.backups*, um die Sicherungen anzuzeigen. Im Ordner wird dann die Explosionsansicht der gesamten Sicherungshierarchie angezeigt. Diese Ansicht wird bei Bedarf erstellt, was normalerweise nur wenige Sekunden dauert.
 
 	Auf diese Weise werden die letzten fünf Sicherungen angezeigt und können zur Wiederherstellung auf Elementebene verwendet werden. Zu den fünf letzten Sicherungen gehören sowohl die standardmäßig geplanten als auch die manuellen Sicherungen.
 
@@ -130,6 +134,6 @@ In diesem Video wird gezeigt, wie Sie Freigaben erstellen, Freigaben sichern und
 
 ## Nächste Schritte
 
-Erfahren Sie mehr darüber, wie Sie Ihr [StorSimple Virtual Array über die lokale Webbenutzeroberfläche verwalten](storsimple-ova-web-ui-admin.md).
+Erfahren Sie mehr darüber, wie Sie das [StorSimple Virtual Array mit der lokalen Webbenutzeroberfläche verwalten](storsimple-ova-web-ui-admin.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/13/2016" 
+	ms.date="06/27/2016" 
 	ms.author="spelluru"/>
 
 # Verschieben von Daten aus ODBC-Datenspeichern mithilfe von Azure Data Factory
@@ -225,7 +225,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | -------- | ----------- | -------- | 
 | type | Die type-Eigenschaft muss auf **OnPremisesOdbc** festgelegt sein. | Ja |
 | connectionString | Der nicht für den Zugriff bestimmte Teil der Anmeldeinformationen in der Verbindungszeichenfolge sowie optional verschlüsselte Anmeldeinformationen. Siehe unten aufgeführte Beispiele. | Ja
-| credential | Der zum Zugriff bestimmte Teil der Anmeldeinformationen in der Verbindungszeichenfolge. Er wird in einem treiberspezifischen Format aus Eigenschaft und Wert angegeben. Beispiel: “Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;” | Nein
+| credential | Der zum Zugriff bestimmte Teil der Anmeldeinformationen in der Verbindungszeichenfolge. Er wird in einem treiberspezifischen Format aus Eigenschaft und Wert angegeben. Beispiel: „Uid=<Benutzer-ID>;Pwd=<Kennwort>;RefreshToken=<geheimes Aktualisierungstoken>;“. | Nein
 | authenticationType | Typ der Authentifizierung für die Verbindung mit dem ODBC-Datenspeicher. Mögliche Werte: „Anonymous“ und „Basic“. | Ja | 
 | username | Geben Sie den Benutzernamen an, wenn Sie die Standardauthentifizierung (Basic) verwenden. | Nein | 
 | password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. | Nein | 
@@ -253,7 +253,7 @@ Ausführliche Informationen zum Festlegen von Anmeldeinformationen für einen lo
 	}
 
 ### Verwenden der Standardauthentifizierung mit verschlüsselten Anmeldeinformationen
-Sie können die Anmeldeinformationen mithilfe der Azure PowerShell-Cmdlets [New-AzureRMDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) (Version 1.0 von Azure PowerShell) oder [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (Version 0.9 von Azure PowerShell oder früher) verschlüsseln.
+Sie können die Anmeldeinformationen mithilfe des Azure PowerShell-Cmdlets [New-AzureRMDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) (Version 1.0 von Azure PowerShell) oder [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (Version 0.9 von Azure PowerShell oder früher) verschlüsseln.
 
 	{
 	    "name": "odbc",
@@ -293,7 +293,7 @@ Sie können die Anmeldeinformationen mithilfe der Azure PowerShell-Cmdlets [New-
 
 Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie "structure", "availability" und "policy" des JSON-Codes eines Datasets sind bei allen Typen von Datasets (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
 
-Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset vom Typ **RelationalTable** (wozu ein ODBC-Dataset gehört) hat die folgenden Eigenschaften:
+Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset vom Typ **RelationalTable** (mit ODBC-Dataset) hat folgende Eigenschaften:
 
 | Eigenschaft | Beschreibung | Erforderlich |
 | -------- | ----------- | -------- |
@@ -305,7 +305,7 @@ Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Akt
 
 Im Abschnitt "typeProperties" der Aktivität verfügbare Eigenschaften variieren hingegen bei jedem Aktivitätstyp. Bei der Kopieraktivität variieren sie je nach Typ der Quellen und Senken.
 
-Wenn bei der Kopieraktivität „source“ den Typ **RelationalSource** hat (zu dem ODBC gehört), sind im Abschnitt „typeProperties“ die folgenden Eigenschaften verfügbar:
+Wenn bei der Kopieraktivität eine Quelle vom Typ **RelationalSource** (mit ODBC) verwendet wird, sind im Abschnitt „typeProperties“ folgende Eigenschaften verfügbar:
 
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
 | -------- | ----------- | -------------- | -------- |
@@ -328,7 +328,7 @@ Beim Verschieben von Daten aus ODBC-Datenspeichern werden die ODBC-Datentypen de
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
 ## GE Historian-Speicher
-Sie können einen über ODBC verknüpften Dienst erstellen, um einen [GE Historian](http://www.geautomation.com/products/proficy-historian)-Datenspeicher (früher GE Proficy Historian) mit einer Azure Data Factory zu verknüpfen, wie in folgendem Beispiel gezeigt:
+Sie können einen über ODBC verknüpften Dienst erstellen, um einen [GE Historian](http://www.geautomation.com/products/proficy-historian)-Datenspeicher (ehemals „GE Proficy Historian“) mit einer Azure Data Factory zu verknüpfen, wie im folgenden Beispiel zu sehen:
 
 	{
 	    "name": "HistorianLinkedService",
@@ -355,17 +355,17 @@ Lesen Sie den Artikel vom Anfang, um einen detaillierten Überblick über die Ve
 ## Behandeln von Konnektivitätsproblemen
 Verwenden Sie die Registerkarte **Diagnose** im **Datenverwaltungsgateway-Konfigurations-Manager**, um Verbindungsprobleme zu behandeln.
 
-1. Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager**. Sie können entweder „C:\\Programme\\Microsoft Data Management Gateway\\1.0\\Shared\\ConfigManager.exe“ direkt ausführen oder nach **Gateway** suchen, um einen Link zur Anwendung **Microsoft-Datenverwaltungsgateway** zu finden, wie in der folgenden Abbildung dargestellt. 
+1. Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager**. Sie können entweder „C:\\Programme\\Microsoft Data Management Gateway\\1.0\\Shared\\ConfigManager.exe“ direkt ausführen oder nach **Gateway** suchen, um einen Link zur Anwendung **Microsoft-Datenverwaltungsgateway** zu finden, wie in der folgenden Abbildung dargestellt:
 
 	![Gateway suchen](./media/data-factory-odbc-connector/search-gateway.png)
 2. Wechseln Sie zur Registerkarte **Diagnose**.
 
-	![Gatewaydiagnose](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png) 
-3. Wählen Sie den **Typ** von Datenspeicher (verknüpfter Dienst) aus. 
-4. Geben Sie die **Authentifizierung** an, und geben Sie **Anmeldeinformationen** oder die **Verbindungszeichenfolge** ein, um eine Verbindung mit dem Datenspeicher herzustellen. 
-5. Klicken Sie auf **Verbindung testen**, um die Verbindung mit dem Datenspeicher zu testen. 
+	![Gatewaydiagnose](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png)
+3. Wählen Sie den **Typ** des Datenspeichers (verknüpfter Dienst) aus.
+4. Geben Sie die **Authentifizierung** an, und geben Sie **Anmeldeinformationen** oder die **Verbindungszeichenfolge** ein, um eine Verbindung mit dem Datenspeicher herzustellen.
+5. Klicken Sie auf **Verbindung testen**, um die Verbindung mit dem Datenspeicher zu testen.
 
 ## Leistung und Optimierung  
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

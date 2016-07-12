@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/13/2016"
+   ms.date="06/19/2016"
    ms.author="mcoskun"/>
 
 # Sichern und Wiederherstellen von Reliable Services und Reliable Actors
@@ -54,7 +54,7 @@ Der Dienstautor kann bestimmen, wann Sicherungen erstellt und wo sie gespeichert
 
 Der Dienst muss die geerbte Memberfunktion **BackupAsync** aufrufen, um die Sicherung zu starten. Sicherungen können nur von primären Replikaten erstellt werden und benötigen Schreibzugriff.
 
-Wie Sie unten sehen, nimmt **BackupAsync** ein **BackupDescription**-Objekt an, in dem Sie eine vollständige oder inkrementelle Sicherung sowie die Rückruffunktion **Func<< BackupInfo, CancellationToken, Task<bool>>>** angeben können. Diese wird aufgerufen, wenn der Sicherungsordner lokal erstellt wurde, und sie kann in einen externen Speicher verschoben werden.
+Wie Sie unten sehen, akzeptiert **BackupAsync** ein **BackupDescription**-Objekt, in dem Sie eine vollständige oder inkrementelle Sicherung angeben können, sowie die Rückruffunktion **Func<< BackupInfo, CancellationToken, Task<bool>>>**. Diese wird aufgerufen, wenn der Sicherungsordner lokal erstellt wurde und in einen externen Speicher verschoben werden kann.
 
 ```C#
 
@@ -64,11 +64,11 @@ await this.BackupAsync(myBackupDescription);
 
 ```
 
-Die Anforderung zum Durchführen einer inkrementellen Sicherung kann mit **FabricFullBackupMissingException** fehlschlagen, wobei angegeben wird, dass für das Replikat niemals eine vollständige Sicherung erstellt wurde oder dass einige der Protokolleinträge seit der letzten Sicherung abgeschnitten wurden. Benutzer können durch Ändern von **CheckpointThresholdInMB** anpassen, mit welcher Rate Protokolleinträge abgeschnitten werden sollen.
+Bei der Anforderung zum Durchführen einer inkrementellen Sicherung kann der Fehler **FabricMissingFullBackupException** auftreten. Dies weist darauf hin, dass entweder niemals eine vollständige Sicherung für das Replikat erstellt wurde oder dass einige der Protokolleinträge seit der letzten Sicherung abgeschnitten wurden. Benutzer können durch Ändern von **CheckpointThresholdInMB** anpassen, mit welcher Rate Protokolleinträge abgeschnitten werden sollen.
 
-**BackupInfo** liefert Informationen über die Sicherung, einschließlich des Speicherorts des Ordners, in dem die Runtime die Sicherung gespeichert hat **(BackupInfo.Directory)**. Die Rückruffunktion kann **BackupInfo.Directory** in einen externen Speicher oder an einen anderen Speicherort verschieben. Diese Funktion gibt auch einen booleschen Wert zurück, der angibt, ob der Sicherungsordner erfolgreich an den Zielspeicherort verschoben werden konnte.
+**BackupInfo** liefert Informationen über die Sicherung, einschließlich des Speicherorts des Ordners, in dem die Runtime die Sicherung gespeichert hat (**BackupInfo.Directory**). Die Rückruffunktion kann **BackupInfo.Directory** in einen externen Speicher oder an einen anderen Speicherort verschieben. Diese Funktion gibt auch einen booleschen Wert zurück, der angibt, ob der Sicherungsordner erfolgreich an den Zielspeicherort verschoben werden konnte.
 
-Der folgende Code zeigt, wie die Sicherung mit der **BackupCallbackAsync**-Methode in Azure Storage hochgeladen wird:
+Der folgende Code zeigt, wie die Sicherung mithilfe der **BackupCallbackAsync**-Methode in Azure Storage hochgeladen werden kann:
 
 ```C#
 private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, CancellationToken cancellationToken)
@@ -81,13 +81,13 @@ private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, Cancellation
 }
 ```
 
-Im Beispiel oben ist **ExternalBackupStore** die Beispielklasse, die als Schnittstelle zum Azure-Blobspeicher verwendet wird, und **UploadBackupFolderAsync** ist die Methode, die den Ordner komprimiert und in Azure Blob Storage platziert.
+Im Beispiel oben ist **ExternalBackupStore** die Beispielklasse, die als Schnittstelle zum Azure-Blobspeicher verwendet wird, und **UploadBackupFolderAsync** ist die Methode, die den Ordner komprimiert und im Azure-Blobspeicher platziert.
 
 Beachten Sie Folgendes:
 
 - Pro Replikat kann jeweils nur ein Sicherungsvorgang ausgeführt werden. Mehrere **BackupAsync**-Aufrufe gleichzeitig lösen **FabricBackupInProgressException** aus, um nur eine Inflight-Sicherung zuzulassen.
 
-- Wenn ein Replikat während einer Sicherung ausfällt, wird die Sicherung möglicherweise nicht abgeschlossen. Folglich muss der Dienst nach Abschluss des Failovers neu starten, indem bei Bedarf **BackupAsync** aufgerufen wird.
+- Wenn ein Replikat während einer Sicherung ausfällt, wird die Sicherung möglicherweise nicht abgeschlossen. Folglich muss der Dienst die Sicherung nach Abschluss des Failovers neu starten, indem bei Bedarf **BackupAsync** aufgerufen wird.
 
 ## Wiederherstellen von Reliable Services
 
@@ -113,7 +113,7 @@ Der Dienstautor muss Folgendes wiederherstellen:
 
 - Laden Sie die neueste Sicherung herunter (und dekomprimieren Sie die Sicherung in den Sicherungsordner, wenn sie komprimiert wurde).
 
-- Die **OnDataLossAsync**-Methode stellt einen **RestoreContext** bereit. Rufen Sie die **RestoreAsync**-API für den bereitgestellten **RestoreContext** auf.
+- Die **OnDataLossAsync**-Methode stellt ein **RestoreContext**-Element bereit. Rufen Sie die **RestoreAsync**-API für das bereitgestellte **RestoreContext**-Element auf.
 
 - Geben Sie „true“ zurück, wenn die Wiederherstellung erfolgreich war.
 
@@ -133,9 +133,9 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 }
 ```
 
-**RestoreDescription** wird an den **RestoreContext.RestoreAsync**-Aufruf übergeben und enthält ein Mitglied mit dem Namen **BackupFolderPath**. Beim Wiederherstellen einer einzelnen vollständigen Sicherung muss dieser **BackupFolderPath** auf den lokalen Pfad des Ordners festgelegt werden, der die vollständige Sicherung enthält. Beim Wiederherstellen einer vollständigen Sicherung und mehrerer inkrementeller Sicherungen muss **BackupFolderPath** auf den lokalen Pfad des Ordners festgelegt werden, der die vollständige Sicherung sowie alle inkrementellen Sicherungen enthält. Der **RestoreAsync**-Aufruf kann **FabricFullBackupMissingException** auslösen, wenn der angegebene **BackupFolderPath** keine vollständige Sicherung enthält. Zudem kann **ArgumentException** ausgelöst werden, wenn **BackupFolderPath** eine unterbrochene Kette von inkrementellen Sicherungen enthält, beispielsweise die vollständige Sicherung, die erste inkrementelle und die dritte inkrementelle Sicherung, jedoch nicht die zweite inkrementelle Sicherung.
+**RestoreDescription** wird an den **RestoreContext.RestoreAsync**-Aufruf übergeben und enthält ein Mitglied mit dem Namen **BackupFolderPath**. Beim Wiederherstellen einer einzelnen vollständigen Sicherung muss **BackupFolderPath** auf den lokalen Pfad des Ordners festgelegt werden, der die vollständige Sicherung enthält. Beim Wiederherstellen einer vollständigen Sicherung und mehrerer inkrementeller Sicherungen muss **BackupFolderPath** auf den lokalen Pfad des Ordners festgelegt werden, der die vollständige Sicherung sowie alle inkrementellen Sicherungen enthält. Der **RestoreAsync**-Aufruf kann **FabricMissingFullBackupException** auslösen, wenn das angegebene **BackupFolderPath**-Element keine vollständige Sicherung enthält. Zudem kann **ArgumentException** ausgelöst werden, wenn **BackupFolderPath** eine unterbrochene Kette von inkrementellen Sicherungen enthält, beispielsweise die vollständige Sicherung, die erste inkrementelle und die dritte inkrementelle Sicherung, jedoch nicht die zweite inkrementelle Sicherung.
 
->[AZURE.NOTE] Für die RestorePolicy ist standardmäßig „sicher“ eingestellt. Dies bedeutet, dass die **RestoreAsync**-API mit ArgumentException fehlschlägt, wenn sie erkennt, dass der Sicherungsordner einen Status enthält, der älter ist als der Status in diesem Replikat bzw. gleich alt ist. **RestorePolicy.Force** kann verwendet werden, um diese Sicherheitsprüfung zu überspringen. Dies wird als Teil von **RestoreDescription** angegeben.
+>[AZURE.NOTE] Für die RestorePolicy ist standardmäßig „sicher“ eingestellt. Dies bedeutet, dass bei der **RestoreAsync**-API der Fehler „ArgumentException“ auftritt, wenn sie erkennt, dass der Sicherungsordner einen Status enthält, der älter ist als der Status in diesem Replikat bzw. gleich alt ist. **RestorePolicy.Force** kann verwendet werden, um diese Sicherheitsprüfung zu überspringen. Dies wird als Teil von **RestoreDescription** angegeben.
 
 ## Gelöschter oder verlorener Dienst
 
@@ -159,17 +159,17 @@ Beachten Sie Folgendes:
 
 - Bei einer Wiederherstellung besteht die Möglichkeit, dass die wiederherzustellende Sicherung älter als der Status der Partition vor dem Verlust der Daten ist. Deshalb sollte die Wiederherstellung nur als letzter Ausweg verwendet werden, um so viele Daten wie möglich wiederherzustellen.
 
-- Die Zeichenfolge, die den Sicherungsorderpfad und die Dateipfade im Sicherungsordner repräsentiert, kann je nach FabricDataRoot-Pfad und Namenslänge des Anwendungstyps länger als 255 Zeichen sein. Einige .NET-Methoden, z.B. **Directory.Move**, lösen daraufhin unter Umständen die Ausnahme **PathTooLongException** aus. Eine Problemumgehung besteht darin, kernel32-APIs wie **CopyFile** direkt aufzurufen.
+- Die Zeichenfolge, die den Sicherungsorderpfad und die Dateipfade im Sicherungsordner repräsentiert, kann je nach FabricDataRoot-Pfad und Namenslänge des Anwendungstyps länger als 255 Zeichen sein. Einige .NET-Methoden, z.B. **Directory.Move**, lösen daraufhin unter Umständen die Ausnahme **PathTooLongException** aus. Eine Problemumgehung besteht darin, Kernel32-APIs wie **CopyFile** direkt aufzurufen.
 
 ## Sichern und Wiederherstellen von Reliable Actors
 
-Das Sichern und Wiederherstellen von Reliable Actors baut auf den Sicherungs- und Wiederherstellungsfunktionen von Reliable Services auf. Der Dienstbesitzer sollte einen benutzerdefinierten Actordienst erstellen, der von **ActorService** abgeleitet ist (d.h. einen Reliable Service von Service Fabric, der Actors hostet) und dann Sicherungen bzw. Wiederherstellungen entsprechend den Beschreibungen in den vorherigen Abschnitten wie bei Reliable Services durchführen. Da Sicherungen jeweils pro Partition erstellt werden, werden Status für alle Actors einer bestimmten Partition gesichert (die Wiederherstellung erfolgt ähnlich und jeweils pro Partition).
+Das Sichern und Wiederherstellen von Reliable Actors baut auf den Sicherungs- und Wiederherstellungsfunktionen von Reliable Services auf. Der Dienstbesitzer sollte einen benutzerdefinierten Actordienst erstellen, der von **ActorService** abgeleitet ist (d.h. einen Reliable Service von Service Fabric, der Actors hostet), und dann Sicherungen bzw. Wiederherstellungen wie bei Reliable Services durchführen, wie in den vorherigen Abschnitten beschrieben. Da Sicherungen jeweils pro Partition erstellt werden, werden Status für alle Actors einer bestimmten Partition gesichert (die Wiederherstellung erfolgt ähnlich und jeweils pro Partition).
 
 
 - Wenn Sie einen benutzerdefinierten Actordienst erstellen, müssen Sie beim Registrieren des Actors auch den benutzerdefinierten Actordienst registrieren. Siehe die Beschreibung zu **ActorRuntime.RegistorActorAsync**.
 - **KvsActorStateProvider** unterstützt derzeit nur vollständige Sicherungen. **KvsActorStateProvider** ignoriert zudem die Option **RestorePolicy.Safe**.
 
->[AZURE.NOTE] Der standardmäßige „ActorStateProvider“ (d.h. **KvsActorStateProvider**) bereinigt die Sicherungsordner **nicht** eigenständig (im Arbeitsordner der Anwendung, abgerufen über „ICodePackageActivationContext.WorkDirectory“). Dadurch wird der Arbeitsordner möglicherweise übermäßig voll. Sie sollten den Sicherungsordner im Sicherungsrückruf ausdrücklich bereinigen, nachdem Sie die Sicherung in einen externen Speicher verschoben haben.
+>[AZURE.NOTE] Der standardmäßige ActorStateProvider (d.h. **KvsActorStateProvider**) bereinigt die Sicherungsordner **nicht** eigenständig (im Arbeitsordner der Anwendung, abgerufen über ICodePackageActivationContext.WorkDirectory). Dadurch wird der Arbeitsordner möglicherweise übermäßig voll. Sie sollten den Sicherungsordner im Sicherungsrückruf ausdrücklich bereinigen, nachdem Sie die Sicherung in einen externen Speicher verschoben haben.
 
 
 ## Testen von Sicherung und Wiederherstellung
@@ -183,14 +183,20 @@ Es muss sichergestellt werden, dass wichtige Daten gesichert werden und wiederhe
 Im Folgenden erhalten Sie weitere ausführliche Informationen zum Sichern und Wiederherstellen.
 
 ### Sicherung
-Mit dem Reliable State Manager können konsistente Sicherungen erstellt werden, ohne Lese- oder Schreibvorgänge zu blockieren. Zu diesem Zweck verwendet er einen Mechanismus für Prüfpunkt- und Protokollbeständigkeit. Der Reliable State Manager entlastet durch Prüfpunkte an bestimmten Punkten das Transaktionsprotokoll und verbessert Wiederherstellungszeiten. Wenn **BackupAsync** aufgerufen wird, weist der Reliable State Manager alle Reliable Objects an, ihre neuesten Prüfpunktdateien in einen lokalen Sicherungsordner zu kopieren. Der Reliable State Manager kopiert dann alle Protokolleinträge ab dem „Start“-Zeiger bis zum aktuellen Protokolleintrag in den Sicherungsordner. Da alle Protokolleinträge bis zum aktuellen Protokolleintrag in der Sicherung enthalten sind und der Reliable State Manager die Write-Ahead-Protokollierung beibehält, garantiert der Reliable State Manager, dass alle bestätigten Transaktionen (**CommitAsync** wurde erfolgreich zurückgegeben) in der Sicherung enthalten sind.
+Mit dem Reliable State Manager können konsistente Sicherungen erstellt werden, ohne Lese- oder Schreibvorgänge zu blockieren. Zu diesem Zweck verwendet er einen Mechanismus für Prüfpunkt- und Protokollbeständigkeit. Der Reliable State Manager entlastet durch Prüfpunkte an bestimmten Punkten das Transaktionsprotokoll und verbessert Wiederherstellungszeiten. Wenn **BackupAsync** aufgerufen wird, weist der Reliable State Manager alle Reliable Objects an, ihre neuesten Prüfpunktdateien in einen lokalen Sicherungsordner zu kopieren. Der Reliable State Manager kopiert dann alle Protokolleinträge ab dem „Start“-Zeiger bis zum aktuellen Protokolleintrag in den Sicherungsordner. Da alle Protokolleinträge einschließlich des aktuellen Eintrags in der Sicherung enthalten sind und der Reliable State Manager die Write-Ahead-Protokollierung beibehält, garantiert der Reliable State Manager, dass alle bestätigten Transaktionen (**CommitAsync** wurde erfolgreich zurückgegeben) in der Sicherung enthalten sind.
 
 Sämtliche nach dem Aufrufen von **BackupAsync** bestätigten Transaktionen können in der Sicherung enthalten oder nicht enthalten sein. Sobald der lokale Sicherungsordner der Plattform von der Plattform aufgefüllt wurde (z. B. Abschluss der lokalen Sicherung durch die Runtime), wird der Rückruf der Dienstsicherung aufgerufen. Durch diesen Rückruf wird der Sicherungsordner in einen externen Speicherort wie den Azure-Speicher verschoben.
 
 ### Wiederherstellen
 
-Der Reliable State Manager ermöglicht das Wiederherstellen aus einer Sicherung mit der **RestoreAsync**-API. Die **RestoreAsync**-Methode für **RestoreContext** kann nur innerhalb der **OnDataLossAsync**-Methode aufgerufen werden. Die von **OnDataLossAsync** zurückgegebene Bool gibt an, ob der Dienst seinen Status aus einer externen Quelle wiederhergestellt hat. Wenn für **OnDataLossAsync** „TRUE“ zurückgegeben wird, erstellt Service Fabric alle anderen Replikate aus diesem primären Replikat neu. Service Fabric stellt sicher, dass Replikate, die **OnDataLossAsync** empfangen, zunächst die primäre Rolle annehmen, aber nicht den Lese- oder Schreibstatus erhalten. Dies bedeutet, dass **RunAsync** bei StatefulService-Implementierern erst aufgerufen wird, wenn **OnDataLossAsync** erfolgreich abgeschlossen wurde. **OnDataLossAsync** wird dann für das neue primäre Replikat aufgerufen. Bis ein Dienst diese API erfolgreich (durch Rückgabe von true oder false) abschließt und die relevanten Neukonfigurationen fertigstellt, wird weiterhin die API nacheinander aufgerufen.
+Der Reliable State Manager ermöglicht das Wiederherstellen aus einer Sicherung mit der **RestoreAsync**-API. Die **RestoreAsync**-Methode für **RestoreContext** kann nur innerhalb der **OnDataLossAsync**-Methode aufgerufen werden. Die von **OnDataLossAsync** zurückgegebene Bool gibt an, ob der Dienst seinen Status aus einer externen Quelle wiederhergestellt hat. Wenn für **OnDataLossAsync** „true“ zurückgegeben wird, erstellt Service Fabric alle anderen Replikate aus diesem primären Replikat neu. Service Fabric stellt sicher, dass Replikate, die **OnDataLossAsync** empfangen, zunächst die primäre Rolle annehmen, aber keinen Lese- oder Schreibstatus erhalten. Dies bedeutet, dass **RunAsync** bei StatefulService-Implementierern erst aufgerufen wird, wenn **OnDataLossAsync** erfolgreich abgeschlossen wurde. **OnDataLossAsync** wird dann für das neue primäre Replikat aufgerufen. Bis ein Dienst diese API erfolgreich (durch Rückgabe von true oder false) abschließt und die relevanten Neukonfigurationen fertigstellt, wird weiterhin die API nacheinander aufgerufen.
 
-**RestoreAsync** löscht zuerst jeden bestehenden Status in dem primären Replikat, von dem es aufgerufen wurde. Danach erstellt der Reliable State Manager alle Reliable Objects, die im Sicherungsordner vorhanden sind. Als Nächstes werden die Reliable Objects angewiesen, ihre Prüfpunkte im Sicherungsordner wiederherzustellen. Schließlich stellt der Reliable State Manager seinen eigenen Status aus den Protokolldatensätzen im Sicherungsordner wieder her und führt die Wiederherstellung aus. Im Rahmen des Wiederherstellungsprozesses werden ab dem „Startpunkt“ beginnende Vorgänge, die Protokolldatensätze in den Sicherungsordner ausgeführt haben, in den Reliable Objects wiederholt. Dadurch wird sichergestellt, dass der wiederhergestellte Status konsistent ist.
+**RestoreAsync** löscht zuerst jeden bestehenden Status in dem primären Replikat, für das es aufgerufen wurde. Danach erstellt der Reliable State Manager alle Reliable Objects, die im Sicherungsordner vorhanden sind. Als Nächstes werden die Reliable Objects angewiesen, ihre Prüfpunkte im Sicherungsordner wiederherzustellen. Schließlich stellt der Reliable State Manager seinen eigenen Status aus den Protokolldatensätzen im Sicherungsordner wieder her und führt die Wiederherstellung aus. Im Rahmen des Wiederherstellungsprozesses werden ab dem „Startpunkt“ beginnende Vorgänge, die Protokolldatensätze in den Sicherungsordner ausgeführt haben, in den Reliable Objects wiederholt. Dadurch wird sichergestellt, dass der wiederhergestellte Status konsistent ist.
 
-<!---HONumber=AcomDC_0518_2016-->
+## Nächste Schritte
+
+- [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
+- [Reliable Services – Benachrichtigungen](service-fabric-reliable-services-notifications.md)
+- [Entwicklerreferenz für zuverlässige Auflistungen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+
+<!---HONumber=AcomDC_0629_2016-->

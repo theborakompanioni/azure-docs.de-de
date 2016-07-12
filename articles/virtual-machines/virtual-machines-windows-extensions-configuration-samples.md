@@ -91,7 +91,7 @@ Im weiteren Verlauf des Artikels sind Beispielkonfigurationen für Windows-VM-Er
               "fileUris": [
                   "http: //Yourstorageaccount.blob.core.windows.net/customscriptfiles/start.ps1"
               ],
-              "commandToExecute": "powershell.exe-ExecutionPolicyUnrestricted -start.ps1"
+              "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -start.ps1"
           },
           "protectedSettings": {
             "storageAccountName": "yourStorageAccountName",
@@ -118,10 +118,10 @@ Eine Beschreibung des Parameters finden Sie in der CustomScript Version 1.4. Ver
                 "fileUris": [
                     "http: //Yourstorageaccount.blob.core.windows.net/customscriptfiles/start.ps1"
                 ],
-                "commandToExecute": "powershell.exe-ExecutionPolicyUnrestricted -start.ps1"
+                "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -start.ps1"
             },
             "protectedSettings": {
-              "commandToExecute": "powershell.exe-ExecutionPolicyUnrestricted -start.ps1",
+              "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -start.ps1",
               "storageAccountName": "yourStorageAccountName",
               "storageAccountKey": "yourStorageAccountKey"
             }
@@ -365,4 +365,4 @@ Dies ist ein Beispiel für eine vollständige VM-Vorlage mit einer benutzerdefin
 
 [Benutzerdefinierte Skripterweiterung auf einem virtuellen Windows-Computer](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

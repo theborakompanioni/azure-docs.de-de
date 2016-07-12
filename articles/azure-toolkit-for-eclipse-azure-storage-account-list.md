@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="05/04/2016" 
+    ms.date="06/24/2016" 
     ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/dn205108.aspx -->
@@ -84,7 +84,7 @@ Es kann mehrere Minuten dauern, bis das Speicherkonto erstellt wurde. Nachdem es
 
 [Creating a Hello World Application for Azure in Eclipse (in englischer Sprache)][]
 
-Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center][] \(in englischer Sprache).
+Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center][] (in englischer Sprache).
 
 <!-- URL List -->
 
@@ -100,4 +100,4 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [ic719496]: ./media/azure-toolkit-for-eclipse-azure-storage-account-list/ic719496.png
 [ic719497]: ./media/azure-toolkit-for-eclipse-azure-storage-account-list/ic719497.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

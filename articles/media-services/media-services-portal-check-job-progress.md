@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="05/03/2016"  
+	ms.date="06/22/2016"  
 	ms.author="juliako"/>
 
 #Vorgehensweise: Prüfen des Auftragsfortschritts
@@ -26,7 +26,7 @@
 ##Überprüfen des Auftragsstatus im Portal
 
 1. Klicken Sie im [klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409) auf **Media Services** und dann auf den Media Services-Kontonamen.
-2. Wählen Sie die Seite **AUFTRÄGE** aus. 
+2. Wählen Sie die Seite **AUFTRÄGE** aus.
 
 	Auf der Seite können Sie den Status aller Aufträge anzeigen. Außerdem können Sie nach Status, Uhrzeit oder Auftrags-ID filtern.
 
@@ -50,4 +50,4 @@ Veröffentlichen des Inhalts. Weitere Informationen finden Sie unter [Codieren v
 [checkstatus]: ./media/media-services-portal-check-job-progress/media-services-monitor-job-progress.png
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

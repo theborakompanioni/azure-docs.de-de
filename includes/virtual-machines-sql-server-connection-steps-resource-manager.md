@@ -14,6 +14,8 @@ Wählen Sie zum Erstellen einer DNS-Bezeichnung als Erstes im Portal die Option 
 
 3. Geben Sie eine DNS-Bezeichnung ein. Hierbei handelt es sich um einen A-Eintrag, mit dem eine Verbindung mit Ihrer SQL Server-VM nach dem Namen anstatt direkt nach der IP-Adresse hergestellt werden kann.
 
+4. Klicken Sie auf die Schaltfläche **Save**.
+
 	![DNS-Bezeichnung](./media/virtual-machines-sql-server-connection-steps/rm-dns-label.png)
 
 ### Verbinden mit dem Datenbankmodul von einem anderen Computer aus
@@ -31,3 +33,5 @@ Wählen Sie zum Erstellen einer DNS-Bezeichnung als Erstes im Portal die Option 
 7. Klicken Sie auf **Verbinden**.
 
 	![SSMS-Verbindung](./media/virtual-machines-sql-server-connection-steps/rm-ssms-connect.png)
+
+<!---HONumber=AcomDC_0629_2016-->

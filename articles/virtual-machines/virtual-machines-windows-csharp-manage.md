@@ -14,10 +14,12 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/17/2016"
+	ms.date="06/24/2016"
 	ms.author="davidmu"/>
 
 # Verwalten von virtuellen Azure-Computern mit Azure Resource Manager und C#  
+
+Die Aufgaben in diesem Artikel zeigen, wie virtuelle Computer verwaltet werden. Dazu gehört z.B. das Starten, das Beenden und das Aktualisieren.
 
 Zum Ausführen der Anweisungen in diesem Artikel benötigen Sie Folgendes:
 
@@ -36,7 +38,7 @@ NuGet-Pakete sind die einfachste Möglichkeit, um die Bibliotheken zu installier
 
 4. Geben Sie *Active Directory* in das Suchfeld ein, klicken Sie für das Active Directory-Authentifizierungsbibliothek-Paket auf **Installieren**, und befolgen Sie dann die Anweisungen zum Installieren des Pakets.
 
-5. Wählen Sie am oberen Rand der Seite **Vorabversion einschließen** aus. Geben Sie *Microsoft.Azure.Management.Compute* in das Suchfeld ein, klicken Sie für die Compute-Bibliotheken von .NET auf **Installieren**, und befolgen Sie dann die Anweisungen zum Installieren des Pakets.
+5. Wählen Sie am oberen Rand der Seite **Vorabversion einschließen** aus. Geben Sie *Microsoft.Azure.Management.Compute* in das Suchfeld ein, klicken Sie für die .NET-Computebibliotheken auf **Installieren**, und befolgen Sie dann die Anweisungen zum Installieren des Pakets.
 
 Sie können nun die Bibliotheken verwenden, um Ihre virtuellen Computer zu verwalten.
 
@@ -63,28 +65,24 @@ Nachdem die Azure Active Directory-Anwendung erstellt und die Authentifizierungs
     
 3. Fügen Sie der Program-Klasse die folgende Methode hinzu, um das Token abzurufen, das zum Erstellen der Anmeldeinformationen benötigt wird:
 
-	    private static string GetAuthorizationHeader()
+	    private static async Task<AuthenticationResult> GetAccessTokenAsync()
 	    {
-          ClientCredential cc = new ClientCredential("{application-id}", "{password}");
+          var cc = new ClientCredential("{client-id}", "{client-secret}");
           var context = new AuthenticationContext("https://login.windows.net/{tenant-id}");
           var result = context.AcquireTokenAsync("https://management.azure.com/", cc);
-
           if (result == null)
           {
-            throw new InvalidOperationException("Failed to obtain the JWT token");
+            throw new InvalidOperationException("Could not get the token");
           }
-
-          string token = result.Result.AccessToken;
-
           return token;
         }
 	
-    Ersetzen Sie {application-id} durch die Anwendungs-ID, die Sie zuvor notiert haben, {password} durch das Kennwort, das Sie für die AD-Anwendung gewählt haben, und {tenant-id} durch die Mandanten-ID für Ihr Abonnement.
+    Ersetzen Sie {client-id} durch den Bezeichner der Azure Active Directory-Anwendung, {-client-secret} durch den Zugriffsschlüssel der AD-Anwendung und {tenant-id} durch die Mandanten-ID für Ihr Abonnement. Sie erhalten die Mandanten-ID durch Ausführen von Get-AzureRmSubscription. Den Zugriffsschlüssel finden Sie mithilfe des Azure-Portals.
     
 4. Fügen Sie der Main-Methode in der Datei „Program.cs“ den folgenden Code hinzu, um die Anmeldeinformationen zu erstellen:
 
-        var token = GetAuthorizationHeader();
-        var credential = new TokenCredentials(token);
+        var token = GetAccessTokenAsync();
+        var credential = new TokenCredentials(token.Result.AccessToken);
 
 5. Speichern Sie die Datei "Program.cs".
 
@@ -92,7 +90,7 @@ Nachdem die Azure Active Directory-Anwendung erstellt und die Authentifizierungs
 
 1. Fügen Sie der Program-Klasse im Projekt, das Sie zuvor erstellt haben, diese Methode hinzu:
 
-        public static void GetVirtualMachine(
+        public static async void GetVirtualMachineAsync(
           TokenCredentials credential, 
           string groupName, 
           string vmName, 
@@ -100,9 +98,9 @@ Nachdem die Azure Active Directory-Anwendung erstellt und die Authentifizierungs
         {
           Console.WriteLine("Getting information about the virtual machine...");
 
-          var computeManagementClient = new ComputeManagementClient(credential);
-          computeManagementClient.SubscriptionId = subscriptionId;
-          var vmResult = computeManagementClient.VirtualMachines.Get(
+          var computeManagementClient = new ComputeManagementClient(credential)
+            { SubscriptionId = subscriptionId };
+          var vmResult = await computeManagementClient.VirtualMachines.GetAsync(
             groupName, 
             vmName, 
             InstanceViewTypes.InstanceView);
@@ -174,11 +172,12 @@ Nachdem die Azure Active Directory-Anwendung erstellt und die Authentifizierungs
             Console.WriteLine("  level: " + istat.Level);
             Console.WriteLine("  displayStatus: " + istat.DisplayStatus);
           }
+          
         }
 
 2. Fügen Sie der Main-Methode den folgenden Code hinzu, um die gerade hinzugefügte Methode aufzurufen:
 
-        GetVirtualMachine(
+        GetVirtualMachineAsync(
           credential,
           groupName,
           vmName,
@@ -259,21 +258,21 @@ Nachdem die Azure Active Directory-Anwendung erstellt und die Authentifizierungs
 
 2. Fügen Sie der Program-Klasse die folgende Methode hinzu:
 
-        public static void StartVirtualMachine(
+        public static async void StartVirtualMachineAsync(
           TokenCredentials credential, 
           string groupName, 
           string vmName, 
           string subscriptionId)
         {
           Console.WriteLine("Starting the virtual machine...");
-          var computeManagementClient = new ComputeManagementClient(credential);
-          computeManagementClient.SubscriptionId = subscriptionId;
-          computeManagementClient.VirtualMachines.Start(groupName, vmName);
+          var computeManagementClient = new ComputeManagementClient(credential)
+            { SubscriptionId = subscriptionId };
+          await computeManagementClient.VirtualMachines.StartAsync(groupName, vmName);
         }
 
 3. Fügen Sie der Main-Methode den folgenden Code hinzu, um die gerade hinzugefügte Methode aufzurufen:
 
-        StartVirtualMachine(
+        StartVirtualMachineAsync(
           credential,
           groupName,
           vmName,
@@ -295,16 +294,16 @@ Sie können einen virtuellen Computer auf zwei Arten beenden. Sie können einen 
 
 2. Fügen Sie der Program-Klasse die folgende Methode hinzu:
 
-        public static void StopVirtualMachine(
+        public static void StopVirtualMachineAsync(
           TokenCredentials credential, 
           string groupName, 
           string vmName, 
           string subscriptionId)
         {
           Console.WriteLine("Stopping the virtual machine...");
-          var computeManagementClient = new ComputeManagementClient(credential);
-          computeManagementClient.SubscriptionId = subscriptionId;
-          computeManagementClient.VirtualMachines.PowerOff(groupName, vmName);
+          var computeManagementClient = new ComputeManagementClient(credential)
+            { SubscriptionId = subscriptionId };
+          await computeManagementClient.VirtualMachines.PowerOffAsync(groupName, vmName);
         }
 
 	Wenn Sie den virtuellen Computer freigeben möchten, ändern Sie den Aufruf zum Herunterfahren in Folgendes:
@@ -313,7 +312,7 @@ Sie können einen virtuellen Computer auf zwei Arten beenden. Sie können einen 
 
 3. Fügen Sie der Main-Methode den folgenden Code hinzu, um die gerade hinzugefügte Methode aufzurufen:
 
-        StopVirtualMachine(
+        StopVirtualMachineAsync(
           credential,
           groupName,
           vmName,
@@ -333,21 +332,21 @@ Sie können einen virtuellen Computer auf zwei Arten beenden. Sie können einen 
 
 2. Fügen Sie der Program-Klasse die folgende Methode hinzu:
 
-        public static void RestartVirtualMachine(
+        public static async void RestartVirtualMachineAsync(
           TokenCredentials credential,
           string groupName,
           string vmName,
           string subscriptionId)
         {
           Console.WriteLine("Restarting the virtual machine...");
-          var computeManagementClient = new ComputeManagementClient(credential);
-          computeManagementClient.SubscriptionId = subscriptionId;
-          computeManagementClient.VirtualMachines.Restart(groupName, vmName);
+          var computeManagementClient = new ComputeManagementClient(credential)
+            { SubscriptionId = subscriptionId };
+          await computeManagementClient.VirtualMachines.RestartAsync(groupName, vmName);
         }
 
 3. Fügen Sie der Main-Methode den folgenden Code hinzu, um die gerade hinzugefügte Methode aufzurufen:
 
-        RestartVirtualMachine(
+        RestartVirtualMachineAsync(
           credential,
           groupName,
           vmName,
@@ -365,21 +364,21 @@ Sie können einen virtuellen Computer auf zwei Arten beenden. Sie können einen 
 
 2. Fügen Sie der Program-Klasse die folgende Methode hinzu:
 
-        public static void DeleteVirtualMachine(
+        public static async void DeleteVirtualMachineAsync(
           TokenCredentials credential, 
           string groupName, 
           string vmName, 
           string subscriptionId)
         {
           Console.WriteLine("Deleting the virtual machine...");
-          var computeManagementClient = new ComputeManagementClient(credential);
-          computeManagementClient.SubscriptionId = subscriptionId;
-          computeManagementClient.VirtualMachines.Delete(groupName, vmName);
+          var computeManagementClient = new ComputeManagementClient(credential)
+            { SubscriptionId = subscriptionId };
+          await computeManagementClient.VirtualMachines.DeleteAsync(groupName, vmName);
         }
 
 3. Fügen Sie der Main-Methode den folgenden Code hinzu, um die gerade hinzugefügte Methode aufzurufen:
 
-        DeleteVirtualMachine(
+        DeleteVirtualMachineAsync(
           credential,
           groupName,
           vmName,
@@ -399,23 +398,23 @@ Dieses Beispiel zeigt, wie Sie die Größe eines ausgeführten virtuellen Comput
 
 2. Fügen Sie der Program-Klasse die folgende Methode hinzu:
 
-        public static void UpdateVirtualMachine(
+        public static async void UpdateVirtualMachineAsync(
           TokenCredentials credential, 
           string groupName, 
           string vmName, 
           string subscriptionId)
         {
           Console.WriteLine("Updating the virtual machine...");
-          var computeManagementClient = new ComputeManagementClient(credential);
-          computeManagementClient.SubscriptionId = subscriptionId;
-          var vmResult = computeManagementClient.VirtualMachines.Get(groupName, vmName);
+          var computeManagementClient = new ComputeManagementClient(credential)
+            { SubscriptionId = subscriptionId };
+          var vmResult = await computeManagementClient.VirtualMachines.GetAsync(groupName, vmName);
           vmResult.HardwareProfile.VmSize = "Standard_A1";
-          computeManagementClient.VirtualMachines.CreateOrUpdate(groupName, vmName, vmResult);
+          await computeManagementClient.VirtualMachines.CreateOrUpdateAsync(groupName, vmName, vmResult);
         }
 
 3. Fügen Sie der Main-Methode den folgenden Code hinzu, um die gerade hinzugefügte Methode aufzurufen:
 
-        UpdateVirtualMachine(
+        UpdateVirtualMachineAsync(
           credential,
           groupName,
           vmName,
@@ -431,6 +430,6 @@ Dieses Beispiel zeigt, wie Sie die Größe eines ausgeführten virtuellen Comput
     
 ## Nächste Schritte
 
-Falls bei der Bereitstellung Probleme aufgetreten sind, finden Sie womöglich Hilfe unter [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md).
+Sollten bei einer Bereitstellung Probleme aufgetreten sein, helfen Ihnen ggf. die Informationen unter [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md) weiter.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -43,13 +43,9 @@ Um Pushbenachrichtigungen an eine iOS-App senden zu können, muss diese bei Appl
 
 	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
 
-   	Hierdurch wird Ihre App-ID generiert, und Sie werden zur Bestätigung der Daten aufgefordert. Klicken Sie auf **Senden**
+   	Hierdurch wird Ihre App-ID generiert, und Sie werden zur Bestätigung der Daten aufgefordert. Klicken Sie auf **Registrieren**, um die neue App-ID zu bestätigen.
 
-
-    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-confirm-new-appid.png)
-
-
-   	Nachdem Sie **Submit** angeklickt haben, wird der **Registration complete**-Bildschirm geöffnet, wie unten gezeigt. Klicken Sie auf **Done**.
+   	Nachdem Sie auf **Registrieren** geklickt haben, wird der Bildschirm **Registrierung abgeschlossen** wie unten gezeigt geöffnet. Klicken Sie auf **Done**.
 
 
     ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
@@ -69,7 +65,7 @@ Um Pushbenachrichtigungen an eine iOS-App senden zu können, muss diese bei Appl
 
    	Hierdurch wird der Assistent "Add iOS Certificate" zur Anzeige gebracht.
 
-    > [AZURE.NOTE]In diesem Lernprogramm wird ein Entwicklungszertifikat verwendet. Derselbe Prozess wird auch zum Registrieren eines Produktionszertifikats durchgeführt. Achten Sie darauf, dass Sie denselben Zertifikattyp beim Senden von Benachrichtigungen verwenden.
+    > [AZURE.NOTE] In diesem Lernprogramm wird ein Entwicklungszertifikat verwendet. Derselbe Prozess wird auch zum Registrieren eines Produktionszertifikats durchgeführt. Achten Sie darauf, dass Sie denselben Zertifikattyp beim Senden von Benachrichtigungen verwenden.
 
 5. Klicken Sie auf **Choose File**, browsen Sie zum Speicherort der in der ersten Aufgabe erstellten CSR-Datei und klicken Sie dann auf **Generate**.
 
@@ -83,7 +79,7 @@ Um Pushbenachrichtigungen an eine iOS-App senden zu können, muss diese bei Appl
 
   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-downloaded.png)
 
-    > [AZURE.NOTE]Standardmäßig ist die heruntergeladene Datei ein Entwicklungszertifikat namens **aps\_development.cer**.
+    > [AZURE.NOTE] Standardmäßig ist die heruntergeladene Datei ein Entwicklungszertifikat namens **aps\_development.cer**.
 
 7. Doppelklicken Sie auf dem heruntergeladenen Pushzertifikat **aps\_development.cer**.
 
@@ -91,7 +87,7 @@ Um Pushbenachrichtigungen an eine iOS-App senden zu können, muss diese bei Appl
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
 
-    > [AZURE.NOTE]Der Name in Ihrem Zertifikat kann sich davon unterscheiden, er enthält jedoch das Präfix **Apple Development iOS Push Services:**.
+    > [AZURE.NOTE] Der Name in Ihrem Zertifikat kann sich davon unterscheiden, er enthält jedoch das Präfix **Apple Development iOS Push Services:**.
 
 8. Klicken Sie in der Kategorie **Zertifikate** in der Schlüsselbundverwaltung mit der rechten Maustaste auf das neu erstellte Pushzertifikat. Klicken Sie auf **Exportieren**, benennen Sie die Datei, wählen Sie das Format **.p12** aus, und klicken Sie dann auf **Speichern**.
 
@@ -99,7 +95,7 @@ Um Pushbenachrichtigungen an eine iOS-App senden zu können, muss diese bei Appl
 
 	Notieren Sie sich den Dateinamen und den Speicherort des exportierten P12-Zertifikats, das zum Aktivieren der Authentifizierung mit APNS verwendet wird.
 
-	>[AZURE.NOTE]In diesem Lernprogramm wird eine QuickStart.p12-Datei erstellt. Name und Ort Ihrer Datei können verschieden sein.
+	>[AZURE.NOTE] In diesem Lernprogramm wird eine QuickStart.p12-Datei erstellt. Name und Ort Ihrer Datei können verschieden sein.
 
 
 ##Erstellen eines Bereitstellungsprofils für die App
@@ -135,4 +131,4 @@ Um Pushbenachrichtigungen an eine iOS-App senden zu können, muss diese bei Appl
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)
 
-<!----HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0706_2016-->

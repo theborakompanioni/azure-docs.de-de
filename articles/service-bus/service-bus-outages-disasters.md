@@ -98,7 +98,7 @@ Bei einer dauerhaften clientseitigen Warteschlange wird die Nachrichtenreihenfol
 Weitere Informationen zur Notfallwiederherstellung finden Sie in diesen Artikeln:
 
 - [Geschäftskontinuität in Azure SQL-Datenbank][]
-- [Azure-Geschäftskontinuität – Technische Anleitung][]
+- [Technischer Leitfaden zur Resilienz in Azure][]
 
   [Service Bus-Authentifizierung]: service-bus-authentication-and-authorization.md
   [Partitionierte Messagingentitäten]: service-bus-partitioning.md
@@ -109,6 +109,6 @@ Weitere Informationen zur Notfallwiederherstellung finden Sie in diesen Artikeln
   [Georeplikation mit Service Bus-Brokernachrichten]: http://code.msdn.microsoft.com/Geo-replication-with-f5688664
   [Dauerhafter Nachrichtenabsender]: http://code.msdn.microsoft.com/Service-Bus-Durable-Sender-0763230d
   [Geschäftskontinuität in Azure SQL-Datenbank]: ../sql-database/sql-database-business-continuity.md
-  [Azure-Geschäftskontinuität – Technische Anleitung]: https://msdn.microsoft.com/library/azure/hh873027.aspx
+  [Technischer Leitfaden zur Resilienz in Azure]: ../resiliency/resiliency-technical-guidance.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

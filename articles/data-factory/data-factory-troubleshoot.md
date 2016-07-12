@@ -24,35 +24,35 @@ Dieser Artikel enthält Tipps zur Behandlung von Problemen bei der Verwendung vo
 ### Fehler: Das Abonnement ist nicht für die Verwendung des Namespace „Microsoft.DataFactory“ registriert.
 Wenn Sie diesen Fehler erhalten, wurde der Azure Data Factory-Ressourcenanbieter nicht auf Ihrem Computer registriert. Gehen Sie wie folgt vor:
 
-1. Starten Sie Azure PowerShell. 
-2. Melden Sie sich mithilfe des folgenden Befehls beim Azure-Konto an. Login-AzureRmAccount 
+1. Starten Sie Azure PowerShell.
+2. Melden Sie sich mithilfe des folgenden Befehls beim Azure-Konto an. Login-AzureRmAccount
 3. Führen Sie den folgenden Befehl aus, um den Azure Data Factory-Anbieter zu registrieren. Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
 
 ### Problem: Autorisierungsfehler beim Ausführen eines Data Factory-Cmdlets
 Sie verwenden wahrscheinlich nicht das richtige Azure-Konto oder -Abonnement für Azure-PowerShell. Wählen Sie mithilfe der folgenden Cmdlets das richtige Azure-Konto und -Abonnement für die Verwendung mit Azure-PowerShell.
 
 1. Login-AzureRmAccount: Verwenden Sie die richtige Benutzer-ID und das richtige Kennwort.
-2. Get-AzureRmSubscription: Zeigen Sie alle Abonnements für das Konto an. 
-3. Select-AzureRmSubscription <subscription name>: Wählen Sie das richtige Abonnement aus. Verwenden Sie dasselbe Abonnement wie zum Erstellen einer Data Factory im Azure-Portal.
+2. Get-AzureRmSubscription: Zeigen Sie alle Abonnements für das Konto an.
+3. Select-AzureRmSubscription <Name des Abonnements>: Wählen Sie das richtige Abonnement aus. Verwenden Sie dasselbe Abonnement wie zum Erstellen einer Data Factory im Azure-Portal.
 
 ### Problem: Das Express-Setup für das Datenverwaltungsgateway kann über das Azure-Portal nicht gestartet werden.
 Für das Express-Setup des Datenverwaltungsgateways ist Internet Explorer oder ein mit Microsoft ClickOnce kompatibler Webbrowser erforderlich. Wenn das Express-Setup nicht gestartet wird, führen Sie einen der folgenden Schritte aus:
 
 - Hierfür ist Internet Explorer oder ein mit Microsoft ClickOnce kompatibler Webbrowser erforderlich.
 
-	Navigieren Sie bei Verwendung von Chrome zum [Chrome Web Store](https://chrome.google.com/webstore/), führen Sie eine Suche mit dem Begriff „ClickOnce“ durch, wählen Sie eine der ClickOnce-Erweiterungen aus, und installieren Sie sie.
+	Navigieren Sie bei Verwendung von Chrome zum [Chrome Web Store](https://chrome.google.com/webstore/), und suchen Sie nach „ClickOnce“. Wählen Sie eine der ClickOnce-Erweiterungen aus, und installieren Sie sie.
 	
 	Gehen Sie bei Firefox genauso vor (Installation des Add-Ins). Klicken Sie auf der Symbolleiste auf die Schaltfläche „Menü öffnen“ (drei waagerechte Striche oben rechts), klicken Sie auf „Add-Ons“, suchen Sie nach dem Stichwort „ClickOnce“, wählen Sie eine der ClickOnce-Erweiterungen aus, und installieren Sie sie.
 
-- Verwenden Sie den Link **Manuelles Setup**, der auf dem gleichen Blatt im Portal angezeigt wird, um die Installationsdatei herunterzuladen, und führen Sie sie manuell aus. Wenn die Installation abgeschlossen ist, wird das Dialogfeld für die Datenverwaltungsgateway-Konfiguration angezeigt. Kopieren Sie den **Schlüssel** vom Portalbildschirm, und verwenden Sie ihn im Konfigurations-Manager, um das Gateway manuell für den Dienst zu registrieren.
+- Verwenden Sie den Link **Manuelles Setup**, der auf dem gleichen Blatt im Portal angezeigt wird, um die Installationsdatei herunterzuladen, und führen Sie sie manuell aus. Wenn die Installation abgeschlossen ist, wird das Dialogfeld für die Datenverwaltungsgateway-Konfiguration angezeigt. Kopieren Sie den **Schlüssel** auf dem Portalbildschirm, und verwenden Sie ihn im Konfigurations-Manager, um das Gateway manuell für den Dienst zu registrieren.
 
 ### Problem: Fehler beim Herstellen einer Verbindung mit der lokalen SQL Server-Datenbank 
-Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager** auf dem Gatewaycomputer, und verwenden Sie die Registerkarte **Problembehandlung**, um die Verbindung mit SQL Server über den Gatewaycomputer zu testen. Details finden Sie unter [Problembehandlung bei Gateways](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting).
+Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager** auf dem Gatewaycomputer, und verwenden Sie die Registerkarte **Problembehandlung**, um die Verbindung mit SQL Server über den Gatewaycomputer zu testen. Ausführliche Informationen finden Sie unter [Problembehandlung bei Gateways](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting).
  
 
 ### Problem: Eingabeslices haben dauerhaft den Status „Waiting“
 
-Slices können den Status **Waiting** aus unterschiedlichen Gründen aufweisen. Zu den häufigsten Gründen zählt, dass die Eigenschaft **external** nicht auf **true** festgelegt ist. Ein Dataset, das außerhalb des Gültigkeitsbereichs von Azure Data Factory erstellt wird, sollte mit der Eigenschaft **external** gekennzeichnet sein. Dies bedeutet, dass es sich um externe Daten handelt, die nicht von Pipelines innerhalb der Data Factory unterstützt werden. Die Datenslices werden als **Ready** gekennzeichnet, sobald die Daten im entsprechenden Speicher verfügbar sind.
+Slices können sich aus unterschiedlichen Gründen im Zustand **Waiting** befinden. Zu den häufigsten Gründen zählt, dass die Eigenschaft **external** nicht auf **true** festgelegt ist. Ein Dataset, das außerhalb des Gültigkeitsbereichs von Azure Data Factory erstellt wird, sollte mit der Eigenschaft **external** gekennzeichnet sein. Dies bedeutet, dass es sich um externe Daten handelt, die nicht von Pipelines innerhalb der Data Factory unterstützt werden. Die Datenslices werden als **Ready** gekennzeichnet, sobald die Daten im entsprechenden Speicher verfügbar sind.
 
 Das folgende Beispiel zeigt die Verwendung der Eigenschaft **external**. Sie können optional **externalData*** angeben, wenn Sie "external" auf "true" festlegen.
 
@@ -102,20 +102,19 @@ Die ausführlichen Schritte finden Sie unter [Debuggen einer Pipeline mit benutz
 ## Verwenden des Azure-Portals zur Problembehandlung 
 
 ### Verwenden von Portalblättern
-Die Schritte finden Sie unter [Überwachen der Pipeline](data-factory-build-your-first-pipeline-using-editor.md#monitor-pipeline).
+Entsprechende Schritte finden Sie unter [Überwachen der Pipeline](data-factory-build-your-first-pipeline-using-editor.md#monitor-pipeline).
 
 ### Verwenden der App „Überwachung und Verwaltung“
-Details finden Sie unter [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md).
+Ausführliche Informationen finden Sie unter [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md).
 
 ## Verwenden von Azure PowerShell zur Problembehandlung
 
 ### Verwenden von Azure PowerShell zur Behandlung eines Fehlers  
-Details finden Sie unter [Überwachen von Data Factory-Pipelines mithilfe von Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md#monitor-pipeline).
+Ausführliche Informationen finden Sie unter [Überwachen von Data Factory-Pipelines mithilfe von Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md#monitor-pipeline).
 
 
-[adfgetstarted]: data-factory-get-started.md
+[adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [use-custom-activities]: data-factory-use-custom-activities.md
-[monitor-manage-using-powershell]: data-factory-monitor-manage-using-powershell.md
 [troubleshoot]: data-factory-troubleshoot.md
 [developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 [cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
@@ -144,4 +143,4 @@ Details finden Sie unter [Überwachen von Data Factory-Pipelines mithilfe von Az
 [image-data-factory-troubleshoot-activity-run-details]: ./media/data-factory-troubleshoot/Walkthrough2ActivityRunDetails.png
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

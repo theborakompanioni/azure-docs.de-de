@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="06/14/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Parallelitäts- und Workloadverwaltung in SQL Data Warehouse
@@ -26,7 +26,7 @@ In diesem Artikel werden die Konzepte der Parallelitäts- und Workloadverwaltung
 ## Parallelität
 Es ist wichtig zu verstehen, dass die Parallelität in SQL Data Warehouse auf zwei Konzepten beruht: **gleichzeitige Abfragen** und **Parallelitätsslots**.
 
-Gleichzeitige Abfragen stehen für die Anzahl von gleichzeitig ausgeführten Abfragen. SQL Data Warehouse unterstützt bis zu 32 **gleichzeitige Abfragen**. Jede Ausführung einer Abfrage zählt unabhängig davon als einzelne Abfrage, ob es sich um eine serielle Abfrage (Singlethread) oder eine parallele Abfrage (Multithread) handelt. Dies ist eine feste Obergrenze, die für alle Servicelevel und alle Abfragen gilt.
+Gleichzeitige Abfragen stehen für die Anzahl von gleichzeitig ausgeführten Abfragen. SQL Data Warehouse unterstützt bis zu 32 **gleichzeitige Abfragen**. Jede Ausführung einer Abfrage zählt unabhängig davon als einzelne Abfrage, ob es sich um eine serielle Abfrage (Singlethread) oder eine parallele Abfrage (Multithread) handelt. Dies ist eine feste Obergrenze, die für alle Servicelevel und alle Abfragen gilt.
 
 Bei Parallelitätsslots handelt es sich um ein dynamischeres Konzept, das sich auf das Servicelevelziel für die Data Warehouse-Einheit (DWU) Ihres Data Warehouse bezieht. Wenn Sie die Anzahl von DWUs erhöhen, die SQL Data Warehouse zugeordnet sind, werden mehr Serverressourcen zugewiesen. Bei einer Erhöhung der DWUs wird aber auch die Anzahl von verfügbaren **Parallelitätsslots** erhöht.
 
@@ -52,7 +52,7 @@ Die folgende Tabelle enthält die Grenzwerte für gleichzeitige Abfragen und Par
 | Max. Anzahl gleichzeitiger Abfragen | 32 | 32 | 32 | 32 | 32 | 32 | 32 | 32 | 32 | 32 |
 | Max. Parallelitätsslots | 4 | 8 | 12 | 16 | 20 | 24 | 40 | 48 | 60 | 80 |
 
-SQL Data Warehouse-Abfrageworkloads müssen innerhalb dieser Schwellenwerte liegen. Wenn mehr als 32 gleichzeitige Abfragen vorhanden sind oder wenn Sie die zulässige Anzahl von Parallelitätsslots überschreiten, wird die Abfrage in die Warteschlange eingereiht, bis beide Schwellenwerte eingehalten werden können.
+SQL Data Warehouse-Abfrageworkloads müssen innerhalb dieser Schwellenwerte liegen. Wenn mehr als 32 gleichzeitige Abfragen vorhanden sind oder wenn Sie die zulässige Anzahl von Parallelitätsslots überschreiten, wird die Abfrage in die Warteschlange eingereiht, bis beide Schwellenwerte eingehalten werden können.
 
 ## Workloadverwaltung
 
@@ -69,7 +69,7 @@ Ressourcenklassen sind ein wesentlicher Bestandteil der SQL Data Warehouse-Workl
 
 Standardmäßig ist jeder Benutzer Mitglied der kleinen Ressourcenklasse (smallrc). Aber jeder Benutzer kann einer oder mehreren höheren Ressourcenklassen hinzugefügt werden. Im Allgemeinen verwendet SQL Data Warehouse für die Ausführung der Abfrage die höchste Rollenmitgliedschaft. Wenn ein Benutzer einer höheren Ressourcenklasse hinzugefügt wird, wird die Anzahl der Ressourcen für den Benutzer erhöht, aber gleichzeitig werden auch größere Parallelitätsslots verbraucht. Dies kann zu einer Einschränkung der Parallelität führen. Dies liegt daran, dass der Ressourcenverbrauch anderer Benutzer begrenzt werden muss, wenn einer Abfrage mehr Ressourcen zugeordnet werden. Es werden quasi keine Almosen verteilt.
 
-Die wichtigste Ressource, die von der höheren Ressourcenklasse gesteuert wird, ist Arbeitsspeicher. Für die meisten Data Warehouse-Tabellen mit einer nennenswerten Größe werden ColumnStore-Clusterindizes verwendet. Dies ergibt für Data Warehouse-Workloads zwar normalerweise die beste Leistung, aber die Verwaltung ist ein speicherintensiver Vorgang. Häufig ist es sehr vorteilhaft, die höheren Ressourcenklassen für Datenverwaltungsvorgänge zu nutzen, z. B. Indexneuerstellungen.
+Die wichtigste Ressource, die von der höheren Ressourcenklasse gesteuert wird, ist Arbeitsspeicher. Für die meisten Data Warehouse-Tabellen mit einer nennenswerten Größe werden ColumnStore-Clusterindizes verwendet. Dies ergibt für Data Warehouse-Workloads zwar normalerweise die beste Leistung, aber die Verwaltung ist ein speicherintensiver Vorgang. Häufig ist es sehr vorteilhaft, die höheren Ressourcenklassen für Datenverwaltungsvorgänge zu nutzen, z. B. Indexneuerstellungen.
 
 SQL Data Warehouse hat Ressourcenklassen durch Verwendung von Datenbankrollen implementiert. Um Mitglied einer höheren Ressourcenklasse zu werden und Ihren Speicher und die Priorität zu erhöhen, fügen Sie Ihren Datenbankbenutzer einfach einer der oben erwähnten Rollen/Ressourcenklassen hinzu.
 
@@ -103,10 +103,10 @@ Die folgende Tabelle enthält die Details zur Erhöhung des Speichers, der für 
 
 | Verfügbarer Speicher (pro Dist.) | DW100 | DW200 | DW300 | DW400 | DW500 | DW600 | DW1000 | DW1200 | DW1500 | DW2000 |
 | :-------------------------- | :----  | :----- | :----- | :------ | :------ | :------ | :------ | :------ | :------ | :------ |
-| smallrc(default) (s) | 100 MB | 100 MB | 100 MB | 100 MB | 100 MB | 100 MB | 100 MB | 100 MB | 100 MB | 100 MB |
-| mediumrc (m) | 100 MB | 200 MB | 200 MB | 400 MB | 400 MB | 400 MB | 800 MB | 800 MB | 800 MB | 1\.600 MB |
-| largerc (l) | 200 MB | 400 MB | 400 MB | 800 MB | 800 MB | 800 MB | 1\.600 MB | 1\.600 MB | 1\.600 MB | 3\.200 MB |
-| xlargerc (xl) | 400 MB | 800 MB | 800 MB | 1\.600 MB | 1\.600 MB | 1\.600 MB | 3\.200 MB | 3\.200 MB | 3\.200 MB | 6\.400 MB |
+| smallrc(default) (s) | 100 MB | 100 MB | 100 MB | 100 MB | 100 MB | 100 MB | 100 MB | 100 MB | 100 MB | 100 MB |
+| mediumrc (m) | 100 MB | 200 MB | 200 MB | 400 MB | 400 MB | 400 MB | 800 MB | 800 MB | 800 MB | 1\.600 MB |
+| largerc (l) | 200 MB | 400 MB | 400 MB | 800 MB | 800 MB | 800 MB | 1\.600 MB | 1\.600 MB | 1\.600 MB | 3\.200 MB |
+| xlargerc (xl) | 400 MB | 800 MB | 800 MB | 1\.600 MB | 1\.600 MB | 1\.600 MB | 3\.200 MB | 3\.200 MB | 3\.200 MB | 6\.400 MB |
 
 ### Verbrauch von Parallelitätsslots
 
@@ -369,7 +369,7 @@ UserConcurrencyResourceType bezieht sich auf Abfragen, die sich innerhalb des Pa
 
 DmsConcurrencyResourceType bezieht sich auf Wartezeiten, die sich aufgrund von Datenverschiebungen ergeben.
 
-BackupConcurrencyResourceType tritt auf, wenn eine Datenbank gesichert wird. Der maximale Wert für diesen Ressourcentyp ist 1. Wenn mehrere Sicherungen gleichzeitig angefordert werden, werden die restlichen in die Warteschlange eingereiht.
+BackupConcurrencyResourceType tritt auf, wenn eine Datenbank gesichert wird. Der maximale Wert für diesen Ressourcentyp ist 1. Wenn mehrere Sicherungen gleichzeitig angefordert werden, werden die restlichen in die Warteschlange eingereiht.
 
 
 Verwenden Sie die DMV `sys.dm_pdw_waits`, wenn Sie mit einer Analyse der derzeit in der Warteschlange befindlichen Abfragen ermitteln möchten, auf welche Ressourcen eine Abfrage wartet.
@@ -455,4 +455,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0629_2016-->

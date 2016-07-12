@@ -63,7 +63,7 @@ Im Anschluss folgen einige wichtige Informationen zu den Komponenten des obigen 
 • Nach der Authentifizierung eines Benutzers muss die Anwendung das Sicherheitstoken des Benutzers überprüfen, um sicherzustellen, dass die Authentifizierung der betreffenden Parteien erfolgreich war. Mithilfe der bereitgestellten Authentifizierungsbibliotheken können Entwickler die Validierung beliebiger Token von Azure AD behandeln – einschließlich JSON-Webtoken (JWT) und SAML 2.0. Informationen zum Durchführen einer manuellen Überprüfung finden Sie in der Dokumentation für den [JWT-Tokenhandler](https://msdn.microsoft.com/library/dn205065.aspx).
 
 
-> [AZURE.IMPORTANT] Azure AD verwendet die Verschlüsselung mit öffentlichem Schlüssel, um Token zu signieren und deren Gültigkeit zu überprüfen. Weitere Informationen zur Logik, die in Ihrer Anwendung enthalten sein muss, damit diese immer mit den neuesten Schlüsseln aktualisiert wird, finden Sie unter [Wichtige Informationen zum Signaturschlüsselrollover in Azure AD](https://msdn.microsoft.com/library/azure/dn641920.aspx).
+> [AZURE.IMPORTANT] Azure AD verwendet die Verschlüsselung mit öffentlichem Schlüssel, um Token zu signieren und deren Gültigkeit zu überprüfen. Weitere Informationen zur Logik, die in Ihrer Anwendung enthalten sein muss, damit diese immer mit den neuesten Schlüsseln aktualisiert wird, finden Sie unter [Wichtige Informationen zum Signaturschlüsselrollover in Azure AD](active-directory-signing-key-rollover.md).
 
 
 • Der Fluss von Anforderungen und Antworten für den Authentifizierungsprozess ergibt sich aus dem verwendeten Authentifizierungsprotokoll (etwa OAuth 2.0, OpenID Connect, WS-Federation oder SAML 2.0). Diese Protokolle werden im Thema [Azure Active Directory-Authentifizierungsprotokolle](active-directory-authentication-protocols.md) sowie in den folgenden Abschnitten ausführlicher behandelt.
@@ -464,8 +464,8 @@ Wenn die erste Anwendung mithilfe ihres Autorisierungscodes ein JWT-Zugriffstoke
 
 [Azure Active Directory-Codebeispiele](active-directory-code-samples.md)
 
-[Wichtige Informationen zum Signaturschlüsselrollover in Azure AD](https://msdn.microsoft.com/library/azure/dn641920.aspx)
+[Wichtige Informationen zum Signaturschlüsselrollover in Azure AD](active-directory-signing-key-rollover.md)
 
 [OAuth 2.0 in Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

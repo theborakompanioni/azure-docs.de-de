@@ -18,7 +18,7 @@
 
 # Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API
 
-Wenn Sie Softwareentwickler sind, der eine App in Azure integrieren oder Azure-Ressourcen von Kunden verwalten möchte, erhalten Sie in diesem Thema Informationen zur Authentifizierung mit den Azure Resource Manager-APIs.
+Wenn Sie Softwareentwickler sind und eine App in Azure integrieren oder Azure-Ressourcen von Kunden verwalten möchten, erhalten Sie in diesem Thema Informationen zur Authentifizierung mit den Azure Resource Manager-APIs.
 
 Ihre App kann auf die Resource Manager-APIs auf verschiedene Arten zugreifen:
 
@@ -31,8 +31,8 @@ Sie erstellen eine Webanwendung für folgende Aufgaben:
 
 1. Einen Azure-Benutzer anmelden
 2. Resource Manager für den Benutzer abfragen (Benutzer- und App-Zugriff), um eine Liste der Azure-Abonnements zu erhalten, die der Benutzer besitzt
-3. Dem Benutzer ermöglichen, Abonnements mit der App zu „verbinden“, und dabei für die Anwendung direkten Zugriff auf das Abonnement gewähren
-4. Als die Anwendung auf Resource Manager zugreifen, um Offlinevorgänge auszuführen (nur App-Zugriff)
+3. Dem Benutzer ermöglichen, Abonnements mit der App zu „verbinden“, und dabei der Anwendung direkten Zugriff auf das Abonnement gewähren
+4. Über die Anwendung auf Resource Manager zugreifen, um Offlinevorgänge auszuführen (nur App-Zugriff)
 
 Im Folgenden ist der komplette Datenfluss in der Webanwendung dargestellt, die Sie schreiben.
 
@@ -86,19 +86,19 @@ Sie beginnen an dem Punkt, an dem der Benutzer entscheidet, sein Azure-Abonnemen
 
 Sie müssen den Benutzer um zwei Dinge bitten:
 
-1. **Verzeichnisdomänenname**: Der Domänenname des Azure Active Directory-Verzeichnisses, das mit dem Azure-Abonnement des Benutzers verknüpft ist. Die OAuth 2.0-Autorisierungsanforderung muss an dieses Azure AD-Verzeichnis gesendet werden. Der Benutzer kann den Azure AD-Domänennamen ermitteln, indem er zum Azure-Portal navigiert und das Konto oben rechts auswählt. Sie könnten dem Benutzer visuelle Hinweise wie den folgenden bereitstellen: 
+1. **Verzeichnisdomänenname**: Der Domänenname des Azure Active Directory-Verzeichnisses, das mit dem Azure-Abonnement des Benutzers verknüpft ist. Die OAuth 2.0-Autorisierungsanforderung muss an dieses Azure AD-Verzeichnis gesendet werden. Der Benutzer kann den Azure AD-Domänennamen ermitteln, indem er zum Azure-Portal navigiert und das Konto oben rechts auswählt. Sie könnten dem Benutzer visuelle Hinweise wie den folgenden bereitstellen:
 
      ![](./media/resource-manager-api-authentication/show-directory.png)
    
-1. **Microsoft-Konto oder Geschäftskonto**: Bestimmen Sie, ob der Benutzer sein eigenes Azure-Abonnement mit einem Microsoft-Konto (wird auch als Live-ID bezeichnet) oder einem Geschäftskonto (auch bekannt als Organisationskonto) verwaltet. Bei einem Microsoft-Konto leitet die Anwendung den Benutzer mit einem Abfragezeichenfolgen-Parameter (&domain\_hint=live.com), der Azure AD anweist, den Benutzer direkt zur Anmeldeseite für das Microsoft-Konto weiterzuleiten, zur Azure Active Directory-Anmeldeseite weiter. Autorisierungscode und -token, die Sie für beide Kontotypen erhalten, werden auf die gleiche Weise verarbeitet.
+1. **Microsoft-Konto oder Geschäftskonto**: Bestimmen Sie, ob der Benutzer sein eigenes Azure-Abonnement mit einem Microsoft-Konto (wird auch als Live-ID bezeichnet) oder einem Geschäftskonto (auch bekannt als Organisationskonto) verwaltet. Bei einem Microsoft-Konto leitet die Anwendung den Benutzer zur Azure Active Directory-Anmeldeseite weiter. Dies erfolgt, indem ein Abfragezeichenfolgen-Parameter (&domain\_hint=live.com) Azure AD anweist, den Benutzer direkt zur Anmeldeseite für das Microsoft-Konto weiterzuleiten. Autorisierungscode und -token, die Sie für beide Kontotypen erhalten, werden auf die gleiche Weise verarbeitet.
 
-Die Anwendung leitet dann den Benutzer mit einer OAuth 2.0-Autorisierungsanforderung zu Azure AD weiter, um die Anmeldeinformationen des Benutzers zu authentifizieren und einen Autorisierungscode zu erhalten. Die Anwendung verwendet den Autorisierungscode, um ein Zugriffstoken für Resource Manager erhalten.
+Die Anwendung leitet dann den Benutzer mit einer OAuth 2.0-Autorisierungsanforderung zu Azure AD weiter, um die Anmeldeinformationen des Benutzers zu authentifizieren und einen Autorisierungscode zu erhalten. Die Anwendung verwendet den Autorisierungscode, um ein Zugriffstoken für Resource Manager zu erhalten.
 
 ### Autorisierungsanforderung (OAuth 2.0)
 
 Geben Sie eine Open ID Connect/OAuth2.0-Autorisierungsanforderung an den Azure AD-Autorisierungsendpunkt aus:
 
-    http://login.microsoftonline.com/{directory_domain_name}/OAuth2/Authorize
+    https://login.microsoftonline.com/{directory_domain_name}/OAuth2/Authorize
 
 Die Abfragezeichenfolgen-Parameter, die für diese Anforderung verfügbar sind, werden im Thema [Authorization Code Grant Flow](https://msdn.microsoft.com/library/azure/dn645542.aspx) (Datenfluss für Autorisierungscodeberechtigungen) beschrieben.
 
@@ -125,7 +125,7 @@ Abfragezeichenfolgen-Parameter der OAuth2.0-Autorisierungsanforderung:
 | resource | URL-codierter Bezeichner von Azure-Dienstverwaltungs-APIs: https://management.core.windows.net/ |
 | Bereich | openid+profile
 | nonce | Datenelement, um die Autorisierungsanforderung mit dem zurückgegebenen „id\_token“ zu verknüpfen, um sicherzustellen, dass die Autorisierungsantwort angefordert wurde und nicht wiedergegeben wird.
-| domain\_hint | live.com <br />**Hinweis**: Verwenden Sie den domain\_hint-Parameter nur, wenn der Benutzer das Azure-Abonnement mit einem Microsoft-Konto verwaltet.
+| domain\_hint | live.com <br />**Hinweis:** Verwenden Sie den domain\_hint-Parameter nur, wenn der Benutzer das Azure-Abonnement mit einem Microsoft-Konto verwaltet.
 | state | Geben Sie optional Statusdaten an, die Azure AD mit der Antwort zurückgegeben soll.
 
 Beispiel für eine Open ID Connect-Anforderung:
@@ -140,13 +140,13 @@ Beispiel für eine Open ID Connect-Antwort:
 
 ### Überprüfen von „id\_token“
 
-Bevor die Anwendung den Benutzer anmeldet, muss „id\_token“ überprüft werden. Die Tokenüberprüfung ist ein komplexes Thema, und Sie sollten eine Standardbibliothek für JSON-Webtoken-Handler für Ihre Entwicklungsplattform verwenden (Informationen finden Sie im [Quellcode des .NET Azure AD-JWT-Handlers](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/System.IdentityModel.Tokens.Jwt/JwtSecurityTokenHandler.cs)). Sie sind für die Sicherheit der Anwendung verantwortlich. Stellen Sie also sicher, dass die Bibliothek, die Sie für die Verarbeitung von „id\_token“ verwenden, ordnungsgemäß die folgenden Aspekte des Tokens überprüft:
+Bevor die Anwendung den Benutzer anmeldet, muss „id\_token“ überprüft werden. Die Tokenüberprüfung ist ein komplexes Thema, und es empfiehlt sich, für die Entwicklungsplattform eine Standardbibliothek für JSON-Webtoken-Handler zu verwenden. (Informationen finden Sie im [Quellcode des .NET Azure AD-JWT-Handlers](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/System.IdentityModel.Tokens.Jwt/JwtSecurityTokenHandler.cs).) Sie sind für die Sicherheit der Anwendung verantwortlich. Stellen Sie also sicher, dass die Bibliothek, die Sie für die Verarbeitung von „id\_token“ verwenden, ordnungsgemäß die folgenden Aspekte des Tokens überprüft:
 
-- **Zeitliche Steuerung des Tokens**: Überprüfen Sie die nbf- und exp-Ansprüche, um sicherzustellen, dass das Token nicht zu aktuell oder zu alt ist. Es ist üblich, Pufferzeit (5 Minuten) einzuplanen, um Zeitabweichungen zu berücksichtigen.
-- **Aussteller**: Überprüfen Sie den iss-Anspruch, um sicherzustellen, dass Azure Active Directory der Aussteller des Tokens ist: https://sts.windows.net/{tenant_id_of_the_directory}
-- **Zielgruppe**: Überprüfen Sie den aud-Anspruch, um sicherzustellen, dass das Token für die Anwendung vorgesehen ist. Der Wert muss die Client-ID der Anwendung sein.
-- **Nonce**: Überprüfen Sie den nonce-Anspruch, um die nonce-Daten mit denen abzugleichen, die Sie in der Autorisierungsanforderung gesendet haben. So können Sie sicherstellen, dass die Antwort von der Anwendung angefordert wurde und dass das Token nicht wiedergegeben wird.
-- **Signatur**: Ihre App muss überprüfen, ob das Token von Azure Active Directory signiert wurde. Azure AD-Signaturschlüssel werden häufig zurückgesetzt. Ihre App muss also täglich aktualisierte Schlüssel abrufen oder die aktualisierten Schlüssel laden, wenn die Überprüfung der Signatur fehlschlägt. Weitere Informationen finden Sie unter [Wichtige Informationen zum Signaturschlüsselrollover in Azure AD](https://msdn.microsoft.com/library/azure/dn641920.aspx).
+- **Timing des Tokens**: Vergewissern Sie sich anhand der nbf- und exp-Ansprüche, dass das Token nicht zu neu oder zu alt ist. Es ist üblich, Pufferzeit (5 Minuten) einzuplanen, um Zeitabweichungen zu berücksichtigen.
+- **Aussteller**: Vergewissern Sie sich anhand des iss-Anspruchs, dass Azure Active Directory der Aussteller des Tokens ist: https://sts.windows.net/{tenant_id_of_the_directory}
+- **Zielgruppe**: Vergewissern Sie sich anhand des aud-Anspruchs, dass das Token für die Anwendung vorgesehen ist. Der Wert muss die Client-ID der Anwendung sein.
+- **Nonce**: Überprüfen Sie den Nonce-Anspruch, um die Nonce-Daten mit den Daten abzugleichen, die Sie in der Autorisierungsanforderung gesendet haben. So können Sie sich vergewissern, dass die Antwort von der Anwendung angefordert wurde und es sich nicht um ein Token-Replay handelt.
+- **Signatur**: Ihre App muss überprüfen, ob das Token von Azure Active Directory signiert wurde. Azure AD-Signaturschlüssel werden häufig zurückgesetzt. Ihre App muss also täglich aktualisierte Schlüssel abrufen oder die aktualisierten Schlüssel laden, wenn die Überprüfung der Signatur fehlschlägt. Weitere Informationen finden Sie unter [Wichtige Informationen zum Signaturschlüsselrollover in Azure AD](active-directory/active-directory-signing-key-rollover.md).
 
 Nachdem **id\_token** überprüft wurde, verwenden Sie den Wert des oid-Anspruchs als unveränderlichen und nicht wiederverwendbaren Bezeichner des Benutzers. Verwenden Sie entweder den **unique\_name**-Anspruch oder den upn/email-Anspruch als für Menschen lesbaren Anzeigenamen des Benutzers. Sie können auch die optionalen Ansprüche „given\_name“ und „family\_name“ für Anzeigezwecke verwenden.
 
@@ -154,7 +154,7 @@ Nachdem **id\_token** überprüft wurde, verwenden Sie den Wert des oid-Anspruch
 
 Nachdem die Anwendung den Autorisierungscode von Azure AD erhalten hat, ist es an der Zeit, das Zugriffstoken für Azure Resource Manager abzurufen. Senden Sie eine Anforderung für ein OAuth2.0-Codeberechtigungstoken an den Azure AD-Tokenendpunkt:
 
-    http://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token
+    https://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token
 
 Die Abfragezeichenfolgen-Parameter, die für diese Anforderung verfügbar sind, werden im Thema [Authorization Code Grant Flow](https://msdn.microsoft.com/library/azure/dn645542.aspx) (Datenfluss für Autorisierungscodeberechtigungen) beschrieben.
 
@@ -169,7 +169,7 @@ Das folgende Beispiel zeigt eine Anforderung für ein Codeberechtigungstoken mit
 
 Wenn Sie Zertifikatanmeldeinformationen verwenden, erstellen Sie ein JSON-Webtoken (JWT), und signieren Sie (RSA-SHA256) mit dem privaten Schlüssel der Zertifikatanmeldeinformationen Ihrer Anwendung. Die Anspruchstypen für das Token werden unter [Authorization Code Grant Flow](https://msdn.microsoft.com/library/azure/dn645542.aspx) (Datenfluss für Autorisierungscodeberechtigungen) dargestellt. Informationen zum Signieren von JWT-Token für die Clientassertion finden Sie im [Code der Active Directory Authentication Library (.NET)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/master/src/ADAL.NET/CryptographyHelper.cs).
 
-Informationen zur Clientauthentifizierung finden Sie in der [Open ID Connect-Spezifikation](http://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). Hier ist ein [Beispiel für ein JWT-Token für die Clientassertion](https://www.authnauthz.com/OAuth/ParseJWTToken?token=eyJhbGciOiJSUzI1NiIsIng1dCI6IlFwcXdKZnJNZ003ekJ4M1hkM2NSSFdkYVFsTSJ9.eyJhdWQiOiJodHRwczpcL1wvbG9naW4ud2luZG93cy5uZXRcL2FhbHRlc3RzLm9ubWljcm9zb2Z0LmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTQyODk2Mjk5MSwiaXNzIjoiOTA4M2NjYjgtOGE0Ni00M2U3LTg0MzktMWQ2OTZkZjk4NGFlIiwianRpIjoiMmYyMjczMzQtZGQ3YS00NzZkLWFlOTYtYzg4NDQ4YTkxZGM0IiwibmJmIjoxNDI4OTYyMzkxLCJzdWIiOiI5MDgzY2NiOC04YTQ2LTQzZTctODQzOS0xZDY5NmRmOTg0YWUifQ.UXQE9H-FlwxYQmRVG0-p7pAX9TFgiRXcYr7GhbcC7ndIPHKpZ5tfHWPEgBl3ZVRvF2l8uA7HEV86T7t2w7OHhHwLBoW7XTgj-17hnV1CY21MwjrebPjaPIVITiilekKiBASfW2pmss3MjeOYcnBV2MuUnIgt4A_iUbF_-opRivgI4TFT4n17_3VPlChcU8zJqAMpt3TcAxC3EXXfh10Mw0qFfdZKqQOQxKHjnL8y7Of9xeB9BBD_b22JNRv0m7s0cYRx2Cz0cUUHw-ipHhWaW7YwhVRMfK6BMkaDUgaie4zFkcgHb7rm1z0rM1CvzIqP-Mwu3oEqYpY9cYo8nEjMyA).
+Informationen zur Clientauthentifizierung finden Sie in der [Open ID Connect-Spezifikation](http://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). Ein Beispiel für ein JWT-Token für die Clientassertion finden Sie [hier](https://www.authnauthz.com/OAuth/ParseJWTToken?token=eyJhbGciOiJSUzI1NiIsIng1dCI6IlFwcXdKZnJNZ003ekJ4M1hkM2NSSFdkYVFsTSJ9.eyJhdWQiOiJodHRwczpcL1wvbG9naW4ud2luZG93cy5uZXRcL2FhbHRlc3RzLm9ubWljcm9zb2Z0LmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTQyODk2Mjk5MSwiaXNzIjoiOTA4M2NjYjgtOGE0Ni00M2U3LTg0MzktMWQ2OTZkZjk4NGFlIiwianRpIjoiMmYyMjczMzQtZGQ3YS00NzZkLWFlOTYtYzg4NDQ4YTkxZGM0IiwibmJmIjoxNDI4OTYyMzkxLCJzdWIiOiI5MDgzY2NiOC04YTQ2LTQzZTctODQzOS0xZDY5NmRmOTg0YWUifQ.UXQE9H-FlwxYQmRVG0-p7pAX9TFgiRXcYr7GhbcC7ndIPHKpZ5tfHWPEgBl3ZVRvF2l8uA7HEV86T7t2w7OHhHwLBoW7XTgj-17hnV1CY21MwjrebPjaPIVITiilekKiBASfW2pmss3MjeOYcnBV2MuUnIgt4A_iUbF_-opRivgI4TFT4n17_3VPlChcU8zJqAMpt3TcAxC3EXXfh10Mw0qFfdZKqQOQxKHjnL8y7Of9xeB9BBD_b22JNRv0m7s0cYRx2Cz0cUUHw-ipHhWaW7YwhVRMfK6BMkaDUgaie4zFkcgHb7rm1z0rM1CvzIqP-Mwu3oEqYpY9cYo8nEjMyA).
 
 Das folgende Beispiel zeigt eine Anforderung für ein Codeberechtigungstoken mit Zertifikatanmeldeinformationen:
 
@@ -190,7 +190,7 @@ Eine Beispielantwort für ein Codeberechtigungstoken:
 
 Eine erfolgreiche Antwort enthält das Zugriffstoken (Benutzer und App) für Azure Resource Manager. Ihre Anwendung verwendet dieses Zugriffstoken, um für den Benutzer auf Resource Manager zuzugreifen. Die Lebensdauer des von Azure AD ausgestellten Zugriffstokens beträgt eine Stunde. Es ist unwahrscheinlich, dass Ihre Webanwendung das Zugriffstoken (Benutzer und App) erneuern muss. Ist dies jedoch der Fall, können Sie das Aktualisierungstoken verwenden, das die Anwendung in der Tokenantwort empfängt. Senden Sie eine Anforderung für ein OAuth2.0-Token an den Azure AD-Tokenendpunkt:
 
-    http://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token
+    https://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token
 
 Die Parameter für die Aktualisierungsanforderung sind unter [Authorization Code Grant-Datenfluss](https://msdn.microsoft.com/library/azure/dn645542.aspx) (Datenfluss für Autorisierungscodeberechtigungen) beschrieben.
 
@@ -209,7 +209,7 @@ Beachten Sie, dass Sie zwar mit Aktualisierungstoken neue Zugriffstoken für Azu
 
 Ihre Anwendung verfügt jetzt über ein Token, um für den Benutzer auf Azure Resource Manager zuzugreifen.
 
-Der nächste Schritt ist, dem Benutzer zu ermöglichen, sein Azure-Abonnement mit Ihrer App zu verbinden, damit Ihre App diese Abonnements verwalten kann, selbst wenn der Benutzer nicht erreichbar ist (langfristiger Offlinezugriff). Zeigen Sie dem Benutzer die Liste der Azure-Abonnements an, für die der Benutzer den Zugriff verwalten kann, und ermöglichen Sie es dem Benutzer, eine RBAC-Rolle direkt zur Identität Ihrer Anwendung zuweisen.
+Der nächste Schritt ist, dem Benutzer zu ermöglichen, sein Azure-Abonnement mit Ihrer App zu verbinden, damit Ihre App diese Abonnements verwalten kann, selbst wenn der Benutzer nicht erreichbar ist (langfristiger Offlinezugriff). Zeigen Sie dem Benutzer die Liste der Azure-Abonnements an, für die der Benutzer den Zugriff verwalten kann, und ermöglichen Sie es dem Benutzer, der Identität Ihrer Anwendung direkt eine RBAC-Rolle zuzuweisen.
 
 ![ARM-Autorisierung – Beispiel-App-UX 4](./media/resource-manager-api-authentication/ARM-Auth-Sample-App-Ux-4-full.png)
 
@@ -249,7 +249,7 @@ Beispiel für die Antwort beim Abrufen der Berechtigungen eines Benutzers für e
 
     {"value":[{"actions":["*"],"notActions":["Microsoft.Authorization/*/Write","Microsoft.Authorization/*/Delete"]},{"actions":["*/read"],"notActions":[]}]}
 
-Die API für Berechtigungen gibt mehrere Berechtigungen zurück. Jede Berechtigung besteht aus zulässigen Aktionen (actions) und nicht zulässigen Aktionen (notactions). Wenn eine Aktion in der Liste der zulässigen Aktionen für eine Berechtigung vorhanden ist und in der Liste „notactions“ für diese Berechtigung nicht vorhanden ist, darf der Benutzer diese Aktion durchführen. **microsoft.authorization/roleassignments/write** ist die Aktion, mit der Zugriffsverwaltungsrechte gewährt werden. Ihre Anwendung muss das Ergebnis für die Berechtigungen analysieren und nach einem übereinstimmenden regulären Ausdruck für diese Aktionszeichenfolge in den zulässigen und nicht zulässigen Aktionen der einzelnen Berechtigungen suchen.
+Die API für Berechtigungen gibt mehrere Berechtigungen zurück. Jede Berechtigung besteht aus zulässigen Aktionen (actions) und nicht zulässigen Aktionen (notactions). Wenn eine Aktion in der Liste der zulässigen Aktionen für eine Berechtigung vorhanden und in der Liste „notactions“ für diese Berechtigung nicht vorhanden ist, darf der Benutzer diese Aktion durchführen. **microsoft.authorization/roleassignments/write** ist die Aktion, mit der Zugriffsverwaltungsrechte gewährt werden. Ihre Anwendung muss das Ergebnis für die Berechtigungen analysieren und nach einem übereinstimmenden regulären Ausdruck für diese Aktionszeichenfolge in den zulässigen und nicht zulässigen Aktionen der einzelnen Berechtigungen suchen.
 
 ### Optional: Auflisten von Verzeichnissen, in denen das Benutzerkonto vorhanden ist
 
@@ -273,7 +273,7 @@ Eine Beispielantwort zum Auflisten von Verzeichnissen:
 
 ## Verbinden des Abonnements mit der Anwendung
 
-Sie verfügen nun über eine Liste der Azure-Abonnements, die der Benutzer mit der Anwendung verbinden kann. Der nächste Schritt ist, dem Benutzer einen Befehl bereitzustellen, um die Verbindung zu erstellen. Wenn der Benutzer **Verbinden** auswählt, führt Ihre App Folgendes aus:
+Sie verfügen nun über eine Liste der Azure-Abonnements, die der Benutzer mit der Anwendung verbinden kann. Der nächste Schritt ist, dem Benutzer einen Befehl bereitzustellen, um die Verbindung zu erstellen. Wenn der Benutzer **Verbinden** auswählt, führt Ihre App folgende Schritte durch:
 
 1. Sie weist der Anwendungsidentität die entsprechende RBAC-Rolle für das Abonnement zu.
 2. Sie überprüft die Zugriffszuweisung, indem die Anwendungsberechtigung für das Abonnement abgefragt wird oder indem mit dem nur für die App geltenden Token auf Resource Manager zugegriffen wird.
@@ -291,9 +291,9 @@ Sie haben nur ein Zugriffstoken für Azure Resource Manager. Sie benötigen ein 
 <a id="app-azure-ad-graph">
 ### Abrufen eines nur für die App geltenden Zugriffstokens für die Azure AD Graph-API
 
-Geben Sie zum Authentifizieren Ihrer App und zum Abrufen eines Tokens für die Azure AD Graph-API im OAuth2.0-Datenfluss eine Tokenanforderung zur Gewährung von Clientanmeldeinformationen an den Azure AD-Tokenendpunkt aus (**http://login.microsoftonline.com/{directory\_domain\_name}/OAuth2/Token**).
+Geben Sie zum Authentifizieren Ihrer App und zum Abrufen eines Tokens für die Azure AD Graph-API im OAuth2.0-Datenfluss eine Tokenanforderung zur Gewährung von Clientanmeldeinformationen an den Azure AD-Tokenendpunkt aus (**https://login.microsoftonline.com/{directory\_domain\_name}/OAuth2/Token**).
 
-Die Zeilen 73 bis 77 der [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs#L73)-Methode der ASP.NET MVC-Beispielanwendung rufen ein nur für die App geltendes Zugriffstoken für die Graph-API mithilfe der Active Directory Authentication Library für .NET ab.
+Die Zeilen 73 bis 77 der [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs#L73)-Methode der ASP.NET MVC-Beispielanwendung rufen unter Verwendung der Active Directory Authentication Library für .NET ein nur für die App geltendes Zugriffstoken für die Graph-API ab.
 
 Die Daten der Tokenanforderung zur Gewährung von Clientanmeldeinformationen:
 
@@ -301,7 +301,7 @@ Die Daten der Tokenanforderung zur Gewährung von Clientanmeldeinformationen:
 |----|----
 | grant\_type | **client\_credentials**
 | client\_id | Client-ID der Anwendung
-| resource | URL-codierter Bezeichner der Ressource, für die das Zugriffstoken angefordert wird. In diesem Fall ist der Bezeichner die Azure AD Graph-API: **https://graph.windows.net/**
+| resource | URL-codierter Bezeichner der Ressource, für die das Zugriffstoken angefordert wird. In diesem Fall der Bezeichner der Azure AD Graph-API: **https://graph.windows.net/**
 | client\_secret oder client\_assertion\_type und client\_assertion | Wenn Ihre Anwendung ein Kennwort verwendet, verwenden Sie „client\_secret“. Wenn Ihre Anwendung ein Zertifikat verwendet, verwenden Sie „client\_assertion“.
 
 Beispielanforderung für ein Token zur Gewährung von Clientanmeldeinformationen:
@@ -344,11 +344,11 @@ Die richtige RBAC-Rolle für Ihre Anwendung:
 - Wenn Ihre Anwendung das Abonnement nur überwacht, ohne Änderungen vorzunehmen, sind für das Abonnement nur Leseberechtigungen erforderlich. Weisen Sie die Rolle **Leser** zu.
 - Wenn Ihre Anwendung das Azure-Abonnement verwaltet und Entitäten erstellt/ändert/löscht, sind die Berechtigungen eines Mitwirkenden erforderlich.
   - Um einen bestimmten Typ von Ressourcen zu verwalten, weisen Sie die ressourcenspezifischen Rollen für Mitwirkende zu (Mitwirkender von virtuellen Computern, Mitwirkender von virtuellem Netzwerk, Speicherkontomitwirkender usw.)
-  - Um einen beliebigen Ressourcentyp zu verwalten, weisen die Rolle **Mitwirkender** zu.
+  - Weisen die Rolle **Mitwirkender** zu, um einen beliebigen Ressourcentyp zu verwalten.
 
 Die Rollenzuweisung für die Anwendung wird den Benutzern angezeigt, wählen Sie also nur die mindestens erforderlichen Berechtigungen aus.
 
-Rufen Sie die [Resource Manager-API für die Rollendefinition](https://msdn.microsoft.com/library/azure/dn906879.aspx) zum Auflisten aller Azure-RBAC-Rollen auf. Durchsuchen Sie dann das Ergebnis, um die gewünschte Rollendefinition anhand des Namens zu suchen.
+Rufen Sie die [Resource Manager-API für die Rollendefinition](https://msdn.microsoft.com/library/azure/dn906879.aspx) zum Auflisten aller Azure-RBAC-Rollen auf. Durchsuchen Sie dann das Ergebnis, um die gewünschte Rollendefinition anhand des Namens zu ermitteln.
 
 Die [GetRoleId](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L354)-Methode der ASP.NET MVC-Beispiel-App implementiert diesen Aufruf.
 
@@ -384,7 +384,7 @@ Dies sind die bekannten GUIDs der häufig verwendeten integrierten Rollen:
 
 ### Zuweisen der RBAC-Rolle zur Anwendung
 
-Sie haben alles Nötige, um für das ausgewählte Abonnement mithilfe der [Resource Manager-API zum Erstellen einer Rollenzuweisung](https://msdn.microsoft.com/library/azure/dn906887.aspx) dem Dienstprinzipalnamen Ihrer Anwendung die entsprechende RBAC-Rolle zuzuweisen.
+Sie haben alles, was Sie benötigen, um dem Dienstprinzipal Ihrer Anwendung unter dem ausgewählten Abonnement mithilfe der [Resource Manager-API zum Erstellen einer Rollenzuweisung](https://msdn.microsoft.com/library/azure/dn906887.aspx) die passende RBAC-Rolle zuzuweisen.
 
 Die [GrantRoleToServicePrincipalOnSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L269)-Methode der ASP.NET MVC-Beispiel-App implementiert diesen Aufruf.
 
@@ -417,15 +417,15 @@ Die Antwort hat folgendes Format:
 
 Im nächsten Schritt überprüfen Sie, ob die App über den gewünschten Zugriff auf das Abonnement verfügt. Dazu sollten Sie eine Testaufgabe für das Abonnement mit einem nur für die App geltenden Token für Azure Resource Manager durchführen. Mit der Testaufgabe sollte überprüft werden, ob die Anwendung tatsächlich den gewünschten Zugriff auf das Abonnement hat, um die Offlineüberwachung/-verwaltung auszuführen.
 
-Um ein nur für die App geltendes Zugriffstoken für Azure Resource Manager zu erhalten, befolgen Sie die Anweisungen im Abschnitt [Abrufen eines nur für die App geltenden Zugriffstokens für die Azure AD Graph-API](#app-azure-ad-graph) mit einem anderen Wert für den Ressourcenparameter:
+Befolgen Sie die Anweisungen im Abschnitt [Abrufen eines nur für die App geltenden Zugriffstokens für die Azure AD Graph-API](#app-azure-ad-graph), und verwenden Sie dabei einen anderen Wert für den Ressourcenparameter, um ein nur für die App geltendes Zugriffstoken für Azure Resource Manager zu erhalten:
 
     https://management.core.windows.net/
 
-Die Zeilen 210 bis 214 der [ServicePrincipalHasReadAccessToSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L203)-Methode der ASP.NET MVC-Beispielanwendung rufen ein nur für die App geltendes Zugriffstoken für Azure Resource Manager mithilfe der Active Directory Authentication Library für .NET ab
+Die Zeilen 210 bis 214 der [ServicePrincipalHasReadAccessToSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L203)-Methode der ASP.NET MVC-Beispielanwendung rufen unter Verwendung der Active Directory Authentication Library für .NET ein nur für die App geltendes Zugriffstoken für Azure Resource Manager ab.
 
 #### Abrufen der Berechtigungen für die Anwendung für das Abonnement
 
-Um zu überprüfen, ob die Anwendung den gewünschten Zugriff auf ein Azure-Abonnement hat, können Sie auch die [Resource Manager-API für Berechtigungen](https://msdn.microsoft.com/library/azure/dn906889.aspx) aufrufen, ähnlich wie beim Bestimmen, ob der Benutzer über Zugriffsverwaltungsrechte für das Abonnement verfügt. Rufen Sie jedoch dieses Mal die Berechtigungs-API mit dem nur für die App geltenden Token auf, das Sie im vorherigen Schritt erhalten haben.
+Um zu überprüfen, ob die Anwendung den gewünschten Zugriff auf ein Azure-Abonnement hat, können Sie auch die [Resource Manager-API für Berechtigungen](https://msdn.microsoft.com/library/azure/dn906889.aspx) aufrufen – ähnlich wie bei der Vorgehensweise zum Bestimmen, ob der Benutzer über Zugriffsverwaltungsrechte für das Abonnement verfügt. Rufen Sie jedoch dieses Mal die Berechtigungs-API mit dem nur für die App geltenden Token auf, das Sie im vorherigen Schritt erhalten haben.
 
 Die [ServicePrincipalHasReadAccessToSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L203)-Methode der ASP.NET MVC-Beispiel-App implementiert diesen Aufruf.
 
@@ -444,4 +444,4 @@ Die [RevokeRoleFromServicePrincipalOnSubscription](https://github.com/dushyantgi
 
 Jetzt können Benutzer Ihre Anwendung verwenden, um problemlos eine Verbindung mit ihren Azure-Abonnements herzustellen und sie zu verwalten.
 
-<!----HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

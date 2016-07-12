@@ -1,6 +1,7 @@
 <properties 
-	pageTitle="Datasets in Azure Data Factory | Microsoft Azure" 
-	description="Lernen Sie Azure Data Factory-Datasets kennen, und erfahren Sie, wie Sie sie erstellen können." 
+	pageTitle="Erstellen von Datasets in Azure Data Factory | Microsoft Azure" 
+	description="Anhand von Beispielen, in denen Eigenschaften wie „offset“ und „anchorDateTime“ verwendet werden, wird beschrieben, wie Sie Datasets in Azure Data Factory erstellen."
+    keywords="Dataset erstellen, Datasetbeispiel, „offset“-Beispiel"
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -13,22 +14,19 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/08/2016" 
+	ms.date="06/27/2016" 
 	ms.author="spelluru"/>
 
 # Datasets in Azure Data Factory
-Datasets in Azure Data Factory sind benannte Verweise/Zeiger auf die Daten, die Sie als Eingabe oder Ausgabe einer Pipeline verwenden möchten. Datasets bestimmen Daten in verschiedenen Datenspeichern einschließlich Tabellen, Dateien, Ordnern und Dokumenten.
+In diesem Artikel werden die Datasets in Azure Data Factory beschrieben. Außerdem enthält der Artikel Beispiele, z.B. zu Datenbanken vom Typ „offset“, „anchorDateTime“ und „offset/style“.
 
-Ein **verknüpfter Dienst** definiert die Informationen, die Azure Data Factory zum **Herstellen einer Verbindung** mit einem **Datenspeicher** (wie einem Azure Storage-Konto und Azure SQL-Datenbank) oder **Computediensten** (wie Azure HDInsight und Azure Batch) benötigt. Der verknüpfte Dienst definiert den Mechanismus (Adresse, Protokoll, Authentifizierungsschema usw.) für den Zugriff auf den Datenspeicher oder den Computedienst.
+Beim Erstellen eines Datasets erstellen Sie einen Zeiger auf die Daten, die Sie verarbeiten möchten. Daten werden in einer Aktivität verarbeitet (Eingabe/Ausgabe), und eine Aktivität ist in einer Pipeline enthalten. Ein Eingabedataset stellt die Eingabe für eine Aktivität in der Pipeline dar, und ein Ausgabedataset stellt die Ausgabe für die Aktivität dar.
 
-Eine Liste mit den unterstützten verknüpften Datenspeicherdiensten finden Sie unter [Unterstützte Datenquellen](data-factory-data-movement-activities.md#supported-data-stores). Klicken Sie auf eine Datenquelle in der Tabelle, um das Thema aufzurufen, das Details zum Erstellen/Konfigurieren eines verknüpften Diensts für diesen Datenspeicher bereitstellt.
+Datasets bestimmen Daten in verschiedenen Datenspeichern, z.B. Tabellen, Dateien, Ordnern und Dokumenten. Nachdem Sie ein Dataset erstellt haben, können Sie es zusammen mit Aktivitäten in einer Pipeline verwenden. Bei einem Dataset kann es sich beispielsweise um ein Eingabe-/Ausgabedataset einer Kopieraktivität oder einer HDInsightHive-Aktivität handeln. Das Azure-Portal enthält eine visuelle Darstellung aller Pipelines und Dateneingaben und -ausgaben. Alle Beziehungen und Abhängigkeiten Ihrer Datenpipeline für alle Quellen werden angezeigt, sodass Sie immer darüber informiert sind, woher Daten kommen und wohin diese fließen.
 
-Eine Liste der unterstützten verknüpften Computedienste finden Sie unter [Verknüpfte Computedienste](data-factory-compute-linked-services.md). Informationen zu den Aktivitäten, die die verknüpften Dienste verwenden, finden Sie unter [Transformation und Analyse mit Azure Data Factory](data-factory-data-transformation-activities.md).
-
-Ein **Dataset** in Data Factory stellt Datenstrukturen in einem Datenspeicher dar, der durch einen **verknüpften Datenspeicherdienst**, z.B. einen Blobcontainer in einem Azure-Speicherkonto, eine Tabelle in einer Azure SQL-Datenbank, dargestellt wird. Sie können es als Eingabe oder Ausgabe einer Aktivität in einer Pipeline verwendet. Nachdem Sie Datasets erstellt haben, können Sie diese mit Aktivitäten in der Pipeline verwenden. Beispielsweise können Sie ein Dataset als Eingabe/Ausgabe-Dataset einer Kopieraktivität/HDInsightHive-Aktivität festlegen.
+In Azure Data Factory können Sie Daten aus einem Dataset abrufen, indem Sie die Kopieraktivität in einer Pipeline verwenden.
 
 > [AZURE.NOTE] Wenn Sie noch nicht mit Azure Data Factory vertraut sind, finden Sie unter [Einführung in Azure Data Factory](data-factory-introduction.md) eine Übersicht über den Azure Data Factory-Dienst und unter [Erstellen der ersten Data Factory](data-factory-build-your-first-pipeline.md) ein Tutorial zum Erstellen Ihrer ersten Data Factory. Diese beiden Artikel liefern Hintergrundinformationen, die Sie zum besseren Verständnis dieses Artikels benötigen.
-
 
 ## Definieren von Datasets
 Ein Dataset in Azure Data Factory wird wie folgt definiert:
@@ -72,7 +70,7 @@ In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschriebe
 | availability | Definiert das Verarbeitungsfenster oder das Modell für das Aufteilen in Slices für die Datasetproduktion. <br/><br/>Unter [Dataset: Availability](#Availability) finden Sie weitere Informationen.<br/><br/>Im Artikel [Planung und Ausführung](data-factory-scheduling-and-execution.md) finden Sie weitere Informationen zum Modell für das Aufteilen von Datasets in Slices. | Ja | –
 | policy | Definiert die Kriterien oder die Bedingung, die die Dataset-Slices erfüllen müssen. <br/><br/>Unter [Dataset: Policy](#Policy) finden Sie weitere Informationen. | Nein | – |
 
-### Beispiel
+## Datasetbeispiel
 
 Im Folgenden finden Sie ein Beispiel für ein Dataset, das eine Tabelle mit dem Namen **MyTable** in einer **Azure SQL-Datenbank** darstellt.
 
@@ -97,8 +95,8 @@ Beachten Sie Folgendes:
 
 - „type“ ist auf „AzuresqlTable“ festgelegt.
 - Als tableName-Typeigenschaft (spezifisch für AzureSplTable-Typ) ist „MyTable“ festgelegt.
-- „linkedServiceName“ bezieht sich auf einen verknüpften Dienst vom Typ „AzureSqlDatabase“. Die Definition des verknüpften Dienstes finden Sie nachfolgend. 
-- Als „availability frequency“ ist „day“ festgelegt und „interval“ ist auf „1“ festgelegt. Das bedeutet, dass der Slice täglich erzeugt wird.  
+- „linkedServiceName“ bezieht sich auf einen verknüpften Dienst vom Typ „AzureSqlDatabase“. Die Definition des verknüpften Dienstes finden Sie nachfolgend.
+- Als „availability frequency“ ist „day“ festgelegt und „interval“ ist auf „1“ festgelegt. Das bedeutet, dass der Slice täglich erzeugt wird.
 
 AzureSqlLinkedService wird wie folgt definiert:
 
@@ -116,13 +114,13 @@ AzureSqlLinkedService wird wie folgt definiert:
 Im obigen JSON-Code:
 
 - „type“ ist auf „AzureStorage“ festgelegt.
-- Die „connectionString“-Typeigenschaft gibt Informationen zur Verbindung mit einer Azure SQL-Datenbank.  
+- Die „connectionString“-Typeigenschaft gibt Informationen zur Verbindung mit einer Azure SQL-Datenbank.
 
 
-Wie Sie sehen können, definiert der verknüpfte Dienst, wie eine Verbindung zu einer Azure SQL-Datenbank erstellt wird, und das Dataset definiert, welche Tabelle als Eingabe/Ausgabe in Ihrer Data Factory verwendet wird. Der Abschnitt „Aktivität“ in Ihrer [JSON](data-factory-create-pipelines.md)-Pipeline bestimmt, ob das Dataset als Eingabe- oder Ausgabedataset verwendet wird.
+Wie Sie sehen können, definiert der verknüpfte Dienst, wie eine Verbindung zu einer Azure SQL-Datenbank erstellt wird, und das Dataset definiert, welche Tabelle als Eingabe/Ausgabe in Ihrer Data Factory verwendet wird. Der Abschnitt „Activity“ in Ihrer [JSON](data-factory-create-pipelines.md)-Pipeline bestimmt, ob das Dataset als Eingabe- oder Ausgabedataset verwendet wird.
 
 
-> [AZURE.IMPORTANT] Insofern kein Dataset von Azure Data Factory erzeugt wird, sollte es als **extern** markiert werden. Dies gilt im Allgemeinen für Eingaben der ersten Aktivität in einer Pipeline.
+> [AZURE.IMPORTANT] Falls von Azure Data Factory kein Dataset erzeugt wird, sollte es als **extern** markiert werden. Dies gilt im Allgemeinen für Eingaben der ersten Aktivität in einer Pipeline.
 
 ## <a name="Type"></a> Dataset: Type
 Die unterstützten Datenquellen und die Dataset-Typen werden ausgerichtet. Informationen zu den Typen und der Konfiguration von Datasets finden Sie in den Themen, auf die im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md#supported-data-stores) verwiesen wird. Wenn Sie z. B. Daten aus einer Azure SQL-Datenbank verwenden, klicken Sie in der Liste der unterstützten Datenspeicher auf Azure SQL-Datenbank, um ausführliche Informationen zur Verwendung von Azure SQL-Datenbank als Quelle oder Senkendatenspeicher zu erhalten.
@@ -155,7 +153,7 @@ In der folgenden Tabelle werden die Eigenschaften beschrieben, die Sie im Abschn
 | frequency | Gibt die Zeiteinheit für die Erstellung der Datasetslices an.<br/><br/>**Unterstützte Häufigkeit**: „Minute“, „Hour“, „Day“, „Week“, „Month“ | Ja | – |
 | interval | Gibt einen Multiplikator für die Häufigkeit an<br/><br/>„Frequency x interval“ bestimmt, wie oft der Slice erzeugt wird.<br/><br/>Wenn das Dataset auf Stundenbasis in Slices aufgeteilt werden soll, legen Sie **Frequency** auf **Hour** und **interval** auf **1** fest.<br/><br/>**Hinweis:** Wenn Sie „Frequency“ auf „Minute“ festlegen, sollten Sie „interval“ mindestens auf „15“ festlegen. | Ja | – |
 | style | Gibt an, ob der Slice am Anfang/Ende des Intervalls erzeugt werden soll.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Wenn „Frequency“ auf „Month“ und „style“ auf „EndOfInterval“ festgelegt ist, wird der Slice am letzten Tag des Monats erstellt. Wenn „style“ auf „StartOfInterval“ festgelegt ist, wird der Slice am ersten Tag des Monats erstellt.<br/><br/>Wenn „Frequency“ auf „Day“ und „style“ auf „EndOfInterval“ festgelegt ist, wird der Slice in der letzten Stunde des Tages erstellt.<br/><br/>Wenn „Frequency“ auf „Hour“ und „style“ auf „EndOfInterval“ festgelegt ist, wird der Slice am Ende der Stunde erstellt. Ein Slice für den Zeitraum 13:00 bis 14:00 Uhr wird z. B. um 14.00 Uhr erstellt. | Nein | EndOfInterval |
-| anchorDateTime | Definiert die absolute Position in der Zeit, die der Scheduler benötigt, um Dataset-Slicegrenzen zu berechnen. <br/><br/>**Hinweis:** Wenn anchorDateTime über Datumsteile verfügt, die präziser als die Häufigkeit sind, werden die präziseren Teile ignoriert. <br/><br/>Wenn **interval** z.B. auf **hourly** festgelegt ist („frequency: hour“ und „interval: 1“) und **anchorDateTime** Angaben für **Minuten und Sekunden** enthält, werden die **Minuten- und Sekundenteile** von anchorDateTime ignoriert. | Nein | 01/01/0001 |
+| anchorDateTime | Definiert die absolute Position in der Zeit, die der Scheduler benötigt, um Dataset-Slicegrenzen zu berechnen. <br/><br/>**Hinweis:** Wenn anchorDateTime über Datumsteile verfügt, die präziser als die Häufigkeit sind, werden die präziseren Teile ignoriert. <br/><br/>Wenn **interval** z.B. auf **hourly** festgelegt ist („frequency: hour“ und „interval: 1“) und **anchorDateTime** Angaben für **Minuten und Sekunden** enthält, werden die Minuten- und Sekundenteile von anchorDateTime ignoriert. | Nein | 01/01/0001 |
 | offset | Zeitspanne, um die Anfang und Ende aller Datasetslices verschoben werden. <br/><br/>**Hinweis:** Wenn sowohl „anchorDateTime“ als auch „offset“ angegeben werden, ist das Ergebnis die kombinierte Verschiebung. | Nein | k. A. |
 
 ### Beispiel zu Offset
@@ -173,7 +171,7 @@ Tägliche Slices, die um 6:00 Uhr anstelle des Standards Mitternacht beginnen.
 
 Für einen zwölfmonatigen Plan ("frequency" = "month"; "interval" = 12) bedeutet "offset": 60.00:00:00 den Beginn am 1. oder 2. März jedes Jahres (60 Tage ab dem Anfang des Jahres, wenn "style" = "StartOfInterval"), abhängig davon, ob es sich um ein Schaltjahr handelt.
 
-### Beispiel zu „anchorDateTime“
+## Beispiel zu „anchorDateTime“
 
 **Beispiel**: 23-Stunden-Datasetslices mit Startbeginn "2007-04-19T08:00:00"
 
@@ -184,9 +182,9 @@ Für einen zwölfmonatigen Plan ("frequency" = "month"; "interval" = 12) bedeute
 		"anchorDateTime":"2007-04-19T08:00:00"	
 	}
 
-### Beispiel zu „offset“/„style“
+## Beispiel zu „offset“/„style“
 
-Wenn Sie ein Dataset jeden Monat an einem bestimmten Tag und zu einer bestimmten Uhrzeit ausführen müssen (beispielsweise am 3. jedes Monats um 8:00 Uhr), könnten Sie mit dem **offset**-Tag das Datum und die Uhrzeit der Ausführung angeben.
+Wenn Sie ein Dataset jeden Monat an einem bestimmten Tag und zu einer bestimmten Uhrzeit ausführen müssen (beispielsweise am 3. jedes Monats um 8:00 Uhr), können Sie mit dem **offset**-Tag das Datum und die Uhrzeit der Ausführung angeben.
 
 	{
 	  "name": "MyDataset",
@@ -214,7 +212,7 @@ Der Abschnitt **policy** in der Datasetdefinition definiert die Kriterien oder d
 
 | Richtlinienname | Beschreibung | Angewendet auf | Erforderlich | Standard |
 | ----------- | ----------- | ---------- | -------- | ------- |
-| minimumSizeMB | Überprüft, ob die Daten in einem **Azure-Blob** die minimalen Größenanforderungen (in Megabytes) erfüllen. | Azure Blob | Nein | – |
+| minimumSizeMB | Überprüft, ob die Daten in einem **Azure-Blob** die minimalen Größenanforderungen (in MB) erfüllen. | Azure Blob | Nein | – |
 |minimumRows | Überprüft, ob die Daten in einer **Azure SQL-Datenbank** oder einer **Azure-Tabelle** die minimale Anzahl von Zeilen enthalten. | <ul><li>Azure SQL-Datenbank</li><li>Azure-Tabelle</li></ul> | Nein | –
 
 #### Beispiele
@@ -244,11 +242,11 @@ Der Abschnitt **policy** in der Datasetdefinition definiert die Kriterien oder d
 
 Externe Datasets werden nicht durch eine Pipeline erstellt, die in der Data Factory ausgeführt wird. Wenn das Dataset als **extern** gekennzeichnet ist, kann die **ExternalData**-Richtlinie definiert werden, um das Verhalten der Dataset-Sliceverfügbarkeit zu beeinflussen.
 
-Insofern kein Dataset von Azure Data Factory erzeugt wird, sollte es als **extern** markiert werden. Dies gilt im Allgemeinen für die Eingabe(n) der ersten Aktivität in einer Pipeline, insofern nicht die Aktivität oder Pipeline-Verkettung genutzt wird.
+Falls von Azure Data Factory kein Dataset erzeugt wird, sollte es als **extern** markiert werden. Dies gilt im Allgemeinen für die Eingabe(n) der ersten Aktivität in einer Pipeline, insofern nicht die Aktivität oder Pipeline-Verkettung genutzt wird.
 
 | Name | Beschreibung | Erforderlich | Standardwert |
 | ---- | ----------- | -------- | -------------- |
-| dataDelay | Zeit, um die die Prüfung der Verfügbarkeit der externen Daten für den angegebenen Slice verzögert wird. Wenn die Daten z.B. stündlich verfügbar sein sollen, die Überprüfung der externen Daten verfügbar und der entsprechende Slice bereit ist, kann eine Verzögerung per „dataDelay“ ausgeführt werden.<br/><br/>Diese bezieht sich nur auf die aktuelle Zeit. Wenn es z.B. gerade 13:00 Uhr ist und dieser Wert 10 Minuten beträgt, beginnt die Überprüfung um 13:10 Uhr.<br/><br/>Diese Einstellung wirkt sich nicht auf Slices in der Vergangenheit aus (ohne Verzögerung werden Slices verarbeitet, für die Folgendes gilt: Slice-Endzeit + dataDelay < jetzt).<br/><br/>Ein Zeitwert von mehr als 23:59 Stunden muss im Format „Tag.Stunden:Minuten:Sekunden“ angegeben werden. Um beispielsweise 24 Stunden anzugeben, verwenden Sie nicht 24:00:00, sondern stattdessen 1.00:00:00. Wenn Sie 24:00:00 verwenden, wird dies als 24 Tage (24.00:00:00) gewertet. Für 1 Tag und 4 Stunden geben Sie „1.04:00:00“ an. | Nein | 0 |
+| dataDelay | Zeit, um die die Prüfung der Verfügbarkeit der externen Daten für den angegebenen Slice verzögert wird. Wenn die Daten z.B. stündlich verfügbar sein sollen und die Überprüfung der externen Daten verfügbar und der entsprechende Slice bereit ist, kann eine Verzögerung per „dataDelay“ ausgeführt werden.<br/><br/>Diese bezieht sich nur auf die aktuelle Zeit. Wenn es z.B. gerade 13:00 Uhr ist und dieser Wert 10 Minuten beträgt, beginnt die Überprüfung um 13:10 Uhr.<br/><br/>Diese Einstellung wirkt sich nicht auf Slices in der Vergangenheit aus (ohne Verzögerung werden Slices verarbeitet, für die Folgendes gilt: Slice-Endzeit + dataDelay < jetzt).<br/><br/>Ein Zeitwert von mehr als 23:59 Stunden muss im Format „Tag.Stunden:Minuten:Sekunden“ angegeben werden. Um beispielsweise 24 Stunden anzugeben, verwenden Sie nicht 24:00:00, sondern stattdessen 1.00:00:00. Wenn Sie 24:00:00 verwenden, wird dies als 24 Tage (24.00:00:00) gewertet. Für 1 Tag und 4 Stunden geben Sie „1:04:00:00“ an. | Nein | 0 |
 | retryInterval | Die Wartezeit zwischen einem Fehler und dem nächsten Wiederholungsversuch. Gilt für die aktuelle Zeit. Wenn der vorherige Versuch fehlgeschlagen ist, ist dies die Wartezeit nach dem letzten Versuch. <br/><br/>Wenn es jetzt gerade 13:00 Uhr ist, beginnt der erste Versuch. Wenn die Ausführung der ersten Überprüfung 1 Minute gedauert hat und ein Fehler aufgetreten ist, findet die nächste Wiederholung um 13:00 + 1 Min. (Dauer) + 1 Min. (Wiederholungsintervall) = 1:02 Uhr statt. <br/><br/>Für Slices in der Vergangenheit gibt es keine Verzögerung. Die Wiederholung erfolgt sofort. | Nein | 00:01:00 (1 Minute) | 
 | retryTimeout | Das Timeout für die einzelnen Wiederholungsversuche.<br/><br/>Wenn dieser Wert auf 10 Minuten festgelegt ist, muss die Überprüfung innerhalb von 10 Minuten abgeschlossen werden. Wenn die Ausführung der Überprüfung länger als 10 Minuten dauert, wird das Timeout für die Wiederholung wirksam.<br/><br/>Wenn für alle Überprüfungsversuche ein Timeout wirksam wird, wird der Slice als „TimedOut“ gekennzeichnet. | Nein | 00:10:00 (10 Minuten) |
 | maximumRetry | Gibt an, wie oft die Verfügbarkeit der externen Daten überprüft werden soll. Der zulässige Höchstwert ist 10. | Nein | 3 | 
@@ -347,4 +345,4 @@ Mit der Eigenschaft **datasets** können Sie Datasets erstellen, die einer Pipel
 	    }
 	}
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

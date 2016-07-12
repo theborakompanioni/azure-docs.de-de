@@ -139,7 +139,7 @@ Aktivieren Sie den Parameter „disk.EnableUUID = TRUE“, um die SCSI-IDs für 
 
 1. Fahren Sie den virtuellen Computer herunter.
 2. Klicken Sie im linken Bereich mit der rechten Maustaste auf den VM-Eintrag und wählen Sie **Edit Settings**.
-3. Klicken Sie auf die Registerkarte **Options**. Wählen Sie **Advanced > General iteml** > **Configuration Parameters**. Die Option **Configuration Parameters** ist nur verfügbar, wenn der Computer heruntergefahren ist.
+3. Klicken Sie auf die Registerkarte **Options**. Wählen Sie **Advanced > General item** > **Configuration Parameters**. Die Option **Configuration Parameters** ist nur verfügbar, wenn der Computer heruntergefahren ist.
 
 	![](./media/site-recovery-failback-azure-to-vmware/image14.png)
 
@@ -325,7 +325,7 @@ Beim Failover eines virtuellen Computers zu Azure wird ein temporäres Laufwerk 
 
 #### Konfigurieren von NAT-Einstellungen
 
-1. Zum Schutz der virtuellen Computer müssen zwei Kommunikationskanäle eingerichtet werden: Der erste Kanal wird zwischen dem virtuellen Computer und dem Prozessserver eingerichtet. Dieser Kanal erfasst die Daten aus dem virtuellen Computer und sendet sie an einen Prozessserver, der sie anschließend an den Masterzielserver sendet. Wenn sich der Prozessserver und der zu schützende virtuelle Computer im gleichen virtuellen Azure-Netzwerk befinden, werden die NAT-Einstellungen nicht benötigt. Geben Sie andernfalls die NAT-Einstellungen an. Sehen Sie sich die öffentliche IP-Adresse des Prozessservers in Azure an. 
+1. Zum Schutz der virtuellen Computer müssen zwei Kommunikationskanäle eingerichtet werden: Der erste Kanal wird zwischen dem virtuellen Computer und dem Prozessserver eingerichtet. Dieser Kanal erfasst die Daten aus dem virtuellen Computer und sendet sie an einen Prozessserver, der sie anschließend an den Masterzielserver sendet. Wenn sich der Prozessserver und der zu schützende virtuelle Computer im gleichen virtuellen Azure-Netzwerk befinden, werden die NAT-Einstellungen nicht benötigt. Geben Sie andernfalls die NAT-Einstellungen an. Sehen Sie sich die öffentliche IP-Adresse des Prozessservers in Azure an.
 
 	![](./media/site-recovery-failback-azure-to-vmware/image28.png)
 
@@ -428,4 +428,4 @@ Nach Abschluss des Failbacks empfiehlt es sich unter Umständen, die virtuellen 
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

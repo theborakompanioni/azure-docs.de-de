@@ -23,12 +23,12 @@ Es wird empfohlen, in regelmäßigen Abständen Überprüfungen der Anwendungsbe
 Notfallwiederherstellungsverfahren umfassen Folgendes:
 
 - Simulieren von Ausfällen auf Datenebene
-- Wiederherstellen 
+- Wiederherstellen
 - Überprüfen der Anwendungsintegrität nach der Wiederherstellung
 
 Abhängig vom [Entwurf Ihrer Anwendung für Geschäftskontinuität](sql-database-business-continuity.md) kann der verbundene Workflow variieren. Im Folgenden beschreiben wir bewährte Methoden zur Ausführung von Notfallwiederherstellungen im Kontext von Azure SQL-Datenbank.
 
-##Geografische Wiederherstellung
+##Geowiederherstellung
 
 Um Datenverluste beim Durchführen von Notfallwiederherstellungsverfahren zu verhindern, empfehlen wir die Verwendung einer Testumgebung, indem Sie eine Kopie der Produktionsumgebung erstellen und diese zum Überprüfen des Failoverworkflows der Anwendung verwenden.
  
@@ -38,7 +38,7 @@ Um die Ausfallzeit zu simulieren, können Sie die Quelldatenbank löschen oder u
 
 ####Wiederherstellen
 
-- Führen Sie die geografische Wiederherstellung der Datenbank auf einem anderen Server aus, wie [hier](sql-database-disaster-recovery.md) beschrieben. 
+- Führen Sie die Geowiederherstellung der Datenbank auf einem anderen Server aus, wie [hier](sql-database-disaster-recovery.md) beschrieben.
 - Ändern Sie die Anwendungskonfiguration zum Herstellen einer Verbindung mit den wiederhergestellten Datenbanken, und folgen Sie der Anleitung unter [Konfigurieren einer Datenbank nach der Wiederherstellung](sql-database-disaster-recovery.md) zum Abschließen der Wiederherstellung.
 
 ####Überprüfen
@@ -55,7 +55,7 @@ Um die Ausfallzeit zu simulieren, können Sie die Web-Anwendung oder den virtuel
 
 ####Wiederherstellen
 
-- Stellen Sie sicher, dass die Anwendungskonfiguration in der Notfallwiederherstellungsregion auf die vorherige sekundäre Datenbank verweist. Diese Datenbank wird zur neuen primären Datenbank, auf die vollständig zugegriffen werden kann. 
+- Stellen Sie sicher, dass die Anwendungskonfiguration in der Notfallwiederherstellungsregion auf die vorherige sekundäre Datenbank verweist. Diese Datenbank wird zur neuen primären Datenbank, auf die vollständig zugegriffen werden kann.
 - Ausführen eines [geplanten Failovers](sql-database-geo-replication-powershell.md#initiate-a-planned-failover), um die sekundäre Datenbank als neue primäre Datenbank festzulegen
 - Führen Sie die Anweisungen unter [Konfigurieren einer Datenbank nach der Wiederherstellung](sql-database-disaster-recovery.md) aus, um die Wiederherstellung abzuschließen.
 
@@ -66,18 +66,10 @@ Um die Ausfallzeit zu simulieren, können Sie die Web-Anwendung oder den virtuel
 
 ## Nächste Schritte
 
-- Informationen zur Verwendung und Konfiguration der aktiven Georeplikation für die Notfallwiederherstellung finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
-- Informationen zur Verwendung der Geowiederherstellung für die Notfallwiederherstellung finden Sie unter [Geowiederherstellung](sql-database-geo-restore.md).
+- Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
+- Informationen über Entwurfs- und Wiederherstellungsszenarien für die Geschäftskontinuität finden Sie unter [Geschäftskontinuitätsszenarien](sql-database-business-continuity-scenarios.md).
+- Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).
+- Informationen über schnellere Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
+- Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
 
-## Zusätzliche Ressourcen
-
-- [Geschäftskontinuität und Notfallwiederherstellung mit SQL-Datenbank](sql-database-business-continuity.md)
-- [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md)
-- [Geografische Wiederherstellung](sql-database-geo-restore.md)
-- [Aktive Georeplikation](sql-database-geo-replication-overview.md)
-- [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
-- [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
-- [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
-
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

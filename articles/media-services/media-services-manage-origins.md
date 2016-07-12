@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016"
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -69,6 +69,7 @@ Um die Anzahl der Streamingeinheiten über das Portal zu ändern, gehen Sie folg
 
 	 
 	>[AZURE.NOTE] Aktuell kann das bedarfsgesteuerte Streaming für bis zu eine Stunde deaktiviert werden, wenn Sie einen positiven Wert für die Streaming-Einheiten zurück auf null setzen.
+</br>
 
 	>[AZURE.NOTE] Die höchste für den 24-Stunden-Zeitraum angegebene Anzahl an Einheiten wird zum Berechnen der Kosten verwendet. Informationen zu den Preisen finden Sie unter [Media Services Pricing Details](http://go.microsoft.com/fwlink/?LinkId=275107).
 	
@@ -125,6 +126,7 @@ Nach der Aktivierung werden die folgenden Konfigurationseinstellungen deaktivier
 
 ![Streamingendpunkt – CDN-Aktivierung][streaming-endpoint-enable-cdn]
 
+>[AZURE.IMPORTANT] Azure Media Services-Integration mit Azure CDN ist in **Azure CDN von Verizon** implementiert. Wenn Sie **Azure CDN von Akamai** für Azure Media Services verwenden möchten, müssen Sie [den Endpunkt manuell konfigurieren](../cdn/cdn-create-new-endpoint.md). Weitere Informationen zu Azure CDN-Features finden Sie in der [Übersicht über das Azure Content Delivery Network (CDN)](../cdn/cdn-overview.md).
 
 ###Zusätzliche Überlegungen
 
@@ -150,4 +152,4 @@ Weitere Informationen finden Sie unter [Ankündigung der Azure Media Services-In
 [configure-origin-configure-custom-host-names]: ./media/media-services-manage-origins/media-services-configure-custom-host-names.png
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

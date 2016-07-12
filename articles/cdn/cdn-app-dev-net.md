@@ -24,73 +24,19 @@ Für dieses Tutorial benötigen Sie Visual Studio 2015. [Visual Studio Community
 
 Ein abgeschlossenes Beispiel dieses Tutorials finden Sie [hier](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c).
 
-## Vorbereitung
-
-Bevor Sie Code für die CDN-Verwaltung schreiben können, müssen Sie einige Vorbereitungen treffen. Als Erstes erstellen Sie eine Ressourcengruppe, in der das in diesem Tutorial erstellte CDN-Profil enthalten sein soll. Danach richten Sie Azure Active Directory für die Authentifizierung Ihrer Anwendung ein. Anschließend wenden Sie Berechtigungen auf die Ressourcengruppe an, sodass nur autorisierte Benutzer aus Ihrem Azure AD-Mandanten mit dem CDN-Profil interagieren können.
-
-### Erstellen der Ressourcengruppe
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-
-2. Klicken Sie oben links auf die Schaltfläche **Neu**, und klicken Sie dann auf **Verwaltung** und **Ressourcengruppe**.
-	
-	![Erstellen einer neuen Ressourcengruppe](./media/cdn-app-dev-net/cdn-new-rg-1.png)
-
-3. Nennen Sie die Ressourcengruppe *CdnConsoleTutorial*. Wählen Sie Ihr Abonnement aus, und wählen Sie einen Standort in Ihrer Nähe. Wenn Sie möchten, können Sie das Kontrollkästchen **An Dashboard anheften** aktivieren, um die Ressourcengruppe an das Dashboard im Portal anzuheften. Dadurch lässt sie sich später leichter wiederfinden. Nachdem Sie Ihre Auswahl getroffen haben, klicken Sie auf **Erstellen**.
-
-	![Benennen der Ressourcengruppe](./media/cdn-app-dev-net/cdn-new-rg-2.png)
-
-4. Wenn Sie die Ressourcengruppe nach dem Erstellen nicht an Ihr Dashboard angeheftet haben, können Sie sie suchen, indem Sie auf **Durchsuchen** und dann auf **Ressourcengruppen** klicken. Klicken Sie auf die Ressourcengruppe, um sie zu öffnen. Notieren Sie sich Ihre **Abonnement-ID**. Sie benötigen sie später.
-
-	 ![Benennen der Ressourcengruppe](./media/cdn-app-dev-net/cdn-subscription-id.png)
-
-### Erstellen der Azure AD-Anwendung
-
-Es gibt zwei Methoden für die App-Authentifizierung mit Azure Active Directory: per einzelnem Benutzer oder per Dienstprinzipal. Ein Dienstprinzipal ähnelt einem Dienstkonto in Windows. Anstatt einen bestimmten Benutzer Berechtigungen für die Interaktion mit den CDN-Profilen zu gewähren, erteilen wir die Berechtigungen für den Dienstprinzipal. Dienstprinzipale werden im Allgemeinen für automatisierte, nicht interaktive Prozesse verwendet. Auch wenn in diesem Tutorial eine interaktive Konsolen-App erstellt wird, verwenden wir hier einen Dienstprinzipal.
-
-Die Erstellung eines Dienstprinzipals umfasst mehrere Schritte, einschließlich der Erstellung einer Azure Active Directory-Anwendung. [Absolvieren Sie dieses Tutorial](../resource-group-create-service-principal-portal.md), um diese Schritte auszuführen.
-
-> [AZURE.IMPORTANT] Stellen Sie sicher, dass Sie alle Schritte in [diesem Tutorial](../resource-group-create-service-principal-portal.md) ausführen. Es ist *von größter Bedeutung*, dass Sie die Schritte exakt wie beschrieben ausführen. Notieren Sie sich die folgenden Angaben, da Sie diese später benötigen werden: **Mandanten-ID**, **Domänenname des Mandanten** (üblicherweise eine *.onmicrosoft.com*-Domäne, sofern Sie keine benutzerdefinierte Domäne angegeben haben), **Client-ID** und **Clientauthentifizierungsschlüssel**. Schützen Sie die **Client-ID** und den **Clientauthentifizierungsschlüssel** sorgfältig, da diese Anmeldeinformationen von jeder Person verwendet werden können, um Vorgänge als Dienstprinzipal auszuführen.
-> 	
-> Wenn Sie zum Schritt [Mehrinstanzenfähige Anwendung konfigurieren](../resource-group-create-service-principal-portal.md#configure-multi-tenant-application) gelangen, wählen Sie **Nein**.
-> 
-> Im Schritt [Anwendung zu Rolle zuweisen](../resource-group-create-service-principal-portal.md#assign-application-to-role) verwenden Sie die zuvor erstellte Ressourcengruppe, *CdnConsoleTutorial*, weisen ihr jedoch nicht die Rolle **Leser**, sondern die Rolle **Mitwirkender von CDN-Profil** zu. Nachdem Sie die Anwendung in Ihrer Ressourcengruppe zur Rolle **Mitwirkender von CDN-Profil** zugewiesen haben, kehren Sie zu diesem Tutorial zurück.
-
-Sobald Sie den Dienstprinzipal erstellt und die Rolle **Mitwirkender von CDN-Profil** zugewiesen haben, sollte das Blatt **Benutzer** für Ihre Ressourcengruppe in etwa wie folgt aussehen.
-
-![Blatt „Benutzer“](./media/cdn-app-dev-net/cdn-service-principal.png)
-
-
-### Interaktive Benutzerauthentifizierung
-
-Wenn Sie statt eines Dienstprinzipals lieber eine interaktive individuelle Benutzerauthentifizierung einrichten möchten, ähnelt der Prozess dem der Erstellung eines Dienstprinzipals. Sie wenden im Grunde das gleiche Verfahren an, nehmen aber einige kleinere Änderungen vor.
-
->[AZURE.IMPORTANT] Führen Sie die nächsten Schritte nur aus, wenn Sie die individuelle Benutzerauthentifizierung anstelle eines Dienstprinzipals verwenden möchten.
-
-1. Wählen Sie beim Erstellen der Anwendung statt **Web-App** die Option **Native Anwendung**. 
-	
-	![Native Anwendung](./media/cdn-app-dev-net/cdn-native-application.png)
-	
-2. Auf der nächsten Seite werden Sie zur Eingabe eines **Umleitungs-URIs** aufgefordert. Der URI wird nicht überprüft, merken Sie sich jedoch, was Sie eingegeben haben. Sie benötigen die Information später.
-
-3. Sie müssen keinen **Clientauthentifizierungsschlüssel** erstellen.
-
-4. Anstatt der Rolle **Mitwirkender von CDN-Profil** einen Dienstprinzipal zuzuweisen, weisen Sie einzelne Benutzer oder Gruppen zu. In diesem Beispiel sehen Sie, dass ich den Benutzer *CDN Demo User* der Rolle **CDN Profile Contributor** zugewiesen habe.
-	
-	![Individueller Benutzerzugriff](./media/cdn-app-dev-net/cdn-aad-user.png)
-
+[AZURE.INCLUDE [cdn-app-dev-prep](../../includes/cdn-app-dev-prep.md)]
 
 ## Erstellen des Projekts und Hinzufügen von NuGet-Paketen
 
 Nachdem Sie nun eine Ressourcengruppe für Ihre CDN-Profile erstellt und der Azure AD-Anwendung die Berechtigung zum Verwalten von CDN-Profilen und -Endpunkten innerhalb dieser Gruppe erteilt haben, können Sie damit beginnen, Ihre Anwendung zu erstellen.
 
-Klicken Sie in Visual Studio 2015 auf **Datei**, **Neu**, **Projekt...**, um das Dialogfeld für neue Projekte zu öffnen. Erweitern Sie **Visual C#**, und wählen Sie im linken Bereich **Windows** aus. Klicken Sie im mittleren Bereich auf **Konsolenanwendung**. Benennen Sie Ihr Projekt, und klicken Sie auf **OK**.
+Klicken Sie in Visual Studio 2015 auf **Datei** > **Neu** > **Projekt...**, um das Dialogfeld für neue Projekte zu öffnen. Erweitern Sie **Visual C#**, und wählen Sie im linken Bereich **Windows** aus. Klicken Sie im mittleren Bereich auf **Konsolenanwendung**. Benennen Sie Ihr Projekt, und klicken Sie auf **OK**.
 
 ![Neues Projekt](./media/cdn-app-dev-net/cdn-new-project.png)
 
 Das Projekt soll einige Azure-Bibliotheken verwenden, die in NuGet-Paketen enthalten sind. Fügen Sie diese nun zum Projekt hinzu.
 
-1. Klicken Sie auf das Menü **Tools**, dann auf **NuGet-Paket-Manager** und auf **Paket-Manager-Konsole**.
+1. Klicken Sie auf das Menü **Tools**, auf **NuGet-Paket-Manager** und anschließend auf **Paket-Manager-Konsole**.
 
 	![Verwalten von NuGet-Paketen](./media/cdn-app-dev-net/cdn-manage-nuget.png)
 
@@ -98,7 +44,7 @@ Das Projekt soll einige Azure-Bibliotheken verwenden, die in NuGet-Paketen entha
 
 	`Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory`
 
-3. Führen Sie den folgenden Befehl aus, um die **Azure CDN Management Library** in installieren:
+3. Führen Sie den folgenden Befehl aus, um die **Azure CDN Management Library** zu installieren:
 
 	`Install-Package Microsoft.Azure.Management.Cdn`
 
@@ -106,7 +52,7 @@ Das Projekt soll einige Azure-Bibliotheken verwenden, die in NuGet-Paketen entha
 
 Schreiben Sie nun die Grundstruktur des Programms.
 
-1. Ersetzen Sie auf der Registerkarte „Program.cs“ die `using`-Anweisungen oben durch Folgendes:
+1. Ersetzen Sie auf der Registerkarte „Program.cs“ die `using`-Anweisungen im oberen Bereich durch Folgendes:
 
 	```
 	using System;
@@ -119,7 +65,7 @@ Schreiben Sie nun die Grundstruktur des Programms.
 	using Microsoft.Rest;
 	```
 
-2. Sie müssen einige Konstanten definieren, die von den Methoden verwendet werden. Fügen Sie in der `Program`-Klasse vor der `Main`-Methode Folgendes hinzu. Stellen Sie sicher, dass Sie die Platzhalter, einschließlich der **&lt;spitzen Klammern&gt;**, nach Bedarf durch Ihre eigenen Werte ersetzen.
+2. Sie müssen einige Konstanten definieren, die von den Methoden verwendet werden. Fügen Sie in der `Program`-Klasse vor der `Main`-Methode Folgendes hinzu. Ersetzen Sie die Platzhalter einschließlich der **&lt;spitzen Klammern&gt;** nach Bedarf durch Ihre eigenen Werte.
 
 	```
 	//Tenant app constants
@@ -202,7 +148,7 @@ Schreiben Sie nun die Grundstruktur des Programms.
 	}
 	```
 
-Die grundlegende Struktur des Programms ist geschrieben. Jetzt erstellen Sie die Methoden, die von der `Main`-Methode aufgerufen werden.
+Nachdem wir die Grundstruktur für unser Programm geschrieben haben, müssen wir nun die Methoden erstellen, die von der `Main`-Methode aufgerufen werden.
 
 ## Authentifizierung
 
@@ -235,7 +181,7 @@ private static AuthenticationResult GetAccessToken()
 }
 ```
 
-Stellen Sie sicher, dass Sie `<redirect URI>` durch den Umleitungs-URI ersetzen, den Sie bei der Registrierung der Anwendung in Azure AD eingegeben haben.
+Ersetzen Sie `<redirect URI>` durch den Umleitungs-URI, den Sie bei der Registrierung der Anwendung in Azure AD eingegeben haben.
 
 ## Auflisten von CDN-Profilen und -Endpunkten
 
@@ -318,7 +264,7 @@ private static void CreateCdnEndpoint(CdnManagementClient cdn)
 }
 ```
 
->[AZURE.NOTE] Das obige Beispiel weist den Endpunkt einem Ursprung namens *Contoso* mit dem Hostnamen `www.contoso.com` zu. Ändern Sie dies in den Hostnamen Ihres Ursprungs.
+>[AZURE.NOTE] Das obige Beispiel weist dem Endpunkt einen Ursprung namens *Contoso* mit dem Hostnamen `www.contoso.com` zu. Ändern Sie dies in den Hostnamen Ihres Ursprungs.
 
 ## Bereinigen eines Endpunkts
 
@@ -337,7 +283,7 @@ private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
 }
 ```
 
->[AZURE.NOTE] Im obigen Beispiel gibt die Zeichenfolge `/*` an, dass ich sämtliche Daten aus dem Stammverzeichnis des Endpunktpfads löschen möchte. Dies entspricht der Option **Alles löschen** im Dialogfeld zur „Bereinigung“ im Azure-Portal. In der `CreateCdnProfile`-Methode habe ich das Profil durch Angabe des Codes `Sku = new Sku(SkuName.StandardVerizon)` als **Azure CDN from Verizon** angelegt, daher wird der Vorgang erfolgreich durchgeführt. **Azure CDN from Akamai**-Profile dagegen unterstützen **Alles löschen** nicht. Wenn ich also in diesem Tutorial ein Akamai-Profil verwendet hätte, müsste ich bestimmte Pfade zum Löschen angeben.
+>[AZURE.NOTE] Im obigen Beispiel gibt die Zeichenfolge `/*` an, dass ich sämtliche Daten aus dem Stammverzeichnis des Endpunktpfads löschen möchte. Dies entspricht der Option **Alles löschen** im Bereinigungsdialogfeld des Azure-Portals. In der `CreateCdnProfile`-Methode habe ich das Profil durch Angabe des Codes `Sku = new Sku(SkuName.StandardVerizon)` als **Azure CDN from Verizon** erstellt. Der Vorgang wird also erfolgreich ausgeführt. Bei Profilen vom Typ **Azure CDN from Akamai** wird **Alles löschen** hingegen nicht unterstützt. Wenn ich also in diesem Tutorial ein Akamai-Profil verwendet hätte, müsste ich bestimmte Pfade zum Löschen angeben.
 
 ## Löschen von CDN-Profilen und -Endpunkten
 
@@ -383,8 +329,8 @@ Bestätigen Sie die Aufforderung, um den Rest des Programms auszuführen.
 
 ## Nächste Schritte
 
-Um sich das abgeschlossene Projekt dieser exemplarischen Vorgehensweise anzusehen, [laden Sie das Beispiel](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c) herunter.
+[Laden Sie das Beispiel herunter](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c), um sich das abgeschlossene Projekt dieser exemplarischen Vorgehensweise anzusehen.
 
-Weitere Dokumentation zur Azure CDN Management Library for .NET finden Sie in der [Referenz auf MSDN](https://msdn.microsoft.com/library/mt657769.aspx).
+Weitere Informationen zur Azure-CDN-Bibliothek für .NET finden Sie in der [Referenz auf MSDN](https://msdn.microsoft.com/library/mt657769.aspx).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

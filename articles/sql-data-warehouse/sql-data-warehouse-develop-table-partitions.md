@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/25/2016"
+   ms.date="06/14/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Tabellenpartitionen in SQL Data Warehouse
@@ -31,11 +31,11 @@ Bei SQL DW können DBAs zwischen verschiedenen Tabellentypen wählen: Heap, grup
 
 Tabellenpartitionen sind in der Regel doppelt hilfreich:
 
-1. Bei Verwendung von Partitionswechseln zum schnellen Abtrennen eines Tabellenbereichs. Für eine Faktentabelle wird häufig ein Design verwendet, das nur Zeilen für einen bestimmten, begrenzten Zeitraum enthält. So kann beispielsweise eine Umsatzfaktentabelle erstellt werden, die nur Daten für die letzten 36 Monate enthält. Am Monatsende wird jeweils der älteste Verkaufsdatenmonat aus der Tabelle gelöscht. Dies kann zwar durch einfaches Löschen aller Zeilen für den ältesten Monat erreicht werden, das zeilenweise Löschen umfangreicher Datenmengen kann jedoch sehr zeitaufwendig sein. Zur Optimierung dieses Szenarios unterstützt SQL DW Partitionswechsel. Dadurch kann ein gesamter Zeilensatz einer Partition in einem schnellen Einzelvorgang gelöscht werden.   
+1. Bei Verwendung von Partitionswechseln zum schnellen Abtrennen eines Tabellenbereichs. Für eine Faktentabelle wird häufig ein Design verwendet, das nur Zeilen für einen bestimmten, begrenzten Zeitraum enthält. So kann beispielsweise eine Umsatzfaktentabelle erstellt werden, die nur Daten für die letzten 36 Monate enthält. Am Monatsende wird jeweils der älteste Verkaufsdatenmonat aus der Tabelle gelöscht. Dies kann zwar durch einfaches Löschen aller Zeilen für den ältesten Monat erreicht werden, das zeilenweise Löschen umfangreicher Datenmengen kann jedoch sehr zeitaufwendig sein. Zur Optimierung dieses Szenarios unterstützt SQL DW Partitionswechsel. Dadurch kann ein gesamter Zeilensatz einer Partition in einem schnellen Einzelvorgang gelöscht werden.
 
-2. Durch die Partitionierung kann bei Abfragen problemlos ein großer Zeilensatz (also eine Partition) von der Verarbeitung ausgenommen werden, wenn die Abfrage ein Prädikat auf die Partitionsspalte anwendet. Ein Beispiel: Wenn eine Umsatzfaktentabelle auf der Grundlage des Verkaufsdatumsfelds in 36 Monate partitioniert wird, kann bei Abfragen, die das Verkaufsdatum als Filter verwenden, die Verarbeitung von Partitionen übersprungen werden, die nicht dem Filter entsprechen. Bei einer auf diese Weise genutzten Partitionierung handelt es sich um einen undifferenzierten Index.
+2. Durch die Partitionierung kann bei Abfragen problemlos ein großer Zeilensatz (also eine Partition) von der Verarbeitung ausgenommen werden, wenn die Abfrage ein Prädikat auf die Partitionsspalte anwendet. Ein Beispiel: Wenn eine Umsatzfaktentabelle auf der Grundlage des Verkaufsdatumsfelds in 36 Monate partitioniert wird, kann bei Abfragen, die das Verkaufsdatum als Filter verwenden, die Verarbeitung von Partitionen übersprungen werden, die nicht dem Filter entsprechen. Bei einer auf diese Weise genutzten Partitionierung handelt es sich um einen undifferenzierten Index.
 
-Wenn DBAs gruppierte ColumnStore-Indizes in SQL DW erstellen, müssen sie einen weiteren Faktor berücksichtigen: die Zeilenanzahl. Mit CCI-Tabellen lassen sich eine höhere Komprimierung sowie eine bessere SQL DW-Abfrageleistung erzielen. Aufgrund der internen Funktionsweise der Komprimierung in SQL DW muss jede Partition in einer CCI-Tabelle eine relativ hohe Anzahl von Zeilen besitzen, damit die Daten komprimiert werden. Darüber hinaus werden die Daten von SQL DW breit gestreut, und jede Verteilung wird wiederum durch Partitionen unterteilt. Für eine optimale Komprimierung und Leistung sind pro Verteilung und Partition mindestens 100.000 Zeilen erforderlich. Für das obige Beispiel bedeutet das: Wenn die Umsatzfaktentabelle 36 Monatspartitionen enthält und SQL DW 60 Verteilungen umfasst, muss die Umsatzfaktentabelle mindestens sechs Millionen Zeilen pro Monat umfassen (oder 216 Millionen Zeilen, wenn alle Monate aufgefüllt sind). Enthält eine Tabelle deutlich weniger Zeilen als mindestens empfohlen, sollte der Datenbankadministrator die Tabelle ggf. mit weniger Partitionen erstellen, um die Zeilenanzahl pro Verteilung zu erhöhen.
+Wenn DBAs gruppierte ColumnStore-Indizes in SQL DW erstellen, müssen sie einen weiteren Faktor berücksichtigen: die Zeilenanzahl. Mit CCI-Tabellen lassen sich eine höhere Komprimierung sowie eine bessere SQL DW-Abfrageleistung erzielen. Aufgrund der internen Funktionsweise der Komprimierung in SQL DW muss jede Partition in einer CCI-Tabelle eine relativ hohe Anzahl von Zeilen besitzen, damit die Daten komprimiert werden. Darüber hinaus werden die Daten von SQL DW breit gestreut, und jede Verteilung wird wiederum durch Partitionen unterteilt. Für eine optimale Komprimierung und Leistung sind pro Verteilung und Partition mindestens 100.000 Zeilen erforderlich. Für das obige Beispiel bedeutet das: Wenn die Umsatzfaktentabelle 36 Monatspartitionen enthält und SQL DW 60 Verteilungen umfasst, muss die Umsatzfaktentabelle mindestens sechs Millionen Zeilen pro Monat umfassen (oder 216 Millionen Zeilen, wenn alle Monate aufgefüllt sind). Enthält eine Tabelle deutlich weniger Zeilen als mindestens empfohlen, sollte der Datenbankadministrator die Tabelle ggf. mit weniger Partitionen erstellen, um die Zeilenanzahl pro Verteilung zu erhöhen.
 
 
 Verwenden Sie zum Ändern der Größe Ihrer aktuellen SQL Server-Datenbank auf Partitionsebene eine Abfrage wie die folgende:
@@ -75,7 +75,7 @@ GROUP BY    s.[name]
 
 Die Gesamtanzahl der Verteilungen entspricht der Anzahl der beim Erstellen einer Tabelle verwendeten Speicherorte. Das ist eine komplexe Art zu formulieren, dass jede Tabelle einmal pro Verteilung erstellt wird.
 
-Außerdem können Sie ungefähr die Anzahl der Zeilen abschätzen und somit auch die Größe der einzelnen Partitionen. Die Partition im Quell-Data Warehouse wird in die einzelnen Verteilungen unterteilt.
+Außerdem können Sie ungefähr die Anzahl der Zeilen abschätzen und somit auch die Größe der einzelnen Partitionen. Die Partition im Quell-Data Warehouse wird in die einzelnen Verteilungen unterteilt.
 
 Verwenden Sie die folgende Berechnung zum Bestimmen der Partitionsgröße:
 
@@ -92,7 +92,7 @@ FROM    sys.pdw_distributions
 Sie wissen jetzt, wie groß jede Partition im Quellsystem ist und welche Größe Sie für SQLDW planen können, sodass Sie die Partitionsgrenze festlegen können.
 
 ### Workloadverwaltung
-Eine letzte Information, die Sie der Tabellenpartitionsentscheidung berücksichtigen müssen, ist die Workloadverwaltung. In SQL Data Warehouse wird die maximale Speichermenge für die einzelnen Verteilungspunkte während der Abfrageausführung durch dieses Feature geregelt. Im folgenden Artikel finden Sie weitere Informationen zur [Workloadverwaltung]. Im Idealfall wird die Partitionsgröße hinsichtlich speicherinterner Vorgänge angepasst, wie z. B Columnstore-Indexneuerstellungen. Die Neuerstellung eines Index ist ein speicherintensiver Vorgang. Aus diesem Grund sollten Sie sicherstellen, dass für die Neuerstellung des Partitionsindex genügend Arbeitsspeicher zur Verfügung steht. Sie können die Menge an Arbeitsspeicher für die Abfrage erhöhen, indem Sie von der Standardrolle zu einer der anderen verfügbaren Rollen wechseln.
+Eine letzte Information, die Sie der Tabellenpartitionsentscheidung berücksichtigen müssen, ist die Workloadverwaltung. In SQL Data Warehouse wird die maximale Speichermenge für die einzelnen Verteilungspunkte während der Abfrageausführung durch dieses Feature geregelt. Im folgenden Artikel finden Sie weitere Informationen zur [Workloadverwaltung]. Im Idealfall wird die Partitionsgröße hinsichtlich speicherinterner Vorgänge angepasst, wie z. B Columnstore-Indexneuerstellungen. Die Neuerstellung eines Index ist ein speicherintensiver Vorgang. Aus diesem Grund sollten Sie sicherstellen, dass für die Neuerstellung des Partitionsindex genügend Arbeitsspeicher zur Verfügung steht. Sie können die Menge an Arbeitsspeicher für die Abfrage erhöhen, indem Sie von der Standardrolle zu einer der anderen verfügbaren Rollen wechseln.
 
 Informationen über die Zuordnung von Arbeitsspeicher pro Verteilung erhalten Sie durch Abfragen der dynamischen Resource Governor-Verwaltungsansichten. In der Praxis ist die Arbeitsspeicherzuweisung kleiner als in den folgenden Abbildungen. Die Abbildung bietet jedoch eine Richtlinie, die Sie für die Größe der Partitionen für Verwaltungsvorgänge verwenden können.
 
@@ -236,7 +236,7 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 ### Datenquellen-Steuerelement für die Tabellenpartitionierung
 Um ein **Rosten** der Tabellendefinition in Ihrem Quellcodeverwaltungssystem zu vermeiden, sollten Sie die folgende Vorgehensweise befolgen:
 
-1. Erstellen der Tabelle als partitionierte Tabelle ohne Partitionswerte
+Erstellen Sie die Tabelle als partitionierte Tabelle, aber ohne Partitionswerte:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -260,7 +260,7 @@ WITH
 ;
 ```
 
-2. Führen Sie einen `SPLIT` für die Tabelle als Teil des Bereitstellungsprozesses durch:
+Führen Sie einen `SPLIT` für die Tabelle als Teil des Bereitstellungsprozesses durch:
 
 ```sql
 -- Create a table containing the partition boundaries
@@ -336,4 +336,4 @@ Nachdem Sie Ihr Datenbankschema erfolgreich in SQL Data Warehouse migriert haben
 
 <!-- Other web references -->
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0629_2016-->

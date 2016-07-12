@@ -22,14 +22,15 @@ Dieser Artikel beschreibt die Verwendung der Kopieraktivität in einer Azure Dat
 
 In den folgenden Beispielen wird veranschaulicht, wie Sie Daten in und aus Azure DocumentDB und Azure-BLOB-Speicher kopieren. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus beliebigen Quellen in die [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
 
+[AZURE.NOTE] Das Kopieren von Daten aus Azure DocumentDB an lokale/Azure IaaS-basierte Datenspeicher (und umgekehrt) wird derzeit nicht unterstützt. Die vollständige Matrix für Azure DocumentDB wird in Kürze unterstützt.
 
 ## Beispiel: Kopieren von Daten aus DocumentDB in ein Azure-Blob
 
 Das nachstehende Beispiel zeigt Folgendes:
 
 1. Einen verknüpften Dienst des Typs [DocumentDb](#azure-documentdb-linked-service-properties)
-2. Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 
-3. Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [DocumentDbCollection](#azure-documentdb-dataset-type-properties) 
+2. Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)
+3. Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [DocumentDbCollection](#azure-documentdb-dataset-type-properties)
 4. Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)
 4. Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [DocumentDbCollectionSource](#azure-documentdb-copy-activity-type-properties) und [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) verwendet
 
@@ -170,7 +171,7 @@ Das nachstehende Beispiel zeigt Folgendes:
 1. Einen verknüpften Dienst des Typs [DocumentDb](#azure-documentdb-linked-service-properties)
 2. Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)
 3. Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)
-4. Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [DocumentDbCollection](#azure-documentdb-dataset-type-properties) 
+4. Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [DocumentDbCollection](#azure-documentdb-dataset-type-properties)
 4. Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) und [DocumentDbCollectionSink](#azure-documentdb-copy-activity-type-properties) verwendet
 
 
@@ -399,16 +400,16 @@ Wenn bei der Kopieraktivität "source" den Typ **DocumentDbCollectionSource** ha
 
 | **Eigenschaft** | **Beschreibung** | **Zulässige Werte** | **Erforderlich** |
 | ------------ | --------------- | ------------------ | ------------ |
-| query | Geben Sie die Abfrage an, um Daten zu lesen. | Die Abfragezeichenfolge wird durch DocumentDB unterstützt. <br/>Beispiel: SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > "2009-01-01T00:00:00"<br/> | Nein <br/><br/>Falls nicht angegeben, wird folgende SQL-Anweisung ausgeführt: "select <columns defined in structure> from mycollection". 
-| nestingSeparator | Sonderzeichen, um anzugeben, dass das Dokument geschachtelt ist. | Beliebiges Zeichen. <br/><br/>DocumentDB ist ein NoSQL-Speicher für JSON-Dokumente, in denen geschachtelte Strukturen zulässig sind. Azure Data Factory ermöglicht dem Benutzer, über einen "nestingSeparator", in den obigen Beispielen ".", eine Hierarchie anzugeben. Mit dem Trennzeichen generiert die Kopieraktivität das Objekt "Name" mit den drei untergeordneten Elementen "First", "Middle" und "Last" gemäß "Name.First", "Name.Middle" und "Name.Last" in der Tabellendefinition. | Nein
+| query | Geben Sie die Abfrage an, um Daten zu lesen. | Die Abfragezeichenfolge wird durch DocumentDB unterstützt. <br/><br/>Beispiel: SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > "2009-01-01T00:00:00" | Nein <br/><br/>Falls nicht angegeben, die SQL-Anweisung, die ausgeführt wird: select <in „structure“ definierte Spalten> from mycollection 
+| nestingSeparator | Sonderzeichen, um anzugeben, dass das Dokument geschachtelt ist. | Beliebiges Zeichen. <br/><br/>DocumentDB ist ein NoSQL-Speicher für JSON-Dokumente, und geschachtelte Strukturen sind zulässig. Azure Data Factory ermöglicht dem Benutzer, über einen "nestingSeparator", in den obigen Beispielen ".", eine Hierarchie anzugeben. Mit dem Trennzeichen generiert die Kopieraktivität das Objekt "Name" mit den drei untergeordneten Elementen "First", "Middle" und "Last" gemäß "Name.First", "Name.Middle" und "Name.Last" in der Tabellendefinition. | Nein
 
 **DocumentDbCollectionSink** unterstützt die folgenden Eigenschaften:
 
 | **Eigenschaft** | **Beschreibung** | **Zulässige Werte** | **Erforderlich** |
 | -------- | ----------- | -------------- | -------- |
-| nestingSeparator | Ein Sonderzeichen im Quellspaltennamen, um anzuzeigen, dass das geschachtelte Dokument erforderlich ist. <br/><br/>Zum Beispiel oben: "Name.First" in der Ausgabetabelle erzeugt die folgende JSON-Struktur im DocumentDB-Dokument:<br/><br/>"Name": {<br/> "First": "John"<br/>}, | Zeichen, das zur Trennung der Schachtelungsebenen verwendet wird.<br/><br/>Standardwert ist "." (Punkt). | Zeichen, das zur Trennung der Schachtelungsebenen verwendet wird. <br/><br/>Standardwert ist "." (Punkt). | Nein | 
-| writeBatchSize | Anzahl der parallelen Anforderungen an den DocumentDB-Dienst zum Erstellen von Dokumenten.<br/><br/>Sie können die Leistung beim Kopieren von Daten in/aus DocumentDB mithilfe dieser Eigenschaft optimieren. Sie können eine bessere Leistung erwarten, wenn Sie "writeBatchSize" heraufsetzen, da mehr parallele Anforderungen an DocumentDB gesendet werden. Sie müssen jedoch eine Drosselung vermeiden, die zur Ausgabe einer Fehlermeldung führen kann: "Anforderungsrate ist hoch".<br/><br/>Die Drosselung hängt von einer Reihe von Faktoren ab, einschließlich Größe der Dokumente, Anzahl von Begriffen in Dokumenten, Indizierung der Richtlinie der Zielsammlung usw. Für Kopiervorgänge können Sie eine bessere Sammlung (z. B. S3) verwenden, um den optimalen verfügbaren Durchsatz zu erhalten (2.500 Anforderungseinheiten/Sekunde). | Ganzzahlwert | Nein |
-| writeBatchTimeout | Die Wartezeit für den Abschluss des Vorgangs. | (Einheit = Zeitspanne) Beispiel: "00:30:00" (30 Minuten). | Nein |
+| nestingSeparator | Ein Sonderzeichen im Quellspaltennamen, um anzuzeigen, dass das geschachtelte Dokument erforderlich ist. <br/><br/>Zum Beispiel oben: „Name.First“ in der Ausgabetabelle erzeugt im DocumentDB-Dokument die folgende JSON-Struktur:<br/><br/>"Name": {<br/> "First": "John"<br/>}, | Zeichen, das zur Trennung der Schachtelungsebenen verwendet wird.<br/><br/>Standardwert ist "." (Punkt). | Zeichen, das zur Trennung der Schachtelungsebenen verwendet wird. <br/><br/>Standardwert ist "." (Punkt). | Nein | 
+| writeBatchSize | Anzahl paralleler Anforderungen an den DocumentDB-Dienst zum Erstellen von Dokumenten.<br/><br/>Sie können die Leistung beim Kopieren von Daten in/aus DocumentDB mithilfe dieser Eigenschaft optimieren. Sie können eine bessere Leistung erwarten, wenn Sie "writeBatchSize" heraufsetzen, da mehr parallele Anforderungen an DocumentDB gesendet werden. Sie müssen jedoch eine Drosselung vermeiden, die zur Ausgabe einer Fehlermeldung führen kann: "Anforderungsrate ist hoch".<br/><br/>Die Drosselung hängt von einer Reihe von Faktoren ab, einschließlich Größe der Dokumente, Anzahl von Begriffen in Dokumenten, Indizierung der Richtlinie der Zielsammlung usw. Für Kopiervorgänge können Sie eine bessere Sammlung (z. B. S3) verwenden, um den optimalen verfügbaren Durchsatz zu erhalten (2.500 Anforderungseinheiten/Sekunde). | Integer | Nein (Standard = 10000) |
+| writeBatchTimeout | Die Wartezeit für den Abschluss des Vorgangs. | Zeitraum<br/><br/> Beispiel: 00:30:00 (30 Minuten) | Nein |
  
 ## Anhang
 1. **Frage:** Unterstützt die Kopieraktivität das Aktualisieren von vorhandenen Datensätzen?
@@ -421,7 +422,7 @@ Wenn bei der Kopieraktivität "source" den Typ **DocumentDbCollectionSource** ha
  
 3. **Frage:** Unterstützt Data Factory die [bereichs- oder hashbasierte Datenpartitionierung](https://azure.microsoft.com/documentation/articles/documentdb-partition-data/)?
 
-	**Antwort:** Nein. 
+	**Antwort:** Nein.
 4. **Frage**: Können mehrere DocumentDB-Auflistungen für eine Tabelle angegeben werden?
 	
 	**Antwort:** Nein. Zurzeit kann nur eine Auflistung angegeben werden.
@@ -429,4 +430,4 @@ Wenn bei der Kopieraktivität "source" den Typ **DocumentDbCollectionSource** ha
 ## Leistung und Optimierung  
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

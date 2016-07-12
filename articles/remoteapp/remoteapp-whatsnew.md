@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="05/02/2016"
+    ms.date="06/27/2016"
     ms.author="elizapo" />
 
 
@@ -38,7 +38,7 @@ Wussten Sie, dass das Azure RemoteApp-Team monatlich Updates im RDS-Blog veröff
 Im August gab es große Änderungen – hier sind die wichtigsten:
 
 - Sie können Azure-VNETs nun mit einer Cloudsammlung verwenden! Sehen Sie sich die [Anleitung zur Clouderstellung](remoteapp-create-cloud-deployment.md) an, in der Sie die neuen Schritte erfahren.
-- Es wurde ermöglicht, dem Startmenü für den Windows RemoteApp-Client Apps hinzuzufügen. Apps werden in der Anwendungsliste angezeigt, und Sie können sie an das Startmenü in Windows anheften.
+- Es wurde ermöglicht, dem **Startmenü** für den Windows RemoteApp-Client Apps hinzuzufügen. Apps werden in der Anwendungsliste angezeigt, und Sie können sie an das **Startmenü** in Windows anheften.
 - Ein neues Image wurde dem Azure-VM-Katalog hinzugefügt – Windows Server Remote Desktop Session Host with Microsoft Office 365 ProPlus.
 - Der Mac-Client wurde korrigiert, sodass Apps mit modalen Fenstern nicht mehr einfrieren.
 - Die Verwendung Ihres [Office 365 ProPlus-Abonnements](remoteapp-officesubscription.md) mit Azure RemoteApp wurde dokumentiert.
@@ -87,4 +87,4 @@ Vielen Dank, dass Sie uns treu bleiben. Im nächsten Monat gibt es weitere Updat
 ### Helfen Sie uns, Ihnen zu helfen
 Wussten Sie schon, dass Sie diesen Artikel im Bereich unten nicht nur bewerten und kommentieren, sondern ihn auch selbst ändern können? Fehlt etwas? Ist etwas nicht ganz richtig? Habe ich etwas geschrieben, das eher verwirrend ist? Scrollen Sie nach oben, und klicken Sie auf **Edit on GitHub**, um die gewünschten Änderungen vorzunehmen. Ihr Vorschlag wird uns vorgelegt, und wenn wir ihn bestätigt haben, werden Ihre Änderungen und Verbesserungen hier angezeigt.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

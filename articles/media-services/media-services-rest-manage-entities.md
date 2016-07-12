@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="05/03/2016" 
+	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 #Verwalten von Media Services-Entitäten mit der REST-API
@@ -25,11 +25,11 @@
 
 Microsoft Azure Media Services ist ein REST-basierter Dienst auf Grundlage von OData v3. Aus diesem Grund können Sie Entitäten genauso wie bei anderen OData-Diensten hinzufügen, abfragen, aktualisieren und löschen. Auf Ausnahmen wird ggf. hingewiesen. Weitere Informationen zu OData finden Sie in der [Dokumentation zu Open Data Protocol](http://www.odata.org/documentation/) (in englischer Sprache).
 
-- Hinzufügen von Entitäten 
-- Abfragen von Entitäten 
+- Hinzufügen von Entitäten
+- Abfragen von Entitäten
 - Auflisten von großen Auflistungen von Entitäten
-- Aktualisieren von Entitäten 
-- Löschen von Entitäten 
+- Aktualisieren von Entitäten
+- Löschen von Entitäten
 
 >[AZURE.NOTE] Beim Verwenden der Media Services REST-API gelten die folgenden Überlegungen:
 >
@@ -175,4 +175,4 @@ Im folgenden Beispiel wird das Löschen eines Locator veranschaulicht, mit dem e
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

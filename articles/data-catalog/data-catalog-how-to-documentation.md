@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
 	ms.workload="data-catalog"
-	ms.date="04/07/2016"
+	ms.date="06/27/2016"
 	ms.author="spelluru"/>
 
 # Dokumentdatenquellen
@@ -48,4 +48,4 @@ In der Dokumentation können z. B. die Merkmale und der Wert eines Datenressourc
 
 Durch das Dokumentieren von Datenquellen mit **Azure Data Catalog** können Sie eine Textbeschreibung Ihrer Datenressourcen mit allen erforderlichen Details erstellen. Mithilfe von Links können auf Inhalte in einem vorhandenen Inhaltsrepository verweisen; so werden Ihre vorhandenen Dokumente und Datenressourcen zusammengefasst. Sobald Ihre Benutzer geeignete Datenressourcen ermitteln, steht ihnen ein vollständiger Dokumentationssatz zur Verfügung.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

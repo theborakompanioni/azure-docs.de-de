@@ -60,7 +60,7 @@ Wenn beim Ausführen des Skripts die folgenden Warnungen ausgegeben werden, kön
 Nach Abschluss des Skripts wird die geschätzte Anzahl eDTUs ausgegeben, die für einen Pool erforderlich sind, der alle Datenbankkandidaten auf dem Zielserver enthalten soll. Diese geschätzten eDTUs können zum Erstellen und Konfigurieren des Pools verwendet werden. Nachdem der Pool erstellt wurde und Datenbanken in diesen Pool verschoben wurden, überwachen Sie ihn für einige Tage genauestens, und nehmen Sie im Bedarfsfall Anpassungen an der Konfiguration der Pool-eDTUs vor. Informationen finden Sie unter [Überwachen, Verwalten und Skalieren eines Pools für elastische Datenbanken](sql-database-elastic-pool-manage-portal.md)
 
 
-   [AZURE.INCLUDE [learn-about-deployment-models-classic-include](../../includes/learn-about-deployment-models-classic-include.md)
+   [AZURE.INCLUDE [learn-about-deployment-models-classic-include](../../includes/learn-about-deployment-models-classic-include.md)]
     
     param (
 	[Parameter(Mandatory=$true)][string]$AzureSubscriptionName, # Azure Subscription name - can be found on the Azure portal: https://portal.azure.com/
@@ -266,4 +266,4 @@ Nach Abschluss des Skripts wird die geschätzte Anzahl eDTUs ausgegeben, die fü
 
         
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

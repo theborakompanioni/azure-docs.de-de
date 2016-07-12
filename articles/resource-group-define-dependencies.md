@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/04/2016"
+   ms.date="06/23/2016"
    ms.author="tomfitz"/>
 
 # Definieren von Abhängigkeiten in Azure-Ressourcen-Manager-Vorlagen
@@ -101,11 +101,11 @@ Mit der reference-Funktion kann ein Ausdruck seinen Wert von anderen JSON-Name/W
 
 Sie können dieses Element oder das dependsOn-Element verwenden, um Abhängigkeiten anzugeben, aber Sie müssen nicht beide für dieselbe abhängige Ressource verwenden. Es empfiehlt sich, den impliziten Verweis zu verwenden, um das Risiko zu vermeiden, dass versehentlich ein unnötiges dependsOn-Element das Bereitstellungsmodul davon abhält, Aspekte der Bereitstellung parallel auszuführen.
 
-Weitere Informationen finden Sie unter [reference-Funktion](../resource-group-template-functions/#reference).
+Weitere Informationen finden Sie unter [reference-Funktion](resource-group-template-functions.md#reference).
 
 ## Nächste Schritte
 
-- Weitere Informationen zum Erstellen von Azure-Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Vorlagen](resource-group-authoring-templates.md). 
+- Weitere Informationen zum Erstellen von Azure-Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Vorlagen](resource-group-authoring-templates.md).
 - Eine Liste der verfügbaren Funktionen in einer Vorlage finden Sie unter [Funktionen von Azure Resource Manager-Vorlagen](resource-group-template-functions.md).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0629_2016-->

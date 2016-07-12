@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="03/24/2016"
+	ms.date="06/24/2016"
 	ms.author="jroth"/>
 
 # Konfigurieren der Azure-Schlüsseltresor-Integration für SQL Server auf virtuellen Azure-Computern (Ressourcen-Manager)
@@ -39,9 +39,8 @@ Wenn Sie mithilfe von Resource Manager einen neuen virtuellen SQL Server-Compute
 
 Eine ausführliche exemplarische Vorgehensweise zur Bereitstellung finden Sie unter [Provision a SQL Server virtual machine in the Azure Portal](virtual-machines-windows-portal-sql-server-provision.md) (Bereitstellen eines virtuellen SQL Server-Computers im Azure-Portal).
 
-Wenn Sie die Azure Key Vault-Integration auf einer vorhandenen VM aktivieren müssen, können Sie eine Vorlage verwenden. Weitere Informationen finden Sie unter [Azure quickstart template for Azure Key Vault integration](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-keyvault-setup) (Azure-Schnellstartvorlage für die Azure Key Vault-Integration).
-
+Wenn Sie die Azure Key Vault-Integration auf einer vorhandenen VM aktivieren müssen, können Sie eine Vorlage verwenden. Weitere Informationen finden Sie unter [Azure quickstart template for Azure Key Vault integration](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-keyvault-update) (Azure-Schnellstartvorlage für die Azure Key Vault-Integration).
 
 [AZURE.INCLUDE [Nächste Schritte der Azure-Schlüsseltresor-Integration](../../includes/virtual-machines-sql-server-akv-next-steps.md)]
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="06/27/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C-Vorschau: Einschränkungen
@@ -24,7 +24,7 @@ Es gibt mehrere Features und Funktionen von Azure Active Directory (Azure AD) B2
 
 ## Probleme bei der Erstellung von Azure AD B2C-Mandanten
 
-Wenn während der [Erstellung eines Azure AD B2C-Mandanten](active-directory-b2c-get-started) Probleme auftreten, finden Sie eine Anleitung unter [Erstellen eines Azure AD-Mandanten oder eines Azure AD B2C-Mandanten – Probleme und Lösungen](active-directory-b2c-support-create-directory.md).
+Wenn während der [Erstellung eines Azure AD B2C-Mandanten](active-directory-b2c-get-started.md) Probleme auftreten, finden Sie eine Anleitung unter [Erstellen eines Azure Active Directory (Azure AD)-Mandanten oder eines Azure AD B2C-Mandanten – Probleme und Lösungen](active-directory-b2c-support-create-directory.md).
 
 ## Probleme beim Branding in der Bestätigungs-E-Mail
 
@@ -70,9 +70,13 @@ Die Preview-Version von Azure AD B2C unterstützt OpenID Connect und OAuth 2.0.
 
 Viele der von der Preview-Version von Azure AD B2C ausgestellten Token werden als JSON-Webtoken (JWTs) implementiert. Aber nicht alle Informationen, die in JWTs enthalten sind (als „Ansprüche“ bezeichnet), sind richtig, oder sie fehlen sogar. Beispiele hierfür sind die Ansprüche „sub“ und „preferred\_username“. Sie können davon ausgehen, dass sich einige Dinge während der Preview-Phase ändern werden. Lesen Sie sich die [Token-Referenz](active-directory-b2c-reference-tokens.md) durch, um ein besseres Verständnis für die Token zu entwickeln, die vom Azure AD B2C-Dienst derzeit ausgegeben werden.
 
+## Einschränkung für geschachtelte Gruppen
+
+Geschachtelte Gruppenmitgliedschaften werden in Azure AD B2C-Mandanten nicht unterstützt. Es ist nicht geplant, diese Funktion hinzuzufügen.
+
 ## Probleme mit der Benutzerverwaltung im klassischen Azure-Portal
 
-Sie können über das Azure-Portal auf B2C-Features zugreifen. Sie können jedoch das klassische Azure-Portal verwenden, um auf andere Mandantenfeatures zuzugreifen, z. B. auf die Benutzerverwaltung. Derzeit treten im klassischen Azure-Portal einige bekannte Probleme mit der Benutzerverwaltung auf (Registerkarte **Benutzer**):
+Sie können über das Azure-Portal auf B2C-Features zugreifen. Sie können jedoch das klassische Azure-Portal verwenden, um auf andere Mandantenfeatures zuzugreifen, z. B. auf die Benutzerverwaltung. Derzeit sind für das klassische Azure-Portal einige Probleme mit der Benutzerverwaltung (Registerkarte **Benutzer**) bekannt:
 
 - Für einen Benutzer mit lokalem Konto (also ein Endkunde, der sich mit E-Mail-Adresse und Kennwort oder Benutzername und Kennwort registriert) entspricht das Feld **Benutzername** nicht dem Anmeldebezeichner (E-Mail-Adresse oder Benutzername), der während der Registrierung verwendet wurde. Dies liegt daran, dass das im klassischen Azure-Portal angezeigte Feld eigentlich der Benutzerprinzipalname ist, der in B2C-Szenarien nicht verwendet wird. Wenn Sie den Anmeldebezeichner des lokalen Kontos anzeigen möchten, suchen Sie das Benutzerobjekt im [Graph-Explorer](https://graphexplorer.cloudapp.net/). Auf das gleiche Problem stoßen Sie bei einem Benutzer mit einem Konto bei einem sozialen Netzwerk (also ein Consumer, der sich mit Facebook, Google+ usw. anmeldet), aber in diesem Fall ist kein eigentlicher Anmeldebezeichner vorhanden.
 
@@ -82,21 +86,21 @@ Sie können über das Azure-Portal auf B2C-Features zugreifen. Sie können jedoc
 
 ## Probleme bei vom Administrator initiierten Kennwortzurücksetzungen im klassischen Azure-Portal
 
-Wenn Sie das Kennwort für einen Endkunden mit einem lokalen Konto im klassischen Azure-Portal (mit dem Befehl **Kennwort zurücksetzen** auf der Registerkarte **Benutzer**) zurücksetzen, ist der Kunde nicht in der Lage, bei der nächsten Anmeldung sein Kennwort zu ändern, und er wird für Ihre Anwendungen gesperrt. Wir arbeiten an einer Problembehebung. Um dieses Problem zu umgehen, verwenden Sie die [Azure AD Graph-API](active-directory-b2c-devquickstarts-graph-dotnet.md) zum Zurücksetzen des Consumerkennworts.
+Wenn Sie das Kennwort für einen Endkunden mit einem lokalen Konto im klassischen Azure-Portal (mit dem Befehl **Kennwort zurücksetzen** auf der Registerkarte **Benutzer**) zurücksetzen, kann der Kunde bei der nächsten Anmeldung sein Kennwort nicht ändern, falls Sie eine Registrierungs- oder Anmelderichtlinie verwenden, und wird für Ihre Anwendungen gesperrt. Wir arbeiten an einer Problembehebung. Verwenden Sie zur Umgehung des Problems die [Azure AD Graph-API](active-directory-b2c-devquickstarts-graph-dotnet.md), um das Kundenkennwort zurückzusetzen (ohne Kennwortablauf), oder verwenden Sie statt einer Registrierungs- oder Anmelderichtlinie eine Anmelderichtlinie.
 
-## Einschränkung beim Löschen von Azure AD B2C-Mandanten
+## Probleme beim Erstellen eines benutzerdefinierten Attributs
 
-Im klassischen Azure-Portal können Sie keinen Azure AD B2C-Mandanten löschen.
+Ein [über das Azure-Portal hinzugefügtes benutzerdefiniertes Attribut](active-directory-b2c-reference-custom-attr.md) wird nicht sofort in Ihrem B2C Mandanten erstellt. Das benutzerdefinierte Attribut muss in mindestens einer Ihrer Richtlinien verwendet werden, damit es in Ihrem B2C-Mandanten erstellt und über die Graph-API verfügbar wird.
 
 ## Probleme beim Überprüfen einer Domäne im klassischen Azure-Portal
 
-Derzeit können Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) keine Domänen erfolgreich überprüfen. Wir arbeiten an der Behebung des Problems.
+Derzeit können Domänen im [klassischen Azure-Portal](https://manage.windowsazure.com/) nicht erfolgreich überprüft werden. Wir arbeiten an der Behebung des Problems.
 
 ## Probleme beim Anmelden mit der MFA-Richtlinie in Safari-Browsern
 
 Anforderungen an Anmelderichtlinien (bei aktiviertem MFA) führen in Safari-Browsern zeitweise zu HTTP 400-Fehlern (ungültige Anforderung). Dies liegt am niedrigen Größenlimit für Cookies in Safari. Für dieses Problem gibt es mehrere Umgehungen:
 
 - Verwenden Sie die anstelle der Anmelderichtlinie die Richtlinie für Registrierung oder Anmeldung.
-- Verringern Sie die Anzahl von **Anwendungsansprüchen**, die in Ihrer Richtlinie angefordert werden. 
+- Verringern Sie die Anzahl der in Ihrer Richtlinie angeforderten **Anwendungsansprüche**.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

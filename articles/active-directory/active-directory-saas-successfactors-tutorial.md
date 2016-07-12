@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="04/06/2016" 
+    ms.date="06/29/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit SuccessFactors
@@ -39,7 +39,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Suc
 
 ###So aktivieren Sie die Anwendungsintegration für SuccessFactors:
 
-1.  Klicken Sie im linken Navigationsbereich des Azure-Verwaltungsportals auf **Active Directory**.
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-successfactors-tutorial/IC700993.png "Active Directory")
 
@@ -71,9 +71,9 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
   
 Wenn einmaliges Anmelden konfiguriert werden soll, müssen Sie sich an das SuccessFactors-Supportteam wenden.
 
-###So konfigurieren Sie einmaliges Anmelden:
+###So konfigurieren Sie einmaliges Anmelden
 
-1.  Klicken Sie im Azure AD-Portal auf der Anwendungsintegrationsseite für **SuccessFactors** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **SuccessFactors** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-successfactors-tutorial/IC791138.png "Einmaliges Anmelden konfigurieren")
 
@@ -85,12 +85,12 @@ Wenn einmaliges Anmelden konfiguriert werden soll, müssen Sie sich an das Succe
 
     ![App-URL konfigurieren](./media/active-directory-saas-successfactors-tutorial/IC791140.png "App-URL konfigurieren")
 
-    1.  Geben Sie im Textfeld **SuccessFactors-Anmelde-URL** die URL ein, welche die Benutzer zur Anmeldung bei der SuccessFactors-Anwendung verwenden (z. B. *https://performancemanager4.successfactors.com/sf/home?company=CompanyName&loginMethod=SSO*").
-	2.  Geben Sie in das Textfeld **SuccessFactors-Antwort-URL** **https://performancemanager4.successfactors.com/saml2/SAMLAssertionConsumer?company=CompanyName** ein.
+    1.  Geben Sie im Textfeld **SuccessFactors-Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei der SuccessFactors-Anwendung verwenden (z.B. „*https://performancemanager4.successfactors.com/sf/home?company=CompanyName&loginMethod=SSO*").
+    2.  Geben Sie in das Textfeld **SuccessFactors-Antwort-URL** **https://performancemanager4.successfactors.com/saml2/SAMLAssertionConsumer?company=CompanyName** ein.
 
-        >[AZURE.NOTE] Dieser Wert ist nur ein temporärer Platzhalter. 
-	>Sie erhalten den tatsächlichen Wert von Ihrem SuccessFactors Supportteam. 
-	>Später in diesem Lernprogramm werden Sie Anweisungen für die Kontaktaufnahme mit Ihrem SuccessFactors-Supportteam erhalten. 
+        >[AZURE.NOTE] Dieser Wert ist nur ein temporärer Platzhalter.  
+	>Sie erhalten den tatsächlichen Wert von Ihrem SuccessFactors Supportteam.  
+	>Später in diesem Lernprogramm werden Sie Anweisungen für die Kontaktaufnahme mit Ihrem SuccessFactors-Supportteam erhalten.  
 	>Im Rahmen dieser Konversation erhalten Sie Ihre tatsächliche SuccessFactors-Antwort-URL.
 
 4.  Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Einmaliges Anmelden konfigurieren für SuccessFactors** auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat auf Ihrem Computer.
@@ -107,13 +107,13 @@ Wenn einmaliges Anmelden konfiguriert werden soll, müssen Sie sich an das Succe
 
     Das Successfactors-Supportteam sendet Ihnen die richtige **Successfactors-Antwort-URL**, die Sie für das Dialogfeld **App-URL konfigurieren** benötigen.
 
-6.  Wählen Sie im Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
+6.  Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-successfactors-tutorial/IC791142.png "Einmaliges Anmelden konfigurieren")
 
 ##Konfigurieren der Benutzerbereitstellung
   
-Damit sich Azure AD-Benutzer bei SuccessFactors anmelden können, müssen sie in SuccessFactors bereitgestellt werden. 
+Damit sich Azure AD-Benutzer bei SuccessFactors anmelden können, müssen sie in SuccessFactors bereitgestellt werden.  
 Im Fall von SuccessFactors ist die Bereitstellung eine manuelle Aufgabe.
   
 Um in SuccessFactors erstellte Benutzer abzurufen, müssen Sie sich an das SuccessFactors-Supportteam wenden.
@@ -124,7 +124,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 ###So weisen Sie SuccessFactors Benutzer zu:
 
-1.  Erstellen Sie im Azure AD-Portal ein Testkonto.
+1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
 2.  Klicken Sie auf der Anwendungsintegrationsseite für **SuccessFactors** auf **Benutzer zuweisen**.
 
@@ -136,4 +136,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

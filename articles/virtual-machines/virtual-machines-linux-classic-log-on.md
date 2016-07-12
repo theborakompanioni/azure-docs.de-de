@@ -20,7 +20,7 @@
 
 #Anmelden bei einem mit Linux betriebenen virtuellen Computer #
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager deployment model](virtual-machines-linux-quick-create-portal.md).
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Bereitstellungsmodell ausführen](virtual-machines-linux-quick-create-portal.md).
 
 Sie müssen einen SSH-Client auf dem Computer installieren, über den Sie sich beim virtuellen Computer anmelden möchten. Es gibt eine Vielzahl an SSH-Client-Programmen, die Sie verwenden können. Hier einige mögliche Programme:
 
@@ -47,4 +47,4 @@ Sie können jetzt mit dem virtuellen Computer wie mit jedem anderen Server arbei
 <!-- LINKS -->
 [Zurücksetzen eines Kennworts oder einer SSH für virtuelle Linux-Computer]: http://go.microsoft.com/fwlink/p/?LinkId=512138
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

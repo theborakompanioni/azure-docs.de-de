@@ -5,7 +5,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
-	manager="stevenpo"
+	manager="swadhwa"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/07/2016"
+	ms.date="06/23/2016"
 	ms.author="femila"/>
 
 # Azure Authenticator für Android
@@ -37,13 +37,13 @@ Die folgenden Anweisungen gelten für Telefone mit Samsung GS3 oder höher bzw. 
 
 1. Stimmen Sie auf dem Startbildschirm der App den Microsoft-Software-Lizenzbedingungen zu.
 2. Klicken Sie auf dem Bildschirm "Konto aktivieren" auf das Kontextmenü rechts, und wählen Sie **Geschäftskonto** aus.
-3. Wählen Sie auf dem Bildschirm "Konto hinzufügen" die Option "Geschäftskonto" aus.
+3. Wählen Sie auf dem Bildschirm „Konto hinzufügen“ die Option **Geschäftskonto** aus.
 4. Klicken Sie auf dem Bildschirm "Geräteadministrator aktivieren" auf **Aktivieren**.
 5. Aktivieren Sie auf dem Bildschirm "Datenschutzrichtlinien" das Kontrollkästchen, und klicken Sie auf **Bestätigen**.
 6. Geben Sie auf dem Bildschirm "Arbeitsbereichverknüpfung" die Benutzer-ID ein, die Ihre Organisation bereitgestellt hat, und klicken Sie auf **Verknüpfen**.
 7. Geben Sie zum Anmelden bei der Azure Authenticator-App Ihr Organisationskonto und Ihr Kennwort ein, und klicken Sie auf **Anmelden**.
 8. Der nächste Bildschirm, auf dem Informationen zur mehrstufigen Authentifizierung (MFA) anzeigt werden, soll zusätzliche Sicherheit bieten und ist optional. Dieser Bildschirm wird angezeigt, wenn Ihre Firma oder Schule zum Erstellen eines Geschäftskontos eine zweistufige Authentifizierung verlangt. Er enthält Anweisungen zur weiteren Verifizierung Ihres Kontos.
-9. Auf dem Bildschirm "Arbeitsbereichverknüpfung" wird die Meldung "Verknüpfen Ihres Arbeitsbereichs" angezeigt. Die Azure Authenticator-App versucht, das Gerät mit dem Arbeitsplatz zu verbinden.
+9. Auf dem Bildschirm „Arbeitsbereichverknüpfung“ wird die Meldung **Verknüpfen Ihres Arbeitsbereichs** angezeigt. Die Azure Authenticator-App versucht, das Gerät mit dem Arbeitsplatz zu verbinden.
 10. Auf dem nächsten Bildschirm müsste die Meldung angezeigt werden, dass der Arbeitsbereich verknüpft wurde.
 
 >[AZURE.NOTE]
@@ -72,7 +72,7 @@ Sie dürfen auf dem Gerät ein einzelnes Geschäftskonto einrichten.
 
 Nach der Installation der Azure Authenticator-App können Sie auch über den Android Account Manager ein Geschäftskonto erstellen.
 
-1. Navigieren Sie über das Menü **Einstellungen** zu den Konten, und klicken Sie auf **Konto hinzufügen**.
+1. Navigieren Sie im Menü **Einstellungen** zu „Konten“, und klicken Sie auf **Konto hinzufügen**.
 2. Führen Sie die Schritte 2 bis 7 in der Prozedur "Hinzufügen eines Geschäftskontos über den Startbildschirm der App" aus, um ein Geschäftskonto hinzuzufügen.
 
 ### Ermitteln der installierten Version
@@ -111,10 +111,10 @@ Es wird empfohlen, die Option „Konto entfernen“ nicht zum Löschen eines Ges
 
 Vor dem Deinstallieren der App müssen auf einem Samsung Android-Gerät Geräteadministratorrechte wie im Folgenden beschrieben entfernt werden.
 1. Wählen Sie in **Einstellungen** unter **System** den Eintrag **Sicherheit**.
-2. Klicken Sie in der Geräteverwaltung auf **Geräteadministratoren**. Stellen Sie sicher, dass das Kontrollkästchen neben **Azure Authenticator** deaktiviert ist.
+2. Klicken Sie in der **Geräteverwaltung** auf **Geräteadministratoren**. Stellen Sie sicher, dass das Kontrollkästchen neben **Azure Authenticator** deaktiviert ist.
 
 ##Problembehandlung
 
 Wenn Sie die Fehlermeldung **Schlüsselspeicherfehler** sehen, liegt dies möglicherweise daran, dass Sie den Sperrbildschirm nicht mit einer PIN eingerichtet haben. Um dieses Problem zu umgehen, deinstallieren Sie die Azure Authenticator-App, konfigurieren Sie eine PIN für den Sperrbildschirm, und installieren Sie die App neu.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

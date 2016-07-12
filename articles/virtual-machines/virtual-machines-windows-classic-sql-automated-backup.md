@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Automatisierte Sicherung für virtuelle SQL Server-Computer (klassisch) | Microsoft Azure"
-	description="Erläutert das Feature „Automatisierte Sicherung“ für SQL Server auf virtuellen Azure-Computern unter Verwendung des Resource Manager."
+	description="Erläutert das Feature „Automatisierte Sicherung“ für SQL Server auf virtuellen Azure-Computern unter Verwendung des Resource Manager. "
 	services="virtual-machines-windows"
 	documentationCenter="na"
 	authors="rothja"
@@ -24,9 +24,9 @@
 
 Die automatisierte Sicherung konfiguriert automatisch [Managed Backup für Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) für alle vorhandenen und neuen Datenbanken auf einer Azure-VM, auf der SQL Server 2014 Standard oder Enterprise ausgeführt wird. Dies bietet Ihnen die Möglichkeit, reguläre Datenbanksicherungen zu konfigurieren, die permanenten Azure-Blob-Speicher nutzen. Die automatische Sicherung basiert auf der [Erweiterung für den SQL Server-IaaS-Agent](virtual-machines-windows-classic-sql-server-agent-extension.md).
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 
 
-Ressourcen-Manager-Modell. Die Resource Manager-Version dieses Artikels finden Sie unter [Automatisierte Sicherung für SQL Server auf virtuellen Azure-Computern (Resource Manager)](virtual-machines-windows-sql-automated-backup.md).
+Die Resource Manager-Version dieses Artikels finden Sie unter [Automatisierte Sicherung für SQL Server auf virtuellen Azure-Computern (Resource Manager)](virtual-machines-windows-sql-automated-backup.md).
 
 ## Voraussetzungen
 
@@ -118,4 +118,4 @@ Informationen zu anderen verfügbaren Automatisierungsaufgaben finden Sie unter 
 
 Ausführlichere Informationen zur Verwendung von SQL Server auf virtuellen Azure-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!----HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

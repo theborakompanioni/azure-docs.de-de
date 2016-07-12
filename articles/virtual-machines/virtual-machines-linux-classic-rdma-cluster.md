@@ -18,7 +18,7 @@ ms.service="virtual-machines-linux"
 
 # Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
 Hier erfahren Sie, wie Sie einen Linux RDMA-Cluster mit [virtuellen Computern der Größe A8 und A9](virtual-machines-linux-a8-a9-a10-a11-specs.md) in Azure einrichten, um parallele MPI (Message Passing Interface)-Anwendungen auszuführen. Wenn Sie einen Cluster mit virtuellen Computern der Größe A8 und A9 zur Ausführung einer unterstützten Linux-HPC-Implementierung und einer unterstützten MPI-Implementierung konfigurieren, wird die Kommunikation der MPI-Anwendungen in Azure effizient über ein auf RDMA-Technologie (Remote Direct Memory Access) basierendes Netzwerk mit geringer Latenz und hohem Durchsatz abgewickelt.
@@ -101,7 +101,7 @@ Nach Abschluss der VM-Bereitstellung stellen Sie mithilfe der externen IP-Adress
 
 >[AZURE.IMPORTANT]Microsoft Azure bietet keinen Stammzugriff auf Linux-VMs. Wenn Sie beim virtuellen Computer als Benutzer angemeldet sind, können Sie Befehle mit `sudo` ausführen, um Administratorzugriff zu erhalten.
 
-* **Updates** – Installieren Sie Updates mit **zypper**. Sie können auch NFS-Dienstprogramme installieren.  
+* **Updates** – Installieren Sie Updates mit **zypper**. Sie können auch NFS-Dienstprogramme installieren.
 
     >[AZURE.IMPORTANT]Wenn Sie einen SLES 12-HPC-VM bereitgestellt haben, raten wir derzeit davon ab, Kernel-Updates zu installieren, da dies zu Problemen mit den Linux RDMA-Treibern führen kann.
     >
@@ -127,7 +127,7 @@ Nach Abschluss der VM-Bereitstellung stellen Sie mithilfe der externen IP-Adress
 
         <User or group name> soft    memlock <memory required for your application in KB>
 
-    >[AZURE.NOTE]Zu Testzwecken können Sie "memlock" auch auf "unbegrenzt" festlegen. Beispiel: `<User or group name> hard memlock unlimited.
+    >[AZURE.NOTE]Zu Testzwecken können Sie "memlock" auch auf "unbegrenzt" festlegen. Beispiel: „<Benutzer- oder Gruppenname> hard memlock unlimited“
 
 * **SSH-Schlüssel für SLES 12-VMs** – Generieren Sie SSH-Schlüssel, um bei der Ausführung von MPI-Aufträgen zwischen allen Computeknoten im SLES 12-HPC-Cluster eine Vertrauensstellung für Ihr Benutzerkonto einzurichten. (Überspringen Sie diesen Schritt, wenn Sie einen CentOS-basierten HPC-VM bereitgestellt haben. Anweisungen zum Einrichten einer kennwortlosen SSH-Vertrauensstellung zwischen den Clusterknoten nach Erfassung des Images und Bereitstellung des Clusters finden Sie weiter unten in diesem Artikel.)
 
@@ -234,9 +234,9 @@ Führen Sie nun das Skript aus, und geben Sie dabei drei Parameter an: den gemei
 
 Das Skript bewirkt Folgendes:
 
-* Es erstellt auf dem Hostknoten ein Verzeichnis namens „.ssh“ (wird für die Anmeldung ohne Kennwort benötigt). 
-* Es erstellt im Verzeichnis „.ssh“ eine Konfigurationsdatei, mit der die kennwortlose Anmeldung angewiesen wird, Anmeldungen von beliebigen Knoten im Cluster zuzulassen. 
-* Es erstellt Dateien mit den Namen und IP-Adressen aller Knoten im Cluster. Diese Dateien bleiben nach Ausführung des Skripts zu Referenzzwecken erhalten. 
+* Es erstellt auf dem Hostknoten ein Verzeichnis namens „.ssh“ (wird für die Anmeldung ohne Kennwort benötigt).
+* Es erstellt im Verzeichnis „.ssh“ eine Konfigurationsdatei, mit der die kennwortlose Anmeldung angewiesen wird, Anmeldungen von beliebigen Knoten im Cluster zuzulassen.
+* Es erstellt Dateien mit den Namen und IP-Adressen aller Knoten im Cluster. Diese Dateien bleiben nach Ausführung des Skripts zu Referenzzwecken erhalten.
 * Es erstellt ein Schlüsselpaar mit privatem und öffentlichem Schlüssel für jeden Clusterknoten (auch für den Hostknoten), gibt die Informationen zum Schlüsselpaar weiter und erstellt einen Eintrag in der Datei „authorized\_keys“.
 
 >[AZURE.WARNING]Die Ausführung dieses Skripts stellt ein potenzielles Sicherheitsrisiko dar. Stellen Sie sicher, dass die Informationen des öffentlichen Schlüssels in „~/.ssh“ nicht weitergegeben werden.
@@ -398,4 +398,4 @@ In einem funktionierenden Cluster mit zwei Knoten wird eine Ausgabe angezeigt, d
 
 * Verwenden Sie eine [Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/intel-lustre-clients-on-centos), um einen Intel Lustre-Cluster unter Verwendung eines CentOS-basierten HPC-Images zu erstellen.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

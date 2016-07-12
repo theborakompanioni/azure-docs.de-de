@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="05/04/2016" 
+    ms.date="06/24/2016" 
     ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690945.aspx -->
@@ -279,8 +279,8 @@ Hinweis: Unter Windows-fremden Betriebssystemen sind die Einstellungen für die 
 
 Die beiden folgenden Cloudbereitstellungsoptionen für Quelle und Art Ihres JDK-Pakets stehen unabhängig vom verwendeten Betriebssystem zur Verfügung:
 
-* **In Azure verfügbares JDK-Drittanbieterpaket bereitstellen** 
-* **Auf der Grundlage eines benutzerdefinierten Downloads bereitstellen** 
+* **In Azure verfügbares JDK-Drittanbieterpaket bereitstellen**
+* **Auf der Grundlage eines benutzerdefinierten Downloads bereitstellen**
 
 Informationen zur Option **In Azure verfügbares JDK-Drittanbieterpaket bereitstellen**:
 
@@ -323,7 +323,7 @@ Informationen zur Option **In Azure verfügbaren Drittanbieterserver bereitstell
 Informationen zur Option **Auf der Grundlage eines benutzerdefinierten Downloads bereitstellen**:
 
 1. Vergewissern Sie sich, dass Sie gemäß den vorhergehenden Schritten bereits einen Servertyp ausgewählt haben. Diese Angabe wird vom Plug-In benötigt, um den Server auf der Grundlage Ihres benutzerdefinierten Downloads bereitzustellen. Dieser muss nämlich der gleichen Servertypfamilie angehören.
-1. Aktivieren Sie das Kontrollkästchen **Auf der Grundlage eines benutzerdefinierten Downloads bereitstellen**. Wenn Sie einen Download aus Ihrem Azure-Speicherkonto verwenden möchten, wählen Sie in der Dropdownliste **Speicherkonto** das Speicherkonto aus. (Der Listeninhalt kann durch Klicken auf den Link **Konten** geändert werden.) Daraufhin wird das Feld **URL** teilweise ausgefüllt. Geben Sie anschließend den Rest der URL zu Ihrer Serverdownload-ZIP-Datei ein. (Bei Verwendung von Azure Storage müssen Blob-Namen in der URL in Kleinbuchstaben angegeben werden.) Wenn Sie Azure Storage nicht verwenden möchten, wählen Sie in der Dropdownliste **Speicherkonto** die Option **(Kein)** aus, und geben Sie in das Feld **URL** die URL für Ihre Serverdownload-ZIP-Datei ein. Die ZIP-Datei enthält einen untergeordneten Ordner, der das Installationsverzeichnis Ihres Anwendungsservers darstellt. Wenn Sie also beispielsweise eine ZIP-Datei für Apache Tomcat 7.0.35 verwenden, enthält die ZIP-Datei den untergeordneten Ordner für das Installationsverzeichnis (etwa **apache-tomcat-7.0.35**). 
+1. Aktivieren Sie das Kontrollkästchen **Auf der Grundlage eines benutzerdefinierten Downloads bereitstellen**. Wenn Sie einen Download aus Ihrem Azure-Speicherkonto verwenden möchten, wählen Sie in der Dropdownliste **Speicherkonto** das Speicherkonto aus. (Der Listeninhalt kann durch Klicken auf den Link **Konten** geändert werden.) Daraufhin wird das Feld **URL** teilweise ausgefüllt. Geben Sie anschließend den Rest der URL zu Ihrer Serverdownload-ZIP-Datei ein. (Bei Verwendung von Azure Storage müssen Blob-Namen in der URL in Kleinbuchstaben angegeben werden.) Wenn Sie Azure Storage nicht verwenden möchten, wählen Sie in der Dropdownliste **Speicherkonto** die Option **(Kein)** aus, und geben Sie in das Feld **URL** die URL für Ihre Serverdownload-ZIP-Datei ein. Die ZIP-Datei enthält einen untergeordneten Ordner, der das Installationsverzeichnis Ihres Anwendungsservers darstellt. Wenn Sie also beispielsweise eine ZIP-Datei für Apache Tomcat 7.0.35 verwenden, enthält die ZIP-Datei den untergeordneten Ordner für das Installationsverzeichnis (etwa **apache-tomcat-7.0.35**).
 1. Geben Sie den Wert für die Basisverzeichnis-Umgebungsvariable an. Standardmäßig wird der Wert für Ihren lokalen Anwendungsserver verwendet (sofern vorhanden). Sie können jedoch einen anderen Wert angeben, falls Ihr Cloudanwendungsserver nicht Ihrem lokalen Anwendungsserver entspricht. Ihr Cloudanwendungsserver muss jedoch ebenfalls der zuvor ausgewählten Servertypfamilie angehören. Bei einer späteren Aktualisierung Ihrer ZIP-Datei für den Cloudanwendungsserver können Sie die Einstellung für das Basisverzeichnis manuell ändern oder wieder auf Ihre lokale Einstellung festlegen (falls Sie auch Ihren lokalen Anwendungsserver geändert haben).
 1. Klicken Sie zum Speichern der Änderungen auf **OK**.
 
@@ -439,4 +439,4 @@ Weitere Informationen zur Verwendung von Azure mit Java finden Sie im [Azure Jav
 [ic719512]: ./media/azure-toolkit-for-eclipse-azure-role-properties/ic719512.png
 [ic719481]: ./media/azure-toolkit-for-eclipse-azure-role-properties/ic719481.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

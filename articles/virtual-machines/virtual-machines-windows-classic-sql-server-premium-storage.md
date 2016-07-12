@@ -24,7 +24,7 @@
 
 [Azure Premium-Speicher](../storage/storage-premium-storage.md) ist die nächste Speichergeneration mit geringer Latenz und hohem E/A-Durchsatz. Er ist ideal geeignet für hohe E/A-Workloads, wie z. B. SQL Server auf [virtuellen IaaS-Computern](https://azure.microsoft.com/services/virtual-machines/).
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
 Dieser Artikel enthält die Planung und Anleitungen zum Migrieren eines virtuellen Computers für die Verwendung mit Premium-Speicher. Dies umfasst Schritte für die Azure-Infrastruktur (Netzwerk, Speicher) und virtuelle Windows-Gastsysteme. Das Beispiel im [Anhang](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage) zeigt eine vollständige End-to-End-Migration zum Verschieben größerer virtueller Computer mit PowerShell, um die verbesserten lokalen SSD-Speicher zu nutzen.
@@ -96,7 +96,7 @@ Durch den folgenden **New-AzureStorageAccountPowerShell**-Befehl mit dem **Typ**
 
 ### Cacheeinstellungen für virtuelle Festplatten
 
-Der Hauptunterschied beim Erstellen von Datenträgern, die Teil eines Premium-Speicherkontos sind, ist die Datenträger-Cacheeinstellung. Für SQL Server-Datenvolumes wird die Verwendung von **"Lesecache"** empfohlen. Für Transaktions-Protokollvolumes sollten die Datenträger-Cacheeinstellungen auf **"Keine"** festgelegt werden. Dies unterscheidet sich von den Empfehlungen für die Standardspeicherkonten.
+Der Hauptunterschied beim Erstellen von Datenträgern, die Teil eines Premium-Speicherkontos sind, ist die Datenträger-Cacheeinstellung. Für SQL Server-Datenvolumes wird das **Zwischenspeichern von Lesevorgängen** empfohlen. Für Transaktionsprotokollvolumes sollten die Datenträger-Cacheeinstellungen auf **Keine** festgelegt werden. Dies unterscheidet sich von den Empfehlungen für die Standardspeicherkonten.
 
 Nachdem die VHDs angefügt wurden, kann die Cacheeinstellung nicht geändert werden. Sie müssen die virtuelle Festplatte trennen und mit aktualisierten Cacheeinstellungen erneut anfügen.
 
@@ -410,7 +410,7 @@ Sie sollten Zeit für die Durchführung manueller Failover- und Chaostests auf d
 1. Sobald die Überprüfung erfolgreich abgeschlossen wurde, starten Sie alle SQL Server-Dienste.
 1. Sichern Sie die Transaktionsprotokolle, und stellen Sie die Benutzerdatenbanken wieder her.
 1. Fügen Sie neue Knoten der AlwaysOn-Verfügbarkeitsgruppe hinzu, und speichern Sie die Replikation in **Syncronous**.
-1. Fügen Sie die IP-Adressressource der neuen ILB/ELB des Clouddiensts über PowerShell für AlwaysOn hinzu. Nehmen Sie als Grundlage das Beispiel mit mehreren Standorten im [Anhang](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage). Legen Sie in den Windows-Clustern die **Mögliche Besitzer** der Ressource **IP-Adresse** auf die neuen Knoten fest. Weitere Informationen finden Sie im Abschnitt "Hinzufügen einer IP-Adressressource im gleichen Subnetz" im [Anhang](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage).
+1. Fügen Sie die IP-Adressressource des neuen ILB/ELB des Clouddiensts über PowerShell für AlwaysOn hinzu. Nehmen Sie als Grundlage das Beispiel mit mehreren Standorten im [Anhang](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage). Legen Sie in den Windows-Clustern die **Mögliche Besitzer** der Ressource **IP-Adresse** auf die neuen Knoten fest. Weitere Informationen finden Sie im Abschnitt "Hinzufügen einer IP-Adressressource im gleichen Subnetz" im [Anhang](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage).
 1. Führen Sie ein Failover zu einem der neuen Knoten aus.
 1. Legen Sie die neuen Knoten als automatische Failoverpartner fest, und testen Sie die Failoverfunktionalität.
 1. Entfernen Sie die ursprünglichen Knoten aus der Verfügbarkeitsgruppe.
@@ -484,7 +484,7 @@ Eine Strategie für minimale Ausfallzeiten ist die sekundäre Verwendung einer v
 - Dieses Szenario wird mithilfe des asynchronen Azure-Cmdlets **Start-AzureStorageBlobCopy** ausgeführt. Es gibt nach Abschluss der Kopie keine SLA. Die Dauer der Kopiervorgänge hängt von der Wartezeit in der Warteschlange sowie der Menge der zu übertragenden Daten ab. Die Zeit für den Kopiervorgang nimmt zu, wenn die Übertragung an ein anderes Azure-Rechenzentrum erfolgt, das Premium-Speicher in einer anderen Region unterstützt. Wenn Sie lediglich über zwei Knoten verfügen, sollten Sie eine Umgehung für den Fall planen, dass das Kopieren länger dauert als in den Tests. Dies könnte die folgenden Umgehungen umfassen.
 	- Fügen Sie einen temporären dritten SQL Server-Knoten für hohe Verfügbarkeit vor der Migration mit erwarteter Ausfallzeit hinzu.
 	- Führen Sie die Migration außerhalb von geplanten Azure-Wartungen aus.
-	- Stellen Sie sicher, dass Sie das Clusterquorum ordnungsgemäß konfiguriert haben.  
+	- Stellen Sie sicher, dass Sie das Clusterquorum ordnungsgemäß konfiguriert haben.
 
 ##### Schritte auf oberer Ebene:
 
@@ -608,7 +608,7 @@ In diesem Beispiel wird die Umstellung von einem ELB zu einem ILB veranschaulich
     $destcloudsvc = "danNewSvcAms"
     New-AzureService $destcloudsvc -Location $location
 
-#### Schritt 2: Erhöhen der zulässigen Fehler für Ressourcen <Optional>
+#### Schritt 2: Erhöhen der zulässigen Fehler für Ressourcen <optional>
 Für bestimmte Ressourcen, die der AlwaysOn-Verfügbarkeitsgruppe angehören, bestehen Einschränkungen in Bezug darauf, wie viele Fehler in einem bestimmten Zeitraum auftreten können, in dem der Clusterdienst versucht, die Ressourcengruppe neu zu starten. Es wird empfohlen, dass Sie diesen Wert erhöhen, während Sie dieses Verfahren durchführen, da Sie dieser Grenze nahe kommen können, wenn Sie keine manuellen Failover ausführen oder Failover auslösen, indem Sie Computer herunterfahren.
 
 Es ist ratsam, diesen Grenzwert zu verdoppeln. Wechseln Sie dazu im Failovercluster-Manager zu den Eigenschaften der AlwaysOn-Ressourcengruppe:
@@ -617,7 +617,7 @@ Es ist ratsam, diesen Grenzwert zu verdoppeln. Wechseln Sie dazu im Failoverclus
 
 Ändern Sie den Wert für die maximale Fehleranzahl in 6.
 
-#### Schritt 3: Hinzufügen einer IP-Adressressource zur Clustergruppe <Optional>
+#### Schritt 3: Hinzufügen einer IP-Adressressource zur Clustergruppe <optional>
 
 Wenn Sie nur eine IP-Adresse für die Clustergruppe haben und diese am Cloudsubnetz ausgerichtet ist, denken Sie daran, dass die Cluster-IP-Adressressource und der Netzwerkname nicht online geschaltet werden können, wenn Sie versehentlich alle Clusterknoten in der Cloud in diesem Netzwerk offline schalten. Wenn dieser Fall auftritt, werden Aktualisierungen der anderen Clusterressourcen verhindert.
 
@@ -1148,4 +1148,4 @@ Informationen zum Hinzufügen einer IP-Adresse finden Sie im [Anhang](#appendix-
 [24]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/10_Appendix_14.png
 [25]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/10_Appendix_15.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

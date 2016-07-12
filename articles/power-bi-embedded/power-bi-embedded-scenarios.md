@@ -3,8 +3,8 @@
    description="Häufige Microsoft Power BI Embedded-Szenarios"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="dvana"
-   manager="NA"
+   authors="minewiskan"
+   manager="mblythe"
    editor=""
    tags=""/>
 <tags
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="03/29/2016"
-   ms.author="jocaplan"/>
+   ms.date="06/28/2016"
+   ms.author="owend"/>
 
 # Häufige Microsoft Power BI Embedded-Szenarios
 
@@ -32,4 +32,4 @@ Nachstehend finden Sie einige Szenarien für die Verwendung von **Power BI Embed
 - [Beispiel zu den ersten Schritten](power-bi-embedded-get-started.md)
 - [Erweitern Sie Power BI um benutzerdefinierte Visualisierungen](https://powerbi.microsoft.com/custom-visuals/)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

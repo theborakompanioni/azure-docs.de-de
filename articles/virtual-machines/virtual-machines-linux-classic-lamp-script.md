@@ -19,7 +19,7 @@
 
 #Bereitstellen einer LAMP-App mithilfe der Azure-CustomScript-Erweiterung für Linux#
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
 Die Microsoft Azure-CustomScript-Erweiterung für Linux bietet eine Möglichkeit, Ihre virtuellen Computer anzupassen, indem Sie beliebigen, in einer vom virtuellen Computer unterstützten Skriptsprache geschriebenen Code ausführen (z. B. Python, Bash usw.) Dies bietet eine sehr flexible Möglichkeit zum Automatisieren der Anwendungsbereitstellung auf verschiedenen Computern.
@@ -96,7 +96,7 @@ Sie können den Fortschritt bei der Ausführung des benutzerdefinierten Skripts 
     cd /var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.3.0.0/
     tail -f extension.log
 
-Nach dem Ausführen der CustomScript-Erweiterung können Sie die von Ihnen erstellte PHP-Seite nach Informationen durchsuchen. Die PHP-Seite für das Beispiel in diesem Artikel finden Sie unter **http://lamp-vm.cloudapp.net/phpinfo.php*.
+Nach dem Ausführen der CustomScript-Erweiterung können Sie die von Ihnen erstellte PHP-Seite nach Informationen durchsuchen. Die PHP-Seite für das Beispiel in diesem Artikel finden Sie unter *http://lamp-vm.cloudapp.net/phpinfo.php*.
 
 ## Zusätzliche Ressourcen
 
@@ -110,4 +110,4 @@ Nachfolgend finden Sie einige zusätzliche Ressourcen für die Azure-CLI, Linux 
 
 [Linux und Open-Source-Computing auf Azure](virtual-machines-linux-opensource-links.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0629_2016-->

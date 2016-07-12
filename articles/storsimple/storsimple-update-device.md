@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/12/2016"
+   ms.date="06/28/2016"
    ms.author="v-sharos" />
 
 # Aktualisieren von Geräten der StorSimple 8000-Serie
@@ -42,7 +42,7 @@ Regelmäßige Updates können ohne Unterbrechung des normalen Betriebs auf dem G
 
 ### Wartungsmodus-Updates
 
-Für Wartungsmodus-Updates muss der Betrieb unterbrochen werden. Dazu gehören z. B. Firmwareupgrades für Datenträger oder USM-Firmwareupgrades. Für diese Updates muss das Gerät in den Wartungsmodus versetzt werden. Einzelheiten dazu finden Sie hier: [Schritt 2: Wechseln in den Wartungsmodus](#step2). Sie können Wartungsmodus-Updates nicht über das klassische Azure-Portal installieren. Sie müssen stattdessen Windows PowerShell für StorSimple verwenden.
+Für Updates im Wartungsmodus muss der Betrieb unterbrochen werden. Dazu gehören z.B. Firmwareupgrades. Für diese Updates muss das Gerät in den Wartungsmodus versetzt werden. Einzelheiten dazu finden Sie hier: [Schritt 2: Wechseln in den Wartungsmodus](#step2). Sie können Wartungsmodus-Updates nicht über das klassische Azure-Portal installieren. Sie müssen stattdessen Windows PowerShell für StorSimple verwenden.
 
 Weitere Informationen zum Installieren von Wartungsmodus-Updates finden Sie unter [Installieren von Wartungsmodus-Updates über Windows PowerShell für StorSimple](#install-maintenance-mode-updates-via-windows-powershell-for-storsimple).
 
@@ -70,7 +70,7 @@ Wenn Sie Wartungsmodus-Updates anwenden müssen, erhalten Sie über das klassisc
 
 > [AZURE.IMPORTANT] 
 > 
-> - Vergewissern Sie sich vor dem Starten des Wartungsmodus, dass beide Gerätecontroller fehlerfrei funktionieren, indem Sie den **Hardwarestatus** auf der Seite **Wartung** im klassischen Azure-Portal überprüfen. Wenn der Controller nicht fehlerfrei funktioniert, wenden Sie sich für die nächsten Schritte an Microsoft-Support. Für weitere Informationen kontaktieren Sie den Microsoft-Support. 
+> - Vergewissern Sie sich vor dem Starten des Wartungsmodus, dass beide Gerätecontroller fehlerfrei funktionieren, indem Sie den **Hardwarestatus** auf der Seite **Wartung** im klassischen Azure-Portal überprüfen. Wenn der Controller nicht fehlerfrei funktioniert, wenden Sie sich für die nächsten Schritte an Microsoft-Support. Für weitere Informationen kontaktieren Sie den Microsoft-Support.
 > - Im Wartungsmodus müssen Sie das Update zunächst auf einem und dann auf dem anderen Controller anwenden.
 
 ### Schritt 1: Herstellen einer Verbindung mit der seriellen Konsole <a name="step1">
@@ -101,8 +101,8 @@ Beenden Sie zum Schluss den Wartungsmodus.
 
 Im Gegensatz zu Updates für Microsoft Azure StorSimple werden die Hotfixes aus einem freigegebenen Ordner installiert. Wie bei Updates gibt es auch zwei Arten von Hotfixes:
 
-- Regelmäßige Hotfixes 
-- Wartungsmodus-Hotfixes  
+- Regelmäßige Hotfixes
+- Wartungsmodus-Hotfixes
 
 Die folgenden Vorgehensweisen erläutern, wie Sie mit Windows PowerShell für StorSimple regelmäßige und Wartungsmodus-Hotfixes installieren.
 
@@ -119,4 +119,4 @@ Wenn ein Gerät auf die Werkseinstellungen zurückgesetzt wird, gehen alle Updat
 - Erfahren Sie mehr zur [Verwendung von Windows PowerShell für StorSimple zum Verwalten Ihres StorSimple-Geräts](storsimple-windows-powershell-administration.md).
 - Erfahren Sie mehr über das [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

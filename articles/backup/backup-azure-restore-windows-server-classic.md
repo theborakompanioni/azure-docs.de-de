@@ -29,7 +29,7 @@ In diesem Artikel werden die erforderlichen Schritte für zwei Arten von Wiederh
 
 In beiden Fällen werden die Daten aus dem Azure Backup-Tresor abgerufen.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Bereitstellungsmodell
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 ## Wiederherstellen von Daten auf demselben Computer
 Wenn Sie versehentlich eine Datei gelöscht haben und sie auf demselben Computer wiederherstellen möchten (auf dem die Sicherung erstellt wurde), können Sie die folgenden Schritte zum Wiederherstellen der Daten ausführen.
@@ -123,4 +123,4 @@ In diesen Schritten wird folgende Terminologie verwendet:
 - [Sichern von virtuellen Azure-Computern](backup-azure-vms-introduction.md)
 - [Sichern von Microsoft-Workloads](backup-azure-dpm-introduction.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

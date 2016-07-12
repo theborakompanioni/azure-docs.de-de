@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="html"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="05/03/2016"
+	ms.date="06/29/2016"
 	ms.author="adrianha;ricksal"/>
 
 # Verwenden der JavaScript-Clientbibliothek für Azure Mobile Apps
 
 [AZURE.INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-Dieser Artikelleitfaden zeigt Ihnen, wie Sie gängige Szenarien mithilfe des aktuellsten [JavaScript SDK für Azure Mobile Apps] ausführen. Wenn Sie mit Azure Mobile Apps noch nicht vertraut sind, führen Sie zunächst den [Schnellstart von Azure Mobile Apps] durch, um ein Back-End und eine Tabelle zu erstellen. In diesem Leitfaden liegt der Schwerpunkt auf der Verwendung des mobilen Back-Ends in HTML/JavaScript-Webanwendungen.
+Dieser Artikel beschreibt gängige Szenarien für die Verwendung des neuesten [JavaScript-SDKs für Azure Mobile Apps]. Wenn Sie mit Azure Mobile Apps noch nicht vertraut sind, führen Sie zunächst den [Schnellstart von Azure Mobile Apps] durch, um ein Back-End und eine Tabelle zu erstellen. In diesem Leitfaden liegt der Schwerpunkt auf der Verwendung des mobilen Back-Ends in HTML/JavaScript-Webanwendungen.
 
 ##<a name="Setup"></a>Einrichtung und Voraussetzungen
 
@@ -57,60 +57,37 @@ Insgesamt werden zwei Authentifizierungsflüsse unterstützt: ein Serverfluss un
 
 [AZURE.INCLUDE [app-service-mobile-html-js-auth-library](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-##<a name="register-for-push"></a>Vorgehensweise: Registrieren für Pushbenachrichtigungen
+###<a name="configure-external-redirect-urls"></a>So wird's gemacht: Konfigurieren Ihres Mobile App Service für externe Umleitungs-URLs
 
-Installieren Sie [phonegap-plug-in-push] zum Verarbeiten von Pushbenachrichtigungen. Dies kann problemlos mithilfe des Befehls `cordova plugin add` über die Befehlszeile oder den Git-Plug-in-Installer in Visual Studio hinzugefügt werden. Der folgende Code in der Apache Cordova-App registriert Ihr Gerät für Pushbenachrichtigungen:
+Mehrere Arten von JavaScript-Anwendungen verwenden zur Behandlung von OAuth-UI-Datenflüssen eine Loopback-Funktion – etwa, wenn Sie Ihren Dienst lokal ausführen, Live Reload im Ionic-Framework verwenden oder zur Authentifizierung eine Umleitung zu App Service durchführen. Dies kann problematisch sein, da die App Service-Authentifizierung in der Standardkonfiguration nur Zugriffe von Ihrem mobilen App-Back-End zulässt.
 
-```
-var pushOptions = {
-    android: {
-        senderId: '<from-gcm-console>'
-    },
-    ios: {
-        alert: true,
-        badge: true,
-        sound: true
-    },
-    windows: {
-    }
-};
-pushHandler = PushNotification.init(pushOptions);
+Führen Sie die folgenden Schritte durch, um die App Service-Einstellungen zu ändern und die Authentifizierung über Ihren lokalen Host zu ermöglichen:
 
-pushHandler.on('registration', function (data) {
-    registrationId = data.registrationId;
-    // For cross-platform, you can use the device plugin to determine the device
-    // Best is to use device.platform
-    var name = 'gcm'; // For android - default
-    if (device.platform.toLowerCase() === 'ios')
-        name = 'apns';
-    if (device.platform.toLowerCase().substring(0, 3) === 'win')
-        name = 'wns';
-    client.push.register(name, registrationId);
-});
+1. Melden Sie sich beim [Azure-Portal] an, navigieren Sie zu Ihrem mobilen App-Back-End, und klicken Sie dann auf **Tools** > **Ressourcen-Explorer** > **Start**, um ein neues Ressourcen-Explorer-Fenster für Ihr mobiles App-Back-End (Website) zu öffnen.
 
-pushHandler.on('notification', function (data) {
-    // data is an object and is whatever is sent by the PNS - check the format
-    // for your particular PNS
-});
+2. Erweitern Sie den Knoten **config** für Ihre App. Klicken Sie anschließend auf **authsettings** > **Bearbeiten**, navigieren Sie zum Element **AllowedExternalRedirectUrls** (sollte NULL sein), und ändern Sie es wie folgt:
 
-pushHandler.on('error', function (error) {
-    // Handle errors
-});
-```
+         "allowedExternalRedirectUrls": [
+             "http://localhost:3000",
+             "https://localhost:3000"
+         ],
 
-Verwenden Sie das Notification Hubs SDK zum Senden von Pushbenachrichtigungen vom Server. Pushbenachrichtigungen sollten niemals direkt von Clients gesendet werden, da sie zum Auslösen eines Denial-of-Service-Angriffs auf Notification Hubs oder PNS verwendet werden können.
+    Ersetzen Sie die URLs im Array durch die URLs Ihres Diensts (in diesem Beispiel `http://localhost:3000` für den lokalen Node.js-Beispieldienst). Alternativ könnten Sie auch `http://localhost:4400` für den Ripple-Dienst oder eine andere URL verwenden (je nach Konfiguration Ihrer App).
+    
+3. Klicken Sie oben auf der Seite auf **Lesen/Schreiben** und anschließend auf **PUT**, um Ihre Änderungen zu speichern.
+
+    Nun müssen die gleichen Loopback-URLs noch den CORS-Positivlisteneinstellungen hinzugefügt werden:
+
+4. Klicken Sie im [Azure-Portal] unter Ihrem mobilen App-Back-End auf **Alle Einstellungen** > **CORS**, fügen Sie die Loopback-URLs der Positivliste hinzu, und klicken Sie anschließend auf **Speichern**.
+
+Nach der Aktualisierung des Back-Ends können Sie die neuen Loopback-URLs in Ihrer App verwenden.
 
 <!-- URLs. -->
 [Schnellstart von Azure Mobile Apps]: app-service-mobile-cordova-get-started.md
 [Erste Schritte mit der Authentifizierung]: app-service-mobile-cordova-get-started-users.md
 [Hinzufügen von Authentifizierung zu Ihrer App]: app-service-mobile-cordova-get-started-users.md
 
-[Apache Cordova Plugin for Azure Mobile Apps]: https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-apps
-[your first Apache Cordova app]: http://cordova.apache.org/#getstarted
-[phonegap-facebook-plugin]: https://github.com/wizcorp/phonegap-facebook-plugin
-[phonegap-plug-in-push]: https://www.npmjs.com/package/phonegap-plugin-push
-[cordova-plugin-device]: https://www.npmjs.com/package/cordova-plugin-device
-[cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
+[JavaScript-SDKs für Azure Mobile Apps]: https://www.npmjs.com/package/azure-mobile-apps-client
 [Dokumentation „Query-Objekt“]: https://msdn.microsoft.com/de-DE/library/azure/jj613353.aspx
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

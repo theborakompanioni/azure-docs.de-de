@@ -19,8 +19,8 @@
 
 # Konfigurieren einer Verfügbarkeitsgruppe für virtuelle Computer im klassischen Bereitstellungsmodell
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell. Sie können auch Verfügbarkeitsgruppen in Ressourcen-Manager-Bereitstellungen konfigurieren.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]. Sie können auch Verfügbarkeitsgruppen in Ressourcen-Manager-Bereitstellungen konfigurieren.
 
 [AZURE.INCLUDE [virtual-machines-common-classic-configure-availability](../../includes/virtual-machines-common-classic-configure-availability.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

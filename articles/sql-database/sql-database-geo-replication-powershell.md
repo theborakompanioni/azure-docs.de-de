@@ -12,7 +12,7 @@
     ms.devlang="NA"
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
-    ms.workload="data-management" 
+   ms.workload="sqldb-bcdr"
     ms.date="06/14/2016"
     ms.author="sstein"/>
 
@@ -26,7 +26,7 @@
 
 In diesem Artikel erfahren Sie, wie Sie die aktive Georeplikation der SQL-Datenbank mit PowerShell konfigurieren.
 
-Informationen zum Initiieren eines Failovers finden Sie unter [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit PowerShell](sql-database-geo-replication-failover-powershell.md).
+Informationen zum Initiieren eines Failovers mit PowerShell finden Sie unter [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit PowerShell](sql-database-geo-replication-failover-powershell.md).
 
 >[AZURE.NOTE] Die aktive Georeplikation (lesbare sekundäre Datenbanken) ist jetzt für alle Datenbanken in allen Diensttarifen verfügbar. Im April 2017 wird der nicht lesbare sekundäre Typ eingestellt, und vorhandene nicht lesbare Datenbanken werden automatisch auf lesbare sekundäre Datenbanken aktualisiert.
 
@@ -34,7 +34,7 @@ Informationen zum Initiieren eines Failovers finden Sie unter [Initiieren eines 
 
 Wenn Sie die aktive Georeplikation mithilfe von PowerShell konfigurieren möchten, benötigen Sie Folgendes:
 
-- Ein Azure-Abonnement. 
+- Ein Azure-Abonnement.
 - Eine Azure SQL-Datenbank: Die primäre Datenbank, die Sie replizieren möchten.
 - Azure PowerShell 1.0 oder höher Sie können die Azure-PowerShell-Module herunterladen und installieren, indem Sie Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) befolgen.
 
@@ -143,24 +143,9 @@ Der folgende Befehl ruft den Status der Replikationsverknüpfung zwischen der pr
     $secondaryLink = $database | Get-AzureRmSqlDatabaseReplicationLink –PartnerResourceGroup "rg2” –PartnerServerName "srv2”
 
 
-  
-
 ## Nächste Schritte
 
-- [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank](sql-database-geo-replication-failover-powershell.md)
-- [Warnungen zur Notfallwiederherstellung](sql-database-disaster-recovery-drills.md)
+- Weitere Informationen zur aktiven Georeplikation finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
+- Informationen über Entwurfs- und Wiederherstellungsszenarien für die Geschäftskontinuität finden Sie unter [Geschäftskontinuitätsszenarien](sql-database-business-continuity-scenarios.md).
 
-
-
-
-## Zusätzliche Ressourcen
-
-- [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
-- [Spotlight on new Geo-Replication capabilities (Die neuen Georeplikationsfunktionen im Überblick)](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
-- [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
-- [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-- [Aktive Georeplikation](sql-database-geo-replication-overview.md)
-- [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
-
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

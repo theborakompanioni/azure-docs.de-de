@@ -20,20 +20,20 @@ In Azure fallen IP-Adressen in zwei Kategorien: dynamisch und reserviert. Öffen
 
 Sie können eine IP-Adresse reservieren, um zu verhindern, dass sie sich ändert. Reservierte IPs können nur als VIP verwendet werden. So wird sichergestellt, dass die IP-Adresse für den Clouddienst sich auch dann nicht ändert, wenn Ressourcen heruntergefahren oder neu zugeordnet werden. Außerdem können Sie vorhandene dynamische IP-Adressen, die als VIP verwendet werden, in eine reservierte IP-Adresse konvertieren.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-network-ip-addresses-overview-arm.md).
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](virtual-network-ip-addresses-overview-arm.md).
 
 Stellen Sie sicher, dass Sie die Funktionsweise von [IP-Adressen](virtual-network-ip-addresses-overview-classic.md) in Azure verstehen.
 
 ## Wann benötige ich eine reservierte IP-Adresse?
-- **Sie möchten sicherstellen, dass die IP-Adresse in Ihrem Abonnement reserviert ist**. Wenn Sie eine IP-Adresse reservieren möchten, die Ihr Abonnement unter keinen Umständen verlässt, sollten Sie eine reservierte öffentliche IP-Adresse verwenden.  
+- **Sie möchten sicherstellen, dass die IP-Adresse in Ihrem Abonnement reserviert ist**. Wenn Sie eine IP-Adresse reservieren möchten, die Ihr Abonnement unter keinen Umständen verlässt, sollten Sie eine reservierte öffentliche IP-Adresse verwenden.
 - **Sie möchten, dass die IP-Adresse Ihrem Clouddienst auch im beendeten oder neu zugeordneten Zustand (VMs) zugewiesen bleibt**. Auf Ihren Dienst soll mit einer IP-Adresse zugegriffen werden, die sich auch dann nicht ändert, wenn virtuelle Computer im Clouddienst beendet oder neu zugeordnet werden.
 - **Sie möchten sicherstellen, dass für ausgehenden Datenverkehr von Azure eine vorhersagbare IP-Adresse verwendet wird**. Unter Umständen haben Sie Ihre lokale Firewall so konfiguriert, dass nur Datenverkehr von bestimmten IP-Adressen zugelassen wird. Bei Reservierung einer IP-Adresse kennen Sie die IP-Quelladresse und müssen Ihre Firewallregeln bei einer IP-Änderung nicht aktualisieren.
 
 ## Häufig gestellte Fragen
-1. Kann ich eine reservierte IP-Adresse für alle Azure-Dienste verwenden?  
+1. Kann ich eine reservierte IP-Adresse für alle Azure-Dienste verwenden?
   - Reservierte IPs können nur für virtuelle Computer und Clouddienst-Instanzenrollen, die über eine VIP verfügbar gemacht werden, verwendet werden.
-1. Wie viele reservierte IP-Adressen können verwendet werden?  
-  - Derzeit können mit allen Azure-Abonnements 20 reservierte IPs verwendet werden. Sie können aber auch zusätzliche reservierte IP-Adressen anfordern. Weitere Informationen finden Sie unter [Abonnement- und Diensteinschränkungen](../azure-subscription-service-limits/).
+1. Wie viele reservierte IP-Adressen können verwendet werden?
+  - Derzeit können mit allen Azure-Abonnements 20 reservierte IPs verwendet werden. Sie können aber auch zusätzliche reservierte IP-Adressen anfordern. Weitere Informationen finden Sie unter [Abonnement- und Diensteinschränkungen](../azure-subscription-service-limits.md).
 1. Fällt für reservierte IPs eine Gebühr an?
   - Preisinformationen finden Sie unter [Preise für reservierte IP-Adressen](http://go.microsoft.com/fwlink/?LinkID=398482).
 1. Wie wird eine IP-Adresse reserviert?
@@ -84,7 +84,7 @@ Mit dem unten angegebenen Skript wird eine neue reservierte IP erstellt, die dan
 	| Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
 	| New-AzureVM -ServiceName TestService -ReservedIPName MyReservedIP -Location "Central US"
 
->[AZURE.NOTE] Wenn Sie eine reservierte IP für die Verwendung mit einem Cloud-Dienst erstellen, müssen Sie auf den virtuellen Computer für die eingehende Kommunikation weiterhin mit *VIP:&lt;Portnummer>* verweisen. Das Reservieren einer IP-Adresse bedeutet nicht, dass Sie eine direkte Verbindung mit dem virtuellen Computer herstellen können. Die reservierte IP wird dem Clouddienst zugewiesen, für den der virtuelle Computer bereitgestellt wurde. Wenn Sie direkt per IP eine Verbindung mit dem virtuellen Computer herstellen möchten, müssen Sie eine öffentliche IP auf Instanzebene konfigurieren. Eine öffentliche IP auf Instanzebene ist eine Art von öffentlicher IP (als ILPIP bezeichnet), die Ihrem virtuellen Computer direkt zugewiesen ist. Sie kann nicht reserviert werden. Weitere Informationen finden Sie unter [Öffentliche IP auf Instanzebene (ILPIP)](../virtual-networks-instance-level-public-ip).
+>[AZURE.NOTE] Wenn Sie eine reservierte IP für die Verwendung mit einem Cloud-Dienst erstellen, müssen Sie auf den virtuellen Computer für die eingehende Kommunikation weiterhin mit *VIP:&lt;Portnummer>* verweisen. Das Reservieren einer IP-Adresse bedeutet nicht, dass Sie eine direkte Verbindung mit dem virtuellen Computer herstellen können. Die reservierte IP wird dem Clouddienst zugewiesen, für den der virtuelle Computer bereitgestellt wurde. Wenn Sie direkt per IP eine Verbindung mit dem virtuellen Computer herstellen möchten, müssen Sie eine öffentliche IP auf Instanzebene konfigurieren. Eine öffentliche IP auf Instanzebene ist eine Art von öffentlicher IP (als ILPIP bezeichnet), die Ihrem virtuellen Computer direkt zugewiesen ist. Sie kann nicht reserviert werden. Weitere Informationen finden Sie unter [Öffentliche IP auf Instanzebene (ILPIP)](virtual-networks-instance-level-public-ip.md).
 
 ## Gewusst wie: Entfernen einer reservierten IP aus einer aktiven Bereitstellung
 Führen Sie den folgenden PowerShell-Befehl aus, um die reservierte IP, die dem oben per Skript erstellten neuen Dienst hinzugefügt wurde, zu entfernen:
@@ -124,10 +124,10 @@ Sie können eine reservierte IP einem Clouddienst auch zuordnen, indem Sie eine 
 
 ## Nächste Schritte
 
-- Informieren Sie sich über die [IP-Adressierung](virtual-network-ip-addresses-overview-classic.md) im klassischen Bereitstellungsmodell.
+- Informieren Sie sich über die Funktionsweise der [IP-Adressierung](virtual-network-ip-addresses-overview-classic.md) im klassischen Bereitstellungsmodell.
 
-- Erfahren Sie mehr zu [reservierten privaten IP-Adressen](../virtual-networks-reserved-private-ip).
+- Erfahren Sie mehr zu [reservierten privaten IP-Adressen](virtual-networks-reserved-private-ip.md).
 
-- Erfahren Sie mehr zu [öffentlichen IP-Adressen auf Instanzebene (ILPIP)](../virtual-networks-instance-level-public-ip).
+- Erfahren Sie mehr zu [öffentlichen IP-Adressen auf Instanzebene (ILPIP)](virtual-networks-instance-level-public-ip.md).
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0629_2016-->

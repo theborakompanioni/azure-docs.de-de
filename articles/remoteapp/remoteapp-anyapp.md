@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="06/02/2016"
+   ms.date="07/02/2016"
    ms.author="elizapo"/>
 
 # Mit Azure RemoteApp jede Windows-Anwendung auf jedem Gerät ausführen
@@ -28,7 +28,9 @@ In diesem Artikel geben wir Access für alle Benutzer frei. Sie können jedoch j
 
 Bitte beachten Sie, dass da Access eine Datenbank ist und die Datenbank hilfreich sein soll, wir einige zusätzliche Schritte unternehmen, um Benutzern den Zugriff auf die Access-Datenfreigabe zu ermöglichen. Wenn Ihre App keine Datenbank ist oder es nicht erforderlich ist, dass die Benutzer auf eine Dateifreigabe zugreifen können, können Sie die Schritte in diesem Tutorial überspringen.
 
-[AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
+> [AZURE.NOTE] <a name="note"></a>Für dieses Tutorial benötigen Sie ein Azure-Konto:
+> - Sie können [ein Azure-Konto kostenlos erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F): Sie erhalten ein Guthaben, das Sie zum Ausprobieren zahlungspflichtiger Azure-Dienste nutzen können, und Sie können das Konto selbst dann behalten und die kostenlosen Azure-Dienste wie Websites nutzen, wenn das Guthaben aufgebraucht ist. Ihre Kreditkarte wird nur dann belastet, wenn Sie Ihre Einstellungen explizit ändern und mit einer Zahlung einverstanden sind.
+> - Sie können Ihre [Vorteile für MSDN-Abonnenten aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F): Ihr MSDN-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste nutzen können.
 
 
 ## Erstellen einer RemoteApp-Sammlung
@@ -117,4 +119,4 @@ Nun, da Sie eine Sammlung erstellen können, versuchen Sie das Erstellen einer [
 <!--Image references-->
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -2,7 +2,7 @@
 	pageTitle="Azure AD Connect-Synchronisierung: Verwalten des Azure AD-Dienstkontos | Microsoft Azure"
 	description="In diesem Thema wird beschrieben, wie Sie das Azure AD-Dienstkonto wiederherstellen."
 	services="active-directory"
-    keywords="Zurücksetzen des Kennworts für das Dienstkonto des Azure AD Connect-Synchronisierungsconnectors"
+    keywords="AADSTS70002, AADSTS50054, Zurücksetzen des Kennworts für das Dienstkonto des Azure AD Connect-Synchronisierungsconnectors"
 	documentationCenter=""
 	authors="andkjell"
 	manager="stevenpo"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/10/2016"
+	ms.date="06/27/2016"
 	ms.author="andkjell"/>
 
 # Azure AD Connect-Synchronisierung: Verwalten des Azure AD-Dienstkontos
@@ -29,7 +29,16 @@ Wenn das im Azure AD-Connector definierte Dienstkonto aufgrund von Authentifizie
 
 Dieses Cmdlet setzt das Kennwort für das Dienstkonto zurück und aktualisiert es sowohl in Azure AD als auch im Synchronisierungsmodul.
 
+## Bekannte Probleme, die sich mit diesen Schritten beheben lassen
+Hier finden Sie eine Liste mit Fehlern, die von Kunden gemeldet und mithilfe der genannten Schritte behoben wurden.
+
+-----------
+Event 6900 The server encountered an unexpected error while processing a password change notification: AADSTS70002: Error validating credentials. AADSTS50054: Old password is used for authentication. (Ereignis 6900: Unerwarteter Serverfehler beim Verarbeiten einer Kennwortänderungsbenachrichtigung. AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS50054: Für die Authentifizierung wurde ein altes Kennwort verwendet.)
+
+----------
+Event 659 Error while retrieving password policy sync configuration. Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException: AADSTS70002: Error validating credentials. AADSTS50054: Old password is used for authentication. (Ereignis 659: Fehler beim Abrufen der Konfiguration für die Kennwortrichtliniensynchronisierung. Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException: AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS50054: Für die Authentifizierung wurde ein altes Kennwort verwendet.)
+
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

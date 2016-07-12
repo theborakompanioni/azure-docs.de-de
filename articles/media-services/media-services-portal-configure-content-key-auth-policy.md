@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="05/03/2016"   
+ 	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 
@@ -41,8 +41,8 @@ Wenn Sie mehrere Inhaltsschlüssel verwenden oder eine andere **Schlüssel-/Lize
 
 ###Folgende Überlegungen sollten berücksichtigt werden:
 
-- Zur Verwendung der dynamischen Paketerstellung und Verschlüsselung müssen Sie über mindestens eine reservierte Einheit für das Streaming verfügen. Weitere Informationen finden Sie unter [Skalieren eines Mediendiensts](media-services-manage-origins.md#scale_streaming_endpoints). 
-- Ihr Medienobjekt muss einen Satz von MP4-Dateien bzw. Smooth Streaming-Dateien mit adaptiver Bitrate enthalten. Weitere Informationen finden Sie unter [Codieren von Medienobjekten](media-services-encode-asset.md).  
+- Zur Verwendung der dynamischen Paketerstellung und Verschlüsselung müssen Sie über mindestens eine reservierte Einheit für das Streaming verfügen. Weitere Informationen finden Sie unter [Skalieren eines Mediendiensts](media-services-manage-origins.md#scale_streaming_endpoints).
+- Ihr Medienobjekt muss einen Satz von MP4-Dateien bzw. Smooth Streaming-Dateien mit adaptiver Bitrate enthalten. Weitere Informationen finden Sie unter [Codieren von Medienobjekten](media-services-encode-asset.md).
 - ContentKeyAuthorizationPolicy und die zugehörigen Objekte (Richtlinienoptionen und Einschränkungen) werden vom Schlüsselübermittlungsdienst für 15 Minuten zwischengespeichert. Wenn Sie ContentKeyAuthorizationPolicy erstellen und angeben, dass eine „Token“-Einschränkung verwendet werden soll, diese anschließend testen und dann die Richtlinie auf eine „Open“-Einschränkung aktualisieren, dauert es ungefähr 15 Minuten, bis die Richtlinie zur „Open“-Version der Richtlinie wechselt.
 
 
@@ -105,4 +105,4 @@ Nachdem Sie die Autorisierungsrichtlinie für den Inhaltsschlüssel konfiguriert
 
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

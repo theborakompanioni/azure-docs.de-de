@@ -79,7 +79,7 @@ Beim Synchronisieren von Tabellen steuert der Clientcode, wann lokale Änderunge
   Wenn die Abfrage einen Parameter aufweist, ist das Integrieren des Parameterwerts eine Möglichkeit zum Erstellen eindeutiger Abfragenamen. Wenn Sie beispielsweise nach der Benutzer-ID filtern, könnte Ihr eindeutiger Abfragename so aussehen (in C#):
 
 		await todoTable.PullAsync("todoItems" + userid, 
-			syncTable.Where(u => u.UserId = userid));
+			syncTable.Where(u => u.UserId == userid));
 
   Wenn Sie die inkrementelle Synchronisierung deaktivieren möchten, übergeben Sie `null` als Abfrage-ID. In diesem Fall werden alle Datensätze bei jedem Aufruf von `PullAsync` abgerufen, was möglicherweise ineffizient ist.
 
@@ -105,4 +105,4 @@ Beim Synchronisieren von Tabellen steuert der Clientcode, wann lokale Änderunge
 [Windows 8.1: Aktivieren der Offline-Synchronisierung]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
 [Windows 8.1: Offlinesynchronisierung aktivieren]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

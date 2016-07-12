@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="04/05/2016" 
+    ms.date="06/27/2016" 
     ms.author="elizapo" />
 
 
@@ -29,9 +29,9 @@ Sie können QuickBooks 2015 Enterprise mit Azure RemoteApp in einer Hybrid- ode
 ## Schritte zum Bereitstellen von QuickBooks
 
 1. Erstellen Sie einen virtuellen Azure-Computer, und installieren Sie QuickBooks und den QuickBooks-Datenbankserver, und stellen Sie die Unternehmensdatei auf einem virtuellen Azure-Computer bereit. Achten Sie darauf, die Firewallregeln richtig zu konfigurieren.
-2. Installieren Sie QuickBooks auf einem [benutzerdefinierten Image](remoteapp-imageoptions.md), und erstellen Sie eine [Azure RemoteApp-Sammlung](remoteapp-collections.md) (Cloud oder Hybrid) in demselben VNET, in dem sich der virtuelle Computer zum Hosten des QuickBooks-Datenbankservers mit Unternehmensdateien befindet. 
+2. Installieren Sie QuickBooks auf einem [benutzerdefinierten Image](remoteapp-imageoptions.md), und erstellen Sie eine [Azure RemoteApp-Sammlung](remoteapp-collections.md) (Cloud oder Hybrid) in demselben VNET, in dem sich der virtuelle Computer zum Hosten des QuickBooks-Datenbankservers mit Unternehmensdateien befindet.
 3.	[Veröffentlichen](remoteapp-publish.md) der QuickBooks-App für Benutzer
-4.	Starten Sie den von Azure RemoteApp gehosteten QuickBooks-Client, navigieren Sie mit der standardmäßigen Windows-Netzwerkverbindung zum virtuellen Computer, auf dem der QuickBooks-Datenbankserver gehostet wird, und öffnen Sie die Unternehmensdatei. 
+4.	Starten Sie den von Azure RemoteApp gehosteten QuickBooks-Client, navigieren Sie mit der standardmäßigen Windows-Netzwerkverbindung zum virtuellen Computer, auf dem der QuickBooks-Datenbankserver gehostet wird, und öffnen Sie die Unternehmensdatei.
 
 ## Dokumentationsverweise
 
@@ -44,4 +44,4 @@ Sie können sich auch meine Ignite-Präsentation mit dem Titel [Fundamentals of 
 
 ![QuickBooks- und Azure RemoteApp-Bereitstellung](./media/remoteapp-quickbooks/ra-quickbooks.png)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0629_2016-->

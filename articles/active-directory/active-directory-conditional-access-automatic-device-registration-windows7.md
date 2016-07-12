@@ -1,11 +1,4 @@
-<properties
-	pageTitle="# Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 7-Geräte | Microsoft Azure"
-	description="Schritte zum Konfigurieren Ihrer in eine Domäne eingebundenen Windows 7-Geräte zur automatischen Registrierung bei Azure AD, sowie Schritte zum Bereitstellen des Geräteregistrierungs-Softwarepakets für Ihre in eine Domäne eingebundenen Windows 7-Geräte mithilfe eines Softwareverteilungssystems wie System Center Configuration Manager."
-	services="active-directory"
-	documentationCenter=""
-	authors="femila"
-	manager="stevenpo"
-	editor=""/>
+<properties pageTitle="# Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 7-Geräte | Microsoft Azure" description="Schritte zum Konfigurieren Ihrer in eine Domäne eingebundenen Windows 7-Geräte zur automatischen Registrierung bei Azure AD sowie Schritte zum Bereitstellen des Geräteregistrierungs-Softwarepakets für Ihre in eine Domäne eingebundenen Windows 7-Geräte mithilfe eines Softwareverteilungssystems wie System Center Configuration Manager." services="active-directory" documentationCenter="" authors="femila" manager="swadhwa editor=""/>
 
 <tags
 	ms.service="active-directory"
@@ -13,7 +6,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/07/2016"
+	ms.date="06/23/2016"
 	ms.author="femila"/>
 
 # Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 7-Geräte
@@ -60,4 +53,4 @@ Das Windows-Ereignisprotokoll auf dem Windows 7-Computer zeigt Meldungen im Zusa
 - [Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 8.1-Geräte](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
 - [Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows 10-Geräte](active-directory-azureadjoin-devices-group-policy.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

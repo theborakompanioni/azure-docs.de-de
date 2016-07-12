@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Schützen von Daten, die im Azure Data Lake-Speicher gespeichert sind | Azure" 
+   pageTitle="Schützen von Daten, die im Azure Data Lake-Speicher gespeichert sind | Microsoft Azure" 
    description="Informationen zum Schützen von Daten im Azure Data Lake-Speicher mithilfe von Gruppen und Zugriffssteuerungslisten" 
    services="data-lake-store" 
    documentationCenter="" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="05/11/2016"
+   ms.date="06/22/2016"
    ms.author="nitinme"/>
 
 # Schützen von Daten, die im Azure Data Lake-Speicher gespeichert sind
@@ -26,7 +26,9 @@ Das Schützen von Daten im Azure Data Lake-Speicher ist ein Ansatz, der drei Sch
 
 3. Weisen Sie die AAD-Sicherheitsgruppen als Zugriffssteuerungslisten im Data Lake-Speicher-Dateisystem zu.
 
-Dieser Artikel enthält eine Anleitung zur Verwendung des Azure-Portals für die oben genannten Aufgaben.
+4. Darüber hinaus können Sie auch einen IP-Adressbereich für Clients festlegen, die auf die Daten im Data Lake-Speicher zugreifen können.
+
+Dieser Artikel enthält eine Anleitung zur Verwendung des Azure-Portals für die oben genannten Aufgaben. Ausführliche Informationen zur Sicherheitsimplementierung auf Konto- und Datenebene durch Data Lake-Speicher finden Sie unter [Security in Azure Data Lake Store](data-lake-store-security-overview.md) (Sicherheit im Azure Data Lake-Speicher).
 
 ## Voraussetzungen
 
@@ -37,7 +39,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 ## Lernen Sie schnell mithilfe von Videos?
 
-[Sehen Sie sich dieses Video](https://mix.office.com/watch/1q2mgzh9nn5lx) über das Sichern von im Data Lake-Speicher gespeicherten Daten an.
+Sehen Sie sich [dieses Video](https://mix.office.com/watch/1q2mgzh9nn5lx) über das Schützen von im Data Lake-Speicher gespeicherten Daten an.
 
 ## Erstellen von Sicherheitsgruppen in Azure Active Directory
 
@@ -68,7 +70,7 @@ Wenn Sie Benutzer oder Sicherheitsgruppen Azure Data Lake-Speicherkonten zuweise
 
 	 ![Rolle für den Benutzer hinzufügen](./media/data-lake-store-secure-data/adl.add.user.1.png "Rolle für den Benutzer hinzufügen")
 
-	Mit der Rolle **Besitzer** und **Mitwirkender** wird Zugriff auf viele verschiedene Verwaltungsfunktionen des Data Lake-Kontos gewährt. Für Benutzer, die unter Data Lake mit Daten interagieren, können Sie diese Rollen der Rolle **Leser** hinzufügen. Der Umfang dieser Rollen ist auf die Verwaltungsvorgänge beschränkt, die sich auf das Azure Data Lake-Speicherkonto beziehen.
+	Mit der Rolle **Besitzer** und **Mitwirkender** wird Zugriff auf viele verschiedene Verwaltungsfunktionen des Data Lake-Kontos gewährt. Für Benutzer, die mit Daten im Data Lake interagieren, können Sie diese Rollen der Rolle **Leser** hinzufügen. Der Umfang dieser Rollen ist auf die Verwaltungsvorgänge beschränkt, die sich auf das Azure Data Lake-Speicherkonto beziehen.
 
 	Für Datenvorgänge wird mithilfe von individuellen Dateisystemberechtigungen definiert, was Benutzer tun können. Aus diesem Grund kann ein Benutzer mit der Rolle „Leser“ nur Verwaltungseinstellungen anzeigen, die dem Konto zugeordnet sind. Potenziell kann er aber basierend auf den zugewiesenen Dateisystemberechtigungen Daten lesen und schreiben. Die Dateisystemberechtigungen des Data Lake-Speichers sind unter [Zuweisen von Sicherheitsgruppen als Zugriffssteuerungslisten zum Azure Data Lake-Speicher-Dateisystem](#filepermissions) beschrieben.
 
@@ -88,7 +90,9 @@ Wenn Sie Benutzer oder Sicherheitsgruppen Azure Data Lake-Speicherkonten zuweise
 
 ## <a name="filepermissions"></a>Zuweisen von Benutzern oder Sicherheitsgruppen als Zugriffssteuerungslisten zum Azure Data Lake-Speicher-Dateisystem
 
-Indem Sie dem Azure Data Lake-Dateisystem Benutzer oder Sicherheitsgruppen zuweisen, legen Sie die Zugriffssteuerung für die im Azure Data Lake-Speicher gespeicherten Daten fest. In der aktuellen Version können Sie Zugriffssteuerungslisten nur für den Stammknoten Ihres Dateisystems festlegen.
+Indem Sie dem Azure Data Lake-Dateisystem Benutzer oder Sicherheitsgruppen zuweisen, legen Sie die Zugriffssteuerung für die im Azure Data Lake-Speicher gespeicherten Daten fest.
+
+>[AZURE.NOTE] In der aktuellen Version können Sie Zugriffssteuerungslisten nur für den Stammknoten des Data Lake-Speicherkontos festlegen. Darüber hinaus können Zugriffssteuerungslisten nur von Benutzern mit der Rolle „Besitzer“ hinzugefügt/geändert werden.
 
 1. Klicken Sie auf dem Blatt Ihres Data Lake-Speicherkontos auf **Daten-Explorer**.
 
@@ -102,8 +106,8 @@ Indem Sie dem Azure Data Lake-Dateisystem Benutzer oder Sicherheitsgruppen zuwei
 
 	![Standardzugriff und benutzerdefinierten Zugriff auflisten](./media/data-lake-store-secure-data/adl.acl.2.png "Standardzugriff und benutzerdefinierten Zugriff auflisten")
 
-	* Der **Standardzugriff** ist ein Zugriff im UNIX-Stil, bei dem Sie Lesen, Schreiben und Ausführen (read, write, execute (rwx)) für drei unterschiedliche Benutzerklassen angeben: Besitzer, Gruppe und Sonstige.
-	* Der **benutzerdefinierte Zugriff** entspricht den POSIX-Zugriffssteuerungslisten, bei denen Sie Berechtigungen für speziell benannte Benutzer oder Gruppen festlegen können, und nicht nur den Besitzer oder die Gruppe der Datei. 
+	* Beim **Standardzugriff** handelt es sich um den Zugriff im UNIX-Stil, bei dem Sie Lesen, Schreiben und Ausführen (read, write, execute (rwx)) für drei unterschiedliche Benutzerklassen angeben: Besitzer, Gruppe und Sonstiges.
+	* Der **benutzerdefinierte Zugriff** entspricht den POSIX-Zugriffssteuerungslisten, bei denen Sie Berechtigungen nicht nur für den Besitzer oder die Gruppe der Datei, sondern für speziell benannte Benutzer oder Gruppen festlegen können.
 	
 	Weitere Informationen finden Sie unter [HDFS-Zugriffssteuerungslisten](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists) (in englischer Sprache).
 
@@ -118,10 +122,10 @@ Indem Sie dem Azure Data Lake-Dateisystem Benutzer oder Sicherheitsgruppen zuwei
 	Die Berechtigungen bedeuten Folgendes:
 
 	* **Lesen**: Wenn diese Berechtigung für ein Verzeichnis festgelegt wird, können die Namen der Dateien im Verzeichnis gelesen werden.
-	* **Schreiben**: Wenn diese Berechtigung für ein Verzeichnis festgelegt wird, können die Einträge im Verzeichnis geändert werden, beispielsweise kann eine Datei erstellt, gelöscht oder umbenannt werden.
+	* **Schreiben**: Wenn diese Berechtigung für ein Verzeichnis festgelegt wird, können die Einträge im Verzeichnis geändert werden. So kann etwa eine Datei erstellt, gelöscht oder umbenannt werden.
 	* **Ausführen**: Wenn diese Berechtigung für ein Verzeichnis festgelegt wird, kann auf den Inhalt der Datei im Verzeichnis zugegriffen werden. Sie ermöglicht auch Zugriff auf die Metadaten der Datei, wenn der Dateiname bekannt ist. Jedoch können Sie mit dieser Berechtigung die Dateien im Verzeichnis nicht auflisten, es sei denn, die Berechtigung **Lesen** wurde ebenfalls festgelegt.
 
-	>[AZURE.NOTE] Die Berechtigung **Lesen und Ausführen** ist für die Aufzählung von Verzeichnissen erforderlich und wird häufig benötigt, wenn für einen Benutzer oder eine Gruppe der schreibgeschützte Zugriff auf Daten bereitgestellt wird.
+	>[AZURE.NOTE] Die Berechtigung **Lesen und Ausführen** ist für die Aufzählung von Verzeichnissen erforderlich und wird häufig benötigt, wenn einem Benutzer oder einer Gruppe schreibgeschützter Zugriff auf Daten gewährt wird.
 
 
 6. Klicken Sie auf dem Blatt **Benutzerdefinierten Zugriff hinzufügen** auf **OK**. Die neu hinzugefügte Gruppe mit den zugeordneten Berechtigungen wird jetzt auf dem Blatt **Zugriff** aufgelistet.
@@ -131,6 +135,12 @@ Indem Sie dem Azure Data Lake-Dateisystem Benutzer oder Sicherheitsgruppen zuwei
 	> [AZURE.IMPORTANT] In der aktuellen Version können unter **Benutzerdefinierter Zugriff** nur neun Einträge vorhanden sein. Wenn Sie mehr als neun Benutzer hinzufügen möchten, sollten Sie Sicherheitsgruppen erstellen, die Benutzer den Sicherheitsgruppen hinzufügen und für das Data Lake-Speicherkonto den Zugriff auf diese Sicherheitsgruppen gewähren.
 
 7. Falls erforderlich, können Sie die Zugriffsberechtigungen auch ändern, nachdem Sie die Gruppe hinzugefügt haben. Deaktivieren oder aktivieren Sie das Kontrollkästchen für jeden Berechtigungstyp (Lesen, Schreiben, Ausführen) in Abhängigkeit davon, ob Sie die Berechtigung für die Sicherheitsgruppe entfernen oder zuweisen möchten. Klicken Sie auf **Speichern**, um die Änderungen zu speichern, oder auf **Verwerfen**, um die Änderungen rückgängig zu machen.
+
+## Festlegen des IP-Adressbereichs für den Datenzugriff
+
+Mit dem Azure Data Lake-Speicher können Sie den Zugriff auf Ihren Datenspeicher auf Netzwerkebene noch weiter einschränken. Sie können die Firewall aktivieren, eine IP-Adresse angeben oder einen IP-Adressbereich für Ihre vertrauenswürdigen Clients definieren. Nach der Aktivierung können nur Clients, deren IP-Adressen innerhalb des definierten Bereichs liegen, eine Verbindung mit dem Speicher herstellen.
+
+![Firewalleinstellungen und IP-Zugriff](./media/data-lake-store-secure-data/firewall-ip-access.png "Firewalleinstellungen und IP-Adresse")
 
 ## Entfernen von Sicherheitsgruppen für ein Azure Data Lake-Speicherkonto
 
@@ -174,4 +184,4 @@ Wenn Sie Zugriffssteuerungslisten von Sicherheitsgruppen aus dem Azure Data Lake
 - [Erste Schritte mit Data Lake-Speicher mithilfe von PowerShell](data-lake-store-get-started-powershell.md)
 - [Erste Schritte mit Data Lake-Speicher mithilfe des .NET SDK](data-lake-store-get-started-net-sdk.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

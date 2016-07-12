@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/25/2016"
+	ms.date="07/06/2016"
 	ms.author="maheshu"/>
 
 # Azure AD-Domänendienste *(Vorschau)* – Aktivieren der Kennwortsynchronisierung für Azure AD-Domänendienste
@@ -40,7 +40,7 @@ Sie müssen die neueste empfohlene Version von Azure AD Connect auf einem in die
 
 **[Azure AD Connect herunterladen](http://www.microsoft.com/download/details.aspx?id=47594)**
 
-Empfohlene Version: **1.1.130.0** – veröffentlicht am 12. April 2016.
+Empfohlene Version: **1.1.189.0** – veröffentlicht am 3. Juni 2016.
 
   > [AZURE.WARNING] Sie müssen die neueste empfohlene Version von Azure AD Connect installieren, um ältere Anmeldeinformationen zu aktivieren (erforderlich für NTLM- und Kerberos-Authentifizierung) und Ihren Azure AD-Mandanten zu synchronisieren. Diese Funktionalität ist in früheren Versionen von Azure AD Connect oder im DirSync-Legacytool nicht verfügbar.
 
@@ -80,4 +80,4 @@ Abhängig von der Größe Ihres Verzeichnisses (Anzahl der Benutzer, Gruppen usw
 
 - [Einbinden eines virtuellen Red Hat Enterprise Linux-Computers in eine verwaltete Domäne der Azure AD-Domänendienste](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -62,16 +62,16 @@ Die Lösung zählt, wie häufig ein Suchbegriff („Microsoft“) in Eingabedate
     Die Beispiellösung verwendet Azure Batch (indirekt über eine Azure Data Factory-Pipeline) zum parallelen Verarbeiten von Daten in einem Computeknotenpool, einer verwalteten Auflistung von virtuellen Maschinen.
 
 4.  Erstellen eines **Azure Batch-Pools** mit mindestens 2 Computeknoten.
-	1.  Klicken Sie im [Azure-Portal](https://portal.azure.com) im linken Menü auf **Durchsuchen** und dann auf **Batch-Konten**. 
-	2. Wählen Sie Ihr Azure Batch-Konto aus, um das Blatt **Batch-Konto** zu öffnen. 
+	1.  Klicken Sie im [Azure-Portal](https://portal.azure.com) im linken Menü auf **Durchsuchen** und dann auf **Batch-Konten**.
+	2. Wählen Sie Ihr Azure Batch-Konto aus, um das Blatt **Batch-Konto** zu öffnen.
 	3. Klicken Sie auf die Kachel **Pools**.
 	4. Klicken Sie auf dem Blatt **Pools** auf der Symbolleiste auf die Schaltfläche „Hinzufügen“, um einen Pool hinzuzufügen.
-		1. Geben Sie eine ID für den Pool ein (**Pool-ID**). Beachten Sie die **ID des Pools**; Sie benötigen sie bei der Erstellung der Data Factory-Projektmappe. 
+		1. Geben Sie eine ID für den Pool ein (**Pool-ID**). Beachten Sie die **ID des Pools**; Sie benötigen sie bei der Erstellung der Data Factory-Projektmappe.
 		2. Geben Sie **Windows Server 2012 R2** für die Einstellung „Betriebssystem-Familie“ ein.
-		3. Wählen Sie einen **Knotentarif** aus. 
+		3. Wählen Sie einen **Knotentarif** aus.
 		3. Geben Sie **2** als Wert für die Einstellung **Zuordnung für Ziel** ein.
 		4. Geben Sie **2** als Wert für die Einstellung **Max. Tasks pro Knoten** ein.
-	5. Klicken Sie auf **OK**, um den Pool zu erstellen. 
+	5. Klicken Sie auf **OK**, um den Pool zu erstellen.
  	 
 5.  [Azure Storage Explorer 6 (Tool)](https://azurestorageexplorer.codeplex.com/) oder [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) (von ClumsyLeaf Software). Hierbei handelt es sich um GUI-Tools zum Überprüfen und Ändern der Daten in Ihren Azure-Speicher-Projekten, einschließlich der Protokolle Ihrer in der Cloud gehosteten Anwendungen.
 
@@ -163,7 +163,7 @@ Die Methode verfügt über einige wichtige Komponenten, die Sie kennen müssen.
 
 1.  Erstellen Sie ein .NET-Klassenbibliotheksprojekt in Visual Studio.
 
-    1.  Starten Sie **Visual Studio 2012**/**2013/2015**.
+    1.  Starten Sie **Visual Studio 2012**/**2013/2015**.
 
     2.  Klicken Sie auf **Datei**, zeigen Sie auf **Neu**, und klicken Sie auf **Projekt**.
 
@@ -179,7 +179,7 @@ Die Methode verfügt über einige wichtige Komponenten, die Sie kennen müssen.
 
 2.  Klicken Sie auf **Tools**, zeigen Sie auf **NuGet-Paket-Manager**, und klicken Sie auf **Paket-Manager-Konsole**.
 
-3.  Führen Sie in der **Paket-Manager-Konsole** den folgenden Befehl zum Importieren von **Microsoft.Azure.Management.DataFactories** aus.
+3.  Führen Sie in der **Paket-Manager-Konsole** den folgenden Befehl aus, um **Microsoft.Azure.Management.DataFactories** zu importieren.
 
 			Install-Package Microsoft.Azure.Management.DataFactories
 
@@ -539,7 +539,7 @@ In diesem Schritt erstellen Sie einen verknüpften Dienst für Ihr **Azure Batch
 
     2.  Ersetzen Sie **Zugriffsschlüssel** durch den Zugriffsschlüssel des Azure Batch-Kontos.
 
-    3.  Geben Sie die ID des Pools für die **poolName**-Eigenschaft ein**. **Für diese Eigenschaft können Sie entweder den Poolnamen oder die Pool-ID eingeben.
+    3.  Geben Sie die ID des Pools für die **poolName**-Eigenschaft ein**.** Für diese Eigenschaft können Sie entweder den Poolnamen oder die Pool-ID eingeben.
 
     4.  Geben Sie die Batch-URI für die JSON-Eigenschaft **batchUri** ein.
     
@@ -797,7 +797,7 @@ In diesem Schritt testen Sie die Pipeline durch Ablegen von Dateien in die Einga
 
     ![](./media/data-factory-data-processing-using-batch/image13.png)
 
-6.  Verwenden Sie das Azure-Portal, um die den **Slices** zugeordneten **Aufgaben** anzuzeigen und herauszufinden, auf welchem virtuellen Computer jedes Slice ausgeführt wurde. Ausführliche Informationen finden Sie unter [Data Factory und Batch-Integration](#data-factory-and-batch-integration).
+6.  Verwenden Sie das Azure-Portal, um die den **Slices** zugeordneten **Aufgaben** anzuzeigen und zu ermitteln, auf welchem virtuellen Computer die Slices jeweils ausgeführt wurden. Ausführliche Informationen finden Sie unter [Data Factory und Batch-Integration](#data-factory-and-batch-integration).
 
 7.  Die Ausgabedateien sollten im **outputfolder** von **mycontainer** in Ihrem Azure Blob-Speicher angezeigt werden.
 
@@ -831,15 +831,15 @@ In diesem Schritt testen Sie die Pipeline durch Ablegen von Dateien in die Einga
     **Hinweis:** Wenn Sie die Ausgabedatei 2015-11-16-01.txt nicht gelöscht haben, bevor Sie es mit 5 Eingabedateien versuchen, sehen Sie eine Zeile aus der vorherigen Sliceausführung und fünf Zeilen aus der aktuellen Sliceausführung. Der Inhalt wird standardmäßig an die Ausgabedatei angefügt, wenn sie bereits vorhanden ist.
 
 ### Data Factory und Batch-Integration
-Der Data Factory-Dienst erstellt in Azure Batch einen Auftrag mit dem Namen: **adf-poolname:job-xxx**.
+Der Data Factory-Dienst erstellt in Azure Batch einen Auftrag mit dem Namen **adf-poolname:job-xxx**.
 
 ![Azure Data Factory – Batch-Aufträge](media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png)
 
 Bei jeder Aktivitätsausführung eines Slices wird eine Aufgabe im Auftrag erstellt. Wenn zehn Slices zur Verarbeitung bereitstehen, werden zehn Aufgaben im Auftrag erstellt. Sie können mehrere Slices parallel ausführen, wenn Sie über mehrere Compute-Knoten im Pool verfügen. Sie können auch mehrere Slices auf dem gleichen Compute-Knoten ausführen, wenn die maximale Anzahl der Aufgaben pro Compute-Knoten auf mehr als 1 festgelegt ist.
 
-Dieses Beispiel umfasst 5 Slices, also 5 Aufgaben in Azure Batch. Wenn für die **Parallelität** in der Pipeline-JSON in Azure Data Factory **5** festgelegt wird und als **maximale Anzahl an Aufgaben pro virtuellem Computer** auf **2** in einem Azure Batch-Pool mit **2** VMs festgelegt ist, werden die Aufgaben sehr schnell ausgeführt (überprüfen Sie die Start- und Endzeit der Aufgaben).
+Dieses Beispiel umfasst 5 Slices, also 5 Aufgaben in Azure Batch. Wenn die **Parallelität** in der Pipeline-JSON in Azure Data Factory auf **5** und die maximale Anzahl von Aufgaben pro virtuellem Computer in einem Azure Batch-Pool mit zwei virtuellen Computern auf **2** festgelegt ist, werden die Aufgaben sehr schnell ausgeführt (wie anhand der Start- und Endzeit von Aufgaben zu sehen).
 
-Verwenden Sie das Portal, um den Batch-Auftrag und die den **Slices** zugeordneten Aufgaben anzuzeigen und herauszufinden, auf welchem virtuellen Computer jedes Slice ausgeführt wurde.
+Verwenden Sie das Portal, um den Batch-Auftrag und die den **Slices** zugeordneten Aufgaben anzuzeigen und zu ermitteln, auf welchem virtuellen Computer die Slices jeweils ausgeführt wurden.
 
 ![Azure Data Factory – Aufgaben des Batch-Auftrags](media/data-factory-data-processing-using-batch/data-factory-batch-job-tasks.png)
 
@@ -886,9 +886,9 @@ Das Debuggen umfasst einige grundlegende Verfahren:
     ![](./media/data-factory-data-processing-using-batch/image21.png)
 
     **Hinweis:** sehen Sie einen **Container** im Azure Blob-Speicher **adfjobs**. Dieser Container wird nicht automatisch gelöscht, jedoch können Sie ihn nach dem Testen der Lösung problemlos löschen. Ebenso erstellt die Data Factory-Lösung einen Azure Batch-**Auftrag** mit dem Namen: **adf-< Pool-ID/Name>:job-0000000001**. Sie können diesen Auftrag bei Belieben löschen, nachdem Sie die Lösung getestet haben.
-7. Die benutzerdefinierte Aktivität verwendet nicht die **app.config**-Datei aus Ihrem Paket. Wenn Ihr Code also Verbindungszeichenfolgen aus der Konfigurationsdatei liest, funktioniert er während der Laufzeit nicht. Die bewährte Methode bei der Verwendung von Azure Batch ist die Aufbewahrung aller geheimen Schlüssel in **Azure KeyVault**, die Verwendung eines zertifikatbasierten Dienstprinzipals zum Schützen des Schlüsseltresors und die Verteilung des Zertifikats an Azure Batch-Pool. Die benutzerdefinierte .NET-Aktivität kann anschließend auf die geheimen Schlüssel aus dem Schlüsseltresor während der Laufzeit zugreifen. Dabei handelt es sich um eine generische Lösung, die auf jede Art von geheimem Schlüssel skalieren kann, nicht nur auf eine Verbindungszeichenfolge.
+7. Die benutzerdefinierte Aktivität verwendet nicht die Datei **app.config** aus Ihrem Paket. Wenn Ihr Code also Verbindungszeichenfolgen aus der Konfigurationsdatei liest, funktioniert er zur Laufzeit nicht. Bei Verwendung von Azure Batch empfiehlt es sich, alle geheimen Schlüssel in einer **Azure Key Vault-Instanz** zu speichern, den Schlüsseltresor mithilfe eines zertifikatbasierten Dienstprinzipals zu schützen und das Zertifikat an den Azure Batch-Pool zu verteilen. Die benutzerdefinierte .NET-Aktivität kann anschließend auf die geheimen Schlüssel aus dem Schlüsseltresor während der Laufzeit zugreifen. Dabei handelt es sich um eine generische Lösung, die auf jede Art von geheimem Schlüssel skalieren kann, nicht nur auf eine Verbindungszeichenfolge.
 
-	Es existiert eine einfachere Problemumgehung (aber keine bewährte Methode): Sie können einen neuen **mit Azure SQL verknüpften Dienst** mit Verbindungszeichenfolgen-Einstellungen erstellen, ein den verknüpften Dienst verwendendes Dataset erstellen und das Dataset als Dummyeingabedataset mit der benutzerdefinierten .NET-Aktivität verketten. Sie können anschließend auf die Verbindungszeichenfolge des verknüpften Diensts im Code der benutzerdefinierten Aktivität zugreifen. Sie sollte während der Laufzeit problemlos funktionieren.
+	Es gibt eine einfachere Problemumgehung (aber keine bewährte Methode): Sie können einen neuen **mit Azure SQL verknüpften Dienst** mit Einstellungen für Verbindungszeichenfolgen erstellen, ein Dataset erstellen, das den verknüpften Dienst verwendet, und das Dataset als Dummy-Eingabedataset mit der benutzerdefinierten .NET-Aktivität verketten. Sie können anschließend auf die Verbindungszeichenfolge des verknüpften Diensts im Code der benutzerdefinierten Aktivität zugreifen. Sie sollte während der Laufzeit problemlos funktionieren.
 
 ### Erweitern des Beispiels
 
@@ -902,11 +902,19 @@ Sie können dieses Beispiel erweitern, um mehr über Azure Data Factory und Azur
 
 4.  Erstellen Sie einen Azure Batch-Pool mit **automatischer Skalierung**. Das automatische Skalieren von Computeknoten in einem Azure Batch-Pool ist die dynamische Anpassung der Verarbeitungsleistung, die von der Anwendung beansprucht wird. Sie können z.B. einen Azure Batch-Pool ohne dedizierte VM erstellen und dabei eine Formel für die automatische Skalierung angeben, die von der Anzahl der ausstehenden Aufgaben abhängig ist:
  
-		pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);$TargetDedicated = max(pendingTaskSampleVector);
+	Je ein virtueller Computer pro ausstehender Aufgabe (Beispiel: fünf ausstehende Aufgaben -> fünf virtuelle Computer):
+
+		pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);
+		$TargetDedicated = max(pendingTaskSampleVector);
+
+	Maximal ein virtueller Computer – unabhängig von der Anzahl ausstehender Aufgaben:
+
+		pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);
+		$TargetDedicated = (max(pendingTaskSampleVector)>0)?1:0;
 
 	Weitere Informationen hierzu finden Sie unter [Automatisches Skalieren von Computeknoten in einem Azure Batch-Pool](../batch/batch-automatic-scaling.md).
 
-	Wenn der Pool die Standardeinstellung für [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx) verwendet, kann es 15 bis 30 Minuten dauern, bis der Batch-Dienst den virtuellen Computer vorbereitet hat, bevor die benutzerdefinierte Aktivität ausgeführt wird. Wenn der Pool eine andere Einstellung für „autoScaleEvaluationInterval“ nutzt, könnte der Batch-Dienst „autoScaleEvaluationInterval“ + 10 Minuten verwenden.
+	Wenn der Pool die Standardeinstellung für [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx) verwendet, kann es 15 bis 30 Minuten dauern, bis der Batch-Dienst den virtuellen Computer vorbereitet hat und die benutzerdefinierte Aktivität ausgeführt wird. Wenn der Pool eine andere Einstellung für „autoScaleEvaluationInterval“ nutzt, könnte der Batch-Dienst „autoScaleEvaluationInterval“ + 10 Minuten verwenden.
 	 
 5. In der Beispiellösung der **Execute**-Methode ruft die **Calculate** -Methode auf, die einen Eingabedatenslice verarbeiten, um einen Ausgabedatenslice zu erzeugen. Sie können eine eigene Methode erstellen, um Eingabedaten zu verarbeiten und den Calculate-Methodenaufruf in der Execute-Methode durch einen Aufruf Ihrer Methode zu ersetzen.
 
@@ -949,4 +957,4 @@ Nachdem Sie Daten verarbeitet haben, können Sie sie mit Online-Tools wie **Micr
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

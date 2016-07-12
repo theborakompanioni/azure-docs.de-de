@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/14/2016"   
+	ms.date="06/22/2016"  
 	ms.author="milanga;juliako;"/>
  
 # Erkennen von Emotionen mit Azure Media Analytics
@@ -165,7 +165,7 @@ Wenn Sie eine Aufgabe mit **Azure Media Motion Detector** erstellen, müssen Sie
 Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
 1. Erstellen eines Assets und Hochladen einer Mediendatei in das Asset.
-1. Erstellen eines Auftrags mit einer Bewegungserkennungsaufgabe auf Basis einer Konfigurationsdatei, die die folgende JSON-Voreinstellung enthält. 
+1. Erstellen eines Auftrags mit einer Bewegungserkennungsaufgabe auf Basis einer Konfigurationsdatei, die die folgende JSON-Voreinstellung enthält.
 					
 		{
 		    "version": "1.0"
@@ -351,4 +351,4 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
 [Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

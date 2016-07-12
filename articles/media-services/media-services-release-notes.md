@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="media" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
- 	ms.date="04/18/2016"
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -47,8 +47,8 @@ In diesen Versionshinweisen werden Änderungen im Vergleich zu früheren Version
 - [Version August 2014](#august_changes_14)
 - [Version Juli 2014](#july_changes_14)
 - [Version Mai 2014](#may_changes_14)
-- [Version April 2014](#april_changes_14) 
-- [Versionen Januar\\Februar 2014](#jan_feb_changes_14) 
+- [Version April 2014](#april_changes_14)
+- [Versionen Januar\\Februar 2014](#jan_feb_changes_14)
 - [Version Dezember 2013](#december_changes_13)
 - [Version November 2013](#november_changes_13)
 - [Version August 2013](#august_changes_13)
@@ -189,7 +189,7 @@ Azure Media Services .NET SDK ist jetzt in der Version 3.4.0.0 erhältlich. Die
 Azure Media Services .NET SDK ist jetzt in der Version 3.3.0.0 erhältlich. Die folgende Funktionalität wurde in dieser Version hinzugefügt:
 
 - Unterstützung für die OpenId Connect Discovery-Spezifikation
-- Unterstützung für die Verarbeitung von Schlüsselrollover auf der Seite des Identitätsanbieters 
+- Unterstützung für die Verarbeitung von Schlüsselrollover auf der Seite des Identitätsanbieters
 
 Wenn Sie einen Identitätsanbieter verwenden, der das OpenID Connect Discovery-Dokument verfügbar macht (wie die folgenden Anbieter: Azure Active Directory, Google, Salesforce), können Sie Azure Media Services anweisen, Signaturschlüssel zur Überprüfung des JWT-Tokens aus der OpenID Connect Discovery-Spezifikation abzurufen.
 
@@ -267,7 +267,7 @@ Durch diese Version wird der Microsoft.WindowsAzure.MediaServices.Client.Content
 - CORS-Unterstützung für wichtigen Übermittlungsdienst wurde hinzugefügt.
 - Leistungsverbesserungen für Abfragen von Autorisierungsrichtlinienoptionen wurden vorgenommen.
 - Im Datencenter China gilt die [Schlüsselübermittlungs-URL](http://msdn.microsoft.com/library/azure/ef4dfeeb-48ae-4596-ab28-44d6b36d8769#get_delivery_service_url) jetzt pro Kunde (genau wie in anderen Datencentern).
-- Automatische HLS-Zieldauer hinzugefügt. Bei Livestreaming wird HLS immer dynamisch verpackt. Standardmäßig berechnet Media Services das HLS Segment-Paketerstellungsverhältnis (FragmentsPerSegment) basierend auf dem Keyframe-Intervall (KeyFrameInterval), auch bezeichnet als Gruppe von Bildern – GOP, die vom Live-Encoder empfangen wird. Weitere Informationen finden Sie unter [Working with Azure Media Services Live Streaming] \(in englischer Sprache).
+- Automatische HLS-Zieldauer hinzugefügt. Bei Livestreaming wird HLS immer dynamisch verpackt. Standardmäßig berechnet Media Services das HLS Segment-Paketerstellungsverhältnis (FragmentsPerSegment) basierend auf dem Keyframe-Intervall (KeyFrameInterval), auch bezeichnet als Gruppe von Bildern – GOP, die vom Live-Encoder empfangen wird. Weitere Informationen finden Sie unter [Working with Azure Media Services Live Streaming] (in englischer Sprache).
  
 ###Media Services .NET SDK-Updates
 
@@ -343,16 +343,16 @@ Derzeit stehen Ihnen die folgenden beiden Optionen zur Verfügung, um das Proble
 	
 	* Sie müssen Eigentümer des benutzerdefinierten Domänennamens sein.
 	
-	* Sie müssen als Eigentümer des Domänennamens von Azure Media Services validiert werden. Erstellen Sie zum Überprüfen der Domäne einen CName-Datensatz, der <MediaServicesAccountId>.<parent domain> zu verifydns.<mediaservices-dns-zone> zuordnet.
+	* Sie müssen als Eigentümer des Domänennamens von Azure Media Services validiert werden. Erstellen Sie zum Überprüfen der Domäne einen CNAME-Eintrag, der <MediaServicesAccountId>.<übergeordnete Domäne> zu „verifydns.<mediaservices-dns-zone>“ zuordnet.
 	
 	* Sie müssen einen anderen CName-Datensatz erstellen, der den benutzerdefinierten Hostnamen (z. B. sports.contoso.com) dem Hostnamen des Media Services-Streamingendpunkts zuordnet (z. B. amstest.streaming.mediaservices.windows.net).
 
 
-	Weitere Informationen finden Sie unter der **CustomHostNames**-Eigenschaft unter [StreamingEndpoint] \(in englischer Sprache).
+	Weitere Informationen finden Sie unter der **CustomHostNames**-Eigenschaft unter [StreamingEndpoint] (in englischer Sprache).
 
 ### <a id="sept_14_preview_changes"></a>Neue Funktionen/Szenarien, die Teil der öffentlichen Vorschauversion sind
 
-* Live Streaming-Vorschau. Weitere Informationen finden Sie unter [Working with Azure Media Services Live Streaming] \(in englischer Sprache).
+* Live Streaming-Vorschau. Weitere Informationen finden Sie unter [Working with Azure Media Services Live Streaming] (in englischer Sprache).
 
 * Schlüsselübermittlungsdienst. Weitere Informationen finden Sie unter [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts].
 
@@ -364,7 +364,7 @@ Derzeit stehen Ihnen die folgenden beiden Optionen zur Verfügung, um das Proble
 
 * Media Services PlayReady-Lizenzvorlage. Weitere Informationen finden Sie unter [Media Services PlayReady-Lizenzvorlage – Übersicht].
 
-* Streaming von speicherverschlüsselten Inhalten. Weitere Informationen finden Sie unter [Streaming Storage Encrypted Content] \(in englischer Sprache).
+* Streaming von speicherverschlüsselten Inhalten. Weitere Informationen finden Sie unter [Streaming Storage Encrypted Content] (in englischer Sprache).
 
 ##<a id="august_changes_14"></a>Version August 2014
 
@@ -383,7 +383,7 @@ Die folgenden Fehlerkorrekturen wurden für Azure Media Services Packager und En
 
 ### <a id="may_14_changes"></a>Allgemeine Media Services-Updates
 
-Sie können nun die [Dynamische Paketerstellung] zum Streamen von HTTP Live Streaming (HLS) v3 verwenden. Fügen Sie zum Streamen von HLS v3 das folgende Format zum ursprünglichen Locator-Pfad hinzu: *.ism/manifest(format=m3u8-aapl-v3). Weitere Informationen finden Sie unter [Nick Drouin's Blog] \(in englischer Sprache).
+Sie können nun die [Dynamische Paketerstellung] zum Streamen von HTTP Live Streaming (HLS) v3 verwenden. Fügen Sie zum Streamen von HLS v3 das folgende Format zum ursprünglichen Locator-Pfad hinzu: *.ism/manifest(format=m3u8-aapl-v3). Weitere Informationen finden Sie unter [Nick Drouin's Blog] (in englischer Sprache).
 
 Die dynamische Paketerstellung unterstützt jetzt auch die Bereitstellung von mit PlayReady verschlüsseltem HLS (v3 und v4) basierend auf statisch mit PlayReady verschlüsseltem Smooth Streaming. Informationen zum Verschlüsseln von Smooth Streaming mit PlayReady finden Sie unter [Schützen von Smooth Streaming und MPEG DASH mit PlayReady].
 
@@ -395,7 +395,7 @@ Das Media Services SDK für .NET Version 3.0.0.5 umfasst die folgenden Verbesser
 
 * Verbesserungen bei Wiederholungslogik und vorübergehender Ausnahmebehandlung:
 
-	* Vorübergehende Fehlerermittlung und Wiederholungslogik wurden für Ausnahmen verbessert, die durch Abfragen, Speichern von Änderungen, Hochladen oder Herunterladen von Dateien verursacht werden. 
+	* Vorübergehende Fehlerermittlung und Wiederholungslogik wurden für Ausnahmen verbessert, die durch Abfragen, Speichern von Änderungen, Hochladen oder Herunterladen von Dateien verursacht werden.
 	
 	* Bei der Ausgabe von Webausnahmen (z. B. während der Abfrage eines ACS-Token) schlagen schwerwiegende Fehler nun schneller fehl.
 
@@ -405,7 +405,7 @@ Weitere Informationen finden Sie unter [Wiederholungslogik im Media Services SDK
 
 ### <a name="april_14_enocer_changes"></a>Media Services Encoder-Updates
 
-* Unterstützung für die Erfassung von mit dem nichtlinearen Grass Valley EDIUS-Editor erstellten AVI-Dateien, wobei das Video leicht mit dem Grass Valley HQ-/HQX-Codec komprimiert ist. Weitere Informationen finden Sie unter [Grass Valley Announces EDIUS 7 Streaming Through the Cloud] \(in englischer Sprache).
+* Unterstützung für die Erfassung von mit dem nichtlinearen Grass Valley EDIUS-Editor erstellten AVI-Dateien, wobei das Video leicht mit dem Grass Valley HQ-/HQX-Codec komprimiert ist. Weitere Informationen finden Sie unter [Grass Valley Announces EDIUS 7 Streaming Through the Cloud] (in englischer Sprache).
 
 * Unterstützung für die Festlegung der Namenskonvention für die vom Media Encoder erstellten Dateien. Weitere Informationen finden Sie unter [Steuern von Media Services Encoder-Ausgabedateinamen].
 
@@ -430,7 +430,7 @@ Weitere Informationen zu den Änderungen finden Sie unter: [Azure Media Services
 
 Die folgenden Änderungen wurden in 3.0.0.3 vorgenommen:
 
-* Upgrade der Azure-Speicherabhängigkeiten für die Verwendung von Version 3.0.3.0. 
+* Upgrade der Azure-Speicherabhängigkeiten für die Verwendung von Version 3.0.3.0.
 
 * Behebung des Problems mit der Abwärtskompatibilität für Versionen 3.0.*.*.
 
@@ -447,7 +447,7 @@ Ab Media Services SDK Version 3.0.0.0 können Sie die Token des [Zugriffssteueru
 
 ### <a name="dec_13_donnet_ext_changes"></a>Azure Media Services .NET SDK-Erweiterungen 2.0.0.0
 
-Azure Media Services SDK-Erweiterungen für .NET ist ein Satz von Erweiterungsmethoden und Hilfsfunktionen, die Ihren Code vereinfachen und eine einfachere Entwicklung mit Azure Media Services ermöglichen. Sie können die neuesten Bits unter [Azure Media Services .NET SDK Extensions] \(in englischer Sprache) abrufen.
+Azure Media Services SDK-Erweiterungen für .NET ist ein Satz von Erweiterungsmethoden und Hilfsfunktionen, die Ihren Code vereinfachen und eine einfachere Entwicklung mit Azure Media Services ermöglichen. Sie können die neuesten Bits unter [Azure Media Services .NET SDK Extensions] (in englischer Sprache) abrufen.
 
 ##<a id="november_changes_13"></a>Version November 2013
 
@@ -459,9 +459,9 @@ Ab dieser Version behandelt Media Services SDK für .NET vorübergehende Fehler,
 
 ### <a name="aug_13_powershell_changes"></a>In Azure-SDK-Tools enthaltene Media Services-PowerShell-Cmdlets
 
-Die folgenden Media Services-PowerShell-Cmdlets sind jetzt in [azure-sdk-tools] \(in englischer Sprache) enthalten.
+Die folgenden Media Services-PowerShell-Cmdlets sind jetzt in [azure-sdk-tools] (in englischer Sprache) enthalten.
 
-* Get-AzureMediaServices 
+* Get-AzureMediaServices
 
 	Beispiel: `Get-AzureMediaServicesAccount`.
 
@@ -483,7 +483,7 @@ Die folgenden Media Services-PowerShell-Cmdlets sind jetzt in [azure-sdk-tools] 
 
 Die in diesem Abschnitt aufgeführten Änderungen sind Aktualisierungen der Media Services-Versionen für Juni 2013.
 
-* Möglichkeit, mehrere Speicherkonten mit einem Media Service-Konto zu verknüpfen. 
+* Möglichkeit, mehrere Speicherkonten mit einem Media Service-Konto zu verknüpfen.
 
 	StorageAccount
 	
@@ -666,4 +666,4 @@ Die folgende Funktion war neu in der November-Version des SDK.
 [Verarbeiten von Media Services-Auftragsbenachrichtigungen]: http://msdn.microsoft.com/library/azure/dn261241.aspx
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

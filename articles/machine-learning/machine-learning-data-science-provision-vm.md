@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
+	ms.date="06/24/2016" 
 	ms.author="bradsev" />
 
 
@@ -51,9 +51,9 @@ Es folgen die Schritte zum Erstellen einer Instanz der Microsoft Data Science Vi
 
 1.	Wechseln Sie im [Azure-Portal](https://portal.azure.com/#create/microsoft-ads.standard-data-science-vmstandard-data-science-vm) zur Liste der virtuellen Computer.
 2.	 Klicken Sie unten auf die Schaltfläche **Erstellen**, um einen Assistenten aufzurufen. ![configure-data-science-vm](./media/machine-learning-data-science-provision-vm/configure-data-science-virtual-machine.png)
-3.	 Die folgenden Abschnitte enthalten die **Eingaben** für jeden der **fünf Schritte** im Assistenten (im rechten Teil der obigen Abbildung aufgelistet), der zum Erstellen der Microsoft Data Science Virtual Machine wird. Die zum Konfigurieren der einzelnen Schritte erforderlichen Eingaben sind:
+3.	 Der Assistent zum Erstellen der Microsoft Data Science Virtual Machine erfordert **Eingaben** für jeden der **5 Schritte**, die in der Abbildung rechts aufgelistet sind. Die zum Konfigurieren der einzelnen Schritte erforderlichen Eingaben sind:
 
-  **a. Grundlagen**:
+     **a. Grundlagen**:
 
    - **Name**: Name des Data Science-Servers, den Sie erstellen.
    - **Benutzername**: ID des Administratoranmeldekontos.
@@ -62,23 +62,23 @@ Es folgen die Schritte zum Erstellen einer Instanz der Microsoft Data Science Vi
    - **Ressourcengruppe**: Sie können eine neue Gruppe erstellen oder eine vorhandene Gruppe verwenden.
    - **Standort**: Wählen Sie das Rechenzentrum aus, das am besten geeignet ist. Normalerweise ist es das Rechenzentrum, in dem der größte Teil Ihrer Daten gespeichert ist oder das Ihrem Standort am nächsten ist, um den schnellsten Netzwerkzugriff zu erreichen.
 
-  **b. Größe**:
+     **b. Größe**:
 
    - Wählen Sie einen Servertyp aus, der die funktionalen Anforderungen und den Kostenrahmen erfüllt. Eine größere Auswahl an VM-Größen erhalten Sie durch die Auswahl von „Alle anzeigen“.
 
-  **c. Einstellungen**:
+     **c. Einstellungen**:
 
    - **Datenträgertyp**: Wählen Sie „Premium“, wenn Sie Solid-State-Laufwerke (SSD) bevorzugen, andernfalls „Standard“.
    - **Speicherkonto**: Sie können ein neues Azure-Speicherkonto in Ihrem Abonnement erstellen oder ein vorhandenes an dem *Standort* verwenden, der im Schritt „Grundlagen“ des Assistenten ausgewählt wurde.
    - **Andere Parameter**: In den meisten Fällen verwenden Sie die Standardeinstellungen für die übrigen Parameter. Sie können den Mauszeiger über den Informationslink bewegen, um Hilfe zu einem bestimmten Feld anzuzeigen, falls Sie nicht die Standardeinstellungen verwenden möchten.
 
-  **d. Zusammenfassung**:
+     **d. Zusammenfassung**:
 
    - Stellen Sie sicher, dass alle eingegebenen Informationen richtig sind.
 
-  **e. Kaufen**:
+     **e. Kaufen**:
 
-   - Klicken Sie auf **Kaufen**, um die Bereitstellung zu starten. Ein Link zu den Bedingungen der Transaktion wird bereitgestellt. Für die VM gelten keine über die Computekosten für die Servergröße, die Sie im Schritt **Größe** ausgewählt haben, hinausgehenden Kosten. 
+   - Klicken Sie auf **Kaufen**, um die Bereitstellung zu starten. Ein Link zu den Bedingungen der Transaktion wird bereitgestellt. Für die VM gelten keine über die Computekosten für die Servergröße, die Sie im Schritt **Größe** ausgewählt haben, hinausgehenden Kosten.
 
 
 Die Bereitstellung sollte ungefähr 10 bis 20 Minuten dauern. Der Status der Bereitstellung wird im Azure-Portal angezeigt.
@@ -112,7 +112,7 @@ Für die Durchführung Ihrer Analysen ist auf der VM Microsoft R Server Develope
 Für die Entwicklung mithilfe von Python wurden Anaconda Python Distribution 2.7 und 3.5 installiert. Diese Distribution enthält die Python-Basisversion sowie etwa 300 der beliebtesten Pakete für Mathematik, Entwicklung und Datenanalysen. Sie können die Python-Tools für Visual Studio (PTVS), die mit der Visual Studio 2015 Community Edition installiert werden, oder eine der mit Anaconda gebündelten IDEs wie IDLE oder Spyder verwenden. Sie können eines dieser Tools über eine Suche auf der Suchleiste starten (**Windows-Taste**+**S**). **Hinweis:** Damit die Python-Tools für Visual Studio auf Anaconda Python 2.7 und 3.5 verweisen können, müssen Sie benutzerdefinierte Umgebungen für jede Version erstellen. Wechseln Sie in der Visual Studio 2015 Community Edition zu „Tools -> Python-Tools -> Python-Umgebungen“, und klicken Sie auf „+ Benutzerdefiniert“. Legen Sie die Umgebungspfade fest. Anaconda Python 2.7 wird unter C:\\Anaconda installiert, Anaconda Python 3.5 unter C:\\Anaconda\\envs\\py35. Ausführliche Schritte hierzu finden Sie in der [PTVS-Dokumentation](https://github.com/Microsoft/PTVS/wiki/Selecting-and-Installing-Python-Interpreters#hey-i-already-have-an-interpreter-on-my-machine-but-ptvs-doesnt-seem-to-know-about-it).
 
 ### Jupyter Notebook
-Zur Anaconda Distribution gehört außerdem ein Jupyter Notebook, eine Umgebung zum Freigeben von Code und Analysen. Es wurde bereits ein Jupyter Notebook-Server mit Python 2, Python 3 und R-Kernels konfiguriert. Es gibt ein Desktopsymbol namens „Jupyter Notebook“, um den Browser für den Zugriff auf den Notebook-Server zu starten. Wenn Sie den virtuellen Computer über Remotedesktop verwenden, können Sie auch [https://localhost:9999/](https://localhost:9999/) für den Zugriff auf den Jupyter Notebook-Server aufrufen. (Hinweis: Fahren Sie fort, wenn Warnungen zu Zertifikaten angezeigt werden). Es sind Beispiele für Notebooks enthalten - eines für Python und eines für R. Der Link zu den Beispielen wird Ihnen auf der Startseite für die Notebooks angezeigt, nachdem Sie sich mit dem im vorherigen Schritt festgelegten Passwort am Jupyter Notebook authentifiziert haben.
+Zur Anaconda Distribution gehört außerdem ein Jupyter Notebook, eine Umgebung zum Freigeben von Code und Analysen. Es wurde bereits ein Jupyter Notebook-Server mit Python 2, Python 3 und R-Kernels konfiguriert. Es gibt ein Desktopsymbol namens „Jupyter Notebook“, um den Browser für den Zugriff auf den Notebook-Server zu starten. Wenn Sie den virtuellen Computer über Remotedesktop verwenden, können Sie auch [https://localhost:9999/](https://localhost:9999/) für den Zugriff auf den Jupyter Notebook-Server aufrufen. (Hinweis: Fahren Sie fort, wenn Warnungen zu Zertifikaten angezeigt werden.). Es sind Beispiele für Notebooks enthalten - eines für Python und eines für R. Der Link zu den Beispielen wird Ihnen auf der Startseite für die Notebooks angezeigt, nachdem Sie sich mit dem im vorherigen Schritt festgelegten Passwort am Jupyter Notebook authentifiziert haben.
 
 ### Visual Studio 2015 Community Edition
 Visual Studio Community Edition ist auf der VM installiert. Dies ist eine kostenlose Version der beliebten IDE von Microsoft, die Sie zur Evaluierung und für sehr kleine Teams verwenden können. Die Lizenzbedingungen können Sie [hier](https://www.visualstudio.com/support/legal/mt171547) prüfen. Öffnen Sie Visual Studio durch Doppelklicken auf das Desktopsymbol oder über das **Startmenü**. Sie können auch nach Programmen suchen, indem Sie die **Windows-Taste**+**S** drücken und „Visual Studio“ eingeben. Anschließend können Sie Projekte in Sprachen wie C# und Python erstellen. Zusätzlich werden Sie feststellen, dass bereits Plugins installiert wurden, die Ihnen die Arbeit mit Azure-Diensten wie Azure Data Catalog, Azure, HDInsight (Hadoop, Spark) und Azure Data Lake erleichtern.
@@ -124,10 +124,10 @@ Eine eingeschränkte Version von SQL Server gehört ebenfalls zu Visual Studio C
 
 ### Azure 
 Mehrere Azure-Tools werden auf dem virtuellen Computer installiert:
-- Es gibt eine Desktopverknüpfung, um auf die Azure SDK-Dokumentation zuzugreifen. 
-- **AzCopy** wird zum Verschieben von Daten in Ihr und aus Ihrem Microsoft Azure Storage-Konto verwendet. 
-- Der **Azure-Speicher-Explorer** wird verwendet, um die Objekte zu durchsuchen, die in Ihrem Azure Storage-Konto gespeichert sind. 
-- **Microsoft Azure PowerShell** ist ein Tool zur Verwaltung Ihrer Azure-Ressourcen in der PowerShell-Skriptsprache und ist auch auf Ihrem virtuellen Computer installiert ist. 
+- Es gibt eine Desktopverknüpfung, um auf die Azure SDK-Dokumentation zuzugreifen.
+- **AzCopy** wird zum Verschieben von Daten in Ihr und aus Ihrem Microsoft Azure Storage-Konto verwendet.
+- Der **Azure-Speicher-Explorer** wird verwendet, um die Objekte zu durchsuchen, die in Ihrem Azure Storage-Konto gespeichert sind.
+- **Microsoft Azure PowerShell** ist ein Tool zur Verwaltung Ihrer Azure-Ressourcen in der PowerShell-Skriptsprache und auch auf Ihrem virtuellen Computer installiert.
 
 ###Power BI
 
@@ -142,9 +142,9 @@ Der [**Microsoft-Webplattform-Installer**](https://www.microsoft.com/web/downloa
 Mit den folgenden Schritten können Sie noch mehr lernen und entdecken.
 
 * Verschaffen Sie sich einen Überblick über die verschiedenen Tools, die auf der Data Science-VM installiert sind, indem Sie das Startmenü öffnen und sich die Liste der installierten Tools ansehen.
-* Navigieren Sie zu **C:\\Programme\\Microsoft\\MRO-for-RRE\\8.0\\R-3.2.2\\library\\RevoScaleR\\demoScripts**, um Beispiele der RevoScaleR-Bibliothek in R zu erhalten, die Datenanalysen auf Unternehmensebene unterstützt.  
-* Lesen Sie den Artikel [Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können](http://aka.ms/dsvmtenthings).
-* Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) vollständige Analyselösungen systematisch erstellen.
-* Öffnen Sie den [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com), um Beispiel der Cortana Intelligence Suite für die Bereiche Machine Learning und Datenanalyse zu erhalten. Für den einfachen Zugriff haben wir auch ein Symbol auf dem Desktop und im Startmenü der virtuellen Maschine bereitgestellt. 
+* Navigieren Sie zu **C:\\Programme\\Microsoft\\MRO-for-RRE\\8.0\\R-3.2.2\\library\\RevoScaleR\\demoScripts**, um Beispiele der RevoScaleR-Bibliothek in R zu erhalten, die Datenanalysen auf Unternehmensebene unterstützt.
+* Lesen Sie den Artikel [Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können](http://aka.ms/dsvmtenthings)
+* Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](https://azure.microsoft.com/documentation/learning-paths/data-science-process/) vollständige Analyselösungen systematisch erstellen.
+* Öffnen Sie den [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com), um Beispiele der Cortana Intelligence Suite für die Bereiche Machine Learning und Datenanalyse zu erhalten. Für den einfachen Zugriff haben wir auch ein Symbol auf dem Desktop und im Startmenü der virtuellen Maschine bereitgestellt.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

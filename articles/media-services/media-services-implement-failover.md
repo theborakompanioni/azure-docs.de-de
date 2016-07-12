@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="04/18/2016"  
+	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 #Implementieren des Failoverstreamingszenarios
@@ -22,10 +22,10 @@ Diese exemplarische Vorgehensweise zeigt, wie Inhalte (Blobs) aus einem Medienob
 
 1. Einrichten eines Media Services-Kontos im "Data Center A".
 1. Hochladen einer Mezzanine-Datei in ein Quellmedienobjekt.
-1. Codieren des Medienobjekts in MP4-Dateien mit mehreren Bitraten. 
+1. Codieren des Medienobjekts in MP4-Dateien mit mehreren Bitraten.
 1. Erstellen eines schreibgeschützten SAS-Locators für das Quellmedienobjekt, um Lesezugriff auf den Container im Storage-Konto zu erlangen, das dem Quellmedienobjekt zugeordnet ist.
 1. Abrufen des Containernamens des Quellmedienobjekts aus dem schreibgeschützten SAS-Locator, der im vorherigen Schritt erstellt wurde. Diese Informationen werden zum Kopieren von Blobs zwischen Speicherkonten benötigt (Erläuterungen dazu finden Sie weiter unten in diesem Thema).
-1. Erstellen eines Ursprungslocators für das Medienobjekt, das von der Codierungsaufgabe erstellt wurde. 
+1. Erstellen eines Ursprungslocators für das Medienobjekt, das von der Codierungsaufgabe erstellt wurde.
 
 Anschließende Aufgaben zum Verarbeiten des Failovers:
 
@@ -33,17 +33,17 @@ Anschließende Aufgaben zum Verarbeiten des Failovers:
 1. Erstellen eines leeren Zielmedienobjekts im Media Services-Zielkonto.
 1. Erstellen eines SAS-Locators mit Schreibberechtigungen für das leere Zielmedienobjekt, um Schreibzugriff auf den Container im Storage-Konto zu erlangen, das dem Zielmedienobjekt zugeordnet ist.
 1. Verwenden des Azure Storage-SDKs zum Kopieren von Blobs (Medienobjektdateien) zwischen dem Quellspeicherkonto in "Data Center A" und dem Zielspeicherkonto in "Data Center B" (diese Speicherkonten sind den jeweiligen Medienobjekten zugeordnet).
-1. Zuordnen von Blobs (Medienobjektdateien), die in den Zielblobcontainer kopiert wurden, zum Zielmedienobjekt. 
-1. Erstellen eines Ursprungslocators für das Medienobjekt in "Data Center B" und Angeben der Locator-ID, die für das Medienobjekt in "Data Center A" generiert wurde. 
-1. Auf diese Weise erhalten Sie die Streaming-URLs. Dabei sind die relativen Pfade der URLs identisch (nur die Basis-URLs unterscheiden sich). 
+1. Zuordnen von Blobs (Medienobjektdateien), die in den Zielblobcontainer kopiert wurden, zum Zielmedienobjekt.
+1. Erstellen eines Ursprungslocators für das Medienobjekt in "Data Center B" und Angeben der Locator-ID, die für das Medienobjekt in "Data Center A" generiert wurde.
+1. Auf diese Weise erhalten Sie die Streaming-URLs. Dabei sind die relativen Pfade der URLs identisch (nur die Basis-URLs unterscheiden sich).
  
 Anschließend können Sie zur Verarbeitung von Ausfällen basierend auf den Ursprungslocators ein CDN erstellen.
 
 Es gelten die folgenden Bedingungen:
 
 - Die aktuelle Version des Media Services-SDKs unterstützt nicht das Erstellen eines Locators mit einer angegebenen Locator-ID. Für diese Aufgabe wird die Media Services-REST-API verwendet.
-- Die aktuelle Version des Media Services-SDKs unterstützt keine programmgesteuerte Generierung von IAssetFile-Informationen, die ein Medienobjekt zu Medienobjektdateien zuordnen würde. Für diese Aufgabe wird die Media Services-REST-API "CreateFileInfos" verwendet. 
-- Im Speicher verschlüsselte Medienobjekte (AssetCreationOptions.StorageEncrypted) werden für die Replikation nicht unterstützt (da sich die Verschlüsselungsschlüssel in beiden Media Services-Konten unterscheiden). 
+- Die aktuelle Version des Media Services-SDKs unterstützt keine programmgesteuerte Generierung von IAssetFile-Informationen, die ein Medienobjekt zu Medienobjektdateien zuordnen würde. Für diese Aufgabe wird die Media Services-REST-API "CreateFileInfos" verwendet.
+- Im Speicher verschlüsselte Medienobjekte (AssetCreationOptions.StorageEncrypted) werden für die Replikation nicht unterstützt (da sich die Verschlüsselungsschlüssel in beiden Media Services-Konten unterscheiden).
 - Wenn Sie die dynamische Paketerstellung nutzen möchten, müssen Sie zuerst mindestens eine reservierte On-Demand-Streaming-Einheit abrufen. Weitere Informationen finden Sie unter [Dynamische Paketerstellung](media-services-dynamic-packaging-overview.md).
  
 
@@ -61,7 +61,7 @@ Es gelten die folgenden Bedingungen:
 In diesem Abschnitt werden Sie ein C#-Konsolenanwendungsprojekt erstellen und einrichten.
 
 1. Verwenden Sie Visual Studio, um eine neue Projektmappe zu erstellen, die das C#-Konsolenanwendungsprojekt enthält. Geben Sie "HandleRedundancyForOnDemandStreaming" als Namen ein, und klicken Sie auf "OK".
-1. Erstellen Sie den Ordner "SupportFiles" auf der gleichen Ebene wie die Projektdatei "HandleRedundancyForOnDemandStreaming.csproj". Erstellen Sie im Ordner "SupportFiles" die Ordner "OutputFiles" und "MP4Files". Kopieren Sie eine MP4-Datei in den Ordner "MP4Files" (in diesem Beispiel wird die Datei "BigBuckBunny.mp4" verwendet). 
+1. Erstellen Sie den Ordner "SupportFiles" auf der gleichen Ebene wie die Projektdatei "HandleRedundancyForOnDemandStreaming.csproj". Erstellen Sie im Ordner "SupportFiles" die Ordner "OutputFiles" und "MP4Files". Kopieren Sie eine MP4-Datei in den Ordner "MP4Files" (in diesem Beispiel wird die Datei "BigBuckBunny.mp4" verwendet).
 1. Verwenden Sie **Nuget**, um Verweise auf die mit Media Services verknüpften DLLs hinzuzufügen. Klicken Sie im Hauptmenü in Visual Studio auf EXTRAS -> Bibliothekspaket-Manager -> Paket-Manager-Konsole. Geben Sie im Konsolenfenster "Install-Package windowsazure.mediaservices" ein, und drücken Sie die Eingabetaste.
 1. Fügen Sie weitere Verweise hinzu, die für dieses Projekt erforderlich sind: System.Configuration, System.Runtime.Serialization und System.Web.
 1. Ersetzen Sie die using-Anweisungen, die der Datei "Programs.cs" automatisch hinzugefügt wurden, durch die folgenden Anweisungen:
@@ -972,4 +972,4 @@ Sie können nun einen Traffic Manager zum Weiterleiten von Anforderungen zwische
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

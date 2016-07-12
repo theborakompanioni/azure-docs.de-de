@@ -23,6 +23,8 @@ Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte:
 | Maximale Übermittlungsanzahl von Feedbacknachrichten<br/> als Reaktion auf eine Nachricht von der Cloud an das Gerät | 100 |
 | Maximale Gültigkeitsdauer von Feedbacknachrichten<br/> als Reaktion auf eine Nachricht von der Cloud an das Gerät | 2 Tage |
 
+> [AZURE.NOTE] Wenn Sie mehr als 10 IoT Hubs in einem Azure-Abonnement benötigen, wenden Sie sich an den Microsoft Support.
+
 Der IoT Hub-Dienst drosselt Anforderungen, wenn die folgenden Kontingente überschritten werden:
 
 | Drosselung | Wert pro Hub |
@@ -33,4 +35,4 @@ Der IoT Hub-Dienst drosselt Anforderungen, wenn die folgenden Kontingente übers
 | C2D-Sendevorgänge | 100/Minute/Einheit |
 | C2D-Empfangsvorgänge | 1000/Minuten/Einheit |
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0629_2016-->

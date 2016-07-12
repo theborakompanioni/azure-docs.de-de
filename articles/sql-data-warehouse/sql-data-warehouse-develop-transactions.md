@@ -18,7 +18,7 @@
 
 # Transaktionen in SQL Data Warehouse
 
-Wie zu erwarten unterstützt SQL Data Warehouse alle Transaktionseigenschaften. Um allerdings eine angemessene Leistung von SQL Data Warehouse sicherzustellen, wurden einige Features im Vergleich zu SQL Server eingeschränkt. In diesem Artikel werden die Unterschiede hervorgehoben und die anderen Features aufgelistet.
+Wie zu erwarten, unterstützt SQL Data Warehouse Transaktionen als Teil des Data Warehouse-Workloads. Um allerdings eine angemessene Leistung von SQL Data Warehouse sicherzustellen, wurden einige Features im Vergleich zu SQL Server eingeschränkt. In diesem Artikel werden die Unterschiede hervorgehoben und die anderen Features aufgelistet.
 
 ## Transaktionsisolationsstufen
 SQL Data Warehouse implementiert ACID-Transaktionen. Die Isolation der Transaktionsunterstützung ist jedoch beschränkt auf `READ UNCOMMITTED` und kann nicht geändert werden. Sie können eine Reihe von Codemethoden implementieren, um fehlerhafte Datenlesevorgänge zu verhindern, wenn dies ein Problem für Sie darstellt. Die am häufigsten verwendeten Methoden nutzen sowohl CTAS als auch Wechsel von Partitionstabellen (oftmals gleitendes Fenstermuster genannt), um zu verhindern, dass Benutzer Daten abrufen, die noch vorbereitet werden. Sichten, die die Daten vorab filtern, sind auch ein beliebter Ansatz.
@@ -28,7 +28,7 @@ Eine einzelne Transaktion zur Datenänderung ist in Bezug auf die Größe beschr
 
 Für die Tabelle unten gelten die folgenden Annahmen:
 
-* Gleichmäßige Verteilung der Daten 
+* Gleichmäßige Verteilung der Daten
 * Durchschnittliche Zeilenlänge beträgt 250 Byte
 
 | DWU | Obergrenze pro Verteilung (GB) | Anzahl der Verteilungen | Max. Transaktionsgröße (GB) | Zeilenanzahl pro Verteilung | Max. Zeilenzahl pro Transaktion |
@@ -127,6 +127,7 @@ Dies sind:
 - Keine verteilten Transaktionen
 - Keine geschachtelten Transaktionen zulässig
 - Keine Speicherpunkte zulässig
+- Keine Unterstützung für DDL wie z.B. `CREATE TABLE` innerhalb von benutzerdefinierten Transaktionen
 
 ## Nächste Schritte
 Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
@@ -141,4 +142,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

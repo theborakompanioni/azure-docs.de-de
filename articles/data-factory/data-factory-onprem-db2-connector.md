@@ -25,6 +25,8 @@ Data Factory unterstützt das Herstellen einer Verbindung mit lokalen DB2-Datenq
 
 Data Factory unterstützt derzeit nur das Verschieben von Daten aus DB2 in andere Datenspeicher und nicht aus anderen Datenspeichern in DB2.
 
+> [AZURE.NOTE] Dieser DB2-Connector unterstützt derzeit DB2 für LUW (Linux, UNIX und Windows). Verwenden Sie zum Kopieren von Daten aus DB2 für z/OS oder DB2 für AS/400 ggf. den generischen ODBC-Connector, und installieren Sie den entsprechenden ODBC-Treiber auf dem Gatewaycomputer. Wenn Sie also beispielsweise Daten aus DB2 für AS/400 erfassen möchten, können Sie den iSeries Access-ODBC-Treiber verwenden. Informationen zum Einrichten der Kopieraktivität finden Sie unter [Verschieben von Daten aus ODBC-Datenspeichern mithilfe von Azure Data Factory](data-factory-odbc-connector.md).
+
 ## Installation 
 
 Damit sich das Datenverwaltungsgateway mit der DB2-Datenbank verbindet, müssen Sie den [IBM DB2 Data Server-Treiber](http://go.microsoft.com/fwlink/p/?LinkID=274911) auf dem System mit dem Datenverwaltungsgateway installieren.
@@ -41,10 +43,10 @@ In diesem Beispiel wird gezeigt, wie Sie Daten aus einer lokalen DB2-Datenbank i
 Das Beispiel enthält die folgenden Data Factory-Entitäten:
 
 1.	Einen verknüpften Dienst des Typs [OnPremisesDb2](data-factory-onprem-db2-connector.md#db2-linked-service-properties)
-2.	Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 
+2.	Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties)
 3.	Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [RelationalTable](data-factory-onprem-db2-connector.md#db2-dataset-type-properties)
-4.	Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 
-5.	Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [RelationalSource](data-factory-onprem-db2-connector.md#db2-copy-activity-type-properties) und [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) verwendet 
+4.	Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)
+5.	Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [RelationalSource](data-factory-onprem-db2-connector.md#db2-copy-activity-type-properties) und [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) verwendet
 
 Das Beispiel kopiert Daten stündlich aus einem Abfrageergebnis in einer DB2-Datenbank in ein Blob. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
 
@@ -324,4 +326,4 @@ Char | String
 ## Leistung und Optimierung  
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

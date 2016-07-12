@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Erstellen von Active Directory-Anwendungen im Portal | Microsoft Azure"
-   description="Beschreibt das Erstellen einer neuen Active Directory-Anwendung und eines Dienstprinzipals, der mit der rollenbasierten Zugriffskontrolle in Azure-Ressourcen-Manager zum Verwalten des Zugriffs auf Ressourcen verwendet werden kann."
+   pageTitle="Erstellen eines Dienstprinzipals im Portal | Microsoft Azure"
+   description="Beschreibt das Erstellen einer neuen Active Directory-Anwendung und eines Dienstprinzipals, der mit der rollenbasierten Zugriffskontrolle in Azure-Resource Manager zum Verwalten des Zugriffs auf Ressourcen verwendet werden kann."
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -16,7 +16,13 @@
    ms.date="05/18/2016"
    ms.author="tomfitz"/>
 
-# Verwenden des Portals zum Erstellen einer Active Directory-Anwendung, die auf Ressourcen zugreifen kann
+# Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals
+
+> [AZURE.SELECTOR]
+- [PowerShell](resource-group-authenticate-service-principal.md)
+- [Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md)
+- [Portal](resource-group-create-service-principal-portal.md)
+
 
 Bei Verwendung eines automatisierten Prozesses oder einer automatisierten Anwendung, der bzw. die auf Ressourcen zugreifen oder diese ändern muss, müssen Sie eine Active Directory-Anwendung einrichten und ihr die erforderlichen Berechtigungen zuweisen. In diesem Thema erfahren Sie, wie diese Schritte über das Portal ausgeführt werden. Derzeit müssen Sie das klassische Portal verwenden, um eine neue Active Directory-Anwendung zu erstellen, und dann zum Azure-Portal wechseln, um der Anwendung eine Rolle zuzuweisen.
 
@@ -25,9 +31,9 @@ Es gibt zwei Authentifizierungsoptionen für die Active Directory-Anwendung:
 1. Erstellen einer ID und eines Schlüssel für die Anwendung und Bereitstellen dieser Anmeldeinformationen, wenn die Anwendung ausgeführt wird. Verwenden Sie diese Option für automatisierte Prozesse, die ohne Benutzereingriffe ausgeführt werden.
 2. Ermöglichen der Anmeldung bei Azure über Ihre Anwendung und anschließendes Zugreifen auf Ressourcen mithilfe dieser Anmeldeinformationen im Namen des Benutzers. Verwenden Sie diese Option für Clientanwendungen, die von einem Benutzer ausgeführt werden.
 
-Eine Erläuterung der Konzepte von Active Directory finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](./active-directory/active-directory-application-objects.md). Weitere Informationen zur Active Directory-Authentifizierung finden Sie unter [Authentifizierungsszenarien für Azure AD](./active-directory/active-directory-authentication-scenarios.md).
+Eine Erläuterung der Active Directory-Konzepte finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](./active-directory/active-directory-application-objects.md). Weitere Informationen zur Active Directory-Authentifizierung finden Sie unter [Authentifizierungsszenarien für Azure AD](./active-directory/active-directory-authentication-scenarios.md).
 
-Ausführliche Schritte zum Integrieren einer Anwendung in Azure zum Verwalten von Ressourcen finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](resource-manager-api-authentication.md).
+Ausführliche Informationen zum Integrieren einer Anwendung für die Ressourcenverwaltung in Azure finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](resource-manager-api-authentication.md).
 
 ## Erstellen einer Active Directory-Anwendung
 
@@ -41,7 +47,7 @@ Ausführliche Schritte zum Integrieren einer Anwendung in Azure zum Verwalten vo
 
      ![Verzeichnis wählen](./media/resource-group-create-service-principal-portal/active-directory-details.png)
      
-    Wenn Sie das Verzeichnis für Ihr Abonnement suchen müssen, wählen Sie **Einstellungen** aus, und suchen Sie nach dem Namen des Verzeichnisses.
+    Wenn Sie das Verzeichnis für Ihr Abonnement ermitteln müssen, wählen Sie **Einstellungen** aus, und suchen Sie nach dem Namen des Verzeichnisses.
    
      ![Standardverzeichnis suchen](./media/resource-group-create-service-principal-portal/show-default-directory.png)
 
@@ -61,11 +67,11 @@ Ausführliche Schritte zum Integrieren einer Anwendung in Azure zum Verwalten vo
 
      ![neue Anwendung](./media/resource-group-create-service-principal-portal/what-do-you-want-to-do.png)
 
-6. Geben Sie einen Namen für die Anwendung ein, und wählen Sie den Typ der Anwendung aus, die Sie erstellen möchten. Erstellen Sie im Rahmen dieses Tutorials eine **WEBANWENDUNG UND/ODER WEB-API**, und klicken Sie auf die Schaltfläche „Weiter“. Wenn Sie **SYSTEMEIGENE CLIENTANWENDUNG** auswählen, stimmen die verbleibenden Schritte in diesem Artikel nicht mit der Praxis überein.
+6. Geben Sie einen Namen für die Anwendung ein, und wählen Sie den Typ der Anwendung aus, die Sie erstellen möchten. Erstellen Sie im Rahmen dieses Tutorials eine **WEBANWENDUNG UND/ODER WEB-API**, und klicken Sie auf die Schaltfläche „Weiter“. Bei Verwendung von **SYSTEMEIGENE CLIENTANWENDUNG** entsprechen die restlichen Schritte in diesem Artikel nicht der tatsächlichen Vorgehensweise.
 
      ![Anwendung benennen](./media/resource-group-create-service-principal-portal/tell-us-about-your-application.png)
 
-7. Tragen Sie die Eigenschaften Ihrer Anwendung ein. Geben Sie für die **ANMELDE-URL** den URI einer Website an, die Ihre Anwendung beschreibt. Das Vorhandensein der Website wird nicht überprüft. Geben Sie für die **APP-ID URI** die URI an, die Ihre Anwendung identifiziert.
+7. Tragen Sie die Eigenschaften Ihrer Anwendung ein. Geben Sie für die **ANMELDE-URL** die URL einer Website an, die Ihre Anwendung beschreibt. Das Vorhandensein der Website wird nicht überprüft. Geben Sie für die **APP-ID URI ** die URI an, die Ihre Anwendung identifiziert.
 
      ![Anwendungseigenschaften](./media/resource-group-create-service-principal-portal/app-properties.png)
 
@@ -83,7 +89,7 @@ Beim programmgesteuerten Anmelden benötigen Sie die ID für Ihre Anwendung. Wen
   
      ![Client-ID](./media/resource-group-create-service-principal-portal/client-id.png)
 
-3. Wenn die Anwendung unter ihren eignen Anmeldeinformationen ausgeführt wird, scrollen Sie hinunter zum Abschnitt **Schlüssel**, und wählen Sie den gewünschten Gültigkeitszeitraum für Ihr Kennwort aus.
+3. Wenn die Anwendung unter eigenen Anmeldeinformationen ausgeführt wird, navigieren Sie nach unten zum Abschnitt **Schlüssel**, und wählen Sie den gewünschten Gültigkeitszeitraum für Ihr Kennwort aus.
 
      ![Schlüssel](./media/resource-group-create-service-principal-portal/create-key.png)
 
@@ -97,7 +103,7 @@ Beim programmgesteuerten Anmelden benötigen Sie die ID für Ihre Anwendung. Wen
 
 ## Abrufen der Mandanten-ID
 
-Beim programmgesteuerten Anmelden müssen Sie mit Ihrer Authentifizierungsanforderung die Mandanten-ID übergeben. Bei Web-Apps und Web-API-Apps können Sie die Mandanten-ID abrufen, indem Sie unten auf der Seite **Endpunkte anzeigen** auswählen und die ID wie nachstehend dargestellt abrufen.
+Beim programmgesteuerten Anmelden müssen Sie mit Ihrer Authentifizierungsanforderung die Mandanten-ID übergeben. Bei Web-Apps und Web-API-Apps können Sie die Mandanten-ID abrufen, indem Sie unten auf der Seite **Endpunkte anzeigen** auswählen und die ID wie weiter unten gezeigt abrufen.
 
    ![Mandanten-ID](./media/resource-group-create-service-principal-portal/save-tenant.png)
 
@@ -119,7 +125,7 @@ Wenn Ihre Anwendung im Auftrag eines angemeldeten Benutzers auf Ressourcen zugre
 
       ![App auswählen](./media/resource-group-create-service-principal-portal/select-app.png)
 
-3. Wählen Sie in der Dropdownliste für delegierte Berechtigungen **Access Azure Service Management (Preview)** (Zugriff auf Azure-Dienstverwaltung (Vorschau)) aus.
+3. Aktivieren Sie in der Dropdownliste für delegierte Berechtigungen das Kontrollkästchen **Access Azure Service Management as organization** (Auf Azure-Dienstverwaltung als Organisation zugreifen).
 
       ![Berechtigung auswählen](./media/resource-group-create-service-principal-portal/select-permissions.png)
 
@@ -163,7 +169,7 @@ Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene 
 
      ![einblenden](./media/resource-group-create-service-principal-portal/show-app.png)
 
-Weitere Informationen zum Zuweisen von Benutzern und Anwendungen zu Rollen über das Portal finden Sie unter [Verwalten des Zugriffs über das Azure-Verwaltungsportal](../role-based-access-control-configure/#manage-access-using-the-azure-management-portal).
+Weitere Informationen zum Zuweisen von Benutzern und Anwendungen zu Rollen über das Portal finden Sie unter [Verwalten des Zugriffs über das Azure-Verwaltungsportal](role-based-access-control-configure.md#manage-access-using-the-azure-management-portal).
 
 ## Abrufen des Zugriffstokens mit Code
 
@@ -176,11 +182,11 @@ Nun können Sie sich programmgesteuert bei der Anwendung anmelden.
 - Python-Beispiele finden Sie unter [Resource Management Authentication](https://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagementauthentication.html) (Ressourcenverwaltungsauthentifizierung) für Python.
 - REST-Beispiele finden Sie unter [Resource Manager-REST-APIs](resource-manager-rest-api.md).
 
-Ausführliche Schritte zum Integrieren einer Anwendung in Azure zum Verwalten von Ressourcen finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](resource-manager-api-authentication.md).
+Ausführliche Informationen zum Integrieren einer Anwendung für die Ressourcenverwaltung in Azure finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](resource-manager-api-authentication.md).
 
 ## Nächste Schritte
 
-- Informationen zum Festlegen von Sicherheitsrichtlinien finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](./active-directory/role-based-access-control-configure.md).  
+- Informationen zum Festlegen von Sicherheitsrichtlinien finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](./active-directory/role-based-access-control-configure.md).
 - Eine Videodemo dieser Schritte finden Sie unter [Aktivieren der programmgesteuerten Verwaltung einer Azure-Ressource mit Azure Active Directory](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Enabling-Programmatic-Management-of-an-Azure-Resource-with-Azure-Active-Directory).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

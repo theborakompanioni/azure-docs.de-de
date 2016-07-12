@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/03/2016"
+   ms.date="06/27/2016"
    ms.author="sonyama;barbkess;sahajs"/>
 
 # Überwachen Ihres Workloads mit dynamischen Verwaltungssichten
@@ -31,7 +31,7 @@ SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed';
 ## Untersuchen der Ausführung von Abfragen
 Beginnen Sie zum Überwachen der Abfrageausführung mit [sys.dm\_pdw\_exec\_requests][]. Diese Sicht enthält Abfragen in Bearbeitung sowie einen Verlauf der Abfragen, die vor Kurzem abgeschlossen wurden. Die Abfrage-ID identifiziert eindeutig jede Abfrage. Sie ist der Primärschlüssel für diese Sicht. Die Abfrage-ID wird für jede neue Abfrage sequenziell zugewiesen. Bei der Abfrage dieser Tabelle für eine bestimmte Sitzungs-ID werden alle Abfragen für eine bestimmte Anmeldung angezeigt.
 
-Wenn Sie die Abfrageausführung für eine bestimmte Abfrage untersuchen möchten, finden Sie hier einige allgemeine Schritte, die ausgeführt werden sollten.
+Führen Sie folgende Schritte aus, um Abfrageausführungspläne und -zeiten für eine bestimmte Abfrage zu untersuchen.
 
 ### SCHRITT 1: Suchen der zu untersuchenden Abfrage
 
@@ -162,4 +162,4 @@ Weitere Informationen zu dynamischen Verwaltungssichten finden Sie unter [System
 [DBCC PDW\_SHOWEXECUTIONPLAN]: http://msdn.microsoft.com/library/mt204017.aspx
 [DBCC PDW_SHOWSPACEUSED]: http://msdn.microsoft.com/library/mt204028.aspx
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

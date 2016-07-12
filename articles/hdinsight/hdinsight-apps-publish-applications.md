@@ -14,7 +14,7 @@
    	ms.topic="hero-article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="06/28/2016"
+   	ms.date="06/29/2016"
    	ms.author="jgao"/>
 
 # Veröffentlichen von HDInsight-Anwendungen im Azure Marketplace
@@ -25,6 +25,7 @@ HDInsight-Anwendungen verwenden das Modell *Bring Your Own License (BYOL)*. Bei 
 
 Weiterer Artikel zu HDInsight-Anwendungen:
 
+- [Installieren von HDInsight-Anwendungen](hdinsight-apps-install-applications.md): Hier erfahren Sie, wie Sie eine HDInsight-Anwendung in Ihren Clustern installieren.
 - [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md): Enthält Informationen zum Installieren und Testen benutzerdefinierter HDInsight-Anwendungen.
 
  
@@ -38,7 +39,7 @@ Darüber hinaus benötigen Sie ein registriertes Entwicklerkonto. Informationen 
 
 ## Definieren der Anwendung
 
-Die Veröffentlichung von Anwendungen im Azure Marketplace umfasst zwei Schritte. Im ersten Schritt geben Sie durch Definieren einer Datei vom Typ **createUiDef.json** an, mit welchen Clustern Ihre Anwendung kompatibel ist. Im zweiten Schritt wird dann die Vorlage über das Azure-Portal veröffentlicht. Im Anschluss sehen Sie ein Beispiel für eine Datei vom Typ „createUiDef.json“:
+Die Veröffentlichung von Anwendungen im Azure Marketplace umfasst zwei Schritte. Im ersten Schritt geben Sie durch das Definieren einer Datei vom Typ **createUiDef.json** an, mit welchen Clustern Ihre Anwendung kompatibel ist. Im zweiten Schritt wird dann die Vorlage über das Azure-Portal veröffentlicht. Im Anschluss sehen Sie ein Beispiel für eine Datei vom Typ „createUiDef.json“:
 
 	{
 		"handler": "Microsoft.HDInsight",
@@ -70,11 +71,11 @@ Erstellen Sie eine ZIP-Datei mit allen Dateien, die für die Installation der HD
 		
 	>Beachten Sie, dass der Skriptname drei Teile umfasst:
 		
-	>	1. A script name prefix, which shall include either the application name or a name relevant to the application.
-	>	2. A "-" for readability.
-	>	3. A unique string function with the application name as the parameter.
+	>	1. Ein Skriptnamenpräfix, das entweder den Anwendungsnamen oder einen für die Anwendung relevanten Namen enthalten sollte
+	>	2. „-“ für eine bessere Lesbarkeit
+	>	3. Eine eindeutige Zeichenfolgenfunktion mit dem Anwendungsnamen als Parameter
 
-	>	An example is the above ends up becoming: hue-install-v0-4wkahss55hlas in the persisted script action list. For a sample JSON payload, see [https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
+	>	Das oben genannte Beispiel lautet schlussendlich in der Liste persistenter Skriptaktionen wie folgt: hue-install-v0-4wkahss55hlas. Eine Beispiel-JSON-Nutzlast finden Sie unter [https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
 
 - Alle erforderlichen Skripts.
 
@@ -94,8 +95,9 @@ Gehen Sie zum Veröffentlichen einer HDInsight-Anwendung wie folgt vor:
 
 ## Nächste Schritte
 
+- [Installieren von HDInsight-Anwendungen](hdinsight-apps-install-applications.md): Hier erfahren Sie, wie Sie eine HDInsight-Anwendung in Ihren Clustern installieren.
 - [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md): Hier erfahren Sie, wie Sie eine nicht veröffentlichte HDInsight-Anwendung in HDInsight bereitstellen.
 - [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md): Hier erfahren Sie, wie Sie mithilfe der Skriptaktion zusätzliche Anwendungen installieren.
-- [Erstellen Linux-basierter Hadoop-Cluster in HDInsight mithilfe von ARM-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Hier erfahren Sie, wie Sie ARM-Vorlagen für die Erstellung von HDInsight-Clustern aufrufen.
+- [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight mit Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Hier erfahren Sie, wie Sie ARM-Vorlagen für die Erstellung von HDInsight-Clustern aufrufen.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

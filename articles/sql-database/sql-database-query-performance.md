@@ -21,8 +21,8 @@
 
 Das Verwalten und Abstimmen der Leistung von relationalen Datenbanken ist eine anspruchsvolle Aufgabe, die ein erhebliches Maß an Wissen und Zeit erfordert. Dank Query Performance Insight können Sie den Zeitaufwand für die Problembehandlung der Datenbankleistung reduzieren, weil Folgendes ermöglicht wird:
 
-- Tiefere Einblicke in den Verbrauch von Datenbankressourcen (DTU). 
-- Informationen zu Abfragen mit der höchsten CPU-Auslastung, für die unter Umständen eine Leistungssteigerung erzielt werden kann. 
+- Tiefere Einblicke in den Verbrauch von Datenbankressourcen (DTU).
+- Informationen zu Abfragen mit der höchsten CPU-Auslastung, für die unter Umständen eine Leistungssteigerung erzielt werden kann.
 - Die Fähigkeit zum Durchführen eines Drilldowns in die Details einer Abfrage.​
 
 ## Voraussetzungen
@@ -35,7 +35,7 @@ Das Verwalten und Abstimmen der Leistung von relationalen Datenbanken ist eine a
 
 Die folgenden Berechtigungen der [rollenbasierten Zugriffssteuerung](../active-directory/role-based-access-control-configure.md) sind für die Verwendung von Query Performance Insight erforderlich:
 
-- Die Berechtigungen **Leser**, **Besitzer**, **Mitwirkender**, **Mitwirkender von SQL DB** oder **Mitwirkender von SQL Server** sind erforderlich, um die Abfragen und Diagramme mit dem höchsten Ressourcenverbrauch anzuzeigen. 
+- Die Berechtigungen **Leser**, **Besitzer**, **Mitwirkender**, **Mitwirkender von SQL DB** oder **Mitwirkender von SQL Server** sind erforderlich, um die Abfragen und Diagramme mit dem höchsten Ressourcenverbrauch anzuzeigen.
 - Die Berechtigungen **Besitzer**, **Mitwirkender**, **Mitwirkender von SQL DB** oder **Mitwirkender von SQL Server** sind zum Anzeigen von Abfragetext erforderlich.
 
 
@@ -44,9 +44,9 @@ Die folgenden Berechtigungen der [rollenbasierten Zugriffssteuerung](../active-d
 
 Query Performance Insight ist einfach zu verwenden:
 
-- Überprüfen Sie die Liste mit den Abfragen, die den höchsten Ressourcenverbrauch aufweisen. 
+- Überprüfen Sie die Liste mit den Abfragen, die den höchsten Ressourcenverbrauch aufweisen.
 - Wählen Sie eine einzelne Abfrage aus, um die Details anzuzeigen.
-- Öffnen Sie den [SQL-Datenbank-Ratgeber](sql-database-index-advisor.md), und überprüfen Sie, ob Empfehlungen verfügbar sind.
+- Öffnen Sie den [SQL-Datenbankratgeber](sql-database-advisor.md), und überprüfen Sie, ob Empfehlungen verfügbar sind.
 - Vergrößern Sie die Ansicht, um ausführlichere Informationen abzurufen.
 
     ![Leistungsdashboard](./media/sql-database-query-performance/performance.png)
@@ -59,7 +59,7 @@ Query Performance Insight ist einfach zu verwenden:
 
 Gehen Sie im [Portal](http://portal.azure.com) wie folgt vor:
 
-1. Navigieren Sie zu einer SQL-Datenbank, und klicken Sie auf **Alle Einstellungen** > **Leistung** > **Abfragen**. 
+1. Navigieren Sie zu einer SQL-Datenbank, und klicken Sie auf **Alle Einstellungen** > **Leistung** > **Abfragen**.
 
     ![Query Performance Insight][1]
 
@@ -71,7 +71,7 @@ Gehen Sie im [Portal](http://portal.azure.com) wie folgt vor:
 
     Das untere Raster zeigt zusammengefasste Informationen für die sichtbaren Abfragen.
 
-    -	Abfrage-ID: eindeutiger Bezeichner der Abfrage in der Datenbank. 
+    -	Abfrage-ID: eindeutiger Bezeichner der Abfrage in der Datenbank.
     -	CPU-Auslastung pro Abfrage während des beobachteten Intervalls (je nach Aggregationsfunktion).
     -	Dauer pro Abfrage (je nach Aggregationsfunktion).
     -	Gesamtzahl der Ausführungen für eine bestimmte Abfrage.
@@ -113,7 +113,7 @@ Während der Verwendung von Query Performance Insight können die folgenden Abfr
 Diese Meldungen werden in der Regel angezeigt, wenn der Abfragespeicher keine neuen Daten sammeln kann. Zum Beheben dieses Problems stehen Ihnen mehrere Optionen zur Verfügung:
 
 -	Ändern der Aufbewahrungs- und Erfassungsrichtlinie des Abfragespeichers
--	Erhöhen der Größe des Abfragespeichers 
+-	Erhöhen der Größe des Abfragespeichers
 -	Löschen des Abfragespeichers
 
 ### Empfohlene Aufbewahrungs- und Erfassungsrichtlinie
@@ -121,7 +121,7 @@ Diese Meldungen werden in der Regel angezeigt, wenn der Abfragespeicher keine ne
 Es gibt zwei Arten von Aufbewahrungsrichtlinien:
 
 - Größenbasiert – bei Festlegung auf AUTO werden Daten automatisch bereinigt, wenn die maximale Größe fast erreicht ist.
-- Zeitbasiert – standardmäßig legen wir ein Limit von 30 Tagen fest, d. h., wenn der Speicherplatz im Abfragespeicher zur Neige geht, werden Abfragedaten gelöscht, die älter als 30 Tage sind. 
+- Zeitbasiert – standardmäßig legen wir ein Limit von 30 Tagen fest, d. h., wenn der Speicherplatz im Abfragespeicher zur Neige geht, werden Abfragedaten gelöscht, die älter als 30 Tage sind.
 
 Die Erfassungsrichtlinie sollte festgelegt werden auf:
 
@@ -159,7 +159,7 @@ Dank Query Performance Insight können Sie die Auswirkungen der Abfragen-Workloa
 
 ## Nächste Schritte
 
-Um weitere Empfehlungen zur Verbesserung der Leistung Ihrer SQL-Datenbank zu erhalten, klicken Sie auf dem Blatt **Query Performance Insight** auf [SQL-Datenbank-Ratgeber](sql-database-index-advisor.md).
+Um weitere Empfehlungen zur Verbesserung der Leistung Ihrer SQL-Datenbank zu erhalten, klicken Sie auf dem Blatt **Query Performance Insight** auf [SQL-Datenbankratgeber](sql-database-advisor.md).
 
 ![Leistungsratgeber](./media/sql-database-query-performance/ia.png)
 
@@ -169,4 +169,4 @@ Um weitere Empfehlungen zur Verbesserung der Leistung Ihrer SQL-Datenbank zu erh
 [2]: ./media/sql-database-query-performance/top-queries.png
 [3]: ./media/sql-database-query-performance/query-details.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

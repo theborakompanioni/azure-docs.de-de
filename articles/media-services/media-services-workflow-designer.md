@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="04/08/2016"  
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -28,7 +28,7 @@ Workflows können Entscheidungsfindungslogik von Kunden und Verzweigungen enthal
 Beispiele für Workflows, die Sie erstellen können:
 
 - Entscheidungsbasierte Workflows, bei denen der Quellinhalt für die Auflösung untersucht wird und nur die gewünschten Ausgabespuren codiert werden. Dies ist hilfreich, da die überflüssigen Spuren beseitigt werden, die generiert werden, wenn der Quellinhalt versehentlich horizontal hochskaliert wird.
-- Es können mehrere Eingabedateien verwendet werden, um Untertitel, Überlagerungen und die Verknüpfung von Inhalten zu unterstützen. 
+- Es können mehrere Eingabedateien verwendet werden, um Untertitel, Überlagerungen und die Verknüpfung von Inhalten zu unterstützen.
 
 Dieses Tool kann auch verwendet werden, um unsere [veröffentlichten Workflows](media-services-workflow-designer.md#existing_workflows) zu ändern.
 
@@ -90,4 +90,4 @@ Falls Sie Support benötigen oder Fragen zur Erstellung von benutzerdefinierten 
 
 [Azure Premium Encoder Workflow-Designer – Schulungsvideos](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/03/2016"
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -337,11 +337,11 @@ package {
 
 Das dynamische Smooth Streaming für OSMF-Plug-In unterstützt [Strobe Media Playback (SMP)](http://osmf.org/strobe_mediaplayback.html). Sie können das Smooth Streaming für OSMF-Plug-In für die Smooth Streaming-Wiedergabe von SMP verwenden. Kopieren Sie dazu "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" in einen Webserver für die HTTP-Funktion, indem Sie die folgenden Schritte ausführen:
 
-1.	Öffnen Sie die [Strobe Media Playback-Einrichtungsseite](http://osmf.org/dev/2.0gm/setup.html). 
-2.	Wählen Sie eine Smooth Streaming-Quelle als Quelle (z. B. http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) 
+1.	Öffnen Sie die [Strobe Media Playback-Einrichtungsseite](http://osmf.org/dev/2.0gm/setup.html).
+2.	Wählen Sie eine Smooth Streaming-Quelle als Quelle (z. B. http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest)
 3.	Nehmen Sie die gewünschten Konfigurationsänderungen vor und klicken Sie auf Vorschau und Aktualisieren.
  
-	**Hinweis** Ihr Webserver benötigt eine gültige crossdomain.xml-Datei. 
+	**Hinweis** Ihr Webserver benötigt eine gültige crossdomain.xml-Datei.
 4.	Fügen Sie den folgenden Code mit einem Text-Editor Ihrer Wahl in eine einfache HTML-Seite ein, wie z. B. im folgenden Beispiel:
 
 
@@ -410,4 +410,4 @@ Weitere allgemeine Informationen zu OSMF-Entwicklung finden Sie auf der offiziel
 
 [Microsoft Adaptive Streaming Plugin for OSMF Update (in englischer Sprache)](https://azure.microsoft.com/blog/2014/10/27/microsoft-adaptive-streaming-plugin-for-osmf-update/)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -20,7 +20,7 @@
 
 Es gibt zwei Arten von Azure RemoteApp-Sammlungen:
 
-- Cloud: vollständige Speicherung in Azure. Sie können alle Daten in der Cloud speichern (also eine reine Cloudsammlung), oder Sie verbinden Ihre Sammlung mit einem VNET und speichern die Daten dort.   
+- Cloud: vollständige Speicherung in Azure. Sie können alle Daten in der Cloud speichern (also eine reine Cloudsammlung), oder Sie verbinden Ihre Sammlung mit einem VNET und speichern die Daten dort.
 - Hybrid: Umfasst ein virtuelles Netzwerk für den lokalen Zugriff – dies erfordert die Verwendung von Azure AD und einer lokalen Active Directory-Umgebung.
 
 Sie wissen nicht, was Sie benötigen? Lesen Sie [Welche Art von Sammlung benötigen Sie für Azure RemoteApp?](remoteapp-collections.md)
@@ -112,7 +112,7 @@ Wenn Sie eine Verbindung zu einem vorhandenen Abbild herstellen, geben Sie einfa
 
 Für Azure RemoteApp müssen Sie eine Integration in Azure Active Directory durchführen, indem Sie entweder 1) Azure Active Directory Sync mit der Kennwortsynchronisierungsoption konfigurieren oder 2) Azure Active Directory Sync ohne die Kennwortsynchronisierungsoption, aber unter Verwendung einer Domäne konfigurieren, die mit AD FS verbunden ist.
 
-Lesen Sie den Artikel [AD Connect](http://blogs.technet.com/b/ad/archive/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect.aspx) – hier erfahren Sie, wie Sie die Verzeichnisintegration in 4 Schritten einrichten.
+Lesen Sie den Artikel [AD Connect](https://blogs.technet.microsoft.com/enterprisemobility/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect/) – hier erfahren Sie, wie Sie die Verzeichnisintegration in 4 Schritten einrichten.
 
 Informationen zur Planung und eine detaillierte Anleitung finden Sie unter [Fahrplan zur Verzeichnissynchronisierung](http://msdn.microsoft.com//library/azure/hh967642.aspx).
 
@@ -149,4 +149,4 @@ Geschafft – Sie haben die Azure RemoteApp-Hybridsammlung erfolgreich erstellt 
 ### Helfen Sie uns, Ihnen zu helfen
 Wussten Sie schon, dass Sie diesen Artikel im Bereich unten nicht nur bewerten und kommentieren, sondern ihn auch selbst ändern können? Fehlt etwas? Ist etwas nicht ganz richtig? Habe ich etwas geschrieben, das eher verwirrend ist? Scrollen Sie nach oben, und klicken Sie auf **In GitHub bearbeiten**, um die gewünschten Änderungen vorzunehmen. Ihr Vorschlag wird uns vorgelegt, und wenn wir ihn bestätigt haben, werden Ihre Änderungen und Verbesserungen hier angezeigt.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

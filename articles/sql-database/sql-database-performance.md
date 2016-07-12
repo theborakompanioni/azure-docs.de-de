@@ -23,7 +23,7 @@ Die Azure SQL-Datenbank bietet Leistungstools, mit denen Sie die Leistung Ihrer 
 1. Navigieren Sie im [Azure-Portal](http://portal.azure.com) zu Ihrer Datenbank, und klicken Sie auf **Alle Einstellungen** > **Leistung** > **Übersicht**, um die Seite **Leistung** zu öffnen.
 
 
-2. Klicken Sie auf **Empfehlungen**, um den [SQL-Datenbank-Ratgeber](#sql-database-advisor) zu öffnen, und klicken Sie auf **Abfragen**, um [Query Performance Insight](#query-performance-insight) zu öffnen.
+2. Klicken Sie auf **Empfehlungen**, um den [SQL-Datenbankratgeber](#sql-database-advisor) zu öffnen, und klicken Sie auf **Abfragen**, um [Query Performance Insight](#query-performance-insight) zu öffnen.
 
     ![Anzeigen der Leistung](./media/sql-database-performance/entries.png)
 
@@ -35,17 +35,17 @@ Durch Klicken auf **Übersicht** oder auf die Kachel **Leistung** gelangen Sie z
 
 ![Leistung](./media/sql-database-performance/performance.png)
 
-- Die Kachel **Empfehlungen** bietet eine Aufschlüsselung der Optimierungsempfehlungen für Ihre Datenbank. (Bei mehreren Empfehlungen werden die drei wichtigsten angezeigt.) Wenn Sie auf diese Kachel klicken, gelangen Sie zum **SQL-Datenbank-Ratgeber**. 
+- Die Kachel **Empfehlungen** bietet eine Aufschlüsselung der Optimierungsempfehlungen für Ihre Datenbank. (Bei mehreren Empfehlungen werden die drei wichtigsten angezeigt.) Wenn Sie auf diese Kachel klicken, gelangen Sie zum **SQL-Datenbankratgeber**.
 - Die Kachel **Optimierungsaktivität** bietet eine Zusammenfassung der laufenden und abgeschlossenen Optimierungsaktionen für die Datenbank, sodass Sie einen schnellen Überblick über den Verlauf der Optimierungsaktivitäten erhalten. Wenn Sie auf diese Kachel klicken, gelangen Sie zur Ansicht des vollständigen Optimierungsverlaufs für Ihre Datenbank.
 - Die Kachel **Automatische Optimierung** zeigt die Konfiguration der automatischen Optimierung für Ihre Datenbank (welche Optimierungsaktionen automatisch auf die Datenbank angewendet werden). Durch Klicken auf diese Kachel öffnen Sie das Dialogfeld zur Automatisierungskonfiguration.
 - Die Kachel **Datenbankabfragen** zeigt die Zusammenfassung der Abfrageleistung für Ihre Datenbank (DTU-Nutzung insgesamt und die Abfragen mit dem größten Ressourcenverbrauch). Durch Klicken auf diese Kachel gelangen Sie zu **Query Performance Insight**.
 
 
 
-## SQL-Datenbank-Ratgeber
+## SQL-Datenbankratgeber
 
 
-Der [SQL-Datenbank-Ratgeber](sql-database-index-advisor.md) bietet intelligente Optimierungsempfehlungen, mit deren Hilfe Sie die Datenbankleistung verbessern können.
+Der [SQL-Datenbankratgeber](sql-database-advisor.md) bietet intelligente Optimierungsempfehlungen, mit deren Hilfe Sie die Datenbankleistung verbessern können.
 
 - Empfehlungen dazu, welche Indizes erstellt oder gelöscht werden sollten (und eine Option zum automatischen Anwenden von Indexempfehlungen ohne Eingreifen des Benutzers sowie zum automatischen Rollback von Empfehlungen, die sich negativ auf die Leistung auswirken).
 - Empfehlungen bei Schemaproblemen in der Datenbank.
@@ -56,11 +56,11 @@ Der [SQL-Datenbank-Ratgeber](sql-database-index-advisor.md) bietet intelligente 
 
 ## Query Performance Insight
 
-Dank [Query Performance Insight](sql-database-query-performance.md) können Sie den Zeitaufwand für die Problembehandlung der Datenbankleistung reduzieren. Dieses Tool stellt Folgendes bereit:
+Mithilfe von [Query Performance Insight](sql-database-query-performance.md) können Sie den Zeitaufwand für die Problembehandlung der Datenbankleistung reduzieren. Dieses Tool stellt Folgendes bereit:
 
-- Tiefere Einblicke in den Verbrauch von Datenbankressourcen (DTU). 
-- Informationen zu Abfragen mit der höchsten CPU-Auslastung, für die unter Umständen eine Leistungssteigerung erzielt werden kann. 
-- Die Möglichkeit zum Durchführen eines Drilldowns in die Details einer Abfrage.​ 
+- Tiefere Einblicke in den Verbrauch von Datenbankressourcen (DTU).
+- Informationen zu Abfragen mit der höchsten CPU-Auslastung, für die unter Umständen eine Leistungssteigerung erzielt werden kann.
+- Die Möglichkeit zum Durchführen eines Drilldowns in die Details einer Abfrage.​
 
 
 ## Zusätzliche Ressourcen
@@ -68,4 +68,4 @@ Dank [Query Performance Insight](sql-database-query-performance.md) können Sie 
 - [Leitfaden zur Azure SQL-Datenbankleistung für Einzeldatenbanken](sql-database-performance-guidance.md)
 - [Wo sollte ein Pool für elastische Datenbanken verwendet werden?](sql-database-elastic-pool-guidance.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

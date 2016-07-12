@@ -20,9 +20,8 @@
 # Wiederherstellen einer gelöschten Azure SQL-Datenbank mit PowerShell
 
 > [AZURE.SELECTOR]
-- [Übersicht](sql-database-restore-deleted-database.md)
-- [Azure-Portal](sql-database-restore-deleted-database-portal.md)
-- [PowerShell](sql-database-restore-deleted-database-powershell.md)
+- [Übersicht](sql-database-recovery-using-backups.md)
+- [Wiederherstellen einer gelöschten Datenbank: im Azure-Portal](sql-database-restore-deleted-database-portal.md)
 
 [AZURE.INCLUDE [Starten der PowerShell-Sitzung](../../includes/sql-database-powershell.md)]
 
@@ -49,17 +48,11 @@
 
 ## Nächste Schritte
 
-- Ausführliche Schritte zum Wiederherstellen einer gelöschten Datenbank mithilfe des Azure-Portals finden Sie unter [Wiederherstellen einer gelöschten Azure SQL-Datenbank im Azure-Portal](sql-database-restore-deleted-database-portal.md).
-- Informationen zum Wiederherstellen einer gelöschten Datenbank finden Sie unter [Wiederherstellen einer gelöschten Datenbank mithilfe der REST-API](https://msdn.microsoft.com/library/azure/mt163685.aspx).
-- Detaillierte Informationen zum Wiederherstellen einer gelöschten Datenbank finden Sie unter [Wiederherstellen einer gelöschten Datenbank](sql-database-restore-deleted-database.md).
-- Detaillierte Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
+- Eine Übersicht zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
+- Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
+- Informationen über Entwurfs- und Wiederherstellungsszenarien für die Geschäftskontinuität finden Sie unter [Geschäftskontinuitätsszenarien](sql-database-business-continuity-scenarios.md).
+- Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).
+- Informationen über schnellere Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
+- Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
 
-## Weitere Ressourcen
-
-- [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md)
-- [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-- [Geografische Wiederherstellung](sql-database-geo-restore.md)
-- [Aktive Georeplikation](sql-database-geo-replication-overview.md)
-- [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

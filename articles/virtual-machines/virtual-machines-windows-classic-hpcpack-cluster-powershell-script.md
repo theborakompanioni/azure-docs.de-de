@@ -20,7 +20,7 @@
 
 Führen Sie das PowerShell-Skript für die HPC Pack-IaaS-Bereitstellung auf einem Clientcomputer aus, um einen vollständigen HPC Pack-Cluster für Windows-Workloads in Azure-Infrastrukturdiensten (IaaS) bereitzustellen. Falls Sie einen HPC Pack-Cluster in Azure für Linux-Workloads bereitstellen möchten, finden Sie weitere Informationen unter [Erstellen eines High Performance Computing (HPC)-Clusters mit virtuellen Linux-Computern mit dem HPC Pack-IaaS-Bereitstellungsskript](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md).
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 [AZURE.INCLUDE [virtual-machines-common-classic-hpcpack-cluster-powershell-script](../../includes/virtual-machines-common-classic-hpcpack-cluster-powershell-script.md)]
 
@@ -273,4 +273,4 @@ Mit der folgenden Konfigurationsdatei wird ein HPC Pack-Cluster in einer vorhand
 
 * Sie können auch eine Azure-Ressourcen-Manager-Vorlage verwenden, um einen HPC Pack-Cluster bereitzustellen. Beispiele finden Sie unter [Create an HPC cluster](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/)(Erstellen eines HPC-Clusters) und [Create an HPC cluster with custom compute node image](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/) (Erstellen eines HPC-Clusters mit einem benutzerdefinierten Computeknoten-Image).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0629_2016-->

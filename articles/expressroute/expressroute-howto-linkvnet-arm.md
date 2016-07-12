@@ -34,9 +34,9 @@ Dieser Artikel unterstützt Sie beim Verknüpfen virtueller Netzwerke (VNETs) mi
 
 - Sie benötigen die neueste Version der Azure PowerShell-Module (mindestens Version 1.0). Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 - Stellen Sie sicher, dass Sie vor Beginn der Konfiguration die Seiten [Voraussetzungen](expressroute-prerequisites.md), [Routinganforderungen](expressroute-routing.md) und [Workflows](expressroute-workflows.md) gelesen haben.
-- Sie benötigen eine aktive ExpressRoute-Verbindung. 
-	- Führen Sie die Schritte zum [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-arm.md) aus, und lassen Sie sie vom Konnektivitätsanbieter aktivieren. 
-	- Stellen Sie sicher, dass privates Azure-Peering für die Verbindung konfiguriert ist. Informationen zum Routing finden Sie unter [Konfigurieren des Routings](expressroute-howto-routing-arm.md). 
+- Sie benötigen eine aktive ExpressRoute-Verbindung.
+	- Führen Sie die Schritte zum [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-arm.md) aus, und lassen Sie sie vom Konnektivitätsanbieter aktivieren.
+	- Stellen Sie sicher, dass privates Azure-Peering für die Verbindung konfiguriert ist. Informationen zum Routing finden Sie unter [Konfigurieren des Routings](expressroute-howto-routing-arm.md).
 	- Vergewissern Sie sich, dass das private Azure-Peering konfiguriert wurde und das BGP-Peering zwischen Ihrem Netzwerk und Microsoft aktiv ist, damit End-to-End-Konnektivität bereitgestellt werden kann.
 	- Vergewissern Sie sich, dass ein virtuelles Netzwerk und ein virtuelles Netzwerkgateway erstellt und vollständig bereitgestellt wurden. Befolgen Sie die Anweisungen, um ein [VPN-Gateway](../articles/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) zu erstellen. Dazu muss `-GatewayType ExpressRoute` verwendet werden.
 
@@ -75,10 +75,10 @@ Der Verbindungsbesitzer erstellt eine Autorisierung. Dies führt zur Erstellung 
 Der folgende Cmdlet-Ausschnitt veranschaulicht das Erstellen einer Autorisierung:
 
 	$circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
-	Add-AzureRmExpressRouteCircuitAuthorization -Circuit $circuit -Name "MyAuthorization1"
-	Set-AzureRmExpressRouteCircuit -Circuit $circuit
+	Add-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -Name "MyAuthorization1"
+	Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
 
-	$auth1 = Get-AzureRmExpressRouteCircuitAuthorization -Circuit $circuit -Name "MyAuthorization1"
+	$auth1 = Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -Name "MyAuthorization1"
 		
 
 Die Antwort auf diese enthält Schlüssel und Zustand für die Autorisierung:
@@ -97,7 +97,7 @@ Die Antwort auf diese enthält Schlüssel und Zustand für die Autorisierung:
 Mit dem folgenden Cmdlet kann der Besitzer einer Verbindung alle für eine bestimmte Verbindung ausgestellten Autorisierungen überprüfen:
 
 	$circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
-	$authorizations = Get-AzureRmExpressRouteCircuitAuthorization -Circuit $circuit
+	$authorizations = Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit
 	
 
 #### Hinzufügen von Autorisierungen
@@ -105,11 +105,11 @@ Mit dem folgenden Cmdlet kann der Besitzer einer Verbindung alle für eine besti
 Mit dem folgenden Cmdlet kann der Verbindungsbesitzer Autorisierungen hinzufügen:
 
 	$circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
-	Add-AzureRmExpressRouteCircuitAuthorization -Circuit $circuit -Name "MyAuthorization2"
-	Set-AzureRmExpressRouteCircuit -Circuit $circuit
+	Add-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -Name "MyAuthorization2"
+	Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
 	
 	$circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
-	$authorizations = Get-AzureRmExpressRouteCircuitAuthorization -Circuit $circuit
+	$authorizations = Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit
 
 	
 #### Löschen von Autorisierungen
@@ -117,7 +117,7 @@ Mit dem folgenden Cmdlet kann der Verbindungsbesitzer Autorisierungen hinzufüge
 Mit dem folgenden Cmdlet kann der Besitzer einer Verbindung Autorisierungen für einen Benutzer widerrufen oder löschen:
 
 	Remove-AzureRmExpressRouteCircuitAuthorization -Name "MyAuthorization2" -ExpressRouteCircuit $circuit
-	Set-AzureRmExpressRouteCircuit -Circuit $circuit	
+	Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit	
 
 ### Aktionen als Verbindungsbenutzer
 
@@ -138,4 +138,4 @@ Sie können eine Autorisierung durch das Löschen der Verbindung freigeben, die 
 
 Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

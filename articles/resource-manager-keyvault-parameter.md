@@ -4,8 +4,8 @@
    services="azure-resource-manager,key-vault"
    documentationCenter="na"
    authors="tfitzmac"
-   manager="wpickett"
-   editor=""/>
+   manager="timlt"
+   editor="tysonn"/>
 
 <tags
    ms.service="azure-resource-manager"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/16/2016"
+   ms.date="06/23/2016"
    ms.author="tomfitz"/>
 
 # Übergeben sicherer Werte während der Bereitstellung
@@ -26,9 +26,9 @@ Zum Erstellen eines Schlüsseltresors, auf den in anderen Ressourcen-Manager-Vor
 
 Informationen zum Bereitstellen eines Schlüsseltresors und eines geheimen Schlüssels finden Sie unter [Vorlagenschema für einen Schlüsseltresor](resource-manager-template-keyvault.md) und [Vorlagenschema für einen geheimen Schlüssel in einem Schlüsseltresor](resource-manager-template-keyvault-secret.md).
 
-## Verweisen auf einen geheimen Schlüssel
+## Verweisen auf einen geheimen Schlüssel mit statischer ID
 
-Sie verweisen auf den geheimen Schlüssel über eine Parameterdatei, die Werte an die Vorlage übergibt. Sie verweisen auf den geheimen Schlüssel, indem Sie den Ressourcenbezeichner des Schlüsseltresors und den Namen des geheimen Schlüssels übergeben.
+Sie verweisen auf den geheimen Schlüssel über eine Parameterdatei, die Werte an die Vorlage übergibt. Sie verweisen auf den geheimen Schlüssel, indem Sie den Ressourcenbezeichner des Schlüsseltresors und den Namen des geheimen Schlüssels übergeben. In diesem Beispiel muss der geheime Schlüssel für den Schlüsseltresor bereits vorhanden sein und ein statischer Wert für dessen Ressourcen-ID verwendet werden.
 
     "parameters": {
       "adminPassword": {
@@ -94,7 +94,49 @@ Der Parameter, der den geheimen Schlüssel annimmt, sollte ein Parameter des Typ
         "outputs": { }
     }
 
+## Verweisen auf einen geheimen Schlüssel mit dynamischer ID
 
+Im vorherigen Abschnitt wurde für den geheimen Schlüssel des Schlüsseltresors eine statische Ressourcen-ID übergeben. Manchmal muss jedoch auf einen geheimen Schlüsseltresorschlüssel verwiesen werden, der je nach aktueller Bereitstellung variiert. In einem solchen Fall kann die Ressourcen-ID nicht in der Parameterdatei hartcodiert werden. Da in der Parameterdatei keine Vorlagenausdrücke zulässig sind, kann die Ressourcen-ID leider nicht dynamisch in der Parameterdatei generiert werden.
+
+Wenn die Ressourcen-ID für einen geheimen Schlüsseltresorschlüssel dynamisch generiert werden muss, müssen Sie die Ressource, die den geheimen Schlüssel benötigt, in eine geschachtelte Vorlage verschieben. Die geschachtelte Vorlage wird der Mastervorlage hinzugefügt, und es wird ein Parameter mit der dynamisch generierten Ressourcen-ID übergeben.
+
+    {
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "vaultName": {
+          "type": "string"
+        },
+        "secretName": {
+          "type": "string"
+        }
+      },
+      "resources": [
+        {
+          "apiVersion": "2015-01-01",
+          "name": "nestedTemplate",
+          "type": "Microsoft.Resources/deployments",
+          "properties": {
+            "mode": "incremental",
+            "templateLink": {
+              "uri": "https://www.contoso.com/AzureTemplates/newVM.json",
+              "contentVersion": "1.0.0.0"
+            },
+            "parameters": {
+              "adminPassword": {
+                "reference": {
+                  "keyVault": {
+                    "id": "[concat(resourceGroup().id, '/providers/Microsoft.KeyVault/vaults/', parameters('vaultName'))]"
+                  },
+                  "secretName": "[parameters('secretName')]"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": {}
+    }
 
 
 ## Nächste Schritte
@@ -103,4 +145,4 @@ Der Parameter, der den geheimen Schlüssel annimmt, sollte ein Parameter des Typ
 - Informationen zur Verwendung eines Schlüsseltresors mit einem virtuellen Computer finden Sie unter [Sicherheitsaspekte für Azure Resource Manager](best-practices-resource-manager-security.md).
 - Vollständige Beispiele für Verweise auf geheime Schlüssel finden Sie unter [Key Vault examples](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples) (in englischer Sprache).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

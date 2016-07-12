@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/01/2016" 
+	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 
@@ -26,7 +26,7 @@
 
 ##Übersicht
 
-Der Medienprozessor in Media Services ist für bestimmte Verarbeitungsaufgaben wie z. B. Codierung, Formatumwandlungen, Verschlüsselung oder Entschlüsselung von Medieninhalten zuständig. Normalerweise erstellen Sie einen Medienprozessor, wenn Sie eine Aufgabe zur Codierung, Verschlüsselung oder Formatumwandlung von Medieninhalten erstellen.
+Der Medienprozessor in Media Services ist für bestimmte Verarbeitungsaufgaben wie z. B. Codierung, Formatumwandlungen, Verschlüsselung oder Entschlüsselung von Medieninhalten zuständig. Normalerweise erstellen Sie einen Medienprozessor, wenn Sie eine Aufgabe zur Codierung, Verschlüsselung oder Formatumwandlung von Medieninhalten erstellen.
 
 Die folgende Tabelle enthält Name und Beschreibung der verfügbaren Medienprozessoren.
 
@@ -43,7 +43,7 @@ Azure Media Encryptor|Veraltet|
 
 ##Abrufen von Medienprozessoren
 
-Das folgende Beispiel zeigt, wie Sie eine Medienprozessor-Instanz erstellen. Das folgende Codebeispiel setzt eine Variable auf Modulebene mit dem Namen "\_context" voraus, die Zugriff auf den Serverkontext bietet. Siehe [Vorgehensweise: Programmgesteuertes Verbinden mit Media Services](media-services-dotnet-connect_programmatically.md).
+Das folgende Beispiel zeigt, wie Sie eine Medienprozessor-Instanz erstellen. Das folgende Codebeispiel setzt eine Variable auf Modulebene mit dem Namen **\_context** voraus, die Zugriff auf den Serverkontext bietet. Siehe [Vorgehensweise: Programmgesteuertes Verbinden mit Media Services](media-services-dotnet-connect-programmatically.md).
 
 	private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
 	{
@@ -69,4 +69,4 @@ Das folgende Beispiel zeigt, wie Sie eine Medienprozessor-Instanz erstellen. Das
 
 Sie sind nun in der Lage, eine Medienprozessorinstanz zu erstellen, und können mit dem Thema [Gewusst wie: Codieren von Assets](media-services-dotnet-encode-with-media-encoder-standard.md) fortfahren. Dort lernen Sie, wie Sie Assets mit dem Media Encoder Standard codieren können.
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0629_2016-->

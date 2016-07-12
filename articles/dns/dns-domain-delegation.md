@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/10/2016"
+   ms.date="06/30/2016"
    ms.author="cherylmc"/>
 
 
@@ -116,7 +116,9 @@ Sie können auch die plattformübergreifende Azure-Befehlszeilenschnittstelle ve
 
 Jede Registrierungsstelle hat seine eigenen DNS-Verwaltungstools, um die Namenservereinträge für eine Domäne zu ändern. Bearbeiten Sie auf der DNS-Verwaltungsseite der Registrierungsstelle die NS-Einträge, und ersetzen Sie die NS-Einträge mit den von Azure DNS erstellten.
 
-Wenn Sie eine Domäne an Azure DNS delegieren, müssen Sie die von Azure DNS bereitgestellten Namen der Namenserver verwenden. Sie sollten nicht mit Verbindungsdatensätzen auf die IP-Adressen der Azure DNS-Namenserver verweisen, da sich diese IP-Adressen später ändern können. Delegierungen, für die Namen der Namenserver in Ihrer eigenen Zone verwendet werden (manchmal als „Vanity-Namenserver“ bezeichnet), werden derzeit in Azure DNS nicht unterstützt.
+Wenn Sie eine Domäne an Azure DNS delegieren, müssen Sie die von Azure DNS bereitgestellten Namen der Namenserver verwenden. Sie sollten immer alle vier Namensservernamen verwenden, und zwar unabhängig vom Namen Ihrer Domäne. Für die Domänendelegierung ist es nicht erforderlich, dass der Namensservername dieselbe Domäne der obersten Ebene wie Ihre Domäne verwendet.
+
+Sie sollten nicht mit Verbindungsdatensätzen auf die IP-Adressen der Azure DNS-Namenserver verweisen, da sich diese IP-Adressen später ändern können. Delegierungen, für die Namen der Namenserver in Ihrer eigenen Zone verwendet werden (manchmal als „Vanity-Namenserver“ bezeichnet), werden derzeit in Azure DNS nicht unterstützt.
 
 ### So überprüfen Sie, ob die Namensauflösung funktioniert
 
@@ -199,4 +201,4 @@ Sie können überprüfen, ob alles ordnungsgemäß eingerichtet ist, indem Sie d
 
 [Verwalten von DNS-Einträgen](dns-operations-recordsets.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

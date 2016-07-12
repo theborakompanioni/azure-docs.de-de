@@ -78,7 +78,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-tinfoil-security-tutorial/IC798968.png "Einmaliges Anmelden konfigurieren")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** des Textfeldes **Tinfoil Security-Antwort-URL** Ihre Tinfoil Security Assertion Consumer Service (ACS)-URL ein (z. B.: "**https://www.tinfoilsecurity.com/saml/consume*", und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** des Textfeldes **Tinfoil Security-Antwort-URL** Ihre Tinfoil Security Assertion Consumer Service (ACS)-URL ein (z. B.: "*https://www.tinfoilsecurity.com/saml/consume*", und klicken Sie dann auf **Weiter**.
 
     >[AZURE.NOTE] Sie sollten in der Lage sein, die ACS-URL aus den Tinfoil Security-Metadaten abzurufen (https://www.tinfoilsecurity.com/saml/metadata).
 

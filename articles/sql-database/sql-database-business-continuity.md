@@ -17,14 +17,7 @@
    ms.date="06/09/2016"
    ms.author="carlrab"/>
 
-# Übersicht: Geschäftskontinuität für die Cloud und Notfallwiederherstellung für Datenbanken mit der Azure SQL-Datenbank
-
-> [AZURE.SELECTOR]
-- [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md)
-- [Wiederherstellen einer gelöschten Datenbank](sql-database-restore-deleted-database.md)
-- [Geografische Wiederherstellung](sql-database-geo-restore.md)
-- [Aktive Georeplikation](sql-database-geo-replication-overview.md)
-- [Szenarios für die Geschäftskontinuität](sql-database-business-continuity-scenarios.md)
+# Geschäftskontinuität mit Azure SQL-Datenbank
 
 Die Azure SQL-Datenbank bietet eine Reihe von Geschäftskontinuitätslösungen. Bei Geschäftskontinuität geht es um das Entwerfen, Bereitstellen und Ausführen von Anwendungen mit Flexibilität gegenüber geplanten oder ungeplanten Unterbrechungen, die zu einem dauerhaften oder vorübergehenden Ausfall der von der Anwendung ausgeführten Geschäftsfunktion führen können. Ungeplante Ereignisse reichen von Benutzerfehlern über dauerhafte oder zeitweise Ausfälle bis hin zu regionalen Katastrophen, die weitreichende Verluste an Einrichtungen in einer bestimmten Azure-Region verursachen können. Zu geplanten Ereignissen gehören die erneute Bereitstellung der Anwendung in einer anderen Region, Anwendungsupgrades usw. Das Ziel der Geschäftskontinuität ist die Fortsetzung der Anwendung während solcher Ereignisse mit minimalen Auswirkungen auf die Geschäftsfunktion.
 
@@ -68,23 +61,23 @@ Ich gebe ein größeres Upgrade meiner Anwendung frei. Es umfasst Änderungen am
 Die folgende Tabelle enthält die Geschäftskontinuitätsfeatures der SQL-Datenbank und verdeutlicht die jeweiligen Unterschiede in den verschiedenen [Dienstebenen](sql-database-service-tiers.md):
 
 | Funktion | Basic-Tarif | Standard-Tarif |Premium-Tarif
-| --- | --- | --- | ---
+| --- |--- | --- | ---
 | Zeitpunktwiederherstellung | Jeder Wiederherstellungspunkt innerhalb von 7 Tagen | Jeder Wiederherstellungspunkt innerhalb von 14 Tagen | Jeder Wiederherstellungspunkt innerhalb von 35 Tagen
-| Geografische Wiederherstellung | Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h | Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h | Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h
+| Geowiederherstellung | Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h | Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h | Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h
 | Aktive Georeplikation | Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s | Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s | Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s
 
-Diese Funktionen werden für die zuvor beschriebenen Szenarios bereitgestellt. Im Abschnitt [Entwurf für Geschäftskontinuität](sql-database-business-continuity-design.md) finden Sie Anleitungen zum Auswählen der jeweiligen Funktion.
+Diese Funktionen werden für die zuvor beschriebenen Szenarios bereitgestellt.
 
 > [AZURE.NOTE] Die Werte für die geschätzte Wiederherstellungszeit und RPO sind technische Ziele und dienen lediglich als Leitfaden. Sie sind nicht Bestandteil des [SLA für die SQL-Datenbank](https://azure.microsoft.com/support/legal/sla/sql-database/v1_0/).
 
 
 ###Point-in-Time-Wiederherstellung
 
-Mit der [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md) können Sie Ihre Datenbank in einen früheren Zustand versetzen. Dazu werden Datenbanksicherungen, inkrementelle Sicherungen und Transaktionsprotokollsicherungen verwendet, die der Dienst automatisch für jede Benutzerdatenbank verwaltet. Diese Funktion steht für alle Dienstebenen zur Verfügung. Bei Basic können Sie 7 Tage wiederherstellen, bei Standard 14 Tage und bei Premium 35 Tage.
+Mit der [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore) können Sie Ihre Datenbank in einen früheren Zustand versetzen. Dazu werden Datenbanksicherungen, inkrementelle Sicherungen und Transaktionsprotokollsicherungen verwendet, die der Dienst automatisch für jede Benutzerdatenbank verwaltet. Diese Funktion steht für alle Dienstebenen zur Verfügung. Bei Basic können Sie 7 Tage wiederherstellen, bei Standard 14 Tage und bei Premium 35 Tage.
 
-### Geografische Wiederherstellung
+### Geowiederherstellung
 
-Die [Geowiederherstellung](sql-database-geo-restore.md) steht auch für Basic-, Standard- und Premium-Datenbanken zur Verfügung. Sie stellt die Standardoption für die Wiederherstellung dar, wenn auch die Datenbank aufgrund eines Vorfalls in der Region, in dem die Datenbank gehostet wird, nicht verfügbar ist. Ähnlich wie die Zeitpunktwiederherstellung ist die geografische Wiederherstellung von Datenbanksicherungen in geografisch redundantem Azure-Speicher abhängig. Die Wiederherstellung erfolgt aus der geografisch replizierten Sicherungskopie und ist daher in Bezug auf Speicherausfälle in der primären Region flexibel.
+Die [Geowiederherstellung](sql-database-recovery-using-backups.md#geo-restore) steht auch für Basic-, Standard- und Premium-Datenbanken zur Verfügung. Sie stellt die Standardoption für die Wiederherstellung dar, wenn auch die Datenbank aufgrund eines Vorfalls in der Region, in dem die Datenbank gehostet wird, nicht verfügbar ist. Ähnlich wie die Point-in-Time-Wiederherstellung ist die Geowiederherstellung von Datenbanksicherungen in geografisch redundantem Azure-Speicher abhängig. Die Wiederherstellung erfolgt aus der geografisch replizierten Sicherungskopie und ist daher in Bezug auf Speicherausfälle in der primären Region flexibel.
 
 ### Aktive Georeplikation
 
@@ -97,19 +90,17 @@ Beim Entwerfen von Anwendungen für Geschäftskontinuität müssen Sie die folge
 1. Welche Funktion der Geschäftskontinuität eignet sich am besten, um meine Anwendung vor Ausfällen zu schützen?
 2. Welches Maß an Redundanz und welche Replikationstopologie kann ich verwenden?
 
-Detaillierte Wiederherstellungsstrategien bei Verwendung eines elastischen Pools finden Sie unter [Strategien für die Notfallwiederherstellung für Anwendungen mit elastischem SQL-Datenbankpool](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+### Gründe für das Verwenden der Geowiederherstellung
 
-### Gründe für das Verwenden der geografischen Wiederherstellung
-
-Die [Geowiederherstellung](sql-database-geo-restore.md) ist die Standardoption für die Wiederherstellung, wenn eine Datenbank aufgrund eines Incidents in der Region, in der die Datenbank gehostet wird, nicht verfügbar ist. SQL-Datenbank bietet standardmäßig einen integrierten Basisschutz für jede Datenbank. Dies wird durch Erstellen und Speichern von [Datenbanksicherungen](sql-database-automated-backups.md) im georedundanten Azure-Speicher (GRS) erreicht. Wenn Sie diese Methode auswählen, ist keine besondere Konfiguration oder zusätzliche Ressourcenzuordnung erforderlich. Sie können die Datenbank in jeder Region wiederherstellen, indem Sie aus diesen automatisierten georedundanten Sicherungen eine Wiederherstellung in einer neuen Datenbank durchführen.
+Die [Geowiederherstellung](sql-database-recovery-using-backups.md#geo-restore) ist die Standardoption für die Wiederherstellung, wenn eine Datenbank aufgrund eines Incidents in der Region, in der die Datenbank gehostet wird, nicht verfügbar ist. SQL-Datenbank bietet standardmäßig einen integrierten Basisschutz für jede Datenbank. Dieser wird durch Erstellen und Speichern von [Datenbanksicherungen](sql-database-automated-backups.md) im georedundanten Azure-Speicher (GRS) erreicht. Wenn Sie diese Methode auswählen, ist keine besondere Konfiguration oder zusätzliche Ressourcenzuordnung erforderlich. Sie können die Datenbank in jeder Region wiederherstellen, indem Sie aus diesen automatisierten georedundanten Sicherungen eine Wiederherstellung in einer neuen Datenbank durchführen.
 
 Sie sollten den integrierten Schutz verwenden, wenn Ihre Anwendung die folgenden Kriterien erfüllt:
 
 1. Es handelt sich um keine unternehmenskritische Anwendung. Sie besitzt keine bindende SLA, sodass eine Ausfallzeit von 24 Stunden oder länger keine finanzielle Haftung nach sich zieht.
 2. Die Häufigkeit von Datenänderungen ist niedrig (z. B. Transaktionen pro Stunde). Ein RPO-Wert von einer Stunde führt nicht zu erheblichen Datenverlusten.
-3. Bei der Anwendung muss sehr auf die Kosten geachtet werden, sodass keine zusätzlichen Kosten für die Georeplikation möglich sind. 
+3. Bei der Anwendung muss sehr auf die Kosten geachtet werden, sodass keine zusätzlichen Kosten für die Georeplikation möglich sind.
 
-> [AZURE.NOTE] Bei der geografischen Wiederherstellung wird keine Rechenkapazität in bestimmten Regionen im Voraus reserviert, um aktive Datenbanken nach einem Ausfall aus einer Sicherungskopie wiederherzustellen. Der Dienst verwaltet die Arbeitsauslastung im Zusammenhang mit "geo-restore"-Anforderungen so, dass die Auswirkungen auf vorhandene Datenbanken in dieser Region minimiert werden und deren Kapazitätsanforderungen Priorität haben. Daher hängt die Wiederherstellungszeit der Datenbank davon ab, wie viele andere Datenbanken in derselben Region zur gleichen Zeit wiederhergestellt werden. Zudem sind die Größe der Datenbank, die Anzahl der Transaktionsprotokolle, die Netzwerkbandbreite usw. von Bedeutung.
+> [AZURE.NOTE] Bei der Geowiederherstellung wird keine Rechenkapazität in bestimmten Regionen im Voraus reserviert, um aktive Datenbanken nach einem Ausfall aus einer Sicherungskopie wiederherzustellen. Der Dienst verwaltet die Arbeitsauslastung im Zusammenhang mit "geo-restore"-Anforderungen so, dass die Auswirkungen auf vorhandene Datenbanken in dieser Region minimiert werden und deren Kapazitätsanforderungen Priorität haben. Daher hängt die Wiederherstellungszeit der Datenbank davon ab, wie viele andere Datenbanken in derselben Region zur gleichen Zeit wiederhergestellt werden. Zudem sind die Größe der Datenbank, die Anzahl der Transaktionsprotokolle, die Netzwerkbandbreite usw. von Bedeutung.
 
 ### Gründe für das Verwenden der aktiven Georeplikation
 
@@ -117,28 +108,22 @@ Die [aktive Georeplikation](sql-database-geo-replication-overview.md) ermöglich
 
 Sie sollten die aktive Georeplikation verwenden, wenn Ihre Anwendung die folgenden Kriterien erfüllt:
 
-1. Sie ist geschäftskritisch. Sie besitzt eine bindende SLA mit anspruchsvollen RPO- und RTO-Werten. Der Verlust von Daten und ein Ausfall bei der Verfügbarkeit ziehen eine finanzielle Haftung nach sich. 
+1. Sie ist geschäftskritisch. Sie besitzt eine bindende SLA mit anspruchsvollen RPO- und RTO-Werten. Der Verlust von Daten und ein Ausfall bei der Verfügbarkeit ziehen eine finanzielle Haftung nach sich.
 2. Die Häufigkeit von Datenänderungen ist hoch (z. B. Transaktionen pro Minute oder Sekunde). Der für den Standardschutz geltende RPO-Wert von einer Stunde führt wahrscheinlich zu nicht akzeptablen Datenverlusten.
 3. Die Kosten für die Verwendung der Georeplikation sind deutlich niedriger als die potenziellen finanziellen Haftungsschäden und die damit einhergehenden Geschäftsverluste.
 
+## Entwerfen von Cloudlösungen für die Notfallwiederherstellung 
+
+Sie sollten beim Entwerfen der Anwendung für die Geschäftskontinuität verschiedene Konfigurationsoptionen berücksichtigen. Die Auswahl hängt von der Bereitstellungstopologie für die Anwendung ab und davon, welche Teile der Anwendungen am anfälligsten für einen Ausfall sind. Anleitungen finden Sie unter [Entwerfen von Cloudlösungen für die Notfallwiederherstellung mithilfe der Georeplikation](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
+
+Detaillierte Wiederherstellungsstrategien bei Verwendung eines elastischen Pools finden Sie unter [Strategien für die Notfallwiederherstellung für Anwendungen mit elastischem SQL-Datenbankpool](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
 
 ## Nächste Schritte
 
 - Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
-- Informationen zur Verwendung der automatisierten Sicherungen von Azure SQL-Datenbank für eine Point-in-Time-Wiederherstellung einer Datenbank finden Sie unter [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md).
-- Informationen zur Verwendung der automatisierten Sicherungen von Azure SQL-Datenbank zum Wiederherstellen einer gelöschten Datenbank finden Sie unter [Wiederherstellen einer gelöschten Datenbank](sql-database-restore-deleted-database.md).
-- Informationen zur Verwendung der automatisierten Sicherungen von Azure SQL-Datenbank für eine Geowiederherstellung einer Datenbank finden Sie unter [Geowiederherstellung](sql-database-geo-restore.md).
-- Informationen zur Konfiguration und Verwendung der aktiven Georeplikation für die Geschäftskontinuität finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
+- Informationen über Entwurfs- und Wiederherstellungsszenarien für die Geschäftskontinuität finden Sie unter [Geschäftskontinuitätsszenarien](sql-database-business-continuity-scenarios.md).
+- Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).
+- Informationen über schnellere Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
+- Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
 
-## Zusätzliche Ressourcen
-
-- [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md)
-- [Wiederherstellen nach einem Benutzerfehler](sql-database-user-error-recovery.md)
-- [Ausführen von Notfallwiederherstellungsverfahren](sql-database-disaster-recovery-drills.md)
-- [Verwalten der Sicherheit nach der Wiederherstellung](sql-database-geo-replication-security-config.md)
-- [Verwalten von parallelen Upgrades von Cloudanwendungen mithilfe der aktiven Georeplikation von SQL-Datenbank](sql-database-manage-application-rolling-upgrade.md)
-- [Entwerfen einer Cloudlösung für die Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [Strategien für die Notfallwiederherstellung für Anwendungen mit elastischem SQL-Datenbankpool](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
-- [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung mithilfe der aktiven Georeplikation in SQL-Datenbank](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

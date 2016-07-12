@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]Dieser Artikel gilt für das Ressourcen-Manager-Bereitstellungsmodell. Sie können auch erfahren, wie Sie [mithilfe des klassischen Bereitstellungsmodells einen Load Balancer mit Internetzugriff erstellen](load-balancer-get-started-internet-classic-cli.md).
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] Dieser Artikel gilt für das Ressourcen-Manager-Bereitstellungsmodell. Sie können auch erfahren, wie Sie [mithilfe des klassischen Bereitstellungsmodells einen Load Balancer mit Internetzugriff erstellen](load-balancer-get-started-internet-classic-cli.md).
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
@@ -35,7 +35,7 @@ Hier finden Sie eine ausführliche Beschreibung der einzelnen Aufgaben, die zum 
 
 Zum Bereitstellen eines Load Balancers müssen folgende Objekte erstellt und konfiguriert werden:
 
-- Front-End-IP-Konfiguration: Enthält öffentliche IP-Adressen für eingehenden Netzwerkdatenverkehr. 
+- Front-End-IP-Konfiguration: Enthält öffentliche IP-Adressen für eingehenden Netzwerkdatenverkehr.
 
 - Back-End-Adresspool: Enthält Netzwerkschnittstellen (NICs), die virtuellen Computern den Empfang von Netzwerkdatenverkehr des Load Balancers ermöglichen.
 
@@ -54,7 +54,7 @@ Stellen Sie sicher, dass Sie über die neueste Produktionsversion des ARM-Moduls
 
 ### Schritt 1
 
-		PS C:\> Login-AzureRmAccount
+		Login-AzureRmAccount
 
 Sie werden zur Authentifizierung mit Ihren Anmeldeinformationen aufgefordert.<BR>
 
@@ -62,20 +62,20 @@ Sie werden zur Authentifizierung mit Ihren Anmeldeinformationen aufgefordert.<BR
 
 Überprüfen Sie die Abonnements für das Konto.
 
-		PS C:\> Get-AzureRmSubscription 
+		Get-AzureRmSubscription 
 
 ### Schritt 3 
 
 Wählen Sie aus, welches Azure-Abonnement Sie verwenden möchten.<BR>
 
-		PS C:\> Select-AzureRmSubscription -SubscriptionId 'GUID of subscription'
+		Select-AzureRmSubscription -SubscriptionId 'GUID of subscription'
 
 ### Schritt 4
 
 Erstellen Sie eine neue Ressourcengruppe. (Überspringen Sie diesen Schritt, wenn Sie eine vorhandene Ressourcengruppe verwenden.)
 
 
-    	PS C:\> New-AzureRmResourceGroup -Name NRP-RG -location "West US"
+    	New-AzureRmResourceGroup -Name NRP-RG -location "West US"
 
 
 ## Erstellen eines virtuellen Netzwerks und einer öffentlichen IP-Adresse für den Front-End-IP-Adresspool
@@ -181,7 +181,7 @@ Erstellen Sie eine NIC mit dem Namen *lb-nic2-be*, und ordnen Sie sie der zweite
 Überprüfen Sie die Netzwerkkarten.
 
 
-	PS C:\> $backendnic1
+	$backendnic1
 
 Erwartete Ausgabe:
 
@@ -248,7 +248,7 @@ Laden Sie die Lastenausgleichsressource in eine Variable (sofern nicht schon ges
 
 Laden Sie die Back-End-Konfiguration in eine Variable.
 
-	PS C:\> $backend=Get-AzureRmLoadBalancerBackendAddressPoolConfig -name backendpool1 -LoadBalancer $lb
+	$backend=Get-AzureRmLoadBalancerBackendAddressPoolConfig -name backendpool1 -LoadBalancer $lb
 
 #### Schritt 3 
 
@@ -260,13 +260,13 @@ Laden Sie die bereits erstellte Netzwerkschnittstelle in eine Variable. Der Vari
 
 Ändern Sie die Back-End-Konfiguration in der Netzwerkschnittstelle.
 
-	PS C:\> $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
+	$nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
 
 #### Schritt 5 
 
 Speichern Sie das Netzwerkschnittstellenobjekt.
 
-	PS C:\> Set-AzureRmNetworkInterface -NetworkInterface $nic
+	Set-AzureRmNetworkInterface -NetworkInterface $nic
 
 Nachdem eine Netzwerkschnittstelle zum Back-End-Pool des Lastenausgleichs hinzugefügt wurde, empfängt sie Netzwerkdatenverkehr basierend auf den Lastenausgleichsregeln für diese Lastenausgleichsressouce.
 
@@ -308,4 +308,4 @@ Verwenden Sie den Befehl `Remove-AzureLoadBalancer`, um den zuvor erstellten Loa
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0629_2016-->

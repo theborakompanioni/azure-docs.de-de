@@ -12,7 +12,7 @@ ms.service="search"
 ms.devlang="rest-api"
 ms.workload="search" ms.topic="article"  
 ms.tgt_pltfrm="na"
-ms.date="05/17/2016"
+ms.date="06/27/2016"
 ms.author="eugenesh" />
 
 # Indizieren von Dokumenten in Azure Blob Storage mit Azure Search
@@ -32,9 +32,9 @@ Ein Indexer ist die Ressource, die Datenquellen mit Zielsuchindizes verbindet.
 Führen Sie zum Einrichten der Blobindizierung folgende Schritte aus:
 
 1. Erstellen Sie eine Datenquelle vom Typ `azureblob`, die auf einen Container (und optional einen Ordner in diesem Container) in einem Azure-Speicherkonto verweist.
-	- Übergeben Sie die Verbindungszeichenfolge des Speicherkontos als `credentials.connectionString`-Parameter.
+	- Übergeben Sie die Verbindungszeichenfolge des Speicherkontos als `credentials.connectionString`-Parameter. Sie erhalten die Verbindungszeichenfolge aus dem Azure-Portal. Navigieren Sie zum Blatt mit dem gewünschten Speicherkonto bzw. den Schlüsseln, und verwenden Sie den Wert von „Primäre Verbindungszeichenfolge“ oder „Sekundäre Verbindungszeichenfolge“.
 	- Geben Sie einen Containernamen an. Sie können optional auch einen Ordner mit dem Parameter `query` einschließen.
-2. Erstellen Sie einen Suchindex mit einem durchsuchbaren `content`-Feld. 
+2. Erstellen Sie einen Suchindex mit einem durchsuchbaren `content`-Feld.
 3. Erstellen Sie den Indexer, indem Sie die Datenquelle mit dem Zielindex verbinden.
 
 ### Erstellen der Datenquelle
@@ -83,7 +83,9 @@ Zuletzt erstellen Sie einen Indexer, der auf die Datenquelle und einen Zielindex
 	  "schedule" : { "interval" : "PT2H" }
 	}
 
-Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Indexer erstellen](search-api-indexers-2015-02-28-preview.md#create-indexer).
+Dieser Indexer wird alle zwei Stunden ausgeführt (das Planungsintervall wird auf „PT2H“ festgelegt). Um einen Indexer alle 30 Minuten auszuführen, legen Sie das Intervall auf „PT30M“ fest. Das kürzeste unterstützte Intervall ist 5 Minuten. Der Zeitplan ist optional. Falls Sie ihn weglassen, wird ein Indexer nur einmal bei seiner Erstellung ausgeführt. Allerdings können Sie ein Indexer bei Bedarf jederzeit ausführen.
+
+Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Erstellen eines Indexers](search-api-indexers-2015-02-28-preview.md#create-indexer).
 
 
 ## Unterstützte Dokumentformate
@@ -91,13 +93,13 @@ Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Ind
 Der Blobindexer kann Text aus den folgenden Dokumentformaten extrahieren:
 
 - PDF
-- Microsoft Office-Formate: DOCX/DOC, XLSX/XLS, PPTX/PPT, MSG (Outlook-E-Mails)  
+- Microsoft Office-Formate: DOCX/DOC, XLSX/XLS, PPTX/PPT, MSG (Outlook-E-Mails)
 - HTML
 - XML
 - ZIP
 - EML
-- Nur-Text-Dateien  
-- JSON (Details finden Sie unter [Indizierung der JSON-Blobs mit Azure Search-Blobindexer](search-howto-index-json-blobs.md))
+- Nur-Text-Dateien
+- JSON (Details finden Sie unter [Indizierung von JSON-Blobs](search-howto-index-json-blobs.md))
 
 ## Prozess der Dokumentextrahierung
 
@@ -215,7 +217,7 @@ PPT (application/vnd.ms-powerpoint) | `metadata_content_type`<br/>`metadata_auth
 MSG (application/vnd.ms-outlook) | `metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_message_bcc`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` | Extrahieren von Text, einschließlich Anlagen
 ZIP (application/zip) | `metadata_content_type` | Extrahieren von Text aus allen Dokumenten im Archiv
 XML (application/xml) | `metadata_content_type`</br>`metadata_content_encoding`</br> | Entfernen von XML-Markup und Extrahieren von Text
-JSON (application/json) | `metadata_content_type`</br>`metadata_content_encoding` | Extrahieren von Text<br/>HINWEIS: Wenn Sie mehrere Felder des Dokuments aus einem JSON-Blob extrahieren möchten, finden Sie unter [Indizierung der JSON-Blobs mit Azure Search-Blobindexer](search-howto-index-json-blobs.md) detaillierte Informationen.
+JSON (application/json) | `metadata_content_type`</br>`metadata_content_encoding` | Extrahieren von Text<br/>HINWEIS: Wenn Sie mehrere Felder des Dokuments aus einem JSON-Blob extrahieren möchten, finden Sie unter [Indizierung der JSON-Blobs](search-howto-index-json-blobs.md) detaillierte Informationen.
 EML (message/rfc822) | `metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` | Extrahieren von Text, einschließlich Anlagen
 Nur-Text (text/plain) | `metadata_content_type`</br>`metadata_content_encoding`</br> | 
 
@@ -236,7 +238,7 @@ Mehrere Konfigurationsparameter stehen für den Indexer zur Verfügung, mit dene
 
 ### Indizieren von Blobs mit bestimmten Dateierweiterungen
 
-Sie können nur die Blobs mit den Dateierweiterungen indizieren, die Sie über den `indexedFileNameExtensions`-Konfigurationsparameter des Indexers angeben. Der Wert ist eine Zeichenfolge mit einer durch Trennzeichen getrennte Liste von Dateierweiterungen (mit einem vorangestellten Punkt). Um beispielsweise nur die PDF- und DOCX-Blobs zu indizieren, gehen Sie folgendermaßen vor:
+Sie können nur die Blobs mit den Dateinamenerweiterungen indizieren, die Sie über den `indexedFileNameExtensions`-Konfigurationsparameter des Indexers angeben. Der Wert ist eine Zeichenfolge mit einer durch Trennzeichen getrennte Liste von Dateierweiterungen (mit einem vorangestellten Punkt). Um beispielsweise nur die PDF- und DOCX-Blobs zu indizieren, gehen Sie folgendermaßen vor:
 
 	PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
 	Content-Type: application/json
@@ -249,7 +251,7 @@ Sie können nur die Blobs mit den Dateierweiterungen indizieren, die Sie über d
 
 ### Ausschließen von Blobs mit bestimmten Dateierweiterungen von der Indizierung
 
-Mithilfe des `excludedFileNameExtensions`-Konfigurationsparameters können Sie verhindern, dass Blobs mit bestimmten Dateierweiterungen indiziert werden. Der Wert ist eine Zeichenfolge mit einer durch Trennzeichen getrennte Liste von Dateierweiterungen (mit einem vorangestellten Punkt). Um beispielsweise alle Blobs mit Ausnahme von Blobs mit den Erweiterungen PNG und JPEG zu indizieren, gehen Sie folgendermaßen vor:
+Mithilfe des `excludedFileNameExtensions`-Konfigurationsparameters können Sie verhindern, dass Blobs mit bestimmten Dateinamenerweiterungen indiziert werden. Der Wert ist eine Zeichenfolge mit einer durch Trennzeichen getrennte Liste von Dateierweiterungen (mit einem vorangestellten Punkt). Um beispielsweise alle Blobs mit Ausnahme von Blobs mit den Erweiterungen PNG und JPEG zu indizieren, gehen Sie folgendermaßen vor:
 
 	PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
 	Content-Type: application/json
@@ -292,4 +294,4 @@ Falls Sie alle Metadaten extrahieren, aber die Inhaltsextraktion für alle Blobs
 
 Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/) mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,37 +13,40 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
+	ms.date="06/23/2016" 
 	ms.author="bradsev" />
 
 
 # Exemplarische Vorgehensweisen für den Team Data Science-Prozess
 
-Die vollständigen exemplarischen Vorgehensweisen veranschaulichen die Schritte im Team Data Science-Prozess für **bestimmte Szenarien** und das Kombinieren von Cloud- und lokalen Tools und Diensten in einem Workflow oder einer Pipeline, um eine intelligente Anwendung zu erstellen.
+Die umfassenden exemplarischen Vorgehensweisen veranschaulichen die Schritte im Team Data Science-Prozess für **bestimmte Szenarien** sowie das Kombinieren von cloudbasierten und lokalen Tools und Diensten in einem Workflow oder einer Pipeline, um eine intelligente Anwendung zu erstellen.
 
-## Verwenden von SQL Server
-Die exemplarische Vorgehensweise [Der Team Data Science-Prozess in Aktion: Verwenden von SQL Server](machine-learning-data-science-process-sql-walkthrough.md) zeigt das Erstellen und Bereitstellen eines Machine Learning-Modells mithilfe von SQL Server und des öffentlich zugänglichen Datasets [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/).
+## SQL Data Warehouse
+Die exemplarische Vorgehensweise [Der Cortana Analytics-Prozess in Aktion: Verwenden von SQL Data Warehouse](machine-learning-data-science-process-sqldw-walkthrough.md) zeigt, wie Sie mit SQL Data Warehouse (SQL DW) Modelle für die Machine Learning-Klassifizierung und -Regression für ein öffentlich zugängliches Dataset mit Taxifahrten und Fahrpreisen für New York erstellen und bereitstellen.
 
-
-## Verwenden von HDInsight Hadoop-Clustern
-In der exemplarischen Vorgehensweise [Der Team Data Science-Prozess in Aktion: Verwenden von HDInsight Hadoop-Clustern](machine-learning-data-science-process-hive-walkthrough.md) nutzen wir einen [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/) zum Speichern und Untersuchen von und Entwickeln von Features mithilfe von Daten aus dem öffentlich zugänglichen Dataset [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/).
-
-
-## Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-Dataset
-In der exemplarische Vorgehensweise [Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-Dataset](machine-learning-data-science-process-hive-criteo-walkthrough.md) präsentieren wir ein vollständiges Szenario, in dem ein [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/) zum Speichern und Untersuchen von und Entwickeln von Features mithilfe von Daten aus einem der öffentlich zugänglichen [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/)-Datasets verwendet wird.
-
-## Data Science mit Spark in Azure HDInsight
-In der exemplarischen Vorgehensweise [Data Science mit Spark in Azure HDInsight](machine-learning-data-science-spark-overview.md) nutzen wir den Team Data Science-Prozess in einem vollständigen Szenario mit einem [Azure HDInsight Spark-Cluster](https://azure.microsoft.com/services/hdinsight/), um Daten aus dem öffentlich zugänglichen Datasets [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) zu speichern, zu untersuchen und für das Entwickeln von Features zu nutzen.
+## SQL Server
+Die exemplarische Vorgehensweise [Cortana-Analyseprozess (CAP) in Aktion: Verwenden von SQL Server](machine-learning-data-science-process-sql-walkthrough.md) zeigt, wie Sie mit SQL Server und einem öffentlich zugänglichen Dataset mit Taxifahrten und Fahrpreisen für New York Modelle für die Machine Learning-Klassifizierung und -Regression erstellen und bereitstellen.
 
 
-## Skalierbare Data Science in Azure Data Lake
-Die exemplarische Vorgehensweise [Skalierbare Data Science in Azure Data Lake: lückenlose exemplarische Vorgehensweise](machine-learning-data-science-process-data-lake-walkthrough.md) veranschaulicht die Nutzung von Azure Data Lake zum Anwenden von Datenuntersuchungs- und binären Klassifizierungsaufgaben auf das Dataset „NYC Taxi Trip and Fare“, um vorherzusagen, ob neben dem Fahrpreis ein Trinkgeld gezahlt wird oder nicht.
+## HDInsight Hadoop-Cluster
+In der exemplarischen Vorgehensweise [Cortana-Analyseprozess (CAP) in Aktion: Verwenden von HDInsight Hadoop-Clustern](machine-learning-data-science-process-hive-walkthrough.md) wird zum Speichern und Untersuchen von Daten aus einem öffentlich zugänglichen Dataset mit Taxifahrten und Fahrpreisen für New York sowie zum Entwickeln entsprechender Features ein [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/) verwendet.
 
-## Lückenlose exemplarische Vorgehensweise für Data Science mit SQL Server R-Diensten
-Die [Lückenlose exemplarische Vorgehensweise für Data Science mit SQL Server Analysis Services](https://msdn.microsoft.com/library/mt612857.aspx) nutzt das bekannte öffentlich zugängliche Dataset „NYC Taxi Trips“. Sie verwenden eine Kombination aus R-Code, SQL Server-Daten und benutzerdefinierten SQL-Funktionen, um ein Klassifizierungsmodell zu erstellen, das die Wahrscheinlichkeit angibt, mit der der Fahrer für eine bestimmte Taxifahrt ein Trinkgeld erhält. Sie können Ihr R-Modell auch in SQL Server bereitstellen und Serverdaten zum Generieren von Bewertungen auf Grundlage des Modells nutzen.
 
-## Datenbankinterne erweiterte Analysen für SQL-Entwickler
+## Azure HDInsight Hadoop-Cluster in einem 1-TB-Dataset
+In dem umfassenden Szenario der exemplarischen Vorgehensweise [Cortana-Analyseprozess in Aktion – Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-DataSet](machine-learning-data-science-process-hive-criteo-walkthrough.md) wird zum Speichern, Untersuchen und Komprimieren von Daten aus einem der öffentlich zugänglichen [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/)-Datasets sowie zum Entwickeln entsprechender Features ein [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/) verwendet.
 
-Ziel der exemplarischen Vorgehensweise [Datenbankinterne erweiterte Analysen für SQL-Entwickler](https://msdn.microsoft.com/library/mt683480.aspx) ist es, SQL-Programmierer praktische Erfahrungen beim Erstellen einer erweiterten Analyselösung mithilfe von SQL Server Analysis Services sammeln zu lassen. Erfahren Sie, wie Sie R in eine Anwendung oder BI-Lösung integrieren, indem Sie R-Code in gespeicherten Prozeduren umschließen.
 
-<!---HONumber=AcomDC_0622_2016-->
+## Spark in Azure HDInsight
+In der exemplarischen Vorgehensweise [Übersicht über Data Science mit Spark in Azure HDInsight](machine-learning-data-science-spark-overview.md) wird der Team Data Science-Prozess in einem umfassenden Szenario mit einem [Azure HDInsight Spark-Cluster](https://azure.microsoft.com/services/hdinsight/) verwendet, um Daten aus dem öffentlich zugänglichen Dataset mit Taxifahrten und Fahrpreisen für New York zu speichern, zu untersuchen und bei der Entwicklung von Features zu nutzen.
+
+
+## Azure Data Lake-Speicher und Analytics
+Die exemplarische Vorgehensweise [Skalierbare Data Science in Azure Data Lake: lückenlose exemplarische Vorgehensweise](machine-learning-data-science-process-data-lake-walkthrough.md) veranschaulicht, wie Sie Azure Data Lake auf der Grundlage des Datasets mit Taxifahrten und Fahrpreisen für New York zur Untersuchung von Daten sowie für binären Klassifizierungsaufgaben nutzen, um vorherzusagen, ob neben dem Fahrpreis ein Trinkgeld bezahlt wird.
+
+## R mit SQL Server R-Diensten
+Die exemplarische Vorgehensweise [Data Science End-to-End Walkthrough using SQL Server R Services](https://msdn.microsoft.com/library/mt612857.aspx) (Lückenlose exemplarische Vorgehensweise für Data Science mit SQL Server R-Diensten) bietet Data Scientists eine Kombination aus R-Code, SQL Server-Daten und benutzerdefinierten SQL-Funktionen für die Erstellung und Bereitstellung eines R-Modells für SQL Server.
+
+## T-SQL mit SQL Server R-Diensten
+In der exemplarischen Vorgehensweise [In-Database Advanced Analytics for SQL Developers](https://msdn.microsoft.com/library/mt683480.aspx) (Datenbankinterne erweiterte Analysen für SQL-Entwickler) können SQL-Programmierer praktische Erfahrungen mit der Erstellung einer erweiterten Analyselösung mit Transact-SQL unter Verwendung von SQL Server R-Diensten sammeln, um eine R-Lösung zu operationalisieren.
+
+<!---HONumber=AcomDC_0629_2016-->

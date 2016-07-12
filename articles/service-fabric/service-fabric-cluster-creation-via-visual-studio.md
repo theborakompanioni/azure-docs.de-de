@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/04/2016"
+   ms.date="06/27/2016"
    ms.author="karolz@microsoft.com"/>
 
 # Einrichten eines Service Fabric-Clusters mit Visual Studio
@@ -39,14 +39,15 @@ Bevor die Vorlage bereitgestellt wird, um den Cluster zu erstellen, müssen Sie 
 
 |Parametername |Beschreibung|
 |-----------------------  |--------------------------|
+|adminUserName |Der Name des Administratorkontos für Service Fabric-Computer (Knoten).|
 |certificateThumbprint |Der Fingerabdruck des Zertifikats zum Schutz des Clusters.|
 |sourceVaultResourceId |Die *Ressourcen-ID* des Schlüsseltresors, in dem das Zertifikat zum Schutz des Clusters gespeichert ist.|
 |certificateUrlValue |Die URL des Sicherheitszertifikats des Clusters.|
 
-Die Visual Studio Service Fabric-Ressourcen-Manager-Vorlage erstellt einen sicheren Cluster, der durch ein Zertifikat geschützt ist. Dieses Zertifikat wird durch die letzten drei Vorlagenparameter (`certificateThumbprint`, `sourceVaultValue` und `certificateUrlValue`) identifiziert und muss in einem **Azure-Schlüsseltresor** vorhanden sein. Weitere Informationen zum Erstellen des Sicherheitszertifikats des Clusters finden Sie unter [Schützen eines Service Fabric-Clusters mit Zertifikaten](service-fabric-cluster-security.md#secure-a-service-fabric-cluster-by-using-certificates).
+Die Visual Studio Service Fabric-Ressourcen-Manager-Vorlage erstellt einen sicheren Cluster, der durch ein Zertifikat geschützt ist. Dieses Zertifikat wird durch die letzten drei Vorlagenparameter (`certificateThumbprint`, `sourceVaultValue` und `certificateUrlValue`) identifiziert und muss in einem **Azure-Schlüsseltresor** vorhanden sein. Weitere Informationen zum Erstellen des Sicherheitszertifikats des Clusters finden Sie unter [Szenarien für die Clustersicherheit in Service Fabric](service-fabric-cluster-security.md#x509-certificates-and-service-fabric).
 
 ## Optional: Ändern des Clusternamens
-Jeder Service Fabric-Cluster verfügt über einen Namen. Wenn ein Fabric-Cluster in Azure erstellt wird, bestimmt der Clustername (zusammen mit der Azure-Region) den DNS-Namen (Domain Name System) für den Cluster. Wenn Sie Ihren Cluster beispielsweise `myBigCluster` nennen und der `clusterLocation`-Parameter auf „USA, Osten“ festgelegt ist, lautet der DNS-Name des Clusters `myBigCluster.eastus.cloudapp.azure.com`.
+Jeder Service Fabric-Cluster verfügt über einen Namen. Wenn ein Fabric-Cluster in Azure erstellt wird, bestimmt der Clustername (zusammen mit der Azure-Region) den DNS-Namen (Domain Name System) für den Cluster. Ein Beispiel: Wenn Sie Ihren Cluster `myBigCluster` nennen und ihn in einer Ressourcengruppe am Standort (bzw. in der Azure-Region) „USA, Osten“ hosten, lautet der DNS-Name des Clusters `myBigCluster.eastus.cloudapp.azure.com`.
 
 Standardmäßig wird der Name des Clusters automatisch generiert und durch Anfügen eines zufälligen Suffixes an das Präfix „cluster“ eindeutig festgelegt. So kann die Vorlage sehr einfach als Teil eines **Continuous Integration**-Systems (CI) verwendet werden. Wenn Sie einen bestimmten (für Sie aussagekräftigen) Namen für den Cluster verwenden möchten, legen Sie den Wert der `clusterName`-Variablen in der Resource Manager-Vorlagendatei (`ServiceFabricCluster.json`) auf Ihren ausgewählten Namen fest. Diese Variable ist die erste Variable, die in der Datei definiert ist.
 
@@ -99,7 +100,7 @@ Vielleicht möchten Sie auch die öffentlichen Anwendungsports für den Cluster 
 Wenn die Anwendungen, die Sie im Cluster bereitstellen möchten, mehr Ports benötigen, können Sie diese hinzufügen, indem Sie zusätzliche Regeldefinitionen für Test und Lastenausgleich erstellen. Weitere Informationen zum Arbeiten mit Azure Load Balancer über Resource Manager-Vorlagen finden Sie unter [Erste Schritte zum Erstellen eines internen Load Balancers mithilfe einer Vorlage](../load-balancer/load-balancer-get-started-ilb-arm-template.md).
 
 ## Bereitstellen der Vorlage mit Visual Studio
-Nachdem Sie alle erforderlichen Parameterwerte in der Datei `ServiceFabricCluster.param.dev.json` gespeichert haben, können Sie die Vorlage bereitstellen und Ihren Service Fabric-Cluster erstellen. Klicken Sie im Visual Studio-Projektmappen-Explorer mit der rechten Maustaste auf das Ressourcengruppenprojekt, und wählen Sie **Bereitstellen** aus. In Visual Studio wird das Dialogfeld **In Ressourcengruppe bereitstellen** angezeigt, und Sie werden gegebenenfalls aufgefordert, sich bei Azure zu authentifizieren:
+Nachdem Sie alle erforderlichen Parameterwerte in der Datei `ServiceFabricCluster.param.dev.json` gespeichert haben, können Sie die Vorlage bereitstellen und Ihren Service Fabric-Cluster erstellen. Klicken Sie im Visual Studio-Projektmappen-Explorer mit der rechten Maustaste auf das Ressourcengruppenprojekt, und wählen Sie **Bereitstellen | Neue Bereitstellung...** aus. Visual Studio zeigt das Dialogfeld **In Ressourcengruppe bereitstellen** an, und fordert Sie bei Bedarf auf, sich bei Azure zu authentifizieren:
 
 ![Dialogfeld "In Ressourcengruppe bereitstellen"][3]
 
@@ -126,4 +127,4 @@ Wenn Fehler auftreten, wechseln Sie zum [Azure-Portal](https://portal.azure.com/
 [2]: ./media/service-fabric-cluster-creation-via-visual-studio/selecting-azure-template.png
 [3]: ./media/service-fabric-cluster-creation-via-visual-studio/deploy-to-azure.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

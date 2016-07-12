@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="03/31/2016" 
+    ms.date="06/27/2016" 
     ms.author="elizapo" />
 
 # Schätzen der Netzwerkbandbreiten-Nutzung von Azure RemoteApp 
@@ -39,4 +39,4 @@ Wir behandeln zwar die Geräteumleitung, berücksichtigen jedoch nicht die Auswi
 
 Wir erörtern auch nicht, wie ein Benutzer andere Benutzer im gleichen Netzwerk beeinträchtigen kann. Beispielsweise kann ein Benutzer bei der Wiedergabe von 4K-Video über ein 100-MB/s-Netzwerk andere Benutzer im gleichen Netzwerk deutlich beeinträchtigen, die versuchen, das Gleiche zu tun. Leider wird es zunehmend schwieriger, die Auswirkung der gleichzeitigen Nutzung zu bestimmen, um eine allgemeine oder allumfassende Einschätzung der Gesamtleistung des Systems abzugeben. Wir können lediglich sagen, dass die zu Grunde liegende Protokolltechnologie die verfügbare Netzwerkbandbreite zwar bestmöglich nutzt, aber ihre Grenzen hat.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0629_2016-->

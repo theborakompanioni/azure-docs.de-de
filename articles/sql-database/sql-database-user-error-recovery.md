@@ -16,14 +16,14 @@
    ms.date="06/16/2016"
    ms.author="carlrab"/>
 
-# Wiederherstellen einer Azure-SQL-Datenbank nach einem Benutzerfehler
+# Wiederherstellen einer Azure SQL-Datenbank nach einem Benutzerfehler
 
 Eine Azure SQL-Datenbank bietet zwei Kernfunktionen zur Wiederherstellung nach einem Benutzerfehlern oder unbeabsichtigter Datenänderung.
 
-- [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md) 
-- [Wiederherstellen einer gelöschten Datenbank](sql-database-restore-deleted-database.md)
+- [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore)
+- [Wiederherstellen einer gelöschten Datenbank](sql-database-recovery-using-backups.md#deleted-database-restore)
 
-Eine Azure-SQL-Datenbank wird immer in eine neue Datenbank wiederhergestellt. Diese Wiederherstellungsfunktionen sind für alle Basic-, Standard- und Premium-Datenbanken verfügbar.
+Azure SQL-Datenbank erstellt bei Point-in-Time-Wiederherstellungen immer eine neue Datenbank. Beim Wiederherstellen einer gelöschten Datenbank können Sie hingegen eine Datenbank mit dem gleichen Namen erstellen. Diese Wiederherstellungsfunktionen sind für alle Basic-, Standard- und Premium-Datenbanken verfügbar.
 
 ##Point-in-Time-Wiederherstellung
 
@@ -35,7 +35,7 @@ Informationen zum Durchführen einer Point-in-Time-Wiederherstellung finden Sie 
 
 - [Point-in-Time-Wiederherstellung über das Azure-Portal](sql-database-point-in-time-restore-portal.md)
 - [Point-in-Time-Wiederherstellung mit PowerShell](sql-database-point-in-time-restore-powershell.md)
-- [Point-in-Time-Wiederherstellung mit der REST-API (createmode=PointInTimeRestore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) 
+- [Point-in-Time-Wiederherstellung mit der REST-API (createmode=PointInTimeRestore)](https://msdn.microsoft.com/library/azure/mt163685.aspx)
 
 
 ## Wiederherstellen einer gelöschten Datenbank
@@ -53,18 +53,10 @@ So stellen Sie eine gelöschte Datenbank wieder her
 
 ## Nächste Schritte
 
-- Informationen zur Verwendung und Konfiguration der aktiven Georeplikation für die Notfallwiederherstellung finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
-- Informationen zur Verwendung der Geowiederherstellung für die Notfallwiederherstellung finden Sie unter [Geowiederherstellung](sql-database-geo-restore.md).
+- Eine Übersicht zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
+- Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
+- Informationen über Entwurfs- und Wiederherstellungsszenarien für die Geschäftskontinuität finden Sie unter [Geschäftskontinuitätsszenarien](sql-database-business-continuity-scenarios.md).
+- Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).
+- Informationen zum Verwenden der aktiven Georeplikation finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
 
-## Zusätzliche Ressourcen
-
-- [Geschäftskontinuität und Notfallwiederherstellung mit SQL-Datenbank](sql-database-business-continuity.md)
-- [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md)
-- [Geografische Wiederherstellung](sql-database-geo-restore.md)
-- [Aktive Georeplikation](sql-database-geo-replication-overview.md)
-- [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
-- [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
-- [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
-
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

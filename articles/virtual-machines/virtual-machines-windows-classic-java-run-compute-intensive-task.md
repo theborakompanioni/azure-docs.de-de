@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="06/24/2016"
 	ms.author="robmcm"/>
 
 # Gewusst wie: Ausführen einer rechenintensiven Aufgabe in Java auf einem virtuellen Computer
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
  
 
 Mit Azure können Sie einen virtuellen Computer zum Verarbeiten rechenintensiver Aufgaben verwenden. Ein virtueller Computer kann beispielsweise Aufgaben verarbeiten und Clientcomputern oder mobilen Anwendungen Ergebnisse bereitstellen. Nach dem Lesen dieses Artikels wissen Sie, wie ein virtueller Computer erstellt wird, der eine rechenintensive Java-Anwendung ausführt, die durch eine andere Java-Anwendung überwacht werden kann.
@@ -89,7 +89,7 @@ So erstellen Sie einen Dienstnamespace:
 2.  Klicken Sie unten links im Navigationsbereich des klassischen Azure-Portals auf **Servicebus, Zugriffssteuerung und Cache**.
 3.  Klicken Sie im klassischen Azure-Portal links oben auf den Knoten **Service Bus** und dann auf die Schaltfläche **Neu**. ![Screenshot des Service Bus-Knotens][svc_bus_node]
 4.  Geben Sie im Dialogfeld zum Erstellen eines neuen Dienstnamespace einen **Namespace** ein, und klicken Sie dann auf die Schaltfläche **Verfügbarkeit prüfen**, um sicherzustellen, dass er eindeutig ist. ![Screenshot des Erstellens eines neuen Namespace][create_namespace]
-5.  Nachdem Sie sichergestellt haben, dass der Namespace verfügbar ist, wählen Sie das Land oder die Region aus, in dem bzw. der Ihr Namespace gehostet werden soll, und klicken Sie dann auf die Schaltfläche **Create Namespace**.  
+5.  Nachdem Sie sichergestellt haben, dass der Namespace verfügbar ist, wählen Sie das Land oder die Region aus, in dem bzw. der Ihr Namespace gehostet werden soll, und klicken Sie dann auf die Schaltfläche **Create Namespace**.
 
     Der erstellte Namespace wird dann im klassischen Azure-Portal angezeigt und nach einem Moment aktiviert. Warten Sie, bis **Active** als Status angezeigt wird, bevor Sie mit dem nächsten Schritt fortfahren.
 
@@ -521,4 +521,4 @@ Für Solver- und Clientanwendungen können Sie **Strg+C** drücken, um die Anwen
 [default_key]: ./media/virtual-machines-windows-classic-java-run-compute-intensive-task/SvcBusQueues_07_DefaultKey.jpg
 [add_ca_cert]: ../java-add-certificate-ca-store.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

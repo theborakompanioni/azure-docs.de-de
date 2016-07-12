@@ -26,7 +26,7 @@
 <br>
 
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-machines-windows-ps-create.md).
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](virtual-machines-windows-ps-create.md).
 
 
 Diese Schritte zeigen, wie Sie eine Reihe von Azure PowerShell-Befehlen anpassen, mit denen ein Windows-basierter virtueller Azure-Computer mit einem Bausteinansatz erstellt und vorab konfiguriert wird. Sie können diesen Prozess verwenden, um schnell einen Befehlssatz für einen neuen Windows-basierten virtuellen Computer zu erstellen und eine vorhandene Bereitstellung zu erweitern oder mehrere Befehlssätze zu erstellen, die schnell eine benutzerdefinierte Entwicklungs-/Test- oder IT-Expertenumgebung erstellen.
@@ -37,14 +37,14 @@ Wenn Sie dies noch nicht getan haben, verwenden Sie die Anweisungen unter [Gewus
 
 ## Schritt 1: Hinzufügen Ihres Kontos
 
-1. Geben Sie an der PowerShell-Eingabeaufforderung **Add-AzureAccount** ein, und drücken Sie die **EINGABETASTE**. 
-2. Geben Sie die mit Ihrem Azure-Abonnement verknüpfte E-Mail-Adresse ein, und klicken Sie auf **Weiter**. 
-3. Geben Sie das Kennwort für Ihr Konto ein. 
+1. Geben Sie an der PowerShell-Eingabeaufforderung **Add-AzureAccount** ein, und drücken Sie die **EINGABETASTE**.
+2. Geben Sie die mit Ihrem Azure-Abonnement verknüpfte E-Mail-Adresse ein, und klicken Sie auf **Weiter**.
+3. Geben Sie das Kennwort für Ihr Konto ein.
 4. Klicken Sie auf **Anmelden**.
 
 ## Schritt 2: Festlegen Ihres Abonnements und Speicherkontos
 
-Legen Sie Ihr Azure-Abonnement und -Speicherkonto fest, indem Sie diese Befehle in der Windows PowerShell-Eingabeaufforderung ausführen. Ersetzen Sie alles in den Anführungszeichen, einschließlich der Zeichen < and >, durch die korrekten Namen.
+Legen Sie Ihr Azure-Abonnement und -Speicherkonto fest, indem Sie diese Befehle in der Windows PowerShell-Eingabeaufforderung ausführen. Ersetzen Sie alles in den Anführungszeichen, einschließlich der Zeichen < und >, durch die korrekten Namen.
 
 	$subscr="<subscription name>"
 	$staccount="<storage account name>"
@@ -82,7 +82,7 @@ Wenn Sie das richtige Image mit diesem Befehl gefunden haben, öffnen Sie eine n
 
 ## Schritt 4: Erstellen des Befehlssatzes
 
-Erstellen Sie den Rest des Befehlssatzes, indem Sie den entsprechenden Satz an Blöcken unten in Ihre neue Textdatei oder ISE kopieren und dann die Variablenwerte eingeben und die Zeichen < and > entfernen. Anhand der beiden [Beispiele](#examples) am Ende dieses Artikels erhalten Sie eine Idee des Endergebnisses.
+Erstellen Sie den Rest des Befehlssatzes, indem Sie den entsprechenden Satz an Blöcken unten in Ihre neue Textdatei oder ISE kopieren und dann die Variablenwerte eingeben und die Zeichen < und > entfernen. Anhand der beiden [Beispiele](#examples) am Ende dieses Artikels erhalten Sie eine Idee des Endergebnisses.
 
 Starten Sie den Befehlssatz, indem Sie einen dieser beiden Befehlssätze auswählen (erforderlich).
 
@@ -168,7 +168,7 @@ Option 2: Erstellen Sie den virtuellen Computer in einem vorhandenen Clouddiens
 
 ## Schritt 5: Ausführen des Befehlssatzes
 
-Überprüfen Sie den aus mehreren Blöcken von Befehlen aus Schritt 4 bestehenden Azure PowerShell-Befehlssatz in einem Texteditor oder der PowerShell ISE. Stellen Sie sicher, dass Sie alle erforderlichen Variablen angegeben haben und diese die richtigen Werte aufweisen. Stellen Sie außerdem sicher, dass Sie alle < and > entfernt haben.
+Überprüfen Sie den aus mehreren Blöcken von Befehlen aus Schritt 4 bestehenden Azure PowerShell-Befehlssatz in einem Texteditor oder der PowerShell ISE. Stellen Sie sicher, dass Sie alle erforderlichen Variablen angegeben haben und diese die richtigen Werte aufweisen. Stellen Sie außerdem sicher, dass Sie alle < und > entfernt haben.
 
 Wenn Sie einen Texteditor verwenden, kopieren Sie den Befehlssatz in die Zwischenablage, und klicken Sie dann mit der rechten Maustaste auf Ihre offene Windows PowerShell-Eingabeaufforderung. Dies gibt den Befehlssatz als Serie von PowerShell-Befehlen aus und erstellt den virtuellen Azure-Computer. Führen Sie alternativ den Befehlssatz in der PowerShell ISE aus.
 
@@ -260,4 +260,4 @@ Hier finden Sie den entsprechenden Azure PowerShell-Befehlssatz zum Erstellen di
 
 Wenn Sie einen Betriebssystem-Datenträger mit mindestens 127 GB benötigen, können Sie das [Betriebssystemlaufwerk erweitern](virtual-machines-windows-expand-os-disk.md).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

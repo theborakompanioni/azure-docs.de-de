@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016" 
+	ms.date="06/28/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory – Häufig gestellte Fragen
@@ -35,8 +35,8 @@ Preisinformationen zu Azure Data Factory finden Sie auf der Seite [Data Factory 
 ### F: Was sind die ersten Schritte mit Azure Data Factory?
 
 - Eine Übersicht über Azure Data Factory finden Sie unter [Einführung in Azure Data Factory](data-factory-introduction.md).
-- Ein Tutorial zum **Kopieren/Verschieben von Daten** mit der Kopieraktivität finden Sie unter [Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank](data-factory-get-started.md).
-- Ein Tutorial zum **Transformieren von Daten** mit der HDInsight Hive-Aktivität finden Sie unter [Verarbeiten von Daten durch Ausführen eines Hive-Skripts in einem Hadoop-Cluster](data-factory-build-your-first-pipeline.md). 
+- Ein Tutorial zum **Kopieren/Verschieben von Daten** mit der Kopieraktivität finden Sie unter [Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+- Ein Tutorial zum **Transformieren von Daten** mit der HDInsight Hive-Aktivität finden Sie unter [Verarbeiten von Daten durch Ausführen eines Hive-Skripts in einem Hadoop-Cluster](data-factory-build-your-first-pipeline.md).
   
 ### In welchen Regionen ist Data Factory verfügbar?
 Data Factory ist in den Regionen **USA, Westen** sowie in **Europa, Norden** verfügbar. Die von Data Factory verwendeten Rechen- und Speicherdienste können in anderen Regionen verfügbar sein. Siehe [Unterstützte Regionen](data-factory-introduction.md#supported-regions).
@@ -73,7 +73,7 @@ Ja. Verwenden Sie die Schaltfläche **Verschieben** auf Ihrem Data Factory-Blatt
 ### Welche verschiedenen Arten von Aktivitäten können in einer Data Factory-Pipeline verwendet werden? 
 
 - [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) zum Verschieben von Daten.
-- [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md) zum Verarbeiten/Transformieren von Daten. 
+- [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md) zum Verarbeiten/Transformieren von Daten.
 
 ### Wann wird eine Aktivität ausgeführt?
 Die Konfigurationseinstellung **availability** in der Ausgabedatentabelle bestimmt, wann die Aktivität erfolgt. Wenn Eingabedatasets angegeben sind, prüft die Aktivität, ob alle Eingabedatenabhängigkeiten erfüllt sind (den Status **ready** aufweisen), bevor die Ausführung beginnt.
@@ -81,6 +81,11 @@ Die Konfigurationseinstellung **availability** in der Ausgabedatentabelle bestim
 ## Kopieraktivität – Häufig gestellte Fragen
 ### Ist es besser, eine Pipeline mit mehreren Aktivitäten oder eine separate Pipeline für jede Aktivität einzurichten? 
 Pipelines dienen zum Bündeln verwandter Aktivitäten. Natürlich können Sie die Aktivitäten in einer Pipeline halten, wenn die Tabellen, die diese verbinden, nicht von anderen Aktivitäten außerhalb der Pipeline genutzt werden. Auf diese Weise müssen Sie Pipelineaktivitäten nicht verknüpfen, damit diese sich aneinander ausrichten. Darüber hinaus kann die Datenintegrität in den Tabellen, die für die Pipeline intern sind, beim Aktualisieren der Pipeline besser beibehalten werden. Bei einer Pipelineaktualisierung werden alle Aktivitäten in der Pipeline beendet, entfernt und neu erstellt. Aus Erstellungssicht kann es auch einfacher sein, den Datenfluss innerhalb der zugehörigen Aktivitäten in einer JSON-Datei für die Pipeline nachzuverfolgen.
+
+### Wo wird der Kopiervorgang ausgeführt? 
+
+Ausführliche Informationen finden Sie im Abschnitt [Global verfügbare Datenverschiebung](data-factory-data-movement-activities.md#global). Kurz gesagt: Wenn ein lokaler Datenspeicher beteiligt ist, wird der Kopiervorgang vom Datenverwaltungsgateway in Ihrer lokalen Umgebung ausgeführt. Wenn Daten zwischen zwei Cloudspeichern bewegt werden, wird der Kopiervorgang in der Region ausgeführt, die dem Standort der Senke in der gleichen geografischen Region am nächsten liegt.
+
 
 ## HDInsight-Aktivität – Häufig gestellte Fragen
 
@@ -119,16 +124,16 @@ Im obigen Beispiel stellen "otherLinkedServiceName1" und "otherLinkedServiceName
 
 ## Slices – Häufig gestellte Fragen
 
-### Wieso weisen meine Eingabeslices nicht den Status „Bereit“ auf? 
-Ein weit verbreiteter Fehler besteht darin, die **external**-Eigenschaft im Eingabedataset nicht auf **true** festzulegen, wenn die Eingabedaten für die Data Factory extern sind (nicht von Data Factory erstellt wurden).
+### Wieso weisen meine Eingabeslices nicht den Status „Bereit“ auf?  
+Ein weit verbreiteter Fehler besteht darin, die **external**-Eigenschaft im Eingabedataset nicht auf **true** festzulegen, wenn die Eingabedaten für die Data Factory extern sind (also nicht von der Data Factory erstellt wurden).
 
-Im folgenden Beispiel müssen Sie nur im **Dataset1** den Wert **external** auf „true“ festlegen.
+Im folgenden Beispiel müssen Sie nur für **Dataset1** den Wert **external** auf „true“ festlegen.
 
-**DataFactory1** Pipeline 1: Dataset1 -> Aktivität1 -> Dataset2 -> Aktivität2 -> Dataset3 Pipeline 2: Dataset3-> Aktivität3 -> Dataset4
+**DataFactory1** Pipeline 1: Dataset1 -> Aktivität1 -> Dataset2 -> Aktivität2 -> Dataset3 Pipeline 2: Dataset3 -> Aktivität3 -> Dataset4
 
 Wenn Sie über eine andere Data Factory mit einer Pipeline, die Dataset4 nimmt, verfügen (erstellen von Pipeline 2 in Data Factory 1), müssen Sie Dataset4 als externes Dataset markieren, da das Dataset von einer anderen Data Factory (DataFactory1, nicht DataFactory2) erstellt wird.
 
-**DataFactory2** Pipeline 1: Dataset4->Aktivität4->Dataset5
+**DataFactory2** Pipeline 1: Dataset4 -> Aktivität4 -> Dataset5
 
 Wenn die Eigenschaft „external“ richtig festgelegt wurde, überprüfen Sie, ob die Eingabedaten an dem Speicherort existieren, der in der Definition des Eingabedatasets angegeben wurde.
 
@@ -142,14 +147,14 @@ Verwenden Sie die **offset**-Eigenschaft, um die Zeit anzugeben, zu der der Slic
 	    "offset": "06:00:00"
 	}
 
-Tägliche Slices starten um **6:00 Uhr** anstelle der Standardzeit (Mitternacht).
+Tägliche Slices starten anstatt zur Standardzeit (Mitternacht) um **6:00 Uhr**.
 
 ### Wie kann ich einen Slice erneut ausführen?
 Sie können einen Slice auf eine der folgenden Arten erneut ausführen:
 
-- Verwenden Sie die App „Überwachen und Verwalten“, um ein Aktivitätsfenster oder einen Slice erneut auszuführen. Anweisungen finden Sie unter [Wiederholen ausgewählter Aktivitätsfenster](data-factory-monitor-manage-app.md#re-run-selected-activity-windows).   
+- Verwenden Sie die App „Überwachen und Verwalten“, um ein Aktivitätsfenster oder einen Slice erneut auszuführen. Anweisungen finden Sie unter [Wiederholen ausgewählter Aktivitätsfenster](data-factory-monitor-manage-app.md#re-run-selected-activity-windows).
 - Klicken Sie im Portal auf der Befehlsleiste für den Slice auf dem Blatt **DATENSLICE** auf **Ausführen**.
-- Führen Sie das Cmdlet **Set-AzureRmDataFactorySliceStatus** aus, wobei der Status des Slices auf **Waiting** festgelegt ist.   
+- Führen Sie das Cmdlet **Set-AzureRmDataFactorySliceStatus** aus, wobei der Status des Slices auf **Waiting** festgelegt ist.
 	
 		Set-AzureRmDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00" 
 
@@ -163,9 +168,9 @@ Sie können auch wie folgt im Azure-Portal vorgehen:
 1. Klicken Sie auf der Kachel **Datasets** auf das Blatt **DATA FACTORY** für Ihre Data Factory.
 2. Klicken Sie auf dem Blatt **Datasets** auf das gewünschte Dataset.
 3. Wählen Sie auf dem Blatt **TABELLE** in der Liste **Zuletzt verwendete Slices** den gewünschten Slice aus.
-4. Klicken Sie auf dem Blatt **DATENSLICE** in der Liste **Aktivitätsausführungen** auf die Aktivitätsausführung. 
-5. Klicken Sie auf der Kachel **Eigenschaften** auf das Blatt **DETAILS ZUR AKTIVITÄTSAUSFÜHRUNG**. 
-6. Daraufhin sollte das Feld **Dauer** mit einem Wert angezeigt werden. Dies ist die Verarbeitungszeit des Slices.   
+4. Klicken Sie auf dem Blatt **DATENSLICE** in der Liste **Aktivitätsausführungen** auf die Aktivitätsausführung.
+5. Klicken Sie auf der Kachel **Eigenschaften** auf das Blatt **DETAILS ZUR AKTIVITÄTSAUSFÜHRUNG**.
+6. Daraufhin sollte das Feld **Dauer** mit einem Wert angezeigt werden. Dies ist die Verarbeitungszeit des Slices.
 
 ### Wie wird ein ausgeführter Slice beendet?
 Wenn Sie die Ausführung der Pipeline beenden müssen, können Sie das Cmdlet [Suspend-AzureRmDataFactoryPipeline](https://msdn.microsoft.com/library/mt603721.aspx) verwenden. Derzeit werden laufende Sliceausführungen bei Anhalten der Pipeline nicht beendet. Sobald die laufenden Ausführungen abgeschlossen sind, wird kein zusätzlicher Slice ausgewählt.
@@ -187,4 +192,4 @@ Wenn Sie alle Ausführungen wirklich sofort beenden möchten, ist die einzige M�
 [hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

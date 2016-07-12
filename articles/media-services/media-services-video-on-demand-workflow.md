@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="05/03/2016"
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -33,8 +33,8 @@ Das folgende Diagramm zeigt die Hauptbestandteile der Media Services-Plattform, 
 
 1. Laden Sie eine Zwischendatei (Mezzanine File) hoher Qualität in ein Medienobjekt hoch.
 	
-	Es wird empfohlen, eine Speicherverschlüsselung auf Medienobjekte anzuwenden, um Ihre Inhalte beim Hochladen und während der Speicherung zu schützen. 
-1. Führen Sie eine Codierung in einen MP4-Satz mit adaptiver Bitrate durch. 
+	Es wird empfohlen, eine Speicherverschlüsselung auf Medienobjekte anzuwenden, um Ihre Inhalte beim Hochladen und während der Speicherung zu schützen.
+1. Führen Sie eine Codierung in einen MP4-Satz mit adaptiver Bitrate durch.
 
 	Es wird empfohlen, eine Speicherverschlüsselung das Ausgabemedienobjekt anzuwenden, um Ihre Inhalte während der Speicherung zu schützen.
 	
@@ -58,7 +58,7 @@ Damit Sie die dynamische Verschlüsselung verwenden können, müssen Sie zunäch
 2. Konfigurieren Sie Autorisierungsrichtlinien für Inhaltsschlüssel.
 1. Konfigurieren Sie Übermittlungsrichtlinien für Medienobjekte (wird zur dynamischen Paketerstellung und zur dynamischen Verschlüsselung verwendet).
 1. Veröffentlichen Sie das Medienobjekt durch Erstellen eines OnDemand-Locators.
-1. Streamen Sie die veröffentlichten Inhalte. 
+1. Streamen Sie die veröffentlichten Inhalte.
 
 ###Indizieren von Inhalten
 
@@ -101,4 +101,4 @@ Konzepte im Zusammenhang mit der Übermittlung von Inhalten On-Demand finden Sie
 [vod-overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->
