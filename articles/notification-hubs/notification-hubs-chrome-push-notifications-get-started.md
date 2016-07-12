@@ -5,7 +5,7 @@
     keywords="Mobile Pushbenachrichtigungen,Pushbenachrichtigungen,Pushbenachrichtigung,Chrome-Pushbenachrichtigungen"
 	documentationCenter=""
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-chrome"
 	ms.devlang="JavaScript"
 	ms.topic="hero-article"
-	ms.date="03/21/2016"
+	ms.date="06/29/2016"
 	ms.author="wesmc"/>
 
 # Senden von Pushbenachrichtigungen an Chrome-Apps mit Azure Notification Hubs
@@ -477,4 +477,4 @@ Wenn Sie Ihre Benutzer in Interessengruppen einteilen möchten, können Sie das 
 [Azure Notification Hubs – Benachrichtigen von Benutzern]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
 [Azure Notification Hubs – Aktuelle Neuigkeiten]: notification-hubs-windows-store-dotnet-send-breaking-news.md
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

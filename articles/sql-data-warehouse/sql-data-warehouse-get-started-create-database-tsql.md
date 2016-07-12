@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/04/2016"
+   ms.date="07/01/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Erstellen einer SQL Data Warehouse-Datenbank mithilfe von Transact-SQL (TSQL)
@@ -52,15 +52,13 @@ Alternativ können Sie den gleichen Befehl mit „sqlcmd“ ausführen, wenn Sie
 sqlcmd -S <Server Name>.database.windows.net -I -U <User> -P <Password> -Q "CREATE DATABASE MySqlDwDb (EDITION='datawarehouse', SERVICE_OBJECTIVE = 'DW400', MAXSIZE= 10240 GB)"
 ```
 
-Die Parameter **MAXSIZE** und **SERVICE\_OBJECTIVE** legen den maximalen Speicherplatz, den die Datenbank auf einem Datenträger einnehmen kann, sowie die Computeressourcen fest, die Ihrer Data Warehouse-Instanz zugewiesen ist. Das Dienstziel liegt im Wesentlichen im Zuweisen von CPU und Arbeitsspeicher mit linearer Skalierung in Bezug auf die DWU-Größe.
-
-MAXSIZE kann zwischen 250 GB und 240 TB liegen. Das Dienstziel kann zwischen DW100 und DW2000 liegen. Eine vollständige Liste aller gültigen Werte für MAXSIZE und SERVICE\_OBJECTIVE finden Sie in der MSDN-Dokumentation für [CREATE DATABASE][]. Sowohl MAXSIZE als auch SERVICE\_OBJECTIVE können auch mit einem [ALTER DATABASE][]-T-SQL-Befehl geändert werden. Seien Sie beim Ändern von SERVICE-OBJECTIVE vorsichtig, da dies einen Neustart des Diensts zur Folge hat, was alle aktuellen Abfragen abbricht. Da MAXSIZE nur ein einfacher Metadatenvorgang ist, werden durch die Änderung dieses Werts keine Dienste neu gestartet.
+`MAXSIZE` kann zwischen 250 GB und 240 TB liegen. `SERVICE_OBJECTIVE` kann einen [DWU][]-Wert zwischen DW100 und DW2000 aufweisen. Eine Liste aller gültigen Werte finden Sie in der MSDN-Dokumentation zu [CREATE DATABASE][]. Sowohl MAXSIZE als auch SERVICE\_OBJECTIVE können auch mit einem [ALTER DATABASE][]-T-SQL-Befehl geändert werden. Seien Sie beim Ändern von SERVICE-OBJECTIVE vorsichtig, da dies einen Neustart des Diensts zur Folge hat, was alle aktuellen Abfragen abbricht. Da MAXSIZE nur ein einfacher Metadatenvorgang ist, werden durch die Änderung dieses Werts keine Dienste neu gestartet.
 
 ## Nächste Schritte
 Nach der SQL Data Warehouse-Bereitstellung können Sie [Beispieldaten laden][] oder die Schritte zum [Entwickeln][], [Laden][] oder [Migrieren][] lernen.
 
 <!--Article references-->
-
+[DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
 [how to create a SQL Data Warehouse from the Azure portal]: ./sql-data-warehouse-get-started-provision.md
 [Herstellen einer Verbindung mit SQL Data Warehouse über Visual Studio]: ./sql-data-warehouse-get-started-connect.md
 [Migrieren]: ./sql-data-warehouse-overview-migrate.md
@@ -82,4 +80,4 @@ Nach der SQL Data Warehouse-Bereitstellung können Sie [Beispieldaten laden][] o
 [Kostenlose Azure-Testversion]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN-Azure-Gutschriften]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

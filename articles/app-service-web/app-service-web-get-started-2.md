@@ -64,7 +64,7 @@ App Service umfasst eine fertige Lösung für einige häufige Authentifizierungs
 
 ## Automatisches Skalieren der App nach Bedarf
 
-Als Nächstes widmen wir uns der automatischen Skalierung Ihrer App, damit ihre Kapazität automatisch an den Bedarf der Benutzer angepasst wird. Weitere Informationen finden Sie unter [Ändern der Preisstufe in Azure App Service](app-service-scale) sowie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../azure-portal/insights-how-to-scale.md).
+Als Nächstes widmen wir uns der automatischen Skalierung Ihrer App, damit ihre Kapazität automatisch an den Bedarf der Benutzer angepasst wird. Weitere Informationen finden Sie unter [Automatisches Skalieren der App nach Bedarf](web-sites-scale.md) und [Manuelles oder automatisches Skalieren der Instanzenzahl](../azure-portal/insights-how-to-scale.md).
 
 Kurz gesagt können Sie Ihre Web-App auf zwei Arten skalieren:
 
@@ -99,7 +99,7 @@ Auf dem Blatt **Skalierungseinstellungen** stehen noch weitere Optionen zur Verf
 - Automatisches Skalieren nach einem Zeitplan
 - Festlegen der automatischen Skalierung für ein zukünftiges Ereignis
 
-Weitere Informationen zum zentralen Hochskalieren der App finden Sie unter [Ändern der Preisstufe in Azure App Service](../app-service/app-service-scale.md). Weitere Informationen zum horizontalen Hochskalieren finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../azure-portal/insights-how-to-scale.md).
+Weitere Informationen zum zentralen Hochskalieren der App finden Sie unter [Automatisches Skalieren der App nach Bedarf](../app-service-web/web-sites-scale.md). Weitere Informationen zum horizontalen Hochskalieren finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../azure-portal/insights-how-to-scale.md).
 
 ## Empfangen von Warnungen für die App
 
@@ -128,13 +128,13 @@ Beim Konfigurieren der Warnung ist Ihnen unter Umständen aufgefallen, dass auf 
 Sie können sich darüber informieren, welche anderen Möglichkeiten Sie mit der bereitgestellten App haben. Im Anschluss folgen einige Beispiele:
 
 - [Kaufen und Konfigurieren eines benutzerdefinierten Domänennamens](custom-dns-web-site-buydomains-web-app.md): Erwerben Sie für Ihre Web-App eine attraktive Domäne (anstelle von „*.azurewebsites.net“). Alternativ können Sie natürlich auch eine Domäne verwenden, die Ihnen bereits gehört.
-- [Einrichten von Stagingumgebungen](web-sites-staged-publishing.md): Stellen Sie Ihre App vor der Bereitstellung in einer Produktionsumgebung mit einer Staging-URL bereit. Aktualisieren Sie bedenkenlos Ihre Live-Web-App. Richten Sie eine ausgeklügelte DevOps-Lösung mit mehreren Bereitstellungsslots ein. 
+- [Einrichten von Stagingumgebungen](web-sites-staged-publishing.md): Stellen Sie Ihre App vor der Bereitstellung in einer Produktionsumgebung mit einer Staging-URL bereit. Aktualisieren Sie bedenkenlos Ihre Live-Web-App. Richten Sie eine ausgeklügelte DevOps-Lösung mit mehreren Bereitstellungsslots ein.
 - [Einrichten der fortlaufenden Bereitstellung](web-sites-publish-source-control.md): Integrieren Sie die App-Bereitstellung in Ihr Quellcodeverwaltungssystem. Führen Sie bei jedem Commit eine Bereitstellung für Azure durch.
 - [Zugreifen auf lokale Ressourcen](web-sites-hybrid-connection-get-started.md): Greifen Sie auf eine bereits vorhandene lokale Datenbank oder auf ein bereits vorhandenes CRM-System zu.
 - [Sichern der App](web-sites-backup.md): Richten Sie Sicherung und Wiederherstellung für Ihre Web-App ein. Sorgen Sie für unerwartete Ausfälle und für deren Behebung vor.
 - [Aktivieren von Diagnoseprotokollen](web-sites-enable-diagnostic-log.md): Lesen Sie die IIS-Protokolle von Azure oder aus der Anwendungsablaufverfolgung. Lesen Sie sie in einem Datenstrom, laden Sie sie herunter, oder portieren Sie sie zur direkten Analyse in [Application Insights](../application-insights/app-insights-overview.md).
 - [Überprüfen der App auf Schwachstellen](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/): Überprüfen Sie Ihre Web-App mithilfe der Dienste von [Tinfoil Security](https://www.tinfoilsecurity.com/) auf moderne Bedrohungen.
 - [Ausführen von Hintergrundaufträgen](../azure-functions/functions-overview.md): Führen Sie Aufträge für Datenverarbeitung, Berichterstellung usw. aus.
-- [Informationen zur Funktionsweise von App Service](../app-service/app-service-how-works-readme.md) 
+- [Informationen zur Funktionsweise von App Service](../app-service/app-service-how-works-readme.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

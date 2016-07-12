@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/07/2016"
+   ms.date="07/01/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Erstellen von SQL Data Warehouse mithilfe von Powershell
@@ -55,7 +55,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie 
 
 Die für das Cmdlet erforderlichen Parameter sind:
 
-- **RequestedServiceObjectiveName**: die angeforderte DWU-Menge in der Form „DWXXX“. DWU stellt eine Zuweisung von CPU und Arbeitsspeicher dar. Jeder DWU-Wert steht für eine lineare Erhöhung in diesen Ressourcen. Folgende Werte werden unterstützt: 100, 200, 300, 400, 500, 600, 1000, 1200, 1500, 2000.
+- **RequestedServiceObjectiveName**: die angeforderte [DWU][]-Menge. Unterstützte Werte: DW100, DW200, DW300, DW400, DW500, DW600, DW1000, DW1200, DW1500 und DW2000.
 - **DatabaseName**: der Name des SQL Data Warehouse, das Sie erstellen.
 - **ServerName**: der Name des Servers, den Sie für die Erstellung verwenden (muss V12 sein).
 - **ResourceGroupName**: die Ressourcengruppe, die Sie verwenden. Verwenden Sie zum Abrufen der in Ihrem Abonnement verfügbaren Ressourcengruppen das Cmdlet "Get-AzureResourceGroup":
@@ -71,12 +71,12 @@ Weitere Informationen zur programmgesteuerten Verwaltung von SQL Data Warehouse 
 <!--Image references-->
 
 <!--Article references-->
-
-[Migrieren]: sql-data-warehouse-overview-migrate.md
-[Entwickeln]: sql-data-warehouse-overview-develop.md
-[Laden]: sql-data-warehouse-load-with-bcp.md
-[Beispieldaten laden]: sql-data-warehouse-get-started-load-sample-databases.md
-[PowerShell-Cmdlets und REST-APIs]: sql-data-warehouse-reference-powershell-cmdlets.md
+[DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
+[Migrieren]: ./sql-data-warehouse-overview-migrate.md
+[Entwickeln]: ./sql-data-warehouse-overview-develop.md
+[Laden]: ./sql-data-warehouse-load-with-bcp.md
+[Beispieldaten laden]: ./sql-data-warehouse-get-started-load-sample-databases.md
+[PowerShell-Cmdlets und REST-APIs]: ./sql-data-warehouse-reference-powershell-cmdlets.md
 [firewall rules]: ../sql-database-configure-firewall-settings.md
 
 [Installieren und Konfigurieren von Azure PowerShell]: ../powershell/powershell-install-configure.md
@@ -96,4 +96,4 @@ Weitere Informationen zur programmgesteuerten Verwaltung von SQL Data Warehouse 
 [Kostenlose Azure-Testversion]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN-Azure-Gutschriften]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

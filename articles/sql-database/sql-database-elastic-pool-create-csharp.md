@@ -13,7 +13,7 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="csharp"
     ms.workload="data-management"
-    ms.date="05/27/2016"
+    ms.date="07/05/2016"
     ms.author="srinia"/>
 
 # Erstellen eines neuen Pools für elastische Datenbanken mit C&#x23;
@@ -28,9 +28,7 @@ Hier erfahren Sie, wie Sie mithilfe von (C&#x23;) einen [Pool für elastische Da
 
 Häufige Fehlercodes finden Sie unter [SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen: Datenbankverbindungsfehler und andere Probleme](sql-database-develop-error-messages.md).
 
-Pools für elastische Datenbanken sind derzeit als Vorschauversion ausschließlich für Server mit SQL-Datenbank V12 verfügbar. Wenn Sie über einen SQL-Datenbank V11-Server verfügen, können Sie in einem Schritt [mithilfe von PowerShell auf V12 aktualisieren und einen Pool erstellen](sql-database-upgrade-server-portal.md).
-
-In den Beispielen wird die [SQL-Datenbankbibliothek für .NET](https://msdn.microsoft.com/library/azure/mt349017.aspx) verwendet. Sie müssen die Bibliothek daher installieren. Verwenden Sie den folgenden Befehl zur Installation über die [Paket-Manager-Konsole](http://docs.nuget.org/Consume/Package-Manager-Console) in Visual Studio (**Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**):
+In den Beispielen unten wird die [SQL-Datenbankbibliothek für .NET](https://msdn.microsoft.com/library/azure/mt349017.aspx) verwendet. Sie müssen diese Bibliothek also installieren, bevor Sie fortfahren, falls sie noch nicht installiert wurde. Verwenden Sie den folgenden Befehl zur Installation der Bibliothek über die [Paket-Manager-Konsole](http://docs.nuget.org/Consume/Package-Manager-Console) in Visual Studio (**Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**):
 
     PM> Install-Package Microsoft.Azure.Management.Sql –Pre
 
@@ -74,7 +72,7 @@ Erstellen Sie eine [DataBaseCreateorUpdateProperties](https://msdn.microsoft.com
 
     var poolDbResponse = sqlClient.Databases.CreateOrUpdate("resourcegroup-name", "server-name", "Database2", newPooledDatabaseParameters);
 
-Informationen dazu, wie Sie eine bestehende Datenbank in einen Pool verschieben, finden Sie unter [Verschieben einer vorhandenen Datenbank in einen Pool](sql-database-elastic-pool-manage-csharp.md#Move-a-database-into-an-elastic-pool).
+Informationen dazu, wie Sie eine bestehende Datenbank in einen Pool verschieben, finden Sie unter [Verschieben einer Datenbank in einen elastischen Pool](sql-database-elastic-pool-manage-csharp.md#Move-a-database-into-an-elastic-pool).
 
 ## Beispiel: Erstellen eines Pools mit C&#x23
 
@@ -87,7 +85,7 @@ Die folgenden Bibliotheken sind erforderlich, um dieses Beispiel auszuführen. V
     Install-Package Microsoft.Azure.Management.Resources –Pre
     Install-Package Microsoft.Azure.Common.Authentication –Pre
 
-Erstellen Sie eine Konsolenanwendung, und ersetzen Sie den Inhalt von Program.cs durch den folgenden Code. Die erforderliche Client-ID und die verknüpften Werte finden Sie unter [Abrufen der Client-ID und des Schlüssels für die Verbindung mit der SQL-Datenbank aus dem Code](sql-database-client-id-keys.md). Verwenden Sie das Cmdlet [Get-AzureRmSubscription](https://msdn.microsoft.com/library/mt619284.aspx), um den subscriptionId-Wert abzurufen.
+Erstellen Sie eine Konsolenanwendung, und ersetzen Sie den Inhalt von Program.cs durch den folgenden Code. Die erforderliche Client-ID und die verknüpften Werte finden Sie unter [Abrufen der Client-ID und des Schlüssels für die Verbindung mit der SQL-Datenbank aus dem Code](sql-database-client-id-keys.md). Verwenden Sie das [Get-AzureRmSubscription](https://msdn.microsoft.com/library/mt619284.aspx)-Cmdlet, um den subscriptionId-Wert abzurufen.
 
     using Microsoft.Azure;
     using Microsoft.Azure.Management.Resources;
@@ -244,11 +242,11 @@ Erstellen Sie eine Konsolenanwendung, und ersetzen Sie den Inhalt von Program.cs
 
 - [Verwalten Ihres Pools](sql-database-elastic-pool-manage-csharp.md)
 - [Erstellen elastischer Aufträge:](sql-database-elastic-jobs-overview.md) Elastische Aufträge ermöglichen die Ausführung von T-SQL-Skripts für eine beliebige Anzahl von Datenbanken im Pool.
-- [Skalieren mit der Azure SQL-Datenbank](sql-database-elastic-scale-introduction.md): Verwenden Sie elastische Datenbanktools für die horizontale Skalierung.
+- [Skalieren mit der Azure SQL-Datenbank:](sql-database-elastic-scale-introduction.md) Verwenden Sie elastische Datenbanktools für das horizontale Hochskalieren.
 
 ## Zusätzliche Ressourcen
 
 - [SQL-Datenbank](https://azure.microsoft.com/documentation/services/sql-database/)
 - [APIs für Azure-Ressourcenverwaltung](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

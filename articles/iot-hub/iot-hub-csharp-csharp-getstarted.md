@@ -229,11 +229,11 @@ Dieses Tutorial führt Sie durch die Schritte zum Erstellen eines IoT Hub-Gerät
 
 Sie können nun die Anwendungen ausführen.
 
-1.	Klicken Sie in Visual Studio im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Projektmappe, und klicken Sie dann auf **Startprojekte festlegen**. Wählen Sie die Option **Mehrere Startprojekte**, und wählen Sie dann für die Projekte **ProcessDeviceToCloudMessages** und **SimulatedDevice** als Aktion **Starten** aus.
+1.	Klicken Sie in Visual Studio im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Projektmappe, und klicken Sie dann auf **Startprojekte festlegen**. Wählen Sie **Mehrere Startprojekte**, und wählen Sie dann für die Projekte **ReadDeviceToCloudMessages** und **SimulatedDevice** als Aktion die Option **Starten** aus.
 
    	![Startprojekteigenschaften][41]
 
-2.	Drücken Sie **F5**, um die Ausführung der beiden Apps zu starten. Die Konsolenausgabe der **SimulatedDevice**-App zeigt die Nachrichten an, die vom simulierten Gerät an Ihren IoT Hub gesendet werden. Die Konsolenausgabe der **ProcessDeviceToCloudMessages**-App zeigt die Nachrichten an, die vom IoT Hub empfangen werden.
+2.	Drücken Sie **F5**, um die Ausführung der beiden Apps zu starten. Die Konsolenausgabe der **SimulatedDevice**-App zeigt die Nachrichten an, die vom simulierten Gerät an Ihren IoT Hub gesendet werden. Die Konsolenausgabe der **ReadDeviceToCloudMessages**-App zeigt die Nachrichten an, die vom IoT Hub empfangen werden.
 
    	![Konsolenausgabe von Apps][42]
 
@@ -277,4 +277,4 @@ In diesem Tutorial haben Sie im Portal einen neuen IoT Hub konfiguriert und ansc
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [lnk-connected-service]: https://visualstudiogallery.msdn.microsoft.com/e254a3a5-d72e-488e-9bd3-8fee8e0cd1d6
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

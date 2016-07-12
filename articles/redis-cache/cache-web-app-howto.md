@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="hero-article" 
-	ms.date="05/18/2016" 
+	ms.date="06/30/2016" 
 	ms.author="sdanie"/>
 
 # Gewusst wie: Erstellen einer Web-App mit Redis Cache
@@ -82,7 +82,7 @@ In diesem Abschnitt des Tutorials wird die grundlegende Anwendung zum Lesen und 
 
 ### Hinzufügen des Modells
 
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Modelle**, und wählen Sie **Hinzufügen** > **Klasse** aus. 
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Modelle**, und wählen Sie **Hinzufügen** > **Klasse** aus.
 
     ![Modell hinzufügen][cache-model-add-class]
 
@@ -190,7 +190,7 @@ In diesem Abschnitt des Tutorials wird die grundlegende Anwendung zum Lesen und 
 
 ### Hinzufügen des Controllers
 
-1. Drücken Sie F6, um das Projekt zu erstellen. 
+1. Drücken Sie F6, um das Projekt zu erstellen.
 2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Ordner **Controller**, und wählen Sie anschließend **Hinzufügen** > **Controller** aus.
 
     ![Controller hinzufügen][cache-add-controller]
@@ -252,7 +252,7 @@ In diesem Abschnitt des Tutorials wird die grundlegende Anwendung zum Lesen und 
 
     ![Änderungen am Code][cache-layout-cshtml-code]
 
-4. Drücken Sie STRG+F5, um die Anwendung zu erstellen und auszuführen. Diese Version der Anwendung liest die Ergebnisse direkt aus der Datenbank. Die Aktionen **Neu erstellen**, **Bearbeiten**, **Details** und **Löschen** wurden der Anwendung aufgrund des Gerüsts **MVC 5-Controller mit Ansichten per Entity Framework** automatisch hinzugefügt. Im nächsten Abschnitt des Tutorials wird Redis Cache hinzugefügt, um den Datenzugriff zu optimieren und zusätzliche Features für die Anwendung bereitzustellen.
+4. Drücken Sie **STRG+F5**, um die Anwendung zu erstellen und auszuführen. Diese Version der Anwendung liest die Ergebnisse direkt aus der Datenbank. Die Aktionen **Neu erstellen**, **Bearbeiten**, **Details** und **Löschen** wurden der Anwendung aufgrund des Gerüsts **MVC 5-Controller mit Ansichten per Entity Framework** automatisch hinzugefügt. Im nächsten Abschnitt des Tutorials wird Redis Cache hinzugefügt, um den Datenzugriff zu optimieren und zusätzliche Features für die Anwendung bereitzustellen.
 
 ![Starter-Anwendung][cache-starter-application]
 
@@ -268,7 +268,7 @@ In diesem Abschnitt des Tutorials wird die Beispielanwendung zum Speichern und A
 
 ### Konfigurieren der Anwendung für die Verwendung von „StackExchange.Redis“
 
-1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt und wählen Sie **NuGet-Pakete verwalten** aus, um eine Clientanwendung in Visual Studio mithilfe des StackExchange.Redis-NuGet-Pakets zu konfigurieren. 
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt und wählen Sie **NuGet-Pakete verwalten** aus, um eine Clientanwendung in Visual Studio mithilfe des StackExchange.Redis-NuGet-Pakets zu konfigurieren.
 
     ![NuGet-Pakete verwalten][redis-cache-manage-nuget-menu]
 
@@ -333,7 +333,7 @@ In diesem Beispiel können Teamstatistikdaten aus der Datenbank oder aus dem Cac
 
 
 
-1. Fügen Sie den using-Anweisungen am Anfang der Datei `TeamsController.cs` folgende using-Anweisungen hinzu:
+1. Fügen Sie den using-Anweisungen am Anfang der Datei `TeamsController.cs` folgende weitere using-Anweisungen hinzu:
 
 		using System.Diagnostics;
 		using Newtonsoft.Json;
@@ -456,7 +456,7 @@ In diesem Beispiel können Teamstatistikdaten aus der Datenbank oder aus dem Cac
 	    }
 
 
-    Die `GetFromList`-Methode liest die Teamstatistik aus dem Cache als serialisierte Daten vom Typ `List<Team>`. Bei einem Cachefehler wird die Teamstatistik aus der Datenbank gelesen und für den nächsten Zugriff im Cache gespeichert. In diesem Beispiel verwenden wir die JSON.NET-Serialisierung, um die .NET-Objekte für den Cache zu serialisieren. Weitere Informationen finden Sie unter [Verwenden von Azure Redis Cache](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache).
+    Die `GetFromList`-Methode liest die Teamstatistik aus dem Cache als serialisierte Daten vom Typ `List<Team>`. Bei einem Cachefehler wird die Teamstatistik aus der Datenbank gelesen und für den nächsten Zugriff im Cache gespeichert. In diesem Beispiel verwenden wir die JSON.NET-Serialisierung, um die .NET-Objekte für den Cache zu serialisieren. Weitere Informationen finden Sie unter [Arbeiten mit .NET-Objekten im Cache](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache).
 
         List<Team> GetFromList()
         {
@@ -670,7 +670,7 @@ Der im Rahmen dieses Beispiels generierte Gerüstcode enthält Methoden zum Hinz
 
     ![Statusmeldung][cache-status-message]
 
-4. Drücken Sie F6, um das Projekt zu erstellen.
+4. Drücken Sie **F6**, um das Projekt zu erstellen.
 
 ## Bereitstellen der Azure-Ressourcen
 
@@ -692,7 +692,7 @@ Nach dem Klicken auf die Schaltfläche zum Bereitstellen für Azure gelangen Sie
 
 ![Bereitstellen in Azure][cache-deploy-to-azure-step-1]
 
-1. Wählen Sie auf dem Blatt **Benutzerdefinierte Bereitstellung** das zu verwendende Azure-Abonnement aus. Wählen Sie außerdem eine vorhandene Ressourcengruppe aus, oder erstellen eine neue Ressourcengruppe, und geben Sie den Speicherort der Ressourcengruppe an.
+1. Wählen Sie auf dem Blatt **Benutzerdefinierte Bereitstellung** das zu verwendende Azure-Abonnement aus. Wählen Sie außerdem eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe, und geben Sie den Speicherort der Ressourcengruppe an.
 2. Geben Sie auf dem Blatt **Parameter** einen Administratorkontonamen (**ADMINISTRATORLOGIN**, nicht: **admin**), ein Kennwort für die Administratoranmeldung (**ADMINISTRATORLOGINPASSWORD**) und einen Datenbanknamen (**DATABASENAME**) an. Die anderen Parameter sind für einen kostenlosen App Service-Hostingtarif (Free-Tarif) sowie mit kostengünstigen Optionen für SQL-Datenbank und Azure Redis Cache konfiguriert, die im Free-Tarif nicht enthalten sind.
 3. Die anderen Einstellungen können bei Bedarf geändert werden, Sie können aber auch die Standardwerte beibehalten. Klicken Sie anschließend auf **OK**.
 
@@ -719,7 +719,7 @@ Nach Abschluss der Bereitstellung können Sie Ihre Anwendung über Visual Studio
 
 In diesem Schritt des Tutorials wird Anwendung für Azure veröffentlicht und in der Cloud ausgeführt.
 
-1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt **ContosoTeamStats**, und wählen Sie **Veröffentlichen** aus.
+1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt **ContosoTeamStats**, und wählen Sie **Veröffentlichen**.
 
     ![Veröffentlichen][cache-publish-app]
 
@@ -727,7 +727,7 @@ In diesem Schritt des Tutorials wird Anwendung für Azure veröffentlicht und in
 
     ![Veröffentlichen][cache-publish-to-app-service]
 
-3. Wählen Sie das Abonnement aus, das auch beim Erstellen der Azure-Ressourcen verwendet wurde, erweitern Sie die Ressourcengruppe mit den Ressourcen, wählen Sie die gewünschte Web-App aus, und klicken Sie anschließend auf **OK**. Bei Verwendung der Schaltfläche zum Bereitstellen für Azure beginnt der Name Ihrer Web-App mit **webSite**, gefolgt von einigen zusätzlichen Zeichen.
+3. Wählen Sie das Abonnement aus, das auch beim Erstellen der Azure-Ressourcen verwendet wurde. Erweitern Sie die Ressourcengruppe mit den Ressourcen, wählen Sie die gewünschte Web-App aus, und klicken Sie anschließend auf **OK**. Bei Verwendung der Schaltfläche zum Bereitstellen für Azure beginnt der Name Ihrer Web-App mit **webSite**, gefolgt von einigen zusätzlichen Zeichen.
 
     ![Web-App auswählen][cache-select-web-app]
 
@@ -846,4 +846,4 @@ Nachdem Sie den zu verwendenden Cache ausgewählt oder erstellt haben, navigiere
 [cache-delete-resource-group]: ./media/cache-web-app-howto/cache-delete-resource-group.png
 [cache-delete-confirm]: ./media/cache-web-app-howto/cache-delete-confirm.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0706_2016-->

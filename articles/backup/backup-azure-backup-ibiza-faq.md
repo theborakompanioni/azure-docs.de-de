@@ -1,6 +1,6 @@
 <properties
    pageTitle="Öffentliche Vorschauversion von Azure Backup – Häufig gestellte Fragen | Microsoft Azure"
-   description="Diese Version der häufig gestellten Fragen dient als Unterstützung für die öffentliche Vorschauversion des Azure Backup-Diensts. Hier finden Sie Antworten auf häufig gestellte Fragen zum Backup-Agent, zu Sicherung und Aufbewahrung, Wiederherstellung, Sicherheit und auf andere allgemeine Fragen zur Azure Backup-Lösung."
+   description="Diese Version der häufig gestellten Fragen dient als Unterstützung für die öffentliche Vorschauversion des Azure Backup-Diensts. Hier finden Sie Antworten auf häufig gestellte Fragen zum Backup-Agent, zu Sicherung und Aufbewahrung, Wiederherstellung, Sicherheit und auf andere allgemeine Fragen zur Azure Backup-Lösung."
    services="backup"
    documentationCenter=""
    authors="markgalioto"
@@ -14,7 +14,7 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="get-started-article"
-	 ms.date="03/30/2016"
+	 ms.date="07/01/2016"
 	 ms.author="trinadhk; markgal; jimpark;"/>
 
 # Öffentliche Vorschauversion des Azure Backup-Diensts – Häufig gestellte Fragen
@@ -43,4 +43,4 @@ Mit der öffentlichen Vorschauversion werden der Recovery Services-Tresor und di
 
 **F1. Gelten in Bezug auf die ARM-Unterstützung für Azure-VMs Einschränkungen?** <br/> A1. Die PowerShell-Cmdlets für ARM sind derzeit nicht verfügbar. Sie müssen die Benutzeroberfläche des Azure-Portals verwenden, um einer Ressourcengruppe Ressourcen hinzuzufügen.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0706_2016-->
