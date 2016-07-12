@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="05/11/2016"
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 #Verwenden von Azure Media Services zum Streamen von durch Apple FairPlay geschützten HLS-Inhalten 
@@ -41,29 +41,43 @@ Dieses Thema veranschaulicht, wie Sie Azure Media Services verwenden, um Ihre HL
 
 	- Ein Azure-Konto. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](/pricing/free-trial/?WT.mc_id=A261C142F).
 	- Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Konto erstellen](media-services-create-account.md).
-	- Registrieren Sie sich für das [Apple-Entwicklungsprogramm](https://developer.apple.com/).
-	- Apple setzt voraus, dass der Inhaltsbesitzer über das [Bereitstellungspaket](https://developer.apple.com/contact/fps/) verfügt. Geben Sie an, dass Sie bereits KSM (Key Security Module) mit Azure Media Services implementiert haben und dass Sie das endgültige FPS-Paket anfordern. Im endgültigen FPS-Paket gibt es Anweisungen zum Generieren der Zertifizierung und zum Abrufen von ASK, den Sie zum Konfigurieren von FairPlay verwenden werden. 
+	- Registrieren Sie sich für das [Apple Developer Program (Apple-Entwicklerprogramm)](https://developer.apple.com/).
+	- Apple setzt voraus, dass der Inhaltsbesitzer über das [Bereitstellungspaket](https://developer.apple.com/contact/fps/) verfügt. Geben Sie an, dass Sie bereits KSM (Key Security Module) mit Azure Media Services implementiert haben und dass Sie das endgültige FPS-Paket anfordern. Im endgültigen FPS-Paket gibt es Anweisungen zum Generieren der Zertifizierung und zum Abrufen von ASK, den Sie zum Konfigurieren von FairPlay verwenden werden.
 
 	- Azure Media Services .NET SDK, Version **3.6.0** oder höher.
 
 - Folgendes muss seitens der AMS-Schlüsselbereitstellung festgelegt werden:
-	- **App Cert (AC)**: PFX-Datei mit dem privaten Schlüssel. Diese Datei wird vom Kunden erstellt und vom gleichen Kunden mit einem Kennwort verschlüsselt. 
+	- **App Cert (AC)**: PFX-Datei mit dem privaten Schlüssel. Diese Datei wird vom Kunden erstellt und vom gleichen Kunden mit einem Kennwort verschlüsselt.
 		
 	 	Wenn der Kunde die Richtlinie für die Schlüsselbereitstellung konfiguriert, muss er dieses Kennwort und die PFX-Datei im Base64-Format bereitstellen.
 
+		Die folgenden Schritte beschreiben, wie ein PFX-Zertifikat für FairPlay generiert wird.
+		
+		1. Installieren von OpenSSL von https://slproweb.com/products/Win32OpenSSL.html
+		
+			Wechseln Sie zum Ordner, in dem das FairPlay-Zertifikat und andere von Apple übermittelte Dateien enthalten sind.
+		
+		2. Befehlszeile zum Konvertieren von „cer“ in „pem“:
+		
+			"C:\\OpenSSL-Win32\\bin\\openssl.exe" x509 -inform der -in fairplay.cer -out fairplay-out.pem
+		
+		3. Befehlszeile zum Konvertieren von „pem“ in „pfx“ mit dem privaten Schlüssel (das Kennwort für die PFX-Datei wird dann von OpenSSL angefordert).
+		
+			"C:\\OpenSSL-Win32\\bin\\openssl.exe" pkcs12 -export -out fairplay-out.pfx -inkey privatekey.pem -in fairplay-out.pem -passin file:privatekey-pem-pass.txt
+		
 	- **App Cert-Kennwort**: Kennwort des Kunden zum Erstellen der PFX-Datei.
-	- **App Cert-Kennwort-ID**: Der Kunde muss das Kennwort hochladen, auf die gleiche Weise wie andere AMS-Schlüssel und unter Verwendung des Enumerationswerts **ContentKeyType.FairPlayPfxPassword**. Als Ergebnis erhält der Kunde eine AMS-ID, die er in der Richtlinienoption für die Schlüsselbereitstellung benötigt.
-	- **iv**: Zufälliger 16-Bytes-Wert, muss dem iv-Wert in der Richtlinie zur Übermittlung von Medienobjekten entsprechen. Der Kunde generiert den iv-Wert und gibt ihn in der Richtlinie zur Übermittlung von Medienobjekten sowie in der Richtlinienoption für die Schlüsselbereitstellung an. 
-	- **ASK**: Ein ASK (Application Secret Key) wird erstellt, wenn Sie das Zertifikat über das Apple Developer-Portal generieren. Jedes Entwicklungsteam erhält einen eindeutigen ASK. Speichern Sie eine Kopie des ASK an einem sicheren Ort. Sie müssen den ASK später als FairPlayAsk für Azure Media Services konfigurieren. 
-	-  **ASK-ID**: Wird abgerufen wird, wenn der Kunde ASK in AMS hochlädt. Der Kunde muss ASK mit dem **ContentKeyType.FairPlayASk**-Aufzählungswert hochladen. Dadurch wird die AMS-ID zurückgegeben, die Sie beim Festlegen der Schlüsselbereitstellungs-Richtlinienoption verwenden sollten.
+	- **App Cert-Kennwort-ID**: Der Kunde muss das Kennwort auf die gleiche Weise wie andere AMS-Schlüssel und unter Verwendung des Enumerationswerts **ContentKeyType.FairPlayPfxPassword** hochladen. Als Ergebnis erhält der Kunde eine AMS-ID, die er in der Richtlinienoption für die Schlüsselbereitstellung benötigt.
+	- **iv**: Zufälliger 16-Byte-Wert, der dem „iv“-Wert in der Richtlinie zur Übermittlung von Medienobjekten entsprechen muss. Der Kunde generiert den iv-Wert und gibt ihn in der Richtlinie zur Übermittlung von Medienobjekten sowie in der Richtlinienoption für die Schlüsselbereitstellung an.
+	- **ASK**: Ein ASK (Application Secret Key) wird erstellt, wenn Sie das Zertifikat über das Apple Developer-Portal generieren. Jedes Entwicklungsteam erhält einen eindeutigen ASK. Speichern Sie eine Kopie des ASK an einem sicheren Ort. Sie müssen den ASK später als FairPlayAsk für Azure Media Services konfigurieren.
+	-  **ASK-ID**: Wird abgerufen, wenn der Kunde ASK in AMS hochlädt. Der Kunde muss ASK mit dem **ContentKeyType.FairPlayASk**-Aufzählungswert hochladen. Dadurch wird die AMS-ID zurückgegeben, die Sie beim Festlegen der Schlüsselbereitstellungs-Richtlinienoption verwenden sollten.
 
 - Folgendes muss seitens des FPS-Clients festgelegt werden:
  	- **App Cert (AC)**: CER-/DER-Datei mit dem öffentlichen Schlüssel, den das Betriebssystem zur Verschlüsselung der Nutzlast verwendet. AMS muss den Schlüssel kennen, da er vom Player benötigt wird. Der Schlüsselbereitstellungsdienst entschlüsselt den Schlüssel mithilfe des entsprechenden privaten Schlüssels.
 
 - Um einen über FairPlay verschlüsselten Stream wiederzugeben, müssen Sie zuerst den echten ASK abrufen und dann ein echtes Zertifikat generieren. In diesem Prozess werden alle drei Teile erstellt:
 
-	-  DER-Datei 
-	-  PFX-Datei 
+	-  DER-Datei
+	-  PFX-Datei
 	-  Kennwort für die PFX-Datei
  
 - Folgende Clients unterstützen HLS mit **AES-128 CBC**-Verschlüsselung: Safari unter OS X, Apple TV, iOS.
@@ -72,27 +86,27 @@ Dieses Thema veranschaulicht, wie Sie Azure Media Services verwenden, um Ihre HL
 
 Die folgenden allgemeinen Schritte müssen ausgeführt werden, wenn Sie Ihre Medienobjekte mit FairPlay schützen und dabei den Media Services-Lizenzbereitstellungsdienst sowie die dynamische Verschlüsselung verwenden möchten.
 
-1. Erstellen eines Medienobjekts und Hochladen von Dateien in das Medienobjekt. 
+1. Erstellen eines Medienobjekts und Hochladen von Dateien in das Medienobjekt.
 1. Codieren eines Medienobjekts, das die Sammlung von MP4-Dateien mit adaptiver Bitrate enthält.
-1. Erstellen eines Inhaltsschlüssels und Zuordnen des Schlüssels zum codierten Medienobjekt  
-1. Konfigurieren der Autorisierungsrichtlinie des Inhaltsschlüssels. Wenn Sie die Autorisierungsrichtlinie für Inhaltsschlüssel erstellen, müssen Sie Folgendes angeben: 
+1. Erstellen eines Inhaltsschlüssels und Zuordnen des Schlüssels zum codierten Medienobjekt
+1. Konfigurieren der Autorisierungsrichtlinie des Inhaltsschlüssels. Wenn Sie die Autorisierungsrichtlinie für Inhaltsschlüssel erstellen, müssen Sie Folgendes angeben:
 	
-	- Bereitstellungsmethode (in diesem Fall FairPlay) 
+	- Bereitstellungsmethode (in diesem Fall FairPlay)
 	- Konfiguration der FairPlay-Richtlinienoptionen; Informationen zum Konfigurieren von FairPlay finden Sie im Beispiel weiter unten in der ConfigureFairPlayPolicyOptions()-Methode
 	
 		>[AZURE.NOTE] In den meisten Fällen sollten Sie FairPlay-Richtlinienoptionen nur einmal konfigurieren, da Sie nur einen Satz aus Zertifizierung und ASK haben.
-	- Einschränkungen (offen oder tokenbasiert) 
-	- Informationen zum Typ der Schlüsselbereitstellung, der definiert, wie der Schlüssel an den Kunden übermittelt wird. 
+	- Einschränkungen (offen oder tokenbasiert)
+	- Informationen zum Typ der Schlüsselbereitstellung, der definiert, wie der Schlüssel an den Kunden übermittelt wird.
 	
 2. Konfigurieren Sie die Übermittlungsrichtlinie für Medienobjekte. Die Richtlinienkonfiguration umfasst Folgendes:
 
-	- Übermittlungsprotokoll (HLS) 
-	- Typ der dynamischen Verschlüsselung (Common CBC Encryption) 
-	- Lizenzerwerbs-URL 
+	- Übermittlungsprotokoll (HLS)
+	- Typ der dynamischen Verschlüsselung (Common CBC Encryption)
+	- Lizenzerwerbs-URL
 	
 	>[AZURE.NOTE]Wenn Sie einen Stream übermitteln möchten, der mit FairPlay und einem weiteren DRM-Mechanismus verschlüsselt wurde, müssen Sie separate Übermittlungsrichtlinien konfigurieren:
 	>
-	>- Eine IAssetDeliveryPolicy-Richtlinie zum Konfigurieren von DASH mit CENC (PlayReady + WideVine) und Smooth mit PlayReady 
+	>- Eine IAssetDeliveryPolicy-Richtlinie zum Konfigurieren von DASH mit CENC (PlayReady + WideVine) und Smooth mit PlayReady
 	>- Eine weitere IAssetDeliveryPolicy-Richtlinie zum Konfigurieren von FairPlay für HLS
 
 1. Erstellen eines "OnDemand"-Locators, um eine Streaming-URL zu erhalten.
@@ -540,4 +554,4 @@ Das folgende Beispiel veranschaulicht die Funktionalität, die im Azure Media Se
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

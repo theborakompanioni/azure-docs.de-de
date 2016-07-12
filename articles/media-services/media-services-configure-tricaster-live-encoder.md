@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
- 	ms.date="05/03/2016" 
+	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 #Verwenden des NewTek TriCaster-Encoders zum Senden eines Single-Bitrate-Livedatenstroms
@@ -70,22 +70,22 @@ In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restl
 
 **Video**:
  
-- Codec: H.264 
-- Profil: Hoch (Level 4.0) 
-- Bitrate: 5.000 KBit/s 
-- Keyframe: 2 Sekunden (60 Sekunden) 
+- Codec: H.264
+- Profil: Hoch (Level 4.0)
+- Bitrate: 5.000 KBit/s
+- Keyframe: 2 Sekunden (60 Sekunden)
 - Bildfrequenz: 30
  
 **Audio**:
 
-- Codec: AAC (LC) 
-- Bit Rate: 192 Kbit/s 
+- Codec: AAC (LC)
+- Bit Rate: 192 Kbit/s
 - Abtastrate: 44,1 kHz
 
 
 ###Konfigurationsschritte
 
-1. Erstellen Sie ein neues **NewTek TriCaster**-Projekt abhängig von der verwendeten Videoeingabequelle. 
+1. Erstellen Sie ein neues **NewTek TriCaster**-Projekt abhängig von der verwendeten Videoeingabequelle.
 2. Suchen Sie in diesem Projekt die Schaltfläche **Streamen**, und klicken Sie auf das Zahnradsymbol daneben, um das Konfigurationsmenü für den Datenstrom zu öffnen.
 
 	![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster3.png)
@@ -126,7 +126,7 @@ In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restl
 
 ##Testen der Wiedergabe
   
-1. Navigieren Sie zum AMSE-Tool, und klicken Sie mit der rechten Maustaste auf den Kanal, der getestet werden soll. Bewegen Sie den Mauszeiger im Menü über **Wiedergabevorschau**, und wählen Sie **mit Azure Media Player** aus.  
+1. Navigieren Sie zum AMSE-Tool, und klicken Sie mit der rechten Maustaste auf den Kanal, der getestet werden soll. Bewegen Sie den Mauszeiger im Menü über **Wiedergabevorschau**, und wählen Sie **mit Azure Media Player** aus.
 
 	![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster8.png)
 
@@ -136,18 +136,18 @@ Wenn eine Fehlermeldung angezeigt wird, müssen Sie den Kanal zurücksetzen und 
 
 ##Erstellen eines Programms
 
-1. Nachdem die Kanalwiedergabe überprüft wurde, erstellen Sie ein Programm. Klicken Sie im AMSE-Tool auf der Registerkarte **Live** mit der rechten Maustaste in den Programmbereich, und wählen Sie **Neues Programm erstellen** aus.  
+1. Nachdem die Kanalwiedergabe überprüft wurde, erstellen Sie ein Programm. Klicken Sie im AMSE-Tool auf der Registerkarte **Live** mit der rechten Maustaste in den Programmbereich, und wählen Sie **Neues Programm erstellen** aus.
 
 	![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster9.png)
 
 2. Benennen Sie die Anwendung, und passen Sie ggf. die **Archivfensterlänge** an (standardmäßig auf 4 Stunden festgelegt). Sie können außerdem einen Speicherort angeben oder die Standardeinstellung beibehalten.
 3. Aktivieren Sie das Kontrollkästchen **Programm jetzt starten**.
-4. Klicken Sie auf **Programm erstellen**.  
+4. Klicken Sie auf **Programm erstellen**.
   
 	Hinweis: Die Programmerstellung erfordert weniger Zeit als die Kanalerstellung.
  
 5. Sobald die Anwendung ausgeführt wird, bestätigen Sie die Wiedergabe, indem Sie mit der rechten Maustaste auf das Programm klicken, zu **Programm(e) wiedergeben** navigieren und dann **mit Azure Media Player** auswählen.
-6. Nach der Bestätigung klicken Sie mit der rechten Maustaste erneut auf das Programm, und wählen Sie **Ausgabe-URL in die Zwischenablage kopieren** aus (bzw. rufen Sie diese Informationen über das Menü mit der Option **Programminformationen und -einstellungen** ab). 
+6. Nach der Bestätigung klicken Sie mit der rechten Maustaste erneut auf das Programm, und wählen Sie **Ausgabe-URL in die Zwischenablage kopieren** aus (bzw. rufen Sie diese Informationen über das Menü mit der Option **Programminformationen und -einstellungen** ab).
 
 Der Datenstrom kann jetzt in einen Player eingebettet oder an eine Zielgruppe für die Livewiedergabe verteilt werden.
 
@@ -165,4 +165,4 @@ Eine Anleitung finden Sie im Thema [Problembehandlung](media-services-troublesho
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

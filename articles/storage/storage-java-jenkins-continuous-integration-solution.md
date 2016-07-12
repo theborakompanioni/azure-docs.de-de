@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="02/21/2016" 
+	ms.date="06/24/2016" 
 	ms.author="robmcm"/>
 
 # Verwenden von Azure-Speicher mit einer Jenkins-Lösung für die fortlaufende Integration
@@ -82,8 +82,8 @@ Um den Blob-Dienst mit Jenkins verwenden zu können, müssen Sie das Azure-Speic
 3. Führen Sie im Bereich **Microsoft Azure Storage Account Configuration** folgende Schritte aus:
     1. Geben Sie Ihren Speicherkontonamen ein, den Sie aus dem [Azure-Portal](https://portal.azure.com) abrufen können.
     2. Geben Sie Ihren Speicherkontoschlüssel ein, der ebenfalls über das [Azure-Portal](https://portal.azure.com) abrufbar ist.
-    3. Verwenden Sie den Standardwert für **Blob Service Endpoint URL**, wenn Sie die öffentliche Azure-Cloud verwenden. Wenn Sie mit einer anderen Azure-Cloud arbeiten, verwenden Sie den Endpunkt, der im [Azure-Portal](https://portal.azure.com) für Ihr Speicherkonto angegeben ist. 
-    4. Klicken Sie auf **Validate storage credentials**, um Ihr Speicherkonto zu validieren. 
+    3. Verwenden Sie den Standardwert für **Blob Service Endpoint URL**, wenn Sie die öffentliche Azure-Cloud verwenden. Wenn Sie mit einer anderen Azure-Cloud arbeiten, verwenden Sie den Endpunkt, der im [Azure-Portal](https://portal.azure.com) für Ihr Speicherkonto angegeben ist.
+    4. Klicken Sie auf **Validate storage credentials**, um Ihr Speicherkonto zu validieren.
     5. [Optional] Wenn Sie über weitere Speicherkonten verfügen, die Sie für Jenkins CI verfügbar machen möchten, klicken Sie auf **Add more Storage Accounts**.
     6. Klicken Sie auf **Save**, um Ihre Einstellungen zu speichern.
 
@@ -108,7 +108,7 @@ Für das Lernprogramm müssen wir zunächst einen Auftrag erstellen, der mehrere
 
     **Tipp**
     
-    Unter dem Bereich **Command**, in dem Sie ein Skript für **Execute Windows batch command** eingegeben haben, befindet sich ein Link zu den von Jenkins erkannten Umgebungsvariablen. Klicken Sie auf diesen Link, um die Namen und Beschreibungen der Umgebungsvariablen anzuzeigen. Beachten Sie, dass Umgebungsvariablen, die Sonderzeichen enthalten, z. B. die Umgebungsvariable **BUILD\_URL**, nicht als Containername oder gemeinsamer virtueller Pfad zulässig sind.
+    Unter dem Bereich **Command**, in dem Sie ein Skript für **Execute Windows batch command** eingegeben haben, befindet sich ein Link zu den von Jenkins erkannten Umgebungsvariablen. Klicken Sie auf diesen Link, um die Namen und Beschreibungen der Umgebungsvariablen anzuzeigen. Beachten Sie, dass Umgebungsvariablen, die Sonderzeichen enthalten, z. B. die Umgebungsvariable **BUILD\_URL**, nicht als Containername oder gemeinsamer virtueller Pfad zulässig sind.
 
 8. Klicken Sie für dieses Beispiel auf **Make new container public by default**. (Wenn Sie einen privaten Container verwenden möchten, müssen Sie eine Shared Access Signature erstellen, um den Zugriff zu ermöglichen. Dies geht jedoch über den Rahmen dieses Thema hinaus. Weitere Informationen zu Shared Access Signatures erhalten Sie unter [Shared Access Signatures: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md).)
 9. [Optional] Klicken Sie auf **Clean container before uploading**, wenn die Inhalte aus dem Container gelöscht werden sollen, bevor die Buildartefakte hochgeladen (lassen Sie die Option deaktiviert, wenn die Inhalte nicht aus dem Container gelöscht werden sollen) werden.
@@ -145,7 +145,7 @@ Im Folgenden erhalten Sie einen Überblick über die Komponenten des Blob-Dienst
 
 - **Speicherkonto**: Alle Zugriffe auf den Azure-Speicher erfolgen über ein Speicherkonto. Dies ist die höchste Ebene des Namespaces für den Zugriff auf Blobs. Ein Konto kann eine beliebige Anzahl von Containern enthalten, solange deren Gesamtgröße 100TB nicht überschreitet.
 - **Container**: Ein Container dient zur Gruppierung eines Blob-Satzes. Alle Blobs müssen sich in Containern befinden. Ein Konto kann eine beliebige Anzahl von Containern enthalten. In einem Container kann eine beliebige Anzahl von BLOBs gespeichert sein.
-- **Blob:** Eine Datei von beliebiger Art und Größe Es gibt zwei Arten von Blobs, die im Azure-Speicher gespeichert werden können: Block- und Seitenblobs. Die meisten Dateien sind Block-Blobs. Ein einzelner Block-BLOB kann bis zu 200 GB groß sein. In diesem Tutorial werden Block-BLOBs verwendet. Die andere Art von BLOBs, Seiten-BLOBs, kann bis zu 1 TB groß sein und ist effizienter, wenn Byte-Bereiche in einer Datei häufig geändert werden. Weitere Informationen zu Blobs finden Sie unter [Grundlegendes zu Block-BLOBs, Anhang-BLOBS und Seiten-BLOBs](http://msdn.microsoft.com/library/azure/ee691964.aspx).
+- **Blob:** Eine Datei von beliebiger Art und Größe Es gibt zwei Arten von Blobs, die im Azure-Speicher gespeichert werden können: Block- und Seitenblobs. Die meisten Dateien sind Block-Blobs. Ein einzelner Block-BLOB kann bis zu 200 GB groß sein. In diesem Tutorial werden Block-BLOBs verwendet. Die andere Art von BLOBs, Seiten-BLOBs, kann bis zu 1 TB groß sein und ist effizienter, wenn Byte-Bereiche in einer Datei häufig geändert werden. Weitere Informationen zu Blobs finden Sie unter [Grundlegendes zu Block-BLOBs, Anhang-BLOBS und Seiten-BLOBs](http://msdn.microsoft.com/library/azure/ee691964.aspx).
 - **URL-Format:** Blobs können über das folgende URL-Format aufgerufen werden:
 
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
@@ -166,4 +166,4 @@ Im Folgenden erhalten Sie einen Überblick über die Komponenten des Blob-Dienst
 
 Weitere Informationen finden Sie auch im [Java Developer Center](https://azure.microsoft.com/develop/java/).
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0629_2016-->

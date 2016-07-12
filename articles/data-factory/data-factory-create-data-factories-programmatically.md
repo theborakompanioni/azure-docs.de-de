@@ -40,11 +40,11 @@ Sie können Azure Data Factorys mithilfe des Data Factory .NET SDK programmgeste
 		<li>Klicken Sie auf <b>OK</b>, um das Projekt zu erstellen.</li>
 	</ol>
 2. Klicken Sie auf <b>Extras</b>, zeigen Sie auf <b>NuGet-Paket-Manager</b>, und klicken Sie auf <b>Paket-Manager-Konsole</b>.
-3.	Führen Sie in der <b>Paket-Manager-Konsole</b> die folgenden Befehle nacheinander aus.</b> 
+3.	Führen Sie in der <b>Paket-Manager-Konsole</b> die folgenden Befehle nacheinander aus.</b>
 
 		Install-Package Microsoft.Azure.Management.DataFactories
 		Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
-6. Fügen Sie den folgenden **appSettings**-Abschnitt zur Datei **App.config** hinzu. Diese werden von der Hilfsmethode **GetAuthorizationHeader** verwendet. 
+6. Fügen Sie den folgenden **appSettings**-Abschnitt zur Datei **App.config** hinzu. Diese werden von der Hilfsmethode **GetAuthorizationHeader** verwendet.
 
 	Ersetzen Sie die Werte für **SubscriptionId** und **ActiveDirectoryTenantId** durch Ihre Abonnement- und Mandanten-ID für Azure. Sie können diese Werte abrufen, indem Sie über Azure PowerShell **Get-AzureAccount** ausführen (möglicherweise müssen Sie sich zuvor mithilfe von "Add-AzureAccount" anmelden).
  
@@ -71,7 +71,7 @@ Sie können Azure Data Factorys mithilfe des Data Factory .NET SDK programmgeste
 		
 		using Microsoft.IdentityModel.Clients.ActiveDirectory;
 		using Microsoft.Azure;
-6. Fügen Sie folgenden Code, der eine Instanz der **DataPipelineManagementClient**-Klasse erstellt, zur Methode **Main** hinzu. Sie verwenden dieses Objekt, um eine Data Factory, einen verknüpften Dienst, Eingabe- und Ausgabedatasets sowie eine Pipeline zu erstellen. Zudem verwenden Sie dieses Objekt, um Datenslices eines Datasets zur Laufzeit zu überwachen.    
+6. Fügen Sie folgenden Code, der eine Instanz der **DataPipelineManagementClient**-Klasse erstellt, zur Methode **Main** hinzu. Sie verwenden dieses Objekt, um eine Data Factory, einen verknüpften Dienst, Eingabe- und Ausgabedatasets sowie eine Pipeline zu erstellen. Zudem verwenden Sie dieses Objekt, um Datenslices eines Datasets zur Laufzeit zu überwachen.
 
         // create data factory management client
         string resourceGroupName = "resourcegroupname";
@@ -123,7 +123,7 @@ Sie können Azure Data Factorys mithilfe des Data Factory .NET SDK programmgeste
                 }
             }
         );
-9. Fügen Sie den folgenden Code, der **Eingabe- und Ausgabedatasets** erstellt, zur Methode **Main** hinzu. 
+9. Fügen Sie den folgenden Code, der **Eingabe- und Ausgabedatasets** erstellt, zur Methode **Main** hinzu.
 
 	Beachten Sie, dass für **FolderPath** für das Eingabeblob der Wert **adftutorial/** festgelegt ist, wobei **adftutorial** den Namen des Containers im Blobspeicher darstellt. Wenn dieser Container nicht in Ihrem Azure-Blobspeicher enthalten ist, erstellen Sie einen Container mit dem Namen **adftutorial** und laden eine Textdatei in den Container hoch.
 	
@@ -263,7 +263,7 @@ Die Kopieraktivität führt die Datenverschiebung in Azure Data Factory durch, u
 
 	
 
-12. Fügen Sie die folgende Hilfsmethode, die von der Methode **Main** verwendet wird, zur **Program**-Klasse hinzu. Diese Methode öffnet ein Dialogfeld, in dem Sie den **Benutzernamen** und das **Kennwort** bereitstellen können, mit denen Sie sich beim Azure-Portal anmelden. 
+12. Fügen Sie die folgende Hilfsmethode, die von der Methode **Main** verwendet wird, zur **Program**-Klasse hinzu. Diese Methode öffnet ein Dialogfeld, in dem Sie den **Benutzernamen** und das **Kennwort** bereitstellen können, mit denen Sie sich beim Azure-Portal anmelden.
  
 		public static string GetAuthorizationHeader()
         {
@@ -366,17 +366,17 @@ Die Kopieraktivität führt die Datenverschiebung in Azure Data Factory durch, u
         Console.ReadKey();
 
 15. Erweitern Sie im Projektmappen-Explorer das Projekt (**DataFactoryAPITestApp**), klicken Sie mit der rechten Maustaste auf **Verweise**, und klicken Sie auf **Verweis hinzufügen**. Aktivieren Sie das Kontrollkästchen für die Assembly **System.Configuration**, und klicken Sie auf **OK**.
-16. Erstellen Sie die Konsolenanwendung. Klicken Sie im Menü auf **Erstellen** und dann auf **Projektmappe erstellen**. 
+16. Erstellen Sie die Konsolenanwendung. Klicken Sie im Menü auf **Erstellen** und dann auf **Projektmappe erstellen**.
 16. Vergewissern Sie sich, dass sich mindestens eine Datei im "adftutorial"-Container im Azure Blob-Speicher befindet. Ist dies nicht der Fall, erstellen Sie die Datei "Emp.txt" mit folgendem Inhalt im Editor, und laden Sie sie anschließend in den "adftutorial"-Container hoch.
 
         John, Doe
 		Jane, Doe
 	 
 17. Führen Sie das Beispiel aus, indem Sie im Menü auf **Debuggen** -> **Debuggen starten** klicken. Wenn angezeigt wird, dass die **Ausführungsdetails für einen Datenslice** abgerufen werden, warten Sie einige Minuten, und drücken Sie dann die **EINGABETASTE**.
-18. Verwenden Sie das Azure-Portal, um Folgendes für die Data Factory zu überprüfen: **APITutorialFactory** wird mit folgenden Artefakten erstellt: 
-	- Verknüpfter Dienst: **LinkedService\_AzureStorage** 
+18. Verwenden Sie das Azure-Portal, um Folgendes für die Data Factory zu überprüfen: **APITutorialFactory** wird mit folgenden Artefakten erstellt:
+	- Verknüpfter Dienst: **LinkedService\_AzureStorage**
 	- DataSet: **DatasetBlobSource** und **DatasetBlobDestination**.
-	- Pipeline: **PipelineBlobSample** 
+	- Pipeline: **PipelineBlobSample**
 18. Stellen Sie sicher, dass im Ordner **apifactoryoutput** im **adftutorial**-Container eine Ausgabedatei erstellt wird.
 
 
@@ -385,7 +385,7 @@ Die Kopieraktivität führt die Datenverschiebung in Azure Data Factory durch, u
 
 
 [data-factory-introduction]: data-factory-introduction.md
-[adf-getstarted]: data-factory-get-started.md
+[adf-getstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
  
@@ -393,4 +393,4 @@ Die Kopieraktivität führt die Datenverschiebung in Azure Data Factory durch, u
 [azure-developer-center]: http://azure.microsoft.com/downloads/
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

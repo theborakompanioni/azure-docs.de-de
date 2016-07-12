@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="Asynchrones Messaging mit Service Bus | Microsoft Azure"
-   description="Beschreibung des asynchronen Brokermessagings mit Service Bus."
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="" /> 
+    pageTitle="Asynchrones Messaging mit Service Bus | Microsoft Azure"
+    description="Beschreibung des asynchronen Brokermessagings mit Service Bus."
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" /> 
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="03/16/2016"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="06/27/2016"
+    ms.author="sethm" />
 
 # Asynchrone Messagingmuster und hohe Verfügbarkeit
 
@@ -43,7 +43,7 @@ Es gibt mehrere Arten, Probleme mit Nachrichten und Entitäten zu behandeln, und
 
 -   Ausfall von Service Bus in einem einzelnen Subsystem. In diesem Fall kann auf dem Computeknoten ein inkonsistenter Zustand auftreten, und er muss neu gestartet werden, wodurch für alle Entitäten, die von dem Knoten verarbeitet werden, ein Lastenausgleich auf andere Knoten ausgeführt wird. Dies kann wiederum für einen kurzen Zeitraum zu einer langsamen Nachrichtenverarbeitung führen.
 
--   Ausfall von Service Bus in einem Azure-Datencenter. Dies ist der klassische „schwerwiegende Fehler“, durch den das System für viele Minuten oder einige Stunden nicht erreichbar ist.
+-   Ausfall von Service Bus in einem Azure-Datencenter. Dies ist ein „schwerwiegender Fehler“, durch den das System für viele Minuten oder einige Stunden nicht erreichbar ist.
 
 > [AZURE.NOTE] Mit dem Begriff **Speicher** kann Azure-Speicher und SQL Azure gemeint sein.
 
@@ -61,9 +61,9 @@ Bei anderen Komponenten in Azure können gelegentlich Dienstprobleme auftreten. 
 
 ### Ausfall von Service Bus in einem einzelnen Subsystem
 
-Bei jeder Anwendung können Umstände dazu führen, dass eine interne Komponente von Service Bus nicht mehr konsistent ist. Wenn Service Bus dies erkennt, werden Daten von der Anwendung erfasst, um die Diagnose des Problems zu unterstützen. Nachdem die Daten erfasst wurden, wird die Anwendung neu gestartet, um zu versuchen, einen konsistenten Status wiederherzustellen. Dieser Prozess geschieht ziemlich schnell und führt dazu, dass eine Entität für einige Minuten nicht verfügbar zu sein scheint, obwohl die normalen Ausfallzeiten viel kürzer sind.
+Bei jeder Anwendung können Umstände dazu führen, dass eine interne Komponente von Service Bus nicht mehr konsistent ist. Wenn Service Bus dies erkennt, werden Daten von der Anwendung erfasst, um die Diagnose des Problems zu unterstützen. Nachdem die Daten erfasst wurden, wird die Anwendung neu gestartet, um zu versuchen, einen konsistenten Status wiederherzustellen. Dieser Prozess läuft ziemlich schnell ab und führt dazu, dass eine Entität für einige Minuten nicht verfügbar zu sein scheint, obwohl die normalen Ausfallzeiten viel kürzer sind.
 
-In diesen Fällen generiert die Clientanwendung eine Ausnahme des Typs [System.TimeoutException][] oder [MessagingException][]. Service Bus .NET SDK enthält eine Lösung zur Behebung dieses Problems in Form einer automatisierten Clientwiederholungslogik. Wenn der Wiederholungszeitraum beendet ist und die Nachricht nicht zugestellt wurde, können Sie die Untersuchung mit anderen Features wie [gekoppelten Namespaces][] durchführen. Für gekoppelte Namespaces geltende Einschränkungen werden im Artikel [Details zur Implementierung von gekoppelten Namespaces und Kostenaspekte](service-bus-paired-namespaces.md) behandelt.
+In diesen Fällen generiert die Clientanwendung eine Ausnahme des Typs [System.TimeoutException][] oder [MessagingException][]. Service Bus enthält eine Lösung zur Behebung dieses Problems in Form einer automatisierten Clientwiederholungslogik. Wenn der Wiederholungszeitraum beendet ist und die Nachricht nicht zugestellt wurde, können Sie die Untersuchung mit anderen Features wie [gekoppelten Namespaces][] durchführen. Für gekoppelte Namespace gelten andere Einschränkungen, die in diesem Artikel erläutert werden.
 
 ### Ausfall von Service Bus in einem Azure-Datencenter
 
@@ -102,13 +102,13 @@ In den folgenden Abschnitten werden die APIs und deren Implementierung beschrieb
 
 ### MessagingFactory.PairNamespaceAsync-API
 
-Das Feature für gekoppelte Namespaces führt die Methode [PairNamespaceAsync][] für die Klasse [Microsoft.ServiceBus.Messaging.MessagingFactory][] ein:
+Das Feature für gekoppelte Namespaces enthält die Methode [PairNamespaceAsync][] für die Klasse [Microsoft.ServiceBus.Messaging.MessagingFactory][]\:
 
 ```
 public Task PairNamespaceAsync(PairedNamespaceOptions options);
 ```
 
-Bei Abschluss der Aufgabe ist die Namespacekopplung ebenfalls beendet und kann für beliebige Elemente vom Typ [MessageReceiver][], [QueueClient][] oder [TopicClient][] verwendet werden, die mit der Instanz [MessagingFactory][] erstellt wurden. [Microsoft.ServiceBus.Messaging.PairedNamespaceOptions][] ist die Basisklasse für die unterschiedlichen Typen von Kopplung, die mit einem Objekt vom Typ [MessagingFactory][] verfügbar sind. Derzeit heißt die einzige abgeleitete Klasse [SendAvailabilityPairedNamespaceOptions][], die Anforderungen an die Sendeverfügbarkeit implementiert. [SendAvailabilityPairedNamespaceOptions][] verfügt über einen Satz von Konstruktoren, die aufeinander aufbauen. Wenn Sie den Konstruktor mit den meisten Parametern betrachten, können Sie das Verhalten der anderen Konstruktoren verstehen.
+Beim Abschluss der Aufgabe ist die Namespacekopplung ebenfalls beendet und kann für beliebige [MessageReceiver][]-, [QueueClient][]- oder [TopicClient][]-Elemente verwendet werden, die mit der [MessagingFactory][]-Instanz erstellt werden. [Microsoft.ServiceBus.Messaging.PairedNamespaceOptions][] ist die Basisklasse für die unterschiedlichen Typen von Kopplung, die mit einem [MessagingFactory][]-Objekt verfügbar sind. Derzeit heißt die einzige abgeleitete Klasse [SendAvailabilityPairedNamespaceOptions][], die Anforderungen an die Sendeverfügbarkeit implementiert. [SendAvailabilityPairedNamespaceOptions][] verfügt über einen Satz von Konstruktoren, die aufeinander aufbauen. Wenn Sie den Konstruktor mit den meisten Parametern betrachten, können Sie das Verhalten der anderen Konstruktoren verstehen.
 
 ```
 public SendAvailabilityPairedNamespaceOptions(
@@ -123,7 +123,7 @@ Diese Parameter haben folgende Bedeutung:
 
 -   *secondaryNamespaceManager*: Eine initialisierte [NamespaceManager][]-Instanz für den sekundären Namespace, die die [PairNamespaceAsync][]-Methode zum Einrichten von sekundären Namespaces verwenden kann. Der Namespace-Manager wird verwendet, um die Liste der Warteschlangen im Namespace abzurufen und sicherzustellen, dass die erforderlichen Backlogwarteschlangen vorhanden sind. Wenn diese Warteschlangen nicht vorhanden sind, werden sie erstellt. [NamespaceManager][] muss in der Lage sein, ein Token mit dem Anspruch **Verwalten** zu erstellen.
 
--   *messagingFactory*: Die [MessagingFactory][]-Instanz für den sekundären Namespace. Das Objekt [MessagingFactory][] dient zum Senden und, falls die Eigenschaft [EnableSyphon][] auf **true** festgelegt ist, zum Empfangen von Nachrichten aus den Backlogwarteschlangen.
+-   *messagingFactory*: Die [MessagingFactory][]-Instanz für den sekundären Namespace. Das [MessagingFactory][]-Objekt dient zum Senden und, falls die [EnableSyphon][]-Eigenschaft auf **true** festgelegt ist, zum Empfangen von Nachrichten aus den Backlogwarteschlangen.
 
 -   *backlogQueueCount*: Die Anzahl der zu erstellenden Backlogwarteschlangen. Dieser Wert muss mindestens 1 sein. Beim Senden von Nachrichten an den Backlog wird eine dieser Warteschlangen zufällig ausgewählt. Wenn Sie den Wert auf 1 festlegen, kann immer nur eine einzige Warteschlange verwendet werden. Wenn dies geschieht und die einzige Backlogwarteschlange einen Fehler generiert, kann der Client keine andere Backlogwarteschlange verwenden und Ihre Nachricht möglicherweise nicht senden. Es wird empfohlen, diesen Wert auf einen größeren Wert und standardmäßig auf 10 festzulegen. Sie können diesen Wert in einen höheren oder niedrigeren Wert ändern, abhängig von der Datenmenge, die Ihre Anwendung pro Tag sendet. Jede Backlogwarteschlange kann bis zu 5 GB an Nachrichten enthalten.
 
@@ -173,4 +173,4 @@ Nachdem Sie nun mit den Grundlagen des asynchronen Messagings in Service Bus ver
   [gekoppelten Namespaces]: service-bus-paired-namespaces.md
   [gekoppelter Namespaces]: service-bus-paired-namespaces.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0629_2016-->

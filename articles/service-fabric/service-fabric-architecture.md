@@ -18,7 +18,7 @@
 
 # Service Fabric-Architektur
 
-Service Fabric besteht aus Subsystemen, die auf verschiedenen Ebenen liegen. Diese Subsystems ermöglichen Ihnen, Anwendungen mit folgenden Eigenschaften zu schreiben:
+Service Fabric besteht aus Subsystemen, die auf verschiedenen Ebenen liegen. Diese Subsysteme ermöglichen Ihnen, Anwendungen mit folgenden Eigenschaften zu schreiben:
 
 * Hoch verfügbar
 * Skalierbar
@@ -61,4 +61,4 @@ Dieses Subsystem sorgt mithilfe des Naming-Diensts für zuverlässiges Messaging
 ## Prüfbarkeitssubsystem
 Das Prüfbarkeitssubsystem besteht aus mehreren Tools, die speziell zum Testen von mit Service Fabric erstellten Diensten entwickelt wurden. Mit den Tools können Entwickler leicht aussagekräftige Fehler hervorrufen und Testszenarien ausführen, um die vielen Zustände und Übergänge zu schaffen und zu überprüfen, die für einen Dienst während seiner Lebensdauer gelten können. Dabei ist jederzeit für die erforderliche Kontrolle und Sicherheit gesorgt. Das Prüfbarkeitssubsystem bietet außerdem einen Mechanismus für das Ausführen langer Testläufe, in denen mehrere mögliche Fehler ohne Verfügbarkeitsverlust durchlaufen werden. Hierfür wird Ihnen eine Testproduktionsumgebung bereitgestellt.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

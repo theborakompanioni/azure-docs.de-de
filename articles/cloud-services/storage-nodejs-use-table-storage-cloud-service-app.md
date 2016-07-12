@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="05/04/2016" 
+	ms.date="06/24/2016" 
 	ms.author="robmcm"/>
 
 # Node.js-Webanwendung mit Speicher
@@ -241,7 +241,7 @@ In diesem Abschnitt erweitern Sie die durch den Befehl **express** erstellte Gru
 
 ### Ändern von app.js
 
-1. Öffnen Sie im Verzeichnis **WebRole1** die Datei **app.js** in einem Text-Editor. 
+1. Öffnen Sie im Verzeichnis **WebRole1** die Datei **app.js** in einem Text-Editor.
 
 2. Fügen Sie am Anfang der Datei Folgendes zum Laden des Azure-Moduls hinzu, und legen Sie den Tabellennamen und Partitionsschlüssel fest:
 
@@ -403,4 +403,4 @@ In den folgenden Schritten erfahren Sie, wie Sie die Anwendung beenden und lösc
  
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

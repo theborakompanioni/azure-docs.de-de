@@ -12,7 +12,7 @@
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="data-management" 
+   ms.workload="sqldb-bcdr" 
    ms.date="06/16/2016"
    ms.author="sashan"/>
 
@@ -36,9 +36,9 @@ Zur Erfüllung der Anforderung zur Vereinfachung sollten Sie alle Mandantendaten
 
 Bei einem Ausfall in der primären Region können Sie die Wiederherstellungsschritte ausführen, die im nächsten Diagramm angegeben sind, um die Anwendung wieder in den Onlinezustand zu versetzen.
 
-- Führen Sie ein sofortiges Failover der Verwaltungsdatenbanken (2) in die Region für die Notfallwiederherstellung durch. 
+- Führen Sie ein sofortiges Failover der Verwaltungsdatenbanken (2) in die Region für die Notfallwiederherstellung durch.
 - Ändern Sie die Verbindungszeichenfolge der Anwendung so, dass sie auf die Region für die Notfallwiederherstellung verweist. Alle neuen Konten und Mandantendatenbanken werden in der Region für die Notfallwiederherstellung erstellt. Für die vorhandenen Kunden sind die Daten vorübergehend nicht verfügbar.
-- Erstellen Sie den elastischen Pool mit der gleichen Konfiguration wie für den ursprünglichen Pool (3). 
+- Erstellen Sie den elastischen Pool mit der gleichen Konfiguration wie für den ursprünglichen Pool (3).
 - Verwenden Sie die Geowiederherstellung, um Kopien der Mandantendatenbanken zu erstellen (4). Sie können erwägen, die einzelnen Wiederherstellungen über die Endbenutzerverbindungen auszulösen, oder Sie können ein anderes anwendungsspezifisches Prioritätsschema verwenden.
 
 An diesem Punkt befindet sich die Anwendung in der Region für die Notfallwiederherstellung wieder im Onlinezustand, aber bei einigen Kunden kommt es beim Zugreifen auf ihre Daten zu Verzögerungen.
@@ -47,12 +47,12 @@ An diesem Punkt befindet sich die Anwendung in der Region für die Notfallwieder
 
 Wenn der Ausfall temporärer Art ist, ist es möglich, dass die primäre Region von Azure wiederhergestellt wird, bevor in der Region für die Notfallwiederherstellung alle Wiederherstellungen abgeschlossen sind. In diesem Fall sollten Sie orchestrieren, dass die Anwendung zurück in die primäre Region verschoben wird. Während des Vorgangs werden die Schritte ausgeführt, die im nächsten Diagramm dargestellt sind.
  
-- Brechen Sie alle ausstehenden Anforderungen zur Geowiederherstellung ab.   
-- Führen Sie für die Verwaltungsdatenbanken ein Failover in die primäre Region durch (5). Hinweis: Nach der Wiederherstellung der Region sind aus den alten primären Replikaten automatisch sekundäre Replikate geworden. Nun werden die Rollen wieder gewechselt. 
-- Ändern Sie die Verbindungszeichenfolge der Anwendung so, dass sie wieder auf die primäre Region verweist. Alle neuen Konten und Mandantendatenbanken werden jetzt in der primären Region erstellt. Für einige vorhandene Kunden sind die Daten vorübergehend nicht verfügbar.   
-- Legen Sie alle Datenbanken im Pool für die Notfallwiederherstellung auf „Schreibgeschützt“ fest, um sicherzustellen, dass sie in der Region für die Notfallwiederherstellung nicht geändert werden können (6). 
-- Benennen Sie für jede Datenbank im Pool für die Notfallwiederherstellung, die sich seit der Wiederherstellung geändert hat, die entsprechenden Datenbanken im primären Pool um, oder löschen Sie sie (7). 
-- Kopieren Sie die aktualisierten Datenbanken aus dem Pool für die Notfallwiederherstellung in den primären Pool (8). 
+- Brechen Sie alle ausstehenden Anforderungen zur Geowiederherstellung ab.
+- Führen Sie für die Verwaltungsdatenbanken ein Failover in die primäre Region durch (5). Hinweis: Nach der Wiederherstellung der Region sind aus den alten primären Replikaten automatisch sekundäre Replikate geworden. Nun werden die Rollen wieder gewechselt.
+- Ändern Sie die Verbindungszeichenfolge der Anwendung so, dass sie wieder auf die primäre Region verweist. Alle neuen Konten und Mandantendatenbanken werden jetzt in der primären Region erstellt. Für einige vorhandene Kunden sind die Daten vorübergehend nicht verfügbar.
+- Legen Sie alle Datenbanken im Pool für die Notfallwiederherstellung auf „Schreibgeschützt“ fest, um sicherzustellen, dass sie in der Region für die Notfallwiederherstellung nicht geändert werden können (6).
+- Benennen Sie für jede Datenbank im Pool für die Notfallwiederherstellung, die sich seit der Wiederherstellung geändert hat, die entsprechenden Datenbanken im primären Pool um, oder löschen Sie sie (7).
+- Kopieren Sie die aktualisierten Datenbanken aus dem Pool für die Notfallwiederherstellung in den primären Pool (8).
 - Löschen Sie den Pool für die Notfallwiederherstellung (9).
 
 An diesem Punkt ist die Anwendung in der primären Region online, und alle Mandantendatenbanken sind im primären Pool verfügbar.
@@ -79,9 +79,9 @@ Bei einem Ausfall in der primären Region können Sie die Wiederherstellungsschr
 
 - Führen Sie ein sofortiges Failover der Verwaltungsdatenbanken in die Region für die Notfallwiederherstellung durch (3).
 - Ändern Sie die Verbindungszeichenfolge der Anwendung so, dass sie auf die Region für die Notfallwiederherstellung verweist. Alle neuen Konten und Mandantendatenbanken werden jetzt in der Region für die Notfallwiederherstellung erstellt. Für die vorhandenen Testkunden sind die Daten vorübergehend nicht verfügbar.
-- Führen Sie für die Datenbanken der bezahlten Mandanten ein Failover in den Pool in der Region für die Notfallwiederherstellung durch, um die Verfügbarkeit sofort wiederherzustellen (4). Da es sich beim Failover um eine schnelle Änderung der Metadatenebene handelt, können Sie eine Optimierung erwägen, bei der die einzelnen Failover bei Bedarf von den Endbenutzerverbindungen ausgelöst werden. 
-- Falls die eDTU-Größe des sekundären Pools niedriger als die Größe des primären Pools war, weil für die sekundären Datenbanken die Kapazität zum Verarbeiten der Änderungsprotokolle nur erforderlich war, als es sich um sekundäre Replikate gehandelt hat, sollten Sie die Poolkapazität jetzt sofort erhöhen. Dies ist nötig, um die gesamte Workload aller Mandanten abdecken zu können (5). 
-- Erstellen Sie den neuen elastischen Pool mit dem gleichen Namen und der gleichen Konfiguration in der Notfallwiederherstellungsregion für die Datenbanken der Testkunden (6). 
+- Führen Sie für die Datenbanken der bezahlten Mandanten ein Failover in den Pool in der Region für die Notfallwiederherstellung durch, um die Verfügbarkeit sofort wiederherzustellen (4). Da es sich beim Failover um eine schnelle Änderung der Metadatenebene handelt, können Sie eine Optimierung erwägen, bei der die einzelnen Failover bei Bedarf von den Endbenutzerverbindungen ausgelöst werden.
+- Falls die eDTU-Größe des sekundären Pools niedriger als die Größe des primären Pools war, weil für die sekundären Datenbanken die Kapazität zum Verarbeiten der Änderungsprotokolle nur erforderlich war, als es sich um sekundäre Replikate gehandelt hat, sollten Sie die Poolkapazität jetzt sofort erhöhen. Dies ist nötig, um die gesamte Workload aller Mandanten abdecken zu können (5).
+- Erstellen Sie den neuen elastischen Pool mit dem gleichen Namen und der gleichen Konfiguration in der Notfallwiederherstellungsregion für die Datenbanken der Testkunden (6).
 - Nachdem der Pool für die Testkunden erstellt wurde, verwenden Sie die Geowiederherstellung, um die einzelnen Testmandanten-Datenbanken im neuen Pool wiederherzustellen (7). Sie können erwägen, die einzelnen Wiederherstellungen über die Endbenutzerverbindungen auszulösen, oder Sie können ein anderes anwendungsspezifisches Prioritätsschema verwenden.
 
 An diesem Punkt ist Ihre Anwendung in der Region für die Notfallwiederherstellung wieder online. Alle zahlenden Kunden haben Zugriff auf ihre Daten, während es für Testkunden beim Zugreifen auf die Daten zu Verzögerungen kommt.
@@ -90,13 +90,13 @@ Wenn die primäre Region von Azure wiederhergestellt wurde, *nachdem* Sie die An
  
 ![Abbildung 6](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
 
-- Brechen Sie alle ausstehenden Anforderungen zur Geowiederherstellung ab.   
-- Führen Sie das Failover für die Verwaltungsdatenbanken durch (8). Nach der Wiederherstellung der Region werden die alten primären Replikate automatisch zu den sekundären Replikaten. Nun werden sie wieder zu primären Replikaten.  
-- Führen Sie das Failover der bezahlten Mandantendatenbanken durch (9). Entsprechend werden die alten primären Replikate nach der Wiederherstellung der Region automatisch zu den sekundären Replikaten. Nun werden sie wieder zu primären Replikaten. 
+- Brechen Sie alle ausstehenden Anforderungen zur Geowiederherstellung ab.
+- Führen Sie das Failover für die Verwaltungsdatenbanken durch (8). Nach der Wiederherstellung der Region werden die alten primären Replikate automatisch zu den sekundären Replikaten. Nun werden sie wieder zu primären Replikaten.
+- Führen Sie das Failover der bezahlten Mandantendatenbanken durch (9). Entsprechend werden die alten primären Replikate nach der Wiederherstellung der Region automatisch zu den sekundären Replikaten. Nun werden sie wieder zu primären Replikaten.
 - Legen Sie die wiederhergestellten Testdatenbanken, die sich in der Region für die Notfallwiederherstellung geändert haben, auf „Schreibgeschützt“ fest (10).
-- Benennen Sie für jede Datenbank im Notfallwiederherstellungspool für die Testkunden, die sich seit der Wiederherstellung geändert hat, die entsprechende Datenbank im primären Pool für Testkunden um, oder löschen Sie sie (11). 
-- Kopieren Sie die aktualisierten Datenbanken aus dem Pool für die Notfallwiederherstellung in den primären Pool (12). 
-- Löschen Sie den Pool für die Notfallwiederherstellung (13). 
+- Benennen Sie für jede Datenbank im Notfallwiederherstellungspool für die Testkunden, die sich seit der Wiederherstellung geändert hat, die entsprechende Datenbank im primären Pool für Testkunden um, oder löschen Sie sie (11).
+- Kopieren Sie die aktualisierten Datenbanken aus dem Pool für die Notfallwiederherstellung in den primären Pool (12).
+- Löschen Sie den Pool für die Notfallwiederherstellung (13).
 
 > [AZURE.NOTE] Der Failovervorgang ist asynchron. Um die Wiederherstellungszeit zu minimieren, ist es wichtig, dass Sie den Failoverbefehl der Mandantendatenbanken für Batches von mindestens 20 Datenbanken ausführen.
 
@@ -122,9 +122,9 @@ Im nächsten Diagramm sind die Wiederherstellungsschritte dargestellt, die ausge
 
 - Führen Sie für die Verwaltungsdatenbanken sofort ein Failover in Region B durch (3).
 - Ändern Sie die Verbindungszeichenfolge der Anwendung so, dass sie auf die Verwaltungsdatenbanken in Region B verweist. Ändern Sie die Verwaltungsdatenbanken, um sicherzustellen, dass die neuen Konten und Mandantendatenbanken in Region B erstellt werden und die vorhandenen Mandantendatenbanken ebenfalls dort angeordnet sind. Für die vorhandenen Testkunden sind die Daten vorübergehend nicht verfügbar.
-- Führen Sie für die Datenbanken der bezahlten Mandanten ein Failover in Pool 2 von Region B durch, um die Verfügbarkeit sofort wiederherzustellen (4). Da es sich beim Failover um eine schnelle Änderung der Metadatenebene handelt, können Sie eine Optimierung erwägen, bei der die einzelnen Failover bei Bedarf von den Endbenutzerverbindungen ausgelöst werden. 
-- Da Pool 2 jetzt nur primäre Datenbanken enthält, erhöht sich die gesamte Workload im Pool, sodass Sie die eDTU-Größe sofort erhöhen sollten (5). 
-- Erstellen Sie den neuen elastischen Pool mit dem gleichen Namen und der gleichen Konfiguration in Region B für die Datenbanken der Testkunden (6). 
+- Führen Sie für die Datenbanken der bezahlten Mandanten ein Failover in Pool 2 von Region B durch, um die Verfügbarkeit sofort wiederherzustellen (4). Da es sich beim Failover um eine schnelle Änderung der Metadatenebene handelt, können Sie eine Optimierung erwägen, bei der die einzelnen Failover bei Bedarf von den Endbenutzerverbindungen ausgelöst werden.
+- Da Pool 2 jetzt nur primäre Datenbanken enthält, erhöht sich die gesamte Workload im Pool, sodass Sie die eDTU-Größe sofort erhöhen sollten (5).
+- Erstellen Sie den neuen elastischen Pool mit dem gleichen Namen und der gleichen Konfiguration in Region B für die Datenbanken der Testkunden (6).
 - Verwenden Sie nach der Erstellung des Pools die Geowiederherstellung, um die individuelle Testmandanten-Datenbank im Pool wiederherzustellen (7). Sie können erwägen, die einzelnen Wiederherstellungen über die Endbenutzerverbindungen auszulösen, oder Sie können ein anderes anwendungsspezifisches Prioritätsschema verwenden.
 
 
@@ -136,26 +136,26 @@ Nach dem Wiederherstellen von Region A müssen Sie entscheiden, ob Sie Region B 
  
 ![Abbildung 6](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
 
-- Brechen Sie alle ausstehenden Anforderungen der Geowiederherstellung an den Notfallwiederherstellungspool für Testkunden ab.   
-- Führen Sie das Failover für die Verwaltungsdatenbank durch (8). Nach der Wiederherstellung der Region werden die alten primären Replikate automatisch zu den sekundären Replikaten. Nun werden sie wieder zu primären Replikaten.  
-- Wählen Sie aus, für welche Datenbanken für bezahlte Mandaten ein Failback zu Pool 1 durchgeführt werden soll, und initiieren Sie das Failover zu den sekundären Replikaten (9). Nach der Wiederherstellung der Region werden alle Datenbanken in Pool 1 automatisch zu sekundären Replikaten. Nun werden 50% davon wieder zu primären Replikaten. 
+- Brechen Sie alle ausstehenden Anforderungen der Geowiederherstellung an den Notfallwiederherstellungspool für Testkunden ab.
+- Führen Sie das Failover für die Verwaltungsdatenbank durch (8). Nach der Wiederherstellung der Region werden die alten primären Replikate automatisch zu den sekundären Replikaten. Nun werden sie wieder zu primären Replikaten.
+- Wählen Sie aus, für welche Datenbanken für bezahlte Mandaten ein Failback zu Pool 1 durchgeführt werden soll, und initiieren Sie das Failover zu den sekundären Replikaten (9). Nach der Wiederherstellung der Region werden alle Datenbanken in Pool 1 automatisch zu sekundären Replikaten. Nun werden 50% davon wieder zu primären Replikaten.
 - Reduzieren Sie die Größe von Pool 2 auf den eDTU-Originalwert (10).
 - Legen Sie alle wiederhergestellten Testdatenbanken in Region B auf „Schreibgeschützt“ fest (11).
-- Benennen Sie für jede Datenbank im Notfallwiederherstellungspool für Testkunden, die sich seit der Wiederherstellung geändert hat, die entsprechende Datenbank im primären Testpool um, oder löschen Sie sie (12). 
-- Kopieren Sie die aktualisierten Datenbanken aus dem Pool für die Notfallwiederherstellung in den primären Pool (13). 
-- Löschen Sie den Pool für die Notfallwiederherstellung (14). 
+- Benennen Sie für jede Datenbank im Notfallwiederherstellungspool für Testkunden, die sich seit der Wiederherstellung geändert hat, die entsprechende Datenbank im primären Testpool um, oder löschen Sie sie (12).
+- Kopieren Sie die aktualisierten Datenbanken aus dem Pool für die Notfallwiederherstellung in den primären Pool (13).
+- Löschen Sie den Pool für die Notfallwiederherstellung (14).
 
 Die **Hauptvorteile** dieser Strategie lauten:
 
-- Es wird ein aggressiver Servicelevel (SLA) für die zahlenden Kunden unterstützt, da sichergestellt ist, dass bei einem Ausfall nicht mehr als 50% der Mandantendatenbanken betroffen sind. 
-- Es ist sichergestellt, dass die Blockierung der neuen Testzugriffe sofort aufgehoben wird, sobald der Notfallwiederherstellungspool für Testkunden bei der Wiederherstellung erstellt wurde. 
+- Es wird ein aggressiver Servicelevel (SLA) für die zahlenden Kunden unterstützt, da sichergestellt ist, dass bei einem Ausfall nicht mehr als 50% der Mandantendatenbanken betroffen sind.
+- Es ist sichergestellt, dass die Blockierung der neuen Testzugriffe sofort aufgehoben wird, sobald der Notfallwiederherstellungspool für Testkunden bei der Wiederherstellung erstellt wurde.
 - Ermöglicht eine effizientere Nutzung der Poolkapazität, da 50% der sekundären Datenbanken in Pool 1 und Pool 2 garantiert weniger aktiv als die primären Datenbanken sind.
 
 Die **Hauptnachteile** lauten:
 
 - Die CRUD-Vorgänge für die Verwaltungsdatenbanken weisen für die Endbenutzer, die mit Region A verbunden sind, eine geringere Latenz als für die Endbenutzer auf, die mit Region B verbunden sind. Der Grund ist, dass sie für das primäre Replikat der Verwaltungsdatenbanken ausgeführt werden.
-- Hierfür ist ein komplexeres Design der Verwaltungsdatenbank erforderlich. Beispielsweise muss jeder Mandantendatensatz über eine Standortkennzeichnung verfügen, die beim Failover und Failback geändert werden muss.  
-- Für die zahlenden Kunden kann sich die Leistung ggf. verschlechtern, bis das Poolupgrade in Region B abgeschlossen ist. 
+- Hierfür ist ein komplexeres Design der Verwaltungsdatenbank erforderlich. Beispielsweise muss jeder Mandantendatensatz über eine Standortkennzeichnung verfügen, die beim Failover und Failback geändert werden muss.
+- Für die zahlenden Kunden kann sich die Leistung ggf. verschlechtern, bis das Poolupgrade in Region B abgeschlossen ist.
 
 ## Zusammenfassung
 
@@ -164,23 +164,10 @@ In diesem Artikel geht es um die Notfallwiederherstellungsstrategien für die Da
 
 ## Nächste Schritte
 
-Die einzelnen Schritte für jedes Szenario umfassen Vorgänge für eine große Anzahl von Datenbanken. Für die zuverlässige Verwaltung sollten Sie daher die Verwendung elastischer SQL-Datenbankaufträge in Betracht ziehen. Weitere Informationen finden Sie unter [Verwalten horizontal hochskalierter Clouddatenbanken](./sql-database-elastic-jobs-overview.md). Auf den folgenden Seiten können Sie sich über die speziellen Vorgänge informieren, die zum Implementieren der in diesem Artikel beschriebenen Szenarien erforderlich sind:
+- Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
+- Informationen über Entwurfs- und Wiederherstellungsszenarien für die Geschäftskontinuität finden Sie unter [Geschäftskontinuitätsszenarien](sql-database-business-continuity-scenarios.md).
+- Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).
+- Informationen über schnellere Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
+- Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
 
-- [Hinzufügen einer sekundären Datenbank ](https://msdn.microsoft.com/library/azure/mt603689.aspx) 
-- [Failover database to secondary (Failover für die Datenbank in eine sekundäre Datenbank)](https://msdn.microsoft.com/library/azure/mt619393.aspx)
-- [Geo-restore database (Geowiederherstellung der Datenbank)](https://msdn.microsoft.com/library/azure/mt693390.aspx) 
-- [Drop database (Verwerfen der Datenbank)](https://msdn.microsoft.com/library/azure/mt619368.aspx)
-- [Copy database (Kopieren der Datenbank)](https://msdn.microsoft.com/library/azure/mt603644.aspx)
-
-## Weitere Ressourcen
-
-- [Geschäftskontinuität und Notfallwiederherstellung mit SQL-Datenbank](sql-database-business-continuity.md)
-- [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md)
-- [Geografische Wiederherstellung](sql-database-geo-restore.md)
-- [Aktive Georeplikation](sql-database-geo-replication-overview.md)
-- [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
-- [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
-- [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
-
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

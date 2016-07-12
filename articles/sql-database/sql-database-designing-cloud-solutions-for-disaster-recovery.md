@@ -32,7 +32,7 @@ Diese Option eignet sich am besten für Anwendungen mit den folgenden Merkmalen:
 
 + Aktive Instanz in einer einzelnen Azure-Region
 + Starke Abhängigkeit vom Lese-/ Schreibzugriff auf Daten
-+ Regionsübergreifende Konnektivität zwischen Anwendungslogik und Datenbank aufgrund von Latenz und Datenverkehrskosten nicht akzeptabel    
++ Regionsübergreifende Konnektivität zwischen Anwendungslogik und Datenbank aufgrund von Latenz und Datenverkehrskosten nicht akzeptabel
 
 In diesem Fall wird die Bereitstellungstopologie der Anwendung für das Bewältigen regionaler Notfälle optimiert, bei denen alle Anwendungskomponenten betroffen sind und ihr Failover als Einheit erfolgen muss. Für geografische Redundanz werden sowohl die Anwendungslogik als auch die Datenbank in eine andere Region repliziert, aber unter normalen Umständen nicht für Anwendungsworkloads verwendet. Die Anwendung in der sekundären Region muss für das Verwenden einer SQL-Verbindungszeichenfolge für die sekundäre Datenbank konfiguriert werden. Traffic Manager ist für die [Failoverroutingmethode](../traffic-manager/traffic-manager-configure-failover-routing-method.md) eingerichtet.
 
@@ -76,9 +76,9 @@ Der **Hauptnachteil** besteht darin, dass die redundante Anwendungsinstanz in de
 Diese cloudbasierte Notfallwiederherstellung eignet sich am besten für Anwendungen mit den folgenden Merkmalen:
 
 + Hohes Verhältnis von Datenbanklesevorgängen zu -schreibvorgängen
-+ Latenz von Datenbankschreibvorgängen ohne Auswirkung auf Endbenutzer  
++ Latenz von Datenbankschreibvorgängen ohne Auswirkung auf Endbenutzer
 + Schreibgeschützte Logik kann von Lese-/Schreiblogik mittels einer anderen Verbindungszeichenfolge getrennt werden
-+ Schreibgeschützte Logik ist nicht davon abhängig, dass Daten vollständig mit den neuesten Aktualisierungen synchronisiert sind  
++ Schreibgeschützte Logik ist nicht davon abhängig, dass Daten vollständig mit den neuesten Aktualisierungen synchronisiert sind
 
 Wenn Ihre Anwendung diese Merkmale aufweist, kann ein Lastenausgleich der Endbenutzerverbindungen über mehrere Anwendungsinstanzen in verschiedenen Regionen die Leistung und Benutzerfreundlichkeit verbessern. Um dies zu erreichen, muss jede Region über eine aktive Instanz der Anwendung verfügen, wobei die Lese-/Schreiblogik mit der primären Datenbank in der primären Region verbunden ist. Die schreibgeschützte Logik muss mit einer sekundären Datenbank in derselben Region wie die Anwendungsinstanz verbunden werden. Traffic Manager muss so eingerichtet werden, dass für jede Anwendungsinstanz das [Roundrobin-Routing](../traffic-manager/traffic-manager-configure-round-robin-routing-method.md) oder das [Leistungsrouting](../traffic-manager/traffic-manager-configure-performance-routing-method.md) mit [Endpunktüberwachung](../traffic-manager/traffic-manager-monitoring.md) aktiviert wird.
 
@@ -103,7 +103,7 @@ Der **Hauptvorteil** dieses Entwurfsmusters ist, dass Sie die Anwendungsworkload
 
 + Lese-/Schreibzugriffsverbindungen zwischen Anwendungsinstanzen und Datenbank haben unterschiedliche Wartezeiten und Kosten.
 + Die Anwendungsleistung ist während des Ausfalls beeinträchtigt.
-+ Anwendungsinstanzen müssen die SQL-Verbindungszeichenfolge nach einem Datenbankfailover dynamisch ändern.  
++ Anwendungsinstanzen müssen die SQL-Verbindungszeichenfolge nach einem Datenbankfailover dynamisch ändern.
 
 > [AZURE.NOTE] Ein ähnlicher Ansatz kann verwendet werden, um spezielle Workloads wie Berichtsaufträge, Business Intelligence-Tools oder Sicherungen auszulagern. Diese Workloads nutzen in der Regel umfangreiche Datenbankressourcen. Deshalb wird empfohlen, dass Sie ihnen eine der sekundären Datenbanken mit der Leistungsstufe zuweisen, die dem erwarteten Workload entspricht.
 
@@ -156,17 +156,14 @@ Für Ihre spezifische Strategie einer cloudbasierten Notfallwiederherstellung k�
 ## Nächste Schritte
 
 - Informationen zur Verwendung und Konfiguration der aktiven Georeplikation für die Notfallwiederherstellung finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
-- Informationen zur Verwendung der Geowiederherstellung für die Notfallwiederherstellung finden Sie unter [Geowiederherstellung](sql-database-geo-restore.md).
+- Informationen zum Verwenden der Geowiederherstellung für die Notfallwiederherstellung finden Sie unter [Geowiederherstellung](sql-database-recovery-using-backups.md#geo-restore).
 
-## Zusätzliche Ressourcen
+## Nächste Schritte
 
-- [Geschäftskontinuität und Notfallwiederherstellung mit SQL-Datenbank](sql-database-business-continuity.md)
-- [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md)
-- [Geografische Wiederherstellung](sql-database-geo-restore.md)
-- [Aktive Georeplikation](sql-database-geo-replication-overview.md)
-- [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
-- [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
-- [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
+- Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
+- Informationen über Entwurfs- und Wiederherstellungsszenarien für die Geschäftskontinuität finden Sie unter [Geschäftskontinuitätsszenarien](sql-database-business-continuity-scenarios.md).
+- Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).
+- Informationen über schnellere Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
+- Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

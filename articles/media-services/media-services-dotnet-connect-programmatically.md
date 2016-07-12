@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/18/2016"
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -37,7 +37,7 @@ Nach abgeschlossener Einrichtung des Media Services-Kontos haben Sie die folgend
 
 - Der Schlüssel Ihres Media Services-Kontos.
 
-Sie finden diese Werte im Azure-Verwaltungsportal: Wählen Sie Ihr Media Services-Konto aus, und klicken Sie unten im Portalfenster auf das Symbol "**SCHLÜSSEL VERWALTEN**". Klicken Sie auf die Symbole neben den Textfeldern, um den jeweiligen Wert in die Systemzwischenablage zu kopieren.
+Sie finden diese Werte im Azure-Verwaltungsportal: Wählen Sie Ihr Media Services-Konto aus, und klicken Sie unten im Portalfenster auf das Symbol **SCHLÜSSEL VERWALTEN**. Klicken Sie auf die Symbole neben den Textfeldern, um den jeweiligen Wert in die Systemzwischenablage zu kopieren.
 
 
 ## Erstellen einer CloudMediaContext-Instanz
@@ -171,7 +171,7 @@ Beispiel:
 
 Es wird dringend empfohlen, Verbindungswerte in der Konfiguration zu speichern. Dies gilt insbesondere für sensible Werte wie Ihren Kontonamen und das Kennwort. Außerdem wird empfohlen, sensible Konfigurationsdaten zu verschlüsseln. Sie können die gesamte Konfigurationsdatei mithilfe des verschlüsselnden Dateisystems von Windows (Encrypting File System, EFS) verschlüsseln. Klicken Sie zum Aktivieren von EFS für eine Datei mit der rechten Maustaste auf die Datei, wählen Sie **Eigenschaften** aus, und aktivieren Sie dann in den Einstellungen auf der Registerkarte **Erweitert** die Verschlüsselung. Sie können auch eine benutzerdefinierte Lösung für das Verschlüsseln ausgewählter Teile einer Konfigurationsdatei erstellen, indem Sie eine geschützte Konfiguration verwenden. Siehe [Verschlüsseln von Konfigurationsinformationen mithilfe der geschützten Konfiguration](https://msdn.microsoft.com/library/53tyfkaw.aspx).
 
-Die folgende Datei „App.config“ enthält die erforderlichen Verbindungswerte. Die Werte im <appSettings>-Element sind die erforderlichen Werte, die Sie bei der Einrichtung des Media Services-Kontos erhalten haben.
+Die folgende Datei „App.config“ enthält die erforderlichen Verbindungswerte. Die Werte im Element <appSettings> sind die erforderlichen Werte, die Sie bei der Einrichtung des Media Services-Kontos erhalten haben.
 
 	<configuration>
 	  <appSettings>
@@ -196,4 +196,4 @@ Zum Abrufen von Verbindungswerten aus der Konfiguration können Sie die **Config
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

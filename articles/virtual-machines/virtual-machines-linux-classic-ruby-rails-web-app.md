@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="ruby"
 	ms.topic="article"
-	ms.date="05/06/2016"
+	ms.date="06/24/2016"
 	ms.author="robmcm"/>
 
 # Ruby on Rails-Webanwendung auf Azure VM
@@ -23,7 +23,7 @@ In diesem Lernprogramm wird gezeigt, wie Sie eine Ruby on Rails-Website auf Azur
 
 Dieses Lernprogramm wurde mit Ubuntu Server 14.04 LTS getestet. Wenn Sie eine andere Linux-Distribution verwenden, müssen Sie die Schritte zur Rails-Installation möglicherweise anpassen.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 ## Erstellen einer Azure-VM
 
@@ -127,7 +127,7 @@ Eine Ausgabe ähnlich der folgenden sollte angezeigt werden.
 
 In diesem Lernprogramm haben Sie die meisten Schritte manuell ausgeführt. In einer Produktionsumgebung würden Sie die App auf einem Entwicklungscomputer schreiben und in der Azure-VM bereitstellen. Außerdem wird in den meisten Produktionsumgebungen die Rails-Anwendung zusammen mit einem anderen Serverprozess wie Apache oder NginX gehostet, der die Weiterleitung von Anfragen an mehrere Instanzen der Rails-Anwendung und statische Ressourcen bearbeitet. Weitere Informationen finden Sie unter http://rubyonrails.org/deploy/.
 
-Weitere Informationen über Ruby on Rails finden Sie in den [Ruby on Rails Guides][rails-guides] \(in englischer Sprache).
+Weitere Informationen über Ruby on Rails finden Sie in den [Ruby on Rails Guides][rails-guides] (in englischer Sprache).
 
 Informationen zum Verwenden von Azure-Diensten in der Ruby-Anwendung finden Sie unter:
 
@@ -156,4 +156,4 @@ Informationen zum Verwenden von Azure-Diensten in der Ruby-Anwendung finden Sie 
 [new-endpoint]: ./media/virtual-machines-linux-classic-ruby-rails-web-app/newendpoint.png
 [new-endpoint1]: ./media/virtual-machines-linux-classic-ruby-rails-web-app/newendpoint1.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -3,7 +3,7 @@
 	description="Hier erfahren Sie, wie die programmgesteuerte Durchführung gängiger Dienstverwaltungsaufgaben aus Python funktioniert."
 	services="cloud-services"
 	documentationCenter="python"
-	authors="huguesv"
+	authors="lmazuel"
 	manager="wpickett"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="11/03/2015"
-	ms.author="huvalo"/>
+	ms.date="06/22/2016"
+	ms.author="lmazuel"/>
 
 # Verwenden der Dienstverwaltung aus Python
 
@@ -433,6 +433,6 @@ Weitere Informationen finden Sie im [Python Developer Center](/develop/python/).
 [svc-mgmt-rest-api]: http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
 
 
-[Clouddienst]: https://azure.microsoft.com/documentation/services/cloud-services/
+[Clouddienst]: https://azure.microsoft.com/de-DE/documentation/services/cloud-services/
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0629_2016-->

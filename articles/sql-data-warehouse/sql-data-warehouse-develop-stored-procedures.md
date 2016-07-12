@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="06/14/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Gespeicherte Prozeduren in SQL Data Warehouse
@@ -34,9 +34,9 @@ Wenn SQL Data Warehouse Ihre gespeicherte Prozedur ausführt, werden die SQL-Anw
 ## Schachteln von gespeicherten Prozeduren
 Wenn gespeicherte Prozeduren andere gespeicherte Prozeduren aufrufen oder dynamischen SQL-Code ausführen, wird die innere gespeicherte Prozedur bzw. der Codeaufruf als „geschachtelt“ bezeichnet.
 
-SQL Data Warehouse unterstützt maximal acht Schachtelungsebenen. Dies ist ein Unterschied zu SQL Server. In SQL Server sind 32 Schachtelungsebenen zulässig.
+SQL Data Warehouse unterstützt maximal acht Schachtelungsebenen. Dies ist ein Unterschied zu SQL Server. In SQL Server sind 32 Schachtelungsebenen zulässig.
 
-Der Aufruf der obersten gespeicherten Prozedur entspricht Schachtelungsebene 1.
+Der Aufruf der obersten gespeicherten Prozedur entspricht Schachtelungsebene 1.
 
 ```sql
 EXEC prc_nesting
@@ -97,4 +97,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0629_2016-->

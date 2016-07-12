@@ -42,7 +42,7 @@ Das [Azure-DataFactory-Repository auf GitHub](https://github.com/azure/azure-dat
 ## Beispiele im Azure-Portal
 Sie können die Kachel mit den **Beispielpipelines** auf der Startseite Ihrer Data Factory zum Bereitstellen von Beispielpipelines mit den zugehörigen Entitäten (Datasets und verknüpfte Dienste) in Ihrer Data Factory verwenden.
 
-1. Erstellen Sie eine neue Data Factory, oder öffnen Sie eine vorhandene Data Factory. Unter [Erste Schritte mit Azure Data Factory](data-factory-get-started.md#CreateDataFactory) finden Sie Schritte zum Erstellen einer Data Factory.
+1. Erstellen Sie eine neue Data Factory, oder öffnen Sie eine vorhandene Data Factory. Unter [Erste Schritte mit Azure Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md#CreateDataFactory) finden Sie Schritte zum Erstellen einer Data Factory.
 2. Klicken Sie auf dem Blatt **DATA FACTORY** für die Data Factory auf die Kachel **Beispielpipelines**.
 
 	![Kachel "Beispielpipelines"](./media/data-factory-samples/SamplePipelinesTile.png)
@@ -61,7 +61,7 @@ Sie können die Kachel mit den **Beispielpipelines** auf der Startseite Ihrer Da
 	![Bereitstellungsstatus](./media/data-factory-samples/DeploymentStatus.png)
 
 6. Wenn die Meldung **Bereitstellung erfolgreich** auf der Kachel für das Beispiel angezeigt wird, schließen Sie das Blatt **Beispielpipelines**.
-5. Auf dem Blatt **DATA FACTORY** erkennen Sie, dass Ihrer Data Factory verknüpfte Dienste, Datasets und Pipelines hinzugefügt wurden.  
+5. Auf dem Blatt **DATA FACTORY** erkennen Sie, dass Ihrer Data Factory verknüpfte Dienste, Datasets und Pipelines hinzugefügt wurden.
 
 	![Blatt "Data Factory"](./media/data-factory-samples/DataFactoryBladeAfter.png)
    
@@ -77,31 +77,31 @@ Folgendes muss auf Ihrem Computer installiert sein:
 
 ### Verwenden von Data Factory-Vorlagen
 
-1. Klicken Sie im Menü auf **Datei**, zeigen Sie auf **Neu**, und klicken Sie auf **Projekt**. 
-2. Führen Sie im Dialogfeld **Neues Projekt** folgende Schritte aus: 
-	1. Wählen Sie unter **Vorlagen** die Option **DataFactory** aus. 
-	2. Wählen Sie im rechten Bereich **Data Factory Templates** (Data Factory-Vorlagen) aus. 
-	3. Geben Sie einen **Namen** für das Projekt ein. 
-	4. Wählen Sie einen **Speicherort** für das Projekt aus. 
-	5. Klicken Sie auf **OK**. 
+1. Klicken Sie im Menü auf **Datei**, zeigen Sie auf **Neu**, und klicken Sie auf **Projekt**.
+2. Führen Sie im Dialogfeld **Neues Projekt** folgende Schritte aus:
+	1. Wählen Sie unter **Vorlagen** die Option **DataFactory** aus.
+	2. Wählen Sie im rechten Bereich **Data Factory Templates** (Data Factory-Vorlagen) aus.
+	3. Geben Sie einen **Namen** für das Projekt ein.
+	4. Wählen Sie einen **Speicherort** für das Projekt aus.
+	5. Klicken Sie auf **OK**.
 
 	![Dialogfeld "Neues Projekt"](./media/data-factory-samples/vs-new-project-adf-templates.png)
-6. Wählen Sie im Dialogfeld **Data Factory Templates** (Data Factory-Vorlagen) die Beispielvorlage aus dem Abschnitt **Use-Case Templates** (Anwendungsfall-Vorlagen) aus, und klicken Sie auf **Weiter**. Die folgenden Schritte führen Sie durch die Verwendung der Vorlage **Kundenprofile**. Die Schritte sind bei den anderen Beispielen ähnlich. 
+6. Wählen Sie im Dialogfeld **Data Factory Templates** (Data Factory-Vorlagen) die Beispielvorlage aus dem Abschnitt **Use-Case Templates** (Anwendungsfall-Vorlagen) aus, und klicken Sie auf **Weiter**. Die folgenden Schritte führen Sie durch die Verwendung der Vorlage **Kundenprofile**. Die Schritte sind bei den anderen Beispielen ähnlich.
 
-	![Dialogfeld „Data Factory-Vorlagen“](./media/data-factory-samples/vs-data-factory-templates-dialog.png) 
+	![Dialogfeld „Data Factory-Vorlagen“](./media/data-factory-samples/vs-data-factory-templates-dialog.png)
 7. Klicken Sie im Dialogfeld **Data Factory Configuration** (Data Factory-Konfiguration) auf der Seite **Data Factory Basics** (Data Factory-Grundeinstellungen) auf **Weiter**.
-8. Führen Sie auf der Seite **Configure data factory** (Data Factory konfigurieren) folgende Schritte aus: 
+8. Führen Sie auf der Seite **Configure data factory** (Data Factory konfigurieren) folgende Schritte aus:
 	1. Wählen Sie für diese exemplarische Vorgehensweise **Create New Data Factory** (Neue Data Factory erstellen) aus. Sie können auch **Use existing data factory** (Vorhandene Data Factory verwenden) auswählen.
 	2. Geben Sie einen **Namen** für die Data Factory ein.
-	3. Wählen Sie das **Azure-Abonnement** aus, in dem die Data Factory erstellt werden soll. 
+	3. Wählen Sie das **Azure-Abonnement** aus, in dem die Data Factory erstellt werden soll.
 	4. Wählen Sie die **Ressourcengruppe** für die Data Factory aus.
-	5. Wählen Sie **USA, Westen**, **USA, Osten** oder **Europa, Norden** als **Region** aus.
-	6. Klicken Sie auf **Weiter**. 
-9. Geben Sie auf der Seite **Configure data stores** (Datenspeicher konfigurieren) eine vorhandene **Azure SQL-Datenbank** und ein **Azure-Speicherkonto** an (oder erstellen Sie diese neu), und klicken Sie anschließend auf „Weiter“. 
-10. Übernehmen Sie auf der Seite **Compute konfigurieren** die Standardwerte, und klicken Sie auf **Weiter**. 
-11. Überprüfen Sie auf der Seite **Zusammenfassung** alle Einstellungen, und klicken Sie auf **Weiter**. 
+	5. Wählen Sie **USA, Westen**, ** USA, Osten** oder **Europa, Norden** als **Region** aus.
+	6. Klicken Sie auf **Weiter**.
+9. Geben Sie auf der Seite **Configure data stores** (Datenspeicher konfigurieren) eine vorhandene **Azure SQL-Datenbank** und ein **Azure-Speicherkonto** an (oder erstellen Sie diese neu), und klicken Sie anschließend auf „Weiter“.
+10. Übernehmen Sie auf der Seite **Compute konfigurieren** die Standardwerte, und klicken Sie auf **Weiter**.
+11. Überprüfen Sie auf der Seite **Zusammenfassung** alle Einstellungen, und klicken Sie auf **Weiter**.
 12. Warten Sie auf der Seite **Bereitstellungsstatus**, bis die Bereitstellung abgeschlossen ist, und klicken Sie auf **Fertig stellen**.
-13. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und klicken Sie auf **Veröffentlichen**. 
+13. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und klicken Sie auf **Veröffentlichen**.
 19. Wenn das Dialogfeld **Melden Sie sich bei Ihrem Microsoft-Konto an** angezeigt wird, geben Sie Ihre Anmeldeinformationen für das Konto mit dem Azure-Abonnement ein, und klicken Sie auf **Anmelden**.
 20. Das folgende Dialogfeld sollte angezeigt werden:
 
@@ -109,12 +109,12 @@ Folgendes muss auf Ihrem Computer installiert sein:
 
 21. Führen Sie auf der Seite **Configure data factory** (Data Factory konfigurieren) folgende Schritte aus:
 	1. Stellen Sie sicher, dass die Option **Use existing data factory** (Vorhandene Data Factory verwenden) aktiviert ist.
-	2. Wählen Sie die **Data Factory** aus, die Sie für die Verwendung der Vorlage oben ausgewählt hatten. 
-	6. Klicken Sie auf **Weiter**, um zur Seite **Publish Items** zu wechseln. (Drücken Sie die **TAB-TASTE**, um das Feld „Name“ zu verlassen, wenn die Schaltfläche **Weiter** deaktiviert ist.) 
-23. Stellen Sie auf der Seite **Publish Items** sicher, dass alle Data Factory-Entitäten ausgewählt sind, und klicken Sie auf **Weiter**, um zur Seite **Zusammenfassung** zu wechseln.     
+	2. Wählen Sie die **Data Factory** aus, die Sie für die Verwendung der Vorlage oben ausgewählt hatten.
+	6. Klicken Sie auf **Weiter**, um zur Seite **Publish Items** zu wechseln. (Drücken Sie die **TAB-TASTE**, um das Feld „Name“ zu verlassen, wenn die Schaltfläche **Weiter** deaktiviert ist.)
+23. Stellen Sie auf der Seite **Publish Items** sicher, dass alle Data Factory-Entitäten ausgewählt sind, und klicken Sie auf **Weiter**, um zur Seite **Zusammenfassung** zu wechseln.
 24. Prüfen Sie die Zusammenfassung, und klicken Sie auf **Weiter**, um den Bereitstellungsprozess zu starten und den **Bereitstellungsstatus** anzuzeigen.
-25. Auf der Seite **Bereitstellungsstatus** sollte der Status des Bereitstellungsprozesses angezeigt werden. Klicken Sie auf „Fertig stellen“, nachdem die Bereitstellung abgeschlossen ist. 
+25. Auf der Seite **Bereitstellungsstatus** sollte der Status des Bereitstellungsprozesses angezeigt werden. Klicken Sie auf „Fertig stellen“, nachdem die Bereitstellung abgeschlossen ist.
 
 Einzelheiten zur Verwendung von Visual Studio zum Erstellen von Data Factory-Entitäten und ihrer Veröffentlichung in Azure finden Sie unter [Erstellen der ersten Azure Data Factory mit Microsoft Visual Studio](data-factory-build-your-first-pipeline-using-vs.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

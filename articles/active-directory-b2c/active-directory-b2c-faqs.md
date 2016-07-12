@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="06/27/2016"
 	ms.author="swkrish"/>
 
 # Preview-Version von Azure Active Directory B2C: Häufig gestellte Fragen
@@ -34,7 +34,7 @@ Azure AD B2C kann nicht mit Microsoft Office 365 verwendet werden. Es kann gene
 
 In einem Azure AD-Mandanten meldet sich jeder Benutzer im Mandanten (mit Ausnahme von Benutzern mit vorhandenen Microsoft-Konten) mit einer E-Mail-Adresse im Format `<xyz>@<tenant domain>` an. Hierbei ist `<tenant domain>` eine der überprüften Domänen im Mandanten oder die ursprüngliche `<...>.onmicrosoft.com`-Domäne. Dieser Kontotyp ist ein Geschäfts-, Schul- oder Unikonto.
 
-In einem Azure AD B2C-Mandanten ist es bei den meisten Apps üblich, dass Benutzer sich mit einer beliebigen E-Mail-Adresse anmelden (z. B. joe@comcast.net, bob@gmail.com, sarah@contoso.com oder jim@live.com)). Diese Art von Konto ist ein lokales Konto. Jetzt werden auch beliebige Benutzernamen (einfache Zeichenfolgen) als lokale Konten unterstützt (z. B. joe, bob, sarah oder jim). Sie können eine dieser beiden lokalen Kontotypen im Azure AD B2C-Dienst auswählen.
+Bei einem Azure AD B2C-Mandanten kann sich der Benutzer in den meisten Apps mit einer beliebigen E-Mail-Adresse anmelden (also beispielsweise mit joe@comcast.net, bob@gmail.com, sarah@contoso.com oder jim@live.com). Diese Art von Konto ist ein lokales Konto. Jetzt werden auch beliebige Benutzernamen (einfache Zeichenfolgen) als lokale Konten unterstützt (z. B. joe, bob, sarah oder jim). Sie können eine dieser beiden lokalen Kontotypen im Azure AD B2C-Dienst auswählen.
 
 ### Welche Identitätsanbieter aus sozialen Netzwerken werden derzeit unterstützt? Welche sollen in Zukunft unterstützt werden?
 
@@ -102,15 +102,17 @@ Derzeit ist dies nicht möglich. Dieses Feature ist aber geplant. Beachten Sie a
 
 Führen Sie die folgenden Schritte aus, um Ihren Azure AD B2C-Mandanten zu löschen:
 
-- Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com/) als Abonnementadministrator an. (Dies ist dasselbe Geschäfts-, Schul- oder Unikonto bzw. dasselbe Microsoft-Konto, mit dem Sie sich bei Azure registriert haben.)
+- Führen Sie die folgenden Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
+- Navigieren Sie zu den Blättern **Anwendungen**, **Identitätsanbieter** und **Alle Richtlinien**, und löschen Sie jeweils alle Einträge.
+- Melden Sie sich nun beim [klassischen Azure-Portal](https://manage.windowsazure.com/) als Abonnementadministrator an. (Dies ist dasselbe Geschäfts-, Schul- oder Unikonto bzw. dasselbe Microsoft-Konto, mit dem Sie sich bei Azure registriert haben.)
 - Navigieren Sie links zur Active Directory-Erweiterung, und klicken Sie auf Ihren B2C-Mandanten.
+- Klicken Sie auf die Registerkarte **Benutzer**.
+- Wählen Sie nacheinander die einzelnen Benutzer aus – mit Ausnahme des Benutzers, als der Sie gerade angemeldet sind (Abonnementadministrator). Klicken Sie im unteren Bereich der Seite auf **Löschen**, und klicken Sie auf **JA**, wenn Sie zur Bestätigung aufgefordert werden.
 - Klicken Sie auf die Registerkarte **Anwendungen**.
-- Wählen Sie im Dropdownfeld **Anzeigen** die Einstellung **Anwendungen im Besitz meines Unternehmens**, und klicken Sie auf das Häkchen.
+- Wählen Sie im Dropdownfeld **Anzeigen** die Einstellung **Anwendungen im Besitz meines Unternehmens** aus, und klicken Sie auf das Häkchen.
 - Es wird eine Anwendung namens**b2c-extensions-app** angezeigt. Klicken Sie im unteren Bereich der Seite auf **Löschen**, und klicken Sie auf **JA**, wenn Sie zur Bestätigung aufgefordert werden.
 - Navigieren Sie erneut zur Active Directory-Erweiterung, und wählen Sie Ihren B2C-Mandanten aus.
 - Klicken Sie unten auf der Seite auf **Löschen**. Folgen Sie den Anweisungen auf dem Bildschirm, um den Vorgang abzuschließen.
-
-Wenn Sie bereits **Benutzer**, **Anwendungen** oder andere Objekte in Ihrem B2C-Mandanten erstellt haben, müssen Sie diese löschen, bevor Sie die obigen Schritte ausführen.
 
 ### Kann ich Azure AD B2C als Teil der Enterprise Mobility Suite erwerben?
 
@@ -128,4 +130,4 @@ Derzeit können wir noch keine Angaben zum Datum der allgemeinen Verfügbarkeit 
 
 Es kann hilfreich sein, sich auch über die aktuellen [Einschränkungen der Vorschauversion](active-directory-b2c-limitations.md) zu informieren.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

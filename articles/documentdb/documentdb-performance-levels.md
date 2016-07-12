@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/16/2016" 
+	ms.date="06/27/2016" 
 	ms.author="johnmac"/>
 
 # Leistungsebenen in DocumentDB
@@ -31,7 +31,7 @@ Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 
 Jede DocumentDB-Sammlung, die unter einem Standardkonto erstellt wird, wird mit einer zugewiesenen Leistungsebene bereitgestellt. Jede Sammlung in einer Datenbank kann über individuelle Leistungsebenen verfügen. So können Sie häufig genutzten Sammlungen mehr Durchsatz und seltener genutzten Sammlungen weniger Durchsatz zuweisen. DocumentDB unterstützt sowohl benutzerdefinierte als auch vordefinierte Leistungsebenen.
 
-Jede Leistungsebene verfügt über ein zugehöriges Datenübertragungslimit der [Anforderungseinheit (RU)](http://go.microsoft.com/fwlink/?LinkId=735027). Dies ist der Durchsatz, der für die Sammlung basierend auf ihrer Leistungsebene reserviert wird und ausschließlich von dieser Sammlung verwendet werden kann.
+Jede Leistungsebene verfügt über ein zugehöriges Datenübertragungslimit der [Anforderungseinheit](documentdb-request-units.md) (Request Unit, RU). Dies ist der Durchsatz, der für die Sammlung basierend auf ihrer Leistungsebene reserviert wird und ausschließlich von dieser Sammlung verwendet werden kann.
 
 <table border="0" cellspacing="0" cellpadding="0">
     <tbody>
@@ -97,29 +97,30 @@ Es wird empfohlen, dass die Anwendung eine kleine Anzahl von Sammlungen verwende
 
 ## Ändern von Leistungsstufen mit dem Azure-Portal
 
-Das Azure-Portal ist eine Option, die Ihnen beim Verwalten der Leistungsstufen Ihrer Sammlungen zur Verfügung steht. Führen Sie diese Schritte aus, um die Umstellung von vordefinierten Leistungsstufen auf benutzerdefinierte Leistungsstufen im Azure-Portal durchzuführen, oder sehen sich Sie das 75 Sekunden lange [Channel 9-Video](https://channel9.msdn.com/Blogs/AzureDocumentDB/ChangeDocumentDBCollectionPerformance) an. Weitere Informationen zur Änderung der Preisoptionen finden Sie im Blogbeitrag [DocumentDB: Everything you need to know about using the new pricing options](https://azure.microsoft.com/blog/documentdb-use-the-new-pricing-options-on-your-existing-collections/) (DocumentDB: Alles Wissenswerte zur Verwendung der neuen Preisoptionen).
+Das Azure-Portal ist eine der Optionen, die Ihnen zum Verwalten der Leistungsstufen Ihrer Sammlungen zur Verfügung stehen. Führen Sie die hier beschriebenen Schritte durch, um im Azure-Portal von vordefinierten Durchsatzstufen zu benutzerdefinierten Durchsatzstufen zu wechseln. Bei Verwendung benutzerdefinierter Durchsatzstufen können Sie den Durchsatz an Ihre Anforderungen anpassen. Wenn Sie immer noch ein S1-Konto verwenden, können Sie den Standarddurchsatz mit wenigen Klicks von 250 RU/s auf 400 RU/s erhöhen.
+
+Weitere Informationen zu Preisänderungen in Verbindung mit benutzerdefiniertem und vordefiniertem Durchsatz finden Sie im Blogbeitrag [DocumentDB: Everything you need to know about using the new pricing options](https://azure.microsoft.com/blog/documentdb-use-the-new-pricing-options-on-your-existing-collections/) (DocumentDB: Alles Wissenswerte zur Verwendung der neuen Preisoptionen).
+
+> [AZURE.VIDEO changedocumentdbcollectionperformance]
 
 1. Navigieren Sie in Ihrem Browser zum [**Azure-Portal**](https://portal.azure.com).
-2. Klicken Sie auf der Navigationsleiste auf der linken Seite auf **Durchsuchen**.
-3. Klicken Sie im Hub **Durchsuchen** unter **Filtern nach** auf **DocumentDB-Konten**.
-4. Klicken Sie auf dem Blatt **DocumentDB-Konten** auf das DocumentDB-Konto, das die gewünschte Sammlung enthält.
-5. Führen Sie auf dem Blatt **DocumentDB-Konto** einen Bildlauf nach unten zum Fokus **Datenbanken** aus, und klicken Sie auf die Datenbank, die die gewünschte Sammlung enthält. 
-6. Führen Sie auf dem neu geöffneten Blatt **Datenbank** einen Bildlauf nach unten zum Fokus **Sammlungen** durch, und wählen Sie die gewünschte Sammlung.
-7. Wählen Sie im Blatt **Sammlung verwalten** die Option **Tarif** aus.
+2. Klicken Sie auf **Durchsuchen** > **DocumentDB-Konten**, und wählen Sie das zu ändernde DocumentDB-Konto aus.
+3. Wählen Sie im Fokus **Datenbanken** die zu ändernde Datenbank und anschließend auf dem Blatt **Datenbank** die zu ändernde Sammlung aus. Für Konten mit vordefiniertem Durchsatz gilt der Tarif S1, S2 oder S3.
 
-    ![Screenshots der Blätter „Sammlung verwalten“ und „Tarif wählen“ für Azure DocumentDB zeigen Ihnen, wo Sie den Tarif für die Sammlung ändern können.][1]
+      ![Screenshot des Blatts „Datenbank“ mit einer S1-Sammlung](./media/documentdb-performance-levels/documentdb-change-performance-S1.png)
 
-8. Wählen Sie auf dem Blatt **Tarif wählen** die Option **Standard** aus.
+4. Klicken Sie auf dem Blatt **Sammlungen** auf der oberen Leiste auf **Einstellungen**.
+5. Klicken Sie auf dem Blatt **Einstellungen** auf **Tarif**. Die voraussichtlichen monatlichen Kosten für die einzelnen Tarife werden auf dem Blatt **Tarif auswählen** angezeigt. Klicken Sie für den Wechsel zu benutzerdefiniertem Durchsatz auf **Standard** und anschließend zum Speichern der Änderung auf **Auswählen**.
 
-9. Wählen Sie auf dem Blatt **Tarif wählen** die Option **Auswählen** aus.
+      ![Screenshot der DocumentDB-Blätter „Einstellungen“ und „Tarif auswählen“](./media/documentdb-performance-levels/documentdb-change-performance.png)
 
-10. Auf dem Blatt **Sammlung verwalten** wurde der **Tarif** in **Standard** geändert, und der **Durchsatz (RU/s)** wird angezeigt.
+6. Auf dem Blatt **Einstellungen** wurde der **Tarif** in **Standard** geändert, und im Feld **Durchsatz (RU/s)** wird als Standardwert „400“ angezeigt. Legen Sie den Durchsatz auf einen Wert zwischen 400 und 10.000 [Anforderungseinheiten](documentdb-request-units.md)/Sekunde (RU/s) fest. Die **Preiszusammenfassung** am unteren Rand der Seite wird automatisch aktualisiert, um eine Schätzung der monatlichen Kosten anzugeben. Klicken Sie zum Speichern der Änderungen auf **OK**.
+    
+	![Screenshot des Blatts „Einstellungen“, der veranschaulicht, wo Sie den Durchsatzwert ändern können](./media/documentdb-performance-levels/documentdb-change-performance-set-thoughput.png)
 
-    Ändern Sie den Wert im Feld **Durchsatz** in einen Wert zwischen 400 und 10.000 [Anforderungseinheiten](documentdb-request-units.md)/Sekunde (RU/s). Die **Preiszusammenfassung** am unteren Rand der Seite wird automatisch aktualisiert, um eine Schätzung der monatlichen Kosten anzugeben.
+7. Auf dem Blatt **Datenbank** können Sie den neuen Durchsatz der Sammlung überprüfen.
 
-    ![Screenshots des Blatts „Sammlung verwalten“ zeigen Ihnen, wo Sie den Durchsatzwert für die Sammlung ändern können.][2]
-
-9. Klicken Sie auf dem Blatt **Sammlung verwalten** auf **OK**, um Ihre Sammlung auf die benutzerdefinierte Leistung zu aktualisieren.
+	![Screenshot des Blatts „Datenbank“ mit geänderter Sammlung](./media/documentdb-performance-levels/documentdb-change-performance-confirmation.png)
 
 Wenn Sie feststellen, dass Sie einen höheren Durchsatz (größer als 10.000 RU/s) oder mehr Speicher (größer als 10 GB) benötigen, können Sie eine partitionierte Sammlung erstellen. Weitere Informationen zum Erstellen einer partitionierten Sammlung finden Sie unter [So erstellen Sie eine DocumentDB-Sammlung über das Azure-Portal](documentdb-create-collection.md).
 
@@ -159,23 +160,23 @@ Besuchen Sie [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.doc
 - [**ReadOfferAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readofferasync.aspx)
 - [**ReadOffersFeedAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readoffersfeedasync.aspx)
 - [**ReplaceOfferAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.replaceofferasync.aspx)
-- [**CreateOfferQuery**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createofferquery.aspx) 
+- [**CreateOfferQuery**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createofferquery.aspx)
 
 ## Nächste Schritte
 
 Weitere Informationen zu Preisen und der Datenverwaltung mit Azure DocumentDB finden Sie in folgenden Ressourcen:
  
 - [DocumentDB-Preise](https://azure.microsoft.com/pricing/details/documentdb/)
-- [Verwalten der DocumentDB-Kapazität](documentdb-manage.md) 
+- [Verwalten der DocumentDB-Kapazität](documentdb-manage.md)
 - [Modellieren von Daten in DocumentDB](documentdb-modeling-data.md)
 - [Partitionieren von Daten in DocumentDB](documentdb-partition-data.md)
 - [Anforderungseinheiten](http://go.microsoft.com/fwlink/?LinkId=735027)
 
 Weitere Informationen zu DocumentDB finden Sie in der Azure DocumentDB-[Dokumentation](https://azure.microsoft.com/documentation/services/documentdb/).
 
-Im Artikel [Performance and Scale Testing with Azure DocumentDB](documentdb-performance-testing.md) (Leistungs- und Skalierungstests mit Azure DocumentDB) finden Sie Informationen zu den ersten Schritten beim Testen von Skalierung und Leistung mit DocumentDB.
+Im Artikel [Leistungs- und Skalierungstests mit Azure DocumentDB](documentdb-performance-testing.md) finden Sie eine Einführung in Leistungs- und Skalierungstests mit DocumentDB.
 
 [1]: ./media/documentdb-performance-levels/documentdb-change-collection-performance7-9.png
 [2]: ./media/documentdb-performance-levels/documentdb-change-collection-performance10-11.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

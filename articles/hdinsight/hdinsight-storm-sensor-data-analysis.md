@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/28/2016"
+   ms.date="06/28/2016"
    ms.author="larryfr"/>
 
 # Analysieren von Sensordaten mit Apache Storm, Event Hub und HBase in HDInsight (Hadoop)
 
 Erfahren Sie, wie Sie Apache Storm in HDInsight zur Verarbeitung von Sensordaten von Azure Event Hubs verwenden und mit "D3.js" visualisieren. Dieses Dokument beschreibt weiterhin die Verwendung virtueller Azure-Netzwerke zum Verbinden von Storm in HDInsight mit HBase in HDInsight sowie das Speichern von Daten aus der Topologie in HBase.
 
-> [AZURE.NOTE] Die Informationen in diesem Dokument basieren auf der Verwendung eine Windows-basierten Storm auf HDInsight-Clusters. Informationen zum Arbeiten mit Azure Event Hub von Linux-basiertem Storm auf HDInsight finden Sie unter [Verarbeitung von Ereignissen von Azure Event Hubs mit Storm auf HDInsight.](hdinsight-storm-develop-java-event-hub-topology.md)
+> [AZURE.NOTE] Die Informationen in diesem Dokument basieren auf der Verwendung eines Windows-basierten Storm-in-HDInsight-Clusters der Version 3.2. Informationen zum Arbeiten mit Azure Event Hub von Linux-basiertem Storm auf HDInsight finden Sie unter [Verarbeitung von Ereignissen von Azure Event Hubs mit Storm auf HDInsight.](hdinsight-storm-develop-java-event-hub-topology.md)
 
 ## Voraussetzungen
 
@@ -93,7 +93,7 @@ Bevor Sie dieses Beispiel verwenden können, müssen Sie einen Azure Event Hub e
 
 Event Hub ist die Datenquelle für dieses Beispiel. Führen Sie die folgenden Schritte aus, um einen neuen Event Hub zu erstellen.
 
-1. Wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) die Optionen **NEU | Service Bus | Event Hub | Benutzerdefiniert erstellen**.
+1. Wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) die Option **NEU| Service Bus | Event Hub | Custom Create**.
 
 2. Geben Sie im Dialogfeld **Neuen Event Hub hinzufügen** einen **Event Hub-Namen** ein, wählen Sie die **Region** aus, in der der Hub erstellt werden soll, und erstellen Sie einen neuen Namespace, oder wählen einen vorhandenen Namespace aus. Klicken Sie zum Schluss auf den Pfeil, um fortzufahren.
 
@@ -196,7 +196,7 @@ Vor dem Testen müssen Sie das Dashboard zur Anzeige der Ausgabe der Topologie u
 
 		Server listening at port 3000
 
-2. Öffnen Sie einen Webbrowser, und geben Sie ****http://localhost:3000/** als Adresse ein. Eine Seite ähnlich der folgenden wird angezeigt:
+2. Öffnen Sie einen Webbrowser, und geben Sie **http://localhost:3000/** als Adresse ein. Eine Seite ähnlich der folgenden wird angezeigt:
 
 	![Webdashboard](./media/hdinsight-storm-sensor-data-analysis/emptydashboard.png)
 
@@ -318,7 +318,7 @@ Wenn Sie HBase mit diesem Beispiel verwenden möchten, müssen Sie ein virtuelle
 
 9. Unten auf der Seite finden Sie den Namen des Standardsubnetzes. Dieser lautet **Subnet-1**. Klicken Sie auf die Schaltfläche **Subnetz hinzufügen**, um **Subnet-2** hinzuzufügen. Diese Subnetze werden die Storm- und HBase-Cluster enthalten.
 
-	> [AZURE.NOTE] In diesem Artikel verwenden wir Cluster mit nur einem Knoten. Falls Sie Cluster mit mehreren Knoten erstellen, müssen Sie den Wert **CIDR (ANZAHL ADRESSEN)** für das Subnetz überprüfen, das Sie für den Cluster verwenden. Die Anzahl der Adressen muss größer als die Anzahl der Workerknoten plus sieben sein (Gateway: 2, Hauptknoten: 2, Zookeeper: 3). Wenn Sie zum Beispiel einen HBase-Cluster mit 10 Knoten benötigen, muss die Anzahl der Adressen für das Subnetz größer als 17 (10 + 7) sein. Andernfalls funktioniert die Bereitstellung nicht.
+	> [AZURE.NOTE] In diesem Artikel verwenden wir Cluster mit nur einem Knoten. Falls Sie Cluster mit mehreren Knoten erstellen, müssen Sie den Wert **CIDR (ANZAHL ADRESSEN)** für das Subnetz überprüfen, das Sie für den Cluster verwenden. Die Anzahl der Adressen muss größer als die Anzahl der Workerknoten plus sieben sein (Gateway: 2, Hauptknoten: 2, Zookeeper: 3). Wenn Sie zum Beispiel einen HBase-Cluster mit 10 Knoten benötigen, muss die Anzahl der Adressen für das Subnetz größer als 17 (10 + 7) sein. Andernfalls funktioniert die Bereitstellung nicht.
 	>
 	> Sie sollten unbedingt ein einziges Subnetz pro Cluster verwenden.
 
@@ -372,7 +372,7 @@ Der Teil des Domänennamens, der mit dem Clusternamen beginnt, ist das DNS-Suffi
 
 	Dies wird vom HBase-Bolt für die Kommunikation mit dem HBase-Cluster verwendet.
 
-1. Öffnen Sie **hdinsight-eventhub-example\\TemperatureMonitor\\src\\main\\java\\com\\microsoft\\examples\\bolts** in einem Text-Editor, und heben Sie die Kommentierung der folgenden Zeilen auf, indem Sie die Zeichen `//` am Anfang entfernen. Speichern Sie die Datei, nachdem Sie diese Änderungen vorgenommen haben.
+1. Öffnen Sie **hdinsight-eventhub-example\\TemperatureMonitor\\src\\main\\java\\com\\microsoft\\examples\\bolts** in einem Text-Editor, und heben Sie die Auskommentierung der folgenden Zeilen auf, indem Sie die Zeichen `//` am Anfang entfernen. Speichern Sie die Datei, nachdem Sie diese Änderungen vorgenommen haben.
 
 		topologyBuilder.setBolt("HBase", new HBaseBolt("SensorData", mapper).withConfigKey("hbase.conf"), spoutConfig.getPartitionCount())
     	  .fieldsGrouping("Parser", "hbasestream", new Fields("deviceid")).setNumTasks(spoutConfig.getPartitionCount());
@@ -427,4 +427,4 @@ Sie haben gelernt, wie Sie Daten mithilfe von Storm aus einem Event Hub lesen un
 
 [azure-portal]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0629_2016-->

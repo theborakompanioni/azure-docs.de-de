@@ -20,7 +20,7 @@ ms.service="virtual-machines-windows"
 
 Wenn Sie einen HPC Pack-Cluster auf virtuellen Azure-Computern erstellt haben, möchten Sie wahrscheinlich verschiedene virtuelle Computer für Computeknoten im Cluster hinzufügen, entfernen, starten (bereitstellen) oder beenden (Bereitstellung aufheben). Zum Durchführen dieser Aufgaben können Sie Azure PowerShell-Skripts ausführen, die auf dem Hauptknoten des virtuellen Computers installiert sind. Mit diesen Skripts können Sie die Anzahl und Verfügbarkeit der HPC Pack-Clusterressourcen steuern und so auch Kosten senken.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
 ## Voraussetzungen
@@ -179,4 +179,4 @@ Stop-HPCIaaSNode.ps1 –Name HPCNodeCN-* -Force
 
 * Wenn Sie die Clusterknoten entsprechend der aktuellen Arbeitsauslastung der Aufträge und Aufgaben im Cluster automatisch vergrößern oder verkleinern möchten, finden Sie entsprechende Informationen unter [Automatisches zentrales Hoch- und Herunterskalieren von Azure-Computeressourcen in einem HPC Pack-Cluster entsprechend der Clusterworkload](virtual-machines-windows-classic-hpcpack-cluster-node-autogrowshrink.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

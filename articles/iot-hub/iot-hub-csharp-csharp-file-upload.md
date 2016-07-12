@@ -35,12 +35,106 @@ Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 
 + Microsoft Visual Studio 2015
 
-+ Ein aktives Azure-Konto. <br/>Wenn Sie kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Konto erstellen. Weitere Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fde-DE%2Fdevelop%2Fiot%2Ftutorials%2Ffile-upload%2F target="\_blank").
++ Ein aktives Azure-Konto. (Falls Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][lnk-free-trial].)
 
-[AZURE.INCLUDE [iot-hub-file-upload-device-csharp](../../includes/iot-hub-file-upload-device-csharp.md)]
+## Zuweisen eines Azure Storage-Kontos zu IoT Hub
 
+Da vom simulierten Gerät eine Datei in ein Azure Storage-Blob hochgeladen wird, müssen Sie über ein [Azure Storage]-Konto verfügen, das IoT Hub zugeordnet ist. Wenn Sie ein Speicherkonto mit einer IoT Hub-Instanz verknüpfen, kann der Hub einen SAS-URI generieren, den ein Gerät zum sicheren Hochladen einer Datei an einen Blobcontainer verwenden kann. Der IoT Hub-Dienst und die Geräte-SDKs koordinieren den Prozess, der die SAS-URI generiert und für ein Gerät verfügbar macht, sodass er beim Hochladen einer Datei verwendet werden kann.
 
-[AZURE.INCLUDE [iot-hub-file-upload-cloud-csharp](../../includes/iot-hub-file-upload-cloud-csharp.md)]
+Gehen Sie wie unter [Verwalten von IoT Hubs über das Azure-Portal] vor, um ein Azure Storage-Konto mit Ihrer IoT Hub-Instanz zu verknüpfen.
+
+## Hochladen einer Datei von einem simulierten Gerät
+
+In diesem Abschnitt ändern Sie die simulierte Geräteanwendung, die Sie in [Senden von Cloud-zu-Gerät-Nachrichten mit IoT Hub] erstellt haben, um Cloud-zu-Gerät-Nachrichten von IoT Hub zu empfangen.
+
+1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt **SimulatedDevice**. Klicken Sie auf **Hinzufügen** und dann auf **Vorhandenes Element**. Navigieren Sie zu einer Bilddatei, und fügen Sie sie Ihrem Projekt hinzu. In diesem Tutorial wird davon ausgegangen, dass das Bild `image.jpg` heißt.
+
+2. Klicken Sie mit der rechten Maustaste auf das Bild, und klicken Sie dann auf **Eigenschaften**. Stellen Sie sicher, dass **In Ausgabeverzeichnis kopieren** auf **Immer kopieren** festgelegt ist.
+
+    ![][1]
+
+3. Fügen Sie zu Beginn der Datei **Program.cs** die folgenden Anweisungen hinzu:
+
+        using System.IO;
+
+4. Fügen Sie der **Program**-Klasse die folgende Methode hinzu:
+         
+        private static async void SendToBlobAsync()
+        {
+            string fileName = "image.jpg";
+            Console.WriteLine("Uploading file: {0}", fileName);
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
+            using (var sourceData = new FileStream(@"image.jpg", FileMode.Open))
+            {
+                await deviceClient.UploadToBlobAsync(fileName, sourceData);
+            }
+
+            watch.Stop();
+            Console.WriteLine("Time to upload file: {0}ms\n", watch.ElapsedMilliseconds);
+        }
+
+    Die `UploadToBlobAsync`-Methode verwendet den Dateinamen und die Datenstromquelle der hochzuladenden Datei und behandelt das Hochladen in den Speicher. Die Konsolenanwendung zeigt den Zeitaufwand für das Hochladen der Datei an.
+
+5. Fügen Sie in der **Main**-Methode unmittelbar vor der Zeile `Console.ReadLine()` die folgende Methode hinzu:
+
+        SendToBlobAsync();
+
+> [AZURE.NOTE] Der Einfachheit halber wird in diesem Lernprogramm keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (etwa einen exponentiellen Backoff), wie im MSDN-Artikel zum [Behandeln vorübergehender Fehler] beschrieben.
+
+## Erhalten einer Benachrichtigung zum Dateiupload
+
+In diesem Abschnitt schreiben Sie eine Windows-Konsolen-App, die Uploadbenachrichtigungen von IoT Hub empfängt.
+
+1. Erstellen Sie in der aktuellen Visual Studio-Projektmappe mithilfe der Projektvorlage **Konsolenanwendung** ein neues Visual C#-Windows-Projekt. Nennen Sie das Projekt **ReadFileUploadNotification**.
+
+    ![Neues Projekt in Visual Studio][2]
+
+2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ReadFileUploadNotification**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
+
+    Daraufhin wird das Fenster "NuGet-Pakete verwalten" angezeigt.
+
+2. Suchen Sie nach `Microsoft.Azure.Devices`, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
+
+	Daraufhin wird das [NuGet-Paket mit dem SDK des Azure IoT-Diensts] heruntergeladen und installiert. Dem Projekt **ReadFileUploadNotification** wird ein Verweis hinzugefügt.
+
+3. Fügen Sie zu Beginn der Datei **Program.cs** die folgenden Anweisungen hinzu:
+
+        using Microsoft.Azure.Devices;
+
+4. Fügen Sie der **Program**-Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert durch die IoT Hub-Verbindungszeichenfolge aus [Erste Schritte mit IoT Hub]\:
+
+		static ServiceClient serviceClient;
+        static string connectionString = "{iot hub connection string}";
+        
+5. Fügen Sie der **Program**-Klasse die folgende Methode hinzu:
+   
+        private async static Task ReceiveFileUploadNotificationAsync()
+        {
+            var notificationReceiver = serviceClient.GetFileNotificationReceiver();
+
+            Console.WriteLine("\nReceiving file upload notification from service");
+            while (true)
+            {
+                var fileUploadNotification = await notificationReceiver.ReceiveAsync();
+                if (fileUploadNotification == null) continue;
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Received file upload noticiation: {0}", string.Join(", ", fileUploadNotification.BlobName));
+                Console.ResetColor();
+
+                await notificationReceiver.CompleteAsync(fileUploadNotification);
+            }
+        }
+
+    Beachten Sie, dass das Empfangsmuster mit dem Muster zum Empfangen von Cloud-zu-Gerät-Nachrichten von der Geräte-App identisch ist.
+
+6. Fügen Sie abschließend der **Main**-Methode die folgenden Zeilen hinzu:
+
+        Console.WriteLine("Receive file upload notifications\n");
+        serviceClient = ServiceClient.CreateFromConnectionString(connectionString);
+        ReceiveFileUploadNotificationAsync().Wait();
+        Console.ReadLine();
 
 ## Ausführen der Anwendungen
 
@@ -48,7 +142,7 @@ Sie können jetzt die Anwendung ausführen.
 
 1. Klicken Sie in Visual Studio mit der rechten Maustaste auf Ihre Projektmappe, und wählen Sie **Startprojekte festlegen** aus. Wählen Sie **Mehrere Startprojekte** und dann die Aktion **Starten** für **ReadFileUploadNotification** und **SimulatedDevice** aus.
 
-2. Drücken Sie **F5**. Beide Anwendungen sollten gestartet werden. In der einen Konsolen-App sollte eine Nachricht zum Abschluss des Uploads und in der anderen eine Nachricht zum Empfang der Benachrichtigung zum Upload angezeigt werden. Sie können im [Azure-Portal] oder in Visual Studio Server-Explorer überprüfen, ob die hochgeladene Datei in Ihrem Speicherkonto vorhanden ist.
+2. Drücken Sie F5. Beide Anwendungen sollten gestartet werden. In der einen Konsolen-App sollte eine Nachricht zum Abschluss des Uploads und in der anderen eine Nachricht zum Empfang der Benachrichtigung zum Upload angezeigt werden. Sie können im [Azure-Portal] oder in Visual Studio Server-Explorer überprüfen, ob die hochgeladene Datei in Ihrem Speicherkonto vorhanden ist.
 
   ![][50]
 
@@ -70,6 +164,8 @@ Weitere Informationen zu IoT Hub:
 <!-- Images. -->
 
 [50]: ./media/iot-hub-csharp-csharp-file-upload/run-apps1.png
+[1]: ./media/iot-hub-csharp-csharp-file-upload/image-properties.png
+[2]: ./media/iot-hub-csharp-csharp-file-upload/create-identity-csharp1.png
 
 <!-- Links -->
 
@@ -93,7 +189,14 @@ Weitere Informationen zu IoT Hub:
 [IoT Hub-Entwicklerhandbuch]: iot-hub-devguide.md
 [IoT Hub Supported Devices]: iot-hub-supported-devices.md
 [Erste Schritte mit IoT Hub]: iot-hub-csharp-csharp-getstarted.md
-[Supported devices]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
+[Supported devices]: iot-hub-tested-configurations.md
 [Azure IoT Developer Center]: http://www.azure.com/develop/iot
 
-<!---HONumber=AcomDC_0622_2016-->
+[IoT Hub Developer Guide - C2D]: iot-hub-devguide.md#c2d
+[Behandeln vorübergehender Fehler]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
+[Azure Storage]: ../storage/storage-create-storage-account.md#create-a-storage-account
+[Verwalten von IoT Hubs über das Azure-Portal]: iot-hub-manage-through-portal.md#file-upload
+[NuGet-Paket mit dem SDK des Azure IoT-Diensts]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
+[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+
+<!---HONumber=AcomDC_0629_2016-->

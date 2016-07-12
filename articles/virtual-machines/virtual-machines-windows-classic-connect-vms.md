@@ -19,7 +19,7 @@
 
 # Verbinden virtueller Windows-Computer, die mit dem klassischen Bereitstellungsmodell erstellt wurden, mit einem virtuellen Netzwerk oder einem Clouddienst
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 Virtuelle Windows-Computer, die mit dem klassischen Bereitstellungsmodell erstellt werden, befinden sich immer in einem Clouddienst. Der Clouddienst fungiert als Container und stellt einen eindeutigen öffentlichen DNS-Namen, eine öffentliche IP-Adresse und einen Satz von Endpunkten bereit, damit auf den virtuellen Computer über das Internet zugegriffen werden kann. Der Clouddienst kann sich in einem virtuellen Netzwerk befinden, was jedoch nicht zwingend erforderlich ist. Sie können auch [virtuelle Linux-Computer mit einem virtuellen Netzwerk oder einem Clouddienst verbinden](virtual-machines-linux-classic-connect-vms.md).
 
@@ -33,4 +33,4 @@ Wenn Sie Ihre virtuellen Computer im gleichen eigenständigen Clouddienst platzi
 
 Nachdem Sie einen virtuellen Computer erstellt haben, empfiehlt es sich, [einen Datenträger hinzuzufügen](virtual-machines-windows-classic-attach-disk.md), damit ein Speicherort für die Daten der Dienste und Workloads verfügbar ist.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0629_2016-->

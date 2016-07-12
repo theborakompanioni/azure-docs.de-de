@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/20/2016"
+   ms.date="06/24/2016"
    ms.author="toddabel"/>
 
 
@@ -192,5 +192,6 @@ Sehen Sie sich die Diagnoseereignisse an, die für [Reliable Actors](service-fab
 
 ## Verwandte Artikel
 * [Erfahren Sie, wie Sie Leistungsindikatoren oder Protokolle mit diagnostischen Erweiterungen erfassen können.](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)
+* [Service Fabric-Lösung in Log Analytics](../log-analytics/log-analytics-service-fabric.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

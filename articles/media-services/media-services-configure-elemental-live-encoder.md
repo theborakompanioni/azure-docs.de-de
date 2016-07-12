@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="05/03/2016"
+	ms.date="06/22/2016"
 	ms.author="cenkdin;anilmur;juliako"/>
 
 #Verwenden des Elemental Live-Encoders zum Senden eines Single-Bitrate-Livedatenstroms
@@ -72,22 +72,22 @@ In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restl
 
 **Video**:
  
-- Codec: H.264 
-- Profil: Hoch (Level 4.0) 
-- Bitrate: 5.000 KBit/s 
-- Keyframe: 2 Sekunden (60 Sekunden) 
+- Codec: H.264
+- Profil: Hoch (Level 4.0)
+- Bitrate: 5.000 KBit/s
+- Keyframe: 2 Sekunden (60 Sekunden)
 - Bildfrequenz: 30
  
 **Audio**:
 
-- Codec: AAC (LC) 
-- Bit Rate: 192 Kbit/s 
+- Codec: AAC (LC)
+- Bit Rate: 192 Kbit/s
 - Abtastrate: 44,1 kHz
 
 
 ####Konfigurationsschritte
 
-1. Navigieren Sie zur Webschnittstelle **Elemental Live**, und richten Sie den Encoder für das **UDP/TS**-Streaming ein. 
+1. Navigieren Sie zur Webschnittstelle **Elemental Live**, und richten Sie den Encoder für das **UDP/TS**-Streaming ein.
 
 2. Führen Sie nach dem Erstellen eines neuen Ereignisses einen Bildlauf nach unten zu den Ausgabegruppen durch, und fügen Sie die Ausgabegruppe **UDP/TS** hinzu.
 
@@ -98,17 +98,17 @@ In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restl
 	>[AZURE.NOTE] Es wird empfohlen, den Zeitcode für das Elemental-Ereignis auf „Systemuhr“ festzulegen, damit der Encoder die Verbindung bei einem Ausfall des Datenstroms erneut herstellen kann.
 
 4. Klicken Sie nach dem Erstellen der Ausgabe nun auf **Datenstrom hinzufügen**. Jetzt können die Ausgabeeinstellungen konfiguriert werden.
-5. Führen Sie einen Bildlauf zum gerade erstellten Element „Datenstrom 1“ durch, klicken Sie links auf die Registerkarte **Video**, und erweitern Sie den Abschnitt mit den erweiterten Einstellungen (**Erweitert**). 
+5. Führen Sie einen Bildlauf zum gerade erstellten Element „Datenstrom 1“ durch, klicken Sie links auf die Registerkarte **Video**, und erweitern Sie den Abschnitt mit den erweiterten Einstellungen (**Erweitert**).
 
 	![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental4.png)
 
 	Elemental Live verfügt zwar über viele verfügbare Anpassungsmöglichkeiten, aber für die ersten Schritte beim Streaming zu AMS werden die folgenden Einstellungen empfohlen.
 	
-	- Auflösung: 1280 x 720 
-	- Bildfrequenz: 30 
-	- GOP-Größe: 60 Bilder 
-	- Zeilensprungmodus: Progressiv 
-	- Bitrate: 5.000.000 Bit/s (kann je nach Netzwerkbeschränkungen angepasst werden) 
+	- Auflösung: 1280 x 720
+	- Bildfrequenz: 30
+	- GOP-Größe: 60 Bilder
+	- Zeilensprungmodus: Progressiv
+	- Bitrate: 5.000.000 Bit/s (kann je nach Netzwerkbeschränkungen angepasst werden)
 	
 
 	![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental5.png)
@@ -135,7 +135,7 @@ Nachdem der Datenstrom 30 Sekunden lang ausgeführt wurde, navigieren Sie zurü
 
 ###Testen der Wiedergabe
   
-1. Navigieren Sie zum AMSE-Tool, und klicken Sie mit der rechten Maustaste auf den Kanal, der getestet werden soll. Bewegen Sie den Mauszeiger im Menü über **Wiedergabevorschau**, und wählen Sie **mit Azure Media Player** aus.  
+1. Navigieren Sie zum AMSE-Tool, und klicken Sie mit der rechten Maustaste auf den Kanal, der getestet werden soll. Bewegen Sie den Mauszeiger im Menü über **Wiedergabevorschau**, und wählen Sie **mit Azure Media Player** aus.
 
 	![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental8.png)
 
@@ -145,18 +145,18 @@ Wenn eine Fehlermeldung angezeigt wird, müssen Sie den Kanal zurücksetzen und 
 
 ###Erstellen eines Programms
 
-1. Nachdem die Kanalwiedergabe überprüft wurde, erstellen Sie ein Programm. Klicken Sie im AMSE-Tool auf der Registerkarte **Live** mit der rechten Maustaste in den Programmbereich, und wählen Sie **Neues Programm erstellen** aus.  
+1. Nachdem die Kanalwiedergabe überprüft wurde, erstellen Sie ein Programm. Klicken Sie im AMSE-Tool auf der Registerkarte **Live** mit der rechten Maustaste in den Programmbereich, und wählen Sie **Neues Programm erstellen** aus.
 
 	![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental9.png)
 
 2. Benennen Sie die Anwendung, und passen Sie ggf. die **Archivfensterlänge** an (standardmäßig auf 4 Stunden festgelegt). Sie können außerdem einen Speicherort angeben oder die Standardeinstellung beibehalten.
 3. Aktivieren Sie das Kontrollkästchen **Programm jetzt starten**.
-4. Klicken Sie auf **Programm erstellen**.  
+4. Klicken Sie auf **Programm erstellen**.
   
 	Hinweis: Die Programmerstellung erfordert weniger Zeit als die Kanalerstellung.
  
 5. Sobald die Anwendung ausgeführt wird, bestätigen Sie die Wiedergabe, indem Sie mit der rechten Maustaste auf das Programm klicken, zu **Programm(e) wiedergeben** navigieren und dann **mit Azure Media Player** auswählen.
-6. Nach der Bestätigung klicken Sie mit der rechten Maustaste erneut auf das Programm, und wählen Sie **Ausgabe-URL in die Zwischenablage kopieren** aus (bzw. rufen Sie diese Informationen über das Menü mit der Option **Programminformationen und -einstellungen** ab). 
+6. Nach der Bestätigung klicken Sie mit der rechten Maustaste erneut auf das Programm, und wählen Sie **Ausgabe-URL in die Zwischenablage kopieren** aus (bzw. rufen Sie diese Informationen über das Menü mit der Option **Programminformationen und -einstellungen** ab).
 
 Der Datenstrom kann jetzt in einen Player eingebettet oder an eine Zielgruppe für die Livewiedergabe verteilt werden.
 
@@ -173,4 +173,4 @@ Eine Anleitung finden Sie im Thema [Problembehandlung](media-services-troublesho
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

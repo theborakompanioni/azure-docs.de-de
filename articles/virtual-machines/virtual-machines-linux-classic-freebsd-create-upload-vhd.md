@@ -21,13 +21,13 @@
 
 Dieser Artikel erläutert, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) erstellen und hochladen, die das FreeBSD-Betriebssystem enthält, um sie als eigenes Image für die Erstellung von virtuellen Computern (Virtual Machines, VM) in Azure zu nutzen.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
 ##Voraussetzungen##
 In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Elemente verfügen:
 
-- **Azure-Abonnement** – Wenn Sie noch nicht über ein Abonnement verfügen, können Sie in wenigen Minuten ein kostenloses Testkonto einrichten. Wenn Sie über ein MSDN-Abonnement verfügen, lesen Sie [Azure-Vorteil für MSDN-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Anderenfalls finden Sie unter [Erstellen eines kostenlosen Testkontos](https://azure.microsoft.com/pricing/free-trial/) weitere Informationen.  
+- **Azure-Abonnement** – Wenn Sie noch nicht über ein Abonnement verfügen, können Sie in wenigen Minuten ein kostenloses Testkonto einrichten. Wenn Sie über ein MSDN-Abonnement verfügen, lesen Sie [Azure-Vorteil für MSDN-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Anderenfalls finden Sie unter [Erstellen eines kostenlosen Testkontos](https://azure.microsoft.com/pricing/free-trial/) weitere Informationen.
 
 - **Azure PowerShell-Tools** – Sie haben das Microsoft Azure PowerShell-Modul installiert und für die Verwendung Ihres Abonnements konfiguriert. Informationen zum Herunterladen dieses Moduls finden Sie unter [Azure-Downloads](https://azure.microsoft.com/downloads/). Ein Tutorial zum Installieren und Konfigurieren des Moduls ist hier verfügbar. Sie verwenden das Cmdlet [Azure-Downloads](https://azure.microsoft.com/downloads/) zum Hochladen der VHD.
 
@@ -227,4 +227,4 @@ Nach dem Hochladen fügen Sie die VHD-Datei als Image zu der Ihrem Abonnement zu
 
 	![FreeBSD-Images in Azure](./media/virtual-machines-linux-classic-freebsd-create-upload-vhd/freebsdimageinazure.png)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

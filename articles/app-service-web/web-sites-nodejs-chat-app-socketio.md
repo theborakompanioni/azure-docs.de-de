@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="04/29/2016"
+	ms.date="06/24/2016"
 	ms.author="robmcm"/>
 
 # Erstellen einer Node.js-Chat-Anwendung mit Socket.IO in Azure App Service
@@ -97,7 +97,7 @@ Befolgen Sie diese Schritte, um eine Azure-Web-App zu erstellen und dann die Git
 	>[AZURE.NOTE]
 	Der Befehl "azure site set -w" funktioniert erst ab Version 0.7.4 der Azure-Befehlszeilenschnittstelle. Sie können die Unterstützung von WebSocket im [Azure-Portal](https://portal.azure.com) aktivieren.
 	>
-	>Um WebSockets mithilfe des Azure-Portals zu aktivieren, klicken Sie auf dem Web-Apps-Blatt auf die Web-App und dann auf **Alle Einstellungen** > **Anwendungseinstellungen**. Klicken Sie unter **Web Sockets** auf **Ein**. Klicken Sie anschließend auf **Save**.
+	>Um WebSockets mithilfe des Azure-Portals zu aktivieren, klicken Sie auf dem Web-Apps-Blatt auf die Web-App und dann auf **Alle Einstellungen** > ** Anwendungseinstellungen**. Klicken Sie unter **Web Sockets** auf **Ein**. Klicken Sie anschließend auf **Save**.
 
 1. Um die Website in Azure anzuzeigen, starten Sie den Webbrowser mit folgendem Befehl, und navigieren Sie zur gehosteten Web-App:
 
@@ -292,4 +292,4 @@ Weitere Informationen finden Sie außerdem im [Node.js Developer Center].
 [npm-output]: ./media/web-sites-nodejs-chat-app-socketio/socketio-7.png
 [completed-app]: ./media/web-sites-nodejs-chat-app-socketio/websitesocketcomplete.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

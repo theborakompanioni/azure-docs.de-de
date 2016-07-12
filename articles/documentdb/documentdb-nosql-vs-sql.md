@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article" 
-	ms.date="03/28/2016"
+	ms.date="06/24/2016"
 	ms.author="mimig"/>
 
 # NoSQL im Vergleich zu SQL
@@ -130,4 +130,4 @@ Wir möchten Sie einladen, mehr über unsere SQL- und NoSQL-Produkte zu erfahren
     - [SQL Server](https://www.microsoft.com/server-cloud/products/sql-server-2016/)
     - [SQL Server auf virtuellen Azure-Computern](https://azure.microsoft.com/services/virtual-machines/sql-server/)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0629_2016-->

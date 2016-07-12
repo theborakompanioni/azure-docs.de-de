@@ -13,12 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="05/16/2016"
+   ms.date="06/23/2016"
    ms.author="mbaldwin"/>
 
 # Unterstützte Token- und Anspruchstypen
-
-[AZURE.INCLUDE [active-directory-protocols](../../includes/active-directory-protocols.md)]
 
 Zweck dieses Themas ist es, Ihnen das Verstehen und Auswerten der Ansprüche in den SAML 2.0- und JWT-Token (JSON Web Tokens) zu erleichtern, die Azure Active Directory (Azure AD) ausstellt.
 
@@ -414,4 +412,4 @@ Dies ist ein Beispiel eines typischen JWT-Tokens (JSON webtoken), das bei einem 
 
 [Azure Active Directory-Authentifizierungsprotokolle](https://msdn.microsoft.com/library/azure/dn151124.aspx)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

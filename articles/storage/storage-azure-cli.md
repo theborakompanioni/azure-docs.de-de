@@ -1,6 +1,6 @@
 <properties
     pageTitle="Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher | Microsoft Azure"
-    description="Erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle (Azure-CLI) mit Azure Storage verwenden, um Speicherkonten zu erstellen und zu verwalten sowie mit Azure-Blobs und -Dateien zu arbeiten. Die Azure-Befehlszeilenschnittstelle ist ein plattformübergreifendes Tool."
+    description="Erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle (Azure-CLI) mit Azure Storage verwenden, um Speicherkonten zu erstellen und zu verwalten sowie mit Azure-Blobs und -Dateien zu arbeiten. Die Azure-Befehlszeilenschnittstelle ist ein plattformübergreifendes Tool. "
     services="storage"
     documentationCenter="na"
     authors="tamram"
@@ -25,7 +25,7 @@ Diese Anleitung enthält Informationen zur Verwendung der [Azure-Befehlszeilensc
 
 Diese Anleitung setzt voraus, dass Sie die grundlegenden Konzepte von Azure-Speicher verstehen. Die Anleitung bietet eine Reihe von Skripts, um die Verwendung der Azure-Befehlszeilenschnittstelle mit Azure-Speicher zu veranschaulichen. Sie müssen die Skriptvariablen auf Basis Ihrer Konfiguration aktualisieren, bevor Sie die jeweiligen Skripts ausführen.
 
-> [AZURE.NOTE] Die Anleitung enthält Beispiele für die Befehle und Skripts der Azure-Befehlszeilenschnittstelle, die im Azure Service Management (ASM)-Modus ausgeführt werden. Befehle der Azure-Befehlszeilenschnittstelle zum Speichern im Azure Resource Management (ARM)-Modus finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows mit Azure Resource Management](../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects).)
+> [AZURE.NOTE] Die Anleitung enthält die Befehle der Azure-Befehlszeilenschnittstelle und Skriptbeispiele für klassische Speicherkonten. Befehle der Azure-Befehlszeilenschnittstelle für Resource Manager-Speicherkonten finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows mit der Azure-Ressourcenverwaltung](../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects).
 
 ## Erste Schritte mit Azure-Speicher und der Azure-Befehlszeilenschnittstelle in 5 Minuten
 
@@ -74,15 +74,15 @@ Unter [Zuweisen von Administratorrollen in Azure Active Directory (Azure AD)](ht
 
 6. Nun müssen Sie die Skriptvariablen auf Basis der Konfigurationseinstellungen aktualisieren.
 
-    - **<storage_account_name>** Verwenden Sie den im Skript angegebenen Namen, oder geben Sie einen neuen Namen für Ihr Speicherkonto ein. **Wichtig:** Der Name des Speicherkontos muss in Azure eindeutig sein. Er darf außerdem nur aus Kleinbuchstaben bestehen!
+    - **<storage\_account\_name>**: Verwenden Sie den im Skript angegebenen Namen, oder geben Sie einen neuen Namen für Ihr Speicherkonto ein. **Wichtig:** Der Name des Speicherkontos muss in Azure eindeutig sein. Er darf außerdem nur aus Kleinbuchstaben bestehen!
 
-    - **<storage_account_key>** Der Zugriffsschlüssel für Ihr Speicherkonto.
+    - **<storage\_account\_key>** Der Zugriffsschlüssel für Ihr Speicherkonto.
 
-    - **<container_name>** Verwenden Sie den im Skript angegebenen Namen, oder geben Sie einen neuen Namen für Ihren Container ein.
+    - **<container\_name>**: Verwenden Sie den im Skript angegebenen Namen, oder geben Sie einen neuen Namen für Ihren Container ein.
 
-    - **<image_to_upload>** Geben Sie einen Pfad zu einem Bild auf dem lokalen Computer ein. Zum Beispiel: "~/images/HelloWorld.png".
+    - **<image\_to\_upload>**: Geben Sie einen Pfad zu einem Bild auf dem lokalen Computer ein. Beispiel: „~/images/HelloWorld.png“.
 
-    - **<destination_folder>** Geben Sie einen Pfad zu einem lokalen Verzeichnis zum Speichern von Dateien ein, die aus dem Azure-Speicher heruntergeladen werden. Zum Beispiel: " ~/downloadImages".
+    - **<destination\_folder>**: Geben Sie den Pfad zu einem lokalen Verzeichnis zum Speichern von Dateien ein, die aus Azure Storage heruntergeladen werden. Beispiel: „~/downloadImages“.
 
 7. Nachdem Sie die erforderlichen Variablen in Vim aktualisiert haben, drücken Sie die Tastenkombinationen "Esc, : , wq!", um das Skript zu speichern.
 
@@ -221,4 +221,4 @@ In den folgenden Artikeln und Ressourcen finden Sie weitere Informationen zum Az
 
 [Image1]: ./media/storage-azure-cli/azure_command.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

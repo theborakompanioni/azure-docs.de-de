@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="Identity"
-   ms.date="04/20/2016"
+   ms.date="06/27/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: Designkonzepte
@@ -37,7 +37,7 @@ Der Attributwert muss den folgenden Regeln entsprechen:
 
 - Weniger als 60 Zeichen lang
     - Zeichen, bei denen es sich nicht um a-z, A-Z oder 0-9 handelt, werden als 3 Zeichen codiert und gezählt
-- Keine Sonderzeichen enthalten: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " @ \_
+- Keine Sonderzeichen: &#92; ! # $ % & * + / = ? ^ &#96; { }| ~ < > ( ) ' ; : , [ ] " @ _
 - Global eindeutig
 - Zeichenfolge, Ganzzahl oder Binärzahl
 - Sollte nicht auf einem Benutzernamen beruhen, da dieser geändert werden kann
@@ -73,15 +73,15 @@ Bei der Integration Ihres lokalen Verzeichnisses in Azure AD ist es wichtig zu w
 
 Bei Auswahl des Attributs, das den in Azure zu verwendenden UPN-Wert bereitstellt, sollten Sie Folgendes sicherstellen:
 
-* Die Attributwerte entsprechen der UPN-Syntax (RFC 822), müssen also im Format username@domain vorliegen.
+* Die Attributwerte entsprechen der UPN-Syntax (RFC 822) und müssen somit im Format username@domain vorliegen.
 * Das Suffix in den Werten stimmt mit einer der überprüften benutzerdefinierten Domänen in Azure AD überein.
 
-In den Expresseinstellungen wird userPrincipalName für das Attribut angenommen. Wenn Sie jedoch der Meinung sind, dass das userprincipalname-Attribut nicht den Wert enthält, den Ihre Benutzer für die Anmeldung bei Azure verwenden sollten, wählen Sie **Benutzerdefinierte Installation** aus, und stellen Sie ein geeignetes Attribut bereit.
+In den Expresseinstellungen wird userPrincipalName für das Attribut angenommen. Wenn Sie jedoch der Meinung sind, dass das userprincipalname-Attribut nicht den Wert enthält, den Ihre Benutzer für die Anmeldung bei Azure verwenden sollen, wählen Sie **Benutzerdefinierte Installation** aus, und stellen Sie ein geeignetes Attribut bereit.
 
 ### Benutzerdefinierter Domänenstatus und UPN
 Sie müssen unbedingt sicherstellen, dass eine überprüfte Domäne für das UPN-Suffix existiert.
 
-John ist ein Benutzer in contoso.com. John soll den lokalen UPN john@contoso.com für die Anmeldung bei Azure verwenden, nachdem Sie die Benutzer mit Ihrem Azure AD-Verzeichnis azurecontoso.onmicrosoft.com synchronisiert haben. Zu diesem Zweck müssen Sie contoso.com als benutzerdefinierte Domäne in Azure AD hinzufügen und überprüfen, bevor Sie mit dem Synchronisieren der Benutzer beginnen können. Wenn das UPN-Suffix von John (contoso.com) mit keiner überprüften Domäne in Azure übereinstimmt, ersetzt Azure AD das UPN-Suffix durch azurecontoso.onmicrosoft.com, und John muss sich mit john@azurecontoso.onmicrosoft.com bei Azure anmelden.
+John ist ein Benutzer in contoso.com. John soll den lokalen UPN john@contoso.com für die Anmeldung bei Azure verwenden, nachdem Sie die Benutzer mit Ihrem Azure AD-Verzeichnis „azurecontoso.onmicrosoft.com“ synchronisiert haben. Zu diesem Zweck müssen Sie contoso.com als benutzerdefinierte Domäne in Azure AD hinzufügen und überprüfen, bevor Sie mit dem Synchronisieren der Benutzer beginnen können. Wenn das UPN-Suffix von John (contoso.com) mit keiner überprüften Domäne in Azure übereinstimmt, ersetzt Azure AD das UPN-Suffix durch „azurecontoso.onmicrosoft.com“, und John muss sich mit john@azurecontoso.onmicrosoft.com bei Azure anmelden.
 
 ### Nicht routingfähige lokale Domänen und UPN für Azure AD
 Einige Unternehmen verfügen über nicht routingfähige Domänen, z.B. contoso.local, oder einteilige Domänen, z.B. contoso. Sie können eine nicht routingfähige Domäne in Azure AD nicht überprüfen. Azure AD Connect kann Synchronisierungen nur mit einer überprüften Domäne in Azure AD durchführen. Wenn Sie ein Azure AD-Verzeichnis erstellen, wird eine routingfähige Domäne erstellt, die zur Standarddomäne für Ihr Azure AD wird, z.B. contoso.onmicrosoft.com. Daher ist es notwendig, in einem solchen Szenario alle anderen routingfähigen Domänen zu überprüfen, wenn Sie Synchronisierungen nicht mit der standardmäßigen Domäne .onmicrosoft.com durchführen möchten.
@@ -93,4 +93,4 @@ Azure AD Connect erkennt, ob Sie eine nicht routingfähige Domänenumgebung ausf
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

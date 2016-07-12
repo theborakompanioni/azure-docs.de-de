@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
- 	ms.date="05/03/2016"    
+ 	ms.date="06/22/2016"    
 	ms.author="juliako"/>
 
 
@@ -691,7 +691,7 @@ Im Beispiel wird die "UpdatePlayReadyConfigurationXMLFile"-Methode definiert, di
 
 Wenn Sie Ihre HLS-Inhalte mit AES-128 verschlüsseln möchten, können Sie wahlweise die dynamische Verschlüsselung (empfohlene Option) oder die statische Verschlüsselung (wie in diesem Abschnitt beschrieben) verwenden. Wenn Sie die dynamische Verschlüsselung verwenden möchten, finden Sie die entsprechenden Informationen unter [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts](media-services-protect-with-aes128.md).
 
->[AZURE.NOTE]Zum Konvertieren Ihrer Inhalte in HLS müssen Sie zunächst Ihre Inhalte in Smooth Streaming konvertieren bzw. codieren. Damit HLS-Inhalte mit AES verschlüsselt werden, müssen Sie zudem sicherstellen, dass die folgenden Eigenschaften in der Datei "MediaPackager\_SmoothToHLS.xml" festgelegt sind. Legen Sie die "encrypt"-Eigenschaft auf "true" fest, und legen Sie die Werte "key" und "keyuri" so fest, dass sie auf Ihren Authentifizierungs- oder Autorisierungsserver verweisen. Media Services erstellt eine Schlüsseldatei und legt sie im Assetcontainer ab. Sie sollten die Datei "/asset-containerguid/*.key" auf Ihren Server kopieren (oder Ihre eigene Schlüsseldatei erstellen) und die *.key-Datei anschließend im Assetcontainer löschen.
+>[AZURE.NOTE]Zum Konvertieren Ihrer Inhalte in HLS müssen Sie zunächst Ihre Inhalte in Smooth Streaming konvertieren bzw. codieren. Damit HLS-Inhalte mit AES verschlüsselt werden, müssen Sie zudem sicherstellen, dass die folgenden Eigenschaften in der Datei "MediaPackager\_SmoothToHLS.xml" festgelegt sind. Legen Sie die "encrypt"-Eigenschaft auf "true" fest, und legen Sie die Werte "key" und "keyuri" so fest, dass sie auf Ihren Authentifizierungs- oder Autorisierungsserver verweisen. Media Services erstellt eine Schlüsseldatei und legt sie im Assetcontainer ab. Sie müssen die Datei „/asset-containerguid/*.key“ auf Ihren Server kopieren (oder Ihre eigene Schlüsseldatei erstellen) und die *.key-Datei anschließend im Assetcontainer löschen.
 
 Im Beispiel in diesem Abschnitt wird eine Zwischendatei (in diesem Fall eine MP4-Datei) in MP4-Dateien mit mehreren Bitraten codiert. Anschließend werden die MP4-Dateien in Smooth Streaming gepackt. Smooth Streaming wird dann in HTTP Live Streaming (HLS) gepackt, das mit Advanced Encryption Standard (AES)-128-Bit-Streamverschlüsselung verschlüsselt ist. Ändern Sie den folgenden Code so, dass er auf den Ordner verweist, in dem sich Ihre MP4-Eingabedatei befindet. Außerdem muss der Code auf den Speicherort Ihrer Konfigurationsdateien "MediaPackager\_MP4ToSmooth.xml" und "MediaPackager\_SmoothToHLS.xml" verweisen. Die Definition für diese Dateien finden Sie im Thema [Taskvoreinstellung für Azure Media Packager](http://msdn.microsoft.com/library/azure/hh973635.aspx).
 	
@@ -1447,4 +1447,4 @@ Media Services bietet jetzt einen Dienst für die Bereitstellung von Microsoft P
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

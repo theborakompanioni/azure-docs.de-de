@@ -18,7 +18,7 @@
 
 # Verwenden von ReportViewer auf einer in Azure gehosteten Website
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
 Sie können eine Microsoft Azure-Website mit dem Visual Studio-Steuerelement „ReportViewer“ erstellen, in dem ein Bericht angezeigt wird, der auf einem virtuellen Microsoft Azure-Computer gespeichert ist. Das ReportViewer-Steuerelement ist eine Webanwendung, die Sie mithilfe der Vorlage für ASP.NET-Webanwendungen erstellen.
@@ -83,7 +83,7 @@ Im Remoteverarbeitungsmodus verwendet das ReportViewer-Steuerelement die folgend
 
 1. Gehen Sie gemäß den oben angegebenen Anweisungen vor, um das verteilbare Microsoft Report Viewer 2012-Laufzeit-Paket herunterzuladen und zu installieren.
 
-1. Erstellen Sie im Projekt den Ordner <language>, und kopieren Sie die zugehörigen Ressourcenassemblydateien. Folgende Ressourcenassemblydateien müssen kopiert werden: **Microsoft.ReportViewer.Webforms.Resources.dll** und **Microsoft.ReportViewer.Common.Resources.dll**. Wählen Sie die Ressourcenassemblydateien aus, und legen Sie im Eigenschaftenbereich die Eigenschaft **In Ausgabeverzeichnis kopieren** auf "**Immer kopieren**" fest.
+1. Erstellen Sie im Projekt den Ordner „<Sprache>“, und kopieren Sie die zugehörigen Ressourcenassemblydateien. Folgende Ressourcenassemblydateien müssen kopiert werden: **Microsoft.ReportViewer.Webforms.Resources.dll** und **Microsoft.ReportViewer.Common.Resources.dll**. Wählen Sie die Ressourcenassemblydateien aus, und legen Sie im Eigenschaftenbereich die Eigenschaft **In Ausgabeverzeichnis kopieren** auf **Immer kopieren** fest.
 
 1. Legen Sie die Kultur und Benutzeroberflächenkultur für das Webprojekt fest. Weitere Informationen dazu, wie die Kultur und Benutzeroberflächenkultur für eine ASP.NET-Webseite festgelegt werden, finden Sie unter [Vorgehensweise: Festlegen der Kultur und Benutzeroberflächenkultur für die Globalisierung von ASP.NET-Webseiten](http://go.microsoft.com/fwlink/?LinkId=237461).
 
@@ -109,4 +109,4 @@ Anleitungen zum Veröffentlichen einer ASP.NET Web-Anwendung in Azure finden Sie
 
 [ReportViewer-Steuerelement von Reporting Services und Berichtsserver, die auf virtuellen Microsoft Azure-Computern basieren](http://download.microsoft.com/download/2/2/0/220DE2F1-8AB3-474D-8F8B-C998F7C56B5D/Reporting%20Services%20report%20viewer%20control%20and%20Azure%20VM%20based%20report%20servers.docx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

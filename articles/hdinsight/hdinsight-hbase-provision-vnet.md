@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/18/2016"
+   ms.date="06/27/2016"
    ms.author="jgao"/>
 
 # Erstellen von HBase-Clustern in Azure Virtual Network 
@@ -38,22 +38,21 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 In diesem Abschnitt erstellen Sie einen Linux-basierten HBase-Cluster in HDInsight mithilfe einer [Azure ARM-Vorlage](../resource-group-template-deploy.md). Für dieses Tutorial ist keine Erfahrung mit Azure-ARM-Vorlagen erforderlich. Andere Methoden zur Erstellung von Clustern und Informationen zu den Einstellungen finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Weitere Informationen zur Verwendung der ARM-Vorlage zum Erstellen von Hadoop-Clustern in HDInsight finden Sie unter [Erstellen Windows-basierter Hadoop-Cluster in HDInsight mithilfe von ARM-Vorlagen](hdinsight-hadoop-create-windows-clusters-arm-templates.md)
 
-1. Klicken Sie auf die folgende Abbildung, um eine ARM-Vorlage im Azure-Portal zu öffnen. Die ARM-Vorlage befindet sich in einem öffentlichen Blobcontainer. 
+1. Klicken Sie auf die folgende Abbildung, um eine ARM-Vorlage im Azure-Portal zu öffnen. Die ARM-Vorlage befindet sich in einem öffentlichen Blobcontainer.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-vnet.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-vnet.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/de-DE/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 2. Geben Sie auf dem Blatt **Parameter** Folgendes ein:
-
     - **Clustername**: Geben Sie einen Namen für den Hadoop-Cluster ein, den Sie erstellen möchten.
     - **Cluster-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet **admin**.
-    - **SSH-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet **sshuser**. Sie können auch einen anderen Namen festlegen. 
+    - **SSH-Benutzername und -Kennwort**: Der Standardname für die Anmeldung lautet **sshuser**. Sie können auch einen anderen Namen festlegen.
+	
+	Einige Eigenschaften wurden in der Vorlage hartcodiert. Beispiel:<br/>
 
-    Viele Eigenschaften wurden in der Vorlage hart codiert. Beispiel:
-    
     - Standort: USA, Osten
-    - Anzahl der Workerknoten im Cluster: 4
-    - Standardspeicherkonto: <Cluster Name>store
-    - Name des virtuellen Netzwerks: <Cluster Name>-vnet
+	- Anzahl der Workerknoten im Cluster: 4
+    - Standard-Speicherkonto: &lt;Clustername>store
+    - Name des virtuellen Netzwerks: &lt;Clustername>-vnet
     - Adressraum des virtuellen Netzwerks: 10.0.0.0/16
     - Subnetzname: Standard
     - Adressbereich des Subnetzes: 10.0.0.0/24
@@ -61,7 +60,7 @@ In diesem Abschnitt erstellen Sie einen Linux-basierten HBase-Cluster in HDInsig
 3. Klicken Sie auf **OK**, um die Parameter zu speichern.
 4. Klicken Sie auf dem Blatt **Benutzerdefinierte Bereitstellung** auf das Dropdownfeld **Ressourcengruppe** und dann auf **Neu**, um eine neue Ressourcengruppe zu erstellen. Die Ressourcengruppe ist ein Container, in dem der Cluster, das abhängige Speicherkonto und andere verknüpfte Ressourcen gruppiert werden.
 5. Klicken Sie auf **Rechtliche Bedingungen** und dann auf **Erstellen**.
-6. Klicken Sie auf **Erstellen**. Sie sehen daraufhin eine neue Kachel mit der Bezeichnung **Bereitstellung für Vorlagenbereitstellung wird gesendet**. Das Erstellen eines Clusters dauert ca. 20 Minuten. Wenn der Cluster erstellt wurde, öffnen Sie ihn, indem Sie im Portal auf das Clusterblatt klicken.
+6. Klicken Sie auf **Erstellen**. Daraufhin wird eine neue Kachel mit der Bezeichnung **Bereitstellung für "Vorlagenbereitstellung" wird gesendet** angezeigt. Das Erstellen eines Clusters dauert ca. 20 Minuten. Wenn der Cluster erstellt wurde, öffnen Sie ihn, indem Sie im Portal auf das Clusterblatt klicken.
 
 Löschen Sie den Cluster, wenn Sie das Tutorial beendet haben. Mit HDInsight werden Ihre Daten im Azure-Speicher gespeichert, sodass Sie einen Cluster problemlos löschen können, wenn er nicht verwendet wird. Für einen HDInsight-Cluster fallen auch dann Gebühren an, wenn er nicht verwendet wird. Da die Gebühren für den Cluster erheblich höher sind als die Kosten für den Speicher, ist es sinnvoll, nicht verwendete Cluster zu löschen. Anweisungen zum Löschen eines Clusters finden Sie unter [Verwalten von Hadoop-Clustern in HDInsight mit dem Azure-Portal](hdinsight-administer-use-management-portal.md#delete-clusters).
 
@@ -71,9 +70,18 @@ Führen Sie die Schritte unter [Erste Schritte mit HBase mit Hadoop in HDInsight
 
 1.	Erstellen Sie einen virtuellen IaaS-Computer (Infrastructure-as-a-Service) im gleichen virtuellen Azure-Netzwerk und im gleichen Subnetz. Dadurch verwenden der virtuelle Computer und der HBase-Cluster denselben internen DNS-Server für die Auflösung von Hostnamen. Hierfür müssen Sie die Option **Aus Katalog** und das virtuelle Netzwerk statt eines Datencenters auswählen. Anweisungen dazu finden Sie unter [Erstellen eines virtuellen Windows Server-Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md). Ein standardmäßiges Windows Server 2012-Image mit kleinem virtuellen Computer ist ausreichend.
 
-2.	Für Remote-Verbindungen zwischen Java-Anwendungen und HBase müssen Sie den vollqualifizierten Domänennamen (FQDN) verwenden. Rufen Sie hierzu das verbindungsspezifische DNS-Suffix des HBase-Clusters ab. Dazu können Sie entweder Ambari mit Curl abfragen oder per Remotedesktop eine Verbindung mit dem Cluster herstellen.
+2.	Für Remote-Verbindungen zwischen Java-Anwendungen und HBase müssen Sie den vollqualifizierten Domänennamen (FQDN) verwenden. Rufen Sie hierzu das verbindungsspezifische DNS-Suffix des HBase-Clusters ab. Dazu können Sie eine der folgenden Methoden verwenden:
 
-	* **Curl** – Verwenden Sie den folgenden Befehl:
+	* Durchführen eines Ambari-Aufrufs mithilfe eines Webbrowsers:
+	
+		Navigieren Sie zu „https://&lt;ClusterName>.azurehdinsight.net/api/v1/clusters/&lt;Clustername>/hosts?minimal\_response=true“. Es wird eine JSON-Datei mit den DNS-Suffixen zurückgegeben.
+
+	* Verwenden der Ambari-Website:
+
+		1. Navigieren Sie zu „https://&lt;ClusterName>.azurehdinsight.net“.
+		2. Klicken Sie im Menü am oberen Rand auf **Hosts**.
+
+	* Durchführen von REST-Aufrufen mithilfe von Curl:
 
 			curl -u <username>:<password> -k https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/services/hbase/components/hbrest
 
@@ -85,7 +93,9 @@ Führen Sie die Schritte unter [Erste Schritte mit HBase mit Hadoop in HDInsight
 
 		Der Teil des Domänennamens, der mit dem Clusternamen beginnt, ist das DNS-Suffix. Zum Beispiel: mycluster.b1.cloudapp.net.
 
-	* **Azure PowerShell** – Führen Sie das folgende Azure PowerShell-Skript aus, um die **Get-ClusterDetail**-Funktion zu registrieren, mit der Sie das DNS-Suffix zurückgeben können:
+	* Verwenden von Azure PowerShell
+	
+		Verwenden Sie das folgende Azure PowerShell-Skript, um die **Get-ClusterDetail**-Funktion zu registrieren, mit der Sie das DNS-Suffix zurückgeben können:
 
 			function Get-ClusterDetail(
 			    [String]
@@ -183,9 +193,11 @@ Führen Sie die Schritte unter [Erste Schritte mit HBase mit Hadoop in HDInsight
 
 		Daraufhin wird das DNS-Suffix zurückgegeben. Zum Beispiel: **yourclustername.b4.internal.cloudapp.net**.
 
-	> [AZURE.NOTE] Sie können auch per Remotedesktop eine Verbindung mit dem HBase-Cluster herstellen (wobei Sie eine Verbindung mit dem Hauptknoten herstellen) und **ipconfig** in einer Eingabeaufforderung ausführen, um das DNS-Suffix abzurufen. Anweisungen zum Aktivieren des Remotedesktopprotokolls (RDP) und zum Herstellen einer Verbindung mit dem Cluster mithilfe des RDP finden Sie unter [Verwalten von Hadoop-Clustern in HDInsight mit dem Azure-Portal][hdinsight-admin-portal].
-	>
-	> ![hdinsight.hbase.dns.surffix][img-dns-surffix]
+	* Verwenden von RDP
+	
+		Sie können auch per Remotedesktop eine Verbindung mit dem HBase-Cluster herstellen (wobei Sie eine Verbindung mit dem Hauptknoten herstellen) und **ipconfig** in einer Eingabeaufforderung ausführen, um das DNS-Suffix abzurufen. Anweisungen zum Aktivieren des Remotedesktopprotokolls (RDP) und zum Herstellen einer Verbindung mit dem Cluster mithilfe des RDP finden Sie unter [Verwalten von Hadoop-Clustern in HDInsight mit dem Azure-Portal][hdinsight-admin-portal].
+		
+		![hdinsight.hbase.dns.surffix][img-dns-surffix]
 
 
 <!--
@@ -272,4 +284,4 @@ In diesem Tutorial haben Sie erfahren, wie Sie einen HBase-Cluster erstellen. We
 
 [azure-preview-portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

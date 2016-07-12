@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/25/2016"
+	ms.date="07/06/2016"
 	ms.author="maheshu"/>
 
 # Azure AD-Domänendienste *(Vorschau)* – Aktivieren der Kennwortsynchronisierung für Azure AD-Domänendienste
@@ -63,4 +63,4 @@ Nachdem die Benutzer ihr Kennwort geändert haben, kann das neue Kennwort bald i
 
 - [Einbinden eines virtuellen Red Hat Enterprise Linux-Computers in eine verwaltete Domäne der Azure AD-Domänendienste](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

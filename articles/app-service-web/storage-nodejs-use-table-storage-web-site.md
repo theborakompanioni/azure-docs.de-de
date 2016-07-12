@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="01/20/2016"
+	ms.date="06/24/2016"
 	ms.author="robmcm"/>
 
 # Node.js-Web-App mit Azure-Tabellendienst
@@ -423,7 +423,7 @@ Laden Sie die Dateien für [Twitter Bootstrap](http://getbootstrap.com/) herunte
 
 ### Erstellen einer Konfigurationsdatei
 
-Zum lokalen Ausführen der App fügen wir Azure Storage-Anmeldeinformationen in eine Konfigurationsdatei ein. Erstellen Sie eine Datei namens **config.json** mit folgendem JSON-Inhalt:
+Zum lokalen Ausführen der App fügen wir Azure Storage-Anmeldeinformationen in eine Konfigurationsdatei ein. Erstellen Sie eine Datei namens **config.json* mit folgendem JSON-Inhalt:
 
 	{
 		"STORAGE_NAME": "<storage account name>",
@@ -497,6 +497,7 @@ In diesem Schritt laden Sie eine Datei mit Informationen zu Ihrem Abonnement her
 	Dieser Befehl startet einen Browser und navigiert zur Downloadseite. Melden Sie sich bei entsprechender Aufforderung mit dem Konto an, dass Ihrem Azure-Abonnement zugeordnet ist.
 
 	<!-- ![The download page][download-publishing-settings] -->
+
 	Der Dateidownload beginnt automatisch. Klicken Sie andernfalls auf den Link oben auf der Seite, um die Datei manuell herunterzuladen. Speichern Sie die Datei, und notieren Sie den Dateipfad.
 
 2. Geben Sie den folgenden Befehl ein, um die Einstellungen zu importieren:
@@ -637,4 +638,4 @@ Die Schritte in diesem Artikel beschreiben zwar die Verwendung des Tabellendiens
 [app-settings-save]: ./media/storage-nodejs-use-table-storage-web-site/savebutton.png
 [app-settings]: ./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0629_2016-->

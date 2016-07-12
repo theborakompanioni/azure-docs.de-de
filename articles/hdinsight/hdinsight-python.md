@@ -14,14 +14,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="05/20/2016" 
+	ms.date="06/27/2016" 
 	ms.author="larryfr"/>
 
 #Verwenden von Python mit Hive und Pig in HDInsight
 
 Hive und Pig sind großartig für die Arbeit mit Daten in HDInsight. Manchmal benötigt man aber eine allgemeinere Sprache. Sowohl Hive als auch Pig ermöglichen Ihnen die Erstellung benutzerdefinierter Funktionen (User Defined Functions, UDF) mithilfe einer Vielzahl von Programmiersprachen. In diesem Artikel erfahren Sie, wie Sie eine Python-UDF von Hive und Pig aus verwenden.
-
-> [AZURE.NOTE] Die Schritte in diesem Artikel beziehen sich auf die HDInsight-Clusterversionen 2.1, 3.0, 3.1 und 3.2.
 
 ##Anforderungen
 
@@ -29,7 +27,7 @@ Hive und Pig sind großartig für die Arbeit mit Daten in HDInsight. Manchmal be
 
 * Ein Texteditor
 
-    > [AZURE.IMPORTANT] Wenn Sie einen Linux-basierten HDInsight-Server verwenden, aber die Python-Dateien auf einem Windows-Client erstellen, müssen Sie einen Editor verwenden, der als Zeilenende LF verwendet. Wenn Sie nicht sicher sind, ob der Editor LF oder CRLF verwendet, finden Sie im Abschnitt [Problembehandlung](#troubleshooting) Schritte für das Entfernen der CR-Zeichen mithilfe der Hilfsprogramme im HDInsight-Cluster.
+    > [AZURE.IMPORTANT] Wenn Sie einen Linux-basierten HDInsight-Server verwenden, aber die Python-Dateien auf einem Windows-Client erstellen, müssen Sie einen Editor verwenden, der als Zeilenende LF verwendet. Wenn Sie nicht sicher sind, ob der Editor LF oder CRLF verwendet, finden Sie im Abschnitt [Problembehandlung](#troubleshooting) Schritte für das Entfernen des CR-Zeichens mithilfe der Hilfsprogramme im HDInsight-Cluster.
     
 ##<a name="python"></a>Python in HDInsight
 
@@ -176,8 +174,8 @@ Weitere Informationen zur Verwendung von SSH finden Sie unter <a href="../hdinsi
 
 4. Fügen Sie die Python-Dateien, die zuvor hochgeladen wurden, in der SSH-Sitzung dem WASB-Speicher für den Cluster hinzu.
 
-		hadoop fs -copyFromLocal streaming.py /streaming.py
-		hadoop fs -copyFromLocal jython.py /jython.py
+		hdfs dfs -put streaming.py /streaming.py
+		hdfs dfs -put jython.py /jython.py
 
 Nach dem Hochladen der Dateien, gehen Sie folgendermaßen vor, um die Hive- und Pig-Aufträge auszuführen.
 
@@ -189,7 +187,7 @@ Nach dem Hochladen der Dateien, gehen Sie folgendermaßen vor, um die Hive- und 
 
 		add file wasb:///streaming.py;
 		SELECT TRANSFORM (clientid, devicemake, devicemodel)
-		  USING ' pythonstreaming.py' AS
+		  USING 'python streaming.py' AS
 		  (clientid string, phoneLabel string, phoneHash string)
 		FROM hivesampletable
 		ORDER BY clientid LIMIT 50;
@@ -308,13 +306,13 @@ Das folgende Skript führt das Skript __streaming.py__ aus. Vor dem Ausführen w
         -HttpCredential $creds
     # Uncomment the following to see stderr output
     # Get-AzureRmHDInsightJobOutput `
-        -Clustername $clusterName `
-        -JobId $job.JobId `
-        -DefaultContainer $container `
-        -DefaultStorageAccountName $storageAccountName `
-        -DefaultStorageAccountKey $storageAccountKey `
-        -HttpCredential $creds `
-        -DisplayOutputType StandardError
+    #   -Clustername $clusterName `
+    #   -JobId $job.JobId `
+    #   -DefaultContainer $container `
+    #   -DefaultStorageAccountName $storageAccountName `
+    #   -DefaultStorageAccountKey $storageAccountKey `
+    #   -HttpCredential $creds `
+    #   -DisplayOutputType StandardError
 	Write-Host "Display the standard output ..." -ForegroundColor Green
 	Get-AzureRmHDInsightJobOutput `
         -Clustername $clusterName `
@@ -446,4 +444,4 @@ Informationen zu anderen Möglichkeiten der Verwendung von Pig und Hive sowie In
 
 * [Verwenden von MapReduce mit HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

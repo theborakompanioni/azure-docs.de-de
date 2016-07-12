@@ -13,14 +13,14 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="03/23/2016"
+	ms.date="06/24/2016"
 	ms.author="jroth" />
 
 # Sicherheitsüberlegungen für SQL Server in Azure Virtual Machines
-
+ 
 Dieses Thema enthält allgemeine Sicherheitsrichtlinien, die dazu beitragen sollen, den Zugriff auf SQL Server-Instanzen auf einem virtuellen Azure-Computer zu schützen. Um einen besseren Schutz für die SQL Server-Datenbankinstanzen in Azure zu gewährleisten, wird jedoch empfohlen, dass Sie zusätzlich zu den bewährten Methoden für Azure auch die herkömmlichen lokalen Sicherheitsmaßnahmen umsetzen.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
 Weitere Informationen über die Sicherheitsmethoden für SQL Server finden Sie in [Bewährte Methoden für SQL Server 2008 R2 – Betriebs- und Verwaltungsaufgaben](http://download.microsoft.com/download/1/2/A/12ABE102-4427-4335-B989-5DA579A4D29D/SQL_Server_2008_R2_Security_Best_Practice_Whitepaper.docx) (in englischer Sprache).
@@ -58,4 +58,4 @@ Weitere Informationen zu bewährten Methoden in Bezug auf Leistung finden Sie un
 
 Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Computern finden Sie in der [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

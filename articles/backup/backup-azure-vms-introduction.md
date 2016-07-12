@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="06/23/2016"
 	ms.author="trinadhk; jimpark; markgal;"/>
 
 # Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure
-In diesem Artikel werden die wesentlichen Aspekte behandelt, die beim Planen einer Sicherung virtueller Computer in Azure berücksichtigt werden sollten. Wenn Sie [Ihre Umgebung vorbereitet](backup-azure-vms-prepare.md) haben, ist dies der nächste Schritt, bevor Sie mit dem [Sichern Ihrer virtuellen Computer](backup-azure-vms.md) beginnen. Weitere Informationen zu virtuellen Azure-Computern finden Sie in der [Dokumentation zu Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/).
+Dieser Artikel enthält leistungs- und ressourcenbezogene Vorschläge, um Ihnen bei der Planung Ihrer Sicherungsinfrastruktur für virtuelle Computer helfen. Darüber hinaus werden in diesem Artikel zentrale Aspekte des Backup-Diensts definiert, die für Ihre Architektur sowie für die Kapazitäts- und Zeitplanung entscheidend sein können. Wenn Sie [Ihre Umgebung vorbereitet](backup-azure-vms-prepare.md) haben, ist dies der nächste Schritt, bevor Sie mit dem [Sichern Ihrer virtuellen Computer](backup-azure-vms.md) beginnen. Weitere Informationen zu virtuellen Azure-Computern finden Sie in der [Dokumentation zu Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/).
 
 ## Wie werden virtuelle Computer in Azure gesichert?
 Wenn der Azure Backup-Dienst einen Sicherungsauftrag zur geplanten Zeit initiiert, löst er die Sicherungserweiterung zum Erstellen einer Momentaufnahme aus. Diese Momentaufnahme wird in Koordination mit dem Volumeschattenkopie-Dienst (VSS) erstellt, um eine konsistente Momentaufnahme der Datenträger auf dem virtuellen Computer zu erhalten, ohne dass dieser heruntergefahren werden muss.
@@ -52,21 +52,21 @@ In dieser Tabelle werden die Konsistenztypen aufgeführt und die Umstände erlä
 
 
 ## Leistung und Ressourcenverwendung
-Wie bei lokal bereitgestellter Sicherungssoftware muss die Sicherung von virtuellen Computern in Azure auch im Hinblick auf Kapazität und Ressourcenverwendung geplant werden. Die [Azure Storage-Begrenzungen](azure-subscription-service-limits.md#storage-limits) definieren, wie die VM-Bereitstellungen strukturiert werden, um maximale Leistung bei minimaler Beeinträchtigung der ausgeführten Workloads zu erzielen.
+Genau wie bei lokal bereitgestellter Sicherungssoftware muss auch bei der Planung der Sicherung von virtuellen Computern in Azure der Kapazitäts- und Ressourcenbedarf berücksichtigt werden. Die [Azure Storage-Begrenzungen](azure-subscription-service-limits.md#storage-limits) definieren, wie die VM-Bereitstellungen strukturiert werden, um maximale Leistung bei minimaler Beeinträchtigung der ausgeführten Workloads zu erzielen.
 
-Die beiden wichtigsten Azure-Speicherbegrenzungen, die sich auf die Sicherungsleistung auswirken, sind:
+Achten Sie bei der Planung der Sicherungsleistung insbesondere auf die folgenden Grenzwerte von Azure Storage:
 
 - Max. Ausgang pro Speicherkonto
 - Gesamtanforderungsrate pro Speicherkonto
 
 ### Speicherkontobegrenzungen
-Wenn Sicherungsdaten aus dem Kundenspeicherkonto kopiert werden, werden diese auf die Metriken des Speicherkontos für IOPS (Input/Output Operations Per Second, Eingabe-/Ausgabevorgänge pro Sekunde) und Ausgang (Speicherdurchsatz) angerechnet. Zur gleichen Zeit werden die virtuellen Computer ausgeführt und verbrauchen IOPS und Durchsatz. Das Ziel ist, dafür zu sorgen, dass der Datenverkehr insgesamt – d. h. Sicherung und virtuelle Computer – die Speicherkontogrenzwerte nicht überschreitet.
+Beim Kopieren von Sicherungsdaten aus einem Speicherkonto werden diese auf die Metriken des Speicherkontos für IOPS (Input/Output Operations Per Second, Eingabe-/Ausgabevorgänge pro Sekunde) und Ausgang (oder Durchsatz) angerechnet. Zur gleichen Zeit werden die virtuellen Computer ausgeführt und verbrauchen IOPS und Durchsatz. Das Ziel ist, dafür zu sorgen, dass der Datenverkehr insgesamt (Sicherung und virtueller Computer) die Speicherkontogrenzwerte nicht überschreitet.
 
 ### Anzahl der Datenträger
-Der Sicherungsvorgang ist anspruchsvoll und versucht stets, alle verfügbaren Ressourcen zu nutzen, da die Sicherung möglichst schnell zum Abschluss gebracht werden soll. Sämtliche E/A-Vorgänge sind jedoch begrenzt durch den *Zieldurchsatz pro Einzelblob*, der auf 60 MB pro Sekunde beschränkt ist. Zur Beschleunigung der Sicherung wird versucht, die einzelnen Datenträger des virtuellen Computers *parallel* zu sichern. Bei einem virtuellen Computer mit vier Datenträgern versucht Azure Backup also, alle vier Datenträger parallel zu sichern. Der wichtigste Faktor, der den ausgehenden Sicherungsdatenverkehr für ein Kundenspeicherkonto bestimmt, ist daher die **Anzahl der Datenträger**, die über das Speicherkonto gesichert werden.
+Bei der Sicherung wird versucht, einen Sicherungsauftrag so schnell wie möglich abzuschließen. Dabei werden so viele Ressourcen wie möglich genutzt. Sämtliche E/A-Vorgänge sind jedoch begrenzt durch den *Zieldurchsatz pro Einzelblob*, der auf 60 MB pro Sekunde beschränkt ist. Zur Maximierung der Geschwindigkeit wird versucht, die einzelnen VM-Datenträger *parallel* zu sichern. Bei einem virtuellen Computer mit vier Datenträgern versucht Azure Backup also, alle vier Datenträger parallel zu sichern. Der entscheidende Faktor für den ausgehenden Sicherungsdatenverkehr eines Kundenspeicherkonto ist daher die **Anzahl von Datenträgern**, die über das Speicherkonto gesichert werden.
 
 ### Sicherungszeitplan
-Ein weiterer Faktor, der sich auf die Leistung auswirkt, ist der **Sicherungszeitplan**. Wenn Sie alle virtuellen Computer für eine gleichzeitige Sicherung konfigurieren, steigt die Anzahl von *parallel* gesicherten Datenträgern, da Azure Backup versucht, so viele Datenträger wie möglich zu sichern. Eine Möglichkeit zur Reduzierung des Sicherungsdatenverkehrs für ein Speicherkonto ist daher, die einzelnen virtuellen Computer zu unterschiedlichen Tageszeiten zu sichern und Überlappungen zu vermeiden.
+Ein weiterer Faktor, der sich auf die Leistung auswirkt, ist der **Sicherungszeitplan**. Wenn Sie die Richtlinien so konfigurieren, dass alle virtuellen Computer gleichzeitig gesichert werden, haben Sie einen Datenverkehrsstau geplant. Bei der Sicherung wird versucht, alle Datenträger parallel zu sichern. Eine Möglichkeit zur Reduzierung des Sicherungsdatenverkehrs für ein Speicherkonto wäre, die einzelnen virtuellen Computer zu unterschiedlichen Tageszeiten zu sichern und Überschneidungen zu vermeiden.
 
 ## Kapazitätsplanung
 Zusammenfassend folgt aus diesen Faktoren, dass die Speicherkontoverwendung einer gründlichen Planung bedarf. Laden Sie das [Excel-Arbeitsblatt zur Kapazitätsplanung für VM-Sicherungen](https://gallery.technet.microsoft.com/Azure-Backup-Storage-a46d7e33) herunter, um die Auswirkungen Ihrer Datenträger- und Sicherungszeitplanauswahl zu überprüfen.
@@ -84,17 +84,17 @@ Obgleich ein Großteil der Sicherungszeit für das Lesen und Kopieren von Daten 
 
 - Die Zeit, die zum [Installieren oder Aktualisieren der Sicherungserweiterung](backup-azure-vms.md#offline-vms) benötigt wird.
 - Zeit für Momentaufnahme: Die zum Auslösen einer Momentaufnahme erforderliche Zeit. Momentaufnahmen werden kurz vor der geplanten Sicherungszeit ausgelöst.
-- Wartezeit in der Warteschlange. Da der Sicherungsdienst Sicherungen von mehreren Kunden verarbeitet, wird das Kopieren der Sicherungsdaten von der Momentaufnahme zum Azure-Sicherungstresor möglicherweise nicht sofort gestartet. Während Spitzenauslastungszeiten können die Wartezeiten aufgrund der Anzahl der verarbeiteten Sicherungen bis zu 8 Stunden betragen. Die Gesamtdauer der VM-Sicherung wird jedoch bei täglichen Sicherungsrichtlinien weniger als 24 Stunden betragen.
+- Wartezeit in der Warteschlange. Da der Backup-Dienst Sicherungen von mehreren Kunden verarbeitet, werden die Sicherungsdaten der Momentaufnahme möglicherweise nicht sofort in die Sicherung oder in den Recovery Services-Tresor kopiert. Zu Spitzenzeiten kann die Wartezeit aufgrund der Anzahl zu verarbeiteter Sicherungen bis zu acht Stunden betragen. Die Gesamtdauer der VM-Sicherung wird jedoch bei täglichen Sicherungsrichtlinien weniger als 24 Stunden betragen.
 
 ## Bewährte Methoden
-Sie sollten die folgenden bewährten Methoden beim Konfigurieren von Sicherungen für virtuelle Computer verwenden.
+Berücksichtigen Sie beim Konfigurieren von Sicherungen für virtuelle Computer die folgenden bewährten Methoden:
 
-- Planen Sie niemals die gleichzeitige Sicherung von mehr als 4 klassischen virtuellen Computern aus dem gleichen Clouddienst. Sie sollten die Sicherungszeitpläne im Abstand von einer Stunde staffeln, wenn Sie weitere virtuelle Computer aus dem gleichen Clouddienst für die Sicherung konfigurieren möchten. 
-- Planen Sie nicht die gleichzeitige Sicherung von mehr als 40 Resource Manager-VMs.
-- Planen Sie für virtuelle Computer Sicherungen außerhalb der Spitzenzeiten, damit der Sicherungsdienst IOPS zum Übertragen von Daten aus dem Kundenspeicherkonto in den Sicherungstresor erhält. 
-- Bitte stellen Sie sicher, dass in einer Richtlinie VMs verschiedener Speicherkonten verteilt sind. Wenn die Gesamtzahl der Datenträger, die in einem einzelnen Speicherkonto von virtuellen Computern gespeichert sind, mehr als 20 beträgt, sollten Sie die VMs auf unterschiedliche Sicherungszeitpläne verteilen, um während der Übertragungsphase der Sicherung die erforderlichen IOPS zu erhalten.
-- Der auf Storage Premium ausgeführte virtuelle Computer sollte nicht auf dem gleichen Speicherkonto wiederhergestellt werden, da dieser Vorgang sich mit dem Sicherungsvorgang überschneiden kann und dann die Anzahl der zur Sicherung verfügbaren IOPS reduziert. 
-- Die einzelnen Premium-VMs sollten sich auf verschiedenen Storage Premium-Konten befinden, um eine gute Sicherungszeit zu erzielen. 
+- Planen Sie niemals die gleichzeitige Sicherung von mehr als vier klassischen virtuellen Computern des gleichen Clouddiensts. Staffeln Sie die Sicherungszeitpläne mit einem Versatz von jeweils einer Stunde, wenn Sie mehrere virtuelle Computer des gleichen Clouddiensts sichern möchten.
+- Planen Sie keine gleichzeitige Sicherung von mehr als 40 Resource Manager-VMs.
+- Planen Sie Sicherungen für virtuelle Computer außerhalb der Spitzenzeiten, damit der Sicherungsdienst die Daten aus dem Kundenspeicherkonto mithilfe von IOPS an die Sicherung oder den Recovery Services-Tresor überträgt.
+- Sorgen Sie dafür, dass eine Richtlinie für virtuelle Computer vorhanden ist, die auf verschiedene Speicherkonten verteilt sind. Mit einer einzelnen Richtlinie sollten insgesamt maximal 20 Datenträger eines einzelnen Speicherkontos geschützt werden. Wenn ein Speicherkonto mehr als 20 Datenträger enthält, verteilen Sie die entsprechenden virtuellen Computer auf mehrere Richtlinien, damit in der Übertragungsphase der Sicherung die erforderlichen IOPS zur Verfügung stehen.
+- Stellen Sie einen virtuellen Computer unter Storage Premium nicht unter dem gleichen Speicherkonto wieder her. Wenn der Wiederherstellungsvorgang zur gleichen Zeit stattfindet wie der Sicherungsvorgang, verringern sich dadurch die für die Sicherung verfügbaren IOPS.
+- Wir empfehlen, jeden virtuellen Premium-Computer unter einem anderen Storage Premium-Konto auszuführen, um die Leistung bei der Sicherung nicht zu beeinträchtigen.
 
 ## Datenverschlüsselung
 
@@ -131,4 +131,4 @@ Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möch
 - [Wiederherstellen virtueller Computer](backup-azure-restore-vms.md)
 - [Problembehandlung bei der Sicherung virtueller Computer](backup-azure-vms-troubleshoot.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -21,7 +21,7 @@
 
 ## WinRM in Azure Service Management im Vergleich zu Azure Resource Manager
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] Klassisches Bereitstellungsmodell
 
 * Eine Übersicht über Azure Resource Manager finden Sie in diesem [Artikel](../resource-group-overview.md).
 * Unterschiede zwischen Azure Service Management und Azure Resource Manager können Sie diesem [Artikel](../resource-manager-deployment-model.md) entnehmen.
@@ -50,7 +50,7 @@ Sie können mit diesem PowerShell-Skript ein selbstsigniertes Zertifikat erstell
 ```
 $certificateName = "somename"
 
-$thumbprint = (New-SelfSignedCertificate -DnsName "$certificateName" -CertStoreLocation Cert:\CurrentUser\My -KeySpec KeyExchange).Thumbprint
+$thumbprint = (New-SelfSignedCertificate -DnsName $certificateName -CertStoreLocation Cert:\CurrentUser\My -KeySpec KeyExchange).Thumbprint
 
 $cert = (Get-ChildItem -Path cert:\CurrentUser\My\$thumbprint)
 
@@ -65,7 +65,7 @@ Vor dem Hochladen des Zertifikats in den in Schritt 1 erstellten Schlüsseltreso
 
 ```
 $fileName = "<Path to the .pfx file>"
-$fileContentBytes = get-content $fileName -Encoding Byte
+$fileContentBytes = Get-Content $fileName -Encoding Byte
 $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
 
 $jsonObject = @"
@@ -80,7 +80,7 @@ $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
 $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
 
 $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
-Set-AzureRmKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValue $secret
+Set-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValue $secret
 ```
 
 ## Schritt 4: Abrufen der URL für das selbstsignierte Zertifikat im Schlüsseltresor
@@ -149,7 +149,7 @@ Den Quellcode für diese Vorlage finden Sie auf [GitHub](https://github.com/Azur
 	$vm = New-AzureRmVMConfig -VMName "<VM name>" -VMSize "<VM Size>"
 	$credential = Get-Credential
 	$secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
-	$vm = Set-AzureRmVMOperatingSystem -VM $vm  -Windows -ComputerName "<Computer Name>" -Credential $credential -WinRMHttp -WinRMHttps -WinRMCertificateUrl $secretURL
+	$vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName "<Computer Name>" -Credential $credential -WinRMHttp -WinRMHttps -WinRMCertificateUrl $secretURL
 	$sourceVaultId = (Get-AzureRmKeyVault -ResourceGroupName "<Resource Group name>" -VaultName "<Vault Name>").ResourceId
 	$CertificateStore = "My"
 	$vm = Add-AzureRmVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
@@ -165,4 +165,4 @@ Wenn das Setup abgeschlossen ist, können Sie mit dem folgenden Befehl eine Verb
 
     Enter-PSSession -ConnectionUri https://<public-ip-dns-of-the-vm>:5986 -Credential $cred -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck) -Authentication Negotiate
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -26,7 +26,7 @@ Jeder Benutzerprofil-Datenträger verfügt über 50 GB permanenten Speicher und 
 
 Lesen Sie weiter, um mehr über die Besonderheiten von Benutzerprofildaten zu erfahren.
 
->[AZURE.NOTE] Müssen Sie den Benutzerprofil-Datenträger (User Profile Disks,UPD) deaktivieren? Dies ist nun möglich. Die Details dazu finden Sie im Blogbeitrag von Pavithra [Disable User Profile Disks (UPDs) in Azure RemoteApp](http://blogs.msdn.com/b/rds/archive/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp.aspx).
+>[AZURE.NOTE] Müssen Sie den Benutzerprofil-Datenträger (User Profile Disks,UPD) deaktivieren? Dies ist nun möglich. Die Details dazu finden Sie im Blogbeitrag von Pavithra [Disable User Profile Disks (UPDs) in Azure RemoteApp](https://blogs.technet.microsoft.com/enterprisemobility/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp/).
 
 
 ## Wie kann ein Administrator auf die Daten zugreifen?
@@ -83,10 +83,10 @@ Ja, Sie können das Azure RemoteApp-Team darum bitten, Benutzerprofil-Datenträg
 In den folgenden Situationen möchten Sie Benutzerprofil-Datenträger möglicherweise deaktivieren:
 
 - Sie benötigen Vollzugriff auf und Kontrolle über Benutzerdaten (z. B. zu Überwachungs- und Prüfzwecken bei Finanzinstituten).
-- Sie verfügen über lokale Lösungen zur Benutzerprofilverwaltung, die Sie in Ihrer in die Domäne eingebundenen Azure RemoteApp-Bereitstellung weiter nutzen möchten. Dazu muss der Profil-Agent in das Gold-Image geladen werden. 
+- Sie verfügen über lokale Lösungen zur Benutzerprofilverwaltung, die Sie in Ihrer in die Domäne eingebundenen Azure RemoteApp-Bereitstellung weiter nutzen möchten. Dazu muss der Profil-Agent in das Gold-Image geladen werden.
 - Sie benötigen keinen lokalen Datenspeicher oder haben alle Daten in die Cloud (z. B. OneDrive for Business) oder eine Dateifreigabe verlagert und möchten das lokale Speichern von Daten mit Azure RemoteApp steuern.
 
-Weitere Informationen finden Sie unter [Deaktivieren von Benutzerprofil-Datenträgern (UPDs) in Azure RemoteApp](http://blogs.msdn.com/b/rds/archive/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp.aspx).
+Weitere Informationen finden Sie unter [Deaktivieren von Benutzerprofil-Datenträgern (UPDs) in Azure RemoteApp](https://blogs.technet.microsoft.com/enterprisemobility/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp/).
 
 ## Kann ich verhindern, dass Benutzer Daten auf dem Systemlaufwerk speichern?
 
@@ -159,4 +159,4 @@ Sie können Ihre Anmeldeinformationen außerdem wie folgt speichern:
 
 So können Sie das Parameter „-Credential“ im New-PSDrive-Cmdlet überspringen.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

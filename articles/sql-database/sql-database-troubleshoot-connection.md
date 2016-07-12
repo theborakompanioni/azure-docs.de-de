@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/29/2016"
+	ms.date="06/27/2016"
 	ms.author="daleche"/>
 
 # Die Problembehandlung für die Fehlermeldung „Datenbank &lt;x&gt; auf Server &lt;y&gt; ist zurzeit nicht verfügbar. Bitte wiederholen Sie den Verbindungsversuch später.“
@@ -39,4 +39,4 @@ Dieser Fehler tritt auf, wenn die Azure-Datenbank verschoben (oder neu konfiguri
 - Wenn es sich um einen anderen Fehler handelt, überprüfen Sie die [Fehlermeldung](sql-database-develop-error-messages.md) bezüglich der Hinweise auf mögliche Ursachen.
 - Wenn der Fehler dauerhaft ist, lesen Sie die Hilfestellungen in dem Artikel [Troubleshoot common connection issues to SQL Azure Database](sql-database-troubleshoot-common-connection-issues.md) (Behandlung häufiger Verbindungsprobleme mit Azure SQL-Datenbanken).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

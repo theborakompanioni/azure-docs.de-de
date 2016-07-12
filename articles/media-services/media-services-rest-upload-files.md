@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="04/18/2016" 
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -49,7 +49,7 @@ Ein Medienobjekt ist ein Container für mehrere Typen oder Gruppen von Objekten 
 
 Eine der Eigenschaften, die Sie beim Erstellen eines Medienobjekts angeben können, ist **Options**. **Options** ist ein Enumerationswert, der die Verschlüsselungsoptionen beschreibt, mit denen ein Medienobjekt erstellt werden kann. Gültig sind einzelne Werte aus der folgenden Liste, aber keine kombinierten Werte:
 
-- **None** = **0**: Es wird keine Verschlüsselung verwendet. Dies ist der Standardwert. Beachten Sie, dass bei Verwendung dieser Option Ihre Inhalte während der Übertragung oder des Verbleibs im Speicher nicht geschützt sind. Wenn Sie planen, eine MP4-Datei über progressives Herunterladen zu übermitteln, verwenden Sie diese Option. 
+- **None** = **0**: Es wird keine Verschlüsselung verwendet. Dies ist der Standardwert. Beachten Sie, dass bei Verwendung dieser Option Ihre Inhalte während der Übertragung oder des Verbleibs im Speicher nicht geschützt sind. Wenn Sie planen, eine MP4-Datei über progressives Herunterladen zu übermitteln, verwenden Sie diese Option.
 
 - **StorageEncrypted** = **1**: Geben Sie an, ob Ihre Dateien beim Hochladen und Speichern mit AES-256-Bit-Verschlüsselung verschlüsselt werden sollen.
 
@@ -233,7 +233,7 @@ Eine SAS-URL weist das folgende Format auf:
 Folgende Überlegungen sollten berücksichtigt werden:
 
 - Einem bestimmten Medienobjekt können jeweils nicht mehr als fünf eindeutige Locators zugeordnet sein. Weitere Informationen finden Sie unter "Locator".
-- Wenn Sie Ihre Dateien sofort hochladen müssen, sollten Sie Ihren StartTime-Wert auf fünf Minuten vor der aktuellen Uhrzeit festlegen. Dies ist erforderlich, weil ggf. eine Uhrzeitabweichung zwischen dem Clientcomputer und Media Services vorliegen kann. Zudem muss der StartTime-Wert das folgende DateTime-Format haben: JJJJ-MM-TTTHH:mm:ssZ (z. B. "2014-05-23T17:53:50Z").	
+- Wenn Sie Ihre Dateien sofort hochladen müssen, sollten Sie Ihren StartTime-Wert auf fünf Minuten vor der aktuellen Uhrzeit festlegen. Dies ist erforderlich, weil ggf. eine Uhrzeitabweichung zwischen dem Clientcomputer und Media Services vorliegen kann. Zudem muss der StartTime-Wert das folgende DateTime-Format haben: JJJJ-MM-TTTHH:mm:ssZ (z. B. "2014-05-23T17:53:50Z").
 - Gegebenenfalls tritt eine Verzögerung von 30 bis 40 Sekunden zwischen dem Erstellen eines Locators und seiner Verfügbarkeit auf. Dies gilt für die SAS-URL sowie für Ursprungslocators.
 
 Das folgende Beispiel zeigt, wie Sie einen SAS URL-Locator gemäß der Type-Eigenschaft im Anforderungstext (1 für einen SAS-Locator und 2 für einen On-Demand-Ursprungslocator) erstellen können. Die zurückgegebene **Path**-Eigenschaft enthält die URL, die Sie für den Upload der Datei verwenden müssen.
@@ -460,7 +460,7 @@ Wenn Ihr Objekt Verschlüsselung verwenden soll, müssen Sie einen ContentKey er
  
 Eigenschaft im Anforderungstext | Beschreibung
 ---|---
-ID | Die ContentKey-ID, die wir selbst in folgendem Format generieren: „nb:kid:UUID:<NEW GUID>“.
+ID | Die ContentKey-ID, die wir selbst in folgendem Format generieren: „nb:kid:UUID:<NEUE GUID>“.
 ContentKeyType | Dies ist der Inhaltsschlüsseltyp für diesen Inhaltsschlüssel in Form einer Ganzzahl. Wir übergeben den Wert 1 für die Speicherverschlüsselung.
 EncryptedContentKey | Wir erstellen einen neuen Inhaltsschlüsselwert mit einer Länge von 256 Bits (32 Bytes). Der Schlüssel wird mithilfe des X.509-Speicherverschlüsselungszertifikats verschlüsselt, das wir von Microsoft Azure Media Services abrufen, indem wir eine HTTP-GET-Anforderung für die Methoden "GetProtectionKeyId" und "GetProtectionKey" ausführen.
 ProtectionKeyId | Dies ist die Schutzschlüssel-ID für das X.509-Speicherverschlüsselungszertifikat, das zur Verschlüsselung des Inhaltsschlüssels verwendet wurde.
@@ -529,4 +529,4 @@ Der ContentKey wird durch Senden einer HTTP-POST-Anforderung mit mindestens eine
 [How to Get a Media Processor]: media-services-get-media-processor.md
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

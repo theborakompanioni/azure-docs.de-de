@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="05/12/2016" 
+    ms.date="06/12/2016" 
     ms.author="elizapo" />
 
 
@@ -36,4 +36,4 @@ Es ist einfach, Ihre vorhandene App-V-Infrastruktur mit Azure RemoteApp zu verwe
 
  Nachdem Sie das benutzerdefinierte Image und die Hybridsammlung erstellt haben, können Sie Ihre Anwendung veröffentlichen, Benutzer zuweisen und Ihre vorhandenen App-V-Anwendungen nutzen, die unter Azure RemoteApp gehostet und auf allen Geräten an allen Orten bereitgestellt werden.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

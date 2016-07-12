@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Verwenden von PowerShell zum Erstellen einer VM mit einem Berichtsserver im einheitlichen Modus | Microsoft Azure"
-	description="In diesem Thema wird beschrieben und sind Anleitungen enthalten, wie ein SQL Server Reporting Services-Berichtsserver im einheitlichen Modus auf einem virtuellen Azure Computer (Azure Virtual Machine, Azure-VM) bereitgestellt und konfiguriert wird."
+	description="In diesem Thema wird beschrieben und sind Anleitungen enthalten, wie ein SQL Server Reporting Services-Berichtsserver im einheitlichen Modus auf einem virtuellen Azure Computer (Azure Virtual Machine, Azure-VM) bereitgestellt und konfiguriert wird. "
 	services="virtual-machines-windows"
 	documentationCenter="na"
 	authors="guyinacube"
@@ -18,7 +18,7 @@
 
 # Verwenden von PowerShell zum Erstellen einer Azure-VM mit einem Berichtsserver im einheitlichen Modus
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
  
 
 In diesem Thema wird beschrieben und sind Anleitungen enthalten, wie ein SQL Server Reporting Services-Berichtsserver im einheitlichen Modus auf einem virtuellen Azure Computer (Azure Virtual Machine, Azure-VM) bereitgestellt und konfiguriert wird. Die Schritte in diesem Dokument bestehen aus einer Kombination von manuellen Schritten zum Erstellen des virtuellen Computers und einem Windows PowerShell-Skript zum Konfigurieren von Reporting Services auf dem virtuellen Computer. Das Konfigurationsskript umfasst das Öffnen eines Firewallports für HTTP oder HTTPS.
@@ -83,7 +83,7 @@ In diesem Thema wird beschrieben und sind Anleitungen enthalten, wie ein SQL Ser
 
 	- **Clouddienst**: Wählen Sie **Einen neuen Clouddienst erstellen** aus.
 	
-	- **DNS-Name des Clouddiensts**: Dies ist der öffentliche DNS-Name des Clouddiensts, der dem virtuellen Computer zugeordnet ist. Der Standardname ist der Name, den Sie als Namen des virtuellen Computers eingegeben haben. In späteren Schritten dieses Themas erstellen Sie ein vertrauenswürdiges SSL-Zertifikat, und dann wird der DNS-Name als Wert für die „Ausgestellt für“-Eigenschaft des Zertifikats verwendet.
+	- **DNS-Name des Clouddiensts**: Dies ist der öffentliche DNS-Name des Clouddiensts, der dem virtuellen Computer zugeordnet ist. Der Standardname ist der Name, den Sie als Namen des virtuellen Computers eingegeben haben. In späteren Schritten dieses Themas erstellen Sie ein vertrauenswürdiges SSL-Zertifikat, und dann wird der DNS-Name als Wert für die Eigenschaft **Ausgestellt für** des Zertifikats verwendet.
 	
 	- **Region/Affinitätsgruppe/Virtuelles Netzwerk**: Wählen Sie die Region aus, die am nächsten zu den Endbenutzern liegt.
 	
@@ -117,7 +117,7 @@ Wenn Sie HTTPS auf dem virtuellen Computer verwenden möchten, benötigen Sie ei
 
 ### So verwenden Sie ein Zertifikat, das von einer vertrauenswürdigen Zertifizierungsstelle erstellt wurde
 
-1. **Fordern Sie ein Serverzertifikat für die Website von einer Zertifizierungsstelle an**. 
+1. **Fordern Sie ein Serverzertifikat für die Website von einer Zertifizierungsstelle an**.
 
 	Sie können den Assistenten für Webserverzertifikate verwenden, um entweder eine Zertifikatanforderungsdatei (Certreq.txt), die Sie an eine Zertifizierungsstelle senden, oder eine Anforderung für eine Onlinezertifizierungsstelle zu generieren. Beispielsweise Microsoft-Zertifikatdienste in Windows Server 2012. Abhängig vom Umfang der Identifikationssicherheit, die Ihr Serverzertifikat bietet, benötigt die Zertifizierungsstelle mehrere Tage bis hin zu mehreren Monaten, um Ihre Anforderung zu genehmigen und Ihnen eine Zertifikatdatei zu senden.
 
@@ -633,7 +633,7 @@ Damit Sie sich vergewissern können, dass die grundlegenden Berichtsserverfunkti
 
 		http://localhost/Reports
 
-- Navigieren Sie auf Ihrem lokalen Computer zu dem **Remote**-Berichts-Manager auf dem virtuellen Computer. Aktualisieren Sie den DNS-Namen im folgenden Beispiel entsprechend Ihren Anforderungen. Wenn Sie zur Eingabe eines Kennworts aufgefordert werden, verwenden Sie die Administratoranmeldeinformationen, die Sie beim Bereitstellen des virtuellen Computers angegeben haben. Der Benutzername hat das Format [Domäne]\[Benutzername], wobei die Domäne dem Namen des virtuellen Computers entspricht, z. B. „ssrsnativecloud\\testuser“. Wenn Sie nicht HTTPS verwenden, entfernen Sie das **S** aus der URL. Informationen, wie Sie weitere Benutzer auf dem virtuellen Computer erstellen, finden Sie im nächsten Abschnitt.
+- Navigieren Sie auf Ihrem lokalen Computer zu dem **Remote**-Berichts-Manager auf dem virtuellen Computer. Aktualisieren Sie den DNS-Namen im folgenden Beispiel entsprechend Ihren Anforderungen. Wenn Sie zur Eingabe eines Kennworts aufgefordert werden, verwenden Sie die Administratoranmeldeinformationen, die Sie beim Bereitstellen des virtuellen Computers angegeben haben. Der Benutzername hat das Format [Domäne](Benutzername), wobei die Domäne dem Namen des virtuellen Computers entspricht, z. B. „ssrsnativecloud\\testuser“. Wenn Sie nicht HTTP**S** verwenden, entfernen Sie das **S** aus der URL. Informationen, wie Sie weitere Benutzer auf dem virtuellen Computer erstellen, finden Sie im nächsten Abschnitt.
 
 		https://ssrsnativecloud.cloudapp.net/Reports
 
@@ -705,4 +705,4 @@ In der folgende Tabelle sind einige der Optionen zusammengefasst, mit denen vorh
 
 [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md)
 
-<!----HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

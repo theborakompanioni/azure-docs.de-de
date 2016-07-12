@@ -13,19 +13,19 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/28/2016"
+	ms.date="06/27/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C-Vorschau: Aktivieren der Multi-Factor Authentication in kundenorientierten Anwendungen
 
-Azure Active Directory (Azure AD) B2C bietet eine direkte Integration in die [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md), damit Sie eine zweite Sicherheitsebene zu Registrierungs- und Anmeldeoberflächen in kundenorientierten Anwendungen hinzufügen können. Sie erreichen dies, ohne eine einzige Codezeile schreiben zu müssen. Derzeit wird eine Überprüfung per Telefonanruf und Textnachricht unterstützt. Sie können die Multi-Factor Authentication auch dann aktivieren, wenn Sie bereits Registrierungs- und Anmelderichtlinien erstellt haben.
+Azure Active Directory (Azure AD) B2C bietet eine direkte Integration in die [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md), damit Sie eine zweite Sicherheitsebene zu Registrierungs- und Anmeldeoberflächen in kundenorientierten Anwendungen hinzufügen können. Sie erreichen dies, ohne eine einzige Codezeile schreiben zu müssen. Derzeit wird eine Überprüfung per Telefonanruf und Textnachricht unterstützt. Sie können die Multi-Factor Authentication auch dann aktivieren, wenn Sie bereits Registrierungs- und Anmelderichtlinien erstellt haben.
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
 > [AZURE.NOTE]
 Die Multi-Factor Authentication kann auch beim Erstellen von Registrierungs- und Anmelderichtlinien aktiviert werden und nicht nur durch Bearbeiten von vorhandenen Richtlinien.
 
-Mithilfe dieses Features können Anwendungen z. B. folgende Szenarios bewältigen:
+Mithilfe dieses Features können Anwendungen z. B. folgende Szenarios bewältigen:
 
 - Für den Zugriff auf eine Anwendung ist keine Multi-Factor Authentication erforderlich, jedoch für den Zugriff auf eine andere Anwendung. Beispielsweise kann sich der Kunde bei der Anwendung einer Kfz-Versicherung mit einem lokalen Konto oder dem Konto eines sozialen Netzwerks anmelden. Er muss jedoch seine Telefonnummer bestätigen, bevor er auf die Anwendung für die Hausversicherung zugreifen kann, die im selben Verzeichnis registriert ist.
 - Die Multi-Factor Authentication ist allgemein für den Zugriff auf eine Anwendung nicht erforderlich, jedoch für vertrauliche Unterbereiche dieser Anwendung. Beispielsweise kann sich der Kunde bei einer Onlinebanking-Anwendung mit einem lokalen Konto oder dem Konto eines sozialen Netzwerks anmelden, um den Kontostand abzufragen. Um eine Überweisung zu tätigen, ist jedoch die Bestätigung der Telefonnummer erforderlich.
@@ -34,7 +34,7 @@ Mithilfe dieses Features können Anwendungen z. B. folgende Szenarios bewältige
 
 1. [Führen Sie diese Schritte aus, um im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
 2. Klicken Sie auf **Registrierungsrichtlinien**.
-3. Klicken Sie auf die Registrierungsrichtlinie (z. B. „B2C\_1\_SiUp“), um sie zu öffnen.
+3. Klicken Sie auf die Registrierungsrichtlinie (z. B. „B2C\_1\_SiUp“), um sie zu öffnen.
 4. Klicken Sie auf **Multi-Factor Authentication**, und legen Sie den **Status** auf **EIN** fest. Klicken Sie auf **OK**.
 5. Klicken Sie oben auf dem Blatt auf **Speichern**.
 
@@ -46,7 +46,7 @@ In Ihrem Verzeichnis wird ein Kundenkonto erstellt, bevor der Schritt für die M
 
 1. [Führen Sie diese Schritte aus, um im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
 2. Klicken Sie auf **Anmelderichtlinien**.
-3. Klicken Sie auf die Anmelderichtlinie (z. B. „B2C\_1\_SiIn“), um sie zu öffnen. Klicken Sie oben auf dem Blatt auf **Bearbeiten**.
+3. Klicken Sie auf die Anmelderichtlinie (z. B. „B2C\_1\_SiIn“), um sie zu öffnen. Klicken Sie oben auf dem Blatt auf **Bearbeiten**.
 4. Klicken Sie auf **Multi-Factor Authentication**, und legen Sie den **Status** auf **EIN** fest. Klicken Sie auf **OK**.
 5. Klicken Sie oben auf dem Blatt auf **Speichern**.
 
@@ -58,4 +58,4 @@ Wenn sich der Kunde (mit einem lokalen Konto oder dem Konto eines sozialen Netzw
 
 Wie für Registrierungs- und Anmeldungsrichtlinien oben beschrieben, ist es auch möglich, die mehrstufige Authentifizierung für Registrierungs- und Anmeldungsrichtlinien sowie für Richtlinien zur Kennwortrücksetzung zu aktivieren. Dies ist bald auch für Richtlinien zur Profilbearbeitung möglich.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0629_2016-->

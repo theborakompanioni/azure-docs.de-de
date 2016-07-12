@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="05/12/2016"
+    ms.date="06/12/2016"
     ms.author="ericor" />
 
 
@@ -49,6 +49,6 @@ Nachdem Sie Ihr benutzerdefiniertes Vorlagenimage erstellt oder aktualisiert hab
 
 - Vergewissern Sie sich, dass Sie Windows PowerShell, nicht Azure PowerShell verwenden. Sie müssen das Azure PowerShell-Modul installieren, da bestimmte Module während des Uploads erforderlich sind.
 - Nehmen Sie keine Änderungen am Skript vor, die Überprüfungen sollen Ihnen helfen.
-- Wenn die VHD-Datei beim Upload ausgesperrt wird, kopieren oder verschieben Sie sie an den neuen Speicherort, und wiederholen Sie den Upload. Möglicherweise verhindern bestimmte Windows-Prozesse den Upload.  
+- Wenn die VHD-Datei beim Upload ausgesperrt wird, kopieren oder verschieben Sie sie an den neuen Speicherort, und wiederholen Sie den Upload. Möglicherweise verhindern bestimmte Windows-Prozesse den Upload.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

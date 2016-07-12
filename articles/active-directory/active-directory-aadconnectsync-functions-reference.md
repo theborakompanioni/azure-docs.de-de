@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/23/2016"
+	ms.date="06/27/2016"
 	ms.author="andkjell;markvi"/>
 
 
@@ -108,9 +108,12 @@ Anders gesagt: sie gibt in allen Fällen 0 zurück, außer wenn die entsprechend
 
 **Hinweise:** Wenn die Auswertung des Ausdrucks einen Wert ungleich 0 ergibt, dann gibt CBool TRUE zurück, andernfalls FALSE.
 
+
 **Beispiel:** `CBool([attrib1] = [attrib2])`
 
 Gibt True zurück, wenn beide Attribute den gleichen Wert haben.
+
+
 
 ----------
 ### CDate
@@ -160,7 +163,7 @@ Gibt den Index in dem mehrwertigen Attribut zurück, in dem die Zeichenfolge gef
 
 **Syntax:** `str ConvertFromBase64(str source)` – setzt Unicode zur Codierung voraus <br> `str ConvertFromBase64(str source, enum Encoding)`
 
-- source: Base64-codierte Zeichenfolge  
+- source: Base64-codierte Zeichenfolge
 - Codierung: Unicode, ASCII, UTF8.
 
 **Beispiel:** `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")` `ConvertFromBase64("SGVsbG8gd29ybGQh", UTF8)`
@@ -516,7 +519,7 @@ Wenn der Index außerhalb des gültigen Bereichs liegt, wird ein Nullwert zurüc
 
 **Hinweise:** Zwischen den Funktionen Join und Split besteht Parität. Die Funktion "Join" nimmt ein Array von Zeichenfolgen entgegen, verknüpft sie mit einer Trennzeichenfolge und gibt eine einzige Zeichenfolge zurück. Die Funktion "Split" nimmt eine Zeichenfolge entgegen, trennt sie mit dem Trennzeichen und gibt ein Array von Zeichenfolgen zurück. Ein wichtiger Unterschied ist jedoch, dass "Join" Zeichenfolgen mit einer beliebigen Trennzeichenfolge verketten kann, "Split" aber nur Zeichenfolgen mit einem einzigen Trennzeichen trennen kann.
 
-**Beispiel:** `Join([proxyAddresses],",")` Könnte zurückgeben: „SMTP:john.doe@contoso.com,smtp:jd@contoso.com“
+**Beispiel:** `Join([proxyAddresses],",")` Kann beispielsweise Folgendes zurückgeben: SMTP:john.doe@contoso.com,smtp:jd@contoso.com
 
 ----------
 ### LCase
@@ -550,11 +553,11 @@ Wenn die Zeichenfolge weniger Zeichen enthält als in "numChars" angegeben, wird
 ----------
 ### Len
 
-**Beschreibung:** Die Len-Funktion gibt die Anzahl der Zeichen in einer Zeichenfolge zurück.
+**Beschreibung:** Die Len-Funktion gibt die Anzahl von Zeichen in einer Zeichenfolge zurück.
 
 **Syntax:** `num Len(str value)`
 
-**Beispiel:** `Len("John Doe")` Gibt 8 zurück.
+**Beispiel:** `Len("John Doe")` Gibt „8“ zurück.
 
 ----------
 ### LTrim
@@ -609,7 +612,7 @@ Wenn nicht "numChars" Zeichen ab der Ausgangsposition in der Zeichenfolge vorhan
 ----------
 ### PadLeft
 
-**Beschreibung:** Die PadLeft-Funktion füllt eine Zeichenfolge nach links bis zu einer angegebenen Länge mit einem bereitgestellten Auffüllzeichen auf.
+**Beschreibung:** Die PadLeft-Funktion füllt eine Zeichenfolge nach links bis zu einer angegebenen Länge mit einem angegebenen Auffüllzeichen auf.
 
 **Syntax:** `str PadLeft(str string, num length, str padCharacter)`
 
@@ -631,7 +634,7 @@ Wenn nicht "numChars" Zeichen ab der Ausgangsposition in der Zeichenfolge vorhan
 ----------
 ### PadRight
 
-**Beschreibung:** Die PadRight-Funktion füllt eine Zeichenfolge nach rechts bis zu einer angegebenen Länge mit einem bereitgestellten Auffüllzeichen auf.
+**Beschreibung:** Die PadRight-Funktion füllt eine Zeichenfolge nach rechts bis zu einer angegebenen Länge mit einem angegebenen Auffüllzeichen auf.
 
 **Syntax:** `str PadRight(str string, num length, str padCharacter)`
 
@@ -669,7 +672,7 @@ Wenn nicht "numChars" Zeichen ab der Ausgangsposition in der Zeichenfolge vorhan
 - start: Eine Zahl, die die untere Grenze des zu generierenden Zufallswerts angibt
 - end: Eine Zahl, die die obere Grenze des zu generierenden Zufallswerts angibt
 
-**Beispiel:** `Random(100,999)` Kann 734 zurückgeben.
+**Beispiel:** `Random(100,999)` Kann „734“ zurückgeben.
 
 ----------
 ### RemoveDuplicates
@@ -697,12 +700,12 @@ Wenn nicht "numChars" Zeichen ab der Ausgangsposition in der Zeichenfolge vorhan
 - \\r – Wagenrücklauf
 - \\t – Tabulator
 
-**Beispiel:** `Replace([address],"\r\n",", ")` Ersetzt CRLF durch Komma und Leerzeichen, was folgendermaßen aussehen könnte: „One Microsoft Way, Redmond, WA, USA“.
+**Beispiel:** `Replace([address],"\r\n",", ")` Ersetzt CRLF durch ein Komma und ein Leerzeichen, was etwa wie folgt aussehen kann: „One Microsoft Way, Redmond, WA, USA“.
 
 ----------
 ### ReplaceChars
 
-**Beschreibung:** Die ReplaceChars-Funktion ersetzt alle Vorkommen von Zeichen, die in der Zeichenfolge ReplacePattern gefunden werden.
+**Beschreibung:** Die ReplaceChars-Funktion ersetzt alle Vorkommen von Zeichen, die in der ReplacePattern-Zeichenfolge gefunden werden.
 
 **Syntax:** `str ReplaceChars(str string, str ReplacePattern)`
 
@@ -724,9 +727,9 @@ Das Format lautet "{source1}:{target1},{source2}:{target2},{sourceN},{targetN}",
 
 **Beispiel:** `%ReplaceString% = ’:,Å:A,Ä:A,Ö:O,å:a,ä:a,ö,o`
 
-`ReplaceChars("Räksmörgås",%ReplaceString%)` Gibt „Raksmorgas“ zurück
+`ReplaceChars("Räksmörgås",%ReplaceString%)` Gibt „Raksmorgas“ zurück.
 
-`ReplaceChars("O’Neil",%ReplaceString%)` Gibt „ONeil“ zurück, der Apostroph ist als zu entfernen definiert.
+`ReplaceChars("O’Neil",%ReplaceString%)` Gibt „ONeil“ zurück. (Der Apostroph wird entfernt.)
 
 ----------
 ### Right
@@ -738,7 +741,7 @@ Das Format lautet "{source1}:{target1},{source2}:{target2},{sourceN},{targetN}",
 - string: Zeichenfolge, aus der Zeichen zurückgegeben werden
 - numChars: Diese Zahl gibt die Anzahl der Zeichen an, die vom Ende der Zeichenfolge (rechts) zurückgeben werden
 
-**Hinweise:** Es werden numChars Zeichen ab der letzten Position der Zeichenfolge zurückgegeben.
+**Hinweise:** numChars-Zeichen werden ab der letzten Position der Zeichenfolge zurückgegeben.
 
 Eine Zeichenfolge, die die letzten "numChars" Zeichen in der Zeichenfolge enthält:
 
@@ -753,7 +756,7 @@ Wenn die Zeichenfolge weniger Zeichen enthält als in "numChars" angegeben, wird
 ----------
 ### RTrim
 
-**Beschreibung:** Die RTrim-Funktion entfernt nachstehende Leerzeichen aus einer Zeichenfolge.
+**Beschreibung:** Die RTrim-Funktion entfernt nachfolgende Leerzeichen aus einer Zeichenfolge.
 
 **Syntax:** `str RTrim(str value)`
 
@@ -770,7 +773,7 @@ Wenn die Zeichenfolge weniger Zeichen enthält als in "numChars" angegeben, wird
 - delimiter: Einzelnes Zeichen, das als Trennzeichen verwendet werden soll
 - limit: Maximale Anzahl der Werte, die zurückgegeben werden
 
-**Beispiel:** `Split("SMTP:john.doe@contoso.com,smtp:jd@contoso.com",",")` Gibt eine mehrwertige Zeichenfolge mit 2 Elementen zurück, die für das proxyAddress-Attribut nützlich ist.
+**Beispiel:** `Split("SMTP:john.doe@contoso.com,smtp:jd@contoso.com",",")` Gibt eine mehrwertige Zeichenfolge mit zwei Elementen zurück, die für das proxyAddress-Attribut nützlich sind.
 
 ----------
 ### StringFromGuid
@@ -782,7 +785,7 @@ Wenn die Zeichenfolge weniger Zeichen enthält als in "numChars" angegeben, wird
 ----------
 ### StringFromSid
 
-**Beschreibung:** Die StringFromSid-Funktion konvertiert ein Bytearray oder ein mehrwertiges Bytearray, das eine Sicherheits-ID enthält, in eine Zeichenfolge oder mehrwertige Zeichenfolge.
+**Beschreibung:** Die StringFromSid-Funktion konvertiert ein Bytearray oder ein mehrwertiges Bytearray mit einer enthaltenen Sicherheits-ID in eine Zeichenfolge oder mehrwertige Zeichenfolge.
 
 **Syntax:** `str StringFromSid(bin ObjectSID)` `mvstr StringFromSid(mvbin ObjectSID)`
 
@@ -796,7 +799,7 @@ Wenn die Zeichenfolge weniger Zeichen enthält als in "numChars" angegeben, wird
 - expr: Variantenausdruck, den Sie auswerten möchten
 - value: Wert, der zurückgegeben werden soll, wenn der entsprechende Ausdruck True ergibt
 
-**Hinweise:** Die Argumentliste der Switch-Funktion enthält Paare von Ausdrücken und Werten. Die Ausdrücke werden von links nach rechts ausgewertet, und der Wert, der mit dem ersten als True ausgewerteten Ausdruck verknüpft ist, wird zurückgegeben. Wenn die Teile nicht richtig paarweise angegeben werden, tritt ein Laufzeitfehler auf.
+**Hinweise:** Die Argumentliste der Switch-Funktion setzt sich aus Ausdrucks- und Wertpaaren zusammen. Die Ausdrücke werden von links nach rechts ausgewertet, und der Wert, der mit dem ersten als True ausgewerteten Ausdruck verknüpft ist, wird zurückgegeben. Wenn die Teile nicht richtig paarweise angegeben werden, tritt ein Laufzeitfehler auf.
 
 Wenn z. B. "expr1" True ist, gibt "Switch" "value1" zurück. Wenn "expr-1" False, aber "expr-2" True ist, gibt "Switch" "value-2" zurück usw.
 
@@ -809,18 +812,18 @@ Switch gibt nichts zurück, wenn:
 
 Ein Wert kann auch die Funktion "Error" sein, die eine benutzerdefinierte Zeichenfolge zurückgibt.
 
-**Beispiel:** `Switch([city] = "London", "English", [city] = "Rome", "Italian", [city] = "Paris", "French", True, Error("Unknown city"))` Gibt die Sprache zurück, die in einigen Großstädten gesprochen wird, andernfalls wird „Error“ zurückgegeben.
+**Beispiel:** `Switch([city] = "London", "English", [city] = "Rome", "Italian", [city] = "Paris", "French", True, Error("Unknown city"))` Gibt die Sprache zurück, die in einigen Großstädten gesprochen wird. Andernfalls wird „Error“ zurückgegeben.
 
 ----------
 ### Trim
 
-**Beschreibung:** Die Trim-Funktion entfernt führende und nachstehende Leerzeichen aus einer Zeichenfolge.
+**Beschreibung:** Die Trim-Funktion entfernt führende und nachfolgende Leerzeichen aus einer Zeichenfolge.
 
 **Syntax:** `str Trim(str value)` `mvstr Trim(mvstr value)`
 
 **Beispiel:** `Trim(" Test ")` Gibt „Test“ zurück.
 
-`Trim([proxyAddresses])` Entfernt führende und nachstehende Leerzeichen für jeden Wert im proxyAddress-Attribut.
+`Trim([proxyAddresses])` Entfernt führende und nachfolgende Leerzeichen für jeden Wert im proxyAddress-Attribut.
 
 ----------
 ### UCase
@@ -834,7 +837,7 @@ Ein Wert kann auch die Funktion "Error" sein, die eine benutzerdefinierte Zeiche
 ----------
 ### Word
 
-**Beschreibung:** Die Word-Funktion gibt ein Wort, das in einer Zeichenfolge enthalten ist, auf der Basis von Parametern zurück, die die zu verwendenden Trennzeichen und die Nummer des zurückzugebenden Worts beschreiben.
+**Beschreibung:** Die Word-Funktion gibt ein in einer Zeichenfolge enthaltenes Wort auf der Grundlage von Parametern zurück, die die zu verwendenden Trennzeichen und die Nummer des zurückzugebenden Worts beschreiben.
 
 **Syntax:** `str Word(str string, num WordNumber, str delimiters)`
 
@@ -842,7 +845,7 @@ Ein Wert kann auch die Funktion "Error" sein, die eine benutzerdefinierte Zeiche
 - WordNumber: Eine Zahl, die die Nummer des zurückzugebenden Worts angibt
 - delimiters: Eine Zeichenfolge, die das/die Trennzeichen angibt, das/die verwendet werden soll(en), um Wörter zu identifizieren
 
-**Hinweise:** Alle Folgen von Zeichen in einer Zeichenfolge, die durch ein Zeichen getrennt werden, das in „delimiters“ enthalten ist, werden als Wörter behandelt:
+**Hinweise:** Alle Folgen von Zeichen in einer Zeichenfolge, die durch eines der in „delimiters“ enthaltenen Zeichen getrennt werden, werden als Wörter behandelt:
 
 - Wenn "WordNumber" < 1, wird eine leere Zeichenfolge zurückgegeben
 - Wenn "string" einen Nullwert hat, wird eine leere Zeichenfolge zurückgegeben
@@ -859,4 +862,4 @@ Wenn "string" weniger als "WordNumber" Wörter enthält, oder "string" keine Wö
 * [Azure AD Connect-Synchronisierung: Anpassen von Synchronisierungsoptionen](active-directory-aadconnectsync-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

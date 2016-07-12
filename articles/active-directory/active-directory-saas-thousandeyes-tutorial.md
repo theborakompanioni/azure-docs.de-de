@@ -78,7 +78,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-thousandeyes-tutorial/IC790063.png "Einmaliges Anmelden konfigurieren")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **ThousandEyes-Anmelde-URL** die URL-Benutzer ein, welche die Benutzer zur Anmeldung bei ThousandEyes verwenden (z. B. **https://app.thousandeyes.com/login/sso*"), und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **ThousandEyes-Anmelde-URL** die URL-Benutzer ein, welche die Benutzer zur Anmeldung bei ThousandEyes verwenden (z. B. *https://app.thousandeyes.com/login/sso*"), und klicken Sie dann auf **Weiter**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-thousandeyes-tutorial/IC790064.png "App-URL konfigurieren")
 

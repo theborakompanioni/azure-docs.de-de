@@ -19,7 +19,7 @@
 
 # Erstellen eines benutzerdefinierten virtuellen Linux-Computers
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 Dieses Thema enthält Informationen zum Erstellen eines benutzerdefinierten virtuellen Computers (VM, Virtual Machine) mithilfe der Azure-Befehlszeilenschnittstelle und des klassischen Bereitstellungsmodells. Wir verwenden ein Linux-Image aus den verfügbaren **IMAGES**in Azure. Die Azure-Befehlszeilenschnittstellen-Befehle enthalten u.a. folgende Konfigurationsoptionen:
 
@@ -35,4 +35,4 @@ Dieses Thema enthält Informationen zum Erstellen eines benutzerdefinierten virt
 
 [AZURE.INCLUDE [virtual-machines-create-LinuxVM](../../includes/virtual-machines-create-linuxvm.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

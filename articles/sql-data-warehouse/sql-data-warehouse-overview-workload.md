@@ -1,6 +1,6 @@
 <properties
    pageTitle="Data Warehouse-Workload"
-   description="Die Flexibilität von SQL Data Warehouse ermöglicht Ihnen das Vergrößern, Verkleinern oder Anhalten der Rechenleistung mithilfe eines Schiebereglers für Data Warehouse-Einheiten (DWUs). Dieser Artikel beschreibt die Data Warehouse-Metriken und deren Beziehung zu DWUs."
+   description="Die Flexibilität von SQL Data Warehouse ermöglicht Ihnen das Vergrößern, Verkleinern oder Anhalten der Rechenleistung mithilfe eines Schiebereglers für Data Warehouse-Einheiten (DWUs). Dieser Artikel beschreibt die Data Warehouse-Metriken und deren Beziehung zu DWUs. "
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="barbkess"
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/31/2016"
+   ms.date="07/01/2016"
    ms.author="barbkess;mausher;jrj;sonyama"/>
 
 
@@ -48,7 +48,7 @@ Berichterstellung und Analyseabfragen werden häufig in die Kategorien klein, mi
 ### Datenverwaltung
 Das Verwalten von Daten ist wichtig, besonders wenn Sie wissen, dass zukünftig möglicherweise nicht genügend Speicherplatz zur Verfügung steht. Data Warehouses unterteilen die Daten in der Regel in sinnvolle Bereiche, die als Partitionen in einer Tabelle gespeichert werden. Alle SQL Server-basierten Produkte ermöglichen Ihnen das Verschieben von Partitionen in die und aus der Tabelle. Durch diesen Partitionswechsel können Sie ältere Daten auf kostengünstigeren Speicher verschieben und die neuesten Daten auf dem Onlinespeicher verfügbar halten.
 
-- ColumnStore-Indizes unterstützen partitionierte Tabellen. Für ColumnStore-Indizes werden partitionierte Tabellen für die Datenverwaltung und -archivierung verwendet. Bei zeilenweise gespeicherten Tabellen spielen Partitionen eine größere Rolle bei der Abfrageleistung.  
+- ColumnStore-Indizes unterstützen partitionierte Tabellen. Für ColumnStore-Indizes werden partitionierte Tabellen für die Datenverwaltung und -archivierung verwendet. Bei zeilenweise gespeicherten Tabellen spielen Partitionen eine größere Rolle bei der Abfrageleistung.
 
 - PolyBase spielt eine wichtige Rolle bei der Verwaltung von Daten. Mit PolyBase können Sie ältere Daten im Hadoop- oder Azure-Blob-Speicher archivieren. Dies bietet viele Möglichkeiten, da die Daten noch immer online sind. Es dauert u. U. länger, Daten aus Hadoop abzurufen, aber der Nachteil der Abrufzeit gleicht möglicherweise die Speicherkosten aus.
 
@@ -59,18 +59,16 @@ Eine Möglichkeit, Daten für Berichte und Analysen verfügbar zu machen, ist da
 - Für Analysten können Sie einen Analysecube im Data Warehouse erstellen und Analysen für das Data Warehouse ausführen oder Daten vorab verarbeiten und zur weiteren Analyse auf den Analyseserver exportieren.
 
 ## Nächste Schritte
-Informationen zu den ersten Schritten zum Entwickeln Ihres Data Warehouse finden Sie unter [Entwicklungsübersicht][].
-
-## Bücher
-[Big Data Warehousing](https://www.manning.com/books/big-data-warehousing) von Karthik Ramachandran, Istvan Szededi und Richard L. Saltzer (Manning Publications). [Kapitel 1](https://manning-content.s3.amazonaws.com/download/e/3d94acd-9512-46c8-b0b0-8c9c3c6a303b/BDW_MEAP_ch1.pdf)
+Nachdem Sie sich mit den Grundlagen von SQL Data Warehouse vertraut gemacht haben, können Sie sich nun darüber informieren, wie Sie schnell [eine SQL Data Warehouse-Instanz erstellen][] und [Beispieldaten laden][].
 
 <!--Image references-->
 
 <!--Article references-->
-[Entwicklungsübersicht]: sql-data-warehouse-overview-develop.md
+[Beispieldaten laden]: ./sql-data-warehouse-load-sample-databases.md
+[eine SQL Data Warehouse-Instanz erstellen]: ./sql-data-warehouse-get-started-provision.md
 
 <!--MSDN references-->
 
 <!--Other web references-->
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

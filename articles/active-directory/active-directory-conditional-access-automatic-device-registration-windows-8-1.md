@@ -1,10 +1,10 @@
 <properties
 	pageTitle="Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 8.1-Geräte | Microsoft Azure"
-	description="Schritte zum Konfigurieren einer Gruppenrichtlinie für in eine Windows 8.1-Domäne eingebundene Geräte für die automatische Registrierung bei Azure AD."
+	description=" Schritte zum Konfigurieren einer Gruppenrichtlinie für in eine Windows 8.1-Domäne eingebundene Geräte für die automatische Registrierung bei Azure AD. "
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
-	manager="stevenpo"
+	manager="swadhwa"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="06/23/2016"
 	ms.author="femila"/>
 
 # Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 8.1-Geräte
@@ -61,4 +61,4 @@ Die Gruppenrichtlinie aktiviert einen geplanten Task auf dem System, der im Kont
 - [Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows 10-Geräte](active-directory-conditional-access-automatic-device-registration.md)
 - [Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 7-Geräte](active-directory-conditional-access-automatic-device-registration-windows7.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

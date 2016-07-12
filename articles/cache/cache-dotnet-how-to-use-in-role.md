@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/06/2016" 
+	ms.date="06/24/2016" 
 	ms.author="sdanie"/>
 
 
@@ -44,15 +44,15 @@ Das Caching von Rolleninstanzen bietet folgende Vorteile:
 
 -	Keine Zusatzkosten für das Caching. Sie zahlen lediglich für die Computeressourcen, die den Cache hosten.
 -	Beschränkungen und Engpässe werden eliminiert.
--	Mehr Kontrolle und Isolation. 
+-	Mehr Kontrolle und Isolation.
 -	Verbesserte Leistung.
 -	Caches werden automatisch in der Größe angepasst, wenn Rollen vergrößert oder verkleinert werden. Effektives Skalieren des Speichers, der für das Caching zur Verfügung seht, wenn Rolleninstanzen hinzugefügt oder entfernt werden.
--	Genaues Entwicklungszeit-Debugging 
+-	Genaues Entwicklungszeit-Debugging
 -	Unterstützung des Memcache-Protokolls
 
 Darüber hinaus bietet das Caching von Rolleninstanzen die folgenden konfigurierbaren Optionen:
 
--	Konfigurieren einer dedizierten Rolle für das Caching oder Zusammenstellen des Cachings auf bereits bestehenden Rollen. 
+-	Konfigurieren einer dedizierten Rolle für das Caching oder Zusammenstellen des Cachings auf bereits bestehenden Rollen.
 -	Bereitstellen des Caches für verschiedene Clients in der gleichen Clouddienstbereitstellung
 -	Erstellen unterschiedlich bezeichneter Caches mit verschiedenen Eigenschaften
 -	Optionales Konfigurieren hoher Verfügbarkeit individueller Caches
@@ -410,4 +410,4 @@ Nachdem Sie sich nun mit den Grundlagen von In-Role Cache vertraut gemacht haben
 [Which Azure Cache offering is right for me?]: cache-faq.md#which-azure-cache-offering-is-right-for-me
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

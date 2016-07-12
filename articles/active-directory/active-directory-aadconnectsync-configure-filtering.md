@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="06/27/2016"
 	ms.author="andkjell;markvi"/>
 
 
@@ -61,7 +61,7 @@ Führen Sie die folgenden Schritte aus, um den integrierten Scheduler zu deaktiv
 **Bei Verwendung eines älteren Azure AD Connect-Builds als 1.1.105.0** Führen Sie die folgenden Schritte aus, um die geplante Aufgabe zu deaktivieren, mit der jeweils im Abstand von drei Stunden ein Synchronisierungszyklus ausgelöst wird:
 
 1. Starten Sie im Startmenü die **Aufgabenplanung**.
-2. Suchen Sie direkt unterhalb der **Aufgabenplanungsbibliothek** nach der Aufgabe mit dem Namen **Azure AD-Synchronisierungsplaner**, klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Deaktivieren**. ![Aufgabenplanung](./media/active-directory-aadconnectsync-configure-filtering/taskscheduler.png)  
+2. Suchen Sie direkt unterhalb der **Aufgabenplanungsbibliothek** nach der Aufgabe mit dem Namen **Azure AD-Synchronisierungsplaner**, klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Deaktivieren**. ![Aufgabenplanung](./media/active-directory-aadconnectsync-configure-filtering/taskscheduler.png)
 3. Sie können jetzt Konfigurationsänderungen vornehmen und das Synchronisierungsmodul manuell über die Konsole **Synchronization Service Manager** ausführen.
 
 Nachdem Sie alle Änderungen an der Filterung durchgeführt haben, sollten Sie nicht vergessen, die Aufgabe wieder zu **aktivieren**.
@@ -99,7 +99,7 @@ Die Konfiguration der domänenbasierten Filterung umfasst folgende Schritte:
 2. Starten Sie den **Synchronisierungsdienst** über das Startmenü.
 3. Wählen Sie **Connectors** aus, und wählen Sie in der Liste **Connectors** den Connector mit dem Typ **Active Directory-Domänendienste** aus. Wählen Sie unter **Aktionen** die Option **Eigenschaften**. ![Connectoreigenschaften](./media/active-directory-aadconnectsync-configure-filtering/connectorproperties.png)  
 4. Klicken Sie auf **Verzeichnispartitionen konfigurieren**.
-5. Aktivieren bzw. deaktivieren Sie die Domänen in der Liste **Verzeichnispartitionen auswählen** je nach Bedarf. Achten Sie darauf, dass nur die Partitionen ausgewählt sind, die Sie synchronisieren möchten. ![Partitionen](./media/active-directory-aadconnectsync-configure-filtering/connectorpartitions.png) Wenn Sie Ihre lokale AD-Infrastruktur geändert und der Gesamtstruktur Domänen hinzugefügt oder daraus entfernt haben, können Sie auf die Schaltfläche **Aktualisieren** klicken, um eine aktualisierte Liste zu erhalten. Beim Aktualisieren werden Sie zur Eingabe von Anmeldeinformationen aufgefordert. Geben Sie hierbei Anmeldeinformationen an, die Ihnen Lesezugriff auf Ihr lokales Active Directory-Verzeichnis ermöglichen. Es muss sich nicht um den Benutzer handeln, der bereits im Dialogfeld angegeben ist. ![Aktualisierung erforderlich](./media/active-directory-aadconnectsync-configure-filtering/refreshneeded.png)  
+5. Aktivieren bzw. deaktivieren Sie die Domänen in der Liste **Verzeichnispartitionen auswählen** je nach Bedarf. Achten Sie darauf, dass nur die Partitionen ausgewählt sind, die Sie synchronisieren möchten. ![Partitionen](./media/active-directory-aadconnectsync-configure-filtering/connectorpartitions.png) Wenn Sie Ihre lokale AD-Infrastruktur geändert und der Gesamtstruktur Domänen hinzugefügt oder daraus entfernt haben, können Sie auf die Schaltfläche **Aktualisieren** klicken, um eine aktualisierte Liste zu erhalten. Beim Aktualisieren werden Sie zur Eingabe von Anmeldeinformationen aufgefordert. Geben Sie hierbei Anmeldeinformationen an, die Ihnen Lesezugriff auf Ihr lokales Active Directory-Verzeichnis ermöglichen. Es muss sich nicht um den Benutzer handeln, der bereits im Dialogfeld angegeben ist. ![Aktualisierung erforderlich](./media/active-directory-aadconnectsync-configure-filtering/refreshneeded.png)
 6. Schließen Sie nach Abschluss des Vorgangs das Dialogfeld **Eigenschaften**, indem Sie auf **OK** klicken. Wenn Sie Domänen aus der Gesamtstruktur entfernt haben, wird per Popupmeldung darauf hingewiesen, dass eine Domäne entfernt wurde und diese Konfiguration bereinigt wird.
 7. Fahren Sie mit dem Anpassen der [Ausführungsprofile](#update-run-profiles) fort.
 
@@ -119,7 +119,7 @@ Sie müssen die folgenden Profile anpassen:
 Führen Sie für jedes der fünf Profile für alle **hinzugefügten** Domänen jeweils die folgenden Schritte aus:
 
 1. Wählen Sie das Ausführungsprofil aus, und klicken Sie auf **Neuer Schritt**.
-2. Wählen Sie auf der Seite **Schritt konfigurieren** in der Dropdownliste **Typ** den Schritttyp mit dem gleichen Namen wie das Profil aus, das Sie konfigurieren. Klicken Sie anschließend auf **Weiter**. ![Connector-Ausführungsprofile](./media/active-directory-aadconnectsync-configure-filtering/runprofilesnewstep1.png)  
+2. Wählen Sie auf der Seite **Schritt konfigurieren** in der Dropdownliste **Typ** den Schritttyp mit dem gleichen Namen wie das Profil aus, das Sie konfigurieren. Klicken Sie anschließend auf **Weiter**. ![Connector-Ausführungsprofile](./media/active-directory-aadconnectsync-configure-filtering/runprofilesnewstep1.png)
 3. Wählen Sie auf der Seite **Connectorkonfiguration** in der Dropdownliste **Partition** den Namen der Domäne aus, die Sie dem Domänenfilter hinzugefügt haben. ![Connector-Ausführungsprofile](./media/active-directory-aadconnectsync-configure-filtering/runprofilesnewstep2.png)  
 4. Um das Dialogfeld **Ausführungsprofile konfigurieren** zu schließen, klicken Sie auf **Fertig stellen**.
 
@@ -178,7 +178,7 @@ Im folgenden Beispiel werden alle Benutzer herausgefiltert (nicht synchronisiert
 1. Melden Sie sich bei dem Server, auf dem die Azure AD Connect-Synchronisierung ausgeführt wird, mit einem Konto an, das Mitglied der Sicherheitsgruppe **ADSyncAdmins** ist.
 2. Starten Sie den **Synchronisierungsregel-Editor** über das Startmenü.
 3. Stellen Sie sicher, dass **Eingehend** ausgewählt ist, und klicken Sie auf **Neue Regel hinzufügen**.
-4. Geben Sie der Regel einen aussagekräftigen Namen, z.B. *In from AD – User DoNotSyncFilter*. Wählen Sie die richtige Gesamtstruktur, **User** als **CS-Objekttyp** und **Person** als **MV-Objekttyp** aus. Wählen Sie **Join** als **Verknüpfungsart** aus, und geben Sie als Rangfolge einen Wert ein, der zurzeit nicht von einer anderen Synchronisierungsregel verwendet wird (z.B. 500). Klicken Sie dann auf **Weiter**. ![Eingehend 1 Beschreibung](./media/active-directory-aadconnectsync-configure-filtering/inbound1.png)  
+4. Geben Sie der Regel einen aussagekräftigen Namen, z.B. *In from AD – User DoNotSyncFilter*. Wählen Sie die richtige Gesamtstruktur, **User** als **CS-Objekttyp** und **Person** als **MV-Objekttyp** aus. Wählen Sie **Join** als **Verknüpfungsart** aus, und geben Sie als Rangfolge einen Wert ein, der zurzeit nicht von einer anderen Synchronisierungsregel verwendet wird (z.B. 500). Klicken Sie dann auf **Weiter**. ![Eingehend 1 Beschreibung](./media/active-directory-aadconnectsync-configure-filtering/inbound1.png)
 5. Klicken Sie unter **Bereichsfilter** auf **Gruppe hinzufügen**, klicken Sie auf **Klausel hinzufügen**, und wählen Sie dann unter "Attribut" die Option **ExtensionAttribute15** aus. Stellen Sie sicher, dass der Operator auf **EQUAL** festgelegt ist, und geben Sie dann den Wert **NoSync** in das Feld „Wert“ ein. Klicken Sie auf **Weiter**. ![Eingehend 2 Bereich](./media/active-directory-aadconnectsync-configure-filtering/inbound2.png)  
 6. Lassen Sie die **Joinregeln** leer, und klicken Sie dann auf **Weiter**.
 7. Klicken Sie auf **Transformation hinzufügen**, legen Sie **FlowType** auf **Konstante** fest, wählen Sie **cloudFiltered** als Zielattribut aus, und geben Sie dann im Feld „Quelltext“ den Wert **True** ein. Klicken Sie auf **Hinzufügen**, um die Regel zu speichern. ![Eingehend 3 Transformation](./media/active-directory-aadconnectsync-configure-filtering/inbound3.png)
@@ -194,7 +194,7 @@ Im folgenden Beispiel werden nur Benutzerobjekte synchronisiert, bei denen das d
 1. Melden Sie sich bei dem Server, auf dem die Azure AD Connect-Synchronisierung ausgeführt wird, mit einem Konto an, das Mitglied der Sicherheitsgruppe **ADSyncAdmins** ist.
 2. Starten Sie den **Synchronisierungsregel-Editor** über das Startmenü.
 3. Stellen Sie sicher, dass **Eingehend** ausgewählt ist, und klicken Sie auf **Neue Regel hinzufügen**.
-4. Geben Sie der Regel einen aussagekräftigen Namen, z.B. *In from AD – User Sales sync*. Wählen Sie die richtige Gesamtstruktur, **User** als **CS-Objekttyp** und **Person** als **MV-Objekttyp** aus. Wählen Sie **Join** als **Verknüpfungsart** aus, und geben Sie als Rangfolge einen Wert ein, der zurzeit nicht von einer anderen Synchronisierungsregel verwendet wird (z.B. 501). Klicken Sie dann auf **Weiter**. ![Eingehend 4 Beschreibung](./media/active-directory-aadconnectsync-configure-filtering/inbound4.png)  
+4. Geben Sie der Regel einen aussagekräftigen Namen, z.B. *In from AD – User Sales sync*. Wählen Sie die richtige Gesamtstruktur, **User** als **CS-Objekttyp** und **Person** als **MV-Objekttyp** aus. Wählen Sie **Join** als **Verknüpfungsart** aus, und geben Sie als Rangfolge einen Wert ein, der zurzeit nicht von einer anderen Synchronisierungsregel verwendet wird (z.B. 501). Klicken Sie dann auf **Weiter**. ![Eingehend 4 Beschreibung](./media/active-directory-aadconnectsync-configure-filtering/inbound4.png)
 5. Klicken Sie unter **Bereichsfilter** auf **Gruppe hinzufügen**, klicken Sie auf **Klausel hinzufügen**, und wählen Sie dann unter „Attribut“ die Option **department** aus. Stellen Sie sicher, dass der Operator auf **EQUAL** festgelegt ist, und geben Sie dann den Wert **Sales** in das Feld „Wert“ ein. Klicken Sie auf **Weiter**. ![Eingehend 5 Bereich](./media/active-directory-aadconnectsync-configure-filtering/inbound5.png)  
 6. Lassen Sie die **Joinregeln** leer, und klicken Sie dann auf **Weiter**.
 7. Klicken Sie auf **Transformation hinzufügen**, legen Sie **FlowType** auf **Konstante** fest, wählen Sie **cloudFiltered** als Zielattribut aus, und geben Sie dann im Feld „Quelltext“ den Wert **False** ein. Klicken Sie auf **Hinzufügen**, um die Regel zu speichern. ![Eingehend 6 Transformation](./media/active-directory-aadconnectsync-configure-filtering/inbound6.png) Dies ist ein Sonderfall, in dem „cloudFiltered“ explizit auf „False“ festgelegt wird.
@@ -261,4 +261,4 @@ Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

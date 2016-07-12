@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/18/2016"    
+	ms.date="06/22/2016"   
 	ms.author="juliako"/>
 
 #Vorgehensweise: Prüfen des Auftragsfortschritts
@@ -119,7 +119,7 @@ Häufig werden Media Services-Benachrichtigungen überwacht, wenn Sie ein Conten
 Beachten Sie Folgendes beim Entwickeln von Media Services-Anwendungen, die die Azure-Speicherwarteschlange verwenden.
 
 - Der Warteschlangendienst bietet keine Garantie, dass die Übermittlung nach First-in-First-out (FIFO) sortiert erfolgt. Weitere Informationen finden sie unter [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](https://msdn.microsoft.com/library/azure/hh767287.aspx).
-- Azure-Speicherwarteschlangen sind kein Push-Dienst. Sie müssen die Warteschlange abfragen. 
+- Azure-Speicherwarteschlangen sind kein Push-Dienst. Sie müssen die Warteschlange abfragen.
 - Sie können eine beliebige Anzahl von Warteschlangen verwenden. Weitere Informationen finden Sie unter [REST-API des Warteschlangendiensts](https://msdn.microsoft.com/library/azure/dd179363.aspx).
 - Azure-Speicherwarteschlangen weisen einige Einschränkungen und Besonderheiten auf, die im folgenden Artikel beschrieben werden: [Azure-Warteschlangen und Azure Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](https://msdn.microsoft.com/library/azure/hh767287.aspx).
 
@@ -132,10 +132,10 @@ Das Codebeispiel in diesem Abschnitt erfüllt die folgenden Aufgaben:
 1. Erstellt die Warteschlange, die Benachrichtigungen zum Codierungsauftrag empfangen soll.
 1. Erstellt den Endpunkt für Benachrichtigungen, der der Warteschlange zugeordnet ist.
 1. Fügt den Endpunkt für die Benachrichtigung an den Auftrag an und übermittelt den Codierungsauftrag. Sie können mehrere Benachrichtigungsendpunkte an einen Auftrag anfügen.
-1. In diesem Beispiel interessieren uns nur die Endphasen der Auftragsverarbeitung, daher übergeben wir **NotificationJobState.FinalStatesOnly** an die **AddNew**-Methode. 
+1. In diesem Beispiel interessieren uns nur die Endphasen der Auftragsverarbeitung, daher übergeben wir **NotificationJobState.FinalStatesOnly** an die **AddNew**-Methode.
 		
 		job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
-1. Wenn Sie NotificationJobState.All übergeben, sollten Sie damit alle Benachrichtigungen über Statusänderungen empfangen: In der Warteschlange -> Geplant -> In Verarbeitung -> Abgeschlossen. Wie aber bereits erwähnt, garantiert der Azure Storage-Warteschlangendienst keine geordneten Übermittlung. Sie können die "Timestamp"-Eigenschaft (im Beispiel unten im Typ "EncodingJobMessage" definiert) zum Ordnen der Nachrichten verwenden. Es ist möglich, dass Sie Benachrichtigungen doppelt erhalten. Mithilfe der "ETag"-Eigenschaft (im Typ "EncodingJobMessage" definiert) können Sie nach Duplikaten suchen. Beachten Sie, dass es auch möglich ist, dass einige Statusänderungsbenachrichtigungen übersprungen werden. 
+1. Wenn Sie NotificationJobState.All übergeben, sollten Sie damit alle Benachrichtigungen über Statusänderungen empfangen: In der Warteschlange -> Geplant -> In Verarbeitung -> Abgeschlossen. Wie aber bereits erwähnt, garantiert der Azure Storage-Warteschlangendienst keine geordneten Übermittlung. Sie können die "Timestamp"-Eigenschaft (im Beispiel unten im Typ "EncodingJobMessage" definiert) zum Ordnen der Nachrichten verwenden. Es ist möglich, dass Sie Benachrichtigungen doppelt erhalten. Mithilfe der "ETag"-Eigenschaft (im Typ "EncodingJobMessage" definiert) können Sie nach Duplikaten suchen. Beachten Sie, dass es auch möglich ist, dass einige Statusänderungsbenachrichtigungen übersprungen werden.
 1. Wartet, bis der Auftrag abgeschlossen ist, indem er die Warteschlange alle zehn Sekunden überprüft. Löscht Nachrichten, nachdem sie verarbeitet wurden.
 1. Löscht die Warteschlange und den Benachrichtigungsendpunkt.
 
@@ -436,4 +436,4 @@ Das Beispiel oben generiert die folgende Ausgabe. Die Werte können variieren.
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

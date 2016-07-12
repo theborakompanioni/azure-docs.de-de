@@ -13,15 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="06/23/2016"
 	ms.author="priyamo"/>
 
 
 # Verbundmetadaten
 
-[AZURE.INCLUDE [active-directory-protocols](../../includes/active-directory-protocols.md)]
-
-Azure Active Directory (Azure AD) veröffentlicht ein Verbundmetadaten-Dokument für Dienste, die für das Akzeptieren des von Azure AD ausgestellten Sicherheitstokens konfiguriert sind. Das Format des Verbundmetadaten-Dokuments wird in der [Webdiensteverbund-Sprache (WS-Verbund), Version 1.2,](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html) beschrieben, einer Erweiterung der [Metadaten für die OASIS Security Assertion Markup Language (SAML), Version 2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
+Azure Active Directory (Azure AD) veröffentlicht ein Verbundmetadaten-Dokument für Dienste, die für das Akzeptieren des von Azure AD ausgestellten Sicherheitstokens konfiguriert sind. Das Format des Verbundmetadaten-Dokuments wird in der [Webdiensteverbund-Sprache (WS-Verbund), Version 1.2,](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html) beschrieben – einer Erweiterung der [Metadaten für die OASIS Security Assertion Markup Language (SAML), Version 2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
 
 ## Mandantenspezifische und mandantenunabhängige Metadatenendpunkte
 
@@ -29,7 +27,7 @@ Azure AD veröffentlicht mandantenspezifische und mandantenunabhängige Endpunkt
 
 Mandantenspezifische Endpunkte sind auf einen bestimmten Mandanten ausgelegt. Die mandantenspezifischen Verbundmetadaten enthalten Informationen über den Mandanten, einschließlich mandantenspezifischer Aussteller- und Endpunktinformationen. Anwendungen, die den Zugriff auf einen einzelnen Mandanten einschränken, verwenden mandantenspezifische Endpunkte.
 
-Mandantenunabhängige Endpunkte stellen Informationen bereit, die für alle Azure AD-Mandanten gemeinsam verwendet werden. Diese Informationen gelten für die unter *login.microsoftonline.com* gehosteten Mandanten und werden über Mandanten hinweg gemeinsam genutzt. Mandantenunabhängige Endpunkte werden für mehrinstanzenfähige Anwendungen empfohlen, da sie nicht einem bestimmten Mandanten zugeordnet sind.
+Mandantenunabhängige Endpunkte stellen Informationen bereit, die für alle Azure AD-Mandanten gemeinsam verwendet werden. Diese Informationen gelten für die unter *login.microsoftonline.com* gehosteten Mandanten und werden mandantenübergreifend genutzt. Mandantenunabhängige Endpunkte werden für mehrinstanzenfähige Anwendungen empfohlen, da sie nicht einem bestimmten Mandanten zugeordnet sind.
 
 ## Verbundmetadaten-Endpunkte
 
@@ -37,12 +35,12 @@ In Azure AD werden Verbundmetadaten unter `https://login.microsoftonline.com/<Te
 
 Für **mandantenspezifische Endpunkte** kann `TenantDomainName` einem der folgenden Typen entsprechen:
 
-- Ein registrierter Domänenname eines Azure AD-Mandanten, z.B. `contoso.onmicrosoft.com`.
-- Die unveränderliche Mandanten-ID der Domäne, z.B. `72f988bf-86f1-41af-91ab-2d7cd011db45`.
+- Ein registrierter Domänenname eines Azure AD-Mandanten (Beispiel: `contoso.onmicrosoft.com`).
+- Die unveränderliche Mandanten-ID der Domäne (Beispiel: `72f988bf-86f1-41af-91ab-2d7cd011db45`).
 
 Für **mandantenunabhängige Endpunkte** wird `common` als `TenantDomainName` verwendet. In diesem Dokument sind nur die Verbundmetadaten-Elemente aufgeführt, die für alle unter „login.microsoftonline.com“ gehosteten Azure AD-Mandanten gelten.
 
-Ein mandantenspezifischer Endpunkt kann z.B. wie folgt lauten: `https:// login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`. Der mandantenunabhängige Endpunkt ist [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml). Sie können das Verbundmetadaten-Dokument anzeigen, indem Sie diese URL in einen Browser eingeben.
+Ein mandantenspezifischer Endpunkt kann etwa wie folgt lauten: `https:// login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`. Der mandantenunabhängige Endpunkt ist [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml). Sie können das Verbundmetadaten-Dokument anzeigen, indem Sie diese URL in einen Browser eingeben.
 
 ## Inhalt der Verbundmetadaten
 
@@ -50,7 +48,7 @@ Der folgende Abschnitt enthält die Informationen, die von Diensten benötigt we
 
 ### Entitäts-ID
 
-Das `EntityDescriptor`-Element enthält ein `EntityID`-Attribut. Der Wert des `EntityID`-Attributs stellt den Aussteller dar, d.h. den Sicherheitstokendienst (STS), der das Token ausgestellt hat. Bei Erhalt eines Tokens ist es wichtig, den Aussteller zu überprüfen.
+Das `EntityDescriptor`-Element enthält ein `EntityID`-Attribut. Der Wert des `EntityID`-Attributs stellt den Aussteller dar (also den Sicherheitstokendienst (STS), der das Token ausgestellt hat). Bei Erhalt eines Tokens ist es wichtig, den Aussteller zu überprüfen.
 
 Die folgenden Metadaten enthalten als Beispiel ein mandantenspezifisches `EntityDescriptor`-Element mit einem `EntityID`-Element.
 
@@ -163,4 +161,4 @@ Auf ähnliche Weise werden die Endpunkte für die gemeinsamen SAML 2.0-Protokol
   </IDPSSODescriptor>
 ```
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

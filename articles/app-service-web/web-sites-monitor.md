@@ -3,7 +3,7 @@
 	description="Dieses Thema beschreibt die Überwachung von Web-Apps in Azure App Service mithilfe des Verwaltungsportals."
 	services="app-service"
 	documentationCenter=""
-	authors="cephalin"
+	authors="btardif"
 	manager="wpickett"
 	editor="mollybos"/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/04/2016"
+	ms.date="06/22/2016"
 	ms.author="byvinyal"/>
 
 #<a name="howtomonitor"></a>Überwachen von Web-Apps in Azure App Service
@@ -287,4 +287,4 @@ Weitere Informationen zur Web-App-Endpunktüberwachung erhalten Sie in den folge
 [fzilla]: http://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]: http://go.microsoft.com/fwlink/?LinkID=309169
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

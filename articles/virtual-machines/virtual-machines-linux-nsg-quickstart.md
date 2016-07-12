@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Zulassen des externen Zugriffs auf einen virtuellen Linux-Computer | Microsoft Azure"
+   pageTitle="Öffnen von Ports oder Endpunkten auf einem virtuellen Linux-Computer | Microsoft Azure"
    description="Erfahren Sie, wie Sie mit dem Resource Manager-Bereitstellungsmodell und der Azure-Befehlszeilenschnittstelle einen Port öffnen oder einen Endpunkt erstellen, um externen Zugriff auf Ihren virtuellen Linux-Computer zu ermöglichen."
    services="virtual-machines-linux"
    documentationCenter=""
@@ -16,8 +16,8 @@
    ms.date="05/24/2016"
    ms.author="iainfou"/>
 
-# Zulassen des externen Zugriffs auf einen virtuellen Computer
-[AZURE.INCLUDE [virtual-machines-common-nsg-quickstart](../../includes/virtual-machines-common-nsg-quickstart.md)]
+# Öffnen von Ports und Endpunkten
+In Azure öffnen Sie einen Port oder erstellen einen Endpunkt, indem Sie einen Netzwerkfilter erstellen, mit dem Datenverkehr an den von Ihnen ausgewählten Port in einem Subnetz oder die Netzwerkschnittstelle auf einem virtuellen Computer (VM) geleitet werden kann. Diese Filter, mit denen sowohl eingehender als auch ausgehender Datenverkehr gesteuert werden kann, sind in einer Netzwerksicherheitsgruppe angeordnet und an die Ressource angefügt, die den Datenverkehr empfängt. Wir verwenden ein gängiges Beispiel für Webdatenverkehr über Port 80.
 
 ## Schnellbefehle
 Zum Erstellen einer Netzwerksicherheitsgruppe und der zugehörigen Regeln benötigen Sie [die Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) im Resource Manager-Modus (`azure config mode arm`).
@@ -48,9 +48,9 @@ azure network vnet subnet set --resource-group TestRG --name TestSubnet --networ
 ```
 
 ## Weitere Informationen zu Netzwerksicherheitsgruppen
-Mit diesen Schnellbefehlen können Sie den Datenverkehr zu Ihrem virtuellen Computer einrichten. Netzwerksicherheitsgruppen bieten eine Vielzahl erstklassiger Funktionen sowie eine differenzierte Steuerung des Ressourcenzugriffs. Weitere Informationen über das [Erstellen von Netzwerksicherheitsgruppen und ACL-Regeln erhalten Sie hier](../virtual-network/virtual-networks-create-nsg-arm-cli.md).
+Mit diesen Schnellbefehlen können Sie den Datenverkehr zu Ihrem virtuellen Computer einrichten. Netzwerksicherheitsgruppen bieten eine Vielzahl erstklassiger Funktionen sowie eine differenzierte Steuerung des Ressourcenzugriffs. Weitere Informationen über die [Erstellung von Netzwerksicherheitsgruppen und ACL-Regeln erhalten Sie hier](../virtual-network/virtual-networks-create-nsg-arm-cli.md).
 
-Netzwerksicherheitsgruppen und ACL-Regeln können auch als Teil von Azure Resource Manager-Vorlagen definiert werden. Erfahren Sie mehr über das [Erstellen von Netzwerksicherheitsgruppen mit Vorlagen](../virtual-network/virtual-networks-create-nsg-arm-template.md).
+Netzwerksicherheitsgruppen und ACL-Regeln können auch als Teil von Azure Resource Manager-Vorlagen definiert werden. Erfahren Sie mehr über [das Erstellen von Netzwerksicherheitsgruppen mit Vorlagen](../virtual-network/virtual-networks-create-nsg-arm-template.md).
 
 Wenn eine Portweiterleitung notwendig ist, um einem internen Port des virtuellen Computers einen eindeutigen externen Port zuzuweisen, müssen ein Lastenausgleich sowie NAT-Regeln (Network Address Translation, Netzwerkadressübersetzung) verwendet werden. Sie können beispielsweise TCP-Port 8080 extern verfügbar machen und den Datenverkehr an TCP-Port 80 auf einem virtuellen Computer weiterleiten. Hier finden Sie weitere Informationen zum [Erstellen eines Load Balancers mit Internetzugriff](../load-balancer/load-balancer-get-started-internet-arm-cli.md).
 
@@ -61,4 +61,4 @@ In diesem Beispiel haben Sie eine einfache Regel erstellt, die HTTP-Datenverkehr
 - [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md)
 - [Unterstützung von Azure Resource Manager für Load Balancer](../load-balancer2 /load-balancer-arm.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

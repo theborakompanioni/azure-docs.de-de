@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Beheben eines SQL-Verbindungsfehlers oder vorübergehenden Fehlers | Microsoft Azure"
-	description="Erfahren Sie, wie Sie einen SQL-Verbindungsfehler oder vorübergehenden Fehler in Azure SQL-Datenbank behandeln, diagnostizieren und verhindern."
+	description="Erfahren Sie, wie Sie einen SQL-Verbindungsfehler oder vorübergehenden Fehler in Azure SQL-Datenbank behandeln, diagnostizieren und verhindern. "
 	keywords="SQL-Verbindung,Verbindungszeichenfolge,Verbindungsprobleme,vorübergehender Fehler,Verbindungsfehler"
 	services="sql-database"
 	documentationCenter=""
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="06/27/2016"
 	ms.author="daleche"/>
 
 
@@ -553,11 +553,11 @@ public bool IsTransient(Exception ex)
 
 ## Nächste Schritte
 
-- Informationen zur Problembehandlung bei anderen häufigen Problemen bei der Verbindung mit Azure SQL-Datenbank erhalten Sie unter [Behandeln von häufigen Verbindungsproblemen mit Azure SQL-Datenbank](sql-database-troubleshoot-common-connection-issues.md).
+- Informationen zur Problembehandlung bei anderen häufigen Problemen bei der Verbindung mit Azure SQL-Datenbank erhalten Sie unter [Beheben von Verbindungsproblemen mit der Azure SQL-Datenbank](sql-database-troubleshoot-common-connection-issues.md).
 
 - [SQL Server-Verbindungspooling (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)
 
 
 - [*Retrying* ist eine Apache 2.0-lizenzierte Allzweckwiederholungsbibliothek, die in **Python** geschrieben wurde und das Hinzufügen von Wiederholungsverhalten zu praktisch jeglichen Elementen vereinfacht.](https://pypi.python.org/pypi/retrying)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

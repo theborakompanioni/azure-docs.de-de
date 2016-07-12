@@ -42,7 +42,7 @@ Hier sind einige wichtige Features von App Service aufgeführt, die für Web-App
 
 - **DevOps-Optimierung** – Richten Sie mit Visual Studio Team Services, GitHub oder BitBucket die [fortlaufende Integration und Bereitstellung](../app-service-web/app-service-continous-deployment.md) ein. Stufen Sie Updates über [Test- und Stagingumgebungen](../app-service-web/web-sites-staged-publishing.md) herauf. Führen Sie [A/B-Tests](../app-service-web/app-service-web-test-in-production-get-start.md) aus. Verwalten Sie Ihre Apps in App Service mithilfe von [Azure PowerShell](../powershell-install-configure.md) oder der [plattformübergreifenden Befehlszeilenschnittstelle (Command-Line Interface, CLI)](../xplat-cli-install.md).
  
-- **Globale Skalierung mit hoher Verfügbarkeit** – Skalieren Sie manuell oder automatisch [zentral](../app-service/app-service-scale.md) oder [horizontal](../azure-portal/insights-how-to-scale.md) hoch. Hosten Sie Ihre Apps überall in der globalen Rechenzentrumsinfrastruktur von Microsoft. Die App Service-[SLA](https://azure.microsoft.com/support/legal/sla/app-service/) garantiert eine hohe Verfügbarkeit.
+- **Globale Skalierung mit hoher Verfügbarkeit** – Skalieren Sie manuell oder automatisch [zentral](../app-service-web/web-sites-scale.md) oder [horizontal](../azure-portal/insights-how-to-scale.md) hoch. Hosten Sie Ihre Apps überall in der globalen Rechenzentrumsinfrastruktur von Microsoft. Die App Service-[SLA](https://azure.microsoft.com/support/legal/sla/app-service/) garantiert eine hohe Verfügbarkeit.
 
 - **Verbindungen mit SaaS-Plattformen und lokalen Daten** – Wählen Sie aus über 50 [Connectors](../connectors/apis-list.md) für Unternehmenssysteme (z.B. SAP, Siebel und Oracle), SaaS-Dienste (z.B. Salesforce und Office 365) sowie Internetdienste (z.B. Facebook und Twitter). Greifen Sie über [Hybridverbindungen](../biztalk-services/integration-hybrid-connection-overview.md) und [Azure Virtual Networks](../app-service-web/web-sites-integrate-with-vnet.md) auf lokale Daten zu.
 
@@ -58,8 +58,8 @@ Neben Web-Apps in App Service bietet Azure noch andere Dienste an, die zum Hoste
 
 ## Erste Schritte
 
-Führen Sie die Schritte im Tutorial [Bereitstellen Ihrer ersten Web-App für Azure in fünf Minuten](app-service-web-get-started.md) aus, um zu beginnen, indem Sie Beispielcode für eine neue Web-App in App Service bereitstellen. Sie benötigen ein kostenloses Azure-Konto.
+Zunächst müssen Sie Beispielcode für eine neue Web-App in App-Service bereitstellen. Hierzu führen Sie die Schritte im Tutorial [Bereitstellen Ihrer ersten Web-App für Azure in fünf Minuten](app-service-web-get-started.md) aus. Sie benötigen ein kostenloses Azure-Konto.
 
 Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

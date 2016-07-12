@@ -14,26 +14,22 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/18/2016"
+	ms.date="06/24/2016"
 	ms.author="davidmu"/>
 
 # Bereitstellen eines virtuellen Azure-Computers mit C# und einer Resource Manager-Vorlage
 
 Durch das Verwenden von Ressourcengruppen und Vorlagen, können Sie alle Ressourcen gemeinsam verwalten, die Ihre Anwendung unterstützen. In diesem Artikel erfahren Sie, wie Sie die Authentifizierung und den Speicher mit Azure PowerShell einrichten und dann eine Vorlage mit C# erstellen und bereitstellen können, um Azure-Ressourcen zu erstellen.
 
-Für dieses Tutorial benötigen Sie Folgendes:
+Zuerst müssen Sie sicherstellen, dass Sie Folgendes erledigt haben:
 
-- [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)
-- [Windows Management Framework 3.0 ](http://www.microsoft.com/download/details.aspx?id=34595) oder [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855)
-- [Einen Authentifizierungstoken](../resource-group-authenticate-service-principal.md)
+- Installieren von [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)
+- Überprüfen der Installation von [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) oder [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855)
+- Abrufen eines [Authentifizierungstokens](../resource-group-authenticate-service-principal.md)
 
 Die Durchführung dieser Schritte dauert etwa 30 Minuten.
-
-## Schritt 1: Installieren von Azure PowerShell
-
-Informationen dazu, wie Sie die aktuelle Version von Azure PowerShell installieren, das gewünschte Abonnement auswählen und sich am Azure-Konto anmelden, finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
     
-## Schritt 2: Erstellen einer Ressourcengruppe für die Speicherung der Vorlage
+## Schritt 1: Erstellen einer Ressourcengruppe für die Speicherung der Vorlage
 
 Alle Ressourcen müssen in einer Ressourcengruppe bereitgestellt werden. Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Manager](../resource-group-overview.md).
 
@@ -41,7 +37,7 @@ Alle Ressourcen müssen in einer Ressourcengruppe bereitgestellt werden. Weitere
 
 	    Get-AzureRmLocation | sort Location | Select Location
         
-2. Ersetzen Sie den Wert von **$locName** durch einen Standort aus der Liste, z. B. **USA, Mitte**. Erstellen Sie die Variable.
+2. Ersetzen Sie den Wert von **$locName** durch einen Standort aus der Liste, z.B. **USA, Mitte**. Erstellen Sie die Variable.
 
         $locName = "location name"
         
@@ -58,7 +54,7 @@ Alle Ressourcen müssen in einer Ressourcengruppe bereitgestellt werden. Weitere
         Tags              :
         ResourceId        : /subscriptions/{subscription-id}/resourceGroups/myrg1
     
-## Schritt 3: Erstellen eines Speicherkontos und des Vorlagencontainers
+## Schritt 2: Erstellen eines Speicherkontos und des Vorlagencontainers
 
 Ein Speicherkonto ist erforderlich, um die Vorlage zu speichern, die Sie erstellen und bereitstellen möchten.
 
@@ -83,7 +79,7 @@ Ein Speicherkonto ist erforderlich, um die Vorlage zu speichern, die Sie erstell
 
 ### Erstellen der Vorlagendatei
 
-Mithilfe der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemeinsam bereitstellen und verwalten. Sie verwenden hierfür eine JSON-Beschreibung der Ressourcen sowie der zugeordneten Bereitstellungsparameter. Die Vorlage, die Sie in diesem Tutorial erstellen, ähnelt einer Vorlage aus dem Vorlagenkatalog. Weitere Informationen finden Sie unter [Bereitstellen eines einfachen virtuellen Windows-Computers in der Region „USA, Westen“](https://azure.microsoft.com/documentation/templates/101-vm-simple-windows/).
+Mithilfe der Azure-Ressourcen-Manager-Vorlage können Sie die Azure-Ressourcen gemeinsam bereitstellen und verwalten. Sie verwenden hierfür eine JSON-Beschreibung der Ressourcen sowie der zugeordneten Bereitstellungsparameter.
 
 Führen Sie in Visual Studio Folgendes aus:
 
@@ -318,7 +314,7 @@ Der Azure-Ressourcen-Manager greift auf die Vorlagendatei und die Parameterdatei
 
 1. Öffnen Sie Cloud-Explorer, und navigieren Sie dann zum Vorlagencontainer in dem Speicherkonto, das Sie zuvor erstellt haben.
 
-2. Klicken Sie in der rechten, oberen Ecke des Vorlagencontainer-Fensters auf das Symbol zum Hochladen von Blobs, navigieren Sie zur Datei "VirtualMachineTemplate.json", die Sie erstellt haben, und klicken Sie dann auf **Öffnen**.
+2. Klicken Sie in der rechten, oberen Ecke des Vorlagencontainerfensters auf das Symbol zum Hochladen von Blobs, navigieren Sie zur Datei „VirtualMachineTemplate.json“, die Sie erstellt haben, und klicken Sie dann auf **Öffnen**.
 
 3. Klicken Sie erneut auf das Symbol zum Hochladen von Blobs, navigieren Sie zur Datei "Parameters.json", die Sie erstellt haben, und klicken Sie dann auf **Öffnen**.
 
@@ -330,7 +326,7 @@ NuGet-Pakete sind die einfachste Möglichkeit, um die Bibliotheken zu installier
 
 2. Geben Sie *Active Directory* in das Suchfeld ein, klicken Sie für das Active Directory-Authentifizierungsbibliothek-Paket auf **Installieren**, und befolgen Sie dann die Anweisungen zum Installieren des Pakets.
 
-4. Wählen Sie am oberen Rand der Seite **Vorabversion einschließen** aus. Geben Sie *Microsoft.Azure.ResourceManager* in das Suchfeld ein, klicken Sie für die Microsoft Azure-Ressourcenverwaltungsbibliotheken auf **Installieren**, und befolgen Sie dann die Anweisungen zum Installieren des Pakets.
+4. Wählen Sie am oberen Rand der Seite **Vorabversion einschließen** aus. Geben Sie *Microsoft.Azure.Management.ResourceManager* in das Suchfeld ein, klicken Sie für die Microsoft Azure-Ressourcenverwaltungsbibliotheken auf **Installieren**, und befolgen Sie dann die Anweisungen zum Installieren des Pakets.
 
 Sie können nun die Bibliotheken verwenden, um Ihre Anwendung zu erstellen.
 
@@ -342,33 +338,30 @@ Nachdem die Azure Active Directory-Anwendung erstellt und die Authentifizierungs
 
         using Microsoft.Azure;
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
-        using Microsoft.Azure.Management.Resources;
-        using Microsoft.Azure.Management.Resources.Models;
+        using Microsoft.Azure.Management.ResourceManager;
+        using Microsoft.Azure.Management.ResourceManager.Models;
         using Microsoft.Rest;
 
 2.	Fügen Sie der Program-Klasse die folgende Methode hinzu, um das Token abzurufen, das zum Erstellen der Anmeldeinformationen benötigt wird:
 
-        private static string GetAuthorizationHeader()
+        private static async Task<AuthenticationResult> GetAccessTokenAsync()
         {
-          ClientCredential cc = new ClientCredential("{application-id}", "{password}");
+          var cc = new ClientCredential("{client-id}", "{client-secret}");
           var context = new AuthenticationContext("https://login.windows.net/{tenant-id}");
-          var result = context.AcquireTokenAsync("https://management.azure.com/", cc);
-          if (result == null)
+          var token = await context.AcquireTokenAsync("https://management.azure.com/", cc);
+          if (token == null)
           {
-            throw new InvalidOperationException("Failed to obtain the JWT token");
+            throw new InvalidOperationException("Could not get the token.");
           }
-
-          string token = result.Result.AccessToken;
-
           return token;
         }
 
-    Ersetzen Sie {application-id} durch die Anwendungs-ID, die Sie zuvor notiert haben, {password} durch das Kennwort, das Sie für die AD-Anwendung gewählt haben, und {tenant-id} durch die Mandanten-ID für Ihr Abonnement. Sie erhalten die Mandanten-ID durch Ausführen von Get-AzureRmSubscription.
+    Ersetzen Sie {client-id} durch den Bezeichner der Azure Active Directory-Anwendung, {-client-secret} durch den Zugriffsschlüssel der AD-Anwendung und {tenant-id} durch die Mandanten-ID für Ihr Abonnement. Sie erhalten die Mandanten-ID durch Ausführen von Get-AzureRmSubscription. Den Zugriffsschlüssel finden Sie mithilfe des Azure-Portals.
 
 3. Fügen Sie der Main-Methode in der Datei „Program.cs“ den folgenden Code hinzu, um die Anmeldeinformationen zu erstellen:
 
-        var token = GetAuthorizationHeader();
-        var credential = new TokenCredentials(token);
+        var token = GetAccessTokenAsync();
+        var credential = new TokenCredentials(token.Result.AccessToken);
 
 4. Speichern Sie die Datei "Program.cs".
 
@@ -380,10 +373,6 @@ In diesem Schritt verwenden Sie die [ResourceGroup](https://msdn.microsoft.com/l
 
         var groupName = "resource group name";
         var storageName = "storage account name";
-        var vmName = "virtual machine name";  
-        var deploymentName = "deployment name";
-        var adminName = "administrator account name";
-        var adminPassword = "administrator account password";
         var location = "location name";
         var subscriptionId = "subsciption id";
 
@@ -391,34 +380,32 @@ In diesem Schritt verwenden Sie die [ResourceGroup](https://msdn.microsoft.com/l
     
 2. Fügen Sie der Program-Klasse die folgende Methode hinzu, um die Ressourcengruppe zu erstellen:
 
-        public static void CreateResourceGroup(
+        public static async Task<ResourceGroup> CreateResourceGroupAsync(
           TokenCredentials credential,
           string groupName,
           string subscriptionId,
           string location)
         {
           Console.WriteLine("Creating the resource group...");
-          var resourceManagementClient = new ResourceManagementClient(credential);
-          resourceManagementClient.SubscriptionId = subscriptionId;
-          var resourceGroup = new ResourceGroup {
-            Location = location
-          };
-          var rgResult = resourceManagementClient.ResourceGroups.CreateOrUpdate(groupName, resourceGroup);
-          Console.WriteLine(rgResult.Properties.ProvisioningState);
+          var resourceManagementClient = new ResourceManagementClient(credential) 
+            { SubscriptionId = subscriptionId };
+          var resourceGroup = new ResourceGroup { Location = location };
+          return await resourceManagementClient.ResourceGroups.CreateOrUpdateAsync(groupName, resourceGroup);
         }
 
 2. Fügen Sie der Main-Methode den folgenden Code hinzu, um die gerade hinzugefügte Methode aufzurufen:
 
-        CreateResourceGroup(
+        var rgResult = CreateResourceGroupAsync(
           credential,
           groupName,
           subscriptionId,
           location);
+        Console.WriteLine(rgResult.Result.Properties.ProvisioningState);
         Console.ReadLine();
 
 3. Fügen Sie der Program-Klasse die folgende Methode hinzu, um der Ressourcengruppe mithilfe der von Ihnen definierten Vorlage die Ressourcen bereitzustellen:
 
-        public static void CreateTemplateDeployment(
+        public static async Task<DeploymentExtended> CreateTemplateDeploymentAsync(
           TokenCredentials credential,
           string groupName,
           string storageName,
@@ -439,23 +426,23 @@ In diesem Schritt verwenden Sie die [ResourceGroup](https://msdn.microsoft.com/l
               Uri = "https://" + storageName + ".blob.core.windows.net/templates/Parameters.json"
             }
           };
-          var resourceManagementClient = new ResourceManagementClient(credential);
-          resourceManagementClient.SubscriptionId = subscriptionId;
-          var dpResult = resourceManagementClient.Deployments.CreateOrUpdate(
+          var resourceManagementClient = new ResourceManagementClient(credential) 
+            { SubscriptionId = subscriptionId };
+          return await resourceManagementClient.Deployments.CreateOrUpdateAsync(
             groupName,
             deploymentName,
             deployment);
-          Console.WriteLine(dpResult.Properties.ProvisioningState);
         }
 
 4. Fügen Sie der Main-Methode den folgenden Code hinzu, um die gerade hinzugefügte Methode aufzurufen:
 
-        CreateTemplateDeployment(
+        var dpResult = CreateTemplateDeploymentAsync(
           credential,
           groupName",
           storageName,
           deploymentName,
           subscriptionId);
+        Console.WriteLine(dpResult.Result.Properties.ProvisioningState);
         Console.ReadLine();
 
 ##Schritt 7: Hinzufügen von Code zum Löschen der Ressourcen
@@ -464,27 +451,30 @@ Da in Azure die genutzten Ressourcen in Rechnung gestellt werden, empfiehlt es s
 
 1.	Fügen Sie der Program-Klasse die folgende Methode hinzu, um die Ressourcengruppe zu löschen:
 
-        public static void DeleteResourceGroup(
+        public static async void DeleteResourceGroupAsync(
           TokenCredentials credential,
-          string groupName)
+          string groupName,
+          string subscriptionId)
         {
           Console.WriteLine("Deleting resource group...");
-          var resourceGroupClient = new ResourceManagementClient(credential);
-          resourceGroupClient.ResourceGroups.DeleteAsync(groupName);
+          var resourceManagementClient = new ResourceManagementClient(credential)
+            { SubscriptionId = subscriptionId };
+          return await resourceManagementClient.ResourceGroups.DeleteAsync(groupName);
         }
 
 2.	Fügen Sie der Main-Methode den folgenden Code hinzu, um die gerade hinzugefügte Methode aufzurufen:
 
-        DeleteResourceGroup(
+        DeleteResourceGroupAsync(
           credential,
-          groupName);
+          groupName,
+          subscriptionId);
         Console.ReadLine();
 
 ##Schritt 8: Ausführen der Konsolenanwendung
 
-1.	Klicken Sie zum Ausführen der Konsolenanwendung in Visual Studio auf **Starten**, und melden Sie sich dann bei Azure AD mit demselben Benutzernamen und Kennwort an, die Sie für Ihr Abonnement verwenden.
+1.	Klicken Sie zum Ausführen der Konsolenanwendung in Visual Studio auf **Starten**, und melden Sie sich dann bei Azure AD mit denselben Anmeldeinformationen an, die Sie für Ihr Abonnement verwenden.
 
-2.	Nachdem der Status „Akzeptiert“ angezeigt wird, drücken Sie die **EINGABETASTE**.
+2.	Wenn der Status „Akzeptiert“ angezeigt wird, drücken Sie die **EINGABETASTE**.
 
 	Die vollständige Ausführung dieser Konsolenanwendung von Anfang bis zum Ende sollte etwa 5 Minuten dauern. Bevor Sie die EINGABETASTE drücken, um das Löschen der Ressourcen zu starten, können Sie sich ein paar Minuten Zeit nehmen, um die Erstellung der Ressourcen im Azure-Portal zu überprüfen, bevor Sie diese löschen.
 
@@ -495,6 +485,6 @@ Da in Azure die genutzten Ressourcen in Rechnung gestellt werden, empfiehlt es s
 ## Nächste Schritte
 
 - Falls bei der Bereitstellung Probleme aufgetreten sind, können Sie beispielsweise mit dem Artikel [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md) fortfahren.
-- Informationen zum Verwalten des gerade erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
+- Informationen zum Verwalten des gerade erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-csharp-manage.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -3,7 +3,7 @@
    description="Power BI Embedded, Verwenden von SDK zum Hinzufügen interaktiver Power BI-Berichte zu Ihrer Business Intelligence-Anwendung"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="dvana"
+   authors="minewiskan"
    manager="NA"
    editor=""
    tags=""/>
@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="05/16/2016"
-   ms.author="derrickv"/>
+   ms.date="06/28/2016"
+   ms.author="owend"/>
 
 # Erste Schritte mit dem Beispiel zu Microsoft Power BI Embedded
 
-Mit der **Vorschau von Microsoft Power BI Embedded** können Sie Power BI-Berichte in Ihre Web- oder mobilen Anwendungen integrieren, sodass Sie keine benutzerdefinierten Lösungen zum Visualisieren von Daten für Ihre Benutzer erstellen müssen. Die folgenden Ressourcen helfen Ihnen bei den ersten Schritten zur Integration von Power BI-Berichten in Ihre App.
+Mit der **Vorschauversion von Microsoft Power BI Embedded** können Sie Power BI-Berichte in Ihre Web- oder mobilen Anwendungen integrieren, sodass Sie keine benutzerdefinierten Lösungen zum Visualisieren von Daten für Ihre Benutzer erstellen müssen. Die folgenden Ressourcen helfen Ihnen bei den ersten Schritten zur Integration von Power BI-Berichten in Ihre App.
 
  -	[Beispiel für eine Dashboard-Web-App](http://go.microsoft.com/fwlink/?LinkId=761493)
  -	[Power BI Embedded-API-Referenz](https://msdn.microsoft.com/library/mt711493.aspx)
@@ -242,4 +242,4 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 - [Erste Schritte mit der Vorschau von Microsoft Power BI Embedded](power-bi-embedded-get-started.md)
 - [Informationen zum App-Tokenfluss in Power BI Embedded](power-bi-embedded-app-token-flow.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

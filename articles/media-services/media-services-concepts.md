@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/11/2016" 
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 #Azure Media Services-Konzepte 
@@ -31,7 +31,7 @@ Ein Medienobjekt wird einem BLOB-Container im Azure Storage-Konto zugeordnet, un
 Bei der Entscheidung, welche Medieninhalte in einem Medienobjekt hochgeladen und gespeichert werden sollen, ist Folgendes zu beachten:
 
 - Ein Medienobjekt sollte nur eine einzige, eindeutige Instanz des Medieninhalts enthalten, beispielsweise eine einzige Bearbeitung einer TV-Folge, eines Films oder einer Werbung.
-- Ein Medienobjekt sollte nicht mehrere Varianten oder Bearbeitungen einer audiovisuellen Datei enthalten. Ein Beispiel für eine nicht ordnungsgemäße Verwendung eines Medienobjekts wäre der Versuch, mehrere TV-Folgen, Werbungen oder mehrere Kameraeinstellungen aus einer einzigen Produktion in einem Medienobjekt zu speichern. Das Speichern mehrerer Varianten oder Bearbeitungen einer audiovisuellen Datei in einem Medienobjekt kann zu Schwierigkeiten beim Übermitteln von Codierungsaufträgen, beim Streamen und beim Sichern der Übermittlung des Medienobjekts zu einem späteren Zeitpunkt im Workflow führen.  
+- Ein Medienobjekt sollte nicht mehrere Varianten oder Bearbeitungen einer audiovisuellen Datei enthalten. Ein Beispiel für eine nicht ordnungsgemäße Verwendung eines Medienobjekts wäre der Versuch, mehrere TV-Folgen, Werbungen oder mehrere Kameraeinstellungen aus einer einzigen Produktion in einem Medienobjekt zu speichern. Das Speichern mehrerer Varianten oder Bearbeitungen einer audiovisuellen Datei in einem Medienobjekt kann zu Schwierigkeiten beim Übermitteln von Codierungsaufträgen, beim Streamen und beim Sichern der Übermittlung des Medienobjekts zu einem späteren Zeitpunkt im Workflow führen.
 
 ###Medienobjektdatei 
 Die [AssetFile](https://msdn.microsoft.com/library/azure/hh974275.aspx)-Entität stellt eine tatsächliche Video- oder Audiodatei dar, die in einem Blob-Container gespeichert ist. Eine Medienobjektdatei ist immer mit einem Medienobjekt verknüpft, wobei ein Medienobjekt eine oder mehrere Dateien enthalten kann. Der Media Services Encoder-Task schlägt fehl, wenn ein Medienobjektdatei-Objekt keiner digitalen Datei in einem BLOB-Container zugeordnet ist.
@@ -138,7 +138,7 @@ Weitere Informationen finden Sie unter:
 
 - [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md)
 - [Arbeiten mit Kanälen, die Livedatenströme mit mehreren Bitraten von lokalen Encodern empfangen](media-services-live-streaming-with-onprem-encoders.md)
-- [Kontingente und Einschränkungen](media-services-quotas-and-limitations.md).  
+- [Kontingente und Einschränkungen](media-services-quotas-and-limitations.md).
 
 ##Schützen von Inhalten
 
@@ -252,4 +252,4 @@ In der folgenden Liste werden verschiedene Streamingformate beschrieben und Beis
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

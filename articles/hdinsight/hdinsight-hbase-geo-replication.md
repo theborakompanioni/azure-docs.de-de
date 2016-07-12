@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="03/04/2016"
+   ms.date="06/28/2016"
    ms.author="jgao"/>
 
 # Konfigurieren von HBase-Georeplikation in HDInsight
@@ -21,7 +21,7 @@
 > [AZURE.SELECTOR]
 - [Konfigurieren von VPN-Konnektivität](../hdinsight-hbase-geo-replication-configure-VNETs.md)
 - [Konfigurieren von DNS](hdinsight-hbase-geo-replication-configure-DNS.md)
-- [Konfigurieren von HBase-Replikation](hdinsight-hbase-geo-replication.md) 
+- [Konfigurieren von HBase-Replikation](hdinsight-hbase-geo-replication.md)
  
 Erfahren Sie, wie Sie HBase-Replikation zwischen zwei Rechenzentren konfigurieren. Einige Anwendungsfälle für Clusterreplikation umfassen:
 
@@ -169,18 +169,18 @@ Um bedingte Weiterleitung zu konfigurieren, müssen Sie die Domänenendungen der
 
 **Konfigurieren von DNS-Weiterleitungen**
  
-1.	RDP in **Contoso-DNS-EU**. 
+1.	RDP in **Contoso-DNS-EU**.
 2.	Klicken Sie auf die Windowstaste in der linken unteren Ecke.
 2.	Klicken Sie auf **Verwaltungstools**.
 3.	Klicken Sie auf **DNS**.
 4.	Erweitern Sie im linken Fensterbereich **DSN**, **Contoso-DNS-EU**.
-5.	Klicken Sie mit der rechten Maustaste auf **Bedingte Weiterleitungen** und klicken Sie dann auf **Neue bedingte Weiterleitung**. 
+5.	Klicken Sie mit der rechten Maustaste auf **Bedingte Weiterleitungen** und klicken Sie dann auf **Neue bedingte Weiterleitung**.
 5.	Geben Sie Folgendes ein:
 	- **DNS-Domäne**: Geben Sie das DNS-Suffix von Contoso-HBase-US ein. Zum Beispiel: Contoso-HBase-US.f5.internal.cloudapp.net.
 	- **IP-Adressen der Masterserver**: Geben Sie 10.2.0.4 ein, dabei handelt es sich um die IP-Adresse von Contoso-DNS-US. Überprüfen Sie die IP. Ihr DNS-Server kann eine andere IP-Adresse haben.
 6.	Klicken Sie auf **ENTER** und dann auf **OK**. Sie können nun die IP-Adresse von Contoso-DNS-US von der von Contoso-DNS-EU auflösen.
 7.	Wiederholen Sie die Schritte zum Hinzufügen einer bedingten DNS-Weiterleitung an den DNS-Dienst auf dem virtuellen Computer von Contoso-DNS-US mit den folgenden Werten:
-	- **DNS-Domäne**: Geben Sie das DNS-Suffix von Contoso-HBase-EU ein. 
+	- **DNS-Domäne**: Geben Sie das DNS-Suffix von Contoso-HBase-EU ein.
 	- **IP-Adressen der Masterserver**: Geben Sie 10.2.0.4 ein, dabei handelt es sich um die IP-Adresse von Contoso-DNS-EU.
 
 **Testen der Auflösung des Domänennamens**
@@ -314,4 +314,4 @@ In diesem Lernprogramm haben Sie gelernt, HBase-Replikation über zwei Rechenzen
 [hdinsight-hbase-overview]: hdinsight-hbase-overview.md
 [hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

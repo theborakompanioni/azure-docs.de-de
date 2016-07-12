@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/06/2016"
+   ms.date="06/29/2016"virtual
    ms.author="yurid"/>
 
 #Überwachen der Sicherheitsintegrität in Azure Security Center
@@ -97,7 +97,20 @@ Im obigen Beispiel wird für eine virtuelle Maschine eine dringende Empfehlung i
 
 Dieses Blatt enthält die Sicherheitsdetails für den virtuellen Computer. Unten auf dem Blatt werden die empfohlenen Aktionen sowie der Schweregrad der einzelnen Probleme angezeigt.
 
-###Überwachen virtueller Netzwerke
+#### Abschnitt „Clouddienste (Vorschau)“
+Der Integritätsstatus für Clouddienste ist auf der Kachel für die Sicherheitsintegrität von virtuellen Computern enthalten. Wenn die Betriebssystemversion veraltet ist, wird eine Empfehlung erstellt. Dies ist hier dargestellt:
+
+![Cloud Services](./media/security-center-monitoring/security-center-monitoring-fig8-new2.png)
+
+Sie müssen die Schritte in der Empfehlung ausführen, um die Betriebssystemversion zu aktualisieren. Wenn Sie in einer Webrolle (Ausführung von Windows Server mit automatischer Bereitstellung Ihrer Web-App für IIS) oder Workerrolle (Ausführung von Windows Server mit automatischer Bereitstellung Ihrer Web-App für IIS) in die rote Warnung klicken, wird ein neues Blatt mit weiteren Details zur Empfehlung geöffnet. Dies ist unten dargestellt:
+
+![Clouddienst – Details](./media/security-center-monitoring/security-center-monitoring-fig8-new3.png)
+
+Um eine Anleitung zur Empfehlung zu erhalten, klicken Sie in der Spalte **BESCHREIBUNG** auf **Update OS version** (Betriebssystemversion aktualisieren). Das Blatt **Update OS version (Preview)** (Betriebssystemversion aktualisieren (Vorschau)) mit mehr Details wird geöffnet.
+
+![Clouddienst – Empfehlungen](./media/security-center-monitoring/security-center-monitoring-fig8-new4.png)
+
+### Überwachen virtueller Netzwerke
 Wenn Sie auf der Kachel **Ressourcensicherheitsintegrität** auf **Netzwerk** klicken, wird das Blatt **Netzwerk** mit weiteren Details geöffnet (siehe folgende Abbildung):
 
 ![Netzwerk](./media/security-center-monitoring/security-center-monitoring-fig9-new3.png)
@@ -129,7 +142,7 @@ Im Abschnitt **Endpunkte mit Internetanbindung** werden die virtuellen Computer,
 ![Endpunkt mit Internetanbindung](./media/security-center-monitoring/security-center-monitoring-fig121-new5.png)
 
 Diese Tabelle enthält den Endpunktnamen, der den virtuellen Computer darstellt, die Internet-IP-Adresse und den aktuellen Status der NSG und der NGFW. Die Tabelle ist nach Schweregrad sortiert, wie nachfolgend beschrieben:
-- Rot (oben): hohe Priorität; sollte umgehend behoben werden 
+- Rot (oben): hohe Priorität; sollte umgehend behoben werden
 - Orange: mittlere Priorität; sollte zeitnah behoben werden
 - Grün (ganz unten): fehlerfrei
 
@@ -140,7 +153,7 @@ Der Abschnitt **Netzwerktopologie** enthält eine hierarchische Ansicht der Ress
 ![Netzwerktopologie](./media/security-center-monitoring/security-center-monitoring-fig121-new4.png)
 
 Diese Tabelle ist nach Schweregrad sortiert (virtuelle Computer und Subnetze):
-- Rot (oben): hohe Priorität; sollte umgehend behoben werden 
+- Rot (oben): hohe Priorität; sollte umgehend behoben werden
 - Orange: mittlere Priorität; sollte zeitnah behoben werden
 - Grün (ganz unten): fehlerfrei
 
@@ -191,8 +204,8 @@ In diesem Dokument haben Sie erfahren, wie Sie die Überwachungsfunktionen in Az
 
 - [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md) – erfahren Sie, wie Sie Sicherheitseinstellungen in Azure Security Center konfigurieren.
 - [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) – Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
-- [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md) – Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
+- [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md): Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
 - [Häufig gestellte Fragen (FAQ) zu Security Center](security-center-faq.md) – Häufig gestellte Fragen zur Verwendung des Diensts.
 - [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) – suchen Sie nach Blogbeiträgen über Azure-Sicherheit und -Compliance.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

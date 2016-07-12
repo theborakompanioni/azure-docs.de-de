@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/03/2016"
+   ms.date="07/05/2016"
    ms.author="yurid"/>
 
 # Festlegen von Sicherheitsrichtlinien in Azure Security Center
@@ -69,7 +69,7 @@ Verwenden Sie die folgende Tabelle als Referenz, um zu verstehen, was jede Optio
 
 | Richtlinie | Zustand Ein |
 |----- |-----|
-| System Updates | Ruft täglich eine Liste der verfügbaren Sicherheitsupdates und wichtigen Updates von Windows Update oder WSUS (abhängig davon, welcher Dienst für diesen virtuellen Computer konfiguriert ist) ab und empfiehlt, dass die fehlenden Updates angewendet werden sollen. |
+| System Updates | Ruft täglich eine Liste der verfügbaren Sicherheitsupdates und wichtigen Updates von Windows Update oder WSUS (abhängig davon, welcher Dienst für diesen virtuellen Computer konfiguriert ist) ab und empfiehlt, dass die fehlenden Updates angewendet werden sollen. Außerdem wird überprüft, ob aktuelle Updates in Linux-Systemen und Sicherheitsupdates und kritische Updates auf virtuellen [Cloud Services](./cloud-services/cloud-services-how-to-configure.md)-Computern vorhanden sind. |
 | Basisregeln | Analysiert täglich Betriebssystemkonfigurationen, die bewirken können, dass die virtuellen Computer anfälliger für Angriffe werden, und empfiehlt Konfigurationsänderungen, um auf diese Sicherheitsrisiken zu reagieren. Weitere Informationen zu den speziellen Konfigurationen, die überwacht werden, finden Sie in der [Liste der empfohlenen Basisregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) (in englischer Sprache). |
 | Endpoint Protection | Empfiehlt die Bereitstellung von Endpoint Protection für alle virtuellen Windows-Computer, um Viren, Spyware und andere Schadsoftware zu erkennen und zu entfernen. 
 | Netzwerksicherheitsgruppen | Empfiehlt die Konfiguration von [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md) (NSGs), um den eingehenden und ausgehenden Datenverkehr für Subnetze und Netzwerkschnittstellen zu steuern. NSGs, die für ein Subnetz konfiguriert sind, werden für alle Netzwerkschnittstellen der virtuellen Computer übernommen, sofern nichts anderes angegeben ist. Zusätzlich zur Überprüfung, ob eine NSG konfiguriert wurde, bewertet diese Option Sicherheitsregeln für eingehende Daten, um Regeln zu identifizieren, die jeglichen eingehenden Datenverkehr zulassen. |
@@ -86,7 +86,7 @@ Wenn Sie Ihre Sicherheitsrichtlinien pro Ressourcengruppe konfigurieren möchten
 
 ![Auswahl der Ressourcengruppe](./media/security-center-policies/security-center-policies-fig4.png)
 
-Nach dem Auswählen der Ressourcengruppe wird das Blatt **Sicherheitsrichtlinie** geöffnet. Standardmäßig ist die Option **Vererbung** aktiviert. Das bedeutet, dass alle Sicherheitsrichtlinien für diese Ressourcengruppe von der Abonnementebene geerbt werden. Sie können diese Konfiguration ändern, falls Sie eine benutzerdefinierte Sicherheitsrichtlinie pro Ressourcengruppe festlegen möchten. In diesem Fall müssen Sie **Eindeutig** auswählen und entsprechende Änderungen für die Option **Prevention policy** (Präventionsrichtlinie) vornehmen.
+Nach dem Auswählen der Ressourcengruppe wird das Blatt **Sicherheitsrichtlinie** geöffnet. Standardmäßig ist die Option **Vererbung** aktiviert. Dies bedeutet, dass alle Sicherheitsrichtlinien für diese Ressourcengruppe von der Abonnementebene geerbt werden. Sie können diese Konfiguration ändern, falls Sie eine benutzerdefinierte Sicherheitsrichtlinie pro Ressourcengruppe festlegen möchten. In diesem Fall müssen Sie **Eindeutig** auswählen und entsprechende Änderungen für die Option **Prevention policy** (Präventionsrichtlinie) vornehmen.
 
 ![Sicherheitsrichtlinie pro Ressourcengruppe](./media/security-center-policies/security-center-policies-fig5-new.png)
 
@@ -97,11 +97,11 @@ Nach dem Auswählen der Ressourcengruppe wird das Blatt **Sicherheitsrichtlinie*
 
 In diesem Dokument haben Sie erfahren, wie Sie Sicherheitsrichtlinien in Azure Security Center konfigurieren können. Weitere Informationen zu Azure Security Center finden Sie in den folgenden Quellen:
 
-- [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md) – Erfahren Sie, wie Sie Enwurfsüberlegungen zur Einführung von Azure Security Center planen und umsetzen können.
+- [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md) – Erfahren Sie, wie Sie Entwurfsüberlegungen zur Einführung von Azure Security Center planen und umsetzen können.
 - [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md) – Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 - [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) – Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
-- [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md) – Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
+- [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md) – Erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
 - [Häufig gestellte Fragen (FAQ) zu Security Center](security-center-faq.md) – Häufig gestellte Fragen zur Verwendung des Diensts.
 - [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) – suchen Sie nach Blogbeiträgen über Azure-Sicherheit und -Compliance.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

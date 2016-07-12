@@ -26,6 +26,8 @@ Zum Abschluss werden einige in vorherigen Artikeln bereits erläuterte Themen er
 
 Sämtliche in diesem Artikel beschriebenen Elemente basieren auf den Beispielen für das SDK des **Serialisierungsprogramms**. Wenn Sie die Beschreibungen in diesem Artikel nachvollziehen möchten, sehen Sie sich die Anwendungen **simplesample\_amqp** und **simplesample\_http** an, die im Azure IoT-Geräte-SDK für C enthalten sind.
 
+Das **Azure IoT-Geräte-SDK für C** finden Sie im GitHub-Repository mit [Microsoft Azure IoT SDKs](https://github.com/Azure/azure-iot-sdks) und ausführliche Informationen zur API in der [C-API-Referenz](http://azure.github.io/azure-iot-sdks/c/api_reference/index.html).
+
 ## Die Modelliersprache
 
 Im [Einführungsartikel](iot-hub-device-sdk-c-intro.md) dieser Serie wurde anhand des in der **simplesample\_amqp**-Anwendung bereitgestellten Beispiels die Modelliersprache des **Azure IoT-Geräte-SDKs für C** vorgestellt:
@@ -52,7 +54,7 @@ Modelle umfassen eine Definition der Ereignisse, die Sie als Eingangsereignisse 
 
 In diesem Beispiel werden keine weiteren Datentypen gezeigt, die vom SDK unterstützt werden. Darum wird es im Anschluss gehen.
 
-> [AZURE.NOTE] Bei IoT Hub werden die Daten, die ein Gerät an den Hub sendet, als *Ereignisse* bezeichnet, die Modelliersprache dagegen bezeichnet sie als *Daten* (definiert unter Verwendung von **WITH\_DATA**). Ebenso werden bei IoT Hub die an Geräte gesendeten Daten als *Nachrichten* bezeichnet, während die Modelliersprache sie als *Aktionen* bezeichnet (definiert unter Verwendung von **WITH\_ACTION**). Denken Sie daran, dass diese Begriffe in diesem Artikel ggf. synonym verwendet werden.
+> [AZURE.NOTE] Bei IoT Hub werden die Daten, die ein Gerät an den Hub sendet, als *Ereignisse* bezeichnet. In der Modelliersprache heißen sie dagegen *Daten* und werden mithilfe von **WITH\_DATA** definiert. Analog dazu gilt: An Geräte gesendete Daten werden bei IoT Hub als *Nachrichten* bezeichnet. In der Modelliersprache heißen sie dagegen *Aktionen* und werden mithilfe von **WITH\_ACTION** definiert. Denken Sie daran, dass diese Begriffe in diesem Artikel ggf. synonym verwendet werden.
 
 ### Unterstützte Datentypen
 
@@ -100,7 +102,7 @@ WITH_DATA(TestType, Test)
 );
 ```
 
-Unser Modell enthält ein einzelnes Datenereignis vom Typ **TestType**. Bei **TestType** handelt es sich um einen komplexen Typ, der mehrere Elemente enthält, die alle gemeinsam die durch die Modelliersprache des **Serialisierungsprogramms** unterstützten einfachen Datentypen darstellen.
+Unser Modell enthält ein einzelnes Datenereignis vom Typ **TestType**. Bei **TestType** handelt es sich um einen komplexen Typ, der mehrere Elemente enthält, die zusammengenommen die einfachen Datentypen darstellen, die von der Modelliersprache des **Serialisierungsprogramms** unterstützt werden.
 
 Mit einem solchen Modell können wir Code schreiben, um Daten an IoT Hub zu senden, der folgendermaßen aussieht:
 
@@ -162,7 +164,7 @@ void SendAsync(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const void *dataEvent
 }
 ```
 
-Die Funktion serialisiert das angegebene Datenereignis und sendet es unter Verwendung von **IoTHubClient\_SendEventAsync** an IoT Hub. Hierbei handelt es sich um den gleichen Code, der auch schon in vorherigen Artikeln erläutert wurde (**SendAsync** kapselt die Logik in eine praktische Funktion).
+Die Funktion serialisiert das angegebene Datenereignis und sendet es unter Verwendung von **IoTHubClient\_SendEventAsync** an IoT Hub. Hierbei handelt es sich um den gleichen Code, der auch schon in vorherigen Artikeln erläutert wurde. (**SendAsync** kapselt die Logik in eine praktische Funktion.)
 
 Eine weitere im vorherigen Codebeispiel verwendete Hilfsfunktion ist **GetDateTimeOffset**. Diese Funktion wandelt die angegebene Uhrzeit in einen Wert vom Typ **EDM\_DATE\_TIME\_OFFSET** um:
 
@@ -188,9 +190,9 @@ Bei Ausführung dieses Codes wird folgende Nachricht an IoT Hub gesendet:
 {"aDouble":1.100000000000000, "aInt":2, "aFloat":3.000000, "aLong":4, "aInt8":5, "auInt8":6, "aInt16":7, "aInt32":8, "aInt64":9, "aBool":true, "aAsciiCharPtr":"ascii string 1", "aDateTimeOffset":"2015-09-14T21:18:21Z", "aGuid":"00010203-0405-0607-0809-0A0B0C0D0E0F", "aBinary":"AQID"}
 ```
 
-Beachten Sie, dass die Serialisierung in JSON erfolgt, dem Format, das von der Bibliothek des **Serialisierungsprogramms** generiert wird. Beachten Sie auch, dass jedes Element des serialisierten JSON-Objekts den Elementen des in unserem Modell definierten **TestType**-Ereignisses entspricht. Die Werte entsprechen ebenfalls exakt den im Code verwendeten Werten. Beachten Sie jedoch, dass die Binärdaten Base64-codiert sind: „AQID“ ist die Base64-Codierung von {0x01, 0x02, 0x03}.
+Beachten Sie, dass die Serialisierung in JSON erfolgt. Hierbei handelt es sich um das Format, das von der Bibliothek des **Serialisierungsprogramms** generiert wird. Beachten Sie auch, dass jedes Element des serialisierten JSON-Objekts den Elementen des in unserem Modell definierten **TestType**-Ereignisses entspricht. Die Werte entsprechen ebenfalls exakt den im Code verwendeten Werten. Beachten Sie jedoch, dass die Binärdaten Base64-codiert sind: „AQID“ ist die Base64-Codierung von {0x01, 0x02, 0x03}.
 
-Dieses Beispiel veranschaulicht den Vorteil der Bibliothek des **Serialisierungsprogramms**. Mit dieser Bibliothek können wir JSON-Daten an die Cloud senden, ohne uns explizit mit der Serialisierung in unserer Anwendung beschäftigen zu müssen. Wir müssen nur die Werte der Datenereignisse in unserem Modell festlegen und dann einfach APIs aufrufen, um diese Ereignisse an die Cloud zu senden.
+Dieses Beispiel veranschaulicht den Vorteil der Bibliothek des **Serialisierungsprogramms**: Mit dieser Bibliothek können wir JSON-Daten an die Cloud senden, ohne uns explizit mit der Serialisierung in unserer Anwendung beschäftigen zu müssen. Wir müssen nur die Werte der Datenereignisse in unserem Modell festlegen und dann einfach APIs aufrufen, um diese Ereignisse an die Cloud zu senden.
 
 Mit diesen Informationen können wir Modelle definieren, die alle unterstützten Datentypen umfassen, einschließlich der komplexen Typen (wir könnten auch komplexe Typen innerhalb anderer komplexer Typen verwenden). Das durch das Beispiel oben generierte serialisierte JSON-Format zeigt jedoch einen wichtigen Aspekt. Die Art und Weise, *wie* wir Daten über die Bibliothek des **Serialisierungsprogramms** senden, bestimmt genau, wie die JSON-Daten geformt sind. Um diesen Aspekt geht es im nächsten Abschnitt.
 
@@ -227,7 +229,7 @@ WITH_DATA(HumidityEvent, Humidity)
 END_NAMESPACE(Contoso);
 ```
 
-Beachten Sie, dass das Modell zwei Datenereignisse enthält: **Temperatur** und **Luftfeuchtigkeit**. Im Gegensatz zu den vorherigen Beispielen ist der Typ jedes Ereignisses eine Struktur, die mithilfe von **DECLARE\_STRUCT** definiert wird. **TemperatureEvent** enthält eine Temperaturmessung und einen Zeitstempel; **HumidityEvent** enthält eine Luftfeuchtigkeitsmessung und einen Zeitstempel. Dieses Modell stellt eine natürliche Möglichkeit bereit, die Daten für das oben beschriebene Szenario zu modellieren. Beim Senden eines Ereignisses an die Cloud wird entweder ein Temperatur/Zeitstempel-Paar oder ein Luftfeuchtigkeit/Zeitstempel-Paar gesendet.
+Beachten Sie, dass das Modell zwei Datenereignisse enthält: **Temperature** (Temperatur) und **Humidity** (Luftfeuchtigkeit). Im Gegensatz zu den vorherigen Beispielen ist der Typ jedes Ereignisses eine Struktur, die mithilfe von **DECLARE\_STRUCT** definiert wird. **TemperatureEvent** enthält eine Temperaturmessung und einen Zeitstempel; **HumidityEvent** enthält eine Luftfeuchtigkeitsmessung und einen Zeitstempel. Dieses Modell stellt eine natürliche Möglichkeit bereit, die Daten für das oben beschriebene Szenario zu modellieren. Beim Senden eines Ereignisses an die Cloud wird entweder ein Temperatur/Zeitstempel-Paar oder ein Luftfeuchtigkeit/Zeitstempel-Paar gesendet.
 
 Wir können ein Temperaturereignis mithilfe von folgendem Code an die Cloud senden:
 
@@ -272,7 +274,7 @@ Bei Ausführung des oben stehenden Codes zum Senden des Temperaturereignisses wi
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-Wir senden eine Temperatur vom Typ **TemperatureEvent**, und diese Struktur enthält ein Element **Temperature** und ein Element **Time**. Diese Tatsache wird direkt in den serialisierten Daten reflektiert.
+Wir senden eine Temperatur vom Typ **TemperatureEvent**, und diese Struktur enthält ein Element vom Typ **Temperature** und ein Element vom Typ **Time**. Diese Tatsache wird direkt in den serialisierten Daten reflektiert.
 
 Ebenso können wir mit folgendem Code ein Luftfeuchtigkeitsereignis senden:
 
@@ -350,7 +352,7 @@ Dieser Code sendet Folgendes an IoT Hub:
 
 Bis hierher verläuft noch immer alles wie erwartet. Jetzt ändern wir die Verwendung des SERIALIZE-Makros.
 
-Das **SERIALIZE**-Makro kann mehrere Datenereignisse als Argumente aufnehmen: So können wir die Ereignisse **Temperature** und **Humidity** gemeinsam serialisieren und in einem Aufruf an IoT Hub senden:
+Das **SERIALIZE**-Makro kann mehrere Datenereignisse als Argumente aufnehmen: So können wir die Ereignisse **Temperature** und **Humidity** gemeinsam serialisieren und in einem einzelnen Aufruf an IoT Hub senden:
 
 ```
 if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermostat->Humidity) == IOT_AGENT_OK)
@@ -396,7 +398,7 @@ WITH_DATA(TemperatureAndHumidityEvent, TemperatureAndHumidity),
 );
 ```
 
-Hätten wir dieses Modell verwendet, wäre es leichter zu verstehen, wie **Temperature** und **Humidity** in der gleichen serialisierten Nachricht gesendet werden. Möglicherweise ist nicht klar, warum das so funktioniert, wenn Sie beide Datenereignisse mithilfe von Modell 2 an **SERIALIZE** übergeben.
+Hätten wir dieses Modell verwendet, wäre es leichter zu verstehen, wie **Temperature** und **Humidity** in der gleichen serialisierten Nachricht gesendet werden. Möglicherweise ist nicht klar, warum das so funktioniert, wenn Sie beide Datenereignisse mithilfe von Modell 2 an **SERIALIZE** übergeben.
 
 Dieses Verhalten ist einfacher zu verstehen, wenn Sie die Annahmen kennen, von denen die Bibliothek des **Serialisierungsprogramms** ausgeht. Kehren wir zunächst zum Modell zurück:
 
@@ -408,7 +410,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-Betrachten Sie dieses Modell aus der objektorientierten Perspektive. In diesem Fall modellieren wir ein physisches Gerät (ein Thermostat), und dieses Gerät enthält Attribute wie z. B. **Temperature** und **Humidity**.
+Betrachten Sie dieses Modell aus der objektorientierten Perspektive. In diesem Fall modellieren wir ein physisches Gerät (Thermostat), und dieses Gerät enthält Attribute wie **Temperature** und **Humidity**.
 
 Wir können mit folgendem Code den gesamten Status des Modells senden:
 
@@ -425,25 +427,25 @@ Vorausgesetzt, dass die Werte für Temperatur, Luftfeuchtigkeit und Uhrzeit fest
 {"Temperature":75, "Humidity":45, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-Mitunter sollen jedoch nur *einige* Eigenschaften des Modells an die Cloud gesendet werden (dies gilt insbesondere, wenn das Modell eine große Anzahl von Datenereignissen umfasst). Es ist nützlich, nur eine Teilmenge der Datenereignisse zu senden, so wie im Beispiel weiter oben:
+Mitunter sollen jedoch nur *einige* Eigenschaften des Modells an die Cloud gesendet werden. (Dies gilt insbesondere, wenn das Modell eine große Anzahl von Datenereignissen umfasst.) Es ist nützlich, nur eine Teilmenge der Datenereignisse zu senden, so wie im Beispiel weiter oben:
 
 ```
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-Damit wird exakt das gleiche serialisierte Ereignis generiert, als ob ein **TemperatureEvent** mit einem **Temperature**- und einem **Time**-Element definiert worden wäre, so wie in Modell 1. In diesem Fall konnten wir mithilfe eines anderen Modells (Modell 2) exakt das gleiche serialisierte Ereignis generieren, indem wir **SERIALIZE** auf unterschiedliche Weise aufgerufen haben.
+Damit wird exakt das gleiche serialisierte Ereignis generiert wie beim Definieren von **TemperatureEvent** mit **Temperature** und **Time** (siehe Modell 1). In diesem Fall konnten wir mithilfe eines anderen Modells (Modell 2) exakt das gleiche serialisierte Ereignis generieren, da wir **SERIALIZE** auf andere Weise aufgerufen haben.
 
-Das Entscheidende hier ist: Wenn Sie mehrere Datenereignisse an **SERIALIZE** übergeben, wird angenommen, dass jedes Ereignis eine Eigenschaft in einem einzelnen JSON-Objekt ist.
+Hierbei ist Folgendes entscheidend: Wenn Sie mehrere Datenereignisse an **SERIALIZE** übergeben, wird davon ausgegangen, dass jedes Ereignis eine Eigenschaft in einem einzelnen JSON-Objekt ist.
 
 Die beste Methode hängt von Ihnen und Ihrer Meinung über Ihr Modell ab. Wenn Sie „Ereignisse“ an die Cloud senden und jedes Ereignis einen definierten Satz von Eigenschaften umfasst, ist die erste Methode für Sie sinnvoll. In diesem Fall verwenden Sie **DECLARE\_STRUCT**, um die Struktur jedes Ereignisses zu definieren, und schließen die Ereignisse dann mit dem **WITH\_DATA**-Makro in Ihr Modell ein. Anschließend senden Sie jedes Ereignis auf die gleiche Weise wie im ersten oben gezeigten Beispiel. Bei dieser Methode übergeben Sie nur ein einzelnes Datenereignis an **SERIALIZER**.
 
-Wenn Sie Ihr Modell eher aus objektorientierter Perspektive betrachten, eignet sich die zweite Methode wahrscheinlich besser für Sie. In diesem Fall stellen die Elemente, die Sie mithilfe von **WITH\_DATA** definieren, die „Eigenschaften“ Ihres Objekts dar. Sie können eine beliebige Teilmenge von Ereignissen an **SERIALIZE** übergeben, je nachdem, welche Statusinformationen über Ihr „Objekt“ Sie an die Cloud senden möchten.
+Wenn Sie Ihr Modell eher aus objektorientierter Perspektive betrachten, eignet sich die zweite Methode wahrscheinlich besser für Sie. In diesem Fall stellen die Elemente, die Sie mithilfe von **WITH\_DATA** definieren, die Eigenschaften Ihres Objekts dar. Sie können eine beliebige Teilmenge von Ereignissen an **SERIALIZE** übergeben – je nachdem, welche Informationen zum Objektzustand Sie an die Cloud senden möchten.
 
 Keine dieser Methoden ist richtig oder falsch. Machen Sie sich bewusst, wie die Bibliothek des **Serialisierungsprogramms** funktioniert, und wählen Sie die Modellierungsmethode aus, die Ihren Anforderungen am besten entspricht.
 
 ## Behandlung von Nachrichten
 
-Bisher ging es in diesem Artikel nur um das Senden von Ereignissen an IoT Hub, nicht um das Empfangen von Nachrichten. Der Grund dafür ist, dass der Nachrichtenempfang bereits sehr ausführlich in einem [früheren Artikel](iot-hub-device-sdk-c-intro.md) erläutert wurde. Sie erinnern sich aus diesem Artikel sicher, dass Sie Nachrichten verarbeiten, indem Sie eine Nachrichtenrückruffunktion registrieren:
+Bisher ging es in diesem Artikel nur um das Senden von Ereignissen an IoT Hub, nicht um das Empfangen von Nachrichten. Das liegt daran, dass der Nachrichtenempfang bereits sehr ausführlich in einem [früheren Artikel](iot-hub-device-sdk-c-intro.md) erläutert wurde. Sie erinnern sich aus diesem Artikel sicher, dass Sie Nachrichten verarbeiten, indem Sie eine Nachrichtenrückruffunktion registrieren:
 
 ```
 IoTHubClient_SetMessageCallback(iotHubClientHandle, IoTHubMessage, myWeather)
@@ -528,7 +530,7 @@ In diesem Abschnitt wurde alles beschrieben, was Sie über das Senden von Ereign
 
 ## Konfiguration von Makros
 
-Wenn Sie die Bibliothek des **Serialisierungsprogramms** verwenden, finden Sie einen wichtigen Teil des SDK, den Sie kennen sollten, in der „azure-c-shared-utility“-Bibliothek. Wenn Sie das Repository „Azure-iot-sdks“ auf GitHub unter Verwendung der Option „--recursive“ geklont haben, finden Sie diese freigegebene Hilfsprogrammbibliothek hier:
+Wenn Sie die Bibliothek des **Serialisierungsprogramms** verwenden, finden Sie einen wichtigen Teil des SDKs in der Bibliothek „azure-c-shared-utility“. Wenn Sie das Repository „Azure-iot-sdks“ auf GitHub unter Verwendung der Option „--recursive“ geklont haben, finden Sie diese freigegebene Hilfsprogrammbibliothek hier:
 
 ```
 .\\c\\azure-c-shared-utility
@@ -548,7 +550,7 @@ Dieser Ordner enthält eine Visual Studio-Projektmappe mit der Bezeichnung **mac
 
 Das Programm in dieser Projektmappe generiert die Datei **macro\_utils.h**. Das SDK umfasst eine standardmäßige "macro\_utils.h"-Datei. In dieser Projektmappe können Sie einige Parameter bearbeiten und dann die Headerdatei basierend auf diesen Parametern erneut erstellen.
 
-Die beiden wichtigsten Parameter, mit denen Sie sich beschäftigen müssen, sind **nArithmetic** und **nMacroParameters**, die in den folgenden beiden Zeilen in „macro\_utils.tt“ definiert werden:
+Die beiden wichtigsten Parameter sind **nArithmetic** und **nMacroParameters** und werden in den folgenden beiden Zeilen in „macro\_utils.tt“ definiert:
 
 ```
 <#int nArithmetic=1024;#>
@@ -574,13 +576,13 @@ Wie bereits erwähnt, handelt es sich bei **DECLARE\_MODEL** nur um ein C-Makro.
 
   ![](media/iot-hub-device-sdk-c-serializer/02-nMacroParametersCompilerErrors.PNG)
 
-Der **nArithmetic**-Parameter bezieht sich mehr auf die interne Funktionsweise der Makrosprache als auf Ihre Anwendung. Er steuert die Gesamtanzahl von Elementen, die in Ihrem Modell vorhanden sein können, einschließlich **DECLARE\_STRUCT**-Makros. Wenn Sie Compilerfehler wie diese erhalten, sollten Sie versuchen, **nArithmetic** zu erhöhen:
+Der **nArithmetic**-Parameter ist mehr für die interne Funktionsweise der Makrosprache und weniger für Ihre Anwendung relevant. Er steuert die Gesamtanzahl von Elementen, die in Ihrem Modell vorhanden sein können )einschließlich **DECLARE\_STRUCT**-Makros). Wenn Sie Compilerfehler wie den folgenden erhalten, versuchen Sie, **nArithmetic** zu erhöhen:
 
    ![](media/iot-hub-device-sdk-c-serializer/03-nArithmeticCompilerErrors.PNG)
 
 Wenn Sie diese Parameter ändern möchten, bearbeiten Sie die Werte in der Datei „macro\_utils.tt“, kompilieren Sie die Projektmappe „macro\_utils\_h\_generator.sln“ neu, und führen Sie das kompilierte Programm aus. In diesem Fall wird eine neue Datei "macro\_utils.h" generiert und im Verzeichnis ".\\common\\inc directory" abgelegt.
 
-Um die neue Version von „macro\_utils.h“ zu verwenden, entfernen Sie das NuGet-Paket des **Serialisierungsprogramms** aus Ihrer Lösung, und binden Sie stattdessen das Visual Studio-Projekt des **Serialisierungsprogramms** ein. Dadurch kann der Code mit dem Quellcode der Bibliothek des Serialisierungsprogramms kompiliert werden. Dies umfasst die aktualisierte Datei „macro\_utils.h“. Wenn Sie dies für **simplesample\_amqp** durchführen möchten, entfernen Sie zuerst das NuGet-Paket für die Bibliothek des Serialisierungsprogramms aus der Projektmappe:
+Um die neue Version von „macro\_utils.h“ zu verwenden, entfernen Sie das NuGet-Paket des **Serialisierungsprogramms** aus Ihrer Projektmappe, und binden Sie stattdessen das Visual Studio-Projekt des **Serialisierungsprogramms** ein. Dadurch kann der Code mit dem Quellcode der Bibliothek des Serialisierungsprogramms kompiliert werden. Dies umfasst die aktualisierte Datei „macro\_utils.h“. Wenn Sie dies für **simplesample\_amqp** durchführen möchten, entfernen Sie zuerst das NuGet-Paket für die Bibliothek des Serialisierungsprogramms aus der Projektmappe:
 
    ![](media/iot-hub-device-sdk-c-serializer/04-serializer-github-package.PNG)
 
@@ -594,13 +596,13 @@ Wenn Sie hiermit fertig sind, sollte Ihre Projektmappe wie folgt aussehen:
 
 Wenn Sie die Projektmappe jetzt kompilieren, wird die aktualisierte Datei „macro\_utils.h“ in Ihre Binärdaten eingefügt.
 
-Beachten Sie, dass durch eine ausreichende Erhöhung dieses Werts die Grenzwerte des Compilers überschritten werden können. Hierbei ist **nMacroParameters** der wichtigste Parameter, den Sie bedenken sollten. Die Spezifikation C99 gibt an, dass in einer Makrodefinition mindestens 127 Parameter zulässig sind. Da der Microsoft-Compiler diese Spezifikation exakt einhält (und einen Grenzwert von 127 aufweist), können Sie **nMacroParameters** nicht über den Standardgrenzwert hinaus erhöhen. Bei anderen Compilern ist dies möglicherweise zulässig (der GNU-Compiler beispielsweise unterstützt einen höheren Grenzwert).
+Beachten Sie, dass durch eine ausreichende Erhöhung dieses Werts die Grenzwerte des Compilers überschritten werden können. An diesem Punkt ist **nMacroParameters** der entscheidende Parameter. Die Spezifikation C99 gibt an, dass in einer Makrodefinition mindestens 127 Parameter zulässig sind. Da der Microsoft-Compiler diese Spezifikation exakt einhält (und einen Grenzwert von 127 besitzt), können Sie **nMacroParameters** nicht auf einen höheren Grenzwert festlegen. Bei anderen Compilern ist dies möglicherweise zulässig (der GNU-Compiler beispielsweise unterstützt einen höheren Grenzwert).
 
 In diesem Artikel haben wir so ziemlich alle Informationen zusammengestellt, die Sie benötigen, um Code mit der Bibliothek des **Serialisierungsprogramms** zu schreiben. Bevor wir zum Abschluss kommen, möchten wir noch einige Themen aus vorherigen Artikeln aufgreifen, bei denen möglicherweise Fragen offen geblieben sind.
 
 ## Die Low-Level-APIs
 
-In diesem Artikel ging es um die Beispielanwendung **simplesample\_amqp**. In diesem Beispiel werden High-Level-APIs (ohne „LL“) verwendet, um Ereignisse zu senden und Nachrichten zu empfangen. Wenn Sie diese APIs verwenden, wird ein Hintergrundthread ausgeführt, der sowohl Ereignisse sendet als auch Nachrichten empfängt. Bei Bedarf können die Low-Level-APIs (LL) verwendet werden, um das Senden von Ereignissen an die Cloud und das Empfangen von Nachrichten aus der Cloud explizit und ohne diesen Hintergrundthread zu steuern.
+In diesem Artikel stand die Beispielanwendung **simplesample\_amqp** im Mittelpunkt. In diesem Beispiel werden High-Level-APIs (ohne „LL“) verwendet, um Ereignisse zu senden und Nachrichten zu empfangen. Wenn Sie diese APIs verwenden, wird ein Hintergrundthread ausgeführt, der sowohl Ereignisse sendet als auch Nachrichten empfängt. Bei Bedarf können die Low-Level-APIs (LL) verwendet werden, um das Senden von Ereignissen an die Cloud und das Empfangen von Nachrichten aus der Cloud explizit und ohne diesen Hintergrundthread zu steuern.
 
 Wie bereits in einem [vorherigen Artikel](iot-hub-device-sdk-c-iothubclient.md) beschrieben, gibt es eine Gruppe von Funktionen, die aus den APIs auf höherer Ebene bestehen:
 
@@ -626,11 +628,11 @@ Es gibt auch eine analoge Gruppe von Low-Level-APIs:
 
 Beachten Sie, dass die Low-Level-APIs genauso funktionieren, wie in den vorherigen Artikeln beschrieben. Sie können die erste Gruppe von APIs verwenden, wenn Sie einen Hintergrundthread zum Senden von Ereignissen und Empfangen von Nachrichten einrichten möchten. Wenn Sie genau steuern möchten, wie Daten an IoT Hub gesendet und von IoT Hub empfangen werden, verwenden Sie die zweite API-Gruppe. Beide API-Gruppen funktionieren mit der Bibliothek des **Serialisierungsprogramms** gleichermaßen gut.
 
-Ein Beispiel der Verwendung der APIs auf niedrigerer Ebene mit der Bibliothek des **Serialisierungsprogramms** finden Sie in der **simplesample\_http**-Anwendung.
+Ein Beispiel für die Verwendung der APIs auf niedrigerer Ebene mit der Bibliothek des **Serialisierungsprogramms** finden Sie in der Anwendung **simplesample\_http**.
 
 ## Weitere Themen
 
-Einige weitere erwähnenswerte Themen sind die Behandlung von Eigenschaften, die Verwendung von alternativen Geräteanmeldedaten sowie Konfigurationsoptionen. All diese Themen werden in einem [vorherigen Artikel](iot-hub-device-sdk-c-iothubclient.md) erläutert. Das Entscheidende ist, dass diese Features mit der Bibliothek des **Serialisierungsprogramms** genauso funktionieren wie mit der **IoTHubClient**-Bibliothek. Wenn Sie beispielsweise Eigenschaften aus dem Modell an ein Ereignis anfügen möchten, verwenden Sie dafür **IoTHubMessage\_Properties** und **Map\_AddorUpdate**, wie zuvor beschrieben:
+Einige weitere erwähnenswerte Themen sind die Behandlung von Eigenschaften, die Verwendung von alternativen Geräteanmeldedaten sowie Konfigurationsoptionen. All diese Themen werden in einem [vorherigen Artikel](iot-hub-device-sdk-c-iothubclient.md) erläutert. Das Entscheidende ist, dass diese Features mit der Bibliothek des **Serialisierungsprogramms** genauso funktionieren wie mit der **IoTHubClient**-Bibliothek. Wenn Sie beispielsweise Eigenschaften aus dem Modell an ein Ereignis anfügen möchten, verwenden Sie dafür **IoTHubMessage\_Properties** und **Map**\_**AddorUpdate** wie zuvor beschrieben:
 
 ```
 MAP_HANDLE propMap = IoTHubMessage_Properties(message.messageHandle);
@@ -640,11 +642,11 @@ Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 
 Dabei spielt es keine Rolle, ob das Ereignis über die Bibliothek des **Serialisierungsprogramms** generiert oder manuell unter Verwendung der **IoTHubClient**-Bibliothek erstellt wurde.
 
-Im Hinblick auf die Verwendung von alternativen Geräteanmeldeinformationen funktioniert **IoTHubClient\_LL\_Create** genauso gut wie **IoTHubClient\_CreateFromConnectionString**, um ein **IOTHUB\_CLIENT\_HANDLE** zuzuordnen.
+Was die Verwendung alternativer Geräteanmeldeinformationen angeht: Ein **IOTHUB\_CLIENT\_HANDLE** lässt sich mit **IoTHubClient\_LL\_Create** ebenso gut zuordnen wie mit **IoTHubClient\_CreateFromConnectionString**.
 
-Und schließlich können Sie bei Verwendung der Bibliothek des **Serialisierungsprogramms** Konfigurationsoptionen mit **IoTHubClient\_LL\_SetOption** genauso festlegen wie bei Verwendung der **IoTHubClient**-Bibliothek.
+Und schließlich können Sie Konfigurationsoptionen bei Verwendung der Bibliothek des **Serialisierungsprogramms** mit **IoTHubClient\_LL\_SetOption** auf die gleiche Weise festlegen wie bei Verwendung der **IoTHubClient**-Bibliothek.
 
-Ein Feature, das es nur in der Bibliothek des **Serialisierungsprogramms** gibt, sind die Initialisierungs-APIs. Bevor Sie mit der Bibliothek arbeiten können, müssen Sie **serializer\_init** aufrufen:
+Ein Feature, das nur in der Bibliothek des **Serialisierungsprogramms** zur Verfügung steht, sind die Initialisierungs-APIs. Um die Bibliothek verwenden zu können, müssen Sie zuerst **serializer\_init** aufrufen:
 
 ```
 serializer_init(NULL);
@@ -652,7 +654,7 @@ serializer_init(NULL);
 
 Dieser Aufruf erfolgt direkt vor dem Aufruf von **IoTHubClient\_CreateFromConnectionString**.
 
-Wenn Sie die Arbeit in der Bibliothek abgeschlossen haben, sollten Sie als Letztes **serializer\_deinit** aufrufen:
+Wenn Sie die Arbeit in der Bibliothek abgeschlossen haben, müssen Sie als Letztes **serializer\_deinit** aufrufen:
 
 ```
 serializer_deinit();
@@ -662,8 +664,8 @@ Abgesehen davon funktionieren alle oben aufgeführten Features in der Bibliothek
 
 ## Nächste Schritte
 
-Dieser Artikel beschreibt detailliert die besonderen Aspekte der Bibliothek des **Serialisierungsprogramms**, die im **Azure IoT-Geräte-SDK für C** enthalten ist. Der Artikel stellt alle Informationen bereit, die Sie benötigen, um mithilfe von Modellen Ereignisse an IoT Hub senden und Nachrichten an IoT Hub empfangen zu können.
+Dieser Artikel beschreibt detailliert die besonderen Aspekte der im **Azure IoT-Geräte-SDK für C** enthaltenen Bibliothek des **Serialisierungsprogramms**. Der Artikel stellt alle Informationen bereit, die Sie benötigen, um mithilfe von Modellen Ereignisse an IoT Hub senden und Nachrichten an IoT Hub empfangen zu können.
 
-Dies ist auch der Abschluss der dreiteiligen Artikelreihe zur Entwicklung von Anwendungen mit dem **Azure IoT-Geräte-SDK für C**. Diese Informationen sollten nicht nur für den Einstieg genügen, sondern vermitteln auch tiefgreifende Kenntnisse zur Funktionsweise der APIs. Für weitere Informationen stehen einige Beispiele im SDK zur Verfügung, die hier nicht behandelt werden. Darüber hinaus bietet sich die [SDK-Dokumentation](https://github.com/Azure/azure-iot-sdks) als weitere Informationsquelle an.
+Dies ist zugleich der Abschluss der dreiteiligen Artikelreihe zur Entwicklung von Anwendungen mit dem **Azure IoT-Geräte-SDK für C**. Diese Informationen sollten nicht nur für den Einstieg genügen, sondern vermitteln auch tiefgreifende Kenntnisse zur Funktionsweise der APIs. Für weitere Informationen stehen einige Beispiele im SDK zur Verfügung, die hier nicht behandelt werden. Darüber hinaus bietet sich die [SDK-Dokumentation](https://github.com/Azure/azure-iot-sdks) als weitere Informationsquelle an.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

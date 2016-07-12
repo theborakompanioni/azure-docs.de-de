@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="06/27/2016"
 	ms.author="douglasl"/>
 
 # Verwalten von Stretch-Datenbank und Behandeln von Problemen
@@ -35,11 +35,11 @@ GO
  ```
 ## Verwalten der Datenmigration
 
-### Überprüfen des auf eine Tabelle angewendeten Filterprädikats
-Öffnen Sie die Katalogsicht **sys.remote\_data\_archive\_tables**, und überprüfen Sie den Wert der Spalte **filter\_predicate**, um die Funktion zu ermitteln, mit der Stretch-Datenbank die zu migrierenden Zeilen auswählt. Wenn der Wert null ist, ist die gesamte Tabelle für eine Migration berechtigt. Weitere Informationen finden Sie unter [sys.remote\_data\_archive\_tables (Transact-SQL)](https://msdn.microsoft.com/library/dn935003.aspx).
+### Überprüfen der auf eine Tabelle angewendeten Filterfunktion
+Öffnen Sie die Katalogsicht **sys.remote\_data\_archive\_tables**, und überprüfen Sie den Wert der Spalte **filter\_predicate**, um die Funktion zu ermitteln, mit der Stretch-Datenbank die zu migrierenden Zeilen auswählt. Wenn der Wert null ist, ist die gesamte Tabelle für eine Migration berechtigt. Weitere Informationen finden Sie unter [sys.remote\_data\_archive\_tables (Transact-SQL)](https://msdn.microsoft.com/library/dn935003.aspx) und [Auswählen von Zeilen für die Migration mit einer Filterfunktion](sql-server-stretch-database-predicate-function.md).
 
 ### <a name="Migration"></a>Überprüfen des Status der Datenmigration
-Wählen Sie **Aufgaben | Stretch | Überwachung** für eine Datenbank in SQL Server Management Studio, um die Datenmigration im Stretch Database Monitor zu überwachen. Weitere Informationen finden Sie unter [Überwachen und Behandeln von Problemen der Datenmigration (Stretch-Datenbank)](sql-server-stretch-database-monitor.md).
+Wählen Sie **Aufgaben | Stretch | Überwachung** für eine Datenbank in SQL Server Management Studio, um die Datenmigration im Stretch-Datenbankmonitor zu überwachen. Weitere Informationen finden Sie unter [Überwachen und Behandeln von Problemen der Datenmigration (Stretch-Datenbank)](sql-server-stretch-database-monitor.md).
 
 Oder öffnen Sie die dynamische Verwaltungssicht **sys.dm\_db\_rda\_migration\_status**, um zu ermitteln, wie viele Batches und Zeilen mit Daten migriert wurden.
 
@@ -96,9 +96,9 @@ Wenn Sie einen Index für eine große Tabelle, die für Stretch-Datenbank konfig
 ### Ändern des Abfragebereichs für alle Abfragen von allen Benutzern  
  Um den Bereich für alle Abfragen von allen Benutzern zu ändern, führen Sie die gespeicherte Prozedur **sys.sp\_rda\_set\_query\_mode** aus. Sie können den Bereich reduzieren, um nur lokale Daten abzufragen, alle Abfragen zu deaktivieren oder die Standardeinstellungen wiederherzustellen. Weitere Informationen finden Sie unter [sys.sp\_rda\_set\_query\_mode](https://msdn.microsoft.com/library/mt703715.aspx).
 
-### <a name="queryHints"></a>Ändern des Abfragebereichs für eine einzelne Abfrage von einem Administrator  
- Um den Bereich einer einzelnen Abfrage von einem Mitglied der Rolle „db\_owner“ zu ändern, fügen Sie den Abfragehinweis **WITH ( REMOTE\_DATA\_ARCHIVE\_OVERRIDE = *Wert* )** zur SELECT-Anweisung hinzu. Der REMOTE\_DATA\_ARCHIVE\_OVERRIDE-Abfragehinweis kann folgende Werte haben:
- -   **LOCAL\_ONLY**. Nur lokale Daten werden abgefragt.  
+### <a name="queryHints"></a>Ändern des Abfragebereichs für eine einzelne Abfrage durch einen Administrator  
+ Um den Bereich einer einzelnen Abfrage durch ein Mitglied der Rolle „db\_owner“ zu ändern, fügen Sie den Abfragehinweis **WITH ( REMOTE\_DATA\_ARCHIVE\_OVERRIDE = *Wert* )** zur SELECT-Anweisung hinzu. Der REMOTE\_DATA\_ARCHIVE\_OVERRIDE-Abfragehinweis kann folgende Werte haben:
+ -   **LOCAL\_ONLY**. Nur lokale Daten werden abgefragt.
 
  -   **REMOTE\_ONLY**. Nur Remotedaten werden abgefragt.
 
@@ -115,7 +115,7 @@ Die folgende Abfrage gibt beispielsweise nur lokale Ergebnisse zurück:
 
 ## <a name="adminHints"></a>Ausführen administrativer Updates und Löschvorgänge  
  Die Befehle UPDATE oder DELETE können standardmäßig nicht für zur Migration berechtigte Zeilen oder für bereits migrierte Zeilen in einer Tabelle ausgeführt werden, für die Stretch aktiviert ist. Zum Beheben eines Problems kann ein Mitglied der Rolle „db\_owner“ einen UPDATE- oder DELETE-Vorgang durch Hinzufügen des Abfragehinweises **WITH ( REMOTE\_DATA\_ARCHIVE\_OVERRIDE = *Wert* )** zur Anweisung ausführen. Der REMOTE\_DATA\_ARCHIVE\_OVERRIDE-Abfragehinweis kann folgende Werte haben:
- -   **LOCAL\_ONLY**. Nur lokale Daten werden aktualisiert oder gelöscht.  
+ -   **LOCAL\_ONLY**. Nur lokale Daten werden aktualisiert oder gelöscht.
 
  -   **REMOTE\_ONLY**. Nur Remotedaten werden aktualisiert oder gelöscht.
 
@@ -129,4 +129,4 @@ Die folgende Abfrage gibt beispielsweise nur lokale Ergebnisse zurück:
 
 [Wiederherstellen von Stretch-fähigen Datenbanken](sql-server-stretch-database-restore.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

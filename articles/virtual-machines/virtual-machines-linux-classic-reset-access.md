@@ -22,7 +22,7 @@
 
 Wenn Sie aufgrund eines vergessenen Kennworts, eines falschen SSH-Schlüssels (Secure Shell) oder eines Problems bei der SSH-Konfiguration keine Verbindung mit einem virtuellen Linux-Computer herstellen können, haben Sie die Möglichkeit, das Kennwort oder den SSH-Schlüssel zurückzusetzen, SSH-Konfigurationsprobleme zu beheben und die Datenträgerkonsistenz zu überprüfen. Verwenden Sie dazu die VMAccessForLinux-Erweiterung mit der Azure-Befehlszeilenschnittstelle.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess).
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess).
 
 Mit der Azure-Befehlszeilenschnittstelle verwenden Sie den Befehl **azure vm extension set** in Ihrer Befehlszeilenschnittstelle (Bash, Terminal, Eingabeaufforderung), um auf Befehle zuzugreifen. Informationen zur Nutzung der Erweiterung erhalten Sie durch Ausführen von **azure help vm extension set**.
 
@@ -122,7 +122,7 @@ Wenn sich die SSH-Konfiguration in einen unerwünschten Zustand befindet, verlie
 
 Wenn Sie ein Benutzerkonto löschen möchten, ohne sich direkt auf dem virtuellen Computer anzumelden, können Sie dieses Skript verwenden.
 
-1. Erstellen Sie eine Datei namens „PrivateConf.json“ mit diesem Inhalt, und ersetzen Sie &#60;usernametoremove&#62; durch den Benutzernamen, den Sie entfernen möchten. 
+1. Erstellen Sie eine Datei namens „PrivateConf.json“ mit diesem Inhalt, und ersetzen Sie &#60;usernametoremove&#62; durch den Benutzernamen, den Sie entfernen möchten.
 
         {
         "remove_user":"<usernametoremove>"
@@ -142,7 +142,7 @@ Führen Sie zum Anzeigen des Status der VMAccess-Erweiterung diesen Befehl aus.
 
 Gehen Sie wie folgt vor, um fsck auf allen Datenträgern Ihrer virtuellen Linux-Maschine auszuführen:
 
-1. Erstellen Sie eine Datei namens „PublicConf.json“ mit diesem Inhalt. Die Datenträgerüberprüfung ermittelt anhand eines booleschen Werts, ob an die virtuelle Maschine angefügte Datenträger überprüft werden sollen. 
+1. Erstellen Sie eine Datei namens „PublicConf.json“ mit diesem Inhalt. Die Datenträgerüberprüfung ermittelt anhand eines booleschen Werts, ob an die virtuelle Maschine angefügte Datenträger überprüft werden sollen.
 
         {   
         "check_disk": "true"
@@ -156,7 +156,7 @@ Gehen Sie wie folgt vor, um fsck auf allen Datenträgern Ihrer virtuellen Linux-
 
 Verwenden Sie zum Reparieren von Datenträgern, die nicht bereitgestellt werden können oder für die Fehler bei der Bereitstellungskonfiguration angezeigt werden, die VMAccess-Erweiterung, um die Bereitstellungskonfiguration Ihres virtuellen Linux-Computers zurückzusetzen. Ersetzen Sie &#60;yourdisk&#62; durch den Namen Ihres Datenträgers.
 
-1. Erstellen Sie eine Datei namens „PublicConf.json“ mit diesem Inhalt. 
+1. Erstellen Sie eine Datei namens „PublicConf.json“ mit diesem Inhalt.
 
         {
         "repair_disk":"true",
@@ -171,10 +171,10 @@ Verwenden Sie zum Reparieren von Datenträgern, die nicht bereitgestellt werden 
 
 ## Nächste Schritte
 
-* Wenn Sie Azure PowerShell-Cmdlets oder Azure Resource Manager-Vorlagen verwenden möchten, um das Kennwort oder den SSH-Schlüssel zurückzusetzen, SSH-Konfigurationsprobleme zu beheben und die Datenträgerkonsistenz zu überprüfen, lesen Sie die [Dokumentation zur VMAccess-Erweiterung auf GitHub](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess). 
+* Wenn Sie Azure PowerShell-Cmdlets oder Azure Resource Manager-Vorlagen verwenden möchten, um das Kennwort oder den SSH-Schlüssel zurückzusetzen, SSH-Konfigurationsprobleme zu beheben und die Datenträgerkonsistenz zu überprüfen, lesen Sie die [Dokumentation zur VMAccess-Erweiterung auf GitHub](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess).
 
 * Sie können auch das [Azure-Portal](https://portal.azure.com) nutzen, um das Kennwort oder den SSH-Schlüssel eines virtuellen Linux-Computers zurückzusetzen, der im klassischen Bereitstellungsmodell bereitgestellt wurde. Derzeit können Sie das Portal nicht verwenden, um dies für einen virtuellen Linux-Computer durchzuführen, der im Resource Manager-Bereitstellungsmodell bereitgestellt wurde.
 
 * Weitere Informationen zur Verwendung von VM-Erweiterungen für virtuelle Azure-Computer finden Sie unter [Informationen zu Erweiterungen und Features für virtuelle Computer](virtual-machines-linux-extensions-features.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

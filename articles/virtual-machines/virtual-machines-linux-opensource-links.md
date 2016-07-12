@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure-services"
-	ms.date="05/10/2016"
+	ms.date="06/27/2016"
 	ms.author="rasquill"/>
 
 
@@ -23,7 +23,7 @@
 
 Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten Linux-basierter virtueller Computer im klassischen Bereitstellungsmodell benötigen.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Ressourcen-Manager-Modell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 ## Erste Schritte
 - [Einführung in Linux in Azure](virtual-machines-linux-intro-on-azure.md)
@@ -57,7 +57,6 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten L
 ### Docker
 - [Verwenden der Docker-VM-Erweiterung aus der Azure-Befehlszeilenschnittstelle (Azure-CLI)](virtual-machines-linux-classic-cli-use-docker.md)
 - [Verwenden der Docker-VM-Erweiterung über das Azure-Portal](virtual-machines-linux-classic-portal-use-docker.md)
-- [Schneller Einstieg in Docker in Azure Marketplace](virtual-machines-linux-classic-docker-quickstart.md)
 - [Verwenden von "docker-machine" auf Azure](virtual-machines-linux-docker-machine.md)
 
 ### Ubuntu
@@ -113,8 +112,8 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten L
 
 ## Problembehandlung
 - [Behandeln von Problemen mit Secure Shell (SSH)-Verbindungen mit einem Linux-basierten virtuellen Azure-Computer](virtual-machines-linux-troubleshoot-ssh-connection.md)
-- [Behandeln von Problemen beim Erstellen eines neuen virtuellen Linux-Computers in Azure (klassisches Bereitstellungsmodell)](virtual-machines-linux-classic-troubleshoot-deployment-new-vm.md)  
-- [Behandeln von Problemen beim Neustart oder Ändern der Größe eines vorhandenen virtuellen Linux-Computers in Azure (klassisches Bereitstellungsmodell)](virtual-machines-linux-classic-restart-resize-error-troubleshooting.md) 
+- [Behandeln von Problemen beim Erstellen eines neuen virtuellen Linux-Computers in Azure (klassisches Bereitstellungsmodell)](virtual-machines-linux-classic-troubleshoot-deployment-new-vm.md)
+- [Behandeln von Problemen beim Neustart oder Ändern der Größe eines vorhandenen virtuellen Linux-Computers in Azure (klassisches Bereitstellungsmodell)](virtual-machines-linux-classic-restart-resize-error-troubleshooting.md)
 
 
 ## Referenz
@@ -188,8 +187,6 @@ Dieser Bereich ist recht umfangreich und ändert sich sehr schnell. Sie sollten 
 - [Blog: Powershell DSC für Linux](http://blogs.technet.com/b/privatecloud/archive/2014/05/19/powershell-dsc-for-linux-step-by-step.aspx)
 - [GitHub: Docker Client DSC](https://github.com/anweiss/DockerClientDSC)
 
-- [Ubuntu Juju](https://juju.ubuntu.com/docs/config-azure.html)
-
 - [Packer-Plug-In für Azure](https://github.com/msopentech/packer-azure)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

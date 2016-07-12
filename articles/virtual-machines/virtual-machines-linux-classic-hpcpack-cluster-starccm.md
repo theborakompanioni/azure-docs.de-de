@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="vm-linux"
  ms.workload="big-compute"
- ms.date="04/13/2016"
+ ms.date="06/28/2016"
  ms.author="xpillons"/>
 
 # Ausführen von STAR-CCM+ mit Microsoft HPC Pack auf einem Linux-RDMA-Cluster in Azure
@@ -310,9 +310,9 @@ Für Intel MPI unter Azure werden folgende MPI-Optionen verwendet:
 
 *   `-mpi intel` zum Festlegen von Intel MPI
 
-*   `-fabric UDAPL` zum Verwenden von InfiniBand-Verben
+*   `-fabric UDAPL` zum Verwenden von Azure InfiniBand-Verben
 
-*   `-cpubind bandwidth,v` zur Optimierung der Bandbreite für MPI mit STAR-CCM+
+*   `-cpubind bandwidth,v` zum Optimieren der Bandbreite für MPI mit STAR-CCM+
 
 *   `-mppflags "-ppn $NBCORESPERNODE -genv I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -genv I_MPI_DAPL_UD=0 -genv I_MPI_DYNAMIC_CONNECTION=0"` zum Sicherstellen, dass Intel MPI mit Azure InfiniBand funktioniert, und zum Festlegen der erforderlichen Anzahl von Kernen pro Knoten
 
@@ -345,4 +345,4 @@ Versuchen Sie, andere Linux-Workloads auszuführen. Siehe hierzu z.B.:
 [hndeploy]: ./media/virtual-machines-linux-classic-hpcpack-cluster-starccm/hndeploy.png
 [clustermanager]: ./media/virtual-machines-linux-classic-hpcpack-cluster-starccm/ClusterManager.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

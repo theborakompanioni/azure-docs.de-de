@@ -44,4 +44,4 @@ Netzwerkschnittstelle | $vnet = [Get-AzureRmVirtualNetwork](https://msdn.microso
 - Verwenden Sie die eben erstellte Netzwerkschnittstelle beim [Erstellen einer VM](virtual-machines-windows-ps-create.md).
 - Erfahren Sie, wie Sie eine [VM mit mehreren Netzwerkschnittstellen erstellen](../virtual-network/virtual-networks-multiple-nics.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

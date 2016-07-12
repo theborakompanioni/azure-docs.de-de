@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016"   
+	ms.date="06/22/2016"  
 	ms.author="juliako"/>
 
 
@@ -38,9 +38,9 @@ Dieses Lernprogramm enthält vier Lektionen:
 
 Die fertige Lösung für jede Lektion können Sie von der Website mit den MSDN-Codebeispielen für Entwickler (Code Gallery) herunterladen:
 
-- [Lektion 1](http://code.msdn.microsoft.com/Smooth-Streaming-Client-0bb1471f) – ein einfacher Smooth Streaming-Media Player für Windows 8 
-- [Lektion 2](http://code.msdn.microsoft.com/A-simple-Windows-8-Smooth-ee98f63a) – ein einfacher Smooth Streaming-Media Player für Windows 8 mit einem Schieberegler 
-- [Lektion 3](http://code.msdn.microsoft.com/A-Windows-8-Smooth-883c3b44) – ein Smooth Streaming-Media Player für Windows 8 mit Streamauswahl  
+- [Lektion 1](http://code.msdn.microsoft.com/Smooth-Streaming-Client-0bb1471f) – ein einfacher Smooth Streaming-Media Player für Windows 8
+- [Lektion 2](http://code.msdn.microsoft.com/A-simple-Windows-8-Smooth-ee98f63a) – ein einfacher Smooth Streaming-Media Player für Windows 8 mit einem Schieberegler
+- [Lektion 3](http://code.msdn.microsoft.com/A-Windows-8-Smooth-883c3b44) – ein Smooth Streaming-Media Player für Windows 8 mit Streamauswahl
 - [Lektion 4](http://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907) – ein Smooth Streaming-Media Player für Windows 8 mit Titelauswahl
 
 ##Lektion 1: Erstellen einer grundlegenden Smooth Streaming Store-Anwendung
@@ -83,7 +83,7 @@ Name|Wert
 Verweisgruppe|Windows/Extensions
 Verweis|Wählen Sie Microsoft Smooth Streaming Client SDK for Windows 8 und Microsoft Visual C++ Runtime Package.
 	
-3.	Klicken Sie auf **OK**. 
+3.	Klicken Sie auf **OK**.
 
 Nachdem Sie die Verweise hinzugefügt haben, müssen Sie die Zielplattform (x64 oder x86) auswählen. Das Hinzufügen von Verweisen funktioniert nicht bei der Plattformkonfiguration für eine beliebige CPU. Im Projektmappen-Explorer wird bei diesen hinzugefügten Verweisen eine gelbe Markierung angezeigt.
 
@@ -212,10 +212,10 @@ Die fertige CodeBehind-Datei sieht folgendermaßen aus:
 
 1.	Klicken Sie im Menü **Build** auf **Konfigurations-Manager**.
 2.	Ändern Sie die **Aktive Projektmappenplattform**, sodass sie Ihrer Entwicklungsplattform entspricht.
-3.	Drücken Sie **F6**, um das Projekt zu kompilieren. 
+3.	Drücken Sie **F6**, um das Projekt zu kompilieren.
 4.	Drücken Sie **F5**, um die Anwendung auszuführen.
-5.	Am Anfang der Anwendung können Sie entweder den standardmäßigen Smooth Streaming-URL verwenden oder einen anderen URL eingeben. 
-6.	Klicken Sie auf **Set Source**. Da **Auto Play** standardmäßig aktiviert ist, werden die Medien automatisch wiedergegeben. Sie können die Wiedergabe der Medien mit den Schaltflächen **Play**, **Pause** und **Stop** steuern. Die Lautstärke der Medien steuern Sie mit dem vertikalen Schieberegler. Der horizontale Schieberegler zum Steuern des Medienstatus ist jedoch noch nicht voll implementiert. 
+5.	Am Anfang der Anwendung können Sie entweder den standardmäßigen Smooth Streaming-URL verwenden oder einen anderen URL eingeben.
+6.	Klicken Sie auf **Set Source**. Da **Auto Play** standardmäßig aktiviert ist, werden die Medien automatisch wiedergegeben. Sie können die Wiedergabe der Medien mit den Schaltflächen **Play**, **Pause** und **Stop** steuern. Die Lautstärke der Medien steuern Sie mit dem vertikalen Schieberegler. Der horizontale Schieberegler zum Steuern des Medienstatus ist jedoch noch nicht voll implementiert.
 
 Sie haben Lektion 1 abgeschlossen. In dieser Lektion haben Sie ein MediaElement-Steuerelement für die Wiedergabe von Smooth Streaming-Inhalten verwendet. In der nächsten Lektion fügen Sie einen Schieberegler hinzu, um den Fortschritt des Smooth Streaming-Inhalts zu steuern.
 
@@ -229,7 +229,7 @@ Medienquellen sind Objekte, die Mediendaten generieren. Der Source Resolver nimm
 
 Diese Lektion enthält die folgenden Prozeduren:
 
-1.	Registrieren des Smooth Streaming-Handlers 
+1.	Registrieren des Smooth Streaming-Handlers
 2.	Hinzufügen der Ereignishandler für die Ebene des Managers der adaptiven Quelle
 3.	Hinzufügen der Ereignishandler für die Ebene der adaptiven Quelle
 4.	Hinzufügen von MediaElement-Ereignishandlern
@@ -484,10 +484,10 @@ Die gleichen Ereignisse stehen auch auf der Ebene des Managers für adaptive Que
 
 **So kompilieren und testen Sie die Anwendung**
 
-1. Drücken Sie **F6**, um das Projekt zu kompilieren. 
+1. Drücken Sie **F6**, um das Projekt zu kompilieren.
 2.	Drücken Sie **F5**, um die Anwendung auszuführen.
-3.	Am Anfang der Anwendung können Sie entweder den standardmäßigen Smooth Streaming-URL verwenden oder einen anderen URL eingeben. 
-4.	Klicken Sie auf **Set Source**. 
+3.	Am Anfang der Anwendung können Sie entweder den standardmäßigen Smooth Streaming-URL verwenden oder einen anderen URL eingeben.
+4.	Klicken Sie auf **Set Source**.
 5.	Testen Sie den Schieberegler.
 
 Sie haben Lektion 2 abgeschlossen. In dieser Lektion haben Sie ein Schieberegler-Steuerelement zur Anwendung hinzugefügt.
@@ -757,10 +757,10 @@ Smooth Streaming kann Inhalte mit Audiospuren in mehreren Sprachen streamen, die
 
 **So kompilieren und testen Sie die Anwendung**
 
-1. Drücken Sie **F6**, um das Projekt zu kompilieren. 
+1. Drücken Sie **F6**, um das Projekt zu kompilieren.
 2.	Drücken Sie **F5**, um die Anwendung auszuführen.
-3.	Am Anfang der Anwendung können Sie entweder den standardmäßigen Smooth Streaming-URL verwenden oder einen anderen URL eingeben. 
-4.	Klicken Sie auf **Set Source**. 
+3.	Am Anfang der Anwendung können Sie entweder den standardmäßigen Smooth Streaming-URL verwenden oder einen anderen URL eingeben.
+4.	Klicken Sie auf **Set Source**.
 5.	Die Standardsprache ist „audio\_eng“. Versuchen Sie, zwischen „audio\_eng“ und „audio\_es“ zu wechseln. Jedes Mal, wenn Sie einen neuen Stream auswählen, müssen Sie auf „Senden“ klicken.
 
 Sie haben Lektion 3 abgeschlossen. In dieser Lektion haben Sie die Funktion zur Auswahl von Datenströmen hinzugefügt.
@@ -960,10 +960,10 @@ Eine Smooth Streaming-Präsentation kann mehrere Videodateien enthalten, die in 
 
 **So kompilieren und testen Sie die Anwendung**
 
-1. Drücken Sie **F6**, um das Projekt zu kompilieren. 
+1. Drücken Sie **F6**, um das Projekt zu kompilieren.
 2.	Drücken Sie **F5**, um die Anwendung auszuführen.
-3.	Am Anfang der Anwendung können Sie entweder den standardmäßigen Smooth Streaming-URL verwenden oder einen anderen URL eingeben. 
-4.	Klicken Sie auf **Set Source**. 
+3.	Am Anfang der Anwendung können Sie entweder den standardmäßigen Smooth Streaming-URL verwenden oder einen anderen URL eingeben.
+4.	Klicken Sie auf **Set Source**.
 5.	Standardmäßig sind alle Spuren des Videodatenstroms ausgewählt. Um mit Änderungen der Bitrate zu experimentieren, können Sie die niedrigste und danach die höchste verfügbare Bitrate auswählen. Nach jedem Wechsel müssen Sie auf "Senden" klicken. Sie können sehen, dass sich die Qualität des Videos ändert.
 
 Sie haben Lektion 4 abgeschlossen. In dieser Lektion haben Sie die Funktion zur Auswahl von Spuren hinzugefügt.
@@ -986,4 +986,4 @@ Sie haben Lektion 4 abgeschlossen. In dieser Lektion haben Sie die Funktion zur
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

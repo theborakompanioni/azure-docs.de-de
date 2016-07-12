@@ -57,7 +57,7 @@ Das Xamarin-Clientprojekt, das Sie heruntergeladen haben, nachdem Sie das Lernpr
     Im bereitgestellten Code werden alle Datensätze in der `TodoItem`-Remotetabelle abgefragt, es ist aber auch möglich, Datensätze durch Übergeben einer Abfrage-ID und Abfrage an `PushAsync` zu filtern. Weitere Informationen finden Sie im Abschnitt *Inkrementelle Synchronisierung* in [Offlinedatensynchronisierung in Azure Mobile Apps].
 
 	<!-- Need updated conflict handling info : `InitializeAsync` uses the default conflict handler, which fails whenever there is a conflict. To provide a custom conflict handler, see the tutorial [Handling conflicts with offline support for Mobile Services].
- 	-->
+	-->
 
 
 		// QSTodoService.cs
@@ -123,7 +123,7 @@ In diesem Abschnitt ändern Sie das Clientprojekt, um ein Offlineszenario mithil
 
 In diesem Abschnitt stellen Sie erneut eine Verbindung zwischen der App und dem mobilen Back-End her, um zu simulieren, dass die App wieder im Onlinezustand ist. Wenn Sie die Aktualisierungsbewegung durchführen, werden Daten mit Ihrem mobilen Back-End synchronisiert.
 
-1. Öffnen Sie `QSTodoService.cs`. Korrigieren Sie die `applicationURL` und die `gatewayURL`, um auf die richtigen URLs zu verweisen.
+1. Öffnen Sie `QSTodoService.cs`. Korrigieren Sie die `applicationURL`, sodass sie auf die richtige URL verweist.
 
 2. Erstellen Sie die Client-App erneut, und führen Sie sie aus. Die App versucht, sich nach dem Start mit dem Azure Mobile App-Back-End zu synchronisieren. Vergewissern Sie sich, dass in der Debugkonsole keine Ausnahmen protokolliert sind.
 
@@ -156,4 +156,4 @@ In diesem Abschnitt stellen Sie erneut eine Verbindung zwischen der App und dem 
 [How to use the Xamarin Component client for Azure Mobile Services]: partner-xamarin-mobile-services-how-to-use-client-library.md
 [Cloud Cover: Offlinesynchronisierung in Azure Mobile Services]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

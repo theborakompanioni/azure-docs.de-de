@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="04/07/2016"
+    ms.date="06/27/2016"
     ms.author="elizapo" />
 
 
@@ -39,7 +39,7 @@ Beispiele für Daten, die sich im Standardprofil befinden können, das in den UP
 Die wichtigsten Punkte:
 
 - Speichern Sie in einem benutzerdefinierten Image keine vertraulichen Daten, die nicht verloren gehen dürfen.
-- Vertrauliche Daten sollten immer auf einem separaten Dateiserver, einer separaten Azure-VM oder in der Cloud gespeichert werden – auf jeden Fall außerhalb der VM-Instanzen, die Ihre Anwendungen in Azure RemoteApp hosten. 
+- Vertrauliche Daten sollten immer auf einem separaten Dateiserver, einer separaten Azure-VM oder in der Cloud gespeichert werden – auf jeden Fall außerhalb der VM-Instanzen, die Ihre Anwendungen in Azure RemoteApp hosten.
 - Benutzerdaten werden auf dem Benutzerprofil-Datenträger gespeichert und beibehalten.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0629_2016-->

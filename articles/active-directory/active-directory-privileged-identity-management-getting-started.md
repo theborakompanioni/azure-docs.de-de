@@ -4,7 +4,7 @@
    services="active-directory"
    documentationCenter=""
    authors="kgremban"
-   manager="stevenpo"
+   manager="femila"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="05/19/2016"
+   ms.date="06/29/2016"
    ms.author="kgremban"/>
 
 # Erste Schritte mit Azure AD Privileged Identity Management
@@ -29,15 +29,16 @@ Bevor Sie Azure AD Privileged Identity Management verwenden können, müssen Sie
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Verzeichnisses an.
 2. Wenn Ihre Organisation über mehr als ein Verzeichnis verfügt, klicken Sie in der oberen rechten Ecke des Azure-Portals auf Ihren Benutzernamen, und wählen Sie das Verzeichnis aus, in dem Sie PIM verwenden möchten.
-3. Wählen Sie im linken Navigationsbereich das Symbol **Neu** aus.
-4. Wählen Sie **Sicherheit und Identität** aus.
-5. Wählen Sie **Azure AD Privileged Identity Management** aus.
-6. Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, und klicken Sie dann auf die Schaltfläche **Erstellen**. Die Anwendung Privileged Identity Management wird geöffnet.
+3. Wählen Sie **Neu** > **Sicherheit und Identität** > **Azure AD Privileged Identity Management**.
+
+    ![Aktivieren von PIM im Portal][1]
+
+4. Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, und klicken Sie dann auf **Erstellen**. Die Anwendung Privileged Identity Management wird geöffnet.
 
 
 Wenn Sie die erste Person sind, die Azure AD Privileged Identity Management in Ihrem Verzeichnis verwendet, führt Sie der [Sicherheits-Assistent](active-directory-privileged-identity-management-security-wizard.md) durch die erste Zuweisung. Danach sind Sie automatisch der erste **Sicherheitsadministrator** und der **Administrator für privilegierte Rollen** des Verzeichnisses. Nur ein Administrator für privilegierte Rollen kann auf diese Anwendung zugreifen, um den Zugriff für andere Administratoren zu verwalten.
 
-Wenn Ihnen durch einen anderen Administrator für privilegierte Rollen eine oder mehrere Rollen zugewiesen wurden, können Sie andernfalls auswählen, welche Rolle Sie aktivieren möchten. Wenn Sie selbst Administrator für privilegierte Rollen sind, wird eine Option angezeigt, mit der Sie **Identitäten verwalten** können.
+Wenn Ihnen eine oder mehrere Rollen zugewiesen wurden, können Sie die Option **Meine Rollen aktivieren** verwenden. Wenn Sie ein Administrator für privilegierte Rollen sind, wird auch die Option **Privilegierte Rollen verwalten** angezeigt.
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
@@ -47,4 +48,8 @@ Die Übersicht über [Azure AD Privileged Identity Management](active-directory-
 
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!--Image references-->
+
+[1]: ./media/active-directory-privileged-identity-management-configure/PIM_EnablePim.png
+
+<!---HONumber=AcomDC_0706_2016-->

@@ -80,7 +80,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 	b. Geben Sie im Textfeld **Antwort-URL von Workday** die Antwort-URL von Workday in folgendem Format ein: `https://impl.workday.com/<tenant>/login-saml.htmld`.
 
-	>[AZURE.NOTE] Ihre Antwort-URL muss eine Unterdomäne aufweisen (z. B. www, wd2, wd3, wd3-impl, wd5, wd5-impl). „**http://www.myworkday.com*“ funktioniert beispielsweise, „**http://myworkday.com*“ jedoch nicht.
+	>[AZURE.NOTE] Ihre Antwort-URL muss eine Unterdomäne aufweisen (z. B. www, wd2, wd3, wd3-impl, wd5, wd5-impl). „ *http://www.myworkday.com* “ funktioniert beispielsweise, „ *http://myworkday.com* “ jedoch nicht.
  
 4.  Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Einmaliges Anmelden konfigurieren für Workday** auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat auf Ihrem Computer.
 

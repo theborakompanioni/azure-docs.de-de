@@ -13,22 +13,20 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="06/23/2016"
 	ms.author="priyamo"/>
 
 # SAML-Protokoll für einmaliges Anmelden
 
-[AZURE.INCLUDE [active-directory-protocols](../../includes/active-directory-protocols.md)]
-
 In diesem Artikel lernen Sie die SAML 2.0-Authentifizierungsanforderungen und -antworten kennen, die Azure Active Directory (Azure AD) für das einmalige Anmelden unterstützt.
 
-Das folgende Protokolldiagramm beschreibt den Ablauf für das einmalige Anmelden. Der Clouddienst (der Dienstanbieter) verwendet eine HTTP-Umleitungsbindung zum Übergeben einer Authentifizierungsanforderung (`AuthnRequest`) an Azure AD (den Identitätsanbieter). Azure AD verwendet daraufhin eine HTTP Post-Bindung, um ein `Response`-Element an den Clouddienst zu senden.
+Das folgende Protokolldiagramm beschreibt den Ablauf für das einmalige Anmelden. Der Clouddienst (der Dienstanbieter) verwendet eine HTTP-Umleitungsbindung, um eine Authentifizierungsanforderung (`AuthnRequest`) an Azure AD (den Identitätsanbieter) zu übergeben. Azure AD verwendet daraufhin eine HTTP Post-Bindung, um ein `Response`-Element an den Clouddienst zu senden.
 
 ![Workflow für einmaliges Anmelden](media/active-directory-single-sign-on-protocol-reference/active-directory-saml-single-sign-on-workflow.png)
 
 ## AuthnRequest
 
-Um eine Benutzerauthentifizierung anzufordern, senden die Clouddienste ein `AuthnRequest`-Element an Azure AD. Im Folgenden finden Sie eine Beispielanforderung (`AuthnRequest`) für SAML 2.0:
+Clouddienste senden ein `AuthnRequest`-Element an Azure AD, um eine Benutzerauthentifizierung anzufordern. Beispielanforderung (`AuthnRequest`) für SAML 2.0:
 
 ```
 <samlp:AuthnRequest
@@ -43,22 +41,22 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 
 | Parameter | | Beschreibung |
 | ----------------------- | ------------------------------- | --------------- |
-| ID | erforderlich | Azure AD verwendet dieses Attribut zum Auffüllen des `InResponseTo`-Attributs der zurückgegebenen Antwort. Die ID darf nicht mit einer Zahl beginnen, weshalb dem GUID-String häufig eine Zeichenfolge wie etwa „id“ vorangestellt wird. `id6c1c178c166d486687be4aaf5e482730` ist beispielsweise eine gültige ID. |
-| Version | erforderlich | Diese sollte **2.0** sein.|
-| IssueInstant | erforderlich | Dies ist eine DateTime-Zeichenfolge mit einem UTC-Wert im [Roundtrip-Format („o“)](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD erwartet einen DateTime-Wert dieses Typs, dieser Wert wird jedoch weder bewertet noch verwendet. |
+| ID | erforderlich | Azure AD verwendet dieses Attribut, um das `InResponseTo`-Attribut der zurückgegebenen Antwort aufzufüllen. Die ID darf nicht mit einer Zahl beginnen, weshalb dem GUID-String häufig eine Zeichenfolge wie etwa „id“ vorangestellt wird. `id6c1c178c166d486687be4aaf5e482730` ist beispielsweise eine gültige ID. |
+| Version | erforderlich | Sollte **2.0** sein.|
+| IssueInstant | erforderlich | Eine DateTime-Zeichenfolge mit einem UTC-Wert und im [Roundtrip-Format („o“)](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD erwartet einen DateTime-Wert dieses Typs, dieser Wert wird jedoch weder bewertet noch verwendet. |
 | AssertionConsumerServiceUrl | optional | Muss (falls angegeben) dem `RedirectUri` des Clouddiensts in Azure AD entsprechen. |
 | ForceAuthn | optional | Sollte „false“ sein (falls angegeben). Jeder andere Wert verursacht einen Fehler.|
 | IsPassive | optional | Sollte „false“ sein (falls angegeben). Jeder andere Wert verursacht einen Fehler. |  
 
-Alle anderen `AuthnRequest`-Attribute, wie Consent, Destination, AssertionConsumerServiceIndex, AttributeConsumerServiceIndex und ProviderName werden **ignoriert**.
+Alle anderen `AuthnRequest`-Attribute (wie „Consent“, „Destination“, „AssertionConsumerServiceIndex“, „AttributeConsumerServiceIndex“ und „ProviderName“) werden **ignoriert**.
 
 Azure AD ignoriert auch das `Conditions`-Element in `AuthnRequest`.
 
 ### Aussteller
 
-Das `Issuer`-Element in einem `AuthnRequest`-Element muss genau mit einem der **ServicePrincipalNames** im Clouddienst von Azure AD übereinstimmen. Normalerweise ist es auf den **App-ID-URI** festgelegt, der während der Anwendungsregistrierung angegeben wird.
+Das `Issuer`-Element in einem `AuthnRequest`-Element muss mit einem der **ServicePrincipalNames** im Clouddienst von Azure AD exakt übereinstimmen. Normalerweise ist es auf den **App-ID-URI** festgelegt, der bei der Anwendungsregistrierung angegeben wird.
 
-Ein SAML-Beispielausschnitt, der das `Issuer`-Element enthält, sieht wie folgt aus:
+Im Anschluss finden Sie einen SAML-Beispielausschnitt, der das `Issuer`-Element enthält:
 
 ```
 <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">https://www.contoso.com</Issuer>
@@ -68,33 +66,33 @@ Ein SAML-Beispielausschnitt, der das `Issuer`-Element enthält, sieht wie folgt 
 
 Dieses Element erfordert in der Antwort ein bestimmtes Namens-ID-Format und ist bei an Azure AD gesendeten `AuthnRequest`-Elementen optional.
 
-Ein Beispiel für ein `NameIdPolicy`-Element sieht wie folgt aus:
+Beispiel für ein `NameIdPolicy`-Element:
 
 ```
 <NameIDPolicy Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"/>
 ```
 
-Wenn `NameIDPolicy` angegeben ist, können Sie sein optionales `Format`-Attribut einbeziehen. Das `Format`-Attribut kann nur einen der folgenden Werte aufweisen. Jeder andere Wert führt zu einem Fehler.
+Wenn `NameIDPolicy` angegeben ist, können Sie sein optionales `Format`-Attribut einbeziehen. Das `Format`-Attribut kann nur einen der folgenden Werte besitzen. Jeder andere Wert führt zu einem Fehler.
 
 -  `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`: Azure Active Directory stellt den NameID-Anspruch als paarweisen Bezeichner aus.
-- `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`: Azure Active Directory stellt den NameID-Anspruch als im E-Mail-Adressformat aus.
-- `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`: Dieser Wert ermöglicht es Azure Active Directory, das Anspruchsformat auszuwählen. Azure Active Directory stellt die NameID als paarweisen Bezeichner aus.
+- `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`: Azure Active Directory stellt den NameID-Anspruch im E-Mail-Adressformat aus.
+- `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`: Azure Active Directory kann das Anspruchsformat selbst wählen. Azure Active Directory stellt die NameID als paarweisen Bezeichner aus.
 
-Beziehen Sie das `SPNameQualifer`-Attribut nicht ein. Azure AD ignoriert das `AllowCreate`-Attribut.
+Schließen Sie das `SPNameQualifer`-Attribut nicht ein. Das `AllowCreate`-Attribut wird von Azure AD ignoriert.
 
 ### RequestAuthnContext
 
-Das `RequestedAuthnContext`-Element legt die gewünschten Authentifizierungsmethoden fest. In `AuthnRequest`-Elementen, die an Azure AD gesendet werden, ist es optional. Azure AD unterstützt nur einen `AuthnContextClassRef`-Wert: `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`.
+Das `RequestedAuthnContext`-Element gibt die gewünschten Authentifizierungsmethoden an. In `AuthnRequest`-Elementen, die an Azure AD gesendet werden, ist es optional. Azure AD unterstützt nur den folgenden `AuthnContextClassRef`-Wert: `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`.
 
 ### Bereichsdefinition
 
-Das `Scoping` -Element, das eine Liste von Identitätsanbietern enthält, ist bei `AuthnRequest`-Elementen, die an Azure AD gesendet werden, optional.
+Das `Scoping`-Element enthält eine Liste mit Identitätsanbietern und ist bei `AuthnRequest`-Elementen, die an Azure AD gesendet werden, optional.
 
-Beziehen Sie das `ProxyCount`-Attribut oder die Elemente `IDPListOption` oder `RequesterID`, sofern angegeben, nicht ein, da diese nicht unterstützt werden.
+Wenn Sie sich für die Angabe entscheiden, schließen Sie das `ProxyCount`-Attribut, `IDPListOption` und das `RequesterID`-Element nicht ein, da diese nicht unterstützt werden.
 
 ### Signatur
 
-Beziehen Sie kein `Signature`-Element in `AuthnRequest`-Elementen ein, da Azure AD signierte Authentifizierungsanfragen nicht unterstützt.
+Schließen Sie in `AuthnRequest`-Elemente kein `Signature`-Element ein, da Azure AD signierte Authentifizierungsanfragen nicht unterstützt.
 
 ### Betreff
 
@@ -168,11 +166,11 @@ Eine Beispiel für eine Antwort mit einem Issuer-Element sieht beispielsweise wi
 
 Azure AD signiert das `Response`-Element nach erfolgreicher Anmeldung. Das `Signature`-Element enthält eine digitale Signatur, die von der Anwendung zum Authentifizieren der Quelle und zum Überprüfen der Integrität der Antwort verwendet werden kann.
 
-Azure AD verwendet den im `IDPSSODescriptor`-Element des Metadatendokuments festgelegten Signaturschlüssel. Weitere Informationen finden Sie unter [Federation Metadata](active-directory-federation-metadata.md) (Verbundmetadaten).
+Azure AD verwendet den im `IDPSSODescriptor`-Element des Metadatendokuments festgelegten Signaturschlüssel. Weitere Informationen finden Sie unter [Verbundmetadaten](active-directory-federation-metadata.md).
 
 Azure AD signiert auch das `Assertion`-Element, die beiden Signaturelemente sind jedoch unabhängig.
 
-Eine Beispiel für ein `Signature`-Element in der Antwort sieht wie folgt aus:
+Beispiel für ein `Signature`-Element in der Antwort:
 
 ```
 <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
@@ -182,7 +180,7 @@ Eine Beispiel für ein `Signature`-Element in der Antwort sieht wie folgt aus:
 
 ### Status
 
-Das `Status`-Element gibt an, ob die Anmeldung erfolgreich war. Es enthält das `StatusCode`-Element, das einen Code oder mehrere geschachtelte Codes enthält, die den Status der Anforderung darstellen. Es enthält zudem das `StatusMessage`-Element, das spezifische, während der Anmeldung generierte Fehlermeldungen enthält.
+Das `Status`-Element gibt an, ob die Anmeldung erfolgreich war. Es enthält das `StatusCode`-Element, das einen Code oder mehrere geschachtelte Codes enthält, die den Status der Anforderung darstellen. Außerdem enthält es das `StatusMessage`-Element mit spezifischen, während der Anmeldung generierten Fehlermeldungen.
 
 <!-- TODO: Add a authentication protocol error reference -->
 
@@ -203,11 +201,11 @@ Timestamp: 2013-03-18 08:49:24Z</samlp:StatusMessage>
 
 ### Assertion
 
-Zusätzlich zu `ID`, `IssueInstant` und `Version` legt Azure AD die folgenden Elemente im `Assertion`-Element der Antwort fest.
+Zusätzlich zu `ID`, `IssueInstant` und `Version` legt Azure AD im `Assertion`-Element der Antwort folgende Elemente fest:
 
 #### Aussteller
 
-Ist auf `https://sts.windows.net/<TenantIDGUID>/` festgelegt, wobei <TenantIDGUID> die Mandanten-ID des Azure AD-Mandanten ist.
+Wird auf `https://sts.windows.net/<TenantIDGUID>/` festgelegt, wobei <TenantIDGUID> die Mandanten-ID des Azure AD-Mandanten ist.
 
 ```
 <Issuer>https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
@@ -255,11 +253,11 @@ Dieses Element legt die Bedingungen fest, die die akzeptable Verwendung von SAML
 Die Attribute `NotBefore` und `NotOnOrAfter` legen das Intervall fest, in dem die Assertion gültig ist.
 
 - Der Wert des `NotBefore`-Attributs entspricht dem Wert des `IssueInstant`-Attributs des `Assertion`-Elements oder ist etwas (weniger als einer Sekunde) höher. Azure AD berücksichtigt keine Zeitunterschiede zwischen sich selbst und dem Clouddienst (Dienstanbieter) und fügt dieser Zeit keinen Puffer hinzu.
-- Der Wert des `NotOnOrAfter`-Attributs ist 70 Minuten nach dem Wert des `NotBefore`-Attributs.
+- Der Wert des `NotOnOrAfter`-Attributs liegt 70 Minuten nach dem Wert des `NotBefore`-Attributs.
 
 #### Zielgruppe
 
-Dieses Element enthält einen URI, der die beabsichtigte Zielgruppe identifiziert. Azure AD legt den Wert dieses Elements auf den Wert des `Issuer`-Elements der `AuthnRequest` fest, die die Anmeldung initiiert hat. Verwenden Sie zum Auswerten des Werts `Audience` den Wert von `App ID URI`, der während der Anwendungsregistrierung bereitgestellt wurde.
+Dieses Element enthält einen URI, der die beabsichtigte Zielgruppe identifiziert. Azure AD legt den Wert dieses Elements auf den Wert des `Issuer`-Elements der `AuthnRequest` fest, die die Anmeldung initiiert hat. Verwenden Sie zum Auswerten des Werts `Audience` den Wert von `App ID URI`, der bei der Anwendungsregistrierung angegeben wurde.
 
 ```
 <AudienceRestriction>
@@ -267,7 +265,7 @@ Dieses Element enthält einen URI, der die beabsichtigte Zielgruppe identifizier
 </AudienceRestriction>
 ```
 
-Wie der `Issuer`-Wert muss auch der `Audience`-Wert mit einem der Dienstprinzipalnamen des Clouddiensts in Azure AD genau übereinstimmen. Wenn der Wert des `Issuer`-Elements kein URI-Wert ist, entspricht der `Audience`-Wert in der Antwort dem `Issuer`-Wert mit dem Präfix `spn:`.
+Genau wie der `Issuer`-Wert muss auch der `Audience`-Wert genau mit einem der Dienstprinzipalnamen des Clouddiensts in Azure AD übereinstimmen. Falls es sich beim Wert des `Issuer`-Elements allerdings nicht um einen URI-Wert handelt, entspricht der `Audience`-Wert in der Antwort dem `Issuer`-Wert mit dem Präfix `spn:`.
 
 #### AttributeStatement
 
@@ -285,7 +283,7 @@ Enthält Ansprüche bezüglich des Antragstellers oder des Benutzers. Der folgen
 </AttributeStatement>
 ```		
 
-- **Namensanspruch** : Der Wert des `Name`-Attributs (`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`) ist der Benutzerprinzipalname des authentifizierten Benutzers, wie z.B. `testuser@managedtenant.com`.
+- **Name-Anspruch** : Der Wert des `Name`-Attributs (`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`) ist der Benutzerprinzipalname des authentifizierten Benutzers (etwa `testuser@managedtenant.com`).
 - **ObjectIdentifier-Anspruch**: Der Wert des `ObjectIdentifier`-Attributs (`http://schemas.microsoft.com/identity/claims/objectidentifier`) ist die `ObjectId` des Verzeichnisobjekts, das den authentifizierten Benutzer in Azure AD darstellt. `ObjectId` ist ein unveränderlicher, global eindeutiger und sicher wiederverwendbarer Bezeichner des authentifizierten Benutzers.
 
 #### AuthnStatement
@@ -303,4 +301,4 @@ Dieses Element bestätigt, dass das Assertion-Subjekt mit einer bestimmten Metho
 </AuthnStatement>
 ```
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

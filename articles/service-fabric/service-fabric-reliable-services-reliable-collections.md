@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="06/14/2016"
+   ms.date="06/19/2016"
    ms.author="mcoskun"/>
 
 # Einführung in Reliable Collections in zustandsbehafteten Azure Service Fabric-Diensten
@@ -87,9 +87,10 @@ Zuverlässige Auflistungen verwenden immer exklusive Sperren. Für Lesevorgänge
 
 Die Kompatibilitätsmatrix für Sperren finden Sie unten:
 
-| Anforderung\\Gewährt | Keine | Shared | Aktualisieren | Exklusiv |
+| Anforderung \ Gewährt | Keine | Shared  | Aktualisieren | Exklusiv |
 | ----------------- | :----------- | :----------- | :---------- | :----------- |
-| Shared | Kein Konflikt | Kein Konflikt | Konflikt: | Konflikt: |
+
+| Shared  | Kein Konflikt | Kein Konflikt | Konflikt: | Konflikt: |
 | Aktualisieren | Kein Konflikt | Kein Konflikt | Konflikt: | Konflikt: |
 | Exklusiv | Kein Konflikt | Konflikt: | Konflikt: | Konflikt: |
 
@@ -119,10 +120,11 @@ hier folgen einige Punkte, die es zu beachten gilt:
 ## Nächste Schritte
 
 - [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
+- [Reliable Services – Benachrichtigungen](service-fabric-reliable-services-notifications.md)
 - [Sichern und Wiederherstellen von Reliable Services (Notfallwiederherstellung)](service-fabric-reliable-services-backup-restore.md)
 - [Konfigurieren des Reliable State Managers](service-fabric-reliable-services-configuration.md)
 - [Erste Schritte mit Web-API-Diensten von Service Fabric](service-fabric-reliable-services-communication-webapi.md)
 - [Erweiterte Verwendung des Reliable Services-Programmiermodells](service-fabric-reliable-services-advanced-usage.md)
 - [Entwicklerreferenz für zuverlässige Auflistungen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

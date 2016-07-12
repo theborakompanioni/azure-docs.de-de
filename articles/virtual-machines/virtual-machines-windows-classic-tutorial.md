@@ -27,7 +27,7 @@
 
 <!-- HHTML comment in to break between the selector and the note in the include below-->
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager deployment model](virtual-machines-windows-hero-tutorial.md).
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Bereitstellungsmodell ausführen](virtual-machines-windows-hero-tutorial.md).
 
 In diesem Tutorial erfahren Sie, wie einfach es ist, eine virtuelle Azure-Maschine (VM) mit Windows im klassischen Azure-Portal zu erstellen. Als Beispiel wird ein Windows Server-Image verwendet. Dies ist jedoch nur eines von vielen Images, die Azure bietet. Beachten Sie, dass Ihre Imageauswahl von Ihrem Abonnement abhängt. Beispielsweise können Windows-Desktop-Images für MSDN-Abonnenten verfügbar sein.
 
@@ -56,4 +56,4 @@ In diesem Abschnitt erfahren Sie, wie Sie die Option **Aus Galerie** im klassisc
 
 - Fügen Sie einen Datenträger zum Speichern von Daten hinzu. Sie können sowohl leere Datenträger als auch Datenträger mit Daten anfügen. Anweisungen finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer, der mit dem klassischen Bereitstellungsmodell erstellt wurde](virtual-machines-windows-classic-attach-disk.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0629_2016-->

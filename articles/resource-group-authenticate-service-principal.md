@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Erstellen einer AD-Anwendung mit PowerShell | Microsoft Azure"
-   description="Es wird beschrieben, wie Sie Azure PowerShell zum Erstellen einer Active Directory-Anwendung verwenden und dafür Zugriff auf Ressourcen per rollenbasierter Zugriffssteuerung gewähren. Es wird gezeigt, wie eine Anwendung per Kennwort oder Zertifikat authentifiziert wird."
+   pageTitle="Erstellen eines Azure-Dienstprinzipals mithilfe von PowerShell | Microsoft Azure"
+   description="Hier erfahren Sie, wie Sie mithilfe von Azure PowerShell eine Active Directory-Anwendung und einen Dienstprinzipal erstellen sowie mittels rollenbasierter Zugriffssteuerung Zugriff auf Ressourcen gewähren. Es wird gezeigt, wie eine Anwendung per Kennwort oder Zertifikat authentifiziert wird."
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -16,7 +16,7 @@
    ms.date="06/13/2016"
    ms.author="tomfitz"/>
 
-# Verwenden von Azure PowerShell zum Erstellen einer Active Directory-Anwendung zum Zugreifen auf Ressourcen
+# Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell
 
 > [AZURE.SELECTOR]
 - [PowerShell](resource-group-authenticate-service-principal.md)
@@ -115,7 +115,7 @@ Sie haben eine Active Directory-Anwendung und einen Dienstprinzipal für diese A
 
 In diesem Abschnitt führen Sie die Schritte zum Erstellen einer AD-Anwendung mit einem Zertifikat aus.
 
-1. Erstellen eines selbstsignierten Zertifikats Wenn Sie Windows 10 oder Windows Server 2016 Technical Preview einsetzen, führen Sie den folgenden Befehl aus: 
+1. Erstellen eines selbstsignierten Zertifikats Wenn Sie Windows 10 oder Windows Server 2016 Technical Preview einsetzen, führen Sie den folgenden Befehl aus:
 
         $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=exampleapp" -KeySpec KeyExchange
        
@@ -176,7 +176,7 @@ In diesem Abschnitt führen Sie die Schritte zum Erstellen einer AD-Anwendung mi
 In Ihrem Skript übergeben Sie drei Werte, die für die Anmeldung als Dienstprinzipal benötigt werden. Was Sie benötigen:
 
 - Anwendungs-ID
-- Mandanten-ID 
+- Mandanten-ID
 - Zertifikatfingerabdruck
 
 Sie haben die Anwendungs-ID und den Zertifikatfingerabdruck bereits in den vorherigen Schritten gesehen. Wenn Sie diese Werte später abrufen müssen, werden die Befehle unten angezeigt (zusammen mit dem Befehl zum Abrufen der Mandanten-ID).
@@ -210,9 +210,9 @@ Sie sind nun als Dienstprinzipal für die Active Directory-Anwendung authentifiz
 ## Nächste Schritte
   
 - Beispiele für die .NET-Authentifizierung finden Sie unter [Azure Resource Manager SDK für .NET](resource-manager-net-sdk.md).
-- Beispiele für die Java-Authentifizierung finden Sie unter [Azure Resource Manager SDK für Java](resource-manager-java-sdk.md). 
+- Beispiele für die Java-Authentifizierung finden Sie unter [Azure Resource Manager SDK für Java](resource-manager-java-sdk.md).
 - Beispiele für die Python-Authentifizierung finden Sie unter [Resource Management Authentication](https://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagementauthentication.html) (Ressourcenverwaltungsauthentifizierung) für Python.
 - Beispiele für die REST-Authentifizierung finden Sie unter [Resource Manager-REST-APIs](resource-manager-rest-api.md).
 - Ausführliche Schritte zum Integrieren einer Anwendung in Azure zur Verwaltung von Ressourcen finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](resource-manager-api-authentication.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

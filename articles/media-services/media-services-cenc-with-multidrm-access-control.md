@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016"     
+	ms.date="06/22/2016"  
 	ms.author="willzhan;kilroyh;yanmf;juliako"/>
 
 #CENC mit mehreren DRM-Systemen und Access Control: Referenzentwurf und -implementierung in Azure und Azure Media Services
@@ -159,7 +159,7 @@ weil er einen direkten Einfluss auf die Kosten der Lizenzbereitstellung hat, wen
 
 
 
-1. Monatliches Abonnement: Permanente Lizenz mit einer Zuordnung von Inhaltsschlüssel zu Asset des Typs 1:n. Für alle Kinderfilme verwenden wir z. B. für die Verschlüsselung einen einzelnen Inhaltsschlüssel. In diesem Fall gilt: 
+1. Monatliches Abonnement: Permanente Lizenz mit einer Zuordnung von Inhaltsschlüssel zu Asset des Typs 1:n. Für alle Kinderfilme verwenden wir z. B. für die Verschlüsselung einen einzelnen Inhaltsschlüssel. In diesem Fall gilt:
 
 	Gesamtanzahl der für alle Kinderfilme pro Gerät angeforderten Lizenzen = 1
 
@@ -209,7 +209,7 @@ Zur Laufzeit ist der Datenfluss wie folgt:
 1. Bei der Benutzerauthentifizierung wird ein JWT-Token generiert.
 1. Einer der im JWT-Token enthaltenen Ansprüche ist der Anspruch „Groups“, der die Gruppenobjekt-ID von „EntitledUserGroup“ enthält. Dieser Anspruch dient zur Übergabe der „Berechtigungsüberprüfung“.
 1. Der Player lädt das Clientmanifest eines durch CENC geschützten Inhalts herunter. Ihm wird Folgendes angezeigt:
-	1. Schlüssel-ID 
+	1. Schlüssel-ID
 	1. der Schutz des Inhalts durch CENC
 	1. Lizenzerwerbs-URLs
 
@@ -223,7 +223,7 @@ Die Implementierung umfasst die folgenden Schritte:
 
 1. Vorbereiten von Testassets: Codieren/Packen eines Testvideos in einer fragmentierten MP4-Datei mit mehreren Bitraten in Azure Media Services. Dieses Asset ist NICHT durch DRM geschützt. Der DRM-Schutz erfolgt später mithilfe einer dynamischen Schutzebene.
 1. Erstellen von Schlüssel-ID und Inhaltsschlüssel (optional ausgehend vom Schlüsselwert). Für unsere Zwecke ist ein Schlüsselverwaltungssystem nicht erforderlich, da wir es nur mit einer einzelnen Gruppe von Schlüssel-IDs und Inhaltsschlüsseln für verschiedene Testassets zu tun haben.
-1. Verwenden der AMS-API, um für die Testassets Lizenzbereitstellungsdienste für mehrere DRM-Systeme zu konfigurieren. Wenn Sie benutzerdefinierte Lizenzserver in Ihrem Unternehmen oder von beauftragten Unternehmen anstelle der Lizenzdienste in Azure Media Services nutzen, können Sie diesen Schritt überspringen und im Schritt zur Konfiguration der Lizenzbereitstelllung Lizenzerwerbs-URLs angeben. Die AMS-API ist erforderlich, um verschiedene detaillierte Konfigurationen anzugeben, z. B. die Einschränkung von Autorisierungsrichtlinien, Lizenzbereitstellungsvorlagen für verschiedene DRM-Lizenzdienste usw. Das Azure-Portal bietet derzeit nicht die für diese Konfiguration erforderliche Benutzeroberfläche. Informationen zur API und Beispielcode finden Sie im Artikel von Julia Kornich: [Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine](media-services-protect-with-drm.md). 
+1. Verwenden der AMS-API, um für die Testassets Lizenzbereitstellungsdienste für mehrere DRM-Systeme zu konfigurieren. Wenn Sie benutzerdefinierte Lizenzserver in Ihrem Unternehmen oder von beauftragten Unternehmen anstelle der Lizenzdienste in Azure Media Services nutzen, können Sie diesen Schritt überspringen und im Schritt zur Konfiguration der Lizenzbereitstelllung Lizenzerwerbs-URLs angeben. Die AMS-API ist erforderlich, um verschiedene detaillierte Konfigurationen anzugeben, z. B. die Einschränkung von Autorisierungsrichtlinien, Lizenzbereitstellungsvorlagen für verschiedene DRM-Lizenzdienste usw. Das Azure-Portal bietet derzeit nicht die für diese Konfiguration erforderliche Benutzeroberfläche. Informationen zur API und Beispielcode finden Sie im Artikel von Julia Kornich: [Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine](media-services-protect-with-drm.md).
 1. Konfigurieren Sie mithilfe der AMS-API die Assetbereitstellungsrichtlinie für das Testasset. Informationen zur API und Beispielcode finden Sie im Artikel von Julia Kornich: [Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine](media-services-protect-with-drm.md).
 1. Erstellen und Konfigurieren eines Azure Active Directory-Mandanten in Azure
 1. Erstellen einiger Benutzerkonten und Gruppen in Ihrem Azure Active Directory-Mandanten: Sie müssen mindestens die Gruppe „EntitledUser“ erstellen und dieser Gruppe einen Benutzer hinzufügen. Benutzer in dieser Gruppe durchlaufen während des Lizenzerwerbs eine Berechtigungsüberprüfung. Benutzer, die nicht zu dieser Gruppe gehören, bestehen die Authentifizierungsprüfung nicht und können deshalb keine Lizenzen erwerben. Die Mitgliedschaft in der Gruppe „EntitledUser“ ist ein erforderlicher Anspruch des Typs „groups“ im von Azure AD ausgestellten JWT-Token. Diese Anspruchsanforderung muss im Schritt zur Konfiguration von Lizenzbereitstellungsdiensten für mehrere DRM-Systeme angegeben werden.
@@ -242,7 +242,7 @@ Die Implementierung umfasst die folgenden Schritte:
 **Widevine**|Chrome unter Windows 10|Erfolg|Kein Erfolg
 **FairPlay** |Noch nicht festgelegt||
 
-George Trifonov vom Azure Media Services-Team hat einen Blog mit detaillierten Schritten zur Einrichtung von Azure Active Directory für eine ASP.NET MVC-Player-App geschrieben: [Integrieren einer Azure Media Services-OWIN MVC-basierten App in Azure Active Directory und Einschränken der Übermittlung von Inhaltsschlüsseln auf Grundlage von JWT-Ansprüchen](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/).
+George Trifonov vom Azure Media Services-Team hat einen Blog mit detaillierten Schritten zur Einrichtung von Azure Active Directory für eine ASP.NET MVC-Player-App geschrieben: [Integrate Azure Media Services OWIN MVC based app with Azure Active Directory and restrict content key delivery based on JWT claims](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/).
 
 Ein weiterer Blog von George hat den Titel: [JWT token Authentication in Azure Media Services and Dynamic Encryption](http://gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/). Und hier ist sein [Beispiel für die Azure AD-Integration in die Azure Media Services-Schlüsselbereitstellung](https://github.com/AzureMediaServicesSamples/Key-delivery-with-AAD-integration/).
 
@@ -317,7 +317,7 @@ Dies ist ein wichtiger Punkt, der bei Ihrer Implementierung berücksichtigt werd
 
 Azure AD befolgt den Branchenstandard zum Einrichten einer Vertrauensstellung zwischen sich selbst und Anwendungen, die Azure AD verwenden. Azure AD verwendet einen Signaturschlüssel, der aus einem Paar mit einem öffentlichen und einem privaten Schlüssel besteht. Wenn Azure AD ein Sicherheitstoken erstellt, das Informationen über den Benutzer enthält, wird dieses Token von Azure AD mithilfe des privaten Schlüssels signiert, bevor es zurück an die Anwendung gesendet wird. Um zu überprüfen, ob das Token gültig ist und tatsächlich von Azure AD stammt, muss die Anwendung die Signatur des Tokens überprüfen. Dies erfolgt mithilfe des von Azure AD verfügbar gemachten öffentlichen Schlüssels, der im Dokument mit den Verbundmetadaten des Mandanten enthalten ist. Dieser öffentliche Schlüssel (und der Signaturschlüssel, von dem er abgeleitet ist) entspricht demjenigen, der für alle Mandanten in Azure AD verwendet wird.
 
-Detaillierte Informationen zum Azure AD-Schlüsselrollover finden Sie im Dokument: [Wichtige Informationen zum Signaturschlüsselrollover in Azure AD](http://msdn.microsoft.com/library/azure/dn641920.aspx/).
+Detaillierte Informationen zum Azure AD-Schlüsselrollover finden Sie im Dokument [Wichtige Informationen zum Signaturschlüsselrollover in Azure AD](../active-directory/active-directory-signing-key-rollover.md).
 
 Im [Schlüsselpaar aus öffentlichem und privatem Schlüssel](https://login.windows.net/common/discovery/keys/)
 
@@ -522,4 +522,4 @@ In diesem Dokument haben wir uns mit CENC mit mehreren systemeigenen DRM-Systeme
 
 William Zhang, Mingfei Yan, Roland Le Franc, Kilroy Hughes, Julia Kornich
 
-<!----HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

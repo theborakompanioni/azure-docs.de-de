@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="03/14/2016"  
+	ms.date="06/22/2016"  
 	ms.author="juliako"/>
 
 #Vorgehensweise: Konfigurieren von Übermittlungsrichtlinien für Medienobjekte
 
 [AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
 
-Wenn Sie dynamisch verschlüsselte Medienobjekte übermitteln möchten, ist einer der Schritte im Workflow zur Inhaltsübermittlung in Media Services das Konfigurieren von Übermittlungsrichtlinien. Anhand der Übermittlungsrichtlinie für Medienobjekte kann Media Services ermitteln, wie das Medienobjekt übermittelt werden soll, also mit welchem Streamingprotokoll das Medienobjekt dynamisch verpackt werden soll (z. B. MPEG-DASH, HLS, Smooth Streaming oder alle) und ob und wie das Medienobjekt ggf. dynamisch verschlüsselt werden soll (Umschlag- oder allgemeine Verschlüsselung).
+Wenn Sie dynamisch verschlüsselte Medienobjekte übermitteln möchten, ist einer der Schritte im Workflow zur Inhaltsübermittlung in Media Services das Konfigurieren von Übermittlungsrichtlinien. Anhand der Übermittlungsrichtlinie für Medienobjekte kann Media Services ermitteln, wie das Medienobjekt übermittelt werden soll, also mit welchem Streamingprotokoll das Medienobjekt dynamisch verpackt werden soll (z. B. MPEG-DASH, HLS, Smooth Streaming oder alle) und ob und wie das Medienobjekt ggf. dynamisch verschlüsselt werden soll (Umschlag- oder allgemeine Verschlüsselung).
 
 In diesem Thema wird erläutert, warum und wie Übermittlungsrichtlinien für Medienobjekte erstellt und konfiguriert werden.
 
@@ -28,7 +28,7 @@ In diesem Thema wird erläutert, warum und wie Übermittlungsrichtlinien für Me
 >
 >Darüber hinaus muss Ihr Medienobjekt einen MP4-Satz bzw. Smooth Streaming-Dateien mit adaptiver Bitrate enthalten.
 
-Sie können verschiedene Richtlinien auf dasselbe Medienobjekt anwenden. Sie könnten z. B. eine PlayReady-Verschlüsselung auf Smooth Streaming und AES-Umschlagverschlüsselung auf MPEG-DASH und HLS anwenden. Alle Protokolle, die nicht in einer Übermittlungsrichtlinie definiert sind (wenn Sie z. B. eine einzelne Richtlinie hinzufügen, die nur HLS als Protokoll angibt), werden vom Streaming ausgeschlossen. Die einzige Ausnahme besteht darin, wenn Sie überhaupt keine Übermittlungsrichtlinie für Medienobjekte definiert haben. In diesem Fall sind alle Protokolle ohne Verschlüsselung zulässig.
+Sie können verschiedene Richtlinien auf dasselbe Medienobjekt anwenden. Sie könnten z. B. eine PlayReady-Verschlüsselung auf Smooth Streaming und AES-Umschlagverschlüsselung auf MPEG-DASH und HLS anwenden. Alle Protokolle, die nicht in einer Übermittlungsrichtlinie definiert sind (wenn Sie z. B. eine einzelne Richtlinie hinzufügen, die nur HLS als Protokoll angibt), werden vom Streaming ausgeschlossen. Die einzige Ausnahme besteht darin, wenn Sie überhaupt keine Übermittlungsrichtlinie für Medienobjekte definiert haben. In diesem Fall sind alle Protokolle ohne Verschlüsselung zulässig.
 
 Wenn Sie ein speicherverschlüsseltes Medienobjekt übermitteln möchten, müssen Sie die Übermittlungsrichtlinie des Medienobjekts konfigurieren. Bevor das Medienobjekt gestreamt werden kann, wird die Speicherverschlüsselung vom Streamingserver entfernt und der Inhalt mithilfe der angegebenen Übermittlungsrichtlinie gestreamt. Wenn Sie ein Medienobjekt für die Übermittlung beispielsweise mit einem Schlüssel für die AES (Advanced Encryption Standard)-Umschlagverschlüsselung verschlüsseln möchten, legen Sie den Richtlinientyp auf **DynamicEnvelopeEncryption** fest. Um die Speicherverschlüsselung zu entfernen und das Medienobjekt unverschlüsselt zu streamen, legen Sie den Richtlinientyp auf **NoDynamicEncryption** fest. In den folgenden Beispielen wird die Konfiguration dieser Richtlinientypen veranschaulicht.
 
@@ -59,14 +59,14 @@ Anweisungen zum Veröffentlichen eines Medienobjekts und Erstellen einer Streami
 
 - Sie können eine mit einem Asset verknüpfte AssetDeliveryPolicy nicht löschen, solange ein OnDemand-Locator (Streaminglocator) für dieses Asset vorhanden ist. Es wird empfohlen, die Richtlinie aus dem Asset zu entfernen, bevor Sie die Richtlinie löschen.
 - Ein Streaminglocator kann nicht auf einem speicherverschlüsselten Asset erstellt werden, wenn keine Übermittlungsrichtlinie für das Asset festgelegt ist. Wenn das Asset nicht speicherverschlüsselt ist, lässt Sie das System einen Locator erstellen und das Asset in Klartext ohne Übermittlungsrichtlinie streamen.
-- Sie haben die Möglichkeit, mehrere Übermittlungsrichtlinien für ein einzelnes Asset zu verwenden, aber Sie dürfen nur eine Möglichkeit zum Verarbeiten eines bestimmten AssetDeliveryProtocol angeben. Wenn Sie also versuchen, zwei Richtlinien zu verknüpfen, die das AssetDeliveryProtocol.SmoothStreaming-Protokoll angeben, führt dies zu einem Fehler, da das System nicht weiß, welche Richtlinie angewendet werden soll, wenn ein Client eine Smooth Streaming-Anforderung sendet.  
-- Wenn Sie über ein Asset mit einem vorhandenen Streaminglocator verfügen, können Sie keine neue Richtlinie mit dem Asset verknüpfen, eine vorhandene Verknüpfung vom Asset aufheben oder eine Übermittlungsrichtlinie aktualisieren, die dem Asset zugeordnet ist. Sie müssen zuerst den Streaminglocator entfernen, die Richtlinien anpassen und dann den Streaminglocator neu erstellen. Sie können die gleiche Locator-ID verwenden, wenn Sie den Streaminglocator neu erstellen. Allerdings sollten Sie sicherstellen, dass dadurch keine Probleme für Clients auftreten, da Inhalte nach Ursprung oder einem nachgelagerten CDN zwischengespeichert werden können.  
+- Sie haben die Möglichkeit, mehrere Übermittlungsrichtlinien für ein einzelnes Asset zu verwenden, aber Sie dürfen nur eine Möglichkeit zum Verarbeiten eines bestimmten AssetDeliveryProtocol angeben. Wenn Sie also versuchen, zwei Richtlinien zu verknüpfen, die das AssetDeliveryProtocol.SmoothStreaming-Protokoll angeben, führt dies zu einem Fehler, da das System nicht weiß, welche Richtlinie angewendet werden soll, wenn ein Client eine Smooth Streaming-Anforderung sendet.
+- Wenn Sie über ein Asset mit einem vorhandenen Streaminglocator verfügen, können Sie keine neue Richtlinie mit dem Asset verknüpfen, eine vorhandene Verknüpfung vom Asset aufheben oder eine Übermittlungsrichtlinie aktualisieren, die dem Asset zugeordnet ist. Sie müssen zuerst den Streaminglocator entfernen, die Richtlinien anpassen und dann den Streaminglocator neu erstellen. Sie können die gleiche Locator-ID verwenden, wenn Sie den Streaminglocator neu erstellen. Allerdings sollten Sie sicherstellen, dass dadurch keine Probleme für Clients auftreten, da Inhalte nach Ursprung oder einem nachgelagerten CDN zwischengespeichert werden können.
  
 >[AZURE.NOTE] Beim Verwenden der Media Services REST-API gelten die folgenden Überlegungen:
 >
 >Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
 
->Nach der erfolgreichen Verbindung mit https://media.windows.net erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Entsprechend der Beschreibung unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect_programmatically.md) müssen Sie nachfolgende Aufrufe an den neuen URI senden.
+>Nach der erfolgreichen Verbindung mit https://media.windows.net erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Entsprechend der Beschreibung unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect-programmatically.md) müssen Sie nachfolgende Aufrufe an den neuen URI senden.
 
 
 ##Löschen einer Übermittlungsrichtlinie für Medienobjekte 
@@ -456,4 +456,4 @@ Weitere Informationen finden Sie unter [Verknüpfen des Medienobjekts mit einer 
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0629_2016-->

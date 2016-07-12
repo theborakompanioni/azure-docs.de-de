@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016"    
+	ms.date="06/22/2016"    
 	ms.author="juliako"/>
 
 
@@ -22,7 +22,7 @@
 Ab Microsoft Azure Media Services 2.2 können Sie an ein Media Services-Konto mehrere Speicherkonten anfügen. Die Möglichkeit, mehrere Speicherkonten an ein Media Services-Konto anzufügen, bietet die folgenden Vorteile:
 
 - Lastenausgleich der Assets für mehrere Speicherkonten.
-- Skalierung von Media Services für umfangreiche Inhaltsverarbeitung (derzeit ist ein Speicherkonto auf eine maximale Größe von 500 TB beschränkt). 
+- Skalierung von Media Services für umfangreiche Inhaltsverarbeitung (derzeit ist ein Speicherkonto auf eine maximale Größe von 500 TB beschränkt).
 
 In diesem Thema wird erläutert, wie mehrere Speicherkonten mit der Azure-Dienstverwaltungs-REST-API an ein Media Services-Konto angefügt werden. Es wird zudem beschrieben, wie beim Erstellen von Medienobjekten mit dem Media Services-SDK verschiedene Speicherkonten angegeben werden.
 
@@ -32,7 +32,7 @@ Wenn Sie Ihrem Media Services-Konto mehrere Speicherkonten zuordnen, gelten die 
 
 - Alle an ein Media Services-Konto angefügten Speicherkonten müssen sich im gleichen Rechenzentrum wie das Media Services-Konto befinden.
 - Derzeit kann ein Speicherkonto nicht mehr getrennt werden, nachdem es an ein Media Services-Konto angefügt wurde.
-- Das primäre Speicherkonto wird zum Zeitpunkt der Erstellung des Media Services-Kontos angegeben. Derzeit können Sie das Standardspeicherkonto nicht ändern. 
+- Das primäre Speicherkonto wird zum Zeitpunkt der Erstellung des Media Services-Kontos angegeben. Derzeit können Sie das Standardspeicherkonto nicht ändern.
 
 Weitere Überlegungen:
 
@@ -259,4 +259,4 @@ Im folgenden Code werden mit dem aktuellen Media Services-SDK die folgenden Aufg
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

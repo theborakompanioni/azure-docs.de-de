@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="hero-article"
- ms.date="03/09/2016"
+ ms.date="06/30/2016"
  ms.author="krisragh"/>
 
 # Erste Schritte mit Azure Scheduler im Azure-Portal
@@ -21,7 +21,7 @@ Das Erstellen geplanter Aufträge in Azure Scheduler ist einfach. In diesem Tuto
 
 ## Erstellen eines Auftrags
 
-1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.  
+1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 2.  Klicken Sie auf **+ Neu** > geben Sie im Suchfeld _Scheduler_ ein > wählen Sie in den Ergebnissen **Scheduler** > klicken Sie auf **Erstellen**.
 
@@ -29,7 +29,7 @@ Das Erstellen geplanter Aufträge in Azure Scheduler ist einfach. In diesem Tuto
 
 3.  In diesem Beispiel erstellen wir einen einfachen Auftrag mit einer GET-Anforderung für „http://www.microsoft.com/“. Geben Sie auf dem Bildschirm **Scheduler-Auftrag** die folgenden Informationen ein:
 
-    1.  **Name:** `getmicrosoft`  
+    1.  **Name:** `getmicrosoft`
 
     2.  **Abonnement:** Ihr Azure-Abonnement
 
@@ -37,7 +37,7 @@ Das Erstellen geplanter Aufträge in Azure Scheduler ist einfach. In diesem Tuto
 
 4.  Definieren Sie dann unter **Aktionseinstellungen** die folgenden Werte:
 
-    1.  **Aktionstyp:** ` HTTP`  
+    1.  **Aktionstyp:** ` HTTP`
 
     2.  **Methode:** `GET`
 
@@ -63,7 +63,7 @@ Das Erstellen geplanter Aufträge in Azure Scheduler ist einfach. In diesem Tuto
 
 Sobald ein Auftrag erstellt wurde, wird er im Azure-Hauptdashboard angezeigt. Wenn Sie auf den Auftrag klicken, wird ein neues Fenster mit folgenden Registerkarten angezeigt:
 
-1.  Eigenschaften  
+1.  Eigenschaften
 
 2.  Aktionseinstellungen
 
@@ -111,7 +111,7 @@ Sie können die Startzeit (Datum und Uhrzeit), den Wiederholungszeitplan und die
 
 Die Registerkarte **Verlauf** zeigt ausgewählte Metriken für jede Auftragsausführung im System für den ausgewählten Auftrag an. Diese Metriken liefern Echtzeitwerte zum Status von Scheduler:
 
-1.  Status  
+1.  Status
 
 2.  Details
 
@@ -182,4 +182,4 @@ Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugr
 [14]: ./media/scheduler-get-started-portal/scheduler-get-started-portal014.png
 [15]: ./media/scheduler-get-started-portal/scheduler-get-started-portal015.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="05/13/2016"
+   ms.date="06/23/2016"
    ms.author="carlrab"/>
    
 # Azure SQL-Datenbank sichert und schützt
@@ -33,7 +33,7 @@ Sie können nur hoffen, nicht auf vorhandene Sicherungen zugreifen oder eine Not
 
 ## Das größte Kompatibilitätsportfolio
 
-SQL-Datenbank hat das größte Kompatibilitätsportfolio der Branche. Wenn Sie also HIPPA oder FERPA oder sogar Singapur MTCS Level 3 benötigen, machen Sie sich keine Sorgen – wir decken alle Lösungen ab.
+SQL-Datenbank hat das größte Kompatibilitätsportfolio der Branche. Wenn z.B. Kompatibilität mit HIPPA oder FERPA oder sogar Singapur MTCS Level 3 erforderlich ist, ist das kein Problem – wir decken das alles ab.
 
 [Dokumentation lesen](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)
 
@@ -55,4 +55,4 @@ Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/se
  
 Lesen Sie die [Technische Übersicht über SQL-Datenbank](sql-database-technical-overview.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

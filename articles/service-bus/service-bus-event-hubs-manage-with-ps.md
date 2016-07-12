@@ -1,22 +1,22 @@
 <properties
-   pageTitle="Verwenden von PowerShell zum Verwalten von Service Bus- und Event Hub-Ressourcen"
-   description="Verwenden von PowerShell zum Erstellen und Verwalten von Service Bus- und Event Hub-Ressourcen"
-   services="service-bus"
-   documentationCenter=".NET"
-   authors="sethmanheim"
-   manager="timlt"
-   editor=""/>
+    pageTitle="Verwenden von PowerShell zum Verwalten von Service Bus- und Event Hubs-Ressourcen | Microsoft Azure"
+    description="Verwenden von PowerShell zum Erstellen und Verwalten von Service Bus- und Event Hubs-Ressourcen"
+    services="service-bus"
+    documentationCenter=".NET"
+    authors="sethmanheim"
+    manager="timlt"
+    editor=""/>
 
 <tags
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="03/09/2016"
-   ms.author="sethm"/>
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="06/24/2016"
+    ms.author="sethm"/>
 
-# Verwenden von PowerShell zum Verwalten von Service Bus- und Event Hub-Ressourcen
+# Verwenden von PowerShell zum Verwalten von Service Bus- und Event Hubs-Ressourcen
 
 Microsoft Azure PowerShell ist eine Skriptumgebung, mit der Sie die Bereitstellung und Verwaltung von Azure-Diensten steuern und automatisieren können. In diesem Artikel wird beschrieben, wie Sie mithilfe von PowerShell Service Bus-Entitäten wie Namespaces, Warteschlangen und Event Hubs über eine lokale Azure PowerShell-Konsole bereitstellen und verwalten.
 
@@ -116,7 +116,7 @@ Um weitere Service Bus-Entitäten bereitstellen zu können, erstellen Sie eine I
 
 ## Bereitstellen weiterer Service Bus-Entitäten
 
-Um weitere Entitäten wie z. B. Warteschlangen, Themen und Event Hubs bereitzustellen, können Sie die [.NET-API für Service Bus][] verwenden. Am Ende dieses Artikels finden Sie einige ausführlichere Beispiele, einschließlich anderer Entitäten.
+Um weitere Entitäten wie z. B. Warteschlangen, Themen und Event Hubs bereitzustellen, können Sie die [.NET-API für Service Bus][] verwenden. Am Ende dieses Artikels finden Sie einige ausführlichere Beispiele, einschließlich anderer Entitäten.
 
 ### Erstellen eines Ereignis-Hubs
 
@@ -276,4 +276,4 @@ Es stehen auch einige einsatzbereite Skripts zum Download zur Verfügung:
 [.NET-API für Service Bus]: https://msdn.microsoft.com/de-DE/library/azure/mt419900.aspx
 [Installieren und Konfigurieren von Azure PowerShell]: ../powershell-install-configure.md
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0629_2016-->

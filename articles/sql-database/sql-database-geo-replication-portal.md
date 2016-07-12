@@ -12,7 +12,7 @@
     ms.devlang="NA"
     ms.topic="article"
     ms.tgt_pltfrm="NA"
-    ms.workload="data-management" 
+   ms.workload="sqldb-bcdr"
     ms.date="06/14/2016"
     ms.author="sstein"/>
 
@@ -27,16 +27,14 @@
 
 In diesem Artikel erfahren Sie, wie Sie die aktive Georeplikation für eine SQL-Datenbank mit dem [Azure-Portal](http://portal.azure.com) konfigurieren.
 
-Informationen zum Initiieren eines Failovers finden Sie unter [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit dem Azure-Portal](sql-database-geo-replication-failover-portal.md).
+Informationen zum Initiieren eines Failovers mit dem Azure-Portal finden Sie unter [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit dem Azure-Portal](sql-database-geo-replication-failover-portal.md).
 
 >[AZURE.NOTE] Die aktive Georeplikation (lesbare sekundäre Datenbanken) ist jetzt für alle Datenbanken in allen Diensttarifen verfügbar. Im April 2017 wird der nicht lesbare sekundäre Typ eingestellt, und vorhandene nicht lesbare Datenbanken werden automatisch auf lesbare sekundäre Datenbanken aktualisiert.
 
 Wenn Sie die Georeplikation über das Azure-Portal konfigurieren möchten, benötigen Sie Folgendes:
 
-- Ein Azure-Abonnement. 
+- Ein Azure-Abonnement.
 - Eine Azure SQL-Datenbank: Die primäre Datenbank, die in eine andere geografische Region repliziert werden soll.
-
-
 
 ## Hinzufügen einer sekundären Datenbank
 
@@ -47,9 +45,6 @@ Zum Hinzufügen einer sekundären Datenbank müssen Sie der Besitzer des Abonnem
 Die sekundäre Datenbank hat den gleichen Namen wie die primäre Datenbank und standardmäßig auch den gleichen Servicelevel. Die sekundäre Datenbank kann lesbar oder nicht lesbar und eine Einzeldatenbank oder eine elastische Datenbank sein. Weitere Informationen finden Sie unter [Dienstebenen](sql-database-service-tiers.md). Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beginnt die Replikation der Daten von der primären Datenbank in die neue sekundäre Datenbank.
 
 > [AZURE.NOTE] Wenn die Partnerdatenbank bereits vorhanden ist (z.B. aufgrund der Beendigung einer vorherigen Georeplikationsbeziehung), tritt für den Befehl ein Fehler auf.
-
-
-
 
 ### Sekundäre Datenbank hinzufügen
 
@@ -100,26 +95,10 @@ Mit diesem Vorgang wird die Replikation zur sekundären Datenbank dauerhaft been
     ![Entfernen bestätigen][8]
 
 
-
-   
-
 ## Nächste Schritte
 
-- [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank](sql-database-geo-replication-failover-portal.md)
-- [Entwerfen von Cloudanwendungen zum Sicherstellen der Geschäftskontinuität mithilfe der Georeplikation](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [Warnungen zur Notfallwiederherstellung](sql-database-disaster-recovery-drills.md)
-
-
-## Zusätzliche Ressourcen
-
-- [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md)
-- [Spotlight on new Geo-Replication capabilities (Die neuen Georeplikationsfunktionen im Überblick)](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
-- [BCDR in SQL-Datenbank – Häufig gestellte Fragen](sql-database-bcdr-faq.md)
-- [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-- [Aktive Georeplikation](sql-database-geo-replication-overview.md)
-- [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [Abschließen der wiederhergestellten Azure SQL-Datenbank](sql-database-recovered-finalize.md)
-
+- Weitere Informationen zur aktiven Georeplikation finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
+- Informationen über Entwurfs- und Wiederherstellungsszenarien für die Geschäftskontinuität finden Sie unter [Geschäftskontinuitätsszenarien](sql-database-business-continuity-scenarios.md).
 
 <!--Image references-->
 [1]: ./media/sql-database-geo-replication-portal/configure-geo-replication.png
@@ -133,4 +112,4 @@ Mit diesem Vorgang wird die Replikation zur sekundären Datenbank dauerhaft been
 [9]: ./media/sql-database-geo-replication-portal/seeding-complete.png
 [10]: ./media/sql-database-geo-replication-portal/failover.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

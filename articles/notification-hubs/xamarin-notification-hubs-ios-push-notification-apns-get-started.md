@@ -4,8 +4,8 @@
 	services="notification-hubs"
     keywords="iOS-Pushbenachrichtigungen,Pushnachrichten,Pushbenachrichtigungen,Pushnachricht"
 	documentationCenter="xamarin"
-	authors="ysxu"
-	manager="dwrede"
+	authors="wesmc7777"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="02/15/2016"
-	ms.author="yuaxu"/>
+	ms.date="06/29/2016"
+	ms.author="wesmc"/>
 
 # iOS-Pushbenachrichtigungen mit Notification Hubs für Xamarin-Apps
 
@@ -328,4 +328,4 @@ In diesem einfachen Beispiel haben Sie Pushbenachrichtigungen an alle Ihre iOS-G
 [WindowsAzure.Messaging]: https://github.com/infosupport/WindowsAzure.Messaging.iOS
 [Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

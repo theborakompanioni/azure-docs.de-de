@@ -34,7 +34,7 @@ Mehrinstanzenfähige Anwendungen sind ein gutes Beispiel für eine Art von Anwen
 Anwendungen dieser Art finden sich im gesamten Spektrum cloudbasierter Anwendungen, z.B.:
 - ISV-Datenbankanwendungen, die als SaaS-Anwendungen in die Cloud verlagert werden
 - SaaS-Anwendungen, die von Grund auf für die Cloud erstellt wurden
-- Anwendungen für Konsumenten/Endbenutzer 
+- Anwendungen für Konsumenten/Endbenutzer
 - Unternehmensanwendungen für Mitarbeiter
 
 Sowohl für die Cloud entwickelte SaaS-Anwendungen als auch in ISV-Datenbankanwendungen verankerte SaaS-Anwendungen führen häufig zu mehrinstanzenfähigen Anwendungen. Mit diesen SaaS-Anwendungen wird eine spezialisierte Softwareanwendung als Service für die Mandanten bereitgestellt. Mandanten haben Zugriff auf den Anwendungsdienst und sind die alleinigen Besitzer der zugehörigen Daten, die im Rahmen der Anwendung gespeichert werden. Um die Vorteile von SaaS nutzen zu können, müssen die Mandanten aber einen Teil der Kontrolle über ihre Daten abgeben und dem SaaS-Anbieter vertrauen, dass diese sicher aufbewahrt und von den Daten anderer Mandanten isoliert werden. Gängige Beispiele hierfür sind MyOB, SnelStart, Salesforce usw. All diese Anwendungen ermöglichen die Partitionierung entlang von Mandantengrenzen und unterstützen daher die Anwendungsmuster, die in den folgenden Abschnitten dieses Artikels beschrieben werden.
@@ -49,7 +49,7 @@ Die Entwurfsmuster mit Mehrinstanzenfähigkeit, die wir in den folgenden Abschni
 
 Für Entwickler, die in der Cloud mehrinstanzenfähige Anwendungen erstellen, sind folgende Punkte am wichtigsten:
 
--	***Mandantenisolation***: Entwickler müssen sicherstellen, dass Mandanten keinen unerwünschten Zugriff auf die Daten anderer Mandanten erhalten. Diese Isolationsanforderung gilt auch für andere Bereiche, z.B. den Schutz vor „Noisy Neighbors“, die Möglichkeit zur Wiederherstellung von Daten eines Mandanten, mandantenspezifische Anpassungen usw. 
+-	***Mandantenisolation***: Entwickler müssen sicherstellen, dass Mandanten keinen unerwünschten Zugriff auf die Daten anderer Mandanten erhalten. Diese Isolationsanforderung gilt auch für andere Bereiche, z.B. den Schutz vor „Noisy Neighbors“, die Möglichkeit zur Wiederherstellung von Daten eines Mandanten, mandantenspezifische Anpassungen usw.
 -	***Kosten für Cloudressourcen***: Die SaaS-Anwendung muss in Bezug auf die Kosten konkurrenzfähig sein. Aus diesem Grund streben Entwickler von SaaS-Anwendungen eine Optimierung auf einen geringeren Kostenaufwand für die Ressourcennutzung in der Cloud an (Compute, Storage usw.), wenn sie ihre mehrinstanzenfähigen Anwendungen entwickeln.
 -	***DevOps-Einfachheit***: Anbieter von mehrinstanzenfähigen Anwendungen müssen einen Isolationsschutz erstellen, die Anwendung und das Datenbankschema verwalten, die Integrität überwachen und die Probleme der Mandanten beheben. Die Komplexität der Entwicklung und des Betriebs von Anwendungen führt direkt zu Mehrkosten und einer geringeren Zufriedenheit der Mandanten.
 -	***Skalierbarkeit***: Die Möglichkeit zum inkrementellen Hinzufügen von weiteren Mandanten ist für den erfolgreichen Betrieb einer SaaS-Anwendung von entscheidender Bedeutung. Dies gilt auch für das Hinzufügen von weiterer Kapazität für einzelne Mandanten, die mehr Ressourcen benötigen.
@@ -71,7 +71,7 @@ Allgemeine Entwurfspraktiken zum Anordnen von Mandantendaten richten sich nach d
   
 1.	***Datenbank pro Mandant***: Bei diesem Ansatz wird jeder Mandant in einer eigenen Datenbank angeordnet. Alle mandantenspezifischen Daten sind auf seine Datenbank beschränkt und von anderen Mandanten und ihren Daten isoliert.
 2.	***Gemeinsame Datenbank – Sharding***: Bei diesem Ansatz werden mehrere Datenbanken verwendet, und mehrere Mandanten teilen sich eine Datenbank. Mit einer Partitionierungsstrategie wird jeder Datenbank eine Gruppe von Mandanten zugewiesen, z.B. Hash-, Bereichs- oder Listenpartitionierung. Diese Strategie der Datenverteilung wird häufig als „Sharding“ bezeichnet.
-3.	***Gemeinsame Datenbank – Einzeln***: Bei diesem Ansatz wird eine einzelne und ggf. große Datenbank mit Daten für alle Mandanten verwendet. Zur Unterscheidung ist eine Spalte mit der Mandanten-ID vorhanden. 
+3.	***Gemeinsame Datenbank – Einzeln***: Bei diesem Ansatz wird eine einzelne und ggf. große Datenbank mit Daten für alle Mandanten verwendet. Zur Unterscheidung ist eine Spalte mit der Mandanten-ID vorhanden.
   
 > [AZURE.NOTE] Es kann auch sein, dass unterschiedliche Mandanten unter verschiedenen Datenbankschemas angeordnet werden, wobei der Schemaname zur Unterscheidung zwischen den verschiedenen Mandanten genutzt wird. Dies ist keine empfohlene Vorgehensweise, da normalerweise dynamischer SQL-Code verwendet werden muss und die Planzwischenspeicherung nicht effektiv eingesetzt werden kann. Daher liegt der Schwerpunkt dieses Artikels in dieser Kategorie nun auf dem Ansatz mit der gemeinsamen Tabelle.
  
@@ -80,8 +80,8 @@ Allgemeine Entwurfspraktiken zum Anordnen von Mandantendaten richten sich nach d
 Beim Auswerten dieser mehrinstanzenfähigen Datenmodelle ist es wichtig, die Vor- und Nachteile in Bezug auf den Anwendungsentwurf zu beachten, die im vorherigen Abschnitt erläutert wurden.
 
 -	***Isolation***: Der Grad der Isolation zwischen Mandanten als Maß dafür, inwieweit die Mandantenisolation erreicht wird.
--	***Kosten für Cloudressourcen***: Der Umfang der gemeinsamen Nutzung von Ressourcen durch Mandanten, um die Kosten für die Cloudressourcen zu optimieren. Eine Ressource kann in Form von Compute- und Speicherkosten definiert werden. 
--	***DevOps-Kosten***: Die Gesamtkosten für den SaaS-Betrieb können durch eine einfache Anwendungsentwicklung, -bereitstellung und -verwaltbarkeit reduziert werden.  
+-	***Kosten für Cloudressourcen***: Der Umfang der gemeinsamen Nutzung von Ressourcen durch Mandanten, um die Kosten für die Cloudressourcen zu optimieren. Eine Ressource kann in Form von Compute- und Speicherkosten definiert werden.
+-	***DevOps-Kosten***: Die Gesamtkosten für den SaaS-Betrieb können durch eine einfache Anwendungsentwicklung, -bereitstellung und -verwaltbarkeit reduziert werden.
 
 Anhand dieser Punkte können wir die weiter oben beschriebenen mehrinstanzenfähigen Datenmodelle und die damit verbundene Datenbanknutzung anhand des Quadranten unten in Abbildung 2 charakterisieren. Der Grad der Mandantenisolation und der Umfang der gemeinsamen Ressourcennutzung sind auf der Y- bzw. X-Achse des Bereichs aufgeführt. Der große diagonale Pfeil in der Mitte zeigt die DevOps-Kosten an.
 
@@ -148,6 +148,8 @@ Für Anbieter von mehrinstanzenfähigen Anwendungen, bei denen die Mandantenisol
 
 Unter [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md) finden Sie eine Beispiel-App zur Veranschaulichung der Clientbibliothek.
 
+Unter [Elastic Pool Custom Dashboard for Saas](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools-custom-dashboard) (Benutzerdefiniertes Dashboard für SaaS mit elastischem Pool) finden Sie eine Beispiellösung für ein SaaS-Szenario (Software-as-a-Service), bei dem über elastische Pools ein kostengünstiges, skalierbares Datenbank-Back-End für eine SaaS-Anwendung bereitgestellt wird.
+
 Informationen zum Umwandeln von vorhandenen Datenbanken für die Verwendung der Tools finden Sie unter [Migrieren von vorhandenen Datenbanken zu horizontaler Hochskalierung](sql-database-elastic-convert-to-use-elastic-tools.md).
 
 Informationen zum Erstellen eines neuen elastischen Pools finden Sie in [diesem Tutorial](sql-database-elastic-pool-create-portal.md).
@@ -159,8 +161,9 @@ Informationen zum Überwachen und Verwalten eines Pools für elastische Datenban
 - [Was ist ein Azure-Pool für elastische Datenbanken?](sql-database-elastic-pool.md)
 - [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md)
 - [Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit](sql-database-elastic-tools-multi-tenant-row-level-security.md)
-- [Authentication in multitenant apps, using Azure AD and OpenID Connect](../guidance/guidance-multitenant-identity-authenticate.md) (Authentifizierung in mehrinstanzenfähigen Apps mithilfe von Azure AD und OpenID Connect)
+- [Authentication in multitenant apps, using Azure AD and OpenID Connect (Authentifizierung in mehrinstanzenfähigen Apps mithilfe von Azure AD und OpenID Connect)](../guidance/guidance-multitenant-identity-authenticate.md)
 - [Tailspin-Anwendung „Surveys“](../guidance/guidance-multitenant-identity-tailspin.md)
+- [Schnellstartlösungen](sql-database-solution-quick-starts.md)
 
 ## Fragen und Funktionswünsche
 
@@ -176,4 +179,4 @@ Bei Fragen erreichen Sie uns im [SQL-Datenbankforum](http://social.msdn.microsof
 
 	
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->
