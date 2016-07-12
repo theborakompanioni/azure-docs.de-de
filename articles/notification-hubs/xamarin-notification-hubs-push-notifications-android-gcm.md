@@ -2,7 +2,7 @@
 	pageTitle="Erste Schritte mit Notification Hubs für Xamarin.Android-Apps | Microsoft Azure"
 	description="In diesem Lernprogramm erfahren Sie, wie Sie mithilfe von Azure Notification Hubs eine Pushbenachrichtigung an eine Xamarin.Android-App senden."
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""
 	services="notification-hubs"
 	documentationCenter="xamarin"/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="02/16/2016"
+	ms.date="06/29/2016"
 	ms.author="wesmc"/>
 
 # Erste Schritte mit Notification Hubs mit Xamarin für Android
@@ -520,4 +520,4 @@ In diesem einfachen Beispiel haben Sie Benachrichtigungen an alle Android-Gerät
 [Google Cloud Messaging Client-Komponente]: http://components.xamarin.com/view/GCMClient/
 [Azure Messaging-Komponente]: http://components.xamarin.com/view/azure-messaging
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

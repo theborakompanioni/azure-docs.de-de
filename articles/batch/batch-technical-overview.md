@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/16/2016"
+	ms.date="07/06/2016"
 	ms.author="marsma"/>
 
 # Grundlagen von Azure Batch
@@ -46,7 +46,7 @@ Ein Vergleich zwischen Batch und anderen HPC-Lösungsoptionen in Azure finden Si
 
 ## Entwickeln mit Batch
 
-Beim Erstellen von Lösungen, bei denen Azure Batch für die Verarbeitung paralleler Workloads verwendet wird, gehen Sie unter Einsatz der [Batch-APIs](#batch-development-apis) programmgesteuert vor. Mit den Batch-APIs erstellen und verwalten Sie Pools mit Computeknoten (virtuellen Maschinen) und planen Aufträge und Aufgaben, die auf diesen Knoten ausgeführt werden. Für eine Clientanwendung oder einen Dienst, die bzw. den Sie erstellen, werden die Batch-APIs zum Kommunizieren mit dem Batch-Dienst verwendet.
+Die Verarbeitung von parallelen Workloads mit Batch wird normalerweise programmgesteuert mit einer der [Batch-APIs](#batch-development-apis) durchgeführt. Mit den Batch-APIs erstellen und verwalten Sie Pools mit Computeknoten (virtuellen Maschinen) und planen Aufträge und Aufgaben, die auf diesen Knoten ausgeführt werden. Für eine Clientanwendung oder einen Dienst, die bzw. den Sie erstellen, werden die Batch-APIs zum Kommunizieren mit dem Batch-Dienst verwendet.
 
 Sie können größere Workloads für Ihr Unternehmen auf effiziente Weise verarbeiten oder ein Dienst-Front-End für Ihre Kunden bereitstellen, damit sie Aufträge und Aufgaben – bedarfsgesteuert oder nach Zeitplan – auf einem, Hunderten oder Tausenden von Knoten ausführen können. Sie können Batch auch als Teil eines größeren Workflows nutzen, der mit Tools verwaltet wird, z.B. [Azure Data Factory](../data-factory/data-factory-data-processing-using-batch.md).
 
@@ -71,8 +71,7 @@ Ihre Anwendungen und Dienste können direkte REST-API-Aufrufe ausgeben und/oder 
 | **Batch REST (in englischer Sprache)** | [MSDN][batch_rest] | – | [MSDN][batch_rest] |
 | **Batch .NET** | [MSDN][api_net] | [NuGet][api_net_nuget] | [GitHub][api_sample_net] |
 | **Batch Python** | [readthedocs.io][api_python] | [PyPI][api_python_pypi] |[GitHub][api_sample_python] |
-| **Batch Node.js** | [github.io][api_nodejs] | [npm][api_nodejs_npm] | - | 
-| **Batch Java** (Vorschau) | [github.io][api_java] | [Repository mit Maven-Momentaufnahmen][api_java_jar] | - |
+| **Batch Node.js** | [github.io][api_nodejs] | [npm][api_nodejs_npm] | - | | **Batch Java** (Vorschau) | [github.io][api_java] | [Repository mit Maven-Momentaufnahmen][api_java_jar] | [GitHub][api_sample_java] |
 
 ### Batch-Ressourcenverwaltung
 
@@ -137,6 +136,7 @@ Nachdem Sie sich hier einen allgemeinen Überblick über den Batch-Dienst versch
 [api_python_pypi]: https://pypi.python.org/pypi/azure-batch
 [api_sample_net]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp
 [api_sample_python]: https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch
+[api_sample_java]: https://github.com/Azure/azure-batch-samples/tree/master/Java/
 [batch_ps]: https://msdn.microsoft.com/library/azure/mt125957.aspx
 [batch_rest]: https://msdn.microsoft.com/library/azure/Dn820158.aspx
 [free_account]: https://azure.microsoft.com/free/
@@ -147,4 +147,4 @@ Nachdem Sie sich hier einen allgemeinen Überblick über den Batch-Dienst versch
 [1]: ./media/batch-technical-overview/tech_overview_01.png
 [2]: ./media/batch-technical-overview/tech_overview_02.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

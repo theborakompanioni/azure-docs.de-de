@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="06/06/2016"
+	ms.date="07/05/2016"
 	ms.author="casoper"/>
 
 # Übersicht über das Azure Content Delivery Network (CDN)
@@ -78,6 +78,8 @@ Wenn Sie bereits CDN-Kunde sind, können Sie jetzt Ihre CDN-Endpunkte über das 
 
 Im [Video zu unserer Build 2016-Veranstaltung](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/) können Sie das CDN in Aktion sehen.
 
+Erfahren Sie, wie Sie Azure CDN mit [.NET](./cdn-app-dev-net.md) oder [Node.js](./cdn-app-dev-node.md) automatisieren.
+
 Preisinformationen finden Sie unter [Content Delivery Network (CDN) – Preise](https://azure.microsoft.com/pricing/details/cdn/).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

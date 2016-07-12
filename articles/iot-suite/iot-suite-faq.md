@@ -25,9 +25,13 @@
 
 - Wenn Sie die Ressourcengruppe im [Azure-Portal][lnk-azure-portal] löschen, werden nur die Ressourcen in dieser Ressourcengruppe gelöscht. Sie müssen im klassischen [Azure-Portal][lnk-classic-portal] außerdem die Azure Active Directory-Anwendung löschen, die der vorkonfigurierten Lösung zugeordnet ist.
 
+### Wie viele IoT Hub-Instanzen kann ich in einem Abonnement bereitstellen? 
+
+Zehn. Sie können ein [Azure-Supportticket][link-azuresupportticket] erstellen, um diesen Grenzwert zu erhöhen. Standardmäßig können Sie aber nur zehn IoT Hubs pro Abonnement bereitstellen, wie unter [Einschränkungen für Azure-Abonnements][link-azuresublimits] beschrieben. Da jede vorkonfigurierte Lösung einen neuen IoT Hub bereitstellt, können Sie in einem Abonnement nur bis zu zehn vorkonfigurierte Lösungen bereitstellen.
+
 ### Wie viele Instanzen von DocumentDB kann ich in einem Abonnement bereitstellen?
 
-50\. Sie können ein [Azure-Supportticket][link-azuresupportticket] erstellen, um dieses Limit zu erhöhen. Doch standardmäßig können Sie nur 50 DocumentDB-Instanzen pro Abonnement bereitstellen. Daher können Sie in einem bestimmten Abonnement nur bis zu fünf vorkonfigurierte Remoteüberwachungslösungen bereitstellen.
+50\. Sie können ein [Azure-Supportticket][link-azuresupportticket] erstellen, um dieses Limit zu erhöhen. Doch standardmäßig können Sie nur 50 DocumentDB-Instanzen pro Abonnement bereitstellen.
 
 ### Wie viele Bing Maps-APIs im Tarif „Free“ kann ich in einem Abonnement bereitstellen?
 
@@ -35,11 +39,11 @@ Zwei. In einem Azure-Abonnement können für Bing Karten für Unternehmen nur zw
 
 ### Ich habe eine Lösungsbereitstellung zur Remoteüberwachung mit einer statischen Karte. Wie kann ich eine interaktive Bing-Karte hinzufügen? 
 1. Rufen Sie Ihren Bing Maps-API for Enterprise QueryKey aus dem [Azure-Portal][lnk-azure-portal] ab:
- 1. Navigieren Sie zur Ressourcengruppe, in der Sich Bing Maps API for Enterprise im [Azure-Portal][lnk-azure-portal] befindet.
+ 1. Navigieren Sie zur Ressourcengruppe, in der sich Bing Maps API for Enterprise im [Azure-Portal][lnk-azure-portal] befindet.
  2. Klicken Sie auf „Alle Einstellungen“ und anschließend auf „Schlüsselverwaltung“.
  3. Sie sehen zwei Schlüssel: MasterKey und QueryKey. Kopieren Sie den Wert für QueryKey.
 
-     > [AZURE.NOTE] Sie haben kein Bing Maps API for Enterprise-Konto? Erstellen Sie ein Konto im [Azure-Portal][lnk-azure-portal], indem Sie auf „+ Neu“ klicken, nach Bing Maps API for Enterprise suchen, und die Anweisungen für die Erstellung befolgen.
+     > [AZURE.NOTE] Sie haben kein Bing Maps API for Enterprise-Konto? Erstellen Sie ein Konto im [Azure-Portal][lnk-azure-portal], indem Sie auf „+ Neu“ klicken, nach Bing Maps API for Enterprise suchen und die Anweisungen für die Erstellung befolgen.
 
 2. Ziehen Sie den aktuellen Code aus [Azure IoT Remote Monitoring][lnk-remote-monitoring-github] nach unten.
 
@@ -59,6 +63,7 @@ Zu diesem Zeitpunkt können Sie keine vorkonfigurierte Lösung mit einem Konto f
 Siehe den Blogbeitrag von Eric Golpe [Walkthrough of Deleting an Azure AD Tenant][lnk-delete-aad-tennant].
 
 [link-azuresupportticket]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade
+[link-azuresublimits]: https://azure.microsoft.com/de-DE/documentation/articles/azure-subscription-service-limits/#iot-hub-limits
 [lnk-azure-portal]: https://portal.azure.com
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
 [lnk-classic-portal]: https://manage.windowsazure.com
@@ -67,4 +72,4 @@ Siehe den Blogbeitrag von Eric Golpe [Walkthrough of Deleting an Azure AD Tenant
 [lnk-30daytrial]: https://azure.microsoft.com/free/
 [lnk-delete-aad-tennant]: http://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

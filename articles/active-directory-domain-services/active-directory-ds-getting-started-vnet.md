@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/25/2016"
+	ms.date="07/06/2016"
 	ms.author="maheshu"/>
 
 # Azure AD-Domänendienste *(Vorschau)* – Erstellen oder Auswählen eines virtuellen Netzwerks
@@ -70,4 +70,4 @@ Führen Sie die folgenden Konfigurationsschritte durch, um ein virtuelles Azure-
 ## Aufgabe 3: Aktivieren der Azure AD-Domänendienste
 Die nächste Konfigurationsaufgabe besteht in der [Aktivierung der Azure AD-Domänendienste](active-directory-ds-getting-started-enableaadds.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

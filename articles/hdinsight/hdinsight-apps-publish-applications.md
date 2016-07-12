@@ -14,7 +14,7 @@
    	ms.topic="hero-article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="06/28/2016"
+   	ms.date="06/29/2016"
    	ms.author="jgao"/>
 
 # Veröffentlichen von HDInsight-Anwendungen im Azure Marketplace
@@ -25,6 +25,7 @@ HDInsight-Anwendungen verwenden das Modell *Bring Your Own License (BYOL)*. Bei 
 
 Weiterer Artikel zu HDInsight-Anwendungen:
 
+- [Installieren von HDInsight-Anwendungen](hdinsight-apps-install-applications.md): Hier erfahren Sie, wie Sie eine HDInsight-Anwendung in Ihren Clustern installieren.
 - [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md): Enthält Informationen zum Installieren und Testen benutzerdefinierter HDInsight-Anwendungen.
 
  
@@ -38,7 +39,7 @@ Darüber hinaus benötigen Sie ein registriertes Entwicklerkonto. Informationen 
 
 ## Definieren der Anwendung
 
-Die Veröffentlichung von Anwendungen im Azure Marketplace umfasst zwei Schritte. Im ersten Schritt geben Sie durch Definieren einer Datei vom Typ **createUiDef.json** an, mit welchen Clustern Ihre Anwendung kompatibel ist. Im zweiten Schritt wird dann die Vorlage über das Azure-Portal veröffentlicht. Im Anschluss sehen Sie ein Beispiel für eine Datei vom Typ „createUiDef.json“:
+Die Veröffentlichung von Anwendungen im Azure Marketplace umfasst zwei Schritte. Im ersten Schritt geben Sie durch das Definieren einer Datei vom Typ **createUiDef.json** an, mit welchen Clustern Ihre Anwendung kompatibel ist. Im zweiten Schritt wird dann die Vorlage über das Azure-Portal veröffentlicht. Im Anschluss sehen Sie ein Beispiel für eine Datei vom Typ „createUiDef.json“:
 
 	{
 		"handler": "Microsoft.HDInsight",
@@ -89,13 +90,14 @@ Gehen Sie zum Veröffentlichen einer HDInsight-Anwendung wie folgt vor:
 3. Klicken Sie auf **Create Dev Center account and join the Azure program** (Dev Center-Konto erstellen und am Azure-Programm teilnehmen), um Ihr Unternehmen zu registrieren, sofern Sie diesen Schritt noch nicht ausgeführt haben. Weitere Informationen finden Sie unter [Erstellen eines Microsoft-Entwicklerkontos](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md).
 4. Klicken Sie auf **Define some Topologies to get Started** (Definieren einiger Topologien für den Einstieg). Eine Lösungsvorlage ist allen zugehörigen Topologien übergeordnet. Sie können in einem Angebot/einer Lösungsvorlage mehrere Topologien definieren. Wenn ein Angebot in die Stagingumgebung überführt wird, werden alle Topologien einbezogen.
 5. Fügen Sie eine neue Version hinzu.
-6. Laden Sie die ZIP-Datei hoch, die Sie im Schritt [Packen der Anwendung](#package-application) vorbereitet haben.  
+6. Laden Sie die ZIP-Datei hoch, die Sie im Schritt [Packen der Anwendung](#package-application) vorbereitet haben.
 7. Klicken Sie auf **Zertifizierung anfordern**. Das Microsoft-Zertifizierungsteam prüft die Dateien und zertifiziert die Topologie.
 
 ## Nächste Schritte
 
+- [Installieren von HDInsight-Anwendungen](hdinsight-apps-install-applications.md): Hier erfahren Sie, wie Sie eine HDInsight-Anwendung in Ihren Clustern installieren.
 - [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md): Hier erfahren Sie, wie Sie eine nicht veröffentlichte HDInsight-Anwendung in HDInsight bereitstellen.
 - [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md): Hier erfahren Sie, wie Sie mithilfe der Skriptaktion zusätzliche Anwendungen installieren.
-- [Erstellen Linux-basierter Hadoop-Cluster in HDInsight mithilfe von ARM-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Hier erfahren Sie, wie Sie ARM-Vorlagen für die Erstellung von HDInsight-Clustern aufrufen.
+- [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight mit Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Hier erfahren Sie, wie Sie ARM-Vorlagen für die Erstellung von HDInsight-Clustern aufrufen.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

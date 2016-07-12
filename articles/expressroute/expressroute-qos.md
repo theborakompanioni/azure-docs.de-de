@@ -21,7 +21,7 @@ Skype for Business umfasst verschiedene Workloads mit jeweils unterschiedlichen 
 
 ![](./media/expressroute-qos/expressroute-qos.png)
 
->[AZURE.NOTE] Die QoS-Anforderungen gelten nur für das Microsoft-Peering.
+>[AZURE.NOTE] Die QoS-Anforderungen gelten nur für das Microsoft-Peering. Die DSCP-Werte in Ihrem Netzwerkdatenverkehr, der über öffentliches und privates Azure-Peering empfangen wird, werden auf 0 zurückgesetzt.
 
 Die folgende Tabelle enthält eine Liste mit DSCP-Markierungen, die von Skype for Business verwendet werden. Weitere Informationen finden Sie unter [Verwalten der Dienstqualität für Skype for Business](https://technet.microsoft.com/library/gg405409.aspx).
 
@@ -50,4 +50,4 @@ Die folgende Tabelle enthält eine Liste mit DSCP-Markierungen, die von Skype fo
 	- [Konfigurieren des Routings](expressroute-howto-routing-classic.md)
 	- [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

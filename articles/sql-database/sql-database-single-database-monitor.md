@@ -14,7 +14,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="06/15/2016"
+	ms.date="07/06/2016"
 	ms.author="carlrab"/>
 
 # Überwachen der Datenbankleistung mithilfe von Azure SQL-Datenbank
@@ -25,9 +25,9 @@ Die Überwachung der Leistung einer SQL-Datenbank in Azure beginnt mit der Über
 Im [Azure-Portal](https://portal.azure.com/) können Sie die Nutzung einer Einzeldatenbank überwachen, indem Sie die Datenbank auswählen und auf das Diagramm **Überwachung** klicken. Dadurch wird das Fenster **Metrik** geöffnet, in dem Sie durch Klicken auf die Schaltfläche **Diagramm bearbeiten** Änderungen vornehmen können. Fügen Sie die folgenden Metriken hinzu:
 
 - CPU-Prozentsatz
-- DTU Percentage
-- Data IO Percentage
-- Storage Percentage
+- DTU-Prozentsatz
+- E/A-Prozentsatz für Daten
+- Datenbankgröße als Prozentsatz
 
 Nachdem Sie diese Metriken hinzugefügt haben, können Sie sie im Diagramm **Überwachung** mit weiteren Details im Fenster **Metrik** anzeigen. Alle vier Metriken geben die durchschnittliche prozentuale Nutzung relativ zur **DTU** der Datenbank an. Ausführliche Informationen zu DTUs finden Sie im Artikel [Dienstebenen](sql-database-service-tiers.md).
 
@@ -47,4 +47,4 @@ Dieselben Metriken, die im Portal bereitgestellt werden, sind auch über Systems
 
 In Pools für elastische Datenbanken können Sie Einzeldatenbanken im Pool mit den in diesem Abschnitt beschriebenen Methoden überwachen. Sie können den Pool jedoch auch als Ganzes überwachen. Informationen dazu finden Sie unter [Erstellen und Verwalten eines elastischen Azure SQL-Datenbankpools](sql-database-elastic-pool-manage-portal.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

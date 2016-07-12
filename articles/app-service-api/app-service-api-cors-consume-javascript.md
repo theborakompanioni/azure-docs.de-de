@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/31/2016"
+	ms.date="05/27/2016"
 	ms.author="tdykstra"/>
 
 # Nutzen einer API-App aus JavaScript mit CORS
@@ -22,7 +22,7 @@ App Service bietet integrierte Unterstützung für [CORS (Cross Origin Resource 
 
 Dieser Artikel enthält zwei Abschnitte:
 
-* Im Abschnitt [Konfigurieren von CORS](#corsconfig) wird allgemein beschrieben, wie Sie CORS für eine API-App, Web-App oder mobile App konfigurieren. Diese Informationen gelten gleichermaßen für alle Frameworks, die von App Service unterstützt werden, z.B. .NET, Node.js und Java. 
+* Im Abschnitt [Konfigurieren von CORS](#corsconfig) wird allgemein beschrieben, wie Sie CORS für eine API-App, Web-App oder mobile App konfigurieren. Diese Informationen gelten gleichermaßen für alle Frameworks, die von App Service unterstützt werden, z.B. .NET, Node.js und Java.
 
 * Der Artikel beginnt mit dem Abschnitt [Fortsetzen der Erste-Schritte-Tutorials für .NET](#tutorialstart) und ist ein Tutorial, mit dem die CORS-Unterstützung veranschaulicht wird. Hierfür wird fortgeführt, was Sie im [ersten Tutorial zu den ersten Schritten mit API-Apps](app-service-api-dotnet-get-started.md) begonnen haben.
 
@@ -210,7 +210,7 @@ In diesem Abschnitt konfigurieren Sie die CORS-Einstellung in Azure für die ToD
 
 ### Testen der Anwendung mit Aktivierung von CORS
 
-* Öffnen Sie einen Browser mit der HTTPS-URL der Web-App. 
+* Öffnen Sie einen Browser mit der HTTPS-URL der Web-App.
 
 	Dieses Mal können Sie für die Anwendung Aufgabenelemente anzeigen, hinzufügen, bearbeiten und löschen.
 
@@ -285,4 +285,4 @@ Weitere Informationen zu Visual Studio-Features, mit denen die Problembehandlung
 
 In diesem Artikel haben Sie erfahren, wie Sie App Service-CORS-Unterstützung aktivieren, sodass der JavaScript-Clientcode eine API in einer anderen Domäne aufrufen kann. Wenn Sie mehr über API-Apps erfahren möchten, lesen Sie die [Einführung in die Authentifizierung in App Service](../app-service/app-service-authentication-overview.md), und wechseln Sie dann zum Tutorial [Benutzerauthentifizierung für API-Apps](app-service-api-dotnet-user-principal-auth.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

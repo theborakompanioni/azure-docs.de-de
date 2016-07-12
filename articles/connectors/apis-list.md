@@ -17,7 +17,7 @@
 	ms.date="05/31/2016"
 	ms.author="deonhe"/>
 
-# Liste verwalteter Connectors
+# Liste der Connectors
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps. Um die Schemaversion 2014-12-01-preview aufzurufen, klicken Sie auf [Liste der Connectors](../app-service-logic/app-service-logic-connectors-list.md).
 
@@ -25,20 +25,28 @@ Informationen zu Preisen und eine Liste der auf den einzelnen Dienstebenen verf�
 
 > [AZURE.NOTE] Wenn Sie Azure-Logik-Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, besuchen Sie [Logik-App testen](https://tryappservice.azure.com/?appservice=logic). Sie können sofort eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
+## Standardconnectors
+
 Wählen Sie ein Symbol aus, um zu erfahren, wie Sie über diese Connectors schnell Apps zum Aufrufen der Dienste erstellen können. Diese Connectors können zum Erstellen von Logik-Apps, PowerApps und Flows verwendet werden.
 
 |Connectors||||
 |-----------|-----------|-----------|-----------|
-|[![API-Symbol][blobicon]<br/>**Azure Blob**][azureblobdoc]|[![API-Symbol][boxicon]<br/>**Box**][boxDoc]|[![API-Symbol][crmonlineicon]<br/>**CRM Online**][crmonlinedoc]|[![API-Symbol][dropboxicon]<br/>**Dropbox**][dropboxdoc]|
+|[![API-Symbol][blobicon]<br/>**Azure-Blob**][azureblobdoc]|[![API-Symbol][boxicon]<br/>**Box**][boxDoc]|[![API-Symbol][crmonlineicon]<br/>**CRM Online**][crmonlinedoc]|[![API-Symbol][dropboxicon]<br/>**Dropbox**][dropboxdoc]|
 |[![API-Symbol][facebookicon]<br/>**Facebook**][facebookdoc]|[![API-Symbol][ftpicon]<br/>**FTP**][ftpdoc]|[![API-Symbol][githubicon]<br/>**GitHub**][githubdoc]|[![API-Symbol][googledriveicon]<br/>**Google Drive**][googledrivedoc]|
-|[![API-Symbol][mailchimpicon]<br/>**MailChimp**][mailchimpdoc]|[![API-Symbol][microsofttranslatoricon]<br/>**Translator**][microsofttranslatordoc]|[![API-Symbol][office365icon]<br/>**Office 365**<br/>**Outlook**][office365outlookdoc]|[![API-Symbol][office365icon]<br/>**Office 365**<br/>**Benutzer**][office365usersdoc]|
+|[![API-Symbol][mailchimpicon]<br/>**MailChimp**][mailchimpdoc]|[![API-Symbol][microsofttranslatoricon]<br/>**Translator**][microsofttranslatordoc]|[![API-Symbol][office365icon]<br/>**Office 365**<br/>**Outlook**][office365outlookdoc]|[![API-Symbol][office365icon]<br/>**Office 365**<br/>**Users**][office365usersdoc]|
 |[![API-Symbol][office365icon]<br/>**Office 365**<br/>**Video**][office365videodoc]|[![API-Symbol][onedriveicon]<br/>**OneDrive**][onedrivedoc]|[![API-Symbol][onedriveicon]<br/>**OneDrive<br/>for Business**][onedriveforbusinessdoc]|[![API-Symbol][outlookicon]<br/>**Outlook**][outlookdoc]|
 |[![API-Symbol][projectonlineicon]<br/>**Project<br/>Online**][projectonlinedoc]|[![API-Symbol][rssicon]<br/>**RSS**][rssdoc]|[![API-Symbol][salesforceicon]<br/>**Salesforce**][salesforcedoc]|[![API-Symbol][sendgridicon]<br/>**SendGrid**][sendgriddoc]|
 |[![API-Symbol][servicebusicon]<br/>**Service Bus**][servicebusdoc]|[![API-Symbol][sftpicon]<br/>**SFTP**][sftpdoc]|[![API-Symbol][sharepointicon]<br/>**SharePoint**<br/>**Online**][sharepointdoc]|[![API-Symbol][slackicon]<br/>**Slack**<br/>][slackdoc]|
 |[![API-Symbol][smtpicon]<br/>**SMTP**][smtpdoc]|[![API-Symbol][sqlicon]<br/>**SQL Azure**][sqldoc]|[![API-Symbol][trelloicon]<br/>**Trello**][trellodoc]|[![API-Symbol][twilioicon]<br/>**Twilio**][twiliodoc]|
 |[![API-Symbol][twittericon]<br/>**Twitter**][twitterdoc]|[![API-Symbol][wunderlisticon]<br/>**Wunderlist**][wunderlistdoc]|[![API-Symbol][yammericon]<br/>**Yammer**][yammerdoc] | |
 
-> [AZURE.NOTE] Wenn Sie Logik-Apps mit dem Schema „2014-12-01-preview“ erstellt haben, werden Sie bemerken, dass die Enterprise Integration-Connectors, z.B. für BizTalk, oben nicht aufgeführt sind. Wir wissen, dass dies wichtig ist, und wir arbeiten hart daran, diese schnellstmöglich für Sie bereitzustellen. Wir können derzeit zwar noch kein genaues Verfügbarkeitsdatum angeben, aber diese Aufgabe gehört bei uns zu den Aufgaben mit der höchsten Priorität. In der Zwischenzeit können Sie auf Ihre [v1-APIs und BizTalk-APIs über Logik-Apps zugreifen](https://blogs.msdn.microsoft.com/logicapps/2016/02/25/accessing-v1-apis-and-biztalk-apis-from-logic-apps/). Vielen Dank für Ihr Verständnis. Halten Sie sich hierüber auf dem Laufenden.
+## Enterprise Integration Pack-Connectors (EIP)
+Verwenden Sie die EIP-Connectors zum Erstellen von Logik-Apps für B2B-Szenarien, die EAI und EDI umfassen.
+ 
+|EIP-Connectors ||||
+|-----------|-----------|-----------|-----------|
+|[![API-Symbol][as2icon]<br/>**AS2-</br>Codierung/Decodierung**][as2doc]|[![API-Symbol][x12icon]<br/>**X12-</br>Codierung/Decodierung**][x12Doc]|[![API-Symbol][xmlvalidateicon]<br/>**XML-<br/>Überprüfung**][xmlvalidatedoc]|[![API-Symbol][xmltransformicon]<br/>**XML-<br/>Transformation**][xmltransformdoc]|
+|[![API-Symbol][flatfileicon]<br/>**Flatfile</br>Codierung**][flatfiledoc]|[![API-Symbol][flatfiledecodeicon]<br/>**Flatfile-</br>Decodierung**][flatfiledecodedoc]|||
 
 
 ### Connectors können Trigger sein.
@@ -54,10 +62,7 @@ Es gibt zwei Arten von Triggern:
 Connectors können innerhalb Ihrer Apps auch als Aktionen verwendet werden. Aktionen sind hilfreich für die Suche nach Daten, die dann bei der Ausführung der App verwendet werden können. Beispielsweise kann es sein, dass Sie bei der Verarbeitung einer Bestellung Daten in einer SQL-Datenbank suchen müssen. Oder Sie müssen möglicherweise Daten in eine Zieltabelle schreiben oder in dieser aktualisieren oder löschen. Sie können dazu die Aktionen verwenden, die von den Connectors bereitgestellt werden. Aktionen sind den in den Swagger-Metadaten definierten Vorgängen zugeordnet.
 
 
-[Neuigkeiten](../app-service-logic/app-service-logic-schema-2015-08-01.md)  
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)  
-[Erste Schritte mit PowerApps](../power-apps/powerapps-get-started-azure-portal.md)  
-[Migrieren vorhandener Logik-Apps zur neuesten Schemaversion](connectors-schema-migration.md)
+[Neuigkeiten](../app-service-logic/app-service-logic-schema-2015-08-01.md) [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md) [Erste Schritte mit PowerApps](../power-apps/powerapps-get-started-azure-portal.md) [Migrieren vorhandener Logik-Apps zur neuesten Schemaversion](connectors-schema-migration.md)
 
 <!--Connectors Documentation-->
 [azureblobdoc]: ./connectors-create-api-azureblobstorage.md "Verbindung mit Azure-Blob zum Verwalten der Dateien in Ihrem Blobcontainer."
@@ -94,6 +99,12 @@ Connectors können innerhalb Ihrer Apps auch als Aktionen verwendet werden. Akti
 [twitterdoc]: ./connectors-create-api-twitter.md "Stellt eine Verbindung mit Twitter her und dient u. a. zum Abrufen von Zeitachsen und Posten von Tweets."
 [wunderlistdoc]: ./connectors-create-api-wunderlist.md "Behalten Sie den Überblick."
 [yammerdoc]: ./connectors-create-api-yammer.md "Stellt eine Verbindung mit Yammer her, um Nachrichten zu posten und neue Nachrichten abzurufen."
+[as2doc]: ../app-service-logic/app-service-logic-enterprise-integration-as2.md "Informationen zu Enterprise Integration – AS2"
+[x12doc]: ../app-service-logic/app-service-logic-enterprise-integration-x12.md "Informationen zu Enterprise Integration – X12"
+[flatfiledoc]: ../app-service-logic/app-service-logic-enterprise-integration-flatfile.md "Informationen zu Enterprise Integration – Flatfile"
+[flatfiledecodedoc]: ../app-service-logic/app-service-logic-enterprise-integration-flatfile.md "Informationen zu Enterprise Integration – Flatfile"
+[xmlvalidatedoc]: ../app-service-logic/app-service-logic-enterprise-integration-xml.md "Informationen zu Enterprise Integration – XML-Überprüfung"
+[xmltransformdoc]: ../app-service-logic/app-service-logic-enterprise-integration-transform.md "Informationen zu Enterprise Integration – Transformationen"
 
 <!--Icon references-->
 [blobicon]: ./media/apis-list/blobicon.png
@@ -127,5 +138,11 @@ Connectors können innerhalb Ihrer Apps auch als Aktionen verwendet werden. Akti
 [twittericon]: ./media/apis-list/twittericon.png
 [wunderlisticon]: ./media/apis-list/wunderlisticon.png
 [yammericon]: ./media/apis-list/yammericon.png
+[as2icon]: ./media/apis-list/as2new.png
+[x12icon]: ./media/apis-list/x12new.png
+[flatfileicon]: ./media/apis-list/flatfileencoding.png
+[flatfiledecodeicon]: ./media/apis-list/flatfiledecoding.png
+[xmlvalidateicon]: ./media/apis-list/xmlvalidation.png
+[xmltransformicon]: ./media/apis-list/xsltransform.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

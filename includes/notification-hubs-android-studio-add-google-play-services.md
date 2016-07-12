@@ -13,16 +13,14 @@
 
 4. Fügen Sie diese Zeile unter *dependencies* hinzu:
 
-   		compile 'com.google.android.gms:play-services-gcm:8.4.0'
+   		compile 'com.google.android.gms:play-services-gcm:9.2.0'
 
-5. Ändern Sie unter *defaultConfig* den Wert von *minSdkVersion* in 9.
- 
-6. Klicken Sie auf der Symbolleiste auf das Symbol **Sync Project with Gradle Files**.
+5. Klicken Sie auf der Symbolleiste auf das Symbol **Sync Project with Gradle Files**.
 
-7. Öffnen Sie die Datei **AndroidManifest.xml**, und fügen Sie dem *application*-Tag das folgende Tag hinzu.
+6. Öffnen Sie die Datei **AndroidManifest.xml**, und fügen Sie dem *application*-Tag das folgende Tag hinzu.
 
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0706_2016-->

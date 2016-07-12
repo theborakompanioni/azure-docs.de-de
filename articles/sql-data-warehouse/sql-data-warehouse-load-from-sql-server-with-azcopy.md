@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/08/2016"
+   ms.date="06/30/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 
@@ -56,7 +56,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 "
 ```
 
->[AZURE.NOTE] Unter [Tabellenentwurf in SQL Data Warehouse][] und [CREATE TABLE][] finden Sie weitere Informationen zum Erstellen von Tabellen in SQL Data Warehouse und den in der WITH-Klausel verfügbaren Optionen.
+>[AZURE.NOTE] In der [Übersicht über Tabellen][] und unter [CREATE TABLE][] finden Sie weitere Informationen zum Erstellen von Tabellen in SQL Data Warehouse und den in der WITH-Klausel verfügbaren Optionen.
 
 ### Schritt 2: Erstellen einer Quelldatendatei
 
@@ -159,10 +159,10 @@ Eine Übersicht über das Laden finden Sie unter [Laden von Daten in SQL Data Wa
 
 <!--Article references-->
 
-[Laden von Daten in SQL Data Warehouse]: sql-data-warehouse-overview-load.md
-[Entwicklungsübersicht für SQL Data Warehouse]: sql-data-warehouse-overview-develop.md
-[Tabellenentwurf in SQL Data Warehouse]: sql-data-warehouse-develop-table-design.md
-[Statistiken]: sql-data-warehouse-develop-statistics.md
+[Laden von Daten in SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
+[Entwicklungsübersicht für SQL Data Warehouse]: ./sql-data-warehouse-overview-develop.md
+[Übersicht über Tabellen]: ./sql-data-warehouse-tables-overview.md
+[Statistiken]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx
@@ -171,4 +171,4 @@ Eine Übersicht über das Laden finden Sie unter [Laden von Daten in SQL Data Wa
 <!--Other Web references-->
 [Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="get-started-article"
- ms.date="03/09/2016"
+ ms.date="06/30/2016"
  ms.author="krisragh"/>
 
 # Konzepte, Terminologie und Entitätshierarchie für Scheduler
@@ -45,7 +45,7 @@ Es gibt mehrere Arten von Aufträgen: HTTP-Aufträge (z.B. HTTPS-Aufträge mit S
 
 Ein geplanter Auftrag setzt sich grundsätzlich aus mehreren Komponenten zusammen:
 
-- Die Aktion, die ausgeführt werden soll, wenn der Zeitgeber die Aktion auslöst.  
+- Die Aktion, die ausgeführt werden soll, wenn der Zeitgeber die Aktion auslöst.
 
 - (Optional) Die Zeit, zu der der Auftrag ausgeführt werden soll.
 
@@ -109,7 +109,7 @@ Der folgende Code bietet ein umfangreiches Beispiel für einen geplanten Auftrag
 
 Wie im obigen geplanten Beispielauftrag zu sehen, besteht eine Auftragsdefinition aus mehreren Komponenten:
 
-- Startzeit („startTime“)  
+- Startzeit („startTime“)
 
 - Aktion („action“), einschließlich Fehleraktion („errorAction“)
 
@@ -160,7 +160,7 @@ Unten ist ein Beispiel für eine Service Bus-Warteschlangenaktion angegeben:
 
 Die Wiederholung besteht aus mehreren Teilen:
 
-- Häufigkeit: in Minuten, Stunden, Tagen, Wochen, Monaten oder Jahren  
+- Häufigkeit: in Minuten, Stunden, Tagen, Wochen, Monaten oder Jahren
 
 - Intervall: Intervall mit der angegebenen Häufigkeit für die Wiederholung
 
@@ -214,4 +214,4 @@ Das Wiederholungsintervall, das durch das Objekt **retryInterval** angegeben wir
 
  [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->
