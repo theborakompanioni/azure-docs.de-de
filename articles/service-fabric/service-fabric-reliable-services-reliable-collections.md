@@ -89,7 +89,6 @@ Die Kompatibilitätsmatrix für Sperren finden Sie unten:
 
 | Anforderung \ Gewährt | Keine | Shared  | Aktualisieren | Exklusiv |
 | ----------------- | :----------- | :----------- | :---------- | :----------- |
-
 | Shared  | Kein Konflikt | Kein Konflikt | Konflikt: | Konflikt: |
 | Aktualisieren | Kein Konflikt | Kein Konflikt | Konflikt: | Konflikt: |
 | Exklusiv | Kein Konflikt | Konflikt: | Konflikt: | Konflikt: |
