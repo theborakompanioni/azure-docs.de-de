@@ -543,7 +543,7 @@ In diesem Schritt erstellen Sie einen verknüpften Dienst für Ihr **Azure Batch
 
     4.  Geben Sie die Batch-URI für die JSON-Eigenschaft **batchUri** ein.
     
-		> [AZURE.IMPORTANT] Die **URL** auf dem Blatt **Azure-Batch-Konto** hat folgendes Format: <Kontoname>.<Region>.batch.azure.com. Für die **batchUri** -Eigenschaft in JSON müssen Sie aus der URL **„Kontoname“ entfernen**. Beispiel: Example: „batchUri“: „https://eastus.batch.azure.com“.
+		> [AZURE.IMPORTANT] Die **URL** auf dem Blatt **Azure-Batch-Konto** hat folgendes Format: \<Kontoname\>.\<Region\>.batch.azure.com. Für die **batchUri** -Eigenschaft in JSON müssen Sie aus der URL **„Kontoname“ entfernen**. Beispiel: Example: „batchUri“: „https://eastus.batch.azure.com“.
 
         ![](./media/data-factory-data-processing-using-batch/image9.png)
 
