@@ -38,8 +38,7 @@ Wählen Sie ein Symbol aus, um zu erfahren, wie Sie über diese Connectors schne
 |[![API-Symbol][projectonlineicon]<br/>**Project<br/>Online**][projectonlinedoc]|[![API-Symbol][rssicon]<br/>**RSS**][rssdoc]|[![API-Symbol][salesforceicon]<br/>**Salesforce**][salesforcedoc]|[![API-Symbol][sendgridicon]<br/>**SendGrid**][sendgriddoc]|
 |[![API-Symbol][servicebusicon]<br/>**Service Bus**][servicebusdoc]|[![API-Symbol][sftpicon]<br/>**SFTP**][sftpdoc]|[![API-Symbol][sharepointicon]<br/>**SharePoint**<br/>**Online**][sharepointdoc]|[![API-Symbol][slackicon]<br/>**Slack**<br/>][slackdoc]|
 |[![API-Symbol][smtpicon]<br/>**SMTP**][smtpdoc]|[![API-Symbol][sqlicon]<br/>**SQL Azure**][sqldoc]|[![API-Symbol][trelloicon]<br/>**Trello**][trellodoc]|[![API-Symbol][twilioicon]<br/>**Twilio**][twiliodoc]|
-|[![API-Symbol][twittericon]<br/>**Twitter**][twitterdoc]|[![API-Symbol][wunderlisticon]<br/>**Wunderlist**][wunderlistdoc]|
-[![API-Symbol][yammericon]<br/>**Yammer**][yammerdoc] | |
+|[![API-Symbol][twittericon]<br/>**Twitter**][twitterdoc]|[![API-Symbol][wunderlisticon]<br/>**Wunderlist**][wunderlistdoc]|[![API-Symbol][yammericon]<br/>**Yammer**][yammerdoc] | |
 
 ## Enterprise Integration Pack-Connectors (EIP)
 Verwenden Sie die EIP-Connectors zum Erstellen von Logik-Apps für B2B-Szenarien, die EAI und EDI umfassen.
