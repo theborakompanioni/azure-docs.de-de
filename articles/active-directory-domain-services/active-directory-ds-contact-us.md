@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/25/2016"
+	ms.date="07/06/2016"
 	ms.author="maheshu"/>
 
 
@@ -36,4 +36,4 @@ Sie können uns Ihr Feedback zu den Azure AD-Domänendiensten auch gerne über d
 
 Stellen Sie Ihrer Frage oder Ihrem Feedback das Kürzel **„AADDS“** voran, um uns zu erreichen.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

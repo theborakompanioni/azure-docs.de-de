@@ -46,6 +46,7 @@ Um Stretch-Datenbank auf dem Server manuell zu aktivieren, führen Sie **sp\_con
 ```
 EXEC sp_configure 'remote data archive' , '1';
 GO
+
 RECONFIGURE;
 GO
 ```
@@ -62,6 +63,10 @@ Für das Aktivieren von Stretch-Datenbank für eine Datenbank oder eine Tabelle 
 1.  Wählen Sie vor Beginn einen vorhandenen Azure-Server für die Daten aus, die Stretch-Datenbank migriert, oder erstellen Sie einen neuen Azure-Server.
 
 2.  Erstellen Sie auf dem Azure-Server eine Firewallregel mit dem IP-Adressbereich der SQL Server-Instanz, sodass SQL Server mit dem Remoteserver kommunizieren kann.
+
+    Sie können die benötigten Werte leicht ermitteln und die Firewallregel erstellen, indem Sie versuchen, über den Objekt-Explorer in SQL Server Management Studio (SSMS) eine Verbindung mit dem Azure-Server herzustellen. SSMS unterstützt Sie beim Erstellen der Regel, indem das folgende Dialogfeld geöffnet wird, in dem die erforderlichen IP-Adressenwerte bereits enthalten sind.
+
+	![Erstellen einer Firewallregel in SSMS][FirewallRule]
 
 3.  Zum Konfigurieren einer SQL Server-Datenbank für Stretch-Datenbank muss die Datenbank über einen Datenbankhauptschlüssel verfügen. Der Datenbankhauptschlüssel sichert die Anmeldeinformationen, die Stretch-Datenbank für die Verbindung mit der Remotedatenbank verwendet. Hier sehen Sie ein Beispiel für das Erstellen eines neuen Datenbank-Hauptschlüssels.
 
@@ -136,4 +141,6 @@ Für das Aktivieren von Stretch-Datenbank für eine Datenbank oder eine Tabelle 
 
 [ALTER DATABASE SET-Optionen (Transact-SQL)](https://msdn.microsoft.com/library/bb522682.aspx)
 
-<!---HONumber=AcomDC_0629_2016-->
+[FirewallRule]: ./media/sql-server-stretch-database-enable-database/firewall.png
+
+<!---HONumber=AcomDC_0706_2016-->

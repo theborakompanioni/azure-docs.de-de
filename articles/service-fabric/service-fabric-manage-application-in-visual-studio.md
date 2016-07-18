@@ -36,23 +36,24 @@ Beim Bereitstellen einer Anwendung erfolgen die folgenden Schritte in einem einf
 
 Sie können in Visual Studio auch **F5** drücken, um die Anwendung bereitzustellen und den Debugger an alle Anwendungsinstanzen anzufügen. Sie können mithilfe von **STRG+F5** eine Anwendung ohne Debuggen bereitstellen oder sie in einem lokalen bzw. Remotecluster mit dem Veröffentlichungsprofil veröffentlichen. Weitere Informationen finden Sie unter [Veröffentlichen einer Anwendung in einem Remotecluster mit Visual Studio](service-fabric-publish-app-remote-cluster.md).
 
-### Beibehalten von Daten zwischen Testläufen
+### Debugmodus für die Anwendung
 
-Häufig testen Sie Dienste lokal, indem Sie Testdateneingaben hinzufügen, einige Codeblöcke ändern und dann erneut lokal debuggen. Die Service Fabric-Tools von Visual Studio bieten eine nützliche Eigenschaft namens **Preserve Data on Start**, mit der die in der vorherigen Sitzung eingegebenen Daten beibehalten werden, sodass Sie sie erneut verwenden können.
+Während des lokalen Debuggens des Diensts kann es vorkommen, dass Sie die vorhandene Anwendung und die Daten beibehalten möchten. Die Visual Studio Service Fabric-Tools enthalten eine Eigenschaft mit dem Namen **Application Debug Mode**. Hiermit wird gesteuert, ob **F5** verwendet werden soll, um die Anwendung zu deinstallieren oder nach Abschluss einer Debugsitzung beizubehalten.
 
-#### So aktivieren Sie die Eigenschaft „Preserve Data on Start“
+#### So legen Sie die „Application Debug Mode“-Eigenschaft fest
 
 1. Wählen Sie im Kontextmenü des Anwendungsprojekts **Eigenschaften** aus (oder drücken Sie **F4**).
-1. Legen Sie im Fenster **Eigenschaften** die Eigenschaft **Preserve Data on Start** auf **Ja** fest.
+2. Legen Sie im Eigenschaftenfenster die **Application Debug Mode**-Eigenschaft entweder auf **Remove** (Entfernen) oder **Auto Upgrade** (Automatisches Upgrade) fest.
 
-	![Festlegen der Eigenschaft „Preserve Data on Start“][preservedata]
+![Festlegen der „Application Debug Mode“-Eigenschaft][debugmodeproperty]
 
-Wenn Sie die Anwendung erneut ausführen, behandelt das Bereitstellungsskript die Bereitstellung jetzt als Upgrade und verwendet den nicht überwachten automatischen Modus, um die Anwendung schnell auf eine neuere Version mit angefügter Datumszeichenfolge zu aktualisieren. Beim Upgradevorgang werden alle Daten beibehalten, die Sie in einer vorherigen Debugsitzung eingegeben haben.
+Durch das Festlegen dieses Eigenschaftswerts auf **Auto Upgrade** (Automatisches Upgrade) wird die Anwendung im lokalen Cluster weiter ausgeführt. Mit der nächsten Betätigung von **F5** wird die Bereitstellung wie ein Upgrade behandelt, indem der nicht überwachte automatische Modus verwendet wird, um die Anwendung schnell auf eine neuere Version mit angehängter Datumszeichenfolge zu aktualisieren. Beim Upgradevorgang werden alle Daten beibehalten, die Sie in einer vorherigen Debugsitzung eingegeben haben.
 
-![Beispiel der neuen Anwendungsversion mit angefügtem Datum][preservedate]
+![Beispiel für neue Anwendungsversion mit angefügtem Datum (date1)][preservedate]
 
 Die Daten werden mithilfe der Upgradefunktion der Service Fabric-Plattform beibehalten. Weitere Informationen zum Upgrade einer Anwendung finden Sie unter [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md)
 
+**Hinweis:** Diese Eigenschaft ist in den Versionen vor Version 1.1 der Service Fabric-Tools für Visual Studio noch nicht enthalten. Verwenden Sie in diesen früheren Versionen die **Preserve Data On Start**-Eigenschaft, um das gleiche Verhalten zu erzielen.
 ## Fügen Sie der Service Fabric-Anwendung einen Dienst hinzu.
 
 Sie können der Anwendung neue Fabric-Dienste hinzufügen, um die Funktionalität der Anwendung zu erweitern. Um sicherzustellen, dass der Dienst in das Anwendungspaket aufgenommen wird, fügen Sie den Dienst über das Menüelement **Neuer Fabric-Dienst** hinzu.
@@ -96,5 +97,6 @@ Sie können die Bereitstellung eines Anwendungstyps in Ihrem lokalen Cluster mit
 [newserviceapplicationmanifest]: ./media/service-fabric-manage-application-in-visual-studio/newserviceapplicationmanifest.png
 [preservedata]: ./media/service-fabric-manage-application-in-visual-studio/preservedata.png
 [preservedate]: ./media/service-fabric-manage-application-in-visual-studio/preservedate.png
+[debugmodeproperty]: ./media/service-fabric-manage-application-in-visual-studio/debugmodeproperty.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -52,10 +52,10 @@ Bei lokaler Verwendung des Multi-Factor Authentication (MFA)-Servers werden die 
 - E-Mail-Adresse: optional
 - Rufnummer: für eine Anruf- oder SMS-Authentifizierung
 - Gerätetoken: für die Authentifizierung einer mobilen App
-- Authentifizierungsmodus 
-- Authentifizierungsergebnis 
-- Name des MFA-Servers 
-- MFA-Server-IP 
+- Authentifizierungsmodus
+- Authentifizierungsergebnis
+- Name des MFA-Servers
+- MFA-Server-IP
 - Client-IP – falls verfügbar
 
 
@@ -83,7 +83,7 @@ Abrechnungsmodell | Preis
 Abrechnung pro Benutzer (Azure-Zahlungsverpflichtung)| 1,40 US-Dollar pro Monat (unbegrenzte Authentifizierungen)
 Abrechnung pro Authentifizierung (Azure-Zahlungsverpflichtung)|1,40 US-Dollar für 10 Authentifizierungen
 Jahreslizenz für einen Benutzer (Direktbezug)|1,40 US-Dollar pro Monat (unbegrenzte Authentifizierungen)
-Jahreslizenz für einen Benutzer (Volumenlizenzprogramm)|Wenden Sie sich an Ihren [Enterprise Agreement-Vertreter](https://www.microsoft.com/licensing/licensing-programs/enterprise.aspx).
+Jahreslizenz für einen Benutzer (Volumenlizenzprogramm)|Wenden Sie sich an Ihren [Enterprise Agreement-Vertreter](https://www.microsoft.com/de-DE/licensing/licensing-programs/enterprise.aspx).
 
 **F: Werden die Kosten für das Abrechnungsmodell „pro Benutzer“ basierend auf der Anzahl der Benutzer ermittelt, für die Multi-Factor Authentication aktiviert wurde, oder basierend auf der Anzahl der Benutzer, die Überprüfungen durchführen?**
 
@@ -132,7 +132,7 @@ Sie können alle App-Kennwörter des Benutzers löschen, um nicht autorisierte Z
 **F: Wie gehe ich vor, wenn die Anmeldung eines Benutzers in Nicht-Browser-Apps fehlschlägt?**
 
 - Benutzer, für die Multi-Factor Authentication aktiviert wurde, benötigen ein App-Kennwort für die Anmeldung in einigen Nicht-Browser-Apps.
-- Die betreffenden Benutzer müssen die Anmeldeinformationen in der Anwendung löschen, die Anwendung neu starten und sich dann mit ihrem Benutzernamen und dem App-Kennwort anmelden. 
+- Die betreffenden Benutzer müssen die Anmeldeinformationen in der Anwendung löschen, die Anwendung neu starten und sich dann mit ihrem Benutzernamen und dem App-Kennwort anmelden.
 
 Informationen zum Erstellen von App-Kennwörtern finden Sie in der [Hilfe zu App-Kennwörtern](multi-factor-authentication-end-user-app-passwords.md).
 
@@ -185,4 +185,4 @@ Derzeit kann die zusätzliche Sicherheitsüberprüfung nur für Anwendungen und 
 
 Als Problemumgehung können Sie zusätzlich zu Ihrem normalen Konto ein separates Benutzerkonto für Administratoraufgaben erstellen. Anschließend können Sie die Postfächer beider Konten miteinander verknüpfen, sodass Sie für die Anmeldung bei Outlook lediglich ihr normales Konto benötigen. Weitere Informationen hierzu finden Sie unter [Einem Administrator das Öffnen und Anzeigen des Inhalts des Postfachs eines Benutzers ermöglichen](http://help.outlook.com/141/gg709759(d=loband).aspx?sl=1).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

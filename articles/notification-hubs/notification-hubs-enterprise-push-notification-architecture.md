@@ -4,7 +4,7 @@
 	services="notification-hubs"
 	documentationCenter=""
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/29/2016" 
+	ms.date="06/29/2016" 
 	ms.author="wesmc"/>
 
 # Anleitung für eine unternehmensbezogene Pusharchitektur
@@ -45,7 +45,7 @@ Das Schlüsselelement in dieser Architekturabbildung ist der Dienst Azure Servic
 ###Vorteile:
 
 1. Die Entkopplung von Empfänger (mobile App/mobiler Dienst über Benachrichtigunghub) und Sender (Back-End-Systeme) ermöglicht es, zusätzliche Back-End-Systeme bei minimalen Änderungen zu integrieren.
-2. Hiermit lassen sich auch Szenarios umsetzen, in denen mehrere mobile Apps in der Lage sind, Ereignisse von mehreren Back-End-Systemen zu empfangen.  
+2. Hiermit lassen sich auch Szenarios umsetzen, in denen mehrere mobile Apps in der Lage sind, Ereignisse von mehreren Back-End-Systemen zu empfangen.
 
 ## Beispiel:
 
@@ -57,7 +57,7 @@ Sie sollten die folgenden Lernprogramme durcharbeiten, um sich mit den Konzepten
 
 ###Beispielcode
 
-Der vollständige Beispielcode ist unter [Notification Hubs Samples] \(in englischer Sprache) verfügbar. Der Code ist in drei Komponenten aufgeteilt:
+Der vollständige Beispielcode ist unter [Notification Hubs Samples] (in englischer Sprache) verfügbar. Der Code ist in drei Komponenten aufgeteilt:
 
 1. **EnterprisePushBackendSystem**
 
@@ -271,4 +271,4 @@ Der vollständige Beispielcode ist unter [Notification Hubs Samples] \(in englis
 [Erste Schritte mit Notification Hubs]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [klassischen Azure-Portal]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

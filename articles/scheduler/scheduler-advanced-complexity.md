@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="article"
- ms.date="03/09/2016"
+ ms.date="06/30/2016"
  ms.author="krisragh"/>
 
 # Erstellen komplexer Zeitpläne und erweiterter Serien mit Azure Scheduler  
@@ -132,7 +132,7 @@ Die folgende Tabelle enthält eine ausführliche Beschreibung der Zeitplanelemen
 |:---|:---|:---|
 |**minutes**|Minuten der Stunde, in der der Auftrag ausgeführt wird|<ul><li>Ganze Zahl oder</li><li>Array mit ganzen Zahlen</li></ul>|
 |**hours**|Stunden des Tages, an dem der Auftrag ausgeführt wird|<ul><li>Ganze Zahl oder</li><li>Array mit ganzen Zahlen</li></ul>|
-|**weekDays**|Die Wochentage, an denen der Auftrag ausgeführt wird. Kann nur bei wöchentlicher Häufigkeit angegeben werden.|<ul><li>"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" oder "Sunday"</li><li>Array mit beliebigen der oben angegebenen Werte (maximale Arraygröße: 7)</li></ul>Die Groß-/Kleinschreibung wird NICHT beachtet.|
+|**weekDays**|Die Wochentage, an denen der Auftrag ausgeführt wird. Kann nur bei wöchentlicher Häufigkeit angegeben werden.|<ul><li>"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" oder "Sunday"</li><li>Array mit beliebigen der oben angegebenen Werte (maximale Arraygröße: 7)</li></ul>Die Groß-/Kleinschreibung wird _NICHT_ beachtet.|
 |**monthlyOccurrences**|Bestimmt, an welchen Tagen im Monat der Auftrag ausgeführt wird. Kann nur bei monatlicher Häufigkeit angegeben werden.|<ul><li>Array mit MonthlyOccurence-Objekten:</li></ul> <pre>{ "day": _Tag_,<br /> "occurrence": _Vorkommen_<br />}</pre><p> _Tag_ ist der Wochentag, an dem der Auftrag ausgeführt wird. „{Sunday}“ steht beispielsweise für jeden Sonntag im Monat. (erforderlich)</p><p>_Vorkommen_ steht für den Tag innerhalb des Monats. Mit „{Sunday, -1}“ wird beispielsweise der letzte Sonntag des Monats angegeben. (optional)</p>|
 |**monthDays**|Der Tag des Monats, an dem der Auftrag ausgeführt wird. Kann nur bei monatlicher Häufigkeit angegeben werden.|<ul><li>Beliebiger Wert, für den Folgendes gilt: <= -1 und >= -31</li><li>Beliebiger Wert, für den Folgendes gilt: >= 1 und <= 31</li><li>Array mit den oben genannten Werten</li></ul>|
 
@@ -197,4 +197,4 @@ Bei den folgenden Zeitplänen wird jeweils davon ausgegangen, dass _interval_ au
 
  [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

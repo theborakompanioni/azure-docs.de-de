@@ -19,8 +19,14 @@
 # Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager
 
 > [AZURE.SELECTOR]
-- [Azure PowerShell](powershell-azure-resource-manager.md)
+- [Portal](azure-portal/resource-group-portal.md)
 - [Azure-Befehlszeilenschnittstelle](xplat-cli-azure-resource-manager.md)
+- [Azure PowerShell](powershell-azure-resource-manager.md)
+- [Java](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group/)
+- [Knoten](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
+- [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
+- [Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
+
 
 Mit dem Azure-Ressourcen-Manager wird ein völlig neuer Denkansatz für Azure-Ressourcen eingeführt. Anstatt einzelne Ressourcen zu erstellen und zu verwalten, können Sie sich eine Komplettlösung vorstellen, zum Beispiel einen Blog, eine Fotogalerie, ein SharePoint-Portal oder ein Wiki. Mithilfe eine Vorlage (einer deklarative Darstellung der Lösung) können Sie eine Ressourcengruppe erstellen, die alle Ressourcen enthält, die Sie zum Unterstützen der Lösung brauchen. Anschließend wird diese Ressourcengruppe als logische Einheit verwaltet und bereitgestellt.
 
@@ -31,7 +37,7 @@ In diesem Tutorial erlernen Sie das Verwenden von Azure PowerShell mit dem Azure
 - Firewallregeln, um der Web-App das Verbinden mit der Datenbank zu ermöglichen
 - App Service-Plan zum Bestimmen der Funktionen und Kosten der Web-App
 - Website zum Ausführen der Web-App
-- Webkonfiguration zum Speichern der Verbindungszeichenfolge mit der Datenbank 
+- Webkonfiguration zum Speichern der Verbindungszeichenfolge mit der Datenbank
 - Warnungsregeln zum Überwachen der Leistung und von Fehlern
 - App Insights für die Einstellungen für die automatische Skalierung
 
@@ -43,7 +49,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
   + Sie können [ein Azure-Konto kostenlos erstellen](/pricing/free-trial/?WT.mc_id=A261C142F): Sie erhalten ein Guthaben, das Sie zum Ausprobieren zahlungspflichtiger Azure-Dienste nutzen können, und Sie können das Konto selbst dann behalten und die kostenlosen Azure-Dienste wie Websites nutzen, wenn das Guthaben aufgebraucht ist. Ihre Kreditkarte wird nur dann belastet, wenn Sie Ihre Einstellungen explizit ändern und mit einer Zahlung einverstanden sind.
   
   + Sie können Ihre [Vorteile für MSDN-Abonnenten aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F): Ihr MSDN-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste nutzen können.
-- Azure PowerShell 1.0. Informationen zu dieser Version und deren Installation finden Sie unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](powershell-install-configure.md).
+- Azure PowerShell 1.0. Informationen zu dieser Version und deren Installation finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](powershell-install-configure.md).
 
 Dieses Lernprogramm richtet sich an PowerShell-Anfänger. Es wird aber vorausgesetzt, dass Sie die grundlegenden Konzepte verstehen, z. B. Module, Cmdlets und Sitzungen.
 
@@ -380,4 +386,4 @@ In den obigen Bereitstellungsbeispielen in diesem Thema wurden nur die individue
 - Ein ausführliches Beispiel für das Bereitstellen eines Projekts finden Sie unter [Vorhersagbares Bereitstellen von Microservices in Azure](app-service-web/app-service-deploy-complex-application-predictably.md).
 - Weitere Informationen zur Problembehandlung bei einer nicht erfolgreichen Bereitstellung finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure](./resource-manager-troubleshoot-deployments-powershell.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0706_2016-->

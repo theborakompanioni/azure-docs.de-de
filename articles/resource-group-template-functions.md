@@ -432,7 +432,7 @@ Erstellt einen absoluten URI durch Kombinieren der baseUri- und der relativeUri-
 | baseUri | Ja | Die Zeichenfolge mit dem Basis-URI.
 | relativeUri | Ja | Der Zeichenfolge mit dem relativen URI, die der Zeichenfolge mit dem Basis-URI hinzugefügt werden soll.
 
-Der Wert für den **baseUri**-Parameter kann eine bestimmte Datei enthalten, beim Erstellen des URI wird jedoch nur der Basispfad verwendet. Beispielsweise führt das Übergeben von **http://contoso.com/resources/azuredeploy.json** als BaseUri-Parameter zu einem Basis-URI von **http://contoso.com/resources/**.
+Der Wert für den **baseUri**-Parameter kann eine bestimmte Datei enthalten, beim Erstellen des URI wird jedoch nur der Basispfad verwendet. Beispielsweise führt das Übergeben von **http://contoso.com/resources/azuredeploy.json** als baseUri-Parameter zu einem Basis-URI von **http://contoso.com/resources/**.
 
 Im folgenden Beispiel wird veranschaulicht, wie basierend auf dem Wert der übergeordneten Vorlage eine Verknüpfung zu einer geschachtelten Vorlage erstellt wird.
 
@@ -444,9 +444,9 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit Arr
 
 - [concat](#concat)
 - [Länge](#length)
-- [take](#take)
 - [skip](#skip)
 - [split](#split)
+- [take](#take)
 
 <a id="length" />
 ### Länge
@@ -469,37 +469,6 @@ Sie können auch eine Zeichenfolge verwenden:
     },
     "variables": { 
         "nameLength": "[length(parameters('appName'))]"
-    }
-
-<a id="take" />
-### take
-**take(originalValue, numberToTake)**
-
-Gibt ein Array oder eine Zeichenfolge mit der angegebenen Anzahl von Elementen oder Zeichen vom Anfang des Arrays oder der Zeichenfolge zurück.
-
-| Parameter | Erforderlich | Beschreibung
-| :--------------------------------: | :------: | :----------
-| originalValue | Ja | Das Array oder die Zeichenfolge, aus dem bzw. der die Elemente oder Zeichen verwendet werden sollen.
-| numberToTake | Ja | Die Anzahl der zu verwendenden Elemente oder Zeichen. Ist dieser Wert 0 oder kleiner, wird ein leeres Array oder eine leere Zeichenfolge zurückgegeben. Ist der Wert größer als die Länge des entsprechenden Arrays oder der entsprechenden Zeichenfolge, werden alle Elemente im Array oder der Zeichenfolge zurückgegeben.
-
-Im folgenden Beispiel wird die angegebene Anzahl von Elementen aus dem Array verwendet.
-
-    "parameters": {
-      "first": {
-        "type": "array",
-        "defaultValue": [ "one", "two", "three" ]
-      },
-      "second": {
-        "type": "int"
-      }
-    },
-    "resources": [
-    ],
-    "outputs": {
-      "return": {
-        "type": "array",
-        "value": "[take(parameters('first'),parameters('second'))]"
-      }
     }
 
 <a id="skip" />
@@ -530,6 +499,37 @@ Im folgenden Beispiel wird die angegebene Anzahl von Elementen im Array überspr
       "return": {
         "type": "array",
         "value": "[skip(parameters('first'),parameters('second'))]"
+      }
+    }
+
+<a id="take" />
+### take
+**take(originalValue, numberToTake)**
+
+Gibt ein Array oder eine Zeichenfolge mit der angegebenen Anzahl von Elementen oder Zeichen vom Anfang des Arrays oder der Zeichenfolge zurück.
+
+| Parameter | Erforderlich | Beschreibung
+| :--------------------------------: | :------: | :----------
+| originalValue | Ja | Das Array oder die Zeichenfolge, aus dem bzw. der die Elemente oder Zeichen verwendet werden sollen.
+| numberToTake | Ja | Die Anzahl der zu verwendenden Elemente oder Zeichen. Ist dieser Wert 0 oder kleiner, wird ein leeres Array oder eine leere Zeichenfolge zurückgegeben. Ist der Wert größer als die Länge des entsprechenden Arrays oder der entsprechenden Zeichenfolge, werden alle Elemente im Array oder der Zeichenfolge zurückgegeben.
+
+Im folgenden Beispiel wird die angegebene Anzahl von Elementen aus dem Array verwendet.
+
+    "parameters": {
+      "first": {
+        "type": "array",
+        "defaultValue": [ "one", "two", "three" ]
+      },
+      "second": {
+        "type": "int"
+      }
+    },
+    "resources": [
+    ],
+    "outputs": {
+      "return": {
+        "type": "array",
+        "value": "[take(parameters('first'),parameters('second'))]"
       }
     }
 
@@ -673,7 +673,7 @@ Jeder Vorgang, der mit **list** beginnt, kann als Funktion in der Vorlage verwen
 
     PS C:\> Get-AzureRmProviderOperation -OperationSearchString *  | where {$_.Operation -like "*list*"} | FT Operation
 
-Stattdessen können Sie die Liste auch über die Azure-Befehlszeilenschnittstelle abrufen. Das folgende Beispiel ruft alle Vorgänge für **apiapps** ab und verwendet das JSON-Dienstprogramm [jq](http://stedolan.github.io/jq/download/), um nur die list-Vorgänge zu filtern.
+Stattdessen können Sie die Liste auch über die Azure-Befehlszeilenschnittstelle abrufen. Das folgende Beispiel ruft alle Vorgänge für **apiapps** ab und verwendet das JSON-Hilfsprogramm [jq](http://stedolan.github.io/jq/download/), um nur die list-Vorgänge zu filtern.
 
     azure provider operations show --operationSearchString */apiapps/* --json | jq ".[] | select (.operation | contains("list"))"
 
@@ -877,4 +877,4 @@ Das folgende Beispiel zeigt ein Abrufen der Abonnement-Funktion im Ausgabeabschn
 - Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
 - Informationen zum Bereitstellen der erstellten Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

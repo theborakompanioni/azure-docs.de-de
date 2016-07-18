@@ -4,7 +4,7 @@
 
     Das Blatt für das neue CDN-Profil wird angezeigt.
 
-    ![Neues CDN-Profil](./media/cdn-create-profile/new-cdn-profile.png)
+    ![Neues CDN-Profil](./media/cdn-create-profile/new-cdn-profile-include.png)
 
 2. Geben Sie einen Namen für das CDN-Profil ein.
 
@@ -14,8 +14,10 @@
 
 5. Wählen Sie einen **Tarif** aus. Einen Vergleich der Tarife finden Sie unter [Übersicht über CDN](cdn-overview.md#azure-cdn-features).
     
-    ![Auswahl des CDN-Tarifs](./media/cdn-create-profile/cdn-choose-sku.png)
+    ![Auswahl des CDN-Tarifs](./media/cdn-create-profile/cdn-choose-sku-include.png)
 
 6. Wählen Sie das **Abonnement** für dieses CDN-Profil aus.
 
 7. Klicken Sie auf die Schaltfläche **Erstellen**, um das neue Profil zu erstellen.
+
+<!---HONumber=AcomDC_0706_2016-->

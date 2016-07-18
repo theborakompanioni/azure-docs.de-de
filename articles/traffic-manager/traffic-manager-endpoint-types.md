@@ -27,7 +27,7 @@ Auf dieser Seite wird beschrieben, wie Traffic Manager Endpunkte unterschiedlich
 
 Es gibt drei Arten von Endpunkten, die von Traffic Manager unterstützt werden:
 
-- **Azure-Endpunkte** werden für Dienste verwendet, die unter Azure gehostet werden.  
+- **Azure-Endpunkte** werden für Dienste verwendet, die unter Azure gehostet werden.
 - **Externe Endpunkte** werden für außerhalb von Azure gehostete Dienste verwendet – entweder lokal oder über einen anderen Hostinganbieter.
 - **Geschachtelte Endpunkte** werden zum Kombinieren von Traffic Manager-Profilen verwendet, um flexiblere Schemas für das Routing von Datenverkehr zu erstellen. So können die Anforderungen von größeren und komplexeren Bereitstellungen erfüllt werden.
 
@@ -127,7 +127,7 @@ Normalerweise wird Traffic Manager verwendet, um Datenverkehr an Anwendungen zu 
 
 Im Fall von Web-Apps lassen die Traffic Manager-Azure-Endpunkte es aber nicht zu, dass demselben Traffic Manager-Profil mehr als ein Web-App-Endpunkt für dieselbe Azure-Region hinzugefügt wird. Die folgenden Schritte stellen eine Umgehung dieser Einschränkung dar:
 
-1.	Überprüfen Sie, ob sich Ihre Web-Apps in derselben Region in unterschiedlichen Web-App-„Skalierungseinheiten“ befinden, also unterschiedlichen Instanzen des Web-App-Diensts. Überprüfen Sie hierzu den DNS-Pfad für den DNS-Eintrag „<...>.azurewebsites.net“. Die Skalierungseinheit sieht in etwa wie folgt aus: „waws-prod-xyz-123.vip.azurewebsites.net“. Ein Domänenname muss einer einzelnen Website in einer Skalierungseinheit zugeordnet sein. Aus diesem Grund ist es nicht möglich, dass zwei Web-Apps in derselben Skalierungseinheit ein Traffic Manager-Profil gemeinsam nutzen. 
+1.	Überprüfen Sie, ob sich Ihre Web-Apps in derselben Region in unterschiedlichen Web-App-„Skalierungseinheiten“ befinden, also unterschiedlichen Instanzen des Web-App-Diensts. Überprüfen Sie hierzu den DNS-Pfad für den DNS-Eintrag „<...>.azurewebsites.net“. Die Skalierungseinheit sieht in etwa wie folgt aus: „waws-prod-xyz-123.vip.azurewebsites.net“. Ein Domänenname muss einer einzelnen Website in einer Skalierungseinheit zugeordnet sein. Aus diesem Grund ist es nicht möglich, dass zwei Web-Apps in derselben Skalierungseinheit ein Traffic Manager-Profil gemeinsam nutzen.
 2.	Angenommen, jede Web-App befindet sich in einer anderen Skalierungseinheit. Fügen Sie Ihren Vanity-Domänennamen dann jeder Web-App als benutzerdefinierten Hostnamen hinzu. Hierfür ist es erforderlich, dass alle Web-Apps demselben Abonnement angehören.
 3.	Fügen Sie nur wie gewohnt einen Web-App-Endpunkt dem Traffic Manager-Profil als Azure-Endpunkt hinzu.
 4.	Fügen Sie jeden weiteren Web-App-Endpunkt dem Traffic Manager-Profil als externen Endpunkt hinzu. Sie müssen hierfür die Resource Manager-Oberfläche für Traffic Manager verwenden, nicht die Oberfläche der Dienstverwaltung.
@@ -142,4 +142,4 @@ Im Fall von Web-Apps lassen die Traffic Manager-Azure-Endpunkte es aber nicht zu
 
 - Informationen zu Traffic Manager-[Routingmethoden für Datenverkehr](traffic-manager-routing-methods.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

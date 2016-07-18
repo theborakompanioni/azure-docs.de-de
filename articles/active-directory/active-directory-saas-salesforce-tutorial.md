@@ -84,11 +84,11 @@ Sie können zu diesem Tutorial die folgenden Videos nutzen.
 
 	![Wählen Sie "Azure AD – einmaliges Anmelden".][7]
 
-	> [AZURE.NOTE] Um weitere Informationen zu den verschiedenen Optionen für die einmalige Anmeldung zu erhalten, [klicken Sie hier](../active-directory-appssoaccess-whatis/#how-does-single-sign-on-with-azure-active-directory-work).
+	> [AZURE.NOTE] Um weitere Informationen zu den verschiedenen Optionen für die einmalige Anmeldung zu erhalten, [klicken Sie hier](../active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
 
 4. Tragen Sie auf der Seite **App-Einstellungen konfigurieren** die **Anmelde-URL** durch Eingabe Ihrer Salesforce-Domänen-URL in folgendem Format ein:
  - Enterprise-Konto:`https://<domain>.my.salesforce.com`
- - Developer-Konto:`https://<domain>-dev-ed.my.salesforce.com` 
+ - Developer-Konto:`https://<domain>-dev-ed.my.salesforce.com`
 
 	![Geben Sie Ihre Anmelde-URL ein.][8]
 
@@ -256,4 +256,4 @@ Sie können zu diesem Tutorial die folgenden Videos nutzen.
 [28]: ./media/active-directory-saas-salesforce-tutorial/assign-confirm.png
 [29]: ./media/active-directory-saas-salesforce-tutorial/assign-sf-profile.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

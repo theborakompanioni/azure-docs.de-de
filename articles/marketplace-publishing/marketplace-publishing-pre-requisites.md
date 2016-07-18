@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="Azure"
   ms.workload="na"
-  ms.date="04/07/2016"
+  ms.date="06/29/2016"
   ms.author="hascipio; v-divte"/>
 
 # Allgemeine Voraussetzungen für das Erstellen eines Angebots für den Azure Marketplace
@@ -46,13 +46,11 @@ Dieses Abonnement basiert auf einer nutzungsbasierten Bezahlung und wird zum Ers
 Um Ihre Dienste im Azure Marketplace verkaufen zu können, muss die registrierte Organisation in einem der genehmigten Verkäuferländer ansässig sein. Diese Einschränkung hat auszahlungstechnische und steuerliche Gründe. Die Länderliste wird in Kürze erweitert, prüfen Sie sie also regelmäßig. Die vollständige Liste finden Sie in Abschnitt 1b der [Teilnahmerichtlinien für den Azure Marketplace](http://go.microsoft.com/fwlink/?LinkID=526833).
 
 ## Nächste Schritte
-Im nächsten Schritt werden die technischen Voraussetzungen für die einzelnen Angebotstypen behandelt. Klicken Sie auf den Link zum jeweiligen Angebotstyp, den Sie für den Azure Marketplace erstellen möchten.
-
-| VM-Image | Entwicklerdienst | Datendienst | Lösungsvorlage |
-|-----|-----|-----|-----|
-| [Technische Voraussetzungen für VMs](marketplace-publishing-vm-image-creation-prerequisites.md) | Private Vorschau | [Technische Voraussetzungen für Datendienste](marketplace-publishing-data-service-creation-prerequisites.md) | [Technische Voraussetzungen für Lösungsvorlagen](marketplace-publishing-solution-template-creation-prerequisites.md) |
+Nachdem die nicht technischen Voraussetzungen erfüllt sind, geht es als Nächstes um die angebotsspezifischen technischen Voraussetzungen. Klicken Sie auf den Link zum jeweiligen Angebotstyp, den Sie für den Azure Marketplace erstellen möchten.
+- [Technische Voraussetzungen für das Erstellen eines VM-Images für den Azure Marketplace](marketplace-publishing-vm-image-creation-prerequisites.md)
+- [Technische Voraussetzungen für das Erstellen einer Lösungsvorlage für den Azure Marketplace](marketplace-publishing-solution-template-creation-prerequisites.md)
 
 ## Weitere Informationen
 - [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0706_2016-->

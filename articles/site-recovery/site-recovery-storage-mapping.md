@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="02/22/2016"
+	ms.date="07/06/2016"
 	ms.author="raynew"/>
 
 
@@ -53,7 +53,7 @@ Bei Verwenden des Hyper-V-Replikats für die Replikation mit Site Recovery erfol
 Sind die Klassifizierungen in VMM ordnungsgemäß konfiguriert, werden die Quell- und Zielklassifizierungen angezeigt, wenn Sie bei der Speicherzuordnung den VMM-Quell- und -Zielserver auswählen. Im Anschluss folgt ein Beispiel für die Speicherdateifreigaben und -klassifizierungen für eine Organisation mit zwei Standorten in New York und Chicago:
 
 **Standort** | **VMM-Server** | **Dateifreigabe (Quelle)** | **Klassifizierung (Quelle)** | **Zuordnungsziel** | **Dateifreigabe (Ziel)**
----|---|--- |---|---|---
+---|---|---|---|---|---
 New York | VMM\_Source| SourceShare1 | GOLD | GOLD\_TARGET | TargetShare1
  | | SourceShare2 | SILVER | SILVER\_TARGET | TargetShare2
  | | SourceShare3 | BRONZE | BRONZE\_TARGET | TargetShare3
@@ -61,11 +61,13 @@ Chicago | VMM\_Target | | GOLD\_TARGET | Nicht zugeordnet |
 | | | SILVER\_TARGET | Nicht zugeordnet |
  | | | BRONZE\_TARGET | Nicht zugeordnet
 
-Diese Einstellungen werden im Site Recovery-Portal auf der Registerkarte **Serverspeicher** der Seite **Ressourcen** konfiguriert.
+Diese Einstellungen werden im Site Recovery-Portal auf der Registerkarte **Serverspeicher** der Seite **Ressourcen** konfiguriert.
 
 ![Konfigurieren der Speicherzuordnung](./media/site-recovery-storage-mapping/storage-mapping1.png)
 
-Für dieses Beispiel gilt Folgendes: Wenn für einen virtuellen Computer im GOLD-Speicher (SourceShare1) ein virtueller Replikatcomputer erstellt wird, wird dieser zu einem GOLD\_TARGET-Speicher (TargetShare1) repliziert. Wenn für einen virtuellen Computer im SILVER-Speicher (SourceShare2) ein virtueller Replikatcomputer erstellt wird, wird er zu einem SILVER\_TARGET-Speicher (TargetShare2) repliziert. Usw.
+In diesem Beispiel gilt Folgendes:
+- Wenn für einen virtuellen Computer im GOLD-Speicher (SourceShare1) ein virtueller Replikatcomputer erstellt wird, wird dieser zu einem GOLD\_TARGET-Speicher (TargetShare1) repliziert.
+- Wenn für einen virtuellen Computer im SILVER-Speicher (SourceShare2) ein virtueller Replikatcomputer erstellt wird, wird er zu einem SILVER\_TARGET-Speicher (TargetShare2) repliziert, usw.
 
 Die tatsächlichen Dateifreigaben und deren zugewiesene Klassifizierungen in VMM werden im nächsten Screenshot dargestellt.
 
@@ -84,7 +86,7 @@ New York | GOLD | <p>C:\\ClusterStorage\\SourceVolume1</p><p>\\FileServer\\Sourc
 Chicago | GOLD\_TARGET | <p>C:\\ClusterStorage\\TargetVolume1</p><p>\\FileServer\\TargetShare1</p>
  | SILVER\_TARGET| <p>C:\\ClusterStorage\\TargetVolume2</p><p>\\FileServer\\TargetShare2</p>
 
-Die folgende Tabelle zeigt, was passiert, wenn Sie den Schutz für virtuelle Computer (VM1 - VM5) in dieser Beispielumgebung aktivieren:
+Die folgende Tabelle zeigt, was passiert, wenn Sie den Schutz für virtuelle Computer (VM1 - VM5) in dieser Beispielumgebung aktivieren:
 
 **Virtueller Computer** | **Quellspeicher** | **Quellklassifizierung** | **Zugeordneter Zielspeicher**
 ---|---|---|---
@@ -98,4 +100,4 @@ VM5 | C:\\ClusterStorage\\SourceVolume3 | N/V | Keine Zuordnung, daher Verwendun
 
 Nachdem Sie sich mit der Speicherzuordnung vertraut gemacht haben, können Sie mit der [Azure Site Recovery-Bereitstellung beginnen](site-recovery-best-practices.md).
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -54,4 +54,8 @@ Ja. Anweisungen hierzu finden Sie unter [Erstellen einer Kopie eines virtuellen 
 
 Die beiden neuen Regionen „Kanada, Mitte“ und „Kanada, Osten“ werden nicht automatisch für das Erstellen von virtuellen Computern im Rahmen von vorhandenen Azure-Abonnements registriert. Diese Registrierung erfolgt automatisch, wenn ein virtueller Computer über das Azure-Portal für eine andere Region mit Azure Resource Manager bereitgestellt wird. Nach der Bereitstellung eines virtuellen Computers in einer anderen Azure-Region sollten die neuen Regionen für nachfolgende virtuelle Computer verfügbar sein.
 
-<!---HONumber=AcomDC_0518_2016-->
+## Kann ich meinem virtuellen Computer nach der Erstellung eine NIC hinzufügen?
+
+Nein. Dies ist derzeit nur zum Zeitpunkt der Erstellung möglich.
+
+<!---HONumber=AcomDC_0706_2016-->

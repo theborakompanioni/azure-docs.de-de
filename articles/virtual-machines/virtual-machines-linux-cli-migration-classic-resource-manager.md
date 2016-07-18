@@ -27,9 +27,8 @@ Hier finden Sie einige bewährte Methoden, die wir empfehlen, wenn Sie eine Migr
 
 - Sehen Sie sich die [Liste mit nicht unterstützten Konfigurationen und Features](virtual-machines-windows-migration-classic-resource-manager.md) an. Verwenden Ihre virtuellen Computer nicht unterstützte Konfigurationen oder Features, empfiehlt es sich, zu warten, bis die Unterstützung für die entsprechenden Features/Konfigurationen angekündigt wird. Alternativ können Sie ggf. die betroffenen Features entfernen oder eine andere Konfiguration verwenden, um die Migration zu ermöglichen.
 -	Wenn Sie derzeit über automatisierte Skripts zum Bereitstellen Ihrer Infrastruktur und Anwendungen verfügen, versuchen Sie, mithilfe dieser Skripts für die Migration eine ähnliche Testeinrichtung zu erstellen. Alternativ dazu können Sie über das Azure-Portal Beispielumgebungen einrichten.
-- Da sich der Dienst in der öffentlichen Vorschau befindet, muss die Testumgebung für die Migration von der Produktionsumgebung isoliert sein. Speicherkonten, virtuelle Netzwerke und andere Ressourcen der Test- und Produktionsumgebungen dürfen nicht gemischt werden.
 
-## Schritt 2: Festlegen Ihres Abonnements und Registrieren für die öffentliche Vorschauversion der Migration
+## Schritt 2: Festlegen Ihres Abonnements und Registrieren für die Migration
 
 Für Migrationsszenarien müssen Sie Ihre Umgebung sowohl für das klassische Bereitstellungsmodell als auch für Resource Manager einrichten. [Installieren Sie die Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), und [wählen Sie Ihr Abonnement aus](../xplat-cli-connect.md).
 
@@ -37,7 +36,11 @@ Führen Sie zum Auswählen des Azure-Abonnements den folgenden Befehl aus.
 
 	azure account set "azure-subscription-name"
 
-Registrieren Sie sich mithilfe des folgenden Befehls für die öffentliche Vorschau. Beachten Sie, dass in einigen Fällen für diesen Befehl ein Timeout festgelegt ist. Die Registrierung wird jedoch erfolgreich durchgeführt.
+>[AZURE.NOTE] Die Registrierung ist ein einmaliger Schritt, der jedoch einmal ausgeführt werden muss, bevor Sie versuchen, die Migration auszuführen. Ohne Registrierung wird die folgende Fehlermeldung angezeigt:
+
+>	*BadRequest : Subscription is not registered for migration.* 
+
+Registrieren Sie sich mithilfe des folgenden Befehls beim Migrationsressourcenanbieter. Beachten Sie, dass in einigen Fällen für diesen Befehl ein Timeout festgelegt ist. Die Registrierung wird jedoch erfolgreich durchgeführt.
 
 	azure provider register Microsoft.ClassicInfrastructureMigrate
 
@@ -45,7 +48,7 @@ Der Abschluss der Registrierung kann bis zu fünf Minuten dauern. Warten Sie dah
 
 	azure provider show Microsoft.ClassicInfrastructureMigrate
 
-Wechseln Sie nun in den `asm`-Modus der Befehlszeilenschnittstelle:
+Wechseln Sie nun in den `asm`-Modus der Befehlszeilenschnittstelle.
 
 	azure config mode asm
 
@@ -105,9 +108,25 @@ Wenn die vorbereitete Konfiguration in Ordnung ist, können Sie den Vorgang fort
 
 	azure network vnet commit-migration virtualnetworkname
 
+### Migrieren eines Speicherkontos
+
+Sobald Sie mit der Migration der virtuellen Computer fertig sind, sollten Sie das Speicherkonto migrieren.
+
+Bereiten Sie das Speicherkonto Netzwerk mithilfe des folgenden Befehls für die Migration vor.
+
+	azure storage account prepare-migration storageaccountname
+
+Überprüfen Sie die Konfiguration des vorbereiteten Speicherkontos mithilfe der Befehlszeilenschnittstelle oder im Azure-Portal. Wenn Sie noch nicht für die Migration bereit sind und zum alten Zustand zurückkehren möchten, verwenden Sie den folgenden Befehl.
+
+	azure storage account abort-migration storageaccountname
+
+Wenn die vorbereitete Konfiguration in Ordnung ist, können Sie den Vorgang fortsetzen und mithilfe des folgenden Befehls ein Commit für die Ressourcen ausführen.
+
+	azure storage account commit-migration storageaccountname
+
 ## Nächste Schritte
 
 - [Plattformgestützte Migration von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Resource Manager](virtual-machines-windows-migration-classic-resource-manager.md)
 - [Ausführliche technische Informationen zur plattformgestützten Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

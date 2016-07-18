@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/08/2016"
+	ms.date="07/06/2016"
 	ms.author="maheshu"/>
 
 # Erstellen einer Organisationseinheit (OE) in einer durch Azure AD-Domänendienste verwalteten Domäne
@@ -75,4 +75,4 @@ Nach dem Erstellen einer benutzerdefinierten Organisationseinheit können Sie in
 
 - [Schrittweise Anleitung zu Dienstkonten](https://technet.microsoft.com/library/dd548356.aspx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

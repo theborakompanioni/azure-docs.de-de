@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/01/2016"
+   ms.date="07/01/2016"
    ms.author="sonyama;barbkess;jrj"/>
 
 # Kapazitätsgrenzen von SQL Data Warehouse
@@ -25,10 +25,10 @@ Die folgenden Tabellen erhalten die maximalen Werte, die für verschiedene Kompo
 
 | Kategorie | Beschreibung | Maximum |
 | :------------------ | :------------------------------------------- | :----------------- |
-| Data Warehouse-Einheiten (DWU)| Compute, Arbeitsspeicher und E/A-Ressourcen | 2000 |
+| [Data Warehouse-Einheiten (DWU)][]| Compute, Arbeitsspeicher und E/A-Ressourcen | 2000 |
 | Datenbankverbindung | Gleichzeitig geöffnete Sitzungen | 1\.024<br/><br/>Wir unterstützen maximal 1.024 aktive Verbindungen, wobei jede Verbindung gleichzeitig Anforderungen an eine SQL Data Warehouse-Datenbank übermitteln kann. Beachten Sie, dass die Anzahl der Abfragen, die tatsächlich gleichzeitig ausgeführt werden können, begrenzt ist. Wenn der Grenzwert überschritten wird, gelangt die Anforderung in eine interne Warteschlange, in der sie auf die Verarbeitung wartet.|
 | Datenbankverbindung | Maximaler Arbeitsspeicher für vorbereitete Anweisungen | 20 MB |
-| Workloadverwaltung | Maximale Anzahl gleichzeitiger Abfragen | 32<br/><br/> SQL Data Warehouse führt standardmäßig bis zu 32 gleichzeitige Abfragen durch und ordnet verbleibende Abfragen in die Warteschlange ein.<br/><br/>Der Grad an Parallelität kann sich verringern, wenn Benutzer einer höheren Ressourcenklasse zugewiesen werden. Einige Abfragen, wie DMV-Abfragen, dürfen immer ausgeführt werden. Weitere Informationen finden Sie unter [Parallelitäts- und Workloadverwaltung in SQL Data Warehouse][].|
+| [Workloadverwaltung][] | Maximale Anzahl gleichzeitiger Abfragen | 32<br/><br/> SQL Data Warehouse führt standardmäßig bis zu 32 gleichzeitige Abfragen durch und reiht verbleibende Abfragen in die Warteschlange ein.<br/><br/>Der Grad an Parallelität kann sich verringern, wenn Benutzer einer höheren Ressourcenklasse zugewiesen werden. Einige Abfragen, wie DMV-Abfragen, dürfen immer ausgeführt werden.|
 
 
 ## Datenbankobjekte
@@ -45,8 +45,8 @@ Die folgenden Tabellen erhalten die maximalen Werte, die für verschiedene Kompo
 | Tabelle | Zeichen pro Partitionsbegrenzungswert.| 4000 |
 | Index | Nicht gruppierte Indizes pro Tabelle. | 999<br/><br/>Gilt nur für Rowstore-Tabellen.|
 | Index | Gruppierte Indizes pro Tabelle. | 1<br><br/>Gilt für Rowstore- und Columnstore-Tabellen.|
-| Index | Zeilen in einer Rowgroup eines Columnstore-Indexes | 1\.024<br/><br/>Jeder Columnstore-Index wird als mehrere Columnstore-Indizes implementiert. Beachten Sie, dass beim Einfügen von 1.024 Zeilen in einen SQL Data Warehouse-Columnstore-Index die Zeilen nicht alle in dieselbe Rowgroup übertragen werden.|
-| Index | Parallele Erstellung gruppierter Columnstore-Indizes. | 32<br/><br/>Gilt, wenn die gruppierten Columnstore-Indizes alle für verschiedene Tabellen erstellt werden. Pro Tabelle ist nur das Erstellen eines gruppierten Columnstore-Index zulässig. Zusätzliche Anforderungen werden in eine Warteschlange gestellt.|
+| Index | Zeilen in einer Rowgroup eines Columnstore-Indexes | 1\.024<br/><br/>Jeder Columnstore-Index wird in Form von mehreren Columnstore-Indizes implementiert. Beachten Sie, dass beim Einfügen von 1.024 Zeilen in einen SQL Data Warehouse-Columnstore-Index die Zeilen nicht alle in dieselbe Rowgroup übertragen werden.|
+| Index | Parallele Erstellung gruppierter Columnstore-Indizes. | 32<br/><br/>Gilt, wenn alle gruppierten Columnstore-Indizes jeweils für verschiedene Tabellen erstellt werden. Pro Tabelle ist nur das Erstellen eines gruppierten Columnstore-Index zulässig. Zusätzliche Anforderungen werden in eine Warteschlange gestellt.|
 | Index | Größe des Indexschlüssels. | 900 Bytes<br/><br/>Gilt nur für Rowstore-Indizes.<br/><br/>Indizes für „varchar“-Spalten mit einer maximalen Größe von mehr als 900 Bytes können erstellt werden, wenn die vorhandenen Daten in den Spalten bei der Indexerstellung nicht größer als 900 Bytes sind. Anschließende auf die Spalten angewendete INSERT- oder UPDATE-Anweisungen, die bewirken, dass die Gesamtgröße 900 Bytes überschreitet, haben allerdings keinen Erfolg.|
 | Index | Schlüsselspalten pro Index. | 16<br/><br/>Gilt nur für Rowstore-Indizes. Gruppierte Columnstore-Indizes enthalten alle Spalten.|
 | Statistiken | Größe der kombinierten Spaltenwerte. | 900 Bytes. |
@@ -60,7 +60,7 @@ Die folgenden Tabellen erhalten die maximalen Werte, die für verschiedene Kompo
 
 | Kategorie | Beschreibung | Maximum |
 | :---------------- | :------------------------------------------- | :----------------- |
-| PolyBase-Auslastung | Bytes pro Zeile | 32\.768<br/><br/>Der Ladevorgang in PolyBase ist auf das Laden von Zeilen beschränkt, die kleiner als 32 K sind und nicht in Spalten des Typs VARCHR(MAX) NVARCHAR(MAX) oder VARBINARY(MAX) geladen werden können. Obwohl diese Beschränkung noch existiert, wird sie in Kürze entfernt.<br/><br/>
+| PolyBase-Auslastung | Bytes pro Zeile | 32\.768<br/><br/>Der Ladevorgang in PolyBase ist auf das Laden von Zeilen beschränkt, die kleiner als 32.000 sind und nicht in Spalten des Typs VARCHR(MAX) NVARCHAR(MAX) oder VARBINARY(MAX) geladen werden können. Diese Beschränkung existiert zwar noch, wird aber in Kürze entfernt.<br/><br/>
 
 
 ## Abfragen
@@ -74,9 +74,9 @@ Die folgenden Tabellen erhalten die maximalen Werte, die für verschiedene Kompo
 | Batch | Maximale Größe | 65\.536*4096 |
 | SELECT-Ergebnisse | Spalten pro Zeile | 4\.096<br/><br/>Das Ergebnis einer SELECT-Anweisung kann nie mehr als 4.096 Spalten pro Zeile enthalten. Es gibt keine Garantie, dass Sie stets über 4096 verfügen. Wenn der Abfrageplan eine temporäre Tabelle erfordert, gilt möglicherweise der Maximalwert von 1024 Spalten pro Tabelle.|
 | SELECT | Geschachtelte Unterabfragen | 32<br/><br/>In einer SELECT-Anweisung sind maximal 32 geschachtelte Unterabfragen zulässig. Es gibt keine Garantie, dass Sie stets über 32 verfügen. Ein JOIN-Befehl kann z. B. eine Unterabfrage in den Abfrageplan einführen. Die Anzahl der Unterabfragen kann auch durch den verfügbaren Speicher eingeschränkt werden.|
-| SELECT | Spalten pro JOIN | 1024 Spalten<br/><br/>Für einen JOIN sind maximal 1024 Spalten zulässig. Es gibt keine Garantie, dass Sie stets über 1024 verfügen. Wenn der JOIN-Plan eine temporäre Tabelle mit mehr Spalten als das JOIN-Ergebnis erfordert, gilt die Grenze von 1024 für die temporäre Tabelle. |
-| SELECT | Bytes pro GROUP BY-Spalten. | 8060<br/><br/>Die Maximalgröße von Spalten in der GROUP BY-Klausel ist 8060 Bytes.|
-| SELECT | Bytes pro ORDER BY-Spalten | 8060<br/><br/>Die Maximalgröße von Spalten in der ORDER BY-Klausel ist 8060 Bytes.|
+| SELECT | Spalten pro JOIN | 1024 Spalten<br/><br/>Für einen JOIN sind maximal 1024 Spalten zulässig. Es gibt keine Garantie, dass Sie stets über 1024 verfügen. Wenn der JOIN-Plan eine temporäre Tabelle mit mehr Spalten als das JOIN-Ergebnis erfordert, gilt die Grenze von 1024 für die temporäre Tabelle. |
+| SELECT | Bytes pro GROUP BY-Spalten. | 8060<br/><br/>Die Maximalgröße von Spalten in der GROUP BY-Klausel beträgt 8060 Bytes.|
+| SELECT | Bytes pro ORDER BY-Spalten | 8060<br/><br/>Die Maximalgröße von Spalten in der ORDER BY-Klausel beträgt 8060 Bytes.|
 | Bezeichner und Konstanten pro Anweisung | Anzahl der Bezeichner und Konstanten, auf die verwiesen wird. | 65\.535<br/><br/>SQL Data Warehouse beschränkt die Anzahl von Bezeichnern und Konstanten, die in einem einzelnen Ausdruck einer Abfrage enthalten sein können. Dieser Grenzwert ist 65.535. Das Überschreiten dieses Werts führt zum SQL Server-Fehler 8632. Weitere Informationen finden Sie unter [Interner Fehler: ein Ausdrucksdienstelimit wurde erreicht.][].|
 
 
@@ -101,12 +101,13 @@ Weitere Referenzinformationen finden Sie unter [SQL Data Warehouse-Referenz – 
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse-Referenz – Übersicht]: sql-data-warehouse-overview-reference.md
-[Parallelitäts- und Workloadverwaltung in SQL Data Warehouse]: sql-data-warehouse-develop-concurrency.md
+[Data Warehouse-Einheiten (DWU)]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
+[SQL Data Warehouse-Referenz – Übersicht]: ./sql-data-warehouse-overview-reference.md
+[Workloadverwaltung]: ./sql-data-warehouse-develop-concurrency.md
 
 <!--MSDN references-->
 [Zeilenüberlauf bei Daten über 8 KB]: https://msdn.microsoft.com/library/ms186981.aspx
 [CREATE TABLE (Azure SQL Data Warehouse)]: https://msdn.microsoft.com/library/mt203953.aspx
 [Interner Fehler: ein Ausdrucksdienstelimit wurde erreicht.]: https://support.microsoft.com/kb/913050
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

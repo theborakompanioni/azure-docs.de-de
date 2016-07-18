@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/04/2016" 
+	ms.date="06/30/2016" 
 	ms.author="tdykstra"/>
 
 # Dienstprinzipalauthentifizierung für API-Apps in Azure App Service
@@ -83,8 +83,8 @@ Nachdem das Token abgerufen wurde, fügt der Aufrufer es mit HTTP-Anforderungen 
 
 Bearertoken für Benutzer in demselben Mandanten werden für die geschützte API-App als gültig angesehen. Wenn Sie sicherstellen möchten, dass nur ein Dienstprinzipal die geschützte API-App aufrufen kann, können Sie der geschützten API-App Code hinzufügen, um die folgenden Ansprüche vom Token zu überprüfen:
 
-* `appid` sollte der Client-ID der Azure AD-Anwendung entsprechen, die dem Aufrufer zugeordnet ist. 
-* `oid` (`objectidentifier`) sollte die Dienstprinzipal-ID des Aufrufers sein. 
+* `appid` sollte der Client-ID der Azure AD-Anwendung entsprechen, die dem Aufrufer zugeordnet ist.
+* `oid` (`objectidentifier`) sollte die Dienstprinzipal-ID des Aufrufers sein.
 
 App Service stellt auch den Anspruch `objectidentifier` im X-MS-CLIENT-PRINCIPAL-ID-Header bereit.
 
@@ -150,7 +150,7 @@ Wenn beim Befolgen der Anweisungen in diesem Tutorial Probleme auftreten, lesen 
 
 ### Sicherstellen des Schutzes für die API-App
 
-1. Navigieren Sie in einem Browser zur URL der API-App: Klicken Sie auf dem Blatt **API-App** im Azure-Portal auf den Link unter **URL**. 
+1. Navigieren Sie in einem Browser zur URL der API-App: Klicken Sie auf dem Blatt **API-App** im Azure-Portal auf den Link unter **URL**.
 
 	Sie werden auf eine Anmeldeseite umgeleitet, da nicht authentifizierte Anforderungen die API-App nicht erreichen dürfen.
 
@@ -166,7 +166,7 @@ In diesem Abschnitt führen Sie die folgenden Aufgaben aus:
 
 * Hinzufügen von Code zur API-App der mittleren Ebene, wobei Anmeldeinformationen der Azure AD-Anwendung verwendet werden, um ein Token abzurufen, und Senden des Tokens mit HTTP-Anforderungen an die API-App der Datenebene
 * Abrufen der erforderlichen Anmeldeinformationen von Azure AD
-* Eingeben der Anmeldeinformationen für Einstellungen der Azure App Service-Laufzeitumgebung in der API-App der mittleren Ebene 
+* Eingeben der Anmeldeinformationen für Einstellungen der Azure App Service-Laufzeitumgebung in der API-App der mittleren Ebene
 
 ### Konfigurieren des Projekts ToDoListAPI zum Abrufen und Senden des Azure AD-Tokens
 
@@ -415,4 +415,4 @@ Weitere Informationen zu Azure Active Directory finden Sie in den folgenden Ress
 
 Informationen zu anderen Möglichkeiten der Bereitstellung von Visual Studio-Projekten für API-Apps mit Visual Studio oder durch die [Automatisierung der Bereitstellung](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery) über ein [Quellcodeverwaltungssystem](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control) finden Sie unter[ Bereitstellen der App in Azure App Service](../app-service-web/web-sites-deploy.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

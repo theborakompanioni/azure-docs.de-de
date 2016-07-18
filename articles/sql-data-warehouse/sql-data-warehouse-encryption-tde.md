@@ -17,9 +17,15 @@
    ms.author="rortloff;barbkess;sonyama"/>
 
 # Erste Schritte mit Transparent Data Encryption (TDE) in SQL Data Warehouse
+
 > [AZURE.SELECTOR]
-- [Azure-Portal](sql-data-warehouse-encryption-tde.md)
-- [TSQL](sql-data-warehouse-encryption-tde-tsql.md)
+- [Sicherheitsübersicht](sql-data-warehouse-overview-manage-security.md)
+- [Bedrohungserkennung](sql-data-warehouse-security-threat-detection.md)
+- [Verschlüsselung (Portal)](sql-data-warehouse-encryption-tde.md)
+- [Verschlüsselung (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
+- [Übersicht über die Überwachung](sql-data-warehouse-auditing-overview.md)
+- [Überwachung für Vorgängerversionsclients](sql-data-warehouse-auditing-downlevel-clients.md)
+
 
 Azure SQL Data Warehouse Transparent Data Encryption (TDE) ist ein zusätzlicher Schutz vor der Bedrohung durch schädliche Aktivitäten. Hierzu werden die Schritte für die Echtzeitverschlüsselung und -entschlüsselung der Datenbank, die dazugehörigen Backups und die Transaktionsprotokolldateien im Ruhezustand ausgeführt, ohne dass Änderungen an der Anwendung erforderlich sind.
 
@@ -33,7 +39,7 @@ Führen Sie diese Schritte aus, um TDE für ein SQL Data Warehouse zu aktivieren
 2. Klicken Sie im Datenbank-Blatt auf die Schaltfläche **Einstellungen**.
 3. Wählen Sie die Option **Transparent data encryption** aus. ![][1]
 4. Wählen Sie die Einstellung **Ein** aus. ![][2]
-5. Wählen Sie **Speichern** aus. ![][3]  
+5. Wählen Sie **Speichern** aus. ![][3]
 
 ##Deaktivieren der Verschlüsselung
 
@@ -43,7 +49,7 @@ Führen Sie diese Schritte aus, um TDE für ein SQL Data Warehouse zu deaktivier
 2. Klicken Sie im Datenbank-Blatt auf die Schaltfläche **Einstellungen**.
 3. Wählen Sie die Option **Transparent data encryption** aus. ![][1]
 4. Wählen Sie die Einstellung **Aus** aus. ![][4]
-5. Wählen Sie **Speichern** aus. ![][5]  
+5. Wählen Sie **Speichern** aus. ![][5]
 
 ##Verschlüsselung-DMVs
 
@@ -66,4 +72,4 @@ Die Verschlüsselung kann mit folgenden DMVs überprüft werden:
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

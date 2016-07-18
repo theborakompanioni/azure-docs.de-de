@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Verwalten von Statistiken in SQL Data Warehouse | Microsoft Azure"
-   description="Tipps zum Verwalten von Statistiken in Azure SQL Data Warehouse für die Entwicklung von Lösungen"
+   pageTitle="Verwalten von Statistiken für Tabellen in SQL Data Warehouse | Microsoft Azure"
+   description="Enthält Informationen zu den ersten Schritten zu Statistiken von Tabellen in Azure SQL Data Warehouse."
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="jrowlandjones"
@@ -13,46 +13,37 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/10/2016"
-   ms.author="jrj;barbkess;sonyama;nicw"/>
+   ms.date="06/30/2016"
+   ms.author="jrj;barbkess;sonyama"/>
 
-# Verwalten von Statistiken in SQL Data Warehouse
- In SQL Data Warehouse werden statistische Daten verwendet, um die Kosten für unterschiedliche Wege zum Durchführen einer verteilten Abfrage zu bewerten. Wenn die Statistiken präzise sind, können mit dem Abfrageoptimierer qualitativ hochwertige Abfragepläne generiert werden, um die Abfrageleistung zu verbessern.
+# Verwalten von Statistiken für Tabellen in SQL Data Warehouse
 
-Das Erstellen und Aktualisieren der Statistiken ist wichtig, um die Abfrageleistung zu erzielen, für die SQL Data Warehouse ausgelegt ist. Diese Anleitung enthält eine Übersicht über die Statistiken sowie folgende Vorgehensweisen:
+> [AZURE.SELECTOR]
+- [Übersicht][]
+- [Datentypen][]
+- [Verteilen][]
+- [Index][]
+- [Partition][]
+- [Statistiken][]
+- [Temporär][]
 
-- Erstellen von Statistiken im Rahmen des Datenbankentwurfs
-- Aktualisieren von Statistiken im Rahmen der Datenbankwartung
-- Anzeigen von Statistiken mit Systemsichten und -Funktionen
+Je mehr Informationen SQL Data Warehouse zu Ihren Daten besitzt, desto schneller können Abfragen für die Daten durchgeführt werden. Sie lassen SQL Data Warehouse diese Informationen zu den Daten zukommen, indem Sie Statistiken zu Ihren Daten anlegen. Das Anlegen von Statistiken über Ihre Daten ist eine der wichtigsten Maßnahmen, die Sie zur Optimierung von Abfragen ergreifen können. Mithilfe von Statistiken kann SQL Data Warehouse einen möglichst optimalen Plan für Ihre Abfragen erstellen. Der Grund ist, dass der Abfrageoptimierer von SQL Data Warehouse ein kostenbasierter Optimierer ist. Die Kosten der verschiedenen Abfragepläne werden verglichen, und dann wird der Plan mit den geringsten Kosten gewählt. Dies sollte auch der Plan sein, der am schnellsten ausgeführt wird.
 
-## Einführung in Statistiken
+Statistiken können für eine einzelne Spalte, mehrere Spalten oder einen Index einer Tabelle erstellt werden. Statistiken werden in einem Histogramm gespeichert, in dem der Wertebereich und die Selektivität von Werten erfasst werden. Dies ist von besonderem Interesse, wenn der Optimierer JOINs, GROUP BY-, HAVING- und WHERE-Klauseln in einer Abfrage auswerten muss. Wenn vom Optimierer beispielsweise geschätzt wird, dass für das Filterdatum der Abfrage eine Zeile zurückgegeben wird, wird unter Umständen ein völlig anderer Plan gewählt, als wenn die Schätzung lautet, dass für das ausgewählte Datum 1 Million Zeilen zurückgegeben werden. Das Erstellen von Statistiken ist zwar äußerst wichtig, aber es ist genauso wichtig, dass die Statistiken den aktuellen Zustand der Tabelle *genau* widerspiegeln. Durch die Verwendung von aktuellen Statistiken wird sichergestellt, dass vom Optimierer ein guter Plan gewählt wird. Die vom Optimierer erstellten Pläne sind nur so gut wie die Statistiken für Ihre Daten.
 
-Statistiken für einzelne Spalten sind Objekte, die Informationen zum Wertebereich und zur Häufigkeit von Werten in einer Spalte enthalten. Der Abfrageoptimierer verwendet dieses Histogramm, um die Anzahl von Spalten im Abfrageergebnis zu schätzen. Dies wirkt sich direkt auf Entscheidungen aus, die in Bezug auf die Optimierung der Abfrage getroffen werden.
+Das Erstellen und Aktualisieren von Statistiken ist derzeit ein manueller Prozess, der aber sehr einfach ist. Dies ist ein Unterschied zu SQL Server, wo Statistiken für einzelne Spalten und Indizes automatisch erstellt und aktualisiert werden. Mit den unten angegebenen Informationen können Sie die Verwaltung der Statistiken über Ihre Daten stark automatisieren.
 
-Statistiken für mehrere Spalten sind Statistiken, die für eine Liste mit Spalten erstellt werden. Sie enthalten Einspaltenstatistiken für die erste Spalte der Liste sowie einige spaltenübergreifende Korrelationsinformationen, die als „Densities“ (Dichten) bezeichnet werden. Mehrspaltenstatistiken können die Abfrageleistung für bestimmte Vorgänge verbessern, z. B. zusammengesetzte Verknüpfungen (Joins) und Group By-Vorgänge.
+## Erste Schritte mit Statistiken
 
-Weitere Informationen finden Sie unter [DBCC SHOW\_STATISTICS][] auf der MSDN-Website.
+ Das Erstellen von erfassten Statistiken für jede Spalte ist eine einfache Möglichkeit zum Einsteigen in das Thema Statistiken. Da es genauso wichtig ist, die Statistiken aktuell zu halten, kann ein konservativer Ansatz das Aktualisieren von Statistiken jeden Tag oder nach jedem Ladevorgang sein. Es gibt immer Vor- und Nachteile, was die Leistung einerseits und die Kosten für die Erstellung und Aktualisierung von Statistiken andererseits betrifft. Falls die Verwaltung aller Statistiken zu lange dauert, können Sie versuchen, selektiver auszuwählen, welche Spalten über Statistiken verfügen sollen oder häufig aktualisiert werden müssen. Beispielsweise kann das tägliche Aktualisieren von Datumsspalten ratsam sein, wenn neue Werte hinzugefügt werden, anstatt nach jedem Ladevorgang. Der größte Vorteil ergibt sich wieder, wenn Sie über Statistiken für Spalten mit JOINs und GROUP BY-, HAVING- und WHERE-Klauseln verfügen. Wenn Sie eine Tabelle mit vielen Spalten haben, die nur in der SELECT-Klausel verwendet werden, sind Statistiken für diese Spalten ggf. nicht hilfreich. Indem Sie etwas Zeit investieren, um nur die Spalten zu ermitteln, für die Statistiken hilfreich sind, können Sie den Zeitaufwand für die Verwaltung Ihrer Statistiken reduzieren.
 
-## Warum sind Statistiken erforderlich?
-Ohne geeignete Statistiken können Sie nicht die Leistung erzielen, für deren Bereitstellung SQL Data Warehouse ausgelegt ist. Für Tabellen und Spalten werden von SQL Data Warehouse nicht automatisch Statistiken generiert, sodass Sie diese selbst erstellen müssen. Es ist ratsam, sie während des Erstellvorgangs der Tabelle zu erstellen und dann nach dem Auffüllen zu aktualisieren.
+## Mehrspaltenstatistiken
 
-> [AZURE.NOTE] Wenn Sie SQL Server verwenden, können Sie ggf. SQL Server das Erstellen und Aktualisieren von Einspaltenstatistiken je nach Bedarf überlassen. In diesem Punkt unterscheidet sich SQL Data Warehouse. Da die Daten verteilt sind, werden in SQL Data Warehouse nicht automatisch Statistiken über alle verteilten Daten hinweg zusammengefasst. Die zusammengefassten Statistiken werden nur generiert, wenn Sie Statistiken erstellen und aktualisieren.
+Zusätzlich zum Erstellen von Statistiken zu einzelnen Spalten werden Sie ggf. herausfinden, dass Ihre Abfragen von Mehrspaltenstatistiken profitieren. Statistiken für mehrere Spalten sind Statistiken, die für eine Liste mit Spalten erstellt werden. Sie enthalten Einspaltenstatistiken für die erste Spalte der Liste sowie einige spaltenübergreifende Korrelationsinformationen, die als „Densities“ (Dichten) bezeichnet werden. Wenn Sie beispielsweise über eine Tabelle verfügen, die über zwei Spalten mit einer anderen Tabelle verknüpft ist, kann SQL Data Warehouse den Plan unter Umständen besser optimieren, wenn die Beziehung zwischen den beiden Spalten klar ist. Mehrspaltenstatistiken können die Abfrageleistung für bestimmte Vorgänge verbessern, z.B. zusammengesetzte Verknüpfungen (Joins) und Group By-Vorgänge.
 
-## Gründe für das Erstellen von Statistiken
-Ein kohärenter Satz aktueller Statistiken ist ein zentraler Bestandteil von SQL Data Warehouse. Daher ist es wichtig, beim Entwerfen von Tabellen Statistiken zu erstellen.
+## Aktualisieren von Statistiken
 
-Das Erstellen von Einspaltenstatistiken für jede Spalte ist eine einfache Möglichkeit zum Einsteigen in Statistiken. Es gibt aber immer auch Vor- und Nachteile, was die Leistung einerseits und die Kosten für die Erstellung und Aktualisierung von Statistiken andererseits betrifft. Wenn Sie Einspaltenstatistiken für alle Spalten erstellen und dann herausfinden, dass das Aktualisieren aller Statistiken zu lange dauert, können Sie einige Statistiken verwerfen oder einige Statistiken häufiger als andere aktualisieren.
-
-Mehrspaltenstatistiken werden vom Abfrageoptimierer nur verwendet, wenn sich die Spalten in zusammengesetzten Verknüpfungen oder Group By-Klauseln befinden. Zusammengesetzte Filter profitieren derzeit nicht von Mehrspaltenstatistiken.
-
-Wenn Sie mit der SQL Data Warehouse-Entwicklung beginnen, ist es daher aus gutem Grund ratsam, das folgende Muster zu implementieren:
-- Erstellen Sie Einzelspaltenstatistiken für jede Spalte einer jeden Tabelle.
-- Erstellen Sie Mehrspaltenstatistiken für die Spalten, die von Abfragen in Verknüpfungen und Group by-Klauseln verwendet werden.
-
-Wenn Sie später genauer wissen, wie Sie Ihre Daten abfragen möchten, können Sie dieses Modell verfeinern. Dies gilt vor allem, wenn die Tabellen breit sind. Einen erweiterten Methodenansatz finden Sie im Abschnitt [Implementieren der Statistikverwaltung](## Implementieren der Statistikverwaltung).
-
-## Gründe für das Aktualisieren von Statistiken
-Es ist wichtig, das Aktualisieren von Statistiken in den üblichen Ablauf Ihrer Datenbankverwaltung einzubeziehen. Wenn sich die Verteilung der Daten in der Datenbank ändert, müssen die Statistiken aktualisiert werden. Andernfalls kann es zu einer suboptimalen Abfrageleistung kommen, und es könnte sich nicht lohnen, die weitere Problembehebung für die Abfrage durchzuführen.
+Das Aktualisieren von Statistiken ist ein wichtiger Bestandteil der Datenbankverwaltung. Wenn sich die Verteilung der Daten in der Datenbank ändert, müssen die Statistiken aktualisiert werden. Veraltete Statistiken führen zu einer suboptimalen Abfrageleistung.
 
 Eine bewährte Methode ist es, die Statistiken für Datenspalten im Zuge des Hinzufügens neuer Daten täglich zu aktualisieren. Bei jedem Laden von neuen Zeilen in das Data Warehouse werden neue Datumsangaben für Lade- oder Transaktionsvorgänge hinzugefügt. Dadurch wird die Datenverteilung geändert, und die Statistiken sind nicht mehr aktuell. Im Gegensatz dazu müssen Statistiken zu einer Länderspalte in einer Kundentabelle möglicherweise nie aktualisiert werden, da sich die Verteilung der Werte in der Regel nicht ändert. Wenn davon auszugehen ist, dass die Verteilung zwischen Kunden konstant ist, bewirkt das Hinzufügen neuer Zeilen zur Tabellenvariante keine Änderung der Datenverteilung. Wenn Ihr Data Warehouse allerdings nur ein Land enthält und Sie Daten eines neuen Landes hinzufügen, führt dies dazu, dass Daten aus mehreren Ländern gespeichert werden. Sie müssen dann auf jedem Fall die Statistiken in der Länderspalte aktualisieren.
 
@@ -62,8 +53,8 @@ Diese Frage kann nicht anhand des Alters der Daten beantwortet werden. Ein Stati
 
 Für die spätere Verwendung aktualisiert **SQL Server** (nicht SQL Data Warehouse) die Statistiken für folgende Situationen automatisch:
 
-- Wenn Sie null Zeilen in der Tabelle haben und eine Zeile (oder mehrere Zeilen) hinzufügen, erhalten Sie ein automatisches Update der Statistiken.
-- Wenn Sie einer Tabelle, die mit weniger als 500 Zeilen beginnt, mehr als 500 Zeilen hinzufügen (Sie haben z.B. am Anfang 499 und fügen 500 Zeilen hinzu, sodass Sie insgesamt 999 Zeilen haben), erhalten Sie ein automatisches Update. 
+- Wenn Sie null Zeilen in der Tabelle haben und Zeilen hinzufügen, erhalten Sie ein automatisches Update der Statistiken.
+- Wenn Sie einer Tabelle, die mit weniger als 500 Zeilen beginnt, mehr als 500 Zeilen hinzufügen (Sie haben z.B. am Anfang 499 und fügen 500 Zeilen hinzu, sodass Sie insgesamt 999 Zeilen haben), erhalten Sie ein automatisches Update.
 - Sobald Sie über mehr als 500 Zeilen verfügen, müssen Sie 500 zusätzliche Zeilen + 20 % der Tabellengröße hinzufügen, bevor Sie ein automatisches Update der Statistiken erhalten.
 
 Da keine DMV existiert, mit der Sie feststellen können, ob sich die Daten innerhalb der Tabelle seit der letzten Aktualisierung der Statistik geändert haben, kann das Alter Ihrer Statistiken Ihnen teilweise Einblick bieten, ob die Daten aktuell sind. Sie können die folgende Abfrage verwenden, um den Zeitpunkt zu ermitteln, zu dem die Statistiken für jede Tabelle zuletzt aktualisiert wurden.
@@ -355,7 +346,7 @@ Diese Anweisung ist einfach zu verwenden. Bedenken Sie, dass hiermit alle Statis
 
 > [AZURE.NOTE] Beim Aktualisieren aller Statistiken einer Tabelle führt SQL Data Warehouse einen Scan durch, um für jede Statistik Stichproben der Tabelle zu nehmen. Wenn die Tabelle groß ist und viele Spalten und Statistiken enthält, kann es effizienter sein, je nach Bedarf einzelne Spalten zu aktualisieren.
 
-Eine Implementierung einer `UPDATE STATISTICS`-Prozedur wird im Artikel [Temporäre Tabellen] beschrieben. Die Implementierungsmethode unterscheidet sich etwas von der obigen `CREATE STATISTICS`-Prozedur, aber das Endergebnis ist identisch.
+Eine Implementierung einer `UPDATE STATISTICS`-Prozedur wird im Artikel [Temporäre Tabellen][Temporary] beschrieben. Die Implementierungsmethode unterscheidet sich etwas von der obigen `CREATE STATISTICS`-Prozedur, aber das Endergebnis ist identisch.
 
 Die vollständige Syntax finden Sie unter [Aktualisieren von Statistiken][] auf der MSDN-Website.
 
@@ -473,17 +464,27 @@ DBCC SHOW\_STATISTICS() ist im Vergleich zu SQL Server strenger in SQL Data Ware
 4. Spaltennamen können nicht zum Identifizieren von Statistikobjekten verwendet werden
 5. Benutzerdefinierter Fehler 2767 wird nicht unterstützt
 
-
 ## Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklungsübersicht][].
+
+Weitere Informationen finden Sie unter [DBCC SHOW\_STATISTICS][] auf der MSDN-Website. Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Overview], [Tabellendatentypen][Data Types], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index], [Partitionieren einer Tabelle][Partition] und [Temporäre Tabellen][Temporary]. Weitere Informationen zu bewährten Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][].
 
 <!--Image references-->
 
-<!--Link references--In actual articles, you only need a single period before the slash.-->
-[SQL Data Warehouse-Entwicklungsübersicht]: ./sql-data-warehouse-overview-develop.md
-[Temporäre Tabellen]: ./sql-data-warehouse-develop-temporary-tables.md
+<!--Article references-->
+[Overview]: ./sql-data-warehouse-tables-overview.md
+[Übersicht]: ./sql-data-warehouse-tables-overview.md
+[Data Types]: ./sql-data-warehouse-tables-data-types.md
+[Datentypen]: ./sql-data-warehouse-tables-data-types.md
+[Distribute]: ./sql-data-warehouse-tables-distribute.md
+[Verteilen]: ./sql-data-warehouse-tables-distribute.md
+[Index]: ./sql-data-warehouse-tables-index.md
+[Partition]: ./sql-data-warehouse-tables-partition.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[Temporary]: ./sql-data-warehouse-tables-temporary.md
+[Temporär]: ./sql-data-warehouse-tables-temporary.md
+[Bewährte Methoden für SQL Data Warehouse]: ./sql-data-warehouse-best-practices.md
 
-<!-- External Links -->
+<!--MSDN references-->  
 [Kardinalitätsschätzung]: https://msdn.microsoft.com/library/dn600374.aspx
 [CREATE STATISTICS]: https://msdn.microsoft.com/library/ms188038.aspx
 [DBCC SHOW\_STATISTICS]: https://msdn.microsoft.com/library/ms174384.aspx
@@ -498,4 +499,6 @@ Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklu
 [sys.table\_types]: https://msdn.microsoft.com/library/bb510623.aspx
 [Aktualisieren von Statistiken]: https://msdn.microsoft.com/library/ms187348.aspx
 
-<!---HONumber=AcomDC_0518_2016-->
+<!--Other Web references-->  
+
+<!---HONumber=AcomDC_0706_2016-->

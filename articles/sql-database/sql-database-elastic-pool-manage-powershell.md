@@ -83,8 +83,8 @@ Metriken, die als Prozentsatz des Ressourcenpool-Grenzwerts abgerufen werden kö
 
 **Granularität/Beibehaltungsdauern für die Metriken:**
 
-* Daten werden mit 5-Minuten-Granularität zurückgegeben.  
-* Die Datenaufbewahrung beträgt 14 Tage.  
+* Daten werden mit 5-Minuten-Granularität zurückgegeben.
+* Die Datenaufbewahrung beträgt 35 Tage.
 
 Dieses Cmdlet und die API beschränken die Anzahl der Zeilen, die in einem Aufruf abgerufen werden können, auf 1000 Zeilen (ca. drei Tage Daten bei 5-Minuten-Granularität). Dieser Befehl kann jedoch mehrmals mit verschiedenen Anfangs- und Endzeitintervallen aufgerufen werden, um mehr Daten abzurufen.
 
@@ -177,7 +177,7 @@ Um diese Beispielimplementierung zu verwenden, führen Sie die nachfolgend aufge
 
 1. Laden Sie [Skripts und die Dokumentation](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools) herunter:
 2. Ändern Sie die Skripts für Ihre Umgebung ab. Geben Sie einen oder mehrere Server an, auf denen elastische Pools gehostet werden.
-3. Geben Sie eine Telemetriedatenbank an, in der die gesammelten Metriken gespeichert werden. 
+3. Geben Sie eine Telemetriedatenbank an, in der die gesammelten Metriken gespeichert werden.
 4. Passen Sie das Skript an, um die Dauer der Skriptausführung festzulegen.
 
 Im Allgemeinen führen die Skripts folgende Aufgaben aus:
@@ -276,4 +276,4 @@ Mit dem Cmdlet „Stop-“ wird der Vorgang abgebrochen, nicht angehalten. Ein U
 - [Erstellen elastischer Aufträge](sql-database-elastic-jobs-overview.md): Elastische Aufträge ermöglichen die Ausführung von T-SQL-Skripts für eine beliebige Anzahl von Datenbanken im Pool.
 - Unter [Horizontales Hochskalieren mit Azure SQL-Datenbank](sql-database-elastic-scale-introduction.md) finden Sie Informationen zur Verwendung elastischer Datenbanktools für die horizontale Hochskalierung, zum Verschieben von Daten, für die Abfrage oder zum Erstellen von Transaktionen.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

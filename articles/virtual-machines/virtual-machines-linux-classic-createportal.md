@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/15/2016"
+	ms.date="07/06/2016"
 	ms.author="cynthn"/>
 
 
@@ -34,4 +34,4 @@
 
 Sie können mit dem klassischen Portal auch [einen benutzerdefinierten virtuellen Computer unter Windows erstellen](virtual-machines-windows-classic-createportal.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

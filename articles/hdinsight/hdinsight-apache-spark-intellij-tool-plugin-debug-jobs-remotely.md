@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/09/2016"
+	ms.date="07/06/2016"
 	ms.author="nitinme"/>
 
 
@@ -42,7 +42,7 @@ Dieser Artikel enthält eine Schritt-für-Schritt-Anleitung zur Verwendung des H
  
 * IntelliJ IDEA. In diesem Artikel wird die Version 15.0.1 verwendet. Das Installationspaket finden Sie [hier](https://www.jetbrains.com/idea/download/).
  
-* HDInsight-Tools-Plug-In für IntelliJ IDEA: Eine Anleitung zur Installation des Plug-Ins finden Sie unter [Installieren des HDInsight-Tools-Plug-Ins für IntelliJ IDEA](hdinsight-apache-spark-intellij-tool-plugin.md#install-hdinsight-tools-plugin-for-intellij-idea).
+* HDInsight-Tools-Plug-In für IntelliJ IDEA: Das HDInsight-Tools-Plug-In für IntelliJ IDEA ist als Teil des Azure-Toolkits für IntelliJ verfügbar. Anweisungen zum Installieren des Azure-Toolkits finden Sie unter [Installieren des Azure Toolkit für IntelliJ](../azure-toolkit-for-intellij-installation.md).
  
 * Beim Ausführen der Spark Scala-Anwendung für das Remotedebuggen auf einem Windows-Computer erhalten Sie ggf. eine Ausnahme wie unter [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) beschrieben, die aufgrund der unter Windows fehlenden Datei „WinUtils.exe“ ausgelöst wird. Um diesen Fehler zu umgehen, müssen Sie [die ausführbare Datei hier herunterladen](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) und an einem Speicherort wie **C:\\WinUtils\\bin** speichern. Fügen Sie anschließend die Umgebungsvariable **HADOOP\_HOME** hinzu, und setzen Sie den Wert der Variablen auf **C\\WinUtils**.
 
@@ -50,9 +50,9 @@ Dieser Artikel enthält eine Schritt-für-Schritt-Anleitung zur Verwendung des H
 
 Führen Sie die Anweisungen unter den unten angegebenen Links aus, um ein Azure Virtual Network zu erstellen, und überprüfen Sie dann die Verbindung zwischen dem Desktop und dem Azure Virtual Network.
 
-* [Erstellen eines VNet mit einer Site-to-Site-VPN-Verbindung über das Azure-Portal](..\vpn-gateway\vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-* [Erstellen eines VNet mit einer Site-to-Site-VPN-Verbindung per PowerShell](..\vpn-gateway\vpn-gateway-create-site-to-site-rm-powershell.md)
-* [Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem virtuellen Netzwerk mithilfe von PowerShell](..\vpn-gateway\vpn-gateway-howto-point-to-site-rm-ps.md)
+* [Erstellen eines VNet mit einer Site-to-Site-VPN-Verbindung über das Azure-Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Erstellen eines VNet mit einer Site-to-Site-VPN-Verbindung per PowerShell](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
+* [Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem virtuellen Netzwerk mithilfe von PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
 ## Schritt 2: Erstellen eines HDInsight Spark-Clusters
 
@@ -68,7 +68,7 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 
 	![IP-Adresse des Hauptknotens ermitteln](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-hosts.png)
 
-3. Eine Liste mit Hauptknoten, Workerknoten und Zookeeper-Knoten wird angezeigt. Die Hauptknoten haben das Präfix **hn***. Klicken Sie auf den ersten Hauptknoten.
+3. Eine Liste mit Hauptknoten, Workerknoten und Zookeeper-Knoten wird angezeigt. Die Hauptknoten haben das Präfix **hn**. Klicken Sie auf den ersten Hauptknoten.
 
 	![IP-Adresse des Hauptknotens ermitteln](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/cluster-headnodes.png)
 
@@ -156,7 +156,7 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 
 6. Aktualisieren Sie die Datei `core-site.xml`, um die folgenden Änderungen vorzunehmen.
 
-	1. `core-site.xml` enthält den verschlüsselten Schlüssel für das Speicherkonto, das dem Cluster zugeordnet ist. Ersetzen Sie in der Datei `core-site.xml`, die Sie dem Projekt hinzugefügt haben, den verschlüsselten Schlüssel durch den tatsächlichen Speicherschlüssel, der dem Standardspeicherkonto zugeordnet ist. Weitere Informationen finden Sie unter [Verwalten von Speicherzugriffsschlüsseln](..\storage\storage-create-storage-account.md#manage-your-storage-account).
+	1. `core-site.xml` enthält den verschlüsselten Schlüssel für das Speicherkonto, das dem Cluster zugeordnet ist. Ersetzen Sie in der Datei `core-site.xml`, die Sie dem Projekt hinzugefügt haben, den verschlüsselten Schlüssel durch den tatsächlichen Speicherschlüssel, der dem Standardspeicherkonto zugeordnet ist. Weitere Informationen finden Sie unter [Verwalten von Speicherzugriffsschlüsseln](../storage/storage-create-storage-account.md#manage-your-storage-account).
 
 			<property>
 	      		<name>fs.azure.account.key.hdistoragecentral.blob.core.windows.net</name>
@@ -252,7 +252,7 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 	Hierbei sind einige wichtige Punkte zu beachten:
 	
 	* Stellen Sie für `.set("spark.yarn.jar", "wasb:///hdp/apps/2.4.2.0-258/spark-assembly-1.6.1.2.4.2.0-258-hadoop2.7.1.2.4.2.0-258.jar")` sicher, dass die Spark-Assembly-JAR-Datei im Clusterspeicher unter dem angegebenen Pfad verfügbar ist.
-	* Geben Sie für `setJars` den Speicherort an, an dem die Artefakt-JAR-Datei erstellt wird. Normalerweise ist dies `<Your IntelliJ project directory>\out<project name>_DefaultArtifact\default_artifact.jar`. 
+	* Geben Sie für `setJars` den Speicherort an, an dem die Artefakt-JAR-Datei erstellt wird. Normalerweise ist dies `<Your IntelliJ project directory>\out<project name>_DefaultArtifact\default_artifact.jar`.
 
 
 11. Klicken Sie in der `RemoteClusterDebugging`-Klasse mit der rechten Maustaste auf das Schlüsselwort `test`, und wählen Sie **Create RemoteClusterDebugging Configuration** (RemoteClusterDebugging-Konfiguration erstellen).
@@ -330,6 +330,8 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 
 * [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen und Übermitteln von Spark Scala-Anwendungen](hdinsight-apache-spark-intellij-tool-plugin.md)
 
+* [Use HDInsight Tools Plugin for Eclipse to create Spark applications](hdinsight-apache-spark-eclipse-tool-plugin.md) (Verwenden des HDInsight-Tools-Plug-Ins für Eclipse zum Erstellen von Spark-Anwendungen)
+
 * [Verwenden von Zeppelin-Notebooks mit einem Spark-Cluster in HDInsight](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
 * [Verfügbare Kernels für Jupyter-Notebook im Spark-Cluster für HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md)
@@ -344,4 +346,4 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

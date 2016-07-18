@@ -32,19 +32,24 @@ Sie können auch [Azure Active Directory](/services/active-directory/) für die 
 Sobald Sie ein Verwaltungszertifikat erstellt haben (CER-Datei nur mit dem öffentlichen Schlüssel), können Sie es in das Portal hochladen. Wenn das Zertifikat im Portal verfügbar ist, kann jeder Benutzer mit einem entsprechenden Zertifikat (privater Schlüssel) über die Verwaltungs-API eine Verbindung herstellen und auf die Ressourcen für das zugehörige Abonnement zugreifen.
 
 1. Melden Sie sich beim [klassischen Azure-Portal](http://manage.windowsazure.com) an.
-2. Klicken Sie auf der linken Seite des Portals auf **Einstellungen** (möglicherweise müssen Sie einen Bildlauf durchführen). 
+
+2. Stellen Sie sicher, dass Sie das Abonnement auswählen, dem Sie ein Zertifikat zuordnen möchten. Wählen Sie rechts oben im Portal den Text **Abonnements** aus.
+
+	![Einstellungen](./media/azure-api-management-certs/subscription.png)
+
+3. Nachdem Sie das gewünschte Abonnement ausgewählt haben, wählen Sie links im Portal **Einstellungen** aus (möglicherweise müssen Sie nach unten scrollen).
     
     ![Einstellungen](./media/azure-api-management-certs/settings.png)
 
-3. Klicken Sie auf die Registerkarte **Verwaltungszertifikate**.
+4. Wählen Sie die Registerkarte **Verwaltungszertifikate** aus.
 
     ![Einstellungen](./media/azure-api-management-certs/certificates-tab.png)
     
-4. Klicken Sie auf die Schaltfläche **Upload**.
+5. Wählen Sie die Schaltfläche **Hochladen** aus.
 
     ![Einstellungen](./media/azure-api-management-certs/upload.png)
     
-5. Füllen Sie das Dialogfeld mit den Informationen aus, und klicken Sie zum Abschluss auf das **Häkchen**.
+6. Füllen Sie das Dialogfeld aus, und wählen Sie das **Häkchen** aus.
 
     ![Einstellungen](./media/azure-api-management-certs/upload-dialog.png)
 
@@ -52,4 +57,4 @@ Sobald Sie ein Verwaltungszertifikat erstellt haben (CER-Datei nur mit dem öffe
 
 Da Sie jetzt einem Abonnement ein Verwaltungszertifikat zugeordnet haben, können Sie (nachdem Sie das entsprechende Zertifikat lokal installiert haben) programmgesteuert eine Verbindung mit der [Dienstverwaltungs-REST-API](https://msdn.microsoft.com/library/azure/mt420159.aspx) herstellen und die verschiedenen Azure-Ressourcen automatisieren, die auch diesem Abonnement zugeordnet sind.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0706_2016-->

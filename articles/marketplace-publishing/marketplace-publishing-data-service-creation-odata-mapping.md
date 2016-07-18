@@ -69,15 +69,15 @@ Eine Erweiterung des ATOM Pub-Protokolls, bei dem jeder Eintrag eine Zeile eines
 
 Ermöglicht die Definition von Funktionen (SPROCs) und Entitäten, die über eine Datenbank verfügbar gemacht werden. Weitere Informationen finden Sie unter: [http://msdn.microsoft.com/library/bb399292.aspx](http://msdn.microsoft.com/library/bb399292.aspx)
 
-> [AZURE.TIP]Klicken Sie auf den Dropdownpfeil **Weitere Versionen**, und wählen Sie eine Version aus, falls der Artikel nicht angezeigt wird.
+> [AZURE.TIP] Klicken Sie auf den Dropdownpfeil **Weitere Versionen**, und wählen Sie eine Version aus, falls der Artikel nicht angezeigt wird.
 
 ### EDM – Entry Data Model
 - Übersicht: [http://msdn.microsoft.com/library/vstudio/ee382825(v=vs.100).aspx][OverviewLink]
-[OverviewLink]:http://msdn.microsoft.com/library/vstudio/ee382825(v=vs.100).aspx
+[OverviewLink]: http://msdn.microsoft.com/library/vstudio/ee382825(v=vs.100).aspx
 - Vorschau: [http://msdn.microsoft.com/library/aa697428(v=vs.80).aspx][PreviewLink]
-[PreviewLink]:http://msdn.microsoft.com/library/aa697428(v=vs.80).aspx
+[PreviewLink]: http://msdn.microsoft.com/library/aa697428(v=vs.80).aspx
 - Datentypen: [http://msdn.microsoft.com/library/bb399548(v=VS.100).aspx][DataTypesLink]
-[DataTypesLink]:http://msdn.microsoft.com/library/bb399548(v=VS.100).aspx
+[DataTypesLink]: http://msdn.microsoft.com/library/bb399548(v=VS.100).aspx
 
 Im Folgenden sehen Sie den detaillierten Links-nach-Rechts-Ablauf ab dem Punkt, an dem der Client in die OData-Anweisung eintritt (Aufruf des Inhaltsanbieter-Webdienst) bis zu dem Punkt, an dem die Ergebnisse/Daten zurückgegeben werden:
 
@@ -115,7 +115,11 @@ Sie werden bei einem Datendienst wie folgt in Beziehung gesetzt:
 - EntityType ~= Spalten
 - FunctionImport ~= gespeicherte Prozedur
 
-**HTTP-Verben zulässig** - GET: Gibt Werte (eine Sammlung) aus der Datenbank zurück. - POST: wird zur Übergabe von Daten an und optional zur Rückgabe von Werten aus der Datenbank verwendet (erstellt einen neuen Eintrag in der Sammlung, gibt ID/URI zurück). - DELETE: Löscht Daten (eine Sammlung) aus der Datenbank. - PUT: Aktualisiert Daten in einer Datenbank (ersetzt eine Sammlung oder erstellt eine neue)
+**HTTP-Verben zulässig**
+- GET: Gibt Werte (eine Sammlung) aus der Datenbank zurück.
+- POST: Wird zur Übergabe von Daten an die Datenbank und optional zur Rückgabe von Werten aus der Datenbank verwendet (erstellt einen neuen Eintrag in der Sammlung, gibt ID/URI zurück).
+- DELETE: Löscht Daten (eine Sammlung) aus der Datenbank.
+- PUT: Aktualisiert Daten in einer Datenbank (ersetzt eine Sammlung oder erstellt eine neue).
 
 ## Metadaten-/Zuordnungsdokument
 
@@ -123,7 +127,10 @@ Das Metadaten-/Zuordnungsdokument wird für die Zuordnung vorhandener Webdienste
 
 Im Folgenden ein CSDL-Beispiel: (Kopieren Sie die folgende Beispiel-CSDL, fügen Sie sie in einen XML-Editor ein, und passen Sie sie an Ihren Dienst an. Fügen Sie es dann auf der Registerkarte "DataService" unter "CSDL-Zuordnung" ein, wenn Sie den Dienst im [Azure Marketplace-Veröffentlichungsportal](https://publish.windowsazure.com) erstellen.)
 
-**Begriffe**: Beziehung der CSDL-Begriffe zu PPUI-Begriffen ([Publishing Portal](https://publish.windowsazure.com) UI). – Der „Title“ des Angebots in der PPUI bezieht sich auf „MyWebOffer“. – „MyCompany“ in der PPUI bezieht sich auf den **Anzeigenamen des Herausgebers** auf der Benutzeroberfläche von [Microsoft Developer Center](http://dev.windows.com/registration?accountprogram=azure). – Ihre API bezieht sich auf einen Web- oder Datendienst (einen Plan auf der PPUI).
+**Begriffe:** Beziehung der CSDL-Begriffe zu PPUI-Begriffen ([Publishing Portal](https://publish.windowsazure.com)-UI).
+- Der „Title“ des Angebots in der PPUI bezieht sich auf MyWebOffer.
+- „MyCompany“ in der PPUI bezieht sich auf den **Anzeigenamen des Herausgebers** in der [Microsoft Developer Center](http://dev.windows.com/registration?accountprogram=azure)-UI.
+- API bezieht sich auf einen Web- oder Datendienst (einen Plan in der PPUI).
 
 **Hierarchie:** Ein Unternehmen (Inhaltsanbieter) besitzt Angebote mit Plänen. Dabei handelt es sich um Dienste, die in einer API aufgeführt sind.
 
@@ -239,7 +246,7 @@ Stellt eine Verbindung mit einem Dienst her, der den Endpunkt einer Webanwendung
             </EntityType>
         </Schema>
 
-> [AZURE.TIP]Weitere CSDL-Webdienstbeispiele finden Sie im Artikel [Beispiele für die Zuordnung eines vorhandenen Webdiensts zu OData über CSDLs](marketplace-publishing-data-service-creation-odata-mapping-examples.md).
+> [AZURE.TIP] Weitere CSDL-Webdienstbeispiele finden Sie im Artikel [Beispiele für die Zuordnung eines vorhandenen Webdiensts zu OData über CSDLs](marketplace-publishing-data-service-creation-odata-mapping-examples.md).
 
 ###CSDL-Beispiel "DataService"
 
@@ -301,4 +308,4 @@ Stellt eine Verbindung mit einem Dienst her, der eine Datenbanktabelle oder -sic
 - Wenn Sie an Beispielen interessiert sind, lesen Sie den Artikel [Beispiele für die OData-Zuordnung im Datendienst](marketplace-publishing-data-service-creation-odata-mapping-examples.md), um Beispielcode kennenzulernen sowie Codesyntax und Kontext zu verstehen.
 - Um zum vorgeschriebenen Pfad für die Veröffentlichung eines Datendiensts im Azure Marketplace zurückzukehren, lesen Sie den Artikel [Leitfaden zum Veröffentlichen von Datendiensten](marketplace-publishing-data-service-creation.md).
 
-<!---HONumber=AcomDC_0114_2016--->
+<!---HONumber=AcomDC_0706_2016-->

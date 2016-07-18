@@ -20,20 +20,24 @@
 # Verwenden der plattformübergreifenden Azure-Befehlszeilenschnittstelle mit dem Azure-Ressourcen-Manager
 
 > [AZURE.SELECTOR]
+- [Portal](azure-portal/resource-group-portal.md)
 - [Azure-Befehlszeilenschnittstelle](xplat-cli-azure-resource-manager.md)
 - [Azure PowerShell](powershell-azure-resource-manager.md)
-
+- [Java](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group/)
+- [Knoten](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
+- [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
+- [Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
 
 
 Dieser Artikel enthält gängige Vorgehensweisen zum Erstellen und Verwalten von Azure-Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle (Azure Command-Line Interface, Azure CLI) im Azure Resource Manager-Modus.
 
->[AZURE.NOTE] Für die befehlszeilenbasierte Erstellung und Verwaltung von Azure-Ressourcen benötigen Sie ein Azure-Abonnement. (Ein kostenloses Azure-Konto erhalten Sie [hier](https://azure.microsoft.com/free/).) Außerdem müssen Sie die [Azure-Befehlszeilenschnittstelle installieren](xplat-cli-install.md) und sich [für die Verwendung der mit Ihrem Konto verknüpften Azure-Ressourcen anmelden](xplat-cli-connect.md). Damit sind dann alle nötigen Vorbereitungen abgeschlossen.
+>[AZURE.NOTE] Für die befehlszeilenbasierte Erstellung und Verwaltung von Azure-Ressourcen benötigen Sie ein Azure-Abonnement. ([Ein kostenloses Azure-Konto erhalten Sie hier](https://azure.microsoft.com/free/).) Außerdem müssen Sie die [Azure-Befehlszeilenschnittstelle installieren](xplat-cli-install.md) und sich [für die Verwendung der mit Ihrem Konto verknüpften Azure-Ressourcen anmelden](xplat-cli-connect.md). Damit sind dann alle nötigen Vorbereitungen abgeschlossen.
 
 ## Azure-Ressourcen
 
 Mit dem Azure-Ressourcen-Manager können Sie eine Gruppe von _Ressourcen_ (vom Benutzer verwaltete Entitäten wie etwa virtuelle Computer, Datenbankserver, Datenbanken oder Websites) als einzelne logische Einheit (_Ressourcengruppe_) erstellen und verwalten.
 
-Ein Vorteil des Azure Resource Managers besteht darin, dass Sie Ihre Azure-Ressourcen _deklarativ_ erstellen können, indem Sie die Struktur und die Beziehungen einer bereitstellbaren Gruppe von Ressourcen in *JSON-Vorlagen* beschreiben. Die Vorlage gibt Parameter an, die entweder beim Ausführen eines Befehls (Inline) ausgefüllt oder in einer separaten JSON-Parameterdatei gespeichert werden. Auf diese Weise können Sie mühelos neue Ressourcen mit derselben Vorlage erstellen, indem Sie unterschiedliche Parameter bereitstellen. So enthält beispielsweise eine Vorlage für die Websiteerstellung Parameter für den Websitenamen und die Region, in der sich die Website befinden soll, sowie andere allgemeine Einstellungen.
+Ein Vorteil des Azure Resource Managers besteht darin, dass Sie Ihre Azure-Ressourcen _deklarativ_ erstellen können, indem Sie die Struktur und die Beziehungen einer bereitstellbaren Gruppe von Ressourcen in JSON-*Vorlagen* beschreiben. Die Vorlage gibt Parameter an, die entweder beim Ausführen eines Befehls (Inline) ausgefüllt oder in einer separaten JSON-Parameterdatei gespeichert werden. Auf diese Weise können Sie mühelos neue Ressourcen mit derselben Vorlage erstellen, indem Sie unterschiedliche Parameter bereitstellen. So enthält beispielsweise eine Vorlage für die Websiteerstellung Parameter für den Websitenamen und die Region, in der sich die Website befinden soll, sowie andere allgemeine Einstellungen.
 
 Wenn mit einer Vorlage eine Gruppe geändert oder erstellt wird, wird eine _Bereitstellung_ erstellt, die dann auf die Gruppe angewendet wird. Weitere Informationen zum Azure-Ressourcen-Manager finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](resource-group-overview.md).
 
@@ -41,7 +45,7 @@ Nach dem Erstellen einer Bereitstellung können Sie genau wie beim klassischen B
 
 ## Authentifizierung
 
-Wenn Sie den Azure Resource Manager über die Azure-Befehlszeilenschnittstelle nutzen möchten, müssen Sie sich aktuell bei Microsoft Azure authentifizieren. Verwenden Sie hierzu den Befehl `azure login`, und geben Sie ein von Azure Active Directory verwaltetes Konto an. Dabei kann es sich um ein Geschäfts- oder Schulkonto (Organisationskonto) oder um ein Microsoft-Konto handeln. Die Authentifizierung mit einem durch eine PUBLISHSETTINGS-Datei installierten Zertifikat ist in diesem Modus nicht möglich.
+Wenn Sie den Azure Resource Manager über die Azure-Befehlszeilenschnittstelle nutzen möchten, müssen Sie sich derzeit bei Microsoft Azure authentifizieren. Verwenden Sie hierzu den Befehl `azure login`, und geben Sie ein von Azure Active Directory verwaltetes Konto an. Dabei kann es sich um ein Geschäfts- oder Schulkonto (Organisationskonto) bzw. ein Microsoft-Konto handeln. Die Authentifizierung mit einem durch eine PUBLISHSETTINGS-Datei installierten Zertifikat ist in diesem Modus nicht möglich.
 
 Weitere Informationen zur Authentifizierung bei Microsoft Azure finden Sie unter [Herstellen einer Verbindung mit einem Azure-Abonnement über die Azure-Befehlszeilenschnittstelle](xplat-cli-connect.md).
 
@@ -111,7 +115,7 @@ Das Erstellen einer neuen Vorlage würde jedoch den Rahmen dieses Artikels spren
 			}
 
 	```
-3.  Nach dem Ändern der Bereitstellungsparameter stellen Sie nun den virtuellen Ubuntu-Computer in der zuvor erstellten Ressourcengruppe *testRG* bereit. Wählen Sie einen Namen für die Bereitstellung (in diesem Beispiel *testRGDeploy*), und verwenden Sie dann den folgenden Befehl, um sie starten.
+3.  Nach dem Ändern der Bereitstellungsparameter stellen Sie nun den virtuellen Ubuntu-Computer in der zuvor erstellten Ressourcengruppe *testRG* bereit. Wählen Sie einen Namen für die Bereitstellung (in diesem Beispiel *testRGDeploy*), und starten Sie sie dann mit dem folgenden Befehl.
 
 	```
 	azure group deployment create -f azuredeploy.json -e azuredeploy.parameters.json testRG testRGDeploy
@@ -162,7 +166,7 @@ Das Erstellen einer neuen Vorlage würde jedoch den Rahmen dieses Artikels spren
 
 	Dieser Befehl gibt Informationen zu den Ressourcen in der Gruppe zurück. Sind mehrere Gruppen vorhanden, rufen Sie mit dem Befehl `azure group list` eine Liste mit Gruppennamen ab. Verwenden Sie dann `azure group show`, um die Details einer bestimmten Gruppe anzuzeigen.
 
-Sie können auch eine Vorlage direkt auf [GitHub](https://github.com/Azure/azure-quickstart-templates) verwenden, ohne sie auf Ihren Computer herunterzuladen. Übergeben Sie dazu die URL zur Datei „azuredeploy.json“ für die Vorlage in Ihrem Befehl mithilfe der Option **--template-uri**. Öffnen Sie zum Abrufen der URL die Datei „azuredeploy.json“ auf GitHub im _Rohmodus_, und kopieren Sie die URL aus der Adressleiste des Browsers. Mit dieser URL können Sie direkt eine Bereitstellung erstellen, indem Sie ungefähr folgenden Befehl verwenden:
+Sie können auch eine Vorlage direkt auf [GitHub](https://github.com/Azure/azure-quickstart-templates) verwenden, ohne sie auf Ihren Computer herunterzuladen. Übergeben Sie dazu die URL mithilfe der Option **--template-uri** der Datei „azuredeploy.json“ für die Vorlage in Ihrem Befehl. Öffnen Sie zum Abrufen der URL die Datei „azuredeploy.json“ auf GitHub im _Rohmodus_, und kopieren Sie die URL aus der Adressleiste des Browsers. Mit dieser URL können Sie direkt eine Bereitstellung erstellen, indem Sie ungefähr folgenden Befehl verwenden:
 
 	azure group deployment create testRG testRGDeploy --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json
 Sie werden aufgefordert, die erforderlichen Vorlagenparameter einzugeben.
@@ -179,7 +183,7 @@ Auch wenn Vorlagen es Ihnen ermöglichen, gruppenweite Änderungen an der Konfig
 
 		azure resource list testRG
 
-2. Verwenden Sie einen Befehl wie den folgenden, um einzelne Ressourcen in der Gruppe anzuzeigen (beispielsweise den virtuellen Computer *MyUbuntuVM*):
+2. Verwenden Sie einen Befehl wie den folgenden, um einzelne Ressourcen in der Gruppe anzuzeigen (beispielsweise den virtuellen Computer *MyUbuntuVM*).
 
 		azure resource show testRG MyUbuntuVM Microsoft.Compute/virtualMachines -o "2015-06-15"
 
@@ -234,4 +238,4 @@ Mithilfe der Azure-Befehlszeilenschnittstelle können Sie entweder eine Vorlage 
 * Weitere Informationen zur Verwendung des Azure-Ressourcen-Managers mit Azure PowerShell finden Sie unter [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](powershell-azure-resource-manager.md).
 * Weitere Informationen zum Verwenden von Azure Resource Manager im Azure-Portal finden Sie unter [Verwenden des Azure-Portals zum Bereitstellen und Verwalten Ihrer Azure-Ressourcen](./azure-portal/resource-group-portal.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/14/2016" 
+	ms.date="07/06/2016" 
 	ms.author="raynew"/>
 
 
@@ -132,12 +132,12 @@ Hier sind die Voraussetzungen angegeben, die Sie zum Integrieren von SQL AlwaysO
 ####  Schritt 1: Hinzufügen einer SQL Server-Instanz
 
 
-1. Klicken Sie auf **SQL hinzufügen**, um eine neue SQL Server-Instanz hinzuzufügen. 
+1. Klicken Sie auf **SQL hinzufügen**, um eine neue SQL Server-Instanz hinzuzufügen.
 
 	![SQL hinzufügen](./media/site-recovery-sql/add-sql.png)
 
 2. Geben Sie unter **SQL Server-Einstellungen konfigurieren** > **Name** einen Anzeigenamen für die SQL Server-Instanz ein.
-3. Geben Sie unter **SQL Server (FQDN)** den FQDN der SQL Server-Quellinstanz an, die Sie hinzufügen möchten. Für den Fall, dass die SQL Server-Instanz in einem Failovercluster installiert ist, geben Sie den FQDN des Clusters und nicht den eines der Clusterknoten an.  
+3. Geben Sie unter **SQL Server (FQDN)** den FQDN der SQL Server-Quellinstanz an, die Sie hinzufügen möchten. Für den Fall, dass die SQL Server-Instanz in einem Failovercluster installiert ist, geben Sie den FQDN des Clusters und nicht den eines der Clusterknoten an.
 4. Wählen Sie unter **SQL Server-Instanz** die Standardinstanz aus, oder geben Sie den Namen der benutzerdefinierten Instanz an.
 5. Wählen Sie unter **VMM-Server** einen VMM-Server aus, der im Site Recovery-Tresor registriert ist. Site Recovery nutzt diesen VMM-Server für die Kommunikation mit der SQL Server-Instanz.
 6. Geben Sie unter **Als Konto ausführen** den Namen eines RunAs-Kontos an, das auf dem angegebenen VMM-Server erstellt wurde. Dieses Konto wird verwendet, um auf die SQL Server-Instanz zuzugreifen, und muss über die Berechtigungen „Lesen“ und „Failover“ für Verfügbarkeitsgruppen auf diesem SQL Server-Computer verfügen.
@@ -151,7 +151,7 @@ Nachdem Sie die SQL Server-Instanz hinzugefügt haben, wird sie auf der Register
 
 #### Schritt 2: Hinzufügen einer SQL-Verfügbarkeitsgruppe
 
-1. Nach dem Hinzufügen des SQL Server-Computers ist der nächste Schritt das Hinzufügen der Verfügbarkeitsgruppen zu Site Recovery. Führen Sie hierfür eine Detailsuche innerhalb der im vorherigen Schritt hinzugefügten SQL Server-Instanz durch, und klicken Sie dann auf "SQL-Verfügbarkeitsgruppe hinzufügen". 
+1. Nach dem Hinzufügen des SQL Server-Computers ist der nächste Schritt das Hinzufügen der Verfügbarkeitsgruppen zu Site Recovery. Führen Sie hierfür eine Detailsuche innerhalb der im vorherigen Schritt hinzugefügten SQL Server-Instanz durch, und klicken Sie dann auf "SQL-Verfügbarkeitsgruppe hinzufügen".
 
 	![SQL-Verfügbarkeitsgruppe hinzufügen](./media/site-recovery-sql/add-sqlag.png)
 
@@ -353,4 +353,4 @@ Lesen Sie die [weiteren Informationen](site-recovery-best-practices.md) zur Vorb
 
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0706_2016-->

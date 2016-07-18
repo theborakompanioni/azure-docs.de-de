@@ -3,13 +3,13 @@
 
 ## Suchen des virtuellen Computers
 
-1. Melden Sie sich beim Azure-Portal an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-2. Klicken Sie im Hub-Menü auf **Virtuelle Computer**.
+2. Klicken Sie im Menü „Hub“ auf **Virtuelle Computer**.
 
 3.	Wählen Sie den gewünschten virtuellen Computer aus der Liste aus.
 
-4. Klicken Sie rechts unter **Zusammenfassung** auf **Alle Einstellungen**, und klicken Sie anschließend auf **Datenträger**.
+4. Klicken Sie auf dem Blatt „Virtuelle Computer“ unter **Zusammenfassung** auf **Alle Einstellungen** > **Datenträger**.
 
 	![Öffnen der Datenträgereinstellungen](./media/virtual-machines-common-attach-disk-portal/find-disk-settings.png)
 
@@ -43,4 +43,4 @@ Folgen Sie den Anweisungen zum Anfügen eines neuen oder eines vorhandenen Daten
 
 6.	Nachdem der Datenträger von Azure an den virtuellen Computer angefügt wurde, wird er in den Datenträgereinstellungen des virtuellen Computers unter **Datenträger** angezeigt.
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0706_2016-->

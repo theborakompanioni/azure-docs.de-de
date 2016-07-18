@@ -17,7 +17,7 @@
    ms.author="chackdan"/>
 
 # Erstellen von eigenständigen Service Fabric-Clustern unter Windows Server oder Linux
-Azure Service Fabric ermöglicht die Erstellung von Service Fabric-Clustern auf VMs oder Computern mit Windows Server oder Linux. Dadurch lassen sich Service Fabric-Anwendungen in jeder lokalen oder cloudbasierten Umgebung bereitstellen und ausführen, in der sich miteinander verbundene Computer mit Windows Server oder Linux befinden.
+Azure Service Fabric ermöglicht die Erstellung von Service Fabric-Clustern auf VMs oder Computern mit Windows Server oder Linux. Dadurch lassen sich Service Fabric-Anwendungen in jeder lokalen oder cloudbasierten Umgebung bereitstellen und ausführen, in der sich miteinander verbundene Computer unter Windows Server oder Linux befinden.
 
 **Hinweis**: Das Erstellen eines Clusters unter Azure sollte entweder mit einer Azure Resource Manager-Vorlage oder mit dem Azure-Portal durchgeführt werden. Weitere Informationen finden Sie unter [Erstellen eines Service Fabric-Clusters mit einer Azure Resource Manager-Vorlage](service-fabric-cluster-creation-via-arm.md) oder [Erstellen eines Service Fabric-Clusters im Azure-Portal](service-fabric-cluster-creation-via-portal.md).
 
@@ -53,8 +53,8 @@ Die Verwendung von Service Fabric-Clustern unter Azure bietet Vorteile gegenübe
 
 * **Azure-Ressourcen-Manager:** Vereinfacht die Verwaltung aller vom Cluster genutzten Ressourcen als Einheit sowie die Abrechnung und sorgt für Kostentransparenz.
 * **Service Fabric-Cluster als Azure-Ressource** Ein Service Fabric-Cluster ist eine ARM-Ressource, sodass Sie ihn genau wie andere ARM-Ressourcen in Azure modellieren können.
-* **Integration in Azure-Infrastruktur** Service Fabric wird mit der zugrunde liegenden Azure-Infrastruktur für Betriebssystem, Netzwerk und andere Upgrades koordiniert, um die Verfügbarkeit und Zuverlässigkeit Ihrer Anwendungen zu verbessern.  
-* **Diagnose:** Integration von Azure Diagnostics und Operational Insights.
+* **Integration in Azure-Infrastruktur** Service Fabric wird mit der zugrunde liegenden Azure-Infrastruktur für Betriebssystem, Netzwerk und andere Upgrades koordiniert, um die Verfügbarkeit und Zuverlässigkeit Ihrer Anwendungen zu verbessern.
+* **Diagnose:** Integration von Azure-Diagnose und Log Analytics.
 * **Automatische Skalierung:** Integrierte automatische Skalierungsfunktion für in Azure gehostete Cluster aufgrund von Virtual Machines-Skalierungsgruppen. In lokalen und anderen Cloudumgebungen müssen Sie eine eigene automatische Skalierungsfunktion entwickeln oder eine manuelle Skalierung mithilfe der APIs vornehmen, die Service Fabric für die Skalierung von Clustern verfügbar macht.
 
 ## Nächste Schritte
@@ -62,4 +62,4 @@ Erstellen eines Clusters auf virtuellen Windows- oder Windows Server-Computern: 
 
 Erstellen eines Clusters auf virtuellen Linux- oder Linux-Computern: [Service Fabric on Linux](service-fabric-linux-overview.md) (Service Fabric unter Linux)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0706_2016-->

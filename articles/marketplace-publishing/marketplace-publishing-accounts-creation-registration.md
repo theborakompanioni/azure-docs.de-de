@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/07/2016"
+   ms.date="06/27/2016"
    ms.author="hascipio"/>
 
 # Erstellen eines Microsoft-Entwicklerkontos
@@ -22,7 +22,7 @@ In diesem Artikel werden die Schritte zur Erstellung und Registrierung eines Kon
 ## 1\. Erstellen eines Microsoft-Kontos
 > [AZURE.WARNING] Zum Starten des Veröffentlichungsprozesses müssen Sie ein Microsoft-Konto erstellen. Dieses Konto wird verwendet, um sich für das **Microsoft Developer Center** und das **Azure-Veröffentlichungsportal** zu registrieren und die Anmeldung dafür durchzuführen. Sie sollten für Ihre Azure Marketplace-Angebote nur ein Microsoft-Konto verwenden. Verwenden Sie keine unterschiedlichen Konten für verschiedene Dienste oder Angebote.
 
-Die Adresse, die für den Benutzernamen maßgeblich ist, sollte sich in Ihrer Domäne befinden und von Ihrem IT-Team gesteuert werden (z. B. publishing@example.com)). Informationen zu Bezahlung, Steuern und Berichterstellung werden an dieses Konto gesendet.
+Die Adresse, die für den Benutzernamen maßgeblich ist, sollte sich in Ihrer Domäne befinden und von Ihrem IT-Team gesteuert werden (z.B. publishing@example.com). Informationen zu Bezahlung, Steuern und Berichterstellung werden an dieses Konto gesendet.
 
   > [AZURE.WARNING] Wörter wie „Azure“ und „Microsoft“ werden bei der Registrierung eines Microsoft-Kontos nicht unterstützt. Vermeiden Sie diese Wörter, um den Prozess der Kontoerstellung und -registrierung abzuschließen.
 
@@ -65,7 +65,7 @@ Das Microsoft Developer Center wird für die einmalige Registrierung der Unterne
 
 2. Wechseln Sie zu [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure).
 
-3. Melden Sie sich mit dem Microsoft-Konto an, das Sie für Ihr Unternehmen registriert haben (z. B. marketplace@example.com).
+3. Melden Sie sich mit dem Microsoft-Konto an, das Sie für Ihr Unternehmen registriert haben (z.B. marketplace@example.com).
 
     ![Abbildung][img-signin]
 
@@ -159,14 +159,7 @@ Das Azure-Veröffentlichungsportal dient zum Veröffentlichen und Verwalten Ihre
 
 
 ## Nächste Schritte
-Nachdem Ihr Konto erstellt und registriert wurde, klicken Sie auf den Artefakttyp (virtueller Computer, Entwicklerdienst, Datendienst oder Lösungsvorlage), den Sie im Azure Marketplace veröffentlichen möchten. Informationen zum Veröffentlichen des jeweiligen Angebots finden Sie in den folgenden Artikeln:
-
-|| VM-Image | Entwicklerdienst | Datendienst | Lösungsvorlage |
-|----|-----|-----|-----|-----|
-|**Schritt 2: Erstellen Ihres Angebots** |[Allgemeine nicht technische Voraussetzungen](marketplace-publishing-pre-requisites.md)| Private Vorschau | [Allgemeine nicht technische Voraussetzungen](marketplace-publishing-pre-requisites.md)| [Allgemeine nicht technische Voraussetzungen](marketplace-publishing-pre-requisites.md)|
-|| [Technische Voraussetzungen für VM-Images][link-single-vm-prereq] | Private Vorschau | [Technische Voraussetzungen für Datendienste](marketplace-publishing-data-service-creation-prerequisites.md) | [Technische Voraussetzungen für Lösungsvorlagen](marketplace-publishing-solution-template-creation-prerequisites.md) |
-|| [Anleitung zum Veröffentlichen von VM-Images][link-single-vm] | Private Vorschau | [Anleitung zum Veröffentlichen von Datendiensten](marketplace-publishing-data-service-creation.md) | [Anleitung zum Veröffentlichen von Lösungsvorlagen](marketplace-publishing-solution-template-creation.md) |
-|| [Anleitung für Marketinginhalte in Azure Marketplace][link-pushstaging] | Private Vorschau | [Anleitung für Marketinginhalte in Azure Marketplace][link-pushstaging] | [Anleitung für Marketinginhalte in Azure Marketplace][link-pushstaging] |
+Nach der Erstellung und Registrierung Ihres Kontos sollten Sie nun sicherstellen, dass Sie alle nicht technischen Voraussetzungen für die Veröffentlichung Ihres Angebots erfüllen. Lesen Sie sich hierzu [Nicht technische Voraussetzungen](marketplace-publishing-pre-requisites.md) durch.
 
 ## Weitere Informationen
 - [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md)
@@ -198,4 +191,4 @@ Nachdem Ihr Konto erstellt und registriert wurde, klicken Sie auf den Artefaktty
 [link-devsvc-prereq]: marketplace-publishing-dev-service-creation-prerequisites.md
 [link-pushstaging]: marketplace-publishing-push-to-staging.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/27/2016"
+	ms.date="07/06/2016"
 	ms.author="maheshu"/>
 
 # Verwalten von DNS in einer durch Azure AD-Domänendienste verwalteten Domäne
@@ -118,4 +118,4 @@ Weitere Informationen zur Verwaltung von DNS finden Sie im [Technet-Artikel zu D
 
 - [DNS-Verwaltungstools](https://technet.microsoft.com/library/cc753579.aspx)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0706_2016-->

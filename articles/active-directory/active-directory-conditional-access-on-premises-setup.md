@@ -80,15 +80,15 @@ Führen Sie die Aufgaben in der Prüfliste unten aus, um den Azure Active Direct
 
 | Aufgabe | Referenz |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
-| Bereitstellen der Active Directory-Domänendienste mit den Windows Server 2012 R2-Schemaerweiterungen. Es ist nicht erforderlich, ein Upgrade Ihrer Domänencontroller auf Windows Server 2012 R2 auszuführen. Das Upgrade des Schemas ist die einzige Anforderung. | [Ausführen eines Upgrades des Schemas der Active Directory-Domänendienste](#Ausführen eines Upgrades des Schemas der Active Directory-Domänendienste) |
-| Geräte ermitteln den Azure Active Directory-Geräteregistrierungsdienst, indem sie nach bekannten DNS-Einträgen suchen. Sie müssen den DNS-Eintrag für Ihr Unternehmen so konfigurieren, dass Geräte den Azure Active Directory-Geräteregistrierungsdienst ermitteln können. | [Vorbereiten von Active Directory-Unterstützungsgeräten](#Vorbereiten von Active Directory-Unterstützungsgeräten) |
+| Bereitstellen der Active Directory-Domänendienste mit den Windows Server 2012 R2-Schemaerweiterungen. Es ist nicht erforderlich, ein Upgrade Ihrer Domänencontroller auf Windows Server 2012 R2 auszuführen. Das Upgrade des Schemas ist die einzige Anforderung. | [Ausführen eines Upgrades des Schemas der Active Directory-Domänendienste](#upgrade-your-active-directory-domain-services-schema) |
+| Geräte ermitteln den Azure Active Directory-Geräteregistrierungsdienst, indem sie nach bekannten DNS-Einträgen suchen. Sie müssen den DNS-Eintrag für Ihr Unternehmen so konfigurieren, dass Geräte den Azure Active Directory-Geräteregistrierungsdienst ermitteln können. | [Vorbereiten von Unterstützungsgeräten für Active Directory](#prepare-your-active-directory-to-support-devices) |
 
 
 ##Teil 3: Aktivieren des Geräterückschreibens in Azure AD
 
 | Aufgabe | Referenz |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
-| Führen Sie Teil 2 von „Aktivieren des Geräterückschreibens in Azure AD Connect“ aus. Kehren Sie nach Abschluss des Vorgangs zu dieser Anleitung zurück. | [Aktivieren von „Geräterückschreiben“ in Azure AD Connect](#Ausführen eines Upgrades des Schemas der Active Directory-Domänendienste) |
+| Führen Sie Teil 2 von „Aktivieren des Geräterückschreibens in Azure AD Connect“ aus. Kehren Sie nach Abschluss des Vorgangs zu dieser Anleitung zurück. | [Aktivieren des Geräterückschreibens in Azure AD Connect](#upgrade-your-active-directory-domain-services-schema) |
 
 
 ##[Optional] Teil 4: Aktivieren der Multi-Factor Authentication
@@ -102,10 +102,10 @@ Die Bereitstellung ist jetzt abgeschlossen. Sie können nun einige Szenarien aus
 
 | Aufgabe | Referenz |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
-| Verknüpfen Sie einige Geräte mit dem Arbeitsbereich, indem Sie die Azure Active Directory-Geräteregistrierung verwenden. Sie können iOS-, Windows- und Android-Geräte verknüpfen. | [Arbeitsbereichverknüpfung für Geräte mithilfe der Azure Active Directory-Geräteregistrierung](#Arbeitsbereichverknüpfung für Geräte mithilfe der Azure Active Directory-Geräteregistrierung) |
+| Verknüpfen Sie einige Geräte mit dem Arbeitsbereich, indem Sie die Azure Active Directory-Geräteregistrierung verwenden. Sie können iOS-, Windows- und Android-Geräte verknüpfen. | [Arbeitsbereichverknüpfung für Geräte mithilfe der Azure Active Directory-Geräteregistrierung ](#join-devices-to-your-workplace-using-azure-active-directory-device-registration) |
 | Sie können registrierte Geräte mithilfe des Verwaltungsportals anzeigen und aktivieren/deaktivieren. In dieser Aufgabe zeigen Sie mit dem Administratorportal einige registrierte Geräte an. | [Azure Active Directory-Geräteregistrierung – Übersicht](active-directory-conditional-access-device-registration-overview.md) |
-| Stellen Sie sicher, dass Geräteobjekte aus Azure Active Directory in Windows Server Active Directory zurückgeschrieben werden. | [Überprüfen, ob registrierte Geräte nach Active Directory zurückgeschrieben werden](#Überprüfen, ob registrierte Geräte nach Active Directory zurückgeschrieben werden) |
-| Da Benutzer ihre Geräte jetzt registrieren können, können Sie Richtlinien für den Anwendungszugriff in AD FS erstellen, bei denen nur registrierte Geräte zugelassen sind. In dieser Aufgabe erstellen Sie eine Regel für den Anwendungszugriff und eine benutzerdefinierte Meldung „Zugriff verweigert“. | [Erstellen einer Anwendungszugriffsrichtlinie und einer benutzerdefinierten Meldung „Zugriff verweigert“](#Erstellen einer Anwendungszugriffsrichtlinie und einer benutzerdefinierten Meldung „Zugriff verweigert“) |
+| Stellen Sie sicher, dass Geräteobjekte aus Azure Active Directory in Windows Server Active Directory zurückgeschrieben werden. | [Überprüfen, ob registrierte Geräte nach Active Directory zurückgeschrieben werden](#verify-registered-devices-are-written-back-to-active-directory) |
+| Da Benutzer ihre Geräte jetzt registrieren können, können Sie Richtlinien für den Anwendungszugriff in AD FS erstellen, bei denen nur registrierte Geräte zugelassen sind. In dieser Aufgabe erstellen Sie eine Regel für den Anwendungszugriff und eine benutzerdefinierte Meldung „Zugriff verweigert“. | [Erstellen einer Anwendungszugriffsrichtlinie und einer benutzerdefinierten Meldung "Zugriff verweigert"](#create-an-application-access-policy-and-custom-access-denied-message) |
 
 
 
@@ -121,9 +121,8 @@ Diese Anleitung hilft Ihnen bei der Integration Ihres Azure AD-Mandanten in die 
   2.	Installieren und Ausführen von Azure AD Connect: Installieren Sie Azure AD Connect, indem Sie die Anleitung unter [Benutzerdefinierte Installation von Azure AD Connect](active-directory-aadconnect-get-started-custom.md) verwenden.
   3. Überprüfen und verwalten Sie die Verzeichnissynchronisierung. In diesem Schritt sind Anweisungen zum einmaligen Anmelden enthalten.
   
-  
-  >[AZURE.NOTE] Konfigurieren Sie die Partnerbeziehung mit AD FS, wie im oben verlinkten Dokument beschrieben.
-  >[AZURE.NOTE] Sie müssen keine Preview-Funktionen konfigurieren.
+  > [AZURE.NOTE] 
+  Konfigurieren Sie die Partnerbeziehung mit AD FS, wie im oben verlinkten Dokument beschrieben. Sie müssen keine Preview-Funktionen konfigurieren.
 
 
 ## Ausführen eines Upgrades des Schemas der Active Directory-Domänendienste
@@ -181,7 +180,7 @@ Hier steht `yourdomainname` für den Domänennamen, den Sie mit Azure Active Dir
 
     https://enterpriseregistration.windows.net/enrollmentserver/otaprofile/contoso.com
 
-Diese URL kann auf unterschiedlichste Weise an die Benutzer kommuniziert werden. Ein empfohlenes Verfahren besteht im Veröffentlichen dieser URL in einer benutzerdefinierten Anwendungsmeldung "Zugriff verweigert" in AD FS. Dies wird im nächsten Abschnitt behandelt: [Erstellen einer Anwendungszugriffsrichtlinie und einer benutzerdefinierten Meldung „Zugriff verweigert“](#Erstellen einer Anwendungszugriffsrichtlinie und einer benutzerdefinierten Meldung „Zugriff verweigert“).
+Diese URL kann auf unterschiedlichste Weise an die Benutzer kommuniziert werden. Ein empfohlenes Verfahren besteht im Veröffentlichen dieser URL in einer benutzerdefinierten Anwendungsmeldung "Zugriff verweigert" in AD FS. Dieser Vorgang wird im folgenden Abschnitt beschrieben: [Erstellen einer Anwendungszugriffsrichtlinie und einer benutzerdefinierten Meldung „Zugriff verweigert“](#create-an-application-access-policy-and-custom-access-denied-message).
 
 ###Verknüpfen eines Windows 8.1-Geräts mithilfe der Azure Active Directory-Geräteregistrierung
 
@@ -253,4 +252,4 @@ Wenn Benutzer auf Ihre Anwendung jetzt über ein Gerät zugreifen, das nicht unt
 
 - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

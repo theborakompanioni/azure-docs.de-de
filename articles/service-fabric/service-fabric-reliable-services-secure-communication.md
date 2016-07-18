@@ -3,7 +3,7 @@
    description="Übersicht über die Möglichkeiten zur Unterstützung der sicheren Kommunikation für Reliable Services, die in einem Azure Service Fabric-Cluster ausgeführt werden."
    services="service-fabric"
    documentationCenter=".net"
-   authors="punewa"
+   authors="suchiagicha"
    manager="timlt"
    editor="vturecek"/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="03/22/2016"
-   ms.author="punewa"/>
+   ms.date="07/06/2016"
+   ms.author="suchiagicha"/>
 
 # Unterstützung der Kommunikationssicherung für Dienste in Azure Service Fabric
 
@@ -309,4 +309,4 @@ Wir verwenden ein vorhandenes [Beispiel](service-fabric-reliable-services-commun
 
 * [Web-API mit OWIN in Reliable Services](service-fabric-reliable-services-communication-webapi.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -77,7 +77,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Capture a Windows virtual machine created in the classic deployment model (Erfassen eines virtuellen Windows-Computers, der im klassischen Bereitstellungsmodell erstellt wurde)](virtual-machines-windows-classic-capture-image.md)
 
-[Create and upload a classic Windows Server VHD using Powershell (Erstellen und Hochladen einer klassischen Windows Server-VHD mithilfe von PowerShell)](virtual-machines-windows-classic-createupload-vhd.md)
+[Erstellen und Hochladen einer klassischen Windows Server-VHD mithilfe von PowerShell](virtual-machines-windows-classic-createupload-vhd.md)
 
 [Automatisieren der Bereitstellung virtueller Azure-Computer mit Chef](virtual-machines-windows-chef-automation.md)
 
@@ -192,4 +192,4 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 [Behandeln von Problemen beim Neustart oder Ändern der Größe eines vorhandenen virtuellen Windows-Computers in Azure (klassisches Bereitstellungsmodell)](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

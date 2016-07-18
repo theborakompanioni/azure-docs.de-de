@@ -188,7 +188,7 @@ Im **Hybridkopierszenario** (lokale Quelle und Senke in der Cloud) wird die Bewe
 
 Wenn Sie die Datenverschiebung unter Verwendung des Stagingspeichers aktivieren, können Sie angeben, ob die Daten vor dem Bewegen aus dem Quelldatenspeicher in den Zwischen-/Stagingdatenspeicher komprimiert und vor dem Bewegen der Daten aus dem Zwischen-/Stagingdatenspeicher in den Senkendatenspeicher wieder dekomprimiert werden sollen.
 
-Das Kopieren von Daten aus einem Clouddatenspeicher in einen lokalen Datenspeicher oder zwischen zwei lokalen Datenspeichern mit Stagingspeicher wird derzeit nicht unterstützt, soll aber in Kürze verfügbar werden.
+Das Kopieren von Daten aus einem Clouddatenspeicher in einen lokalen Datenspeicher oder zwischen zwei lokalen Datenspeichern mit Stagingspeicher wird derzeit nicht unterstützt, soll aber in Kürze möglich werden.
 
 ### Konfiguration
 Sie können für die Kopieraktivität die Einstellung **enableStaging** konfigurieren, um anzugeben, ob die Daten in einem Azure-Blobspeicher bereitgestellt werden sollen, bevor sie in einen Zieldatenspeicher geladen werden. Wenn Sie „enableStaging“ auf „true“ festlegen, müssen Sie zusätzliche Eigenschaften angeben. Diese werden in der folgenden Tabelle aufgeführt. Außerdem müssen Sie einen mit Azure Storage oder Azure Storage SAS verknüpften Dienst als Stagingdienst erstellen, falls noch keiner vorhanden ist.
@@ -392,4 +392,4 @@ Hier finden Sie einige Referenzen zur Leistungsüberwachung und -optimierung fü
 - Lokale SQL Server: [Überwachen und Optimieren der Leistung](https://msdn.microsoft.com/library/ms189081.aspx)
 - Lokaler Dateiserver: [Leistungsoptimierung für Dateiserver](https://msdn.microsoft.com/library/dn567661.aspx)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

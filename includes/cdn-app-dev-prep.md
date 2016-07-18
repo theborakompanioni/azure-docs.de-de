@@ -1,6 +1,10 @@
-## Vorbereitung
+## Voraussetzungen
 
-Bevor Sie Code für die CDN-Verwaltung schreiben können, müssen Sie einige Vorbereitungen treffen. Als Erstes erstellen Sie eine Ressourcengruppe, in der das in diesem Tutorial erstellte CDN-Profil enthalten sein soll. Danach richten Sie Azure Active Directory für die Authentifizierung Ihrer Anwendung ein. Anschließend wenden Sie Berechtigungen auf die Ressourcengruppe an, sodass nur autorisierte Benutzer aus Ihrem Azure AD-Mandanten mit dem CDN-Profil interagieren können.
+Bevor wir CDN-Verwaltungscode schreiben können, müssen wir einige Vorbereitungsschritte ausführen, damit der Code mit dem Azure Resource Manager interagieren kann. Gehen Sie hierzu wie folgt vor:
+
+* Erstellen Sie eine Ressourcengruppe für das CDN-Profil, das wir in diesem Tutorial erstellen.
+* Konfigurieren Sie Azure Active Directory für die Authentifizierung der Anwendung.
+* Wenden Sie Berechtigungen auf die Ressourcengruppe an, sodass nur autorisierte Benutzer aus Ihrem Azure AD-Mandanten mit dem CDN-Profil interagieren können.
 
 ### Erstellen der Ressourcengruppe
 
@@ -8,17 +12,17 @@ Bevor Sie Code für die CDN-Verwaltung schreiben können, müssen Sie einige Vor
 
 2. Klicken Sie links oben auf die Schaltfläche **Neu** und dann auf **Verwaltung** und **Ressourcengruppe**.
 	
-	![Erstellen einer neuen Ressourcengruppe](./media/cdn-app-dev-prep/cdn-new-rg-1.png)
+	![Erstellen einer neuen Ressourcengruppe](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)
 
 3. Nennen Sie die Ressourcengruppe *CdnConsoleTutorial*. Wählen Sie Ihr Abonnement aus, und wählen Sie einen Standort in Ihrer Nähe. Wenn Sie möchten, können Sie das Kontrollkästchen **An Dashboard anheften** aktivieren, um die Ressourcengruppe an das Dashboard im Portal anzuheften. Dadurch lässt sie sich später leichter wiederfinden. Nachdem Sie Ihre Auswahl getroffen haben, klicken Sie auf **Erstellen**.
 
-	![Benennen der Ressourcengruppe](./media/cdn-app-dev-prep/cdn-new-rg-2.png)
+	![Benennen der Ressourcengruppe](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
 
-4. Wenn Sie die Ressourcengruppe nach dem Erstellen nicht an Ihr Dashboard angeheftet haben, können Sie sie suchen, indem Sie auf **Durchsuchen** und dann auf **Ressourcengruppen** klicken. Klicken Sie auf die Ressourcengruppe, um sie zu öffnen. Notieren Sie sich Ihre **Abonnement-ID**. Sie benötigen sie später.
+4. Wenn Sie die Ressourcengruppe nach dem Erstellen nicht an Ihr Dashboard angeheftet haben, können Sie danach suchen, indem Sie auf **Durchsuchen** und dann auf **Ressourcengruppen** klicken. Klicken Sie auf die Ressourcengruppe, um sie zu öffnen. Notieren Sie sich Ihre **Abonnement-ID**. Sie benötigen sie später.
 
-	 ![Benennen der Ressourcengruppe](./media/cdn-app-dev-prep/cdn-subscription-id.png)
+	![Benennen der Ressourcengruppe](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
-### Erstellen der Azure AD-Anwendung
+### Erstellen der Azure AD-Anwendung und Anwenden von Berechtigungen
 
 Es gibt zwei Methoden für die App-Authentifizierung mit Azure Active Directory: per einzelnem Benutzer oder per Dienstprinzipal. Ein Dienstprinzipal ähnelt einem Dienstkonto in Windows. Anstatt einen bestimmten Benutzer Berechtigungen für die Interaktion mit den CDN-Profilen zu gewähren, erteilen wir die Berechtigungen für den Dienstprinzipal. Dienstprinzipale werden im Allgemeinen für automatisierte, nicht interaktive Prozesse verwendet. Auch wenn in diesem Tutorial eine interaktive Konsolen-App erstellt wird, verwenden wir hier einen Dienstprinzipal.
 
@@ -28,29 +32,29 @@ Die Erstellung eines Dienstprinzipals umfasst mehrere Schritte, einschließlich 
 > 	
 > Wenn Sie zum Schritt [Mehrinstanzenfähige Anwendung konfigurieren](../articles/resource-group-create-service-principal-portal.md#configure-multi-tenant-application) gelangen, wählen Sie **Nein**.
 > 
-> Im Schritt [Anwendung zu Rolle zuweisen](../articles/resource-group-create-service-principal-portal.md#assign-application-to-role) verwenden Sie die zuvor erstellte Ressourcengruppe, *CdnConsoleTutorial*, weisen ihr jedoch nicht die Rolle **Leser**, sondern die Rolle **Mitwirkender von CDN-Profil** zu. Nachdem Sie die Anwendung in Ihrer Ressourcengruppe zur Rolle **Mitwirkender von CDN-Profil** zugewiesen haben, kehren Sie zu diesem Tutorial zurück.
+> Im Schritt [Zuweisen einer Anwendung zur Rolle](../articles/resource-group-create-service-principal-portal.md#assign-application-to-role) verwenden Sie die zuvor erstellte Ressourcengruppe *CdnConsoleTutorial*, weisen ihr aber nicht die Rolle **Leser**, sondern die Rolle **Mitwirkender von CDN-Profil** zu. Nachdem Sie die Anwendung in Ihrer Ressourcengruppe der Rolle **Mitwirkender von CDN-Profil** zugewiesen haben, kehren Sie zu diesem Tutorial zurück.
 
-Sobald Sie den Dienstprinzipal erstellt und die Rolle **Mitwirkender von CDN-Profil** zugewiesen haben, sollte das Blatt **Benutzer** für Ihre Ressourcengruppe in etwa wie folgt aussehen.
+Nachdem Sie den Dienstprinzipal erstellt und die Rolle **Mitwirkender von CDN-Profil** zugewiesen haben, sollte das Blatt **Benutzer** für Ihre Ressourcengruppe in etwa wie folgt aussehen:
 
-![Blatt „Benutzer“](./media/cdn-app-dev-prep/cdn-service-principal.png)
+![Blatt „Benutzer“](./media/cdn-app-dev-prep/cdn-service-principal-include.png)
 
 
 ### Interaktive Benutzerauthentifizierung
 
 Wenn Sie statt eines Dienstprinzipals lieber eine interaktive individuelle Benutzerauthentifizierung einrichten möchten, ähnelt der Prozess dem der Erstellung eines Dienstprinzipals. Sie wenden im Grunde das gleiche Verfahren an, nehmen aber einige kleinere Änderungen vor.
 
->[AZURE.IMPORTANT] Führen Sie die nächsten Schritte nur aus, wenn Sie die individuelle Benutzerauthentifizierung anstelle eines Dienstprinzipals verwenden möchten.
+> [AZURE.IMPORTANT] Führen Sie die nächsten Schritte nur aus, wenn Sie die individuelle Benutzerauthentifizierung anstelle eines Dienstprinzipals verwenden möchten.
 
-1. Wählen Sie beim Erstellen der Anwendung statt **Web-App** die Option **Native Anwendung**.
+1. Wählen Sie beim Erstellen der Anwendung anstelle von **Webanwendung** die Option **Native Anwendung**.
 	
-	![Native Anwendung](./media/cdn-app-dev-prep/cdn-native-application.png)
+	![Native Anwendung](./media/cdn-app-dev-prep/cdn-native-application-include.png)
 	
-2. Auf der nächsten Seite werden Sie zur Eingabe eines **Umleitungs-URIs** aufgefordert. Der URI wird nicht überprüft, merken Sie sich jedoch, was Sie eingegeben haben. Sie benötigen die Information später.
+2. Auf der nächsten Seite werden Sie zur Eingabe eines **Umleitungs-URI** aufgefordert. Der URI wird nicht überprüft, merken Sie sich jedoch, was Sie eingegeben haben. Sie benötigen die Information später.
 
 3. Sie müssen keinen **Clientauthentifizierungsschlüssel** erstellen.
 
 4. Anstatt der Rolle **Mitwirkender von CDN-Profil** einen Dienstprinzipal zuzuweisen, weisen Sie einzelne Benutzer oder Gruppen zu. In diesem Beispiel sehen Sie, dass ich den Benutzer *CDN-Demobenutzer* der Rolle **Mitwirkender von CDN-Profil** zugewiesen habe.
 	
-	![Individueller Benutzerzugriff](./media/cdn-app-dev-prep/cdn-aad-user.png)
+	![Individueller Benutzerzugriff](./media/cdn-app-dev-prep/cdn-aad-user-include.png)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -20,7 +20,7 @@
 
 In diesem Thema wird erläutert, was Sie über die öffentlichen Schlüssel wissen müssen, die in Azure Active Directory (Azure AD) zum Signieren von Sicherheitstoken verwendet werden. Es ist wichtig zu beachten, dass für diese Schlüssel regelmäßig ein Rollover durchgeführt wird und dass in einem Notfall sofort ein Rollover erfolgen kann. Alle Anwendungen, die Azure AD verwenden, sollten den Rolloverprozess für Schlüssel programmgesteuert verarbeiten können. In diesem Artikel wird beschrieben, wie die Schlüssel funktionieren, wie Sie die Auswirkung des Rollovers auf Ihre Anwendung bewerten und wie Sie Ihre Anwendung bei Bedarf für die Behandlung des Schlüsselrollovers aktualisieren.
 
-> [AZURE.IMPORTANT] Der nächste Signaturschlüsselrollover wird am 15. August 2016 durchgeführt und wirkt sich *nicht* auf Kataloganwendungen oder Anwendungen in B2C-Mandanten aus.
+> [AZURE.IMPORTANT] Der nächste Rollover für Signaturschlüssel ist für den 15. August 2016 geplant und wird sich **nicht** auf Clientanwendungen, aus dem Katalog hinzugefügte Anwendungen (einschließlich benutzerdefinierter Anwendungen), über einen Anwendungsproxy veröffentlichte Anwendungen oder Anwendungen in B2C-Mandanten auswirken.
 
 ## Übersicht über Signaturschlüssel in Azure AD
 
@@ -328,4 +328,4 @@ Gehen Sie wie folgt vor, um den aktuellen Schlüssel manuell aus dem Verbundmeta
 
 Dadurch haben Sie das X509-Zertifikat erstellt, das als öffentlicher Schlüssel für Azure AD verwendet wird. Mit den Details des Zertifikats wie etwa Fingerabdruck und Ablaufdatum können Sie manuell oder programmgesteuert prüfen, ob das Zertifikat und der Fingerabdruck Ihrer Anwendung gültig sind.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

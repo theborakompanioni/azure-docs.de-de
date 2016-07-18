@@ -38,12 +38,12 @@ Wenn Ihr Problem mithilfe der folgenden Anleitungen nicht gelöst wird, können 
  - **Seite** – Auf welcher Seite haben Sie sich befunden, als der Fehler aufgetreten ist (einschließlich URL)?
  - **Datum / Uhrzeit / Zeitzone** – An welchem Tag und zu welcher Uhrzeit genau haben Sie den Fehler beobachtet (einschließlich Zeitzone)?  
 
- - **Unterstützungscode** – Welcher Unterstützungscode wurde generiert, als der Fehler aufgetreten ist? Um den Unterstützungscode zu ermitteln, reproduzieren Sie den Fehler und klicken im unteren Bildschirmbereich auf den Link "Unterstützungscode". Senden Sie die Ergebnis-GUID anschließend an den Supportmitarbeiter. 
+ - **Unterstützungscode** – Welcher Unterstützungscode wurde generiert, als der Fehler aufgetreten ist? Um den Unterstützungscode zu ermitteln, reproduzieren Sie den Fehler und klicken im unteren Bildschirmbereich auf den Link "Unterstützungscode". Senden Sie die Ergebnis-GUID anschließend an den Supportmitarbeiter.
    - Wenn Sie sich auf einer Seite ohne Unterstützungscode befinden, drücken Sie F12, und suchen Sie nach SID und CID. Senden Sie beide Ergebnisse an den Supportmitarbeiter.
 
     ![][001]
 
- - **Benutzer-ID** – Wie lautet die ID des Benutzers, der den Fehler beobachtet hat (z. B. user@contoso.com)?)?
+ - **Benutzer-ID** – Wie lautet die ID des Benutzers, der den Fehler beobachtet hat (z.B. user@contoso.com)?
  - **Informationen zum Benutzer** – Handelt es sich um einen Verbundbenutzer, um einen Benutzer mit Kennworthashsynchronisierung, oder um einen Benutzer, der ausschließlich über die Cloud zugreift? Ist dem Benutzer eine AAD Premium- oder eine AAD Basic-Lizenz zugewiesen?
  - **Anwendungsereignisprotokoll** – Wenn Sie die Kennwortrückschreibung verwenden und der Fehler in Ihrer lokalen Infrastruktur auftritt, zippen Sie eine Kopie des Anwendungsereignisprotokolls von Ihrem Azure AD Connect-Server, und fügen Sie die ZIP-Datei an Ihre Anfrage an.
 
@@ -103,7 +103,7 @@ Wenn beim Konfigurieren der Kennwortzurücksetzung ein Fehler auftritt, kann die
             </td>
             <td>
               <p>Viele Elemente der Benutzeroberfläche werden erst angezeigt, wenn sie benötigt werden. Versuchen Sie, alle Optionen auf der Seite zu aktivieren, um sie anzuzeigen.</p>
-              <p>Weitere Informationen zu allen verfügbaren Steuerelementen finden Sie unter <a href="../active-directory-passwords-customize#password-management-behavior">Anpassen der Richtlinie zum Zurücksetzen von Benutzerkennwörtern</a>.</p>
+              <p>Weitere Informationen zu allen verfügbaren Steuerelementen finden Sie unter <a href="active-directory-passwords-customize.md#password-management-behavior">Verhalten der Kennwortverwaltung</a>.</p>
             </td>
           </tr>
           <tr>
@@ -115,7 +115,7 @@ Wenn beim Konfigurieren der Kennwortzurücksetzung ein Fehler auftritt, kann die
             </td>
             <td>
               <p>Diese Option wird nur angezeigt, wenn Sie Azure AD Connect heruntergeladen und die Kennwortrückschreibung konfiguriert haben. Nachdem Sie dies getan haben, wird die Option angezeigt, und Sie können das Zurückschreiben von Kennwörtern aus der Cloud aktivieren oder deaktivieren.</p>
-              <p>Weitere Informationen zur Vorgehensweise finden Sie unter <a href="../active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords">Aktivieren/Deaktivieren der Kennwortrückschreibung</a>.</p>
+              <p>Weitere Informationen zur Vorgehensweise finden Sie unter <a href="active-directory-passwords-getting-started.md#step-2-enable-password-writeback-in-azure-ad-connect">Aktivieren/Deaktivieren der Kennwortrückschreibung in Azure AD Connect</a>.</p>
             </td>
           </tr>
         </tbody></table>
@@ -290,7 +290,7 @@ Wenn beim Zurücksetzen eines Kennworts für einen Benutzer ein Fehler auftritt,
               <p>Wenn Sie möchten, können wir einen Administrator in Ihrer Organisation kontaktieren, um Ihr Kennwort für Sie zurückzusetzen.</p>
             </td>
             <td>
-              <p>Stellen Sie sicher, dass für den Benutzer ordnungsgemäß formatierte Kontaktdaten im Verzeichnis vorliegen, bevor Sie fortfahren. Im Abschnitt <a href="../active-directory-passwords-learn-more#what-data-is-used-by-password-reset">Welche Daten werden bei der Kennwortzurücksetzung verwendet?</a> finden Sie Informationen dazu, wie Authentifizierungsinformationen im Verzeichnis konfiguriert werden, damit Benutzern dieser Fehler nicht angezeigt wird.</p>
+              <p>Stellen Sie sicher, dass für den Benutzer ordnungsgemäß formatierte Kontaktdaten im Verzeichnis vorliegen, bevor Sie fortfahren. Im Abschnitt <a href="active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset">Welche Daten werden bei der Kennwortzurücksetzung verwendet?</a> finden Sie Informationen dazu, wie Authentifizierungsinformationen im Verzeichnis konfiguriert werden, damit Benutzern dieser Fehler nicht angezeigt wird.</p>
             </td>
           </tr>
           <tr>
@@ -306,7 +306,7 @@ Wenn beim Zurücksetzen eines Kennworts für einen Benutzer ein Fehler auftritt,
               <p>Wenn Sie möchten, können wir einen Administrator in Ihrer Organisation kontaktieren, um Ihr Kennwort für Sie zurückzusetzen.</p>
             </td>
             <td>
-              <p>Stellen Sie sicher, dass für den Benutzer mindestens zwei ordnungsgemäß konfigurierte Kontaktmethoden vorliegen (z.&#160;B. Mobiltelefon und Bürotelefon), bevor Sie fortfahren. Im Abschnitt <a href="../active-directory-passwords-learn-more#what-data-is-used-by-password-reset">Welche Daten werden bei der Kennwortzurücksetzung verwendet?</a> finden Sie Informationen dazu, wie Authentifizierungsinformationen im Verzeichnis konfiguriert werden, damit Benutzern dieser Fehler nicht angezeigt wird.</p>
+              <p>Stellen Sie sicher, dass für den Benutzer mindestens zwei ordnungsgemäß konfigurierte Kontaktmethoden vorliegen (z.&#160;B. Mobiltelefon und Bürotelefon), bevor Sie fortfahren. Im Abschnitt <a href="active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset">Welche Daten werden bei der Kennwortzurücksetzung verwendet?</a> finden Sie Informationen dazu, wie Authentifizierungsinformationen im Verzeichnis konfiguriert werden, damit Benutzern dieser Fehler nicht angezeigt wird.</p>
             </td>
           </tr>
           <tr>
@@ -328,7 +328,7 @@ Wenn beim Zurücksetzen eines Kennworts für einen Benutzer ein Fehler auftritt,
               <p>Der Benutzer klickt auf "SMS schicken" oder "Anrufen", aber anschließend geschieht nichts.</p>
             </td>
             <td>
-              <p>Dieser Fehler kann durch eine falsch formatierte Telefonnummer im Verzeichnis verursacht werden. Stellen Sie sicher, dass die Telefonnummer das Format "+ccc xxxyyyzzzzXeeee" aufweist. Weitere Informationen zur Formatierung von Telefonnummern für die Kennwortzurücksetzung finden Sie unter <a href="../active-directory-passwords-learn-more#what-data-is-used-by-password-reset">Welche Daten werden bei der Kennwortzurücksetzung verwendet?</a>.</p>
+              <p>Dieser Fehler kann durch eine falsch formatierte Telefonnummer im Verzeichnis verursacht werden. Stellen Sie sicher, dass die Telefonnummer das Format "+ccc xxxyyyzzzzXeeee" aufweist. Weitere Informationen zur Formatierung von Telefonnummern für die Kennwortzurücksetzung finden Sie unter <a href="active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset">Welche Daten werden bei der Kennwortzurücksetzung verwendet?</a>.</p>
               <p>Beachten Sie, dass Anrufe zur Kennwortzurücksetzung nicht an Durchwahlnummern weitergeleitet werden können, selbst wenn diese im Verzeichnis angegeben werden (die Durchwahlnummern werden vor Absetzen des Anrufs abgeschnitten). Verwenden Sie eine Nummer ohne Durchwahl, oder integrieren Sie die Durchwahl in die Telefonnummer in Ihrer Nebenstellenanlage.</p>
             </td>
           </tr>
@@ -341,7 +341,7 @@ Wenn beim Zurücksetzen eines Kennworts für einen Benutzer ein Fehler auftritt,
             </td>
             <td>
               <p>Die häufigste Ursache für diesen Fehler ist der, dass die Nachricht durch einen Spamfilter zurückgewiesen wird. Prüfen Sie Ihren Spam- oder Junk-E-Mail-Ordner oder den Ordner "Gelöschte Elemente" auf die E-Mail.</p>
-              <p>Stellen Sie außerdem sicher, dass Sie die Nachricht im richtigen Posteingang suchen. Viele Benutzer verfügen über ähnliche E-Mail-Adressen und prüfen das falsche Postfach auf die Nachricht. Wenn das Problem durch keine dieser Optionen gelöst werden kann, ist die E-Mail-Adresse im Verzeichnis möglicherweise falsch formatiert. Prüfen Sie die E-Mail-Adresse auf ihre Richtigkeit, und versuchen Sie es erneut. Weitere Informationen zur Formatierung von E-Mail-Adressen für die Kennwortzurücksetzung finden Sie unter <a href="../active-directory-passwords-learn-more#what-data-is-used-by-password-reset">Welche Daten werden bei der Kennwortzurücksetzung verwendet?</a>.</p>
+              <p>Stellen Sie außerdem sicher, dass Sie die Nachricht im richtigen Posteingang suchen. Viele Benutzer verfügen über ähnliche E-Mail-Adressen und prüfen das falsche Postfach auf die Nachricht. Wenn das Problem durch keine dieser Optionen gelöst werden kann, ist die E-Mail-Adresse im Verzeichnis möglicherweise falsch formatiert. Prüfen Sie die E-Mail-Adresse auf ihre Richtigkeit, und versuchen Sie es erneut. Weitere Informationen zur Formatierung von E-Mail-Adressen für die Kennwortzurücksetzung finden Sie unter <a href="active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset">Welche Daten werden bei der Kennwortzurücksetzung verwendet?</a>.</p>
             </td>
           </tr>
           <tr>
@@ -520,7 +520,7 @@ Wenn beim Aktivieren, Deaktivieren oder Verwenden der Kennwortrückschreibung ei
               <p>Nachdem einige Zeit alles funktioniert hat, können Verbundbenutzer oder Benutzer mit Kennworthashsynchronisierung ihre Kennwörter nicht zurücksetzen.</p>
             </td>
             <td>
-              <p>In einigen seltenen Fällen kann der Dienst für die Kennwortrückschreibung möglicherweise nicht neu gestartet werden, wenn Azure AD Connect neu gestartet wurde. Prüfen Sie in diesen Fällen zunächst, ob die lokale Kennwortrückschreibung als aktiviert angezeigt wird. Diese Überprüfung können Sie mit dem Azure AD Connect-Assistenten oder mit PowerShell durchführen (siehe Anleitungen oben). Wenn die Funktion als aktiviert angezeigt wird, deaktivieren und aktivieren Sie sie erneut über die Benutzeroberfläche oder PowerShell. Weitere Informationen zur Vorgehensweise finden Sie unter "Schritt&#160;2: Aktivieren der Kennwortrückschreibung auf dem Computer zur Verzeichnissynchronisierung &amp; Konfigurieren von Firewallregeln" in <a href="../active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords">Aktivieren/Deaktivieren der Kennwortrückschreibung</a>.</p>
+              <p>In einigen seltenen Fällen kann der Dienst für die Kennwortrückschreibung möglicherweise nicht neu gestartet werden, wenn Azure AD Connect neu gestartet wurde. Prüfen Sie in diesen Fällen zunächst, ob die lokale Kennwortrückschreibung als aktiviert angezeigt wird. Diese Überprüfung können Sie mit dem Azure AD Connect-Assistenten oder mit PowerShell durchführen (siehe Anleitungen oben). Wenn die Funktion als aktiviert angezeigt wird, deaktivieren und aktivieren Sie sie erneut über die Benutzeroberfläche oder PowerShell. Weitere Informationen zur Vorgehensweise finden Sie unter "Schritt&#160;2: Aktivieren der Kennwortrückschreibung auf dem Computer zur Verzeichnissynchronisierung &amp; Konfigurieren von Firewallregeln" in <a href="active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords">Aktivieren/Deaktivieren der Kennwortrückschreibung</a>.</p>
               <p>
                 
               </p>
@@ -564,7 +564,7 @@ Wenn beim Aktivieren, Deaktivieren oder Verwenden der Kennwortrückschreibung ei
                 <li>
 										Jetzt versuchen Sie, die Kennwortrückschreibung zu aktivieren/zu deaktivieren. Der Assistent setzt den Namen des Connectors mithilfe der Anmeldeinformationen "abc.onmicrosoft.com – AAD" zusammen und übergibt diesen an das Cmdlet für die Kennwortrückschreibung. Dies führt zu einem Fehler, da kein Connector mit diesem Namen erstellt wurde.&lt;br>&lt;br></li>
               </ol>
-              <p>Dieser Fehler wurde in den aktuellen Builds behoben. Wenn Sie einen älteren Build verwenden, können Sie diesen Fehler umgehen, indem Sie das PowerShell-Cmdlet zum Aktivieren/Deaktivieren des Features verwenden. Weitere Informationen zur Vorgehensweise finden Sie unter "Schritt&#160;2: Aktivieren der Kennwortrückschreibung auf dem Computer zur Verzeichnissynchronisierung &amp; Konfigurieren von Firewallregeln" in <a href="../active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords">Aktivieren/Deaktivieren der Kennwortrückschreibung</a>.</p>
+              <p>Dieser Fehler wurde in den aktuellen Builds behoben. Wenn Sie einen älteren Build verwenden, können Sie diesen Fehler umgehen, indem Sie das PowerShell-Cmdlet zum Aktivieren/Deaktivieren des Features verwenden. Weitere Informationen zur Vorgehensweise finden Sie unter "Schritt&#160;2: Aktivieren der Kennwortrückschreibung auf dem Computer zur Verzeichnissynchronisierung &amp; Konfigurieren von Firewallregeln" in <a href="active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords">Aktivieren/Deaktivieren der Kennwortrückschreibung</a>.</p>
             </td>
           </tr>
           <tr>
@@ -639,7 +639,7 @@ Wenn beim Aktivieren, Deaktivieren oder Verwenden der Kennwortrückschreibung ei
               <p>Wenn Sie versuchen, über das Azure-Verwaltungsportal ein Kennwort im Namen eines Benutzers zurückzusetzen, wird eine Meldung mit diesem Text angezeigt: "Der in Ihrer lokalen Umgebung ausgeführte Dienst für die Kennwortzurücksetzung bietet keine Unterstützung für das Zurücksetzen von Benutzerkennwörtern durch Administratoren. Führen Sie ein Upgrade auf die aktuelle Version von Azure AD Connect aus, um dieses Problem zu lösen."</p>
             </td>
             <td>
-              <p>Dies geschieht, wenn die Version des Synchronisierungsmoduls keine Unterstützung für den verwendeten Vorgang für die Kennwortrückschreibung bietet. Alle Azure AD Connect-Versionen ab 1.0.0419.0911 bieten Unterstützung für alle Vorgänge im Rahmen der Kennwortverwaltung. Dazu gehören das Zurückschreiben zurückgesetzter Kennwörter, das Zurückschreiben geänderter Kennwörter sowie das durch einen Administrator über das Azure-Verwaltungsportal initiierte Zurückschreiben zurückgesetzter Kennwörter.&#160; DirSync-Versionen ab 1.0.6862 bieten nur Unterstützung für das Zurückschreiben zurückgesetzter Kennwörter. Um diesen Fehler zu beseitigen und die Funktion zur Kennwortrückschreibung in Ihrer Organisation optimal zu nutzen, wird dringend empfohlen, die aktuelle Version von Azure AD Connect oder Azure Active Directory Connect zu installieren (weitere Informationen finden Sie unter <a href="../active-directory-aadconnect#download-azure-ad-connect">Tools für die Verzeichnisintegration</a>).</p>
+              <p>Dies geschieht, wenn die Version des Synchronisierungsmoduls keine Unterstützung für den verwendeten Vorgang für die Kennwortrückschreibung bietet. Alle Azure AD Connect-Versionen ab 1.0.0419.0911 bieten Unterstützung für alle Vorgänge im Rahmen der Kennwortverwaltung. Dazu gehören das Zurückschreiben zurückgesetzter Kennwörter, das Zurückschreiben geänderter Kennwörter sowie das durch einen Administrator über das Azure-Verwaltungsportal initiierte Zurückschreiben zurückgesetzter Kennwörter.&#160; DirSync-Versionen ab 1.0.6862 bieten nur Unterstützung für das Zurückschreiben zurückgesetzter Kennwörter. Um diesen Fehler zu beseitigen und die Funktion zur Kennwortrückschreibung in Ihrer Organisation optimal zu nutzen, wird dringend empfohlen, die aktuelle Version von Azure AD Connect oder Azure Active Directory Connect zu installieren (weitere Informationen finden Sie unter <a href="active-directory-aadconnect">Tools für die Verzeichnisintegration</a>).</p>
             </td>
           </tr>
         </tbody></table>
@@ -1285,7 +1285,7 @@ Eine bewährte Methode bei der Problembehandlung für die Kennwortrückschreibun
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>Dieses Ereignis weist darauf hin, dass das Dienstkonto für den Verwaltungs-Agent über keine ausreichenden Berechtigungen verfügt, um für das betreffende Konto neues Kennwort festzulegen. Stellen Sie sicher, dass das MA-Konto in der Gesamtstruktur des Benutzers über die Berechtigungen zum Zurücksetzen und Ändern von Kennwörtern für alle Objekte in der Gesamtstruktur verfügt. Weitere Informationen zur Vorgehensweise finden Sie unter <a href="../active-directory-passwords-getting-started#step-4-set-up-the-appropriate-active-directory-permissions">Schritt&#160;4: Einrichten der geeigneten Active Directory-Berechtigungen</a>.</p>
+              <p>Dieses Ereignis weist darauf hin, dass das Dienstkonto für den Verwaltungs-Agent über keine ausreichenden Berechtigungen verfügt, um für das betreffende Konto neues Kennwort festzulegen. Stellen Sie sicher, dass das MA-Konto in der Gesamtstruktur des Benutzers über die Berechtigungen zum Zurücksetzen und Ändern von Kennwörtern für alle Objekte in der Gesamtstruktur verfügt. Weitere Informationen zur Vorgehensweise finden Sie unter <a href="active-directory-passwords-getting-started.md#step-4-set-up-the-appropriate-active-directory-permissions">Schritt&#160;4: Einrichten der geeigneten Active Directory-Berechtigungen</a>.</p>
             </td>
           </tr>
           <tr>
@@ -1417,11 +1417,12 @@ Eine bewährte Methode bei der Problembehandlung für die Kennwortrückschreibun
             </td>
           </tr>
         </tbody></table>
+		
 ## Problembehandlung: Konnektivität bei der Kennwortrückschreibung
 
 Wenn es bei Verwendung der Azure AD Connect-Komponente für die Kennwortrückschreibung zu Dienstunterbrechungen kommt, können Sie die folgenden Schritte für eine schnelle Problemlösung einsetzen:
 
- - [Neustarten des Azure AD Connect-Synchronisierungsdiensts](#restart-the-azure-AD-sync-service)
+ - [Neustarten des Azure AD Connect-Synchronisierungsdiensts](#restart-the-azure-AD-Connect-sync-service)
  - [Deaktivieren und erneutes Aktivieren der Funktion für die Kennwortrückschreibung](#disable-and-re-enable-the-password-writeback-feature)
  - [Installieren der aktuellen Azure AD Connect-Version](#install-the-latest-azure-ad-connect-release)
  - [Problembehandlung: Kennwortrückschreibung](#troubleshoot-password-writeback)
@@ -1466,7 +1467,7 @@ Wenn das Problem durch das Deaktivieren und erneute Aktivieren der Funktion für
 ### Installieren der aktuellen Azure AD Connect-Version
 Durch das erneute Installieren des Azure AD Connect-Pakets werden Konfigurationsprobleme behoben, die sich möglicherweise auf die Fähigkeit zur Verbindungsherstellung mit den Clouddiensten oder auf die Verwaltung von Kennwörtern in Ihrer lokalen AD-Umgebung auswirken. Es wird empfohlen, diese Maßnahme erst zu ergreifen, wenn Sie ersten zwei Schritte bereits ausgeführt haben.
 
- 1.	Sie können die aktuelle Version von Azure AD Connect [hier](active-directory-aadconnect.md#download-azure-ad-connect) herunterladen.
+ 1.	Sie können die aktuelle Version von Azure AD Connect [hier](active-directory-aadconnect.md#install-azure-ad-connect) herunterladen.
  2.	Da Sie Azure AD Connect bereits installiert haben, müssen Sie lediglich ein direktes Upgrade Ihrer Azure AD Connect-Installation auf die aktuelle Version durchführen.
  3.	Führen Sie das heruntergeladene Paket aus, und folgen Sie den Bildschirmanweisungen zum Aktualisieren Ihres Azure AD Connect-Computers. Sofern Sie keine Anpassung der integrierten Synchronisierungsregeln durchgeführt haben, sind keine weiteren manuellen Schritte erforderlich. Falls Sie die Synchronisierungsregeln angepasst haben sollten, **sichern Sie diese, bevor Sie mit dem Upgrade fortfahren, und stellen Sie sie nach dem Upgrade erneut manuell bereit**.
 
@@ -1498,4 +1499,4 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 [003]: ./media/active-directory-passwords-troubleshoot/003.jpg "Image_003.jpg"
 [004]: ./media/active-directory-passwords-troubleshoot/004.jpg "Image_004.jpg"
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0706_2016-->

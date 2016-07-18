@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Stellen einer Frage, die Sie mit Daten beantworten können | Microsoft Azure"
+   pageTitle="Stellen einer Frage, die Sie mit Daten beantworten können – Data Science für Einsteiger | Microsoft Azure"
    description="Erfahren Sie im 3. Video von „Data Science für Einsteiger“, wie Sie eine Data Science-Frage formulieren. Enthält einen Vergleich von Klassifizierungs- und Regressionsfragen."
    keywords="Wählen einer Frage,Data Science-Fragen,Formulieren einer Frage,Formulieren von Fragen, Regressionsfragen,Klassifizierungsfragen,genaue Frage"
    services="machine-learning"
@@ -17,9 +17,11 @@
    ms.date="06/28/2016"
    ms.author="cgronlun;brohrer;garye"/>
 
-# Stellen einer Frage, die Sie mit Daten beantworten können: Data Science für Einsteiger, 3. Video 
+# Data Science für Einsteiger, 3. Video: Stellen einer Frage, die Sie mit Daten beantworten können 
 
 Erfahren Sie im 3. Video von „Data Science für Einsteiger“, wie Sie eine Data Science-Frage formulieren. Dieses Video enthält einen Vergleich von Fragen zu Klassifizierungs- und Regressionsalgorithmen.
+
+Die Reihe bietet den größten Nutzen, wenn Sie sich die Videos in der vorgegebenen Reihenfolge ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)
 
 > [AZURE.VIDEO data-science-for-beginners-ask-a-question-you-can-answer-with-data]
 
@@ -86,14 +88,15 @@ Sehen Sie sich unbedingt auch die anderen Videos in der Reihe „Data Science f�
 In fünf Kurzvideos der Reihe *Data Science für Einsteiger* erhalten Sie eine Schnelleinführung in Data Science.
 
 
-  * 1\. Video: [Die 5 Fragen, die Data Science beantwortet](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md). **Jetzt verfügbar.**
-  * 2\. Video: [Sind Ihre Daten für Data Science bereit?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) **Jetzt verfügbar.**
-  * 4\. Video: [Vorhersagen einer Antwort mit einem einfachen Modell](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md). **Jetzt verfügbar.**
-  * 5\. Video: [Kopieren der Arbeit anderer für Ihre Data Science](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md). Am 30. Juni verfügbar.
+  * 1\. Video: [Die 5 Fragen, die Data Science beantwortet](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)
+  * 2\. Video: [Sind Ihre Daten für Data Science bereit?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md)
+  * 3\. Video: Stellen einer Frage, die Sie mit Daten beantworten können
+  * 4\. Video: [Vorhersagen einer Antwort mit einem einfachen Modell](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md)
+  * 5\. Video: [Kopieren der Arbeit anderer für Ihre Data Science](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)
 
 ## Nächste Schritte
 
   * [Durchführen Ihres ersten Data Science-Experiments mit Azure Machine Learning](machine-learning-create-experiment.md)
   * [Einführung in Machine Learning in Microsoft Azure](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

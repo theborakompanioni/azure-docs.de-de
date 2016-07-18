@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/05/2016"
+	ms.date="07/05/2016"
 	ms.author="onewth"/>
 
 # Erste Schritte mit den Textanalyse-APIs zur Erkennung von Stimmung, Schlüsselwörtern, Themen und Sprache
@@ -24,7 +24,7 @@ Dieses Dokument beschreibt, wie Sie Ihren Dienst oder Ihre Anwendung integrieren
 
 Technische Dokumentation für die APIs finden Sie in den [API-Definitionen](//go.microsoft.com/fwlink/?LinkID=759346).
 
-Dieses Handbuch bezieht sich auf Version 2 der APIs. Ausführliche Informationen über Version 1 der APIs [finden Sie in diesem Dokument](../machine-learning-apps-text-analytics/).
+Dieses Handbuch bezieht sich auf Version 2 der APIs. Ausführliche Informationen zu Version 1 der APIs [finden Sie in diesem Dokument](../machine-learning/machine-learning-apps-text-analytics.md).
 
 Am Ende dieses Tutorials können Sie programmgesteuert Folgendes erkennen:
 
@@ -66,22 +66,32 @@ Die Erkennung von Stimmung, Schlüsselwörtern und Sprachen im Text ist einfach.
 
 >[AZURE.TIP] Für die Stimmungsanalyse empfehlen wir, dass Sie den Text in Sätze aufteilen. Dies trägt im Allgemeinen zu einer höhere Genauigkeit der Stimmungsvorhersagen bei.
 
+Die folgenden Sprachen werden unterstützt:
+
+| Funktion | Unterstützte Sprachcodes |
+|:-----|:----|
+| Stimmung | `en` (Englisch), `es` (Spanisch), `fr` (Französisch), `pt` (Portugiesisch) |
+| Schlüsselwörter | `en` (Englisch), `es` (Spanisch), `de` (Deutsch), `ja` (Japanisch) |
+
+
 1. Dafür müssen die Header wie folgt festgelegt werden. Beachten Sie, dass JSON derzeit das einzige akzeptierte Eingabeformat für die APIs ist. XML wird nicht unterstützt.
 
 		Ocp-Apim-Subscription-Key: <your API key>
 		Content-Type: application/json
 		Accept: application/json
 
-1. Formatieren Sie als Nächstes die Eingabezeilen in JSON. Das Format für Stimmung, Schlüsselwörter und Sprache ist identisch. Beachten Sie, dass jede ID eindeutig sein muss und die vom System zurückgegebene ID ist. Die maximale Größe eines einzelnen Dokuments, das übermittelt werden kann, beträgt 10 KB, und die maximale Gesamtgröße der übermittelten Eingabe beträgt 1 MB. In einem Aufruf können nicht mehr als 1.000 Dokumente übermittelt werden. Nachfolgend finden Sie ein Eingabebeispiel:
+1. Formatieren Sie als Nächstes die Eingabezeilen in JSON. Das Format für Stimmung, Schlüsselwörter und Sprache ist identisch. Beachten Sie, dass jede ID eindeutig sein muss und die vom System zurückgegebene ID ist. Die maximale Größe eines einzelnen Dokuments, das übermittelt werden kann, beträgt 10 KB, und die maximale Gesamtgröße der übermittelten Eingabe beträgt 1 MB. In einem Aufruf können nicht mehr als 1.000 Dokumente übermittelt werden. Die Sprache ist ein optionaler Parameter, der angegeben werden muss, wenn nicht englischer Text analysiert wird. Ein Beispiel für die Eingabe ist unten dargestellt, wobei der optionale Parameter `language` für die Stimmungsanalyse oder Schlüsselwortextraktion hinzugefügt wurde:
 
 		{
 			"documents": [
 				{
+					"language": "en",
 					"id": "1",
 					"text": "First document"
 				},
                 ...
                 {
+					"language": "en",
 					"id": "100",
 					"text": "Final document"
 				}
@@ -153,18 +163,17 @@ Die Erkennung von Stimmung, Schlüsselwörtern und Sprachen im Text ist einfach.
 			]
 		}
 
-        
 
 ## Aufgabe 3: Erkennen von Themen in einem Textcorpus ####
 
-Diese neu veröffentlichte API gibt die am meisten erkannten Themen für eine Liste übermittelter Textdatensätze zurück. Ein Thema wird anhand eines Schlüsselausdrucks identifiziert, der aus einem oder mehreren darauf bezogenen Wörtern bestehen kann. Die API eignet sich ideal für kurzen, von Menschen geschriebenen Text, z. B. Kritiken und Feedback von Benutzern.
+Diese neu veröffentlichte API gibt die am meisten erkannten Themen für eine Liste übermittelter Textdatensätze zurück. Ein Thema wird anhand eines Schlüsselausdrucks identifiziert, der aus einem oder mehreren darauf bezogenen Wörtern bestehen kann. Die API eignet sich ideal für kurzen, von Menschen geschriebenen Text, z.B. Kritiken und Feedback von Benutzern.
 
-Für diese API müssen **mindestens 100 Datensätze** übermittelt werden, sie kann jedoch Themen in Hunderten bis Tausenden von Datensätzen erkennen. Alle nicht englischsprachigen Datensätze oder Datensätze mit weniger als 3 Wörtern werden verworfen. Ihnen wird daher kein Thema zugewiesen. Die maximale Größe eines einzelnen Dokuments, das für die Themenerkennung übermittelt werden kann, beträgt 30 KB, und die maximale Gesamtgröße der übermittelten Eingabe beträgt 30 MB.
+Für diese API müssen **mindestens 100 Textdatensätze** übermittelt werden, aber sie kann Themen in Hunderten bis Tausenden von Datensätzen erkennen. Alle nicht englischsprachigen Datensätze oder Datensätze mit weniger als 3 Wörtern werden verworfen. Ihnen wird daher kein Thema zugewiesen. Die maximale Größe eines einzelnen Dokuments, das für die Themenerkennung übermittelt werden kann, beträgt 30 KB, und die maximale Gesamtgröße der übermittelten Eingabe beträgt 30 MB.
 
 Es gibt zwei zusätzliche **optionale** Eingabeparameter, die zur Verbesserung der Ergebnisqualität beitragen können:
 
 - **Stoppwörter.** Diese Wörter und deren verwandte Formen (z. B. Pluralformen) werden aus der gesamten Themenerkennungspipeline ausgeschlossen. Verwenden Sie dies für häufige Wörter. („Problem“, „Fehler“ und „Benutzer“ sind womöglich beispielsweise angemessene Optionen für Kundenbeschwerden über Software.) Jede Zeichenfolge sollte ein einzelnes Wort sein.
-- **Stoppausdrücke** – Diese Ausdrücke werden von der Liste der zurückgegebenen Themen ausgeschlossen. Verwenden Sie diese Option, um allgemeine Themen auszuschließen, die nicht in den Ergebnissen angezeigt werden sollen. „Microsoft“ und „Azure“ sind beispielsweise geeignete Optionen für Themen, die Sie ausschließen möchten. Zeichenfolgen können mehrere Wörter enthalten.
+- **Stoppausdrücke**: Diese Ausdrücke werden von der Liste der zurückgegebenen Themen ausgeschlossen. Verwenden Sie diese Option, um allgemeine Themen auszuschließen, die nicht in den Ergebnissen angezeigt werden sollen. „Microsoft“ und „Azure“ sind beispielsweise geeignete Optionen für Themen, die Sie ausschließen möchten. Zeichenfolgen können mehrere Wörter enthalten.
 
 Gehen Sie wie folgt vor, um Themen im Text zu erkennen.
 
@@ -190,7 +199,7 @@ Gehen Sie wie folgt vor, um Themen im Text zu erkennen.
 			]
 		}
 
-1. Tätigen Sie unter Verwendung der gleichen Header wie in Aufgabe 2 definiert einen **POST**-Aufruf zum Themenendpunkt:
+1. Richten Sie unter Verwendung der gleichen Header wie in Aufgabe 2 definiert einen **POST**-Aufruf an den Themenendpunkt:
 
         POST https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics
 
@@ -206,7 +215,7 @@ Gehen Sie wie folgt vor, um Themen im Text zu erkennen.
 
 		{
 			"status": "succeeded",
-			"processingResult": {
+			"operationProcessingResult": {
 			  	"topics": [
                     {
 					    "id": "8b89dd7e-de2b-4a48-94c0-8e7844265196"
@@ -284,4 +293,4 @@ Die Erläuterungen für jeden Teil dieser Antwort lauten:
 
 Glückwunsch! Sie haben nun die Nutzung der Textanalyse für Ihre Daten abgeschlossen. Sie können nun Informationen über die Nutzung eines Tools wie z.B. [Power BI](//powerbi.microsoft.com) einholen, um Ihre Daten zu visualisieren, und Ihre Erkenntnisse automatisieren, damit Sie Ihre Textdaten in Echtzeit anzeigen können.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

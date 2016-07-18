@@ -45,11 +45,7 @@ In diesem Thema sind alle Themen mit direktem Bezug zum Azure Data-Factory-Diens
 | [Erstellen der ersten Azure Data Factory mit Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md) | In diesem Tutorial erstellen Sie eine Azure Data Factory-Beispielpipeline mithilfe von Azure PowerShell. |
 | [Tutorial: Erstellen der ersten Azure Data Factory mit einer Azure Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md) | In diesem Tutorial erstellen Sie eine Azure Data Factory-Beispielpipeline mithilfe einer Azure-Ressourcen-Manager-Vorlage. |
 | [Lernprogramm: Erstellen der ersten Data Factory (Übersicht)](data-factory-build-your-first-pipeline.md) | Dieses Tutorial zeigt, wie Sie eine Data Factory mit einer Datenpipeline erstellen, die Daten mithilfe von Azure HDInsight transformiert. |
-| [Tutorial: Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank](data-factory-get-started.md) | Dieses Tutorial veranschaulicht das Verwenden der Kopieraktivität in einer Azure Data Factory-Pipeline, um Daten aus einem Azure-Blob in eine Azure SQL-Datenbank zu kopieren. |
-| [Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe der Azure PowerShell](data-factory-monitor-manage-using-powershell.md) | In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline mit Kopieraktivität mithilfe der Azure PowerShell. |
 | [Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe des Data Factory-Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) | In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline mit einer Kopieraktivität, indem Sie den von der Data Factory unterstützten Kopier-Assistenten verwenden. |
-| [Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe des Data Factory-Editors](data-factory-get-started-using-editor.md) | In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline mit Kopieraktivität mithilfe des Data Factory-Editors im Azure-Portal. |
-| [Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe von Visual Studio](data-factory-get-started-using-vs.md) | In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline mit Kopieraktivität mithilfe von Visual Studio. |
 
 ## Datenverschiebung
 
@@ -69,7 +65,7 @@ In diesem Thema sind alle Themen mit direktem Bezug zum Azure Data-Factory-Diens
 | [Verschieben von Daten aus lokalem Oracle mithilfe von Azure Data Factory](data-factory-onprem-oracle-connector.md) | Informationen zum Verschieben von Daten in und aus einer Oracle-Datenbank, die lokal oder mithilfe von Azure Data Factory gehostet wird. |
 | [Verschieben von Daten aus PostgreSQL mithilfe von Azure Data Factory ](data-factory-onprem-postgresql-connector.md) | Erfahren Sie, wie Sie Daten aus der PostgreSQL-Datenbank mithilfe von Azure Data Factory verschieben. |
 | [Verschieben von Daten aus Sybase mithilfe von Azure Data Factory](data-factory-onprem-sybase-connector.md) | Erfahren Sie, wie Sie Daten aus der Sybase-Datenbank mithilfe von Azure Data Factory verschieben. |
-| [Verschieben von Daten aus Teradate mithilfe von Azure Data Factory](data-factory-onprem-teradata-connector.md) | Informationen zum Teradata-Connector für den Data Factory-Dienst, mit dem Sie Daten aus einer Teradata-Datenbank verschieben können |
+| [Verschieben von Daten aus Teradata mithilfe von Azure Data Factory](data-factory-onprem-teradata-connector.md) | Informationen zum Teradata-Connector für den Data Factory-Dienst, mit dem Sie Daten aus einer Teradata-Datenbank verschieben können |
 | [Verschieben von Daten in einen und aus einem Azure-Blob mithilfe von Azure Data Factory](data-factory-azure-blob-connector.md) | Erfahren Sie, wie Daten mithilfe von Azure Data Factory in einen und aus einem Azure-Blob-Speicher verschoben werden. |
 | [Verschieben von Daten in und aus Azure Data Lake-Speicher mithilfe von Azure Data Factory](data-factory-azure-datalake-connector.md) | Erfahren Sie, wie Daten mithilfe von Azure Data Factory in und aus Azure Data Lake-Speicher verschoben werden. |
 | [Verschieben von Daten in und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory](data-factory-azure-sql-data-warehouse-connector.md) | Erfahren Sie, wie Daten mithilfe von Azure Data Factory in und aus Azure SQL Data Warehouse verschoben werden. |
@@ -157,4 +153,4 @@ In diesem Thema sind alle Themen mit direktem Bezug zum Azure Data-Factory-Diens
 
 - Lernpfaddiagramm: [Data Factory](http://azure.microsoft.com/documentation/learning-paths/data-factory/)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

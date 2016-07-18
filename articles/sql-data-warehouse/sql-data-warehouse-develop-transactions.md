@@ -24,14 +24,14 @@ Wie zu erwarten, unterstützt SQL Data Warehouse Transaktionen als Teil des Data
 SQL Data Warehouse implementiert ACID-Transaktionen. Die Isolation der Transaktionsunterstützung ist jedoch beschränkt auf `READ UNCOMMITTED` und kann nicht geändert werden. Sie können eine Reihe von Codemethoden implementieren, um fehlerhafte Datenlesevorgänge zu verhindern, wenn dies ein Problem für Sie darstellt. Die am häufigsten verwendeten Methoden nutzen sowohl CTAS als auch Wechsel von Partitionstabellen (oftmals gleitendes Fenstermuster genannt), um zu verhindern, dass Benutzer Daten abrufen, die noch vorbereitet werden. Sichten, die die Daten vorab filtern, sind auch ein beliebter Ansatz.
 
 ## Transaktionsgröße
-Eine einzelne Transaktion zur Datenänderung ist in Bezug auf die Größe beschränkt. Der Grenzwert wird heute „pro Verteilung“ angewendet. Zum Ermitteln der Gesamtsumme müssen wir daher den Grenzwert mit der Verteilungsanzahl multiplizieren. Um eine Annäherung für die maximale Zeilenanzahl in der Transaktion zu erhalten, teilen Sie die Verteilungsobergrenze durch die Gesamtgröße jeder Spalte. Bei Spalten mit variabler Länge können Sie erwägen, anstelle der maximalen Größe eine durchschnittliche Spaltenlänge zu verwenden.
+Eine einzelne Transaktion zur Datenänderung ist in Bezug auf die Größe beschränkt. Der Grenzwert wird heute „pro Verteilung“ angewendet. Die Gesamtzuordnung kann also ermittelt werden, indem der Grenzwert mit der Verteilungsanzahl multipliziert wird. Um eine Annäherung für die maximale Zeilenanzahl in der Transaktion zu erhalten, teilen Sie die Verteilungsobergrenze durch die Gesamtgröße jeder Zeile. Bei Spalten mit variabler Länge können Sie erwägen, anstelle der maximalen Größe eine durchschnittliche Spaltenlänge zu verwenden.
 
 Für die Tabelle unten gelten die folgenden Annahmen:
 
 * Gleichmäßige Verteilung der Daten
 * Durchschnittliche Zeilenlänge beträgt 250 Byte
 
-| DWU | Obergrenze pro Verteilung (GB) | Anzahl der Verteilungen | Max. Transaktionsgröße (GB) | Zeilenanzahl pro Verteilung | Max. Zeilenzahl pro Transaktion |
+| [DWU][] | Obergrenze pro Verteilung (GB) | Anzahl der Verteilungen | Max. Transaktionsgröße (GB) | Zeilenanzahl pro Verteilung | Max. Zeilenzahl pro Transaktion |
 | ------ | -------------------------- | ----------------------- | -------------------------- | ----------------------- | ------------------------ |
 | DW100 | 1 | 60 | 60 | 4\.000.000 | 240\.000.000 |
 | DW200 | 1,5 | 60 | 90 | 6\.000.000 | 360\.000.000 |
@@ -110,7 +110,7 @@ SELECT @xact;
 Beachten Sie, dass das Rollback der Transaktion vor dem Lesen der Fehlerinformationen im `CATCH`-Block erfolgen muss.
 
 ## Error\_Line()-Funktion
-Es ist auch erwähnenswert, dass SQL Data Warehouse die ERROR\_LINE()-Funktion nicht implementiert oder unterstützt. Wenn diese in Ihrem Code enthalten ist, müssen Sie sie entfernen, um die Kompatibilität mit SQL Data Warehouse zu gewährleisten. Verwenden Sie stattdessen Abfragebezeichnungen in Ihrem Code, um entsprechende Funktionalität zu implementieren. Weitere Informationen zu dieser Funktion finden Sie im Artikel [Abfragebezeichnungen].
+Es ist auch erwähnenswert, dass SQL Data Warehouse die ERROR\_LINE()-Funktion nicht implementiert oder unterstützt. Wenn diese in Ihrem Code enthalten ist, müssen Sie sie entfernen, um die Kompatibilität mit SQL Data Warehouse zu gewährleisten. Verwenden Sie stattdessen Abfragebezeichnungen in Ihrem Code, um entsprechende Funktionalität zu implementieren. Weitere Informationen zu dieser Funktion finden Sie im Artikel [LABEL][].
 
 ## Verwenden von THROW und RAISERROR
 THROW ist die modernere Implementierung zum Auslösen von Ausnahmen in SQL Data Warehouse, RAISERROR wird jedoch ebenfalls unterstützt. Es gibt aber einige erwähnenswerte Unterschiede.
@@ -127,19 +127,22 @@ Dies sind:
 - Keine verteilten Transaktionen
 - Keine geschachtelten Transaktionen zulässig
 - Keine Speicherpunkte zulässig
-- Keine Unterstützung für DDL wie z.B. `CREATE TABLE` innerhalb von benutzerdefinierten Transaktionen
+- Keine Unterstützung für DDL, z.B. `CREATE TABLE` innerhalb von benutzerdefinierten Transaktionen
 
 ## Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
+Weitere Informationen zum Optimieren von Transaktionen finden Sie unter [Bewährte Methoden für Transaktionen][]. Informationen zu weiteren bewährten Methoden für SQL Data Warehouse finden Sie unter [Bewährte Methoden für SQL Data Warehouse][].
 
 <!--Image references-->
 
 <!--Article references-->
-[Entwicklungsübersicht]: sql-data-warehouse-overview-develop.md
-[Bewährte Methoden für Transaktionen]: sql-data-warehouse-develop-best-practices-transactions.md
+[DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
+[development overview]: ./sql-data-warehouse-overview-develop.md
+[Bewährte Methoden für Transaktionen]: ./sql-data-warehouse-develop-best-practices-transactions.md
+[Bewährte Methoden für SQL Data Warehouse]: ./sql-data-warehouse-best-practices.md
+[LABEL]: ./sql-data-warehouse-develop-label.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

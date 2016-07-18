@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/27/2016"
+   ms.date="06/30/2016"
    ms.author="sonyama;barbkess;sahajs"/>
 
 # Überwachen Ihres Workloads mit dynamischen Verwaltungssichten
@@ -28,8 +28,10 @@ Mithilfe der Sicht [sys.dm\_pdw\_exec\_sessions][] können Sie Verbindungen mit 
 SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed';
 ```
 
-## Untersuchen der Ausführung von Abfragen
-Beginnen Sie zum Überwachen der Abfrageausführung mit [sys.dm\_pdw\_exec\_requests][]. Diese Sicht enthält Abfragen in Bearbeitung sowie einen Verlauf der Abfragen, die vor Kurzem abgeschlossen wurden. Die Abfrage-ID identifiziert eindeutig jede Abfrage. Sie ist der Primärschlüssel für diese Sicht. Die Abfrage-ID wird für jede neue Abfrage sequenziell zugewiesen. Bei der Abfrage dieser Tabelle für eine bestimmte Sitzungs-ID werden alle Abfragen für eine bestimmte Anmeldung angezeigt.
+## Untersuchen der Abfrageausführung
+Beginnen Sie zum Überwachen der Abfrageausführung mit [sys.dm\_pdw\_exec\_requests][]. Diese Sicht enthält Abfragen in Bearbeitung sowie einen Verlauf der Abfragen, die vor Kurzem abgeschlossen wurden. Die Anforderungs-ID identifiziert eindeutig jede Abfrage. Sie ist der Primärschlüssel für diese Sicht. Die Anforderungs-ID wird für jede neue Abfrage sequenziell zugewiesen. Bei der Abfrage dieser Tabelle für eine bestimmte Sitzungs-ID werden alle Abfragen für eine bestimmte Anmeldung angezeigt.
+
+>[AZURE.NOTE] Gespeicherte Prozeduren verwenden mehrere „request\_ids“ (Anforderungs-IDs). Die Anforderungs-IDs werden in sequenzieller Reihenfolge zugewiesen.
 
 Führen Sie folgende Schritte aus, um Abfrageausführungspläne und -zeiten für eine bestimmte Abfrage zu untersuchen.
 
@@ -148,10 +150,9 @@ Weitere Informationen zu dynamischen Verwaltungssichten finden Sie unter [System
 <!--Image references-->
 
 <!--Article references-->
-[manage data skew for distributed tables]: sql-data-warehouse-manage-distributed-data-skew.md
-[Verwaltungstools für SQL Data Warehouse]: sql-data-warehouse-overview-manage.md
-[Bewährte Methoden für SQL Data Warehouse]: sql-data-warehouse-best-practices.md
-[Systemsichten]: sql-data-warehouse-reference-tsql-system-views.md
+[Verwaltungstools für SQL Data Warehouse]: ./sql-data-warehouse-overview-manage.md
+[Bewährte Methoden für SQL Data Warehouse]: ./sql-data-warehouse-best-practices.md
+[Systemsichten]: ./sql-data-warehouse-reference-tsql-system-views.md
 
 <!--MSDN references-->
 [sys.dm\_pdw\_dms\_workers]: http://msdn.microsoft.com/library/mt203878.aspx
@@ -162,4 +163,4 @@ Weitere Informationen zu dynamischen Verwaltungssichten finden Sie unter [System
 [DBCC PDW\_SHOWEXECUTIONPLAN]: http://msdn.microsoft.com/library/mt204017.aspx
 [DBCC PDW_SHOWSPACEUSED]: http://msdn.microsoft.com/library/mt204028.aspx
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

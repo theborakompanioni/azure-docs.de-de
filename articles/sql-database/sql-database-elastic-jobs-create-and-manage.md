@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Erstellen und Verwalten von horizontal hochskalierten SQL Azure-Datenbanken | Micosoft Azure"
+	pageTitle="Erstellen und Verwalten von horizontal hochskalierten Azure SQL-Datenbanken | Micosoft Azure"
 	description="Führen Sie die Schritte zur Erstellung und Verwaltung eines elastischen Datenbankauftrags aus."
 	services="sql-database"
 	documentationCenter=""
@@ -16,7 +16,7 @@
 	ms.date="05/27/2016"
 	ms.author="ddove"/>
 
-# Erstellen und Verwalten von horizontal hochskalierten SQL Azure-Datenbanken (Vorschau)
+# Erstellen und Verwalten von horizontal hochskalierten Azure SQL-Datenbanken (Vorschau)
 
 > [AZURE.SELECTOR]
 - [Azure-Portal](sql-database-elastic-jobs-create-and-manage.md)
@@ -115,4 +115,4 @@ Wenn ein Auftrag fehlschlägt, wird ein Protokoll zu seiner Ausführung erstellt
 
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

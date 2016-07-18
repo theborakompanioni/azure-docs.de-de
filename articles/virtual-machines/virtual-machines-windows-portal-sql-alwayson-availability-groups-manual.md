@@ -64,7 +64,7 @@ In diesem Tutorial wird Folgendes vorausgesetzt:
 
 ## Ressourcengruppe erstellen
 
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an. 
+1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
 
 1. Klicken Sie auf **+Neu**, und geben Sie im **Marketplace**-Suchfenster die Zeichenfolge **Ressourcengruppe** ein.
 
@@ -96,7 +96,7 @@ Die Lösung verwendet ein virtuelles Netzwerk mit zwei Subnetzen. Sie sollten mi
 
 So erstellen Sie das virtuelle Netzwerk:
 
-1. Klicken Sie im Azure-Portal auf die neue Ressourcengruppe und anschließend auf **+**, um der Ressourcengruppe ein neues Element hinzuzufügen. Azure öffnet das Blatt **Alles**. 
+1. Klicken Sie im Azure-Portal auf die neue Ressourcengruppe und anschließend auf **+**, um der Ressourcengruppe ein neues Element hinzuzufügen. Azure öffnet das Blatt **Alles**.
 
     ![Neues Element](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/02-newiteminrg.png)
 
@@ -143,7 +143,7 @@ Bis jetzt enthält das virtuelle Netzwerk ein Subnetz mit dem Namen „Subnet-1�
 
 1.  Klicken Sie in der Liste mit den Ressourcen auf **autoHAVNET**, um das Blatt für die Netzwerkkonfiguration zu öffnen.
 
-1.  Klicken Sie im Bereich für das virtuelle Netzwerk **autoHAVNET** auf **Alle Einstellungen**.
+1.  Klicken Sie im Bereich für das virtuelle Netzwerk **autoHAVNET** auf *Alle Einstellungen*.
 
 1. Klicken Sie auf dem Blatt **Einstellungen** auf **Subnetze**.
 
@@ -204,7 +204,7 @@ Kehren Sie zum Erstellen und Konfigurieren der Domänencontroller zur Ressourcen
 
 1. Geben Sie **Windows Server 2012 R2 Datacenter** ein.
 
-1. Klicken Sie auf **Windows Server 2012 R2 Datacenter**. Vergewissern Sie sich auf dem Blatt **Windows Server 2012 R2 Datacenter**, dass das Bereitstellungsmodell auf **Resource Manager** festgelegt ist, und klicken Sie anschließend auf **Erstellen**. Azure öffnet das Blatt **Virtuellen Computer erstellen**.
+1. Klicken Sie auf **Windows Server 2012 R2 Datencenter**. Vergewissern Sie sich auf dem Blatt **Windows Server 2012 R2 Datacenter**, dass das Bereitstellungsmodell auf **Resource Manager** festgelegt ist, und klicken Sie anschließend auf **Erstellen**. Azure öffnet das Blatt **Virtuellen Computer erstellen**.
 
 Führen Sie diesen Prozess zweimal aus, um zwei virtuelle Computer zu erstellen. Benennen Sie die beiden virtuellen Computer:
 
@@ -218,7 +218,7 @@ Die folgende Tabelle enthält die Einstellungen für die beiden Computer:
 | **Field** | Wert 
 | ----- | ---- 
 | **Benutzername** | DomainAdmin
-| **Kennwort** | Contoso!000 |
+| **Kennwort** | Contoso!0000 |
 | **Abonnement** | *Ihr Abonnement* |
 | **Ressourcengruppe** | SQL-HA-RG |
 | **Standort** | *Ihr Standort* 
@@ -247,7 +247,7 @@ In den folgenden Schritten konfigurieren Sie den Computer **ad-primary-dc** als 
 
 	![Herstellen einer Verbindung mit einem virtuellen Computer](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/20-connectrdp.png)
 
-1. Melden Sie sich mit Ihrem konfigurierten Administratorkonto (**\\DomainAdmin**) und Kennwort (**Contoso!000**) an.
+1. Melden Sie sich mit Ihrem konfigurierten Administratorkonto (**\\DomainAdmin**) und Kennwort (**Contoso!0000**) an.
 
 1. Standardmäßig sollte das Dashboard **Server-Manager** angezeigt werden.
 
@@ -282,7 +282,7 @@ In den folgenden Schritten konfigurieren Sie den Computer **ad-primary-dc** als 
 | **Seite** |Einstellung|
 |---|---|
 |**Bereitstellungskonfiguration** |**Neue Gesamtstruktur hinzufügen** = Aktiviert<br/>**Rootdomänenname** = corp.contoso.com|
-|**Domänencontrolleroptionen**|**DSRM-Kennwort** = Contoso!000<br/>**Kennwort bestätigen** = Contoso!000|
+|**Domänencontrolleroptionen**|**DSRM-Kennwort** = Contoso!0000<br/>**Kennwort bestätigen** = Contoso!0000|
 
 1. Klicken Sie auf **Weiter**, um die anderen Seiten des Assistenten zu durchlaufen. Überprüfen Sie auf der Seite **Prüfung der erforderlichen Komponenten**, ob die folgende Meldung angezeigt wird: **Alle erforderlichen Komponenten wurden erfolgreich überprüft**. Beachten Sie, dass Sie zwar alle zutreffenden Warnmeldungen überprüfen sollten, es aber möglich ist, die Installation fortzusetzen.
 
@@ -292,13 +292,13 @@ In den folgenden Schritten konfigurieren Sie den Computer **ad-primary-dc** als 
 
 Nach dem Neustart des primären Domänencontrollers können Sie den zweiten Domänencontroller konfigurieren. Dieser optionale Schritt dient zur Gewährleistung einer hohen Verfügbarkeit. Für diesen Schritt benötigen Sie die private IP-Adresse für den Domänencontroller. Diese können Sie im Azure-Portal ermitteln. Gehen Sie wie folgt vor, um den zweiten Domänencontroller zu konfigurieren:
 
-1. Melden Sie sich wieder beim Computer **ad-primary-dc** an. 
+1. Melden Sie sich wieder beim Computer **ad-primary-dc** an.
 
 1. Öffnen Sie den Remotedesktop, und stellen Sie über die entsprechende IP-Adresse eine Verbindung mit dem sekundären Domänencontroller her. Sollte Ihnen die IP-Adresse des zweiten Domänencontrollers nicht bekannt sein, wechseln Sie zum Azure-Portal, und überprüfen Sie die Adresse, die der Netzwerkschnittstelle für den sekundären Domänencontroller zugewiesen ist.
 
 1. Legen Sie die bevorzugte DNS-Serveradresse auf die Adresse für den Domänencontroller fest.
 
-1. Starten Sie die RDP-Datei für den primären Domänencontroller (**ad-primary-dc**), und melden Sie sich beim virtuellen Computer mit Ihrem konfigurierten Administratorkonto (**BUILTIN\\DomainAdmin**) und Kennwort (**Contoso!000**) an.
+1. Starten Sie die RDP-Datei für den primären Domänencontroller (**ad-primary-dc**), und melden Sie sich beim virtuellen Computer mit Ihrem konfigurierten Administratorkonto (**BUILTIN\\DomainAdmin**) und Kennwort (**Contoso!0000**) an.
 
 1. Starten Sie auf dem primären Domänencontroller unter Verwendung der IP-Adresse einen Remotedesktop für **ad-secondary-dc**. Verwenden Sie das gleiche Konto und Kennwort.
 
@@ -330,7 +330,7 @@ Nach dem Neustart des primären Domänencontrollers können Sie den zweiten Dom�
 |Seite|Einstellung|
 |---|---|
 |**Bereitstellungskonfiguration**|**Domänencontroller vorhandener Domäne hinzufügen** = Aktiviert<br/>**Stamm** = corp.contoso.com|
-|**Domänencontrolleroptionen**|**DSRM-Kennwort** = Contoso!000<br/>**Kennwort bestätigen** = Contoso!000|
+|**Domänencontrolleroptionen**|**DSRM-Kennwort** = Contoso!0000<br/>**Kennwort bestätigen** = Contoso!0000|
 
 
 ### Konfigurieren von Domänenkonten
@@ -351,8 +351,8 @@ In den nächsten Schritten werden die Active Directory-Konten (AD) für die spä
 |---|---|
 |**Vorname**|Installieren|
 |**SamAccountName von Benutzer**|Installieren|
-|**Kennwort**|Contoso!000|
-|**Kennwort bestätigen**|Contoso!000|
+|**Kennwort**|Contoso!0000|
+|**Kennwort bestätigen**|Contoso!0000|
 |**Andere Kennwortoptionen**|Aktiviert|
 |**Kennwort läuft nie ab**|Aktiviert|
 
@@ -382,14 +382,14 @@ Nachdem Sie Active Directory und die Benutzerobjekte konfiguriert haben, können
 
 ###Erstellen und Konfigurieren der virtuellen SQL Server-Computer
 
-Im nächsten Schritt werden drei virtuelle Computer erstellt: zwei virtuelle SQL Server-Computer und ein WSFC-Clusterknoten. Kehren Sie zum Erstellen dieser virtuellen Computer jeweils zur Ressourcengruppe **HA-AG-RG** zurück, klicken Sie auf **Hinzufügen**, suchen Sie nach dem entsprechenden Katalogelement (**Virtueller Computer**), und klicken Sie dann auf **Aus Katalog**. Verwenden Sie dann die Vorlagen aus der folgenden Tabelle, die Sie bei der Erstellung der virtuellen Computer unterstützen.
+Im nächsten Schritt werden drei virtuelle Computer erstellt: zwei virtuelle SQL Server-Computer und ein WSFC-Clusterknoten. Kehren Sie zum Erstellen dieser virtuellen Computer jeweils zur Ressourcengruppe **SQL-HA-RG** zurück, klicken Sie auf **Hinzufügen**, suchen Sie nach dem entsprechenden Katalogartikel (**Virtueller Computer**), und klicken Sie dann auf **Aus Katalog**. Verwenden Sie dann die Vorlagen aus der folgenden Tabelle, die Sie bei der Erstellung der virtuellen Computer unterstützen.
 
 |Seite|VM1|VM2|VM3|
 |---|---|---|---|
 |Wählen Sie das passende Katalogelement aus.|**Windows Server 2012 R2 Datacenter**|**SQL Server 2014 SP1 Enterprise unter Windows Server 2012 R2**|**SQL Server 2014 SP1 Enterprise unter Windows Server 2012 R2**|
-| Konfiguration des virtuellen Computers: **Grundlagen** | **Name** = cluster-fsw<br/>**Benutzername** = DomainAdmin<br/>**Kennwort** = Contoso!000<br/>**Abonnement** = Ihr Abonnement<br/>**Ressourcengruppe** = SQL-HA-RG<br/>**Standort** = Ihr Azure-Standort | **Name** = sqlserver-0<br/>**Benutzername** = DomainAdmin<br/>**Kennwort** = Contoso!000<br/>**Abonnement** = Ihr Abonnement<br/>**Ressourcengruppe** = SQL-HA-RG<br/>**Standort** = Ihr Azure-Standort | **Name** = sqlserver-1<br/>**Benutzername** = DomainAdmin<br/>**Kennwort** = Contoso!000<br/>**Abonnement** = Ihr Abonnement<br/>**Ressourcengruppe** = SQL-HA-RG<br/>**Standort** = Ihr Azure-Standort |
+| Konfiguration des virtuellen Computers: **Grundlagen** | **Name** = cluster-fsw<br/>**Benutzername** = DomainAdmin<br/>**Kennwort** = Contoso!0000<br/>**Abonnement** = Ihr Abonnement<br/>**Ressourcengruppe** = SQL-HA-RG<br/>**Standort** = Ihr Azure-Standort | **Name** = sqlserver-0<br/>**User Name**Benutzername = DomainAdmin<br/>**Kennwort** = Contoso!0000<br/>**Abonnement** = Ihr Abonnement<br/>**Ressourcengruppe** = SQL-HA-RG<br/>**Standort** = Ihr Azure-Standort | **Name** = sqlserver-1<br/>**Benutzername** = DomainAdmin<br/>**Kennwort** = Contoso!0000<br/>**Abonnement** = Ihr Abonnement<br/>**Ressourcengruppe** = SQL-HA-RG<br/>**Standort** = Ihr Azure-Standort |
 |Konfiguration des virtuellen Computers: **Größe** |DS1 (ein Kern, 3,5 GB Arbeitsspeicher)|**GRÖSSE** = DS2 (2 Kerne, 7 GB Arbeitsspeicher)|**GRÖSSE** = DS2 (2 Kerne, 7 GB Arbeitsspeicher)|
-|Konfiguration des virtuellen Computers: **Einstellungen**|**Speicher** = Premium (SSD)<br/>**NETZWERKSUBNETZE** = autoHAVNET<br/>**SPEICHERKONTO** = Verwenden Sie ein automatisch generiertes Speicherkonto.<br/>**Subnetz** = subnet-2(10.1.1.0/24)<br/>**Öffentliche IP-Adresse** = Keine<br/>**Netzwerksicherheitsgruppe** = Keine<br/>**Überwachung und Diagnose** = Aktiviert<br/>**Diagnosespeicherkonto** = Verwenden Sie ein automatisch generiertes Speicherkonto.<br/>**VERFÜGBARKEITSGRUPPE** = sqlAvailabilitySet<br/>|**Speicher** = Premium (SSD)<br/>**NETZWERKSUBNETZE** = autoHAVNET<br/>**SPEICHERKONTO** = Verwenden Sie ein automatisch generiertes Speicherkonto.<br/>**Subnetz** = subnet-2(10.1.1.0/24)<br/>**Öffentliche IP-Adresse** = Keine<br/>**Netzwerksicherheitsgruppe** = Keine<br/>**Überwachung und Diagnose** = Aktiviert<br/>**Diagnosespeicherkonto** = Verwenden Sie ein automatisch generiertes Speicherkonto.<br/>**VERFÜGBARKEITSGRUPPE** = sqlAvailabilitySet<br/>|**Speicher** = Premium (SSD)<br/>**NETZWERKSUBNETZE** = autoHAVNET<br/>**SPEICHERKONTO** = Verwenden Sie ein automatisch generiertes Speicherkonto.<br/>**Subnetz** = subnet-2(10.1.1.0/24)<br/>**Öffentliche IP-Adresse** = Keine<br/>**Netzwerksicherheitsgruppe** = Keine<br/>**Überwachung und Diagnose** = Aktiviert<br/>**Diagnosespeicherkonto** = Verwenden Sie ein automatisch generiertes Speicherkonto.<br/>**VERFÜGBARKEITSGRUPPE** = sqlAvailabilitySet<br/>
+|Konfiguration des virtuellen Computers: **Einstellungen**|**Speicher** = Premium (SSD)<br/>**NETZWERKSUBNETZE** = autoHAVNET<br/>**SPEICHERKONTO** = Verwenden Sie ein automatisch generiertes Speicherkonto<br/>**Subnetz** = subnet-2(10.1.1.0/24)<br/>**Öffentliche IP-Adresse** = Keine<br/>**Netzwerksicherheitsgruppe** = Keine<br/>**Überwachung und Diagnose** = Aktiviert<br/>**Diagnosespeicherkonto** = Verwenden Sie ein automatisch generiertes Speicherkonto<br/>**VERFÜGBARKEITSGRUPPE** = sqlAvailabilitySet<br/>|**Speicher** = Premium (SSD)<br/>**NETZWERKSUBNETZE** = autoHAVNET<br/>**SPEICHERKONTO** = Verwenden Sie ein automatisch generiertes Speicherkonto<br/>**Subnetz** = subnet-2(10.1.1.0/24)<br/>**Öffentliche IP-Adresse** = Keine<br/>**Netzwerksicherheitsgruppe** = Keine<br/>**Überwachung und Diagnose** = Aktiviert<br/>**Diagnosespeicherkonto** = Verwenden Sie ein automatisch generiertes Speicherkonto<br/>**VERFÜGBARKEITSGRUPPE** = sqlAvailabilitySet<br/>|**Speicher** = Premium (SSD)<br/>**NETZWERKSUBNETZE** = autoHAVNET<br/>**SPEICHERKONTO** = Verwenden Sie ein automatisch generiertes Speicherkonto<br/>**Subnetz** = subnet-2(10.1.1.0/24)<br/>**Öffentliche IP-Adresse** = Keine<br/>**Netzwerksicherheitsgruppe** = Keine<br/>**Überwachung und Diagnose** = Aktiviert<br/>**Diagnosespeicherkonto** = Verwenden Sie ein automatisch generiertes Speicherkonto<br/>**VERFÜGBARKEITSGRUPPE** = sqlAvailabilitySet<br/>
 |Konfiguration des virtuellen Computers: **SQL Server-Einstellungen**|Nicht zutreffend|**SQL-Konnektivität** = Privat (innerhalb des virtuellen Netzwerks)<br/>**Port** = 1433<br/>**SQL-Authentifizierung** = Deaktiviert<br/>**Speicherkonfiguration** = Allgemein<br/>**Automatisches Patchen** = Sonntag, 2:00 Uhr<br/>**Automatisierte Sicherung** = Deaktiviert</br>**Azure Key Vault-Integration** = Deaktiviert|**SQL-Konnektivität** = Privat (innerhalb des virtuellen Netzwerks)<br/>**Port** = 1433<br/>**SQL-Authentifizierung** = Deaktiviert<br/>**Speicherkonfiguration** = Allgemein<br/>**Automatisches Patchen** = Sonntag, 2:00 Uhr<br/>**Automatisierte Sicherung** = Deaktiviert</br>**Azure Key Vault-Integration** = Deaktiviert|
 
 <br/>
@@ -413,9 +413,9 @@ Schreiben Sie sich der Einfachheit halber die virtuelle Azure-IP-Adresse der ein
 Diese Adressen werden zum Konfigurieren des DNS-Diensts für die einzelnen virtuellen Computer verwendet. Verwenden Sie hierzu die folgenden Schritte für jeden der drei virtuellen Computer.
 
 
-1. Ändern Sie zunächst für jeden Mitgliedsserver die Adresse des bevorzugten DNS-Servers. 
+1. Ändern Sie zunächst für jeden Mitgliedsserver die Adresse des bevorzugten DNS-Servers.
 
-1. Starten Sie die RDP-Datei für den primären Domänencontroller (**ad-primary-dc**), und melden Sie sich beim virtuellen Computer mit Ihrem konfigurierten Administratorkonto (**BUILTIN\\DomainAdmin**) und Kennwort (**Contoso!000**) an.
+1. Starten Sie die RDP-Datei für den primären Domänencontroller (**ad-primary-dc**), und melden Sie sich beim virtuellen Computer mit Ihrem konfigurierten Administratorkonto (**BUILTIN\\DomainAdmin**) und Kennwort (**Contoso!0000**) an.
 
 1. Starten Sie auf dem primären Domänencontroller unter Verwendung der IP-Adresse einen Remotedesktop für **sqlserver-0**. Verwenden Sie das gleiche Konto und Kennwort.
 
@@ -448,7 +448,7 @@ Diese Adressen werden zum Konfigurieren des DNS-Diensts für die einzelnen virtu
 
 1. Aktivieren Sie das Kontrollkästchen **Domäne**, und geben Sie in das Textfeld **corp.contoso.com** ein. Klicken Sie auf **OK**.
 
-1. Geben Sie im Popupdialogfeld **Windows-Sicherheit** die Anmeldeinformationen für das Standarddomänen-Administratorkonto (**CORP\\DomainAdmin**) und das Kennwort (**Contoso!000**) an.
+1. Geben Sie im Popupdialogfeld **Windows-Sicherheit** die Anmeldeinformationen für das Standarddomänen-Administratorkonto (**CORP\\DomainAdmin**) und das Kennwort (**Contoso!0000**) an.
 
 1. Wenn die Meldung „Willkommen in der Domäne ‚corp.contoso.com‘“ angezeigt wird, klicken Sie auf **OK**.
 
@@ -470,7 +470,7 @@ Diese Adressen werden zum Konfigurieren des DNS-Diensts für die einzelnen virtu
 
 1. Klicken Sie im Dialogfeld **Administratoreigenschaften** auf die Schaltfläche **Hinzufügen**.
 
-1. Geben Sie den Benutzer **CORP\\Install** ein, und klicken Sie dann auf **OK**. Geben Sie das Konto **DomainAdmin** und das Kennwort **Contoso!000** an, wenn Sie zur Eingabe der Anmeldeinformationen aufgefordert werden.
+1. Geben Sie den Benutzer **CORP\\Install** ein, und klicken Sie dann auf **OK**. Geben Sie das Konto **DomainAdmin** und das Kennwort **Contoso!0000** an, wenn Sie zur Eingabe der Anmeldeinformationen aufgefordert werden.
 
 1. Klicken Sie auf **OK**, um das Dialogfeld **Administratoreigenschaften** zu schließen.
 
@@ -819,7 +819,7 @@ Als Nächstes muss ein AlwaysOn-Verfügbarkeitsgruppenlistener für den Failover
 
 1. Stellen Sie eine RDP-Verbindung mit dem SQL Server zwischen „ad-primary-dc“ und „sqlserver-0“ her.
 
-1. Notieren Sie sich im Failovercluster-Manager den Namen des Clusternetzwerks. Klicken Sie zum Ermitteln des Clusternetzwerknamens im linken Bereich des Failovercluster-Managers auf **Netzwerke**. Dieser Name wird im PowerShell-Skript in der `$ClusterNetworkName`-Variablen verwendet.
+1. Notieren Sie sich im Failovercluster-Manager den Namen des Clusternetzwerks. Klicken Sie zum Ermitteln des Clusternetzwerknamens im linken Bereich des **Failovercluster-Managers** auf **Netzwerke**. Dieser Name wird im PowerShell-Skript in der `$ClusterNetworkName`-Variablen verwendet.
 
 1. Erweitern Sie im Failovercluster-Manager den Clusternamen, und klicken Sie auf **Rollen**.
 
@@ -843,7 +843,7 @@ Als Nächstes muss ein AlwaysOn-Verfügbarkeitsgruppenlistener für den Failover
     
 1. Aktualisieren Sie die Variablen, und führen Sie das PowerShell-Skript aus, um die IP-Adresse und den Port für den neuen Listener zu konfigurieren.
 
-1. Klicken Sie im Failovercluster-Manager mit der rechten Maustaste auf die Verfügbarkeitsgruppenressource, und klicken Sie anschließend auf **Eigenschaften**. Legen Sie auf der Registerkarte **Abhängigkeiten** fest, dass die Ressourcengruppe vom Netzwerknamen des Listeners abhängig ist.
+1. Klicken Sie im **Failovercluster-Manager** mit der rechten Maustaste auf die Verfügbarkeitsgruppenressource, und klicken Sie anschließend auf **Eigenschaften**. Legen Sie auf der Registerkarte **Abhängigkeiten** fest, dass die Ressourcengruppe vom Netzwerknamen des Listeners abhängig ist.
 
 1. Legen Sie die Port-Eigenschaft des Listeners auf 1433 fest. Öffnen Sie hierzu SQL Server Management Studio, klicken Sie mit der rechten Maustaste auf den Verfügbarkeitsgruppenlistener, und wählen Sie „Eigenschaften“ aus. Legen Sie **Port** auf 1433 fest.
 
@@ -865,4 +865,4 @@ Gehen Sie wie folgt vor, um die Verbindung zu testen:
 
 Weitere Informationen zur Verwendung von SQL Server in Azure finden Sie unter [SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

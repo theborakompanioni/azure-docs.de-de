@@ -46,7 +46,7 @@ Azure Storage ist ein wichtiger Bestandteil beim Bereitstellen und Verwalten von
 Es sind zwei Arten von Speicherkonten zur Unterstützung virtueller Computer verfügbar:
 
 - Mit einem Standardspeicherkonto erhalten Sie Zugriff auf Blobspeicher (zum Speichern von Datenträgern in virtuellen Azure-Computern) sowie auf Tabellen-, Warteschlangen- und Dateispeicher.
-- [Storage Premium](../storage/storage-premium-storage.md) bietet Datenträgerunterstützung mit hoher Leistung und niedriger Latenz für E/A-intensive Workloads wie SQL Server in einem AlwaysOn-Cluster und unterstützt derzeit nur Datenträger virtueller Azure-Computer.
+- [Storage Premium](../storage/storage-premium-storage.md) bietet Datenträgerunterstützung mit hoher Leistung und niedriger Latenz für E/A-intensive Workloads wie MongoDB, Shardcluster und unterstützt derzeit nur Datenträger virtueller Azure-Computer.
 
 Azure erstellt virtuelle Computer mit einem Betriebssystem-Datenträger, einem temporären Datenträger und keinen oder mehreren optionalen Datenträgern für Daten. Der Betriebssystem-Datenträger und Datenträger mit Daten sind Azure-Seitenblobs, während der temporäre Datenträger sich im lokalen Speicher des Knotens befindet, in dem auch der Computer gespeichert ist. Achten Sie beim Anwendungsentwurf darauf, diesen temporären Datenträger nur für nicht persistente Daten zu verwenden, da der virtuelle Computer bei Wartungen zwischen Hosts migriert werden kann. Alle auf dem temporären Datenträger gespeicherten Daten würden verloren gehen.
 
@@ -56,7 +56,7 @@ Betriebssystem-Datenträger und Datenträger mit Daten verfügen über eine maxi
 
 Es gibt einige Skalierbarkeitsgrenzwerte beim Entwerfen der Azure Storage-Bereitstellung. Weitere Details finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](azure-subscription-service-limits.md#storage-limits). Informationen hierzu finden Sie auch unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../storage/storage-scalability-targets.md).
 
-Im Hinblick auf Anwendungsspeicher können Sie unstrukturierte Objektdaten wie z.B. Dokumente, Bilder, Backups, Konfigurationsdaten, Protokolle usw. mit Blobspeichern speichern. Ihre Anwendung schreibt dann nicht auf eine virtuelle Festplatte, die dem virtuellen Computer angefügt ist, sondern direkt in den Azure-Blobspeicher. Blobspeicher bietet je nach Verfügbarkeitsanforderungen und Budget auch die Option für [„heiße“ und „kalte“ Speicherebenen](../storage/storage-blob-storage-tiers.md).
+Im Hinblick auf Anwendungsspeicher können Sie unstrukturierte Objektdaten wie z. B. Dokumente, Bilder, Backups, Konfigurationsdaten, Protokolle usw. mit Blobspeichern speichern. Ihre Anwendung schreibt dann nicht auf eine virtuelle Festplatte, die dem virtuellen Computer angefügt ist, sondern direkt in den Azure-Blobspeicher. Blobspeicher bietet je nach Verfügbarkeitsanforderungen und Budget auch die Option für [„heiße“ und „kalte“ Speicherebenen](../storage/storage-blob-storage-tiers.md).
 
 
 ## Stripesetdatenträger
@@ -71,7 +71,7 @@ Wenn Sie Datenträgerstriping für Azure-Datenträger verwenden, beachten Sie di
 - Verwenden von LVM
 - Vermeiden Sie die Verwendung von Azure-Datenträger-Cachingoptionen (Cachingrichtlinie = Keine)
 
-Weitere Informationen finden Sie unter [Storage Spaces – Designing for Performance](http://social.technet.microsoft.com/wiki/contents/articles/15200.storage-spaces-designing-for-performance.aspx) (in englischer Sprache).
+Weitere Informationen finden Sie unter [Konfigurieren von LVM auf einem virtuellen Linux-Computer](virtual-machines-linux-configure-lvm.md).
 
 
 ## Mehrere Speicherkonten
@@ -85,4 +85,4 @@ Weitere Informationen über die E/A-Funktionen von verschiedenen Azure Storage-O
 
 [AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

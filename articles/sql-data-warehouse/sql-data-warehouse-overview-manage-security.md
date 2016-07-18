@@ -18,6 +18,16 @@
 
 # Sichern einer Datenbank in SQL Data Warehouse
 
+> [AZURE.SELECTOR]
+- [Sicherheitsübersicht](sql-data-warehouse-overview-manage-security.md)
+- [Bedrohungserkennung](sql-data-warehouse-security-threat-detection.md)
+- [Verschlüsselung (Portal)](sql-data-warehouse-encryption-tde.md)
+- [Verschlüsselung (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
+- [Übersicht über die Überwachung](sql-data-warehouse-auditing-overview.md)
+- [Überwachung für Vorgängerversionsclients](sql-data-warehouse-auditing-downlevel-clients.md)
+
+
+
 Dieser Artikel beschreibt die Grundlagen zum Sichern der Azure SQL Data Warehouse-Datenbank. Insbesondere erhalten Sie in diesem Artikel erste Informationen über Ressourcen zum Einschränken des Zugriffs, zum Schützen von Daten und zum Überwachen von Aktivitäten in einer Datenbank.
 
 ## Verbindungssicherheit
@@ -37,7 +47,7 @@ Bei der Erstellung des logischen Servers für die Datenbank haben Sie eine "Serv
 
 Allerdings sollten die Benutzer in Ihrer Organisation als bewährte Methode ein anderes Konto für die Authentifizierung verwenden. Auf diese Weise können Sie die Berechtigungen für die Anwendung beschränken und die Risiken schädlicher Aktivitäten reduzieren, falls Ihr Anwendungscode für einen SQL-Injection-Angriff anfällig ist.
 
-Stellen Sie mit den Anmeldeinformationen eine Verbindung mit der **Masterdatenbank** auf dem Server her, und erstellen Sie eine neue Serveranmeldung.
+Stellen Sie mit den Anmeldeinformationen eine Verbindung mit der **Masterdatenbank** auf dem Server her, und erstellen Sie einen neuen authentifizierten SQL Server-Benutzer.
 
 ```sql
 -- Connect to master database and create a login
@@ -45,7 +55,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'strong_password';
 
 ```
 
-Stellen Sie anschließend mit den Anmeldedaten für den Serveradministrator eine Verbindung mit der** SQL Data Warehouse-Datenbank** her, und erstellen Sie einen Datenbankbenutzer mit der gerade erstellten Serveranmeldung, um einen authentifizierten SQL-Server-Benutzer zu erstellen.
+Stellen Sie dann mit den Anmeldedaten für den Serveradministrator eine Verbindung mit der **SQL Data Warehouse-Datenbank** her, und erstellen Sie einen Datenbankbenutzer mit der gerade erstellten Serveranmeldung.
 
 ```sql
 -- Connect to SQL DW database and create a database user
@@ -115,4 +125,4 @@ Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehou
 <!--Other Web references-->
 [Rollenbasierte Zugriffssteuerung im Azure-Portal]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

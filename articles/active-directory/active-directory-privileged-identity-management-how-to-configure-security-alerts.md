@@ -13,54 +13,66 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/15/2016"
+   ms.date="06/30/2016"
    ms.author="kgremban"/>
 
 # Konfigurieren von Sicherheitswarnungen in Azure AD Privileged Identity Management
 
 ## Sicherheitswarnungen
-Azure Privileged Identity Management (PIM) generiert folgende Warnungen, die auf dem PIM-Dashboard im Abschnitt „Warnungen“ angezeigt werden können.
+Azure Privileged Identity Management (PIM) generiert bei verdächtigen oder nicht sicheren Aktivitäten in Ihrer Umgebung Warnungen. Wenn eine Warnung ausgelöst wird, wird sie im PIM-Dashboard angezeigt.
+
+![Sicherheitswarnungen im PIM-Dashboard – Screenshot][1]
+
+
 
 | Warnung | Trigger | Empfehlungen |
 | ----- | ------- | -------------- |
-| **Permanente Aktivierung** | Ein Administrator wurde außerhalb von PIM dauerhaft zu einer Rolle zugewiesen. | Überprüfen Sie die neue Rollenzuweisung, und ändern Sie sie ggf. in eine temporäre Zuweisung. |
-| **Verdächtige Aktivierungserneuerung privilegierter Rollen** | Es sind zu viele erneute Aktivierungen derselben Rolle in der in den Einstellungen festgelegten Zeit erfolgt. | Setzen Sie sich mit den Benutzern in Verbindung, um sicherzustellen, dass sie ihre Rollen erfolgreich aktivieren können. |
-| **Für Rollenaktivierung ist schwache Authentifizierung konfiguriert** | Die Einstellungen enthalten Rollen ohne MFA. | Erwägen Sie, MFA für die Aktivierung aller Rollen anzufordern. |
-| **Redundante Administratoren** | Es gibt temporäre Administratoren, die ihre Rollen längere Zeit nicht aktiviert haben. | Entfernen Sie Rollenzuweisungen, die nicht mehr benötigt werden. |
-| **Zu viele globale Administratoren** | In den Einstellungen sind mehr globale Administratoren festgelegt als empfohlen. | Entfernen Sie Rollenzuweisungen, die nicht mehr benötigt werden, oder ändern Sie einige Zuweisungen in temporäre Zuweisungen. |
+| **Rollen werden außerhalb von PIM zugewiesen** | Ein Administrator wurde außerhalb der PIM-Benutzeroberfläche permanent zu einer Rolle zugewiesen. | Überprüfen Sie die neue Rollenzuweisung. Da andere Dienste nur permanente Administratoren zuweisen können, ändern Sie die Zuweisung bei Bedarf in eine berechtigte Zuweisung. |
+| **Rollen werden zu häufig aktiviert** | Es sind zu viele erneute Aktivierungen derselben Rolle in der in den Einstellungen festgelegten Zeit erfolgt. | Wenden Sie sich an den Benutzer, um festzustellen, warum die Rolle so häufig aktiviert wurde. Möglicherweise ist die Zeit zu kurz, um die Aufgaben abzuschließen, oder es werden Skripts verwendet, um den Prozess zu umgehen. |
+| **Rollen erfordern für die Aktivierung keine Multi-Factor Authentication** | Bei manchen Rollen ist MFA in den Einstellungen nicht aktiviert. | Wir fordern MFA für die meisten sehr privilegierten Rollen, empfehlen jedoch dringend, dass Sie MFA für die Aktivierung aller Rollen aktivieren. |
+| **Administratoren verwenden ihre privilegierten Rollen nicht** | Es gibt temporäre Administratoren, die ihre Rollen längere Zeit nicht aktiviert haben. | Starten Sie eine Zugriffsüberprüfung, um die Benutzer zu ermitteln, die keinen Zugriff mehr benötigen. |
+| **Es gibt zu viele globale Administratoren** | In den Einstellungen sind mehr globale Administratoren festgelegt als empfohlen. | Wenn Sie eine große Anzahl von globalen Administratoren haben, ist es wahrscheinlich, dass Benutzer mehr Berechtigungen als notwendig erhalten. Verlagern Sie Benutzer in weniger privilegierte Rollen, oder legen Sie einige von ihnen als für die Rolle berechtigt fest, statt sie permanent zuzuweisen. |
 
 ## Konfigurieren der Einstellungen für Sicherheitswarnungen
 
-### Warnung „Verdächtige Aktivierungsverlängerungen für privilegierte Rollen“
+Sie können einige der Sicherheitswarnungen in PIM so anpassen, dass sie in der Umgebung und mit den Sicherheitszielen genutzt werden können. Gehen Sie wie folgt vor, um das Blatt mit den Einstellungen aufzurufen:
 
-Konfigurieren Sie die Einstellungen für den **Zeitrahmen für Aktivierungsverlängerung** und die **Anzahl von Aktivierungsverlängerungen**, um zu steuern, wann diese Warnung ausgelöst wird.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und wählen Sie auf dem Dashboard die Kachel **Azure AD Privileged Identity Management** aus.
+2. Wählen Sie **Privilegierte Rollen verwalten** > **Einstellungen** > **Warnungseinstellungen** aus.
 
-1. Wählen Sie im Dashboardabschnitt **Aktivität** die Option **Sicherheitswarnungen** aus. Das Blatt **Aktive Sicherheitswarnungen** wird angezeigt.
-2. Klicken Sie auf **Einstellungen**.
-3. Legen Sie den **Zeitrahmen für Aktivierungserneuerung** mit dem Schieberegler oder durch Eingabe der Anzahl von Minuten im Textfeld fest. Der maximale Wert beträgt 100.
-4. Legen Sie die **Anzahl der Aktivierungserneuerungen** im Zeitrahmen fest. Verwenden Sie hierzu den Schieberegler, oder geben Sie im Textfeld die Anzahl der Erneuerungen ein. Der maximale Wert beträgt 100.
-5. Klicken Sie auf **Speichern**.
+    ![Navigieren zu den Einstellungen für Sicherheitswarnungen][2]
 
-### Warnung „Redundante Administratoren“
-1. Wählen Sie im Dashboardabschnitt **Aktivität** die Option **Sicherheitswarnungen** aus. Das Blatt **Aktive Sicherheitswarnungen** wird angezeigt.
-2. Klicken Sie auf **Einstellungen**.
-3. Wählen Sie die zulässige Anzahl von Tagen ohne Rollenaktivierung aus, indem Sie den Schieberegler einstellen oder im Textfeld die Anzahl der Tage eingeben.
-4. Klicken Sie auf **Speichern**.
+### Warnung „Rollen werden zu häufig aktiviert“
 
-### Warnung „Zu viele globale Administratoren“
+Diese Warnung wird ausgelöst, wenn ein Benutzer mehrmals innerhalb eines bestimmten Zeitraums dieselbe privilegierte Rolle aktiviert. Sie können den Zeitraum und die Anzahl der Aktivierungen konfigurieren.
 
-Es gibt zwei Einstellungen, die diese Warnung auslösen können:
-- **Mindestanzahl von globalen Administratoren** löst die Warnung aus, wenn die zulässige Anzahl von Administratoren überschritten wird.
-- **Prozentsatz von globalen Administratoren** löst die Warnung aus, wenn der Prozentsatz von Administratoren, bei denen es sich um globale Administratoren handelt, höher ist als in den Einstellungen festgelegt.
+- **Zeitrahmen für Aktivierungsverlängerung**: Geben Sie in Tagen, Stunden, Minuten und Sekunden den Zeitraum an, den Sie verwenden möchten, um verdächtige Erneuerungen nachzuverfolgen.
 
-1. Wählen Sie im Dashboardabschnitt **Aktivität** die Option **Sicherheitswarnungen** aus. Das Blatt **Aktive Sicherheitswarnungen** wird angezeigt.
-2. Klicken Sie auf **Einstellungen**.
-3. Legen Sie die **Minimale Anzahl globaler Administratoren** fest, indem Sie den Schieberegler einstellen oder im Textfeld die Zahl eingeben.
-4. Legen Sie den **Prozentsatz von globalen Administratoren** fest, indem Sie den Schieberegler einstellen oder im Textfeld den Prozentsatz eingeben.
-5. Klicken Sie auf **Speichern**.
+- **Anzahl von Aktivierungsverlängerungen**: Geben Sie für den gewählten Zeitraum eine Anzahl von Aktivierungen zwischen 2 und 100 an, die Sie als verdächtig einstufen oder für die Sie eine Warnung ausgeben möchten. Sie können dies festlegen, indem Sie den Schieberegler verschieben oder eine Zahl in das Textfeld eingeben.
+
+
+### Warnung „Es gibt zu viele globale Administratoren“
+
+In PIM wird diese Warnung ausgelöst, wenn zwei verschiedene Kriterien erfüllt sind, und Sie können beide konfigurieren. Erstens müssen Sie einen bestimmten Schwellenwert an globalen Administratoren erreichen. Zweitens muss ein bestimmter Anteil aller Rollenzuweisungen globale Administratoren betreffen. Wenn Sie nur eines dieser Kriterien erfüllen, wird die Warnung nicht angezeigt.
+
+- **Mindestanzahl von globalen Administratoren**: Geben Sie eine Anzahl von globalen Administratoren zwischen 2 und 100 an, die Sie als eine unsichere Anzahl betrachten.
+
+- **Prozentsatz von globalen Administratoren**: Geben Sie den Prozentsatz von Administratoren, bei denen es sich um globale Administratoren handelt, zwischen 0 % und 100 % an, der in Ihrer Umgebung als unsicher gilt.
+
+### Warnung „Administratoren verwenden ihre privilegierten Rollen nicht“
+
+Diese Warnung wird auslöst, wenn ein Benutzer für eine bestimmte Zeit eine Rolle nicht aktiviert hat.
+
+- **Anzahl Tage**: Geben Sie eine Anzahl von Tagen zwischen 0 und 100 an, die ein Benutzer eine Rolle nicht aktivieren muss.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## Nächste Schritte
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+
+<!--Image references-->
+
+[1]: ./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_dash.png
+[2]: ./media/active-directory-privileged-identity-management-how-to-configure-security-alerts/PIM_security_settings.png
+
+<!---HONumber=AcomDC_0706_2016-->

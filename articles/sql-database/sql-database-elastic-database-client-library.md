@@ -18,7 +18,7 @@
 
 # Erstellen skalierbarer Clouddatenbanken
 
-Das horizontale Skalieren von Datenbanken kann problemlos mithilfe von skalierbaren Tools und Features für die SQL Azure-Datenbank ausgeführt werden. Insbesondere können Sie die **Clientbibliothek für elastische Datenbanken** verwenden, um horizontal skalierte Datenbanken zu erstellen und zu verwalten. Mit diesem Feature können Sie ganz einfach Shardanwendungen mithilfe von Hunderten – oder sogar Tausenden – von Azure SQL-Datenbanken entwickeln.
+Das horizontale Skalieren von Datenbanken kann problemlos mithilfe von skalierbaren Tools und Features für die Azure SQL-Datenbank ausgeführt werden. Insbesondere können Sie die **Clientbibliothek für elastische Datenbanken** verwenden, um horizontal skalierte Datenbanken zu erstellen und zu verwalten. Mit diesem Feature können Sie ganz einfach Shardanwendungen mithilfe von Hunderten – oder sogar Tausenden – von Azure SQL-Datenbanken entwickeln.
 
 Um die Bibliothek zu installieren, wechseln Sie zu [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
 
@@ -31,13 +31,13 @@ Um die Bibliothek zu installieren, wechseln Sie zu [Microsoft.Azure.SqlDatabase.
 * [Multishardabfragen](sql-database-elastic-scale-multishard-querying.md)
 * [Hinzufügen eines Shards mithilfe der Tools für elastische Datenbanken](sql-database-elastic-scale-add-a-shard.md)
 * [Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit](sql-database-elastic-tools-multi-tenant-row-level-security.md)
-* [Aktualisieren von Clientbibliothek-Apps](sql-database-elastic-scale-upgrade-client-library.md) 
+* [Aktualisieren von Clientbibliothek-Apps](sql-database-elastic-scale-upgrade-client-library.md)
 * [Übersicht über elastische Abfragen](sql-database-elastic-query-overview.md)
 * [Tools für elastische Datenbanken – Glossar](sql-database-elastic-scale-glossary.md)
 * [Clientbibliothek für elastische Datenbanken mit Entity Framework](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md)
 * [Clientbibliothek für elastische Datenbanken mit Dapper](sql-database-elastic-scale-working-with-dapper.md)
 * [Split-Merge-Tool](sql-database-elastic-scale-overview-split-and-merge.md)
-* [Leistungsindikatoren für den Shardzuordnungs-Manager](sql-database-elastic-database-client-library.md) 
+* [Leistungsindikatoren für den Shardzuordnungs-Manager](sql-database-elastic-database-client-library.md)
 * [Häufig gestellte Fragen zu Tools für elastische Datenbanken](sql-database-elastic-scale-faq.md)
 
 ## Clientfunktionen
@@ -73,4 +73,4 @@ Die Bibliothek steht als Open Source-Software auf [GitHub](https://github.com/Az
 <!--Image references-->
 [1]: ./media/sql-database-elastic-database-client-library/glossary.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0706_2016-->

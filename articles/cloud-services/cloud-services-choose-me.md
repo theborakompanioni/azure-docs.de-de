@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/15/2016" 
+	ms.date="07/05/2016" 
 	ms.author="adegeo"/>
 
 # Sollte ich mich für Clouddienste oder eine andere Lösung entscheiden?
@@ -57,4 +57,4 @@ Die PaaS-Funktionsweise von Cloud Services hat auch noch andere Auswirkungen. Zu
 ## Nächste Schritte
 [Erstellen einer Clouddienst-App in .NET](cloud-services-dotnet-get-started.md) [Erstellen einer Clouddienst-App in Node.js](cloud-services-nodejs-develop-deploy-app.md) [Erstellen einer Clouddienst-App in PHP](../cloud-services-php-create-web-role.md) [Erstellen einer Clouddienst-App in Python](../cloud-services-python-ptvs.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

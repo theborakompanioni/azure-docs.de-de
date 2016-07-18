@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="07/06/2016"
 	ms.author="douglasl"/>
 
 # Wiederherstellen von Stretch-fähigen Datenbanken
@@ -57,28 +57,13 @@ Gehen Sie folgendermaßen vor, um mit dem Azure-Portal eine Azure-Datenbank auf 
 5. Geben Sie einen neuen **Datenbanknamen** an, und klicken Sie auf **Erstellen**.
 6. Der Datenbank-Wiederherstellungsvorgang wird gestartet und kann mithilfe von **BENACHRICHTIGUNGEN** überwacht werden.
 
-### Wiederherstellen einer Azure-Datenbank in einer anderen Azure-Region  
-Der Azure-Dienst SQL Server Stretch-Datenbank kopiert Momentaufnahmen asynchron in eine andere geografische Azure-Region, um die Wiederherstellbarkeit bei einem regionalen Ausfall zu erhöhen. Wenn Sie aufgrund eines Fehlers in einer Azure-Region nicht mehr auf Ihre Datenbank zugreifen können, können Sie Ihre Datenbank auf Grundlage einer geografisch redundanten Momentaufnahme wiederherstellen.
-
->   [AZURE.NOTE] Eine Wiederherstellung der Azure-Datenbank in einer anderen Azure-Region erfordert das Ändern der Verbindungszeichenfolge in Clientanwendungen nach der Wiederherstellung und kann zu dauerhaftem Datenverlust führen. Führen Sie diese Art der Wiederherstellung nur durch, wenn es sich um einen langwierigen Ausfall handelt.
-
-Gehen Sie folgendermaßen vor, um mithilfe des Azure-Portals eine Azure-Datenbank auf einen früheren Zeitpunkt in einer anderen Azure-Region wiederherzustellen.
-
-1. Melden Sie sich beim Azure-Portal an.
-2. Wählen Sie auf der linken Bildschirmseite **+NEU**, dann **Daten und Speicher** und dann **SQL Data Warehouse** aus.
-3. Wählen Sie **SICHERUNG** als Quelle aus, und wählen Sie dann die georedundante Sicherung aus, die wiederhergestellt werden soll.
-4. Geben Sie die restlichen Datenbankeigenschaften an, und klicken Sie auf **Erstellen**.
-5. Der Datenbank-Wiederherstellungsvorgang wird gestartet und kann mithilfe von **BENACHRICHTIGUNGEN** überwacht werden.
-
-Nach dem Wiederherstellen der Azure-Datenbank in einer anderen Region müssen Sie die gespeicherten Prozeduren **sys.sp\_rda\_deauthorize\_db** und **sys.sp\_rda\_reauthorize\_db** ausführen, um erneut die Verbindung zwischen der Stretch-fähigen SQL Server-Datenbank und der Azure-Remotedatenbank herzustellen. Weitere Informationen finden Sie unter [Wiederherstellen der Verbindung zwischen SQL Server-Datenbank und Azure-Remotedatenbank](#Restore-the-connection-between-the-SQL-Server-database-and-the-remote-Azure-database).
-
 ## Wiederherstellen der Verbindung zwischen SQL Server-Datenbank und Azure-Remotedatenbank
 
-1.  Wenn Sie eine Verbindung mit einer wiederhergestellten Azure-Datenbank mit einem anderen Namen oder in einer anderen Region herstellen möchten, führen Sie die gespeicherte Prozedur [sys.sp\_rda\_deauthorize\_db](https://msdn.microsoft.com/library/mt703716.aspx) aus, um die Verbindung mit der vorherigen Azure-Datenbank zu trennen.  
+1.  Wenn Sie eine Verbindung mit einer wiederhergestellten Azure-Datenbank mit einem anderen Namen oder in einer anderen Region herstellen möchten, führen Sie die gespeicherte Prozedur [sys.sp\_rda\_deauthorize\_db](https://msdn.microsoft.com/library/mt703716.aspx) aus, um die Verbindung mit der vorherigen Azure-Datenbank zu trennen.
 
 2.  Führen Sie die gespeicherte Prozedur [sys.sp\_rda\_reauthorize\_db](https://msdn.microsoft.com/library/mt131016.aspx) aus, um die Verbindung der lokalen Stretch-fähigen Datenbank mit der Azure-Datenbank erneut herzustellen.
 
-	-   Geben Sie die vorhandenen datenbankbezogenen Anmeldeinformationen als einen Wert vom Datentyp „sysname“ oder „varchar(128)“ ein. (Verwenden Sie nicht „varchar(max)“.) Sie können den Anmeldenamen in der Ansicht **sys.database\_scoped\_credentials** nachschlagen.  
+	-   Geben Sie die vorhandenen datenbankbezogenen Anmeldeinformationen als einen Wert vom Datentyp „sysname“ oder „varchar(128)“ ein. (Verwenden Sie nicht „varchar(max)“.) Sie können den Anmeldenamen in der Ansicht **sys.database\_scoped\_credentials** nachschlagen.
 
 	-   Geben Sie an, ob eine Kopie der Remotedaten erstellt und eine Verbindung mit der Kopie hergestellt werden soll (empfohlen).
 
@@ -99,4 +84,4 @@ Nach dem Wiederherstellen der Azure-Datenbank in einer anderen Region müssen Si
 
 [Sichern und Wiederherstellen von SQL Server-Datenbanken](https://msdn.microsoft.com/library/ms187048.aspx)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

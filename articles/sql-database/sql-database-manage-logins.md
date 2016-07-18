@@ -52,6 +52,9 @@ Bei der Verwendung eines offenen Ports in der Firewall auf Serverebene können A
 Eine exemplarische Vorgehensweise zur Verbindungsherstellung mit SQL Server Management Studio finden Sie unter [Herstellen einer Verbindung mit einer SQL-Datenbank mit SQL Server Management Studio und Ausführen einer T-SQL-Beispielabfrage](sql-database-connect-query-ssms.md).
 
 
+> [AZURE.IMPORTANT] Es wird empfohlen, immer die neueste Version von Management Studio zu verwenden, damit Sie mit Updates von Microsoft Azure und SQL-Datenbank synchron sind. [Aktualisieren Sie SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+
+
 ## Zusätzliche spezielle Konten
 Mit SQL-Datenbank werden zwei eingeschränkte Administratorrollen in der virtuellen Masterdatenbank bereitgestellt, der Benutzerkonten hinzugefügt werden können.
 
@@ -158,4 +161,4 @@ Es gibt mehr als 100 Berechtigungen, die in SQL-Datenbank individuell gewährt o
 
 [Sicherheitscenter für SQL Server-Datenbankmodul und Azure SQL-Datenbank](https://msdn.microsoft.com/library/bb510589.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

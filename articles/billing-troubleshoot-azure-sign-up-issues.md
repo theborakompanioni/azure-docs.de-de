@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/26/2016"
+	ms.date="06/30/2016"
 	ms.author="cjiang"/>
 
 # Behandeln von Problemen bei der Registrierung bei Azure
 In diesem Artikel erfahren Sie, wie Sie die Ursachen gängiger Probleme bei der Registrierung bei Azure beheben.
 
-[AZURE.INCLUDE [support-disclaimer](../includes/support-disclaimer.md)]
+> [AZURE.NOTE] Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Azure-Experten im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) Fragen stellen. Alternativ dazu haben Sie die Möglichkeit, auf der [Azure-Supportwebsite](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409) einen Azure-Supportfall zu melden. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](https://azure.microsoft.com/support/faq/).
 
 ## Ich erhalte bei der Eingabe meiner Daten für die Registrierung eine Fehlermeldung.
 Sind die Kontoprofilinformationen richtig? Ihre Profildetails dienen zum Generieren von Kontoauszügen, weshalb Sie für eine erfolgreiche Registrierung Ihre Daten fehlerfrei eingeben müssen. Beispiele für falsch ausgefüllte Felder sind:
@@ -81,4 +81,4 @@ Haben Sie in der Vergangenheit bereits ein Azure-Abonnement verwendet? Die Verei
 Vorschläge:
 - Wenn Sie in der Vergangenheit bereits ein Azure-Abonnement aktiviert haben und bei der Aktivierung der kostenlosen Testversion ein Fehler auftritt, erwägen Sie den Kauf eines Abonnements mit nutzungsbasierter Bezahlung. Sie sind ggf. auch für ein Vorteilsangebot berechtigt. Weitere Informationen (abgesehen vom Plan „Kostenlose Azure-Testversion“) finden Sie auf der [Seite mit den Microsoft Azure-Angebotsdetails](https://azure.microsoft.com/support/legal/offer-details/). Beachten Sie, dass für Vorteilspläne bestimmte Voraussetzungen erfüllt sein müssen.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->
