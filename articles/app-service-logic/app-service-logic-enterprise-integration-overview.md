@@ -1,0 +1,66 @@
+<properties 
+	pageTitle="Übersicht über das Enterprise Integration Pack | Microsoft Azure App Service" 
+	description="Nutzen Sie die Enterprise Integration-Features, um die Integration von Geschäftsprozessen mithilfe von Logik-Apps zu ermöglichen." 
+	services="app-service\logic" 
+	documentationCenter=".net,nodejs,java"
+	authors="msftman" 
+	manager="erikre" 
+	editor="cgronlun"/>
+
+<tags 
+	ms.service="app-service-logic" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/06/2016" 
+	ms.author="deonhe"/>
+
+# Übersicht über das Enterprise Integration Pack
+
+## Was ist das Enterprise Integration Pack?
+Das Enterprise Integration Pack ist die Cloudlösung von Microsoft für das Ermöglichen einer reibungslosen Kommunikation zwischen Unternehmen (Business-to-Business, B2B). Das Enterprise Integration Pack verwendet Protokolle gemäß Industriestandard wie [AS2](./app-service-logic-enterprise-integration-as2.md), [X12](./app-service-logic-enterprise-integration-x12.md) und EDIFACT (in Kürze verfügbar) zum Austausch von Nachrichten zwischen Geschäftspartnern. Nachrichten können optional mithilfe einer Verschlüsselung und digitaler Signaturen geschützt werden.
+
+Das Enterprise Integration Pack ermöglicht Organisationen, die unterschiedliche Protokolle und Formate nutzen, den elektronischen Austausch von Nachrichten, indem die unterschiedlichen Formate in ein Format transformiert werden, das die Systeme beider Organisationen interpretieren und verarbeiten können.
+
+Wenn Sie mit BizTalk Server oder Microsoft Azure BizTalk Services vertraut sind, wird Ihnen die Nutzung der Enterprise Integration-Features leicht fallen, da die meisten Konzepte ähnlich sind. Ein wesentlicher Unterschied ist, dass Enterprise Integration mit Integrationskonten arbeitet, um die Speicherung und Verwaltung von Artefakten zu vereinfachen, die bei der B2B-Kommunikation verwendet werden.
+
+Aus Sicht der Systemarchitektur basiert das Enterprise Integration Pack auf **Integrationskonten**, in denen alle Artefakte gespeichert werden, die zum Entwerfen, Bereitstellen und Verwalten Ihrer B2B-Apps verwendet werden können. Ein Integrationskonto ist im Wesentlichen ein Container in der Cloud, in dem Sie Artefakte wie Schemas, Partner, Zertifikate, Zuordnungen und Vereinbarungen speichern können. Diese Artefakte können dann in Logik-Apps verwendet werden, um B2B-Workflows zu erstellen. Bevor Sie die Artefakte in einer Logik-App verwenden können, müssen Sie lediglich Ihr Integrationskonto mit Ihrer Logik-App verknüpfen. Nach dem Verknüpfen hat Ihre Logik-App Zugriff auf die Artefakte im Integrationskonto.
+
+## Gründe für die Unternehmensintegration
+- Bei der Unternehmensintegration können Sie alle Ihre Artefakte zentral in Ihrem Integrationskonto speichern.
+- Sie können das Logik-Apps-Modul und alle seine Connectors zum Erstellen von B2B-Workflows nutzen und für eine Integration mit SaaS-Anwendungen von Drittanbietern, lokalen Apps sowie benutzerdefinierten Anwendungen sorgen.
+- Sie können auch Azure-Funktionen nutzen.
+
+## Erste Schritte mit der Unternehmensintegration
+Mit dem Enterprise Integration Pack und dem Logik-App-Designer im **Azure-Portal** können Sie B2B-Apps erstellen und verwalten.
+
+Hier eine Übersicht über die Schritte, die Sie ausführen müssen, ehe Sie im Azure-Portal Apps erstellen können: ![](./media/app-service-logic-enterprise-integration-overview/overview-0.png)
+
+## Gängige Szenarien
+
+Für die Unternehmensintegration werden unterstützt diese Branchenstandards unterstützt:
+
+- EDI (Electronic Data Interchange)
+- EAI (Enterprise Application Integration)
+
+## Kosten
+Informationen zu Preisen und eine Liste der in den einzelnen Tarifen verfügbaren Komponenten finden Sie unter [Azure App Service-Preise](https://azure.microsoft.com/pricing/details/app-service/).
+
+## Voraussetzungen für die ersten Schritte
+- Azure-Abonnement mit einem Integrationskonto
+- Visual Studio 2015 zum Erstellen von Zuordnungen und Schemas
+- [Microsoft Azure Logic Apps Enterprise Integration Tools for Visual Studio 2015 2.0](https://aka.ms/vsmapsandschemas)
+
+## Weitere Informationen:
+- [Schemas](./app-service-logic-enterprise-integration-schemas.md "Informationen zu Schemas für die Unternehmensintegration")
+- [Zuordnungen](./app-service-logic-enterprise-integration-maps.md "Informationen zu Zuordnungen für die Unternehmensintegration")
+- [Zertifikate](./app-service-logic-enterprise-integration-certificates.md "Informationen zu Zertifikaten für die Unternehmensintegration")
+- [Partner](./app-service-logic-enterprise-integration-partners.md "Informationen zu Unternehmensintegrationspartnern")
+- [Vereinbarungen](./app-service-logic-enterprise-integration-agreements.md "Informationen zu Vereinbarungen zur Unternehmensintegration")
+- [Integrationskonten](./app-service-logic-enterprise-integration-accounts.md "Informationen zu Integrationskonten")
+- [B2B-Szenarien (Business-to-Business)](./app-service-logic-enterprise-integration-b2b.md "Informationen zum Erstellen von Logik-Apps mit B2B-Features")
+- [Überprüfung von XML-Nachrichten](./app-service-logic-enterprise-integration-xml.md "Informationen zum Überprüfen von XML-Nachrichten mit Logik-Apps")
+- [Codierung/Decodierung von Flatfiles](./app-service-logic-enterprise-integration-flatfile.md "Informationen zum Codieren und Decodieren von Flatfile-Inhalten")
+
+<!---HONumber=AcomDC_0706_2016-->

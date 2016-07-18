@@ -4,7 +4,7 @@
 	services="notification-hubs" 
 	documentationCenter="" 
 	authors="wesmc7777"
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="python" 
 	ms.devlang="php" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="06/29/2016" 
 	ms.author="wesmc"/>
 
 # Verwenden von Notofication Hubs mit Python
@@ -28,8 +28,8 @@ Sie können von einem Java-/PHP-/Python-/Ruby-Back-End aus über die REST-Schnit
 In diesem Thema wird Folgendes erläutert:
 
 * Erstellen eines REST-Clients für Notification Hubs-Features in Python.
-* Senden von Benachrichtigungen über die Python-Schnittstelle an die Notification Hub-REST-APIs. 
-* Abrufen eines Abbilds der HTTP-REST-Anforderung/Antwort zu Debugging-/Lernzwecken. 
+* Senden von Benachrichtigungen über die Python-Schnittstelle an die Notification Hub-REST-APIs.
+* Abrufen eines Abbilds der HTTP-REST-Anforderung/Antwort zu Debugging-/Lernzwecken.
 
 Führen Sie die Schritte im Lernprogramm [Erste Schritte mit Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) aus, und implementieren Sie den Back-End-Teil in Python.
 
@@ -320,7 +320,7 @@ Wenn Sie beim Initialisieren von "NotificationHub" das Debug-Flag aktivieren, we
 
 Das detaillierte Ergebnis des Notification Hubs wird angezeigt, z. B.
 
-- wenn die Nachricht erfolgreich zum Pushbenachrichtigungsdienst gesendet wurde. 
+- wenn die Nachricht erfolgreich zum Pushbenachrichtigungsdienst gesendet wurde.
 	
 		<Outcome>The Notification was successfully sent to the Push Notification System</Outcome>
 
@@ -393,4 +393,4 @@ In diesem Thema haben wir gezeigt, wie Sie einen einfachen Python-REST-Client f�
 [5]: ./media/notification-hubs-python-backend-how-to/TemplatedNotification.png
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

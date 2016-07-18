@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="12/14/2015" 
+	ms.date="07/06/2016" 
 	ms.author="anbacker"/>
 	
 # Überwachung und Problembehandlung für den Schutz von virtuellen Computern und physischen Servern
@@ -148,7 +148,7 @@ Um ein Supportticket für ASR zu öffnen, wenden Sie sich an den Azure-Support u
 -   [Beibehalten des Laufwerkbuchstabens für geschützte virtuelle Computer, für die ein Failover ausgeführt oder die zu Azure migriert werden](http://support.microsoft.com/kb/3031135)
 -   [Verwalten der Netzwerkbandbreitennutzung für den Schutz lokaler Elemente in Azure](https://support.microsoft.com/kb/3056159)
 -   [ASR: Der Fehler „Die Clusterressource wurde nicht gefunden.“ wird angezeigt, wenn Sie den Schutz für einen virtuellen Computer aktivieren möchten.](http://support.microsoft.com/kb/3010979)
--   [Handbuch mit Grundlagen und Informationen zur Problembehandlung für Hyper-V-Replikate](http://www.microsoft.com/en-in/download/details.aspx?id=29016) 
+-   [Handbuch mit Grundlagen und Informationen zur Problembehandlung für Hyper-V-Replikate](http://www.microsoft.com/en-in/download/details.aspx?id=29016)
 
 ## Häufige Fehler bei der automatischen Systemwiederherstellung und deren Lösungen
 
@@ -171,7 +171,7 @@ Im Folgenden werden häufige Fehler aufgeführt, die passieren können, sowie de
 ### Schutz
 - <span style="color:green;">NEU</span> [„Schutz aktivieren“ führt zu dem Fehler „Der Schutz für den virtuellen Computer konnte nicht konfiguriert werden“. Fehler 60007, 40003](http://social.technet.microsoft.com/wiki/contents/articles/32194.azure-site-recovery-enable-protection-failing-with-error-protection-couldn-t-be-configured-for-the-virtual-machine-error-60007-40003.aspx)
 - <span style="color:green;">NEU</span> [„Schutz aktivieren“ führt zu dem Fehler „Der Schutz für den virtuellen Computer konnte nicht aktiviert werden“. Fehler 70094](http://social.technet.microsoft.com/wiki/contents/articles/32195.azure-site-recovery-enable-protection-failing-with-error-protection-couldn-t-be-enabled-for-the-virtual-machine-error-70094.aspx)
-- <span style="color:green;">NEU</span> [Livemigrationsfehler 23848: Der virtuelle Computer wird mithilfe von Typ „Live“ verschoben. Dadurch kann der Wiederherstellungsschutzstatus des virtuellen Computers unterbrochen werden.](http://social.technet.microsoft.com/wiki/contents/articles/32021.live-migration-error-23848-the-virtual-machine-is-going-to-be-moved-using-type-live-this-could-break-the-recovery-protection-status-of-the-virtual-machine.aspx) 
+- <span style="color:green;">NEU</span> [Livemigrationsfehler 23848: Der virtuelle Computer wird mithilfe von Typ „Live“ verschoben. Dadurch kann der Wiederherstellungsschutzstatus des virtuellen Computers unterbrochen werden.](http://social.technet.microsoft.com/wiki/contents/articles/32021.live-migration-error-23848-the-virtual-machine-is-going-to-be-moved-using-type-live-this-could-break-the-recovery-protection-status-of-the-virtual-machine.aspx)
 - [Aktivieren des Schutzes fehlgeschlagen, da der Agent nicht auf dem Hostcomputer installiert ist.](http://social.technet.microsoft.com/wiki/contents/articles/31105.enable-protection-failed-since-agent-not-installed-on-host-machine.aspx)
 - [Ein geeigneter Host für den replizierten virtuellen Computer wurde nicht gefunden. Grund: geringe Compute-Ressourcen.](http://social.technet.microsoft.com/wiki/contents/articles/25501.a-suitable-host-for-the-replica-virtual-machine-can-t-be-found-due-to-low-compute-resources.aspx)
 - [Ein geeigneter Host für den replizierten virtuellen Computer wurde nicht gefunden. Grund: Es ist kein logisches Netzwerk angeschlossen.](http://social.technet.microsoft.com/wiki/contents/articles/25502.a-suitable-host-for-the-replica-virtual-machine-can-t-be-found-due-to-no-logical-network-attached.aspx)
@@ -202,4 +202,4 @@ Konfigurationsserver (Configuration Server, CS), Prozessserver (Process Server, 
 ### Remotedesktop-Problembehandlung nach einem Failover
 -   Viele Kunden haben Probleme beim Herstellen einer Verbindung mit dem virtuellen Computer in Azure festgestellt, für den ein Failover ausgeführt wurde. [Stellen Sie anhand des Dokuments für die Problembehandlung eine RDP-Verbindung mit dem virtuellen Computer her.](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

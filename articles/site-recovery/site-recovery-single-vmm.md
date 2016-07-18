@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="backup-recovery"
-	ms.date="03/30/2016"
+	ms.date="07/06/2016"
 	ms.author="raynew"/>
 
 #  Replizieren virtueller Hyper-V-Computer auf einem einzelnen VMM-Server
@@ -27,7 +27,7 @@ Sollten Sie nach der Lektüre dieses Artikels noch Fragen haben, stellen Sie die
 
 Sie können virtuelle Hyper-V-Computer auf Hyper-V-Hosts in VMM-Clouds in zwei Arten replizieren:
 
-- Replikation zu Azure. 
+- Replikation zu Azure.
 - Replikation zu einem sekundären VMM-Standort.
 
 Aber was geschieht, wenn Sie zu einem sekundären VMM-Standort replizieren möchten, aber nur einen einzelnen VMM-Server in Ihrer Bereitstellung haben?
@@ -62,7 +62,7 @@ Befolgen Sie die Anweisungen [in diesem Artikel](site-recovery-vmm-to-vmm.md) zu
 
 Beim Auftreten von Ausfällen stellen Sie Workloads auf virtuellen Hyper-V-VMs wie folgt wieder her:
 
-1. Führen Sie unter Verwendung von Hyper-V-Manager mit einem geplanten Failover ein manuelles Failover der VMM-VM zum sekundären Standort aus. 
+1. Führen Sie unter Verwendung von Hyper-V-Manager mit einem geplanten Failover ein manuelles Failover der VMM-VM zum sekundären Standort aus.
 2. Nach der Wiederherstellung der VMM-VM können Sie sich vom sekundären Standort aus beim Hyper-V Recovery Manager anmelden und ein nicht geplantes Failover der virtuellen Computer vom sekundären zum primären Standort ausführen. Beachten Sie, dass ein manuelles Failover der VMM-VM zum sekundären Standort ausgeführt werden muss, bevor ein Failover der Workload-VMs ausgeführt werden kann.
 3. Nach Abschluss des nicht geplanten Failovers können die Benutzer wieder vom primären Standort aus auf sämtliche Ressourcen zugreifen.
 
@@ -93,4 +93,4 @@ Bei Ausfällen wird für den VMM-Server und die entsprechende SQL Server-Datenb
 
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0706_2016-->

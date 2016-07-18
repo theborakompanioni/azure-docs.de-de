@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/25/2016"
+	ms.date="07/06/2016"
 	ms.author="cynthn"/>
 
 # Anfügen eines Datenträgers an eine Linux-VM im Azure-Portal
@@ -34,4 +34,4 @@ In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorh
 
 Nachdem der Datenträger hinzugefügt wurde, müssen Sie ihn für die Verwendung vorbereiten. Lesen Sie im Betriebssystem der VM die Informationen unter „How to: Initialize a new data disk in Linux“ („Vorgehensweise: Initialisieren eines neuen Datenträgers unter Linux“) in [diesem Artikel](virtual-machines-linux-classic-attach-disk.md#how-to-initialize-a-new-data-disk-in-linux).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -61,7 +61,7 @@ Zum Überprüfen, ob die Volumezuordnung funktioniert, probieren Sie den folgend
 **Windows**
 
 ```
-a
+docker run -it -v /c/Users/Public:/wormhole busybox
 / # ls
 ```
 
@@ -105,14 +105,14 @@ Wenn Sie den Microsoft Edge-Browser verwenden, wird die Website möglicherweise 
 
 1. Wechseln Sie zu **Internetoptionen**.
     - Unter Windows 10 können Sie `Internet Options` in das Windows-Feld „Ausführen“ eingeben.
-    - In Internet Explorer können Sie das Menü **Einstellungen** aufrufen und **Internetoptionen** auswählen. 
-1. Klicken Sie auf **Internetoptionen**, sobald diese Option angezeigt wird. 
+    - In Internet Explorer können Sie das Menü **Einstellungen** aufrufen und **Internetoptionen** auswählen.
+1. Klicken Sie auf **Internetoptionen**, sobald diese Option angezeigt wird.
 1. Klicken Sie auf die Registerkarte **Sicherheit**.
 1. Wählen Sie die Zone **Lokales Intranet** aus.
-1. Klicken Sie auf **Sites**. 
-1. Fügen Sie die IP-Adresse Ihres virtuellen Computers (in diesem Fall der Docker-Host) in der Liste hinzu. 
-1. Aktualisieren Sie die Seite in Edge. Die Website sollte nun verfügbar sein und angezeigt werden. 
-1. Weitere Informationen zu diesem Problem finden Sie in Scott Hanselmans Blogbeitrag [Microsoft Edge can't see or open VirtualBox-hosted local web sites](http://www.hanselman.com/blog/FixedMicrosoftEdgeCantSeeOrOpenVirtualBoxhostedLocalWebSites.aspx) (Über VirtualBox gehostete lokale Websites können in Microsoft Edge nicht angezeigt oder geöffnet werden). 
+1. Klicken Sie auf **Sites**.
+1. Fügen Sie die IP-Adresse Ihres virtuellen Computers (in diesem Fall der Docker-Host) in der Liste hinzu.
+1. Aktualisieren Sie die Seite in Edge. Die Website sollte nun verfügbar sein und angezeigt werden.
+1. Weitere Informationen zu diesem Problem finden Sie in Scott Hanselmans Blogbeitrag [Microsoft Edge can't see or open VirtualBox-hosted local web sites](http://www.hanselman.com/blog/FixedMicrosoftEdgeCantSeeOrOpenVirtualBoxhostedLocalWebSites.aspx) (Über VirtualBox gehostete lokale Websites können in Microsoft Edge nicht angezeigt oder geöffnet werden).
 
 ##Problembehandlung bei Versionen bis 0.15
 
@@ -135,4 +135,4 @@ Dabei könnte es sich um einen Fehler während des folgenden Vorgangs handeln: `
 	"commandLineArgs": "-noexit -ExecutionPolicy RemoteSigned …”
     ```
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

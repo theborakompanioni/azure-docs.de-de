@@ -4,7 +4,7 @@
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
-   manager="StevenPo"
+   manager="MBaldwin"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/14/2016"
+   ms.date="07/05/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center – Häufig gestellte Fragen
@@ -102,7 +102,7 @@ Azure Security Center erfasst, analysiert und kombiniert automatisch Protokollda
 ### Wo liegt bei der Bedrohungserkennung und Ausgabe von Warnungen der Unterschied zwischen Microsoft Security Response Center und Azure Security Center?
 Das Microsoft Security Response Center (MSRC) führt eine selektive Sicherheitsüberwachung im Azure-Netzwerk und in der Infrastruktur durch und empfängt Threat Intelligence-Daten und Missbrauchsmeldungen von Drittanbietern. Wenn MSRC erkennt, dass eine Partei unrechtmäßig oder unbefugt auf Kundendaten zugreift oder dass der Kunde Azure nicht entsprechend den Bestimmungen für den Umgang mit vertraulichen Informationen (Acceptable Use) nutzt, wird der Kunde durch einen Manager für Sicherheitsincidents benachrichtigt. Die Benachrichtigung erfolgt in der Regel durch Senden einer E-Mail an die im Azure Security Center angegebenen Sicherheitskontakte oder an den Besitzer des Azure-Abonnements, falls kein Sicherheitskontakt angegeben wurde.
 
-Das Security Center ist ein Azure-Dienst, der die Azure-Umgebung des Kunden ständig überwacht und Analysefunktionen anwendet, um eine Vielzahl von potenziell schädlichen Aktivitäten automatisch zu erkennen. Diese Erkennungen werden als Sicherheitshinweise im Security Center-Dashboard angegeben. In Zukunft wird die E-Mail-Benachrichtigung über Sicherheitshinweise auch an Sicherheitskontakte gesendet.
+Das Security Center ist ein Azure-Dienst, der die Azure-Umgebung des Kunden ständig überwacht und Analysefunktionen anwendet, um eine Vielzahl von potenziell schädlichen Aktivitäten automatisch zu erkennen. Diese Erkennungen werden als Sicherheitshinweise im Security Center-Dashboard angegeben.
 
 ### Wie werden Berechtigungen in Azure Security Center behandelt?
 Azure Security Center unterstützt rollenbasierten Zugriff. Weitere Informationen zur rollenbasierten Zugriffssteuerung (RBAC) in Azure finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Active Directory](../active-directory/role-based-access-control-configure.md).
@@ -114,15 +114,15 @@ Damit Sie eine Sicherheitsrichtlinie bearbeiten können, müssen Sie ein Besitze
 ## Virtual Machines
 
 ### Welche Typen von virtuellen Maschinen werden unterstützt?
-Virtuelle Computer, die mit dem [klassischen Bereitstellungsmodell und dem Resource Manager-Bereitstellungsmodell](../azure-classic-rm.md) erstellt wurden, werden unterstützt. Dies gilt auch für virtuelle Computer, die zu Azure Service Fabric-Clustern gehören.
+Die Überwachung der Sicherheitsintegrität und Empfehlungen sind für virtuelle Computer (VMs) verfügbar, die mit dem [klassischen Bereitstellungsmodell oder mit dem Resource Manager-Bereitstellungsmodell](../azure-classic-rm.md) erstellt wurden. Dies gilt auch für VMs, die Teil von Azure Service Fabric-Clustern sind.
 
-Unterstützte virtuelle Windows-Computer:
+Unterstützte Windows-VMs:
 
 - Windows Server 2008 R2
 - Windows Server 2012
 - Windows Server 2012 R2
 
-Unterstützte virtuelle Linux-Computer:
+Unterstützte Linux-VMs:
 
 - Ubuntu-Versionen 12.04, 14.04, 15.10, 16.04
 - Debian-Versionen 7, 8
@@ -130,4 +130,8 @@ Unterstützte virtuelle Linux-Computer:
 - Red Hat Enterprise Linux-Versionen (RHEL) 6.*, 7.*
 - SUSE Linux Enterprise Server-Versionen (SLES) 11.*, 12.*
 
-<!---HONumber=AcomDC_0615_2016-->
+VMs, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt. Es werden nur Clouddienst-Webrollen und -Workerrollen überwacht, die in Produktionsslots ausgeführt werden. Weitere Informationen zum Clouddienst finden Sie unter [Übersicht über Cloud Services](../cloud-services/cloud-services-choose-me.md).
+
+Die Security Center-Empfehlung [Systemupdates anwenden](security-center-recommendations.md) besagt, dass Sie für VMs fehlende Sicherheitsupdates und kritische Updates des Systems bereitstellen sollten. Für VMs in Clouddiensten wird in der Empfehlung **Betriebssystemversion aktualisieren** darauf hingewiesen, dass Sie das Betriebssystem auf die aktuelle Version aktualisieren sollten.
+
+<!---HONumber=AcomDC_0706_2016-->

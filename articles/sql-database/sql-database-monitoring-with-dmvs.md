@@ -4,7 +4,7 @@
    services="sql-database"
    documentationCenter=""
    authors="carlrabeler"
-   manager="jeffreyg"
+   manager="jhubbard"
    editor=""
    tags=""/>
 
@@ -14,8 +14,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="01/22/2016"
-   ms.author="rickbyh"/>
+   ms.date="07/05/2016"
+   ms.author="carlrab"/>
 
 # Überwachen der Azure SQL-Datenbank mit dynamischen Verwaltungssichten
 
@@ -24,8 +24,8 @@ Die Microsoft Azure SQL-Datenbank unterstützt eine Teilmenge dynamischer Verwal
 Die SQL-Datenbank unterstützt teilweise drei Kategorien von dynamischen Verwaltungssichten:
 
 - Dynamische Verwaltungssichten für die Datenbank
-- Dynamische Verwaltungssichten für die Ausführung 
-- Dynamische Verwaltungssichten für Transaktionen 
+- Dynamische Verwaltungssichten für die Ausführung
+- Dynamische Verwaltungssichten für Transaktionen
 
 Ausführliche Informationen zu dynamischen Verwaltungssichten finden Sie unter [Dynamische Verwaltungssichten und -funktionen (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) in der SQL Server-Onlinedokumentation.
 
@@ -33,7 +33,7 @@ Ausführliche Informationen zu dynamischen Verwaltungssichten finden Sie unter [
 
 Die Abfrage einer dynamischen Verwaltungsansicht erfordert in der SQL-Datenbank die Berechtigung **VIEW DATABASE STATE**. Die Berechtigung **VIEW DATABASE STATE** gibt Informationen zu allen Objekten innerhalb der aktuellen Datenbank zurück. Zum Erteilen der Berechtigung **VIEW DATABASE STATE** für einen bestimmten Benutzer führen Sie die folgende Abfrage aus:
 
-```GRANT VIEW DATABASE STATE TO database_user;```
+```GRANT VIEW DATABASE STATE TO database_user; ```
 
 Bei einer lokalen Instanz von SQL Server geben dynamische Verwaltungssichten Informationen zum Serverstatus zurück. In SQL-Datenbank geben sie lediglich Informationen zur aktuellen logischen Datenbank zurück.
 
@@ -42,7 +42,7 @@ Bei einer lokalen Instanz von SQL Server geben dynamische Verwaltungssichten Inf
 Die folgende Abfrage gibt die Größe Ihrer Datenbank (in Megabyte) zurück:
 
 ```
--- Berechnet die Größe der Datenbank. 
+-- Calculates the size of the database.
 SELECT SUM(reserved_page_count)*8.0/1024
 FROM sys.dm_db_partition_stats;
 GO
@@ -135,4 +135,4 @@ ORDER BY highest_cpu_queries.total_worker_time DESC;
 
 [Einführung in SQL-Datenbank](sql-database-technical-overview.md)
 
-<!----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0706_2016-->

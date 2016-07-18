@@ -21,13 +21,16 @@
 
 # Verwalten von Benutzern, SSH und Überprüfen oder Reparieren von Datenträgern auf Azure-Linux-VMs mit der VMAccess-Erweiterung
 
-Dieser Artikel veranschaulicht die Verwendung der VMAcesss-VM-Erweiterung [(Github)](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess), um den Datenträger zu überprüfen oder zu reparieren, den Benutzerzugriff zurückzusetzen, Benutzerkonten zu verwalten oder die SSHD-Konfiguration unter Linux zurückzusetzen. Dieser Artikel erfordert [ein Azure-Konto](https://azure.microsoft.com/pricing/free-trial/), [SSH-Schlüssel](virtual-machines-linux-mac-create-ssh-keys.md), eine Azure-Linux-VM, und dass die Azure-Befehlszeilenschnittstelle installiert ist und mithilfe von `azure config mode arm` in den ARM-Modus umgeschaltet wurde.
+Dieser Artikel veranschaulicht die Verwendung der VMAcesss-VM-Erweiterung [(Github)](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess), um einen Datenträger zu überprüfen oder zu reparieren, den Benutzerzugriff zurückzusetzen, Benutzerkonten zu verwalten oder die SSHD-Konfiguration unter Linux zurückzusetzen. Dieser Artikel erfordert [ein Azure-Konto](https://azure.microsoft.com/pricing/free-trial/), [SSH-Schlüssel](virtual-machines-linux-mac-create-ssh-keys.md), eine Azure-Linux-VM, und dass die Azure-Befehlszeilenschnittstelle installiert ist und mithilfe von `azure config mode arm` in den ARM-Modus umgeschaltet wurde.
 
 ## Schnellbefehle
 
-Es gibt zwei Möglichkeiten, VMAccess auf Ihren Linux-VMs zu verwenden. Die erste verwendet die Azure-Befehlszeilenschnittstelle mit `azure vm reset-access` mit dem richtigen Flag. Die zweite Möglichkeit: Sie verwenden VMAccess mit JSON-Rohdatendateien, die VMAccess verarbeitet und dann darauf reagiert. Für den Schnellbefehlsabschnitt verwenden wir die `azure vm reset-access`-Methode.
+Es gibt zwei Möglichkeiten, VMAccess auf Ihren virtuellen Linux-Computern zu verwenden:
 
-Ersetzen Sie in den folgenden Befehlsbeispielen die Werte zwischen &lt; und &gt; durch die Werte aus Ihrer eigenen Umgebung.
+- Verwenden der Azure-Befehlszeilenschnittstelle und der erforderlichen Parameter.
+- Verwenden von JSON-Rohdatendateien, die VMAccess verarbeitet und dann darauf reagiert.
+
+Für den Schnellbefehlsabschnitt verwenden wir die `azure vm reset-access`-Methode mit der Azure-Befehlszeilenschnittstelle. Ersetzen Sie in den folgenden Befehlsbeispielen die Werte zwischen &lt; und &gt; durch die Werte aus Ihrer eigenen Umgebung.
 
 ## Zurücksetzen des Stammkennworts
 
@@ -101,7 +104,7 @@ VMAccessForLinux Microsoft.OSTCExtensions * \
 
 ### Verwendung von VMAccess zum Zurücksetzen des Benutzerzugriffs auf Linux
 
-Wenn Sie den Zugriff auf das Stammverzeichnis Ihrer Linux-VM verloren haben, können Sie ein VMAccess-Skript zum Zurücksetzen des Stammkennworts starten und dabei Linux entsperren.
+Wenn Sie den Zugriff auf das Stammverzeichnis Ihres virtuellen Linux-Computers verloren haben, können Sie ein VMAccess-Skript zum Zurücksetzen des Stammkennworts starten.
 
 Verwenden Sie zum Zurücksetzen des Stammkennworts dieses VMAccess-Skript:
 
@@ -205,4 +208,4 @@ VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path reset_sshd.json
 ```
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0706_2016-->

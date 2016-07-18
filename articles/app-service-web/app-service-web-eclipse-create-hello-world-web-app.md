@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="06/07/2016" 
+	ms.date="06/24/2016" 
 	ms.author="robmcm"/>
 
 # Erstellen einer „Hello World“-Web-App für Azure in Eclipse
@@ -26,8 +26,8 @@ Wenn Sie dieses Tutorial abgeschlossen haben, entspricht Ihre Anwendung bei der 
  
 ## Voraussetzungen
 
-* Ein Java Developer Kit (JDK), Version 1.7 oder höher.
-* Eclipse IDE für Java EE-Entwickler, Indigo oder höher. Dies kann von <http://www.eclipse.org/downloads/> heruntergeladen werden.
+* Ein Java Developer Kit (JDK), Version 1.8 oder höher.
+* Eclipse IDE für Java EE-Entwickler, Luna oder höher. Dies kann von <http://www.eclipse.org/downloads/> heruntergeladen werden.
 * Eine Verteilung eines Java-basierten Webservers oder Anwendungsservers, wie z. B. Apache Tomcat oder Jetty.
 * Ein Azure-Abonnement, das von <https://azure.microsoft.com/free/> oder <http://azure.microsoft.com/pricing/purchase-options/> bezogen werden kann.
 * Das Azure-Toolkit für Eclipse. Weitere Informationen finden Sie unter [Installation des Azure Toolkit für Eclipse].
@@ -46,11 +46,11 @@ Zunächst beginnen wir mit der Erstellung eines Java-Projekts.
 
 1. Erweitern Sie in der Projektexplorer-Ansicht von Eclipse die Option **MyHelloWorld**. Klicken Sie mit der rechten Maustaste auf **WebContent**, und klicken Sie dann auf **Neu** sowie auf **JSP-Datei**.
 
-1. Geben Sie der Datei im Dialogfeld **Neue JSP-Datei** den Namen **index.jsp**. Nennen Sie den übergeordneten Ordner **MyHelloWorld/WebContent**.
+1. Geben Sie im Dialogfeld **New JSP File** (Neue JSP-Datei) der Datei den Namen **index.jsp**. Behalten Sie den übergeordneten Ordner als **MyHelloWorld/WebContent** bei, und klicken Sie auf **Next** (Weiter).
 
-1. Wählen Sie im Dialogfeld **Select JSP Template** (JSP-Vorlage auswählen) im Rahmen dieses Tutorials **New JSP File (html)** (Neue JSP-Datei (HTML)), und klicken Sie dann auf **Fertig stellen**.
+1. Wählen Sie im Dialogfeld **Select JSP Template** (JSP-Vorlage auswählen) im Rahmen dieses Tutorials **New JSP File (html)** (Neue JSP-Datei (HTML)) aus, und klicken Sie dann auf **Finish** (Fertig stellen).
 
-1. Wenn in Eclipse die Datei „index.jsp“ geöffnet wird, geben Sie den Text **Hello World!** ein, damit er im vorhandenen `<body>`-Element angezeigt wird. Der aktualisierte `<body>`-Inhalt sollte dem folgenden Beispiel entsprechen:
+1. Wenn in Eclipse die Datei „index.jsp“ geöffnet wird, geben Sie den Text **Hello World!** ein, damit er dynamisch im vorhandenen `<body>`-Element angezeigt wird. Der aktualisierte `<body>`-Inhalt sollte in etwa wie folgt aussehen:
 
    `<body><b><% out.println("Hello World!"); %></b></body>`
 
@@ -62,11 +62,11 @@ Es gibt mehrere Möglichkeiten, eine Java-Webanwendung in Azure bereitzustellen.
 
 1. Klicken Sie im Projektexplorer von Eclipse mit der rechten Maustaste auf **MyHelloWorld**.
 
-1. Wählen Sie im Kontextmenü **Azure** aus, und klicken Sie dann auf **Publish as Azure Web App...** (Als Azure-Web-App veröffentlichen).
+1. Wählen Sie im Kontextmenü **Azure** aus, und klicken Sie dann auf **Publish as Azure Web App...** (Als Azure-Web-App veröffentlichen...).
 
    ![][03]
    
-   Alternativ können Sie auch das Webanwendungsprojekt im Projektexplorer auswählen und auf der Symbolleiste auf die Dropdown-Schaltfläche **Veröffentlichen** klicken. Anschließend wählen Sie **Publish as Azure Web App** (Als Azure-Web-App veröffentlichen) aus:
+   Alternativ können Sie auch das Webanwendungsprojekt im Projekt-Explorer auswählen und auf der Symbolleiste auf die Dropdownschaltfläche **Publish** (Veröffentlichen) klicken. Wählen Sie anschließend **Publish as Azure Web App** (Als Azure-Web-App veröffentlichen) aus:
    
    ![][14]
    
@@ -75,7 +75,7 @@ Es gibt mehrere Möglichkeiten, eine Java-Webanwendung in Azure bereitzustellen.
    ![][04]
    
    Hinweis: Wenn Sie über mehrere Azure-Konten verfügen, können einige der Eingabeaufforderungen während des Anmeldeprozesses mehrmals angezeigt werden, auch wenn sie scheinbar identisch sind. Befolgen Sie in diesem Fall weiterhin die Anweisungen zur Anmeldung.
-1. Nachdem Sie sich erfolgreich bei Ihrem Azure-Konto angemeldet haben, wird im Dialogfeld **Abonnements verwalten** eine Liste der Abonnements angezeigt, die mit Ihren Anmeldeinformationen verknüpft sind. Wenn mehrere Abonnements aufgeführt sind und Sie nur mit einer bestimmten Teilmenge davon arbeiten möchten, können Sie optional die deaktivieren, die Sie nicht verwenden möchten. Wenn Sie Ihre Abonnements ausgewählt haben, klicken Sie auf **Schließen**.
+1. Nachdem Sie sich erfolgreich bei Ihrem Azure-Konto angemeldet haben, wird im Dialogfeld **Manage Subscriptions** (Abonnements verwalten) eine Liste der Abonnements angezeigt, die mit Ihren Anmeldeinformationen verknüpft sind. Wenn mehrere Abonnements aufgeführt sind und Sie nur mit einer bestimmten Teilmenge davon arbeiten möchten, können Sie optional die deaktivieren, die Sie nicht verwenden möchten. Wenn Sie Ihre Abonnements ausgewählt haben, klicken Sie auf **Close** (Schließen).
 
    ![][05]
    
@@ -85,7 +85,7 @@ Es gibt mehrere Möglichkeiten, eine Java-Webanwendung in Azure bereitzustellen.
    
 1. Wenn Sie zuvor keinen Azure-Web-App-Container erstellt haben, oder Sie Ihre Anwendung in einem neuen Container veröffentlichen möchten, führen Sie die folgenden Schritte aus. Wählen Sie andernfalls einen vorhandenen Web-App-Container, und fahren Sie mit Schritt 7 fort.
 
-  1. Klicken Sie auf **Neu...**
+  1. Klicken Sie auf **New...** (Neu...).
 
         ![][15]
 
@@ -93,51 +93,51 @@ Es gibt mehrere Möglichkeiten, eine Java-Webanwendung in Azure bereitzustellen.
 
         ![][07]
 
-  1. Geben Sie eine **DNS-Bezeichnung** für Ihren Web-App-Container ein. Dies ist die Blatt-DNS-Bezeichnung der Host-URL für Ihre Webanwendung in Azure. Hinweis: Der Name muss verfügbar sein und Azure-Web-App-Namenskonventionen entsprechen.
+  1. Geben Sie eine **DNS-Bezeichnung** für Ihren Web-App-Container ein. Hierbei handelt es sich um die Blatt-DNS-Bezeichnung der Host-URL für Ihre Webanwendung in Azure. Hinweis: Der Name muss verfügbar sein und Azure-Web-App-Namenskonventionen entsprechen.
 
-  1. Wählen Sie im Dropdownmenü **Webcontainer** die entsprechende Software für Ihre Anwendung aus.
+  1. Wählen Sie im Dropdownmenü **Web Container** (Webcontainer) die passende Software für Ihre Anwendung aus.
 
-        Aktuell können Sie zwischen Tomcat 8, Tomcat 7 und Jetty 9 wählen. Azure stellt eine aktuelle Distribution der gewählten Software bereit und diese wird auf einer aktuellen Distribution von JDK 8 ausgeführt, die von Oracle erstellt und von Azure bereitgestellt wird.
+        Currently, you can choose from Tomcat 8, Tomcat 7 or Jetty 9. A recent distribution of the selected software will be provided by Azure, and it will run on a recent distribution of JDK 8 created by Oracle and provided by Azure.
 
-  1. Wählen Sie im Dropdownmenü **Abonnement** das Abonnement aus, das Sie für diese Bereitstellung verwenden möchten.
+  1. Wählen Sie im Dropdownmenü **Subscription** (Abonnement) das Abonnement aus, das Sie für diese Bereitstellung verwenden möchten.
 
-  1. Wählen Sie im Dropdownmenü **Ressourcengruppe** die Ressourcengruppe aus, der Sie Ihre Web-App zuordnen möchten.
+  1. Wählen Sie im Dropdownmenü **Resource Group** (Ressourcengruppe) die Ressourcengruppe aus, der Sie Ihre Web-App zuordnen möchten.
 
-        Hinweis: Mithilfe von Azure-Ressourcengruppen können Sie verwandte Ressourcen in Gruppen zusammenfassen, um diese z. B. gemeinsam löschen zu können.
+        Note: Azure Resource Groups allow you to group related resources together so that, for example, they can be deleted together.
 
-        Sie können eine vorhandene Ressourcengruppe auswählen (sofern vorhanden) und direkt mit Schritt g unten fortfahren oder die folgenden Schritte ausführen, um eine neue Ressourcengruppe zu erstellen:
+        You can select an existing Resource Group (if you have any) and skip to step g below, or use the following these steps to create a new Resource Group:
 
-      * Klicken Sie auf **Neu...**
+      * Klicken Sie auf **New...** (Neu...).
 
-      * Das Dialogfeld **Neue Ressourcengruppe** wird angezeigt:
+      * Das Dialogfeld **New Resource Group** (Neue Ressourcengruppe) wird angezeigt:
 
             ![][08]
 
       * Geben Sie im Textfeld **Name** einen Namen für die neue Ressourcengruppe ein.
 
-      * Wählen Sie im Dropdownmenü **Region** den Standort des entsprechenden Azure-Rechenzentrums für Ihre Ressourcengruppe aus.
+      * Wählen Sie im Dropdownmenü **Region** den entsprechenden Azure-Rechenzentrumsstandort für Ihre Ressourcengruppe aus.
 
       * Klicken Sie auf **OK**.
 
-  1. Im Dropdownmenü **App Service-Plan** werden die App Service-Pläne aufgelistet, die der ausgewählten Ressourcengruppe zugeordnet sind.
+  1. Im Dropdownmenü **App Service Plan** (App Service-Plan) werden die App Service-Pläne aufgelistet, die der ausgewählten Ressourcengruppe zugeordnet sind.
 
-        Hinweis: Der App Service-Plan enthält verschiedene Informationen wie z. B. den Speicherort Ihrer Web-App, den Tarif und die Größe der Compute-Instanz. Da ein App Service-Plan für mehrere Web-Apps verwendet werden kann, wird er getrennt von einer bestimmten Web-App-Bereitstellung verwaltet.
+        Note: An App Service Plan specifies information such as the location of your Web App, the pricing tier and the compute instance size. A single App Service Plan can be used for multiple Web Apps, which is why it is maintained separately from a specific Web App deployment.
 
-        Sie können einen vorhandenen App Service-Plan auswählen (sofern vorhanden) und direkt mit Schritt h unten fortfahren oder die folgenden Schritte ausführen, um einen neuen App Service-Plan zu erstellen:
+        You can select an existing App Service Plan (if you have any) and skip to step h below, or use the following these steps to create a new App Service Plan:
 
-      * Klicken Sie auf **Neu...**
+      * Klicken Sie auf **New...** (Neu...).
 
-      * Das Dialogfeld **Neuer App Services-Plan** wird angezeigt:
+      * Das Dialogfeld **New App Service Plan** (Neuer App Service-Plan) wird angezeigt:
 
             ![][09]
 
       * Geben Sie im Textfeld **Name** einen Namen für den neuen App Service-Plan ein.
 
-      * Wählen Sie im Dropdownmenü **Standort** den Standort des entsprechenden Azure-Rechenzentrums für den Plan aus.
+      * Wählen Sie im Dropdownmenü **Location** (Standort) den entsprechenden Azure-Rechenzentrumsstandort für den Plan aus.
 
-      * Wählen Sie im Dropdownmenü **Tarif** die entsprechenden Preise für den Plan aus. Zu Testzwecken können Sie **Free** auswählen.
+      * Wählen Sie im Dropdownmenü **Pricing Tier** (Tarif) die entsprechenden Preise für den Plan aus. Zu Testzwecken können Sie **Free** (Kostenlos) auswählen.
 
-      * Wählen Sie im Dropdownmenü **Instanzgröße** die entsprechende Instanzgröße für den Plan aus. Zu Testzwecken können Sie **Klein** auswählen.
+      * Wählen Sie im Dropdownmenü **Instance Size** (Instanzgröße) die entsprechende Instanzgröße für den Plan aus. Zu Testzwecken können Sie **Small** (Klein) wählen.
 
   1. Wenn Sie alle oben genannten Schritte abgeschlossen haben, sollte das Dialogfeld „New Web App Container“ (Neuer Web-App-Container) folgender Abbildung ähneln:
 
@@ -145,7 +145,7 @@ Es gibt mehrere Möglichkeiten, eine Java-Webanwendung in Azure bereitzustellen.
 
   1. Klicken Sie auf **OK**, um die Erstellung Ihres neuen Web-App-Containers abzuschließen.
 
-        Warten Sie einige Sekunden, bis die Liste der Web-App-Container aktualisiert wurde. Ihr neu erstellter Web-App-Container sollte nun in der Liste angezeigt werden und markiert sein.
+        Wait a few seconds for the list of the Web App containers to be refreshed, and your newly-created web app container should now be selected in the list.
 
 1. Sie können jetzt die erste Bereitstellung Ihrer Web-App in Azure abschließen:
 
@@ -155,11 +155,11 @@ Es gibt mehrere Möglichkeiten, eine Java-Webanwendung in Azure bereitzustellen.
 
     Hinweis: Standardmäßig wird die Anwendung als Unterverzeichnis des Anwendungsservers bereitgestellt. Wenn sie als Stammanwendung bereitgestellt werden soll, aktivieren Sie das Kontrollkästchen **Deploy to root** (In Stamm bereitstellen), bevor Sie auf **OK** klicken.
 
-1. Als Nächstes sollten Sie das **Azure-Aktivitätsprotokoll** sehen, das den Bereitstellungsstatus der Web-App anzeigt.
+1. Als Nächstes sollte das **Azure-Aktivitätsprotokoll** mit dem Bereitstellungsstatus der Web-App angezeigt werden.
 
     ![][12]
 
-    Die Bereitstellung Ihrer Web-App in Azure sollte nur einige Sekunden dauern. Wenn Ihre Anwendung bereit ist, wird in der Spalte **Status** ein Link **Veröffentlicht** angezeigt. Wenn Sie auf den Link klicken, gelangen Sie zur Startseite Ihrer bereitgestellten Web-App.
+    Die Bereitstellung Ihrer Web-App in Azure sollte nur einige Sekunden dauern. Wenn Ihre Anwendung bereit ist, wird in der Spalte **Status** ein Link **Published** (Veröffentlicht) angezeigt. Wenn Sie auf den Link klicken, gelangen Sie zur Startseite Ihrer bereitgestellten Web-App.
 
 ## Aktualisieren Ihrer Web-App
 
@@ -176,20 +176,20 @@ In beiden Fällen ist der Prozess identisch und dauert nur wenige Sekunden:
 
 3. Da Sie sich bereits zuvor angemeldet haben, sehen Sie eine Liste Ihrer vorhandenen Web-App-Container. Wählen Sie den Container aus, in dem Sie Ihre Java-Anwendung veröffentlichen oder erneut veröffentlichen möchten, und klicken Sie auf **OK**.
 
-Wenige Sekunden später wird Ihre aktualisierte Bereitstellung in der Ansicht **Azure-Aktivitätsprotokoll** als **Veröffentlicht** angezeigt, und Sie können die aktualisierte Anwendung in einem Webbrowser überprüfen.
+Wenige Sekunden später wird Ihre aktualisierte Bereitstellung in der Ansicht **Azure Activity Log** (Azure-Aktivitätsprotokoll) als **Published** (Veröffentlicht) angezeigt, und Sie können die aktualisierte Anwendung in einem Webbrowser überprüfen.
 
 ## Beenden einer vorhandenen Web-App
 
-Um einen vorhandenen Azure-Web-App-Container zu beenden (einschließlich aller darin bereitgestellten Java-Anwendungen), können Sie die Ansicht **Azure Explorer** verwenden.
+Zum Beenden eines vorhandenen Azure-Web-App-Containers (einschließlich aller darin bereitgestellten Java-Anwendungen) können Sie die Ansicht **Azure Explorer** verwenden.
 
-Wenn die Ansicht **Azure Explorer** noch nicht geöffnet ist, können Sie sie öffnen, indem Sie in Eclipse auf das Menü **Fenster** und dann auf **Show View** (Ansicht anzeigen), **Andere...**, **Azure** und **Azure Explorer** klicken. Wenn Sie sich nicht bereits angemeldet haben, werden sie dazu aufgefordert.
+Wenn die Ansicht **Azure Explorer** noch nicht geöffnet ist, können Sie sie öffnen, indem Sie in Eclipse auf das Menü **Window** (Fenster) und dann auf **Show View** (Ansicht anzeigen), **Other...** (Andere...), **Azure** und **Azure Explorer** klicken. Wenn Sie sich nicht bereits angemeldet haben, werden sie dazu aufgefordert.
 
 Wenn die Ansicht **Azure Explorer** angezeigt wird, beenden Sie Ihre Web-App mit folgenden Schritten:
 
 1. Erweitern Sie den Knoten **Azure**.
-2. Erweitern Sie den Knoten **Web-Apps**. 
+2. Erweitern Sie den Knoten **Web Apps** (Web-Apps).
 3. Klicken Sie mit der rechten Maustaste auf die gewünschte Web-App.
-5. Wenn das Kontextmenü angezeigt wird, klicken Sie auf **Beenden**. ![][13]
+5. Wenn das Kontextmenü angezeigt wird, klicken Sie auf **Stop** (Beenden). ![][13]
 
 ## Nächste Schritte
 
@@ -202,6 +202,7 @@ Weitere Informationen zu den Azure-Toolkits für Java-IDEs finden Sie unter den 
 - [Azure Toolkit für IntelliJ]
   - [Installieren des Azure Toolkit für IntelliJ]
   - [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]
+  - [Neuerungen im Azure-Toolkit für IntelliJ]
 
 Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center].
 
@@ -214,11 +215,13 @@ Weitere Informationen zum Erstellen von Azure-Web-Apps finden Sie unter [Web-App
 [Azure-Toolkit für Eclipse]: ../azure-toolkit-for-eclipse.md
 [Azure-Toolkits für Eclipse]: ../azure-toolkit-for-eclipse.md
 [Azure Toolkit für IntelliJ]: ../azure-toolkit-for-intellij.md
+[Create a Hello World Web App for Azure in Eclipse]: ./app-service-web-eclipse-create-hello-world-web-app.md
 [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]: ./app-service-web-intellij-create-hello-world-web-app.md
 [Installation des Azure Toolkit für Eclipse]: ../azure-toolkit-for-eclipse-installation.md
 [Installieren des Azure-Toolkits für Eclipse]: ../azure-toolkit-for-eclipse-installation.md
 [Installieren des Azure Toolkit für IntelliJ]: ../azure-toolkit-for-intellij-installation.md
 [Neuerungen im Azure-Toolkit für Eclipse]: ../azure-toolkit-for-eclipse-whats-new.md
+[Neuerungen im Azure-Toolkit für IntelliJ]: ../azure-toolkit-for-intellij-whats-new.md
 
 [Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
 [Web-Apps – Übersicht]: ./app-service-web-overview.md
@@ -241,4 +244,4 @@ Weitere Informationen zum Erstellen von Azure-Web-Apps finden Sie unter [Web-App
 [14]: ./media/app-service-web-eclipse-create-hello-world-web-app/14-publishDropdownButton.png
 [15]: ./media/app-service-web-eclipse-create-hello-world-web-app/15-New-Azure-Web-Container.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

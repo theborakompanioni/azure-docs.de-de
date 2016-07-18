@@ -13,11 +13,11 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="01/28/2016"
+      ms.date="06/28/2016"
       ms.author="hascipio; avikova" />
 
 # Leitfaden für die Veröffentlichung von Datendiensten im Azure Marketplace
-Nach Abschluss von Schritt 1 [Erstellen und Registrieren eines Kontos][link-acct-creation] haben wir Sie durch [Allgemeine, nicht technische Voraussetzungen](marketplace-publishing-pre-requisites.md) und [Technische Voraussetzungen](marketplace-publishing-data-service-creation-prerequisites.md) eines Datendienstangebots im Azure Marketplace geleitet. Jetzt führen wir Sie durch die Schritte, die Sie im [Veröffentlichungsportal][link-pubportal] zum Erstellen eines Datendienstangebots für den Azure Marketplace durchlaufen.
+Nach Abschluss von Schritt 1 [Erstellen und Registrieren eines Kontos](marketplace-publishing-accounts-creation-registration.md) haben wir Sie durch [Allgemeine, nicht technische Voraussetzungen](marketplace-publishing-pre-requisites.md) und [Technische Voraussetzungen](marketplace-publishing-data-service-creation-prerequisites.md) eines Datendienstangebots im Azure Marketplace geleitet. Jetzt führen wir Sie durch die Schritte, die Sie im [Veröffentlichungsportal][link-pubportal] zum Erstellen eines Datendienstangebots für den Azure Marketplace durchlaufen.
 
 ## 1\. Melden Sie sich beim Veröffentlichungsportal an.
 
@@ -143,7 +143,6 @@ Nachdem Sie nun Ihr Datendienstangebot erstellt haben, stellen Sie sicher, dass 
 - Wenn Sie an Beispielen interessiert sind, lesen Sie den Artikel [Beispiele für die OData-Zuordnung im Datendienst](marketplace-publishing-data-service-creation-odata-mapping-examples.md), um Beispielcode kennenzulernen sowie Codesyntax und Kontext zu verstehen.
 
 
-[link-acct-creation]: marketplace-publishing-microsoft-accounts-creation-registration.md
 [link-pubportal]: https://publish.windowsazure.com
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0706_2016-->

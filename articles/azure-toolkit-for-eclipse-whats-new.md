@@ -26,11 +26,23 @@ Dieser Artikel enthält Informationen zu den verschiedenen Versionen und den neu
 
 > [AZURE.NOTE] Es gibt auch ein Azure-Toolkit für die IntelliJ-IDE. Weitere Informationen finden Sie unter [Azure-Toolkit für IntelliJ].
 
+### 29\. Juni 2016
+
+Die Version des Azure-Toolkits für Eclipse vom Juni 2016 umfasst folgende Erweiterungen:
+
+* **Java 8 erforderlich**. Für das Azure-Toolkit für Eclipse ist nun Java 8 erforderlich, was allerdings nur für das Toolkit gilt. Ihre Anwendungen können weiterhin alle Java-Versionen verwenden, die von Azure unterstützt werden.
+* **Unterstützung der neuesten Java JDKs**. Die neuesten Versionen der Java JDKs werden jetzt vom Azure-Toolkit für Eclipse unterstützt.
+* **Unterstützung des Azure SDK, Version 2.9.1**. Die neueste Version des Azure SDK ist jetzt die Mindestvoraussetzung für das Azure-Toolkit für Eclipse.
+* **Integrierte Beispiele**. Das Azure-Toolkit für Eclipse bietet jetzt mehrere Beispielanwendungen, die Entwicklern den Einstieg erleichtern sollen.
+* **Integration von HDInsight-Tools**. Die Azure HDInsight-Tools stehen nun im Paket mit dem Azure-Toolkit für Eclipse zur Verfügung.
+* **Remotedebuggen von Java-Web-Apps**. Das Azure-Toolkit für Eclipse unterstützt jetzt das Remotedebuggen von Java-Web-Apps in Azure App Service.
+* **Unterstützung der Luna-Version von Eclipse.** In diesem Zusammenhang wird mindestens die Luna-Version der Eclipse-IDE benötigt.
+
 ### 12\. April 2016
 
 Die Version des Azure-Toolkits für Eclipse vom April 2016 umfasst folgende Erweiterungen:
 
-* **Unterstützung von Azure SDK v2.9.0**. Die neueste Version des Azure SDK ist jetzt die Mindestvoraussetzung für das Azure-Toolkit für Eclipse.
+* **Unterstützung des Azure SDK, Version 2.9.0**. Die neueste Version des Azure SDK ist jetzt die Mindestvoraussetzung für das Azure-Toolkit für Eclipse.
 * **Verschiedene Verbesserungen bei der Benutzerfreundlichkeit, Reaktionsfähigkeit und Leistung in Bezug auf die Unterstützung von Azure-Web-Apps**. Eine Reihe von Leistungsoptimierungen bei der Kommunikation zwischen Toolkit und Azure führen zu einer besseren Reaktionsfähigkeit der Benutzeroberfläche.
 * **Möglichkeit zum Löschen eines vorhandenen Webanwendungscontainers in Azure direkt aus Eclipse heraus**. Mit dem Azure-Toolkit für Eclipse können Sie jetzt einen vorhandenen Azure-Webcontainer löschen, ohne Eclipse zu verlassen.
 
@@ -38,7 +50,7 @@ Die Version des Azure-Toolkits für Eclipse vom April 2016 umfasst folgende Erwe
 
 Die Version des Azure-Toolkits für Eclipse vom März 2016 umfasst folgende Erweiterungen:
 
-* **Unterstützung für die schnelle Bereitstellung von einfachen Java-Anwendungen**. Azure-Toolkit für Eclipse unterstützt jetzt die schnelle Bereitstellung von einfachen Java-Anwendungen in Azure Web App-Container, sodass die Bereitstellung von Java-Anwendungen jetzt Sekunden statt Minuten dauert.
+* **Unterstützung der schnellen Bereitstellung schlanker Java-Anwendungen**. Azure-Toolkit für Eclipse unterstützt jetzt die schnelle Bereitstellung von einfachen Java-Anwendungen in Azure Web App-Container, sodass die Bereitstellung von Java-Anwendungen jetzt Sekunden statt Minuten dauert.
 * **Unterstützung der Web-App-Verwaltung in der Azure-Explorer-Ansicht**. Die Azure-Explorer-Ansicht im Toolkit unterstützt nun das Auflisten, Starten und Beenden von Azure-Web-Apps.
 * **Aktualisierte Tomcat-, Jetty- und Zulu OpenJDK-Distributionen**. Das Azure-Toolkit für Eclipse bietet Unterstützung für aktualisierte Versionen von Tomcat, Jetty und Zulu OpenJDK für Java-Bereitstellungen in Azure-Cloud-Diensten.
 
@@ -48,7 +60,7 @@ Die Version des Azure-Toolkits für Eclipse vom Januar 2016 umfasst folgende Er
 
 * **Unterstützung der Zulu OpenJDK-Updates**. Weitere Informationen finden Sie auf der [Azul Systems-Webseite zu Zulu OpenJDK].
 * **Aktualisierte Tomcat- und Jetty-Distributionen**. Die im Rahmen von Microsoft Azure verfügbaren Jetty- und Tomcat-Distributionen für die Verwendung mit dem Azure-Toolkit für Eclipse wurden aktualisiert.
-* **Featureübereinstimmung zwischen Eclipse- und IntelliJ-Toolkits für Azure**. Das Azure-Toolkit für Eclipse und das [Azure-Toolkit für IntelliJ] unterstützen nun dieselben Features.
+* **Featureübereinstimmung zwischen den Eclipse- und IntelliJ-Toolkits für Azure**. Das Azure-Toolkit für Eclipse und das [Azure-Toolkit für IntelliJ] unterstützen nun dieselben Features.
 
 ### 1\. September 2015
 
@@ -308,6 +320,7 @@ Weitere Informationen zu den Azure-Toolkits für Java-IDEs finden Sie unter den 
 - [Azure Toolkit für IntelliJ]
   - [Installieren des Azure Toolkit für IntelliJ]
   - [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]
+  - [Neuerungen im Azure-Toolkit für IntelliJ]
 
 Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center].
 
@@ -320,9 +333,12 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
 [Installing the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-installation.md
 [Installieren des Azure Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-installation.md
+[What's New in the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
+[Neuerungen im Azure-Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
+
+[Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
 
 [Azul Systems-Webseite zu Zulu OpenJDK]: http://go.microsoft.com/fwlink/?LinkId=402457
-[Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
 [Azure-Dienstendpunkte]: http://go.microsoft.com/fwlink/?LinkID=699526
 [Azure-Speicherkontenliste]: http://go.microsoft.com/fwlink/?LinkID=699528
 [Eigenschaften für Komponenten]: http://go.microsoft.com/fwlink/?LinkID=699525#components_properties
@@ -356,4 +372,4 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [ic710882]: ./media/azure-toolkit-for-eclipse-whats-new/ic710882.png
 [ic710883]: ./media/azure-toolkit-for-eclipse-whats-new/ic710883.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -64,7 +64,7 @@ Eine Reihe von Azure Active Directory-Funktionen sind als Editionen mit nutzungs
 
 **Gemeinsame Features**
 
-- [Verzeichnisobjekte](#directory-objects) 
+- [Verzeichnisobjekte](#directory-objects)
 
 - [Benutzer-/Gruppenverwaltung (hinzufügen/aktualisieren/löschen)/Benutzerbasierte Bereitstellung, Geräteregistrierung](#usergroup-management-addupdatedelete-user-based-provisioning-device-registration)
 
@@ -163,11 +163,11 @@ Das standardmäßige Nutzungskontingent liegt bei 150.000 Objekten. Bei einem O
 
 | Free Edition| Basic Edition| Premium Edition| Nur für Office 365-Apps |
 | :-: | :-: | :-: | :-: |
-| 10 Apps pro Benutzer [1] (vorab integrierte SaaS-Apps und von Entwicklern integrierte Apps)| 10 Apps pro Benutzer [1] (Free-Tarif und Anwendungsproxy-Apps) | Keine Begrenzung [2] (Free-, Basic-Tarif und Vorlagen für Self-Service-App-Integration)| 10 Apps pro Benutzer [1] (vorab integrierte SaaS-Apps und von Entwicklern integrierte Apps)|
+| 10 Apps pro Benutzer (1) | 10 Apps pro Benutzer (1) | Keine Begrenzung (2) | 10 Apps pro Benutzer (1)|
 
-[1] Mit Azure AD Free und Azure AD Basic können Endbenutzer mit zugewiesenem Zugriff auf SaaS-Apps bis zu 10 Apps in ihrem Zugriffsbereich anzeigen und über SSO auf diese zugreifen. Bei den Editionen „Free“ und „Basic“ können Administratoren SSO konfigurieren und einen Benutzerzugriff auf eine beliebige Anzahl von SaaS-Apps einrichten. Im Zugriffsbereich der Endbenutzer werden jedoch jeweils nur maximal 10 Apps angezeigt.
+1. Mit Azure AD Free und Azure AD Basic können Endbenutzer mit zugewiesenem Zugriff auf SaaS-Apps bis zu 10 Apps in ihrem Zugriffsbereich anzeigen und über SSO auf diese zugreifen. Bei den Editionen „Free“ und „Basic“ können Administratoren SSO konfigurieren und einen Benutzerzugriff auf eine beliebige Anzahl von SaaS-Apps einrichten. Im Zugriffsbereich der Endbenutzer werden jedoch jeweils nur maximal 10 Apps angezeigt.
 
-[2] Self-Service-Integration jeder Anwendung, die SAML, SCIM oder formularbasierte Authentifizierung unterstützt, mithilfe von Vorlagen im Anwendungskatalogmenü. Weitere Informationen finden Sie unter [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](active-directory-saas-custom-apps.md).
+2. Self-Service-Integration einer Anwendung, die SAML, SCIM oder formularbasierte Authentifizierung unterstützt, mithilfe von Vorlagen im Anwendungskatalogmenü. Weitere Informationen finden Sie unter [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](active-directory-saas-custom-apps.md).
 
 **Weitere Informationen:**
 
@@ -430,7 +430,7 @@ Rechte an Microsoft Identity Manager Server-Software werden mit Windows Server-L
 ## Azure Active Directory-Einbindung – nur auf Windows 10 bezogene Features
 #### Verbinden Sie ein Gerät mit Azure AD, Desktop-SSO, Microsoft Passport für Azure AD, BitLocker-Wiederherstellung (Administrator)
 
-**Typ:** Azure Active Directory-Einbindung – nur auf Windows 10 bezogene Features
+**Typ:** Azure Active Directory-Einbindung – nur auf Windows 10 bezogene Features
 
 
 **Verfügbarkeit:**
@@ -444,7 +444,7 @@ Rechte an Microsoft Identity Manager Server-Software werden mit Windows Server-L
 
 #### Automatische Registrierung für MDM, BitLocker-Wiederherstellung (Self-Service), zusätzliche lokale Administratoren für Windows 10-Geräte über die Einbindung in Azure AD
 
-**Typ:** Azure Active Directory-Einbindung – nur auf Windows 10 bezogene Features
+**Typ:** Azure Active Directory-Einbindung – nur auf Windows 10 bezogene Features
 
 
 **Verfügbarkeit:**
@@ -495,4 +495,4 @@ Neben den allgemein verfügbaren Funktionen der Free, Basic und Premium Editione
 <!--Image references-->
 [12]: ./media/active-directory-editions/ic195031.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

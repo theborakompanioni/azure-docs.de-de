@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/09/2016"
+	ms.date="07/06/2016"
 	ms.author="nitinme"/>
 
 
@@ -40,14 +40,7 @@ Informationen zu den ersten Schritten finden Sie auch in diesem [Video](https://
 
 ## Installieren des HDInsight-Tools-Plug-Ins für IntelliJ IDEA
 
-1. Klicken Sie auf der Begrüßungsseite von IntelliJ IDEA auf **Configure** und anschließend auf **Plugins**.
-
-2. Klicken Sie auf dem nächsten Bildschirm links unten auf **Browse Repositories**. Suchen Sie im daraufhin eingeblendeten Dialogfeld **Browse Repositories** nach **HDInsight**, wählen Sie **Microsoft Azure HDInsight Tools for IntelliJ** aus, und klicken Sie dann auf **Install**. Dieses Plug-In weist eine Abhängigkeit zum Scala-Plug-In auf. Wenn also das Scala-Plug-In nicht installiert ist, werden Sie aufgefordert, dieses ebenfalls zu installieren.
-
-	![HDInsight-Plug-In installieren](./media/hdinsight-apache-spark-intellij-tool-plugin/install-hdinsight-plugin.png)
-
-3. Klicken Sie bei Aufforderung auf die Schaltfläche **Restart IntelliJ IDEA**, um die IDE neu zu starten.
-
+Das HDInsight-Tools-Plug-In für IntelliJ IDEA ist als Teil des Azure-Toolkits für IntelliJ verfügbar. Anweisungen zum Installieren des Azure-Toolkits finden Sie unter [Installieren des Azure Toolkit für IntelliJ](../azure-toolkit-for-intellij-installation.md).
 
 ## Ausführen einer Spark Scala-Anwendung in einem HDInsight Spark-Cluster
 
@@ -56,14 +49,14 @@ Informationen zu den ersten Schritten finden Sie auch in diesem [Video](https://
 	![Erstellen einer Spark Scala-Anwendung](./media/hdinsight-apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
 
 	* Wählen Sie im linken Bereich **HDInsight** aus.
-	* Wählen Sie im rechten Bereich **Spark on HDInsight (Scala)** aus.
+	* Wählen Sie im rechten Bereich **Spark on HDInsight (Scala)** (Spark auf HDInsight [Scala]) aus.
 	* Klicken Sie auf **Weiter**.
 
 2. Geben Sie im nächsten Fenster die Projektdetails an.
 
 	* Geben Sie einen Projektnamen und den Projektspeicherort an.
-	* Geben Sie für **Project SDK** eine höhere Java-Version als 7 an.
-	* Klicken Sie für **Scala SDK** auf **Create**, dann auf **Download**, und wählen Sie die zu verwendende Version von Scala aus. **Verwenden Sie nicht die Version 2.11.x**. In diesem Beispiel wird Version **2.10.6** verwendet.
+	* Geben Sie für **Project SDK** (Projekt-SDK) eine Java-Version höher als 7 an.
+	* Klicken Sie für **Scala SDK** auf **Create** (Erstellen) und dann auf **Download** (Herunterladen), und wählen Sie die zu verwendende Version von Scala aus. **Verwenden Sie nicht die Version 2.11.x**. In diesem Beispiel wird Version **2.10.6** verwendet.
 
 		![Erstellen einer Spark Scala-Anwendung](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-version.png)
 
@@ -76,19 +69,19 @@ Informationen zu den ersten Schritten finden Sie auch in diesem [Video](https://
 3. Das Spark-Projekt erstellt automatisch ein Artefakt für Sie. Gehen Sie wie folgt vor, um das Artefakt anzuzeigen:
 
 	1. Klicken Sie im Menü **Datei** auf **Projektstruktur**.
-	2. Klicken Sie im Dialogfeld **Project Structure** auf **Artifacts**, um das Standardartefakt zu sehen, das erstellt wird.
+	2. Klicken Sie im Dialogfeld **Project Structure** (Projektstruktur) auf **Artifacts** (Artefakte), um das Standardartefakt anzuzeigen, das erstellt wird.
 
 		![JAR-Datei erstellen](./media/hdinsight-apache-spark-intellij-tool-plugin/default-artifact.png)
 
 	Sie können auch eigene Artefakte erstellen, indem Sie auf das in der Abbildung oben hervorgehobene **+**-Symbol klicken.
 
-4. Klicken Sie im Dialogfeld **Project Structure** auf **Project**. Wenn **Project SDK** auf 1.8 festgelegt ist, stellen Sie sicher, dass **Project language level** auf **7 - Diamonds, ARM, multi-catch, etc** festgelegt ist.
+4. Klicken Sie im Dialogfeld **Project Structure** (Projektstruktur) auf **Project** (Projekt). Wenn **Project SDK** (Projekt-SDK) auf 1.8 festgelegt ist, stellen Sie sicher, dass **Project language level** (Projektsprachebene) auf **7 - Diamonds, ARM, multi-catch, etc** festgelegt ist.
 
 	![Festlegen der Sprache auf Projektebene](./media/hdinsight-apache-spark-intellij-tool-plugin/set-project-language-level.png)
 
 5. Fügen Sie den Quellcode der Anwendung hinzu.
 
-	1. Klicken Sie im **Project Explorer** mit der rechten Maustaste auf **src**, zeigen Sie auf **New** (Neu), und klicken Sie dann auf **Scala class** (Scala-Klasse).
+	1. Klicken Sie im **Project Explorer** (Projektexplorer) mit der rechten Maustaste auf **src**, zeigen Sie auf **New** (Neu), und klicken Sie dann auf **Scala class** (Scala-Klasse).
 
 		![Hinzufügen von Quellcode](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-scala-code.png)
 
@@ -119,17 +112,17 @@ Informationen zu den ersten Schritten finden Sie auch in diesem [Video](https://
 
 5. Führen Sie die Anwendung in einem HDInsight Spark-Cluster aus.
 
-	1. Klicken Sie in **Project Explorer** mit der rechten Maustaste auf den Projektnamen, und wählen Sie dann **Submit Spark Application to HDInsight** aus.
+	1. Klicken Sie im **Project Explorer** (Projektexplorer) mit der rechten Maustaste auf den Projektnamen, und wählen Sie dann **Submit Spark Application to HDInsight** (Spark-Anwendung an HDInsight senden) aus.
 
 		![Übermitteln der Spark-Anwendung](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-submit-spark-app-1.png)
 
-	2. Sie werden zur Eingabe der Anmeldeinformationen Ihres Azure-Abonnements aufgefordert. Geben Sie in das Dialogfeld **Spark Submission** die folgenden Werte ein.
+	2. Sie werden zur Eingabe der Anmeldeinformationen Ihres Azure-Abonnements aufgefordert. Geben Sie in das Dialogfeld **Spark Submission** (Spark-Übermittlung) die folgenden Werte ein.
 
-		* Wählen Sie für **Spark clusters (Linux only)** den HDInsight Spark-Cluster aus, in dem Sie Ihre Anwendung ausführen möchten.
+		* Wählen Sie für **Spark clusters (Linux only)** (Spark-Cluster [nur Linux]) den HDInsight Spark-Cluster aus, in dem Sie Ihre Anwendung ausführen möchten.
 
 		* Sie müssen ein Artefakt aus dem IntelliJ-Projekt oder von der Festplatte auswählen.
 
-		* Klicken Sie neben dem Textfeld **Main class name** auf die Auslassungspunkte (![Auslassungspunkte](./media/hdinsight-apache-spark-intellij-tool-plugin/ellipsis.png)), wählen Sie die Hauptklasse in Ihrem Anwendungsquellcode aus, und klicken Sie dann auf **OK**.
+		* Klicken Sie neben dem Textfeld **Main class name** (Hauptklassenname) auf die Auslassungspunkte (![Auslassungspunkte](./media/hdinsight-apache-spark-intellij-tool-plugin/ellipsis.png)), wählen Sie die Hauptklasse in Ihrem Anwendungsquellcode aus, und klicken Sie dann auf **OK**.
 
 			![Übermitteln der Spark-Anwendung](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-submit-spark-app-3.png)
 
@@ -141,7 +134,7 @@ Informationen zu den ersten Schritten finden Sie auch in diesem [Video](https://
 
 		* Klicken Sie auf **Senden**.
 
-	3. Auf der Registerkarte **Spark Submission** unten im Fenster sollte nun der Status angezeigt werden. Sie können die Anwendung auch anhalten, indem Sie im Fenster „Spark Submission“ auf die rote Schaltfläche klicken.
+	3. Auf der Registerkarte **Spark Submission** (Spark-Übermittlung) unten im Fenster sollte nun der Status angezeigt werden. Sie können die Anwendung auch anhalten, indem Sie im Fenster „Spark Submission“ auf die rote Schaltfläche klicken.
 
         ![Ergebnis der Spark-Anwendung](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
 
@@ -154,7 +147,7 @@ Sie können eine Vielzahl von Vorgängen mit dem HDInsight-Plug-In ausführen.
 
 ### Zugreifen auf den Speichercontainer des Clusters
 
-1. Zeigen Sie im Menü **View** auf **Tool Windows**, und klicken Sie dann auf **HDInsight Explorer**. Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen für Ihr Azure-Abonnement ein.
+1. Zeigen Sie im Menü **View** (Ansicht) auf **Tool Windows** (Tool-Fenster), und klicken Sie dann auf **HDInsight Explorer**. Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen für Ihr Azure-Abonnement ein.
 
 2. Erweitern Sie den Stammknoten **HDInsight**, um eine Liste der verfügbaren HDInsight Spark-Cluster anzuzeigen.
 
@@ -166,29 +159,29 @@ Sie können eine Vielzahl von Vorgängen mit dem HDInsight-Plug-In ausführen.
 
 ### Direkter Zugriff auf die Auftragsansicht im Plug-In
 
-1. Erweitern Sie im **HDInsight Explorer** den Namen des Spark-Clusters, und klicken Sie dann auf **Jobs**.
+1. Erweitern Sie im **HDInsight Explorer** den Namen des Spark-Clusters, und klicken Sie dann auf **Jobs** (Aufträge).
 
-2. Im rechten Bereich werden auf der Registerkarte **Spark Job View** alle Anwendungen angezeigt, die auf dem Cluster ausgeführt wurden. Klicken Sie auf den Namen der Anwendung, zu der Sie weitere Details sehen möchten.
+2. Im rechten Bereich werden auf der Registerkarte **Spark Job View** (Spark-Auftragsansicht) alle Anwendungen angezeigt, die in dem Cluster ausgeführt wurden. Klicken Sie auf den Namen der Anwendung, zu der Sie weitere Details sehen möchten.
 
 	![Zugreifen auf Auftragsansicht](./media/hdinsight-apache-spark-intellij-tool-plugin/view-job-logs.png)
 
-3. Die Felder für **Error Message**, **Job Output**, **Livy Job Logs** und **Spark Driver Logs** werden gemäß der Anwendung aufgefüllt, die Sie auswählen.
+3. Die Felder für **Error Message** (Fehlermeldung), **Job Output** (Auftragsausgabe), **Livy Job Logs** (Liveauftragsprotokolle) und **Spark Driver Logs** (Spark-Treiberprotokolle) werden gemäß der Anwendung aufgefüllt, die Sie auswählen.
 
-4. Sie können auch die **Spark History UI** und **YARN UI** (auf Anwendungsebene) öffnen, indem Sie auf die entsprechenden Schaltflächen am oberen Bildschirmrand klicken.
+4. Sie können auch die **Spark History UI** (Spark-Verlaufsbenutzeroberfläche) und **YARN UI** (YARN-Benutzeroberfläche) (auf Anwendungsebene) öffnen, indem Sie auf die entsprechenden Schaltflächen am oberen Bildschirmrand klicken.
 
 ### Zugreifen auf den Spark-Verlaufsserver
 
-1. Klicken Sie in **HDInsight Explorer** mit der rechten Maustaste auf den Namen Ihres Spark-Clusters, und wählen Sie dann **Open Spark History UI** aus. Geben Sie die Anmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden. Diese müssen Sie beim Bereitstellen des Clusters angegeben haben.
+1. Klicken Sie in **HDInsight Explorer** mit der rechten Maustaste auf den Namen Ihres Spark-Clusters, und wählen Sie dann **Open Spark History UI** (Spark-Verlaufsbenutzeroberfläche öffnen) aus. Geben Sie die Anmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden. Diese müssen Sie beim Bereitstellen des Clusters angegeben haben.
 
 2. Im Dashboard des Spark-Verlaufsservers können Sie die Anwendung, deren Ausführung Sie gerade beendet haben, anhand des Anwendungsnamens suchen. Im obigen Code haben Sie den Anwendungsnamen mit `val conf = new SparkConf().setAppName("MyClusterApp")` festgelegt. Daher lautete der Name Ihrer Spark-Anwendung **MyClusterApp**.
 
 ### Öffnen des Ambari-Portals
 
-Klicken Sie in **HDInsight Explorer** mit der rechten Maustaste auf den Namen Ihres Spark-Clusters, und wählen Sie dann **Open Cluster Management Portal (Ambari)** aus. Geben Sie die Anmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden. Diese müssen Sie beim Bereitstellen des Clusters angegeben haben.
+Klicken Sie in **HDInsight Explorer** mit der rechten Maustaste auf den Namen Ihres Spark-Clusters, und wählen Sie dann **Open Cluster Management Portal (Ambari)** (Clusterverwaltungsportal [Ambari] öffnen) aus. Geben Sie die Anmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden. Diese müssen Sie beim Bereitstellen des Clusters angegeben haben.
 
 ### Verwalten von Azure-Abonnements
 
-Standardmäßig listet das HDInsight-Plug-In die Spark-Cluster in allen Ihren Azure-Abonnements auf. Bei Bedarf können Sie die Abonnements angeben, für die Sie auf den Cluster zugreifen möchten. Klicken Sie in **HDInsight Explorer** mit der rechten Maustaste auf den Stammknoten **HDInsight**, und wählen Sie im Kontextmenü **Manage Subscriptions** aus. Deaktivieren Sie im Dialogfeld die Kontrollkästchen für das Abonnement, auf das Sie nicht zugreifen möchten, und klicken Sie dann auf **Close**. Sie können auch auf **Sign Out** klicken, wenn Sie sich von Ihrem Azure-Abonnement abmelden möchten.
+Standardmäßig listet das HDInsight-Plug-In die Spark-Cluster in allen Ihren Azure-Abonnements auf. Bei Bedarf können Sie die Abonnements angeben, für die Sie auf den Cluster zugreifen möchten. Klicken Sie in **HDInsight Explorer** mit der rechten Maustaste auf den Stammknoten **HDInsight**, und wählen Sie im Kontextmenü **Manage Subscriptions** (Abonnements verwalten) aus. Deaktivieren Sie im Dialogfeld die Kontrollkästchen für das Abonnement, auf das Sie nicht zugreifen möchten, und klicken Sie dann auf **Close** (Schließen). Sie können auch auf **Sign Out** (Abmelden) klicken, wenn Sie sich von Ihrem Azure-Abonnement abmelden möchten.
 
 
 ## Lokales Ausführen einer Spark Scala-Anwendung
@@ -197,7 +190,7 @@ Mithilfe des HDInsight-Tools-Plug-Ins für IntelliJ IDEA können Sie Spark Scala
 
 ### Voraussetzung
 
-Beim lokalen Ausführen der Spark Scala-Anwendung auf einem Windows-Computer erhalten Sie ggf. eine Ausnahme wie unter [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) beschrieben, die aufgrund der unter Windows fehlenden Datei „WinUtils.exe“ ausgelöst wird. Um diesen Fehler zu umgehen, müssen Sie [die ausführbare Datei hier herunterladen](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) und an einem Speicherort wie **C:\\WinUtils\\bin** speichern. Fügen Sie anschließend die Umgebungsvariable **HADOOP\_HOME** hinzu, und setzen Sie den Wert der Variablen auf **C\\WinUtils**.
+Beim lokalen Ausführen der Spark Scala-Anwendung auf einem Windows-Computer erhalten Sie ggf. eine Ausnahme wie unter [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) beschrieben, die ausgelöst wird, weil im Windows-Betriebssystem die Datei „WinUtils.exe“ fehlt. Um diesen Fehler zu umgehen, müssen Sie [die ausführbare Datei hier herunterladen](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) und an einem Speicherort wie **C:\\WinUtils\\bin** speichern. Fügen Sie anschließend die Umgebungsvariable **HADOOP\_HOME** hinzu, und setzen Sie den Wert der Variablen auf **C\\WinUtils**.
 
 ### Ausführen einer lokalen Spark Scala-Anwendung	 
 
@@ -206,14 +199,14 @@ Beim lokalen Ausführen der Spark Scala-Anwendung auf einem Windows-Computer erh
 	![Erstellen einer Spark Scala-Anwendung](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-local-run.png)
 
 	* Wählen Sie im linken Bereich **HDInsight** aus.
-	* Wählen Sie im rechten Bereich **Spark on HDInsight Local Run Sample (Scala)** aus.
+	* Wählen Sie im rechten Bereich **Spark on HDInsight Local Run Sample (Scala)** (Spark auf HDInsight – Beispiel für lokale Ausführung [Scala]) aus.
 	* Klicken Sie auf **Weiter**.
 
 2. Geben Sie im nächsten Fenster die Projektdetails an.
 
 	* Geben Sie einen Projektnamen und den Projektspeicherort an.
-	* Geben Sie für **Project SDK** eine Java-Version höher als 7 an.
-	* Klicken Sie für **Scala SDK** auf **Create** (Erstellen) und dann auf **Download**, und wählen Sie die zu verwendende Version von Scala aus. **Verwenden Sie nicht die Version 2.11.x**. In diesem Beispiel wird Version **2.10.6** verwendet.
+	* Geben Sie für **Project SDK** (Projekt-SDK) eine Java-Version höher als 7 an.
+	* Klicken Sie für **Scala SDK** auf **Create** (Erstellen) und dann auf **Download** (Herunterladen), und wählen Sie die zu verwendende Version von Scala aus. **Verwenden Sie nicht die Version 2.11.x**. In diesem Beispiel wird Version **2.10.6** verwendet.
 
 		![Erstellen einer Spark Scala-Anwendung](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-version.png)
 
@@ -227,7 +220,7 @@ Beim lokalen Ausführen der Spark Scala-Anwendung auf einem Windows-Computer erh
 
 	![Lokale Scala-Anwendung](./media/hdinsight-apache-spark-intellij-tool-plugin/local-app.png)
 
-4.  Klicken Sie mit der rechten Maustaste auf die **LogQuery**-Anwendung, und klicken Sie dann auf **Run „LogQuery“**. Unten auf der Registerkarte **Run** wird eine Ausgabe wie die folgende angezeigt.
+4.  Klicken Sie mit der rechten Maustaste auf die Anwendung **LogQuery**, und klicken Sie dann auf **„Run ‚LogQuery‘“** (LogQuery ausführen). Unten auf der Registerkarte **Run** (Ausführen) wird eine Ausgabe wie die folgende angezeigt.
 
 	![Ergebnis der lokalen Ausführung der Spark-Anwendung](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-local-run-result.png)
 
@@ -244,7 +237,7 @@ Sie können auch Ihre vorhandenen in IntelliJ IDEA erstellten Spark Scala-Anwend
 
 		<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4" UniqueKey="HDInsightTool">
 
-4. Speichern Sie die Änderungen. Ihre Anwendung sollte jetzt mit dem HDInsight-Tools-Plug-In kompatibel sein. Sie können dies testen, indem Sie im Project Explorer mit der rechten Maustaste auf den Projektnamen klicken. Im Popupmenü sollte jetzt die Option **Submit Spark Application to HDInsight** enthalten sein.
+4. Speichern Sie die Änderungen. Ihre Anwendung sollte jetzt mit dem HDInsight-Tools-Plug-In kompatibel sein. Sie können dies testen, indem Sie im Project Explorer mit der rechten Maustaste auf den Projektnamen klicken. Im Popupmenü sollte jetzt die Option **Submit Spark Application to HDInsight** (Spark-Anwendung an HDInsight senden) enthalten sein.
 
 
 ## Problembehandlung
@@ -307,6 +300,8 @@ Falls Sie Vorschläge oder Feedback haben oder bei Verwendung dieses Tools Probl
 
 * [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely (Verwenden von HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Spark-Anwendungen)](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 
+* [Use HDInsight Tools Plugin for Eclipse to create Spark applications](hdinsight-apache-spark-eclipse-tool-plugin.md) (Verwenden des HDInsight-Tools-Plug-Ins für Eclipse zum Erstellen von Spark-Anwendungen)
+
 * [Verwenden von Zeppelin-Notebooks mit einem Spark-Cluster in HDInsight](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
 * [Verfügbare Kernels für Jupyter-Notebook im Spark-Cluster für HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md)
@@ -321,4 +316,4 @@ Falls Sie Vorschläge oder Feedback haben oder bei Verwendung dieses Tools Probl
 
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

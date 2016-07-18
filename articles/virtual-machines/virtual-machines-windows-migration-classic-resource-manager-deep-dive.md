@@ -47,7 +47,7 @@ Die folgende Tabelle zeigt die Darstellung der Ressourcen im klassischen Bereits
 | UDRs | UDRs | Einem Subnetz zugeordnete benutzerdefinierte Routen (User-Defined Routes, UDRs) werden im Rahmen der Migration für das Resource Manager-Bereitstellungsmodell geklont. Beachten Sie, dass die UDR aus dem klassischen Bereitstellungsmodell bei der Migration nicht entfernt wird. Während der Migration werden jedoch Vorgänge auf Verwaltungsebene für die UDR blockiert. | | |
 | IP-Weiterleitungseigenschaft für die Netzwerkkonfiguration eines virtuellen Computers | IP-Weiterleitungseigenschaft für die Netzwerkschnittstellenkarte | Die IP-Weiterleitungseigenschaft für einen virtuellen Computer wird im Zuge der Migration in eine Eigenschaft der Netzwerkschnittstelle konvertiert. | | |
 | Load Balancer mit mehreren IP-Adressen | Load Balancer mit mehreren öffentlichen IP-Ressourcen | Sämtliche öffentliche, dem Load Balancer zugeordnete IP-Adressen werden in eine öffentliche IP-Ressource konvertiert und dem Load Balancer nach der Migration zugeordnet. | | |
-| Interne DNS-Namen für den virtuellen Computer | Interne DNS-Namen für die Netzwerkschnittstellenkarte | Bei der Migration werden die internen DNS-Suffixe aktualisiert, um den Suffixen des Resource Manager-Bereitstellungsmodells zu entsprechen. Die Namensauflösung wird durch die Migration nicht beeinträchtigt. Die den virtuellen Computern zugeordneten Suffixe werden jedoch geändert. | | |
+| Interne DNS-Namen für den virtuellen Computer | Interne DNS-Namen für die Netzwerkschnittstellenkarte | Während der Migration werden die internen DNS-Suffixe für die virtuellen Computer in eine schreibgeschützte Eigenschaft mit dem Namen „InternalDomainNameSuffix“ auf der NIC migriert. Das Suffix bleibt nach der Migration unverändert, und die virtuelle Computerlösung sollte weiterhin wie zuvor funktionieren. | | |
 
 ## Vorgehensweise für eine einfache Migration
 
@@ -64,4 +64,4 @@ Nachdem Sie nun eine Vorstellung von der Migration klassischer IaaS-Ressourcen z
 - [Plattformgestützte Migration von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager](virtual-machines-windows-migration-classic-resource-manager.md)
 - [Klonen eines klassischen virtuellen Computers für Azure Resource Manager mithilfe von PowerShell-Skripts aus der Community](virtual-machines-windows-migration-scripts.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

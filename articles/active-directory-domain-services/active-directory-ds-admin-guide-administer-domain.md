@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/28/2016"
+	ms.date="07/06/2016"
 	ms.author="maheshu"/>
 
 # Verwalten einer durch die Azure Active Directory-Domänendienste verwalteten Domäne
@@ -146,4 +146,4 @@ Nachdem die AD-Verwaltungstools nun auf dem virtuellen Computer installiert sind
 
 - [Bereitstellen der Remoteserver-Verwaltungstools](https://technet.microsoft.com/library/hh831501.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

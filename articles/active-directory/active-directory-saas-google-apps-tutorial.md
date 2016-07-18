@@ -88,7 +88,7 @@ So aktivieren Sie das einmalige Anmelden bei Google Apps in zwei Minuten
 
 	![Wählen Sie "Azure AD – einmaliges Anmelden".][7]
 
-	> [AZURE.NOTE] Um weitere Informationen zu den verschiedenen Optionen für die einmalige Anmeldung zu erhalten, [klicken Sie hier](../active-directory-appssoaccess-whatis/#how-does-single-sign-on-with-azure-active-directory-work).
+	> [AZURE.NOTE] Um weitere Informationen zu den verschiedenen Optionen für die einmalige Anmeldung zu erhalten, [klicken Sie hier](../active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
 
 3. Geben Sie auf der Seite **App-Einstellungen konfigurieren** für das Feld **Anmelde-URL** Ihre Google Apps-Mandanten-URL im folgenden Format ein: `https://mail.google.com/a/<yourdomain>`
 
@@ -124,7 +124,7 @@ Wenn Sie das einmalige Anmelden lieber manuell einrichten möchten, führen Sie 
 
 	![Wählen Sie "Azure AD – einmaliges Anmelden".][7]
 
-	> [AZURE.NOTE] Um weitere Informationen zu den verschiedenen Optionen für die einmalige Anmeldung zu erhalten, [klicken Sie hier](../active-directory-appssoaccess-whatis/#how-does-single-sign-on-with-azure-active-directory-work).
+	> [AZURE.NOTE] Um weitere Informationen zu den verschiedenen Optionen für die einmalige Anmeldung zu erhalten, [klicken Sie hier](../active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
 
 3. Geben Sie auf der Seite **App-Einstellungen konfigurieren** für das Feld **Anmelde-URL** Ihre Google Apps-Mandanten-URL im folgenden Format ein: `https://mail.google.com/a/<yourdomain>`
 
@@ -194,7 +194,7 @@ Wenn Sie das einmalige Anmelden lieber manuell einrichten möchten, führen Sie 
 
 4. Wenn Sie Ihrem Azure Active Directory noch keinen benutzerdefinierten Domänennamen hinzugefügt haben, führen Sie die folgenden Schritte aus:
 
-	- Klicken Sie im linken Navigationsbereich des [klassischen Azure-Portals](https://manage.windowsazure.com) auf **Active Directory**. Wählen Sie in der Verzeichnisliste Ihr Verzeichnis aus. 
+	- Klicken Sie im linken Navigationsbereich des [klassischen Azure-Portals](https://manage.windowsazure.com) auf **Active Directory**. Wählen Sie in der Verzeichnisliste Ihr Verzeichnis aus.
 
 	- Klicken Sie im Menü der obersten Ebene auf **Domänen**, und klicken Sie dann auf **Benutzerdefinierte Domäne hinzufügen**.
 
@@ -313,4 +313,4 @@ Wenn Sie das einmalige Anmelden lieber manuell einrichten möchten, führen Sie 
 [29]: ./media/active-directory-saas-google-apps-tutorial/assign-users.png
 [30]: ./media/active-directory-saas-google-apps-tutorial/assign-confirm.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

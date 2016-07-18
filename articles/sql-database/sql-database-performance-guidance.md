@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="04/29/2016"
+	ms.date="06/30/2016"
 	ms.author="carlrab" />
 
 # Leitfaden zur Azure SQL-Datenbankleistung für Einzeldatenbanken
@@ -23,7 +23,7 @@
 
 Microsoft Azure SQL-Datenbank verfügt über drei [Dienstebenen](sql-database-service-tiers.md): Basic, Standard und Premium. Auf allen Ebenen wird die Ressource, die für Ihre Azure SQL-Datenbank bereitgestellt wird, streng isoliert, und es wird für eine vorhersagbare Leistung gesorgt. Der für die Datenbank garantierte Durchsatz steigt von der Ebene „Basic“ über „Standard“ bis hin zu „Premium“ an.
 
->[AZURE.NOTE] Die Dienstebenen „Business“ und „Web“ werden im September 2015 eingestellt. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Einstellung von Web Edition und Business Edition](https://msdn.microsoft.com/library/azure/dn741330.aspx). Ausführliche Informationen zum Aktualisieren vorhandener Web- und Business-Datenbanken auf die neuen Dienstebenen finden Sie unter [Upgrade von Web-/Business-Datenbanken der SQL-Datenbank auf neue Dienstebenen](sql-database-upgrade-server-portal.md).
+>[AZURE.NOTE] Die Dienstebenen „Business“ und „Web“ wurden im September 2015 eingestellt. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Einstellung von Web Edition und Business Edition](https://msdn.microsoft.com/library/azure/dn741330.aspx). Ausführliche Informationen zum Aktualisieren vorhandener Web- und Business-Datenbanken auf die neuen Dienstebenen finden Sie unter [Upgrade von Web-/Business-Datenbanken der SQL-Datenbank auf neue Dienstebenen](sql-database-upgrade-server-portal.md).
 
 Dieses Dokument enthält eine Anleitung, mit deren Hilfe Sie ermitteln können, welche Dienstebene für Ihre Anwendung geeignet ist. Außerdem enthält es Empfehlungen zur Optimierung der Anwendung, damit Sie alle Vorteile von Azure SQL-Datenbank ausnutzen können.
 
@@ -206,7 +206,7 @@ Beispiele für andere Abfragen finden Sie unter [sys.dm\_db\_resource\_stats](ht
 
 ### Verwenden von „sys.resource\_stats“
 
-Die Sicht [sys.resource\_stats](https://msdn.microsoft.com/library/dn269979.aspx) in der **master**-Datenbank liefert zusätzliche Informationen zur Überwachung der Leistungsnutzung Ihrer SQL-Datenbank innerhalb der jeweiligen Dienst- und Leistungsebene. Die Daten werden alle fünf Minuten gesammelt und ungefähr 14 Tage lang beibehalten. Diese Ansicht ist eher für eine längerfristige Verlaufsanalyse der Ressourcenverwendung Ihrer SQL-Datenbank geeignet.
+Die Sicht [sys.resource\_stats](https://msdn.microsoft.com/library/dn269979.aspx) in der **master**-Datenbank liefert zusätzliche Informationen zur Überwachung der Leistungsnutzung Ihrer SQL-Datenbank innerhalb der jeweiligen Dienst- und Leistungsebene. Die Daten werden alle fünf Minuten gesammelt und ungefähr 35 Tage lang beibehalten. Diese Ansicht ist eher für eine längerfristige Verlaufsanalyse der Ressourcenverwendung Ihrer SQL-Datenbank geeignet.
 
 Der folgende Graph zeigt die CPU-Ressourcenverwendung für eine Premium-Datenbank mit Leistungsebene P2 für jede Stunde einer Woche. Dieser Graph beginnt mit einem Montag und zeigt fünf Arbeitstage und dann das Wochenende, an dem die Anwendung deutlich weniger gefragt ist.
 
@@ -507,4 +507,4 @@ Einige Datenbankanwendungen enthalten Workloads mit einer hohen Zahl von Lesevor
 
 Dank der Dienstebenen in Azure SQL-Datenbank verfügen Sie in Bezug auf die Typen von Anwendungen, die Sie in der Cloud erstellen, über mehr Flexibilität. In Kombination mit einer sorgfältigen Anwendungsoptimierung können Sie für Ihre Anwendung eine hohe und vorhersagbare Leistung erzielen. In diesem Dokument werden empfohlene Verfahren zum Optimieren des Ressourcenverbrauchs einer Datenbank und Ermitteln der Eignung für eine der Leistungsebenen beschrieben. Die Optimierung ist beim Cloudmodell ein fortlaufender Prozess, und die Dienstebenen und ihre Leistungsebenen ermöglichen Administratoren die Steigerung der Leistung, während die Kosten auf der Microsoft Azure Platform gesenkt werden.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

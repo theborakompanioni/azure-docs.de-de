@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="big-compute"
-	ms.date="05/20/2016"
+	ms.date="06/30/2016"
 	ms.author="marsma" />
 
 # Anwendungsbereitstellung mit Azure Batch-Anwendungspaketen
@@ -198,9 +198,11 @@ myCloudPool.ApplicationPackageReferences = new List<ApplicationPackageReference>
 await myCloudPool.CommitAsync();
 ```
 
+Die Anwendungspakete, die Sie für einen Pool angeben, werden auf jedem Computeknoten installiert, wenn der jeweilige Knoten dem Pool beitritt sowie wenn der Knoten neu erstellt oder ein Re-Imaging durchgeführt wird. Wenn die Bereitstellung eines Anwendungspakets aus einem beliebigem Grund misslingt, markiert der Batch-Dienst den Knoten als [unbrauchbar][net_nodestate], sodass keine Aufgaben zur Ausführung auf diesem Knoten geplant werden. In diesem Fall sollten Sie den Knoten **neu starten**, um die Bereitstellung des Pakets erneut auszulösen (dadurch wird auch das erneute Planen von Tasks auf dem Knoten ermöglicht).
+
 ## Ausführen der installierten Anwendungen
 
-Da jeder Serverknoten einem Pool beitritt (oder neu gestartet bzw. ein Reimaging an ihm durchgeführt wird), werden die Pakete heruntergeladen, die Sie angegeben haben, und in ein benanntes Verzeichnis innerhalb von `AZ_BATCH_ROOT_DIR` auf dem Knoten extrahiert. Batch erstellt auch eine Umgebungsvariable für Ihre Aufgabenbefehlszeilen, die Sie beim Aufrufen der Binärdateien der Anwendung verwenden können – diese Variable entspricht folgendem Benennungsschema:
+Sobald jeder Computeknoten einem Pool beitritt (oder neu gestartet wird bzw. ein Re-Imaging erfolgt), werden die Pakete heruntergeladen, die Sie angegeben haben, und in ein benanntes Verzeichnis innerhalb von `AZ_BATCH_ROOT_DIR` auf dem Knoten extrahiert. Batch erstellt auch eine Umgebungsvariable für Ihre Aufgabenbefehlszeilen, die Sie beim Aufrufen der Binärdateien der Anwendung verwenden können – diese Variable entspricht folgendem Benennungsschema:
 
 `AZ_BATCH_APP_PACKAGE_appid#version`
 
@@ -230,7 +232,7 @@ Wenn ein vorhandener Pool bereits mit einem Anwendungspaket konfiguriert wurde, 
 * Serverknoten, die sich bereits während des Updates der Paketverweise im Pool befinden, installieren nicht automatisch das neue Anwendungspaket. Sie müssen neu gestartet oder erneut ausgeführt werden, um das neue Paket zu erhalten.
 * Wenn ein neues Paket bereitgestellt wird, spiegeln die neu erstellten Umgebungsvariablen die neuen Anwendungspaketverweise.
 
-In diesem Beispiel hat der vorhandene Pool Version 2.7 der Anwendung *Blender* als eine seiner [CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref] konfiguriert. Geben Sie eine neue [ApplicationPackageReference][net_pkgref] mit der neuen Version ein, und führen ein Commit für die Änderung aus, um die Knoten des Pools mit Version 2.76b zu aktualisieren.
+In diesem Beispiel hat der vorhandene Pool Version 2.7 der Anwendung *blender* als eine seiner [CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref] konfiguriert. Um die Knoten des Pools mit Version 2.76b zu aktualisieren, geben Sie eine neue [ApplicationPackageReference][net_pkgref] mit der neuen Version ein, und committen Sie die Änderung.
 
 ```csharp
 string newVersion = "2.76b";
@@ -244,7 +246,7 @@ boundPool.ApplicationPackageReferences = new List<ApplicationPackageReference>
 await boundPool.CommitAsync();
 ```
 
-Jetzt ist die neue Version konfiguriert, sodass jedem *neuen* Knoten, der dem Pool beitritt, Version 2.76b bereitgestellt wird. Starten Sie die Knoten, die sich *bereits* im Pool befinden neu (bzw. führen Sie ein Reimaging an ihnen durch), um 2.76b auf den Knoten zu installieren. Beachten Sie, dass neu gestartete Knoten die Dateien aus vorherigen Paketbereitstellungen beibehalten.
+Jetzt ist die neue Version konfiguriert, sodass jedem *neuen* Knoten, der dem Pool beitritt, Version 2.76b bereitgestellt wird. Um 2.76b auf den Knoten zu installieren, die sich *bereits* im Pool befinden, starten Sie sie neu (bzw. führen Sie ein Reimaging an ihnen durch) werden. Beachten Sie, dass neu gestartete Knoten die Dateien aus vorherigen Paketbereitstellungen beibehalten.
 
 ## Auflisten der Anwendungen in einem Batch-Konto
 
@@ -270,9 +272,9 @@ Mit Anwendungspaketen können Sie Ihren Kunden viel einfacher die Möglichkeit b
 
 ## Nächste Schritte
 
-* Die [Batch-REST-API][api_rest] unterstützt auch die Arbeit mit Anwendungspaketen. Beachten Sie beispielsweise für die Angabe von Paketen, die mithilfe der REST-API installiert werden sollen, das Element [applicationPackageReferences][rest_add_pool_with_packages] in [Hinzufügen eines Pools zu einem Konto][rest_add_pool]. Unter [Clientanwendungen][rest_applications] finden Sie ausführliche Informationen zum Abrufen von Anwendungsinformationen mithilfe der Batch-REST-API.
+* Die [Batch-REST-API][api_rest] unterstützt auch die Arbeit mit Anwendungspaketen. Beachten Sie beispielsweise zum Angeben von Paketen für die Installation mithilfe der REST-API das Element [applicationPackageReferences][rest_add_pool_with_packages] in [Hinzufügen eines Pools mit einem Konto][rest_add_pool]. Unter [Applications][rest_applications] (Anwendungen) finden Sie ausführliche Informationen zum Abrufen von Anwendungsinformationen mit der Batch-REST-API.
 
-* Erfahren Sie, wie Sie programmgesteuert [Azure Batch-Konten und -Kontingente mit Batch Management .NET](batch-management-dotnet.md) verwalten. Die [Batch Management .NET][api_net_mgmt]-Bibliothek kann Funktionen zum Erstellen und Löschen von Konten für Ihre Batch-Anwendung oder Ihren Dienst aktivieren.
+* Erfahren Sie, wie Sie programmgesteuert [Azure Batch-Konten und -Kontingente mit Batch Management .NET](batch-management-dotnet.md) verwalten. Die [Batch Management .NET][api_net_mgmt]-Bibliothek kann Funktionen zum Erstellen und Löschen von Konten für Ihre Batch-Anwendung oder Ihren Dienst aktivieren.
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_mgmt]: https://msdn.microsoft.com/library/azure/mt463120.aspx
@@ -284,6 +286,7 @@ Mit Anwendungspaketen können Sie Ihren Kunden viel einfacher die Möglichkeit b
 [net_appops_listappsummaries]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.applicationoperations.listapplicationsummaries.aspx
 [net_cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
 [net_cloudpool_pkgref]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.applicationpackagereferences.aspx
+[net_nodestate]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenode.state.aspx
 [net_pkgref]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.applicationpackagereference.aspx
 [rest_applications]: https://msdn.microsoft.com/library/azure/mt643945.aspx
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
@@ -301,4 +304,4 @@ Mit Anwendungspaketen können Sie Ihren Kunden viel einfacher die Möglichkeit b
 [11]: ./media/batch-application-packages/app_pkg_11.png "Aktualisieren des Paketblatts im Azure-Portal"
 [12]: ./media/batch-application-packages/app_pkg_12.png "Dialogfeld zum Bestätigen der Paketlöschung im Azure-Portal"
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -25,6 +25,10 @@
 
 In den folgenden Tutorials lernen Sie, wie Sie SQL Server Management Studio dazu verwenden können, Azure SQL-Datenbank zu verwalten und abzufragen.
 
+
+> [AZURE.IMPORTANT] Es wird empfohlen, immer die neueste Version von Management Studio zu verwenden, damit Sie mit Updates von Microsoft Azure und SQL-Datenbank synchron sind. [Aktualisieren Sie SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+
+
 | Lernprogramm: | Beschreibung |
 |---|---|---|
 | [Herstellen einer Verbindung mit einer Azure SQL-Datenbank mithilfe einer Prinzipalanmeldung auf Serverebene](sql-database-get-started-security.md#connect-to-azure-sql-database-using-a-server-level-principal-login)| In diesem Tutorial lernen Sie, wie Sie mithilfe einer Prinzipalanmeldung auf Serverebene eine Verbindung mit Azure SQL-Datenbank herstellen.|
@@ -33,7 +37,7 @@ In den folgenden Tutorials lernen Sie, wie Sie SQL Server Management Studio dazu
 
 ## Elastische Pools
 
-In den folgenden Tutorials erfahren Sie mehr zur Verwendung von [elastischen Pools](sql-database-elastic-pool.md) zum Verwalten der Leistungsziele für mehrere Datenbanken mit unterschiedlichsten und unvorhersehbaren Nutzungsmustern.
+In den folgenden Tutorials erfahren Sie mehr zur Verwendung von [elastischen Pools](sql-database-elastic-pool.md) zum Verwalten der Leistungsziele für mehrere Datenbanken mit sehr unterschiedlichen und unvorhersehbaren Nutzungsmustern.
 
 | Lernprogramm: | Beschreibung |
 |---|---|---|
@@ -61,8 +65,8 @@ In den folgenden Tutorials erfahren Sie mehr zur Ausführung von [elastischen Ab
 
 | Lernprogramm: | Beschreibung |
 |---|---|---|
-| [Abfragen über eine horizontal partitionierte Datenbank (Sharddatenbank)](sql-database-elastic-query-getting-started.md) | In diesem Tutorial erfahren Sie, wie Sie Berichte von allen Datenbanken in einer horizontal partitionierten Datenbank (Sharddatenbank) mithilfe von [elastischen Abfragen](sql-database-elastic-query-overview.md) erstellen. |
-| [Abfragen über eine vertikal partitionierte Datenbank](sql-database-elastic-query-getting-started-vertical.md#create-database-objects) | In diesem Tutorial erfahren Sie, wie Sie Berichte von allen Datenbanken in einer vertikalen Datenbank mithilfe von [elastischen Abfragen](sql-database-elastic-query-overview.md) erstellen. |
+| [Abfragen über eine horizontal partitionierte Datenbank (Sharddatenbank)](sql-database-elastic-query-getting-started.md) | In diesem Tutorial erfahren Sie, wie Sie Berichte für alle Datenbanken in einer horizontal partitionierten Datenbank (Sharddatenbank) mithilfe von [elastischen Abfragen](sql-database-elastic-query-overview.md) erstellen. |
+| [Abfragen über eine vertikal partitionierte Datenbank](sql-database-elastic-query-getting-started-vertical.md#create-database-objects) | In diesem Tutorial erfahren Sie, wie Sie Berichte für alle Datenbanken in einer vertikalen Datenbank mithilfe von [elastischen Abfragen](sql-database-elastic-query-overview.md) erstellen. |
 | [Migrieren einer vorhandenen Datenbank zum horizontalen Skalieren](sql-database-elastic-convert-to-use-elastic-tools.md)| In diesem Tutorial erfahren Sie, wie Sie eine Azure SQL-Datenbank horizontal skalieren (Shard). |
 ||||
 
@@ -178,6 +182,6 @@ In diesem Tutorial erfahren Sie mehr über die [Datensynchronisierung](http://do
 
 ## Nächste Schritte
 
-[Explore Azure SQL Database Solution Quick Starts](sql-database-solution-quick-starts.md) (Entdecken Sie die lösungsbezogenen Schnellstarts für Azure SQL-Datenbank)
+[Explore Azure SQL Database Solution Quick Starts (Entdecken Sie die lösungsbezogenen Schnellstarts für Azure SQL-Datenbank)](sql-database-solution-quick-starts.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

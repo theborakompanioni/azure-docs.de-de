@@ -15,7 +15,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="05/03/2016" 
+	ms.date="07/06/2016" 
 	ms.author="jeffstok"
 />
 
@@ -27,11 +27,11 @@ In diesem Tutorial wird eine CSV-Beispieldatei mit Text (siehe Abbildung 1 unte
 
 Abbildung 1:
 
-![Stream Analytics Machine Learning-Tutorial – Abbildung 1](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-1.png)
+![Stream Analytics Machine Learning-Tutorial – Abbildung 1](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)
 
 Abbildung 2:
 
-![Stream Analytics Machine Learning-Tutorial – Abbildung 2](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)
+![Stream Analytics Machine Learning-Tutorial – Abbildung 2](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-1.png)
 
 ## Voraussetzungen
 
@@ -46,14 +46,14 @@ Die ausgeführten Schritte lassen sich grob wie folgt zusammenfassen:
 2.	Hinzufügen eines Sentiment Analytics-Modells aus dem Cortana Intelligence-Katalog in den Machine Learning-Arbeitsbereich
 3.	Bereitstellen dieses Modells als Webdienst im Azure Machine Learning-Arbeitsbereich
 4.	Erstellen eines Stream Analytics-Auftrags, mit dem dieser Webdienst als Funktion aufgerufen wird, um die Stimmung für die Texteingabe zu bestimmen
-5.	Starten des Stream Analytics-Auftrags und Verfolgen der Ausgabe 
+5.	Starten des Stream Analytics-Auftrags und Verfolgen der Ausgabe
 
 
 ## Hochladen der CSV-Eingabedatei in Blob Storage
 
 Für diesen Schritt können Sie eine beliebige CSV-Datei verwenden, z. B. die in der Einführung erwähnte Datei. Zum Hochladen der Datei können Sie den [Azure-Speicher-Explorer](http://storageexplorer.com/), Visual Studio oder auch benutzerdefinierten Code verwenden. In diesem Tutorial gelten die Beispiele für Visual Studio.
 
-1.	Erweitern Sie Azure, und klicken Sie mit der rechten Maustaste auf **Storage**. Wählen Sie **Externen Speicher anfügen** aus, und geben Sie **Kontoname** und **Kontoschlüssel** an.  
+1.	Erweitern Sie Azure, und klicken Sie mit der rechten Maustaste auf **Storage**. Wählen Sie **Externen Speicher anfügen** aus, und geben Sie **Kontoname** und **Kontoschlüssel** an.
 
     ![Stream Analytics Machine Learning-Tutorial – Server-Explorer](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-server-explorer.png)
 
@@ -65,13 +65,13 @@ Für diesen Schritt können Sie eine beliebige CSV-Datei verwenden, z. B. die i
 
 ## Hinzufügen des Sentiment Intelligence-Modells aus dem Cortana Analytics-Katalog
 
-1.	Laden Sie das [Predictive Experiment - Mini Twitter sentiment analysis](https://gallery.cortanaintelligence.com/Experiment/Predictive-Mini-Twitter-sentiment-analysis-Experiment-1) (Vorhersageexperiment – Mini Twitter Stimmungsanalyse) aus dem Cortana Intelligence-Katalog herunter.  
-2.	Klicken Sie in Studio auf **Öffnen**:  
+1.	Laden Sie das [Predictive Experiment - Mini Twitter sentiment analysis](https://gallery.cortanaintelligence.com/Experiment/Predictive-Mini-Twitter-sentiment-analysis-Experiment-1) (Vorhersageexperiment – Mini Twitter Stimmungsanalyse) aus dem Cortana Intelligence-Katalog herunter.
+2.	Klicken Sie in Studio auf **Öffnen**:
 
     ![Stream Analytics Machine Learning-Tutorial – Machine Learning Studio öffnen](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)
 
 3.	Melden Sie sich an, um zum Arbeitsbereich zu gelangen. Wählen Sie den Speicherort aus, der für Sie am besten geeignet ist.
-4.	Klicken Sie dann unten in Studio auf **Ausführen**.  
+4.	Klicken Sie dann unten in Studio auf **Ausführen**.
 5.	Klicken Sie nach der erfolgreichen Ausführung auf **Deploy Web Service**.
 6.	Das Sentiment Analytics-Modell ist jetzt bereit für die Verwendung. Klicken Sie zum Überprüfen auf die Schaltfläche **Test**. Wenn Sie beispielsweise den Text „I love Microsoft“ eingeben, ähnelt das Ergebnis des Tests dieser Ausgabe:
 
@@ -89,21 +89,21 @@ Notieren Sie sich die Webdienst-URL und den Zugriffsschlüssel aus den herunterg
 
 ## Erstellen eines Stream Analytics-Auftrags mit Nutzung des Machine Learning-Modells
 
-1.	Navigieren Sie zum [Azure-Verwaltungsportal](https://manage.windowsazure.com).  
-2.	Klicken Sie auf **Neu**, **Data Services**, **Stream Analytics** und **Schnellerfassung**. Geben Sie den **Auftragsnamen** und die richtige **Region** für den Auftrag an, und wählen Sie ein **Speicherkonto für regionale Überwachung** aus.    
-3.	Navigieren Sie nach der Erstellung des Auftrags zur Registerkarte **Eingaben**, und klicken Sie auf **Eingabe hinzufügen**.  
+1.	Navigieren Sie zum [Azure-Verwaltungsportal](https://manage.windowsazure.com).
+2.	Klicken Sie auf **Neu**, **Data Services**, **Stream Analytics** und **Schnellerfassung**. Geben Sie den **Auftragsnamen** und die richtige **Region** für den Auftrag an, und wählen Sie ein **Speicherkonto für regionale Überwachung** aus.
+3.	Navigieren Sie nach der Erstellung des Auftrags zur Registerkarte **Eingaben**, und klicken Sie auf **Eingabe hinzufügen**.
 
     ![Stream Analytics Machine Learning-Tutorial – Machine Learning-Eingabe hinzufügen](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-add-input-screen.png)
 
 4.	Wählen Sie auf der ersten Seite des Assistenten **Eingabe hinzufügen** die Option **Datenstrom** aus, und klicken Sie auf „Weiter“. Wählen Sie auf der zweiten Seite **Blob Storage** als Eingabe aus, und klicken Sie auf **Weiter**.
-5.	Geben Sie im Assistenten auf der Seite **Einstellungen des Blobspeichers** den Namen des Speicherkonto-Blob-Containers an, den Sie beim Hochladen der Daten definiert haben. Klicken Sie auf **Weiter**. Wählen Sie als **Ereignisserialisierungsformat** die Option **CSV** aus. Übernehmen Sie für die restlichen **Serialisierungseinstellungen** die Standardwerte. Klicken Sie auf **OK**.  
-6.	Navigieren Sie zur Registerkarte **Ausgaben**, und klicken Sie auf **Ausgabe hinzufügen**.  
+5.	Geben Sie im Assistenten auf der Seite **Einstellungen des Blobspeichers** den Namen des Speicherkonto-Blob-Containers an, den Sie beim Hochladen der Daten definiert haben. Klicken Sie auf **Weiter**. Wählen Sie als **Ereignisserialisierungsformat** die Option **CSV** aus. Übernehmen Sie für die restlichen **Serialisierungseinstellungen** die Standardwerte. Klicken Sie auf **OK**.
+6.	Navigieren Sie zur Registerkarte **Ausgaben**, und klicken Sie auf **Ausgabe hinzufügen**.
 
     ![Stream Analytics Machine Learning-Tutorial – Ausgabe hinzufügen](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-add-output-screen.png)
 
 7.	Wählen Sie die Option **Blob Storage** und geben Sie mit Ausnahme des Containers die gleichen Parameter an. Die **Eingabe** wurde so konfiguriert, dass aus dem Container mit dem Namen „test“ gelesen wird, in den die **CSV**-Datei hochgeladen wurde. Geben Sie unter **Ausgabe** „testoutput“ ein. Die Containernamen müssen unterschiedlich sein. Stellen Sie sicher, dass dieser Container vorhanden ist.
 8.	Klicken Sie auf **Weiter**, um die **Serialisierungseinstellungen** der Ausgabe zu konfigurieren. Wählen Sie wie bei der Eingabe die Option **CSV**, und klicken Sie auf die Schaltfläche **OK**.
-9.	Navigieren Sie zur Registerkarte **Funktionen**, und klicken Sie auf **Add a Machine Learning Function**.  
+9.	Navigieren Sie zur Registerkarte **Funktionen**, und klicken Sie auf **Add a Machine Learning Function**.
 
     ![Stream Analytics Machine Learning-Tutorial – Machine Learning-Funktion hinzufügen](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-add-ml-function.png)
 
@@ -121,20 +121,20 @@ Notieren Sie sich die Webdienst-URL und den Zugriffsschlüssel aus den herunterg
 	Select text, result.[Score]  
 	Into output  
 	From subquery  
-```
+```    
 
-12. Klicken Sie auf **Speichern**, um die Abfrage zu speichern.    
+Klicken Sie dann einfach auf **Speichern**, um die Abfrage zu speichern.
 
 ## Starten des Stream Analytics-Auftrags und Verfolgen der Ausgabe
 
-1.	Klicken Sie unten im Auftrag auf **Starten**. 
-2.	Wählen Sie im Dialogfeld **Abfrage starten** die Option **Benutzerdefinierte Uhrzeit**, und wählen Sie einen Zeitpunkt aus, der vor dem Hochladen der CSV-Datei in die Blob Storage-Einheit liegt. Klicken Sie auf **OK**.  
+1.	Klicken Sie unten im Auftrag auf **Starten**.
+2.	Wählen Sie im Dialogfeld **Abfrage starten** die Option **Benutzerdefinierte Uhrzeit**, und wählen Sie einen Zeitpunkt aus, der vor dem Hochladen der CSV-Datei in die Blob Storage-Einheit liegt. Klicken Sie auf **OK**.
 
     ![Stream Analytics Machine Learning-Tutorial – Benutzerdefinierte Uhrzeit](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-custom-time.png)
 
 3.	Navigieren Sie mit dem Tool zur Blob Storage-Einheit, das Sie beim Hochladen der CSV-Datei verwendet haben. In diesem Tutorial wurde Visual Studio verwendet.
-4.	Einige Minuten nach dem Starten des Auftrags wird der Ausgabecontainer erstellt und eine CSV-Datei in den Container hochgeladen.  
-5.	Wenn Sie auf die Datei doppelklicken, wird der standardmäßige CSV-Editor geöffnet und enthält in etwa Folgendes:  
+4.	Einige Minuten nach dem Starten des Auftrags wird der Ausgabecontainer erstellt und eine CSV-Datei in den Container hochgeladen.
+5.	Wenn Sie auf die Datei doppelklicken, wird der standardmäßige CSV-Editor geöffnet und enthält in etwa Folgendes:
 
     ![Stream Analytics Machine Learning-Tutorial – CSV-Ansicht](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-csv-view.png)
 
@@ -144,10 +144,10 @@ In diesem Tutorial wurde ein Stream Analytics-Auftrag erstellt, mit dem Streamin
 
 Sie können sich auch die auf die Azure Machine Learning-Funktion bezogenen Metriken ansehen. Klicken Sie auf die Registerkarte **ÜBERWACHEN**. Sie sehen drei funktionsbezogene Metriken:
   
-- FUNKTIONSANFORDERUNGEN gibt die Anzahl von Anforderungen an den Machine Learning-Webdienst an.  
-- FUNKTIONSEREIGNISSE gibt die Anzahl von Ereignissen in der Anforderung an. Standardmäßig enthält jede Anforderung an einen ML-Webdienst bis zu 1.000 Ereignisse.  
-- FEHLGESCHLAGENE FUNKTIONSANFORDERUNGEN gibt die Anzahl von fehlgeschlagenen Anforderungen an den Machine Learning-Webdienst an.  
+- FUNKTIONSANFORDERUNGEN gibt die Anzahl von Anforderungen an den Machine Learning-Webdienst an.
+- FUNKTIONSEREIGNISSE gibt die Anzahl von Ereignissen in der Anforderung an. Standardmäßig enthält jede Anforderung an einen ML-Webdienst bis zu 1.000 Ereignisse.
+- FEHLGESCHLAGENE FUNKTIONSANFORDERUNGEN gibt die Anzahl von fehlgeschlagenen Anforderungen an den Machine Learning-Webdienst an.
 
     ![Stream Analytics Machine Learning-Tutorial – ML-Überwachungsansicht](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-ml-monitor-view.png)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0706_2016-->

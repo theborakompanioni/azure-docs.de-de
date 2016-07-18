@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/01/2016"
+   ms.date="07/01/2016"
    ms.author="barbkess;sonyama"/>
 
 # Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)
@@ -29,36 +29,20 @@ In der Architektur von SQL Data Warehouse werden Speicher- und Computeressourcen
 
 In dieser Übersicht werden die folgenden SQL Data Warehouse-Funktionen zum horizontalen Skalieren der Leistung beschrieben und Empfehlungen aufgeführt, wie und wann sie zu verwenden sind.
 
-- Skalieren der Computeleistung durch Anpassen von Data Warehouse-Einheiten (DWUs)
+- Skalieren der Computeleistung durch Anpassen von [Data Warehouse-Einheiten (DWUs)][]
 - Anhalten oder Fortsetzen von Computeressourcen
 
 <a name="scale-performance-bk"></a>
 
 ## Skalieren der Leistung
 
-In SQL Data Warehouse können Sie die Leistung schnell horizontal hoch- und wieder herunterskalieren, indem Sie die Computeressourcen für die CPU, den Arbeitsspeicher oder die E/A-Bandbreite erhöhen bzw. verringern. Um die Leistung zu skalieren, müssen Sie lediglich die Anzahl der DWUs (Data Warehouse-Einheiten) anpassen, die Ihrer Datenbank von SQL Data Warehouse zugewiesen werden. SQL Data Warehouse nimmt die Änderungen schnell vor und kümmert sich um alle zugrunde liegenden Änderungen an Hardware oder Software.
+In SQL Data Warehouse können Sie die Leistung schnell horizontal hoch- und wieder herunterskalieren, indem Sie die Computeressourcen für die CPU, den Arbeitsspeicher oder die E/A-Bandbreite erhöhen bzw. verringern. Um die Leistung zu skalieren, müssen Sie lediglich die Anzahl der [DWUs (Data Warehouse-Einheiten)][] anpassen, die Ihrer Datenbank von SQL Data Warehouse zugewiesen werden. SQL Data Warehouse nimmt die Änderungen schnell vor und kümmert sich um alle zugrunde liegenden Änderungen an Hardware oder Software.
 
->[AZURE.NOTE] Vorbei sind die Zeiten, in denen Sie die Art der Prozessoren, die Menge des Arbeitsspeichers oder den Speichertyp ermitteln mussten, um eine hohe Leistung des Data Warehouse zu erreichen. Durch das Verlagern des Data Warehouse in die Cloud müssen Sie nicht mehr mit Low-Level-Hardwareprobleme befassen. Stattdessen stellt SQL Data Warehouse Ihnen diese Frage: Wie schnell möchten Sie Ihre Daten analysieren?
-
-### Was ist eine DWU?
-
-Eine *Data Warehouse-Einheit* (DWU) ist ein Maß für die zugrunde liegenden Computefunktionen für Ihre Datenbank zu einem bestimmten Zeitpunkt. Mit zunehmender Anzahl von DWUs führt SQL Data Warehouse Vorgänge (z.B. das Laden oder Abfragen von Daten) parallel über stärker verteilte CPU- und Speicherressourcen aus. Dadurch verringert sich die Latenz, und die Leistung verbessert sich.
-
-DWUs basieren auf Auslastungs- und Scanraten. Wenn Sie die Anzahl von DWUs erhöhen, werden damit die Auslastungsrate und die Scanrate erhöht.
-
-- **Auslastungsrate**. Die Anzahl von Datensätzen, die SQL Data Warehouse pro Sekunde erfassen kann. Insbesondere ist dies die Anzahl von Datensätzen, die SQL Data Warehouse mithilfe von PolyBase aus Azure-Blobspeicher in einen gruppierten Columnstore-Index importieren kann. 
-
-- **Scanrate**. Die Anzahl von Datensätzen, die eine Abfrage pro Sekunde aus SQL Data Warehouse abrufen kann. Insbesondere ist dies die Anzahl von Datensätzen, die SQL Data Warehouse durch Ausführen einer Data Warehousing-Abfrage für einen gruppierten Columnstore-Index zurückgeben kann. Zum Testen der Scanrate wird eine Data Warehousing-Standardabfrage verwendet, mit der eine große Zahl von Zeilen gescannt und anschließend eine komplexe Aggregation durchgeführt wird. Dies ist ein E/A- und CPU-intensiver Vorgang.
-
->[AZURE.NOTE] Wir haben einige wichtige Leistungsverbesserungen gemessen und vorgenommen und werden die voraussichtlichen Raten in Kürze mitteilen. Während der Preview nehmen wir fortlaufend Verbesserungen (z. B. an Komprimierung und Caching) vor, um diese Raten zu erhöhen und eine vorhersagbare Skalierung sicherzustellen.
-
-Eine Liste der DWUs finden Sie im Artikel [Kapazitätsgrenzen][] unter den SLOs.
+Vorbei sind die Zeiten, in denen Sie die Art der Prozessoren, die Menge des Arbeitsspeichers oder den Speichertyp ermitteln mussten, um eine hohe Leistung des Data Warehouse zu erreichen. Durch das Verlagern des Data Warehouse in die Cloud müssen Sie nicht mehr mit Low-Level-Hardwareprobleme befassen. Stattdessen stellt SQL Data Warehouse Ihnen diese Frage: Wie schnell möchten Sie Ihre Daten analysieren?
 
 ### Wie skaliere ich die Leistung?
 
-Um die Computeleistung flexibel zu erhöhen oder zu verringern, ändern Sie einfach die Einstellung für die Data Warehouse-Einheiten (DWUs) für Ihre Datenbank. Hinter den Kulissen ändert SQL Data Warehouse die Zuteilung von CPU- und Speicherressourcen mithilfe der schnellen und einfachen Bereitstellungsfunktionen der SQL-Datenbank.
-
-DWUs werden in Blöcken von je 100 zugeordnet, aber nicht alle Blöcke sind verfügbar. Mit den DWUs steigt die Leistung linear an. Auf höheren DWU-Ebenen müssen Sie mehr als 100 DWUs hinzufügen, um eine merkliche Verbesserung der Leistung zu erzielen. Damit Sie sinnvolle DWU-Steigerungen wählen können, bieten wir die DWU-Ebenen an, mit denen Sie die besten Ergebnisse erzielen.
+Um die Computeleistung flexibel zu erhöhen oder zu verringern, ändern Sie einfach die Einstellung für die [Data Warehouse-Einheiten (DWUs)][] für Ihre Datenbank. Die Leistung steigt linear an, wenn Sie weitere DWUs hinzufügen. Auf höheren DWU-Ebenen müssen Sie mehr als 100 DWUs hinzufügen, um eine merkliche Verbesserung der Leistung zu erzielen. Damit Sie sinnvolle DWU-Steigerungen wählen können, bieten wir die DWU-Ebenen an, mit denen Sie die besten Ergebnisse erzielen.
  
 Zum Anpassen der DWUs können Sie eine beliebige dieser individuellen Methoden verwenden.
 
@@ -71,11 +55,11 @@ Zum Anpassen der DWUs können Sie eine beliebige dieser individuellen Methoden v
  
 Die Leistung in SQL Data Warehouse wird linear skaliert, und das Ändern von einer Compute-Skalierung in eine andere (z. B. von 100 DWUs auf 2000 DWUs) erfolgt in Sekunden. So erhalten Sie die Flexibilität, mit verschiedenen DWU-Einstellungen zu experimentieren, bis Sie die beste Lösung für Ihr Szenario gefunden haben.
 
-> [AZURE.NOTE] Bei niedrigeren Datenmengen werden Sie die erwartete Leistungsskalierung möglicherweise nicht feststellen. Wir empfehlen Ihnen, mit Datenvolumen von 1 TB oder höher zu beginnen, um bei Leistungstests genaue Ergebnisse zu erzielen.
+Damit Sie verstehen, wie Ihr idealer DWU-Wert lautet, sollten Sie versuchsweise hoch- und herunterskalieren und nach dem Laden der Daten einige Abfragen ausführen. Da die Skalierung schnell geht, können Sie es mit mehreren unterschiedlichen Leistungsebenen probieren, ohne dass dies länger als eine Stunde dauert. Beachten Sie, dass SQL Data Warehouse für die Verarbeitung von großen Datenmengen ausgelegt ist. Um die wahren Skalierungsmöglichkeiten zu nutzen, vor allem im Rahmen der von uns angebotenen größeren Skalierungen, sollten Sie ein großes Dataset von 1 TB oder darüber verwenden.
 
 Empfehlungen für das Finden der besten DWU-Anzahl für Ihre Workload:
 
-1. Beginnen Sie bei einem in der Entwicklung befindlichen Data Warehouse mit einer geringen Anzahl von DWUs.
+1. Beginnen Sie bei einem in der Entwicklung befindlichen Data Warehouse mit einer geringen Anzahl von DWUs. Ein guter Ausgangspunkt ist DW400 oder DW200.
 2. Überwachen Sie die Anwendungsleistung, und beobachten Sie dabei die Anzahl der ausgewählten DWUs im Vergleich zur beobachteten Leistung.
 3. Bestimmen Sie durch Annahme einer linearen Skalierung, wie viel schneller oder langsamer die Leistung für Sie sein muss, um die optimale Leistungsstufe für Ihre Anforderungen zu erreichen.
 4. Erhöhen oder verringern Sie die Anzahl von DWUs proportional dazu, wie viel schneller oder langsamer Ihre Workload ausgeführt werden soll. Der Dienst reagiert schnell und passt die Computeressourcen gemäß den neuen DWU-Anforderungen an.
@@ -83,12 +67,12 @@ Empfehlungen für das Finden der besten DWU-Anzahl für Ihre Workload:
 
 ### Wann sollte ich DWUs skalieren?
 
-Generell möchten wir DWUs einfach halten. Falls Sie schnellere Ergebnisse benötigen, sollten Sie Ihre DWUs erhöhen und für mehr Leistung zahlen. Falls Sie weniger Computeleistung benötigen, sollten Sie Ihre DWUs verringern und nur für die verbrauchte Leistung bezahlen.
+Falls Sie schnellere Ergebnisse benötigen, sollten Sie Ihre DWUs erhöhen und für mehr Leistung zahlen. Falls Sie weniger Computeleistung benötigen, sollten Sie Ihre DWUs verringern und nur für die verbrauchte Leistung bezahlen.
 
 Empfehlungen für den Zeitpunkt für die Skalierung von DWUs:
 
 1. Wenn Sie eine Anwendung mit wechselnder Workload haben, skalieren Sie die DWU-Anzahl nach oben oder unten, um Spitzen und Tiefpunkte zu berücksichtigen. Wenn eine Workload z.B. in der Regel am Ende des Monats einen Spitzenwert aufweist, fügen Sie während dieser Spitzenzeiten weitere DWUs hinzu, und entfernen Sie sie wieder, wenn diese Spitzenzeiten vorbei sind.
-1. Bevor Sie einen umfangreichen Vorgang zum Laden oder Transformieren von Daten durchführen, skalieren Sie die DWUs zentral hoch, damit die Daten schneller verfügbar sind.
+2. Bevor Sie einen umfangreichen Vorgang zum Laden oder Transformieren von Daten durchführen, skalieren Sie die DWUs zentral hoch, damit die Daten schneller verfügbar sind.
 
 <a name="pause-compute-bk"></a>
 
@@ -117,23 +101,28 @@ Verwenden Sie zum Fortsetzen einer Datenbank eine dieser individuellen Methoden.
 <a name="next-steps-bk"></a>
 
 ## Nächste Schritte
-Informationen zu zusätzlichen zentralen Leistung- und Skalierbarkeitskonzepten finden Sie in den folgenden Artikeln:
+Informationen zu zusätzlichen zentralen Leistungskonzepten finden Sie in den folgenden Artikeln:
 
-- [Parallelitätsmodell][]
-- [Entwerfen von Tabellen][]
-- [Auswählen eines Hashverteilungsschlüssels für die Tabelle][]
-- [Statistiken zum Verbessern der Leistung][]
+- [Parallelitäts- und Workloadverwaltung][]
+- [Overview of tables in SQL Data Warehouse][] (Übersicht über Tabellen in SQL Data Warehouse)
+- [Tabellenverteilung][]
+- [Tabellenindizierung][]
+- [Tabellenpartitionierung][]
+- [Tabellenstatistiken][]
+- [Bewährte Methoden][]
 
 <!--Image reference-->
 
 <!--Article references-->
+[DWUs (Data Warehouse-Einheiten)]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
+[Data Warehouse-Einheiten (DWUs)]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
 
 [Skalierung von Computeleistung mit dem Azure-Portal]: ./sql-data-warehouse-manage-compute-portal.md#scale-compute-bk
 [Skalierung von Computeleistung mit PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#scale-compute-bk
 [Skalierung von Computeleistung mit REST-APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#scale-compute-bk
 [Skalierung von Computeleistung mit TSQL]: ./sql-data-warehouse-manage-compute-tsql.md#scale-compute-bk
 
-[Kapazitätsgrenzen]: ./sql-data-warehouse-service-capacity-limits.md
+[capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
 
 [Anhalten von Computeressourcen mit dem Azure-Portal]: ./sql-data-warehouse-manage-compute-portal.md#pause-compute-bk
 [Anhalten von Computeressourcen mit PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#pause-compute-bk
@@ -143,19 +132,18 @@ Informationen zu zusätzlichen zentralen Leistung- und Skalierbarkeitskonzepten 
 [Fortsetzen von Computeressourcen mit PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#resume-compute-bk
 [Fortsetzen von Computeressourcen mit REST-APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#resume-compute-bk
 
-[Parallelitätsmodell]: sql-data-warehouse-develop-concurrency.md
-[Entwerfen von Tabellen]: sql-data-warehouse-develop-table-design.md
-[Auswählen eines Hashverteilungsschlüssels für die Tabelle]: sql-data-warehouse-develop-hash-distribution-key.md
-[Statistiken zum Verbessern der Leistung]: sql-data-warehouse-develop-statistics.md
-[development overview]: sql-data-warehouse-overview-develop.md
-
-
+[Parallelitäts- und Workloadverwaltung]: ./sql-data-warehouse-develop-concurrency.md
+[Overview of tables in SQL Data Warehouse]: ./sql-data-warehouse-tables-overview.md
+[Tabellenverteilung]: ./sql-data-warehouse-tables-distribute.md
+[Tabellenindizierung]: ./sql-data-warehouse-tables-index.md
+[Tabellenpartitionierung]: ./sql-data-warehouse-tables-partition.md
+[Tabellenstatistiken]: ./sql-data-warehouse-tables-statistics.md
+[Bewährte Methoden]: ./sql-data-warehouse-best-practices.md
+[development overview]: ./sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
 
-
 <!--Other Web references-->
-
 [Azure portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

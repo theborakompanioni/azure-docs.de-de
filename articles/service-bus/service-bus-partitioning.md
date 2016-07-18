@@ -12,8 +12,8 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="05/06/2016"
-    ms.author="sethm" />
+    ms.date="07/01/2016"
+    ms.author="sethm;hillaryc" />
 
 # Partitionierte Nachrichtenentitäten
 
@@ -93,7 +93,7 @@ Wenn Eigenschaften, die als Partitionsschlüssel dienen, festgelegt werden, heft
 
 Um eine Transaktionsnachricht an ein sitzungsorientiertes Thema bzw. eine Warteschlange zu senden, muss für die Nachricht die [BrokeredMessage.SessionId][]-Eigenschaft festgelegt sein. Wenn die [BrokeredMessage.PartitionKey][]-Eigenschaft ebenfalls angegeben wird, muss diese mit der [SessionId][]-Eigenschaft identisch sein. Falls sie sich unterscheiden, gibt Service Bus die Ausnahme **InvalidOperationException** aus.
 
-Im Gegensatz zu normalen (nicht partitionierten) Warteschlangen oder Themen ist es nicht möglich, eine einzelne Transaktion zu verwenden, um mehrere Nachrichten an verschiedene Sitzungen zu senden. Wenn Sie dies versuchen, gibt Service Bus die Ausnahme **InvalidOperationException** zurück. Beispiel:
+Im Gegensatz zu normalen (nicht partitionierten) Warteschlangen oder Themen ist es nicht möglich, eine einzelne Transaktion zu verwenden, um mehrere Nachrichten an verschiedene Sitzungen zu senden. Wenn Sie dies versuchen, gibt Service Bus die Ausnahme **InvalidOperationException** zurück. Zum Beispiel:
 
 ```
 CommittableTransaction committableTransaction = new CommittableTransaction();
@@ -111,21 +111,30 @@ committableTransaction.Commit();
 
 Azure Service Bus unterstützt die automatische Nachrichtenweiterleitung von, an oder zwischen partitionierten Entitäten. Legen Sie zum Aktivieren der automatischen Nachrichtenweiterleitung die [QueueDescription.ForwardTo][]-Eigenschaft für die Quellwarteschlange oder das Abonnement fest. Wenn für die Nachricht ein Partitionsschlüssel ([SessionId][], [PartitionKey][] oder [MessageId][]) angegeben wird, wird er für die Zielentität verwendet.
 
+## Aspekte und Richtlinien
+
+- **Features für hohe Konsistenz**: Wenn eine Entität Features wie Sitzungen, Duplikaterkennung oder die explizite Steuerung eines Partitionierungsschlüssels verwendet, werden die Messagingvorgänge immer an bestimmte Fragmente geleitet. Wenn für ein Fragment hoher Datenverkehr auftritt oder der zugrunde liegende Speicher fehlerhaft ist, schlagen diese Vorgänge fehl, und die Verfügbarkeit wird reduziert. Insgesamt ist die Konsistenz trotzdem deutlich höher als bei nicht partitionierten Entitäten: Nur für eine Teilmenge des Datenverkehrs treten Probleme auf, und nicht für den gesamten Datenverkehr.
+- **Verwaltung**: Vorgänge wie das Erstellen, Aktualisieren und Löschen müssen für alle Fragmente der Entität durchgeführt werden. Wenn ein Fragment fehlerhaft ist, kann dies zu Fehlern bei diesen Vorgängen führen. Für den Get-Vorgang müssen Informationen aus allen Fragmenten aggregiert werden, z.B. die Nachrichtenanzahl. Wenn ein Fragment einen Fehler aufweist, wird der Verfügbarkeitsstatus der Entität als „Eingeschränkt“ gemeldet.
+- **Nachrichtenszenarien mit geringem Volumen**: Für diese Szenarien, vor allem bei Verwendung des HTTP-Protokolls, müssen Sie ggf. mehrere Empfangsvorgänge durchführen, um alle Nachrichten zu erhalten. Für Empfangsanforderungen führt das Front-End den Empfangsvorgang auf allen Fragmenten durch und speichert alle empfangenen Antworten zwischen. Eine nachfolgende Empfangsanforderung derselben Verbindung profitiert von dieser Zwischenspeicherung, und die Latenzen für den Empfang sind niedriger. Wenn Sie über mehrere Verbindungen verfügen oder HTTP verwenden, wird für jede Anforderung eine neue Verbindung hergestellt. Es besteht also keine Garantie, dass sie auf demselben Knoten eintrifft. Wenn alle vorhandenen Nachrichten gesperrt sind und auf einem anderen Front-End zwischengespeichert werden, gibt der Empfangsvorgang **null** zurück. Nachrichten laufen nach einer gewissen Zeit ab und können von Ihnen dann erneut empfangen werden. Hierfür wird HTTP-Keep-Alive empfohlen.
+- **Durchsuchen/Einsehen von Nachrichten**: PeekBatch gibt nicht immer die Anzahl von Nachrichten zurück, die in der [MessageCount-Eigenschaft](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.messagecount.aspx) angegeben sind. Hierfür gibt es zwei häufige Ursachen. Ein Grund ist, dass die aggregierte Größe der Sammlung mit Nachrichten die maximale Größe von 256 KB übersteigt. Ein weiterer Grund ist: Wenn für die Warteschlange oder das Thema die [EnablePartitioning-Eigenschaft](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.enablepartitioning.aspx) auf **true** festgelegt ist, verfügt eine Partition ggf. nicht über genügend Nachrichten, um die angeforderte Anzahl von Nachrichten abzuarbeiten. Wenn eine Anwendung eine bestimmte Anzahl von Nachrichten empfangen möchte, sollte sie im Allgemeinen mehrfach [PeekBatch](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.peekbatch.aspx) aufrufen, bis die benötigte Anzahl von Nachrichten erreicht ist oder keine einzusehenden Nachrichten mehr vorhanden sind. Weitere Informationen, z.B. Codebeispiele, finden Sie unter [QueueClient.PeekBatch](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.peekbatch.aspx) oder [SubscriptionClient.PeekBatch](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.peekbatch.aspx).
+
+## Neueste Funktionen
+
+- Das Hinzufügen und Entfernen von Regeln wird jetzt für partitionierte Entitäten unterstützt. Diese Vorgänge werden nicht unter Transaktionen unterstützt, was einen Unterschied zu nicht partitionierten Entitäten darstellt.
+- Für AMQP wird jetzt das Senden und Empfangen von Nachrichten an bzw. von einer partitionierten Entität unterstützt.
+- AMQP wird jetzt für die folgenden Vorgänge unterstützt: [Batchsendevorgang](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.sendbatch.aspx), [Batchempfangsvorgang](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.receivebatch.aspx), [Nach Sequenznummer empfangen](https://msdn.microsoft.com/library/azure/hh330765.aspx), [Einsehen](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.peek.aspx), [Sperre erneuern](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.renewmessagelock.aspx), [Nachricht planen](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.schedulemessageasync.aspx), [Geplante Nachricht abbrechen](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.cancelscheduledmessageasync.aspx), [Regel hinzufügen](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.ruledescription.aspx), [Regel entfernen](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.ruledescription.aspx), [Sitzungssperre erneuern](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesession.renewlock.aspx), [Sitzungsstatus festlegen](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesession.setstate.aspx), [Sitzungsstatus abrufen](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesession.getstate.aspx), [Sitzungsnachrichten einsehen](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesession.peek.aspx) und [Sitzungen aufzählen](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.queueclient.getmessagesessionsasync.aspx).
+
 ## Einschränkungen partitionierter Entitäten
 
 In der aktuellen Implementierung gelten bei Service Bus die folgenden Einschränkungen für partitionierte Warteschlangen und Themen:
 
--   Partitionierte Warteschlangen und Themen sind per SBMP oder HTTP/HTTPS sowie mit AMQP verfügbar.
-
 -   Für partitionierte Warteschlangen und Themen wird nicht das Senden von Nachrichten unterstützt, die unterschiedlichen Sitzungen einer einzelnen Transaktion angehören.
-
 -   Service Bus erlaubt derzeit bis zu 100 partitionierte Warteschlangen oder Themen pro Namespace. Jede partitionierte Warteschlange bzw. jedes partitionierte Thema wird in das zulässige Kontingent von 10.000 Entitäten pro Namespace eingerechnet.
-
 -   Partitionierte Warteschlangen und Themen werden für die Versionen 1.0 und 1.1 von Service Bus für Windows Server nicht unterstützt.
 
 ## Nächste Schritte
 
-Weitere Informationen zur Partitionierung von Nachrichtenentitäten finden Sie in der Diskussion [AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus][].
+Weitere Informationen zur Partitionierung von Nachrichtenentitäten finden Sie unter [AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus][].
 
   [Service Bus-Architektur]: service-bus-architecture.md
   [klassischen Azure-Portal]: http://manage.windowsazure.com
@@ -144,4 +153,4 @@ Weitere Informationen zur Partitionierung von Nachrichtenentitäten finden Sie i
   [QueueDescription.ForwardTo]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.forwardto.aspx
   [AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

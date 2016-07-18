@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/25/2016" 
+	ms.date="06/21/2016" 
 	ms.author="rclaus"/>
 
 
@@ -171,4 +171,4 @@ In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter "/dev
 
 	Informationen zum Bearbeiten der Kernel-Parameter erhalten Sie in der Dokumentation der Verteilung. Beispielsweise können diese Parameter der Datei „`/boot/grub/menu.lst`“ in vielen Distributionen (CentOS, Oracle Linux, SLES 11) manuell hinzugefügt werden. In Ubuntu kann dieser Parameter der Variablen `GRUB_CMDLINE_LINUX_DEFAULT` unter „/etc/default/grub“ hinzugefügt werden.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0706_2016-->

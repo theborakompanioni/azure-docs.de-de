@@ -34,7 +34,7 @@ Bitte verwenden Sie unser [Microsoft Azure Machine Learning-Forum](https://socia
 
 Greifen Sie über den Cortana Intelligence-Katalog auf die Wettbewerbshomepage zu. Diese Seite enthält alle aktuellen Wettbewerbe. Auf der Anmeldeseite jedes Wettbewerbs finden Sie genaue Anweisungen und Teilnahmeregeln, Preise und die Dauer des Wettbewerbs. Klicken Sie [hier](http://aka.ms/CIComp), um auf die Wettbewerbshomepage zu gelangen.
 
-1. Suchen Sie den Wettbewerb, an dem Sie teilnehmen möchten, im Cortana Intelligence-Katalog. Lesen Sie sich alle Anweisungen durch, und schauen Sie sich das Videotutorial an. Klicken Sie anschließend auf die Schaltfläche „Enter Competition“ (am Wettbewerb teilnehmen), um das Starterexperiment in Ihren vorhandenen Azure Machine Learning-Arbeitsbereich zu kopieren. Wenn Sie noch keinen Zugriff auf einen Arbeitsbereich haben, müssen Sie vorab einen erstellen. Führen Sie das Starterexperiment aus und beobachten Sie die Leistungsmetrik. Nutzen Sie anschließend Ihre Kreativität, um die Leistung des Modells zu verbessern. Wahrscheinlich verwenden Sie den Großteil Ihrer Zeit für diesen Schritt.   
+1. Suchen Sie den Wettbewerb, an dem Sie teilnehmen möchten, im Cortana Intelligence-Katalog. Lesen Sie sich alle Anweisungen durch, und schauen Sie sich das Videotutorial an. Klicken Sie anschließend auf die Schaltfläche „Enter Competition“ (am Wettbewerb teilnehmen), um das Starterexperiment in Ihren vorhandenen Azure Machine Learning-Arbeitsbereich zu kopieren. Wenn Sie noch keinen Zugriff auf einen Arbeitsbereich haben, müssen Sie vorab einen erstellen. Führen Sie das Starterexperiment aus und beobachten Sie die Leistungsmetrik. Nutzen Sie anschließend Ihre Kreativität, um die Leistung des Modells zu verbessern. Wahrscheinlich verwenden Sie den Großteil Ihrer Zeit für diesen Schritt.
 
 2. Erstellen Sie mit dem trainierten Modell aus dem Starterexperiment ein Vorhersageexperiment. Passen Sie anschließend sorgfältig das Ein- und Ausgabeschema des Webdiensts an, um sicherzustellen, dass diese den in der Wettbewerbsdokumentation angegeben Anforderungen entsprechen. Das Tutorialdokument wird im Allgemeinen detaillierte Anweisungen hierzu enthalten. Sie können auch das Videotutorial anschauen, falls eines existiert.
 
@@ -54,7 +54,7 @@ Nein. Wir empfehlen Datenbegeisterten, Data Science-Interessierten und anderen a
 
 * Data Stewards – Personen, die sich mit den Daten auskennen, und sowohl wissen was sie bedeuten als auch wie und wofür sie genutzt werden sollen
 
-* Studenten und Forscher – Personen, die derzeit datenbezogene Fähigkeiten über akademische Programme an Universitäten erlernen, oder Teilnehmer an massiven offenen Online-Kursen (Massive Open Online Courses; MOOCs)
+* Studenten und Forscher – Personen, die derzeit datenbezogene Fähigkeiten über akademische Programme an Universitäten erlernen, oder Teilnehmer an MOOC-Kursen (Massive Open Online Courses)
 
 
 **Kann ich mit meinen Kollegen zusammen als Team teilnehmen?**
@@ -115,4 +115,4 @@ Die Wettbewerbsplattform unterstützt derzeit nur die Einreichung von Beiträgen
 
 Benutzerbeiträge werden nur zu Bewertungszwecken, also zum Ermitteln der Gewinnerlösungen aufbewahrt. Weitere Informationen finden Sie in unseren [Geschäftsbedingungen](http://aka.ms/comptermsandconditions).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

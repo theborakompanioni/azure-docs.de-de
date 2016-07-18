@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/04/2016"
+	ms.date="06/30/2016"
 	ms.author="tdykstra"/>
 
 # Benutzerauthentifizierung für API-Apps in Azure App Service
@@ -91,7 +91,7 @@ Nun wird die Anwendung in Azure App Service ausgeführt, ohne dass Benutzer auth
 
 * Konfigurieren Sie App Service so, dass zum Aufrufen der API-App der mittleren Ebene die Azure Active Directory-Authentifizierung (Azure AD) erforderlich ist.
 * Erstellen Sie eine Azure AD-Anwendung.
-* Konfigurieren Sie die Azure AD-Anwendung so, dass das Bearertoken nach der Anmeldung an das AngularJS-Front-End gesendet wird. 
+* Konfigurieren Sie die Azure AD-Anwendung so, dass das Bearertoken nach der Anmeldung an das AngularJS-Front-End gesendet wird.
 
 Wenn beim Befolgen der Anweisungen in diesem Tutorial Probleme auftreten, lesen Sie den Abschnitt [Problembehandlung](#troubleshooting) am Ende des Tutorials.
  
@@ -135,7 +135,7 @@ Jetzt kann die API-App nur von Benutzern aufgerufen werden, die im Azure AD-Mand
 
 ### Optional: Testen der API-App
 
-1. Navigieren Sie in einem Browser zur URL der API-App: Klicken Sie auf dem Blatt **API-App** im Azure-Portal auf den Link unter **URL**.  
+1. Navigieren Sie in einem Browser zur URL der API-App: Klicken Sie auf dem Blatt **API-App** im Azure-Portal auf den Link unter **URL**.
 
 	Sie werden auf eine Anmeldeseite umgeleitet, da nicht authentifizierte Anforderungen die API-App nicht erreichen dürfen.
 
@@ -329,11 +329,11 @@ Weitere Informationen zum Erstellen einer einseitigen AngularJS-Anwendung mit ei
 
 [AZURE.INCLUDE [Problembehandlung](../../includes/app-service-api-auth-troubleshooting.md)]
 
-* Achten Sie darauf, ToDoListAPI (mittlere Ebene) und ToDoListDataAPI (Datenebene) nicht zu verwechseln. Stellen Sie z. B. sicher, dass Sie die Authentifizierung für die API-App der mittleren Ebene – nicht der Datenebene – hinzufügen. 
-* Vergewissern Sie sich, dass der AngularJS-Quellcode auf die API-App-URL der mittleren Ebene (ToDoListAPI, nicht ToDoListDataAPI) sowie auf die richtige Azure AD-Client-ID verweist. 
+* Achten Sie darauf, ToDoListAPI (mittlere Ebene) und ToDoListDataAPI (Datenebene) nicht zu verwechseln. Stellen Sie z. B. sicher, dass Sie die Authentifizierung für die API-App der mittleren Ebene – nicht der Datenebene – hinzufügen.
+* Vergewissern Sie sich, dass der AngularJS-Quellcode auf die API-App-URL der mittleren Ebene (ToDoListAPI, nicht ToDoListDataAPI) sowie auf die richtige Azure AD-Client-ID verweist.
 
 ## Nächste Schritte
 
 In diesem Tutorial haben Sie gelernt, wie Sie die App Service-Authentifizierung für eine API-App verwenden und die API-App mit der ADAL-JS-Bibliothek aufrufen. Im nächsten Tutorial geht es um das [Schützen des Zugriffs auf Ihre API-App für Dienst-zu-Dienst-Szenarien](app-service-api-dotnet-service-principal-auth.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -32,7 +32,7 @@ Damit Sie Windows PowerShell-Cmdlets verwenden können, müssen Sie sie zunächs
 
 - [Festlegen, dass ein Kennwort abläuft](#set-a-password-to-expire)
 
-- [Festlegen, dass ein Kennwort nicht abläuft](#set-a-password-not-to-expire)
+- [Festlegen, dass ein Kennwort nicht abläuft](#set-a-password-to-never-expire)
 
 ## Überprüfen der Ablaufrichtlinie für ein Kennwort
 
@@ -64,4 +64,4 @@ Damit Sie Windows PowerShell-Cmdlets verwenden können, müssen Sie sie zunächs
 
 	- Um für die Kennwörter aller Benutzer in einer Organisation festzulegen, dass sie nie ablaufen, führen Sie das folgende Cmdlet aus: `Get-MSOLUser | Set-MsolUser -PasswordNeverExpires \$true`
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

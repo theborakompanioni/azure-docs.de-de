@@ -66,4 +66,4 @@ Wenn Sie den gesamten Prozess und die entsprechenden Artikel für die einzelnen 
 
 [link-acct]: marketplace-publishing-accounts-creation-registration.md
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -4,7 +4,7 @@
 	services="notification-hubs" 
 	documentationCenter="" 
 	authors="wesmc7777" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor="" />
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="powershell" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/28/2016" 
+	ms.date="06/29/2016" 
 	ms.author="wesmc"/>
 
 # Bereitstellen und Verwalten von Notification Hubs mit PowerShell
@@ -96,7 +96,7 @@ Verwenden Sie zum Bereitstellen eines neuen Notification Hubs die [.NET-API für
 In diesem Teil des Skripts erstellen Sie vier lokale Variablen.
 
 1. `$Namespace` : Legen Sie diese auf den Namen des Namespace fest, in dem Sie einen Notification Hub erstellen möchten.
-2. `$Path` : Legen Sie diesen Pfad auf den Namen des neuen Notification Hubs fest. Beispiel: "MyHub".    
+2. `$Path` : Legen Sie diesen Pfad auf den Namen des neuen Notification Hubs fest. Beispiel: "MyHub".
 3. `$WnsPackageSid` : Legen Sie diese Variable auf die Paket-SID für Ihre Windows-App aus dem [Windows-Entwicklungscenter](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409) fest.
 4. `$WnsSecretkey`: Legen Sie diese auf den geheimen Schlüssel für Ihre Windows-App aus dem [Windows-Entwicklungscenter](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409) fest.
 
@@ -172,4 +172,4 @@ Es stehen auch einige einsatzbereite Skripts zum Download zur Verfügung:
 [Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/library/azure/dn495113.aspx
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

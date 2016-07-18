@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="04/29/2016"
+      ms.date="06/29/2016"
       ms.author="hascipio; avikova" />
 
 # Grundlegende Informationen zum Knotenschema zum Zuordnen eines vorhandenen Webdiensts zu OData über CSDL
@@ -39,9 +39,9 @@ Im Folgenden werden die Änderungen (hinzugefügte und ignorierte Elemente) der 
 ## FunctionImport-Knoten
 Ein FunctionImport-Knoten stellt eine URL (Einstiegspunkt) dar, die einen Dienst für den Endbenutzer verfügbar macht. Der Knoten beschreibt immer, wie die URL adressiert wird, welche Parameter für den Endbenutzer verfügbar sind, und wie diese Parameter bereitgestellt werden.
 
-Details zu diesem Knoten finden Sie unter [http://msdn.microsoft.com/library/cc716710(v=vs.100).aspx][MSDNFunctionImportLink].
+Details zu diesem Knoten finden Sie [hier][MSDNFunctionImportLink].
 
-[MSDNFunctionImportLink]: 'http://msdn.microsoft.com/library/cc716710(v=vs.100).aspx'
+[MSDNFunctionImportLink]: (https://msdn.microsoft.com/library/cc716710(v=vs.100).aspx)
 
 Im Folgenden werden die zusätzlichen Attribute (oder Ergänzungen von Attributen) aufgeführt, die von den FunctionImport-Knoten verfügbar gemacht werden:
 
@@ -53,13 +53,13 @@ Im Folgenden werden die zusätzlichen Attribute (oder Ergänzungen von Attribute
 
 **ReturnType** *(optional)* – Gibt den Typ der Elemente an, die vom URI zurückgegeben werden. Verwenden Sie dieses Attribut nicht, wenn die Funktion keinen Wert zurückgibt. Folgende Typen werden unterstützt:
 
- - **Collection (<Entity type name>)**: Gibt eine Auflistung definierter Entitätstypen an. Der Name ist im Name-Attribut des Knotens "EntityType" vorhanden. Ein Beispiel ist "Collection (WXC. HourlyResult)".
- - **Raw (<mime type>)**: Gibt ein unformatiertes Dokument/einen unformatierten Blob an, das/der an den Benutzer zurückgegeben wird. Ein Beispiel ist "Raw(image/jpeg)". Andere Beispiele:
+ - **Collection (<Entitätstypname>)**: Gibt eine Auflistung definierter Entitätstypen an. Der Name ist im Name-Attribut des Knotens "EntityType" vorhanden. Ein Beispiel ist "Collection (WXC. HourlyResult)".
+ - **Raw (<MIME-Typ>)**: Gibt ein unformatiertes Dokument/einen unformatierten Blob an, das bzw. der an den Benutzer zurückgegeben wird. Ein Beispiel ist "Raw(image/jpeg)". Andere Beispiele:
 
   - ReturnType="Raw(text/plain)"
   - ReturnType="Collection(sage.DeleteAllUsageFilesEntity)"*
 
-**d:Paging** – Gibt an, wie Auslagern durch die REST-Ressource ausgeführt wird. Die Parameterwerte werden in geschweiften Klammern verwendet, z. B. page={$page}&itemsperpage={$size}. Die verfügbaren Optionen sind:
+**d:Paging**: Gibt an, wie Auslagern durch die REST-Ressource ausgeführt wird. Die Parameterwerte werden in geschweiften Klammern verwendet, z. B. page={$page}&itemsperpage={$size}. Die verfügbaren Optionen sind:
 
 - **None**: Auslagern ist nicht verfügbar
 - **Skip**: Auslagern wird über logisches "Skip" und "Take" (oben) ausgedrückt. "Skip" springt über M Elemente, und "Take" gibt dann die nächsten N Elemente zurück. Parameterwert: "$skip"
@@ -143,18 +143,18 @@ Zusätzliche untergeordnete (nicht in der CSDL-Dokumentation behandelte) Knoten 
 
 Dieser Knoten stellt einen Parameter dar, der als Teil der URI-Vorlage/des Anforderungstexts verfügbar gemacht wird, der im Knoten "FunctionImport" angegeben wurde.
 
-Eine sehr hilfreiche Dokumentseite mit näheren Informationen über den Knoten "Parameter-Element" finden Sie unter [http://msdn.microsoft.com/library/ee473431.aspx](http://msdn.microsoft.com/library/ee473431.aspx) (Verwenden Sie die Dropdownliste **Andere Versionen**, um ggf. eine andere Version zum Anzeigen der Dokumentation auszuwählen). *Beispiel:* `<Parameter Name="Query" Nullable="false" Mode="In" Type="String" d:Description="Query" d:SampleValues="Rudy Duck" d:EncodeParameterValue="true" MaxLength="255" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Identity"/>`
+Eine sehr hilfreiche Dokumentseite mit näheren Informationen über den Knoten „Parameter-Element“ finden Sie [hier](http://msdn.microsoft.com/library/ee473431.aspx). (Verwenden Sie die Dropdownliste **Andere Versionen**, um ggf. eine andere Version zum Anzeigen der Dokumentation auszuwählen.) *Beispiel:* `<Parameter Name="Query" Nullable="false" Mode="In" Type="String" d:Description="Query" d:SampleValues="Rudy Duck" d:EncodeParameterValue="true" MaxLength="255" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Identity"/>`
 
 | Parameterattribut | Ist erforderlich | Wert |
 |----|----|----|
 | Name | Ja | Der Name des Parameters. Groß-/Kleinschreibung wird berücksichtigt! Muss mit der BaseUri-Schreibweise übereinstimmen. **Beispiel:** `<Property Name="IsDormant" Type="Byte" />` |
-| Typ | Ja | Der Parametertyp. Der Wert muss ein **EDMSimpleType** oder ein komplexer Typ sein, der im Gültigkeitsbereich des Modells liegt. Weitere Informationen finden Sie unter "6 unterstützte Parameter-/Eigenschaftstypen". (Groß-/Kleinschreibung wird berücksichtigt! Erstes Zeichen in Großbuchstaben, der Rest in Kleinbuchstaben.) Lesen Sie auch [http://msdn.microsoft.com/library/bb399548(v=VS.100).aspx][MSDNParameterLink]. **Beispiel:** `<Property Name="LimitedPartnershipID " Type="Int32" />` |
+| Typ | Ja | Der Parametertyp. Der Wert muss ein **EDMSimpleType** oder ein komplexer Typ sein, der im Gültigkeitsbereich des Modells liegt. Weitere Informationen finden Sie unter "6 unterstützte Parameter-/Eigenschaftstypen". (Groß-/Kleinschreibung wird berücksichtigt! Erstes Zeichen in Großbuchstaben, der Rest in Kleinbuchstaben.) Siehe auch [Konzeptionelle Modelltypen][MSDNParameterLink]. **Beispiel:** `<Property Name="LimitedPartnershipID " Type="Int32" />` |
 | Mode | Nein | **In**, "Out" oder "InOut", je nachdem, ob der Parameter ein Eingabe-, Ausgabe- oder Eingabe-/Ausgabeparameter ist. (Nur "IN" ist im Azure Marketplace verfügbar.) **Beispiel:** `<Parameter Name="StudentID" Mode="In" Type="Int32" />` |
 | MaxLength | Nein | Die maximal zulässige Länge des Parameters. **Beispiel:** `<Property Name="URI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />` |
 | Precision | Nein | Die Genauigkeit des Parameters. **Beispiel:** `<Property Name="PreviousDate" Type="DateTime" Precision="0" />` |
 | Skalieren | Nein | Der Maßstab des Parameters. **Beispiel:** `<Property Name="SICCode" Type="Decimal" Precision="10" Scale="0" />` |
 
-[MSDNParameterLink]: 'http://msdn.microsoft.com/library/bb399548(v=VS.100).aspx'
+[MSDNParameterLink]: (http://msdn.microsoft.com/library/bb399548(v=VS.100).aspx)
 
 Folgende Attribute wurden der CSDL-Spezifikation hinzugefügt:
 
@@ -169,7 +169,7 @@ Folgende Attribute wurden der CSDL-Spezifikation hinzugefügt:
 
 Dieser Knoten entspricht einem der Typen, die dem Endbenutzer über den Marketplace zurückgegeben werden. Er enthält auch die Zuordnung aus der Ausgabe, die vom Inhaltsanbieterdienst an die Werte zurückgegeben wird, die an den Endbenutzer zurückgegeben werden.
 
-Nähere Informationen über diesen Knoten finden Sie unter [http://msdn.microsoft.com/library/bb399206.aspx](http://msdn.microsoft.com/library/bb399206.aspx) (Verwenden Sie die Dropdownliste **Andere Versionen**, um ggf. eine andere Version zum Anzeigen der Dokumentation auszuwählen).
+Nähere Informationen über diesen Knoten finden Sie [hier](http://msdn.microsoft.com/library/bb399206.aspx). (Verwenden Sie die Dropdownliste **Andere Versionen**, um ggf. eine andere Version zum Anzeigen der Dokumentation auszuwählen.)
 
 | Attributname | Ist erforderlich | Wert |
 |----|----|----|
@@ -272,4 +272,4 @@ Die folgenden Parameter- und Eigenschaftstypen werden unterstützt. (Groß-/Klei
 - Wenn Sie an Beispielen interessiert sind, lesen Sie den Artikel [Beispiele für die OData-Zuordnung im Datendienst](marketplace-publishing-data-service-creation-odata-mapping-examples.md), um Beispielcode kennen zu lernen und Codesyntax und Kontext zu verstehen.
 - Um zum vorgeschriebenen Pfad für die Veröffentlichung eines Datendiensts im Azure Marketplace zurückzukehren, lesen Sie den Artikel [Leitfaden zum Veröffentlichen von Datendiensten](marketplace-publishing-data-service-creation.md).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0706_2016-->

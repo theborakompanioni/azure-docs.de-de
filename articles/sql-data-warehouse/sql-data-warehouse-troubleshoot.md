@@ -13,88 +13,64 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/28/2016"
+   ms.date="07/01/2016"
    ms.author="sonyama;barbkess"/>
 
 # Problembehandlung bei Azure SQL Data Warehouse
-In diesem Thema sind einige der Probleme aufgeführt, die bei der Verwendung von Azure SQL Data Warehouse ggf. auftreten.
+
+In diesem Thema sind einige häufige Fragen zur Problembehandlung aufgeführt, die von Kunden gestellt werden.
+
+## Herstellen einer Verbindung
+
+| Problem | Lösung |
+| :----------------------------------| :---------------------------------------------- |
+| CTAIP-Fehler | Dieser Fehler kann auftreten, wenn zwar eine Anmeldung für die SQL Server-Masterdatenbank erstellt wurde, dies jedoch in der SQL Data Warehouse-Datenbank unterlassen wurde. Lesen Sie den [Übersichtsartikel zur Sicherheit][], wenn dieser Fehler auftritt. In diesem Artikel wird erläutert, wie Sie zunächst eine Anmeldung für die Masterdatenbank erstellen und anschließend in der SQL Data Warehouse-Datenbank einen Benutzer erstellen.|
+| Von der Firewall blockiert |Azure SQL-Datenbanken sind durch Firewalls auf Server- und Datenbankebene geschützt, um sicherzustellen, dass nur bekannte IP-Adressen Zugriff auf eine Datenbank haben. Firewalls sind standardmäßig sicher. Sie müssen daher eine IP-Adresse oder einen Adressbereich explizit aktivieren, bevor Sie eine Verbindung herstellen können. Führen Sie die Schritte im Abschnitt [Erstellen einer neuen Azure SQL-Firewall auf Serverebene][] des Artikels [Erstellen einer Azure SQL Data Warehouse-Instanz][] aus, um Ihre Firewall für den Zugriff zu konfigurieren.|
+| Verbindung mit Tool oder Treiber kann nicht hergestellt werden | Für SQL Data Warehouse wird empfohlen, [Visual Studio 2013 oder 2015][] zum Abfragen von Daten zu verwenden. Für die Clientkonnektivität wird [SQL Server Native Client 10/11 (ODBC)][] empfohlen.|
 
 
-##Verbindungsfehler
+## Tools
 
-Nachfolgend finden Sie einige von Kunden häufiger gemeldete Probleme beim Herstellen von Verbindungen sowie passende Lösungsvorschläge.
+| Problem | Lösung |
+| :----------------------------------| :---------------------------------------------- |
+| In Visual Studio-Objekt-Explorer fehlen AAD-Benutzer | Dies ist ein bekanntes Problem. Die Benutzer können aber in [sys.database\_principals][] angezeigt werden. Weitere Informationen zur Verwendung von Azure Active Directory mit SQL Data Warehouse finden Sie unter [Authentifizierung in Azure SQL Data Warehouse][].|
 
-### CTAIP-Fehler
-Dieser Fehler kann auftreten, wenn zwar eine Anmeldung für die SQL Server-Masterdatenbank erstellt wurde, dies jedoch in der SQL Data Warehouse-Datenbank unterlassen wurde. Wenn dieser Fehler auftritt, lesen Sie den [Übersichtsartikel zur Sicherheit][]. In diesem Artikel wird erläutert, wie Sie zunächst eine Anmeldung für die Masterdatenbank erstellen und anschließend in der SQL Data Warehouse-Datenbank einen Benutzer erstellen.
+## Leistung
 
-### Firewallregeln
-Azure SQL-Datenbanken sind durch Firewalls auf Server- und Datenbankebene geschützt, um sicherzustellen, dass nur bekannte IP-Adressen Zugriff auf eine Datenbank haben. Firewalls sind standardmäßig sicher. Sie müssen daher eine IP-Adresse oder einen Adressbereich explizit aktivieren, bevor Sie eine Verbindung herstellen können. Führen Sie die Schritte im Abschnitt [Erstellen einer neuen Azure SQL-Firewall auf Serverebene][] in den [Bereitstellungsanweisungen][] aus, um Ihre Firewall für den Zugriff zu konfigurieren.
+| Problem | Lösung |
+| :----------------------------------| :---------------------------------------------- |
+| Behandlung von Problemen mit der Abfrageleistung | Wenn Sie die Problembehandlung für eine bestimmte Abfrage durchführen möchten, sollten Sie sich zunächst über das [Untersuchen der Ausführung von Abfragen][] informieren.|
+| Schlechte Abfrageleistung und Planung ist häufig das Ergebnis fehlender Statistiken | Die häufigste Ursache für schlechte Leistung ist das Fehlen von Statistiken für Ihre Tabellen. Ausführliche Informationen dazu, wie Sie Statistiken erstellen und warum sie für die Leistung wichtig sind, finden Sie unter [Managing statistics on tables in SQL Data Warehouse][Statistics] (Verwalten von Statistiken für Tabellen in SQL Data Warehouse).|
+| Geringe Parallelität/Abfragen in der Warteschlange | Das Verständnis der [Workloadverwaltung][] ist wichtig, damit Sie wissen, wie Sie die Speicherbelegung und die Parallelität abwägen sollen.|
+| Implementieren von bewährten Methoden | Wenn Sie die Leistung bei Ihren Abfragen verbessern möchten, ist der Artikel [Bewährte Methoden für SQL Data Warehouse][] ein idealer Ausgangspunkt.|
+| Verbessern der Leistung mit der Skalierung | Mitunter besteht der Weg zum Verbessern der Leistung einfach darin, den Abfragen mehr Computeleistung hinzuzufügen, indem Sie Ihr [SQL Data Warehouse skalieren][].|
+| Schlechte Leistung aufgrund von schlechter Indexqualität | Es kann vorkommen, dass sich Abfragen verlangsamen, weil eine [schlechte Qualität der Columnstore-Indizes][] vorliegt. Weitere Informationen finden Sie unter [Rebuild indexes to improve segment quality][] (Neuerstellen von Indizes zum Verbessern der Segmentqualität).|
 
-### Nicht unterstützte Tools oder Protokolle
-Für SQL Data Warehouse wird empfohlen, [Visual Studio 2013 oder 2015][] zum Abfragen von Daten zu verwenden. Für die Clientkonnektivität werden [SQL Server Native Client 10/11 (ODBC)][] empfohlen. SQL Server Management Studio (SSMS) wird noch nicht unterstützt, und obwohl es teilweise funktioniert, arbeitet der Strukturbereich „Objekt-Explorer“ nicht mit SQL Data Warehouse. Die Abfrage funktioniert möglicherweise, nachdem einige Fehlermeldungen ignoriert wurden.
+## Systemverwaltung
 
+| Problem | Lösung |
+| :----------------------------------| :---------------------------------------------- |
+| Untersuchen der Speicherauslastung | Informationen zu den Grundlagen der Speicherauslastung des Systems finden Sie unter [Tabellengrößen][].|
+| Hilfe beim Verwalten von Tabellen | Hilfe zur Verwaltung von Tabellen finden Sie unter [Übersicht über Tabellen][Overview]. Dieser Artikel enthält auch Links zu ausführlicheren Themen, z.B. [Tabellendatentypen][Data types], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index], [Partitionieren einer Tabelle][Partition], [Managing statistics on tables in SQL Data Warehouse][Statistics] (Verwalten von Statistiken für Tabellen in SQL Data Warehouse) und [Temporäre Tabellen][Temporary].|
 
-## Leistungsprobleme
+## PolyBase
 
-Wenn Sie die Leistung bei Ihren Abfragen verbessern möchten, ist der Artikel [Bewährte Methoden für SQL Data Warehouse][] ein idealer Ausgangspunkt. Zum Beheben von Problemen bei einer bestimmten Abfrage empfiehlt es sich, den Artikel zum [Überwachen von Abfragen][] zu lesen. Mitunter besteht der Weg zum Beschleunigen von Abfragen darin, mehr Computeleistung hinzufügen, indem Sie Ihr [SQL Data Warehouse skalieren][].
+| Problem | Lösung |
+| :----------------------------------| :---------------------------------------------- |
+| UTF-8-Fehler | Derzeit unterstützt PolyBase nur das Laden von Datendateien mit UTF-8-Codierung. Eine Anleitung zur Umgehung dieser Beschränkung finden Sie unter [Umgehen der UTF-8-Anforderung von PolyBase][].|
+| Fehler beim Laden aufgrund von umfangreichen Zeilen | Umfangreiche Zeilen werden für PolyBase derzeit nicht unterstützt. Dies bedeutet, dass keine externen Tabellen zum Laden der Daten verwendet werden können, wenn die Tabelle VARCHAR(MAX), NVARCHAR(MAX) oder VARBINARY(MAX) enthält. Ladevorgänge für umfangreiche Zeilen werden derzeit nur von Azure Data Factory (mit BCP), Azure Stream Analytics, SSIS, BCP oder der SQLBulkCopy-.NET-Klasse unterstützt. Die PolyBase-Unterstützung für umfangreiche Zeilen wird in einer zukünftigen Version hinzugefügt.|
+| Fehler beim BCP-Ladevorgang einer Tabelle mit MAX-Datentyp | Es besteht das folgende bekannte Problem: VARCHAR(MAX), NVARCHAR(MAX) oder VARBINARY(MAX) müssen in manchen Szenarien am Ende der Tabelle angeordnet werden. Versuchen Sie, die MAX-Spalten an das Ende der Tabelle zu verschieben.|
 
-## Qualität gruppierter Columnstore-Segmente
+## Unterschiede zu SQL-Datenbank
 
-Die Qualität gruppierter Columnstore-Segmente ist wichtig für die optimale Abfrageleistung gruppierter Columnstore-Tabellen. Die Segmentqualität kann anhand der Anzahl an Zeilen in einer komprimierten Zeilengruppe gemessen werden. Die folgende Abfrage identifiziert Tabellen mit schlechter Columnstore-Indexsegmentintegrität und generiert das T-SQL zum Neuerstellen des Columnstore-Indexes in diesen Tabellen. Mir der ersten Spalte dieses Abfrageergebnisses erhalten Sie das T-SQL zum Neuerstellen jedes Indexes. Die zweite Spalte bietet eine Empfehlung für die minimale Klasse, die verwendet werden soll, um die Komprimierung zu optimieren.
- 
-**SCHRITT 1:** Führen Sie diese Abfrage für jede SQL Data Warehouse-Datenbank aus, um alle nicht optimalen gruppierten Columnstore-Indizes zu identifizieren. Wenn keine Zeilen zurückgegeben werden, ist keine weitere Aktion erforderlich.
-
-```sql
-SELECT 
-     'ALTER INDEX ALL ON ' + s.name + '.' + t.NAME + ' REBUILD;' AS [T-SQL to Rebuild Index]
-    ,CASE WHEN n.nbr_nodes < 3 THEN 'xlargerc' WHEN n.nbr_nodes BETWEEN 4 AND 6 THEN 'largerc' ELSE 'mediumrc' END AS [Resource Class Recommendation]
-    ,s.name AS [Schema Name]
-    ,t.name AS [Table Name]
-    ,AVG(CASE WHEN rg.State = 3 THEN rg.Total_rows ELSE NULL END) AS [Ave Rows in Compressed Row Groups]
-FROM 
-    sys.pdw_nodes_column_store_row_groups rg
-    JOIN sys.pdw_nodes_tables pt 
-        ON rg.object_id = pt.object_id AND rg.pdw_node_id = pt.pdw_node_id AND pt.distribution_id = rg.distribution_id
-    JOIN sys.pdw_table_mappings tm 
-        ON pt.name = tm.physical_name
-    INNER JOIN sys.tables t 
-        ON tm.object_id = t.object_id
-INNER JOIN sys.schemas s
-    ON t.schema_id = s.schema_id
-CROSS JOIN (SELECT COUNT(*) nbr_nodes  FROM sys.dm_pdw_nodes WHERE type = 'compute') n
-GROUP BY 
-    n.nbr_nodes, s.name, t.name
-HAVING 
-    AVG(CASE WHEN rg.State = 3 THEN rg.Total_rows ELSE NULL END) < 100000 OR
-    AVG(CASE WHEN rg.State = 0 THEN rg.Total_rows ELSE NULL END) < 100000
-
-ORDER BY 
-    s.name, t.name
-```
- 
-**SCHRITT 2:** Erhöhen Sie die Ressourcenklasse eines Benutzers, der über Berechtigungen zum Neuerstellen des Indexes für diese Tabelle verfügt, auf die empfohlene Ressourcenklasse aus der 2. Spalte der obigen Abfrage.
-
-```sql
-EXEC sp_addrolemember 'xlargerc', 'LoadUser'
-```
-
-> [AZURE.NOTE]  Der obige „LoadUser“ sollte ein gültiger Benutzer sein, den Sie zum Ausführen der ALTER INDEX-Anweisung erstellen. Die Ressourcenklasse des Benutzers „db\_owner“ kann nicht geändert werden. Weitere Informationen zu Ressourcenklassen und zum Erstellen eines neuen Benutzers finden Sie in dem unten stehenden Link.
-
- 
-**SCHRITT 3:** Melden Sie sich als der Benutzer aus Schritt 2 (z.B. „LoadUser“) an, der nun eine höhere Ressourcenklasse verwendet, und führen Sie die ALTER INDEX-Anweisungen aus, die von der Abfrage in Schritt 1 generiert wurden. Achten Sie darauf, dass dieser Benutzer die ALTER-Berechtigung für die Tabellen hat, die in der Abfrage aus Schritt 1 identifiziert wurden.
- 
-**SCHRITT 4:** Führen Sie die Abfrage aus Schritt 1 erneut aus. Wenn die Indizes effizient erstellt wurden, sollten keine Zeilen von dieser Abfrage zurückgegeben. Wenn keine Zeilen zurückgegeben werden, sind Sie fertig. Wenn Sie mehrere SQL Data Warehouse-Datenbanken haben, möchten Sie diesen Vorgang sicher für jede Ihrer Datenbanken wiederholen. Wenn Zeilen zurückgegeben werden, fahren Sie mit Schritt 5 fort.
- 
-**Schritt 5:** Wenn beim erneuten Ausführen der Abfrage aus Schritt 1 Zeilen zurückgegeben werden, enthalten Ihre Tabellen möglicherweise besonders breite Zeilen. Für diese werden große Mengen an Speicher benötigt, damit die gruppierten Columnstore-Indizes optimal erstellt werden können. Wenn dies der Fall ist, wiederholen Sie diesen Prozess für diese Tabelle mithilfe der xlargerc-Klasse. Um die Ressourcenklasse zu ändern, wiederholen Sie Schritt 2 mit „xlargerc“. Wiederholen Sie dann Schritt 3 für die Tabellen, deren Indizes immer noch nicht optimal sind. Wenn Sie DW100 - DW300 verwenden und bereits „xlargerc“ verwendet haben, können Sie wahlweise entweder die Indizes beibehalten oder vorübergehend die DWUs erhöhen, um mehr Arbeitsspeicher für diesen Vorgang bereitzustellen.
- 
-**ABSCHLIESSENDE SCHRITTE:** Die oben angegebene Ressourcenklasse ist die empfohlene minimale Ressourcenklasse zum Erstellen von Columnstore-Indizes in höchster Qualität. Sie sollten diese Einstellung für den Benutzer beibehalten, der die Daten lädt. Aber wenn Sie die Änderung aus Schritt 2 rückgängig machen möchten, verwenden Sie den folgenden Befehl.
-
-```sql
-EXEC sp_droprolemember 'smallrc', 'LoadUser'
-```
-
-Als Richtwert zur Festlegung der minimalen Ressourcenklasse für das Laden in eine CCI-Tabelle gilt die Verwendung von „xlargerc“ für DW100 bis DW300, „largerc“ für DW400 bis DW600 und „mediumrc“ für alles ab DW1000. Dieser Leitfaden ist für die meisten Workloads ideal. Das Ziel ist, jedem Indexerstellungsvorgang 400 MB oder mehr Arbeitsspeicher zu gewähren. Allerdings wird eine Größe nicht allen gerecht. Der zum Optimieren eines Columnstore-Indexes benötigte Speicherplatz ist von den geladenen Daten abhängig, die in erster Linie von der Zeilengröße beeinflusst werden. Tabellen mit geringen Zeilenbreiten benötigen weniger Arbeitsspeicher, breitere Zeilen benötigen mehr. Wenn Sie experimentieren möchten, können Sie die Abfrage aus Schritt 1 verwenden, um zu sehen, ob Sie optimalere Columnstore-Indizes bei kleineren Speicherbelegungen erhalten. Minimal wünschen Sie durchschnittlich mehr als 100.000 Zeilen pro Zeilengruppe. Über 500K ist noch besser. Maximal sehen Sie 1 Million Zeilen pro Zeilengruppe. Ausführliche Informationen zum Verwalten von Ressourcenklassen und Parallelität erhalten Sie über den unten stehenden Link.
-
+| Problem | Lösung |
+| :----------------------------------| :---------------------------------------------- |
+| Nicht unterstützte Funktionen von SQL-Datenbank | Siehe [Nicht unterstützte Tabellenfunktionen][].|
+| Nicht unterstützte SQL-Datenbank-Datentypen | Siehe [Nicht unterstützte Datentypen][].|
+| DELETE- und UPDATE-Einschränkungen | Siehe Informationen zu [UPDATE-Problemumgehungen][], [DELETE-Problemumgehungen][] und zum [Verwenden von CTAS als Problemumgehung für nicht unterstützte UPDATE- und DELETE-Syntax][]. |
+| MERGE-Anweisung wird nicht unterstützt | Siehe [MERGE-Problemumgehungen][].|
+| Einschränkungen für gespeicherte Prozeduren | Unter [Stored procedure limitations][] (Einschränkungen für gespeicherte Prozeduren) werden die Grundlagen einiger Einschränkungen für gespeicherte Prozeduren beschrieben.|
+| UDFs unterstützen keine SELECT-Anweisungen | Dies ist eine aktuelle Beschränkung unserer benutzerdefinierten Funktionen (User-Defined Functions, UDFs). Informationen zur Syntax, die unterstützt wird, finden Sie unter [CREATE FUNCTION][]. |
 
 ## Nächste Schritte
 
@@ -115,14 +91,36 @@ Wenn Sie bisher keine Lösung für Ihr Problem gefunden haben, können Sie folge
 [Übersichtsartikel zur Sicherheit]: ./sql-data-warehouse-overview-manage-security.md
 [Erstellen eines Supporttickets]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [SQL Data Warehouse skalieren]: ./sql-data-warehouse-manage-compute-overview.md
-[Überwachen von Abfragen]: ./sql-data-warehouse-manage-monitor.md
-[Bereitstellungsanweisungen]: ./sql-data-warehouse-get-started-provision.md
+[Untersuchen der Ausführung von Abfragen]: ./sql-data-warehouse-manage-monitor.md
+[Erstellen einer Azure SQL Data Warehouse-Instanz]: ./sql-data-warehouse-get-started-provision.md
 [Erstellen einer neuen Azure SQL-Firewall auf Serverebene]: ./sql-data-warehouse-get-started-provision.md#create-a-new-azure-sql-server-level-firewall
 [Visual Studio 2013 oder 2015]: ./sql-data-warehouse-get-started-connect.md
 [Bewährte Methoden für SQL Data Warehouse]: ./sql-data-warehouse-best-practices.md
+[Tabellengrößen]: ./sql-data-warehouse-tables-overview.md#table-size-queries
+[Nicht unterstützte Tabellenfunktionen]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
+[Nicht unterstützte Datentypen]: ./sql-data-warehouse-tables-data-types.md#unsupported-data-types
+[Overview]: ./sql-data-warehouse-tables-overview.md
+[Data types]: ./sql-data-warehouse-tables-data-types.md
+[Distribute]: ./sql-data-warehouse-tables-distribute.md
+[Index]: ./sql-data-warehouse-tables-index.md
+[Partition]: ./sql-data-warehouse-tables-partition.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[Temporary]: ./sql-data-warehouse-tables-temporary.md
+[schlechte Qualität der Columnstore-Indizes]: ./sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality
+[Rebuild indexes to improve segment quality]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
+[Workloadverwaltung]: ./sql-data-warehouse-develop-concurrency.md
+[Verwenden von CTAS als Problemumgehung für nicht unterstützte UPDATE- und DELETE-Syntax]: ./sql-data-warehouse-develop-ctas.md#using-ctas-to-work-around-unsupported-features
+[UPDATE-Problemumgehungen]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements
+[DELETE-Problemumgehungen]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements
+[MERGE-Problemumgehungen]: ./sql-data-warehouse-develop-ctas.md#replace-merge-statements
+[Stored procedure limitations]: /sql-data-warehouse-develop-stored-procedures/#limitations
+[Authentifizierung in Azure SQL Data Warehouse]: ./sql-data-warehouse-authentication.md
+[Umgehen der UTF-8-Anforderung von PolyBase]: ./sql-data-warehouse-load-polybase-guide.md#working-around-the-polybase-utf-8-requirement
 
 <!--MSDN references-->
 [SQL Server Native Client 10/11 (ODBC)]: https://msdn.microsoft.com/library/ms131415.aspx
+[sys.database\_principals]: https://msdn.microsoft.com/library/ms187328.aspx
+[CREATE FUNCTION]: https://msdn.microsoft.com/library/mt203952.aspx
 
 <!--Other Web references-->
 [Blogs]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
@@ -133,4 +131,4 @@ Wenn Sie bisher keine Lösung für Ihr Problem gefunden haben, können Sie folge
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->
