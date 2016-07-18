@@ -54,7 +54,7 @@ Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager** auf dem Gatew
 
 Slices können sich aus unterschiedlichen Gründen im Zustand **Waiting** befinden. Zu den häufigsten Gründen zählt, dass die Eigenschaft **external** nicht auf **true** festgelegt ist. Ein Dataset, das außerhalb des Gültigkeitsbereichs von Azure Data Factory erstellt wird, sollte mit der Eigenschaft **external** gekennzeichnet sein. Dies bedeutet, dass es sich um externe Daten handelt, die nicht von Pipelines innerhalb der Data Factory unterstützt werden. Die Datenslices werden als **Ready** gekennzeichnet, sobald die Daten im entsprechenden Speicher verfügbar sind.
 
-Das folgende Beispiel zeigt die Verwendung der Eigenschaft **external**. Sie können optional **externalData*** angeben, wenn Sie "external" auf "true" festlegen.
+Das folgende Beispiel zeigt die Verwendung der Eigenschaft **external**. Sie können optional **externalData** angeben, wenn Sie "external" auf "true" festlegen.
 
 Weitere Informationen zu dieser Eigenschaft finden Sie im Artikel [Datasets](data-factory-create-datasets.md).
 	
