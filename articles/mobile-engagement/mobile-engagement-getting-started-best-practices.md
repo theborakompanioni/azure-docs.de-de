@@ -13,8 +13,8 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.workload="mobile" 
-	ms.date="03/28/2016"
-	ms.author="wesmc"/>
+	ms.date="07/07/2016"
+	ms.author="wesmc;ricksal"/>
 
 # Azure Mobile Engagement – Leitfaden mit ersten Schritten und Best Practices
 
@@ -24,12 +24,12 @@
 
 Der durchschnittliche mobile Benutzer installiert und deinstalliert Apps mit hoher Frequenz, abhängig von wechselnden Interessen und Erfahrungen mit Apps. Um den Erfolg einer App zu bestimmen, müssen Sie mehr wissen, als nur, wie viele Benutzer Ihre App installieren. Es ist wichtig zu wissen, wie nützlich Ihre App ist und ob sich dieser Nutzungstrend ändert. Die folgenden Fragen werden wichtig:
 
-- Finden erste Benutzer Ihre App uninteressant oder veraltet? 
-- Wie viele Benutzer verwenden Ihre App überhaupt nicht mehr? 
+- Finden erste Benutzer Ihre App uninteressant oder veraltet?
+- Wie viele Benutzer verwenden Ihre App überhaupt nicht mehr?
 - Geht der Trend bei Einkäufen innerhalb der App nach oben oder unten?
-- Schließen Benutzer Workflows aufgrund von Problemen mit der App oder eines Mangels an Interesse nicht ab? 
-- Könnten Sie Ihre App nützlich und relevant halten, indem Sie neue Inhalte für Ihre Benutzer bereitstellen? 
-- Wären diese neuen Inhalte für alle Benutzer identisch oder auf Benutzersegmente basierend auf dem Verhalten in Ihrer App abgestimmt? 
+- Schließen Benutzer Workflows aufgrund von Problemen mit der App oder eines Mangels an Interesse nicht ab?
+- Könnten Sie Ihre App nützlich und relevant halten, indem Sie neue Inhalte für Ihre Benutzer bereitstellen?
+- Wären diese neuen Inhalte für alle Benutzer identisch oder auf Benutzersegmente basierend auf dem Verhalten in Ihrer App abgestimmt?
  
 Antworten auf diese Fragen können den Lebenszyklus und den Ertrag Ihrer App erweitern. Sie können Ihnen auch helfen, Ihren Benutzerstamm zu definieren und zu erhalten.
 
@@ -70,7 +70,7 @@ Die Erstellung von Business-KPIs sollte am einfachsten sein. Sie haben diese wah
 	- Anzahl der Konten
 	- Aktivierte Funktionen
 	- Besuchte Angebotsseiten
-	- Geklickte oder aktivierte Warnungen	   
+	- Geklickte oder aktivierte Warnungen
 
 
 
@@ -80,7 +80,7 @@ Ein Einbindungs-KPI ist ein Leistungsindikator, mit dem die Einbindung der Benut
 
 - Aktive Benutzer in den letzten 7 Tagen
 - Anzahl der inaktiven Benutzer für die letzten 7 Tage
-- Anzahl der Benutzer, die die App in 30 Tagen nicht verwendet haben  
+- Anzahl der Benutzer, die die App in 30 Tagen nicht verwendet haben
 
 Einige offensichtliche externe Faktoren können Indikatoren in diesem Bereich beeinflussen. Beispielsweise könnten Sie davon ausgehen, dass sich ein mobiles Gerät jederzeit bei einem Benutzer befindet. Dies muss nicht zutreffen. Eine Spiele-App weist möglicherweise tendenziell eine höhere Auslastung an Feiertagen auf, wenn ein Spieler mehr spielt, während er nicht bei der Arbeit oder in der Schule ist.
 
@@ -94,7 +94,7 @@ Mit Leistungsindikatoren in dieser Kategorie können Sie bestimmen, ob sich Ihre
  
 Hier sind einige Beispiele für technische KPIs:
 
-- Informationen zu nicht behandelten oder behandelten Ausnahmen und deren Anzahl 
+- Informationen zu nicht behandelten oder behandelten Ausnahmen und deren Anzahl
 - Zeitstempel für den letzten Absturz
 - Schaltfläche, auf die zuletzt geklickt wurde, oder zuletzt besuchte Seite
 - Speicherverwendung der App
@@ -167,7 +167,7 @@ Benutzer schätzen relevante Nachrichten, die auf ihre Interessen abzielen. Eine
 
 Beispielsweise kann der Benutzer einer E-Commerce-App regelmäßig eine bestimmte Kaffeemarke kaufen, was Sie mit einem KPI erfasst haben. Die folgende Information kann die Einbindung dieses Benutzers in die App verbessern.
  
-*"Hallo Wes, für eine Ihrer bevorzugten Kaffeemarken gibt es in der ersten Woche im September 2015 ein Angebot mit einer Preissenkung um 25 %. Wir schätzen Sie als Kunden und möchten sicherstellen, dass Sie das Angebot kennen."*
+*"Hallo Wes, für eine Ihrer bevorzugten Kaffeemarken gibt es in der ersten Woche im September 2015 ein Angebot mit einer Preissenkung um 25 %. Wir schätzen Sie als Kunden und möchten sicherstellen, dass Sie das Angebot kennen."*
 
 ###### Pushsequenz zur Nutzungsdauer
 
@@ -213,7 +213,7 @@ Die Umleitung kann auch für andere Systeme verwaltet werden. Mit einer Aktions-
 - Postfach mit bereits eingerichteter E-Mail-Adresse
 - SMS-Postfach
 - Einwähldienst
-- App Store zur Bewertung der Anwendung 
+- App Store zur Bewertung der Anwendung
 
 Dies bietet viele Möglichkeiten für die Einbindung von Endbenutzern und die Erstellung automatischer Regeln zur Verbesserung der Leistung.
 
@@ -225,7 +225,7 @@ Verschiedene Typen und Formate von Pushbenachrichtigungen:
 1. **Ankündigungen**: Sie können in verschiedenen Situationen Werbebotschaften an Benutzer senden (außerhalb der App, in der App oder jederzeit).
 2. **Umfragen**: Sie können Informationen zu Endbenutzern erfassen, indem Sie ihnen Fragen stellen. Diese Antworten sind dann beim Erstellen von Kriterien verfügbar, um Endbenutzer zu erreichen.
 3. **Datenpushes**: Sie können eine Binär- oder Base64-Datendatei zum Aktualisieren der App senden. Die Informationen in einem Datenpush werden an Ihre Anwendung gesendet, um die Benutzerumgebung in Ihrer App zu personalisieren. Die Anwendung muss so konzipiert sein, dass sie Daten in einem Datenpush unterstützt.
-4. **Kacheln (nur Windows Phone)**: Sie können den Microsoft-Pushbenachrichtigungsdienst (MPNS) verwenden, um systemeigene Pushbenachrichtigungen mit XML-Daten zu senden. (Wird seit SDK-Version 0.9.0 unterstützt. Die endgültige Nutzlast für Kacheln darf 32 KB nicht überschreiten.) Die Nachricht wird direkt auf der entsprechenden Kachel angezeigt.
+4. **Kacheln (nur Windows Phone)**: Sie können den Microsoft-Pushbenachrichtigungsdienst (MPNS) verwenden, um systemeigene Pushbenachrichtigungen mit XML-Daten zu senden. (Wird seit SDK-Version 0.9.0 unterstützt. Die endgültige Nutzlast für Kacheln darf 32 KB nicht überschreiten.) Die Nachricht wird direkt auf der entsprechenden Kachel angezeigt.
 5. **Webansicht**: Eine Webansicht ist ein Popup mit Webinhalt. Dieses Popupfenster wird angezeigt, nachdem der Benutzer auf die Pushbenachrichtigung geklickt hat. Eine Webansicht ermöglicht es Ihnen, dem Benutzer weitere Interaktionen zu ermöglichen.
  
 >[AZURE.NOTE] Stellen Sie sicher, dass der Inhalt, den Sie als Pushbenachrichtigungen senden, den Richtlinien der jeweiligen Plattform (iOS, Android, Windows) für das Entwickeln von Apps und das Senden von Pushbenachrichtigungen entspricht.
@@ -297,7 +297,7 @@ Aufträge werden verwendet, um Aktionen zu melden, die eine Dauer aufweisen. Bei
 
 - Ausführung von API-Aufrufen
 - Anzeigezeiten für Anzeigen
-- Dauer von Hintergrundaufgaben 
+- Dauer von Hintergrundaufgaben
 - Dauer des Einkaufs
 - Anzeige eines Videos
 
@@ -362,7 +362,7 @@ Es wird empfohlen, dass Sie zunächst die richtigen Rollen und Rollenmitgliedsch
 
 - Administratoren
 - Entwickler
-- Besucher 
+- Besucher
 
 Danach:
 - Registrieren Sie Ihre Geräte-ID, um Ihr eigenes Gerät zu testen.
@@ -382,13 +382,13 @@ Zu Beginn, während Sie Erfahrungen mit Einbindungsstrategien sammeln, sollten S
 
 Nachdem Sie einige Erfahrungen gesammelt haben, könnten Sie Ihren Einbindungsprogrammen Folgendes hinzufügen:
 
-- Überwachung: Sie gewinnen Benutzer, und wahrscheinlich definieren Sie Quellen für die Datensammlung. Azure Mobile Engagement kann mit den Quellen für die Datensammlung verknüpft werden. Dadurch können Sie die Leistung jeder Quelle überwachen. Diese Informationen sind interessant, um Ihre Anschaffungsinvestition zu maximieren. 
+- Überwachung: Sie gewinnen Benutzer, und wahrscheinlich definieren Sie Quellen für die Datensammlung. Azure Mobile Engagement kann mit den Quellen für die Datensammlung verknüpft werden. Dadurch können Sie die Leistung jeder Quelle überwachen. Diese Informationen sind interessant, um Ihre Anschaffungsinvestition zu maximieren.
 
 - A/B-Tests: Dies ist ein wesentlicher Teil des Einbindungsprogramms. Jede App verfügt über eigene Besonderheiten. Mit A/B-Tests können Sie Ihr Einbindungsprogramm verbessern.
 
 - Geolocation: Dies ist eine große Chance für Marken. Dank dieser Funktion können Sie Benutzer am richtigen Ort und zum richtigen Zeitpunkt erreichen. Sie sollten überprüfen, ob Sie genügend Endbenutzerdaten zum Verhalten gesammelt haben, bevor Sie beginnen, Geolocation zu verwenden.
 
-- Datenpush: Ein Datenpush ist ein unsichtbarer Push. Ein Datenpush ermöglicht das Anpassen Ihrer Anwendung basierend auf dem Endbenutzerverhalten. Wenn sich ein Benutzersegment z. B. häufig über Hightechprodukte informiert, kann der Besitzer der App einen Datenpush senden, um die entsprechende Startseite mit Hightechinhalt zu personalisieren.
+- Datenpush: Ein Datenpush ist ein unsichtbarer Push. Ein Datenpush ermöglicht das Anpassen Ihrer Anwendung basierend auf dem Endbenutzerverhalten. Wenn sich ein Benutzersegment z. B. häufig über Hightechprodukte informiert, kann der Besitzer der App einen Datenpush senden, um die entsprechende Startseite mit Hightechinhalt zu personalisieren.
 
 
 
@@ -407,4 +407,4 @@ Nachdem Sie einige Erfahrungen gesammelt haben, könnten Sie Ihren Einbindungspr
 <!--Link references-->
 [Media Playbook link]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -14,7 +14,7 @@
 	ms.devlang="node"
 	ms.topic="get-started-article"
 	ms.date="05/26/2016"
-	ms.author="bradygaster"/>
+	ms.author="rachelap"/>
 
 # Erstellen einer Node.js-RESTful-API und Bereitstellen für eine API-App in Azure
 
@@ -90,7 +90,7 @@ App Service unterstützt viele Wege zur Bereitstellung Ihres Codes in einer API-
 
 ### Anpassen des Codegerüsts
 
-1. Kopieren Sie den Ordner **lib** aus dem Ordner **start** in den Ordner **ContactList**, der mit dem Tool für die Gerüsterstellung (Scaffolder) erstellt wurde. 
+1. Kopieren Sie den Ordner **lib** aus dem Ordner **start** in den Ordner **ContactList**, der mit dem Tool für die Gerüsterstellung (Scaffolder) erstellt wurde.
 
 1. Ersetzen Sie den Code in der Datei **handlers/contacts.js** durch den unten angegebenen Code.
 
@@ -155,7 +155,7 @@ App Service unterstützt viele Wege zur Bereitstellung Ihres Codes in einer API-
 
 ### Testen bei lokaler Ausführung der API
 
-1. Aktivieren Sie den Server mit der ausführbaren Node.js-Befehlszeilendatei. 
+1. Aktivieren Sie den Server mit der ausführbaren Node.js-Befehlszeilendatei.
 
         node server.js
 
@@ -179,7 +179,7 @@ App Service unterstützt viele Wege zur Bereitstellung Ihres Codes in einer API-
 
 In diesem Abschnitt verwenden Sie das Azure-Portal, um eine neue API-App in Azure zu erstellen. Diese API-App stellt die Computeressourcen dar, die von Azure zum Ausführen Ihres Codes bereitgestellt werden. In späteren Abschnitten stellen Sie Ihren Code für die neue API-App bereit.
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/). 
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/).
 
 1. Klicken Sie auf **Neu > Web + Mobil > API-App**.
 
@@ -221,7 +221,7 @@ In diesem Abschnitt verwenden Sie das Azure-Portal, um eine neue API-App in Azur
 
 Sie stellen Ihren Code für die API-App bereit, indem Sie Commits per Pushvorgang in ein Git-Repository in Azure App Service übertragen. In diesem Abschnitt des Tutorials erstellen Sie die Anmeldeinformationen und das Git-Repository in Azure, das Sie für die Bereitstellung verwenden.
 
-1. Klicken Sie nach der Erstellung der API-App auf der Startseite des Portals auf **App Services > {Ihre API-App}**. 
+1. Klicken Sie nach der Erstellung der API-App auf der Startseite des Portals auf **App Services > {Ihre API-App}**.
 
 	Im Portal werden die Blätter **API-App** und **Einstellungen** angezeigt.
 
@@ -294,7 +294,7 @@ In diesem Abschnitt erstellen Sie ein lokales Git-Repository, das den Servercode
 
 ## Testen bei Ausführung der API in Azure
  
-3. Kopieren Sie die **URL** im Abschnitt **Zusammenfassung** des Blatts für Ihre API-App. 
+3. Kopieren Sie die **URL** im Abschnitt **Zusammenfassung** des Blatts für Ihre API-App.
 
     ![Bereitstellung abgeschlossen](media/app-service-api-nodejs-api-app/deployment-completed.png)
 
@@ -312,4 +312,4 @@ Nachdem Sie die kontinuierliche Bereitstellung eingerichtet haben, können Sie C
 
 Sie haben nun erfolgreich eine API-App erstellt und dafür Node.js-API-Code bereitgestellt. Im nächsten Tutorial erfahren Sie, wie Sie [API-Apps über JavaScript-Clients mit CORS nutzen](app-service-api-cors-consume-javascript.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->

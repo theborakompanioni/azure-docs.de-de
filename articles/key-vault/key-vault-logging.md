@@ -25,7 +25,7 @@ Nachdem Sie einen oder mehrere Schlüsseltresore erstellt haben, möchten Sie ve
 Sie können auf Ihre Protokollinformationen spätestens zehn Minuten nach dem Schlüsseltresorvorgang zugreifen. In den meisten Fällen geht es aber schneller. Die Verwaltung der Protokolle im Speicherkonto ist Ihre Aufgabe:
 
 - Verwenden Sie zum Schützen der Protokolle standardmäßige Azure-Zugriffssteuerungsmethoden, indem Sie einschränken, wer darauf zugreifen kann.
-- Löschen Sie Protokolle, die im Speicherkonto nicht mehr aufbewahrt werden sollen. 
+- Löschen Sie Protokolle, die im Speicherkonto nicht mehr aufbewahrt werden sollen.
 
 Nutzen Sie dieses Tutorial als Hilfe bei den ersten Schritten mit der Azure-Schlüsseltresor-Protokollierung, beim Erstellen Ihres Speicherkontos, Aktivieren der Protokollierung und Interpretieren der gesammelten Protokollierungsinformationen.
 
@@ -40,8 +40,8 @@ Eine Übersicht über den Azure-Schlüsseltresor finden Sie unter [Was ist der A
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- Vorhandenen Schlüsseltresor, der von Ihnen genutzt wird  
-- Azure PowerShell, **mindestens Version 1.0.1** Um Azure PowerShell zu installieren und Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Wenn Sie Azure PowerShell bereits installiert haben und die Version nicht kennen, geben Sie über die Azure PowerShell-Konsole `(Get-Module azure -ListAvailable).Version` ein.  
+- Vorhandenen Schlüsseltresor, der von Ihnen genutzt wird
+- Azure PowerShell, **mindestens Version 1.0.1** Um Azure PowerShell zu installieren und Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Wenn Sie Azure PowerShell bereits installiert haben und die Version nicht kennen, geben Sie über die Azure PowerShell-Konsole `(Get-Module azure -ListAvailable).Version` ein.
 - Ausreichend Speicherplatz unter Azure für Ihre Schlüsseltresor-Protokolle
 
 
@@ -105,7 +105,7 @@ Protokollierte Daten:
 - Alle authentifizierten REST-API-Anforderungen werden protokolliert, z. B. auch Anforderungen, die aufgrund von Zugriffsberechtigungen, Systemfehlern oder fehlerhaften Anforderungen nicht erfolgreich sind.
 - Vorgänge im Schlüsseltresor selbst, z. B. Erstellung, Löschung und Festlegung von Schlüsseltresor-Zugriffsrichtlinien und Aktualisierung von Schlüsseltresor-Attributen, beispielsweise Tags.
 - Vorgänge mit Schlüsseln und geheimen Schlüsseln im Schlüsseltresor, z. B. Erstellung, Änderung oder Löschung dieser Schlüssel bzw. geheimen Schlüssel. Vorgänge wie das Signieren, Verifizieren, Verschlüsseln, Entschlüsseln, Umschließen und Aufheben der Umschließung von Schlüsseln, Abrufen von geheimen Schlüsseln, Auflisten von Schlüsseln und geheimen Schlüsseln sowie ihren Versionen.
-- Bei nicht authentifizierten Anforderungen wird eine 401-Antwort zurückgegeben. Wenn Anforderungen beispielsweise über kein Bearertoken verfügen oder falsch formatiert oder abgelaufen sind, ist deren Token ungültig.  
+- Bei nicht authentifizierten Anforderungen wird eine 401-Antwort zurückgegeben. Wenn Anforderungen beispielsweise über kein Bearertoken verfügen oder falsch formatiert oder abgelaufen sind, ist deren Token ungültig.
 
 
 ## <a id="access"></a>Zugreifen auf Ihre Protokolle ##
@@ -116,7 +116,7 @@ Schlüsseltresor-Protokolle werden im Container **insights-logs-auditevent** im 
 
 Die Ausgabe sieht etwa wie folgt aus:
 
-****Container Uri: https://contosokeyvaultlogs.blob.core.windows.net/insights-logs-auditevent**
+**Container Uri: https://contosokeyvaultlogs.blob.core.windows.net/insights-logs-auditevent**
 
 
 **Name**
@@ -130,7 +130,7 @@ Die Ausgabe sieht etwa wie folgt aus:
 **resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=18/m=00/PT1H.json****
  
 
-Wie Sie in dieser Ausgabe sehen, wird für die Blobs eine Benennungskonvention genutzt: **resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json**
+Wie Sie in dieser Ausgabe sehen, wird für die Blobs eine Benennungskonvention genutzt: **resourceId=<ARM-Ressourcen-ID>/y=<Jahr>/m=<Monat>/d=<Tag des Monats>/h=<Stunde>/m=<Minute>/filename.json**
 
 Für die Werte für Datum und Uhrzeit wird UTC verwendet.
 
@@ -156,7 +156,7 @@ Verwenden Sie Platzhalter, um Blobs selektiv herunterzuladen. Beispiel:
 
 		Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
 
-- Wenn Sie über mehreren Ressourcengruppen verfügen und von Protokollen für nur eine Ressourcengruppe herunterladen möchten, verwenden Sie `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`:
+- Wenn Sie über mehrere Ressourcengruppen verfügen und nur Protokolle für eine Ressourcengruppe herunterladen möchten, verwenden Sie `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`:
 
 		Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
 
@@ -166,12 +166,12 @@ Verwenden Sie Platzhalter, um Blobs selektiv herunterzuladen. Beispiel:
 
 Sie können sich nun ansehen, was in den Protokollen enthalten ist. Bevor Sie fortfahren, ist es ratsam, sich mit zwei weiteren Parametern für Get-AzureRmDiagnosticSetting vertraut zu machen:
 
-- Zum Abfragen des Status von Diagnoseeinstellungen für Ihre Schlüsseltresor-Ressource: `Get-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId`
+- Zum Abfragen des Status von Diagnoseeinstellungen für Ihre Schlüsseltresorressource: `Get-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId`
  
-- Zum Deaktivieren der Protokollierung für Ihre Schlüsseltresor-Ressource: `Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories AuditEvent`
+- Zum Deaktivieren der Protokollierung für Ihre Schlüsseltresorressource: `Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories AuditEvent`
 
 
-## <a id="interpret"></a>Interpretieren der Schlüsseltresor-Protokolle ##
+## <a id="interpret"></a>Interpretieren der Schlüsseltresorprotokolle ##
 
 Einzelne Blobs werden als Text und formatiert als JSON-Blob gespeichert. Dies ist ein Beispiel für einen Protokolleintrag nach der Ausführung von `Get-AzureRmKeyVault -VaultName 'contosokeyvault'`:
 
@@ -221,7 +221,7 @@ In der folgenden Tabelle sind die Feldnamen und Beschreibungen aufgeführt.
 
 Die Feldwerte unter **operationName** liegen im ObjectVerb-Format vor. Beispiel:
 
-- Alle Schlüsseltresor-Vorgänge verfügen über das Format „Vault`<action>`“, z.B. `VaultGet` und `VaultCreate`. 
+- Alle Schlüsseltresorvorgänge verfügen über das Format „Vault`<action>`“, z.B. `VaultGet` und `VaultCreate`.
 
 - Alle Schlüsselvorgänge verfügen über das Format „Key`<action>`“, z.B. `KeySign` und `KeyList`.
 
@@ -264,11 +264,12 @@ Die folgende Tabelle enthält das operationName-Element und den entsprechenden R
 
 ## <a id="next"></a>Nächste Schritte ##
 
-Ein Tutorial zur Verwendung des Azure-Schlüsseltresors in einer Webanwendung finden Sie unter [Verwenden des Azure-Schlüsseltresors aus einer Webanwendung](key-vault-use-from-web-application.md).
+Ein Tutorial zur Verwendung des Azure Key Vault in einer Webanwendung finden Sie unter [Verwenden des Azure-Schlüsseltresors aus einer Webanwendung](key-vault-use-from-web-application.md).
 
 Eine Referenz zur Programmierung finden Sie im [Entwicklerhandbuch für den Azure-Schlüsseltresor](key-vault-developers-guide.md).
 
-Eine Liste der Azure PowerShell 1.0-Cmdlets für den Azure-Schlüsseltresor finden Sie unter [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052.aspx) (Cmdlets für den Azure-Schlüsseltresor).
- 
+Eine Liste der Azure PowerShell 1.0-Cmdlets für den Azure PowerShell finden Sie unter [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052.aspx) (Azure Key Vault-Cmdlets).
 
-<!---HONumber=AcomDC_0511_2016-->
+Ein Tutorial zur Schlüsselrotation und Protokollüberwachung mit Azure Key Vault finden Sie unter [How to setup Key Vault with end to end key rotation and auditing](key-vault-key-rotation-log-monitoring.md) (Einrichten des Schlüsseltresors mit End-to-End-Schlüsselrotation und Überwachung).
+
+<!---HONumber=AcomDC_0713_2016-->

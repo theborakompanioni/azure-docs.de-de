@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/01/2016"
+   ms.date="07/11/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Erstellen von SQL Data Warehouse mithilfe von Powershell
@@ -33,7 +33,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie 
 
 > [AZURE.NOTE] Wenn Sie ein neues SQL Data Warehouse erstellen, wird dadurch unter Umständen auch ein neuer abrechenbarer Dienst erstellt. Unter [SQL Data Warehouse – Preise][] finden Sie weitere Informationen zu den Preisen.
 
-## Erstellen einer SQL Data Warehouse-Datenbank
+## Erstellen eines SQL Data Warehouse
 1. Öffnen Sie Windows PowerShell.
 2. Führen Sie dieses Cmdlet aus, um sich am Azure-Ressourcen-Manager anzumelden.
 
@@ -55,7 +55,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie 
 
 Die für das Cmdlet erforderlichen Parameter sind:
 
-- **RequestedServiceObjectiveName**: die angeforderte [DWU][]-Menge. Unterstützte Werte: DW100, DW200, DW300, DW400, DW500, DW600, DW1000, DW1200, DW1500 und DW2000.
+- **RequestedServiceObjectiveName**: die angeforderte [DWU][]-Menge. Unterstützte Werte: DW100, DW200, DW300, DW400, DW500, DW600, DW1000, DW1200, DW1500, DW2000, DW3000 und DW6000.
 - **DatabaseName**: der Name des SQL Data Warehouse, das Sie erstellen.
 - **ServerName**: der Name des Servers, den Sie für die Erstellung verwenden (muss V12 sein).
 - **ResourceGroupName**: die Ressourcengruppe, die Sie verwenden. Verwenden Sie zum Abrufen der in Ihrem Abonnement verfügbaren Ressourcengruppen das Cmdlet "Get-AzureResourceGroup":
@@ -64,6 +64,7 @@ Die für das Cmdlet erforderlichen Parameter sind:
 Weitere Informationen zu den Parameteroptionen finden Sie unter [Create Database (Azure SQL Data Warehouse)][]. Die Befehlsreferenz finden Sie unter [New-AzureRmSqlDatabase][].
 
 ## Nächste Schritte
+
 Nach der SQL Data Warehouse-Bereitstellung können Sie [Beispieldaten laden][] oder die Schritte zum [Entwickeln][], [Laden][] oder [Migrieren][] kennenlernen.
 
 Weitere Informationen zur programmgesteuerten Verwaltung von SQL Data Warehouse finden Sie im Artikel zur Verwendung von [PowerShell-Cmdlets und REST-APIs][].
@@ -96,4 +97,4 @@ Weitere Informationen zur programmgesteuerten Verwaltung von SQL Data Warehouse 
 [Kostenlose Azure-Testversion]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN-Azure-Gutschriften]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

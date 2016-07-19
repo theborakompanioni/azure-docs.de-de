@@ -100,7 +100,7 @@ Gehen Sie wie folgt vor, um die Beispiele zu erstellen und Geräte in Ihrem IoT 
 
 Das Skript bewirkt Folgendes:
 
-1.  Es führt **cmake** aus, um eine Visual Studio 2015-Projektmappe für das simulierte Gerät zu erstellen. Die Projektdatei ist **azure-iot-sdks\\csharp\\service\\samples\\cmake\\iotdm\_client\\samples\\iotdm\_simple\_sample\\iotdm\_simple\_sample.vcxproj**. Die Quelldateien befinden sich im Ordner **azure-iot-sdks\\c\\iotdm\_client\\samples\\iotdm\_simple\_sample**.
+1.  Es führt **cmake** aus, um eine Visual Studio 2015-Projektmappe für das simulierte Gerät zu erstellen. Die Projektdatei ist **azure-iot-sdks\\csharp\\service\\samples\\cmake\\iotdm\_client\\samples\\iotdm\_simple\_sample\\iotdm\_simple\_sample.vcxproj**. Die Quelldateien befinden sich im Ordner ***azure-iot-sdks\\c\\iotdm\_client\\samples\\iotdm\_simple\_sample**.
 
 2.  Es erstellt das Projekt **iotdm\_simple\_sample.vcxproj** für das simulierte Gerät.
 
@@ -175,7 +175,9 @@ Führen Sie die folgenden Schritte aus, um die Beispiel-UI für die Geräteverwa
 Lassen Sie die simulierten Geräte und die Geräteverwaltungs-App laufen, während Sie mit dem nächsten Tutorial für die Geräteverwaltung fortfahren.
 
 
-## Nächster Schritt
+## Nächste Schritte
+
+Informationen zu den weiteren ersten Schritten mit IoT Hub finden Sie unter [Erste Schritte mit dem Gateway-SDK][lnk-gateway-SDK].
 
 Weitere Informationen zu den Features der Azure IoT Hub-Geräteverwaltung finden Sie im Tutorial [Erkunden der Azure IoT Hub-Geräteverwaltung mit der Beispiel-UI][lnk-sample-ui].
 
@@ -193,5 +195,6 @@ Weitere Informationen zu den Features der Azure IoT Hub-Geräteverwaltung finden
 [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen]: ../azure-portal/resource-group-portal.md
 [lnk-dm-github]: https://github.com/Azure/azure-iot-device-management
 [lnk-sample-ui]: iot-hub-device-management-ui-sample.md
+[lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -75,7 +75,7 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
 | **Interxion** | Unterstützt | Unterstützt | Amsterdam, London, Paris |
 | **Jisc** | In Kürze verfügbar | In Kürze verfügbar | London+ | 
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | Unterstützt | Unterstützt | Amsterdam, Chicago, Dallas, Las Vegas+, London, Seattle, Silicon Valley, Washington DC |
-| **Megaport** | Unterstützt | Unterstützt | Dallas, Las Vegas+, Los Angeles, Melbourne, New York, Seattle, Singapur, Sydney, Washington DC |
+| **Megaport** | Unterstützt | Unterstützt | Dallas, Hongkong, Las Vegas+, Los Angeles, Melbourne, New York, Seattle, Singapur, Sydney, Washington DC |
 | **MTN** | Unterstützt | Unterstützt | London |
 | **NEXTDC** | Unterstützt | Unterstützt | Melbourne, Sydney |
 | **NTT Communications** | Unterstützt | Unterstützt | London, Osaka, Tokyo |
@@ -164,4 +164,4 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 <!--Image References-->
 [0]: ./media/expressroute-locations/expressroute-locations-map.png "Standortkarte"
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

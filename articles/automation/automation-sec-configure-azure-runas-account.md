@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="06/09/2016"
+    ms.date="07/06/2016"
     ms.author="magoedte"/>
 
 # Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“
@@ -41,7 +41,7 @@ In diesem Abschnitt führen Sie die folgenden Schritte aus, um im Azure-Portal e
 3. Klicken Sie im Blatt „Automation-Konten“ auf **Hinzufügen**.<br>![Automation-Konto hinzufügen](media/automation-sec-configure-azure-runas-account/add-automation-acct-properties.png)
 4. Geben Sie im Blatt **Automation-Konto hinzufügen** im Feld **Name** einen Namen für das neue Automation-Konto ein.
 5. Wenn Sie über mehrere Abonnements verfügen, geben Sie das Abonnement für das neue Konto sowie eine neue oder vorhandene **Ressourcengruppe** und den **Speicherort** eines Azure-Rechenzentrums an.
-6. Stellen Sie sicher, dass **Ja** für die Option **Ausführendes Azure-Konto erstellen** ausgewählt ist, und klicken Sie auf die Schaltfläche **Erstellen**.  
+6. Stellen Sie sicher, dass **Ja** für die Option **Ausführendes Azure-Konto erstellen** ausgewählt ist, und klicken Sie auf die Schaltfläche **Erstellen**.
 
     ![Automation-Konto hinzufügen – Warnung](media/automation-sec-configure-azure-runas-account/add-account-decline-create-runas-msg.png)
 
@@ -69,20 +69,20 @@ Mit dem unten angegebenen Verfahren wird ein vorhandenes Automation-Konto aktual
 Stellen Sie vor dem Fortfahren Folgendes sicher:
 
 1. Sie haben [Windows Management Framework (WMF) 4.0](https://www.microsoft.com/download/details.aspx?id=40855) heruntergeladen und installiert, wenn Sie Windows 7 ausführen. Wenn Sie Windows Server 2012 R2, Windows Server 2012, Windows 2008 R2, Windows 8.1 und Windows 7 SP1 ausführen, ist [Windows Management Framework 5.0](https://www.microsoft.com/download/details.aspx?id=50395) für die Installation verfügbar.
-2. Azure PowerShell 1.0. Informationen zu dieser Version und deren Installation finden Sie unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). 
+2. Azure PowerShell 1.0. Informationen zu dieser Version und deren Installation finden Sie unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 3. Sie haben ein Automation-Konto erstellt. Dieses Konto wird unten im Skript als Wert für die Parameter -AutomationAccountName und -ApplicationDisplayName angegeben.
 
 
 Mit dem PowerShell-Skript wird Folgendes konfiguriert:
 
-* Eine Azure AD-Anwendung, die mit dem selbstsignierten Zertifikat authentifiziert wird, und ein Dienstprinzipalkonto für diese Anwendung in Azure AD. Außerdem wird die Rolle „Mitwirkender“ (kann auch in „Besitzer“ oder eine andere Rolle geändert werden) für dieses Konto in Ihrem aktuellen Abonnement zugewiesen. Weitere Informationen finden Sie im Artikel [Rollenbasierte Zugriffssteuerung in Azure Automation](../automation/automation-role-based-access-control.md).  
+* Eine Azure AD-Anwendung, die mit dem selbstsignierten Zertifikat authentifiziert wird, und ein Dienstprinzipalkonto für diese Anwendung in Azure AD. Außerdem wird die Rolle „Mitwirkender“ (kann auch in „Besitzer“ oder eine andere Rolle geändert werden) für dieses Konto in Ihrem aktuellen Abonnement zugewiesen. Weitere Informationen finden Sie im Artikel [Rollenbasierte Zugriffssteuerung in Azure Automation](../automation/automation-role-based-access-control.md).
 * Ein Automation-Zertifikatobjekt im angegebenen Automation-Konto mit dem Namen **AzureRunAsCertificate**, in dem das im Dienstprinzipal verwendete Zertifikat enthalten ist.
-* Ein Automation-Verbindungsobjekt im angegebenen Automation-Konto mit dem Namen **AzureRunAsConnection**, das die Elemente „applicationId“, „tenantId“, „subscriptionId“ und den Zertifikatfingerabdruck enthält.  
+* Ein Automation-Verbindungsobjekt im angegebenen Automation-Konto mit dem Namen **AzureRunAsConnection**, das die Elemente „applicationId“, „tenantId“, „subscriptionId“ und den Zertifikatfingerabdruck enthält.
 
 
 ### Ausführen des PowerShell-Skripts
 
-1. Speichern Sie das folgende Skript auf dem Computer. Speichern Sie es in diesem Beispiel unter dem Dateinamen **New-AzureServicePrincipal.ps1**.  
+1. Speichern Sie das folgende Skript auf dem Computer. Speichern Sie es in diesem Beispiel unter dem Dateinamen **New-AzureServicePrincipal.ps1**.
 
     ```
     #Requires -RunAsAdministrator
@@ -181,7 +181,7 @@ Mit dem PowerShell-Skript wird Folgendes konfiguriert:
 ### Überprüfen der Authentifizierung
 Als Nächstes führen wir einen kleinen Test durch, um zu bestätigen, dass Sie sich mit dem neuen Dienstprinzipal erfolgreich authentifizieren können. Wenn Sie sich nicht erfolgreich authentifizieren können, müssen Sie wieder mit Schritt 1 beginnen und alle Schritte erneut durchführen.
 
-1. Öffnen Sie im Azure-Portal das zuvor erstellte Automation-Konto.  
+1. Öffnen Sie im Azure-Portal das zuvor erstellte Automation-Konto.
 2. Klicken Sie auf die Kachel **Runbooks**, um die Liste mit den Runbooks zu öffnen.
 3. Erstellen Sie ein neues Runbook, indem Sie auf die Schaltfläche **Runbook hinzufügen** klicken, und wählen Sie dann auf dem Blatt **Runbook hinzufügen** die Option **Neues Runbook erstellen** aus.
 4. Geben Sie dem Runbook den Namen *Test-SecPrin-Runbook*, und wählen Sie unter **Runbooktyp** die Option „PowerShell“ aus. Klicken Sie auf **Erstellen**, um das Runbook zu erstellen.
@@ -196,8 +196,8 @@ Als Nächstes führen wir einen kleinen Test durch, um zu bestätigen, dass Sie 
 6. Klicken Sie auf **Speichern**, um das Runbook zu speichern.
 7. Klicken Sie auf **Testbereich**, um das Blatt **Test** zu öffnen.
 8. Klicken Sie auf **Starten**, um den Test zu starten.
-9. Ein [Runbookauftrag](automation-runbook-execution.md) wird erstellt, und der dazugehörige Status wird angezeigt.  
-10. Der Auftrag besitzt zunächst den Status *In Warteschlange*, um anzugeben, dass der Auftrag darauf wartet, dass in der Cloud ein Runbook Worker verfügbar wird. Wird der Auftrag von einem Worker übernommen, wechselt der Status zu *Wird gestartet...* und anschließend zu *Wird ausgeführt...*, wenn die Ausführung des Runbooks tatsächlich gestartet wurde.  
+9. Ein [Runbookauftrag](automation-runbook-execution.md) wird erstellt, und der dazugehörige Status wird angezeigt.
+10. Der Auftrag besitzt zunächst den Status *In Warteschlange*, um anzugeben, dass der Auftrag darauf wartet, dass in der Cloud ein Runbook Worker verfügbar wird. Wird der Auftrag von einem Worker übernommen, wechselt der Status zu *Wird gestartet...* und anschließend zu *Wird ausgeführt...*, wenn die Ausführung des Runbooks tatsächlich gestartet wurde.
 11. Nach Abschluss des Runbookauftrags wird die Ausgabe angezeigt. In unserem Fall sollte der Status **Abgeschlossen** angezeigt werden.<br> ![Sicherheitsprinzipal-Runbooktest](media/automation-sec-configure-azure-runas-account/runbook-test-results.png)<br>
 12. Schließen Sie das Blatt **Test**, um zum Zeichenbereich zurückzukehren.
 13. Schließen Sie das Blatt **PowerShell-Runbook bearbeiten**.
@@ -242,4 +242,4 @@ Das Skript enthält zwei zusätzliche Codezeilen, um Verweise auf einen Abonneme
 - Weitere Informationen zu Dienstprinzipalen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](../active-directory/active-directory-application-objects.md).
 - Weitere Informationen zur rollenbasierten Zugriffssteuerung in Azure Automation finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Automation](../automation/automation-role-based-access-control.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

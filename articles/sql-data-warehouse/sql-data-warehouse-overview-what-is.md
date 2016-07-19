@@ -162,13 +162,13 @@ Nachdem Sie sich mit den Grundlagen von SQL Data Warehouse vertraut gemacht habe
 [1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
 
 <!--Article references-->
-[Erstellen eines Supporttickets]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[Beispieldaten laden]: ./sql-data-warehouse-load-sample-databases.md
-[eine SQL Data Warehouse-Instanz erstellen]: ./sql-data-warehouse-get-started-provision.md
-[Dokumentation zur Migration]: ./sql-data-warehouse-overview-migrate.md
-[SQL Data Warehouse-Lösungspartner]: ./sql-data-warehouse-integrate-solution-partners.md
-[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
-[Sichern und Wiederherstellen – Übersicht]: ./sql-data-warehouse-restore-database-overview.md
+[Erstellen eines Supporttickets]: sql-data-warehouse-get-started-create-support-ticket.md
+[Beispieldaten laden]: sql-data-warehouse-load-sample-databases.md
+[eine SQL Data Warehouse-Instanz erstellen]: sql-data-warehouse-get-started-provision.md
+[Dokumentation zur Migration]: sql-data-warehouse-overview-migrate.md
+[SQL Data Warehouse-Lösungspartner]: sql-data-warehouse-partner-business-intelligence.md
+[Integrated tools overview]: sql-data-warehouse-overview-integrate.md
+[Sichern und Wiederherstellen – Übersicht]: sql-data-warehouse-restore-database-overview.md
 
 <!--MSDN references-->
 
@@ -176,9 +176,9 @@ Nachdem Sie sich mit den Grundlagen von SQL Data Warehouse vertraut gemacht habe
 [Blogs]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
 [CAT Team-Blogs]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [Funktionsanfragen]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[MSDN-Forum]: https://social.msdn.microsoft.com/Forums/de-DE/home?forum=AzureSQLDataWarehouse
+[MSDN-Forum]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse
 [Stack Overflow-Forum]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

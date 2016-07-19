@@ -30,7 +30,7 @@ Voraussetzungen für die Übungen in diesem Dokument:
 
 ## Bereitstellen eines neuen Containers
 
-Verwenden Sie zum Bereitstellen eines neuen Containers in Docker Swarm den Befehl `docker run`. In diesem Beispiel wird ein Container aus dem Image `yeasy/simple-web` erstellt:
+Verwenden Sie zum Bereitstellen eines neuen Containers in Docker Swarm den Befehl `docker run`. (Stellen Sie dabei sicher, dass Sie gemäß den obigen Voraussetzungen einen SSH-Tunnel zu den Mastern geöffnet haben.) In diesem Beispiel wird ein Container aus dem Image `yeasy/simple-web` erstellt:
 
 
 ```bash
@@ -54,9 +54,11 @@ Sie können nun auf die in diesem Container ausgeführte Anwendung über den öf
 
 ![Echte Ergebnisse](media/real-visit.jpg)
 
+Standardmäßig sind für den Load Balancer die Ports 80, 8080 und 443 geöffnet. Wenn Sie die Verbindung über einen anderen Port herstellen möchten, müssen Sie den Port im Azure Load Balancer für den Agent-Pool öffnen.
+
 ## Bereitstellen von mehreren Containern
 
-Wenn im Docker Swarm-Cluster mehrere Container gestartet werden, können Sie mit dem Befehl `docker ps` anzeigen, auf welchem Host die Container ausgeführt werden. In diesem Beispiel sind die Container gleichmäßig auf die drei Swarm-Agents verteilt:
+Wenn mehrere Container gestartet werden, können Sie durch das mehrfache Ausführen von „docker run“ den Befehl `docker ps` verwenden, um zu ermitteln, auf welchen Hosts die Container ausgeführt werden. Im Beispiel unten sind die Container gleichmäßig auf die drei Swarm-Agents verteilt:
 
 
 ```bash
@@ -70,7 +72,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 ## Bereitstellen von Containern mithilfe von Docker Compose
 
-Sie können Docker Compose verwenden, um die Bereitstellung und Konfiguration mehrerer Container zu automatisieren. Stellen Sie hierfür sicher, dass ein Secure Shell (SSH)-Tunnel erstellt wurde und dass die DOCKER\_HOST-Variable festgelegt wurde.
+Sie können Docker Compose verwenden, um die Bereitstellung und Konfiguration mehrerer Container zu automatisieren. Stellen Sie hierfür sicher, dass ein Secure Shell (SSH)-Tunnel erstellt wurde und dass die DOCKER\_HOST-Variable festgelegt wurde (siehe Voraussetzungen oben).
 
 Erstellen Sie auf Ihrem lokalen System die Datei „docker-compose.yml“. Verwenden Sie hierfür dieses [Beispiel](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/docker-compose.yml).
 
@@ -115,8 +117,10 @@ caf185d221b7        adtd/web:0.1        "apache2-foreground"   2 minutes ago    
 040efc0ea937        adtd/rest:0.1       "catalina.sh run"      3 minutes ago       Up 2 minutes        10.0.0.4:8080->8080/tcp   swarm-agent-3B7093B8-0/compose_rest_1
 ```
 
+Sie können natürlich auch `docker-compose ps` verwenden, um nur die Container zu untersuchen, die in der Datei `compose.yml` definiert sind.
+
 ## Nächste Schritte
 
 [Weitere Informationen zu Docker Swarm](https://docs.docker.com/swarm/)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0713_2016-->

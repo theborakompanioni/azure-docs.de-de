@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Liste mit von Microsoft verwalteten Connectors für die Verwendung in Microsoft Azure Logic Apps | Microsoft Azure App Service"
+	pageTitle="Liste mit von Microsoft verwalteten Connectors für die Verwendung in Microsoft Azure Logic Apps | Microsoft Azure App Service | Microsoft Azure"
 	description="Vollständige Liste der von Microsoft verwalteten Connectors, über die Sie Logik-Apps in Azure App Service erstellen können"
 	services="app-service\logic"
 	documentationCenter=""
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/31/2016"
+	ms.date="07/07/2016"
 	ms.author="deonhe"/>
 
 # Liste der Connectors
@@ -38,8 +38,7 @@ Wählen Sie ein Symbol aus, um zu erfahren, wie Sie über diese Connectors schne
 |[![API-Symbol][projectonlineicon]<br/>**Project<br/>Online**][projectonlinedoc]|[![API-Symbol][rssicon]<br/>**RSS**][rssdoc]|[![API-Symbol][salesforceicon]<br/>**Salesforce**][salesforcedoc]|[![API-Symbol][sendgridicon]<br/>**SendGrid**][sendgriddoc]|
 |[![API-Symbol][servicebusicon]<br/>**Service Bus**][servicebusdoc]|[![API-Symbol][sftpicon]<br/>**SFTP**][sftpdoc]|[![API-Symbol][sharepointicon]<br/>**SharePoint**<br/>**Online**][sharepointdoc]|[![API-Symbol][slackicon]<br/>**Slack**<br/>][slackdoc]|
 |[![API-Symbol][smtpicon]<br/>**SMTP**][smtpdoc]|[![API-Symbol][sqlicon]<br/>**SQL Azure**][sqldoc]|[![API-Symbol][trelloicon]<br/>**Trello**][trellodoc]|[![API-Symbol][twilioicon]<br/>**Twilio**][twiliodoc]|
-|[![API-Symbol][twittericon]<br/>**Twitter**][twitterdoc]|[![API-Symbol][wunderlisticon]<br/>**Wunderlist**][wunderlistdoc]|
-[![API-Symbol][yammericon]<br/>**Yammer**][yammerdoc] | |
+|[![API-Symbol][twittericon]<br/>**Twitter**][twitterdoc]|[![API-Symbol][wunderlisticon]<br/>**Wunderlist**][wunderlistdoc]|[![API-Symbol][yammericon]<br/>**Yammer**][yammerdoc] | |
 
 ## Enterprise Integration Pack-Connectors (EIP)
 Verwenden Sie die EIP-Connectors zum Erstellen von Logik-Apps für B2B-Szenarien, die EAI und EDI umfassen.
@@ -47,7 +46,7 @@ Verwenden Sie die EIP-Connectors zum Erstellen von Logik-Apps für B2B-Szenarien
 |EIP-Connectors ||||
 |-----------|-----------|-----------|-----------|
 |[![API-Symbol][as2icon]<br/>**AS2-</br>Codierung/Decodierung**][as2doc]|[![API-Symbol][x12icon]<br/>**X12-</br>Codierung/Decodierung**][x12Doc]|[![API-Symbol][xmlvalidateicon]<br/>**XML-<br/>Überprüfung**][xmlvalidatedoc]|[![API-Symbol][xmltransformicon]<br/>**XML-<br/>Transformation**][xmltransformdoc]|
-|[![API-Symbol][flatfileicon]<br/>**Flatfile</br>Codierung**][flatfiledoc]|[![API-Symbol][flatfiledecodeicon]<br/>**Flatfile-</br>Decodierung**][flatfiledecodedoc]|||
+|[![API-Symbol][flatfileicon]<br/>**Flatfile</br>Codierung**][flatfiledoc]|[![API-Symbol][flatfiledecodeicon]<br/>**Flatfile</br>Decodierung**][flatfiledecodedoc]|||
 
 
 ### Connectors können Trigger sein.
@@ -63,10 +62,7 @@ Es gibt zwei Arten von Triggern:
 Connectors können innerhalb Ihrer Apps auch als Aktionen verwendet werden. Aktionen sind hilfreich für die Suche nach Daten, die dann bei der Ausführung der App verwendet werden können. Beispielsweise kann es sein, dass Sie bei der Verarbeitung einer Bestellung Daten in einer SQL-Datenbank suchen müssen. Oder Sie müssen möglicherweise Daten in eine Zieltabelle schreiben oder in dieser aktualisieren oder löschen. Sie können dazu die Aktionen verwenden, die von den Connectors bereitgestellt werden. Aktionen sind den in den Swagger-Metadaten definierten Vorgängen zugeordnet.
 
 
-[Neuigkeiten](../app-service-logic/app-service-logic-schema-2015-08-01.md)  
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)  
-[Erste Schritte mit PowerApps](../power-apps/powerapps-get-started-azure-portal.md)  
-[Migrieren vorhandener Logik-Apps zur neuesten Schemaversion](connectors-schema-migration.md)
+[Neuigkeiten](../app-service-logic/app-service-logic-schema-2015-08-01.md) [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md) [Erste Schritte mit PowerApps](../power-apps/powerapps-get-started-azure-portal.md) [Migrieren vorhandener Logik-Apps zur neuesten Schemaversion](connectors-schema-migration.md)
 
 <!--Connectors Documentation-->
 [azureblobdoc]: ./connectors-create-api-azureblobstorage.md "Verbindung mit Azure-Blob zum Verwalten der Dateien in Ihrem Blobcontainer."
@@ -106,7 +102,7 @@ Connectors können innerhalb Ihrer Apps auch als Aktionen verwendet werden. Akti
 [as2doc]: ../app-service-logic/app-service-logic-enterprise-integration-as2.md "Informationen zu Enterprise Integration – AS2"
 [x12doc]: ../app-service-logic/app-service-logic-enterprise-integration-x12.md "Informationen zu Enterprise Integration – X12"
 [flatfiledoc]: ../app-service-logic/app-service-logic-enterprise-integration-flatfile.md "Informationen zu Enterprise Integration – Flatfile"
-[flatfiledecodedoc]: ../app-service-logic/app-service-logic-enterprise-integration-flatfile.md "Informationen zu Enterprise Integration – Flatfile"
+[flatfiledecodedoc]: ../app-service-logic/app-service-logic-enterprise-integration-flatfile.md/#how-to-create-the-flat-file-decoding-connector "Informationen zu Enterprise Integration – Flatfile"
 [xmlvalidatedoc]: ../app-service-logic/app-service-logic-enterprise-integration-xml.md "Informationen zu Enterprise Integration – XML-Überprüfung"
 [xmltransformdoc]: ../app-service-logic/app-service-logic-enterprise-integration-transform.md "Informationen zu Enterprise Integration – Transformationen"
 
@@ -149,4 +145,4 @@ Connectors können innerhalb Ihrer Apps auch als Aktionen verwendet werden. Akti
 [xmlvalidateicon]: ./media/apis-list/xmlvalidation.png
 [xmltransformicon]: ./media/apis-list/xsltransform.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

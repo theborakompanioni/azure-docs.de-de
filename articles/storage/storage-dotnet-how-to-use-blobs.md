@@ -41,6 +41,11 @@ In diesem Tutorial wird gezeigt, wie Sie .NET-Code für einige häufig verwendet
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
+### Weitere Beispiele
+
+Weitere Beispiele für die Verwendung von Blob-Speicher finden Sie unter [Getting Started with Azure Blob Storage in .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/) (Erste Schritte mit Azure Blob Storage in .NET). Sie können die Beispielanwendung herunterladen und ausführen oder den Code auf GitHub durchsuchen.
+
+
 [AZURE.INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
 [AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
@@ -49,7 +54,7 @@ In diesem Tutorial wird gezeigt, wie Sie .NET-Code für einige häufig verwendet
 
 ### Hinzufügen von Namespace-Deklarationen
 
-Fügen Sie am Anfang der Datei `program.cs`die folgenden `using`-Anweisungen ein:
+Fügen Sie am Anfang der Datei `program.cs` die folgenden `using`-Anweisungen ein:
 
 	using Microsoft.Azure; // Namespace for CloudConfigurationManager
 	using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
@@ -61,7 +66,7 @@ Fügen Sie am Anfang der Datei `program.cs`die folgenden `using`-Anweisungen ein
 
 ### Erstellen des Blob-Dienstclients
 
-Die Klasse **CloudBlobClient** ermöglicht den Abruf von im Blobspeicher gespeicherten Containern und Blobs. Hier sehen Sie eine Möglichkeit zum Erstellen des Dienstclients:
+Die Klasse **CloudBlobClient** ermöglicht das Abrufen von im Blobspeicher gespeicherten Containern und Blobs. Hier sehen Sie eine Möglichkeit zum Erstellen des Dienstclients:
 
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
@@ -367,11 +372,15 @@ Standardmäßig können nur Sie als Speicherkontobesitzer auf die Blobdaten in I
 Azure Storage unterstützt das Verschlüsseln von Blobdaten sowohl auf dem Client als auch auf dem Server:
 
 - **Clientseitige Verschlüsselung**: Die Storage-Clientbibliothek für .NET unterstützt die Verschlüsselung von Daten innerhalb von Clientanwendungen, bevor die Daten nach Azure Storage hochgeladen werden. Gleichermaßen wird die Entschlüsselung von Daten während des Herunterladens auf den Client unterstützt. Um eine Schlüsselverwaltung für Speicherkonten zu ermöglichen, unterstützt die Bibliothek zudem die Integration in Azure-Schlüsseltresor. Weitere Informationen finden Sie unter [Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage](storage-client-side-encryption.md). Siehe auch: [Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage per Azure Key Vault](storage-encrypt-decrypt-blobs-key-vault.md).
-- **Serverseitigen Verschlüsselung**: Azure Storage unterstützt jetzt die serverseitige Verschlüsselung. Siehe [Azure Storage Service Encryption für ruhende Daten (Vorschau)](storage-service-encryption.md). 
+- **Serverseitige Verschlüsselung**: Azure Storage unterstützt jetzt die serverseitige Verschlüsselung. Siehe [Azure Storage Service Encryption für ruhende Daten (Vorschau)](storage-service-encryption.md).
 
 ## Nächste Schritte
 
 Nachdem Sie sich nun mit den Grundlagen von Blobspeichern vertraut gemacht haben, lesen Sie die folgenden Artikel, um mehr zu erfahren.
+
+### Beispiele für Blobspeicher
+
+- [Getting Started with Azure Blob Storage in .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/) (Erste Schritte mit Azure Blob Storage in .NET)
 
 ### Blob Storage-Referenz
 
@@ -395,4 +404,4 @@ Nachdem Sie sich nun mit den Grundlagen von Blobspeichern vertraut gemacht haben
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

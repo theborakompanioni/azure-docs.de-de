@@ -40,7 +40,7 @@ Dieses Lernprogramm enthält die folgenden Aufgaben:
 Die Schritte in diesem Abschnitt verdeutlichen, wie Sie ein neues AMS-Konto erstellen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie auf **+Neu** > **Media Service + CDN** > **Media Services**.
+2. Klicken Sie auf **+ Neu** > **Medien und CDN** > **Media Services**.
 
 	![Media Services – Erstellung](./media/media-services-portal-vod-get-started/media-services-new1.png)
 
@@ -229,4 +229,4 @@ Folgende Überlegungen sollten berücksichtigt werden:
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

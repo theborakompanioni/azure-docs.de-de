@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
 	ms.date="05/03/2016" 
-	ms.author="tdykstra"/>
+	ms.author="rachelap"/>
 
 # API-Apps-Übersicht
 
@@ -57,10 +57,10 @@ API Management und API-Apps verfügen über ein paar ähnliche Funktionen. Beis
 
 Informationen zu den ersten Schritten mit API-Apps durch die Bereitstellung von Beispielcode finden Sie in den Tutorials zu den entsprechenden Frameworks:
 
-* [ASP.NET](app-service-api-dotnet-get-started.md) 
-* [Node.js](app-service-api-nodejs-api-app.md) 
-* [Java](app-service-api-java-api-app.md) 
+* [ASP.NET](app-service-api-dotnet-get-started.md)
+* [Node.js](app-service-api-nodejs-api-app.md)
+* [Java](app-service-api-java-api-app.md)
 
 Wenn Sie Fragen zu API-Apps stellen möchten, starten Sie einen Thread im [API-Apps-Forum](https://social.msdn.microsoft.com/Forums/de-DE/home?forum=AzureAPIApps).
 
-<!----HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0713_2016-->
