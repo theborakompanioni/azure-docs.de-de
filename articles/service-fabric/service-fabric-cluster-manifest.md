@@ -75,9 +75,9 @@ Sie können Parameter konfigurieren, um bei Knoten- und Clusterausfällen die Di
         "etlReadIntervalInMinutes": "5",
         "uploadIntervalInMinutes": "10",
         "dataDeletionAgeInDays": "7",
-        "etwStoreConnectionString": "file:c:\\ProgramData\\SF\\FileshareETW",
-        "crashDumpConnectionString": "file:c:\\ProgramData\\SF\\FileshareCrashDump",
-        "perfCtrConnectionString": "file:c:\\ProgramData\\SF\\FilesharePerfCtr"
+        "etwStoreConnectionString": "file:c:\ProgramData\SF\FileshareETW",
+        "crashDumpConnectionString": "file:c:\ProgramData\SF\FileshareCrashDump",
+        "perfCtrConnectionString": "file:c:\ProgramData\SF\FilesharePerfCtr"
     },
 
 Diese Variablen helfen Ihnen beim Sammeln von ETW-Ablaufprotokollen, Absturzabbildern und Leistungsindikatoren. Weitere Informationen über ETW-Ablaufprotokolle finden Sie unter [Tracelog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx) und [ETW-Ablaufverfolgung](https://msdn.microsoft.com/library/ms751538.aspx). [Absturzabbilder](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/) für einen Service Fabric-Knoten und auch für den Cluster können an den für **crashDumpConnectionString** angegebenen Ordner geleitet werden. Die [Leistungsindikatoren](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) für den Cluster können an den für **perfCtrConnectionString** angegebenen Ordner auf Ihrem Computer geleitet werden.
@@ -137,10 +137,10 @@ In diesem Abschnitt können Sie die Stammverzeichnisse für die Service Fabric-D
         "name": "Setup",
         "parameters": [{
             "name": "FabricDataRoot",
-            "value": "C:\\ProgramData\\SF"
+            "value": "C:\ProgramData\SF"
         }, {
             "name": "FabricLogRoot",
-            "value": "C:\\ProgramData\\SF\\Log"
+            "value": "C:\ProgramData\SF\Log"
     }]
 
 Beachten Sie: Wenn Sie nur das Stammverzeichnis für die Daten anpassen, wird das Stammverzeichnis für die Protokolle genau eine Ebene unterhalb des Stammverzeichnisse für die Daten angesiedelt.
@@ -150,4 +150,4 @@ Beachten Sie: Wenn Sie nur das Stammverzeichnis für die Daten anpassen, wird da
 
 Nachdem Sie die Datei „ClusterConfig.JSON“ vollständig entsprechend dem Setup für Ihren eigenständigen Cluster konfiguriert haben, können Sie den Cluster bereitstellen. Dazu befolgen Sie die Anweisungen im Artikel [Erstellen eines Azure Service Fabric-Clusters – lokal oder in der Cloud](service-fabric-cluster-creation-for-windows-server.md), und anschließend [visualisieren Sie den Cluster mit Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

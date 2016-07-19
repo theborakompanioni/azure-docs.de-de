@@ -47,7 +47,7 @@ Wenn Sie einen neuen Reliable Actor hinzufügen, fügt Visual Studio zwei Projek
 Das Actor-Projekt bietet Methoden zum Einrichten und Abrufen des Werts eines Zählers, der innerhalb des Zustands des Actors zuverlässig persistent ist. Das Projekt enthält eine Schnittstelle, die andere Dienste zum Aufrufen des Akteurs nutzen können.
 
 ### Zustandslose Web-API
-Das zustandslose Web-API-Projekt bietet einen einfachen Webdienst, den Sie zum Öffnen Ihrer Anwendung für externe Clients verwenden können. Weitere Informationen dazu, wie das Projekt aufgebaut ist, finden Sie unter [Erste Schritte: Web-API-Dienste von Service Fabric mit selbstgehostetem OWIN](service-fabric-reliable-services-communication-webapi).
+Das zustandslose Web-API-Projekt bietet einen einfachen Webdienst, den Sie zum Öffnen Ihrer Anwendung für externe Clients verwenden können. Weitere Informationen dazu, wie das Projekt aufgebaut ist, finden Sie unter [Erste Schritte: Web-API-Dienste von Service Fabric mit selbstgehostetem OWIN](service-fabric-reliable-services-communication-webapi.md).
 
 ## Nächste Schritte
 ### Erstellen eines Azure-Clusters
@@ -80,4 +80,4 @@ Informationen zur Einrichtung einer Continuous Integration für die Service Fab
 [reliable-services-webapi]: service-fabric-reliable-services-communication-webapi.md
 [app-upgrade-tutorial]: service-fabric-application-upgrade-tutorial.md
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0706_2016-->

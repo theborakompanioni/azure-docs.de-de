@@ -21,7 +21,7 @@ Sie sollten das Bedrohungsmodell für die gesamte Lösung entwerfen und sich zud
 
 - Sicherheits- und Datenschutzfeatures
 - Features, deren Ausfall sicherheitsrelevant ist
-- Features, die eine Vertrauensgrenze betreffen 
+- Features, die eine Vertrauensgrenze betreffen
 
 ### Wer erstellt Bedrohungsmodelle?
 
@@ -40,9 +40,9 @@ Der Vorgang zum Erstellen von Bedrohungsmodellen besteht aus den folgenden vier 
 
 Befolgen Sie beim Erstellen eines Bedrohungsmodells diese drei Faustregeln:
 
-1. Erstellen Sie ein Diagramm der Referenzarchitektur. 
+1. Erstellen Sie ein Diagramm der Referenzarchitektur.
 2. Beginnen Sie mit einem „breiten“ Ansatz. Verschaffen Sie sich einen Überblick, und entwickeln Sie ein Verständnis des gesamten Systems, bevor Sie in die Tiefe gehen. So ist sichergestellt, dass Sie an den richtigen Stellen in die Tiefe gehen.
-3. Treiben Sie den Prozess voran, und lassen Sie sich nicht vom Prozess vorantreiben. Falls in der Modellierungsphase ein Problem auftritt und Sie dieses untersuchen möchten, dann tun Sie es! Sie müssen die angegebenen Schritte nicht sklavisch ausführen.  
+3. Treiben Sie den Prozess voran, und lassen Sie sich nicht vom Prozess vorantreiben. Falls in der Modellierungsphase ein Problem auftritt und Sie dieses untersuchen möchten, dann tun Sie es! Sie müssen die angegebenen Schritte nicht sklavisch ausführen.
 
 #### Bedrohungen
 
@@ -250,4 +250,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 - [Microsoft Azure IoT reference architecture available (Microsoft Azure IoT-Referenzarchitektur verfügbar)](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/)
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

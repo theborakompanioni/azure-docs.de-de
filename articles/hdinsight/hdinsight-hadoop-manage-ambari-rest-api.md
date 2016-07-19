@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/19/2016"
+   ms.date="07/05/2016"
    ms.author="larryfr"/>
 
 #Verwalten von HDInsight-Clustern mithilfe der Ambari-REST-API
@@ -76,13 +76,11 @@ Wenn Sie diesen Befehl ausführen und __PASSWORD__ durch das Administratorkennwo
         "Host/host_status/UNKNOWN" : 0,
         "Host/host_status/ALERT" : 0
 
-Da es sich um JSON handelt, ist es in der Regel einfacher, zum Abrufen der Daten einen JSON-Parser zu verwenden. Wenn Sie z. B. die Anzahl der Warnungen (im Element __"Host/host\_status/ALERT"__) abrufen möchten, können Sie mit der folgenden Anweisung direkt auf den Wert zugreifen:
+Da es sich um JSON handelt, ist es in der Regel einfacher, zum Abrufen der Daten einen JSON-Parser zu verwenden. Wenn Sie z.B. Informationen über den Zustand für den Cluster abrufen möchten, können Sie Folgendes verwenden.
 
-    curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME" | jq '.Clusters.health_report."Host/host_status/ALERT"'
+    curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME" | jq '.Clusters.health_report'
     
-Hiermit wird das JSON-Dokument abgerufen und dann die Ausgabe an jq übergeben. `'.Clusters.health_report."Host/host_status/ALERT"'` gibt das Element im JSON-Dokument an, das Sie abrufen möchten.
-
-> [AZURE.NOTE] Das Element __Host\_status/Host/Warnung__ ist in Anführungszeichen eingeschlossen, um anzugeben, dass "/" Teil des Elementnamens ist. Weitere Informationen zur Verwendung von jq finden Sie auf der [jq-Website](https://stedolan.github.io/jq/).
+Hiermit wird das JSON-Dokument abgerufen und dann die Ausgabe an jq übergeben. `.Clusters.health_report` gibt das Element im JSON-Dokument an, das Sie abrufen möchten.
 
 ##Beispiel: Abrufen des FQDN von Clusterknoten
 
@@ -164,7 +162,7 @@ Sie können dann diese Information mit der [Azure-Befehlszeilenschnittstelle](..
             "version" : 1
         }
 
-    Aus dieser Liste müssen Sie den Namen der Komponente (z. B. __spark\_thrift\_sparkconf__) und den Wert für __tag__ kopieren.
+    Aus dieser Liste müssen Sie den Namen der Komponente (z.B. __spark\_thrift\_sparkconf__) und den Wert für __tag__ kopieren.
     
 2. Rufen Sie die Konfiguration für die Komponente ab, und kennzeichnen Sie sie mit dem unten angegebenen Befehl. Ersetzen Sie __spark-thrift-sparkconf__ und __INITIAL__ durch die Komponente und das Tag, für die bzw. das Sie die Konfiguration abrufen möchten.
 
@@ -194,7 +192,7 @@ Sie können dann diese Information mit der [Azure-Befehlszeilenschnittstelle](..
             }
         }
 
-3. Öffnen Sie das Dokument __newconfig.json__, und ändern Sie die Werte im Objekt __properties__ bzw. fügen Sie Werte hinzu. Ändern Sie beispielsweise den Wert von __„spark.yarn.am.memory“__ von __„1g“__ in __„3g“__, und fügen Sie ein neues Element für __„spark.kryoserializer.buffer.max“__ mit dem Wert __„256m“__ hinzu.
+3. Öffnen Sie das Dokument __newconfig.json__, und ändern Sie die Werte im Objekt __properties__, bzw. fügen Sie Werte hinzu. Ändern Sie beispielsweise den Wert von __„spark.yarn.am.memory“__ von __„1g“__ in __„3g“__, und fügen Sie ein neues Element für __„spark.kryoserializer.buffer.max“__ mit dem Wert __„256m“__ hinzu.
 
         "spark.yarn.am.memory": "3g",
         "spark.kyroserializer.buffer.max": "256m",
@@ -257,4 +255,4 @@ Eine vollständige Referenz der REST-API finden Sie unter [Referenz zur Ambari-A
 
 > [AZURE.NOTE] Einige Ambari-Funktionen sind deaktiviert, da sie vom HDInsight-Clouddienst verwaltet werden, z. B. Hinzufügen oder Entfernen von Hosts im Cluster oder Hinzufügen neuer Dienste.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

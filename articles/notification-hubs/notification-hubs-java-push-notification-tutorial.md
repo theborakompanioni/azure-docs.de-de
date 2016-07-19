@@ -4,7 +4,7 @@
 	services="notification-hubs" 
 	documentationCenter="" 
 	authors="wesmc7777" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="java" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="03/28/2016" 
+	ms.date="06/29/2016" 
 	ms.author="wesmc"/>
 
 # Verwenden von Notification Hubs von Java aus
@@ -25,14 +25,14 @@ Sie können von einem Java-/PHP-/Python-/Ruby-Back-End aus über die REST-Schnit
 
 Das SDK unterstützt derzeit:
 
-- CRUD auf Notification Hubs 
+- CRUD auf Notification Hubs
 - CRUD für Registrierungen
 - Installationsverwaltung
 - Importieren/Exportieren von Registrierungen
 - Reguläre Sendevorgänge
 - Geplante Sendevorgänge
 - Asynchrone Vorgänge über Java NIO
-- Unterstützte Plattformen: APNS (iOS), GCM (Android), WNS (Windows Store-Apps), MPNS (Windows Phone), ADM (Amazon Kindle Fire), Baidu (Android ohne Google-Dienste) 
+- Unterstützte Plattformen: APNS (iOS), GCM (Android), WNS (Windows Store-Apps), MPNS (Windows Phone), ADM (Amazon Kindle Fire), Baidu (Android ohne Google-Dienste)
 
 ## SDK-Verwendung
 
@@ -285,7 +285,7 @@ Beim Ausführen des Java-Codes sollte jetzt eine Benachrichtigung erstellt werde
 ##<a name="next-steps"></a>Nächste Schritte
 In diesem Thema haben wir gezeigt, wie Sie einen einfachen Java REST-Client für Notification Hubs erstellen. Mögliche nächste Schritte:
 
-* Laden Sie das vollständige [Java-SDK] herunter, das den gesamten SDK-Code enthält. 
+* Laden Sie das vollständige [Java-SDK] herunter, das den gesamten SDK-Code enthält.
 * Arbeiten Sie die Beispiele durch:
 	- [Erste Schritte mit Notification Hubs]
 	- [Senden aktueller Nachrichten]
@@ -303,4 +303,4 @@ In diesem Thema haben wir gezeigt, wie Sie einen einfachen Java REST-Client für
 [Maven]: http://maven.apache.org/
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

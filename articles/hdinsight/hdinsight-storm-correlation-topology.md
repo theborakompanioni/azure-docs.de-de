@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="04/19/2016"
+ ms.date="07/05/2016"
  ms.author="larryfr"/>
 
 # Korrelieren von Ereignissen im Zeitverlauf mithilfe von Storm und HBase in HDInsight
@@ -27,11 +27,11 @@ In diesem Dokument erfahren Sie, wie Sie eine einfache C#-Storm-Topologie erstel
 
 ## Voraussetzungen
 
--	HDInsight-Tools für Visual Studio: Informationen zur Installation finden Sie unter [Erste Schritte mit den HDInsight Tools für Visual Studio](../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md).
+-	Visual Studio und HDInsight-Tools für Visual Studio: Installationsinformationen finden Sie unter [Erste Schritte bei der Verwendung von Hadoop-Tools für Visual Studio für HDInsight zum Ausführen einer Hive-Abfrage](../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md).
 
--	Apache Storm in HDInsight-Cluster
+-	Apache Storm in HDInsight-Cluster (Windows-basiert). Diese Option führt die Storm-Topologie aus, die eingehende Daten verarbeitet und in HBase speichert.
 
--	Apache HBase in HDInsight-Cluster
+-	Apache HBase in HDInsight-Cluster (Windows- oder Linux-basiert) Dies ist der Datenspeicher für dieses Beispiel.
 
 ## Architektur
 
@@ -204,4 +204,4 @@ Wenn Sie die Topologie beenden möchten, kehren Sie zum Projekt **CorrelationTop
 Weitere Storm-Beispiele finden Sie unter [Beispieltopologien für Storm in HDInsight](hdinsight-storm-example-topology.md).
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

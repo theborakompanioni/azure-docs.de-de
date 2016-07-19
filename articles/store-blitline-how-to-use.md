@@ -69,7 +69,7 @@ Weitere Informationen zu den unterstützten *Funktionen* erhalten Sie hier: <htt
 
 Eine Dokumentation zu den Joboptionen erhalten Sie hier: <http://www.blitline.com/docs/api> (in englischer Sprache)
 
-Nach dem Erstellen müssen Sie das JSON-Objekt nur noch per **POST** an `http://api.blitline.com/jobs` übertragen.
+Nach dem Erstellen müssen Sie das JSON-Objekt nur noch per **POST** an `http://api.blitline.com/job` übertragen.
 
 Sie erhalten ein JSON-Objekt ähnlich dem folgenden:
 
@@ -85,7 +85,7 @@ Sie erhalten ein JSON-Objekt ähnlich dem folgenden:
     }
 
 
-Dadurch wissen Sie, dass Blitline Ihre Anforderung erhalten und in eine Verarbeitungswarteschlange eingereiht hat. Nach Abschluss der Verarbeitung ist das Bild hier verfügbar: ****https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\_APP\_ID/CK3f0xBF_2bV6wf7gEZE8w.jpg**
+Dadurch wissen Sie, dass Blitline Ihre Anforderung erhalten und in eine Verarbeitungswarteschlange eingereiht hat. Nach Abschluss der Verarbeitung ist das Bild hier verfügbar: **https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\_APP\_ID/CK3f0xBF_2bV6wf7gEZE8w.jpg**
 
 ## Speichern eines Bilds im Azure-Speicherkonto
 
@@ -132,4 +132,4 @@ Besuchen Sie "blitline.com", um Informationen zu allen anderen Funktionen zu erh
 * Blitline-API-Beispiele <http://www.blitline.com/docs/examples>
 * Drittanbieter-NuGet-Bibliothek ahttp://nuget.org/packages/Blitline.Net>
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0706_2016-->

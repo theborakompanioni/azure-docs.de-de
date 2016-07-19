@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="04/20/2016"
+ms.date="07/05/2016"
 ms.author="larryfr"/>
 
 #Hinzufügen von Hive-Bibliotheken während der Erstellung des HDInsight-Clusters
@@ -51,7 +51,7 @@ __Anforderungen__
     
     * Durch Hinzufügen zu einem Container für einen verknüpften Speichercontainer. Im Portal können Sie z. B. über __Optionale Konfiguration__ > __Verknüpfte Speicherkonten__ weiteren Speicher hinzuzufügen.
 
-* Der WASB-Pfad zum Container muss als Parameter für die Skriptaktion angegeben werden. Wenn sich die JAR-Dateien beispielsweise in einem Container namens __libs__ in einem Speicherkonto namens __mystorage__ befinden, lautet der Parameter \_\___wasb://libs@mystorage.blob.core.windows.net/__.
+* Der WASB-Pfad zum Container muss als Parameter für die Skriptaktion angegeben werden. Wenn sich die JAR-Dateien beispielsweise in einem Container namens __libs__ in einem Speicherkonto namens __mystorage__ befinden, lautet der Parameter \_\_wasb://libs@mystorage.blob.core.windows.net/__.
 
     > [AZURE.NOTE] Es wird vorausgesetzt, dass Sie bereits ein Speicherkonto und einen Blobcontainer erstellt haben und Dateien in diesen geladen haben.
     >
@@ -72,7 +72,7 @@ __Anforderungen__
     * __HEAD__: Aktivieren Sie diese Option.
     * __WORKER__: Aktivieren Sie diese Option.
     * __ZOOKEEPER__: Belassen Sie diese Option deaktiviert.
-    * __PARAMETER__: Geben Sie die WASB-Adresse des Containers und Speicherkontos an, das die JAR-Dateien enthält. Beispiel: \_\___wasb://libs@mystorage.blob.core.windows.net/__.
+    * __PARAMETER__: Geben Sie die WASB-Adresse des Containers und Speicherkontos an, das die JAR-Dateien enthält. Beispiel: \_\_wasb://libs@mystorage.blob.core.windows.net/__.
 
 3. Verwenden Sie am unteren Rand der **Skriptaktionen** die Schaltfläche **Auswählen**, um die Konfiguration zu speichern.
 
@@ -88,4 +88,4 @@ Nach der Erstellung des Clusters können Sie die durch dieses Skript hinzugefüg
 
 In diesem Dokument haben Sie gelernt, wie Hive-Bibliotheken in JAR-Dateien einem HDInsight-Cluster während der Erstellung des Clusters hinzugefügt werden. Weitere Informationen zum Arbeiten mit Hive finden Sie unter [Verwenden von Hive mit HDInsight](hdinsight-use-hive.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

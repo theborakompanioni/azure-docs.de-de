@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/07/2016"
+	ms.date="07/01/2016"
 	ms.author="cephalin"/>
 
 
@@ -43,7 +43,7 @@ Sie durchlaufen einen typischen Produktionsworkflow aus Entwicklung/Test/Staging
 
 Hier eine Erläuterung der Abbildung:
 
--	Die Bereitstellungsarchitektur ist in drei verschiedene Umgebungen (bzw. [Ressourcengruppen](../resource-group-overview.md) in Azure) aufgeteilt, von denen jede einen eigenen [App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md), eigene [Skalierungseinstellungen](web-sites-scale.md) und eine eigene SQL-Datenbank hat. 
+-	Die Bereitstellungsarchitektur ist in drei verschiedene Umgebungen (bzw. [Ressourcengruppen](../resource-group-overview.md) in Azure) aufgeteilt, von denen jede einen eigenen [App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md), eigene [Skalierungseinstellungen](web-sites-scale.md) und eine eigene SQL-Datenbank hat.
 -	Jede Umgebung kann separat verwaltet werden. Sie können sogar in verschiedenen Abonnements vorhanden sind.
 -	Die Staging- und Produktionsumgebung werden als zwei Slots derselben App Service-App implementiert. Die Hauptverzweigung ist für die kontinuierliche Integration mit dem Stagingslot eingerichtet.
 -	Wenn ein Commit für die Hauptverzweigung im Stagingslot (mit Produktionsdaten) bestätigt wird, wird die überprüfte Staging-App im Produktionsslot [ohne Ausfallzeiten](web-sites-staged-publishing.md) ausgetauscht.
@@ -60,14 +60,16 @@ Sie verwenden auch die übliche Verzweigungsstrategie, bei der Code aus der Entw
 
 -	Ein Azure-Konto
 -	Ein [GitHub](https://github.com/)-Konto
--	Git-Shell (mit [GitHub für Windows](https://windows.github.com/) installiert) – Ermöglicht Ihnen, Git- und PowerShell-Befehle in derselben Sitzung auszuführen. 
+-	Git-Shell (mit [GitHub für Windows](https://windows.github.com/) installiert) – Ermöglicht Ihnen, Git- und PowerShell-Befehle in derselben Sitzung auszuführen.
 -	Neueste [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/download/0.9.4-June2015/azure-powershell.0.9.4.msi)-Version
 -	Grundlegende Kenntnisse der folgenden Komponenten:
 	-	Bereitstellung der [Azure-Ressourcen-Manager](../resource-group-overview.md)-Vorlage (siehe auch [Vorhersagbares Bereitstellen einer komplexen Anwendung in Azure](app-service-deploy-complex-application-predictably.md))
 	-	[Git](http://git-scm.com/documentation)
 	-	[PowerShell](https://technet.microsoft.com/library/bb978526.aspx)
 
-> [AZURE.NOTE] Sie benötigen ein Azure-Konto, um dieses Lernprogramm abzuschließen: Sie können [kostenlos ein Azure-Konto erstellen](/pricing/free-trial/). Sie erhalten ein Guthaben, das Sie zum Ausprobieren der kostenpflichtigen Azure-Dienste nutzen können. Sie können das Konto behalten und weiterhin kostenlose Azure-Dienste wie z. B. Web-Apps nutzen, wenn das Guthaben aufgebraucht ist. Sie können von [Vorteilen für Visual Studio-Abonnenten](/pricing/member-offers/msdn-benefits-details/) profitieren. Über Ihr Visual Studio-Abonnement erhalten Sie jeden Monat Gutschriften, die Sie für kostenpflichtige Azure-Dienste einsetzen können.
+> [AZURE.NOTE] Sie benötigen ein Microsoft Azure-Konto, um dieses Tutorial durchführen zu können:
+> + Sie können ein [Azure-Konto kostenlos erstellen](/pricing/free-trial/): Sie erhalten ein Guthaben, das Sie zum Ausprobieren der zahlungspflichtigen Azure-Dienste nutzen können, und Sie können das Konto selbst dann behalten und kostenlose Azure-Dienste wie z.B. Web-Apps nutzen, wenn das Guthaben aufgebraucht ist.
+> + Sie können Ihre [Vorteile für Visual Studio-Abonnenten aktivieren](/pricing/member-offers/msdn-benefits-details/): Ihr Visual Studio-Abonnement schließt ein monatliches Guthaben ein, das Sie für zahlungspflichtige Azure-Dienste nutzen können.
 >
 > Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
@@ -121,7 +123,7 @@ Sie haben nun die Produktionsumgebung eingerichtet. Als Nächstes leiten Sie ein
 
 Nun da Sie über eine komplexe Anwendung verfügen, die in Azure in der Produktionsumgebung ausgeführt wird, nehmen Sie in Übereinstimmung mit der agilen Methodik ein Update an Ihrer Anwendung vor. In diesem Abschnitt erstellen Sie die Entwicklungs- und Testverzweigungen, die Sie benötigen, um die erforderlichen Aktualisierungen vorzunehmen.
 
-1.	Erstellen Sie zunächst die Testumgebung. Führen Sie in der Git-Shell-Sitzung die folgenden Befehle zum Erstellen der Umgebung für eine neue Verzweigung namens **NewUpdate** aus. 
+1.	Erstellen Sie zunächst die Testumgebung. Führen Sie in der Git-Shell-Sitzung die folgenden Befehle zum Erstellen der Umgebung für eine neue Verzweigung namens **NewUpdate** aus.
 
 		git checkout -b NewUpdate
 		git push origin NewUpdate 
@@ -280,4 +282,4 @@ Eine agile Softwareentwicklung ist für viele Unternehmen unverzichtbar, die Azu
 -	[Erstellen oder Bearbeiten von Benutzern in Azure AD](https://msdn.microsoft.com/library/azure/hh967632.aspx#BKMK_1)
 -	[Wiki zum Kudu-Projekt](https://github.com/projectkudu/kudu/wiki)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0706_2016-->

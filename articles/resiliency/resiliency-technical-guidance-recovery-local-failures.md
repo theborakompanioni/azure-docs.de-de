@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/20/2016"
+   ms.date="07/05/2016"
    ms.author="patw;jroth;aglick"/>
 
 #Technischer Leitfaden zur Resilienz in Azure – Wiederherstellung nach lokalen Ausfällen in Azure
@@ -69,7 +69,7 @@ Virtuelle Azure-Computer unterscheiden sich von PaaS-Computerollen (Platform as 
 
 Im Gegensatz zu PaaS-Rolleninstanzen sind auf virtuellen Computern gespeicherte Daten persistent, auch wenn der virtuelle Computer verschoben wird. Virtuelle Azure-Computer verwenden VM-Datenträger, die in Azure Storage als Blobs vorhanden sind. Aufgrund der Verfügbarkeitsmerkmale von Azure Storage sind die Daten, die auf Laufwerken virtueller Computer gespeichert werden, ebenfalls hoch verfügbar.
 
-Beachten Sie, dass das Laufwerk D eine Ausnahme von dieser Regel darstellt. Das Laufwerk D ist eigentlich ein physischer Speicher auf dem Rackserver, der den virtuellen Computer hostet, und die Daten dieses Laufwerks gehen verloren, wenn der virtuelle Computer recycelt wird. Das Laufwerk D ist nur für die temporäre Speicherung vorgesehen.
+Beachten Sie, dass das Laufwerk D (auf Windows-VMs) eine Ausnahme von dieser Regel darstellt. Das Laufwerk D ist eigentlich ein physischer Speicher auf dem Rackserver, der den virtuellen Computer hostet, und die Daten dieses Laufwerks gehen verloren, wenn der virtuelle Computer recycelt wird. Das Laufwerk D ist nur für die temporäre Speicherung vorgesehen. Unter Linux macht Azure den lokalen temporären Datenträger „normalerweise“ (aber nicht immer) als /dev/sdb-Blockgerät verfügbar. Häufig wird er vom Azure Linux-Agent als „/mnt/resource“- oder „/mnt“-Bereitstellungspunkt bereitgestellt (konfigurierbar über „/etc/waagent.conf“).
 
 ###Partitionierung
 
@@ -118,13 +118,13 @@ Azure SQL-Datenbank stellt integrierte Resilienz gegenüber Fehlern auf Knoteneb
 
 ####Ressourcenverwaltung
 
-Jede Datenbank wird bei der Erstellung mit einer Größenbeschränkung konfiguriert. Die derzeit verfügbare maximale Größe beträgt 150 GB. Wenn eine Datenbank den oberen Grenzwert erreicht, werden weitere INSERT- oder UPDATE-Befehle zurückgewiesen. (Das Abfragen und Löschen von Daten ist weiterhin möglich.)
+Jede Datenbank wird bei der Erstellung mit einer Größenbeschränkung konfiguriert. Die derzeit verfügbare maximale Größe beträgt 1 TB (Größenbeschränkungen variieren je nach Dienstebene, siehe [Tarife und Leistungsstufen von Azure SQL-Datenbanken](../sql-database/sql-database-resource-limits.md#service-tiers-and-performance-levels)). Wenn eine Datenbank den oberen Grenzwert erreicht, werden weitere INSERT- oder UPDATE-Befehle zurückgewiesen. (Das Abfragen und Löschen von Daten ist weiterhin möglich.)
 
 Innerhalb einer Datenbank verwendet Azure SQL-Datenbank ein Fabric zur Verwaltung von Ressourcen. Anstelle eines Fabric Controllers wird jedoch eine Ringtopologie eingesetzt, um Fehler zu erkennen. Jedes Replikat in einem Cluster besitzt zwei Nachbarn und ist dafür zuständig zu erkennen, wenn diese ausfallen. Wenn ein Replikat ausfällt, lösen seine Nachbarn einen Reconfiguration Agent aus, um das Replikat auf einem anderen Computer neu zu erstellen. Mithilfe einer Moduleinschränkung wird sichergestellt, dass ein logischer Server nicht zu viele Ressourcen auf einem Computer verwendet oder die physischen Grenzwerte des Computers überschreitet.
 
 ###Elastizität
 
-Wenn die Anwendung mehr Speicherplatz als das von der Datenbank vorgegebene Limit von 150 GB erfordert, muss ein Verfahren zur horizontalen Hochskalierung implementiert werden. Sie führen die horizontale Hochskalierung mit Azure SQL-Datenbank durch, indem Sie Daten über mehrere SQL-Datenbanken hinweg manuell partitionieren (auch als Sharding bezeichnet). Ein solcher Ansatz ermöglicht es, mithilfe der Skalierung einen nahezu linearen Kostenanstieg zu erreichen. Durch elastisches Wachstum bzw. bedarfsgesteuerte Kapazität können Systeme mit inkrementellem Kostenanstieg wachsen, da Datenbanken basierend auf der pro Tag tatsächlich durchschnittlich genutzten Größe berechnet werden, nicht basierend auf der möglichen Maximalgröße.
+Wenn für die Anwendung mehr Speicherplatz als das von der Datenbank vorgegebene Limit von 1 TB erforderlich ist, muss ein Verfahren zur horizontalen Hochskalierung implementiert werden. Sie führen die horizontale Hochskalierung mit Azure SQL-Datenbank durch, indem Sie Daten über mehrere SQL-Datenbanken hinweg manuell partitionieren (auch als Sharding bezeichnet). Ein solcher Ansatz ermöglicht es, mithilfe der Skalierung einen nahezu linearen Kostenanstieg zu erreichen. Durch elastisches Wachstum bzw. bedarfsgesteuerte Kapazität können Systeme mit inkrementellem Kostenanstieg wachsen, da Datenbanken basierend auf der pro Tag tatsächlich durchschnittlich genutzten Größe berechnet werden, nicht basierend auf der möglichen Maximalgröße.
 
 ##SQL Server auf virtuellen Computern
 
@@ -132,11 +132,11 @@ Durch das Installieren von SQL Server auf virtuellen Azure-Computern (Version 20
 
 ###Hochverfügbarkeitsknoten in einer Verfügbarkeitsgruppe
 
-Wenn Sie eine Hochverfügbarkeitslösung in Azure implementieren, können Sie mithilfe einer Verfügbarkeitsgruppe in Azure Hochverfügbarkeitsknoten in separaten Fehler- und Upgradedomänen platzieren. Bei einer Verfügbarkeitsgruppe handelt es sich um ein Azure-Konzept. Sie sollten diese bewährte Methode befolgen, um sicherzustellen, dass Ihre Datenbanken tatsächlich hoch verfügbar sind – unabhängig davon, ob Sie AlwaysOn-Verfügbarkeitsgruppen, Datenbankspiegelung oder andere Verfahren verwenden. Wenn Sie diese bewährte Methode nicht befolgen, gehen Sie unter Umständen fälschlicherweise davon aus, dass Ihr System hoch verfügbar ist. In Wahrheit können Ihre Knoten jedoch alle gleichzeitig ausfallen, weil sie zufällig in der gleichen Fehlerdomäne im Azure-Rechenzentrum platziert wurden.
+Wenn Sie eine Hochverfügbarkeitslösung in Azure implementieren, können Sie mithilfe einer Verfügbarkeitsgruppe in Azure Hochverfügbarkeitsknoten in separaten Fehler- und Upgradedomänen platzieren. Bei einer Verfügbarkeitsgruppe handelt es sich um ein Azure-Konzept. Sie sollten diese bewährte Methode befolgen, um sicherzustellen, dass Ihre Datenbanken tatsächlich hoch verfügbar sind – unabhängig davon, ob Sie AlwaysOn-Verfügbarkeitsgruppen, Datenbankspiegelung oder andere Verfahren verwenden. Wenn Sie diese bewährte Methode nicht befolgen, gehen Sie unter Umständen fälschlicherweise davon aus, dass Ihr System hoch verfügbar ist. In Wahrheit können Ihre Knoten jedoch alle gleichzeitig ausfallen, weil sie zufällig in der gleichen Fehlerdomäne in der Azure-Region platziert wurden.
 
-Diese Empfehlung gilt nicht im gleichen Ausmaß für den Protokollversand. Es handelt sich hierbei um eine Funktion der Notfallwiederherstellung, und Sie sollten sicherstellen, dass die Server an separaten Azure-Rechenzentrums-Standorten (Regionen) ausgeführt werden. Definitionsgemäß handelt es sich bei diesen Rechenzentrums-Standorten um separate Fehlerdomänen.
+Diese Empfehlung gilt nicht im gleichen Ausmaß für den Protokollversand. Es handelt sich hierbei um eine Funktion der Notfallwiederherstellung. Sie sollten sicherstellen, dass die Server in separaten Azure-Regionen ausgeführt werden. Der Definition nach handelt es sich bei diesen Regionen um separate Fehlerdomänen.
 
-Damit virtuelle Azure-Computer derselben Verfügbarkeitsgruppe hinzugefügt werden, müssen Sie sie im gleichen Clouddienst bereitstellen. Nur Knoten in demselben Clouddienst können Mitglieder derselben Verfügbarkeitsgruppe sein. Darüber hinaus sollten sich die virtuellen Computer im gleichen virtuellen Netzwerk befinden, um sicherzustellen, dass sie auch nach einer Dienstreparatur ihre IPs beibehalten. So werden DNS-Aktualisierungen vermieden.
+Damit sich Azure Cloud Services-VMs, die über das klassische Portal bereitgestellt werden, in derselben Verfügbarkeitsgruppe befinden, müssen Sie sie in derselben Cloud Service-Instanz bereitstellen. Für VMs, die mit dem Azure Resource Manager (aktuelles Portal) bereitgestellt werden, besteht diese Einschränkung nicht. Für VMs, die mit dem klassischen Portal in Azure Cloud Services bereitgestellt werden, können nur Knoten in derselben Cloud Services-Instanz an derselben Verfügbarkeitsgruppe beteiligt sein. Darüber hinaus sollten sich die Cloud Services-VMs in demselben virtuellen Netzwerk befinden, um sicherzustellen, dass sie auch nach einer Dienstreparatur ihre IPs beibehalten. So können Störungen beim DNS-Update vermieden werden.
 
 ###Nur in Azure: Lösungen mit hoher Verfügbarkeit
 
@@ -223,4 +223,4 @@ Die mit Azure HDInsight verknüpften Daten werden standardmäßig in Azure Blob 
 
 Dieser Artikel gehört zu einer Reihe von Artikeln, die als [Technischer Leitfaden zur Resilienz in Azure](./resiliency-technical-guidance.md) dienen. Der nächste Artikel dieser Reihe ist [Wiederherstellung nach einer regionsweiten Dienstunterbrechung](./resiliency-technical-guidance-recovery-loss-azure-region.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016" 
+	ms.date="07/05/2016" 
 	ms.author="spelluru"/>
 
 # Hive-Aktivität
@@ -106,7 +106,7 @@ Um dieses Hive-Skript in einer Data Factory-Pipeline auszuführen, müssen Sie f
 1. Erstellen Sie einen verknüpften Dienst, um [Ihren eigenen HDInsight-Computecluster](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) zu registrieren oder einen [bedarfsgesteuerten HDInsight-Computecluster](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) zu konfigurieren. Wir nennen diesen verknüpften Dienst "HDInsightLinkedService".
 2. Erstellen Sie einen [verknüpften Dienst](data-factory-azure-blob-connector.md), um die Verbindung mit dem Azure-Blobspeicher zu konfigurieren, in dem die Daten gehostet werden. Wir nennen diesen verknüpften Dienst "StorageLinkedService".
 3. Erstellen Sie [Datasets](data-factory-create-datasets.md), die auf die Eingabe- und die Ausgabedaten verweisen. Wir nennen das Eingabedataset "HiveSampleIn" und das Ausgabedataset "HiveSampleOut".
-4. Kopieren Sie die Hive-Abfrage als Datei in den Azure-Blobspeicher, den Sie im obigen Schritt 2 konfiguriert haben. Wenn sich der verknüpfte Dienst zum Hosten der Daten von dem zum Hosten dieser Abfragedatei unterscheidet, erstellen Sie einen separaten verknüpften Azure Storage-Dienst, und verweisen Sie in der Aktivitätskonfiguration darauf. Geben Sie mit **skriptPath** den Pfad der Hive-Abfragedatei und mit **ScriptLinkedService** den Azure-Speicher mit der Skriptdatei an.
+4. Kopieren Sie die Hive-Abfrage als Datei in den Azure-Blobspeicher, den Sie im obigen Schritt 2 konfiguriert haben. Wenn sich der verknüpfte Dienst zum Hosten der Daten von dem zum Hosten dieser Abfragedatei unterscheidet, erstellen Sie einen separaten verknüpften Azure Storage-Dienst, und verweisen Sie in der Aktivitätskonfiguration darauf. Geben Sie mit **scriptPath** den Pfad zur Hive-Abfragedatei und mit **scriptLinkedService** den Azure-Speicher mit der Skriptdatei an.
 
 	> [AZURE.NOTE] Sie können das Hive-Skript auch inline in der Aktivitätsdefinition mit der **script**-Eigenschaft bereitstellen, aber dies wird nicht empfohlen, da alle Sonderzeichen im Skript innerhalb des JSON-Dokuments mit Escapezeichen versehen werden müssen, was möglicherweise zu Problemen beim Debuggen führen kann. Die bewährte Methode ist, Schritt 4 auszuführen.
 5.	Erstellen Sie die unten aufgeführte Pipeline mit der HDInsightHive-Aktivität, um die Daten zu verarbeiten.
@@ -143,7 +143,7 @@ Um dieses Hive-Skript in einer Data Factory-Pipeline auszuführen, müssen Sie f
 		}
 
 6.	Stellen Sie die Pipeline bereit. Weitere Informationen finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md).
-7.	Überwachen Sie die Pipeline mithilfe der Überwachungs- und Verwaltungsansichten von Data Factory. Weitere Informationen finden Sie im Artikel [Überwachen und Verwalten von Data Factory-Pipelines](data-factory-monitor-manage-pipelines.md). 
+7.	Überwachen Sie die Pipeline mithilfe der Überwachungs- und Verwaltungsansichten von Data Factory. Weitere Informationen finden Sie im Artikel [Überwachen und Verwalten von Data Factory-Pipelines](data-factory-monitor-manage-pipelines.md).
 
 
 ## Angeben von Parametern für ein Hive-Skript mit dem defines-Element 
@@ -219,7 +219,7 @@ Gehen Sie folgendermaßen vor, um das Hive-Skript zu parametrisieren
 - [Pig-Aktivität](data-factory-pig-activity.md)
 - [MapReduce-Aktivität](data-factory-map-reduce.md)
 - [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)
-- [Invoke Spark programs](data-factory-spark.md) (Aufrufen von Spark-Programmen)
-- [Invoke R scripts](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample) (Aufrufen von R-Skripts)
+- [Invoke Spark programs (Aufrufen von Spark-Programmen)](data-factory-spark.md)
+- [Invoke R scripts (Aufrufen von R-Skripts)](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

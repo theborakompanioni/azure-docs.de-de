@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="06/13/2016" 
+    ms.date="06/30/2016" 
     ms.author="elizapo" />
 
 # Wie speichert Azure RemoteApp Benutzerdaten und -einstellungen?
@@ -50,9 +50,6 @@ Außerdem wird empfohlen, dass Sie den "Cache"-Modus in Outlook und den "Server/
 
 [In diesem Artikel](remoteapp-outlook.md) finden Sie weitere Informationen zur Verwendung von Outlook und Azure RemoteApp.
 
-## Können Lösungen für freigegebene Daten genutzt werden?
-Ja, Azure RemoteApp unterstützt Lösungen für freigegebene Daten, insbesondere OneDrive for Business und Dropbox. Beachten Sie jedoch, dass OneDrive Consumer (persönliche Version) und Box nicht unterstützt werden.
-
 ## Was ist mit Umleitungen?
 Sie können konfigurieren, dass Azure RemoteApp Benutzern durch Einrichten einer [Umleitung](remoteapp-redirection.md) Zugriff auf lokale Geräte gewährt. Lokale Geräte können dann auf die Daten auf dem Benutzerprofil-Datenträger zugreifen.
 
@@ -84,7 +81,7 @@ In den folgenden Situationen möchten Sie Benutzerprofil-Datenträger möglicher
 
 - Sie benötigen Vollzugriff auf und Kontrolle über Benutzerdaten (z. B. zu Überwachungs- und Prüfzwecken bei Finanzinstituten).
 - Sie verfügen über lokale Lösungen zur Benutzerprofilverwaltung, die Sie in Ihrer in die Domäne eingebundenen Azure RemoteApp-Bereitstellung weiter nutzen möchten. Dazu muss der Profil-Agent in das Gold-Image geladen werden.
-- Sie benötigen keinen lokalen Datenspeicher oder haben alle Daten in die Cloud (z. B. OneDrive for Business) oder eine Dateifreigabe verlagert und möchten das lokale Speichern von Daten mit Azure RemoteApp steuern.
+- Sie benötigen keinen lokalen Datenspeicher oder haben alle Daten in die Cloud oder eine Dateifreigabe verlagert und möchten das lokale Speichern von Daten mit Azure RemoteApp steuern.
 
 Weitere Informationen finden Sie unter [Deaktivieren von Benutzerprofil-Datenträgern (UPDs) in Azure RemoteApp](https://blogs.technet.microsoft.com/enterprisemobility/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp/).
 
@@ -111,7 +108,6 @@ Nein, alle Benutzerprofil-Datenträger verfügen über 50 GB Speicher. Wenn Sie 
 3. Laden Sie die Dateifreigabe mithilfe eines Skripts zum Starten. Informationen zu Skripts zum Starten in Azure RemoteApp finden Sie weiter unten.
 4. Weisen Sie die Benutzer an, alle Daten in der Dateifreigabe zu speichern.
 
-Sie können auch Apps zur Datensynchronisierung wie OneDrive for Business verwenden.
 
 ## Wie führe ich ein Startskript in Azure RemoteApp aus?
 
@@ -121,7 +117,7 @@ Wenn Sie ein Startskript ausführen möchten, beginnen Sie mit dem Erstellen ein
 
 ![Erstellen Sie eine Systemaufgabe, die ausgeführt wird, wenn sich ein Benutzer anmeldet.](./media/remoteapp-upd/upd2.png)
 
-Ändern Sie in der Registerkarte **Allgemein** unbedingt das **Benutzerkonto** in den Sicherheitsoptionen auf „VORDEFINIERT\\Benutzer“.
+Ändern Sie auf der Registerkarte **Allgemein** das **Benutzerkonto** in den Sicherheitsoptionen unbedingt in „BUILTIN\\Users“.
 
 ![Ändern Sie das Benutzerkonto zu einer Gruppe](./media/remoteapp-upd/upd4.png)
 
@@ -143,7 +139,7 @@ Nein, dies wird von Azure RemoteApp nicht unterstützt.
 
 ## Kann ich die Daten auf dem virtuellen Computer auch lokal speichern?
 
-NEIN, Daten, die zwar auf der VM, aber nicht auf dem Benutzerprofil-Datenträger gespeichert werden, gehen verloren. Die Wahrscheinlichkeit ist hoch, dass der Benutzer bei der nächsten Sitzung in Azure RemoteApp nicht den gleichen virtuellen Computer wie zuvor erhält. Wir ordnen Benutzern keinen bestimmten virtuellen Computer zu. Der Benutzer meldet sich beim nächsten Mal also nicht auf demselben virtuellen Computer an, und die Daten gehen verloren. Wenn die Sammlung aktualisiert wird, werden die vorhandenen virtuellen Computer zudem durch neue ersetzt – wodurch alle auf der VM gespeicherten Daten verloren gehen. Für die Datenspeicherung empfehlen sich daher der Benutzerprofil-Datenträger, freigegebener Speicher wie Azure Files, Dateiserver in einem VNET oder die Cloud mithilfe von OneDrive for Business oder einem anderen unterstützten Cloudspeichersystem wie DropBox.
+NEIN, Daten, die zwar auf der VM, aber nicht auf dem Benutzerprofil-Datenträger gespeichert werden, gehen verloren. Die Wahrscheinlichkeit ist hoch, dass der Benutzer bei der nächsten Sitzung in Azure RemoteApp nicht den gleichen virtuellen Computer wie zuvor erhält. Wir ordnen Benutzern keinen bestimmten virtuellen Computer zu. Der Benutzer meldet sich beim nächsten Mal also nicht auf demselben virtuellen Computer an, und die Daten gehen verloren. Wenn die Sammlung aktualisiert wird, werden die vorhandenen virtuellen Computer zudem durch neue ersetzt – wodurch alle auf der VM gespeicherten Daten verloren gehen. Für die Datenspeicherung empfehlen sich daher der Benutzerprofil-Datenträger, freigegebener Speicher wie Azure Files, Dateiserver in einem VNET oder die Cloud mithilfe eines Cloudspeichersystems wie DropBox.
 
 ## Wie stelle ich eine Azure-Dateifreigabe mithilfe von PowerShell auf einem virtuellen Computer bereit?
 
@@ -159,4 +155,4 @@ Sie können Ihre Anmeldeinformationen außerdem wie folgt speichern:
 
 So können Sie das Parameter „-Credential“ im New-PSDrive-Cmdlet überspringen.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

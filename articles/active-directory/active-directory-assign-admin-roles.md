@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="06/29/2016"
 	ms.author="curtand"/>
 
-# Zuweisen von Administratorrollen in Azure Active Directory (Azure AD)
+# Zuweisen von Administratorrollen in Azure Active Directory
 
-Abhängig von der Größe Ihres Unternehmens möchten Sie möglicherweise mehrere Administratoren ernennen, die verschiedene Funktionen ausüben. Diese Administratoren haben Zugriff auf verschiedene Funktionen im Azure-Portal oder im klassischen Azure-Portal und können abhängig von ihrer Rolle unter anderem Benutzer erstellen oder bearbeiten, anderen administrative Rollen zuweisen, Benutzerkennwörter zurücksetzen, Benutzerlizenzen verwalten und Domänen verwalten.
-
-Das Verständnis dafür ist wichtig, dass ein Benutzer mit einer Administratorrolle die gleichen Berechtigungen für alle Cloud-Dienste besitzt, die Ihre Organisation abonniert hat, unabhängig davon, ob Sie die Rolle im Office 365-Portal, im klassischen Azure-Portal oder mithilfe des Azure AD-Moduls für Windows PowerShell zuweisen.
+Mithilfe von Azure Active Directory (Azure AD) können Sie verschiedene Administratoren bestimmen, um unterschiedliche Funktionen zu erfüllen. Diese Administratoren haben Zugriff auf verschiedene Funktionen im Azure-Portal oder im klassischen Azure-Portal und können abhängig von ihrer Rolle unter anderem Benutzer erstellen oder bearbeiten, anderen administrative Rollen zuweisen, Benutzerkennwörter zurücksetzen, Benutzerlizenzen verwalten und Domänen verwalten. Ein Benutzer mit einer Administratorrolle besitzt die gleichen Berechtigungen für alle Clouddienste, die Ihre Organisation abonniert hat, unabhängig davon, ob Sie die Rolle im Office 365-Portal, im klassischen Azure-Portal oder mithilfe des Azure AD-Moduls für Windows PowerShell zuweisen.
 
 Die folgenden Administratorrollen sind verfügbar:
 
@@ -39,6 +37,10 @@ Die folgenden Administratorrollen sind verfügbar:
 	> [AZURE.NOTE] Um einem Benutzer die Dienstadministratorrolle zuzuweisen, muss der globale Administrator zunächst dem Benutzer Administratorberechtigungen im Dienst (z. B. Exchange Online) zuweisen, und anschließend die Dienstadministratorrolle im klassischen Azure-Portal.
 
 - **Benutzeradministrator**: setzte Kennwörter zurück, überwacht die Dienstintegrität und verwaltet Benutzerkonten, Benutzergruppen und Dienstanforderungen. Für die Berechtigungen eines Benutzerverwaltungsadministrators gelten einige Einschränkungen. Sie können z. B. keinen globalen Administrator löschen oder andere Administratoren erstellen. Sie können außerdem keine Kennwörter für Abrechnungs-, globale und Dienstadministratoren zurücksetzen.
+
+- **Sicherheit lesen**: schreibgeschützter Zugriff auf eine Reihe von Sicherheitsfunktionen von Identity Protection Center, Privileged Identity Management, Monitor Office 365 Service Health und Office 365 Protection Center.
+
+- **Sicherheitsadministrator**: alle Leseberechtigungen der Rolle **Sicherheit lesen** sowie eine Reihe von zusätzlichen administrativen Berechtigungen für die gleichen Dienste: Identity Protection Center, Privileged Identity Management, Monitor Office 365 Service Health und Office 365 Protection Center.
 
 ## Administratorberechtigungen
 
@@ -72,6 +74,22 @@ Möglich | Nicht möglich
 ------------- | -------------
 <p>Anzeigen von Unternehmens-und Benutzerinformationen</p><p>Verwalten von Office-Support-Tickets</p><p>Zurücksetzen von Benutzerkennwörtern (mit Einschränkungen). Er kann keine Kennwörter für Abrechnungs-, globale und Dienstadministratoren zurücksetzen.</p><p>Erstellen und Verwalten von Benutzeransichten</p><p>Erstellen, Bearbeiten und Löschen von Benutzern und Gruppen, Verwalten von Benutzerlizenzen (mit Einschränkungen). Er oder Sie kann keinen globalen Administrator löschen oder andere Administratoren erstellen.</p> | <p>Ausführen von Abrechnungs- und Kaufvorgängen für Office-Produkte</p><p>Verwalten von Domänen</p><p>Verwalten von Unternehmensinformationen</p><p>Delegieren von Administratorrollen an andere</p><p>Verwenden der Verzeichnissynchronisierung</p><p>Aktivieren oder Deaktivieren der Multi-Factor Authentication</p>
 
+### Sicherheit lesen
+
+Geben Sie in | Möglich
+------------- | -------------
+Identity Protection Center | Lesen von allen Sicherheitsberichten und Einstellungsinformationen für die Sicherheitsfunktionen<ul><li>Antispam<li>Verschlüsselung<li>Verhinderung von Datenverlust<li>Antischadsoftware<li>Advanced Threat Protection<li>Antiphishing<li>Nachrichtenflussregeln
+Privileged Identity Management | <p>Verfügt über schreibgeschützten Zugriff auf alle eingeblendeten Informationen in Azure AD PIM: Richtlinien und Berichte für Azure AD-Rollenzuweisungen, Sicherheitsüberprüfungen und in Zukunft Lesezugriff auf Richtliniendaten und Berichte für Szenarien zusätzlich zu der Azure AD-Rollenzuweisung.<p>**Kann sich nicht** für Azure AD PIM registrieren oder Änderungen durchführen. Im PIM-Portal oder über PowerShell können Personen mit dieser Rolle zusätzliche Rollen (z.B. globaler Administrator oder Administrator für privilegierte Rollen) aktivieren, wenn der Benutzer für sie geeignet ist.
+<p>Monitor Office 365 Service Health</p><p>Office 365 Protection Center</p> | <ul><li>Lesen und Verwalten von Warnungen<li>Lesen von Sicherheitsrichtlinien<li>Lesen von Informationen zu Bedrohungen, Cloud App Discovery und Quarantäne in „Search and Investigate“<li>Lesen aller Berichte
+
+### Sicherheitsadministrator
+
+Geben Sie in | Möglich
+------------- | -------------
+Identity Protection Center | <ul><li>Alle Berechtigungen der Rolle „Sicherheit lesen“.<li>Darüber hinaus die Möglichkeit, alle IPC-Vorgänge außer des Zurücksetzens von Kennwörtern auszuführen.
+Privileged Identity Management | <ul><li>Alle Berechtigungen der Rolle „Sicherheit lesen“.<li>Kann Rollenmitgliedschaften oder -einstellungen in Azure AD **nicht** verwalten.
+<p>Monitor Office 365 Service Health</p><p>Office 365 Protection | <ul><li>Alle Berechtigungen der Rolle „Sicherheit lesen“.<li>Kann alle Einstellungen im Feature „Advanced Threat Protection“ (Schutz vor Malware und Viren, schadhafte URL-Konfiguration, URL-Ablaufverfolgung usw.) konfigurieren.
+
 ## Details zur globalen Administratorrolle
 
 Der globale Administrator hat Zugriff auf alle administrativen Funktionen. Standardmäßig wird der Person, die sich für ein Azure-Abonnement registriert, die globale Administratorrolle für das Verzeichnis zugewiesen. Nur globale Administratoren können weitere Administratorrollen zuweisen.
@@ -94,11 +112,11 @@ Der globale Administrator hat Zugriff auf alle administrativen Funktionen. Stand
 
 ## Nächste Schritte
 
-- Weitere Informationen zum Ändern von Administratoren für ein Azure-Abonnement finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](../billing-add-change-azure-subscription-administrator.md).
+- Weitere Informationen zum Ändern von Administratoren für ein Azure-Abonnement finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](../billing-add-change-azure-subscription-administrator.md)
 
-- Informationen dazu, wie der Zugriff auf Ressourcen in Microsoft Azure gesteuert wird, finden Sie unter [Grundlegendes zum Zugriff auf Ressourcen in Azure](active-directory-understanding-resource-access.md).
+- Informationen dazu, wie der Zugriff auf Ressourcen in Microsoft Azure gesteuert wird, finden Sie unter [Grundlegendes zum Zugriff auf Ressourcen in Azure](active-directory-understanding-resource-access.md)
 
-- Weitere Informationen zur Beziehung zwischen Azure Active Directory und Ihrem Azure-Abonnement finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](active-directory-how-subscriptions-associated-directory.md).
+- Weitere Informationen zur Beziehung zwischen Azure Active Directory und Ihrem Azure-Abonnement finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
 
 - [Verwalten von Benutzern](active-directory-create-users.md)
 
@@ -106,4 +124,4 @@ Der globale Administrator hat Zugriff auf alle administrativen Funktionen. Stand
 
 - [Gruppen verwalten](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

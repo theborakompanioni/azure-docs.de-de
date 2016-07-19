@@ -29,7 +29,7 @@ Durch das Übertragen Ihres Angebots in die Stagingumgebung können Sie es teste
 1.	Melden Sie sich beim [Veröffentlichungsportal](https://publish.windowsazure.com) an.
 2.	Wählen Sie im linken Navigationsbereich die Option **Datendienste** aus.
 3.	Wählen Sie das Angebot aus, das Sie zum Staging übertragen möchten. Der oben dargestellte Bildschirm wird angezeigt.
-4.	Klicken Sie auf die Schaltfläche **Push To Staging**.  
+4.	Klicken Sie auf die Schaltfläche **Push To Staging**.
 5.	Treten Probleme mit dem Angebot auf, die vor der Übertragung in die Stagingumgebung gelöst werden müssen, werden diese in einer Liste angezeigt. Korrigieren Sie diese Probleme durch Klicken auf die einzelnen Elemente in der Liste. Wenn Sie sämtliche Korrekturen vorgenommen haben, klicken Sie erneut auf die Schaltfläche **Push to Staging**.
 
 Wenn mit Ihrem Angebot keine Probleme auftreten, wird das unten dargestellte Popupfenster angezeigt.
@@ -42,7 +42,7 @@ Schneiden Sie Ihre Abonnement-ID aus, fügen Sie sie ein, und klicken Sie auf da
 
   ![Abbildung](media/marketplace-publishing-data-service-test-in-staging/step-1.2.png)
 
-> [AZURE.NOTE]Diese Azure-Abonnement-IDs sind nur für Tests und Staging im [Azure-Verwaltungsportal](https://manage.windowsazure.com) erforderlich. Für das Testen im Azure Marketplace sind sie erforderlich.
+> [AZURE.NOTE] Diese Azure-Abonnement-IDs sind nur für Tests und Staging im [Azure-Verwaltungsportal](https://manage.windowsazure.com) erforderlich. Für das Testen im Azure Marketplace sind sie erforderlich.
 
 Der nächste Bildschirm zeigt durch das unten gelb markierte Symbol „In Bearbeitung“ an, dass die Veröffentlichung durchgeführt wird. Die Übertragung in die Stagingumgebung dauert zwischen 10 und 15 Minuten. Wenn es länger dauert, aktualisieren Sie zunächst Ihren Browser (drücken Sie in Internet Explorer F5). Wenn Ihr Angebot in seltenen Fällen nach einer Stunde immer noch in die Stagingumgebung übertragen wird, klicken Sie auf den Kontaktlink, um uns über das Problem zu informieren.
 
@@ -74,7 +74,7 @@ Klicken Sie auf den Link hinter dem Text **See Your service offer at ...**, um 
 
 Überprüfen Sie abschließend, ob der Dienst über den DataMarket funktioniert, indem Sie auf den Link „EXPLORE THIS DATASET“ klicken. Im Tool wird das Fenster „Dienst-Explorer“ geöffnet, in dem Sie eine Vorschau der Ergebnisse einer Abfrage an Ihren Dienst anzeigen können. Sie können in diesem Fenster die erforderlichen Parameter eingeben. Die Ergebnisse einer Abfrage an Ihren Dienst werden daraufhin angezeigt. Außerdem wird die URL für die Abfrage angezeigt.
 
-> [AZURE.NOTE]Überprüfen Sie unbedingt die oben angezeigte Beschreibung des Diensts. Wenn Ihr Angebot mehrere Dienste umfasst, klicken Sie auf die Registerkarten im unteren Bereich, um zwischen den Diensten zu wechseln und diese zu überprüfen und zu testen.
+> [AZURE.NOTE] Überprüfen Sie unbedingt die oben angezeigte Beschreibung des Diensts. Wenn Ihr Angebot mehrere Dienste umfasst, klicken Sie auf die Registerkarten im unteren Bereich, um zwischen den Diensten zu wechseln und diese zu überprüfen und zu testen.
 
 
 
@@ -86,4 +86,4 @@ Wenn Sie mit den Ergebnissen zufrieden und bereit für die Veröffentlichung Ihr
 ## Weitere Informationen
 - [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0706_2016-->

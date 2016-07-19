@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/13/2016"
+	ms.date="07/05/2016"
 	ms.author="adhurwit"/>
 
 # Verwenden des Azure-Schlüsseltresors aus einer Webanwendung #
@@ -97,7 +97,8 @@ Im Folgenden finden Sie den Code für das Abrufen eines Zugriffstokens von Azure
 	    return result.AccessToken;
     }
 
-> [AZURE.NOTE] Die Verwendung eines geheimen Clientschlüssels und einer Client-ID stellt einfachste Möglichkeit zur Authentifizierung einer Azure AD-Anwendung dar. Die Verwendung in Ihrer Webanwendung erlaubt auch die Trennung von Aufgaben und mehr Kontrolle über die Schlüsselverwaltung. Dafür muss jedoch der geheime Clientschlüssel in die Konfigurationseinstellungen eingefügt werden, was für einige als potenziell riskant angesehen wird. Nachfolgend finden Sie eine Erläuterung zur Verwendung einer Client-ID und eines Zertifikats anstelle von Client-ID und geheimem Clientschlüssel, um die Azure AD-Anwendung zu authentifizieren.
+> [AZURE.NOTE] 
+Die Verwendung einer Client-ID und eines geheimen Clientschlüssels stellt die einfachste Möglichkeit zur Authentifizierung einer Azure AD-Anwendung dar. Die Verwendung in Ihrer Webanwendung erlaubt auch die Trennung von Aufgaben und mehr Kontrolle über die Schlüsselverwaltung. Dafür muss jedoch der geheime Clientschlüssel in die Konfigurationseinstellungen eingefügt werden, was für einige als potenziell riskant angesehen wird. Nachfolgend finden Sie eine Erläuterung zur Verwendung einer Client-ID und eines Zertifikats anstelle von Client-ID und geheimem Clientschlüssel, um die Azure AD-Anwendung zu authentifizieren.
 
 
 
@@ -228,7 +229,7 @@ Die letzte Codeänderung betrifft die Application\_Start-Methode. Zunächst müs
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetAccessToken));
 
 
-**Hinzufügen eines Zertifikats zur Web-App** Das Hinzufügen eines Zertifikats zur Web-App ist ein einfacher Vorgang in zwei Schritten. Navigieren Sie zunächst im Azure-Portal zu Ihrer Web-App. Klicken Sie auf dem Blatt "Einstellungen" für Ihre Web-App auf den Eintrag "Benutzerdefinierte Domänen und SSL". Auf dem daraufhin geöffneten Blatt können Sie das oben erstellte Zertifikat "KVWebApp.pfx" hochladen. Sie müssen sich unbedingt das Kennwort für die PFX-Datei merken.
+**Hinzufügen eines Zertifikats zur Web-App über das Azure-Portal** Das Hinzufügen eines Zertifikats zur Web-App ist ein einfacher Vorgang in zwei Schritten. Navigieren Sie zunächst im Azure-Portal zu Ihrer Web-App. Klicken Sie auf dem Blatt "Einstellungen" für Ihre Web-App auf den Eintrag "Benutzerdefinierte Domänen und SSL". Auf dem daraufhin geöffneten Blatt können Sie das oben erstellte Zertifikat "KVWebApp.pfx" hochladen. Sie müssen sich unbedingt das Kennwort für die PFX-Datei merken.
 
 ![Hinzufügen von Zertifikaten zu Web-Apps im Azure-Portal][2]
 
@@ -236,6 +237,9 @@ Die letzte Codeänderung betrifft die Application\_Start-Methode. Zunächst müs
 Abschließend müssen Sie Ihrer Web-App eine Anwendungseinstellung mit dem Namen "WEBSITE\_LOAD\_CERTIFICATES" und dem Wert "*" hinzufügen. Dadurch wird sichergestellt, dass alle Zertifikate geladen werden. Wenn Sie nur die von Ihnen hochgeladenen Zertifikate laden möchten, können Sie eine durch Kommas getrennte Liste ihrer Fingerabdrücke eingeben.
 
 Weitere Informationen zum Hinzufügen von Zertifikaten zu Web-Apps finden Sie unter [Using Certificates in Azure Websites Applications](https://azure.microsoft.com/blog/2014/10/27/using-certificates-in-azure-websites-applications/) (in englischer Sprache).
+
+
+**Hinzufügen eines Zertifikats zum Schlüsseltresor als geheimer Schlüssel** Anstatt Ihr Zertifikat direkt in den Web-App-Dienst hochzuladen, können Sie ihn als geheimen Schlüssel im Schlüsseltresor speichern und von dort aus bereitstellen. Dies ist ein zweistufiger Prozess, der im folgenden Blogbeitrag beschrieben ist: [Deploying Azure Web App Certificate through Key Vault (Bereitstellen des Azure-Web-App-Zertifikats über den Schlüsseltresor)](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)
 
 
 
@@ -249,4 +253,4 @@ Eine Referenz zur Programmierung finden Sie unter [C#-Client-API-Referenz für d
 [1]: ./media/key-vault-use-from-web-application/PortalAppSettings.png
 [2]: ./media/key-vault-use-from-web-application/PortalAddCertificate.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

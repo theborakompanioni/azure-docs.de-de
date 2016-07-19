@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Erste Schritte mit Microsoft Power BI Embedded Preview"
+   pageTitle="Erste Schritte mit Microsoft Power BI Embedded"
    description="Power BI Embedded, Hinzufügen interaktiver Power BI-Berichte zu Ihrer Business Intelligence-Anwendung"
    services="power-bi-embedded"
    documentationCenter=""
@@ -13,16 +13,14 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="06/28/2016"
+   ms.date="07/05/2016"
    ms.author="owend"/>
 
-# Erste Schritte mit Microsoft Power BI Embedded Preview
+# Erste Schritte mit Microsoft Power BI Embedded
 
-**Power BI Embedded** ist ein Azure-Dienst, mit dem Anwendungsentwickler eigenen Anwendungen interaktive Power BI-Berichte hinzufügen können. **Power BI Embedded** kann mit vorhandenen Anwendungen verwendet werden, ohne dass diese Anwendungen modifiziert werden müssen oder der Anmeldevorgang für Benutzer geändert werden muss.
+**Power BI Embedded** ist ein Azure-Dienst, mit dem Anwendungsentwickler eigenen Anwendungen interaktive Power BI-Berichte hinzufügen können. **Power BI Embedded** kann mit vorhandenen Anwendungen verwendet werden, ohne dass der Entwurf oder der Anmeldevorgang der Benutzer geändert werden müssen.
 
-Weitere Informationen zu Power BI Embedded finden Sie unter [Was ist Power BI Embedded?](power-bi-embedded-what-is-power-bi-embedded.md).
-
-Wie unter [Was ist Power BI Embedded?](power-bi-embedded-what-is-power-bi-embedded.md) beschrieben, werden Ressourcen für **Microsoft Power BI Embedded** über die [Azure ARM-APIs](https://msdn.microsoft.com/library/mt712306.aspx) bereitgestellt. In diesem Fall ist die Ressource, die Sie bereitstellen, eine **Power BI-Arbeitsbereichssammlung**. Im nächsten Abschnitt erfahren Sie, wie Sie eine Arbeitsbereichssammlung erstellen.
+Ressourcen für **Microsoft Power BI Embedded** werden über die [Azure ARM-APIs](https://msdn.microsoft.com/library/mt712306.aspx) bereitgestellt. In diesem Fall ist die Ressource, die Sie bereitstellen, eine **Power BI-Arbeitsbereichssammlung**.
 
 ![](media\power-bi-embedded-get-started\introduction.png)
 
@@ -53,12 +51,10 @@ Es dauert einen Moment, bis die **Arbeitsbereichssammlung** bereitgestellt wird.
 
 Das Blatt für die **Erstellung** enthält die erforderlichen Informationen zum Aufrufen der APIs, mit denen Arbeitsbereiche erstellt und Inhalte dafür bereitgestellt werden.
 
-Im nächsten Abschnitt wird beschrieben, wie **Zugriffsschlüssel** zum Generieren von **App-Token** verwendet werden, mit denen die API-Anforderungen authentifiziert werden.
-
 <a name="view-access-keys"/>
 ## Anzeigen von Power BI-API-Zugriffsschlüsseln
 
-Eine der wichtigsten Informationen, die zum Aufrufen der Power BI-REST-APIs benötigt werden, sind die **Zugriffsschlüssel**. Sie dienen zum Generieren der **App-Token**, die zum Authentifizieren Ihrer API-Anforderungen verwendet werden. Klicken Sie zum Anzeigen der **Zugriffsschlüssel** auf dem Blatt **Einstellungen** auf **Zugriffsschlüssel** Weitere Informationen zu **App-Token** finden Sie unter [Funktionsweise des App-Tokenflusses](power-bi-embedded-app-token-flow.md).
+Zu den wichtigsten Informationen zum Aufrufen der Power BI-REST-APIs gehören die **Zugriffsschlüssel**. Sie dienen zum Generieren der **App-Token**, die zum Authentifizieren Ihrer API-Anforderungen verwendet werden. Klicken Sie zum Anzeigen der **Zugriffsschlüssel** auf dem Blatt **Einstellungen** auf **Zugriffsschlüssel**. Weitere Informationen zu **App-Token** finden Sie unter [Funktionsweise des App-Tokenflusses](power-bi-embedded-app-token-flow.md).
 
    ![](media\power-bi-embedded-get-started\access-keys.png)
 
@@ -82,7 +78,7 @@ Im Folgenden werden die Unterschiede zwischen der Verwendung des **Importvorgang
 
 |Importieren | DirectQuery
 |---|---
-|Tabellen, Spalten *und Daten* werden in **Power BI Desktop** importiert oder kopiert. Bei der Arbeit mit Visualisierungen fragt **Power BI Desktop** eine Kopie der Daten ab. Um Änderungen anzuzeigen, die ggf. an den zugrunde liegenden Daten vorgenommen wurden, müssen Sie ein Dataset aktualisieren bzw. ein vollständiges aktuelles Dataset importieren.|Nur *Tabellen und Spalten* werden in **Power BI Desktop** importiert oder kopiert. Bei der Arbeit mit Visualisierungen fragt **Power BI Desktop** die zugrunde liegende Datenquelle ab. Das bedeutet, dass die angezeigten Daten immer aktuell sind.
+|Tabellen, Spalten *und Daten* werden in **Power BI Desktop** importiert oder kopiert. Bei der Arbeit mit Visualisierungen fragt **Power BI Desktop** eine Kopie der Daten ab. Um Änderungen anzuzeigen, die ggf. an den zugrunde liegenden Daten vorgenommen wurden, müssen Sie ein Dataset aktualisieren bzw. ein vollständiges aktuelles Dataset importieren.|Nur *Tabellen und Spalten* werden in **Power BI Desktop** importiert oder kopiert. Bei der Arbeit mit Visualisierungen fragt **Power BI Desktop** die zugrunde liegende Datenquelle ab. Dies bedeutet, dass die angezeigten Daten immer aktuell sind.
 
 Weitere Informationen zum Herstellen einer Verbindung mit einer Datenquelle finden Sie unter [Herstellen einer Verbindung mit einer Datenquelle](power-bi-embedded-connect-datasource.md).
 
@@ -107,4 +103,4 @@ In den obigen Schritten haben Sie eine Arbeitsbereichssammlung und Ihren ersten 
 - [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 - [Power BI Embedded – Preise](http://go.microsoft.com/fwlink/?LinkID=760527)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

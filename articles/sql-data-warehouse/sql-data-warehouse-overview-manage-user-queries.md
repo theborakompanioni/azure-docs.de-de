@@ -34,18 +34,18 @@
 
 ## Nächste Schritte
 
-Weitere Verwaltungstipps finden Sie in der Übersicht über die [Verwaltung][].
+Weitere Verwaltungstipps finden Sie unter [Verwalten von Datenbanken in Azure SQL Data Warehouse][].
 
 <!--Image references-->
 
 <!--Article references-->
-[Finden von lang ausgeführten Abfragen]: sql-data-warehouse-manage-find-long-running-queries.md
-[Parallelitäts- und Workloadverwaltung]: sql-data-warehouse-develop-concurrency.md
-[Verwaltung]: sql-data-warehouse-overview-manage.md
+[Finden von lang ausgeführten Abfragen]: ./sql-data-warehouse-manage-monitor.md
+[Parallelitäts- und Workloadverwaltung]: ./sql-data-warehouse-develop-concurrency.md
+[Verwalten von Datenbanken in Azure SQL Data Warehouse]: ./sql-data-warehouse-overview-manage.md
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

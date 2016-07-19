@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/28/2016" 
+	ms.date="06/29/2016" 
 	ms.author="mimig"/>
 
 # Soziale Netzwerke mit DocumentDB
@@ -106,6 +106,33 @@ Die Feed-Datenströme könnten mithilfe von [Azure App Services](https://azure.m
 
 Punkte und Likes zu einem Beitrag können mithilfe dieser Technik verzögert verarbeitet werden, um eine letztendlich konsistente Umgebung zu erstellen.
 
+Follower sind komplizierter. In DocumentDB gilt ein Grenzwert für die Dokumentgröße von 512 KB, weshalb Sie ggf. erwägen, Follower als ein Dokument mit dieser Struktur zu speichern:
+
+    {
+    	"id":"234d-sd23-rrf2-552d",
+    	"followersOf": "dse4-qwe2-ert4-aad2",
+    	"followers":[
+    		"ewr5-232d-tyrg-iuo2",
+    		"qejh-2345-sdf1-ytg5",
+    		//...
+    		"uie0-4tyg-3456-rwjh"
+    	]
+    }
+
+Dies mag für einen Benutzer mit ein paar Tausend Followern funktionieren. Doch wenn ein Prominenter in unseren Ranglisten auftaucht, wird bei diesem Ansatz die Größenbeschränkung für Dokumente letztlich erreicht.
+
+Um dieses Problem zu lösen, können wir einen kombinierten Ansatz wählen. Die Anzahl der Follower können wir als Teil des Dokuments mit der Benutzerstatistik speichern:
+
+    {
+    	"id":"234d-sd23-rrf2-552d",
+    	"user": "dse4-qwe2-ert4-aad2",
+    	"followers":55230,
+    	"totalPosts":452,
+    	"totalPoints":11342
+    }
+
+Und das Diagramm der Follower kann in Azure Storage-Tabellen mit einer [Erweiterung](https://github.com/richorama/AzureStorageExtensions#azuregraphstore) gespeichert werden, die ein einfaches Speichern und Abrufen gemäß dem Muster „A folgt B“ zulässt. Auf diese Weise können wir den Prozess des Abrufens der exakten Liste mit den Followern (wenn wir sie brauchen) an Azure Storage-Tabellen delegieren, doch für ein schnelles Nachschlagen von Werten verwenden wir weiter DocumentDB.
+
 ## Das „Leiter-Muster“ und Datenduplizierung
 
 Wie Sie vielleicht bemerkt haben, kommt ein Benutzer in dem JSON-Dokument, das auf einen Beitrag verweist, mehrfach vor. Natürlich haben Sie mit der Annahme recht, dass die Informationen, die einen Benutzer darstellen, aufgrund der Denormalisierung an mehr als einem Ort vorhanden sein können.
@@ -140,21 +167,26 @@ Die mittlere Ebene heißt „der Benutzer“. Dabei handelt es sich um die gesam
 
 Die umfangreichste Ebene ist der „Erweiterte Benutzer“. Sie enthält alle wichtigen Benutzerinformationen und andere Daten, die nicht schnell gelesen werden müssen oder nur sporadisch verwendet werden (z.B. beim Anmeldeprozess). Diese Daten können außerhalb von DocumentDB, in Azure SQL-Datenbanken oder Azure Storage-Tabellen gespeichert werden.
 
-Warum empfiehlt es sich, die Benutzerinformationen aufzuteilen und sogar an verschiedenen Orten zu speichern? Weil der Speicherplatz in DocumentDB nicht unbegrenzt ist und weil die Abfragen, von der Leistungsseite betrachtet, immer kostenaufwendiger werden, je größer die Dokumente sind. Achten Sie auf schlanke Dokumente, die die entscheidenden Informationen für all Ihre leistungsabhängigen Abfragen für Ihr soziales Netzwerk enthalten. Speichern Sie alle weiteren Informationen für mögliche Szenarios wie eine vollständige Profilbearbeitung, Anmeldungen, sogar für Data Mining für eine Nutzungsanalyse und Big Data-Initiativen. Dabei ist nicht relevant, ob die Datensammlung für das Data Mining langsamer ist, weil es auf einer Azure SQL-Datenbank ausgeführt wird. Was zählt, ist eine schnelle und schlanke Funktionsweise für unsere Benutzer. Ein in DocumentDB gespeicherter Benutzer würde wie folgt aussehen:
+Warum empfiehlt es sich, die Benutzerinformationen aufzuteilen und sogar an verschiedenen Orten zu speichern? Weil der Speicherplatz in DocumentDB [nicht unbegrenzt](documentdb-limits.md) ist und weil die Abfragen, von der Leistungsseite betrachtet, immer kostenaufwendiger werden, je größer die Dokumente sind. Achten Sie auf schlanke Dokumente, die die entscheidenden Informationen für all Ihre leistungsabhängigen Abfragen für Ihr soziales Netzwerk enthalten. Speichern Sie alle weiteren Informationen für mögliche Szenarios wie eine vollständige Profilbearbeitung, Anmeldungen, sogar für Data Mining für eine Nutzungsanalyse und Big Data-Initiativen. Dabei ist nicht relevant, ob die Datensammlung für das Data Mining langsamer ist, weil es auf einer Azure SQL-Datenbank ausgeführt wird. Was zählt, ist eine schnelle und schlanke Funktionsweise für unsere Benutzer. Ein in DocumentDB gespeicherter Benutzer würde wie folgt aussehen:
 
     {
         "id":"dse4-qwe2-ert4-aad2",
         "name":"John",
         "surname":"Doe",
+        "username":"johndoe"
         "email":"john@doe.com",
-        "twitterHandle":"@john",
-        "totalPoints":100,
-        "totalPosts":24,
-        "following":{
-            "count":2,
-            "list":[
-                UserChunk1, UserChunk2
-            ]
+        "twitterHandle":"@john"
+    }
+
+Und ein Beitrag würde wie folgt aussehen:
+
+    {
+        "id":"1234-asd3-54ts-199a",
+        "title":"Awesome post!",
+        "date":"2016-01-02",
+        "createdBy":{
+        	"id":"dse4-qwe2-ert4-aad2",
+    		"username":"johndoe"
         }
     }
 
@@ -164,11 +196,11 @@ Wenn eine Änderung für eines der Attribute der Chunks anfällt, sind die betro
 
 Benutzer generieren (glücklicherweise) viel Inhalt. Sie sollten daher auch in der Lage sein, Inhalte zu suchen, die nicht direkt in Ihrem Stream erscheinen, da Sie vielleicht dem jeweiligen Ersteller nicht folgen oder einen eigenen, sechs Monate alten Post suchen.
 
-Dank und aufgrund von Azure DocumentDB können wir mit [Azure Search](https://azure.microsoft.com/services/search/) leicht, binnen weniger Minuten und ohne eine einzige Zeile Code (bis auf den Suchprozess und die Benutzeroberfläche natürlich), eine Suchmaschine implementieren.
+Dank und aufgrund von Azure DocumentDB können wir mit [Azure Search](https://azure.microsoft.com/services/search/) mühelos binnen weniger Minuten und ohne eine einzige Zeile Code (bis auf den Suchprozess und die Benutzeroberfläche natürlich) eine Suchmaschine implementieren.
 
 Warum ist das so einfach?
 
-Azure Search implementiert sogenannte [Indexer](https://msdn.microsoft.com/library/azure/dn946891.aspx). Das sind Hintergrundprozesse, die sich in Ihre Datenrepositorys einklinken und Ihre Objekte automatisch zu den Indizes hinzufügen, sie aktualisieren oder daraus entfernen . Unterstützt werden [Azure SQL-Datenbank-Indexer](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/), [Azure-Blobs-Indexer](../search/search-howto-indexing-azure-blob-storage.md) und auch [Azure DocumentDB-Indexer](../documentdb/documentdb-search-indexer.md). Die Übertragung von Informationen von DocumentDB zu Azure Search ist unkompliziert, da Informationen in beiden Fällen im JSON-Format gespeichert werden. Wir müssen lediglich [unseren Index erstellen](../search/search-create-index-portal.md) und angeben, welche Attribute aus unseren Dokumenten indiziert werden sollen. Bereits wenige Minuten später (abhängig von der Datengröße) stehen alle unsere Inhalte für die Suche zur Verfügung, für die beste Search-as-a-Service-Lösung in der Cloud-Infrastruktur.
+Azure Search implementiert sogenannte [Indexer](https://msdn.microsoft.com/library/azure/dn946891.aspx). Das sind Hintergrundprozesse, die sich in Ihre Datenrepositorys einklinken und Ihre Objekte automatisch zu den Indizes hinzufügen, sie aktualisieren oder daraus entfernen . Unterstützt werden [Azure SQL-Datenbank-Indexer](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/), [Azure-Blobs-Indexer](../search/search-howto-indexing-azure-blob-storage.md) und auch [Azure DocumentDB-Indexer](../documentdb/documentdb-search-indexer.md). Die Übertragung von Informationen von DocumentDB an Azure Search ist unkompliziert, da Informationen in beiden Fällen im JSON-Format gespeichert werden. Wir müssen lediglich [unseren Index erstellen](../search/search-create-index-portal.md) und angeben, welche Attribute aus unseren Dokumenten indiziert werden sollen. Bereits wenige Minuten später (abhängig von der Datengröße) stehen alle unsere Inhalte für die Suche zur Verfügung, für die beste Search-as-a-Service-Lösung in der Cloudinfrastruktur.
 
 Weitere Informationen zu Azure Search finden Sie im [Hitchhiker’s Guide to Search](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/) (Per Anhalter durch Azure Search).
 
@@ -178,11 +210,13 @@ Nachdem all diese täglich wachsenden Inhalte gespeichert wurden, stellen Sie si
 
 Die Antwort ist einfach: Lassen Sie ihn arbeiten und lernen Sie von ihm.
 
-Doch, was können wir von ihm lernen? Einige einfache Beispiele sind die [Sentiment-Analyse](https://en.wikipedia.org/wiki/Sentiment_analysis), die Empfehlung von Inhalten auf Grundlage der Interessen eines Benutzers oder sogar ein automatischer Content-Moderator, der sicherstellt, dass alle in unserem sozialen Netzwerk veröffentlichten Inhalte familiengeeignet sind.
+Doch, was können wir von ihm lernen? Einige einfache Beispiele sind die [Stimmmungsanalyse](https://en.wikipedia.org/wiki/Sentiment_analysis), die Empfehlung von Inhalten auf Grundlage der Interessen eines Benutzers oder sogar ein automatischer Inhaltsmoderator, der sicherstellt, dass alle in unserem sozialen Netzwerk veröffentlichten Inhalte familiengeeignet sind.
 
 Nun, da ich Ihr Interesse geweckt habe, glauben Sie wahrscheinlich, dass Sie eine Promotion in Mathematik benötigen, um einfachen Datenbanken und Dateien diese Muster und Informationen zu entlocken. Aber da liegen Sie falsch.
 
-[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/), ein Teil der [Cortana Intelligence Suite](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx), ist ein vollständig verwalteter Clouddienst, mit dem Sie Workflows mithilfe von Algorithmen in einer einfachen Drag & Drop-Schnittstelle erstellen, Ihre eigenen Algorithmen in [R] (https://en.wikipedia.org/wiki/R_(programming_language)) programmieren oder einige der bereits erstellten und einsatzbereiten APIs verwenden können (z.B. [Textanalyse](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [Content Moderator](https://www.microsoft.com/moderator) (Content-Moderator) oder [Empfehlungen](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2)).
+[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/), ein Teil der [Cortana Intelligence Suite](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx), ist ein vollständig verwalteter Clouddienst, mit dem Sie Workflows mithilfe von Algorithmen in einer einfachen Drag & Drop-Schnittstelle erstellen, Ihre eigenen Algorithmen in [R] (https://en.wikipedia.org/wiki/R_(programming_language)) programmieren oder einige der bereits erstellten und einsatzbereiten APIs verwenden können (z.B. [Text Analytics](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [Content Moderator](https://www.microsoft.com/moderator) oder [Recommendations](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2)).
+
+Um diese Machine Learning-Szenarien zu realisieren, können wir [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) zum Erfassen der Informationen aus verschiedenen Quellen und [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) verwenden, um die Informationen zu verarbeiten und eine Ausgabe zu generieren, die von Azure Machine Learning verarbeitet werden kann.
 
 ## Zusammenfassung
 
@@ -194,8 +228,8 @@ In Wahrheit gibt es keine Patentlösung für diese Art von Szenarios. Vielmehr s
 
 ## Nächste Schritte
 
-Weitere Informationen über die Datenmodellierung finden Sie in dem Artikel [Modellieren von Daten in DocumentDB](documentdb-modeling-data.md). Wenn Sie an weiteren Anwendungsmöglichkeiten für DocumentDB interessiert sind, besuchen Sie [Häufige Anwendungsfälle für DocumentDB](documentdb-use-cases.md).
+Weitere Informationen zur Datenmodellierung finden Sie im Artikel [Modellieren von Daten in DocumentDB](documentdb-modeling-data.md). Wenn Sie an weiteren Anwendungsmöglichkeiten für DocumentDB interessiert sind, lesen Sie [Häufige Anwendungsfälle für DocumentDB](documentdb-use-cases.md).
 
 Oder erfahren Sie mehr über DocumentDB anhand des [DocumentDB-Lernpfads](https://azure.microsoft.com/documentation/learning-paths/documentdb/).
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0706_2016-->

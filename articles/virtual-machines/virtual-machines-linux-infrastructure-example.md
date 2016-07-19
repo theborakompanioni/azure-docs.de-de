@@ -36,7 +36,7 @@ Adventure Works Cycles möchte eine Anwendung für einen Onlineshop in Azure ers
 	- einem Front-End-Subnetz für die Webserver
 	- einem Back-End-Subnetz für die Anwendungsserver, den MongoDB-Cluster und die Domänencontroller
 
-![](./media/virtual-machines-common-infrastructure-service-guidelines/example-tiers.png)
+![Diagramm der verschiedenen Ebenen für die Anwendungsinfrastruktur](./media/virtual-machines-common-infrastructure-service-guidelines/example-tiers.png)
 
 Eingehender sicherer Webdatenverkehr erfordert einen Lastenausgleich zwischen den Webservern, wenn die Kunden den Onlineshop durchsuchen. Datenverkehr für die Auftragsverarbeitung in Form von HTTP-Anforderungen der Webserver muss zwischen den Anwendungsservern ausgeglichen werden. Darüber hinaus muss die Infrastruktur für hohe Verfügbarkeit entworfen werden.
 
@@ -115,7 +115,7 @@ Adventure Works Cycles hat sich für die folgenden Namen für die virtuellen Azu
 
 Hier sehen Sie die daraus resultierende Konfiguration.
 
-![](./media/virtual-machines-common-infrastructure-service-guidelines/example-config.png)
+![Endgültige in Azure bereitgestellte Anwendungsinfrastruktur](./media/virtual-machines-common-infrastructure-service-guidelines/example-config.png)
 
 Diese Konfiguration umfasst:
 
@@ -132,4 +132,4 @@ Diese Konfiguration umfasst:
 
 [AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

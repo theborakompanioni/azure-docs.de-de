@@ -79,7 +79,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sprinklr-tutorial/IC782904.png "Einmaliges Anmelden konfigurieren")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Sprinklr-Anmelde-URL** die URL im Format „*https://\<Mandanten-Name>.sprinklr.com*“ ein, und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Sprinklr-Anmelde-URL** die URL im Format „ *https://\<Mandanten-Name>.sprinklr.com* “ ein, und klicken Sie dann auf **Weiter**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-sprinklr-tutorial/IC782905.png "App-URL konfigurieren")
 

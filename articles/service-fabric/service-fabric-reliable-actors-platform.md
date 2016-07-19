@@ -39,7 +39,7 @@ In Reliable Services erbt der Dienst die `StatefulService`-Klasse, die selbst vo
 
  - Sicherung und Wiederherstellung des Diensts
  - Gemeinsame Verwendung von Funktionen für alle Akteure, z.B. ein Schaltkreisunterbrecher
- - Remoteprozeduraufrufe für den Actordienst selbst sowie für einzelne Akteure 
+ - Remoteprozeduraufrufe für den Actordienst selbst sowie für einzelne Akteure
 
 ### Verwenden des Actordiensts
 
@@ -251,7 +251,7 @@ Bei Verwendung von GUIDs und Zeichenfolgen werden für die Werte Int64-Hashwerte
  - [Actor-Zustandsverwaltung](service-fabric-reliable-actors-state-management.md)
  - [Actor-Lebenszyklus und Garbage Collection](service-fabric-reliable-actors-lifecycle.md)
  - [Actors API reference documentation](https://msdn.microsoft.com/library/azure/dn971626.aspx) (Actor-API-Referenzdokumentation)
- - [Beispielcode](https://github.com/Azure/servicefabric-samples)
+ - [Beispielcode](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 
  
 <!--Image references-->
@@ -261,4 +261,4 @@ Bei Verwendung von GUIDs und Zeichenfolgen werden für die Werte Int64-Hashwerte
 [4]: ./media/service-fabric-reliable-actors-platform/actor-replica-role.png
 [5]: ./media/service-fabric-reliable-actors-introduction/distribution.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0706_2016-->

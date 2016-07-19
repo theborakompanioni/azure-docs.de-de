@@ -330,43 +330,14 @@ Dieser Abschnitt bezieht sich auf das Ausführen des Xamarin iOS-Projekts für i
 
 ####Hinzufügen von Pushbenachrichtigungen zu Ihrer iOS-App
 
-1. Fügen Sie am Anfang der Datei **AppDelegate.cs** die folgende `using`-Anweisung hinzu.
+1. Öffnen Sie im Projekt **iOS** die Datei „AppDelegate.cs“. Fügen Sie oben in der Codedatei die folgende **using**-Anweisung hinzu.
 
-        using Microsoft.WindowsAzure.MobileServices;
-		using Newtonsoft.Json.Linq;
+        using Newtonsoft.Json.Linq;
 
+4. Fügen Sie der **AppDelegate**-Klasse eine Überschreibung für das **RegisteredForRemoteNotifications**-Ereignis hinzu, um sich für Benachrichtigungen zu registrieren:
 
-2. Öffnen Sie im iOS-Projekt die Datei „AppDelegate.cs“ und aktualisieren Sie `FinishedLaunching` wie folgt, um Remotebenachrichtigungen zu unterstützen.
-
-		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
-		{
-			global::Xamarin.Forms.Forms.Init ();
-
-			Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
-
-            // IMPORTANT: uncomment this code to enable sync on Xamarin.iOS
-            // For more information, see: http://go.microsoft.com/fwlink/?LinkId=620342
-            //SQLitePCL.CurrentPlatform.Init();
-
-            // registers for push for iOS8
-            var settings = UIUserNotificationSettings.GetSettingsForTypes(
-                UIUserNotificationType.Alert
-                | UIUserNotificationType.Badge
-                | UIUserNotificationType.Sound,
-                new NSSet());
-
-            UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
-            UIApplication.SharedApplication.RegisterForRemoteNotifications();
-
-			LoadApplication (new App ());
-
-			return base.FinishedLaunching (app, options);
-		}
-
-
-4. Fügen Sie darüber hinaus in „AppDelegate.cs“ eine Überschreibung für das **RegisteredForRemoteNotifications**-Ereignis hinzu, um sich für Benachrichtigungen zu registrieren:
-
-        public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
+        public override void RegisteredForRemoteNotifications(UIApplication application, 
+			NSData deviceToken)
         {
             const string templateBodyAPNS = "{"aps":{"alert":"$(messageParam)"}}";
 
@@ -381,9 +352,10 @@ Dieser Abschnitt bezieht sich auf das Ausführen des Xamarin iOS-Projekts für i
             push.RegisterAsync(deviceToken, templates);
         }
 
-5. Zudem fügen Sie in „AppDelegate.cs“ eine Überschreibung für das **DidReceivedRemoteNotification**-Ereignis hinzu, um während der Ausführung der App eingehende Benachrichtigungen zu verarbeiten:
+5. Fügen Sie in **AppDelegate** auch die folgende Überschreibung für den **DidReceivedRemoteNotification**-Ereignishandler hinzu:
 
-        public override void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
+        public override void DidReceiveRemoteNotification(UIApplication application, 
+			NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
         {
             NSDictionary aps = userInfo.ObjectForKey(new NSString("aps")) as NSDictionary;
 
@@ -398,6 +370,22 @@ Dieser Abschnitt bezieht sich auf das Ausführen des Xamarin iOS-Projekts für i
                 avAlert.Show();
             }
         }
+
+	Diese Methode verarbeitet eingehende Benachrichtigungen, während die App ausgeführt wird.
+
+2. Fügen Sie in der **AppDelegate**-Klasse der **FinishedLaunching**-Methode den folgenden Code hinzu:
+
+        // Register for push notifications.
+        var settings = UIUserNotificationSettings.GetSettingsForTypes(
+            UIUserNotificationType.Alert
+            | UIUserNotificationType.Badge
+            | UIUserNotificationType.Sound,
+            new NSSet());
+
+        UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
+        UIApplication.SharedApplication.RegisterForRemoteNotifications();
+
+	Dies ermöglicht die Unterstützung von Remotebenachrichtigungen und fordert die Pushregistrierung an.
 
 Ihre App kann Pushbenachrichtigungen nun unterstützen.
 
@@ -439,10 +427,10 @@ In diesem Abschnitt geht es um das Ausführen der Projekte „Xamarin.Forms WinA
 		using Windows.Networking.PushNotifications;
 		using <your_TodoItemManager_portable_class_namespace>;
 
-	Ersetzen Sie `<your_TodoItemManager_portable_class_namespace>` durch den Namespace Ihres portablen Projekts, das die `TodoItemManager`-Klasse enthält.
+	Ersetzen Sie `<your_TodoItemManager_portable_class_namespace>` durch den Namespace Ihres portierbaren Projekts, das die `TodoItemManager`-Klasse enthält.
  
 
-2. Fügen Sie in der Datei „App.xaml.cs“ die folgende **InitNotificationsAsync**-Methode hinzu:
+2. Fügen Sie der Datei „App.xaml.cs“ die folgende **InitNotificationsAsync**-Methode hinzu:
 
         private async Task InitNotificationsAsync()
         {
@@ -468,7 +456,7 @@ In diesem Abschnitt geht es um das Ausführen der Projekte „Xamarin.Forms WinA
 
 	Diese Methode ruft den Pushbenachrichtigungskanal ab und registriert eine Vorlage für das Empfangen von Vorlagenbenachrichtigungen von Ihrem Notification Hub. Eine Vorlagenbenachrichtigung, die *messageParam* unterstützt, wird an diesen Client übermittelt.
 
-3. Aktivieren Sie in der Datei „App.xaml.cs“ die Definition der **OnLaunched**-Ereignishandlermethode, indem Sie den Modifizierer `async` hinzufügen, und fügen Sie anschließend am Ende der Methode die folgende Codezeile hinzu:
+3. Aktivieren Sie in der Datei „App.xaml.cs“ die Definition der **OnLaunched**-Ereignishandlermethode, indem Sie den Modifizierer `async` hinzufügen. Fügen Sie anschließend am Ende der Methode die folgende Codezeile hinzu:
 
         await InitNotificationsAsync();
 
@@ -493,13 +481,13 @@ In diesem Abschnitt geht es um das Ausführen der Projekte „Xamarin.Forms WinA
 
 Erfahren Sie mehr über Pushbenachrichtigungen:
 
-* [Arbeiten Sie mit der Back-End-Server-SDK für Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-add-tags-to-a-device-installation-to-enable-push-to-tags) Mit Tags können Sie für segmentierte Kunden Pushvorgänge auswählen. Erfahren Sie, wie Sie einer Geräteinstallation Tags hinzufügen.
+* [Verwenden des .NET-Back-End-Server-SDK für Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-add-tags-to-a-device-installation-to-enable-push-to-tags) Mit Tags können Sie Pushvorgänge auf segmentierte Kunden ausrichten. Hier erfahren Sie, wie Sie einer Geräteinstallation Tags hinzufügen.
 
-* [Diagnose push notification issues (Diagnostizieren von Problemen mit Pushbenachrichtigungen)](../notification-hubs/notification-hubs-push-notification-fixer.md) Es gibt mehrere Gründe, warum Benachrichtigungen ggf. verworfen werden oder nicht auf Geräten ankommen. In diesem Thema wird gezeigt, wie Sie die zugrunde liegende Ursache der Fehler von Pushbenachrichtigungen analysieren und ermitteln.
+* [Azure Notification Hubs – Diagnoserichtlinien](../notification-hubs/notification-hubs-push-notification-fixer.md) Es gibt mehrere Gründe, warum Benachrichtigungen ggf. verworfen werden oder nicht auf Geräten ankommen. In diesem Thema erfahren Sie, wie Sie die Ursache für Fehler bei Pushbenachrichtigungen analysieren und ermitteln.
 
 Sie können mit einem der folgenden Tutorials fortfahren:
 
-* [Hinzufügen der Authentifizierung zu Ihrer Windows-App](app-service-mobile-xamarin-forms-get-started-users.md) Hier erhalten Sie Informationen zur Authentifizierung von Benutzern der App mit einem Identitätsanbieter.
+* [Hinzufügen der Authentifizierung zu Ihrer App](app-service-mobile-xamarin-forms-get-started-users.md) Hier erhalten Sie Informationen zur Authentifizierung von Benutzern der App bei einem Identitätsanbieter.
 
 * [Aktivieren der Offlinesynchronisierung für Ihre Windows-App](app-service-mobile-xamarin-forms-get-started-offline-data.md) Erfahren Sie, wie Sie mithilfe eines Mobile App-Back-Ends Ihrer App Offlineunterstützung hinzufügen. Die Offlinesynchronisierung ermöglicht Endbenutzern die Interaktion mit einer mobilen App (Anzeigen, Hinzufügen und Ändern von Daten), auch wenn keine Netzwerkverbindung vorhanden ist.
 
@@ -510,4 +498,4 @@ Sie können mit einem der folgenden Tutorials fortfahren:
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532
 [apns object]: http://go.microsoft.com/fwlink/p/?LinkId=272333
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

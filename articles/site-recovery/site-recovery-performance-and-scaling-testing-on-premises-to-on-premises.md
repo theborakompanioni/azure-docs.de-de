@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="12/14/2015"
+	ms.date="07/06/2016"
 	ms.author="raynew"/>
 
 # Ergebnisse von Leistungs- und Skalierungstests für die Hyper-V-Replikation vom Typ „Lokal zu lokal“ mit Site Recovery
@@ -195,17 +195,17 @@ Der Tabelle fasst die Leistungsmetriken und -indikatoren zusammen, die für die 
 
 |Metrik|Indikator|
 |---|---|
-|CPU|\\Prozessor(\_Gesamt)\\% Prozessorzeit|
-|Verfügbarer Speicher|\\Speicher\\Verfügbar MBytes|
-|IOPS|\\PhysicalDisk(\_Total)\\Übertragungen/Sek.|
-|VM-Lesevorgänge/Sek. (IOPS)|\\Hyper-V virtuelles Speichergerät(<VHD>)\\Lesevorgänge/Sek.|
-|VM-Schreibvorgänge/Sek. (IOPS)|\\Hyper-V virtuelles Speichergerät(<VHD>)\\Schrebvorgänge/S|
-|VM-Lesedurchsatz|\\Hyper-V virtuelles Speichergerät(<VHD>)\\Lesen Bytes/Sek.|
-|VM-Scheibdurchsatz|\\Hyper-V virtuelles Speichergerät(<VHD>)\\Schreiben Bytes/Sek.|
+|CPU|\\Prozessor(\_Total)\\Prozessorzeit (%)|
+|Verfügbarer Arbeitsspeicher|\\Arbeitsspeicher\\Verfügbare MB|
+|IOPS|\\Physikalischer Datenträger(\_Total)\\Übertragungen/s|
+|VM-Lesevorgänge (IOPS)/s|\\Virtuelles Hyper-V-Speichergerät(<VHD>)\\Lesevorgänge/s|
+|VM-Schreibvorgänge (IOPS)/s|\\Virtuelles Hyper-V-Speichergerät(<VHD>)\\Schreibvorgänge/s|
+|VM-Lesedurchsatz|\\Virtuelles Hyper-V-Speichergerät(<VHD>)\\Gelesene Bytes/s|
+|VM-Schreibdurchsatz|\\Virtuelles Hyper-V-Speichergerät(<VHD>)\\Geschriebene Bytes/s|
 
 
 ## Nächste Schritte
 
 - [Einrichten von Schutz zwischen zwei lokalen VMM-Standorten](site-recovery-vmm-to-vmm.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0706_2016-->

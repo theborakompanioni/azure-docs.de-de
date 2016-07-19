@@ -4,7 +4,7 @@ In den folgenden Abschnitten wird das neue ASP.NET WebAPI-Back-End mit den folge
 
 1. **Authentifizieren von Clients**: Ein Meldungshandler wird später zum Authentifizieren von Clientanforderungen und zum Zuordnen des Benutzers zu den Anforderungen hinzugefügt.
 2. **Registrierungen für Clientbenachrichtigungen**: Später fügen Sie einen Controller hinzu, um neue Registrierungen für ein Clientgerät zum Empfangen von Benachrichtigungen zu verarbeiten. Der authentifizierte Benutzername wird automatisch als [Tag](https://msdn.microsoft.com/library/azure/dn530749.aspx) der Registrierung hinzugefügt.
-3. **Senden von Benachrichtigungen an Clients**: Später fügen Sie zudem einen Controller hinzu, um Benutzern die Möglichkeit zu bieten, eine sichere Pushbenachrichtigung an Geräte und Clients auszulösen, die mit dem Tag verknüpft sind. 
+3. **Senden von Benachrichtigungen an Clients**: Später fügen Sie zudem einen Controller hinzu, um Benutzern die Möglichkeit zu bieten, eine sichere Pushbenachrichtigung an Geräte und Clients auszulösen, die mit dem Tag verknüpft sind.
 
 In den folgenden Schritten erfahren Sie, wie das neue ASP.NET WebAPI-Back-End erstellt wird:
 
@@ -16,7 +16,7 @@ In den folgenden Schritten erfahren Sie, wie das neue ASP.NET WebAPI-Back-End er
 > [AZURE.NOTE] Stellen Sie sicher, dass Sie das Visual Studio [Azure SDK](https://azure.microsoft.com/downloads/) für die Websitebereitstellung installiert haben.
 
 1. Starten Sie Visual Studio oder Visual Studio Express. Klicken Sie auf **Server-Explorer**, und melden Sie sich bei Ihrem Azure-Konto an. Visual Studio benötigt Ihre Anmeldung, um die Websiteressourcen für Ihr Konto zu erstellen.
-2. Klicken Sie in Visual Studio auf **Datei**, dann auf **Neu** und **Projekt**, erweitern Sie **Vorlagen** und **Visual C#**, und klicken Sie dann auf **Web** und **ASP.NET-Webanwendung**. Geben Sie den Namen **AppBackend** ein, und klicken Sie dann auf **OK**. 
+2. Klicken Sie in Visual Studio auf **Datei**, dann auf **Neu** und **Projekt**, erweitern Sie **Vorlagen** und **Visual C#**, und klicken Sie dann auf **Web** und **ASP.NET-Webanwendung**. Geben Sie den Namen **AppBackend** ein, und klicken Sie dann auf **OK**.
 	
 	![][B1]
 
@@ -48,7 +48,10 @@ In diesem Abschnitt erstellen Sie eine neue Meldungshandlerklasse mit dem Namen 
 
 3. Ersetzen Sie in der Datei "AuthenticationTestHandler.cs" die Definition der `AuthenticationTestHandler`-Klasse durch den folgenden Code.
 
-	Dieser Handler autorisiert die Anforderung, wenn die folgenden drei Bedingungen erfüllt sind: * Die Anforderung enthält einen *Autorisierungsheader*. * Die Anforderung verwendet die *Standardauthentifizierung*. * Die Benutzernamen-Zeichenfolge und die Kennwortzeichenfolge sind die gleiche Zeichenfolge.
+	Mit diesem Handler wird die Anforderung autorisiert, wenn die folgenden drei Bedingungen erfüllt sind:
+	* Die Anforderung enthält einen *Autorisierungsheader*.
+	* Für die Anforderung wird die *Standardauthentifizierung* verwendet.
+	* Bei der Benutzernamen-Zeichenfolge und der Kennwortzeichenfolge handelt es sich um die gleiche Zeichenfolge.
 
 	Andernfalls wird die Anforderung abgelehnt. Dies ist keine sinnvolle Vorgehensweise zur Authentifizierung und Autorisierung. Es handelt sich um ein sehr einfaches Beispiel für dieses Lernprogramm.
 
@@ -122,9 +125,9 @@ In diesem Abschnitt wird dem WebAPI-Back-End ein neuer Controller hinzugefügt, 
 
 3. Klicken Sie in der Ergebnisliste auf **Microsoft Azure Notification Hubs** und dann auf **Installieren**. Schließen Sie die Installation ab, und schließen Sie dann das Fenster des NuGet-Paket-Managers.
 
-	Dies fügt mithilfe des <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs-NuGet-Pakets</a> einen Verweis auf das Azure Notification Hubs-SDK hinzu.
+	Dies fügt mithilfe des <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.NotificationHubs-NuGet-Pakets</a> einen Verweis auf das Azure Notification Hubs-SDK hinzu.
 
-4. Wir erstellen nun eine neue Klassendatei, in der die unterschiedlichen sicheren Benachrichtigungen angegeben sind, die gesendet werden. In einer vollständigen Implementierung werden die Benachrichtigungen in einer Datenbank gespeichert. Der Einfachheit halber wird sie in diesem Lernprogramm im Arbeitsspeicher gespeichert. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Ordner **Modelle**, und klicken Sie dann auf **Hinzufügen** und anschließend auf **Klasse**. Geben Sie der neuen Klasse den Namen **Notifications.cs**, und klicken Sie dann auf **Hinzufügen**, um die Klasse zu generieren.
+4. Wir erstellen jetzt eine neue Klassendatei, die die Verbindung mit dem Notification Hub darstellt, das zum Senden von Benachrichtigungen verwendet wurde. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Ordner **Modelle**, und klicken Sie dann auf **Hinzufügen** und anschließend auf **Klasse**. Geben Sie der neuen Klasse den Namen **Notifications.cs**, und klicken Sie dann auf **Hinzufügen**, um die Klasse zu generieren.
 
 	![][B6]
 
@@ -364,4 +367,4 @@ In diesem Abschnitt fügen Sie einen neuen Controller hinzu, über den Clientger
 [B16]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users16.PNG
 [B18]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users18.PNG
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0706_2016-->

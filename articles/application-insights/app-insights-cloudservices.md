@@ -38,7 +38,7 @@ Im Folgenden wird erläutert, wie Sie Ihr eigenes Clouddienstprojekt auf die gle
 
 Ihre Telemetriedaten werden in einer Application Insights-Ressource analysiert und angezeigt.
 
-1.  Erstellen Sie im [Azure-Portal][portal] eine neue Application Insights-Ressource. Wählen Sie als Anwendungstyp "ASP.NET-App" aus. 
+1.  Erstellen Sie im [Azure-Portal][portal] eine neue Application Insights-Ressource. Wählen Sie als Anwendungstyp "ASP.NET-App" aus.
 
     ![Klicken Sie auf "Neu > Application Insights"](./media/app-insights-cloudservices/01-new.png)
 
@@ -59,7 +59,7 @@ Als Alternative könnten Sie Daten aus allen Rollen an nur eine Ressource senden
     ![Klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie "NuGet-Pakete verwalten".](./media/app-insights-cloudservices/03-nuget.png)
 
 
-2. Fügen Sie für Webrollen das NuGet-Paket [Application Insights for Web](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) hinzu. Diese Version des SDK enthält Module, die Serverkontext wie z. B. Rolleninformationen hinzufügen. Verwenden Sie für Workerrollen [Application Insights für Windows-Dienste](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/).
+2. Fügen Sie für Webrollen das NuGet-Paket [Application Insights for Web](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) hinzu. Diese Version des SDK enthält Module, die Serverkontext wie z. B. Rolleninformationen hinzufügen. Verwenden Sie für Workerrollen [Application Insights für Windows-Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/).
 
     ![Suchen Sie nach "Application Insights".](./media/app-insights-cloudservices/04-ai-nuget.png)
 
@@ -87,9 +87,9 @@ Als Alternative könnten Sie Daten aus allen Rollen an nur eine Ressource senden
  
  * [Webrolle](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Global.asax.cs#L27)
  * [Workerrolle](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
- * [Für Webseiten](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13)   
+ * [Für Webseiten](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13)
 
-4. Legen Sie für die Datei "ApplicationInsights.config" fest, dass sie immer in das Ausgabeverzeichnis kopiert wird. 
+4. Legen Sie für die Datei "ApplicationInsights.config" fest, dass sie immer in das Ausgabeverzeichnis kopiert wird.
 
     (In der Datei „.config“ erscheinen Nachrichten, in denen Sie dazu aufgefordert werden, den Instrumentationsschlüssel hier zu platzieren. Für Cloudanwendungen ist es jedoch besser, ihn aus der Datei „.cscfg“ festzulegen. Dadurch wird sichergestellt, dass die Rolle im Portal korrekt identifiziert wird.)
 
@@ -145,7 +145,7 @@ Die Azure-Diagnosedaten sind besonders nützlich, wenn eine Rolle unerwartet aus
 
 Hier finden Sie die Diagnosedaten:
 
-* Leistungsindikatoren werden als benutzerdefinierte Metriken angezeigt. 
+* Leistungsindikatoren werden als benutzerdefinierte Metriken angezeigt.
 * Windows-Ereignisprotokolle werden als Ablaufverfolgungen und benutzerdefinierte Ereignisse angezeigt.
 * Anwendungsprotokolle, ETW-Protokolle und alle Diagnoseinfrastrukturprotokolle werden als Ablaufverfolgungen angezeigt.
 
@@ -286,4 +286,4 @@ Haben Sie für .NET 4.6 erstellt? 4.6 wird nicht automatisch in Azure Cloud Ser
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

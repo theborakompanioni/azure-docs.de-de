@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/07/2016"
+	ms.date="06/21/2016"
 	ms.author="rclaus"/>
 
 # Optimieren virtueller Linux-Computer in Azure
@@ -59,7 +59,7 @@ Beim Erstellen eines neuen virtuellen Computers stellt Azure standardmäßig ein
 Sie müssen sie wie folgt ändern:
 
 * ResourceDisk.EnableSwap=Y
-* ResourceDisk.SwapSizeMB={Größe in MB entsprechend Ihren Anforderungen} 
+* ResourceDisk.SwapSizeMB={Größe in MB entsprechend Ihren Anforderungen}
 
 Nachdem Sie die Änderung vorgenommen haben, müssen Sie den Agent (waagent) oder den virtuellen Linux-Computer neu starten, damit diese Änderungen übernommen werden. Zeigen Sie mithilfe des Befehls `free` den freien Speicherplatz an, um sich zu vergewissern, dass die Änderungen umgesetzt wurden und eine Auslagerungsdatei erstellt wurde. Im folgenden Beispiel wurde infolge der Änderung der Datei „waagent.conf“ eine Auslagerungsdatei mit einer Größe von 512 MB erstellt:
 
@@ -126,4 +126,4 @@ Einige nützliche Links zu weiteren Ressourcen:
 - [Optimieren der MySQL-Leistung auf virtuellen Azure Linux-Computern](virtual-machines-linux-classic-optimize-mysql.md)
 - [Konfigurieren von Software-RAID unter Linux](virtual-machines-linux-configure-raid.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0706_2016-->

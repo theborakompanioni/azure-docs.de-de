@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/19/2016"
+	ms.date="06/30/2016"
 	ms.author="dariagrigoriu"/>
     
 # Empfohlene Methoden für Azure App Service
@@ -39,4 +39,10 @@ Weitere Informationen zu „zustandsbehafteten“ und „zustandslosen“ Anwend
 ## <a name="socketresources"></a>Wenn Socketressourcen erschöpft sind
 Eine häufige Ursache für das Erschöpfen ausgehender TCP-Verbindungen ist die Verwendung von Clientbibliotheken, die nicht zur Wiederverwendung von TCP-Verbindungen implementiert wurden, oder im Fall eines übergeordneten Protokolls wie HTTP die fehlende Nutzung von Keep-Alive. Prüfen Sie die Dokumentation zu den einzelnen Bibliotheken, auf die von den Apps in Ihrem App Service-Plan verwiesen wird, um sicherzustellen, dass sie konfiguriert sind oder dass in Ihrem Code darauf zugegriffen wird, um so eine effiziente Wiederverwendung ausgehender Verbindungen zu gewährleisten. Befolgen Sie auch den Leitfaden zur Bibliotheksdokumentation für eine ordnungsgemäße Erstellung und Freigabe oder Bereinigung, um Verbindungsverluste zu vermeiden. Während diese Clientbibliotheksuntersuchungen ausgeführt werden, können die Auswirkungen durch ein horizontales Hochskalieren auf mehrere Instanzen verringert werden.
 
-<!---HONumber=AcomDC_0525_2016-->
+## <a name="appbackup"></a>Wenn die Sicherung Ihrer App fehlerhaft zu werden beginnt
+Die zwei häufigsten Gründe, warum eine App-Sicherung misslingt, sind ungültige Speichereinstellungen und eine ungültige Datenbankkonfiguration. Diese Fehler treten in der Regel auf, wenn Änderungen an Speicher- oder Datenbankressourcen oder Änderungen am Zugriff auf diese Ressourcen erfolgt sind (z.B. eine Aktualisierung der Anmeldeinformationen für die in den Sicherungseinstellungen ausgewählte Datenbank). Sicherungen erfolgen meist gemäß einem Zeitplan und erfordern Zugriff auf Speicher (für die Ausgabe der gesicherten Dateien) und Datenbanken (zum Kopieren und Lesen von Inhalten, die in die Sicherung einbezogen werden sollen). Das Ergebnis des Fehlens eines Zugriff auf diese Ressourcen wäre ein durchgängiger Ausfall von Sicherungen.
+
+Wenn Sicherungsfehler auftreten, prüfen Sie die letzten Ergebnisse, um zu verstehen, welche Art von Fehler erfolgt. Bei Speicherzugriffsfehlern prüfen und ändern Sie die in der Sicherungskonfiguration verwendeten Speichereinstellungen. Bei Fehlern beim Datenbankzugriff prüfen und ändern Sie Ihre Verbindungszeichenfolgen in den App-Einstellungen. Fahren Sie dann mit dem Ändern Ihrer Sicherungskonfiguration so fort, dass die erforderlichen Datenbanken einbezogen werden. Weitere Informationen zu App-Sicherungen finden Sie in der Dokumentation [Sichern von Web-Apps in Azure App Service](web-sites-backup.md).
+  
+
+<!---HONumber=AcomDC_0706_2016-->

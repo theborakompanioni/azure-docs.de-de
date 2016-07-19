@@ -79,4 +79,8 @@ Die beiden neuen Regionen „Kanada, Mitte“ und „Kanada, Osten“ werden nic
 
 Ja. Unter [Erstellen eines virtuellen Linux-Computers in Azure mithilfe des Portals](virtual-machines-linux-quick-create-portal.md) finden Sie Informationen, wie Sie schnell einen virtuellen Linux-Computer erstellen und ausprobieren können.
 
-<!---HONumber=AcomDC_0608_2016-->
+## Kann ich meinem virtuellen Computer nach der Erstellung eine NIC hinzufügen?
+
+Nein. Dies ist derzeit nur zum Zeitpunkt der Erstellung möglich.
+
+<!---HONumber=AcomDC_0706_2016-->

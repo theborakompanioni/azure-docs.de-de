@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="04/19/2016"
+ms.date="07/05/2016"
 ms.author="larryfr"/>
 
 #Verwenden von Azure Storage Shared Access Signatures zum Einschränken des Zugriffs auf Daten mit HDInsight
@@ -290,4 +290,4 @@ Nachdem Sie erfahren haben, wie Sie Ihrem HDInsight-Cluster Speicher mit eingesc
 
 [powershell]: ../powershell-install-configure.md
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

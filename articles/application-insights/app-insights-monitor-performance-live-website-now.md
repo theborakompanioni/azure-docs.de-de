@@ -180,6 +180,12 @@ IIS-Unterstützung: IIS 7, 7.5, 8, 8.5 (IIS ist erforderlich)
 
 Sie können die Überwachung mit PowerShell starten und beenden.
 
+Importieren Sie zunächst das Application Insights-Modul:
+
+`Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'`
+
+Ermitteln Sie, welche Apps überwacht werden:
+
 `Get-ApplicationInsightsMonitoringStatus [-Name appName]`
 
 * `-Name` (Optional) Dies ist der Name einer Web-App.
@@ -284,4 +290,4 @@ Wenn sich die Web-App in Azure befindet und Sie Ihre Ressourcen mit einer Azure 
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
+	ms.date="05/29/2016"
 	ms.author="jeedes"/>
 
 
@@ -57,7 +57,7 @@ Zum Konfigurieren der Integration von Soonr Workplace in Azure AD müssen Sie So
 
 **Um Soonr Workplace aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
 
 	![Active Directory][1]
 
@@ -86,15 +86,15 @@ Zum Konfigurieren der Integration von Soonr Workplace in Azure AD müssen Sie So
 ##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden von Azure AD in Soonr Workplace konfiguriert und getestet werden kann.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Soonr Workplace als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Soonr Workplace muss eine Linkbeziehung eingerichtet werden. Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als Wert für den Benutzernamen in **Soonr Workplace** zuweisen.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Soonr Workplace als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Soonr Workplace muss eine Linkbeziehung eingerichtet werden.
 
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Soonr Workplace müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Erstellen eines Soonr Workplace-Testbenutzers](#creating-a-soonr-workplace-test-user)**, um eine Entsprechung von Britta Simon in Soonr Workplace zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-5. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Erstellen eines Soonr Workplace-Testbenutzers](#creating-a-soonr-workplace-test-user)** – um ein Gegenstück zu Britta Simon in Soonr Workplace zu erhalten, das mit ihrer Repräsentation in Azure AD verknüpft ist.
+5. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### Konfigurieren des einmaligen Anmeldens von Azure AD
@@ -113,7 +113,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD i
 
 	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_03.png)
 
-3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
+3. Führen Sie auf der Dialogfeldseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
 
 	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_04.png)
 
@@ -122,7 +122,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD i
 
     b. Klicken Sie auf **Weiter**.
 
-4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Soonr Workplace** die folgenden Schritte aus:
+4. Führen Sie auf der Seite **Einmaliges Anmelden bei Soonr Workplace konfigurieren** die folgenden Schritte aus:
 
 	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_05.png)
 
@@ -131,7 +131,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD i
     b. Klicken Sie auf **Weiter**.
 
 
-5. Wenden Sie sich wegen der SSO-Konfiguration für Ihre Anwendung an das Supportteam von Soonr Workplace, und senden Sie eine E-Mail mit der heruntergeladenen Metadatendatei. Geben Sie außerdem die Aussteller-URL, die SAML-SSO-URL und die Abmelde-URL an, damit diese für die SSO-Integration konfiguriert werden können.
+5. Informationen zur Konfiguration von SSO für Ihre Anwendung erhalten Sie im Leitfaden für die Soonr Workplace-SSO-Integration oder bei Ihren Integrationspartnern.
 
 
 6. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
@@ -157,7 +157,7 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. Klicken Sie im Menü oben auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
+3. Klicken Sie zum Anzeigen der Benutzerliste im Menü oben auf **Benutzer**.
 
 	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-soonr-tutorial/create_aaduser_03.png)
 
@@ -189,11 +189,11 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
 
     e. Klicken Sie auf **Weiter**.
 
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
+7. Klicken Sie auf der Dialogfeldseite **Temporäres Kennwort abrufen** auf **Erstellen**.
 
 	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-soonr-tutorial/create_aaduser_07.png)
 
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
+8. Führen Sie auf der Dialogfeldseite **Temporäres Kennwort abrufen** die folgenden Schritte aus:
 
 	![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-soonr-tutorial/create_aaduser_08.png)
 
@@ -268,4 +268,4 @@ In diesem Abschnitt soll Ihre Azure AD-Konfiguration für das einmalige Anmelden
 [204]: ./media/active-directory-saas-soonr-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-soonr-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

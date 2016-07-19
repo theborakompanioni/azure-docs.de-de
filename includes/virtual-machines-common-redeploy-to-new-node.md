@@ -1,36 +1,23 @@
+## Verwenden des Azure-Portals
 
-Wenn Sie Schwierigkeiten bei der Problembehandlung für eine Remotedesktopverbindung (Windows-basiert) oder eine SSH-Verbindung (Linux-basiert) zu einem virtuellen Computer von Azure haben, wird Ihnen dieser Artikel helfen, die Probleme alleine zu lösen – ohne den Support in Anspruch zu nehmen, und die Größe des virtuellen Computers anzupassen. Microsoft Azure wird Ihren virtuellen Computer erneut bereitstellen, wenn Sie diese Operation mithilfe von Azure PowerShell aufrufen.
+1. Wählen Sie den virtuellen Computer aus, der erneut bereitgestellt werden soll, und klicken Sie auf dem Blatt „Einstellungen“ auf die Schaltfläche „Erneute Bereitstellung“:
 
-Beachten Sie, dass nach Beenden dieses Vorgangs kurzlebige Datenträgerdaten verloren gehen und dynamische, dem virtuellen Computer zugeordnete IP-Adressen aktualisiert werden.
+	![Blatt „Azure-VM“](./media/virtual-machines-common-redeploy-to-new-node/vmoverview.png)
 
+2. Klicken Sie auf die Schaltfläche „Erneute Bereitstellung“, um den Vorgang zu bestätigen:
 
-## Verwenden von Azure PowerShell
+	![Blatt „Erneutes Bereitstellen eines virtuellen Computers“](./media/virtual-machines-common-redeploy-to-new-node/redeployvm.png)
 
-Stellen Sie sicher, dass Sie das aktuelle Azure PowerShell 1.x auf Ihrem virtuellen Computer installiert haben. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../articles/powershell-install-configure.md).
+3. Der **Status** des virtuellen Computers ändert sich zu *Aktualisieren*, wenn der virtuelle Computer zur erneuten Bereitstellung vorbereitet wird:
 
-Verwenden Sie diesen Azure PowerShell-Befehl, um Ihren virtuellen Computer erneut bereitzustellen:
+	![Virtueller Computer wird aktualisiert](./media/virtual-machines-common-redeploy-to-new-node/vmupdating.png)
 
-	Set-AzureRmVM -Redeploy -ResourceGroupName $rgname -Name $vmname 
+4. Der **Status** ändert sich dann zu *Wird gestartet*, wenn der virtuelle Computer auf einem neuen Azure-Host gestartet wird:
 
+	![Virtueller Computer wird gestartet](./media/virtual-machines-common-redeploy-to-new-node/vmstarting.png)
 
-Während dieser Befehl ausgeführt wird, überprüfen Sie Ihren virtuellen Computer im [Azure-Portal](https://portal.azure.com). Beachten Sie, dass der **Status** Ihrer VM sich wie folgt verändert:
+5. Nachdem der virtuelle Computer den Startvorgang abgeschlossen hat, wechselt der **Status** wieder zu *Wird ausgeführt* und gibt damit an, dass der virtuelle Computers erfolgreich erneut bereitgestellt wurde:
 
-1. Der anfängliche **Status** ist *Ausführen*.
+	![Virtueller Computer wird ausgeführt](./media/virtual-machines-common-redeploy-to-new-node/vmrunning.png)
 
-	![Den Anfangsstatus erneut bereitstellen](./media/virtual-machines-common-redeploy-to-new-node/statusrunning1.png)
-
-2. Der **Status** ändert sich dann auf *Aktualisieren*.
-
-	![Den Status „Aktualisieren“ erneut bereitstellen](./media/virtual-machines-common-redeploy-to-new-node/statusupdating.png)
-
-3. Der **Status** ändert sich dann auf *Starten*.
-
-	![Den Status „Starten“ erneut bereitstellen](./media/virtual-machines-common-redeploy-to-new-node/statusstarting.png)
-
-4. Der **Status** springt auf *Ausführen* zurück.
-
-	![Den endgültigen Status erneut bereitstellen](./media/virtual-machines-common-redeploy-to-new-node/statusrunning2.png)
-
-Wenn der **Status** wieder auf *Ausführen* steht, wurde der virtuelle Computer erfolgreich wieder bereitgestellt.
-
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -1,23 +1,23 @@
 <properties 
     pageTitle="Services Bus-Architektur | Microsoft Azure"
-    description="Beschreibt die Nachrichtenverarbeitungsarchitektur von Azure Service Bus."
+    description="In diesem Artikel wird die Architektur zur Nachrichten- und Relayverarbeitung von Azure Service Bus beschrieben."
     services="service-bus"
     documentationCenter="na"
     authors="sethmanheim"
     manager="timlt"
-    editor="tysonn" />
+    editor="" />
 <tags 
     ms.service="service-bus"
     ms.devlang="na"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="04/19/2016"
+    ms.date="07/11/2016"
     ms.author="sethm" />
 
 # Service Bus-Architektur
 
-Dieser Artikel beschreibt die Nachrichtenverarbeitungsarchitektur von Azure Service Bus.
+In diesem Artikel wird die Architektur zur Nachrichten- und Relayverarbeitung von Azure Service Bus beschrieben.
 
 ## Service Bus-Skalierungseinheiten
 
@@ -53,10 +53,10 @@ Sobald die Relayverbindung besteht, können die Clients Nachrichten über den Ga
 
 ## Nächste Schritte
 
-Nach dieser Übersicht über die Funktionsweise von Service Bus können Sie sich nun mit folgenden Themen beschäftigen:
+Nach dieser Übersicht über die Architektur von Service Bus können Sie sich nun mit folgenden Themen beschäftigen:
 
 - [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
 - [Service Bus – Grundlagen](service-bus-fundamentals-hybrid-solutions.md)
 - [Eine Messaginglösung mit Warteschlange unter Verwendung von Service Bus-Warteschlangen](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -1,4 +1,4 @@
-* [Skalieren von Azure App Service](../articles/app-service/app-service-scale.md)
+* [Skalieren von Azure App Service](../articles/app-service-web/web-sites-scale.md)
 	* Grundlegendes zu Redundanz und Zuverlässigkeit
 	* Zustandsbehaftete und zustandslose Anwendungen
 		* [Konfigurieren der zustandslosen App](/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)
@@ -14,4 +14,4 @@
 * Geografische Verteilung
 	* [Nutzen von Traffic Manager für globale Skalierbarkeit](../articles/traffic-manager/traffic-manager-overview.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0706_2016-->

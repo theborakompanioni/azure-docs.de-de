@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/15/2016"
+	ms.date="07/05/2016"
 	ms.author="adegeo"/>
 
 
@@ -75,7 +75,7 @@ Sie müssen das [Dienstpaket erstellen](cloud-services-model-and-package.md#serv
 4. Geben Sie auf dem neuen Blatt **Clouddienst** einen Wert für **DNS-Name** ein.
 5. Erstellen Sie eine neue **Ressourcengruppe**, oder wählen Sie eine vorhandene Ressourcengruppe aus.
 6. Wählen Sie einen **Speicherort** aus.
-7. Klicken Sie auf **Paket**. Damit wird das Blatt **Paket hochladen** geöffnet. Füllen Sie die erforderlichen Felder aus.  
+7. Klicken Sie auf **Paket**. Damit wird das Blatt **Paket hochladen** geöffnet. Füllen Sie die erforderlichen Felder aus.
 
      Wenn eine der Rollen eine einzelne Instanz enthält, stellen Sie sicher, dass **Auch dann bereitstellen, wenn für mindestens eine Rolle nur eine Instanz vorhanden ist.** aktiviert ist.
 
@@ -116,4 +116,4 @@ Wenn Ihr Bereitstellungspaket [für die Verwendung von Zertifikaten konfiguriert
 * [Verwalten Ihres Clouddiensts](cloud-services-how-to-manage-portal.md)
 * Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate-portal.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0706_2016-->

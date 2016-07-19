@@ -29,7 +29,7 @@ Azure SQL-Datenbank erstellt bei Point-in-Time-Wiederherstellungen immer eine ne
 
 Bei einem Benutzerfehler oder einer unbeabsichtigten Datenänderung kann die Point-in-Time-Wiederherstellung verwendet werden, um den Zustand der Datenbank zu einem beliebigen Zeitpunkt innerhalb der Datenbankaufbewahrungsdauer wiederherzustellen.
 
-Basic-Datenbanken haben eine Aufbewahrungsdauer von 7 Tagen, Standard-Datenbanken eine Aufbewahrungsdauer von 14 Tagen, und Premium-Datenbanken eine Aufbewahrungsdauer von 35 Tagen. Weitere Informationen zur Aufbewahrungsdauer von Datenbanksicherungen finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
+Basic-Datenbanken haben eine Aufbewahrungsdauer von 7 Tagen und Standard-Datenbanken und Premium-Datenbanken eine Aufbewahrungsdauer von 35 Tagen. Weitere Informationen zur Aufbewahrungsdauer von Datenbanksicherungen finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
 
 Informationen zum Durchführen einer Point-in-Time-Wiederherstellung finden Sie unter:
 
@@ -59,4 +59,4 @@ So stellen Sie eine gelöschte Datenbank wieder her
 - Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).
 - Informationen zum Verwenden der aktiven Georeplikation finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

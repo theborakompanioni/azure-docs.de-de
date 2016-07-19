@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="06/10/2016"
+   ms.date="07/01/2016"
    ms.author="nitinme"/>
 
 # Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe von Azure PowerShell
@@ -29,7 +29,11 @@ Hier erfahren Sie, wie Sie einen HDInsight-Cluster (Hadoop, HBase oder Storm) mi
 
 * Sie können **für HBase-Cluster (Windows und Linux)** den Data Lake-Speicher als Standardspeicher oder als Zusatzspeicher verwenden.
 
-> [AZURE.NOTE] Eine Option zum Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake-Speicher ist nur für die HDInsight-Versionen 3.2 und 3.4 (für Hadoop-, HBase- und Storm-Cluster unter Windows und Linux) verfügbar. Für Spark-Cluster unter Linux ist diese Option nur auf HDInsight 3.4-Clustern verfügbar.
+> [AZURE.NOTE] Einige wichtige Punkte sind zu beachten.
+> 
+> * Eine Option zum Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake-Speicher ist nur für die HDInsight-Versionen 3.2 und 3.4 (für Hadoop-, HBase- und Storm-Cluster unter Windows und Linux) verfügbar. Für Spark-Cluster unter Linux ist diese Option nur auf HDInsight 3.4-Clustern verfügbar.
+>
+> * Wie bereits erwähnt, steht Data Lake-Speicher als Standardspeicher für einige Clustertypen (HBase) und zusätzlicher Speicher für andere Cluster (Hadoop, Spark, Storm) zur Verfügung. Das Verwenden von Data Lake-Speicher als zusätzliches Speicherkonto wirkt sich nicht auf Leistung oder die Fähigkeit aus, Daten aus dem Cluster in den Speicher zu lesen bzw. zu schreiben. In einem Szenario, in dem Data Lake-Speicher als zusätzlicher Speicher verwendet wird, werden clusterbezogene Dateien (z.B. Protokolle usw.) in den Standardspeicher (Azure-Blobs) geschrieben, während die Daten, die Sie verarbeiten möchten, in einem Data Lake-Speicherkonto gespeichert werden können.
 
 
 In diesem Artikel stellen wir einen Hadoop-Cluster mit Data Lake-Speicher als zusätzlichem Speicher bereit.
@@ -100,7 +104,7 @@ Führen Sie folgende Schritte aus, um einen Data Lake-Speicher zu erstellen.
 		# Register for Data Lake Store
 		Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
-	>[AZURE.NOTE] Wenn beim Registrieren des Ressourcenanbieters für den Data Lake-Speicher ein Fehler wie `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` gemeldet wird, ist Ihr Abonnement möglicherweise nicht in der Whitelist für den Azure Data Lake-Speicher enthalten. Stellen Sie sicher, dass Sie Ihr Azure-Abonnement für die öffentliche Vorschauversion des Data Lake-Speichers aktivieren, indem Sie diese [Anweisungen](data-lake-store-get-started-portal.md#signup) befolgen.
+	>[AZURE.NOTE] Wenn beim Registrieren des Ressourcenanbieters für den Data Lake-Speicher ein Fehler wie `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` gemeldet wird, ist Ihr Abonnement möglicherweise nicht in der Positivliste für den Azure Data Lake-Speicher enthalten. Stellen Sie sicher, dass Sie Ihr Azure-Abonnement für die öffentliche Vorschauversion des Data Lake-Speichers aktivieren, indem Sie diese [Anweisungen](data-lake-store-get-started-portal.md#signup) befolgen.
 
 3. Ein Azure Data Lake-Speicherkonto wird einer Azure-Ressourcengruppe zugeordnet. Erstellen Sie zunächst eine Azure-Ressourcengruppe.
 
@@ -380,4 +384,4 @@ Sie können auch den Befehl `hdfs dfs -put` verwenden, um Dateien in den Data La
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

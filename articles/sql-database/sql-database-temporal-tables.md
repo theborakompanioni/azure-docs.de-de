@@ -34,6 +34,10 @@ Glücklicherweise erfordert die Verwaltung dieser Aktivitätsinformationen von I
 
 Je nachdem, ob Sie eine neue Entwicklung beginnen oder eine vorhandene Anwendung aktualisieren, werden Sie entweder temporale Tabellen erstellen oder vorhandene ändern, indem Sie temporale Attribute hinzufügen. Im Allgemeinen kann Ihr Szenario eine Kombination dieser beiden Optionen sein. Führen Sie diese Aktion mit [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) (SSMS), [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) (SSDT) oder einem anderen Tool zur Transact-SQL-Entwicklung aus.
 
+
+> [AZURE.IMPORTANT] Es wird empfohlen, immer die neueste Version von Management Studio zu verwenden, damit Sie mit Updates von Microsoft Azure und SQL-Datenbank synchron sind. [Aktualisieren Sie SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+
+
 ###Erstellen einer neuen Tabelle
 
 Verwenden Sie das Kontextmenüelement „Neue Tabelle mit Systemversionsverwaltung“ im SSMS-Objekt-Explorer, um den Abfrage-Editor mit einem Vorlagenskript für eine temporale Tabelle zu öffnen, und füllen Sie die Vorlage dann mit „Werte für Vorlagenparameter angeben“ (STRG+UMSCHALT+M):
@@ -63,7 +67,7 @@ Wenn Sie eine temporale Tabelle mit Systemversionsverwaltung erstellen, wird die
 
 In diesem Fall soll über einen längeren Datenverlauf hinweg und mit größeren Datasets eine zeitbasierte Trendanalyse ausgeführt werden, darum wird als Speicher für die Verlaufstabelle ein gruppierter Columnstore-Index gewählt. Ein gruppierter Columnstore bietet sehr gute Komprimierung und Leistung für analytische Abfragen. Temporale Tabellen geben Ihnen die Flexibilität zum vollständig unabhängigen Konfigurieren von Indizes für aktuelle und temporalen Tabellen.
 
-**Hinweis**: Columnstore-Indizes sind nur auf der Premium-Dienstebene verfügbar.
+**Hinweis**: Columnstore-Indizes sind nur im Premium-Tarif verfügbar.
 
 Das folgende Skript zeigt, wie der Standardindex für die Verlaufstabelle in den gruppierten Columnstore geändert werden kann:
 
@@ -103,7 +107,7 @@ WITH (DROP_EXISTING = ON);
 
 Der Hauptvorteil von temporalen Tabellen ist, dass Sie Ihre Website zum Nachverfolgen von Änderungen in keiner Weise ändern oder anpassen müssen. Nach der Erstellung behalten temporale Tabellen jedes Mal transparent vorherige Zeilenversionen bei, wenn Sie Änderungen an Ihren Daten ausführen.
 
-Um die automatische Änderungsnachverfolgung für dieses spezielle Szenario nutzen zu können, lassen wir einfach Spalte **PagesVisited** jedes Mal aktualisieren, wenn der Benutzer seine Sitzung auf der Website beendet:
+Um die automatische Änderungsnachverfolgung für dieses spezielle Szenario nutzen zu können, richten wir es ein, dass die Spalte **PagesVisited** jedes Mal aktualisiert wird, wenn der Benutzer seine Sitzung auf der Website beendet:
 
 ````
 UPDATE WebsiteUserInfo  SET [PagesVisited] = 5 
@@ -116,7 +120,7 @@ Es ist wichtig, zu beachten, dass die Aktualisierungsabfrage nicht die genaue Ze
 
 ##Schritt 3: Ausführen der Verlaufsdatenanalyse
 
-Da nun die temporale Systemversionsverwaltung aktiviert ist, ist die Analyse der Verlaufsdaten nur eine Abfrage von Ihnen entfernt. In diesem Artikel zeigen wir einige Beispiele, die allgemeine Analysezenarien behandeln – um alle Details zu erfahren, untersuchen Sie die verschiedenen Optionen, die mit der [FOR SYSTEM\_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3)-Klausel eingeleitet werden.
+Da nun die temporale Systemversionsverwaltung aktiviert ist, ist die Analyse der Verlaufsdaten nur eine Abfrage von Ihnen entfernt. In diesem Artikel zeigen wir einige Beispiele, die allgemeine Analyseszenarien behandeln. Um alle Details zu erfahren, können Sie sich mit den verschiedenen Optionen vertraut machen, die mit der [FOR SYSTEM\_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3)-Klausel eingeführt werden.
 
 Um die Top 10-Benutzer geordnet nach der Anzahl der besuchten Webseiten mit Stand vor einer Stunde anzuzeigen, führen Sie diese Abfrage aus:
 
@@ -195,4 +199,4 @@ Mit temporalen Tabellen mit Systemversionsverwaltung kann die Verlaufstabelle di
 
 Ausführliche Informationen zu temporalen Tabellen finden Sie in der [MSDN-Dokumentation](https://msdn.microsoft.com/library/dn935015.aspx). Auf Channel 9 können Sie einen [Kundenerfahrungsbericht zur Temporal-Implementierung](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) hören und eine [Temporal-Live-Demo](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016) sehen.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

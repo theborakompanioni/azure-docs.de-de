@@ -5,8 +5,8 @@
 	keywords="Active Directory-Kennwortverwaltung, Kennwortverwaltung, Azure AD-Kennwort zurücksetzen"
 	documentationCenter=""
 	authors="asteen"
-	manager="kbrint"
-	editor="billmath"/>
+	manager="femila"
+	editor="curtand"/>
 
 <tags
 	ms.service="active-directory"
@@ -14,10 +14,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/16/2016" 
+	ms.date="07/12/2016"
 	ms.author="asteen"/>
 
 # Erste Schritte mit der Kennwortverwaltung
+
+> [AZURE.IMPORTANT] **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
+
 Es sind lediglich einige einfache Schritte erforderlich, um Ihren Benutzern das Verwalten eigener Cloudkennwörter für Azure Active Directory oder lokaler Kennwörter für Active Directory zu ermöglichen. Nachdem Sie sichergestellt haben, dass einige wenige Voraussetzungen erfüllt sind, haben Sie im Handumdrehen eine Kennwortänderung und -zurücksetzung für Ihre gesamte Organisation eingerichtet. In diesem Artikel lernen Sie die folgenden Konzepte kennen:
 
 * [**Aktivieren von Benutzern für das Zurücksetzen ihrer Cloudkennwörter für Azure Active Directory**](#enable-users-to-reset-their-azure-ad-passwords)
@@ -310,7 +313,7 @@ Jetzt, da das Zurückschreiben von Kennwörtern aktiviert ist, können Sie die o
 ## Links zur Dokumentation für die Kennwortzurücksetzung
 Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
 
-* [**Zurücksetzen Ihres eigenen Kennworts**](active-directory-passwords-update-your-own-password.md): Hier erhalten Sie Informationen zum Zurücksetzen oder Ändern Ihres eigenen Kennworts als Benutzer des Systems.
+* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
 * [**Funktionsweise**](active-directory-passwords-how-it-works.md) – Erfahren Sie mehr über die sechs verschiedenen Komponenten des Diensts und deren Funktionen.
 * [**Anpassen**](active-directory-passwords-customize.md) – Erfahren Sie, wie Sie das Aussehen und Verhalten des Diensts an die Anforderungen Ihrer Organisation anpassen.
 * [**Best Practices**](active-directory-passwords-best-practices.md) – Erfahren Sie, wie Sie Kennwörter in Ihrer Organisation schnell bereitstellen und effektiv verwalten.
@@ -354,4 +357,4 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 [031]: ./media/active-directory-passwords-getting-started/031.jpg "Image_031.jpg"
 [032]: ./media/active-directory-passwords-getting-started/032.jpg "Image_032.jpg"
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

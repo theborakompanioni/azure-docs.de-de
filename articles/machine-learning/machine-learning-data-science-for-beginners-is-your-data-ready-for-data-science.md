@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Sind Ihre Daten für Data Science bereit? – Bewertung der Daten | Microsoft Azure"
+   pageTitle="Sind Ihre Daten für Data Science bereit? (Datenauswertung) – Data Science für Einsteiger | Microsoft Azure"
    description="Lernen Sie die vier Kriterien zum Prüfen der Bereitschaft Ihrer Daten für Data Science kennen. Das 2. Video von „Data Science für Einsteiger“ bietet konkrete Beispiele für eine grundlegende Bewertung von Daten."
    keywords="Datenbewertung,relevante Daten,Bewerten von Daten,Vorbereiten von Daten,Kriterien von Daten,bereite Daten"
    services="machine-learning"
@@ -18,9 +18,11 @@
    ms.author="cgronlun;brohrer;garye"/>
 
 
-# Sind Ihre Daten für Data Science bereit? Data Science für Einsteiger, 2. Video
+# Data Science für Einsteiger, 2. Video: Sind Ihre Daten für Data Science bereit?
 
 Erfahren Sie, wie Sie Ihre Daten bewerten können, um sicherzustellen, dass sie die Basiskriterien für Data Science erfüllen.
+
+Die Reihe bietet den größten Nutzen, wenn Sie sich die Videos in der vorgegebenen Reihenfolge ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)
 
 > [AZURE.VIDEO data-science-for-beginners-series-is-your-data-ready-for-data-science]
 
@@ -102,10 +104,11 @@ Sehen Sie sich unbedingt auch die anderen vier Videos in der Reihe *Data Science
 
 In fünf Kurzvideos der Reihe *Data Science für Einsteiger* erhalten Sie eine Schnelleinführung in Data Science.
 
-  * 1\. Video: [Die 5 Fragen, die Data Science beantworten kann](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md). **Jetzt verfügbar.**
-  * 3\. Video: [Stellen einer Frage, die Sie mit Daten beantworten können](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md). **Jetzt verfügbar.**
-  * 4\. Video: [Vorhersagen einer Antwort mit einem einfachen Modell](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md). **Jetzt verfügbar.**
-  * 5\. Video: [Kopieren der Arbeit anderer für Ihre Data Science](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md). Am 30. Juni verfügbar.
+  * 1\. Video: [Die 5 Fragen, die Data Science beantwortet](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)
+  * 2\. Video: Sind Ihre Daten für Data Science bereit?
+  * 3\. Video: [Stellen einer Frage, die Sie mit Daten beantworten können](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)
+  * 4\. Video: [Vorhersagen einer Antwort mit einem einfachen Modell](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md)
+  * 5\. Video: [Kopieren der Arbeit anderer für Ihre Data Science](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)
 
 
 ## Nächste Schritte
@@ -113,4 +116,4 @@ In fünf Kurzvideos der Reihe *Data Science für Einsteiger* erhalten Sie eine S
   * [Durchführen Ihres ersten Data Science-Experiments mit Azure Machine Learning](machine-learning-create-experiment.md)
   * [Einführung in Machine Learning in Microsoft Azure](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

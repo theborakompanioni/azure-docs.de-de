@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="06/28/2016"
+	ms.date="07/05/2016"
 	ms.author="sdanie" />
 
 # Verwalten von Azure Redis Cache
@@ -47,7 +47,7 @@ Die Auswirkungen auf Clientanwendungen hängen von den Knoten ab, die Sie neu st
 
 -	**Master**: Wenn der Masterknoten neu gestartet wird, führt Azure Redis Cache ein Failover auf den Replikatknoten durch, der zum Master hochgestuft wird. Während dieses Failovers gibt es möglicherweise ein kurzes Intervall, in dem keine Verbindungen mit dem Cache aufgebaut werden können.
 -	**Slave**: Wenn der Slaveknoten neu gestartet wird, hat dies meist keine Auswirkungen auf Cacheclients.
--	**Master und Slave**: Wenn beide Cacheknoten neu gestartet werden, gehen alle Daten im Cache verloren, und es können erst wieder Verbindungen mit dem Cache hergestellt werden, wenn der primäre Knoten wieder online ist. Wenn Sie [Datenpersistenz](cache-how-to-premium-persistence.md) konfiguriert haben, wird die letzten Sicherung wiederhergestellt, sobald der Cache wieder online ist.
+-	**Master und Slave**: Wenn beide Cacheknoten neu gestartet werden, gehen alle Daten im Cache verloren, und es können erst wieder Verbindungen mit dem Cache hergestellt werden, wenn der primäre Knoten wieder online ist. Wenn Sie [Datenpersistenz](cache-how-to-premium-persistence.md) konfiguriert haben, wird die letzten Sicherung wiederhergestellt, sobald der Cache wieder online ist. Beachten Sie, dass alle Cacheschreibvorgänge verloren gehen, die nach der letzten Sicherung durchgeführt wurden.
 -	**Knoten eines Premium-Caches mit aktiviertem Clustering**: Wenn Sie die Knoten eines Premium-Caches mit aktiviertem Clustering neu starten, entspricht das Verhalten dem Neustarten von Knoten eines Caches ohne Cluster.
 
 
@@ -70,11 +70,13 @@ Um die Stabilität Ihrer Anwendung bei Ausfall des primären Knotens Ihres Cache
 
 Ja, wenn Sie den Cache neu starten, werden alle Clientverbindungen gelöscht. Dies kann sinnvoll sein, wenn alle Clientverbindungen belegt sind, z.B. aufgrund eines Logikfehlers oder Fehlers in der Clientanwendung. Jeder Tarif weist verschiedene [Grenzwerte für Clientverbindungen](cache-configure.md#default-redis-server-configuration) für die verschiedenen Größen auf. Sobald diese Grenzwerte erreicht sind, werden keine weiteren Clientverbindungen akzeptiert. Das Neustarten des Caches bietet eine Möglichkeit, alle Clientverbindungen zu löschen.
 
+>[AZURE.IMPORTANT] Wenn Ihre Clientverbindungen aufgrund eines Logikfehlers oder Fehlers im Clientcode aufgebraucht sind, stellt StackExchange.Redis automatisch wieder eine Verbindung her, nachdem der Redis-Knoten wieder in den Onlinezustand versetzt wurde. Wenn das zugrunde liegende Problem nicht behoben wird, kann es weiterhin passieren, dass die Clientverbindungen aufgebraucht werden.
+
 ### Gehen beim Neustart Daten aus dem Cache verloren?
 
-Wenn Sie sowohl den **Master**- als auch den **Slave**-Knoten neu starten, gehen alle Daten im Cache (oder im jeweiligen Shard, wenn Sie einen Premium-Cache mit aktiviertem Clustering nutzen) verloren. Wenn Sie [Datenpersistenz](cache-how-to-premium-persistence.md) konfiguriert haben, wird die letzten Sicherung wiederhergestellt, sobald der Cache wieder online ist.
+Wenn Sie sowohl den **Master**- als auch den **Slave**-Knoten neu starten, gehen alle Daten im Cache (oder im jeweiligen Shard, wenn Sie einen Premium-Cache mit aktiviertem Clustering nutzen) verloren. Wenn Sie [Datenpersistenz](cache-how-to-premium-persistence.md) konfiguriert haben, wird die letzte Sicherung wiederhergestellt, sobald der Cache wieder online ist. Beachten Sie, dass keine Cacheschreibvorgänge verloren gegangen sind, die seit der Sicherung durchgeführt wurden.
 
-Wenn Sie nur einen der Knoten neu starten, gehen Daten in der Regel nicht verloren, möglicherweise aber doch. Wenn z.B. der Masterknoten neu gestartet und ein Cacheschreibvorgang ausgeführt wird, gehen die Daten des Cacheschreibvorgangs verloren.
+Wenn Sie nur einen der Knoten neu starten, gehen Daten in der Regel nicht verloren, möglicherweise aber doch. Wenn z.B. der Masterknoten neu gestartet und ein Cacheschreibvorgang ausgeführt wird, gehen die Daten des Cacheschreibvorgangs verloren. Ein weiteres Szenario für Datenverlust ist der Fall, in dem Sie einen Knoten neu starten und der andere Knoten aufgrund eines Fehlers gleichzeitig ausfällt. Weitere Informationen zu den möglichen Ursachen für den Datenverlust finden Sie unter [Was ist mit meinen Daten in Redis passiert?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md).
 
 ### Kann ich meinen Cache mithilfe von PowerShell, CLI oder anderen Verwaltungstools neu starten?
 
@@ -110,4 +112,8 @@ Nur Updates des Redis-Servers erfolgen während des geplanten Wartungsfensters. 
 
 Das Planen von Updates ist nur im Premium-Tarif verfügbar.
 
-<!---HONumber=AcomDC_0629_2016-->
+## Nächste Schritte
+
+-	Entdecken Sie weitere Features des [Azure Redis Cache Premium-Tarifs](cache-premium-tier-intro.md).
+
+<!---HONumber=AcomDC_0706_2016-->

@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="article"
- ms.date="03/09/2016"
+ ms.date="06/30/2016"
  ms.author="krisragh"/>
 
 # Pläne und Abrechnung in Azure Scheduler
@@ -25,7 +25,8 @@ In Azure Scheduler wird nach Auftragssammlungen abgerechnet. Auftragssammlungen 
 |:---|:---|:---|:---|:---|
 |**Free**|Fünf Aufträge pro Auftragssammlung|Einmal pro Stunde. Aufträge können maximal einmal pro Stunde ausgeführt werden.|Ein Abonnement kann maximal eine Auftragssammlung vom Typ „Free“ enthalten.|Das [HTTP-Objekt für die ausgehende Autorisierung](scheduler-outbound-authentication.md) kann nicht verwendet werden.
 |**Standard**|50 Aufträge pro Auftragssammlung|Einmal pro Minute. Aufträge können maximal einmal pro Minute ausgeführt werden.|Ein Abonnement kann maximal 100 Auftragssammlungen vom Typ „Standard“ enthalten.|Zugriff auf sämtliche Scheduler-Features|
-|**Premium**|50 Aufträge pro Auftragssammlung|Einmal pro Minute. Aufträge können maximal einmal pro Minute ausgeführt werden.|Ein Abonnement kann maximal 10.000 Auftragssammlungen vom Typ "Premium" enthalten. <a href="mailto:wapteams@microsoft.com">Setzen Sie sich mit uns in Verbindung</a>, um weitere Informationen zu erhalten.|Zugriff auf sämtliche Scheduler-Features|
+|**P10 Premium**|50 Aufträge pro Auftragssammlung|Einmal pro Minute. Aufträge können maximal einmal pro Minute ausgeführt werden.|Ein Abonnement kann maximal 10.000 Auftragssammlungen vom Typ „P10 Premium“ enthalten. <a href="mailto:wapteams@microsoft.com">Setzen Sie sich mit uns in Verbindung</a>, um weitere Informationen zu erhalten.|Zugriff auf sämtliche Scheduler-Features|
+|**P20 Premium**|1\.000 Aufträge pro Auftragssammlung|Einmal pro Minute. Aufträge können maximal einmal pro Minute ausgeführt werden.|Ein Abonnement kann maximal 500 Auftragssammlungen vom Typ „P20 Premium“ enthalten. <a href="mailto:wapteams@microsoft.com">Setzen Sie sich mit uns in Verbindung</a>, um weitere Informationen zu erhalten.|Zugriff auf sämtliche Scheduler-Features|
 
 ## Upgrades und Downgrades für Auftragssammlungspläne
 
@@ -85,4 +86,4 @@ Ausführliche Informationen finden Sie unter [Scheduler Preise](https://azure.mi
 
  [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

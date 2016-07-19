@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Ausführen einer Sicherheitsüberprüfung | Microsoft Azure"
+   pageTitle="Durchführen einer Zugriffsüberprüfung | Microsoft Azure"
    description="Erfahren Sie, wie Sie mit der Anwendung Azure AD Privileged Identity Management eine Überprüfung ausführen."
    services="active-directory"
    documentationCenter=""
    authors="kgremban"
-   manager="stevenpo"
+   manager="femila"
    editor=""/>
 
 <tags
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="05/19/2016"
+   ms.date="07/01/2016"
    ms.author="kgremban"/>
 
-# Ausführen einer Sicherheitsüberprüfung in Azure AD Privileged Identity Management
+# Durchführen einer Zugriffsüberprüfung in Azure AD Privileged Identity Management
 
 Azure Active Directory (AD) Privileged Identity Management (PIM) vereinfacht die Art und Weise, in der Unternehmen die privilegierten Identitäten und deren Zugriff auf Ressourcen in Azure AD und anderen Microsoft Online Services wie Office 365 oder Microsoft Intune verwalten.
 
@@ -28,25 +28,32 @@ Wenn Sie Administrator für privilegierte Rollen sind und sich für die Sicherhe
 
 Sie können die Anwendung Azure AD Privileged Identity Management (PIM) im [Azure-Portal](https://portal.azure.com/) verwenden, um die Überprüfung durchzuführen. Wenn sich die Anwendung Azure AD Privileged Identity Management nicht in Ihrem Portal befindet, führen Sie die folgenden Schritte aus, um zu beginnen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, falls Sie dies noch nicht getan haben.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wenn Ihre Organisation über mehr als ein Verzeichnis verfügt, klicken Sie in der oberen rechten Ecke des Azure-Portals auf Ihren Benutzernamen, und wählen Sie das Verzeichnis aus, in dem Sie arbeiten möchten.
-3. Wählen Sie im linken Navigationsbereich das Symbol **Neu** aus.
-4. Wählen Sie **Sicherheit und Identität** aus dem Menü aus.
-5. Wählen Sie **Azure AD Privileged Identity Management** aus.
-6. Lassen Sie das Kontrollkästchen **An Dashboard anheften** aktiviert, und klicken Sie dann auf die Schaltfläche **Erstellen**. Die Anwendung Privileged Identity Management wird geöffnet.
+3. Wählen Sie **Neu** > **Sicherheit und Identität** > **Azure AD Privileged Identity Management** aus.
+
+	![Aktivieren von PIM im Portal][1]
+
+4. Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, und klicken Sie dann auf die Schaltfläche **Erstellen**. Das Privileged Identity Management-Dashboard wird geöffnet.
 
 
 ## Genehmigen oder Verweigern des Zugriffs
 
-Der Zugriff wird erst geändert, wenn [die Überprüfung abgeschlossen ist](active-directory-privileged-identity-management-how-to-complete-review.md). Dieser Vorgang besteht lediglich aus dem Erstellen einer Prüfliste für Personen, die den Zugriff für die Rolle möglicherweise ändern. Nachdem mindestens ein Benutzer ausgewählt wurde, werden die Schaltflächen **Zugriff genehmigen** und **Zugriff verweigern** aktiviert.
+Wenn Sie Zugriff genehmigen oder verweigern, teilen Sie dem Prüfer lediglich mit, ob Sie diese Rolle weiterhin verwenden. Wählen Sie **Genehmigen** aus, wenn Sie in der Rolle bleiben möchten, oder **Verweigern**, wenn Sie den Zugriff nicht mehr benötigen. Ihr Status ändert sich nicht sofort, sondern erst, wenn der Prüfer die Ergebnisse angewendet hat. Gehen Sie wie folgt vor, um die Zugriffsüberprüfung zu finden und abzuschließen:
 
-1. Klicken Sie in der PIM-Anwendung auf **Administratorzugriff überprüfen**. Eine Liste mit Sicherheitsüberprüfungen wird angezeigt.
-2. Wählen Sie in der Liste den/die **Benutzer** aus, dessen/deren Zugriff Sie ändern möchten.
-3. Klicken Sie für die von Ihnen ausgewählten Benutzer auf **Zugriff genehmigen** oder **Zugriff verweigern**. Im Hauptmenü des Azure-Portals wird eine Benachrichtigung angezeigt, und die ausgewählten Namen in der Überprüfungsliste werden entfernt (Sie können die Namen wieder anzeigen, indem Sie die Filteroptionen ändern). Schließen Sie das Blatt **Azure AD-Rollen überprüfen**.
+1. Wählen Sie in der PIM-Anwendung **Privilegierten Zugriff überprüfen** aus. Wenn Zugriffsüberprüfungen ausstehen, werden sie auf dem Blatt mit den Azure AD-Zugriffsüberprüfungen angezeigt.
+2. Wählen Sie die Überprüfung aus, die Sie abschließen möchten.
+3. Wenn Sie die Überprüfung nicht erstellt haben, werden Sie als der einzige Benutzer in der Überprüfung angezeigt. Aktivieren Sie das Häkchen neben Ihrem Namen.
+4. Wählen Sie entweder **Genehmigen** oder **Verweigern** aus. Möglicherweise müssen Sie einen Grund für Ihre Entscheidung im Textfeld **Grund angeben** eingeben.
+5. Schließen Sie das Blatt **Azure AD-Rollen überprüfen**.
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## Nächste Schritte
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!--Image references-->
+
+[1]: ./media/active-directory-privileged-identity-management-configure/PIM_EnablePim.png
+
+<!---HONumber=AcomDC_0706_2016-->

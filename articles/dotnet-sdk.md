@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="01/08/2016" 
+	ms.date="06/30/2016" 
 	ms.author="tdykstra"/>
 
 # Was ist das Azure-SDK für .NET?
 
 ## Übersicht
 
-Das Azure-SDK für .NET umfasst einen Satz Visual Studio-Tools, Befehlszeilen-Tools, Laufzeitbinärdateien und Clientbibliotheken, mit denen Sie Anwendungen, die in Azure ausgeführt werden, entwickeln, testen und bereitstellen können. In diesem Artikel erfahren Sie, was in der Installation des SDK enthalten ist. Sie können das SDK von der Seite [Azure Downloads](/downloads/) herunterladen.
+Das Azure-SDK für .NET umfasst einen Satz Visual Studio-Tools, Befehlszeilen-Tools, Laufzeitbinärdateien und Clientbibliotheken, mit denen Sie Anwendungen, die in Azure ausgeführt werden, entwickeln, testen und bereitstellen können. In diesem Artikel erfahren Sie, was in der Installation des SDK enthalten ist. Sie können das SDK von der Seite [Azure Downloads](https://azure.microsoft.com/downloads/) herunterladen.
 
 Das Azure-SDK für .NET enthält außerdem [Clientbibliotheken für die Nutzung von Azure-Diensten](http://go.microsoft.com/fwlink/?LinkId=510472). Diese Bibliotheken müssen Sie separat über NuGet installieren.
 
@@ -28,47 +28,30 @@ Das Azure-SDK für .NET enthält außerdem [Clientbibliotheken für die Nutzung 
 
 Das Azure-SDK für .NET installiert folgende Produkte:
 
-- [Visual Studio Express für das Web installiert](#vwd)
-- [Microsoft ASP.NET und Webtools für Visual Studio](#wte)
-- [Microsoft Azure-Tools für Microsoft Visual Studio](#tools)
-- [Microsoft Azure-Entwicklertools](#auth)
-- [Microsoft Azure-Emulator](#emulator)
+- [Visual Studio Community Edition 2015](#vwd)
 - [Microsoft Azure-Speicheremulator](#stgemulator)
 - [Microsoft Azure-Speichertools](#stgtools)
-- [Microsoft Azure-Bibliotheken für .NET](#libraries)
+- [Microsoft Azure-Entwicklertools](#auth)
+- [Microsoft Azure-Emulator](#emulator)
 - [HDInsight-Tools für Visual Studio und Microsoft Hive ODBC-Treiber](#hdinsight)
-- [Microsoft Azure Mobile App SDK V1.0](#mobile)
+- [Microsoft Azure-Bibliotheken für .NET](#libraries)
+- [Microsoft Azure Mobile App SDK](#mobile)
 - [Microsoft Azure PowerShell](#ps)
+- [Microsoft Azure-Tools für Microsoft Visual Studio](#tools)
+- [Microsoft ASP.NET und Webtools für Visual Studio](#wte)
+- [Microsoft Azure Data Lake-Tools für Visual Studio](#datalake)
 
 ###<a id="vwd"></a>Visual Studio Express für das Web installiert
 
-Wenn Visual Studio nicht auf Ihrem Computer installiert ist, installiert das SDK [Visual Studio Express für das Web](http://www.visualstudio.com/products/visual-studio-express-vs.aspx).
- 
-###<a id="wte"></a>Microsoft ASP.NET und Webtools für Visual Studio
+Wenn Visual Studio nicht auf Ihrem Computer installiert ist, installiert das SDK [Visual Studio Community Edition 2015](https://www.visualstudio.com/products/visual-studio-community-vs).
 
-Mit diesen Anleitungen können Sie mit Azure-Websites arbeiten:
+###<a id="stgemulator"></a>Microsoft Azure-Speicheremulator
 
-* [Veröffentlichen von Webprojekten auf Azure-Websites](app-service-web/web-sites-dotnet-get-started.md)
-* [Veröffentlichen von Konsolenanwendungsprojekten mit Azure-WebJobs](app-service-web/websites-dotnet-deploy-webjobs.md)
-* [Erstellen einer Azure-Website und Erstellen von SQL-Datenbankressourcen bei der Erstellung eines neuen Webprojekts oder der Veröffentlichung eines Webprojekts](app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)
-* [Erstellen von PowerShell-Bereitstellungsskripts während der Erstellung neuer Websites](http://msdn.microsoft.com/library/dn642480.aspx)
-* [Verwalten von Azure-Websites und Beheben von Problemen im Server-Explorer](app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#sitemanagement)
-* [Ausführen im Debugmodus aus der Ferne für Websites und WebJobs](app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug) 
+Der [Azure-Speicheremulator](http://msdn.microsoft.com/library/hh403989.aspx) nutzt eine SQL-Serverinstanz und das lokale Dateisystem, um Azure-Speicher (Warteschlangen, Tabellen, Blobs) zu simulieren. Dadurch ist lokales Testen möglich.
 
->[AZURE.NOTE] Sie müssen das Azure-SDK für .NET nicht installieren, um diese Funktionen nutzen zu können. Sie sind auch in Updates von Visual Studio enthalten.
+###<a id="stgtools"></a>Microsoft Azure-Speichertools
 
-###<a id="tools"></a>Microsoft Azure-Tools für Microsoft Visual Studio
-
-Mit diesen Anleitungen können Sie mit Azure-Ressourcen arbeiten, vor allem mit Clouddiensten und virtuellen Computern:
-
-* [Erstellen, Öffnen und Veröffentlichen von Clouddienstprojekten](cloud-services/cloud-services-dotnet-get-started.md)
-* [Erstellen von Bereitstellungspaketen für Clouddienstprojekte](http://msdn.microsoft.com/library/ff683672.aspx)
-* [Erstellen von virtuellen Azure-Computern während der Erstellung neuer Webprojekte](virtual-machines/virtual-machines-windows-classic-web-app-visual-studio.md)
-* [Erstellen von PowerShell-Skripts während der Erstellung neuer virtueller Computer](http://msdn.microsoft.com/library/dn642480.aspx)
-* [Anzeigen und Verwalten von Einstellungen für Clouddienstprojekte in Projekteigenschaftsfenstern in Visual Studio](http://msdn.microsoft.com/library/ee405486.aspx)
-* Anzeigen und Verwalten von [Clouddiensten](http://msdn.microsoft.com/library/ff683675.aspx), [virtuellen Computern](http://msdn.microsoft.com/library/jj131259.aspx) und [Service Bus](http://msdn.microsoft.com/library/jj149828.aspx) im Server Explorer 
-* [Ausführen im Debugmodus aus der Ferne für Clouddienste und virtuelle Computer](http://msdn.microsoft.com/library/ff683670.aspx)
-* [Automatisieren der Ressourcenbereitstellung mithilfe von Azure-Ressourcengruppen-Bereitstellungsprojekten](https://msdn.microsoft.com/library/dn872471.aspx)
+Dies installiert [AzCopy](http://aka.ms/AzCopy). Dabei handelt es sich um ein Befehlszeilentool, mit dem Sie Daten in ein und aus einem Azure-Speicherkonto übertragen können.
 
 ###<a id="auth"></a>Microsoft Azure-Entwicklertools
 
@@ -82,26 +65,18 @@ Dies umfasst Folgendes:
 
 Der [Azure-Emulator](http://msdn.microsoft.com/library/dn339018.aspx) simuliert die Clouddienstumgebung. So können Sie Clouddienstprojekte vor der Bereitstellung in Azure lokal auf Ihrem Computer testen.
 
-###<a id="stgemulator"></a>Microsoft Azure-Speicheremulator
+###<a id="hdinsight"></a>HDInsight-Tools für Visual Studio und Microsoft Hive ODBC-Treiber
 
-Der [Azure-Speicheremulator](http://msdn.microsoft.com/library/hh403989.aspx) nutzt eine SQL-Serverinstanz und das lokale Dateisystem, um Azure-Speicher (Warteschlangen, Tabellen, Blobs) zu simulieren. Dadurch ist lokales Testen möglich.
-
-###<a id="stgtools"></a>Microsoft Azure-Speichertools
-
-Dies installiert [AzCopy](http://aka.ms/AzCopy). Dabei handelt es sich um ein Befehlszeilentool, mit dem Sie Daten in ein und aus einem Azure-Speicherkonto übertragen können.
+Mit HDInsight-Tools im Server-Explorer können Sie in Hive-Datenbanken und verknüpften Speicherkonten für HDInsight-Cluster navigieren, Tabellen erstellen sowie Hive-Abfragen erstellen und übermitteln. Weitere Informationen finden Sie unter [Erste Schritte mit den HDInsight Hadoop-Tools für Visual Studio](hdinsight/hdinsight-hadoop-visual-studio-tools-get-started.md).
 
 ###<a id="libraries"></a>Microsoft Azure-Bibliotheken für .NET
 
 Dies umfasst Folgendes:
 
 * NuGet-Pakete für den Azure-Speicher, Service Bus und Zwischenspeicherung, die auf Ihrem Computer gespeichert werden, sodass Visual Studio offline neue Clouddienstprojekte erstellen kann.
-* Ein Plug-In für Visual Studio, mit dem [In-Role-Cache](http://msdn.microsoft.com/library/dn386103.aspx)-Projekte lokal in Visual Studio ausgeführt werden können. 
+* Ein Plug-In für Visual Studio, mit dem [In-Role-Cache](http://msdn.microsoft.com/library/dn386103.aspx)-Projekte lokal in Visual Studio ausgeführt werden können.
 
-###<a id="hdinsight"></a>HDInsight-Tools für Visual Studio und Microsoft Hive ODBC-Treiber
-
-Mit HDInsight-Tools im Server-Explorer können Sie in Hive-Datenbanken und verknüpften Speicherkonten für HDInsight-Cluster navigieren, Tabellen erstellen sowie Hive-Abfragen erstellen und übermitteln. Weitere Informationen finden Sie unter [Erste Schritte mit den HDInsight Hadoop-Tools für Visual Studio](hdinsight/hdinsight-hadoop-visual-studio-tools-get-started.md).
-
-###<a id="mobile"></a>Microsoft Azure Mobile App SDK 1.0
+###<a id="mobile"></a>Microsoft Azure Mobile App SDK
 
 Tools für die Arbeit mit [Azure App Service Mobile Apps](app-service-mobile/app-service-mobile-value-prop.md).
 
@@ -109,11 +84,41 @@ Tools für die Arbeit mit [Azure App Service Mobile Apps](app-service-mobile/app
 
 Mit Azure PowerShell können Sie [die Entwicklung und Bereitstellung von Azure-Umgebungen automatisieren](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything).
 
+###<a id="tools"></a>Microsoft Azure-Tools für Microsoft Visual Studio
+
+Mit diesen Anleitungen können Sie mit Azure-Ressourcen arbeiten, vor allem mit Clouddiensten und virtuellen Computern:
+
+* [Erstellen, Öffnen und Veröffentlichen von Clouddienstprojekten](cloud-services/cloud-services-dotnet-get-started.md)
+* [Erstellen von Bereitstellungspaketen für Clouddienstprojekte](http://msdn.microsoft.com/library/ff683672.aspx)
+* [Erstellen von virtuellen Azure-Computern während der Erstellung neuer Webprojekte](virtual-machines/virtual-machines-windows-classic-web-app-visual-studio.md)
+* [Erstellen von PowerShell-Skripts während der Erstellung neuer virtueller Computer](http://msdn.microsoft.com/library/dn642480.aspx)
+* [Anzeigen und Verwalten von Einstellungen für Clouddienstprojekte in Projekteigenschaftsfenstern in Visual Studio](http://msdn.microsoft.com/library/ee405486.aspx)
+* Anzeigen und Verwalten von [Clouddiensten](http://msdn.microsoft.com/library/ff683675.aspx), [virtuellen Computern](http://msdn.microsoft.com/library/jj131259.aspx) und [Service Bus](http://msdn.microsoft.com/library/jj149828.aspx) im Server Explorer
+* [Ausführen im Debugmodus aus der Ferne für Clouddienste und virtuelle Computer](http://msdn.microsoft.com/library/ff683670.aspx)
+* [Automatisieren der Ressourcenbereitstellung mithilfe von Azure-Ressourcengruppen-Bereitstellungsprojekten](https://msdn.microsoft.com/library/dn872471.aspx)
+
+###<a id="wte"></a>Microsoft App Service-Tools für Visual Studio
+
+Mit diesen Anleitungen können Sie mit Azure-Websites arbeiten:
+
+* [Veröffentlichen von Webprojekten auf Azure-Websites](app-service-web/web-sites-dotnet-get-started.md)
+* [Veröffentlichen von Konsolenanwendungsprojekten mit Azure-WebJobs](app-service-web/websites-dotnet-deploy-webjobs.md)
+* [Erstellen einer Azure-Website und Erstellen von SQL-Datenbankressourcen bei der Erstellung eines neuen Webprojekts oder der Veröffentlichung eines Webprojekts](app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)
+* [Erstellen von PowerShell-Bereitstellungsskripts während der Erstellung neuer Websites](http://msdn.microsoft.com/library/dn642480.aspx)
+* [Verwalten von Azure-Websites und Beheben von Problemen im Server-Explorer](app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#sitemanagement)
+* [Ausführen im Debugmodus aus der Ferne für Websites und WebJobs](app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug)
+
+>[AZURE.NOTE] Sie müssen das Azure-SDK für .NET nicht installieren, um diese Funktionen nutzen zu können. Sie sind auch in Updates von Visual Studio enthalten.
+
+##<a id="datalake"></a>Microsoft Azure Data Lake-Tools für Visual Studio
+
+Weitere Informationen finden Sie im [Tutorial: Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md).
+
 ##<a id="notincluded"></a>Bei der Installation von Azure-SDK für .NET nicht enthalten
 
 Sie benötigen möglicherweise einige Elemente für die Entwicklung in Azure, die bei der Installation des SDK nicht enthalten sind. Die wichtigsten Elemente sind:
 
-* [Clientbibliotheke](http://go.microsoft.com/fwlink/?LinkId=510472). 
+* [Clientbibliotheke](http://go.microsoft.com/fwlink/?LinkId=510472).
 
 	Das Azure-SDK umfasst Clientbibliotheken für die Nutzung von Azure-Diensten. Es werden jedoch nicht alle installiert, wenn Sie das SDK installieren. Benötigt Ihre Anwendung eine Clientbibliothek, die nicht vom SDK installiert wird, können Sie diese auf [NuGet.org](http://go.microsoft.com/fwlink/?LinkId=510472) herunterladen. Verwendet Ihre Anwendung eine Clientbibliothek, die vom SDK installiert wird, ist es von Vorteil, ein Update auf die neueste Version von NuGet.org herunterzuladen.
 
@@ -123,7 +128,7 @@ Sie benötigen möglicherweise einige Elemente für die Entwicklung in Azure, di
 
 * [Projektvorlagen für Azure Mobile Service](mobile-services/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard.md).
 
-	Vorlagen für den mobilen Dienst sind nur in Visual Studio 2013 Update 2 und höher verfügbar. Sie sind nicht in Visual Studio 2012 oder früheren Versionen und auch nicht in Visual Studio 2013 Update 1 verfügbar. Auch dann nicht, wenn Sie das Azure-SDK für .NET installieren.
+	Vorlagen für den mobilen Dienst sind nur in Visual Studio 2013 Update 2 und höher verfügbar. Sie sind nicht in Visual Studio 2012 oder früheren Versionen und auch nicht in Visual Studio 2013 Update 1 verfügbar. Auch dann nicht, wenn Sie das Azure-SDK für .NET installieren.
 
 ##<a id="faq"></a>Häufig gestellte Fragen
 
@@ -148,7 +153,7 @@ Das SDK installiert Clientbibliotheken, damit Sie Clouddienstprojekte auch dann 
 
 ###<a id="olderversions"></a>Wo finde ich ältere Versionen des Azure-SDK für .NET?
 
-Ältere Versionen finden Sie auf der Downloadseite für das [Azure-SDK für .NET](/downloads/archive-net-downloads/).
+Ältere Versionen finden Sie auf der Downloadseite für das [Azure-SDK für .NET](https://azure.microsoft.com/downloads/archive-net-downloads/).
 
 ###<a id="lifecycle"></a>Wie gestaltet sich der Lebenszyklus für Versionen des Azure-SDK für .NET?
 
@@ -176,7 +181,7 @@ In diesem Artikel wird nicht jedes Programm aufgeführt, das in jeder früheren 
 
 ##<a id="versions"></a>Versionen
 
-Um festzustellen, welche Version aktuell ist, oder um ältere Versionen herunterzuladen, finden Sie entsprechende Informationen auf der Seite [Azure-SDK für .NET-Versionsverlauf](/downloads/archive-net-downloads/).
+Um festzustellen, welche Version aktuell ist, oder um ältere Versionen herunterzuladen, finden Sie entsprechende Informationen auf der Seite [Azure-SDK für .NET-Versionsverlauf](https://azure.microsoft.com/downloads/archive-net-downloads/).
 
 ##<a id="resources"></a>Ressourcen
 
@@ -184,6 +189,6 @@ Das aktuelle Azure-SDK für .NET oder Clientbibliotheken können Sie auf der Azu
 
 Quellcode des Azure-SDK für .NET, einschließlich Clientbibliotheken, finden Sie unter [GitHub.com/Azure](https://github.com/azure/).
 
-Referenzdokumentation für Azure-Clientbibliotheken finden Sie unter [Azure .NET-Referenz](/documentation/api/).
+Referenzdokumentation für Azure-Clientbibliotheken finden Sie unter [Azure .NET-Referenz](https://azure.microsoft.com/documentation/api/).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0706_2016-->

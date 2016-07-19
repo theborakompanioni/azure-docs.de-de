@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="06/20/2016"
+   ms.date="07/06/2016"
    ms.author="larryfr"/>
 
 
@@ -92,6 +92,8 @@ Wenn Sie HDInsight in einem sicheren virtuellen Netzwerk installieren müssen, m
 * 138\.91.141.162
 
 Das Zulassen des eingehenden Zugriffs über Port 443 von diesen Adressen ermöglicht Ihnen die erfolgreiche Installation von HDInsight in einem geschützten virtuellen Netzwerk.
+
+> [AZURE.IMPORTANT] HDInsight unterstützt keine Einschränkung des ausgehenden Datenverkehrs, nur des eingehenden Datenverkehrs. Verwenden Sie beim Definieren von Regeln der Netzwerksicherheitsgruppe für das Subnetz, das HDInsight enthält, nur eingehende Regeln.
 
 Die folgenden Beispiele zeigen das Erstellen einer neuen Netzwerksicherheitsgruppe, die die erforderlichen Adressen zulässt, und die Sicherheitsgruppe wird auf ein Subnetz in Ihrem Virtual Network angewendet. Bei diesen Schritten wird vorausgesetzt, dass Sie bereits ein Virtual Network und ein Subnetz erstellt haben, in dem Sie HDInsight installieren möchten.
 
@@ -177,7 +179,7 @@ __Verwenden der Azure-Befehlszeilenschnittstelle__
     
         data:    Id                              : /subscriptions/GUID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/networkSecurityGroups/hdisecure
 
-2. Gehen Sie wie folgt vor, um der neuen Netzwerksicherheitsgruppe Regeln hinzuzufügen, die eingehende Kommunikation auf Port 443 aus dem Azure HDInsight-Integritäts- und Verwaltungsdienst ermöglichen. Ersetzen Sie __RESOURCEGROUPNAME__ durch den Namen der Ressourcengruppe, die das Azure Virtual Network enthält.
+2. Gehen Sie wie folgt vor, um der neuen Netzwerksicherheitsgruppe Regeln hinzuzufügen, die eingehende Kommunikation auf Port 443 aus dem Azure HDInsight-Integritäts- und Verwaltungsdienst ermöglichen. Ersetzen Sie __RESOURCEGROUPNAME__ durch den Namen der Ressourcengruppe, die das virtuelle Azure-Netzwerk enthält.
 
         azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule1 -p "*" -o "*" -u "443" -f "168.61.49.99" -e "VirtualNetwork" -c "Allow" -y 300 -r "Inbound"
         azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule2 -p "*" -o "*" -u "443" -f "23.99.5.239" -e "VirtualNetwork" -c "Allow" -y 301 -r "Inbound"
@@ -305,4 +307,4 @@ In den folgenden Beispielen wird die Verwendung von HDInsight mit Azure Virtual 
 
 Weitere Informationen zu virtuellen Azure Virtual-Netzwerken finden Sie unter [Überblick über Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

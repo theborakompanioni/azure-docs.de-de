@@ -13,23 +13,23 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/23/2016"
+   ms.date="07/06/2016"
    ms.author="mbaldwin"/>
 
 
 # Entwicklerhandbuch zu Azure Active Directory
 
 ## Übersicht
-Als Plattform vom Typ "Identity Management as a Service (IDMaaS)" stellt Azure Active Directory für Entwickler eine effektive Möglichkeit zum Integrieren der Identitätsverwaltung in ihre Anwendungen dar. Die folgenden Artikel enthalten Übersichten über die Implementierung sowie wichtige Features von Azure Active Directory. Wir empfehlen Ihnen, die Artikel in der angegebenen Reihenfolge zu lesen. Wenn Sie möchten, können Sie aber auch direkt mit [Erste Schritte](#getting-started) beginnen.
+Als Plattform vom Typ „Identity Management as a Service (IDMaaS)“ stellt Azure Active Directory (AD) für Entwickler eine effektive Möglichkeit zum Integrieren der Identitätsverwaltung in ihre Anwendungen dar. Die folgenden Artikel enthalten Übersichten über die Implementierung sowie wichtige Features von Azure AD. Wir empfehlen Ihnen, die Artikel in der angegebenen Reihenfolge zu lesen. Wenn Sie möchten, können Sie aber auch direkt mit [Erste Schritte](#getting-started) beginnen.
 
 
-1. [Vorteile der Integration in Azure Active Directory](active-directory-how-to-integrate.md): Erfahren Sie, warum die Integration in Azure Active Directory die beste Lösung für eine sichere Anmeldung und Autorisierung ist.
+1. [Vorteile der Integration in Azure Active Directory](active-directory-how-to-integrate.md): Erfahren Sie, warum die Integration in Azure AD die beste Lösung für eine sichere Anmeldung und Autorisierung ist.
 
-1. [Active Directory-Authentifizierungsszenarien](active-directory-authentication-scenarios.md): Nutzen Sie die vereinfachte Authentifizierung von Azure Active Directory, um eine Anmeldung für Ihre Anwendung bereitzustellen.
+1. [Active Directory-Authentifizierungsszenarien](active-directory-authentication-scenarios.md): Nutzen Sie die vereinfachte Authentifizierung von Azure AD, um eine Anmeldung für Ihre Anwendung bereitzustellen.
 
-1. [Integrieren von Anwendungen in Azure Active Directory](active-directory-integrating-applications.md): Weitere Informationen, wie Sie Anwendungen in Azure Active Directory hinzufügen, aktualisieren und entfernen, sowie zu den Brandingrichtlinien für integrierte Apps.
+1. [Integrieren von Anwendungen in Azure Active Directory](active-directory-integrating-applications.md): Weitere Informationen, wie Sie Anwendungen in Azure AD hinzufügen, aktualisieren und entfernen, sowie zu den Brandingrichtlinien für integrierte Apps.
 
-1. [Azure Active Directory Graph-API](active-directory-graph-api.md): Verwenden Sie die Azure Active Directory Graph-API, um über REST-API-Endpunkte programmgesteuert auf Azure Active Directory zuzugreifen. Beachten Sie, dass die Azure AD Graph-API auch über [Microsoft Graph](https://graph.microsoft.io/) zugänglich ist, eine einheitliche API, die Zugriff auf mehrere Microsoft Clouddienst-APIs über einen einzelnen Endpunkt für die REST-API und mit einem einzelnen Zugriffstoken ermöglicht.
+1. [Azure Active Directory Graph-API](active-directory-graph-api.md): Verwenden Sie die Azure AD Graph-API, um über REST-API-Endpunkte programmgesteuert auf Azure AD zuzugreifen. Beachten Sie, dass die Azure AD Graph-API auch über [Microsoft Graph](https://graph.microsoft.io/) zugänglich ist, eine einheitliche API, die Zugriff auf mehrere Microsoft Clouddienst-APIs über einen einzelnen Endpunkt für die REST-API und mit einem einzelnen Zugriffstoken ermöglicht.
 
 1. [Azure Active Directory-Authentifizierungsbibliotheken](active-directory-authentication-libraries.md): Authentifizieren Sie Benutzer auf einfache Weise, indem Sie Zugriffstoken über die Azure AD-Authentifizierungsbibliotheken für .NET, JavaScript, Objective-C, Android und weitere abrufen.
 
@@ -66,12 +66,13 @@ Diese Tutorials sind auf verschiedene Plattformen ausgelegt und ermöglichen Ihn
 
 In diesen Artikeln wird beschrieben, wie Sie mit Azure Active Directory bestimmte Aufgaben ausführen:
 
-- [Abrufen eines Azure Active Directory-Mandanten](active-directory-howto-tenant.md)
-- [Auflisten Ihrer Anwendung im Azure Active Directory-Anwendungskatalog](active-directory-app-gallery-listing.md)
-- [Grundlegendes zum Azure Active Directory-Anwendungsmanifest](active-directory-application-manifest.md)
-- [Erstellen einer App mit Office 365-APIs](https://msdn.microsoft.com/office/office365/howto/getting-started-Office-365-APIs)
+- [Erhalten eines Azure AD-Mandanten](active-directory-howto-tenant.md)
+- [How to sign in any Azure Active Directory (AD) user using the multi-tenant application pattern](active-directory-devhowto-multi-tenant-overview.md) (Anmelden von Azure AD-Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster)
+- Aktivieren Sie App-übergreifendes SSO per ADAL auf [Android](active-directory-sso-android.md)- und [iOS](active-directory-sso-ios.md)-Geräten.
+- [How to get AppSource Certified for Azure Active Directory (AD)](active-directory-devhowto-appsource-certified.md) (Zertifizieren Ihrer AppSource-Anwendung für Azure AD)
+- [Auflisten Ihrer Anwendung im Azure AD-Anwendungskatalog](active-directory-app-gallery-listing.md)
 - [Übertragen von Web-Apps für Office 365 an das Verkäuferdashboard (in englischer Sprache)](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
-- Erfahren Sie, wie Sie App-übergreifendes SSO per ADAL auf [Android](active-directory-sso-android.md)- und [iOS](active-directory-sso-ios.md)-Geräten ermöglichen.
+- [Grundlegendes zum Azure Active Directory-Anwendungsmanifest](active-directory-application-manifest.md)
 - [Grundlegendes zu den Brandingrichtlinien für die Schaltflächen für Anmeldung und App-Erwerb in Ihrer Clientanwendung](active-directory-branding-guidelines.md)
 - [Vorschau: Erstellen von Apps, bei denen sich Benutzer sowohl mit persönlichen als auch mit Arbeits- oder Schulkonten anmelden können](active-directory-appmodel-v2-overview.md)
 - [Vorschau: Erstellen von Apps, die Kunden registrieren und anmelden](../active-directory-b2c/active-directory-b2c-overview.md)
@@ -90,7 +91,7 @@ Diese Artikel enthalten grundlegende Referenzen zu REST- und Authentifizierungsb
 
 - [Azure Active Directory-Beispiele](https://github.com/azure-samples?query=active-directory): Die einfachste Möglichkeit zum Navigieren in der Liste mit den Beispielen bietet der [Index für die Codebeispiele](active-directory-code-samples.md).
 
-- [ADAL für .NET:](https://msdn.microsoft.com/library/azure/mt417579.aspx) Dokumentation für die .NET-Authentifizierungsbibliothek.
+- [ADAL für .NET](https://msdn.microsoft.com/library/azure/mt417579.aspx): Dokumentation für die .NET-Authentifizierungsbibliothek.
 
 ### Graph-API
 
@@ -108,7 +109,7 @@ Diese Artikel enthalten grundlegende Referenzen zu REST- und Authentifizierungsb
 
 - [WS-Federation 1.2-Protokoll ](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html): Azure Active Directory unterstützt WS-Federation 1.2, wie es in der Spezifikation zu Web Services Federation Version 1.2 angegeben ist. Weitere Informationen zum Verbundmetadaten-Dokument finden Sie unter [Verbundmetadaten](active-directory-federation-metadata.md).
 
-- [Unterstützte Token und Anspruchstypen](active-directory-token-and-claims.md): Verwenden Sie dieses Handbuch, um die Ansprüche in SAML 2.0- und JSON-Webtoken (JWT) zu verstehen und auszuwerten.
+- [Unterstützte Token und Anspruchstypen](active-directory-token-and-claims.md): Verwenden Sie dieses Handbuch, um die Ansprüche in Token vom Typ SAML 2.0 und JSON Web Token (JWT) zu verstehen und auszuwerten.
 
 ## Videos
 
@@ -138,4 +139,4 @@ In diesen Übersichtspräsentationen zur Entwicklung von Apps mithilfe von Azure
 
 - [Azure Active Directory auf Twitter](https://twitter.com/azuread): Azure Active Directory-Ankündigungen in höchstens 140 Zeichen.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -32,7 +32,7 @@ Das Design von ASP.NET wurde für ASP.NET 5 deutlich verändert. ASP.NET 5 ist
 
 * Installieren Sie [VS Code](http://code.visualstudio.com/Docs/setup).
 * Installieren Sie [Node.js](http://nodejs.org). Node.js ist eine Plattform für die Erstellung schneller und skalierbarer Serveranwendungen mit JavaScript. Node ist die Laufzeit, [npm](http://www.npmjs.com/) der Paket-Manager für Node-Module. In diesem Lernprogramm erstellen Sie mithilfe von npm das Gerüst für eine ASP.NET 5-Web-App.
-* Installieren Sie Git (entweder über [Chocolatey](https://chocolatey.org/packages/git) oder über [git-scm.com](http://git-scm.com/downloads)). Falls Sie noch keine Erfahrung mit Git haben, entscheiden Sie sich für [git-scm.com](http://git-scm.com/downloads) und wählen Sie die Option **Git über die Windows-Eingabeaufforderung verwenden** aus. Legen Sie nach der Installation von Git den Git-Benutzernamen und die dazugehörige E-Mail-Adresse fest, da diese Angaben später in diesem Lernprogramm (beim Ausführen eines Commits in VS Code) benötigt werden.  
+* Installieren Sie Git (entweder über [Chocolatey](https://chocolatey.org/packages/git) oder über [git-scm.com](http://git-scm.com/downloads)). Falls Sie noch keine Erfahrung mit Git haben, entscheiden Sie sich für [git-scm.com](http://git-scm.com/downloads) und wählen Sie die Option **Git über die Windows-Eingabeaufforderung verwenden** aus. Legen Sie nach der Installation von Git den Git-Benutzernamen und die dazugehörige E-Mail-Adresse fest, da diese Angaben später in diesem Lernprogramm (beim Ausführen eines Commits in VS Code) benötigt werden.
 
 ## Installieren von ASP.NET 5 und DNX
 ASP.NET 5/DNX (die .NET-Ausführungsumgebung) ist ein schlanker .NET-Stapel für die Erstellung moderner Cloud- und Web-Apps für OS X, Linux und Windows. Er wurde von Grund auf neu als optimiertes Entwicklungsframework für Apps konzipiert, die entweder in der Cloud bereitgestellt oder lokal ausgeführt werden. Er besteht aus modularen Komponenten mit minimalem Mehraufwand und ermöglicht Ihnen eine flexible Lösungsentwicklung.
@@ -123,7 +123,7 @@ Nachdem Sie die Web-App erstellt und alle erforderlichen NuGet-Pakete abgerufen 
 
 	Im Befehlsfenster wird angezeigt, dass die Anwendung gestartet wurde. Wenn diese Meldung im Befehlsfenster nicht angezeigt wird, überprüfen Sie, ob links unten in VS Code Fehler für Ihr Projekt angezeigt werden.
 	
-	> [AZURE.NOTE] Zum Aufrufen eines Befehls über die **Befehlspalette** ist das Zeichen **>** am Anfang der Befehlszeile erforderlich. Sie können die Details des Befehls **web** in der Datei *project.json* anzeigen.
+	> [AZURE.NOTE] Zum Aufrufen eines Befehls über die **Befehlspalette** ist das Zeichen **>** am Anfang der Befehlszeile erforderlich. Sie können die Details des Befehls **web** in der Datei *project.json* anzeigen. Wenn der Befehl nicht angezeigt wird oder nicht verfügbar ist, müssen Sie vielleicht die C#-Erweiterung installieren. Führen Sie `>Extensions: Install Extension` und `ext install c#` aus, um die C#-Erweiterungen zu installieren.
 
 2. Öffnen Sie einen Browser, und navigieren Sie zur folgenden URL:
 
@@ -250,7 +250,7 @@ Nachdem Sie Ihre Web-App nun bereitgestellt haben, können wir sie ausführen, w
 
 Dies kann auf zwei Arten erfolgen:
 
-* Öffnen Sie einen Browser, und geben Sie den Namen Ihrer Web-App wie folgt ein:   
+* Öffnen Sie einen Browser, und geben Sie den Namen Ihrer Web-App wie folgt ein:
 
 		http://SampleWebAppDemo.azurewebsites.net
  
@@ -262,4 +262,4 @@ Dies kann auf zwei Arten erfolgen:
 ## Zusammenfassung
 In diesem Lernprogramm wurde gezeigt, wie Sie eine Web-App in VS Code erstellen und in Azure bereitstellen. Weitere Informationen zu VS Code finden Sie im Artikel [Why Visual Studio Code?](https://code.visualstudio.com/Docs/) (Argumente für Visual Studio Code; in englischer Sprache). Informationen zu App Service-Web-Apps finden Sie unter [Web-Apps – Übersicht](app-service-web-overview.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0706_2016-->

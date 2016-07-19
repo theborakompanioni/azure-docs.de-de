@@ -182,7 +182,9 @@ Führen Sie die folgenden Schritte aus, um die Beispiel-UI für die Geräteverwa
 Lassen Sie die simulierten Geräte und die Geräteverwaltungs-App laufen, während Sie mit dem nächsten Tutorial für die Geräteverwaltung fortfahren.
 
 
-## Nächster Schritt
+## Nächste Schritte
+
+Informationen zu den weiteren ersten Schritten mit IoT Hub finden Sie unter [Erste Schritte mit dem Gateway-SDK][lnk-gateway-SDK].
 
 Weitere Informationen zu den Features der Azure IoT Hub-Geräteverwaltung finden Sie im Tutorial [Erkunden der Azure IoT Hub-Geräteverwaltung mit der Beispiel-UI][lnk-sample-ui].
 
@@ -200,5 +202,6 @@ Weitere Informationen zu den Features der Azure IoT Hub-Geräteverwaltung finden
 [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen]: ../azure-portal/resource-group-portal.md
 [lnk-dm-github]: https://github.com/Azure/azure-iot-device-management
 [lnk-sample-ui]: iot-hub-device-management-ui-sample.md
+[lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

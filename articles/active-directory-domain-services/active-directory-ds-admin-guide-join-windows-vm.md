@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/08/2016"
+	ms.date="07/06/2016"
 	ms.author="maheshu"/>
 
 # Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne
@@ -134,4 +134,4 @@ Führen Sie folgende Schritte aus, wenn Probleme mit Anmeldeinformationen auftre
 
 - Stellen Sie sicher, dass Sie lange genug warten, damit die Kennwortsynchronisierung abgeschlossen ist, wie im Leitfaden „Erste Schritte“ angegeben.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

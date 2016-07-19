@@ -18,7 +18,7 @@
 
 # Übersicht: Automatisierte SQL-Datenbanksicherungen
 
-Der Azure SQL-Datenbankdienst schützt alle Datenbanken mit einer automatisierten Sicherung, die sieben (Basic), 14 (Standard) bzw. 35 Tage (Premium) lang aufbewahrt wird. Weitere Informationen über die in den einzelnen Tarifen verfügbaren Features finden Sie unter [Tarife](sql-database-service-tiers.md).
+Der Azure SQL-Datenbankdienst schützt alle Datenbanken mit einer automatisierten Sicherung, die sieben Tage (Basic) bzw. 35 Tage (Standard und Premium) lang aufbewahrt wird. Weitere Informationen über die in den einzelnen Tarifen verfügbaren Features finden Sie unter [Tarife](sql-database-service-tiers.md).
 
 Die Datenbanksicherungen werden automatisch ohne vorherige Registrierung oder zusätzliche Kosten erstellt. Durch diese automatisierten Sicherungen und die Point-in-Time-Wiederherstellung lassen sich Datenbanken kostenlos und ohne Verwaltungsaufwand vor unbeabsichtigter Beschädigung oder Löschung schützen – ganz gleich, wodurch diese verursacht wurde. Mit diesen automatisierten Sicherungen können Sie Point-in-Time-Wiederherstellungen durchführen und eine Datenbank nach versehentlicher Löschung oder Beschädigung von Daten wiederherstellen.
 
@@ -48,7 +48,7 @@ Sie können die [automatisierten SQL-Datenbanksicherungen](sql-database-automate
 
 ## Was geschieht mit meiner Aufbewahrungsdauer für den Wiederherstellungspunkt, wenn ich ein Downgrade oder Upgrade des Tarifs durchführe?
 
-Nach einem Downgrade auf einen niedrigeren Tarif (verbunden mit einer niedrigeren Leistungsstufe) wird die Aufbewahrungsdauer für den Wiederherstellungspunkt unverzüglich auf die Aufbewahrungsdauer des aktuellen Datenbanktarifs verkürzt. Wenn ein Tarifupgrade durchgeführt wird, beginnt die Verlängerung der Aufbewahrungsdauer erst nach dem Upgrade der Datenbank. Wenn die Datenbank beispielsweise von P1 auf S3 herabgestuft wird, wird die Aufbewahrungsdauer sofort von 35 Tagen auf 14 Tage verkürzt, und alle Wiederherstellungspunkte mit einem Alter von mehr als 14 Tagen sind nicht mehr verfügbar. Wenn in der Folge wieder ein Upgrade auf P1 erfolgt, beginnt die Aufbewahrungsdauer bei 14 Tagen und erweitert sich nach und nach auf 35 Tage.
+Nach einem Downgrade auf einen niedrigeren Tarif (verbunden mit einer niedrigeren Leistungsstufe) wird die Aufbewahrungsdauer für den Wiederherstellungspunkt unverzüglich auf die Aufbewahrungsdauer des aktuellen Datenbanktarifs verkürzt. Wenn ein Tarifupgrade durchgeführt wird, beginnt die Verlängerung der Aufbewahrungsdauer erst nach dem Upgrade der Datenbank. Wenn die Datenbank beispielsweise von P1 auf S3 herabgestuft wird, wird die Aufbewahrungsdauer sofort von 35 Tagen auf 35 Tage verkürzt, und alle Wiederherstellungspunkte mit einem Alter von mehr als 35 Tagen sind nicht mehr verfügbar. Wenn in der Folge wieder ein Upgrade auf P1 erfolgt, beginnt die Aufbewahrungsdauer bei 35 Tagen und erweitert sich nach und nach auf 35 Tage.
 
 ## Wie lang ist die Aufbewahrungsdauer für eine gelöschte Datenbank? 
 Die Aufbewahrungsdauer wird anhand der Dienstebene der Datenbank, während sie vorhanden war, oder der Anzahl der Tage, die sie vorhanden war, berechnet, je nachdem, welcher Wert kleiner ist.
@@ -62,4 +62,4 @@ Die Aufbewahrungsdauer wird anhand der Dienstebene der Datenbank, während sie v
 - Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
 - Eine Übersicht zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

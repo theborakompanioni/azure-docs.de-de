@@ -52,7 +52,7 @@ Basierend auf Ihrer Datenbanknutzung können derzeit 2 Kategorien von Empfehlung
 | Empfehlungen | Beschreibung |
 | :--- | :--- |
 | Upgrade | Führen Sie ein Upgrade auf eine neue Ebene durch. |
-| Nicht verfügbar | Eine Datenbank erfordert einen minimalen Workload oder ungefähr 14 Tage Aktivität. Es sind nicht genügend Daten vorhanden, um eine gültige Empfehlung abzugeben. |
+| Nicht verfügbar | Für eine Datenbank sind eine minimale Workload oder ungefähr 35 Tage Aktivität erforderlich. Es sind nicht genügend Daten vorhanden, um eine gültige Empfehlung abzugeben. |
 
 ## Abrufen von Tarifempfehlungen
 
@@ -96,4 +96,4 @@ Abhängig von den Details Ihrer speziellen Datenbank erfolgt die Durchführung e
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="05/31/2016"
+    ms.date="07/05/2016"
     ms.author="larryfr"/>
 
 # Entwickeln von Skriptaktionen mit HDInsight
@@ -50,6 +50,7 @@ Wenn Sie ein benutzerdefiniertes Skript für einen HDInsight-Cluster entwickeln,
 - [Konfigurieren benutzerdefinierter Komponenten zur Verwendung von Azure-Blobspeicher](#bPS6)
 - [Schreiben von Informationen in STDOUT und STDERR](#bPS7)
 - [Speichern von Dateien im ASCII-Format mit LF-Zeilenenden](#bps8)
+- [Verwenden von Wiederholungsversuchlogik zum Wiederherstellen bei vorübergehenden Fehlern](#bps9)
 
 > [AZURE.IMPORTANT] Skriptaktionen müssen innerhalb von 60 Minuten abgeschlossen sein, andernfalls tritt ein Timeout ein. Während der Knotenbereitstellung wird das Skript gleichzeitig mit anderen Einrichtungs- und Konfigurationsprozessen ausgeführt. Der Wettbewerb um Ressourcen wie CPU-Zeit oder Netzwerkbandbreite kann dazu führen, dass es länger als in Ihrer Entwicklungsumgebung dauert, bis das Skript abgeschlossen ist.
 
@@ -95,7 +96,7 @@ Mit dem folgenden Code wird beispielsweise die Datei "giraph-examples.jar" aus d
 
 Die während der Skriptausführung in STDOUT und STDERR geschriebenen Informationen werden protokolliert und können über die Ambari-Webbenutzeroberfläche angezeigt werden.
 
-> [AZURE.NOTE] Ambari ist nur dann verfügbar, wenn der Cluster erfolgreich erstellt wurde. Wenn Sie während der Clustererstellung eine Skriptaktion verwenden und ein Fehler bei der Erstellung auftritt, finden Sie im Abschnitt zur Problembehandlung unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) andere Möglichkeiten, um auf protokollierte Informationen zuzugreifen.
+> [AZURE.NOTE] Ambari ist nur dann verfügbar, wenn der Cluster erfolgreich erstellt wurde. Wenn Sie während der Clustererstellung eine Skriptaktion verwenden, und ein Fehler bei der Erstellung auftritt, finden Sie im Abschnitt zur Problembehandlung unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) andere Möglichkeiten, um auf protokollierte Informationen zuzugreifen.
 
 Die meisten Dienstprogramme und Installationspakete schreiben bereits Informationen in STDOUT und STDERR. Möglicherweise möchten Sie jedoch weitere Protokollierungsinformationen hinzufügen. Verwenden Sie `echo`, um Text an STDOUT zu senden. Beispiel:
 
@@ -107,7 +108,7 @@ Standardmäßig wird durch `echo` der String an STDOUT gesendet. Soll dieser an 
 
 Damit werden die an STDOUT gesendeten Informationen (1, Standardwert und daher hier nicht aufgeführt) an STDERR (2) umgeleitet. Weitere Informationen zur E/A-Umleitung finden Sie unter [http://www.tldp.org/LDP/abs/html/io-redirection.html](http://www.tldp.org/LDP/abs/html/io-redirection.html).
 
-Weitere Informationen zum Anzeigen der durch Skriptaktionen protokollierten Daten finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting).
+Weitere Informationen zum Anzeigen der durch Skriptaktionen protokollierten Daten finden Sie unter [Anpassen Windows-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting).
 
 ###<a name="bps8"></a>Speichern von Dateien im ASCII-Format mit LF-Zeilenenden
 
@@ -115,6 +116,40 @@ Bash-Skripts sollten im ASCII-Format und mit LF als Zeilenende gespeichert werde
 
     $'\r': command not found
     line 1: #!/usr/bin/env: No such file or directory
+
+###<a name="bps9"></a>Verwenden von Wiederholungsversuchlogik zum Wiederherstellen bei vorübergehenden Fehlern
+
+Beim Herunterladen von Dateien, die Pakete mit apt-get installieren, oder anderen Aktionen, die Daten über das Internet übertragen, können vorübergehende Netzwerkfehler die erfolgreiche Ausführung verhindern. Für die Remoteressource, mit der Sie kommunizieren, könnte z.B. gerade ein Failover zu einem Sicherungsknoten durchgeführt werden.
+
+Damit Ihr Skript gegenüber vorübergehenden Fehlern stabil ist, können Sie die Wiederholungsversuchlogik implementieren. Die folgende Beispielfunktion führt jeden Befehl aus, der ihr übergeben wird, und falls bei der Ausführung ein Fehler auftritt, versucht sie bis zu dreimal erneut, den Befehl auszuführen. Zwischen den einzelnen Neuversuchen liegt eine Wartezeit von zwei Sekunden.
+
+    #retry
+    MAXATTEMPTS=3
+
+    retry() {
+        local -r CMD="$@"
+        local -i ATTMEPTNUM=1
+        local -i RETRYINTERVAL=2
+
+        until $CMD
+        do
+            if (( ATTMEPTNUM == MAXATTEMPTS ))
+            then
+                    echo "Attempt $ATTMEPTNUM failed. no more attempts left."
+                    return 1
+            else
+                    echo "Attempt $ATTMEPTNUM failed! Retrying in $RETRYINTERVAL seconds..."
+                    sleep $(( RETRYINTERVAL ))
+                    ATTMEPTNUM=$ATTMEPTNUM+1
+            fi
+        done
+    }
+
+Es folgen Beispiele für die Verwendung dieser Funktion.
+
+    retry ls -ltr foo
+
+    retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
 
 ## <a name="helpermethods"></a>Hilfsmethoden für benutzerdefinierte Skripts
 
@@ -181,7 +216,7 @@ Es folgen unsere Schritte bei der Vorbereitung der Bereitstellung dieser Skripts
 
 ## <a name="runScriptAction"></a>Ausführen einer Skriptaktion
 
-Sie können Skriptaktionen zum Anpassen von HDInsight-Clustern über das Azure-Portal, Azure PowerShell, Azure Resource Manager-Vorlagen (ARM) oder über das HDInsight .NET SDK ausführen. Anweisungen hierzu finden Sie unter [Verwenden einer Skriptaktion](hdinsight-hadoop-customize-cluster-linux.md).
+Sie können Skriptaktionen zum Anpassen von HDInsight-Clustern über das Azure-Portal, Azure PowerShell, Azure Resource Manager-Vorlagen (ARM) oder über das HDInsight .NET SDK ausführen. Anweisungen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
 
 ## <a name="sampleScripts"></a>Beispiele benutzerdefinierter Skripts
 
@@ -190,7 +225,7 @@ Microsoft bietet Beispielskripts für die Installation von Komponenten in einem 
 - [Installieren und Verwenden von Hue in HDInsight-Clustern](hdinsight-hadoop-hue-linux.md)
 - [Installieren und Verwenden von R in HDInsight Hadoop-Clustern](hdinsight-hadoop-r-scripts-linux.md)
 - [Installieren und Verwenden von Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install-linux.md)
-- [Installieren und Verwenden von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install-linux.md)  
+- [Installieren und Verwenden von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install-linux.md)
 
 > [AZURE.NOTE] Die oben aufgeführten Dokumente gelten für Linux-basierte HDInsight-Cluster. Informationen zu Skripts für Windows-basierte HDInsight-Cluster finden Sie unter [Entwickeln von Skriptaktionen mit HDInsight (Windows)](hdinsight-hadoop-script-actions.md), oder über die Links am Seitenanfang der einzelnen Artikel.
 
@@ -227,10 +262,10 @@ Ersetzen Sie den oben aufgeführten Befehl __INFILE__ durch die Datei mit Bytere
 
 ## <a name="seeAlso"></a>Nächste Schritte
 
-* Erfahren Sie, wie Sie [mit Skriptaktionen HDInsight-Cluster anpassen können](hdinsight-hadoop-customize-cluster-linux.md).
+* Lernen Sie das [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
 
 * Verwenden Sie die [HDInsight .NET SDK-Referenz](https://msdn.microsoft.com/library/mt271028.aspx), um mehr über das Erstellen von .NET-Anwendungen zu erfahren, die HDInsight verwalten.
 
 * Verwenden Sie die [HDInsight-REST-API](https://msdn.microsoft.com/library/azure/mt622197.aspx), um zu erfahren, wie Sie REST verwenden, um Verwaltungsaktionen auf HDInsight-Clustern auszuführen.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

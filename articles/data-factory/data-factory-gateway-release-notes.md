@@ -22,16 +22,28 @@ Eine Herausforderung für die moderne Datenintegration ist das nahtlose Verschie
 
 Weitere Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md).
 
-## AKTUELLE VERSION (1.12.5953.1.)
-- Fehlerbehebungen
+## AKTUELLE VERSION (2.0.6013.1)
+
+- Sie können die Sprache/Kultur auswählen, die von einem Gateway während der manuellen Installation verwendet werden soll.
+- Wenn das Gateway nicht wie erwartet funktioniert, können Sie Gatewayprotokolle der letzten 7 Tage an Microsoft senden, um die Behebung des Problems zu erleichtern. Wenn das Gateway nicht mit dem Clouddienst verbunden ist, können Sie Gatewayprotokolle speichern und archivieren.
+- Verbesserte Benutzeroberfläche für Gatewaykonfigurations-Manager:
+	- Der Gatewaystatus ist auf der Registerkarte „Start“ besser sichtbar.
+	- Neu organisierte und vereinfachte Steuerelemente.
+- Sie können Daten aus einem anderen Speicher als einem Azure-Blob über Polybase und ein Stagingblob mithilfe des [in der Vorschauphase befindlichen codelosen Kopiertools](data-factory-copy-data-wizard-tutorial.md) in Azure SQL Data Warehouse kopieren. Unter [Gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy) finden Sie allgemeine Details zu diesem Feature.
+- Sie können das Datenverwaltungsgateway nutzen, um Daten direkt aus einer lokalen SQL Server-Datenbank in Azure Machine Learning zu erfassen.
+- Leistungsverbesserungen
+	- Verbessern der Leistung beim Anzeigen des Schemas bzw. einer Vorschau im Vergleich zu SQL Server im in der Vorschauphase befindlichen codelosen Kopiertool.
 
 
 ## Frühere Versionen
 
+## 1\.12.5953.1
+- Fehlerbehebungen
+
 ## 1\.11.5918.1
 
 - Die maximale Größe des Gatewayereignisprotokolls wurde von 1 MB auf 40 MB erhöht.
-- Wenn während der automatischen Aktualisierung des Gateways ein Neustart erforderlich ist, wird ein Warnungsdialogfeld angezeigt. Sie können auswählen, ob das Gateway jetzt oder zu einem späteren Zeitpunkt neugestartet werden soll. 
+- Wenn während der automatischen Aktualisierung des Gateways ein Neustart erforderlich ist, wird ein Warnungsdialogfeld angezeigt. Sie können auswählen, ob das Gateway jetzt oder zu einem späteren Zeitpunkt neugestartet werden soll.
 - Wenn bei der automatischen Aktualisierung ein Fehler auftritt, versucht das Gatewayinstallationsprogramm maximal 3-mal, die automatische Aktualisierung zu wiederholen.
 - Leistungsverbesserungen
 	- Verbessern Sie die Leistung beim Laden großer Tabellen von lokalen Servern in Kopierszenarieren ohne Code.
@@ -49,7 +61,7 @@ Weitere Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Q
 - „Jetzt aktualisieren“ auf dem Client
 - Festlegen der geplanten Updatezeit
 - PowerShell-Skript für Aktivierung/Deaktivierung der automatischen Aktualisierung
-- Unterstützung für JSON-Format  
+- Unterstützung für JSON-Format
 - Leistungsverbesserungen
 - Fehlerbehebungen
 
@@ -134,7 +146,7 @@ Weitere Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Q
 
 ### 1\.2.5303.1
 
-- 	Beheben von Problemen mit der Zeitüberschreitung, um zeitaufwändigere Datenquellenverbindungen zu unterstützen 
+- 	Beheben von Problemen mit der Zeitüberschreitung, um zeitaufwändigere Datenquellenverbindungen zu unterstützen
  	
 ### 1\.1.5526.8
 
@@ -142,11 +154,11 @@ Weitere Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Q
 
 ### 1\.0.5144.2
 
-- Keine Änderungen, die Azure Data Factory-Szenarien betreffen. 
+- Keine Änderungen, die Azure Data Factory-Szenarien betreffen.
 
 ## Fragen/Antworten
 
 ### Warum versucht der Datenquellen-Manager, eine Verbindung mit dem Gateway herzustellen?
 Dies ist ein Sicherheitsdesign, bei dem Sie nur lokale Datenquellen für den Cloudzugriff in Ihrem Unternehmensnetzwerk konfigurieren können. Ihre Anmeldeinformationen gelangen nicht an Orte außerhalb Ihrer Unternehmensfirewall. Stellen Sie sicher, dass Ihr Computer den Computer erreichen kann, auf dem das Gateway installiert ist.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -17,6 +17,16 @@
    ms.author="rortloff;barbkess;sonyama"/>
 
 # Überwachung in Azure SQL Data Warehouse
+
+> [AZURE.SELECTOR]
+- [Sicherheitsübersicht](sql-data-warehouse-overview-manage-security.md)
+- [Bedrohungserkennung](sql-data-warehouse-security-threat-detection.md)
+- [Verschlüsselung (Portal)](sql-data-warehouse-encryption-tde.md)
+- [Verschlüsselung (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
+- [Übersicht über die Überwachung](sql-data-warehouse-auditing-overview.md)
+- [Überwachung für Vorgängerversionsclients](sql-data-warehouse-auditing-downlevel-clients.md)
+
+
 Bei der Azure SQL Data Warehouse-Überwachung werden Datenbankereignisse erfasst und die überwachten Ereignisse in einem Überwachungsprotokoll in Ihrem Azure Storage-Konto protokolliert.
 
 Die Überwachung kann Ihnen dabei helfen, die gesetzlichen Bestimmungen einzuhalten, die Datenbankaktivität zu verstehen und Einblicke in Abweichungen und Anomalien zu erhalten, die auf geschäftsspezifische Bedenken oder mutmaßliche Sicherheitsverstöße hinweisen können.
@@ -141,4 +151,4 @@ Wenn Sie im Azure-Ressourcen-Manager-Modus arbeiten, führen Sie `Get-Command *A
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

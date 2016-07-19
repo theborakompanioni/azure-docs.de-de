@@ -93,7 +93,7 @@ ReplicatorConfig
 |MaxRecordSizeInKB|KB|1024|Die maximale Datensatzgröße, die der Replicator in das Protokoll schreiben kann. Dieser Wert muss ein Vielfaches von 4 und größer als 16 sein.|
 |SharedLogId|GUID|""|Gibt eine eindeutige GUID zum Identifizieren der freigegebenen Protokolldatei an, die mit diesem Replikat verwendet wird. Diese Einstellung sollte von Diensten normalerweise nicht verwendet werden. Aber wenn SharedLogId angegeben ist, muss SharedLogPath ebenfalls angegeben werden.|
 |SharedLogPath|Vollständig qualifizierter Pfadname|""|Gibt den vollständig qualifizierten Pfad an, in dem die freigegebene Protokolldatei für dieses Replikat erstellt wird. Diese Einstellung sollte von Diensten normalerweise nicht verwendet werden. Aber wenn SharedLogPath angegeben ist, muss SharedLogId ebenfalls angegeben werden.|
-
+|SlowApiMonitoringDuration|Sekunden|300|Legt das Überwachungsintervall für verwaltete API-Aufrufe fest. Beispiel: Vom Benutzer bereitgestellte Sicherungsrückruffunktion. Nach Ablauf des Intervalls wird ein Warnbericht zur Integrität an den Health Manager gesendet.|
 
 ### Beispielkonfiguration per Code
 ```csharp
@@ -162,4 +162,4 @@ Die Einstellungen SharedLogId und SharedLogPath werden immer zusammen verwendet.
  - [Debuggen einer Service Fabric-Anwendung in Visual Studio](service-fabric-debugging-your-application.md)
  - [Entwicklerreferenz für zuverlässige Dienste](https://msdn.microsoft.com/library/azure/dn706529.aspx)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

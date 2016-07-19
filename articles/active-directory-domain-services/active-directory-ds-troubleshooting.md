@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/25/2016"
+	ms.date="07/06/2016"
 	ms.author="maheshu"/>
 
 # Azure AD-Domänendienste *(Vorschau)* – Handbuch zur Problembehandlung
@@ -64,4 +64,4 @@ Falls sich ein oder mehrere Benutzer innerhalb Ihres Azure AD-Mandanten nicht an
 ### So erreichen Sie uns
 Wenden Sie sich an das Produktteam der Azure Active Directory-Domänendienste, um [Feedback zu geben oder Support zu erhalten](active-directory-ds-contact-us.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

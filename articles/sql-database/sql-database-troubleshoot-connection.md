@@ -37,6 +37,6 @@ Dieser Fehler tritt auf, wenn die Azure-Datenbank verschoben (oder neu konfiguri
 
 ## Nächste Schritte
 - Wenn es sich um einen anderen Fehler handelt, überprüfen Sie die [Fehlermeldung](sql-database-develop-error-messages.md) bezüglich der Hinweise auf mögliche Ursachen.
-- Wenn der Fehler dauerhaft ist, lesen Sie die Hilfestellungen in dem Artikel [Troubleshoot common connection issues to SQL Azure Database](sql-database-troubleshoot-common-connection-issues.md) (Behandlung häufiger Verbindungsprobleme mit Azure SQL-Datenbanken).
+- Wenn der Fehler dauerhaft ist, hilft Ihnen die Anleitung im Artikel [Behandeln von häufigen Verbindungsproblemen mit Azure SQL-Datenbank](sql-database-troubleshoot-common-connection-issues.md) weiter.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

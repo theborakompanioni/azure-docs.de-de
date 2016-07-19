@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/20/2016" 
+	ms.date="06/29/2016" 
 	ms.author="anwestg"/>
 
 # Azure App Service-Web-Apps-Angebote für Enterprise Whitepaper #
@@ -47,9 +47,9 @@ App Service-Web-Apps ist eine Option für das Hosten solcher Anwendungen, denn e
 
 Eine alternative Lösung besteht darin, Ihre vorhandenen lokalen Investitionen zu verwenden. In diesem Beispielszenario, einem Mitarbeiterkostensystem, können Sie Ihren Datenspeicher innerhalb Ihrer eigenen internen Infrastruktur verwalten. Dies kann für die Integration mit internen Systemen (Reporting, Lohnbuchhaltung, Abrechnung usw.) oder zur Erfüllung von IT-Governance-Anforderungen verwendet werden. Web-Apps bietet eine Reihe von Methoden zur Aktivierung der Verbindung mit Ihrer lokalen Infrastruktur:
 
-- [App Service-Umgebungen](app-service-app-service-environment-intro.md): App Service-Umgebungen (ASE) sind ein neues Premium-Feature, das dem Microsoft Azure App Service-Angebot vor kurzem hinzugefügt wurde. ASEs bieten eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von Azure App Service-Apps bei hoher Skalierung und sorgen außerdem für Isolation und sicheren Netzwerkzugriff.   
-- [Hybridverbindungen](../biztalk-services/integration-hybrid-connection-overview.md) – Hybridverbindungen sind ein Feature von Microsoft Azure BizTalk Services. Damit kann Web-Apps eine Verbindung zu lokalen Ressourcen herstellen, wie z. B. zu SQL Server, MySQL, Web-APIs und benutzerdefinierten Webdiensten. 
-- [Virtuelle Netzwerkintegration](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) – Durch Web-Apps-Integration mit Azure Virtual Network können Sie Ihre Web-App mit einem virtuellen Azure-Netzwerk verbinden, das wiederum über ein Site-to-Site-VPN mit Ihrer lokalen Infrastruktur verbunden werden kann. 
+- [App Service-Umgebungen](app-service-app-service-environment-intro.md): App Service-Umgebungen (ASE) sind ein neues Premium-Feature, das dem Microsoft Azure App Service-Angebot vor kurzem hinzugefügt wurde. ASEs bieten eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von Azure App Service-Apps bei hoher Skalierung und sorgen außerdem für Isolation und sicheren Netzwerkzugriff.
+- [Hybridverbindungen](../biztalk-services/integration-hybrid-connection-overview.md) – Hybridverbindungen sind ein Feature von Microsoft Azure BizTalk Services. Damit kann Web-Apps eine Verbindung zu lokalen Ressourcen herstellen, wie z. B. zu SQL Server, MySQL, Web-APIs und benutzerdefinierten Webdiensten.
+- [Virtuelle Netzwerkintegration](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) – Durch Web-Apps-Integration mit Azure Virtual Network können Sie Ihre Web-App mit einem virtuellen Azure-Netzwerk verbinden, das wiederum über ein Site-to-Site-VPN mit Ihrer lokalen Infrastruktur verbunden werden kann.
 
 Im folgenden Diagramm ist eine beispielhafte allgemeine Lösung mit Konnektivitätsoptionen für lokale Ressourcen zu sehen. Das erste Beispiel zeigt deren Umsetzung mithilfe der Standardfeatures von Azure App Service, und das zweite zeigt, wie diese durch Verwendung des Premium-Angebots der App Service-Umgebungen zu erreichen ist.
 
@@ -110,11 +110,11 @@ Schritt 1 der Gesamtlösung für das Verschieben einer Line-of-Business-Anwendun
 Bei der Migration einer Anwendung aus einer lokalen Umgebung sollten Sie bedenken, dass für Web-Apps Beschränkungen bestehen. Einige wichtige Themen, die bei der Migration von Webanwendungen nach Web-Apps beachtet werden sollten, finden Sie unter: ([http://aka.ms/websitesmigrationresources](http://aka.ms/websitesmigrationresources)):
 
 -	Portbindungen – Web-Apps unterstützt nur Port 80 für HTTP- und Port 443 für HTTPS-Datenverkehr. Wenn Ihre Anwendung einen anderen Anschluss verwendet, möchte die Anwendung nach erfolgter Migration Port 80 für HTTP und Port 443 für HTTPS-Datenverkehr nutzen. Dies ist häufig ein harmloses Problem, da lokale Bereitstellungen häufig verschiedene Ports verwenden,um die Verwendung von Domänennamen zu umgehen, vor allem in Entwicklungs- und Testumgebungen.
--	Authentifizierung – Web-Apps unterstützt standardmäßig die anonyme Authentifizierung sowie Formularauthentifizierung, sofern von einer Anwendung angegeben. Web-Apps kann Windows-Authentifizierung bieten, wenn die Anwendung nur mit Azure Active Directory und AD FS integriert ist. Diese Funktion wird [hier](http://aka.ms/azurebizapp) ausführlicher erläutert. 
+-	Authentifizierung – Web-Apps unterstützt standardmäßig die anonyme Authentifizierung sowie Formularauthentifizierung, sofern von einer Anwendung angegeben. Web-Apps kann Windows-Authentifizierung bieten, wenn die Anwendung nur mit Azure Active Directory und AD FS integriert ist. Diese Funktion wird [hier](http://aka.ms/azurebizapp) ausführlicher erläutert.
 -	GAC-basierte Assemblys – Web-Apps unterstützt nicht die Bereitstellung von Assemblys für den globalen Assemblycache (GAC). Wenn daher die zu migrierende Anwendung diese lokale Funktion nutzt, sollten Sie die Assemblys in den Papierkorb der Anwendung verschieben.
 -	IIS5-Kompatibilitätsmodus – Web-Apps unterstützt nicht den IIS5-Kompatibilitätsmodus. Daher wird jede Web-Apps-Instanz und jede Webanwendung unter der übergeordneten Web-Apps-Instanz im selben Arbeitsprozess in einem einzelnen Anwendungspool ausgeführt.
 -	Verwendung von COM-Bibliotheken – Web-Apps erlaubt nicht die Registrierung von COM-Komponenten auf der Plattform. Wenn daher die Anwendung COM-Komponenten verwendet, müssen diese in verwaltetem Code neu geschrieben und mit der Anwendung bereitgestellt werden.
--	ISAPI-Filter – ISAPI-Filter können auf Web-Apps unterstützt werden. Sie müssen als Teil der Anwendung bereitgestellt und in der web.config-Datei der Webanwendung registriert werden. Weitere Informationen finden Sie unter [http://aka.ms/azurewebsitesxdt](web-sites-transform-extend.md). 
+-	ISAPI-Filter – ISAPI-Filter können auf Web-Apps unterstützt werden. Sie müssen als Teil der Anwendung bereitgestellt und in der web.config-Datei der Webanwendung registriert werden. Weitere Informationen finden Sie unter [http://aka.ms/azurewebsitesxdt](web-sites-transform-extend.md).
 
 Nachdem diese Punkte berücksichtigt wurden, müsste Ihre Webanwendung bereit für die Cloud sein. Und keine Sorge, wenn einige Themen nicht vollständig beachtet werden, bringt das Migrationstool die bestmögliche Migrationsleistung.
 
@@ -159,4 +159,4 @@ Weitere Informationen zu Azure App Service-Web-Apps finden sie unter [http://aka
  
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0706_2016-->

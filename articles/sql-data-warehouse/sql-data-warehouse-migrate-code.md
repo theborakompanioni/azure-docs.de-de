@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/03/2016"
+   ms.date="06/30/2016"
    ms.author="lodipalm;barbkess;sonyama;jrj"/>
 
 # Migrieren von SQL-Code nach SQL Data Warehouse
@@ -115,14 +115,14 @@ Eine vollständige Liste aller unterstützten T-SQL-Anweisungen finden Sie in de
 <!--Image references-->
 
 <!--Article references-->
-[ANSI-Joins bei Aktualisierungen]: ./sql-data-warehouse-develop-ctas.md
-[ANSI-Joins bei Löschvorgängen]: ./sql-data-warehouse-develop-ctas.md
-[MERGE-Anweisung]: ./sql-data-warehouse-develop-ctas.md
-[INSERT..EXEC]: ./sql-data-warehouse-develop-temporary-tables.md
+[ANSI-Joins bei Aktualisierungen]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements
+[ANSI-Joins bei Löschvorgängen]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements
+[MERGE-Anweisung]: ./sql-data-warehouse-develop-ctas.md#replace-merge-statements
+[INSERT..EXEC]: ./sql-data-warehouse-tables-temporary.md#modularizing-code
 [Themen zu Transact-SQL]: ./sql-data-warehouse-reference-tsql-statements.md
 
 [Cursor]: ./sql-data-warehouse-develop-loops.md
-[SELECT..INTO]: ./sql-data-warehouse-develop-ctas.md
+[SELECT..INTO]: ./sql-data-warehouse-develop-ctas.md#selectinto
 [GROUP BY-Klausel mit ROLLUP-, CUBE- oder GROUPING SETS-Option]: ./sql-data-warehouse-develop-group-by-options.md
 [Über 8 Schachtelungsebenen]: ./sql-data-warehouse-develop-transactions.md
 [Aktualisieren über Sichten]: ./sql-data-warehouse-develop-views.md
@@ -133,4 +133,4 @@ Eine vollständige Liste aller unterstützten T-SQL-Anweisungen finden Sie in de
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->
