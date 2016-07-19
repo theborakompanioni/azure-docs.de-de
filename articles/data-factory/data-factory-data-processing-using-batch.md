@@ -541,11 +541,12 @@ In diesem Schritt erstellen Sie einen verknüpften Dienst für Ihr **Azure Batch
 
     3.  Geben Sie die ID des Pools für die **poolName**-Eigenschaft ein**.** Für diese Eigenschaft können Sie entweder den Poolnamen oder die Pool-ID eingeben.
 
-    4.  Geben Sie die Batch-URI für die JSON-Eigenschaft **batchUri** ein.  
+    4.  Geben Sie die Batch-URI für die JSON-Eigenschaft **batchUri** ein. 
     
-		> [AZURE.IMPORTANT] Die **URL** auf dem Blatt **Azure-Batch-Konto** hat folgendes Format: \<Kontoname\>.\<Region\>.batch.azure.com. Für die **batchUri** -Eigenschaft in JSON müssen Sie aus der URL **„Kontoname“ entfernen**. Beispiel: Example: „batchUri“: „https://eastus.batch.azure.com“.
+		> [AZURE.IMPORTANT] 
+		> Die **URL** auf dem Blatt **Azure-Batch-Konto** hat folgendes Format: &lt;Kontoname&gt;.&lt;Region&gt;.batch.azure.com. Für die **batchUri** -Eigenschaft in JSON müssen Sie aus der URL **„Kontoname“ entfernen**. Beispiel: Example: „batchUri“: „https://eastus.batch.azure.com“.
 
-        ![](./media/data-factory-data-processing-using-batch/image9.png)
+		![](./media/data-factory-data-processing-using-batch/image9.png)
 
 		Für die **poolName**-Eigenschaft können Sie auch die ID des Pools anstelle des Namens des Pools angeben.
 
