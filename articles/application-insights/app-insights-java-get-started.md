@@ -285,7 +285,7 @@ Nicht behandelte Ausnahmen werden automatisch gesammelt:
 
 Um Daten zu anderen Ausnahmen zu erfassen, haben Sie zwei Möglichkeiten:
 
-* [Fügen Sie „trackException()“-Aufrufe in den Code ein][apiexceptions].
+* [Fügen Sie „trackException()“-Aufrufe in den Code ein][apiexceptions]. 
 * [Installieren Sie den Java-Agent auf dem Server](app-insights-java-agent.md). Sie geben die Methoden an, die Sie überwachen möchten.
 
 
