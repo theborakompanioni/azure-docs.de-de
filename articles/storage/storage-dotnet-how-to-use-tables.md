@@ -42,6 +42,11 @@ In diesem Tutorial wird gezeigt, wie Sie .NET-Code für einige häufige Szenarie
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
+### Weitere Beispiele
+
+Weitere Beispiele für die Verwendung von Table Storage finden Sie unter [Getting Started with Azure Table Storage in .NET](https://azure.microsoft.com/documentation/samples/storage-table-dotnet-getting-started/) (Erste Schritte mit Azure Table Storage in .NET). Sie können die Beispielanwendung herunterladen und ausführen oder den Code auf GitHub durchsuchen.
+
+
 [AZURE.INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
 [AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
@@ -50,7 +55,7 @@ In diesem Tutorial wird gezeigt, wie Sie .NET-Code für einige häufige Szenarie
 
 ### Hinzufügen von Namespace-Deklarationen
 
-Fügen Sie am Anfang der Datei `program.cs`die folgenden `using`-Anweisungen ein:
+Fügen Sie am Anfang der Datei `program.cs` die folgenden `using`-Anweisungen ein:
 
 	using Microsoft.Azure; // Namespace for CloudConfigurationManager 
 	using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
@@ -437,12 +442,13 @@ Wenn Sie eine große Anzahl von Entitäten lesen und die Entitäten verarbeiten/
 
 Nachdem Sie sich nun mit den Grundlagen des Tabellenspeichers vertraut gemacht haben, folgen Sie diesen Links, um zu erfahren, wie komplexere Speicheraufgaben ausgeführt werden.
 
+- Weitere Beispiele für Tabellenspeicher finden Sie unter [Getting Started with Azure Table Storage in .NET](https://azure.microsoft.com/documentation/samples/storage-table-dotnet-getting-started/) (Erste Schritte mit Azure Table Storage in .NET).
 - In der Referenzdokumentation für den Tabellenspeicherdienst finden Sie alle Details zu verfügbaren APIs:
     - [Referenz zur Storage-Clientbibliothek für .NET](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
     - [REST-API-Referenz](http://msdn.microsoft.com/library/azure/dd179355)
 - Erfahren Sie, wie Sie mithilfe des [Azure WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md) den geschriebenen Code so vereinfachen, dass er mit Azure Storage funktioniert.
 - Weitere Informationen zu zusätzlichen Optionen für das Speichern von Daten in Azure finden Sie in den anderen Featureleitfäden.
-    - [Erste Schritte mit Azure Blob Storage mit .NET](storage-dotnet-how-to-use-blobs.md) zum Speichern unstrukturierter Daten.
+    - [Erste Schritte mit Azure Blob Storage mit .NET](storage-dotnet-how-to-use-blobs.md) zum Speichern unstrukturierter Daten
     - [Verwenden von Azure SQL-Datenbank in .NET-Anwendungen](sql-database-dotnet-how-to-use.md) zum Speichern relationaler Daten
 
   [Download and install the Azure SDK for .NET]: /develop/net/
@@ -463,4 +469,4 @@ Nachdem Sie sich nun mit den Grundlagen des Tabellenspeichers vertraut gemacht h
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
   [How to: Programmatically access Table storage]: #tablestorage
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

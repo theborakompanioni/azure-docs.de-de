@@ -31,7 +31,7 @@ Im Artikel zum [Vergleich von IoT Hub und Event Hubs][lnk-compare] werden die we
 
 ![Azure IoT Hub als Cloudgateway in der IoT-Lösung][img-architecture]
 
-> [AZURE.NOTE] Detailliertere Informationen zu der IoT-Architektur finden Sie unter [Microsoft Azure IoT Reference Architecture][lnk-refarch]       \(Microsoft Azure IoT-Referenzarchitektur).
+> [AZURE.NOTE] Detailliertere Informationen zu der IoT-Architektur finden Sie unter [Microsoft Azure IoT Reference Architecture][lnk-refarch] \(Microsoft Azure IoT-Referenzarchitektur).
 
 ## Anforderungen an die IoT-Gerätekonnektivität
 
@@ -59,7 +59,7 @@ Mit Azure IoT Hub werden die Verbindungsanforderungen für Geräte wie folgt erf
 
 -   **IoT-Protokolle und -Erweiterbarkeit:** Falls Ihre Lösung die Gerätebibliotheken nicht nutzen kann, macht IoT Hub ein öffentliches Protokoll verfügbar, mit dem Geräte die Protokolle MQTT 3.1.1, HTTP 1.1 und AMQP 1.0 nativ verwenden können. Folgendermaßen können Sie IoT Hub erweitern, um benutzerdefinierte Protokolle zu unterstützen:
 
-    - Erstellen eines Bereichsgateways mit dem [Azure IoT Gateway SDK][lnk-gateway-sdk], das Ihr benutzerdefiniertes Protokoll in eines der drei Protokolle umwandelt, die von IoT Hub gelesen werden können. 
+    - Erstellen eines Bereichsgateways mit dem [Azure IoT Gateway SDK][lnk-gateway-sdk], das Ihr benutzerdefiniertes Protokoll in eines der drei Protokolle umwandelt, die von IoT Hub gelesen werden können.
     - Anpassen des [Azure IoT-Protokollgateways][protocol-gateway], einer Open-Source-Komponente, die in der Cloud ausgeführt wird.
 
 -   **Skalierung:** Azure IoT Hub kann auf Millionen von gleichzeitig verbundenen Geräten und Millionen von Ereignissen pro Sekunde skaliert werden.
@@ -96,13 +96,14 @@ Das dienstgestützte Kommunikationsmuster wurde in großem Umfang erfolgreich in
 
 ## Nächste Schritte
 
-Weitere Informationen zu Azure IoT Hub finden Sie unter den folgenden Links:
+Informationen dazu, wie Azure IoT Hub die standardbasierte IoT-Geräteverwaltung ermöglicht, sodass Sie Ihre Geräte remote verwalten, konfigurieren und aktualisieren können, finden Sie unter [Überblick über die Azure IoT Hub-Geräteverwaltung][lnk-device-management].
 
-* [Erste Schritte mit IoT Hub][lnk-get-started]
-* [Verbinden Ihres Geräts][lnk-connect-device]
-* [Verarbeiten von Gerät-zu-Cloud-Nachrichten][lnk-d2c]
+Mit den IoT-Geräte-SDKs können Sie Clientanwendungen auf einer Vielzahl von Gerätehardwareplattformen und Betriebssystemen implementieren. Die IoT-Geräte-SDKs enthalten Bibliotheken, die das Senden von Telemetriedaten an einen IoT Hub und das Empfangen von Cloud-zu-Gerät-Befehlen ermöglichen. Wenn Sie die SDKs verwenden, können Sie für die Kommunikation mit IoT Hub unter verschiedenen Netzwerkprotokollen auswählen. Erfahren Sie mehr in den [Informationen zu Geräte-SDKs][lnk-device-sdks].
+
+Informationen zu den ersten Schritten zum Schreiben von Code und Ausführen von Beispielen finden Sie im Tutorial [Erste Schritte mit IoT Hub][lnk-get-started].
 
 [img-architecture]: media/iot-hub-what-is-iot-hub/hubarchitecture.png
+
 
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
@@ -120,5 +121,6 @@ Weitere Informationen zu Azure IoT Hub finden Sie unter den folgenden Links:
 [lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
+[lnk-device-management]: iot-hub-device-management-overview.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0713_2016-->

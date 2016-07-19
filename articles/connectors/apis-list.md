@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Liste mit von Microsoft verwalteten Connectors für die Verwendung in Microsoft Azure Logic Apps | Microsoft Azure App Service"
+	pageTitle="Liste mit von Microsoft verwalteten Connectors für die Verwendung in Microsoft Azure Logic Apps | Microsoft Azure App Service | Microsoft Azure"
 	description="Vollständige Liste der von Microsoft verwalteten Connectors, über die Sie Logik-Apps in Azure App Service erstellen können"
 	services="app-service\logic"
 	documentationCenter=""
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/31/2016"
+	ms.date="07/07/2016"
 	ms.author="deonhe"/>
 
 # Liste der Connectors
@@ -47,7 +47,7 @@ Verwenden Sie die EIP-Connectors zum Erstellen von Logik-Apps für B2B-Szenarien
 |EIP-Connectors ||||
 |-----------|-----------|-----------|-----------|
 |[![API-Symbol][as2icon]<br/>**AS2-</br>Codierung/Decodierung**][as2doc]|[![API-Symbol][x12icon]<br/>**X12-</br>Codierung/Decodierung**][x12Doc]|[![API-Symbol][xmlvalidateicon]<br/>**XML-<br/>Überprüfung**][xmlvalidatedoc]|[![API-Symbol][xmltransformicon]<br/>**XML-<br/>Transformation**][xmltransformdoc]|
-|[![API-Symbol][flatfileicon]<br/>**Flatfile</br>Codierung**][flatfiledoc]|[![API-Symbol][flatfiledecodeicon]<br/>**Flatfile-</br>Decodierung**][flatfiledecodedoc]|||
+|[![API-Symbol][flatfileicon]<br/>**Flatfile</br>Codierung**][flatfiledoc]|[![API-Symbol][flatfiledecodeicon]<br/>**Flatfile</br>Decodierung**][flatfiledecodedoc]|||
 
 
 ### Connectors können Trigger sein.
@@ -106,7 +106,7 @@ Connectors können innerhalb Ihrer Apps auch als Aktionen verwendet werden. Akti
 [as2doc]: ../app-service-logic/app-service-logic-enterprise-integration-as2.md "Informationen zu Enterprise Integration – AS2"
 [x12doc]: ../app-service-logic/app-service-logic-enterprise-integration-x12.md "Informationen zu Enterprise Integration – X12"
 [flatfiledoc]: ../app-service-logic/app-service-logic-enterprise-integration-flatfile.md "Informationen zu Enterprise Integration – Flatfile"
-[flatfiledecodedoc]: ../app-service-logic/app-service-logic-enterprise-integration-flatfile.md "Informationen zu Enterprise Integration – Flatfile"
+[flatfiledecodedoc]: ../app-service-logic/app-service-logic-enterprise-integration-flatfile.md/#how-to-create-the-flat-file-decoding-connector "Informationen zu Enterprise Integration – Flatfile"
 [xmlvalidatedoc]: ../app-service-logic/app-service-logic-enterprise-integration-xml.md "Informationen zu Enterprise Integration – XML-Überprüfung"
 [xmltransformdoc]: ../app-service-logic/app-service-logic-enterprise-integration-transform.md "Informationen zu Enterprise Integration – Transformationen"
 
@@ -149,4 +149,4 @@ Connectors können innerhalb Ihrer Apps auch als Aktionen verwendet werden. Akti
 [xmlvalidateicon]: ./media/apis-list/xmlvalidation.png
 [xmltransformicon]: ./media/apis-list/xsltransform.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

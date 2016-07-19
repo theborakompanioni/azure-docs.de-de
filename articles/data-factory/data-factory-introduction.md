@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="04/26/2016" 
+	ms.date="07/12/2016" 
 	ms.author="spelluru"/>
 
 # Einführung in den Azure Data Factory-Dienst (Datenintegrationsdienst in der Cloud)
@@ -69,5 +69,13 @@ Nehmen wir beispielsweise an, dass Ihre Computeumgebungen wie Azure HDInsight-Cl
 
 Es ist geplant, Azure Data Factory in Zukunft in allen von Azure unterstützten Gebieten bereitzustellen.
   
+## Nächste Schritte
+Befolgen Sie die Schritt-für-Schritt-Anleitungen in den folgenden Tutorials, um zu erfahren, wie Sie Data Factorys mit Datenpipelines erstellen.
 
-<!---HONumber=AcomDC_0629_2016-->
+Lernprogramm: | Beschreibung
+-------- | -----------
+[Erstellen einer Datenpipeline zur Datenverarbeitung mit Hadoop-Cluster](data-factory-build-your-first-pipeline.md) | In diesem Tutorial erstellen Sie Ihre erste Azure Data Factory mit einer Datenpipeline zur **Datenverarbeitung** mittels Ausführung eines Hive-Skripts in einem Azure HDInsight-Cluster (Hadoop). |
+[Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) | In diesem Tutorial erstellen Sie eine Data Factory mit einer Pipeline, mit der **Daten aus Blob Storage in SQL-Datenbank verschoben werden**.
+[Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md) | In diesem Tutorial erstellen Sie eine Data Factory mit einer Pipeline, die Daten aus einer **lokalen** SQL Server-Datenbank in ein Azure-Blob **verschiebt**. Im Rahmen der exemplarischen Vorgehensweise installieren und konfigurieren Sie das Datenverwaltungsgateway auf Ihrem Computer. 
+
+<!---HONumber=AcomDC_0713_2016-->

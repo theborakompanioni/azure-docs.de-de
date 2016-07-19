@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Java-Web-App-Analyse mit Application Insights | Microsoft Azure"
-	description="Überwachen der Leistung und Nutzung Ihrer Java-Website mit Application Insights"
+	description="Überwachen der Leistung und Nutzung Ihrer Java-Website mit Application Insights "
 	services="application-insights"
     documentationCenter="java"
 	authors="alancameronwills"
@@ -98,7 +98,7 @@ Aktualisieren Sie dann die Projektabhängigkeiten, damit die Binärdateien herun
       // or applicationinsights-core for bare API
     }
 
-* *Build- oder Prüfsummenvalidierungsfehler? Versuchen Sie es mit einer bestimmten Version, z. B.:* `version:'1.0.n'`. *Sie finden die neueste Version in den [SDK-Versionshinweisen](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).*
+* *Build- oder Prüfsummenvalidierungsfehler? Versuchen Sie es mit einer bestimmten Version, z. B.: * `version:'1.0.n'`. *Sie finden die neueste Version in den [SDK-Versionshinweisen](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).*
 * *So aktualisieren Sie auf ein neues SDK*
  * Aktualisieren Sie die Abhängigkeiten des Projekts.
 
@@ -162,6 +162,19 @@ Fügen Sie den Instrumentationsschlüssel ein, den Sie aus dem Azure-Portal abge
 * Der Instrumentationsschlüssel wird zusammen mit jedem Telemetrieelement übermittelt und weist Application Insights an, ihn in Ihrer Ressource anzuzeigen.
 * Die Komponente "HTTP-Anforderung" ist optional. Sie sendet automatisch Telemetriedaten zu Anforderungen und Antwortzeiten zum Portal.
 * Die Korrelation von Ereignissen ist eine Ergänzung der HTTP-Anforderungskomponente. Sie weist den einzelnen Anforderungen, die vom Server empfangen wurden, einen Bezeichner zu und fügt diesen als Eigenschaft 'Operation.Id' jedem Telemetrieelement hinzu. Diese Eigenschaft ermöglicht das Korrelieren der jeder Anforderung zugeordneten Telemetriedaten, indem in [Diagnosesuche][diagnostic] ein Filter festgelegt wird.
+
+### Alternative Methoden zum Festlegen des Instrumentationsschlüssels
+
+Das Application Insights SDK sucht in dieser Reihenfolge nach dem Schlüssel:
+
+1. Systemeigenschaft: -DAPPLICATION\_INSIGHTS\_IKEY=your\_ikey
+2. Umgebungsvariable: APPLICATION\_INSIGHTS\_IKEY
+3. Konfigurationsdatei: ApplicationInsights.xml
+
+Sie können dies auch [per Code festlegen](app-insights-api-custom-events-metrics.md#ikey):
+
+    telemetryClient.InstrumentationKey = "...";
+
 
 ## 4\. Hinzufügen eines HTTP-Filters
 
@@ -248,16 +261,14 @@ Wenn sich mehr Daten ansammeln, können Sie Abfragen sowohl zum Aggregieren von 
 ![Analytics-Beispiel](./media/app-insights-java-get-started/025.png)
 
 
-## 5\. Installieren der App auf dem Server
+## 7\. Installieren der App auf dem Server
 
 Jetzt veröffentlichen Sie Ihre App auf dem Server, erlauben deren Benutzung und sehen sich an, wie die Telemetrie im Portal angezeigt wird.
 
 * Stellen Sie sicher, dass die Firewall der Anwendung das Senden von Telemetrie an die folgenden Ports erlaubt:
 
  * dc.services.visualstudio.com:443
- * dc.services.visualstudio.com:80
  * f5.services.visualstudio.com:443
- * f5.services.visualstudio.com:80
 
 
 * Installieren Sie auf Windows-Servern:
@@ -401,4 +412,4 @@ Weitere Informationen finden Sie im [Java Developer Center](/develop/java/).
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -30,7 +30,7 @@ Der Ressourcen-Manager bietet mehrere Vorteile:
 - Sie können die Abhängigkeiten zwischen Ressourcen definieren, sodass diese in der richtigen Reihenfolge bereitgestellt werden.
 - Sie können die Zugriffssteuerung auf alle Dienste in der Ressourcengruppe anwenden, da die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) standardmäßig in die Verwaltungsplattform integriert ist.
 - Sie können Tags auf Ressourcen anwenden, um alle Ressourcen in Ihrem Abonnement logisch zu organisieren.
-- Sie können die Abrechnung für Ihre Organisation vereinfachen, indem Sie die zusammengefassten Kosten für die gesamte Gruppe oder für eine Gruppe an Ressourcen mit dem gleichen Tag anzeigen.  
+- Sie können die Abrechnung für Ihre Organisation vereinfachen, indem Sie die zusammengefassten Kosten für die gesamte Gruppe oder für eine Gruppe an Ressourcen mit dem gleichen Tag anzeigen.
 
 Der Ressourcen-Manager stellt eine neue Möglichkeit zur Bereitstellung und Verwaltung Ihrer Lösungen bereit. Weitere Informationen zu den Änderungen an dem von Ihnen verwendeten früheren Bereitstellungsmodell finden Sie unter [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](resource-manager-deployment-model.md).
 
@@ -125,6 +125,32 @@ Informationen zum Verwenden des Portals finden Sie unter [Verwenden des Azure-Po
 
 Der Azure-Ressourcen-Manager unterstützt Cross-Origin Resource Sharing (CORS). Mit CORS können Sie die Ressourcen-Manager-REST-API oder die REST-API eines Azure-Diensts über eine Webanwendung aufrufen, die sich in einer anderen Domäne befindet. Ohne CORS-Unterstützung verhindert der Webbrowser, dass eine App in einer Domäne auf Ressourcen in einer anderen Domäne zugreifen kann. Der Ressourcen-Manager aktiviert CORS für alle Anforderungen mit gültigen Anmeldeinformationen für die Authentifizierung.
 
+## SDKs und Beispiele
+
+Azure-SDKs sind für mehrere Sprachen und Plattformen verfügbar. Jede dieser Sprachimplementierungen ist jeweils über die entsprechenden Ökosystem-Paket-Manager und GitHub verfügbar.
+
+Der Code in diesen SDKs wird jeweils über Azure RESTful-API-Spezifikationen generiert. Dies sind Open-Source-Spezifikationen, die auf der Swagger 2.0-Spezifikation basieren. Der SDK-Code wird über ein Open-Source-Projekt mit dem Namen „AutoRest“ generiert. AutoRest transformiert diese RESTful-API-Spezifikationen in Clientbibliotheken in mehreren Sprachen. Falls Sie Aspekte des generierten Codes in den SDKs verbessern möchten, können Sie den gesamten Satz der Tools zum Erstellen der SDKs verwenden. Sie sind frei zugänglich und verfügbar und basieren auf dem gängigen API-Spezifikationsformat.
+
+**Beispiele**: Schneller Einstieg mit der Sprache Ihrer Wahl.
+
+- [.NET](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=dotnet) *In Kürze verfügbar*
+- [Java](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=java) *In Kürze verfügbar*
+- [Node.js](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=nodejs)
+- [Python](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=python)
+- [PHP](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=php) *In Kürze verfügbar*
+- [Ruby](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=ruby)
+
+**Open-Source-SDK-Repositorys**: Wir freuen uns über Feedback, Hinweise zu Problemen und Pull Requests.
+
+- [.NET](https://github.com/Azure/azure-sdk-for-net)
+- [Java](https://github.com/Azure/azure-sdk-for-java)
+- [Node.js](https://github.com/Azure/azure-sdk-for-node)
+- [PHP](https://github.com/Azure/azure-sdk-for-php)
+- [Python](https://github.com/Azure/azure-sdk-for-python)
+- [Ruby](https://github.com/Azure/azure-sdk-ruby)
+
+> [AZURE.NOTE] Wenn das SDK die erforderlichen Funktionen nicht bereitstellt, können Sie die [Azure-REST-API](https://msdn.microsoft.com/library/azure/dn790568.aspx) auch direkt aufrufen.
+
 ## Nächste Schritte
 
 - Eine einfache Einführung in die Verwendung von Vorlagen finden Sie unter [Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen](resource-manager-export-template.md).
@@ -136,4 +162,4 @@ Hier sehen Sie eine Videodemonstration dieser Übersicht:
 
 [AZURE.VIDEO azure-resource-manager-overview]
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->
