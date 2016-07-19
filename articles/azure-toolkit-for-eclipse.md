@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="06/07/2016" 
+	ms.date="06/24/2016" 
 	ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh694271.aspx -->
@@ -28,7 +28,7 @@ Das Azure Toolkit für Eclipse stellt Vorlagen und Funktionen bereit, die Ihnen 
 
 ## Erste Schritte mit Azure-Toolkit für Eclipse
 
-Die folgenden Artikel helfen Ihnen beim Einstieg in die Verwendung des Azure Tookit für Eclipse:
+Die folgenden Artikel helfen Ihnen beim Einstieg in die Verwendung des Azure-Toolkit für Eclipse:
 
 * [Neuerungen im Azure-Toolkit für Eclipse]
 * [Installieren des Azure-Toolkits für Eclipse]
@@ -65,11 +65,13 @@ Weitere Informationen zu den Azure-Toolkits für Java-IDEs finden Sie unter den 
 - [Azure Toolkit für IntelliJ]
   - [Installieren des Azure Toolkit für IntelliJ]
   - [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]
+  - [Neuerungen im Azure-Toolkit für IntelliJ]
 
 Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center].
 
 <!-- URL List -->
 
+[Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse.md
 [Azure Toolkit für IntelliJ]: ./azure-toolkit-for-intellij.md
 [Azure-Toolkit für IntelliJ]: ./azure-toolkit-for-intellij.md
 [Erstellen einer „Hello World“-Web-App für Azure in Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
@@ -77,6 +79,7 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [Installieren des Azure-Toolkits für Eclipse]: ./azure-toolkit-for-eclipse-installation.md
 [Installieren des Azure Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-installation.md
 [Neuerungen im Azure-Toolkit für Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
+[Neuerungen im Azure-Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
 
 [Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
 
@@ -100,4 +103,4 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 <!-- [SSL Offloading]: http://go.microsoft.com/fwlink/?LinkID=699549 -->
 <!-- [Using the Azure Service Runtime Library in JSP]: http://go.microsoft.com/fwlink/?LinkID=699551 -->
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

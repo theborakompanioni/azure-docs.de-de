@@ -70,7 +70,7 @@ Bevor wir das Runbook für die Verwendung in der Produktionsumgebung veröffentl
 
 Das soeben erstellte Runbook befindet sich immer noch im Entwurfsmodus. Wir müssen das Runbook veröffentlichen, um es in der Produktionsumgebung ausführen zu können. Beim Veröffentlichen eines Runbooks wird die vorhandene veröffentlichte Version durch die Entwurfsversion überschrieben. In unserem Fall ist noch keine veröffentlichte Version vorhanden, da wir das Runbook gerade erst erstellt haben.
 
-1.	Klicken Sie auf **Veröffentlichen**, um das Runbook zu veröffentlichen, und bestätigen Sie den Vorgang mit **Ja**, wenn Sie dazu aufgefordert werden.  
+1.	Klicken Sie auf **Veröffentlichen**, um das Runbook zu veröffentlichen, und bestätigen Sie den Vorgang mit **Ja**, wenn Sie dazu aufgefordert werden.
 	![Schaltfläche "Veröffentlichen"](media/automation-first-runbook-textual-powershell/automation-publish-button.png)  
 2.	Wenn Sie jetzt einen Bildlauf nach links durchführen, um das Runbook im Bereich **Runbooks** anzuzeigen, weist das Runbook den Erstellungsstatus **Veröffentlicht** auf.
 3.	Führen Sie wieder einen Bildlauf nach rechts durch, um den Bereich für **MyFirstRunbook-PowerShell** anzuzeigen.  
@@ -86,7 +86,7 @@ Das soeben erstellte Runbook befindet sich immer noch im Entwurfsmodus. Wir müs
 9.	Klicken Sie auf **Alle Protokolle**, um den Bereich „Datenströme“ für den Runbookauftrag zu öffnen. Im Ausgabestream sollte nur *Hello World* angezeigt werden. Hier können aber auch andere Datenströme für einen Runbookauftrag (wie etwa „Ausführlich“ und „Fehler“) angezeigt werden, sofern das Runbook in diese schreibt.  
 	![Alle Protokolle](media/automation-first-runbook-textual-powershell/automation-alllogs.png)  
 10.	Schließen Sie den Datenstrom- und den Auftragsbereich, um zum Bereich „MyFirstRunbook-PowerShell“ zurückzukehren.
-11.	Klicken Sie auf **Aufträge**, um den Auftragsbereich für dieses Runbook zu öffnen. Dadurch werden alle von diesem Runbook erstellten Aufträge aufgeführt. Hier wird nur ein einzelner Auftrag aufgeführt, da wir den Auftrag bislang erst einmal ausgeführt haben.  
+11.	Klicken Sie auf **Aufträge**, um den Auftragsbereich für dieses Runbook zu öffnen. Dadurch werden alle von diesem Runbook erstellten Aufträge aufgeführt. Hier wird nur ein einzelner Auftrag aufgeführt, da wir den Auftrag bislang erst einmal ausgeführt haben.  ]
 	![Auftragsliste](media/automation-first-runbook-textual-powershell/automation-job-list.png)  
 12.	Wenn Sie auf diesen Auftrag klicken, wird wieder der Auftragsbereich geöffnet, den wir uns beim Starten des Runbooks angesehen haben. So können Sie bereits ausgeführte Aufträge öffnen und Details zu jedem Auftrag anzeigen, der für ein bestimmtes Runbook erstellt wurde.
 
@@ -100,10 +100,10 @@ Wir haben unser Runbook inzwischen zwar getestet und veröffentlicht, bislang is
 3.	Geben Sie den folgenden Code ein (oder fügen Sie ihn ein). Dieser Code ist für die Authentifizierung bei Ihrem ausführenden Konto für Automation zuständig:
 
     ```
-     $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
+     $Conn = Get-AutomationConnection -Name AzureRunAsConnection
      Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
      -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
-    ``` 
+    ```
 <br>
 4.	Klicken Sie auf den **Testbereich**, um das Runbook zu testen.
 5.	Klicken Sie auf **Starten**, um den Test zu starten. Nach Abschluss des Tests erhalten Sie in der Regel eine Ausgabe mit allgemeinen Informationen aus Ihrem Konto. Auf diese Weise wird bestätigt, dass die Anmeldeinformationen gültig sind. <br> ![Authentifizieren](media/automation-first-runbook-textual-powershell/runbook-auth-results.png)
@@ -112,12 +112,12 @@ Wir haben unser Runbook inzwischen zwar getestet und veröffentlicht, bislang is
 
 Nun, da das Runbook für das Azure-Abonnement authentifiziert ist, können wir Ressourcen verwalten. Wir fügen einen Befehl zum Starten eines virtuellen Computers hinzu. Sie können einen beliebigen virtuellen Computer in Ihrem Azure-Abonnement auswählen. Wir werden den Namen vorerst innerhalb des Cmdlets hartcodieren.
 
-1.	Geben Sie nach *Add-AzureRmAccount* den Code *Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'* ein, um den Namen und Ressourcengruppennamen des virtuellen Computers anzugeben, der gestartet werden soll.  
-    
+1.	Geben Sie nach *Add-AzureRmAccount* den Code *Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'* ein, um den Namen und Ressourcengruppennamen des virtuellen Computers anzugeben, der gestartet werden soll.
+
     ```
-     $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
+     $Conn = Get-AutomationConnection -Name AzureRunAsConnection
      Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
-     -ApplicationID `$Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint 
+     -ApplicationID `$Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
      Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'ResourceGroupName'
      ```
 <br>
@@ -128,19 +128,19 @@ Nun, da das Runbook für das Azure-Abonnement authentifiziert ist, können wir R
 
 Unser Runbook startet zwar nun den virtuellen Computer, den wir im Runbook hartcodiert haben, es wäre aber praktischer, wenn wir den virtuellen Computer beim Start des Runbooks angeben könnten. Zu diesem Zweck fügen wir dem Runbook nun Eingabeparameter hinzu.
 
-1.	Fügen Sie Parameter für *VMName* und *ResourceGroupName* zum Runbook hinzu, und verwenden Sie diese Variablen mit dem Cmdlet **Start-AzureRmVM** wie im folgenden Beispiel:  
-	
+1.	Fügen Sie Parameter für *VMName* und *ResourceGroupName* zum Runbook hinzu, und verwenden Sie diese Variablen mit dem Cmdlet **Start-AzureRmVM** wie im folgenden Beispiel:
+
     ```
     Param(
        [string]$VMName,
        [string]$ResourceGroupName
     )
-     $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
+     $Conn = Get-AutomationConnection -Name AzureRunAsConnection
      Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
-     -ApplicationID `$Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint 
+     -ApplicationID `$Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
      Start-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
      ```
-<br> 
+<br>
 2.	Speichern Sie das Runbook, und öffnen Sie den Testbereich. Beachten Sie, dass Sie nun Werte für die beiden Eingabevariablen angeben können, die im Test verwendet werden.
 3.	Schließen Sie den Testbereich.
 4.	Klicken Sie auf **Veröffentlichen**, um die neue Version des Runbooks zu veröffentlichen.
@@ -165,4 +165,4 @@ PowerShell-Runbooks verfügen über den gleichen Lebenszyklus, die gleichen Funk
 -	Informationen über die verschiedenen Runbooktypen, ihre Vorteile und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md).
 -	Weitere Informationen zur PowerShell-Skriptunterstützung finden Sie unter [Native PowerShell Script Support in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/) (Native PowerShell-Skriptunterstützung in Azure Automation).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0713_2016-->

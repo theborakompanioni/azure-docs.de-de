@@ -14,14 +14,16 @@ ms.workload="big-data"
 ms.tgt_pltfrm="na"
 ms.devlang="na"
 ms.topic="article"
-ms.date="05/18/2016"
+ms.date="06/29/2016"
 ms.author="larryfr"/>
 
-#Verwenden von Maven zur Entwicklung von Java-Anwendungen, die HBase mit HDInsight (Hadoop) nutzen
+#Verwenden von Maven zur Entwicklung von Java-Anwendungen, die HBase mit Windows-basiertem HDInsight (Hadoop) nutzen
 
 Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in Java mithilfe von Apache Maven erstellen und entwickeln. Setzen Sie anschließend die Anwendung mit Azure HDInsight (Hadoop) ein.
 
 [Maven](http://maven.apache.org/) ist ein Projektmanagement- und Verständnistool, mit dem Sie Software, Dokumentationen und Berichte für Java-Projekte erstellen können. In diesem Artikel erfahren Sie, wie Sie es für das Erstellen einer einfachen Java-Anwendung verwenden, die eine HBase-Tabelle auf einem Azure HDInsight-Cluster erstellt, abfragt und löscht.
+
+> [AZURE.NOTE] Die Schritte in diesem Artikel setzen voraus, dass Sie einen Windows-basierten HDInsight-Cluster verwenden. Informationen zur Verwendung eines Linux-basierten HDInsight-Clusters finden Sie unter [Verwenden von Maven zur Entwicklung von Java-Anwendungen, die HBase mit HDInsight (Hadoop) nutzen](hdinsight-hbase-build-java-maven-linux.md).
 
 ##Anforderungen
 
@@ -29,7 +31,9 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
 
 * [Maven](http://maven.apache.org/)
 
-* [Ein Azure HDInsight-Cluster mit HBase](hdinsight-hbase-get-started.md#create-hbase-cluster)
+* [Ein Windows-basierter HDInsight-Cluster mit HBase](hdinsight-hbase-get-started.md#create-hbase-cluster)
+
+    > [AZURE.NOTE] Die Schritte in diesem Dokument wurden mit HDInsight-Clustern der Versionen 3.2 und 3.3 getestet. Die Standardwerte in den Beispielen gelten für einen Cluster mit HDInsight 3.3.
 
 ##Erstellen des Projekts
 
@@ -54,10 +58,29 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
         <dependency>
           <groupId>org.apache.hbase</groupId>
           <artifactId>hbase-client</artifactId>
-          <version>0.98.4-hadoop2</version>
+          <version>1.1.2</version>
         </dependency>
 
-    Damit wird Maven informiert, dass das Projekt den __hbase-Client__ in der Version __0.98.4-hadoop2__ benötigt. Beim Kompilieren wird er aus dem standardmäßigen Maven-Repository heruntergeladen. Sie können die [Suche im zentralen Maven-Repository](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) verwenden, wenn Sie weitere Informationen zu dieser Abhängigkeit erhalten möchten.
+    Damit wird Maven informiert, dass das Projekt den __hbase-Client__ in der Version __1.1.2__ benötigt. Beim Kompilieren wird er aus dem standardmäßigen Maven-Repository heruntergeladen. Sie können die [Suche im zentralen Maven-Repository](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) verwenden, wenn Sie weitere Informationen zu dieser Abhängigkeit erhalten möchten.
+
+    > [AZURE.IMPORTANT] Die Versionsnummer muss mit der Version von HBase übereinstimmen, die mit Ihrem HDInsight-Cluster bereitgestellt wird. Suchen Sie die richtige Versionsnummer mithilfe der folgenden Tabelle.
+
+    | HDInsight-Clusterversion | Zu verwendende HBase-Version |
+    | ----- | ----- |
+    | 3\.2 | 0\.98.4-hadoop2 |
+    | 3\.3 | 1\.1.2 |
+
+    Weitere Informationen zu HDInsight-Versionen und Komponenten finden Sie unter [Was sind die verschiedenen Hadoop-Komponenten, die in HDInsight verfügbar sind?](hdinsight-component-versioning.md).
+
+2. Wenn Sie einen HDInsight 3.3-Cluster verwenden, müssen Sie dem `<dependencies>`-Abschnitt auch Folgendes hinzufügen:
+
+        <dependency>
+            <groupId>org.apache.phoenix</groupId>
+            <artifactId>phoenix-core</artifactId>
+            <version>4.4.0-HBase-1.1</version>
+        </dependency>
+    
+    Dies lädt die Phoenix-Kernkomponenten, die Hbase-Version 1.1.x verwendet.
 
 2. Fügen Sie der Datei __pom.xml__ folgenden Code hinzu: Dieser muss sich in der Datei innerhalb der `<project>...</project>`-Tags befinden, z. B. zwischen `</dependencies>` und `</project>`.
 
@@ -78,8 +101,8 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.3</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                 </configuration>
               </plugin>
             <plugin>
@@ -152,19 +175,11 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
             <name>hbase.zookeeper.property.clientPort</name>
             <value>2181</value>
           </property>
-          <!-- Uncomment the following if you are using
-               a Linux-based HDInsight cluster -->
-          <!--
-          <property>
-            <name>zookeeper.znode.parent</name>
-            <value>/hbase-unsecure</value>
-          </property>
-          -->
         </configuration>
 
     Diese Datei wird zum Laden der HBase-Konfiguration für einen HDInsight-Cluster verwendet.
 
-    > [AZURE.NOTE] Das ist eine sehr minimale Datei vom Typ "hbase-site.xml", und sie enthält Mindesteinstellungen für den HDInsight-Cluster. Für Linux-basierte Cluster müssen Sie die Kommentierung des Eintrags für `zookeeper.znode.parent` aufheben, um den Stamm-zNode für Zookeeper ordnungsgemäß festzulegen, der von HBase verwendet wird.
+    > [AZURE.NOTE] Das ist eine sehr minimale Datei vom Typ "hbase-site.xml", und sie enthält Mindesteinstellungen für den HDInsight-Cluster.
 
 3. Speichern Sie die Datei __hbase-site.xml__.
 
@@ -446,9 +461,9 @@ Es gibt viele Möglichkeiten, eine Datei in einen HDInsight-Cluster hochzuladen,
                     -Clustername $clusterName `
                     -JobId $job.JobId `
                     -DefaultContainer $storage.container `
-                    -DefaultStorageAccountName $storage.storageAccountName `
+                    -DefaultStorageAccountName $storage.storageAccount `
                     -DefaultStorageAccountKey $storage.storageAccountKey `
-                    -HttpCredential $creds
+                    -HttpCredential $creds `
                     -DisplayOutputType StandardError
         }
         Write-Host "Display the standard output ..." -ForegroundColor Green
@@ -456,7 +471,7 @@ Es gibt viele Möglichkeiten, eine Datei in einen HDInsight-Cluster hochzuladen,
                     -Clustername $clusterName `
                     -JobId $job.JobId `
                     -DefaultContainer $storage.container `
-                    -DefaultStorageAccountName $storage.storageAccountName `
+                    -DefaultStorageAccountName $storage.storageAccount `
                     -DefaultStorageAccountKey $storage.storageAccountKey `
                     -HttpCredential $creds
         }
@@ -631,4 +646,4 @@ Ersetzen Sie __hdinsightclustername__ durch den Namen Ihres HDInsight-Clusters.
 
 Verwenden Sie den Parameter `-showErr`, wenn Sie den Standardfehler (STDERR) sehen möchten, der während der Ausführung des Auftrags erzeugt wurde.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0706_2016-->

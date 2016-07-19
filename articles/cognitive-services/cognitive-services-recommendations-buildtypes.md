@@ -41,11 +41,11 @@ Der Empfehlungsbuild hat zwei Merkmale, die ihn reizvoll machen:
 
  Wenn Sie kalte Artikel platzieren möchten, müssen Sie für jeden Artikel im Katalog Informationen zu den Features hinzufügen. So können die ersten Zeilen Ihres Katalogs beispielsweise aussehen (beachten Sie das Schlüssel=Wert-Format für die Features):
 
-> 6CX-00001,Surface Pro2, Surface, Type=Hardware, Storage=128GB, Memory=4G, Manufacturer=Microsoft
+> 6CX-00001,Surface Pro2, Surface,, Type=Hardware, Storage=128GB, Memory=4G, Manufacturer=Microsoft
 
-> 73H-00013,Wake Xbox 360,Gaming, Type=Software, Language=English, Rating=Mature
+> 73H-00013,Wake Xbox 360,Gaming,, Type=Software, Language=English, Rating=Mature
 
-> WAH-0F05,Minecraft Xbox 360,Gaming, * Type=Software, Language=Spanish, Rating=Youth
+> WAH-0F05,Minecraft Xbox 360,Gaming,, * Type=Software, Language=Spanish, Rating=Youth
 
 > ...
 
@@ -64,6 +64,26 @@ Der Empfehlungsbuild hat zwei Merkmale, die ihn reizvoll machen:
  Ein klassisches Beispiel, bei dem Sie möglicherweise Benutzerempfehlungen anzeigen möchten, ist bei der ersten Anmeldung des Benutzers bei Ihrem Onlineshop bzw. Ihrer Website auf der Begrüßungsseite. Dort können Sie Inhalt bewerben, der zu dem jeweiligen Benutzer passt.
  
  Sie können auch einen Empfehlungsbuildtyp anwenden, wenn der Benutzer vor dem Zahlvorgang steht. An dieser Stelle wird die Liste der Artikel gezeigt, die der Kunde kaufen möchten. Dies ist Ihre Chance, Empfehlungen basierend auf dem aktuellen Warenkorb einzublenden.
+ 
+#### Parameter für Empfehlungsbuilds 
+ 
+| Name | 	Beschreibung |	 Typ, <br> Gültige Werte <br> (Standardwert)
+|-------|-------------------|------------------
+| NumberOfModelIterations |	Die Anzahl der Iterationen, die vom Modell ausgeführt werden, beeinflusst die Gesamtrechenzeit sowie die Modellgenauigkeit. Je höher die Anzahl, desto höher die Genauigkeit, aber auch die Rechenzeit. |	 Integer, <br> 10 bis 50 <br>Standard: 40 
+| NumberOfModelDimensions |	Die Anzahl der Dimensionen bezieht sich auf die Anzahl der „Features“, die vom Modell in Ihren Daten gesucht werden. Wenn Sie die Anzahl der Dimensionen erhöhen, können Sie die Ergebnisse in kleineren Clustern feiner abstimmen. Durch zu viele Dimensionen wird jedoch verhindert, dass Korrelationen zwischen den Elementen gefunden werden. |	Integer, <br> 10 bis 40 <br>Standard: 20 |
+| ItemCutOffLowerBound |	Definiert die Mindestanzahl von Nutzungspunkten, in denen sich ein Element befinden sollte, damit es im Modell berücksichtigt wird. |		Integer, <br> 2 oder mehr. <br> Standard: 2 |
+| ItemCutOffUpperBound | 	Definiert die Höchstanzahl von Nutzungspunkten, in denen sich ein Element befinden sollte, damit es im Modell berücksichtigt wird. | Integer, <br> 2 oder mehr.<br> Standard: 2.147.483.647 |
+|UserCutOffLowerBound |	Definiert die Mindestanzahl von Transaktionen, die ein Benutzer ausgeführt haben muss, um im Modell berücksichtigt zu werden. |	Integer, <br> 2 oder mehr. <br> Standard: 2 
+| ItemCutOffUpperBound |	Definiert die Höchstanzahl von Transaktionen, die ein Benutzer ausgeführt haben muss, um im Modell berücksichtigt zu werden. |	Integer, <br> 2 oder mehr. <br> Standard: 2.147.483.647|
+| UseFeaturesInModel |	Hier wird angegeben, ob Features verwendet werden können, um das Empfehlungsmodell zu verbessern. | 	 Boolean<br> Standard: True 
+|ModelingFeatureList |	Dies ist die kommagetrennte Liste von Komponentennamen, die im Empfehlungsbuild verwendet werden soll, um die Empfehlung zu verbessern. (Hängt von den wichtigen Features ab) |	String, bis zu 512 Zeichen
+| AllowColdItemPlacement |	Hier wird angegeben, ob durch die Empfehlung ein „Push“ kalter Elemente anhand der Ähnlichkeit der Features erfolgen soll. | Boolean<br> Standard: False	
+| EnableFeatureCorrelation | Hier wird angegeben, ob Features bei der Argumentation verwendet werden können. |	Boolean<br> Standard: False
+| ReasoningFeatureList |	Dies ist eine kommagetrennte Liste von Featurenamen, die für Argumentationssätze (z. B. Erklärungen von Empfehlungen) verwendet werden. (Hängt von den für Kunden wichtigen Features ab) | String, bis zu 512 Zeichen
+| EnableU2I |	Ermöglicht personalisierte Empfehlungen, auch bekannt als U2I ("User to Item"-Empfehlungen). | Boolean<br> Standard: True
+|EnableModelingInsights |	Definiert, ob eine Offlineauswertung erfolgen soll, um Modellierungserkenntnisse (mittels Metriken für Genauigkeit und Vielfalt) zu sammeln. Falls auf „True“ festgelegt, wird keine Teilmenge der Daten für das Training verwendet, da sie zum Testen des Modells reserviert werden müssen. Weitere Informationen zu [Offlineauswertungen](#OfflineEvaluation) | Boolean<br> Standard: False
+| SplitterStrategy | Falls „EnableModelingInsights“ auf „True“ festgelegt ist, die Weise, in der Daten für Auswertungszwecke aufgeteilt werden sollen. | String, *RandomSplitter* oder *LastEventSplitter* <br>Standard: RandomSplitter 
+
 
 <a name="FBTBuild"></a>
 ### FBT-Buildtyp ###
@@ -77,6 +97,16 @@ Bei unserem Beispiel mit dem Lumia 650 wird Telefon X nur dann zurückgegeben, w
 Derzeit gelten zwei Artikel als in derselben Sitzung erworben, wenn sie in einer Transaktion mit derselben Benutzer-ID und demselben Zeitstempel vorkommen.
 
 FBT-Builds unterstützen derzeit keine kalten Artikel, das sie laut Definition erwarten, dass zwei Artikel tatsächlich in derselben Sitzung gekauft werden. Wenngleich FBT-Builds Gruppen von Artikeln (Dreiergruppen) zurückgeben können, unterstützen sie keine persönlichen Empfehlungen, da sie einen einzelnen Ausgangsartikel als Eingabe akzeptieren.
+
+
+#### Parameter für FBT-Builds 
+ 
+| Name | 	Beschreibung |		Typ, <br> Gültige Werte <br> (Standardwert)
+|-------|---------------|-----------------------
+| FbtSupportThreshold | Dies ist ein Maß dafür, wie konservativ das Modell ist. Dies ein Maß für die Grauwerte von Elementen, die bei der Modellierung berücksichtigt werden. | Integer, <br> 3-50 <br> Default: 6 
+| FbtMaxItemSetSize | Begrenzt die Anzahl der Elemente in einem häufigen Satz.| Integer, <br> 2-3 <br> Default: 2
+| FbtMinimalScore | Dies ist die Mindestbewertung, die ein häufiger Satz haben muss, um in die zurückgegebenen Ergebnisse eingeschlossen zu werden. Höhere Bewertungen sind besser als niedrigere. | Double <br> 0 und höher <br> Standard: 0
+| FbtSimilarityFunction | Definiert die Ähnlichkeitsfunktion, die vom Build verwendet werden soll. „Lift“ fördert Zufall, „Kookkurenz“ fördert Vorhersagbarkeit und „Jaccard“ stellt einen Kompromiss zwischen beiden dar. | String, <br> <i>Kookkurenz, Lift, Jaccard</i><br> Standard: <i>Jaccard</i> 
 
 <a name="SelectBuild"></a>
 ## Wie wähle ich den zu verwendenden Build? ##
@@ -241,4 +271,4 @@ Dies löst einen Build aus, der nur eine Teilmenge der Daten für das Training v
     "IsFaulted": false
     }
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -25,7 +25,7 @@
 - Einladungen an E-Mail-Adressen von Privatbenutzern (wie „hotmail.com“, „Gmail.com“ oder „comcast.net“) werden derzeit nicht unterstützt.
 - Der Zugriff externer Benutzer auf lokale Anwendungen wurde nicht getestet.
 - Externe Benutzer werden nicht automatisch bereinigt, wenn der jeweilige Benutzer aus dem Verzeichnis gelöscht wird.
-- Einladungen zu DLs werden nicht unterstützt.
+- Einladungen an Verteilerlisten werden nicht unterstützt.
 - Über CSV können maximal 2.000 Datensätze hochgeladen werden.
 
 ## Verwandte Artikel
@@ -39,4 +39,4 @@ Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 - [Objektattributänderungen für externe Benutzer](active-directory-b2b-references-external-user-object-attribute-changes.md)
 - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0706_2016-->

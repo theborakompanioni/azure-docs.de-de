@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/11/2016"
+	ms.date="07/06/2016"
 	ms.author="maheshu"/>
 
 # Azure AD-Domänendienste *(Vorschau)*
@@ -37,12 +37,18 @@ Die folgenden Features sind in der Vorschauversion der Azure Active Directory-Do
 
 - **LDAP-Bindungs- und LDAP-Leseunterstützung:** Sie können auf LDAP-Bindungen beruhende Anwendungen verwenden, um Benutzer in Domänen zu authentifizieren, die von den Azure Active Directory-Domänendiensten bereitgestellt werden. Darüber hinaus können Anwendungen, die Benutzer-/Computerattribute anhand von LDAP-Lesevorgängen aus dem Verzeichnis abfragen, auch mit Azure Active Directory-Domänendiensten arbeiten.
 
+- **Sicheres LDAP (LDAPS):** Sie können den Zugriff auf das Verzeichnis über sicheres LDAP (LDAPS) aktivieren. Sicherer LDAP-Zugriff ist innerhalb des virtuellen Netzwerks standardmäßig verfügbar. Allerdings können Sie optional auch sicheren LDAP-Zugriff über das Internet aktivieren.
+
 - **Gruppenrichtlinie:** Sie können ein einzelnes integriertes GPO sowohl für die Benutzer- als auch für die Computercontainer nutzen, um Compliance mit den erforderlichen Sicherheitsrichtlinien für Benutzerkonten und in die Domäne eingebundene Computer durchzusetzen.
 
-- **Verfügbar in mehreren Azure-Regionen:** Informationen zu den Azure-Regionen, in denen Azure AD-Domänendienste verfügbar sind, finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services/).
+- **DNS verwalten:** Mitglieder der Gruppe der AAD-DC-Administratoren können DNS für Ihre mit Azure AD-Domänendiensten verwaltete Domäne mit vertrauten DNS-Verwaltungstools wie dem MMC-Snap-In für die DNS-Verwaltung verwalten.
+
+- **Benutzerdefinierte Organisationseinheiten (OUs) erstellen:** Mitglieder der Gruppe der AAD-DC-Administratoren können benutzerdefinierte Organisationseinheiten innerhalb der mit AAD-Domänendiensten verwalteten Domäne erstellen. Diesen Benutzern werden vollständige Administratorrechte für benutzerdefinierte Organisationseinheiten erteilt, sodass sie Dienstkonten, Computer, Gruppen usw. in diesen benutzerdefinierten Organisationseinheiten hinzufügen/entfernen können.
+
+- **Verfügbar in mehreren Azure-Regionen:** Informationen zu den Azure-Regionen, in denen Azure AD-Domänendienste verfügbar sind, finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services/).
 
 - **Hohe Verfügbarkeit:** Azure AD-Domänendienste bieten eine hohe Verfügbarkeit für Ihre Domäne. Dadurch wird eine höhere Dienstverfügbarkeit und Stabilität bei Fehlern gewährleistet. Die integrierte Integritätsüberwachung bietet eine automatische Wiederherstellung nach Fehlern durch das Einrichten neuer Instanzen zum Ersetzen fehlerhafter Instanzen und zum Bereitstellen eines fortlaufenden Diensts für Ihre Domäne.
 
 - **Verwendung vertrauter Verwaltungstools:** Sie können vertraute Windows Server Active Directory-Verwaltungstools wie das Active Directory-Verwaltungscenter oder Active Directory-PowerShell zur Verwaltung von Domänen einsetzen, die von Azure Active Directory-Domänendiensten bereitgestellt werden.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

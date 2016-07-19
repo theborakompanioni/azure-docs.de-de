@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/28/2016"
+   ms.date="07/05/2016"
    ms.author="abhisram"/>
 
 # Diagnose und Leistungsüberwachung für Reliable Actors
@@ -118,7 +118,7 @@ Die Reliable Actors-Laufzeit veröffentlicht die folgenden Leistungsindikatoren 
 |Service Fabric Actor|Durchschnittliche Anzahl von Millisekunden, die eine Actor-Sperre hielt|Zeit (in Millisekunden), für die die Sperre pro Actor gehalten wird|
 
 ### Actor-Statusmanagement-Ereignisse und Leistungsindikatoren
-Die Reliable Actors-Laufzeit gibt die folgenden Ereignisse im Zusammenhang mit der [Actor-Statusverwaltung](service-fabric-reliable-actors-state-management) aus.
+Die Reliable Actors-Laufzeit gibt die folgenden Ereignisse im Zusammenhang mit der [Actor-Statusverwaltung](service-fabric-reliable-actors-state-management.md) aus.
 
 |Ereignisname|Ereignis-ID|Ebene|Schlüsselwort|Beschreibung|
 |---|---|---|---|---|
@@ -169,4 +169,4 @@ Wenn ein Client eine Methode über ein Actor-Proxy-Objekt aufruft, wird eine Anf
  - [Actor-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
  - [Beispielcode](https://github.com/Azure/servicefabric-samples)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0706_2016-->

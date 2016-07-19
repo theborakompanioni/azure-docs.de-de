@@ -13,7 +13,7 @@
 	 ms.topic="article"
 	 ms.tgt_pltfrm="na"
 	 ms.workload="na"
-	 ms.date="06/06/2016"
+	 ms.date="06/28/2016"
 	 ms.author="nasing"/>
 
 # Verwalten von IoT Hubs über das Azure-Portal
@@ -44,11 +44,13 @@ Sie müssen dem Hub einen Namen geben, um einen IoT Hub zu erstellen. Beachten S
 
 ### Auswählen des Tarifs
 
-Sie können zwischen drei Tarifen wählen: **Free**, **Standard 1** und **Standard 2**. Mit dem Free-Tarif können nur 500 Geräte mit dem IoT Hub verbunden sein, und bis zu 8.000 Nachrichten pro Tag sind möglich.
+Sie können zwischen 4 Tarifen wählen: **Free**, **Standard 1**, **Standard 2** und **Standard S3**. Mit dem Free-Tarif können nur 500 Geräte mit dem IoT Hub verbunden sein, und bis zu 8.000 Nachrichten pro Tag sind möglich.
 
-**S1 (Low Frequency)**: IoT Hubs S1 (Low Frequency) ist auf IoT-Lösungen mit einer großen Anzahl von Geräten ausgelegt, die relativ kleine Datenmengen pro Gerät generieren. Mit jeder Einheit der Edition S1 (niedrige Auslastung) können bis zu 400.000 Nachrichten pro Tag (auf allen verbundenen Geräten) übermittelt werden.
+**Standard S1**: Die IoT Hub-Edition S1 ist für IoT-Lösungen mit einer großen Anzahl von Geräten ausgelegt, die relativ kleine Datenmengen pro Gerät generieren. Mit jeder S1-Einheit können bis zu 400.000 Nachrichten pro Tag (auf allen verbundenen Geräten) übermittelt werden.
 
-**S2 (High Frequency)**: IoT Hub S2 (High Frequency) ist auf IoT-Lösungen ausgelegt, in denen Geräte große Datenmengen generieren. Mit jeder Einheit der Edition S2 (hohe Auslastung) können bis zu 6 Millionen Nachrichten pro Tag (zwischen allen verbundenen Geräten) übermittelt werden.
+**Standard S2**: Die IoT Hub S2-Edition ist auf IoT-Lösungen ausgelegt, in denen Geräte große Datenmengen generieren. Mit jeder Einheit der Edition S2 können bis zu 6 Millionen Nachrichten pro Tag zwischen allen verbundenen Geräten übermittelt werden.
+
+**Standard S3**: Die IoT Hub-Edition S3 eignet sich für IoT-Lösungen, die große Datenmengen generieren. Mit jeder Einheit der Edition S3 können bis zu 300 Millionen Nachrichten pro Tag zwischen allen verbundenen Geräten übermittelt werden.
 
 ![][4]
 
@@ -72,7 +74,7 @@ Azure IoT Hub zeigt automatisch die Liste der Abonnements an, mit denen das Benu
 
 ### Wählen des Standorts
 
-Die Option „Standort“ enthält eine Liste der Regionen, in denen IoT Hub angeboten wird. IoT Hub ist in den folgenden Regionen verfügbar: USA, Osten, USA, Westen, Europa, Norden, Europa, Westen, Asien, Osten und Asien, Südosten.
+Die Option „Standort“ enthält eine Liste der Regionen, in denen IoT Hub angeboten wird. IoT Hub ist in den folgenden Regionen zur Bereitstellung verfügbar: Australien, Osten; Australien, Südosten; Asien-Pazifik, Osten; Asien-Pazifik, Südosten; Europa, Norden; Europa, Westen; Japan, Osten; Japan, Westen; USA, Osten; USA, Westen.
 
 ### Erstellen des IoT Hubs
 
@@ -94,7 +96,7 @@ Sie können die Einstellungen eines vorhandenen IoT Hub nach dessen Erstellung �
 
 	Diesen freigegebenen Richtlinien können mehrere Berechtigungen zugeordnet werden. Die ersten beiden Richtlinien, **Registry lesen** und **Registry schreiben**, berechtigen zum Lesen und Schreiben im Geräteidentitätsspeicher oder der Identitätsregistrierung. Bitte beachten Sie, dass beim Auswählen der Option mit Schreibzugriff auch die Option mit Lesezugriff automatisch ausgewählt wird.
 
- 	Die Richtlinie für die Serververbindung gewährt der Consumergruppe Zugriff auf Dienste mit Verbindung zum IoT Hub, und die Geräteverbindung gewährt Zugriff auf Geräte des IoT Hubs.
+ 	Die Richtlinie für die **Serververbindung** gewährt Berechtigungen zum Zugriff auf die cloudseitigen Endpunkte, z.B. die Consumergruppe für Dienste mit Verbindung zum IoT Hub, während die Richtlinie für die **Geräteverbindung** Berechtigungen zum Senden und Empfangen von Nachrichten auf den geräteseitigen Endpunkten des IoT Hubs gewährt.
 
 - Klicken Sie auf **Erstellen**, um der vorhandenen Liste diese neu erstellte Richtlinie hinzuzufügen.
 
@@ -128,13 +130,13 @@ Damit Sie die Dateiuploadfunktion in IoT Hub verwenden können, müssen Sie Ihre
 
 ![][14]
 
-**Receive notifications for uploaded files** (Benachrichtigungen für hochgeladene Dateien empfangen): Aktivieren oder deaktivieren Sie Dateiuploadbenachrichtigungen über den Umschalter.
+**Benachrichtigungen für hochgeladene Dateien empfangen**: Aktivieren oder deaktivieren Sie Dateiuploadbenachrichtigungen über den Umschalter.
 
-**SAS TTL** (SAS-TTL): Diese Einstellung dient zum Festlegen der Gültigkeitsdauer der SAS-URIs, die von IoT Hub an das Gerät zurückgegeben werden. Standardmäßig auf 1 Stunde festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
+**SAS-TTL**: Diese Einstellung dient zum Festlegen der Gültigkeitsdauer der SAS-URIs, die von IoT Hub an das Gerät zurückgegeben werden. Standardmäßig auf 1 Stunde festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
 
-**File notification settings default TTL** (Standard-TTL für Dateibenachrichtigungseinstellungen): Die Gültigkeitsdauer einer Dateiuploadbenachrichtigung (Zeit bis zum Ablauf). Standardmäßig auf 1 Tag festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
+**Standard-TTL für Dateibenachrichtigungseinstellungen**: Die Gültigkeitsdauer einer Dateiuploadbenachrichtigung (Zeit bis zum Ablauf). Standardmäßig auf 1 Tag festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
 
-**File notification maximum delivery count** (Maximale Zahl gesendeter Dateibenachrichtigungen): Gibt an, wie oft IoT Hub versucht, eine Dateiuploadbenachrichtigung zu senden. Standardmäßig auf 10 festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
+**Maximale Zahl gesendeter Dateibenachrichtigungen**: Gibt an, wie oft IoT Hub versucht, eine Dateiuploadbenachrichtigung zu senden. Standardmäßig auf 10 festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
 
 ![][13]
 
@@ -147,7 +149,7 @@ Die Preise eines vorhandenen IoT Hubs können mit folgenden Ausnahmen über die 
 
 ![][12]
 
-Der Wechsel von einem hohen Tarif (S2) in einen niedrigen Tarif (S1) ist nur zulässig, wenn die Anzahl an Nachrichten des Tages nicht miteinander in Konflikt stehen. Überschreitet die Anzahl der Nachrichten pro Tag beispielsweise 400.000, kann der Tarif für den IoT Hub nicht von S2 in S1 geändert werden.
+Der Wechsel von einem höheren Tarif (S2 oder S3) in einen niedrigeren Tarif (S1 oder S2) ist nur zulässig, wenn die Anzahl an gesendeten Nachrichten des Tages nicht dazu in Konflikt steht. Wenn die Anzahl der Nachrichten pro Tag beispielsweise 400.000 überschreitet, kann die Ebene für den IoT Hub geändert werden, aber wenn Sie zur Ebene S1 wechseln, wird der Hub für diesen Tag gedrosselt.
 
 ## Löschen des IoT Hubs
 
@@ -173,4 +175,4 @@ Folgen Sie diesen Links, um mehr über Azure IoT Hub zu erfahren:
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
 [Was ist Azure IoT Hub?]: iot-hub-what-is-iot-hub.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

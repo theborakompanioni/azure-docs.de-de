@@ -62,7 +62,7 @@ Affixe können auf verschiedene Aspekte verweisen, die die entsprechenden Ressou
 | Environment | dev, stg, prod | Abhängig von Zweck und Name der jeweiligen Umgebung. |
 | Standort | usw (USA Westen), use (USA Osten 2) | Abhängig von der Region des Datencenters oder der Region der Organisation. |
 | Azure-Komponente, -Dienst oder -Produkt | „Rg“ für Ressourcengruppe, „VNet“ für virtuelles Netzwerk | Je nach Produkt, das die Ressource unterstützt. |
-| Rolle | sql, ora, sp, iis | Abhängig von der Rolle des virtuellen Computers. |
+| Rolle | db, app, web | Abhängig von der Rolle des virtuellen Computers. |
 | Instanz | 01, 02, 03 usw. | Für Ressourcen, die mehr als eine Instanz besitzen. Beispielsweise Webserver mit Lastenausgleich in einem Clouddienst. |
 
 
@@ -110,4 +110,4 @@ Für die Benennung von Speicherkonten gelten spezielle Regeln. Sie können nur K
 ## Nächste Schritte
 [AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

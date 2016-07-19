@@ -4,7 +4,7 @@ Für das Azure-Toolkit für IntelliJ sind folgende Softwarekomponenten notwendig
 
 * IntelliJ IDEA Ultimate Edition. Dies kann von <https://www.jetbrains.com/idea/download/> heruntergeladen werden.
 
-* Ein Java Developer Kit (JDK) der Version 1.7 oder höher.
+* Ein Java Developer Kit (JDK) der Version 1.8 oder höher.
 
 * Betriebssysteme – Das Azure-Toolkit für IntelliJ wurde unter folgenden Betriebssystemen getestet:
     * Windows 10, Windows 8 und Windows 8.1, Windows 7
@@ -14,11 +14,11 @@ Für das Azure-Toolkit für IntelliJ sind folgende Softwarekomponenten notwendig
 
 Weitere Informationen finden Sie im Repository für JetBrains-Plug-Ins auf der Seite [Azure-Toolkit für IntelliJ](https://plugins.jetbrains.com/plugin/8053).
 
-> [AZURE.IMPORTANT] Bei Verwendung des Azure-Toolkits für IntelliJ unter Windows erfordert das Toolkit die Installation von mindestens Version 2.7 des Azure SDK. Für das Installieren des Azure SDK gibt es zwei Möglichkeiten:
+> [AZURE.IMPORTANT] Bei Verwendung des Azure-Toolkits für IntelliJ unter Windows ist für das Toolkit die Installation von mindestens Version 2.9.1 des Azure SDK erforderlich. Für das Installieren des Azure SDK gibt es zwei Möglichkeiten:
 > 
 > * Sie können das Azure SDK mithilfe des Programms [Webplattform-Installer (WebPI)](http://go.microsoft.com/fwlink/?LinkID=252838) herunterladen und installieren.
 > * Falls Sie dieses noch nicht installiert haben, wenn Sie Ihr erstes Azure-Bereitstellungsprojekt erstellen, werden Sie aufgefordert, automatisch die erforderliche Version von Azure SDK herunterzuladen.
 > 
 > Beachten Sie, dass das Azure SDK nur unter Windows erforderlich ist.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0706_2016-->

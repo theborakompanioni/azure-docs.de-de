@@ -19,14 +19,14 @@
 
 # Spontane Skalierung von Azure SQL-Datenbank
 
-## Wenn Ihre App von einer kleinen Anzahl von Kunden rasant anwächst, können Sie Azure SQL-Datenbank ohne Ausfallzeit der App spontan skalieren.
+## Wenn Ihre App von einer kleinen Anzahl von Kunden rasant anwächst, können Sie Azure SQL-Datenbank ohne längere Ausfallzeiten der App spontan skalieren.
 
 Einer der Vorteile bei der Ausführung von SQL-Datenbank unter Microsoft Azure ist die Möglichkeit, die Leistung zur schnellen Anpassung an wechselnde Workloadanforderungen spontan zentral hoch- oder herunterskalieren zu können. SQL-Datenbank bietet ein breites Spektrum von Leistungsstufen, um den spezifischen Erfordernissen Ihrer Anwendung gerecht zu werden. Und jede Ebene ist mit einer Leistungsgarantie verbunden, damit die Benutzer Ihrer App wissen, mit welcher Leistung sie rechnen können.
 
 ![scale-on-the-fly](./media/sql-database-scale-on-the-fly/sql-database-scale-on-the-fly.png)
 
 ## Wenn Ihre App über Nacht zum Erfolg wird
-SQL-Datenbank macht die spontane Skalierung leicht. Wenn Ihre App also über Nacht zum Erfolg wird, können Sie sie mit einem Klick den neuen Leistungsanforderungen anpassen. Und dies ohne Ausfallzeit – Sie müssen sich also keine Sorgen machen, dass Ihre App während des zentralen Hoch- oder Herunterskalierens einen Treffer verpasst.
+SQL-Datenbank macht die spontane Skalierung leicht. Wenn Ihre App also über Nacht zum Erfolg wird, können Sie sie mit einem Klick den neuen Leistungsanforderungen anpassen. Und dies bei minimaler Ausfallzeit – Sie müssen sich also keine Sorgen machen, dass Ihre App während des zentralen Hoch- oder Herunterskalierens beeinträchtigt wird.
 
 [Dokumentation lesen](http://go.microsoft.com/fwlink/?LinkID=787569)
 
@@ -54,4 +54,4 @@ Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/se
  
 Lesen Sie die [Technische Übersicht über SQL-Datenbank](sql-database-technical-overview.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

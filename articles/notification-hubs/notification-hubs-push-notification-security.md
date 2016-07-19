@@ -4,7 +4,7 @@
 	services="notification-hubs"
 	documentationCenter=".net"
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="03/28/2016"
+	ms.date="06/29/2016"
 	ms.author="wesmc"/>
 
 #Sicherheit
@@ -47,4 +47,4 @@ Beachten Sie unbedingt, dass der Schlüssel mit Lauschzugriff einer Clientanwend
 
 Notification Hubs akzeptieren Ansprüche, die durch Microsoft Azure Access Control-Token und von Signaturtoken mit freigegebenen Schlüsseln, die direkt auf dem Notification Hub konfiguriert wurden, erteilt werden.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

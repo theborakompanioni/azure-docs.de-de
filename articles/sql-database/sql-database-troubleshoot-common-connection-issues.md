@@ -53,7 +53,7 @@ Wenn in Ihrer Anwendung vorübergehende Fehler auftreten, lesen Sie die folgende
 
 ## Problembehandlung bei dauerhaften Fehlern (nicht vorübergehende Fehler)
 
-Wenn die Anwendung dauerhaft keine Verbindung mit SQL Azure-Datenbank herstellen kann, weist dies in der Regel auf ein Problem mit Folgendem hin:
+Wenn die Anwendung dauerhaft keine Verbindung mit der Azure SQL-Datenbank herstellen kann, weist dies in der Regel auf Probleme der folgenden Art hin:
 
 - Firewall-Konfiguration Die Firewall von Azure SQL-Datenbank oder eine clientseitige Firewall blockiert Verbindungen mit Azure SQL-Datenbank.
 - Netzwerkneukonfiguration auf Clientseite: z.B. eine neue IP-Adresse oder ein Proxyserver.
@@ -99,6 +99,6 @@ Die folgende Tabelle enthält alle Themen im Zusammenhang mit Verbindungsproblem
 - [Allgemeiner Leitfaden zur Behandlung vorübergehender Fehler](../best-practices-retry-general.md)
 - [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md)
 - [Der Lernpfad für die Verwendung der Azure SQL-Datenbank](https://azure.microsoft.com/documentation/learning-paths/sql-database-training-learn-sql-database)
-- [Der Lernpfad für die Verwendung elastischer Datenbankfeatures und -tools](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale) 
+- [Der Lernpfad für die Verwendung elastischer Datenbankfeatures und -tools](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -62,7 +62,7 @@ Die folgende Tabelle enthält die Geschäftskontinuitätsfeatures der SQL-Datenb
 
 | Funktion | Basic-Tarif | Standard-Tarif |Premium-Tarif
 | --- |--- | --- | ---
-| Zeitpunktwiederherstellung | Jeder Wiederherstellungspunkt innerhalb von 7 Tagen | Jeder Wiederherstellungspunkt innerhalb von 14 Tagen | Jeder Wiederherstellungspunkt innerhalb von 35 Tagen
+| Zeitpunktwiederherstellung | Jeder Wiederherstellungspunkt innerhalb von 7 Tagen | Jeder Wiederherstellungspunkt innerhalb von 35 Tagen | Jeder Wiederherstellungspunkt innerhalb von 35 Tagen
 | Geowiederherstellung | Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h | Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h | Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h
 | Aktive Georeplikation | Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s | Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s | Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s
 
@@ -73,9 +73,9 @@ Diese Funktionen werden für die zuvor beschriebenen Szenarios bereitgestellt.
 
 ###Point-in-Time-Wiederherstellung
 
-Mit der [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore) können Sie Ihre Datenbank in einen früheren Zustand versetzen. Dazu werden Datenbanksicherungen, inkrementelle Sicherungen und Transaktionsprotokollsicherungen verwendet, die der Dienst automatisch für jede Benutzerdatenbank verwaltet. Diese Funktion steht für alle Dienstebenen zur Verfügung. Bei Basic können Sie 7 Tage wiederherstellen, bei Standard 14 Tage und bei Premium 35 Tage.
+Mit der [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore) können Sie Ihre Datenbank in einen früheren Zustand versetzen. Dazu werden Datenbanksicherungen, inkrementelle Sicherungen und Transaktionsprotokollsicherungen verwendet, die der Dienst automatisch für jede Benutzerdatenbank verwaltet. Diese Funktion steht für alle Dienstebenen zur Verfügung. Bei Basic können Sie 7 Tage wiederherstellen, bei Standard und Premium 35 Tage.
 
-### Geowiederherstellung
+### Geografische Wiederherstellung
 
 Die [Geowiederherstellung](sql-database-recovery-using-backups.md#geo-restore) steht auch für Basic-, Standard- und Premium-Datenbanken zur Verfügung. Sie stellt die Standardoption für die Wiederherstellung dar, wenn auch die Datenbank aufgrund eines Vorfalls in der Region, in dem die Datenbank gehostet wird, nicht verfügbar ist. Ähnlich wie die Point-in-Time-Wiederherstellung ist die Geowiederherstellung von Datenbanksicherungen in geografisch redundantem Azure-Speicher abhängig. Die Wiederherstellung erfolgt aus der geografisch replizierten Sicherungskopie und ist daher in Bezug auf Speicherausfälle in der primären Region flexibel.
 
@@ -126,4 +126,4 @@ Detaillierte Wiederherstellungsstrategien bei Verwendung eines elastischen Pools
 - Informationen über schnellere Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
 - Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/17/2016"
+   ms.date="06/30/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Laden von Daten in Azure SQL Data Warehouse
@@ -22,7 +22,7 @@ Eine Zusammenfassung der Optionen und Empfehlungen für das Szenario zum Laden v
 
 Der schwierigste Teil beim Laden von Daten ist in der Regel die Daten für das Laden vorzubereiten. Azure vereinfacht das Laden mithilfe von Azure Blob Storage als gemeinsamer Datenspeicher für viele Dienste und mithilfe von Azure Data Factory zum Organisieren der Kommunikation und des Datentransfers zwischen den Azure-Diensten. Diese Prozesse sind in der PolyBase-Technologie integriert, die MPP (Massively Parallel Processing) verwendet, um die Daten parallel vom Azure Blob Storage in SQL Data Warehouse zu laden.
 
-Tutorials, die Beispieldatenbanken laden, finden Sie unter [Load sample databases][] (Laden von Beispieldatenbanken).
+Tutorials, in denen Beispieldatenbanken geladen werden, finden Sie unter [Laden von Beispieldaten in SQL Data Warehouse][].
 
 ## Laden aus Azure Blob Storage
 Der schnellste Weg, Daten in SQL Data Warehouse zu importieren, ist die Verwendung von PolyBase zum Laden von Daten aus Azure Blob Storage. PolyBase verwendet die MPP-Struktur (Massively Parallel Processing) von SQL Data Warehouse, um Daten parallel von Azure Blob Storage zu laden. Sie können T-SQL-Befehle oder eine Azure Data Factory-Pipeline verwenden, um PolyBase zu verwenden.
@@ -38,7 +38,7 @@ Zusammenfassung des Ladeprozesses:
 
 <!-- 5. Schedule and run a loading job. --> 
 
-Ein Tutorial finden Sie unter [Load data from Azure blob storage into SQL Data Warehouse (PolyBase)][] (Laden von Daten aus Azure Blob Storage in SQL Data Warehouse (PolyBase)).
+Ein Tutorial finden Sie unter [Laden von Daten aus Azure Blob Storage in SQL Data Warehouse (PolyBase)][].
 
 ### 2\. Verwenden von Azure Data Factory
 
@@ -57,7 +57,7 @@ Ein Tutorial finden Sie unter [Laden von Daten aus Azure Blob Storage in Azure S
 ## Laden aus SQL Server
 Zum Laden von Daten aus SQL Server in SQL Data Warehouse können Sie Integration Services (SSIS) verwenden, Flatfiles übertragen oder Laufwerke an Microsoft liefern. Lesen Sie weiter für eine Zusammenfassung der verschiedenen Ladeprozesse und Links zu Tutorials.
 
-Informationen zur Planung einer vollständigen Datenmigration von SQL Server an SQL Data Warehouse finden Sie unter der [Übersicht zur Migration][].
+Informationen zur Planung einer vollständigen Datenmigration von SQL Server zu SQL Data Warehouse finden Sie unter der [Übersicht zur Migration][].
 
 ### Verwenden von Integration Services (SSIS)
 Falls Sie zum Laden in den SQL Server bereits Integration Services (SSIS)-Pakete verwenden, können Sie ihre Pakete dahingehend aktualisieren, dass sie SQL Server als Quelle und SQL Data Warehouse als Ziel verwenden. Das geht schnell und einfach und es ist eine gute Wahl, wenn Sie nicht versuchen, die Ladeprozesse zu migrieren, um Daten zu verwenden, die sich bereits in der Cloud befinden. Der Nachteil besteht darin, dass der Ladevorgang langsamer ist als wenn PolyBase verwendet wird, da SSIS den Ladevorgang nicht parallel durchführt.
@@ -80,7 +80,7 @@ Zusammenfassung des Ladeprozesses:
 2. Verwenden Sie das Befehlszeilen-Hilfsprogramm AZCopy zum Kopieren von Daten aus Flatfiles in Azure Blob Storage.
 3. Verwenden Sie PolyBase zum Laden in SQL Data Warehouse.
 
-Ein Tutorial finden Sie unter [Load data from Azure blob storage into SQL Data Warehouse (PolyBase)][] (Laden von Daten aus Azure Blob Storage in SQL Data Warehouse (PolyBase)).
+Ein Tutorial finden Sie unter [Laden von Daten aus Azure Blob Storage in SQL Data Warehouse (PolyBase)][].
 
 ### Verwenden von BCP
 Wenn Sie eine kleine Menge Daten haben, können Sie BCP zum direkten Laden in Azure SQL Data Warehouse verwenden.
@@ -103,8 +103,7 @@ Zusammenfassung des Ladeprozesses:
 
 ## Recommendations
 
-Viele unserer Partner stellen Ladelösungen bereit. Sehen Sie sich die Liste mit unseren [Lösungspartnern][] an, um mehr zu erfahren
-
+Viele unserer Partner stellen Ladelösungen bereit. Sehen Sie sich die Liste mit unseren [Lösungspartnern][] an, um mehr zu erfahren.
 
 Wenn Ihre Daten aus einer nicht-relationalen Quelle stammen und Sie diese in SQL Data Warehouse laden möchten, müssen Sie sie vor dem Laden in Zeilen und Spalten umwandeln. Die transformierten Daten müssen nicht in einer Datenbank gespeichert werden, sie können in Textdateien gespeichert werden.
 
@@ -117,21 +116,21 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 <!--Image references-->
 
 <!--Article references-->
-[Load data from Azure blob storage into SQL Data Warehouse (PolyBase)]: sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
-[Laden von Daten aus Azure Blob Storage in Azure SQL Data Warehouse (Azure Data Factory)]: sql-data-warehouse-load-from-azure-blob-storage-with-data-factory.md
-[Laden von Daten aus SQL Server in Azure SQL Data Warehouse (SSIS)]: sql-data-warehouse-load-from-sql-server-with-integration-services.md
-[Laden von Daten aus SQL Server in Azure SQL Data Warehouse (bcp)]: sql-data-warehouse-load-from-sql-server-with-bcp.md
-[Load data from SQL Server to Azure SQL Data Warehouse (AZCopy)]: sql-data-warehouse-load-from-sql-server-with-azcopy.md
+[Laden von Daten aus Azure Blob Storage in SQL Data Warehouse (PolyBase)]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
+[Laden von Daten aus Azure Blob Storage in Azure SQL Data Warehouse (Azure Data Factory)]: ./sql-data-warehouse-load-from-azure-blob-storage-with-data-factory.md
+[Laden von Daten aus SQL Server in Azure SQL Data Warehouse (SSIS)]: ./sql-data-warehouse-load-from-sql-server-with-integration-services.md
+[Laden von Daten aus SQL Server in Azure SQL Data Warehouse (bcp)]: ./sql-data-warehouse-load-from-sql-server-with-bcp.md
+[Load data from SQL Server to Azure SQL Data Warehouse (AZCopy)]: ./sql-data-warehouse-load-from-sql-server-with-azcopy.md
 
-[Load sample databases]: sql-data-warehouse-load-sample-databases.md
-[Übersicht zur Migration]: sql-data-warehouse-overview-migrate.md
-[Lösungspartnern]: sql-data-warehouse-integrate-solution-partners.md
-[Entwicklungsübersicht]: sql-data-warehouse-overview-develop.md
-[Statistiken]: sql-data-warehouse-develop-statistics.md
+[Laden von Beispieldaten in SQL Data Warehouse]: ./sql-data-warehouse-load-sample-databases.md
+[Übersicht zur Migration]: ./sql-data-warehouse-overview-migrate.md
+[Lösungspartnern]: ./sql-data-warehouse-integrate-solution-partners.md
+[Entwicklungsübersicht]: ./sql-data-warehouse-overview-develop.md
+[Statistiken]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 [Import/Export]: https://azure.microsoft.com/documentation/articles/storage-import-export-service/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

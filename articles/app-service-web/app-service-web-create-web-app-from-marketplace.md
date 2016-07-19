@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/10/2016"
+	ms.date="07/11/2016"
 	ms.author="robmcm"/>
 
 <!-- Note: This article replaces web-sites-php-web-site-gallery.md -->
@@ -22,26 +22,26 @@
 
 [AZURE.INCLUDE [Registerkarten](../../includes/app-service-web-get-started-nav-tabs.md)]
 
-Azure Marketplace bietet eine breite Auswahl an beliebten Web-Apps, die von Microsoft, anderen Unternehmen oder Open Source-Softwareinitiativen entwickelt wurden. Beispiele wären etwa WordPress, Umbraco CMS und Drupal. Diese Web-Apps basieren auf einer Vielzahl beliebter Frameworks wie [PHP] (in diesem WordPress-Beispiel), [.NET], [Node.js], [Java] und [Python], um nur einige zu nennen. Die einzige Software, die Sie zum Erstellen der Web-App über den Azure Marketplace benötigen, ist der Browser, den Sie für das [Azure-Portal] verwenden.
+Azure Marketplace bietet eine breite Auswahl an beliebten Web-Apps, die von Microsoft, anderen Unternehmen oder Open Source-Softwareinitiativen entwickelt wurden. Beispiele wären etwa WordPress, Umbraco CMS und Drupal. Diese Web-Apps basieren auf einer Vielzahl beliebter Frameworks wie [PHP] \(in diesem WordPress-Beispiel), [.NET], [Node.js], [Java] und [Python], um nur einige zu nennen. Die einzige Software, die Sie zum Erstellen der Web-App über den Azure Marketplace benötigen, ist der Browser, den Sie für das [Azure-Portal] verwenden.
 
 In diesem Tutorial lernen Sie Folgendes:
 
-* Suchen einer Anwendungsvorlage im Azure Marketplace
-* Erstellen einer vorlagenbasierten Web-App in Azure App Service
-* Konfigurieren der Azure App Service-Einstellungen für die neue Web-App und Datenbank
+* Suchen und Erstellen einer Web-App in Azure App Service, die auf einer Azure Marketplace-Vorlage basiert
+* Konfigurieren der Azure App Service-Einstellungen für die neue Web-App
+* Starten und Verwalten der Web-App
 
 Im Rahmen dieses Tutorials stellen Sie eine WordPress-Blog-Website aus dem Azure Marketplace bereit. Nach Abschluss dieses Tutorials verfügen Sie über eine eigene, in der Cloud ausgeführte WordPress-Website.
 
-![Dashboard für WordPress-Beispiel-Web-App][WordPressDashboard]
+![Dashboard für WordPress-Beispiel-Web-App][WordPressDashboard1]
 
-Die in diesem Tutorial bereitgestellte WordPress-Website verwendet MySQL als Datenbank. Wenn Sie stattdessen die SQL-Datenbank verwenden möchten, navigieren Sie zu [Project Nami] (ebenfalls über den Azure Marketplace erhältlich).
+Die in diesem Tutorial bereitgestellte WordPress-Website verwendet MySQL als Datenbank. Wenn Sie stattdessen die SQL-Datenbank verwenden möchten, navigieren Sie zu [Project Nami] \(ebenfalls über den Azure Marketplace erhältlich).
 
 > [AZURE.NOTE]
 Sie benötigen ein Microsoft Azure-Konto, um dieses Lernprogramm auszuführen. Wenn Sie kein Konto haben, können Sie [Ihre Visual Studio-Abonnentenvorteile aktivieren][activate] oder sich [für eine kostenlose Testversion registrieren][free trial].
 >
 > Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, besuchen Sie [Azure App Service-App erstellen]. Dort können Sie ohne Angabe von Kreditkartendaten oder anderen Verpflichtungen umgehend eine kurzzeitige Start-Web-App in App Service erstellen.
 
-## Auswählen von WordPress und Konfigurieren für Azure App Service
+## Suchen und Erstellen einer Web-App in Azure App Service
 
 1. Melden Sie sich beim [Azure-Portal] an.
 
@@ -57,7 +57,9 @@ Sie benötigen ein Microsoft Azure-Konto, um dieses Lernprogramm auszuführen. W
 
 	![Erstellen einer WordPress-Web-App][MarketplaceCreate]
 
-1. Das Blatt mit den WordPress-Einstellungen wird angezeigt. Führen Sie auf diesem Blatt folgende Schritte aus:
+## Konfigurieren von Azure App Service-Einstellungen für Ihre neue Web-App
+
+1. Nachdem Sie eine neue Web-App erstellt haben, wird das Blatt mit den WordPress-Einstellungen angezeigt. Führen Sie auf diesem Blatt folgende Schritte aus:
 
 	![Konfigurieren der Einstellungen für die WordPress-Web-App][ConfigStart]
 
@@ -131,7 +133,7 @@ Sie benötigen ein Microsoft Azure-Konto, um dieses Lernprogramm auszuführen. W
 
 1. Die Dashboard-Seite Ihrer Website wird geöffnet und zeigt die von Ihnen angegebenen Informationen.
 
-	![Anzeigen Ihres WordPress-Dashboards][WordPressDashboard]
+	![Anzeigen Ihres WordPress-Dashboards][WordPressDashboard2]
 
 ## Nächste Schritte
 
@@ -174,7 +176,8 @@ Weitere Informationen zum Entwickeln von WordPress-Web-Apps in Azure finden Sie 
 [WordPressSelect]: ./media/app-service-web-create-web-app-from-marketplace/wpselect.png
 [WordPressBrowse]: ./media/app-service-web-create-web-app-from-marketplace/wpbrowse.png
 [WordPressLanguage]: ./media/app-service-web-create-web-app-from-marketplace/wplanguage.png
-[WordPressDashboard]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard.png
+[WordPressDashboard1]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard1.png
+[WordPressDashboard2]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard2.png
 [WordPressConfigure]: ./media/app-service-web-create-web-app-from-marketplace/wpconfigure.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -14,8 +14,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure-services"
-   ms.date="04/06/2016"
-   ms.author="iainfou;memccror"/>
+   ms.date="07/05/2016"
+   ms.author="memccror"/>
 
 # So markieren Sie einen virtuellen Windows-Computer in Azure
 
@@ -103,4 +103,4 @@ Weitere Informationen zum Festlegen von Tags über PowerShell finden Sie in den 
 [Informationen zu Ihrer Rechnung für Microsoft Azure]: ../billing-understand-your-bill.md
 [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure]: ../billing-usage-rate-card-overview.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

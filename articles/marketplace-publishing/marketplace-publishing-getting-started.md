@@ -13,74 +13,68 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/01/2016"
+   ms.date="07/05/2016"
    ms.author="hascipio" />
 
-# Veröffentlichen eines Angebots im Azure Marketplace
-Dieser Artikel soll Verkäufer dabei unterstützen, ihre Lösungen im Azure Marketplace zu erstellen und bereitzustellen, damit sie von anderen Azure-Kunden und -Partnern erworben und genutzt werden können.
+# Veröffentlichen und Verwalten eines Angebots im Azure Marketplace
+Dieser Artikel soll Entwickler dabei unterstützen, ihre im Azure Marketplace aufgeführten Lösungen zu erstellen, bereitzustellen und zu verwalten, damit sie von anderen Azure-Kunden und -Partnern erworben und genutzt werden können.
 
 Als Herausgeber einer Lösung müssen Sie zunächst definieren, welche Art von Lösung Ihr Unternehmen anbietet. Der Azure Marketplace unterstützt verschiedene Lösungen, und für jeden Lösungstyp müssen für eine erfolgreiche Veröffentlichung im Marketplace geringfügig andere Schritte ausgeführt werden.
 
-Arten von Lösungen:
-
-- VM-Image
-- Entwicklerdienst
-- Datendienst
-- Lösungsvorlage
+## Angebotstypen
+|Angebotstyp| Definition |
+|---|---|
+|VM-Image | Vorkonfiguriertes Image eines virtuellen Computers mit einem vollständig installierten Betriebssystem und mindestens einer Anwendung. VM-Imageangebote können ein einzelnes VM-Image umfassen oder aus mehreren VM-Images bestehen, die mittels einer Lösungsvorlage verbunden sind. Ein Image eines virtuellen Computers („Image“) stellt die erforderlichen Informationen zum Erstellen und Bereitstellen virtueller Computer im Azure Virtual Machines-Dienst bereit. Ein Image besteht aus einer virtuellen Festplatte mit einem Betriebssystem und ggf. einer oder mehreren virtuellen Festplatten für Daten. Kunden können mit einem einzelnen Image eine beliebige Anzahl von virtuellen Computern bereitstellen.|
+|Entwicklerdienst| Vollständig verwalteter Dienst für Information Worker, Geschäftsanalysten, Entwickler oder IT-Experten zur Verwendung bei der Entwicklung von Kundenanwendungen oder bei der Systemverwaltung. Entwicklerdienste bieten Funktionen, mit denen Kunden im Handumdrehen cloudfähige Anwendungen in Azure entwickeln können. Für den Kauf von Entwicklerdiensten benötigen Kunden ein Azure-Abonnement. Die Herausgeber sind dafür verantwortlich, die Nutzung von Entwicklerdiensten durch Kunden zu messen und Nutzungsinformationen an Microsoft zu melden, wie in der Microsoft Azure Marketplace-Herausgebervereinbarung festgelegt.|
+|Lösungsvorlage|Eine „ARM-Lösungsvorlage“ (Azure Resource Manager) ist eine Datenstruktur, die auf verschiedene Angebote verweisen kann, darunter Angebote, die von anderen Herausgebern veröffentlicht wurden, um Azure-Kunden die Bereitstellung von einem oder auch mehreren Angeboten auf zentrale, koordinierte Weise zu ermöglichen.|
 
 Einige Schritte müssen für alle Lösungstypen ausgeführt werden. In diesem Artikel erhalten Sie eine kurze Übersicht darüber, welche Schritte für die einzelnen Lösungstypen erforderlich sind.
 
+## 1\. Voraussetzungen
+
 > [AZURE.NOTE] Bevor Sie im Azure Marketplace arbeiten können, müssen Sie über eine Vorabgenehmigung verfügen. Dies gilt nicht für Herausgeber von Datendiensten.
 
-||VM-Image |Entwicklerdienst | Datendienst | Lösungsvorlage |
-|----|----|----|----|----|
-| **Erhalten einer Vorabgenehmigung** | [Microsoft Azure Certified][link-certification] | Private Vorschau | – | [Microsoft Azure Certified][link-certification] |
-| **Schritt 1: Registrieren des Entwicklerkontos** | [Microsoft Developer-Konto: Erstellung und Registrierung][link-accts] | Private Vorschau | [Microsoft Developer-Konto: Erstellung und Registrierung][link-accts] | [Microsoft Developer-Konto: Erstellung und Registrierung][link-accts] |
-|**Schritt 2: Erstellen Ihres Angebots**| [Allgemeine nicht technische Voraussetzungen](marketplace-publishing-pre-requisites.md)| Private Vorschau | [Allgemeine nicht technische Voraussetzungen](marketplace-publishing-pre-requisites.md)| [Allgemeine nicht technische Voraussetzungen](marketplace-publishing-pre-requisites.md)|
-|| [Technische Voraussetzungen für VMs][link-single-vm-prereq] | Private Vorschau | [Technische Voraussetzungen für Datendienste](marketplace-publishing-data-service-creation-prerequisites.md) | [Technische Voraussetzungen für Lösungsvorlagen](marketplace-publishing-solution-template-creation-prerequisites.md) |
-||[Anleitung zum Veröffentlichen von VM-Images][link-single-vm] | Private Vorschau | [Anleitung zum Veröffentlichen von Datendiensten](marketplace-publishing-data-service-creation.md) | [Anleitung zum Veröffentlichen von Lösungsvorlagen](marketplace-publishing-solution-template-creation.md) |
-|| [Anleitung für Marketinginhalte in Azure Marketplace][link-pushstaging] | Private Vorschau | [Anleitung für Marketinginhalte in Azure Marketplace][link-pushstaging] | [Anleitung für Marketinginhalte in Azure Marketplace][link-pushstaging] |
-| **Schritt 3: Freigeben des Angebots in der Stagingphase** | [Testen des VM-Angebots in der Stagingphase](marketplace-publishing-vm-image-test-in-staging.md) | Private Vorschau | [Testen des Datendienstangebots in der Stagingphase](marketplace-publishing-data-service-test-in-staging.md) | [Testen des Angebots einer Lösungsvorlage in der Stagingphase](marketplace-publishing-solution-template-test-in-staging.md) |
-| **Schritt 4: Bereitstellen des Angebots in Marketplace** | [Bereitstellen des Angebots in Marketplace][link-pushprod] | Private Vorschau | [Bereitstellen des Angebots in Marketplace][link-pushprod] | [Bereitstellen des Angebots in Marketplace][link-pushprod] |
+1. [Anfordern einer Vorabgenehmigung für das Microsoft Azure Certified-Programm](marketplace-publishing-azure-certification.md)
+2. [Erstellen eines Microsoft-Entwicklerkontos](marketplace-publishing-accounts-creation-registration.md)
+3. [Allgemeine Voraussetzungen für das Erstellen eines Angebots für den Azure Marketplace](marketplace-publishing-pre-requisites.md)
 
-## Support
-- [Post-production guide for virtual machine offers in the Azure Marketplace](marketplace-publishing-vm-image-post-publishing.md) (Postproduktionsleitfaden für VM-Angebote in Azure Marketplace)
-- [Grundlegendes zu den Verkäufer-Insights-Berichten][suppt-rpt-insights]
-- [Grundlegendes zu den Auszahlungsberichten][suppt-rpt-payouts]
-- [Gewusst wie: Ändern Ihres „Reseller Incentive“ für Cloud-Lösungsanbieter](marketplace-publishing-csp-incentive.md)
-- [Beheben häufiger Probleme bei der Veröffentlichung im Marketplace][suppt-common]
-- [Zugriff auf die Publisher-Unterstützung][suppt-general]
+## 2\. Veröffentlichen Ihres Angebots
+### 2\.1 Angebotsspezifische technische Voraussetzungen
+- [Technische Voraussetzungen für das Erstellen eines VM-Images für den Azure Marketplace](marketplace-publishing-vm-image-creation-prerequisites.md)
+- [Technische Voraussetzungen für das Erstellen einer Lösungsvorlage für den Azure Marketplace](marketplace-publishing-solution-template-creation-prerequisites.md)
 
-## Zusätzliche Ressourcen
-- Weitere Informationen zu den verwendeten Portalen finden Sie unter [Portale, die Sie benötigen](marketplace-publishing-portals.md).
+### 2\.2 Erstellen Ihres Angebots
+1. Erstellen Sie das Angebot, indem Sie die unten angegebenen speziellen Anleitungen verwenden.
+    - [Anleitung zum Erstellen eines VM-Images für Azure Marketplace](marketplace-publishing-vm-image-creation.md)
+    - [Leitfaden zum Erstellen einer Lösungsvorlage für den Azure Marketplace](marketplace-publishing-solution-template-creation.md)
+2. [Abschließen der Angebotserstellung mit Marketinginhalten](marketplace-publishing-push-to-staging.md)
 
-**Virtuelle Computer**
+### 2\.3 Testen des Angebots in der Stagingphase
+- [Testen des VM-Angebots in der Stagingphase](marketplace-publishing-vm-image-test-in-staging.md)
+- [Testen Ihres Angebots einer Lösungsvorlage in der Stagingumgebung](marketplace-publishing-solution-template-test-in-staging.md)
 
-- [Einrichten von Azure PowerShell](marketplace-publishing-powershell-setup.md)
+### 2\.4 Bereitstellen des Angebots im Marketplace
+- [Bereitstellen Ihres Angebots im Azure Marketplace](marketplace-publishing-push-to-production.md)
+
+### VM-Images ###
 - [Erstellen eines lokalen VM-Images](marketplace-publishing-vm-image-creation-on-premise.md)
 - [Erstellen eines virtuellen Computers unter Windows im Azure-Vorschauportal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
 
-**Datendienste**
 
-- [OData-Zuordnung für Datendienste](marketplace-publishing-data-service-creation-odata-mapping.md)
-- [OData-Zuordnungsknoten für Datendienste](marketplace-publishing-data-service-creation-odata-mapping-nodes.md)
-- [Beispiele für OData-Zuordnungen für Datendienste](marketplace-publishing-data-service-creation-odata-mapping-examples.md)
+- [Beheben häufiger Probleme bei der Veröffentlichung im Marketplace](marketplace-publishing-support-common-issues.md)
+- Weitere Informationen zu den verwendeten Portalen finden Sie unter [Portale, die Sie benötigen](marketplace-publishing-portals.md).
 
-[suppt-general]: marketplace-publishing-get-publisher-support.md
-[suppt-rpt-insights]: marketplace-publishing-report-seller-insights.md
-[suppt-rpt-payouts]: marketplace-publishing-report-payout.md
-[suppt-common]: marketplace-publishing-support-common-issues.md
-[link-certification]: marketplace-publishing-azure-certification.md
-[link-accts]: marketplace-publishing-accounts-creation-registration.md
-[link-single-vm]: marketplace-publishing-vm-image-creation.md
-[link-single-vm-prereq]: marketplace-publishing-vm-image-creation-prerequisites.md
-[link-multi-vm]: marketplace-publishing-solution-template-creation.md
-[link-multi-vm-prereq]: marketplace-publishing-solution-template-creation-prerequisites.md
-[link-datasvc]: marketplace-publishing-data-service-creation.md
-[link-datasvc-prereq]: marketplace-publishing-data-service-creation-prerequisites.md
-[link-devsvc]: marketplace-publishing-dev-service-creation.md
-[link-devsvc-prereq]: marketplace-publishing-dev-service-creation-prerequisites.md
-[link-pushstaging]: marketplace-publishing-push-to-staging.md
-[link-pushprod]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=AcomDC_0608_2016-->
+## 3\. Verwaltung des Angebots nach der Veröffentlichung
+- [Post-production guide for virtual machine offers in the Azure Marketplace (Postproduktionsleitfaden für VM-Angebote in Azure Marketplace)](marketplace-publishing-vm-image-post-publishing.md)
+- [Aktualisieren der nicht technischen Details eines Angebots oder einer SKU](marketplace-publishing-vm-image-post-publishing.md#2-how-to-update-the-non-technical-details-of-an-offer-or-a-sku)
+- [Löschen eines Liveangebots oder einer SKU aus dem Azure Marketplace](marketplace-publishing-vm-image-post-publishing.md#4-how-to-delete-a-live-offer-or-sku-from-the-azure-marketplace)
+- [Gewusst wie: Ändern Ihres „Reseller Incentive“ für Cloud-Lösungsanbieter](marketplace-publishing-csp-incentive.md)
+- [Grundlegendes zu Verkäufer-Insights-Berichten](marketplace-publishing-report-seller-insights.md)
+- [Grundlegendes zu Azure Marketplace-Auszahlungsberichten](marketplace-publishing-report-payout.md)
+- [Zugriff auf die Publisher-Unterstützung](marketplace-publishing-get-publisher-support.md)
+
+## Zusätzliche Ressourcen
+- [Einrichten von Azure PowerShell](marketplace-publishing-powershell-setup.md)
+
+<!---HONumber=AcomDC_0706_2016-->

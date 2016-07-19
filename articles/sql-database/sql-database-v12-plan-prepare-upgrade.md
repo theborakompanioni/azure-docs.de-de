@@ -158,6 +158,9 @@ Im älteren klassischen Azure-Portal können Sie auf der Datenbankseite auf **In
 Als weitere Alternative können Sie SQL Server Management Studio (SSMS) 2014 mit[CU6](http://support.microsoft.com/kb/3031047/) verwenden, um die Verbindung zur Azure SQL-Datenbank herzustellen. Weitere Informationen finden Sie in diesem Blogbeitrag:<br/>[Clienttool-Updates für Azure SQL-Datenbank](https://azure.microsoft.com/blog/2014/12/22/client-tooling-updates-for-azure-sql-database/).
 
 
+> [AZURE.IMPORTANT] Es wird empfohlen, immer die neueste Version von Management Studio zu verwenden, damit Sie mit Updates von Microsoft Azure und SQL-Datenbank synchron sind. [Aktualisieren Sie SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+
+
 ### Einschränkung *während* Upgrades auf V12
 
 
@@ -166,7 +169,7 @@ Während des Upgrades auf V12 kann weiterhin auf Daten in V11-Datenbanken zugegr
 
 | Einschränkung | Beschreibung |
 | :--- | :--- |
-| Dauer des Upgrades | Die Dauer des Upgrades, hängt von der Größe, der Edition und der Anzahl der Datenbanken auf dem Server ab. Der Upgradevorgang kann Stunden bis Tage dauern, insbesondere bei Servern mit Datenbanken mit den folgenden Eigenschaften:<br/><br/>* Größer als 50 GB oder <br/>* Andere Dienstebene als Premium<br/><br/>Auch die Erstellung neuer Datenbanken auf dem Server während des Upgrades kann die Dauer für das Upgrade verlängern. |
+| Dauer des Upgrades | Die Dauer des Upgrades, hängt von der Größe, der Edition und der Anzahl der Datenbanken auf dem Server ab. Der Upgradevorgang kann Stunden oder Tage dauern, insbesondere bei Servern mit Datenbanken mit den folgenden Eigenschaften:<br/><br/>* Größer als 50 GB oder<br/>* Andere Dienstebene als Premium<br/><br/>Auch die Erstellung neuer Datenbanken auf dem Server während des Upgrades kann die Dauer für das Upgrade verlängern. |
 | Keine Georeplikation | Georeplikation wird auf einem V12-Server nicht unterstützt, für den aktuell ein Upgrade aus V11 ausgeführt wird. |
 | Datenbank ist in der abschließenden Phase des Upgrades auf V12 kurzzeitig nicht verfügbar | Die Datenbanken, die zu Ihrem V11-Server gehören, bleiben während des Upgradeprozesses verfügbar. Die Verbindung mit dem Server und den Datenbanken ist jedoch in der abschließenden Phase, wenn der Wechsel von V11 zur vorbereiteten V12 beginnt, kurzzeitig nicht verfügbar.<br/><br/>Der Wechselzeitraum kann von 40 Sekunden bis zu 5 Minuten lang sein. Für die meisten Server ist zu erwarten, dass der Wechsel innerhalb von 90 Sekunden abgeschlossen ist. Die Wechselzeit verlängert sich für Server, die eine große Anzahl von Datenbanken haben, oder verlängert sich, wenn es umfangreiche Schreibworkloads für die Datenbanken gibt. |
 
@@ -253,4 +256,4 @@ Wenn aus einem bestimmten Grund ein Upgradefehler auftritt, bleibt Ihre V11-Date
 <!--Anchors-->
 [Subheading 1]: #subheading-1
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

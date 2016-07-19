@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="03/29/2016"
+	ms.date="07/06/2016"
 	ms.author="raynew"/>
 
 # Vorbereiten der Azure Site Recovery-Bereitstellung
@@ -139,4 +139,4 @@ Nachdem Sie die allgemeinen Bereitstellungsanforderungen kennengelernt und mitei
 - [Replizieren von Hyper-V-VMs an einem sekundären Standort mit SAN](site-recovery-vmm-san.md)
 - [Replizieren von Hyper-V-VMs mit einem einzelnen VMM-Server](site-recovery-single-vmm.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

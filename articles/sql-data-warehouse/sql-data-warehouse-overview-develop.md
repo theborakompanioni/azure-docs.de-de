@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/14/2016"
+   ms.date="06/30/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Entwurfsentscheidungen und Programmiertechniken für SQL Data Warehouse
@@ -27,8 +27,8 @@ In den folgenden Artikeln werden einige der zentralen Konzepte und Entwurfsentsc
 - [Parallelität][]
 - [Transaktionen][]
 - [Benutzerdefinierte Schemas][]
-- [Tabellenentwurf][]
-- [Hashverteilungsschlüssel][]
+- [Tabellenverteilung][]
+- [Tabellenindizes][]
 - [Tabellenpartitionen][]
 - [CTAS][]
 - [Statistiken][]
@@ -51,29 +51,28 @@ Wenn Sie die Entwicklungsartikel durchgearbeitet haben, finden Sie auf der Seite
 <!--Image references-->
 
 <!--Article references-->
-[Parallelität]: sql-data-warehouse-develop-concurrency.md
-[Verbindungen]: sql-data-warehouse-develop-connections.md
-[CTAS]: sql-data-warehouse-develop-ctas.md
-[Dynamisches SQL]: sql-data-warehouse-develop-dynamic-sql.md
-[Gruppierungsoptionen]: sql-data-warehouse-develop-group-by-options.md
-[Hashverteilungsschlüssel]: sql-data-warehouse-develop-hash-distribution-key.md
-[Bezeichnungen]: sql-data-warehouse-develop-label.md
-[Schleifen]: sql-data-warehouse-develop-loops.md
-[Statistiken]: sql-data-warehouse-develop-statistics.md
-[Gespeicherte Prozeduren]: sql-data-warehouse-develop-stored-procedures.md
-[Tabellenentwurf]: sql-data-warehouse-develop-table-design.md
-[Tabellenpartitionen]: sql-data-warehouse-develop-table-partitions.md
-[Temporäre Tabellen]: sql-data-warehouse-develop-temporary-tables.md
-[Transaktionen]: sql-data-warehouse-develop-transactions.md
-[Benutzerdefinierte Schemas]: sql-data-warehouse-develop-user-defined-schemas.md
-[Variablenzuweisung]: sql-data-warehouse-develop-variable-assignment.md
-[Ansichten]: sql-data-warehouse-develop-views.md
-
-[Transact-SQL-Referenz]: sql-data-warehouse-overview-reference.md
+[Parallelität]: ./sql-data-warehouse-develop-concurrency.md
+[Verbindungen]: ./sql-data-warehouse-develop-connections.md
+[CTAS]: ./sql-data-warehouse-develop-ctas.md
+[Dynamisches SQL]: ./sql-data-warehouse-develop-dynamic-sql.md
+[Gruppierungsoptionen]: ./sql-data-warehouse-develop-group-by-options.md
+[Bezeichnungen]: ./sql-data-warehouse-develop-label.md
+[Schleifen]: ./sql-data-warehouse-develop-loops.md
+[Statistiken]: ./sql-data-warehouse-tables-statistics.md
+[Gespeicherte Prozeduren]: ./sql-data-warehouse-develop-stored-procedures.md
+[Tabellenverteilung]: ./sql-data-warehouse-tables-distribute.md
+[Tabellenindizes]: ./sql-data-warehouse-tables-index.md
+[Tabellenpartitionen]: ./sql-data-warehouse-tables-partition.md
+[Temporäre Tabellen]: ./sql-data-warehouse-tables-temporary.md
+[Transaktionen]: ./sql-data-warehouse-develop-transactions.md
+[Benutzerdefinierte Schemas]: ./sql-data-warehouse-develop-user-defined-schemas.md
+[Variablenzuweisung]: ./sql-data-warehouse-develop-variable-assignment.md
+[Ansichten]: ./sql-data-warehouse-develop-views.md
+[Transact-SQL-Referenz]: ./sql-data-warehouse-overview-reference.md
 
 <!--MSDN references-->
 [renaming objects]: https://msdn.microsoft.com/library/mt631611.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

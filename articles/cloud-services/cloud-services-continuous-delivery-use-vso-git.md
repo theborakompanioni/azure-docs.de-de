@@ -3,7 +3,7 @@
 	description="Hier erfahren Sie, wie Sie Ihre Teamprojekte in Visual Studio Team Services zur Verwendung von Git konfigurieren, sodass sie automatisch erstellt und für das Web-App-Feature in Azure App Service oder in Clouddiensten bereitgestellt werden."
 	services="cloud-services"
 	documentationCenter=".net"
-	authors="TomArcher"
+	authors="mlearned"
 	manager="douge"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/08/2016"
-	ms.author="tarcher"/>
+	ms.date="07/06/2016"
+	ms.author="mlearned"/>
 
 # Continuous Delivery für Azure mithilfe von Visual Studio Team Services und Git
 
@@ -272,4 +272,4 @@ Zusätzliche Tipps zur Verwendung von Git mit Visual Studio Team Services finden
 [47]: ./media/cloud-services-continuous-delivery-use-vso-git/SourceSettingsPage.PNG
 [48]: ./media/cloud-services-continuous-delivery-use-vso-git/IncludeWorkingBranch.PNG
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -60,11 +60,12 @@ Zunächst beginnen wir mit der Erstellung eines Java-Projekts.
 Wenn Ihre Java-Webanwendung zum Testen bereit steht, können Sie sie auf einem abgekürzten Weg direkt in der Azure-Cloud ausprobieren.
 
 1. Klicken Sie im Projektexplorer von Eclipse auf **MyHelloWorld**.
-1. Klicken Sie in der Eclipse-Symbolleiste auf die Dropdownschaltfläche **Publish**, und klicken Sie dann auf **Publish As Azure Cloud Service**.
-    ![][publishDropdownButton]
-1. Wenn Sie diese Anwendung zum ersten Mal in Azure veröffentlichen und Sie zuvor noch kein Azure-Bereitstellungsprojekt für diese Anwendung erstellt haben, wird automatisch ein Azure-Bereitstellungsprojekt für Sie erstellt. In der Regel wird Ihnen die folgende Eingabeaufforderung angezeigt, die auch das JDK-Paket und den Anwendungsserver auflistet. Beide werden automatisch bereitgestellt, um Ihre Anwendung auszuführen.
+1. Klicken Sie in der Eclipse-Symbolleiste auf die Dropdownschaltfläche **Publish**, und klicken Sie dann auf **Publish As Azure Cloud Service**.  
+	![][publishDropdownButton]
+1. Wenn Sie diese Anwendung zum ersten Mal in Azure veröffentlichen und Sie zuvor noch kein Azure-Bereitstellungsprojekt für diese Anwendung erstellt haben, wird automatisch ein Azure-Bereitstellungsprojekt für Sie erstellt. In der Regel wird Ihnen die folgende Eingabeaufforderung angezeigt, die auch das JDK-Paket und den Anwendungsserver auflistet. Beide werden automatisch bereitgestellt, um Ihre Anwendung auszuführen.  
 
-    ![][ic789598]
+	![][ic789598]
+
     Auf diesem abgekürzten Weg können Sie Ihre Anwendung schnell und einfach in Azure testen, ohne einen bestimmten Server oder ein JDK zu konfigurieren und ohne dabei Standardeinstellungen zu verändern. Wenn Sie mit den Standardeinstellungen zufrieden sind, klicken Sie auf **OK**, um die folgenden Schritte auszuführen.
     Falls Sie jedoch das JDK oder den Anwendungsserver für Ihre Anwendung ändern möchten, ist dies später möglich. Dazu bearbeiten Sie das automatisch erstellte Azure-Bereitstellungsprojekt, oder Sie klicken jetzt auf **Cancel** und lesen in diesem Tutorial den Abschnitt **Informationen zu Azure-Bereitstellungsprojekten**.
 1. Führen Sie im Dialogfeld **Publish to Azure** folgende Schritte aus:

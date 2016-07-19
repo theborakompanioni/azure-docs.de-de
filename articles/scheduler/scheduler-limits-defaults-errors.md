@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="article"
- ms.date="04/18/2016"
+ ms.date="06/30/2016"
  ms.author="krisragh"/>
 
 # Scheduler – Einschränkungen und Standardwerte
@@ -46,4 +46,4 @@ Wenn bei einer Anforderung kontinuierlich ein Fehler auftritt, obwohl die Anford
 
  [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

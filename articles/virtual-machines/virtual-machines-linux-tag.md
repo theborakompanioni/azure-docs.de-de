@@ -14,8 +14,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure-services"
-   ms.date="04/06/2016"
-   ms.author="iainfour;memccror"/>
+   ms.date="07/05/2016"
+   ms.author="memccror"/>
 
 # Gewusst wie: Markieren eines virtuellen Linux-Computers in Azure
 
@@ -25,7 +25,7 @@ In diesem Artikel werden verschiedene Methoden zum Markieren eines virtuellen Li
 
 ## Erstellen von Tags mit der Azure-Befehlszeilenschnittstelle
 
-Das Erstellen von Tags wird auch für Ressourcen unterstützt, die bereits über die Azure-Befehlszeilenschnittstelle erstellt wurden. Richten Sie zunächst die [Umgebung für Ihre Azure-Befehlszeilenschnittstelle][] ein. Melden Sie sich über die Azure-Befehlszeilenschnittstelle in Ihrem Abonnement an und wechseln Sie in den Resource Manager-Modus (`azure config mode arm`).
+Zunächst [installieren und konfigurieren Sie die Azure-Befehlszeilenschnittstelle](../xplat-cli-azure-resource-manager.md) und stellen sicher, dass Sie sich im Resource Manager-Modus (`azure config mode arm`) befinden.
 
 Sie können alle Eigenschaften für einen bestimmten virtuellen Computer einschließlich der Tags anzeigen, indem Sie den folgenden Befehl verwenden:
 
@@ -53,10 +53,10 @@ Nun, da wir unseren Ressourcen über die Azure-Befehlszeilenschnittstelle und da
 
 
 
-[Umgebung für Ihre Azure-Befehlszeilenschnittstelle]: ./xplat-cli-azure-resource-manager.md
+[Azure CLI environment]: ./xplat-cli-azure-resource-manager.md
 [Übersicht über den Azure Resource Manager]: ../resource-group-overview.md
 [Verwenden von Tags zum Organisieren von Azure-Ressourcen]: ../resource-group-using-tags.md
 [Informationen zu Ihrer Rechnung für Microsoft Azure]: ../billing-understand-your-bill.md
 [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure]: ../billing-usage-rate-card-overview.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

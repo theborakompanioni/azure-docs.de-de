@@ -47,7 +47,7 @@
 
 ###<a name="1.6.0"/>1.6.0</a>
 
-- [Partitionierte Sammlungen](documentdb-partition-data.md) und [benutzerdefinierte Leistungsstufen](documentdb-performance-levels.md) implementiert. 
+- [Partitionierte Sammlungen](documentdb-partition-data.md) und [benutzerdefinierte Leistungsstufen](documentdb-performance-levels.md) implementiert.
 
 ###<a name="1.5.6"/>1.5.6</a>
 
@@ -79,7 +79,7 @@
 
 ### <a name="1.4.0"/>1.4.0</a>
 
-- Upsert implementiert. Neue „upsertXXX“-Methoden für „DocumentClient“. 
+- Upsert implementiert. Neue „upsertXXX“-Methoden für „DocumentClient“.
 
 ### <a name="1.3.0"/>1.3.0</a>
 
@@ -98,7 +98,7 @@
 ### <a name="1.2.0"/>1.2.0</a>
 
 - Unterstützung für „GeoSpatial“-Index hinzugefügt.
-- „Id“-Eigenschaft wird für alle Ressourcen überprüft. IDs für Ressourcen dürfen nicht die Zeichen ?, /, #, &#47;&#47;, enthalten und nicht mit einem Leerzeichen enden. 
+- „Id“-Eigenschaft wird für alle Ressourcen überprüft. IDs für Ressourcen dürfen nicht die Zeichen ?, /, #, &#47;&#47;, enthalten und nicht mit einem Leerzeichen enden.
 - Neue Überschrift „Fortschritt der Indextransformation“ zu „ResourceResponse“ hinzugefügt.
 
 ### <a name="1.1.0"/>1.1.0</a>
@@ -157,11 +157,11 @@ Alle Versionen des Azure DocumentDB SDK für Node.js vor Version **1.0.0** werde
 | [1\.0.2](#1.0.2) | 23. Mai 2015 |--- 
 | [1\.0.1](#1.0.1) | 15. Mai 2015 |--- 
 | [1\.0.0](#1.0.0) | 8. April 2015 |--- 
-| 0.9.4-prelease | 6. April 2015 | 29. Februar 2016 
-| 0.9.3-prelease | 14. Januar 2015 | 29. Februar 2016 
-| 0.9.2-prelease | 18. Dezember 2014 | 29. Februar 2016 
-| 0.9.1-prelease | 22. August 2014 | 29. Februar 2016 
-| 0.9.0-prelease | 21. August 2014 | 29. Februar 2016
+| 0.9.4-prerelease | 6. April 2015 | 29. Februar 2016 
+| 0.9.3-prerelease | 14. Januar 2015 | 29. Februar 2016 
+| 0.9.2-prerelease | 18. Dezember 2014 | 29. Februar 2016 
+| 0.9.1-prerelease | 22. August 2014 | 29. Februar 2016 
+| 0.9.0-prerelease | 21. August 2014 | 29. Februar 2016
 
 
 ## Häufig gestellte Fragen
@@ -171,4 +171,4 @@ Alle Versionen des Azure DocumentDB SDK für Node.js vor Version **1.0.0** werde
 
 Weitere Informationen zu DocumentDB finden Sie auf der Seite zum Dienst [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

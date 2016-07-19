@@ -28,7 +28,7 @@ Wenn Sie die Kennwortverwaltung bereits bereitgestellt haben oder vor der Bereit
   - [Zugriff auf Daten zur Kennwortzurücksetzung für Ihre Benutzer](#how-to-access-password-reset-data-for-your-users)
 
 ## Übersicht über die Kennwortrückschreibung
-Die Kennwortrückschreibung ist eine Komponente von [Azure Active Directory Connect](active-directory-aadconnect), die von den aktuellen Abonnenten von Azure Active Directory Premium aktiviert und verwendet werden kann. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
+Die Kennwortrückschreibung ist eine Komponente von [Azure Active Directory Connect](active-directory-aadconnect.md), die von den aktuellen Abonnenten von Azure Active Directory Premium aktiviert und verwendet werden kann. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
 
 Mit der Kennwortrückschreibung können Sie Ihren Cloudmandanten so konfigurieren, dass Kennwörter in das lokale Active Directory zurückgeschrieben werden. Auf diese Weise ist es nicht erforderlich, eine lokale Self-Service-Lösung für das Zurücksetzen von Kennwörtern einzurichten und zu verwalten. Gleichzeitig bietet diese Funktion Ihren Benutzern eine bequeme, cloudbasierte Möglichkeit zum Zurücksetzen ihrer lokalen Kennwörter – unabhängig davon, wo sie sich gerade befinden. Nachfolgend werden einige der wichtigsten Merkmale der Kennwortrückschreibung aufgeführt:
 
@@ -66,7 +66,7 @@ Wenn ein Verbundbenutzer oder ein Benutzer mit Kennworthashsynchronisierung ihr 
 10.	Wenn beim Zurücksetzen des Kennworts ein Fehler auftritt, wird dem Benutzer eine Fehlermeldung angezeigt, und der Benutzer kann es erneut versuchen. Es kann zu Fehlern kommen, weil der Dienst nicht verfügbar ist, weil das ausgewählte Kennwort nicht den Organisationsrichtlinien entspricht, weil der Benutzer nicht im lokalen AD gefunden wurde, oder weil andere Gründe vorliegen. Es gibt für jeden dieser Fälle eine spezifische Meldung, die den Benutzer darüber informiert, was zur Problemlösung unternommen werden kann.
 
 ### Unterstützte Szenarien für die Kennwortrückschreibung
-In der nachstehenden Tabelle wird beschrieben, welche Szenarien für welche Versionen der Synchronisierungsfunktionen unterstützt werden. Im Allgemeinen wird dringend empfohlen, die aktuelle Version von [Azure AD Connect](active-directory-aadconnect.md#download-azure-ad-connect) zu installieren, wenn Sie die Kennwortrückschreibung verwenden möchten.
+In der nachstehenden Tabelle wird beschrieben, welche Szenarien für welche Versionen der Synchronisierungsfunktionen unterstützt werden. Im Allgemeinen wird dringend empfohlen, die aktuelle Version von [Azure AD Connect](active-directory-aadconnect.md#install-azure-ad-connect) zu installieren, wenn Sie die Kennwortrückschreibung verwenden möchten.
 
   ![][002]
 
@@ -379,4 +379,4 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 [001]: ./media/active-directory-passwords-learn-more/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-learn-more/002.jpg "Image_002.jpg"
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -29,7 +29,7 @@ Sie können SQL Server Management Studio (SSMS) verwenden, um logische Server un
 
 Es wird empfohlen, dass Sie die neueste Version von SSMS verwenden, wenn Sie mit der Azure SQL-Datenbank arbeiten.
 
-> [AZURE.IMPORTANT] Sie müssen die neueste Version von Management Studio (SSMS) verwenden, um immer auf dem gleichen Updatestand wie Microsoft Azure und SQL-Datenbank zu sein. Eine ältere Version von SSMS funktioniert nicht mit der SQL-Datenbank. Die aktuelle Version erhalten Sie unter [Download SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) (Herunterladen von SQL Server Management Studio (SSMS)).
+> [AZURE.IMPORTANT] Sie müssen die neueste Version von Management Studio (SSMS) verwenden, um immer auf dem gleichen Updatestand wie Microsoft Azure und SQL-Datenbank zu sein. Eine ältere Version von SSMS funktioniert nicht mit der SQL-Datenbank. Die aktuelle Version erhalten Sie unter [Herunterladen von SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
 
 ## Erstellen und Verwalten von Azure SQL-Datenbanken
 
@@ -76,7 +76,7 @@ Die Datenbank vom Typ **master** überwacht alle Anmeldungen und verfolgt, welch
 
 -   Gehen Sie folgendermaßen vor, um "login1" die Zugriffsberechtigung auf eine Datenbank mit dem Namen **myTestDB** zu erteilen:
 
- 1.  Um den Objekt-Explorer zur Anzeige der gerade erstellten Datenbank **myTestDB** zu aktualisieren, klicken Sie im Objekt-Explorer mit der rechten Maustaste auf den Servernamen und dann mit der linken auf **Aktualisieren**.  
+ 1.  Um den Objekt-Explorer zur Anzeige der gerade erstellten Datenbank **myTestDB** zu aktualisieren, klicken Sie im Objekt-Explorer mit der rechten Maustaste auf den Servernamen und dann mit der linken auf **Aktualisieren**.
 
      Wenn Sie die Verbindung geschlossen haben, können Sie sie im Menü **Datei** mit dem Befehl Objekt-Explorer verbinden wieder öffnen.
 
@@ -151,4 +151,4 @@ SQL-Datenbank unterstützt mehrere Dynamic Management Views, mit denen Sie eine 
  
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

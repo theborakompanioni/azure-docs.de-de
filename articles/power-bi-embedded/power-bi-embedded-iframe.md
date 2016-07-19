@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Microsoft Power BI Embedded Preview – Einbetten eines Power BI-Berichts mit einem IFrame"
-   description="Microsoft Power BI Embedded Preview – Grundlegender Code zum Einbetten eines Berichts in Ihre App, Authentifizieren mit Power BI Embedded-App-Token, Abrufen von Berichten"
+   pageTitle="Microsoft Power BI Embedded – Einbetten eines Power BI-Berichts mit einem IFrame"
+   description="Microsoft Power BI Embedded – Grundlegender Code zum Einbetten eines Berichts in Ihre App, Authentifizieren mit Power BI Embedded-App-Token, Abrufen von Berichten"
    services="power-bi-embedded"
    documentationCenter=""
    authors="minewiskan"
@@ -13,28 +13,26 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="06/28/2016"
+   ms.date="07/05/2016"
    ms.author="owend"/>
 
 # Einbetten eines Power BI-Berichts mit einem IFrame
 Dieser Artikel enthält grundlegenden Code, um einen Bericht mithilfe der REST-API **Power BI Embedded**, App-Token, einem IFrame und JavaScript-Code in Ihre App zu integrieren (einzubetten).
 
-Unter [Erste Schritte mit Microsoft Power BI Embedded Preview](power-bi-embedded-get-started.md) erfahren Sie, wie Sie eine Arbeitsbereichssammlung mit mindestens einem Arbeitsbereich für Ihren Berichtsinhalt konfigurieren. Unter [Erste Schritte mit dem Beispiel zu Microsoft Power BI Embedded](power-bi-embedded-get-started-sample.md) importieren Sie dann einen Bericht in einen Arbeitsbereich.
+Unter [Erste Schritte mit Microsoft Power BI Embedded](power-bi-embedded-get-started.md) erfahren Sie, wie Sie eine Arbeitsbereichssammlung mit mindestens einem Arbeitsbereich für Ihren Berichtsinhalt konfigurieren. Unter [Erste Schritte mit dem Beispiel zu Microsoft Power BI Embedded](power-bi-embedded-get-started-sample.md) importieren Sie dann einen Bericht in einen Arbeitsbereich.
 
-In diesem Artikel erfahren Sie, wie Sie einen Bericht in Ihre App einbetten. Laden Sie für diesen Artikel am besten das Beispiel [Integrate a report with an IFrame](https://github.com/Azure-Samples/power-bi-embedded-iframe) (Integrieren eines Berichts mit einem IFrame) von GitHub herunter. Bei diesem Beispiel handelt es sich um eine einfache ASP.NET-Webformular-App zur Veranschaulichung von grundlegendem C#- und JavaScript-Code für die Berichtsintegration. Ein etwas komplexeres Beispiel, bei dem der Bericht mithilfe des Model-View-Controller (MVC)-Entwurfsmusters integriert wird, finden Sie auf GitHub unter [Sample dashboard web app](http://go.microsoft.com/fwlink/?LinkId=761493) (Beispiel für eine Dashboard-Web-App).
+In diesem Artikel werden die Schritte zum Einbetten eines Berichts in Ihre App beschrieben. Laden Sie für diesen Artikel am besten das Beispiel [Integrate a report with an IFrame](https://github.com/Azure-Samples/power-bi-embedded-iframe) (Integrieren eines Berichts mit einem IFrame) von GitHub herunter. Bei diesem Beispiel handelt es sich um eine einfache ASP.NET-Webformular-App zur Veranschaulichung von grundlegendem C#- und JavaScript-Code für die Berichtsintegration. Ein etwas komplexeres Beispiel, bei dem der Bericht mithilfe des Model-View-Controller (MVC)-Entwurfsmusters integriert wird, finden Sie auf GitHub unter [Sample dashboard web app](http://go.microsoft.com/fwlink/?LinkId=761493) (Beispiel für eine Dashboard-Web-App).
 
-Beschäftigen wir uns zunächst damit, wie Sie einen Bericht vom Typ **Power BI Embedded** in Ihre App integrieren.
-
-Zum Integrieren eines Berichts müssen folgende Schritte ausgeführt werden:
+Dies sind die Schritte zum Integrieren eines Berichts:
 
 - Schritt 1: [Abrufen eines Berichts in einem Arbeitsbereich](#GetReport). In diesem Schritt rufen Sie mithilfe eines App-Tokenflusses ein Zugriffstoken ab, um den REST-Vorgang [Get Reports](https://msdn.microsoft.com/library/mt711510.aspx) (Berichte abrufen) aufzurufen. Nach dem Abrufen eines Berichts aus der Liste **Get Reports** (Berichte abrufen) betten Sie ihn mithilfe eines Elements vom Typ **IFrame** in eine App ein.
 - Schritt 2: [Einbetten eines Berichts in eine App](#EmbedReport). In diesem Schritt verwenden Sie ein Einbettungstoken für einen Bericht, JavaScript-Code und einen IFrame, um einen Bericht in eine Web-App zu integrieren (einzubetten).
 
-Wenn Sie das Beispiel zum Integrieren eines Berichts ausführen möchten, laden Sie das Beispiel [Integrate a report with an IFrame](https://github.com/Azure-Samples/power-bi-embedded-iframe) (Integrieren eines Berichts mit einem IFrame) von GitHub herunter, und konfigurieren Sie drei Web.Config-Einstellungen:
+Wenn Sie das Beispiel zum Integrieren eines Berichts ausführen möchten, laden Sie das Beispiel [Integrate a report with an IFrame](https://github.com/Azure-Samples/power-bi-embedded-iframe) (Integrieren eines Berichts mit einem IFrame) von GitHub herunter und konfigurieren drei Web.Config-Einstellungen:
 
-- **AccessKey**: Ein Element vom Typ **AccessKey** wird verwendet, um ein JSON-Webtoken (JWT) zum Abrufen von Berichten und zum Einbetten eines Berichts zu generieren. Informationen zum Abrufen eines Elements vom Typ **AccessKey** finden Sie unter [Erste Schritte mit Microsoft Power BI Embedded Preview](power-bi-embedded-get-started.md).
-- **WorkspaceName**: Informationen zum Abrufen eines Elements vom Typ **WorkspaceName** finden Sie unter [Erste Schritte mit Microsoft Power BI Embedded Preview](power-bi-embedded-get-started.md).
-- **WorkspaceId**: Informationen zum Abrufen eines Elements vom Typ **WorkspaceId** finden Sie unter [Erste Schritte mit Microsoft Power BI Embedded Preview](power-bi-embedded-get-started.md).
+- **AccessKey**: Ein Element vom Typ **AccessKey** wird verwendet, um ein JSON Web Token (JWT) zum Abrufen von Berichten und zum Einbetten eines Berichts zu generieren. Informationen zum Abrufen eines Elements vom Typ **AccessKey** finden Sie unter [Erste Schritte mit Microsoft Power BI Embedded](power-bi-embedded-get-started.md).
+- **WorkspaceName**: Informationen zum Abrufen eines Elements vom Typ **WorkspaceName** finden Sie unter [Erste Schritte mit Microsoft Power BI Embedded](power-bi-embedded-get-started.md).
+- **WorkspaceId**: Informationen zum Abrufen eines Elements vom Typ **WorkspaceId** finden Sie unter [Erste Schritte mit Microsoft Power BI Embedded](power-bi-embedded-get-started.md).
 
 Die nächsten Abschnitte enthalten Code, den Sie zum Integrieren eines Berichts benötigen.
 
@@ -213,19 +211,16 @@ Wenn Sie den **Filterbereich** ausblenden möchten, fügen Sie der Berichtabfrag
 &filterPaneEnabled=false
 ```
 
-## Zusammenfassung
+## Zusätzliche Ressourcen
 
-In diesem Artikel haben Sie den Code kennengelernt, mit dem Sie einen **Power BI**-Bericht in Ihre App integrieren können. Laden Sie die folgenden Beispiele von GitHub herunter, um schnell mit dem Integrieren eines Berichts in Ihre App zu beginnen:
+In diesem Artikel haben Sie den Code kennengelernt, mit dem Sie einen **Power BI**-Bericht in Ihre App integrieren können. Sehen Sie sich auch diese weiteren Beispiele auf GitHub an:
 
 - [Beispiel zum Integrieren eines Berichts mit einem IFrame](https://github.com/Azure-Samples/power-bi-embedded-iframe)
 - [Beispiel für eine Dashboard-Web-App](http://go.microsoft.com/fwlink/?LinkId=761493)
 
-## Weitere Informationen
-- [Erste Schritte mit der Vorschau von Microsoft Power BI Embedded](power-bi-embedded-get-started.md)
-- [Erste Schritte mit dem Beispiel](power-bi-embedded-get-started-sample.md)
+## Siehe auch
 - [System.IdentityModel.Tokens.SigningCredentials](https://msdn.microsoft.com/library/system.identitymodel.tokens.signingcredentials.aspx)
 - [System.IdentityModel.Tokens.JwtSecurityToken](https://msdn.microsoft.com/library/system.identitymodel.tokens.jwtsecuritytoken.aspx)
 - [System.IdentityModel.Tokens.JwtSecurityTokenHandler](https://msdn.microsoft.com/library/system.identitymodel.tokens.signingcredentials.aspx)
-- [Get Reports (Berichte abrufen)](https://msdn.microsoft.com/library/mt711510.aspx)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

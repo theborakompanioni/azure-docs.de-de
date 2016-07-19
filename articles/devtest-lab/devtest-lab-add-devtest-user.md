@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/01/2016"
+	ms.date="07/05/2016"
 	ms.author="tarcher"/>
 
 # Hinzufügen von Besitzern und Benutzern zu einem Lab
@@ -31,7 +31,7 @@ Der Zugriff auf DevTest Labs wird durch die rollenbasierte Zugriffssteuerung in 
 -  **DevTest Labs-Benutzer**: Benutzer mit der Rolle **DevTest Labs-Benutzer** können virtuelle Computer im angegebenen Lab erstellen sowie alle Lab-Ressourcen (etwa virtuelle Computer, Richtlinien oder virtuelle Netzwerke) anzeigen. Benutzer können entweder *intern* (ein Mitglied von Azure Active Directory für das Abonnement) oder *extern* (ein Benutzer, der kein Mitglied von Azure AD ist, z. B. ein Mitglied einer Partnerorganisation) sein.
 	-  Die Rolle **DevTest Labs-Benutzer** muss über die Kachel **Benutzer hinzufügen** des Labs zugewiesen werden.
 	-  Benutzer mit der Rolle **DevTest Labs-Benutzer** können diese Vorgänge nur in dem Lab ausführen, dem sie zugewiesen sind. Beispiel: Ein **DevTest Labs-Benutzer** kann keinen virtuellen Computer mithilfe des Diensts für virtuelle Computer des Abonnements erstellen. Das Erstellen eines virtuellen Computers ist nur über das DevTest Labs-Konto zulässig.
-	- *Externe* Benutzer müssen über ein Konto in einer der Microsoft-Kontodomänen verfügen (d. h. @hotmail.com, @live.com, @msn.com, @passport.com, @outlook.com oder eine Variante für ein bestimmtes Land).
+	- *Externe* Benutzer sind Benutzer mit einem Microsoft-Konto.
  
 Nach Erstellung eines virtuellen Computers wird dem Benutzer, der ihn erstellt hat, auf dem erstellten virtuellen Computer automatisch die Rolle **Besitzer** zugewiesen, sodass er sämtliche Aktionen ausführen kann, die im Lab zur Verfügung stehen.
 
@@ -103,4 +103,4 @@ Um einen DevTest Labs-Benutzer zum Lab hinzuzufügen, gehen Sie folgendermaßen 
 
 1. Auf dem Blatt **Benutzer** werden die hinzugefügten Rollen und Benutzer angezeigt.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

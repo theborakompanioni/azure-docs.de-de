@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="06/07/2016" 
+	ms.date="06/24/2016" 
 	ms.author="robmcm"/>
 
 # Azure Toolkit für IntelliJ
@@ -26,8 +26,9 @@ Das Azure Toolkit für IntelliJ stellt Vorlagen und Funktionen bereit, die Ihnen
 
 ## Erste Schritte mit dem Azure Toolkit für IntelliJ
 
-Die folgenden Artikel helfen Ihnen beim Einstieg in die Verwendung des Azure Tookit für IntelliJ:
+Die folgenden Artikel helfen Ihnen beim Einstieg in die Verwendung des Azure-Toolkit für IntelliJ:
 
+* [Neuerungen im Azure-Toolkit für IntelliJ]
 * [Installieren des Azure Toolkit für IntelliJ]
 * [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]
 
@@ -42,18 +43,21 @@ Weitere Informationen zu den Azure-Toolkits für Java-IDEs finden Sie unter den 
 - *Azure-Toolkit für IntelliJ (dieser Artikel)*
   - [Installieren des Azure Toolkit für IntelliJ]
   - [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]
+  - [Neuerungen im Azure-Toolkit für IntelliJ]
 
 Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center].
 
 <!-- URL List -->
 
 [Azure-Toolkit für Eclipse]: ./azure-toolkit-for-eclipse.md
+[Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij.md
 [Erstellen einer „Hello World“-Web-App für Azure in Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
 [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
 [Installieren des Azure-Toolkits für Eclipse]: ./azure-toolkit-for-eclipse-installation.md
 [Installieren des Azure Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-installation.md
 [Neuerungen im Azure-Toolkit für Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
+[Neuerungen im Azure-Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
 
 [Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

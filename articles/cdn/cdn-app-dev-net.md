@@ -13,16 +13,20 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="07/01/2016"
 	ms.author="casoper"/>
 
-# Erste Schritte mit der Azure-CDN-Bibliothek für .NET
+# Erste Schritte mit der Azure CDN-Entwicklung
 
-Sie können die [Azure-CDN-Bibliothek für .NET](https://msdn.microsoft.com/library/mt657769.aspx) verwenden, um die Erstellung und Verwaltung von CDN-Profilen und -Endpunkten zu automatisieren. Dieses Tutorial führt Sie durch die Erstellung einer einfachen .NET-Konsolenanwendung, die einige der verfügbaren Vorgänge demonstriert. Dieses Tutorial dient nicht dazu, alle Aspekte der Azure-CDN-Bibliothek für .NET ausführlich zu beschreiben.
+> [AZURE.SELECTOR]
+- [.NET](cdn-app-dev-net.md)
+- [Node.js](cdn-app-dev-node.md)
+
+Sie können die [Azure CDN-Bibliothek für .NET](https://msdn.microsoft.com/library/mt657769.aspx) verwenden, um die Erstellung und Verwaltung von CDN-Profilen und -Endpunkten zu automatisieren. Dieses Tutorial führt Sie durch die Erstellung einer einfachen .NET-Konsolenanwendung, die einige der verfügbaren Vorgänge demonstriert. Dieses Tutorial dient nicht dazu, alle Aspekte der Azure-CDN-Bibliothek für .NET ausführlich zu beschreiben.
 
 Für dieses Tutorial benötigen Sie Visual Studio 2015. [Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) steht kostenlos zum Download zur Verfügung.
 
-Ein abgeschlossenes Beispiel dieses Tutorials finden Sie [hier](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c).
+> [AZURE.TIP] Das [vervollständigte Projekt aus diesem Tutorial](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c) steht auf MSDN zum Download bereit.
 
 [AZURE.INCLUDE [cdn-app-dev-prep](../../includes/cdn-app-dev-prep.md)]
 
@@ -30,7 +34,7 @@ Ein abgeschlossenes Beispiel dieses Tutorials finden Sie [hier](https://code.msd
 
 Nachdem Sie nun eine Ressourcengruppe für Ihre CDN-Profile erstellt und der Azure AD-Anwendung die Berechtigung zum Verwalten von CDN-Profilen und -Endpunkten innerhalb dieser Gruppe erteilt haben, können Sie damit beginnen, Ihre Anwendung zu erstellen.
 
-Klicken Sie in Visual Studio 2015 auf **Datei** > **Neu** > **Projekt...**, um das Dialogfeld für neue Projekte zu öffnen. Erweitern Sie **Visual C#**, und wählen Sie im linken Bereich **Windows** aus. Klicken Sie im mittleren Bereich auf **Konsolenanwendung**. Benennen Sie Ihr Projekt, und klicken Sie auf **OK**.
+Klicken Sie in Visual Studio 2015 auf **Datei** > **Neu** > **Projekt...**, um das Dialogfeld „Neues Projekt“ zu öffnen. Erweitern Sie **Visual C#**, und wählen Sie im linken Bereich **Windows** aus. Klicken Sie im mittleren Bereich auf **Konsolenanwendung**. Benennen Sie Ihr Projekt, und klicken Sie auf **OK**.
 
 ![Neues Projekt](./media/cdn-app-dev-net/cdn-new-project.png)
 
@@ -44,7 +48,7 @@ Das Projekt soll einige Azure-Bibliotheken verwenden, die in NuGet-Paketen entha
 
 	`Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory`
 
-3. Führen Sie den folgenden Befehl aus, um die **Azure CDN Management Library** zu installieren:
+3. Führen Sie den folgenden Befehl aus, um die **Azure CDN-Verwaltungsbibliothek** zu installieren:
 
 	`Install-Package Microsoft.Azure.Management.Cdn`
 
@@ -52,7 +56,7 @@ Das Projekt soll einige Azure-Bibliotheken verwenden, die in NuGet-Paketen entha
 
 Schreiben Sie nun die Grundstruktur des Programms.
 
-1. Ersetzen Sie auf der Registerkarte „Program.cs“ die `using`-Anweisungen im oberen Bereich durch Folgendes:
+1. Ersetzen Sie auf der Registerkarte „Program.cs“ die `using`-Direktiven im oberen Bereich durch Folgendes:
 
 	```
 	using System;
@@ -142,7 +146,7 @@ Schreiben Sie nun die Grundstruktur des Programms.
 		}
 		else
 		{
-			// They're not pressing Y or N.  Let's ask them again.
+			// They pressed something other than Y or N.  Let's ask them again.
 			return PromptUser(Question);
 		}
 	}
@@ -283,7 +287,7 @@ private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
 }
 ```
 
->[AZURE.NOTE] Im obigen Beispiel gibt die Zeichenfolge `/*` an, dass ich sämtliche Daten aus dem Stammverzeichnis des Endpunktpfads löschen möchte. Dies entspricht der Option **Alles löschen** im Bereinigungsdialogfeld des Azure-Portals. In der `CreateCdnProfile`-Methode habe ich das Profil durch Angabe des Codes `Sku = new Sku(SkuName.StandardVerizon)` als **Azure CDN from Verizon** erstellt. Der Vorgang wird also erfolgreich ausgeführt. Bei Profilen vom Typ **Azure CDN from Akamai** wird **Alles löschen** hingegen nicht unterstützt. Wenn ich also in diesem Tutorial ein Akamai-Profil verwendet hätte, müsste ich bestimmte Pfade zum Löschen angeben.
+>[AZURE.NOTE] Im obigen Beispiel gibt die Zeichenfolge `/*` an, dass ich sämtliche Daten aus dem Stammverzeichnis des Endpunktpfads löschen möchte. Dies entspricht der Option **Alles bereinigen** im Bereinigungsdialogfeld des Azure-Portals. In der `CreateCdnProfile`-Methode habe ich das Profil durch Angabe des Codes `Sku = new Sku(SkuName.StandardVerizon)` als **Azure CDN from Verizon** erstellt. Der Vorgang wird also erfolgreich ausgeführt. Bei Profilen vom Typ **Azure CDN from Akamai** wird **Alles löschen** hingegen nicht unterstützt. Wenn ich also in diesem Tutorial ein Akamai-Profil verwendet hätte, müsste ich bestimmte Pfade zum Löschen angeben.
 
 ## Löschen von CDN-Profilen und -Endpunkten
 
@@ -331,6 +335,6 @@ Bestätigen Sie die Aufforderung, um den Rest des Programms auszuführen.
 
 [Laden Sie das Beispiel herunter](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c), um sich das abgeschlossene Projekt dieser exemplarischen Vorgehensweise anzusehen.
 
-Weitere Informationen zur Azure-CDN-Bibliothek für .NET finden Sie in der [Referenz auf MSDN](https://msdn.microsoft.com/library/mt657769.aspx).
+Weitere Informationen zur Azure CDN-Verwaltungsbibliothek für .NET finden Sie in der [Referenz auf MSDN](https://msdn.microsoft.com/library/mt657769.aspx).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

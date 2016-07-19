@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/24/2016"
+	ms.date="07/06/2016"
 	ms.author="cynthn"/>
 
 # Verbinden virtueller Linux-Computer, die mit dem klassischen Bereitstellungsmodell erstellt wurden, mit einem virtuellen Netzwerk oder einem Clouddienst
@@ -33,4 +33,4 @@ Wenn Sie Ihre virtuellen Computer im gleichen eigenständigen Clouddienst platzi
 
 Nachdem Sie einen virtuellen Computer erstellt haben, empfiehlt es sich, [einen Datenträger hinzuzufügen](virtual-machines-linux-classic-attach-disk.md), damit ein Speicherort für die Daten der Dienste und Workloads verfügbar ist.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

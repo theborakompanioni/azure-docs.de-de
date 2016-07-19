@@ -34,7 +34,7 @@ Es kann Situationen geben, in denen Sie versehentlich einige Daten in einer SQL-
 
 | Datenbankwiederherstellung | Basic-Tarif | Standard-Tarife | Premium-Tarife |
 | :-- | :-- | :-- | :-- |
-| Zeitpunktwiederherstellung | Jeder Wiederherstellungspunkt innerhalb von 7 Tagen|Jeder Wiederherstellungspunkt innerhalb von 14 Tagen| Jeder Wiederherstellungspunkt innerhalb von 35 Tagen|
+| Zeitpunktwiederherstellung | Jeder Wiederherstellungspunkt innerhalb von 7 Tagen|Jeder Wiederherstellungspunkt innerhalb von 35 Tagen| Jeder Wiederherstellungspunkt innerhalb von 35 Tagen|
 
 ## Kopieren der Tabelle aus der wiederhergestellten Datenbank mithilfe des Tools für die SQL-Datenbankmigration
 1. Laden Sie den [SQL-Datenbankmigrations-Assistenten](https://sqlazuremw.codeplex.com) herunter, und installieren Sie ihn.
@@ -71,4 +71,4 @@ Es kann Situationen geben, in denen Sie versehentlich einige Daten in einer SQL-
 
 [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

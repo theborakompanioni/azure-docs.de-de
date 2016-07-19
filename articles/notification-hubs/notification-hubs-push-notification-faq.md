@@ -4,7 +4,7 @@
 	services="notification-hubs"
 	documentationCenter="mobile"
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
     keywords="Pushbenachrichtigung, Pushbenachrichtigungen, iOS-Pushbenachrichtigungen, Android-Pushbenachrichtigungen, iOS-Push, Android-Push"
 	editor="" />
 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="03/09/2016"
+	ms.date="06/29/2016"
 	ms.author="wesmc" />
 
 #Pushbenachrichtigungen bei Azure Notification Hubs – häufig gestellte Fragen (FAQs)
@@ -60,7 +60,7 @@ Klicken Sie im [klassischen Azure-Portal] auf „Service Bus“, dann auf Ihren 
 
 ##Entwurf und Entwicklung
 ###1\. Welche dienstseitigen Plattformen werden unterstützt?
-Es werden SDKs und [vollständige Beispiele] für .NET, Java, PHP, Python und Node.js bereitgestellt, damit ein App-Back-End für die Kommunikation mit Notification Hubs über eine beliebige dieser Plattformen eingerichtet werden kann. Notification Hubs-APIs basieren auf REST-Schnittstellen, sodass Sie sich auch direkt an diese wenden können, wenn Sie eine zusätzliche Abhängigkeit hinzufügen möchten. Weitere Einzelheiten finden Sie auf der Seite [How to Use the Notification Hubs REST Interface] \(Gewusst wie: Verwenden der Notification Hubs-REST-API).
+Es werden SDKs und [vollständige Beispiele] für .NET, Java, PHP, Python und Node.js bereitgestellt, damit ein App-Back-End für die Kommunikation mit Notification Hubs über eine beliebige dieser Plattformen eingerichtet werden kann. Notification Hubs-APIs basieren auf REST-Schnittstellen, sodass Sie sich auch direkt an diese wenden können, wenn Sie eine zusätzliche Abhängigkeit hinzufügen möchten. Weitere Einzelheiten finden Sie auf der Seite [How to Use the Notification Hubs REST Interface] (Gewusst wie: Verwenden der Notification Hubs-REST-API).
 
 ###2\. Welche Clientplattformen werden unterstützt?
 Pushbenachrichtigungen können an die Plattformen [Apple iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-gcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Kindle](notification-hubs-kindle-amazon-adm-push-notification.md), [Android China (über Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push notification-apns-get-started.md), [Android](xamarin-notification-hubs-push-notifications-android-gcm.md), [Chrome Apps](notification-hubs-chrome-push-notifications-get-started.md) und [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari) gesendet werden. Eine vollständige Liste der Tutorials mit ersten Schritten zum Senden von Pushbenachrichtigungen auf diesen Plattformen finden Sie auf der Seite [Erste Schritte mit Notification Hubs für iOS-Apps].
@@ -200,4 +200,4 @@ Wir bieten außerdem die Möglichkeit, Telemetriedaten programmgesteuert zu expo
 [Azure Mobile Apps]: https://azure.microsoft.com/de-DE/services/app-service/mobile/
 [App Service – Preise]: https://azure.microsoft.com/de-DE/pricing/details/app-service/
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

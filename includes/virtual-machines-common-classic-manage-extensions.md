@@ -22,10 +22,10 @@ Die häufigsten Aufgaben sind:
 Sie können die Erweiterung und die erweiterten Informationen wie folgt finden:
 
 -   PowerShell
--   Plattformübergreifende Azure-Schnittstelle (Cross-Platform Interface, CLI)
+-   Plattformübergreifende Azure-Befehlszeilenschnittstelle (Azure CLI)
 -   Dienstverwaltungs-REST-API
 
-###Microsoft Azure PowerShell
+###Azure PowerShell
 
 Einige Erweiterungen verfügen über spezielle PowerShell-Cmdlets, die ihre Konfiguration über PowerShell vereinfachen können. Die folgenden Cmdlets funktionieren jedoch für alle VM-Erweiterungen.
 
@@ -36,9 +36,7 @@ Sie können die folgenden Cmdlets zum Abrufen von Informationen zu den verfügba
 
      Im folgenden Codebeispiel wird z. B. veranschaulicht, wie Informationen für die Erweiterung **IaaSDiagnostics** mithilfe von PowerShell aufgelistet werden.
 
-        PS C:\PowerShell> Get-AzureVMAvailableExtension -ExtensionName IaaSDiagnostics
-        VERBOSE: 5:09:01 PM - Begin Operation: Get-AzureVMAvailableExtension
-        VERBOSE: 5:09:06 PM - Completed Operation: Get-AzureVMAvailableExtension
+        PS C:\> Get-AzureVMAvailableExtension -ExtensionName IaaSDiagnostics
 
         Publisher                   : Microsoft.Azure.Diagnostics
         ExtensionName               : IaaSDiagnostics
@@ -119,4 +117,4 @@ Sie können die folgenden REST-APIs verwenden, um herauszufinden, ob für eine E
 
 >[AZURE.NOTE]Erweiterungen können auch Konfigurationen verwenden, die mit JSON definiert sind. Wenn diese Typen von Erweiterungen verwendet werden, wird nur das **SampleConfig**-Element verwendet.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

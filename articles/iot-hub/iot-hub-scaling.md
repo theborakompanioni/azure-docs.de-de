@@ -38,8 +38,9 @@ D2C-Nachrichten basieren auf diesen Richtlinien für den anhaltenden Durchsatz:
 | ---- | -------------------- | ------------------- |
 | S1 | Bis zu 1111 KB/Minute pro Einheit<br/>(1,5 GB/Tag/Einheit) | Durchschnittlich 278 Nachrichten/Minute pro Einheit<br/>(400.000 Nachrichten/Tag pro Einheit) |
 | S2 | Bis zu 16 MB/Minute pro Einheit<br/>(22,8 GB/Tag/Einheit) | Durchschnittlich 4167 Nachrichten/Minute pro Einheit<br/>(6 Millionen Nachrichten/Tag pro Einheit) |
+| S3 | Bis zu 814 MB/Minute pro Einheit<br/>(1.144,4 GB/Tag/Einheit) | Durchschnittlich 208.333 Nachrichten/Minute pro Einheit<br/>(300 Millionen Nachrichten/Tag pro Einheit) |
 
-Die Leistung wird bei C2D-Nachrichten pro Gerät skaliert und jedes Gerät empfängt bis zu 5 Nachrichten pro Minute.
+Die Leistung wird bei C2D-Nachrichten pro Gerät skaliert und jedes Gerät empfängt bis zu 5 Nachrichten pro Minute.
 
 ## Durchsatz von Identitätsregistrierungsvorgängen
 
@@ -55,7 +56,7 @@ Eine einzelne IoT Hub-Einheit kann zwar auf Millionen von Geräten skaliert werd
 
 Folgen Sie diesen Links, um mehr über Azure IoT Hub zu erfahren:
 
-- [Erste Schritte mit IoT Hub (Lernprogramm)][lnk-get-started]
+- [Erste Schritte mit IoT Hub (Lernprogramm)][lnk-get-started]
 - [Was ist Azure IoT Hub?][]
 
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
@@ -64,4 +65,4 @@ Folgen Sie diesen Links, um mehr über Azure IoT Hub zu erfahren:
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
 [Was ist Azure IoT Hub?]: iot-hub-what-is-iot-hub.md
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0706_2016-->

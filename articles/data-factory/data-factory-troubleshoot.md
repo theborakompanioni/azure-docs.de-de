@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016" 
+	ms.date="06/15/2016" 
 	ms.author="spelluru"/>
 
 # Problembehandlung bei Data Factory
@@ -54,7 +54,7 @@ Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager** auf dem Gatew
 
 Slices können sich aus unterschiedlichen Gründen im Zustand **Waiting** befinden. Zu den häufigsten Gründen zählt, dass die Eigenschaft **external** nicht auf **true** festgelegt ist. Ein Dataset, das außerhalb des Gültigkeitsbereichs von Azure Data Factory erstellt wird, sollte mit der Eigenschaft **external** gekennzeichnet sein. Dies bedeutet, dass es sich um externe Daten handelt, die nicht von Pipelines innerhalb der Data Factory unterstützt werden. Die Datenslices werden als **Ready** gekennzeichnet, sobald die Daten im entsprechenden Speicher verfügbar sind.
 
-Das folgende Beispiel zeigt die Verwendung der Eigenschaft **external**. Sie können optional **externalData*** angeben, wenn Sie "external" auf "true" festlegen.
+Das folgende Beispiel zeigt die Verwendung der Eigenschaft **external**. Sie können optional **externalData** angeben, wenn Sie "external" auf "true" festlegen.
 
 Weitere Informationen zu dieser Eigenschaft finden Sie im Artikel [Datasets](data-factory-create-datasets.md).
 	
@@ -143,4 +143,4 @@ Ausführliche Informationen finden Sie unter [Überwachen von Data Factory-Pipel
 [image-data-factory-troubleshoot-activity-run-details]: ./media/data-factory-troubleshoot/Walkthrough2ActivityRunDetails.png
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

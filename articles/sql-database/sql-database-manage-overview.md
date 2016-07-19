@@ -46,4 +46,4 @@ Verwenden Sie Tools für elastische Datenbanken, um folgende Aktionen auszuführ
 * Verwalten von Datenbanken in einem Modell mit einem einzelnen Mandanten oder einem mehrinstanzenfähigen Modell mithilfe der [Clientbibliothek für die elastische Skalierung](sql-database-elastic-database-client-library.md)
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

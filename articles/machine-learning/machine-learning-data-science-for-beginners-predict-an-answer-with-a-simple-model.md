@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Vorhersagen einer Antwort mit einem einfachen Modell | Microsoft Azure"
+   pageTitle="Vorhersagen einer Antwort mit einem einfachen Modell – Data Science für Einsteiger | Microsoft Azure"
    description="Erfahren Sie im 4. Video von „Data Science für Einsteiger“ mehr über das Erstellen eines einfachen Modells zum Vorhersagen des Preises eines Diamanten. Enthält eine einfache lineare Regression mit Zieldaten."                                  
    keywords="Erstellen eines Modells,einfaches Modell,einfaches Datenmodell,Preisvorhersage,einfaches Regressionsmodell"
    services="machine-learning"
@@ -17,9 +17,11 @@
    ms.date="06/29/2016"
    ms.author="cgronlun;brohrer;garye"/>
 
-# Vorhersagen einer Antwort mit einem einfachen Modell: Data Science für Einsteiger, 4. Video
+# Data Science für Einsteiger, 4. Video: Vorhersagen einer Antwort mit einem einfachen Modell
 
 Erfahren Sie im 4. Video von „Data Science für Einsteiger“ mehr über das Erstellen eines einfachen Modells zum Vorhersagen des Preises eines Diamanten. Wir zeichnen ein Regressionsmodell mit Zieldaten.
+
+Die Reihe bietet den größten Nutzen, wenn Sie sich die Videos in der vorgegebenen Reihenfolge ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)
 
 > [AZURE.VIDEO data-science-for-beginners-series-predict-an-answer-with-a-simple-model]
 
@@ -76,7 +78,7 @@ Durch das Zeichnen einer Geraden haben wir ein *Modell* erstellt. Stellen Sie si
 
 ![Lineare Regressionsgerade](./media/machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model/linear-regression-line.png)
 
-Die Tatsache, dass die Gerade nicht exakt durch alle Punkte verläuft, ist okay. Data Scientists erklären dies, indem sie sagen, dass da das Modell ist (das ist hier die Gerade) und dass jedem Punkt eine *Verzerrung* bzw. *Varianz* zugeordnet ist. Da gibt es zum einen die zugrunde liegende perfekte Beziehung und zum anderen die raue, reale Welt, die Verzerrung und Unsicherheit hinzufügt.
+Die Tatsache, dass die Gerade nicht exakt durch alle Punkte verläuft, ist okay. Data Scientists erklären dies, indem sie sagen, dass das Modell vorhanden ist (hier die Gerade) und dass jedem Punkt eine *Verzerrung* bzw. *Varianz* zugeordnet ist. Da gibt es zum einen die zugrunde liegende perfekte Beziehung und zum anderen die raue, reale Welt, die Verzerrung und Unsicherheit hinzufügt.
 
 Da wir die Frage *Wie viel?* beantworten möchten, wird dies als *Regression* bezeichnet. Und da wir eine Gerade verwenden, handelt es sich um eine *lineare Regression*.
 
@@ -101,8 +103,8 @@ Nun können wir etwas zu unserem Konfidenzintervall sagen, nämlich mit Bestimmt
 Wir haben das getan, wofür Data Scientist bezahlt werden, und mussten dazu nichts weiter tun als zeichnen:
 
 * Wir haben eine Frage gestellt, die wir mit Daten beantworten konnten.
-* Wir haben ein *Modell* mithilfe *linearer Regression* erstellt.
-* Wir haben eine *Vorhersage* samt *Konfidenzintervall* gemacht.
+* Wir haben ein *Modell* mithilfe der *linearen Regression* erstellt.
+* Wir haben eine *Vorhersage* samt *Konfidenzintervall* getroffen.
 
 Und wir haben dafür nicht auf Berechnungen oder Computer zurückgegriffen.
 
@@ -125,14 +127,15 @@ Sehen Sie sich unbedingt auch die anderen Videos in der Reihe „Data Science f�
 
 In fünf Kurzvideos der Reihe *Data Science für Einsteiger* erhalten Sie eine Schnelleinführung in Data Science.
 
-  * 1\. Video: [Die 5 Fragen, die Data Science beantworten kann](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md). **Jetzt verfügbar.**
-  * 2\. Video: [Sind Ihre Daten für Data Science bereit?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) **Jetzt verfügbar.**
-  * 3\. Video: [Stellen einer Frage, die Sie mit Daten beantworten können](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md). **Jetzt verfügbar.**
-  * 5\. Video: [Kopieren der Arbeit anderer für Ihre Data Science](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md). Am 30. Juni verfügbar.
+  * 1\. Video: [Die 5 Fragen, die Data Science beantwortet](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)
+  * 2\. Video: [Sind Ihre Daten für Data Science bereit?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md)
+  * 3\. Video: [Stellen einer Frage, die Sie mit Daten beantworten können](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)
+  * 4\. Video: Vorhersagen einer Antwort mit einem einfachen Modell
+  * 5\. Video: [Kopieren der Arbeit anderer für Ihre Data Science](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)
 
 ## Nächste Schritte
 
   * [Durchführen Ihres ersten Data Science-Experiments mit Azure Machine Learning](machine-learning-create-experiment.md)
   * [Einführung in Machine Learning in Microsoft Azure](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

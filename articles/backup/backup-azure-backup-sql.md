@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/08/2016"
+	ms.date="07/01/2016"
 	ms.author="giridham; jimpark;"/>
 
 
@@ -30,7 +30,7 @@ Die Verwaltung der Sicherung und Wiederherstellung von SQL-Datenbanken in und au
 3. Wiederherstellen der Datenbank aus Azure
 
 ## Vorbereitung
-Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Microsoft Azure Backup alle [Voraussetzungen](../backup-azure-dpm-introduction/#prerequisites) erfüllt sind. Die Voraussetzungen umfassen Aufgaben wie das Erstellen eines Sicherungstresors, das Herunterladen von Tresoranmeldedaten, das Installieren des Azure Backup-Agents und das Registrieren des Servers beim Tresor.
+Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Microsoft Azure Backup alle [Voraussetzungen](../backup-azure-dpm-introduction.md#prerequisites) erfüllt sind. Die Voraussetzungen umfassen Aufgaben wie das Erstellen eines Sicherungstresors, das Herunterladen von Tresoranmeldedaten, das Installieren des Azure Backup-Agents und das Registrieren des Servers beim Tresor.
 
 ## Erstellen einer Sicherungsrichtlinie zum Schutz von SQL Server-Datenbanken mithilfe von Azure
 
@@ -52,7 +52,7 @@ Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Microsof
 
     ![Auswählen einer SQL-Datenbank](./media/backup-azure-backup-sql/pg-databases.png)
 
-6. Geben Sie den Namen der Schutzgruppe ein, die Sie erstellen möchten. Stellen Sie sicher, dass Sie die Option "Ich möchte Onlineschutz" aktivieren.
+6. Geben Sie den Namen der Schutzgruppe ein, die Sie erstellen möchten. Stellen Sie sicher, dass Sie die Option **Ich möchte Onlineschutz** aktivieren.
 
     ![Datenschutzmethode – kurzfristig auf Datenträger & online in Azure](./media/backup-azure-backup-sql/pg-name.png)
 
@@ -174,4 +174,4 @@ Die folgenden Schritte sind erforderlich, um eine geschützte Entität (SQL Serv
 
 • [Azure Backup – Häufig gestellte Fragen](backup-azure-backup-faq.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0706_2016-->

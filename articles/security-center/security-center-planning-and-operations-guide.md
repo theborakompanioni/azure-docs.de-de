@@ -9,13 +9,13 @@
 
 <tags
    ms.service="security-center"
-   ms.topic="hero-article" 
+   ms.topic="hero-article"
    ms.devlang="na"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/25/2016"
+   ms.date="07/12/2016"
    ms.author="yurid"/>
- 
+
 # Planungs- und Betriebshandbuch für Azure Security Center
 Dieses Handbuch ist für IT-Experten, IT-Architekten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, deren Organisation Azure Security Center verwenden möchte.
 
@@ -32,12 +32,12 @@ Dieses Handbuch enthält eine Reihe von Schritten und Aufgaben, mit denen Sie di
 - Sicherheitsrollen und Zugriffsteuerungen
 - Sicherheitsrichtlinien und -empfehlungen
 - Datensammlung und -speicherung
-- Kontinuierliche Sicherheitsüberwachung 
+- Kontinuierliche Sicherheitsüberwachung
 - Reaktion auf Vorfälle
 
 Im nächsten Abschnitt erfahren Sie, wie Sie jeden dieser Aspekte bei Ihrer Planung berücksichtigen und die Empfehlungen auf der Grundlage Ihrer Anforderungen umsetzen.
 
-## Sicherheitsrollen und Zugriffsteuerungen 
+## Sicherheitsrollen und Zugriffsteuerungen
 
 Je nach Größe und Struktur Ihrer Organisation wird Azure Security Center unter Umständen von mehreren Einzelpersonen und Teams zur Durchführung unterschiedlicher sicherheitsbezogener Aufgaben verwenden. Im Anschluss sehen Sie ein Beispiel für fiktive Personas sowie ihre jeweiligen Rollen und Sicherheitsaufgaben:
 
@@ -47,7 +47,7 @@ Azure Security Center ermöglicht es den Personen, diese unterschiedlichen Aufga
 
 **Jeff (Cloudworkloadbesitzer)**
 
-- Prüft und erstellt Security Center-Empfehlungen im Azure-Portal. 
+- Prüft und erstellt Security Center-Empfehlungen im Azure-Portal.
 - Verfolgt unter Umständen Änderungen mithilfe eines Ticketsystems (verwendet API für Empfehlungen).
 
 **Rex (CISO/CIO)**
@@ -57,18 +57,18 @@ Azure Security Center ermöglicht es den Personen, diese unterschiedlichen Aufga
 **David (IT-Sicherheit)**
 
 - Legt Sicherheitsrichtlinien fest und prüft die Sicherheitsintegrität im Azure-Portal.
-- Analysiert Daten und generiert Berichte in Power BI. 
+- Analysiert Daten und generiert Berichte in Power BI.
 
 **Sam (Sicherheitsvorgänge)**
 
-- Prüft und selektiert Security Center-Warnungen im Azure-Portal. 
+- Prüft und selektiert Security Center-Warnungen im Azure-Portal.
 - Verwendet unter Umständen ein vorhandenes Dashboard (verwendet API für Warnungen).
 
 **Sherlock (Sicherheitsanalyst)**
 
-- Prüft Security Center-Warnungen im Azure-Portal. 
+- Prüft Security Center-Warnungen im Azure-Portal.
 - Verwendet unter Umständen ein vorhandenes Dashboard (verwendet API für Warnungen).
-- Analysiert Warnungstrends in Power BI. 
+- Analysiert Warnungstrends in Power BI.
 - Überprüft Ereignisprotokolle aus dem Speicher.
 
 Azure Security Center verwendet die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](../active-directory/role-based-access-control-configure.md). Diese stellt [integrierte Rollen](../active-directory/role-based-access-built-in-roles.md) bereit, die Benutzern, Gruppen und Diensten in Azure zugewiesen werden können. Wenn ein Benutzer Azure Security Center öffnet, werden ihm nur Informationen zu Ressourcen angezeigt, auf die er Zugriff hat. Hierzu muss dem Benutzer für das Abonnement oder die Ressourcengruppe, zu dem bzw.zu der eine Ressource gehört, die Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ zugewiesen sein. Für die oben genannten Personas wird also etwa folgende RBAC benötigt:
@@ -113,7 +113,7 @@ Wie Sie in der obigen Abbildung sehen, können Sicherheitsrichtlinien für Resso
 In Szenarien, in denen für Ressourcen in einer Ressourcengruppe abweichende Richtlinien benötigt werden, können Sie die Vererbung deaktivieren und benutzerdefinierte Richtlinien auf eine bestimmte Ressourcengruppe anwenden.
 
 Falls Sie benutzerdefinierte Richtlinien für bestimmte Ressourcengruppen benötigen, müssen Sie die Vererbung in der Ressourcengruppe deaktivieren und die Sicherheitsrichtlinien ändern. Wenn Sie also etwa über Workloads verfügen, für die die Transparent Data Encryption-Richtlinie für SQL nicht benötigt wird, deaktivieren Sie die Richtlinie auf der Abonnementebene, und aktivieren Sie sie nur in den Ressourcengruppen, in denen sie benötigt wird.
- 
+
 Wenn Sie benutzerdefinierte Richtlinien für verschiedene Ressourcengruppen erstellen, müssen Sie bei der Planung Ihrer Richtlinienbereitstellung berücksichtigen, dass im Falle eines Richtlinienkonflikts (Abonnement contra Ressourcengruppe) die Ressourcengruppenrichtlinie Vorrang hat.
 
 > [AZURE.NOTE] Welche Richtlinien geändert wurden, erfahren Sie in den [Azure-Überwachungsprotokollen](https://blogs.msdn.microsoft.com/cloud_solution_architect/2015/03/10/audit-logs-for-azure-events/). Richtlinienänderungen werden immer in Azure-Überwachungsprotokollen protokolliert.
@@ -122,7 +122,7 @@ Wenn Sie benutzerdefinierte Richtlinien für verschiedene Ressourcengruppen erst
 
 Ermitteln Sie vor dem Konfigurieren der Sicherheitsrichtlinien zunächst anhand der [Sicherheitsempfehlungen](security-center-recommendations.md), ob sie für Ihre verschiedenen Abonnements und Ressourcengruppen geeignet sind. Darüber hinaus müssen Sie wissen, mit welcher Aktion die Sicherheitsempfehlungen umgesetzt werden.
 
-**Endpunktschutz**: Ist für einen virtuellen Computer keine Endpunktschutzlösung aktiviert, empfiehlt Azure Security Center die Installation einer solchen Lösung. Wenn Sie Ihre bevorzugte Endpunktschutzlösung bereits lokal implementiert haben, müssen Sie entscheiden, ob Sie die gleiche Antischadsoftware für Ihre virtuellen Azure-Computer verwenden möchten. Azure Security Center bietet mehrere Optionen für den Endpunktschutz. Sie können Microsoft Antimalware (kostenlos) verwenden oder in einer Liste mit Endpunktschutzlösungen von integrierten Partnern eine Option auswählen. Weitere Informationen zum Bereitstellen von Antischadsoftware mithilfe von Azure Security Center finden Sie unter [Aktivieren von Antischadsoftware in Azure Security Center](security-center-enable-antimalware.md).
+**Endpunktschutz**: Ist für einen virtuellen Computer keine Endpunktschutzlösung aktiviert, empfiehlt Azure Security Center die Installation einer solchen Lösung. Wenn Sie Ihre bevorzugte Endpunktschutzlösung bereits lokal implementiert haben, müssen Sie entscheiden, ob Sie die gleiche Antischadsoftware für Ihre virtuellen Azure-Computer verwenden möchten. Azure Security Center bietet mehrere Optionen für den Endpunktschutz. Sie können Microsoft Antimalware (kostenlos) verwenden oder in einer Liste mit Endpunktschutzlösungen von integrierten Partnern eine Option auswählen. Weitere Informationen zum Bereitstellen von Antischadsoftware mit Azure Security Center finden Sie unter [Install Endpoint Protection in Azure Security Center](security-center-install-endpoint-protection.md) (Installieren von Endpoint Protection in Azure Security Center).
 
 **Systemupdates**: Azure Security Center identifiziert virtuelle Computer, bei denen Sicherheitsupdates oder wichtige Betriebssystemupdates fehlen. Überlegen Sie, wer bei Bedarf für die Anwendung der Updates zuständig ist und wie die Updates angewendet werden. Viele Organisationen verwenden WSUS, Windows Update oder ein anderes Tool.
 
@@ -149,14 +149,14 @@ Es wird dringend empfohlen, die Datensammlung für alle Ihre Abonnements zu akti
 Die Azure-Erweiterung für Sicherheitsüberwachung sucht nach verschiedenen sicherheitsrelevanten Konfigurationen und erfasst Sicherheitsprotokolle des virtuellen Computers. Diese Daten werden an das angegebene Speicherkonto gesendet. Der Scan-Manager (ASMSoftwareScanner.exe) wird ebenfalls auf dem virtuellen Computer installiert und dient als Patch-Scanner.
 
 Nach Aktivierung der Datensammlung in der Sicherheitsrichtlinie werden der Überwachungs-Agent und die entsprechenden Erweiterungen automatisch auf allen vorhandenen und neuen unterstützten virtuellen Computern installiert, die in Azure bereitgestellt werden. Der Agent-Prozess ist nicht invasiv, und die Leistung des virtuellen Computers wird dadurch nicht beeinträchtigt.
- 
+
 Die Datensammlung kann bei Bedarf in der Sicherheitsrichtlinie deaktiviert werden. Zuvor bereitgestellte Überwachungs-Agents können mithilfe der Menüoption zum Löschen von Agents gelöscht werden.
 
 > [AZURE.NOTE] Eine Liste mit unterstützten virtuellen Computern finden Sie unter [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md).
 
 Wählen Sie für jede Region, in der Sie virtuelle Computer ausführen, ein Speicherkonto, in dem Daten dieser virtuellen Computer gespeichert werden. Wenn Sie kein Speicherkonto für die einzelnen Regionen auswählen, wird ein Speicherkonto für Sie erstellt. Sie können jeweils einen regionsspezifischen Speicherort auswählen oder alle Informationen an einem zentralen Ort speichern. Sicherheitsrichtlinien können zwar auf der Ebene von Azure-Abonnement und -Ressourcengruppe festgelegt werden, die Region für Ihr Speicherkonto kann jedoch nur auf Abonnementebene ausgewählt werden.
 
-Wenn Sie ein Speicherkonto für mehrere verschiedene Azure-Ressourcen verwenden möchten, lesen Sie den Artikel [Skalierbarkeits- und Leistungsziele für Azure Storage](../storage/storage-scalability-targets.md), um weitere Informationen zu Größenlimits und Einschränkungen zu erhalten. Für Ihr Abonnement gelten auch Speicherkontolimits. Diese werden in [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits) beschrieben.
+Wenn Sie ein Speicherkonto für mehrere verschiedene Azure-Ressourcen verwenden möchten, lesen Sie den Artikel [Skalierbarkeits- und Leistungsziele für Azure Storage](../storage/storage-scalability-targets.md), um weitere Informationen zu Größenlimits und Einschränkungen zu erhalten. Für Ihr Abonnement gelten auch Speicherkontolimits. Diese werden in [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md) beschrieben.
 
 > [AZURE.NOTE] Die für diesen Speicher anfallenden Kosten sind nicht im Preis für Azure Security Center enthalten und werden separat in Rechnung gestellt (zu den üblichen [Azure Storage-Gebühren](https://azure.microsoft.com/pricing/details/storage/)).
 
@@ -172,8 +172,8 @@ Der Normalbetrieb wird durch Azure Security Center nicht beeinträchtigt. Die L�
 
 Das Azure Security Center-Dashboard ist in zwei Hauptbereiche unterteilt:
 
-- Prävention 
-- Erkennung 
+- Prävention
+- Erkennung
 
 Wenn Sie in Azure Security Center erstmals die Datensammlung für die aktuelle Azure-Umgebung aktivieren, sehen Sie sich unbedingt alle Empfehlungen an – entweder auf dem Blatt **Empfehlungen** oder pro Ressource (**Virtueller Computer**, **Netzwerk**, **SQL** und **Anwendung**).
 
@@ -200,9 +200,9 @@ Außerdem empfiehlt es sich, regelmäßig den Zustand vorhandener Ressourcen zu 
 
 ![Vorgänge](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4.png)
 
-1.	Über den Bereich **Sicherheitsintegrität von Ressourcen** können Sie schnell auf Ihre wichtigsten Ressourcen zugreifen. Verwenden Sie diese Option zum Überwachen Ihrer virtuellen Computer, Netzwerke, SQL Server und Anwendungen. 
+1.	Über den Bereich **Sicherheitsintegrität von Ressourcen** können Sie schnell auf Ihre wichtigsten Ressourcen zugreifen. Verwenden Sie diese Option zum Überwachen Ihrer virtuellen Computer, Netzwerke, SQL Server und Anwendungen.
 2.	Der Bereich **Empfehlungen** enthält die Empfehlungen von Azure Security Center. Im Rahmen der kontinuierlichen Überwachung stehen möglicherweise nicht jeden Tag Empfehlungen zur Verfügung. Das ist normal, da Sie ja alle Empfehlungen bei der Ersteinrichtung von Azure Security Center umgesetzt haben. Aus diesem Grund enthält der Abschnitt unter Umständen nicht täglich neue Informationen, sodass Sie nur bei Bedarf darauf zugreifen müssen.
-3.	Der Abschnitt **Erkennung** kann sich sehr häufig oder auch nur sehr selten ändern. Prüfen Sie immer Ihre Sicherheitswarnungen, und setzen Sie die Empfehlungen von Azure Security Center um. 
+3.	Der Abschnitt **Erkennung** kann sich sehr häufig oder auch nur sehr selten ändern. Prüfen Sie immer Ihre Sicherheitswarnungen, und setzen Sie die Empfehlungen von Azure Security Center um.
 
 ## Reaktion auf Vorfälle
 
@@ -233,4 +233,4 @@ In diesem Dokument haben Sie erfahren, wie Sie Sicherheitsrichtlinien in Securit
 - [Azure Security Center – häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 - [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/): Hier finden Sie Blogbeiträge zu Azure-Sicherheit und -Compliance.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0713_2016-->

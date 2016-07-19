@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/08/2016" 
+	ms.date="07/06/2016" 
 	ms.author="tomfitz"/>
 
 # Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
@@ -82,7 +82,7 @@ Die folgenden Dienste unterstützen derzeit nicht das Verschieben einer Ressourc
 
 Bei der Arbeit mit App Service-Apps können Sie nicht nur einen App Service-Plan verschieben. Zum Verschieben von App Service-Apps stehen folgende Optionen bereit:
 
-- Verschieben Sie den App Service-Plan und alle anderen App Service-Ressourcen in dieser Ressourcengruppe in eine neue Ressourcengruppe, die noch nicht über App Service-Ressourcen verfügt. Das bedeutet auch das Verschieben von App Service-Ressourcen, die nicht dem App Service-Plan zugeordnet sind. 
+- Verschieben Sie den App Service-Plan und alle anderen App Service-Ressourcen in dieser Ressourcengruppe in eine neue Ressourcengruppe, die noch nicht über App Service-Ressourcen verfügt. Das bedeutet auch das Verschieben von App Service-Ressourcen, die nicht dem App Service-Plan zugeordnet sind.
 - Verschieben Sie Apps in eine andere Ressourcengruppe, behalten Sie jedoch alle App Services-Pläne in der ursprünglichen Ressourcengruppe bei.
 
 Wenn die ursprüngliche Ressourcengruppe auch eine Application Insights-Ressource enthält, können Sie diese Ressource nicht verschieben, da Application Insights das Verschieben derzeit nicht unterstützt. Wenn Sie die Application Insights-Ressource beim Verschieben von App Service-Apps einschließen, misslingt der gesamte Verschiebevorgang. Der Application Insights- und App Service-Plan müssen sich allerdings nicht in derselben Ressourcengruppe wie die App befinden, damit die App ordnungsgemäß funktioniert.
@@ -119,7 +119,7 @@ Die Optionen zum Verschieben von Ressourcen, die über das klassische Modell ber
 Beim Verschieben von Ressourcen aus einer Ressourcengruppe in eine andere **innerhalb desselben Abonnements** gelten die folgenden Einschränkungen:
 
 - Virtuelle Netzwerke (klassisch) können nicht verschoben werden.
-- Virtuelle Computer (klassisch) müssen mit dem Clouddienst verschoben werden. 
+- Virtuelle Computer (klassisch) müssen mit dem Clouddienst verschoben werden.
 - Der Clouddienst kann nur verschoben werden, wenn der Verschiebevorgang alle dazugehörigen virtuellen Computer umfasst.
 - Es kann immer nur ein Clouddienst gleichzeitig verschoben werden.
 - Es kann immer nur ein Speicherkonto (klassisch) gleichzeitig verschoben werden.
@@ -132,11 +132,11 @@ Beim Verschieben von Ressourcen in ein **neues Abonnement** gelten die folgenden
 
 ## Verschieben von Ressourcen über das Portal
 
-Sie können einige Ressourcen über das Portal verschieben. Allerdings werden nicht alle Ressourcenanbieter, die den Vorgang unterstützen, diese Funktion über das Portal bereitstellen.
-
-Um eine Ressource zu verschieben, wählen Sie die Ressource aus und klicken dann auf die Schaltfläche **Verschieben**.
+Um eine Ressource zu verschieben, wählen Sie die Ressource aus und dann die Schaltfläche **Verschieben**.
 
 ![Ressourcen verschieben](./media/resource-group-move-resources/move-resources.png)
+
+> [AZURE.NOTE] Nicht alle Ressourcen lassen sich derzeit im Portal verschieben. Wenn Sie die Schaltfläche **Verschieben** nicht für die Ressource sehen, die Sie verschieben möchten, verwenden Sie PowerShell, CLI oder REST-API, um die Ressource zu verschieben.
 
 Beim Verschieben der Ressourcen geben Sie das Zielabonnement und die Ressourcengruppe an. Wenn andere Ressourcen mit der Ressource verschoben werden müssen, werden diese aufgeführt.
 
@@ -170,7 +170,7 @@ Beim Verschieben von Ressourcen, die über das klassische Modell bereitgestellt 
 
 ![Klassische Ressourcen verschieben](./media/resource-group-move-resources/edit-rg-icon.png)
 
-Wählen Sie unter Berücksichtigung der [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations) die zu verschiebenden Ressourcen aus. Klicken Sie auf **OK**, um mit dem Verschieben zu beginnen.
+Wählen Sie unter Berücksichtigung der [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations) die zu verschiebenden Ressourcen aus. Wählen Sie **OK**, um mit dem Verschieben zu beginnen.
 
  ![Klassische Ressourcen auswählen](./media/resource-group-move-resources/select-classic-resources.png)
  
@@ -267,9 +267,9 @@ Mit dem Anforderungstext:
 
 
 ## Nächste Schritte
-- Weitere Informationen zu PowerShell-Cmdlets zum Verwalten Ihres Abonnements finden Sie unter [Verwenden von Azure PowerShell mit Resource Manager](powershell-azure-resource-manager.md).
-- Weitere Informationen zu Befehlen der Azure-Befehlszeilenschnittstelle zum Verwalten Ihres Abonnements finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle mit Resource Manager](xplat-cli-azure-resource-manager.md).
-- Weitere Informationen zu Portalfeatures zum Verwalten Ihres Abonnements finden Sie unter [Verwenden des Azure-Portals zum Verwalten von Ressourcen](./azure-portal/resource-group-portal.md).
+- Informationen zu PowerShell-Cmdlets zum Verwalten Ihres Abonnements finden Sie unter [Verwenden von Azure PowerShell mit Resource Manager](powershell-azure-resource-manager.md).
+- Informationen zu Befehlen der Azure-Befehlszeilenschnittstelle zum Verwalten Ihres Abonnements finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle mit Resource Manager](xplat-cli-azure-resource-manager.md).
+- Informationen zu Portalfeatures zum Verwalten Ihres Abonnements finden Sie unter [Verwenden des Azure-Portals zum Verwalten von Ressourcen](./azure-portal/resource-group-portal.md).
 - Informationen zum Anwenden einer logischen Organisation auf Ihre Ressourcen finden Sie unter [Verwenden von Tags zum Organisieren von Ressourcen](resource-group-using-tags.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

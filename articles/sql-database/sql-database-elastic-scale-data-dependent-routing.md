@@ -18,7 +18,7 @@
 
 #Datenabhängiges Routing
 
-**Datenabhängiges Routing** bezeichnet die Möglichkeit, die Daten in einer Abfrage dazu zu verwenden, die Anforderung an eine entsprechende Datenbank weiterzuleiten. Dieses stellt ein grundlegendes Muster bei der Arbeit mit horizontal partitionierten Datenbanken (Sharding) dar. Der Anforderungskontext kann auch zur Weiterleitung der Anforderung verwendet werden, insbesondere dann, wenn der Shardingschlüssel nicht Teil der Abfrage ist. Jede spezifische Abfrage oder Transaktion in einer Anwendung, die datenabhängiges Routing verwendet, ist auf den Zugriff auf eine Einzeldatenbank pro Anforderung beschränkt. Für die Tools für elastische SQL Azure-Datenbanken erfolgt dieses Routing mithilfe der **[ShardMapManager-Klasse](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)** in ADO.NET-Anwendungen.
+**Datenabhängiges Routing** bezeichnet die Möglichkeit, die Daten in einer Abfrage dazu zu verwenden, die Anforderung an eine entsprechende Datenbank weiterzuleiten. Dieses stellt ein grundlegendes Muster bei der Arbeit mit horizontal partitionierten Datenbanken (Sharding) dar. Der Anforderungskontext kann auch zur Weiterleitung der Anforderung verwendet werden, insbesondere dann, wenn der Shardingschlüssel nicht Teil der Abfrage ist. Jede spezifische Abfrage oder Transaktion in einer Anwendung, die datenabhängiges Routing verwendet, ist auf den Zugriff auf eine Einzeldatenbank pro Anforderung beschränkt. Für die Tools für elastische Azure SQL-Datenbanken erfolgt dieses Routing mithilfe der **[ShardMapManager-Klasse](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)** in ADO.NET-Anwendungen.
 
 Es ist nicht erforderlich, dass die Anwendung die einzelnen Verbindungszeichenfolgen oder Datenbankspeicherorte verfolgt, die den Datenslices in der Shardingumgebung zugeordnet sind. Stattdessen öffnet bei Bedarf der [Shardzuordnungs-Manager](sql-database-elastic-scale-shard-map-management.md) basierend auf den Daten in der Shardzuordnung und dem Wert des Shardingschlüssels, der das Ziel der Anwendungsanforderung ist, Verbindungen zu den richtigen Datenbanken. (Bei diesem Schlüssel handelt es sich in der Regel um *customer\_id*, *tenant\_id*, *date\_key* oder einen anderen spezifischen Bezeichner, der ein grundlegender Parameter der Datenbankanforderung ist.)
 
@@ -52,7 +52,7 @@ Die **[ShardMap.OpenConnectionForKey-Methode](https://msdn.microsoft.com/library
 	)
 
 
-* Der **key**-Parameter wird als Suchschlüssel in der Shard-Zuordnung verwendet, um die passende Datenbank für die Anforderung zu bestimmen. 
+* Der **key**-Parameter wird als Suchschlüssel in der Shard-Zuordnung verwendet, um die passende Datenbank für die Anforderung zu bestimmen.
 
 * **connectionString** wird verwendet, um nur die Benutzeranmeldeinformationen für die gewünschte Verbindung zu übergeben. In dieser *connectionString* ist kein Datenbankname oder Servername enthalten, da die Datenbank und der Server von der Methode anhand der **ShardMap** bestimmt werden.
 
@@ -85,7 +85,7 @@ In diesem Beispiel wird der Wert des Ganzzahlschlüssels **CustomerID** zusammen
 
 Die **OpenConnectionForKey**-Methode gibt eine neue, bereits offene Verbindung mit der richtigen Datenbank zurück. Verbindungen, die auf diese Weise verwendet werden, nutzen weiterhin alle Vorteile des Verbindungspooling in ADO.Net. Solange Transaktionen und Anforderungen jeweils durch ein einzelnes Shard erfüllt werden können, sollte dies die einzige Änderung sein, die für eine Anwendung, die bereits ADO.Net verwendet, erforderlich ist.
 
-Die **[OpenConnectionForKeyAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync.aspx)**-Methode ist auch verfügbar, wenn die Anwendung die asynchrone Programmierung mit ADO.NET verwendet. Das Verhalten entspricht dem datenabhängigen Routing der **[Connection.OpenAsync](https://msdn.microsoft.com/library/hh223688(v=vs.110).aspx)** -Methode von ADO.NET.
+Die **[OpenConnectionForKeyAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync.aspx)**-Methode ist auch verfügbar, wenn die Anwendung die asynchrone Programmierung mit ADO.NET verwendet. Das Verhalten entspricht dem datenabhängigen Routing der **[Connection.OpenAsync](https://msdn.microsoft.com/library/hh223688(v=vs.110).aspx)**-Methode von ADO.NET.
 
 ## Integration in die Behandlung vorübergehender Fehler 
 
@@ -133,4 +133,4 @@ Weitere Informationen zum Trennen oder erneuten Anfügen eines Shards finden Sie
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

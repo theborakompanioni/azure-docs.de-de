@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/08/2016"
+   ms.date="06/30/2016"
    ms.author="tomfitz"/>
 
 # Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-CLI
@@ -22,8 +22,11 @@
 - [PowerShell](resource-group-template-deploy.md)
 - [Azure-Befehlszeilenschnittstelle](resource-group-template-deploy-cli.md)
 - [Portal](resource-group-template-deploy-portal.md)
-- [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 - [REST-API](resource-group-template-deploy-rest.md)
+- [Java](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
+- [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
+- [Knoten](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
+- [Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-template-deployment/)
 
 In diesem Thema wird erläutert, wie Ihre Ressourcen mithilfe von Azure-CLI und Azure Resource Manager-Vorlagen in Azure bereitgestellt werden.
 
@@ -31,6 +34,17 @@ In diesem Thema wird erläutert, wie Ihre Ressourcen mithilfe von Azure-CLI und 
 >
 > - [Anzeigen von Bereitstellungsvorgängen mit Azure-CLI](resource-manager-troubleshoot-deployments-cli.md). Hier erfahren Sie, wie Sie Informationen zum Beheben von Fehlern abrufen.
 > - [Beheben von häufigen Fehlern beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager](resource-manager-common-deployment-errors.md). Hier erfahren Sie, wie Sie häufig auftretende Bereitstellungsfehler beheben.
+
+Ihre Vorlage kann entweder eine lokale Datei oder eine externe Datei sein, die über einen URI verfügbar ist. Wenn sich Ihre Vorlage in einem Speicherkonto befindet, können Sie den Zugriffs auf die Vorlage beschränken und ein SAS-Token (Shared Access Signature) während der Bereitstellung angeben.
+
+## Schnelle Schritte zur Bereitstellung
+
+Dieser Artikel beschreibt alle verschiedenen Optionen, die Ihnen während der Bereitstellung zur Verfügung stehen. Allerdings werden Sie sehr häufig nur zwei einfache Befehle benötigen. Verwenden Sie die folgenden Befehle, um schnell mit der Bereitstellung zu beginnen:
+
+    azure group create -n ExampleResourceGroup -l "West US"
+    azure group deployment create -f <PathToTemplate> -e <PathToParameterFile> -g ExampleResourceGroup -n ExampleDeployment
+
+Weitere Informationen zu Optionen für die Bereitstellung, die für Ihr Szenario besser geeignet sein könnten, erhalten Sie im weiteren Verlauf dieses Artikels.
 
 [AZURE.INCLUDE [resource-manager-deployments](../includes/resource-manager-deployments.md)]
 
@@ -161,4 +175,4 @@ Ein Beispiel der Verwendung eines SAS-Tokens mit verknüpften Vorlagen finden Si
 - Informationen zum Bereitstellen der Lösung in andere Umgebungen finden Sie unter [Entwicklungs- und Testumgebungen in Microsoft Azure](solution-dev-test-environments.md).
 - Weitere Informationen zum Verwenden eines KeyVault-Verweises zum Übergeben sicherer Werte finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

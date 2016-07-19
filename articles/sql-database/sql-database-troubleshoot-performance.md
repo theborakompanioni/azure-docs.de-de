@@ -26,8 +26,12 @@ Sie können jederzeit den [Tarif](sql-database-service-tiers.md) einer Einzeldat
 2.	Verwenden Sie [Query Performance Insight](sql-database-query-performance.md) zum Auswerten der Abfragen mittels DTUs und dann den [SQL-Datenbankratgeber](sql-database-advisor.md), um Empfehlungen zum Erstellen und Löschen von Indizes, zum Parametrisieren von Abfragen und zum Beheben von Schemaproblemen anzuzeigen.
 3.	Mithilfe von dynamischen Verwaltungsansichten (DMVs), erweiterten Ereignissen (Xevents) und des Abfragespeichers in SSMS können Sie Leistungsparameter in Echtzeit abrufen. Im [Leistungsleitfaden](sql-database-performance-guidance.md) finden Sie detaillierte Tipps zur Überwachung und Optimierung.
 
+
+    > [AZURE.IMPORTANT] Es wird empfohlen, immer die neueste Version von Management Studio zu verwenden, damit Sie mit Updates von Microsoft Azure und SQL-Datenbank synchron sind. [Aktualisieren Sie SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+
+
 ## Schritte zur Verbesserung der Datenbankleistung mit mehr Ressourcen
 1.	Für Einzeldatenbanken können Sie die [Diensttarife bedarfsgesteuert ändern](sql-database-scale-up.md), um die Datenbankleistung zu steigern.
 2.	Ziehen Sie bei mehreren Datenbanken [Pool für elastische Datenbanken](sql-database-elastic-pool-guidance.md) in Betracht, um Ressourcen automatisch zu skalieren.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

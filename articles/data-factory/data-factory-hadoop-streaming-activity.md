@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016" 
+	ms.date="07/05/2016" 
 	ms.author="spelluru"/>
 
 # Hadoop-Streamingaktivität
@@ -74,7 +74,7 @@ Beachten Sie Folgendes:
 2. Legen Sie den Typ der Aktivität auf **HDInsightStreaming** fest.
 3. Geben Sie für die **mapper**-Eigenschaft den Namen der ausführbaren Zuordnungsdatei an. Im obigen Beispiel ist „cat.exe“ die ausführbare Zuordnungsdatei.
 4. Geben Sie für die **reducer**-Eigenschaft den Namen der ausführbaren Reduzierungsdatei an. Im obigen Beispiel ist „wc.exe“ die ausführbare Reduzierungsdatei.
-5. Geben Sie für die **input**-Eigenschaft die Eingabedatei (einschließlich Speicherort) für die Zuordnung an. Im Beispiel „wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt“ ist „adfsample“ der Blob-Container, „example/data/Gutenberg“ der Ordner und „davinci.txt“ das Blob.
+5. Geben Sie für die **input**-Eigenschaft die Eingabedatei (einschließlich Speicherort) für die Zuordnung an. Im Beispiel „wasb://adfsample@<Kontoname>.blob.core.windows.net/example/data/gutenberg/davinci.txt“ ist „adfsample“ der Blobcontainer, „example/data/Gutenberg“ der Ordner und „davinci.txt“ das Blob.
 6. Geben Sie für die **output**-Eigenschaft die Ausgabedatei (einschließlich Speicherort) für die Reduzierung an. Die Ausgabe des Hadoop-Streamingauftrags wird an dem für diese Eigenschaft angegebenen Speicherort geschrieben.
 7. Geben Sie im Abschnitt **filePaths** die Pfade für die ausführbare Zuordnungs- und Reduzierungsdatei an. Im Beispiel „adfsample/example/apps/wc.exe“ ist „adfsample“ der Blob-Container, „example/apps“ der Ordner und „wc.exe“ die ausführbare Datei.
 8. Geben Sie für die **fileLinkedService**-Eigenschaft den mit Azure Storage verknüpften Dienst an, der den Azure-Speicher mit den im Abschnitt „filePaths“ angegebenen Dateien darstellt.
@@ -196,7 +196,7 @@ Der HDInsight-Cluster wird automatisch mit Beispielprogrammen („wc.exe“ und 
 - [Hive-Aktivität](data-factory-hive-activity.md)
 - [Pig-Aktivität](data-factory-pig-activity.md)
 - [MapReduce-Aktivität](data-factory-map-reduce.md)
-- [Invoke Spark programs](data-factory-spark.md) (Aufrufen von Spark-Programmen)
-- [Invoke R scripts](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample) (Aufrufen von R-Skripts)
+- [Invoke Spark programs (Aufrufen von Spark-Programmen)](data-factory-spark.md)
+- [Invoke R scripts (Aufrufen von R-Skripts)](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

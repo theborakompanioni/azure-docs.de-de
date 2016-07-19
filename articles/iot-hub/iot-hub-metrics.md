@@ -13,12 +13,12 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="04/18/2016"
+ ms.date="07/06/2016"
  ms.author="nberdy"/>
 
 # Einführung in Diagnosemetriken
 
-Diagnosemetriken sind Teil der Azure-Metriken, die Ihnen bessere Daten zum Zustand der Azure-Ressourcen in Ihrem Abonnement liefern. Anhand von Metriken können Benutzer die allgemeine Integrität des Diensts und der mit ihm verbundenen Geräte bewerten. Benutzerorientierte Statistiken sind wichtig, da Benutzer mit ihrer Hilfe erkennen können, was mit ihrem IoT Hub passiert, und Probleme beheben können, ohne den Azure-Support zu kontaktieren.
+Diagnosemetriken liefern Ihnen bessere Daten zum Zustand der Azure-Ressourcen in Ihrem Abonnement . Anhand von Metriken können Benutzer die allgemeine Integrität des Diensts und der mit ihm verbundenen Geräte bewerten. Benutzerorientierte Statistiken sind wichtig, da Benutzer mit ihrer Hilfe erkennen können, was mit ihrem IoT Hub passiert, und Probleme beheben können, ohne den Azure-Support zu kontaktieren.
 
 Diagnosemetriken werden im Azure-Portal aktiviert.
 
@@ -70,4 +70,4 @@ Nachdem Sie einen Überblick über Diagnosemetriken erhalten haben, können Sie 
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-dr]: iot-hub-ha-dr.md
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

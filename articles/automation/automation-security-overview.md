@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/10/2016"
+   ms.date="07/06/2016"
    ms.author="magoedte" />
 
 # Azure Automation-Sicherheit
@@ -45,4 +45,4 @@ Azure AD-Dienstprinzipalobjekt | Azure-Ressourcen-Manager | [Authentifizieren vo
 Windows-Authentifizierung | Lokales Rechenzentrum | [Authentifizieren von Runbooks für Hybrid Runbook Workers](../automation/automation-hybrid-runbook-worker.md)
 AWS-Anmeldeinformationen | Amazon Web Services | [Authentifizieren von Runbooks mit Amazon Web Services (AWS)](../automation/automation-sec-configure-aws-account.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0713_2016-->

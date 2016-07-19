@@ -27,7 +27,6 @@
  - [Abgleich von Azure Active Directory-Berichten](active-directory-reporting-backfill.md)
  - [Latenzen bei Azure Active Directory-Berichten](active-directory-reporting-latencies.md)
  - [Azure Active Directory-Berichtsereignis „Unbekannter Akteur“](active-directory-reporting-unknown-actor.md)
- - [Azure Active Directory-Bericht „Alle Benutzeranmeldeaktivitäten“](active-directory-reporting-all-user-sign-in-activity-report.md)
  - [Anzeigen Ihrer Zugriffs- und Nutzungsberichte](active-directory-view-access-usage-reports.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0706_2016-->

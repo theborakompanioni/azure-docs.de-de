@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/20/2016"
+	ms.date="07/06/2016"
 	ms.author="maheshu"/>
 
 # Konfigurieren von sicherem LDAP (LDAPS) für eine durch Azure AD-Domänendienste verwaltete Domäne
@@ -242,4 +242,4 @@ Das ist schon alles. Sie können jetzt über das Internet und sicheres LDAP eine
 
 - [Verwalten einer durch Azure AD-Domänendienste verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0706_2016-->

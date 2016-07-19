@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="06/10/2016"
+   ms.date="07/01/2016"
    ms.author="nitinme"/>
 
 # Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals
@@ -31,7 +31,11 @@ Erfahren Sie, wie Sie das Azure-Portal zum Erstellen eines HDInsight-Clusters (H
 
 * Sie können **für HBase-Cluster (Windows und Linux)** den Data Lake-Speicher als Standardspeicher oder als Zusatzspeicher verwenden. Weitere Informationen finden Sie unter [Verwenden des Data Lake-Speichers mit HBase-Clustern](#use-data-lake-store-with-hbase-clusters).
 
-> [AZURE.NOTE] Eine Option zum Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake-Speicher ist nur für die HDInsight-Versionen 3.2 und 3.4 (für Hadoop-, HBase- und Storm-Cluster unter Windows und Linux) verfügbar. Für Spark-Cluster unter Linux ist diese Option nur auf HDInsight 3.4-Clustern verfügbar.
+> [AZURE.NOTE] Einige wichtige Punkte sind zu beachten.
+> 
+> * Eine Option zum Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake-Speicher ist nur für die HDInsight-Versionen 3.2 und 3.4 (für Hadoop-, HBase- und Storm-Cluster unter Windows und Linux) verfügbar. Für Spark-Cluster unter Linux ist diese Option nur auf HDInsight 3.4-Clustern verfügbar.
+>
+> * Wie bereits erwähnt, steht Data Lake-Speicher als Standardspeicher für einige Clustertypen (HBase) und zusätzlicher Speicher für andere Cluster (Hadoop, Spark, Storm) zur Verfügung. Das Verwenden von Data Lake-Speicher als zusätzliches Speicherkonto wirkt sich nicht auf Leistung oder die Fähigkeit aus, Daten aus dem Cluster in den Speicher zu lesen bzw. zu schreiben. In einem Szenario, in dem Data Lake-Speicher als zusätzlicher Speicher verwendet wird, werden clusterbezogene Dateien (z.B. Protokolle usw.) in den Standardspeicher (Azure-Blobs) geschrieben, während die Daten, die Sie verarbeiten möchten, in einem Data Lake-Speicherkonto gespeichert werden können.
 
 
 ## Voraussetzungen
@@ -270,7 +274,7 @@ In diesem Abschnitt führen Sie mithilfe des Jupyter-Notebooks, das in HDInsight
 
 3. Ein neues Notebook mit dem Namen **Untitled.pynb** wird erstellt und geöffnet.
 
-4. Da Sie ein Notebook mit dem PySpark-Kernel erstellt haben, müssen Sie keine Kontexte explizit erstellen. Die Spark- und Hive-Kontexte werden automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen. Sie können zunächst die Typen importieren, die für dieses Szenario erforderlich sind. Fügen Sie dazu den folgenden Codeausschnitt in eine Zelle ein, und drücken Sie **UMSCHALT+EINGABE**.
+4. Da Sie ein Notebook mit dem PySpark-Kernel erstellt haben, müssen Sie keine Kontexte explizit erstellen. Die Spark- und Hive-Kontexte werden automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen. Sie können zunächst die Typen importieren, die für dieses Szenario erforderlich sind. Fügen Sie dazu den folgenden Codeausschnitt in eine Zelle ein, und drücken Sie **UMSCHALT+EINGABETASTE**.
 
 		from pyspark.sql.types import *
 		
@@ -282,7 +286,7 @@ In diesem Abschnitt führen Sie mithilfe des Jupyter-Notebooks, das in HDInsight
 
 		adl://<data_lake_store_name>.azuredatalakestore.net/<path_to_file>
 
-	Fügen Sie das folgende Codebeispiel in eine leere Zelle ein, ersetzen Sie **MYDATALAKESTORE** durch den Namen Ihres Data Lake-Speicherkontos, und drücken Sie **UMSCHALT + EINGABE**. Mit diesem Beispielcode werden die Daten in einer temporären Tabelle mit dem Namen **hvac** registriert.
+	Fügen Sie das folgende Codebeispiel in eine leere Zelle ein, ersetzen Sie **MYDATALAKESTORE** durch den Namen Ihres Data Lake-Speicherkontos, und drücken Sie **UMSCHALT+EINGABETASTE**. Mit diesem Beispielcode werden die Daten in einer temporären Tabelle mit dem Namen **hvac** registriert.
 
 		# Load the data
 		hvacText = sc.textFile("adl://MYDATALAKESTORE.azuredatalakestore.net/hvac/HVAC.csv")
@@ -343,4 +347,4 @@ Mit HBase-Clustern können Sie den Data Lake-Speicher sowohl als Standardspeiche
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

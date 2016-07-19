@@ -26,7 +26,7 @@ Sie können Aufgaben erstellen, die basierend auf einer 1:1- oder 1:n-Beziehung 
 
 ## Abhängigkeiten von Aufgaben in Verbindung mit Batch .NET
 
-In diesem Artikel wird beschrieben, wie Sie Abhängigkeiten von Aufgaben mit der [Batch .NET][net_msdn]-Bibliothek konfigurieren. Zuerst zeigen wir Ihnen, wie Sie die [Abhängigkeit von Aufgaben für Aufträge aktivieren](#enable-task-dependency), und dann wird kurz beschrieben, wie Sie [eine Aufgabe mit Abhängigkeiten konfigurieren](#create-dependent-tasks). Zuletzt geht es um die von Batch unterstützten [Abhängigkeitsszenarien](#dependency-scenarios).
+In diesem Artikel wird beschrieben, wie Sie Abhängigkeiten von Aufgaben mit der [Batch .NET][net_msdn]-Bibliothek konfigurieren. Zuerst zeigen wir Ihnen, wie Sie die [Abhängigkeit von Aufgaben für Aufträge aktivieren](#enable-task-dependencies), und dann wird kurz beschrieben, wie Sie [eine Aufgabe mit Abhängigkeiten konfigurieren](#create-dependent-tasks). Zuletzt geht es um die von Batch unterstützten [Abhängigkeitsszenarien](#dependency-scenarios).
 
 ## Aktivieren der Abhängigkeiten von Aufgaben
 
@@ -162,4 +162,4 @@ Der Beitrag [Installing applications and staging data on Batch compute nodes][fo
 [2]: ./media/batch-task-dependency/02_one_to_many.png "Diagramm: 1:n-Abhängigkeit"
 [3]: ./media/batch-task-dependency/03_task_id_range.png "Diagramm: Aufgaben-ID-Bereich-Abhängigkeit"
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="get-started-article"
-   ms.date="06/24/2016"
+   ms.date="07/08/2016"
    ms.author="magoedte" />
 
 # Azure Automation-Integrationsmodule
@@ -199,6 +199,6 @@ Auch wenn Integrationsmodule im Wesentlichen PowerShell-Module sind, gibt es den
 ## Nächste Schritte
 
 - Informationen über die ersten Schritte mit PowerShell-Workflow-Runbooks finden Sie unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md).
-- Weitere Informationen zum Erstellen von PowerShell-Modulen finden Sie unter [Writing a Windows PowerShell Module](https://msdn.microsoft.com/library/dd878310(v=vs.85).aspx) (Erstellen eines Windows PowerShell-Moduls).
+- Weitere Informationen zum Erstellen von PowerShell-Modulen finden Sie unter [Writing a Windows PowerShell Module](https://msdn.microsoft.com/library/dd878310%28v=vs.85%29.aspx) (Erstellen eines Windows PowerShell-Moduls).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

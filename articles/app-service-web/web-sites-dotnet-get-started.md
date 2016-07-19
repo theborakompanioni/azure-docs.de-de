@@ -14,7 +14,7 @@
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
 	ms.date="04/22/2016"
-	ms.author="tdykstra"/>
+	ms.author="rachelap"/>
 
 # Bereitstellen einer ASP.NET-Web-App für Azure App Service mit Visual Studio
 
@@ -213,7 +213,7 @@ Sobald Ihre ASP.NET-Web-App in Azure App Service ausgeführt wird, können Sie s
 
 In diesem Lernprogramm haben Sie erfahren, wie eine einfache Webanwendung erstellt und in einer Azure-Web-App bereitgestellt wird. In den folgenden Themen und Ressourcen finden Sie weitere Informationen zu Azure App Service:
 
-* Überwachen und Verwalten Ihrer Web-App im [Azure-Portal](https://portal.azure.com/) 
+* Überwachen und Verwalten Ihrer Web-App im [Azure-Portal](https://portal.azure.com/)
 
 	Weitere Informationen finden Sie in einer [Übersicht über das Azure-Portal](/services/management-portal/) und unter [Konfigurieren von Web-Apps in Azure App Service](web-sites-configure.md).
 
@@ -240,4 +240,4 @@ In diesem Lernprogramm haben Sie erfahren, wie eine einfache Webanwendung erstel
 
 	Informationen zum Verwenden von Ressourcengruppen im Azure-Portal finden Sie unter [Verwenden des Azure-Portals zum Bereitstellen und Verwalten Ihrer Azure-Ressourcen](../resource-group-portal.md).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -54,9 +54,11 @@ Nachdem Sie dieses Tutorial zu SQL-Datenbank ausgeführt und eine Datenbank mit 
 
 - Wenn Sie lokale SQL Server-Datenbanken in Azure verschieben möchten, finden Sie unter [Migrieren von Datenbanken zu Azure SQL-Datenbank](sql-database-cloud-migrate.md) weitere Informationen.
 
+- Wenn Sie einige Daten aus einer CSV-Datei mit BCP in eine neue Tabelle laden möchten, helfen Ihnen die Informationen unter [Laden von Daten in SQL-Datenbank aus einer CSV-Datei per BCP](sql-database-load-from-csv-with-bcp.md) weiter.
+
 
 ## Zusätzliche Ressourcen
 
 [Was ist SQL Database?](sql-database-technical-overview.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->
