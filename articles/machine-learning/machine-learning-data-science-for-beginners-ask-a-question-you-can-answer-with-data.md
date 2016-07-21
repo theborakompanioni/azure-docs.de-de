@@ -4,7 +4,7 @@
    keywords="Wählen einer Frage,Data Science-Fragen,Formulieren einer Frage,Formulieren von Fragen, Regressionsfragen,Klassifizierungsfragen,genaue Frage"
    services="machine-learning"
    documentationCenter="na"
-   authors="brohrer-ms"
+   authors="femila"
    manager="paulettm"
    editor="cjgronlund"/>
 
