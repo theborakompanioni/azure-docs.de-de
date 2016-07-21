@@ -3,7 +3,7 @@
 	description="Referenz der Ausdrücke für die deklarative Bereitstellung in der Azure AD Connect-Synchronisierung."
 	services="active-directory"
 	documentationCenter=""
-	authors="andkjell"
+	authors="femila"
 	manager="StevenPo"
 	editor=""/>
 
