@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/03/2016" 
+	ms.date="02/06/2016" 
 	ms.author="awills"/>
  
 # Untersuchen von Metriken in Application Insights
@@ -114,9 +114,13 @@ Wenn Sie [benutzerdefinierte Metriken][track] in Ihrer App (Aufrufe von "TrackMe
 
 ## Segmentieren der Daten
 
+Sie können eine Metrik nach Eigenschaften aufteilen, um beispielsweise Seitenansichten auf Clients mit unterschiedlichen Betriebssystemen zu vergleichen.
+
 Wählen Sie ein Diagramm oder Raster aus, aktivieren Sie das Gruppieren, und wählen Sie eine Eigenschaft, nach der gruppiert werden soll:
 
 ![Wählen Sie "Gruppierung EIN" und dann in "Gruppieren nach" eine Eigenschaft aus](./media/app-insights-metrics-explorer/15-segment.png)
+
+> [AZURE.NOTE] Wenn Sie die Gruppierung verwenden, zeigen die Diagrammtypen „Fläche“ und „Balken“ eine gestapelte Ansicht. Dies ist nützlich, wenn die Aggregationsmethode „Sum“ lautet. Wird als Aggregationstyp aber „Durchschnitt“ verwendet, wählen Sie die Anzeigetypen „Zeile“ oder „Raster“.
 
 Wenn Sie [benutzerdefinierte Metriken][track] in Ihrer App programmiert haben und diese Eigenschaftswerte enthalten, können Sie die Eigenschaft in der Liste auswählen.
 
@@ -224,7 +228,7 @@ Wenn Sie umfangreichere Ansichten der Daten wünschen, können Sie sie [nach Pow
 
 *In meinem Diagramm werden keine Daten angezeigt.*
 
-* Filter gelten für alle Diagramme im Blatt. Stellen Sie sicher, dass Sie bei der Arbeit mit einem Diagramm keinen Filter festgelegt haben, mit dem alle Daten eines anderen Diagramms ausgeschlossen werden. 
+* Filter gelten für alle Diagramme im Blatt. Stellen Sie sicher, dass Sie bei der Arbeit mit einem Diagramm keinen Filter festgelegt haben, mit dem alle Daten eines anderen Diagramms ausgeschlossen werden.
 
     Wenn Sie verschiedene Filter für verschiedene Diagramme festlegen möchten, sollten Sie diese in unterschiedlichen Blättern erstellen und als separate Favoriten speichern. Sie können sie auch im Dashboard anheften, damit sie nebeneinander angezeigt werden.
 
@@ -247,4 +251,4 @@ Wenn Sie umfangreichere Ansichten der Daten wünschen, können Sie sie [nach Pow
 
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

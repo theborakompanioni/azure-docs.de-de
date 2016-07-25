@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/10/2016" 
+	ms.date="07/07/2016" 
 	ms.author="arramac"/>
 
-# Partitionieren von Daten in DocumentDB mit dem .NET SDK
+# Partitionieren von Daten mithilfe der clientseitigen Unterstützung in DocumentDB
 
-Azure DocumentDB unterstützt Sammlungen, die zentral hochskaliert werden und somit [über viel Speicherplatz und Durchsatz verfügen können](documentdb-partition-data.md). Es gibt allerdings Anwendungsfälle, in denen es vorteilhaft ist, das Partitionierungsverhalten präzise kontrollieren zu können. Um die für Partitionierungsaufgaben erforderlichen Codebausteine zu reduzieren, wurden Funktionen in die .NET-, Node.js- und Java-SDKs eingefügt, mit denen sich Anwendungen leichter erstellen lassen, die über mehrere Sammlungen horizontal hochskaliert werden.
+Azure DocumentDB unterstützt die [automatische Partitionierung von Sammlungen](documentdb-partition-data.md). Es gibt allerdings Anwendungsfälle, in denen es vorteilhaft ist, das Partitionierungsverhalten präzise kontrollieren zu können. Um die für Partitionierungsaufgaben erforderlichen Codebausteine zu reduzieren, wurden Funktionen in die .NET-, Node.js- und Java-SDKs eingefügt, mit denen sich Anwendungen leichter erstellen lassen, die über mehrere Sammlungen horizontal hochskaliert werden.
 
 In diesem Artikel werden die Klassen und Schnittstellen im .NET SKDK betrachtet, und es wird erläutert, wie Sie diese für die Entwicklung partitionierter Anwendungen verwenden können Andere SDKs wie Java, Node.js und Python unterstützen ähnliche Methoden und Schnittstellen für die clientseitige Partitionierung.
 
-## Partitionieren mit dem DocumentDB SDK
+## Clientseitige Partitionierung mit dem DocumentDB SDK
 
 Bevor wir genauer auf das Thema Partitionierung eingehen, betrachten wir einige grundlegende DocumentDB-Konzepte in Zusammenhang mit der Partitionierung. Jedes Azure DocumentDB-Datenbankkonto besteht aus einer Reihe von Datenbanken, die jeweils mehrere Sammlungen umfassen, die wiederum gespeicherte Prozeduren, Trigger, UDFs, Dokumente und zugehörige Anhänge enthalten können. Sammlungen können über nur eine Partition verfügen oder selbst partitioniert sein und die folgenden Eigenschaften aufweisen:
 
@@ -140,7 +140,7 @@ Diese Beispiele sind Open-Source-basiert, und wir freuen uns, wenn Sie Pullanfor
 
 Ja, DocumentDB unterstützt die [serverseitige Partitionierung](documentdb-partition-data.md). DocumentDB unterstützt auch die clientseitige Partitionierung über clientseitige Partitionsresolver für erweiterte Anwendungsfälle.
 
-** Wann sollte ich serverseitige und wann clientseitige Partitionierung verwenden?** In den meisten Anwendungsfällen empfehlen wir die Verwendung einer serverseitigen Partitionierung, da sie die Verwaltungsaufgaben für das Partitionieren von Daten und das Routing von Anforderungen übernimmt. Wenn Sie jedoch Bereichspartitionierung benötigen oder einen spezialisierten Anwendungsfall für die Leistungsisolation zwischen verschiedenen Werten von Partitionsschlüsseln haben, ist die clientseitige Partitionierung möglicherweise der beste Ansatz.
+**Wann sollte ich die serverseitige und wann die clientseitige Partitionierung verwenden?** In den meisten Anwendungsfällen empfehlen wir die Verwendung einer serverseitigen Partitionierung, da sie die Verwaltungsaufgaben für das Partitionieren von Daten und das Routing von Anforderungen übernimmt. Wenn Sie jedoch Bereichspartitionierung benötigen oder einen spezialisierten Anwendungsfall für die Leistungsisolation zwischen verschiedenen Werten von Partitionsschlüsseln haben, ist die clientseitige Partitionierung möglicherweise der beste Ansatz.
 
 **Wie füge ich eine Sammlung zu meinem Partitionierungsschema hinzu oder entferne sie daraus?**
 
@@ -164,4 +164,4 @@ Sie können "PartitionResolver" verketten, indem Sie Ihren eigenen "IPartitionRe
 * [DocumentDB-Blog mit Leistungstipps](https://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0713_2016-->

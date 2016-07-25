@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Aktivieren von Speichermetriken im Azure-Portal | Microsoft Azure" 
-	description="Aktivieren von Speichermetriken für die Blob-, Warteschlangen-, Tabellen- und Dateidienste" 
-	services="storage" 
-	documentationCenter="" 
-	authors="robinsh" 
-	manager="carmonm" 
+<properties
+	pageTitle="Aktivieren von Speichermetriken im Azure-Portal | Microsoft Azure"
+	description="Aktivieren von Speichermetriken für die Blob-, Warteschlangen-, Tabellen- und Dateidienste"
+	services="storage"
+	documentationCenter=""
+	authors="robinsh"
+	manager="carmonm"
 	editor="tysonn"/>
 
-<tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="05/09/2016" 
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="07/05/2016"
 	ms.author="robinsh"/>
 
 # Aktivieren der Azure-Speichermetriken und Anzeigen von Metrikdaten
@@ -30,7 +30,7 @@ Wenn Sie Speichermetriken aktivieren, müssen Sie einen Aufbewahrungszeitraum f�
 
 Gehen Sie wie folgt vor, um Metriken im [Azure-Portal](https://portal.azure.com) zu aktivieren:
 
-1. Navigieren Sie zum Speicherkonto. 
+1. Navigieren Sie zum Speicherkonto.
 1. Öffnen Sie das Blatt **Einstellungen** und wählen **Diagnose**.
 1. Prüfen Sie, ob der **Status** auf **Ein** festgelegt ist.
 1. Wählen Sie die Metriken für die Dienste, die Sie überwachen möchten.
@@ -71,7 +71,7 @@ Der folgende C#-Codeausschnitt zeigt, wie Metriken und Protokollierung für den 
     // Create service client for credentialed access to the Blob service.
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    // Enable Storage Analytics logging and set retention policy to 10 days. 
+    // Enable Storage Analytics logging and set retention policy to 10 days.
     ServiceProperties properties = new ServiceProperties();
     properties.Logging.LoggingOperations = LoggingOperations.All;
     properties.Logging.RetentionDays = 10;
@@ -92,7 +92,7 @@ Der folgende C#-Codeausschnitt zeigt, wie Metriken und Protokollierung für den 
     // Set the service properties.
     blobClient.SetServiceProperties(properties);
 
-    
+
 ## Anzeigen von Speichermetriken
 
 Nachdem Sie die Metriken der Speicheranalyse zum Überwachen Ihres Speicherkontos konfiguriert haben, erfasst die Speicheranalyse die Metriken in bekannten Tabellen in Ihrem Speicherkonto. Sie können Diagramme zum Anzeigen stündlicher Metriken im [Azure-Portal](https://portal.azure.com) konfigurieren:
@@ -102,7 +102,16 @@ Nachdem Sie die Metriken der Speicheranalyse zum Überwachen Ihres Speicherkonto
 3. Um einzustellen, welche Metriken in einem Diagramm angezeigt werden, klicken Sie auf den Link **Bearbeiten**. Sie können einzelne Metriken durch Aktivieren oder Deaktivieren hinzufügen oder entfernen.
 4. Klicken Sie auf **Speichern**, wenn Sie mit dem Bearbeiten der Metriken fertig sind.
 
-Wenn Sie die Metriken zur langfristigen Speicherung oder für eine lokale Analyse herunterladen möchten, müssen Sie ein Tool verwenden oder Code zum Lesen der Tabellen schreiben. Sie müssen die minütlichen Metriken für die Analyse herunterladen. Die Tabellen werden nicht angezeigt, wenn Sie alle Tabellen in Ihrem Speicherkonto auflisten. Sie können jedoch direkt anhand des Namens darauf zugreifen. Zahlreiche Drittanbietertools zum Durchsuchen des Speichers erkennen diese Tabellen und ermöglichen die direkte Anzeige (im Blogbeitrag [Microsoft Azure Storage Explorers](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx) finden Sie eine Liste der verfügbaren Tools).
+Wenn Sie die Metriken zur langfristigen Speicherung oder für eine lokale Analyse herunterladen möchten, ist Folgendes erforderlich:
+
+- Verwenden Sie ein Tool, das diese Tabellen erkennt und das Anzeigen und Herunterladen ermöglicht.
+- Schreiben Sie eine benutzerdefinierte Anwendung oder ein benutzerdefiniertes Skript zum Lesen und Speichern der Tabellen.
+
+Zahlreiche Drittanbietertools zum Durchsuchen des Speichers erkennen diese Tabellen und ermöglichen die direkte Anzeige. Eine Liste der verfügbaren Tools finden Sie unter [Microsoft Azure-Speicher-Explorer](storage-explorers.md).
+
+> [AZURE.NOTE] Ab Version 0.8.0 des [Microsoft Azure-Speicher-Explorers](http://storageexplorer.com/) können Sie die Tabellen mit Analysemetriken anzeigen und herunterladen.
+
+Beachten Sie beim programmgesteuerten Zugriff auf die Analysetabellen, dass diese nicht angezeigt werden, wenn Sie alle Tabellen im Speicherkonto auflisten. Sie können entweder direkt nach Name darauf zugreifen oder die [CloudAnalyticsClient-API](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.analytics.cloudanalyticsclient.aspx) in der .NET-Clientbibliothek verwenden, um die Tabellennamen abzufragen.
 
 ### Stundenmetriken
 - $MetricsHourPrimaryTransactionsBlob
@@ -148,7 +157,7 @@ Das folgende Listing zeigt C#-Beispielcode, der auf die minütlichen Metriken f�
     // Convert the dates to the format used in the PartitionKey
     var start = startDateTime.ToUniversalTime().ToString("yyyyMMdd'T'HHmm");
     var end = endDateTime.ToUniversalTime().ToString("yyyyMMdd'T'HHmm");
-    
+
     var services = Enum.GetValues(typeof(StorageService));
     foreach (StorageService service in services)
     {
@@ -161,9 +170,9 @@ Das folgende Listing zeigt C#-Beispielcode, der auf die minütlichen Metriken f�
     // Note, you can't filter using the entity properties Time, AccessType, or TransactionType
     // because they are calculated fields in the MetricsEntity class.
     // The PartitionKey identifies the DataTime of the metrics.
-    where entity.PartitionKey.CompareTo(start) >= 0 && entity.PartitionKey.CompareTo(end) <= 0 
+    where entity.PartitionKey.CompareTo(start) >= 0 && entity.PartitionKey.CompareTo(end) <= 0
     select entity;
-    
+
     // Filter on "user" transactions after fetching the metrics from Table Storage.
     // (StartsWith is not supported using LINQ with Azure table storage)
     var results = query.ToList().Where(m => m.RowKey.StartsWith("user"));
@@ -171,7 +180,7 @@ Das folgende Listing zeigt C#-Beispielcode, der auf die minütlichen Metriken f�
     Console.WriteLine(resultString);
     }
     }
-    
+
     private static string MetricsString(MetricsEntity entity, OperationContext opContext)
     {
     var entityProperties = entity.WriteEntity(opContext);
@@ -181,7 +190,7 @@ Das folgende Listing zeigt C#-Beispielcode, der auf die minütlichen Metriken f�
     string.Format("TransactionType: {0}, ", entity.TransactionType) +
     string.Join(",", entityProperties.Select(e => new KeyValuePair<string, string>(e.Key.ToString(), e.Value.PropertyAsObject.ToString())));
     return entityString;
-    
+
     }
 
 
@@ -203,6 +212,5 @@ Die von den Metriktabellen verwendete Kapazität ist ebenfalls kostenpflichtig: 
 
 ## Nächste Schritte:
 [Aktivieren der Speicherprotokollierung und Zugreifen auf Protokolldaten](https://msdn.microsoft.com/library/dn782840.aspx)
- 
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->

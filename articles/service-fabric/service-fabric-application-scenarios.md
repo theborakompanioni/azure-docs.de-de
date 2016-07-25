@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/12/2016"
+   ms.date="07/05/2016"
    ms.author="mfussell"/>
 
 # Service Fabric-Anwendungsszenarien
@@ -24,7 +24,7 @@ Die Service Fabric-Plattform in Azure ist ideal für die folgenden Kategorien vo
 
 - **Hoch verfügbare Dienste:** Durch das Erstellen mehrerer sekundärer Dienstreplikate bieten Service Fabric-Dienste ein schnelles Failover. Wenn ein Knoten, Prozess oder individueller Dienst aufgrund eines hardwarebedingten oder anderen Fehlers ausfällt, wird eines der sekundären Replikate zu einem primären Replikat weitergeleitet – mit minimaler Dienstunterbrechung.
 
-- **Skalierbare Dienste**: Einzelne Dienste können partitioniert werden, sodass der Zustand im Cluster horizontal hochskaliert werden kann. Darüber hinaus können einzelne Dienste im Handumdrehen erstellt und entfernt werden. Dienste können je nach Ressourcenanforderungen schnell und einfach horizontal von einigen wenigen Instanzen auf einigen wenigen Knoten zu Tausenden Instanzen auf vielen Knoten hochskaliert und wieder herunterskaliert werden. Mithilfe von Service Fabric können Sie diese Dienste erstellen und ihren gesamten Lebenszyklus verwalten.
+- **Skalierbare Dienste**: Einzelne Dienste können partitioniert werden, sodass der Zustand im Cluster horizontal hochskaliert werden kann. Darüber hinaus können einzelne Dienste im Handumdrehen erstellt und entfernt werden. Dienste können je nach Ressourcenanforderungen schnell und einfach horizontal von einigen wenigen Instanzen auf einigen wenigen Knoten auf Tausende Instanzen auf vielen Knoten hochskaliert und wieder herunterskaliert werden. Mithilfe von Service Fabric können Sie diese Dienste erstellen und ihren gesamten Lebenszyklus verwalten.
 
 - **Berechnung nicht statischer Daten**: Mit Service Fabric können Sie zustandsbehaftete Anwendungen mit einer Vielzahl von Daten, Ein- und Ausgaben und hohem Rechenaufwand erstellen. Service Fabric ermöglicht die Zusammenlegung von Verarbeitung (Berechnung) und Daten in Anwendungen. Wenn Ihre Anwendung auf Daten zugreifen muss, ist in der Regel mit einer Netzwerklatenz zu rechnen, die auf die Verwendung eines externen Datencache oder einer externen Speicherebene zurückzuführen ist. Mit zustandsbehafteten Service Fabric-Diensten lässt sich diese Latenz beseitigen, was eine höhere Leistung bei Lese- und Schreibvorgängen ermöglicht. Beispiel: Angenommen, Ihre Anwendung unterbreitet Kunden nahezu in Echtzeit Vorschläge. Bei den Anforderungen muss eine Roundtrip-Zeit von unter 100 Millisekunden erreicht werden. Im Gegensatz zum standardmäßigen Implementierungsmodell, bei dem die benötigten Daten aus einem Remotespeicher abgerufen werden müssen, bieten die Latenz- und Leistungsmerkmale von Service Fabric-Diensten (bei denen die Berechnung der Vorschlagsauswahl mit den Daten und Regeln zusammengelegt wird) den Benutzern eine schnell reagierende Umgebung.
 
@@ -61,4 +61,4 @@ Zustandsbehaftete Microservices vereinfachen Anwendungsentwürfe, da durch sie d
 [Image1]: media/service-fabric-application-scenarios/AppwithStatelessServices.jpg
 [Image2]: media/service-fabric-application-scenarios/AppwithStatefulServices.jpg
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

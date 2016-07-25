@@ -40,9 +40,9 @@ Wenn die Synchronisierung abgeschlossen ist und Sie zur Migration bereit sind, m
 
 ## Anforderungen der Transaktionsreplikation
 
-Die Transaktionsreplikation ist eine Technologie, die seit SQL Server 6.5 in SQL Server integriert ist. Es handelt sich hierbei um eine sehr ausgereifte und bewährte Technologie, für die die meisten Datenbankadministratoren über Erfahrung verfügen. Mit der [SQL Server 2016-Vorschau](http://www.microsoft.com/server-cloud/products/sql-server-2016/) kann die Azure SQL-Datenbank als [Transaktionsreplikationsabonnent](https://msdn.microsoft.com/library/mt589530.aspx) für die lokale Veröffentlichung konfiguriert werden. Wenn Sie die Einrichtung über Management Studio durchführen, erhalten Sie genau das gleiche Ergebnis wie beim Einrichten eines Abonnenten der Transaktionsreplikation auf einem lokalen Server. Der Support für dieses Szenario ist gegeben, wenn der Herausgeber und der Verteiler mindestens über eine der folgenden SQL Server-Versionen verfügen:
+Die Transaktionsreplikation ist eine Technologie, die seit SQL Server 6.5 in SQL Server integriert ist. Es handelt sich hierbei um eine sehr ausgereifte und bewährte Technologie, für die die meisten Datenbankadministratoren über Erfahrung verfügen. Mit [SQL Server 2016](https://www.microsoft.com/de-DE/cloud-platform/sql-server) kann die Azure SQL-Datenbank als [Transaktionsreplikationsabonnent](https://msdn.microsoft.com/library/mt589530.aspx) für die lokale Veröffentlichung konfiguriert werden. Wenn Sie die Einrichtung über Management Studio durchführen, erhalten Sie genau das gleiche Ergebnis wie beim Einrichten eines Abonnenten der Transaktionsreplikation auf einem lokalen Server. Der Support für dieses Szenario ist gegeben, wenn der Herausgeber und der Verteiler mindestens über eine der folgenden SQL Server-Versionen verfügen:
 
- - SQL Server 2016 CTP3 (Vorschau) und höher 
+ - SQL Server 2016 und höher
  - SQL Server 2014 SP1 CU3 und höher
  - SQL Server 2014 RTM CU10 und höher
  - SQL Server 2012 SP2 CU8 und höher
@@ -56,13 +56,13 @@ Die Transaktionsreplikation ist eine Technologie, die seit SQL Server 6.5 in SQ
 
 - [Neueste Version von SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
 - [Neueste Version von SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
-- [SQL Server 2016 – Vorschau](http://www.microsoft.com/server-cloud/products/sql-server-2016/)
+- [SQL Server 2016](https://www.microsoft.com/de-DE/cloud-platform/sql-server)
 
-## Weitere Ressourcen
+## Zusätzliche Ressourcen
 
 - [Transaktionsreplikation](https://msdn.microsoft.com/library/mt589530.aspx)
 - [SQL-Datenbank V12](sql-database-v12-whats-new.md)
 - [Teilweise oder vollständig unterstützte Transact-SQL-Funktionen](sql-database-transact-sql-information.md)
 - [Migrate non-SQL Server databases using SQL Server Migration Assistant (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

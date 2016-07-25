@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/23/2016" 
+	ms.date="07/13/2016" 
 	ms.author="sdanie"/>
 
 # Importieren und Exportieren von Daten in Azure Redis Cache
@@ -137,7 +137,9 @@ Mit Import/Export können Sie Daten in Azure Redis Cache importieren oder daraus
 
 ### Kann ich Import/Export mit PowerShell, per CLI oder mit anderen Verwaltungsclients automatisieren?
 
-Diese Funktionalität ist während der Vorschauphase nicht verfügbar, aber dies wird in Kürze geändert.
+Ja. Anweisungen für PowerShell finden Sie unter [Importieren eines Redis-Cache](cache-howto-manage-redis-cache-powershell.md#to-import-a-redis-cache) und [Exportieren eines Redis-Cache](cache-howto-manage-redis-cache-powershell.md#to-export-a-redis-cache).
+
+
 
 ### Ich habe während des Import/Export-Vorgangs einen Zeitüberschreitungsfehler erhalten. Was bedeutet das?
 
@@ -168,4 +170,4 @@ Import/Export funktioniert nur mit RDB-Dateien, die als Seitenblobs gespeichert 
 [cache-import-blobs]: ./media/cache-how-to-import-export-data/cache-import-blobs.png
 [cache-import-data-import-complete]: ./media/cache-how-to-import-export-data/cache-import-data-import-complete.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0713_2016-->

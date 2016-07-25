@@ -272,7 +272,7 @@ Code | Name | Mögliche Ursachen
 2005 | Nicht unterstützter Dateityp | Typ der Eingabemediendatei wird nicht unterstützt
 2006 | Zu viele Eingabedateien | Es sind mehr als 10 Dateien im Eingabemanifest vorhanden
 3000 | Fehler beim Decodieren der Mediendatei | Nicht unterstützter Mediencodec <br/>oder<br/> Beschädigte Mediendatei <br/>oder<br/> Kein Audiostream in den Eingabemedien
-4000 | Batchindizierung teilweise erfolgreich | Bei einigen Eingabemediendateien ist beim Indizieren ein Fehler aufgetreten Weitere Informationen finden Sie unter <a href="output_files">Ausgabedateien</a>.
+4000 | Batchindizierung teilweise erfolgreich | Bei einigen Eingabemediendateien ist beim Indizieren ein Fehler aufgetreten Weitere Informationen finden Sie unter <a href="#output_files">Ausgabedateien</a>.
 Sonstige | Interne Fehler | Wenden Sie sich an das Supportteam. indexer@microsoft.com
 
 
@@ -298,4 +298,4 @@ Derzeit werden die Sprachen Englisch und Spanisch unterstützt. Weitere Informat
 
 [Indizieren von Mediendateien mit der Vorschauversion von Azure Media Indexer 2 ](media-services-process-content-with-indexer2.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Übersicht über das Enterprise Integration Pack | Microsoft Azure App Service" 
-	description="Nutzen Sie die Enterprise Integration Pack-Features, um die Integration von Geschäftsprozessen mithilfe des Microsoft Azure App Service-Diensts zu ermöglichen." 
+	pageTitle="Informationen zum Codieren bzw. Decodieren von Flatfiles mit Enterprise Integration Pack und Logik-Apps | Microsoft Azure App Service | Microsoft Azure" 
+	description="Verwenden Sie die Features von Enterprise Integration Pack und Logik-Apps zum Codieren bzw. Decodieren von Flatfiles." 
 	services="app-service\logic" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/30/2016" 
+	ms.date="07/08/2016" 
 	ms.author="deonhe"/>
 
 # Unternehmensintegration mit Flatfiles
@@ -28,7 +28,7 @@ Führen Sie diese Schritte zum Erstellen einer Logik-App und Hinzufügen eines F
 
 1. Erstellen Sie eine Logik-App, und [verknüpfen Sie sie mit Ihrem Integrationskonto](./app-service-logic-enterprise-integration-accounts.md "Erfahren Sie, wie Sie ein Integrationskonto mit einer Logik-App verknüpfen"), das das Schema enthält, das Sie zum Codieren der XML-Daten verwenden.
 2. Fügen Sie Ihrer Logik-App den Trigger **Anforderung – Wenn eine HTTP-Anforderung empfangen wird** hinzu. ![](./media/app-service-logic-enterprise-integration-flatfile/flatfile-1.png)
-3. Fügen Sie die Flatfile-Codierungsaktionen wie folgt hinzu:
+3. Fügen Sie die Flatfile-Decodierungsaktionen wie folgt hinzu:
 -  Wählen Sie das **Pluszeichen** aus.
 -  Wählen Sie den Link **Aktion hinzufügen** aus, der angezeigt wird, nachdem Sie das Pluszeichen ausgewählt haben.
 -  Geben Sie *Flat* in das Suchfeld ein, um die Aktion herauszufiltern, die Sie verwenden möchten.
@@ -65,4 +65,4 @@ Sie können nun Ihren Connector testen, indem Sie eine Anforderung an den HTTP-E
 ## Weitere Informationen
 - [Weitere Informationen zum Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

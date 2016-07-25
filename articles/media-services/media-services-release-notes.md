@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="media" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="07/12/2016"
 	ms.author="juliako"/>
 
 
@@ -25,6 +25,7 @@ In diesen Versionshinweisen werden Änderungen im Vergleich zu früheren Version
 
 - [Aktuell bekannte Probleme](#issues)
 - [REST-API-Versionsverlauf](#rest_version_history)
+- [Version Juli 2016](#july_changes16)
 - [Version April 2016](#apr_changes16)
 - [Version Februar 2016](#feb_changes16)
 - [Version Januar 2016](#jan_changes_16)
@@ -48,7 +49,7 @@ In diesen Versionshinweisen werden Änderungen im Vergleich zu früheren Version
 - [Version Juli 2014](#july_changes_14)
 - [Version Mai 2014](#may_changes_14)
 - [Version April 2014](#april_changes_14)
-- [Versionen Januar\\Februar 2014](#jan_feb_changes_14)
+- [Versionen Januar/Februar 2014](#jan_feb_changes_14)
 - [Version Dezember 2013](#december_changes_13)
 - [Version November 2013](#november_changes_13)
 - [Version August 2013](#august_changes_13)
@@ -69,7 +70,7 @@ Beim Codieren eines Assets mit einem Dateinamen, das Escapezeichen (z. B. %20) 
 Die ListBlobs-Methode, die Teil des Azure Storage-SDK Version 3.x ist, schlägt fehl.|Media Services generiert SAS-URLs auf Grundlage der Version [12\.02.2012](http://msdn.microsoft.com/library/azure/dn592123.aspx). Falls Sie das Azure Storage-SDK zur Auflistung von Blobs in einem Blob-Container nutzen möchten, verwenden Sie die[CloudBlobContainer.ListBlobs](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx)-Methode, die Teil des Azure Storage-SDK Version 2.x ist. Die ListBlobs-Methode, die Teil des Azure Storage-SDK Version 3.x ist, wird fehlschlagen.
 Der Drosselungsmechanismus von Media Services schränkt die Ressourcenverwendung für Anwendungen ein, die zu viele Anforderungen an den Dienst ausgeben. Der Dienst kann den HTTP-Statuscode „Dienst nicht verfügbar (503)“ zurückgeben.|Weitere Informationen finden Sie in der Beschreibung des HTTP-Statuscodes 503 unter [Azure Media Services-Fehlercodes](http://msdn.microsoft.com/library/azure/dn168949.aspx).
 Beim Abfragen von Entitäten gibt es ein Limit von 1.000 Entitäten, die gleichzeitig zurückgegeben werden können, da die öffentliche REST-Version 2 Abfrageergebnisse auf 1.000 Ergebnisse begrenzt. | Sie müssen **Skip** und **Take** (.NET) bzw. **top** (REST) wie in [diesem .NET-Beispiel](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) und [diesem REST-API-Beispiel](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities) beschrieben verwenden. 
-
+Änderungen an der Smooth Streaming-Manifestversion|Weitere Informationen finden Sie in [diesem](media-services-deliver-content-overview.md#known-issues) Abschnitt.
 
 ### <a id="dotnet_issues"></a>Probleme in Media Services SDK für .NET
 
@@ -80,6 +81,24 @@ Media Services-Medienobjekte im SDK können nicht serialisiert werden und funkti
 ##<a id="rest_version_history"></a>REST-API-Versionsverlauf
 
 Informationen zum Versionsverlauf der Media Services-REST-API finden Sie unter [Azure Media Services – REST-API-Referenz].
+
+##<a id="july_changes16"></a>Version Juli 2016
+
+###Updates der durch Codierungsaufgaben generierten Manifestdatei (*.ISM)
+
+Wenn ein Codierungstask an Media Encoder Standard oder Azure Media Encoder gesendet wird, erstellt der Codierungstask eine [Streamingmanifestdatei](media-services-deliver-content-overview.md) (*.ism) im Ausgabemedienobjekt. In der letzten Dienstversion wurde die Syntax dieser Streamingmanifestdatei aktualisiert.
+
+>[AZURE.NOTE]Die Syntax der Streamingmanifestdatei (.ism) ist für die interne Verwendung reserviert und kann in künftigen Versionen geändert werden. Ändern oder bearbeiten Sie den Inhalt dieser Datei nicht.
+
+###Im Ausgabemedienobjekt wird eine neue Clientmanifestdatei (*.ISMC) generiert, wenn ein Codierungstask mindestens eine MP4-Datei ausgibt
+
+Seit der letzten Dienstversion enthält das Ausgabemedienobjekt nach Abschluss eines Codierungstasks, der mindestens eine MP4-Datei generiert, darüber hinaus eine Streamingclientmanifest-Datei (*.ismc). Die ISMC-Datei trägt zur Verbesserung des dynamischen Streamings bei.
+
+>[AZURE.NOTE]Die Syntax der Clientmanifestdatei (.ism) ist für die interne Verwendung reserviert und kann in künftigen Versionen geändert werden. Ändern oder bearbeiten Sie den Inhalt dieser Datei nicht.
+
+Weitere Informationen finden Sie in [diesem Blog](https://blogs.msdn.microsoft.com/randomnumber/2016/07/08/encoder-changes-within-azure-media-services-now-create-ismc-file/).
+
+Bekannte Probleme werden in [diesem](media-services-deliver-content-overview.md#known-issues) Abschnitt behandelt.
 
 ##<a id="apr_changes16"></a>Version April 2016
 
@@ -206,29 +225,29 @@ Ankündigung der folgenden neuen Funktionen:
 
 ##<a id="april_changes_15"></a>Version April 2015
 
-        ###General Media Services Updates
+ ###Allgemeine Media Services-Updates
 
-        - [Announcing Azure Media Player](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/).
-        - Starting with Media Services REST 2.10, channels that are configured to ingest an RTMP protocol, are created with primary and secondary ingest URLs. For more information, see [Channel ingest configurations](media-services-live-streaming-with-onprem-encoders.md#channel_input)
-        - Azure Media Indexer updates
-        - Support for Spanish Language
-        - New configuration xml format
+- [Ankündigung von Azure Media Player](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/).
+- Beginnend mit Media Services REST 2.10 werden Kanäle, die zur Erfassung eines RTMP-Protokolls konfiguriert sind, mit primären und sekundären Erfassungs-URLs erstellt. Weitere Informationen finden Sie unter [Kanalerfassungskonfigurationen](media-services-live-streaming-with-onprem-encoders.md#channel_input)
+- Azure Media Indexer-Updates
+- Unterstützung für Spanisch
+- Neues Konfigurations-XML-Format
 
-        For more information see [this blog](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/).
-        ###Media Services .NET SDK Updates
+Weitere Informationen finden Sie in [diesem Blog](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/).
+###Media Services .NET SDK-Updates
 
-        Azure Media Services .NET SDK is now version 3.2.0.0.
+Azure Media Services .NET SDK ist jetzt in der Version 3.2.0.0 erhältlich.
 
-        The following are some of the customer facing updates:
+Im Folgenden werden einige der Updates für Kunden aufgeführt:
 
-        - **Breaking change**: Changed **TokenRestrictionTemplate.Issuer** and **TokenRestrictionTemplate.Audience** to be of a string type.
-        - Updates related to creating custom retry policies.
-        - Bug fixes related to uploading/downloading files.
-        - The **MediaServicesCredentials** class now accepts primary and secondary access control endpoint to authenticate against.
+- **Wichtige Änderung**: **TokenRestrictionTemplate.Issuer** und **TokenRestrictionTemplate.Audience** weisen jetzt einen Zeichenfolgentyp auf.
+- Updates im Zusammenhang mit der Erstellung von benutzerdefinierten Wiederholungsrichtlinien.
+- Fehlerbehebungen im Zusammenhang mit dem Hochladen/Herunterladen von Dateien.
+- Die **MediaServicesCredentials**-Klasse akzeptiert jetzt primäre und sekundäre Endpunkte für die Zugriffssteuerung zum Authentifizieren.
 
 
 
-        ##<a id="march_changes_15"></a>March 2015 Release
+##<a id="march_changes_15"></a>Version März 2015
 
 ### Allgemeine Media Services-Updates
 
@@ -416,7 +435,7 @@ Weitere Informationen finden Sie unter [Wiederholungslogik im Media Services SDK
 * Behebung eines Problems hinsichtlich des Transcodierens von MP4s, bei denen das Audio mit MPEG-1 Audio Layer 3 (alias MP3) codiert wurde.
 
 
-##<a id="jan_feb_changes_14"></a>Versionen Januar\\Februar 2014
+##<a id="jan_feb_changes_14"></a>Versionen Januar/Februar 2014
 
 ### <a name="jan_fab_14_donnet_changes"></a>Azure Media Services .NET SDK 3.0.0.1, 3.0.0.2 und 3.0.0.3
 
@@ -631,7 +650,7 @@ Die folgende Funktion war neu in der November-Version des SDK.
 
 <!-- Images. -->
 
-<!-- URLs. -->
+<!--- URLs. --->
 [MSDN-Forum für Azure Media Services]: http://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
 [Azure Media Services – REST-API-Referenz]: http://msdn.microsoft.com/library/azure/hh973617.aspx
 [Mediendienste – Preisübersicht]: http://azure.microsoft.com/pricing/details/media-services/
@@ -666,4 +685,4 @@ Die folgende Funktion war neu in der November-Version des SDK.
 [Verarbeiten von Media Services-Auftragsbenachrichtigungen]: http://msdn.microsoft.com/library/azure/dn261241.aspx
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

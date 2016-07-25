@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Übersicht über Zuordnungen und das Enterprise Integration Pack | Microsoft Azure App Service" 
+	pageTitle="Übersicht zu Zuordnungen unter Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
 	description="Erfahren Sie, wie Sie Zuordnungen mit dem Enterprise Integration Pack und Logik-Apps verwenden" 
 	services="app-service\logic" 
 	documentationCenter=".net,nodejs,java"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2016" 
+	ms.date="07/08/2016" 
 	ms.author="deonhe"/>
 
 # Informationen zu Zuordnungen und Enterprise Integration Pack
@@ -47,15 +47,15 @@ Gehen Sie wie folgt vor, um eine neue Zuordnung hochzuladen, die eine vorhandene
 4. Wählen Sie im eingeblendeten Dialogfeld zur Dateiauswahl die Zuordnungsdatei, die Sie hochladen möchten, und dann **Öffnen** aus. ![](./media/app-service-logic-enterprise-integration-maps/edit-2.png)
 5. Nach dem Hochladen der Zuordnung erhalten Sie eine Benachrichtigung auf dem Bildschirm.
 
-
 ## Löschen einer Zuordnung
 1. Wählen Sie die Kachel **Zuordnungen** aus.
 2. Wählen Sie auf dem geöffneten Blatt „Zuordnungen“ die Zuordnung aus, die Sie löschen möchten.
 3. Wählen Sie den Link **Löschen** aus. ![](./media/app-service-logic-enterprise-integration-maps/delete.png)
 4. Bestätigen Sie, dass Sie die Zuordnung wirklich löschen möchten. ![](./media/app-service-logic-enterprise-integration-maps/delete-confirmation-1.png)
 
-
 ## Nächste Schritte
+- [Weitere Informationen zum Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
 - [Weitere Informationen zu Vereinbarungen](./app-service-logic-enterprise-integration-agreements.md "Informationen zu Vereinbarungen zur Unternehmensintegration")
+- [Weitere Informationen zu Transformationen](./app-service-logic-enterprise-integration-transform.md "Informationen zu Unternehmensintegrationstransformationen")
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

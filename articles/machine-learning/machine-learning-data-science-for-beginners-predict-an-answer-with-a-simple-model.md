@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Vorhersagen einer Antwort mit einem einfachen Modell – Data Science für Einsteiger | Microsoft Azure"
+   pageTitle="Vorhersagen einer Antwort mit einem einfachen Modell – Regressionsmodell | Microsoft Azure"
    description="Erfahren Sie im 4. Video von „Data Science für Einsteiger“ mehr über das Erstellen eines einfachen Modells zum Vorhersagen des Preises eines Diamanten. Enthält eine einfache lineare Regression mit Zieldaten."                                  
    keywords="Erstellen eines Modells,einfaches Modell,einfaches Datenmodell,Preisvorhersage,einfaches Regressionsmodell"
    services="machine-learning"
@@ -29,11 +29,11 @@ Die Reihe bietet den größten Nutzen, wenn Sie sich die Videos in der vorgegebe
 
 Willkommen beim vierten Video der Reihe „Data Science für Einsteiger“. In diesem Video erstellen wir ein einfaches Modell, um eine Vorhersage zu treffen.
 
-Ein *Modell* ist ein vereinfachter Bericht zu unseren Daten. Ich zeige Ihnen, was ich meine.
+Ein *Modell* ist eine vereinfachte, aber aussagekräftige Darstellung unserer Daten. Ich zeige Ihnen, was ich meine.
 
 ## Sammeln relevanten, genauer und verbundener Daten in ausreichender Menge
 
-Angenommen Sie, ich möchte einen Diamanten kaufen. Ich habe einen Ring, der meine Großmutter gehört hat, mit einer Fassung für einen Diamanten mit 1,35 Karat, und möchte eine Vorstellung erhalten, wie viel er kostet. Ich gehe mit einem Notizbuch und einen Stift zu einem Juwelier und notiere den Preis aller Diamanten in der Auslage und ihr Gewicht in Karat. Der erste Diamant hat 1,01 Karat und kostet 7.366 US-Dollar.
+Angenommen, ich möchte einen Diamanten kaufen. Ich habe einen Ring, der meiner Großmutter gehört hat, mit einer Fassung für einen Diamanten mit 1,35 Karat, und möchte eine Vorstellung erhalten, wie viel er kostet. Ich gehe mit einem Notizbuch und einem Stift zu einem Juwelier und notiere den Preis aller Diamanten in der Auslage und ihr Gewicht in Karat. Der erste Diamant hat 1,01 Karat und kostet 7.366 US-Dollar.
 
 Das wiederhole ich jetzt für alle anderen Diamanten in dem Geschäft.
 
@@ -58,17 +58,17 @@ Unsere Liste enthält keinen Diamanten mit 1,35 Karat, weshalb wir unsere restli
 
 Als Erstes zeichnen wir einen horizontalen Zahlenstrahl, der Achse genannt wird, um die Gewichte abzubilden. Der Gewichtsbereich ist 0 bis 2, weshalb wir eine Gerade zeichnen, die diesen Bereich abdeckt und die wir mit Teilstrichen für jedes halbe Karat versehen.
 
-Als Nächstes zeichnen wir eine vertikale Achse zum Aufzeichnen des Preises und verbinden Sie mit der horizontalen Gewichtsachse. Diese Achse wird mit Einheiten in Dollar versehen. Jetzt haben wir Koordinatenachsen.
+Als Nächstes zeichnen wir eine vertikale Achse zum Aufzeichnen des Preises und verbinden sie mit der horizontalen Gewichtsachse. Diese Achse wird mit Einheiten in Dollar versehen. Jetzt haben wir Koordinatenachsen.
 
 ![Achsen für Preis und Gewicht](./media/machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model/weight-and-price-axes.png)
 
-Anhand dieser Daten erstellen wir nun eine *Punktwolke*. Dies ist eine hervorragende Möglichkeit zum Visualisieren numerischer Datasets.
+Anhand dieser Daten erstellen wir nun ein *Punktdiagramm*. Dies ist eine hervorragende Möglichkeit zum Visualisieren numerischer Datasets.
 
 Für den ersten Datenpunkt zeichnen wir Pi mal Daumen eine vertikale Gerade bei 1,01 Karat. Dann zeichnen wir ebenso eine horizontale Gerade bei 7.366 US-Dollar. An ihrem Schnittpunkt zeichnen wir einen Punkt. Dieser stellt unseren ersten Diamanten dar.
 
 Dasselbe machen wir nun für jeden Diamanten in dieser Liste. Wenn wir damit fertig sind, erhalten wir das hier: eine Menge von Punkten, einer für jeden Diamanten.
 
-![Punktwolke](./media/machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model/scatter-plot.png)
+![Punktdiagramm](./media/machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model/scatter-plot.png)
 
 ## Zeichnen des Modells durch die Datenpunkte
 
@@ -111,10 +111,10 @@ Und wir haben dafür nicht auf Berechnungen oder Computer zurückgegriffen.
 Nun, wenn wir weitere Informationen gehabt hätten, wie beispielsweise...
 
 * den Schliff des Diamanten
-* Farbvariationen (wie nahe der Farbton des Diamanten bei weiß ist)
+* Farbvariationen (wie nahe der Farbton des Diamanten an Weiß ist)
 * die Anzahl der Einschlüsse im Diamanten
 
-... hätten wir mehr Spalten. In diesem Fall sind Berechnungen hilfreich. Bei mehr als zwei Spalten ist es schwierig, Punkte auf Papier zu zeichnen. Mithilfe von Berechnungen kann Sie die jeweilige Gerade oder Ebene mühelos an Ihre Daten anpassen.
+... hätten wir mehr Spalten. In diesem Fall sind Berechnungen hilfreich. Bei mehr als zwei Spalten ist es schwierig, Punkte auf Papier zu zeichnen. Mithilfe von Berechnungen können Sie die jeweilige Gerade oder Ebene mühelos an Ihre Daten anpassen.
 
 Auch wenn wir anstelle einer Handvoll Diamanten zweitausend oder zwei Millionen hätten, kann diese Aufgabe mit einem Computer wesentlich schneller erledigt werden.
 
@@ -138,4 +138,4 @@ In fünf Kurzvideos der Reihe *Data Science für Einsteiger* erhalten Sie eine S
   * [Durchführen Ihres ersten Data Science-Experiments mit Azure Machine Learning](machine-learning-create-experiment.md)
   * [Einführung in Machine Learning in Microsoft Azure](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

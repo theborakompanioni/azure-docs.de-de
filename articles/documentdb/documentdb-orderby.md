@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/30/2016" 
+	ms.date="07/07/2016" 
 	ms.author="arramac"/>
 
 # Sortieren von DocumentDB-Daten mit "Order By"
@@ -63,7 +63,7 @@ DocumentDB unterstützt die Sortierung mit einer einzelnen numerischen, Zeichenf
 
 Denken Sie daran, dass DocumentDB zwei Arten von Indizes (Hash und Bereich) unterstützt, die für unterschiedliche Pfade/Eigenschaften, Datentypen (Zeichenfolgen/Zahlen) und auf verschiedene Präzisionswerte (maximale Genauigkeit oder einen festen Genauigkeitswert) festgelegt werden können. Da DocumentDB standardmäßig Hash-Indizes verwendet, müssen Sie eine neue Sammlung mit einer benutzerdefinierten Indizierungsrichtlinie mit „Bereich“ für Zahlen, Zeichenfolgen oder beide Optionen erstellen, um „Order By“ zu verwenden.
 
->[AZURE.NOTE] Indizes für Zeichenfolgenbereiche wurden am 7. Juli 2015 mit der REST-API-Version 2015-06-03 eingeführt. Um Richtlinien für „Order By“ für Zeichenfolgen zu erstellen, müssen Sie die SDK-Version 1.2.0 des .NET-SDK oder Version 1.1.0 des Python-, Node.js- oder Java-SDK verwenden.
+>[AZURE.NOTE] Indizes für Zeichenfolgenbereiche wurden am 7. Juli 2015 mit der REST-API-Version 2015-06-03 eingeführt. Um Richtlinien für „Order By“ für Zeichenfolgen zu erstellen, müssen Sie die SDK-Version 1.2.0 des .NET-SDK oder Version 1.1.0 des Python-, Node.js- oder Java-SDK verwenden.
 >
 >Vor der REST-API-Version 2015-06-03 war „Hash“ die Standardsammlung der Indizierungsrichtlinie für Zeichenfolgen und Zahlen. Dies wurde in „Hash“ für Zeichenfolgen und „Bereich“ für Zahlen geändert.
 
@@ -78,12 +78,12 @@ Hier erfahren Sie, wie Sie eine Sammlung mit „All Range“-Indizierung für �
     
     await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), books);  
 
->[AZURE.NOTE] Beachten Sie, dass „Order By“ nur Ergebnisse der Datentypen (Zeichenfolge und Anzahl) ausgibt, die mit einem RangeIndex indiziert werden. Verwenden Sie z. B. die Standardindizierungsrichtlinie, die nur RangeIndex für Zahlen verwendet, wird „Order By“ für einen Pfad mit Zeichenfolgenwerten keine Dokumente zurückgeben.
+>[AZURE.NOTE] Beachten Sie, dass „Order By“ nur Ergebnisse der Datentypen (Zeichenfolge und Anzahl) ausgibt, die mit einem RangeIndex indiziert werden. Verwenden Sie z. B. die Standardindizierungsrichtlinie, die nur RangeIndex für Zahlen verwendet, wird „Order By“ für einen Pfad mit Zeichenfolgenwerten keine Dokumente zurückgeben.
 >
 > Wenn Sie für Ihre Sammlungen einen Partitionsschlüssel definiert haben, beachten Sie, dass „Order By“ nur in Abfragen unterstützt wird, die nach einem einzelnen Partitionsschlüssel filtern.
 
 ### Indizierung für "Order By" für eine einzelne Eigenschaft
-Hier erfahren Sie, wie Sie eine Sammlung mit der Indizierung für „Order By“ für die „Title“-Eigenschaft erstellen können, bei der es sich um eine Zeichenfolge handelt. Hierfür gibt es zwei Pfade – einen für die „Title“-Eigenschaft (/Title/?) mit der Bereichsindizierung und den anderen für jede andere Eigenschaft mit dem Standardindizierungsschema („Hash“ für Zeichenfolgen und „Bereich“ für Zahlen).
+Hier erfahren Sie, wie Sie eine Sammlung mit der Indizierung für „Order By“ für die „Title“-Eigenschaft erstellen können, bei der es sich um eine Zeichenfolge handelt. Hierfür gibt es zwei Pfade – einen für die „Title“-Eigenschaft (/Title/?) mit der Bereichsindizierung und den anderen für jede andere Eigenschaft mit dem Standardindizierungsschema („Hash“ für Zeichenfolgen und „Bereich“ für Zahlen).
     
     booksCollection.IndexingPolicy.IncludedPaths.Add(
         new IncludedPath { 
@@ -136,4 +136,4 @@ Verwenden Sie das [Github-Beispielprojekt](https://github.com/Azure/azure-docume
 * [DocumentDB-"Order By"-Beispiele](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0713_2016-->

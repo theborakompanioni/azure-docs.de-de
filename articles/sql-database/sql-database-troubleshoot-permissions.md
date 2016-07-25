@@ -1,11 +1,12 @@
 <properties
-	pageTitle="Gewusst wie: Ausführen allgemeiner Verwaltungsaufgaben in Azure SQL-Datenbank"
-	description="Informationen zum Ausführen allgemeiner Verwaltungsaufgaben"
+	pageTitle="Gewusst wie: Ausführen von Verwaltungsaufgaben wie etwa Zurücksetzen des Administratorkennworts | Microsoft Azure"
+	description="Hier wird beschrieben, wie allgemeine Verwaltungsaufgaben in SQL-Datenbank ausgeführt werden. Sie erfahren beispielsweise, wie Sie das Administratorkennwort zurücksetzen und Zugriff gewähren bzw. entfernen."
 	services="sql-database"
 	documentationCenter=""
 	authors="v-shysun"
 	manager="felixwu"
-	editor=""/>
+	editor=""
+	keywords="Administratorkennwort zurücksetzen"/>
 
 <tags
 	ms.service="sql-database"
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/03/2016"
+	ms.date="07/06/2016"
 	ms.author="v-shysun"/>
 
 # Gewusst wie: Ausführen allgemeiner Verwaltungsaufgaben in Azure SQL-Datenbank
@@ -26,9 +27,7 @@ In diesem Thema finden Sie Kurzanleitungen zum Gewähren und Aufheben des Zugrif
 
 [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-
-## So ändern Sie das Administratorkennwort für einen logischen Server
-
+## So setzen Sie das Administratorkennwort für einen logischen Server zurück
 
 - Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **SQL-Server**, wählen Sie in der Liste den Server aus, und klicken Sie auf **Kennwort zurücksetzen**.
 
@@ -44,4 +43,4 @@ In diesem Thema finden Sie Kurzanleitungen zum Gewähren und Aufheben des Zugrif
 ## So erstellen Sie zusätzliche Anmeldungen für Benutzer mit hohen Berechtigungen in der virtuellen „master“-Datenbank
 - Verwenden Sie die [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx)-Anweisung, und lesen Sie den Abschnitt „Verwalten von Anmeldungen“ in [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank](sql-database-manage-logins.md), um weitere Informationen zu erhalten.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

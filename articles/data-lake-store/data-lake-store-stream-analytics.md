@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/20/2016"
+   ms.date="07/07/2016"
    ms.author="nitinme"/>
 
 # Streamen von Daten aus Azure Storage-Blob in Data Lake-Speicher mit Azure Stream Analytics
 
 In diesem Artikel erfahren Sie, wie Sie Azure Data Lake-Speicher als Ausgabe für einen Azure Stream Analytics-Auftrag verwenden. Dieser Artikel beschreibt ein einfaches Szenario, bei dem Daten aus einem Azure Storage-Blob (Eingabe) gelesen und in Data Lake-Speicher (Ausgabe) geschrieben werden.
 
->[AZURE.NOTE] Derzeit wird die Erstellung und Konfiguration von Data Lake-Speicherausgaben für Stream Analytics nur im [klassischen Azure-Portal](manage.windowsazure.com) unterstützt. Daher wird für einige Teile dieses Tutorials das klassische Azure-Portal verwendet.
+>[AZURE.NOTE] Derzeit wird die Erstellung und Konfiguration von Data Lake Store-Ausgaben für Stream Analytics nur im [klassischen Azure-Portal](https://manage.windowsazure.com) unterstützt. Daher wird für einige Teile dieses Tutorials das klassische Azure-Portal verwendet.
 
 ## Voraussetzungen
 
@@ -103,7 +103,7 @@ Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle u
 
 	![Festlegen des Ausgabeformats](./media/data-lake-store-stream-analytics/create.output.4.png "Festlegen des Ausgabeformats")
 
-6. Nachdem Sie den Assistenten abgeschlossen haben, wird die Data Lake-Speicherausgabe unter der Registerkarte **Ausgaben** hinzugefügt. Daraufhin sollte in der Spalte **Diagnose** **OK** angezeigt werden. Sie können die Verbindung auch auf die Ausgabe hin mithilfe der Taste **Verbindung testen** unten explizit testen.
+6. Nachdem Sie den Assistenten abgeschlossen haben, wird die Data Lake Store-Ausgabe unter der Registerkarte **Ausgaben** hinzugefügt. Daraufhin sollte in der Spalte **Diagnose** **OK** angezeigt werden. Sie können die Verbindung auch mithilfe der Taste **Verbindung testen** unten explizit auf die Ausgabe hin testen.
 
 ## Ausführen des Stream Analytics-Auftrags
 
@@ -111,7 +111,7 @@ Um einen Stream Analytics-Auftrag auszuführen, müssen Sie eine Abfrage auf der
 
 ![Abfrage ausführen](./media/data-lake-store-stream-analytics/run.query.png "Abfrage ausführen")
 
-Klicken Sie unten auf dem Bildschirm auf **Speichern** und dann auf **Starten**. Wählen Sie im Dialogfeld **Benutzerdefinierte Uhrzeit** und dann ein Datum aus der Vergangenheit aus, z. B. **1/1/2016**. Klicken Sie auf das Häkchen, um den Auftrag zu starten. Es kann einige Minuten dauern, bis der Auftrag startet.
+Klicken Sie am unteren Bildschirmrand auf **Speichern** und dann auf **Starten**. Wählen Sie im Dialogfeld **Benutzerdefinierte Uhrzeit** und dann ein Datum aus der Vergangenheit aus, z.B. **1/1/2016**. Klicken Sie auf das Häkchen, um den Auftrag zu starten. Es kann einige Minuten dauern, bis der Auftrag startet.
 
 ![Festlegen der Auftragszeit](./media/data-lake-store-stream-analytics/run.query.2.png "Festlegen der Auftragszeit")
 
@@ -119,14 +119,14 @@ Klicken Sie, nachdem der Auftrag gestartet wurde, auf die Registerkarte **Überw
 
 ![Überwachen des Auftrags](./media/data-lake-store-stream-analytics/run.query.3.png "Überwachen des Auftrags")
 
-Abschließend können Sie das Data Lake-Speicherkonto mit dem [Azure-Portal](portal.azure.com) öffnen und überprüfen, ob die Daten erfolgreich in das Konto geschrieben wurden.
+Abschließend können Sie das Data Lake Store-Konto mit dem [Azure-Portal](https://portal.azure.com) öffnen und überprüfen, ob die Daten erfolgreich in das Konto geschrieben wurden.
 
 ![Überprüfen der Ausgabe](./media/data-lake-store-stream-analytics/run.query.4.png "Überprüfen der Ausgabe")
 
-Beachten Sie, dass die Ausgabe im Daten-Explorer-Fenster in einen Ordner geschrieben wird, wie in den Data Lake-Speicherausgabeeinstellungen angegeben (`streamanalytics/job/output/{date}/{time}`).
+Beachten Sie, dass die Ausgabe im Daten-Explorer-Fenster gemäß Angabe in den Data Lake Store-Ausgabeeinstellungen (`streamanalytics/job/output/{date}/{time}`) in einen Ordner geschrieben wird.
 
 ## Weitere Informationen
 
 * [Erstellen eines HDInsight-Clusters für die Verwendung von Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -117,7 +117,7 @@ Die folgenden Schritte dienen zum Konfigurieren elastischer Datenbankabfragen f�
 
 *    [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx) mymasterkey
 *    [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx) mycredential
-*    Erstellen Sie eine [Shardzuordnung](sql-database-elastic-scale-shard-map-management.md), die Ihre Datenebene darstellt, mithilfe der Clientbibliothek für elastische Datenbanken.   
+*    Erstellen Sie eine [Shardzuordnung](sql-database-elastic-scale-shard-map-management.md), die Ihre Datenebene darstellt, mithilfe der Clientbibliothek für elastische Datenbanken.
 *    [CREATE/DROP EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx) mydatasource of type **SHARD\_MAP\_MANAGER**
 *    [CREATE/DROP EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx) mytable
 
@@ -129,6 +129,8 @@ Sobald Sie Ihre externen Datenquellen und externen Tabellen definiert haben, kö
 ## Konnektivität für Tools
 Sie können herkömmliche SQL Server-Verbindungszeichenfolgen zum Verbinden Ihrer Anwendungen bzw. BI- oder Datenintegrationstools mit Datenbanken verwenden, die externe Tabellen enthalten. Stellen Sie sicher, dass SQL Server als Datenquelle für das Tool unterstützt wird. Nach dem Herstellen der Verbindung können Sie auf die elastische Abfragedatenbank und externen Tabellen wie auf jede andere SQL Server-Datenbank zugreifen, mit der Sie sich über Ihr Tool verbinden.
 
+> [AZURE.IMPORTANT] Die Authentifizierung mithilfe von Azure Active Directory mit elastischen Abfragen wird derzeit nicht unterstützt.
+
 ## Kosten
 
 Elastische Abfragen sind in den Kosten für Azure SQL-Datenbanken enthalten. Beachten Sie, dass Topologien, bei denen sich Ihre Remotedatenbanken in einem anderen Rechenzentrum als der Endpunkt der elastischen Abfrage befinden, unterstützt werden. Der Datenausgang aus Remotedatenbanken wird jedoch zu den üblichen [Azure-Gebühren](https://azure.microsoft.com/pricing/details/data-transfers/) in Rechnung gestellt.
@@ -137,7 +139,7 @@ Elastische Abfragen sind in den Kosten für Azure SQL-Datenbanken enthalten. Bea
 * Beim Standard-Tarif kann das Ausführen Ihrer ersten elastischen Abfrage einige Minuten dauern. Dieser Zeitraum wird für das Laden der elastischen Abfragefunktionalität benötigt. Je höher der Tarif, desto besser die Ladeleistung.
 * Das Erstellen von Skripts für externe Datenquellen oder externe Tabellen in SSMS oder SSDT wird noch nicht unterstützt.
 * Import/Export für SQLDB unterstützt noch keine externen Datenquellen und externen Tabellen. Wenn Sie Import/Export verwenden müssen, löschen Sie diese Objekte vor dem Exportieren, und erstellen Sie sie nach dem Importieren neu.
-* Elastische Datenbankabfragen unterstützen derzeit nur den schreibgeschützten Zugriff auf externe Tabellen. Sie können jedoch die vollständige T-SQL-Funktionalität für die Datenbank nutzen, in der die externe Tabelle definiert ist. Dies kann beispielsweise hilfreich sein, um temporäre Ergebnisse z.B. mithilfe von SELECT <column_list> INTO <local_table> dauerhaft zu speichern oder um gespeicherte Prozeduren für die elastische Abfragedatenbank zu definieren, die auf externe Tabellen verweisen.
+* Elastische Datenbankabfragen unterstützen derzeit nur den schreibgeschützten Zugriff auf externe Tabellen. Sie können jedoch die vollständige T-SQL-Funktionalität für die Datenbank nutzen, in der die externe Tabelle definiert ist. Dies kann beispielsweise hilfreich sein, um temporäre Ergebnisse z.B. mithilfe von „SELECT <column\_list> INTO <local\_table>“ dauerhaft zu speichern oder um gespeicherte Prozeduren für die elastische Abfragedatenbank zu definieren, die auf externe Tabellen verweisen.
 * Mit Ausnahme von „nvarchar(max)“ werden LOB-Typen in externen Tabellendefinitionen nicht unterstützt. Um dieses Problem zu umgehen, können Sie eine Sicht für die Remotedatenbank erstellen, die den LOB-Typ in „nvarchar(max)“ umwandelt, ihre externe Tabelle für die Sicht anstatt für die Basistabelle definieren und sie in Ihren Abfragen in den ursprünglichen LOB-Typ rückumwandeln.
 * Spaltenstatistiken werden für externe Tabellen derzeit nicht unterstützt. Tabellenstatistiken werden unterstützt, müssen aber manuell erstellt werden.
 
@@ -149,13 +151,13 @@ Geben Sie uns bitte unten im Disqus-Kommentar, in den MSDN-Foren oder auf StackO
 Weitere Informationen zu datenbankübergreifenden Abfragen und vertikalen Partitionierungsszenarien finden Sie in den folgenden Dokumenten:
 
 * [Datenbankübergreifende Abfragen und die vertikale Partitionierung (Übersicht)](sql-database-elastic-query-vertical-partitioning.md)
-* Führen Sie unser Schritt-für-Schritt-Tutorial aus, um innerhalb von Minuten zu einem umfassenden Arbeitsbeispiel zu gelangen: [Erste Schritte mit datenbankübergreifenden Abfragen (vertikale Partitionierung)](sql-database-elastic-query-getting-started-vertical.md).
+* Führen Sie unser Schritt-für-Schritt-Tutorial aus, um innerhalb von Minuten über ein umfassendes Arbeitsbeispiel zu verfügen: [Erste Schritte mit datenbankübergreifenden Abfragen (vertikale Partitionierung)](sql-database-elastic-query-getting-started-vertical.md).
 
 
 Weitere Informationen zu horizontalen Partitionierungs- und Shardingszenarien finden Sie hier:
 
 * [Horizontale Partitionierung und Sharding – Übersicht](sql-database-elastic-query-horizontal-partitioning.md)
-* Führen Sie unser Schritt-für-Schritt-Tutorial aus, um innerhalb von Minuten zu einem umfassenden Arbeitsbeispiel zu gelangen: [Erste Schritte mit elastischen Datenbankabfragen für horizontale Partitionierung (Sharding)](sql-database-elastic-query-getting-started.md).
+* Führen Sie unser Schritt-für-Schritt-Tutorial aus, um innerhalb von Minuten über ein umfassendes Arbeitsbeispiel zu verfügen: [Erste Schritte mit elastischen Datenbankabfragen für horizontale Partitionierung (Sharding)](sql-database-elastic-query-getting-started.md).
 
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
@@ -169,4 +171,4 @@ Weitere Informationen zu horizontalen Partitionierungs- und Shardingszenarien fi
 
 <!--anchors-->
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0713_2016-->

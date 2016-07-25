@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/25/2016"
+   ms.date="07/07/2016"
    ms.author="seanmck"/>
 
 # Polymorphie im Reliable Actors-Framework
@@ -35,7 +35,7 @@ Sie können auch eine Hierarchie von Akteurtypen erstellen, die von der durch di
 public abstract class Shape : Actor, IShape
 {
     public abstract Task<int> GetVerticeCount();
-    
+
     public abstract Task<double> GetAreaAsync();
 }
 ```
@@ -75,12 +75,4 @@ Beachten Sie das `ActorService`-Attribut des Akteurtyps. Dieses Attribut teilt d
 
 [shapes-interface-hierarchy]: ./media/service-fabric-reliable-actors-polymorphism/Shapes-Interface-Hierarchy.png
 
-## Nächste Schritte
- - [Actor-Zustandsverwaltung](service-fabric-reliable-actors-state-management.md)
- - [Actor-Lebenszyklus und Garbage Collection](service-fabric-reliable-actors-lifecycle.md)
- - [Actor-Timer und -Erinnerungen](service-fabric-reliable-actors-timers-reminders.md)
- - [Actor-Ereignisse](service-fabric-reliable-actors-events.md)
- - [Actor-Eintrittsinvarianz](service-fabric-reliable-actors-reentrancy.md)
- - [Actor-Diagnose und -Leistungsüberwachung](service-fabric-reliable-actors-diagnostics.md)
-
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -130,6 +130,6 @@ Besuchen Sie "blitline.com", um Informationen zu allen anderen Funktionen zu erh
 * Blitline-API-Endpunktdokumente <http://www.blitline.com/docs/api>
 * Blitline-API-Funktionen <http://www.blitline.com/docs/functions>
 * Blitline-API-Beispiele <http://www.blitline.com/docs/examples>
-* Drittanbieter-NuGet-Bibliothek ahttp://nuget.org/packages/Blitline.Net>
+* Drittanbieter-NuGet-Bibliothek <http://nuget.org/packages/Blitline.Net>
 
 <!---HONumber=AcomDC_0706_2016-->

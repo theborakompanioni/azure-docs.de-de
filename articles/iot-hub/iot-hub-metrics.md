@@ -54,11 +54,17 @@ IoT Hub bietet mehrere Metriken, um Ihnen einen Überblick über die Integrität
 
 ## Nächste Schritte
 
-Nachdem Sie einen Überblick über Diagnosemetriken erhalten haben, können Sie die folgenden Links nutzen, um mehr über diese Themen zu erfahren:
+Nachdem Sie einen Überblick über Diagnosemetriken erhalten haben, folgen Sie den folgenden Links, um mehr über das Verwalten von IoT Hub zu erfahren:
 
-- [IoT Hub-Vorgangsüberwachung][lnk-operations-monitoring]
-- [Skalieren von IoT Hub][lnk-scaling]
-- [Hohe Verfügbarkeit und Notfallwiederherstellung von IoT Hub][lnk-dr]
+- [Vorgangsüberwachung][lnk-monitor]
+- [Verwalten des Zugriffs auf IoT Hub][lnk-itpro]
+
+Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
+
+- [Entwerfen Ihrer Lösung][lnk-design]
+- [Entwicklerhandbuch][lnk-devguide]
+- [Erkunden der Geräteverwaltung mithilfe der Beispielbenutzeroberfläche][lnk-dmui]
+- [Simulieren eines Geräts mit dem Gateway SDK][lnk-gateway]
 
 <!-- Links and images -->
 [1]: media/iot-hub-metrics/enable-metrics-1.png
@@ -70,4 +76,12 @@ Nachdem Sie einen Überblick über Diagnosemetriken erhalten haben, können Sie 
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-dr]: iot-hub-ha-dr.md
 
-<!---HONumber=AcomDC_0706_2016-->
+[lnk-monitor]: iot-hub-operations-monitoring.md
+[lnk-itpro]: iot-hub-itpro-info.md
+
+[lnk-design]: iot-hub-guidance.md
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+
+<!---HONumber=AcomDC_0713_2016-->

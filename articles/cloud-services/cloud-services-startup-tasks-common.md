@@ -28,22 +28,7 @@ Viele der hier verwendeten Aufgaben verwenden die
 
 ## Definieren von Umgebungsvariablen vor dem Starten einer Rolle
 
-Sie können Umgebungsvariablen für eine komplette Rolle definieren, indem Sie der Rollendefinition in der Dienstdefinitionsdatei das [Runtime]-Element hinzufügen.
-
-```xml
-<ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
-    <WebRole name="WebRole1">
-        ...
-        <Runtime>
-            <Environment>
-                <Variable name="MyEnvironmentVariable" value="MyVariableValue" />
-            </Environment>
-        </Runtime>
-    </WebRole>
-</ServiceDefinition>
-```
-
-Wie Sie Umgebungsvariablen für eine bestimmte Aufgabe benötigen, die nicht von anderen Aufgaben freigegeben ist, können Sie das [Environment]-Element innerhalb des [Task]-Elements verwenden.
+Wie Sie Umgebungsvariablen für eine bestimmte Aufgabe benötigen, können Sie das [Environment]-Element innerhalb des [Task]-Elements verwenden.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -391,7 +376,6 @@ Die einfachste Methode, um zu erkennen, dass eine Aufgabe bereits ausgeführt wu
     REM   Exit normally.
     EXIT /B 0
 
-
 ## Bewährte Methoden für Aufgaben
 Hier sind einige bewährten Methoden, die Sie beim Konfigurieren einer Aufgabe für Ihre Web- oder Workerrolle befolgen sollten.
 
@@ -503,4 +487,4 @@ Führen Sie das [Erstellen und Bereitstellen](cloud-services-how-to-create-deplo
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

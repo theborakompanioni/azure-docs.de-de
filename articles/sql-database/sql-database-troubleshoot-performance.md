@@ -1,11 +1,12 @@
 <properties
-	pageTitle="Gewusst wie: Auswerten und Verbessern der Datenbankleistung in Azure SQL-Datenbank"
-	description="Informationen zum Auswerten und Verbessern der Datenbankleistung"
+	pageTitle="Tipps zur Optimierung der SQL-Datenbankleistung | Microsoft Azure"
+	description="Tipps für die Leistungsoptimierung in Azure SQL-Datenbank durch Auswertung und Verbesserung."
 	services="sql-database"
 	documentationCenter=""
 	authors="v-shysun"
 	manager="felixwu"
-	editor=""/>
+	editor=""
+	keywords="SQL-Leistungsoptimierung, Datenbankleistungsoptimierung, Tipps zur SQL-Leistungsoptimierung, Optimierung der SQL-Datenbankleistung"/>
 
 <tags
 	ms.service="sql-database"
@@ -13,11 +14,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/03/2016"
+	ms.date="07/06/2016"
 	ms.author="v-shysun"/>
 
-# Gewusst wie: Auswerten und Verbessern der Datenbankleistung in Azure SQL-Datenbank
-Sie können jederzeit den [Tarif](sql-database-service-tiers.md) einer Einzeldatenbank ändern oder die Anzahl der eDTUs eines Pools für elastische Datenbanken erhöhen, um die Leistung zu verbessern. Doch zuvor sollten Sie zunächst Möglichkeiten zum Verbessern und Optimieren der Abfrageleistung bestimmen. Fehlende Indizes und falsch optimierte Abfragen sind häufige Ursachen einer schlechten Datenbankleistung.
+# Tipps zur Optimierung der SQL-Datenbankleistung
+Sie können jederzeit den [Tarif](sql-database-service-tiers.md) einer Einzeldatenbank ändern oder die Anzahl der eDTUs eines Pools für elastische Datenbanken erhöhen, um die Leistung zu verbessern. Doch zuvor sollten Sie zunächst Möglichkeiten zum Verbessern und Optimieren der Abfrageleistung bestimmen. Fehlende Indizes und falsch optimierte Abfragen sind häufige Ursachen einer schlechten Datenbankleistung. Dieser Artikel enthält Richtlinien für die Leistungsoptimierung in SQL-Datenbank.
 
 [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -34,4 +35,4 @@ Sie können jederzeit den [Tarif](sql-database-service-tiers.md) einer Einzeldat
 1.	Für Einzeldatenbanken können Sie die [Diensttarife bedarfsgesteuert ändern](sql-database-scale-up.md), um die Datenbankleistung zu steigern.
 2.	Ziehen Sie bei mehreren Datenbanken [Pool für elastische Datenbanken](sql-database-elastic-pool-guidance.md) in Betracht, um Ressourcen automatisch zu skalieren.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

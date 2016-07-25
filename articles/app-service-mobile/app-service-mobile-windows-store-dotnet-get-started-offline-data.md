@@ -41,7 +41,7 @@ Für dieses Lernprogramm ist Folgendes erforderlich:
 
 Offlinefunktionen der mobilen Azure-App ermöglichen Ihnen die Interaktion mit einer lokalen Datenbank, wenn Sie sich in einem Offlineszenario befinden. Um diese Funktionen in der App zu verwenden, initialisieren Sie einen [SyncContext][synccontext] in einem lokalen Speicher. Erstellen Sie dann für die Tabelle einen Verweis über die Schnittstelle [IMobileServiceSyncTable][IMobileServiceSyncTable]. Als lokaler Speicher auf dem Gerät wird SQLite verwendet.
 
-1. Installieren Sie die [SQLite-Laufzeit für die universelle Windows-Plattform](http://sqlite.org/2016/sqlite-uwp-3120200.vsix).
+1. Installieren Sie die [SQLite-Laufzeit für die Universelle Windows-Plattform](http://sqlite.org/2016/sqlite-uwp-3120200.vsix).
 
 2. Öffnen Sie in Visual Studio den NuGet-Paket-Manager für das UWP-App-Projekt, das Sie im Tutorial [Erstellen einer Windows-App] abgeschlossen haben. Suchen und installieren Sie anschließend das NuGet-Paket **Microsoft.Azure.Mobile.Client.SQLiteStore**.
 
@@ -212,4 +212,4 @@ In folgenden Themen finden Sie weitere Hintergrundinformationen zur Offlinesynch
 [Cloud Cover: Offlinesynchronisierung in Azure Mobile Services]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offlinefähige Apps in Azure Mobile Services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

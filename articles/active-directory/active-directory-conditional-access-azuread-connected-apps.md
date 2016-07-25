@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/23/2016"
+	ms.date="07/14/2016"
 	ms.author="femila"/>
 
 # Erste Schritte mit bedingtem Zugriff auf Azure AD  
@@ -68,7 +68,7 @@ Die aktuelle Vorschau unterstützt folgende Optionen:
 
 * **Erfordert mehrstufige Authentifizierung**: Mit dieser Option müssen die Benutzer, für die die Zugriffsregeln gelten, die Multi-Factor Authentication durchlaufen, um auf die Anwendung zugreifen zu können, für die die Richtlinie gilt.
 
-* **Erfordert mehrstufige Authentifizierung, wenn nicht bei der Arbeit**: Mit dieser Option muss ein Benutzer, der von einer vertrauenswürdigen IP-Adresse aus zugreift, keine Multi-Factor Authentication durchlaufen. Die vertrauenswürdigen IP-Adressbereiche können auf der Seite mit den Einstellungen für die mehrstufige Authentifizierung oder durch Konfigurieren der öffentlichen IP-Adressbereiche auf der Registerkarte „Konfigurieren“ des Verzeichnisses konfiguriert werden.
+* **Erfordert mehrstufige Authentifizierung, wenn nicht bei der Arbeit**: Mit dieser Option muss ein Benutzer, der von einer vertrauenswürdigen IP-Adresse aus zugreift, keine Multi-Factor Authentication durchlaufen. Die Bereiche für vertrauenswürdige IP-Adressen können auf den Einstellungsseiten für die mehrstufige Authentifizierung konfiguriert werden.
 
 * **Zugriff blockieren, wenn nicht gearbeitet wird**: Mit dieser Option werden Benutzer blockiert, die nicht von einer vertrauenswürdigen IP-Adresse aus zugreifen. Die Bereiche für vertrauenswürdige IP-Adressen können auf den Einstellungsseiten für die mehrstufige Authentifizierung konfiguriert werden.
 
@@ -94,4 +94,4 @@ Zusätzlich zum Festlegen dieses Kennzeichens muss die AD FS-Instanz des Verbund
 - [Sichern des Zugriffs auf Office 365 und andere mit Azure Active Directory verbundene Apps](active-directory-conditional-access.md)
 - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

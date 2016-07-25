@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="data-services"
-  ms.date="06/21/2016"
+  ms.date="07/06/2016"
   ms.author="andrl"/>
 
 # Communityportal
@@ -21,7 +21,6 @@
 ## Community-Schwerpunktthema
 
 Lassen Sie uns Ihr Projekt promoten! Zeigen Sie uns das tolle Projekt, an dem Sie mit DocumentDB arbeiten. Wir möchten Ihnen helfen, Ihre genialen Einfälle mit der Welt zu teilen. Senden Sie uns zum Einrichten des Projekts eine E-Mail an diese Adresse: [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com).
-
 
 ### documentdb-lumenize
 
@@ -31,7 +30,6 @@ Aggregationen (Group-by, Pivot-table und N-dimensionale Cubes) und Zeitreihentra
 
 Informieren Sie sich hierüber bei [Github](https://github.com/lmaccherone/documentdb-lumenize) und [npm](https://www.npmjs.com/package/lumenize).
 
-
 ### DocumentDB Studio
 
 *von Ming Liu*
@@ -39,7 +37,6 @@ Informieren Sie sich hierüber bei [Github](https://github.com/lmaccherone/docum
 Ein Clientmanagement-Viewer/Explorer für den Microsoft Azure DocumentDB-Dienst.
 
 Informieren Sie sich hierüber bei [Github](https://github.com/mingaliu/DocumentDBStudio).
-
 
 ### DoQmentDB
 
@@ -49,7 +46,6 @@ DoQmentDB ist ein Node.js Promise-basierter Client, der über DocumentDB eine Mo
 
 Informieren Sie sich hierüber bei [Github](https://github.com/a8m/doqmentdb) und [npm](https://www.npmjs.com/package/doqmentdb).
 
-
 ### Swagger-REST-API für DocumentDB
 
 *von Howard Edidin*
@@ -57,7 +53,6 @@ Informieren Sie sich hierüber bei [Github](https://github.com/a8m/doqmentdb) un
 Eine Swagger-Datei mit einer DocumentDB-REST-API, die problemlos als API-App bereitgestellt werden kann.
 
 Informieren Sie sich hierüber bei [Github](https://github.com/HEDIDIN/DocumentDB-REST/tree/master/DocumentDBRestApi).
-
 
 ### fluent-plugin-documentdb
 
@@ -75,47 +70,47 @@ Sie können über aktuelle DocumentDB-Nachrichten und -Features auf dem Laufende
 
 **Communitybeiträge:**
 
-* [**Going Social with DocumentDB**](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/03/15/going-social-with-documentdb/) (Verwenden von DocumentDB für soziale Netzwerke) – *von Matias Quarantaas*
+- [**Going Social with DocumentDB**](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/03/15/going-social-with-documentdb/) (Verwenden von DocumentDB für soziale Netzwerke) – *von Matias Quarantaas*
 
-* [**UWP, Azure App Services, and DocumentDB Soup: A photo-sharing app**](https://blogs.windows.com/buildingapps/2016/03/17/uwp-azure-app-services-and-documentdb-soup-a-photo-sharing-app/) (UWP, Azure App Services und DocumentDB: eine App zum Teilen von Fotos) – *von Eric Langland*
+- [**UWP, Azure App Services, and DocumentDB Soup: A photo-sharing app**](https://blogs.windows.com/buildingapps/2016/03/17/uwp-azure-app-services-and-documentdb-soup-a-photo-sharing-app/) (UWP, Azure App Services und DocumentDB: eine App zum Teilen von Fotos) – *von Eric Langland*
 
-* [**Benachrichtigungen über neue oder geänderte DocumentDB-Ressourcen mit Logik-Apps**](documentdb-change-notification.md) – *von Howard Edidin*
+- [**Benachrichtigungen über neue oder geänderte DocumentDB-Ressourcen mit Logik-Apps**](documentdb-change-notification.md) – *von Howard Edidin*
 
-* [**Collecting logs into Azure DocumentDB using fluent-plugin-documentdb**](http://unofficialism.info/posts/collecting-logs-into-azure-documentdb-using-fluent-plugin-documentdb/) (Protokollerfassung in Azure DocumentDB mit fluent-plugin-documentdb) – *von Yoichi Kawasaki*
+- [**Collecting logs into Azure DocumentDB using fluent-plugin-documentdb**](http://unofficialism.info/posts/collecting-logs-into-azure-documentdb-using-fluent-plugin-documentdb/) (Protokollerfassung in Azure DocumentDB mit fluent-plugin-documentdb) – *von Yoichi Kawasaki*
 
-* [**DocumentDB revisited Part 1/2 – The theory**](https://peterintheazuresky.wordpress.com/2016/02/19/documentdb-revisited-part-12-the-theory/) (Erneute Betrachtung von DocumentDB, Teil 1/2 – Theorie) – *von Peter Mannerhult*
+- [**DocumentDB revisited Part 1/2 – The theory**](https://peterintheazuresky.wordpress.com/2016/02/19/documentdb-revisited-part-12-the-theory/) (Erneute Betrachtung von DocumentDB, Teil 1/2 – Theorie) – *von Peter Mannerhult*
 
-* [**What to love and hate about Azure’s DocumentDB**](http://blog.falafel.com/4-what-to-love-and-hate-about-azures-documentdb/) (Liebens- und Hassenswertes in DocumentDB von Azure) – *von George Saadeh*
+- [**What to love and hate about Azure’s DocumentDB**](http://blog.falafel.com/4-what-to-love-and-hate-about-azures-documentdb/) (Liebens- und Hassenswertes in DocumentDB von Azure) – *von George Saadeh*
 
-* [**Azure DocumentDB Server-Side Scripting**](https://www.simple-talk.com/cloud/cloud-data/azure-documentdb-server-side-scripting/) (Serverseitiges Skripting mit Azure DocumentDB) – *von Robert Sheldon*
+- [**Azure DocumentDB Server-Side Scripting**](https://www.simple-talk.com/cloud/cloud-data/azure-documentdb-server-side-scripting/) (Serverseitiges Skripting mit Azure DocumentDB) – *von Robert Sheldon*
 
-* [**DocumentDB as a data sink for Azure Stream Analytics**](http://janatdevelopment.com/2015/12/11/documentdb-as-a-data-sink-for-azure-stream-analytics/?utm_source=twitterfeed&utm_medium=twitter) – *von Jan Hentschel*
+- [**DocumentDB as a data sink for Azure Stream Analytics**](http://janatdevelopment.com/2015/12/11/documentdb-as-a-data-sink-for-azure-stream-analytics/?utm_source=twitterfeed&utm_medium=twitter) – *von Jan Hentschel*
 
-* [**Azure DocumentDB in production!**](http://blog.nexapp.ca/2015/11/30/azure-documentdb-in-production/) – *von Alexandre Walsh und Marc-Olivier Duval*
+- [**Azure DocumentDB in production!**](http://blog.nexapp.ca/2015/11/30/azure-documentdb-in-production/) – *von Alexandre Walsh und Marc-Olivier Duval*
 
-* [**Azure Search Indexers – DocumentDB Queries (auf Spanisch)**](http://www.ealsur.com.ar/wp/index.php/2015/11/19/azure-search-indexers-documentdb-queries/) – *von Matthias Quaranta*
+- [**Azure Search Indexers – DocumentDB Queries (auf Spanisch)**](http://www.ealsur.com.ar/wp/index.php/2015/11/19/azure-search-indexers-documentdb-queries/) – *von Matthias Quaranta*
 
-* [**Azure DocumentDB のSQLクエリ基礎**](http://beachside.hatenablog.com/entry/2015/12/06/000045) – *von Atsushi Yokohama*
+- [**Azure DocumentDB SQL query basics (auf Japanisch)**](http://beachside.hatenablog.com/entry/2015/12/06/000045) – *von Atsushi Yokohama*
 
-* [**Data Points - Aurelia Meets DocumentDB: A Matchmaker’s Journey**](https://msdn.microsoft.com/magazine/mt620011.aspx) – *von Julie Lerman*
+- [**Datenpunkte – Aurelia trifft DocumentDB: Erlebnisse einer Kupplerin**](https://msdn.microsoft.com/magazine/mt620011.aspx) – *von Julie Lerman*
 
-* [**Infrastructure as Code and Continuous Deployment of a Node.js + Azure DocumentDB Solution**](http://www.talmeida.net/blog/2015/10/26/infrastructure-as-code-and-continuous-deployment-of-a-nodejs-azure-documentdb-solution) – *von Thiago Almedia*
+- [**Infrastructure as Code and Continuous Deployment of a Node.js + Azure DocumentDB Solution**](http://www.talmeida.net/blog/2015/10/26/infrastructure-as-code-and-continuous-deployment-of-a-nodejs-azure-documentdb-solution) – *von Thiago Almedia*
 
-* [**Why DocumentDb Makes Good Business Sense for Some Projects**](http://www.iquestllc.com/blogs/read/405/why-documentdb-makes-good-business-sense-for-some-projects) – *von Samuel Uresin*
+- [**Why DocumentDb Makes Good Business Sense for Some Projects**](http://www.iquestllc.com/blogs/read/405/why-documentdb-makes-good-business-sense-for-some-projects) – *von Samuel Uresin*
 
-* [**Azure DocumentDB の開発ことはじめ - Client クラスの開発（1/2）**](http://beachside.hatenablog.com/entry/2015/10/01/202734) – *von Atsushi Yokohama*
+- [**Azure DocumentDB development moving forward – development of the Client class (1 of 2) (auf Japanisch)**](http://beachside.hatenablog.com/entry/2015/10/01/202734) – *von Atsushi Yokohama*
 
-* [**Azure DocumentDB を使うときに知っておきたいいくつかのこと**](http://beachside.hatenablog.com/entry/2015/10/01/202734) – *von Atsushi Yokohama*
+- [**Things you need to know when using Azure DocumentDB (auf Japanisch)**](http://beachside.hatenablog.com/entry/2015/10/01/202734) – *von Atsushi Yokohama*
 
-* [**Behandeln von RequestRateTooLarge-Fehlern in Azure DocumentDB und Testleistung**](http://blogs.msdn.com/b/bigdatasupport/archive/2015/09/02/dealing-with-requestratetoolarge-errors-in-azure-documentdb-and-testing-documentdb-performance.aspx) - *von Azim Uddin*
+- [**Behandeln von RequestRateTooLarge-Fehlern in Azure DocumentDB und Testleistung**](http://blogs.msdn.com/b/bigdatasupport/archive/2015/09/02/dealing-with-requestratetoolarge-errors-in-azure-documentdb-and-testing-documentdb-performance.aspx) - *von Azim Uddin*
 
-* [**Datenpunkte – Übersicht über Microsoft Azure DocumentDB**](https://msdn.microsoft.com/magazine/mt147238.aspx) - *von Julie Lerman*
+- [**Datenpunkte – Übersicht über Microsoft Azure DocumentDB**](https://msdn.microsoft.com/magazine/mt147238.aspx) - *von Julie Lerman*
 
-* [**Verwenden von DocumentDB mit F#**](https://jamessdixon.wordpress.com/2014/12/30/using-documentdb-with-f/) - *von Jamie Dixon*
+- [**Verwenden von DocumentDB mit F#**](https://jamessdixon.wordpress.com/2014/12/30/using-documentdb-with-f/) - *von Jamie Dixon*
 
-* [**Analysieren von Anwendungsprotokollen mit DocumentDB**](http://vincentlauzon.com/2015/09/06/analysing-application-logs-with-documentdb/) - *von Vincent-Philippe Lauzon*
+- [**Analysieren von Anwendungsprotokollen mit DocumentDB**](http://vincentlauzon.com/2015/09/06/analysing-application-logs-with-documentdb/) - *von Vincent-Philippe Lauzon*
 
-* [**Azure DocumentDB – Zeitpunkt-Backups**](http://softwarejuancarlos.com/2015/09/06/azure-documentdb-point-in-time-backups/) - *von Juan Carlos Sanchez*
+- [**Azure DocumentDB – Zeitpunkt-Backups**](http://softwarejuancarlos.com/2015/09/06/azure-documentdb-point-in-time-backups/) - *von Juan Carlos Sanchez*
 
 *Verfügen Sie über einen Blogbeitrag, ein Codebeispiel oder eine Fallstudie, die Sie teilen möchten? [Informieren Sie uns darüber](mailto:askdocdb@microsoft.com)!*
 
@@ -125,7 +120,7 @@ Sie können über aktuelle DocumentDB-Nachrichten und -Features auf dem Laufende
 
 | Veranstaltungsname | Referent | Ort | Datum | Hashtag |
 | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ------------------------ | ------- |
-| [Integration und IoT ](http://www.btug.be/events) | Eldert Grootenboer | Kontich, Belgien | 30\. Juni 2016 | – |
+| [Ignite 2016](https://myignite.microsoft.com/sessions?q=documentdb) | Andrew Liu und Tara Jana | Atlanta (Georgia, USA) | 26\.-30. September 2016 | [#MSIgnite](https://twitter.com/MS_Ignite) |
 
 
 *Sprechen Sie auf einer Veranstaltung oder organisieren Sie sie? [Teilen Sie uns mit, ](mailto:askdocdb@microsoft.com)wie wir helfen können!*
@@ -134,7 +129,10 @@ Sie können über aktuelle DocumentDB-Nachrichten und -Features auf dem Laufende
 
 | Veranstaltungsname | Referent | Ort | Datum | Aufzeichnung |
 | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ---------------------- | --------- |
-| [Do Logic Apps support error handling?](http://www.integrationusergroup.com/do-logic-apps-support-error-handling/?event_date=2016-06-20) (Unterstützen Logik-Apps die Fehlerbehandlung?) | Howard S. Edidin | Webcast | 20\. Juni 2016 | – |
+| [DevTeach](http://devteach.com/) | Ken Cenerelli | Montreal (Kanada) | 4\.-8. Juli 2016 | [NoSQL, No Problem, Using Azure DocumentDB](http://www.slideshare.net/KenCenerelli) (NoSQL, Kein Problem, Verwenden von Azure DocumentDB) |
+| [Integration und IoT ](http://www.btug.be/events) | Eldert Grootenboer | Kontich, Belgien | 30\. Juni 2016 | – |
+| [MongoDB World 2016](https://www.mongodb.com/world16) | Kirill Gavrylyuk | New York (New York, USA) | 28\.-29. Juni 2016 | – |
+| [Integration User Group](http://www.integrationusergroup.com/do-logic-apps-support-error-handling/) | Howard S. Edidin | Webcast | 20\. Juni 2016 | [Do Logic Apps support error handling? (Unterstützen Logik-Apps die Fehlerbehandlung?)](http://www.integrationusergroup.com/do-logic-apps-support-error-handling/) |
 | [Meetup: Azure-Benutzergruppe Großbritannien](http://www.meetup.com/UKAzureUserGroup/events/229673468/)| Andrew Liu | London, Großbritannien | 12\. Mai 2016 | –
 |[Meetup: ONETUG – .NET-Benutzergruppe Orlando](http://www.meetup.com/ONETUG/events/230797164/)| Santosh Hari| Orlando, Florida, USA| 12\. Mai 2016| – 
 | [SQLBits XV](https://sqlbits.com/) | Andrew Liu, Aravind Ramachandran | Liverpool, Großbritannien | 4\. bis 7. Mai 2016 | –| [Meetup: NYC .NET Developers Group](http://www.meetup.com/NYC-NET-Developers/events/230396260/) | Leonard Lobel | New York City, NY | 21\. April 2016 | – |
@@ -154,7 +152,7 @@ Sie können über aktuelle DocumentDB-Nachrichten und -Features auf dem Laufende
 | [SQL Saturday #430 – Sofia 2015](http://www.sqlsaturday.com/430/Sessions/Details.aspx?sid=36090) | Leonard Lobel | Sofia, Bulgarien | 10\. Oktober 2015 | – |
 | [SQL Samstag #444 – Kansas City 2015](http://www.sqlsaturday.com/444/Sessions/Details.aspx?sid=38576) | Jeff Renz | Kansas City, MO | 3\. Oktober 2015 | – |
 | [SQL Saturday #429 – Porto 2015](http://www.sqlsaturday.com/429/Sessions/Details.aspx?sid=36089) | Leonard Lobel | Porto, Portugal | 3\. Oktober 2015 | – |
-| [AzureCon](https://azure.microsoft.com/azurecon/) | David Makogon, Ryan Crawcour, John Macintyre | Virtuelle Veranstaltung | 29\. September 2015 | [Azure data and analytics platform](https://channel9.msdn.com/events/Microsoft-Azure/AzureCon-2015/ACON207) (Azure-Daten und Analyseplattform) [Working with NoSQL Data in DocumentDB](https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON338) (Arbeiten mit NoSQL-Daten in DocumentDB) |
+| [AzureCon](https://azure.microsoft.com/azurecon/) | David Makogon, Ryan Crawcour, John Macintyre | Virtuelle Veranstaltung | 29\. September 2015 | [Azure data and analytics platform](https://channel9.msdn.com/events/Microsoft-Azure/AzureCon-2015/ACON207) (Azure-Daten- und Analyseplattform) [Working with NoSQL Data in DocumentDB](https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON338) (Arbeiten mit NoSQL-Daten in DocumentDB) |
 | [SQL Saturday #434 – Holland 2015](http://www.sqlsaturday.com/434/Sessions/Details.aspx?sid=36413) | Leonard Lobel | Utrecht, Niederlande | 26\. September 2015 | [Einführung in Azure DocumentDB](https://channel9.msdn.com/Blogs/Windows-Azure/SQL-Saturday-Holland-2015-Introduction-to-Azure-DocumentDB) |
 | [SQL Saturday #441 – Denver 2015](http://www.sqlsaturday.com/441/Sessions/Details.aspx?sid=39191) | Jeff Renz | Denver, CO | 19\. September 2015 | – |
 | [Meetup: San Francisco Bay Area Azure Developers](http://www.meetup.com/bayazure/events/223943785/) | Andrew Liu | San Francisco, CA | 15\. September 2015 | – |
@@ -210,7 +208,7 @@ Sie können über aktuelle DocumentDB-Nachrichten und -Features auf dem Laufende
 
 | Schulungspartner | Beschreibung |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| [![Microsoft Virtual Academy](./media/documentdb-community/mva.png)](https://www.microsoftvirtualacademy.com/de-DE/training-courses/developing-solutions-with-azure-documentdb-10554) | [**Microsoft Virtual Academy**](https://www.microsoftvirtualacademy.com/de-DE/training-courses/developing-solutions-with-azure-documentdb-10554) bietet Ihnen Schulungen von den Personen an, die bei der Entwicklung von Azure DocumentDB helfen. |
+| [![Microsoft Virtual Academy](./media/documentdb-community/mva.png)](https://www.microsoftvirtualacademy.com/de-DE/training-courses/developing-solutions-with-azure-documentdb-10554) | [**Microsoft Virtual Academy**](https://www.microsoftvirtualacademy.com/de-DE/training-courses/developing-solutions-with-azure-documentdb-10554) bietet Ihnen Schulungen von den Personen an, die an der Entwicklung von Azure DocumentDB beteiligt sind. |
 | [![Pluralsight](./media/documentdb-community/pluralsight.png)](http://www.pluralsight.com/courses/azure-documentdb-introduction) | [**Pluralsight**](http://www.pluralsight.com/courses/azure-documentdb-introduction) ist ein wichtiger Microsoft-Partner, der Azure-Schulungen anbietet. Wenn Sie MSDN-Abonnent sind, können Sie Ihre Abonnementleistungen nutzen, um Zugang zu einer Microsoft Azure-Schulung zu erhalten. |
 | [![OpsGility](./media/documentdb-community/opsgility.png)](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb) | [**OpsGility**](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb) bietet umfassende technische Schulungen zu Microsoft Azure an. Lassen Sie sich vor Ort von Schulungsleitern oder über einen Remote-Klassenraum von in der Branche anerkannten Trainern weiterbilden. |
 
@@ -231,7 +229,7 @@ Folgen Sie uns auf Twitter ([@DocumentDB](https://twitter.com/DocumentDB)), um u
 
 ![Team](./media/documentdb-community/documentdb-team.png)
 
-Benötigen Sie technische Hilfe? Haben Sie Fragen? Fragen Sie sich, ob NoSQL eine gute Option für Sie ist? Sie können [einen direkten persönlichen Chat mit dem DocumentDB-Engineeringteam planen](http://www.askdocdb.com/). Sie können uns auch eine [E-Mail](mailto:askdocdb@microsoft.com) schicken oder unter [@DocumentDB](https://twitter.com/DocumentDB) einen Tweet senden.
+Benötigen Sie technische Hilfe? Haben Sie Fragen? Fragen Sie sich, ob NoSQL eine gute Option für Sie ist? Sie können [einen direkten persönlichen Chat mit dem DocumentDB-Entwicklungsteam planen](http://www.askdocdb.com/). Sie können uns auch eine [E-Mail](mailto:askdocdb@microsoft.com) schicken oder unter [@DocumentDB](https://twitter.com/DocumentDB) einen Tweet senden.
 
 ## Open Source-Projekte
 
@@ -256,8 +254,8 @@ Diese Projekte werden vom Azure DocumentDB-Team in Zusammenarbeit mit unserer Op
 ## DocumentDB-Genies
 
 DocumentDB-Genies sind wichtige Mitglieder der Community, die sich durch ein beispielhaftes Engagement dabei auszeichnen, anderen zu einem optimalen Ergebnis bei der Arbeit mit Azure DocumentDB zu verhelfen. Sie teilen ihre außergewöhnliche Leidenschaft, ihr praktisches Wissen und technisches Können mit der Community und dem DocumentDB-Team.
-      
-                                                                                                                                                                                                                                                                                                           Wizard | Picture 
+
+Assistent | Bild 
  --- | --- 
  [Allan Mitchell](https://twitter.com/allansqlis) | [![Allan Mitchell](./media/documentdb-community/wizard-allan-mitchell.jpg)](https://twitter.com/allansqlis) 
  [Jen Stirrup](https://twitter.com/jenstirrup) | [![Jen Stirrup](./media/documentdb-community/wizard-jen-stirrup.jpg)](https://twitter.com/jenstirrup)            
@@ -268,4 +266,4 @@ DocumentDB-Genies sind wichtige Mitglieder der Community, die sich durch ein bei
 
 Möchten Sie ein DocumentDB-Genie werden? Wenngleich es nicht unbedingt ein bestimmtes Kriterium gibt, das erfüllt sein muss, um ein DocumentDB-Genie zu werden, bewerten wir u. a. den Einfluss der Beiträge des Kandidaten zu Onlineforen wie StackOverflow und MSDN, Wikis, Online-Inhalten, Konferenzen, Benutzergruppen, Podcasts, Websites, Blogs und sozialen Medien sowie Artikeln und Büchern. [Senden uns eine E-Mail](mailto:askdocdb@microsoft.com), um sich selbst oder jemand anderen vorzuschlagen.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

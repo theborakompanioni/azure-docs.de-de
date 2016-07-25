@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="02/25/2016"
+	ms.date="07/07/2016"
 	ms.author="huguesv"/>
 
 
@@ -26,16 +26,16 @@ In diesem Tutorial erstellen wir mit [Python-Tools für Visual Studio] eine einf
 
 Sie erfahren, wie Sie eine in Azure gehostete SQL-Datenbank verwenden, wie Sie die Web-App für die Nutzung einer SQL-Datenbank konfigurieren und wie Sie sie für [Azure App Service-Web-Apps](http://go.microsoft.com/fwlink/?LinkId=529714) veröffentlichen.
 
-Weitere Artikel finden Sie im [Python Developer Center], wo die Entwicklung von Azure App Service-Web-Apps mit PTVS unter Einsatz der Webframeworks Bottle, Flask und Django mithilfe der Datenbankdienste MongoDB, Azure-Tabellenspeicher, MySQL und SQL behandelt wird. Der Schwerpunkt dieses Artikels liegt zwar auf App Service, die Schritte sind jedoch vergleichbar mit der Entwicklung von [Azure Cloud Services].
+Weitere Artikel finden Sie im [Python Developer Center]. Diese Artikel behandeln die Entwicklung von Azure App Service-Web-Apps mit PTVS unter Verwendung der Webframeworks Bottle, Flask und Django sowie mithilfe der Dienste Azure Table Storage, MySQL und SQL-Datenbank. Der Schwerpunkt dieses Artikels liegt zwar auf App Service, die Schritte sind jedoch vergleichbar mit der Entwicklung von [Azure Cloud Services].
 
 ## Voraussetzungen
 
- - Visual Studio 2013 oder 2015
- - [Python Tools 2.2 für Visual Studio]
- - [Python Tools 2.2 für Visual Studio, Beispiel-VSIX]
- - [Azure SDK-Tools für VS 2013] oder [Azure SDK-Tools für VS 2015]
+ - Visual Studio 2015
  - [Python 2.7 (32 Bit)]
- - Django 1.6 oder früher
+ - [Python Tools 2.2 für Visual Studio]
+ - [Python Tools 2.2 für Visual Studio, Beispiel-VSIX]
+ - [Azure SDK-Tools für Visual Studio 2015]
+ - Django 1.9 oder höher
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
@@ -47,7 +47,7 @@ In diesem Abschnitt erstellen wir ein Visual Studio-Projekt mithilfe einer Beisp
 
 1.  Wählen Sie in Visual Studio **Datei** -> **Neues Projekt** aus.
 
-1.  Die Projektvorlagen aus der PTVS-Beispiel-VSIX-Datei stehen unter **Python**, **Beispiele** bereit. Wählen Sie **Polls Django Web Project** aus, und klicken Sie auf "OK", um das Projekt zu erstellen.
+1.  Die Projektvorlagen aus den [Python Tools 2.2 für Visual Studio, Beispiel-VSIX] sind unter **Python** > **Beispiele** verfügbar. Wählen Sie **Polls Django Web Project** aus, und klicken Sie auf "OK", um das Projekt zu erstellen.
 
   	![Dialogfeld "Neues Projekt"](./media/web-sites-python-ptvs-django-sql/PollsDjangoNewProject.png)
 
@@ -55,19 +55,13 @@ In diesem Abschnitt erstellen wir ein Visual Studio-Projekt mithilfe einer Beisp
 
   	![Dialogfeld für externe Pakete](./media/web-sites-python-ptvs-django-sql/PollsDjangoExternalPackages.png)
 
-1.  Wählen Sie **Python 2.7** als Basisinterpreter aus.
+1.  Wählen Sie **Python 2.7** als Basisinterpreter aus.
 
   	![Dialogfeld für das Hinzufügen der virtuellen Umgebung](./media/web-sites-python-ptvs-django-sql/PollsCommonAddVirtualEnv.png)
 
-1.  Klicken Sie mit der rechten Maustaste auf den Projektknoten, und wählen Sie **Python** > **Django Sync DB** aus.
+1.  Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Projektknoten, und wählen Sie **Python** und anschließend **Django Migrate**. Wählen Sie dann **Django Create Superuser**.
 
-  	!["Django Sync DB"-Befehl](./media/web-sites-python-ptvs-django-sql/PollsDjangoSyncDB.png)
-
-1.  Eine Django-Verwaltungskonsole wird geöffnet. Folgen Sie den Anweisungen zum Erstellen eines Benutzers.
-
-    Dadurch wird eine SQLite-Datenbank im Projektordner erstellt.
-
-  	![Fenster der Django-Verwaltungskonsole](./media/web-sites-python-ptvs-django-sql/PollsDjangoConsole.png)
+1.  Dadurch wird eine Django-Verwaltungskonsole geöffnet und im Projektordner eine SQLite-Datenbank erstellt. Folgen Sie den Anweisungen zum Erstellen eines Benutzers.
 
 1.  Vergewissern Sie sich, dass die App funktioniert, indem Sie <kbd>F5</kbd> drücken.
 
@@ -97,11 +91,7 @@ Mit den folgenden Schritten können Sie eine Datenbank erstellen.
 
 1.  Klicken Sie am unteren Rand des Navigationsbereichs auf **NEU**. Klicken Sie anschließend auf **Daten + Speicher** > **SQL-Datenbank**.
 
-  	<!-- ![New Button](./media/web-sites-python-ptvs-django-sql/PollsCommonAzurePlusNew.png) -->
-
 1.  Konfigurieren Sie die neue SQL-Datenbank, indem Sie eine neue Ressourcengruppe erstellen und den entsprechenden Speicherort auswählen.
-
-  	<!-- ![Quick Create SQL Database](./media/web-sites-python-ptvs-django-sql/PollsDjangoSqlCreate.png) -->
 
 1.  Klicken Sie nach der Erstellung der SQL-Datenbank auf dem Datenbankblatt auf **In Visual Studio öffnen**.
 2.  Klicken Sie auf **Firewall konfigurieren**.
@@ -148,11 +138,9 @@ Bearbeiten Sie die Definition von `DATABASES`, sodass die oben angegebenen Werte
 
   	![Dialogfeld zur Installation des Python-Pakets](./media/web-sites-python-ptvs-django-sql/PollsDjangoSqlInstallPackageDjangoPyodbcAzure.png)
 
-1.  Klicken Sie mit der rechten Maustaste auf den Projektknoten, und wählen Sie **Python** > **Django Sync DB** aus.
+1.  Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Projektknoten, und wählen Sie **Python** und anschließend **Django Migrate**. Wählen Sie dann **Django Create Superuser**.
 
     Damit werden die Tabellen für die SQL-Datenbank erstellt, die wir im vorherigen Abschnitt angelegt haben. Folgen Sie den Aufforderungen zum Erstellen eines Benutzers. Er muss nicht demjenigen der im ersten Abschnitt angelegten SQLite-Datenbank entsprechen.
-
-  	![Fenster der Django-Verwaltungskonsole](./media/web-sites-python-ptvs-django-sql/PollsDjangoConsole.png)
 
 1.  Drücken Sie `F5`, um die Anwendung auszuführen. Die mittels **Beispielumfrage erstellen** erstellten Umfragen sowie die bei der Abstimmung erfassten Daten werden in der SQL-Datenbank serialisiert.
 
@@ -163,7 +151,7 @@ Das Azure .NET SDK bietet eine einfache Möglichkeit zum Bereitstellen Ihrer Web
 
 1.  Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf den Projektknoten, und wählen Sie **Veröffentlichen** aus.
 
-  	<!-- ![Publish Web Dialog](./media/web-sites-python-ptvs-django-sql/PollsCommonPublishWebSiteDialog.png) -->
+  	![Dialogfeld "Web veröffentlichen"](./media/web-sites-python-ptvs-django-sql/PollsCommonPublishWebSiteDialog.png)
 
 1.  Klicken Sie auf **Microsoft Azure-Web-Apps**.
 
@@ -175,8 +163,6 @@ Das Azure .NET SDK bietet eine einfache Möglichkeit zum Bereitstellen Ihrer Web
 	-	**Ressourcengruppe**
 	-	**Region**
 	-	Lassen Sie für **Datenbankserver** die Option **Keine Datenbank** festlegt.
-
-  	<!-- ![Create Site on Microsoft Azure Dialog](./media/web-sites-python-ptvs-django-sql/PollsCommonCreateWebSite.png) -->
 
 1.  Übernehmen Sie alle anderen Standardwerte, und klicken Sie auf **Veröffentlichen**.
 
@@ -210,8 +196,8 @@ Folgen Sie diesen Links, wenn Sie mehr über Python Tools für Visual Studio, Dj
 [Python-Tools für Visual Studio]: http://aka.ms/ptvs
 [Python Tools 2.2 für Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
 [Python Tools 2.2 für Visual Studio, Beispiel-VSIX]: http://go.microsoft.com/fwlink/?LinkID=624025
-[Azure SDK-Tools für VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
-[Azure SDK-Tools für VS 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
+[Python Tools 2.2 für Visual Studio, Beispiel-VSIX]: http://go.microsoft.com/fwlink/?LinkID=624025
+[Azure SDK-Tools für Visual Studio 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
 [Python 2.7 (32 Bit)]: http://go.microsoft.com/fwlink/?LinkId=517190
 [Python Tools für Visual Studio – Dokumentation]: http://aka.ms/ptvsdocs
 [Remotedebugging in Microsoft Azure]: http://go.microsoft.com/fwlink/?LinkId=624026
@@ -220,4 +206,4 @@ Folgen Sie diesen Links, wenn Sie mehr über Python Tools für Visual Studio, Dj
 [Dokumentation zu Django]: https://www.djangoproject.com/
 [SQL-Datenbank]: /documentation/services/sql-database/
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0713_2016-->

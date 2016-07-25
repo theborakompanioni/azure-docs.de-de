@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/24/2016"
+   ms.date="07/05/2016"
    ms.author="mfussell"/>
 
 # Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen
@@ -140,15 +140,16 @@ Service Fabric verfügt über zwei grobe Bereiche für die Unterstützung der An
 
 Vielleicht. Als immer mehr Teams bei Microsoft gebeten wurden, aus geschäftlichen Gründen Anwendungen für die Cloud zu entwickeln, haben viele die Vorteile eines Microservice-Ansatzes erkannt. Für Bing wird dies für die Suche beispielsweise schon seit Jahren eingesetzt. Für andere Teams war der Ansatz ganz neu. Sie haben gemerkt, dass schwierige Probleme gelöst werden mussten, was nicht zu ihren Stärken zählte. Dies sind die Gründe, warum Service Fabric immer häufiger als Technologie für die Erstellung von Diensten gewählt wird.
 
-Das Ziel von Service Fabric ist die Reduzierung der komplexen Anwendungserstellung durch einen Microservice-Ansatz, damit bei Ihnen nicht mehr so viele teure Überarbeitungen anfallen. Der Ansatz ist wie folgt: Beginnen Sie klein, führen Sie bei Bedarf eine Skalierung durch, mustern Sie Dienste aus, fügen Sie neue hinzu, und entwickeln Sie die Lösung während der Nutzung durch die Kunden weiter. Uns ist auch bewusst, dass in der Praxis noch viele andere Probleme gelöst werden müssen, damit Microservices für die Mehrzahl der Entwickler noch besser zugänglich werden. Container und das Actor-Programmiermodell sind Beispiele für kleine Schritte in diese Richtung, und wir sind uns sicher, dass weitere Innovationen diesen Prozess noch stärker vereinfachen werden.
+Das Ziel von Service Fabric ist die Reduzierung der komplexen Anwendungserstellung durch einen Microservice-Ansatz, damit bei Ihnen nicht mehr so viele teure Überarbeitungen anfallen. Der Ansatz ist wie folgt: Beginnen Sie klein, führen Sie bei Bedarf eine Skalierung durch, mustern Sie Dienste aus, fügen Sie neue hinzu, und entwickeln Sie die Lösung während der Nutzung durch die Kunden weiter. Uns ist auch bewusst, dass in der Praxis noch viele andere Probleme gelöst werden müssen, damit Microservices für die Mehrzahl der Entwickler noch besser zugänglich werden. Container und das Actor-Programmiermodell sind Beispiele für kleine Schritte in diese Richtung, und wir sind uns sicher, dass weitere Innovationen diesen Prozess noch stärker vereinfachen werden.  
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## Nächste Schritte
 
 * Weitere Informationen:
     * [Übersicht über Service Fabric](service-fabric-overview.md)
-    * [Microservices: Eine cloudbasierte Anwendungsrevolution](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
+    * [Microservices: Eine cloudbasierte Anwendungsrevolution](https://azure.microsoft.com/de-DE/blog/microservices-an-application-revolution-powered-by-the-cloud/)
+
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

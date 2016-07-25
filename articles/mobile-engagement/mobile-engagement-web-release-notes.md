@@ -19,20 +19,20 @@
 
 #Versionshinweise zum Web SDK für Azure Mobile Engagement
 
-##2\.0.1 (10.06.2016)
+##Version 2.0.1 (10.06.2016)
 
--   SDK für IE8 und IE9 deaktiviert.
+-   Das SDK in Internet Explorer 8 und Internet Explorer 9 wurde deaktiviert.
 -   Erkennung des Webbrowsers Opera korrigiert.
 
-##2\.0.0 (07.06.2016)
+##Version 2.0.0 (07.06.2016)
 
--   Erste Version von Azure Mobile Engagement.
--   Die „appId“-Konfiguration wird durch eine Verbindungszeichenfolgen-Konfiguration ersetzt.
--   APIs zum Aktivieren/Deaktivieren des Agents hinzugefügt.
--   Verbesserungen der Sicherheit.
--   Verwenden Sie in Browsern native JSON-APIs.
--   API entfernt, um Nachrichten zwischen Geräten zu senden und zu empfangen.
--   Rückrufe entfernt, die im Zusammenhang mit der veralteten XMPP-Verbindung stehen. 
--   Diese Version unterstützt nicht das „Reach“-Feature.
+-   Azure Mobile Engagement wurde veröffentlicht.
+-   Wurde aktualisiert, sodass die `appId`-Konfiguration durch die Konfiguration einer Verbindungszeichenfolge ersetzt wird.
+-   APIs zum Aktivieren und Deaktivieren des Agents wurden hinzugefügt.
+-   Die Sicherheit wurde verbessert.
+-   Wurde aktualisiert, sodass native JSON-APIs in Browsern verwendet werden.
+-   Die API, die Nachrichten zwischen Geräten sendet und empfängt, wurde entfernt.
+-   Rückrufe entfernt, die im Zusammenhang mit der veralteten XMPP-Verbindung stehen.
+-   Die Unterstützung für das Reach-Feature wurde entfernt.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

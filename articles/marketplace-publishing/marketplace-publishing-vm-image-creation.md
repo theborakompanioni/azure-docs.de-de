@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="Azure"
    ms.workload="na"
-   ms.date="04/13/2016"
+   ms.date="07/13/2016"
    ms.author="hascipio; v-divte"/>
 
 # Anleitung zum Erstellen eines VM-Images für Azure Marketplace
@@ -33,6 +33,8 @@ Ein Angebot ist ein „übergeordnetes Element“ für alle darin enthaltenen SK
 SKU ist der Handelsname für ein VM-Image. Ein VM-Image enthält einen Betriebssystem-Datenträger und null oder mehr Datenträger. Es handelt sich im Wesentlichen um das komplette Speicherprofil für einen virtuellen Computer. Pro Datenträger wird eine VHD benötigt. Auch für leere Datenträger wird für die Erstellung eine VHD benötigt.
 
 Fügen Sie unabhängig vom verwendeten Betriebssystem immer nur die von der SKU benötigte Mindestanzahl an Datenträgern hinzu. Kunden können Datenträger, die Teil eines Images sind, zum Zeitpunkt der Bereitstellung nicht entfernen. Sie haben aber immer die Möglichkeit, während oder nach der Bereitstellung Datenträger hinzuzufügen, sofern diese benötigt werden.
+
+>[AZURE.IMPORTANT] **Ändern Sie nicht die Anzahl der Datenträger in einer neuen Imageversion.** Wenn Sie Datenträger im Image neu konfigurieren müssen, definieren Sie eine neue SKU. Das Veröffentlichen einer neuen Imageversion mit einer anderen Anzahl von Datenträgern birgt das Risiko des Misslingens der neuen Bereitstellung basierend auf der neuen Imageversion bei automatischer Skalierung, automatischen Bereitstellungen von Lösungen mithilfe von ARM-Vorlagen und anderen Szenarien.
 
 ### 1\.1 Hinzufügen eines Angebots
 
@@ -567,4 +569,4 @@ Wenn Sie die SKU-Details abgeschlossen haben, können Sie mit der [Anleitung fü
 [link-intsvc]: http://www.microsoft.com/download/details.aspx?id=41554
 [link-python]: https://www.python.org/
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0713_2016-->

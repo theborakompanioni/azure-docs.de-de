@@ -1,12 +1,12 @@
-<properties
-	pageTitle="Problembehandlung: Leistungsabfall in einer Web-App"
-	description="In diesem Artikel erfahren Sie, wie Sie Leistungsprobleme in Ihrer mit Azure App Service gehosteten Web-App beheben."
-	services="app-service\web"
-	documentationCenter=""
-	authors="cephalin"
-	manager="wpickett"
-	editor=""
-	tags="top-support-issue"/>
+ <properties  
+	pageTitle="Beeinträchtigung der Web-App-Leistung in App Service | Microsoft Azure"
+	description="Dieser Artikel hilft Ihnen beim Beheben von Web-App-Leistungsproblemen in Azure App Service."
+	services="app-service\web" 
+	documentationCenter="" 
+	authors="cephalin" 
+	manager="wpickett" 
+	editor="" 
+	tags="top-support-issue keywords="Web-App-Leistung, langsame App, App langsam"/>
 
 <tags
 	ms.service="app-service-web"
@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/13/2016"
+	ms.date="07/06/2016"
 	ms.author="cephalin"/>
 
-# Problembehandlung: Leistungsabfall in einer Web-App
+# Problembehandlung bei niedriger Web-App-Leistung in Azure App Service
 
-In diesem Artikel wird beschrieben, wie Sie die Leistungsprobleme in Ihrer in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) gehosteten Web-App beheben.
+In diesem Artikel erfahren Sie, wie Sie Web-App-Leistungsprobleme in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) beheben.
 
 Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Ihre Frage im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) stellen, um dort Hilfe von Azure-Experten zu erhalten. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und klicken Sie auf **Support erhalten**.
 
@@ -64,7 +64,7 @@ Folgende Metriken können Sie z. B. für Ihre Web-App überwachen:
 -	Arbeitssatz für Arbeitsspeicher
 -	Requests
 
-![](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
+![Überwachen der Web-App-Leistung](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
 Weitere Informationen finden Sie unter:
 
@@ -182,8 +182,8 @@ Weitere Informationen finden Sie unter [Automatische Reparatur von Azure-Website
 
 Dies ist oft die einfachste Methode zum Beheben einmaliger Probleme. Im [Azure-Portal](https://portal.azure.com/) stehen auf dem Blatt Ihrer Web-App Optionen zum Beenden oder Neustarten der App zur Verfügung.
 
- ![](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
+ ![Neustart der Web-App zum Beheben von Leistungsproblemen](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
 Sie können Ihre Web-App auch mit Azure PowerShell verwalten. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md).
 
-<!---HONumber=AcomDC_0211_2016-->
+<!----HONumber=AcomDC_0713_2016-->

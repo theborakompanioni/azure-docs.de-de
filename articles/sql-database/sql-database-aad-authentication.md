@@ -97,7 +97,6 @@ Erstellen Sie ein Azure Active Directory-Verzeichnis, und füllen Sie es mit Ben
 
 - Erstellen der anfänglichen, von Azure AD verwalteten Domäne
 - Konfigurieren eines Verbunds aus lokalen Active Directory-Domänendiensten und Azure Active Directory
-- Aktivieren Sie mithilfe des Tools **AD FS** unter **Dienst** im Abschnitt **Endpunkte** die Option **WS-Trust 1.3** für den URL-Pfad **/adfs/services/trust/13/windowstransport**.
 
 Weitere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](../active-directory/active-directory-aadconnect.md), [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../active-directory/active-directory-add-domain.md), [Microsoft Azure now supports federation with Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/) (Microsoft Azure unterstützt jetzt den Verbund mit Windows Server Active Directory), [Verwalten Ihres Azure AD-Verzeichnisses](https://msdn.microsoft.com/library/azure/hh967611.aspx) sowie unter [Verwalten von Azure AD mit Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx).
 
@@ -127,7 +126,7 @@ Die folgenden Verfahren zeigen Schrittanleitungen dazu, wie Sie das zugeordnete 
 4. Klicken Sie im Bereich **Einstellungen** auf Ihr Abonnement, und klicken Sie dann im unteren Seitenbereich auf **VERZEICHNIS BEARBEITEN**.
 
 	![Einstellungen im Portal][5]
-5. Wählen Sie im Feld **VERZEICHNIS BEARBEITEN** das Azure Active Directory aus, das Ihrer SQL Server- oder SQL Data Warehouse-Instanz zugeordnet ist, und klicken Sie dann auf den Pfeil zum Fortfahren.
+5. Wählen Sie im Feld **VERZEICHNIS BEARBEITEN** die Azure Active Directory-Instanz aus, die Ihrer SQL Server- oder SQL Data Warehouse-Instanz zugeordnet ist, und klicken Sie dann auf den Pfeil zum Fortfahren.
 
 	![Verzeichnis auswählen][6]
 6. Bestätigen Sie im Dialogfeld **BESTÄTIGEN** für die Verzeichniszuordnung, die Meldung **Alle Co-Administratoren werden entfernt.**
@@ -150,7 +149,7 @@ Bei Verwendung von Azure Active Directory mit Geo-Replikation muss der Azure Act
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) in der oberen rechten Ecke auf Ihre Verbindung, um eine Dropdownliste mit möglichen Active Directory-Verzeichnissen zu öffnen. Wählen Sie das richtige Active Directory-Verzeichnis als Standardeinstellung für Azure AD aus. Durch diesen Schritt wird das Abonnement mit Active Directory und Azure SQL-Datenbank verknüpft. So wird sichergestellt, dass dasselbe Abonnement sowohl für Azure AD als auch für SQL Server verwendet wird. (Die folgenden Screenshots zeigen zwar die Azure SQL-Datenbank, die gleichen Konzepte gelten jedoch auch für Azure SQL Data Warehouse.)
 
 	![Administrator auswählen][8]
-2. Wählen Sie auf dem Banner links **SQL Server** aus, wählen Sie Ihre SQL Server- oder SQL Data Warehouse-Instanz aus, und klicken Sie dann oben auf dem Blatt **SQL Server** auf **Einstellungen**.
+2. Wählen Sie auf dem Banner links **SQL Server**, wählen Sie Ihre SQL Server- oder SQL Data Warehouse-Instanz aus, und klicken Sie dann oben auf dem Blatt **SQL Server** auf **Einstellungen**.
 
 	![Einstellungen][9]
 3. Klicken Sie auf dem Blatt **Einstellungen** auf **Active Directory-Administrator (Vorschau)**, und akzeptieren Sie die Vorschauklausel.
@@ -240,7 +239,7 @@ Auf allen Clientcomputern, über die Ihre Anwendungen oder Benutzer unter Verwen
 
 Für die Azure Active Directory-Authentifizierung ist es erforderlich, dass Datenbankbenutzer als eigenständige Datenbankbenutzer erstellt werden. Ein eigenständiger Datenbankbenutzer basierend auf einer Azure AD-Identität ist ein Datenbankbenutzer, der über keine Anmeldung für die Masterdatenbank verfügt, und der einer Identität im Azure AD-Verzeichnis zugeordnet ist, das mit der Datenbank verknüpft ist. Bei der Azure AD-Identität kann es sich entweder um ein einzelnes Benutzerkonto oder um eine Gruppe handeln. Weitere Informationen zu eigenständigen Datenbankbenutzern finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
 
-> [AZURE.NOTE] Datenbankbenutzer (mit Ausnahme von Administratoren) können nicht mithilfe des Portals erstellt werden, und RBAC-Rollen werden nicht an SQL Server oder SQL Data Warehouse weitergegeben. Azure RBAC-Rollen dienen zum Verwalten von Azure-Ressourcen und gelten nicht für Datenbankberechtigungen. Beispielsweise gewährt die Rolle **SQL Server-Mitwirkender** keinen Zugriff zum Herstellen einer Verbindung mit der SQL-Datenbank oder mit SQL Data Warehouse. Die Zugriffsberechtigung muss direkt in der Datenbank mithilfe von Transact-SQL-Anweisungen erteilt werden.
+> [AZURE.NOTE] Datenbankbenutzer (mit Ausnahme von Administratoren) können nicht mithilfe des Portals erstellt werden, und RBAC-Rollen werden nicht an SQL Server oder SQL Data Warehouse weitergegeben. Azure RBAC-Rollen dienen zum Verwalten von Azure-Ressourcen und gelten nicht für Datenbankberechtigungen. Beispielsweise gewährt die Rolle **SQL Server-Mitwirkender** keinen Zugriff zum Herstellen einer Verbindung mit SQL-Datenbank oder SQL Data Warehouse. Die Zugriffsberechtigung muss direkt in der Datenbank mithilfe von Transact-SQL-Anweisungen erteilt werden.
 
 ### Herstellen einer Verbindung mit Benutzerdatenbank oder Data Warehouse mithilfe von SQL Server Management Studio oder SQL Server Data Tools
 
@@ -367,4 +366,4 @@ Weitere Informationen finden Sie im [SQL Server Security Blog](https://blogs.msd
 [11]: ./media/sql-database-aad-authentication/11connect-using-int-auth.png
 [12]: ./media/sql-database-aad-authentication/12connect-using-pw-auth.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

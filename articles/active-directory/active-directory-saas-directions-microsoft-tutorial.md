@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit Directions on Microsoft
@@ -21,7 +21,7 @@ In diesem Tutorial wird die Integration von Azure Active Directory und Direction
 -   Ein gültiges Azure-Abonnement
 -   Ein Directions on Microsoft-Abonnement
 
-Falls Sie noch kein Directions on Microsoft-Verbundabonnement haben, senden Sie per e-Mail eine Anforderung an „*service@DirectionsOnMicrosoft.com*”.
+Falls Sie noch kein Directions on Microsoft-Verbundabonnement haben, senden Sie per E-Mail eine Anforderung an *service@DirectionsOnMicrosoft.com*.
 
 Nach Abschluss dieses Tutorials können sich die Azure Active Directory-Benutzer, die Sie Directions on Microsoft zugewiesen haben, mittels einmaliger Anmeldung bei der Anwendung anmelden.
 
@@ -39,7 +39,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Dir
 
 ###So aktivieren Sie die Anwendungsintegration für Directions on Microsoft
 
-1.  Klicken Sie im linken Navigationsbereich des Azure-Verwaltungsportals auf **Active Directory**.
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-directions-microsoft-tutorial/IC700993.png "Active Directory")
 
@@ -70,7 +70,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 ###So konfigurieren Sie einmaliges Anmelden
 
-1.  Klicken Sie im Azure AD-Portal auf der Anwendungsintegrationsseite für **Directions on Microsoft** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Directions on Microsoft** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
     ![Aktivieren der einmaligen Anmeldung](./media/active-directory-saas-directions-microsoft-tutorial/IC786879.png "Aktivieren der einmaligen Anmeldung")
 
@@ -78,7 +78,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Microsoft Azure AD – einmaliges Anmelden](./media/active-directory-saas-directions-microsoft-tutorial/IC786880.png "Microsoft Azure AD – einmaliges Anmelden")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** ****https://www.directionsonmicrosoft.com/user/login** in das Textfeld „Anmelde-URL“ ein, und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die Anmelde-URL die URL **https://www.directionsonmicrosoft.com/user/login** ein, und klicken Sie dann auf **Weiter**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-directions-microsoft-tutorial/IC786881.png "App-URL konfigurieren")
 
@@ -86,11 +86,11 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-directions-microsoft-tutorial/IC786882.png "Einmaliges Anmelden konfigurieren")
 
-5.  Senden Sie die Metadatendatei an das Supportteam von Directions on Microsoft (**service@DirectionsOnMicrosoft.com*). Geben Sie in der E-Mail Ihre Unternehmensinformationen an, damit das Supportteam von Directions on Microsoft Ihre Verbundwebsitemitgliedschaft ausfindig machen kann.
+5.  Senden Sie die Metadatendatei an das Supportteam von Directions on Microsoft (*service@DirectionsOnMicrosoft.com*). Geben Sie in der E-Mail Ihre Unternehmensinformationen an, damit das Supportteam von Directions on Microsoft Ihre Verbundwebsitemitgliedschaft ausfindig machen kann.
 
-    >[AZURE.NOTE]Einmaliges Anmelden für Directions on Microsoft muss vom Supportteam von Directions on Microsoft aktiviert werden. Sie erhalten eine Benachrichtigung, wenn einmaliges Anmelden aktiviert wurde.
+    >[AZURE.NOTE] Einmaliges Anmelden für Directions on Microsoft muss vom Supportteam von Directions on Microsoft aktiviert werden. Sie erhalten eine Benachrichtigung, wenn einmaliges Anmelden aktiviert wurde.
 
-6.  Wählen Sie im Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
+6.  Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-directions-microsoft-tutorial/IC786883.png "Einmaliges Anmelden konfigurieren")
 ##Konfigurieren der Benutzerbereitstellung
@@ -102,7 +102,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 ###So weisen Sie Directions on Microsoft Benutzer zu
 
-1.  Erstellen Sie im Azure AD-Portal ein Testkonto.
+1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
 2.  Klicken Sie auf der Anwendungsintegrationsseite für **Directions on Microsoft** auf **Benutzer zuweisen**.
 
@@ -112,4 +112,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
     ![Ja](./media/active-directory-saas-directions-microsoft-tutorial/IC767830.png "Ja")
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

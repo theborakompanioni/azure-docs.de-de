@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/21/2016" 
+	ms.date="07/12/2016" 
 	ms.author="awills"/>
 
 # Untersuchen von Java-Ablaufverfolgungsprotokollen in Application Insights
@@ -136,9 +136,9 @@ Die Application Insights-Appender können von jeder konfigurierten Protokollieru
 
 ## Untersuchen Ihrer Ablaufverfolgungen im Application Insights-Portal
 
-Nachdem Sie das Projekt so konfiguriert haben, dass Ablaufverfolgungen an Application Insights gesendet werden, können Sie diese Ablaufverfolgungen im Application Insights-Portal auf dem Blatt [Diagnosesuche][diagnostic] anzeigen und durchsuchen.
+Nachdem Sie das Projekt so konfiguriert haben, dass Ablaufverfolgungen an Application Insights gesendet werden, können Sie diese Ablaufverfolgungen im Application Insights-Portal auf dem Blatt [Suche][diagnostic] anzeigen und durchsuchen.
 
-![Öffnen Sie im Application Insights-Portal die Diagnosesuche](./media/app-insights-java-trace-logs/10-diagnostics.png)
+![Öffnen Sie im Application Insights-Portal das Blatt „Suche“.](./media/app-insights-java-trace-logs/10-diagnostics.png)
 
 ## Nächste Schritte
 
@@ -151,4 +151,4 @@ Nachdem Sie das Projekt so konfiguriert haben, dass Ablaufverfolgungen an Applic
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0713_2016-->

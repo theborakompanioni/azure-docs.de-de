@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/06/2016"
+	ms.date="07/12/2016"
 	ms.author="tomfitz"/>
 
 # Freigeben des Status in Azure-Ressourcen-Manager-Vorlagen
@@ -426,4 +426,4 @@ Wenn Sie den virtuellen Computer definieren, legen Sie **osProfile** auf die ers
 - Informationen zu den Abschnitten der Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 - Unter [Vorlagenfunktionen in Azure Resource Manager](resource-group-template-functions.md) finden Sie alle Funktionen, die in einer Vorlage verfügbar sind.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

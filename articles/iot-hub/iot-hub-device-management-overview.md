@@ -103,7 +103,9 @@ Die Clientbibliothek der Geräteverwaltung hat zwei Hauptaufgaben:
 
 Weitere Informationen zu diesen Aufgaben und der Implementierung auf dem physischen Gerät finden Sie unter [Einführung in die Clientbibliothek der Azure IoT Hub-Geräteverwaltung für C][lnk-library-c].
 
-## Nächster Schritt
+## Nächste Schritte
+
+Mit den IoT-Geräte-SDKs können Sie Clientanwendungen auf einer Vielzahl von Gerätehardwareplattformen und Betriebssystemen implementieren. Die IoT-Geräte-SDKs enthalten Bibliotheken, die das Senden von Telemetriedaten an einen IoT Hub und das Empfangen von Cloud-zu-Gerät-Befehlen ermöglichen. Wenn Sie die SDKs verwenden, können Sie für die Kommunikation mit IoT Hub unter verschiedenen Netzwerkprotokollen auswählen. Erfahren Sie mehr in den [Informationen zu Geräte-SDKs][lnk-device-sdks].
 
 Weitere Informationen zu den Features der Azure IoT Hub-Geräteverwaltung finden Sie im Tutorial [Erste Schritte mit der Azure IoT Hub-Geräteverwaltung][lnk-get-started].
 
@@ -118,5 +120,6 @@ Weitere Informationen zu den Features der Azure IoT Hub-Geräteverwaltung finden
 [lnk-tutorial-twin]: iot-hub-device-management-device-twin.md
 [lnk-apidocs]: http://azure.github.io/azure-iot-sdks/
 [lnk-query-samples]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/doc/get_started/dm_queries/query-samples.md
+[lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

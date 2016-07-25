@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/19/2016"
+   ms.date="07/11/2016"
    ms.author="larryfr"/>
 
 #Entwickeln von Apache Storm-Topologien mit Python in HDInsight
@@ -45,8 +45,6 @@ Das Modul unterstützt u. a. `storm.emit` zum Ausgeben von Tupeln und `storm.lo
 Mithilfe des Moduls __storm.py__ können Sie Python-Spouts erstellen, die Daten nutzen, und Bolts, die Daten verarbeiten. Die allgemeine Storm-Topologiedefinition für die Kommunikation zwischen Komponenten wird jedoch nach wie vor in Java oder Clojure geschrieben. Zudem müssen Sie bei der Verwendung von Java auch Java-Komponenten erstellen, die als Schnittstelle zu den Python-Komponenten fungieren.
 
 Da Storm-Cluster verteilt ausgeführt werden, müssen Sie außerdem sicherstellen, dass alle erforderlichen Module für Ihre Python-Komponenten auf sämtlichen Workerknoten im Cluster verfügbar sind. Storm bietet keine Möglichkeit, mit der sich dies für mehrsprachige Ressourcen einfach bewerkstelligen lässt. Sie müssen entweder alle Abhängigkeiten in die JAR-Datei für die Topologie aufnehmen oder Abhängigkeiten manuell auf jedem Workerknoten im Cluster installieren.
-
-Es gibt einige Projekte, die versuchen, diese Mängel zu beheben, z. B. [Pyleus](https://github.com/Yelp/pyleus) und [Streamparse](https://github.com/Parsely/streamparse). Beide Projekte können zwar auf Linux-basierten HDInsight-Clustern ausgeführt werden, erfordern aber Anpassungen beim Einrichten des Clusters und wurden nicht vollständig auf HDInsight-Clustern getestet. Sie bilden daher nicht den Schwerpunkt dieses Dokuments. Hinweise zur Verwendung dieser Frameworks mit HDInsight finden Sie am Ende des Dokuments.
 
 ###Java- und Clojure-Topologiedefinitionen im Vergleich
 
@@ -124,7 +122,7 @@ Diese Topologie wurde mithilfe von [Leiningen](http://leiningen.org) erstellt, u
 
 Verwenden Sie den folgenden Befehl, um das __Projekt zu erstellen und lokal auszuführen __:
 
-    lein do clean, run
+    lein clean, run
 
 Verwenden Sie zum Beenden der Topologie __STRG+C__.
 
@@ -169,177 +167,6 @@ Gehen Sie wie folgt vor, um __ein Uberjar zu erstellen und in HDInsight bereitzu
 
 > [AZURE.NOTE] Eine gestartete Storm-Topologie wird ausgeführt, bis sie beendet (abgebrochen) wird. Führen Sie zum Beenden der Topologie entweder den Befehl `storm kill TOPOLOGYNAME` über die Befehlszeile aus (in einer SSH-Sitzung mit einem Linux-Cluster), oder wählen Sie in der Storm-Benutzeroberfläche die Topologie aus, und klicken Sie dann auf die Schaltfläche __Kill__.
 
-##Pyleus-Framework
-
-[Pyleus](https://github.com/Yelp/pyleus) ist ein Framework, das folgende Funktionen bereitstellt, um die Verwendung von Python mit Storm zu erleichtern:
-
-* __YAML-basierte Topologiedefinitionen__: Diese Funktion vereinfacht das Definieren der Topologie, da keine Kenntnisse in Java oder Clojure erforderlich sind.
-* __MessagePack-basiertes Serialisierungsprogramm__: Anstelle von JSON wird MessagePack als Standardserialisierung verwendet. Dadurch kann der Nachrichtenaustausch zwischen Komponenten beschleunigt werden.
-* __Abhängigkeitsverwaltung__: Mit Virtualenv wird sichergestellt, dass Python-Abhängigkeiten auf allen Workerknoten bereitgestellt werden. Dies erfordert die Installation von Virtualenv auf den Workerknoten.
-
-> [AZURE.IMPORTANT] Pyleus erfordert Storm in Ihrer Entwicklungsumgebung. Die Verwendung der Apache Storm 0.9.3-Basisverteilung scheint zu JAR-Dateien zu führen, die nicht mit der mit HDInsight bereitgestellten Version von Storm kompatibel sind. In den folgenden Schritten wird daher der HDInsight-Cluster als Entwicklungsumgebung verwendet.
-
-Sie können die Pyleus-Beispieltopologien erstellen, indem Sie den HDInsight-Hauptknoten als Buildumgebung verwenden:
-
-1. Beim Bereitstellen einer neuen Storm-Topologie auf einem HDInsight-Cluster müssen Sie sicherstellen, dass Python Virtualenv auf den Clusterknoten installiert ist. Verwenden Sie beim Erstellen eines neuen Linux-basierten HDInsight-Clusters die folgenden Skriptaktionseinstellungen für die [Clusteranpassung](hdinsight-hadoop-customize-cluster.md):
-
-    * __Name__: Geben Sie nur einen Anzeigenamen an.
-    * \_\_ Skript-URI\_\_: Verwenden Sie `https://hditutorialdata.blob.core.windows.net/customizecluster/pythonvirtualenv.sh` als Wert. Das Skript installiert Python Virtualenv auf den Knoten.
-    
-        > [AZURE.NOTE] Außerdem werden einige Verzeichnisse erstellt, die an späterer Stelle dieses Dokuments vom Streamparse-Framework verwendet werden.
-        
-    * __Nimbus__: Aktivieren Sie diesen Eintrag, damit das Skript auf die Nimbus-Knoten (Hauptknoten) angewendet wird.
-    * __Supervisor__: Aktivieren Sie diesen Eintrag, damit das Skript auf die Supervisorknoten (Workerknoten) angewendet wird.
-    
-    Lassen Sie die anderen Einträge leer.
-
-1. Stellen Sie nach dem Erstellen des Clusters über SSH eine Verbindung her:
-
-    * [Verwenden von SSH mit Linux-basiertem HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
-    * [Verwenden von SSH mit Linux-basiertem HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
-
-2. Verwenden Sie in der SSH-Sitzung die folgenden Befehle, um eine neue virtuelle Umgebung zu erstellen und Pyleus zu installieren:
-
-        virtualenv pyleus_venv
-        source pyleus_venv
-        pip install pyleus
-
-3. Laden Sie anschließend das Pyleus-Git-Repository herunter, und erstellen Sie das WordCount-Beispiel:
-
-        sudo apt-get install git
-        git clone https://github.com/Yelp/pyleus.git
-        pyleus build pyleus/examples/word_count/pyleus_topology.yaml
-    
-    Danach enthält das aktuelle Verzeichnis eine neue Datei mit dem Namen `word_count.jar`.
-    
-4. Verwenden Sie den folgenden Befehl, um die Topologie an den Storm-Cluster zu senden:
-
-        pyleus submit -n localhost word_count.jar
-    
-    Der Parameter `-n` gibt den Nimbus-Host an. Da wir auf dem Hauptknoten arbeiten, können wir `localhost` verwenden.
-    
-    Sie können auch den Befehl `pyleus` verwenden, um andere Storm-Aktionen auszuführen. Verwenden Sie die folgenden Befehle, um die aktiven Topologien aufzulisten und anschließend die `word_count`-Topologie zu beenden:
-    
-        pyleus list -n localhost
-        pyleus kill -n localhost word_count
-
-##Streamparse-Framework
-
-[Streamparse](https://github.com/Parsely/streamparse) ist ein Framework, das folgende Funktionen bereitstellt, um die Verwendung von Python mit Storm zu erleichtern:
-
-* __Gerüstbau__: Dank dieser Funktion können Sie das Gerüst für ein Projekt einfach erstellen und anschließend Dateien ändern, um Ihre Logik hinzuzufügen.
-* __Clojure DSL-Funktionen__: Diese Funktionen verringern den Ausführlichkeitsgrad der Verwendung von Python-Komponenten in einer Clojure-Topologiedefinition.
-* __Abhängigkeitsverwaltung__: Mit Virtualenv wird sichergestellt, dass Python-Abhängigkeiten auf allen Workerknoten bereitgestellt werden. Dies erfordert die Installation von Virtualenv auf den Workerknoten.
-* __Remotebereitstellung__: Streamparse kann die SSH-Automatisierung verwenden, um Komponenten auf Workerknoten bereitzustellen, und erstellt einen SSH-Tunnel für die Kommunikation mit Nimbus. Die Bereitstellung von Ihrer Entwicklungsumgebung auf Linux-basierten Clustern wie HDInsight ist daher problemlos möglich.
-
-> [AZURE.IMPORTANT] Streamparse beruht auf Komponenten, die [Unix-Signale](https://en.wikipedia.org/wiki/Unix_signal) erwarten, die unter Windows nicht verfügbar sind. Sie müssen daher eine Linux-, Unix- oder OS X-Entwicklungsumgebung und einen Linux-basierten HDInsight-Cluster verwenden.
-
-1. Beim Bereitstellen einer neuen Storm-Topologie auf einem HDInsight-Cluster müssen Sie sicherstellen, dass Python Virtualenv auf den Clusterknoten installiert ist. Verwenden Sie beim Erstellen eines neuen Linux-basierten HDInsight-Clusters die folgenden Skriptaktionseinstellungen für die [Clusteranpassung](hdinsight-hadoop-customize-cluster.md):
-
-    * __Name__: Geben Sie nur einen Anzeigenamen an.
-    * \_\_ Skript-URI\_\_: Verwenden Sie `https://hditutorialdata.blob.core.windows.net/customizecluster/pythonvirtualenv.sh` als Wert. Dieses Skript installiert Python Virtualenv auf den Knoten und erstellt von Streamparse verwendete Verzeichnisse.
-    * __Nimbus__: Aktivieren Sie diesen Eintrag, damit das Skript auf die Nimbus-Knoten (Hauptknoten) angewendet wird.
-    * __Supervisor__: Aktivieren Sie diesen Eintrag, damit das Skript auf die Supervisorknoten (Workerknoten) angewendet wird.
-    
-    Lassen Sie die anderen Einträge leer.
-    
-    > [AZURE.WARNING] Zur Remotebereitstellung mit Streamparse müssen Sie außerdem einen __öffentlichen Schlüssel__ verwenden, um den SSH-Benutzer für Ihren HDInsight-Cluster zu sichern.
-    >
-    > Weitere Informationen zur Verwendung von Schlüsseln mit SSH in HDInsight finden Sie in den folgenden Dokumenten:
-    >
-    > * [Verwenden von SSH mit Linux-basiertem HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
-    > * [Verwenden von SSH mit Linux-basiertem HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
-
-2. Installieren Sie während der Clusterbereitstellung mit dem folgenden Befehl Streamparse in Ihrer Entwicklungsumgebung:
-
-        pip install streamparse
-        
-3. Führen Sie nach der Installation von Streamparse den folgenden Befehl aus, um ein Beispielprojekt zu erstellen:
-
-        sparse quickstart wordcount
-        
-    Dadurch wird ein neues Verzeichnis namens `wordcount` erstellt und mit einem Word Count-Beispielprojekt aufgefüllt.
-
-4. Ändern Sie die Verzeichnisse in das Verzeichnis `wordcount`, und starten Sie die Topologie im lokalen Modus:
-
-        cd wordcount
-        sparse run
-
-    Verwenden Sie zum Beenden der Topologie STRG+C.
-
-###Bereitstellen der Topologie
-
-Gehen Sie nach dem Erstellen Ihres Linux-basierten HDInsight-Clusters wie folgt vor, um die Topologie im Cluster bereitzustellen:
-
-1. Verwenden Sie den folgenden Befehl, um den vollqualifizierten Domänennamen der Workerknoten für Ihren Cluster zu ermitteln:
-
-        curl -u admin:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts | grep '"host_name" : "worker'
-    
-    Dadurch werden die Hostinformationen für den Cluster abgerufen, an „grep“ umgeleitet und die Einträge für die Workerknoten zurückgegeben. Die Ergebnisse sollten in etwa wie folgt aussehen:
-    
-        "host_name" : "workernode0.1kft5e4nx2tevg5b2pdwxqx1fb.jx.internal.cloudapp.net"
-    
-    Speichern Sie den Wert `"workernode0.1kft5e4nx2tevg5b2pdwxqx1fb.jx.internal.cloudapp.net"`, da er im nächsten Schritt verwendet wird.
-
-2. Öffnen Sie die Datei __config.json__ im Verzeichnis `wordcount`, und ändern Sie die folgenden Einträge:
-
-    * __user__: Legen Sie diesen Eintrag auf den Namen des SSH-Benutzerkontos fest, das Sie für den HDInsight-Cluster konfiguriert haben. Dieser Name wird bei der Bereitstellung für die Authentifizierung im Cluster verwendet.
-    * __nimbus__: Legen Sie diesen Eintrag auf `CLUSTERNAME-ssh.azurehdinsight.net` fest. Ersetzen Sie CLUSTERNAME durch den Namen Ihres Clusters. Dieser Wert wird bei der Kommunikation mit dem Nimbus-Knoten verwendet, dem Hauptknoten des Clusters.
-    * __workers__: Füllen Sie diesen Eintrag mit den mit „curl“ abgerufenen Hostnamen für die Workerknoten auf. Beispiel:
-    
-        ```
-"workers": [
-    "workernode0.1kft5e4nx2tevg5b2pdwxqx1fb.jx.internal.cloudapp.net",
-    "workernode1.1kft5e4nx2tevg5b2pdwxqx1fb.jx.internal.cloudapp.net"
-    ]
-        ```
-    
-    * __virtualenv\_root__: Legen Sie diesen Eintrag auf „/virtualenv“ fest.
-    
-    Dadurch wird das Projekt für Ihren HDInsight-Cluster konfiguriert, einschließlich des Verzeichnisses `/virtualenv`, das während der Bereitstellung durch die Skriptaktion erstellt wurde.
-
-4. Da Ihre Authentifizierung bei der Streamparse-Bereitstellung in HDInsight über den Hauptknoten an die Workerknoten weitergeleitet werden muss, muss `ssh-agent` auf der Arbeitsstation gestartet werden. Bei den meisten Betriebssystemen wird der Agent automatisch gestartet. Überprüfen Sie mit dem folgenden Befehl, ob der Agent ausgeführt wird:
-
-        echo "$SSH_AUTH_SOCK"
-    
-    Wenn `ssh-agent` ausgeführt wird, sollte die Antwort in etwa wie folgt aussehen:
-    
-        /tmp/ssh-rfSUL1ldCldQ/agent.1792
-    
-    > [AZURE.NOTE] Der vollständige Pfad kann je nach Betriebssystem unterschiedlich sein. Bei OS X kann der Pfad z. B. `/private/tmp/com.apple.launchd.vq2rfuxaso/Listeners` lauten. Wenn der Agent ausgeführt wird, sollte jedoch in jedem Fall ein Pfad zurückgegeben werden.
-    
-    Falls nichts zurückgegeben wird, starten Sie den Agent mit dem Befehl `ssh-agent`.
-    
-5. Stellen Sie sicher, dass der Agent über den Schlüssel verfügt, den Sie zur Authentifizierung beim HDInsight-Server verwenden. Führen Sie den folgenden Befehl aus, um die für den Agent verfügbaren Schlüssel aufzulisten:
-
-        ssh-add -L
-    
-    Dieser Befehl gibt die privaten Schlüssel zurück, die dem Agent hinzugefügt wurden. Sie können die Ergebnisse mit dem Inhalt des privaten Schlüssels vergleichen, den Sie beim Erstellen eines SSH-Schlüssels zur Authentifizierung in HDInsight generiert haben.
-    
-    Wenn keine Informationen zurückgegeben werden oder die zurückgegebenen Informationen nicht mit Ihrem privaten Schlüssel übereinstimmen, verwenden Sie den folgenden Befehl, um dem Agent den privaten Schlüssel hinzuzufügen:
-    
-        ssh-add /path/to/key/file
-    
-    Beispiel: `ssh-add ~/.ssh/id_rsa`.
-
-4. Sie müssen auch SSH konfigurieren, damit für Ihren HDInsight-Cluster die Weiterleitung verwendet wird. Fügen Sie `~/.ssh/config` den folgenden Code hinzu: Falls diese Datei nicht vorhanden ist, erstellen Sie sie mit dem folgenden Inhalt:
-
-        Host *.azurehdinsight.net
-          ForwardAgent yes
-        
-        Host *.internal.cloudapp.net
-          ProxyCommand ssh CLUSTERNAME-ssh.azurehdinsight.net nc %h %p
-    
-    Ersetzen Sie CLUSTERNAME durch den Namen Ihres HDInsight-Clusters.
-    
-    Dadurch wird der SSH-Agent auf der Arbeitsstation so konfiguriert, dass er die Weiterleitung Ihrer SSH-Anmeldeinformationen über beliebige *.azurehdinsight.net-Systeme ermöglicht, mit denen Sie eine Verbindung herstellen. In diesem Fall erfolgt die Weiterleitung über den Hauptknoten des Clusters. Anschließend wird der Befehl konfiguriert, der für SSH-Proxydatenverkehr vom Hauptknoten zu den einzelnen Workerknoten verwendet wird (internal.cloudapp.net). Dadurch kann Streamparse mit der Schlüsselauthentifizierung für Ihr SSH-Konto eine Verbindung mit dem Hauptknoten und dann von dort aus eine Verbindung mit den einzelnen Workerknoten herstellen.
-    
-5. Zum Schluss verwenden Sie den folgenden Befehl, um die Topologie aus Ihrer lokalen Entwicklungsumgebung an den HDInsight-Cluster zu senden:
-
-        sparse submit
-    
-    Dieser Befehl stellt eine Verbindung mit dem HDInsight-Cluster her, stellt die Topologie sowie alle Python-Abhängigkeiten bereit und startet anschließend die Topologie.
-
 ##Nächste Schritte
 
 In diesem Dokument haben Sie erfahren, wie Python-Komponenten in einer Storm-Topologie verwendet werden. In den folgenden Dokumenten werden weitere Möglichkeiten zur Verwendung von Python mit HDInsight beschrieben:
@@ -347,4 +174,4 @@ In diesem Dokument haben Sie erfahren, wie Python-Komponenten in einer Storm-Top
 * [Verwenden von Python für Streaming-MapReduce-Aufträge ](hdinsight-hadoop-streaming-python.md)
 * [Verwenden von benutzerdefinierten Python-Funktionen (UDFs) in Pig und Hive](hdinsight-python.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0713_2016-->

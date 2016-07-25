@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="03/25/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
 
 # Gewusst wie: Verwenden der Reliable Services-Kommunikations-APIs
@@ -69,7 +69,7 @@ In beiden Fällen geben Sie eine Sammlung von Listenern zurück. Dies ermöglich
 
 Bei einem zustandslosen Dienst gibt die Überschreibung eine Sammlung von ServiceInstanceListeners zurück. Ein ServiceInstanceListener enthält eine Funktion für die ICommunicationListener-Erstellung und weist diesem Listener einen Namen zu. Bei statusbehafteten Diensten gibt die Überschreibung eine ServiceReplicaListener-Sammlung zurück. Dies unterscheidet sich leicht vom zustandslosen Gegenstück, da ein ServiceReplicaListener über eine Option zum Öffnen eines ICommunicationListeners auf sekundären Replikaten verfügt. Sie können nicht nur mehrere Kommunikationslistener in einem Dienst verwenden, sondern auch angeben, welche Listener auf sekundären Replikaten Anforderungen akzeptieren und welche nur auf primären Replikaten ausgeführt werden.
 
-Beispielsweise können Sie einen ServiceRemotingListener besitzen, der nur RPC-Aufrufe auf primären Replikaten akzeptiert, und einen zweiten, benutzerdefinierten Listener, der Leseanforderungen für sekundäre Replikate akzeptiert:
+Beispielsweise können Sie einen ServiceRemotingListener besitzen, der nur RPC-Aufrufe auf primären Replikaten akzeptiert, und einen zweiten, benutzerdefinierten Listener, der Leseanforderungen für sekundäre Replikate über HTTP akzeptiert:
 
 ```csharp
 protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -77,8 +77,8 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
     return new[]
     {
         new ServiceReplicaListener(context =>
-            new MyCustomListener(context),
-            "customReadonlyEndpoint",
+            new MyCustomHttpListener(context),
+            "HTTPReadonlyEndpoint",
             true),
 
         new ServiceReplicaListener(context =>
@@ -88,6 +88,8 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
     };
 }
 ```
+
+> [AZURE.NOTE] Beim Erstellen mehrerer Listener für einen Dienst **muss** jeder Listener einen eindeutigen Namen erhalten.
 
 Abschließend beschreiben Sie die Endpunkte, die für den Dienst erforderlich sind, im [Dienstmanifest](service-fabric-application-model.md) im Abschnitt „Endpunkte“.
 
@@ -145,10 +147,10 @@ Die Reliable Services-API umfasst die folgenden Bibliotheken zum Schreiben von C
 ### Dienstendpunktauflösung
 Der erste Schritt bei der Kommunikation mit einem Dienst ist die Auflösung einer Endpunktadresse der Partition oder Instanz des Diensts, mit der Sie kommunizieren möchten. Die `ServicePartitionResolver`-Hilfsklasse ist eine allgemeine Grundklasse, mit der Clients den Endpunkt eines Diensts zur Laufzeit ermitteln können. Das Ermitteln des Endpunkts eines Diensts wird in Verbindung mit Service Fabric als *Dienstendpunktauflösung* bezeichnet.
 
-Für die Verbindung mit Diensten in einem Cluster kann `ServicePartitionResolver` ohne Parameter erstellt werden:
+Für die Verbindung mit Diensten in einem Cluster kann `ServicePartitionResolver` mithilfe der Standardeinstellungen erstellt werden: Dies ist die empfohlene Verwendung für die meisten Szenarien:
 
 ```csharp
-ServicePartitionResolver resolver = new  ServicePartitionResolver();
+ServicePartitionResolver resolver = ServicePartitionResolver.GetDefault();
 ```
 
 Für die Verbindung mit Diensten in unterschiedlichen Clustern kann `ServicePartitionResolver` mit einer Gruppe von Clustergatewayendpunkten erstellt werden. Dabei sind die Gatewayendpunkte lediglich verschiedene Endpunkte für die Verbindung mit dem gleichen Cluster. Beispiel:
@@ -157,13 +159,13 @@ Für die Verbindung mit Diensten in unterschiedlichen Clustern kann `ServicePart
 ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.cloudapp.azure.com:19000", "mycluster.cloudapp.azure.com:19001");
 ```
 
-`ServicePartitionResolver` kann eine Funktion zum Erstellen eines `FabricClient`-Objekts zur internen Verwendung zugewiesen werden.
+Alternativ kann `ServicePartitionResolver` eine Funktion zum Erstellen eines `FabricClient`-Objekts zur internen Verwendung zugewiesen werden.
  
 ```csharp
 public delegate FabricClient CreateFabricClientDelegate();
 ```
 
-`FabricClient` ist das Objekt, das für die Kommunikation mit dem Service Fabric-Cluster für verschiedene Verwaltungsvorgänge im Cluster verwendet wird. Dies ist nützlich, wenn Sie mehr Kontrolle darüber wünschen, wie `ServicePartitionClient` mit dem Cluster interagiert. `FabricClient` führt die Zwischenspeicherung intern durch und ist in der Regel aufwendig in der Erstellung. Daher ist es wichtig, möglichst viele `FabricClient`-Instanzen wiederzuverwenden.
+`FabricClient` ist das Objekt, das für die Kommunikation mit dem Service Fabric-Cluster für verschiedene Verwaltungsvorgänge im Cluster verwendet wird. Dies ist nützlich, wenn Sie mehr Kontrolle darüber wünschen, wie `ServicePartitionResolver` mit dem Cluster interagiert. `FabricClient` führt die Zwischenspeicherung intern durch und ist in der Regel aufwendig in der Erstellung. Daher ist es wichtig, möglichst viele `FabricClient`-Instanzen wiederzuverwenden.
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver(() => CreateMyFabricClient());
@@ -172,13 +174,13 @@ ServicePartitionResolver resolver = new  ServicePartitionResolver(() => CreateMy
 Anschließend wird eine resolve-Methode verwendet, um die Adresse eines Diensts oder einer Dienstpartition (bei partitionierten Diensten) abzurufen.
 
 ```csharp
-ServicePartitionResolver resolver = new ServicePartitionResolver();
+ServicePartitionResolver resolver = ServicePartitionResolver.GetDefault();
 
 ResolvedServicePartition partition =
     await resolver.ResolveAsync(new Uri("fabric:/MyApp/MyService"), new ServicePartitionKey(), cancellationToken);
 ```
 
-Die Adresse eines Diensts kann unter Verwendung von `ServicePartitionResolver` einfach aufgelöst werden. Es sind jedoch weitere Schritte erforderlich, um sicherzustellen, dass die aufgelöste Adresse richtig verwendet werden kann. Der Client muss ermitteln, ob der Verbindungsversuch aufgrund eines vorübergehenden Fehlers fehlgeschlagen ist und wiederholt werden kann (z.B. wenn der Dienst verschoben wurde oder vorübergehend nicht verfügbar ist) oder ob ein permanenter Fehler vorliegt (wenn der Dienst z.B. gelöscht wurde, oder die angeforderte Ressource nicht mehr vorhanden ist). Dienstinstanzen oder -replikate können aus unterschiedlichen Gründen jederzeit zwischen verschiedenen Knoten verschoben werden. Zum Zeitpunkt des Verbindungsversuchs durch den Clientcode kann die über `ServicePartitionResolver` aufgelöste Adresse des Diensts daher schon veraltet sein. In diesem Fall muss der Client die Adresse erneut auflösen. Dies gilt unter der Voraussetzung, dass die vorherige `ResolvedServicePartition` angibt, dass der Resolver nicht nur eine zwischengespeicherte Adresse abruft, sondern einen erneuten Versuch starten muss.
+Die Adresse eines Diensts kann unter Verwendung von `ServicePartitionResolver` einfach aufgelöst werden. Es sind jedoch weitere Schritte erforderlich, um sicherzustellen, dass die aufgelöste Adresse richtig verwendet werden kann. Der Client muss ermitteln, ob der Verbindungsversuch aufgrund eines vorübergehenden Fehlers fehlgeschlagen ist und wiederholt werden kann (z.B. wenn der Dienst verschoben wurde oder vorübergehend nicht verfügbar ist) oder ob ein permanenter Fehler vorliegt (wenn der Dienst z.B. gelöscht wurde, oder die angeforderte Ressource nicht mehr vorhanden ist). Dienstinstanzen oder -replikate können aus unterschiedlichen Gründen jederzeit zwischen verschiedenen Knoten verschoben werden. Zum Zeitpunkt des Verbindungsversuchs durch den Clientcode kann die über `ServicePartitionResolver` aufgelöste Adresse des Diensts daher schon veraltet sein. In diesem Fall muss der Client die Adresse erneut auflösen. Dies gilt unter der Voraussetzung, dass das vorherige `ResolvedServicePartition`-Element angibt, dass der Resolver nicht nur eine zwischengespeicherte Adresse abruft, sondern einen erneuten Versuch starten muss.
 
 In der Regel muss der Clientcode nicht direkt mit dem `ServicePartitionResolver`-Element funktionieren. Das Element wird erstellt und an Kommunikationsclientfactorys in der Reliable Services-API übergeben. Die Factorys verwenden den Resolver intern, um ein Clientobjekt zu generieren, das für die Kommunikation mit Diensten genutzt werden kann.
 
@@ -186,7 +188,7 @@ In der Regel muss der Clientcode nicht direkt mit dem `ServicePartitionResolver`
 
 Die Kommunikationsfactorybibliothek implementiert ein typisches Wiederholungsmuster zur Fehlerbehandlung, das die Wiederholung von Verbindungsversuchen mit aufgelösten Dienstendpunkten vereinfacht. Die Factorybibliothek stellt den Wiederholungsmechanismus bereit, und Sie geben die Fehlerhandler an.
 
-`ICommunicationClientFactory` definiert die von einer Kommunikationsclientfactory implementierte Basisschnittstelle, die Clients erstellt, die mit einem Service Fabric-Dienst kommunizieren können. Die Implementierung von CommunicationClientFactory hängt vom Kommunikationsstapel ab, den der Service Fabric-Dienst verwendet, über den der Client kommunizieren möchte. Die Reliable Services-API stellt ein `CommunicationClientFactoryBase<TCommunicationClient>`-Element bereit. Dieses Element bietet eine grundlegende Implementierung der `ICommunicationClientFactory`-Schnittstelle und führt Aufgaben aus, die für alle Kommunikationsstapel gelten. (Zu diesen Aufgaben gehört die Verwendung von `ServicePartitionResolver` zum Ermitteln des Dienstendpunkts.) Clients implementieren in der Regel die abstrakte Klasse CommunicationClientFactoryBase, um die für den Kommunikationsstapel spezifische Logik zu verarbeiten.
+`ICommunicationClientFactory` definiert die von einer Kommunikationsclientfactory implementierte Basisschnittstelle, die Clients erstellt, die mit einem Service Fabric-Dienst kommunizieren können. Die Implementierung von CommunicationClientFactory hängt vom Kommunikationsstapel ab, den der Service Fabric-Dienst verwendet, über den der Client kommunizieren möchte. Die Reliable Services-API stellt ein `CommunicationClientFactoryBase<TCommunicationClient>`-Element bereit. Dieses Element bietet eine grundlegende Implementierung der `ICommunicationClientFactory`-Schnittstelle und führt Tasks aus, die für alle Kommunikationsstapel gelten. (Zu diesen Tasks gehört die Verwendung von `ServicePartitionResolver` zum Ermitteln des Dienstendpunkts.) Clients implementieren in der Regel die abstrakte Klasse CommunicationClientFactoryBase, um die für den Kommunikationsstapel spezifische Logik zu verarbeiten.
 
 Der Kommunikationsclient erhält nur eine Adresse und verwendet sie zum Herstellen einer Verbindung mit einem Dienst. Der Client kann jedes beliebige Protokoll verwenden.
 
@@ -226,12 +228,12 @@ public class MyCommunicationClientFactory : CommunicationClientFactoryBase<MyCom
 
 Schließlich ermittelt ein Ausnahmehandler, welche Aktion beim Auftreten einer Ausnahme ausgeführt werden muss. Ausnahmen werden in **wiederholbare** und **nicht wiederholbare** Ausnahmen unterteilt.
 
- - **Nicht wiederholbare** Ausnahmen werden einfach an den Aufrufer zurückgeleitet. 
+ - **Nicht wiederholbare** Ausnahmen werden einfach an den Aufrufer zurückgeleitet.
  - **Wiederholbare** Ausnahmen werden weiter in **vorübergehende** und **nicht vorübergehende** Ausnahmen unterteilt.
-  - **Vorübergehende** Ausnahmen sind Ausnahmen, die einfach wiederholt werden können, ohne dass die Dienstendpunktadresse erneut aufgelöst werden muss. Diese Ausnahmen beruhen z.B. auf vorübergehenden Netzwerkproblemen oder Dienstfehlerantworten, sofern diese nicht angeben, dass die Dienstendpunktadresse nicht vorhanden ist. 
-  - **Nicht vorübergehende** Ausnahmen sind Ausnahmen, bei denen die Dienstendpunktadresse erneut aufgelöst werden muss. Dazu gehören Ausnahmen, die angeben, dass der Dienstendpunkt nicht erreicht werden konnte, was darauf zurückzuführen ist, dass der Dienst in einen anderen Knoten verschoben wurde. 
+  - **Vorübergehende** Ausnahmen sind Ausnahmen, die einfach wiederholt werden können, ohne dass die Dienstendpunktadresse erneut aufgelöst werden muss. Diese Ausnahmen beruhen z.B. auf vorübergehenden Netzwerkproblemen oder Dienstfehlerantworten, sofern diese nicht angeben, dass die Dienstendpunktadresse nicht vorhanden ist.
+  - **Nicht vorübergehende** Ausnahmen sind Ausnahmen, bei denen die Dienstendpunktadresse erneut aufgelöst werden muss. Dazu gehören Ausnahmen, die angeben, dass der Dienstendpunkt nicht erreicht werden konnte, was darauf zurückzuführen ist, dass der Dienst in einen anderen Knoten verschoben wurde.
 
-`TryHandleException` trifft eine Entscheidung im Hinblick auf eine bestimmte Ausnahme. Wenn die Entscheidungen im Hinblick auf eine Ausnahme **unklar** sind, sollte **FALSE** zurückgegeben werden. Wenn die Entscheidung **klar** ist, sollte das Ergebnis entsprechend festgelegt und **TRUE** zurückgegeben werden.
+`TryHandleException` trifft eine Entscheidung im Hinblick auf eine bestimmte Ausnahme. Wenn die Entscheidungen im Hinblick auf eine Ausnahme **unklar** sind, sollte FALSE zurückgegeben werden. Wenn die Entscheidung **klar** ist, sollte das Ergebnis entsprechend festgelegt und TRUE zurückgegeben werden.
  
 ```csharp
 class MyExceptionHandler : IExceptionHandler
@@ -282,4 +284,4 @@ var result = await myServicePartitionClient.InvokeWithRetryAsync(async (client) 
 
  - [WCF-Kommunikation mit Reliable Services](service-fabric-reliable-services-communication-wcf.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0713_2016-->

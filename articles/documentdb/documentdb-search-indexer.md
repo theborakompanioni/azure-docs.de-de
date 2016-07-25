@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="data-services"
-    ms.date="06/20/2016"
+    ms.date="07/08/2016"
     ms.author="anhoh"/>
 
 #Herstellen einer Verbindung zwischen DocumentDB und Azure Search unter Verwendung von Indexern
@@ -134,6 +134,8 @@ Erstellen Sie einen Azure Search-Zielindex, wenn Sie bislang noch über keinen v
 
 
 Stellen Sie sicher, dass das Schema des Ziel-Indexes mit dem Schema der JSON-Quelldokumente oder mit der Ausgabe Ihrer benutzerdefinierten Abfrageprojektion kompatibel ist.
+
+>[AZURE.NOTE] Für partitionierte Sammlungen ist der Standarddokumentschlüssel die DocumentDB-Eigenschaft `_rid`, die in Azure Search in `rid` umbenannt wird. Darüber hinaus enthalten die `_rid`-Werte von DocumentDB Zeichen, die in Azure Search-Schlüsseln ungültig sind. Deshalb sind die `_rid`-Werte Base64-codiert.
 
 ###Abbildung A: Zuordnung zwischen JSON-Datentypen und Azure Search-Datentypen
 
@@ -274,4 +276,4 @@ Glückwunsch! Sie wissen nun, wie Azure DocumentDB mit Azure Search unter Verwen
 
  - Weitere Informationen zu Azure Search finden Sie auf der [Seite des Search-Diensts](https://azure.microsoft.com/services/search/).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

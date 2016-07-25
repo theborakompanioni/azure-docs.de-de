@@ -140,15 +140,15 @@ Mit den Verfahrensschritten wird festgelegt, dass *DefaultSiteHQ* die Standard-S
 
 	Das folgende Beispiel-Cmdlet fügt der in Schritt 1 erstellten Routingtabelle eine Standardroute hinzu. Beachten Sie, dass die einzige unterstützte Route das Zielpräfix von "0.0.0.0/0" zum nächsten Hop "VPNGateway" ist.
  
-		Set-AzureRoute –RouteTableName "MyRouteTable" –RouteName "DefaultRoute" –AddressPrefix "0.0.0.0/0" –NextHopType VPNGateway
+		Set-AzureRoute –RouteTable "MyRouteTable" –RouteName "DefaultRoute" –AddressPrefix "0.0.0.0/0" –NextHopType VPNGateway
 
 3. Ordnen Sie die Routingtabelle den Subnetzen zu.
 
 	Nachdem eine Routingtabelle erstellt und eine Route hinzugefügt wurde, verwenden Sie das folgende Cmdlet, um die Routingtabelle einem VNet-Subnetz hinzuzufügen oder zuzuordnen. In den Beispielen unten wird die Routingtabelle "MyRouteTable" den Subnetzen "Midtier" und "Backend" von VNet MultiTier-VNet hinzugefügt.
 
-		Set-AzureSubnetRouteTable -VNetName "MultiTier-VNet" -SubnetName "Midtier" -RouteTableName "MyRouteTable"
+		Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Midtier" -RouteTableName "MyRouteTable"
 
-		Set-AzureSubnetRouteTable -VNetName "MultiTier-VNet" -SubnetName "Backend" -RouteTableName "MyRouteTable"
+		Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Backend" -RouteTableName "MyRouteTable"
 
 4. Weisen Sie einen Standardstandort für die Tunnelerzwingung zu.
 
@@ -161,7 +161,7 @@ Mit den Verfahrensschritten wird festgelegt, dass *DefaultSiteHQ* die Standard-S
 
 ### So löschen Sie eine Routingtabelle
 
-	Remove-AzureRouteTable -RouteTableName <routeTableName>
+	Remove-AzureRouteTable -Name <routeTableName>
 
 ### So listen Sie eine Routingtabelle auf
 
@@ -173,14 +173,14 @@ Mit den Verfahrensschritten wird festgelegt, dass *DefaultSiteHQ* die Standard-S
 
 ### So entfernen Sie eine Route aus einem Subnetz
 
-	Remove-AzureSubnetRouteTable –VNetName <virtualNetworkName> -SubnetName <subnetName>
+	Remove-AzureSubnetRouteTable –VirtualNetworkName <virtualNetworkName> -SubnetName <subnetName>
 
 ### So listen Sie die einem Subnetz zugeordnete Routingtabelle auf
 	
-	Get-AzureSubnetRouteTable -VNetName <virtualNetworkName> -SubnetName <subnetName>
+	Get-AzureSubnetRouteTable -VirtualNetworkName <virtualNetworkName> -SubnetName <subnetName>
 
 ### So entfernen Sie einen Standardstandort aus einem VNET-VPN-Gateway
 
-	Remove-AzureVnetGatewayDefaultSites -VNetName <virtualNetworkName>
+	Remove-AzureVnetGatewayDefaultSite -VNetName <virtualNetworkName>
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

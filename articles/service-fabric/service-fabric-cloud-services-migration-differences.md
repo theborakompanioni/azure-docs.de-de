@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/29/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
 
 # Lernen Sie die Unterschiede zwischen Cloud Services und Service Fabric kennen, bevor Sie Anwendungen migrieren
@@ -35,10 +35,10 @@ Ein grundlegender Unterschied zwischen Cloud Services und Service Fabric ist die
  
 Service Fabric ist eine Anwendungsplattformschicht, die unter Windows oder Linux ausgeführt wird, während Cloud Services ein System für die Bereitstellung von virtuellen Computern mit angefügten Workloads ist, die durch Azure verwaltet werden. Das Service Fabric-Anwendungsmodell bietet viele Vorteile:
 
- - Kurze Bereitstellungszeit –  Die Erstellung von VM-Instanzen kann zeitaufwendig sein. In Service Fabric werden VMs nur einmal bereitgestellt, um einen Cluster zu bilden, der die Service Fabric-Anwendungsplattform hostet. Ab diesem Zeitpunkt können Anwendungspakte sehr schnell zum Cluster bereitgestellt werden.
- - Hohe Hostingdichte –  In Cloud Services hostet eine Workerrollen-VM eine Workload. In Service Fabric sind die Anwendungen von den VMs, die sie ausführen, getrennt. Das bedeutet, dass Sie eine hohe Anzahl an Anwendungen in einer geringen Anzahl VMs bereitstellen können, was die Gesamtkosten für große Bereitstellungen verringern kann.
- - Die Service Fabric-Plattform kann an jedem Ort ausgeführt werden, an dem es Windows Server oder Linux Computer gibt, sowohl in Azure als auch lokal. Die Plattform bietet eine Abstraktionsschicht über der zugrunde liegenden Infrastruktur; daher kann Ihre Anwendung in verschiedenen Umgebungen laufen. 
- - Verwaltung von verteilten Anwendungen –  Service Fabric ist eine Plattform, die nicht nur verteilte Anwendungen hostet, sondern auch hilft, deren Lebenszyklus unabhängig von dem Lebenszyklus der hostenden VM oder des Computers zu verwalten.
+ - Kurze Bereitstellungszeit –  Die Erstellung von VM-Instanzen kann zeitaufwendig sein. In Service Fabric werden VMs nur einmal bereitgestellt, um einen Cluster zu bilden, der die Service Fabric-Anwendungsplattform hostet. Ab diesem Zeitpunkt können Anwendungspakte sehr schnell zum Cluster bereitgestellt werden.
+ - Hohe Hostingdichte –  In Cloud Services hostet eine Workerrollen-VM eine Workload. In Service Fabric sind die Anwendungen von den VMs, die sie ausführen, getrennt. Das bedeutet, dass Sie eine hohe Anzahl an Anwendungen in einer geringen Anzahl VMs bereitstellen können, was die Gesamtkosten für große Bereitstellungen verringern kann.
+ - Die Service Fabric-Plattform kann an jedem Ort ausgeführt werden, an dem es Windows Server oder Linux Computer gibt, sowohl in Azure als auch lokal. Die Plattform bietet eine Abstraktionsschicht über der zugrunde liegenden Infrastruktur; daher kann Ihre Anwendung in verschiedenen Umgebungen laufen.
+ - Verwaltung von verteilten Anwendungen –  Service Fabric ist eine Plattform, die nicht nur verteilte Anwendungen hostet, sondern auch hilft, deren Lebenszyklus unabhängig von dem Lebenszyklus der hostenden VM oder des Computers zu verwalten.
 
 ## Anwendungsarchitektur
 
@@ -50,7 +50,12 @@ Service Fabric-Anwendungen können auch die gleichen externen Dienste in einer v
 
 ![Service Fabric-Architektur nach einer einfachen Migration][10]
 
-In dieser Phase sollte das System wie bisher weiterarbeiten. Dank der zustandsbehafteten Funktionen von Service Fabric können externe Zustandsspeicher, wo möglich, als zustandsbehaftete Dienste internalisiert werden. Dies ist etwas komplexer als eine einfache Migration von Web- und Workerrollen zu zustandslosen Service Fabric-Diensten, da es das Schreiben benutzerdefinierter Dienste erfordert. Diese Dienste müssen für Ihre Anwendung dieselbe Funktion erfüllen wie die externen Dienste bisher. Zu den Vorteilen gehört, dass externe Abhängigkeiten abgebaut, und die Bereitstellungs-, Verwaltungs-, und Aktualisierungsmodelle vereinheitlicht werden. Die Architektur, die sich nach dem Internalisieren dieser Dienste ergibt, könnte beispielsweise so aussehen:
+In dieser Phase sollte das System wie bisher weiterarbeiten. Dank der zustandsbehafteten Funktionen von Service Fabric können externe Zustandsspeicher, wo möglich, als zustandsbehaftete Dienste internalisiert werden. Dies ist etwas komplexer als eine einfache Migration von Web- und Workerrollen zu zustandslosen Service Fabric-Diensten, da es das Schreiben benutzerdefinierter Dienste erfordert. Diese Dienste müssen für Ihre Anwendung dieselbe Funktion erfüllen wie die externen Dienste bisher. Dies bietet die folgenden Vorteile:
+
+ - Entfernen externer Abhängigkeiten
+ - Vereinheitlichen der Bereitstellungs-, Verwaltungs- und Upgrademodelle
+ 
+Die Architektur, die sich nach dem Internalisieren dieser Dienste ergibt, könnte beispielsweise so aussehen:
 
 ![Service Fabric-Architektur nach einer vollständigen Migration][11]
 
@@ -66,7 +71,7 @@ Bei der direkten Kommunikation können die Ebenen direkt durch die auf jeder Ebe
 
  Direkte Kommunikation ist ein in Service Fabric übliches Kommunikationsmodell. Der Hauptunterschied zwischen Service Fabric und Cloud Services ist, dass Sie in Cloud Services eine Verbindung zu einer VM herstellen, während Sie in Service Fabric eine Verbindung zu einem Dienst aufbauen. Diese Unterscheidung ist aus mehreren Gründen wichtig:
 
- - Dienste sind in Service Fabric nicht an die VMs gebunden, auf der sie gehostet werden, Dienste können sich im Cluster verschieben. Das wird aus verschiedenen Gründen sogar erwartet: Ressourcennutzungsausgleich, Failover, Aktualisierungen von Anwendungen und der Infrastruktur und Einschränkungen der Platzierung oder Belastung. Das bedeutet, dass sich die Dienstinstanzadresse jederzeit ändern kann. 
+ - Dienste sind in Service Fabric nicht an die VMs gebunden, auf der sie gehostet werden, Dienste können sich im Cluster verschieben. Das wird aus verschiedenen Gründen sogar erwartet: Ressourcennutzungsausgleich, Failover, Aktualisierungen von Anwendungen und der Infrastruktur und Einschränkungen der Platzierung oder Belastung. Das bedeutet, dass sich die Dienstinstanzadresse jederzeit ändern kann.
  - Eine VM in Service Fabric kann mehrere Dienste hosten, wobei jeder über einen eindeutigen Endpunkt verfügt.
 
 Service Fabric bietet einen Dienstermittlungsmechanismus namens „Naming Service“, welcher verwendet werden kann, um die Endpunktadressen der Dienste aufzulösen.
@@ -100,4 +105,4 @@ Der einfachste Migrationspfad von Cloud Services zu Service Fabric besteht darin
 [10]: ./media/service-fabric-cloud-services-migration-differences/service-fabric-architecture-simple.png
 [11]: ./media/service-fabric-cloud-services-migration-differences/service-fabric-architecture-full.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0713_2016-->

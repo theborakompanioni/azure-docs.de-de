@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-multiple" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/10/2016" 
-	ms.author="wesmc" />
+	ms.date="07/07/2016" 
+	ms.author="wesmc;ricksal" />
 
 #Zugreifen auf Azure Mobile Engagement-Dienst-APIs mit REST
 
@@ -49,7 +49,7 @@ Wenn Sie die Anleitung unter [Erste Schritte mit Azure Mobile Engagement für Wi
 
 ## Erstellen der Dienst-API-App
 
-1. Zunächst einmal benötigen Sie vier Authentifizierungsparameter, die für dieses Beispiel verwendet werden. Diese Parameter sind **SubscriptionId**, **TenantId**, **ApplicationId** und **Secret**. Um diese Authentifizierungsparameter zu erhalten, wird empfohlen, dass Sie den PowerShell-Skriptansatz anwenden. Dieser wird im Tutorial [Authentifizierung](mobile-engagement-api-authentication.md#authentication) unter *Einmalige Einrichtung (per Skript)* beschrieben. 
+1. Zunächst einmal benötigen Sie vier Authentifizierungsparameter, die für dieses Beispiel verwendet werden. Diese Parameter sind **SubscriptionId**, **TenantId**, **ApplicationId** und **Secret**. Um diese Authentifizierungsparameter zu erhalten, wird empfohlen, dass Sie den PowerShell-Skriptansatz anwenden. Dieser wird im Tutorial [Authentifizierung](mobile-engagement-api-authentication.md#authentication) unter *Einmalige Einrichtung (per Skript)* beschrieben.
 
 2. Wir verwenden eine einfache Windows-Konsolen-App, um die Arbeit mit den REST-Dienst-APIs zum Erstellen und Aktivieren einer Ankündigungskampagne zu demonstrieren. Öffnen Sie daher Visual Studio, und erstellen Sie eine neue **Konsolenanwendung**.
 
@@ -461,4 +461,4 @@ Wenn Sie die Anleitung unter [Erste Schritte mit Azure Mobile Engagement für Wi
 
 [1]: ./media/mobile-engagement-dotnet-sdk-service-api/include-prerelease.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0713_2016-->

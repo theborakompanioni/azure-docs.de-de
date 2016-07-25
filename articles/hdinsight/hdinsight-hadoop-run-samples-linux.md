@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/22/2016"
+	ms.date="07/12/2016"
 	ms.author="larryfr"/>
 
 
@@ -132,7 +132,7 @@ Das Sudoku-Beispiel weist die nicht sehr hilfreiche Verwendungsanweisung auf, da
 
 - Zellen werden durch ein Leerzeichen voneinander getrennt
 
-Es gibt eine bestimmte Weise, wie Sudoku-Rätseln erstellt werden, da eine Zahl in einer Spalte oder Zeile nur einmal vorkommen darf. Zum Glück gibt es ein Beispiel im HDInsight-Cluster, das ordnungsgemäß erstellt wurde. Es befindet sich unter **/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta** und enthält Folgendes:
+Sudoku-Rätsel müssen auf eine bestimmte Weise erstellt werden, da eine Zahl in einer Spalte oder Zeile nur einmal vorkommen darf. Es gibt ein Beispiel im HDInsight-Cluster, das entsprechend erstellt wurde. Es befindet sich unter **/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta** und enthält Folgendes:
 
     8 5 ? 3 9 ? ? ? ?
     ? ? 2 ? ? ? ? ? ?
@@ -236,4 +236,4 @@ In diesem Artikel haben Sie gelernt, wie die Beispiele ausgeführt werden, die i
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0713_2016-->

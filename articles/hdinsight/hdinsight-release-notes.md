@@ -14,11 +14,21 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/06/2016"
+	ms.date="07/07/2016"
 	ms.author="nitinme"/>
 
 
 # Versionshinweise zu Hadoop-Komponenten in Azure HDInsight
+
+## Hinweise zur HDInsight-Version vom 07.07.2016
+
+Diese Version enthält die folgenden Updates.
+
+| Titel | Beschreibung | Betroffener Bereich (z. B. Dienst, Komponente oder SDK) | Clustertyp (z.B. Spark, Hadoop, HBase oder Storm) | JIRA (falls zutreffend) |
+|-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
+| [HDInsight-Tools für IntelliJ](hdinsight-apache-spark-intellij-tool-plugin.md) | Das IntelliJ IDEA-Plug-In für HDInsight Spark-Cluster ist jetzt in das Azure-Toolkit für IntelliJ integriert. Es unterstützt die Azure SDK-Version 2.9.1, neuesten Java SDKs und bietet alle Features des eigenständigen HDInsight-Plug-Ins für IntelliJ.| Tools | Spark| –  
+|
+| [HDInsight-Tools für Eclipse](hdinsight-apache-spark-eclipse-tool-plugin.md) | Das Azure-Toolkit für Eclipse unterstützt nun HDInsight Spark-Cluster. Es bietet die folgenden Features. <ul><li>Müheloses Erstellen und Schreiben einer Spark-Anwendung in Scala und Java mit erstklassiger Erstellungsunterstützung für IntelliSense, automatische Formatierung, Fehlerüberprüfung usw.</li><li>Lokales Testen der Spark-Anwendung.</li><li>Übermitteln von Aufträgen an HDInsight Spark-Cluster und Abrufen der Ergebnisse.</li><li>Anmelden bei Azure und Zugriff auf alle Spark-Cluster, die Ihren Azure-Abonnements zugeordnet sind.</li><li>Wechseln zu den zugeordneten Speicherressourcen Ihres HDInsight Spark-Clusters.</li></ul>| Tools | Spark| –
 
 ## Hinweise für die HDInsight-Version vom 06.06.2016
 
@@ -34,8 +44,8 @@ Diese Version enthält die folgenden Updates.
 
 | Titel | Beschreibung | Betroffener Bereich (z. B. Dienst, Komponente oder SDK) | Clustertyp (z.B. Spark, Hadoop, HBase oder Storm) | JIRA (falls zutreffend) |
 |-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
-| Spark unter HDInsight ist jetzt allgemein verfügbar | Diese Version bringt Verbesserungen hinsichtlich Verfügbarkeit, Skalierbarkeit und Produktivität für Open Source-Apache Spark unter HDInsight. <ul><li>Eignung für anspruchsvolle Unternehmensworkloads dank branchenführender Verfügbarkeits-SLA von 99,9%.</li><li>Skalierbare Speicherebene mit Azure Data Lake-Speicher.</li><li>Produktivitätstools für jede Phase des Durchsuchens und der Entwicklung von Daten. Jupyter Notebooks mit benutzerdefiniertem Spark-Kernel ermöglichen interaktives Durchsuchen von Daten, Integration in BI-Dashboards wie Power BI, Tableau und Qlik ist ideal für schnelle Datenfreigabe und kontinuierliche Berichterstellung, IntelliJ-Plug-In ist die zuverlässige Option für langfristige Codeartefaktentwicklung und Debuggen.</li></ul>| Dienst | Spark| –|
-| HDInsight-Tools für IntelliJ | Dies ist ein IntelliJ IDEA-Plug-In für HDInsight Spark-Cluster. Es bietet die folgenden Features.<ul><li>Müheloses Erstellen und Schreiben einer Spark-Anwendung in Scala und Java mit erstklassiger Erstellungsunterstützung für IntelliSense, automatischer Formatierung, Fehlerüberprüfung usw.</li><li>Lokales Testen der Spark-Anwendung.</li><li>Übermitteln von Aufträgen an HDInsight Spark-Cluster und Abrufen der Ergebnisse.</li><li>Anmeldung bei Azure und Zugriff auf alle Spark-Cluster, die Ihren Azure-Abonnements zugeordnet sind.</li><li>Wechseln zu allen zugeordneten Speicherressourcen Ihres HDInsight Spark-Clusters.</li><li>Wechseln zu den Verläufen aller Aufträge und den Auftragsinformationen für Ihren HDInsight Spark-Cluster.</li><li>Remotedebuggen von Spark-Aufträgen von Ihrem Desktopcomputer aus.</li></ul>| Tools | Spark| –
+| Spark unter HDInsight ist jetzt allgemein verfügbar | Diese Version bringt Verbesserungen hinsichtlich Verfügbarkeit, Skalierbarkeit und Produktivität für Open Source-Apache Spark unter HDInsight. <ul><li>Eignung für anspruchsvolle Unternehmensworkloads dank branchenführender Verfügbarkeits-SLA von 99,9%.</li><li>Skalierbare Speicherebene mit Azure Data Lake-Speicher.</li><li>Produktivitätstools für jede Phase der Durchsuchung und Entwicklung von Daten. Jupyter Notebooks mit benutzerdefiniertem Spark-Kernel ermöglichen interaktives Durchsuchen von Daten. Integration in BI-Dashboards wie Power BI, Tableau und Qlik ist ideal für schnelle Datenfreigabe und kontinuierliche Berichterstellung. Das IntelliJ-Plug-In ist die zuverlässige Option für die langfristige Entwicklung und das Debuggen von Codeartefakten.</li></ul>| Dienst | Spark| –|
+| HDInsight-Tools für IntelliJ | Dies ist ein IntelliJ IDEA-Plug-In für HDInsight Spark-Cluster. Es bietet die folgenden Features.<ul><li>Müheloses Erstellen und Schreiben einer Spark-Anwendung in Scala und Java mit erstklassiger Erstellungsunterstützung für IntelliSense, automatische Formatierung, Fehlerüberprüfung usw.</li><li>Lokales Testen der Spark-Anwendung.</li><li>Übermitteln von Aufträgen an HDInsight Spark-Cluster und Abrufen der Ergebnisse.</li><li>Anmeldung bei Azure und Zugriff auf alle Spark-Cluster, die Ihren Azure-Abonnements zugeordnet sind.</li><li>Wechseln zu allen zugeordneten Speicherressourcen Ihres HDInsight Spark-Clusters.</li><li>Wechseln zu den Verläufen aller Aufträge und den Auftragsinformationen für Ihren HDInsight Spark-Cluster.</li><li>Remotedebuggen von Spark-Aufträgen von Ihrem Desktopcomputer aus.</li></ul>| Tools | Spark| –
 
 ## Hinweise für die HDInsight-Version vom 13.05.2016
 
@@ -1303,7 +1313,7 @@ Dieser Hotfix korrigiert einen Speicherverlust in Templeton, der insbesondere Te
 
 ## Hinweise für die Version vom 07.10.2014
 
-* Beim Verwenden des Ambari-Endpunkts https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname} gibt das Feld *host\_name* nun den vollqualifizierten Domänennamen (FQDN) des Knotens anstelle des Hostnamens zurück. Beispielsweise erhalten Sie den FQDN „**headnode0.{ClusterDNS}.azurehdinsight.net**“ anstatt des Rückgabewerts **headnode0**. Diese Änderung war erforderlich, um Szenarien, in denen mehrere Clustertypen (z. B. HBase und Hadoop) in einem einzigen virtuellen Netzwerk (VNET) bereitgestellt werden, zu erleichtern. Dies ist z. B. der Fall, wenn HBase als Back-End-Plattform für Hadoop verwendet wird.
+* Beim Verwenden des Ambari-Endpunkts https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname} gibt das Feld *host\_name* nun den vollqualifizierten Domänennamen (FQDN) des Knotens anstelle des Hostnamens zurück. Anstelle von "**headnode0**" erhalten Sie z. B. nun den FQDN "**headnode0.{ClusterDNS}.azurehdinsight.net**”. Diese Änderung war erforderlich, um Szenarien, in denen mehrere Clustertypen (z. B. HBase und Hadoop) in einem einzigen virtuellen Netzwerk (VNET) bereitgestellt werden, zu erleichtern. Dies ist z. B. der Fall, wenn HBase als Back-End-Plattform für Hadoop verwendet wird.
 
 * Wir haben neue Speichereinstellungen für die Standardbereitstellung des HDInsight-Clusters bereitgestellt. Bei den vorherigen Speichereinstellungen wurden die Empfehlungen für die Anzahl der bereitgestellten CPU-Kerne nicht ausreichend berücksichtigt. Diese neuen Arbeitsspeichereinstellungen sollten (gemäß den Empfehlungen von Hortonworks) bessere Standardeinstellungen bieten. Um diese Einstellungen zu ändern, konsultieren Sie die SDK-Referenzdokumentation bezüglich des Änderns der Clusterkonfiguration. Die folgende Tabelle enthält die neuen Arbeitsspeichereinstellungen für ein Standard-HDInsight-Cluster mit 4 CPU-Kernen (8 Containern). (Die Werte, die in vorherigen Versionen verwendet wurden, sind in Klammern angegeben).
 
@@ -1327,7 +1337,7 @@ Weitere Informationen zu den Konfigurationseinstellungen des Arbeitsspeichers, d
 
 Anmerkung zur Azure PowerShell- und HDInsight SDK-Fehlermeldung: „*Cluster ist nicht für den Zugriff auf HTTP-Dienste konfiguriert*“:
 
-* Dieser Fehler ist ein bekanntes [Kompatibilitätsproblem](https://social.msdn.microsoft.com/Forums/azure/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight), das auftritt, wenn sich die Version von HDInsight SDK oder Azure PowerShell von der Clusterversion unterscheidet. Alle ab dem 15.8.2014 erstellten Cluster unterstützen die neue Bereitstellungsfunktion für virtuelle Netzwerke. Diese Funktion wird jedoch von älteren Versionen von HDInsight SDK oder Azure PowerShell nicht korrekt interpretiert. Das Resultat ist ein Fehler bei der Übermittlung mancher Aufträge. Wenn Sie Aufträge mit HDInsight-SDK-APIs oder Azure PowerShell-Cmdlets übermitteln (**Use-AzureRmHDInsightCluster** oder **Invoke-AzureRmHDInsightHiveJob**), können diese Vorgänge mit der Fehlermeldung „*Cluster <clustername> wurde nicht für Zugriff auf HTTP-Dienste konfiguriert*“ misslingen. Oder Sie erhalten (abhängig vom Vorgang) andere Fehlermeldungen, z. B. „*Es kann keine Verbindung mit dem Cluster hergestellt werden*“.
+* Dieser Fehler ist ein bekanntes [Kompatibilitätsproblem](https://social.msdn.microsoft.com/Forums/azure/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight), das auftritt, wenn sich die Version von HDInsight SDK oder Azure PowerShell von der Clusterversion unterscheidet. Alle ab dem 15.8.2014 erstellten Cluster unterstützen die neue Bereitstellungsfunktion für virtuelle Netzwerke. Diese Funktion wird jedoch von älteren Versionen von HDInsight SDK oder Azure PowerShell nicht korrekt interpretiert. Das Resultat ist ein Fehler bei der Übermittlung mancher Aufträge. Wenn Sie Aufträge mit HDInsight SDK-APIs oder Azure PowerShell-Cmdlets übermitteln (**Use-AzureRmHDInsightCluster** oder **Invoke-AzureRmHDInsightHiveJob**), können diese Vorgänge mit der Fehlermeldung „*Cluster <Clustername> wurde nicht für Zugriff auf HTTP-Dienste konfiguriert*“ misslingen. Oder Sie erhalten (abhängig vom Vorgang) andere Fehlermeldungen, z. B. „*Es kann keine Verbindung mit dem Cluster hergestellt werden*“.
 
 * Diese Kompatibilitätsprobleme sind in den neuesten Versionen von HDInsight SDK und Azure PowerShell behoben. Sie sollten daher das HDInsight SDK auf Version 1.3.1.6 oder eine neuere Version und die Azure PowerShell-Tools auf Version 0.8.8 oder eine neuere Version aktualisieren. Sie erhalten das neueste HDInsight SDK über [](http://nuget.codeplex.com/wikipage?title=Getting%20Started) und die Azure PowerShell-Tools unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
@@ -1359,7 +1369,7 @@ Anmerkung zur Azure PowerShell- und HDInsight SDK-Fehlermeldung: „*Cluster ist
 
 ## Hinweise zu Clustern, die vor dem 15.8.2014 erstellt wurden
 
-Von Azure PowerShell oder HDInsight SDK kann die Fehlermeldung "Cluster <clustername> ist nicht für den Zugriff auf HTTP-Dienste konfiguriert" (oder abhängig vom Vorgang andere Fehlermeldungen, wie z. B.: "Es kann keine Verbindung mit dem Cluster hergestellt werden") ausgegeben werden, wenn sich die Azure PowerShell- oder HDInsight SDK-Version von der Clusterversion unterscheidet. Alle ab dem 15.8.2014 erstellten Cluster unterstützen die neue Bereitstellungsfunktion für virtuelle Netzwerke. Diese Funktion wird von älteren Versionen von Azure PowerShell oder HDInsight SDK nicht korrekt interpretiert. Das Resultat ist ein Fehler bei der Übermittlung mancher Aufträge. Falls Sie Aufträge mit HDInsight SDK APIs oder Azure PowerShell-Cmdlets übermitteln (z. B. Use-AzureRmHDInsightCluster oder Invoke-AzureRmHDInsightHiveJob), können diese Vorgänge mit einer der oben beschriebenen Fehlermeldungen fehlschlagen.
+Von Azure PowerShell oder HDInsight SDK kann die Fehlermeldung „Cluster <Clustername> ist nicht für den Zugriff auf HTTP-Dienste konfiguriert“ (oder abhängig vom Vorgang andere Fehlermeldungen, wie z.B.: „Es kann keine Verbindung mit dem Cluster hergestellt werden“) ausgegeben werden, wenn sich die Azure PowerShell- oder HDInsight SDK-Version von der Clusterversion unterscheidet. Alle ab dem 15.8.2014 erstellten Cluster unterstützen die neue Bereitstellungsfunktion für virtuelle Netzwerke. Diese Funktion wird von älteren Versionen von Azure PowerShell oder HDInsight SDK nicht korrekt interpretiert. Das Resultat ist ein Fehler bei der Übermittlung mancher Aufträge. Falls Sie Aufträge mit HDInsight SDK APIs oder Azure PowerShell-Cmdlets übermitteln (z. B. Use-AzureRmHDInsightCluster oder Invoke-AzureRmHDInsightHiveJob), können diese Vorgänge mit einer der oben beschriebenen Fehlermeldungen fehlschlagen.
 
 Diese Kompatibilitätsprobleme sind in den neuesten Versionen von HDInsight SDK und Azure PowerShell behoben. Sie sollten daher das HDInsight SDK auf Version 1.3.1.6 oder eine neuere Version und die Azure PowerShell-Tools auf Version 0.8.8 oder eine neuere Version aktualisieren. Sie können über [NuGet][nuget-link] auf das neueste HDInsight SDK zugreifen. Mit [Microsoft Web Platform Installer][webpi-link] können Sie auf die Azure PowerShell-Tools zugreifen.
 
@@ -1559,7 +1569,7 @@ Die folgenden Versionsänderungen wurden zwischen HDInsight 2.x (HDP1.x) und HDI
 
 
 ### Treiber
-Der JDBC-Treiber (Java Database Connnectivity) für SQL Server wird intern von HDInsight und nicht für externe Vorgänge verwendet. Wenn Sie über ODBC (Open Database Connectivity) eine Verbindung mit HDInsight herstellen möchten, verwenden Sie den Microsoft Hive ODBC-Treiber. Weitere Informationen finden Sie unter [Verbinden von Excel mit HDInsight mithilfe des Microsoft Hive ODBC-Treibers](../../articles/hdinsight/hdinsight-connect-excel-hive-odbc-driver.md).
+Der JDBC-Treiber (Java Database Connnectivity) für SQL Server wird intern von HDInsight und nicht für externe Vorgänge verwendet. Wenn Sie über ODBC (Open Database Connectivity) eine Verbindung mit HDInsight herstellen möchten, verwenden Sie den Microsoft Hive ODBC-Treiber. Weitere Informationen finden Sie unter [Verbinden von Excel mit HDInsight mithilfe des Microsoft Hive ODBC-Treibers](hdinsight-connect-excel-hive-odbc-driver.md).
 
 
 ### Fehlerbehebungen
@@ -1601,4 +1611,4 @@ Versionshinweise zu den HDPs (Hortonworks Data Platforms), die von den Versionen
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0713_2016-->

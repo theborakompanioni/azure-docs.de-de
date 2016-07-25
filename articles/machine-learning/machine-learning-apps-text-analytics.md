@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/05/2016"
+	ms.date="07/07/2016"
 	ms.author="onewth"/>
 
 
 # Machine Learning APIs: Textanalyse für Stimmungsanalyse, Schlüsselausdruckextraktion, Sprach- und Themenerkennung
 
->[AZURE.NOTE] Dieses Handbuch bezieht sich auf Version 1 der API. Informationen zu Version 2 [**finden Sie in diesem Dokument**](../cognitive-services-text-analytics-quick-start/). Version 2 ist jetzt die bevorzugte Version dieser API.
+>[AZURE.NOTE] Dieses Handbuch bezieht sich auf Version 1 der API. Informationen zu Version 2 [**finden Sie in diesem Dokument**](../cognitive-services/cognitive-services-text-analytics-quick-start.md). Version 2 ist jetzt die bevorzugte Version dieser API.
 
 ## Übersicht
 
@@ -385,4 +385,4 @@ Die Eigenschaften für jeden Teil der Antwort lauten:
 | TopicId | Die Themen-ID, der der Datensatz zugewiesen wurde. |
 | Distance | Zuverlässigkeit, dass der Datensatz zu dem Thema gehört. Je näher „Distance“ an 0 liegt, desto höher ist die Zuverlässigkeit. |
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -90,7 +90,7 @@ Nach Abschluss des Assistenten können Sie die Konfiguration des Agenten später
 
 Fügen Sie in der Systemsteuerung Ihrer Azure-Web-App die Application Insights-Erweiterung hinzu.
 
-![In der Web-App: Einstellungen, Erweiterungen, Hinzufügen, Application Insights](./media/app-insights-asp-net-dependencies/05-extend.png)
+![In der Web-App: "Einstellungen" > "Erweiterungen" > "Hinzufügen" > "Application Insights"](./media/app-insights-asp-net-dependencies/05-extend.png)
 
 
 ### Wenn es sich um ein Azure-Clouddienstprojekt handelt
@@ -99,11 +99,7 @@ Fügen Sie in der Systemsteuerung Ihrer Azure-Web-App die Application Insights-
 
 ## <a name="diagnosis"></a> Diagnostizieren von Leistungsproblemen der Abhängigkeit
 
-So bewerten Sie die Leistung der Anforderungen an den Server
-
-![Klicken Sie in Ihrer Anwendung in Application Insights auf der Seite "Übersicht" auf die Kachel "Leistung"](./media/app-insights-asp-net-dependencies/01-performance.png)
-
-Scrollen Sie nach unten, um das Raster der Anforderungen anzuzeigen:
+Um die Leistung von Anforderungen auf Ihrem Server zu bewerten, öffnen Sie das Blatt „Leistung“, und scrollen Sie nach unten zum Raster der Anforderungen:
 
 ![Liste der Anforderungen mit Mittelwerten und Anzahlen](./media/app-insights-asp-net-dependencies/02-reqs.png)
 
@@ -116,21 +112,24 @@ Klicken Sie auf diese Zeile, um einzelne Anforderungsereignisse anzuzeigen:
 
 Klicken Sie auf eine beliebige Instanz mit langer Ausführungsdauer, um diese näher zu überprüfen.
 
-> [AZURE.NOTE] Scrollen Sie nach unten, um eine Instanz auszuwählen. Durch Wartezeiten in der Pipeline sind die Daten für die zuerst aufgeführten Instanzen möglicherweise unvollständig.
-
 Scrollen Sie nach unten zu den Remoteabhängigkeitsaufrufen im Zusammenhang mit dieser Anforderung:
 
 ![Finden von Aufrufen von Remoteabhängigkeiten, Identifizieren ungewöhnlich langer Laufzeiten](./media/app-insights-asp-net-dependencies/04-dependencies.png)
 
 Der Großteil der Zeit zur Verarbeitung dieser Anforderung wurde für einen Aufruf eines lokalen Diensts aufgewendet.
 
-Wählen Sie diese Zeile aus, um weitere Informationen zu erhalten:
 
+Wählen Sie diese Zeile aus, um weitere Informationen zu erhalten:
 
 ![Klicken Sie sich durch diese Remoteabhängigkeit, um die Ursache herauszufinden](./media/app-insights-asp-net-dependencies/05-detail.png)
 
 Dieses Detail enthält genügend Informationen, um das Problem zu diagnostizieren.
 
+
+In einem anderen Fall handelt es sich nicht um einen Abhängigkeitsaufruf mit langer Ausführungsdauer, aber indem wir zur Zeitachsenansicht wechseln, können wir sehen, wo die Verzögerung in unserer internen Verarbeitung aufgetreten ist:
+
+
+![Finden von Aufrufen von Remoteabhängigkeiten, Identifizieren ungewöhnlich langer Laufzeiten](./media/app-insights-asp-net-dependencies/04-1.png)
 
 
 ## Fehler
@@ -178,9 +177,9 @@ Wenn Sie das Standardmodul für die Nachverfolgung von Abhängigkeiten deaktivie
 
 ## Nächste Schritte
 
-- [Exceptions](app-insights-asp-net-exception-mvc.md#selector1)
-- [Daten zu Seiten und Benutzern](app-insights-asp-net-client.md#selector1)
-- [Availability](app-insights-monitor-web-app-availability.md#selector1)
+- [Exceptions](app-insights-asp-net-exceptions.md)
+- [Daten zu Seiten und Benutzern][client]
+- [Availability](app-insights-monitor-web-app-availability.md)
 
 
 
@@ -202,4 +201,4 @@ Wenn Sie das Standardmodul für die Nachverfolgung von Abhängigkeiten deaktivie
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0713_2016-->

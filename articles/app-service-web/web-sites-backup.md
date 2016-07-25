@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Sichern von Web-Apps in Azure App Service" 
-	description="Erfahren Sie, wie Sie Sicherungen Ihrer Web-Apps in Azure App Service erstellen." 
+	pageTitle="Sichern einer App in Azure" 
+	description="Erfahren Sie, wie Sie Sicherungen Ihrer Apps in Azure App Service erstellen." 
 	services="app-service" 
 	documentationCenter="" 
 	authors="cephalin" 
@@ -13,25 +13,23 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/26/2016" 
+	ms.date="07/06/2016" 
 	ms.author="cephalin"/>
 
-# Sichern von Web-Apps in Azure App Service
+# Sichern einer App in Azure
 
 
-Die Funktion zum Sichern und Wiederherstellen von [Azure App Service-Web-Apps](http://go.microsoft.com/fwlink/?LinkId=529714) ermöglicht die einfache Erstellung manueller oder automatischer Web-App-Sicherungen. Sie können die Web-App in einem früheren Zustand wiederherstellen oder eine neue Web-App basierend auf einer Web-App-Sicherung erstellen.
+Das Feature zum Sichern und Wiederherstellen von [Azure App Service](../app-service/app-service-value-prop-what-is.md) ermöglicht die einfache Erstellung manueller oder automatischer App-Sicherungen. Sie können die App in einem früheren Zustand wiederherstellen oder eine neue App basierend auf einer App-Sicherung erstellen.
 
-Informationen zum Wiederherstellen von Azure-Web-Apps aus einer Sicherung finden Sie unter [Wiederherstellen von Web-Apps](web-sites-restore.md).
-
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+Informationen zum Wiederherstellen einer App aus einer Sicherung finden Sie unter [Wiederherstellen einer App in Azure](web-sites-restore.md).
 
 <a name="whatsbackedup"></a>
 ## Was wird gesichert? 
-Für Web-Apps können die folgenden Informationen gesichert werden:
+App Service kann die folgenden Informationen sichern:
 
-* Web-App-Konfiguration
-* Dateiinhalte der Web-App
-* Jede Azure SQL- und jede MySQL-Datenbank, die mit Ihrer App verbunden ist (Sie können auswählen, welche im Backup gesichert werden sollen.)
+* App-Konfiguration
+* Dateiinhalte
+* Azure SQL- und Azure MySQL (ClearDB)-Datenbanken, die mit Ihrer App verbunden sind (Sie können auswählen, welche in die Sicherung einbezogen werden sollen.)
 
 Diese Informationen werden in dem von Ihnen angegebenen Azure-Speicherkonto und -Container gesichert.
 
@@ -40,25 +38,24 @@ Diese Informationen werden in dem von Ihnen angegebenen Azure-Speicherkonto und 
 <a name="requirements"></a>
 ## Anforderungen und Einschränkungen
 
-* Die Funktion zum Sichern und Wiederherstellen erfordert, dass sich der App Service-Plan im Tarif „Standard“ oder einem höheren Tarif angehört. Weitere Informationen zum Skalieren des App Service-Plans zur Verwendung in einem höheren Tarif finden Sie unter [Skalieren einer Web-App in Azure App Service](web-sites-scale.md). Beachten Sie, dass im Tarif „Premium“ eine größere Anzahl täglicher Sicherungen zulässig ist als im Tarif „Standard“.
-
-* Die Funktion zum Sichern und Wiederherstellen erfordert ein Azure-Speicherkonto und einen -Container, die zum selben Abonnement wie die Web-App gehören, die Sie sichern möchten. Falls Sie noch nicht über ein Speicherkonto verfügen, können Sie es erstellen, indem Sie im [Azure-Portal](https://portal.azure.com/) auf dem Blatt **Sicherungen** auf die Schaltfläche **Speicherkonto** klicken. Klicken Sie anschließend auf dem Blatt **Ziel** auf das **Speicherkonto** und den **Container**. Weitere Informationen zu Azure-Speicherkonten erhalten Sie unter den [Links](#moreaboutstorage) am Ende dieses Artikels.
-
-* Das Feature zum Sichern und Wiederherstellen unterstützt bis zu 10 GB an Website- und Datenbankinhalt. Es wird eine Fehlermeldung angezeigt, wenn die Sicherungsfunktion nicht fortgesetzt werden kann, weil die Nutzlast diesen Grenzwert überschreitet.
+* Das Feature zum Sichern und Wiederherstellen erfordert einen App Service-Plan im Tarif **Standard** oder höher. Weitere Informationen zum Skalieren des App Service-Plans zur Verwendung eines höheren Tarifs finden Sie unter [Skalieren einer App in Azure](web-sites-scale.md). Beachten Sie, dass im Tarif **Premium** eine größere Anzahl täglicher Sicherungen zulässig ist als im Tarif **Standard**.
+* Sie benötigen ein Azure-Speicherkonto und einen Container im selben Abonnement wie die App, die Sie sichern möchten. Weitere Informationen zu Azure-Speicherkonten erhalten Sie unter den [Links](#moreaboutstorage) am Ende dieses Artikels.
+* Sie können bis zu 10 GB App- und Datenbankinhalte sichern. Sie erhalten eine Fehlermeldung, wenn die Sicherungsgröße diesen Grenzwert überschreitet.
 
 <a name="manualbackup"></a>
 ## Erstellen einer manuellen Sicherung
 
-1. Wählen Sie im Azure-Portal auf dem Blatt „Web-Apps“ Ihre Web-App aus. Damit zeigen Sie Details der Web-App auf einem neuen Blatt an.
-2. Wählen Sie auf dem Blatt für Ihre App die Option **Einstellungen** und dann **Sicherungen** aus. Das Blatt **Sicherungen** wird angezeigt.
+2. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zum Blatt Ihrer App. Wählen Sie **Einstellungen** und dann **Sicherungen** aus. Das Blatt **Sicherungen** wird angezeigt.
 	
 	![Seite 'Sicherungen'][ChooseBackupsPage]
+
+	>[AZURE.NOTE] Wenn die folgende Meldung angezeigt wird, klicken Sie darauf, um Ihren App Service-Plan zu aktualisieren, damit Sie mit Sicherungen fortfahren können. Weitere Informationen finden Sie unter [Zentrales Hochskalieren einer App in Azure](web-sites-scale.md). ![Speicherkonto auswählen](./media/web-sites-backup/01UpgradePlan.png)
 
 3. Klicken Sie auf dem Blatt **Sicherungen** auf **Speicher: Nicht konfiguriert**, um ein Speicherkonto zu konfigurieren.
 
 	![Speicherkonto auswählen][ChooseStorageAccount]
 	
-4. Wählen Sie das Sicherungsziel durch Auswahl eines **Speicherkontos** und **Containers** aus. Das Speicherkonto muss zu demselben Abonnement wie die Web-App gehören, die Sie sichern möchten. Bei Bedarf können Sie auf den entsprechenden Blättern ein neues Speicherkonto oder einen neuen Container erstellen. Wenn Sie fertig sind, klicken Sie auf **Auswählen**.
+4. Wählen Sie das Sicherungsziel durch Auswahl eines **Speicherkontos** und **Containers** aus. Das Speicherkonto muss zum selben Abonnement wie die App gehören, die Sie sichern möchten. Bei Bedarf können Sie auf den entsprechenden Blättern ein neues Speicherkonto oder einen neuen Container erstellen. Wenn Sie fertig sind, klicken Sie auf **Auswählen**.
 	
 	![Speicherkonto auswählen](./media/web-sites-backup/02ChooseStorageAccount1.png)
 	
@@ -66,23 +63,22 @@ Diese Informationen werden in dem von Ihnen angegebenen Azure-Speicherkonto und 
 
 	![Speicherkonto auswählen](./media/web-sites-backup/03ConfigureDatabase.png)
 
-	> [AZURE.NOTE] 	Damit eine Datenbank in dieser Liste angezeigt wird, muss die zugehörige Verbindungszeichenfolge im Portal auf dem Blatt **Web-App-Einstellungen** im Abschnitt **Verbindungszeichenfolgen** angegeben sein.
+	> [AZURE.NOTE] 	Damit eine Datenbank in dieser Liste angezeigt wird, muss die zugehörige Verbindungszeichenfolge auf dem Blatt **Anwendungseinstellungen** für Ihre App im Abschnitt **Verbindungszeichenfolgen** angegeben sein.
 
 6. Klicken Sie auf dem Blatt **Sicherungseinstellungen konfigurieren** auf **Speichern**.
-6. Wählen Sie auf dem Blatt **Sicherungen** das **Sicherungsziel** aus. Sie müssen ein vorhandenes Speicherkonto und einen Container auswählen.
+
 7. Klicken Sie in der Befehlsleiste des Blatts **Sicherungen** auf **Jetzt sichern**.
 	
 	![Schaltfläche "Backup Now"][BackUpNow]
 	
 	Während des Sicherungsvorgangs wird eine Fortschrittsmeldung angezeigt.
-	
 
-Sie können jederzeit eine manuelle Sicherung vornehmen.
+Nachdem Sie ein Speicherkonto und einen Container für Sicherungen konfiguriert haben, können Sie jederzeit eine manuelle Sicherung durchführen.
 
 <a name="automatedbackups"></a>
 ## Konfigurieren automatischer Sicherungen
 
-1. Klicken Sie im Blatt **Sicherungen** auf **Zeitplan: Nicht konfiguriert**. 
+1. Klicken Sie im Blatt **Sicherungen** auf **Zeitplan: Nicht konfiguriert**.
 
 	![Speicherkonto auswählen](./media/web-sites-backup/05ScheduleBackup.png)
 	
@@ -90,7 +86,7 @@ Sie können jederzeit eine manuelle Sicherung vornehmen.
 	
 	![Automatisierte Sicherungen aktivieren][SetAutomatedBackupOn]
 	
-4. Klicken Sie auf dem geöffneten Blatt **Sicherungseinstellungen konfigurieren** auf **Speichereinstellungen**, wählen Sie dann das Sicherungsziel durch Auswahl eines **Speicherkontos** und **Containers** aus. Das Speicherkonto muss zu demselben Abonnement wie die Web-App gehören, die Sie sichern möchten. Bei Bedarf können Sie auf den entsprechenden Blättern ein neues Speicherkonto oder einen neuen Container erstellen. Wenn Sie fertig sind, klicken Sie auf **Auswählen**.
+4. Klicken Sie auf dem geöffneten Blatt **Sicherungseinstellungen konfigurieren** auf **Speichereinstellungen**, wählen Sie dann das Sicherungsziel durch Auswahl eines **Speicherkontos** und **Containers** aus. Das Speicherkonto muss zum selben Abonnement wie die App gehören, die Sie sichern möchten. Bei Bedarf können Sie auf den entsprechenden Blättern ein neues Speicherkonto oder einen neuen Container erstellen. Wenn Sie fertig sind, klicken Sie auf **Auswählen**.
 	
 	![Speicherkonto auswählen](./media/web-sites-backup/02ChooseStorageAccount1.png)
 	
@@ -98,33 +94,26 @@ Sie können jederzeit eine manuelle Sicherung vornehmen.
 
 	![Speicherkonto auswählen](./media/web-sites-backup/03ConfigureDatabase.png)
 
-	> [AZURE.NOTE] 	Damit eine Datenbank in dieser Liste angezeigt wird, muss die zugehörige Verbindungszeichenfolge im Portal auf dem Blatt **Web-App-Einstellungen** im Abschnitt **Verbindungszeichenfolgen** angegeben sein.
+	> [AZURE.NOTE] 	Damit eine Datenbank in dieser Liste angezeigt wird, muss die zugehörige Verbindungszeichenfolge auf dem Blatt **Anwendungseinstellungen** für Ihre App im Abschnitt **Verbindungszeichenfolgen** angegeben sein.
 
 6. Klicken Sie auf dem Blatt **Sicherungseinstellungen konfigurieren** auf **Speichern**.
 
-<a name="notes"></a>
-## Hinweise
-
-* Stellen Sie sicher, dass Sie die Verbindungszeichenfolgen für jede Ihrer Datenbanken ordnungsgemäß auf dem Blatt **Web-App-Einstellungen** in **Einstellungen** angeben, damit die Sicherungs- und Wiederherstellungsfunktion die Datenbanken einschließen kann.
-
->[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
-
 <a name="partialbackups"></a>
-## Sichern eines Teils Ihrer Web-App
+## Sichern eines Teils Ihrer App
 
-Manchmal möchten Sie nicht alles in Ihrer Web-App sichern. Hier sind einige Beispiele:
+Mitunter möchten Sie nicht alles in Ihrer App sichern. Hier sind einige Beispiele:
 
--	Sie [richten wöchentliche Sicherungen](web-sites-backup.md#configure-automated-backups) der Web-App ein, die statische Inhalte enthält, die sich nie ändern, z. B. alte Blogbeiträge oder Bilder.
--	Ihre Web-App verfügt über mehr als 10 GB an Inhalten (der maximale Umfang, der auf einmal gesichert werden kann).
+-	Sie [richten wöchentliche Sicherungen](web-sites-backup.md#configure-automated-backups) der App ein, die statische Inhalte enthält, die sich nie ändern, z.B. alte Blogbeiträge oder Bilder.
+-	Ihre App verfügt über mehr als 10 GB an Inhalten (der maximale Umfang, der auf einmal gesichert werden kann).
 -	Sie möchten die Protokolldateien nicht sichern.
 
 Bei Teilsicherungen können Sie genau auswählen, welche Dateien gesichert werden sollen.
 
 ### Ausschließen von Dateien aus der Sicherung
 
-Erstellen Sie zum Ausschließen von Dateien und Ordnern aus der Sicherung eine `_backup.filter`-Datei im Ordner "wwwroot" der Web-App, und geben Sie die Liste der Dateien und Ordner an, die Sie dort ausschließen möchten. Eine einfache Zugriffsmöglichkeit ist die [Kudu-Konsole](https://github.com/projectkudu/kudu/wiki/Kudu-console).
+Erstellen Sie zum Ausschließen von Dateien und Ordnern aus der Sicherung eine `_backup.filter`-Datei im Ordner „D:\\home\\site\\wwwroot“ der App, und geben Sie die Liste der Dateien und Ordner an, die Sie dort ausschließen möchten. Eine einfache Zugriffsmöglichkeit ist die [Kudu-Konsole](https://github.com/projectkudu/kudu/wiki/Kudu-console).
 
-Stellen Sie sich vor, Sie verfügen über eine Website mit Protokolldateien und statischen Bildern aus früheren Jahren, die sich nicht ändern. Sie haben bereits eine vollständige Sicherung der Web-App erstellt, die die alten Bilder enthält. Jetzt möchten Sie die Web-App täglich sichern, aber Sie möchten nicht für die Speicherung von Protokolldateien oder statischen Bilddateien bezahlen, die sich nie ändern.
+Angenommen, Sie verfügen über eine App mit Protokolldateien und statischen Bildern aus früheren Jahren, die sich nicht ändern. Sie haben bereits eine vollständige Sicherung der App erstellt, die die alten Bilder enthält. Jetzt möchten Sie die App täglich sichern, aber Sie möchten nicht für die Speicherung von Protokolldateien oder statischen Bilddateien zahlen, die sich nie ändern.
 
 ![Ordner "Logs"][LogsFolder]
 ![Ordner "Images"][ImagesFolder]
@@ -159,20 +148,18 @@ Alle Dateien und Ordner, die in `_backup.filter` angegeben sind, werden jetzt au
 
 ## Speichern von Sicherungen
 
-Nachdem Sie eine oder mehrere Sicherungen für Ihre Web-App vorgenommen haben, werden die Sicherungen auf dem Blatt **Container** in Ihrem Speicherkonto sowie in Ihrer Web-App angezeigt. Im Speicherkonto besteht jede Sicherung aus einer ZIP-Datei mit den gesicherten Daten und einer XML-Datei, die ein Manifest des ZIP-Dateiinhalts enthält. Sie können diese Dateien extrahieren und durchsuchen, wenn Sie auf die Sicherungen zugreifen möchten, ohne eine Web-App-Wiederherstellung auszuführen.
+Nachdem Sie eine oder mehrere Sicherungen für Ihre App vorgenommen haben, werden die Sicherungen auf dem Blatt **Container** in Ihrem Speicherkonto sowie in Ihrer App angezeigt. Im Speicherkonto besteht jede Sicherung aus einer ZIP-Datei mit den gesicherten Daten und einer XML-Datei, die ein Manifest des ZIP-Dateiinhalts enthält. Sie können diese Dateien extrahieren und durchsuchen, wenn Sie auf die Sicherungen zugreifen möchten, ohne eine App-Wiederherstellung auszuführen.
 
-Die Datenbanksicherung für die Web-App wird im Stammverzeichnis der ZIP-Datei gespeichert. Bei SQL-Datenbanken ist dies eine BACPAC-Datei (ohne Dateierweiterung), die importiert werden kann. Schritte zum Erstellen einer neuen SQL-Datenbank auf Basis des BACPAC-Exports finden Sie im Artikel [Importieren einer BACPAC-Datei zum Erstellen einer neuen Benutzerdatenbank](http://technet.microsoft.com/library/hh710052.aspx).
+Die Datenbanksicherung für die App wird im Stammverzeichnis der ZIP-Datei gespeichert. Bei SQL-Datenbanken ist dies eine BACPAC-Datei (ohne Dateierweiterung), die importiert werden kann. Schritte zum Erstellen einer neuen SQL-Datenbank auf Basis des BACPAC-Exports finden Sie im Artikel [Importieren einer BACPAC-Datei zum Erstellen einer neuen Benutzerdatenbank](http://technet.microsoft.com/library/hh710052.aspx).
 
 > [AZURE.WARNING] Wenn Sie die Dateien im Container **websitebackups** ändern, kann die Sicherung ungültig werden und nicht mehr wiederhergestellt werden.
 
 <a name="nextsteps"></a>
 ## Nächste Schritte
-Informationen zum Wiederherstellen von Web-Apps aus einer Sicherung finden Sie unter [Wiederherstellen von Web-Apps in Azure App Service](web-sites-restore.md). Sie können App Service-Apps auch mithilfe der REST-API sichern und wiederherstellen (siehe [Verwenden von REST zum Sichern und Wiederherstellen von App Service-Apps](websites-csm-backup.md)).
+Informationen zum Wiederherstellen einer App aus einer Sicherung finden Sie unter [Wiederherstellen einer App in Azure](web-sites-restore.md). Sie können App Service-Apps auch mithilfe der REST-API sichern und wiederherstellen (siehe [Verwenden von REST zum Sichern und Wiederherstellen von App Service-Apps](websites-csm-backup.md)).
 
-Informationen zu den ersten Schritten mit Azure finden Sie unter [Kostenlose Microsoft Azure-Testversion](/pricing/free-trial/).
+>[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
-## Änderungen
-* Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714).
 
 <!-- IMAGES -->
 [ChooseBackupsPage]: ./media/web-sites-backup/01ChooseBackupsPage.png
@@ -190,4 +177,4 @@ Informationen zu den ersten Schritten mit Azure finden Sie unter [Kostenlose Mic
 [GhostUpgradeWarning]: ./media/web-sites-backup/13GhostUpgradeWarning.png
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0713_2016-->

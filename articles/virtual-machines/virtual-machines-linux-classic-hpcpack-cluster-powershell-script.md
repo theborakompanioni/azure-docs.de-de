@@ -1,6 +1,6 @@
 <properties
    pageTitle="PowerShell-Skript zum Bereitstellen eines Linux-HPC-Clusters | Microsoft Azure"
-   description="Führen Sie ein PowerShell-Skript aus, um einen Linux-HPC-Cluster in Azure-Infrastrukturdiensten bereitzustellen."
+   description="Ausführen eines PowerShell-Skripts zum Bereitstellen eines Linux HPC Pack-Clusters auf virtuellen Azure-Computern"
    services="virtual-machines-linux"
    documentationCenter=""
    authors="dlepow"
@@ -13,22 +13,22 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="big-compute"
-   ms.date="04/05/2016"
+   ms.date="07/07/2016"
    ms.author="danlep"/>
 
 # Erstellen eines High Performance Computing (HPC)-Clusters mit dem HPC Pack-IaaS-Bereitstellungsskript
 
-Führen Sie das PowerShell-Skript für die HPC Pack-IaaS-Bereitstellung auf einem Clientcomputer aus, um einen vollständigen HPC-Cluster für Linux-Workloads in Azure-Infrastrukturdiensten (IaaS) bereitzustellen. Falls Sie einen HPC Pack-Cluster in Azure für Windows-Workloads bereitstellen möchten, finden Sie weitere Informationen unter [Erstellen eines High Performance Computing (HPC)-Clusters mit virtuellen Windows-Computern mit dem HPC Pack-IaaS-Bereitstellungsskript](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md).
+Führen Sie das PowerShell-Skript für die HPC Pack-IaaS-Bereitstellung aus, um einen vollständigen HPC Pack-Cluster für Linux-Workloads auf virtuellen Azure-Computern bereitzustellen. Der Cluster besteht aus einem mit Active Directory verknüpften Hauptknoten mit Windows Server und Microsoft HPC Pack sowie Computeknoten, auf denen eine der von HPC Pack unterstützten Linux-Distributionen ausgeführt wird. Falls Sie einen HPC Pack-Cluster in Azure für Windows-Workloads bereitstellen möchten, finden Sie weitere Informationen unter [Erstellen eines High Performance Computing (HPC)-Clusters mit virtuellen Windows-Computern mit dem HPC Pack-IaaS-Bereitstellungsskript](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md). Sie können auch eine Azure-Ressourcen-Manager-Vorlage verwenden, um einen HPC Pack-Cluster bereitzustellen. Ein Beispiel finden Sie unter [Create an HPC cluster with Linux compute nodes](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/) (Erstellen eines HPC-Clusters mit Linux-Computeknoten).
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 [AZURE.INCLUDE [virtual-machines-common-classic-hpcpack-cluster-powershell-script](../../includes/virtual-machines-common-classic-hpcpack-cluster-powershell-script.md)]
 
-## Beispielkonfigurationsdateien
+## Beispielkonfigurationsdatei
 
-### Beispiel 1
+Die folgende Konfigurationsdatei erstellt einen neuen Domänencontroller und eine neue Domänengesamtstruktur und stellt einen HPC Pack-Cluster bereit, der über einen Hauptknoten mit lokalen Datenbanken und zehn Linux-Computeknoten verfügt. Alle Clouddienste werden direkt am Standort in Ostasien erstellt. Die Linux-Computeknoten werden in zwei Clouddiensten und zwei Speicherkonten erstellt (d.h. _MyLnxCN-0001_ bis _MyLnxCN-0005_ in _MyLnxCNService01_ und _mylnxstorage01_ und _MyLnxCN-0006_ bis _MyLnxCN-0010_ in _MyLnxCNService02_ und _mylnxstorage02_). Die Computeknoten werden aus einem Linux-Image (OpenLogic CentOS Version 7.0) erstellt.
 
-Die folgende Konfigurationsdatei erstellt eine neue Domänengesamtstruktur und stellt einen HPC Pack-Cluster bereit, der über einen Hauptknoten mit lokalen Datenbanken und 20 Linux-Computeknoten verfügt. Alle Clouddienste werden direkt am Standort in Ostasien erstellt. Die Linux-Computeknoten werden in vier Clouddiensten und vier Speicherkonten erstellt (d.h. _MyLnxCN-0001_ bis _MyLnxCN-0005_ in _MyLnxCNService01_ und _mylnxstorage01_, _MyLnxCN-0006_ bis _MyLnxCN-0010_ in _MyLnxCNService02_ und _mylnxstorage02_, _MyLnxCN-0011_ bis _MyLnxCN-0015_ in _MyLnxCNService03_ und _mylnxstorage03_ sowie _MyLnxCN-0016_ bis _MyLnxCN-0020_ in _MyLnxCNService04_ und _mylnxstorage04_). Die Computeknoten werden aus einem Linux-Image (OpenLogic CentOS Version 7.0) erstellt.
+Ersetzen Sie den Abonnementnamen und den Konto- und Dienstnamen durch Ihre eigenen Werte.
 
 ```
 <?xml version="1.0" encoding="utf-8" ?>
@@ -65,12 +65,8 @@ Die folgende Konfigurationsdatei erstellt eine neue Domänengesamtstruktur und s
     <MaxNodeCountPerService>5</MaxNodeCountPerService>
     <StorageAccountNamePattern>mylnxstorage%01%</StorageAccountNamePattern>
     <VMSize>Medium</VMSize>
-    <NodeCount>20</NodeCount>
+    <NodeCount>10</NodeCount>
     <ImageName>5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-70-20150325 </ImageName>
-    <SSHKeyPairForRoot>
-      <PfxFile>d:\mytestcert1.pfx</PfxFile>
-      <Password>MyPsw!!2</Password>
-    </SSHKeyPairForRoot>
   </LinuxComputeNodes>
 </IaaSClusterConfig>
 ```
@@ -84,8 +80,10 @@ Die folgende Konfigurationsdatei erstellt eine neue Domänengesamtstruktur und s
     
 ## Nächste Schritte
 
-* Tutorials, in denen das Skript zum Erstellen eines Clusters und Ausführen einer Linux-HPC-Workload verwendet werden, finden Sie unter [Ausführen von NAMD mit dem Microsoft HPC Pack auf Linux-Computeknoten in Azure](virtual-machines-linux-classic-hpcpack-cluster-namd.md) oder [Ausführen von OpenFOAM mit dem Microsoft HPC Pack auf Linux-Computeknoten in Azure](virtual-machines-linux-classic-hpcpack-cluster-openfoam.md).
+* Unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md) finden Sie Informationen zu unterstützten Linux-Distributionen sowie zum Verschieben von Daten und Senden von Aufträgen an HPC Pack-Cluster mit Linux-Computeknoten.
+* Tutorials, in denen das Skript zum Erstellen eines Cluster und Ausführen einer Linux HPC-Workload verwendet wird, finden Sie in folgenden Artikeln:
+    * [Ausführen von NAMD mit dem Microsoft HPC Pack auf Linux-Computeknoten in Azure](virtual-machines-linux-classic-hpcpack-cluster-namd.md)
+    * [Ausführen von OpenFOAM mit Microsoft HPC Pack auf einem Linux-RDMA-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster-openfoam.md)
+    * [Ausführen von STAR-CCM+ mit Microsoft HPC Pack auf einem Linux-RDMA-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster-starccm.md)
 
-* Sie können auch eine Azure-Ressourcen-Manager-Vorlage verwenden, um einen HPC Pack-Cluster bereitzustellen. Ein Beispiel finden Sie unter [Create an HPC cluster with Linux compute nodes](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/) (Erstellen eines HPC-Clusters mit Linux-Computeknoten).
-
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -3,7 +3,7 @@
 	description="Erfahren Sie mehr über die Unterstützung für kompatible Clients und IP-Endpunkt-Änderungen für die Überwachung bei SQL-Datenbank."
 	services="sql-database"
 	documentationCenter=""
-	authors="nadavhelfman"
+	authors="ronitr"
 	manager="jhubbard"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
-	ms.author="nadavh;ronitr"/>
+	ms.date="07/10/2016"
+	ms.author="ronitr"/>
 
 # SQL-Datenbank – Unterstützung für kompatible Clients und IP-Endpunkt-Änderungen für die Überwachung
 
@@ -72,4 +72,4 @@ Der neue Datenbank-IP-Endpunkt ist abhängig von der Region der Datenbank:
 | Kanada, Mitte | 13\.88.248.106 |
 | Kanada, Osten | 40\.86.227.82 |
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

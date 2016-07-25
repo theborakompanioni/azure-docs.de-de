@@ -216,7 +216,7 @@ Es wird empfohlen, dass Sie zunächst das Lernprogramm [Erstellen der ersten Pip
 		    }
 		  }
 		}
-5. Erstellen Sie abschließend eine Pipeline, die eine **AzureMLBatchExecution**-Aktivität enthält. Dadurch werden der Speicherort der Eingabedatei aus Ihren Eingabedatasets abgerufen, die Azure Machine Learning-Batchausführungs-API aufgerufen und die Batchausführungsausgabe in das im Ausgabedataset angegebene Blob kopiert. 
+5. Erstellen Sie abschließend eine Pipeline, die eine **AzureMLBatchExecution**-Aktivität enthält. Dadurch werden der Speicherort der Eingabedatei aus Ihren Eingabedatasets abgerufen, die Azure Machine Learning-Batchausführungs-API aufgerufen und die Batchausführungsausgabe in das im Ausgabedataset angegebene Blob kopiert.
 
 	> [AZURE.NOTE] Die AzureMLBatchExecution-Aktivität kann über keine oder mehrere Eingaben sowie über eine oder mehrere Ausgaben verfügen.
 
@@ -438,10 +438,10 @@ Die Reader- und Writer-Module des Azure ML-Webdiensts könnten für die Ausführ
 
 Die **Vorteile** sind:
 
--   Wenn Ihr Experimentendpunkt einen „webServiceInput“ verwendet, wird er durch ein Blobdataset dargestellt und ist sowohl in den Aktivitätseingaben als auch der webServiceInput-Eigenschaft enthalten. Andernfalls wird die webServiceInput-Eigenschaft weggelassen. 
+-   Wenn Ihr Experimentendpunkt einen „webServiceInput“ verwendet, wird er durch ein Blobdataset dargestellt und ist sowohl in den Aktivitätseingaben als auch der webServiceInput-Eigenschaft enthalten. Andernfalls wird die webServiceInput-Eigenschaft weggelassen.
 -   Wenn Ihr Experimentendpunkt „webServiceOutput(s)“ verwendet, werden sie von Blobdatasets dargestellt und sind sowohl in den Aktivitätsausgaben als auch der webServicepOutputs-Eigenschaft enthalten (zugeordnet von jedem Namen jeder Ausgabe im Experiment). Andernfalls wird die webServiceOutputs-Eigenschaft weggelassen.
--   Wenn Ihr Experimentendpunkt „globalParameter(s)“ verfügbar macht, werden sie in der globalParameters-Eigenschaft der Aktivität als Schlüsselwertpaare angegeben. Andernfalls wird die globalParameters-Eigenschaft weggelassen. Bei Schlüsseln wird Groß-/Kleinschreibung unterschieden. [Azure Data Factory-Funktionen](data-factory-scheduling-and-execution.md#data-factory-functions-reference) können in den Werten verwendet werden. 
-- Weitere Datasets können in den Eigenschaften „inputs“ und „outputs“ der Aktivität enthalten sein, ohne das in „typeProperties“ der Aktivität darauf verwiesen wird. Diese bestimmen die Ausführung mit Slice-Abhängigkeiten, werden aber von der Aktivität „AzureMLBatchExecution“ ignoriert. 
+-   Wenn Ihr Experimentendpunkt „globalParameter(s)“ verfügbar macht, werden sie in der globalParameters-Eigenschaft der Aktivität als Schlüsselwertpaare angegeben. Andernfalls wird die globalParameters-Eigenschaft weggelassen. Bei Schlüsseln wird Groß-/Kleinschreibung unterschieden. [Azure Data Factory-Funktionen](data-factory-scheduling-and-execution.md#data-factory-functions-reference) können in den Werten verwendet werden.
+- Weitere Datasets können in den Eigenschaften „inputs“ und „outputs“ der Aktivität enthalten sein, ohne das in „typeProperties“ der Aktivität darauf verwiesen wird. Diese bestimmen die Ausführung mit Slice-Abhängigkeiten, werden aber von der Aktivität „AzureMLBatchExecution“ ignoriert.
 
 
 ## Aktualisieren von Azure ML-Modellen mithilfe der Ressourcenaktualisierungsaktivität
@@ -772,4 +772,4 @@ Sie können auch [Data Factory-Funktionen ](https://msdn.microsoft.com/library/d
 
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->
