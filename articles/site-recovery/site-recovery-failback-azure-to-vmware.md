@@ -130,7 +130,7 @@ Wenn Ihre Computer als klassische Ressourcen geschützt sind (wenn es sich also 
 	
 	5. Wählen Sie das angegebene Subnetz und die Netzwerkschnittstelle, mit der Sie eine Verbindung zu ihm herstellen. Hinweis: Sie müssen Ihre eigene [Netzwerkschnittstelle](../virtual-network/virtual-networks-multiple-nics.md) (NIC) erstellen und diese während der Bereitstellung auswählen.
 	
-		![](./media/site-recovery-failback-azure-to-vmware-new/psinputsadd.ONG)
+		![](./media/site-recovery-failback-azure-to-vmware-new/PSinputsadd.PNG)
 	
 	6. Klicken Sie auf OK. Dadurch wird ein Auftrag ausgelöst, der einen virtuellen Computer mit dem Bereitstellungstyp „Resource Manager“ mit dem Prozessserversetup erstellt. Sie müssen das Setup auf dem virtuellen Computer ausführen, um den Server auf dem Konfigurationsserver zu registrieren. Dazu müssen Sie [diese Schritte](./site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server) ausführen:
 

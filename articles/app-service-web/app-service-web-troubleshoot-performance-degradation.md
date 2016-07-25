@@ -1,6 +1,6 @@
  <properties  
 	pageTitle="Beeinträchtigung der Web-App-Leistung in App Service | Microsoft Azure"
-	description ="Dieser Artikel hilft Ihnen beim Beheben von Web-App-Leistungsproblemen in Azure App Service." 
+	description="Dieser Artikel hilft Ihnen beim Beheben von Web-App-Leistungsproblemen in Azure App Service."
 	services="app-service\web" 
 	documentationCenter="" 
 	authors="cephalin" 
@@ -186,4 +186,4 @@ Dies ist oft die einfachste Methode zum Beheben einmaliger Probleme. Im [Azure-P
 
 Sie können Ihre Web-App auch mit Azure PowerShell verwalten. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!----HONumber=AcomDC_0713_2016-->
