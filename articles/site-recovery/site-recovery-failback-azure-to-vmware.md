@@ -88,7 +88,9 @@ Sie werden eine Failbackrichtlinie benötigen, um zurück auf den lokalen Stando
 
 1. Diese Richtlinie wird während der Erstellung automatisch dem Konfigurationsserver zugeordnet.
 2. Diese Richtlinie kann nicht bearbeitet werden.
-3. Die festgelegten Werte der Richtlinie sind (RPO-Schwellenwert = 15 Min., Aufbewahrungszeitraum des Wiederherstellungspunkts = 24 Stunden, Momentaufnahmehäufigkeit für Anwendungskonsistenz = 60 Min.) ![](./media/site-recovery-failback-azure-to-vmware-new/failback-policy.png)
+3. Die festgelegten Werte der Richtlinie sind (RPO-Schwellenwert = 15 Min., Aufbewahrungszeitraum des Wiederherstellungspunkts = 24 Stunden, Momentaufnahmehäufigkeit für Anwendungskonsistenz = 60 Min.) 
+
+![](./media/site-recovery-failback-azure-to-vmware-new/failback-policy.png)
 
 ## Einrichten des Prozessservers in Azure
 
@@ -98,7 +100,7 @@ Wenn Ihre Computer als klassische Ressourcen geschützt sind (wenn es sich also 
 
 1.  Wählen Sie im Tresor unter „Settings“ (Einstellungen) > „Manage Site Recovery Infrastructure“ (Site-Recovery-Infrastruktur verwalten) > **Konfigurationsserver** unter der Überschrift „For VMware and Physical Machines“ (Für VMware und physische Computer) den Konfigurationsserver aus. Klicken Sie auf „+ Prozessserver“
 
-	![](./media/site-recovery-failback-azure-to-vmware-new/add-processserver.png)
+	![](./media/site-recovery-failback-azure-to-vmware-new/add-processserver.PNG)
 
 2. Wählen Sie zum Bereitstellen des Prozessservers „Bereitstellen eines Failbackprozessservers in Azure“ aus
 
@@ -108,11 +110,11 @@ Wenn Ihre Computer als klassische Ressourcen geschützt sind (wenn es sich also 
 
 5. Wenn Sie ein Netzwerk mit *klassischer Bereitstellung* ausgewählt haben, werden Sie dazu aufgefordert, eine neue VM über den Azure-Katalog zu erstellen und den neuen Prozessserver darin zu installieren.
 
-	![](./media/site-recovery-failback-azure-to-vmware-new/add-classic.png)
+	![](./media/site-recovery-failback-azure-to-vmware-new/add-classic.PNG)
 	
 	1. Der Name des Image ist *Microsoft Azure Site Recovery Process Server V2*. Stellen Sie sicher, dass Sie *Klassisch* als Bereitstellungsmodell auswählen.
 	
-		![](./media/site-recovery-failback-azure-to-vmware-new/templatename.png)
+		![](./media/site-recovery-failback-azure-to-vmware-new/templateName.PNG)
 	
 	2. Installieren Sie den Prozessserver gemäß den [hier angegebenen](./site-recovery-vmware-to-azure-classicz.md#step-5-install-the-management-server) Schritten.
 	
@@ -128,7 +130,7 @@ Wenn Ihre Computer als klassische Ressourcen geschützt sind (wenn es sich also 
 	
 	5. Wählen Sie das angegebene Subnetz und die Netzwerkschnittstelle, mit der Sie eine Verbindung zu ihm herstellen. Hinweis: Sie müssen Ihre eigene [Netzwerkschnittstelle](../virtual-network/virtual-networks-multiple-nics.md) (NIC) erstellen und diese während der Bereitstellung auswählen.
 	
-		![](./media/site-recovery-failback-azure-to-vmware-new/psinputsadd.png)
+		![](./media/site-recovery-failback-azure-to-vmware-new/psinputsadd.ONG)
 	
 	6. Klicken Sie auf OK. Dadurch wird ein Auftrag ausgelöst, der einen virtuellen Computer mit dem Bereitstellungstyp „Resource Manager“ mit dem Prozessserversetup erstellt. Sie müssen das Setup auf dem virtuellen Computer ausführen, um den Server auf dem Konfigurationsserver zu registrieren. Dazu müssen Sie [diese Schritte](./site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server) ausführen:
 

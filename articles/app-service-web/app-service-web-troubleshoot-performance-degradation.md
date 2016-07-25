@@ -1,4 +1,12 @@
-<properties pageTitle="Beeinträchtigung der Web-App-Leistung in App Service | Microsoft Azure" description ="Dieser Artikel hilft Ihnen beim Beheben von Web-App-Leistungsproblemen in Azure App Service." services="app-service\\web" documentationCenter="" authors="cephalin" manager="wpickett" editor="" tags="top-support-issue keywords="Web-App-Leistung, langsame App, App langsam"/>
+ <properties  
+	pageTitle="Beeinträchtigung der Web-App-Leistung in App Service | Microsoft Azure"
+	description ="Dieser Artikel hilft Ihnen beim Beheben von Web-App-Leistungsproblemen in Azure App Service." 
+	services="app-service\web" 
+	documentationCenter="" 
+	authors="cephalin" 
+	manager="wpickett" 
+	editor="" 
+	tags="top-support-issue keywords="Web-App-Leistung, langsame App, App langsam"/>
 
 <tags
 	ms.service="app-service-web"
