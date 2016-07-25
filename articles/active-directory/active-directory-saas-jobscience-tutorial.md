@@ -16,7 +16,8 @@
 
 #Tutorial: Azure Active Directory-Integration mit Jobscience
   
-In diesem Tutorial wird die Integration von Azure und Jobscience erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Tutorial wird die Integration von Azure und Jobscience erläutert.  
+Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
 -   Ein Jobscience-Abonnement, für das einmaliges Anmelden aktiviert ist
@@ -64,7 +65,9 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Job
     ![Jobscience](./media/active-directory-saas-jobscience-tutorial/IC784357.png "Jobscience")
 ##Konfigurieren der einmaligen Anmeldung
   
-In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Jobscience zu authentifizieren. Zum Konfigurieren des einmaligen Anmeldens für Jobscience müssen Sie einen Fingerabdruckwert aus einem Zertifikat abrufen. Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Abrufen des Fingerabdruckwerts eines Zertifikats](http://youtu.be/YKQF266SAxI) weitere Informationen.
+In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Jobscience zu authentifizieren.  
+Zum Konfigurieren des einmaligen Anmeldens für Jobscience müssen Sie einen Fingerabdruckwert aus einem Zertifikat abrufen.  
+Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Abrufen des Fingerabdruckwerts eines Zertifikats](http://youtu.be/YKQF266SAxI) weitere Informationen.
 
 ###So konfigurieren Sie einmaliges Anmelden
 
@@ -74,7 +77,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einrichtung](./media/active-directory-saas-jobscience-tutorial/IC784358.png "Einrichtung")
 
-3.  Klicken Sie im linken Navigationsbereich im Abschnitt **Verwalten ** auf **Domänenverwaltung**, um den entsprechenden Abschnitt zu erweitern, und klicken Sie anschließend auf **Meine Domäne**, um die Seite **Meine Domäne** zu öffnen.
+3.  Klicken Sie im linken Navigationsbereich im Abschnitt **Verwalten** auf **Domänenverwaltung**, um den entsprechenden Abschnitt zu erweitern, und klicken Sie anschließend auf **Meine Domäne**, um die Seite **Meine Domäne** zu öffnen.
 
     ![Meine Domäne](./media/active-directory-saas-jobscience-tutorial/IC767825.png "Meine Domäne")
 
@@ -125,7 +128,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     8.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Jobscience** den Wert der **Remoteabmelde-URL**, und fügen Sie ihn in das Textfeld **Identity Provider Logout URL** ein.
     9.  Klicken Sie auf **Speichern**.
 
-13. Klicken Sie im linken Navigationsbereich im Abschnitt **Verwalten ** auf **Domänenverwaltung**, um den entsprechenden Abschnitt zu erweitern, und klicken Sie anschließend auf **Meine Domäne**, um die Seite **Meine Domäne** zu öffnen.
+13. Klicken Sie im linken Navigationsbereich im Abschnitt **Verwalten** auf **Domänenverwaltung**, um den entsprechenden Abschnitt zu erweitern, und klicken Sie anschließend auf **Meine Domäne**, um die Seite **Meine Domäne** zu öffnen.
 
     ![Meine Domäne](./media/active-directory-saas-jobscience-tutorial/IC767825.png "Meine Domäne")
 
@@ -145,10 +148,12 @@ Klicken Sie zum Abrufen der Anmelde-URL für vom Dienstanbieter initiiertes einm
 
 ![Sicherheitskontrollen](./media/active-directory-saas-jobscience-tutorial/IC784368.png "Sicherheitskontrollen")
   
-Klicken Sie auf das SSO-Profil, das Sie im obigen Schritt erstellt haben. Auf dieser Seite wird die SSO-URL für Ihr Unternehmen angezeigt (z.B. *https://companyname.my.salesforce.com?so=companyid*).
+Klicken Sie auf das SSO-Profil, das Sie im obigen Schritt erstellt haben.  
+Auf dieser Seite wird die SSO-URL für Ihr Unternehmen angezeigt (z.B. *https://companyname.my.salesforce.com?so=companyid*).
 ##Konfigurieren der Benutzerbereitstellung
   
-Damit sich Azure AD-Benutzer bei Jobscience anmelden können, müssen sie in Jobscience bereitgestellt werden. Im Fall von Jobscience ist die Bereitstellung eine manuelle Aufgabe.
+Damit sich Azure AD-Benutzer bei Jobscience anmelden können, müssen sie in Jobscience bereitgestellt werden.  
+Im Fall von Jobscience ist die Bereitstellung eine manuelle Aufgabe.
 
 ###So konfigurieren Sie die Benutzerbereitstellung
 

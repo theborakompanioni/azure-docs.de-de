@@ -73,7 +73,7 @@ Erstellen Sie einen Wiederherstellungsplan wie folgt:
 
 1. Klicken Sie auf Registerkarte **Wiederherstellungspläne** > **Wiederherstellungsplan erstellen**. Geben Sie einen Namen für den Wiederherstellungsplan sowie die Quelle und das Ziel an. Der Quellserver muss virtuelle Computer aufweisen, die für Failover und Wiederherstellung aktiviert sind.
 
-	- Wenn Sie von VMM zu VMM replizieren, wählen Sie **Quelltyp** > **VMM** und die VMM-Quell- und -Zielserver aus. Klicken Sie auf **Hyper-V**, um Clouds anzuzeigen, die für die Verwendung des Hyper-V-Replikats konfiguriert sind.
+	- Wenn Sie von VMM zu VMM replizieren, wählen Sie **Quelltyp** > **VMM** und die VMM-Quell- und -Zielserver aus. Klicken Sie auf **Hyper-V**, um Clouds anzuzeigen, die für die Verwendung des Hyper-V-Replikats konfiguriert sind. 
 	- Wenn Sie per SAN von VMM zu VMM replizieren, wählen Sie **Quelltyp** > **VMM** und die VMM-Quell- und -Zielserver aus. Klicken Sie auf **SAN**, um die Clouds anzuzeigen, die für die SAN-Replikation konfiguriert sind.
 	- Wenn Sie von VMM zu Azure replizieren, wählen **Quelltyp** > **VMM** aus. Wählen Sie den VMM-Quellserver und als Ziel **Azure** aus.
 	- Wenn Sie von einem Hyper-V-Standort replizieren, wählen Sie **Quelltyp** > **Hyper-V** aus. Wählen Sie den Standort als Quelle und als Ziel **Azure** aus.
@@ -115,7 +115,7 @@ Sie können Ihren Wiederherstellungsplan erweitern, indem Sie als Teil des Plans
 1. Öffnen Sie den Wiederherstellungsplan, den Sie anpassen möchten.
 2. Klicken Sie, um virtuelle Computer oder eine neue Gruppe hinzuzufügen.
 3. Klicken Sie zum Hinzufügen eines Skripts oder einer manuellen Aktion in der Liste **Schritt** auf einen beliebigen Eintrag, und klicken Sie anschließend auf **Skript** oder **Manuelle Aktion**. Geben Sie an, ob Sie das Skript oder die Aktion vor oder nach dem ausgewählten Eintrag hinzufügen möchten. Verwenden Sie die Befehlsschaltflächen **Nach oben** und **Nach unten**, um die Position des Skripts nach oben oder unten zu verschieben.
-4. Wählen Sie beim Hinzufügen eines VMM-Skripts die Option **Failover zu VMM-Skript** aus, und geben Sie unter **Skriptpfad** den relativen Pfad zur Freigabe ein. Geben Sie für unser Beispiel, in dem sich die Freigabe unter „\\<VMMServerName>\\MSSCVMMLibrary\\RPScripts“ befindet, also den folgenden Pfad an: \\RPScripts\\RPScript.PS1.
+4. Wählen Sie beim Hinzufügen eines VMM-Skripts die Option **Failover zu VMM-Skript** aus, und geben Sie unter **Skriptpfad** den relativen Pfad zur Freigabe ein. Geben Sie für unser Beispiel, in dem sich die Freigabe unter „\<VMMServerName>\\MSSCVMMLibrary\\RPScripts“ befindet, also den folgenden Pfad an: \\RPScripts\\RPScript.PS1.
 5. Wenn Sie ein Azure-Automatisierungsrunbook hinzufügen, geben Sie das **Azure Automation-Konto** an, unter dem sich das Runbook befindet, und wählen das gewünschte **Azure-Runbookskript** aus.
 5. Führen Sie ein Failover für den Wiederherstellungsplan aus, um sicherzustellen, dass das Skript wie erwartet funktioniert.
 

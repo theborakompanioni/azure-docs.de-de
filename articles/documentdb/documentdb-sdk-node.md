@@ -87,7 +87,7 @@
 
 ### <a name="1.4.0"/>1.4.0</a>
 
-- Upsert implementiert. Neue „upsertXXX“-Methoden für „DocumentClient“.
+- Upsert implementiert. Neue „upsertXXX“-Methoden für „DocumentClient“. 
 
 ### <a name="1.3.0"/>1.3.0</a>
 
@@ -106,7 +106,7 @@
 ### <a name="1.2.0"/>1.2.0</a>
 
 - Unterstützung für „GeoSpatial“-Index hinzugefügt.
-- „Id“-Eigenschaft wird für alle Ressourcen überprüft. IDs für Ressourcen dürfen nicht die Zeichen ?, /, #, &#47;&#47;, enthalten und nicht mit einem Leerzeichen enden.
+- „Id“-Eigenschaft wird für alle Ressourcen überprüft. IDs für Ressourcen dürfen nicht die Zeichen ?, /, #, &#47;&#47;, enthalten und nicht mit einem Leerzeichen enden. 
 - Neue Überschrift „Fortschritt der Indextransformation“ zu „ResourceResponse“ hinzugefügt.
 
 ### <a name="1.1.0"/>1.1.0</a>
@@ -145,7 +145,32 @@ Alle Versionen des Azure DocumentDB SDK für Node.js vor Version **1.0.0** werde
 
 | Version | Herausgabedatum | Deaktivierungstermine 
 | ---	  | ---	         | ---
-| [1\.9.0](#1.9.0) | 07. Juni 2016 |--- | [1\.8.0](#1.8.0) | 14. April 2016 |--- | [1\.7.0](#1.7.0) | 26. März 2016 |--- | [1\.6.0](#1.6.0) | 8. März 2016 |--- | [1\.5.6](#1.5.6) | 2. Februar 2016 |--- | [1\.5.5](#1.5.5) | 1. Februar 2016 |--- | [1\.5.4](#1.5.4) | 01. Januar 2016 |--- | [1\.5.2](#1.5.2) | 26. Januar 2016 |--- | [1\.5.2](#1.5.2) | 22. Januar 2016 |--- | [1\.5.1](#1.5.1) | 4. Dezember 2016 |--- | [1\.5.0](#1.5.0) | 6. Oktober 2015 |--- | [1\.4.0](#1.4.0) | 6. Oktober 2015 |--- | [1\.3.0](#1.3.0) | 06. September 2015 |--- | [1\.2.2](#1.2.2) | 10. August 2015 |--- | [1\.2.1](#1.2.1) | 5. August 2015 |--- | [1\.2.0](#1.2.0) | 9. Juli 2015 |--- | [1\.1.0](#1.1.0) | 4. Juni 2015 |--- | [1\.0.3](#1.0.3) | 04. Mai 2015 |--- | [1\.0.2](#1.0.2) | 23. Mai 2015 |--- | [1\.0.1](#1.0.1) | 15. Mail 2015 |--- | [1\.0.0](#1.0.0) | 8. April 2015 |--- | 0.9.4-prerelease | 6. April 2015 | 29. Februar 2016 | 0.9.3-prerelease | 14. Januar 2015 | 29. Februar 2016 | 0.9.2-prerelease | 18. Dezember 2014 | 29. Februar 2016 | 0.9.1-prerelease | 22. August 2014 | 29. Februar 2016 | 0.9.0-prerelease | 21. August 2014 | 29. Februar 2016
+| [1\.9.0](#1.9.0) | 07. Juni 2016 |---
+| [1\.8.0](#1.8.0) | 14. April 2016 |---
+| [1\.7.0](#1.7.0) | 26. März 2016 |---
+| [1\.6.0](#1.6.0) | 8. März 2016 |---
+| [1\.5.6](#1.5.6) | 2. Februar 2016 |---
+| [1\.5.5](#1.5.5) | 1. Februar 2016 |---
+| [1\.5.4](#1.5.4) | 01. Januar 2016 |---
+| [1\.5.2](#1.5.2) | 26. Januar 2016 |---
+| [1\.5.2](#1.5.2) | 22. Januar 2016 |---
+| [1\.5.1](#1.5.1) | 4. Dezember 2016 |---
+| [1\.5.0](#1.5.0) | 6. Oktober 2015 |---
+| [1\.4.0](#1.4.0) | 6. Oktober 2015 |---
+| [1\.3.0](#1.3.0) | 06. September 2015 |---
+| [1\.2.2](#1.2.2) | 10. August 2015 |---
+| [1\.2.1](#1.2.1) | 5. August 2015 |---
+| [1\.2.0](#1.2.0) | 9. Juli 2015 |---
+| [1\.1.0](#1.1.0) | 4. Juni 2015 |---
+| [1\.0.3](#1.0.3) | 04. Mai 2015 |--- 
+| [1\.0.2](#1.0.2) | 23. Mai 2015 |---
+| [1\.0.1](#1.0.1) | 15. Mail 2015 |---
+| [1\.0.0](#1.0.0) | 8. April 2015 |---
+| 0.9.4-prerelease | 6. April 2015 | 29. Februar 2016
+| 0.9.3-prerelease | 14. Januar 2015 | 29. Februar 2016
+| 0.9.2-prerelease | 18. Dezember 2014 | 29. Februar 2016
+| 0.9.1-prerelease | 22. August 2014 | 29. Februar 2016
+| 0.9.0-prerelease | 21. August 2014 | 29. Februar 2016
 
 
 ## Häufig gestellte Fragen

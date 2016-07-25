@@ -34,7 +34,7 @@ Erstellen Sie anschließend ein Projekt für einen zustandslosen Dienst mit dem 
 
 Die Projektmappe enthält jetzt zwei Projekte:
 
- - *HelloWorld*: Dies ist das *Anwendung*sprojekt, das Ihre *Dienste* enthält. Darüber hinaus enthält es das Anwendungsmanifest zum Beschreiben der Anwendung sowie eine Reihe von PowerShell-Skripts, mit deren Hilfe Sie die Anwendung bereitstellen.
+ - *HelloWorld*: Dies ist das *Anwendung* sprojekt, das Ihre *Dienste* enthält. Darüber hinaus enthält es das Anwendungsmanifest zum Beschreiben der Anwendung sowie eine Reihe von PowerShell-Skripts, mit deren Hilfe Sie die Anwendung bereitstellen.
  - *HelloWorldStateless*: Dies ist das Dienstprojekt. Es enthält die Implementierung des zustandslosen Diensts.
 
 
@@ -70,7 +70,7 @@ In diesem Tutorial geht es um die Einstiegspunktmethode `RunAsync()`. Hiermit k�
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
 {
-    // TODO: Replace the following sample code with your own logic
+    // TODO: Replace the following sample code with your own logic 
     //       or remove this RunAsync override if it's not needed in your service.
 
     long iterations = 0;
@@ -122,7 +122,7 @@ Ein zustandsbehafteter Dienst hat die gleichen Einstiegspunkte wie ein zustandsl
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
 {
-    // TODO: Replace the following sample code with your own logic
+    // TODO: Replace the following sample code with your own logic 
     //       or remove this RunAsync override if it's not needed in your service.
 
     var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");

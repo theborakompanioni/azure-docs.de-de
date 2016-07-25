@@ -77,20 +77,36 @@
 - Allgemeine Verfügbarkeit (GA) des SDK
 
 ## Veröffentlichungs- und Deaktivierungstermine
-Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten.
+Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren, unterstützten Version zu gewährleisten.
 
 Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzugefügt. Daher wird empfohlen, immer so früh wie möglich auf die neueste SDK-Version zu aktualisieren.
 
 Anforderungen von DocumentDB mithilfe eines deaktivierten SDK werden vom Dienst abgelehnt.
 
-> [AZURE.WARNING]
-Alle Versionen des Azure DocumentDB SDK für Python vor Version **1.0.0** werden am **29. Februar 2016** deaktiviert.
+
+> [AZURE.WARNING]Alle Versionen des Azure DocumentDB SDK für Python vor Version **1.0.0** werden am **29. Februar 2016** deaktiviert.
 
 <br/>
 
 | Version | Herausgabedatum | Deaktivierungstermine 
 | ---	  | ---	         | ---
-| [1\.9.0](#1.9.0) | 07. Juni 2016 |--- | [1\.8.0](#1.8.0) | 14. April 2016 |--- | [1\.7.0](#1.7.0) | 8. April 2016 |--- | [1\.6.1](#1.6.1) | 08. März 2016 |--- | [1\.6.0](#1.6.0) | 3. Januar 2016 |--- | [1\.5.0](#1.5.0) | 6. Oktober 2016 |--- | [1\.4.2](#1.4.2) | 6. Oktober 2015 |--- | [1\.4.1](#1.4.1) | 6. August 2015 |--- | [1\.2.0](#1.2.0) | 9. Juli 2015 |--- | [1\.1.0](#1.1.0) | 09. Mai 2015 |--- | [1\.0.1](#1.0.1) | 25. Mai 2015 |--- | [1\.0.0](#1.0.0) | 7. April 2015 |--- | 0.9.4-prelease | 14. Januar 2015 | 29. Februar 2016 | 0.9.3-prelease | December 09, 2014 | 29. Februar 2016 | 0.9.2-prelease | 25. November 2014 |29. Februar 2016 | 0.9.1-prelease | 23. September 2014 | 29. Februar 2016 | 0.9.0-prelease | 21. August 2014 | 29. Februar 2016
+| [1\.9.0](#1.9.0) | 07. Juni 2016 |---
+| [1\.8.0](#1.8.0) | 14. April 2016 |---
+| [1\.7.0](#1.7.0) | 8. April 2016 |---
+| [1\.6.1](#1.6.1) | 08. März 2016 |---
+| [1\.6.0](#1.6.0) | 3. Januar 2016 |---
+| [1\.5.0](#1.5.0) | 6. Oktober 2016 |---
+| [1\.4.2](#1.4.2) | 6. Oktober 2015 |---
+| [1\.4.1](#1.4.1) | 6. August 2015 |---
+| [1\.2.0](#1.2.0) | 9. Juli 2015 |---
+| [1\.1.0](#1.1.0) | 09. Mai 2015 |---
+| [1\.0.1](#1.0.1) | 25. Mai 2015 |---
+| [1\.0.0](#1.0.0) | 7. April 2015 |---
+| 0.9.4-prelease | 14. Januar 2015 | 29. Februar 2016
+| 0.9.3-prelease | December 09, 2014 | 29. Februar 2016
+| 0.9.2-prelease | 25. November 2014 |29. Februar 2016
+| 0.9.1-prelease | 23. September 2014 | 29. Februar 2016
+| 0.9.0-prelease | 21. August 2014 | 29. Februar 2016
 
 ## Häufig gestellte Fragen
 [AZURE.INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]

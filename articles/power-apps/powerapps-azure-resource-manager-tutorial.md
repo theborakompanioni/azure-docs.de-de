@@ -34,7 +34,7 @@ Dieses Tutorial führt Sie durch die erforderlichen Schritte zum Registrieren ei
 
 Zunächst müssen wir eine Azure Active Directory-Anwendung (AAD) erstellen, die die Authentifizierung beim Aufrufen des ARM-API-Endpunkts durchführt.
 
-1. Um eine AAD-Anwendung zu erstellen, melden Sie sich bei Ihrem [Azure-Abonnement][7] an, und wechseln Sie zu **Active Directory**: ![](./media/powerapps-azure-resource-manager-tutorial/azureaad.png "Azure AD")
+1. Um eine AAD-Anwendung zu erstellen, melden Sie sich bei Ihrem [Azure-Abonnement][7] an, und wechseln Sie zu **Active Directory**: ![](./media/powerapps-azure-resource-manager-tutorial/azureaad.png "Azure AD")  
 
 2. Wählen Sie auf dieser Seite das Verzeichnis, in dem Sie Ihre AAD-Anwendung erstellen möchten. Wählen Sie das Verzeichnis aus, klicken Sie auf die Registerkarte **Anwendungen**, und wählen Sie **Hinzufügen**: ![](./media/powerapps-azure-resource-manager-tutorial/azureapplication.png "Azure-Anwendung")
 
@@ -58,7 +58,7 @@ Zunächst müssen wir eine Azure Active Directory-Anwendung (AAD) erstellen, die
 
 Die AAD-Anwendung ist nun konfiguriert, und wir können die benutzerdefinierte API hinzufügen.
 
-1. Öffnen Sie das [PowerApps-Webportal][1], wechseln Sie zur Registerkarte **Verbindungen**, und wählen Sie in der oberen rechten Ecke __Neue Verbindung hinzufügen__: ![](./media/powerapps-azure-resource-manager-tutorial/createnewconnection.png "Benutzerdefinierte API erstellen")
+1. Öffnen Sie das [PowerApps-Webportal][1], wechseln Sie zur Registerkarte **Verbindungen**, und wählen Sie in der oberen rechten Ecke __Neue Verbindung hinzufügen__: ![](./media/powerapps-azure-resource-manager-tutorial/createnewconnection.png "Benutzerdefinierte API erstellen")  
 
 2. Wählen Sie __Benutzerdefinierte API hinzufügen__: ![](./media/powerapps-azure-resource-manager-tutorial/connecttocustomapi.png "Benutzerdefinierte API erstellen")
 
@@ -72,10 +72,10 @@ Sie können auf ähnliche Weise auf beliebige Daten zugreifen, die mit RESTful-A
 
 Ausführlichere Informationen zum Erstellen von PowerApps und Logic Flow finden Sie hier:
 
-- [Connect to Office 365, Twitter, and Microsoft Translator (Verbinden mit Office 365, Twitter und Microsoft Translator)][5]
-- [Show data from Office 365 (Anzeigen von Daten aus Office 365)][4]
-- [Create an app from a set of data (Erstellen einer App aus einem Satz von Daten)][3]
-- [Create Logic Flows (Erstellen von Logic Flows)][2]
+- [Connect to Office 365, Twitter, and Microsoft Translator][5] (Verbinden mit Office 365, Twitter und Microsoft Translator)
+- [Show data from Office 365][4] (Anzeigen von Daten aus Office 365)
+- [Create an app from a set of data][3] (Erstellen einer App aus einem Satz von Daten)
+- [Create Logic Flows][2] (Erstellen von Logic Flows)
 
 Bei Fragen oder Kommentaren zu benutzerdefinierten APIs können Sie eine E-Mail an [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com) senden.
 

@@ -16,7 +16,8 @@
 
 #Lernprogramm: Azure Active Directory-Integration mit Cisco Webex
 
-In diesem Lernprogramm wird die Integration von Azure und Cisco Webex erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Lernprogramm wird die Integration von Azure und Cisco Webex erläutert.  
+Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
 -   Einen Cisco Webex-Mandanten
@@ -64,7 +65,9 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Cis
     ![Cisco Webex](./media/active-directory-saas-cisco-webex-tutorial/IC777616.png "Cisco Webex")
 ##Konfigurieren der einmaligen Anmeldung
 
-In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Cisco Webex zu authentifizieren. Im Rahmen dieses Verfahrens müssen Sie ein Base64-codiertes Zertifikat erstellen. Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (in englischer Sprache) weitere Informationen.
+In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Cisco Webex zu authentifizieren.  
+Im Rahmen dieses Verfahrens müssen Sie ein Base64-codiertes Zertifikat erstellen.  
+Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (in englischer Sprache) weitere Informationen.
 
 ###So konfigurieren Sie einmaliges Anmelden
 
@@ -102,7 +105,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     ![Federated SSO Configuration](./media/active-directory-saas-cisco-webex-tutorial/IC777623.png "Federated SSO Configuration")
 
     1.  Wählen Sie in der Liste **Federation Protocol** die Option **SAML 2.0** aus.
-    2.  Erstellen Sie eine **Base64-codierte** Datei aus dem heruntergeladenen Zertifikat.
+    2.  Erstellen Sie eine **Base64-codierte** Datei aus dem heruntergeladenen Zertifikat.  
 
         >[AZURE.TIP] Weitere Informationen finden Sie unter [Konvertieren eines binären Zertifikats in eine Textdatei](http://youtu.be/PlgrzUZ-Y1o).
 
@@ -120,7 +123,8 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-cisco-webex-tutorial/IC777624.png "Einmaliges Anmelden konfigurieren")
 ##Konfigurieren der Benutzerbereitstellung
 
-Damit sich Azure AD-Benutzer bei Cisco Webex anmelden können, müssen sie in Cisco Webex bereitgestellt werden. Im Fall von Cisco Webex ist die Bereitstellung eine manuelle Aufgabe.
+Damit sich Azure AD-Benutzer bei Cisco Webex anmelden können, müssen sie in Cisco Webex bereitgestellt werden.  
+Im Fall von Cisco Webex ist die Bereitstellung eine manuelle Aufgabe.
 
 ###So stellen Sie Benutzerkonten bereit
 

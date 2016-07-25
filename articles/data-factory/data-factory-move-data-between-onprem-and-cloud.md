@@ -138,9 +138,9 @@ In diesem Schritt erstellen Sie zwei verknüpfte Dienste: **AzureStorageLinkedSe
         		}
 
 	4. Bei Verwendung der SQL-Authentifizierung:
-		1. Geben Sie für die Datenbank **Servername**, **Datenbankname**, **Benutzer-ID** und **Kennwort** in **connectionString** an.
+		1. Geben Sie für die Datenbank **Servername**, **Datenbankname**, **Benutzer-ID** und **Kennwort** in **connectionString** an.       
 		2. Entfernen Sie die letzten beiden JSON-Eigenschaften – **userName** und **password** – aus der JSON.
-		3. Entfernen Sie das nachgestellte **, (Komma)** am Ende der Zeile, die den Wert für die **gatewayName**-Eigenschaft angibt.
+		3. Entfernen Sie das nachgestellte **, (Komma)** am Ende der Zeile, die den Wert für die **gatewayName**-Eigenschaft angibt. 
 
 				"typeProperties": {
             		"connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;",
@@ -190,8 +190,8 @@ In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und a
 
 ### Erstellen der Eingabetabelle
 
-1. Klicken Sie im **Data Factory-Editor** auf der Befehlsleiste auf **Neues Dataset** und dann auf **SQL Server-Tabelle**.
-2.	Ersetzen Sie das JSON-Skript im rechten Bereich durch folgenden Text:
+1. Klicken Sie im **Data Factory-Editor** auf der Befehlsleiste auf **Neues Dataset** und dann auf **SQL Server-Tabelle**. 
+2.	Ersetzen Sie das JSON-Skript im rechten Bereich durch folgenden Text:    
 
 		{
 		  "name": "EmpOnPremSQLTable",
@@ -221,7 +221,7 @@ In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und a
 	- **type** ist auf **SqlServerTable** festgelegt.
 	- **tableName** ist auf **emp** festgelegt.
 	- **linkedServiceName** ist auf **SqlServerLinkedService** festgelegt (diesen verknüpften Dienst haben Sie in Schritt 2 erstellt).
-	- Für eine Eingabetabelle, die nicht durch eine andere Pipeline in Azure Data Factory generiert wird, müssen Sie **external** auf **true** festlegen. Dies bedeutet, dass die eingegebenen Daten außerhalb des Azure Data Factory-Diensts erstellt werden. Optional können Sie externe Datenrichtlinien mit dem **externalData**-Element im **policy**-Abschnitt angeben.
+	- Für eine Eingabetabelle, die nicht durch eine andere Pipeline in Azure Data Factory generiert wird, müssen Sie **external** auf **true** festlegen. Dies bedeutet, dass die eingegebenen Daten außerhalb des Azure Data Factory-Diensts erstellt werden. Optional können Sie externe Datenrichtlinien mit dem **externalData**-Element im **policy**-Abschnitt angeben.    
 
 	Details zu den JSON-Eigenschaften finden Sie in der [JSON-Skriptreferenz][json-script-reference].
 
@@ -231,7 +231,7 @@ In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und a
 ### Erstellen der Ausgabetabelle
 
 1.	Klicken Sie im **Data Factory-Editor** auf der Symbolleiste auf **Neues Dataset** und dann auf **Azure-Blobspeicher**.
-2.	Ersetzen Sie das JSON-Skript im rechten Bereich durch folgenden Text:
+2.	Ersetzen Sie das JSON-Skript im rechten Bereich durch folgenden Text: 
 
 		{
 		  "name": "OutputBlobTable",
@@ -289,7 +289,7 @@ In diesem Schritt erstellen Sie eine **Pipeline** mit einer **Kopieraktivität**
 
 	![Kachel "Erstellen und bereitstellen"](./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png)
 2.	Klicken Sie auf der Befehlsleiste auf **Neue Pipeline**. Wenn die Schaltfläche nicht angezeigt wird, klicken Sie auf **... (Auslassungspunkte)**, um die Befehlsleiste zu erweitern.
-2.	Ersetzen Sie das JSON-Skript im rechten Bereich durch folgenden Text:
+2.	Ersetzen Sie das JSON-Skript im rechten Bereich durch folgenden Text:   
 
 
 		{

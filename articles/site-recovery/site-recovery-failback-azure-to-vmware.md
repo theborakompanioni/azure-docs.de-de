@@ -38,7 +38,7 @@ Verwenden Sie diese Architektur, wenn der Prozessserver lokal angeordnet ist und
 
 Verwenden Sie diese Architektur, wenn der Prozessserver in Azure angeordnet ist und wenn Sie entweder ein VPN oder eine ExpressRoute-Verbindung verwenden.
 
-![Architekturdiagramm für VPN](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.png)
+![Architekturdiagramm für VPN](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.PNG)
 
 Eine vollständige Liste der Ports und das Failbackarchitekturdiagramm sehen Sie in der folgenden Abbildung.
 
@@ -252,4 +252,4 @@ Ein Failback kann über eine VPN-Verbindung oder über Azure ExpressRoute ausgef
 - ExpressRoute muss in dem virtuellen Azure-Netzwerk eingerichtet werden, zu dem das Failover der Quellcomputer durchgeführt wird und in dem sich die virtuellen Azure-Computer nach dem Failover befinden.
 - Die Daten werden zu einem Azure-Speicherkonto auf einem öffentlichen Endpunkt repliziert. Sie müssen ein öffentliches Peering in ExpressRoute einrichten, bei dem das Zieldatencenter für die Site Recovery-Replikation ExpressRoute verwendet.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!----HONumber=AcomDC_0713_2016-->

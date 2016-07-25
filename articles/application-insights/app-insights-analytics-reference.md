@@ -1462,7 +1462,17 @@ Das ausgewertete Argument. Wenn das Argument eine Tabelle ist, wird die erste Sp
 || |
 |---|-------------|
 | + | Hinzufügen |
-| - | Subtrahieren | | * | Multiplizieren | | / | Dividieren | | % | Modulo | || | `<` | Kleiner | `<=` | Kleiner gleich | `>` | Größer |`>=` | Größer gleich | `<>` | Ungleich | `!=` | Ungleich
+| - | Subtrahieren |
+| * | Multiplizieren |
+| / | Dividieren |
+| % | Modulo |
+||
+| `<` | Kleiner
+| `<=` | Kleiner gleich
+| `>` | Größer
+|`>=` | Größer gleich
+| `<>` | Ungleich
+| `!=` | Ungleich
 
 
 ### abs
@@ -1632,7 +1642,7 @@ Ausdruck |Ergebnis
 `datetime("2015-01-01") + 1d`| `datetime("2015-01-02")`
 `datetime("2015-01-01") - 1d`| `datetime("2014-12-31")`
 `2h * 24` | `2d`
-`2d` / `2h` | `24`
+`2d`/`2h` | `24`
 `datetime("2015-04-15T22:33") % 1d` | `timespan("22:33")`
 `bin(datetime("2015-04-15T22:33"), 1d)` | `datetime("2015-04-15T00:00")`
 ||

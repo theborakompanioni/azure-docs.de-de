@@ -1296,13 +1296,13 @@ RStudio ist sehr gut dokumentiert, weshalb ich in diesem Anhang einige Links zu 
 
 Dieses Lernprogramm für die Programmierung in R behandelt die Grundlagen der Sprache R mit Azure Machine Learning Studio. Wenn Sie nicht mit R vertraut sind, finden Sie zwei Einführungen im CRAN.
 
-- "R for Beginners" von Emmanuel Paradis ist ein guter Ausgangspunkt unter http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf.
+- "R for Beginners" von Emmanuel Paradis ist ein guter Ausgangspunkt unter http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf.  
 
 - "An Introduction to R" von W. N. Venables et al. geht etwas mehr in die Tiefe und ist zu finden unter http://cran.r-project.org/doc/manuals/R-intro.html.
 
 Es gibt viele Bücher zu R, die Ihnen beim Einstieg helfen können. Hier finden Sie ein paar, die ich nützlich finde:
 
-- "The Art of R Programming: A Tour of Statistical Software Design" von Norman Matloff ist eine ausgezeichnete Einführung in die Programmierung in R.
+- "The Art of R Programming: A Tour of Statistical Software Design" von Norman Matloff ist eine ausgezeichnete Einführung in die Programmierung in R.  
 
 - Das "R Cookbook" von Paul Teetor bietet einen Problem-Lösung-Ansatz für die Verwendung von R.
 
@@ -1318,7 +1318,7 @@ Das Buch "Introductory Time Series with R" von Paul Cowpertwait und Andrew Metca
 
 Einige weitere nützliche Internetressourcen:
 
-- DataCamp: DataCamp unterrichtet R bequem über den Browser mit Videolektionen und Codierungsübungen. Es gibt interaktive Lernprogramme zu den neuesten R-Techniken und -Paketen. Bearbeiten Sie das kostenlose interaktive R-Lernprogramm unter https://www.datacamp.com/courses/introduction-to-r
+- DataCamp: DataCamp unterrichtet R bequem über den Browser mit Videolektionen und Codierungsübungen. Es gibt interaktive Lernprogramme zu den neuesten R-Techniken und -Paketen. Bearbeiten Sie das kostenlose interaktive R-Lernprogramm unter https://www.datacamp.com/courses/introduction-to-r  
 
 - Ein R-Crashkurs von Kelly Black von der Clarkson University: http://www.cyclismo.org/tutorial/R/
 

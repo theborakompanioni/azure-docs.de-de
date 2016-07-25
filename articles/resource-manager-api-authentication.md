@@ -86,7 +86,7 @@ Sie beginnen an dem Punkt, an dem der Benutzer entscheidet, sein Azure-Abonnemen
 
 Sie müssen den Benutzer um zwei Dinge bitten:
 
-1. **Verzeichnisdomänenname**: Der Domänenname des Azure Active Directory-Verzeichnisses, das mit dem Azure-Abonnement des Benutzers verknüpft ist. Die OAuth 2.0-Autorisierungsanforderung muss an dieses Azure AD-Verzeichnis gesendet werden. Der Benutzer kann den Azure AD-Domänennamen ermitteln, indem er zum Azure-Portal navigiert und das Konto oben rechts auswählt. Sie könnten dem Benutzer visuelle Hinweise wie den folgenden bereitstellen:
+1. **Verzeichnisdomänenname**: Der Domänenname des Azure Active Directory-Verzeichnisses, das mit dem Azure-Abonnement des Benutzers verknüpft ist. Die OAuth 2.0-Autorisierungsanforderung muss an dieses Azure AD-Verzeichnis gesendet werden. Der Benutzer kann den Azure AD-Domänennamen ermitteln, indem er zum Azure-Portal navigiert und das Konto oben rechts auswählt. Sie könnten dem Benutzer visuelle Hinweise wie den folgenden bereitstellen: 
 
      ![](./media/resource-manager-api-authentication/show-directory.png)
    

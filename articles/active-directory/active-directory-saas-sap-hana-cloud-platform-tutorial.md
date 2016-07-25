@@ -140,7 +140,9 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
         |Assertion-Attribut| Prinzipal-Attribut|
 		|-------------------|--------------------|
-        |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname| firstname|--------------------|--------------------| |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname| LastName|---| |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress|email|
+        |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname| firstname|--------------------|--------------------|
+	|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname| LastName|---|
+	|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress|email|
 
     >[AZURE.NOTE]Die Konfiguration der Attribute hängt davon ab, wie die Anwendung(en) auf HPC entwickelt wurden, d. h. welche Attribute in der SAML-Antwort erwartet wird/werden und unter welchem Namen (Prinzipal-Attribut) sie auf dieses Attribut im Code zugreifen.
     >  

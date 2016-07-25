@@ -108,7 +108,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
 
 1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
-2.  Klicken Sie auf der Anwendungsintegrationsseite für **Aba Sainsburys Connect ** auf **Benutzer zuweisen**.
+2.  Klicken Sie auf der Anwendungsintegrationsseite für **Aba Sainsburys Connect** auf **Benutzer zuweisen**.
 
     ![Benutzer zuweisen](./media/active-directory-saas-aba-sainsburys-connect-tutorial/IC807731.png "Benutzer zuweisen")
 

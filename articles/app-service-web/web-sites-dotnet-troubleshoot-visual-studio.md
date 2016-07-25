@@ -521,7 +521,7 @@ Speicherkonten bieten mehr Speicherplatz und längere Aufbewahrungszeiten für P
 
 ![Speicherkonto erstellen](./media/web-sites-dotnet-troubleshoot-visual-studio/createstor.png)
 
-3. Geben Sie im Dialogfeld **Speicherkonto erstellen** einen Namen für das Speicherkonto ein.
+3. Geben Sie im Dialogfeld **Speicherkonto erstellen** einen Namen für das Speicherkonto ein. 
 
 	Der Name muss eindeutig sein (kein anderes Azure Storage-Konto kann den gleichen Namen haben). Wenn der eingegebene Name bereits verwendet wird, haben Sie die Möglichkeit, ihn zu ändern.
 
@@ -648,7 +648,7 @@ Sie können die Protokolle für fehlgeschlagene Anforderungen entweder direkt ü
 Sie haben gelernt, wie Visual Studio die Anzeige der Protokolle von Azure-Web-Apps erleichtert. Die folgenden Abschnitte enthalten Links zu weiteren Ressourcen zu verwandten Themen:
 
 * Problembehandlung von Azure-Web-Apps
-* Debuggen in Visual Studio
+* Debuggen in Visual Studio 
 * Remotedebuggen in Azure
 * Ablaufverfolgung in ASP.NET-Anwendungen
 * Analyse von Webserverprotokollen

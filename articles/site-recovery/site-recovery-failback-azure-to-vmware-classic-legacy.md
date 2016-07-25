@@ -55,7 +55,7 @@ Folgendermaßen richten Sie Failback ein:
 
 Sie müssen einen lokalen vContinuum-Server installieren und ihn auf den Konfigurationsserver zeigen lassen.
 
-1.  [Laden Sie VContinuum herunter](http://go.microsoft.com/fwlink/?linkid=526305).
+1.  [Laden Sie VContinuum herunter](http://go.microsoft.com/fwlink/?linkid=526305). 
 2.  Laden Sie anschließend die [Updateversion von vContinuum](http://go.microsoft.com/fwlink/?LinkID=533813) herunter.
 3. Installieren Sie die aktuelle Version von vContinuum. Klicken Sie auf der Seite **Willkommen** auf **Weiter**. ![](./media/site-recovery-failback-azure-to-vmware/image2.png)
 4.  Geben Sie auf der ersten Seite des Assistenten die IP-Adresse und den Port des CX-Servers an. Wählen Sie **HTTPS verwenden** aus.
@@ -152,7 +152,7 @@ Aktivieren Sie den Parameter „disk.EnableUUID = TRUE“, um die SCSI-IDs für 
 
 HINWEIS: Vergewissern Sie sich vor dem Herunterladen und Installieren zusätzlicher Pakete, dass das System über eine Internetverbindung verfügt.
 
-# yum install -y xfsprogs perl lsscsi rsync wget kexec-tools
+\# yum install -y xfsprogs perl lsscsi rsync wget kexec-tools
 
 Mit diesem Befehl werden diese 15 Pakete aus dem CentOS 6.6-Repository heruntergeladen und installiert:
 
@@ -188,17 +188,17 @@ wget-1.12-5.el6\_6.1.x86\_64.rpm
 
 HINWEIS: Wenn der Quellcomputer für das Stamm- oder Startgerät das Reiser- oder das XFS-Dateisystem verwendet, müssen vor dem Schutz die folgenden Pakete heruntergeladen und auf dem Linux-Masterziel installiert werden:
 
-# cd /usr/local
+\# cd /usr/local
 
-# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm>
+\# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm>
 
-# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm>
+\# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm>
 
-# rpm -ivh kmod-reiserfs-0.0-1.el6.elrepo.x86\_64.rpm reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
+\# rpm -ivh kmod-reiserfs-0.0-1.el6.elrepo.x86\_64.rpm reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
 
-# wget <http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_64.rpm>
+\# wget <http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_64.rpm>
 
-# rpm -ivh xfsprogs-3.1.1-16.el6.x86\_64.rpm
+\# rpm -ivh xfsprogs-3.1.1-16.el6.x86\_64.rpm
 
 #### Anwenden benutzerdefinierter Konfigurationsänderungen
 
@@ -223,7 +223,7 @@ Stellen Sie vor dem Übernehmen dieser Änderungen sicher, dass Sie den vorherig
 3. Melden Sie sich bei dem virtuellen Computer für den Linux-Masterzielserver mit einem beliebigen SSH-Client an.
 4. Wenn Sie über eine VPN-Verbindung mit dem Azure-Netzwerk verbunden sind, in dem Sie den Linux-Masterzielserver bereitgestellt haben, verwenden Sie die interne IP-Adresse für den Server, den Sie auf der Registerkarte **Dashboard** für den virtuellen Computer finden können, und den Port 22, um über Secure Shell eine Verbindung mit dem Linux-Masterzielserver herzustellen.
 5. Wenn Sie über eine öffentliche Internetverbindung eine Verbindung mit dem Linux-Masterzielserver herstellen, verwenden Sie die öffentliche virtuelle IP-Adresse des Linux-Masterzielservers (zu finden auf der Registerkarte **Dashboard** für virtuelle Computer) und den für SSH erstellten öffentlichen Endpunkt, um sich bei dem Linux-Server anzumelden.
-6. Extrahieren Sie die Dateien aus dem gezippten tar-Archiv des Installationsprogramms für den Linux-Masterzielserver, indem Sie den Befehl *“tar –xvzf Microsoft-ASR\_UA\_8.2.0.0\_RHEL6-64\\”* aus dem Verzeichnis ausführen, das die Datei des Installationsprogramms enthält.
+6. Extrahieren Sie die Dateien aus dem gezippten tar-Archiv des Installationsprogramms für den Linux-Masterzielserver, indem Sie den Befehl *“tar –xvzf Microsoft-ASR\_UA\_8.2.0.0\_RHEL6-64*”* aus dem Verzeichnis ausführen, das die Datei des Installationsprogramms enthält.
 
 	![](./media/site-recovery-failback-azure-to-vmware/image16.png)
 
