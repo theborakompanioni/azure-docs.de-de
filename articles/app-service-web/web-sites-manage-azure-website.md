@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="04/27/2016" 
-	ms.author="tdykstra"/>
+	ms.author="rachelap"/>
 
 # Verwalten einer Web-App in Azure App Service
 
@@ -60,8 +60,7 @@ Bei der Ausführung Ihrer Web-App müssen Sie sicherstellen, dass sie verfügbar
 ### Überwachung
 
 - Über das Azure-Portal können Sie [Leistungsmetriken hinzufügen](web-sites-monitor.md), wie z. B. CPU-Auslastung und Anzahl der Clientanforderungen.
-- Für einen tieferen Einblick verwenden Sie New Relic zur Leistungsüberwachung und -verwaltung. Weitere Informationen finden Sie unter [.NET Web-App in Azure App Service mit Verwaltung der Anwendungsleistung mit New Relic](store-new-relic-web-sites-dotnet-application-performance-management.md).
-- [Skalieren Sie Ihre Web-App](web-sites-scale.md) entsprechend dem Verkehr. Abhängig von Ihrer Ebene können Sie die Anzahl von VMs und/oder die Größe der VM-Instanzen skalieren. Auf den Stufen Standard oder Premium können Sie auch automatische Skalierung einrichten, sodass Ihre Website automatisch skaliert wird, entweder nach einem festen Zeitplan oder entsprechend der Last.  
+- [Skalieren Sie Ihre Web-App](web-sites-scale.md) entsprechend dem Verkehr. Abhängig von Ihrer Ebene können Sie die Anzahl von VMs und/oder die Größe der VM-Instanzen skalieren. Auf den Stufen Standard oder Premium können Sie auch automatische Skalierung einrichten, sodass Ihre Website automatisch skaliert wird, entweder nach einem festen Zeitplan oder entsprechend der Last.
  
 ### Backups
 
@@ -70,7 +69,7 @@ Bei der Ausführung Ihrer Web-App müssen Sie sicherstellen, dass sie verfügbar
 
 ### Problembehandlung
 
-- Wenn etwas nicht funktioniert, können Sie [Probleme in Visual Studio behandeln](web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug), unter Verwendung von Diagnoseprotokollen und durch Live-Debuggen in der Cloud. 
+- Wenn etwas nicht funktioniert, können Sie [Probleme in Visual Studio behandeln](web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug), unter Verwendung von Diagnoseprotokollen und durch Live-Debuggen in der Cloud.
 - Außerhalb von Visual Studio gibt es verschiedene Möglichkeiten, Diagnoseprotokolle zu sammeln. Weitere Informationen finden Sie unter [Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](web-sites-enable-diagnostic-log.md).
 - Für Node.js-Anwendungen siehe [Debuggen einer Node.js-Web-App in Azure App Service](web-sites-nodejs-debug.md).
 
@@ -87,7 +86,7 @@ Ziehen Sie eine [gestaffelte Bereitstellung](web-sites-staged-publishing.md) in 
 
 Wenn Sie Visual Studio Team Services verwenden, können Sie die fortlaufende Bereitstellung aus der Quellcodeverwaltung festlegen:
 
-- [Verwendung von Team Foundation Version Control (TFVC)](../cloud-services/cloud-services-continuous-delivery-use-vso.md) 
+- [Verwendung von Team Foundation Version Control (TFVC)](../cloud-services/cloud-services-continuous-delivery-use-vso.md)
 - [Verwendung von Git](../cloud-services/cloud-services-continuous-delivery-use-vso-git.md)
  
 <!-- Anchors. -->
@@ -98,4 +97,4 @@ Wenn Sie Visual Studio Team Services verwenden, können Sie die fortlaufende Ber
 
   
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0713_2016-->

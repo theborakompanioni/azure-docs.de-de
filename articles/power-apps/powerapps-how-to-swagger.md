@@ -14,11 +14,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="04/12/2016"
+   ms.date="07/12/2016"
    ms.author="mandia"/>
 
 
 # Anpassen der Swagger-Definition für PowerApps und logische Abläufe
+
+>[AZURE.IMPORTANT] Dieses Thema finden Sie nun auf „powerapps.microsoft.com“ unter [Customize your Swagger definition for PowerApps and Flows](https://powerapps.microsoft.com/tutorials/customapi-how-to-swagger/) (Anpassen der Swagger-Definition für PowerApps und Flow). Die aktuelle Version finden Sie in PowerApps. Dieser Azure-Link wird archiviert.
+
 
 ## Erstellen der Swagger 2.0-API-Definition für die API
 
@@ -52,7 +55,7 @@ Dies ist ein Hinweis für den Logic Flow-Designer, dass die API eine Liste mit d
 
 Der Wert ist ein Objekt, das die folgenden Eigenschaften enthält:
 	
-- `operationId`: Eine Zeichenfolge, die der operationId für den aufgerufenen Vorgang entspricht.
+- `operationId`: Eine Zeichenfolge, die dem operationId-Wert für den aufgerufenen Vorgang entspricht.
 - `parameters`: Ein Objekt, mit dessen Eigenschaften die für den Vorgang erforderlichen Parameter definiert werden.
 - `value-collection`: Eine Pfadzeichenfolge, die als Array von Objekten in der Antwortnutzlast ausgewertet wird.
 - `value-path`: Eine Pfadzeichenfolge im Objekt innerhalb von „value-collection“, die auf den Wert für den Parameter verweist.
@@ -115,4 +118,4 @@ Dies ist nützlich in Szenarios, in denen die Eingaben für einen Vorgang dynami
 <!--Reference links in article-->
 [1]: https://github.com/domaindrivendev/Swashbuckle/blob/master/README.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/09/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit Intacct
@@ -37,7 +37,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Int
 
 ###So aktivieren Sie die Anwendungsintegration für Intacct
 
-1.  Klicken Sie im linken Navigationsbereich des Azure-Verwaltungsportals auf **Active Directory**.
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-intacct-tutorial/IC700993.png "Active Directory")
 
@@ -68,7 +68,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 ###So konfigurieren Sie einmaliges Anmelden
 
-1.  Klicken Sie im Azure AD-Portal auf der Anwendungsintegrationsseite für **Intacct** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Intacct** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-intacct-tutorial/IC790033.png "Einmaliges Anmelden konfigurieren")
 
@@ -76,7 +76,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-intacct-tutorial/IC790034.png "Einmaliges Anmelden konfigurieren")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Intacct-Anmelde-URL** die URL im Format „**https://Intacct.com/company*" ein, und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Intacct-Anmelde-URL** Ihre URL im Format „*https://Intacct.com/company*" ein, und klicken Sie dann auf **Weiter**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-intacct-tutorial/IC790035.png "App-URL konfigurieren")
 
@@ -100,8 +100,8 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     1.  Wählen Sie **Einmaliges Anmelden aktivieren** aus.
     2.  Wählen Sie für **Identitätsanbietertyp** die Option **SAML 2.0** aus.
-    3.  Kopieren Sie im Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Intacct** den Wert der **Aussteller-URL**, und fügen Sie ihn in das Textfeld **Aussteller-URL** ein.
-    4.  Kopieren Sie im Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Intacct** den Wert der **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **Anmelde-URL** ein.
+    3.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Intacct** den Wert der **Aussteller-URL**, und fügen Sie ihn in das Textfeld **Issuer URL** ein.
+    4.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Intacct** den Wert für **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **Login URL** ein.
     5.  Erstellen Sie eine **Base-64-codierte** Datei aus dem heruntergeladenen Zertifikat.
         
 		>[AZURE.TIP]Weitere Informationen finden Sie unter [Konvertieren eines binären Zertifikats in eine Textdatei](http://youtu.be/PlgrzUZ-Y1o).
@@ -109,7 +109,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     6.  Öffnen Sie das Base-64-codierte Zertifikat im Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Zertifikat** ein.
     7.  Klicken Sie auf **Speichern**.
 
-9.  Wählen Sie im Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
+9.  Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-intacct-tutorial/IC790040.png "Einmaliges Anmelden konfigurieren")
 ##Konfigurieren der Benutzerbereitstellung
@@ -136,9 +136,9 @@ Damit sich Azure AD-Benutzer bei Intacct anmelden können, müssen sie in Intacc
     2.  Wählen Sie die **Administratorrechte** eines Azure AD-Kontos aus, das Sie bereitstellen möchten.
     3.  Klicken Sie auf **Speichern**.
         
-		>[AZURE.NOTE]Der Besitzer des AAD-Kontos erhält eine E-Mail mit einem Link zur Bestätigung des Kontos, bevor es aktiv wird.
+		>[AZURE.NOTE] Der Besitzer des AAD-Kontos erhält eine E-Mail mit einem Link zur Bestätigung des Kontos, bevor es aktiv wird.
 
->[AZURE.NOTE]Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Intacct-Benutzerkonten oder mithilfe der von Intacct bereitgestellten APIs erstellen.
+>[AZURE.NOTE] Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Intacct-Benutzerkonten oder mithilfe der von Intacct bereitgestellten APIs erstellen.
 
 ##Zuweisen von Benutzern
   
@@ -146,7 +146,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 ###So weisen Sie Intacct Benutzer zu
 
-1.  Erstellen Sie im Azure AD-Portal ein Testkonto.
+1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
 2.  Klicken Sie auf der Anwendungsintegrationsseite für **Intacct** auf **Benutzer zuweisen**.
 
@@ -158,4 +158,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

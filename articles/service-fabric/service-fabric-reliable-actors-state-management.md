@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/25/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
 
 # Reliable Actors-Zustandsverwaltung
@@ -62,7 +62,7 @@ Diese Einstellung verwendet einen rein speicherinternen Zustandsanbieter und leg
 
 ### Standardeinstellungen und generierte Einstellungen
 
-Bei Verwendung des `StatePersistence`-Attributs wird zur Laufzeit automatisch ein Zustandsanbieter für Sie ausgewählt, wenn der Akteurdienst gestartet wird. Die Replikatanzahl wird jedoch zum Zeitpunkt der Kompilierung von den Visual Studio-Akteur-Buildtools festgelegt. Die Buildtools generieren in der Datei „ApplicationManifest.xml“ automatisch einen *Standarddienst* für den Akteurdienst. Für **Mindestgröße des Replikatsatzes** und **Zielgröße des Replikatsatzes** werden Parameter erstellt. Sie können diese Parameter natürlich manuell ändern. Bei jeder Änderung des `StatePersistence`-Attributs werden die Parameter jedoch auf die Standardwerte der Replikatgruppengröße für das ausgewählte `StatePersistence`-Attribut festgelegt. Dabei werden vorherige Werte überschrieben.
+Bei Verwendung des `StatePersistence`-Attributs wird zur Laufzeit automatisch ein Zustandsanbieter für Sie ausgewählt, wenn der Akteurdienst gestartet wird. Die Replikatanzahl wird jedoch zum Zeitpunkt der Kompilierung von den Visual Studio-Akteur-Buildtools festgelegt. Die Buildtools generieren in der Datei „ApplicationManifest.xml“ automatisch einen *Standarddienst* für den Akteurdienst. Für **Mindestgröße des Replikatsatzes** und **Zielgröße des Replikatsatzes** werden Parameter erstellt. Sie können diese Parameter natürlich manuell ändern. Bei jeder Änderung des `StatePersistence`-Attributs werden die Parameter jedoch auf die Standardwerte der Replikatgruppengröße für das ausgewählte `StatePersistence`-Attribut festgelegt. Dabei werden vorherige Werte überschrieben. Das bedeutet, dass die in „ServiceManifest.xml“ festgelegten Werte **nur** zum Erstellungszeitpunkt überschrieben werden, wenn Sie den Attributwert `StatePersistence` ändern.
 
 ```xml
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -98,7 +98,7 @@ Auf den Zustand kann nach Schlüssel über den Zustands-Manager zugegriffen werd
 
  - Eine Akteurmethode löst nach dem Abrufen eines Objekts aus dem Zustands-Manager eine nicht behandelte Ausnahme aus.
  - Ein Akteur wird entweder nach seiner Deaktivierung oder aufgrund eines Fehlers wieder aktiviert.
- - Wenn der Zustandsanbieter den Zustand an den Datenträger auslagert. Dieses Verhalten hängt von der Implementierung des Zustandsanbieters ab. Der Standardzustandsanbieter für die Einstellung `Persisted` weist dieses Verhalten auf. 
+ - Wenn der Zustandsanbieter den Zustand an den Datenträger auslagert. Dieses Verhalten hängt von der Implementierung des Zustandsanbieters ab. Der Standardzustandsanbieter für die Einstellung `Persisted` weist dieses Verhalten auf.
 
 Der Zustand kann mit einem *Get*-Standardvorgang abgerufen werden, der `KeyNotFoundException` auslöst, wenn kein Eintrag für den angegebenen Schlüssel vorhanden ist:
 
@@ -181,7 +181,7 @@ class MyActor : Actor, IMyActor
 
 Am Ende einer Akteurmethode speichert der Zustands-Manager automatisch alle Werte, die in einem Einfüge- oder Aktualisierungsvorgang hinzugefügt oder geändert wurden. Je nach verwendeten Einstellungen kann ein Speichervorgang das persistente Speichern auf Datenträgern und die Replikation beinhalten. Werte, die nicht geändert wurden, werden nicht persistent gespeichert oder repliziert. Wenn keine Werte geändert wurden, geschieht beim Speichervorgang nichts. Tritt beim Speichern ein Fehler auf, wird der geänderte Zustand verworfen und der Ursprungszustand wieder geladen.
 
-Der Zustand kann durch Aufrufen der `SaveStateAsync`-Methode für die Akteurbasis auch manuell gespeichert werden:
+Der Zustand kann durch Aufrufen der `SaveStateAsync`-Methode für die Actor-Basis auch manuell gespeichert werden:
 
 ```csharp
 async Task IMyActor.SetCountAsync(int count)
@@ -194,7 +194,7 @@ async Task IMyActor.SetCountAsync(int count)
 
 ### Entfernen des Zustands
 
-Der Zustand kann durch Aufrufen der *Remove*-Methode dauerhaft aus dem Zustands-Manager eines Akteurs entfernt werden . Diese Methode löst beim Versuch, einen nicht vorhandenen Schlüssel zu entfernen, `KeyNotFoundException` aus:
+Der Zustand kann durch Aufrufen der *Remove*-Methode dauerhaft aus dem Zustands-Manager eines Actors entfernt werden . Diese Methode löst beim Versuch, einen nicht vorhandenen Schlüssel zu entfernen, `KeyNotFoundException` aus:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -229,7 +229,7 @@ class MyActor : Actor, IMyActor
  - [Akteurtypserialisierung](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
  - [Actor-Polymorphie und objektorientierte Entwurfsmuster](service-fabric-reliable-actors-polymorphism.md)
  - [Actor-Diagnose und -Leistungsüberwachung](service-fabric-reliable-actors-diagnostics.md)
- - [Akteur-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+ - [Actor-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
  - [Beispielcode](https://github.com/Azure/servicefabric-samples)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

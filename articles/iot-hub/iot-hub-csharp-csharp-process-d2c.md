@@ -20,7 +20,7 @@
 
 ## Einführung
 
-Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von IoT-Geräten und einem Anwendungs-Back-End ermöglicht. Weitere Tutotrials ([Erste Schritte mit IoT Hub] und [Senden von C2D-Nachrichten mit IoT Hub]) veranschaulichen, wie Sie die grundlegenden Device-to-Cloud- und Cloud-to-Device-Messagingfunktionen von IoT Hub verwenden.
+Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von IoT-Geräten und einem Anwendungs-Back-End ermöglicht. Weitere Tutorials ([Erste Schritte mit IoT Hub] und [Senden von C2D-Nachrichten mit IoT Hub][lnk-c2d]) veranschaulichen, wie Sie die grundlegenden Device-to-Cloud- und Cloud-to-Device-Messagingfunktionen von IoT Hub verwenden.
 
 Dieses Tutotrial baut auf dem Code des Tutotrials [Erste Schritte mit IoT Hub] auf und veranschaulicht zwei skalierbare Muster, die Sie zum Verarbeiten von D2C-Nachrichten verwenden können:
 
@@ -108,14 +108,14 @@ Die Anwendung nutzt die Service Bus-Deduplizierungsfunktion, um beim Verarbeiten
 
 Um sicherzustellen, dass Nachrichten nicht außerhalb des Deduplizierungsfensters erneut übermittelt werden, wird der **EventProcessorHost**-Prüfpunktmechanismus im Code mit dem Deduplizierungsfenster der Service Bus-Warteschlange synchronisiert. Hierzu wird mindestens einmal bei jedem Ablauf des Deduplizierungsfensters (in diesem Tutorial nach einer Stunde) ein Prüfpunkt erzwungen.
 
-> [AZURE.NOTE] In diesem Lernprogramm wird eine einzelne partitionierte Service Bus-Warteschlange verwendet, um alle interaktiven Nachrichten zu verarbeiten, die von IoT Hub abgerufen werden. Weitere Informationen zur Erfüllung der Skalierbarkeitsanforderungen Ihrer Lösung mithilfe von Service Bus-Warteschlangen finden Sie in der [Dokumentation zu Service Bus].
+> [AZURE.NOTE] In diesem Lernprogramm wird eine einzelne partitionierte Service Bus-Warteschlange verwendet, um alle interaktiven Nachrichten zu verarbeiten, die von IoT Hub abgerufen werden. Weitere Informationen zur Erfüllung der Skalierbarkeitsanforderungen Ihrer Lösung mithilfe von Service Bus-Warteschlangen finden Sie in der [Dokumentation zu Azure Service Bus].
 
 ### Bereitstellen eines Azure-Speicherkontos und einer Service Bus-Warteschlange
 Zum Verwenden der [EventProcessorHost]-Klasse müssen Sie über ein Azure-Speicherkonto verfügen, damit von **EventProcessorHost** Prüfpunktinformationen erfasst werden können. Sie können ein vorhandenes Speicherkonto verwenden oder mithilfe der Anweisungen unter [Informationen zu Azure Storage] ein neues Konto erstellen. Notieren Sie sich die Verbindungszeichenfolge für das Speicherkonto.
 
 > [AZURE.NOTE] Stellen Sie beim Kopieren und Einfügen der Speicherkonto-Verbindungszeichenfolge sicher, dass keine Leerzeichen aufgenommen werden.
 
-Sie benötigen außerdem eine Service Bus-Warteschlange, um die zuverlässige Verarbeitung von interaktiven Nachrichten zu aktivieren. Sie können eine Warteschlange programmgesteuert mit einem Deduplizierungsfenster von einer Stunde erstellen. Dies ist unter [Erste Schritte mit Service Bus-Warteschlangen][Service Bus queue] beschrieben. Alternativ können Sie im [klassischen Azure-Portal] die folgenden Schritte ausführen:
+Sie benötigen außerdem eine Service Bus-Warteschlange, um die zuverlässige Verarbeitung von interaktiven Nachrichten zu aktivieren. Sie können eine Warteschlange programmgesteuert mit einem Deduplizierungsfenster von einer Stunde erstellen. Dies ist unter [Erste Schritte mit Service Bus-Warteschlangen][Service Bus queue] beschrieben. Alternativ können Sie im [klassischen Azure-Portal][lnk-classic-portal] die folgenden Schritte ausführen:
 
 1. Klicken Sie in der linken unteren Ecke auf **Neu**. Klicken Sie anschließend auf **App Services** > **Service Bus** > **Warteschlange** > **Benutzerdefiniert erstellen**. Geben Sie den Namen **d2ctutorial** ein, wählen Sie eine Region aus, und verwenden Sie einen vorhandenen Namespace, oder erstellen Sie einen neuen Namespace. Wählen Sie auf der nächsten Seite **Duplikaterkennung aktivieren** aus, und legen Sie für **Fenster für Duplikaterkennungsverlauf-Zeitpunkt** eine Stunde fest. Klicken Sie dann auf das Kontrollkästchen in der rechten unteren Ecke, um die Warteschlangenkonfiguration zu speichern.
 
@@ -396,24 +396,15 @@ Sie können jetzt die Anwendung ausführen.
 
 In diesem Tutorial haben Sie gelernt, wie Sie mit der [EventProcessorHost]-Klasse zuverlässig Datenpunktnachrichten und interaktive D2C-Nachrichten verarbeiten.
 
-Das Tutorial [Hochladen von Dateien von Geräten in die Cloud mit IoT Hub] baut unter Verwendung analoger Nachrichtenverarbeitungslogik auf diesem Tutorial auf. Es beschreibt auch ein Muster, bei dem C2D-Nachrichten verwendet werden, um Dateiuploads von Geräten zu erleichtern.
+Im Tutorial [Senden von Cloud-zu-Gerät-Nachrichten mithilfe von IoT Hub][lnk-c2d] erfahren Sie, wie Sie Nachrichten aus Ihrem Back-End an Ihre Geräte senden.
 
-Weitere Informationen zu IoT Hub:
+Beispiele vollständiger Lösungen, die IoT Hub nutzen, finden Sie unter [Azure IoT Suite][lnk-suite].
 
-* [Übersicht zu IoT Hub]
-* [IoT Hub-Entwicklerhandbuch]
-* [Anleitungen zu IoT Hub]
-* [Unterstützte Geräteplattformen und Sprachen][Supported devices]
-* [Azure IoT Developer Center]
+Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [IoT Hub-Entwicklerhandbuch].
 
 <!-- Images. -->
 [50]: ./media/iot-hub-csharp-csharp-process-d2c/run1.png
 [10]: ./media/iot-hub-csharp-csharp-process-d2c/create-identity-csharp1.png
-[12]: ./media/iot-hub-csharp-csharp-process-d2c/create-identity-csharp3.png
-
-[20]: ./media/iot-hub-csharp-csharp-process-d2c/create-storage1.png
-[21]: ./media/iot-hub-csharp-csharp-process-d2c/create-storage2.png
-[22]: ./media/iot-hub-csharp-csharp-process-d2c/create-storage3.png
 
 [30]: ./media/iot-hub-csharp-csharp-process-d2c/createqueue2.png
 [31]: ./media/iot-hub-csharp-csharp-process-d2c/createqueue3.png
@@ -426,22 +417,15 @@ Weitere Informationen zu IoT Hub:
 [HDInsight (Hadoop)]: https://azure.microsoft.com/documentation/services/hdinsight/
 [Service Bus queue]: ../service-bus/service-bus-dotnet-get-started-with-queues.md
 [Service Bus-Warteschlange]: ../service-bus/service-bus-dotnet-get-started-with-queues.md
-[EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
-
-
 
 [Entwicklungsleitfaden für Azure IoT Hub – Gerät an Cloud]: iot-hub-devguide.md#d2c
 
 [Azure Storage]: https://azure.microsoft.com/documentation/services/storage/
 [Azure Service Bus]: https://azure.microsoft.com/documentation/services/service-bus/
+[Dokumentation zu Azure Service Bus]: https://azure.microsoft.com/documentation/services/service-bus/
 
-[Senden von C2D-Nachrichten mit IoT Hub]: iot-hub-csharp-csharp-c2d.md
-[Hochladen von Dateien von Geräten in die Cloud mit IoT Hub]: iot-hub-csharp-csharp-file-upload.md
-[Übersicht zu IoT Hub]: iot-hub-what-is-iot-hub.md
-[Anleitungen zu IoT Hub]: iot-hub-guidance.md
 [IoT Hub-Entwicklerhandbuch]: iot-hub-devguide.md
 [Erste Schritte mit IoT Hub]: iot-hub-csharp-csharp-getstarted.md
-[Supported devices]: iot-hub-tested-configurations.md
 [Azure IoT Developer Center]: https://azure.microsoft.com/develop/iot
 [lnk-service-fabric]: https://azure.microsoft.com/documentation/services/service-fabric/
 [lnk-stream-analytics]: https://azure.microsoft.com/documentation/services/stream-analytics/
@@ -450,18 +434,17 @@ Weitere Informationen zu IoT Hub:
 
 <!-- Links -->
 [Informationen zu Azure Storage]: ../storage/storage-create-storage-account.md#create-a-storage-account
-[Azure IoT - Service SDK NuGet package]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
 [Erste Schritte mit Event Hubs]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
-[IoT Hub Developer Guide - Identity Registry]: iot-hub-devguide.md#identityregistry
 [Richtlinien zur Azure Storage-Skalierbarkeit]: ../storage/storage-scalability-targets.md
 [Azure Block Blobs]: https://msdn.microsoft.com/library/azure/ee691964.aspx
 [Event Hubs]: ../event-hubs/event-hubs-overview.md
-[Scaled out event processing]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
 [Programmierleitfaden für Event Hubs]: ../event-hubs/event-hubs-programming-guide.md
 [Behandeln vorübergehender Fehler]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[Azure Portal]: https://manage.windowsazure.com/
 [.NET-Anwendungen mit mehreren Ebenen unter Verwendung von Azure Service Bus-Warteschlangen]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
-[Dokumentation zu Service Bus]: https://azure.microsoft.com/documentation/services/service-bus/
 
-<!---HONumber=AcomDC_0629_2016-->
+[lnk-classic-portal]: https://manage.windowsazure.com
+[lnk-c2d]: iot-hub-csharp-csharp-process-d2c.md
+[lnk-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
+
+<!---HONumber=AcomDC_0713_2016-->

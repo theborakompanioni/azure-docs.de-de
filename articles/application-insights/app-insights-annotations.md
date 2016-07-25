@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="ibiza"
     ms.devlang="na"
     ms.topic="article"
-	ms.date="06/09/2016"
+	ms.date="06/28/2016"
     ms.author="awills"/>
 
 # Versionsanmerkungen in Application Insights
@@ -40,7 +40,7 @@ Diesen Schritt müssen Sie für jede Versionsvorlage ausführen, für die Sie Ve
 
 
 1. Melden Sie sich im [Microsoft Azure-Portal](https://portal.azure.com) an, und öffnen Sie die Application Insights-Ressource, mit der Sie Ihre Anwendung überwachen. (Oder [erstellen Sie jetzt eine Ressource](app-insights-overview.md), sofern noch nicht geschehen.)
-2. Klicken Sie auf **Einstellungen**, anschließend auf **API-Zugriff**, und kopieren Sie die **Application Insights-ID**.
+2. Klicken Sie auf **API-Zugriff**, und kopieren Sie die **Application Insights-ID**.
 
     ![Öffnen Sie unter „portal.azure.com“ die Application Insights-Ressource, und wählen Sie „Einstellungen“. Öffnen Sie „API-Zugriff“. Kopieren der Anwendungs-ID](./media/app-insights-annotations/20.png)
 
@@ -73,7 +73,7 @@ Diesen Schritt müssen Sie für jede Versionsvorlage ausführen, für die Sie Ve
 
 Sie können Anmerkungen auch von jedem beliebigen Prozess erstellen (ohne Visual Studio Team System zu verwenden).
 
-Rufen Sie das [Powershell-Skript aus GitHub](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) ab.
+Rufen Sie das [PowerShell-Skript aus GitHub](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) ab.
 
 Verwenden Sie es wie folgt:
 
@@ -85,7 +85,7 @@ Verwenden Sie es wie folgt:
           "ReleaseDescription"="a description";
           "TriggerBy"="My Name" }
 
-Rufen Sie `applicationId` und `apiKey` aus der Application Insights-Ressource ab: Öffnen Sie „Einstellungen“ und„API-Zugriff“, und kopieren Sie die „Anwendungs-ID“. Klicken Sie dann auf „API-Schlüssel erstellen“, und kopieren Sie den Schlüssel.
+Rufen Sie `applicationId` und `apiKey` aus Ihrer Application Insights-Ressource ab: Öffnen Sie „Einstellungen“ und „API-Zugriff“, und kopieren Sie die „Anwendungs-ID“. Klicken Sie dann auf „API-Schlüssel erstellen“, und kopieren Sie den Schlüssel.
 
 ## Versionsanmerkungen
 
@@ -96,4 +96,4 @@ Klicken Sie auf einen Anmerkungsmarker, um Details zur Version, einschließlich 
 
 ![Klicken Sie auf einen Versionsanmerkungsmarker.](./media/app-insights-annotations/60.png)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

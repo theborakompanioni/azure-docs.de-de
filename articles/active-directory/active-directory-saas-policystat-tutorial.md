@@ -2,17 +2,17 @@
     pageTitle="Tutorial: Azure Active Directory-Integration mit PolicyStat | Microsoft Azure" 
     description="Hier erfahren Sie, wie Sie PolicyStat mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen." 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="07/07/2016" 
+    ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit PolicyStat
   
@@ -37,7 +37,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Pol
 
 ###So aktivieren Sie die Anwendungsintegration für PolicyStat
 
-1.  Klicken Sie im linken Navigationsbereich des Azure-Verwaltungsportals auf **Active Directory**.
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-policystat-tutorial/IC700993.png "Active Directory")
 
@@ -68,9 +68,9 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 ![Attribute](./media/active-directory-saas-policystat-tutorial/IC808628.png "Attribute")
 
-###Führen Sie zum Konfigurieren des einmaligen Anmeldens die folgenden Schritte aus:
+###So konfigurieren Sie einmaliges Anmelden
 
-1.  Klicken Sie im Azure AD-Portal auf der Anwendungsintegrationsseite für **PolicyStat** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **PolicyStat** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-policystat-tutorial/IC808629.png "Einmaliges Anmelden konfigurieren")
 
@@ -113,7 +113,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     1.  Öffnen Sie die heruntergeladene Metadatendatei, kopieren Sie den Inhalt, und fügen Sie ihn in das Textfeld **Ihre Identitätsanbietermetadaten** ein.
     2.  Klicken Sie auf **Änderungen speichern**.
 
-10. Wählen Sie im Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
+10. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-policystat-tutorial/IC771723.png "Einmaliges Anmelden konfigurieren")
 
@@ -142,7 +142,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 ###So weisen Sie PolicyStat Benutzer zu
 
-1.  Erstellen Sie im Azure AD-Portal ein Testkonto.
+1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
 2.  Klicken Sie auf der Anwendungsintegrationsseite für **PolicyStat** auf **Benutzer zuweisen**.
 
@@ -154,4 +154,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0713_2016-->

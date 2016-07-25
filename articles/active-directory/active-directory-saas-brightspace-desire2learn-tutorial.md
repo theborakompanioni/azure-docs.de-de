@@ -4,20 +4,19 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
 #Lernprogramm: Azure Active Directory-Integration mit Brightspace von Desire2Learn
 
-In diesem Lernprogramm wird die Integration von Azure und Brightspace von Desire2Learn erläutert.  
-Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Lernprogramm wird die Integration von Azure und Brightspace von Desire2Learn erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
 -   Ein Abonnement von Brightspace von Desire2Learn mit aktiviertem einmaligen Anmelden
@@ -38,7 +37,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Bri
 
 ###So aktivieren Sie die Anwendungsintegration für Brightspace von Desire2Learn
 
-1.  Klicken Sie im linken Navigationsbereich des Azure-Verwaltungsportals auf **Active Directory**.
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC700993.png "Active Directory")
 
@@ -69,7 +68,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 ###So konfigurieren Sie einmaliges Anmelden
 
-1.  Klicken Sie im Azure AD-Portal auf der Anwendungsintegrationsseite **Brightspace von Desire2Learn** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Brightspace von Desire2Learn** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798959.png "Einmaliges Anmelden konfigurieren")
 
@@ -81,7 +80,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![App-URL konfigurieren](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798961.png "App-URL konfigurieren")
 
-    1.  Geben Sie im Textfeld **Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei **Brightspace von Desire2Learn** verwenden (z. B. *https://partnershowcase.desire2learn.com/Shibboleth.sso/Login?entityID=https://sts.windows-ppe.net/5caf9349-fd93-4a74-b064-0070f65bfb49/&target=https%3A%2F%2Fpartnershowcase.desire2learn.com%2Fd2l%2FshibbolethSSO%2Faspinfo.asp*).
+    1.  Geben Sie im Textfeld **Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei **Brightspace von Desire2Learn** verwendete URL ein (z.B. *https://partnershowcase.desire2learn.com/Shibboleth.sso/Login?entityID=https://sts.windows-ppe.net/5caf9349-fd93-4a74-b064-0070f65bfb49/&target=https%3A%2F%2Fpartnershowcase.desire2learn.com%2Fd2l%2FshibbolethSSO%2Faspinfo.asp*).
     2.  Klicken Sie auf **Weiter**.
 
 4.  Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren um Brightspace von Desire2Learn** auf **Metadaten herunterladen**, und speichern Sie die Metadaten auf Ihrem Computer.
@@ -90,18 +89,16 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 5.  Senden Sie die heruntergeladene Metadatendatei an Ihr Support-Team für Brightspace von Desire2Learn.
 
-    >[AZURE.NOTE]Das Support-Team für Brightspace von Desire2Learn muss die tatsächliche Konfiguration von SSO übernehmen.
-    Sie erhalten eine Benachrichtigung, wenn SSO für Ihr Abonnement aktiviert wurde.
+    >[AZURE.NOTE] Das Support-Team für Brightspace von Desire2Learn muss die tatsächliche Konfiguration von SSO übernehmen. Sie erhalten eine Benachrichtigung, wenn SSO für Ihr Abonnement aktiviert wurde.
 
-6.  Wählen Sie im Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
+6.  Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798963.png "Einmaliges Anmelden konfigurieren")
 ##Konfigurieren der Benutzerbereitstellung
 
-Um Azure AD-Benutzern die Anmeldung bei Brightspace von Desire2Learn zu ermöglichen, müssen sie in Brightspace von Desire2Learn bereitgestellt werden.  
-Im Fall von Brightspace von Desire2Learn müssen die Benutzerkonten durch Ihr Support-Team für Brightspace Desire2Learn erstellt werden.
+Um Azure AD-Benutzern die Anmeldung bei Brightspace von Desire2Learn zu ermöglichen, müssen sie in Brightspace von Desire2Learn bereitgestellt werden. Im Fall von Brightspace von Desire2Learn müssen die Benutzerkonten durch Ihr Support-Team für Brightspace Desire2Learn erstellt werden.
 
->[AZURE.NOTE]Sie können Azure Active Directory-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Benutzerkonten für Brightspace von Desire2Learn oder mithilfe der von Brightspace von Desire2Learn bereitgestellten APIs erstellen.
+>[AZURE.NOTE] Sie können Azure Active Directory-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Benutzerkonten für Brightspace von Desire2Learn oder mithilfe der von Brightspace von Desire2Learn bereitgestellten APIs erstellen.
 
 ##Zuweisen von Benutzern
 
@@ -109,7 +106,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
 
 ###So weisen Sie Brightspace von Desire2Learn Benutzer zu
 
-1.  Erstellen Sie im Azure AD-Portal ein Testkonto.
+1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
 2.  Klicken Sie auf der Anwendungsintegrationsseite für **Brightspace von Desire2Learn** auf **Benutzer zuweisen**.
 
@@ -121,4 +118,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

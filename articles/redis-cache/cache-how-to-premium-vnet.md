@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/01/2016" 
+	ms.date="07/12/2016" 
 	ms.author="sdanie"/>
 
 # Konfigurieren der Unterstützung virtueller Netzwerke für Azure Redis Cache vom Typ "Premium"
@@ -74,6 +74,7 @@ Die folgende Liste enthält Antworten auf häufig gestellte Fragen zur Skalierun
 -	[Welche Probleme treten häufig bei einer fehlerhaften Konfiguration von Azure Redis Cache und VNets auf?](#what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets)
 -	[Kann ich VNets mit einem Standard-Cache oder Basic-Cache verwenden?](#can-i-use-vnets-with-a-standard-or-basic-cache)
 -	[Warum misslingt das Erstellen eines Redis-Caches in einigen Subnetzen, aber in anderen nicht?](#why-does-creating-a-redis-cache-fail-in-some-subnets-but-not-others)
+-	[Funktionieren alle Cachefeatures beim Hosten eines Cache in einem VNET?](#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
 
 
 ## Welche Probleme treten häufig bei einer fehlerhaften Konfiguration von Azure Redis Cache und VNets auf?
@@ -96,8 +97,8 @@ Beim Hosten von Azure Redis Cache in einem VNet werden die in der folgenden Tabe
 
 Es gibt Netzwerkverbindungsanforderungen für Azure Redis Cache, die ursprünglich nicht von einem virtuellen Netzwerk erfüllt werden konnten. Azure Redis Cache erfordert bei Verwenden in einem virtuellen Netzwerk, dass alle folgenden Voraussetzungen erfüllt sind.
 
--  Ausgehende Netzwerkverbindungen mit Azure-Speicherendpunkten in der ganzen Welt. Dies umfasst sowohl Endpunkte, die sich in der gleichen Region wie die Azure Redis Cache-Instanz befinden, als auch Speicherendpunkte in **anderen** Azure-Regionen. Azure Storage-Endpunkte werden unter den folgenden DNS-Domänen aufgelöst: *table.core.windows.net*, *blob.core.windows.net*, *queue.core.windows.net* und *file.core.windows.net*. 
--  Ausgehende Netzwerkverbindung mit *ocsp.msocsp.com*, *mscrl.microsoft.com* und *crl.microsoft.com*. Dies ist zur Unterstützung von SSL-Funktionen erforderlich.
+-  Ausgehende Netzwerkverbindungen mit Azure-Speicherendpunkten in der ganzen Welt. Dies umfasst sowohl Endpunkte, die sich in der gleichen Region wie die Azure Redis Cache-Instanz befinden, als auch Speicherendpunkte in **anderen** Azure-Regionen. Azure Storage-Endpunkte werden unter den folgenden DNS-Domänen aufgelöst: *table.core.windows.net*, *blob.core.windows.net*, *queue.core.windows.net* und *file.core.windows.net*.
+-  Ausgehende Netzwerkverbindungen mit *ocsp.msocsp.com*, *mscrl.microsoft.com* und *crl.microsoft.com*. Dies ist zur Unterstützung von SSL-Funktionen erforderlich.
 -  Die DNS-Konfiguration für das virtuelle Netzwerk muss alle der zuvor genannten Endpunkte und Domänen auflösen können. Diese DNS-Anforderungen können erfüllt werden, indem Sie sicherstellen, dass eine gültige DNS-Infrastruktur für das virtuelle Netzwerk konfiguriert und beibehalten wird.
 
 
@@ -111,6 +112,13 @@ VNets können nur mit Premium-Caches verwendet werden.
 Wenn Sie einen Azure Redis Cache in einem ARM-VNet bereitstellen, muss sich der Cache in einem dedizierten Subnetz befinden, das keine anderen Ressourcentypen enthält. Wenn versucht wird, einen Azure Redis Cache in einem ARM-VNet-Subnetz bereitzustellen, das andere Ressourcen enthält, misslingt die Bereitstellung. Bevor Sie einen neuen Redis-Cache erstellen können, müssen Sie die im Subnetz vorhandenen Ressourcen löschen.
 
 Sie können mehrere Typen von Ressourcen in einem klassischen VNet bereitstellen, solange Sie über genügend IP-Adressen verfügen.
+
+### Funktionieren alle Cachefeatures beim Hosten eines Cache in einem VNET?
+
+Wenn der Cache Teil eines VNET ist, haben nur Clients im VNET Zugriff auf den Cache. Aufgrund dessen funktionieren die folgenden Features für die Cacheverwaltung zu diesem Zeitpunkt nicht:
+
+-	Redis-Konsole: Da die Redis-Konsole den Client „redis-cli.exe“ verwendet, der auf virtuellen Computern gehostet wird, die nicht Teil des VNET sind, kann sie keine Verbindung mit dem Cache herstellen.
+
 
 ## Verwenden von ExpressRoute mit Azure Redis Cache
 
@@ -159,4 +167,4 @@ Informationen zur Verwendung weiterer Funktionen des Premium-Caches finden Sie i
 
 [redis-cache-vnet-info]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-info.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->

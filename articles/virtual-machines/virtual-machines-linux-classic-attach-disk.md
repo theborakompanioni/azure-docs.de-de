@@ -122,7 +122,7 @@ Sie können sowohl leere Datenträger, als auch Datenträger mit Daten an Ihre v
 
 11. Fügen Sie das neue Laufwerk zu /etc/fstab hinzu:
 
-	Um sicherzustellen, dass das Laufwerk nach einem Neustart automatisch wieder eingebunden wird, muss es zur Datei /etc/fstab hinzugefügt werden. Außerdem wird dringend empfohlen, den UUID (Universally Unique IDentifier) in /etc/fstab zu verwenden, um auf das Laufwerk und nicht auf den Gerätenamen (d.h. auf /dev/sdc1) zu verweisen. Sie können das Hilfsprogramm **blkid** verwenden, um den UUID des neuen Laufwerks herauszufinden:
+	Um sicherzustellen, dass das Laufwerk nach einem Neustart automatisch wieder eingebunden wird, muss es zur Datei /etc/fstab hinzugefügt werden. Außerdem wird dringend empfohlen, den UUID (Universally Unique IDentifier) in /etc/fstab zu verwenden, um auf das Laufwerk und nicht auf den Gerätenamen (d.h. auf /dev/sdc1) zu verweisen. Dadurch wird vermieden, dass der falsche Datenträger an einem bestimmten Standort bereitgestellt wird, wenn das Betriebssystem einen Fehler während des Starts entdeckt, und alle verbleibenden Datenträger anschließend diesen Geräte-IDs zugewiesen werden. Sie können das Hilfsprogramm **blkid** verwenden, um den UUID des neuen Laufwerks herauszufinden:
 
 		# sudo -i blkid
 
@@ -173,4 +173,4 @@ Informieren Sie sich in den folgenden Artikeln ausführlicher über das Verwende
 [Agent]: virtual-machines-linux-agent-user-guide.md
 [Logon]: virtual-machines-linux-classic-log-on.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

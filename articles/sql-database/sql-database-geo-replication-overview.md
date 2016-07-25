@@ -92,9 +92,9 @@ Wie bereits zuvor erwähnt, kann die aktive Georeplikation nicht nur über das A
 
 |Befehl|Beschreibung|
 |-------|-----------|
-|[ALTER DATABASE (Azure SQL-Datenbank)]https://msdn.microsoft.com/de-DE/library/mt574871.aspx)|Verwenden Sie das Argument ADD SECONDARY ON SERVER, um eine sekundäre Datenbank für eine vorhandene Datenbank zu erstellen und die Datenreplikation zu starten.|
-|[ALTER DATABASE (Azure SQL-Datenbank)]https://msdn.microsoft.com/de-DE/library/mt574871.aspx)|Verwenden Sie FAILOVER oder FORCE\_FAILOVER\_ALLOW\_DATA\_LOSS, um die sekundäre Datenbank zur primären zu erklären und zu ihr zu wechseln – dadurch wird das Failover gestartet.
-|[ALTER DATABASE (Azure SQL-Datenbank)]https://msdn.microsoft.com/de-DE/library/mt574871.aspx)|Verwenden Sie REMOVE SECONDARY ON SERVER, um die Datenreplikation zwischen einer SQL-Datenbank und der angegebenen sekundären Datenbank zu beenden.|
+|[ALTER DATABASE (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/mt574871.aspx)|Verwenden Sie das Argument ADD SECONDARY ON SERVER, um eine sekundäre Datenbank für eine vorhandene Datenbank zu erstellen und die Datenreplikation zu starten.|
+|[ALTER DATABASE (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/mt574871.aspx)|Verwenden Sie FAILOVER oder FORCE\_FAILOVER\_ALLOW\_DATA\_LOSS, um die sekundäre Datenbank zur primären zu erklären und zu ihr zu wechseln – dadurch wird das Failover gestartet.
+|[ALTER DATABASE (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/mt574871.aspx)|Verwenden Sie REMOVE SECONDARY ON SERVER, um die Datenreplikation zwischen einer SQL-Datenbank und der angegebenen sekundären Datenbank zu beenden.|
 |[sys.geo\_replication\_links (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/mt575501.aspx)|Gibt Informationen über alle vorhandenen Replikationsverknüpfungen für alle Datenbanken auf dem logischen Azure SQL-Datenbankserver zurück.|
 |[sys.dm\_geo\_replication\_link\_status (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/mt575504.aspx)|Ruft den Zeitpunkt der letzten Replikation, die Verzögerung der letzten Replikation und andere Informationen über die Replikationsverknüpfung für eine angegebene SQL-Datenbank ab.|
 |[sys.dm\_operation\_status (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/dn270022.aspx)|Zeigt den Status für alle Datenbankvorgänge an, einschließlich des Status der Replikationsverknüpfungen.|
@@ -116,7 +116,7 @@ Wie bereits zuvor erwähnt, kann die aktive Georeplikation nicht nur über das A
 
 |API|Beschreibung|
 |---|-----------|
-|[REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx)|Erstellt oder aktualisiert eine primäre oder sekundäre Datenbank oder stellt diese wieder her.|
+|[Create or Update Database (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx)|Erstellt oder aktualisiert eine primäre oder sekundäre Datenbank oder stellt diese wieder her.|
 |[Get Create or Update Database Status](https://msdn.microsoft.com/library/azure/mt643934.aspx)|Ruft den Status während eines Erstellungsvorgangs ab.|
 |[Set Secondary Database as Primary (Planned Failover)r](https://msdn.microsoft.com/ibrary/azure/mt575007.aspx)|Stuft eine sekundäre Datenbank in einer Georeplikationspartnerschaft zur neuen primären Datenbank hoch.|
 |[Set Secondary Database as Primary (Unplanned Failover)](https://msdn.microsoft.com/library/azure/mt582027.aspx)|Erzwingt ein Failover zur sekundären Datenbank und legt die sekundäre Datenbank als primäre fest.|
@@ -134,4 +134,4 @@ Wie bereits zuvor erwähnt, kann die aktive Georeplikation nicht nur über das A
 - Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).
 - Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="02/01/2016" 
+	ms.date="07/08/2016" 
 	ms.author="raynew"/>
 
 # Erstellen von Wiederherstellungsplänen
@@ -73,20 +73,20 @@ Erstellen Sie einen Wiederherstellungsplan wie folgt:
 
 1. Klicken Sie auf Registerkarte **Wiederherstellungspläne** > **Wiederherstellungsplan erstellen**. Geben Sie einen Namen für den Wiederherstellungsplan sowie die Quelle und das Ziel an. Der Quellserver muss virtuelle Computer aufweisen, die für Failover und Wiederherstellung aktiviert sind.
 
-	- Wenn Sie von VMM zu VMM replizieren, wählen Sie **Quelltyp** > **VMM** und die VMM-Quell- und -Zielserver aus. Klicken Sie auf **Hyper-V**, um Clouds anzuzeigen, die für die Verwendung des Hyper-V-Replikats konfiguriert sind. 
+	- Wenn Sie von VMM zu VMM replizieren, wählen Sie **Quelltyp** > **VMM** und die VMM-Quell- und -Zielserver aus. Klicken Sie auf **Hyper-V**, um Clouds anzuzeigen, die für die Verwendung des Hyper-V-Replikats konfiguriert sind.
 	- Wenn Sie per SAN von VMM zu VMM replizieren, wählen Sie **Quelltyp** > **VMM** und die VMM-Quell- und -Zielserver aus. Klicken Sie auf **SAN**, um die Clouds anzuzeigen, die für die SAN-Replikation konfiguriert sind.
 	- Wenn Sie von VMM zu Azure replizieren, wählen **Quelltyp** > **VMM** aus. Wählen Sie den VMM-Quellserver und als Ziel **Azure** aus.
 	- Wenn Sie von einem Hyper-V-Standort replizieren, wählen Sie **Quelltyp** > **Hyper-V** aus. Wählen Sie den Standort als Quelle und als Ziel **Azure** aus.
 	- Wenn Sie von VMware oder einem physischen lokalen Server zu Azure replizieren, wählen Sie einen Konfigurationsserver als Quelle und als Ziel **Azure** aus.
 
-2. Wählen Sie unter **Virtuelle Computer auswählen** die virtuellen Computer (oder die Replikationsgruppe) aus, die Sie der Standardgruppe (Gruppe 1) im Wiederherstellungsplan hinzufügen möchten.
+2. Wählen Sie unter **Virtuelle Computer auswählen** die virtuellen Computer (oder die Replikationsgruppe) aus, die Sie der Standardgruppe (Gruppe 1) im Wiederherstellungsplan hinzufügen möchten.
 
 ## Anpassen von Wiederherstellungsplänen
 
 Nachdem Sie geschützte virtuelle Computer oder Replikationsgruppen der standardmäßigen Wiederherstellungsplangruppe hinzugefügt und den Plan erstellt haben, können Sie ihn anpassen:
 
 - **Hinzufügen neuer Gruppen**: Sie können weitere Wiederherstellungsplangruppen hinzufügen. Gruppen werden in der Reihenfolge nummeriert, in der sie von Ihnen hinzugefügt werden. Sie können bis zu sieben Gruppen hinzufügen. Sie können diesen neuen Gruppen weitere Computer oder Replikationsgruppen hinzufügen. Beachten Sie, dass ein virtueller Computer oder eine Replikationsgruppe nur in eine Wiederherstellungsplangruppe eingefügt werden kann.
-- ****Hinzufügen eines Skripts**: Sie können Skripts für die Ausführung vor oder nach einer Wiederherstellungsplangruppe hinzufügen. Hierbei wird für die Gruppe ein neuer Satz mit Aktionen hinzugefügt. Eine Gruppe von Vorabschritten für „Group 1“ wird beispielsweise mit dem folgenden Namen erstellt: „Group 1: Pre-steps“. Alle Vorabschritte werden in diesem Satz aufgelistet. Beachten Sie, dass Sie am primären Standort nur dann ein Skript hinzufügen können, wenn Sie einen VMM-Server bereitgestellt haben.
+- **Hinzufügen eines Skripts**: Sie können Skripts für die Ausführung vor oder nach einer Wiederherstellungsplangruppe hinzufügen. Hierbei wird für die Gruppe ein neuer Satz mit Aktionen hinzugefügt. Eine Gruppe von Vorabschritten für „Group 1“ wird beispielsweise mit dem folgenden Namen erstellt: „Group 1: Pre-steps“. Alle Vorabschritte werden in diesem Satz aufgelistet. Beachten Sie, dass Sie am primären Standort nur dann ein Skript hinzufügen können, wenn Sie einen VMM-Server bereitgestellt haben.
 - **Hinzufügen einer manuellen Aktion**: Sie können manuelle Aktionen hinzufügen, die vor oder nach einer Wiederherstellungsgruppe ausgeführt werden. Wenn der Wiederherstellungsplan ausgeführt wird, wird er an dem Punkt angehalten, an dem Sie die manuelle Aktion eingefügt haben. In einem Dialogfeld werden Sie aufgefordert anzugeben, dass die manuelle Aktion abgeschlossen wurde.
 
 ## Erweitern von Wiederherstellungsplänen mit Skripts
@@ -115,7 +115,7 @@ Sie können Ihren Wiederherstellungsplan erweitern, indem Sie als Teil des Plans
 1. Öffnen Sie den Wiederherstellungsplan, den Sie anpassen möchten.
 2. Klicken Sie, um virtuelle Computer oder eine neue Gruppe hinzuzufügen.
 3. Klicken Sie zum Hinzufügen eines Skripts oder einer manuellen Aktion in der Liste **Schritt** auf einen beliebigen Eintrag, und klicken Sie anschließend auf **Skript** oder **Manuelle Aktion**. Geben Sie an, ob Sie das Skript oder die Aktion vor oder nach dem ausgewählten Eintrag hinzufügen möchten. Verwenden Sie die Befehlsschaltflächen **Nach oben** und **Nach unten**, um die Position des Skripts nach oben oder unten zu verschieben.
-4. Wählen Sie beim Hinzufügen eines VMM-Skripts die Option **Failover zu VMM-Skript** aus, und geben Sie unter **Skriptpfad** den relativen Pfad zur Freigabe ein. Geben Sie für unser Beispiel, in dem sich die Freigabe unter „\<VMMServerName>\\MSSCVMMLibrary\\RPScripts“ befindet, also den folgenden Pfad an: \\RPScripts\\RPScript.PS1.
+4. Wählen Sie beim Hinzufügen eines VMM-Skripts die Option **Failover zu VMM-Skript** aus, und geben Sie unter **Skriptpfad** den relativen Pfad zur Freigabe ein. Geben Sie für unser Beispiel, in dem sich die Freigabe unter „\\<VMMServerName>\\MSSCVMMLibrary\\RPScripts“ befindet, also den folgenden Pfad an: \\RPScripts\\RPScript.PS1.
 5. Wenn Sie ein Azure-Automatisierungsrunbook hinzufügen, geben Sie das **Azure Automation-Konto** an, unter dem sich das Runbook befindet, und wählen das gewünschte **Azure-Runbookskript** aus.
 5. Führen Sie ein Failover für den Wiederherstellungsplan aus, um sicherzustellen, dass das Skript wie erwartet funktioniert.
 
@@ -127,4 +127,4 @@ Sie können unterschiedliche Arten von Failover-Wiederherstellungsplänen ausfü
 
  
 
-<!----HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0713_2016-->

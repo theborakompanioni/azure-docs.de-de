@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="04/18/2016"
+	ms.date="07/12/2016"
 	ms.author="gauravbh;tomfitz"/>
 
 # Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung
@@ -155,7 +155,7 @@ Die Richtlinie unterstützt drei Arten von Auswirkungen: **deny**, **audit** und
 
 - Mit „deny“ wird ein Ereignis im Überwachungsprotokoll generiert, und die Anforderung schlägt fehl.
 - Mit „audit“ wird ein Ereignis im Überwachungsprotokoll generiert, aber die Anforderung schlägt nicht fehl.
-- Mit „append“ wird der Anforderung der definierte Satz von Feldern hinzugefügt. 
+- Mit „append“ wird der Anforderung der definierte Satz von Feldern hinzugefügt.
 
 Für **append** müssen Sie die unten dargestellten Details angeben:
 
@@ -391,7 +391,7 @@ Der Anforderungstext sollte dem folgenden ähneln:
     }
 
 
-Die Richtliniendefinition kann als eines der oben aufgeführten Beispiele definiert werden. Verwenden Sie als API-Version *2016-04-01*. Weitere Beispiele und Informationen finden Sie unter [Policy Definitions](https://msdn.microsoft.com/library/azure/mt588471.aspx) (in englischer Sprache).
+Die Richtliniendefinition kann als eines der oben aufgeführten Beispiele definiert werden. Verwenden Sie als „api-version“ die Einstellung *2016-04-01*. Weitere Beispiele und Informationen finden Sie unter [Policy Definitions](https://msdn.microsoft.com/library/azure/mt588471.aspx) (in englischer Sprache).
 
 ### Erstellen der Richtliniendefinition mit der PowerShell
 
@@ -424,7 +424,7 @@ Führen Sie zum Erstellen einer neuen Richtlinienzuweisung Folgendes aus:
 
     PUT https://management.azure.com /subscriptions/{subscription-id}/providers/Microsoft.authorization/policyassignments/{policyAssignmentName}?api-version={api-version}
 
-"{policy-assignment}" ist der Name der Richtlinienzuweisung. Verwenden Sie als API-Version *2016-04-01*.
+"{policy-assignment}" ist der Name der Richtlinienzuweisung. Verwenden Sie als „api-version“ die Einstellung *2016-04-01*.
 
 Der Anforderungstext sollte dem folgenden ähneln:
 
@@ -468,4 +468,4 @@ Zum Anzeigen aller Ereignisse, die mit dem Überwachungseffekt in Verbindung ste
     Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/audit/action"} 
     
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

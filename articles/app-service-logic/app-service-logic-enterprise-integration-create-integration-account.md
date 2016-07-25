@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Übersicht über Integrationskonten und das Enterprise Integration Pack | Microsoft Azure App Service" 
+	pageTitle="Übersicht über Integrationskonten und das Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
 	description="Erfahren Sie alles über Integrationskonten, das Enterprise Integration Pack und Logik-Apps" 
 	services="app-service\logic" 
 	documentationCenter=".net,nodejs,java"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2016" 
+	ms.date="07/08/2016" 
 	ms.author="deonhe"/>
 
 # Übersicht über Integrationskonten
@@ -73,4 +73,4 @@ Sie können ein Integrationskonto einfach in ein neues Abonnement und eine neue 
 
  
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

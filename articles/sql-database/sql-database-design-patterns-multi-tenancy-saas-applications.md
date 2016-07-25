@@ -32,6 +32,7 @@ Im Kontext dieses Artikels wird unter einer mehrinstanzenfähigen Anwendung eine
 Mehrinstanzenfähige Anwendungen sind ein gutes Beispiel für eine Art von Anwendung, deren Daten und Workloads leicht partitioniert werden können. Bei mehrinstanzenfähigen Anwendungen können Daten und Workloads beispielsweise meist entlang von Mandantengrenzen partitioniert werden, da die meisten Anforderungen innerhalb der Grenzen eines Mandanten durchgeführt werden. Diese Eigenschaft gilt für die Daten und die Workload und ist eine gute Grundlage für die Anwendungsmuster, die im restlichen Teil des Artikels beschrieben werden.
 
 Anwendungen dieser Art finden sich im gesamten Spektrum cloudbasierter Anwendungen, z.B.:
+
 - ISV-Datenbankanwendungen, die als SaaS-Anwendungen in die Cloud verlagert werden
 - SaaS-Anwendungen, die von Grund auf für die Cloud erstellt wurden
 - Anwendungen für Konsumenten/Endbenutzer
@@ -117,7 +118,7 @@ Azure SQL-Datenbank stellt „Pools für elastische Datenbanken“ bereit, um de
 | Einfache DevOps-Abläufe über Datenbanken hinweg | [Pools für elastische Datenbanken:](sql-database-elastic-pool.md) Wie oben aufgeführt.|
 ||[Elastische Abfrage:](sql-database-elastic-query-horizontal-partitioning.md) Ermöglicht Abfragen über mehrere Datenbanken hinweg für die Berichterstellung oder mandantenübergreifende Analysen.|
 ||[Elastische Aufträge:](sql-database-elastic-jobs-overview.md) Ermöglichen das Verpacken und zuverlässige Bereitstellen von Datenbank-Wartungsvorgängen oder Datenbank-Schemaänderungen für mehrere Datenbanken.|
-||[Elastische Transaktionen:](sql-database-elastic-scale.md) Ermöglichen das Verarbeiten von Änderungen an mehreren Datenbanken auf atomische und isolierte Weise. Dies ist erforderlich, wenn Anwendungen für eine Reihe von Datenbankvorgängen Garantien der Art „Alles oder nichts“ benötigen. |
+||[Elastische Transaktionen:](sql-database-elastic-transactions-overview.md) Ermöglichen das Verarbeiten von Änderungen an mehreren Datenbanken auf atomische und isolierte Weise. Dies ist erforderlich, wenn Anwendungen für eine Reihe von Datenbankvorgängen Garantien der Art „Alles oder nichts“ benötigen. |
 ||[Clientbibliothek für elastische Datenbanken:](sql-database-elastic-database-client-library.md) Diese Funktion ermöglicht das Verwalten von Datenverteilungen und das Zuordnen von Mandanten zu Datenbanken. |
 ||||
 
@@ -179,4 +180,4 @@ Bei Fragen erreichen Sie uns im [SQL-Datenbankforum](http://social.msdn.microsof
 
 	
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

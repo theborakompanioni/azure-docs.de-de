@@ -433,7 +433,7 @@ oracleReaderQuery | Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten
 Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
 writeBatchTimeout | Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird. | Zeitraum<br/><br/> Beispiel: 00:30:00 (30 Minuten) | Nein
-writeBatchSize | Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße "writeBatchSize" erreicht. | Integer | Nein (Standard = 10000)  
+writeBatchSize | Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße "writeBatchSize" erreicht. | Integer (Gesamtanzahl von Zeilen)| Nein (Standard = 10000)  
 sqlWriterCleanupScript | Benutzerdefinierte Abfrage, die Kopieraktivität so auszuführen, dass Daten von einem bestimmten Slice bereinigt werden. | Eine Abfrageanweisung. | Nein
 sliceIdentifierColumnName | Benutzerdefinierter Spaltenname, den die Kopieraktivität mit einem automatisch generierten Slicebezeichner füllen soll, der bei erneuter Ausführung zum Bereinigen von Daten eines bestimmten Slices verwendet wird. | Spaltenname einer Spalte mit binärem Datentyp (32). | Nein
 
@@ -501,4 +501,4 @@ XML | String
 ## Leistung und Optimierung  
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

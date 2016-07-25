@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
+	ms.date="07/07/2016" 
 	ms.author="andrl"/>
 
 # DocumentDB SDK
@@ -37,9 +37,17 @@
 
 ##Versionshinweise
 
+###<a name="1.9.0"/>1.9.0</a>
+
+- Unterstützung für Wiederholungsrichtlinie für gedrosselte Anforderungen hinzugefügt. (Bei gedrosselten Anforderungen wird die Ausnahme „Anforderungsrate zu groß“, Fehlercode 429, angezeigt.) Standardmäßig führt DocumentDB für jede Anforderung neun Wiederholungen durch, wenn der Fehlercode 429 auftritt, und berücksichtigt dabei die „retryAfter“-Zeit im Antwortheader. Eine feste Wiederholungsintervalldauer kann jetzt als Teil der „RetryOptions“-Eigenschaft für das „ConnectionPolicy“-Objekt festgelegt werden, wenn Sie die „retryAfter“-Zeit ignorieren möchten, die vom Server zwischen den Wiederholungen zurückgegeben wird. DocumentDB wartet jetzt bei jeder gedrosselten Anforderung (unabhängig von der Anzahl der Wiederholungen) maximal 30 Sekunden und gibt die Antwort mit dem Fehlercode 429 zurück. Diese Dauer kann auch in der „RetryOptions“-Eigenschaft im „ConnectionPolicy“-Objekt überschrieben werden.
+
+- DocumentDB gibt nun „x-ms-throttle-retry-count“ und „x-ms-throttle-retry-wait-time-ms“ als Antwortheader in jeder Anforderung zurück, um die Anzahl der Wiederholungen bei einer Drosselung und die kumulative Zeit anzugeben, die die Anforderung zwischen den Wiederholungen gewartet hat.
+
+- Die „RetryOptions“-Klasse wurde hinzugefügt, die die „RetryOptions“-Eigenschaft in der „ConnectionPolicy“-Klasse verfügbar macht, welche zum Überschreiben einiger der Standardwiederholungsoptionen verwendet werden kann.
+
 ###<a name="1.8.0"/>1.8.0</a>
 
-  - Unterstützung für Datenbankkonten in mehreren Regionen hinzugefügt.
+ - Unterstützung für Datenbankkonten in mehreren Regionen hinzugefügt.
 
 ###<a name="1.7.0"/>1.7.0</a>
 
@@ -93,7 +101,7 @@
 ### <a name="1.2.1"/>1.2.1</a>
 
 - ID-basiertes Routing implementiert.
-- Behebt Problem [49](https://github.com/Azure/azure-documentdb-node/issues/49) – current-Eigenschaft in Konflikt mit current()-Methode.
+- Behebt Problem [49](https://github.com/Azure/azure-documentdb-node/issues/49) – „current“-Eigenschaft in Konflikt mit „current()“-Methode.
 
 ### <a name="1.2.0"/>1.2.0</a>
 
@@ -117,7 +125,7 @@
 
 - Möglichkeit zum Abfragen von Konflikten durch Hinzufügen von „readConflicts“, „readConflictAsync“ und „queryConflicts“ implementiert.
 - API-Dokumentation aktualisiert.
-- Problem [41](https://github.com/Azure/azure-documentdb-node/issues/41) – client.createDocumentAsync-Fehler.
+- Problem [41](https://github.com/Azure/azure-documentdb-node/issues/41) – „client.createDocumentAsync“-Fehler.
 
 ### <a name="1.0.0"/>1.0.0</a>
 
@@ -137,31 +145,7 @@ Alle Versionen des Azure DocumentDB SDK für Node.js vor Version **1.0.0** werde
 
 | Version | Herausgabedatum | Deaktivierungstermine 
 | ---	  | ---	         | ---
-| [1\.8.0](#1.8.0) | 14. Juni 2016 |--- 
-| [1\.7.0](#1.7.0) | 26. April 2016 |--- 
-| [1\.6.0](#1.6.0) | 29. März 2016 |--- 
-| [1\.5.6](#1.5.6) | 8. März 2016 |--- 
-| [1\.5.5](#1.5.5) | 2. Februar 2016 |--- 
-| [1\.5.4](#1.5.4) | 1. Februar 2016 |--- 
-| [1\.5.2](#1.5.2) | 26. Januar 2016 |--- 
-| [1\.5.2](#1.5.2) | 22. Januar 2016 |--- 
-| [1\.5.1](#1.5.1) | 4. Januar 2016 |--- 
-| [1\.5.0](#1.5.0) | 31. Dezember 2015 |--- 
-| [1\.4.0](#1.4.0) | 6. Oktober 2015 |--- 
-| [1\.3.0](#1.3.0) | 6. Oktober 2015 |--- 
-| [1\.2.2](#1.2.2) | 10. September 2015 |--- 
-| [1\.2.1](#1.2.1) | 15. August 2015 |--- 
-| [1\.2.0](#1.2.0) | 5. August 2015 |--- 
-| [1\.1.0](#1.1.0) | 9. Juli 2015 |--- 
-| [1\.0.3](#1.0.3) | 4. Juni 2015 |--- 
-| [1\.0.2](#1.0.2) | 23. Mai 2015 |--- 
-| [1\.0.1](#1.0.1) | 15. Mai 2015 |--- 
-| [1\.0.0](#1.0.0) | 8. April 2015 |--- 
-| 0.9.4-prerelease | 6. April 2015 | 29. Februar 2016 
-| 0.9.3-prerelease | 14. Januar 2015 | 29. Februar 2016 
-| 0.9.2-prerelease | 18. Dezember 2014 | 29. Februar 2016 
-| 0.9.1-prerelease | 22. August 2014 | 29. Februar 2016 
-| 0.9.0-prerelease | 21. August 2014 | 29. Februar 2016
+| [1\.9.0](#1.9.0) | 07. Juni 2016 |--- | [1\.8.0](#1.8.0) | 14. April 2016 |--- | [1\.7.0](#1.7.0) | 26. März 2016 |--- | [1\.6.0](#1.6.0) | 8. März 2016 |--- | [1\.5.6](#1.5.6) | 2. Februar 2016 |--- | [1\.5.5](#1.5.5) | 1. Februar 2016 |--- | [1\.5.4](#1.5.4) | 01. Januar 2016 |--- | [1\.5.2](#1.5.2) | 26. Januar 2016 |--- | [1\.5.2](#1.5.2) | 22. Januar 2016 |--- | [1\.5.1](#1.5.1) | 4. Dezember 2016 |--- | [1\.5.0](#1.5.0) | 6. Oktober 2015 |--- | [1\.4.0](#1.4.0) | 6. Oktober 2015 |--- | [1\.3.0](#1.3.0) | 06. September 2015 |--- | [1\.2.2](#1.2.2) | 10. August 2015 |--- | [1\.2.1](#1.2.1) | 5. August 2015 |--- | [1\.2.0](#1.2.0) | 9. Juli 2015 |--- | [1\.1.0](#1.1.0) | 4. Juni 2015 |--- | [1\.0.3](#1.0.3) | 04. Mai 2015 |--- | [1\.0.2](#1.0.2) | 23. Mai 2015 |--- | [1\.0.1](#1.0.1) | 15. Mail 2015 |--- | [1\.0.0](#1.0.0) | 8. April 2015 |--- | 0.9.4-prerelease | 6. April 2015 | 29. Februar 2016 | 0.9.3-prerelease | 14. Januar 2015 | 29. Februar 2016 | 0.9.2-prerelease | 18. Dezember 2014 | 29. Februar 2016 | 0.9.1-prerelease | 22. August 2014 | 29. Februar 2016 | 0.9.0-prerelease | 21. August 2014 | 29. Februar 2016
 
 
 ## Häufig gestellte Fragen
@@ -171,4 +155,4 @@ Alle Versionen des Azure DocumentDB SDK für Node.js vor Version **1.0.0** werde
 
 Weitere Informationen zu DocumentDB finden Sie auf der Seite zum Dienst [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -20,7 +20,7 @@
 
 # So wird's gemacht: Registrieren, Erwerben, Upgraden oder Aktivieren von Azure
 
-Azure wird in verschiedenen Varianten angeboten – für ihre speziellen Geschäftsanforderungen und Ihren Einstieg in Azure. Auf der Website mit den [Microsoft Azure-Angebotsdetails](https://azure.microsoft.com/support/legal/offer-details/) finden Sie eine vollständige Aufstellung aller aktiven Angebote mit Details zu jedem Angebot, zum Umfang, den Vorteilen und der Verfügbarkeit nach Ländern und Regionen.
+Bei Azure stehen Ihnen für ihre speziellen Geschäftsanforderungen und Ihren Einstieg in Azure verschiedene Angebote zur Auswahl. Auf der Website mit den [Microsoft Azure-Angebotsdetails](https://azure.microsoft.com/support/legal/offer-details/) finden Sie eine vollständige Aufstellung aller aktiven Angebote mit Details zu jedem Angebot, zum Umfang, den Vorteilen und der Verfügbarkeit nach Ländern und Regionen.
 
 ## Azure-Angebote – Vorteile und Einschränkungen
 
@@ -90,4 +90,4 @@ Wenn Sie Azure in Open-Gutschriften über einen Händler erworben und einen Akti
 
 3. Geben Sie den Product Key ein, und aktivieren Sie dann das Kontrollkästchen für die Vereinbarung.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

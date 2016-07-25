@@ -32,6 +32,8 @@ Die benutzerdefinierten Voreinstellungen, die die folgenden Codierungsaufgaben a
 - [Deaktivieren des automatischen Deinterlacings](media-services-custom-mes-presets-with-dotnet.md#deinterlacing)
 - [Nur Audio-Voreinstellungen](media-services-custom-mes-presets-with-dotnet.md#audio_only)
 - [Verketten von zwei oder mehr Videodateien](media-services-custom-mes-presets-with-dotnet.md#concatenate)
+- [Zuschneiden von Videos mit Media Encoder Standard](media-services-custom-mes-presets-with-dotnet.md#crop)
+
 
 ##<a id="encoding_with_dotnet"></a>Codierung mit dem Media Services .NET SDK
 
@@ -458,9 +460,9 @@ Es gelten die folgenden Bedingungen:
 
 ##<a id="trim_video"></a>Kürzen eines Videos (Clipping)
 
-Dieser Abschnitt befasst sich mit dem Ändern der Encoder-Voreinstellungen zum Beschneiden oder Kürzen des Eingabevideos, wenn es sich bei der Eingabe um eine sogenannte Zwischendatei (Mezzanine File) oder bedarfsgesteuerte Datei handelt. Der Encoder kann darüber hinaus zum Beschneiden oder Kürzen eines Medienobjekts verwendet werden, das aus einem Livestream erfasst oder archiviert wird. Ausführliche Informationen hierzu finden Sie in [diesem Blog](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
+Dieser Abschnitt befasst sich mit dem Ändern der Encoder-Voreinstellungen zum Beschneiden oder Kürzen des Eingabevideos, wenn es sich bei der Eingabe um eine sogenannte Zwischendatei (Mezzanine File) oder bedarfsgesteuerte Datei handelt. Der Encoder kann darüber hinaus zum Beschneiden oder Kürzen eines Assets verwendet werden, das aus einem Livedatenstrom erfasst oder archiviert wird. Ausführliche Informationen hierzu finden Sie in [diesem Blog](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
 
-Zum Kürzen Ihrer Videos können Sie alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und das **Sources**-Element ändern (wie unten gezeigt). Der Wert von „StartTime“ muss mit den absoluten Zeitstempeln des Eingabevideos übereinstimmen. Wenn z. B. der erste Frame des Eingabevideos den Zeitstempel 12:00:10.000 trägt, sollte „StartTime“ mindestens 12:00:10.000 betragen. Im folgenden Beispiel wird davon ausgegangen, dass das Eingabevideo den Startzeitstempel 0 trägt. Beachten Sie, dass **Sources** am Beginn der Voreinstellung platziert werden muss.
+Zum Kürzen Ihrer Videos können Sie alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und das **Sources**-Element (wie unten gezeigt) ändern. Der Wert von „StartTime“ muss mit den absoluten Zeitstempeln des Eingabevideos übereinstimmen. Wenn z. B. der erste Frame des Eingabevideos den Zeitstempel 12:00:10.000 trägt, sollte „StartTime“ mindestens 12:00:10.000 betragen. Im folgenden Beispiel wird davon ausgegangen, dass das Eingabevideo den Startzeitstempel 0 trägt. Beachten Sie, dass **Sources** am Beginn der Voreinstellung platziert werden muss.
  
 ###<a id="json"></a>JSON-Voreinstellung
 	
@@ -584,7 +586,7 @@ Zum Kürzen Ihrer Videos können Sie alle [hier](https://msdn.microsoft.com/libr
 
 ###XML-Voreinstellung
 	
-Zum Kürzen Ihrer Videos können Sie alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und das **Sources**-Element ändern (wie unten gezeigt).
+Zum Kürzen Ihrer Videos können Sie alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und das **Sources**-Element (wie unten gezeigt) ändern.
 
 	<?xml version="1.0" encoding="utf-16"?>
 	<Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -707,7 +709,7 @@ Media Encoder Standard ermöglicht die Überlagerung eines Bildes mit einem vorh
 
 Zusätzlich zur Definition einer Voreinstellungsdatei müssen Sie Media Services darüber informieren, welche Datei im Asset das Überlagerungsbild und welche Datei das Quellvideo darstellt, das mit dem Bild überlagert werden soll. Die Videodatei muss die **primäre** Datei sein.
 
-Das obige .NET-Beispiel definiert zwei Funktionen: **UploadMediaFilesFromFolder** und **EncodeWithOverlay**. Die UploadMediaFilesFromFolder-Funktion lädt Dateien aus einem Ordner hoch (z. B. „BigBuckBunny.mp4“ und „Image001.png“) und legt die MP4-Datei als primäre Datei im Asset fest. Die **EncodeWithOverlay**-Funktion verwendet die übergebene benutzerdefinierte Voreinstellungsdatei (z.B. die darauf folgende Einstellung) zum Erstellen der Codierungsaufgabe.
+Das obige .NET-Beispiel definiert zwei Funktionen: **UploadMediaFilesFromFolder** und **EncodeWithOverlay**. Die UploadMediaFilesFromFolder-Funktion lädt Dateien aus einem Ordner hoch (z. B. „BigBuckBunny.mp4“ und „Image001.png“) und legt die MP4-Datei als primäre Datei im Asset fest. Die **EncodeWithOverlay**-Funktion verwendet die übergebene benutzerdefinierte Voreinstellungsdatei (z.B. die darauf folgende Voreinstellung) zum Erstellen der Codierungsaufgabe.
 
 >[AZURE.NOTE]Aktuelle Einschränkungen:
 >
@@ -863,7 +865,7 @@ Wenn Sie eine Eingabe an den Encoder senden, die keine Audiodaten, sondern nur V
 
 Um zu erzwingen, dass der Encoder ein Asset erstellt, das bei einer Eingabe ohne Audio eine stille Audiospur enthält, geben Sie den Wert „InsertSilenceIfNoAudio“ an.
 
-Sie können alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und folgende Änderungen vornehmen:
+Sie können alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokumentierten MES-Voreinstellungen verwenden und folgende Änderung vornehmen:
 
 ###JSON-Voreinstellung
 
@@ -883,7 +885,7 @@ Sie können alle [hier](https://msdn.microsoft.com/library/mt269960.aspx) dokume
       <Bitrate>96</Bitrate>
     </AACAudio>
 
-##<a id="deinterlacing"></a>Deaktivieren des automatischen De-Interlacings
+##<a id="deinterlacing"></a>Deaktivieren des automatischen Deinterlacings
 
 Kunden müssen nichts tun, wenn sie wünschen, dass das Interlacing der die Interlace-Inhalte automatisch aufgehoben wird. Bei Aktivierung des automatischen De-Interlacings (Standard) übernimmt MWS die automatische Erkennung von Frames mit Zeilensprung und hebt das Interlacing nur für Frames auf, die als Interlaced markiert sind.
 
@@ -914,7 +916,7 @@ Sie können das automatische De-Interlacing deaktivieren. Diese Option wird jedo
 	</Sources>
 
 
-##<a id="audio_only"></a>Nur Audio-Voreinstellungen
+##<a id="audio_only"></a>Nur Audiovoreinstellungen
 
 Dieser Abschnitt zeigt zwei auf Audio begrenzte MES-Voreinstellungen: AAC-Audio und AAC Good Quality Audio.
 
@@ -1072,7 +1074,10 @@ Aktualisieren Sie Ihre benutzerdefinierte Voreinstellung mit den IDs der Medieno
 	    }
 	  ]
 	}
-	
+
+##<a id="crop"></a>Zuschneiden von Videos mit Media Encoder Standard
+
+Siehe das Thema [Zuschneiden von Videos mit Media Encoder Standard](media-services-crop-video.md).
 
 ##Media Services-Lernpfade
 
@@ -1086,4 +1091,4 @@ Aktualisieren Sie Ihre benutzerdefinierte Voreinstellung mit den IDs der Medieno
 
 [Media Services-Codierung (Übersicht)](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

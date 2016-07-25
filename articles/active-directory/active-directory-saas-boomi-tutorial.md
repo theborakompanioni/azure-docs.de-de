@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
 #Lernprogramm: Azure Active Directory-Integration mit Boomi
@@ -37,7 +37,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Boo
 
 ###So aktivieren Sie die Anwendungsintegration für Boomi
 
-1.  Klicken Sie im linken Navigationsbereich des Azure-Verwaltungsportals auf **Active Directory**.
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-boomi-tutorial/IC700993.png "Active Directory")
 
@@ -68,7 +68,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 ###So konfigurieren Sie einmaliges Anmelden
 
-1.  Klicken Sie im Azure AD-Portal auf der Anwendungsintegrationsseite für **Boomi** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Boomi** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-boomi-tutorial/IC790824.png "Einmaliges Anmelden konfigurieren")
 
@@ -76,7 +76,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-boomi-tutorial/IC790825.png "Einmaliges Anmelden konfigurieren")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** des Textfelds **Boomi-Antwort-URL** Ihre **Boomi AtomSphere Anmelde-URL** (z. B. "*https://platform.boomi.com/sso/AccountName/saml*”) ein, und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Boomi-Antwort-URL** Ihre **Boomi AtomSphere-Anmelde-URL** ein (z.B. „*https://platform.boomi.com/sso/AccountName/saml*”), und klicken Sie dann auf **Weiter**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-boomi-tutorial/IC790826.png "App-URL konfigurieren")
 
@@ -100,11 +100,11 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     1.  Aktivieren Sie **Enable SAML Single Sign-On**.
     2.  Klicken Sie auf **Import**, um das heruntergeladene Zertifikat hochzuladen.
-    3.  Kopieren Sie im Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren um Boomi** den Wert der **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **Identity Provider Login URL** ein.
+    3.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Boomi** den Wert der **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **Identity Provider Login URL** ein.
     4.  Wählen Sie als **Federation Id Location** die Option **Federation Id is in NameID element of the Subject** aus.
     5.  Klicken Sie auf **Speichern**.
 
-9.  Wählen Sie im Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
+9.  Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-boomi-tutorial/IC775560.png "Einmaliges Anmelden konfigurieren")
 ##Konfigurieren der Benutzerbereitstellung
@@ -130,7 +130,7 @@ Damit sich Azure AD-Benutzer bei Boomi anmelden können, müssen sie in Boomi b
     1.  Geben Sie den **Vornamen**, den **Nachnamen** und die **Email-Adresse** eines gültigen AAD-Benutzerkontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
     2.  Klicken Sie auf OK.
 
->[AZURE.NOTE]Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Boomi-Benutzerkonten oder mithilfe der von Boomi bereitgestellten APIs erstellen.
+>[AZURE.NOTE] Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Boomi-Benutzerkonten oder mithilfe der von Boomi bereitgestellten APIs erstellen.
 
 ##Zuweisen von Benutzern
 
@@ -138,7 +138,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
 
 ###So weisen Sie Boomi Benutzer zu
 
-1.  Erstellen Sie im Azure AD-Portal ein Testkonto.
+1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
 2.  Klicken Sie auf der Anwendungsintegrationsseite für **Boomi** auf **Benutzer zuweisen**.
 
@@ -150,4 +150,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

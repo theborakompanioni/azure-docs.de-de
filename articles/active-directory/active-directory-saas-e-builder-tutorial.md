@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="04/06/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit e-Builder
@@ -37,7 +37,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für e-B
 
 ###So aktivieren Sie die Anwendungsintegration für e-Builder
 
-1.  Klicken Sie im linken Navigationsbereich des Azure-Verwaltungsportals auf **Active Directory**.
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-e-builder-tutorial/IC700993.png "Active Directory")
 
@@ -68,7 +68,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 ###So konfigurieren Sie einmaliges Anmelden
 
-1.  Klicken Sie im Azure AD-Portal auf der Anwendungsintegrationsseite für **e-Builder** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **e-Builder** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-e-builder-tutorial/IC777381.png "Einmaliges Anmelden konfigurieren")
 
@@ -76,11 +76,11 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-e-builder-tutorial/IC777382.png "Einmaliges Anmelden konfigurieren")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **e-Builder-Anmelde-URL** die URL im Format „ *https://\<Mandantenname\>.e-Builder.com* “ ein, und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **e-Builder-Anmelde-URL** die URL im Format „*https://\<Mandantenname>.e-Builder.com*“ ein, und klicken Sie dann auf **Weiter**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-e-builder-tutorial/IC777383.png "App-URL konfigurieren")
 
-4.  Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für e-Builder** auf **Metadaten herunterladen**, und speichern Sie die Metadatendatei lokal unter **c:\\E-BuilderMetaData.xml**.
+4.  Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für e-Builder** auf **Metadaten herunterladen**, und speichern Sie die Metadatendatei lokal unter **c:\\e-BuilderMetaData.xml**.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-e-builder-tutorial/IC777384.png "Einmaliges Anmelden konfigurieren")
 
@@ -98,7 +98,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 ###So weisen Sie e-Builder Benutzer zu
 
-1.  Erstellen Sie im Azure AD-Portal ein Testkonto.
+1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
 2.  Klicken Sie auf der Anwendungsintegrationsseite für **e-Builder** auf **Benutzer zuweisen**.
 
@@ -110,4 +110,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->

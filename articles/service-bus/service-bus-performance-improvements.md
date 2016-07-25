@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="03/16/2016"
+    ms.date="07/08/2016"
     ms.author="sethm" />
 
 # Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus-Brokermessaging
@@ -81,7 +81,7 @@ Beim Erstellen eines Warteschlangen- oder Abonnementclients können Sie einen Em
 
 Wenn der Empfangsmodus auf [ReceiveAndDelete][] festgelegt wird, werden beide Schritte in einer einzelnen Anforderung kombiniert. Dies reduziert die Anzahl der Vorgänge und kann den Gesamtnachrichtendurchsatz verbessern. Diese Leistungssteigerung kann zu Nachrichtenverlusten führen.
 
-Service Bus unterstützt keine Transaktionen für ReceiveAndDelete-Vorgänge. Darüber hinaus ist die PeekLock-Semantik für alle Szenarien erforderlich, in denen der Client eine Nachricht zurückstellen oder in eine Warteschlange für unzustellbare Nachrichten verschieben möchte.
+Service Bus unterstützt keine Transaktionen für ReceiveAndDelete-Vorgänge. Darüber hinaus ist die PeekLock-Semantik für alle Szenarien erforderlich, in denen der Client eine Nachricht zurückstellen oder [in eine Warteschlange für unzustellbare Nachrichten verschieben](service-bus-dead-letter-queues.md) möchte.
 
 ## Clientseitige Batchverarbeitung
 
@@ -116,7 +116,7 @@ Der Speicherzugriff als Batch wirkt sich nicht auf die Anzahl der abrechenbaren 
 
 ## Vorabrufe
 
-Vorabrufe ermöglichen dem Warteschlangen- oder Abonnementclient weitere Nachrichten aus dem Dienst zu laden, wenn er einen Empfangsvorgang ausführt. Der Client speichert diese Nachrichten in einem lokalen Cache. Die Größe des Caches wird anhand der Eigenschaften [QueueClient.PrefetchCount][] und [SubscriptionClient.PrefetchCount][] bestimmt. Jeder Client, der Vorabrufe ermöglicht, verwaltet seinen eigenen Cache. Ein Cache wird nicht für andere Clients freigegeben. Wenn der Client einen Empfangsvorgang initiiert und sein Cache leer ist, überträgt der Dienst ein Nachrichtenbatch. Die Größe des Batches entspricht der Größe des Caches oder 256 KB (dem jeweils kleinerem Wert). Wenn der Client einen Empfangsvorgang initiiert und der Cache eine Nachricht enthält, wird die Nachricht aus dem Cache abgerufen.
+Vorabrufe ermöglichen dem Warteschlangen- oder Abonnementclient weitere Nachrichten aus dem Dienst zu laden, wenn er einen Empfangsvorgang ausführt. Der Client speichert diese Nachrichten in einem lokalen Cache. Die Größe des Cache wird anhand der Eigenschaften [QueueClient.PrefetchCount][] oder [SubscriptionClient.PrefetchCount][] bestimmt. Jeder Client, der Vorabrufe ermöglicht, verwaltet seinen eigenen Cache. Ein Cache wird nicht für andere Clients freigegeben. Wenn der Client einen Empfangsvorgang initiiert und sein Cache leer ist, überträgt der Dienst ein Nachrichtenbatch. Die Größe des Batches entspricht der Größe des Caches oder 256 KB (dem jeweils kleinerem Wert). Wenn der Client einen Empfangsvorgang initiiert und der Cache eine Nachricht enthält, wird die Nachricht aus dem Cache abgerufen.
 
 Wenn eine Nachricht vorab abgerufen wird, sperrt der Dienst die vorab abgerufene Nachricht. Auf diese Weise kann die vorab abgerufene Nachricht nicht von einem anderen Empfänger empfangen werden. Wenn der Empfänger die Nachricht nicht abschließen kann, bevor die Sperre abläuft, wird die Nachricht für andere Empfänger verfügbar gemacht. Die vorab abgerufene Kopie der Nachricht verbleibt im Cache. Der Empfänger, der die abgelaufene Kopie aus dem Cache verarbeitet, empfängt eine Ausnahme, wenn er versucht, diese Nachricht abzuschließen. Standardmäßig läuft die Nachrichtensperrre nach 60 Sekunden ab. Dieser Wert kann auf 5 Minuten erhöht werden. Um die Nutzung abgelaufener Nachrichten zu verhindern, sollten die Cachegröße immer kleiner als die Anzahl der Nachrichten sein, die von einem Client innerhalb des Sperrintervalls genutzt werden können.
 
@@ -211,7 +211,7 @@ Gehen Sie wie folgt vor, um den Durchsatz zu maximieren:
 
 -   Verwenden Sie asynchrone Vorgänge, um die clientseitige Batchverarbeitung zu nutzen.
 
--   Verwenden Sie das standardmäßige Batchintervall von 20 ms, um die Anzahl der Service Bus-Clientprotokollübertragungen zu verringern.
+-   Verwenden Sie das standardmäßige Batchintervall von 20 ms, um die Anzahl der Service Bus-Clientprotokollübertragungen zu verringern.
 
 -   Lassen Sie den Speicherzugriff als Batch aktiviert. Dies erhöht die Gesamtrate, mit der Nachrichten in die Warteschlange oder in das Thema geschrieben werden können.
 
@@ -249,7 +249,7 @@ Gehen Sie wie folgt vor, um den Durchsatz zu maximieren:
 
 -   Verwenden Sie asynchrone Vorgänge, um die clientseitige Batchverarbeitung zu nutzen.
 
--   Verwenden Sie das standardmäßige Batchintervall von 20 ms, um die Anzahl der Service Bus-Clientprotokollübertragungen zu verringern.
+-   Verwenden Sie das standardmäßige Batchintervall von 20 ms, um die Anzahl der Service Bus-Clientprotokollübertragungen zu verringern.
 
 -   Lassen Sie den Speicherzugriff als Batch aktiviert. Dies erhöht die Gesamtrate, mit der Nachrichten in das Thema geschrieben werden können.
 
@@ -267,7 +267,7 @@ Gehen Sie wie folgt vor, um den Durchsatz zu maximieren:
 
 -   Verwenden Sie asynchrone Vorgänge, um die clientseitige Batchverarbeitung zu nutzen.
 
--   Verwenden Sie das standardmäßige Batchintervall von 20 ms, um die Anzahl der Service Bus-Clientprotokollübertragungen zu verringern.
+-   Verwenden Sie das standardmäßige Batchintervall von 20 ms, um die Anzahl der Service Bus-Clientprotokollübertragungen zu verringern.
 
 -   Lassen Sie den Speicherzugriff als Batch aktiviert. Dies erhöht die Gesamtrate, mit der Nachrichten in das Thema geschrieben werden können.
 
@@ -291,4 +291,4 @@ Weitere Informationen zum Optimieren der Service Bus-Leistung finden Sie unter [
   [Partitionierte Messagingentitäten]: service-bus-partitioning.md
   
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0713_2016-->

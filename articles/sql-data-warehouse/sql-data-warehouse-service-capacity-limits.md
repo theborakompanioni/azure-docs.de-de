@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/01/2016"
+   ms.date="07/11/2016"
    ms.author="sonyama;barbkess;jrj"/>
 
 # Kapazitätsgrenzen von SQL Data Warehouse
@@ -25,7 +25,7 @@ Die folgenden Tabellen erhalten die maximalen Werte, die für verschiedene Kompo
 
 | Kategorie | Beschreibung | Maximum |
 | :------------------ | :------------------------------------------- | :----------------- |
-| [Data Warehouse-Einheiten (DWU)][]| Compute, Arbeitsspeicher und E/A-Ressourcen | 2000 |
+| [Data Warehouse-Einheiten (DWU)][]| Compute, Arbeitsspeicher und E/A-Ressourcen | 6000 |
 | Datenbankverbindung | Gleichzeitig geöffnete Sitzungen | 1\.024<br/><br/>Wir unterstützen maximal 1.024 aktive Verbindungen, wobei jede Verbindung gleichzeitig Anforderungen an eine SQL Data Warehouse-Datenbank übermitteln kann. Beachten Sie, dass die Anzahl der Abfragen, die tatsächlich gleichzeitig ausgeführt werden können, begrenzt ist. Wenn der Grenzwert überschritten wird, gelangt die Anforderung in eine interne Warteschlange, in der sie auf die Verarbeitung wartet.|
 | Datenbankverbindung | Maximaler Arbeitsspeicher für vorbereitete Anweisungen | 20 MB |
 | [Workloadverwaltung][] | Maximale Anzahl gleichzeitiger Abfragen | 32<br/><br/> SQL Data Warehouse führt standardmäßig bis zu 32 gleichzeitige Abfragen durch und reiht verbleibende Abfragen in die Warteschlange ein.<br/><br/>Der Grad an Parallelität kann sich verringern, wenn Benutzer einer höheren Ressourcenklasse zugewiesen werden. Einige Abfragen, wie DMV-Abfragen, dürfen immer ausgeführt werden.|
@@ -110,4 +110,4 @@ Weitere Referenzinformationen finden Sie unter [SQL Data Warehouse-Referenz – 
 [CREATE TABLE (Azure SQL Data Warehouse)]: https://msdn.microsoft.com/library/mt203953.aspx
 [Interner Fehler: ein Ausdrucksdienstelimit wurde erreicht.]: https://support.microsoft.com/kb/913050
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

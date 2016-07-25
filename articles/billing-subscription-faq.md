@@ -14,26 +14,26 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/29/2016"
+	ms.date="07/11/2016"
 	ms.author="genli"/>
 
 #  Azure-Abrechnung und -Abonnement – Häufig gestellte Fragen
 
 In diesem Artikel werden einige der am häufigsten gestellten Fragen zu Abrechnung und Abonnements in Azure beantwortet.
 
-**Kontoverwaltung**
+## Kontoverwaltung
 
 - [Wie verwalte ich Administratorkonten im neuen Azure-Portal?](#how-do-i-manage-administrator-accounts-in-the-new-azure-portal)
 - [Können Benachrichtigungen an eine andere E-Mail-Adresse als die E-Mail-Adresse des Kontoinhabers, die meinem Konto zugeordnet ist, gesendet werden?](#can-notifications-be-sent-to-a-different-email-address-other-than-the-account-owner-email-address-associated-with-my-account)
 - [Warum kann ich Details meines Abonnements nicht bearbeiten oder ergänzen?](#why-cannot-i-edit-or-add-details-to-my-subscription)
 - [Ich kann mich nicht beim Azure-Portal anmelden](#i-am-unable-to-log-in-to-the-azure-portal)
 
-**Abrechnung**
+## Abrechnung
 
 - [Wie erhalte ich eine Kopie meiner Rechnung?](#how-do-i-get-a-copy-of-my-invoice)
 - [Für den letzten Abrechnungszeitraum wird keine Rechnung angezeigt. Warum?](#i-do-not-see-an-invoice-for-the-last-billing-period-why)
 
-**Kostenlose Testversion**
+## Kostenlose Testversion
 
 - [Kann ich Azure kostenlos testen, ohne dass mir Gebühren in Rechnung gestellt werden?](#can-i-try-azure-for-free-without-any-risk-of-being-charged)
 - [Was ist ein Testabonnement, und wie lange ist es verfügbar?](#what-is-a-trial-subscription-and-how-long-does-it-last)
@@ -41,7 +41,7 @@ In diesem Artikel werden einige der am häufigsten gestellten Fragen zu Abrechnu
 - [Was passiert, wenn ich das Ausgabenlimit für meine kostenlose Testversion entferne?](#what-happens-if-i-remove-the-spending-limit-on-my-free-trial)
 - [Wo finde ich ausführlichere Informationen zur kostenlosen Testversion?](#where-can-i-get-more-details-on-free-trial)
 
-**Erwerb von Azure**
+## Erwerb von Azure
 
 - [In welchen Ländern und Regionen ist Microsoft Azure im Handel erhältlich, und in welchen Währungen kann Azure erworben werden?](#in-which-countries-and-regions-is-microsoft-azure-commercially-available-and-what-currencies-can-be-used-to-purchase-azure)
 - [Wird der Weiterverkauf eines Azure-basierten Diensts an Embargoländer unterbunden?](#do-we-restrict-resale-of-azure-based-service-into-countries-under-embargo)
@@ -49,7 +49,7 @@ In diesem Artikel werden einige der am häufigsten gestellten Fragen zu Abrechnu
 - [Kann ich meine vorhandenen Windows-Lizenzen verwenden, die ich außerhalb von Azure erworben habe?](#can-i-use-my-existing-windows-licenses-that-i-bought-outside-of-azure)
 - [Wer kann Azure-Dienste kaufen?](#who-can-purchase-azure-services)
 
-**Zahlungen**
+## Zahlungen
 
 - [Welche Zahlungsoptionen stehen mir beim Erwerb von Azure zur Verfügung?](#what-payment-options-do-i-have-in-purchasing-azure)
 - [Wie kann ich die Zahlungsmethode für die Rechnung beantragen?](#how-can-i-request-the-invoice-method-of-payment)
@@ -58,24 +58,24 @@ In diesem Artikel werden einige der am häufigsten gestellten Fragen zu Abrechnu
 - [Wie aktualisiere oder ändere ich meine Kreditkarteninformationen?](#how-can-i-update-or-change-my-credit-card-information)
 - [Wie kann ich die Zahlungsinformationen für meine Azure-Abonnements bearbeiten?](#how-can-i-edit-my-payment-information-for-my-azure-subscriptions)
 
-**Azure-Preise**
+## Azure-Preise
 
 - [Wo finde ich Informationen zu den Leistungen und Preisen von Azure-Diensten?](#where-can-i-find-the-benefits-and-pricing-information-for-azure-services)
 - [Wie ändere ich meinen Tarif?](#how-do-i-change-my-pricing-plan)
 
-**Vereinbarungen zum Servicelevel (SLAs)**
+## Vereinbarungen zum Servicelevel (SLAs)
 
 - [Wie werden wir vorab über den Ausfall des Diensts aufgrund einer geplanten Wartung informiert?](#how-do-we-know-in-advance-about-service-downtime-for-planned-maintenance)
 - [Was lautet die Azure-SLA für Verfügbarkeit und Konnektivität?](#what-is-the-azure-sla-agreement-for-uptime-and-connectivity)
 - [Was sind Azure-SLA-Guthaben?](#what-are-the-azure-sla-credits)
 - [Wie funktionieren Azure-SLAs mit aktuellen lokalen Microsoft-Lizenzvereinbarungen?](#how-will-azure-service-level-agreements-work-with-current-on-premises-microsoft-licensing-agreements)
 
-**Azure-Ausgabenlimits**
+## Azure-Ausgabenlimits
 
 - [Kann ich das Ausgabenlimit wieder aktivieren, nachdem ich es deaktiviert habe?](#can-i-turn-the-spending-limit-back-on-if-i-turn-off-it)
 - [Kann der Betrag des Ausgabenlimits angepasst werden?](#can-i-adjust-the-amount-of-the-spending-limit)
 
-**Supportpläne**
+## Supportpläne
 
 - [Wie erwerbe ich Azure-Support?](#how-do-i-purchase-azure-support)
 - [Gilt die monatliche Gebühr für einen einzelnen Azure-Plan oder für das gesamte Konto?](#does-the-monthly-rate-cover-a-single-azure-plan-or-the-entire-account)
@@ -84,7 +84,7 @@ In diesem Artikel werden einige der am häufigsten gestellten Fragen zu Abrechnu
 - [Was geschieht am Ende der Laufzeit?](#what-happens-at-the-end-of-the-term)
 - [Wie kann ich meinen Azure-Supportplan kündigen?](#how-do-i-cancel-my-azure-support-plan)
 
-**Migrieren von Abonnements, Diensten und Daten**
+## Migrieren von Abonnements, Diensten und Daten
 
 - [Wie migriere ich Daten und Dienste für mein Abonnement in ein neues Abonnement?](#how-do-i-migrate-data-and-services-for-my-azure-subscription-to-a-new-subscription)
 - [Wie übertrage ich den Besitz meiner Abonnements?](#how-do-i-transfer-ownership-of-my-subscriptions)
@@ -286,4 +286,4 @@ Wenn Sie das Ausgabenlimit entfernen, wird Ihnen die Nutzung von Ressourcen in R
 ### Wo finde ich ausführlichere Informationen zur kostenlosen Testversion?
 Weitere Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/offers/ms-azr-0044p/) sowie unter [FAQ zur kostenlosen Azure-Testversion](https://azure.microsoft.com/pricing/free-trial-faq/).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

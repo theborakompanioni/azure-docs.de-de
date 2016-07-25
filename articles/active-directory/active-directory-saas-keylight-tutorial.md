@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/18/2016"
+	ms.date="07/11/2016"
 	ms.author="jeedes"/>
 
 
@@ -25,7 +25,7 @@ Die Integration von Keylight in Azure AD bietet die folgenden Vorteile:
 
 - Sie können in Azure AD steuern, wer Zugriff auf Keylight hat.
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Keylight anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – dem Azure Active Directory-Portal
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
@@ -60,7 +60,7 @@ Zum Konfigurieren der Integration von Keylight in Azure AD müssen Sie Keylight 
 
 **Um Keylight aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **Azure-Verwaltungsportals** auf **Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
 
 	![Active Directory][1]
 
@@ -99,12 +99,12 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit Keylight m
 
 ### Konfigurieren des einmaligen Anmeldens von Azure AD
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Keylight-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassischen Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Keylight-Anwendung.
 
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Keylight die folgenden Schritte aus:**
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Keylight** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Keylight** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
 	![Einmaliges Anmelden konfigurieren][6]
 
@@ -163,7 +163,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     e. Legen Sie für **SAML User Id location** die Einstellung **NameIdentifier element of the subject statement** fest.
    
-    f. Geben Sie den **Keylight-Dienstanbieter nach folgendem Muster ein: **https://&lt;Company Name&gt;.keylightgrc.com**
+    f. Geben Sie den **Keylight-Dienstanbieter in folgendem Format ein: **https://&lt;Company Name&gt;.keylightgrc.com**.
 
     g. Legen Sie für **Auto-provision users** die Einstellung **Active** fest.
 
@@ -184,7 +184,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
   
    
   
-6. Wählen Sie im Azure-Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus, und klicken Sie dann auf **Weiter**.
+6. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
 
 	![Azure AD – einmaliges Anmelden][10]
 
@@ -196,7 +196,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 
 ### Erstellen eines Azure AD-Testbenutzers
-In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen Britta Simon.
+In diesem Abschnitt erstellen Sie im klassischen Azure-Portal einen Testbenutzer mit dem Namen Britta Simon.
 
 Wählen Sie in der Benutzerliste **Britta Simon** aus.
 
@@ -206,7 +206,7 @@ Wählen Sie in der Benutzerliste **Britta Simon** aus.
 
 **Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf **Active Directory**.
+1. Klicken Sie im **klassischen Azure-Portal** im linken Navigationsbereich auf **Active Directory**.
 
 	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-keylight-tutorial/create_aaduser_09.png)
 
@@ -252,7 +252,7 @@ Wählen Sie in der Benutzerliste **Britta Simon** aus.
 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
 
-	![Erstellen einen Azure AD-Testbenutzers](./media/active-directory-saas-keylight-tutorial/create_aaduser_08.png)
+	![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-keylight-tutorial/create_aaduser_08.png)
 
     a. Notieren Sie den Wert von **Neues Kennwort**.
 
@@ -277,7 +277,7 @@ In diesem Abschnitt ermöglichen Sie für Britta Simon das einmalige Anmelden vo
 
 **Zum Zuweisen von Britta Simon zu Keylight führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie zum Öffnen der Anwendungsansicht im Azure-Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
+1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
 
 	![Benutzer zuweisen][201]
 
@@ -329,4 +329,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Keylight“ klicken, sollten Sie a
 [204]: ./media/active-directory-saas-keylight-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-keylight-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0713_2016-->

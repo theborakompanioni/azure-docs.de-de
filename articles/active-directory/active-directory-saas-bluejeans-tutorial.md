@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="04/06/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
 #Lernprogramm: Azure AD-Integration mit BlueJeans
@@ -37,7 +37,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Blu
 
 ###So aktivieren Sie die Anwendungsintegration für BlueJeans
 
-1.  Klicken Sie im linken Navigationsbereich des Azure-Verwaltungsportals auf **Active Directory**.
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-bluejeans-tutorial/IC700993.png "Active Directory")
 
@@ -68,7 +68,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 ###So konfigurieren Sie einmaliges Anmelden
 
-1.  Klicken Sie im Azure AD-Portal auf der Anwendungsintegrationsseite für **BlueJeans** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **BlueJeans** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-bluejeans-tutorial/IC785863.png "Einmaliges Anmelden konfigurieren")
 
@@ -76,7 +76,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-bluejeans-tutorial/IC785864.png "Einmaliges Anmelden konfigurieren")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld **BlueJeans-Anmelde-URL** die URL im Format **https://company.BlueJeans.com**" ein, und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **BlueJeans-Anmelde-URL** Ihre URL im Format „*https://company.BlueJeans.com*" ein, und klicken Sie dann auf **Weiter**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-bluejeans-tutorial/IC785865.png "App-URL konfigurieren")
 
@@ -102,19 +102,19 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     ![Zertifikatpfad](./media/active-directory-saas-bluejeans-tutorial/IC785870.png "Zertifikatpfad")
 
     1.  Klicken Sie auf **Datei auswählen**, und laden Sie dann das heruntergeladene Zertifikat hoch.
-    2.  Kopieren Sie im Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren um BlueJeans** den Wert für **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **Login URL** ein.
-    3.  Kopieren Sie im Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren um BlueJeans** den Wert für **Kennwort-URL ändern**, und fügen Sie ihn in das Textfeld **Password Change URL** ein.
-    4.  Kopieren Sie im Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren um BlueJeans** den Wert für **Remoteabmelde-URL**, und fügen Sie ihn in das Textfeld **Logout URL** ein.
+    2.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für BlueJeans** den Wert für **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **Login URL** ein.
+    3.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für BlueJeans** den Wert für **Kennwort-URL ändern**, und fügen Sie ihn in das Textfeld **Password Change URL** ein.
+    4.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für BlueJeans** den Wert für **Remoteabmelde-URL**, und fügen Sie ihn in das Textfeld **Logout URL** ein.
 
 9.  Führen Sie die folgenden Schritte aus:
 
     ![Änderungen speichern](./media/active-directory-saas-bluejeans-tutorial/IC785874.png "Änderungen speichern")
 
     1.  Geben Sie in das Textfeld **Benutzer-ID** den Wert **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name** ein.
-	2.  Geben Sie in das Textfeld **E-Mail** den Wert **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name** ein.
-	3.  Klicken Sie auf **Änderungen speichern**.
+    2.  Geben Sie in das Textfeld **E-Mail** den Wert **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name** ein.
+    3.  Klicken Sie auf **Änderungen speichern**.
 
-10. Wählen Sie im Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
+10. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-bluejeans-tutorial/IC785876.png "Einmaliges Anmelden konfigurieren")
 ##Konfigurieren der Benutzerbereitstellung
@@ -146,7 +146,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
 
 ###So weisen Sie BlueJeans Benutzer zu
 
-1.  Erstellen Sie im Azure AD-Portal ein Testkonto.
+1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
 2.  Klicken Sie auf der Anwendungsintegrationsseite für **BlueJeans** auf **Benutzer zuweisen**.
 
@@ -158,4 +158,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="06/29/2016"
-	ms.author="mohisri"/>
+	ms.author="rachelap"/>
 
 # App Service-API-Apps – Änderungen
 
@@ -122,4 +122,4 @@ Weitere Informationen finden Sie in den Artikeln im [Abschnitt zur API-Apps-Doku
 - [MSDN-Forum](https://social.msdn.microsoft.com/Forums/de-DE/home?forum=AzureAPIApps)
 - [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-api-apps)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

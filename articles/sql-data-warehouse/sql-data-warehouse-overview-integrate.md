@@ -1,6 +1,6 @@
 <properties
    pageTitle="Erstellen von integrierten Lösungen mit SQL Data Warehouse | Microsoft Azure"
-   description="Tools und Partner mit Lösungen, die in SQL Data Warehouse integriert werden können."
+   description="Tools und Partner mit Lösungen, die in SQL Data Warehouse integriert werden können. "
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="lodipalm"
@@ -38,7 +38,7 @@ Weitere Informationen finden Sie unter [Integration in Power BI](./sql-data-ware
 Azure Data Factory bietet Benutzern eine verwaltete Plattform zur Erstellung von Pipelines zum Extrahieren und Laden. Die SQL Data Warehouse-Integration in Azure Data Factory umfasst Folgendes:
 
 + **Gespeicherte Prozeduren**: Orchestrieren Sie die Ausführung von gespeicherten Prozeduren in SQL Data Warehouse.
-+ **Kopieren**: Verwenden Sie Azure Data Factory, um Daten nach SQL Data Warehouse zu verschieben. Dieser Vorgang kann im Hintergrund PolyBase oder den standardmäßigen Mechanismus von Azure Data Factory zum Verschieben von Daten verwenden. 
++ **Kopieren**: Verwenden Sie Azure Data Factory, um Daten nach SQL Data Warehouse zu verschieben. Dieser Vorgang kann im Hintergrund PolyBase oder den standardmäßigen Mechanismus von Azure Data Factory zum Verschieben von Daten verwenden.
 
 Weitere Informationen finden Sie unter[Integration in Azure Data Factory](./sql-data-warehouse-integrate-azure-data-factory.md) oder in der [Azure Data Factory-Dokumentation](https://azure.microsoft.com/documentation/services/data-factory/).
 
@@ -66,10 +66,10 @@ Weitere Informationen finden Sie unter[Integration in Azure Stream Analytics](./
 [Azure Machine Learning]: sql-data-warehouse-integrate-azure-machine-learning.md
 [Azure Stream Analytics]: sql-data-warehouse-integrate-azure-stream-analytics.md
 [Power BI]: sql-data-warehouse-integrate-power-bi.md
-[Partners]: sql-data-warehouse-integrate-solution-partners.md
+[Partners]: sql-data-warehouse-partner-business-intelligence.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->

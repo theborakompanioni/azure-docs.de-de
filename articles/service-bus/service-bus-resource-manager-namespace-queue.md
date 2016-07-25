@@ -13,16 +13,16 @@
     ms.topic="article"
     ms.tgt_pltfrm="dotnet"
     ms.workload="na"
-    ms.date="04/15/2016"
+    ms.date="07/11/2016"
     ms.author="sethm;shvija"/>
 
 # Erstellen eines Service Bus-Namespace und einer Warteschlange mithilfe einer Azure Resource Manager-Vorlage
 
-In diesem Artikel wird beschrieben, wie Sie eine Azure Resource Manager-Vorlage verwenden, die einen Service Bus-Namespace und eine Warteschlange erstellt. Sie erfahren, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder Ihren Anforderungen anpassen.
+In diesem Artikel wird beschrieben, wie Sie eine Azure Resource Manager-Vorlage verwenden, die einen Service Bus-Namespace und eine Warteschlange erstellt. Sie erfahren, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.
 
-Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen][].
+Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen][].
 
-Die vollständige Vorlage finden Sie unter [Service Bus namespace and queue template][] \(Service Bus-Namespace- und Warteschlangenvorlage) auf GitHub.
+Die vollständige Vorlage finden Sie unter [Service Bus namespace and queue template][] (Service Bus-Namespace- und Warteschlangenvorlage) auf GitHub.
 
 >[AZURE.NOTE] Die folgenden Azure Resource Manager-Vorlagen sind zum Download und zur Bereitstellung verfügbar.
 >
@@ -31,15 +31,13 @@ Die vollständige Vorlage finden Sie unter [Service Bus namespace and queue temp
 >-    [Create a Service Bus namespace with topic and subscription using an Azure Resource Manager template (Erstellen eines Service Bus-Namespace mit Thema und Abonnement mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-topic.md)
 >-    [Erstellen eines Service Bus-Namespaces](service-bus-resource-manager-namespace.md)
 >
->Um die neuesten Vorlagen zu finden, rufen Sie die [Azure-Schnellstartvorlagen][] auf, und suchen Sie nach „Service Bus“.
+>Um die neuesten Vorlagen zu finden, rufen Sie den Katalog [Azure-Schnellstartvorlagen][] auf, und suchen Sie nach „Service Bus“.
 
 ## Was möchten Sie bereitstellen?
 
 Mit dieser Vorlage können Sie einen Service Bus-Namespace mit einer Warteschlange bereitstellen.
 
-Warteschlangen liefern die Nachrichten im First In, First Out (FIFO)-Verfahren an einen oder mehrere Consumer.
-
-[Weitere Informationen zu Service Bus-Warteschlangen](service-bus-queues-topics-subscriptions.md).
+[Service Bus-Warteschlangen](service-bus-queues-topics-subscriptions.md#queues) bieten eine FIFO-Nachrichtenzustellung (First In, First Out) an einen Consumer oder an mehrere konkurrierende Consumer.
 
 Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuführen:
 
@@ -49,7 +47,7 @@ Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuf
 
 Mit dem Azure-Ressourcen-Manager definieren Sie die Parameter für Werte, die Sie bei der Bereitstellung der Vorlage angeben möchten. Die Vorlage enthält einen Abschnitt namens `Parameters`, der alle Parameterwerte enthält. Definieren Sie einen Parameter für die Werte, die basierend auf dem bereitgestellten Projekt oder der bereitgestellten Umgebung variieren. Definieren Sie keine Parameter für Werte, die sich nicht ändern. Jeder Parameterwert wird in der Vorlage verwendet, um die bereitgestellten Ressourcen zu definieren.
 
-Jeder Parameter wird in der Vorlage beschrieben.
+Die Vorlage definiert die folgenden Parameter:
 
 ### serviceBusNamespaceName
 
@@ -140,11 +138,11 @@ Da Sie nun Ressourcen mit Azure Resource Manager erstellt und bereitgestellt hab
 - [Service Bus Explorer](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
 
 
-  [Erstellen von Azure-Ressourcen-Manager-Vorlagen]: ../resource-group-authoring-templates.md
+  [Erstellen von Azure Resource Manager-Vorlagen]: ../resource-group-authoring-templates.md
   [Service Bus namespace and queue template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/
-  [Azure-Schnellstartvorlagen]: https://azure.microsoft.com/documentation/templates/
+  [Azure-Schnellstartvorlagen]: https://azure.microsoft.com/documentation/templates/?term=service+bus
   [Learn more about Service Bus queues]: service-bus-queues-topics-subscriptions.md
   [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
   [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
 #Lernprogramm: Azure Active Directory-Integration mit ABa Sainsburys Connect
@@ -37,7 +37,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für ABa
 
 ###So aktivieren Sie die Anwendungsintegration für ABa Sainsburys Connect
 
-1.  Klicken Sie im linken Navigationsbereich des Azure-Verwaltungsportals auf **Active Directory**.
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-aba-sainsburys-connect-tutorial/IC700993.png "Active Directory")
 
@@ -68,7 +68,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 ###So konfigurieren Sie einmaliges Anmelden
 
-1.  Klicken Sie im Azure AD-Portal auf der Anwendungsintegrationsseite für **Aba Sainsburys Connect** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Aba Sainsburys Connect** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-aba-sainsburys-connect-tutorial/IC807726.png "Einmaliges Anmelden konfigurieren")
 
@@ -80,7 +80,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Konfigurieren von App-Einstellungen](./media/active-directory-saas-aba-sainsburys-connect-tutorial/IC807728.png "Konfigurieren von App-Einstellungen")
 
-    1.  Geben Sie im Textfeld **Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei der Aba Sainsburys Connect-Anwendung verwenden (z. B. **https://myaba.co.uk/client-access/sainsburys/saml.php*).
+    1.  Geben Sie im Textfeld **Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei Ihrer Aba Sainsburys Connect-Anwendung verwendete URL ein (z.B. *https://myaba.co.uk/client-access/sainsburys/saml.php*).
     2.  Klicken Sie auf **Weiter**.
 
 4.  Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren um Aba Sainsburys Connect** auf **Metadaten herunterladen**, und speichern Sie die Metadatendatei auf Ihrem Computer.
@@ -89,16 +89,16 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 5.  Senden Sie die heruntergeladene Metadatendatei an das Supportteam von Aba Sainsburys Connect.
 
-    >[AZURE.NOTE]Die eigentliche SSO-Konfiguration muss vom Supportteam von Aba Sainsburys Connect durchgeführt werden. Sie erhalten eine Benachrichtigung, wenn SSO für Ihr Abonnement aktiviert wurde.
+    >[AZURE.NOTE] Die eigentliche SSO-Konfiguration muss vom Supportteam von Aba Sainsburys Connect durchgeführt werden. Sie erhalten eine Benachrichtigung, wenn SSO für Ihr Abonnement aktiviert wurde.
 
-6.  Wählen Sie im Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
+6.  Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-aba-sainsburys-connect-tutorial/IC807730.png "Einmaliges Anmelden konfigurieren")
 ##Konfigurieren der Benutzerbereitstellung
 
 Damit Azure AD-Benutzer sich bei Aba Sainsburys Connect anmelden können, müssen sie in Aba Sainsburys Connect bereitgestellt werden. Im Fall von Aba Sainsburys Connect müssen die Benutzerkonten vom Supportteam für Aba Sainsburys Connect erstellt werden.
 
->[AZURE.NOTE]Sie können Azure Active Directory-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Aba Sainsburys Connect-Benutzerkonten oder mithilfe der von Aba Sainsburys Connect bereitgestellten APIs erstellen.
+>[AZURE.NOTE] Sie können Azure Active Directory-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Aba Sainsburys Connect-Benutzerkonten oder mithilfe der von Aba Sainsburys Connect bereitgestellten APIs erstellen.
 
 ##Zuweisen von Benutzern
 
@@ -106,9 +106,9 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
 
 ###So weisen Sie Aba Sainsburys Connect Benutzer zu
 
-1.  Erstellen Sie im Azure AD-Portal ein Testkonto.
+1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
-2.  Klicken Sie auf der Anwendungsintegrationsseite für **Aba Sainsburys Connect** auf **Benutzer zuweisen**.
+2.  Klicken Sie auf der Anwendungsintegrationsseite für **Aba Sainsburys Connect ** auf **Benutzer zuweisen**.
 
     ![Benutzer zuweisen](./media/active-directory-saas-aba-sainsburys-connect-tutorial/IC807731.png "Benutzer zuweisen")
 
@@ -118,4 +118,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

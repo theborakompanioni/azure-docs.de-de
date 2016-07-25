@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="05/03/2016"
+	ms.date="07/13/2016"
 	ms.author="jeffstok"/>
 
 # Skalieren von Azure Stream Analytics-Aufträgen zur Erhöhung des Durchsatzes bei der Streamingdatenverarbeitung
@@ -40,14 +40,14 @@ In diesem Artikel sehen Sie, wie Sie die Abfrage so berechnen und optimieren, da
 ## Hochgradig paralleler Auftrag
 Der hochgradig parallele Auftrag ist das am stärksten skalierbare Szenario, das in Azure Stream Analytics zur Verfügung steht. Er verbindet eine Partition der Eingabe mit einer Instanz der Abfrage und einer Partition der Ausgabe. Um diese Parallelität zu erreichen, müssen einige Anforderungen erfüllt sein:
 
-1.  Wenn Ihre Abfragelogik davon abhängig ist, dass der gleiche Schlüssel durch die gleiche Abfrageinstanz verarbeitet wird, müssen Sie sicherstellen, dass die Ereignisse in die gleiche Partition Ihrer Eingabe aufgenommen werden. Für Event Hubs bedeutet dies, dass für die Ereignisdaten ein **PartitionKey** festgelegt werden muss. Alternativ können Sie auch partitionierte Absender verwenden. Für Blob bedeutet das, dass die Ereignisse an den gleichen Partitionsordner gesendet werden. Wenn es für Ihre Abfragelogik nicht erforderlich ist, dass der gleiche Schlüssel von der gleichen Abfrageinstanz verarbeitet wird, können Sie diese Anforderung ignorieren. Ein Beispiel hierfür wäre eine einfache Auswahl-, Projekt- oder Filterabfrage.  
-2.	Nachdem die Daten auf der Eingabeseite wie erforderlich angeordnet und gegliedert wurden, müssen Sie sicherstellen, dass die Abfrage partitioniert wird. Dazu müssen Sie in allen Schritten **Partition By** verwenden. Es sind mehrere Schritte zulässig, aber sie müssen alle durch den gleichen Schlüssel partitioniert werden. Außerdem müssen Sie beachten, dass der Partitionierungsschlüssel derzeit auf **PartitionId** festgelegt werden muss, um einen vollständig parallelen Auftrag zu erhalten.  
-3.	Derzeit unterstützen nur Event Hubs und Blob eine partitionierte Ausgabe. Für die Event Hubs-Ausgabe müssen Sie für das Feld **PartitionKey** den Wert **PartitionId** konfigurieren. Für Blob müssen Sie nichts tun.  
-4.	Sie müssen beachten, dass die Anzahl von Eingabepartitionen gleich der Anzahl von Ausgabepartitionen sein muss. Die Blob-Ausgabe unterstützt derzeit keine Partitionen. Das ist aber kein Problem, weil sie das Partitionierungsschema von der vorgelagerten Abfrage erbt. Beispiele für Partitionswerte, die einen vollständig parallelen Auftrag ermöglichen:  
+1.  Wenn Ihre Abfragelogik davon abhängig ist, dass der gleiche Schlüssel durch die gleiche Abfrageinstanz verarbeitet wird, müssen Sie sicherstellen, dass die Ereignisse in die gleiche Partition Ihrer Eingabe aufgenommen werden. Für Event Hubs bedeutet dies, dass für die Ereignisdaten ein **PartitionKey** festgelegt werden muss. Alternativ können Sie auch partitionierte Absender verwenden. Für Blob bedeutet das, dass die Ereignisse an den gleichen Partitionsordner gesendet werden. Wenn es für Ihre Abfragelogik nicht erforderlich ist, dass der gleiche Schlüssel von der gleichen Abfrageinstanz verarbeitet wird, können Sie diese Anforderung ignorieren. Ein Beispiel hierfür wäre eine einfache Auswahl-, Projekt- oder Filterabfrage.
+2.	Nachdem die Daten auf der Eingabeseite wie erforderlich angeordnet und gegliedert wurden, müssen Sie sicherstellen, dass die Abfrage partitioniert wird. Dazu müssen Sie in allen Schritten **Partition By** verwenden. Es sind mehrere Schritte zulässig, aber sie müssen alle durch den gleichen Schlüssel partitioniert werden. Außerdem müssen Sie beachten, dass der Partitionierungsschlüssel derzeit auf **PartitionId** festgelegt werden muss, um einen vollständig parallelen Auftrag zu erhalten.
+3.	Derzeit unterstützen nur Event Hubs und Blob eine partitionierte Ausgabe. Für die Event Hubs-Ausgabe müssen Sie für das Feld **PartitionKey** den Wert **PartitionId** konfigurieren. Für Blob müssen Sie nichts tun.
+4.	Sie müssen beachten, dass die Anzahl von Eingabepartitionen gleich der Anzahl von Ausgabepartitionen sein muss. Die Blob-Ausgabe unterstützt derzeit keine Partitionen. Das ist aber kein Problem, weil sie das Partitionierungsschema von der vorgelagerten Abfrage erbt. Beispiele für Partitionswerte, die einen vollständig parallelen Auftrag ermöglichen:
 	1.	8 Event Hubs-Eingabepartitionen und 8 Event Hubs-Ausgabepartitionen
-	2.	8 Event Hubs-Eingabepartitionen und Blob-Ausgabe  
-	3.	8 Blob-Eingabepartitionen und Blob-Ausgabe  
-	4.	8 Blob-Eingabepartitionen und 8 Event Hubs-Ausgabepartitionen  
+	2.	8 Event Hubs-Eingabepartitionen und Blob-Ausgabe
+	3.	8 Blob-Eingabepartitionen und Blob-Ausgabe
+	4.	8 Blob-Eingabepartitionen und 8 Event Hubs-Ausgabepartitionen
 
 Es folgen einige Beispielszenarien für hochgradige Parallelität.
 
@@ -211,7 +211,7 @@ Um weitere Streaming-Einheiten für die Abfrage zu verwenden, müssen sowohl die
 	FROM Input1 Partition By PartitionId
 	GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 
-Wenn eine Abfrage partitioniert ist, werden die Eingabeereignisse verarbeitet und in separaten Partitionsgruppen aggregiert. Zudem werden für die einzelnen Gruppen Ausgabeereignisse generiert. Das Partitionieren kann unerwartete Ergebnisse erbringen, wenn der Partitionsschlüssel in der Datenstromeingabe nicht das Feld **Group-by** ist. Beispielsweise ist das Feld **TollBoothId** in der vorherigen Beispielabfrage nicht der Partitionsschlüssel von Input1. Die Daten aus der Mautstation 1 können auf mehrere Partitionen verteilt werden.
+Wenn eine Abfrage partitioniert ist, werden die Eingabeereignisse verarbeitet und in separaten Partitionsgruppen aggregiert. Zudem werden für die einzelnen Gruppen Ausgabeereignisse generiert. Das Partitionieren kann unerwartete Ergebnisse erbringen, wenn der Partitionsschlüssel in der Datenstromeingabe nicht das Feld **Group-by** ist. Beispielsweise ist das Feld **TollBoothId** in der vorherigen Beispielabfrage nicht der Partitionsschlüssel von „Input1“. Die Daten aus der Mautstation 1 können auf mehrere Partitionen verteilt werden.
 
 Jede Input1-Partition wird separat von Stream Analytics verarbeitet, und es werden mehrere Datensätze für die Anzahl der passierenden Autos für dieselbe Mautstation im selben rollierenden Fenster erstellt. Für den Fall, dass der Eingabepartitionsschlüssel nicht geändert werden kann, kann dieses Problem durch Hinzufügen eines zusätzlichen, nicht partitionierten Schritts behoben werden, z. B.:
 
@@ -326,7 +326,6 @@ Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://so
 
 - [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 - [Erste Schritte mit Azure Stream Analytics](stream-analytics-get-started.md)
-- [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
 - [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
@@ -351,4 +350,4 @@ Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://so
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -174,11 +174,11 @@ Das Node.js-Server SDK für „azure-mobile-apps“ bietet Verfahren zum Verfüg
 
 | Vorgang | Beschreibung |
 | --------- | ----------- |
-| GET /tables/\_tablename\_ | Alle Datensätze der Tabelle abrufen |
-| GET /tables/\_tablename\_/:id | Bestimmten Datensatz der Tabelle abrufen |
-| POST /tables/\_tablename\_ | Neuen Datensatz in der Tabelle erstellen |
-| PATCH /tables/\_tablename\_/:id | Vorhandenen Datensatz in der Tabelle aktualisieren |
-| DELETE /tables/\_tablename\_/:id | Datensatz in der Tabelle löschen |
+| GET /tables/_Tabellenname_ | Alle Datensätze der Tabelle abrufen |
+| GET /tables/_Tabellenname_/:id | Bestimmten Datensatz der Tabelle abrufen |
+| POST /tables/_Tabellenname_ | Neuen Datensatz in der Tabelle erstellen |
+| PATCH /tables/_Tabellenname_/:id | Vorhandenen Datensatz in der Tabelle aktualisieren |
+| DELETE /tables/_Tabellenname_/:id | Datensatz in der Tabelle löschen |
 
 Diese WebAPI unterstützt [OData] und erweitert das Tabellenschema, um die [Synchronisierung von Offlinedaten] zu unterstützen.
 
@@ -239,7 +239,7 @@ Sie können die Spalten explizit definieren, die über die WebAPI verfügbar gem
 
     module.exports = table;
 
-Wenn Sie Tabellen statisch definieren, müssen Sie auch die tables.initialize()-Methode aufrufen, um das Datenbankschema beim Starten zu erstellen. Die „tables.initialize()“-Methode gibt eine [Zusage] \(Promise) zurück. Hiermit wird sichergestellt, dass der Webdienst keine Anforderungen bereitstellt, bevor die Datenbank initialisiert wurde.
+Wenn Sie Tabellen statisch definieren, müssen Sie auch die tables.initialize()-Methode aufrufen, um das Datenbankschema beim Starten zu erstellen. Die „tables.initialize()“-Methode gibt eine [Zusage] (Promise) zurück. Hiermit wird sichergestellt, dass der Webdienst keine Anforderungen bereitstellt, bevor die Datenbank initialisiert wurde.
 
 ### <a name="howto-sqlexpress-setup"></a>Vorgehensweise: Verwenden von SQL Express als Entwicklungsdatenspeicher auf Ihrem lokalen Computer
 
@@ -328,7 +328,7 @@ Hier ist eine Beispieldatei für _azureMobile.js_ zum Implementieren der oben be
 
 Es ist ratsam, dass Sie _azureMobile.js_ Ihrer _.gitignore_-Datei hinzufügen (oder eine andere Datei zum Ignorieren der Quellcodeverwaltung), um zu verhindern, dass Kennwörter in der Cloud gespeichert werden. Konfigurieren Sie die Produktionseinstellungen in den App-Einstellungen immer im [Azure-Portal].
 
-### <a name="howto-appsettings"></a>Gewusst wie: Konfigurieren von App-Einstellungen für Ihre mobile App
+### <a name="howto-appsettings"></a>Konfigurieren von App-Einstellungen für Ihre mobile App
 
 Für die meisten Einstellungen in der Datei _azureMobile.js_ gibt es im [Azure-Portal] eine entsprechende App-Einstellung. Verwenden Sie die folgende Liste, um Ihre App unter „App-Einstellungen“ zu konfigurieren:
 
@@ -393,7 +393,7 @@ Nach der Erstellung des mobilen App-Back-Ends können Sie wählen, ob Sie entwed
 
 Das Erstellen der Datenbank kann einige Minuten dauern. Im Bereich **Benachrichtigungen** können Sie den Fortschritt der Bereitstellung überwachen. Fahren Sie erst fort, wenn die Datenbank erfolgreich bereitgestellt wurde. Nach der erfolgreichen Bereitstellung wird für die SQL-Datenbankinstanz in den Einstellungen des mobilen App-Back-Ends eine Verbindungszeichenfolge erstellt. Sie können diese App-Einstellung unter **Einstellungen** > **Anwendungseinstellungen** > **Verbindungszeichenfolgen** anzeigen.
 
-### <a name="howto-tables-auth"></a>Gewusst wie: Erzwingen der Authentifizierung für den Zugriff auf Tabellen
+### <a name="howto-tables-auth"></a>Erzwingen der Authentifizierung für den Zugriff auf Tabellen
 
 Wenn Sie die App Service-Authentifizierung mit dem tables-Endpunkt verwenden möchten, müssen Sie die App Service-Authentifizierung zuerst im [Azure-Portal] konfigurieren. Weitere Informationen zum Konfigurieren der Authentifizierung in einem Azure App Service finden Sie im Konfigurationshandbuch für den Identitätsanbieter, den Sie verwenden möchten:
 
@@ -431,9 +431,9 @@ Die „access“-Eigenschaft kann einen von drei Werten haben:
 
 Wenn die access-Eigenschaft nicht definiert ist, ist der Zugriff ohne Authentifizierung zulässig.
 
-### <a name="howto-tables-getidentity"></a>Gewusst wie: Verwenden von Authentifizierungsansprüchen für Tabellen
+### <a name="howto-tables-getidentity"></a>Verwenden von Authentifizierungsansprüchen für Tabellen
 
-Sie können eine Reihe von Ansprüchen einrichten, die beim Einrichten der Authentifizierung angefordert werden. Diese Ansprüche stehen normalerweise nicht über das `context.user`-Objekt zur Verfügung. Mit der `context.user.getIdentity()`-Methode können sie jedoch abgerufen werden. Die `getIdentity()`-Methode gibt eine Zusage zurück, die auf ein Objekt aufgelöst wird. Das Objekt wird durch die Authentifizierungsmethode („facebook“, „google“, „twitter“, „microsoftaccount“ oder „aad“) ermittelt.
+Sie können eine Reihe von Ansprüchen einrichten, die beim Einrichten der Authentifizierung angefordert werden. Diese Ansprüche stehen normalerweise nicht über das `context.user`-Objekt zur Verfügung. Mit der `context.user.getIdentity()`-Methode können sie jedoch abgerufen werden. Die `getIdentity()`-Methode gibt eine Zusage zurück, die in ein Objekt aufgelöst wird. Das Objekt wird durch die Authentifizierungsmethode („facebook“, „google“, „twitter“, „microsoftaccount“ oder „aad“) ermittelt.
 
 Wenn beispielsweise die Microsoft Account-Authentifizierung eingerichtet wird und der Anspruch „E-Mail-Adressen“ angefordert wird, lässt sich die E-Mail-Adresse wie folgt dem Datensatz hinzufügen:
 
@@ -552,7 +552,7 @@ Vorgänge, bei denen normalerweise eine Abfrage ausgeführt wird, verfügen übe
 
     context.query.where('myfield eq ?', 'value');
 
-### <a name="howto-tables-softdelete"></a>Gewusst wie: Konfigurieren des vorläufigen Löschens in einer Tabelle
+### <a name="howto-tables-softdelete"></a>Konfigurieren des vorläufigen Löschens in einer Tabelle
 
 Beim vorläufigen Löschen werden Datensätze nicht tatsächlich gelöscht. Stattdessen werden sie in der Datenbank als gelöscht markiert, indem die Spalte „deleted“ auf „true“ festgelegt wird. Das Azure Mobile Apps-SDK entfernt vorläufig gelöschte Datensätze automatisch aus Ergebnissen, es sei denn, im Mobile Client-SDK wird „IncludeDeleted()“ verwendet. Legen Sie in der Tabellendefinitionsdatei die softDelete-Eigenschaft fest, um eine Tabelle für das vorläufige Löschen zu konfigurieren. Beispiel:
 
@@ -609,7 +609,7 @@ Es ist wichtig zu beachten, dass das Seeding von Daten nur durchgeführt wird, w
 
 Wir empfehlen, die initialize()-Methode explizit aufzurufen, um die Tabelle zu erstellen, wenn die Ausführung des Diensts beginnt.
 
-### <a name="Swagger"></a>Gewusst wie: Aktivieren der Swagger-Unterstützung
+### <a name="Swagger"></a>Aktivieren der Swagger-Unterstützung
 
 [Swagger]-Unterstützung ist in Azure Mobile App Service-Apps bereits integriert. Um die Swagger-Unterstützung zu aktivieren, installieren Sie zuerst die Swagger-Benutzeroberfläche als Abhängigkeit:
 
@@ -623,15 +623,15 @@ Die Swagger-Unterstützung soll wahrscheinlich nur in Entwicklungseditionen akti
 
     var mobile = azureMobileApps({ swagger: process.env.NODE_ENV !== 'production' });
 
-Der Swagger-Endpunkt befindet sich dann bei http://_yoursite_.azurewebsites.net/swagger. Sie können auf die Swagger-Benutzeroberfläche über den Endpunkt `/swagger/ui` zugreifen. Beachten Sie, dass Swagger für den Endpunkt einen Fehler ausgibt, wenn Sie die Authentifizierung in Ihrer gesamten Anwendung als erforderlich festlegen. Um optimale Ergebnisse zu erzielen, lassen Sie in den Einstellungen für die Azure App Service-Authentifizierung/-Autorisierung nicht authentifizierte Anforderungen zu, und steuern Sie dann die Authentifizierung mithilfe der `table.access`-Eigenschaft.
+Der Swagger-Endpunkt befindet sich dann bei http://_yoursite_.azurewebsites.net/swagger. Sie können über den Endpunkt `/swagger/ui` auf die Swagger-Benutzeroberfläche zugreifen. Beachten Sie, dass Swagger für den Endpunkt einen Fehler ausgibt, wenn Sie die Authentifizierung in Ihrer gesamten Anwendung als erforderlich festlegen. Um optimale Ergebnisse zu erzielen, lassen Sie in den Einstellungen für die Azure App Service-Authentifizierung/-Autorisierung nicht authentifizierte Anforderungen zu, und steuern Sie dann die Authentifizierung mithilfe der `table.access`-Eigenschaft.
 
 Sie können die Swagger-Option auch der Datei `azureMobile.js` hinzufügen, wenn die Swagger-Unterstützung nur bei der lokalen Entwicklung verfügbar sein soll.
 
 ## <a name="push">Pushbenachrichtigungen
 
-Mobile Apps ist in Azure Notification Hubs integriert, damit Sie gezielte Pushbenachrichtigungen an Millionen von Geräten auf allen gängigen Plattformen senden können. Mithilfe von Benachrichtigungshubs können Sie Pushbenachrichtigungen an iOS-, Android- und Windows-Geräte senden. Weitere Informationen zu allem, was mit Notification Hubs machbar ist, finden Sie unter [Übersicht über Notification Hubs](./notification-hubs/notification-hubs-push-notification-overview.md).
+Mobile Apps ist in Azure Notification Hubs integriert, damit Sie gezielte Pushbenachrichtigungen an Millionen von Geräten auf allen gängigen Plattformen senden können. Mithilfe von Benachrichtigungshubs können Sie Pushbenachrichtigungen an iOS-, Android- und Windows-Geräte senden. Weitere Informationen zu allem, was mit Notification Hubs machbar ist, finden Sie unter [Übersicht über Notification Hubs](../notification-hubs/notification-hubs-push-notification-overview.md).
 
-### </a><a name="send-push"></a>Gewusst wie: Senden von Pushbenachrichtigungen
+### </a><a name="send-push"></a>Senden von Pushbenachrichtigungen
 
 Der folgende Code zeigt, wie Sie das Pushobjekt zum Senden einer Pushbenachrichtigung an registrierte iOS-Geräte verwenden:
 
@@ -664,7 +664,7 @@ Indem Sie auf dem Client eine Pushregistrierungsvorlage erstellen, können Sie s
     }
 
 
-###<a name="push-user"></a>Gewusst wie: Senden von Pushbenachrichtigungen mithilfe von Tags an einen authentifizierten Benutzer
+###<a name="push-user"></a>Senden von Pushbenachrichtigungen an einen authentifizierten Benutzer mithilfe von Tags
 
 Wenn ein authentifizierter Benutzer für Pushbenachrichtigungen registriert wird, wird der Registrierung automatisch ein Tag mit der Benutzer-ID hinzugefügt. Mithilfe dieses Tags können Sie Pushbenachrichtigungen an alle Geräte senden, die von einem bestimmten Benutzer registriert wurden. Mit dem folgenden Code wird die SID des Benutzers abgerufen, der die Anforderung stellt, und an jede Geräteregistrierung für diesen Benutzer wird eine Pushbenachrichtigungsvorlage gesendet:
 
@@ -761,7 +761,7 @@ Sie können die Authentifizierung auch für bestimmte Vorgänge angeben:
 
 Dasselbe Token, das für den tables-Endpunkt verwendet wird, muss für benutzerdefinierte APIs verwendet werden, die eine Authentifizierung benötigen.
 
-### <a name="howto-customapi-auth"></a>Gewusst wie: Ausführen großer Dateiuploads
+### <a name="howto-customapi-auth"></a>Ausführen großer Dateiuploads
 
 Das Azure Mobile Apps-SDK verwendet die [body-parser-Middleware](https://github.com/expressjs/body-parser), um Textinhalt in Ihrer Übermittlung zu akzeptieren und zu decodieren. Sie können den Body-Parser im Voraus so konfigurieren, dass größere Dateiuploads akzeptiert werden:
 
@@ -787,7 +787,7 @@ Das Azure Mobile Apps-SDK verwendet die [body-parser-Middleware](https://github.
 
 Sie können den oben aufgeführten Grenzwert von 50 MB anpassen. Beachten Sie, dass die Datei vor der Übertragung per Base64 verschlüsselt wird, wodurch die Größe des tatsächlichen Uploads erhöht wird.
 
-### <a name="howto-customapi-sql"></a>Gewusst wie: Ausführen von benutzerdefinierten SQL-Anweisungen
+### <a name="howto-customapi-sql"></a>Ausführen von benutzerdefinierten SQL-Anweisungen
 
 Das Azure Mobile Apps-SDK ermöglicht über das Anforderungsobjekt Zugriff auf den gesamten Kontext, sodass Sie problemlose parametrisierte SQL-Anweisungen für den definierten Datenanbieter ausführen können.
 
@@ -820,7 +820,7 @@ Das Azure Mobile Apps-SDK ermöglicht über das Anforderungsobjekt Zugriff auf d
 
 ## <a name="Debugging"></a>Debuggen, einfache Tabellen und einfache APIs
 
-### <a name="howto-diagnostic-logs"></a>Gewusst wie: Debugging, Diagnose und Problembehandlung bei Azure Mobile Apps
+### <a name="howto-diagnostic-logs"></a>Debuggen, Diagnose und Problembehandlung bei Azure Mobile Apps
 
 Der Azure App Service stellt mehrere Debugging- und Problembehandlungsverfahren für Node.js-Anwendungen bereit. Folgende Artikel helfen Ihnen beim Einstieg in die Problembehandlung Ihres Node.js Mobile-Back-Ends:
 
@@ -830,9 +830,9 @@ Der Azure App Service stellt mehrere Debugging- und Problembehandlungsverfahren 
 
 Node.js-Anwendungen haben Zugriff auf viele Tools für die Diagnoseprotokollierung. Intern nutzt das Azure Mobile Apps Node.js SDK [Winston] für die Diagnoseprotokollierung. Diese Funktion wird automatisch aktiviert, indem der Debugmodus aktiviert oder die App-Einstellung **MS\_DebugMode** im [Azure-Portal] auf „true“ festgelegt wird. Generierte Protokolle werden im [Azure-Portal] in den Diagnoseprotokollen angezeigt.
 
-### <a name="in-portal-editing"></a><a name="work-easy-tables"></a>Gewusst wie: Verwenden von Easy Tables im Azure-Portal
+### <a name="in-portal-editing"></a><a name="work-easy-tables"></a>Verwenden von Easy Tables im Azure-Portal
 
-Mit Easy Tables können Sie direkt im Portal Tabellen erstellen und verwenden. Sie können mit dem Visual Studio Online-Editor sogar Tabellenvorgänge bearbeiten.
+Mit Easy Tables können Sie direkt im Portal Tabellen erstellen und verwenden. Sie können mit dem App Service-Editor sogar Tabellenvorgänge bearbeiten.
 
 Wenn Sie in den Einstellungen für die Back-End-Website auf **Easy Tables** klicken, können Sie eine neue Tabelle hinzufügen oder eine vorhandene Tabelle ändern oder löschen. Sie sehen auch, dass Daten in der Tabelle enthalten sind.
 
@@ -841,7 +841,7 @@ Wenn Sie in den Einstellungen für die Back-End-Website auf **Easy Tables** klic
 Die folgenden Befehle stehen in der Befehlsleiste einer Tabelle zur Verfügung:
 
 + **Berechtigungen ändern**: Dient zum Ändern der Berechtigung für Vorgänge zum Lesen, Einfügen, Aktualisieren und Löschen in der Tabelle. Sie können den anonymen Zugriff zulassen, eine Authentifizierung erzwingen oder den gesamten Zugriff auf den Vorgang deaktivieren. Dies führt zu einer Änderung der Projektcodedatei „table.json“.
-+ **Skript bearbeiten**: Die Skriptdatei für die Tabelle wird im Visual Studio Team Services-Editor geöffnet.
++ **Skript bearbeiten** – Die Skriptdatei für die Tabelle wird im App Service-Editor geöffnet.
 + **Schema verwalten**: Dient zum Hinzufügen oder Löschen von Spalten oder zum Ändern des Tabellenindex.
 + **Tabelle löschen**: Dient zum Abschneiden einer vorhandenen Tabelle, indem alle Datenzeilen gelöscht werden, während das Schema unverändert bleibt.
 + **Zeilen löschen**: Dient zum Löschen einzelner Zeilen mit Daten.
@@ -849,21 +849,21 @@ Die folgenden Befehle stehen in der Befehlsleiste einer Tabelle zur Verfügung:
 
 ###<a name="work-easy-apis"></a>Vorgehensweise: Verwenden von Easy APIs im Azure-Portal
 
-Mit Easy APIs können Sie direkt im Portal benutzerdefinierte APIs erstellen und verwenden. Sie können mit dem Visual Studio Online-Editor sogar API-Skripts bearbeiten.
+Mit Easy APIs können Sie direkt im Portal benutzerdefinierte APIs erstellen und verwenden. Sie können mit dem App Service-Editor sogar API-Skripts bearbeiten.
 
 Wenn Sie in den Einstellungen der Back-End-Website auf **Easy APIs** klicken, können Sie einen neuen benutzerdefinierten API-Endpunkt hinzufügen oder einen vorhandenen API-Endpunkt ändern oder löschen.
 
 ![Verwenden von Easy APIs](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-easy-apis.png)
 
-Im Portal können Sie die Zugriffsberechtigungen für eine bestimmte HTTP-Aktion ändern, die API-Skriptdatei im Visual Studio Team Services-Editor bearbeiten oder die Streamingprotokolle anzeigen.
+Im Portal können Sie die Zugriffsberechtigungen für eine bestimmte HTTP-Aktion ändern, die API-Skriptdatei im App Service-Editor bearbeiten oder die Streamingprotokolle anzeigen.
 
-###<a name="online-editor"></a>Vorgehensweise: Bearbeiten von Code in Visual Studio Team Services
+###<a name="online-editor"></a>Bearbeiten von Code im App Service-Editor
 
-Im Azure-Portal können Sie Ihre Node.js-Back-End-Skriptdateien in Visual Studio Team Services bearbeiten, ohne dass Sie das Projekt auf den lokalen Computer herunterladen müssen. So bearbeiten Sie Skriptdateien im Online-Editor
+Im Azure-Portal können Sie Ihre Node.js-Back-End-Skriptdateien im App Service-Editor bearbeiten, ohne dass Sie das Projekt auf den lokalen Computer herunterladen müssen. So bearbeiten Sie Skriptdateien im Online-Editor
 
-1. Klicken Sie auf dem Blatt für Ihr Mobile App-Back-End auf **Alle Einstellungen** und dann entweder auf **Easy Tables** oder **Easy APIs**, eine Tabelle oder API und dann auf **Skript bearbeiten**. Die Skriptdatei wird im Visual Studio Team Services-Editor geöffnet.
+1. Klicken Sie auf dem Blatt für Ihr Mobile App-Back-End auf **Alle Einstellungen** und dann entweder auf **Easy Tables** oder **Easy APIs**, eine Tabelle oder API und dann auf **Skript bearbeiten**. Die Skriptdatei wird im App Service-Editor geöffnet.
 
-	![Visual Studio Team Services-Code-Editor](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
+	![App Service-Editor](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
 
 2. Nehmen Sie im Online-Editor die gewünschten Änderungen an der Codedatei vor. Die Änderungen werden beim Eingeben automatisch gespeichert.
 
@@ -917,4 +917,4 @@ Im Azure-Portal können Sie Ihre Node.js-Back-End-Skriptdateien in Visual Studio
 [ExpressJS Middleware]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

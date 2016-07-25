@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-services"
-   ms.date="05/31/2016"
+   ms.date="07/07/2016"
    ms.author="jeffstok"
 />
 
@@ -46,7 +46,7 @@ Der zu verwendende Kontext lässt sich derzeit nicht anhand einer Formel ermitte
 2.	Wiederholte Analysen können schneller ausgeführt werden, wenn die Daten lokal und in XDF vorliegen.
 3.	Kleinere Datenmengen sollten aus einer Textdatenquelle gestreamt werden. Bei größeren Datenmengen empfiehlt es sich, die Daten vor der Analyse in XDF zu konvertieren.
 4.	Bei sehr großen Datenmengen ist der Mehraufwand durch das Kopieren oder Streamen der zu analysierenden Daten an den Edgeknoten zu groß.
-5.	Spark ist bei Analysen in Hadoop schneller als Map Reduce, solange die Datenmenge nicht zu groß wird, um in den verteilten Arbeitsspeicher aufgenommen zu werden.
+5.	Für Analysen in Hadoop ist Spark schneller als MapReduce.
 
 Neben diesen Richtlinien sollten bei der Auswahl des Rechenkontexts die folgenden allgemeinen Regeln berücksichtigt werden:
 
@@ -61,7 +61,7 @@ Neben diesen Richtlinien sollten bei der Auswahl des Rechenkontexts die folgende
 
 ### Hadoop Map Reduce
 
-- Wenn eine sehr große Datenmenge analysiert werden muss und die Leistung von Spark nicht ausreicht, versuchen Sie eine Analyse mit „Map Reduce“.
+- Nur verwenden, wenn bei einem Spark-Rechenkontext ein unüberwindliches Problem auftritt, da MapReduce meist langsamer ist.
 
 ## Integrierte Hilfe zu rxSetComputeContext
 
@@ -81,4 +81,4 @@ In diesem Artikel haben Sie gelernt, wie Sie einen neuen HDInsight-Cluster mit R
 - [Installing RStudio on HDInsight cluster with R Server (Installieren von RStudio auf einem HDInsight-Cluster mit R Server)](hdinsight-hadoop-r-server-install-r-studio.md)
 - [Azure Storage options for R Server on HDInsight Premium (Azure Storage-Optionen für R Server in HDInsight Premium)](hdinsight-hadoop-r-server-storage.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

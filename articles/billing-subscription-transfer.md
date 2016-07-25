@@ -1,19 +1,20 @@
 <properties
    pageTitle="Übertragen eines Azure-Abonnements | Microsoft Azure"
    description="Übertragung eines Azure-Abonnements auf einen anderen Benutzer, und einige häufig gestellte Fragen (FAQs) zu dem Prozess."
-   services="billing"
+   services=""
    documentationCenter=""
    authors="genlin"
    manager="stevenpo"
-   editor=""/>
+   editor="n/a"
+   tags="billing,top-support-issue"/>
 
 <tags
    ms.service="billing"
+   ms.workload="na"
+   ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="billing"
-   ms.date="07/04/2016"
+   ms.date="07/12/2016"
    ms.author="genli"/>
 
 # Übertragen eines Azure-Abonnements
@@ -27,12 +28,9 @@ Möchten Sie:
 
 Sie können dies jetzt problemlos für die nutzungsbasierte Bezahlung sowie für MSDN-, Action Pack- und BizSpark-Abonnements im Microsoft Azure Account Center tun. Wir haben die Möglichkeit hinzugefügt, Ihr Abonnement auf einen anderen Benutzer zu übertragen. Anders ausgedrückt können Sie jetzt das Administratorkonto für ein beliebiges Ihrer nutzungsbasierten Abonnements bzw. MSDN-, Action Pack- oder BizSpark-Abonnements ändern. Dabei ist es unerheblich, in welchem Land Sie sich befinden. Wir unterstützen jetzt auch die Übertragung von Azure Marketplace-Einkäufen für diese Abonnementtypen.
 
-**Hinweis** Sie müssen der Kontoadministrator sein, um ein Abonnement an einen anderen Benutzer zu übertragen. Sie können wie folgt überprüfen, wer der Kontoadministrator des Abonnements ist:
+> [AZURE.NOTE]  Wie Sie Ihr Abonnement in ein anderes Angebot ändern können, erfahren Sie unter [Wechseln zu einem anderen Azure-Angebot](billing-how-to-switch-azure-offer.md).
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie im Menü „Hub“ **Abonnement** aus.
-3. Wählen Sie das zu überprüfende Abonnement und dann **Einstellungen** aus. ![Einstellungen](./media/billing-subscription-transfer/settings.png)
-4. Wählen Sie **Eigenschaften** aus. Der Kontoadministrator des Abonnements wird im Feld **KONTOADMINISTRATOR** angezeigt. ![checkaa](./media/billing-subscription-transfer/checkaa.png)
+> Sie müssen der Kontoadministrator sein, um ein Abonnement an einen anderen Benutzer zu übertragen. Wie Sie herausfinden, wer der Kontoadministrator des Abonnements ist, erfahren Sie unter [Häufig gestellte Fragen (FAQ)](#faq).
 
 ## Übertragen eines Azure-Abonnements
 
@@ -42,7 +40,7 @@ Sie können dies jetzt problemlos für die nutzungsbasierte Bezahlung sowie für
 
 2.  Wählen Sie das Abonnement, das Sie übertragen möchten.
 
-3.  Klicken Sie auf die Option **Abonnement übertragen**.
+3.  Klicken Sie auf die Otion **Abonnement übertragen**.
 
     ![Registerkarte „Azure-Kontoabonnements“](./media/billing-subscription-transfer/image1.png)
 
@@ -62,7 +60,17 @@ Sie können dies jetzt problemlos für die nutzungsbasierte Bezahlung sowie für
 
 7. Erfolg! Das Abonnement ist jetzt übertragen.
 
+<a id="faq"></a>
 ## Häufig gestellte Fragen (FAQ)
+
+-   **Wie kann ich überprüfen, wer der Kontoadministrator des Abonnements ist?**
+
+    Sie können wie folgt überprüfen, wer der Kontoadministrator des Abonnements ist:
+
+    1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+    2. Wählen Sie im Menü „Hub“ **Abonnement** aus.
+    3. Wählen Sie das zu überprüfende Abonnement und dann **Einstellungen** aus.
+    4. Wählen Sie **Eigenschaften**. Der Kontoadministrator des Abonnements wird im Feld **Kontoadministrator** angezeigt.
 
 -   **Führt eine Übertragung des Abonnements zu Ausfallzeiten?**
 
@@ -123,4 +131,4 @@ Sie können dies jetzt problemlos für die nutzungsbasierte Bezahlung sowie für
 4. Aktualisieren Sie die Abrechnungswarnungen für dieses Abonnement im [Azure Account Center](https://account.windowsazure.com/Subscriptions) ([weitere Informationen](http://go.microsoft.com/fwlink/?LinkID=533292)).
 5. 	Wenn Sie mit einem Partner arbeiten, sollten Sie die Partner-ID für dieses Abonnement aktualisieren. Sie können diese im [Azure Account Center](https://account.windowsazure.com/Subscriptions) durchführen.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

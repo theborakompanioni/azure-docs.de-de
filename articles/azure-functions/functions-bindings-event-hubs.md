@@ -34,8 +34,8 @@ Ein Azure Event Hub-Trigger kann verwendet werden, um auf ein Ereignis zu reagie
 Die Datei *function.json* für einen Azure Event Hub-Trigger legt die folgenden Eigenschaften fest:
 
 - `type`: Muss auf *eventHubTrigger* festgelegt werden.
-- `name`: Variablenname, der im Funktionscode für die Event Hub-Nachricht verwendet wird. 
-- `direction`: Muss auf *in* festgelegt werden. 
+- `name`: Variablenname, der im Funktionscode für die Event Hub-Nachricht verwendet wird.
+- `direction`: Muss auf *in* festgelegt werden.
 - `path`: Der Name des Event Hubs.
 - `connection`: Der Name einer App-Einstellung, die die Zeichenfolge für die Verbindung mit dem Namespace enthält, in dem sich der Event Hub befindet. Kopieren Sie diese Verbindungszeichenfolge, indem Sie auf die Schaltfläche **Verbindungsinformationen** für den Namespace, nicht den Event Hub selbst klicken. Diese Verbindungszeichenfolge muss mindestens über Leseberechtigungen verfügen, um den Trigger zu aktivieren.
 
@@ -75,17 +75,17 @@ Mit dem oben genannten Beispiel function.json wird der Text der Ereignismeldung 
 
 ## Azure Event Hub-Ausgabebindung
 
-Mit einer Azure Event-Ausgabebindung werden Ereignisse in einen Event Hub-Ereignisdatenstrom geschrieben. Um Ereignisse in einen Event Hub schreiben zu können, müssen Sie über eine Sendeberechtigung verfügen.
+Mit einer Azure Event Hub-Ausgabebindung werden Ereignisse in einen Event Hub-Ereignisdatenstrom geschrieben. Um Ereignisse in einen Event Hub schreiben zu können, müssen Sie über eine Sendeberechtigung verfügen.
 
 #### function.json für Event Hub-Ausgabebindung
 
 Die Datei *function.json* für eine Azure Event Hub-Ausgabebindung legt die folgenden Eigenschaften fest:
 
 - `type`: Muss auf *eventHub* festgelegt werden.
-- `name`: Variablenname, der im Funktionscode für die Event Hub-Nachricht verwendet wird. 
+- `name`: Variablenname, der im Funktionscode für die Event Hub-Nachricht verwendet wird.
 - `path`: Der Name des Event Hubs.
 - `connection`: Der Name einer App-Einstellung, die die Zeichenfolge für die Verbindung mit dem Namespace enthält, in dem sich der Event Hub befindet. Kopieren Sie diese Verbindungszeichenfolge, indem Sie auf die Schaltfläche **Verbindungsinformationen** für den Namespace, nicht den Event Hub selbst klicken. Diese Verbindungszeichenfolge muss über Sendeberechtigungen zum Senden der Nachricht an den Event Hub-Datenstrom verfügen.
-- `direction`: Muss auf *out* festgelegt werden. 
+- `direction`: Muss auf *out* festgelegt werden.
 
 	    {
 	      "type": "eventHub",
@@ -134,4 +134,4 @@ Der folgende Node.js-Beispielfunktionscode veranschaulicht das Schreiben eines E
 
 [AZURE.INCLUDE [Nächste Schritte](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -46,10 +46,10 @@ Unter [Zuweisen von Administratorrollen in Azure Active Directory (Azure AD)](ht
 
     	#begin
     	# Update with the name of your subscription.
-    	$SubscriptionName="YourSubscriptionName"
+    	$SubscriptionName = "YourSubscriptionName"
 
     	# Give a name to your new storage account. It must be lowercase!
-    	$StorageAccountName="yourstorageaccountname"
+    	$StorageAccountName = "yourstorageaccountname"
 
     	# Choose "West US" as an example.
     	$Location = "West US"
@@ -138,14 +138,14 @@ Sie benötigen ein Azure-Abonnement und -Konto zum Ausführen der in diesem Hand
 
 Azure PowerShell ist ein Modul, das Cmdlets zum Verwalten von Azure durch Windows PowerShell enthält. Informationen zum Installieren und Einrichten von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Sie sollten daher das neueste Azure PowerShell-Modul herunterladen und installieren bzw. ein Upgrade durchführen, bevor Sie dieses Handbuch verwenden.
 
-Sie können die Cmdlets in der Azure PowerShell-Konsole, der Windows PowerShell-Standardkonsole oder der Windows PowerShell Integrated Scripting Environment (ISE) ausführen. Wechseln Sie z. B. zum Öffnen einer **Azure PowerShell-Konsole** zum Menü "Start", geben Sie "Microsoft Azure PowerShell" ein, klicken Sie mit der rechten Maustaste darauf, und klicken Sie dann auf "Als Administrator ausführen". Wechseln Sie zum Öffnen der **Windows PowerShell ISE** zum Menü "Start", geben Sie "Verwaltung" ein, und klicken Sie dann darauf, um diese auszuführen. Klicken Sie im Fenster "Verwaltung" mit der rechten Maustaste auf "Windows PowerShell ISE", und klicken Sie dann auf "Als Administrator ausführen".
+Sie können die Cmdlets in der Windows PowerShell-Standardkonsole oder über die Windows PowerShell Integrated Scripting Environment (ISE) ausführen. Wechseln Sie beispielsweise zum Öffnen der **Windows PowerShell ISE** zum Menü „Start“, geben Sie „Verwaltung“ ein, und klicken Sie dann darauf, um sie auszuführen. Klicken Sie im Fenster "Verwaltung" mit der rechten Maustaste auf "Windows PowerShell ISE", und klicken Sie dann auf "Als Administrator ausführen".
 
 ## Verwalten von Speicherkonten in Azure
 
 ### Einrichten von standardmäßigen Azure-Abonnements
 Für die Verwaltung von Azure Storage mit Azure PowerShell müssen Sie Ihre Clientumgebung über die Azure Active Directory-Authentifizierung oder die zertifikatbasierte Authentifizierung mit Azure authentifizieren. Weitere Informationen finden Sie im Lernprogramm [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). In diesem Handbuch wird die Azure Active Directory-Authentifizierung verwendet.
 
-1.	Geben Sie in der Azure PowerShell-Konsole oder in der Windows PowerShell ISE den folgenden Befehl ein, um Ihr Azure-Konto zur lokalen PowerShell-Umgebung hinzuzufügen:
+1.	Geben Sie in der Windows PowerShell ISE den folgenden Befehl ein, um Ihr Azure-Konto zur lokalen PowerShell-Umgebung hinzuzufügen:
 
     `Add-AzureAccount`
 
@@ -177,7 +177,7 @@ Für die Verwendung von Azure-Speicher benötigen Sie ein Speicherkonto. Nachdem
 
 1.	Führen Sie das Cmdlet "Get-AzureLocation" aus, um alle verfügbaren Datencenterstandorte zu finden:
 
-    `Get-AzureLocation | format-Table -Property Name, AvailableServices, StorageAccountTypes`
+    `Get-AzureLocation | Format-Table -Property Name, AvailableServices, StorageAccountTypes`
 
 2.	Führen Sie anschließend das Cmdlet "New-AzureStorageAccount" aus, um ein neues Speicherkonto zu erstellen. Im folgenden Beispiel wird ein neues Speicherkonto im Datencenter der Region "West US" erstellt:
 
@@ -233,7 +233,7 @@ Verwenden Sie eine der folgenden drei Methoden zum Erstellen eines Speicherkonte
 
 Weitere Informationen zum Konfigurieren einer Speicherverbindungszeichenfolge finden Sie unter [Konfigurieren von Verbindungszeichenfolgen](storage-configure-connection-string.md).
 
-Sie haben jetzt Ihren Computer eingerichtet und erfahren, wie Sie Abonnements und Speicherkonten mithilfe von Azure PowerShell verwalten. Fahren Sie mit dem nächsten Abschnitt fort, um zu erfahren, wie Sie Azure-Blobs und Blob-Momentaufnahmen verwalten.
+Sie haben jetzt Ihren Computer eingerichtet und erfahren, wie Sie Abonnements und Speicherkonten mithilfe von Azure PowerShell verwalten. Fahren Sie nun mit dem nächsten Abschnitt fort, um zu lernen, wie Sie Azure-Blobs und Blobmomentaufnahmen verwalten.
 
 ### So rufen Sie Azure-Speicherschlüssel ab und generieren sie erneut
 
@@ -254,7 +254,7 @@ Wenn Sie Ihre Schlüssel neu generieren möchten, verwenden Sie das folgende Cmd
 	New-AzureStorageKey -StorageAccountName $StorageAccountName -KeyType “Secondary”
 
 ## Verwalten von Azure-Blobs
-Der Azure-Blob-Speicher ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. In diesem Abschnitt wird davon ausgegangen, dass Sie bereits mit den Konzepten des Azure-Blob-Speicherdiensts vertraut sind. Ausführliche Informationen finden Sie unter [How to use Blob storage from .NET](storage-dotnet-how-to-use-blobs.md) und [Blob-Dienst-Konzepte](http://msdn.microsoft.com/library/azure/dd179376.aspx).
+Der Azure-Blob-Speicher ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. In diesem Abschnitt wird davon ausgegangen, dass Sie bereits mit den Konzepten des Azure-Blob-Speicherdiensts vertraut sind. Ausführliche Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](storage-dotnet-how-to-use-blobs.md) und [Blob Service Concepts](http://msdn.microsoft.com/library/azure/dd179376.aspx) (Blobdienstkonzepte).
 
 ### Erstellen von Containern
 Jeder Blob im Azure-Speicher muss sich in einem Container befinden. Sie können mithilfe des Cmdlets "New-AzureStorageContainer" einen privaten Container erstellen:
@@ -388,12 +388,12 @@ Sie können die Momentaufnahme eines Blobs kopieren, um die Momentaufnahme wiede
     #Copy the snapshot to another container.
     Start-AzureStorageBlobCopy –Context $Ctx -ICloudBlob $snap -DestBlob $DestBlobName -DestContainer $DestContainerName
 
-Sie haben jetzt erfahren, wie Azure-Blobs und Blob-Momentaufnahmen mit Azure PowerShell verwaltet werden. Fahren Sie mit dem nächsten Abschnitt fort, um zu erfahren, wie Tabellen, Warteschlangen und Dateien verwaltet werden.
+Sie haben erfahren, wie Sie Azure-Blobs und Blobmomentaufnahmen mit Azure PowerShell verwalten. Im nächsten Abschnitt wird nun erläutert, wie Sie Tabellen, Warteschlangen und Dateien verwalten.
 
 ## Verwalten von Azure-Tabellen und Tabellenentitäten
 Der Azure-Tabellenspeicherdienst ist ein NoSQL-Datenspeicher, den Sie zum Speichern und Abfragen sehr großer Sätze von strukturierten, nicht relationalen Daten ausführen können. Die Hauptkomponenten des Diensts sind Tabellen, Entitäten und Eigenschaften. Eine Tabelle ist eine Sammlung von Entitäten. Eine Entität ist ein Satz von Eigenschaften. Jede Entität kann über bis zu 252 Eigenschaften verfügen, bei denen es sich um Name-Wert-Paare handelt. In diesem Abschnitt wird davon ausgegangen, dass Sie bereits mit den Konzepten des Azure-Tabellenspeicherdiensts vertraut sind. Ausführliche Informationen finden Sie unter [Grundlegendes zum Tabellendienst-Datenmodell](http://msdn.microsoft.com/library/azure/dd179338.aspx) und [Erste Schritte mit Azure Table Storage mit .NET](storage-dotnet-how-to-use-tables.md).
 
-In den folgenden Unterabschnitten erfahren Sie, wie Azure-Speicherdienste mit Azure PowerShell verwaltet werden. Die behandelten Szenarios umfassen das **Erstellen**, **Löschen** und **Abrufen** von **Tabellen** sowie das **Hinzufügen**, **Abfragen** und **Löschen von Tabellenentitäten**.
+In den folgenden Unterabschnitten erfahren Sie, wie der Azure-Tabellenspeicherdienst mit Azure PowerShell verwaltet wird. Die behandelten Szenarios umfassen das **Erstellen**, **Löschen** und **Abrufen** von **Tabellen** sowie das **Hinzufügen**, **Abfragen** und **Löschen von Tabellenentitäten**.
 
 ### Erstellen von Tabellen
 Jede Tabelle muss sich in einem Azure-Speicherkonto befinden. Im folgenden Beispiel wird veranschaulicht, wie eine Tabelle in Azure Storage erstellt wird. Im Beispiel wird zuerst mit dem Speicherkontokontext, der den Speicherkontonamen und seinen Zugriffsschlüssel umfasst, eine Verbindung mit Azure Storage hergestellt. Als Nächstes verwendet es das Cmdlet [New-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806417.aspx), um eine Tabelle in Azure Storage zu erstellen.
@@ -481,7 +481,7 @@ Verwenden Sie die [Microsoft.WindowsAzure.Storage.Table.TableQuery](http://msdn.
     #Define the storage account and context.
     $StorageAccountName = "yourstorageaccount"
     $StorageAccountKey = Get-AzureStorageKey -StorageAccountName $StorageAccountName
-    $Ctx = New-AzureStorageContext –StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey.Primary;
+    $Ctx = New-AzureStorageContext –StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey.Primary
     $TableName = "Employees"
 
     #Get a reference to a table.
@@ -505,7 +505,7 @@ Verwenden Sie die [Microsoft.WindowsAzure.Storage.Table.TableQuery](http://msdn.
     $entities = $table.CloudTable.ExecuteQuery($query)
 
     #Display entity properties with the table format.
-    $entities  | Format-Table PartitionKey, RowKey, @{ Label = "Name"; Expression={$_.Properties["Name"].StringValue}}, @{ Label = "ID"; Expression={$_.Properties[“ID”].Int32Value}} -AutoSize
+    $entities  | Format-Table PartitionKey, RowKey, @{ Label = "Name"; Expression={$_.Properties["Name"].StringValue}}, @{ Label = "ID"; Expression={$_.Properties["ID"].Int32Value}} -AutoSize
 
 #### Löschen von Tabellenentitäten
 Sie können eine Entität unter Verwendung ihres Partitions- und Zeilenschlüssels löschen. Im folgende Beispiel wird davon ausgegangen, dass Sie das im Abschnitt "Hinzufügen von Entitäten" dieses Handbuchs angegebene Skript bereits ausgeführt haben. Im Beispiel wird zuerst mit dem Speicherkontext, der den Speicherkontonamen und seinen Zugriffsschlüssel umfasst, eine Verbindung mit Azure Storage hergestellt. Anschließend wird versucht, die zuvor erstellte Employees-Tabelle mithilfe des Cmdlets [Get-AzureStorageTable](http://msdn.microsoft.com/library/azure/dn806411.aspx) abzurufen. Wenn die Tabelle vorhanden ist, ruft das Beispiel die [Microsoft.WindowsAzure.Storage.Table.TableOperation.Retrieve](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tableoperation.retrieve.aspx)-Methode zum Abrufen einer Entität auf Grundlage ihrer Partition und der Zeilenschlüsselwerte auf. Übergeben Sie anschließend die Entität zum Löschen an die [Microsoft.WindowsAzure.Storage.Table.TableOperation.Delete](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.table.tableoperation.delete.aspx)-Methode.
@@ -523,11 +523,12 @@ Sie können eine Entität unter Verwendung ihres Partitions- und Zeilenschlüsse
     if ($table -ne $null) {
        #Together the PartitionKey and RowKey uniquely identify every  
        #entity within a table.
-       $tableResult = $table.CloudTable.Execute([Microsoft.WindowsAzure.Storage.Table.TableOperation]::Retrieve(“Partition2”, "Row1"))
-       $entity = $tableResult.Result;
+       $tableResult = $table.CloudTable.Execute([Microsoft.WindowsAzure.Storage.Table.TableOperation]::Retrieve("Partition2", "Row1"))
+       $entity = $tableResult.Result
     if ($entity -ne $null)
     {
-       #Delete the entity.$table.CloudTable.Execute([Microsoft.WindowsAzure.Storage.Table.TableOperation]::Delete($entity))
+       #Delete the entity.
+       $table.CloudTable.Execute([Microsoft.WindowsAzure.Storage.Table.TableOperation]::Delete($entity))
     }
     }
 
@@ -751,4 +752,4 @@ In diesem Handbuch haben Sie erfahren, wie Sie Azure Storage mit Azure PowerShel
 [How to use Azure Storage for U.S. government and Azure China]: #gov
 [Next Steps]: #next
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

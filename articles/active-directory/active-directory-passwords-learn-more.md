@@ -1,22 +1,25 @@
-<properties 
-	pageTitle="Weitere Informationen: Azure AD-Kennwortverwaltung | Microsoft Azure" 
-	description="Weiterführende Themen zur Azure AD-Kennwortverwaltung, einschließlich Kennwortrückschreibung, Sicherheit bei der Kennwortrückschreibung, Funktionsweise des Portals für die Kennwortzurücksetzung und der zur Kennwortzurücksetzung verwendeten Daten." 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="asteen" 
-	manager="kbrint" 
-	editor="billmath"/>
+<properties
+	pageTitle="Weitere Informationen: Azure AD-Kennwortverwaltung | Microsoft Azure"
+	description="Weiterführende Themen zur Azure AD-Kennwortverwaltung, einschließlich Kennwortrückschreibung, Sicherheit bei der Kennwortrückschreibung, Funktionsweise des Portals für die Kennwortzurücksetzung und der zur Kennwortzurücksetzung verwendeten Daten."
+	services="active-directory"
+	documentationCenter=""
+	authors="asteen"
+	manager="femila"
+	editor="curtand"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/16/2016" 
+<tags
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/12/2016"
 	ms.author="asteen"/>
 
 # Weitere Informationen zur Kennwortverwaltung
+
+> [AZURE.IMPORTANT] **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
+
 Wenn Sie die Kennwortverwaltung bereits bereitgestellt haben oder vor der Bereitstellung einfach nur mehr über die technischen Grundlagen erfahren möchten, liefert dieser Abschnitt einen guten Überblick über die technischen Konzepte, die hinter dem Dienst stehen. In diesem Artikel werden die folgenden Themen abgedeckt:
 
 * [**Übersicht über die Kennwortrückschreibung**](#password-writeback-overview)
@@ -365,7 +368,7 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 ## Links zu Informationen zur Kennwortzurücksetzung
 Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
 
-* [**Zurücksetzen Ihres eigenen Kennworts**](active-directory-passwords-update-your-own-password.md): Hier erhalten Sie Informationen zum Zurücksetzen oder Ändern Ihres eigenen Kennworts als Benutzer des Systems.
+* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
 * [**Funktionsweise**](active-directory-passwords-how-it-works.md) – Erfahren Sie mehr über die sechs verschiedenen Komponenten des Diensts und deren Funktionen.
 * [**Erste Schritte**](active-directory-passwords-getting-started.md) – Erfahren Sie, wie Sie Benutzern das Zurücksetzen und Ändern ihrer Cloud- oder lokalen Kennwörter erlauben.
 * [**Anpassen**](active-directory-passwords-customize.md) – Erfahren Sie, wie Sie das Aussehen und Verhalten des Diensts an die Anforderungen Ihrer Organisation anpassen.
@@ -379,4 +382,4 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 [001]: ./media/active-directory-passwords-learn-more/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-learn-more/002.jpg "Image_002.jpg"
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

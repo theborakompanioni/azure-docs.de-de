@@ -4,20 +4,19 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
 #Lernprogramm: Azure Active Directory-Integration mit BambooHR
 
-In diesem Lernprogramm wird die Integration von Azure und BambooHR erläutert.
-Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Lernprogramm wird die Integration von Azure und BambooHR erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
 -   Ein BambooHR-Abonnement, für das einmaliges Anmelden aktiviert ist
@@ -38,7 +37,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Bam
 
 ###So aktivieren Sie die Anwendungsintegration für BambooHR
 
-1.  Klicken Sie im linken Navigationsbereich des Azure-Verwaltungsportals auf **Active Directory**.
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-bamboo-hr-tutorial/IC700993.png "Active Directory")
 
@@ -65,13 +64,11 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Bam
     ![BambooHR](./media/active-directory-saas-bamboo-hr-tutorial/IC796687.png "BambooHR")
 ##Konfigurieren der einmaligen Anmeldung
 
-In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei BambooHR zu authentifizieren.
-Im Rahmen dieses Verfahrens müssen Sie eine Base64-codierte Zertifikatsdatei erstellen.
-Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (Konvertieren eines binären Zertifikats in eine Textdatei; in englischer Sprache) weitere Informationen.
+In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei BambooHR zu authentifizieren. Im Rahmen dieses Verfahrens müssen Sie eine Base64-codierte Zertifikatsdatei erstellen. Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (Konvertieren eines binären Zertifikats in eine Textdatei; in englischer Sprache) weitere Informationen.
 
 ###So konfigurieren Sie einmaliges Anmelden
 
-1.  Klicken Sie im Azure AD-Portal auf der Anwendungsintegrationsseite für **BambooHR** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **BambooHR** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
     ![Szenario](./media/active-directory-saas-bamboo-hr-tutorial/IC796685.png "Szenario")
 
@@ -79,7 +76,7 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to con
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-bamboo-hr-tutorial/IC796688.png "Einmaliges Anmelden konfigurieren")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **BambooHR-Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei BambooHR verwenden (z. B. https://company.bamboohr.com), und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **BambooHR-Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei Ihrer BambooHR-Anwendung verwendete URL ein (z.B. https://company.bamboohr.com), und klicken Sie dann auf **Weiter**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-bamboo-hr-tutorial/IC796689.png "App-URL konfigurieren")
 
@@ -101,33 +98,32 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to con
 
     ![SAML Single Sign-On](./media/active-directory-saas-bamboo-hr-tutorial/IC796692.png "SAML Single Sign-On")
 
-    1.  Kopieren Sie im Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren um BambooHR** den Wert für **Dienst-URL für einmaliges Anmelden**, und fügen Sie ihn ins Textfeld **SSO Login URL** ein.
-	2.  Erstellen Sie eine **Base64-codierte** Datei aus dem heruntergeladenen Zertifikat.  
+    1.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für BambooHR** den Wert für **Dienst-URL für einmaliges Anmelden**, und fügen Sie ihn in das Textfeld **SSO Login URL** ein.
+    2.  Erstellen Sie eine **Base64-codierte** Datei aus dem heruntergeladenen Zertifikat.
 
         >[AZURE.TIP] Weitere Informationen finden Sie unter [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (in englischer Sprache).
 
     3.  Öffnen Sie das Base64-codierte Zertifikat in Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **X.509 Certificate** ein.
     4.  Klicken Sie auf **Speichern**.
 
-8.  Wählen Sie im Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
+8.  Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-bamboo-hr-tutorial/IC796693.png "Einmaliges Anmelden konfigurieren")
 ##Konfigurieren der Benutzerbereitstellung
 
-Damit sich Azure AD-Benutzer bei BambooHR anmelden können, müssen sie in BambooHR bereitgestellt werden.
-Im Fall von BambooHR ist die Bereitstellung eine manuelle Aufgabe.
+Damit sich Azure AD-Benutzer bei BambooHR anmelden können, müssen sie in BambooHR bereitgestellt werden. Im Fall von BambooHR ist die Bereitstellung eine manuelle Aufgabe.
 
 ###So stellen Sie Benutzerkonten bereit
 
 1.  Melden Sie sich bei Ihrer **BambooHR**-Unternehmenswebsite als Administrator an.
 
-2.  Klicken Sie oben auf der Symbolleiste auf **Einstellungen**.
+2.  Klicken Sie oben auf der Symbolleiste auf **Settings**.
 
     ![Einstellung](./media/active-directory-saas-bamboo-hr-tutorial/IC796694.png "Einstellung")
 
-3.  Klicken Sie auf **Übersicht**.
+3.  Klicken Sie auf **Overview**.
 
-4.  Wechseln Sie im linken Navigationsbereich zu **Sicherheit > Benutzer**.
+4.  Wechseln Sie im linken Navigationsbereich zu **Security > Users**.
 
 5.  Geben Sie Benutzername, Kennwort und E-Mail-Adresse eines gültigen AAD-Benutzerkontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
 
@@ -141,7 +137,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
 
 ###So weisen Sie BambooHR Benutzer zu
 
-1.  Erstellen Sie im Azure AD-Portal ein Testkonto.
+1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
 2.  Klicken Sie auf der Anwendungsintegrationsseite für **BambooHR** auf **Benutzer zuweisen**.
 
@@ -153,4 +149,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!----HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

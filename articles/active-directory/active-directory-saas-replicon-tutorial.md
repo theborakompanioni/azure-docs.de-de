@@ -2,17 +2,17 @@
     pageTitle="Tutorial: Azure Active Directory-Integration mit Replicon | Microsoft Azure" 
     description="Hier erfahren Sie, wie Sie Replicon mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen." 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="07/07/2016" 
+    ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit Replicon
   
@@ -37,7 +37,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Rep
 
 ###So aktivieren Sie die Anwendungsintegration für Replicon:
 
-1.  Klicken Sie im linken Navigationsbereich des Azure-Verwaltungsportals auf **Active Directory**.
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-replicon-tutorial/IC700993.png "Active Directory")
 
@@ -66,9 +66,9 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Rep
   
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Replicon zu authentifizieren.
 
-###So konfigurieren Sie einmaliges Anmelden:
+###So konfigurieren Sie einmaliges Anmelden
 
-1.  Klicken Sie im Azure AD-Portal auf der Anwendungsintegrationsseite für **Replicon** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Replicon** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-replicon-tutorial/IC777801.png "Einmaliges Anmelden konfigurieren")
 
@@ -80,10 +80,10 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![App-URL konfigurieren](./media/active-directory-saas-replicon-tutorial/IC777803.png "App-URL konfigurieren")
 
-    1.  Geben Sie in das Textfeld **Replicon-Anmelde- URL** Ihre Replicon-Mandanten-URL ein (z. B.: *https://na2.replicon.com/company/saml2/sp-sso/post*).
-    2.  Geben Sie im Textfeld **Replicon-Antwort-URL** Ihre **AssertionConsumerService-URL** für Replicon ein (z. B. *https://global.replicon.com/!/saml2/company/sso/post*).
+    1.  Geben Sie im Textfeld **Replicon-Anmelde- URL** die URL Ihres Replicon-Mandanten ein (z.B.: *https://na2.replicon.com/company/saml2/sp-sso/post*).
+    2.  Geben Sie im Textfeld **Replicon-Antwort-URL** Ihre **AssertionConsumerService-URL** für Replicon ein (z.B. *https://global.replicon.com/!/saml2/company/sso/post*).
 
-        >[AZURE.NOTE]Sie können die URL aus den Replicon-Metadaten unter: **https://global.replicon.com/!/saml2/\< YourCompanyKey >** abrufen.
+        >[AZURE.NOTE] Sie können die URL aus den Replicon-Metadaten unter: **https://global.replicon.com/!/saml2/\< YourCompanyKey >** abrufen.
 
     3.  Klicken Sie auf **Weiter**.
 
@@ -102,7 +102,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     3.  Klicken Sie auf **+**, um den Abschnitt **metaDataConfiguration** auszuklappen.
     4.  Klicken Sie auf **Datei auswählen**, um die Metadaten-XML-Datei Ihres Identitätsanbieters auszuwählen. Klicken Sie dann auf **Senden**.
 
-7.  Wählen Sie im Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
+7.  Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-replicon-tutorial/IC778418.png "Einmaliges Anmelden konfigurieren")
 ##Konfigurieren der Benutzerbereitstellung
@@ -139,7 +139,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 ###So weisen Sie Replicon Benutzer zu:
 
-1.  Erstellen Sie im Azure AD-Portal ein Testkonto.
+1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
 2.  Klicken Sie auf der Anwendungsintegrationsseite für **Replicon** auf **Benutzer zuweisen**.
 
@@ -151,4 +151,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!----HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0713_2016-->

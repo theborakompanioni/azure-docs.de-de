@@ -3,7 +3,7 @@ pageTitle="Aktualisieren eines Clouddiensts | Microsoft Azure"
 description="Hier erfahren Sie, wie Sie Clouddienste in Azure aktualisieren. Erfahren Sie, wie die Aktualisierung eines Clouddiensts ausgeführt wird, damit die Verfügbarkeit sichergestellt ist."
 services="cloud-services"
 documentationCenter=""
-authors="kenazk"
+authors="Thraka"
 manager="timlt"
 editor=""/>
 <tags
@@ -12,8 +12,8 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na"
 ms.devlang="na"
 ms.topic="article"
-ms.date="10/26/2015"
-ms.author="kenazk"/>
+ms.date="05/05/2016"
+ms.author="adegeo"/>
 
 # Aktualisieren eines Clouddiensts
 
@@ -26,7 +26,7 @@ Azure organisiert Ihre Rolleninstanzen in logischen Gruppen, die als Upgradedom�
 
 Die Standardanzahl von Upgradedomänen ist 5. Sie können eine andere Anzahl von Upgradedomänen festlegen, indem Sie das Attribut „upgradeDomainCount“ in die Dienstdefinitionsdatei (.CSDEF) einschließen. Weitere Informationen über das Attribut „upgradeDomainCount“ finden Sie unter [WebRole-Schema](https://msdn.microsoft.com/library/azure/gg557553.aspx) oder [WorkerRole-Schema](https://msdn.microsoft.com/library/azure/gg557552.aspx).
 
-Wenn Sie eine direkte Aktualisierung einer oder mehrerer Rollen in Ihrem Dienst durchführen, aktualisiert Azur Sätze von Rolleninstanz je nach der Upgradedomäne, der sie angehören. Azure aktualisiert alle Instanzen in einer bestimmten Upgradedomäne (beendet sie, aktualisiert sie und schaltet sie wieder online) und fährt dann mit der nächsten Domäne fort. Dadurch, dass nur die Instanzen beendet werden, die in der aktuellen Upgradedomäne ausgeführt werden, stellt Azure sicher, dass sich die Aktualisierung so wenig wie möglich auf den ausgeführten Dienst auswirkt. Weitere Informationen finden Sie unter [Vorgehensweise bei der Aktualisierung](https://msdn.microsoft.com/library/azure/Hh472157.aspx#proceed) weiter unten in diesem Artikel.
+Wenn Sie eine direkte Aktualisierung einer oder mehrerer Rollen in Ihrem Dienst durchführen, aktualisiert Azur Sätze von Rolleninstanz je nach der Upgradedomäne, der sie angehören. Azure aktualisiert alle Instanzen in einer bestimmten Upgradedomäne (beendet sie, aktualisiert sie und schaltet sie wieder online) und fährt dann mit der nächsten Domäne fort. Dadurch, dass nur die Instanzen beendet werden, die in der aktuellen Upgradedomäne ausgeführt werden, stellt Azure sicher, dass sich die Aktualisierung so wenig wie möglich auf den ausgeführten Dienst auswirkt. Weitere Informationen finden Sie unter [Vorgehensweise bei der Aktualisierung](#howanupgradeproceeds) weiter unten in diesem Artikel.
 
 > [AZURE.NOTE] Die Begriffe **Aktualisierung** und **Update** haben für Azure eine etwas unterschiedliche Bedeutung. In Bezug auf die Prozesse und Beschreibungen der Features in diesem Dokument können Sie jedoch synonym verwendet werden.
 
@@ -132,7 +132,7 @@ Azure ist bei der Verwaltung von Diensten während einer Aktualisierung flexibel
 Das Zurücksetzen einer Aktualisierung in Bearbeitung wirkt sich folgendermaßen auf die Bereitstellung aus:
 
 -   Alle Rolleninstanzen, für die noch keine Aktualisierung/kein Upgrade auf die neue Version durchgeführt wurde, werden nicht aktualisiert/upgegradet, da diese Instanzen bereits die Zielversion des Diensts ausführen.
--   Rolleninstanzen, die bereits aktualisiert oder auf die neue Version der Dienstpaketdatei (\*.CSPKG) oder der Dienstkonfigurationsdatei (\*.CSCFG) (oder beide Dateien) upgegradet wurden, werden auf die Version dieser Dateien vor dem Upgrade zurückgesetzt.
+-   Rolleninstanzen, die bereits aktualisiert oder auf die neue Version der Dienstpaketdatei (*.CSPKG) oder der Dienstkonfigurationsdatei (*.CSCFG) (oder beide Dateien) upgegradet wurden, werden auf die Version dieser Dateien vor dem Upgrade zurückgesetzt.
 
 Diese Funktion wird durch die folgenden Features bereitgestellt:
 
@@ -145,7 +145,7 @@ Diese Funktion wird durch die folgenden Features bereitgestellt:
 
 In den folgenden Situationen wird ein Zurücksetzen einer Aktualisierung oder eines Upgrades nicht unterstützt:
 
--   Verringerung lokaler Ressourcen – Wenn die Aktualisierung die lokalen Ressourcen für eine Rolle vergrößert, ermöglicht die Azure-Plattform kein Zurücksetzen. Weitere Informationen zum Konfigurieren lokaler Ressourcen für eine Rolle finden Sie unter [Konfigurieren lokaler Speicherressourcen](https://msdn.microsoft.com/library/azure/ee758708.aspx).
+-   Verringerung lokaler Ressourcen – Wenn die Aktualisierung die lokalen Ressourcen für eine Rolle vergrößert, ermöglicht die Azure-Plattform kein Zurücksetzen.
 -   Kontingentgrenzen – Wenn die Aktualisierung ein Vorgang zum zentralen Herunterskalieren war, ist Ihr Berechnungskontingent für das Zurücksetzen unter Umständen nicht mehr ausreichend. Jedem Azure-Abonnement ist ein Kontingent zugeordnet, das die maximale Anzahl von Kernen angibt, die von allen gehosteten Diensten, die zu diesem Abonnement gehören, genutzt werden können Wenn durch das Zurücksetzen einer Aktualisierung das Kontingent für Ihr Abonnement überschritten werden würde, ist das Zurücksetzen nicht möglich.
 -   Racebedingung – Wenn die ursprüngliche Aktualisierung abgeschlossen ist, ist ein Zurücksetzen nicht möglich.
 
@@ -167,7 +167,7 @@ Zwei Vorgänge ([Bereitstellung abrufen](https://msdn.microsoft.com/library/azur
 Wenn Sie die Version dieser Methoden aufrufen möchten, die die Kennzeichnung „Locked“ ausgibt, müssen Sie den Anforderungsheader auf „x-ms-version: 2011-10-01“ oder höher setzen. Weitere Informationen zu Versionsverwaltungsheadern finden Sie unter [Dienstverwaltungs-Versionsverwaltung](https://msdn.microsoft.com/library/azure/gg592580.aspx).
 
 ## Verteilung von Rollen über Upgradedomänen
-Azure verteilt Instanzen einer Rolle gleichmäßig über eine festgelegte Anzahl von Upgradedomänen, die als Teil der Dienstdefinitionsdatei (.csdef) konfiguriert werden können. Die maximale Anzahl von Upgradedomänen ist 20, der Standardwert ist 5. Weitere Informationen zum Ändern der Dienstdefinitionsdatei finden Sie unter [Azure-Dienstdefinitionsschema (CSDEF-Datei)](https://msdn.microsoft.com/library/azure/ee758711.aspx).
+Azure verteilt Instanzen einer Rolle gleichmäßig über eine festgelegte Anzahl von Upgradedomänen, die als Teil der Dienstdefinitionsdatei (.csdef) konfiguriert werden können. Die maximale Anzahl von Upgradedomänen ist 20, der Standardwert ist 5. Weitere Informationen zum Ändern der Dienstdefinitionsdatei finden Sie unter [Azure-Dienstdefinitionsschema (CSDEF-Datei)](cloud-services-model-and-package.md#csdef).
 
 Wenn Ihre Rolle beispielsweise zehn Instanzen umfasst, enthält jede Upgraadedomäne standardmäßig zwei Instanzen. Wenn Ihre Rolle 14 Instanzen umfasst, dann enthalten vier Upgradedomänen drei Instanzen, und eine fünfte Domäne enthält zwei.
 
@@ -182,4 +182,4 @@ Das folgende Diagramm zeigt, wie ein Dienst mit zwei Rollen verteilt wird, wenn 
 ## Nächste Schritte
 [Verwalten von Clouddiensten](cloud-services-how-to-manage.md)<br> [Überwachen von Clouddiensten](cloud-services-how-to-monitor.md)<br> [Konfigurieren von Clouddiensten](cloud-services-how-to-configure.md)<br>
 
-<!----HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0713_2016-->

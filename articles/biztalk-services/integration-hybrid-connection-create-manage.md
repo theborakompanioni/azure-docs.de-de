@@ -38,7 +38,7 @@ Eine Hybridverbindung kann im Azure-Portal anhand von Web-Apps **oder** BizTalk 
 **So erstellen Sie Hybridverbindungen in BizTalk Services**:
 
 1. Melden Sie sich beim [klassischen Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885) an.
-2. Wählen Sie im linken Navigationsbereich die Option **BizTalk Services** aus, und wählen Sie dann Ihren BizTalk Service aus. 
+2. Wählen Sie im linken Navigationsbereich die Option **BizTalk Services** aus, und wählen Sie dann Ihren BizTalk Service aus.
 
 	Wenn Sie keinen vorhandenen BizTalk Service haben, können Sie [einen BizTalk Service erstellen](biztalk-provision-services.md).
 3. Wählen Sie die Registerkarte **Hybridverbindungen** aus: ![Registerkarte "Hybridverbindungen"][HybridConnectionTab]
@@ -47,16 +47,16 @@ Eine Hybridverbindung kann im Azure-Portal anhand von Web-Apps **oder** BizTalk 
 
 	Eigenschaft | Beschreibung
 --- | ---
-Name | Der Name der Hybridverbindung muss eindeutig sein, und es darf sich nicht um den Namen des BizTalk Service handeln. Sie können jeden beliebigen Namen eingeben; er sollte aber auf den Zweck hinweisen. Beispiele:<br/><br/>Lohnbuchhaltung*SQLServer*<br/>Lieferantenliste*SharepointServer*<br/>Kunden*OracleServer*
-Hostname | Geben Sie den vollständig qualifizierten Hostnamen, nur den Hostnamen oder die IPv4-Adresse der lokalen Ressource ein. Beispiele:<br/><br/>mySQLServer<br/>*mySQLServer*.*Domain*.corp.*yourCompany*.com<br/>*myHTTPSharePointServer*<br/>*myHTTPSharePointServer*.*yourCompany*.com<br/>10.100.10.10
+Name | Der Name der Hybridverbindung muss eindeutig sein, und es darf sich nicht um den Namen des BizTalk Service handeln. Sie können jeden beliebigen Namen eingeben; er sollte aber auf den Zweck hinweisen. Beispiele:<br/><br/>Lohnbuch*SQLServer*<br/>Lieferliste*SharepointServer*<br/>Kunden*OracleServer*
+Hostname | Geben Sie den vollständig qualifizierten Hostnamen, nur den Hostnamen oder die IPv4-Adresse der lokalen Ressource ein. Beispiele:<br/><br/>mySQLServer<br/>*mySQLServer*.*Domain*.corp.*IhrUnternehmen*.com<br/>*MeinHTTPSharePointServer*<br/>*MeinHTTPSharePointServer*.*IhrUnternehmen*.com<br/>10.100.10.10
 Port | Geben Sie die Portnummer der lokalen Ressource ein. Wenn Sie Web-Apps verwenden, geben Sie beispielsweise Port 80 oder Port 443 ein. Wenn Sie SQL Server verwenden, geben Sie Port 1433 ein.
 
 5. Wählen Sie das Häkchen aus, um das Setup abzuschließen.
 
 #### Zusätzlich
 
-- Es können mehrere Hybridverbindungen erstellt werden. Die Anzahl der zulässigen Verbindungen finden Sie unter [BizTalk Services: Editionsübersicht](biztalk-editions-feature-chart.md) für . 
-- Jede Hybridverbindung wird mit einem Paar von Verbindungszeichenfolgen erstellt: Anwendungsschlüsseln, die SENDEN, und lokalen Schlüsseln, die LAUSCHEN. Jedes Paar hat einen primären und einen sekundären Schlüssel. 
+- Es können mehrere Hybridverbindungen erstellt werden. Die Anzahl der zulässigen Verbindungen finden Sie unter [BizTalk Services: Editionsübersicht](biztalk-editions-feature-chart.md) für .
+- Jede Hybridverbindung wird mit einem Paar von Verbindungszeichenfolgen erstellt: Anwendungsschlüsseln, die SENDEN, und lokalen Schlüsseln, die LAUSCHEN. Jedes Paar hat einen primären und einen sekundären Schlüssel.
 
 
 ## <a name="LinkWebSite"></a>Verknüpfen von Azure-Web-Apps oder mobilen Azure-Apps
@@ -71,11 +71,11 @@ Um die mobilen Azure-Apps mit einer vorhandenen Hybridverbindung zu verknüpfen,
 Nachdem eine Hybridverbindung erstellt wurde, installieren Sie den Hybrid Connection Manager auf der lokalen Ressource. Er kann aus Azure-Web-Apps oder BizTalk Service heruntergeladen werden. Schritte für BizTalk Services:
 
 1. Melden Sie sich beim [klassischen Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885) an.
-2. Wählen Sie im linken Navigationsbereich die Option **BizTalk Services** aus, und wählen Sie dann Ihren BizTalk Service aus. 
+2. Wählen Sie im linken Navigationsbereich die Option **BizTalk Services** aus, und wählen Sie dann Ihren BizTalk Service aus.
 3. Wählen Sie die Registerkarte **Hybridverbindungen** aus: ![Registerkarte "Hybridverbindungen"][HybridConnectionTab]
 4. Wählen Sie auf der Taskleiste **Lokale Einrichtung** aus: ![Lokale Einrichtung][HCOnPremSetup]
-5. Wählen Sie **Installieren und konfigurieren** aus, um den Hybrid Connection Manager auf dem lokalen System herunterzuladen oder auszuführen. 
-6. Wählen Sie das Häkchen, um die Installation zu starten. 
+5. Wählen Sie **Installieren und konfigurieren** aus, um den Hybrid Connection Manager auf dem lokalen System herunterzuladen oder auszuführen.
+6. Wählen Sie das Häkchen, um die Installation zu starten.
 
 <!--
 You can also download the Hybrid Connection Manager MSI file and copy the file to your on-premises resource. Specific steps:
@@ -88,39 +88,39 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 --> 
 
 #### Zusätzlich
-- Hybridverbindungen unterstützen lokale Ressourcen, die unter den folgenden Betriebssystemen installiert sind:
+- Hybrid Connection Manager kann unter den folgenden Betriebssystemen installiert werden:
 
-	- Windows Server 2008 R2
-	- Windows Server 2012
+	- Windows Server 2008 R2 (.NET Framework 4.5 und Windows Management Framework 4.0 mindestens erforderlich)
+	- Windows Server 2012 (Windows Management Framework 4.0 mindestens erforderlich)
 	- Windows Server 2012 R2
 
 
 - Nachdem Sie den Hybrid Connection Manager installiert haben, geschieht Folgendes:
 
-	- Die auf Azure gehostete Hybridverbindung wird automatisch so konfiguriert, dass sie die primäre Anwendungsverbindungszeichenfolge verwendet. 
+	- Die auf Azure gehostete Hybridverbindung wird automatisch so konfiguriert, dass sie die primäre Anwendungsverbindungszeichenfolge verwendet.
 	- Die lokale Ressource wird automatisch so konfiguriert, dass sie die primäre lokale Verbindungszeichenfolge verwendet.
 
 - Der Hybrid Connection Manager muss eine gültige lokale Verbindungszeichenfolge für die Autorisierung verwenden. Die Azure-Web-Apps bzw. die mobilen Apps müssen eine gültige Anwendungsverbindungszeichenfolge für die Autorisierung verwenden.
-- Sie können Hybridverbindungen skalieren, indem Sie eine andere Instanz von Hybrid Connection Manager auf einem anderen Server installieren. Konfigurieren Sie den lokalen Listener so, dass er die gleiche Adresse wie der erste lokale Listener verwenden. In diesem Fall wird der Datenverkehr zufällig (Roundrobin) zwischen den aktiven lokalen Listenern verteilt. 
+- Sie können Hybridverbindungen skalieren, indem Sie eine andere Instanz von Hybrid Connection Manager auf einem anderen Server installieren. Konfigurieren Sie den lokalen Listener so, dass er die gleiche Adresse wie der erste lokale Listener verwenden. In diesem Fall wird der Datenverkehr zufällig (Roundrobin) zwischen den aktiven lokalen Listenern verteilt.
 
 
 ## <a name="ManageHybridConnection"></a>Verwalten von Hybridverbindungen
 Zum Verwalten der Hybridverbindungen haben Sie folgende Möglichkeiten:
 
-- Verwenden Sie das Azure-Portal und gehen Sie zu Ihrem BizTalk Service. 
+- Verwenden Sie das Azure-Portal und gehen Sie zu Ihrem BizTalk Service.
 - Verwenden Sie [REST-APIs](http://msdn.microsoft.com/library/azure/dn232347.aspx).
 
 #### Kopieren Sie die Hybridverbindungszeichenfolgen oder generieren Sie diese erneut.
 
 1. Melden Sie sich beim [klassischen Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885) an.
-2. Wählen Sie im linken Navigationsbereich die Option **BizTalk Services** aus, und wählen Sie dann Ihren BizTalk Service aus. 
+2. Wählen Sie im linken Navigationsbereich die Option **BizTalk Services** aus, und wählen Sie dann Ihren BizTalk Service aus.
 3. Wählen Sie die Registerkarte **Hybridverbindungen** aus: ![Registerkarte "Hybridverbindungen"][HybridConnectionTab]
 4. Wählen Sie die Hybridverbindung aus. Wählen Sie auf der Taskleiste **Verbindung verwalten** aus: ![Verwalten von Optionen][HCManageConnection]
 
 	**Verbindungen verwalten** führt die Anwendung und die Vor-Ort-Verbindungszeichenfolgen auf. Sie können die Verbindungszeichenfolgen kopieren oder den Zugriffsschlüssel in der Verbindungszeichenfolge regenerieren.
 
 	**Wenn Sie "Regenerieren" auswählen**, verändert sich der freigegebene Zugriffsschlüssel innerhalb der Verbindungszeichenfolge. Gehen Sie wie folgt vor:
-	- Wählen Sie im klassischen Azure-Portal in der Azure-Anwendung die Option **Synchronisierungsschlüssel** aus.
+	- Wählen Sie im klassischen Azure-Portal in der Azure-Anwendung **Synchronisierungsschlüssel** aus.
 	- Führen Sie das **lokale Setup** erneut aus. Wenn Sie das lokale Setup erneut ausführen, wird die lokale Ressource automatisch für die Verwendung der aktualisierten primären Verbindungszeichenfolge konfiguriert.
 
 
@@ -128,7 +128,7 @@ Zum Verwalten der Hybridverbindungen haben Sie folgende Möglichkeiten:
 
 1. Laden Sie die [administrativen Vorlagen des Hybrid Connection Manager](http://www.microsoft.com/download/details.aspx?id=42963) herunter.
 2. Extrahieren Sie die Dateien.
-3. Gehen Sie auf dem Computer, der die Gruppenrichtlinie ändert, wie folgt vor:  
+3. Gehen Sie auf dem Computer, der die Gruppenrichtlinie ändert, wie folgt vor:
 
 	- Kopieren Sie die ADMX-Dateien in den Ordner *%WINROOT%\\PolicyDefinitions*.
 	- Kopieren Sie die ADML-Dateien in den Ordner *%WINROOT%\\PolicyDefinitions\\de-DE*.
@@ -152,4 +152,4 @@ Nach dem Kopieren können Sie den Gruppenrichtlinien-Editor verwenden, um die Ri
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionManageConn.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

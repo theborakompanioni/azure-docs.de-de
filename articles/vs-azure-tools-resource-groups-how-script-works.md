@@ -3,8 +3,8 @@
 	description="Beschreibt die Funktionsweise des PowerShell-Skripts im Bereitstellungsprojekt für Azure-Ressourcengruppen."
 	services="visual-studio-online"
 	documentationCenter="na"
-	authors="TomArcher"
-	manager="douge"
+	authors="tfitzmac"
+	manager="timlt"
 	editor="" />
 
  <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
 	ms.date="05/08/2016"
-	ms.author="tarcher" />
+	ms.author="tomfitz" />
 
 # Übersicht über das Skript des Bereitstellungsprojekts für Azure-Ressourcengruppen
 
@@ -73,7 +73,7 @@ Es folgt eine Beschreibung der Aufgaben ausgewählter Abschnitte des Azure Power
 
 1.	Konvertieren Sie alle Variablen mit relativen Pfade in absolute Pfade. Ändern Sie z. B. einen Pfad wie `..\Tools\AzCopy.exe` zu `C:\YourFolder\Tools\AzCopy.exe`. Initialisieren Sie außerdem die Variablen *ArtifactsLocationName* und *ArtifactsLocationSasTokenName* auf NULL. *ArtifactsLocation* und *SaSToken* können als Parameter für die Vorlage verwendet werden. Wenn nach dem Lesen in der Parameterdatei ihre Werte NULL sind, generiert das Skript die Werte für sie.
 
-    Die Azure-Tools verwenden die Parameterwerte „ *\_artifactsLocation* “ und „ *\_artifactsLocationSasToken* “ in der Vorlage zur Verwaltung von Artefakten. Wenn das PowerShell-Skript Parameter mit diesen Namen findet, die Parameterwerte jedoch nicht bereitgestellt sind, lädt das Skript die Artefakte hoch und gibt die entsprechenden Werte für diese Parameter zurück. Anschließend übergibt es die Werte über `@OptionsParameters` an das Cmdlet.
+    Die Azure-Tools verwenden die Parameterwerte *\_artifactsLocation* und *\_artifactsLocationSasToken* in der Vorlage zur Verwaltung von Artefakten. Wenn das PowerShell-Skript Parameter mit diesen Namen findet, die Parameterwerte jedoch nicht bereitgestellt sind, lädt das Skript die Artefakte hoch und gibt die entsprechenden Werte für diese Parameter zurück. Anschließend übergibt es die Werte über `@OptionsParameters` an das Cmdlet.
 
 	|Variable|Beschreibung|
     |---|---|
@@ -94,7 +94,7 @@ Es folgt eine Beschreibung der Aufgaben ausgewählter Abschnitte des Azure Power
     $OptionalParameters.Add($ArtifactsLocationSasTokenName, $null)
     ```
 
-1.	Dieser Abschnitt überprüft, ob die Datei „<app name>.parameters.json“ (als „Parameterdatei“ bezeichnet) über einen übergeordneten Knoten mit dem Namen **Parameter** (im `else`-Block) verfügt. Andernfalls hat sie keinen übergeordneten Knoten. Beide Formate sind zulässig.
+1.	Dieser Abschnitt überprüft, ob die Datei „<App-Name>.parameters.json“ (als „Parameterdatei“ bezeichnet) über einen übergeordneten Knoten mit dem Namen **Parameter** (im `else`-Block) verfügt. Andernfalls hat sie keinen übergeordneten Knoten. Beide Formate sind zulässig.
     
 	```
     if ($JsonParameters -eq $null) {
@@ -105,7 +105,7 @@ Es folgt eine Beschreibung der Aufgaben ausgewählter Abschnitte des Azure Power
         }
     ```
 
-1.	Durchlaufen Sie die Auflistung der JSON-Parameter. Wenn „ *\_artifactsLocation* “ oder „ *\_artifactsLocationSasToken* “ ein Parameterwert zugewiesen wurde, geben Sie die Variable *$OptionalParameters* mit diesen Werten an. Dadurch wird verhindert, dass das Skript versehentlich Parameterwerte überschreibt, die Sie bereitstellen.
+1.	Durchlaufen Sie die Auflistung der JSON-Parameter. Wenn *\_artifactsLocation* oder *\_artifactsLocationSasToken* ein Parameterwert zugewiesen wurde, geben Sie die Variable *$OptionalParameters* mit diesen Werten an. Dadurch wird verhindert, dass das Skript versehentlich Parameterwerte überschreibt, die Sie bereitstellen.
 
     ```
     $JsonParameters | Get-Member -Type NoteProperty | ForEach-Object {
@@ -264,4 +264,4 @@ Weitere Informationen zum Azure-Ressourcen-Manager finden Sie unter [Übersicht 
 [4]: ./media/vs-azure-tools-resource-groups-how-script-works/deploy5c.png
 [5]: ./media/vs-azure-tools-resource-groups-how-script-works/deploy6c.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0713_2016-->

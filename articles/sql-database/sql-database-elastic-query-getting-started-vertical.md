@@ -62,7 +62,7 @@ Führen Sie die folgende Abfrage in der Datenbank **Customers** aus, um die Tabe
 		WITH IDENTITY = '<username>', 
 		SECRET = '<password>';  
 
-	Als „username“ und „password“ sollten der Benutzername und das Kennwort verwendet werden, die zum Anmelden an der Datenbank „Customers“ genutzt werden.
+	Als „username“ und „password“ sollten der Benutzername und das Kennwort verwendet werden, die zum Anmelden an der Datenbank „Customers“ genutzt werden. Die Authentifizierung mithilfe von Azure Active Directory mit elastischen Abfragen wird derzeit nicht unterstützt.
 
 ### Externe Datenquellen
 Um eine externe Datenquelle zu erstellen, führen Sie den folgenden Befehl für die Datenbank „Orders“ aus:
@@ -106,4 +106,4 @@ Preisinformationen finden Sie unter [Preise für SQL-Datenbank](/pricing/details
 
 <!--anchors-->
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->

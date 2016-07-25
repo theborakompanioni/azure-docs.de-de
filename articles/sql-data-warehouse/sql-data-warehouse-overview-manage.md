@@ -102,7 +102,7 @@ Ein sinnvoller Datenbankentwurf erleichtert die Verwaltung Ihrer Datenbanken in 
 [connection]: sql-data-warehouse-develop-connections.md
 [Herstellen einer Verbindung mit Azure SQL Data Warehouse über Visual Studio]: sql-data-warehouse-get-started-connect.md
 [Verbinden und Abfragen mit SQLCMD]: sql-data-warehouse-get-started-connect-sqlcmd.md
-[Entwicklungsübersicht]: sql-data-warehouse-overview-development.md
+[Entwicklungsübersicht]: sql-data-warehouse-overview-develop.md
 [Überwachen Ihrer Workload mit DMVs]: sql-data-warehouse-manage-monitor.md
 [Anhalten von Computeressourcen]: sql-data-warehouse-manage-compute-overview.md#pause-compute-bk
 [Wiederherstellung von einer Momentaufnahme]: sql-data-warehouse-restore-database-overview.md
@@ -118,4 +118,4 @@ Ein sinnvoller Datenbankentwurf erleichtert die Verwaltung Ihrer Datenbanken in 
 <!--Other web references-->
 [Azure-Portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

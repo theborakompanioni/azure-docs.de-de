@@ -13,8 +13,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="05/04/2016"
-	ms.author="mikeray" />
+	ms.date="07/12/2016"
+	ms.author="MikeRayMSFT" />
 
 # Hohe Verfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern
 
@@ -153,4 +153,4 @@ Weitere Informationen zum Ausführen von SQL Server auf virtuellen Azure-Comput
 - [Installieren einer neuen Active Directory-Gesamtstruktur in Azure](../active-directory/active-directory-new-forest-virtual-machine.md)
 - [Create WSFC Cluster for AlwaysOn Availability Groups in Azure VM](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) (Erstellen eines WSFC-Clusters für AlwaysOn-Verfügbarkeitsgruppen in virtuellen Azure-Computern)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0713_2016-->

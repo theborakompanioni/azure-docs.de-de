@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/24/2016"
+   ms.date="07/05/2016"
    ms.author="mfussell"/>
 
 # Übersicht über Service Fabric
@@ -41,7 +41,7 @@ Weitere Informationen zum Microservice-Ansatz finden Sie unter [Gründe für ein
 ## Erstellen von Service Fabric-Clustern – überall
 Sie können Service Fabric-Cluster in vielen Umgebungen erstellen, in denen Ihre Anwendungen bereitgestellt werden. Das kann eine Azure-, eine lokale, eine Windows Server- oder eine Linux-Umgebung sein. Darüber hinaus ist die Entwicklungsumgebung im SDK identisch mit der Produktionsumgebung ohne Beteiligung von Emulatoren. Anders ausgedrückt, falls das SDK in Ihrem lokalen Entwicklungscluster ausgeführt wird, wird es an den gleichen Cluster in anderen Umgebungen bereitgestellt.
 
-Weitere Informationen finden Sie unter [Umgebungsunabhängige Bereitstellung (Deploy Anywhere) unter Windows Server und Linux mit Service Fabric](service-fabric-deploy-anywhere.md)
+Weitere Informationen zum lokalen Erstellen von Clustern finden Sie unter [Erstellen von eigenständigen Service Fabric-Clustern unter Windows Server oder Linux](service-fabric-deploy-anywhere.md). Informationen zum Erstellen von Azure-Clustern finden Sie im [Azure-Portal](service-fabric-cluster-creation-via-portal.md).
 
 ![Service Fabric-Plattform][Image1]
 
@@ -105,9 +105,9 @@ Mit Service Fabric können Sie Folgendes tun:
 * Weitere Informationen:
     * [Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen](service-fabric-overview-microservices.md)
     * [Technische Übersicht](service-fabric-technical-overview.md)
-* Einrichten der Service Fabric-[Entwicklungsumgebung](service-fabric-get-started.md)  
+* Einrichten der Service Fabric-[Entwicklungsumgebung](service-fabric-get-started.md)
 * [Auswählen eines Frameworks](service-fabric-choose-framework.md) für Ihren Dienst
 
 [Image1]: media/service-fabric-overview/Service-Fabric-Overview.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

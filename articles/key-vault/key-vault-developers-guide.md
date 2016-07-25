@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="05/25/2016"
+   ms.date="07/07/2016"
    ms.author="bruceper" />
 
 # Entwicklerhandbuch zu Azure-Schlüsseltresor
@@ -64,9 +64,9 @@ Nach erfolgreicher Autorisierung können Sie folgende Aufgaben ausführen:
 
 Die folgenden SDKs sind für die Arbeit mit dem Schlüsseltresor verfügbar:
 
-|[![.NET](./media/key-vault-developers-guide/msft.netlogo_purple.png)](https://msdn.microsoft.com/library/azure/dn903301.aspx)|[![Node.js](./media/key-vault-developers-guide/nodejs.png)](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)
+|[![.NET](./media/key-vault-developers-guide/msft.netlogo_purple.png)](https://msdn.microsoft.com/library/mt430941.aspx)|[![Node.js](./media/key-vault-developers-guide/nodejs.png)](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)
 |:--:|:--:|
-|[Dokumentation zum .NET SDK](https://msdn.microsoft.com/library/azure/dn903301.aspx)|[Dokumentation zum Node.js SDK](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)|
+|[Dokumentation zum .NET SDK](https://msdn.microsoft.com/library/mt430941.aspx)|[Dokumentation zum Node.js SDK](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)|
 |[.NET SDK-Paket](https://azure.microsoft.com/documentation/api/)|[Node.js SDK-Paket](https://www.npmjs.com/package/azure-keyvault)|
 
 
@@ -84,6 +84,7 @@ Die folgenden Artikel und Szenarios bieten aufgabenspezifische Anleitungen für 
 - [Erweiterbare Schlüsselverwaltung mit Azure Key Vault (SQL Server)](https://msdn.microsoft.com/library/dn198405.aspx): Der SQL Server-Connector für Azure Key Vault ermöglicht SQL Server und SQL-in-a-VM die Nutzung des Diensts Azure Key Vault als EKM-Anbieter (Extensible Key Management), um die Verschlüsselungsschlüssel für Anwendungslinks zu schützen – transparente Datenverschlüsselung, Verschlüsseln von Sicherungen und Verschlüsselung auf Spaltenebene.
 - [Bereitstellen von Zertifikaten für VMs aus Key Vault](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/): Eine in einer VM in Azure ausgeführte Cloudanwendung benötigt ein Zertifikat. Wie wird dieses Zertifikat derzeit für eine solche VM bereitgestellt?
 - [Integrieren von Key Vault mit Azure Disk Encryption für Windows- und Linux-IaaS-VMs](../azure-security-disk-encryption.md): Die Lösung ist in Azure Key Vault integriert, damit Sie die Schlüssel für die Datenträgerverschlüsselung und die geheimen Schlüssel unter Ihrem Schlüsseltresorabonnement steuern und verwalten können. Gleichzeitig können Sie sicherstellen, dass alle Daten auf den Datenträgern von virtuellen Computern im Ruhezustand in Ihrem Azure-Speicher verschlüsselt sind.
+- [Einrichten des Schlüsseltresors mit End-to-End-Schlüsselrotation und Überwachung](key-vault-key-rotation-log-monitoring.md) bietet eine exemplarische Vorgehensweise zum Einrichten der Schlüsselrotation und Protokollüberwachung mit Azure Key Vault.
 
 Aufgabenspezifische Anleitungen zum Integrieren und Verwenden von Schlüsseltresoren mit Azure finden Sie unter [Ryan Jones ARM template examples for Key Vault](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples) (ARM-Vorlagenbeispiele von Ryan Jones für den Schlüsseltresor).
 
@@ -91,7 +92,7 @@ Aufgabenspezifische Anleitungen zum Integrieren und Verwenden von Schlüsseltres
 
 Diese Artikel enthalten Informationen zu anderen Szenarien und Diensten, in denen Key Vault oder eine Key Vault-Integration zum Einsatz kommt.
 
-- [Azure Disk Encryption](../azure-security-disk-encryption.md) nutzt das branchenübliche Feature [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) von Windows und das Feature [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) von Linux, um Volumeverschlüsselung für das Betriebssystem und die Datenträger bereitzustellen. Die Lösung ist in Azure Key Vault integriert, damit Sie die Schlüssel für die Datenträgerverschlüsselung und die geheimen Schlüssel unter Ihrem Schlüsseltresorabonnement steuern und verwalten können. Gleichzeitig können Sie sicherstellen, dass alle Daten auf den Datenträgern von virtuellen Computern im Ruhezustand in Ihrem Azure-Speicher verschlüsselt sind.
+- [Azure Disk Encryption](../azure-security-disk-encryption.md) nutzt das branchenübliche Feature [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) von Windows und das Feature [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) von Linux, um Volumeverschlüsselung für den Betriebssystem- und die anderen Datenträger bereitzustellen. Die Lösung ist in Azure Key Vault integriert, damit Sie die Schlüssel für die Datenträgerverschlüsselung und die geheimen Schlüssel unter Ihrem Schlüsseltresorabonnement steuern und verwalten können. Gleichzeitig können Sie sicherstellen, dass alle Daten auf den Datenträgern von virtuellen Computern im Ruhezustand in Ihrem Azure-Speicher verschlüsselt sind.
 
 
 ## Unterstützung von Bibliotheken
@@ -104,4 +105,4 @@ Diese Artikel enthalten Informationen zu anderen Szenarien und Diensten, in dene
 - [Key Vault Blog](http://aka.ms/kvblog)
 - [Key Vault Forum](http://aka.ms/kvforum)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -11,7 +11,7 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="06/06/2016"
+	ms.date="07/13/2016"
 	ms.author="ashmaka"/>
 
 # Erstellen eines Azure Search-Diensts über das Azure-Portal
@@ -23,14 +23,14 @@ In diesem Leitfaden wird davon ausgegangen, dass Sie bereits über ein Azure-Abo
 ## Suchen Sie Azure Search im Azure-Portal.
 1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com/), und melden Sie sich an.
 1. Klicken Sie in der oberen linken Ecke auf das Pluszeichen („+“).
-2. Wählen Sie „Daten und Speicher“ aus.
-3. Wählen Sie „Azure Search“ aus.
+2. Wählen Sie **Daten und Speicher**.
+3. Wählen Sie **Azure Search** aus.
 
 ![](./media/search-create-service-portal/find-search.png)
 
 ## Wählen Sie einen Dienstnamen und einen URL-Endpunkt für den Dienst.
 1. Ihr Dienstname wird Teil der Endpunkt-URL für den Azure Search-Dienst. Anhand dieser URL führen Sie Ihre API-Aufrufe zum Verwalten und Verwenden des Search-Diensts durch.
-2. Geben Sie den Dienstnamen im Feld „URL“ ein. Der Dienstname:
+2. Geben Sie den Dienstnamen im Feld **URL** ein. Der Dienstname:
   * darf nur Kleinbuchstaben, Ziffern oder Bindestriche („-“) enthalten.
   * darf in den ersten beiden und als letztes Zeichen keinen Bindestrich („-“) enthalten.
   * darf keine aufeinander folgenden Bindestriche enthalten („--“).
@@ -47,7 +47,7 @@ Erstellen Sie eine neue Ressourcengruppe, oder wählen Sie eine vorhandene Resso
 Als Azure-Dienst kann Azure Search in Rechenzentren auf der ganzen Welt gehostet werden. Beachten Sie, dass die [Preise sich je nach geografischer Lage unterscheiden können](https://azure.microsoft.com/pricing/details/search/).
 
 ## Wählen Sie Ihren Tarif aus.
-[Azure Search wird derzeit in mehrere Tarifen angeboten](https://azure.microsoft.com/pricing/details/search/): Free, Basic oder Standard. Jeder Tarif verfügt über eigene [Kapazitäten und Grenzwerte](search-limits-quotas-capacity.md).
+[Azure Search wird derzeit in mehreren Tarifen angeboten](https://azure.microsoft.com/pricing/details/search/): Free, Basic oder Standard. Jeder Tarif verfügt über eigene [Kapazitäten und Grenzwerte](search-limits-quotas-capacity.md). Anleitungen finden Sie unter [Auswählen einer SKU oder eines Tarifs für Azure Search](search-sku-tier.md).
 
 In diesem Fall haben wir den Standard-Tarif für unseren Dienst gewählt.
 
@@ -57,14 +57,14 @@ In diesem Fall haben wir den Standard-Tarif für unseren Dienst gewählt.
 
 ## Skalieren Sie den Dienst.
 
-Sobald die Bereitstellung Ihres Diensts abgeschlossen ist, können Sie ihn Ihren Anforderungen entsprechend skalieren. Wenn Sie den Standard-Tarif für Ihren Azure Search-Dienst ausgewählt haben, können Sie Ihren Dienst in zwei Dimensionen skalieren: Replikate und Partitionen. Wenn Sie den Basic-Tarif ausgewählt haben, können Sie nur Replikate hinzufügen.
+Nach der Bereitstellung Ihres Diensts können Sie ihn Ihren Anforderungen entsprechend skalieren. Wenn Sie den Standard-Tarif für Ihren Azure Search-Dienst ausgewählt haben, können Sie Ihren Dienst in zwei Dimensionen skalieren: Replikate und Partitionen. Wenn Sie den Basic-Tarif ausgewählt haben, können Sie nur Replikate hinzufügen.
 
 *__Partitionen__* ermöglichen Ihrem Dienst das Speichern und Durchsuchen weiterer Dokumente.
 
-Mit *__Replikaten__* kann Ihr Dienst eine höhere Auslastung von Suchabfragen verarbeiten. [Ein Dienst benötigt zwei Replikate, um eine Nur-Lese-SLA zu erreichen, und drei Replikate zum Erreichen einer SLA mit Lese-/Schreibzugriff](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+Mit *__Replikaten__* kann Ihr Dienst eine höhere Auslastung von Suchabfragen verarbeiten. [Ein Dienst benötigt zwei Replikate, um eine schreibgeschützte SLA zu erreichen, und drei Replikate zum Erreichen einer SLA mit Lese-/Schreibzugriff](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 1. Öffnen Sie im Azure-Portal das Verwaltungsblatt für Ihren Azure Search-Dienst.
-2. Wählen Sie auf dem Blatt „Einstellungen“ die Option „Skalieren“ aus.
+2. Wählen Sie auf dem Blatt **Einstellungen** die Option **Skalieren** aus.
 3. Sie können den Dienst skalieren, indem Sie Replikate oder Partitionen hinzufügen.
   * Der Dienst kann nicht über 36 Sucheinheiten hinaus skaliert werden. Die Gesamtzahl von Sucheinheiten entspricht dem Produkt der Replikate und Partitionen (Replikate * Partitionen = Sucheinheiten insgesamt).
   * Wenn Sie den Basic-Tarif ausgewählt haben, können Sie nur auf drei Replikate skalieren. Basic-Dienste sind an eine einzelne Partition gebunden.
@@ -74,4 +74,6 @@ Mit *__Replikaten__* kann Ihr Dienst eine höhere Auslastung von Suchabfragen ve
 ## Weiter
 Nach der Bereitstellung eines Azure Search-Diensts können Sie einen [Azure Search-Index definieren](search-what-is-an-index.md), damit Sie Ihre Daten hochladen und durchsuchen können.
 
-<!---HONumber=AcomDC_0608_2016-->
+Unter [Erste Schritte mit Azure Search im Portal](search-get-started-portal.md) finden Sie ein kurzes Tutorial.
+
+<!---HONumber=AcomDC_0713_2016-->

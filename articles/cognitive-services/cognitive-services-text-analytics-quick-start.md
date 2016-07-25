@@ -36,7 +36,9 @@ Am Ende dieses Tutorials können Sie programmgesteuert Folgendes erkennen:
 
 - **Sprachen**: In welcher Sprache wurde der Text geschrieben?
 
-Beachten Sie, dass diese API pro übermittelten Textdatensatz 1 Transaktion berechnet.
+Beachten Sie, dass diese API pro übermitteltem Dokument 1 Transaktion berechnet. Wenn Sie also beispielsweise bei einem Aufruf die Stimmung für 1.000 Dokumente anfordern, fallen 1.000 Transaktionen an.
+
+
 
 <a name="Overview"></a>
 ## Allgemeine Übersicht ##
@@ -293,4 +295,6 @@ Die Erläuterungen für jeden Teil dieser Antwort lauten:
 
 Glückwunsch! Sie haben nun die Nutzung der Textanalyse für Ihre Daten abgeschlossen. Sie können nun Informationen über die Nutzung eines Tools wie z.B. [Power BI](//powerbi.microsoft.com) einholen, um Ihre Daten zu visualisieren, und Ihre Erkenntnisse automatisieren, damit Sie Ihre Textdaten in Echtzeit anzeigen können.
 
-<!---HONumber=AcomDC_0706_2016-->
+Wie Textanalysefunktionen, z.B. Stimmung, als Teil eines Bots verwendet werden können, zeigt Ihnen das Beispiel [Emotional Bot](http://docs.botframework.com/de-DE/bot-intelligence/language/#example-emotional-bot) (Emotionaler Bot) auf der Bot-Framework-Website.
+
+<!---HONumber=AcomDC_0713_2016-->

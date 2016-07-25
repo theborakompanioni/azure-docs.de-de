@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Erkennen von Emotionen mit Azure Media Analytics"
+	pageTitle="Erkennen von Bewegungen mit Azure Media Analytics | Microsoft Azure"
 	description="Mit dem Medienprozessor (MP) Azure Media Motion Detector können Sie effizient Ihrem Interesse entsprechende Abschnitte innerhalb eines ansonsten langen und ereignislosen Videos identifizieren."
 	services="media-services"
 	documentationCenter=""
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/22/2016"  
+	ms.date="07/11/2016"  
 	ms.author="milanga;juliako;"/>
  
-# Erkennen von Emotionen mit Azure Media Analytics
+# Erkennen von Bewegungen mit Azure Media Analytics
 
 ##Übersicht
 
@@ -28,29 +28,74 @@ Der MP **Azure Media Motion Detector** befindet sich derzeit in der Vorschauphas
 
 Dieses Thema enthält Details zu **Azure Media Motion Detector** und zeigt die Verwendung mit Media Services SDK für .NET.
 
+
 ##Motion Detector-Eingabedateien
 
 Videodateien. Derzeit werden folgende Formate unterstützt: MP4, MOV und WMV.
+
+##Taskkonfiguration (Voreinstellung)
+
+Wenn Sie eine Aufgabe mit **Azure Media Motion Detector** erstellen, müssen Sie eine Konfigurationsvoreinstellung angeben.
+
+###Parameter
+
+Sie können die folgenden Parameter verwenden:
+
+Name|Optionen|Beschreibung|Standard
+---|---|---|---
+sensitivityLevel|Zeichenfolge: „low“, „medium“, „high“|Legt die Vertraulichkeitsstufe fest, mit der Bewegungen gemeldet werden. Passen Sie diese Einstellung an, um die Menge von falsch positiven Ergebnissen zu steuern.|„medium“
+frameSamplingValue|Positive ganze Zahl|Legt fest, wie häufig der Algorithmus ausgeführt wird. 1 steht für jedes Bild, 2 steht für jedes zweite Bild usw.|1
+detectLightChange|Boolescher Wert: „true“, „false“|Legt fest, ob kleinere Änderungen in den Ergebnissen gemeldet werden.|„false“
+mergeTimeThreshold|Xs-time: hh:mm:ss<br/>Beispiel: 00:00:03|Gibt das Zeitfenster zwischen Bewegungsereignissen an, wenn zwei Ereignisse kombiniert und als ein Ereignis gemeldet werden.|00:00:00
+detectionZones|Ein Array mit Erkennungszonen:<br/>- Eine Erkennungszone ist ein Array mit mindestens drei Punkten.<br/>- Ein Punkt ist eine x- und y-Koordinate zwischen 0 und 1.|Beschreibt die Liste mit den zu verwendenden polygonalen Erkennungszonen.<br/>Die Ergebnisse werden mit den Zonen als ID gemeldet, und die erste ID lautet 'id':0.|Einzelne Zone, die den gesamten Rahmen abdeckt.
+
+###JSON-Beispiel
+
+	
+	{
+	  'version': '1.0',
+	  'options': {
+	    'sensitivityLevel': 'medium',
+	    'frameSamplingValue': 1,
+	    'detectLightChange': 'False',
+	    "mergeTimeThreshold":
+	    '00:00:02',
+	    'detectionZones': [
+	      [
+	        {'x': 0, 'y': 0},
+	        {'x': 0.5, 'y': 0},
+	        {'x': 0, 'y': 1}
+	       ],
+	      [
+	        {'x': 0.3, 'y': 0.3},
+	        {'x': 0.55, 'y': 0.3},
+	        {'x': 0.8, 'y': 0.3},
+	        {'x': 0.8, 'y': 0.55},
+	        {'x': 0.8, 'y': 0.8},
+	        {'x': 0.55, 'y': 0.8},
+	        {'x': 0.3, 'y': 0.8},
+	        {'x': 0.3, 'y': 0.55}
+	      ]
+	    ]
+	  }
+	}
+
 
 ##Motion Detector-Ausgabedateien
 
 Ein Bewegungserkennungsauftrag gibt eine JSON-Datei in das Ausgabeasset zurück, die die Bewegungswarnungen und ihre Kategorien im Video beschreibt. Die Datei enthält Informationen über Zeit und Dauer der erkannten Bewegung im Video.
 
-Derzeit unterstützt die Bewegungserkennung nur die generische Bewegungskategorie, die in der Ausgabe als ***type 2*** bezeichnet wird.
-
-X- und Y-Koordinaten und Größen werden als normalisierter Gleitkommawert zwischen 0,0 und 1,0 aufgeführt. Multiplizieren Sie dies durch die Höhen- und Breitenauflösung des Videos, um den Begrenzungsrahmen für die Region der erkannten Bewegung zu erhalten.
-
-Jede Ausgabe ist in Fragmente aufgeteilt und in Intervalle zum Definieren der Daten innerhalb des Videos unterteilt. Fragmentlängen müssen nicht gleich sein, und können ausgiebige Längen umfassen, wenn keine Bewegung erkannt wird.
-
 Die Motion Detector-API stellt Indikatoren bereit, sobald bewegte Objekte in einem Video mit unbewegtem Hintergrund (z. B. einem Überwachungsvideo) auftreten. Der Motion Detector wird trainiert, falsche Alarme, die z. B. auf Änderungen von Lichtverhältnissen und Schatten beruhen, zu reduzieren. Die aktuellen Einschränkungen der Algorithmen beziehen sich auf Nachtsichtvideos, halbtransparente und kleine Objekte.
 
-###<a id="output_elements"></a>Elemente der Ausgabe-JSON-Datei
+###<a id="output_elements"></a>Elemente der JSON-Ausgabedatei
+
+>[AZURE.NOTE]In der neuesten Version hat sich das JSON-Ausgabeformat geändert und stellt für einige Kunden unter Umständen eine größere Umstellung dar.
 
 In der folgenden Tabelle werden die Elemente der Ausgabe-JSON-Datei beschrieben.
 
 Element|Beschreibung
 ---|---
-Version|Dies bezieht sich auf die Version der Video-API.
+Version|Dies bezieht sich auf die Version der Video-API. Die aktuelle Version ist 2.
 Zeitskala|„Ticks“ pro Sekunde des Videos.
 Offset|Dies ist der Zeitoffset für Zeitstempel in „Ticks“. In Version 1.0 von Video-APIs wird dies immer 0 sein. In zukünftigen Szenarien, die wir unterstützen, kann sich dieser Wert ändern.
 Framerate|Frames des Videos pro Sekunde.
@@ -61,98 +106,56 @@ Intervall|Das Intervall für jeden Eintrag im Ereignis in „Ticks“.
 Ereignisse|Jedes Ereignisfragment enthält die innerhalb dieser Zeitspanne erkannte Bewegung.
 Typ|Dies ist in der aktuellen Version immer ‘2’ für generische Bewegung. Diese Bezeichnung gibt Video-APIs die Flexibilität zum Kategorisieren der Bewegung in zukünftigen Versionen.
 RegionID|Wie bereits dargelegt, wird dies in dieser Version immer 0 sein. Diese Bezeichnung gibt Video-APIs die Flexibilität, in zukünftigen Versionen Bewegung in verschiedenen Regionen zu suchen.
-Regionen|Bezieht sich auf den Bereich in Ihrem Video, in dem Bewegung Sie interessiert. In der aktuellen Version von Video-APIs können Sie keine Region angeben, stattdessen wird Bewegung auf der gesamten Oberfläche des Videos erkannt.<br/>– Die ID steht für die Region – in dieser Version gibt es nur die ID 0. <br/>– „Rectangle“ (Rechteck) repräsentiert die Form der Region, in der Bewegung Sie interessiert. In dieser Version ist es immer ein Rechteck. <br/>– Die Region hat die Dimensionen X, Y, Breite und Höhe. Die X- und Y-Koordinaten stellen die linken oberen XY-Koordinaten der Region in einem normalisierten Maßstab von 0,0 bis 1,0 dar. Die Breite und Höhe stellen die Größe der Region in einem normalisierten Maßstab von 0,0 bis 1,0 dar. In der aktuellen Version werden X, Y, Breite und Höhe stets bei 0,0 und 1,1 fixiert.<br/>– „Fragments“: Die Metadaten werden in verschiedene Segmente segmentiert, die als Fragmente bezeichnet werden. Jedes Fragment enthält Startzeitpunkt, Dauer, Intervallnummer und Ereignis(se). Ein Fragment ohne Ereignisse bedeutet, dass zu diesem Startzeitpunkt und während dieser Dauer keine Bewegung erkannt wurde.
+Regionen|Bezieht sich auf den Bereich im Video, in dem Sie an Bewegung interessiert sind. <br/><br/>- „id“ steht für den Regionsbereich. In dieser Version ist dies nur ein Bereich (ID 0). <br/>- „type“ steht für die Form der Region, in der Sie an Bewegung interessiert sind. Derzeit werden „rectangle“ (Rechteck) und „polygon“ (Polygon) unterstützt.<br/> Wenn Sie „rectangle“ angegeben haben, verfügt die Region über die Dimensionen „X“, „Y“, „Width“ (Breite) und „Height“ (Höhe). Die X- und Y-Koordinaten stellen die linken oberen XY-Koordinaten der Region in einem normalisierten Maßstab von 0,0 bis 1,0 dar. Die Breite und Höhe stellen die Größe der Region in einem normalisierten Maßstab von 0,0 bis 1,0 dar. In der aktuellen Version sind X, Y, Breite und Höhe stets auf „0, 0“ und „1, 1“ festgelegt. <br/>Wenn Sie „polygon“ angegeben haben, verfügt die Region über Dimensionen in Punkten. <br/>
+Fragments|Die Metadaten werden in verschiedene, als Fragmente bezeichnete Segmente aufgeteilt. Jedes Fragment enthält Startzeitpunkt, Dauer, Intervallnummer und Ereignis(se). Ein Fragment ohne Ereignisse bedeutet, dass zu diesem Startzeitpunkt und während dieser Dauer keine Bewegung erkannt wurde.
 Klammern|Jede Klammer stellt ein Intervall im Ereignis dar. Leere Klammern für ein Intervall bedeuten, dass keine Bewegung erkannt wurde.
- 
+locations|Mit diesem neuen Eintrag wird unter den Ereignissen die Position aufgeführt, an der die Bewegung stattgefunden hat. Dies ist eine genauere Angabe als bei Erkennungszonen.
 
-##Aufgabenkonfiguration (Voreinstellung)
-
-Wenn Sie eine Aufgabe mit **Azure Media Motion Detector** erstellen, müssen Sie eine Konfigurationsvoreinstellung angeben. Derzeit können Sie nicht alle Optionen in der Konfigurationsvoreinstellung von Azure Media Motion Detector festlegen. Die folgende Mindestkonfigurationsvoreinstellung müssen Sie festlegen.
-
-	{"version":"1.0"}
-
-##Beispielvideos und Motion Detector-Ausgaben
-
-###Beispiel mit tatsächlicher Bewegung
-
-[Beispiel mit tatsächlicher Bewegung](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fd54876c6-89a5-41de-b1f4-f45b6e10a94f%2FGarage.ism%2Fmanifest)
-
-###JSON-Ausgabe
-
-	 {
-	 "version": "1.0",
-	 "timescale": 60000,
-	 "offset": 0,
-	 "framerate": 30,
-	 "width": 1920,
-	 "height": 1080,
-	 "regions": [
-	   {
-	     "id": 0,
-	     "type": "rectangle",
-	     "x": 0,
-	     "y": 0,
-	     "width": 1,
-	     "height": 1
-	   }
-	 ],
-	 "fragments": [
-	   {
-	     "start": 0,
-	     "duration": 68510
-	   },
-	   {
-	     "start": 68510,
-	     "duration": 969999,
-	     "interval": 969999,
-	     "events": [
-	       [
-	         {
-	           "type": 2,
-	           "regionId": 0
-	         }
-	       ]
-	     ]
-	   },
-	   {
-	     "start": 1038509,
-	     "duration": 41489
-	   }
-	 ]
-	}
-
-###Beispiel mit falsch-positiven Ergebnissen
-
-[Beispiel mit falsch-positiven Ergebnissen (leichte Änderungen):](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Ffdc6656b-1c10-4f3f-aa7c-07ba073c1615%2FLivingRoomLight.ism%2Fmanifest&tech=flash)
-
-###JSON-Ausgabe
+Unten ist ein Beispiel für eine JSON-Ausgabe angegeben:
 
 	{
-	    "version": "1.0",
-	    "timescale": 30000,
-	    "offset": 0,
-	    "framerate": 29.97,
-	    "width": 1920,
-	    "height": 1080,
-	    "regions": [
+	  "version": 2,
+	  "timescale": 23976,
+	  "offset": 0,
+	  "framerate": 24,
+	  "width": 1280,
+	  "height": 720,
+	  "regions": [
 	    {
-	        "id": 0,
-	        "type": "rectangle",
-	        "x": 0,
-	        "y": 0,
-	        "width": 1,
-	        "height": 1
+	      "id": 0,
+	      "type": "polygon",
+	      "points": [{'x': 0, 'y': 0},
+	        {'x': 0.5, 'y': 0},
+	        {'x': 0, 'y': 1}]
 	    }
-	    ],
-	    "fragments": [
+	  ],
+	  "fragments": [
 	    {
-	        "start": 0,
-	        "duration": 320320
-	    }
-	    ]
-	}
-
-
+	      "start": 0,
+	      "duration": 226765
+	    },
+	    {
+	      "start": 226765,
+	      "duration": 47952,
+	      "interval": 999,
+	      "events": [
+	        [
+	          {
+	            "type": 2,
+	            "typeName": "motion",
+	            "locations": [
+	              {
+	                "x": 0.004184,
+	                "y": 0.007463,
+	                "width": 0.991667,
+	                "height": 0.985185
+	              }
+	            ],
+	            "regionId": 0
+	          }
+	        ],
+	
+	…
 ##Einschränkungen
 
 - Zu den unterstützten Eingabevideoformaten zählen MP4, MOV und WMV.
@@ -168,7 +171,31 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 1. Erstellen eines Auftrags mit einer Bewegungserkennungsaufgabe auf Basis einer Konfigurationsdatei, die die folgende JSON-Voreinstellung enthält.
 					
 		{
-		    "version": "1.0"
+		  'Version': '1.0',
+		  'Options': {
+		    'SensitivityLevel': 'medium',
+		    'FrameSamplingValue': 1,
+		    'DetectLightChange': 'False',
+		    "MergeTimeThreshold":
+		    '00:00:02',
+		    'DetectionZones': [
+		      [
+		        {'x': 0, 'y': 0},
+		        {'x': 0.5, 'y': 0},
+		        {'x': 0, 'y': 1}
+		       ],
+		      [
+		        {'x': 0.3, 'y': 0.3},
+		        {'x': 0.55, 'y': 0.3},
+		        {'x': 0.8, 'y': 0.3},
+		        {'x': 0.8, 'y': 0.55},
+		        {'x': 0.8, 'y': 0.8},
+		        {'x': 0.55, 'y': 0.8},
+		        {'x': 0.3, 'y': 0.8},
+		        {'x': 0.3, 'y': 0.55}
+		      ]
+		    ]
+		  }
 		}
 
 1. Herunterladen der JSON-Ausgabedateien.
@@ -346,9 +373,10 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ##Verwandte Links
+[Azure Media Services Motion Detector-Blog](https://azure.microsoft.com/blog/motion-detector-update/)
 
 [Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md)
 
 [Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/18/2016"
+   ms.date="07/12/2016"
    ms.author="dugill;tomfitz" />
 
 
@@ -444,4 +444,4 @@ Die [RevokeRoleFromServicePrincipalOnSubscription](https://github.com/dushyantgi
 
 Jetzt können Benutzer Ihre Anwendung verwenden, um problemlos eine Verbindung mit ihren Azure-Abonnements herzustellen und sie zu verwalten.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

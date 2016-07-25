@@ -12,14 +12,14 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="04/15/2016"
+    ms.date="07/11/2016"
     ms.author="sethm" />
 
 # Übersicht über die Event Hubs-API
 
-In diesem Artikel werden einige der wichtigsten .NET-Client-APIs von Event Hubs zusammengefasst. Es gibt zwei Kategorien: Verwaltungs- und Laufzeit-APIs. Runtime-APIs umfassen alle Vorgänge, die zum Senden und Empfangen einer Meldung erforderlich sind. Verwaltungsvorgänge ermöglichen das Verwalten des Entitätszustands von Event Hubs durch das Erstellen, Aktualisieren und Löschen von Entitäten.
+In diesem Artikel werden einige der wichtigsten .NET-Client-APIs von Event Hubs zusammengefasst. Es gibt zwei Kategorien: Verwaltungs- und Laufzeit-APIs. Laufzeit-APIs umfassen alle Vorgänge, die zum Senden und Empfangen einer Nachricht erforderlich sind. Verwaltungsvorgänge ermöglichen das Verwalten des Entitätszustands von Event Hubs durch das Erstellen, Aktualisieren und Löschen von Entitäten.
 
-Überwachungsszenarien umfassen sowohl Verwaltung als auch Laufzeit. Eine ausführliche Referenzdokumentation zu den .NET-APIs finden Sie unter den Referenzen zu [Service Bus .NET](https://msdn.microsoft.com/library/azure/mt419900.aspx) und zur [EventProcessorHost-API](https://msdn.microsoft.com/library/azure/mt445521.aspx).
+Überwachungsszenarien umfassen sowohl die Verwaltung als auch Laufzeit. Eine ausführliche Referenzdokumentation zu den .NET-APIs finden Sie unter den Referenzen zu [Service Bus .NET](https://msdn.microsoft.com/library/azure/mt419900.aspx) und zur [EventProcessorHost-API](https://msdn.microsoft.com/library/azure/mt445521.aspx).
 
 ## Verwaltungs-APIs
 
@@ -189,4 +189,4 @@ Die .NET-API-Referenzen sind hier verfügbar:
 - [.NET-API-Referenzen zu Service Bus und Event Hubs](https://msdn.microsoft.com/library/azure/mt419900.aspx)
 - [Referenz zur Ereignisprozessorhost-API](https://msdn.microsoft.com/library/azure/mt445521.aspx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0713_2016-->

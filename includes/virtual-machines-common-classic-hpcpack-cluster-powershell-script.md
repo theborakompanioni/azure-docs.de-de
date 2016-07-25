@@ -2,7 +2,7 @@
 
 
 
-Je nach Umgebung und Auswahlmöglichkeiten kann mit dem Skript die gesamte Clusterinfrastruktur erstellt werden, z. B. das virtuelle Azure-Netzwerk, Speicherkonten, Clouddienste, Domänencontroller, SQL-Datenbanken (remote oder lokal), Hauptknoten, Brokerknoten, Computeknoten und Azure-Clouddienstknoten („Burst“ oder PaaS). Alternativ dazu kann für das Skript auch bereits vorhandene Azure-Infrastruktur mit anschließender Erstellung des HPC-Clusterhauptknotens und der Brokerknoten, Computeknoten und Azure-Burstknoten verwendet werden.
+Je nach Umgebung und Auswahlmöglichkeiten kann mit dem Skript die gesamte Clusterinfrastruktur erstellt werden, z.B. das virtuelle Azure-Netzwerk, Speicherkonten, Clouddienste, Domänencontroller, SQL-Datenbanken (remote oder lokal), Hauptknoten und zusätzliche Clusterknoten. Alternativ dazu kann das Skript auch die bereits vorhandene Azure-Infrastruktur nutzen und nur die HPC-Clusterknoten erstellen.
 
 
 Hintergrundinformationen zur Planung eines HPC Pack-Clusters finden Sie unter [Produkttest und Planung](https://technet.microsoft.com/library/jj899596.aspx) und [Erste Schritte](https://technet.microsoft.com/library/jj899590.aspx) in der HPC Pack-TechNet-Bibliothek.
@@ -14,12 +14,12 @@ Hintergrundinformationen zur Planung eines HPC Pack-Clusters finden Sie unter [P
 * **Azure-Abonnement:** Sie können ein Abonnement entweder im Azure Global- oder Azure China-Dienst nutzen. Ihre Abonnementlimits haben Einfluss darauf, wie viele und welche Arten von Knoten Sie bereitstellen können. Informationen finden Sie unter [Grenzwerte, Kontingente und Einschränkungen für Azure-Abonnements und -Dienste](../articles/azure-subscription-service-limits.md).
 
 
-* **Windows-Clientcomputer mit Azure PowerShell 0.8.7 oder höher (installiert und konfiguriert):** Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../articles/powershell-install-configure.md). Das Skript wird im Azure Service Management-Modus ausgeführt.
+* **Windows-Clientcomputer mit Azure PowerShell 0.8.7 oder höher (installiert und konfiguriert):** Weitere Informationen zur Installation und Schritte zum Verknüpfen des Azure-Abonnements finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../articles/powershell-install-configure.md).
 
 
-* **HPC Pack-IaaS-Bereitstellungsskript:** Laden Sie die neueste Version des Skripts aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949) herunter, und entpacken Sie sie. Führen Sie `New-HPCIaaSCluster.ps1 –Version` aus, um die Version des Skripts zu überprüfen. Dieser Artikel basiert auf der Skriptversion 4.4.0.
+* **HPC Pack-IaaS-Bereitstellungsskript:** Laden Sie die neueste Version des Skripts aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949) herunter, und entpacken Sie sie. Führen Sie `New-HPCIaaSCluster.ps1 –Version` aus, um die Version des Skripts zu überprüfen. Dieser Artikel basiert auf der Skriptversion 4.4.1.
 
-* **Skriptkonfigurationsdatei:** Sie müssen eine XML-Datei erstellen, die vom Skript zum Konfigurieren des HPC-Clusters verwendet wird. Informationen und Beispiele finden Sie in den Abschnitten weiter unten in diesem Artikel.
+* **Skriptkonfigurationsdatei:** Sie müssen eine XML-Datei erstellen, die vom Skript zum Konfigurieren des HPC-Clusters verwendet wird. Informationen und Beispiele finden Sie in den Abschnitten weiter unten in diesem Artikel sowie in der Datei „Manual.rtf“ für das Bereitstellungsskript.
 
 
 ## Syntax
@@ -31,13 +31,13 @@ New-HPCIaaSCluster.ps1 [-ConfigFile] <String> [-AdminUserName]<String> [[-AdminP
 
 ### Parameter
 
-* **ConfigFile:** Gibt den Dateipfad der Konfigurationsdatei zum Beschreiben des HPC-Clusters an. Weitere Informationen finden Sie unter [Konfigurationsdatei](#Configuration-file) in diesem Thema oder in der Datei „Manual.rtf“ im Ordner mit dem Skript.
+* **ConfigFile:** Gibt den Dateipfad der Konfigurationsdatei zum Beschreiben des HPC-Clusters an. Weitere Informationen zur Konfigurationsdatei finden Sie in diesem Thema oder in der Datei „Manual.rtf“ im Ordner mit dem Skript.
 
 * **AdminUserName:** Gibt den Benutzernamen an. Wenn die Domänengesamtstruktur vom Skript erstellt wird, wird er zum lokalen Administratorbenutzernamen für alle virtuellen Computer und zum Namen des Domänenadministrators. Wenn die Domänengesamtstruktur bereits vorhanden ist, gibt dieser Parameter den Domänenbenutzer als lokalen Administratorbenutzernamen zum Installieren von HPC Pack an.
 
 * **AdminPassword:** Gibt das Kennwort des Administrators an. Wenn der Parameter in der Befehlszeile nicht angegeben ist, werden Sie vom Skript zum Eingeben des Kennworts aufgefordert.
 
-* **HPCImageName** (optional): Gibt den Namen des Images für den virtuellen HPC Pack-Computer an, das zum Bereitstellen des HPC-Clusters verwendet wird. Es muss sich um ein von Microsoft bereitgestelltes HPC Pack-Image aus dem Azure Marketplace handeln. Wenn der Parameter nicht angegeben wird (in den meisten Fällen zu empfehlen), wählt das Skript das zuletzt veröffentlichte HPC Pack-Image aus.
+* **HPCImageName** (optional): Gibt den Namen des Images für den virtuellen HPC Pack-Computer an, das zum Bereitstellen des HPC-Clusters verwendet wird. Es muss sich um ein von Microsoft bereitgestelltes HPC Pack-Image aus dem Azure Marketplace handeln. Wenn der Parameter nicht angegeben wird (in den meisten Fällen zu empfehlen), wählt das Skript das zuletzt veröffentlichte [HPC Pack-Image](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) aus. Das neueste Image basiert auf Windows Server 2012 R2 Datacenter mit installiertem HPC Pack 2012 R2 Update 3.
 
     >[AZURE.NOTE] Für die Bereitstellung tritt ein Fehler auf, wenn Sie kein gültiges HPC Pack-Image angeben.
 
@@ -56,12 +56,12 @@ New-HPCIaaSCluster.ps1 [-ConfigFile] <String> [-AdminUserName]<String> [[-AdminP
 Im folgenden Beispiel wird mit der Konfigurationsdatei *MyConfigFile.xml* ein neuer HPC Pack-Cluster erstellt, und es werden administrative Anmeldeinformationen zum Installieren des Clusters angegeben.
 
 ```
-New-HPCIaaSCluster.ps1 –ConfigFile MyConfigFile.xml -AdminUserName <username> –AdminPassword <password>
+.\New-HPCIaaSCluster.ps1 –ConfigFile MyConfigFile.xml -AdminUserName <username> –AdminPassword <password>
 ```
 
 ### Zusätzliche Überlegungen
 
-* Das Skript verwendet das HPC Pack-VM-Image des Azure Marketplace zum Erstellen des Clusterhauptknotens. Das neueste Image basiert auf Windows Server 2012 R2 Datacenter mit installiertem HPC Pack 2012 R2 Update 3.
+
 
 * Das Skript kann die Auftragsübermittlung optional über das HPC Pack-Webportal oder die HPC Pack-REST-API aktivieren.
 
@@ -70,6 +70,6 @@ New-HPCIaaSCluster.ps1 –ConfigFile MyConfigFile.xml -AdminUserName <username> 
 
 ## Konfigurationsdatei
 
-Die Konfigurationsdatei für das Bereitstellungsskript ist eine XML-Datei. Die Schemadatei „HPCIaaSClusterConfig.xsd“ befindet sich im Ordner des HPC Pack-IaaS-Bereitstellungsskripts. **IaaSClusterConfig** ist das Stammelement der Konfigurationsdatei mit den untergeordneten Elementen. Dies ist in der Datei „Manual.rtf“ im Ordner des Bereitstellungsskripts ausführlich beschrieben. Beispieldateien für unterschiedliche Szenarien finden Sie unter [Beispielkonfigurationsdateien](#Example-configuration-files) in diesem Artikel.
+Die Konfigurationsdatei für das Bereitstellungsskript ist eine XML-Datei. Die Schemadatei „HPCIaaSClusterConfig.xsd“ befindet sich im Ordner des HPC Pack-IaaS-Bereitstellungsskripts. **IaaSClusterConfig** ist das Stammelement der Konfigurationsdatei mit den untergeordneten Elementen. Dies ist in der Datei „Manual.rtf“ im Ordner des Bereitstellungsskripts ausführlich beschrieben.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0713_2016-->

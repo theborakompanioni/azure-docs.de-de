@@ -13,15 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/01/2016" 
+	ms.date="07/13/2016" 
 	ms.author="stefsch"/>
 
 # Steuern von eingehendem Datenverkehr in eine App Service-Umgebung
 
 ## Übersicht ##
-Eine App Service-Umgebung wird immer in einem Subnetz eines regionalen klassischen [virtuellen "v1"-Netzwerks][virtualnetwork] erstellt. Ein neues regionales klassisches virtuelles "v1"-Netzwerk und ein neues Subnetz können bei der Erstellung einer App Service-Umgebung definiert werden. Alternativ kann eine App Service-Umgebung in einem bereits vorhandenen regionalen klassischen virtuellen "v1"-Netzwerk und einem bereits vorhandenen Subnetz erstellt werden. Infolge einer im Juni 2016 vorgenommenen Änderung können nun ASEs in virtuellen Netzwerken bereitgestellt werden, die entweder öffentliche Adressbereiche oder RFC1918-Adressräume (d.h. private Adressen) verwenden. Weitere Informationen zum Erstellen einer App Service-Umgebung finden Sie unter [Erstellen einer App Service-Umgebung][HowToCreateAnAppServiceEnvironment].
-
-**Hinweis:** Eine App Service-Umgebung kann nicht in einem mit ARM verwalteten virtuellen Netzwerk des Typs „v2“ erstellt werden.
+Eine App Service-Umgebung kann **entweder** in einem virtuellen Netzwerk von Azure Resource Manager **oder** einem [virtuellen Netzwerk][virtualnetwork] eines klassischen Bereitstellungsmodells erstellt werden. Ein neues virtuelles Netzwerk und ein neues Subnetz können bei der Erstellung einer App Service-Umgebung definiert werden. Alternativ kann eine App Service-Umgebung in einem bereits vorhandenen virtuellen Netzwerk und einem bereits vorhandenen Subnetz erstellt werden. Infolge einer im Juni 2016 vorgenommenen Änderung können nun ASEs in virtuellen Netzwerken bereitgestellt werden, die entweder öffentliche Adressbereiche oder RFC1918-Adressräume (d.h. private Adressen) verwenden. Weitere Informationen zum Erstellen einer App Service-Umgebung finden Sie unter [Erstellen einer App Service-Umgebung][HowToCreateAnAppServiceEnvironment].
 
 Eine App Service-Umgebung muss immer innerhalb eines Subnetzes erstellt werden, da ein Subnetz eine Netzwerkgrenze bereitstellt, die zum Sperren von eingehendem Datenverkehr hinter Upstreamgeräten und -diensten verwendet werden kann. Auf diese Weise wird HTTP- und HTTPS-Datenverkehr nur von bestimmten Upstream-IP-Adressen akzeptiert.
 
@@ -36,31 +34,20 @@ Bevor Sie den eingehenden Netzwerkdatenverkehr mithilfe einer Netzwerksicherheit
 
 Im Folgenden sehen Sie eine Liste der Ports, die von einer App Service-Umgebung verwendet werden:
 
-- 454: **Erforderlicher Port**, der von der Azure-Infrastruktur für die Verwaltung und Wartung von App Service-Umgebungen verwendet wird. Der Datenverkehr für diesen Port darf nicht blockiert werden.
-- 455: **Erforderlicher Port**, der von der Azure-Infrastruktur für die Verwaltung und Wartung von App Service-Umgebungen verwendet wird. Der Datenverkehr für diesen Port darf nicht blockiert werden.
-- 80: Standardport für eingehenden HTTP-Datenverkehr in Apps, die in App Service-Plänen in einer App Service-Umgebung ausgeführt werden.
-- 443: Standardport für eingehenden SSL-Datenverkehr in Apps, die in App Service-Plänen in einer App Service-Umgebung ausgeführt werden.
-- 21: Steuerungskanal für FTP. Dieser Port kann sicher blockiert werden, wenn FTP nicht verwendet wird.
-- 10001 10020: Datenkanäle für FTP. Wie der Steuerungskanal können diese Ports sicher blockiert werden, wenn FTP nicht verwendet wird.
-- 4016: Wird zum Remotedebuggen in Visual Studio 2012 verwendet. Dieser Port kann sicher blockiert werden, wenn die Funktion nicht verwendet wird.
-- 4018: Wird zum Remotedebuggen in Visual Studio 2013 verwendet. Dieser Port kann sicher blockiert werden, wenn die Funktion nicht verwendet wird.
-- 4020: Wird zum Remotedebuggen in Visual Studio 2015 verwendet. Dieser Port kann sicher blockiert werden, wenn die Funktion nicht verwendet wird.
+- 454: **Erforderlicher Port**, der von der Azure-Infrastruktur für die Verwaltung und Wartung von App Service-Umgebungen verwendet wird. Der Datenverkehr für diesen Port darf nicht blockiert werden. Dieser Port ist immer an die öffentliche VIP-Adresse einer ASE gebunden.
+- 455: **Erforderlicher Port**, der von der Azure-Infrastruktur für die Verwaltung und Wartung von App Service-Umgebungen verwendet wird. Der Datenverkehr für diesen Port darf nicht blockiert werden. Dieser Port ist immer an die öffentliche VIP-Adresse einer ASE gebunden.
+- 80: Standardport für eingehenden HTTP-Datenverkehr in Apps, die in App Service-Plänen in einer App Service-Umgebung ausgeführt werden. Dieser Port ist in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden.
+- 443: Standardport für eingehenden SSL-Datenverkehr in Apps, die in App Service-Plänen in einer App Service-Umgebung ausgeführt werden. Dieser Port ist in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden.
+- 21: Steuerungskanal für FTP. Dieser Port kann sicher blockiert werden, wenn FTP nicht verwendet wird. Dieser Port kann in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden werden.
+- 10001 10020: Datenkanäle für FTP. Wie der Steuerungskanal können diese Ports sicher blockiert werden, wenn FTP nicht verwendet wird. Dieser Port kann in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden werden.
+- 4016: Wird zum Remotedebuggen in Visual Studio 2012 verwendet. Dieser Port kann sicher blockiert werden, wenn die Funktion nicht verwendet wird. Dieser Port ist in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden.
+- 4018: Wird zum Remotedebuggen in Visual Studio 2013 verwendet. Dieser Port kann sicher blockiert werden, wenn die Funktion nicht verwendet wird. Dieser Port ist in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden.
+- 4020: Wird zum Remotedebuggen in Visual Studio 2015 verwendet. Dieser Port kann sicher blockiert werden, wenn die Funktion nicht verwendet wird. Dieser Port ist in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden.
 
 ## Ausgehende Verbindungen und DNS-Anforderungen ##
-Damit eine App Service-Umgebung ordnungsgemäß funktioniert, sind ein ausgehender, weltweiter Zugriff auf Azure Storage sowie eine SQL-Datenbank in der gleichen Azure-Region erforderlich. Wenn der ausgehende Internetzugriff im virtuellen Netzwerk blockiert ist, können App Service-Umgebungen nicht auf diese Azure-Endpunkte zugreifen.
+Damit eine App Service-Umgebung richtig funktioniert, ist ausgehender Zugriff auf verschiedene Endpunkte erforderlich. Eine vollständige Liste externer Endpunkte, die von einer ASE verwendet werden, befindet sich im Artikel [Netzwerkkonfiguration für ExpressRoute](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) im Abschnitt „Erforderliche Netzwerkverbindung“.
 
 App Service-Umgebungen erfordern zudem eine gültige DNS-Infrastruktur, die für das virtuelle Netzwerk konfiguriert ist. Falls die DNS-Konfiguration nach der Erstellung einer App Service-Umgebung geändert wird, können Entwickler erzwingen, dass eine App Service-Umgebung die neue DNS-Konfiguration übernimmt. Wird im [Azure-Portal][NewPortal] über das Symbol „Neu starten“ oben auf dem Verwaltungsblatt der App Service-Umgebung ein paralleler Neustart der Umgebung ausgelöst, übernimmt diese die neue DNS-Konfiguration.
-
-Die folgende Liste enthält die Konnektivität und die DNS-Anforderungen für eine App Service-Umgebung:
-
--  Ausgehende Netzwerkverbindungen mit Azure-Speicherendpunkten in der ganzen Welt. Dies beinhaltet sowohl Endpunkte, die sich in der gleichen Region wie die App Service-Umgebung befinden, als auch Speicherendpunkte in **anderen** Azure-Regionen. Azure Storage-Endpunkte werden unter den folgenden DNS-Domänen aufgelöst: *table.core.windows.net*, *blob.core.windows.net*, *queue.core.windows.net* und *file.core.windows.net*.
--  Ausgehende Netzwerkverbindungen mit SQL-Datenbankendpunkten, die sich in der gleichen Region wie die App Service-Umgebung befinden. SQL-Datenbankendpunkte werden unter der folgenden Domäne aufgelöst: *database.windows.net*.
--  Ausgehende Netzwerkverbindungen mit den Endpunkten auf der Azure-Verwaltungsebene (ASM- und ARM-Endpunkte). Dies beinhaltet ausgehende Verbindungen mit *management.core.windows.net* und *management.azure.com*.
--  Ausgehende Netzwerkverbindung mit *ocsp.msocsp.com*, *mscrl.microsoft.com* und *crl.microsoft.com*. Dies ist zur Unterstützung von SSL-Funktionen erforderlich.
--  Die DNS-Konfiguration für das virtuelle Netzwerk muss alle der zuvor genannten Endpunkte und Domänen auflösen können. Können diese Endpunkte nicht aufgelöst werden, schlägt die Erstellung von App Service-Umgebungen fehl, und vorhandene App Service-Umgebungen werden als fehlerhaft gekennzeichnet.
--  Falls ein benutzerdefinierter DNS-Server am anderen Ende eines VPN-Gateways vorhanden ist, muss der DNS-Server über das Subnetz mit der App Service-Umgebung erreichbar sein.
--  Der ausgehende Netzwerkpfad kann weder durch interne Unternehmensproxys laufen noch zwangsweise zur lokalen Infrastruktur getunnelt werden. Andernfalls wird die tatsächliche NAT-Adresse des ausgehenden Netzwerkdatenverkehrs der App Service-Umgebung geändert. Das Ändern der NAT-Adresse des ausgehenden Netzwerkdatenverkehrs einer App Service-Umgebung verursacht bei vielen der oben genannten Endpunkte Verbindungsfehler. Dies führt zu Fehlern bei der Erstellung von App Service-Umgebungen und dazu, dass zuvor fehlerfreie App Service-Umgebungen als fehlerhaft gekennzeichnet werden.
--  Eingehender Netzwerkzugriff auf die erforderlichen Ports für App Service-Umgebungen muss entsprechend diesem [Artikel](app-service-app-service-environment-control-inbound-traffic.md) zugelassen werden.
 
 Es empfiehlt sich auch, benutzerdefinierte DNS-Server im VNet vor dem Erstellen einer App-Service-Umgebung einzurichten. Wenn die DNS-Konfiguration eines virtuellen Netzwerks geändert wird, während eine App Service-Umgebung erstellt wird, misslingt das Erstellen der App Service-Umgebung. Wenn ein benutzerdefinierter DNS-Server am anderen Ende eines VPN-Gateways vorhanden ist und der DNS-Server nicht erreichbar oder nicht verfügbar ist, kommt es ebenso zu einem Fehler beim Erstellen der App-Service-Umgebung.
 
@@ -121,13 +108,17 @@ Das folgende Beispiel zeigt der Vollständigkeit halber das Entfernen und somit 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Remove-AzureNetworkSecurityGroupFromSubnet -VirtualNetworkName 'testVNet' -SubnetName 'Subnet-test'
 
 ## Besonderheiten für explizites IP-SSL ##
-Wenn eine Anwendung mit einer expliziten IP-Adresse und nicht mit der Standard-IP-Adresse der App Service-Umgebung konfiguriert wird, fließt sowohl HTTP- als auch HTTPS-Datenverkehr über einen anderen Satz von Ports (nicht über Port 80 und 443) in das Subnetz.
+Wenn eine App mit einer expliziten IP-SSL-Adresse (anwendbar auf ASEs, die nur eine öffentliche VIP-Adresse besitzen) und nicht mit der Standard-IP-Adresse der App Service-Umgebung konfiguriert wird, fließt sowohl HTTP- als auch HTTPS-Datenverkehr über einen anderen Satz von Ports (nicht über Port 80 und 443) in das Subnetz.
 
-Sie können die jeweils für eine IP-SSL-Adresse verwendeten Ports aufrufen, indem Sie auf dem Benutzeroberflächenblatt einer App Service-Umgebung auf "Alle Einstellungen" --> "IP-Adressen" klicken. Das Blatt "IP-Adressen" enthält eine Tabelle aller explizit konfigurierten IP-SSL-Adressen für die App Service-Umgebung sowie das Portpaar, mit dem HTTP- und HTTPS-Datenverkehr für jede IP-SSL-Adresse weitergeleitet wird. Dieses Portpaar muss beim Konfigurieren von Regeln in einer Netzwerksicherheitsgruppe für den DestinationPortRange-Parameter verwendet werden.
+Die von jeder IP-SSL-Adresse verwendeten einzelnen Portspaare finden Sie in der Portalbenutzeroberfläche über das Details-UX-Blatt der App Service-Umgebung. Wählen Sie „Alle Einstellungen“ > „IP-Adressen“ aus. Das Blatt „IP-Adressen“ enthält eine Tabelle aller explizit konfigurierten IP-SSL-Adressen für die App Service-Umgebung sowie das Portpaar, mit dem HTTP- und HTTPS-Datenverkehr für jede IP-SSL-Adresse weitergeleitet wird. Dieses Portpaar muss beim Konfigurieren von Regeln in einer Netzwerksicherheitsgruppe für den DestinationPortRange-Parameter verwendet werden.
+
+Wenn eine App in einer ASE für die IP-SSL-Adresse konfiguriert ist, wird die spezielle Portpaarzuordnung externen Kunden nicht angezeigt, und sie müssen sich darüber keine Gedanken machen. Der Datenverkehr zu den Apps fließt normal an die konfigurierte IP-SSL-Adresse. Die Übersetzung in das spezielle Portpaar geschieht automatisch intern während des letzten Abschnitts des Datenverkehrsroutings in das Subnetz, das die ASE enthält.
 
 ## Erste Schritte
 
 Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Einführung in die App Service-Umgebung][IntroToAppServiceEnvironment]
+
+Alle Artikel und Anleitungen zu App Service-Umgebungen stehen in der [Dokumentation zur App Service-Umgebung](../app-service/app-service-app-service-environments-readme.md) zur Verfügung.
 
 Einzelheiten zum Herstellen einer sicheren Verbindung von Apps mit der Back-End-Ressource von einer App Service-Umgebung aus finden Sie unter [Sicheres Verbinden mit Back-End-Ressourcen von einer App Service-Umgebung aus][SecurelyConnecttoBackend]
 
@@ -149,4 +140,4 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 <!-- IMAGES -->
  
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

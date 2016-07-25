@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Übersicht über das Enterprise Integration Pack | Microsoft Azure App Service" 
+	pageTitle="Übersicht über die Unternehmensintegration | Microsoft Azure App Service | Microsoft Azure" 
 	description="Nutzen Sie die Enterprise Integration-Features, um die Integration von Geschäftsprozessen mithilfe von Logik-Apps zu ermöglichen." 
 	services="app-service\logic" 
 	documentationCenter=".net,nodejs,java"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/06/2016" 
+	ms.date="07/08/2016" 
 	ms.author="deonhe"/>
 
 # Übersicht über das Enterprise Integration Pack
@@ -35,7 +35,7 @@ Aus Sicht der Systemarchitektur basiert das Enterprise Integration Pack auf **In
 ## Erste Schritte mit der Unternehmensintegration
 Mit dem Enterprise Integration Pack und dem Logik-App-Designer im **Azure-Portal** können Sie B2B-Apps erstellen und verwalten.
 
-Hier eine Übersicht über die Schritte, die Sie ausführen müssen, ehe Sie im Azure-Portal Apps erstellen können: ![](./media/app-service-logic-enterprise-integration-overview/overview-0.png)
+Hier ist eine Übersicht über die Schritte, die Sie ausführen müssen, ehe Sie im Azure-Portal Apps erstellen können: ![overviewimage](./media/app-service-logic-enterprise-integration-overview/overview-0.png)
 
 ## Gängige Szenarien
 
@@ -44,23 +44,21 @@ Für die Unternehmensintegration werden unterstützt diese Branchenstandards unt
 - EDI (Electronic Data Interchange)
 - EAI (Enterprise Application Integration)
 
-## Kosten
-Informationen zu Preisen und eine Liste der in den einzelnen Tarifen verfügbaren Komponenten finden Sie unter [Azure App Service-Preise](https://azure.microsoft.com/pricing/details/app-service/).
-
 ## Voraussetzungen für die ersten Schritte
 - Azure-Abonnement mit einem Integrationskonto
 - Visual Studio 2015 zum Erstellen von Zuordnungen und Schemas
 - [Microsoft Azure Logic Apps Enterprise Integration Tools for Visual Studio 2015 2.0](https://aka.ms/vsmapsandschemas)
 
 ## Weitere Informationen:
-- [Schemas](./app-service-logic-enterprise-integration-schemas.md "Informationen zu Schemas für die Unternehmensintegration")
-- [Zuordnungen](./app-service-logic-enterprise-integration-maps.md "Informationen zu Zuordnungen für die Unternehmensintegration")
-- [Zertifikate](./app-service-logic-enterprise-integration-certificates.md "Informationen zu Zertifikaten für die Unternehmensintegration")
-- [Partner](./app-service-logic-enterprise-integration-partners.md "Informationen zu Unternehmensintegrationspartnern")
 - [Vereinbarungen](./app-service-logic-enterprise-integration-agreements.md "Informationen zu Vereinbarungen zur Unternehmensintegration")
-- [Integrationskonten](./app-service-logic-enterprise-integration-accounts.md "Informationen zu Integrationskonten")
 - [B2B-Szenarien (Business-to-Business)](./app-service-logic-enterprise-integration-b2b.md "Informationen zum Erstellen von Logik-Apps mit B2B-Features")
-- [Überprüfung von XML-Nachrichten](./app-service-logic-enterprise-integration-xml.md "Informationen zum Überprüfen von XML-Nachrichten mit Logik-Apps")
+- [Zertifikate](./app-service-logic-enterprise-integration-certificates.md "Informationen zu Zertifikaten für die Unternehmensintegration")
 - [Codierung/Decodierung von Flatfiles](./app-service-logic-enterprise-integration-flatfile.md "Informationen zum Codieren und Decodieren von Flatfile-Inhalten")
+- [Integrationskonten](./app-service-logic-enterprise-integration-accounts.md "Informationen zu Integrationskonten")
+- [Zuordnungen](./app-service-logic-enterprise-integration-maps.md "Informationen zu Zuordnungen für die Unternehmensintegration")
+- [Partner](./app-service-logic-enterprise-integration-partners.md "Informationen zu Unternehmensintegrationspartnern")
+- [Schemas](./app-service-logic-enterprise-integration-schemas.md "Informationen zu Schemas für die Unternehmensintegration")
+- [Überprüfung von XML-Nachrichten](./app-service-logic-enterprise-integration-xml.md "Informationen zum Überprüfen von XML-Nachrichten mit Logik-Apps")
+- [XML-Transformation](./app-service-logic-enterprise-integration-transform.md "Informationen zu Zuordnungen für die Unternehmensintegration")
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="MarkusVi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/07/2016"
+	ms.date="07/08/2016"
 	ms.author="markvi"/>
 
 # Azure Active Directory-Editionen
@@ -480,6 +480,9 @@ Neben den allgemein verfügbaren Funktionen der Free, Basic und Premium Editione
 - Privileged Identity Management
 - [HR-Anwendungsintegration](active-directory-saas-workday-inbound-tutorial.md)
 - [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
+- [Zertifikatbasierte Authentifizierung in iOS](active-directory-certificate-based-authentication-ios.md)
+- [Zertifikatbasierte Authentifizierung in Android](active-directory-certificate-based-authentication-android.md)
+ 
 
 
 
@@ -491,8 +494,7 @@ Neben den allgemein verfügbaren Funktionen der Free, Basic und Premium Editione
 - [Hinzufügen Ihres Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite](active-directory-add-company-branding.md)
 - [Anzeigen Ihrer Zugriffs- und Nutzungsberichte](active-directory-view-access-usage-reports.md)
 
-
 <!--Image references-->
 [12]: ./media/active-directory-editions/ic195031.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus | Microsoft Azure" 
-	description="Hier erfahren Sie, wie das Advance Message Queuing Protocol 1.0 (AMQP) für partitionierte Warteschlangen und Themen von Service Bus verwendet wird." 
+	description="Hier erfahren Sie, wie das Advance Message Queuing Protocol 1.0 (AMQP) für partitionierte Warteschlangen und Themen von Service Bus verwendet wird." 
 	services="service-bus" 
 	documentationCenter=".net" 
 	authors="hillaryc" 
@@ -13,18 +13,20 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="03/16/2016" 
+	ms.date="07/08/2016" 
 	ms.author="hillaryc;sethm"/>
 
-# AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus 
+# AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus 
 
-Azure Service Bus unterstützt jetzt das Advanced Message Queuing Protocol 1.0 (**AMQP**) für **partitionierte Warteschlangen und Themen** von Service Bus.
+Azure Service Bus unterstützt jetzt das Advanced Message Queuing Protocol 1.0 (**AMQP**) für **partitionierte Warteschlangen und Themen** von Service Bus.
 
-**AMQP** ist ein Protokoll für Nachrichtenwarteschlangen nach einem offenen Standard, das die Entwicklung plattformübergreifender Anwendungen mit verschiedenen Programmiersprachen ermöglicht. Allgemeine Informationen zur Unterstützung von AMQP in Service Bus finden Sie unter [Unterstützung für AMQP 1.0 in Service Bus](service-bus-amqp-overview.md).
+**AMQP** ist ein Protokoll für Nachrichtenwarteschlangen nach einem offenen Standard, das die Entwicklung plattformübergreifender Anwendungen mit verschiedenen Programmiersprachen ermöglicht. Allgemeine Informationen zur Unterstützung von AMQP in Service Bus finden Sie unter [Unterstützung für AMQP 1.0 in Service Bus](service-bus-amqp-overview.md).
 
 **Partitionierte Warteschlangen und Themen** werden auch als *partitionierte Entitäten* bezeichnet und bieten höhere Zuverlässigkeit, Verfügbarkeit und einen größeren Durchsatz als konventionelle nicht partitionierte Warteschlangen und Themen. Weitere Informationen zu partitionierten Entitäten finden Sie unter [Partitionierte Messagingentitäten](service-bus-partitioning.md).
 
-Da AMQP 1.0 als Protokoll für die Kommunikation mit partitionierten Warteschlangen und Themen hinzugefügt wurde, können Sie interoperable Anwendungen erstellen, die die höhere Verfügbarkeit, Zuverlässigkeit und den größeren Durchsatz der partitionierten Entitäten von Service Bus nutzen.
+Da AMQP 1.0 als Protokoll für die Kommunikation mit partitionierten Warteschlangen und Themen hinzugefügt wurde, können Sie interoperable Anwendungen erstellen, die die höhere Verfügbarkeit, Zuverlässigkeit und den größeren Durchsatz der partitionierten Entitäten von Service Bus nutzen.
+
+Eine ausführliche Anleitung zum AMQP 1.0-Wire-Protokoll, die erläutert, wie Service Bus die technische Spezifikation für OASIS AMQP implementiert und darauf aufbaut, finden Sie unter [AMQP 1.0 in Azure Service Bus and Event Hubs protocol guide](service-bus-amqp-protocol-guide.md) (AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden).
 
 ## Verwenden von AMQP mit partitionierten Warteschlangen
 
@@ -66,13 +68,13 @@ receivedMessage.Complete();
 
 ## Verwenden von AMQP mit partitionierten Themen
 
-Themen liegt ein ähnliches Konzept zugrunde wie Warteschlangen, allerdings können Themen eine Kopie der gleichen Nachricht an mehrere Abonnenten weiterleiten. Bei einem Thema senden Herausgeber Nachrichten an das Thema, und Consumer erhalten Nachrichten über *Abonnements*. Im Szenario mit dem Lagersystem veröffentlichen POS-Terminals Daten für das Thema. Das Lagerverwaltungssystem empfängt dann Nachrichten von einem Abonnement. Darüber hinaus kann ein Überwachungssystem dieselbe Nachricht aus einem anderen Abonnement erhalten. Weitere Informationen zu Service Bus-Themen und Abonnements finden Sie unter [Erstellen von Anwendungen, die Service Bus-Themen und -Abonnements verwenden](service-bus-create-topics-subscriptions.md).
+Topics liegt ein ähnliches Konzept zugrunde wie Warteschlangen, allerdings können Topics eine Kopie der gleichen Nachricht an mehrere *Abonnements* weiterleiten. In einem Thema senden Herausgeber Nachrichten an das Thema, und Consumer erhalten Nachrichten von Abonnements. Im Szenario mit dem Lagersystem veröffentlichen POS-Terminals Daten für das Thema. Das Lagerverwaltungssystem empfängt dann Nachrichten von einem Abonnement. Darüber hinaus kann ein Überwachungssystem dieselbe Nachricht aus einem anderen Abonnement erhalten. Weitere Informationen zu Service Bus-Topics und -Subscriptions finden Sie unter [Erstellen von Anwendungen, die Service Bus-Topics und -Subscriptions verwenden](service-bus-create-topics-subscriptions.md).
 
-Ein partitioniertes Thema erhöht die Verfügbarkeit, Zuverlässigkeit und den Durchsatz für Anwendungen zusätzlich, da diese Themen und ihre Abonnements über mehrere Nachrichtenbroker und Messagingspeicher partitioniert werden.
+Wie Warteschlangen würde ein partitioniertes Topic die Verfügbarkeit, Zuverlässigkeit und den Durchsatz für Anwendungen weiter erhöhen, da diese Topics und ihre Subscriptions über mehrere Nachrichtenbroker und Messagingspeicher partitioniert werden.
 
 ### Erstellen von partitionierten Themen
 
-Partitionierte Themen können mit dem [klassischen Azure-Portal][] und mit dem Service Bus SDK erstellt werden. Legen Sie die [EnablePartitioning](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicdescription.enablepartitioning.aspx)-Eigenschaft in der [TopicDescription](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicdescription.aspx)-Instanz auf **true** fest, um ein partitioniertes Thema zu erstellen. Der folgende Code veranschaulicht, wie Sie mit dem Service Bus SDK ein partitioniertes Thema erstellen.
+Partitionierte Topics können mit dem [klassischen Azure-Portal][] und dem Service Bus SDK erstellt werden. Legen Sie die [EnablePartitioning](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicdescription.enablepartitioning.aspx)-Eigenschaft in der [TopicDescription](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicdescription.aspx)-Instanz auf **true** fest, um ein partitioniertes Thema zu erstellen. Der folgende Code veranschaulicht, wie Sie mit dem Service Bus SDK ein partitioniertes Thema erstellen.
 	
 ```
 // Create partitioned topic
@@ -87,7 +89,7 @@ nm.CreateSubscription(subscriptionDescription);
 
 ### Senden und Empfangen von Nachrichten mit AMQP
 
-Sie können Nachrichten an ein partitioniertes Themenabonnement senden und von diesem empfangen, indem Sie AMQP als Protokoll verwenden. Legen Sie hierzu wie im folgenden Code die Eigenschaft [TransportType](https://msdn.microsoft.com/library/azure/microsoft.servicebus.servicebusconnectionstringbuilder.transporttype.aspx) auf [TransportType.Amqp](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.transporttype.aspx) fest.
+Sie können Nachrichten an eine partitionierte Topic-spezifische Subscription senden und von diesem empfangen, indem Sie AMQP als Protokoll verwenden. Legen Sie hierzu wie im folgenden Code die Eigenschaft [TransportType](https://msdn.microsoft.com/library/azure/microsoft.servicebus.servicebusconnectionstringbuilder.transporttype.aspx) auf [TransportType.Amqp](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.transporttype.aspx) fest.
 
 ```
 // Sending and receiving messages to a topic and from a subscription
@@ -108,14 +110,15 @@ receivedMessage.Complete();
 
 ## Nächste Schritte
 
-Weitere Informationen zu partitionierten Messagingentitäten finden Sie in den folgenden Abschnitten:
+Weitere Informationen zu partitionierten Messagingentitäten sowie AMQP finden Sie in den folgenden Abschnitten:
 
 *    [Partitionierte Nachrichtenentitäten](service-bus-partitioning.md)
 *    [OASIS Advanced Message Queuing Protocol (AMQP) Version 1.0](http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf)
 *    [Unterstützung für AMQP 1.0 in Service Bus](service-bus-amqp-overview.md)
+*    [AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden](service-bus-amqp-protocol-guide.md)
 *    [Verwenden der JMS (Java Message Service)-API mit Service Bus und AMQP 1.0](service-bus-java-how-to-use-jms-api-amqp.md)
 *    [Verwenden von AMQP 1.0 mit der .NET-Programmierschnittstelle für Service Bus](service-bus-dotnet-advanced-message-queuing.md)
 
 [klassischen Azure-Portal]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0713_2016-->

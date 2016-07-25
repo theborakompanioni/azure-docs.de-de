@@ -1,7 +1,7 @@
 <properties 
     pageTitle="AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden | Microsoft Azure" 
     description="Enthält einen Protokollleitfaden für Ausdrücke und eine Beschreibung von AMQP 1.0 in Azure Service Bus und Event Hubs." 
-    services="service-bus" 
+    services="service-bus,event-hubs" 
     documentationCenter=".net" 
     authors="clemensv" 
     manager="timlt" 
@@ -206,11 +206,7 @@ In den folgenden Abschnitten wird erläutert, welche Eigenschaften aus den AMQP-
 
 | Feldname | Verwendung | API-Name |
 |----------------	|-------------------------------	|---------------	|
-| durable | - | - |
-| priority | - | - |
-| ttl | Gültigkeitsdauer (Time To Live, TTL) für diese Nachricht | [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx) |
-| first-acquirer | - | - |
-| delivery-count | - | [DeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.deliverycount.aspx) |
+| durable | - | - | | priority | - | - | | ttl | Gültigkeitsdauer (Time To Live, TTL) für diese Nachricht | [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx) | | first-acquirer | - | - | | delivery-count | - | [DeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.deliverycount.aspx) |
 
 #### Eigenschaften
 
@@ -234,6 +230,8 @@ In den folgenden Abschnitten wird erläutert, welche Eigenschaften aus den AMQP-
 ## Erweiterte Service Bus-Funktionen
 
 In diesem Abschnitt werden die erweiterten Funktionen von Azure Service Bus behandelt. Sie basieren auf Erweiterungsentwürfen für AMQP, die derzeit vom OASIS Technical Committee für AMQP entwickelt werden. Azure Service Bus implementiert den aktuellen Status dieser Entwürfe und übernimmt die Änderungen, die eingeführt werden, wenn diese Entwürfe den Standardstatus erreichen.
+
+> [AZURE.NOTE] Erweiterte Service Bus Messaging-Vorgänge werden über ein Muster vom Typ „Anforderung/Antwort“ unterstützt. Details zu diesen Vorgängen finden Sie im Dokument [AMQP 1.0 in Service Bus: request/response-based operations](https://msdn.microsoft.com/library/azure/mt727956.aspx) (AMQP 1.0 in Service Bus: Auf „Anforderung/Antwort“ basierende Vorgänge).
 
 ### AMQP-Verwaltung
 
@@ -291,7 +289,7 @@ Die *name*-Eigenschaft identifiziert die Entität, der das Token zugeordnet werd
 | amqp:swt | Einfaches Webtoken (Simple Web Token, SWT) | AMQP-Wert (Zeichenfolge) | Wird nur für von AAD/ACS ausgestellte SWTs unterstützt. |
 | servicebus.windows.net:sastoken | Service Bus-SAS-Token | AMQP-Wert (Zeichenfolge) | - |
 
-Mit Token werden Rechte gewährt. Service Bus kennt drei grundlegende Rechte: „Senden“ (Send) für das Senden, „Abhören“ (Listen) für das Empfangen und „Verwalten“ (Manage) für das Ändern von Entitäten. Von AAD/ACS ausgestellte SWTs enthalten diese Rechte als Ansprüche. Service Bus-SAS-Token beziehen sich auf Regeln, die für den Namespace oder die Entität konfiguriert sind, und diese Regeln werden mit den Rechten konfiguriert. Das Signieren des Tokens mit dem Schlüssel, der der Regel zugeordnet ist, führt daher dazu, dass das Token die entsprechenden Rechte ausdrückt. Das per *put-token* einer Entität zugeordnete Token ermöglicht es dem verbundenen Client, über die Tokenrechte mit der Entität zu interagieren. Für eine Verknüpfung, bei der der Client die Rolle des *Absenders* übernimmt, ist das Recht „Senden“ erforderlich. Für die Rolle des *Empfängers* wird das Recht „Abhören“ benötigt.
+Mit Token werden Rechte gewährt. Service Bus kennt drei grundlegende Rechte: „Senden“ (Send) für das Senden, „Abhören“ (Listen) für das Empfangen und „Verwalten“ (Manage) für das Ändern von Entitäten. Von AAD/ACS ausgestellte SWTs enthalten diese Rechte als Ansprüche. Service Bus-SAS-Token beziehen sich auf Regeln, die für den Namespace oder die Entität konfiguriert sind, und diese Regeln werden mit den Rechten konfiguriert. Das Signieren des Tokens mit dem Schlüssel, der der Regel zugeordnet ist, führt daher dazu, dass das Token die entsprechenden Rechte ausdrückt. Das mit *put-token* einer Entität zugeordnete Token ermöglicht es dem verbundenen Client, über die Tokenrechte mit der Entität zu interagieren. Für eine Verknüpfung, bei der der Client die Rolle des *Absenders* übernimmt, ist das Recht „Senden“ erforderlich. Für die Rolle des *Empfängers* wird das Recht „Abhören“ benötigt.
 
 Die Antwortnachricht weist die folgenden *application-properties*-Werte auf:
 
@@ -328,4 +326,4 @@ Weitere Informationen zu AMQP finden Sie unter den folgenden Links:
 [AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 [AMQP in Service Bus für Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

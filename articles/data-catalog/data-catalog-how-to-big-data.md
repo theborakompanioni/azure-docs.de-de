@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/31/2016"
+   ms.date="07/12/2016"
    ms.author="maroche"/>
 
 
@@ -68,4 +68,4 @@ Die oben beschriebenen Muster sind nur zwei Möglichkeiten, wie ein großer Date
 ## Zusammenfassung
 Das Registrieren von Datenquellen bei **Azure Data Catalog** erleichtert deren Ermittlung und Verständnis. Durch das Registrieren und Kommentieren der Big Data-Dateien und -Verzeichnisse, die logische Datensätze darstellen, können Ihre Benutzer leichter von ihnen benötigte große Datenquellen suchen und verwenden.
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0713_2016-->
