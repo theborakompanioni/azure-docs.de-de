@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/06/2016"
+	ms.date="07/09/2016"
 	ms.author="jeedes"/>
 
 
@@ -47,7 +47,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 
 
 ## Beschreibung des Szenarios
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung. <br> Das in diesem Tutorial beschriebene Szenario besteht aus zwei großen Bausteinen:
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von HackerOne aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -58,25 +58,39 @@ Zum Integrieren von HackerOne in Azure AD müssen Sie HackerOne aus dem Katalog 
 
 **Um HackerOne aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im **klassischen Azure-Portal** im linken Navigationsbereich auf **Active Directory**. <br><br> ![Active Directory][1]<br>
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+
+	![Active Directory][1]
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.<br><br> ![Anwendungen][2]<br>
-4. Klicken Sie unten auf der Seite auf **Hinzufügen**.<br><br> ![Anwendungen][3]<br>
-5. Klicken Sie im Dialogfeld **What do you want to do** auf **Anwendung aus dem Katalog hinzufügen**.<br><br> ![Anwendungen][4]<br>
-6. Geben Sie im Suchfeld als Suchbegriff **HackerOne** ein.<br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_01.png)<br>
-7. Wählen Sie im Ergebnisbereich **HackerOne** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.<br><br>
+3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
+
+	![Anwendungen][2]
+
+4. Klicken Sie unten auf der Seite auf **Hinzufügen**.
+
+	![Anwendungen][3]
+
+5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
+
+![Anwendungen][4]
+
+6. Geben Sie im Suchfeld als Suchbegriff **HackerOne** ein.
+
+![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_01.png)
+
+7. Wählen Sie im Ergebnisbereich **HackerOne** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
 
 
 ##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 Als Nächstes konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei HackerOne basierend auf einem Testbenutzer namens Britta Simon.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in HackerOne als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in HackerOne muss eine Linkbeziehung eingerichtet werden.<br> Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als Wert dem **Benutzernamen** in HackerOne zuweisen.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in HackerOne als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in HackerOne muss eine Linkbeziehung eingerichtet werden. Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** in Azure AD als Wert des **Benutzernamens** in HackerOne zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei HackerOne müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+1. **[Konfigurieren von Azure AD – einmaliges Anmelden](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines HackerOne-Testbenutzers](#creating-a-hackerone-test-user)**, um eine Entsprechung von Britta Simon in HackerOne zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
@@ -90,14 +104,20 @@ Im Rahmen dieses Verfahrens müssen Sie eine Base-64-codierte Zertifikatsdatei e
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in HackerOne die folgenden Schritte aus:**
 
-1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **HackerOne** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen. <br><br> ![Einmaliges Anmelden konfigurieren][6] <br>
+1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **HackerOne** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei HackerOne anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**. <br><br> ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_03.png) <br>
+	![Einmaliges Anmelden konfigurieren][6]
 
-3. Führen Sie auf der Dialogfeldseite **App-Einstellungen konfigurieren** die folgenden Schritte aus, und klicken Sie dann auf **Weiter**: <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_04.png) <br>
+2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei HackerOne anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_03.png)
+
+3. Führen Sie auf der Seite **App-Einstellungen konfigurieren** die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
+
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_04.png)
 
 
-    a. Geben Sie im Textfeld **Anmelde-URL** nach folgendem Muster die URL ein, die Benutzer zum Anmelden bei Ihrer HackerOne-Anwendung verwenden: „**https://hackerone.com/<Firmenname>/authentication**“.
+    a. Geben Sie im Textfeld **Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei Ihrer HackerOne-Anwendung verwendete URL in folgendem Format ein: **https://hackerone.com/<Unternehmensname>/authentication**.
 
     b. Wenden Sie sich über [support@hackerone.com](mailto:support@hackerone.com) an das HackerOne-Supportteam, wenn Sie Ihre Mandanten-URL nicht wissen.
 
@@ -106,7 +126,9 @@ Im Rahmen dieses Verfahrens müssen Sie eine Base-64-codierte Zertifikatsdatei e
 	d. Klicken Sie auf **Weiter**.
 
 
-4. Führen Sie auf der Seite **Einmaliges Anmelden bei HackerOne konfigurieren** die folgenden Schritte aus, und klicken Sie dann auf **Weiter**: <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_05.png) <br>
+4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für HackerOne** die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
+
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_05.png)
 
     a. Klicken Sie auf **Zertifikat herunterladen** und speichern Sie die Datei auf Ihrem Computer.
 
@@ -115,54 +137,75 @@ Im Rahmen dieses Verfahrens müssen Sie eine Base-64-codierte Zertifikatsdatei e
 
 1. Melden Sie sich bei Ihrem HackerOne-Mandanten als Administrator an.
 
-1. Klicken Sie im oberen Menü auf **Einstellungen**.<br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_001.png) <br>
+1. Klicken Sie im Menü oben auf **Settings**.
 
-1. Navigieren Sie zu „**Authentifizierung**“, und klicken Sie auf „**SAML-Einstellungen hinzufügen**“.<br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_003.png) <br>
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_001.png)
+
+1. Navigieren Sie zu **Authentication**, und klicken Sie auf **Add SAML settings**.
+
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_003.png)
 
 
-1. Führen Sie im Dialogfeld **SAML-Einstellungen** die folgenden Schritte aus: <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_004.png) <br><br>
+1. Führen Sie im Dialogfeld **SAML Settings** die folgenden Schritte aus:
 
-    a. Geben Sie im Textfeld **E-Mail-Domäne** eine registrierte Domäne ein.
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_004.png)
 
-	b. Kopieren Sie im klassischen Azure-Portal die **Dienst-URL für einmalige Anmeldung**, und fügen Sie sie in das Textfeld „Einfache Anmeldungs-URL“ ein.
+    a. Geben Sie im Textfeld **Email Domain** eine registrierte Domäne ein.
+
+	b. Kopieren Sie im klassischen Azure-Portal die **Dienst-URL für einmaliges Anmelden**, und fügen Sie sie in das Textfeld „Single Sign On URL“ ein.
 
     c. Erstellen Sie eine **Base64-codierte** Datei aus dem heruntergeladenen Zertifikat.
 
        >[AZURE.TIP] Weitere Informationen finden Sie unter [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (in englischer Sprache).
 	
-    d. Öffnen Sie das Base-64-codierte Zertifikat im Editor, kopieren Sie den Inhalt in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **X509-Zertifikat** ein.
+    d. Öffnen Sie das Base-64-codierte Zertifikat im Editor, kopieren Sie den Inhalt in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **X509 Certificate** ein.
 
-    e. Klicken Sie auf **Speichern**.
-
-
-1. Führen Sie im Dialogfeld „Authentifizierungseinstellungen“ die folgenden Schritte aus: <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_005.png) <br><br>
-
-    a. Klicken Sie auf **Test ausführen**.
-
-    b. Wenden Sie sich über [support@hackerone.com](mailto:support@hackerone.com) an das Supportteam von HackerOne, wenn der Wert des **Status**-Feldes **Letzter Teststatus: erstellt** ist. Sie können dort eine Überprüfung der Konfiguration anfordern.
+    e. Klicken Sie auf **Save**.
 
 
-6. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus und klicken Sie dann auf **Weiter**. <br><br>![Azure AD – einmaliges Anmelden][10]<br>
+1. Führen Sie im Dialogfeld „Authentication Settings“ die folgenden Schritte aus:
 
-7. Klicken Sie auf der Seite **Bestätigung für einmaliges Anmelden** auf **Abschließen**. <br>![Azure AD – einmaliges Anmelden][11]
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_005.png)
+
+    a. Klicken Sie auf **Run test**.
+
+    b. Wenn das Feld **Status** den Wert **Letzter Teststatus: erstellt** aufweist, wenden Sie sich über [support@hackerone.com](mailto:support@hackerone.com) an das Supportteam von HackerOne, um eine Überprüfung der Konfiguration anzufordern.
+
+
+6. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
+
+	![Azure AD – einmaliges Anmelden][10]
+
+7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
+ 
+	![Azure AD – einmaliges Anmelden][11]
 
 
 
 
 ### Erstellen eines Azure AD-Testbenutzers
-Erstellen Sie als Nächstes im klassischen Portal einen Testbenutzer namens Britta Simon.<br> Wählen Sie in der Benutzerliste **Britta Simon** aus.<br><br>![Azure AD-Benutzer erstellen][20]<br>
+
+Als Nächstes erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
+
+![Azure AD-Benutzer erstellen][20]
 
 **Um einen SECURE DELIVER-Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im **klassischen Azure-Portal** im linken Navigationsbereich auf **Active Directory**. <br><br>![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hackerone-tutorial/create_aaduser_09.png)<br>
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hackerone-tutorial/create_aaduser_09.png)
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**. <br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hackerone-tutorial/create_aaduser_03.png) <br>
+3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
 
-4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**. <br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hackerone-tutorial/create_aaduser_04.png) <br>
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hackerone-tutorial/create_aaduser_03.png)
 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus: <br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hackerone-tutorial/create_aaduser_05.png) <br>
+4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**. ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hackerone-tutorial/create_aaduser_04.png)
+
+5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hackerone-tutorial/create_aaduser_05.png)
 
     a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
 
@@ -170,7 +213,9 @@ Erstellen Sie als Nächstes im klassischen Portal einen Testbenutzer namens Brit
 
     c. Klicken Sie auf **Weiter**.
 
-6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus: <br><br>![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hackerone-tutorial/create_aaduser_06.png) <br>
+6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
+
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hackerone-tutorial/create_aaduser_06.png)
 
     a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.
 
@@ -182,9 +227,13 @@ Erstellen Sie als Nächstes im klassischen Portal einen Testbenutzer namens Brit
 
     e. Klicken Sie auf **Weiter**.
 
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**. <br><br> ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hackerone-tutorial/create_aaduser_07.png) <br>
+7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
 
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus: <br><br>![Erstellen einen Azure AD-Testbenutzers](./media/active-directory-saas-hackerone-tutorial/create_aaduser_08.png) <br>
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hackerone-tutorial/create_aaduser_07.png)
+
+8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
+
+	![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-hackerone-tutorial/create_aaduser_08.png)
 
     a. Notieren Sie den Wert von **Neues Kennwort**.
 
@@ -204,25 +253,35 @@ Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn Sie 
 
 ### Zuweisen des Azure AD-Testbenutzers
 
-Nun ermöglichen Sie Britta Simon das einmalige Anmelden bei Azure, indem Sie ihr Zugriff auf HackerOne gewähren. <br><br>![Benutzer zuweisen][200] <br>
+Als Nächstes ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf HackerOne gewähren.
+
+![Benutzer zuweisen][200]
 
 **Um Britta Simon HackerOne zuzuweisen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**. <br><br>![Benutzer zuweisen][201] <br>
+1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
 
-2. Wählen Sie in der Anwendungsliste **HackerOne** aus. <br><br>![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_50.png) <br>
+	![Benutzer zuweisen][201]
 
-1. Klicken Sie im oberen Menü auf **Benutzer**. <br><br>![Benutzer zuweisen][203] <br>
+2. Wählen Sie in der Anwendungsliste **HackerOne** aus.
+
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_50.png)
+
+1. Klicken Sie im oberen Menü auf **Benutzer**.
+
+	![Benutzer zuweisen][203]
 
 1. Wählen Sie in der Benutzerliste **Britta Simon** aus.
 
-2. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**. <br><br>![Benutzer zuweisen][205]
+2. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
+
+	![Benutzer zuweisen][205]
 
 
 
 ### Testen der einmaligen Anmeldung
 
-Abschließend testen Sie Ihre Azure AD-Konfiguration für das einmalige Anmelden mithilfe des Zugriffsbereichs.<br> Wenn Sie im Zugriffsbereich auf die Kachel „HackerOne“ klicken, sollten Sie automatisch in Ihrer HackerOne-Anwendung angemeldet werden.
+Abschließend testen Sie Ihre Azure AD-Konfiguration für das einmalige Anmelden über den Zugriffsbereich. Wenn Sie im Zugriffsbereich auf die Kachel „HackerOne“ klicken, sollten Sie automatisch in Ihrer HackerOne-Anwendung angemeldet werden.
 
 
 ## Zusätzliche Ressourcen
@@ -249,4 +308,4 @@ Abschließend testen Sie Ihre Azure AD-Konfiguration für das einmalige Anmelden
 [204]: ./media/active-directory-saas-hackerone-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-hackerone-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0713_2016-->

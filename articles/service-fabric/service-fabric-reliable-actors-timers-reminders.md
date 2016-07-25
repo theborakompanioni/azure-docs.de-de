@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/25/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
 
 
@@ -107,7 +107,7 @@ public class ToDoListActor : Actor, IToDoListActor, IRemindable
 
 Wenn eine Erinnerung ausgelöst wird, ruft die Reliable Actors-Laufzeit die `ReceiveReminderAsync`-Methode auf dem Actor auf. Ein Actor kann mehrere Erinnerungen registrieren. Die `ReceiveReminderAsync`-Methode wird aufgerufen, sobald eine dieser Erinnerungen ausgelöst wurde. Der Actor kann mithilfe des an die Methode `ReceiveReminderAsync` übergebenen Erinnerungsnamens ermitteln, welche Erinnerung ausgelöst wurde.
 
-Die Actors-Laufzeit speichert den Actor-Zustand nach Abschluss des Aufrufs `ReceiveReminderAsync`. Tritt ein Fehler beim Speichern des Zustands auf, wird das Actor-Objekt deaktiviert und eine neue Instanz aktiviert. Um anzugeben, dass der Zustand nach Abschluss des Erinnerungsrückrufs nicht gespeichert werden muss, kann das Flag `ActorReminderAttributes.ReadOnly` im Parameter `attributes` festgelegt werden, wenn die Methode `RegisterReminder` zum Erstellen der Erinnerung aufgerufen wird.
+Die Actors-Laufzeit speichert den Actor-Zustand nach Abschluss des Aufrufs `ReceiveReminderAsync`. Tritt ein Fehler beim Speichern des Zustands auf, wird das Actor-Objekt deaktiviert und eine neue Instanz aktiviert.
 
 Zum Aufheben der Registrierung einer Erinnerung ruft ein Actor die `UnregisterReminder`-Methode auf, wie im folgenden Beispiel gezeigt.
 
@@ -125,4 +125,4 @@ Wie oben gezeigt, akzeptiert die Methode `UnregisterReminder` die Schnittstelle 
  - [Actor-API-Referenzdokumentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
  - [Beispielcode](https://github.com/Azure/servicefabric-samples)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

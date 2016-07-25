@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Sind Ihre Daten für Data Science bereit? (Datenauswertung) – Data Science für Einsteiger | Microsoft Azure"
+   pageTitle="Sind Ihre Daten für Data Science bereit? Datenbewertung | Microsoft Azure"
    description="Lernen Sie die vier Kriterien zum Prüfen der Bereitschaft Ihrer Daten für Data Science kennen. Das 2. Video von „Data Science für Einsteiger“ bietet konkrete Beispiele für eine grundlegende Bewertung von Daten."
    keywords="Datenbewertung,relevante Daten,Bewerten von Daten,Vorbereiten von Daten,Kriterien von Daten,bereite Daten"
    services="machine-learning"
@@ -116,4 +116,4 @@ In fünf Kurzvideos der Reihe *Data Science für Einsteiger* erhalten Sie eine S
   * [Durchführen Ihres ersten Data Science-Experiments mit Azure Machine Learning](machine-learning-create-experiment.md)
   * [Einführung in Machine Learning in Microsoft Azure](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

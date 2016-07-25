@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure-services"
-   ms.date="05/03/2016"
+   ms.date="07/13/2016"
    ms.author="georgem"/>
 
 # Azure-Vorteil bei Hybridnutzung für Windows Server
@@ -39,6 +39,8 @@ Für die Bereitstellung eines virtuellen Windows Server-Computers in Azure müss
 Add-AzureRmVhd -ResourceGroupName MyResourceGroup -Destination "https://mystorageaccount.blob.core.windows.net/vhds/myvhd.vhd" -LocalFilePath 'C:\Path\To\myvhd.vhd'
 ```
 
+> [AZURE.NOTE] Microsoft SQL Server, SharePoint Server und Dynamics können ebenfalls Ihre Software Assurance-Lizenzierung verwenden. Sie müssen weiterhin das Windows Server-Image vorbereiten, indem Sie die Anwendungskomponenten installieren, Lizenzschlüssel bereitstellen und anschließend das Datenträgerimage in Azure hochladen. Lesen Sie in der entsprechenden Dokumentation die Informationen zum Ausführen von Sysprep mit Ihrer Anwendung, etwa [Überlegungen zur Installation von SQL Server mit Sysprep](https://msdn.microsoft.com/library/ee210754.aspx) oder [Build a SharePoint Server 2016 Reference Image (Sysprep)](http://social.technet.microsoft.com/wiki/contents/articles/33789.build-a-sharepoint-server-2016-reference-image-sysprep.aspx) (Erstellen eines SharePoint Server 2016-Referenzimage (Sysprep)).
+
 [In diesem Artikel](./virtual-machines-windows-upload-image.md#upload-the-vm-image-to-your-storage-account) finden Sie weitere Informationen zum Hochladen der VHD in Azure.
 
 > [AZURE.TIP] Der vorliegende Artikel konzentriert sich auf die Bereitstellung von virtuellen Windows Server-Computern, Sie können auf diese Weise jedoch auch virtuelle Windows-Clientcomputer bereitstellen. Ersetzen Sie dann in den folgenden Beispielen entsprechend `Server` durch `Client`.
@@ -51,10 +53,10 @@ New-AzureRmVM -ResourceGroupName MyResourceGroup -Location "West US" -VM $vm
     -LicenseType Windows_Server
 ```
 
-Eine [ausführliche Anleitung zum Bereitstellen eines virtuellen Computers in Azure mit PowerShell](./virtual-machines-windows-hybrid-use-benefit-licensing.md#deploy-windows-server-vm-via-powershell-detailed-walkthrough) finden Sie weiter unten. Alternativ können Sie eine ausführliche Anleitung zu den verschiedenen Schritten beim [Erstellen eines virtuellen Windows-Computers mit Ressource Manager und PowerShell](./virtual-machines-windows-ps-create.md) lesen.
+Eine [ausführliche Anleitung zum Bereitstellen eines virtuellen Computers in Azure mit PowerShell](./virtual-machines-windows-hybrid-use-benefit-licensing.md#deploy-windows-server-vm-via-powershell-detailed-walkthrough) finden Sie weiter unten. Alternativ können Sie eine ausführliche Anleitung zu den verschiedenen Schritten beim [Erstellen eines virtuellen Windows-Computers mit Resource Manager und PowerShell](./virtual-machines-windows-ps-create.md) lesen.
 
 ## Bereitstellen eines virtuellen Computers mit Resource Manager
-In den Ressource Manager-Vorlagen kann ein zusätzlicher Parameter für `licenseType` angegeben werden. [In diesem Artikel](../resource-group-authoring-templates.md) finden Sie weitere Informationen zum Erstellen von Azure Resource Manager-Vorlagen. Nachdem Sie die virtuelle Festplatte in Azure hochgeladen haben, bearbeiten Sie die Resource Manager-Vorlage, um den Lizenztyp als Teil des Computeanbieters einzuschließen, und stellen die Vorlage als normale Vorlage bereit:
+In den Resource Manager-Vorlagen kann ein zusätzlicher Parameter für `licenseType` angegeben werden. [In diesem Artikel](../resource-group-authoring-templates.md) finden Sie weitere Informationen zum Erstellen von Azure Resource Manager-Vorlagen. Nachdem Sie die virtuelle Festplatte in Azure hochgeladen haben, bearbeiten Sie die Resource Manager-Vorlage, um den Lizenztyp als Teil des Computeanbieters einzuschließen, und stellen die Vorlage als normale Vorlage bereit:
 
 ```
 "properties": {  
@@ -65,7 +67,7 @@ In den Ressource Manager-Vorlagen kann ein zusätzlicher Parameter für `license
 ```
  
 ## Überprüfen, ob für den virtuellen Computer der Lizenzierungsvorteil genutzt wird
-Sobald Sie den virtuellen Computer über PowerShell oder Ressource Manager bereitgestellt haben, überprüfen Sie die den Lizenztyp wie folgt mit `Get-AzureRmVM`:
+Sobald Sie den virtuellen Computer über PowerShell oder Resource Manager bereitgestellt haben, überprüfen Sie die den Lizenztyp wie folgt mit `Get-AzureRmVM`:
  
 ```
 Get-AzureRmVM -ResourceGroup MyResourceGroup -Name MyVM
@@ -164,4 +166,4 @@ Weitere Informationen zur [Lizenzierung für den Azure-Vorteil bei Hybridnutzung
 
 Weitere Informationen zum [Verwenden von Resource Manager-Vorlagen](../resource-group-overview.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->

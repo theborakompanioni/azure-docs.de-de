@@ -14,14 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/22/2016"
+	ms.date="07/12/2016"
 	ms.author="larryfr"/>
 
 # Analysieren von Twitter-Daten mit Hive in HDInsight
 
 In diesem Dokument erhalten Sie Tweets mithilfe einer Twitter-Streaming-API und nutzen dann Apache Hive auf einem Linux-basierten Cluster von HDInsight zum Verarbeiten der Daten im JSON-Format. Als Ergebnis erhalten Sie eine Liste der Twitter-Benutzer, die die meisten Tweets mit einem bestimmten Begriff gesendet haben.
 
-> [AZURE.NOTE] Einzelne Teile dieses Dokuments können zwar für Windows-basierte HDInsight-Cluster (beispielsweise Python und Hive) verwendet werden. Zahlreiche Schritte basieren jedoch auf der Verwendung eines Linux-basierten HDInsight-Clusters. Die Schritte für einen Windows-basierten Cluster finden Sie unter [Analysieren von Twitter-Daten mit Hive in HDInsight](hdinsight-analyze-twitter-data.md).
+> [AZURE.NOTE] Einzelne Teile dieses Dokuments können zwar für Windows-basierte HDInsight-Cluster (beispielsweise Python) verwendet werden. Zahlreiche Schritte basieren jedoch auf der Verwendung eines Linux-basierten HDInsight-Clusters. Die Schritte für einen Windows-basierten Cluster finden Sie unter [Analysieren von Twitter-Daten mit Hive in HDInsight](hdinsight-analyze-twitter-data.md).
 
 ###Voraussetzungen
 
@@ -99,7 +99,7 @@ Mit dem folgenden Python-Code werden 10.000 Tweets von Twitter heruntergeladen 
 
 		nano gettweets.py
 
-5. Fügen Sie folgenden Inhalt in die Datei __gettweets.py__ ein: Ersetzen Sie die Platzhalterinformationen für __consumer/\_secret__, __consumer/\_key__, __access/\_token__ und __access/\_token/\_secret__ durch die Informationen aus Ihrer Twitter-Anwendung.
+5. Fügen Sie folgenden Inhalt in die Datei __gettweets.py__ ein: Ersetzen Sie die Platzhalterinformationen für __consumer/_secret__, __consumer/_key_\_, __access/_token__ und __access/_token/_secret__ durch die Informationen aus Ihrer Twitter-Anwendung.
 
         #!/usr/bin/python
 
@@ -160,6 +160,8 @@ Mit dem folgenden Python-Code werden 10.000 Tweets von Twitter heruntergeladen 
 		python gettweets.py
 
 	In der Regel wird eine Statusanzeige angezeigt, wenn die Tweets heruntergeladen und in einer Datei gespeichert werden.
+
+    > [AZURE.NOTE] Wenn es sehr lange dauert, bis in der Statusanzeige ein Fortschritt zu erkennen ist, müssen Sie den Filter zum Nachverfolgen von Trendthemen ändern. Wenn es viele Tweets zu dem Thema gibt, nach dem Sie filtern, kommen die benötigten 10.000 Tweets sehr schnell zusammen.
 
 ###Hochladen der Daten
 
@@ -288,11 +290,11 @@ Dabei werden die Daten an einem Speicherort gespeichert, auf den alle Knoten im 
 
 4. Verwenden Sie den folgenden Befehl, um den in der Datei enthaltenen HiveQL-Auftrag auszuführen:
 
-		hive -i twitter.hql		
+		beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin -i twitter.hql		
 		
-	Dadurch wird die Hive-Shell geladen, der HiveQL-Auftrag in der Datei __twitter.hql__ ausgeführt und schließlich eine `hive >`-Eingabeaufforderung zurückgegeben.
+	Dadurch wird die Hive-Shell geladen, der HiveQL-Auftrag in der Datei __twitter.hql__ ausgeführt und schließlich eine `jdbc:hive2//localhost:10001/>`-Eingabeaufforderung zurückgegeben.
 	
-5. Überprüfen Sie an der `hive >`-Eingabeaufforderung mit folgendem Befehl, ob Daten aus der Tabelle __tweets__ ausgewählt werden können, die vom HiveQL-Auftrag in der Datei __twitter.hql__ erstellt wurde:
+5. Überprüfen Sie an der „beeline“-Eingabeaufforderung mit folgendem Befehl, ob Daten aus der Tabelle __tweets__ ausgewählt werden können, die vom HiveQL-Auftrag in der Datei __twitter.hql__ erstellt wurde:
 		
 		SELECT name, screen_name, count(1) as cc
 			FROM tweets
@@ -317,4 +319,4 @@ In diesem Lernprogramm haben Sie erfahren, wie Sie ein unstrukturiertes JSON-Dat
 [twitter-streaming-api]: https://dev.twitter.com/docs/streaming-apis
 [twitter-statuses-filter]: https://dev.twitter.com/docs/api/1.1/post/statuses/filter
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0713_2016-->

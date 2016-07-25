@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Kopieren der Arbeit anderer für Ihre Data Science: Data Science für Einsteiger | Microsoft Azure"
+   pageTitle="Kopieren der Arbeit anderer für Ihre Data Science –Beispiel eines Experiments | Microsoft Azure"
    description="Branchengeheimnis von Data Science: Lassen Sie andere Ihre Arbeit erledigen. Siehe Beispiele im Cortana Analytics-Katalog, z.B. ein Beispiel eines Clusteringalgorithmus."
    keywords="Data Science-Beispiele,Algorithmusbeispiel,Experimentbeispiel,Machine Learning-Beispiel,Clusteringalgorithmus"
    services="machine-learning"
@@ -94,4 +94,4 @@ In fünf Kurzvideos der Reihe *Data Science für Einsteiger* erhalten Sie eine S
   * [Durchführen Ihres ersten Data Science-Experiments mit Azure Machine Learning](machine-learning-create-experiment.md)
   * [Einführung in Machine Learning in Microsoft Azure](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/25/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
 
 # Erste Schritte mit Reliable Actors
@@ -32,10 +32,11 @@ Um mit Reliable Actors zu beginnen, müssen Sie lediglich vier grundlegende Konz
 	* Namensauflösung. Kann zum Lokalisieren des Actors im Cluster verwendet werden (den Knoten des Clusters suchen, auf dem er gehostet wird).
 	* Behandeln von Fehlern. Kann Methodenaufrufe erneut versuchen und den Actor-Speicherort erneut bestimmen, z. B. nach einem Fehler, der erfordert, dass der Actor auf einen anderen Knoten im Cluster verschoben wird.
 
-Die folgenden Regeln zu Actor-Schnittstellenmethoden sind erwähnenswert:
+Die folgenden Regeln zu Actor-Schnittstellen sind erwähnenswert:
 
 - Actor-Schnittstellenmethoden können nicht überladen werden.
 - Actor-Schnittstellenmethoden dürfen keine out-, ref- oder optionalen Parameter aufweisen.
+- Generische Schnittstellen werden nicht unterstützt.
 
 ## Erstellen eines neuen Projekts in Visual Studio
 Nachdem Sie die Service Fabric-Tools für Visual Studio installiert haben, können Sie neue Projekttypen erstellen. Die neuen Projekttypen befinden sich in der Kategorie **Cloud** des Dialogfelds **Neues Projekt**.
@@ -139,4 +140,4 @@ Während der Bereitstellung wird der Fortschritt im Fenster **Ausgabe** angezeig
 [4]: ./media/service-fabric-reliable-actors-get-started/vs-context-menu.png
 [5]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject1.PNG
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0713_2016-->

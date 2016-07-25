@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="04/21/2016"
-	ms.author="cephalin;tdykstra;dariac"/>
+	ms.author="cephalin;dariac"/>
     
 # Bereitstellen der App in Azure App Service
 
@@ -26,12 +26,12 @@ Azure App Service verwaltet das Anwendungsframework für Sie (ASP.NET, PHP, Node
 
 Da Sie sich nicht um den Webserver oder das Anwendungsframework kümmern müssen, geht es bei der Bereitstellung Ihrer App für App Service nur darum, Ihren Code sowie Ihre Binärdateien, Inhaltsdateien und die entsprechenden Verzeichnisstrukturen im Verzeichnis [**/site/wwwroot**](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) in Azure (bzw. für WebJobs im Verzeichnis **/site/wwwroot/App\_Data/Jobs/**) bereitzustellen. App Service unterstützt die folgenden Bereitstellungsprozesse:
 
-- [FTP oder FTPS](https://en.wikipedia.org/wiki/File_Transfer_Protocol): Verwenden Sie das gewünschte FTP- oder FTPS-fähige Tool, um die Dateien nach Azure zu verschieben – von [FileZilla](https://filezilla-project.org) bis hin zu IDEs mit vollem Funktionsumfang wie [NetBeans](https://netbeans.org). Genau genommen handelt es sich hierbei um das Hochladen von Dateien. Von App Service werden keine zusätzlichen Dienste bereitgestellt, wie Versionskontrolle, Dateistrukturverwaltung usw. 
+- [FTP oder FTPS](https://en.wikipedia.org/wiki/File_Transfer_Protocol): Verwenden Sie das gewünschte FTP- oder FTPS-fähige Tool, um die Dateien nach Azure zu verschieben – von [FileZilla](https://filezilla-project.org) bis hin zu IDEs mit vollem Funktionsumfang wie [NetBeans](https://netbeans.org). Genau genommen handelt es sich hierbei um das Hochladen von Dateien. Von App Service werden keine zusätzlichen Dienste bereitgestellt, wie Versionskontrolle, Dateistrukturverwaltung usw.
 
 - [Kudu (Git/Mercurial oder OneDrive/Dropbox)](https://github.com/projectkudu/kudu/wiki/Deployment): Verwenden Sie das [Bereitstellungsmodul](https://github.com/projectkudu/kudu/wiki) in App Service. Sie können Ihren Code direkt aus einem Repository an Kudu übertragen. Kudu stellt außerdem weitere Dienste bereit, wenn Code übertragen wird, z. B. Versionskontrolle, Paketwiederherstellung, MSBuild und [Webhooks](https://github.com/projectkudu/kudu/wiki/Web-hooks) für die kontinuierliche Bereitstellung und andere Automatisierungsaufgaben. Das Kudu-Bereitstellungsmodul unterstützt drei verschiedene Arten von Bereitstellungsquellen:
-    * Inhaltssynchronisierung aus OneDrive und Dropbox   
-    * Repositorybasierte kontinuierliche Bereitstellung mit automatischer Synchronisierung aus GitHub, Bitbucket und Visual Studio Team Services  
-    * Repositorybasierte Bereitstellung mit manueller Synchronisierung aus lokalem Git  
+    * Inhaltssynchronisierung aus OneDrive und Dropbox
+    * Repositorybasierte kontinuierliche Bereitstellung mit automatischer Synchronisierung aus GitHub, Bitbucket und Visual Studio Team Services
+    * Repositorybasierte Bereitstellung mit manueller Synchronisierung aus lokalem Git
 
 - [Web Deploy](http://www.iis.net/learn/publish/using-web-deploy/introduction-to-web-deploy): Stellen Sie Code direkt aus Ihren bevorzugten Microsoft-Tools, wie z.B. Visual Studio, in App Service bereit. Hierbei kommen die gleichen Tools zum Einsatz, die auch die Bereitstellung für IIS-Server automatisieren. Dieses Tool unterstützt die Differenzbereitstellung (diff-only), Datenbankerstellung, Transformationen von Verbindungszeichenfolgen usw. Web Deploy unterscheidet sich von Kudu darin, dass Anwendungsbinärdateien erstellt werden, bevor sie für Azure bereitgestellt werden. Ähnlich wie bei FTP werden von App Service keine weiteren Dienste bereitgestellt.
 
@@ -44,16 +44,16 @@ Wenn Sie es gewohnt sind, Ihre Webinhalte manuell auf einen Webserver zu kopiere
 
 Vorteile des manuellen Kopierens von Dateien:
 
-- Sie können vertraute, einfache FTP-Tools verwenden. 
+- Sie können vertraute, einfache FTP-Tools verwenden.
 - Sie wissen genau, wohin Ihre Dateien kopiert werden.
 - FTPS erhöht die Sicherheit.
 
 Nachteile des manuellen Kopierens von Dateien:
 
-- Sie müssen wissen, wie Sie Dateien in den richtigen Verzeichnissen in App Service bereitstellen. 
+- Sie müssen wissen, wie Sie Dateien in den richtigen Verzeichnissen in App Service bereitstellen.
 - Es gibt keine Versionskontrolle für ein Rollback, wenn Fehler auftreten.
 - Es gibt keinen integrierten Bereitstellungsverlauf zur Behandlung von Problemen bei der Bereitstellung.
-- Die Bereitstellung kann lange dauern, da viele FTP-Tools keine Differenzbereitstellung (diff-only) ermöglichen, es werden einfach alle Dateien kopiert.  
+- Die Bereitstellung kann lange dauern, da viele FTP-Tools keine Differenzbereitstellung (diff-only) ermöglichen, es werden einfach alle Dateien kopiert.
 
 ### <a name="howtoftp"></a>Bereitstellen durch manuelles Kopieren von Dateien nach Azure
 Das Kopieren von Dateien nach Azure umfasst einige einfache Schritte:
@@ -61,7 +61,7 @@ Das Kopieren von Dateien nach Azure umfasst einige einfache Schritte:
 1. Es wird vorausgesetzt, dass Sie die Anmeldeinformationen für die Bereitstellung eingerichtet haben. Rufen Sie die FTP-Verbindungsinformationen wie folgt ab: Wählen Sie **Einstellungen** > **Eigenschaften**, und kopieren Sie die Werte unter **FTP/Bereitstellungsbenutzer**, **FTP-Hostname** und **FTPS-Hostname**. Kopieren Sie den Benutzerwert für **FTP/Bereitstellungsbenutzer**, wie im Azure-Portal angezeigt, einschließlich des App-Namens, um den richtigen Kontext für den FTP-Server bereitzustellen.
 2. Verwenden Sie im FTP-Client die gesammelten Verbindungsinformationen, um eine Verbindung mit Ihrer App herzustellen.
 3. Kopieren Sie Ihre Dateien und die entsprechende Verzeichnisstruktur in das Verzeichnis [**/site/wwwroot**](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) in Azure (bzw. für WebJobs in das Verzeichnis **/site/wwwroot/App\_Data/Jobs/**).
-4. Navigieren Sie zur URL Ihrer App, um sicherzustellen, dass die Anwendung richtig ausgeführt wird. 
+4. Navigieren Sie zur URL Ihrer App, um sicherzustellen, dass die Anwendung richtig ausgeführt wird.
 
 Weitere Informationen finden Sie in der folgenden Ressource:
 
@@ -84,7 +84,7 @@ Nachteile der Synchronisierung mit einem Cloudordner:
 ### <a name="howtodropbox"></a>Bereitstellen per Synchronisierung mit einem Cloudordner
 Im [Azure-Portal](https://portal.azure.com) können Sie einen Ordner für die Inhaltssynchronisierung mit Ihrem OneDrive- oder Dropbox-Cloudspeicher bestimmen, mit Ihrem App-Code und den App-Inhalten in diesem Ordner arbeiten und per Klick auf eine Schaltfläche die Synchronisierung mit App Service durchführen.
 
-* [Synchronisieren von Inhalten aus einem Cloudordner mit Azure App Service](app-service-deploy-content-sync.md) 
+* [Synchronisieren von Inhalten aus einem Cloudordner mit Azure App Service](app-service-deploy-content-sync.md)
 
 ## <a name="continuousdeployment"></a>Kontinuierliche Bereitstellung über einen cloudbasierten Quellcodeverwaltungsdienst
 Wenn Ihr Entwicklungsteam einen cloudbasierten Quellcodeverwaltungsdienst wie [Visual Studio Team Services](http://www.visualstudio.com/), [GitHub](https://www.github.com) oder [Bitbucket](https://bitbucket.org/) verwendet, können Sie App Service für die Integration in Ihr Repository und eine kontinuierliche Bereitstellung konfigurieren.
@@ -92,7 +92,7 @@ Wenn Ihr Entwicklungsteam einen cloudbasierten Quellcodeverwaltungsdienst wie [V
 Vorteile der Bereitstellung über einen cloudbasierten Quellcodeverwaltungsdienst:
 
 - Es steht eine Versionskontrolle bereit, um Rollbacks zu ermöglichen.
-- Sie können eine kontinuierliche Bereitstellung für Git-Repositorys (und ggf. Mercurial-Repositorys) konfigurieren. 
+- Sie können eine kontinuierliche Bereitstellung für Git-Repositorys (und ggf. Mercurial-Repositorys) konfigurieren.
 - Verzweigungsspezifische Bereitstellung: Sie können verschiedene Verzweigungen in unterschiedlichen [Slots](web-sites-staged-publishing.md) bereitstellen.
 - Alle Funktionen des Kudu-Bereitstellungsmoduls sind verfügbar (z.B. Versionsverwaltung für die Bereitstellung, Rollback, Paketwiederherstellung, Automatisierung).
 
@@ -103,7 +103,7 @@ Nachteile der Bereitstellung über einen cloudbasierten Quellcodeverwaltungsdien
 ###<a name="vsts"></a>Kontinuierliche Bereitstellung über einen cloudbasierten Quellcodeverwaltungsdienst
 Im [Azure-Portal](https://portal.azure.com) können Sie die kontinuierliche Bereitstellung aus GitHub, Bitbucket und Visual Studio Team Services konfigurieren.
 
-* [Kontinuierliche Bereitstellung in Azure App Service](app-service-continous-deployment.md) 
+* [Kontinuierliche Bereitstellung in Azure App Service](app-service-continous-deployment.md)
 
 ## <a name="localgitdeployment"></a>Bereitstellen aus lokalem Git
 Wenn Ihr Entwicklungsteam einen lokalen, auf Git basierenden Quellcodeverwaltungsdienst verwendet, können Sie diesen als Bereitstellungsquelle für App Service verwenden.
@@ -117,13 +117,13 @@ Vorteile der Bereitstellung aus lokalem Git:
 Nachteile der Bereitstellung aus lokalem Git:
 
 - Sie benötigen Kenntnisse des jeweils erforderlichen Quellcodeverwaltungsdiensts.
-- Es gibt keine sofort einsetzbaren Lösungen für die kontinuierliche Bereitstellung. 
+- Es gibt keine sofort einsetzbaren Lösungen für die kontinuierliche Bereitstellung.
 
 ###<a name="vsts"></a>Bereitstellen aus lokalem Git
 Im [Azure-Portal](https://portal.azure.com) können Sie die lokale Git-Bereitstellung konfigurieren.
 
-* [Lokale Git-Bereitstellung in Azure App Service](app-service-deploy-local-git.md) 
-* [Publishing to Azure Web Sites from any git/hg repo (Veröffentlichen auf Azure-Websites aus beliebigen git/hg-Repositorys, in englischer Sprache)](http://blog.davidebbo.com/2013/04/publishing-to-azure-web-sites-from-any.html).  
+* [Lokale Git-Bereitstellung in Azure App Service](app-service-deploy-local-git.md)
+* [Publishing to Azure Web Sites from any git/hg repo (Veröffentlichen auf Azure-Websites aus beliebigen git/hg-Repositorys, in englischer Sprache)](http://blog.davidebbo.com/2013/04/publishing-to-azure-web-sites-from-any.html).
 
 ## Bereitstellen über eine IDE
 Wenn Sie bereits [Visual Studio](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) mit einem [Azure SDK](https://azure.microsoft.com/downloads/) oder andere IDE-Suites wie [Xcode](https://developer.apple.com/xcode/), [Eclipse](https://www.eclipse.org) oder [IntelliJ IDEA](https://www.jetbrains.com/idea/) verwenden, können Sie die Bereitstellung für Azure direkt aus der IDE durchführen. Diese Option ist ideal für allein arbeitende Entwickler.
@@ -132,7 +132,7 @@ Visual Studio unterstützt alle drei Bereitstellungsprozesse (FTP, Git und Web D
 
 Vorteile der Bereitstellung mit einer IDE:
 
-- Potenzielle Verringerung des Toolaufwands für Ihren End-to-End-Anwendungslebenszyklus. Entwickeln, Debuggen, Nachverfolgen und Bereitstellen Ihrer App für Azure ohne Verlassen Ihrer IDE. 
+- Potenzielle Verringerung des Toolaufwands für Ihren End-to-End-Anwendungslebenszyklus. Entwickeln, Debuggen, Nachverfolgen und Bereitstellen Ihrer App für Azure ohne Verlassen Ihrer IDE.
 
 Nachteile der Bereitstellung mit einer IDE:
 
@@ -141,16 +141,16 @@ Nachteile der Bereitstellung mit einer IDE:
 
 <a name="vspros"></a> Weitere Vorteile der Bereitstellung über Visual Studio mit Azure SDK:
 
-- Das Azure SDK macht Azure-Ressourcen in Visual Studio zu bevorzugten Elementen. Erstellen, Löschen, Bearbeiten, Starten und Beenden von Apps, Abfragen der Back-End-SQL-Datenbank, Live-Debuggen der Azure-App und vieles mehr. 
+- Das Azure SDK macht Azure-Ressourcen in Visual Studio zu bevorzugten Elementen. Erstellen, Löschen, Bearbeiten, Starten und Beenden von Apps, Abfragen der Back-End-SQL-Datenbank, Live-Debuggen der Azure-App und vieles mehr.
 - Live-Bearbeitung von Codedateien in Azure
 - Live-Debuggen von Apps in Azure
 - Integrierter Azure Explorer
-- Differenzbereitstellung (diff-only) 
+- Differenzbereitstellung (diff-only)
 
 ###<a name="vs"></a>Gewusst wie: direktes Bereitstellen aus Visual Studio
 
 * [Erste Schritte mit Azure und ASP.NET](web-sites-dotnet-get-started.md). In dieser Ressource wird das Erstellen und Bereitstellen eines einfachen ASP.NET MVC-Webprojekts mithilfe von Visual Studio und Web Deploy erläutert.
-* [Bereitstellen von Azure-Webaufträgen mit Visual Studio](websites-dotnet-deploy-webjobs.md). Hier erfahren Sie, wie Sie Konsolenanwendungsprojekte für die Bereitstellung als WebJobs konfigurieren.  
+* [Bereitstellen von Azure-Webaufträgen mit Visual Studio](websites-dotnet-deploy-webjobs.md). Hier erfahren Sie, wie Sie Konsolenanwendungsprojekte für die Bereitstellung als WebJobs konfigurieren.
 * [Bereitstellen einer sicheren ASP.NET MVC 5-Anwendung mit Mitgliedschafts-, OAuth- und SQL-Datenbank in Web-Apps](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md). In dieser Ressource wird das Erstellen und Bereitstellen eines ASP.NET MVC-Webprojekts mit einer SQL-Datenbank unter Verwendung von Visual Studio, Web Deploy und Entity Framework Code First-Migrationen erläutert.
 * [ASP.NET-Webbereitstellung mithilfe von Visual Studio](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/introduction) Dabei handelt es sich um eine Lernprogrammserie mit zwölf Teilen, in der die Bereitstellungsaufgaben vollständig vorgestellt werden. Seit dem Erscheinen des Lernprogramms sind einige Azure-Bereitstellungsfunktionen hinzugefügt worden. Hinweise erläutern, welche Informationen fehlen.
 * [Deploying an ASP.NET Website to Azure in Visual Studio 2012 from a Git Repository directly (Direktes Bereitstellen einer ASP.NET-Website auf Azure in Visual Studio 2012 über ein Git-Repository, in englischer Sprache)](http://www.dotnetcurry.com/ShowArticle.aspx?ID=881). In diesem Artikel wird erläutert, wie ein ASP.NET-Webprojekt in Visual Studio bereitgestellt wird und wie das Git-Plug-In verwendet wird, um den Code für Git zu übernehmen und Azure mit dem Git-Repository zu verknüpfen. Visual Studio 2013 und höhere Versionen bieten eine integrierte Git-Unterstützung. Daher ist die Installation eines Plug-Ins nicht erforderlich.
@@ -234,4 +234,4 @@ Informationen zur Verwendung der rollenbasierten Zugriffssteuerung von Azure zum
 
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0713_2016-->

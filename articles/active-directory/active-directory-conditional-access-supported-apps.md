@@ -14,7 +14,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="06/23/2016"
+	ms.date="07/14/2016"
 	ms.author="femila"/>
 
 
@@ -57,7 +57,9 @@ In Exchange gibt es zwei Hauptkategorien von Protokollen. Überprüfen und wähl
 
 
 ### Beispiele für AD FS-Regeln
-Mithilfe der folgenden Regeln kann der Zugriff über ältere Protokolle in AD FS in zwei allgemeinen Konfigurationen blockiert werden. Option 1: Exchange ActiveSync zulassen und ältere Apps nur im Intranet zulassen.
+Mithilfe der folgenden Regeln kann der Zugriff über ältere Protokolle in AD FS in zwei allgemeinen Konfigurationen blockiert werden.
+
+### Option 1: Exchange ActiveSync zulassen und ältere Apps nur im Intranet zulassen
 
 Durch Anwenden der folgenden drei Regeln in der AD FS-Vertrauensstellung der vertrauenden Seite für die Microsoft Office 365 Identity Platform wird Exchange ActiveSync-Datenverkehr zugelassen, ebenso wie Browserdatenverkehr und mit moderner Authentifizierung geschützter Datenverkehr. Der Zugriff älterer Apps auf das Extranet wird blockiert.
 
@@ -105,4 +107,4 @@ Regel 3
 	c2:[Type == "http://schemas.microsoft.com/2012/01/requestcontext/claims/x-ms-endpoint-absolute-path", Value =~ "(/adfs/ls)|(/adfs/oauth2)"] 
 	=> issue(Type = "http://schemas.microsoft.com/authorization/claims/permit", Value = "true");
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

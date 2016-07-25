@@ -1,12 +1,13 @@
 <properties
-	pageTitle="Problembehandlung: Die Web-App ist aufgrund eines HTTP-Fehlers 502/503 nicht verfügbar"
-	description="In diesem Artikel wird beschrieben, wie Sie die HTTP-Fehler 502/503 in Ihrer in Azure App Service gehosteten Web-App beheben."
+	pageTitle="Beheben der Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ | Microsoft Azure"
+	description="Behebung der Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ in Ihrer Web-App, die im Azure App Service gehostet wird."
 	services="app-service\web"
 	documentationCenter=""
 	authors="cephalin"
 	manager="wpickett"
 	editor=""
-	tags="top-support-issue"/>
+	tags="top-support-issue"
+	keywords="„502 Ungültiges Gateway“, „503 Dienst nicht verfügbar“, Fehler 503, Fehler 502"/>
 
 <tags
 	ms.service="app-service-web"
@@ -14,18 +15,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/13/2016"
+	ms.date="07/06/2016"
 	ms.author="cephalin"/>
 
-# Problembehandlung: Die Web-App ist aufgrund eines HTTP-Fehlers 502/503 nicht verfügbar
+# Problembehandlung bei HTTP-Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ in Ihren Azure-Web-Apps
 
-In diesem Artikel wird beschrieben, wie Sie die HTTP-Fehler 502/503 in Ihrer in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) gehosteten Web-App beheben.
+„502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ sind häufige Fehler in Ihrer Web-App, die im [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) gehostet wird. Dieser Artikel hilft Ihnen, diese Fehler zu beheben.
 
 Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Ihre Frage im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) stellen, um dort Hilfe von Azure-Experten zu erhalten. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und klicken Sie auf **Support erhalten**.
 
 ## Symptom
 
-Beim Aufrufen der Web-App wird ein HTTP-Fehler 502 (ungültiges Gateway) oder 503 (Dienst nicht verfügbar) zurückgegeben.
+Beim Aufrufen der Web-App wird ein HTTP-Fehler „502 Ungültiges Gateway“ oder „503 Dienst nicht verfügbar“ zurückgegeben.
 
 ## Ursache
 
@@ -35,7 +36,7 @@ Diese Fehler sind häufig auf Probleme auf der Anwendungsebene zurückzuführen,
 -	Eine Anwendung mit hoher Speicher-/CPU-Auslastung
 -	Eine Anwendung, die aufgrund einer Ausnahme abstürzt
 
-## Schritte zur Problembehandlung
+## Schritte zur Behebung der Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“
 
 Die Problembehandlung lässt sich in diesem Fall in drei unterschiedliche Aufgaben unterteilen, die nacheinander ausgeführt werden:
 
@@ -64,7 +65,7 @@ Folgende Metriken können Sie z. B. für Ihre Web-App überwachen:
 -	Arbeitssatz für Arbeitsspeicher
 -	Requests
 
-![](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
+![Überwachen der Web-App bei Behebung der HTTP-Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
 
 Weitere Informationen finden Sie unter:
 
@@ -134,8 +135,8 @@ Weitere Informationen finden Sie unter [Automatische Reparatur von Azure-Website
 
 Dies ist oft die einfachste Methode zum Beheben einmaliger Probleme. Im [Azure-Portal](https://portal.azure.com/) stehen auf dem Blatt Ihrer Web-App Optionen zum Beenden oder Neustarten der App zur Verfügung.
 
- ![](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
+ ![Neustart der App zur Behebung der HTTP-Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
 
 Sie können Ihre Web-App auch mit Azure PowerShell verwalten. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0713_2016-->

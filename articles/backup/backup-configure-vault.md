@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner eines Windows-Servers
 
 ![Sicherungsprozessschritte](./media/backup-configure-vault/initial-backup-process.png)
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]Klassisches Bereitstellungsmodell.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] Klassisches Bereitstellungsmodell.
 
 ## Vorbereitung
 Um einen Server oder Client in Azure zu sichern, benötigen Sie ein Azure-Konto. Falls Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen.
@@ -184,6 +184,8 @@ Für die erste Sicherung verwenden Sie den Microsoft Azure Backup-Agent.
 
 Der Backup-Agent ermöglicht die Netzwerkdrosselung. Über die Drosselung wird die Verwendung der Netzwerkbandbreite bei der Datenübertragung gesteuert. Diese Steuerungsmöglichkeit kann hilfreich sein, wenn Sie Daten während der Geschäftszeiten sichern möchten, der Sicherungsprozess aber keine Auswirkung auf den weiteren Internetdatenverkehr haben soll. Die Drosselung gilt für Sicherungs- und Wiederherstellungsaktivitäten.
 
+>[AZURE.NOTE] Die Netzwerkdrosselung ist nicht verfügbar für Windows Server 2008 R2 SP1, Windows Server 2008 SP2 oder Windows 7 (mit Servicepacks). Das Azure Backup-Netzwerkdrosselungs-Feature beauftragt Quality of Service (QoS) auf dem lokalen Betriebssystem. Obwohl Azure Backup diese Betriebssysteme schützen kann, funktioniert die auf diesen Plattformen verfügbare Version von QoS mit der Azure Backup-Netzwerkdrosselung nicht. Die Netzwerkdrosselung kann auf allen anderen [unterstützten Betriebssystemen](backup-azure-backup-faq.md#installation-amp-configuration) verwendet werden.
+
 **So aktivieren Sie die Netzwerkdrosselung**
 
 1. Klicken Sie im Backup-Agent auf **Eigenschaften ändern**.
@@ -194,7 +196,7 @@ Der Backup-Agent ermöglicht die Netzwerkdrosselung. Über die Drosselung wird d
 
     ![Netzwerkdrosselung](./media/backup-configure-vault/throttling-dialog.png)
 
-3. Nachdem Sie die Drosselung aktiviert haben, geben Sie die zulässige Bandbreite für die Sicherungsdatenübertragung für **Arbeitsstunden** und **Arbeitsfreie Stunden** an.
+3. Nachdem Sie die Drosselung aktiviert haben, geben Sie die zulässige Bandbreite für die Backupdatenübertragung für **Arbeitsstunden** und **Arbeitsfreie Stunden** an.
 
     Die Bandbreitenwerte beginnen bei 512 Kilobits pro Sekunde (KBit/s) und können mit bis zu 1.023 Megabits pro Sekunde (MBit/s) angegeben werden. Sie können außerdem den Start und das Ende für die **Arbeitsstunden** angeben und festlegen, welche Tage der Woche als Arbeitstage betrachtet werden. Stunden außerhalb der festgelegten Arbeitsstunden gelten arbeitsfreie Stunden.
 
@@ -210,7 +212,7 @@ Der Backup-Agent ermöglicht die Netzwerkdrosselung. Über die Drosselung wird d
 
 3. Klicken Sie auf **Schließen**, um den Assistenten zu schließen. Wenn Sie auf „Schließen“ klicken, bevor der Sicherungsvorgang abgeschlossen ist, wird der Assistent im Hintergrund weiter ausgeführt.
 
-Nach Abschluss der ersten Sicherung wird der Status des Auftrags in der Backup-Konsole als **Auftrag abgeschlossen** angezeigt.
+Nach Abschluss des ersten Backups wird der Status des Auftrags in der Backup-Konsole als **Auftrag abgeschlossen** angezeigt.
 
 ![Abgeschlossen](./media/backup-configure-vault/ircomplete.png)
 
@@ -221,6 +223,6 @@ Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möch
 Zusätzliche Informationen zum Sichern von virtuellen Computern oder anderen Workloads finden Sie hier:
 
 - Nachdem Sie nun Ihre Dateien und Ordner gesichert haben, können Sie [Ihre Tresore und Server verwalten](backup-azure-manage-windows-server.md).
-- Informationen zum Wiederherstellen einer Sicherung finden Sie im Artikel zum [Wiederherstellen von Dateien auf einem Windows-Computer](backup-azure-restore-windows-server.md).
+- Informationen zum Wiederherstellen eines Backups finden Sie im Artikel zum [Wiederherstellen von Dateien auf einem Windows-Computer](backup-azure-restore-windows-server.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

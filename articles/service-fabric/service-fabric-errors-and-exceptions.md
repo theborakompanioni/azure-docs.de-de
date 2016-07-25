@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/13/2016"
+   ms.date="07/11/2016"
    ms.author="ryanwi"/>
 
 # Allgemeine Ausnahmen und Fehler bei der Arbeit mit FabricClient-APIs
@@ -44,4 +44,4 @@ Einige häufige [FabricErrorCode](https://msdn.microsoft.com/library/system.fabr
 |InvalidSubjectName|Der Antragstellername ist ungültig.|
 |InvalidAllowedCommonNameList|Das Format der Zeichenfolge der Liste allgemeiner Namen ist ungültig. Es sollte eine durch Trennzeichen getrennte Liste sein.|
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0713_2016-->

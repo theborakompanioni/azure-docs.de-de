@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/25/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
 
 # Erweiterte Verwendung des Reliable Services-Programmiermodells
@@ -42,7 +42,7 @@ Obwohl `RunAsync` in fast allen Fällen ausreichen sollte, sind die Ereignisse �
 
 Der Lebenszyklus eines zustandsbehafteten Dienstsreplikats ist viel komplizierter als der einer zustandslosen Dienstinstanz. Zusätzlich zu den Ereignissen „Öffnen“, „Schließen“ und „Abbrechen“ durchläuft ein zustandsbehafteter Dienst während seiner Lebensdauer Rollenänderungen. Wenn ein zustandsbehaftetes Dienstreplikat die Rolle wechselt, wird das Ereignis `OnChangeRoleAsync` ausgelöst:
 
-- `Task OnChangeRoleAsync(ReplicaRole, CancellationToken)` OnChangeRoleAsync wird immer dann aufgerufen, wenn der zustandsbehaftete Dienst die Rolle wechselt und z.B. ein primäres oder sekundäres Replikat wird. Primäre Replikate erhalten Schreibstatus (mit Erlaubnis zum Erstellen und Schreiben in den zuverlässigen Auflistungen). Sekundäre Replikate erhalten Lesestatus (können nur aus vorhandenen zuverlässigen Auflistungen lesen). Sie können die Hintergrundaufgaben infolge von Rollenänderungen starten oder aktualisieren, z. B. wenn schreibgeschützte Überprüfungen durchgeführt oder Berichte generiert werden oder auf einem sekundären Replikat Data Mining durchgeführt wird.
+- `Task OnChangeRoleAsync(ReplicaRole, CancellationToken)` OnChangeRoleAsync wird immer dann aufgerufen, wenn das zustandsbehaftete Dienstreplikat die Rolle wechselt und beispielsweise ein primäres oder sekundäres Replikat wird. Primäre Replikate erhalten Schreibstatus (mit Erlaubnis zum Erstellen und Schreiben in Reliable Collections). Sekundäre Replikate erhalten Lesestatus (können nur aus vorhandenen Reliable Collections lesen). Die meisten Aufgaben in einem zustandsbehafteten Dienst werden im primären Replikat ausgeführt. Sekundäre Replikate können schreibgeschützte Überprüfungen durchführen, Berichte generieren und Data Mining oder andere schreibgeschützte Aufträge ausführen.
 
 In einem zustandsbehafteten Dienst verfügt nur das primäre Replikat über Schreibzugriff auf den Zustand. Daher ist dies in der Regel wo der Dienst die eigentliche Arbeit ausführt. Die `RunAsync`-Methode wird in einem zustandsbehafteten Dienst nur ausgeführt, wenn das zustandsbehaftete Dienstreplikat primär ist. Die `RunAsync`-Methode wird abgebrochen, wenn ein primäres Replikat seine Rolle ändert und kein primäres Replikat mehr ist, oder während der Ereignisse „Schließen“ oder „Abbrechen“.
 
@@ -67,4 +67,4 @@ Erweiterte Themen im Zusammenhang mit Service Fabric finden Sie in den folgenden
 
 - [Konfigurieren von Diensten mit dem Clusterressourcen-Manager von Service Fabric](service-fabric-cluster-resource-manager-configure-services.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -94,7 +94,7 @@ Nein, Sie benötigen nur eine einzige physische Verbindung, wenn Ihr Dienstanbie
 
 
 ### Kann ich eines meiner VLANs mithilfe von ExpressRoute auf Azure erweitern?
-Nein. Wir unterstützen keine Layer 2-Konnektivitätserweiterungen in Azure.
+Nein. Wir unterstützen keine Schicht-2-Konnektivitätserweiterungen in Azure.
 
 ### Kann mein Abonnement mehr als eine ExpressRoute-Verbindung umfassen?
 Ja. Ihr Abonnement kann mehr als eine ExpressRoute-Verbindung enthalten. Das Limit für die Anzahl dedizierter Verbindungen ist standardmäßig auf 10 festgelegt. Wenden Sie sich an Microsoft Support, um das Limit bei Bedarf zu erhöhen.
@@ -251,4 +251,4 @@ Ja. Office 365-Dienstendpunkte sind über das Internet erreichbar, selbst wenn E
 ### Kann über eine ExpressRoute-Verbindung auf Dynamics AX zugegriffen werden?
 Nein, dies wird nicht unterstützt.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

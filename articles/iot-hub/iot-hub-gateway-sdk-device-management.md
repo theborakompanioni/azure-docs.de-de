@@ -379,7 +379,14 @@ Sie haben das Tutorial jetzt abgeschlossen. Es wurde gezeigt, wie Sie die IoT Hu
 
 Weitere Informationen zur Geräteverwaltung mit IoT Hub und der Beispiel-UI finden Sie im Artikel [Überblick über die Azure IoT Hub-Geräteverwaltung][lnk-device-management].
 
-Informationen dazu, wie Sie physische Geräte mit Ihrem IoT Hub verbinden, finden Sie im Artikel [IoT Gateway SDK – Senden von D2C-Nachrichten mit einem realen Gerät unter Linux][lnk-gateway-physical].
+Wenn Sie noch mehr über das Gateway SDK wissen und mit einigen Codebeispielen experimentieren möchten, siehe den Artikel zum [Azure IoT Gateway SDK][lnk-gateway-sdk].
+
+Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
+
+- [Entwerfen Ihrer Lösung][lnk-design]
+- [Entwicklerhandbuch][lnk-devguide]
+- [Erkunden der Geräteverwaltung mithilfe der Beispielbenutzeroberfläche][lnk-dmui]
+- [Verwenden des Azure-Portals zur Verwaltung von IoT Hub][lnk-portal]
 
 
 
@@ -411,4 +418,9 @@ Informationen dazu, wie Sie physische Geräte mit Ihrem IoT Hub verbinden, finde
 [lnk-gateway-scenario]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-dm-jobs]: iot-hub-device-management-device-jobs.md
 
-<!---HONumber=AcomDC_0629_2016-->
+[lnk-design]: iot-hub-guidance.md
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
+[lnk-portal]: iot-hub-manage-through-portal.md
+
+<!---HONumber=AcomDC_0713_2016-->

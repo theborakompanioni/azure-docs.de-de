@@ -66,7 +66,7 @@ Vor dem Ausführen dieses Beispiels müssen Sie die Schritte in [Erste Schritte 
 
 Um das Beispiel zu starten, müssen Sie den Prozess **FirmwareUpdate.exe** ausführen. Damit wird die Aktualisierung der Firmware auf allen simulierten Geräten gestartet. Folgen Sie den Schritten unten, um das Beispiel zu starten:
 
-1.  Navigieren Sie aus dem Stammordner, in dem Sie das Repository **azure-iot-sdks** geklont haben, zum Ordner **azure-iot-sdks\\csharp\\service\\samples\\bin**.  
+1.  Navigieren Sie aus dem Stammordner, in dem Sie das Repository **azure-iot-sdks** geklont haben, zum Ordner **azure-iot-sdks\\csharp\\service\\samples\\bin**.
 
 2.  Führen Sie `FirmwareUpdate.exe <IoT Hub Connection String>` aus.
 
@@ -157,11 +157,16 @@ Die Clientbibliothek der Azure IoT Hub-Geräteverwaltung übernimmt die Kommunik
 
 Weitere Informationen zu den Geräteverwaltungsfeatures von Azure IoT Hub erhalten Sie in den folgenden Tutorials:
 
+- [Aktivieren verwalteter Geräte hinter einem IoT-Gateway][lnk-dm-gateway]
+- [Einführung in die Clientbibliothek der Azure IoT Hub-Geräteverwaltung][lnk-library-c]
 - Die Clientbibliothek der Azure IoT Hub-Geräteverwaltung bietet ein End-to-End-Beispiel mit einem [Intel Edison-Gerät][lnk-edison].
 
-- [Verwenden des Gerätezwillings][lnk-twin-tutorial]
+Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-- [Suchen nach Gerätezwillingen mithilfe von Abfragen][lnk-tutorial-queries]
+- [Entwerfen Ihrer Lösung][lnk-design]
+- [Entwicklerhandbuch][lnk-devguide]
+- [Simulieren eines Geräts mit dem Gateway SDK][lnk-gateway]
+- [Verwenden des Azure-Portals zur Verwaltung von IoT Hub][lnk-portal]
 
 <!-- Images and links -->
 
@@ -178,4 +183,12 @@ Weitere Informationen zu den Geräteverwaltungsfeatures von Azure IoT Hub erhalt
 [lnk-github-firmware]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/c/iotdm_client/samples/iotdm_simple_sample/iotdm_simple_sample.c
 [lnk-query-samples]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/doc/get_started/dm_queries/query-samples.md
 
-<!---HONumber=AcomDC_0622_2016-->
+[lnk-dm-gateway]: iot-hub-gateway-device-management.md
+[lnk-library-c]: iot-hub-device-management-library.md
+
+[lnk-design]: iot-hub-guidance.md
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-portal]: iot-hub-manage-through-portal.md
+
+<!---HONumber=AcomDC_0713_2016-->

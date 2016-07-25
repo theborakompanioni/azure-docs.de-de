@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="03/25/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
 
 # Erste Schritte: Web-API-Dienste von Service Fabric mit selbstgehostetem OWIN
@@ -39,11 +39,13 @@ Erstellen Sie zunächst in Visual Studio 2015 eine neue Service Fabric-Anwendun
 
 ![Erstellen einer neuen Service Fabric-Anwendung](media/service-fabric-reliable-services-communication-webapi/webapi-newproject.png)
 
-Ihnen steht eine Visual Studio-Vorlage für einen zustandslosen Dienst, der Web-API verwendet, zur Verfügung. In diesem Tutorial erstellen wir ein Projekt, das im Ergebnis dem entspricht, was Sie bei Verwendung dieser Vorlage erhalten würden. An diesem Punkt können Sie mit der zustandslosen Dienst-Web-API beginnen und mitmachen, oder aber mit einem leeren zustandslosen Dienst beginnen und alles von Grund auf erstellen.
+Ihnen steht eine Visual Studio-Vorlage für einen zustandslosen Dienst, der Web-API verwendet, zur Verfügung. In diesem Tutorial erstellen wir ein Web-API-Projekt von Grund auf neu, das im Ergebnis dem entspricht, was Sie bei Auswahl dieser Vorlage erhalten würden.
+
+Wählen Sie ein Projekt für einen zustandslosen Dienst, um zu erfahren, wie Sie ein Web-API-Projekt von Grund auf neu erstellen. Alternativ können Sie mit der Web-API-Vorlage für einen zustandslosen Dienst beginnen und diese als Grundlage verwenden.
 
 ![Erstellen eines einzelnen zustandslosen Diensts](media/service-fabric-reliable-services-communication-webapi/webapi-newproject2.png)
 
-Der erste Schritt besteht darin, einige NuGet-Pakete für die Web-API abzurufen. Wir verwenden das Paket Microsoft.AspNet.WebApi.OwinSelfHost. Dieses Paket enthält die erforderlichen Web-API-Pakete und die *Host* pakete. Dies ist für einen späteren Teil wichtig.
+Der erste Schritt besteht darin, einige NuGet-Pakete für die Web-API abzurufen. Wir verwenden das Paket Microsoft.AspNet.WebApi.OwinSelfHost. Dieses Paket enthält alle erforderlichen Web-API-Pakete und die *Hostpakete*. Dies ist für einen späteren Teil wichtig.
 
 ![Erstellen der Web-API mit dem NuGet-Paket-Manager](media/service-fabric-reliable-services-communication-webapi/webapi-nuget.png)
 
@@ -165,9 +167,9 @@ Weitere Informationen zum Diensthostprozess und zur Dienstregistrierung würden 
 
 Angesichts der Tatsache, dass der Anwendungscode für die Web-API in einem eigenen Prozess gehostet wird, stellt sich nun die Frage, wie Sie ihn mit einem Webserver verknüpfen. Rufen Sie [OWIN](http://owin.org/) auf. OWIN ist einfach ein Vertrag zwischen Web-Anwendungen und Webservern für .NET. Bisher war die Webanwendung bei ASP.NET (bis MVC 5) über System.Web eng mit IIS gekoppelt. Bei der Web-API wird aber OWIN implementiert, sodass Sie eine Webanwendung schreiben können, die vom Host-Webserver entkoppelt ist. Aus diesem Grund können Sie einen *selbstgehosteten* OWIN-Webserver verwenden, den Sie in Ihrem eigenen Prozess starten können. Dies passt perfekt zu dem Service Fabric-Hostingmodell, das wir gerade beschrieben haben.
 
-In diesem Artikel wird als OWIN-Host für die Web-API-Anwendung Katana verwendet. Katana ist eine Open-Source-Owin-Host-Implementierung.
+In diesem Artikel wird als OWIN-Host für die Web-API-Anwendung Katana verwendet. Katana ist eine Open Source-OWIN-Hostimplementierung, die auf [System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener.aspx) der [HTTP-Server-API](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx) von Windows basiert.
 
-> [AZURE.NOTE] Weitere Informationen zu Katana finden Sie auf der [Katana-Website](http://www.asp.net/aspnet/overview/owin-and-katana/an-overview-of-project-katana). Eine Kurzübersicht über die Verwendung von Katana zum Selbsthosten der Web-API finden Sie unter [Use OWIN to Self-Host ASP.NET Web API 2](http://www.asp.net/web-api/overview/hosting-aspnet-web-api/use-owin-to-self-host-web-api) (Verwenden von OWIN, zum Selbsthosten einer ASP.NET Web API 2).
+> [AZURE.NOTE] Weitere Informationen zu Katana finden Sie auf der [Katana-Website](http://www.asp.net/aspnet/overview/owin-and-katana/an-overview-of-project-katana). Eine Kurzübersicht über die Verwendung von Katana zum Selbsthosten der Web-API finden Sie unter [Use OWIN to Self-Host ASP.NET Web API 2](http://www.asp.net/web-api/overview/hosting-aspnet-web-api/use-owin-to-self-host-web-api) (Verwenden von OWIN zum Selbsthosten von ASP.NET-Web-API 2).
 
 
 ## Einrichten des Webservers
@@ -439,7 +441,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-Dies ist der Punkt, an dem die Web-API-*Anwendung* und der OWIN-*Host* endlich aufeinander treffen. Für den Host (OwinCommunicationListener) wird eine Instanz der *Anwendung* (Web-API per Start) bereitgestellt. Service Fabric verwaltet dann deren Lebenszyklus. Dieses Muster kann in der Regel bei jedem Kommunikationsstapel verwendet werden.
+Dies der Punkt, an dem die Web-API-*Anwendung* und der OWIN-*Host* schließlich zusammentreffen. Für den Host (OwinCommunicationListener) wird eine Instanz der *Anwendung* (Web-API per Start) bereitgestellt. Service Fabric verwaltet dann deren Lebenszyklus. Dieses Muster kann in der Regel bei jedem Kommunikationsstapel verwendet werden.
 
 ## Korrektes Zusammenfügen
 
@@ -653,7 +655,7 @@ Sie können jetzt den Dienst erstellen und bereitstellen. Drücken Sie zum Erste
 > [AZURE.NOTE] Wenn der Port bereits von einem anderen Prozess auf Ihrem Computer geöffnet wurde, wird hier ggf. ein Fehler angezeigt. Dies gibt an, dass der Listener nicht geöffnet werden konnte. Wenn dies der Fall ist, verwenden Sie einen anderen Port für die Endpunktkonfiguration in „ServiceManifest.xml“.
 
 
-Sobald der Dienst ausgeführt wird, öffnen Sie einen Browser und gehen Sie zu [http://localhost:8281/api/values](http://localhost:8281/api/values), um dies zu testen.
+Sobald der Dienst ausgeführt wird, öffnen Sie einen Browser, und gehen Sie zu [http://localhost:8281/api/values](http://localhost:8281/api/values), um dies zu testen.
 
 ## Skalieren
 
@@ -685,4 +687,4 @@ Weitere Informationen zum Erstellen von Anwendungs- und Dienstinstanzen finden S
 
 [Debuggen der Service Fabric-Anwendung mithilfe von Visual Studio](service-fabric-debugging-your-application.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0713_2016-->

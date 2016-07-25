@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/01/2016" 
+	ms.date="07/11/2016" 
 	ms.author="stefsch"/>
 
 # Details zur Netzwerkkonfiguration für App Service-Umgebungen mit ExpressRoute 
@@ -21,7 +21,7 @@
 ## Übersicht ##
 Kunden können eine [Azure ExpressRoute][ExpressRoute]-Verbindung mit ihrer virtuellen Netzwerkinfrastruktur verbinden und so ihr lokales Netzwerks auf Azure ausdehnen. Eine App Service-Umgebung kann in einem Subnetz dieser [virtuellen Netzwerkinfrastruktur][virtualnetwork] erstellt werden. In der App Service-Umgebung ausgeführte Apps können dann sichere Verbindungen mit Back-End-Ressourcen herstellen, auf die nur über die ExpressRoute-Verbindung ein Zugriff besteht.
 
-**Hinweis:** Eine App Service-Umgebung kann nicht in einem „v2“ virtuellen Netzwerk erstellt werden. Infolge einer im Juni 2016 vorgenommenen Änderung können nun ASEs in virtuellen Netzwerken bereitgestellt werden, die entweder öffentliche Adressbereiche oder RFC1918-Adressräume (d.h. private Adressen) verwenden.
+Eine App Service-Umgebung kann **entweder** in einem virtuellen Netzwerk von Azure Resource Manager **oder** einem virtuellen Netzwerk eines klassischen Bereitstellungsmodells erstellt werden. Infolge einer im Juni 2016 vorgenommenen Änderung können nun auch ASEs in virtuellen Netzwerken bereitgestellt werden, die entweder öffentliche Adressbereiche oder RFC1918-Adressräume (d.h. private Adressen) verwenden.
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -58,9 +58,9 @@ Nach Möglichkeit sollte die folgende Konfiguration verwendet werden:
 
 Gemeinsam führen diese Schritte dazu, dass die UDR auf Subnetzebene Vorrang vor erzwungenem ExpressRoute-Tunneln hat. Dadurch wird ausgehender Internetzugriff aus der App Service-Umgebung sichergestellt.
 
-**WICHTIG:** Die in einer UDR definierten Routen **müssen** ausreichend spezifisch sein, damit sie Vorrang vor allen von der ExpressRoute-Konfiguration angekündigten Routen erhalten. Im folgenden Beispiel wird der umfassende Adressbereich 0.0.0.0/0 verwendet. Dieser kann daher versehentlich durch Routenankündigungen mit spezifischeren Adressbereichen überschrieben werden.
-
-**SEHR WICHTIG:** App Service-Umgebungen werden nicht mit ExpressRoute-Konfigurationen unterstützt, die **fälschlich Routen „über Kreuz“ vom öffentlichen Peeringpfad zum privaten Peeringpfad ankündigen**. ExpressRoute-Konfigurationen, für die öffentliches Peering konfiguriert ist, erhalten Routenankündigungen von Microsoft für zahlreiche Microsoft Azure-IP-Adressbereiche. Werden diese Adressbereiche falsch über Kreuz auf dem privaten Peeringpfad angekündigt, führt dies dazu, dass alle ausgehenden Netzwerkpakete aus dem Subnetz der App Service-Umgebung fälschlich zwangsweise zur lokalen Netzwerkinfrastruktur eines Kunden getunnelt werden. Dieser Netzwerkdatenfluss führt dazu, dass App Service-Umgebungen unterbrochen werden. Die Lösung für dieses Problem besteht darin, „Über-Kreuz-Ankündigungen“ von Routen vom öffentlichen Peeringpfad zum privaten Peeringpfad zu verhindern.
+> [AZURE.IMPORTANT] Die in einer UDR definierten Routen **müssen** ausreichend spezifisch sein, damit sie Vorrang vor allen von der ExpressRoute-Konfiguration angekündigten Routen erhalten. Im folgenden Beispiel wird der umfassende Adressbereich 0.0.0.0/0 verwendet. Dieser kann daher versehentlich durch Routenankündigungen mit spezifischeren Adressbereichen überschrieben werden.
+>
+>App Service-Umgebungen werden nicht mit ExpressRoute-Konfigurationen unterstützt, die **fälschlich Routen „über Kreuz“ vom öffentlichen Peeringpfad zum privaten Peeringpfad ankündigen**. ExpressRoute-Konfigurationen, für die öffentliches Peering konfiguriert ist, erhalten Routenankündigungen von Microsoft für zahlreiche Microsoft Azure-IP-Adressbereiche. Werden diese Adressbereiche falsch über Kreuz auf dem privaten Peeringpfad angekündigt, führt dies dazu, dass alle ausgehenden Netzwerkpakete aus dem Subnetz der App Service-Umgebung fälschlich zwangsweise zur lokalen Netzwerkinfrastruktur eines Kunden getunnelt werden. Dieser Netzwerkdatenfluss führt dazu, dass App Service-Umgebungen unterbrochen werden. Die Lösung für dieses Problem besteht darin, „Über-Kreuz-Ankündigungen“ von Routen vom öffentlichen Peeringpfad zum privaten Peeringpfad zu verhindern.
 
 Hintergrundinformationen zu benutzerdefinierten Routen finden Sie in dieser [Übersicht][UDROverview].
 
@@ -116,7 +116,7 @@ Nachdem Sie die obigen Schritte ausgeführt und überprüft haben, müssen Sie d
 Fahren Sie anschließend mit dem Erstellen einer App Service-Umgebung fort.
 
 ## Erste Schritte
-Alle Artikel und Anleitungen zu App Service-Umgebungen stehen in der [Dokumentation zu App Service-Umgebungen](../app-service/app-service-app-service-environments-readme.md) zur Verfügung.
+Alle Artikel und Anleitungen zu App Service-Umgebungen stehen in der [Dokumentation zur App Service-Umgebung](../app-service/app-service-app-service-environments-readme.md) zur Verfügung.
 
 Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Einführung in die App Service-Umgebung][IntroToAppServiceEnvironment]
 
@@ -140,4 +140,4 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 
 <!-- IMAGES -->
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

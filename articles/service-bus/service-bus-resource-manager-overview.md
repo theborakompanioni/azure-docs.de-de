@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="dotnet"
     ms.workload="na"
-    ms.date="04/22/2016"
+    ms.date="07/11/2016"
     ms.author="sethm"/>
 
 # Erstellen von Service Bus-Ressourcen mithilfe von Azure Resource Manager-Vorlagen
@@ -144,7 +144,7 @@ Um eine optionale Parameterdatei zu verwenden, kopieren Sie die Datei [201-servi
 }
 ```
 
-Weitere Informationen finden Sie unter [Parameterdatei](../resource-group-template-deploy.md#parameter-file).
+Weitere Informationen finden Sie im Thema [Parameterdatei](../resource-group-template-deploy.md#parameter-file).
 
 ### Anmelden bei Azure und Festlegen des Azure-Abonnements
 
@@ -168,7 +168,7 @@ Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
 
 ### Festlegen der Ressourcengruppe
 
-Wenn noch keine Ressourcengruppe vorhanden ist, erstellen Sie mit dem Befehl **New-AzureRmResourceGroup** eine neue Ressourcengruppe. Geben Sie den Namen der gewünschten Ressourcengruppe und den gewünschten Speicherort ein. Beispiel:
+Wenn noch keine Ressourcengruppe vorhanden ist, erstellen Sie mit dem Befehl **New-AzureRmResourceGroup** eine neue Ressourcengruppe. Geben Sie den Namen der gewünschten Ressourcengruppe und den gewünschten Speicherort ein. Zum Beispiel:
 
 ```
 New-AzureRmResourceGroup -Name MyDemoRG -Location "West US"
@@ -194,7 +194,7 @@ Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <p
 
 ### Erstellen der Bereitstellung
 
-Um die neue Bereitstellung zu erstellen, führen Sie den Befehl `New-AzureRmResourceGroupDeployment` aus, und geben Sie die erforderlichen Parameter an, wenn Sie dazu aufgefordert werden. Die Parameter enthalten einen Namen für Ihre Bereitstellung, den Namen Ihrer Ressourcengruppe und den Pfad oder die URL zur Vorlagendatei. Wenn der Parameter **Mode** nicht angegeben wurde, wird der Standardwert **Incremental** verwendet. Weitere Informationen finden Sie unter [Inkrementelle und vollständige Bereitstellungen](../resource-group-template-deploy.md#incremental-and-complete-deployments).
+Um die neue Bereitstellung zu erstellen, führen Sie den Befehl `New-AzureRmResourceGroupDeployment` aus, und geben Sie bei entsprechender Aufforderung die erforderlichen Parameter an. Die Parameter enthalten einen Namen für Ihre Bereitstellung, den Namen Ihrer Ressourcengruppe und den Pfad oder die URL zur Vorlagendatei. Wenn der Parameter **Mode** nicht angegeben wurde, wird der Standardwert **Incremental** verwendet. Weitere Informationen finden Sie unter [Inkrementelle und vollständige Bereitstellungen](../resource-group-template-deploy.md#incremental-and-complete-deployments).
 
 Der folgende Befehl fordert die Angabe der drei Parameter im PowerShell-Fenster:
 
@@ -253,4 +253,4 @@ Sie haben nun den grundlegenden Workflow und die grundlegenden Befehle für die 
 [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen]: ../resource-group-template-deploy.md
 [Katalog mit Azure-Schnellstartvorlagen]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0713_2016-->

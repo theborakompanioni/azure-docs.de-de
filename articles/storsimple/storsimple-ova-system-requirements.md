@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/28/2016"
+   ms.date="07/13/2016"
    ms.author="alkohli"/>
 
 # Systemanforderungen für StorSimple Virtual Array
@@ -93,6 +93,9 @@ In der folgenden Tabelle sind die Ports aufgeführt, die in der Firewall für iS
 
 <sup>1</sup> Es müssen keine eingehenden Ports für das öffentliche Internet geöffnet werden.
 
+> [AZURE.IMPORTANT] Achten Sie darauf, dass SSL-Datenverkehr zwischen dem StorSimple-Gerät und Azure nicht durch die Firewall geändert oder entschlüsselt wird.
+
+
 ### URL-Muster für Firewallregeln 
 
 Netzwerkadministratoren können häufig erweiterte, auf den URL-Mustern basierende Firewallregeln konfigurieren, die zum Filtern des eingehenden und ausgehenden Verkehrs verwendet werden. Ihr virtuelles Array und der StorSimple Manager-Dienst sind von anderen Microsoft-Anwendungen abhängig, z.B. Azure Service Bus, Azure Active Directory Access Control, Speicherkonten und Microsoft Update-Server. Die URL-Muster, die diesen Anwendungen zugeordnet sind, können verwendet werden, um Firewallregeln zu konfigurieren. Es ist wichtig, zu verstehen, dass sich diese den Anwendungen zugeordneten URL-Muster ändern können. Das bedeutet, dass der Netzwerkadministrator die Firewallregeln für Ihren StorSimple nach Bedarf überwachen und aktualisieren muss.
@@ -101,8 +104,8 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 
 > [AZURE.NOTE] 
 > 
-> - Die Geräte-IPs (Quell-IPs) sollten immer für alle cloudaktivierten Netzwerkschnittstellen eingerichtet sein. 
-> - Die Ziel-IPs sollten auf die [IP-Bereiche des Azure-Rechenzentrums](https://www.microsoft.com/de-DE/download/confirmation.aspx?id=41653) festgelegt werden.
+> - Die Geräte-IPs (Quell-IPs) sollten immer für alle cloudaktivierten Netzwerkschnittstellen eingerichtet sein.
+> - Die Ziel-IPs sollten auf die [IP-Bereiche des Azure-Datencenters](https://www.microsoft.com/de-DE/download/confirmation.aspx?id=41653) festgelegt werden.
 
 
 | URL-Muster | Komponente/Funktionalität |
@@ -110,14 +113,14 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 | `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` | StorSimple Manager-Dienst<br>Access Control Service<br>Azure Service Bus|
 |`http://*.backup.windowsazure.com`|Geräteregistrierung|
 |`http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*`|Zertifikatswiderruf |
-| `https://*.core.windows.net/*` | Azure-Speicherkonten und Überwachung |
+| `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` | Azure-Speicherkonten und Überwachung |
 | `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com`| Microsoft Update-Server<br> |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |
 | `https://*.partners.extranet.microsoft.com/*` | Supportpaket |
-| `http://*.data.microsoft.com ` | Telemetriedienst in Windows, Informationen finden Sie im [Update für Kundenzufriedenheit und Diagnosetelemetrie](https://support.microsoft.com/de-DE/kb/3068708) |
+| `http://*.data.microsoft.com ` | Telemetriedienst in Windows, Informationen finden Sie im [Update für Kundenzufriedenheit und Diagnosetelemetrie](https://support.microsoft.com/de-DE/kb/3068708). |
 
 ## Nächster Schritt
 
 -   [Vorbereiten des Portals zum Bereitstellen von StorSimple Virtual Array](storsimple-ova-deploy1-portal-prep.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0713_2016-->

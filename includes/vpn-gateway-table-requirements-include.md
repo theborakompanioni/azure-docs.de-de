@@ -8,7 +8,7 @@ In der folgenden Tabelle sind die Anforderungen für richtlinienbasierte und rou
 | **Authentifizierungsmethode** | Vorinstallierter Schlüssel | Vorinstallierter Schlüssel für S2S-Konnektivität, Zertifikate für P2S-Konnektivität | Vorinstallierter Schlüssel für S2S-Konnektivität, Zertifikate für P2S-Konnektivität | Vorinstallierter Schlüssel für S2S-Konnektivität, Zertifikate für P2S-Konnektivität |
 | **Maximale Anzahl von S2S-Verbindungen** | 1 | 10 | 10 | 30 |
 | **Maximale Anzahl von P2S-Verbindungen** | Nicht unterstützt | 128 | 128 | 128 |
-|**Aktive Routingunterstützung (BGP)** | Nicht unterstützt | Nicht unterstützt | Nicht unterstützt | Nicht unterstützt |
+|**Aktive Routingunterstützung (BGP)** | Nicht unterstützt | Nicht unterstützt | Unterstützt | Unterstützt |
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0713_2016-->

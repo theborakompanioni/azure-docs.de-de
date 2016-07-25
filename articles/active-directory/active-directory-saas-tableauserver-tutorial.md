@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/12/2016"
+	ms.date="07/11/2016"
 	ms.author="jeedes"/>
 
 
@@ -25,7 +25,7 @@ Die Integration von Tableau Server in Azure AD bietet die folgenden Vorteile:
 
 - Sie können in Azure AD steuern, wer Zugriff auf Tableau Server hat.
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Tableau Server anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – dem Azure Active Directory-Portal
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
@@ -60,7 +60,7 @@ Zum Konfigurieren der Integration von Tableau Server in Azure AD müssen Sie Tab
 
 **Um Tableau Server aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
  
 	![Active Directory][1]
 
@@ -189,7 +189,7 @@ Die Tableau Server-Anwendung erwartet die SAML-Assertionen in einem bestimmten F
 
 	b. Aktivieren Sie das Kontrollkästchen **Use SAML for single sign-on**.
 
-	c. Suchen Sie nach Ihrer Verbundmetadaten-Datei, die Sie aus dem Azure-Verwaltungsportal heruntergeladen haben, und laden Sie sie in **SAML Idp metadata file** hoch.
+	c. Suchen Sie nach der Datei mit Ihren Verbundmetadaten, die Sie aus dem klassischen Azure-Portal heruntergeladen haben, und laden Sie sie in die **SAML Idp metadata file** hoch.
 
 	d. „Tableau Server return URL“: Die URL, auf die Tableau Server-Benutzer zugreifen, z. B. http://tableau_server. Die Verwendung von http://localhost wird nicht empfohlen. Die Verwendung einer URL mit einem nachstehenden Schrägstrich (z. B. http://tableau_server/) wird nicht unterstützt. Kopieren Sie den Wert von **Tableau Server return URL**, und fügen Sie ihn in das Azure AD-Textfeld **Anmelde-URL** ein, wie in Schritt 3 gezeigt.
 
@@ -265,7 +265,7 @@ Wählen Sie in der Benutzerliste **Britta Simon** aus.
 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
  
-	![Erstellen einen Azure AD-Testbenutzers](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_08.png)
+	![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_08.png)
 
     a. Notieren Sie den Wert von **Neues Kennwort**.
 
@@ -341,4 +341,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Tableau Server“ klicken, sollten
 [204]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -4,7 +4,7 @@
 	keywords="Stapelüberwachung, Fehlermeldungen"
 	services="hdinsight"
 	documentationCenter="NA"
-	authors="cjgronlund"
+	authors="mumian"
 	manager="paulettm"
 	editor="cgronlun"/>
 
@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="NA"
 	ms.workload="big-data"
 	ms.date="03/21/2016"
-	ms.author="rashimg;cgronlun"/>
+	ms.author="rashimg;jgao"/>
 
 # Hadoop-Stapelüberwachungsfehler in HDInsight: Index der Artikel zur Problembehandlung
 
@@ -34,4 +34,4 @@ Verwenden Sie diesen Index von Hadoop-Stapelüberwachungsfehlern zur Problembeha
 * [Sammeln von Heapdumps im Blobspeicher zum Debuggen und Analysieren von Hadoop-Diensten](hdinsight-hadoop-collect-debug-heap-dumps.md)
 * [Versionshinweise zu Hadoop-Komponenten in Azure HDInsight](hdinsight-release-notes.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0713_2016-->

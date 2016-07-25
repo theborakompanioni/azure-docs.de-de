@@ -13,19 +13,20 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="06/06/2016"
+ ms.date="07/07/2016"
  ms.author="nberdy"/>
 
 # Einführung in Vorgangsüberwachung
 
 Die IoT Hub-Vorgangsüberwachung ermöglicht Benutzern das Überwachen des Status von Vorgängen auf ihrem IoT Hub in Echtzeit. IoT Hub verfolgt Ereignisse in mehreren Vorgangskategorien. Benutzer können festlegen, dass Ereignisse aus einer oder mehreren Kategorien zur Verarbeitung an einen Endpunkt ihres IoT Hubs gesendet werden. Benutzer können die Daten auf Fehler überwachen oder eine komplexere auf Datenmustern basierende Verarbeitung einrichten.
 
-IoT Hub überwacht vier Ereigniskategorien:
+IoT Hub überwacht fünf Ereigniskategorien:
 
-- Geräte-Identitätsvorgänge
+- Geräteidentitätsvorgänge
 - Gerätetelemetrie
 - C2D-Befehle
 - Verbindungen
+- Dateiuploads
 
 ## Aktivieren der Vorgangsüberwachung
 
@@ -143,11 +144,14 @@ Die Dateiuploadkategorie dient zum Nachverfolgen von Fehlern, die auf dem IoT Hu
 
 ## Nächste Schritte
 
-Nach diesem Überblick über die Vorgangsüberwachung können Sie die folgenden Links nutzen, um mehr über diese Themen zu erfahren:
+Nun, da Sie sich einen Überblick über die Überwachung von Vorgängen verschafft haben, finden Sie unter [Verwalten des Zugriffs auf IoT Hub][lnk-itpro] zusätzliche Informationen zum Verwalten von IoT Hub.
 
-- [IoT Hub-Diagnosemetriken][lnk-diagnostic-metrics]
-- [Skalieren von IoT Hub][lnk-scaling]
-- [Hohe Verfügbarkeit und Notfallwiederherstellung von IoT Hub][lnk-dr]
+Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
+
+- [Entwerfen Ihrer Lösung][lnk-design]
+- [Entwicklerhandbuch][lnk-devguide]
+- [Erkunden der Geräteverwaltung mithilfe der Beispielbenutzeroberfläche][lnk-dmui]
+- [Simulieren eines Geräts mit dem Gateway SDK][lnk-gateway]
 
 <!-- Links and images -->
 [1]: media/iot-hub-operations-monitoring/enable-OM-1.png
@@ -158,4 +162,11 @@ Nach diesem Überblick über die Vorgangsüberwachung können Sie die folgenden 
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-dr]: iot-hub-ha-dr.md
 
-<!---HONumber=AcomDC_0608_2016-->
+[lnk-itpro]: iot-hub-itpro-info.md
+
+[lnk-design]: iot-hub-guidance.md
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+
+<!---HONumber=AcomDC_0713_2016-->

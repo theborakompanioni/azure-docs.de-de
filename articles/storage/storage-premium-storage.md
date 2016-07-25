@@ -79,7 +79,7 @@ Derzeit ist der größte virtuelle Computer der DS-Serie der STANDARD\_DS14. Er 
 
 Aktuelle Informationen zu maximalen IOPS- und Durchsatzwerten (d.h. Bandbreitenwerte) für virtuelle Computer der DS-, DSv2- und GS-Serie finden Sie unter [Größen für virtuelle Computer in Azure (Windows)](../virtual-machines/virtual-machines-windows-sizes.md) bzw. [Größen für virtuelle Computer in Azure (Linux)](../virtual-machines/virtual-machines-linux-sizes.md).
 
-Informationen zu Datenträgern des Premium-Speichers und ihren IOPs und Durchsatzlimits finden Sie in diesem Artikel in der Tabelle im Abschnitt [Skalierbarkeits- und Leistungsziele bei der Verwendung des Premium-Speichers](#scalability-and-performance-targets-whde-DEing-premium-storage).
+Informationen zu Storage Premium-Datenträgern und ihren IOPS und Durchsatzlimits finden Sie in diesem Artikel in der Tabelle im Abschnitt [Skalierbarkeits- und Leistungsziele für Storage Premium](#premium-storage-scalability-and-performance-targets).
 
 ## Skalierbarkeits- und Leistungsziele für Storage Premium
 
@@ -351,7 +351,7 @@ Bei der Verwendung des Premium-Speichers gelten die folgenden Abrechnungserwägu
 - Storage Premium-Momentaufnahmen
 - Ausgehende Datenübertragungen
 
-**Größe von Storage Premium-Datenträgern/-Blobs:** Die Abrechnung für einen Storage Premium-Datenträger bzw. ein Storage Premium-Blob hängt von der bereitgestellten Größe des Datenträgers/Blobs ab. Azure ordnet die bereitgestellte (aufgerundete) Größe der nächsten Option für den Storage Premium-Datenträger zu (siehe Tabelle im Abschnitt [Skalierbarkeits- und Leistungsziele für Storage Premium](#scalability-and-performance-targets-whde-DEing-premium-storage)). Alle in einem Storage Premium-Konto gespeicherten Objekten werden einer unterstützten bereitgestellten Größe zugeordnet und entsprechend in Rechnung gestellt. Verwenden Sie daher Storage Premium-Konten nicht zum Speichern sehr kleiner Blobs. Die Abrechnung für bereitgestellte Datenträger/Blobs erfolgt anteilig auf Stundenbasis unter Verwendung des monatlichen Preises für das Storage Premium-Angebot. Wenn Sie z.B. einen Datenträger des Typs P10 bereitgestellt und diesen nach 20 Stunden gelöscht haben, erfolgt die Abrechnung für das P10-Angebot anteilig für 20 Stunden. Dies ist unabhängig von der tatsächlichen Menge von Daten, die auf den Datenträger geschrieben wurden, oder dem verwendeten IOPS/Durchsatz.
+**Größe von Storage Premium-Datenträgern/-Blobs:** Die Abrechnung für einen Storage Premium-Datenträger bzw. ein Storage Premium-Blob hängt von der bereitgestellten Größe des Datenträgers/Blobs ab. Azure ordnet die bereitgestellte (aufgerundete) Größe der nächsten Option für den Storage Premium-Datenträger zu (siehe Tabelle im Abschnitt [Skalierbarkeits- und Leistungsziele für Storage Premium](#premium-storage-scalability-and-performance-targets)). Alle in einem Storage Premium-Konto gespeicherten Objekten werden einer unterstützten bereitgestellten Größe zugeordnet und entsprechend in Rechnung gestellt. Verwenden Sie daher Storage Premium-Konten nicht zum Speichern sehr kleiner Blobs. Die Abrechnung für bereitgestellte Datenträger/Blobs erfolgt anteilig auf Stundenbasis unter Verwendung des monatlichen Preises für das Storage Premium-Angebot. Wenn Sie z.B. einen Datenträger des Typs P10 bereitgestellt und diesen nach 20 Stunden gelöscht haben, erfolgt die Abrechnung für das P10-Angebot anteilig für 20 Stunden. Dies ist unabhängig von der tatsächlichen Menge von Daten, die auf den Datenträger geschrieben wurden, oder dem verwendeten IOPS/Durchsatz.
 
 **Storage Premium-Momentaufnahmen:** Für Momentaufnahmen für Storage Premium wird die zusätzliche Kapazität in Rechnung gestellt, die von den Momentaufnahmen verwendet wird. Informationen zu Momentaufnahmen finden Sie unter [Erstellen einer Momentaufnahme eines Blobs](http://msdn.microsoft.com/library/azure/hh488361.aspx).
 
@@ -562,4 +562,4 @@ Weitere Informationen zu Azure Storage Premium finden Sie in den folgenden Artik
 
 [Image1]: ./media/storage-premium-storage/Azure_attach_premium_disk.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

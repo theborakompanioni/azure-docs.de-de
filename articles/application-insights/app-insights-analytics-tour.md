@@ -111,7 +111,7 @@ Sie können auch Spalten umbenennen und neue definieren:
 ![result](./media/app-insights-analytics-tour/270.png)
 
 * [Spaltennamen](app-insights-analytics-reference.md#names) können Leerzeichen oder Symbole enthalten, wenn diese wie folgt in Klammern stehen: `['...']` oder `["..."]`
-* `%` ist der übliche Modulo-Operator. 
+* `%` ist der übliche Modulo-Operator.
 * `1d` (die Ziffer Eins, gefolgt von einem „d“) ist ein Zeitraumliteral für einen Tag. Dies sind einige weitere Zeitraumliterale: `12h`, `30m`, `10s`, `0.01s`.
 * `floor` (Alias `bin`) rundet einen Wert auf das nächste Vielfache des von Ihnen angegebenen Basiswerts ab. `floor(aTime, 1s)` rundet demnach eine Zeit auf die nächstniedrigere Sekunde ab.
 
@@ -412,7 +412,7 @@ Wir haben auch die Obergrenze in der Where-Klausel entfernt, um die richtigen Za
 
 Daraus lässt sich Folgendes ablesen:
 
-* 5 % der Sitzungen sind kürzer als 3 Minuten 34 Sekunden. 
+* 5 % der Sitzungen sind kürzer als 3 Minuten 34 Sekunden.
 * 50 % der Sitzung sind kürzer als 36 Minuten.
 * 5 % der Sitzungen dauern länger als 7 Tage.
 
@@ -455,7 +455,7 @@ Es ist üblich, `project` zu verwenden, um vor dem Verknüpfen nur die Spalten a
 
 ## [let:](app-insights-analytics-reference.md#let-clause) Zuweisen eines Ergebnisses zu einer Variablen
 
-Verwenden Sie [let](./app-insights-analytics-syntax.md#let-statements), um die einzelnen Teile des vorherigen Ausdrucks zu separieren. Die Ergebnisse sind wie folgt unverändert:
+Verwenden Sie [let](./app-insights-analytics-reference.md#let-statements), um die einzelnen Teile des vorherigen Ausdrucks zu separieren. Die Ergebnisse sind wie folgt unverändert:
 
 ```AIQL
 
@@ -472,4 +472,4 @@ Verwenden Sie [let](./app-insights-analytics-syntax.md#let-statements), um die e
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

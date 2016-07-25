@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/11/2016"
+   ms.date="07/11/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Transaktionen in SQL Data Warehouse
@@ -43,6 +43,8 @@ Für die Tabelle unten gelten die folgenden Annahmen:
 | DW1200 | 9 | 60 | 540 | 36\.000.000 | 2\.160.000.000 |
 | DW1500 | 11,25 | 60 | 675 | 45\.000.000 | 2\.700.000.000 |
 | DW2000 | 15 | 60 | 900 | 60\.000.000 | 3\.600.000.000 |
+| DW3000 | 22,5 | 60 | 1\.350 | 90\.000.000 | 5\.400.000.000 |
+| DW6000 | 45 | 60 | 2\.700 | 180\.000.000 | 10\.800.000.000 |
 
 Die Obergrenze für die Transaktionsgröße wird pro Transaktion oder Vorgang angewendet. Sie wird nicht übergreifend für alle gleichzeitigen Transaktionen angewendet. Daher ist es für jede Transaktion zulässig, diese Menge an Daten in das Protokoll zu schreiben.
 
@@ -145,4 +147,4 @@ Weitere Informationen zum Optimieren von Transaktionen finden Sie unter [Bewähr
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

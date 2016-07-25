@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure Mobile Engagement Web SDK-APIs| Microsoft Azure"
-	description="Neueste Updates und Verfahren für das Web SDK für Azure Mobile Engagement"
+	description="Die neuesten Updates und Verfahren für das Web SDK für Azure Mobile Engagement"
 	services="mobile-engagement"
 	documentationCenter="mobile"
 	authors="piyushjo"
@@ -16,47 +16,51 @@
 	ms.date="06/07/2016"
 	ms.author="piyushjo" />
 
-# Verwenden der Mobile Engagement-API in einer Webanwendung
+# Verwenden der Azure Mobile Engagement-API in einer Webanwendung
 
-Dieses Dokument ist eine Ergänzung zum Dokument [Integrieren von Mobile Engagement in eine Webanwendung](mobile-engagement-web-integrate-engagement.md). Es bietet tiefergehende Details zur Verwendung der Engagement-API, um Ihre Anwendungsstatistik zu melden.
+Dieses Dokument ist ein Zusatz für das Dokument über die Vorgehensweise zum [Integrieren von Azure Mobile Engagement in eine Webanwendung](mobile-engagement-web-integrate-engagement.md). Es enthält ausführlichere Informationen dazu, wie Sie mithilfe der Azure Mobile Engagement-API Ihre Anwendungsstatistik melden können.
 
-Die Mobile Engagement-API wird vom `engagement.agent`-Objekt bereitgestellt. `engagement` ist der Standardalias des Engagement SDK, der in der SDK-Konfiguration neu definiert werden kann.
+Die Azure Mobile Engagement-API wird vom `engagement.agent`-Objekt bereitgestellt. Das standardmäßige Alias des Azure Mobile Engagement Web SDK lautet `engagement`. Die Definition dieses Alias kann über die SDK-Konfiguration geändert werden.
 
-## Engagement-Konzepte
+## Mobile Engagement-Konzepte
 
-In den folgenden Abschnitten werden die [Mobile Engagement-Konzepte](mobile-engagement-concepts.md) für die Webplattform genauer dargestellt.
+In den folgenden Abschnitten werden allgemeine [Mobile Engagement-Konzepte](mobile-engagement-concepts.md) für die Webplattform ausführlicher behandelt.
 
 ### `Session` und `Activity`
 
-Wenn sich der Benutzer zwischen zwei *Aktivitäten* mehr als zwei Sekunden im Leerlauf befindet, dann wird diese Folge von *Aktivitäten* in zwei einzelne *Sitzungen* unterteilt. Diese paar Sekunden werden als *Sitzungstimeout* bezeichnet.
+Wenn der Benutzer zwischen zwei Aktivitäten mehr als zwei Sekunden untätig bleibt, wird diese Folge von Aktivitäten in zwei einzelne Sitzungen unterteilt. Diese Sekunden werden als Sitzungstimeout bezeichnet.
 
-Wenn Ihre Webanwendung das Ende der Benutzeraktivitäten nicht selbst deklariert (durch Aufrufen der `engagement.agent.endActivity`-Funktion), lässt der Engagement-Server die Benutzersitzung automatisch binnen drei Minuten auslaufen, nachdem die Anwendungsseite geschlossen wurde. Dieses Verhalten wird als *Sitzungstimeout* des Servers bezeichnet.
+Wenn Ihre Webanwendung das Ende der Benutzeraktivitäten nicht selbst deklariert (durch Aufrufen der `engagement.agent.endActivity`-Funktion), lässt der Mobile Engagement-Server die Benutzersitzung automatisch drei Minuten nach dem Schließen der Anwendungsseite ablaufen. Dies wird als Sitzungstimeout des Servers bezeichnet.
 
 ### `Crash`
 
-Es gibt keinen automatisierten Bericht zu nicht abgefangenen JavaScript-Ausnahmen. Sie können jedoch Abstürze mithilfe der `sendCrash`-Funktion (siehe unten) manuell melden.
+Standardmäßig werden keine automatisierten Berichte für nicht abgefangene JavaScript-Ausnahmen erstellt. Abstürze können jedoch mithilfe der `sendCrash`-Funktion manuell gemeldet werden. (Weitere Informationen finden Sie im Abschnitt zum Melden von Abstürzen).
 
-## Berichterstellung für Aktivitäten
+## Melden von Aktivitäten
+
+Zu den gemeldeten Benutzeraktivitäten zählt etwa das Starten einer neuen Aktivität oder das Beenden der aktuellen Aktivität durch einen Benutzer.
 
 ### Benutzer startet eine neue Aktivität
 
 	engagement.agent.startActivity("MyUserActivity");
 
-Sie müssen jedes Mal `startActivity()` aufrufen, wenn sich die Benutzeraktivität ändert. Der erste Aufruf dieser Funktion startet eine neue Benutzersitzung.
+Bei jeder Änderung der Benutzeraktivität muss `startActivity()` aufgerufen werden. Der erste Aufruf dieser Funktion startet eine neue Benutzersitzung.
 
-### Der Benutzer beendet seine aktuelle Aktivität
+### Benutzer beendet die aktuelle Aktivität
 
 	engagement.agent.endActivity();
 
-Sie müssen `endActivity()` mindestens einmal aufrufen, wenn der Benutzer seine letzte Aktivität beendet. Dadurch wird das Engagement-SDK darüber informiert, dass sich der Benutzer derzeit im Leerlauf befindet und die Benutzersitzung geschlossen werden muss, sobald das Sitzungszeitlimit abläuft (wenn Ihr Aufruf `startActivity()` von vor dem Sitzungszeitlimit abläuft, wird die Sitzung einfach fortgesetzt).
+`endActivity()` muss mindestens einmal aufgerufen werden, wenn der Benutzer seine letzte Aktivität beendet. Dadurch wird dem Mobile Engagement Web SDK mitgeteilt, dass der Benutzer derzeit untätig ist und die Benutzersitzung nach Ablauf des Sitzungstimeouts geschlossen werden muss. Wenn Sie vor Ablauf des Sitzungstimeouts `startActivity()` aufrufen, wird die Sitzung fortgesetzt.
 
-Es ist oft schwierig oder unmöglich, das Ende von Benutzeraktivitäten innerhalb von Webumgebungen abzufangen (kein zuverlässiger Aufruf, wenn das Navigatorfenster geschlossen wird). Deshalb wird die Benutzersitzung vom Engagement-Server automatisch binnen drei Minuten nach Schließen der Anwendungsseite beendet.
+Da es für das Schließen des Navigatorfensters keinen verlässlichen Aufruf gibt, ist es innerhalb einer Webumgebung oft schwierig bis unmöglich, das Ende von Benutzeraktivitäten abzufangen. Deshalb wird die Benutzersitzung vom Mobile Engagement-Server automatisch binnen drei Minuten nach Schließen der Anwendungsseite beendet.
 
-## Berichterstellung für Ereignisse
+## Melden von Ereignissen
+
+Zu den gemeldeten Ereignissen zählen Sitzungsereignisse und eigenständige Ereignisse.
 
 ### Sitzungsereignisse
 
-Sitzungsereignisse werden normalerweise verwendet, um die Aktionen eines Benutzers während seiner Sitzung zu melden.
+Sitzungsereignisse werden normalerweise verwendet, um die Aktionen eines Benutzers während dessen Sitzung zu melden.
 
 **Beispiel ohne zusätzliche Daten:**
 
@@ -76,13 +80,15 @@ Sitzungsereignisse werden normalerweise verwendet, um die Aktionen eines Benutze
 
 Im Gegensatz zu Sitzungsereignissen können eigenständige Ereignisse außerhalb eines Sitzungskontextes auftreten.
 
-Verwenden Sie dazu ``engagement.agent.sendEvent`` anstelle von ``engagement.agent.sendSessionEvent``.
+Verwenden Sie in diesem Fall ``engagement.agent.sendEvent`` anstelle von ``engagement.agent.sendSessionEvent``.
 
 ## Melden von Fehlern
 
+Zu den gemeldeten Fehlern zählen Sitzungsfehler und eigenständige Fehler.
+
 ### Sitzungsfehler
 
-Sitzungsfehler werden normalerweise zum Melden der Fehler verwendet, die Auswirkungen auf den Benutzer während seiner Sitzung haben.
+Sitzungsfehler werden normalerweise verwendet, um Fehler zu melden, die Auswirkungen auf den Benutzer während dessen Sitzung haben.
 
 **Beispiel ohne zusätzliche Daten:**
 
@@ -108,14 +114,16 @@ Sitzungsfehler werden normalerweise zum Melden der Fehler verwendet, die Auswirk
 
 Im Gegensatz zu Sitzungsfehlern können eigenständige Fehler außerhalb des Kontexts einer Sitzung auftreten.
 
-Verwenden Sie dazu `engagement.agent.sendError` anstelle von `engagement.agent.sendSessionError`.
+Verwenden Sie in diesem Fall `engagement.agent.sendError` anstelle von `engagement.agent.sendSessionError`.
 
-## Berichterstellung für Aufträge
+## Melden von Aufträgen
 
-### Beispiel
+Meldungen für Aufträge umfassen das Melden von Fehlern und Ereignissen, die während eines Auftrags auftreten, sowie das Melden von Abstürzen.
 
-Angenommen, Sie möchten eine Ajax-Anforderung überwachen:
-			
+**Beispiel:**
+
+Wenn Sie eine AJAX-Anforderung überwachen möchten, verwenden Sie Folgendes:
+
 	// [...]
 	xhr.onreadystatechange = function() {
 	  if (xhr.readyState == 4) {
@@ -127,13 +135,13 @@ Angenommen, Sie möchten eine Ajax-Anforderung überwachen:
 	xhr.send();
 	// [...]
 
-### Melden von Fehlern im Verlauf eines Auftrags
+### Melden von Fehlern während eines Auftrags
 
-Fehler können mit einem ausgeführten Auftrag in Zusammenhang stehen anstatt mit der aktuellen Benutzersitzung.
+Fehler können mit einem ausgeführten Auftrag (anstatt mit der aktuellen Benutzersitzung) in Zusammenhang stehen.
 
 **Beispiel:**
 
-Angenommen, Sie möchten einen Fehler melden, wenn bei einer Ajax-Anforderung ein Fehler auftritt:
+Sie möchten einen Fehler melden, wenn eine AJAX-Anforderung nicht erfolgreich ist:
 
 	// [...]
 	xhr.onreadystatechange = function() {
@@ -151,79 +159,82 @@ Angenommen, Sie möchten einen Fehler melden, wenn bei einer Ajax-Anforderung ei
 
 ### Melden von Ereignissen während eines Auftrags
 
-Ereignisse können dank der `engagement.agent.sendJobEvent`-Funktion statt mit der aktuellen Benutzersitzung in Zusammenhang mit einem ausgeführten Auftrag stehen.
+Ereignisse können dank der `engagement.agent.sendJobEvent`-Funktion mit einem ausgeführten Auftrag (anstatt mit der aktuellen Benutzersitzung) in Zusammenhang stehen.
 
-Diese Funktion funktioniert genauso wie `engagement.agent.sendJobError`.
+Diese Funktion funktioniert genau wie `engagement.agent.sendJobError`.
 
-### Berichterstellung von Abstürzen
+### Melden von Abstürzen
 
-Die `sendCrash`-Funktion dient zum manuellen Melden von Abstürzen.
+Mit der `sendCrash`-Funktion können Sie Abstürze manuell melden.
 
-Das `crashid`-Argument ist eine Zeichenfolge zum Bestimmen des Typs des Absturzes. Das `crash`-Argument ist in der Regel die Stapelüberwachung des Absturzes als Zeichenfolge.
+Das `crashid`-Argument ist eine Zeichenfolge zum Angeben der Absturzart. Das `crash`-Argument ist üblicherweise die Stapelüberwachung für den Absturz als Zeichenfolge.
 
 	engagement.agent.sendCrash(crashid, crash);
 
 ## Zusätzliche Parameter
 
-Einem Ereignis, einem Fehler, einer Aktivität oder einem Auftrag können beliebige Daten zugeordnet werden.
+An Ereignisse, Fehler, Aktivitäten oder Aufträge können beliebige Daten angefügt werden.
 
-Diese Daten können ein beliebiges JSON-Objekt (kein Array oder primitiver Typ) sein.
+Bei diesen Daten kann es sich um ein beliebiges JSON-Objekt (aber nicht um ein Array oder einen primitiven Typ) handeln.
 
-**Beispiel**
+**Beispiel:**
 
 	var extras = {"video_id": 123, "ref_click": "http://foobar.com/blog"};
 	engagement.agent.sendEvent("video_clicked", extras);
 
 ### Grenzen
 
+Für zusätzliche Parameter geltende Grenzwerte betreffen reguläre Ausdrücke für Schlüssel, Werttypen und Größe.
+
 #### Schlüssel
 
 Jeder Schlüssel in dem Objekt muss mit dem folgenden regulären Ausdruck übereinstimmen:
 
 	^[a-zA-Z][a-zA-Z_0-9]*
 
-Das bedeutet, dass Schlüssel mit mindestens einem Buchstaben, gefolgt von Buchstaben, Ziffern oder Unterstrichen (\_) beginnen müssen.
+Das bedeutet, dass Schlüssel mit mindestens einem Buchstaben beginnen und mit Buchstaben, Ziffern oder Unterstrichen (\_) fortgesetzt werden müssen.
 
 #### Werte
 
-Werte sind auf Zeichenfolgen-, numerische und boolesche Typen beschränkt.
+Werte sind auf Zeichenfolgen, Zahlen und boolesche Werte beschränkt.
 
 #### Größe
 
-Zusätzliche Daten sind auf **1024** Zeichen pro Aufruf beschränkt (nach Codierung in JSON durch das SDK).
+Zusätzliche Daten sind auf 1024 Zeichen pro Aufruf beschränkt (nachdem das Mobile Engagement Web SDK sie in JSON codiert hat).
 
-## Informationen zur Berichterstellung
+## Melden von Anwendungsinformationen
 
-Sie können Berichte zur Nachverfolgung (oder zu anderen anwendungsspezifischen Informationen) mithilfe der `sendAppInfo()`-Funktion manuell erstellen.
+Mithilfe der `sendAppInfo()`-Funktion können Sie manuell Nachverfolgungsinformationen (oder andere anwendungsspezifische Informationen) melden.
 
-Beachten Sie, dass diese Informationen inkrementell gesendet werden können: Nur der letzte Wert für einen bestimmten Schlüssel wird für ein bestimmtes Gerät gespeichert.
+Diese Informationen können inkrementell gesendet werden. Für ein spezifisches Gerät wird immer nur der letzte Wert für einen spezifischen Schlüssel beibehalten.
 
-Wie bei Ereigniszusätzen kann ein beliebiges JSON-Objekt zum Abstrahieren von Anwendungsinformationen verwendet werden. Beachten Sie, dass Arrays oder Unterobjekte als einfache Zeichenfolgen (mithilfe der JSON-Serialisierung) behandelt werden.
+Genau wie bei den zusätzlichen Daten zu Ereignissen können Sie zum Abstrahieren der Anwendungsinformationen ein beliebiges JSON-Objekt verwenden. Dabei werden Arrays und untergeordnete Objekte als flache Zeichenfolgen (mit JSON-Serialisierung) behandelt.
 
-### Beispiel
+**Beispiel:**
 
-Hier folgt ein Codebeispiel zum Senden von Geschlecht und Geburtstag des Benutzers:
+Hier sehen Sie ein Codebeispiel für die Übermittlung von Geschlecht und Geburtsdatum des Benutzers:
 
 	var appInfos = {"birthdate":"1983-12-07","gender":"female"};
 	engagement.agent.sendAppInfo(appInfos);
 
 ### Grenzen
 
+Für Anwendungsinformationen geltende Grenzwerte betreffen reguläre Ausdrücke für Schlüssel und die Größe.
+
 #### Schlüssel
 
 Jeder Schlüssel in dem Objekt muss mit dem folgenden regulären Ausdruck übereinstimmen:
 
 	^[a-zA-Z][a-zA-Z_0-9]*
 
-Das bedeutet, dass Schlüssel mit mindestens einem Buchstaben, gefolgt von Buchstaben, Ziffern oder Unterstrichen (\_) beginnen müssen.
+Das bedeutet, dass Schlüssel mit mindestens einem Buchstaben beginnen und mit Buchstaben, Ziffern oder Unterstrichen (\_) fortgesetzt werden müssen.
 
 #### Größe
 
-Anwendungsinformationen sind beschränkt auf **1024** Zeichen pro Aufruf (einmal im JSON-Format vom SDK codiert).
+Anwendungsinformationen sind auf 1024 Zeichen pro Aufruf beschränkt (nachdem das Mobile Engagement Web SDK sie in JSON codiert hat).
 
-Im vorherigen Beispiel enthält die an den Server gesendete JSON 44 Zeichen:
+Im vorherigen Beispiel umfasst der an den Server gesendete JSON-Code 44 Zeichen:
 
 	{"birthdate":"1983-12-07","gender":"female"}
- 
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

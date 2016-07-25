@@ -13,15 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/21/2016" 
+	ms.date="07/11/2016" 
 	ms.author="stefsch"/>
 
 # Sicheres Verbinden mit Back-End-Ressourcen von einer App Service-Umgebung aus #
 
 ## Übersicht ##
-Da eine App Service-Umgebung immer in einem Subnetz eines regionalen, klassischen [virtuellen „v1“-Netzwerks][virtualnetwork] erstellt wird, können aus einer App Service-Umgebung ausgehende Verbindungen zu anderen Back-End-Ressourcen ausschließlich über das virtuelle Netzwerk übertragen werden. Beachten Sie, dass nur virtuelle Netzwerke mit dem Adressraum RFC1918 (d.h. private Adressen) unterstützt werden.
-
-**Hinweis:** Eine App Service-Umgebung kann nicht in einem mit ARM verwalteten virtuellen Netzwerk des Typs „v2“ erstellt werden.
+Da eine App Service-Umgebung immer **entweder** in einem virtuellen Netzwerk von Azure Resource Manager **oder** einem [virtuellen Netzwerk][virtualnetwork] des klassischen Bereitstellungsmodells erstellt wird, können aus einer App Service-Umgebung ausgehende Verbindungen zu anderen Back-End-Ressourcen ausschließlich über das virtuelle Netzwerk erfolgen. Infolge einer im Juni 2016 vorgenommenen Änderung können nun ASEs auch in virtuellen Netzwerken bereitgestellt werden, die entweder öffentliche Adressbereiche oder RFC1918-Adressräume (d.h. private Adressen) verwenden.
 
 Beispielsweise kann ein SQL Server auf einem Cluster virtueller Computer ausgeführt werden, wenn Port 1433 gesperrt ist. Der Endpunkt kann durch eine ACL geschützt werden, um nur den Zugriff von anderen Ressourcen im selben virtuellen Netzwerk aus zuzulassen.
 
@@ -36,7 +34,9 @@ Eine Einschränkung gilt für ausgehenden Datenverkehr von einer App Service-Umg
 ## Ausgehende Verbindungen und DNS-Anforderungen ##
 Damit eine App Service-Umgebung richtig funktioniert, ist ausgehender Zugriff auf verschiedene Endpunkte erforderlich. Eine vollständige Liste externer Endpunkte, die von einer ASE verwendet werden, befindet sich im Artikel [Netzwerkkonfiguration für ExpressRoute](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) im Abschnitt „Erforderliche Netzwerkverbindung“.
 
-Es empfiehlt sich auch, benutzerdefinierte DNS-Server im virtuellen Netzwerk vor dem Erstellen einer App-Service-Umgebung einzurichten. Wenn die DNS-Konfiguration eines virtuellen Netzwerks geändert wird, während eine App Service-Umgebung erstellt wird, misslingt das Erstellen der App Service-Umgebung. Wenn ein benutzerdefinierter DNS-Server am anderen Ende eines VPN-Gateways vorhanden ist und der DNS-Server nicht erreichbar oder nicht verfügbar ist, kommt es ebenso zu einem Fehler beim Erstellen der App-Service-Umgebung.
+App Service-Umgebungen erfordern zudem eine gültige DNS-Infrastruktur, die für das virtuelle Netzwerk konfiguriert ist. Falls die DNS-Konfiguration nach der Erstellung einer App Service-Umgebung geändert wird, können Entwickler erzwingen, dass eine App Service-Umgebung die neue DNS-Konfiguration übernimmt. Wird im Portal über das Symbol „Neu starten“ oben auf dem Verwaltungsblatt der App Service-Umgebung ein paralleler Neustart der Umgebung ausgelöst, übernimmt diese die neue DNS-Konfiguration.
+
+Es empfiehlt sich auch, benutzerdefinierte DNS-Server im VNet vor dem Erstellen einer App-Service-Umgebung einzurichten. Wenn die DNS-Konfiguration eines virtuellen Netzwerks geändert wird, während eine App Service-Umgebung erstellt wird, misslingt das Erstellen der App Service-Umgebung. Wenn ein benutzerdefinierter DNS-Server am anderen Ende eines VPN-Gateways vorhanden ist und der DNS-Server nicht erreichbar oder nicht verfügbar ist, kommt es ebenso zu einem Fehler beim Erstellen der App-Service-Umgebung.
 
 ## Verbinden mit einem SQL Server
 Eine gängige SQL Server-Konfiguration verfügt über einen Endpunkt, der an Port 1433 lauscht:
@@ -46,7 +46,7 @@ Eine gängige SQL Server-Konfiguration verfügt über einen Endpunkt, der an Por
 Es gibt zwei Ansätze zum Einschränken des Datenverkehrs zu diesem Endpunkt:
 
 
-- [Netzwerk-Zugriffssteuerungslisten][NetworkAccessControlLists] \(Netzwerk-ACLs)
+- [Netzwerk-Zugriffssteuerungslisten][NetworkAccessControlLists] (Netzwerk-ACLs)
 
 - [Netzwerksicherheitsgruppen][NetworkSecurityGroups]
 
@@ -86,7 +86,7 @@ Das Endergebnis ist ein Satz von Sicherheitsregeln, die den externen Zugriff blo
 
 
 ## Erste Schritte
-Alle Artikel und Anleitungen zu App Service-Umgebungen stehen in der [Dokumentation zu App Service-Umgebungen](../app-service/app-service-app-service-environments-readme.md) zur Verfügung.
+Alle Artikel und Anleitungen zu App Service-Umgebungen stehen in der [Dokumentation zur App Service-Umgebung](../app-service/app-service-app-service-environments-readme.md) zur Verfügung.
 
 Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Einführung in die App Service-Umgebung][IntroToAppServiceEnvironment]
 
@@ -115,4 +115,4 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 [NetworkAccessControlListExample]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/NetworkAcl01.png
 [DefaultNetworkSecurityRules]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/DefaultNetworkSecurityRules01.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

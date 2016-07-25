@@ -3,8 +3,8 @@
 	description="Beschreibt die Einrichtung von Continuous Integration in Visual Studio Team Services durch den Einsatz von Azure-Ressourcengruppen-Bereitstellungsprojekten in Visual Studio."
 	services="visual-studio-online"
 	documentationCenter="na"
-	authors="TomArcher"
-	manager="douge"
+	authors="tfitzmac"
+	manager="timlt"
 	editor="" />
 
  <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
 	ms.date="04/19/2016"
-	ms.author="tarcher" />
+	ms.author="tomfitz" />
 
 # Continuous Integration in Visual Studio Team Services mit Azure-Ressourcengruppen-Bereitstellungsprojekten
 
@@ -63,7 +63,7 @@ Hier werden Sie durch die erforderlichen Schritte der Continuous Deployment-Konf
 
 1.	Wählen Sie den Buildschritt **Azure PowerShell**, und geben Sie die Werte ein.
 
-    1.	Falls Sie bereits über einen Azure-Dienstendpunkt verfügen, der VS Team Services hinzugefügt wurde, wählen Sie das Abonnement im Dropdown-Listenfeld **Azure-Abonnement** aus, und springen Sie dann zum nächsten Abschnitt. 
+    1.	Falls Sie bereits über einen Azure-Dienstendpunkt verfügen, der VS Team Services hinzugefügt wurde, wählen Sie das Abonnement im Dropdown-Listenfeld **Azure-Abonnement** aus, und springen Sie dann zum nächsten Abschnitt.
 
         Wenn bei Ihnen kein Azure-Dienstendpunkt in VS Team Services verfügbar ist, müssen Sie einen hinzufügen. In diesem Unterabschnitt werden Sie durch das erforderliche Verfahren geführt. Wenn für Ihr Azure-Konto ein Microsoft-Konto (z. B. Hotmail) verwendet wird, müssen Sie die folgenden Schritte ausführen, um eine Authentifizierung des Dienstprinzipals zu erhalten.
 
@@ -121,7 +121,7 @@ Hier werden Sie durch die erforderlichen Schritte der Continuous Deployment-Konf
 
     | Parameter | Beschreibung|
     |---|---|
-    | -ResourceGroupLocation | Der Wert für den geografischen Standort, an dem sich die Ressourcengruppe befindet, z. B. **eastus** oder **'USA, Osten'**. (Verwenden Sie einfache Anführungszeichen oben, wenn der Name ein Leerzeichen enthält.) Weitere Informationen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).| |
+    | -ResourceGroupLocation | Der Wert für den geografischen Standort, an dem sich die Ressourcengruppe befindet, z. B. **eastus** oder **'USA, Osten'**. (Verwenden Sie einfache Anführungszeichen oben, wenn der Name ein Leerzeichen enthält.) Weitere Informationen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/de-DE/regions/).| |
     | -ResourceGroupName | Der Name der Ressourcengruppe, die für diese Bereitstellung verwendet wird.| |
     | -UploadArtifacts | Mit diesem Parameter wird (falls vorhanden) angegeben, dass Artefakte aus dem lokalen System in Azure hochgeladen werden müssen. Sie müssen diesen Switch nur festlegen, falls für Ihre Vorlagenbereitstellung zusätzliche Artefakte erforderlich sind, die Sie mit dem PowerShell-Skript bereitstellen möchten (z. B. Konfigurationsskripts oder geschachtelte Vorlagen). |
     | -StorageAccountName | Der Name des Speicherkontos, das zum Bereitstellen von Artefakten für diese Bereitstellung verwendet wird. Dieser Parameter ist nur erforderlich, wenn Sie Artefakte nach Azure kopieren. Dieses Speicherkonto wird durch die Bereitstellung nicht automatisch erstellt, sondern muss bereits vorhanden sein.| |
@@ -160,4 +160,4 @@ Weitere Informationen zum Azure-Ressourcen-Manager und Azure-Ressourcengruppen f
 [10]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough11b.png
 [11]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough12.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0713_2016-->

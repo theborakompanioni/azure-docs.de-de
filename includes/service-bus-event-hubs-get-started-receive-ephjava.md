@@ -28,6 +28,11 @@ Die Java-Clientbibliothek für Event Hubs steht für die Verwendung in Maven-Pro
 	<artifactId>azure-eventhubs</artifactId>
 	<version>0.7.2</version>
 </dependency>
+<dependency>
+	<groupId>com.microsoft.azure</groupId>
+	<artifactId>azure-eventhubs-eph</artifactId>
+	<version>0.7.2</version>
+</dependency>
 ```
  
 Für unterschiedliche Arten von Buildumgebungen können Sie explizit die zuletzt veröffentlichten JAR-Dateien aus dem [zentralen Maven-Repository][Maven Package] oder vom [Versionsverteilungspunkt auf GitHub](https://github.com/Azure/azure-event-hubs/releases) abrufen.
@@ -193,4 +198,4 @@ Für unterschiedliche Arten von Buildumgebungen können Sie explizit die zuletzt
 [11]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp2.png
 [12]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp3.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

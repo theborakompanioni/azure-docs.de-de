@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Verwalten von Azure SQL-Datenbanken mit PowerShell" 
-	description="Verwalten von Azure SQL-Datenbanken mit PowerShell." 
+	description="Verwalten von Azure SQL-Datenbank mit PowerShell." 
 	services="sql-database" 
 	documentationCenter="" 
 	authors="stevestein" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/09/2016" 
+	ms.date="07/07/2016" 
 	ms.author="sstein"/>
 
 # Verwalten von Azure SQL-Datenbanken mit PowerShell
@@ -83,18 +83,18 @@ Sie können eine SQL-Datenbank mit dem Befehl [Remove-AzureRmSqlDatabase](https:
 
 Sie können auch einen Server mit dem Befehl [Remove-AzureRmSqlServer](https://msdn.microsoft.com/library/azure/mt603488.aspx) löschen. Im folgenden Beispiel wird ein Server mit dem Namen "server12" gelöscht.
 
+
+>[AZURE.NOTE]  Der Löschvorgang ist asynchron und dauert unter Umständen eine Weile. Vergewissern Sie sich daher, dass der Vorgang abgeschlossen ist, bevor Sie weitere Vorgänge ausführen, für die der Server vollständig gelöscht sein muss – beispielsweise, wenn Sie einen neuen Server mit dem gleichen Namen erstellen möchten.
+
+
 	Remove-AzureRmSqlServer -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12"
 
 
 
-Wenn Sie diese oder ähnliche Azure SQL-Ressourcen erneut erstellen, haben Sie folgende Möglichkeiten:
-
-- Speichern als PowerShell-Skriptdatei ("*.ps1")
-- Speichern als Azure Automation-Runbook im Bereich „Automation“ des klassischen Azure-Portals 
 
 ## Nächste Schritte
 
-Kombinieren und Automatisieren von Befehlen. Ersetzen Sie z. B. alles innerhalb der Anführungszeichen, einschließlich der Zeichen < and >, durch Ihre Werte, um einen Server, die Firewallregel und die Datenbank zu erstellen:
+Kombinieren und Automatisieren von Befehlen. Ersetzen Sie beispielsweise alles innerhalb der Anführungszeichen, einschließlich der Zeichen „<“ und „>“, durch Ihre Werte, um einen Server, die Firewallregel und die Datenbank zu erstellen:
 
 
     New-AzureRmResourceGroup -Name "<resourceGroupName>" -Location "<Location>"
@@ -106,4 +106,4 @@ Kombinieren und Automatisieren von Befehlen. Ersetzen Sie z. B. alles innerhalb
 
 - [Azure SQL-Datenbank-Cmdlets](https://msdn.microsoft.com/library/azure/mt574084.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

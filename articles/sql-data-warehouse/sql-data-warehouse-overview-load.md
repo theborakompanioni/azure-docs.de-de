@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/30/2016"
+   ms.date="07/12/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Laden von Daten in Azure SQL Data Warehouse
@@ -100,6 +100,19 @@ Zusammenfassung des Ladeprozesses:
 3. Versenden Sie die Laufwerke an Microsoft.
 4. Microsoft lädt die Daten in SQL Data Warehouse.
 
+## Laden aus HDInsight
+SQL Data Warehouse unterstützt das Laden von Daten aus HDInsight über PolyBase. Der Prozess ist identisch mit dem Laden von Daten aus Azure Blob Storage. Dabei wird mithilfe von PolyBase eine Verbindung mit HDInsight hergestellt, um Daten zu laden.
+
+### 1\. Verwenden von PolyBase und T-SQL
+
+Zusammenfassung des Ladeprozesses:
+
+2. Formatieren Sie die Daten als UTF-8, da UTF-16 von PolyBase derzeit nicht unterstützt wird.
+2. Verschieben Sie Ihre Daten in HDInsight, und speichern Sie sie in Textdateien oder im ORC- oder Parquet-Format.
+3. Konfigurieren Sie externe Objekte in SQL Data Warehouse, um den Speicherort und das Format der Daten zu definieren.
+4. Führen Sie einen T-SQL-Befehl aus, um die Daten parallel in eine neue Datenbanktabelle zu laden.
+
+Ein Tutorial finden Sie unter [Laden von Daten aus Azure Blob Storage in SQL Data Warehouse (PolyBase)][].
 
 ## Recommendations
 
@@ -124,7 +137,7 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 
 [Laden von Beispieldaten in SQL Data Warehouse]: ./sql-data-warehouse-load-sample-databases.md
 [Übersicht zur Migration]: ./sql-data-warehouse-overview-migrate.md
-[Lösungspartnern]: ./sql-data-warehouse-integrate-solution-partners.md
+[Lösungspartnern]: ./sql-data-warehouse-partner-business-intelligence.md
 [Entwicklungsübersicht]: ./sql-data-warehouse-overview-develop.md
 [Statistiken]: ./sql-data-warehouse-tables-statistics.md
 
@@ -133,4 +146,4 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][].
 <!--Other Web references-->
 [Import/Export]: https://azure.microsoft.com/documentation/articles/storage-import-export-service/
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

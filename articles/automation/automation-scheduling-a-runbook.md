@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/29/2016"
+   ms.date="07/12/2016"
    ms.author="bwren" />
 
 # Planen eines Runbooks in Azure Automation
@@ -23,6 +23,8 @@ Um ein Runbook in Azure-Automation für die Ausführung zu einer bestimmten Uhrz
 ## Erstellen eines Zeitplans
 
 Sie können einen neuen Zeitplan für Runbooks im Azure-Portal, im klassischen Portal oder mit Windows PowerShell erstellen. Außerdem haben Sie die Möglichkeit, einen neuen Zeitplan zu erstellen, wenn Sie ein Runbook über das klassische Azure-Portal oder das Azure-Portal mit einem Zeitplan verknüpfen.
+
+>[AZURE.NOTE] Wenn Sie einen Zeitplan mit einem Runbook verknüpfen, speichert Automation die aktuellen Versionen der Module in Ihrem Konto und verknüpft sie mit diesem Zeitplan. Dies bedeutet: Wenn Ihr Konto zu dem Zeitpunkt, als Sie einen Zeitplan erstellten, ein Modul mit Version 1.0 enthielt, und Sie dann das Modul auf Version 2.0 aktualisieren, verwendet der Zeitplan weiterhin 1.0. Um die aktualisierte Modulversion verwenden zu können, müssen Sie einen neuen Zeitplan erstellen.
 
 ### So erstellen Sie einen neuen Zeitplan im klassischen Azure-Portal
 
@@ -64,6 +66,7 @@ Mit den folgenden Beispielbefehlen wird veranschaulicht, wie Sie einen Zeitplan 
 ## Verknüpfen eines Zeitplans mit einem Runbook
 
 Ein Runbook kann mit mehreren Zeitplänen verknüpft werden, und mit einem Zeitplan können mehrere Runbooks verknüpft sein. Wenn ein Runbook über Parameter verfügt, können Sie Werte für diese bereitstellen. Sie müssen Werte für alle verbindlichen Parameter angeben; für optionale Parameter können Sie Werte angeben. Diese Werte werden jedes Mal verwendet, wenn das Runbook durch diesen Zeitplan gestartet wird. Sie können das gleiche Runbook einem anderen Zeitplan zuordnen und dabei andere Parameterwerte festlegen.
+
 
 ### So verknüpfen Sie einen Zeitplan mit einem Runbook mit dem klassischen Azure-Portal
 
@@ -142,9 +145,10 @@ Die folgenden Beispielbefehle verdeutlichen, wie Sie einen Zeitplan für ein Run
 	Set-AzureRmAutomationSchedule –AutomationAccountName $automationAccountName `
     –Name $scheduleName –IsEnabled $false -ResourceGroupName "ResourceGroup01"
 
+
 ## Nächste Schritte
 
 - Weitere Informationen zum Verwenden von Zeitplänen finden Sie unter [Zeitpläne in Azure Automation](http://msdn.microsoft.com/library/azure/dn940016.aspx).
 - Informationen zu den ersten Schritten mit Runbooks in Azure Automation finden Sie unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

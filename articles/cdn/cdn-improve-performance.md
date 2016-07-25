@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/06/2016"
 	ms.author="casoper"/>
 
 # Verbessern der Leistung durch Komprimieren von Dateien
@@ -114,15 +114,16 @@ Diese Tabellen beschreiben das Verhalten der Azure CDN-Komprimierung für jedes 
 |----------------|-----------|------------|-----|
 |Komprimiert|Komprimiert|Komprimiert|CDN transcodiert zwischen unterstützten Formaten|
 |Komprimiert|Nicht komprimiert|Komprimiert|CDN führt die Komprimierung durch|
-|Komprimiert|Nicht zwischengespeichert|Komprimiert|CDN führt die Komprimierung durch, wenn der Ursprungsserver die nicht komprimierte Datei zurückgibt|
+|Komprimiert|Nicht zwischengespeichert|Komprimiert|CDN führt die Komprimierung durch, wenn der Ursprungsserver die nicht komprimierte Datei zurückgibt. **Azure CDN von Verizon** übergibt die nicht komprimierte Datei bei der ersten Anforderung, komprimiert anschließend die Datei und speichert sie für nachfolgende Anforderungen zwischen. Dateien mit `Cache-Control: no-cache`-Header werden nie komprimiert. 
 |Nicht komprimiert|Komprimiert|Nicht komprimiert|CDN führt Dekomprimierung durch|
 |Nicht komprimiert|Nicht komprimiert|Nicht komprimiert| |	
-|Nicht komprimiert|Nicht zwischengespeichert|Nicht komprimiert| |	
+|Nicht komprimiert|Nicht zwischengespeichert|Nicht komprimiert| |
 
-## Hinweise
-1. Für Media Services CDN-aktivierte Streamingendpunkte ist die Komprimierung für die folgenden Inhaltstypen standardmäßig aktiviert: application/vnd.ms-sstr+xml, application/dash+xml,application/vnd.apple.mpegurl,application/f4m+xml. Sie können die Komprimierung für die genannten Typen im Azure-Portal nicht aktivieren/deaktivieren.  
+## Media Services-CDN-Komprimierung
+
+Für Media Services CDN-aktivierte Streamingendpunkte ist die Komprimierung für die folgenden Inhaltstypen standardmäßig aktiviert: application/vnd.ms-sstr+xml, application/dash+xml,application/vnd.apple.mpegurl,application/f4m+xml. Sie können die Komprimierung für die genannten Typen im Azure-Portal nicht aktivieren/deaktivieren.
 
 ## Weitere Informationen
-- [Problembehandlung bei der CDN-Dateikomprimierung](cdn-troubleshoot-compression.md)    
+- [Problembehandlung bei der CDN-Dateikomprimierung](cdn-troubleshoot-compression.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

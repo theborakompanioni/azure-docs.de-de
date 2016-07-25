@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/05/2016"
+   ms.date="07/07/2016"
    ms.author="seanmck"/>
 
 # Visualisieren Ihres Clusters mit Service Fabric Explorer
@@ -99,9 +99,9 @@ Die vollständige URL steht auch im Cluster Essentials-Bereich des Azure-Portal 
 
 ### Herstellen einer Verbindung mit einem sicheren Cluster
 
-Sie können den Zugriff auf den Service Fabric-Cluster steuern, indem Sie die Präsentation eines Zertifikats durch Clients zum Herstellen einer Verbindung erfordern.
+Sie können den Clientzugriff auf Ihren Service Fabric-Cluster entweder mit [Zertifikaten](service-fabric-cluster-security.md) oder mit [Azure Active Directory (AAD)](service-fabric-cluster-security-client-auth-with-aad.md) steuern.
 
-Wenn Sie versuchen, eine Verbindung mit Service Fabric-Explorer auf einem sicheren Cluster herzustellen, fordert der Browser ein Zertifikat an, um Zugriff zu gewähren.
+Wenn Sie versuchen, eine Verbindung mit Service Fabric Explorer auf einem sicheren Cluster herzustellen, müssen Sie entweder ein Clientzertifikat bereitstellen oder sich mithilfe von AAD anmelden. Die Vorgehensweise hängt von dem für die Verwaltungsendpunkte des Clusters eingerichteten Sicherheitstyp ab.
 
 ## Nächste Schritte
 
@@ -116,4 +116,4 @@ Wenn Sie versuchen, eine Verbindung mit Service Fabric-Explorer auf einem siche
 [sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/SfxServiceEssentials.png
 [sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/SfxDeleteApplication.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0713_2016-->

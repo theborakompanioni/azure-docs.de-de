@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/29/2016"
+   ms.date="07/11/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Verteilen von Tabellen in SQL Data Warehouse
@@ -29,16 +29,22 @@
 
 SQL Data Warehouse ist ein verteiltes Datenbanksystem mit paralleler Massenverarbeitung (Massively Parallel Processing, MPP). Indem die Daten- und Verarbeitungsfunktionen über mehrere Knoten verteilt werden, ermöglicht SQL Data Warehouse eine deutlich umfassendere Skalierbarkeit als ein Einzelsystem. Die Entscheidung, wie Sie Ihre Daten in Ihrer SQL Data Warehouse-Instanz verteilen, ist einer der wichtigsten Faktoren zur Erzielung einer optimalen Leistung. Der Schlüssel für eine optimale Leistung ist die Minimierung der Datenverschiebungen, und der Schlüssel für die Minimierung der Datenverschiebungen ist wiederum die Wahl der richtigen Verteilungsstrategie.
 
+## Grundlegendes zur Datenverschiebung
+
+In einem MPP-System werden die Daten aus den einzelnen Tabellen auf mehrere zugrunde liegende Datenbanken aufgeteilt. Die meisten optimierten Abfragen für ein MPP-System können einfach weitergeleitet und ohne Interaktion zwischen den anderen Datenbanken für die einzelnen verteilten Datenbanken ausgeführt werden. Ein Beispiel: Angenommen, Sie verfügen über eine Vertriebsdatenbank mit zwei Tabellen: eine für den Vertrieb, eine für Kunden. Wenn Sie eine Abfrage haben, für die Ihre Vertriebstabelle mit Ihrer Kundentabelle verknüpft werden muss, und Sie sowohl die Vertriebs- als auch die Kundentabelle nach Kundennummer aufteilen, sodass sich die einzelnen Kunden jeweils in einer eigenen Datenbank befinden, kann jede Abfrage, die eine Verknüpfung von Vertrieb und Kunde erfordert, ohne Kenntnis der anderen Datenbanken innerhalb der einzelnen Datenbanken ausgeführt werden. Wenn Sie Ihre Vertriebsdaten dagegen nach Auftragsnummer und Ihre Kundendaten nach Kundennummer aufgeteilt haben, verfügen die einzelnen Datenbanken nicht über die entsprechenden Daten für die Kunden. Falls Sie nun also die Vertriebsdaten mit den Kundendaten verknüpfen möchten, müssen Sie die Daten für die einzelnen Kunden aus den anderen Datenbanken abrufen. Im zweiten Beispiel müssten die Kundendaten also in die Vertriebsdaten verschoben werden, um die beiden Tabellen zu verknüpfen.
+
+Eine Datenverschiebung ist nicht unbedingt etwas Schlechtes und bei manchen Abfragen auch unvermeidlich. Wenn dieser zusätzliche Schritt jedoch vermieden werden kann, beschleunigt dies natürlich Ihre Abfrage. Zu einer Datenverschiebung kommt es meist, wenn Tabellen verknüpft oder Aggregationen durchgeführt werden. Oftmals ist beides erforderlich. Wenn Sie also eine Optimierung für eines der Szenarien (etwa für die Verknüpfung) vornehmen können, wird die Datenverschiebung trotzdem für das andere Szenario (etwa für die Aggregation) benötigt. Der Trick ist, herauszufinden, was weniger Arbeit macht. Die effektivste Methode zur Verringerung von Datenverschiebungen ist in den meisten Fällen die Verteilung großer Faktentabellen auf der Grundlage einer verknüpften Spalte. Die Verteilung von Daten in verknüpften Spalten wird deutlich häufiger zur Verringerung von Datenverschiebungen verwendet als die Verteilung von Daten auf der Grundlage von Spalten in einer Aggregation.
+
 ## Auswählen der Verteilungsmethode
 
 Im Hintergrund teilt SQL Data Warehouse Ihre Daten auf 60 Datenbanken auf. Jede einzelne Datenbank wird als **Verteilung** bezeichnet. Wenn Daten in die einzelnen Tabellen geladen werden, muss SQL Data Warehouse wissen, wie die Daten auf diese 60 Verteilungen aufgeteilt werden sollen.
 
 Die Verteilungsmethode wird auf der Tabellenebene definiert, und derzeit sind zwei Optionen verfügbar:
 
-1. Bei der **Roundrobin-Verteilung** werden Daten gleichmäßig auf zufällige Weise verteilt.
-2. Bei der **Hashverteilung** werden Daten basierend auf den Hashwerten einer einzelnen Spalte verteilt.
+1. Bei der **Roundrobin-Verteilung** werden Daten gleichmäßig nach dem Zufallsprinzip verteilt.
+2. Bei der **Hashverteilung** werden Daten auf der Grundlage von Hashwerten einer einzelnen Spalte verteilt.
 
-Wenn Sie keine Verteilungsmethode definieren, wird für die Tabelle standardmäßig die **Roundrobin**-Verteilungsmethode verwendet. Wenn die Implementierung anspruchsvoller wird, können Sie die Nutzung von Tabellen mit **Hashverteilung** erwägen, um Datenverschiebungen zu reduzieren, was wiederum zu einer Optimierung der Abfrageleistung führt.
+Wenn Sie keine Verteilungsmethode definieren, wird für die Tabelle standardmäßig die **Roundrobin**-Verteilungsmethode verwendet. Bei zunehmender Komplexität der Implementierung können Sie die Nutzung von Tabellen mit **Hashverteilung** erwägen, um Datenverschiebungen zu verringern, was wiederum der Abfrageleistung zugute kommt.
 
 ### Roundrobin-Tabellen
 
@@ -93,7 +99,7 @@ WITH
 
 ### Tabellen mit Hashverteilung
 
-Die Verwendung eines Algorithmus mit **Hashverteilung** zum Verteilen Ihrer Tabellen kann die Leistung für viele Szenarien verbessern, indem die Datenverschiebung zur Abfragezeit reduziert wird. Tabellen mit Hashverteilung sind Tabellen, die auf die verteilten Datenbanken mit einem Hashalgorithmus für eine einzelne Spalte aufgeteilt werden, die Sie auswählen. Anhand der Verteilungsspalte wird bestimmt, wie die Daten auf Ihre verteilten Datenbanken aufgeteilt werden. Die Hashfunktion verwendet die Verteilungsspalte, um Zeilen Verteilungen zuzuweisen. Der Hashalgorithmus und die sich ergebende Verteilung sind deterministisch. Dies bedeutet, dass ein Wert mit einem bestimmten Datentyp per Hashverteilung immer derselben Verteilung zugeordnet wird.
+Die Verwendung eines Algorithmus mit **Hashverteilung** zum Verteilen Ihrer Tabellen kann die Leistung für viele Szenarien verbessern, da sich dadurch die Datenverschiebung zur Abfragezeit verringert. Tabellen mit Hashverteilung sind Tabellen, die auf die verteilten Datenbanken mit einem Hashalgorithmus für eine einzelne Spalte aufgeteilt werden, die Sie auswählen. Anhand der Verteilungsspalte wird bestimmt, wie die Daten auf Ihre verteilten Datenbanken aufgeteilt werden. Die Hashfunktion verwendet die Verteilungsspalte, um Zeilen Verteilungen zuzuweisen. Der Hashalgorithmus und die sich ergebende Verteilung sind deterministisch. Dies bedeutet, dass ein Wert mit einem bestimmten Datentyp per Hashverteilung immer derselben Verteilung zugeordnet wird.
 
 In diesem Beispiel wird eine Tabelle mit Verteilung nach der ID erstellt:
 
@@ -131,7 +137,7 @@ Verteilungsspalten können nicht aktualisiert werden. Wählen Sie daher eine Spa
 
 ### Auswählen der Verteilungsspalte mit gleichmäßiger Datenverteilung
 
-Da ein verteiltes System nur so schnell wie die langsamste Verteilung ist, ist es wichtig, die Arbeit gleichmäßig auf die Verteilungen aufzuteilen. So erzielen Sie für das System eine ausgewogene Ausführung. Die Verteilung der Arbeit auf ein verteiltes System richtet sich danach, wo sich die Daten für die einzelnen Verteilungen befinden. Daher ist es sehr wichtig, die richtige Verteilungsspalte für die Verteilung der Daten auszuwählen, damit jede Verteilung über die gleiche Menge an Arbeit verfügt und die gleiche Zeit für deren Abarbeitung benötigt. Wenn die Arbeit im System gut verteilt ist, wird dies als ausgewogene Ausführung bezeichnet. Falls die Daten im System nicht gleichmäßig verteilt und nicht gut ausgewogen sind, wird dies als **Datenschiefe** bezeichnet.
+Da ein verteiltes System nur so schnell wie die langsamste Verteilung ist, ist es wichtig, die Arbeit gleichmäßig auf die Verteilungen aufzuteilen. So erzielen Sie für das System eine ausgewogene Ausführung. Die Verteilung der Arbeit auf ein verteiltes System richtet sich danach, wo sich die Daten für die einzelnen Verteilungen befinden. Daher ist es sehr wichtig, die richtige Verteilungsspalte für die Verteilung der Daten auszuwählen, damit jede Verteilung über die gleiche Menge an Arbeit verfügt und die gleiche Zeit für deren Abarbeitung benötigt. Wenn die Arbeit im System gut verteilt ist, wird dies als ausgewogene Ausführung bezeichnet. Falls die Daten im System nicht gleichmäßig verteilt und nicht ausgewogen sind, wird dies als **Datenschiefe** bezeichnet.
 
 Beachten Sie beim Auswählen der Verteilungsspalte Folgendes, um Daten gleichmäßig zu verteilen und Datenschiefe zu vermeiden:
 
@@ -148,14 +154,16 @@ Falls keine guten Kandidatenspalten vorhanden sind, können Sie sich für die Ro
 
 ### Auswählen einer Verteilungsspalte zur Reduzierung von Datenverschiebungen
 
-Das Reduzieren von Datenverschiebungen durch das Auswählen der richtigen Verteilungsspalte ist eine der wichtigsten Strategien zum Optimieren der Leistung Ihrer SQL Data Warehouse-Instanz. Zu einer Datenverschiebung kommt es meist, wenn Tabellen verknüpft oder Aggregationen durchgeführt werden. Die Hashverteilung von großen Faktentabellen nach einer verknüpften Spalte ist eine der effektivsten Methoden zum Reduzieren von Datenverschiebungen. Zusätzlich zum Auswählen einer passenden Verknüpfungsspalte zum Reduzieren von Datenverschiebungen müssen auch einige andere Kriterien erfüllt sein, um Datenverschiebungen zu vermeiden. Gehen Sie wie folgt vor, um Datenverschiebungen zu vermeiden:
+Das Reduzieren von Datenverschiebungen durch das Auswählen der richtigen Verteilungsspalte ist eine der wichtigsten Strategien zum Optimieren der Leistung Ihrer SQL Data Warehouse-Instanz. Zu einer Datenverschiebung kommt es meist, wenn Tabellen verknüpft oder Aggregationen durchgeführt werden. Spalten, die in `JOIN`, `GROUP BY`, `DISTINCT`, `OVER` und `HAVING`-Klauseln verwendet werden, sind **gute** Kandidaten für die Hashverteilung. Spalten in der `WHERE`-Klausel sind dagegen **keine** guten Kandidaten für die Hashverteilung, da sie die für die Abfrage zur Verfügung stehenden Verteilungen beschränken.
 
-1. Die an der Verknüpfung beteiligten Tabellen müssen per Hashverteilung auf eine der Verknüpfungsspalten aufgeteilt werden.
-2. Die Datentypen der Verknüpfungsspalten müssen übereinstimmen.
+Grundsätzlich gilt: Wenn Sie über zwei große Faktentabellen verfügen, die häufig an einer Verknüpfung beteiligt sind, erzielen Sie die besten Ergebnisse mit einer Verteilung, die auf einer der Verknüpfungsspalten basiert. Wenn Sie über eine Tabelle verfügen, die nie mit einer anderen großen Faktentabelle verknüpft wird, können Sie Spalten verwenden, die häufig in der `GROUP BY`-Klausel vorkommen.
+
+Zur Vermeidung einer Datenverschiebung im Zuge einer Verknüpfung müssen einige zentrale Kriterien erfüllt werden:
+
+1. Die an der Verknüpfung beteiligten Tabellen müssen per Hashverteilung auf der Grundlage **einer** der an der Verknüpfung beteiligten Spalten verteilt werden.
+2. Die Datentypen der Verknüpfungsspalten müssen in beiden Tabellen übereinstimmen.
 3. Die Spalten müssen mit dem Operator „Equals“ (Gleich) verknüpft werden.
-4. Als Verknüpfungstyp ist `CROSS JOIN` nicht zulässig.
-
-Spalten, die in `JOIN`, `GROUP BY`, `DISTINCT`, `OVER` und `HAVING`-Klauseln verwendet werden, sind gute Kandidaten für die Hashverteilung. Spalten in der `WHERE`-Klausel sind dagegen **keine** guten Kandidaten für die Hashverteilung, da beschränkt wird, welche Verteilungen an der Abfrage beteiligt sind. Im Allgemeinen gilt Folgendes: Wenn Sie über zwei große Faktentabellen verfügen, die häufig an einer Verknüpfung beteiligt sind, führen Sie die Verteilung in den meisten Fällen basierend auf einer der Verknüpfungsspalten durch. Wenn Sie über eine Tabelle verfügen, die nie mit einer anderen großen Faktentabelle verknüpft wird, können Sie nach Spalten Ausschau halten, die häufig in der `GROUP BY`-Klausel zu finden sind. Wenn Sie keine gute Kandidatenspalte finden können, mit der die Daten gleichmäßig verteilt werden, ist für Ihre Abfragen normalerweise die Auswahl einer Verteilungsspalte ratsam, anstatt die Roundrobin-Standardverteilung zu verwenden.
+4. Der Verknüpfungstyp darf nicht `CROSS JOIN` sein.
 
 
 ## Problembehandlung bei Datenschiefe
@@ -164,7 +172,7 @@ Wenn Tabellendaten mithilfe der Hashverteilungsmethode verteilt werden, besteht 
 
 ### Identifizieren der Datenschiefe
 
-Eine einfache Möglichkeit, die Datenschiefe für eine Tabelle zu identifizieren, ist die Verwendung von `DBCC PDW_SHOWSPACEUSED`. Dies ist eine sehr schnelle und einfache Möglichkeit, die Anzahl der Tabellenzeilen anzuzeigen, die in jeder der 60 Verteilungen Ihrer Datenbank gespeichert sind. Denken Sie daran, dass für eine optimale Leistung die Zeilen in Ihrer verteilten Tabelle gleichmäßig auf alle Verteilungen verteilt sein sollten.
+Mithilfe von `DBCC PDW_SHOWSPACEUSED` können Sie ganz einfach ermitteln, ob für eine Tabelle eine Datenschiefe vorliegt. Dies ist eine sehr schnelle und einfache Möglichkeit, die Anzahl der Tabellenzeilen anzuzeigen, die in jeder der 60 Verteilungen Ihrer Datenbank gespeichert sind. Denken Sie daran, dass für eine optimale Leistung die Zeilen in Ihrer verteilten Tabelle gleichmäßig auf alle Verteilungen verteilt sein sollten.
 
 ```sql
 -- Find data skew for a distributed table
@@ -190,7 +198,7 @@ order by two_part_name, row_count
 
 ### Auflösen von Datenschiefe
 
-Nicht für jede Datenschiefe ist eine Behebung erforderlich. In bestimmten Fällen kann die Leistung einer Tabelle bei einigen Abfragen die negative Beeinträchtigung durch die Datenschiefe ausgleichen. Um zu entscheiden, ob die Datenschiefe in einer Tabelle beseitigt werden sollte, müssen Sie die Datenmenge und die Abfragen in Ihrer Workload möglichst umfassend verstehen. Eine Möglichkeit zur Untersuchung der Datenschiefe ist die Ausführung der Schritte im Artikel [Abfrageüberwachung][]. Hiermit wird überwacht, wie stark sich die Datenschiefe auf die Abfrageleistung auswirkt und wie lange die Durchführung von Abfragen auf den einzelnen Verteilungen dauert.
+Nicht für jede Datenschiefe ist eine Behebung erforderlich. In bestimmten Fällen kann die Leistung einer Tabelle bei einigen Abfragen die negative Beeinträchtigung durch die Datenschiefe ausgleichen. Um zu entscheiden, ob die Datenschiefe in einer Tabelle beseitigt werden sollte, müssen Sie die Datenmenge und die Abfragen in Ihrer Workload möglichst umfassend verstehen. Eine Möglichkeit zur Untersuchung der Datenschiefe ist die Ausführung der Schritte im Artikel [Abfrageüberwachung][]. Hiermit wird überwacht, wie stark sich die Datenschiefe auf die Abfrageleistung auswirkt und wie lange die Durchführung von Abfragen für die einzelnen Verteilungen dauert.
 
 Verteilen von Daten bedeutet, das richtige Gleichgewicht zwischen der Minimierung der Datenschiefe und der Minimierung von Datenverschiebungen zu finden. Dies können gegensätzliche Ziele sein, und manchmal könnten Sie die Datenschiefe beibehalten, um Datenverschiebungen zu reduzieren. Beispiel: Wenn die Verteilungsspalte häufig die freigegebene Spalte in Verknüpfungen und Aggregationen ist, minimieren Sie Datenverschiebungen. Der Vorteil durch minimale Datenverschiebungen überwiegt möglicherweise die Auswirkungen der Datenschiefe.
 
@@ -278,7 +286,7 @@ RENAME OBJECT [dbo].[FactInternetSales_ROUND_ROBIN] TO [FactInternetSales];
 
 ## Nächste Schritte
 
-Weitere Informationen zum Tabellenentwurf finden Sie in den Artikeln [Verteilen][], [Indizieren][], [Partitionieren][], [Datentypen][], [Statistiken][] und [Temporäre Tabellen][Temporary]. Eine Übersicht über bewährte Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][].
+Weitere Informationen zum Tabellendesign finden Sie in den Artikeln [Verteilen][], [Indizieren][], [Partitionieren][], [Datentypen][], [Statistiken][] und [Temporäre Tabellen][Temporary]. Eine Übersicht über bewährte Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][].
 
 
 <!--Image references-->
@@ -304,4 +312,4 @@ Weitere Informationen zum Tabellenentwurf finden Sie in den Artikeln [Verteilen]
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

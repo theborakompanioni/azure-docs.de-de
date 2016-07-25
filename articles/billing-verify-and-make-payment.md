@@ -14,12 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/21/2015"
+	ms.date="07/12/2016"
 	ms.author="genli"/>
 
 # Überprüfen Sie Ihre Zahlungsmethode, und nehmen Sie Zahlungen für Azure-Abonnements vor
 
 >[AZURE.NOTE] Wenn Sie eine Fehlermeldung erhalten, nachdem Sie Ihre Kreditkarteninformationen übermittelt haben, lesen Sie sich den Artikel [Meine Kreditkarte wird nicht akzeptiert, wenn ich versuche, mich für Azure zu registrieren](billing-credit-card-fails-during-azure-sign-up.md) durch.
+
+[AZURE.INCLUDE [support-disclaimer](../includes/support-disclaimer.md)]
 
 ## Überprüfen Sie die aktuelle Zahlungsmethode
 1. Melden Sie sich im [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions) als Kontoadministrator an.
@@ -42,4 +44,4 @@ Wenn Sie eine Kredit- oder Debitkarte als Zahlungsmethode festgelegt haben, erfo
 
 Wenn Sie per Rechnung zahlen, senden Sie Ihre Zahlung an den Empfänger, der unten auf der Rechnung aufgeführt ist. Wenn Sie weitere Hilfe benötigen, wenden Sie sich an den [Microsoft-Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

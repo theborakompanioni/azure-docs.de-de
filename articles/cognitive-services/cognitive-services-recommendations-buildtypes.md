@@ -188,7 +188,7 @@ Zum Buildzeitpunkt als Teil der entsprechenden Parameter für FTB- oder Empfehlu
 
 2.	Optional können Sie *splitterStrategy* (entweder *RandomSplitter* oder *LastEventSplitter*) auswählen. *RandomSplitter* teilt die Nutzungsdaten basierend auf dem angegebenen Testprozentsatz *randomSplitterParameters* und zufälligen Ausgangswerten in Trainings- und Testdatasets auf. *LastEventSplitter* teilt die Nutzungsdaten basierend auf der letzten Transaktion jedes Benutzers in Trainings- und Testdatasets auf.
 
-Dies löst einen Build aus, der nur eine Teilmenge der Daten für das Training verwendet. Der Rest der Daten wird verwendet, um Auswertungsmetriken zu berechnen. Nachdem der Build abgeschlossen wurde, müssen Sie zum Abrufen der Ausgabe der Auswertung nur die [API zum Abrufen von Buildmetriken](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/573e43bb3e9d4627a8c4bd3e/console) aufrufen und die entsprechende *modelId* und *buildId* übergeben.
+Dies löst einen Build aus, der nur eine Teilmenge der Daten für das Training verwendet. Der Rest der Daten wird verwendet, um Auswertungsmetriken zu berechnen. Nachdem der Build abgeschlossen wurde, müssen Sie zum Abrufen der Ausgabe der Auswertung nur die [API zum Abrufen von Buildmetriken](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/577eaa75eda565095421666f) aufrufen und die entsprechende *modelId* und *buildId* übergeben.
 
  Nachfolgend finden Sie die JSON-Ausgabe unserer Beispielauswertung:
 
@@ -271,4 +271,4 @@ Dies löst einen Build aus, der nur eine Teilmenge der Daten für das Training v
     "IsFaulted": false
     }
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -14,7 +14,7 @@
 	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.date="04/13/2016"
-	ms.author="tdykstra"/>
+	ms.author="rachelap"/>
 
 # Erste Schritte mit Azure App Service und ASP.NET-Web-API 2 mit Visual Studio
 
@@ -263,4 +263,4 @@ Nachdem Ihre ASP.NET-API-App in Azure App Service ausgeführt wird, ist es ratsa
 
 In diesem Tutorial haben Sie erfahren, wie eine einfache Web-API erstellt und in einer API-App in Azure App Service bereitgestellt wird. Eine Einführung in App Service-Features, die Ihnen die Entwicklung und Nutzung von Web-APIs erleichtern, finden Sie in der Tutorial-Reihe, die mit [Erste Schritte mit API-Apps und ASP.NET](app-service-api-dotnet-get-started.md) beginnt.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0713_2016-->

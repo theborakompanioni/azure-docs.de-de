@@ -5,13 +5,14 @@ In der folgenden Tabelle sind die Grenzwerte aufgeführt, die den verschiedenen 
 | Nachrichten/Tag | 400\.000 | 6\.000.000 | 300\.000.000 | 8\.000 |
 | Maximale Anzahl der Einheiten | 200 | 200 | 200 | 1 |
 
-> [AZURE.NOTE] Wenden Sie sich an den Microsoft-Support, wenn Sie voraussichtlich mehr als 200 Einheiten mit einem Hub im Tarif S1 oder S2 verwenden.
+> [AZURE.NOTE] Wenden Sie sich an den Microsoft-Support, wenn Sie voraussichtlich mehr als 200 Einheiten mit einem Hub im Tarif S1, S2 oder S3 verwenden.
 
 Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte:
 
 | Ressource | Begrenzung |
 | -------- | ----- |
-| Maximale Anzahl von IoT Hubs pro Azure-Abonnement | 10 |
+| Maximale Anzahl kostenpflichtiger IoT Hubs pro Azure-Abonnement | 10 |
+| Maximale Anzahl kostenloser IoT Hubs pro Azure-Abonnement | 1 |
 | Maximale Anzahl von Geräte-Identitäten,<br/> die bei einem einzelnen Aufruf zurückgegeben wird | 1000 |
 | Maximale Beibehaltungsdauer von IoT Hub-Nachrichten | 7 Tage |
 | Maximale Größe einer Nachricht von einem Gerät an die Cloud | 256 KB |
@@ -23,16 +24,17 @@ Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte:
 | Maximale Übermittlungsanzahl von Feedbacknachrichten<br/> als Reaktion auf eine Nachricht von der Cloud an das Gerät | 100 |
 | Maximale Gültigkeitsdauer von Feedbacknachrichten<br/> als Reaktion auf eine Nachricht von der Cloud an das Gerät | 2 Tage |
 
-> [AZURE.NOTE] Wenn Sie mehr als 10 IoT Hubs in einem Azure-Abonnement benötigen, wenden Sie sich an den Microsoft Support.
+> [AZURE.NOTE] Wenn Sie mehr als zehn kostenpflichtige IoT Hubs in einem Azure-Abonnement benötigen, wenden Sie sich an den Microsoft Support.
 
 Der IoT Hub-Dienst drosselt Anforderungen, wenn die folgenden Kontingente überschritten werden:
 
 | Drosselung | Wert pro Hub |
 | -------- | ------------- |
-| Vorgänge in der Identitätsregistrierung <br/> (Erstellen, Abrufen, Aktualisieren, Löschen), <br/> einzelne Import-/Exportvorgänge oder Massenimport/-export | 100/Minute/Einheit, bis zu 5.000/Minute |
-| Geräteverbindungen | 120/Sekunden/Einheit (für S2), 12/Sekunden/Einheit (für S1); mindestens 100/Sekunde |
-| Senden von Nachrichten von Geräten an die Cloud | 120/Sekunden/Einheit (für S2), 12/Sekunden/Einheit (für S1) <br/> Mindestens 100/Sekunde |
-| C2D-Sendevorgänge | 100/Minute/Einheit |
-| C2D-Empfangsvorgänge | 1000/Minuten/Einheit |
+| Vorgänge in der Identitätsregistrierung <br/> (Erstellen, Abrufen, Aktualisieren, Löschen), <br/> einzelne Import-/Exportvorgänge oder Massenimport/-export | 5000/Minute/Einheit (für S3) <br/> 100/Minute/Einheit (für S1 und S2) |
+| Geräteverbindungen | 6\.000/Sekunde/Einheit (für S3), 120/Sekunde/Einheit (für S2), 12/Sekunde/Einheit (für S1). <br/>Mindestens 100/Sekunde |
+| Senden von Nachrichten von Geräten an die Cloud | 6\.000/Sekunde/Einheit (für S3), 120/Sekunde/Einheit (für S2), 12/Sekunde/Einheit (für S1). <br/>Mindestens 100/Sekunde |
+| C2D-Sendevorgänge | 5\.000/Minute/Einheit (für S3), 100/Minute/Einheit (für S1 und S2). |
+| C2D-Empfangsvorgänge | 50\.000/Minute/Einheit (für S3), 1.000/Minute/Einheit (für S1 und S2). |
+| Dateiuploadvorgänge | 5\.000 Dateiuploadbenachrichtigungen/Minute/Einheit (S3), 100 Dateiuploadbenachrichtigungen/Minute/Einheit (für S1 und S2). <br/> 10.000 SAS-URIs können gleichzeitig für ein Speicherkonto geöffnet sein.<br/> 10 SAS-URIs/Gerät können gleichzeitig geöffnet sein. |
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

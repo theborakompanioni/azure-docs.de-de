@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/09/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit Jive
@@ -33,7 +33,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Jiv
 
 ###So aktivieren Sie die Anwendungsintegration für Jive
 
-1.  Klicken Sie im linken Navigationsbereich des Azure-Verwaltungsportals auf **Active Directory**.
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-jive-tutorial/IC700993.png "Active Directory")
 
@@ -64,7 +64,7 @@ Der folgende Screenshot zeigt ein Beispiel für das entsprechende Dialogfeld in 
 
 ###So konfigurieren Sie die Benutzerbereitstellung
 
-1.  Klicken Sie im Azure-Verwaltungsportal auf der Anwendungsintegrationsseite für **Jive** auf **Benutzerbereitstellung konfigurieren**, um das Dialogfeld **Benutzerbereitstellung konfigurieren** zu öffnen.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Jive** auf **Benutzerbereitstellung konfigurieren**, um das Dialogfeld **Benutzerbereitstellung konfigurieren** zu öffnen.
 
 2.  Legen Sie auf der Seite **Geben Sie Ihre Jive-Anmeldeinformationen ein, um die automatische Benutzerbereitstellung zu aktivieren** die folgenden Konfigurationseinstellungen fest:
 
@@ -74,7 +74,7 @@ Der folgende Screenshot zeigt ein Beispiel für das entsprechende Dialogfeld in 
 
     3.  Geben Sie im Textfeld **Jive-Mandanten-URL** die URL des Jive-Mandanten ein.
 
-        >[AZURE.NOTE]Die Jive-Mandanten-URL ist die URL, die von Ihrer Organisation zum Anmelden bei Jive verwendet wird. In der Regel hat die URL folgendes Format: **www.<organisation>.jive.com**.
+        >[AZURE.NOTE] Die Jive-Mandanten-URL ist die URL, die von Ihrer Organisation zum Anmelden bei Jive verwendet wird. In der Regel hat die URL folgendes Format: **www.<organisation>.jive.com**.
 
     4.  Klicken Sie auf **Überprüfen**, um die Konfiguration zu überprüfen.
 
@@ -84,4 +84,4 @@ Der folgende Screenshot zeigt ein Beispiel für das entsprechende Dialogfeld in 
   
 Sie können nun ein Testkonto erstellen und nach 10 Minuten überprüfen, ob das Konto mit „Jive.com“ synchronisiert wurde.
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

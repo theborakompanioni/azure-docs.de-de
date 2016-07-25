@@ -24,9 +24,9 @@ Im Folgenden finden Sie eine Zusammenfassung der Funktionen, die Sie möglicherw
 ||
 |---|---
 |[**Verfügbarkeitstests**](app-insights-monitor-web-app-availability.md)<br/>Senden Sie der Web-App in regelmäßigen Abständen HTTP-Anforderungen aus aller Welt. Wir werden Sie benachrichtigen, wenn die Reaktion langsam oder unzuverlässig ist.| 
-|[**Abhängigkeit und AJAX-Aufrufe**](app-insights-asp-net-dependencies.md)<br/>Überwachen Sie SQL-Abfragen und Aufrufe von REST oder anderen Ressourcen.|
+|[**Abhängigkeitsaufrufe**](app-insights-asp-net-dependencies.md)<br/>Überwachen Sie SQL-Abfragen und Aufrufe von REST oder anderen Ressourcen.|
 |[**Ausnahmen**](app-insights-asp-net-exceptions.md)<br/>Zählen Sie behandelte und nicht behandelte Ausnahmen, rufen Sie Stapelüberwachungen ab, und klicken Sie sich durch den Code.|
-|[**Webseiten**](app-insights-javascript.md)<br/>Überwachen Sie die Seitennutzung und die Leistung durch Instrumentieren der Webseiten.
+|[**Webseiten**](app-insights-javascript.md)<br/>Überwachen Sie Seitennutzung, Leistung und AJAX-Aufrufe durch Instrumentieren der Webseiten.
 |**Hostleistung: [Azure-Diagnose](app-insights-azure-diagnostics.md), [Windows-Leistungsindikatoren](app-insights-web-monitor-performance.md)**<br/>Sehen Sie sich die Metriken zur CPU-Auslastung und andere Kontextmetriken an. |![](./media/app-insights-asp-net-more/04.png)
 |[**SDK-API – benutzerdefinierte Telemetriedaten**](app-insights-api-custom-events-metrics.md)<br/>Senden Sie Ihre eigenen Ereignisse und Metriken für eine detailliertere Ansicht der Leistung und Nutzung Ihrer App im Server- und Clientcode.|
 |[**Protokollintegration**](app-insights-asp-net-trace-logs.md)<br/>Wenn Sie ein Protokollierungsframework wie Log4Net, NLog oder System.Diagnostics.Trace verwenden, gibt es einen Adapter, der diese Ablaufverfolgungen zusammen mit anderen Telemetriedaten an Application Insights sendet.|
@@ -52,4 +52,4 @@ Im Folgenden finden Sie eine Zusammenfassung der Funktionen, die Sie möglicherw
 |**API für den Datenzugriff**<br/>In Kürze verfügbar.|
 |[**Stichprobenerstellung**](app-insights-sampling.md)<br/>Reduziert die Datenrate und hilft Ihnen dabei, innerhalb der Grenzwerte Ihres Tarifs zu bleiben.|![Kachel für Stichproben](./media/app-insights-asp-net-more/030.png)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

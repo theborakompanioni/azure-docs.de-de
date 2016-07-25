@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows-sql-server"
    ms.workload="infrastructure-services"
-   ms.date="04/17/2016"
+   ms.date="07/12/2016"
    ms.author="MikeRayMSFT"/>
 
 # Konfigurieren eines internen Load Balancers für eine AlwaysOn-Verfügbarkeitsgruppe in Azure
@@ -28,7 +28,7 @@ Dieses Thema setzt voraus, dass Ihre Verfügbarkeitsgruppen bereits konfiguriert
 
 Verwandte Themen:
 
- - [Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen in einem virtuellen Azure-Computer (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)   
+ - [Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen in einem virtuellen Azure-Computer (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
  
  - [Konfigurieren einer VNet-zu-VNet-Verbindung mit Azure Resource Manager und PowerShell](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
@@ -70,13 +70,13 @@ Im ersten Schritt wird zunächst der Load Balancer erstellt. Öffnen Sie im Azur
 | **Ressourcengruppe** | Wählen Sie die Ressourcengruppe aus, in der sich die SQL Server befinden. | 
 | **Standort** | Wählen Sie den Azure-Standort aus, an dem sich die SQL Server befinden. |
 
-- Klicken Sie auf **Erstellen**. 
+- Klicken Sie auf **Erstellen**.
 
 Azure erstellt den Load Balancer, den Sie anhand der obigen Angaben konfiguriert haben. Der Load Balancer gehört zu einem bestimmten Netzwerk, Subnetz, einer bestimmten Ressourcengruppe und einem bestimmten Standort. Überprüfen Sie nach Abschluss des Vorgangs die Einstellungen für den Load Balancer in Azure.
 
 Konfigurieren Sie nun die IP-Adresse des Load Balancers.
 
-- Klicken Sie auf dem Blatt **Einstellungen** des Load Balancers auf **IP-Adresse**. Auf dem Blatt **IP-Adresse** sehen Sie, dass es sich um einen privaten Load Balancer handelt, der sich im gleichen virtuellen Netzwerk befindet wie Ihre SQL Server. 
+- Klicken Sie auf dem Blatt **Einstellungen** des Load Balancers auf **IP-Adresse**. Auf dem Blatt **IP-Adresse** sehen Sie, dass es sich um einen privaten Load Balancer handelt, der sich im gleichen virtuellen Netzwerk befindet wie Ihre SQL Server.
 
 - Legen Sie folgende Einstellungen fest:
 
@@ -96,7 +96,7 @@ Der Load Balancer besitzt nun eine IP-Adresse. Notieren Sie sich diese IP-Adress
 
 Als Nächstes muss ein Back-End-Adresspool erstellt werden. Im Kontext von Azure wird der Back-End-Adresspool als *Back-End-Pool* bezeichnet. Im vorliegenden Fall enthält der Back-End-Pool die Adressen der beiden SQL Server in Ihrer Verfügbarkeitsgruppe.
 
-- Klicken Sie in Ihrer Ressourcengruppe auf den zuvor erstellten Load Balancer. 
+- Klicken Sie in Ihrer Ressourcengruppe auf den zuvor erstellten Load Balancer.
 
 - Klicken Sie unter **Einstellungen** auf **Back-End-Pools**.
 
@@ -118,7 +118,7 @@ Azure aktualisiert die Einstellungen für den Back-End-Adresspool. Die Verfügba
 
 Im nächsten Schritt wird ein Test erstellt. Mit dem Test wird definiert, wie Azure überprüft, welcher der SQL Server gerade für den Verfügbarkeitsgruppenlistener zuständig ist. Azure testet den Dienst auf der Grundlage der IP-Adresse an einem Port, den Sie beim Erstellen des Tests definieren.
 
-- Klicken Sie auf dem Blatt **Einstellungen** des Load Balancers auf **Tests**. 
+- Klicken Sie auf dem Blatt **Einstellungen** des Load Balancers auf **Tests**.
 
 - Klicken Sie auf dem Blatt **Tests** auf **Hinzufügen**.
 
@@ -132,7 +132,7 @@ Im nächsten Schritt wird ein Test erstellt. Mit dem Test wird definiert, wie Az
 | **Intervall** | *5* | 
 | **Fehlerhafter Schwellenwert** | *2* | 
 
-- Klicken Sie auf **OK**. 
+- Klicken Sie auf **OK**.
 
 >[AZURE.NOTE] Vergewissern Sie sich, dass der angegebene Port in der Firewall beider SQL Server geöffnet ist. Beide Server benötigen eine eingehende Regel für den TCP-Port, den Sie verwenden möchten. Weitere Informationen finden Sie unter [Hinzufügen oder Bearbeiten einer Firewallregel](http://technet.microsoft.com/library/cc753558.aspx).
 
@@ -142,7 +142,7 @@ Azure erstellt den Test. Mithilfe des Tests wird ermittelt, welcher SQL Server �
 
 Legen Sie die Lastenausgleichsregeln fest. Mit den Lastenausgleichsregeln wird konfiguriert, wir der Load Balancer Datenverkehr an die SQL Server weiterleitet. Für diesen Load Balancer wird „Direct Server Return“ aktiviert, da immer nur einer der beiden SQL Server für die Verfügbarkeitsgruppenlistener-Ressource zuständig ist.
 
-- Klicken Sie auf dem Blatt **Einstellungen** des Load Balancers auf **Lastenausgleichsregeln**. 
+- Klicken Sie auf dem Blatt **Einstellungen** des Load Balancers auf **Lastenausgleichsregeln**.
 
 - Klicken Sie auf dem Blatt **Lastenausgleichsregeln** auf **Hinzufügen**.
 
@@ -161,7 +161,7 @@ Legen Sie die Lastenausgleichsregeln fest. Mit den Lastenausgleichsregeln wird k
 
  >[AZURE.NOTE] Möglicherweise müssen Sie auf dem Blatt einen Bildlauf nach unten durchführen, um alle Einstellungen anzuzeigen.
 
-- Klicken Sie auf **OK**. 
+- Klicken Sie auf **OK**.
 
 - Azure konfiguriert die Lastenausgleichsregel. Damit ist die Lastenausgleichsregel konfiguriert, die Datenverkehr an den SQL Server weiterleitet, der den Listener für die Verfügbarkeitsgruppe hostet.
 
@@ -173,7 +173,7 @@ Die Ressourcengruppe verfügt nun also über einen mit beiden SQL Server-Compute
 
 Als Nächstes wird der Listener für den Cluster konfiguriert und online geschaltet. Führen Sie hierzu die folgenden Schritte aus:
 
-1. Erstellen des Verfügbarkeitsgruppenlisteners für den Failovercluster 
+1. Erstellen des Verfügbarkeitsgruppenlisteners für den Failovercluster
 
 1. Onlineschalten des Listeners
 
@@ -181,7 +181,7 @@ Als Nächstes wird der Listener für den Cluster konfiguriert und online geschal
 
 In diesem Schritt erstellen Sie manuell den Verfügbarkeitsgruppenlistener im Failovercluster-Manager und in SQL Server Management Studio (SSMS).
 
-- Stellen Sie eine RDP-Verbindung mit dem virtuellen Azure-Computer her, der das primäre Replikat hostet. 
+- Stellen Sie eine RDP-Verbindung mit dem virtuellen Azure-Computer her, der das primäre Replikat hostet.
 
 - Öffnen Sie den Failovercluster-Manager.
 
@@ -260,9 +260,9 @@ Die sqlcmd-Verbindung wird automatisch mit der SQL Server-Instanz hergestellt, d
 
 Für Verfügbarkeitsgruppenlistener in Azure mit internem Load Balancer gelten folgenden Richtlinien:
 
-- Da der Listener für den Load Balancer konfiguriert wird und nur ein interner Load Balancer vorhanden ist, wird pro Clouddienst maximal ein Verfügbarkeitsgruppenlistener unterstützt. Es können jedoch mehrere externe Listener erstellt werden. 
+- Da der Listener für den Load Balancer konfiguriert wird und nur ein interner Load Balancer vorhanden ist, wird pro Clouddienst maximal ein Verfügbarkeitsgruppenlistener unterstützt. Es können jedoch mehrere externe Listener erstellt werden.
 
 - Bei Verwendung eines internen Load Balancers erfolgt der Zugriff auf den Listener nur innerhalb des gleichen virtuellen Netzwerks.
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->

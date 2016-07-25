@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="07/12/2016"
 	ms.author="juliako"/>
 
 
@@ -30,6 +30,7 @@ So erreichen Sie dieses Ziel:
 
 Dieses Thema bietet eine Übersicht über wichtige Content Delivery-Konzepte.
 
+Bekannte Probleme werden in [diesem](media-services-deliver-content-overview.md#known-issues) Abschnitt behandelt.
 
 ##Dynamische Paketerstellung
 
@@ -86,7 +87,7 @@ Beachten Sie, dass Sie nur über SSL streamen können, wenn der Streaming-Endpun
 
 ##Streaming-URL-Formate
 
-**MPEG DASH-Format**
+###MPEG DASH-Format
 
 {Streamingendpunktname-Media Services-Kontoname}.streaming.mediaservices.windows.net/{Locator-ID}/{Dateiname}.ism/Manifest(Format=mpd-time-csf)
 
@@ -96,19 +97,19 @@ Beispiel
 
 
 
-**Apple HTTP Live Streaming (HLS) V4-Format**
+###Apple HTTP Live Streaming (HLS) V4-Format
 
 {Streamingendpunktname-Media Services-Kontoname}.streaming.mediaservices.windows.net/{Locator-ID}/{Dateiname}.ism/Manifest(Format=m3u8-aapl)
 
 	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
 
-**Apple HTTP Live Streaming (HLS) V3-Format**
+###Apple HTTP Live Streaming (HLS) V3-Format
 
 {Streamingendpunktname-Media Services-Kontoname}.streaming.mediaservices.windows.net/{Locator-ID}/{Dateiname}.ism/Manifest(Format=m3u8-aapl-v3)
 	
 	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
 
-**Apple HTTP Live Streaming-Format (HLS) mit „audio-only“-Filter**
+###Apple HTTP Live Streaming-Format (HLS) mit „audio-only“-Filter
 
 Standardmäßig sind reine Tonspuren im HLS-Manifest enthalten. Dies ist für die Apple Store-Zertifizierung für Mobilfunknetze erforderlich. Wenn ein Client in diesem Fall nicht über genügend Bandbreite verfügt oder über eine 2G-Verbindung verbunden ist, wird zur reinen Audiowiedergabe gewechselt. Dadurch wird fortlaufendes Streaming ohne Pufferung gewährleistet, mit dem Nachteil, dass kein Video verfügbar ist. Allerdings könnte es in einigen Szenarios vorteilhafter sein, wenn der Player puffert anstatt nur die Tonspur abzuspielen. Wenn Sie die reine Tonspur entfernen möchten, so fügen Sie (audio-only= false) zur URL hinzu und entfernen Sie sie.
 
@@ -117,7 +118,7 @@ Standardmäßig sind reine Tonspuren im HLS-Manifest enthalten. Dies ist für di
 Weitere Informationen finden Sie in [diesem](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) Blog.
 
 
-**Smooth Streaming-Format**
+###Smooth Streaming-Format
 
 {Streamingendpunktname-Media Services-Kontoname}.streaming.mediaservices.windows.net/{Locator-ID}/{Dateiname}.ism/Manifest
 
@@ -125,7 +126,7 @@ Beispiel:
 
 	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
-**Smooth Streaming 2.0-Manifest (Legacymanifest)**
+###<a id="fmp4_v20"></a>Smooth Streaming 2.0-Manifest (Legacymanifest)
 
 Das Smooth Streaming-Manifestformat enthält standardmäßig das repeat-Tag (r-tag). Einige Player unterstützen das r-Tag jedoch nicht. Für diese Clients kann ein Format verwendet werden, mit dem das r-Tag deaktiviert wird:
 
@@ -133,12 +134,11 @@ Das Smooth Streaming-Manifestformat enthält standardmäßig das repeat-Tag (r-t
 
 	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
 
-**HDS (nur für Lizenznehmer von Adobe PrimeTime/Access)**
+###HDS (nur für Lizenznehmer von Adobe PrimeTime/Access)
 
 {Streamingendpunktname-Media Services-Kontoname}.streaming.mediaservices.windows.net/{Locator-ID}/{Dateiname}.ism/Manifest(Format=f4m-f4f)
 
 	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=f4m-f4f)
-
 
 ##Progressiver Download 
 
@@ -151,7 +151,6 @@ Verwenden Sie den "OnDemandOrigin"-Typ des Locator zum progressiven Herunterlade
 Es gelten die folgenden Bedingungen:
 
 - Sie müssen alle speicherverschlüsselten Medienobjekte entschlüsseln, die Sie aus dem ursprünglichen Dienst für den progressiven Download streamen möchten.
-
 
 ##Herunterladen
 
@@ -166,13 +165,38 @@ Es gelten die folgenden Bedingungen:
 - Sie müssen alle speicherverschlüsselten Medienobjekte entschlüsseln, die Sie aus dem ursprünglichen Dienst für den progressiven Download streamen möchten.
 - Ein Download, der nicht innerhalb von zwölf Stunden abgeschlossen wird, schlägt fehl.
 
-
-
 ##Streamingendpunkte
 
 Ein **Streamingendpunkt** stellt einen Streamingdienst dar, der Inhalte zur weiteren Verteilung direkt in einer Clientwiedergabeanwendung oder einem Content Delivery Network (CDN) bereitstellen kann. Der ausgehende Stream des Streamingendpunkt-Diensts kann ein Livestream oder ein Video on Demand-Medienobjekt in Ihrem Media Services-Konto sein. Darüber hinaus können Sie die Kapazität des Streamingendpunkt-Diensts für die Verarbeitung wachsender Bandbreitenanforderungen steuern, indem Sie die reservierten Einheiten für das Streaming anpassen. Anwendungen in einer Produktionsumgebung sollten Sie mindestens eine reservierte Einheit zuweisen. Weitere Informationen finden Sie unter [Skalieren eines Mediendiensts](media-services-manage-origins.md#scale_streaming_endpoints).
 
+##Bekannte Probleme
 
+### Änderungen an der Smooth Streaming-Manifestversion
+
+Vor der Dienstversion vom Juli 2016 galt Folgendes: Wenn von Media Encoder Standard, Media Encoder Premium Workflow oder dem älteren Azure Media Encoder erstellte Medienobjekte mithilfe der dynamischen Paketerstellung gestreamt wurden, entsprach das zurückgegebene Smooth Streaming-Manifest der Version 2.0, bei der für die Dauer der Fragmente nicht die sog. Wiederholungstags („R“-Tags) verwendet werden. Beispiel:
+
+	<?xml version="1.0" encoding="UTF-8"?>
+	<SmoothStreamingMedia MajorVersion="2" MinorVersion="0" Duration="8000" TimeScale="1000">
+		<StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
+			<QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
+			<c t="0" d="2000" n="0" />
+			<c d="2000" />
+			<c d="2000" />
+			<c d="2000" />
+		</StreamIndex>
+	</SmoothStreamingMedia>
+
+Ab der Dienstversion vom Juli 2016 entspricht das generierte Smooth Streaming-Manifest der Version 2.2, bei dem für die Dauer von Fragmenten Wiederholungstags verwendet werden. Zum Beispiel:
+
+	<?xml version="1.0" encoding="UTF-8"?>
+	<SmoothStreamingMedia MajorVersion="2" MinorVersion="2" Duration="8000" TimeScale="1000">
+		<StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
+			<QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
+			<c t="0" d="2000" r="4" />
+		</StreamIndex>
+	</SmoothStreamingMedia>
+
+Einige ältere Smooth Streaming-Clients unterstützen möglicherweise nicht die Wiederholungstags, sodass das Manifest nicht geladen werden kann. Um dieses Problem zu beheben, können Sie den älteren Manifestformatparameter **(format=fmp4-v20)** verwenden (weitere Informationen finden Sie in [diesem](media-services-deliver-content-overview.md#fmp4_v20) Abschnitt) oder Ihren Client auf die neueste Version aktualisieren, die Wiederholungstags unterstützt.
 
 ##Media Services-Lernpfade
 
@@ -187,4 +211,4 @@ Ein **Streamingendpunkt** stellt einen Streamingdienst dar, der Inhalte zur weit
 [Aktualisieren von Media Services nach dem Austausch der Speicherschlüssel](media-services-roll-storage-access-keys.md)
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

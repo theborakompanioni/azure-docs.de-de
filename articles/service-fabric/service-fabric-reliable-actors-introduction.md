@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/25/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
 
 # Einführung in Service Fabric Reliable Actors
@@ -105,7 +105,7 @@ Die Klasse `ActorProxy` auf dem Client nimmt die erforderliche Auflösung vor, u
 
 Die Reliable Actors-Laufzeit stellt ein einfaches Turn-basiertes Zugriffsmodell für den Zugriff auf Akteurmethoden bereit. Dies bedeutet, dass zu jedem beliebigen Zeitpunkt nur ein Thread innerhalb des Akteurobjektcodes aktiv sein kann. Der Turn-basierte Zugriff vereinfacht parallel ausgeführte Systeme, da keine Notwendigkeit für Synchronisierungsmechanismen für den Datenzugriff besteht. Das bedeutet auch, dass beim Entwurf dieser Systeme besonderes Augenmerk auf den Aspekt des Singlethread-Zugriffs der einzelnen Akteurinstanzen gelegt werden muss.
 
- - Eine einzelne Akteurinstanz kann nicht mehrere Anforderungen gleichzeitig verarbeiten. Eine Akteurinstanz kann einen Engpass beim Durchsatz verursachen, wenn von ihr die Verarbeitung paralleler Anforderungen erwartet wird. 
+ - Eine einzelne Akteurinstanz kann nicht mehrere Anforderungen gleichzeitig verarbeiten. Eine Akteurinstanz kann einen Engpass beim Durchsatz verursachen, wenn von ihr die Verarbeitung paralleler Anforderungen erwartet wird.
  - Akteure können eine gegenseitige Sperre hervorrufen, wenn eine zirkuläre Anforderung zwischen zwei Akteuren besteht, während gleichzeitig eine externe Anforderung an einen der Akteure gesendet wird. Bei der Akteurlaufzeit tritt bei Akteuraufrufen automatisch ein Timeout auf, und es wird eine Ausnahme an den Aufrufer gesendet, um mögliche Sperren zu unterbrechen.
 
 ![Reliable Actors-Kommunikation][3]
@@ -158,4 +158,4 @@ Die Actors-Laufzeit bietet diese Parallelitätsgarantien in Situationen, in dene
 [2]: ./media/service-fabric-reliable-actors-introduction/distribution.png
 [3]: ./media/service-fabric-reliable-actors-introduction/actor-communication.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

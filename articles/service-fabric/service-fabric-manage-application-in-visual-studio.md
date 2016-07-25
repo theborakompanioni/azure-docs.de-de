@@ -13,20 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/02/2016"
+   ms.date="07/07/2016"
    ms.author="seanmck"/>
 
 # Verwenden von Visual Studio zum Vereinfachen des Schreibens und Verwaltens Ihrer Service Fabric-Anwendung
 
 Sie können Ihre Azure Service Fabric-Anwendungen und -Dienste in Visual Studio verwalten. Sobald Sie die [Einrichtung Ihrer Entwicklungsumgebung](service-fabric-get-started.md) abgeschlossen haben, können Sie mit Visual Studio Service Fabric-Anwendungen erstellen, Dienste hinzufügen und Anwendungen packen, registrieren und im lokalen Entwicklungscluster bereitstellen.
 
-Um eine Anwendung zu verwalten, klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Anwendungsprojekt.
-
-![Service Fabric-Anwendung mit Rechtsklick auf das Anwendungsprojekt verwalten][manageservicefabric]
-
 ## Bereitstellen der Service Fabric-Anwendung
 
-Beim Bereitstellen einer Anwendung erfolgen die folgenden Schritte in einem einfachen Vorgang:
+Beim Bereitstellen einer Anwendung werden die folgenden Schritte standardmäßig zu einem einfachen Vorgang zusammengefasst:
 
 1. Erstellen des Anwendungspakets
 2. Hochladen des Anwendungspakets in den Image-Speicher
@@ -38,25 +34,26 @@ Sie können in Visual Studio auch **F5** drücken, um die Anwendung bereitzustel
 
 ### Debugmodus für die Anwendung
 
-Während des lokalen Debuggens des Diensts kann es vorkommen, dass Sie die vorhandene Anwendung und die Daten beibehalten möchten. Die Visual Studio Service Fabric-Tools enthalten eine Eigenschaft mit dem Namen **Application Debug Mode**. Hiermit wird gesteuert, ob **F5** verwendet werden soll, um die Anwendung zu deinstallieren oder nach Abschluss einer Debugsitzung beizubehalten.
+Standardmäßig entfernt Visual Studio vorhandene Instanzen Ihres Anwendungstyps, wenn Sie das Debuggen beenden oder (falls Sie die App ohne angefügten Debugger bereitgestellt haben) wenn Sie die Anwendung erneut bereitstellen. In diesem Fall werden sämtliche Daten der Anwendung entfernt. Beim lokalen Debuggen sollen aber unter Umständen bereits erstellte Daten erhalten bleiben, wenn Sie eine neue Version der Anwendung testen. Die Visual Studio Service Fabric-Tools enthalten eine Eigenschaft namens **Application Debug Mode** (Anwendungsdebugmodus), die steuert, ob die Anwendung beim Drücken von F5 deinstalliert wird oder ob sie nach Abschluss einer Debugsitzung erhalten bleiben soll.
 
 #### So legen Sie die „Application Debug Mode“-Eigenschaft fest
 
 1. Wählen Sie im Kontextmenü des Anwendungsprojekts **Eigenschaften** aus (oder drücken Sie **F4**).
-2. Legen Sie im Eigenschaftenfenster die **Application Debug Mode**-Eigenschaft entweder auf **Remove** (Entfernen) oder **Auto Upgrade** (Automatisches Upgrade) fest.
+2. Legen Sie im Eigenschaftenfenster die **Application Debug Mode**-Eigenschaft entweder auf **Remove** (Entfernen) oder auf **Auto Upgrade** (Automatisches Upgrade) fest.
 
-![Festlegen der „Application Debug Mode“-Eigenschaft][debugmodeproperty]
+    ![Festlegen der „Application Debug Mode“-Eigenschaft][debugmodeproperty]
 
-Durch das Festlegen dieses Eigenschaftswerts auf **Auto Upgrade** (Automatisches Upgrade) wird die Anwendung im lokalen Cluster weiter ausgeführt. Mit der nächsten Betätigung von **F5** wird die Bereitstellung wie ein Upgrade behandelt, indem der nicht überwachte automatische Modus verwendet wird, um die Anwendung schnell auf eine neuere Version mit angehängter Datumszeichenfolge zu aktualisieren. Beim Upgradevorgang werden alle Daten beibehalten, die Sie in einer vorherigen Debugsitzung eingegeben haben.
+Durch das Festlegen dieses Eigenschaftswerts auf **Auto Upgrade** (Automatisches Upgrade) wird die Anwendung im lokalen Cluster weiter ausgeführt. Bei der nächsten Verwendung von F5 wird die Bereitstellung wie ein Upgrade behandelt, indem der nicht überwachte automatische Modus verwendet wird, um die Anwendung schnell auf eine neuere Version mit angehängter Datumszeichenfolge zu aktualisieren. Beim Upgradevorgang werden alle Daten beibehalten, die Sie in einer vorherigen Debugsitzung eingegeben haben.
 
 ![Beispiel für neue Anwendungsversion mit angefügtem Datum (date1)][preservedate]
 
-Die Daten werden mithilfe der Upgradefunktion der Service Fabric-Plattform beibehalten. Weitere Informationen zum Upgrade einer Anwendung finden Sie unter [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md)
+Daten werden dank der Nutzung der Anwendungsupgradefunktionen von Service Fabric beibehalten, der Optimierungsschwerpunkt liegt jedoch eher auf Leistung und weniger auf Sicherheit. Weitere Informationen zum Upgraden von Anwendungen sowie zur praktischen Durchführung eines Upgrades finden Sie unter [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md).
 
-**Hinweis:** Diese Eigenschaft ist in den Versionen vor Version 1.1 der Service Fabric-Tools für Visual Studio noch nicht enthalten. Verwenden Sie in diesen früheren Versionen die **Preserve Data On Start**-Eigenschaft, um das gleiche Verhalten zu erzielen.
+>[AZURE.NOTE] Diese Eigenschaft ist erst ab Version 1.1 der Service Fabric-Tools für Visual Studio verfügbar. Verwenden Sie in Versionen vor 1.1 die **Preserve Data On Start**-Eigenschaft, um das gleiche Ergebnis zu erzielen.
+
 ## Fügen Sie der Service Fabric-Anwendung einen Dienst hinzu.
 
-Sie können der Anwendung neue Fabric-Dienste hinzufügen, um die Funktionalität der Anwendung zu erweitern. Um sicherzustellen, dass der Dienst in das Anwendungspaket aufgenommen wird, fügen Sie den Dienst über das Menüelement **Neuer Fabric-Dienst** hinzu.
+Sie können der Anwendung neue Dienste hinzufügen, um den Funktionsumfang der Anwendung zu erweitern. Um sicherzustellen, dass der Dienst in das Anwendungspaket aufgenommen wird, fügen Sie den Dienst über das Menüelement **Neuer Fabric-Dienst** hinzu.
 
 ![Neuen Fabric-Dienst zur Anwendung hinzufügen][newservice]
 
@@ -72,14 +69,14 @@ Der neue Dienst wird zur Projektmappe und dem vorhandenen Anwendungspaket hinzug
 
 Um die Anwendung und die zugehörigen Dienste in einem Cluster bereitzustellen, müssen Sie ein Anwendungspaket erstellen. Das Paket ordnet das Anwendungsmanifest, das bzw. die Dienstmanifeste und andere erforderliche Dateien in einem bestimmten Layout an. Visual Studio richtet das Paket im Projektordner der Anwendung im Verzeichnis "Pkg" ein und verwaltet es. Klicken Sie zum Erstellen oder Aktualisieren des Anwendungspakets im Kontextmenü der **Anwendung** auf **Packen**. Dies ist möglicherweise erforderlich, falls Sie die Anwendung mithilfe benutzerdefinierter PowerShell-Skripts bereitstellen möchten.
 
-## Entfernen einer Anwendung
+## Entfernen von Anwendungen und Anwendungstypen mit dem Cloud-Explorer
 
-Sie können die Bereitstellung eines Anwendungstyps in Ihrem lokalen Cluster mit dem Service Fabric-Explorer aufheben. Sie können auf den Cluster-Explorer über den HTTP-Gatewayendpunkt des Clusters (in der Regel 19080 oder 19007) zugreifen, z. B. http://localhost:19080/Explorer. Hierbei werden die oben beschriebenen Bereitstellungsschritte rückgängig gemacht:
-
-1. Entfernen ausgeführter Anwendungsinstanzen
-2. Aufheben der Registrierung des Anwendungstyps
+Einfache Clusterverwaltungsvorgänge können in Visual Studio mit dem Cloud-Explorer ausgeführt werden, den Sie über das Menü **Ansicht** starten können. Damit können Sie beispielsweise Anwendung löschen und die Bereitstellung von Anwendungstypen in lokalen Clustern oder Remoteclustern aufheben.
 
 ![Entfernen einer Anwendung](./media/service-fabric-manage-application-in-visual-studio/removeapplication.png)
+
+>[AZURE.TIP] Informationen zu komplexeren Clusterverwaltungsfunktionen finden Sie unter [Visualisieren Ihres Clusters mit Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
+
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## Nächste Schritte
@@ -99,4 +96,4 @@ Sie können die Bereitstellung eines Anwendungstyps in Ihrem lokalen Cluster mit
 [preservedate]: ./media/service-fabric-manage-application-in-visual-studio/preservedate.png
 [debugmodeproperty]: ./media/service-fabric-manage-application-in-visual-studio/debugmodeproperty.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

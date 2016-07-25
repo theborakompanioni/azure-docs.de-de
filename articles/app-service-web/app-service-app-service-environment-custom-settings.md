@@ -76,7 +76,7 @@ TLS 1.0 kann mit dem folgenden **clusterSettings**-Eintrag deaktiviert werden:
         ],
 
 ## Ändern der Reihenfolge der TLS-Verschlüsselungssammlung ##
-Eine weitere Frage von Kunden lautet, ob sie die Liste der Verschlüsselungsverfahren ändern können, die von ihrem Server ausgehandelt wird. Dies ist, wie im Folgenden gezeigt, durch Ändern der Einstellung **clusterSettings** möglich. Die Liste der verfügbaren Verschlüsselungssammlungen kann aus [diesem MSDN-Artikel](https://msdn.microsoft.com/library/windows/desktop/aa374757(v=vs.85).aspx) abgerufen werden.
+Eine weitere Frage von Kunden lautet, ob sie die Liste der Verschlüsselungsverfahren ändern können, die von ihrem Server ausgehandelt wird. Dies ist, wie im Folgenden gezeigt, durch Ändern der Einstellung **clusterSettings** möglich. Die Liste der verfügbaren Verschlüsselungssammlungen kann aus [diesem MSDN-Artikel (https://msdn.microsoft.com/library/windows/desktop/aa374757(v=vs.85).aspx)] abgerufen werden.
 
         "clusterSettings": [
             {
@@ -95,4 +95,4 @@ Die Azure-Website mit Resource Manager-Schnellstartvorlagen umfasst eine Vorlage
 
 <!-- IMAGES -->
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0713_2016-->

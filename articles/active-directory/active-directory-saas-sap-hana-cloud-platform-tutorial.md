@@ -2,17 +2,17 @@
     pageTitle="Tutorial: Azure Active Directory-Integration mit SAP HANA Cloud Platform | Microsoft Azure" 
     description="Erfahren Sie, wie Sie SAP HANA Cloud Platform mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen." 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="07/07/2016" 
+    ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit SAP HANA Cloud Platform
   
@@ -68,9 +68,9 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für SAP
   
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei SAP HANA Cloud Platform zu authentifizieren. Im Rahmen dieses Verfahrens müssen Sie eine Base-64-codierte Zertifikatsdatei in Ihren SAP HANA Cloud Platform-Mandanten hochladen. Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Konvertieren eines binären Zertifikats in eine Textdatei](http://youtu.be/PlgrzUZ-Y1o) weitere Informationen.
 
-###So konfigurieren Sie einmaliges Anmelden:
+###So konfigurieren Sie einmaliges Anmelden
 
-1.  Klicken Sie im Azure AD-Portal auf der Anwendungsintegrationsseite für **SAP HANA Cloud Platform** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **SAP HANA Cloud Platform** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC778552.png "Einmaliges Anmelden konfigurieren")
 
@@ -78,7 +78,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790797.png "Einmaliges Anmelden konfigurieren")
 
-3.  Melden Sie sich in einem anderen Webbrowserfenster auf der Registerkarte https://account.\<landscape host>.ondemand.com/cockpit (z. B.: **https://account.hanatrial.ondemand.com/cockpit*) beim SAP HANA Cloud Platform-Cockpit an.
+3.  Melden Sie sich in einem anderen Webbrowserfenster unter https://account.\<landscape host>.ondemand.com/cockpit (z.B.: *https://account.hanatrial.ondemand.com/cockpit*) beim SAP HANA Cloud Platform-Cockpit an.
 
 4.  Klicken Sie auf die Registerkarte **Vertrauen**.
 
@@ -91,11 +91,11 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     1.  Klicken Sie auf die Registerkarte **Lokale Dienstanbieter**.
     2.  Klicken Sie zum Herunterladen der SAP HANA Cloud Platform-Metadatendatei auf **Metadaten abrufen**.
 
-6.  Führen Sie im Azure Active Directory-Portal auf der Seite **App-URL konfigurieren** die folgenden Schritte aus, und klicken Sie dann auf **Weiter**.
+6.  Führen Sie im klassischen Azure AD-Portal auf der Seite **App-URL konfigurieren** die folgenden Schritte aus, und klicken Sie dann auf **Weiter**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790798.png "App-URL konfigurieren")
 
-    1.  Geben Sie im Textfeld **Anmelde-URL** die URL ein, welche die Benutzer zur Anmeldung bei der** SAP HANA Cloud Platform**-Anwendung verwenden. Dies ist die kontospezifische URL einer geschützten Ressource in der SAP HANA Cloud Platform-Anwendung. Die URL basiert auf dem folgenden Muster: *https://\<applicationName><accountName>.<landscape host>.ondemand.com/<path\_to\_protected\_resource>* (z. B.: **https://xleavep1941203872trial.hanatrial.ondemand.com/xleave*)
+    1.  Geben Sie im Textfeld **Anmelde-URL** die URL ein, welche die Benutzer zur Anmeldung bei der** SAP HANA Cloud Platform**-Anwendung verwenden. Dies ist die kontospezifische URL einer geschützten Ressource in der SAP HANA Cloud Platform-Anwendung. Die URL basiert auf dem folgenden Muster: *https://\<applicationName><accountName>.<landscape host>.ondemand.com/<path\_to\_protected\_resource>* (z. B.: *https://xleavep1941203872trial.hanatrial.ondemand.com/xleave*)
 
 		>[AZURE.NOTE]Dies ist die URL in Ihrer SAP HANA Cloud Platform-Anwendung, für deren Authentifizierung der Benutzer erforderlich ist.
 
@@ -128,7 +128,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Verwaltung von Vertrauensstellungen](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC793932.png "Verwaltung von Vertrauensstellungen")
 
-    >[AZURE.NOTE]Nach dem Hochladen der Metadatendatei werden die Werte für **URL für einmaliges Anmelden**, **Einzelne Abmelde-URL** und **Signaturzertifikat** automatisch ausgefüllt.
+    >[AZURE.NOTE] Nach dem Hochladen der Metadatendatei werden die Werte für **URL für einmaliges Anmelden**, **Einzelne Abmelde-URL** und **Signaturzertifikat** automatisch ausgefüllt.
 
 11. Klicken Sie auf die Registerkarte **Attribute**.
 
@@ -141,8 +141,8 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
         |Assertion-Attribut| Prinzipal-Attribut|
 		|-------------------|--------------------|
         |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname| firstname|--------------------|--------------------|
-        |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname| LastName|---|
-        |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress|email|
+	|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname| LastName|---|
+	|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress|email|
 
     >[AZURE.NOTE]Die Konfiguration der Attribute hängt davon ab, wie die Anwendung(en) auf HPC entwickelt wurden, d. h. welche Attribute in der SAML-Antwort erwartet wird/werden und unter welchem Namen (Prinzipal-Attribut) sie auf dieses Attribut im Code zugreifen.
     >  
@@ -150,7 +150,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     >
     >b. Die Namen und Werte für das im Screenshot gezeigte **Prinzipal Attribut** ist abhängig davon, wie die Anwendung entwickelt wird. Es ist möglich, dass die Anwendung andere Zuordnungen erfordert.
 
-13. Wählen Sie im Azure-Portal auf der Dialogseite **Einmaliges Anmelden konfigurieren für SAP HANA Cloud Platform** die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**.
+13. Wählen Sie im klassischen Azure-Portal auf der Dialogseite **Einmaliges Anmelden konfigurieren für SAP HANA Cloud Platform** die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC796933.png "Einmaliges Anmelden konfigurieren")
   
@@ -158,7 +158,7 @@ Als optionalen Schritt können Sie Assertion-Gruppen für Ihren Azure Active Dir
 
 >[AZURE.NOTE]Mithilfe von Gruppen auf SAP HANA Cloud Platform können Sie auf dynamische Weise eine oder mehrere Rollen in Ihren SAP HANA Cloud Platform-Anwendungen zuweisen, durch die Werte der Attribute in der SAML 2.0-Assertion definiert. Beispiel: Wenn die Assertion das Attribut „*contract=temporary*“ enthält, möchten Sie ggf. alle betroffenen Benutzer der Gruppe „*TEMPORÄR*“ hinzufügen. Die Gruppe „*Temporär*“ enthält möglicherweise eine oder mehrere Rollen aus einer oder mehreren Anmeldung(en), die auf Ihrem SAP HANA Cloud Platform-Konto bereitgestellt sind.
 >  
->Verwenden Sie Assertion-Gruppen, wenn Sie viele Benutzer einer oder mehreren Rolle(n) auf Ihrem SAP HANA Cloud Platform-Konto zuweisen möchten. Wenn Sie nur einen einzelnen Benutzer oder eine geringe Anzahl an Benutzern zu einer (mehreren) speziellen Rolle(n) zuweisen möchten, empfehlen wir die direkte Zuweisung auf der Registerkarte „**Autorisierungen**“ des SAP HANA Cloud Platform-Cockpits.
+>Verwenden Sie Assertion-Gruppen, wenn Sie viele Benutzer einer oder mehreren Rolle(n) auf Ihrem SAP HANA Cloud Platform-Konto zuweisen möchten. Wenn Sie nur einen einzelnen Benutzer oder eine geringe Anzahl von Benutzern zu einer oder mehreren speziellen Rolle(n) zuweisen möchten, empfiehlt es sich, diese direkt im SAP HANA Cloud Platform-Cockpit auf der Registerkarte **Authorizations** zuzuweisen.
 
 ##Zuweisen einer Rolle an einen Benutzer
   
@@ -184,7 +184,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 ###So weisen Sie SAP HANA Cloud Platform Benutzer zu:
 
-1.  Erstellen Sie im Azure AD-Portal ein Testkonto.
+1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
 2.  Klicken Sie auf der Anwendungsintegrationsseite für **SAP HANA Cloud Platform** auf **Benutzer zuweisen**.
 
@@ -196,4 +196,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
   
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!----HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0713_2016-->

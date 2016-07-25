@@ -36,7 +36,7 @@ Die folgenden Überlegungen können Ihnen bei der Entscheidung über die Größe
 
 * Virtuelle Computer der F-Serie sind eine hervorragende Wahl für Arbeitslasten, die schnellere CPUs erfordern, aber nicht so viel Arbeitsspeicher oder lokalen SSD pro CPU-Kern benötigen. Bei Arbeitslasten wie Analysen, Gamingservern, Webservern und Batchverarbeitung kommen die Vorteile und der Nutzen der F-Serie besonders gut zum Tragen.
 
-*   Einige der physischen Hosts in Azure-Rechenzentren unterstützen möglicherweise keine der größeren VM-Größen, z.B. A5 bis A11. Daher wird möglicherweise die Fehlermeldung **Fehler beim Konfigurieren des virtuellen Computers<machine name>** oder **Fehler beim Erstellen des virtuellen Computers<machine name>** beim Ändern der Größe eines vorhandenen virtuellen Computers, beim Erstellen eines neuen virtuellen Computers in einem virtuellen Netzwerk, das vor dem 16. April 2013 erstellt wurde, oder beim Hinzufügen eines neuen virtuellen Computers zu einem vorhandenen Clouddienst angezeigt. Problemumgehungen für die einzelnen Bereitstellungsszenarios finden Sie unter [Error: “Failed to configure virtual machine”](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) (in englischer Sprache) im Supportforum.
+*   Einige der physischen Hosts in Azure-Rechenzentren unterstützen möglicherweise keine der größeren VM-Größen, z.B. A5 bis A11. Daher wird möglicherweise die Fehlermeldung **Fehler beim Konfigurieren des virtuellen Computers <Computername>** oder **Fehler beim Erstellen des virtuellen Computers <Computername>** beim Ändern der Größe eines vorhandenen virtuellen Computers, beim Erstellen eines neuen virtuellen Computers in einem virtuellen Netzwerk, das vor dem 16. April 2013 erstellt wurde, oder beim Hinzufügen eines neuen virtuellen Computers zu einem vorhandenen Clouddienst angezeigt. Problemumgehungen für die einzelnen Bereitstellungsszenarios finden Sie unter [Error: “Failed to configure virtual machine”](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) (in englischer Sprache) im Supportforum.
 
 
 ## Überlegungen zur Leistung
@@ -122,12 +122,12 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 |Standard\_D2\_v2 |2|7 GB|2|Temporär (SSD) = 100 GB |4|4 x 500| hoch |
 |Standard\_D3\_v2 |4|14 GB|4|Temporär (SSD) = 200 GB |8|8 x 500| hoch |
 |Standard\_D4\_v2 |8|28 GB|8|Temporär (SSD) = 400 GB |16|16 x 500| hoch |
-|Standard\_D5\_v2 |16|56 GB|8|Temporär (SSD) = 800 GB |32|32 x 500| sehr hoch |
+|Standard\_D5\_v2 |16|56 GB|8|Temporär (SSD) = 800 GB |32|32 x 500| äußerst hoch |
 |Standard\_D11\_v2 |2|14 GB|2|Temporär (SSD) = 100 GB |4|4 x 500| hoch |
 |Standard\_D12\_v2 |4|28 GB|4|Temporär (SSD) = 200 GB |8|8 x 500| hoch |
 |Standard\_D13\_v2 |8|56 GB|8|Temporär (SSD) = 400 GB |16|16 x 500| hoch |
-|Standard\_D14\_v2 |16|112 GB|8|Temporär (SSD) = 800 GB |32|32 x 500| sehr hoch |
-|Standard\_D15\_v2 |20|140 GB|10|Temporär (SSD) = 1 TB |40|40 x 500| sehr hoch |
+|Standard\_D14\_v2 |16|112 GB|8|Temporär (SSD) = 800 GB |32|32 x 500| äußerst hoch |
+|Standard\_D15\_v2 |20|140 GB|10|Temporär (SSD) = 1 TB |40|40 x 500| äußerst hoch |
 
 
 ## DS-Serie*
@@ -143,7 +143,7 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 |Standard\_DS13 |8|56|8|Lokales SSD-Laufwerk = 112 GB |16|288| 25\.600, 256 MB pro Sekunde | hoch |
 |Standard\_DS14 |16|112|8|Lokales SSD-Laufwerk = 224 GB |32|576| 51\.200, 512 MB pro Sekunde | sehr hoch |
 
-**Die bei einer DS-Serie möglichen Höchstwerte für E/A-Vorgänge pro Sekunde (IOPS) und Durchsatz (Bandbreite) werden durch die Größe des Datenträgers beeinflusst. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
+*Die bei einer DS-Serie möglichen Höchstwerte für E/A-Vorgänge pro Sekunde (IOPS) und Durchsatz (Bandbreite) werden durch die Größe des Datenträgers beeinflusst. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
 
 
 ## DSv2-Serie*
@@ -154,15 +154,15 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 |Standard\_DS2\_v2 |2|7|2|Lokales SSD-Laufwerk = 14 GB |4|86| 6\.400 96 MB pro Sekunde | hoch |
 |Standard\_DS3\_v2 |4|14|4|Lokales SSD-Laufwerk = 28 GB |8|172| 12\.800 192 MB pro Sekunde | hoch |
 |Standard\_DS4\_v2 |8|28|8|Lokales SSD-Laufwerk = 56 GB |16|344| 25\.600 384 MB pro Sekunde | hoch |
-|Standard\_DS5\_v2 |16|56|8|Lokales SSD-Laufwerk = 112 GB |32|688| 51\.200 768 MB pro Sekunde | hoch |
+|Standard\_DS5\_v2 |16|56|8|Lokales SSD-Laufwerk = 112 GB |32|688| 51\.200 768 MB pro Sekunde | äußerst hoch |
 |Standard\_DS11\_v2 |2|14|2|Lokales SSD-Laufwerk = 28 GB |4|72| 6\.400 96 MB pro Sekunde | hoch |
 |Standard\_DS12\_v2 |4|28|4|Lokales SSD-Laufwerk = 56 GB |8|144| 12\.800 192 MB pro Sekunde | hoch |
 |Standard\_DS13\_v2 |8|56|8|Lokales SSD-Laufwerk = 112 GB |16|288| 25\.600 384 MB pro Sekunde | hoch |
-|Standard\_DS14\_v2 |16|112|8|Lokales SSD-Laufwerk = 224 GB |32|576| 51\.200 768 MB pro Sekunde | sehr hoch |
-|Standard\_DS15\_v2 |20|140 GB|10|Lokales SSD-Laufwerk = 280 GB |40| 720|64\.000 960 MB pro Sekunde | sehr hoch |
+|Standard\_DS14\_v2 |16|112|8|Lokales SSD-Laufwerk = 224 GB |32|576| 51\.200 768 MB pro Sekunde | äußerst hoch |
+|Standard\_DS15\_v2 |20|140 GB|10|Lokales SSD-Laufwerk = 280 GB |40| 720|64\.000 960 MB pro Sekunde | äußerst hoch |
 
 
-**Die bei einer DS-Serie möglichen Höchstwerte für E/A-Vorgänge pro Sekunde (IOPS) und Durchsatz (Bandbreite) werden durch die Größe des Datenträgers beeinflusst. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
+*Die bei einer DS-Serie möglichen Höchstwerte für E/A-Vorgänge pro Sekunde (IOPS) und Durchsatz (Bandbreite) werden durch die Größe des Datenträgers beeinflusst. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
 
 
 ## F-Serie
@@ -174,7 +174,7 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 | Standard\_F2 | 2 | 4 GB | 2 | Temporär (SSD) = 32 GB | 4 | 4 x 500 | hoch |
 | Standard\_F4 | 4 | 8 GB | 4 | Temporär (SSD) = 64 GB | 8 | 8 x 500 | hoch |
 | Standard\_F8 | 8 | 16 GB | 8 | Temporär (SSD) = 128 GB | 16 | 16 x 500 | hoch |
-| Standard\_F16 | 16 | 32 GB | 8 | Temporär (SSD) = 256 GB | 32 | 32 x 500 | sehr hoch |
+| Standard\_F16 | 16 | 32 GB | 8 | Temporär (SSD) = 256 GB | 32 | 32 x 500 | äußerst hoch |
 
 
 
@@ -186,11 +186,11 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 | Standard\_F2s | 2 | 4 | 2 | Lokales SSD-Laufwerk = 8 GB | 4 | 24 | 6\.400 96 MB pro Sekunde | hoch |
 | Standard\_F4s | 4 | 8 | 4 | Lokales SSD-Laufwerk = 16 GB | 8 | 48 | 12\.800 192 MB pro Sekunde | hoch |
 | Standard\_F8s | 8 | 16 | 8 | Lokales SSD-Laufwerk = 32 GB | 16 | 96 | 25\.600 384 MB pro Sekunde | hoch |
-| Standard\_F16s | 16 | 32 | 8 | Lokales SSD-Laufwerk = 64 GB | 32 | 192 | 51\.200 768 MB pro Sekunde | sehr hoch |
+| Standard\_F16s | 16 | 32 | 8 | Lokales SSD-Laufwerk = 64 GB | 32 | 192 | 51\.200 768 MB pro Sekunde | äußerst hoch |
 
 
 
-**Die bei einer Fs-Serie möglichen Höchstwerte für E/A-Vorgänge pro Sekunde (IOPS) und Durchsatz (Bandbreite) werden durch die Größe des Datenträgers beeinflusst. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
+*Die bei einer Fs-Serie möglichen Höchstwerte für E/A-Vorgänge pro Sekunde (IOPS) und Durchsatz (Bandbreite) werden durch die Größe des Datenträgers beeinflusst. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
 
 
 
@@ -227,7 +227,7 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 
 Im klassischen Bereitstellungsmodell unterscheiden sich einige VM-Größennamen in CLI und PowerShell:
 
-* Standard\_A0 ist „Sehr klein“ 
+* Standard\_A0 ist „Sehr klein“
 * Standard\_A1 ist „Klein“
 * Standard\_A2 ist „Mittel“
 * Standard\_A3 ist „Groß“
@@ -236,7 +236,7 @@ Im klassischen Bereitstellungsmodell unterscheiden sich einige VM-Größennamen 
 
 ## Nächste Schritte
 
-- Erfahren Sie mehr über [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../articles/azure-subscription-service-limits.md).
+- Erfahren Sie mehr über [Einschränkungen für Azure-Abonnements und -Dienste, Kontingente und Einschränkungen](../articles/azure-subscription-service-limits.md).
 - Erfahren Sie mehr über [rechenintensive A8-, A9-, A10- und A11-Instanzen](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md) für Workloads wie etwa High-Performance Computing (HPC).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

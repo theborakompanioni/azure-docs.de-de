@@ -42,7 +42,7 @@ Alle Knoten eines HDInsight-Clusters befinden sich in einem Azure Virtual Networ
 | Ambari | 443 | HTTPS | Ambari-Webbenutzeroberfläche. Siehe [Verwalten von HDInsight mithilfe der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md). |
 | Ambari | 443 | HTTPS | Ambari-REST-API. Siehe [Verwalten von HDInsight mithilfe der Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md). |
 | WebHCat | 443 | HTTPS | HCatalog-REST-API. Siehe [Verwenden von Hive mit Curl](hdinsight-hadoop-use-Pig-curl.md), [Verwenden von Pig mit Curl](hdinsight-hadoop-use-Pig-curl.md), [Verwenden von MapReduce mit Curl](hdinsight-hadoop-use-mapreduce-curl.md). |
-| HiveServer2 | 443 | ODBC | Stellt per ODBC ein Verbindung mit Hive her. Siehe [Verbinden von Excel mit HDInsight mithilfe des Microsoft ODBC-Treibers](hdinsight-connect-excel-hive-odbc-driver). |
+| HiveServer2 | 443 | ODBC | Stellt per ODBC ein Verbindung mit Hive her. Siehe [Verbinden von Excel mit HDInsight mithilfe des Microsoft ODBC-Treibers](hdinsight-connect-excel-hive-odbc-driver.md). |
 | HiveServer2 | 443 | JDBC | Stellt per JDBC ein Verbindung mit Hive her. Siehe [Herstellen einer Verbindung mit Hive unter HDInsight per Hive-JDBC-Treiber](hdinsight-connect-hive-jdbc-driver.md). |
 
 Für spezielle Clustertypen ist Folgendes verfügbar:
@@ -133,4 +133,4 @@ Alle Dienste, die im Internet öffentlich verfügbar gemacht werden, müssen aut
 | Regionsserver | Alle Workerknoten | 16020 | &nbsp; | &nbsp; |
 | &nbsp; | &nbsp; | 2181 | &nbsp; | Port, der von Clients für die Verbindungsherstellung mit ZooKeeper verwendet wird |
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

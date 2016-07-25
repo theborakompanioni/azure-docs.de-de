@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/14/2016" 
+	ms.date="07/13/2016" 
 	ms.author="szark"/>
 
 
@@ -25,9 +25,11 @@
 
 ##Einführung
 
-Der Azure Linux-Agent (/usr/sbin/waagent) verwaltet die Interaktion eines virtuellen Computers mit dem Azure Fabric Controller. Er tut Folgendes:
+Der Azure Linux-Agent (/usr/sbin/waagent) verwaltet die Interaktion eines virtuellen Computers mit dem Azure Fabric Controller. Informationen zum Installieren und Aktualisieren des Agents auf einem ausgeführten virtuellen Computer finden Sie zudem unter [Aktualisieren des Azure Linux-Agent auf einem virtuellen Computer auf die neueste Version von GitHub](virtual-machines-linux-update-agent.md).
 
-> [AZURE.NOTE] In der [Infodatei](https://github.com/Azure/WALinuxAgent/blob/2.0/README) des Azure-Linux-Agenten finden Sie die aktuellste Version dieser Anleitung.
+Der Azure Linux-Agent ist für Folgendes zuständig:
+
+> [AZURE.NOTE] In der [Infodatei](https://github.com/Azure/WALinuxAgent/blob/master/README.md) des Azure Linux-Agenten finden Sie die aktuellste Version dieser Anleitung.
 
 * **Image-Bereitstellung**
   - Erstellen eines Benutzerkontos
@@ -209,7 +211,7 @@ Sofern ein Pfad zu einer ausführbaren Programmdatei angegeben ist, wird das Pro
 
 Typ: String Standardwert: Keiner
 
-Sofern ein Pfad zu einer ausführbaren Programmdatei angegeben ist, wird das Programm aufgerufen, wenn das Fabric anzeigt, dass ein neues Netzwerktopologie-Layout für den virtuellen Computer verfügbar ist. Der Pfad zur XML-Konfigurationsdatei wird als Argument an die ausführbare Datei übergeben. Diese kann mehrmals, bei jeder Änderung der Netzwerktopologie (z. B. aufgrund einer Dienstreparatur), aufgerufen werden. Der aktuelle Speicherort dieser Datei lautet "/var/lib/waagent/SharedConfig.xml".
+Sofern ein Pfad zu einer ausführbaren Programmdatei angegeben ist, wird das Programm aufgerufen, wenn das Fabric anzeigt, dass ein neues Netzwerktopologie-Layout für den virtuellen Computer verfügbar ist. Der Pfad zur XML-Konfigurationsdatei wird als Argument an die ausführbare Datei übergeben. Diese kann mehrmals, bei jeder Änderung der Netzwerktopologie (z. B. aufgrund einer Dienstreparatur), aufgerufen werden. Der aktuelle Speicherort dieser Datei lautet "/var/lib/waagent/SharedConfig.xml".
 
 **Provisioning.Enabled:**
 
@@ -231,7 +233,7 @@ Typ: Boolean Standardwert: y
 
 Bei aktivierter Option werden alle SSH-Hostschlüsselpaare (ecdsa, dsa und rsa) bei der Bereitstellung aus "/etc/ssh/" gelöscht. Außerdem wird ein einzelnes neues Schlüsselpaar generiert.
 
-Der Verschlüsselungstyp für das neue Schlüsselpaar kann mit dem Provisioning.SshHostKeyPairType-Eintrag konfiguriert werden. Beachten Sie, dass einige Verteilungen SSH-Schlüsselpaare für alle fehlenden Verschlüsselungstypen neu erstellen, wenn der SSH-Daemon neu gestartet wird (z. B. bei einem Systemneustart).
+Der Verschlüsselungstyp für das neue Schlüsselpaar kann mit dem Provisioning.SshHostKeyPairType-Eintrag konfiguriert werden. Beachten Sie, dass einige Verteilungen SSH-Schlüsselpaare für alle fehlenden Verschlüsselungstypen neu erstellen, wenn der SSH-Daemon neu gestartet wird (z. B. bei einem Systemneustart).
 
 **Provisioning.SshHostKeyPairType:**
 
@@ -323,4 +325,4 @@ Beachten Sie, dass Cloud Ubuntu-Images für zahlreiche Konfigurationsaufgaben, d
 
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0713_2016-->

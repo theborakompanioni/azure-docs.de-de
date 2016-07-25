@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/23/2016" 
+	ms.date="07/13/2016" 
 	ms.author="sdanie"/>
 
 # Verwalten von Azure-Redis-Cache mit Azure PowerShell
@@ -60,7 +60,7 @@ Geben Sie beispielsweise Folgendes ein, um Hilfe zum `New-AzureRmRedisCache`-Cmd
 
 	Get-Help New-AzureRmRedisCache -Detailed
 
-## Herstellen einer Verbindung mit der Azure Government-Cloud oder Azure China
+### Herstellen einer Verbindung mit der Azure Government-Cloud oder Azure China
 
 Standardmäßig ist die Azure-Umgebung `AzureCloud`, was die globale Azure-Cloudinstanz darstellt. Verwenden Sie zum Verbinden mit einer anderen Instanz den `Add-AzureRmAccount`-Befehl mit dem Befehlszeilenschalter `-Environment` oder -`EnvironmentName` mit der gewünschten Umgebung bzw. dem gewünschten Umgebungsnamen.
 
@@ -100,7 +100,7 @@ Verwenden Sie zum Erstellen eines Caches in der Azure China-Cloud einen der folg
 
 Weitere Informationen zur Azure China-Cloud finden Sie unter [AzureChinaCloud für Azure wird in China von 21Vianet betrieben](http://www.windowsazure.cn/).
 
-## Eigenschaften, die für Azure Redis Cache-PowerShell verwendet werden
+### Eigenschaften, die für Azure Redis Cache-PowerShell verwendet werden
 
 Die folgende Tabelle enthält Eigenschaften und Beschreibungen für Parameter, die beim Erstellen und Verwalten Ihrer Azure Redis Cache-Instanzen mithilfe von Azure PowerShell häufig verwendet werden.
 
@@ -148,7 +148,7 @@ Neue Azure Redis Cache-Instanzen werden mit dem [New-AzureRmRedisCache](https://
 
 Um eine Liste der verfügbaren Parameter und ihrer Beschreibungen für `New-AzureRmRedisCache` anzuzeigen, führen Sie den folgenden Befehl aus.
 
-	PS SQLSERVER:> Get-Help New-AzureRmRedisCache -detailed
+	PS C:\> Get-Help New-AzureRmRedisCache -detailed
 	
 	NAME
 	    New-AzureRmRedisCache
@@ -577,8 +577,189 @@ Im folgenden Beispiel wird der Cache mit dem Namen `myCache` entfernt.
 	Are you sure you want to remove redis cache 'myCache'?
 	[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 
+
+## So importieren Sie einen Redis-Cache
+
+Sie können mit dem Cmdlet `Import-AzureRmRedisCache` Daten in eine Azure Redis Cache-Instanz importieren.
+
+>[AZURE.IMPORTANT] Import/Export ist nur für Caches im [Premium-Tarif](cache-premium-tier-intro.md) verfügbar. Weitere Informationen zum Importieren/Exportieren finden Sie unter [Importieren und Exportieren von Daten in Azure Redis Cache](cache-how-to-import-export-data.md).
+
+Um eine Liste der verfügbaren Parameter und ihrer Beschreibungen für `Import-AzureRmRedisCache` anzuzeigen, führen Sie den folgenden Befehl aus.
+
+	PS C:\> Get-Help Import-AzureRmRedisCache -detailed
+	
+	NAME
+	    Import-AzureRmRedisCache
+	
+	SYNOPSIS
+	    Import data from blobs to Azure Redis Cache.
+	
+	
+	SYNTAX
+	    Import-AzureRmRedisCache -Name <String> -ResourceGroupName <String> -Files <String[]> [-Format <String>] [-Force]
+	    [-PassThru] [<CommonParameters>]
+	
+	
+	DESCRIPTION
+	    The Import-AzureRmRedisCache cmdlet imports data from the specified blobs into Azure Redis Cache.
+	
+	
+	PARAMETERS
+	    -Name <String>
+	        The name of the cache.
+	
+	    -ResourceGroupName <String>
+	        The name of the resource group that contains the cache.
+	
+	    -Files <String[]>
+	        SAS urls of blobs whose content should be imported into the cache.
+	
+	    -Format <String>
+	        Format for the blob.  Currently "rdb" is the only supported, with other formats expected in the future.
+	
+	    -Force
+	        When the Force parameter is provided, import will be performed without any confirmation prompts.
+	
+	    -PassThru
+	        By default Import-AzureRmRedisCache imports data in cache and does not return any value. If the PassThru
+	        parameter is provided then Import-AzureRmRedisCache returns a boolean value indicating the success of the
+	        operation.
+	
+	    <CommonParameters>
+	        This cmdlet supports the common parameters: Verbose, Debug,
+	        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+	        OutBuffer, PipelineVariable, and OutVariable. For more information, see
+	        about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+	
+
+Der folgende Befehl importiert Daten aus dem vom SAS-URI angegebenen Blob in Azure Redis Cache.
+
+
+	PS C:\>Import-AzureRmRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Files @("https://mystorageaccount.blob.core.windows.net/mycontainername/blobname?sv=2015-04-05&sr=b&sig=caIwutG2uDa0NZ8mjdNJdgOY8%2F8mhwRuGNdICU%2B0pI4%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwd") -Force
+
+## So exportieren Sie einen Redis-Cache
+
+Sie können mit dem Cmdlet `Export-AzureRmRedisCache` Daten aus einer Azure Redis Cache-Instanz exportieren.
+
+>[AZURE.IMPORTANT] Import/Export ist nur für Caches im [Premium-Tarif](cache-premium-tier-intro.md) verfügbar. Weitere Informationen zum Importieren/Exportieren finden Sie unter [Importieren und Exportieren von Daten in Azure Redis Cache](cache-how-to-import-export-data.md).
+
+Um eine Liste der verfügbaren Parameter und ihrer Beschreibungen für `Export-AzureRmRedisCache` anzuzeigen, führen Sie den folgenden Befehl aus.
+
+	PS C:\> Get-Help Export-AzureRmRedisCache -detailed
+	
+	NAME
+	    Export-AzureRmRedisCache
+	
+	SYNOPSIS
+	    Exports data from Azure Redis Cache to a specified container.
+	
+	
+	SYNTAX
+	    Export-AzureRmRedisCache -Name <String> -ResourceGroupName <String> -Prefix <String> -Container <String> [-Format
+	    <String>] [-PassThru] [<CommonParameters>]
+	
+	
+	DESCRIPTION
+	    The Export-AzureRmRedisCache cmdlet exports data from Azure Redis Cache to a specified container.
+	
+	
+	PARAMETERS
+	    -Name <String>
+	        The name of the cache.
+	
+	    -ResourceGroupName <String>
+	        The name of the resource group that contains the cache.
+	
+	    -Prefix <String>
+	        Prefix to use for blob names.
+	
+	    -Container <String>
+	        SAS url of container where data should be exported.
+	
+	    -Format <String>
+	        Format for the blob.  Currently "rdb" is the only supported, with other formats expected in the future.
+	
+	    -PassThru
+	        By default Export-AzureRmRedisCache does not return any value. If the PassThru parameter is provided
+	        then Export-AzureRmRedisCache returns a boolean value indicating the success of the operation.
+	
+	    <CommonParameters>
+	        This cmdlet supports the common parameters: Verbose, Debug,
+	        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+	        OutBuffer, PipelineVariable, and OutVariable. For more information, see
+	        about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
+
+Der folgende Befehl exportiert Daten aus einer Azure Redis Cache-Instanz in den vom SAS-URI angegebenen Container.
+
+
+	    PS C:\>Export-AzureRmRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Prefix "blobprefix"
+	    -Container "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2015-04-05&sr=c&sig=HezZtBZ3DURmEGDduauE7
+	    pvETY4kqlPI8JCNa8ATmaw%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwdl"
+
+## So starten Sie einen Redis-Cache neu
+
+Sie können mit dem Cmdlet `Reset-AzureRmRedisCache` die Azure Redis Cache-Instanz neu starten.
+
+>[AZURE.IMPORTANT] Ein Neustart ist nur für Caches im [Premium-Tarif](cache-premium-tier-intro.md) verfügbar. Weitere Informationen zum Neustarten Ihres Cache finden Sie unter [Verwalten von Azure Redis Cache – Neustart](cache-administration.md#reboot).
+
+Um eine Liste der verfügbaren Parameter und ihrer Beschreibungen für `Reset-AzureRmRedisCache` anzuzeigen, führen Sie den folgenden Befehl aus.
+
+	PS C:\> Get-Help Reset-AzureRmRedisCache -detailed
+	
+	NAME
+	    Reset-AzureRmRedisCache
+	
+	SYNOPSIS
+	    Reboot specified node(s) of an Azure Redis Cache instance.
+	
+	
+	SYNTAX
+	    Reset-AzureRmRedisCache -Name <String> -ResourceGroupName <String> -RebootType <String> [-ShardId <Integer>]
+	    [-Force] [-PassThru] [<CommonParameters>]
+	
+	
+	DESCRIPTION
+	    The Reset-AzureRmRedisCache cmdlet reboots the specified node(s) of an Azure Redis Cache instance.
+	
+	
+	PARAMETERS
+	    -Name <String>
+	        The name of the cache.
+	
+	    -ResourceGroupName <String>
+	        The name of the resource group that contains the cache.
+	
+	    -RebootType <String>
+	        Which node to reboot. Possible values are "PrimaryNode", "SecondaryNode", "AllNodes".
+	
+	    -ShardId <Integer>
+	        Which shard to reboot when rebooting a premium cache with clustering enabled.
+	
+	    -Force
+	        When the Force parameter is provided, reset will be performed without any confirmation prompts.
+	
+	    -PassThru
+	        By default Reset-AzureRmRedisCache does not return any value. If the PassThru parameter is provided
+	        then Reset-AzureRmRedisCache returns a boolean value indicating the success of the operation.
+	
+	    <CommonParameters>
+	        This cmdlet supports the common parameters: Verbose, Debug,
+	        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+	        OutBuffer, PipelineVariable, and OutVariable. For more information, see
+	        about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+	
+
+Der folgende Befehl startet beide Knoten des angegebenen Cache neu.
+
+	
+	    PS C:\>Reset-AzureRmRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -RebootType "AllNodes"
+	    -Force
+	
+
+
 <a name="classic"></a>
-## Verwalten von Azure Redis Cache-Instanzen mit dem klassischen Bereitstellungsmodell von PowerShell
+### Verwalten von Azure Redis Cache-Instanzen mit dem klassischen Bereitstellungsmodell von PowerShell
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Erfahren Sie, wie Sie [diese Schritte mithilfe des Resource Manager-Modells ausführen](cache-howto-manage-redis-cache-powershell.md), das am Anfang dieses Artikels beschrieben wird.
 
@@ -636,4 +817,4 @@ Weitere Informationen zur Verwendung von Windows PowerShell mit Azure finden Sie
 - [Windows PowerShell-Blog](http://blogs.msdn.com/powershell): Informationen zu neuen Funktionen in Windows PowerShell.
 - ["Hey, Scripting Guy!"- Blog](http://blogs.technet.com/b/heyscriptingguy/): Praktische Tipps und Tricks aus der Windows PowerShell-Community.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->
