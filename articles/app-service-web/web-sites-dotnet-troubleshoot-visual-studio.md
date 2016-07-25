@@ -14,7 +14,7 @@
 	ms.devlang="dotnet" 
 	ms.topic="article" 
 	ms.date="04/28/2016" 
-	ms.author="tdykstra"/>
+	ms.author="rachelap"/>
 
 # Problembehandlung von Web-Apps in Azure App Service in Visual Studio
 
@@ -266,7 +266,7 @@ ASP.NET-Anwendungen in Azure-Web-Apps können die folgenden Arten von Protokolle
 
 * **Ablaufverfolgungsprotokolle**<br/> Anwendungen erzeugen diese Protokolle, indem sie Methoden der Klasse [System.Diagnostics.Trace](http://msdn.microsoft.com/library/system.diagnostics.trace.aspx) aufrufen.
 * **Webserver-Protokolle**<br/> Der Webserver erstellt einen Protokolleintrag für jede HTTP-Anforderung an die Web-App.
-* **Detaillierte Fehlerprotokolle**<br/> Der Webserver erstellt eine HTML-Seite mit zusätzlichen Informationen für fehlgeschlagene HTTP-Anforderungen (Anforderungen mit einem Statuscode 400 oder höher). 
+* **Detaillierte Fehlerprotokolle**<br/> Der Webserver erstellt eine HTML-Seite mit zusätzlichen Informationen für fehlgeschlagene HTTP-Anforderungen (Anforderungen mit einem Statuscode 400 oder höher).
 * **Ablaufverfolgungs-Protokolle für fehlgeschlagene Anforderungen**<br/> Der Webserver erstellt eine XML-Datei mit detaillierten Ablaufverfolgungsinformationen für fehlgeschlagene HTTP-Anforderungen. Der Webserver liefert außerdem eine XSL-Datei zur Formatierung der XML-Datei in einem Browser.
   
 Protokollierung kann die Leistung von Web-Apps beeinträchtigen. Daher können Sie die verschiedenen Protokolltypen unter Azure bei Bedarf einzeln aktivieren und deaktivieren. Für Anwendungsprotokolle können Sie angeben, dass nur Protokolleinträge oberhalb eines bestimmten Schweregrads geschrieben werden sollen. Bei der Erstellung neuer Web-Apps ist sämtliche Protokollierung standardmäßig deaktiviert.
@@ -279,7 +279,7 @@ In diesem Abschnitt werden Sie die folgenden Aufgaben ausführen:
 
 * Fügen Sie dem Webprojekt, das Sie in [Erste Schritte mit Azure und ASP.NET][GetStarted] erstellt haben, Ablaufverfolgungsanweisungen hinzu.
 * Anzeigen der Protokolle, wenn Sie das Projekt lokal ausführen.
-* Anzeigen der Protokolle, während diese von der Anwendung unter Azure generiert werden. 
+* Anzeigen der Protokolle, während diese von der Anwendung unter Azure generiert werden.
 
 Informationen zum Erstellen von Anwendungsprotokollen in WebJobs finden Sie unter [Verwenden des Azure-Warteschlangenspeichers mithilfe des WebJobs SDK - Schreiben von Protokollen](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#logs). Die folgenden Anweisungen für das Anzeigen von Protokollen und das Speichern in Azure gelten auch für Anwendungsprotokolle, die von WebJobs erstellt werden.
 
@@ -349,7 +349,7 @@ Informationen zum Erstellen von Anwendungsprotokollen in WebJobs finden Sie unte
 
 3. Drücken Sie STRG+F5, um die Anwendung auszuführen.
 
-4. Fügen Sie der URL in der Adressleiste des Browserfensters*trace.axd* hinzu, und drücken Sie die EINGABETASTE (die URL sollte in etwa wie http://localhost:53370/trace.axd) aussehen).
+4. Fügen Sie der URL in der Adressleiste des Browserfensters*trace.axd* hinzu, und drücken Sie die EINGABETASTE (die URL sollte in etwa wie http://localhost:53370/trace.axd aussehen).
 
 5. Klicken Sie auf der Seite **Anwendungsablaufverfolgung** auf **Details anzeigen** in der ersten Zeile (nicht in der BrowserLink-Zeile).
 
@@ -728,4 +728,4 @@ Die Microsoft TechNet-Website enthält einen Abschnitt zum Thema [Ablaufverfolgu
 [GetStartedWJ]: websites-dotnet-webjobs-sdk.md
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0713_2016-->

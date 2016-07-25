@@ -179,18 +179,11 @@ Sie können nun die Anwendungen ausführen.
 
 ## Nächste Schritte
 
-In diesem Lernprogramm haben Sie gelernt, wie Cloud-zu-Gerät-Nachrichten gesendet und empfangen werden. In den folgenden Tutorials werden weitere Funktionen und Szenarien für IoT Hubs vorgestellt:
+In diesem Lernprogramm haben Sie gelernt, wie Cloud-zu-Gerät-Nachrichten gesendet und empfangen werden.
 
-- In [Verarbeiten von D2C-Nachrichten] wird erläutert, wie Sie zuverlässig Telemetriedaten und interaktive Nachrichten von Geräten verarbeiten können.
-- In [Hochladen von Dateien von Geräten] wird beschrieben, wie mithilfe von C2D-Nachrichten Dateiuploads von Geräten erleichtert werden.
+Beispiele vollständiger Lösungen, die IoT Hub nutzen, finden Sie unter [Azure IoT Suite].
 
-Weitere Informationen zu IoT Hub:
-
-* [Übersicht zu IoT Hub]
-* [IoT Hub-Entwicklerhandbuch]
-* [Anleitungen zu IoT Hub]
-* [Unterstützte Geräteplattformen und Sprachen]
-* [Azure IoT Developer Center]
+Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [IoT Hub-Entwicklerhandbuch].
 
 <!-- Images -->
 [img-simulated-device]: media/iot-hub-node-node-c2d/receivec2d.png
@@ -200,16 +193,17 @@ Weitere Informationen zu IoT Hub:
 
 [Erste Schritte mit IoT Hub]: iot-hub-node-node-getstarted.md
 [IoT Hub Developer Guide - C2D]: iot-hub-devguide.md#c2d
-[Verarbeiten von D2C-Nachrichten]: iot-hub-csharp-csharp-process-d2c.md
-[Hochladen von Dateien von Geräten]: iot-hub-csharp-csharp-file-upload.md
-[Übersicht zu IoT Hub]: iot-hub-what-is-iot-hub.md
-[Anleitungen zu IoT Hub]: iot-hub-guidance.md
+[Process Device-to-Cloud messages]: iot-hub-csharp-csharp-process-d2c.md
+[Uploading files from devices]: iot-hub-csharp-csharp-file-upload.md
+[IoT Hub Overview]: iot-hub-what-is-iot-hub.md
+[IoT Hub Guidance]: iot-hub-guidance.md
 [IoT Hub-Entwicklerhandbuch]: iot-hub-devguide.md
-[Unterstützte Geräteplattformen und Sprachen]: iot-hub-supported-devices.md
+[Supported device platforms and languages]: iot-hub-supported-devices.md
 [Azure IoT Developer Center]: http://www.azure.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
 [Behandeln vorübergehender Fehler]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure-Portal]: https://portal.azure.com
+[Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

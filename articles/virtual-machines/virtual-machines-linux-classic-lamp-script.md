@@ -68,7 +68,7 @@ Das nächste Skriptbeispiel installiert einen LAMP-Stack auf Ubuntu (einschließ
 
 ### Skript hochladen
 
-Speichern Sie das Skript als Textdatei (z. B. *lamp\_install.sh*), und laden Sie es dann in Azure Storage hoch. Diese Aufgabe kann auf einfache Weise mit der Azure-CLI ausgeführt werden. Im folgenden Beispiel wird die Datei in einen Container namens "scripts" hochgeladen. Wenn der Container nicht vorhanden ist, müssen Sie ihn zunächst erstellen.
+Speichern Sie das Skript als Textdatei (z.B. *install\_lamp.sh*), und laden Sie es dann in Azure Storage hoch. Diese Aufgabe kann auf einfache Weise mit der Azure-CLI ausgeführt werden. Im folgenden Beispiel wird die Datei in einen Container namens "scripts" hochgeladen. Wenn der Container nicht vorhanden ist, müssen Sie ihn zunächst erstellen.
 
     azure storage blob upload -a <yourStorageAccountName> -k <yourStorageKey> --container scripts ./install_lamp.sh
 
@@ -83,7 +83,7 @@ Jetzt können wir mit dem nächsten Befehl die CustomScript-Erweiterung für Lin
 
     azure vm extension set -c "./public_config.json" lamp-vm CustomScriptForLinux Microsoft.OSTCExtensions 1.*
 
-Mit dem vorhergehenden Befehl wird das Skript *lamp\_install.sh* heruntergeladen und auf dem virtuellen Computer namens *lamp-vm* ausgeführt.
+Mit dem vorhergehenden Befehl wird das Skript *install\_lamp.sh* heruntergeladen und auf dem virtuellen Computer namens *lamp-vm* ausgeführt.
 
 Da die App einen Webserver umfasst, müssen Sie daran denken, mithilfe des nächsten Befehls einen HTTP-Lauschport auf dem virtuellen Remotecomputer zu öffnen.
 
@@ -110,4 +110,4 @@ Nachfolgend finden Sie einige zusätzliche Ressourcen für die Azure-CLI, Linux 
 
 [Linux und Open-Source-Computing auf Azure](virtual-machines-linux-opensource-links.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

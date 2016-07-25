@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
 #Tutorial: Azure Active Directory-Integration mit Concur  
@@ -31,7 +31,7 @@ Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Baust
 
 ![Szenario](./media/active-directory-saas-concur-tutorial/IC769766.png "Szenario")
 
->[AZURE.NOTE]Die Konfiguration Ihres Concur-Abonnements für Verbund-SSO über SAML ist eine separate Aufgabe, für die Sie sich an Concur wenden müssen.
+>[AZURE.NOTE] Die Konfiguration Ihres Concur-Abonnements für Verbund-SSO über SAML ist eine separate Aufgabe, für die Sie sich an Concur wenden müssen.
 
 ##Aktivieren der Anwendungsintegration für Concur
 
@@ -39,7 +39,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Con
 
 ###So aktivieren Sie die Anwendungsintegration für Concur
 
-1.  Klicken Sie im linken Navigationsbereich des Azure-Verwaltungsportals auf **Active Directory**.
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-concur-tutorial/IC700993.png "Active Directory")
 
@@ -64,11 +64,11 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Con
 
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Concur zu authentifizieren.
 
->[AZURE.NOTE]Die Konfiguration Ihres Concur-Abonnements für Verbund-SSO über SAML ist eine separate Aufgabe, für die Sie sich an Concur wenden müssen.
+>[AZURE.NOTE] Die Konfiguration Ihres Concur-Abonnements für Verbund-SSO über SAML ist eine separate Aufgabe, für die Sie sich an Concur wenden müssen.
 
 ###So konfigurieren Sie einmaliges Anmelden
 
-1.  Klicken Sie im Azure AD-Portal auf der Anwendungsintegrationsseite für **Concur** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Concur** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-concur-tutorial/IC769767.png "Einmaliges Anmelden konfigurieren")
 
@@ -86,9 +86,9 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     1.  Klicken Sie auf „Metadaten herunterladen“, und speichern Sie die Datendatei auf Ihrem Computer.
     2.  Wenden Sie sich an das Supportteam von Concur, um SSO für Ihren Mandanten konfigurieren.
-    3.  Wählen Sie die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.  
+    3.  Wählen Sie die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
-	>[AZURE.NOTE]Die Konfiguration Ihres Concur-Abonnements für Verbund-SSO über SAML ist eine separate Aufgabe, für die Sie sich an Concur wenden müssen.
+	>[AZURE.NOTE] Die Konfiguration Ihres Concur-Abonnements für Verbund-SSO über SAML ist eine separate Aufgabe, für die Sie sich an Concur wenden müssen.
 
 ##Konfigurieren der Benutzerbereitstellung
 
@@ -126,7 +126,7 @@ Aus den folgenden Gründen sollte diese Aktion nicht mit dem Profil ausgeführt 
 
     ![Aktion bestätigen](./media/active-directory-saas-concur-tutorial/IC721732.png "Aktion bestätigen")
 
-6.  Wählen Sie im Azure-Verwaltungsportal in der Anwendungsliste die Anwendung **Concur** aus, um die Dialogfeldseite **Concur** zu öffnen.
+6.  Wählen Sie im klassischen Azure-Portal in der Anwendungsliste die Anwendung **Concur** aus, um die Dialogfeldseite **Concur** zu öffnen.
 
 7.  Klicken Sie zum Öffnen des Dialogfelds **Benutzerbereitstellung konfigurieren** auf **Benutzerbereitstellung konfigurieren**.
 
@@ -141,7 +141,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 ###So weisen Sie Concur Benutzer zu
 
-1.  Erstellen Sie im Azure AD-Portal ein Testkonto.
+1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
 2.  Klicken Sie auf der Anwendungsintegrationsseite für **Concur** auf **Benutzer zuweisen**.
 
@@ -155,4 +155,4 @@ Nach 10 Minuten können Sie überprüfen, ob das Konto mit Concur synchronisier
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

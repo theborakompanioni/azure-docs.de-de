@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/20/2016"
+	ms.date="07/13/2016"
 	ms.author="genli"/>
 
 # Neue Microsoft Azure Supportanfrage – Richtlinien zur Verwendung des Dienstprogramms für den Dateiupload
@@ -30,7 +30,7 @@ Befolgen Sie diese Richtlinien, wenn Sie das Dateiupload-Dienstprogramm verwende
 - Sie können nicht mehr als eine Datei hochladen.
 - Dateien dürfen nicht größer als 4 MB sein.
 
-## Tabelle der Dateiendungen
+## Tabelle der zulässigen Dateierweiterungen
 
 | 0-9, A-C | D – G | H-M | N-P | R-T | U-W | X-Z |
 |-------------|-------|-------------|-------|----------|------------|---------|
@@ -63,4 +63,4 @@ Befolgen Sie diese Richtlinien, wenn Sie das Dateiupload-Dienstprogramm verwende
 | | | | | | | .zix |
 | | | | | | | .zzz |
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

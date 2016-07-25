@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/20/2016" 
+	ms.date="07/06/2016" 
 	ms.author="arramac"/>
 
 # Leistungs- und Skalierungstests mit Azure DocumentDB
@@ -25,7 +25,7 @@ Dieser Artikel ist eine Referenz für Entwickler, die Leistungstestsammlungen f�
 Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 
 - Wo kann ich eine Beispiel-.NET-Clientanwendung für Leistungstests von Azure DocumentDB finden?
-- Welche Schlüsselfaktoren beeinflussen die End-to-End-Leistung von Anfragen, die an Azure DocumentDB gesendet werden? 
+- Welche Schlüsselfaktoren beeinflussen die End-to-End-Leistung von Anfragen, die an Azure DocumentDB gesendet werden?
 - Wie erreiche ich über meine Clientanwendung hohe Durchsätze mit Azure DocumentDB?
 
 Sie können das Projekt aus dem [DocumentDB-Beispiel zur Leistungsüberprüfung](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark) herunterladen, um mit dem Programmieren loszulegen.
@@ -39,18 +39,18 @@ Ziehen Sie die folgenden Clientkonfigurationsoptionen in Betracht, um die beste 
 - **Innerhalb derselben Azure-Region testen:** Sofern dies möglich ist, sollten Sie den Test auf einem virtuellen Computer oder einem App Service ausführen, der in derselben Azure-Region bereitgestellt wird. DocumentDB-Aufrufe aus derselben Azure-Region werden schätzungsweise innerhalb von 1-2ms abgeschlossen, während die Latenz zwischen der Ost- und Westküste der USA mehr als 50 ms beträgt.
 - **System.Net MaxConnections pro Host erhöhen**: DocumentDB wird standardmäßig über HTTPS/REST angefordert. Diese Anfragen unterliegen den standardmäßigen Verbindungsbeschränkungen pro Hostname oder IP-Adresse. Möglicherweise müssen Sie einen höheren Wert für die Beschränkungen festlegen (100-1.000), damit die Clientbibliothek mehrere Verbindungen zu DocumentDB gleichzeitig nutzen kann. In .NET ist das der Wert [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx).
 - **Die serverseitige automatische Speicherbereinigung aktivieren:** Die Reduzierung der Häufigkeit, mit der die automatische Speicherbereinigung ausgeführt wird, kann in einigen Fällen hilfreich sein. Legen Sie [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) in .NET auf TRUE fest.
-- **Direkte Konnektivität über das TCP-Protokoll verwenden:** Verwenden Sie [direkte Konnektivität](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionmode.aspx) über das [TCP-Protokoll](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.protocol.aspx), um eine optimale Leistung zu erzielen. 
+- **Direkte Konnektivität verwenden**: Verwenden Sie [Direkte Konnektivität](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionmode.aspx), um sich die beste Leistung zu sichern.
 - **Backoff in RetryAfter-Intervallen implementieren**: Sie sollten die Last während der Leistungstests so lange erhöhen, bis eine kleine Menge von Anforderungen gedrosselt wird. Wenn es sich um eine gedrosselte Anwendung handelt, sollte die Clientanwendung diese Drosselung für das vom Server angegebene Wiederholungsintervall aussetzen. Dadurch wird die geringstmögliche Wartezeit zwischen den Wiederholungsversuchen gewährleistet. Weitere Informationen finden Sie unter [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
-- **Die Arbeitslast Ihres Clients horizontal hochskalieren:** Wenn Sie auf einem hohen Durchsatzniveau testen (>50.000 RU/s), kann die Clientanwendung als Engpass fungieren, weil der Computer die CPU- oder Netzwerkauslastung kappt. Wenn dieser Punkt erreicht wird, können Sie das DocumentDB-Konto weiter auslasten, indem Sie Ihre Clientanwendungen auf mehrere Server horizontal hochskalieren.
+- **Die Workload Ihres Clients horizontal hochskalieren:** Wenn Sie auf einem hohen Durchsatzniveau testen (>50.000 RU/s), kann die Clientanwendung zum Engpass werden, weil der Computer die CPU- oder Netzwerkauslastung kappt. Wenn dieser Punkt erreicht wird, können Sie das DocumentDB-Konto weiter auslasten, indem Sie Ihre Clientanwendungen auf mehrere Server horizontal hochskalieren.
 
 ## Erste Schritte
 Die schnellste Einstiegsmethode ist das nachstehende .NET-Beispiel zu kompilieren und auszuführen, wie in den folgenden Schritten beschrieben. Sie können auch den Quellcode prüfen und Konfigurationen implementieren, die Ihren eigenen Clientanwendungen ähneln.
 
-**Schritt 1:** Sie können das Projekt aus dem [DocumentDB-Beispiel zur Leistungsüberprüfung](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark) herunterladen oder das GitHub-Repository durchsuchen.
+**Schritt 1:** Laden Sie das Projekt aus dem [DocumentDB-Beispiel zur Leistungsüberprüfung](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark) herunter, oder erstellen Sie eine Fork des GitHub-Repositorys.
 
 **Schritt 2:** Ändern Sie die Einstellungen für „EndpointUrl“, „AuthorizationKey“, „CollectionThroughput“ und „DocumentTemplate“ (optional) in der Datei „App.config“.
 
-> [AZURE.NOTE] Bevor Sie Sammlungen mit hohem Durchsatz bereitstellen, besuchen Sie bitte die [Preisseite](https://azure.microsoft.com/pricing/details/documentdb/), um die Kosten pro Sammlung einzuschätzen. DocumentDB rechnet Speicher und Durchsatz unabhängig voneinander auf Stundenbasis ab, sodass Sie Kosten sparen, indem Sie den Durchsatz Ihrer DocumentDB-Sammlungen nach dem Testen löschen oder verringern.
+> [AZURE.NOTE] Bevor Sie Sammlungen mit hohem Durchsatz bereitstellen, besuchen Sie die [Preisseite](https://azure.microsoft.com/pricing/details/documentdb/), um die Kosten pro Sammlung einzuschätzen. DocumentDB rechnet Speicher und Durchsatz unabhängig voneinander auf Stundenbasis ab, sodass Sie Kosten sparen, indem Sie den Durchsatz Ihrer DocumentDB-Sammlungen nach dem Testen löschen oder verringern.
 
 **Schritt 3:** Kompilieren Sie die Konsolen-App über die Befehlszeile, und führen Sie sie von dort aus. Ihnen sollte eine Ausgabe wie die folgende angezeigt werden:
 
@@ -98,9 +98,9 @@ Die schnellste Einstiegsmethode ist das nachstehende .NET-Beispiel zu kompiliere
 	DocumentDBBenchmark completed successfully.
 
 
-**Schritt 4 (falls erforderlich):** Der vom Tool gemeldete Durchsatz (RU/s) sollte identisch oder höher sein als der bereitgestellte Durchsatz der Sammlung. Wenn dies nicht der Fall ist, kann die Erhöhung von „DegreeOfParallelism“ in kleinen Schritten dabei helfen, den Grenzwert zu erreichen. Wenn der Durchsatz Ihrer Clientanwendung seinen Höchstwert erreicht, hilft Ihnen das Starten mehrerer App-Instanzen auf demselben oder auf verschiedenen Computern dabei, den bereitgestellten Grenzwert auf den verschiedenen Instanzen zu erreichen. Wenn Sie Hilfe zu diesem Schritt benötigen, erreichen Sie uns über [Ask DocumentDB](askdocdb@microsoft.com) (Fragen an DocumentDB) oder über ein Support-Ticket.
+**Schritt 4 (bei Bedarf):** Der vom Tool gemeldete Durchsatz (RU/s) sollte identisch oder höher sein als der bereitgestellte Durchsatz der Sammlung. Wenn dies nicht der Fall ist, kann die Erhöhung von „DegreeOfParallelism“ in kleinen Schritten dabei helfen, den Grenzwert zu erreichen. Wenn der Durchsatz Ihrer Clientanwendung seinen Höchstwert erreicht, hilft Ihnen das Starten mehrerer App-Instanzen auf demselben oder auf verschiedenen Computern dabei, den bereitgestellten Grenzwert auf den verschiedenen Instanzen zu erreichen. Wenn Sie Hilfe zu diesem Schritt benötigen, erreichen Sie uns über [Ask DocumentDB](askdocdb@microsoft.com) (Fragen an DocumentDB) oder über ein Support-Ticket.
 
-Wenn die App ausgeführt wird, können Sie verschiedene [Indizierungsrichtlinien](documentdb-indexing-policies.md) und [Konsistenzebenen](documentdb-consistency-levels.md) ausprobieren, um ihre Auswirkungen auf Durchsatz und Latenzzeit zu verstehen. Sie können auch den Quellcode prüfen und Konfigurationen implementieren, die Ihren eigenen Testsammlungen oder Produktionsanwendungen ähneln.
+Sobald die App ausgeführt wird, können Sie verschiedene [Indizierungsrichtlinien](documentdb-indexing-policies.md) und [Konsistenzebenen](documentdb-consistency-levels.md) ausprobieren, um ihre Auswirkungen auf Durchsatz und Latenzzeit zu verstehen. Sie können auch den Quellcode prüfen und Konfigurationen implementieren, die Ihren eigenen Testsammlungen oder Produktionsanwendungen ähneln.
 
 ## Zusammenfassung
 In diesem Artikel wurde erläutert, wie Sie auf DocumentDB Leistungs- und Skalierungstests mithilfe einer .NET-Konsolenanwendung ausführen können. Außerdem wurden die wichtigsten Konfigurationsoptionen für die beste Leistung von Azure DocumentDB besprochen. Weitere Informationen zu der Arbeit mit DocumentDB finden Sie unter den folgenden Links.
@@ -112,4 +112,4 @@ In diesem Artikel wurde erläutert, wie Sie auf DocumentDB Leistungs- und Skalie
 * [DocumentDB .NET-Beispiele](https://github.com/Azure/azure-documentdb-net)
 * [DocumentDB-Blog zu Leistungstipps](https://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0713_2016-->

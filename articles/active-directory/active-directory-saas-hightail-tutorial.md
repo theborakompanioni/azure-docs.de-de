@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/11/2016"
+	ms.date="07/11/2016"
 	ms.author="jeedes"/>
 
 
@@ -25,7 +25,7 @@ Die Integration von Hightail in Azure AD bietet die folgenden Vorteile:
 
 - Sie können in Azure AD steuern, wer Zugriff auf Hightail hat
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Hightail anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – dem Azure Active Directory-Portal
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
@@ -60,7 +60,7 @@ Zum Konfigurieren der Integration von Hightail in Azure AD müssen Sie Hightail 
 
 **Um Hightail aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
  
 	![Active Directory][1]
 
@@ -80,7 +80,7 @@ Zum Konfigurieren der Integration von Hightail in Azure AD müssen Sie Hightail 
 
 6. Geben Sie im Suchfeld als Suchbegriff **Hightail** ein.
 
-	![Erstellen einen Azure AD-Testbenutzers](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_01.png)
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_01.png)
 
 7. Wählen Sie im Ergebnisbereich **Hightail** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
 
@@ -278,7 +278,7 @@ Wählen Sie in der Benutzerliste **Britta Simon** aus.
 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
  
-	![Erstellen einen Azure AD-Testbenutzers](./media/active-directory-saas-hightail-tutorial/create_aaduser_08.png)
+	![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-hightail-tutorial/create_aaduser_08.png)
 
     a. Notieren Sie den Wert von **Neues Kennwort**.
 
@@ -356,4 +356,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Hightail“ klicken, sollten Sie a
 [204]: ./media/active-directory-saas-hightail-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-hightail-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0713_2016-->

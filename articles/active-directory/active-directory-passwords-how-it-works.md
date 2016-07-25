@@ -1,22 +1,25 @@
-<properties 
-	pageTitle="Funktionsweise: Azure AD-Kennwortverwaltung | Microsoft Azure" 
-	description="Lernen Sie die verschiedenen Komponenten der Azure AD-Kennwortverwaltung kennen und erfahren Sie, wo Benutzer sich registrieren, ihre Kennwörter zurücksetzen und ändern, wo Administratoren die Verwaltung lokaler Active Directory-Kennwörter konfigurieren, aktivieren und Berichte zur Kennwortverwaltung anzeigen können." 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="asteen" 
-	manager="kbrint" 
-	editor="billmath"/>
+<properties
+	pageTitle="Funktionsweise: Azure AD-Kennwortverwaltung | Microsoft Azure"
+	description="Lernen Sie die verschiedenen Komponenten der Azure AD-Kennwortverwaltung kennen und erfahren Sie, wo Benutzer sich registrieren, ihre Kennwörter zurücksetzen und ändern, wo Administratoren die Verwaltung lokaler Active Directory-Kennwörter konfigurieren, aktivieren und Berichte zur Kennwortverwaltung anzeigen können."
+	services="active-directory"
+	documentationCenter=""
+	authors="asteen"
+	manager="femila"
+	editor="curtand"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/16/2016" 
+<tags
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/12/2016"
 	ms.author="asteen"/>
 
 # Funktionsweise der Kennwortverwaltung  
+
+
+> [AZURE.IMPORTANT] **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
 
 Die Kennwortverwaltung in Azure Active Directory umfasst verschiedene logische Komponenten, nachfolgend beschrieben werden. Klicken Sie auf jeden Link, um mehr über die jeweilige Komponente zu erfahren.
 
@@ -103,7 +106,7 @@ Weitere Informationen zu Azure AD Connect finden Sie unter [Erste Schritte: Azur
 ## Links zur Dokumentation für die Kennwortzurücksetzung
 Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
 
-* [**Zurücksetzen Ihres eigenen Kennworts**](active-directory-passwords-update-your-own-password.md) – Hier erhalten Sie Informationen zum Zurücksetzen oder Ändern Ihres eigenen Kennworts als Benutzer des Systems
+* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
 * [**Erste Schritte**](active-directory-passwords-getting-started.md) – Erfahren Sie, wie Sie Benutzern das Zurücksetzen und Ändern ihrer Cloud- oder lokalen Kennwörter erlauben.
 * [**Anpassen**](active-directory-passwords-customize.md) – Erfahren Sie, wie Sie das Aussehen und Verhalten des Diensts an die Anforderungen Ihrer Organisation anpassen.
 * [**Best Practices**](active-directory-passwords-best-practices.md) – Erfahren Sie, wie Sie Kennwörter in Ihrer Organisation schnell bereitstellen und effektiv verwalten.
@@ -122,4 +125,4 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 [006]: ./media/active-directory-passwords-how-it-works/006.jpg "Image_006.jpg"
 [007]: ./media/active-directory-passwords-how-it-works/007.jpg "Image_007.jpg"
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0713_2016-->

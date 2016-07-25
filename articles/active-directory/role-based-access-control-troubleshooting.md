@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Behandlung von Problemen bei der rollenbasierten Zugriffssteuerung"
-	description="Arbeiten mit unterschiedlichen Ressourcentypen bei der rollenbasierten Zugriffssteuerung."
+	pageTitle="Behandlung von Problemen bei der rollenbasierten Zugriffssteuerung | Microsoft Azure"
+	description="Hilfe bei Problemen oder Fragen zu Ressourcen für die rollenbasierte Zugriffsteuerung."
 	services="azure-portal"
 	documentationCenter="na"
 	authors="kgremban"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/18/2016"
+	ms.date="07/12/2016"
 	ms.author="kgremban"/>
 
 # Behandlung von Problemen bei der rollenbasierten Zugriffssteuerung
@@ -22,11 +22,11 @@
 
 Die [rollenbasierte Zugriffssteuerung](role-based-access-control-configure.md) ist eine leistungsstarke Funktion, mit der Sie Zugriffsberechtigungen für Azure-Ressourcen differenziert steuern können. Gewähren Sie einem bestimmten Benutzer einfach und sicher Zugriff auf genau die Ressourcen, die er benötigt. In einigen Fällen kann das Ressourcen-Modell für Azure-Ressourcen jedoch kompliziert sein, und es ist nicht immer leicht ersichtlich, wofür Sie Berechtigungen vergeben.
 
-In diesem Dokument erhalten Sie ausführliche Informationen über die Nutzung einiger der Rollen im Azure-Portal. Diese drei enthaltenen Rollen umfassen alle Ressourcentypen:
+In diesem Dokument erhalten Sie ausführliche Informationen über die Nutzung einiger der Rollen im Azure-Portal. Diese drei Rollen decken alle Ressourcentypen ab:
 
-- Besitzer  
-- Mitwirkender  
-- Leser  
+- Besitzer
+- Mitwirkender
+- Leser
 
 Sowohl Besitzer als auch Mitwirkende haben Vollzugriff auf alle Verwaltungsfunktionen, Mitwirkende können jedoch anderen Benutzern oder Gruppen keinen Zugriff gewähren. Die Leserolle werden wir aufgrund ihrer umfassenden Eigenschaften ausführlicher beschreiben. Ausführliche Informationen zum Gewähren von Zugriff finden Sie im Artikel zu den ersten Schritten mit der [rollenbasierten Zugriffssteuerung](role-based-access-control-configure.md).
 
@@ -59,17 +59,17 @@ Wenn Sie daher lediglich auf die Web-App Zugriff gewähren, sind viele Funktione
 
 Die folgenden Elemente erfordern **Schreibzugriff** auf den **App Service-Plan** für Ihre Website:
 
-- Anzeigen des Tarifs für die Web-App (Free oder Standard)  
-- Skalierungskonfiguration (Anzahl der Instanzen, Größe des virtuellen Computers, Einstellungen für automatische Skalierung)  
-- Kontingente (Speicher, Bandbreite, CPU)  
+- Anzeigen des Tarifs für die Web-App (Free oder Standard)
+- Skalierungskonfiguration (Anzahl der Instanzen, Größe des virtuellen Computers, Einstellungen für automatische Skalierung)
+- Kontingente (Speicher, Bandbreite, CPU)
 
 Die folgenden Elemente erfordern **Schreibzugriff** auf die gesamte **Ressourcengruppe**, die Ihre Website umfasst.
 
-- SSL-Zertifikate und -Bindungen (Der Grund dafür ist, dass SSL-Zertifikate von Websites derselben Ressourcengruppe und desselben geografischen Standorts gemeinsam genutzt werden können).  
-- Warnregeln  
-- Einstellungen für automatische Skalierung  
-- Application Insights-Komponenten  
-- Webtests  
+- SSL-Zertifikate und -Bindungen (Der Grund dafür ist, dass SSL-Zertifikate von Websites derselben Ressourcengruppe und desselben geografischen Standorts gemeinsam genutzt werden können).
+- Warnregeln
+- Einstellungen für automatische Skalierung
+- Application Insights-Komponenten
+- Webtests
 
 ## Workloads virtueller Computer
 
@@ -79,16 +79,16 @@ Virtuelle Computer stehen in Verbindung mit Domänennamen, virtuellen Netzwerken
 
 Die folgenden Elemente erfordern **Schreibzugriff** auf den **virtuellen Computer**:
 
-- Endpunkte  
-- IP-Adressen  
-- Datenträger  
-- Erweiterungen  
+- Endpunkte
+- IP-Adressen
+- Datenträger
+- Erweiterungen
 
 Die folgenden Elemente erfordern **Schreibzugriff** auf den **virtuellen Computer** und die **Ressourcengruppe** (zusammen mit dem Domänennamen), in der sich der virtuelle Computer befindet:
 
-- Verfügbarkeitsgruppe  
-- Satz mit Lastenausgleich  
-- Warnungsregeln  
+- Verfügbarkeitsgruppe
+- Satz mit Lastenausgleich
+- Warnungsregeln
 
 Wenn Sie auf keine dieser Kacheln zugreifen können, fragen Sie den Administrator nach Zugriff als Mitwirkender auf diese Ressourcengruppe.
 
@@ -98,4 +98,4 @@ Wenn Sie auf keine dieser Kacheln zugreifen können, fragen Sie den Administrato
 - [Benutzerdefinierte Rollen in Azure RBAC](role-based-access-control-custom-roles.md): Erfahren Sie, wie Sie benutzerdefinierte Rollen entsprechend Ihrer Zugriffsanforderungen erstellen.
 - [Erstellen eines Verlaufsbericht über Zugriffsänderungen](role-based-access-control-access-change-history-report.md): Nachverfolgen der Änderung von Rollenzuweisungen in RBAC.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -1,19 +1,20 @@
 <properties
-	pageTitle="Behandeln von Problemen beim Zugriff auf Anwendungen auf einem virtuellen Computer | Microsoft Azure"
-	description="Wenn Sie auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird, nicht zugreifen können, führen Sie diese Schritte aus, um die Ursache des Problems zu ermitteln."
+	pageTitle="Öffnen eines Programms nicht möglich oder blockierter Lauschport auf dem virtuellen Computer | Microsoft Azure"
+	description="Wenn Sie ein Programm auf einem virtuellen Azure-Computer nicht starten oder verwenden können, führen Sie die folgenden Schritte aus, um die Ursache des Problems zu ermitteln."
 	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="iainfoulds"
 	manager="timlt"
 	editor=""
-	tags="top-support-issue,azure-service-management,azure-resource-manager"/>
+	tags="top-support-issue,azure-service-management,azure-resource-manager"
+	keywords="Anwendung kann nicht gestartet werden, Programm wird nicht geöffnet, Lauschport blockiert, Programm kann nicht gestartet werden, blockierter Lauschport"/>
 
 <tags
 	ms.service="virtual-machines-linux"
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
-	ms.topic="support-article"
+	ms.topic="article"
 	ms.date="06/14/2016"
 	ms.author="iainfou"/>
 
@@ -21,4 +22,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-troubleshoot-app-connection](../../includes/virtual-machines-common-troubleshoot-app-connection.md)]
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

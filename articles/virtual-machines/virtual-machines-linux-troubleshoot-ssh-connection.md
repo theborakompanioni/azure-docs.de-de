@@ -1,7 +1,7 @@
 <properties
-	pageTitle="Behandeln von Problemen mit der SSH-Verbindung mit einem virtuellen Azure-Computer | Microsoft Azure"
+	pageTitle="Abgelehnte oder fehlerhafte SSH-Verbindung mit einem virtuellen Linux-Computer | Microsoft Azure"
 	description="Beheben Sie SSH-Fehler wie etwa fehlgeschlagene oder abgelehnte SSH-Verbindungen auf virtuellen Azure-Computern unter Linux."
-	keywords="SSH-Verbindung abgelehnt,SSH-Fehler,Azure SSH,SSH-Verbindungsfehler"
+	keywords="SSH-Verbindung abgelehnt, SSH-Fehler, Azure SSH, SSH-Verbindungsfehler"
 	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="iainfoulds"
@@ -14,13 +14,13 @@
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
-	ms.topic="support-article"
-	ms.date="06/14/2016"
+	ms.topic="article"
+	ms.date="07/06/2016"
 	ms.author="iainfou"/>
 
-# Behandeln von Problemen mit der SSH-Verbindung mit einem virtuellen Azure-Computer
+# Behandeln von Problemen, Fehlern oder Ablehnungen im Zusammenhang mit der SSH-Verbindung mit einem virtuellen Azure Linux-Computer
 
-Es gibt verschiedene Gründe dafür, dass SSH-Fehler (Secure Shell) auftreten, wenn Sie versuchen, eine Verbindung mit einem Linux-basierten virtuellen Azure-Computer herzustellen. Dieser Artikel hilft Ihnen, diese Probleme zu ermitteln und zu beheben.
+Es gibt verschiedene Gründe dafür, dass SSH-Fehler (Secure Shell) oder SSH-Verbindungsfehler auftreten oder dass die SSH-Verbindung abgelehnt wird, wenn Sie versuchen, eine Verbindung mit einem Linux-basierten virtuellen Azure-Computer herzustellen. Dieser Artikel hilft Ihnen, diese Probleme zu ermitteln und zu beheben.
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -97,7 +97,7 @@ azure vm extension set <resource group> <vmname> VMAccessForLinux Microsoft.OSTC
 ```
 
 ### Erneutes Bereitstellen eines virtuellen Computers
-Sie können einen virtuellen Computer in Azure auf einem anderen Knoten erneut bereitstellen und dadurch möglicherweise zugrunde liegende Netzwerkprobleme beheben. Um einen virtuellen Computer im Azure-Portal erneut bereitzustellen, wählen Sie **Durchsuchen** > **Virtuelle Computer** > *Ihr virtueller Linux-Computer* > **Erneut bereitstellen**. Informationen hierzu finden Sie unter [Einen virtuellen Computer in einem neuen Azure-Knoten erneut bereitstellen](virtual-machines-windows-redeploy-to-new-node.md). Zurzeit können Sie virtuelle Computer nicht über die Azure-Befehlszeilenschnittstelle erneut bereitstellen.
+Sie können einen virtuellen Computer in Azure auf einem anderen Knoten erneut bereitstellen und dadurch möglicherweise zugrunde liegende Netzwerkprobleme beheben. Um einen virtuellen Computer im Azure-Portal erneut bereitzustellen, wählen Sie **Durchsuchen** > **Virtuelle Computer ** > *Ihr virtueller Linux-Computer* > **Erneut bereitstellen**. Informationen hierzu finden Sie unter [Einen virtuellen Computer in einem neuen Azure-Knoten erneut bereitstellen](virtual-machines-windows-redeploy-to-new-node.md). Zurzeit können Sie virtuelle Computer nicht über die Azure-Befehlszeilenschnittstelle erneut bereitstellen.
 
 > [AZURE.NOTE] Beachten Sie, dass nach Beenden dieses Vorgangs kurzlebige Datenträgerdaten verloren gehen und dynamische, dem virtuellen Computer zugeordnete IP-Adressen aktualisiert werden.
 
@@ -124,7 +124,7 @@ Führen Sie die folgenden Schritte aus, um die häufigsten SSH-Verbindungsfehler
 	- Zurücksetzen der SSH-Konfiguration
 
 - Überprüfen Sie die Ressourcenintegrität des virtuellen Computers auf etwaige Plattformprobleme.<br> Wählen Sie **Durchsuchen** > **Virtuelle Computer (klassisch)** > *Ihr virtueller Linux-Computer* > **Einstellungen** > **Integrität prüfen**.
-	 
+
 
 ## Zusätzliche Ressourcen
 
@@ -134,4 +134,4 @@ Führen Sie die folgenden Schritte aus, um die häufigsten SSH-Verbindungsfehler
 
 - Weitere Informationen zur Problembehandlung bei virtuellen Computern, die mit dem klassischen Bereitstellungsmodell erstellt wurden, finden Sie unter [Zurücksetzen eines Kennworts oder eines SSH-Schlüssels für Linux-basierte virtuelle Computer](virtual-machines-linux-classic-reset-access.md).
 
-<!----HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

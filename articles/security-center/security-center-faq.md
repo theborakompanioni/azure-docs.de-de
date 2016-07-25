@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/05/2016"
+   ms.date="07/11/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center – Häufig gestellte Fragen
@@ -132,6 +132,4 @@ Unterstützte Linux-VMs:
 
 VMs, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt. Es werden nur Clouddienst-Webrollen und -Workerrollen überwacht, die in Produktionsslots ausgeführt werden. Weitere Informationen zum Clouddienst finden Sie unter [Übersicht über Cloud Services](../cloud-services/cloud-services-choose-me.md).
 
-Die Security Center-Empfehlung [Systemupdates anwenden](security-center-recommendations.md) besagt, dass Sie für VMs fehlende Sicherheitsupdates und kritische Updates des Systems bereitstellen sollten. Für VMs in Clouddiensten wird in der Empfehlung **Betriebssystemversion aktualisieren** darauf hingewiesen, dass Sie das Betriebssystem auf die aktuelle Version aktualisieren sollten.
-
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

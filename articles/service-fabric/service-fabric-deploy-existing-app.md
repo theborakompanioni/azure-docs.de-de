@@ -25,8 +25,8 @@ Sie können beliebige Anwendungen, z. B. Node.js-, Java- oder native Anwendunge
 Das Ausführen einer ausführbaren Gastanwendungsdatei in einem Service Fabric-Cluster bietet mehrere Vorteile:
 
 - Hohe Verfügbarkeit. Anwendungen, die in Service Fabric ausgeführt werden, sind standardmäßig hoch verfügbar. Service Fabric stellt sicher, dass stets eine Instanz einer Anwendung ausgeführt wird.
-- Systemüberwachung. Die standardmäßige Service Fabric-Systemüberwachung erkennt, ob eine Anwendung ausgeführt wird, und bietet bei Fehlern Diagnoseinformationen.   
-- Application Lifecycle Management. Service Fabric ermöglicht nicht nur Upgrades ohne Ausfallzeiten, sondern auch das Zurücksetzen auf die Vorversion, sollte während eines Upgrades ein Problem auftreten.    
+- Systemüberwachung. Die standardmäßige Service Fabric-Systemüberwachung erkennt, ob eine Anwendung ausgeführt wird, und bietet bei Fehlern Diagnoseinformationen.
+- Application Lifecycle Management. Service Fabric ermöglicht nicht nur Upgrades ohne Ausfallzeiten, sondern auch das Zurücksetzen auf die Vorversion, sollte während eines Upgrades ein Problem auftreten.
 - Dichte. Sie können mehrere Anwendungen in einem Cluster ausführen, sodass nicht mehr jede Anwendung auf eigener Hardware ausgeführt werden muss.
 
 In diesem Artikel werden die grundlegenden Schritte zum Packen einer ausführbaren Gastanwendungsdatei sowie ihre Bereitstellung in Service Fabric beschrieben.
@@ -52,12 +52,12 @@ Damit eine Anwendung in Service Fabric bereitgestellt werden kann, muss die Anwe
 
 ```
 |-- ApplicationPackage
-	|-- code
-		|-- existingapp.exe
-	|-- config
-		|-- Settings.xml
-  |-- data    
-  |-- ServiceManifest.xml
+    |-- code
+        |-- existingapp.exe
+    |-- config
+        |-- Settings.xml
+    |-- data
+    |-- ServiceManifest.xml
 |-- ApplicationManifest.xml
 ```
 
@@ -308,4 +308,4 @@ In diesem Artikel wurden das Packen einer ausführbaren Gastanwendungsdatei sowi
 - [Bereitstellen mehrerer ausführbarer Gastanwendungsdateien](service-fabric-deploy-multiple-apps.md)
 - [Erstellen Ihrer ersten Service Fabric-Anwendung in Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

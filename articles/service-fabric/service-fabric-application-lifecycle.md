@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/14/2016"
+   ms.date="07/11/2016"
    ms.author="ryanwi"/>
 
 
@@ -100,7 +100,7 @@ Beispiele finden Sie im [Tutorial für Anwendungsupgrades](service-fabric-applic
 5. Wenn neue Knoten im Cluster hinzugefügt oder vorhandene Knoten aus dem Cluster entfernt werden, nimmt Service Fabric einen Lastenausgleich der in allen Knoten des Clusters ausgeführten Anwendungen vor, um eine optimale Leistung zu erzielen.
 
 ## Remove
-1. Ein *Operator* kann mithilfe der [**DeleteServiceAsync**-Methode](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync.aspx), des [Cmdlets **Remove-ServiceFabricService**](https://msdn.microsoft.com/library/azure/mt126033.aspx) oder des [REST-Vorgangs **Dienst löschen**](https://msdn.microsoft.com/library/azure/dn707687.aspx) eine bestimmte Instanz eines ausgeführten Diensts im Cluster löschen, ohne die gesamte Anwendung zu entfernen.  
+1. Ein *Operator* kann mithilfe der [**DeleteServiceAsync**-Methode](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync.aspx), des [Cmdlets **Remove-ServiceFabricService**](https://msdn.microsoft.com/library/azure/mt126033.aspx) oder des [REST-Vorgangs **Dienst löschen**](https://msdn.microsoft.com/library/azure/dn707687.aspx) eine bestimmte Instanz eines ausgeführten Diensts im Cluster löschen, ohne die gesamte Anwendung zu entfernen.
 
 2. Ein *Operator* kann mithilfe der [**DeleteApplicationAsync**-Methode](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync.aspx), des [Cmdlets **Remove-ServiceFabricApplication**](https://msdn.microsoft.com/library/azure/mt125914.aspx) oder des [REST-Vorgangs **Anwendung löschen**](https://msdn.microsoft.com/library/azure/dn707651.aspx) auch eine Anwendungsinstanz und alle ihre Dienste löschen.
 
@@ -121,4 +121,4 @@ Weitere Informationen zum Entwickeln, Testen und Verwalten von Service Fabric-An
 - [Testability – Übersicht](service-fabric-testability-overview.md)
 - [REST-basierter Anwendungslebenszyklus – Beispiel](service-fabric-rest-based-application-lifecycle-sample.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -98,7 +98,8 @@ Wenn Sie ein Speicherkonto erstellen, wählen Sie die primäre Region für das K
 | Großbritannien, Süden 2 | Großbritannien, Norden |
 | Deutschland, Mitte | Deutschland, Nordosten |
 | Deutschland, Nordosten | Deutschland, Mitte |
-
+| USA, Westen 2 | USA, Westen (Mitte) |
+| USA, Westen (Mitte) | USA, Westen 2 |
 
 Aktuelle Informationen zu von Azure unterstützten Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).
  
@@ -116,4 +117,4 @@ Wenn Sie den schreibgeschützten Zugriff auf Ihre Daten in der sekundären Regio
 - [Microsoft Azure Storage Redundancy Options and Read Access Geo Redundant Storage (in englischer Sprache)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
 - [SOSP Paper - Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency (SOSP-Dokument – Azure Storage: ein hochverfügbarer Cloudspeicherdienst mit starker Konsistenz)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

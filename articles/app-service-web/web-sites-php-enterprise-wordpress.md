@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Leistungsstarkes WordPress in Azure App Service"
+	pageTitle="Leistungsstarkes WordPress in Azure App Service | Microsoft Azure"
 	description="Erfahren Sie, wie Sie eine leistungsstarke WordPress-Website in Azure App Service hosten."
 	services="app-service\web"
 	documentationCenter=""
-	authors="rmcmurray"
-	manager="wpickett"
+	authors="sunbuild"
+	manager="yochayk"
 	editor=""/>
 
 <tags
@@ -13,10 +13,10 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="web"
-	ms.date="01/26/2016"
-	ms.author="robmcm"/>
+	ms.date="07/06/2016"
+	ms.author="sumuth"/>
 
-#Leistungsstarkes WordPress in Azure App Service
+# Leistungsstarkes WordPress in Azure App Service
 
 Azure App Service bietet eine skalierbare, sichere und benutzerfreundliche Umgebung für große unternehmenswichtige [WordPress][wordpress]-Websites. Microsoft selbst betreibt leistungsstarke Websites wie den [Office][officeblog]- und [Bing][bingblog]-Blog. In diesem Dokument wird erläutert, wie Sie mithilfe von Azure App Service-Web-Apps eine leistungsfähige, cloudbasierte WordPress-Website einrichten und verwalten können, die mit eine großen Anzahl von Besuchern zurechtkommt.
 
@@ -28,11 +28,11 @@ Für eine grundlegende WordPress-Installation gelten nur zwei Anforderungen.
 
     > [AZURE.NOTE] ClearDB bietet mehrere MySQL-Konfigurationen mit unterschiedlichen Leistungsmerkmalen für jede Konfiguration. Im [Azure Shop][cdbnstore] finden Sie Informationen zu den dort verfügbaren Angeboten. Auf der [ClearDB-Webseite mit den Preisen](http://www.cleardb.com/pricing.view) finden Sie direkt von ClearDB beziehbare Angebote.
 
-* **PHP 5.2.4 oder höher** – Azure App Service unterstützt derzeit die [PHP-Versionen 5.4, 5.5 und 5.6][phpwebsite].
+* **PHP 5.2.4 oder höher** – Azure App Service unterstützt derzeit die [PHP-Versionen 5.4, 5.5 und 5.6][phpwebsite].
 
 	> [AZURE.NOTE] Wir empfehlen, stets mit der neuesten Version von PHP zu arbeiten, um sicherzustellen, dass Sie über die neuesten Sicherheitskorrekturen verfügen.
 
-###Grundlegende Bereitstellung
+### Grundlegende Bereitstellung
 
 Indem Sie die grundlegenden Anforderungen erfüllen, können Sie eine Standardlösung innerhalb einer Azure-Region erstellen.
 
@@ -41,7 +41,7 @@ Indem Sie die grundlegenden Anforderungen erfüllen, können Sie eine Standardl�
 Wenngleich dies Ihnen ermöglicht, Ihre Anwendung horizontal zu skalieren, indem Sie mehrere Web-App-Instanzen der Website erstellen, wird die gesamte Konfiguration in den Rechenzentren in einer bestimmten geografischen Region gehostet. Besuchern außerhalb dieser Region werden ggf. nur langsame Antwortzeiten auf der Website geboten, und wenn die Rechenzentren in dieser Region ausfallen, fällt auch Ihre Anwendung aus.
 
 
-###Bereitstellung in mehreren Regionen
+### Bereitstellung in mehreren Regionen
 
 Mithilfe von Azure [Traffic Manager][trafficmanager] ist es möglich, Ihre WordPress-Website auf mehrere geografische Regionen zu skalieren und zugleich Besuchern nur eine URL bereitzustellen. Alle Besucher durchlaufen Traffic Manager und werden anschließend basierend auf der Lastenausgleichskonfiguration an eine Region weitergeleitet.
 
@@ -51,7 +51,7 @@ Innerhalb jeder Region kann die WordPress-Website weiterhin über mehrere Web-Ap
 
 Die Replikation und das Routing an mehrere MySQL-Datenbanken kann mithilfe des [CDBR-Hochverfügbarkeitsrouters][cleardbscale] (links) oder von [MySQL Cluster CGE][cge] erfolgen.
 
-###Bereitstellung in mehreren Regionen mit Medienspeicherung und Zwischenspeichern
+### Bereitstellung in mehreren Regionen mit Medienspeicherung und Zwischenspeichern
 
 Wenn die Website Uploads zulässt oder Mediendateien hostet, nutzen Sie den Azure-Blobspeicher. Wenn Sie einen Zwischenspeicher benötigen, prüfen Sie den [Redis-Cache][rediscache], die [Memcache-Cloud](https://azure.microsoft.com/marketplace/partners/garantiadata/memcached/), [MemCachier](https://azure.microsoft.com/marketplace/partners/memcachier/memcachier/) oder eines der anderen Cacheangebote im [Azure Shop](https://azure.microsoft.com/gallery/store/).
 
@@ -59,9 +59,9 @@ Wenn die Website Uploads zulässt oder Mediendateien hostet, nutzen Sie den Azur
 
 Blobspeicher wird standardmäßig geografisch auf mehrere Regionen verteilt, sodass Sie sich um die Replikation von Dateien auf allen Websites keine Gedanken machen müssen. Sie können auch das Azure [Content Distribution Network (CDN)][cdn] für die Blobspeicherung aktivieren, das Dateien an Endknoten verteilt, die näher bei Ihren Besuchern sind.
 
-###Planung
+### Planung
 
-####Weitere Anforderungen
+#### Weitere Anforderungen
 
 Maßnahme | Option
 ------------------------|-----------
@@ -73,14 +73,14 @@ Maßnahme | Option
 **Überwachung und Problembehandlung** | [Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service][log] und [Überwachen von Web-Apps in Azure App Service][monitor]
 **Bereitstellen Ihrer Website** | [Bereitstellen von Web-Apps in Azure App Service][deploy]
 
-####Verfügbarkeit und Notfallwiederherstellung
+#### Verfügbarkeit und Notfallwiederherstellung
 
 Maßnahme | Option
 ------------------------|-----------
 **Einen Lastenausgleich für Websites vornehmen** oder **Websites geografisch verteilen** | [Weiterleiten von Datenverkehr mit Azure Traffic Manager][trafficmanager]
 **Sichern und Wiederherstellen** | [Sichern von Web-Apps in Azure App Service][backup] und [Wiederherstellen einer Web-App in Azure App Service][restore]
 
-####Leistung
+#### Leistung
 
 Leistung in der Cloud wird hauptsächlich mithilfe der Zwischenspeicherung und horizontalen Skalierung erreicht. Doch berücksichtigt werden sollten auch der Arbeitsspeicher, die Bandbreite und andere Aspekte des Hostings von Web-Apps.
 
@@ -90,11 +90,11 @@ Maßnahme | Option
 **Cacheressourcen** | [Redis-Cache][rediscache], [Memcache-Cloud](https://azure.microsoft.com/marketplace/partners/garantiadata/memcached/), [MemCachier](https://azure.microsoft.com/marketplace/partners/memcachier/memcachier/) oder eines der anderen Cacheangebote im [Azure Shop](/gallery/store/)
 **Skalieren Ihrer Anwendung** | [Skalieren einer Web-App in Azure App Service][websitescale] und [ClearDB-Hochverfügbarkeitsrouting][cleardbscale]. Wenn Sie sich für das Hosten und Verwalten Ihrer eigenen MySQL-Installation entscheiden, sollten Sie für das horizontale Skalieren [MySQL Cluster CGE][cge] in Erwägung ziehen.
 
-####Migration
+#### Migration
 
 Es gibt zwei Möglichkeiten, eine vorhandene WordPress-Website nach Azure App Service zu migrieren.
 
-* **[WordPress-Export][export]** – Dient zum Exportieren des Inhalts Ihres Blogs, der anschließend in eine neue WordPress-Website in Azure App Service mithilfe des Plug-Ins [WordPress Importer][import] importiert werden kann.
+* **[WordPress-Export][export]** – Dient zum Exportieren des Inhalts Ihres Blogs, der anschließend in eine neue WordPress-Website in Azure App Service mithilfe des Plug-Ins [WordPress Importer][import] importiert werden kann.
 
 	> [AZURE.NOTE] Dieser Prozess ermöglicht lediglich das Migrieren Ihrer Inhalte und nicht von Plug-Ins, Designs oder anderer Anpassungen. Diese müssen manuell erneut installiert werden.
 
@@ -106,7 +106,7 @@ Es gibt zwei Möglichkeiten, eine vorhandene WordPress-Website nach Azure App Se
 
 1. Nutzen Sie den [Azure Marketplace][cdbnstore] zum Erstellen einer MySQL-Datenbank der im Abschnitt [Architektur und Planung](#planning) ermittelten Größe in den Regionen, in denen Ihre Website gehostet wird.
 
-2. Befolgen Sie die Anweisungen unter [Erstellen einer WordPress-Web-App in Azure App Service][createwordpress], um eine neue WordPress-Web-App zu erstellen. Wählen Sie beim Erstellen der Web-App **Vorhandene MySQL-Datenbank verwenden** und anschließend die in Schritt 1 erstellte Datenbank aus.
+2. Befolgen Sie die Anweisungen unter [Erstellen einer WordPress-Web-App in Azure App Service][createwordpress], um eine neue WordPress-Web-App zu erstellen. Wählen Sie beim Erstellen der Web-App **Vorhandene MySQL-Datenbank verwenden** und anschließend die in Schritt 1 erstellte Datenbank aus.
 
 Wenn Sie eine vorhandene WordPress-Website migrieren, helfen Ihnen nach dem Erstellen einer neuen Web-App die Informationen unter [Migrieren einer vorhandenen WordPress-Website in Azure](#Migrate-an-existing-WordPress-site-to-Azure) weiter.
 
@@ -120,7 +120,7 @@ Wie im Abschnitt [Architektur und Planung](#planning) erwähnt, gibt es zwei Mö
 
 Befolgen Sie die Anweisungen zum Migrieren Ihrer Website in den folgenden Abschnitten.
 
-####Die Export- und Importmethode
+#### Die Export- und Importmethode
 
 1. Verwenden Sie die [WordPress-Exportfunktion][export] zum Exportieren Ihrer vorhandenen Website.
 
@@ -145,7 +145,7 @@ Bei Verwendung von | Maßnahme
 **Designs** | Wechseln Sie zu **Darstellung** -> **Design**, und aktualisieren Sie das Websitedesign den Anforderungen entsprechend.
 **Menüs** | Falls Ihr Design Menüs unterstützt, ist in Links zu Ihrer Homepage ggf. das alte Unterverzeichnis eingebettet. Wechseln Sie zu **Darstellung** -> **Menüs**, und aktualisieren Sie sie.
 
-####Die Sicherungs- und Wiederherstellungsmethode
+#### Die Sicherungs- und Wiederherstellungsmethode
 
 1. Sichern Sie Ihre vorhandene WordPress-Website mithilfe der Informationen auf der [WordPress-Seite zu Sicherungen][wordpressbackup].
 
@@ -177,17 +177,17 @@ Bei Verwendung von | Maßnahme
 
 5. Nach der Bereitstellung der WordPress-Website sollten Sie auf die neue Website (als App Service-Web-App) über die URL "*.azurewebsite.net" zugreifen können.
 
-###Konfigurieren Ihrer Website
+### Konfigurieren Ihrer Website
 
 Befolgen Sie nach dem Erstellen oder Migrieren der WordPress-Website die folgenden Informationen zum Verbessern der Leistung und Ermöglichen zusätzlicher Funktionalität.
 
 Maßnahme | Option
 ------------- | -----------
 **Festlegen von App Service-Planmodus und -Größe und Aktivieren der Skalierung** | [Skalieren einer Web-App in Azure App Service][websitescale]
-**Aktivieren von dauerhaften Datenbankverbindungen** <p>Standardmäßig verwendet WordPress keine dauerhaften Datenbankverbindungen. Daher kann es vorkommen, dass Ihre Verbindung zur Datenbank nach mehreren Verbindungen gedrosselt wird.</p> | <ol><li><p>Bearbeiten der <strong>wp-umfasst/wp-db.php</strong> Datei.</p></li><li><p>Suchen Sie die folgende Zeile.</p><code>$Dies-Bhd > = Mysql\_connect ($dies Dbhost $dies -> -> Dbuser $dies-Dbpassword, $ Link zu neues, $Client\_flags >);</code></li><li><p>Ersetzen Sie die vorherige Zeile durch Folgendes.</p><code>$Dies-Bhd > = Mysql\_pconnect ($dies Dbhost $dies Dbuser $dies -> -> -> Dbpassword $Client\_flags); <br/>Wenn (false! == $Error\_reporting) {/br/ > & Nbsp; & Nbsp; Error\_reporting ($Error\_reporting); <br/>} </code></li><li><p>Suchen Sie die folgende Zeile.</p><code>$Dies-Bhd > = @mysql\_connect ($dies Dbhost $dies -> -> Dbuser $dies -> Dbpassword, $ Link zu neues, $Client\_flags); </code></li><li><p>Ersetzen Sie die obige Zeile durch Folgendes.</p><code>$Dies-Bhd > = @mysql\_pconnect ($dies Dbhost $dies Dbuser $dies -> -> -> Dbpassword $Client\_flags); </code></li><li><p>Speichern Sie die Datei <strong>wp-umfasst/wp-db.php</strong> Datei und erneute Bereitstellung die Website.</p></li></ol><div class="wa-note"><span class="wa-icon-bulb"></span><p>Diese Änderungen können überschrieben werden, wenn WordPress aktualisiert wird.</p><p>WordPress-Standardeinstellungen für automatische Updates, die durch Bearbeiten deaktiviert werden können die <strong>wp-config.php</strong> Datei- und Hinzufügen von <code>definieren ("WP\_AUTO\_UPDATE\_CORE", false);</code></p><p>Adressierung Updates eine weitere Möglichkeit wäre, eine WebJob zu verwenden, die überwacht die <strong>wp-db.php</strong> Datei und führt die oben genannten Änderungen jedes Mal die Datei wird aktualisiert. Weitere Informationen finden Sie unter <a href="http://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx">Einführung in WebJobs</a>.</p></div>
-**Verbessern der Leistung** | <ul><li><p><a href="http://ppe.blogs.msdn.com/b/windowsazure/archive/2013/11/18/disabling-arr-s-instance-affinity-in-windows-azure-web-sites.aspx">Deaktivieren des ARR-Cookies</a> – Dies kann die Leistung verbessern, wenn WordPress auf mehreren Web-App-Instanzen ausgeführt wird.</p></li><li><p>Aktivieren von Caching <a href="http://msdn.microsoft.com/library/azure/dn690470.aspx">Redis Cache</a> (Vorschau) kann mit dem <a href="https://wordpress.org/plugins/redis-object-cache/">Redis Object Cache-Plug-In von WordPress</a> oder mit einem anderen Cacheangebot aus dem <a href="/gallery/store/">Azure Store</a> verwendet werden.</p></li><li><p><a href="http://ruslany.net/2010/03/make-wordpress-faster-on-iis-with-wincache-1-1/">Beschleunigung von WordPress mit Wincache</a> – Wincache ist standardmäßig für Web-Apps aktiviert</p></li><li><p><a href="../web-sites-scale/">Skalieren einer Web-App in Azure App Service</a> und Verwenden von <a href="http://www.cleardb.com/developers/cdbr/introduction">ClearDB-Hochverfügbarkeitsrouting</a> oder <a href="http://www.mysql.com/products/cluster/">MySQL Cluster CGE</a></p></li></ul>
-**Verwenden von Blobs für die Speicherung** | <ol><li><p><a href="../storage-create-storage-account/">Erstellen eines Azure-Speicherkontos</a></p></li><li><p>Informationen zur <a href="../cdn-how-to-use/">Verwendung des Content Distribution Network (CDN)</a> für die geografische Verteilung der in Blobs gespeicherten Daten.</p></li><li><p>Installieren und Konfigurieren des <a href="https://wordpress.org/plugins/windows-azure-storage/">Azure-Speicher-Plug-Ins für WordPress</a>.</p><p>Detaillierte Einrichtungs- und Konfigurationsinformationen für das Plug-In finden Sie im <a href="http://plugins.svn.wordpress.org/windows-azure-storage/trunk/UserGuide.docx">Benutzerhandbuch</a>.</p></li></ol>
-**Aktivieren von E-Mail** | <ol><li><p><a href="/gallery/store/sendgrid/sendgrid-azure/">Aktivieren von SendGrid über den Azure-Store</a></p></li><li><p><a href="http://wordpress.org/plugins/sendgrid-email-delivery-simplified/">Installieren des SendGrid-Plug-Ins für WordPress</a></p></li></ol>
+**Aktivieren von dauerhaften Datenbankverbindungen** <p>Standardmäßig verwendet WordPress keine dauerhaften Datenbankverbindungen. Daher kann es vorkommen, dass Ihre Verbindung zur Datenbank nach mehreren Verbindungen gedrosselt wird.</p> | <ol><li><p>Bearbeiten der <strong>wp-umfasst/wp-db.php</strong> Datei.</p></li><li><p>Suchen Sie die folgende Zeile.</p><code>$Dies-Bhd > = Mysql\_connect ($dies Dbhost $dies -> -> Dbuser $dies-Dbpassword, $ Link zu neues, $Client\_flags >);</code></li><li><p>Ersetzen Sie die vorherige Zeile durch Folgendes.</p><code>$Dies-Bhd > = Mysql\_pconnect ($dies Dbhost $dies Dbuser $dies -> -> -> Dbpassword $Client\_flags); <br/>Wenn (false! == $Error\_reporting) {/br/ > & Nbsp; & Nbsp; Error\_reporting ($Error\_reporting); <br/>} </code></li><li><p>Suchen Sie die folgende Zeile.</p><code>$Dies-Bhd > = @mysql\_connect ($dies Dbhost $dies -> -> Dbuser $dies -> Dbpassword, $ Link zu neues, $Client\_flags); </code></li><li><p>Ersetzen Sie die obige Zeile durch Folgendes.</p><code>$Dies-Bhd > = @mysql\_pconnect ($dies Dbhost $dies Dbuser $dies -> -> -> Dbpassword $Client\_flags); </code></li><li><p>Speichern Sie die Datei <strong>wp-umfasst/wp-db.php</strong> Datei und erneute Bereitstellung die Website.</p></li></ol><div class="wa-note"><span class="wa-icon-bulb"></span><p>Diese Änderungen können überschrieben werden, wenn WordPress aktualisiert wird.</p><p>WordPress-Standardeinstellungen für automatische Updates, die durch Bearbeiten deaktiviert werden können die <strong>wp-config.php</strong> Datei- und Hinzufügen von <code>definieren ("WP\_AUTO\_UPDATE\_CORE", false);</code></p><p>Adressierung Updates eine weitere Möglichkeit wäre, eine WebJob zu verwenden, die überwacht die <strong>wp-db.php</strong> Datei und führt die oben genannten Änderungen jedes Mal die Datei wird aktualisiert. Weitere Informationen finden Sie unter [Einführung in WebJobs](http://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx).</p></div>
+**Verbessern der Leistung** | <ul><li><p>[Deaktivieren des ARR-Cookies](http://ppe.blogs.msdn.com/b/windowsazure/archive/2013/11/18/disabling-arr-s-instance-affinity-in-windows-azure-web-sites.aspx) – Dies kann die Leistung verbessern, wenn WordPress auf mehreren Web-App-Instanzen ausgeführt wird.</p></li><li><p>Aktivieren von Caching. [Redis Cache](http://msdn.microsoft.com/library/azure/dn690470.aspx) kann mit dem [Redis Object Cache-Plug-In von WordPress](https://wordpress.org/plugins/redis-object-cache/) oder mit einem anderen Cacheangebot aus dem [Azure Store](/gallery/store/) verwendet werden.</p></li><li><p>[Beschleunigung von WordPress mit Wincache](http://ruslany.net/2010/03/make-wordpress-faster-on-iis-with-wincache-1-1/) – Wincache ist standardmäßig für Web-Apps aktiviert</p></li><li><p>[Skalieren einer Web-App in Azure App Service](../app-service-web/web-sites-scale.md) und [Verwenden von ClearDB-Hochverfügbarkeitsrouting](http://www.cleardb.com/developers/cdbr/introduction) oder [MySQL Cluster CGE](http://www.mysql.com/products/cluster/)</p></li></ul>
+**Verwenden von Blobs für die Speicherung** | <ol><li><p>[Erstellen eines Azure-Speicherkontos](../storage/storage-create-storage-account.md)</p></li><li><p>Informationen zur [Verwendung des Content Distribution Network (CDN)][cdn] für die geografische Verteilung der in Blobs gespeicherten Daten.</p></li><li><p>Installieren und Konfigurieren des [Azure-Speicher-Plug-Ins für WordPress](https://wordpress.org/plugins/windows-azure-storage/).</p><p>Detaillierte Einrichtungs- und Konfigurationsinformationen für das Plug-In finden Sie im [Benutzerhandbuch](http://plugins.svn.wordpress.org/windows-azure-storage/trunk/UserGuide.docx).</p></li></ol>
+**Aktivieren von E-Mail** | <ol><li><p>[Aktivieren von SendGrid über den Azure-Store](/gallery/store/sendgrid/sendgrid-azure/)</p></li><li><p>[Installieren des SendGrid-Plug-Ins für WordPress](http://wordpress.org/plugins/sendgrid-email-delivery-simplified/)</p></li></ol>
 **Konfigurieren eines benutzerdefinierten Domänennamens** | [Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service][customdomain]
 **Aktivieren von HTTPS für einen benutzerdefinierten Domänennamen** | [Aktivieren von HTTPS für eine Web-App in Azure App Service][httpscustomdomain]
 **Lastenausgleich oder geografische Verteilung für Ihre Website** | [Leiten Sie Datenverkehr mit Azure Traffic Manager weiter][trafficmanager]. Wenn Sie eine benutzerdefinierte Domäne verwenden, finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service][customdomain] Informationen zum Verwenden von Traffic Manager mit benutzerdefinierten Domänennamen.
@@ -214,17 +214,17 @@ Maßnahme | Option
 
 * [How to run WordPress on Azure App Service for free (Gewusst wie: Kostenloses Ausführen von WordPress in Azure App Service, in englischer Sprache)](http://architects.dzone.com/articles/how-run-wordpress-azure)
 
-* [WordPress on Azure in 2 minutes or less (WordPress in Azure – in maximal 2 Minuten, in englischer Sprache)](http://www.sitepoint.com/wordpress-windows-azure-2-minutes-less/)
+* [WordPress on Azure in 2 minutes or less (WordPress in Azure – in maximal 2 Minuten, in englischer Sprache)](http://www.sitepoint.com/wordpress-windows-azure-2-minutes-less/)
 
-* [Moving a WordPress blog to Azure – Part 1: Creating a WordPress blog on Azure (Verschieben eines WordPress-Blogs nach Azure – Teil 1: Erstellen eines WordPress-Blogs in Azure, in englischer Sprache)](http://www.davebost.com/2013/07/10/moving-a-wordpress-blog-to-windows-azure-part-1)
+* [Moving a WordPress blog to Azure – Part 1: Creating a WordPress blog on Azure (Verschieben eines WordPress-Blogs nach Azure – Teil 1: Erstellen eines WordPress-Blogs in Azure, in englischer Sprache)](http://www.davebost.com/2013/07/10/moving-a-wordpress-blog-to-windows-azure-part-1)
 
-* [Moving a WordPress blog to Azure – Part 2: Transferring your content (Verschieben eines WordPress-Blogs nach Azure – Teil 2: Übertragen der Inhalte, in englischer Sprache)](http://www.davebost.com/2013/07/11/moving-a-wordpress-blog-to-windows-azure-transferring-your-content)
+* [Moving a WordPress blog to Azure – Part 2: Transferring your content (Verschieben eines WordPress-Blogs nach Azure – Teil 2: Übertragen der Inhalte, in englischer Sprache)](http://www.davebost.com/2013/07/11/moving-a-wordpress-blog-to-windows-azure-transferring-your-content)
 
-* [Moving a WordPress blog to Azure – Part 3: Setting up your custom domain (Verschieben eines WordPress-Blogs nach Azure – Teil 3: Einrichten der benutzerdefinierten Domäne, in englischer Sprache)](http://www.davebost.com/2013/07/11/moving-a-wordpress-blog-to-windows-azure-part-3-setting-up-your-custom-domain)
+* [Moving a WordPress blog to Azure – Part 3: Setting up your custom domain (Verschieben eines WordPress-Blogs nach Azure – Teil 3: Einrichten der benutzerdefinierten Domäne, in englischer Sprache)](http://www.davebost.com/2013/07/11/moving-a-wordpress-blog-to-windows-azure-part-3-setting-up-your-custom-domain)
 
-* [Moving a WordPress blog to Azure – Part 4: Pretty permalinks and URL Rewrite rules (Verschieben eines WordPress-Blogs nach Azure – Teil 4: Benutzerfreundliche Permalinks und URL-Rewrite-Regeln, in englischer Sprache)](http://www.davebost.com/2013/07/11/moving-a-wordpress-blog-to-windows-azure-part-4-pretty-permalinks-and-url-rewrite-rules)
+* [Moving a WordPress blog to Azure – Part 4: Pretty permalinks and URL Rewrite rules (Verschieben eines WordPress-Blogs nach Azure – Teil 4: Benutzerfreundliche Permalinks und URL-Rewrite-Regeln, in englischer Sprache)](http://www.davebost.com/2013/07/11/moving-a-wordpress-blog-to-windows-azure-part-4-pretty-permalinks-and-url-rewrite-rules)
 
-* [Moving a WordPress blog to Azure – Part 5: Moving from a subfolder to the root (Verschieben eines WordPress-Blogs nach Azure – Teil 5: Verschieben aus einem Unterordner in den Stammordner, in englischer Sprache)](http://www.davebost.com/2013/07/11/moving-a-wordpress-blog-to-windows-azure-part-5-moving-from-a-subfolder-to-the-root)
+* [Moving a WordPress blog to Azure – Part 5: Moving from a subfolder to the root (Verschieben eines WordPress-Blogs nach Azure – Teil 5: Verschieben aus einem Unterordner in den Stammordner, in englischer Sprache)](http://www.davebost.com/2013/07/11/moving-a-wordpress-blog-to-windows-azure-part-5-moving-from-a-subfolder-to-the-root)
 
 * [How to set up a WordPress web app in your Azure account (Gewusst wie: Einrichten einer WordPress-Web-App in Ihrem Azure-Konto, in englischer Sprache)](http://www.itexperience.net/2014/01/20/how-to-set-up-a-wordpress-website-in-your-windows-azure-account/)
 
@@ -236,6 +236,8 @@ Maßnahme | Option
 
 ## Änderungen
 * Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714).
+
+<!-- URL List -->
 
 [performance-diagram]: ./media/web-sites-php-enterprise-wordpress/performance-diagram.png
 [basic-diagram]: ./media/web-sites-php-enterprise-wordpress/basic-diagram.png
@@ -260,8 +262,8 @@ Maßnahme | Option
 [monitor]: web-sites-monitor.md
 [log]: web-sites-enable-diagnostic-log.md
 [httpscustomdomain]: web-sites-configure-ssl-certificate.md
-[mysqlwindows]: ../virtual-machines-windows-classic-mysql-2008r2.md
-[mysqllinux]: ../virtual-machines-linux-classic-mysql-on-opensuse.md
+[mysqlwindows]: ../virtual-machines/virtual-machines-windows-classic-mysql-2008r2.md
+[mysqllinux]: ../virtual-machines/virtual-machines-linux-classic-mysql-on-opensuse.md
 [cge]: http://www.mysql.com/products/cluster/
 [websitepricing]: /pricing/details/app-service/
 [export]: http://en.support.wordpress.com/export/
@@ -276,10 +278,9 @@ Maßnahme | Option
 [workbench]: http://www.mysql.com/products/workbench/
 [searchandreplace]: http://interconnectit.com/124/search-and-replace-for-wordpress-databases/
 [deploy]: web-sites-deploy.md
-[posh]: ../install-configure-powershell.md
+[posh]: ../powershell-install-configure.md
 [Azure CLI]: ../xplat-cli-install.md
 [storesendgrid]: https://azure.microsoft.com/marketplace/partners/sendgrid/sendgrid-azure/
-[cdn]: ../cdn-how-to-use.md
- 
+[cdn]: ../cdn/cdn-overview.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -12,17 +12,17 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services"
-	ms.date="06/14/2016"
+	ms.date="07/06/2016"
 	ms.author="bwren" />
 
 # Azure Automation-Szenario – Starten und Beenden virtueller Computer
 
 Dieses Azure Automation-Szenario enthält Runbooks zum Starten und Beenden klassischer virtueller Computer. Sie können das Szenario für folgende Zwecke einsetzen:
 
-- Verwenden Sie die Runbooks unverändert in Ihrer eigenen Umgebung. 
-- Ändern Sie die Runbooks, um benutzerdefinierte Funktionen auszuführen.  
-- Rufen Sie die Runbooks im Rahmen einer Gesamtlösung aus einem anderen Runbook auf. 
-- Verwenden Sie die Runbooks als Tutorials zur Runbookerstellung. 
+- Verwenden Sie die Runbooks unverändert in Ihrer eigenen Umgebung.
+- Ändern Sie die Runbooks, um benutzerdefinierte Funktionen auszuführen.
+- Rufen Sie die Runbooks im Rahmen einer Gesamtlösung aus einem anderen Runbook auf.
+- Verwenden Sie die Runbooks als Tutorials zur Runbookerstellung.
 
 > [AZURE.SELECTOR]
 - [Grafisch](automation-solution-startstopvm-graphical.md)
@@ -190,7 +190,7 @@ In den nächsten Zeilen werden die einzelnen virtuellen Computer schrittweise du
 
 ## Nächste Schritte
 
-- [Untergeordnete Runbooks in Azure Automation](automation-child-runbooks.md) 
-- [Runbookausgabe und -meldungen in Azure Automation](automation-runbook-output-and-messages.md)
+- Weitere Informationen zum Arbeiten mit untergeordneten Runbooks finden Sie unter [Untergeordnete Runbooks in Azure Automation](automation-child-runbooks.md).
+- Weitere Informationen zu ausgehenden Nachrichten während der Runbookausführung und Protokollierung zur Unterstützung der Problembehandlung finden Sie unter [Runbookausgabe und -meldungen in Azure Automation](automation-runbook-output-and-messages.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

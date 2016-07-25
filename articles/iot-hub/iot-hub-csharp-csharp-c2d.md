@@ -173,18 +173,11 @@ In diesem Abschnitt ändern Sie die **SendCloudToDevice**-App so, dass sie Feedb
 
 ## Nächste Schritte
 
-In diesem Lernprogramm haben Sie gelernt, wie Cloud-zu-Gerät-Nachrichten gesendet und empfangen werden. In den folgenden Tutorials werden weitere Funktionen und Szenarien für IoT Hubs vorgestellt:
+In diesem Lernprogramm haben Sie gelernt, wie Cloud-zu-Gerät-Nachrichten gesendet und empfangen werden.
 
-- In [Verarbeiten von D2C-Nachrichten] wird erläutert, wie Sie zuverlässig Telemetriedaten und interaktive Nachrichten von Geräten verarbeiten können.
-- In [Hochladen von Dateien von Geräten] wird beschrieben, wie mithilfe von C2D-Nachrichten Dateiuploads von Geräten erleichtert werden.
+Beispiele vollständiger Lösungen, die IoT Hub nutzen, finden Sie unter [Azure IoT Suite].
 
-Weitere Informationen zu IoT Hub:
-
-* [Übersicht zu IoT Hub]
-* [IoT Hub-Entwicklerhandbuch]
-* [Anleitungen zu IoT Hub]
-* [Unterstützte Geräteplattformen und Sprachen]
-* [Azure IoT Developer Center]
+Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [IoT Hub-Entwicklerhandbuch].
 
 <!-- Images -->
 [20]: ./media/iot-hub-csharp-csharp-c2d/create-identity-csharp1.png
@@ -198,15 +191,10 @@ Weitere Informationen zu IoT Hub:
 
 [IoT Hub Developer Guide - C2D]: iot-hub-devguide.md#c2d
 
-[Verarbeiten von D2C-Nachrichten]: iot-hub-csharp-csharp-process-d2c.md
-[Hochladen von Dateien von Geräten]: iot-hub-csharp-csharp-file-upload.md
-
-[Übersicht zu IoT Hub]: iot-hub-what-is-iot-hub.md
-[Anleitungen zu IoT Hub]: iot-hub-guidance.md
 [IoT Hub-Entwicklerhandbuch]: iot-hub-devguide.md
-[Unterstützte Geräteplattformen und Sprachen]: iot-hub-supported-devices.md
 [Erste Schritte mit IoT Hub]: iot-hub-csharp-csharp-getstarted.md
 [Azure IoT Developer Center]: http://www.azure.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

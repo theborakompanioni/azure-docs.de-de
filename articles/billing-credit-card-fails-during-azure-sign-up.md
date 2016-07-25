@@ -1,12 +1,13 @@
 <properties
-	pageTitle="Meine Kreditkarte wird nicht akzeptiert, wenn ich versuche, mich für Azure zu registrieren | Microsoft Azure"
-	description="Informationen zu häufigen Ursachen von Problemen bei der Registrierung bei Microsoft Azure bei Verwenden einer Kredit- oder Lastschriftkarte"
+	pageTitle="Kredit- oder Debitkarte wird bei der Registrierung abgelehnt | Microsoft Azure"
+	description="Informationen zu häufigen Ursachen von Problemen bei der Registrierung bei Microsoft Azure wie der Ablehnung Ihrer Kredit- oder Debitkarte."
 	services="billing"
 	documentationCenter=""
 	authors="jiangchen79"
 	manager="felixwu"
 	editor=""
-	tags="top-support-issue"/>
+	tags="top-support-issue"
+	keywords="Kreditkarte abgelehnt, Debitkarte abgelehnt, Ihre Kreditkarte wurde abgelehnt, Kreditkarte wird nicht akzeptiert"/>
 
 <tags
 	ms.service="billing"
@@ -17,10 +18,10 @@
 	ms.date="06/01/2016"
 	ms.author="cjiang"/>
 
-# Meine Kreditkarte wird nicht akzeptiert, wenn ich versuche, mich für Azure zu registrieren
-Derzeit werden nur Kreditkarten und Lastschriftkarten – weder virtuelle Karten noch Prepaidkarten – als gültige Zahlungsoptionen akzeptiert. Die akzeptierten Anbieter von Kreditkarten und Lastschriftkarten variieren je nach Land.
+# Meine Kreditkarte oder Debitkarte wird abgelehnt, wenn ich versuche, mich bei Azure zu registrieren.
+Wenn Ihre Kreditkarte oder Debitkarte abgelehnt wurde, liegt dies möglicherweise daran, dass Sie eine virtuelle oder Prepaidkarte verwenden. Derzeit berücksichtigen wir die meisten Kredit- und Debitkarten, jedoch keine virtuellen oder Prepaidkarten. Letztere werden nicht als gültige Zahlungsoptionen akzeptiert. Die akzeptierten Anbieter von Kreditkarten und Lastschriftkarten variieren je nach Land. In der Dropdownliste für die Auswahl einer Kreditkarte sehen Sie nur die Optionen, die in dem Land gelten, das Sie ausgewählt haben.
 
-Vergewissern Sie sich auch, dass die Zahlungsmethode aktiv ist, und Ihre Bank nicht aufgrund ihrer Sicherheitsrichtlinien Onlinetransaktionen blockiert.
+Wenn Sie wirklich eine gültige Kredit- oder Debitkarte verwenden, vergewissern Sie sich, dass die Karte aktiv ist, und Ihre Bank nicht aufgrund ihrer Sicherheitsrichtlinien Onlinetransaktionen blockiert.
 
 [AZURE.INCLUDE [support-disclaimer](../includes/support-disclaimer.md)]
 
@@ -40,4 +41,4 @@ Die Rechnungszahlungsoption kann nur von Unternehmen genutzt werden. Diese Optio
 
 Nähere Informationen zum Starten des Prozesses zum Einrichten einer Rechnung finden Sie unter [Azure – Rechnungsstellung](https://azure.microsoft.com/pricing/invoicing/).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->

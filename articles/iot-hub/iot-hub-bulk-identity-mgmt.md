@@ -332,10 +332,26 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 ## Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, wie Massenvorgänge auf die Geräte-Identitätsregistrierung in einem IoT Hub angewendet werden. In den folgenden Artikeln werden weitere Features und Szenarien für IoT Hubs vorgestellt:
+In diesem Artikel haben Sie gelernt, wie Massenvorgänge auf die Geräte-Identitätsregistrierung in einem IoT Hub angewendet werden. Folgen Sie diesen Links, um mehr über das Verwalten von Azure IoT Hub zu erfahren:
 
-- [Programmgesteuertes Erstellen eines IoT Hubs](iot-hub-rm-template.md)
-- [IoT Hub-Nutzungsmetriken](iot-hub-metrics.md)
-- [IoT Hub-Vorgangsüberwachung](iot-hub-operations-monitoring.md)
+- [Nutzungsmetriken][lnk-metrics]
+- [Vorgangsüberwachung][lnk-monitor]
+- [Verwalten des Zugriffs auf IoT Hub][lnk-itpro]
 
-<!---HONumber=AcomDC_0504_2016-->
+Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
+
+- [Entwerfen Ihrer Lösung][lnk-design]
+- [Entwicklerhandbuch][lnk-devguide]
+- [Erkunden der Geräteverwaltung mithilfe der Beispielbenutzeroberfläche][lnk-dmui]
+- [Simulieren eines Geräts mit dem Gateway SDK][lnk-gateway]
+
+[lnk-metrics]: iot-hub-metrics.md
+[lnk-monitor]: iot-hub-operations-monitoring.md
+[lnk-itpro]: iot-hub-itpro-info.md
+
+[lnk-design]: iot-hub-guidance.md
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+
+<!---HONumber=AcomDC_0713_2016-->

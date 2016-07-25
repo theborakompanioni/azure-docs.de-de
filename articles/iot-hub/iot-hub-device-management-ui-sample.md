@@ -16,7 +16,7 @@
  ms.date="06/08/2016"
  ms.author="dobett"/>
 
-# Erkunden der Azure IoT-Geräteverwaltung mithilfe der Beispielbenutzeroberfläche
+# Erkunden der Azure IoT Hub-Geräteverwaltung mithilfe der Beispielbenutzeroberfläche
 
 Über die Interaktion mit der Beispielbenutzeroberfläche für die Geräteverwaltung können Sie sich mit den Konzepten und Möglichkeiten vertraut machen, die in den Artikeln zur Azure-Geräteverwaltung ([Übersicht][lnk-dm-overview] und [Erste Schritte][lnk-get-started]) behandelt werden. Dieser Artikel begleitet Sie durch die drei wesentlichen Geräteverwaltungskonzepte (*Gerätezwilling*, *Geräteabfragen* und *Geräteaufträge*) entsprechend der Darstellung der Beispiel-Webbenutzeroberfläche für die Geräteverwaltung.
 
@@ -111,12 +111,20 @@ Durch Aktualisieren dieses Bildschirms nach einigen Augenblicken ändert sich de
 
 ## Nächste Schritte
 
-Sie haben sich gerade anhand einer Beispielbenutzeroberfläche mit den Konzepten der Geräteverwaltung vertraut gemacht. Wenn Sie noch mehr über die Geräteverwaltungs-APIs wissen und mit einigen Codebeispielen experimentieren möchten, sehen Sie sich die folgenden Tutorials für Entwickler an:
+Sie haben sich gerade anhand einer Beispielbenutzeroberfläche mit den Konzepten der Geräteverwaltung vertraut gemacht. Wenn Sie noch mehr über die Geräteverwaltungs-APIs wissen und mit einigen Codebeispielen experimentieren möchten, sehen Sie sich die folgenden Tutorials und Ressourcen für Entwickler an:
 
 - [Verwenden des Gerätezwillings][lnk-tutorial-twin]
 - [Suchen nach Gerätezwillingen mithilfe von Abfragen][lnk-tutorial-queries]
 - [Aktualisieren der Gerätefirmware mithilfe von Geräteaufträgen][lnk-tutorial-jobs]
+- [Aktivieren verwalteter Geräte hinter einem IoT-Gateway][lnk-dm-gateway]
 - [Einführung in die Clientbibliothek der Azure IoT Hub-Geräteverwaltung][lnk-library-c]
+
+Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
+
+- [Entwerfen Ihrer Lösung][lnk-design]
+- [Entwicklerhandbuch][lnk-devguide]
+- [Simulieren eines Geräts mit dem Gateway SDK][lnk-gateway]
+- [Verwenden des Azure-Portals zur Verwaltung von IoT Hub][lnk-portal]
 
 [1]: media/iot-hub-device-management-ui-sample/image1.png
 [2]: media/iot-hub-device-management-ui-sample/image2.png
@@ -130,9 +138,16 @@ Sie haben sich gerade anhand einer Beispielbenutzeroberfläche mit den Konzepten
 [lnk-dm-overview]: iot-hub-device-management-overview.md
 [lnk-get-started]: iot-hub-device-management-get-started.md
 [lnk-dm-github]: https://github.com/Azure/azure-iot-device-management/
-[lnk-library-c]: iot-hub-device-management-library.md
+
 [lnk-tutorial-twin]: iot-hub-device-management-device-twin.md
 [lnk-tutorial-queries]: iot-hub-device-management-device-query.md
 [lnk-tutorial-jobs]: iot-hub-device-management-device-jobs.md
+[lnk-dm-gateway]: iot-hub-gateway-device-management.md
+[lnk-library-c]: iot-hub-device-management-library.md
 
-<!---HONumber=AcomDC_0615_2016-->
+[lnk-design]: iot-hub-guidance.md
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-portal]: iot-hub-manage-through-portal.md
+
+<!---HONumber=AcomDC_0713_2016-->

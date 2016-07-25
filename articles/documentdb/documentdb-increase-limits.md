@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/07/2016"
+	ms.date="06/28/2016"
 	ms.author="anhoh"/>
 
 # Anfordern von erhöhten DocumentDB-Kontolimits
@@ -39,19 +39,19 @@ Die folgenden Schritte zeigen, wie Sie eine Kontingentanpassung anfordern.
 
 	![Screenshot: Start von Hilfe & Support](media/documentdb-increase-limits/helpsupport.png)
 
-2. Klicken Sie auf dem Blatt **Hilfe & Support** auf **Support erhalten**.
+2. Klicken Sie auf dem Blatt **Hilfe und Support** auf **Supportanfrage erstellen**.
 
 	![Screenshot der Erstellung eines Supporttickets](media/documentdb-increase-limits/getsupport.png)
 
-3. Klicken Sie im Blatt **Neue Supportanfrage** auf **Grundlagen**. Legen Sie anschließend **Problemtyp** als **Kontingent** fest und wählen Sie für **Abonnement** Ihr Abonnement, das Ihr DocumentDB-Konto hostet. Legen Sie **Dienst** als **DocumentDB** fest und **Supportplan** als **Kontingentsupport – enthalten**. Klicken Sie anschließend auf **Next**.
+3. Klicken Sie im Blatt **Neue Supportanfrage** auf **Grundlagen**. Legen Sie anschließend **Problemtyp** als **Kontingent** fest, und wählen Sie für **Abonnement** Ihr Abonnement, das Ihr DocumentDB-Konto hostet. Legen Sie **Kontingenttyp** als **DocumentDB** und **Supportplan** als **Kontingentsupport – enthalten** fest. Klicken Sie anschließend auf **Next**.
 
 	![Screenshot des Anforderungstyps für das Supportticket](media/documentdb-increase-limits/supportrequest1.png)
 
-4. Wählen Sie im Blatt **Problem** einen Schweregrad. Legen Sie **Problemtyp** auf **DocumentDB** und fügen Sie in **Details** Informationen über Ihre Kontingenterhöhung ein. Klicken Sie auf **Weiter**.
+4. Wählen Sie auf dem Blatt **Problem** einen Schweregrad aus, und fügen Sie in **Details** Informationen zur Ihrer Kontigenterhöhung hinzu. Klicken Sie auf **Weiter**.
 
 	![Screenshot der Abonnementauswahl für das Supportticket](media/documentdb-increase-limits/supportrequest2.png)
 
-5. Geben Sie abschließend Ihre Kontaktinformationen im Blatt **Kontaktinformationen** ein.
+5. Geben Sie abschließend Ihre Kontaktinformationen auf dem Blatt **Kontaktinformationen** ein, und klicken Sie auf **Erstellen**.
 
 	![Screenshot der Ressourcenauswahl für das Supportticket](media/documentdb-increase-limits/supportrequest3.png)
 
@@ -63,4 +63,4 @@ Sobald das Supportticket erstellt wurde, sollten Sie per E-Mail eine Supportanfo
 ##<a name="NextSteps"></a> Nächste Schritte
 - Um weitere Informationen zu DocumentDB zu erhalten, klicken Sie [hier](http://azure.com/docdb).
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0713_2016-->

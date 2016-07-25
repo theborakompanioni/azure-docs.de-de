@@ -1,22 +1,25 @@
-<properties 
-	pageTitle="Problembehandlung: Azure AD-Kennwortverwaltung | Microsoft Azure" 
-	description="Allgemeine Problembehandlungsschritte für die Azure AD-Kennwortverwaltung, einschließlich Zurücksetzen, Ändern und Zurückschreiben von Kennwörtern und dem Registrieren von Informationen. Außerdem erfahren Sie, welche Informationen Sie zum Anfordern von Hilfe benötigen." 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="asteen" 
-	manager="kbrint" 
-	editor="billmath"/>
+<properties
+	pageTitle="Problembehandlung: Azure AD-Kennwortverwaltung | Microsoft Azure"
+	description="Allgemeine Problembehandlungsschritte für die Azure AD-Kennwortverwaltung, einschließlich Zurücksetzen, Ändern und Zurückschreiben von Kennwörtern und dem Registrieren von Informationen. Außerdem erfahren Sie, welche Informationen Sie zum Anfordern von Hilfe benötigen."
+	services="active-directory"
+	documentationCenter=""
+	authors="asteen"
+	manager="femila"
+	editor="curtand"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/16/2016" 
+<tags
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/12/2016"
 	ms.author="asteen"/>
 
 # Problembehandlung für die Kennwortverwaltung
+
+> [AZURE.IMPORTANT] **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
+
 Wir helfen Ihnen, wenn Sie Probleme bei der Kennwortverwaltung haben. Die meisten Probleme, auf die Sie eventuell stoßen, können mithilfe weniger Problembehandlungsschritte gelöst werden:
 
 * [**Erforderliche Informationen beim Anfordern von Hilfe**](#information-to-include-when-you-need-help)
@@ -43,7 +46,7 @@ Wenn Ihr Problem mithilfe der folgenden Anleitungen nicht gelöst wird, können 
 
     ![][001]
 
- - **Benutzer-ID** – Wie lautet die ID des Benutzers, der den Fehler beobachtet hat (z.B. user@contoso.com)?
+ - **Benutzer-ID** – wie lautet die ID des Benutzers, der den Fehler beobachtet hat (z.B. user@contoso.com)?
  - **Informationen zum Benutzer** – Handelt es sich um einen Verbundbenutzer, um einen Benutzer mit Kennworthashsynchronisierung, oder um einen Benutzer, der ausschließlich über die Cloud zugreift? Ist dem Benutzer eine AAD Premium- oder eine AAD Basic-Lizenz zugewiesen?
  - **Anwendungsereignisprotokoll** – Wenn Sie die Kennwortrückschreibung verwenden und der Fehler in Ihrer lokalen Infrastruktur auftritt, zippen Sie eine Kopie des Anwendungsereignisprotokolls von Ihrem Azure AD Connect-Server, und fügen Sie die ZIP-Datei an Ihre Anfrage an.
 
@@ -217,7 +220,7 @@ Wenn beim Registrieren eines Benutzers für die Kennwortzurücksetzung ein Fehle
             <td>
               <p>Benutzern wird eine Fehlermeldung mit dem folgenden Text angezeigt:</p>
               <p>
-                
+
               </p>
               <p>Fehler beim Verarbeiten der Anforderung. </p>
               <p>Diese Fehlermeldung wird beim Zurücksetzen eines Kennworts angezeigt.</p>
@@ -258,7 +261,7 @@ Wenn beim Zurücksetzen eines Kennworts für einen Benutzer ein Fehler auftritt,
               <p>Ihr Konto ist nicht für die Kennwortzurücksetzung aktiviert.</p>
               <p>Ihr Administrator hat Ihr Konto nicht zur Verwendung mit diesem Dienst eingerichtet. </p>
               <p>
-                
+
               </p>
               <p>Wenn Sie möchten, können wir einen Administrator in Ihrer Organisation kontaktieren, um Ihr Kennwort für Sie zurückzusetzen.</p>
             </td>
@@ -285,7 +288,7 @@ Wenn beim Zurücksetzen eines Kennworts für einen Benutzer ein Fehler auftritt,
               <p>Ihr Konto ist nicht für die Kennwortzurücksetzung aktiviert.</p>
               <p>Ihr Administrator hat Ihr Konto nicht zur Verwendung mit diesem Dienst eingerichtet. </p>
               <p>
-                
+
               </p>
               <p>Wenn Sie möchten, können wir einen Administrator in Ihrer Organisation kontaktieren, um Ihr Kennwort für Sie zurückzusetzen.</p>
             </td>
@@ -301,7 +304,7 @@ Wenn beim Zurücksetzen eines Kennworts für einen Benutzer ein Fehler auftritt,
               <p>Ihr Konto ist nicht für die Kennwortzurücksetzung aktiviert.</p>
               <p>Ihr Administrator hat Ihr Konto nicht zur Verwendung mit diesem Dienst eingerichtet. </p>
               <p>
-                
+
               </p>
               <p>Wenn Sie möchten, können wir einen Administrator in Ihrer Organisation kontaktieren, um Ihr Kennwort für Sie zurückzusetzen.</p>
             </td>
@@ -363,7 +366,7 @@ Wenn beim Zurücksetzen eines Kennworts für einen Benutzer ein Fehler auftritt,
             <td>
               <p>Benutzern wird eine Fehlermeldung mit dem folgenden Text angezeigt:</p>
               <p>
-                
+
               </p>
               <p>Verwenden Sie eine andere Option.</p>
               <p>Es wurden zu viele Versuche unternommen, die Kontoüberprüfung auszuführen (in der letzten Stunde). Aus Sicherheitsgründen müssen Sie 24&#160;Stunden warten, bevor Sie es erneut versuchen können. </p>
@@ -389,7 +392,7 @@ Wenn beim Zurücksetzen eines Kennworts für einen Benutzer ein Fehler auftritt,
             <td>
               <p>Beim Versuch, eine Telefonnummer als Authentifizierungsmethode zu verwenden, wird dem Benutzer die folgende Fehlermeldung angezeigt:</p>
               <p>
-                
+
               </p>
               <p>Es wurde eine falsche Telefonnummer angegeben.</p>
             </td>
@@ -405,7 +408,7 @@ Wenn beim Zurücksetzen eines Kennworts für einen Benutzer ein Fehler auftritt,
             <td>
               <p>Benutzern wird eine Fehlermeldung mit dem folgenden Text angezeigt:</p>
               <p>
-                
+
               </p>
               <p>Fehler beim Verarbeiten der Anforderung. </p>
               <p>Diese Fehlermeldung wird beim Zurücksetzen eines Kennworts angezeigt.</p>
@@ -445,7 +448,7 @@ Wenn beim Aktivieren, Deaktivieren oder Verwenden der Kennwortrückschreibung ei
             <td>
               <p>Der Dienst zum Zurücksetzen von Kennwörtern wird lokal nicht gestartet, im Anwendungsereignisprotokoll für den Azure AD Connect-Computer wird Fehler&#160;6800 protokolliert.</p>
               <p>
-                
+
               </p>
               <p>Nach der Integration können Verbundbenutzer oder Benutzer mit Kennworthashsynchronisierung ihre Kennwörter nicht zurücksetzen.</p>
             </td>
@@ -461,7 +464,7 @@ Wenn beim Aktivieren, Deaktivieren oder Verwenden der Kennwortrückschreibung ei
             <td>
               <p>Im letzten Schritt des Azure AD Connect-Installationsvorgangs wird ein Fehler mit dem Hinweis angezeigt, dass die Kennwortrückschreibung nicht konfiguriert werden konnte.</p>
               <p>
-                
+
               </p>
               <p>Das Azure AD Connect-Anwendungsereignisprotokoll enthält Fehler&#160;32009 mit dem Text "Fehler beim Abrufen des Authentifizierungstokens".</p>
             </td>
@@ -485,17 +488,17 @@ Wenn beim Aktivieren, Deaktivieren oder Verwenden der Kennwortrückschreibung ei
             <td>
               <p>Das Ereignisprotokoll für den Azure AD Connect-Computer enthält Fehler&#160;32002, ausgelöst durch die PasswordResetService-Komponente.</p>
               <p>
-                
+
               </p>
               <p>Der angezeigte Fehler lautet: "Fehler bei der Verbindungsherstellung mit ServiceBus. Der Tokenanbieter konnte kein Sicherheitstoken bereitstellen...".</p>
               <p>
-                
+
               </p>
             </td>
             <td>
               <p>Die Ursache für diesen Fehler besteht darin, dass der Dienst für die Kennwortzurücksetzung, der in Ihrer lokalen Umgebung ausgeführt wird, keine Verbindung mit dem Service Bus-Endpunkt in der Cloud herstellen kann. Dieser Fehler wird normalerweise durch eine Firewallregel verursacht, die eine ausgehende Verbindung mit einem bestimmten Port oder einer Webadresse blockiert.</p>
               <p>
-                
+
               </p>
               <p>Stellen Sie sicher, dass Ihre Firewall die folgenden ausgehenden Verbindungen zulässt:</p>
               <ul>
@@ -507,7 +510,7 @@ Wenn beim Aktivieren, Deaktivieren oder Verwenden der Kennwortrückschreibung ei
 										Ausgehende Verbindungen mit &lt;br>&lt;br></li>
               </ul>
               <p>
-                
+
               </p>
               <p>Nachdem Sie diese Regeln aktualisiert haben, starten Sie den Azure AD Connect-Computer neu. Anschließend sollte die Kennwortrückschreibung wieder funktionieren.</p>
             </td>
@@ -522,7 +525,7 @@ Wenn beim Aktivieren, Deaktivieren oder Verwenden der Kennwortrückschreibung ei
             <td>
               <p>In einigen seltenen Fällen kann der Dienst für die Kennwortrückschreibung möglicherweise nicht neu gestartet werden, wenn Azure AD Connect neu gestartet wurde. Prüfen Sie in diesen Fällen zunächst, ob die lokale Kennwortrückschreibung als aktiviert angezeigt wird. Diese Überprüfung können Sie mit dem Azure AD Connect-Assistenten oder mit PowerShell durchführen (siehe Anleitungen oben). Wenn die Funktion als aktiviert angezeigt wird, deaktivieren und aktivieren Sie sie erneut über die Benutzeroberfläche oder PowerShell. Weitere Informationen zur Vorgehensweise finden Sie unter "Schritt&#160;2: Aktivieren der Kennwortrückschreibung auf dem Computer zur Verzeichnissynchronisierung &amp; Konfigurieren von Firewallregeln" in <a href="active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords">Aktivieren/Deaktivieren der Kennwortrückschreibung</a>.</p>
               <p>
-                
+
               </p>
               <p>Wenn das Problem auf diese Weise nicht gelöst wird, deinstallieren Sie Azure AD Connect vollständig, und installieren Sie es neu.</p>
             </td>
@@ -534,14 +537,14 @@ Wenn beim Aktivieren, Deaktivieren oder Verwenden der Kennwortrückschreibung ei
             <td>
               <p>Verbundbenutzer oder Benutzer mit Kennworthashsynchronisierung, die versuchen, ihre Kennwörter zurückzusetzen, erhalten nach dem Übertragen des Kennworts eine Fehlermeldung mit dem Hinweis, dass ein Dienstproblem aufgetreten ist.</p>
               <p>
-                
+
               </p>
               <p>Zusätzlich hierzu wird während der Vorgänge zur Kennwortzurücksetzung möglicherweise ein Fehler in den lokalen Ereignisprotokollen angezeigt, dass dem Verwaltungs-Agent der Zugriff verweigert wurde.</p>
             </td>
             <td>
               <p>Wenn Sie diesen Fehler in Ihrem Ereignisprotokoll sehen, stellen Sie sicher, dass das AD MA-Konto (dieses wurde während der Konfiguration im Assistenten angegeben) über die erforderlichen Berechtigungen für die Kennwortrückschreibung verfügt.</p>
               <p>
-                
+
               </p>
               <p>HINWEIS: Nachdem diese Berechtigung erteilt wurde, kann es bis zu 1&#160;Stunde dauern, bis die Berechtigungen über den sdprop-Hintergrundtask auf dem DC angewendet wurden. </p>
               <p>Damit die Kennwortzurücksetzung funktioniert, müssen die Berechtigungen in die Sicherheitsbeschreibung des Benutzerobjekts geschrieben werden, dessen Kennwort zurückgesetzt wird. Bis diese Berechtigungen im Benutzerobjekt angezeigt werden, treten bei der Kennwortzurücksetzung weiterhin Fehler mit einer Zugriffsverweigerung auf.</p>
@@ -577,7 +580,7 @@ Wenn beim Aktivieren, Deaktivieren oder Verwenden der Kennwortrückschreibung ei
             <td>
               <p>Berechtigte Benutzer in Active Directory werden mithilfe von "AdminSDHolder" geschützt. Weitere Informationen finden Sie unter <a href="https://technet.microsoft.com/magazine/2009.09.sdadminholder.aspx">http://technet.microsoft.com/magazine/2009.09.sdadminholder.aspx</a>. </p>
               <p>
-                
+
               </p>
               <p>Dies bedeutet, dass die Sicherheitsbeschreibungen dieser Objekte regelmäßig mit der in "AdminSDHolder" angegebenen Sicherheitsbeschreibung abgeglichen werden. Stimmen die Sicherheitsbeschreibungen nicht überein, werden sie zurückgesetzt. Aus diesem Grund werden die zusätzlichen Berechtigungen, die für die Kennwortrückschreibung benötigt werden, nicht auf solche Benutzer angewendet. Dies kann dazu führen, dass die Kennwortrückschreibung für die Benutzer nicht funktioniert. Die Kennwortverwaltung für Benutzer wird daher in diesen Gruppen nicht unterstützt, da dies dem AD-Sicherheitsmodell widerspricht.</p>
             </td>
@@ -589,14 +592,14 @@ Wenn beim Aktivieren, Deaktivieren oder Verwenden der Kennwortrückschreibung ei
             <td>
               <p>Verbundbenutzer oder Benutzer mit Kennworthashsynchronisierung, die versuchen, ihre Kennwörter zurückzusetzen, erhalten nach dem Übertragen des Kennworts eine Fehlermeldung mit dem Hinweis, dass ein Dienstproblem aufgetreten ist.</p>
               <p>
-                
+
               </p>
               <p>Darüber hinaus wird im Ereignisprotokoll für den Azure AD Connect-Dienst bei Vorgängen zur Kennwortzurücksetzung möglicherweise der Fehler "Objekt nicht gefunden" angezeigt. </p>
             </td>
             <td>
               <p>Dieser Fehler deutet üblicherweise darauf hin, dass das Synchronisierungsmodul entweder nicht in der Lage ist, das Benutzerobjekt im AAD-Connectorbereich oder dem zugeordneten MV- oder AD-Connectorbereichsobjekt zu ermitteln. </p>
               <p>
-                
+
               </p>
               <p>Stellen Sie zur Fehlerbeseitigung sicher, dass für den Benutzer tatsächlich eine Synchronisierung von der lokalen Umgebung zu AAD über die aktuelle Instanz von Azure AD Connect durchgeführt wird, und untersuchen Sie den Status des Objekts in Connectorbereichen und MV. Bestätigen Sie, dass das AD CS-Objekt über die Regel "Microsoft.InfromADUserAccountEnabled.xxx" mit dem MV-Objekt verbunden ist.</p>
             </td>
@@ -608,14 +611,14 @@ Wenn beim Aktivieren, Deaktivieren oder Verwenden der Kennwortrückschreibung ei
             <td>
               <p>Verbundbenutzer oder Benutzer mit Kennworthashsynchronisierung, die versuchen, ihre Kennwörter zurückzusetzen, erhalten nach dem Übertragen des Kennworts eine Fehlermeldung mit dem Hinweis, dass ein Dienstproblem aufgetreten ist.</p>
               <p>
-                
+
               </p>
               <p>Darüber hinaus wird im Ereignisprotokoll für den Azure AD Connect-Dienst bei Vorgängen zur Kennwortzurücksetzung möglicherweise der Fehler "Mehrere Übereinstimmungen gefunden" angezeigt. </p>
             </td>
             <td>
               <p>Dies deutet darauf hin, dass das Synchronisierungsmodul ermittelt hat, dass das MV-Objekt über die Regel "Microsoft.InfromADUserAccountEnabled.xxx" mit mehr als einem AD CS-Objekt verbunden ist. Dies bedeutet, dass das Benutzerkonto in mehr als einer Gesamtstruktur über ein aktives Konto verfügt. </p>
               <p>
-                
+
               </p>
               <p>Aktuell wird dieses Szenario für die Kennwortrückschreibung nicht unterstützt.</p>
             </td>
@@ -1417,7 +1420,7 @@ Eine bewährte Methode bei der Problembehandlung für die Kennwortrückschreibun
             </td>
           </tr>
         </tbody></table>
-		
+
 ## Problembehandlung: Konnektivität bei der Kennwortrückschreibung
 
 Wenn es bei Verwendung der Azure AD Connect-Komponente für die Kennwortrückschreibung zu Dienstunterbrechungen kommt, können Sie die folgenden Schritte für eine schnelle Problemlösung einsetzen:
@@ -1483,7 +1486,7 @@ Wenn das Problem anschließend weiterhin besteht, wird empfohlen, unter [Problem
 ## Links zur Dokumentation für die Kennwortzurücksetzung
 Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
 
-* [**Zurücksetzen Ihres eigenen Kennworts**](active-directory-passwords-update-your-own-password.md): Hier erhalten Sie Informationen zum Zurücksetzen oder Ändern Ihres eigenen Kennworts als Benutzer des Systems.
+* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
 * [**Funktionsweise**](active-directory-passwords-how-it-works.md) – Erfahren Sie mehr über die sechs verschiedenen Komponenten des Diensts und deren Funktionen.
 * [**Erste Schritte**](active-directory-passwords-getting-started.md) – Erfahren Sie, wie Sie Benutzern das Zurücksetzen und Ändern ihrer Cloud- oder lokalen Kennwörter erlauben.
 * [**Anpassen**](active-directory-passwords-customize.md) – Erfahren Sie, wie Sie das Aussehen und Verhalten des Diensts an die Anforderungen Ihrer Organisation anpassen.
@@ -1499,4 +1502,4 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 [003]: ./media/active-directory-passwords-troubleshoot/003.jpg "Image_003.jpg"
 [004]: ./media/active-directory-passwords-troubleshoot/004.jpg "Image_004.jpg"
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

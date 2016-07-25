@@ -26,7 +26,7 @@ Das SDK sendet automatisch alle Schreibvorgänge an die aktuell für solche Vorg
 
 Alle Lesevorgänge werden an die erste verfügbare Region in der Liste der bevorzugten Regionen gesendet. Wenn bei der Anforderung ein Fehler auftritt, führt der Client ein Failover zur nächsten Region auf der Liste durch, usw.
 
-Die Client-SDKs senden Leseanforderungen nur an die in der PreferredLocations-Liste angegebenen Regionen. Wenn ein Datenbankkonto in drei Regionen verfügbar ist, der Client aber nur zwei Leseregionen für PreferredLocations angibt, werden auch bei einem Failover keine Lesevorgänge außerhalb der Schreibregion verarbeitet.
+Die Client-SDKs empfangen Leseanforderungen nur aus den in der Liste „PreferredLocations“ angegebenen Regionen. Wenn ein Datenbankkonto in drei Regionen verfügbar ist, der Client aber nur zwei Leseregionen für PreferredLocations angibt, werden auch bei einem Failover keine Lesevorgänge außerhalb der Schreibregion verarbeitet.
 
 Die Anwendung kann die vom SDK ausgewählten aktuellen Schreib- und Leseendpunkte anhand von zwei Eigenschaften überprüfen: WriteEndpoint und ReadEndpoint. Diese stehen im SDK der Version 1.8 und höher zur Verfügung.
 
@@ -143,4 +143,4 @@ In den folgenden Artikeln erfahren Sie mehr über die globale Verteilung von Dat
 
 [regions]: https://azure.microsoft.com/regions/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

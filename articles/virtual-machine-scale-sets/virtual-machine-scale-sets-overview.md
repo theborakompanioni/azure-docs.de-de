@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/26/2016"
+	ms.date="07/12/2016"
 	ms.author="guybo"/>
 
 # Übersicht über VM-Skalierungsgruppen
@@ -25,7 +25,7 @@ Bei Anwendungen, für die Computeressourcen horizontal herunter- und hochskalier
 
 Sehen Sie sich diese Videos an, um weitere Informationen zu VM-Skalierungsgruppen zu erhalten:
 
- - [Mark Russinovich spricht über Azure-Skalierungsgruppen](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)  
+ - [Mark Russinovich spricht über Azure-Skalierungsgruppen](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)
 
  - [VM-Skalierungsgruppen mit Guy Bowerman](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
@@ -43,13 +43,13 @@ Auf den Detailseiten für diese Vorlagen finden Sie eine Schaltfläche, die eine
 
 Wenn Sie die Anzahl der virtuellen Computer in einer VM-Skalierungsgruppe erhöhen oder verringern möchten, ändern Sie einfach die Eigenschaft _capacity_ und stellen die Vorlage erneut bereit. Diese Einfachheit erleichtert es, eine benutzerdefinierte Skalierungsschicht zu schreiben, falls Sie benutzerdefinierte Skalierungsereignisse definieren möchten, die von der automatischen Skalierung in Azure nicht unterstützt werden.
 
-Wenn Sie eine Vorlage erneut bereitstellen, um die Kapazität zu erhöhen, können Sie dafür eine viel kleinere Vorlage definieren, die nur die SKU und die geänderte Kapazität enthält. Ein Beispiel sehen Sie [hier](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-linux-nat/azuredeploy.json).
+Wenn Sie eine Vorlage erneut bereitstellen, um die Kapazität zu erhöhen, können Sie dafür eine viel kleinere Vorlage definieren, die nur die SKU und die geänderte Kapazität enthält. Ein Beispiel sehen Sie [hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing).
 
 Die Schritte, mit denen eine Skalierungsgruppe erstellt wird, die automatisch skaliert wird, werden unter [Automatisches Skalieren von Computern in einer VM-Skalierungsgruppe](virtual-machine-scale-sets-windows-autoscale.md) erläutert.
 
 ## Überwachen der VM-Skalierungsgruppe
 
-Zurzeit sollten Sie den [Azure-Ressourcen-Explorer](https://resources.azure.com) verwenden, um VM-Skalierungsgruppen anzuzeigen. Bei VM-Skalierungsgruppen handelt es sich um Ressourcen unter „Microsoft.Compute“. Sie können sie daher anzeigen, indem Sie auf dieser Website die folgenden Links öffnen:
+Im [Azure-Portal](https://portal.azure.com) sind Skalierungsgruppen und allgemeine Eigenschaften sowie virtuelle Computer in der Gruppe aufgeführt. Wenn Sie ausführlichere Informationen benötigen, können Sie den [Azure-Ressourcen-Explorer](https://resources.azure.com) verwenden, um VM-Skalierungsgruppen anzuzeigen. Bei VM-Skalierungsgruppen handelt es sich um Ressourcen unter „Microsoft.Compute“. Sie können sie daher anzeigen, indem Sie auf dieser Website die folgenden Links öffnen:
 
 	subscriptions -> your subscription -> resourceGroups -> providers -> Microsoft.Compute -> virtualMachineScaleSets -> your VM scale set -> etc.
 
@@ -57,9 +57,9 @@ Zurzeit sollten Sie den [Azure-Ressourcen-Explorer](https://resources.azure.com)
 
 Dieser Abschnitt enthält einige typische Szenarien für VM-Skalierungsgruppen. Einige auf höherer Ebene angesiedelte Azure-Dienste (wie Batch, Service Fabric und Azure Container Service) verwenden diese Szenarien.
 
- - **Zugriff mit RDP oder SSH auf VM-Skalierungsgruppeninstanzen** – Eine VM-Skalierungsgruppe wird in einem VNet erstellt, und den einzelnen virtuellen Computern in der Skalierungsgruppe werden keine öffentlichen IP-Adressen zugeordnet. Das ist gut so, weil Sie im Allgemeinen den Aufwand und die Verwaltungsarbeiten vermeiden möchten, die mit dem Zuordnen von separaten IP-Adressen zu allen zustandslosen Ressourcen in Ihrem Computenetz verbunden sind. Außerdem können Sie über andere Ressourcen in Ihrem VNET, die über öffentliche IP-Adressen verfügen, leicht eine Verbindung mit diesen virtuellen Computern herstellen, z. B. über Load Balancer oder eigenständige virtuelle Computer.
+ - **Zugriff mit RDP oder SSH auf VM-Skalierungsgruppeninstanzen** – Eine VM-Skalierungsgruppe wird in einem VNet erstellt, und den einzelnen virtuellen Computern in der Skalierungsgruppe werden keine öffentlichen IP-Adressen zugeordnet. Das ist gut so, weil Sie im Allgemeinen den Aufwand und die Verwaltungsarbeiten vermeiden möchten, die mit dem Zuordnen von separaten öffentlichen IP-Adressen zu allen zustandslosen Ressourcen in Ihrem Computenetz verbunden sind. Außerdem können Sie über andere Ressourcen in Ihrem VNET, die über öffentliche IP-Adressen verfügen, leicht eine Verbindung mit diesen virtuellen Computern herstellen, z.B. über Load Balancer oder eigenständige virtuelle Computer.
 
- - **Herstellen einer Verbindung mit virtuellen Computern mithilfe von NAT-Regeln** – Sie können eine öffentliche IP-Adresse erstellen, sie einem Load Balancer zuweisen und NAT-Regeln (Network Address Translation) für eingehenden Datenverkehr definieren, die einen Port der IP-Adresse einem Port auf dem virtuellen Computer in der VM-Skalierungsgruppe zuordnen.
+ - **Herstellen einer Verbindung mit virtuellen Computern mithilfe von NAT-Regeln**: Sie können eine öffentliche IP-Adresse erstellen, sie einem Load Balancer zuweisen und NAT-Regeln (Network Address Translation) für eingehenden Datenverkehr definieren, die einen Port der IP-Adresse einem Port auf dem virtuellen Computer in der VM-Skalierungsgruppe zuordnen. Beispiel:
  
 	Quelle | Quellport | Ziel | Zielport
 	--- | --- | --- | ---
@@ -75,7 +75,7 @@ Dieser Abschnitt enthält einige typische Szenarien für VM-Skalierungsgruppen. 
 
 	[Als Beispiel für diese Herangehensweise erstellt die folgende Vorlage einen einfachen Mesos-Cluster mit einem eigenständigen virtuellen Mastercomputer, der einen auf einer VM-Skalierungsgruppe basierenden Cluster von virtuellen Computern verwaltet.](https://github.com/gbowerman/azure-myriad/blob/master/mesos-vmss-simple-cluster.json)
 
- - **Roundrobin-Lastenausgleich für VM-Skalierungsgruppeninstanzen**: Wenn Sie eine Workload per Roundrobin an einen Computecluster aus virtuellen Computern übergeben möchten, können Sie einen Azure Load Balancer mit entsprechenden Lastenausgleichsregeln konfigurieren. Außerdem können Sie Tests definieren, um zu überprüfen, ob Ihre Anwendung ordnungsgemäß ausgeführt wird. Diese Tests pingen die Ports mit einem festgelegten Protokoll in vorgegebenen Zeitabständen und mit einem angegebenen Anforderungspfad.
+ - **Roundrobin-Lastenausgleich für VM-Skalierungsgruppeninstanzen** – Wenn Sie eine Workload per Roundrobin an einen Computecluster aus virtuellen Computern übergeben möchten, können Sie einen Azure Load Balancer mit entsprechenden Lastenausgleichsregeln konfigurieren. Sie können Tests definieren, um zu überprüfen, ob Ihre Anwendung ordnungsgemäß ausgeführt wird. Diese Tests pingen die Ports mit einem festgelegten Protokoll in vorgegebenen Zeitabständen und mit einem angegebenen Anforderungspfad. Azure [Application Gateway](https://azure.microsoft.com/services/application-gateway/) unterstützt darüber hinaus Skalierungsgruppen sowie anspruchsvollere Lastenausgleichsszenarien.
 
 	[Im folgenden Beispiel wird eine VM-Skalierungsgruppe mit virtuellen Computern erstellt, auf denen ein IIS-Webserver ausgeführt wird. Dabei wird die Last für die einzelnen virtuellen Computer mit einem Load Balancer ausgeglichen. In dem Beispiel wird HTTP verwendet, um auf jedem virtuellen Computer eine spezifische URL zu pingen.](https://github.com/gbowerman/azure-myriad/blob/master/vmss-win-iis-vnet-storage-lb.json) (Sehen Sie sich hier besonders den Ressourcentyp „Microsoft.Network/loadBalancers“ sowie „networkProfile“ und „extensionProfile“ in „virtualMachineScaleSet“ an.)
 
@@ -92,13 +92,13 @@ Dieser Abschnitt enthält einige typische Szenarien für VM-Skalierungsgruppen. 
 - Nutzen Sie für die Namen der Speicherkonten verschiedene und im Alphabet möglichst weit auseinanderliegende Buchstaben. Die Beispielvorlagen für VM-Skalierungsgruppen (VMSS, Virtual Machine Scale Sets) in den [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates/) veranschaulichen die empfohlene Vorgehensweise.
 - Wenn Sie benutzerdefinierte virtuelle Computer verwenden, sollten Sie mit höchstens 40 virtuellen Computern pro VM-Skalierungsgruppe in einem einzelnen Speicherkonto planen. Sie müssen das Image vorab in das Speicherkonto kopieren, bevor Sie mit der Bereitstellung der VM-Skalierungsgruppe beginnen können. Weitere Informationen finden Sie in den FAQ.
 - Planen Sie mit höchstens 4096 virtuellen Computern pro VNET.
-- Die Anzahl von VMs, die Sie erstellen können, wird durch das Kernkontingent in der Region beschränkt, in der Sie sie bereitstellen. Unter Umständen müssen Sie sich an den Kundensupport wenden und das Limit im Computekontingent auch dann erhöhen lassen, wenn Sie heute über ein hohes Limit an Kernen verfügen, die für Clouddienste oder IaaS v1 genutzt werden können. Sie können Ihr Kontingent mit dem folgenden Befehl der Azure-CLI abfragen: `azure vm list-usage`. Oder Sie verwenden dazu den folgenden PowerShell-Befehl: `Get-AzureRmVMUsage` (Falls Sie eine Version von PowerShell vor 1.0 nutzen, verwenden Sie `Get-AzureVMUsage`).
+- Die Anzahl von VMs, die Sie erstellen können, wird durch das Kernkontingent in der Region beschränkt, in der Sie sie bereitstellen. Unter Umständen müssen Sie sich an den Kundensupport wenden und das Limit im Computekontingent auch dann erhöhen lassen, wenn Sie heute über ein hohes Limit an Kernen verfügen, die für Clouddienste oder IaaS v1 genutzt werden können. Sie können Ihr Kontingent mit dem folgenden Befehl der Azure-CLI abfragen: `azure vm list-usage`. Oder Sie verwenden dazu den folgenden PowerShell-Befehl: `Get-AzureRmVMUsage` (Falls Sie eine ältere Version als PowerShell 1.0 nutzen, verwenden Sie `Get-AzureVMUsage`).
 
 ## VM-Skalierungsgruppen – häufig gestellte Fragen
 
 **F.** Wie viele virtuelle Computer können in eine VM-Skalierungsgruppe aufgenommen werden?
 
-**A.** 100, sofern Sie Plattformimages verwenden, die über mehrere Speicherkonten verteilt werden können. Wenn Sie benutzerdefinierte Images verwenden, bis zu 40 (wenn die _overprovision_-Eigenschaft auf „false“ gesetzt ist, standardmäßig sind es 20), da benutzerdefinierte Images während der Vorschau nur in einem einzelnen Speicherkonto platziert werden können.
+**A.** 100, sofern Sie Plattformimages verwenden, die über mehrere Speicherkonten verteilt werden können. Wenn Sie benutzerdefinierte Images verwenden, bis zu 40 (wenn die _overprovision_-Eigenschaft auf „false“ gesetzt ist, standardmäßig sind es 20), da benutzerdefinierte Images derzeit nur in einem einzelnen Speicherkonto platziert werden können.
 
 **F.** Welche anderen Ressourceneinschränkungen bestehen für VM-Skalierungsgruppen?
 
@@ -149,10 +149,10 @@ Dieser Abschnitt enthält einige typische Szenarien für VM-Skalierungsgruppen. 
 
 **F.** Kann ich beim Verwenden mehrerer Erweiterungen in einer VM-Skalierungsgruppe eine Ausführungsreihenfolge erzwingen?
 
-**A.** Nicht direkt. Bei der customScript-Erweiterung kann das Skript jedoch warten, bis eine andere Erweiterung abgeschlossen ist ([z.B. durch Überwachung des Erweiterungsprotokolls](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vmss-lapstack-autoscale/install_lap.sh)).
+**A.** Nicht direkt. Bei der customScript-Erweiterung kann das Skript jedoch warten, bis eine andere Erweiterung abgeschlossen ist ([z.B. durch Überwachung des Erweiterungsprotokolls](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vmss-lapstack-autoscale/install_lap.sh)). Weitere Informationen zur Erweiterungssequenzierung finden Sie im folgenden Blogbeitrag: [Extension Sequencing in Azure VM Scale Sets](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/) (Erweiterungssequenzierung in Skalierungsgruppen mit virtuellen Azure-Computern).
 
 **F.** Funktionieren VM-Skalierungsgruppen mit Azure-Verfügbarkeitsgruppen?
 
 **A.** Ja. Eine VM-Skalierungsgruppe ist eine implizite Verfügbarkeitsgruppe mit 5 Fehlerdomänen (FDs) und 5 Updatedomänen (UDs). Unter virtualMachineProfile brauchen Sie nichts zu konfigurieren. In künftigen Versionen werden VM-Skalierungsgruppen wahrscheinlich mehrere Mandanten umspannen, aber derzeit entspricht eine Skalierungsgruppe einer einzigen Verfügbarkeitsgruppe.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->

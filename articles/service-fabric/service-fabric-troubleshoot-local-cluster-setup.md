@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/06/2016"
+   ms.date="07/08/2016"
    ms.author="seanmck"/>
 
 # Problembehandlung beim Einrichten des Clusters für die lokale Entwicklung
@@ -92,10 +92,11 @@ Dieser Fehler tritt gewöhnlich beim Versuch auf, einen Diensthostprozess manuel
 
 Stellen Sie sicher, dass in Ihrer Projektmappe keine Dienstprojekte als Startprojekte festgelegt sind. Nur Service Fabric-Anwendungsprojekte sollten als Startprojekte festgelegt werden.
 
+>[AZURE.TIP] Wenn sich der lokale Cluster nach dem Setup ungewöhnlich verhält, können Sie ihn mit der Taskleistenanwendung „Lokaler Cluster-Manager“ zurücksetzen. Dadurch wird der vorhandene Cluster entfernt und ein neuer Cluster eingerichtet. Beachten Sie, dass alle bereitgestellten Anwendungen und zugehörigen Daten entfernt werden.
 
 ## Nächste Schritte
 
 - [Grundlagen und Problembehandlung für Cluster mit Systemintegritätsberichten](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 - [Visualisieren Ihres Clusters mit Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/29/2016"
+   ms.date="07/12/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Indizieren von Tabellen in SQL Data Warehouse
@@ -244,6 +244,16 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5
 ```
 
+```sql
+-- Rebuild a single partition with archival compression
+ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE_ARCHIVE)
+```
+
+```sql
+-- Rebuild a single partition with columnstore compression
+ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
+```
+
 Die Neuerstellung eines Index in SQL Data Warehouse ist ein Offlinevorgang. Weitere Informationen zur Neuerstellung von Indizes finden Sie im Abschnitt zu ALTER INDEX REBUILD in [Columnstore Indexes Defragmentation][] (Columnstore-Indexdefragmentierung) und im Syntaxthema [ALTER INDEX][].
  
 ### Schritt 3: Sicherstellen, dass sich die Qualität gruppierter Columnstore-Segmente verbessert hat
@@ -252,7 +262,7 @@ Führen Sie die Abfrage, mit der die Tabelle mit schlechter Segmentqualität ide
  
 ## Neuerstellen von Indizes per CTAS und Partitionswechsel
 
-In diesem Beispiel werden CTAS und Partitionswechsel verwendet, um eine Tabellenpartition neu zu erstellen.
+In diesem Beispiel werden [CTAS][] und Partitionswechsel verwendet, um eine Tabellenpartition neu zu erstellen.
 
 ```sql
 -- Step 1: Select the partition of data and write it out to a new table using CTAS
@@ -315,6 +325,7 @@ Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Ove
 [Temporary]: ./sql-data-warehouse-tables-temporary.md
 [Temporär]: ./sql-data-warehouse-tables-temporary.md
 [Concurrency]: ./sql-data-warehouse-develop-concurrency.md
+[CTAS]: ./sql-data-warehouse-develop-ctas.md
 [Bewährte Methoden für SQL Data Warehouse]: ./sql-data-warehouse-best-practices.md
 
 <!--MSDN references-->
@@ -327,4 +338,4 @@ Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Ove
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

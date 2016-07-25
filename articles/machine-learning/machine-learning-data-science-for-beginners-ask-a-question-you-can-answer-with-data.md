@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Stellen einer Frage, die Sie mit Daten beantworten können – Data Science für Einsteiger | Microsoft Azure"
+   pageTitle="Stellen einer Frage, die Sie mit Daten beantworten können – Formulieren von Fragen | Microsoft Azure"
    description="Erfahren Sie im 3. Video von „Data Science für Einsteiger“, wie Sie eine Data Science-Frage formulieren. Enthält einen Vergleich von Klassifizierungs- und Regressionsfragen."
    keywords="Wählen einer Frage,Data Science-Fragen,Formulieren einer Frage,Formulieren von Fragen, Regressionsfragen,Klassifizierungsfragen,genaue Frage"
    services="machine-learning"
    documentationCenter="na"
-   authors="femila"
+   authors="brohrer-ms"
    manager="paulettm"
    editor="cjgronlund"/>
 
@@ -17,7 +17,7 @@
    ms.date="06/28/2016"
    ms.author="cgronlun;brohrer;garye"/>
 
-# Data Science für Einsteiger, 3. Video: Stellen einer Frage, die Sie mit Daten beantworten können 
+# Data Science für Einsteiger, 3. Video: Stellen einer Frage, die Sie mit Daten beantworten können
 
 Erfahren Sie im 3. Video von „Data Science für Einsteiger“, wie Sie eine Data Science-Frage formulieren. Dieses Video enthält einen Vergleich von Fragen zu Klassifizierungs- und Regressionsalgorithmen.
 
@@ -99,4 +99,4 @@ In fünf Kurzvideos der Reihe *Data Science für Einsteiger* erhalten Sie eine S
   * [Durchführen Ihres ersten Data Science-Experiments mit Azure Machine Learning](machine-learning-create-experiment.md)
   * [Einführung in Machine Learning in Microsoft Azure](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

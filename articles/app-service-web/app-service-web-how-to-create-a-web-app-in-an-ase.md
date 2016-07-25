@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="04/04/2016"
+	ms.date="07/12/2016"
 	ms.author="ccompy"/>
 
 # Erstellen einer Web-App in einer App Service-Umgebung
@@ -30,7 +30,7 @@ Bei diesem Tutorial wird vorausgesetzt, dass Sie eine App Service-Umgebung erste
 
 ## Erstellen einer Web-App
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Neu > Web und mobil > Web-App**. 
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Neu > Web und mobil > Web-App**.
 
 	![][1]
 
@@ -44,7 +44,7 @@ Bei diesem Tutorial wird vorausgesetzt, dass Sie eine App Service-Umgebung erste
 
 4. Wählen Sie einen App Service-Plan aus, oder erstellen Sie einen.
 
-	Bei *App Service-Plänen* handelt es sich um einen verwalteten Satz von Web-Apps. Bei Auswählen der Preise gelten diese nicht für die einzelnen Apps, sondern für den App Service-Plan. Um die Anzahl von Instanzen einer Web-App zentral hochzuskalieren, skalieren Sie die Anzahl von Instanzen Ihres App Service-Plans. Dies wirkt sich auf sämtliche Web-Apps innerhalb des betroffenen Plans aus. Für einige Funktionen wie Websiteslots oder die VNET-Integration gelten innerhalb des Plans ebenfalls Mengenbeschränkungen. Weitere Informationen hierzu finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
+	Bei *App Service-Plänen* handelt es sich um einen verwalteten Satz von Web-Apps. Bei Auswählen der Preise gelten diese normalerweise nicht für die einzelnen Apps, sondern für den App Service-Plan. In einer ASE zahlen Sie für die zugeordneten Serverinstanzen, und nicht das, was in Ihrem ASP aufgelistet ist. Um die Anzahl von Instanzen einer Web-App zentral hochzuskalieren, skalieren Sie die Anzahl von Instanzen Ihres App Service-Plans. Dies wirkt sich auf sämtliche Web-Apps innerhalb des betroffenen Plans aus. Für einige Funktionen wie Websiteslots oder die VNET-Integration gelten innerhalb des Plans ebenfalls Mengenbeschränkungen. Weitere Informationen hierzu finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
 
 	Sie können die App Service-Pläne in Ihrer ASE anhand des Standorts identifizieren, der unter dem Plannamen angegeben ist.
 
@@ -54,15 +54,9 @@ Bei diesem Tutorial wird vorausgesetzt, dass Sie eine App Service-Umgebung erste
 
 5. Geben Sie den Namen für Ihre Web-App ein, und klicken Sie dann auf **Erstellen**.
 
-	Der Name Ihrer Web-App muss innerhalb von Azure App Service eindeutig sein. Wenn Sie daher eine Web-App mit dem Namen „diesistmeinewebapp“ erstellen möchten, darf gegenwärtig keine andere Web-App mit dem Namen „diesistmeinewebapp“ in Azure App Service vorhanden sein.
-
-	Die URL einer Web-App in einer ASE lautet:
-
-	[*Sitename*].[*Name Ihrer App Service-Umgebung*].p.azurewebsites.net
-
-	anstelle von
-
-	[*Sitename*].azurewebsites.net
+	Wenn Ihre ASE eine externe VIP-Adresse verwendet, lautet die URL einer App in dieser ASE: „[*Websitename*].[*Name Ihrer App Service-Umgebung*].p.azurewebsites.net“ anstelle von „[*Websitename*].azurewebsites.net“.
+	
+	Wenn Ihre ASE eine interne VIP-Adresse verwendet, lautet die URL einer App in dieser ASE: „[*Websitename*]. [*bei der Erstellung der ASE angegebene Unterdomäne*]“. Nach der Auswahl Ihres ASP während der ASE-Erstellung sehen Sie das Unterdomänenupdate unter **Name**.
 
 ## <a name="createplan"></a> Erstellen eines App Service-Plans
 
@@ -118,4 +112,4 @@ Nach dem Erstellen der Web-App und des App Service-Plans sollten Sie eine zentra
 [ResourceGroups]: http://azure.microsoft.com/documentation/articles/resource-group-portal/
 [AzurePowershell]: http://azure.microsoft.com/documentation/articles/powershell-install-configure/
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0713_2016-->

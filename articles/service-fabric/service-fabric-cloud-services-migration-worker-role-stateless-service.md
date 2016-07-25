@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/29/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
  
 # Anleitung zur Konvertierung von Web- und Workerrollen in zustandslose Service Fabric-Dienste
@@ -114,7 +114,7 @@ Es gibt einige wichtige Unterschiede zwischen dem Lebenszyklus und der Lebensdau
 
  - **Lebenszyklus:** Der größte Unterschied ist, dass eine Workerrolle eine VM ist und ihr Lebenszyklus daher an die VM gebunden ist. Dies umfasst auch Ereignisse, die mit dem Starten und Beenden der VM verbunden sind. Ein Service Fabric-Dienst hat einen Lebenszyklus, der vom VM-Lebenszyklus getrennt ist. Er enthält also keine Ereignisse, die sich auf das Starten und Beenden der Host-VM oder des Computers beziehen, da diese nicht verwandt sind.
 
- - **Lebensdauer:** Eine Workerrolleninstanz wird wiederverwendet, wenn die `Run`-Methode vorhanden ist. Die `RunAsync`-Methode in einem Service Fabric-Dienst kann aber bis zum Schluss ausgeführt werden, und die Dienstinstanz bleibt verfügbar.
+ - **Lebensdauer:** Eine Workerrolleninstanz wird wiederverwendet, wenn die `Run`-Methode beendet wird. Die `RunAsync`-Methode in einem Service Fabric-Dienst kann aber bis zum Schluss ausgeführt werden, und die Dienstinstanz bleibt verfügbar.
 
 Service Fabric stellt einen optionalen Kommunikationssetup-Einstiegspunkt für Dienste bereit, die auf Clientanforderungen lauschen. Sowohl der RunAsync- als auch der Kommunikations-Einstiegspunkt sind optionale Außerkraftsetzungen (Overrides) in Service Fabric-Diensten. - Ihr Dienst lauscht unter Umständen nur auf Clientanforderungen oder führt nur eine Verarbeitungsschleife aus (oder beides). - Dies ist der Grund, warum die RunAsync-Methode den Vorgang beenden kann, ohne dass die Dienstinstanz neu gestartet wird. Ggf. lauscht sie weiter auf Clientanforderungen.
 
@@ -160,7 +160,7 @@ Auf Konfigurationseinstellungen wird in jeder Dienstinstanz über das `CodePacka
 
 ```C#
 
-ConfigurationPackage configPackage = this.ServiceInitializationParameters.CodePackageActivationContext.GetConfigurationPackageObject("Config");
+ConfigurationPackage configPackage = this.Context.CodePackageActivationContext.GetConfigurationPackageObject("Config");
 
 // Access Settings.xml
 KeyedCollection<string, ConfigurationProperty> parameters = configPackage.Settings.Sections["MyConfigSection"].Parameters;
@@ -178,7 +178,7 @@ using (StreamReader reader = new StreamReader(Path.Combine(configPackage.Path, "
 ### Ereignisse für die Aktualisierung der Konfiguration
 #### Cloud Services
 
-Das `RoleEnvironment.Changed`-Ereignis wird für die Benachrichtigung aller Rolleninstanzen verwendet, wenn in der Umgebung eine Änderung vorgenommen wird, z. B. eine Konfigurationsänderung. Es wird zum Nutzen von Konfigurationsupdates eingesetzt, ohne dass Rolleninstanzen wiederverwendet werden oder ein Workerprozess neu gestartet wird.
+Das `RoleEnvironment.Changed`-Ereignis wird für die Benachrichtigung aller Rolleninstanzen verwendet, wenn in der Umgebung eine Änderung vorgenommen wird, z.B. eine Konfigurationsänderung. Es wird zum Nutzen von Konfigurationsupdates eingesetzt, ohne dass Rolleninstanzen wiederverwendet werden oder ein Workerprozess neu gestartet wird.
 
 ```C#
 
@@ -204,7 +204,7 @@ Diese Ereignisse sind verfügbar, um Änderungen von Dienstpaketen zu verarbeite
  
 ```C#
 
-this.ServiceInitializationParameters.CodePackageActivationContext.ConfigurationPackageModifiedEvent +=
+this.Context.CodePackageActivationContext.ConfigurationPackageModifiedEvent +=
                     this.CodePackageActivationContext_ConfigurationPackageModifiedEvent;
 
 private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(object sender, PackageModifiedEventArgs<ConfigurationPackage> e)
@@ -277,4 +277,4 @@ Lesen Sie die weiteren Informationen zu Service Fabric Reliable Services und den
 [3]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/service-fabric-cloud-service-projects.png
 [4]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/worker-role-to-stateless-service.png
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0713_2016-->

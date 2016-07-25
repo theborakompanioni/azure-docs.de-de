@@ -13,13 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/29/2016"
+	ms.date="07/12/2016"
 	ms.author="curtand"/>
 
 
 # Kennwortrichtlinien und -einschränkungen in Azure Active Directory
 
 Dieser Artikel beschreibt die Kennwortrichtlinien und Komplexitätsanforderungen im Zusammenhang mit den in Ihrem Azure AD-Verzeichnis gespeicherten Benutzerkonten.
+
+> [AZURE.IMPORTANT] **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
 
 ## UserPrincipalName-Richtlinien, die für alle Benutzerkonten gelten
 
@@ -38,7 +40,7 @@ Die folgende Tabelle beschreibt die verfügbaren Kennwortrichtlinieneinstellunge
 | Eigenschaft | Anforderungen |
 |   ----------------------- |   ----------------------- |
 | Zulässige Zeichen | <ul><li>A – Z</li><li>a -z </li><li>0 – 9</li> <li>@ # $ % ^ & * - \_ ! + = [ ] { } | \\ : ‘ , . ? / ` ~ “ ( ) ;</li></ul> |
-| Unzulässige Zeichen | <ul><li>Unicode-Zeichen</li><li>Leerzeichen</li><li>Leerzeichen</li><li> **Nur für sichere Kennwörter**: Dürfen keinen Punkt (.) unmittelbar vor dem @-Symbol enthalten</li></ul> |
+| Unzulässige Zeichen | <ul><li>Unicode-Zeichen</li><li>Leerzeichen</li><li>**Nur für sichere Kennwörter**: Dürfen keinen Punkt (.) unmittelbar vor dem @-Symbol enthalten</li></ul> |
 | Kennworteinschränkungen | <ul><li>Mindestens 8 Zeichen und höchstens 16 Zeichen</li><li>**Nur für sichere Kennwörter**: Es müssen 3 der 4 folgenden Zeichenarten enthalten sein:<ul><li>Kleinbuchstaben</li><li>Großbuchstaben</li><li>Zahlen (0-9)</li><li>Symbole (siehe Kennworteinschränkungen oben)</li></ul></li></ul> |
 | Zeitraum bis zum Ablauf des Kennworts | <ul><li>Standardwert: **90** Tage </li><li>Der Wert kann im Azure Active Directory-Modul für Windows PowerShell mit dem Cmdlet „Set-MsolPasswordPolicy“ konfiguriert werden.</li></ul> |
 | Benachrichtigung bei Ablauf des Kennworts | <ul><li>Standardwert: **14** Tage (vor Ablauf des Kennworts)</li><li>Der Wert kann mit dem Cmdlet „Set-MsolPasswordPolicy“ konfiguriert werden.</li></ul> |
@@ -50,6 +52,7 @@ Die folgende Tabelle beschreibt die verfügbaren Kennwortrichtlinieneinstellunge
 
 ## Nächste Schritte
 
+* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
 * [Verwalten von Kennwörtern von einem beliebigen Ort aus](active-directory-passwords.md)
 * [Funktionsweise der Kennwortverwaltung](active-directory-passwords-how-it-works.md)
 * [Erste Schritte mit der Kennwortverwaltung](active-directory-passwords-getting-started.md)
@@ -60,4 +63,4 @@ Die folgende Tabelle beschreibt die verfügbaren Kennwortrichtlinieneinstellunge
 * [Problembehandlung für die Kennwortverwaltung](active-directory-passwords-troubleshoot.md)
 * [Weitere Informationen](active-directory-passwords-learn-more.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

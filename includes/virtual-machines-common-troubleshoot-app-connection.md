@@ -1,4 +1,4 @@
-Verschiedene Gründe können zu Problemen beim Herstellen einer Verbindung mit einer Anwendung führen, die auf einem virtuellen Azure-Computer ausgeführt wird, z.B. wenn die Anwendung nicht ausgeführt wird und nicht auf die erwarteten Ports lauscht oder wenn Netzwerkregeln den Datenverkehr nicht ordnungsgemäß an die Anwendung weiterleiten. In diesem Artikel wird ein methodischer Ansatz zum Ermitteln und Beheben der Probleme beschrieben.
+Verschiedene Gründe können zu Problemen beim Starten einer Anwendung oder beim Herstellen einer Verbindung mit einer Anwendung führen, die auf einem virtuellen Azure-Computer ausgeführt wird, z.B. wenn die Anwendung nicht ausgeführt wird oder nicht an den erwarteten Ports lauscht, der Lauschport blockiert ist oder Netzwerkregeln den Datenverkehr nicht ordnungsgemäß an die Anwendung weiterleiten. In diesem Artikel wird ein methodischer Ansatz zum Ermitteln und Beheben der Probleme beschrieben.
 
 Wenn beim Herstellen einer Verbindung mit dem virtuellen Computer mit RDP oder SSH Probleme auftreten, finden Sie entsprechende Informationen zunächst in den folgenden Artikeln:
 
@@ -29,7 +29,7 @@ Weitere Informationen finden Sie unter [Problembehandlung bei Endpunktverbindung
 
 Die Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird, konzentriert sich auf vier Hauptbereiche.
 
-![](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access1.png)
+![Problembehandlung, wenn die Anwendung nicht gestartet werden kann](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access1.png)
 
 1.	Die Anwendung, die auf dem virtuellen Azure-Computer ausgeführt wird.
 	- Wird die Anwendung selbst ordnungsgemäß ausgeführt?
@@ -46,7 +46,7 @@ Bei Clientcomputern, die über eine Site-to-Site-VPN- oder ExpressRoute-Verbindu
 
 Versuchen Sie, mithilfe des geeigneten Clientprogramms von der VM, auf der es läuft, auf die Anwendung zuzugreifen. Verwenden Sie den lokalen Hostnamen, die lokale IP-Adresse oder die Loopbackadresse (127.0.0.1).
 
-![](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access2.png)
+![Anwendung direkt von der VM starten](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access2.png)
 
 Wenn es sich bei der Anwendung beispielsweise um einen Webserver handelt, öffnen Sie einen Browser auf der VM, und versuchen Sie, auf eine Webseite zuzugreifen, die auf der VM gehostet wird.
 
@@ -63,7 +63,7 @@ Verwenden Sie bei Windows- und Linux-basierten virtuellen Computern den Befehl *
 
 Versuchen Sie, von einer anderen VM im gleichen virtuellen Netzwerk auf die Anwendung zuzugreifen. Verwenden Sie dazu den VM-Hostnamen oder die von Azure zugewiesene öffentliche, private oder Anbieter-IP-Adresse. Verwenden Sie für mithilfe des klassischen Bereitstellungsmodells erstellte virtuelle Computer nicht die öffentliche IP-Adresse des Clouddiensts.
 
-![](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access3.png)
+![Anwendung von einer anderen VM starten](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access3.png)
 
 Wenn es sich bei der Anwendung beispielsweise um einen Webserver handelt, versuchen Sie, in einem Browser auf einer anderen VM im gleichen virtuellen Netzwerk auf eine Webseite zuzugreifen.
 
@@ -84,7 +84,7 @@ Verwenden Sie auf einem Windows-basierten virtuellen Computer die Windows-Firewa
 
 Versuchen Sie, von einem Computer, der sich nicht im gleichen Netzwerk wie die VM befindet, auf der die Anwendung ausgeführt wird, auf die Anwendung zuzugreifen. Der Computer darf sich aber ebenso wenig im Netzwerk Ihres ursprünglichen Clientcomputers befinden.
 
-![](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access4.png)
+![Anwendung von einem Computer außerhalb des virtuellen Netzwerks starten](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access4.png)
 
 Wenn es sich bei der Anwendung beispielsweise um einen Webserver handelt, versuchen Sie, in einem Browser auf eine Webseite zuzugreifen, der auf einem Computer ausgeführt wird, der sich nicht im virtuellen Netzwerk befindet.
 
@@ -94,7 +94,7 @@ Wenn kein Zugriff auf die Anwendung möglich ist, überprüfen Sie Folgendes:
 	- Die Endpunktkonfiguration für den virtuellen Computer muss eingehenden Datenverkehr zulassen, insbesondere das Protokoll (TCP oder UDP) und die öffentlichen und privaten Portnummern.
 	- Die Zugriffssteuerungslisten (Access Control Lists, ACLs) auf dem Endpunkt dürfen aus dem Internet eingehenden Datenverkehr nicht verhindern.
 	- Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md).
-	
+
 - Bei virtuellen Computern, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden:
 	- Die Konfiguration der eingehenden NAT-Regel für den virtuellen Computer muss eingehenden Datenverkehr zulassen, insbesondere das Protokoll (TCP oder UDP) und die öffentlichen und privaten Portnummern.
 	- Netzwerksicherheitsgruppen lassen die eingehende Anforderung und den ausgehende Antwortdatenverkehr zu.
@@ -118,4 +118,4 @@ Wenn Sie auf die Anwendung zugreifen können, stellen Sie sicher, dass Ihre Inte
 
 [Behandeln von Problemen mit Secure Shell (SSH)-Verbindungen mit einem Linux-basierten virtuellen Azure-Computer](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.topic="article"
    ms.workload="storage-backup-recovery" 
-   ms.date="03/06/2016"
+   ms.date="07/08/2016"
    ms.author="ruturajd@microsoft.com"/>
 
 # Failback von virtuellen VMware-Maschinen und physischen Servern von Azure auf VMware mit Azure Site Recovery (Legacy)
@@ -266,7 +266,7 @@ Sie müssen die virtuellen Computer auf dem lokalen Standort schützen, bevor Si
 Beim Failover eines virtuellen Computers zu Azure wird ein temporäres Laufwerk für die Auslagerungsdatei hinzugefügt. Hierbei handelt es sich um ein zusätzliches Laufwerk, das von dem virtuellen Computer, für den das Failover ausgeführt wurde, in der Regel nicht benötigt wird, da dieser unter Umständen bereits über ein dediziertes Laufwerk für die Auslagerungsdatei verfügt. Bevor Sie mit der Umkehr des Schutzes der virtuellen Computer beginnen, müssen Sie dieses Laufwerk offline schalten, damit es nicht geschützt wird. Gehen Sie hierzu wie folgt vor:
 
 1.  Öffnen Sie die Computerverwaltung und klicken Sie auf die Speicherverwaltung, um die Datenträger anzuzeigen, die online und mit dem Computer verbunden sind.
-2.  Wählen Sie den temporären Datenträger aus, der dem Computer zugeordnet ist, und schalten Sie ihn offline. 
+2.  Wählen Sie den temporären Datenträger aus, der dem Computer zugeordnet ist, und schalten Sie ihn offline.
 
 ### Schützen der virtuellen Computer
 
@@ -428,4 +428,4 @@ Nach Abschluss des Failbacks empfiehlt es sich unter Umständen, die virtuellen 
 
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

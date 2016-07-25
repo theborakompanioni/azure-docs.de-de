@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/27/2016"
+   ms.date="07/12/2016"
    ms.author="larryfr"/>
 
 #Verwenden von Hive mit Hadoop in HDInsight über Beeline
@@ -23,7 +23,7 @@
 
 In diesem Artikel erfahren Sie, wie Sie mit SSH (Secure Shell) eine Verbindung mit einem Linux-basierten HDInsight-Cluster herstellen und dann Hive-Abfragen mithilfe des [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell)-Befehlszeilentools interaktiv übermitteln.
 
-> [AZURE.NOTE] Für Beeline wird JDBC für die Verbindung mit Hive verwendet. Weitere Informationen zur Verwendung von JDBC mit Hive finden Sie unter [Herstellen einer Verbindung mit Hive unter Azure HDInsight per Hive-JDBC-Treiber](hdinsight-connect-hive-jdbc-driver.md).
+> [AZURE.NOTE] Beeline verwendet JDBC für die Verbindung mit Hive. Weitere Informationen zur Verwendung von JDBC mit Hive finden Sie unter [Herstellen einer Verbindung mit Hive unter Azure HDInsight per Hive-JDBC-Treiber](hdinsight-connect-hive-jdbc-driver.md).
 
 ##<a id="prereq"></a>Voraussetzungen
 
@@ -55,27 +55,15 @@ Weitere Informationen zum Verwenden von PuTTY finden Sie unter [Verwenden von SS
 
 ##<a id="beeline"></a>Verwenden des Beeline-Befehls
 
-1. Verwenden Sie nach dem Herstellen der Verbindung Folgendes, um den Hostnamen des Hauptknotens abzurufen:
+1. Führen Sie nach dem Herstellen der Verbindung den folgenden Befehl aus, um Beeline zu starten:
 
-        hostname -f
+        beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
+
+    Dadurch wird der Beeline-Client gestartet und eine Verbindung mit der JDBC-URL hergestellt. Hier wird `localhost` verwendet, da HiveServer2 auf beiden Hauptknoten im Cluster ausgeführt wird und wir Beeline direkt auf dem Hauptknoten 0 ausführen.
     
-    Speichern Sie den zurückgegebenen Hostnamen, da er später verwendet wird, wenn die Verbindung von Beeline zu HiveServer2 hergestellt wird.
-    
-2. Starten Sie die Hive-Befehlszeilenschnittstelle mit dem folgenden Befehl:
+    Nach Abschluss des Befehls gelangen Sie zur Eingabeaufforderung `jdbc:hive2://localhost:10001/>`.
 
-        beeline
-
-2. Verwenden Sie an der `beeline>`-Eingabeaufforderung Folgendes, um eine Verbindung mit dem HiveServer2-Dienst herzustellen: Ersetzen Sie __HOSTNAME__ durch den Hostnamen, der für den Hauptknoten bereits zurückgegeben wurde:
-
-        !connect jdbc:hive2://HOSTNAME:10001/;transportMode=http admin
-        
-    Dies weist Beeline an, die Verbindung mit Port __10001__ auf dem angegebenen __HOSTNAME__ herzustellen, und __HTTP__ ist die Transportmethode. Das __Admin__-Konto wird zur Authentifizierung der Verbindung verwendet.
-
-    Geben Sie nach Aufforderung das Kennwort für das Administratorkonto (admin) für den HDInsight-Cluster ein. Nach dem Herstellen der Verbindung wird die Aufforderung wie folgt geändert:
-    
-        jdbc:hive2://HOSTNAME:10001/>
-
-3. Beeline-Befehle beginnen normalerweise mit dem Zeichen `!`, z. B. `!help` zum Anzeigen der Hilfe. Das `!` kann aber auch häufig weggelassen werden. `help` funktioniert beispielsweise auch.
+3. Beeline-Befehle beginnen normalerweise mit dem Zeichen `!`, z. B. `!help` zum Anzeigen der Hilfe. Das `!` kann jedoch häufig weggelassen werden. `help` funktioniert beispielsweise auch.
 
     Beim Anzeigen der Hilfe sehen Sie `!sql` zum Ausführen von HiveQL-Anweisungen. HiveQL wird aber so häufig genutzt, dass Sie das vorangestellte `!sql` weglassen können. Die folgenden beiden Anweisungen liefern genau die gleichen Ergebnisse. Es werden die Tabellen angezeigt, die derzeit über Hive verfügbar sind:
     
@@ -176,13 +164,15 @@ Beeline kann auch verwendet werden, um eine Datei auszuführen, die HiveQL-Anwei
     
     > [AZURE.NOTE] Im Gegensatz zu externen Tabellen werden beim Ablegen von internen Tabellen auch die zugrunde liegenden Daten gelöscht.
     
-3. Verwenden Sie __STRG__+___\_X__, um die Datei zu speichern, und geben Sie dann __J__ ein, und drücken Sie die __EINGABETASTE__.
+3. Verwenden Sie __STRG__+__X__, um die Datei zu speichern. Geben Sie dann _J_ ein, und drücken Sie die __EINGABETASTE__.
 
-4. Verwenden Sie Folgendes, um die Datei mit Beeline auszuführen: Ersetzen Sie __HOSTNAME__ durch den Namen, den Sie bereits für den Hauptknoten abgerufen haben, und __PASSWORD__ durch das Kennwort für das Administratorkonto:
+4. Verwenden Sie Folgendes, um die Datei mit Beeline auszuführen: Ersetzen Sie __HOSTNAME__ durch den Namen, den Sie bereits für den Hauptknoten abgerufen haben, und __PASSWORD__ durch das Kennwort des Administratorkontos:
 
-        beeline -u 'jdbc:hive2://HOSTNAME:10001/;transportMode=http' -n admin -p PASSWORD -f query.hql
+        beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin -i query.hql
 
-5. Um zu überprüfen, ob die Tabelle **errorLogs** erstellt wurde, starten Sie Beeline und stellen eine Verbindung mit HiveServer2 her. Verwenden Sie anschließend die folgende Anweisung, um alle Zeilen aus **errorLogs** zurückzugeben:
+    > [AZURE.NOTE] Der `-i`-Parameter startet Beeline, führt die Anweisungen in der Datei „query.hql“ aus und verbleibt in Beeline an der Eingabeaufforderung `jdbc:hive2://localhost:10001/>`. Sie können auch eine Datei mit dem `-f`-Parameter ausführen, wodurch Sie zu Bash zurückkehren, nachdem die Datei verarbeitet wurde.
+
+5. Um zu überprüfen, ob die Tabelle **errorLogs** erstellt wurde, verwenden Sie die folgende Anweisung, um alle Zeilen aus **errorLogs** zurückzugeben:
 
         SELECT * from errorLogs;
 
@@ -245,4 +235,4 @@ Wenn Sie mit Tez mit Hive verwenden, finden Sie in den folgenden Dokumenten Info
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0713_2016-->

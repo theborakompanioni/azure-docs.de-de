@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/20/2016"
+	ms.date="07/11/2016"
 	ms.author="jeedes"/>
 
 
@@ -58,7 +58,7 @@ Zum Konfigurieren der Integration von IBM Kenexa Survey Enterprise in Azure AD m
 
 **Um IBM Kenexa Survey Enterprise aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
 
 	![Active Directory][1]
 
@@ -143,7 +143,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
 
  - Die heruntergeladene Zertifikatdatei
  - Die **Aussteller-URL**
- - Die **SAML-SSO-URL** 
+ - Die **SAML-SSO-URL**
  - Die **Dienst-URL für einmaliges Abmelden**
 
 	> [AZURE.NOTE] Beachten Sie, dass der NameID-Anspruchswert in der Antwort mit der im Kenexa-System konfigurierten SSO-ID übereinstimmen muss. Arbeiten Sie mit dem Kenexa-Supportteam zusammen, um die entsprechende Benutzer-ID in Ihrem Unternehmen als SSO-ID zuzuordnen. Standardmäßig legt Azure AD den NameIdentifier-Wert als UPN-Wert fest. Sie können dieses Verhalten auf der Registerkarte „Attribut“ ändern, wie in unten stehendem Screenshot gezeigt. Die Integration funktioniert nur nach erfolgreicher Zuordnung.
@@ -213,7 +213,7 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_08.png)
+	![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-kenexasurvey-tutorial/create_aaduser_08.png)
 
     a. Notieren Sie den Wert von **Neues Kennwort**.
 
@@ -289,4 +289,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „IBM Kenexa Survey Enterprise“ kl
 [204]: ./media/active-directory-saas-kenexasurvey-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-kenexasurvey-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

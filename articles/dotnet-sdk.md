@@ -14,7 +14,7 @@
 	ms.devlang="dotnet" 
 	ms.topic="article" 
 	ms.date="06/30/2016" 
-	ms.author="tdykstra"/>
+	ms.author="rachelap"/>
 
 # Was ist das Azure-SDK für .NET?
 
@@ -41,7 +41,7 @@ Das Azure-SDK für .NET installiert folgende Produkte:
 - [Microsoft ASP.NET und Webtools für Visual Studio](#wte)
 - [Microsoft Azure Data Lake-Tools für Visual Studio](#datalake)
 
-###<a id="vwd"></a>Visual Studio Express für das Web installiert
+###<a id="vwd"></a>Visual Studio Community Edition 2015
 
 Wenn Visual Studio nicht auf Ihrem Computer installiert ist, installiert das SDK [Visual Studio Community Edition 2015](https://www.visualstudio.com/products/visual-studio-community-vs).
 
@@ -185,10 +185,10 @@ Um festzustellen, welche Version aktuell ist, oder um ältere Versionen herunter
 
 ##<a id="resources"></a>Ressourcen
 
-Das aktuelle Azure-SDK für .NET oder Clientbibliotheken können Sie auf der [Azure Download-Seite herunterladen](https://azure.microsoft.com/downloads/).
+Das aktuelle Azure-SDK für .NET oder Clientbibliotheken können Sie auf der Azure Download-Seite herunterladen.
 
 Quellcode des Azure-SDK für .NET, einschließlich Clientbibliotheken, finden Sie unter [GitHub.com/Azure](https://github.com/azure/).
 
 Referenzdokumentation für Azure-Clientbibliotheken finden Sie unter [Azure .NET-Referenz](https://azure.microsoft.com/documentation/api/).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

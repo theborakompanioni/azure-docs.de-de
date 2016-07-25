@@ -15,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="02/22/2016" 
-	ms.author="bradyg"/>
+	ms.author="rachelap"/>
 
 # Anpassen von mit Swashbuckle generierten API-Definitionen 
 
@@ -24,7 +24,7 @@
 In diesem Artikel wird erläutert, wie Swashbuckle so angepasst wird, dass allgemeine Szenarios behandelt werden, bei denen Sie das Standardverhalten möglicherweise ändern möchten:
 
 * Swashbuckle generiert doppelte Vorgangs-IDs für Überladungen von Controllermethoden.
-* In Swashbuckle wird davon ausgegangen, dass die einzige gültige Antwort einer Methode "HTTP 200" (OK) ist. 
+* In Swashbuckle wird davon ausgegangen, dass die einzige gültige Antwort einer Methode "HTTP 200" (OK) ist.
  
 ## Anpassen der Generierung von Vorgangs-IDs
 
@@ -36,7 +36,7 @@ Bei dem folgenden Controllercode generiert Swashbuckle beispielsweise drei "Cont
 
 ![](./media/app-service-api-dotnet-swashbuckle-customize/multiplegetsinjson.png)
 
-Sie können das Problem manuell beheben, indem Sie den Methoden eindeutige Namen geben, wie z. B. in dem die folgenden Beispiel:
+Sie können das Problem manuell beheben, indem Sie den Methoden eindeutige Namen geben, wie z. B. in dem die folgenden Beispiel:
 
 * Get
 * GetById
@@ -46,7 +46,7 @@ Die Alternative besteht darin, Swashbuckle zu erweitern, damit es automatisch ei
 
 Die folgenden Schritte zeigen, wie Sie Swashbuckle mithilfe der Datei *SwaggerConfig.cs* anpassen können, die mit der Visual Studio-API-Apps-Vorschauprojektvorlage in das Projekt eingeschlossen wird. Sie können Swashbuckle auch in einem Web-API-Projekt anpassen, das Sie für die Bereitstellung als API-App konfigurieren.
 
-1. Erstellen einer benutzerdefinierten `IOperationFilter`-Implementierung 
+1. Erstellen einer benutzerdefinierten `IOperationFilter`-Implementierung
 
 	Die `IOperationFilter`-Schnittstelle bietet einen Erweiterungspunkt für Swashbuckle-Benutzer, die verschiedene Aspekte des Swagger-Metadatenprozesses anpassen möchten. Der folgende Code veranschaulicht eine Methode zum Ändern des Verhaltens zur Vorgangs-ID-Generation. Der Code fügt Parameternamen an den Namen der Vorgangs-ID an.
 
@@ -109,7 +109,7 @@ Standardmäßig wird in Swashbuckle davon ausgegangen, dass die Antwort "HTTP 20
         }
     }
 
-In diesem Szenario gibt der Swagger, den Swashbuckle standardmäßig generiert, nur einen legitimen HTTP-Statuscode, d. h. HTTP 200, an.
+In diesem Szenario gibt der Swagger, den Swashbuckle standardmäßig generiert, nur einen legitimen HTTP-Statuscode, d. h. HTTP 200, an.
 
 ![](./media/app-service-api-dotnet-swashbuckle-customize/http-200-output-only.png)
 
@@ -134,7 +134,7 @@ Swashbuckle bietet zwei Möglichkeiten zum Anpassen der Liste der erwarteten gen
 
 Verwenden Sie diese Methode zum Angeben von Antwortcodes, wenn Sie über eine ältere Version als Swashbuckle 5.1.5 verfügen.
 
-1. Fügen Sie zunächst XML-Dokumentationskommentare für die Methoden hinzu, für die Sie HTTP-Antwortcodes angeben möchten. Wenn in der oben abgebildeten Web-API-Beispielaktion die XML-Dokumentation angewendet wird, ergibt dies den folgenden Beispielcode. 
+1. Fügen Sie zunächst XML-Dokumentationskommentare für die Methoden hinzu, für die Sie HTTP-Antwortcodes angeben möchten. Wenn in der oben abgebildeten Web-API-Beispielaktion die XML-Dokumentation angewendet wird, ergibt dies den folgenden Beispielcode.
 
 		/// <summary>
 		/// Returns the specified contact.
@@ -162,7 +162,7 @@ Verwenden Sie diese Methode zum Angeben von Antwortcodes, wenn Sie über eine ä
 
 1. Fügen Sie Anweisungen in der Datei *SwaggerConfig.cs* hinzu, um Swashbuckle anzuweisen, die XML-Dokumentationsdatei zu verwenden.
 
-	* Öffnen Sie die Datei *SwaggerConfig.cs*, und erstellen Sie eine Methode für die *SwaggerConfig*-Klasse, um den Pfad zu der XML-Dokumentationsdatei anzugeben. 
+	* Öffnen Sie die Datei *SwaggerConfig.cs*, und erstellen Sie eine Methode für die *SwaggerConfig*-Klasse, um den Pfad zu der XML-Dokumentationsdatei anzugeben.
 
 			private static string GetXmlCommentsPath()
 			{
@@ -207,7 +207,7 @@ Den entsprechenden Code finden Sie in [diesem GitHub-Repository](https://github.
 
 Das [SwaggerResponse](https://github.com/domaindrivendev/Swashbuckle/blob/master/Swashbuckle.Core/Swagger/Annotations/SwaggerResponseAttribute.cs)-Attribut ist in Swashbuckle 5.1.5 und späteren Versionen verfügbar. Für den Fall, dass in Ihrem Projekt eine frühere Version vorliegt, wird in diesem Abschnitt zunächst erläutert, wie Sie das NuGet-Paket "Swashbuckle" aktualisieren, sodass Sie dieses Attribut verwenden können.
 
-1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Web-API-Projekt, und klicken Sie dann auf **NuGet-Pakete verwalten**. 
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Web-API-Projekt, und klicken Sie dann auf **NuGet-Pakete verwalten**.
 
 	![](./media/app-service-api-dotnet-swashbuckle-customize/manage-nuget-packages.png)
 
@@ -250,4 +250,4 @@ Den entsprechenden Code finden Sie in [diesem GitHub-Repository](https://github.
 In diesem Artikel wurde erläutert, wie die Generierung von Vorgangs-IDs und von gültigen Antwortcodes in Swashbuckle angepasst werden kann. Weitere Informationen finden Sie unter [Swashbuckle auf GitHub](https://github.com/domaindrivendev/Swashbuckle).
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0713_2016-->

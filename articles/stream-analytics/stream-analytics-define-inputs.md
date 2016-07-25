@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="06/15/2016"
+	ms.date="07/13/2016"
 	ms.author="jeffstok"/>
 
 # Datenverbindung: Erfahren Sie mehr über Datenstromeingaben aus Ereignissen in Stream Analytics
@@ -118,6 +118,8 @@ Für Szenarios mit großen Mengen unstrukturierter Daten, die in der Cloud gespe
 
 Es ist wichtig zu beachten, dass der Standardzeitstempel von Blob-Speicherereignissen in Stream Analytics der Zeitstempel ist, an dem das Blob zuletzt geändert wurde, sprich *BlobLastModifiedUtcTime*. Zum Verarbeiten der Daten als Datenstrom mit einem Zeitstempel in der Ereignisnutzlast muss das Schlüsselwort [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) verwendet werden.
 
+Beachten Sie darüber hinaus, dass Eingaben im CSV-Format über eine Überschriftenzeile verfügen **müssen**, um Felder für das Dataset zu definieren. Alle weiteren Überschriftenzeilen müssen **eindeutig** sein.
+
 > [AZURE.NOTE] Stream Analytics unterstützt das Hinzufügen von Inhalten zu einem vorhandenen Blob nicht. Stream Analytics liest einen Blob nur einmal, und alle Änderungen nach diesem Lesen werden nicht mehr verarbeitet. Die bewährte Methode ist, alle Daten einmal hochzuladen und dem Blob Store keine weiteren Ereignisse mehr hinzuzufügen.
 
 In der folgenden Tabelle wird jede Eigenschaft in der Blobspeicher-Eingaberegisterkarte mit einer entsprechenden Beschreibung erläutert:
@@ -211,4 +213,4 @@ Sie haben sich mit Datenverbindungsoptionen in Azure für Ihre Stream Analytics-
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

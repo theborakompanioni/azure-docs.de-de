@@ -34,6 +34,8 @@ Hive kann mit strukturierten und semistrukturierten Daten arbeiten, z. B. Textda
 
 Hive kann auch über **benutzerdefinierte Funktionen (UDF)** erweitert werden. Mit einer UDF-Datei können Sie Funktionen oder Logik implementieren, die sich nicht einfach in HiveQL modellieren lässt. Ein Beispiel für benutzerdefinierte Funktionen mit Hive finden Sie hier:
 
+* [Verwenden einer benutzerdefinierten Java-Funktion mit Hive](hdinsight-hadoop-hive-java-udf.md)
+
 * [Verwenden von Python mit Hive und Pig in HDInsight](hdinsight-python.md)
 
 * [Verwenden von C# mit Hive und Pig in HDInsight](hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md)
@@ -46,7 +48,7 @@ Hive kann auch über **benutzerdefinierte Funktionen (UDF)** erweitert werden. M
 Folgendes sollten Sie über interne und externe Hive-Tabellen wissen:
 
 - Mit dem Befehl **CREATE TABLE** erstellen Sie eine interne Tabelle. Die Datendatei muss sich im Standardcontainer befinden.
-- Mit dem Befehl **CREATE TABLE** wird die Datendatei in den Ordner "/hive/warehouse/<TableName>" verschoben.
+- Mit dem Befehl **CREATE TABLE** wird die Datendatei in den Ordner „/hive/warehouse/<Tabellenname>“ verschoben.
 - Mit dem Befehl **CREATE EXTERNAL TABLE** wird eine externe Tabelle erstellt. Die Datendatei kann sich außerhalb des Standardcontainers befinden.
 - Beim Befehl **CREATE EXTERNAL TABLE** wird die Datendatei nicht verschoben.
 - Beim Befehl **CREATE EXTERNAL TABLE** sind keine Ordner am SPEICHERORT zulässig. Aus diesem Grund wird im Lernprogramm eine Kopie der Datei sample.log erstellt.
@@ -70,7 +72,7 @@ Die Beispieldaten werden in einem Azure-Blobspeicher gespeichert, den HDInsight 
 
 Da Azure-Blobspeicher der Standardspeicher für HDInsight ist, können Sie auch über **/example/data/sample.log** von HiveQL aus auf die Datei zugreifen.
 
-> [AZURE.NOTE] Die Syntax **wasb:///** wird für den Zugriff auf Dateien verwendet, die im Standardspeichercontainer für Ihren HDInsight-Cluster gespeichert werden. Wenn Sie beim Bereitstellen Ihres Clusters weitere Speicherkonten angegeben haben und auf die unter diesen Konten gespeicherten Dateien zugreifen möchten, können Sie den Containernamen und die Speicherkontoadresse angeben, um auf diese Daten zuzugreifen, beispielsweise: **wasb://mycontainer@mystorage.blob.core.windows.net/example/data/sample.log**.
+> [AZURE.NOTE] Die Syntax **wasb:///** wird für den Zugriff auf Dateien verwendet, die im Standardspeichercontainer für Ihren HDInsight-Cluster gespeichert werden. Wenn Sie beim Bereitstellen Ihres Clusters weitere Speicherkonten angegeben haben und auf die unter diesen Konten gespeicherten Dateien zugreifen möchten, können Sie den Containernamen und die Speicherkontoadresse angeben, um auf diese Daten zuzugreifen. Beispiel: **wasb://mycontainer@mystorage.blob.core.windows.net/example/data/sample.log**.
 
 ##<a id="job"></a>Beispielauftrag: Projizieren von Spalten auf durch Trennzeichen getrennte Daten
 
@@ -212,4 +214,4 @@ Nachdem Sie erfahren haben, was Hive ist und wie Sie es mit Hadoop in HDInsight 
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

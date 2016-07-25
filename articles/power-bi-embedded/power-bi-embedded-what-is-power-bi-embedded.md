@@ -13,26 +13,26 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="06/28/2016"
+   ms.date="07/05/2016"
    ms.author="owend"/>
 
 # Was ist Microsoft Power BI Embedded?
 
-Mit **Power BI Embedded** können Sie Power BI-Berichte in Ihre Web- oder mobilen Anwendungen integrieren, sodass Sie keine benutzerdefinierten Lösungen zum Visualisieren von Daten für Ihre Benutzer erstellen müssen.
+Mit **Power BI Embedded** können Sie Power BI-Berichte direkt in webbasierte oder mobile Anwendungen integrieren.
 
 ![](media\powerbi-embedded-whats-is\what-is.png)
 
-**Power BI Embedded** ist ein Azure-Dienst, mit dessen Hilfe unabhängige Softwarehersteller (ISVs) Power BI-Daten innerhalb ihrer Anwendungen darstellen können. Als unabhängiger Softwarehersteller haben Sie Anwendungen erstellt. Diese Anwendungen verfügen über eigene Benutzer und eine besondere Auswahl an Features. Möglicherweise umfassen diese Apps auch integrierte Datenelemente wie Diagramme und Berichte, die jetzt durch **Microsoft Power BI Embedded** unterstützt werden können. Benutzer der Anwendung benötigen kein Power BI-Konto, um Ihre App zu verwenden. Sie können sich weiterhin wie gewohnt bei Ihrer Anwendung anmelden und ganz ohne zusätzliche Lizenzen die Berichts- und Kacheloberfläche von Power BI anzeigen und damit interagieren.
+Power BI Embedded ist ein **Azure-Dienst**, mit dessen Hilfe unabhängige Softwarehersteller (ISVs) und App-Entwickler Power BI-Daten innerhalb ihrer Anwendungen darstellen können. Als Entwickler haben Sie Anwendungen erstellt. Diese Anwendungen verfügen über eigene Benutzer und eine besondere Auswahl an Features. Möglicherweise umfassen diese Apps auch integrierte Datenelemente wie Diagramme und Berichte, die jetzt durch Microsoft Power BI Embedded unterstützt werden können. Benutzer benötigen für die Verwendung Ihrer App kein Power BI-Konto. Sie können sich weiterhin wie gewohnt bei Ihrer Anwendung anmelden und ganz ohne zusätzliche Lizenzen die Berichtsoberfläche von Power BI anzeigen und damit interagieren.
 
 ## Lizenzierung von Microsoft Power BI Embedded
 
-Im Nutzungsmodell von **Microsoft Power BI Embedded** liegt die Verantwortung für die Lizenzierung von Power BI nicht beim Endbenutzer. Stattdessen erwirbt der Entwickler der App, in der die visuellen Elemente genutzt werden, so genannte **Renderobjekte**, die im Rahmen des Abonnements abgerechnet werden, das diese Ressourcen besitzt.
+Im Nutzungsmodell von **Microsoft Power BI Embedded** liegt die Verantwortung für die Lizenzierung von Power BI nicht beim Endbenutzer. Stattdessen erwirbt der Entwickler der App, in der die visuellen Elemente genutzt werden, sogenannte **Renderobjekte**, die im Rahmen des Abonnements abgerechnet werden, das diese Ressourcen besitzt.
 
 ## Microsoft Power BI Embedded – Konzeptmodell
 
 ![](media\powerbi-embedded-whats-is\model.png)
 
-Wie bei jedem anderen Azure-Dienst werden Ressourcen für **Microsoft Power BI Embedded** über die [Azure ARM-APIs](https://msdn.microsoft.com/library/mt712306.aspx) bereitgestellt. In diesem Fall ist die Ressource, die Sie bereitstellen, eine **Power BI-Arbeitsbereichssammlung**.
+Wie bei jedem anderen Azure-Dienst werden Ressourcen für Power BI Embedded über die [Azure ARM-APIs](https://msdn.microsoft.com/library/mt712306.aspx) bereitgestellt. In diesem Fall ist die Ressource, die Sie bereitstellen, eine **Power BI-Arbeitsbereichssammlung**.
 
 ## Arbeitsbereichssammlung
 
@@ -48,17 +48,6 @@ Ein **Arbeitsbereich** ist ein Container für Power BI-Inhalte, der Datasets, Be
 
 ## Verwenden von Arbeitsbereichssammlungen und Arbeitsbereichen
 **Arbeitsbereichssammlungen** und **Arbeitsbereiche** sind Container mit Inhalten, die so verwendet und strukturiert werden, dass sie optimal dem Design der von Ihnen erstellten Anwendung entsprechen. Es gibt viele verschiedene Möglichkeiten, die Inhalte darin anzuordnen. Sie können alle Inhalte in einem Arbeitsbereich ablegen und später App-Token verwenden, um den Inhalt für Ihre Kunden weiter zu unterteilen. Sie können auch alle Kunden in separaten Arbeitsbereichen ablegen, damit sie getrennt behandelt werden. Alternativ dazu können Sie Benutzer nach Region statt nach Kunden einteilen. Anhand dieses flexiblen Designs können Sie die beste Möglichkeit zum Strukturieren von Inhalten auswählen.
-## Datenquellen in der Vorschau
-
-Für die Vorschau aktivieren wir eine begrenzte Anzahl von Datenquellen:
-
-### DirectQuery
-
-In der Vorschau unterstützen wir DirectQuery-Verbindungen für Clouddatenquellen. Das bedeutet, dass Sie eine Verbindung mit den Datenquellen herstellen können, um die neuesten Daten anzuzeigen. Diese Datenquellen müssen von der Cloud aus erreichbar sein und die Standardauthentifizierung verwenden. Einige ideale Kandidaten hierfür sind:
-
--	SQL Azure
--	SQL Azure DW
--	HD Insight Spark
 
 ## Zwischengespeicherte Datasets
 
@@ -88,14 +77,11 @@ Mit den für die Vorschau bereitgestellten SDKs können Sie Token erstellen. Zun
 -	[CreateDevToken](https://msdn.microsoft.com/library/mt670215.aspx)
 -	[CreateReportEmbedToken](https://msdn.microsoft.com/library/mt710366.aspx)
 
-Ein Beispiel zum Verwenden von [CreateProvisionToken](https://msdn.microsoft.com/library/mt670218.aspx) und [CreateDevToken](https://msdn.microsoft.com/library/mt670215.aspx) finden Sie unter [Erste Schritte mit dem Beispielcode zu Microsoft Power BI Embedded](power-bi-embedded-get-started-sample.md).
+Ein Beispiel zum Verwenden von [CreateProvisionToken](https://msdn.microsoft.com/library/mt670218.aspx) und [CreateDevToken](https://msdn.microsoft.com/library/mt670215.aspx) finden Sie unter [Erste Schritte mit dem Beispiel zu Microsoft Power BI Embedded](power-bi-embedded-get-started-sample.md).
 
 
 ## Siehe auch
 - [Häufige Microsoft Power BI Embedded-Szenarios](power-bi-embedded-scenarios.md)
-- [Erste Schritte mit der Vorschau von Microsoft Power BI Embedded](power-bi-embedded-get-started.md)
-- [App-Token](power-bi-embedded-get-started-sample.md#key-flow)
-- [Power BI-REST-APIs](http://docs.powerbi.apiary.io/reference)
-- [Azure-Regionen](https://azure.microsoft.com/regions/)
+- [Erste Schritte mit Microsoft Power BI Embedded](power-bi-embedded-get-started.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

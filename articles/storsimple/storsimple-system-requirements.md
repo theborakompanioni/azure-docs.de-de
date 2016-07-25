@@ -26,7 +26,7 @@ Systemanforderungen:
 
 - **Softwareanforderungen für Speicherclients:** beschreibt die unterstützten Betriebssysteme und zusätzlichen Anforderungen für diese Betriebssysteme.
 - **Netzwerkanforderungen für das StorSimple-Gerät:** bietet Informationen zu den Ports, die in der Firewall für Datenverkehr von iSCSI, Cloud oder Verwaltung geöffnet sein müssen.
-- **Anforderungen an hohe Verfügbarkeit für StorSimple:** beschreibt die Anforderungen an hohe Verfügbarkeit und bewährte Methoden für das StorSimple-Gerät und den Hostcomputer. 
+- **Anforderungen an hohe Verfügbarkeit für StorSimple:** beschreibt die Anforderungen an hohe Verfügbarkeit und bewährte Methoden für das StorSimple-Gerät und den Hostcomputer.
 
 
 ## Softwareanforderungen für Speicherclients
@@ -87,7 +87,7 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 | `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` | StorSimple Manager-Dienst<br>Access Control Service<br>Azure Service Bus| Cloudaktivierte Netzwerkschnittstellen |
 |`https://*.backup.windowsazure.com`|Geräteregistrierung| Nur DATA 0|
 |`http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*`|Zertifikatswiderruf |Cloudaktivierte Netzwerkschnittstellen |
-| `https://*.core.windows.net/*` | Azure-Speicherkonten und Überwachung | Cloudaktivierte Netzwerkschnittstellen |
+| `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` | Azure-Speicherkonten und Überwachung | Cloudaktivierte Netzwerkschnittstellen |
 | `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com`| Microsoft Update-Server<br> | Feste IPs des Controllers |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |Feste IPs des Controllers |
 | `https://*.partners.extranet.microsoft.com/*` | Supportpaket | Cloudaktivierte Netzwerkschnittstellen |
@@ -120,18 +120,18 @@ Dazu gehören Softwareversionen wie z. B. 1, 1.1 und 1.2. Die auf der Routingme
 
 Update 2 umfasst mehrere netzwerkbezogene Verbesserungen, und die Routingmetrik hat sich geändert. Das Verhalten lässt sich folgendermaßen beschreiben.
 
-- Ein Satz vordefinierter Werte wurde Netzwerkschnittstellen zugewiesen. 	
+- Ein Satz vordefinierter Werte wurde Netzwerkschnittstellen zugewiesen.
 
 - Betrachten Sie die unten aufgeführte Beispieltabelle mit Werten, die den verschiedenen Netzwerkschnittstellen zugewiesen sind, wenn sie für die Cloud aktiviert oder mit konfiguriertem Gateway für die Cloud deaktiviert sind. Beachten Sie, dass die hier zugewiesenen Werte nur Beispielwerte sind.
 
 
 	| Netzwerkschnittstelle | Cloudfähig | Nicht cloudfähig mit Gateway |
 	|-----|---------------|---------------------------|
-	| Data 0 | 1 | - | 
-	| Data 1 | 2 | 20 | 
-	| Data 2 | 3 | 30 | 
-	| Data 3 | 4 | 40 | 
-	| Data 4 | 5 | 50 | 
+	| Data 0 | 1 | - |
+	| Data 1 | 2 | 20 |
+	| Data 2 | 3 | 30 |
+	| Data 3 | 4 | 40 |
+	| Data 4 | 5 | 50 |
 	| Data 5 | 6 | 60 |
 
 
@@ -258,7 +258,7 @@ StorSimple-Geräte des Modells 8600 bieten zusätzlich zum normalen Gehäuse ei
 
 - Fällt ein Controllermodul des EBOD-Gehäuses aus, vergewissern Sie sich vor dem Austausch, dass das andere Controllermodul aktiv ist. Informationen zum Sicherstellen, dass ein Controller aktiv ist, finden Sie unter [Identifizieren des aktiven Controllers im Gerät](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device).
 
-- Überwachen Sie während des Austauschs eines EBOD-Controllermoduls ständig den Status der Komponente im StorSimple Manager-Dienst unter **Wartung** > **Hardware**.
+- Überwachen Sie während des Austauschs eines EBOD-Controllermoduls ständig den Status der Komponente im StorSimple Manager-Dienst unter **Wartung** > **Hardwarestatus**.
 
 - Wenn ein SAS-Kabel ausfällt oder ersetzt werden muss (der Microsoft Support sollte in eine solche Entscheidung einbezogen werden), tauschen Sie nur das SAS-Kabel aus, das auch ersetzt werden muss.
 
@@ -280,4 +280,4 @@ Lesen Sie sich diese bewährten Methoden sorgfältig durch, um eine hohe Verfüg
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

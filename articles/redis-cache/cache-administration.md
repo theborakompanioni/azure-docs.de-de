@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="07/05/2016"
+	ms.date="07/13/2016"
 	ms.author="sdanie" />
 
 # Verwalten von Azure Redis Cache
@@ -80,7 +80,7 @@ Wenn Sie nur einen der Knoten neu starten, gehen Daten in der Regel nicht verlor
 
 ### Kann ich meinen Cache mithilfe von PowerShell, CLI oder anderen Verwaltungstools neu starten?
 
-Derzeit nicht, doch diese Möglichkeit wird in Kürze verfügbar sein.
+Ja. Anweisungen für PowerShell finden Sie unter [So starten Sie einen Redis-Cache neu](cache-howto-manage-redis-cache-powershell.md#to-reboot-a-redis-cache).
 
 ### Welche Tarife bieten die Neustartfunktionalität?
 
@@ -92,7 +92,7 @@ Auf dem Blatt **Updates planen** können Sie ein Wartungsfenster für Ihren Cach
 
 ![Planen von Updates](./media/cache-administration/redis-schedule-updates.png)
 
-Um ein Wartungsfenster anzugeben, überprüfen Sie die gewünschte Dauer in Tagen. Geben Sie die Startzeit des Wartungsfensters für jeden Tag an, und klicken Sie auf **OK**. Beachten Sie, dass die Zeit im Wartungsfenster als UTC angegeben ist.
+Um ein Wartungsfenster anzugeben, überprüfen Sie die gewünschte Dauer in Tagen. Legen Sie die Startzeit des Wartungsfensters für jeden Tag fest, und klicken Sie auf **OK**. Beachten Sie, dass die Zeit im Wartungsfenster als UTC angegeben ist.
 
 ## Häufig gestellte Fragen zum Planen von Updates
 
@@ -114,6 +114,6 @@ Das Planen von Updates ist nur im Premium-Tarif verfügbar.
 
 ## Nächste Schritte
 
--	Entdecken Sie weitere Features des [Azure Redis Cache Premium-Tarifs](cache-premium-tier-intro.md).
+-	Entdecken Sie weitere Features des [Azure Redis Cache-Premium-Tarifs](cache-premium-tier-intro.md).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

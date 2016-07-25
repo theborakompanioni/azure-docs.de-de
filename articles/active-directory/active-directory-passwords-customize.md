@@ -1,23 +1,26 @@
-<properties 
-	pageTitle="Anpassen: Azure AD-Kennwortverwaltung | Microsoft Azure" 
-	description="Vorgehensweise zum Anpassen von Aussehen und Verhalten der Kennwortverwaltung und von Benachrichtigungen in Azure AD an Ihre Anforderungen." 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="asteen" 
-	manager="kbrint" 
-	editor="billmath"/>
+<properties
+	pageTitle="Anpassen: Azure AD-Kennwortverwaltung | Microsoft Azure"
+	description="Vorgehensweise zum Anpassen von Aussehen und Verhalten der Kennwortverwaltung und von Benachrichtigungen in Azure AD an Ihre Anforderungen."
+	services="active-directory"
+	documentationCenter=""
+	authors="asteen"
+	manager="femila"
+	editor="curtand"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/16/2016" 
+<tags
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/12/2016"
 	ms.author="asteen"/>
 
 # Anpassen der Kennwortverwaltung an die Anforderungen Ihrer Organisation
-Es wird empfohlen, alle verfügbaren Konfigurationsoptionen für die Kennwortverwaltung zu untersuchen und auszuprobieren, um Ihren Benutzern das bestmögliche Ergebnis zu bieten. Tatsächlich können Sie sofort damit anfangen, indem Sie im [Azure-Verwaltungsportal](https://manage.windowsazure.com) zur Registerkarte "Konfiguration" der **Active Directory-Erweiterung** wechseln. Dieses Thema führt Sie durch alle Anpassungen zur Kennwortverwaltung, die Sie als Administrator über die Registerkarte **Konfigurieren** für Ihr Verzeichnis innerhalb des [Azure-Verwaltungsportals](https://manage.windowsazure.com) vornehmen können. Dazu gehören:
+
+> [AZURE.IMPORTANT] **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
+
+Es wird empfohlen, alle verfügbaren Konfigurationsoptionen für die Kennwortverwaltung zu untersuchen und auszuprobieren, um Ihren Benutzern das bestmögliche Ergebnis zu bieten. Tatsächlich können Sie sofort damit anfangen, indem Sie im [klassischen Azure-Portal](https://manage.windowsazure.com) zur Registerkarte „Konfiguration“ der **Active Directory-Erweiterung** wechseln. Dieses Thema führt Sie durch alle Anpassungen zur Kennwortverwaltung, die Sie als Administrator über die Registerkarte **Konfigurieren** für Ihr Verzeichnis im [klassischen Azure-Portal](https://manage.windowsazure.com) vornehmen können. Dazu gehören:
 
 | Thema | |
 | --------- | --------- |
@@ -95,7 +98,7 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
               <td>
                 <p>Legt fest, ob Benutzern, die die Seite zur Kennwortzurücksetzung besuchen, das Microsoft-Logo oder Ihr eigenes benutzerdefiniertes Logo angezeigt wird. Dieses Konfigurationselement fügt den Seiten "Zugriffsbereich" und "Anmelden" außerdem Ihr Branding hinzu.</p>
                 <p>
-                  
+
                 </p>
                 <p>Unter <a href="https://technet.microsoft.com/library/dn532270.aspx">Hinzufügen von Unternehmensbranding zu Anmelde- und Zugriffsbereichsseiten</a> erhalten Sie weitere Informationen zum Branding- und Anpassungsfeature für Mandanten.</p>
               </td>
@@ -223,7 +226,7 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
               <td>
                 <p>Legt fest, welche Gruppe von Endbenutzern die Kennwortzurücksetzung durchführen kann. </p>
                 <p>
-                  
+
                 </p>
                 <p>(Nur sichtbar, wenn <strong>Zugriff auf die Kennwortrücksetzung beschränken</strong> auf <strong>Ja</strong> festgelegt ist.)</p>
               </td>
@@ -262,16 +265,16 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
               <td>
                 <p>Legt fest, welche Überprüfungsmethoden ein Benutzer beim Zurücksetzen des Kennworts verwenden darf.</p>
                 <p>
-                  
+
                 </p>
                 <p>(Nur sichtbar, wenn <strong>Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist</strong> auf <strong>Ja</strong> festgelegt ist).</p>
               </td>
               <td>
                 <p>
-                  
+
                 </p>
                 <p>
-                  
+
                 </p>
                 <p>
                   <strong>Hinweis:</strong>
@@ -328,7 +331,7 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
               <td>
                 <p>Bestimmt die Mindestanzahl der verfügbaren Authentifizierungsmethoden, die ein Benutzer zum Zurücksetzen des Kennworts durchlaufen muss.</p>
                 <p>
-                  
+
                 </p>
                 <p>(Nur sichtbar, wenn <strong>Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist</strong> auf <strong>Ja</strong> festgelegt ist).</p>
               </td>
@@ -398,7 +401,7 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
               <td>
                 <p>Bestimmt die Mindestanzahl von Fragen, die ein Benutzer beim Zurücksetzen eines Kennworts beantworten muss.</p>
                 <p>
-                  
+
                 </p>
                 <p>(Nur sichtbar, wenn das Kontrollkästchen <strong>Sicherheitsfragen</strong> aktiviert ist).</p>
               </td>
@@ -432,7 +435,7 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
               <td>
                 <p>Definiert die vordefinierten Sicherheitsfragen, aus denen Ihre Benutzer auswählen können, wenn sie sich für die Kennwortzurücksetzung registrieren und wenn sie ihre Kennwörter zurücksetzen.</p>
                 <p>
-                  
+
                 </p>
                 <p>(Nur sichtbar, wenn das Kontrollkästchen <strong>Sicherheitsfragen</strong> aktiviert ist).</p>
               </td>
@@ -483,7 +486,7 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
               <td>
                 <p>Definiert die Sicherheitsfragen, aus denen Ihre Benutzer auswählen können, wenn sie sich für die Kennwortzurücksetzung registrieren und wenn sie ihre Kennwörter zurücksetzen.</p>
                 <p>
-                  
+
                 </p>
                 <p>(Nur sichtbar, wenn das Kontrollkästchen <strong>Sicherheitsfragen</strong> aktiviert ist).</p>
               </td>
@@ -533,7 +536,7 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
                   <p>Registrierung von Benutzern bei der Anmeldung verlangen?</p>
                 </div>
                 <p>
-                  
+
                 </p>
               </td>
               <td>
@@ -542,20 +545,20 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
                 <p>Diese Funktion funktioniert auf jeder Anmeldeseite, die ein Geschäfts- oder Schulkonto verwendet. Zu diesen Seiten gehören alle Office&#160;365-Seiten, das Azure-Verwaltungsportal, der Zugriffsbereich und alle Verbundbenutzer oder speziell entwickelten Anwendungen, bei denen die Anmeldung über Azure AD erfolgt.
                 </p>
                 <p>
-                  
+
                 </p>
                 <p>Die erzwungene Registrierung gilt nur für Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist. Falls daher die Funktion „Zugriff auf die Kennwortrücksetzung beschränken“ verwendet wird und das Zurücksetzen des Kennworts auf eine bestimmte Benutzergruppe beschränkt ist, müssen nur Benutzer dieser Gruppe sich beim Anmelden für das Zurücksetzen des Kennworts registrieren.</p>
                 <p>
-                  
+
                 </p>
                 <p>(Nur sichtbar, wenn <strong>Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist</strong> auf <strong>Ja</strong> festgelegt ist).</p>
               </td>
               <td>
                 <p>
-                  
+
                 </p>
                 <p>
-                  
+
                 </p>
                 <p>
                   <strong>Hinweis:</strong>
@@ -586,16 +589,16 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
               <td>
                 <p>Wenn <strong>Sollen Benutzer sich registrieren müssen?</strong> aktiviert ist, bestimmt diese Einstellung den Zeitraum, der verstreichen kann, bevor ein Benutzer seine Daten erneut bestätigen muss. </p>
                 <p>
-                  
+
                 </p>
                 <p>(Nur sichtbar, wenn <strong>Sollen sich Benutzer bei der Anmeldung im Zugriffsbereich registrieren müssen?</strong> auf <strong>Ja</strong> gesetzt ist.)</p>
               </td>
               <td>
                 <p>
-                  
+
                 </p>
                 <p>
-                  
+
                 </p>
                 <p>
                   <strong>Hinweis: </strong>
@@ -622,7 +625,7 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
               <td>
                 <p>Steuert, ob der Link "Wenden Sie sich an Ihren Administrator" (auf der linken Seite gezeigt), der bei Auftreten eines Fehlers oder bei zu langen Wartezeiten für Benutzer im Kennwortzurücksetzungsportal angezeigt wird, auf eine benutzerdefinierte URL oder E-Mail-Adresse verweist.</p>
                 <p>
-                  
+
                 </p>
                 <p>(Nur sichtbar, wenn <strong>Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist</strong> auf <strong>Ja</strong> festgelegt ist).</p>
               </td>
@@ -668,7 +671,7 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
               <td>
                 <p>Steuert die E-Mail-Adresse oder URL, auf die der Link <strong>Wenden Sie sich an Ihren Administrator</strong> verweist. </p>
                 <p>
-                  
+
                 </p>
                 <p>(Nur sichtbar, wenn <strong>Link "Wenden Sie sich an Ihren Administrator." anpassen?</strong> auf <strong>Ja</strong> festgelegt ist.)</p>
               </td>
@@ -702,13 +705,13 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
               <td>
                 <p>Steuert, ob das Rückschreiben von Kennwörtern für dieses Verzeichnis aktiviert ist. In diesem Fall wird der Status des lokalen Rückschreibungsdiensts angezeigt.</p>
                 <p>
-                  
+
                 </p>
                 <p>Diese Einstellung ist nützlich, wenn Sie den Dienst vorübergehend deaktivieren möchten, ohne Azure&#160;AD Connect erneut zu konfigurieren.</p>
               </td>
               <td>
                 <p>
-                  
+
                 </p>
                 <p>
                   <strong>Hinweis:</strong>
@@ -748,11 +751,11 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
                 </div>
               </td>
               <td>
-              
+
               <p>Legt fest, ob Benutzer, die das Kennwortzurücksetzungsportal aufrufen, die Option zum Entsperren ihrer lokalen Active Directory-Konten ohne Zurücksetzen ihres Kennworts erhalten sollen. Standardmäßig werden Azure&#160;AD-Konten beim Zurücksetzen von Kennwörtern stets entsperrt – mit dieser Einstellung können Sie diese beiden Vorgänge trennen.</p>
-              
+
               <p>Bei der Einstellung „Ja“ erhalten die Benutzer die Option zum Zurücksetzen ihres Kennworts und Entsperren ihres Kontos, und auch die Option des Entsperrens ohne ein Zurücksetzen des Kennworts. </p>
-              
+
               <p>Bei der Einstellung „Nein“ können die Benutzer das Entsperren des Kontos nur in Kombination mit dem Zurücksetzen des Kennworts vornehmen.</p>
 
               </td>
@@ -763,7 +766,7 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
                 <ul>
                   <li class="unordered">
 												Um dieses Feature verwenden zu können, müssen Sie die Azure&#160;AD Connect-Version von August&#160;2015 oder später (Version 1.0.8667.0 oder höher) installieren.<br><br><a href="http://www.microsoft.com/download/details.aspx?id=47594">Klicken Sie hier, um die aktuelle Version von Azure&#160;AD Connect herunterzuladen.</a></li>
-                        
+
                   <li class="unordered">
                     <strong>Hinweis</strong>: Um diese Funktion zu testen, muss das Kennwortrückschreiben aktiviert sein sowie ein lokal erstelltes Konto (beispielsweise eines Verbundbenutzers oder synchronisierten Benutzers) verwendet werden, bei dem ein gesperrtes Konto vorliegt. Benutzern, die nicht lokal bereitgestellt sind und über kein gesperrtes Konto verfügen, wird die Option zum Entsperren ihres Kontos nicht angezeigt.</li>
                 </ul>
@@ -860,7 +863,7 @@ In der folgenden Tabelle werden die Auswirkungen der einzelnen Steuerelemente au
 ## Links zur Dokumentation für die Kennwortzurücksetzung
 Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortzurücksetzung für Azure AD:
 
-* [**Zurücksetzen Ihres eigenen Kennworts**](active-directory-passwords-update-your-own-password.md): Hier erhalten Sie Informationen zum Zurücksetzen oder Ändern Ihres eigenen Kennworts als Benutzer des Systems.
+* **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md) weiter.
 * [**Funktionsweise**](active-directory-passwords-how-it-works.md) – Erfahren Sie mehr über die sechs verschiedenen Komponenten des Diensts und deren Funktionen.
 * [**Erste Schritte**](active-directory-passwords-getting-started.md) – Erfahren Sie, wie Sie Benutzern das Zurücksetzen und Ändern ihrer Cloud- oder lokalen Kennwörter erlauben.
 * [**Best Practices**](active-directory-passwords-best-practices.md) – Erfahren Sie, wie Sie Kennwörter in Ihrer Organisation schnell bereitstellen und effektiv verwalten.
@@ -872,4 +875,4 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 
 [001]: ./media/active-directory-passwords-customize/001.jpg "Image_001.jpg"
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0713_2016-->
