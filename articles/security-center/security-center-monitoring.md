@@ -13,16 +13,13 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/29/2016"virtual
+   ms.date="07/19/2016"
    ms.author="yurid"/>
 
 #Überwachen der Sicherheitsintegrität in Azure Security Center
 Dieses Dokument unterstützt Sie bei der Verwendung der Überwachungsfunktionen in Azure Security Center zur Überwachung der Richtliniencompliance.
 
 > [AZURE.NOTE] Die Informationen in diesem Dokument gelten für die Vorschauversion von Azure Security Center.
-
-## Was ist Azure Security Center?
-Security Center unterstützt Sie beim Vorbeugen, Erkennen und Beheben von Bedrohungen. Mit dieser Cloudlösung gewinnen Sie mehr Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Sie bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
 
 ##Was ist Überwachen der Sicherheitsintegrität?
 Überwachung wird häufig als Beobachten und Warten auf ein Eintreten eines Ereignisses aufgefasst, damit auf diese Situation reagiert werden kann. Sicherheitsüberwachung bezieht sich auf eine proaktive Strategie, bei der Ihre Ressourcen überwacht werden, um Systeme zu erkennen, die nicht den Unternehmensstandards oder bewährten Methoden entsprechen.
@@ -39,7 +36,7 @@ Auf der Kachel **Ressourcensicherheitsintegrität** können Sie den Sicherheitss
 Erkennt Security Center ein Sicherheitsrisiko, das behoben werden muss – etwa ein virtueller Computer mit fehlenden Sicherheitsupdates oder ein Subnetz ohne [Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-nsg.md) –, wird dies hier angegeben.
 
 ###Überwachen virtueller Maschinen
-Wenn Sie auf der Kachel **Ressourcensicherheitsintegrität** auf **Virtuelle Computer** klicken, wird das Blatt **Virtuelle Computer** geöffnet. Dieses Blatt enthält weitere Details zu den Integrations- und Vorbeugungsschritten sowie eine Liste aller virtuellen Maschinen, die von Security Center überwacht werden (siehe folgende Abbildung).
+Wenn Sie auf der Kachel **Ressourcensicherheitsintegrität** auf **Virtuelle Computer** klicken, wird das Blatt **Virtuelle Computer** geöffnet. Dieses Blatt enthält weitere Details zu den Integrations- und Vorbeugungsschritten sowie eine Liste aller virtuellen Computer, die von Security Center überwacht werden (siehe folgende Abbildung).
 
 ![Fehlendes Systemupdate nach VM](./media/security-center-monitoring/security-center-monitoring-fig2-2-new.png)
 
@@ -60,22 +57,24 @@ Dieser Abschnitt enthält eine Reihe von Empfehlungen für jeden virtuellen Comp
 
 ![Empfehlungen für virtuelle Computer](./media/security-center-monitoring/security-center-monitoring-fig4-2-new.png)
 
+> [AZURE.NOTE] Nur VMs mit mindestens einem öffentlichen Endpunkt werden auf dem Blatt „Networking Health“ (Netzwerkintegrität) in der Liste „Network topology“ (Netzwerktopologie) angezeigt.
+
 Jeder Empfehlung ist eine Reihe von Aktionen zugeordnet, die ausgeführt werden können, wenn Sie darauf klicken. Wenn Sie beispielsweise auf **Fehlende Systemupdates** klicken, wird das Blatt **Fehlende Systemupdates** geöffnet. Auf dem Blatt sind die VMs, für die Patches fehlen, und der Schweregrad des fehlendes Updates wie unten dargestellt aufgeführt.
 
 ![Fehlende Systemupdates](./media/security-center-monitoring/security-center-monitoring-fig5-new.png)
 
 Auf dem Blatt **Fehlende Systemupdates** wird eine Tabelle mit folgenden Informationen angezeigt:
 
-- **VIRTUELLER COMPUTER**: Der Name der virtuellen Maschine, für die Updates fehlen.
+- **VIRTUELLER COMPUTER**: Der Name des virtuellen Computers, für den Updates fehlen.
 - **SYSTEMUPDATES**: Die Anzahl der fehlenden Systemupdates.
-- **LETZTE ÜBERPRÜFUNGSZEIT**: Der Zeitpunkt, zu dem die virtuelle Maschine zuletzt von Security Center auf Updates überprüft wurde.
+- **LETZTE ÜBERPRÜFUNGSZEIT**: Der Zeitpunkt, zu dem der virtuelle Computer zuletzt von Security Center auf Updates überprüft wurde.
 - **STATUS**: Der aktuelle Status der Empfehlung:
 	- **Offen**: Die Empfehlung wurde noch nicht verarbeitet.
 	- **In Bearbeitung**: Die Empfehlung wird derzeit auf die Ressourcen angewendet, und es ist keine Aktion Ihrerseits erforderlich.
 	- **Gelöst**: Die Empfehlung wurde bereits abgeschlossen. (Wenn das Problem behoben ist, wird der Eintrag abgeblendet.)
 - **SCHWEREGRAD**: Beschreibt den Schweregrad der jeweiligen Empfehlung:
 	- **Hoch**: Ein Sicherheitsrisiko betrifft eine bedeutsame Ressource (Anwendung, VM, Netzwerksicherheitsgruppe) und erfordert Aufmerksamkeit.
-	- **Mittel**: Nicht kritische oder zusätzliche Schritte sind erforderlich, um einen Prozess abzuschließen oder eine Sicherheitslücke zu beseitigen.
+	- **Mittel**: Nicht kritische oder zusätzliche Schritte sind erforderlich, um einen Prozess abzuschließen oder ein Sicherheitsrisiko zu beseitigen.
 	- **Niedrig**: Ein Sicherheitsrisiko, das behandelt werden sollte, jedoch keine unmittelbare Aufmerksamkeit erfordert. (Standardmäßig werden Empfehlungen mit dem Status „Niedrig“ nicht angezeigt, aber Sie können bei Bedarf nach diesen Empfehlungen filtern.)
 
 Um die Details zur Empfehlung anzuzeigen, klicken Sie auf den Namen der jeweiligen virtuellen Maschine. Es wird ein neues Blatt für die virtuelle Maschine mit der Liste geöffnet. Dies ist hier dargestellt:
@@ -199,13 +198,13 @@ Auf dem Blatt **Ungesicherte Webanwendungen** wird eine Liste mit allen virtuell
 
 ![Web Application Firewall (WAF) hinzufügen](./media/security-center-monitoring/security-center-monitoring-fig20-new.png)
 
-## Nächste Schritte
+## Weitere Informationen
 In diesem Dokument haben Sie erfahren, wie Sie die Überwachungsfunktionen in Azure Security Center verwenden können. Weitere Informationen zu Azure Security Center finden Sie in den folgenden Quellen:
 
 - [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md) – erfahren Sie, wie Sie Sicherheitseinstellungen in Azure Security Center konfigurieren.
 - [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) – Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
 - [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md): Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
-- [Häufig gestellte Fragen (FAQ) zu Security Center](security-center-faq.md) – Häufig gestellte Fragen zur Verwendung des Diensts.
+- [Azure Security Center – häufig gestellte Fragen](security-center-faq.md) zur Verwendung des Diensts.
 - [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) – suchen Sie nach Blogbeiträgen über Azure-Sicherheit und -Compliance.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

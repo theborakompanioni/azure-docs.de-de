@@ -23,7 +23,7 @@
 - [.NET](documentdb-get-started.md)
 - [Node.js](documentdb-nodejs-get-started.md)
 
-Willkommen beim Node.js-Tutorial für das DocumentDB Node.js SDK! Im Rahmen dieses Tutorials erstellen Sie eine Konsolenanwendung, mit der DocumentDB-Ressourcen, einschließlich einer Node-Datenbank, erstellt und abgefragt werden können.
+Willkommen beim Node.js-Tutorial für das Azure DocumentDB Node.js SDK! Im Rahmen dieses Tutorials erstellen Sie eine Konsolenanwendung, mit der DocumentDB-Ressourcen, einschließlich einer Node-Datenbank, erstellt und abgefragt werden können.
 
 Folgende Themen werden behandelt:
 
@@ -621,4 +621,4 @@ Aktualisieren Sie dann in der Datei ```config.js``` die Werte für „config.end
 
 [keys]: media/documentdb-nodejs-get-started/node-js-tutorial-keys.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

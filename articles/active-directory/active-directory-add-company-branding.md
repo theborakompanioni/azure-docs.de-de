@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/16/2016" 
+	ms.date="07/13/2016"
 	ms.author="MarkVi"/>
 
 # Hinzufügen Ihres Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite
@@ -120,8 +120,8 @@ Wenn Sie beispielsweise ein standardmäßiges Bannerlogo konfigurieren, aber kei
 
 Stellen Sie sich die folgende Konfiguration vor:
 
-- Standardbannerlogo und Anmeldeseitentext in Englisch 
-- Sprachspezifischer Anmeldeseitentext für Deutsch 
+- Standardbannerlogo und Anmeldeseitentext in Englisch
+- Sprachspezifischer Anmeldeseitentext für Deutsch
 
 Wenn Ihre bevorzugte Sprache Deutsch ist, erhalten Sie das Standardbannerlogo und den deutschen Text.
 
@@ -177,8 +177,8 @@ Es wird empfohlen, dass Sie mit einem Testmandanten experimentieren, bevor Sie �
 
 **Überprüfen Sie wie folgt, ob Ihr Branding angewendet wurde:**
 
-1. Öffnen Sie eine InPrivate- oder Inkognito-Browsersitzung. 
-2. Greifen Sie auf https://outlook.com/contoso.com zu, und ersetzen Sie dabei „contoso.com“ durch die von Ihnen angepasste Domäne. 
+1. Öffnen Sie eine InPrivate- oder Inkognito-Browsersitzung.
+2. Greifen Sie auf https://outlook.com/contoso.com zu, und ersetzen Sie dabei „contoso.com“ durch die von Ihnen angepasste Domäne.
 
 Dies funktioniert auch für Domänen, die ein Format wie „contoso.onmicrosoft.com“ haben.
 
@@ -219,4 +219,4 @@ Hintergrundfarbe auf der Anmeldeseite | Die Hintergrundfarbe auf der Anmeldeseit
 [7]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedtop.png
 [8]: ./media/active-directory-add-company-branding/APBranding.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0720_2016-->

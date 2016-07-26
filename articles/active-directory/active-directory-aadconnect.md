@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/27/2016"
+	ms.date="07/14/2016"
 	ms.author="andkjell;billmath"/>
 
 # Integrieren Ihrer lokalen Identitäten in Azure Active Directory
@@ -22,7 +22,7 @@ Azure AD Connect integriert Ihre lokalen Verzeichnisse in Azure Active Directory
 
 <!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
 
-> [AZURE.IMPORTANT] [Azure AD Connect bietet die beste Möglichkeit, um Ihr lokales Verzeichnis mit Azure AD und Office 365 zu verbinden. Da Microsoft Azure Active Directory Sync (DirSync) und Azure AD Sync veraltet sind und der Support für diese Tools am 13. April 2017 endet, ist dies ein guter Zeitpunkt, um ein Upgrade auf Azure AD Connect durchzuführen.]( https://azure.microsoft.com/documentation/articles/active-directory-aadconnect-dirsync-deprecated/?WT.mc_id=DirSyncDepACOM)
+> [AZURE.IMPORTANT] [Azure AD Connect bietet die beste Möglichkeit, um Ihr lokales Verzeichnis mit Azure AD und Office 365 zu verbinden. Da Windows Azure Active Directory Sync (DirSync) und Azure AD Sync veraltet sind und der Support für diese Tools am 13. April 2017 endet, ist dies ein guter Zeitpunkt, um ein Upgrade auf Azure AD Connect durchzuführen.]( https://azure.microsoft.com/documentation/articles/active-directory-aadconnect-dirsync-deprecated/?WT.mc_id=DirSyncDepACOM)
 
 ![Was ist Azure AD Connect?](./media/active-directory-aadconnect/arch.png)
 
@@ -138,6 +138,7 @@ Wenn Ihr AD FS-Server nicht für die automatische Aktualisierung von Zertifikate
 
 Thema |  
 --------- | ---------
+Alle AD FS-Artikel | [Azure AD Connect und Verbund](active-directory-aadconnectfed-whatis.md)
 Konfigurieren von AD FS mit Unterdomänen | [Unterstützung mehrerer Domänen für den Verbund mit Azure AD](active-directory-aadconnect-multiple-domains.md)
 Verwalten der AD FS-Farm | [Verwaltung und Anpassung von AD FS mit Azure AD Connect](active-directory-aadconnect-federation-management.md)
 Manuelles Aktualisieren von Verbundzertifikaten | [Erneuern von Verbundzertifikaten für Office 365 und Azure AD](active-directory-aadconnect-o365-certs.md)
@@ -161,4 +162,4 @@ Ignite 2015-Präsentation über die Erweiterung lokaler Verzeichnisse in die Cl
 
 >[AZURE.VIDEO microsoft-ignite-2015-extending-on-premises-directories-to-the-cloud-made-easy-with-azure-active-directory-connect]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

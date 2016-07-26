@@ -13,7 +13,7 @@
    ms.topic="hero-article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/08/2016"
+   ms.date="07/19/2016"
    ms.author="cherylmc"/>
 
 # Erstellen und Ändern des Routings für eine ExpressRoute-Verbindung
@@ -113,8 +113,8 @@ Dieser Abschnitt enthält Anweisungen zum Erstellen, Abrufen, Aktualisieren und 
 
 2. Konfigurieren Sie das öffentliche Azure-Peering für die Verbindung. Stellen Sie sicher, dass Sie über die folgenden Elemente verfügen, bevor Sie mit den nächsten Schritten fortfahren:
 
-	- Ein /30-Subnetz für die primäre Verknüpfung. 
-	- Ein /30-Subnetz für die sekundäre Verknüpfung. 
+	- Ein /30-Subnetz für die primäre Verknüpfung.
+	- Ein /30-Subnetz für die sekundäre Verknüpfung.
 	- Alle IP-Adressen, die zum Einrichten dieses Peerings verwendet werden, müssen gültige öffentliche IPv4-Adressen sein.
 	- Eine gültige VLAN-ID zum Einrichten dieses Peerings. Stellen Sie sicher, dass kein anderes Peering der Verbindung die gleiche VLAN-ID verwendet.
 	- AS-Nummer für Peering. Sie können sowohl AS-Nummern mit 2 Byte als auch mit 4 Byte verwenden.
@@ -237,4 +237,4 @@ Sie können Ihre Peeringkonfiguration entfernen, indem Sie das Löschsymbol wie 
 
 -  Weitere Informationen zur Arbeit mit virtuellen Netzwerken finden Sie unter [Virtuelle Netzwerke im Überblick](../virtual-network/virtual-networks-overview.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0720_2016-->

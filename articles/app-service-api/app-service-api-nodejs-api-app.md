@@ -193,7 +193,7 @@ In diesem Abschnitt verwenden Sie das Azure-Portal, um eine neue API-App in Azur
 
 6. Klicken Sie in der Dropdownliste **Ressourcengruppe** auf **Neu**, und geben Sie unter **Neuer Ressourcengruppenname** den Namen „NodejsAPIAppGroup“ oder einen anderen Namen ein.
 
-	Eine [Ressourcengruppe](../azure-portal/resource-group-portal.md) ist eine Sammlung von Azure-Ressourcen wie API-Apps, Datenbanken und VMs. Für dieses Tutorial ist es besser, eine neue Ressourcengruppe zu erstellen. Es ist dann einfacher, alle Azure-Ressourcen, die Sie für das Tutorial erstellen, in einem Schritt zu löschen.
+	Eine [Ressourcengruppe](../resource-group-overview.md) ist eine Sammlung mit Azure-Ressourcen, z.B. API-Apps, Datenbanken und VMs. Für dieses Tutorial ist es besser, eine neue Ressourcengruppe zu erstellen. Es ist dann einfacher, alle Azure-Ressourcen, die Sie für das Tutorial erstellen, in einem Schritt zu löschen.
 
 4. Klicken Sie auf **App Service-Plan/Standort** und dann auf **Neu erstellen**.
 
@@ -312,4 +312,4 @@ Nachdem Sie die kontinuierliche Bereitstellung eingerichtet haben, können Sie C
 
 Sie haben nun erfolgreich eine API-App erstellt und dafür Node.js-API-Code bereitgestellt. Im nächsten Tutorial erfahren Sie, wie Sie [API-Apps über JavaScript-Clients mit CORS nutzen](app-service-api-cors-consume-javascript.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

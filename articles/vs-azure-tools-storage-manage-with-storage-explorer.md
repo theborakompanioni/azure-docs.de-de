@@ -8,12 +8,12 @@
 	editor="" />
 
  <tags
-	ms.service="visual-studio-online"
+	ms.service="storage"
 	ms.devlang="multiple"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="07/06/2016"
+	ms.date="07/14/2016"
 	ms.author="tarcher" />
 
 # Erste Schritte mit dem Speicher-Explorer (Vorschau)
@@ -166,7 +166,7 @@ Beispiel: Benutzer A ist Administrator eines Azure-Abonnements, und Benutzer A m
 
 ## Anfügen eines Diensts per SAS
 
-Im Abschnitt [Anfügen eines Kontos per SAS](#attach-account-using-sas) wird beschrieben, wie der Administrator eines Azure-Abonnements vorübergehenden Zugriff auf ein Speicherkonto gewähren kann, indem er eine SAS für das Speicherkonto generiert (und freigibt). Auf ähnliche Weise kann eine SAS für einen bestimmten Dienst (Blobcontainer, Warteschlange oder Tabelle) in einem Speicherkonto generiert werden.
+Im Abschnitt [Anfügen eines Speicherkontos per SAS](#attach-storage-account-using-sas) wird beschrieben, wie der Administrator eines Azure-Abonnements vorübergehenden Zugriff auf ein Speicherkonto gewähren kann, indem er eine SAS für das Speicherkonto generiert (und freigibt). Auf ähnliche Weise kann eine SAS für einen bestimmten Dienst (Blobcontainer, Warteschlange oder Tabelle) in einem Speicherkonto generiert werden.
 
 ### Generieren einer SAS für den Dienst, den Sie freigeben möchten
 
@@ -226,4 +226,4 @@ Wählen Sie zum Löschen der Suche im Suchfeld die Schaltfläche **x**.
 [23]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-azure-storage-icon.png
 [24]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-azure-storage-next.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

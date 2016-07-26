@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/27/2016"
+   ms.date="07/18/2016"
    ms.author="nitinme"/>
 
 # Erste Schritte mit Azure Data Lake-Speicher mithilfe des .NET SDK
@@ -42,7 +42,7 @@ Erfahren Sie, wie Sie mithilfe des .NET SDK für Azure Data Lake-Speicher ein Az
 	* **Nicht interaktive Authentifizierung** – Sie müssen in Azure Active Directory eine **Webanwendung** erstellen. Nach dem Erstellen der Anwendung rufen Sie die folgenden Werte ab, die mit der Anwendung in Zusammenhang stehen.
 		- Abrufen von **Client-ID**,**geheimem Clientschlüssel** und **Umleitungs-URI** für die Anwendung
 		- Festlegen der delegierten Berechtigungen
-		- Weisen Sie die Azure Active Directory-Anwendung einer Rolle zu. Die Rolle kann sich auf der Ebene des Bereichs befinden, auf der Sie die Berechtigung für die Azure Active Directory-Anwendung gewähren möchten. Beispielsweise können Sie die Anwendung auf Abonnementebene oder auf der Ebene einer Ressourcengruppe zuweisen. 
+		- Weisen Sie die Azure Active Directory-Anwendung einer Rolle zu. Die Rolle kann sich auf der Ebene des Bereichs befinden, auf der Sie die Berechtigung für die Azure Active Directory-Anwendung gewähren möchten. Beispielsweise können Sie die Anwendung auf Abonnementebene oder auf der Ebene einer Ressourcengruppe zuweisen.
 
 	Anweisungen dazu, wie Sie diese Werte abrufen, Berechtigungen festlegen und Rollen zuweisen können, finden Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](../resource-group-create-service-principal-portal.md).
 
@@ -139,7 +139,7 @@ Im folgenden Codeausschnitt wird eine `AuthenticateUser`-Methode veranschaulicht
  	// Authenticate the user with AAD through an interactive popup.
     // You need to have an application registered with AAD in order to authenticate.
     //   For more information and instructions on how to register your application with AAD, see:
-    //   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+    //   https://azure.microsoft.com/de-DE/documentation/articles/resource-group-create-service-principal-portal/
 	public static TokenCredentials AuthenticateUser(string tenantId, string resource, string appClientId, Uri appRedirectUri, string userId = "")
 	{
 	    var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
@@ -157,7 +157,7 @@ Im folgenden Codeausschnitt wird eine `AuthenticateApplication`-Methode veransch
 	// Authenticate the application with AAD through the application's secret key.
 	// You need to have an application registered with AAD in order to authenticate.
 	//   For more information and instructions on how to register your application with AAD, see:
-	//   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+	//   https://azure.microsoft.com/de-DE/documentation/articles/resource-group-create-service-principal-portal/
 	public static TokenCredentials AuthenticateApplication(string tenantId, string resource, string appClientId, Uri appRedirectUri, SecureString clientSecret)
 	{
 	    var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
@@ -400,7 +400,7 @@ Stellen Sie abschließend sicher, dass der hier angegebene lokale Pfad und der D
             // Authenticate the user with AAD through an interactive popup.
             // You need to have an application registered with AAD in order to authenticate.
             //   For more information and instructions on how to register your application with AAD, see:
-            //   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+            //   https://azure.microsoft.com/de-DE/documentation/articles/resource-group-create-service-principal-portal/
             public static TokenCredentials AuthenticateUser(string tenantId, string resource, string appClientId, Uri appRedirectUri, string userId = "")
             {
                 var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
@@ -415,7 +415,7 @@ Stellen Sie abschließend sicher, dass der hier angegebene lokale Pfad und der D
             // Authenticate the application with AAD through the application's secret key.
             // You need to have an application registered with AAD in order to authenticate.
             //   For more information and instructions on how to register your application with AAD, see:
-            //   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+            //   https://azure.microsoft.com/de-DE/documentation/articles/resource-group-create-service-principal-portal/
             public static TokenCredentials AuthenticateApplication(string tenantId, string resource, string appClientId, Uri appRedirectUri, SecureString clientSecret)
             {
                 var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
@@ -526,4 +526,4 @@ Stellen Sie abschließend sicher, dass der hier angegebene lokale Pfad und der D
 - [Verwenden von Azure Data Lake Analytics mit Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

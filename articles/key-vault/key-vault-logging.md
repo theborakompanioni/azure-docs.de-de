@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="05/06/2016"
+	ms.date="07/15/2016"
 	ms.author="cabailey"/>
 
 # Azure-Schlüsseltresor-Protokollierung #
@@ -34,6 +34,8 @@ Nutzen Sie dieses Tutorial als Hilfe bei den ersten Schritten mit der Azure-Schl
 >
 >Derzeit können Sie den Azure-Schlüsseltresor nicht im Azure-Portal konfigurieren. Sie müssen stattdessen die Anweisungen für Azure PowerShell verwenden.
 
+Die von Ihnen erfassten Protokolle können mithilfe von Log Analytics über die Operations Management Suite visualisiert werden. Weitere Informationen finden Sie unter [Azure Key Vault (Preview) solution in Log Analytics](../log-analytics/log-analytics-azure-key-vault.md) (Azure Key Vault-Lösung (Vorschau) in Log Analytics).
+
 Eine Übersicht über den Azure-Schlüsseltresor finden Sie unter [Was ist der Azure-Schlüsseltresor?](key-vault-whatis.md)
 
 ## Voraussetzungen
@@ -41,7 +43,7 @@ Eine Übersicht über den Azure-Schlüsseltresor finden Sie unter [Was ist der A
 Für dieses Tutorial benötigen Sie Folgendes:
 
 - Vorhandenen Schlüsseltresor, der von Ihnen genutzt wird
-- Azure PowerShell, **mindestens Version 1.0.1** Um Azure PowerShell zu installieren und Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Wenn Sie Azure PowerShell bereits installiert haben und die Version nicht kennen, geben Sie über die Azure PowerShell-Konsole `(Get-Module azure -ListAvailable).Version` ein.
+- Azure PowerShell, **mindestens Version 1.0.1** Um Azure PowerShell zu installieren und Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Wenn Sie Azure PowerShell bereits installiert haben und die Version nicht kennen, geben Sie über die Azure PowerShell-Konsole `(Get-Module azure -ListAvailable).Version` ein.
 - Ausreichend Speicherplatz unter Azure für Ihre Schlüsseltresor-Protokolle
 
 
@@ -127,7 +129,7 @@ Die Ausgabe sieht etwa wie folgt aus:
 
 **resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=02/m=00/PT1H.json**
 
-**resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=18/m=00/PT1H.json**
+**resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=18/m=00/PT1H.json****
  
 
 Wie Sie in dieser Ausgabe sehen, wird für die Blobs eine Benennungskonvention genutzt: **resourceId=<ARM-Ressourcen-ID>/y=<Jahr>/m=<Monat>/d=<Tag des Monats>/h=<Stunde>/m=<Minute>/filename.json**
@@ -171,7 +173,7 @@ Sie können sich nun ansehen, was in den Protokollen enthalten ist. Bevor Sie fo
 - Zum Deaktivieren der Protokollierung für Ihre Schlüsseltresorressource: `Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories AuditEvent`
 
 
-## <a id="interpret"></a>Interpretieren der Schlüsseltresorprotokolle ##
+## <a id="interpret"></a>Interpretieren der Schlüsseltresor-Protokolle ##
 
 Einzelne Blobs werden als Text und formatiert als JSON-Blob gespeichert. Dies ist ein Beispiel für einen Protokolleintrag nach der Ausführung von `Get-AzureRmKeyVault -VaultName 'contosokeyvault'`:
 
@@ -272,4 +274,4 @@ Eine Liste der Azure PowerShell 1.0-Cmdlets für den Azure PowerShell finden Sie
 
 Ein Tutorial zur Schlüsselrotation und Protokollüberwachung mit Azure Key Vault finden Sie unter [How to setup Key Vault with end to end key rotation and auditing](key-vault-key-rotation-log-monitoring.md) (Einrichten des Schlüsseltresors mit End-to-End-Schlüsselrotation und Überwachung).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

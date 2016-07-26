@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="06/02/2016"
+    ms.date="07/19/2016"
     ms.author="magoedte;bwren"/>
 
 # Mein erstes PowerShell-Workflow-Runbook
@@ -87,13 +87,13 @@ Das soeben erstellte Runbook befindet sich immer noch im Entwurfsmodus. Wir müs
 7.	Wenn der Runbookstatus *Abgeschlossen* lautet, klicken Sie auf **Ausgabe**. Der Bereich "Ausgabe" wird geöffnet, und der Text *Hello World* wird angezeigt.<br>![API-Zusammenfassung](media/automation-first-runbook-textual/job-pane-output.png)
 8.	Schließen Sie den Ausgabebereich.
 9.	Klicken Sie auf **Datenströme**, um den gleichnamigen Bereich für den Runbookauftrag zu öffnen. Im Ausgabestream sollte nur *Hello World* angezeigt werden. Hier können aber auch andere Datenströme für einen Runbookauftrag (wie etwa "Ausführlich" und "Fehler") angezeigt werden, sofern das Runbook in diese schreibt.<br> ![API-Zusammenfassung](media/automation-first-runbook-textual/job-pane-streams.png)
-10.	Schließen Sie den Datenstrom- und den Auftragsbereich, um zum Bereich „MyFirstRunbook-Workflow“ zurückzukehren.
+10.	Schließen Sie den Datenstrom- und den Auftragsbereich, um zum Bereich „MyFirstRunbook“ zurückzukehren.
 11.	Klicken Sie auf **Aufträge**, um den Auftragsbereich für dieses Runbook zu öffnen. Dadurch werden alle von diesem Runbook erstellten Aufträge aufgeführt. Hier wird nur ein einzelner Auftrag aufgeführt, da wir den Auftrag bislang erst einmal ausgeführt haben.<br> ![Aufträge](media/automation-first-runbook-textual/runbook-control-jobs.png)
 12.	Wenn Sie auf diesen Auftrag klicken, wird wieder der Auftragsbereich geöffnet, den wir uns beim Starten des Runbooks angesehen haben. So können Sie bereits ausgeführte Aufträge öffnen und Details zu jedem Auftrag anzeigen, der für ein bestimmtes Runbook erstellt wurde.
 
 ## Schritt 5: Hinzufügen von Authentifizierungsfunktionen für die Verwaltung von Azure-Ressourcen
 
-Wir haben unser Runbook inzwischen zwar getestet und veröffentlicht, bislang ist es aber noch nicht sonderlich hilfreich. Wir möchten damit Azure-Ressourcen verwalten. Dazu ist jedoch eine Authentifizierung mit den Anmeldeinformationen erforderlich, die in den [Voraussetzungen](#prerequisites) genannt sind. Wir verwenden zu diesem Zweck das Cmdlet **Add-AzureRmAccount**.
+Wir haben unser Runbook inzwischen zwar getestet und veröffentlicht, bislang ist es aber noch nicht sonderlich hilfreich. Wir möchten damit Azure-Ressourcen verwalten. Dazu ist jedoch eine Authentifizierung mit den Anmeldeinformationen erforderlich, die in den [Voraussetzungen](#prerequisites) genannt sind. Wir verwenden zu diesem Zweck das Cmdlet **Add-AzureRMAccount**.
 
 1.	Öffnen Sie den Text-Editor, indem Sie im Bereich "MyFirstRunbook-Workflow" auf **Bearbeiten** klicken.<br> ![Runbook bearbeiten](media/automation-first-runbook-textual/runbook-toolbar-edit.png)
 2.	Die Zeile **Write-Output** wird nicht mehr benötigt, also löschen Sie sie.
@@ -101,12 +101,13 @@ Wir haben unser Runbook inzwischen zwar getestet und veröffentlicht, bislang is
 4.	Geben Sie den folgenden Code ein (oder fügen Sie ihn ein). Dieser Code ist für die Authentifizierung bei Ihrem ausführenden Konto für Automation zuständig:
 
     ```
-    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-    Add-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+    $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
+    Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
+    -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
     ```
 
 5.	Klicken Sie auf den **Testbereich**, um das Runbook zu testen.
-6.	Klicken Sie auf **Starten**, um den Test zu starten. Nach Abschluss des Tests erhalten Sie in der Regel eine Ausgabe mit allgemeinen Informationen aus Ihrem Konto. Auf diese Weise wird bestätigt, dass die Anmeldeinformationen gültig sind. <br> ![Authentifizieren](media/automation-first-runbook-textual/runbook-auth-results.png)
+6.	Klicken Sie auf **Starten**, um den Test zu starten. Nach Abschluss des Tests erhalten Sie in der Regel eine Ausgabe wie in der Abbildung unten mit allgemeinen Informationen aus Ihrem Konto. Auf diese Weise wird bestätigt, dass die Anmeldeinformationen gültig sind.<br> ![Authentifizieren](media/automation-first-runbook-textual/runbook-auth-output.png)
 
 ## Schritt 6: Hinzufügen von Code zum Starten eines virtuellen Computers
 
@@ -117,12 +118,11 @@ Nun, da das Runbook für das Azure-Abonnement authentifiziert ist, können wir R
     ```
     workflow MyFirstRunbook-Workflow
     {
-     $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
-     Add-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
- 
-     Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'ResourceGroupName'
+      $Conn = Get-AutomationConnection -Name AzureRunAsConnection
+      Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+      Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'ResourceGroupName'
     }
-    ```
+    ``` 
 
 2.	Speichern Sie das Runbook, und klicken Sie dann auf den **Testbereich**, um das Runbook zu testen.
 3.	Klicken Sie auf **Starten**, um den Test zu starten. Vergewissern Sie sich nach Abschluss des Tests, dass der virtuelle Computer gestartet wurde.
@@ -141,7 +141,7 @@ Unser Runbook startet zwar nun den virtuellen Computer, den wir im Runbook hartc
         [string]$ResourceGroupName
        )  
      $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
-     Add-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+     Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
      Start-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
     }
     ```
@@ -161,4 +161,4 @@ Unser Runbook startet zwar nun den virtuellen Computer, den wir im Runbook hartc
 -  Informationen über die verschiedenen Runbooktypen, ihre Vorteile und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md).
 -  Weitere Informationen zur PowerShell-Skriptunterstützung finden Sie unter [Native PowerShell Script Support in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/) (Native PowerShell-Skriptunterstützung in Azure Automation).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->
