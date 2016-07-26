@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/21/2016"
+	ms.date="07/14/2016"
 	ms.author="vakarand"/>
 
 # Überwachen Ihrer lokalen Identitätsinfrastruktur und Synchronisierung von Diensten in der Cloud
@@ -47,6 +47,7 @@ Das folgende Video bietet eine Übersicht über Azure AD Connect Health für AD 
 >[AZURE.VIDEO azure-ad-connect-health--monitor-you-identity-bridge]
 
 ## [Azure AD Connect Health für die Synchronisierung](active-directory-aadconnect-health-sync.md)
+
 Azure AD Connect Health für die Synchronisierung überwacht die Synchronisierungen zwischen Ihrem lokalen Active Directory und Azure Active Directory. Azure AD Connect Health für die Synchronisierung stellt die folgenden wichtigen Funktionen bereit:
 
 - Überwachung mit Warnungen als Information, wenn die Integrität von Azure AD Connect-Servern (Synchronisierungsmodul) nicht gewährleistet ist
@@ -58,6 +59,17 @@ Das folgende Video bietet eine Übersicht über Azure AD Connect Health für die
 
 >[AZURE.VIDEO azure-active-directory-connect-health-monitoring-the-sync-engine]
 
+## [Azure AD Connect Health für AD DS (Vorschau)](active-directory-aadconnect-health-adds.md)
+Azure AD Connect Health für AD DS ermöglicht die Überwachung für Domänencontroller, die unter Windows Server 2008 R2, Windows Server 2012 und Windows Server 2012 R2 installiert sind. Mit einer einfachen und kostengünstigen Health-Agent-Installation können Sie Ihre lokale AD DS-Umgebung direkt über die Cloud überwachen. Azure AD Connect Health für AD DS stellt die folgenden wichtigen Funktionen bereit:
+
+- Überwachung von Warnungen, um zu erkennen, wann Domänencontroller Fehler aufweisen, und von E-Mail-Benachrichtigungen für kritische Warnungen
+- Domänencontroller-Dashboard mit einer Kurzübersicht über den Integritäts- und Betriebsstatus Ihrer Domänencontroller
+- Replikationsstatus-Dashboard mit den aktuellen Replikationsinformationen und Links zu Problembehandlungsanleitungen, wenn Fehler erkannt werden
+- Schneller Zugriff von jedem Ort auf Leistungsdaten-Graphen gängiger Leistungsindikatoren für Problembehandlung und Überwachung
+
+Das folgende Video bietet eine Übersicht über Azure AD Connect Health für AD DS:
+
+>[AZURE.VIDEO azure-ad-connect-health-monitors-on-premises-ad-domain-services]
 
 ## Erste Schritte mit Azure AD Connect Health
 Die ersten Schritte mit Azure AD Connect Health sind sehr einfach. Führen Sie die folgenden Schritte aus:
@@ -74,23 +86,26 @@ Die ersten Schritte mit Azure AD Connect Health sind sehr einfach. Führen Sie d
 
 - Sehen Sie sich die [Anforderungen](active-directory-aadconnect-health-agent-install.md#Requirements) für Azure AD Connect Health an.
 
-- Für die ersten Schritte mit Azure AD Connect Health für AD FS können Sie die neueste Version des Agents hier herunterladen: [Azure AD Connect Health Agent für AD FS – Download](http://go.microsoft.com/fwlink/?LinkID=518973). [](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)
+- Für die ersten Schritte mit Azure AD Connect Health für AD FS können Sie die neueste Version des Agents hier herunterladen: [Azure AD Connect Health-Agent für AD FS – Download](http://go.microsoft.com/fwlink/?LinkID=518973). [](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)
 
 - Für die ersten Schritte mit Azure AD Connect Health für die Synchronisierung laden Sie die [aktuelle Version von Azure AD Connect](http://go.microsoft.com/fwlink/?linkid=615771) herunter, und installieren Sie sie. Der Health-Agent wird im Rahmen der Installation von Azure AD Connect installiert (Version 1.0.9125.0 oder höher). Azure AD Connect unterstützt ein direktes Upgrade von vorherigen Versionen.
 
+- Für die ersten Schritte mit Azure AD Connect Health für AD DS können Sie die neueste Version des Agents hier herunterladen: [Azure AD Connect Health-Agent für AD DS – Download](http://go.microsoft.com/fwlink/?LinkID=820540). [](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)
 
 ## Azure AD Connect Health-Portal
 Im Azure AD Connect Health-Portal können Sie Warnungen, Leistungsüberwachungsdaten und Nutzungsanalysen anzeigen. Über https://aka.ms/aadconnecthealth gelangen Sie zum Hauptblatt von Azure AD Connect Health. Sie können es sich wie ein Fenster vorstellen. Auf dem Hauptblatt werden die Option „Schnellstart“, die Dienste von Azure AD Connect Health und weitere Konfigurationsoptionen angezeigt. Der nachstehende Screenshot zeigt jedes dieser Elemente, die nachfolgend kurz beschrieben werden. Nachdem Sie die Agents bereitgestellt haben, wird der Integritätsdienst für die Dienste automatisch identifiziert, die von Azure AD Connect Health überwacht werden.
 
-![Azure AD Connect Health-Portal](./media/active-directory-aadconnect-health/portal2.png)
+![Azure AD Connect Health-Portal](./media/active-directory-aadconnect-health/portal4.png)
 
 - **Schnellstart** – Bei Auswahl wird das Blatt "Schnellstart" geöffnet. Hier können Sie den Azure AD Connect Health-Agent herunterladen, indem Sie auf "Tools abrufen" klicken, Sie können auf die Dokumentation zugreifen und Feedback geben.
 
 - **Active Directory-Verbunddienste** – Repräsentiert alle AD FS-Dienste, die aktuell von Azure AD Connect Health überwacht werden. Durch Auswahl einer der Instanzen wird ein Blatt mit Informationen zu dieser Dienstinstanz geöffnet. darunter beispielsweise eine Übersicht, Eigenschaften, Warnungen, Überwachungsinformationen und eine Nutzungsanalyse. Weitere Informationen zu den Funktionen finden Sie [hier](active-directory-aadconnect-health-adfs.md).
 
-- **Azure Active Directory Connect (Sync)** – repräsentiert Ihre Azure AD Connect-Server, die von Azure AD Connect Health derzeit überwacht werden. Wenn Sie den Eintrag auswählen, wird ein Blatt mit Informationen zu Ihren Azure AD Connect-Servern geöffnet. Weitere Informationen zu den Funktionen finden Sie [hier](active-directory-aadconnect-health-sync.md).
+- **Azure Active Directory Connect (Sync)** – Repräsentiert Ihre Azure AD Connect-Server, die von Azure AD Connect Health derzeit überwacht werden. Wenn Sie den Eintrag auswählen, wird ein Blatt mit Informationen zu Ihren Azure AD Connect-Servern geöffnet. Weitere Informationen zu den Funktionen finden Sie [hier](active-directory-aadconnect-health-sync.md).
+ 
+- **Active Directory-Domänendienste** – Repräsentiert alle AD DS-Gesamtstrukturen, die von Azure AD Connect Health derzeit überwacht werden. Wenn Sie eine der Gesamtstrukturen auswählen, wird ein Blatt mit Informationen zur Gesamtstruktur geöffnet. Diese Informationen umfassen eine Übersicht mit den wichtigsten Informationen, das Domänencontroller-Dashboard, das Replikationsstatus-Dashboard, Warnungen und Überwachungsdaten. Weitere Informationen zu den Funktionen finden Sie [hier](active-directory-aadconnect-health-adds.md).
 
-- **Konfigurieren** – ermöglicht das Aktivieren oder Deaktivieren der folgenden Optionen:
+- **Konfigurieren** – Ermöglicht das Aktivieren oder Deaktivieren der folgenden Optionen:
 
 	1. Automatische Aktualisierung des Azure AD Connect Health-Agents auf die aktuelle Version – Dies bedeutet, dass eine automatische Aktualisierung auf die aktuelle Version des Azure AD Connect Health-Agents durchgeführt wird, sobald diese verfügbar ist. Diese Einstellung ist standardmäßig aktiviert.
 
@@ -103,7 +118,8 @@ Im Azure AD Connect Health-Portal können Sie Warnungen, Leistungsüberwachungsd
 * [Azure AD Connect Health-Vorgänge](active-directory-aadconnect-health-operations.md)
 * [Verwenden von Azure AD Connect Health mit AD FS](active-directory-aadconnect-health-adfs.md)
 * [Verwenden von Azure AD Connect Health für die Synchronisierung](active-directory-aadconnect-health-sync.md)
+* [Verwenden von Azure AD Connect Health mit AD DS](active-directory-aadconnect-health-adds.md)
 * [Azure AD Connect Health – FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health: Versionsverlauf](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0720_2016-->

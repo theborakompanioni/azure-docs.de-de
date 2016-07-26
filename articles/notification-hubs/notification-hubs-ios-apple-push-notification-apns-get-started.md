@@ -168,6 +168,8 @@ Sie können den Empfang von Benachrichtigungen in Ihrer App testen, indem Sie Pu
 
 ## (Optional) Senden von Pushbenachrichtigungen aus der App
 
+>[AZURE.IMPORTANT] Dieses Beispiel für das Senden von Benachrichtigungen über die Client-App ist nur zu Lernzwecken angegeben. Da hierfür das `DefaultFullSharedAccessSignature`-Element auf der Client-App vorhanden sein muss, besteht für Ihren Notification Hub das Risiko, dass ein Benutzer Zugriff auf das Senden von unberechtigten Benachrichtigungen an Ihre Clients erhält.
+
 Wenn Sie Pushbenachrichtigungen aus einer App senden möchten, hilft Ihnen das Beispiel in diesem Abschnitt weiter. Es veranschaulicht, wie Sie dies mit der REST-Schnittstelle erreichen.
 
 1. Öffnen Sie in Xcode das `Main.storyboard`, und fügen Sie die folgenden UI-Komponenten aus der Objektbibliothek hinzu, damit Benutzer in der App Pushbenachrichtigungen senden können:
@@ -206,7 +208,7 @@ Wenn Sie Pushbenachrichtigungen aus einer App senden möchten, hilft Ihnen das B
 		#define API_VERSION @"?api-version=2015-01"
 		#define HUBFULLACCESS @"<Enter Your DefaultFullSharedAccess Connection string>"
 
-4. Fügen Sie die folgenden `#import`-Anweisungen der Datei `ViewController.h` hinzu.
+4. Fügen Sie der Datei `ViewController.h` die folgenden `#import`-Anweisungen hinzu:
 
 		#import <CommonCrypto/CommonHMAC.h>
 		#import "HubInfo.h"
@@ -274,7 +276,7 @@ Wenn Sie Pushbenachrichtigungen aus einer App senden möchten, hilft Ihnen das B
 
 
 
-7. Fügen Sie in `ViewController.m` der Schnittstellenimplementierung den folgenden Code zum Generieren des SaS-Autorisierungstokens hinzu, das im Header **Authorization** gemäß der [REST-API-Referenz](http://msdn.microsoft.com/library/azure/dn495627.aspx) bereitgestellt wird.
+7. Fügen Sie in `ViewController.m` der Schnittstellenimplementierung den folgenden Code zum Generieren des SAS-Autorisierungstokens hinzu, das im Header **Authorization** gemäß der [REST-API-Referenz](http://msdn.microsoft.com/library/azure/dn495627.aspx) bereitgestellt wird.
 
 		-(NSString*) generateSasToken:(NSString*)uri
 		{
@@ -459,7 +461,7 @@ Zum Testen von Pushbenachrichtigungen unter iOS müssen Sie die App auf einem ph
 
 ##Nächste Schritte
 
-In diesem einfachen Beispiel haben Sie Pushbenachrichtigungen an alle Ihre registrierten iOS-Geräte übertragen. Als nächsten Lernschritt empfehlen wir das Tutorial [Azure Notification Hubs – Benachrichtigen von iOS-Benutzern über .NET-Back-End]. Darin sind die Schritte beschrieben, die für die Erstellung eines Back-Ends zu Senden von Pushbenachrichtigungen mit Tags ausgeführt werden müssen.
+In diesem einfachen Beispiel haben Sie Pushbenachrichtigungen an alle Ihre registrierten iOS-Geräte übertragen. Als nächsten Lernschritt empfehlen wir das Tutorial [Azure Notification Hubs – Benachrichtigen von iOS-Benutzern über .NET-Back-End]. Darin sind die Schritte beschrieben, die für die Erstellung eines Back-Ends zum Senden von Pushbenachrichtigungen mit Tags ausgeführt werden müssen.
 
 Wenn Sie Ihre Benutzer in Interessengruppen einteilen möchten, finden Sie im Tutorial [Verwenden von Notification Hubs zum Übermitteln von Nachrichten] hierzu weitere Informationen.
 
@@ -506,4 +508,4 @@ Allgemeine Informationen zu Notification Hubs finden Sie im [Notification Hubs-L
 [Local and Push Notification Programming Guide]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 [Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

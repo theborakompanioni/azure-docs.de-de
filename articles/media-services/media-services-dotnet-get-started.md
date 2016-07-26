@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
- 	ms.date="04/18/2016"
+ 	ms.date="07/18/2016"
 	ms.author="juliako"/>
 
 
@@ -50,7 +50,7 @@ Dieses Tutorial beschreibt die Durchführung der folgenden Aufgaben:
 
 Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt sein:
 
-- Um dieses Lernprogramm abzuschließen, benötigen Sie ein Azure-Konto. 
+- Um dieses Lernprogramm abzuschließen, benötigen Sie ein Azure-Konto.
 	
 	Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](/pricing/free-trial/?WT.mc_id=A261C142F). Sie erhalten ein Guthaben, mit dem Sie andere kostenpflichtige Azure-Dienste ausprobieren können. Selbst, nachdem Sie dieses Guthaben aufgebraucht haben, können Sie das Konto behalten und kostenlose Azure-Dienste und -Features nutzen, z. B. das Web-Apps-Feature in Azure App Service.
 - Betriebssysteme: Windows 8 oder höher, Windows 2008 R2, Windows 7.
@@ -253,7 +253,7 @@ Wie bereits erwähnt, besteht beim Arbeiten mit Azure Media Services eines der h
 
 Um die dynamische Paketerstellung nutzen zu können, müssen Sie folgende Schritte ausführen:
 
-- Codieren oder Transcodieren Ihrer Zwischendatei (Quelldatei) in einen Satz von MP4-Dateien oder Smooth Streaming-Dateien mit adaptiver Bitrate  
+- Codieren oder Transcodieren Ihrer Zwischendatei (Quelldatei) in einen Satz von MP4-Dateien oder Smooth Streaming-Dateien mit adaptiver Bitrate
 - Abrufen von mindestens einer Streamingeinheit für den Streamingendpunkt, von dem aus Sie die Bereitstellung Ihrer Inhalte planen
 
 Der folgende Code zeigt, wie Sie einen Codierungsauftrag senden. Der Auftrag enthält eine Aufgabe zum Transcodieren der Zwischendatei in eine Reihe von MP4-Dateien mit adaptiver Bitrate mithilfe von **Media Encoder Standard**. Der Code sendet den Auftrag und wartet, bis er abgeschlossen ist.
@@ -453,4 +453,4 @@ Wenn dieses Thema nicht die erwarteten Informationen enthält, Informationen feh
   [Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
   [Portal]: http://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -161,7 +161,7 @@ In diesem Abschnitt werden die folgenden Szenarien unter Verwendung des Azure-Po
 
 8. Wählen Sie das Abonnement aus, in dem Sie das neue Speicherkonto erstellen möchten.
 
-9. Geben Sie eine neue Ressourcengruppe an, oder wählen Sie eine vorhandene Ressourcengruppe aus. Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwenden des Azure-Portals zum Bereitstellen und Verwalten Ihrer Azure-Ressourcen](../azure-portal/resource-group-portal.md).
+9. Geben Sie eine neue Ressourcengruppe an, oder wählen Sie eine vorhandene Ressourcengruppe aus. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../resource-group-overview.md).
 
 10. Wählen Sie die Region für Ihr Speicherkonto aus.
 
@@ -340,4 +340,4 @@ Ausführlichere Informationen finden Sie unter [Erste Schritte mit Azure Blob St
 
 [Durchsuchen und Erkunden von Speicherkonten](http://storageexplorer.com/)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

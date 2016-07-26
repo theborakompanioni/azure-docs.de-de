@@ -238,6 +238,6 @@ In diesem Lernprogramm haben Sie erfahren, wie eine einfache Webanwendung erstel
 
 * Löschen Sie die Ressourcengruppe mit Ihrer Web-App sowie alle dazugehörigen Azure-Ressourcen, wenn Sie sie nicht mehr benötigen.
 
-	Informationen zum Verwenden von Ressourcengruppen im Azure-Portal finden Sie unter [Verwenden des Azure-Portals zum Bereitstellen und Verwalten Ihrer Azure-Ressourcen](../resource-group-portal.md).
+	Informationen zur Verwendung von Ressourcengruppen im Azure-Portal finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](../resource-group-template-deploy-portal.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

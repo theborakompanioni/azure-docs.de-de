@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/26/2016"
+	ms.date="07/13/2016"
 	ms.author="anandy;billmath"/>
 
-# AD FS in Azure 
+# AD FS-Bereitstellung in Azure 
 
 AD FS verfügt über Funktionen für den vereinfachten, geschützten Identitätsverbund und die einmalige Webanmeldung (SSO). Der Verbund mit Azure AD oder O365 ermöglicht Benutzern die Authentifizierung mit lokalen Anmeldeinformationen und den Zugriff auf Ressourcen in der Cloud. Daher ist es wichtig, dass eine hoch verfügbare AD FS-Infrastruktur vorhanden ist, um den Zugriff auf lokale Ressourcen und Ressourcen in der Cloud sicherzustellen. Durch die Bereitstellung von AD FS in Azure kann die erforderliche hohe Verfügbarkeit mit wenig Aufwand erzielt werden. Die Bereitstellung von AD FS in Azure hat mehrere Vorteile, von denen hier einige aufgeführt sind:
 
@@ -259,11 +259,9 @@ Generell benötigen Sie die folgenden Regeln, um Ihr internes Subnetz effizient 
 |:----|:----|:------:|
 |AllowHTTPSFromDMZ|	Mit dieser Regel wird die HTTPS-Kommunikation mit der DMZ zugelassen. | Eingehend |
 |DenyAllFromDMZ| Mit dieser Regel wird der gesamte Datenverkehr aus der DMZ in das interne Subnetz blockiert. Mit der Regel AllowHTTPSFromDMZ wird bereits sichergestellt, dass die HTTPS-Kommunikation funktioniert, und alles andere wird mit dieser Regel blockiert. | Eingehend |
-|AllowHTTPSToDMZ| Mit dieser Regel wird die HTTPS-Kommunikation an die DMZ zugelassen. | Ausgehend |
-|DenyDMZAll| Mit dieser Regel wird jeglicher anderer Datenverkehr an die DMZ blockiert, mit Ausnahme von HTTPS. | Ausgehend |
 |DenyInternetOutbound| Es besteht kein Zugriff auf das Internet. | Ausgehend |
 
-![INT-Zugriffsregeln (eingehend)](./media/active-directory-aadconnect-azure-adfs/nsgintinbound.png) ![INT-Zugriffsregeln (ausgehend)](./media/active-directory-aadconnect-azure-adfs/nsgintoutbound.png)
+[Kommentar]: <> (![INT-Zugriffsregeln (eingehend)](./media/active-directory-aadconnect-azure-adfs/nsgintinbound.png)) [Kommentar]: <> (![INT-Zugriffsregeln (ausgehend)](./media/active-directory-aadconnect-azure-adfs/nsgintoutbound.png))
  
 **9.2. Schützen des DMZ-Subnetzes**
 
@@ -271,13 +269,12 @@ Generell benötigen Sie die folgenden Regeln, um Ihr internes Subnetz effizient 
 |:----|:----|:------:|
 |AllowHttpsFromVirtualNetwork| HTTPS aus dem virtuellen Netzwerk zulassen | Eingehend |
 |AllowHTTPSInternet| HTTPS aus dem Internet an die DMZ zulassen | Eingehend|
-|DenyingressexceptHTTPS|	Anderen Datenverkehr als HTTPS aus dem Internet blockieren | Eingehend |
-|AllowOutToADFS| HTTPS für internes Subnetz zulassen | Ausgehend |
-|AllowHTTPSToInternet| HTTPS-Verbindung mit dem Internet zulassen | Ausgehend |
+|DenyingressexceptHTTPS| Anderen Datenverkehr als HTTPS aus dem Internet blockieren | Eingehend |
 |DenyOutToInternet|	Alles außer HTTPS-Verbindungen ins Internet blockieren | Ausgehend |
 
-![EXT-Zugriffsregeln (eingehend)](./media/active-directory-aadconnect-azure-adfs/nsgdmzinbound.png) ![EXT-Zugriffsregeln (ausgehend)](./media/active-directory-aadconnect-azure-adfs/nsgdmzoutbound.png)
+[Kommentar]: <> (![EXT-Zugriffsregeln (eingehend)](./media/active-directory-aadconnect-azure-adfs/nsgdmzinbound.png)) [Kommentar]: <> (![EXT-Zugriffsregeln (ausgehend)](./media/active-directory-aadconnect-azure-adfs/nsgdmzoutbound.png))
 
+>[AZURE.NOTE] Wenn eine Clientauthentifizierung mit Benutzerzertifikat (clientTLS-Authentifizierung mit X509-Benutzerzertifikaten) erforderlich ist, muss für AD FS der TCP-Port 49443 für eingehenden Zugriff aktiviert werden.
 
 ###10\. Testen der AD FS-Anmeldung
 
@@ -306,4 +303,4 @@ Bei einer erfolgreichen Anmeldung wird die folgende Erfolgsmeldung angezeigt:
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 * [Azure AD Connect und Verbund](active-directory-aadconnectfed-whatis.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->
