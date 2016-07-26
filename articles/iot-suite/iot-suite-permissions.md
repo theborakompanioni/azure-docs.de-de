@@ -11,7 +11,7 @@
 <tags
   ms.service="iot-suite"
   ms.devlang="na"
-  ms.topic="article"
+  ms.topic="get-started-article"
   ms.tgt_pltfrm="na"
   ms.workload="na"
   ms.date="05/16/2016"
@@ -129,6 +129,8 @@ Sehen Sie sich das folgende Diagramm an:
 
 ![][img-flowchart]
 
+> [AZURE.NOTE] Wenn Sie den Fehler auch nach der Überprüfung noch sehen und ein globaler Administrator des AAD-Mandanten und ein Co-Administrator des Abonnements sind, können Sie Ihren Kontoadministrator bitten, den Benutzer zu entfernen und die erforderlichen Berechtigungen in dieser Reihenfolge neu zuzuweisen: Fügen Sie den Benutzer als globalen Administrator hinzu, und fügen Sie den Benutzer dann als Co-Administrator für das Azure-Abonnement hinzu. Verwenden Sie [Hilfe und Support][lnk-help-support], falls die Probleme weiterhin bestehen.
+
 **Weshalb wird dieser Fehler angezeigt, wenn ich ein Azure-Abonnement habe?** *Ein Azure-Abonnement ist erforderlich, um vorkonfigurierte Lösungen zu erstellen. Sie können in wenigen Minuten ein kostenloses Testkonto erstellen.*
 
 Wenn Sie sicher sind, dass Sie über ein Azure-Abonnement verfügen, überprüfen Sie die Mandantenzuordnung für Ihr Abonnement, und stellen Sie sicher, dass der ordnungsgemäße Mandant in der Dropdownliste ausgewählt ist. Nachdem Sie überprüft haben, ob der gewünschte Mandant ordnungsgemäß ist, befolgen Sie das obige Diagramm, und überprüfen Sie die Zuordnung Ihres Abonnements und dieses AAD-Mandanten.
@@ -144,5 +146,6 @@ Wenn Sie sicher sind, dass Sie über ein Azure-Abonnement verfügen, überprüfe
 [lnk-service-admins]: https://azure.microsoft.com/support/changing-service-admin-and-co-admin/
 [lnk-admin-roles]: https://azure.microsoft.com/documentation/articles/billing-add-change-azure-subscription-administrator/
 [lnk-resource-cs]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/DeviceAdministration/Web/Security/RolePermissions.cs
+[lnk-help-support]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

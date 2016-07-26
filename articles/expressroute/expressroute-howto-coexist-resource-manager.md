@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/04/2016"
+   ms.date="07/19/2016"
    ms.author="charleywen"/>
 
 # Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen für das Resource Manager-Bereitstellungsmodell
@@ -34,7 +34,7 @@ Die Möglichkeit zum Konfigurieren von Standort-zu-Standort-VPN und ExpressRoute
 ## Grenzwerte und Einschränkungen
 
 - **Transitrouting wird nicht unterstützt:** Ein Routing (über Azure) zwischen Ihrem lokalen Netzwerk mit Standort-zu-Standort-VPN-Verbindung und Ihrem lokalen Netzwerk mit ExpressRoute-Verbindung ist nicht möglich.
-- **Erzwungenes Tunneln kann nicht auf dem Standort-zu-Standort-VPN Gateway aktiviert werden:** Sie können nur „erzwingen“, dass sämtlicher Internetdatenverkehr über ExpressRoute an Ihr lokales Netzwerk zurückgeleitet wird. 
+- **Erzwungenes Tunneln kann nicht auf dem Standort-zu-Standort-VPN Gateway aktiviert werden:** Sie können nur „erzwingen“, dass sämtlicher Internetdatenverkehr über ExpressRoute an Ihr lokales Netzwerk zurückgeleitet wird.
 - **Nur Standard- oder Hochleistungsgateways:** Sie müssen ein Standard- oder Hochleistungsgateway sowohl für das ExpressRoute-Gateway als auch das Standort-zu-Standort-VPN Gateway verwenden. Informationen zu Gateway-SKUs finden Sie unter [Gateway-SKUs](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 - **Nur routenbasiertes VPN Gateway:** Sie müssen ein routenbasiertes VPN Gateway verwenden. Informationen zum routenbasierten VPN Gateway finden Sie unter [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 - **Voraussetzungen für eine statische Route:** Wenn Ihr lokales Netzwerk mit ExpressRoute und einem Standort-zu-Standort-VPN verbunden ist, müssen Sie eine statische Route in Ihrem lokalen Netzwerk konfiguriert haben, um die Standort-zu-Standort-VPN-Verbindung an das öffentliche Internet weiterzuleiten.
@@ -143,7 +143,7 @@ Wenn das Gateway-Subnetz /27 oder größer ist und das virtuelle Netzwerk über 
 
 >[AZURE.NOTE] Wenn Sie das vorhandene Gateway löschen, geht Ihre lokale Verbindung mit Ihrem virtuellen Netzwerk verloren, während Sie an dieser Konfiguration arbeiten.
 
-1. Sie müssen die aktuelle Version der Azure PowerShell-Cmdlets installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Beachten Sie, dass die Cmdlets, die Sie für diese Konfiguration verwenden, von den Ihnen vertrauten leicht abweichen können. Achten Sie darauf, die in dieser Anleitung angegebenen Cmdlets zu verwenden. 
+1. Sie müssen die aktuelle Version der Azure PowerShell-Cmdlets installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Beachten Sie, dass die Cmdlets, die Sie für diese Konfiguration verwenden, von den Ihnen vertrauten leicht abweichen können. Achten Sie darauf, die in dieser Anleitung angegebenen Cmdlets zu verwenden.
 
 2. Löschen Sie das vorhandene ExpressRoute- oder Standort-zu-Standort-VPN Gateway.
 
@@ -169,7 +169,7 @@ Wenn das Gateway-Subnetz /27 oder größer ist und das virtuelle Netzwerk über 
 ## So fügen Sie dem VPN Gateway eine Punkt-zu-Standort-Konfiguration hinzu
 Sie können die unten angegebenen Schritte ausführen, um dem VPN Gateway bei einer parallelen Einrichtung eine Punkt-zu-Standort-Konfiguration hinzuzufügen.
 
-1. Fügen Sie einen VPN-Clientadresspool hinzu. 
+1. Fügen Sie einen VPN-Clientadresspool hinzu.
 
 		$azureVpn = Get-AzureRmVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName
 		Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $azureVpn -VpnClientAddressPool "10.251.251.0/24"
@@ -194,4 +194,4 @@ Weitere Informationen zu Punkt-zu-Standort-VPN-Verbindungen finden Sie unter [Ko
 
 Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

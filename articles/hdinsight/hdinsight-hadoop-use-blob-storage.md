@@ -27,11 +27,7 @@ Azure-Blobspeicher stellt eine robuste, universelle Speicherlösung dar, die pro
 
 Die Speicherung von Daten im Blobspeicher sorgt dafür, dass die HDInsight-Cluster, die für Berechnungen verwendet werden, sicher gelöscht werden können, ohne Benutzerdaten zu verlieren.
 
-> [AZURE.NOTE]	Die **asv://*-Syntax wird in HDInsight-Clustern der Version 3.0 nicht unterstützt. Das bedeutet, dass alle an einen HDInsight-Cluster der Version 3.0 übermittelten Aufträge, die explizit die **asv://*-Syntax verwenden, fehlschlagen. Stattdessen sollte die **wasb://*-Syntax verwendet werden. An HDInsight-Cluster der Version 3.0 gesendete Aufträge, die mithilfe eines vorhandenen Metastores erstellt wurden, der explizite Verweise auf Ressourcen mit der asv://-Syntax enthält, schlagen ebenfalls fehl. Diese Metastores müssen mit der wasb://-Syntax neu erstellt werden, um die Ressourcen zu adressieren.
-
-> HDInsight unterstützt aktuell nur Blockblobs.
-
-> Die meisten HDFS-Befehle (z. B. <b>ls</b>, <b>copyFromLocal</b> und <b>mkdir</b>) funktionieren weiterhin wie erwartet. Nur die für die native HDFS-Implementierung (als DFS bezeichnet) spezifischen Befehle wie <b>fschk</b> und <b>dfsadmin</b> zeigen im Azure-Blobspeicher ein anderes Verhalten.
+> [AZURE.IMPORTANT] HDInsight unterstützt nur Blockblobs. Seiten- oder Anfügeblobs werden nicht unterstützt.
 
 Informationen zum Erstellen eines HDInsight-Clusters finden Sie unter [Erste Schritte mit HDInsight][hdinsight-get-started] und [Erstellen von HDInsight-Clustern][hdinsight-creation].
 
@@ -49,6 +45,7 @@ Zusätzlich bietet HDInsight die Möglichkeit, auf die im Azure-Blobspeicher ges
 
 	wasb[s]://<containername>@<accountname>.blob.core.windows.net/<path>
 
+> [AZURE.NOTE] In HDInsight-Versionen vor 3.0 wurde `asv://` anstelle von `wasb://` verwendet. `asv://` sollte nicht für HDInsight-Cluster der Version 3.0 oder höher verwendet werden, da dies zu einem Fehler führt.
 
 Hadoop unterstützt eine Variante des Standarddateisystems. Das Standarddateisystem gibt ein Standardschema und eine Standardautorität vor. Es kann auch zur Auflösung relativer Pfade verwendet werden. Während des HDInsight-Erstellungsprozesses werden ein Azure-Speicherkonto und ein bestimmter Azure Blob Storage-Container aus diesem Konto als Standarddateisystem festgelegt.
 
@@ -83,7 +80,7 @@ Die Speicherung von Daten im Azure-Blobspeicher statt im HDFS hat mehrere Vortei
 
 Bestimmte MapReduce-Jobs und -Pakete können zu Zwischenergebnissen führen, die Sie nicht wirklich im Azure-Blobspeicher speichern möchten. In diesem Fall können Sie die Dateien auch im lokalen HDFS speichern. Tatsächlich verwendet HDInsight DFS für einige dieser Zwischenergebnisse in Hive-Jobs und anderen Prozessen.
 
-
+> [AZURE.NOTE] Die meisten HDFS-Befehle (z. B. <b>ls</b>, <b>copyFromLocal</b> und <b>mkdir</b>) funktionieren weiterhin wie erwartet. Nur die für die native HDFS-Implementierung (als DFS bezeichnet) spezifischen Befehle wie <b>fschk</b> und <b>dfsadmin</b> zeigen im Azure-Blobspeicher ein anderes Verhalten.
 
 ## Erstellen eines Blob-Containers
 
@@ -159,7 +156,7 @@ Das URI-Schema für den Zugriff auf Dateien im Blobspeicher aus HDInsight ist:
 
 
 
-Das URI-Schema bietet unverschlüsselten Zugriff (mit dem Präfix *wasb:*) wie auch SSL-verschlüsselten Zugriff (mit *wasbs*). Wir empfehlen die Verwendung von *wasbs* selbst für den Zugriff auf Daten, die sich in Azure in derselben Region befinden.
+Das URI-Schema bietet unverschlüsselten Zugriff (mit dem Präfix *wasb:*) wie auch SSL-verschlüsselten Zugriff (mit *wasbs*). Wir empfehlen die Verwendung von *wasbs*, und zwar auch für den Zugriff auf Daten, die sich in Azure in derselben Region befinden.
 
 &lt;BlobStorageContainerName&gt; ist der Name des Containers im Azure-Blobspeicher. &lt;StorageAccountName&gt; ist der Name des Azure-Speicherkontos. Ein vollqualifizierter Domänenname (FQDN) ist erforderlich.
 
@@ -263,7 +260,7 @@ Bei Angabe des Ressourcengruppen- und Clusternamens können Sie den folgenden Co
 
 ###Ausführen von Hive-Abfragen mit einem nicht definierten Speicherkonto
 
-Dieses Beispiel zeigt, wie der Inhalt eines Ordners eines Speicherkontos aufgelistet wird, der beim Erstellungsprozess nicht definiert wurde. $clusterName = „<HDInsightClusterName>“
+Dieses Beispiel zeigt, wie der Inhalt des Ordners eines Speicherkontos aufgelistet wird, der beim Erstellungsprozess nicht definiert wurde: $clusterName = "<HDInsightClusterName>"
 
 	$undefinedStorageAccount = "<UnboundedStorageAccountUnderTheSameSubscription>"
 	$undefinedContainer = "<UnboundedBlobContainerAssociatedWithTheStorageAccount>"
@@ -304,4 +301,4 @@ Weitere Informationen finden Sie unter:
 [img-hdi-quick-create]: ./media/hdinsight-hadoop-use-blob-storage/HDI.QuickCreateCluster.png
 [img-hdi-custom-create-storage-account]: ./media/hdinsight-hadoop-use-blob-storage/HDI.CustomCreateStorageAccount.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0720_2016-->

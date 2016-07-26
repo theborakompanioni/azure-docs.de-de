@@ -40,15 +40,15 @@ In diesem Tutorial verwenden Sie das Azure-Portal zum Erstellen eines SQL Data W
 
     ![Erstellen einer Datenbank](./media/sql-data-warehouse-get-started-provision/create-database.png)
 
-	- **Server**: Es empfiehlt sich, dass Sie zuerst den Server auswählen. Sie können einen vorhandenen Server auswählen oder [einen neuen Server erstellen](./sql-data-warehouse-get-started-new-server.md). 
+	- **Server**: Es empfiehlt sich, dass Sie zuerst den Server auswählen. Sie können einen vorhandenen Server auswählen oder [einen neuen Server erstellen](./sql-data-warehouse-get-started-new-server.md).
 
 	- **Datenbankname**: Der Name, mit dem auf das SQL Data Warehouse verwiesen wird. Dieser Name muss für den Server eindeutig sein.
 	
-    - **Leistung**: Es wird empfohlen, mit 400 DWUs zu beginnen. Bewegen Sie den Schieberegler nach links oder rechts, um die Leistung Ihres Data Warehouse anzupassen oder nach dem Erstellen hoch- oder herunterzuskalieren. Weitere Informationen zu DWUs finden Sie in der Dokumentation zur [Skalierung](./sql-data-warehouse-manage-compute-overview.md) oder auf der Seite mit unseren [Preisen](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+    - **Leistung**: Es wird empfohlen, mit 400 DWUs zu beginnen. Bewegen Sie den Schieberegler nach links oder rechts, um die Leistung Ihres Data Warehouse anzupassen oder nach dem Erstellen hoch- oder herunterzuskalieren. Weitere Informationen zu DWUs finden Sie in der Dokumentation zur [Skalierung](./sql-data-warehouse-manage-compute-overview.md) oder auf der Seite mit unseren [Preisen](https://azure.microsoft.com/de-DE/pricing/details/sql-data-warehouse/).
 
     - **Abonnement**: Wählen Sie das Abonnement aus, dem das SQL Data Warehouse in Rechnung gestellt wird.
 
-    - **Ressourcengruppe**: Ressourcengruppen sind Container, die zum Verwalten einer Azure-Ressourcensammlung entwickelt wurden. Weitere Informationen zu [Ressourcengruppen](../azure-portal/resource-group-portal.md).
+    - **Ressourcengruppe**: Ressourcengruppen sind Container, die zum Verwalten einer Azure-Ressourcensammlung entwickelt wurden. Weitere Informationen zu [Ressourcengruppen](../resource-group-overview.md).
 
     - **Quelle auswählen**: Klicken Sie auf **Quelle auswählen** > **Beispiel**. Da derzeit nur eine Beispieldatenbank verfügbar ist, füllt Azure bei Wählen von "Beispiel" automatisch die Option **Beispiel auswählen** mit "AdventureWorksDW" aus.
 
@@ -68,4 +68,4 @@ Um Daten in SQL Data Warehouse zu laden, lesen Sie [Laden von Daten in SQL Data 
 
 Wenn Sie versuchen, eine vorhandene Datenbank zu SQL Data Warehouse zu migrieren, lesen Sie die [Übersicht über die Migration](./sql-data-warehouse-overview-migrate.md), oder verwenden Sie das [Migrationshilfsprogramm ](./sql-data-warehouse-migrate-migration-utility.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0720_2016-->

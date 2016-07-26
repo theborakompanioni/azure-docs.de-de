@@ -65,7 +65,7 @@ Sie benötigen ein Microsoft Azure-Konto, um dieses Lernprogramm auszuführen. W
 
 5. Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder erstellen Sie eine neue.
 
-	Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwenden des Azure-Portals zum Verwalten Ihrer Azure-Ressourcen](../resource-group-portal.md).
+	Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../resource-group-overview.md).
 
 5. Wählen Sie einen **App Service-Plan/-Standort** aus, oder erstellen Sie einen neuen Plan und Standort.
 
@@ -128,4 +128,4 @@ Zusätzliche Dokumentation zur Arbeit mit App Service-Web-Apps finden Sie in den
 [7]: ./media/web-sites-php-web-site-gallery/search-web-app.png
 [browse]: ./media/web-sites-php-web-site-gallery/browse-web.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

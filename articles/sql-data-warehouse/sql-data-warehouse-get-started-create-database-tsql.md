@@ -67,7 +67,7 @@ Nach der SQL Data Warehouse-Bereitstellung können Sie [Beispieldaten laden][] o
 [Beispieldaten laden]: ./sql-data-warehouse-get-started-load-sample-databases.md
 [Erstellen eines logischen Azure SQL-Datenbankservers mit dem Azure-Portal]: ../sql-database/sql-database-get-started.md#create-an-azure-sql-database-logical-server
 [Erstellen einer neuen SQL-Datenbank und Ausführen gängiger Datenbankeinrichtungsaufgaben mithilfe von PowerShell-Cmdlets]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
-[Ressourcengruppen]: ../azure-portal/resource-group-portal.md
+[Ressourcengruppen]: ../resource-group-template-deploy-portal.md
 [Installieren von Visual Studio und SSDT]: ./sql-data-warehouse-install-visual-studio.md
 
 
@@ -80,4 +80,4 @@ Nach der SQL Data Warehouse-Bereitstellung können Sie [Beispieldaten laden][] o
 [Kostenlose Azure-Testversion]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN-Azure-Gutschriften]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

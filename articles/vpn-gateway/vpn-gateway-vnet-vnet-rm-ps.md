@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/02/2016"
+   ms.date="07/15/2016"
    ms.author="cherylmc"/>
 
 # Konfigurieren einer VNet-zu-VNet-Verbindung mit Azure Resource Manager und PowerShell
@@ -58,27 +58,7 @@ Aus den folgenden Gründen empfiehlt sich das Herstellen von Verbindungen zwisch
 
 ### FAQs zu VNet-zu-VNet
 
-- Die virtuellen Netzwerke können sich in der gleichen Azure-Region oder in verschiedenen Azure-Regionen (Standorte) befinden.
-
-- Ein Clouddienst oder Endpunkt mit Lastenausgleich darf auch dann NICHT mehrere virtuelle Netzwerke umfassen, wenn diese verbunden sind.
-
-- Für das Verbinden virtueller Azure-Netzwerke sind keine lokalen VPN-Gateways erforderlich. Diese werden nur benötigt, wenn standortübergreifende Konnektivität erforderlich ist.
-
-- VNet-zu-VNet unterstützt das Verbinden virtueller Netzwerke. Nicht unterstützt hingegen werden Verbindungen virtueller Computer oder Clouddienste, die sich NICHT in einem virtuellen Netzwerk befinden.
-
-- VNet-zu-VNet erfordert Azure-VPN Gateways mit routenbasierten VPN-Typen (früher als „dynamisches Routing“ bezeichnet).
-
-- Virtuelle Netzwerkverbindungen können gleichzeitig mit VPNs mit mehreren Standorten und maximal 10 (Standardgateways) bzw. 30 (Hochleistungsgateways) VPN-Tunneln für ein VPN Gateway des virtuellen Netzwerks verwendet werden, das Verbindungen mit anderen virtuellen Netzwerken oder lokalen Standorten herstellt.
-
-- Die Adressräume der virtuellen Netzwerke und der lokalen Netzwerkstandorte dürfen sich nicht überschneiden. Wenn sich Adressräume überlappen, tritt bei der Erstellung von VNet-zu-VNet-Verbindungen ein Fehler auf.
-
-- Redundante Tunnel zwischen einem Paar virtueller Netzwerke werden nicht unterstützt.
-
-- Alle VPN-Tunnel des virtuellen Netzwerks verwenden die verfügbare Bandbreite auf dem Azure-VPN-Gateway und die gleiche SLA für die Verfügbarkeit des VPN-Gateways in Azure gemeinsam.
-
-- VNet-zu-VNet-Datenverkehr wird über das Microsoft-Netzwerk übertragen, nicht über das Internet.
-
-- VNet-zu-VNet-Datenverkehr innerhalb derselben Region ist in beiden Richtungen kostenlos. Ausgehender regionsübergreifender VNet-zu-VNet-Datenverkehr wird zu den Raten für die ausgehende Datenübertragung zwischen VNets basierend auf den Quellregionen berechnet. Angaben zu den Preisen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/vpn-gateway/).
+[AZURE.INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
 
 
 ## Welche Schritte soll ich ausführen?
@@ -318,7 +298,7 @@ In den Beispielen unten wird verdeutlicht, wie Sie Ihre Verbindung überprüfen.
 
 ### So überprüfen Sie Ihre Verbindung mithilfe des Azure-Portals
 
-Sie können eine VPN-Verbindung im Azure-Portal überprüfen, indem Sie zu **Virtuelle Netzwerkgateways** navigieren, **auf den Gatewaynamen klicken** und dann **Einstellungen** und schließlich **Verbindungen** auswählen. Wenn Sie den Namen der Verbindung auswählen, können Sie weitere Informationen auf dem Blatt **Verbindung** anzeigen.
+Sie können eine VPN-Verbindung im Azure-Portal überprüfen, indem Sie zu **Virtuelle Netzwerkgateways** navigieren, auf den **Gatewaynamen** klicken und dann **Einstellungen** > **Verbindungen** wählen. Wenn Sie den Namen der Verbindung auswählen, können Sie weitere Informationen auf dem Blatt **Verbindung** anzeigen.
 
 
 ### So überprüfen Sie Ihre Verbindung mithilfe der PowerShell
@@ -529,6 +509,6 @@ Da sich die Gateways in diesem Beispiel in unterschiedlichen Abonnements befinde
 ## Nächste Schritte
 
 - Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
-- Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [How to configure BGP](vpn-gateway-bgp-resource-manager-ps.md) (Gewusst wie: Konfiguration von BGP). 
+- Informationen zu BGP finden Sie in der [Übersicht über BGP mit Azure VPN Gateways](vpn-gateway-bgp-overview.md) und unter [Konfigurieren von BGP auf Azure VPN Gateways mithilfe von Azure Resource Manager und PowerShell](vpn-gateway-bgp-resource-manager-ps.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

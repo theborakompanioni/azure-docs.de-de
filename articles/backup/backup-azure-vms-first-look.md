@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Schützen virtueller Computer in Azure mit Azure Backup | Microsoft Azure"
+	pageTitle="Einstieg: Schützen virtueller Computer in Azure mit Azure Backup | Microsoft Azure"
 	description="Schützen virtueller Azure-Computer mit dem Azure Backup-Dienst Dieses Tutorial erläutert das Erstellen von Tresoren, das Registrieren virtueller Computer, das Erstellen von Richtlinien und das Schützen virtueller Computer in Azure."
 	services="backup"
 	documentationCenter=""
 	authors="markgalioto"
-	manager="jwhit"
+	manager="cfreeman"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="04/22/2016"
+	ms.date="07/18/2016"
 	ms.author="markgal; jimpark"/>
 
 
@@ -23,7 +23,7 @@
 - [Sichern von ARM-VMs](backup-azure-vms-first-look-arm.md)
 - [Sichern von VMs im klassischen Modus](backup-azure-vms-first-look.md)
 
-In diesem Tutorial werden Sie durch die Schritte zum Sichern eines virtuellen Azure-Computers (VM) auf Azure geführt. Die folgenden Voraussetzungen müssen erfüllt sein, damit Sie dieses Tutorial erfolgreich durcharbeiten können:
+In diesem Tutorial werden die Schritte zum Sichern eines virtuellen Azure-Computers (VM) in einem Sicherungstresor in Azure beschrieben. In diesem Artikel wird das klassische Modell bzw. Service Manager-Bereitstellungsmodell zum Sichern von VMs erläutert. Wenn Sie Informationen zum Sichern einer VM in einem Recovery Services-Tresor benötigen, der einer Ressourcengruppe angehört, können Sie die andere Registerkarte verwenden: „Sichern von ARM-VMs“. Die folgenden Voraussetzungen müssen erfüllt sein, damit Sie dieses Tutorial erfolgreich durcharbeiten können:
 
 - Sie haben in Ihrem Azure-Abonnement eine VM erstellt.
 - Der virtuelle Computer ist mit öffentlichen Azure-IP-Adressen verbunden. Weitere Informationen finden Sie unter [Netzwerkverbindung](./backup-azure-vms-prepare.md#network-connectivity).
@@ -213,4 +213,4 @@ Nachdem Sie einen virtuellen Computer erfolgreich gesichert haben, sind unter Um
 ## Fragen?
 Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](http://aka.ms/azurebackup_feedback).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0720_2016-->

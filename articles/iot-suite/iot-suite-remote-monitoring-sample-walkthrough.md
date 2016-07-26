@@ -4,7 +4,7 @@
  services=""
  suite="iot-suite"
  documentationCenter=""
- authors="stevehob"
+ authors="dominicbetts"
  manager="timlt"
  editor=""/>
 
@@ -14,33 +14,38 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="06/23/2016"
- ms.author="stevehob"/>
+ ms.date="07/18/2016"
+ ms.author="dobett"/>
 
 # Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für Remoteüberwachung
 
 ## Einführung
 
-Die vorkonfigurierten Lösung für Remoteüberwachung der IoT Suite ist eine einfache End-to-End-Überwachungslösung für ein Geschäftsszenario, bei dem mehrere Computer an Remotestandorten betrieben werden. Die Lösung kombiniert wichtige Dienste der Azure IoT Suite, um eine generische Implementierung des Geschäftsszenarios bereitzustellen, und sie dient als Ausgangspunkt für Kunden, die diese Art von IoT-Lösung für ihre eigenen spezifischen Geschäftsanforderungen implementieren möchten.
+Die [vorkonfigurierte Lösung][lnk-preconfigured-solutions] für die IoT Suite-Remoteüberwachung ist eine Implementierung einer End-to-End-Überwachungslösung für mehrere Computer, die an Remotestandorten ausgeführt werden. In der Lösung sind wichtige Azure-Dienste kombiniert, um eine generische Implementierung des Geschäftsszenarios zu erzielen. Sie können sie als Ausgangspunkt für Ihre Implementierung verwenden. Sie können die Lösung [anpassen][lnk-customize], um Ihre eigenen speziellen Geschäftsanforderungen zu erfüllen.
+
+In diesem Artikel werden einige wichtige Elemente der Lösung für die Remoteüberwachung beschrieben, um die Funktionsweise zu verdeutlichen. Dieses Wissen ist hilfreich, um Probleme mit der Lösung zu beheben, die Anpassung der Lösung zur Erfüllung Ihrer Anforderungen zu planen und Ihre eigene IoT-Lösung mit Nutzung von Azure-Diensten zu planen.
 
 ## Logische Architektur
 
 Das folgende Diagramm beschreibt die logischen Komponenten der vorkonfigurierten Lösung:
 
-![](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
+![Logische Architektur](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
 
-### Simulierte Geräte
+## Simulierte Geräte
 
-In der vorkonfigurierten Lösung ist das simulierte Gerät ein Kühlgerät (z. B. die Klimaanlage eines Gebäudes oder die Lüftungsanlage einer Anlage). Jedes simulierte Gerät sendet die folgenden Telemetriemeldungen an IoT Hub:
+In der vorkonfigurierten Lösung ist das simulierte Gerät ein Kühlgerät (z. B. die Klimaanlage eines Gebäudes oder die Lüftungsanlage einer Anlage). Wenn Sie die vorkonfigurierte Lösung bereitstellen, werden automatisch auch vier simulierte Geräte bereitgestellt, die in einem [Azure WebJob][lnk-webjobs] ausgeführt werden. Die simulierten Geräte erleichtern Ihnen das Untersuchen des Verhaltens einer Lösung, ohne dass Sie physische Geräte bereitstellen müssen. Informationen zum Bereitstellen eines echten physischen Geräts finden Sie im Tutorial [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung][lnk-connectyourdevice].
 
+Jedes simulierte Gerät kann die folgenden Nachrichtentypen an den IoT Hub senden:
 
 | Message | Beschreibung |
 |----------|-------------|
 | Starten | Wenn das Gerät gestartet wird, sendet es eine **device-info**-Meldung mit Informationen über sich selbst. Dazu gehören die Geräte-ID, Gerätemetadaten, eine Liste von Befehlen, die das Gerät unterstützt, und die aktuelle Konfiguration des Geräts. |
+| Anwesenheit | Ein Gerät sendet regelmäßig eine **Anwesenheitsnachricht**, um zu melden, ob das Gerät das Vorhandensein („Anwesenheit“) eines Sensors erkennen kann. |
+| Telemetrie | Ein Gerät sendet in regelmäßigen Abständen eine **Telemetrienachricht**, mit der simulierte Werte für die Temperatur und Luftfeuchtigkeit gemeldet werden, die über die simulierten Sensoren des simulierten Geräts erfasst werden. |
 
 
-Die simulierten Geräte senden die folgenden Geräteeigenschaften als Metadaten:
+Die simulierten Geräte senden die folgenden Geräteeigenschaften als **Nachricht mit Geräteinformationen**:
 
 | Eigenschaft | Zweck |
 |------------------------|--------- |
@@ -61,7 +66,7 @@ Die simulierten Geräte senden die folgenden Geräteeigenschaften als Metadaten:
 Der Simulator füllt diese Eigenschaften in simulierten Geräten mit Beispielwerten. Jedes Mal, wenn der Simulator ein simuliertes Gerät initialisiert, sendet das Gerät vordefinierte Metadaten an IoT Hub. Beachten Sie, dass damit alle Aktualisierungen von Metadaten, die im Geräteportal vorgenommen werden, überschrieben werden.
 
 
-Die simulierten Geräte können die folgenden Befehle verarbeiten, die von einem IoT Hub gesendet werden:
+Außerdem können die simulierten Geräte auch die folgenden Befehle verarbeiten, die vom Lösungsdashboard über den IoT Hub gesendet werden:
 
 | Befehl | Beschreibung |
 |------------------------|-----------------------------------------------------|
@@ -72,20 +77,25 @@ Die simulierten Geräte können die folgenden Befehle verarbeiten, die von einem
 | DiagnosticTelemetry | Löst aus, dass der Gerätesimulator einen zusätzlichen Telemetriewert (externalTemp) sendet |
 | ChangeDeviceState | Ändert eine erweiterte Zustandseigenschaft für das Gerät und sendet die Meldung mit Geräteinformationen vom Gerät |
 
+Die Bestätigung des Gerätebefehls für das Back-End der Lösung wird über den IoT Hub bereitgestellt.
 
-Die Bestätigung der Gerätebefehle erfolgt über den IoT Hub.
+## IoT Hub
 
+Der [IoT Hub][lnk-iothub] erfasst Daten, die von den Geräten in die Cloud gesendet werden, und stellt sie für die Azure Stream Analytics-Aufträge (ASA) zur Verfügung. Der IoT Hub sendet im Namen des Geräteportals auch Befehle an Ihre Geräte. Für jeden Datenstrom mit ASA-Aufträgen wird eine separate IoT Hub-Consumergruppe verwendet, um den Nachrichtendatenstrom von Ihren Geräten zu lesen.
 
-### Azure Stream Analytics-Aufträge
+## Azure Stream Analytics
 
+In der Lösung für die Remoteüberwachung übermittelt [Azure Stream Analytics][lnk-asa] (ASA) Nachrichten, die über den IoT Hub von Ihren Geräten eingehen, zur Verarbeitung oder Speicherung an andere Back-End-Komponenten. Unterschiedliche ASA-Aufträge führen bestimmte Funktionen basierend auf dem Inhalt der Nachrichten durch.
 
-**Auftrag 1: Geräteinformationen** filtert Meldungen mit Geräteinformationen aus dem eingehenden Meldungsdatenstrom und sendet diese an einen Event Hub-Endpunkt. Ein Gerät sendet Meldungen mit Geräteinformationen beim Start und als Antwort auf den Befehl **SendDeviceInfo**. Dieser Auftrag verwendet die folgende Abfragedefinition:
+**Auftrag 1: Geräteinformationen** filtert Meldungen mit Geräteinformationen aus dem eingehenden Meldungsdatenstrom und sendet diese an einen Event Hub-Endpunkt. Ein Gerät sendet Meldungen mit Geräteinformationen beim Start und als Antwort auf den Befehl **SendDeviceInfo**. Bei diesem Auftrag wird die folgende Abfragedefinition verwendet, um Nachrichten vom Typ **Geräteinformationen** zu identifizieren:
 
 ```
 SELECT * FROM DeviceDataStream Partition By PartitionId WHERE  ObjectType = 'DeviceInfo'
 ```
 
-**Auftrag 2: Regeln** wertet eingehende Telemetriewerte zu Temperatur und Feuchtigkeit anhand von Schwellenwerten pro Gerät aus. Schwellenwerte werden im Regel-Editor festgelegt, der zur Lösung gehört. Jedes Gerät-Wert-Paar wird nach dem Zeitstempel in einem Blob gespeichert, der in Stream Analytics als **Verweisdaten** gelesen wird. Der Auftrag vergleicht alle nicht leeren Werte mit dem für das Gerät festgelegten Schwellenwert. Wenn er die Bedingung „>“ überschreitet, gibt der Auftrag ein **Alarm**-Ereignis aus. Damit wird angezeigt, dass der Schwellenwert überschritten wurde. Zudem werden das Gerät, der Wert und Zeitstempelwerte bereitgestellt. Dieser Auftrag verwendet die folgende Abfragedefinition:
+Dieser Auftrag sendet seine Ausgabe zur weiteren Verarbeitung an einen Event Hub.
+
+**Auftrag 2: Regeln** wertet eingehende Telemetriewerte zu Temperatur und Feuchtigkeit anhand von Schwellenwerten pro Gerät aus. Schwellenwerte werden im Regel-Editor festgelegt, der im Lösungsdashboard verfügbar ist. Jedes Gerät-Wert-Paar wird nach dem Zeitstempel in einem Blob gespeichert, das von Stream Analytics als **Verweisdaten** eingelesen wird. Der Auftrag vergleicht alle nicht leeren Werte mit dem für das Gerät festgelegten Schwellenwert. Wenn er die Bedingung „>“ überschreitet, gibt der Auftrag ein **Alarm**-Ereignis aus. Damit wird angezeigt, dass der Schwellenwert überschritten wurde. Zudem werden das Gerät, der Wert und Zeitstempelwerte bereitgestellt. Für diesen Auftrag wird die folgende Abfragedefinition verwendet, um Telemetrienachrichten zu identifizieren, die einen Alarm auslösen:
 
 ```
 WITH AlarmsData AS 
@@ -126,7 +136,9 @@ INTO DeviceRulesHub
 FROM AlarmsData
 ```
 
-**Auftrag 3: Telemetrie** verarbeitet den eingehenden Datenstrom mit Gerätetelemetriedaten auf zwei Arten. Bei der ersten Methode werden alle Telemetriemeldungen von den Geräten an den permanenten Blobspeicher gesendet. Bei der zweiten Methode werden durchschnittliche, minimale und maximale Luftfeuchtigkeitswerte für ein gleitendes Fenster von fünf Minuten berechnet. Diese Daten werden auch an den Blobspeicher gesendet. Dieser Auftrag verwendet die folgende Abfragedefinition:
+Der Auftrag sendet seine Ausgabe zur weiteren Verarbeitung an einen Event Hub und speichert die Details der einzelnen Warnungen im Blobspeicher, wo über das Lösungsdashboard die Warnungsinformationen gelesen werden können.
+
+**Auftrag 3: Telemetrie** verarbeitet den eingehenden Datenstrom mit Gerätetelemetriedaten auf zwei Arten. Bei der ersten Methode werden alle Telemetrienachrichten von den Geräten zur langfristigen Speicherung an den permanenten Blobspeicher gesendet. Bei der zweiten Methode werden durchschnittliche, minimale und maximale Luftfeuchtigkeitswerte für ein gleitendes Fenster von fünf Minuten berechnet und die Daten an den Blobspeicher gesendet. Über das Lösungsdashboard werden die Telemetriedaten aus dem Blobspeicher gelesen, um die Diagramme aufzufüllen. Dieser Auftrag verwendet die folgende Abfragedefinition:
 
 ```
 WITH 
@@ -164,73 +176,54 @@ GROUP BY
     SlidingWindow (mi, 5)
 ```
 
-### Ereignisprozessor
+## Event Hubs
 
-Der **Ereignisprozessor** verarbeitet Meldungen mit Geräteinformationen und Antworten auf Befehle. Er verwendet Folgendes:
+Die Daten der ASA-Aufträge vom Typ **Geräteinformationen** und **Regeln** werden an Event Hubs ausgegeben, um die zuverlässige Weiterleitung zum **Ereignisprozessor** sicherzustellen, der im WebJob ausgeführt wird.
+
+## Azure-Speicher
+
+Die Lösung nutzt Azure-Blobspeicher, um alle Rohdaten und zusammengefassten Telemetriedaten von den Geräten dauerhaft in der Lösung zu speichern. Über das Dashboard werden die Telemetriedaten aus dem Blobspeicher gelesen, um die Diagramme aufzufüllen. Zum Anzeigen von Warnungen liest das Dashboard die Daten aus dem Blobspeicher aus, in dem aufgezeichnet wird, wenn die Telemetriewerte die konfigurierten Schwellenwerte überschreiten. In der Lösung wird Blobspeicher auch eingesetzt, um die Schwellenwerte aufzuzeichnen, die von einem Benutzer im Dashboard festgelegt werden.
+
+## WebJobs
+
+Zusätzlich zum Hosten der Gerätesimulatoren hosten die WebJobs in der Lösung auch den **Ereignisprozessor** in einem Azure WebJob, mit dem die Geräteinformationsnachrichten und Befehlsantworten verarbeitet werden. Er verwendet Folgendes:
 
 - Meldungen mit Geräteinformationen, die die Registrierung des Geräts (gespeichert in der DocumentDB-Datenbank) mit den aktuellen Geräteinformationen aktualisieren.
 - Meldungen mit Antworten auf Befehle, um den Befehlsverlauf des Geräts zu aktualisieren (gespeichert in der DocumentDB-Datenbank).
 
-## Exemplarische Vorgehensweise
+## DocumentDB
 
-In diesem Abschnitt werden die Komponenten der Lösung erläutert, der beabsichtigte Anwendungsfall beschrieben und Beispiele bereitgestellt.
+Die Lösung verwendet eine DocumentDB-Datenbank zum Speichern von Informationen zu den Geräten, die mit der Lösung verbunden sind, z.B. Gerätemetadaten und der Verlauf der Befehle, die vom Dashboard an die Geräte gesendet werden.
 
-### Dashboard der Remoteüberwachung
-Diese Seite in der Webanwendung verwendet PowerBI-JavaScript-Steuerelemente (siehe [PowerBI-visuals repo](https://www.github.com/Microsoft/PowerBI-visuals) (in englischer Sprache)), um die Ausgabedaten der Stream Analytics-Aufträge im Blobspeicher zu visualisieren.
+## Web-Apps
+
+### Dashboard für die Remoteüberwachung
+Diese Seite in der Webanwendung verwendet PowerBI-JavaScript-Steuerelemente (siehe [PowerBI-visuals repo](https://www.github.com/Microsoft/PowerBI-visuals) (Repository mit PowerBI-Visualisierungen)), um die Telemetriedaten der Geräte zu visualisieren. Die Lösung nutzt den ASA-Telemetrieauftrag, um die Telemetriedaten in den Blobspeicher zu schreiben.
 
 
 ### Geräteverwaltungsportal
 
 Diese Web-App ermöglicht Folgendes:
 
-- Bereitstellen eines neuen Geräts, wobei die eindeutige Geräte-ID festgelegt und der Authentifizierungsschlüssel generiert wird.
-- Verwalten von Geräteeigenschaften, dies umfasst das Anzeigen vorhandener Eigenschaften und das Aktualisieren mit neuen Eigenschaften.
+- Bereitstellen eines neuen Geräts. Legt die eindeutige Geräte-ID fest und generiert den Authentifizierungsschlüssel. Schreibt Informationen zum Gerät sowohl in die IoT Hub-Identitätsregistrierung als auch in die DocumentDB-Datenbank der Lösung.
+- Verwalten von Geräteeigenschaften. Dies umfasst das Anzeigen von vorhandenen Eigenschaften und das Aktualisieren mit neuen Eigenschaften.
 - Senden von Befehlen an ein Gerät.
 - Anzeigen des Befehlsverlaufs für ein Gerät.
-
-### Beobachten des Verhaltens der Cloudlösung
-Sie können die bereitgestellten Ressourcen anzeigen, indem Sie zum [Azure-Portal](https://portal.azure.com) wechseln und zur Ressourcengruppe mit dem von Ihnen angegebenen Lösungsnamen navigieren.
-
-![](media/iot-suite-remote-monitoring-sample-walkthrough/azureportal_01.png)
-
-Beim ersten Ausführen des Beispiels sind vier vorkonfigurierte, simulierte Geräte vorhanden:
-
-![](media/iot-suite-remote-monitoring-sample-walkthrough/solutionportal_01.png)
-
-Sie können mit dem Geräteverwaltungsportal ein neues simuliertes Gerät hinzufügen:
-
-![](media/iot-suite-remote-monitoring-sample-walkthrough/solutionportal_02.png)
-
-Anfangs ist der Status des neuen Geräts im Geräteverwaltungsportal **Ausstehend**:
-
-![](media/iot-suite-remote-monitoring-sample-walkthrough/solutionportal_03.png)
-
-Wenn die App das Bereitstellen des simulierten Geräts beendet hat, ändert sich der Status des Geräts im Geräteverwaltungsportal in **Wird ausgeführt**, wie im folgenden Screenshot gezeigt. Der Stream Analytics-Auftrag **DeviceInfo** sendet Gerätestatusinformationen vom Gerät an das Geräteverwaltungsportal.
-
-![](media/iot-suite-remote-monitoring-sample-walkthrough/solutionportal_04.png)
-
-Mithilfe des Lösungsportals können Sie Befehle wie **ChangeSetPointTemp** an das Gerät senden:
-
-![](media/iot-suite-remote-monitoring-sample-walkthrough/solutionportal_05.png)
-
-Wenn das Gerät meldet, dass es den Befehl erfolgreich ausgeführt hat, wechselt der Status zu **Erfolg**:
-
-![](media/iot-suite-remote-monitoring-sample-walkthrough/solutionportal_06.png)
-
-Mit dem Lösungsportal können Sie nach Geräten mit bestimmten Merkmalen wie z. B. einer Modellnummer suchen:
-
-![](media/iot-suite-remote-monitoring-sample-walkthrough/solutionportal_07.png)
-
-Sie können ein Gerät deaktivieren, und nachdem es deaktiviert wurde, können Sie es entfernen:
-
-![](media/iot-suite-remote-monitoring-sample-walkthrough/solutionportal_08.png)
-
+- Aktivieren und Deaktivieren von Geräten.
 
 ## Nächste Schritte
 
-In den folgenden TechNet-Blogbeiträgen finden Sie weitere Informationen zur Remoteüberwachung vorkonfigurierter Lösungen:
+In den folgenden TechNet-Blogbeiträgen finden Sie weitere Informationen zur vorkonfigurierten Lösung für die Remoteüberwachung:
 
-- [IoT Suite - Under The Hood - Remote Monitoring](http://social.technet.microsoft.com/wiki/contents/articles/32941.iot-suite-under-the-hood-remote-monitoring.aspx) (IoT Suite – Weitere Informationen – Remoteüberwachung)
-- [IoT Suite - Remote Monitoring - Adding Live and Simulated Devices](http://social.technet.microsoft.com/wiki/contents/articles/32975.iot-suite-remote-monitoring-adding-live-and-simulated-devices.aspx) (IoT Suite – Remoteüberwachung – Hinzufügen von simulierten und Live-Geräten)
+- [IoT Suite - Under The Hood - Remote Monitoring (IoT Suite – Weitere Informationen – Remoteüberwachung)](http://social.technet.microsoft.com/wiki/contents/articles/32941.iot-suite-under-the-hood-remote-monitoring.aspx)
+- [IoT Suite - Remote Monitoring - Adding Live and Simulated Devices (IoT Suite – Remoteüberwachung – Hinzufügen von simulierten und Live-Geräten)](http://social.technet.microsoft.com/wiki/contents/articles/32975.iot-suite-remote-monitoring-adding-live-and-simulated-devices.aspx)
 
-<!---HONumber=AcomDC_0629_2016-->
+
+[lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
+[lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
+[lnk-connectyourdevice]: iot-suite-connecting-devices.md
+[lnk-iothub]: https://azure.microsoft.com/documentation/services/iot-hub/
+[lnk-asa]: https://azure.microsoft.com/documentation/services/stream-analytics/
+[lnk-webjobs]: https://azure.microsoft.com/documentation/articles/websites-webjobs-resources/
+
+<!---HONumber=AcomDC_0720_2016-->

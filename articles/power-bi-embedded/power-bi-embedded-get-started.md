@@ -54,7 +54,7 @@ Das Blatt für die **Erstellung** enthält die erforderlichen Informationen zum 
 <a name="view-access-keys"/>
 ## Anzeigen von Power BI-API-Zugriffsschlüsseln
 
-Zu den wichtigsten Informationen zum Aufrufen der Power BI-REST-APIs gehören die **Zugriffsschlüssel**. Sie dienen zum Generieren der **App-Token**, die zum Authentifizieren Ihrer API-Anforderungen verwendet werden. Klicken Sie zum Anzeigen der **Zugriffsschlüssel** auf dem Blatt **Einstellungen** auf **Zugriffsschlüssel**. Weitere Informationen zu **App-Token** finden Sie unter [Funktionsweise des App-Tokenflusses](power-bi-embedded-app-token-flow.md).
+Zu den wichtigsten Informationen zum Aufrufen der Power BI-REST-APIs gehören die **Zugriffsschlüssel**. Sie dienen zum Generieren der **App-Token**, die zum Authentifizieren Ihrer API-Anforderungen verwendet werden. Klicken Sie zum Anzeigen der **Zugriffsschlüssel** auf dem Blatt **Einstellungen** auf **Zugriffsschlüssel**. Weitere Informationen zu **App-Token** finden Sie unter [Authentifizieren und Autorisieren mit Power BI Embedded](power-bi-embedded-app-token-flow.md).
 
    ![](media\power-bi-embedded-get-started\access-keys.png)
 
@@ -98,9 +98,7 @@ In den obigen Schritten haben Sie eine Arbeitsbereichssammlung und Ihren ersten 
 
 ## Siehe auch
 - [Erste Schritte mit dem Beispiel](power-bi-embedded-get-started-sample.md)
-- [Was ist Power BI Embedded?](power-bi-embedded-what-is-power-bi-embedded.md)
-- [Erste Schritte mit Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started)
+- [Authentifizieren und Autorisieren mit Power BI Embedded](power-bi-embedded-app-token-flow.md)
 - [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
-- [Power BI Embedded – Preise](http://go.microsoft.com/fwlink/?LinkID=760527)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->
