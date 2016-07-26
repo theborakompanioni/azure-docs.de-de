@@ -58,4 +58,4 @@ Wenn nach den beiden Neustarts weiterhin standortübergreifende Konnektivitätsp
 	
 Weitere Informationen zu diesem Cmdlet finden Sie in der [PowerShell-Referenz](https://msdn.microsoft.com/library/azure/mt270366.aspx).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

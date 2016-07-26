@@ -13,7 +13,7 @@
 	ms.workload="search"
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="na"
-	ms.date="03/08/2016"
+	ms.date="07/14/2016"
 	ms.author="evboyle"/>
 
 # Erste Schritte mit Azure Search in Java
@@ -54,7 +54,7 @@ Die folgende Liste beschreibt die Dateien, die für dieses Beispiel relevant sin
 - Pom.XML: Eine Maven-Abhängigkeit.
 
 <a id="sub-2"></a>
-## Ermitteln des Dienstnamens und des API-Schlüssels des Azure Search-Diensts
+## Ermitteln des Dienstnamens und des API-Schlüssels des Azure Search-Diensts
 
 Bei allen REST-API-Aufrufen von Azure Search ist die Angabe der Dienst-URL und eines API-Schlüssels erforderlich.
 
@@ -69,7 +69,7 @@ Bei allen REST-API-Aufrufen von Azure Search ist die Angabe der Dienst-URL und e
 
 ## Herunterladen der Beispieldateien
 
-1. Wechseln Sie zu [AzureSearchJavaDemo](http://go.microsoft.com/fwlink/p/?LinkId=530197) auf Github.
+1. Wechseln Sie zu [AzureSearchJavaDemo](https://github.com/AzureSearch/AzureSearchJavaIndexerDemo) auf Github.
 
 2. Klicken Sie auf **Download ZIP**, um die ZIP-Datei auf dem Datenträger zu speichern und dann die darin enthaltenen Dateien zu extrahieren. Es empfiehlt sich, die Dateien in den Java-Arbeitsbereich zu extrahieren, damit Sie das Projekt später leichter finden.
 
@@ -203,4 +203,4 @@ Neu bei Azure Search? Es wird empfohlen, auch andere Lernprogramme zu bearbeiten
 [11]: ./media/search-get-started-java/rogerwilliamsschool1.PNG
 [12]: ./media/search-get-started-java/AzSearch-Java-SelectProject.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0720_2016-->

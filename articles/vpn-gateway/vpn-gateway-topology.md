@@ -13,18 +13,16 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/13/2016"
+   ms.date="07/19/2016"
    ms.author="cherylmc" />
 
-# Azure VPN Gateway-Verbindungstopologien
+# Azure VPN Gateway-Verbindungen
 
 In diesem Artikel werden die grundlegenden VPN Gateway-Verbindungstopologien beschrieben. Die Grafiken und Beschreibungen können Ihnen als Hilfe beim Auswählen der Konfigurationstopologie dienen, die Ihre Anforderungen erfüllt. In diesem Artikel geht es zwar um die wichtigsten grundlegenden Topologien, aber Sie können auch komplexere Topologien erstellen, indem Sie die Diagramme als Anhaltspunkte verwenden.
 
 Jede Topologie enthält eine Tabelle mit dem Bereitstellungsmodell, für das die Topologie verfügbar ist, und mit den Bereitstellungstools, die Sie zum Konfigurieren der einzelnen Topologien verwenden können. Falls ein Artikel verfügbar ist, ist jeweils ein direkter Link angegeben. Die Tabellen werden häufig aktualisiert, wenn neue Artikel und Bereitstellungstools verfügbar sind und von Ihnen genutzt werden können.
 
-Weitere Informationen zu VPN Gateways finden Sie unter [Informationen zu VPN Gateways](vpn-gateway-about-vpngateways.md).
-
-
+Die Anleitung, die Sie zum Erstellen des VPN Gateways verwenden, richtet sich nach dem Bereitstellungsmodell, das Sie bei der Erstellung Ihres virtuellen Netzwerks genutzt haben. Wenn Sie Ihr VNET beispielsweise mit dem klassischen Bereitstellungsmodell erstellt haben, verwenden Sie die Richtlinien und Anleitungen für das klassische Bereitstellungsmodell, um das VPN Gateway zu erstellen und zu konfigurieren. Es ist nicht möglich, ein Resource Manager VPN Gateway für ein virtuelles Netzwerk zu erstellen, das auf dem klassischen Bereitstellungsmodell basiert. Weitere Informationen zu Bereitstellungsmodellen finden Sie unter [Grundlagen des Resource Manager- und klassischen Bereitstellungsmodells](../resource-manager-deployment-model.md).
 
 ## Site-to-Site und Multi-Site
 
@@ -104,4 +102,4 @@ Es ist ratsam, dass Sie sich mit den Informationen in den Artikeln [Informatione
 
  
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

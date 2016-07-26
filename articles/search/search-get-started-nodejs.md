@@ -13,7 +13,7 @@
 	ms.workload="search"
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="na"
-	ms.date="03/08/2016"
+	ms.date="07/14/2016"
 	ms.author="evboyle"/>
 
 # Erste Schritte mit Azure Search in NodeJS
@@ -37,7 +37,7 @@ In dieser Anwendung erstellt das Programm **DataIndexer** den Index und lädt ih
 
 
 <a id="sub-2"></a>
-## Ermitteln des Dienstnamens und des API-Schlüssels des Azure Search-Diensts
+## Ermitteln des Dienstnamens und des API-Schlüssels des Azure Search-Diensts
 
 Nachdem Sie den Dienst erstellt haben, kehren Sie zum Portal zurück, um die URL oder den `api-key` zu ermitteln. Für Verbindungen mit Ihrem Search-Dienst benötigen Sie sowohl die URL als auch einen `api-key`, um den Aufruf zu authentifizieren.
 
@@ -54,12 +54,11 @@ Nachdem Sie den Dienst erstellt haben, kehren Sie zum Portal zurück, um die URL
 
 Verwenden Sie eine der folgenden Vorgehensweisen zum Herunterladen des Beispiels.
 
-1. Wechseln Sie zu [AzureSearchNodeJSIndexerDemo](http://go.microsoft.com/fwlink/p/?LinkId=530198).
+1. Wechseln Sie zu [AzureSearchNodeJSIndexerDemo](https://github.com/AzureSearch/AzureSearchNodeJSIndexerDemo).
 2. Klicken Sie auf **Download ZIP**, um die ZIP-Datei auf dem Datenträger zu speichern, und extrahieren Sie dann die darin enthaltenen Dateien.
 
 Alle nachfolgenden Dateiänderungen und Ausführungsanweisungen werden an den Dateien in diesem Ordner vorgenommen.
 
-Wenn die path-Anweisung GIT enthält, können Sie stattdessen ein PowerShell-Fenster öffnen und `git clone https://github.com/EvanBoyle/AzureSearchNodeJSIndexerDemo.git` eingeben.
 
 ## Aktualisieren der Datei "config.js" mit der Search-Dienst-URL und dem API-Schlüssel
 
@@ -121,4 +120,4 @@ Neu bei Azure Search? Es wird empfohlen, auch andere Lernprogramme zu bearbeiten
 [5]: ./media/search-get-started-nodejs/AzSearch-NodeJS-configjs.png
 [9]: ./media/search-get-started-nodejs/rogerwilliamsschool.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0720_2016-->
