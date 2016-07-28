@@ -218,8 +218,7 @@ In den folgenden Abschnitten wird erläutert, welche Eigenschaften aus den AMQP-
 |----------------------	|---------------------------------------------------------------------------------------------------------------------------------	|--------------------------------------------	|
 | message-id | Anwendungsdefinierte Freiform-ID für diese Nachricht. Wird für die Duplikaterkennung verwendet. | [MessageId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx) |
 | user-id | Anwendungsdefinierte Benutzer-ID, von Service Bus nicht interpretiert. | Nicht über die Service Bus-API zugänglich. |
-| to | Anwendungsdefinierte Ziel-ID, von Service Bus nicht interpretiert. | [To
-](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.to.aspx) |
+| to | Anwendungsdefinierte Ziel-ID, von Service Bus nicht interpretiert. | [To](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.to.aspx) |
 | subject | Anwendungsdefinierte Nachrichtenzweck-ID, von Service Bus nicht interpretiert. | [Bezeichnung](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx) |
 | reply-to | Anwendungsdefinierter Antwortpfadindikator, von Service Bus nicht interpretiert. | [ReplyTo](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.replyto.aspx) |
 | correlation-id | Anwendungsdefinierte Korrelations-ID, von Service Bus nicht interpretiert. | [CorrelationId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.correlationid.aspx) |
