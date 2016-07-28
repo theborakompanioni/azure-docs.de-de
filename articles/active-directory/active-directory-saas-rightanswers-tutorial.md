@@ -74,7 +74,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rightanswers-tutorial/IC802928.png "Einmaliges Anmelden konfigurieren")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei Ihrer RightAnswers-Anwendung verwendete URL ein (z.B. **https://fortify.rightanswers.com/portal/ss/*) ein, und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei Ihrer RightAnswers-Anwendung verwendete URL ein (z.B. *https://fortify.rightanswers.com/portal/ss/*) ein, und klicken Sie dann auf **Weiter**.
 
     ![Konfigurieren von App-Einstellungen](./media/active-directory-saas-rightanswers-tutorial/IC802929.png "Konfigurieren von App-Einstellungen")
 
