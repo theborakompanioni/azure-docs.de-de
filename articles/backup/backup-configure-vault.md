@@ -225,4 +225,4 @@ Zusätzliche Informationen zum Sichern von virtuellen Computern oder anderen Wor
 - Nachdem Sie nun Ihre Dateien und Ordner gesichert haben, können Sie [Ihre Tresore und Server verwalten](backup-azure-manage-windows-server.md).
 - Informationen zum Wiederherstellen eines Backups finden Sie im Artikel zum [Wiederherstellen von Dateien auf einem Windows-Computer](backup-azure-restore-windows-server.md).
 
-<!----HONumber=AcomDC_0713_2016-->
+<!-----HONumber=AcomDC_0713_2016-->
