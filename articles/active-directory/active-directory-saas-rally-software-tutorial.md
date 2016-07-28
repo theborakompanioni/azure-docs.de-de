@@ -74,7 +74,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Microsoft Azure AD – einmaliges Anmelden](./media/active-directory-saas-rally-software-tutorial/IC769528.png "Microsoft Azure AD – einmaliges Anmelden")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Rally Software-Mandanten-URL** die URL im Format „*https://\<Mandantenname>.rally.com*“ ein, und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Rally Software-Mandanten-URL** die URL im Format „ *https://\<Mandantenname>.rally.com* “ ein, und klicken Sie dann auf **Weiter**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-rally-software-tutorial/IC769529.png "App-URL konfigurieren")
 
