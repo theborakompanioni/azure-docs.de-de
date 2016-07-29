@@ -350,4 +350,4 @@ Ggf. müssen mehrere virtuelle Arrays bereitgestellt werden, um einen wachsenden
 ## Weitere Informationen
 Informieren Sie sich über das [Verwalten des StorSimple Virtual Array mithilfe des StorSimple Manager-Diensts](storsimple-ova-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!----HONumber=AcomDC_0713_2016-->
