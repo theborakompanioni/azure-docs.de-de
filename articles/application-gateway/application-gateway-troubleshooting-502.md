@@ -112,7 +112,7 @@ Benutzerdefinierte Integritätsüberprüfungen sorgen für zusätzliche Flexibil
 
 
 ###Lösung
-Vergewissern Sie sich anhand der Tabelle weiter unten, dass die benutzerdefinierte Integritätsüberprüfung ordnungsgemäß konfiguriert ist. Stellen Sie zusätzlich zu den oben aufgeführten Problembehandlungsschritten auch Folgendes sicher:
+Vergewissern Sie sich anhand der Tabelle weiter oben, dass die benutzerdefinierte Integritätsüberprüfung ordnungsgemäß konfiguriert ist. Stellen Sie zusätzlich zu den oben aufgeführten Problembehandlungsschritten auch Folgendes sicher:
 
 - Stellen Sie sicher, dass das Protokoll nur auf HTTP festgelegt ist. HTTPS wird derzeit nicht unterstützt.
 - Stellen Sie anhand der [Anleitung](application-gateway-create-probe-ps.md) sicher, dass die Überprüfung ordnungsgemäß angegeben ist. 
