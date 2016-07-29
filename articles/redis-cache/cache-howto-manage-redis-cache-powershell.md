@@ -817,4 +817,4 @@ Weitere Informationen zur Verwendung von Windows PowerShell mit Azure finden Sie
 - [Windows PowerShell-Blog](http://blogs.msdn.com/powershell): Informationen zu neuen Funktionen in Windows PowerShell.
 - ["Hey, Scripting Guy!"- Blog](http://blogs.technet.com/b/heyscriptingguy/): Praktische Tipps und Tricks aus der Windows PowerShell-Community.
 
-<!----HONumber=AcomDC_0713_2016-->
+<!-----HONumber=AcomDC_0713_2016-->

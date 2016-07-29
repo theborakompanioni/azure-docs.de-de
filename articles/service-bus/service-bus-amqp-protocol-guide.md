@@ -329,4 +329,4 @@ Weitere Informationen zu AMQP finden Sie unter den folgenden Links:
 [AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 [AMQP in Service Bus für Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
 
-<!---HONumber=AcomDC_0713_2016-->
+<!----HONumber=AcomDC_0713_2016-->
