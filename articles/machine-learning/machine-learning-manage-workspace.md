@@ -13,11 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/10/2016"
+	ms.date="07/06/2016"
 	ms.author="garye"/>
 
 
 # Verwalten eines Azure Machine Learning-Arbeitsbereichs
+
+>[AZURE.NOTE] Die Verfahren in diesem Artikel sind für klassische Azure Machine Learning-Webdienste relevant. Informationen zum Verwalten neuer Webdienste finden Sie unter [Verwalten eines neuen Machine Learning-Webdiensts](machine-learning-manage-new-webservice.md).
+
 Mit dem klassischen Azure-Portal können Sie Ihre Arbeitsbereiche für maschinelles Lernen wie folgt verwalten:
 
 - Kontrollieren der Nutzung des Arbeitsbereichs
@@ -33,7 +36,7 @@ Außerdem finden Sie auf der Dashboard-Registerkarte eine Übersicht über die N
 
 So verwalten Sie einen Arbeitsbereich:
 
-1.	Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com/) über Ihr Microsoft Azure-Konto an – verwenden Sie hierzu das Konto, das dem Azure-Abonnement zugeordnet ist.
+1.	Melden Sie sich mit Ihrem Microsoft Azure-Konto beim [klassischen Azure-Portal](https://manage.windowsazure.com/) an. Verwenden Sie hierzu das Konto, das dem Azure-Abonnement zugeordnet ist.
 2.	Klicken Sie im Microsoft Azure-Dienstbereich auf **MACHINE LEARNING**.
 3.	Klicken Sie auf den Arbeitsbereich, den Sie verwalten möchten.
 
@@ -94,4 +97,4 @@ Klicken Sie auf die Registerkarte **KONFIGURIEREN**, um die Beschreibung zu bear
 [consume]: machine-learning-consume-web-services.md
 [marketplace]: machine-learning-publish-web-service-to-azure-marketplace.md
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

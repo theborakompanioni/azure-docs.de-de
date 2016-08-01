@@ -864,7 +864,8 @@ Das folgende Beispiel zeigt, wie Sie primitive JSON-Werte zurückgeben können (
 	]
 
 
-###* Operator Der Sonderoperator (*) wird unterstützt, um das Dokument unverändert zu projizieren. Wenn dieser Operator verwendet wird, dürfen keine weiteren projizierten Felder existieren. Abfragen wie `SELECT * FROM Families f` sind z. B. gültig, während `SELECT VALUE * FROM Families f ` und `SELECT *, f.id FROM Families f ` nicht gültig sind.
+###* Operator
+Der Sonderoperator (*) wird unterstützt, um das Dokument unverändert zu projizieren. Wenn dieser Operator verwendet wird, dürfen keine weiteren projizierten Felder existieren. Abfragen wie `SELECT * FROM Families f` sind z. B. gültig, während `SELECT VALUE * FROM Families f ` und `SELECT *, f.id FROM Families f ` nicht gültig sind.
 
 **Abfrage**
 

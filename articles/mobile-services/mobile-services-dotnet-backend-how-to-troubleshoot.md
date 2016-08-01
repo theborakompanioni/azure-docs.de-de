@@ -4,7 +4,7 @@
 	services="mobile-services"
 	documentationCenter=""
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor="mollybos"/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="02/07/2016" 
+	ms.date="07/13/2016" 
 	ms.author="wesmc;ricksal"/>
 
 # Problembehandlung beim Mobile Services .NET-Back-End
@@ -36,7 +36,7 @@ Entwickeln mit Mobile Services ist normalerweise kurz und schmerzlos, doch selbs
 
 Beim Entwickeln von Apps mit Mobile Services nutzt man normalerweise das Mobile Services-Client-SDK für die verwendete Plattform (Windows Store, iOS, Android usw.). Manchmal ist es allerdings hilfreich, sich auf HTTP-Ebene zu begeben und den Ablauf der reinen Aufrufe im Netzwerk zu beobachten. Dieser Ansatz ist besonders nützlich, wenn das Debuggen von Konnektivitäts- und Serialisierungsproblemen ansteht. Mit dem Mobile Services .NET-Back-End können Sie diesen Ansatz in Kombination mit Lokal- und Remotedebuggen mit Visual Studio verwenden (mehr dazu im nächsten Abschnitt) und so eine vollständige Vorstellung des Pfades einer HTTP-Anforderung bekommen, ehe diese Ihren Dienstcode aufruft.
 
-Sie können einen belieben HTTP-Debugger verwenden und HTTP-Traffic senden und inspizieren. [Fiddler](http://www.telerik.com/fiddler) ist ein beliebtes Tool, das Entwickler häufig zu diesem Zweck einsetzen. Um das Leben von Entwicklern einfacher zu machen, bündelt Mobile Services einen webbasierten HTTP-Debugger (auch als „Testclient“ bezeichnet) direkt mit Ihrem mobilen Dienst, was ein externes Tool unnötig macht. Wenn Sie Ihren mobilen Dienst lokal hosten, ist er unter einem URI im Stil von [http://localhost:59233](http://localhost:59233) verfügbar. Beim Hosten in der Cloud hat der URI das Format von [http://todo-list.azure-mobile.net](http://todo-list.azure-mobile.net). Die folgenden Schritte funktionieren gleich, unabhängig davon, wo der Dienst gehostet wird:
+Sie können einen belieben HTTP-Debugger verwenden und HTTP-Traffic senden und inspizieren. [Fiddler](http://www.telerik.com/fiddler) ist ein beliebtes Tool, das Entwickler häufig zu diesem Zweck einsetzen. Um das Leben von Entwicklern einfacher zu machen, bündelt Mobile Services einen webbasierten HTTP-Debugger (auch als „Testclient“ bezeichnet) direkt mit Ihrem mobilen Dienst, was ein externes Tool unnötig macht. Wenn Sie Ihren mobilen Dienst lokal hosten, steht er unter einer URI im Format `http://localhost:59233` bereit. Beim Hosting in der Cloud hat die URI das Format `http://todo-list.azure-mobile.net`. Die folgenden Schritte funktionieren gleich, unabhängig davon, wo der Dienst gehostet wird:
 
 1. Beginnen Sie mit einem Mobile Services-Serverprojekt in **Visual Studio 2013 Update 2** oder neuer. Falls Sie kein Projekt zur Hand haben, können Sie ein neues erstellen, indem Sie **Datei**, **Neu**, **Projekt** auswählen und dann den **Cloud**-Knoten und anschließend die **Microsoft Azure Mobile Services**-Vorlage auswählen.
 2. Drücken Sie **F5**, wodurch das Projekt erstellt und ausgeführt wird. Wählen Sie auf der Startseite **Ausprobieren**.
@@ -74,7 +74,7 @@ Eine der Schlüsselfunktionen des .NET-Back-Ends ist die Möglichkeit, den Diens
 
     ![Konfigurieren des Ladens von Symbolen][SymbolLoading]
 
-3. Wählen Sie den Knoten **Symbole** links aus, und fügen Sie eine Referenz zum [SymbolSource](http://srv.symbolsource.org/pdb/Public)-Server mithilfe des URI [http://srv.symbolsource.org/pdb/Public] hinzu. Symbole für das Mobile Services .NET-Back-End werden dort mit jeder neuen Version verfügbar gemacht.
+3. Wählen Sie links den Knoten **Symbols** aus, und fügen Sie einen Verweis zum [SymbolSource]-Server mithilfe der URI `http://srv.symbolsource.org/pdb/Public` hinzu. Symbole für das Mobile Services .NET-Back-End werden dort mit jeder neuen Version verfügbar gemacht.
 
     ![Konfigurieren des Symbolservers][SymbolServer]
 
@@ -124,7 +124,7 @@ Wenn Sie Ihren mobilen Dienst auf Azure veröffentlichen, wird er von der Mobile
 
 Es ist manchmal möglich, dass es durch das Verweisen auf *unterschiedliche Hauptversionen* benötigter Assemblys zu Versionskonflikten kommt (unterschiedliche *Nebenversionen* sind zulässig). Das passiert häufig dann, wenn NuGet Sie zum Upgrade auf die neueste Version eines der Pakete auffordert, die vom Mobile Services-.NET-Back-End verwendet werden.
 
->[AZURE.NOTE] Mobile Services ist derzeit nur mit ASP.NET 5.1 kompatibel. ASP.NET 5.2 wird derzeit nicht unterstützt. Ein Upgrade Ihrer ASP.NET NuGet-Pakete auf 5.2.* kann nach der Bereitstellung zu einem Fehler führen.
+>[AZURE.NOTE] Mobile Services ist derzeit nur mit ASP.NET 5.1 kompatibel. ASP.NET 5.2 wird derzeit nicht unterstützt. Ein Upgrade Ihrer ASP.NET NuGet-Pakete auf 5.2.* kann nach der Bereitstellung zu einem Fehler führen.
 
 Wenn Sie ein solches Paket aktualisieren und dann den aktualisierten Dienst auf Azure veröffentlichen, sehen Sie eine Warnseite, die auf den Konflikt hinweist:
 
@@ -162,6 +162,6 @@ Migrationen können komplex sein und erfordern, dass der Zustand der Datenbank s
 
 
 <!-- Links -->
-[http://srv.symbolsource.org/pdb/Public]: http://symbolsource.org
+[SymbolSource]: http://www.symbolsource.org/Public
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0720_2016-->

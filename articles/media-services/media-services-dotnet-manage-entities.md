@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="05/03/2016"
+ 	ms.date="07/18/2016"
 	ms.author="juliako"/>
 
 
@@ -28,16 +28,16 @@
 
 In diesem Thema wird gezeigt, wie Sie die folgenden Media Services-Verwaltungsaufgaben ausführen:
 
-- Abrufen eines Verweises auf ein Medienobjekt 
-- Abrufen eines Verweises auf einen Auftrag 
-- Auflisten aller Medienobjekte 
-- Auflisten von Aufträgen und Medienobjekten 
-- Auflisten aller Zugriffsrichtlinien 
+- Abrufen eines Verweises auf ein Medienobjekt
+- Abrufen eines Verweises auf einen Auftrag
+- Auflisten aller Medienobjekte
+- Auflisten von Aufträgen und Medienobjekten
+- Auflisten aller Zugriffsrichtlinien
 - Auflisten aller Locators
 - Auflisten von großen Auflistungen von Entitäten
-- Löschen eines Medienobjekts 
-- Löschen eines Auftrags 
-- Löschen einer Zugriffsrichtlinie 
+- Löschen eines Medienobjekts
+- Löschen eines Auftrags
+- Löschen einer Zugriffsrichtlinie
 
 ##Voraussetzungen 
 
@@ -248,9 +248,9 @@ Beachten Sie, dass ein Locator-Pfad für ein Medienobjekt nur eine Basis-URL des
 
 ## Auflisten von großen Auflistungen von Entitäten
 
-Beim Abfragen von Entitäten gibt es ein Limit von 1.000 Entitäten, die gleichzeitig zurückgegeben werden können, da die öffentliche REST-Version 2 Abfrageergebnisse auf 1.000 Ergebnisse begrenzt. Sie müssen für das Auflisten großer Auflistungen von Entitäten „Skip“ und „Take“ verwenden.
+Beim Abfragen von Entitäten gibt es ein Limit von 1.000 Entitäten, die gleichzeitig zurückgegeben werden können, da die öffentliche REST-Version 2 Abfrageergebnisse auf 1.000 Ergebnisse begrenzt. Sie müssen für das Auflisten großer Auflistungen von Entitäten „Skip“ und „Take“ verwenden.
 	
-Die folgende Funktion durchläuft alle Aufträge im bereitgestellten Media Services-Konto. Media Services gibt 1.000 Aufträge aus der Auftragsauflistung zurück. Die Funktion nutzt „Skip“ und „Take“, damit alle Aufträge aufgezählt werden (falls Sie mehr als 1.000 Aufträge in Ihrem Konto haben).
+Die folgende Funktion durchläuft alle Aufträge im bereitgestellten Media Services-Konto. Media Services gibt 1.000 Aufträge aus der Auftragsauflistung zurück. Die Funktion nutzt „Skip“ und „Take“, damit alle Aufträge aufgezählt werden (falls Sie mehr als 1.000 Aufträge in Ihrem Konto haben).
 	
 	static void ProcessJobs()
 	{
@@ -305,7 +305,7 @@ Im folgenden Beispiel wird ein Medienobjekt gelöscht.
 
 ##Löschen eines Auftrags
 
-Um einen Auftrag zu löschen, müssen Sie den Status des Auftrags überprüfen, der in der State-Eigenschaft angegeben ist. Beendete oder abgebrochene Aufträge können gelöscht werden, während Aufträge mit einem bestimmten anderen Status, z. B. in der Warteschlange, geplant oder in Verarbeitung, zunächst abgebrochen werden müssen. Anschließend können sie gelöscht werden. Das folgende Codebeispiel zeigt eine Methode zum Löschen eines Auftrags, indem der Auftragsstatus überprüft und der Auftrag dann gelöscht wird, wenn er abgeschlossen oder abgebrochen wurde. Dieser Code beruht auf dem vorherigen Abschnitt in diesem Thema über das Abrufen eines Verweises auf einen Auftrag: Abrufen eines Verweises auf einen Auftrag.
+Um einen Auftrag zu löschen, müssen Sie den Status des Auftrags überprüfen, der in der State-Eigenschaft angegeben ist. Beendete oder abgebrochene Aufträge können gelöscht werden, während Aufträge mit einem bestimmten anderen Status, z. B. in der Warteschlange, geplant oder in Verarbeitung, zunächst abgebrochen werden müssen. Anschließend können sie gelöscht werden. Das folgende Codebeispiel zeigt eine Methode zum Löschen eines Auftrags, indem der Auftragsstatus überprüft und der Auftrag dann gelöscht wird, wenn er abgeschlossen oder abgebrochen wurde. Dieser Code beruht auf dem vorherigen Abschnitt in diesem Thema über das Abrufen eines Verweises auf einen Auftrag: Abrufen eines Verweises auf einen Auftrag.
 
 	static void DeleteJob(string jobId)
 	{
@@ -381,4 +381,4 @@ Im folgenden Codebeispiel wird veranschaulicht, wie Sie einen Verweis auf eine Z
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

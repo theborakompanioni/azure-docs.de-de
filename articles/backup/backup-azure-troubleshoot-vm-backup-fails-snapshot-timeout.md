@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="04/27/2016"
+    ms.date="07/14/2016"
     ms.author="jimpark; markgal;genli"/>
 
 # Fehler bei der Azure-VM-Sicherung: Keine Kommunikation mit dem VM-Agent zum Abrufen des Momentaufnahmestatus möglich. Zeitüberschreitung bei Momentaufnahme-Teilvorgang für VM.
@@ -105,7 +105,11 @@ Für Windows-Gäste:
 1. Stellen Sie sicher, dass der iaasvmprovider-Dienst aktiviert und dafür der automatische Start festgelegt ist.
 2. Weicht die Konfiguration davon ab, aktivieren Sie den Dienst, um zu ermitteln, ob die nächste Sicherung erfolgreich ist.
 
-Kann die Sicherungserweiterung immer noch nicht aktualisiert oder geladen werden, können Sie das erneute Laden der VMSnapshot-Erweiterung erzwingen, indem Sie die Erweiterung installieren. Beim nächsten Sicherungsversuch wird die Erweiterung neu geladen.
+Für Linux-Gäste:
+
+Die neueste Version von VMSnapshot Linux (die für die Sicherung verwendete Erweiterung) lautet 1.0.91.0.
+
+Kann die Sicherungserweiterung immer noch nicht aktualisiert oder geladen werden, können Sie das erneute Laden der VMSnapshot-Erweiterung erzwingen, indem Sie die Erweiterung deinstallieren. Beim nächsten Sicherungsversuch wird die Erweiterung neu geladen.
 
 ### So deinstallieren Sie die Erweiterung
 
@@ -132,4 +136,4 @@ Die folgenden Umstände können zu Fehlern bei Momentaufnahmeaufgaben führen:
 | Der virtuelle Computer wird bei hoher CPU-/Arbeitsspeicherauslastung ausgeführt. | Wird der virtuelle Computer bei hoher CPU-Auslastung (über 90 Prozent) oder hoher Arbeitsspeicherauslastung ausgeführt, wird die Momentaufnahmeaufgabe der Warteschlange hinzugefügt und verzögert, bis schließlich eine Zeitüberschreitung auftritt. Versuchen Sie es in diesem Fall mit bedarfsgesteuerten Sicherungen. |
 |Der virtuelle Computer kann keine Host-/Fabric-Adresse aus DHCP abrufen.|Für die VM-Sicherung mithilfe von IaaS muss im Gastbetriebssystem die DHCP-Option aktiviert sein. Wenn der virtuelle Computer die Host-/Fabric-Adresse nicht aus DHCP-Antwort 245 abrufen kann, können keine Erweiterungen heruntergeladen oder ausgeführt werden. Wenn Sie eine statische private IP-Adresse benötigen, sollten Sie diese über die Plattform konfigurieren. Die DHCP-Option innerhalb des virtuellen Computers sollte aktiviert bleiben. Lesen Sie weitere Informationen zum [Festlegen einer statischen internen privaten IP-Adresse](../virtual-network/virtual-networks-reserved-private-ip.md).|
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

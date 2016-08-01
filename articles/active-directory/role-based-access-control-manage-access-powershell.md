@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="07/12/2016"
+	ms.date="07/14/2016"
 	ms.author="kgremban"/>
 
 # Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell
@@ -28,7 +28,7 @@ Mit der rollenbasierten Access Control (RBAC) im Azure-Portal und in der Azure R
 
 Bevor Sie PowerShell verwenden können, um die RBAC zu verwalten, benötigen Sie Folgendes:
 
-- Azure PowerShell, Version 0.8.8 oder höher. Um die neueste Version zu installieren und sie Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+- Azure PowerShell, Version 0.8.8 oder höher. Um die neueste Version zu installieren und sie Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
 - Azure Resource Manager-Cmdlets Installieren Sie die [Azure Resource Manager-Cmdlets](https://msdn.microsoft.com/library/mt125356.aspx) in PowerShell.
 
@@ -117,7 +117,9 @@ Zum Entfernen des Zugriffs für Benutzer, Gruppen und Anwendungen verwenden Sie 
 ## Erstellen einer benutzerdefinierten Rolle
 Verwenden Sie zum Erstellen einer benutzerdefinierten Rolle den Befehl `New-AzureRmRoleDefinition`.
 
-Das folgende Beispiel erstellt eine benutzerdefinierte Rolle namens *Virtual Machine Operator*, die Zugriff auf alle Lesevorgänge der Ressourcenanbieter *Microsoft.Compute*, *Microsoft.Storage* und *Microsoft.Network* und zum Starten, Neustarten und Überwachen virtueller Computer gewährt. Die benutzerdefinierte Rolle kann in zwei Abonnements verwendet werden.
+Wenn Sie eine benutzerdefinierte Rolle in PowerShell erstellen, müssen Sie mit einer der [integrierten Rollen](role-based-access-built-in-roles.md) beginnen. Bearbeiten Sie die Attribute, und fügen Sie die gewünschten Actions-Elemente, notActions-Elemente oder Bereiche hinzu. Speichern Sie die Änderungen anschließend als neue Rolle.
+
+Im folgenden Beispiel wird mit der Rolle *Virtual Machine Contributor* begonnen. Diese Rolle wird zum Erstellen einer benutzerdefinierten Rolle namens *Virtual Machine Operator* verwendet. Die neue Rolle gewährt Zugriff auf alle Lesevorgänge der Ressourcenanbieter *Microsoft.Compute*, *Microsoft.Storage* und *Microsoft.Network* sowie zum Starten, Neustarten und Überwachen virtueller Computer. Die benutzerdefinierte Rolle kann in zwei Abonnements verwendet werden.
 
 ![RBAC PowerShell – Get-AzureRmRoleDefinition – Screenshot](./media/role-based-access-control-manage-access-powershell/2-new-azurermroledefinition.png)
 
@@ -154,4 +156,4 @@ Im folgenden Beispiel ist die benutzerdefinierte Rolle *Virtual Machine Operator
 ## Weitere Informationen
 - [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md) [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

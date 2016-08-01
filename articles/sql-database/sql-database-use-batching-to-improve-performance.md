@@ -1,6 +1,6 @@
  <properties
-	pageTitle="Gewusst wie: Verbessern der Leistung von Azure SQL-Datenbankanwendungen mithilfe von Batchverarbeitung"
-	description="Dieses Thema belegt, dass die Verwendung der Batchverarbeitung bei Datenbankvorgängen erheblich zur Verbesserung der Geschwindigkeit und Skalierbarkeit Ihrer Azure SQL-Datenbankanwendungen beiträgt. Die Batchverarbeitungstechniken können zwar für jede beliebige SQL Server-Datenbank verwendet werden, der Artikel konzentriert sich jedoch auf Azure."
+	pageTitle="Gewusst wie: Verbessern der Leistung von Azure SQL-Datenbankanwendungen mithilfe von Batchverarbeitung"
+	description="Dieses Thema belegt, dass die Verwendung der Batchverarbeitung bei Datenbankvorgängen erheblich zur Verbesserung der Geschwindigkeit und Skalierbarkeit Ihrer Azure SQL-Datenbankanwendungen beiträgt. Die Batchverarbeitungstechniken können zwar für jede beliebige SQL Server-Datenbank verwendet werden, der Artikel konzentriert sich jedoch auf Azure."
 	services="sql-database"
 	documentationCenter="na"
 	authors="annemill"
@@ -14,12 +14,12 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="02/04/2016"
+	ms.date="07/12/2016"
 	ms.author="annemill" />
 
 # Gewusst wie: Verbessern der Leistung von SQL-Datenbankanwendungen mithilfe von Batchverarbeitung
 
-Mit Batchvorgängen für Azure SQL-Datenbank können Sie die Leistung und Skalierbarkeit Ihrer Anwendungen erheblich verbessern. Zur Veranschaulichung der Vorteile werden im ersten Teil dieses Artikels zunächst beispielhaft einige Testergebnisse behandelt, die sequenzielle und batchbasierte SQL-Datenbankanforderungen miteinander vergleichen. Der Rest des Artikels geht auf Techniken, Szenarien und Überlegungen ein, die Sie bei der erfolgreichen Verwendung der Batchverarbeitung in Ihrer Azure-Anwendung unterstützen.
+Mit Batchvorgängen für Azure SQL-Datenbank können Sie die Leistung und Skalierbarkeit Ihrer Anwendungen erheblich verbessern. Zur Veranschaulichung der Vorteile werden im ersten Teil dieses Artikels zunächst beispielhaft einige Testergebnisse behandelt, die sequenzielle und batchbasierte SQL-Datenbankanforderungen miteinander vergleichen. Der Rest des Artikels geht auf Techniken, Szenarien und Überlegungen ein, die Sie bei der erfolgreichen Verwendung der Batchverarbeitung in Ihrer Azure-Anwendung unterstützen.
 
 **Autoren**: Jason Roth, Silvano Coriani, Trent Swanson (Full Scale 180 Inc)
 
@@ -28,11 +28,11 @@ Mit Batchvorgängen für Azure SQL-Datenbank können Sie die Leistung und Skali
 ## Warum ist die Batchverarbeitung für die SQL-Datenbank wichtig?
 Die Batchverarbeitung von Aufrufen an einen Remotedienst ist eine bewährte Strategie zur Verbesserung von Leistung und Skalierbarkeit. Für jede Interaktion mit einem Remotedienst (also etwa für Serialisierung, Netzwerkübertragung und Deserialisierung) fallen feste Verarbeitungskosten an. Durch das Zusammenfassen vieler einzelner Transaktionen in einem einzigen Batch werden diese Kosten minimiert.
 
-In diesem Artikel gehen wir auf verschiedene Batchverarbeitungsstrategien und -szenarien für SQL-Datenbank ein. Diese Strategien sind zwar auch für lokale Anwendungen wichtig, die SQL Server verwenden, es gibt jedoch einige Gründe, die Verwendung der Batchverarbeitung speziell für SQL-Datenbank hervorzuheben:
+In diesem Artikel gehen wir auf verschiedene Batchverarbeitungsstrategien und -szenarien für SQL-Datenbank ein. Diese Strategien sind zwar auch für lokale Anwendungen wichtig, die SQL Server verwenden, es gibt jedoch einige Gründe, die Verwendung der Batchverarbeitung speziell für SQL-Datenbank hervorzuheben:
 
-- Die Netzwerklatenz ist beim Zugriff auf SQL-Datenbank potenziell höher – insbesondere, wenn Sie von außerhalb des gleichen Microsoft Azure-Datencenters auf SQL-Datenbank zugreifen.
-- Aufgrund der Mehrinstanzenfähigkeit von SQL-Datenbank hängt die Effizienz der Datenzugriffsschicht mit der allgemeinen Skalierbarkeit der Datenbank zusammen. SQL-Datenbank muss sicherstellen, dass kein einzelner Mandant/Benutzer übermäßig viele Datenbankressourcen beansprucht und andere Mandanten dadurch benachteiligt werden. Bei einer Überschreitung der vordefinierten Kontingente kann SQL-Datenbank den Durchsatz verringern oder mit Drosselungsausnahmen reagieren. Effizienzsteigernde Maßnahmen wie etwa die Batchverarbeitung ermöglichen es, in SQL-Datenbank mehr zu bewältigen, bevor die Grenzwerte erreicht werden. 
-- Die Batchverarbeitung eignet sich auch für Architekturen mit mehreren Datenbanken (Sharding). Die Effizienz der Interaktion mit den einzelnen Datenbank-Einheiten ist weiterhin ein Schlüsselfaktor für die Skalierbarkeit im Allgemeinen. 
+- Die Netzwerklatenz ist beim Zugriff auf SQL-Datenbank potenziell höher – insbesondere, wenn Sie von außerhalb des gleichen Microsoft Azure-Datencenters auf SQL-Datenbank zugreifen.
+- Aufgrund der Mehrinstanzenfähigkeit von SQL-Datenbank hängt die Effizienz der Datenzugriffsschicht mit der allgemeinen Skalierbarkeit der Datenbank zusammen. SQL-Datenbank muss sicherstellen, dass kein einzelner Mandant/Benutzer übermäßig viele Datenbankressourcen beansprucht und andere Mandanten dadurch benachteiligt werden. Bei einer Überschreitung der vordefinierten Kontingente kann SQL-Datenbank den Durchsatz verringern oder mit Drosselungsausnahmen reagieren. Effizienzsteigernde Maßnahmen wie etwa die Batchverarbeitung ermöglichen es, in SQL-Datenbank mehr zu bewältigen, bevor die Grenzwerte erreicht werden.
+- Die Batchverarbeitung eignet sich auch für Architekturen mit mehreren Datenbanken (Sharding). Die Effizienz der Interaktion mit den einzelnen Datenbank-Einheiten ist weiterhin ein Schlüsselfaktor für die Skalierbarkeit im Allgemeinen.
 
 Die Verwendung von SQL-Datenbank hat unter anderem den Vorteil, dass Sie die Server, die die Datenbank hosten, nicht verwalten müssen. Aufgrund dieser verwalteten Infrastruktur müssen Sie jedoch auch anders an Datenbankoptimierungen herangehen. Sie haben nicht mehr die Möglichkeit, die Datenbankhardware oder die Netzwerkinfrastruktur zu optimieren. Um diese Aspekte kümmert sich Microsoft Azure. Sie können in erster Linie die Interaktion zwischen Ihrer Anwendung und SQL-Datenbank beeinflussen. Die Batchverarbeitung ist eine der Optimierungsmöglichkeiten.
 
@@ -110,7 +110,7 @@ Die folgende Tabelle zeigt einige Ad-hoc-Testergebnisse. Bei den Tests wurden je
 
 >[AZURE.NOTE] Die Ergebnisse sind keine Benchmarks. Weitere Informationen finden Sie im [Hinweis zu den Zeitangaben in den Ergebnissen dieses Themas](#note-about-timing-results-in-this-topic).
 
-Wie Sie den Testergebnissen entnehmen können, verschlechtert sich die Leistung sogar, wenn ein einzelner Vorgang in eine Transaktion eingeschlossen wird. Wenn Sie aber die Anzahl der Vorgänge in einer einzelnen Transaktion erhöhen, ergibt sich eine Verbesserung der Leistung. Der Leistungsunterschied ist außerdem ausgeprägter, wenn alle Vorgänge innerhalb des gleichen Microsoft Azure-Datencenters abgewickelt werden. Die höhere Latenz bei Verwendung von SQL-Datenbank außerhalb des Microsoft Azure-Datencenters beeinträchtigt den Leistungszuwachs, der sich durch die Verwendung von Transaktionen erzielen lässt.
+Wie Sie den Testergebnissen entnehmen können, verschlechtert sich die Leistung sogar, wenn ein einzelner Vorgang in eine Transaktion eingeschlossen wird. Wenn Sie aber die Anzahl der Vorgänge in einer einzelnen Transaktion erhöhen, ergibt sich eine Verbesserung der Leistung. Der Leistungsunterschied ist außerdem ausgeprägter, wenn alle Vorgänge innerhalb des gleichen Microsoft Azure-Datencenters abgewickelt werden. Die höhere Latenz bei Verwendung von SQL-Datenbank außerhalb des Microsoft Azure-Datencenters beeinträchtigt den Leistungszuwachs, der sich durch die Verwendung von Transaktionen erzielen lässt.
 
 Die Verwendung von Transaktionen kann zwar zur Verbesserung der Leistung beitragen, es empfiehlt sich jedoch, sich weiterhin mit den [bewährten Methoden für Transaktionen und Verbindungen](https://msdn.microsoft.com/library/ms187484.aspx) auseinanderzusetzen. Halten Sie die Transaktion so kurz wie möglich, und trennen Sie die Datenbankverbindung nach Abschluss der Arbeit. Die using-Anweisung im vorherigen Beispiel stellt sicher, dass die Verbindung nach Abschluss des nachfolgenden Codeblocks getrennt wird.
 
@@ -189,7 +189,7 @@ Die folgende Tabelle zeigt Ad-hoc-Testergebnisse für die Verwendung von Tabelle
 
 >[AZURE.NOTE] Die Ergebnisse sind keine Benchmarks. Weitere Informationen finden Sie im [Hinweis zu den Zeitangaben in den Ergebnissen dieses Themas](#note-about-timing-results-in-this-topic).
 
-Der durch die Batchverarbeitung bedingte Leistungsgewinn ist sofort ersichtlich. Im vorherigen sequenziellen Test dauerten 1000 Vorgänge 129 Sekunden (außerhalb des Datencenters) bzw. 21 Sekunden (innerhalb des Datencenters). Mit Tabellenwertparametern dauern 1000 Vorgänge dagegen nur 2,6 Sekunden (außerhalb des Datencenters) bzw. 0,4 Sekunden (innerhalb des Datencenters).
+Der durch die Batchverarbeitung bedingte Leistungsgewinn ist sofort ersichtlich. Im vorherigen sequenziellen Test dauerten 1000 Vorgänge 129 Sekunden (außerhalb des Datencenters) bzw. 21 Sekunden (innerhalb des Datencenters). Mit Tabellenwertparametern dauern 1000 Vorgänge dagegen nur 2,6 Sekunden (außerhalb des Datencenters) bzw. 0,4 Sekunden (innerhalb des Datencenters).
 
 Weitere Informationen zu Tabellenwertparametern finden Sie unter [Tabellenwertparameter](https://msdn.microsoft.com/library/bb510489.aspx).
 
@@ -209,7 +209,7 @@ SQL-Massenkopieren ist eine weitere Möglichkeit, um große Datenmengen in eine 
 	    }
 	}
 
-In bestimmten Fällen ist Massenkopieren den Tabellenwertparametern vorzuziehen. Weitere Informationen finden Sie im Thema [Tabellenwertparameter](https://msdn.microsoft.com/library/bb510489.aspx) in der Vergleichstabelle für Tabellenwertparameter und BULK INSERT-Vorgänge.
+In bestimmten Fällen ist Massenkopieren den Tabellenwertparametern vorzuziehen. Weitere Informationen finden Sie im Thema [Tabellenwertparameter](https://msdn.microsoft.com/library/bb510489.aspx) in der Vergleichstabelle für Tabellenwertparameter und BULK INSERT-Vorgänge.
 
 Die folgenden Ad-hoc-Testergebnisse zeigen die Leistung der Batchverarbeitung mit **SqlBulkCopy** (in Millisekunden):
 
@@ -223,7 +223,7 @@ Die folgenden Ad-hoc-Testergebnisse zeigen die Leistung der Batchverarbeitung mi
 
 >[AZURE.NOTE] Die Ergebnisse sind keine Benchmarks. Weitere Informationen finden Sie im [Hinweis zu den Zeitangaben in den Ergebnissen dieses Themas](#note-about-timing-results-in-this-topic).
 
-Bei kleineren Batches wurde mit Tabellenwertparametern eine bessere Leistung erzielt als mit der Klasse **SqlBulkCopy**. Bei 1000 und 10.000 Zeilen war **SqlBulkCopy** jedoch um 12 bis 31 Prozent schneller als die Tabellenwertparameter. **SqlBulkCopy** ist (genau wie Tabellenwertparameter) eine gute Option für Batcheinfügevorgänge – insbesondere verglichen mit der Leistung von Vorgängen ohne Batchverarbeitung.
+Bei kleineren Batches wurde mit Tabellenwertparametern eine bessere Leistung erzielt als mit der Klasse **SqlBulkCopy**. Bei 1000 und 10.000 Zeilen war **SqlBulkCopy** jedoch um 12 bis 31 Prozent schneller als die Tabellenwertparameter. **SqlBulkCopy** ist (genau wie Tabellenwertparameter) eine gute Option für Batcheinfügevorgänge – insbesondere verglichen mit der Leistung von Vorgängen ohne Batchverarbeitung.
 
 Weitere Informationen zum Massenkopieren in ADO.NET finden Sie unter [Massenkopiervorgänge in SQL Server](https://msdn.microsoft.com/library/7ek5da1a.aspx).
 
@@ -249,7 +249,7 @@ Eine Alternative für kleine Batches ist die Erstellung einer großen parametris
 	}
  
 
-Dieses Beispiel zeigt das grundlegende Konzept. In einem realistischeren Szenario werden die erforderlichen Entitäten durchlaufen, um gleichzeitig die Abfragezeichenfolge und die Befehlsparameter zu erstellen. Die Anzahl der Abfrageparameter ist auf 2100 begrenzt, was auch die Gesamtzahl der Zeilen begrenzt, die auf diese Weise verarbeitet werden können.
+Dieses Beispiel zeigt das grundlegende Konzept. In einem realistischeren Szenario werden die erforderlichen Entitäten durchlaufen, um gleichzeitig die Abfragezeichenfolge und die Befehlsparameter zu erstellen. Die Anzahl der Abfrageparameter ist auf 2100 begrenzt, was auch die Gesamtzahl der Zeilen begrenzt, die auf diese Weise verarbeitet werden können.
 
 Die folgenden Ad-hoc-Testergebnisse zeigen die Leistung dieser Art von insert-Anweisung (in Millisekunden).
 
@@ -261,13 +261,13 @@ Die folgenden Ad-hoc-Testergebnisse zeigen die Leistung dieser Art von insert-An
 
 >[AZURE.NOTE] Die Ergebnisse sind keine Benchmarks. Weitere Informationen finden Sie im [Hinweis zu den Zeitangaben in den Ergebnissen dieses Themas](#note-about-timing-results-in-this-topic).
 
-Für Batches mit weniger als 100 Zeilen kann dieser Ansatz etwas schneller sein. Auch wenn die Verbesserung eher überschaubar ausfällt, ist diese Technik dennoch eine weitere Option für Ihr individuelles Anwendungsszenario.
+Für Batches mit weniger als 100 Zeilen kann dieser Ansatz etwas schneller sein. Auch wenn die Verbesserung eher überschaubar ausfällt, ist diese Technik dennoch eine weitere Option für Ihr individuelles Anwendungsszenario.
 
 ### DataAdapter
 Mithilfe der Klasse **DataAdapter** können Sie ein Objekt vom Typ **DataSet** ändern und die Änderungen anschließend als INSERT-, UPDATE- und DELETE-Vorgang übermitteln. Beachten Sie bei einer solchen Verwendung des Objekts **DataAdapter**, dass für jeden einzelnen Vorgang separate Aufrufe ausgeführt werden. Verwenden Sie zur Verbesserung der Leistung die Eigenschaft **UpdateBatchSize** mit der Anzahl von Vorgängen, für die eine gleichzeitige Batchverarbeitung durchgeführt werden soll. Weitere Informationen finden Sie unter [Ausführen von Batchoperationen mit DataAdapters](https://msdn.microsoft.com/library/aadf8fk2.aspx).
 
 ### Entity Framework
-Von Entity Framework wird derzeit keine Batchverarbeitung unterstützt. Verschiedene Entwickler aus der Community haben sich an Workarounds wie etwa dem Überschreiben der Methode **SaveChanges** versucht. Diese Lösungen sind jedoch in der Regel komplex und speziell auf die jeweilige Anwendung und das jeweilige Datenmodell zugeschnitten. Für das Entity Framework-Codeplex-Projekt gibt es derzeit eine Diskussionsseite zu diesem Funktionswunsch: [Design Meeting Notes – August 2, 2012](http://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012).
+Von Entity Framework wird derzeit keine Batchverarbeitung unterstützt. Verschiedene Entwickler aus der Community haben sich an Workarounds wie etwa dem Überschreiben der Methode **SaveChanges** versucht. Diese Lösungen sind jedoch in der Regel komplex und speziell auf die jeweilige Anwendung und das jeweilige Datenmodell zugeschnitten. Für das Entity Framework-Codeplex-Projekt gibt es derzeit eine Diskussionsseite zu diesem Funktionswunsch: [Design Meeting Notes – August 2, 2012](http://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012).
 
 ### XML
 Der Vollständigkeit halber sollten wir auch auf XML als Batchverarbeitungsstrategie eingehen. Allerdings bietet die Verwendung von XML gegenüber anderen Methoden keinerlei Vorteile und sogar einige Nachteile. Der Ansatz ist vergleichbar mit Tabellenwertparametern, eine XML-Datei oder eine Zeichenfolge wird jedoch nicht an eine benutzerdefinierte Tabelle, sondern an eine gespeicherte Prozedur übergeben. Die gespeicherte Prozedur analysiert die Befehle in der gespeicherten Prozedur.
@@ -289,7 +289,7 @@ Je nach Architektur muss bei der Batchverarbeitung unter Umständen zwischen Lei
 Überlegen Sie sich aufgrund dieses Umstands, welche Vorgänge Sie zu einem Batch zusammenfassen. Bei weniger wichtigen Daten kann eine offensivere Batchverarbeitung (größere Batches und großzügigere Zeitfenster) gewählt werden.
 
 ### Batchgröße
-In unseren Tests hatte die Aufspaltung großer Batches in kleinere Blöcke in der Regel keinerlei Vorteile. Tatsächlich wurde durch diese Aufspaltung häufig sogar ein schlechteres Ergebnis erzielt als bei der Übermittlung eines einzelnen großen Batches. Nehmen wir beispielsweise an, Sie möchten 1000 Zeilen einfügen. Die folgende Tabelle zeigt, wie lange es dauert, mithilfe von Tabellenwertparametern 1000 in kleinere Batches aufgeteilte Zeilen einzufügen:
+In unseren Tests hatte die Aufspaltung großer Batches in kleinere Blöcke in der Regel keinerlei Vorteile. Tatsächlich wurde durch diese Aufspaltung häufig sogar ein schlechteres Ergebnis erzielt als bei der Übermittlung eines einzelnen großen Batches. Nehmen wir beispielsweise an, Sie möchten 1000 Zeilen einfügen. Die folgende Tabelle zeigt, wie lange es dauert, mithilfe von Tabellenwertparametern 1000 in kleinere Batches aufgeteilte Zeilen einzufügen:
 
 | Batchgröße | Iterationen | Tabellenwertparameter (ms) |
 | -------- | --- | --- |
@@ -300,14 +300,14 @@ In unseren Tests hatte die Aufspaltung großer Batches in kleinere Blöcke in de
 
 >[AZURE.NOTE] Die Ergebnisse sind keine Benchmarks. Weitere Informationen finden Sie im [Hinweis zu den Zeitangaben in den Ergebnissen dieses Themas](#note-about-timing-results-in-this-topic).
 
-Wie Sie sehen, erzielen Sie bei 1000 Zeilen ein optimales Ergebnis, wenn Sie alle auf einmal übermitteln. In anderen Tests (hier nicht gezeigt) wurde bei einem Batch mit 10.000 Zeilen ein geringer Leistungszuwachs erzielt, indem der Batch in zwei Batches mit jeweils 5000 Zeilen aufgeteilt wurde. Das Tabellenschema für diese Tests ist verhältnismäßig einfach. Führen Sie daher am besten Tests mit Ihren spezifischen Daten und Batchgrößen durch, um diese Ergebnisse zu überprüfen.
+Wie Sie sehen, erzielen Sie bei 1000 Zeilen ein optimales Ergebnis, wenn Sie alle auf einmal übermitteln. In anderen Tests (hier nicht gezeigt) wurde bei einem Batch mit 10.000 Zeilen ein geringer Leistungszuwachs erzielt, indem der Batch in zwei Batches mit jeweils 5000 Zeilen aufgeteilt wurde. Das Tabellenschema für diese Tests ist verhältnismäßig einfach. Führen Sie daher am besten Tests mit Ihren spezifischen Daten und Batchgrößen durch, um diese Ergebnisse zu überprüfen.
 
 Darüber hinaus ist Folgendes zu berücksichtigen: Wenn der Batch insgesamt zu groß wird, reagiert die SQL-Datenbank möglicherweise mit einer Drosselung und verweigert den Commit des Batchs. Testen Sie Ihr jeweiliges Szenario, um die ideale Batchgröße zu ermitteln und optimale Ergebnisse zu erzielen. Ermöglichen Sie die Konfiguration der Batchgröße zur Laufzeit, um sie auf der Grundlage von Leistung oder Fehlern schnell anpassen zu können.
 
 Wägen Sie schließlich die Batchgröße gegen die mit der Batchverarbeitung verbundenen Risiken ab. Überlegen Sie, welche Auswirkungen eine Wiederholung des Vorgangs oder der Verlust der Daten im Batch bei vorübergehenden Fehlern oder einem Ausfall der Rolle hat.
 
 ### Parallele Verarbeitung
-Was, wenn Sie die Batchgröße verringern, aber mehrere Threads verwenden, um die Vorgänge auszuführen? Auch hier ergaben unsere Tests, dass bei Verwendung mehrerer kleinerer Multithread-Batches in der Regel schlechtere Ergebnisse erzielt werden als mit einem einzelnen größeren Batch. Im folgenden Test wurden 1000 Zeilen in einem bzw. in mehreren parallelen Batches eingefügt. Dieser Test zeigt, dass die gleichzeitige Verwendung mehrerer Batches die Leistung beeinträchtigt.
+Was, wenn Sie die Batchgröße verringern, aber mehrere Threads verwenden, um die Vorgänge auszuführen? Auch hier ergaben unsere Tests, dass bei Verwendung mehrerer kleinerer Multithread-Batches in der Regel schlechtere Ergebnisse erzielt werden als mit einem einzelnen größeren Batch. Im folgenden Test wurden 1000 Zeilen in einem bzw. in mehreren parallelen Batches eingefügt. Dieser Test zeigt, dass die gleichzeitige Verwendung mehrerer Batches die Leistung beeinträchtigt.
 
 | Batchgröße [Iterationen] | Zwei Threads (ms) | Vier Threads (ms) | Sechs Threads (ms) |
 | -------- | --- | --- | --- |
@@ -342,7 +342,7 @@ In den folgenden Abschnitten wird das Verwenden von Tabellenwertparametern in dr
 ### Pufferung
 Einige Szenarien bieten sich zwar ganz offensichtlich für die Batchverarbeitung an, es gibt aber auch Szenarien, die von einer verzögerten Verarbeitung durch die Batchverarbeitung profitieren können. Im Falle eines unerwarteten Fehlers birgt eine verzögerte Verarbeitung allerdings ein höheres Datenverlustrisiko. Über dieses Risiko müssen Sie sich im Klaren sein und die Konsequenzen abwägen.
 
-Nehmen wir zum Beispiel eine Anwendung, die den Navigationsverlauf der einzelnen Benutzer nachverfolgt. Die Anwendung könnte nun bei jeder Seitenanforderung die Datenbank aufrufen und den Seitenaufruf des Benutzers dokumentieren. Eine bessere Leistung und Skalierbarkeit wird jedoch erzielt, wenn die Navigationsaktivitäten des Benutzers gepuffert und dann in Batches an die Datenbank übermittelt werden. Die Aktualisierung der Datenbank kann auf der Grundlage der verstrichenen Zeit und/oder der Puffergröße ausgelöst werden. So können Sie beispielsweise mithilfe einer Regel festlegen, dass der Batch nach 20 Sekunden oder bei Erreichen eines Pufferinhalts von 1000 Elementen verarbeitet werden soll.
+Nehmen wir zum Beispiel eine Anwendung, die den Navigationsverlauf der einzelnen Benutzer nachverfolgt. Die Anwendung könnte nun bei jeder Seitenanforderung die Datenbank aufrufen und den Seitenaufruf des Benutzers dokumentieren. Eine bessere Leistung und Skalierbarkeit wird jedoch erzielt, wenn die Navigationsaktivitäten des Benutzers gepuffert und dann in Batches an die Datenbank übermittelt werden. Die Aktualisierung der Datenbank kann auf der Grundlage der verstrichenen Zeit und/oder der Puffergröße ausgelöst werden. So können Sie beispielsweise mithilfe einer Regel festlegen, dass der Batch nach 20 Sekunden oder bei Erreichen eines Pufferinhalts von 1000 Elementen verarbeitet werden soll.
 
 Im folgenden Codebeispiel werden gepufferte Ereignisse, die von einer Überwachungsklasse ausgelöst wurden, mithilfe von [Reactive Extensions - Rx](https://msdn.microsoft.com/data/gg577609) verarbeitet. Wenn der Puffer voll ist oder ein Timeout erreicht wurde, wird der Batch mit den Benutzerdaten unter Verwendung eines Tabellenwertparameters an die Datenbank gesendet.
 
@@ -357,7 +357,7 @@ Die folgende NavHistoryData-Klasse modelliert die Benutzernavigationsdetails. Si
 	    public DateTime AccessTime { get; set; }
 	}
 
-Die NavHistoryDataMonitor-Klasse ist zuständig für die Pufferung der Benutzernavigationsdaten in der Datenbank. Die enthaltene RecordUserNavigationEntry-Methode dient zum Auslösen eines Ereignisses vom Typ **OnAdded**. Der folgende Code zeigt die Konstruktorlogik, die mithilfe von „Rx“ ein auf dem Ereignis basierendes ObservableCollection-Objekt erstellt. Anschließend wird das ObservableCollection-Objekt mit der Buffer-Methode abonniert. Die Überladung gibt an, dass der Puffer alle 20 Sekunden oder jeweils bei Erreichen von 1.000 Einträgen gesendet werden soll.
+Die NavHistoryDataMonitor-Klasse ist zuständig für die Pufferung der Benutzernavigationsdaten in der Datenbank. Die enthaltene RecordUserNavigationEntry-Methode dient zum Auslösen eines Ereignisses vom Typ **OnAdded**. Der folgende Code zeigt die Konstruktorlogik, die mithilfe von „Rx“ ein auf dem Ereignis basierendes ObservableCollection-Objekt erstellt. Anschließend wird das ObservableCollection-Objekt mit der Buffer-Methode abonniert. Die Überladung gibt an, dass der Puffer alle 20 Sekunden oder jeweils bei Erreichen von 1.000 Einträgen gesendet werden soll.
 
 	public NavHistoryDataMonitor()
 	{
@@ -537,7 +537,7 @@ Diese gespeicherte Prozedur kann vom Code oder von anderen Transact-SQL-Aufrufen
 	
 	exec sp_InsertOrdersBatch @orders, @details
 
-Bei dieser Lösung kann jeder Batch eine Gruppe von OrderID-Werten verwenden, die bei 1 beginnen. Diese temporären OrderID-Werte beschreiben die Beziehungen im Batch. Die tatsächlichen OrderID-Werte werden zum Zeitpunkt des Einfügevorgangs bestimmt. Sie können die Anweisungen aus dem vorherigen Beispiel wiederholt ausführen und eindeutige Aufträge in der Datenbank generieren. Fügen Sie daher ggf. weiteren Code oder weitere Datenbanklogik hinzu, um die Generierung doppelter Aufträge zu verhindern, wenn Sie diese Batchverarbeitungstechnik verwenden.
+Bei dieser Lösung kann jeder Batch eine Gruppe von OrderID-Werten verwenden, die bei 1 beginnen. Diese temporären OrderID-Werte beschreiben die Beziehungen im Batch. Die tatsächlichen OrderID-Werte werden zum Zeitpunkt des Einfügevorgangs bestimmt. Sie können die Anweisungen aus dem vorherigen Beispiel wiederholt ausführen und eindeutige Aufträge in der Datenbank generieren. Fügen Sie daher ggf. weiteren Code oder weitere Datenbanklogik hinzu, um die Generierung doppelter Aufträge zu verhindern, wenn Sie diese Batchverarbeitungstechnik verwenden.
 
 Dieses Beispiel zeigt, dass mithilfe von Tabellenwertparametern auch komplexere Datenbankvorgänge (wie etwa Master/Detail-Vorgänge) als Batch verarbeitet werden können.
 
@@ -588,13 +588,13 @@ Die folgende Liste enthält eine Zusammenfassung der in diesem Thema behandelten
 - Wickeln Sie nach Möglichkeit alle an die Datenbank gerichteten Aufrufe innerhalb des gleichen Datencenters ab, um die Latenz zu verringern.
 - Wenn Sie sich für eine einzelne Batchverarbeitungstechnik entscheiden: Tabellenwertparameter bieten die beste Leistung und Flexibilität.
 - Halten Sie sich an die folgenden allgemeinen Richtlinien, um die bestmögliche Leistung bei Einfügevorgängen zu erzielen (vergessen Sie aber nicht, Ihr Szenario zu testen):
-	- Weniger als 100 Zeilen: Verwenden Sie einen einzelnen parametrisierten INSERT-Befehl.
-	- Weniger als 1000 Zeilen: Verwenden Sie Tabellenwertparameter.
-	- Ab 1000 Zeilen: Verwenden Sie „SqlBulkCopy“.
+	- Weniger als 100 Zeilen: Verwenden Sie einen einzelnen parametrisierten INSERT-Befehl.
+	- Weniger als 1000 Zeilen: Verwenden Sie Tabellenwertparameter.
+	- Ab 1000 Zeilen: Verwenden Sie „SqlBulkCopy“.
 - Verwenden Sie für Aktualisierungs- und Löschvorgänge Tabellenwertparameter mit gespeicherter Prozedurlogik, die für die einzelnen Zeilen im Tabellenparameter jeweils den korrekten Vorgang bestimmt.
 - Richtlinien für die Batchgröße:
 	- Verwenden Sie möglichst umfangreiche Batches mit einer Größe, die für Ihre individuelle Anwendung und Ihre geschäftlichen Anforderungen sinnvoll ist.
-	- Sorgen Sie für ein ausgeglichenes Verhältnis zwischen dem durch große Batches erzielten Leistungsgewinn und den Risiken, die mit temporären oder schwer wiegenden Fehlern einhergehen. Was ist die Folge von Wiederholungsversuchen oder dem Verlust der im Batch enthaltenen Daten? 
+	- Sorgen Sie für ein ausgeglichenes Verhältnis zwischen dem durch große Batches erzielten Leistungsgewinn und den Risiken, die mit temporären oder schwer wiegenden Fehlern einhergehen. Was ist die Folge von Wiederholungsversuchen oder dem Verlust der im Batch enthaltenen Daten?
 	- Testen Sie die größte Batchgröße, um sicherzustellen, dass der Batch von SQL-Datenbank nicht abgelehnt wird.
 	- Erstellen Sie Konfigurationseinstellungen, um bestimmte Aspekte der Batchverarbeitung (etwa die Batchgröße oder das Pufferungszeitfenster) steuern zu können. Diese Einstellungen sorgen für Flexibilität: Mit ihnen können sie das Batchverarbeitungsverhalten in der Produktionsumgebung ohne erneute Bereitstellung des Clouddiensts ändern.
 - Vermeiden Sie die parallele Ausführung von Batches für eine einzelne Tabelle in einer einzelnen Datenbank. Sollten Sie sich doch dafür entscheiden, einen einzelnen Batch auf mehrere Arbeitsthreads aufzuteilen, ermitteln Sie mithilfe von Tests die ideale Threadanzahl. Nach Überschreitung eines nicht näher spezifizierten Schwellenwerts wird die Leistung durch die Erhöhung der Threadanzahl nicht mehr verbessert, sondern sogar beeinträchtigt.
@@ -602,6 +602,6 @@ Die folgende Liste enthält eine Zusammenfassung der in diesem Thema behandelten
 
 ## Nächste Schritte
 
-In diesem Artikel ging es in erster Linie darum, wie Datenbankdesign und Programmiertechniken im Zusammenhang mit der Batchverarbeitung die Leistung und Skalierbarkeit Ihrer Anwendung verbessern können. Dies ist jedoch nur einer von vielen Faktoren einer Gesamtstrategie. Weitere Methoden zur Verbesserung der Leistung und Skalierbarkeit finden Sie unter [Leitfaden zur Azure SQL-Datenbankleistung für Einzeldatenbanken](sql-database-performance-guidance.md) sowie unter [Überlegungen zum Preis und zur Leistung eines elastischen Datenbankpools](sql-database-elastic-pool-guidance.md).
+In diesem Artikel ging es in erster Linie darum, wie Datenbankdesign und Programmiertechniken im Zusammenhang mit der Batchverarbeitung die Leistung und Skalierbarkeit Ihrer Anwendung verbessern können. Dies ist jedoch nur einer von vielen Faktoren einer Gesamtstrategie. Weitere Methoden zur Verbesserung der Leistung und Skalierbarkeit finden Sie unter [Leitfaden zur Azure SQL-Datenbankleistung für Einzeldatenbanken](sql-database-performance-guidance.md) sowie unter [Überlegungen zum Preis und zur Leistung eines elastischen Datenbankpools](sql-database-elastic-pool-guidance.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

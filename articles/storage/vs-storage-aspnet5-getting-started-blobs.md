@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Erste Schritte mit dem BLOB-Speicher und verbundenen Visual Studio-Diensten (ASP.NET 5) | Microsoft Azure"
-	description="Erfahren Sie etwas über die ersten Schritte mit Azure BLOB-Speicher in einem ASP.NET 5-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten ein Speicherkonto erstellt haben."
+	pageTitle="Erste Schritte mit dem BLOB-Speicher und verbundenen Visual Studio-Diensten (ASP.NET 5) | Microsoft Azure"
+	description="Erfahren Sie etwas über die ersten Schritte mit Azure BLOB-Speicher in einem ASP.NET 5-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten ein Speicherkonto erstellt haben."
 	services="storage"
 	documentationCenter=""
 	authors="TomArcher"
@@ -13,14 +13,16 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="07/18/2016"
 	ms.author="tarcher"/>
 
-# Erste Schritte mit Azure-BLOB-Speicher und verbundenen Visual Studio-Diensten (ASP.NET 5)
+# Erste Schritte mit Azure-BLOB-Speicher und verbundenen Visual Studio-Diensten (ASP.NET 5)
+
+[AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
 
 ##Übersicht
 
-Dieser Artikel beschreibt die ersten Schritte beim Verwenden von Azure-BLOB-Speicher in Visual Studio, nachdem Sie über das Visual Studio-Dialogfeld "Verbundene Dienste hinzufügen" in einem ASP.NET 5-Projekt ein Azure-Speicherkonto erstellt oder auf ein solches Konto verwiesen haben.
+Dieser Artikel beschreibt die ersten Schritte beim Verwenden von Azure-BLOB-Speicher in Visual Studio, nachdem Sie über das Visual Studio-Dialogfeld "Verbundene Dienste hinzufügen" in einem ASP.NET 5-Projekt ein Azure-Speicherkonto erstellt oder auf ein solches Konto verwiesen haben.
 
 Die BLOB-Speicherung in Azure ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. Ein einzelner BLOB kann eine beliebige Größe aufweisen. BLOBs können Bilder, Audio- und Videodateien, Rohdaten und Dokumentdateien enthalten. Dieser Artikel beschreibt die ersten Schritte mit dem BLOB-Speicher, nachdem Sie über das Visual Studio-Dialogfeld **Verbundene Dienste hinzufügen** ein Azure-Speicherkonto in einem ASP.NET 5-Projekt erstellt haben.
 
@@ -126,7 +128,7 @@ Um die Blobs in einem Container aufzuführen, müssen Sie zuerst einen Container
         }
     } while (token != null);
 
-Es gibt auch andere Möglichkeiten, den Inhalt eines BLOB-Containers aufzulisten. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](storage-dotnet-how-to-use-blobs.md#list-the-blobs-in-a-container)
+Es gibt auch andere Möglichkeiten, den Inhalt eines BLOB-Containers aufzulisten. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](storage-dotnet-how-to-use-blobs.md#list-the-blobs-in-a-container).
 
 ##Herunterladen eines Blobs
 Wenn Sie ein Blob herunterladen möchten, rufen Sie zuerst einen Verweis auf das Blob ab, und rufen Sie dann die **DownloadToStreamAsync()**-Methode auf. Im folgenden Beispiel wird die **DownloadToStreamAsync()**-Methode verwendet, um den Inhalt des BLOBs in ein Datenstromobjekt zu übertragen, das anschließend als eine lokale Datei gespeichert werden kann.
@@ -140,7 +142,7 @@ Wenn Sie ein Blob herunterladen möchten, rufen Sie zuerst einen Verweis auf das
     	await blockBlob.DownloadToStreamAsync(fileStream);
 	}
 
-Es gibt auch andere Möglichkeiten zum Speichern von BLOBs als Dateien. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](storage-dotnet-how-to-use-blobs.md#download-blobs)
+Es gibt auch andere Möglichkeiten zum Speichern von BLOBs als Dateien. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](storage-dotnet-how-to-use-blobs.md#download-blobs).
 
 ##Löschen eines Blobs
 Wenn Sie einen BLOB löschen möchten, rufen Sie zuerst einen Verweis auf den BLOB ab, und rufen Sie dann die **DeleteAsync()**-Methode auf.
@@ -155,4 +157,4 @@ Wenn Sie einen BLOB löschen möchten, rufen Sie zuerst einen Verweis auf den BL
 
 [AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

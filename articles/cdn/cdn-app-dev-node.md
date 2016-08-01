@@ -2,7 +2,7 @@
 	pageTitle="Erste Schritte mit dem Azure CDN SDK für Node.js | Microsoft Azure"
 	description="Es wird beschrieben, wie Sie Node.js-Anwendungen zum Verwalten von Azure CDN schreiben."
 	services="cdn"
-	documentationCenter=".net"
+	documentationCenter="nodejs"
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/01/2016"
+	ms.date="07/19/2016"
 	ms.author="casoper"/>
 
 # Erste Schritte mit der Azure CDN-Entwicklung
@@ -49,7 +49,7 @@ Unser Projekt wird jetzt mit der Datei *packages.json* initialisiert. Im Projekt
 
 Nachdem die Installation der Pakete abgeschlossen ist, sollte die Datei *package.json* in etwa wie folgt aussehen (Versionsnummern können abweichen):
 
-```
+``` json
 {
   "name": "cdn_node",
   "version": "1.0.0",
@@ -75,14 +75,14 @@ Bei geöffneter Datei *app.js* im Editor schreiben wir die Grundstruktur unseres
 
 1. Fügen Sie die „Requires“-Elemente für unsere NPM-Pakete oben wie folgt hinzu:
 
-	```
+	``` javascript
 	var msRestAzure = require('ms-rest-azure');
 	var cdnManagementClient = require('azure-arm-cdn');
 	```
 
 2. Sie müssen einige Konstanten definieren, die von den Methoden verwendet werden. Fügen Sie Folgendes hinzu. Ersetzen Sie die Platzhalter einschließlich der **&lt;spitzen Klammern&gt;** nach Bedarf durch Ihre eigenen Werte.
 
-	```
+	``` javascript
 	//Tenant app constants
 	const clientId = "<YOUR CLIENT ID>";
 	const clientSecret = "<YOUR CLIENT AUTHENTICATION KEY>"; //Only for service principals
@@ -96,7 +96,7 @@ Bei geöffneter Datei *app.js* im Editor schreiben wir die Grundstruktur unseres
 
 3. Als Nächstes instanziieren wir den CDN-Verwaltungsclient und stellen unsere Anmeldeinformationen bereit.
 
-	```
+	``` javascript
 	var credentials = new msRestAzure.ApplicationTokenCredentials(clientId, tenantId, clientSecret);
 	var cdnClient = new cdnManagementClient(credentials, subscriptionId);
 	```
@@ -105,7 +105,7 @@ Bei geöffneter Datei *app.js* im Editor schreiben wir die Grundstruktur unseres
 
 	>[AZURE.IMPORTANT] Verwenden Sie dieses Codebeispiel nur, wenn Sie die individuelle Benutzerauthentifizierung anstelle eines Dienstprinzipals verwenden möchten. Schützen Sie Ihre individuellen Anmeldeinformationen gut, und halten Sie sie geheim.
 
-	```
+	``` javascript
 	var credentials = new msRestAzure.UserTokenCredentials(clientId, 
 		tenantId, '<username>', '<password>', '<redirect URI>');
 	var cdnClient = new cdnManagementClient(credentials, subscriptionId);
@@ -116,7 +116,7 @@ Bei geöffneter Datei *app.js* im Editor schreiben wir die Grundstruktur unseres
 
 4.  Für unsere Node.js-Konsolenanwendung benötigen wir einige Befehlszeilenparameter. Wir vergewissern uns, dass mindestens ein Parameter übergeben wurde.
 
-	```
+	```javascript
 	//Collect command line parameters
 	var parms = process.argv.slice(2);
 
@@ -131,7 +131,7 @@ Bei geöffneter Datei *app.js* im Editor schreiben wir die Grundstruktur unseres
 
 5. Hiermit gelangen wir zum Hauptteil unseres Programms, in dem wir basierend auf den übergebenen Parametern zu anderen Funktionen verzweigen.
 
-	```
+	```javascript
 	switch(parms[0].toLowerCase())
 	{
 		case "list":
@@ -158,7 +158,7 @@ Bei geöffneter Datei *app.js* im Editor schreiben wir die Grundstruktur unseres
 
 6.  Wir müssen an mehreren Stellen im Programm sicherstellen, dass die richtige Anzahl von Parametern übergeben wurde, und Hilfe anzeigen, wenn sie nicht richtig erscheinen. Hierfür erstellen wir Funktionen.
 
-	```
+	```javascript
 	function requireParms(parmCount) {
 		if(parms.length < parmCount) {
 			usageHelp(parms[0].toLowerCase());
@@ -197,7 +197,7 @@ Bei geöffneter Datei *app.js* im Editor schreiben wir die Grundstruktur unseres
 
 7. Außerdem sind die Funktionen, die wir auf dem CDN-Verwaltungsclient verwenden, asynchron. Sie müssen also über eine Methode zum Durchführen eines Rückrufs nach Abschluss des Vorgangs verfügen. Wir erstellen eine Methode, mit der die Ausgabe des CDN-Verwaltungsprogramms (falls vorhanden) angezeigt und das Programm richtig beendet werden kann.
 
-	```
+	```javascript
 	function callback(err, result, request, response) {
 		if (err) {
 			console.log(err);
@@ -215,7 +215,7 @@ Nachdem wir die Grundstruktur für unser Programm nun geschrieben haben, sollten
 
 Wir beginnen mit Code zum Auflisten der vorhandenen Profile und Endpunkte. Ich stelle Codekommentare mit der erwarteten Syntax bereit, damit wir wissen, welcher Parameter an welche Stelle gehört.
 
-```
+```javascript
 // list profiles
 // list endpoints <profile name>
 function cdnList(){
@@ -244,7 +244,7 @@ function cdnList(){
 
 Als Nächstes schreiben wir die Funktionen zum Erstellen von Profilen und Endpunkten.
 
-```
+```javascript
 function cdnCreate() {
     requireParms(2);
     switch(parms[1].toLowerCase())
@@ -297,7 +297,7 @@ function cdnCreateEndpoint() {
 
 Eine häufige Aufgabe, die Sie nach der Erstellung des Endpunkts auch in Ihr Programm aufnehmen sollten, ist das Löschen von Inhalten auf dem Endpunkt.
 
-```
+```javascript
 // purge <profile name> <endpoint name> <path>
 function cdnPurge() {
     requireParms(4);
@@ -311,7 +311,7 @@ function cdnPurge() {
 
 Mit der letzten Funktion, die wir einfügen, werden Endpunkte und Profile gelöscht.
 
-```
+```javascript
 function cdnDelete() {
     requireParms(2);
     switch(parms[1].toLowerCase())
@@ -367,4 +367,4 @@ Lesen Sie die [Referenz](http://azure.github.io/azure-sdk-for-node/azure-arm-cdn
 
 Weitere Teile der Dokumentation zum Azure SDK für Node.js finden Sie in der [vollständigen Referenz](http://azure.github.io/azure-sdk-for-node/).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

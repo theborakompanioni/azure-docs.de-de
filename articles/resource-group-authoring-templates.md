@@ -13,31 +13,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/13/2016"
+   ms.date="07/19/2016"
    ms.author="tomfitz"/>
 
 # Erstellen von Azure-Ressourcen-Manager-Vorlagen
 
-In einer Azure Resource Manager-Vorlage definieren Sie die für eine Lösung bereitzustellenden Ressourcen und geben Parameter und Variablen an, die die Eingabe von Werten für verschiedene Umgebungen ermöglichen. Die Vorlage besteht aus JSON und Ausdrücken, mit denen Sie Werte für die Bereitstellung erstellen können. In diesem Thema werden die Abschnitte der Vorlage beschrieben.
+In diesem Thema wird die Struktur einer Azure Resource Manager-Vorlage beschrieben. Er zeigt die verschiedenen Abschnitte einer Vorlage und die Eigenschaften, die in diesen Abschnitten verfügbar sind. Die Vorlage besteht aus JSON und Ausdrücken, mit denen Sie Werte für die Bereitstellung erstellen können.
 
-Visual Studio bietet Tools, welche die Erstellung von Vorlagen erleichtern. Weitere Informationen zum Verwenden von Visual Studio mit Vorlagen finden Sie unter [Erstellen und Bereitstellen von Azure-Ressourcengruppen über Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+Ein Leitfaden zum Erstellen einer Vorlage finden Sie unter [Resource Manager-Vorlage – Exemplarische Vorgehensweise](resource-manager-template-walkthrough.md). Empfehlungen zum Erstellen von Vorlagen finden Sie unter [Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen](resource-manager-template-best-practices.md).
 
-Ein Leitfaden zum Erstellen einer Vorlage finden Sie unter [Resource Manager-Vorlage – Exemplarische Vorgehensweise](resource-manager-template-walkthrough.md).
+Ein guter JSON-Editor kann das Erstellen von Vorlagen vereinfachen. Informationen zum Verwenden von Visual Studio mit Vorlagen finden Sie unter [Erstellen und Bereitstellen von Azure-Ressourcengruppen über Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md). Informationen zur Verwendung von VS Code finden Sie unter [Verwenden von Azure Resource Manager-Vorlagen in Visual Studio Code](resource-manager-vs-code.md).
 
-## Planen der Vorlage
-
-Bevor Sie mit dem Erstellen der Vorlage beginnen, sollten Sie erst einmal gründlich ermitteln, was bereitgestellt werden soll und wie Sie die Vorlage nutzen möchten. Berücksichtigen Sie vor allem Folgendes:
-
-1. Bereitzustellende Ressourcentypen
-2. Speicherort der Ressourcen
-3. Zum Bereitstellen von Ressourcen verwendete Version der Ressourcenanbieter-API
-4. Müssen einige Ressourcen nach anderen Ressourcen bereitgestellt werden?
-5. Welche Werte sollen während der Bereitstellung übergeben werden, und welche Werte möchten Sie direkt in der Vorlage definieren?
-6. Müssen Werte aus der Bereitstellung zurückgegeben werden?
-
-Lesen Sie sich die Informationen unter [Anbieter, Regionen, API-Versionen und Schemas für den Ressourcen-Manager](resource-manager-supported-services.md) durch, damit Sie besser ermitteln können, welche Ressourcentypen für die Bereitstellung verfügbar sind, welche Regionen für den Typ unterstützt werden und welche API-Versionen für einen Typ verfügbar sind.
-
-Sie müssen die Größe der Vorlage auf 1 MB und jede Parameterdatei auf 64 KB beschränken. Die 1-MB-Beschränkung gilt für den endgültigen Status der Vorlage, nachdem sie durch iterative Ressourcendefinitionen und Werte für Variablen und Parametern erweitert wurde.
+Sie müssen die Größe der Vorlage auf 1 MB und jede Parameterdatei auf 64 KB beschränken. Die 1-MB-Beschränkung gilt für den endgültigen Status der Vorlage, nachdem sie durch iterative Ressourcendefinitionen und Werte für Variablen und Parametern erweitert wurde.
 
 ## Vorlagenformat
 
@@ -55,7 +42,7 @@ In der einfachsten Struktur enthält eine Vorlage die folgenden Elemente.
 | Elementname | Erforderlich | Beschreibung
 | :------------: | :------: | :----------
 | $schema | Ja | Speicherort der JSON-Schemadatei, die die Version der Vorlagensprache beschreibt. Sie sollten die oben angegebene URL verwenden.
-| contentVersion | Ja | Version der Vorlage (z. B. 1.0.0.0). Sie können einen beliebigen Wert für dieses Element angeben. Bei der Bereitstellung von Ressourcen mithilfe der Vorlage kann mit diesem Wert sichergestellt werden, dass die richtige Vorlage verwendet wird.
+| contentVersion | Ja | Version der Vorlage (z. B. 1.0.0.0). Sie können einen beliebigen Wert für dieses Element angeben. Bei der Bereitstellung von Ressourcen mithilfe der Vorlage kann mit diesem Wert sichergestellt werden, dass die richtige Vorlage verwendet wird.
 | parameters | Nein | Werte, die bei der Bereitstellung angegeben werden, um die Bereitstellung der Ressourcen anpassen.
 | Variablen | Nein | Werte, die als JSON-Fragmente in der Vorlage verwendet werden, um Vorlagensprachausdrücke zu vereinfachen.
 | angeben | Ja | Ressourcentypen, die in einer Ressourcengruppe bereitgestellt oder aktualisiert werden.
@@ -82,7 +69,7 @@ Unter [Funktionen von Azure-Ressourcen-Manager-Vorlagen](resource-group-template
 
 ## Parameter
 
-Im Abschnitt „Parameter“ der Vorlage geben Sie an, welche Werte Sie beim Bereitstellen der Ressourcen eingeben können. Mit diesen Parameterwerten können Sie die Bereitstellung anpassen, indem Sie Werte angeben, die für eine bestimmte Umgebung (z. B. Entwicklung, Testing oder Produktion) maßgeschneidert sind. Sie müssen in der Vorlage nicht unbedingt Parameter angeben, aber ohne Parameter stellt Ihre Vorlage immer dieselben Ressourcen mit den gleichen Namen, Speicherorten und Eigenschaften bereit.
+Im Abschnitt „Parameter“ der Vorlage geben Sie an, welche Werte Sie beim Bereitstellen der Ressourcen eingeben können. Mit diesen Parameterwerten können Sie die Bereitstellung anpassen, indem Sie Werte angeben, die für eine bestimmte Umgebung (z. B. Entwicklung, Testing oder Produktion) maßgeschneidert sind. Sie müssen in der Vorlage nicht unbedingt Parameter angeben, aber ohne Parameter stellt Ihre Vorlage immer dieselben Ressourcen mit den gleichen Namen, Speicherorten und Eigenschaften bereit.
 
 Sie können diese Parameterwerte in der Vorlage zum Festlegen von Werten für die bereitgestellten Ressourcen verwenden. Nur die im Parameterabschnitt deklarierten Parameter können in anderen Abschnitten der Vorlage verwendet werden.
 
@@ -165,11 +152,11 @@ Im folgenden Beispiel wird veranschaulicht, wie Sie Parameter definieren:
       }
     }
 
-Informationen zum Eingeben der Parameterwerte während der Bereitstellung finden Sie unter [Bereitstellen von Ressourcen mit einer Azure Resource Manager-Vorlage](resource-group-template-deploy.md#parameter-file).
+Informationen zum Eingeben der Parameterwerte während der Bereitstellung finden Sie unter [Bereitstellen einer Anwendung mit einer Azure Resource Manager-Vorlage](resource-group-template-deploy.md#parameter-file).
 
 ## Variablen
 
-Im Abschnitt „Variablen“ erstellen Sie Werte, die in der ganzen Vorlage verwendet werden können. Diese Variablen basieren i. d. R. auf Werten, die von den Parametern stammen. Sie müssen nicht unbedingt Variablen definieren, aber häufig bewirken sie eine Vereinfachung Ihrer Vorlage, indem komplexe Ausdrücke reduziert werden.
+Im Abschnitt „Variablen“ erstellen Sie Werte, die in der ganzen Vorlage verwendet werden können. Diese Variablen basieren i. d. R. auf Werten, die von den Parametern stammen. Sie müssen nicht unbedingt Variablen definieren, aber häufig bewirken sie eine Vereinfachung Ihrer Vorlage, indem komplexe Ausdrücke reduziert werden.
 
 Sie definieren Variablen mit der folgenden Struktur:
 
@@ -247,7 +234,7 @@ Sie definieren Ressourcen mit der folgenden Struktur:
 | Kommentare | Nein | Ihre Notizen zur Dokumentierung der Ressourcen in Ihrer Vorlage
 | dependsOn | Nein | Ressourcen, von denen die definierte Ressource abhängig ist. Die Abhängigkeiten zwischen den Ressourcen werden ausgewertet, und die Ressourcen werden in ihrer Abhängigkeitsreihenfolge bereitgestellt. Wenn Ressourcen nicht voneinander abhängig sind, wird versucht, sie parallel bereitzustellen. Der Wert kann eine durch Trennzeichen getrennte Liste von Ressourcennamen oder eindeutigen Ressourcenbezeichnern sein.
 | Eigenschaften | Nein | Ressourcenspezifische Konfigurationseinstellungen Die Werte für die Eigenschaften sind mit den Werten identisch, die Sie im Anforderungstext für den REST-API-Vorgang (PUT-Methode) angegeben haben, um die Ressource zu erstellen. Links zur Ressourcenschemadokumentation oder REST-API finden Sie unter [Anbieter, Regionen, API-Versionen und Schemas für den Ressourcen-Manager](resource-manager-supported-services.md).
-| Ressourcen | Nein | Untergeordnete Ressourcen, die von der definierten Ressource abhängig sind. Sie können nur Ressourcentypen bereitstellen, die laut Schema der übergeordneten Ressource zulässig sind. Der vollqualifizierte Name des untergeordneten Ressourcentyps enthält den übergeordneten Ressourcentyp, z. B. **Microsoft.Web/sites/extensions**. Die Abhängigkeit von der übergeordneten Ressource ist nicht implizit. Sie müssen diese Abhängigkeit explizit definieren. 
+| Ressourcen | Nein | Untergeordnete Ressourcen, die von der definierten Ressource abhängig sind. Sie können nur Ressourcentypen bereitstellen, die laut Schema der übergeordneten Ressource zulässig sind. Der vollqualifizierte Name des untergeordneten Ressourcentyps enthält den übergeordneten Ressourcentyp, z. B. **Microsoft.Web/sites/extensions**. Die Abhängigkeit von der übergeordneten Ressource ist nicht implizit. Sie müssen diese Abhängigkeit explizit definieren. 
 
 
 Wenn der Ressourcenname nicht eindeutig ist, können Sie mit der **resourceId**-Hilfsfunktion (weiter unten beschrieben) den eindeutigen Bezeichner für eine Ressource abrufen.
@@ -281,7 +268,7 @@ Der Abschnitt „Ressourcen“ enthält ein Array mit den bereitzustellenden Res
 
 
 
-Das folgende Beispiel enthält eine **Microsoft.Web/serverfarms**-Ressource und eine **Microsoft.Web/Sites**-Ressource mit einer untergeordneten **Extensions**-Ressource: Beachten Sie, dass die Website als abhängig von der Serverfarm markiert ist, da die Serverfarm vorhanden sein muss, bevor die Website bereitgestellt werden kann. Sie sehen auch, dass die **Extensions**-Ressource ein untergeordnetes Element der Website ist.
+Das folgende Beispiel enthält eine **Microsoft.Web/serverfarms**-Ressource und eine **Microsoft.Web/Sites**-Ressource mit einer untergeordneten **Extensions**-Ressource. Beachten Sie, dass die Website als abhängig von der Serverfarm markiert ist, da die Serverfarm vorhanden sein muss, bevor die Website bereitgestellt werden kann. Sie sehen auch, dass die **Extensions**-Ressource ein untergeordnetes Element der Website ist.
 
     "resources": [
       {
@@ -341,7 +328,7 @@ Das folgende Beispiel enthält eine **Microsoft.Web/serverfarms**-Ressource und 
 
 ## Ausgaben
 
-Im Ausgabenabschnitt legen Sie Werte fest, die von der Bereitstellung zurückgegeben werden. Sie könnten z. B. den URI für den Zugriff auf eine bereitgestellte Ressource zurückgeben.
+Im Ausgabenabschnitt legen Sie Werte fest, die von der Bereitstellung zurückgegeben werden. Sie könnten z. B. den URI für den Zugriff auf eine bereitgestellte Ressource zurückgeben.
 
 Das folgende Beispiel zeigt die Struktur einer Ausgabedefinition:
 
@@ -377,4 +364,4 @@ Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Freigeben des 
 - Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).
 - Möglicherweise müssen Sie Ressourcen verwenden, die in einer anderen Ressourcengruppe enthalten sind. Dies geschieht normalerweise bei der Arbeit mit Speicherkonten oder virtuellen Netzwerken, die in mehreren Ressourcengruppen gemeinsam verwendet werden. Weitere Informationen finden Sie unter der [resourceId-Funktion](resource-group-template-functions.md#resourceid).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

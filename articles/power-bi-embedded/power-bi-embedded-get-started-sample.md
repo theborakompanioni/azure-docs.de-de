@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="07/05/2016"
+   ms.date="07/14/2016"
    ms.author="owend"/>
 
 # Erste Schritte mit dem Beispiel zu Power BI Embedded
@@ -158,14 +158,13 @@ In der **Sicht** wird die Anzeige von Power BI-**Berichten** und eines einzelnen
 
 ### Controller
 
-**DashboardController.cs**: Erstellt einen PowerBIClient, der ein **App-Token** übergibt. Ein JSON Web Token (JWT) wird auf der Grundlage des Signaturschlüssels generiert, um die **Anmeldeinformationen** zu erhalten. Die **Anmeldeinformationen** dienen zum Erstellen einer Instanz von **PowerBIClient**. Weitere Informationen zu **App-Token** finden Sie unter [Funktionsweise des App-Tokenflusses](#key-flow). Sobald Sie über eine Instanz von **PowerBIClient** verfügen, können Sie GetReports() und GetReportsAsync() aufrufen.
+**DashboardController.cs**: Erstellt einen PowerBIClient, der ein **App-Token** übergibt. Ein JSON Web Token (JWT) wird auf der Grundlage des Signaturschlüssels generiert, um die **Anmeldeinformationen** zu erhalten. Die **Anmeldeinformationen** dienen zum Erstellen einer Instanz von **PowerBIClient**. Sobald Sie über eine Instanz von **PowerBIClient** verfügen, können Sie GetReports() und GetReportsAsync() aufrufen.
 
 CreatePowerBIClient()
 
-    private IPowerBIClient CreatePowerBIClient(PowerBIToken token)
+    private IPowerBIClient CreatePowerBIClient()
     {
-        var jwt = token.Generate(accessKey);
-        var credentials = new TokenCredentials(jwt, "AppToken");
+        var credentials = new TokenCredentials(accessKey, "AppKey");
         var client = new PowerBIClient(credentials)
         {
             BaseUri = new Uri(apiUrl)
@@ -178,8 +177,7 @@ ActionResult Reports()
 
     public ActionResult Reports()
     {
-        var devToken = PowerBIToken.CreateDevToken(this.workspaceCollection, this.workspaceId);
-        using (var client = this.CreatePowerBIClient(devToken))
+        using (var client = this.CreatePowerBIClient())
         {
             var reportsResponse = client.Reports.GetReports(this.workspaceCollection, this.workspaceId);
 
@@ -197,12 +195,11 @@ Task<ActionResult> Report(string reportId)
 
     public async Task<ActionResult> Report(string reportId)
     {
-        var devToken = PowerBIToken.CreateDevToken(this.workspaceCollection, this.workspaceId);
-        using (var client = this.CreatePowerBIClient(devToken))
+        using (var client = this.CreatePowerBIClient())
         {
             var reportsResponse = await client.Reports.GetReportsAsync(this.workspaceCollection, this.workspaceId);
             var report = reportsResponse.Value.FirstOrDefault(r => r.Id == reportId);
-            var embedToken = PowerBIToken.CreateReportEmbedToken(this.workspaceCollection, this.workspaceId, Guid.Parse(report.Id));
+            var embedToken = PowerBIToken.CreateReportEmbedToken(this.workspaceCollection, this.workspaceId, report.Id);
 
             var viewModel = new ReportViewModel
             {
@@ -216,14 +213,14 @@ Task<ActionResult> Report(string reportId)
 
 ### Integrieren eines Berichts in Ihre App
 
-Sobald Sie über einen **Bericht** verfügen, können Sie den **Power BI-Bericht** per **IFrame** einbetten. Hier sehen Sie einen Codeausschnitt aus „powerbi.js“ im Beispiel für **Microsoft Power BI Embedded**.
+Sobald Sie über einen **Bericht** verfügen, können Sie den Power BI-**Bericht** per **IFrame** einbetten. Hier sehen Sie einen Codeausschnitt aus „powerbi.js“ im Beispiel für **Microsoft Power BI Embedded**.
 
 ![](media\powerbi-embedded-get-started-sample\power-bi-embedded-iframe-code.png)
 
 
 ## Filtern von in die Anwendung eingebetteten Berichten
 
-Sie können einen eingebetteten Bericht mit einer URL-Syntax filtern. Fügen Sie hierfür der iFrame-SRC-URL mit dem angegebenem Filter den Abfragezeichenfolgenparameter **$filter** mit dem Operator **eq** hinzu. Dies ist die Syntax der Filterabfrage:
+Sie können einen eingebetteten Bericht mit einer URL-Syntax filtern. Fügen Sie hierfür der iFrame-SRC-URL mit dem angegebenem Filter den Abfragezeichenfolgen-Parameter **$filter** mit dem Operator **eq** hinzu. Dies ist die Syntax der Filterabfrage:
 
 ```
 https://app.powerbi.com/reportEmbed
@@ -237,6 +234,6 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 ## Weitere Informationen
 
 - [Häufige Microsoft Power BI Embedded-Szenarios](power-bi-embedded-scenarios.md)
-- [Informationen zum App-Tokenfluss in Power BI Embedded](power-bi-embedded-app-token-flow.md)
+- [Authentifizieren und Autorisieren in Power BI Embedded](power-bi-embedded-app-token-flow.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

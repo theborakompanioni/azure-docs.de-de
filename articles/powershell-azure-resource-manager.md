@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="powershell" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/11/2016" 
+	ms.date="07/19/2016" 
 	ms.author="tomfitz"/>
 
 # Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager
@@ -22,6 +22,7 @@
 - [Portal](azure-portal/resource-group-portal.md)
 - [Azure-Befehlszeilenschnittstelle](xplat-cli-azure-resource-manager.md)
 - [Azure PowerShell](powershell-azure-resource-manager.md)
+- [.NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/)
 - [Java](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group/)
 - [Knoten](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
 - [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
@@ -49,9 +50,9 @@ Für dieses Tutorial benötigen Sie Folgendes:
   + Sie können [ein Azure-Konto kostenlos erstellen](/pricing/free-trial/?WT.mc_id=A261C142F): Sie erhalten ein Guthaben, das Sie zum Ausprobieren zahlungspflichtiger Azure-Dienste nutzen können, und Sie können das Konto selbst dann behalten und die kostenlosen Azure-Dienste wie Websites nutzen, wenn das Guthaben aufgebraucht ist. Ihre Kreditkarte wird nur dann belastet, wenn Sie Ihre Einstellungen explizit ändern und mit einer Zahlung einverstanden sind.
   
   + Sie können Ihre [Vorteile für MSDN-Abonnenten aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F): Ihr MSDN-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste nutzen können.
-- Azure PowerShell 1.0. Informationen zu dieser Version und deren Installation finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](powershell-install-configure.md).
+- Azure PowerShell 1.0. Informationen zu dieser Version und ihrer Installation finden Sie unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](powershell-install-configure.md).
 
-Dieses Lernprogramm richtet sich an PowerShell-Anfänger. Es wird aber vorausgesetzt, dass Sie die grundlegenden Konzepte verstehen, z. B. Module, Cmdlets und Sitzungen.
+Dieses Lernprogramm richtet sich an PowerShell-Anfänger. Es wird aber vorausgesetzt, dass Sie die grundlegenden Konzepte verstehen, z. B. Module, Cmdlets und Sitzungen.
 
 ## Hilfe zu Cmdlets
 
@@ -177,7 +178,7 @@ In wenigen Schritten haben Sie die Ressourcen, die für eine komplexe Website er
 
 ### Protokollieren von Debuginformationen
 
-Beim Bereitstellen einer Vorlage können Sie zusätzliche Informationen zur Anforderung und Antwort protokollieren, indem Sie den Parameter **-DeploymentDebugLogLevel** beim Ausführen von **New-AzureRmResourceGroupDeployment** angeben. Diese Informationen sind für die Behandlung von Bereitstellungsfehlern hilfreich. Der Standardwert lautet **Keine**. Dies bedeutet, dass keine Inhalte von Anforderungen oder Antworten protokolliert werden. Sie können angeben, dass die Inhalte von Anforderungen, Antworten oder beidem protokolliert werden. Weitere Informationen zur Problembehandlung für Bereitstellungen und Protokollierung von Debuginformationen finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen mit Azure PowerShell](resource-manager-troubleshoot-deployments-powershell.md). Im folgenden Beispiel werden die Inhalte der Anforderung und der Antwort für die Bereitstellung protokolliert.
+Beim Bereitstellen einer Vorlage können Sie zusätzliche Informationen zur Anforderung und Antwort protokollieren, indem Sie den Parameter **-DeploymentDebugLogLevel** beim Ausführen von **New-AzureRmResourceGroupDeployment** angeben. Diese Informationen sind für die Behandlung von Bereitstellungsfehlern hilfreich. Der Standardwert lautet **Keine**. Dies bedeutet, dass keine Inhalte von Anforderungen oder Antworten protokolliert werden. Sie können angeben, dass die Inhalte von Anforderungen, Antworten oder beidem protokolliert werden. Weitere Informationen zur Problembehandlung für Bereitstellungen und Protokollierung von Debuginformationen finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit Azure PowerShell](resource-manager-troubleshoot-deployments-powershell.md). Im folgenden Beispiel werden die Inhalte der Anforderung und der Antwort für die Bereitstellung protokolliert.
 
     New-AzureRmResourceGroupDeployment -ResourceGroupName TestRG1 -DeploymentDebugLogLevel All -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json 
 
@@ -386,4 +387,4 @@ In den obigen Bereitstellungsbeispielen in diesem Thema wurden nur die individue
 - Ein ausführliches Beispiel für das Bereitstellen eines Projekts finden Sie unter [Vorhersagbares Bereitstellen von Microservices in Azure](app-service-web/app-service-deploy-complex-application-predictably.md).
 - Weitere Informationen zur Problembehandlung bei einer nicht erfolgreichen Bereitstellung finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen in Azure](./resource-manager-troubleshoot-deployments-powershell.md).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

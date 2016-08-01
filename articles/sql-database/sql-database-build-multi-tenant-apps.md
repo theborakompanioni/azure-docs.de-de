@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="05/04/2016"
+   ms.date="07/19/2016"
    ms.author="carlrab"/>
 
 # Erstellt mehrinstanzenfähige Apps mit Azure SQL-Datenbank mit Isolation und Effizienz
@@ -47,22 +47,22 @@ Basic-, Standard- und Premium-Pools bieten eine große Auswahl an Leistungs-, Sp
 
 Zusätzlich zu den elastischen Pools stehen Features von SQL-Datenbank zur Verfügung, die Sie bei der Verwaltung operativer Aktivitäten über mehrere Datenbanken hinweg unterstützen:
 
-** Ausführen von datenbankübergreifenden Abfragen und Berichten ** [Abfragen elastischer Datenbanken](sql-database-elastic-query-overview.md) ermöglichen es Ihnen, Abfragen oder Berichte über die Datenbanken in Ihrem elastischen Pool hinweg auszuführen und in einem Arbeitsschritt auf Remotedaten zuzugreifen, die in verschiedenen Datenbanken Ihres Pools gespeichert sind.
+** Ausführen Datenbanken übergreifender Abfragen und Berichterstattung. ** [Abfragen elastischer Datenbanken](sql-database-elastic-query-overview.md) ermöglichen Ihnen, Abfragen oder Berichte über die Datenbanken in Ihrem elastischen Pool hinweg auszuführen und in einem Arbeitsschritt auf Remotedaten zuzugreifen, die in verschiedenen Datenbanken Ihres Pools gespeichert sind.
 
-** Ausführen datenbankübergreifender Transaktionen ** [Transaktionen für elastische Datenbanken](sql-database-elastic-transactions-overview.md) ermöglichen es Ihnen, Transaktionen und Vorgänge über verschiedene Datenbanken in SQL-Datenbank hinweg auszuführen (z.B. bei der Verarbeitung von datenbankübergreifenden Finanztransaktionen oder beim Aktualisieren des Bestands in einer Datenbank und in Bestellungen).
+** Datenbanktransaktionen übergreifende Ausführung. ** [Transaktionen für elastische Datenbanken](sql-database-elastic-transactions-overview.md) ermöglichen Ihnen, Transaktionen und Vorgänge über verschiedene Datenbanken in SQL-Datenbanken hinweg auszuführen (z.B. bei der Verarbeitung von Datenbanken übergreifenden Finanztransaktionen oder beim Aktualisieren des Bestands in einer Datenbank und in Bestellungen).
 
-** Ausführen derselben Vorgänge in verschiedenen Datenbanken ** [Aufträge für elastische Datenbanken](sql-database-elastic-jobs-overview.md) ermöglichen Ihnen das Ausführen administrativer Vorgänge, z.B. das Neuerstellen von Indizes oder eine Schemaaktualisierung für jede Datenbank in Ihrem elastischen Pool.
+** Ausführen der gleichen Vorgänge für mehrere Datenbanken. ** [Aufträge für elastische Datenbanken](sql-database-elastic-jobs-overview.md) ermöglichen Ihnen das Ausführen administrativer Vorgänge, z.B. das Neuerstellen von Indizes oder eine Schemaaktualisierung für jede Datenbank in Ihrem elastischen Pool.
 
 Wechseln Sie zur Startseite, um zu erfahren, welche weiteren Features SQL-Datenbank zu bieten hat. [Weitere Informationen](https://azure.microsoft.com/services/sql-database/)
 
 ## Nächste Schritte
 
-Erhalten Sie ein [kostenloses Azure-Abonnement](https://azure.microsoft.com/get-started/), und [erstellen Sie Ihre erste Azure SQL-Datenbank](sql-database-get-started.md).
+Erhalten Sie ein [kostenloses Azure-Abonnement](https://azure.microsoft.com/get-started/) und [erstellen Sie Ihre erste Azure SQL-Datenbank](sql-database-get-started.md).
 
 ## Zusätzliche Ressourcen
 
 Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/services/sql-database/).
  
-Lesen Sie die [Technische Übersicht über SQL-Datenbank](sql-database-technical-overview.md).
+Lesen Sie die [technische Übersicht über SQL-Datenbank](sql-database-technical-overview.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -19,7 +19,7 @@
 
 # SQL-Abfragespickzettel-PDF-Datei für DocumentDB
 
-Mit dem **SQL-Abfragespickzettel für DocumentDB** können Sie schnell Abfragen für DocumentDB-Daten schreiben, da dort allgemeine Abfragen, Schlüsselwörter, integrierte Funktionen und Operatoren auf einem leicht zu druckenden PDF-Referenzblatt dargestellt werden.
+Mit dem **SQL-Abfragespickzettel für DocumentDB** können Sie schnell Abfragen für DocumentDB-Daten schreiben, da dort allgemeine Datenbankabfragen, Schlüsselwörter, integrierte Funktionen und Operatoren auf einem leicht zu druckenden PDF-Referenzblatt dargestellt werden.
 
 DocumentDB unterstützt die relationale, hierarchische und räumliche Abfrage von JSON-Dokumenten mithilfe von [SQL](documentdb-sql-query.md) und ohne ein Schema oder sekundäre Indizes anzugeben. Neben den standardmäßigen ANSI-SQL-Schlüsselwörtern und -Operatoren unterstützt DocumentDB eine benutzerdefinierte JavaScript-Funktionen (UDFs), JavaScript-Operatoren und eine Vielzahl von integrierten Funktionen.
 
@@ -39,4 +39,4 @@ Schreiben Sie Ihre Abfragen schneller, indem Sie den SQL-Abfragespickzettel heru
 - Eine exemplarische Vorgehensweise der Abfrageoptionen, die in DocumentDB verfügbar sind, finden Sie unter [Abfragen von DocumentDB](documentdb-sql-query.md).
 - Die zugehörige Referenzdokumentation finden Sie unter [SQL-Abfragesprache von DocumentDB](https://msdn.microsoft.com/library/azure/dn782250.aspx).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

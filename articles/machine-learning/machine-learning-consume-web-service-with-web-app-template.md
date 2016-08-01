@@ -14,10 +14,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/02/2016"
+	ms.date="07/06/2016"
 	ms.author="garye;raymondl"/>
 
 # Verwenden eines Azure Machine Learning-Webdiensts mit einer Web-App-Vorlage
+
+>[AZURE.NOTE] In diesem Thema werden für einen klassischen Webdienst geltende Verfahren beschrieben.
 
 Nachdem Sie Ihr Vorhersagemodell entwickelt und mit Machine Learning Studio (oder Tools wie R oder Python) als Azure-Webdienst bereitgestellt haben, können Sie auf das operationalisierte Modell mit einer REST-API zugreifen.
 
@@ -56,7 +58,7 @@ Nachdem Sie den Webdienst bereitgestellt haben, können Sie den unten aufgeführ
 
 	![Anforderungs-URI][image4]
 
-3. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), **melden Sie sich an**, und klicken Sie auf **Neu**. Suchen Sie nach **Azure ML Request-Response Service Web App**, wählen Sie die App aus, und klicken Sie auf **Erstellen**.
+3. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), **melden Sie sich an**, und klicken Sie auf **Neu**. Navigieren Sie zu **Azure ML Request-Response Service Web App**, wählen Sie die App aus, und klicken Sie auf **Create**.
 
 	- Geben Sie Ihrer Web-App einen eindeutigen Namen. Die URL der Web-App besteht aus diesem Namen gefolgt von `.azurewebsites.net.`. Beispiel: `http://carprediction.azurewebsites.net.`
 
@@ -125,4 +127,4 @@ Erfahren Sie mehr:
 [image6]: media\machine-learning-consume-web-service-with-web-app-template\web-service-info.png
 [image7]: media\machine-learning-consume-web-service-with-web-app-template\storage.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

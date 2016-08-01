@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Erste Schritte mit Warteschlangenspeicher und verbundenen Visual Studio-Diensten (ASP.NET) | Microsoft Azure"
-	description="Erfahren Sie etwas über die ersten Schritte mit Azure-Warteschlangenspeicher in einem ASP.NET 5-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben."
+	description="Erfahren Sie etwas über die ersten Schritte mit Azure-Warteschlangenspeicher in einem ASP.NET 5-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben."
 	services="storage"
 	documentationCenter=""
 	authors="TomArcher"
@@ -18,13 +18,15 @@
 
 # Erste Schritte mit Azure-Warteschlangenspeicher und verbundenen Visual Studio-Diensten
 
+[AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
+
 ## Übersicht
 
 Dieser Artikel beschreibt, wie die ersten Schritte beim Verwenden von Azure-Warteschlangenspeicher in Visual Studio aussehen, nachdem Sie über das Visual Studio-Dialogfeld **Verbundene Dienste hinzufügen** in einem ASP.NET-Projekt ein Azure-Speicherkonto erstellt oder auf ein solches Konto verwiesen haben.
 
 Wir zeigen Ihnen, wie Sie eine Azure-Warteschlange in Ihrem Speicherkonto erstellen und darauf zugreifen. Außerdem wird gezeigt, wie Sie grundlegende Warteschlangenvorgänge, etwa Hinzufügen, Ändern, Lesen und Entfernen von Warteschlangennachrichten ausführen. Die Beispiele sind in C# geschrieben und greifen auf die [Microsoft Azure-Speicherclientbibliothek für .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx) zurück. Weitere Informationen zu ASP.NET finden Sie unter [ASP.NET](http://www.asp.net).
 
-Die Warteschlangenspeicherung in Azure ist ein Dienst zur Speicherung großer Anzahlen von Nachrichten, auf die von überall auf der Welt mit authentifizierten Anrufen über HTTP oder HTTPS zugegriffen werden kann. Eine einzelne Warteschlangennachricht kann bis zu 64 KB groß sein, und eine Warteschlange kann Millionen von Nachrichten enthalten. Deren Anzahl ist nur durch die Kapazität des Speicherkontos begrenzt.
+Die Warteschlangenspeicherung in Azure ist ein Dienst zur Speicherung großer Anzahlen von Nachrichten, auf die von überall auf der Welt mit authentifizierten Anrufen über HTTP oder HTTPS zugegriffen werden kann. Eine einzelne Warteschlangennachricht kann bis zu 64 KB groß sein, und eine Warteschlange kann Millionen von Nachrichten enthalten. Deren Anzahl ist nur durch die Kapazität des Speicherkontos begrenzt.
 
 ## Zugriff auf Warteschlangen in Code
 
@@ -156,4 +158,4 @@ Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen S
 
 [AZURE.INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0720_2016-->

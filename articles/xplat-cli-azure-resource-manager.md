@@ -23,6 +23,7 @@
 - [Portal](azure-portal/resource-group-portal.md)
 - [Azure-Befehlszeilenschnittstelle](xplat-cli-azure-resource-manager.md)
 - [Azure PowerShell](powershell-azure-resource-manager.md)
+- [.NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/)
 - [Java](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group/)
 - [Knoten](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
 - [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
@@ -82,7 +83,7 @@ Die Bereitstellung für die Ressourcengruppe *testRG* erfolgt später mithilfe e
 
 Sie können entweder [eine eigene Vorlage erstellen](resource-group-authoring-templates.md) oder eine der von der Community erstellten [Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) verwenden. Diese sind auch bei [GitHub](https://github.com/Azure/azure-quickstart-templates) verfügbar.
 
-Das Erstellen einer neuen Vorlage würde jedoch den Rahmen dieses Artikels sprengen. Daher verwenden wir zum Einstieg die in den [Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/101-vm-simple-linux/) verfügbare Vorlage _101-simple-vm-from-image_. Standardmäßig wird dabei ein einzelner virtueller Ubuntu 14.04.2-LTS-Computer in einem neuen virtuellen Netzwerk mit einem einzelnen Subnetz erstellt. Sie müssen lediglich eine Ressourcengruppe und die folgenden Parameter angeben, um diese Vorlage zu verwenden:
+Das Erstellen einer neuen Vorlage würde jedoch den Rahmen dieses Artikels sprengen. Daher verwenden wir zum Einstieg die in den [Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/101-vm-simple-linux/) verfügbare Vorlage _101-simple-vm-from-image_. Standardmäßig wird dabei ein einzelner virtueller Ubuntu 14.04.2-LTS-Computer in einem neuen virtuellen Netzwerk mit einem einzelnen Subnetz erstellt. Sie müssen lediglich eine Ressourcengruppe und die folgenden Parameter angeben, um diese Vorlage zu verwenden:
 
 * Administratorbenutzername für den virtuellen Computer: `adminUsername`
 * Kennwort: `adminPassword`
@@ -158,7 +159,7 @@ Das Erstellen einer neuen Vorlage würde jedoch den Rahmen dieses Artikels spren
 	>
 	> Wenn Sie keinen Bereitstellungsnamen angeben, wird automatisch einer anhand des Namens der Vorlagendatei erstellt. Dieser Name wird als Teil der Ausgabe des Befehls `azure group create` zurückgegeben.
 
-	Sie können jetzt unter Verwendung des angegebenen Domänennamens per SSH auf den virtuellen Computer zugreifen. Beim Herstellen einer Verbindung mit dem virtuellen Computer müssen Sie einen vollqualifizierten Domänennamen im Format `<domainName>.<region>.cloudapp.azure.com` verwenden, z. B. `MyDomainName.westus.cloudapp.azure.com`.
+	Sie können jetzt unter Verwendung des angegebenen Domänennamens per SSH auf den virtuellen Computer zugreifen. Beim Herstellen einer Verbindung mit dem virtuellen Computer müssen Sie einen vollqualifizierten Domänennamen im Format `<domainName>.<region>.cloudapp.azure.com` verwenden, z. B. `MyDomainName.westus.cloudapp.azure.com`.
 
 5. Verwenden Sie zum Anzeigen der Gruppe den folgenden Befehl.
 
@@ -238,4 +239,4 @@ Mithilfe der Azure-Befehlszeilenschnittstelle können Sie entweder eine Vorlage 
 * Weitere Informationen zur Verwendung des Azure-Ressourcen-Managers mit Azure PowerShell finden Sie unter [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](powershell-azure-resource-manager.md).
 * Weitere Informationen zum Verwenden von Azure Resource Manager im Azure-Portal finden Sie unter [Verwenden des Azure-Portals zum Bereitstellen und Verwalten Ihrer Azure-Ressourcen](./azure-portal/resource-group-portal.md).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

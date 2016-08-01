@@ -22,7 +22,7 @@ Erfahren Sie, wie Sie eine [Apache HBase](http://hbase.apache.org/)-Anwendung in
 
 [Maven](http://maven.apache.org/) ist ein Projektmanagement- und Verständnistool, mit dem Sie Software, Dokumentationen und Berichte für Java-Projekte erstellen können. In diesem Artikel erfahren Sie, wie Sie das Tool zum Erstellen einer einfachen Java-Anwendung einsetzen, die eine HBase-Tabelle auf einem Linux-basierten HDInsight-Cluster erstellt, abfragt und löscht.
 
-> [AZURE.NOTE] Die Schritte in diesem Artikel setzen voraus, dass Sie einen Linux-basierten HDInsight-Cluster verwenden. Informationen zur Verwendung eines Windows-basierten HDInsight-Clusters finden Sie unter [Verwenden von Maven zur Entwicklung von Java-Anwendungen, die HBase mit HDInsight (Hadoop) nutzen](hdinsight-hbase-build-java-maven.md).
+> [AZURE.NOTE] Die Schritte in diesem Artikel setzen voraus, dass Sie einen Linux-basierten HDInsight-Cluster verwenden. Informationen zur Verwendung eines Windows-basierten HDInsight-Clusters finden Sie unter [Verwenden von Maven zur Entwicklung von Java-Anwendungen, die HBase mit Windows-basiertem HDInsight (Hadoop) nutzen](hdinsight-hbase-build-java-maven.md).
 
 ##Anforderungen
 
@@ -390,4 +390,4 @@ Wenn Sie mit dem Beispiel fertig sind, verwenden Sie den folgenden Befehl aus de
 
 	hadoop jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.DeleteTable
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

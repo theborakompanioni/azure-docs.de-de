@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/24/2016"
+	ms.date="07/14/2016"
 	ms.author="davidmu"/>
 
 # Bereitstellen von Azure-Ressourcen mit C# 
@@ -27,15 +27,15 @@ Zuerst müssen Sie sicherstellen, dass Sie Folgendes erledigt haben:
 - Überprüfen der Installation von [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) oder [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855)
 - Abrufen eines [Authentifizierungstokens](../resource-group-authenticate-service-principal.md)
 
-Die Durchführung dieser Schritte dauert etwa 30 Minuten.
+Die Durchführung dieser Schritte dauert etwa 30 Minuten.
 
 ## Schritt 1: Erstellen eines Visual Studio-Projekts und Installieren der Bibliotheken
 
 NuGet-Pakete sind die einfachste Möglichkeit, um die Bibliotheken zu installieren, die Sie zum Abschluss dieses Lernprogramms benötigen. Sie müssen die Azure-Ressourcenverwaltungsbibliothek, die Azure Active Directory-Authentifizierungsbibliothek und die Computerressourcenanbieter-Bibliothek installieren. Führen Sie folgende Schritte aus, um diese Bibliotheken in Visual Studio abzurufen:
 
-1. Klicken Sie auf **Datei** > **Neu** > **Projekt**.
+1. Klicken Sie auf **Datei** > **Neu** > **Projekt**.
 
-2. Wählen Sie unter **Vorlagen** > **Visual C#** **Konsolenanwendung** aus, geben Sie den Namen und Speicherort des Projekts ein, und klicken Sie dann auf **OK**.
+2. Wählen Sie unter **Vorlagen** > **Visual C#** **Konsolenanwendung** aus, geben Sie den Namen und Speicherort des Projekts ein, und klicken Sie dann auf **OK**.
 
 3. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Projektnamen und anschließend auf **NuGet-Pakete verwalten**.
 
@@ -75,8 +75,8 @@ Nachdem die Azure Active Directory-Anwendung erstellt und die Authentifizierungs
         {
           var cc = new ClientCredential("{client-id}", "{client-secret}");
           var context = new AuthenticationContext("https://login.windows.net/{tenant-id}");
-          var result = context.AcquireTokenAsync("https://management.azure.com/", cc);
-          if (result == null)
+          var token = context.AcquireTokenAsync("https://management.azure.com/", cc);
+          if (token == null)
           {
             throw new InvalidOperationException("Could not get the token");
           }
@@ -454,7 +454,7 @@ Nachdem Sie alle unterstützenden Ressourcen erstellt haben, können Sie nun ein
           Console.WriteLine(vm.ProvisioningState);
         }
 
-	>[AZURE.NOTE] In diesem Tutorial wird eine virtuelle Maschine erstellt, auf dem eine Version des Windows Server-Betriebssystems ausgeführt wird. Weitere Informationen zur Auswahl von anderen Images finden Sie unter [Navigieren zu und Auswählen von Images virtueller Linux-Computer in Azure mithilfe der Befehlszeilenschnittstelle oder PowerShell](virtual-machines-linux-cli-ps-findimage.md).
+	>[AZURE.NOTE] In diesem Tutorial wird eine virtuelle Maschine erstellt, auf dem eine Version des Windows Server-Betriebssystems ausgeführt wird. Weitere Informationen zur Auswahl von anderen Images finden Sie unter [Navigieren zu und Auswählen von Images virtueller Linux-Computer in Azure mithilfe der Befehlszeilenschnittstelle oder PowerShell](virtual-machines-linux-cli-ps-findimage.md).
 
 2. Fügen Sie der Main-Methode den folgenden Code hinzu, um die gerade hinzugefügte Methode aufzurufen:
 
@@ -503,7 +503,7 @@ Da in Azure die genutzten Ressourcen in Rechnung gestellt werden, empfiehlt es s
 
 2. Drücken Sie nach der Rückgabe jedes Statuscodes die **EINGABETASTE**, um jede Ressource zu erstellen. Nachdem der virtuelle Computer erstellt wurde, führen Sie den nächsten Schritt aus, bevor Sie die EINGABETASTE drücken, um alle Ressourcen zu löschen.
 
-	Die vollständige Ausführung dieser Konsolenanwendung von Anfang bis zum Ende sollte etwa 5 Minuten dauern. Bevor Sie die EINGABETASTE drücken, um das Löschen der Ressourcen zu starten, können Sie sich ein paar Minuten Zeit nehmen, um die Erstellung der Ressourcen im Azure-Portal zu überprüfen, bevor Sie diese löschen.
+	Die vollständige Ausführung dieser Konsolenanwendung von Anfang bis zum Ende sollte etwa 5 Minuten dauern. Bevor Sie die EINGABETASTE drücken, um das Löschen der Ressourcen zu starten, können Sie sich ein paar Minuten Zeit nehmen, um die Erstellung der Ressourcen im Azure-Portal zu überprüfen, bevor Sie diese löschen.
 
 3. Navigieren Sie im Azure-Portal zu den Überwachungsprotokollen, um den Status der Ressourcen anzuzeigen:
 
@@ -514,4 +514,4 @@ Da in Azure die genutzten Ressourcen in Rechnung gestellt werden, empfiehlt es s
 - Nutzen Sie die Vorteile der Erstellung eines virtuellen Computers per Vorlage, indem Sie sich die Informationen unter [Bereitstellen eines virtuellen Azure-Computers mit C# und einer Resource Manager-Vorlage](virtual-machines-windows-csharp-template.md) durchlesen.
 - Informationen zum Verwalten des gerade erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-csharp-manage.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

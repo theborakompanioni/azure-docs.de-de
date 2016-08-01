@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/18/2016"
+	ms.date="07/14/2016"
 	ms.author="davidmu"/>
 
 # Erstellen Sie einen virtuellen Windows-Computer mit einer Resource Manager-Vorlage
@@ -27,7 +27,7 @@ Die Ausführung der Schritte in diesem Artikel dauert ungefähr 20 Minuten.
 
 ## Schritt 1: Erstellen der Vorlagendatei
 
-Sie können eine eigene Vorlage mithilfe der Informationen unter [Erstellen von Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md) erstellen. Sie können auch Vorlagen bereitstellen, die für Sie aus den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) erstellt wurden. Das in diesem Artikel verwendete Beispiel ähnelt der Vorlage, die unter [Deploy a simple Windows VM in West US](https://azure.microsoft.com/documentation/templates/101-vm-simple-windows/) (Bereitstellen eines einfachen virtuellen Windows-Computers in der Region „USA, Westen“) beschrieben wird.
+Sie können eine eigene Vorlage mithilfe der Informationen unter [Erstellen von Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md) erstellen. Sie können auch Vorlagen bereitstellen, die für Sie aus den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) erstellt wurden.
 
 1. Öffnen Sie Ihren bevorzugten Text-Editor, und kopieren Sie diese JSON-Informationen in eine neue Datei namens *VirtualMachineTemplate.json*:
 
@@ -216,7 +216,7 @@ Um Werte für die Ressourcenparameter anzugeben, die in der Vorlage definiert wu
           }
         }
 
-4. Speichern Sie die Parameterdatei.
+2. Speichern Sie die Parameterdatei.
 
 ## Schritt 3: Installieren von Azure PowerShell
 
@@ -224,11 +224,11 @@ Informationen dazu, wie Sie die aktuelle Version von Azure PowerShell installier
 
 ## Schritt 4: Erstellen einer Ressourcengruppe
 
-Alle Ressourcen müssen in einer Ressourcengruppe bereitgestellt werden. Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Manager](../resource-group-overview.md).
+Alle Ressourcen müssen in einer Ressourcengruppe bereitgestellt werden. Weitere Informationen finden Sie unter [Übersicht über Azure Resource Manager](../resource-group-overview.md).
 
 1. Rufen Sie eine Liste mit den verfügbaren Standorten ab, an denen Ressourcen erstellt werden können.
 
-	    Get-AzureLocation | sort Name | Select Name
+	    Get-AzureRmLocation | sort DisplayName | Select DisplayName
 
 2. Ersetzen Sie den Wert von **$locName** durch einen Standort aus der Liste, z.B. **USA, Mitte**. Erstellen Sie die Variable.
 
@@ -247,15 +247,15 @@ Alle Ressourcen müssen in einer Ressourcengruppe bereitgestellt werden. Weitere
         Tags              :
         ResourceId        : /subscriptions/{subscription-id}/resourceGroups/myrg1
 
-### Schritt 7: Erstellen von Ressourcen mit der Vorlage und Parametern
+### Schritt 5: Erstellen von Ressourcen mit der Vorlage und Parametern
 
-1. Ersetzen Sie den Wert von **$deployName** durch den Namen der Bereitstellung. Ersetzen Sie den Wert von **$templatePath** durch den Pfad und Namen der Vorlagendatei. Ersetzen Sie den Wert von **$parameterFile** durch den Pfad und Namen der Parameterdatei. Erstellen Sie die Variablen. 
+1. Ersetzen Sie den Wert von **$deployName** durch den Namen der Bereitstellung. Ersetzen Sie den Wert von **$templatePath** durch den Pfad und Namen der Vorlagendatei. Ersetzen Sie den Wert von **$parameterFile** durch den Pfad und Namen der Parameterdatei. Erstellen Sie die Variablen.
 
         $deployName="deployment name"
         $templatePath = "template path"
         $parameterFile = "parameter file"
 
-4. Stellen Sie die Vorlage bereit.
+2. Stellen Sie die Vorlage bereit.
 
         New-AzureRmResourceGroupDeployment -ResourceGroupName "davidmurg6" -TemplateFile $templatePath -TemplateParameterFile $parameterFile
 
@@ -284,4 +284,4 @@ Alle Ressourcen müssen in einer Ressourcengruppe bereitgestellt werden. Weitere
 - Falls bei der Bereitstellung Probleme aufgetreten sind, können Sie beispielsweise mit dem Artikel [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md) fortfahren.
 - Informationen zum Verwalten des gerade erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -19,10 +19,10 @@
 
 # Standardkontingente für DocumentDB
 
-In der folgenden Tabelle sind die Standardkontingente für DocumentDB-Ressourcen aufgeführt.
+In der folgenden Tabelle sind die Standardkontingente für Azure DocumentDB-Datenbankressourcen aufgeführt.
 
 [AZURE.INCLUDE [azure-documentdb-limits](../../includes/azure-documentdb-limits.md)]
 
 Kontingente mit einem Sternchen (*) [können angepasst werden. Wenden Sie sich dafür an den Azure-Support](documentdb-increase-limits.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

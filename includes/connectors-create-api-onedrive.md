@@ -1,12 +1,17 @@
-### Voraussetzungen
-- Ein [OneDrive](http://OneDrive.com)-Konto 
+#### Voraussetzungen
+- Ein Azure-Konto. Sie können ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
+- Ein [OneDrive](https://www.microsoft.com/store/apps/onedrive/9wzdncrfj1p3)-Konto.
 
-Bevor Sie Ihr OneDrive-Konto in einer Logik-App verwenden können, müssen Sie die Logik-App für Verbindungen mit Ihrem OneDrive-Konto autorisieren. Glücklicherweise können Sie dies ganz einfach in Ihrer Logik-App im Azure-Portal durchführen.
+Bevor Sie Ihr OneDrive-Konto in einer Logik-App verwenden können, müssen Sie die Logik-App für Verbindungen mit Ihrem OneDrive-Konto autorisieren. Glücklicherweise können Sie dies ganz einfach aus Ihrer Logik-App heraus im Azure-Portal durchführen.
 
-Hier finden Sie die Schritte zum Autorisieren Ihrer Logik-App für Verbindungen mit Ihrem OneDrive-Konto:
+Führen Sie folgende Schritte aus, um Ihre Logik-App für die Verbindung mit Ihrem OneDrive-Konto zu autorisieren:
 
-1. Um eine Verbindung mit OneDrive herzustellen, wählen Sie im Logik-App-Designer in der Dropdownliste **Verwaltete Microsoft-APIs anzeigen** aus, und geben Sie dann *OneDrive* in das Suchfeld ein. Wählen Sie den zu verwendenden Trigger oder die Aktion aus: ![](./media/connectors-create-api-onedrive/onedrive-1.png)
-2. Wenn Sie noch keine Verbindungen mit OneDrive hergestellt haben, werden Sie aufgefordert, Ihre OneDrive-Anmeldeinformationen anzugeben. Mithilfe dieser Anmeldeinformationen wird Ihre Logik-App autorisiert, die eine Verbindung herstellen und auf Ihr OneDrive-Konto zugreifen soll: ![](./media/connectors-create-api-onedrive/onedrive-2.png)
-4. Geben Sie Ihren OneDrive-Benutzernamen und das zugehörige Kennwort zum Autorisieren Ihrer Logik-App an: ![](./media/connectors-create-api-onedrive/onedrive-3.png)   
-3. Erlauben Sie das Verbinden mit OneDrive: ![](./media/connectors-create-api-onedrive/onedrive-4.png)   
-5. Beachten Sie, dass die Verbindung erstellt wurde und Sie nun mit anderen Schritten in Ihrer Logik-App fortfahren können: ![](./media/connectors-create-api-onedrive/onedrive-5.png)
+1. Erstellen Sie eine Logik-App. Wählen Sie im Logic Apps-Designer in der Dropdownliste **Von Microsoft verwaltete APIs anzeigen** aus, und geben Sie dann „OneDrive“ in das Suchfeld ein. Wählen Sie einen Trigger oder eine Aktion aus: ![](./media/connectors-create-api-onedrive/onedrive-1.png)
+2. Wenn Sie bisher noch keine Verbindung mit OneDrive hergestellt haben, werden Sie aufgefordert, sich mit Ihren OneDrive-Anmeldeinformationen anzumelden: ![](./media/connectors-create-api-onedrive/onedrive-2.png)
+3. Wählen Sie **Anmelden** aus, und geben Sie Ihren Benutzernamen und Ihr Kennwort ein. Wählen Sie **Anmelden**: ![](./media/connectors-create-api-onedrive/onedrive-3.png)
+
+	Mithilfe dieser Anmeldeinformationen wird Ihre Logik-App dazu autorisiert, eine Verbindung mit Ihrem OneDrive-Konto herzustellen und auf die darin gespeicherten Daten zuzugreifen.
+4. Wählen Sie **Ja**, um die Logik-App für die Verwendung Ihres OneDrive-Kontos zu autorisieren: ![](./media/connectors-create-api-onedrive/onedrive-4.png)
+5. Beachten Sie, dass die Verbindung erstellt wurde. Fahren Sie nun mit den weiteren Schritten in Ihrer Logik-App fort: ![](./media/connectors-create-api-onedrive/onedrive-5.png)
+
+<!---HONumber=AcomDC_0720_2016-->

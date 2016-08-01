@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/06/2016"
+   ms.date="07/13/2016"
    ms.author="masashin"/>
 
 # Anleitung zur Überwachung und Diagnose
@@ -252,7 +252,7 @@ Die Instrumentierungsdaten müssen aggregiert werden, um einen Überblick über 
 
 - Die Gesamtzahl der Benutzeranforderungen in einem bestimmten Zeitraum zu berechnen und die Erfolgs- und Fehlerereignisrate dieser Anforderungen zu ermitteln.
 - Die Antwortzeiten von Benutzeranforderungen zu kombinieren, um einen allgemeinen Überblick über die Reaktionszeiten zu generieren.
-- Den Status der Benutzeranforderungen zu analysieren, um die gesamte Antwortzeit einer Anforderung in die Antwortzeiten der einzelnen Arbeitselemente in dieser Anforderung zu unterteilen.  
+- Den Status der Benutzeranforderungen zu analysieren, um die gesamte Antwortzeit einer Anforderung in die Antwortzeiten der einzelnen Arbeitselemente in dieser Anforderung zu unterteilen.
 - Die Gesamtverfügbarkeit des Systems als Betriebszeit in Prozent für einen bestimmten Zeitraum zu ermitteln.
 - Die zeitliche Verfügbarkeit in Prozent für die einzelnen Komponenten und Dienste im System zu analysieren. Hierzu gehört z. B. die Analyse von Protokollen, die von Drittanbieterdiensten erstellt wurden.
 
@@ -351,7 +351,7 @@ Sie können sich die gesamte Überwachung und den Diagnoseprozess als eine Pipel
 
 ![Phasen in der Überwachungs- und Diagnosepipeline](media/best-practices-monitoring/Pipeline.png)
 
-_Abbildung 1: Die Phasen in der Überwachungs- und Diagnosepipeline_
+_Abbildung 1: Die Phasen in der Überwachungs- und Diagnosepipeline_
 
 Abbildung 1 zeigt, wie die Daten für die Überwachung und Diagnose aus einer Vielzahl von Datenquellen stammen können. In der Instrumentierungs- und der Sammlungsphase werden die Quellen ermittelt, von denen die Daten erfasst werden müssen. Dabei wird festgelegt, welche Daten auf welche Weise erfasst werden und wie diese Daten so formatiert werden, dass sie leicht überprüft werden können. In der Analyse-/Diagnosephase werden anhand der Rohdaten aussagekräftige Informationen generiert, mit denen ein Operator den Systemzustands feststellen kann. Der Operator kann anhand dieser Informationen Entscheidungen über mögliche Maßnahmen treffen und die Ergebnisse in die Instrumentierungs- und die Sammlungsphase zurückführen. Die Visualisierungs-/Warnungsphase bietet eine Nutzungsansicht des Systemzustands. Darin können Informationen anhand einer Reihe von Dashboards nahezu in Echtzeit angezeigt werden. Zudem kann sie Berichte, Graphen und Diagramme generieren, um eine historische Ansicht der Daten zum Ermitteln langfristiger Trends bereitzustellen. Wenn Informationen darauf hinweisen, dass eine KPI wahrscheinlich die zulässigen Begrenzungen überschreitet, kann in dieser Phase außerdem eine Warnung an einen Operator ausgelöst werden. In einigen Fällen kann über eine Warnung auch ein automatisierter Prozess ausgelöst werden, der versucht, Korrekturmaßnahmen wie z. B. die automatische Skalierung durchzuführen.
 
@@ -423,7 +423,7 @@ Alle Überwachungsdaten sollten auf gleiche Weise mit einem Zeitstempel versehen
 ### In die Instrumentierungsdaten einzubeziehende Informationen
 Beachten Sie die folgenden Punkte, wenn Sie entscheiden, welche Instrumentierungsdaten gesammelt werden sollen:
 
-- Stellen Sie sicher, dass Informationen, die von Ablaufverfolgungsereignissen erfasst werden, für Computer und Personen lesbar sind. Implementieren Sie umfassend definierte Schemas für diese Informationen, um die automatisierte Verarbeitung von Protokolldaten über Systeme hinweg zu vereinfachen und Konsistenz für Vorgänge und technische Mitarbeiter sicherzustellen, die die Protokolle lesen. Schließen Sie die Umgebungsinformationen mit ein, wie z. B. die Bereitstellungsumgebung, den Computer, auf dem der Prozess ausgeführt wird, die Details des Prozesses und die Aufrufliste.  
+- Stellen Sie sicher, dass Informationen, die von Ablaufverfolgungsereignissen erfasst werden, für Computer und Personen lesbar sind. Implementieren Sie umfassend definierte Schemas für diese Informationen, um die automatisierte Verarbeitung von Protokolldaten über Systeme hinweg zu vereinfachen und Konsistenz für Vorgänge und technische Mitarbeiter sicherzustellen, die die Protokolle lesen. Schließen Sie die Umgebungsinformationen mit ein, wie z. B. die Bereitstellungsumgebung, den Computer, auf dem der Prozess ausgeführt wird, die Details des Prozesses und die Aufrufliste.
 - Aktivieren Sie die Profilerstellung nur bei Bedarf, da sie eine erhebliche Belastung für das System darstellen kann. Bei der Profilerstellung mithilfe der Instrumentierung wird ein Ereignis (z. B. ein Methodenaufruf) jedes Mal aufgezeichnet, wenn es auftritt. Bei Stichproben werden hingegen nur ausgewählte Ereignisse aufgezeichnet. Die Auswahl kann nach Zeit (alle *n* Sekunden) oder nach Häufigkeit (alle *n* Anforderungen) erfolgen. Wenn Ereignisse sehr häufig auftreten, kann die Profilerstellung mit der Instrumentierungsmethode eine zu große Belastung darstellen und die Gesamtleistung beeinträchtigen. In diesem Fall ist der Stichprobenansatz vorzuziehen. Wenn Ereignisse allerdings selten auftreten, werden sie bei der Stichprobenentnahme möglicherweise verpasst. In diesem Fall ist die Instrumentierung möglicherweise der bessere Ansatz.
 - Geben Sie genügend Kontext an, damit ein Entwickler oder Administrator die Quelle jeder einzelnen Anforderung ermitteln kann. Dazu gehört zum Beispiel eine Form von Aktivitäts-ID, die eine bestimmte Instanz einer Anforderung identifiziert. Dazu gehören beispielsweise auch Informationen, mit deren Hilfe diese Aktivität mit der durchgeführten Computerarbeit und den verwendeten Ressourcen in Bezug gesetzt werden kann. Beachten Sie, dass diese Arbeit Prozess- und Computergrenzen überschreiten kann. Für die Messung sollte der Kontext (entweder direkt oder indirekt über andere korrelierte Informationen) auch einen Verweis auf den Kunden beinhalten, der die Anforderung veranlasst hat. Dieser Kontext stellt wertvolle Informationen über den Anwendungszustand zum Zeitpunkt der Aufzeichnung der Überwachungsdaten bereit.
 - Notieren Sie alle Anforderungen und die Standorte oder Regionen, aus denen solche Anforderungen gesendet werden. Anhand dieser Informationen lässt sich feststellen, ob standortspezifische Hotspots vorliegen. Außerdem kann mithilfe dieser Informationen ermittelt werden, ob eine Anwendung oder die von ihr verwendeten Daten neu partitioniert werden sollten.
@@ -462,7 +462,7 @@ Die Datensammlung erfolgt häufig über einen Sammlungsdienst, der unabhängig v
 
 ![Beispiel für das Erfassen von Instrumentierungsdaten](media/best-practices-monitoring/TelemetryService.png)
 
-_Abbildung 2: Erfassen von Instrumentierungsdaten_
+_Abbildung 2: Erfassen von Instrumentierungsdaten_
 
 Bitte beachten Sie, dass dies eine vereinfachte Ansicht ist. Der Sammlungsdienst ist nicht unbedingt ein einzelner Prozess und umfasst möglicherweise viele Bestandteile, die auf verschiedenen Computern ausgeführt werden, wie in den folgenden Abschnitten beschrieben. Wenn die Analyse einiger Telemetriedaten darüber hinaus schnell ausgeführt werden muss (heiße Analyse, wie im Abschnitt [Unterstützung von heißer, warmer und kalter Analyse](#supporting-hot-warm-and-cold-analysis) weiter unten in diesem Dokument beschrieben), können lokale Komponenten außerhalb des Erfassungsdienstes die Analyseaufgaben sofort durchführen. Abbildung 2 zeigt diese Situation für ausgewählte Ereignisse. Nach der analytischen Verarbeitung können die Ergebnisse direkt an das Visualisierungs- und Warnsubsystem gesendet werden. Daten zur warmen oder kalten Analyse werden im Speicher gehalten, während sie auf die Verarbeitung warten.
 
@@ -473,7 +473,7 @@ Für Azure-Anwendungen und -Dienste bietet die Azure-Diagnose eine mögliche Lö
 - Windows-Ereignisprotokolle
 - Leistungsindikatoren
 - Absturzabbilder
-- Infrastrukturprotokolle der Azure-Diagnose  
+- Infrastrukturprotokolle der Azure-Diagnose
 - Benutzerdefinierte Fehlerprotokolle
 - .NET-EventSource
 - Manifestbasierte ETW
@@ -492,7 +492,7 @@ Ein Ansatz zum Implementieren des Pullmodells ist die Verwendung von Überwachun
 
 ![Abbildung zur Verwendung eines Überwachungs-Agents zum Abrufen von Informationen und zum Schreiben in freigegebenen Speicher](media/best-practices-monitoring/PullModel.png)
 
-_Abbildung 3: Verwenden eines Überwachungs-Agents zum Abrufen von Informationen und Schreiben in einen freigegebenen Speicher_
+_Abbildung 3: Verwenden eines Überwachungs-Agents zum Abrufen von Informationen und Schreiben in einen freigegebenen Speicher_
 
 > [AZURE.NOTE] Die Verwendung eines Überwachungs-Agents eignet sich hervorragend zum Erfassen von Instrumentierungsdaten, die naturgemäß per Pull aus einer Datenquelle übertragen werden. Ein Beispiel sind Informationen von SQL Server Dynamic Management Views oder die Länge einer Azure Service Bus-Warteschlange.
 
@@ -503,7 +503,7 @@ Um diese Aspekte abzudecken, können Sie Warteschlangen implementieren, wie in A
 
 ![Abbildung zur Verwendung einer Warteschlange zum Puffern von Instrumentierungsdaten](media/best-practices-monitoring/BufferedQueue.png)
 
-_Abbildung 4. Mithilfe einer Warteschlange Instrumentierungsdaten puffern_
+_Abbildung 4. Mithilfe einer Warteschlange Instrumentierungsdaten puffern_
 
 Der lokale Datensammlungsdienst kann Daten unmittelbar nach deren Empfang einer Warteschlange hinzufügen. Die Warteschlange fungiert als Puffer, und der Speicherschreibdienst kann die Daten in seinem eigenen Tempo abrufen und schreiben. Standardmäßig arbeitet eine Warteschlange nach dem Prinzip „First In, First Out“. Sie können Nachrichten jedoch priorisieren, um ihren Weg durch die Warteschlange zu beschleunigen, wenn sie Daten enthalten, die schneller verarbeitet werden müssen. Weitere Informationen finden Sie unter [Prioritätswarteschlange](https://msdn.microsoft.com/library/dn589794.aspx). Alternativ dazu können Sie, abhängig von der Form der erforderlichen analytischen Verarbeitung, verschiedene Kanäle (z. B. Service Bus-Topics) verwenden, um Daten an verschiedene Ziele zu leiten.
 
@@ -515,7 +515,7 @@ Die vom Datensammlungsdienst aus einer einzelnen Instanz einer Anwendung abgeruf
 
 ![Beispiel für das Verwenden eines Diensts zum Konsolidieren von Instrumentierungsdaten](media/best-practices-monitoring/Consolidation.png)
 
-_Abbildung 5: Verwenden eines separaten Dienstes zum Konsolidieren und Bereinigen von Instrumentierungsdaten_
+_Abbildung 5: Verwenden eines separaten Dienstes zum Konsolidieren und Bereinigen von Instrumentierungsdaten_
 
 ### Speichern von Instrumentierungsdaten
 Die vorherigen Diskussionen haben auf eher simple Weise dargestellt, wie Instrumentierungsdaten gespeichert werden. In der Realität kann es sinnvoll sein, die verschiedenen Arten von Informationen mithilfe von Technologien zu speichern, die am besten für die Art der Verwendung geeignet sind.
@@ -531,7 +531,7 @@ Sie können einen zusätzlichen Dienst implementieren, der die Daten in regelmä
 
 ![Partitionierung und Speicherung von Daten](media/best-practices-monitoring/DataStorage.png)
 
-_Abbildung 6: Partitionierung von Daten anhand analytischer Anforderungen und Speicheranforderungen_
+_Abbildung 6: Partitionierung von Daten anhand analytischer Anforderungen und Speicheranforderungen_
 
 Die gleichen Instrumentierungsdaten können für mehrere Zwecke erforderlich sein. Leistungsindikatoren können z. B. verwendet werden, um eine historische Ansicht der Systemleistung über einen Zeitraum bereitzustellen. Diese Informationen können mit anderen Nutzungsdaten kombiniert werden, um Abrechnungsinformationen für Kunden zu generieren. In diesen Fällen können dieselben Daten an mehrere Ziele gesendet werden, z. B. eine Dokumentendatenbank, die als langfristiger Speicher für Abrechnungsinformationen dient, und einen mehrdimensionalen Speicher für die Verarbeitung komplexer Leistungsanalysen.
 
@@ -664,4 +664,4 @@ In vielen Fällen können Batchprozesse Berichte nach einem definierten Zeitplan
 - [Empfangen von Warnbenachrichtigungen](./azure-portal/insights-receive-alert-notifications.md) und [Nachverfolgen der Dienstintegrität](./azure-portal/insights-service-health.md)
 - [Application Insights](./application-insights/app-insights-get-started.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0720_2016-->

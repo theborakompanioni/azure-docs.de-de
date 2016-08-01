@@ -19,7 +19,7 @@
 
 # DocumentDB-serverseitige Programmierung : gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen
 
-Erfahren Sie, wie Entwickler dank der in die DocumentDB-Sprache integrierten transaktionalen Ausführung von JavaScript **gespeicherte Prozeduren**, **Trigger** und **benutzerdefinierte Funktionen (User Defined Functions, UDFs)** in systemeigenem JavaScript erstellen können. Dadurch können Sie für ein Datenbankprogramm Anwendungslogik schreiben, die direkt auf den Partitionen des Datenbankspeichers bereitgestellt und ausgeführt werden kann.
+Erfahren Sie, wie Entwickler dank der in die Azure DocumentDB-Sprache integrierten transaktionalen Ausführung von JavaScript **gespeicherte Prozeduren**, **Trigger** und **benutzerdefinierte Funktionen (User Defined Functions, UDFs)** in systemeigenem JavaScript erstellen können. Dadurch können Sie für ein Datenbankprogramm Anwendungslogik schreiben, die direkt auf den Partitionen des Datenbankspeichers bereitgestellt und ausgeführt werden kann.
 
 Für den Beginn empfiehlt sich folgendes Video, in dem Andrew Liu das serverseitige Datenbankprogrammiermodell von DocumentDB kurz vorstellt.
 
@@ -43,12 +43,12 @@ Dieser Ansatz von *„JavaScript als modernes T-SQL“* befreit die Anwendungsen
 -	**Atomarische Transaktionen:** DocumentDB gewährleistet, dass die innerhalb einer einzelnen gespeicherten Prozedur oder in einem Trigger ausgeführten Datenbankvorgänge atomarisch sind. Dadurch kann eine Anwendung zusammengehörige Vorgänge in einem einzelnen Batch kombinieren, damit entweder alle Vorgänge oder keiner dieser Vorgänge erfolgreich ausgeführt werden kann.
 
 -	**Leistung:** Die Tatsache, dass JSON an sich dem JavaScript-Sprachsystem zugeordnet ist und auch die Basiseinheit für die Speicherung in DocumentDB darstellt, ermöglicht eine Reihe von Optimierungen wie die bequeme Realisierung von JSON-Dokumenten im Pufferpool und deren bedarfsgesteuerte Bereitstellung für den ausführenden Code. Es gibt weitere Leistungsvorteile, die der Übertragung der Geschäftslogik auf die Datenbank zugeordnet sind:
-	-	Batchverarbeitung – Entwickler können Vorgänge wie Einlagen gruppieren und dann zusammen übermitteln. Der Aufwand für die Latenz des Netzwerkdatenverkehrs und der erhöhte Speicheraufwand beim Erstellen separater Transaktionen werden erheblich verringert. 
+	-	Batchverarbeitung – Entwickler können Vorgänge wie Einlagen gruppieren und dann zusammen übermitteln. Der Aufwand für die Latenz des Netzwerkdatenverkehrs und der erhöhte Speicheraufwand beim Erstellen separater Transaktionen werden erheblich verringert.
 	-	Vorkompilierung – DocumentDB führt für gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen (UDFs) Vorkompilierungen durch, um den Aufwand der JavaScript-Kompilierung für die einzelnen Aufrufe zu vermeiden. Der Mehraufwand für die Erstellung des Bytecodes für die prozedurale Logik wird auf ein Minimum gesenkt.
-	-	Sequenzierung – Viele Vorgänge benötigen einen Nebeneffekt (Auslöser oder Trigger), der möglicherweise die Ausführung eines oder vieler sekundärer Speichervorgänge einbezieht. Dies ist abgesehen von der der Atomarität effektiver, wenn der Vorgang auf den Server verlagert wird. 
+	-	Sequenzierung – Viele Vorgänge benötigen einen Nebeneffekt (Auslöser oder Trigger), der möglicherweise die Ausführung eines oder vieler sekundärer Speichervorgänge einbezieht. Dies ist abgesehen von der der Atomarität effektiver, wenn der Vorgang auf den Server verlagert wird.
 -	**Kapselung:** Die Geschäftslogik kann mithilfe gespeicherter Prozeduren an einem Ort zusammengefasst werden. Das hat zwei Vorteile:
-	-	Es wird eine Abstraktionsschicht über den Rohdaten hinzugefügt, die es Datenarchitekten gestattet, ihre Anwendungen unabhängig von den Daten zu entwickeln. Dies ist aufgrund der komplizierten Annahmen, die bei der direkten Behandlung der Daten zur Anwendung hinzugefügt werden müssen, insbesondere bei schemafreien Daten von Vorteil.  
-	-	Durch diese Abstraktion können Unternehmen ihre Daten schützen, indem sie den Zugriff über die Scripts optimieren.  
+	-	Es wird eine Abstraktionsschicht über den Rohdaten hinzugefügt, die es Datenarchitekten gestattet, ihre Anwendungen unabhängig von den Daten zu entwickeln. Dies ist aufgrund der komplizierten Annahmen, die bei der direkten Behandlung der Daten zur Anwendung hinzugefügt werden müssen, insbesondere bei schemafreien Daten von Vorteil.
+	-	Durch diese Abstraktion können Unternehmen ihre Daten schützen, indem sie den Zugriff über die Scripts optimieren.
 
 Die Erstellung und Ausführung von Datenbanktriggern, gespeicherten Prozeduren und benutzerdefinierten Abfrageoperatoren wird auf vielen Plattformen, z. B. .NET, Node.js und JavaScript, über die [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx), [DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases) und [Client-SDKs](documentdb-sdk-dotnet.md) unterstützt.
 
@@ -544,7 +544,7 @@ Produzieren Sie eine neue Gruppe von Dokumenten, indem Sie die Dokumente im Eing
 
 Bei der Verwendung innerhalb von Prädikat- und/oder Selektorfunktionen werden die folgenden JavaScript-Konstrukte automatisch optimiert, damit sie direkt für DocumentDB-Indizes ausgeführt werden:
 
-* Einfache Operatoren: = + - * / % | ^ &amp; == != === !=== &lt; &gt; &lt;= &gt;= || &amp;&amp; &lt;&lt; &gt;&gt; &gt;&gt;&gt;! ~
+* Einfache Operatoren: = + - * / %| ^ &amp; == != === !=== &lt; &gt; &lt;= &gt;= || &amp;&amp; &lt;&lt; &gt;&gt; &gt;&gt;&gt;! ~
 * Literale, einschließlich des Objektliterals: {}
 * var, return
 
@@ -857,8 +857,7 @@ Alle DocumentDB-Vorgänge können RESTful-basiert ausgeführt werden. Gespeicher
 	}
 
 
-Die gespeicherte Prozedur wird durch Ausführung einer POST-Anforderung für den URI „dbs/testdb/colls/testColl/sprocs“ registriert, wobei der Textteil die zu erstellende gespeicherte Prozedur enthält. Trigger und UDFs können auf ähnliche Weise registriert werden: durch einen POST bezüglich /triggers bzw. /udfs. 
-Diese gespeicherte Prozedur kann dann durch Anlegen einer POST-Anforderung für ihren Ressourcenlink ausgeführt werden:
+Die gespeicherte Prozedur wird durch Ausführung einer POST-Anforderung für den URI „dbs/testdb/colls/testColl/sprocs“ registriert, wobei der Textteil die zu erstellende gespeicherte Prozedur enthält. Trigger und UDFs können auf ähnliche Weise registriert werden: durch einen POST bezüglich /triggers bzw. /udfs. Diese gespeicherte Prozedur kann dann durch Anlegen einer POST-Anforderung für ihren Ressourcenlink ausgeführt werden:
 
 	POST https://<url>/sprocs/<sproc> HTTP/1.1
 	authorization: <<auth>>
@@ -917,11 +916,11 @@ Weitere Informationen zur serverseitigen DocumentDB-Programmierung finden Sie au
 
 - [Azure DocumentDB SDKs](https://msdn.microsoft.com/library/azure/dn781482.aspx)
 - [DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)
-- [JSON](http://www.json.org/) 
+- [JSON](http://www.json.org/)
 - [JavaScript-ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
-- [JavaScript – JSON-Typsystem](http://www.json.org/js.html) 
-- [Sichere und portable Erweiterbarkeit von Datenbanken](http://dl.acm.org/citation.cfm?id=276339) 
-- [Dienstorientierte Datenbankarchitektur](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
+- [JavaScript – JSON-Typsystem](http://www.json.org/js.html)
+- [Sichere und portable Erweiterbarkeit von Datenbanken](http://dl.acm.org/citation.cfm?id=276339)
+- [Dienstorientierte Datenbankarchitektur](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE)
 - [Hosten der .NET-Lautzeitumgebung in Microsoft SQL Server](http://dl.acm.org/citation.cfm?id=1007669)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0720_2016-->

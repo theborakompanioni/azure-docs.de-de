@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD v2.0: iOS-App | Microsoft Azure"
+	pageTitle="Azure AD v2.0: iOS-App | Microsoft Azure"
 	description="Es wird beschrieben, wie Sie eine iOS-App erstellen, bei der sich Benutzer sowohl mit ihrem persönlichen Microsoft-Konto als auch mit ihrem Geschäfts-, Schul- oder Unikonto anmelden können."
 	services="active-directory"
 	documentationCenter=""
@@ -108,7 +108,7 @@ Für die Einrichtung der NXOAuth2Client-Bibliothek sind einige Werte erforderlic
 - Fügen Sie jetzt einige Werte zu `LoginViewController.m` hinzu, um den Kontext für die Authentifizierung und Autorisierung einzurichten. Im Anschluss an den Code finden Sie Details zu den Werten.
 
 	```objc
-	NSString *scopes = @"offline_access User.ReadBasic.All";
+	NSString *scopes = @"openid offline_access User.Read";
 	NSString *authURL = @"https://login.microsoftonline.com/common/oauth2/v2.0/authorize";
 	NSString *loginURL = @"https://login.microsoftonline.com/common/login";
 	NSString *bhh = @"urn:ietf:wg:oauth:2.0:oob?code=";
@@ -124,7 +124,7 @@ Für die Einrichtung der NXOAuth2Client-Bibliothek sind einige Werte erforderlic
 
 Sehen wir uns die Detail zum Code an.
 
-Die erste Zeichenfolge ist für `scopes`. Der `User.ReadBasic.All`-Wert ermöglicht Ihnen das Lesen der Basisprofile aller Benutzer in Ihrem Verzeichnis.
+Die erste Zeichenfolge ist für `scopes`. Der `User.Read`-Wert ermöglicht Ihnen das Lesen des Basisprofils des angemeldeten Benutzers.
 
 Weitere Informationen zu allen verfügbaren Bereichen finden Sie unter [Microsoft Graph-Berechtigungsbereiche](https://graph.microsoft.io/docs/authorization/permission_scopes).
 
@@ -588,4 +588,4 @@ Wenn Sie das Gerüst verwendet oder die Schritte der exemplarischen Vorgehenswei
 
 Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen einzurichten. Rufen Sie dazu das [Security TechCenter](https://technet.microsoft.com/security/dd252948) auf, und abonnieren Sie die Sicherheitsempfehlungen.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

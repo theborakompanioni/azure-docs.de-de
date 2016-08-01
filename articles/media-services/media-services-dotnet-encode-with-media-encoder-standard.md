@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Codieren eines Assets mit Media Encoder Standard" 
+	pageTitle="Codieren eines Medienobjekts mit Media Encoder Standard" 
 	description="In diesem Thema wird veranschaulicht, wie Sie .NET mithilfe von Media Encoder Standard verwenden, um ein Asset zu codieren." 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="05/03/2016"
+ 	ms.date="07/18/2016"
 	ms.author="juliako;anilmur"/>
 
 
-#Codieren eines Assets mit Media Encoder Standard
+#Codieren eines Medienobjekts mit Media Encoder Standard
 
 Die Codierung ist einer der häufigsten Verarbeitungsvorgänge in Media Services. Sie erstellen Codierungsaufträge, um Mediendateien von einer Codierung in eine andere zu konvertieren. Zum Codieren können Sie den in Media Services integrierten Media Encoder verwenden. Außerdem können Sie Codierer von Media Services-Partnern verwenden. Externe Codierer finden Sie im Azure Marketplace.
 
-In diesem Thema wird veranschaulicht, wie Sie .NET mithilfe von Media Encoder Standard (MES) verwenden, um Assets zu codieren. Media Encoder Standard wird mithilfe von Encoder-Voreinstellungen konfiguriert, die [hier](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409) beschrieben sind.
+In diesem Thema wird veranschaulicht, wie Sie .NET mithilfe von Media Encoder Standard (MES) verwenden, um Medienobjekte zu codieren. Media Encoder Standard wird mithilfe von Encoder-Voreinstellungen konfiguriert, die [hier](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409) beschrieben sind.
 
 Es wird empfohlen, Zwischendateien immer in einen MP4-Satz mit adaptiver Bitrate zu codieren und anschließend mithilfe der [dynamischen Paketerstellung](media-services-dynamic-packaging-overview.md) in das gewünschte Format zu konvertieren. Um dynamische Paketerstellung nutzen zu können, ist mindestens eine bedarfsgesteuerte Streamingeinheit für den Streamingendpunkt erforderlich, aus dem die Inhalte bereitgestellt werden sollen. Weitere Informationen finden Sie unter [Skalieren von Media Services](media-services-manage-origins.md#scale_streaming_endpoints).
 
@@ -39,9 +39,9 @@ Media Encoder Standard wird mithilfe von Encoder-Voreinstellungen konfiguriert, 
 
 ###Eingabe- und Ausgabemetadaten
 
-Wenn Sie ein Eingabeasset (oder -assets) mithilfe von MES codieren, erhalten Sie bei erfolgreichem Abschluss dieser Codieraufgabe ein Ausgabeasset. Das Ausgabeasset enthält Video- und Audioinhalte, Miniaturansichten, das Manifest usw. Dies hängt von den verwendeten Codierungsvoreinstellungen ab.
+Wenn Sie Eingabemedienobjekte mithilfe von MES codieren, erhalten Sie bei erfolgreichem Abschluss dieser Codieraufgabe ein Ausgabemedienobjekt. Das Ausgabeasset enthält Video- und Audioinhalte, Miniaturansichten, das Manifest usw. Dies hängt von den verwendeten Codierungsvoreinstellungen ab.
 
-Das Ausgabeasset enthält auch eine Datei mit Metadaten zum Eingabeasset. Der Namen der XML-Metadatendatei weist das folgende Format auf: <asset_id>\_metadata.xml (z.B. „41114ad3-eb5e-4c57-8d92-5354e2b7d4a4\_metadata.xml“), wobei <asset_id> der AssetId-Wert des Eingabeassets ist. Das Schema dieser XML-Eingabemetadaten ist [hier](http://msdn.microsoft.com/library/azure/dn783120.aspx) beschrieben.
+Das Ausgabeasset enthält auch eine Datei mit Metadaten zum Eingabeasset. Der Name der XML-Metadatendatei weist das folgende Format auf: <Medienobjekt-ID>\_metadata.xml (z.B. „41114ad3-eb5e-4c57-8d92-5354e2b7d4a4\_metadata.xml“), wobei <Medienobjekt-ID> der „AssetId“-Wert des Eingabemedienobjekts ist. Das Schema dieser XML-Eingabemetadaten ist [hier](http://msdn.microsoft.com/library/azure/dn783120.aspx) beschrieben.
 
 Das Ausgabeasset enthält auch eine Datei mit Metadaten zum Ausgabeasset. Der Name der XML-Metadatendatei weist das folgende Format auf: <source_file_name>\_manifest.xml (z.B. „BigBuckBunny\_manifest.xml“). Das Schema dieser XML-Ausgabemetadaten ist [hier](http://msdn.microsoft.com/library/azure/dn783217.aspx) beschrieben.
 
@@ -58,7 +58,7 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
 - Erstellen eines Codierungsauftrags.
 - Abrufen eines Verweises auf den Media Encoder Standard-Encoder
 - Angeben, dass die Voreinstellung „H264 Multiple Bitrate 720p“ verwendet werden soll. Alle Voreinstellungen finden Sie [hier](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409). Sie können sich auch das Schema ansehen, dem diese Voreinstellungen entsprechen müssen. Klicken Sie dazu [hier](https://msdn.microsoft.com/library/mt269962.aspx).
-- Fügen Sie eine einzelne Codierungsaufgabe zum Auftrag hinzu. 
+- Fügen Sie eine einzelne Codierungsaufgabe zum Auftrag hinzu.
 - Geben Sie das zu codierende Asset an.
 - Erstellen Sie ein Ausgabeasset, das das codierte Asset enthalten soll.
 - Fügen Sie einen Ereignishandler hinzu, um den Auftragsstatus zu überprüfen.
@@ -150,4 +150,4 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
 
 [Erstellen von Miniaturansichten über Media Encoder Standard mit .NET](media-services-dotnet-generate-thumbnail-with-mes.md) [Media Services-Codierung (Übersicht)](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

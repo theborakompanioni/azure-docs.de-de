@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]Dieser Artikel gilt für das klassische Bereitstellungsmodell.
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] Dieser Artikel gilt für das klassische Bereitstellungsmodell.
 
 [AZURE.INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
@@ -88,8 +88,8 @@ Führen Sie zum Erstellen der Routingtabelle und der für das Back-End-Subnetz e
 5. Führen Sie das Cmdlet **`Set-AzureSubnetRouteTable`** aus, um die oben erstellte Routingtabelle dem Subnetz **BackEnd** zuzuordnen.
 
 		Set-AzureSubnetRouteTable -VirtualNetworkName TestVNet `
-			-SubnetName FrontEnd `
-			-RouteTableName UDR-FrontEnd
+			-SubnetName BackEnd `
+			-RouteTableName UDR-BackEnd
 
 ## Aktivieren der IP-Weiterleitung auf dem virtuellen Computer „FW1“
 Führen Sie zum Aktivieren der IP-Weiterleitung auf dem virtuellen Computer "FW1" die folgenden Schritte aus.
@@ -108,4 +108,4 @@ Führen Sie zum Aktivieren der IP-Weiterleitung auf dem virtuellen Computer "FW1
 		Get-AzureVM -Name FW1 -ServiceName TestRGFW `
 			| Set-AzureIPForwarding -Enable
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0720_2016-->

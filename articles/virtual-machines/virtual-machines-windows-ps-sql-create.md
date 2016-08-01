@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="04/20/2016"
+	ms.date="07/15/2016"
 	ms.author="jroth"/>
 
 # Bereitstellen eines virtuellen SQL Server-Computers mit Azure PowerShell (Resource Manager)
@@ -310,4 +310,4 @@ Das folgende Skript enthält das vollständige PowerShell-Skript für dieses Tut
 ## Nächste Schritte
 Nach Erstellung des virtuellen Computers können Sie über RDP eine Verbindung mit dem virtuellen Computer herstellen und die Konnektivität einrichten. Weitere Informationen finden Sie unter [Verbinden mit SQL Server-Instanzen auf virtuellen Azure-Maschinen (Ressourcen-Manager)](virtual-machines-windows-sql-connect.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0720_2016-->

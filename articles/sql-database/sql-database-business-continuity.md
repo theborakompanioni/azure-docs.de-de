@@ -62,9 +62,9 @@ Die folgende Tabelle enthält die Geschäftskontinuitätsfeatures der SQL-Datenb
 
 | Funktion | Basic-Tarif | Standard-Tarif |Premium-Tarif
 | --- |--- | --- | ---
-| Zeitpunktwiederherstellung | Jeder Wiederherstellungspunkt innerhalb von 7 Tagen | Jeder Wiederherstellungspunkt innerhalb von 35 Tagen | Jeder Wiederherstellungspunkt innerhalb von 35 Tagen
-| Geowiederherstellung | Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h | Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h | Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h
-| Aktive Georeplikation | Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s | Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s | Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s
+| Zeitpunktwiederherstellung | Jeder Wiederherstellungspunkt innerhalb von 7 Tagen | Jeder Wiederherstellungspunkt innerhalb von 35 Tagen | Jeder Wiederherstellungspunkt innerhalb von 35 Tagen
+| Geowiederherstellung | Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h | Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h | Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h
+| Aktive Georeplikation | Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s | Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s | Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s
 
 Diese Funktionen werden für die zuvor beschriebenen Szenarios bereitgestellt.
 
@@ -96,8 +96,8 @@ Die [Geowiederherstellung](sql-database-recovery-using-backups.md#geo-restore) i
 
 Sie sollten den integrierten Schutz verwenden, wenn Ihre Anwendung die folgenden Kriterien erfüllt:
 
-1. Es handelt sich um keine unternehmenskritische Anwendung. Sie besitzt keine bindende SLA, sodass eine Ausfallzeit von 24 Stunden oder länger keine finanzielle Haftung nach sich zieht.
-2. Die Häufigkeit von Datenänderungen ist niedrig (z. B. Transaktionen pro Stunde). Ein RPO-Wert von einer Stunde führt nicht zu erheblichen Datenverlusten.
+1. Es handelt sich um keine unternehmenskritische Anwendung. Sie besitzt keine bindende SLA, sodass eine Ausfallzeit von 24 Stunden oder länger keine finanzielle Haftung nach sich zieht.
+2. Die Häufigkeit von Datenänderungen ist niedrig (z. B. Transaktionen pro Stunde). Ein RPO-Wert von einer Stunde führt nicht zu erheblichen Datenverlusten.
 3. Bei der Anwendung muss sehr auf die Kosten geachtet werden, sodass keine zusätzlichen Kosten für die Georeplikation möglich sind.
 
 > [AZURE.NOTE] Bei der Geowiederherstellung wird keine Rechenkapazität in bestimmten Regionen im Voraus reserviert, um aktive Datenbanken nach einem Ausfall aus einer Sicherungskopie wiederherzustellen. Der Dienst verwaltet die Arbeitsauslastung im Zusammenhang mit "geo-restore"-Anforderungen so, dass die Auswirkungen auf vorhandene Datenbanken in dieser Region minimiert werden und deren Kapazitätsanforderungen Priorität haben. Daher hängt die Wiederherstellungszeit der Datenbank davon ab, wie viele andere Datenbanken in derselben Region zur gleichen Zeit wiederhergestellt werden. Zudem sind die Größe der Datenbank, die Anzahl der Transaktionsprotokolle, die Netzwerkbandbreite usw. von Bedeutung.
@@ -108,8 +108,8 @@ Die [aktive Georeplikation](sql-database-geo-replication-overview.md) ermöglich
 
 Sie sollten die aktive Georeplikation verwenden, wenn Ihre Anwendung die folgenden Kriterien erfüllt:
 
-1. Sie ist geschäftskritisch. Sie besitzt eine bindende SLA mit anspruchsvollen RPO- und RTO-Werten. Der Verlust von Daten und ein Ausfall bei der Verfügbarkeit ziehen eine finanzielle Haftung nach sich.
-2. Die Häufigkeit von Datenänderungen ist hoch (z. B. Transaktionen pro Minute oder Sekunde). Der für den Standardschutz geltende RPO-Wert von einer Stunde führt wahrscheinlich zu nicht akzeptablen Datenverlusten.
+1. Sie ist geschäftskritisch. Der Verlust von Daten und ein Ausfall bei der Verfügbarkeit ziehen eine finanzielle Haftung nach sich.
+2. Die Häufigkeit von Datenänderungen ist hoch (z. B. Transaktionen pro Minute oder Sekunde). Der für den Standardschutz geltende RPO-Wert von einer Stunde führt wahrscheinlich zu nicht akzeptablen Datenverlusten.
 3. Die Kosten für die Verwendung der Georeplikation sind deutlich niedriger als die potenziellen finanziellen Haftungsschäden und die damit einhergehenden Geschäftsverluste.
 
 ## Entwerfen von Cloudlösungen für die Notfallwiederherstellung 
@@ -126,4 +126,4 @@ Detaillierte Wiederherstellungsstrategien bei Verwendung eines elastischen Pools
 - Informationen über schnellere Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
 - Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

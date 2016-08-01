@@ -13,25 +13,25 @@ ms.service="virtual-machines-windows"
  ms.topic="article"
  ms.tgt_pltfrm="vm-windows"
  ms.workload="big-compute"
- ms.date="04/14/2016"
+ ms.date="07/15/2016"
  ms.author="danlep"/>
 
 # Einrichten eines Windows RDMA-Clusters mit HPC Pack sowie A8- und A9-Instanzen zum Ausführen von MPI-Anwendungen
 
-Richten Sie einen Windows RDMA-Cluster mit [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) und [rechenintensiven Instanzen der Größe A8 und A9](virtual-machines-windows-a8-a9-a10-a11-specs.md) in Azure ein, um parallele MPI-Anwendungen (Message Passing Interface) auszuführen. Wenn Sie Windows Server-basierte A8- und A9-Instanzen für die Ausführung in einem HPC Pack-Cluster einrichten, erfolgt die Kommunikation der MPI-Anwendungen in Azure effizient über ein auf RDMA-Technologie (Remote Direct Memory Access) basierendem Netzwerk mit niedriger Latenz und hohem Durchsatz.
+Richten Sie einen Windows RDMA-Cluster mit [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) und [rechenintensiven Instanzen der Größe A8 und A9](virtual-machines-windows-a8-a9-a10-a11-specs.md) in Azure ein, um parallele MPI-Anwendungen (Message Passing Interface) auszuführen. Wenn Sie Windows Server-basierte A8- und A9-Instanzen für die Ausführung in einem HPC Pack-Cluster einrichten, erfolgt die Kommunikation der MPI-Anwendungen in Azure effizient über ein auf RDMA-Technologie (Remote Direct Memory Access) basierendem Netzwerk mit niedriger Latenz und hohem Durchsatz.
 
 Weitere Informationen zum Ausführen von MPI-Workloads auf virtuellen Linux-Computern, die auf das Azure RDMA-Netzwerk zugreifen, finden Sie unter [Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen](virtual-machines-linux-classic-rdma-cluster.md).
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-## Optionen für die Bereitstellung von HPC Pack-Clustern
+## Optionen für die Bereitstellung von HPC Pack-Clustern
 Microsoft HPC Pack ist ein Tool, das ohne zusätzliche Kosten zum Erstellen von Windows Server-basierten HPC-Clustern in Azure bereitgestellt wird. HPC Pack enthält eine Laufzeitumgebung für die Microsoft-Implementierung von Message Passing Interface für Windows (MS-MPI). Bei Verwendung mit A8- und A9-Instanzen bietet HPC Pack eine effiziente Methode zum Ausführen Windows-basierter MPI-Anwendungen, die auf das RDMA-Netzwerk in Azure zugreifen.
 
-In diesem Artikel werden zwei Szenarien zur Bereitstellung von A8- und A9-Clusterinstanzen mit Microsoft HPC Pack vorgestellt.
+In diesem Artikel werden zwei Szenarien und Links zu detaillierten Anleitungen zur Bereitstellung von A8- und A9-Clusterinstanzen mit Microsoft HPC Pack vorgestellt.
 
-* Szenario 1: Bereitstellen rechenintensiver Workerrolleninstanzen (PaaS)
+* Szenario 1: Bereitstellen rechenintensiver Workerrolleninstanzen (PaaS)
 
-* Szenario 2: Bereitstellen von Computeknoten in rechenintensiven virtuellen Computern (IaaS)
+* Szenario 2: Bereitstellen von Computeknoten in rechenintensiven virtuellen Computern (IaaS)
 
 ## Voraussetzungen
 
@@ -41,7 +41,7 @@ In diesem Artikel werden zwei Szenarien zur Bereitstellung von A8- und A9-Cluste
 
 * **Kernnutzungskontingent** – Sie müssen möglicherweise das Kernnutzungskontingent erhöhen, um einen Cluster mit virtuellen A8- oder A9-Computern bereitzustellen. Beispielsweise benötigen Sie mindestens 128 Kerne, wenn Sie acht A9-Instanzen mit HPC Pack bereitstellen möchten. Um ein Kontingent zu erhöhen, können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/).
 
-## Szenario 1: Bereitstellen rechenintensiver Workerrolleninstanzen (PaaS)
+## Szenario 1: Bereitstellen rechenintensiver Workerrolleninstanzen (PaaS)
 
 Fügen Sie aus einem vorhandenen HPC Pack-Cluster zusätzliche Computeressourcen in Azure-Workerrolleninstanzen (Azure-Knoten) hinzu, die in einem Clouddienst (PaaS) ausgeführt werden. Diese Funktion wird auch als "Burst auf Azure" mit HPC Pack bezeichnet und unterstützt verschiedene Größen für die Workerrolleninstanzen. Um rechenintensive Instanzen zu verwenden, geben Sie einfach die Größe A8 oder A9 beim Hinzufügen von Azure-Knoten an.
 
@@ -50,10 +50,6 @@ Im Folgenden werden die Überlegungen und Schritte zum Burst auf Azure-Instanzen
 >[AZURE.NOTE] Ein Tutorial zum Burst auf Azure mit HPC Pack finden Sie unter [Einrichten eines Hybridclusters mit HPC Pack](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md). Beachten Sie die Überlegungen in den folgenden Schritten, die speziell für Azure-Knoten der Größen A8 und A9 gelten.
 
 ![Burst auf Azure][burst]
-
-### Überlegungen zur Verwendung von A8- und A9-Instanzen
-
-* **Proxyknoten** – In jeder Burst-auf-Azure-Bereitstellung mit rechenintensiven Instanzen stellt HPC Pack automatisch mindestens zwei Instanzen der Größe A8 als Proxyknoten bereit, zusätzlich zu den von Ihnen angegebenen Azure-Workerrolleninstanzen. Die Proxyknoten verwenden Kerne, die dem Abonnement zugeordnet sind, und verursachen zusammen mit den Azure-Workerrolleninstanzen Gebühren.
 
 ### Schritte
 
@@ -80,6 +76,8 @@ Im Folgenden werden die Überlegungen und Schritte zum Burst auf Azure-Instanzen
     Verwenden Sie den Assistenten zum Hinzufügen von Knoten in HPC Cluster Manager. Weitere Informationen finden Sie unter [Hinzufügen von Azure-Knoten zum Windows HPC-Cluster](http://technet.microsoft.com/library/gg481758.aspx#BKMK_Add).
 
     Wenn Sie die Größe der Knoten angeben, wählen Sie A8 oder A9 aus.
+    
+    >[AZURE.NOTE]In jeder Burst-auf-Azure-Bereitstellung mit rechenintensiven Instanzen stellt HPC Pack automatisch mindestens zwei Instanzen der Größe A8 als Proxyknoten bereit, zusätzlich zu den von Ihnen angegebenen Azure-Workerrolleninstanzen. Die Proxyknoten verwenden Kerne, die dem Abonnement zugeordnet sind, und verursachen zusammen mit den Azure-Workerrolleninstanzen Gebühren.
 
 9. **Starten (Bereitstellen) der Knoten und Onlineschalten der Knoten zum Ausführen von Aufträgen**
 
@@ -97,7 +95,7 @@ Im Folgenden werden die Überlegungen und Schritte zum Burst auf Azure-Instanzen
 
 
 
-## Szenario 2: Bereitstellen von Computeknoten in rechenintensiven virtuellen Computern (IaaS)
+## Szenario 2: Bereitstellen von Computeknoten in rechenintensiven virtuellen Computern (IaaS)
 
 In diesem Szenario stellen Sie den HPC Pack-Hauptknoten und Clusterserverknoten auf virtuellen Computern bereit, die zu einer Active Directory-Domäne in einem virtuellen Azure-Netzwerk gehören. HPC Pack bietet eine Reihe von [Bereitstellungsoptionen in Azure-VMs](virtual-machines-linux-hpcpack-cluster-options.md), u.a. automatisierte Bereitstellungsskripts und Azure-Schnellstartvorlagen. Beispielsweise wird in den unten aufgeführten Überlegungen und Schritten die Verwendung des [HPC Pack-IaaS-Bereitstellungsskripts](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md) empfohlen, um den Großteil dieses Prozesses zu automatisieren.
 
@@ -111,7 +109,9 @@ In diesem Szenario stellen Sie den HPC Pack-Hauptknoten und Clusterserverknoten 
 
     Laden Sie das HPC Pack-Paket mit dem IaaS-Bereitstellungsskript aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=49922) herunter.
 
-    Erstellen Sie zur Vorbereitung des Clientcomputers die Skriptkonfigurationsdatei, und führen Sie das Skript aus. Weitere Informationen finden Sie unter [Erstellen eines HPC-Clusters mit dem IaaS-Bereitstellungsskript von HPC Pack](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md). Informationen zur Bereitstellung von Computeknoten der Größen A8 und A9 finden Sie in den folgenden zusätzlichen Überlegungen:
+    Erstellen Sie zur Vorbereitung des Clientcomputers die Skriptkonfigurationsdatei, und führen Sie das Skript aus. Weitere Informationen finden Sie unter [Erstellen eines HPC-Clusters mit dem IaaS-Bereitstellungsskript von HPC Pack](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md).
+    
+    Informationen zur Bereitstellung von Computeknoten der Größen A8 und A9 finden Sie in den folgenden zusätzlichen Überlegungen:
     
     * **Virtuelles Netzwerk** – Geben Sie ein neues virtuelles Netzwerk in einer Region an, in der die A8- und A9-Instanzen verfügbar sind.
 
@@ -164,7 +164,7 @@ So führen Sie "mpipingpong" auf dem Cluster aus
     Wenn Sie den HPC Pack-Cluster auf Azure-VMs bereitgestellt haben, geben Sie eine Knotengruppe an, die Computeknoten-VMs enthält, die in einem Clouddienst bereitgestellt wurden, und ändern Sie den Befehl **mpiexec** wie folgt:
 
     ```
-    job submit /nodegroup:vmcomputenodes /numnodes:4 mpiexec -c 1 -affinity -env MSMPI\_DISABLE\_SOCK 1 -env MSMPI\_PRECONNECT all -env MPICH\_NETMASK 172.16.0.0/255.255.0.0 mpipingpong -p 1:100000 -op -s nul
+    job submit /nodegroup:vmcomputenodes /numnodes:4 mpiexec -c 1 -affinity -env MSMPI_DISABLE_SOCK 1 -env MSMPI_PRECONNECT all -env MPICH_NETMASK 172.16.0.0/255.255.0.0 mpipingpong -p 1:100000 -op -s nul
     ```
 
 3. Geben Sie nach Abschluss des Auftrags zum Anzeigen der Ausgabe (in diesem Fall die Ausgabe von Aufgabe 1 des Auftrags) Folgendes ein:
@@ -189,7 +189,7 @@ So führen Sie "mpipingpong" auf dem Cluster aus
 
     Ändern Sie auf einem HPC Pack-Cluster, der auf Azure-VMs bereitgestellt wurde, den Befehl wie in Schritt 2 beschrieben.
 
-5. Geben Sie nach Abschluss des Auftrags zum Anzeigen der Ausgabe (in diesem Fall die Ausgabe von Aufgabe 1 des Auftrags) Folgendes ein:
+5. Geben Sie nach Abschluss des Auftrags zum Anzeigen der Ausgabe (in diesem Fall die Ausgabe von Aufgabe 1 des Auftrags) Folgendes ein:
 
     ```
     task view <JobID>.1
@@ -228,7 +228,7 @@ Im Folgenden finden Sie Überlegungen zum Ausführen von MPI-Anwendungen auf Azu
 * MPI-Aufträge können nicht auf Azure-Instanzen ausgeführt werden, die in verschiedenen Clouddiensten bereitgestellt wurden (z. B. in Burst-auf-Azure-Bereitstellungen mit unterschiedlichen Knotenvorlagen oder auf Azure-VM-Computeknoten, die in mehreren Clouddiensten bereitgestellt wurden). Wenn Sie über mehrere Azure-Knotenbereitstellungen verfügen, die mit unterschiedlichen Knotenvorlagen gestartet werden, darf der MPI-Auftrag nur auf einem Satz von Azure-Knoten ausgeführt werden.
 
 
-* Wenn Sie Azure-Knoten zum Cluster hinzufügen und online schalten, versucht der HPC-Auftragsplanungsdienst sofort, Aufträge auf den Knoten zu starten. Wenn nur ein Teil Ihrer Workload in Azure ausgeführt werden kann, stellen Sie sicher, dass Sie Auftragsvorlagen aktualisieren oder erstellen, um exakt zu definieren, welche Auftragstypen auf Azure ausgeführt werden können. Um beispielsweise sicherzustellen, dass mit einer Auftragsvorlage übermittelte Aufträge nur auf Azure-Knoten ausgeführt werden, fügen Sie der Auftragsvorlage die Knotengruppeneigenschaft hinzu, und wählen Sie "AzureNodes" als den erforderlichen Wert aus. Wenn Sie benutzerdefinierte Gruppen für die Azure-Knoten erstellen, verwenden Sie das HPC PowerShell-Cmdlet Add-HpcGroup.
+* Wenn Sie Azure-Knoten zum Cluster hinzufügen und online schalten, versucht der HPC-Auftragsplanungsdienst sofort, Aufträge auf den Knoten zu starten. Wenn nur ein Teil Ihrer Workload in Azure ausgeführt werden kann, stellen Sie sicher, dass Sie Auftragsvorlagen aktualisieren oder erstellen, um exakt zu definieren, welche Auftragstypen auf Azure ausgeführt werden können. Um beispielsweise sicherzustellen, dass mit einer Auftragsvorlage übermittelte Aufträge nur auf Azure-Knoten ausgeführt werden, fügen Sie der Auftragsvorlage die Knotengruppeneigenschaft hinzu, und wählen Sie "AzureNodes" als den erforderlichen Wert aus. Wenn Sie benutzerdefinierte Gruppen für die Azure-Knoten erstellen, verwenden Sie das HPC PowerShell-Cmdlet Add-HpcGroup.
 
 
 ## Nächste Schritte
@@ -243,4 +243,4 @@ Im Folgenden finden Sie Überlegungen zum Ausführen von MPI-Anwendungen auf Azu
 [pingpong1]: ./media/virtual-machines-windows-classic-hpcpack-rdma-cluster/pingpong1.png
 [pingpong2]: ./media/virtual-machines-windows-classic-hpcpack-rdma-cluster/pingpong2.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

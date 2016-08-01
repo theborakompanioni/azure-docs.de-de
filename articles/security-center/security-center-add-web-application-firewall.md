@@ -4,7 +4,7 @@
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
-   manager="MBalwin"
+   manager="MBaldwin"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/11/2016"
+   ms.date="07/15/2016"
    ms.author="terrylan"/>
 
 # Hinzufügen einer Web Application Firewall in Azure Security Center
@@ -35,7 +35,7 @@ In Azure Security Center wird unter Umständen empfohlen, dass Sie zum Schutz Ih
 6. Das Blatt **New Web Application Firewall** wird geöffnet, auf dem Sie Schritte zur **VM-Konfiguration** ausführen und **WAF-Informationen** bereitstellen können. Wählen Sie **VM-Konfiguration** aus.
 
 7. Auf dem Blatt **VM-Konfiguration** können Sie Informationen eingeben, die erforderlich sind, um den virtuellen Computer einzurichten, auf dem die WAF ausgeführt wird. ![Konfiguration des virtuellen Computers][4]
-8. Kehren Sie zum Blatt **New Web Application Firewall** zurück, und wählen Sie **WAF-Informationen**. Auf dem Blatt **WAF-Informationen** können Sie die WAF selbst konfigurieren. In Schritt 7 können Sie den virtuellen Computer konfigurieren, auf dem die WAF ausgeführt wird, und in Schritt 8 können Sie die WAF selbst bereitstellen.
+8. Kehren Sie zum Blatt **New Web Application Firewall** zurück, und wählen Sie **WAF-Informationen**. Auf dem Blatt **WAF-Informationen** können Sie die WAF selbst konfigurieren. In Schritt 7 können Sie den virtuellen Computer konfigurieren, auf dem die WAF ausgeführt wird, und in Schritt 8 können Sie die WAF selbst bereitstellen.
 
 ## Finalize application protection (Anwendungsschutz abschließen)
 
@@ -71,4 +71,4 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 [5]: ./media/security-center-add-web-application-firewall/finalize-waf.png
 [6]: ./media/security-center-add-web-application-firewall/restrict-traffic.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

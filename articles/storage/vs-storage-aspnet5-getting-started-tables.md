@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Erste Schritte mit Tabellenspeicher und verbundenen Visual Studio-Diensten (ASP.NET 5) | Microsoft Azure"
-	description="Erfahren Sie etwas über die ersten Schritte mit Azure-Tabellenspeicher in einem ASP.NET 5-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben."
+	pageTitle="Erste Schritte mit Tabellenspeicher und verbundenen Visual Studio-Diensten (ASP.NET 5) | Microsoft Azure"
+	description="Erfahren Sie etwas über die ersten Schritte mit Azure-Tabellenspeicher in einem ASP.NET 5-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben."
 	services="storage"
 	documentationCenter=""
 	authors="TomArcher"
@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="07/18/2016"
 	ms.author="tarcher"/>
 
 # Erste Schritte mit Azure-Tabellenspeicher und verbundenen Visual Studio-Diensten
+
+[AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
 
 ## Übersicht
 
@@ -24,7 +26,7 @@ Dieser Artikel beschreibt, wie die ersten Schritte beim Verwenden von Azure-Tabe
 
 Der Azure-Tabellenspeicherdienst ermöglicht das Speichern großer Mengen von strukturierten Daten. Der Dienst ist ein NoSQL-Datenspeicher, der authentifizierte Aufrufe von innerhalb und außerhalb der Azure-Cloud akzeptiert. Azure-Tabellen sind hervorragend zur Speicherung strukturierter nicht relationaler Daten geeignet.
 
-Bei einem **Verbundene Dienste hinzufügen**-Vorgang werden die entsprechenden NuGet-Pakete installiert, um auf Azure-Speicher in Ihrem Projekt zuzugreifen, und wird die Verbindungszeichenfolge für das Speicherkonto in Ihren Konfigurationsdateien des Projekts hinzugefügt.
+Beim Vorgang **Verbundene Dienste hinzufügen** werden die entsprechenden NuGet-Pakete installiert, um auf Azure-Speicher in Ihrem Projekt zuzugreifen, und Ihren Projektkonfigurationsdateien die Verbindungszeichenfolge für das Speicherkonto hinzugefügt.
 
 Weitere allgemeine Informationen zur Verwendung von Azure Table Storage finden Sie unter [Erste Schritte mit Azure Table Storage mit .NET](storage-dotnet-how-to-use-tables.md).
 
@@ -189,4 +191,4 @@ Sie können eine Entität nach dem Abrufen löschen. Der folgende Code sucht nac
 
 [AZURE.INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

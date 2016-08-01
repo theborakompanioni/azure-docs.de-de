@@ -26,7 +26,7 @@ In dieser Anleitung wird die Ausführung gängiger Aufgaben mithilfe der verwalt
 
 ## Referenzdokumentation
 
-Die Referenzdokumentation für das Client-SDK finden Sie hier: [.NET-Client-Referenz für Azure Mobile Apps]. Sie finden auch mehrere Clientbeispiele im [GitHub-Repository „Azure Samples“] (Azure Beispiele).
+Die Referenzdokumentation für das Client-SDK finden Sie hier: [.NET-Client-Referenz für Azure Mobile Apps]. Sie finden auch mehrere Clientbeispiele im [GitHub-Repository „Azure Samples“] \(Azure Beispiele).
 
 ##<a name="setup"></a>Einrichtung und Voraussetzungen
 
@@ -126,7 +126,7 @@ Der folgende Code zeigt, wie Sie Daten mithilfe einer `Where`-Klausel in einer A
 	   .Where(todoItem => todoItem.Complete == false)
 	   .ToListAsync();
 
-Sie können den URI der an das Back-End gesendeten Anforderung anzeigen, indem Sie Software zur Überprüfung von Nachrichten verwenden, z. B. Browserentwicklertools oder [Fiddler]. Beachten Sie im folgenden Anforderungs-URI, dass die Abfragezeichenfolge verändert ist:
+Sie können den URI der an das Back-End gesendeten Anforderung anzeigen, indem Sie Software zur Überprüfung von Nachrichten verwenden, z. B. Browserentwicklertools oder [Fiddler]. Beachten Sie im folgenden Anforderungs-URI, dass die Abfragezeichenfolge verändert ist:
 
 	GET /tables/todoitem?$filter=(complete+eq+false) HTTP/1.1
 
@@ -179,7 +179,7 @@ Der folgende Code zeigt, wie Sie Daten mithilfe einer [OrderBy]- oder einer [Ord
 
 ###<a name="paging"></a>Seitenweises Zurückgeben von Daten
 
-Standardmäßig gibt das Back-End nur die ersten 50 Zeilen zurück. Sie können die [Take]-Methode aufrufen, um die Anzahl der zurückgegebenen Zeilen zu erhöhen. Verwenden Sie `Take` zusammen mit der [Skip]-Methode, um eine bestimmte "Seite" des gesamten Datasets anzufordern, das von der Abfrage zurückgegeben wird. Die folgende Abfrage liefert die ersten drei Elemente aus der Tabelle zurück.
+Standardmäßig gibt das Back-End nur die ersten 50 Zeilen zurück. Sie können die [Take]-Methode aufrufen, um die Anzahl der zurückgegebenen Zeilen zu erhöhen. Verwenden Sie `Take` zusammen mit der [Skip]-Methode, um eine bestimmte "Seite" des gesamten Datasets anzufordern, das von der Abfrage zurückgegeben wird. Die folgende Abfrage liefert die ersten drei Elemente aus der Tabelle zurück.
 
 	// Define a filtered query that returns the top 3 items.
 	MobileServiceTableQuery<TodoItem> query = todoTable
@@ -200,7 +200,7 @@ Mit der [IncludeTotalCount]-Methode können Sie sicherstellen, dass die Abfrage 
 
 In diesem vereinfachten Szenario werden hartcodierte Pagingwerte an die `Take`-Methode und die `Skip`-Methode übergeben. Tatsächliche Anwendungen können ähnliche Abfragen mit einem Pagersteuerelement oder einer ähnlichen Benutzersteuerung ausführen, um zur vorherigen bzw. nächsten Seite zu navigieren.
 
->[AZURE.NOTE]Um die Begrenzung auf 50 Zeilen in einem Mobile App-Back-End zu überschreiben, müssen Sie [EnableQueryAttribute] auf die öffentliche GET-Methode anwenden und das Pagingverhalten festlegen. Bei Anwendung des Attributs auf die Methode wird durch Folgendes die maximale Anzahl zurückgegebener Zeilen auf 1000 beschränkt:
+>[AZURE.NOTE]Um die Begrenzung auf 50 Zeilen in einem Mobile App-Back-End zu überschreiben, müssen Sie [EnableQueryAttribute] auf die öffentliche GET-Methode anwenden und das Pagingverhalten festlegen. Bei Anwendung des Attributs auf die Methode wird durch Folgendes die maximale Anzahl zurückgegebener Zeilen auf 1000 beschränkt:
 >
 >    [EnableQuery(MaxTop=1000)]
 
@@ -317,7 +317,7 @@ Beachten Sie, dass Sie bei einer Löschanforderung eine ID angeben müssen. Ande
 
 Zwei oder mehr Clients können gleichzeitig versuchen, das gleiche Element zu bearbeiten. Ohne Konflikterkennung würde der letzte Schreibvorgang alle vorherigen Aktualisierungen überschreiben, selbst wenn dies nicht so gewollt wäre. Die *Steuerung für optimistische Parallelität* nimmt an, dass jede Transaktion Commits ausführen kann und sperrt daher keine Ressourcen. Vor dem Commit einer Transaktion prüft die Steuerung für optimistische Parallelität, ob die Daten von einer anderen Transaktion geändert wurden. Falls die Daten geändert wurden, wird für die Transaktion, die den Commit durchführen sollte, ein Rollback durchgeführt.
 
-Mobile Apps unterstützt die Steuerung für optimistische Parallelität, indem Änderungen an Elementen in der Spalte `version` mit den Systemeigenschaften nachverfolgt werden, die für jede Tabelle im Mobile App-Back-End definiert wird. Bei jeder Aktualisierung eines Datensatzes wird die `version`-Eigenschaft des entsprechenden Datensatzes von Mobile Apps auf einen neuen Wert festgelegt. Bei jeder Aktualisierungsanforderung wird die `\version`-Eigenschaft des in der Anforderung enthaltenen Datensatzes mit der Eigenschaft des Datensatzes auf dem Server verglichen. Wenn die mit der Anforderung übergebene Version nicht mit dem Back-End übereinstimmt, löst die Clientbibliothek eine `MobileServicePreconditionFailedException<T>`-Ausnahme aus. Der in der Ausnahme enthaltene Typ ist der Datensatz des Back-Ends, der die Serverversion des entsprechenden Datensatzes enthält. Anschließend kann die Anwendung anhand dieser Informationen entscheiden, ob die Updateanforderung erneut mit dem korrekten `version`-Wert vom Back-End ausgeführt werden soll, um Commits für die Änderungen auszuführen.
+Mobile Apps unterstützt die Steuerung für optimistische Parallelität, indem Änderungen an Elementen in der Spalte `version` mit den Systemeigenschaften nachverfolgt werden, die für jede Tabelle im Mobile App-Back-End definiert wird. Bei jeder Aktualisierung eines Datensatzes wird die `version`-Eigenschaft des entsprechenden Datensatzes von Mobile Apps auf einen neuen Wert festgelegt. Bei jeder Aktualisierungsanforderung wird die `version`-Eigenschaft des in der Anforderung enthaltenen Datensatzes mit der Eigenschaft des Datensatzes auf dem Server verglichen. Wenn die mit der Anforderung übergebene Version nicht mit dem Back-End übereinstimmt, löst die Clientbibliothek eine `MobileServicePreconditionFailedException<T>`-Ausnahme aus. Der in der Ausnahme enthaltene Typ ist der Datensatz des Back-Ends, der die Serverversion des entsprechenden Datensatzes enthält. Anschließend kann die Anwendung anhand dieser Informationen entscheiden, ob die Updateanforderung erneut mit dem korrekten `version`-Wert vom Back-End ausgeführt werden soll, um Commits für die Änderungen auszuführen.
 
 Definieren Sie eine Spalte in der Tabellenklasse für die `version`-Systemeigenschaft, um optimistische Parallelität zu aktivieren. Beispiel:
 
@@ -331,9 +331,9 @@ Definieren Sie eine Spalte in der Tabellenklasse für die `version`-Systemeigens
         [JsonProperty(PropertyName = "complete")]
         public bool Complete { get; set; }
 
-		// *** Enable Optimistic Concurrency *** //
+        // *** Enable Optimistic Concurrency *** //
         [JsonProperty(PropertyName = "version")]
-        public byte[] Version { set; get; }
+        public string Version { set; get; }
     }
 
 
@@ -424,7 +424,7 @@ Einige Steuerelemente in der verwalteten Laufzeit unterstützen eine Schnittstel
     ListBox lb = new ListBox();
     lb.ItemsSource = items;
 
-Um die neue Sammlung in Windows Phone 8- und Silverlight-Apps zu nutzen, verwenden Sie die `ToCollection`-Erweiterungsmethoden für `IMobileServiceTableQuery<T>` und `IMobileServiceTable<T>`. Rufen Sie `LoadMoreItemsAsync()` auf, um tatsächlich Daten zu laden.
+Um die neue Sammlung in Windows Phone 8- und Silverlight-Apps zu nutzen, verwenden Sie die `ToCollection`-Erweiterungsmethoden für `IMobileServiceTableQuery<T>` und `IMobileServiceTable<T>`. Rufen Sie `LoadMoreItemsAsync()` auf, um tatsächlich Daten zu laden.
 
 	MobileServiceCollection<TodoItem, TodoItem> items = todoTable.Where(todoItem => todoItem.Complete==false).ToCollection();
 	await items.LoadMoreItemsAsync();
@@ -497,7 +497,7 @@ Nutzen Sie die Active Directory-Authentifizierungsbibliothek (Active Directory A
 	
 	* Ersetzen Sie **INSERT-CLIENT-ID-HERE** durch die Client-ID, die Sie aus der nativen Clientanwendung kopiert haben.
 	
-	* Ersetzen Sie **INSERT-REDIRECT-URI-HERE** durch den Endpunkt _/.auth/login/done_ Ihrer Website mithilfe des HTTPS-Schemas. Dieser Wert sollte etwa so aussehen: \__https://contoso.azurewebsites.net/.auth/login/done_.
+	* Ersetzen Sie **INSERT-REDIRECT-URI-HERE** durch den Endpunkt _/.auth/login/done_ Ihrer Website mithilfe des HTTPS-Schemas. Dieser Wert sollte etwa so aussehen: \_https://contoso.azurewebsites.net/.auth/login/done_.
 	
 	Der für jede Plattform erforderliche Code:
 	
@@ -627,7 +627,7 @@ Der folgende Codeausschnitt zeigt den Clientfluss für Facebook oder Google.
 
 ####<a name="client-livesdk"></a>Einmaliges Anmelden mit einem Microsoft-Konto mit dem Live SDK
 
-Damit Sie Benutzer authentifizieren können, müssen Sie Ihre App beim Microsoft-Konto für das Developer Center registrieren. Sie müssen dann diese Registrierung mit Ihrem Mobile App-Back-End verbinden. Führen Sie die Schritte unter [Registrieren Ihrer App für die Verwendung einer Microsoft-Kontoanmeldung] aus, um eine Microsoft-Kontoregistrierung zu erstellen und diese mit Ihrem Mobile App-Back-End zu verbinden. Wenn Sie sowohl eine Windows Store- als auch eine Windows Phone 8-/Silverlight-Version Ihrer App haben, registrieren Sie zuerst die Windows Store-Version.
+Damit Sie Benutzer authentifizieren können, müssen Sie Ihre App beim Microsoft-Konto für das Developer Center registrieren. Sie müssen dann diese Registrierung mit Ihrem Mobile App-Back-End verbinden. Führen Sie die Schritte unter [Registrieren Ihrer App für die Verwendung einer Microsoft-Kontoanmeldung] aus, um eine Microsoft-Kontoregistrierung zu erstellen und diese mit Ihrem Mobile App-Back-End zu verbinden. Wenn Sie sowohl eine Windows Store- als auch eine Windows Phone 8-/Silverlight-Version Ihrer App haben, registrieren Sie zuerst die Windows Store-Version.
 
 Im folgenden Code erfolgt eine Authentifizierung mit Live SDK und wird das zurückgegebene Token verwendet, um eine Anmeldung bei Ihrem Mobile App-Back-End vorzunehmen.
 
@@ -777,7 +777,7 @@ Mit dem Mobile Apps-Client können Sie die App für Pushbenachrichtigungen mit A
         await MobileService.GetPush().RegisterNativeAsync(channel.Uri, null);
     }
 
-Zu einer Pushbenachrichtigung an den WNS BENÖTIGEN Sie eine Windows Store-Paket-SID (siehe unten). Beachten Sie, dass in diesem Beispiel zwei Tags in der Registrierung enthalten sind. Weitere Informationen zu Windows-Apps, z. B. zum Registrieren für Vorlagenregistrierungen, finden Sie unter [Hinzufügen von Pushbenachrichtigungen zu Ihrer App].
+Zu einer Pushbenachrichtigung an den WNS BENÖTIGEN Sie eine Windows Store-Paket-SID (siehe unten). Beachten Sie, dass in diesem Beispiel zwei Tags in der Registrierung enthalten sind. Weitere Informationen zu Windows-Apps, z. B. zum Registrieren für Vorlagenregistrierungen, finden Sie unter [Hinzufügen von Pushbenachrichtigungen zu Ihrer App].
 
 Beachten Sie, dass die Anforderung von Tags vom Client nicht unterstützt wird. Tag-Anforderungen werden automatisch aus der Registrierung gelöscht. Wenn Sie Ihr Gerät mit Tags registrieren möchten, erstellen Sie eine benutzerdefinierte API, die die Notification Hubs-API verwendet, um die Registrierung in Ihrem Namen auszuführen. Rufen Sie anstelle der `RegisterNativeAsync()`-Methode die [benutzerdefinierte API](#customapi) auf.
 
@@ -966,4 +966,4 @@ Um Ihr spezielles App-Szenario zu unterstützen, müssen Sie unter Umständen di
 [SymbolSource]: http://www.symbolsource.org/
 [SymbolSource-Anweisungen]: http://www.symbolsource.org/Public/Wiki/Using
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

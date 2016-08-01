@@ -80,7 +80,7 @@ In Azure benötigen Sie für die Bereitstellung dieses Szenarios Folgendes:
 
 **Voraussetzungen** | **Details** 
 --- | ---
-**Azure**| Sie benötigen ein [Microsoft Azure](http://azure.microsoft.com/)-Konto. Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung. [Erfahren Sie mehr](https://azure.microsoft.com/pricing/details/site-recovery/) über die Preise für Site Recovery. 
+**Azure**| Sie benötigen ein [Microsoft Azure](http://azure.microsoft.com/)-Konto. Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung. [Erfahren Sie mehr](https://azure.microsoft.com/pricing/details/site-recovery/) über die Preise für Site Recovery. 
 
 
 ## Lokale Voraussetzungen
@@ -145,7 +145,7 @@ Wenn Sie nur über einen einzelnen VMM-Server verfügen, können Sie virtuelle C
 	![Neuer Tresor](./media/site-recovery-vmm-to-vmm/new-vault3.png)
 
 3. Geben Sie unter **Name** einen Anzeigenamen an, mit dem der Tresor identifiziert wird. Wenn Sie mehrere Abonnements haben, müssen Sie ein Abonnement auswählen.
-4. [Erstellen Sie eine neue Ressourcengruppe](../resource-group-portal.md#create-resource-group), oder wählen Sie eine vorhandene Ressourcengruppe aus, und geben Sie eine Azure-Region an. Computer werden in dieser Region repliziert. Sie finden eine Liste der unterstützten Regionen unter Geografische Verfügbarkeit auf der Seite [Azure Site Recovery – Preisübersicht](https://azure.microsoft.com/pricing/details/site-recovery/)
+4. [Erstellen Sie eine neue Ressourcengruppe](../resource-group-template-deploy-portal.md), oder wählen Sie eine vorhandene Ressourcengruppe aus, und geben Sie eine Azure-Region an. Computer werden in dieser Region repliziert. Sie finden eine Liste der unterstützten Regionen unter Geografische Verfügbarkeit auf der Seite [Azure Site Recovery – Preisübersicht](https://azure.microsoft.com/pricing/details/site-recovery/)
 4. Wenn Sie schnell über das Dashboard auf den Tresor zugreifen möchten, klicken Sie auf **An Dashboard anheften** > **Tresor erstellen**.
 
 	![Neuer Tresor](./media/site-recovery-vmm-to-vmm/new-vault-settings.png)
@@ -259,13 +259,13 @@ Der Azure Site Recovery-Anbieter kann über die Befehlszeile installiert werden.
 
 Die Parameter lauten:
 
- - **/Credentials**: erforderlicher Parameter zum Angeben des Speicherorts der Registrierungsschlüsseldatei.  
- - **/FriendlyName**: erforderlicher Parameter für den Namen des Hyper-V-Hostservers, der im Azure Site Recovery-Portal angezeigt wird.
+ - **/Credentials**: erforderlicher Parameter zum Angeben des Speicherorts der Registrierungsschlüsseldatei.
+ - **/FriendlyName**: erforderlicher Parameter für den Namen des Hyper-V-Hostservers, der im Azure Site Recovery-Portal angezeigt wird.
  - **/EncryptionEnabled**: Optionaler Parameter, den Sie nur bei der Replikation von VMM zu Azure verwenden.
  - **/proxyAddress**: optionaler Parameter, der die Adresse des Proxyservers angibt.
  - **/proxyport**: optionaler Parameter, der den Port des Proxyservers angibt.
  - **/proxyUsername**: optionaler Parameter, der den Proxybenutzernamen angibt (sofern der Proxy eine Authentifizierung erfordert).
- - **/proxyPassword**: optionaler Parameter, der das Kennwort für die Authentifizierung mit dem Proxyserver angibt (sofern der Proxy eine Authentifizierung erfordert).  
+ - **/proxyPassword**: optionaler Parameter, der das Kennwort für die Authentifizierung mit dem Proxyserver angibt (sofern der Proxy eine Authentifizierung erfordert).
 
 ## Schritt 3: Einrichten der Zielumgebung
 
@@ -483,4 +483,4 @@ Führen Sie dieses Beispielskript aus, um DNS zu aktualisieren, wobei Sie die IP
 
 Nachdem die Bereitstellung eingerichtet wurde und ausgeführt wird, können Sie sich [hier](site-recovery-failover.md) über unterschiedliche Failovertypen informieren.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

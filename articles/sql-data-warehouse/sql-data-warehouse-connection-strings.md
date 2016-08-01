@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/16/2016"
+   ms.date="07/18/2016"
    ms.author="sonyama;barbkess"/>
 
 
@@ -27,10 +27,10 @@
 
 Sie können eine Verbindung mit SQL Data Warehouse herstellen, indem Sie eines der folgenden Anwendungsprotokolle verwenden:
 
-- ADO.NET
-- ODBC
-- PHP
-- JDBC 
+- [ADO.NET][]
+- [ODBC][]
+- [PHP][]
+- [JDBC][]
 
 Im Folgenden sind einige Beispiele für Verbindungszeichenfolgen für die einzelnen Protokolle aufgeführt. Sie können auch das Azure-Portal zum Einrichten Ihrer Verbindungszeichenfolge verwenden. Navigieren Sie einfach im Azure-Portal zu Ihrer Datenbank. Klicken Sie unter *Essentials* auf *Datenbank-Verbindungszeichenfolgen anzeigen*.
 
@@ -60,15 +60,19 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## Nächste Schritte
 
-Informationen zum Abfragen des Data Warehouse mit Visual Studio und anderen Anwendungen finden Sie unter [Query Azure SQL Data Warehouse (Visual Studio)][] \(Abfragen von Azure SQL Data Warehouse (Visual Studio)).
+Informationen zum Abfragen Ihres Data Warehouse mit Visual Studio und anderen Anwendungen finden Sie unter [Abfragen mit Visual Studio][].
 
 <!--Image references-->
 
 <!--Azure.com references-->
-
-
+ [Abfragen mit Visual Studio]: ./sql-data-warehouse-query-visual-studio.md
+ 
 <!--MSDN references-->
+[ADO.NET]: https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx
+[ODBC]: https://msdn.microsoft.com/library/jj730314.aspx
+[PHP]: https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396
+[JDBC]: https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx
 
 <!--Other references-->
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0720_2016-->

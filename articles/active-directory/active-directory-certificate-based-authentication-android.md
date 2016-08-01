@@ -94,11 +94,6 @@ Weitere Einzelheiten finden Sie unter [Anpassen der AD FS-Anmeldeseiten](https:/
 Bestimmte Exchange ActiveSync-Anwendungen auf Android 5.0 (Lollipop) oder einer höheren Version werden unterstützt. Wenden Sie sich an Ihren Anwendungsentwickler, um herauszufinden, ob Ihre E-Mail-Anwendung dieses Feature unterstützt.
 
 
-### Einschränkungen  
-
-Die Verbundauthentifizierung mit einem Clientzertifikat wird nicht unterstützt.
-
-
 
 ## Erste Schritte 
 
@@ -272,4 +267,4 @@ Die unten aufgeführten Schritte zeigen, wie Sie das Autorisierungstoken aktuali
 
 Das festgelegte Datum muss in der Zukunft liegen. Wenn das Datum nicht in der Zukunft liegt, wird die **StsRefreshTokensValidFrom**-Eigenschaft nicht festgelegt. Wenn das Datum in der Zukunft liegt, wird **StsRefreshTokensValidFrom** auf die aktuelle Uhrzeit festgelegt (nicht das Datum, das mit dem Befehl „Set-MsolUser“ angegeben ist).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="07/14/2016"
 	ms.author="billmath"/>
 
 # Azure AD-Verbund – Kompatibilitätsliste
@@ -36,6 +36,7 @@ Informationen dazu, wie Sie Ihren nicht von Microsoft stammenden Identitätsanbi
 - [Optimal IDM Virtual Identity Server Federation Services](#optimal-idm-virtual-identity-server-federation-services)
 - [PingFederate 6.11](#pingfederate-611)
 - [PingFederate 7.2](#pingfederate-72)
+- [PingFederate 8.x](#pingfederate-8.x)
 - [Centrify](#centrify)
 - [IBM Tivoli Federated Identity Manager 6.2.2](#ibm-tivoli-federated-identity-manager-622)
 - [SecureAuth IdP 7.2.0](#secureauth-idp-720)
@@ -116,6 +117,20 @@ Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalig
 | E-Mail-Clients wie Outlook und ActiveSync | Unterstützt |Keine|
 
 Die PingFederate-Anweisungen zur Konfiguration dieses Sicherheitstokendiensts zur Implementierung des einmaligen Anmeldens für Active Directory-Benutzer finden Sie [hier](http://documentation.pingidentity.com/display/PF72/PingFederate+7.2).
+
+## PingFederate 8.x 
+PingFederate 8.x implementiert den weit verbreiteten WS-Verbund-/WS-Trust-Identitätsstandard, um das einmalige Anmelden zu ermöglichen und ein Framework für den Austausch von Attributen bereitzustellen.
+
+Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalige Anmelden:
+
+
+| Client- |Support |Ausnahmen|
+| --------- | --------- |--------- |
+| Webbasierte Clients wie Exchange Web Access und SharePoint Online | Unterstützt |Keine|
+| Rich Client-Anwendungen wie Lync, Office-Abonnement, CRM | Unterstützt |Keine|
+| E-Mail-Clients wie Outlook und ActiveSync | Unterstützt |Keine|
+
+Die PingFederate-Anweisungen zur Konfiguration dieses Sicherheitstokendiensts zur Implementierung des einmaligen Anmeldens für Active Directory-Benutzer finden Sie [hier](http://documentation.pingidentity.com/display/PFS/SSO+to+Office+365+Introduction).
 
 ## Centrify 
 Mit Centrify wird das einmalige Anmelden im Verbund für Office 365 ermöglicht, ohne zu diesem Zweck einen lokalen Verbundserver bereitstellen zu müssen.
@@ -323,4 +338,4 @@ Nachfolgend finden Sie die Matrix der unterstützten Szenarien für das einmalig
 
 Weitere Informationen finden Sie unter [AuthAnvil Single Sign On](https://help.scorpionsoft.com/entries/26538603-How-can-I-Configure-Single-Sign-On-for-Office-365-).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

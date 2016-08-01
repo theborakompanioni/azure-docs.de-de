@@ -14,7 +14,7 @@
 	ms.workload="na" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="04/21/2016" 
+	ms.date="07/19/2016" 
 	ms.author="betorres"
 />
 
@@ -36,7 +36,7 @@ Nach der Aktivierung beginnt innerhalb von fünf bis zehn Minuten der Datenfluss
 
 
 ### 1\. Verwenden des Portals
-Öffnen Sie Ihren Azure Search-Dienst im [Azure-Portal](http://portal.azure.com). Unter „Einstellungen“ finden Sie die Option „Datenverkehrsanalyse durchsuchen“.
+Öffnen Sie Ihren Azure Search-Dienst im [Azure-Portal](http://portal.azure.com). Unter „Einstellungen“ finden Sie die Option „Datenverkehrsanalyse durchsuchen“.
 
 ![][1]
 
@@ -69,9 +69,7 @@ Beispiel-Pfad: `resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resou
 
 ### Logs
 
-Die Protokollblobs enthalten die Datenverkehrprotokolle des Suchdiensts.
-
-Jeder Blob hat ein Stammobjekt namens **records**, das ein Array von Protokollobjekten enthält.
+Die Protokollblobs enthalten die Datenverkehrprotokolle des Suchdiensts. Jedes Blob hat ein Stammobjekt namens **records**, das ein Array von Protokollobjekten enthält. Jedes Blob enthält Einträge zu allen Vorgängen, die während derselben Stunde erfolgt sind.
 
 ####Protokollschema
 
@@ -98,12 +96,15 @@ Eigenschaften |Objekt |siehe unten |Objekt, das vorgangsspezifische Daten enthä
 
 ### Metriken
 
-Die Metrikblobs enthalten aggregierte Werte für Ihren Suchdienst. Jede Datei hat ein Stammobjekt namens **records**, das ein Array von Metrikobjekten enthält.
+Die Metrikblobs enthalten aggregierte Werte für Ihren Suchdienst. Jede Datei hat ein Stammobjekt namens **records**, das ein Array von Metrikobjekten enthält. Dieses Stammobjekt enthält Metriken für jede Minute, für die die Daten verfügbar waren.
 
 Verfügbare Metriken:
 
-- Wartezeit
-- SearchQueriesPerSecond
+- SearchLatency: Die Zeit, die der Suchdienst für die Verarbeitung von Suchabfragen benötigt hat, auf Minutenbasis aggregiert.
+- SearchQueriesPerSecond: Anzahl der pro Sekunde empfangenen Suchabfragen, auf Minutenbasis aggregiert.
+- ThrottledSearchQueriesPercentage: Prozentsatz der gedrosselten Suchabfragen, auf Minutenbasis aggregiert.
+
+> [AZURE.IMPORTANT] Eine Drosselung erfolgt, wenn zu viele Abfragen gesendet werden, die die bereitgestellte Ressourcenkapazität des Diensts ausbremsen. Erwägen Sie das Hinzufügen weiterer Replikate zu Ihrem Dienst.
 
 ####Metrikenschema
 
@@ -117,7 +118,13 @@ Verfügbare Metriken:
 |maximum |int |78 |Der Höchstwert der unformatierten Beispiele im Metrikzeitintervall |
 |total |int |258 |Der Gesamtwert der unformatierten Beispiele im Metrikzeitintervall |
 |count |int |4 |Die Anzahl der unformatierten Beispiele, die zum Generieren der Metrik verwendet werden |
-|timegrain |Zeichenfolge |„PT1M“ |Das Aggregationsintervall der Metrik in ISO 8601|
+|timegrain |Zeichenfolge |„PT1M“ |Das Aggregationsintervall der Metrik in ISO 8601|
+
+Alle Metriken werden in Intervallen von einer Minute gemeldet. Dies bedeutet, dass jede der Metriken den Mindest-, Höchst- und Durchschnittswert pro Minute verfügbar macht.
+
+Bei der Metrik „SearchQueriesPerSecond“ ist der Mindestwert der niedrigste Wert für Suchabfragen pro Sekunde, der während dieser Minute registriert wurde. Dasselbe gilt für den Höchstwert. Der Durchschnittswert ist das Aggregat der gesamten Minute. Betrachten Sie dieses Szenario: Innerhalb einer Minute kann es für 1 Sekunde eine sehr hohe Last geben (dies ist der Höchstwert für „SearchQueriesPerSecond“), gefolgt von 58 Sekunden mit mittlerer Last sowie einer Sekunde mit nur 1 Abfrage, was der Mindestwert ist.
+
+Für „ThrottledSearchQueriesPercentage“ entsprechen der Mindest-, Höchst-, Durchschnitts- und Gesamtwert demselben Wert, nämlich dem Prozentsatz von Suchabfragen, die gedrosselt wurden, basierend auf der Gesamtanzahl von Suchabfragen während einer Minute.
 
 ## Analysieren Ihrer Daten
 
@@ -221,4 +228,4 @@ Erfahren Sie hier mehr über das Erstellen erstaunlicher Berichte. Weitere Infor
 [6]: ./media/search-traffic-analytics/BlobStorage.png
 [7]: ./media/search-traffic-analytics/QueryEditor.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

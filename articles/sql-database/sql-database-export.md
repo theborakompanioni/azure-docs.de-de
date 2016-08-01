@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="04/06/2016"
+	ms.date="07/19/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -33,7 +33,7 @@ Wenn Sie ein Archiv einer Azure SQL-Datenbank erstellen müssen, können Sie das
 - Die Maximalgröße für eine BACPAC-Datei, die in den Azure-Blobspeicher archiviert wird, beträgt 200 GB. Verwenden Sie die Eingabeaufforderung [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx), um eine große BACPAC-Datei im lokalen Speicher zu archivieren. Dieses Hilfsprogramm wird mit Visual Studio und SQL Server bereitgestellt. Sie können auch die aktuelle Version der SQL Server Data Tools [herunterladen](https://msdn.microsoft.com/library/mt204009.aspx), um dieses Hilfsprogramm zu erhalten.
 - Das Archivieren in Azure Storage Premium mithilfe einer BACPAC-Datei wird nicht unterstützt.
 - Falls der Exportvorgang länger als 20 Stunden dauert, wird er unter Umständen abgebrochen. Um die Leistung während des Exports zu erhöhen, können Sie Folgendes tun:
- - Erhöhen Sie vorübergehend Ihr Servicelevel. 
+ - Erhöhen Sie vorübergehend Ihr Servicelevel.
  - Unterlassen Sie jegliche Lese- und Schreibaktivitäten während des Exports.
  - Verwenden Sie einen gruppierten Index für alle großen Tabellen. Ohne gruppierte Indizes schlägt ein Export, der länger als sechs bis zwölf Stunden dauert, ggf. fehl. Dies liegt daran, dass die Exportdienste einen Tabellenscan durchführen müssen, um die gesamte Tabelle zu exportieren.
 
@@ -42,7 +42,7 @@ Wenn Sie ein Archiv einer Azure SQL-Datenbank erstellen müssen, können Sie das
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
 - Ein Azure-Abonnement.
-- Azure SQL-Datenbank. 
+- Azure SQL-Datenbank.
 - Ein [Azure-Standardspeicherkonto](../storage/storage-create-storage-account.md) mit einem Blobcontainer, um die BACPAC-Dateien im Standardspeicher zu speichern.
 
 ## Exportieren der Datenbank
@@ -104,4 +104,4 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 [4]: ./media/sql-database-export/export-history.png
 [5]: ./media/sql-database-export/bacpac-archive.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0720_2016-->

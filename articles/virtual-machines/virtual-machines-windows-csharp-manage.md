@@ -30,9 +30,9 @@ Zum Ausführen der Anweisungen in diesem Artikel benötigen Sie Folgendes:
 
 NuGet-Pakete sind die einfachste Möglichkeit, um die Bibliotheken zu installieren, die Sie zum Fertigstellen der Aufgaben in diesem Artikel benötigen. Sie müssen die Azure Active Directory-Authentifizierungsbibliothek und die Computerressourcenanbieter-Bibliothek installieren. Führen Sie folgende Schritte aus, um diese Bibliotheken in Visual Studio abzurufen:
 
-1. Klicken Sie auf **Datei** > **Neu** > **Projekt**.
+1. Klicken Sie auf **Datei** > **Neu** > **Projekt**.
 
-2. Wählen Sie unter **Vorlagen** > **Visual C#** **Konsolenanwendung** aus, geben Sie den Namen und Speicherort des Projekts ein, und klicken Sie dann auf **OK**.
+2. Wählen Sie unter **Vorlagen** > **Visual C#** **Konsolenanwendung** aus, geben Sie den Namen und Speicherort des Projekts ein, und klicken Sie dann auf **OK**.
 
 3. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Projektnamen und anschließend auf **NuGet-Pakete verwalten**.
 
@@ -69,12 +69,12 @@ Nachdem die Azure Active Directory-Anwendung erstellt und die Authentifizierungs
 	    {
           var cc = new ClientCredential("{client-id}", "{client-secret}");
           var context = new AuthenticationContext("https://login.windows.net/{tenant-id}");
-          var result = context.AcquireTokenAsync("https://management.azure.com/", cc);
+          var result = await context.AcquireTokenAsync("https://management.azure.com/", cc);
           if (result == null)
           {
             throw new InvalidOperationException("Could not get the token");
           }
-          return token;
+          return result;
         }
 	
     Ersetzen Sie {client-id} durch den Bezeichner der Azure Active Directory-Anwendung, {-client-secret} durch den Zugriffsschlüssel der AD-Anwendung und {tenant-id} durch die Mandanten-ID für Ihr Abonnement. Sie erhalten die Mandanten-ID durch Ausführen von Get-AzureRmSubscription. Den Zugriffsschlüssel finden Sie mithilfe des Azure-Portals.
@@ -432,4 +432,4 @@ Dieses Beispiel zeigt, wie Sie die Größe eines ausgeführten virtuellen Comput
 
 Sollten bei einer Bereitstellung Probleme aufgetreten sein, helfen Ihnen ggf. die Informationen unter [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md) weiter.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

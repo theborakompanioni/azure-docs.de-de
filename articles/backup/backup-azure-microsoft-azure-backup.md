@@ -39,10 +39,10 @@ Der erste Schritt zum Einrichten von Azure Backup Server ist die Bereitstellung 
 
 | Standort | Mindestanforderungen | Zusätzliche Anweisungen |
 | -------- | -------------------- | ----------------------- |
-| Azure | Virtueller Azure-IaaS-Computer<br><br>A2-Standard: 2 Kerne, 3,5 GB RAM | Sie können mit einem einfachen Katalogimage von Windows Server 2012 R2 Datacenter beginnen. [Das Schützen von IaaS-Workloads mit Azure Backup Server (DPM)](https://technet.microsoft.com/library/jj852163.aspx) ist relativ komplex. Lesen Sie sich den Artikel ganz durch, bevor Sie die Maschine bereitstellen. |
-| Lokal | Hyper-V-VM, <br>VMware-VM<br> oder physischer Host<br><br>2 Kerne und 4 GB RAM | Sie können die DPM-Speicherung deduplizieren, indem Sie die Windows Server-Deduplizierung verwenden. Lesen Sie die weiteren Informationen zur Zusammenarbeit von [DPM und Deduplizierung](https://technet.microsoft.com/library/dn891438.aspx) bei Bereitstellung auf Hyper-V-VMs. |
+| Azure | Virtueller Azure-IaaS-Computer<br><br>A2-Standard: 2 Kerne, 3,5 GB RAM | Sie können mit einem einfachen Katalogimage von Windows Server 2012 R2 Datacenter beginnen. [Das Schützen von IaaS-Workloads mit Azure Backup Server (DPM)](https://technet.microsoft.com/library/jj852163.aspx) ist relativ komplex. Lesen Sie sich den Artikel ganz durch, bevor Sie die Maschine bereitstellen. |
+| Lokal | Hyper-V-VM, <br>VMware-VM<br> oder physischer Host<br><br>2 Kerne und 4 GB RAM | Sie können die DPM-Speicherung deduplizieren, indem Sie die Windows Server-Deduplizierung verwenden. Lesen Sie die weiteren Informationen zur Zusammenarbeit von [DPM und Deduplizierung](https://technet.microsoft.com/library/dn891438.aspx) bei Bereitstellung auf Hyper-V-VMs. |
 
-> [AZURE.NOTE] Es wird empfohlen, Azure Backup Server auf einem Computer mit Windows Server 2012 R2 Datacenter zu installieren. Viele erforderliche Komponenten werden durch die neueste Version des Windows-Betriebssystems automatisch abgedeckt.
+> [AZURE.NOTE] Es wird empfohlen, Azure Backup Server auf einem Computer mit Windows Server 2012 R2 Datacenter zu installieren. Viele erforderliche Komponenten werden durch die neueste Version des Windows-Betriebssystems automatisch abgedeckt.
 
 Wenn Sie diesen Server zu einem späteren Zeitpunkt mit einer Domäne verknüpfen möchten, ist es ratsam, den Beitritt zur Domäne vor der Installation von Azure Backup Server durchzuführen. Das Verschieben eines vorhandenen Azure Backup Server-Computers in eine neue Domäne nach der Bereitstellung wird *nicht unterstützt*.
 
@@ -68,11 +68,11 @@ So erstellen Sie einen Recovery Services-Tresor:
 
     ![Erstellen eines Recovery Services-Tresors – Schritt 5](./media/backup-azure-microsoft-azure-backup/rs-vault-attributes.png)
 
-4. Geben Sie unter **Name** einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der zwischen 2 und 50 Zeichen enthält. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
+4. Geben Sie unter **Name** einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der zwischen 2 und 50 Zeichen enthält. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
 
 5. Klicken Sie auf **Abonnement**, um die Liste mit den verfügbaren Abonnements anzuzeigen. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Organisationskonto mehreren Azure-Abonnements zugeordnet ist.
 
-6. Klicken Sie auf **Ressourcengruppe**, um die Liste mit den verfügbaren Ressourcengruppen anzuzeigen, oder klicken Sie auf **Neu**, um eine neue Ressourcengruppe zu erstellen. Die vollständigen Informationen zu Ressourcengruppen finden Sie unter [Verwenden des Azure-Portals zum Bereitstellen und Verwalten Ihrer Azure-Ressourcen](../azure-portal/resource-group-portal.md).
+6. Klicken Sie auf **Ressourcengruppe**, um die Liste mit den verfügbaren Ressourcengruppen anzuzeigen, oder klicken Sie auf **Neu**, um eine neue Ressourcengruppe zu erstellen. Umfassende Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../resource-group-overview.md).
 
 7. Klicken Sie auf **Standort**, um die geografische Region für den Tresor auszuwählen.
 
@@ -142,14 +142,14 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
 
     ![Download Center 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
-    Da die Downloadgröße aller Dateien zusammen mehr als 3 G beträgt, dauert es über einen Downloadlink mit 10 MBit/s bis zu 60 Minuten, bis der Download abgeschlossen ist.
+    Da die Downloadgröße aller Dateien zusammen mehr als 3 G beträgt, dauert es über einen Downloadlink mit 10 MBit/s bis zu 60 Minuten, bis der Download abgeschlossen ist.
 
 
 ### Extrahieren des Softwarepakets
 
 Nachdem Sie alle Dateien heruntergeladen haben, klicken Sie auf **MicrosoftAzureBackupInstaller.exe**. Der **Setup-Assistent von Microsoft Azure Backup** wird gestartet, um die Setupdateien an einem Speicherort Ihrer Wahl zu extrahieren. Fahren Sie mit dem Assistenten fort, und klicken Sie auf die Schaltfläche **Extrahieren**, um den Extrahierungsprozess zu starten.
 
-> [AZURE.WARNING] Zum Extrahieren der Setupdateien sind mindestens 4 GB freier Speicherplatz erforderlich.
+> [AZURE.WARNING] Zum Extrahieren der Setupdateien sind mindestens 4 GB freier Speicherplatz erforderlich.
 
 
 ![Setup-Assistent von Microsoft Azure Backup](./media/backup-azure-microsoft-azure-backup/extract/03.png)
@@ -176,29 +176,29 @@ Aktivieren Sie nach Abschluss der Extrahierung das Kontrollkästchen, um die ger
 
 4. Geben Sie einen Speicherort für die Installation der Microsoft Azure Backup-Serverdateien an, und klicken Sie auf **Weiter**.
 
-    ![Voraussetzungen 2 für Microsoft Azure Backup](./media/backup-azure-microsoft-azure-backup/space-screen.png)
+    ![Voraussetzungen 2 für Microsoft Azure Backup](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
-    Das Scratchverzeichnis ist eine Anforderung für die Sicherung in Azure. Stellen Sie sicher, dass das Scratchverzeichnis eine Größe von mindestens 5 % der Daten aufweist, die in der Cloud gesichert werden. Für den Datenträgerschutz müssen separate Datenträger nach Abschluss der Installation konfiguriert werden. Weitere Informationen zu Speicherpools finden Sie unter [Konfigurieren von Speicherpools und Datenträgerspeicher](https://technet.microsoft.com/library/hh758075.aspx).
+    Das Scratchverzeichnis ist eine Anforderung für die Sicherung in Azure. Stellen Sie sicher, dass das Scratchverzeichnis eine Größe von mindestens 5 % der Daten aufweist, die in der Cloud gesichert werden. Für den Datenträgerschutz müssen separate Datenträger nach Abschluss der Installation konfiguriert werden. Weitere Informationen zu Speicherpools finden Sie unter [Konfigurieren von Speicherpools und Datenträgerspeicher](https://technet.microsoft.com/library/hh758075.aspx).
 
 5. Geben Sie ein sicheres Kennwort für eingeschränkte lokale Benutzerkonten an, und klicken Sie auf **Weiter**.
 
-    ![Voraussetzungen 2 für Microsoft Azure Backup](./media/backup-azure-microsoft-azure-backup/security-screen.png)
+    ![Voraussetzungen 2 für Microsoft Azure Backup](./media/backup-azure-microsoft-azure-backup/security-screen.png)
 
 6. Bestimmen Sie, ob Sie mit *Microsoft Update* nach Updates suchen möchten, und klicken Sie auf **Weiter**.
 
     >[AZURE.NOTE] Es wird empfohlen, Windows Update an Microsoft Update umzuleiten, da Microsoft Update Sicherheit und wichtige Updates für Windows und andere Produkte wie Microsoft Azure Backup Server bietet.
 
-    ![Voraussetzungen 2 für Microsoft Azure Backup](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
+    ![Voraussetzungen 2 für Microsoft Azure Backup](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
 
 7. Überprüfen Sie die *Zusammenfassung der Einstellungen*, und klicken Sie auf **Installieren**.
 
-    ![Voraussetzungen 2 für Microsoft Azure Backup](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
+    ![Voraussetzungen 2 für Microsoft Azure Backup](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
 
 8. Die Installation erfolgt in mehreren Phasen. In der ersten Phase wird der Microsoft Azure Recovery Services-Agent auf dem Server installiert. Der Assistent überprüft auch das Vorhandensein der Internetverbindung. Wenn eine Internetverbindung verfügbar ist, können Sie mit der Installation fortfahren, andernfalls müssen Sie Proxydetails angeben, um die Verbindung mit dem Internet herzustellen.
 
-    Der nächste Schritt ist die Konfiguration des Microsoft Azure Recovery Services-Agents. Bei der Konfiguration müssen Sie Ihre Tresoranmeldeinformationen zum Registrieren des Computers beim Recovery Services-Tresor angeben. Sie geben auch eine Passphrase zum Verschlüsseln bzw. Entschlüsseln von Daten an, die zwischen Azure und Ihrem lokalen Standort ausgetauscht werden. Sie können eine automatische Passphrase generieren oder eine eigene Passphrase mit mindestens 16 Zeichen angeben. Fahren Sie mit dem Assistenten fort, bis der Agent konfiguriert wurde.
+    Der nächste Schritt ist die Konfiguration des Microsoft Azure Recovery Services-Agents. Bei der Konfiguration müssen Sie Ihre Tresoranmeldeinformationen zum Registrieren des Computers beim Recovery Services-Tresor angeben. Sie geben auch eine Passphrase zum Verschlüsseln bzw. Entschlüsseln von Daten an, die zwischen Azure und Ihrem lokalen Standort ausgetauscht werden. Sie können eine automatische Passphrase generieren oder eine eigene Passphrase mit mindestens 16 Zeichen angeben. Fahren Sie mit dem Assistenten fort, bis der Agent konfiguriert wurde.
 
-    ![Voraussetzungen 2 für Azure Backup Server](./media/backup-azure-microsoft-azure-backup/mars/04.png)
+    ![Voraussetzungen 2 für Azure Backup Server](./media/backup-azure-microsoft-azure-backup/mars/04.png)
 
 9. Nach Abschluss der Registrierung von Microsoft Azure Backup Server fährt der übergreifende Setup-Assistent mit der Installation und Konfiguration von SQL Server und der Azure Backup Server-Komponenten fort. Nachdem die Installation der SQL Server-Komponenten abgeschlossen ist, werden die Azure Backup Server-Komponenten installiert.
 
@@ -226,9 +226,9 @@ Nachdem Sie den Status der Azure-Verbindung und des Azure-Abonnements kennen, k�
 | Verbunden | Aktiv | Zulässig | Zulässig | Zulässig | Zulässig |
 | Verbunden | Abgelaufen | Beendet | Beendet | Zulässig | Zulässig |
 | Verbunden | Bereitstellung aufgehoben | Beendet | Beendet | Beendet und Azure-Wiederherstellungspunkte gelöscht | Beendet |
-| Verbindung vor mehr als 15 Tagen verloren | Aktiv | Beendet | Beendet | Zulässig | Zulässig |
-| Verbindung vor mehr als 15 Tagen verloren | Abgelaufen | Beendet | Beendet | Zulässig | Zulässig |
-| Verbindung vor mehr als 15 Tagen verloren | Bereitstellung aufgehoben | Beendet | Beendet | Beendet und Azure-Wiederherstellungspunkte gelöscht | Beendet |
+| Verbindung vor mehr als 15 Tagen verloren | Aktiv | Beendet | Beendet | Zulässig | Zulässig |
+| Verbindung vor mehr als 15 Tagen verloren | Abgelaufen | Beendet | Beendet | Zulässig | Zulässig |
+| Verbindung vor mehr als 15 Tagen verloren | Bereitstellung aufgehoben | Beendet | Beendet | Beendet und Azure-Wiederherstellungspunkte gelöscht | Beendet |
 
 ### Wiederherstellung nach Verbindungsverlust
 Wenn Sie über eine Firewall oder einen Proxy verfügen, die bzw. der den Zugriff auf Azure verhindert, müssen Sie im Profil der Firewall bzw. des Proxys die folgenden Domänenadressen auf die Positivliste setzen:
@@ -264,4 +264,4 @@ In den folgenden Artikeln finden Sie zusätzliche Informationen zum Workloadschu
 - [SharePoint Server-Sicherung](backup-azure-backup-sharepoint.md)
 - [Sicherung eines anderen Servers](backup-azure-alternate-dpm-server.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

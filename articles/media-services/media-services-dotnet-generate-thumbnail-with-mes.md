@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="04/18/2016"
+ 	ms.date="07/18/2016"
 	ms.author="juliako"/>
 
 
@@ -33,7 +33,7 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
 
 			// Load the XML (or JSON) from the local file.
 		    string configuration = File.ReadAllText(fileName);  
-- Fügen Sie eine einzelne Codierungsaufgabe zum Auftrag hinzu. 
+- Fügen Sie eine einzelne Codierungsaufgabe zum Auftrag hinzu.
 - Geben Sie das zu codierende Asset an.
 - Erstellen Sie ein Ausgabeasset, das das codierte Asset enthalten soll.
 - Fügen Sie einen Ereignishandler hinzu, um den Auftragsstatus zu überprüfen.
@@ -358,8 +358,8 @@ Es gelten die folgenden Bedingungen:
 - Bei der Verwendung von expliziten Zeitstempeln für "Start"/"Step"/"Range" wird davon ausgegangen, dass die Dauer der Eingabequelle mindestens 1 Minute beträgt.
 - Jpg-/Png-/BmpImage-Elemente weisen Start-, Step- und Range-Zeichenfolgenattribute auf. Diese können folgendermaßen interpretiert werden:
 
-	- Framenummer, wenn es sich nicht um negative ganze Zahlen handelt, z. B. "Start": "120",
-	- Relativ zur Quelldauer bei Ausdrücken mit dem Suffix "%", z. B. "Start": "15%" ODER
+	- Framenummer, wenn es sich nicht um negative ganze Zahlen handelt, z. B. "Start": "120",
+	- Relativ zur Quelldauer bei Ausdrücken mit dem Suffix "%", z. B. "Start": "15%" ODER
 	- Zeitstempel bei Ausdrücken im Format "HH:MM:SS". Beispiel: "Start" : "00:01:00"
 
 	Sie können die Formate nach Belieben mischen.
@@ -382,4 +382,4 @@ Es gelten die folgenden Bedingungen:
 
 [Media Services-Codierung (Übersicht)](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0720_2016-->

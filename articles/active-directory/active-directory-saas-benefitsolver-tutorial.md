@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="04/26/2016" 
+    ms.date="07/19/2016" 
     ms.author="jeedes" />
 
 #Lernprogramm: Azure Active Directory-Integration mit Benefitsolver
@@ -21,7 +21,7 @@ In diesem Lernprogramm wird die Integration von Azure und Benefitsolver erläute
 -   Ein gültiges Azure-Abonnement
 -   Ein Benefitsolver-Abonnement, für das einmaliges Anmelden aktiviert ist
 
-Nach Abschluss dieses Lernprogramms können sich die Azure AD-Benutzer, die Sie Benefitsolver zugewiesen haben, wie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md) beschrieben, mittels einmaligen Anmeldens bei der Anwendung anmelden.
+Nach Abschluss dieses Lernprogramms können sich die Azure AD-Benutzer, die Sie Benefitsolver zugewiesen haben, wie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md) beschrieben, mittels einmaligen Anmeldens bei der Anwendung anmelden.
 
 Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
 
@@ -64,7 +64,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Ben
     ![Benefitssolver](./media/active-directory-saas-benefitsolver-tutorial/IC804822.png "Benefitssolver")
 ##Konfigurieren der einmaligen Anmeldung
 
-In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Benefitsolver zu authentifizieren. Die Benefitsolver-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der **SAML-Tokenattribute** benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
+In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Benefitsolver zu authentifizieren. Die Benefitsolver-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der **SAML-Tokenattribute** benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
 
 ![Attribute](./media/active-directory-saas-benefitsolver-tutorial/IC804823.png "Attribute")
 
@@ -74,7 +74,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-benefitsolver-tutorial/IC804824.png "Einmaliges Anmelden konfigurieren")
 
-2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Benefitsolver anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Benefitsolver anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-benefitsolver-tutorial/IC804825.png "Einmaliges Anmelden konfigurieren")
 
@@ -82,8 +82,9 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Konfigurieren von App-Einstellungen](./media/active-directory-saas-benefitsolver-tutorial/IC804826.png "Konfigurieren von App-Einstellungen")
 
-    1.  Geben Sie im Textfeld **Anmelde-URL** die URL **http://azure.benefitsolver.com** ein.
+    1.  Geben Sie im Textfeld **Anmelde-URL** Folgendes ein: **http://azure.benefitsolver.com**.
     2.  Geben Sie im Textfeld **Antwort-URL** die URL **https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml** ein.
+
 
     3.  Klicken Sie auf **Weiter**.
 
@@ -123,13 +124,13 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 ##Konfigurieren der Benutzerbereitstellung
 
-Damit sich Azure AD-Benutzer bei Benefitsolver anmelden können, müssen sie in Benefitsolver bereitgestellt werden. Im Fall von Benefitsolver werden die Mitarbeiterdaten in Ihrer Anwendung (in der Regel nachts) über eine Erhebungsdatei aus Ihrem HRIS-System ausgefüllt.
+Damit sich Azure AD-Benutzer bei Benefitsolver anmelden können, müssen sie in Benefitsolver bereitgestellt werden. Im Fall von Benefitsolver werden die Mitarbeiterdaten in Ihrer Anwendung (in der Regel nachts) über eine Erhebungsdatei aus Ihrem HRIS-System ausgefüllt.
 
 >[AZURE.NOTE] Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Benefitsolver-Benutzerkonten oder mithilfe der von Benefitsolver bereitgestellten APIs erstellen.
 
 ##Zuweisen von Benutzern
 
-Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
+Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
 ###So weisen Sie Benefitsolver Benutzer zu
 
@@ -145,4 +146,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2016"
+	ms.date="07/17/2016"
 	ms.author="juliako;anilmur"/>
 
 #Media Encoder Standard-Formate und -Codecs
@@ -66,7 +66,7 @@ MPEG-2 (bis zu 422 Profile und High Level; Varianten wie XDCAM, XDCAM HD, XDCAM 
 MPEG-1 |Ja 
 VC-1/WMV9 |Ja 
 Canopus HQ/HQX |Nein 
-MPEG-4 Teil 2 |Ja 
+MPEG-4 Teil 2 |Ja 
 [Theora](https://en.wikipedia.org/wiki/Theora) |Ja 
 YUV420, nicht komprimiert oder Mezzanine |Ja
 Apple ProRes 422 |Ja
@@ -88,7 +88,7 @@ MP3 (MPEG-1 Audio Layer 3)|Ja
 Windows Media Audio|Ja 
 WAV/PCM|Ja 
 [FLAC](https://en.wikipedia.org/wiki/FLAC)</a>|Ja 
-[Opus](https://en.wikipedia.org/wiki/Opus_(audio_format) |Ja 
+[Opus](http://go.microsoft.com/fwlink/?LinkId=822667) |Ja 
 [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a>|Ja 
 AMR (Adaptive Multi-Rate)|Ja
 AES (SMPTE 331M und 302M, AES3-2003) |Nein 
@@ -123,4 +123,4 @@ MPEG2-TS |H.264 (High, Main und Baseline Profile)|AAC-LC, HE-AAC v1, HE-AAC v2
 
 [Gewusst wie: Codieren mit Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

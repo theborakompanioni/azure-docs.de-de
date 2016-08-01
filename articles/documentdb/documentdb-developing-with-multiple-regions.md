@@ -18,7 +18,7 @@
    
 # Entwickeln mit regionsübergreifenden DocumentDB-Konten
 
-Um von der [globalen Verteilung](documentdb-distribute-data-globally.md) zu profitieren, können Clientanwendungen in einer Liste die Reihenfolge angeben, in der Regionen bei Dokumentvorgängen bevorzugt verwendet werden sollen. Dies lässt sich durch Einrichten einer Verbindungsrichtlinie erreichen. Basierend auf der DocumentDB-Kontokonfiguration, der aktuellen regionalen Verfügbarkeit und der angegebenen Reihenfolgeliste der bevorzugten Regionen wählt das SDK den optimalen Endpunkt für Schreib- und Lesevorgänge aus.
+Um von der [globalen Verteilung](documentdb-distribute-data-globally.md) zu profitieren, können Clientanwendungen in einer Liste die Reihenfolge angeben, in der Regionen bei Dokumentvorgängen bevorzugt verwendet werden sollen. Dies lässt sich durch Einrichten einer Verbindungsrichtlinie erreichen. Basierend auf der Azure DocumentDB-Kontokonfiguration, der aktuellen regionalen Verfügbarkeit und der angegebenen Reihenfolgeliste der bevorzugten Regionen wählt das SDK den optimalen Endpunkt für Schreib- und Lesevorgänge aus.
 
 Diese Liste wird beim Initialisieren einer Verbindung mithilfe der DocumentDB-Client-SDKs angegeben. Die SDKs akzeptieren einen optionalen Parameter „PreferredLocations“, bei dem es sich um eine sortierte Liste von Azure-Regionen handelt.
 
@@ -143,4 +143,4 @@ In den folgenden Artikeln erfahren Sie mehr über die globale Verteilung von Dat
 
 [regions]: https://azure.microsoft.com/regions/
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -113,10 +113,7 @@ Die Architektur für beide Bereitstellungen ähnelt sich bis auf die folgenden A
 - Bei der Bereitstellung im Azure-Portal können Sie die Replikation im Resource Manager Speicher durchführen und Resource Manager-Netzwerke verwenden, um für die Azure-VMs nach dem Failover eine Verbindung herzustellen.
 - Im Azure-Portal ist der Bereitstellungsprozess einfacher und benutzerfreundlicher.
 
-	-  *.accesscontrol.windows.net
-	-  .backup.windowsazure.com
-	-  *.blob.core.windows.net
-	-  *.store.core.windows.net
+Sie benötigen Folgendes:
 
 - **Azure-Konto**: Sie benötigen ein Microsoft Azure-Konto.
 - **Azure-Speicher**: Sie benötigen ein Azure-Speicherkonto, um replizierte Daten zu speichern. Im Azure-Portal können Sie ein klassisches Konto oder ein Resource Manager-Speicherkonto verwenden. Im klassischen Portal können Sie nur ein klassisches Konto verwenden. Replizierte Daten werden im Azure-Speicher gespeichert, und virtuelle Azure-Computer werden erstellt, wenn ein Failover durchgeführt wird.

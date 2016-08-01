@@ -6,7 +6,7 @@
 	authors="genlin"
 	manager="msmbaldwin"
 	editor="meerak"
-	tags="top-support-issue"
+	tags="billing,top-support-issue"
 	/>
 
 <tags
@@ -40,7 +40,7 @@ In der folgenden Tabelle sind Details zu weit verbreiteten Angeboten aufgeführt
 <a name="SignupFreeTrial"></a>
 ## Registrieren für ein kostenloses Azure-Testabonnement
 
-Wenn Sie sich für ein kostenloses Azure-Testabonnement registrieren möchten, müssen Sie eine Telefonnummer, eine Kreditkarte und ein Microsoft-Konto angeben. Ihr Microsoft-Konto ist die E-Mail-Adresse, die Sie zusammen mit Ihrem Kennwort verwenden, um sich bei Windows Live-Programmen oder -Diensten anzumelden, z. B. bei Outlook, Hotmail oder OneDrive. Sie können ein Microsoft-Konto mit einer beliebigen E-Mail-Adresse einrichten, z. B. auch mit Ihrer Firmen-E-Mail-Adresse. Weitere Informationen finden Sie unter [Microsoft-Konto – Häufig gestellte Fragen (FAQ)](https://www.microsoft.com/account/faq.aspx).
+Wenn Sie sich für ein kostenloses Azure-Testabonnement registrieren möchten, müssen Sie eine Telefonnummer, eine Kreditkarte und ein Microsoft-Konto angeben. Ihr Microsoft-Konto ist die E-Mail-Adresse, die Sie zusammen mit Ihrem Kennwort verwenden, um sich bei Windows Live-Programmen oder -Diensten anzumelden, z. B. bei Outlook, Hotmail oder OneDrive. Sie können ein Microsoft-Konto mit einer beliebigen E-Mail-Adresse einrichten, z. B. auch mit Ihrer Firmen-E-Mail-Adresse. Weitere Informationen finden Sie unter [Microsoft-Konto – Häufig gestellte Fragen (FAQ)](https://www.microsoft.com/account/faq.aspx).
 
 >[AZURE.NOTE] Ihre Telefonnummer und Kreditkartendetails werden nur zur Überprüfung Ihrer Identität verwendet. Ihre Kreditkarte wird nicht belastet, aber Microsoft belegt sie mit einem sehr geringen Autorisierungsbetrag, um sicherzustellen, dass die Karte gültig ist. Je nach den Richtlinien Ihres Finanzinstituts wird dies nach drei bis fünf Geschäftstagen aufgehoben.
 
@@ -63,7 +63,7 @@ Wenn Sie sich für ein kostenloses Azure-Testabonnement registrieren möchten, m
  ![Kartenverifizierung](./media/billing-buy-sign-up-azure-subscription/VardVerify.png)</br>
 6. Aktivieren Sie im Abschnitt **Vereinbarung** das Kontrollkästchen, wenn Sie der Abonnementvereinbarung, den Angebotsdetails und der Datenschutzerklärung zustimmen. Klicken Sie anschließend auf **Registrieren**. Der Beispiel-Screenshot zeigt die englische Version der Vereinbarung. Das Formular für die Vereinbarung kann sich von Land zu Land unterscheiden.
 
- ![Anmeldung](./media/billing-buy-sign-up-azure-subscription/Signup.png)</br></br> Es kann einige Minuten dauern, bis Ihr Abonnement eingerichtet ist. Wenn die Abonnementeinrichtung nicht innerhalb von 15 Minuten abgeschlossen ist, wenden Sie sich an den [Azure-Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade). </br> Wenn Sie eine Fehlermeldung erhalten, führen Sie die in der Meldung angegebenen Schritte aus, um das Problem zu beheben. Eine typische Fehlermeldung lautet:
+ ![Anmeldung](./media/billing-buy-sign-up-azure-subscription/Signup.png)</br></br> Es kann einige Minuten dauern, bis Ihr Abonnement eingerichtet ist. Wenn die Abonnementeinrichtung nicht innerhalb von 15 Minuten abgeschlossen ist, wenden Sie sich an den [Azure-Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade). </br> Wenn Sie eine Fehlermeldung erhalten, führen Sie die in der Meldung angegebenen Schritte aus, um das Problem zu beheben. Eine typische Fehlermeldung lautet:
 
  **Wir konnten den Vorgang leider nicht abschließen. Versuchen Sie es später noch einmal, oder laden Sie die Webseite neu.** </br>
 
@@ -77,12 +77,12 @@ Wenn Sie sich für ein kostenloses Azure-Testabonnement registrieren möchten, m
 2. Wählen Sie das Abonnement und dann **Upgrade** aus.</br>![Abrechnungsseite](./media/billing-buy-sign-up-azure-subscription/billpage.png)
 3. Wählen Sie **Ja** und dann **Jetzt aktualisieren** aus. </br>![Upgrade](./media/billing-buy-sign-up-azure-subscription/Upgrade.png)
 
-Wenn Sie ein Upgrade von einem Abonnement vom Typ „Kostenlose Testversion“ auf ein Abonnement mit nutzungsbasierter Bezahlung durchführen, sind alle noch aktiven Vorteile der kostenlosen Testversion, z. B. die 30 Tage oder das Guthaben von 200 US-Dollar für Azure-Dienste, weiterhin verfügbar, bis einer davon verbraucht wurde. Das Upgrade des Abonnements wird erst danach durchgeführt.
+Wenn Sie ein Upgrade von einem Abonnement vom Typ „Kostenlose Testversion“ auf ein Abonnement mit nutzungsbasierter Bezahlung durchführen, sind alle noch aktiven Vorteile der kostenlosen Testversion, z. B. die 30 Tage oder das Guthaben von 200 US-Dollar für Azure-Dienste, weiterhin verfügbar, bis einer davon verbraucht wurde. Das Upgrade des Abonnements wird erst danach durchgeführt.
 
 <a name="activateKey"></a>
 ## Aktivierung mithilfe eines Online Service Activation-Schlüssels
 
-Wenn Sie Azure in Open-Gutschriften über einen Händler erworben und einen Aktivierungsschlüssel (5 x 5-Schlüssel) erhalten haben, führen Sie die folgenden Schritte zum Aktivieren Ihres Abonnements aus:
+Wenn Sie Azure in Open-Gutschriften über einen Händler erworben und einen Aktivierungsschlüssel (5 x 5-Schlüssel) erhalten haben, führen Sie die folgenden Schritte zum Aktivieren Ihres Abonnements aus:
 
 1. Wechseln Sie auf „azure.com“ zur [Übersichtsseite für das Abonnement](https://account.windowsazure.com/subscriptions).
 
@@ -90,4 +90,4 @@ Wenn Sie Azure in Open-Gutschriften über einen Händler erworben und einen Akti
 
 3. Geben Sie den Product Key ein, und aktivieren Sie dann das Kontrollkästchen für die Vereinbarung.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -23,6 +23,7 @@
 - [Azure-Befehlszeilenschnittstelle](resource-group-template-deploy-cli.md)
 - [Portal](resource-group-template-deploy-portal.md)
 - [REST-API](resource-group-template-deploy-rest.md)
+- [.NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/)
 - [Java](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
 - [Knoten](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
 - [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
@@ -93,4 +94,4 @@ Ihre Vorlage kann entweder eine lokale Datei oder eine externe Datei sein, die �
 - Informationen zum Bereitstellen der Lösung in andere Umgebungen finden Sie unter [Entwicklungs- und Testumgebungen in Microsoft Azure](solution-dev-test-environments.md).
 - Weitere Informationen zum Verwenden eines KeyVault-Verweises zum Übergeben sicherer Werte finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

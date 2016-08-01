@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Anfordern von erhöhten DocumentDB-Kontolimits | Microsoft Azure"
-	description="Erfahren Sie, wie Sie eine Anpassung der DocumentDB-Limits wie z. B. der Anzahl der zulässigen Sammlungen, gespeicherten Prozeduren und Abfrageklauseln anfordern."
+	pageTitle="Anfordern von höheren DocumentDB-Kontokontingenten | Microsoft Azure"
+	description="Erfahren Sie, wie Sie eine Anpassung der DocumentDB-Datenbankkontingente anfordern, wie z.B. für Dokumentspeicher und Durchsatz pro Sammlung."
 	services="documentdb"
 	authors="AndrewHoh"
 	manager="jhubbard"
@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/28/2016"
+	ms.date="07/14/2016"
 	ms.author="anhoh"/>
 
 # Anfordern von erhöhten DocumentDB-Kontolimits
 
-[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) verfügt über einen Satz standardmäßiger Grenzwerte und Kontingente. Verschiedene Kontingente können durch Kontaktaufnahme mit dem Azure-Support angepasst werden. In diesem Artikel wird veranschaulicht, wie Sie die Erhöhung eines Kontolimits anfordern.
+[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) verfügt über Standardkontingente, die Sie anpassen können, indem Sie sich an den Azure-Support wenden. In diesem Artikel wird veranschaulicht, wie Sie die Erhöhung eines Kontingents anfordern.
 
 Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 
--	Welche DocumentDB-Kontokontingente können durch Kontaktaufnahme mit dem Azure-Support angepasst werden?
+-	Welche DocumentDB-Datenbankkontingente können Sie mithilfe des Azure-Supports anpassen?
 -	Wie kann ich die Anpassung eines DocumentDB-Kontokontingents anfordern?
 
 ##<a id="Quotas"></a> DocumentDB-Kontokontingente
@@ -63,4 +63,4 @@ Sobald das Supportticket erstellt wurde, sollten Sie per E-Mail eine Supportanfo
 ##<a name="NextSteps"></a> Nächste Schritte
 - Um weitere Informationen zu DocumentDB zu erhalten, klicken Sie [hier](http://azure.com/docdb).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

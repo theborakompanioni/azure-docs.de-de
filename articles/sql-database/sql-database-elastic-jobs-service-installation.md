@@ -154,7 +154,7 @@ Zum Aktualisieren der Größe der VM einer Installation führen Sie das folgende
 Nachdem Sie einen [elastischen Datenbankpool erstellt](sql-database-elastic-pool-create-portal.md) haben, können Sie die Komponenten der **Aufträge für die elastische Datenbank** installieren, um die Ausführung von Verwaltungsaufgaben für jede der Datenbanken im elastischen Datenbankpool zu ermöglichen. Anders als bei der Verwendung der PowerShell-APIs für die **Aufträge für die elastische Datenbank**, ist die Portalschnittstelle aktuell auf die Ausführung auf einem vorhandenen Pool beschränkt.
 
 
-**Geschätzter Zeitaufwand:** 10 Minuten.
+**Geschätzter Zeitaufwand:** 10 Minuten.
 
 1. Klicken Sie in der Dashboardansicht des elastischen Datenbankpools im [Azure-Portal](https://portal.azure.com/#) auf **Auftrag erstellen**.
 2. Wenn Sie zum ersten Mal einen Auftrag erstellen, müssen Sie **Aufträge für die elastische Datenbank** installieren, indem Sie auf **PREVIEW TERMS** klicken.
@@ -167,7 +167,7 @@ Nachdem Sie einen [elastischen Datenbankpool erstellt](sql-database-elastic-pool
 
 	![Erstellen von Benutzername und Kennwort][2]
 
-6. Klicken Sie auf die Schaltfläche "OK". Die Komponenten werden in wenigen Minuten in einer neuen [Ressourcengruppe](../azure-portal/resource-group-portal.md) erstellt. Die neue Ressourcengruppe wird an Start angeheftet, wie unten dargestellt. Nach der Erstellung werden alle Aufträge für die elastische Datenbank (Cloud Service, SQL-Datenbank, Service Bus und Storage) in der Gruppe erstellt.
+6. Klicken Sie auf die Schaltfläche "OK". Die Komponenten werden in wenigen Minuten in einer neuen [Ressourcengruppe](../resource-group-overview.md) erstellt. Die neue Ressourcengruppe wird an Start angeheftet, wie unten dargestellt. Nach der Erstellung werden alle Aufträge für die elastische Datenbank (Cloud Service, SQL-Datenbank, Service Bus und Storage) in der Gruppe erstellt.
 
 	![Ressourcengruppe unter Start][3]
 
@@ -187,4 +187,4 @@ Stellen Sie sicher, dass Anmeldeinformationen mit den passenden Rechten für die
 [3]: ./media/sql-database-elastic-jobs-service-installation/start-board.png
 [4]: ./media/sql-database-elastic-jobs-service-installation/not-done.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

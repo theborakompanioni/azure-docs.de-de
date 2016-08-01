@@ -19,7 +19,7 @@
 
 #Azure-Datenträgerverschlüsselung für virtuelle Windows- und Linux-IaaS-Computer
 
-Bei Microsoft Azure wird sehr darauf geachtet, den Schutz Ihrer Daten und die Datenhoheit sicherzustellen. Außerdem können Sie für Ihre unter Azure gehosteten Daten eine Reihe von modernen Techniken zum Verschlüsseln, Steuern und Verwalten von Verschlüsselungsschlüsseln und Steuern und Überprüfen des Datenzugriffs nutzen. So können Azure-Kunden flexibel eine Lösung auswählen, die Ihre Anforderungen am besten erfüllt. In diesem Artikel stellen wir Ihnen die neue Technologie „Azure-Datenträgerverschlüsselung für virtuelle Windows- und Linux-IaaS-Computer“ vor, die zum Schützen und Absichern Ihrer Daten dient, um Vorgaben in den Bereichen Unternehmenssicherheit und Compliance zu erfüllen. Der Artikel enthält eine ausführliche Anleitung zur Verwendung der Funktionen einer Azure-Datenträgerverschlüsselung, z. B. die unterstützten Szenarien und die Benutzeroberflächen.
+Bei Microsoft Azure wird sehr darauf geachtet, den Schutz Ihrer Daten und die Datenhoheit sicherzustellen. Außerdem können Sie für Ihre unter Azure gehosteten Daten eine Reihe von modernen Techniken zum Verschlüsseln, Steuern und Verwalten von Verschlüsselungsschlüsseln und Steuern und Überprüfen des Datenzugriffs nutzen. So können Azure-Kunden flexibel eine Lösung auswählen, die Ihre Anforderungen am besten erfüllt. In diesem Artikel stellen wir Ihnen die neue Technologie „Azure-Datenträgerverschlüsselung für virtuelle Windows- und Linux-IaaS-Computer“ vor, die zum Schützen und Absichern Ihrer Daten dient, um Vorgaben in den Bereichen Unternehmenssicherheit und Compliance zu erfüllen. Der Artikel enthält eine ausführliche Anleitung zur Verwendung der Funktionen einer Azure-Datenträgerverschlüsselung, z. B. die unterstützten Szenarien und die Benutzeroberflächen.
 
 **HINWEIS**: Einige Empfehlungen in diesem Artikel können unter Umständen zu einer erhöhten Daten-, Netzwerk- oder Serverressourcenauslastung führen, was mit zusätzlichen Lizenz- oder Abonnementkosten verbunden sein kann.
 
@@ -34,9 +34,9 @@ Azure-Datenträgerverschlüsselung ist eine neue Funktion, mit der Sie die Daten
 Die Azure Disk Encryption-Lösung unterstützt die folgenden Kundenszenarien:
 
 - Aktivieren der Verschlüsselung auf neuen virtuellen IaaS-Computern, die mit einer vorverschlüsselten VHD und Verschlüsselungsschlüsseln erstellt werden
-- Aktivieren der Verschlüsselung auf neuen virtuellen IaaS-VM-Computern, die über Images aus dem Azure-Katalog erstellt werden 
-- Aktivieren der Verschlüsselung auf vorhandenen virtuellen IaaS-Computern, die bereits unter Azure ausgeführt werden 
-- Deaktivieren der Verschlüsselung auf Windows-IaaS-VMs  
+- Aktivieren der Verschlüsselung auf neuen virtuellen IaaS-VM-Computern, die über Images aus dem Azure-Katalog erstellt werden
+- Aktivieren der Verschlüsselung auf vorhandenen virtuellen IaaS-Computern, die bereits unter Azure ausgeführt werden
+- Deaktivieren der Verschlüsselung auf Windows-IaaS-VMs
 
 Wenn diese Lösung in Microsoft Azure aktiviert ist, wird für virtuelle IaaS-Computer Folgendes unterstützt:
 
@@ -115,7 +115,7 @@ Im Allgemeinen sind folgende Schritte erforderlich, um die Datenträgerverschlü
 
 3. Der Kunde gewährt Zugriff auf die Azure-Plattform, um das Verschlüsselungsschlüsselmaterial (BitLocker-Verschlüsselungsschlüssel für Windows-Systeme und Passphrase für Linux) aus dem Schlüsseltresor auszulesen und so die Verschlüsselung auf dem virtuellen IaaS-Computer zu aktivieren.
 
-4. Der Kunde stellt eine Azure AD-Identität bereit, um das Verschlüsselungsschlüsselmaterial in den Schlüsseltresor zu schreiben und so die Verschlüsselung auf dem virtuellen IaaS-Computer für die obigen Szenarien 2 und 3 zu aktivieren.
+4. Der Kunde stellt eine Azure AD-Identität bereit, um das Verschlüsselungsschlüsselmaterial in den Schlüsseltresor zu schreiben und so die Verschlüsselung auf dem virtuellen IaaS-Computer für die obigen Szenarien 2 und 3 zu aktivieren.
 
 5.  Über die Azure-Dienstverwaltung wird das VM-Dienstmodell mit der Konfiguration für Verschlüsselung und Schlüsseltresor aktualisiert und der verschlüsselte virtuelle Computer für den Kunden bereitgestellt.
 
@@ -141,15 +141,15 @@ Unten sind die Voraussetzungen für die Aktivierung der Azure-Datenträgerversch
 
 - Benutzer müssen über ein gültiges aktives Azure-Abonnement verfügen, um in den unterstützten Regionen Ressourcen in Azure zu erstellen.
 
-- Die Azure-Datenträgerverschlüsselung wird für die folgenden Windows Server-SKUs unterstützt: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2. Die Lösung wird nicht unter dem Betriebssystem Windows Server 2008 unterstützt. Windows Server 2016 Technical Preview 3 wird in dieser Version nicht unterstützt.
+- Die Azure-Datenträgerverschlüsselung wird für die folgenden Windows Server-SKUs unterstützt: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2. Die Lösung wird nicht unter dem Betriebssystem Windows Server 2008 unterstützt. Windows Server 2016 Technical Preview 3 wird in dieser Version nicht unterstützt.
 
 Azure Disk Encryption wird für die folgenden Windows-Client-SKUs unterstützt: Windows 8-Client und Windows 10-Client.
 
-**Hinweis**: Für Windows Server 2008 R2, MUSS .NET Framework 4.5 installiert werden, bevor die Verschlüsselung in Azure aktiviert wird. Sie können die Installation über Windows Update durchführen, indem Sie das optionale Update „Microsoft .NET Framework 4.5.2 für Windows Server 2008 R2 x64-basierte Systeme ([KB2901983](https://support.microsoft.com/kb/2901983))“ installieren.
+**Hinweis**: Für Windows Server 2008 R2, MUSS .NET Framework 4.5 installiert werden, bevor die Verschlüsselung in Azure aktiviert wird. Sie können die Installation über Windows Update durchführen, indem Sie das optionale Update „Microsoft .NET Framework 4.5.2 für Windows Server 2008 R2 x64-basierte Systeme ([KB2901983](https://support.microsoft.com/kb/2901983))“ installieren.
 
 - Azure Disk Encryption wird für die folgenden Linux-Server-SKUs unterstützt: Ubuntu, CentOS, SUSE und SUSE Linux Enterprise Server (SLES) sowie Red Hat Enterprise Linux.
 
-- Alle Ressourcen (z. B. Schlüsseltresor, Speicherkonto, VM usw.) müssen derselben Azure-Region und demselben Abonnement angehören.
+- Alle Ressourcen (z. B. Schlüsseltresor, Speicherkonto, VM usw.) müssen derselben Azure-Region und demselben Abonnement angehören.
 
 **Hinweis**: Die Azure-Datenträgerverschlüsselung erfordert, dass sich der Schlüsseltresor und die virtuellen Computer in derselben Azure-Region befinden. Sind sie in unterschiedlichen Regionen konfiguriert, kann die Azure-Datenträgerverschlüsselung nicht aktiviert werden.
 
@@ -195,9 +195,9 @@ Azure Disk Encryption wird für die folgenden Windows-Client-SKUs unterstützt: 
 
 **Hinweis:** Wenn Ihre Sicherheitsrichtlinie den Zugriff von virtuellen Azure-Computern auf das Internet beschränkt, können Sie den obigen URI auflösen, zu dem Sie eine Verbindung benötigen, und eine spezielle Regel konfigurieren, um ausgehende Verbindungen mit den IP-Adressen zuzulassen.
 
-- Verwenden Sie die neueste Version des Azure PowerShell-SDK, um Azure Disk Encryption zu konfigurieren. Laden Sie mindestens die [Version 1.3.0 von Azure PowerShell](https://github.com/Azure/azure-powershell/releases/download/v1.3.0-March2016/azure-powershell.1.3.0.msi) herunter.
+- Verwenden Sie die neueste Version des Azure PowerShell-SDK, um Azure Disk Encryption zu konfigurieren. Laden Sie die neueste Version von [Azure PowerShell Version 1.3.0 oder höher](https://github.com/Azure/azure-powershell/releases/download/v1.3.0-March2016/azure-powershell.1.3.0.msi) herunter.
 
-**Hinweis:** Azure Disk Encryption wird unter [Azure PowerShell-SDK, Version 1.1.0](https://github.com/Azure/azure-powershell/releases/tag/v1.1.0-January2016), nicht unterstützt. Wenn Sie im Zusammenhang mit der Verwendung von Azure PowerShell 1.1.0 einen Fehler erhalten, finden Sie weitere Informationen im Artikel [Azure Disk Encryption Error Related to Azure PowerShell 1.1.0](http://blogs.msdn.com/b/azuresecurity/archive/2016/02/10/azure-disk-encryption-error-related-to-azure-powershell-1-1-0.aspx) (Azure Disk Encryption-Fehler im Zusammenhang mit Azure PowerShell 1.1.0).
+**Hinweis:** Azure Disk Encryption wird unter [Azure PowerShell SDK Version 1.1.0](https://github.com/Azure/azure-powershell/releases/tag/v1.1.0-January2016) nicht unterstützt. Wenn Sie im Zusammenhang mit der Verwendung von Azure PowerShell 1.1.0 einen Fehler erhalten, finden Sie weitere Informationen im Artikel [Azure Disk Encryption Error Related to Azure PowerShell 1.1.0](http://blogs.msdn.com/b/azuresecurity/archive/2016/02/10/azure-disk-encryption-error-related-to-azure-powershell-1-1-0.aspx) (Azure Disk Encryption-Fehler im Zusammenhang mit Azure PowerShell 1.1.0).
 
 - Sie müssen zuerst die richtige Azure-CLI-Version installieren, um Azure-CLI-Befehle ausführen und die Zuordnung zum Azure-Abonnement durchführen zu können:
 
@@ -391,7 +391,7 @@ Verwenden Sie die Terminologietabelle als Referenz, um sich mit einigen allgemei
 | BEK | BitLocker-Verschlüsselungsschlüssel (BitLocker Encryption Keys) werden verwendet, um das Startvolume des Betriebssystems und Datenvolumes zu verschlüsseln. Die BitLocker-Schlüssel sind im Azure-Schlüsseltresor als geheime Schlüssel geschützt. |
 | Befehlszeilenschnittstelle (CLI) | [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) |
 | DM-Crypt | [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) ist das Linux-basierte transparente Subsystem für die Datenträgerverschlüsselung, das zum Aktivieren der Datenträgerverschlüsselung auf virtuellen Linux-IaaS-Computern verwendet wird. |
-| KEK | Der Schlüsselverschlüsselungsschlüssel (Key Encryption Key) ist der asymmetrische Schlüssel (RSA 2048), der zum Schützen oder Umschließen (falls erforderlich) des geheimen Schlüssels verwendet wird. Sie können einen Schlüssel mit HSM-Schutz oder einen Schlüssel mit Softwareschutz bereitstellen. Weitere Informationen finden Sie in der Dokumentation zum [Azure-Schlüsseltresor](https://azure.microsoft.com/services/key-vault/). |
+| KEK | Der Schlüsselverschlüsselungsschlüssel (Key Encryption Key) ist der asymmetrische Schlüssel (RSA 2048), der zum Schützen oder Umschließen (falls erforderlich) des geheimen Schlüssels verwendet wird. Sie können einen Schlüssel mit HSM-Schutz oder einen Schlüssel mit Softwareschutz bereitstellen. Weitere Informationen finden Sie in der Dokumentation zum [Azure-Schlüsseltresor](https://azure.microsoft.com/services/key-vault/). |
 | PS-Cmdlets | [Azure PowerShell-Cmdlets](powershell-install-configure.md) |
 
 ## Bereitstellungsszenarien und Benutzeroberflächen der Datenträgerverschlüsselung
@@ -402,7 +402,7 @@ Es gibt viele Szenarien, in denen Sie die Datenträgerverschlüsselung aktiviere
 
 Die Datenträgerverschlüsselung kann auf neuen virtuellen Windows-IaaS-Computern über den Azure-Katalog in Azure aktiviert werden, indem die [hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image) veröffentlichte ARM-Vorlage genutzt wird. Klicken Sie in der Azure-Schnellstartvorlage auf die Schaltfläche „In Azure bereitstellen“, geben Sie die Verschlüsselungskonfiguration im Blatt „Parameter“ ein, und klicken Sie auf „OK“. Wählen Sie Abonnement, Ressourcengruppe, Ressourcengruppenstandort, rechtliche Bedingungen und Vereinbarung aus, und klicken Sie auf die Schaltfläche „Erstellen“, um die Verschlüsselung auf einem neuen virtuellen IaaS-Computer zu aktivieren.
 
-**Hinweis:** Mit dieser Vorlage wird ein neuer verschlüsselter virtueller Windows-Computer erstellt, indem das Windows Server 2012-Katalogimage verwendet wird.
+**Hinweis:** Mit dieser Vorlage wird ein neuer verschlüsselter virtueller Windows-Computer erstellt, indem das Windows Server 2012-Katalogimage verwendet wird.
 
 Unten in der Tabelle sind die Parameterdetails der ARM-Vorlage für neue virtuelle Computer aus dem Azure-Katalogszenario mit Azure AD-Client-ID aufgeführt:
 
@@ -460,7 +460,7 @@ Führen Sie die folgenden Schritte aus, um die Datenträgerverschlüsselung für
 1. Legen Sie Zugriffsrichtlinien für den Schlüsseltresor fest:
 	- Legen Sie das Flag „EnabledForDiskEncryption“ fest: „azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true“
 	- Legen Sie Berechtigungen für die Azure AD-App zum Schreiben von geheimen Schlüsseln in den Schlüsseltresor fest: „azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys ["all"] --perms-to-secrets ["all"]“
-2. Geben Sie Folgendes ein, um die Verschlüsselung auf einem vorhandenen/aktiven virtuellen Computer zu aktivieren: *azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
+2. Geben Sie Folgendes ein, um die Verschlüsselung auf einem vorhandenen/ausgeführten virtuellen Computer zu aktivieren: *azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
 3. Rufen Sie den Verschlüsselungsstatus ab: *„azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json“*
 4. Verwenden Sie die unten angegebenen Parameter mit dem Befehl „azure vm create“, um die Verschlüsselung auf einem neuen virtuellen Computer über eine vom Kunden verschlüsselte VHD zu aktivieren:
 	- disk-encryption-key-vault-id <disk-encryption-key-vault-id>
@@ -483,7 +483,7 @@ In der Tabelle unten sind die Parameterdetails der ARM-Vorlage für ein Szenario
 |-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ​AADClientID | ​Client-ID der Azure AD-App, die über Berechtigungen zum Schreiben von geheimen Schlüsseln in den Schlüsseltresor verfügt. |
 | AADClientSecret | ​Geheimer Clientschlüssel der Azure AD-App, die über Berechtigungen zum Schreiben von geheimen Schlüsseln in den Schlüsseltresor verfügt. |
-| keyVaultName | Der Name des Schlüsseltresors, in den der BitLocker-Schlüssel hochgeladen werden sollte. Sie können ihn über das Cmdlet „Get-AzureRmKeyVault -ResourceGroupName <yourResourceGroupName>“ abrufen. Vaultname |
+| keyVaultName | Der Name des Schlüsseltresors, in den der BitLocker-Schlüssel hochgeladen werden sollte. Sie können ihn mithilfe dieses Cmdlets abrufen: (Get-AzureRmKeyVault -ResourceGroupName <yourResourceGroupName>). Vaultname |
 | ​ keyEncryptionKeyURL | Die URL des Schlüsselverschlüsselungsschlüssels, der zum Verschlüsseln des generierten BitLocker-Schlüssels verwendet wird. Dies ist optional, wenn Sie in der Dropdownliste „UseExistingKek“ die Option „nokek“ wählen. Wenn Sie in der Dropdownliste „UseExistingKek“ die Option „kek“ wählen, müssen Sie den keyEncryptionKeyURL-Wert eingeben. |
 | ​volumeType | ​Der Typ des Volumes, auf dem der Verschlüsselungsvorgang durchgeführt wird. Gültige Werte sind „OS“, „Data“, „All“. |
 | sequenceVersion | Sequenzversion des BitLocker-Vorgangs. Diese Versionsnummer sollte jedes Mal erhöht werden, wenn auf demselben virtuellen Computer ein Vorgang für eine Datenträgerverschlüsselung durchgeführt wird. |
@@ -503,7 +503,7 @@ Führen Sie die unten angegebenen Schritte aus, um die Verschlüsselung auf eine
 1. Legen Sie Zugriffsrichtlinien für den Schlüsseltresor fest:
 	- Legen Sie das Flag „EnabledForDiskEncryption“ fest: „azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true“
 	- Legen Sie Berechtigungen für die Azure AD-App zum Schreiben von geheimen Schlüsseln in den Schlüsseltresor fest: „azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys ["all"] --perms-to-secrets ["all"]“
-2. Geben Sie Folgendes ein, um die Verschlüsselung auf einem vorhandenen/aktiven virtuellen Computer zu aktivieren: *azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
+2. Geben Sie Folgendes ein, um die Verschlüsselung auf einem vorhandenen/ausgeführten virtuellen Computer zu aktivieren: *azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
 3. Rufen Sie den Verschlüsselungsstatus ab: *„azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json“*
 4. Verwenden Sie die unten angegebenen Parameter mit dem Befehl „azure vm create“, um die Verschlüsselung auf einem neuen virtuellen Computer über eine vom Kunden verschlüsselte VHD zu aktivieren:
 	- disk-encryption-key-vault-id <disk-encryption-key-vault-id>
@@ -522,7 +522,7 @@ In der Tabelle unten sind die Parameterdetails der ARM-Vorlage für ein Szenario
 |-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ​AADClientID | ​Client-ID der Azure AD-App, die über Berechtigungen zum Schreiben von geheimen Schlüsseln in den Schlüsseltresor verfügt. |
 | AADClientSecret | ​Geheimer Clientschlüssel der Azure AD-App, die über Berechtigungen zum Schreiben von geheimen Schlüsseln in den Schlüsseltresor verfügt. |
-| keyVaultName | Der Name des Schlüsseltresors, in den der BitLocker-Schlüssel hochgeladen werden sollte. Sie können ihn über das Cmdlet „Get-AzureRmKeyVault -ResourceGroupName <yourResourceGroupName>“ abrufen. Vaultname |
+| keyVaultName | Der Name des Schlüsseltresors, in den der BitLocker-Schlüssel hochgeladen werden sollte. Sie können ihn mithilfe dieses Cmdlets abrufen: (Get-AzureRmKeyVault -ResourceGroupName <yourResourceGroupName>). Vaultname |
 | ​ keyEncryptionKeyURL | Die URL des Schlüsselverschlüsselungsschlüssels, der zum Verschlüsseln des generierten BitLocker-Schlüssels verwendet wird. Dies ist optional, wenn Sie in der Dropdownliste „UseExistingKek“ die Option „nokek“ wählen. Wenn Sie in der Dropdownliste „UseExistingKek“ die Option „kek“ wählen, müssen Sie den keyEncryptionKeyURL-Wert eingeben. |
 | ​volumeType | ​Der Typ des Volumes, auf dem der Verschlüsselungsvorgang durchgeführt wird. Der gültige unterstützte Wert lautet „Data“. Für virtuelle Linux-Computer wird die Aktivierung der Verschlüsselung des Betriebssystemvolumes auf einem ausgeführten virtuellen Linux-Computer nicht unterstützt. |
 | sequenceVersion | Sequenzversion des BitLocker-Vorgangs. Diese Versionsnummer sollte jedes Mal erhöht werden, wenn auf demselben virtuellen Computer ein Vorgang für eine Datenträgerverschlüsselung durchgeführt wird. |
@@ -538,7 +538,7 @@ Die Datenträgerverschlüsselung kann auf vom Kunden verschlüsselten VHDs aktiv
 1. Legen Sie Zugriffsrichtlinien für den Schlüsseltresor fest:
 	- Legen Sie das Flag „EnabledForDiskEncryption“ fest: „azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true“
 	- Legen Sie Berechtigungen für die Azure AD-App zum Schreiben von geheimen Schlüsseln in den Schlüsseltresor fest: „azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys ["all"] --perms-to-secrets ["all"]“
-2. Geben Sie Folgendes ein, um die Verschlüsselung auf einem vorhandenen/aktiven virtuellen Computer zu aktivieren: *azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
+2. Geben Sie Folgendes ein, um die Verschlüsselung auf einem vorhandenen/ausgeführten virtuellen Computer zu aktivieren: *azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
 3. Rufen Sie den Verschlüsselungsstatus ab: „azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json“
 4. Verwenden Sie die unten angegebenen Parameter mit dem Befehl „azure vm create“, um die Verschlüsselung auf einem neuen virtuellen Computer über eine vom Kunden verschlüsselte VHD zu aktivieren.
 	- *disk-encryption-key-vault-id <disk-encryption-key-vault-id>*
@@ -548,11 +548,11 @@ Die Datenträgerverschlüsselung kann auf vom Kunden verschlüsselten VHDs aktiv
 
 ### Abrufen des Verschlüsselungsstatus eines verschlüsselten virtuellen IaaS-Computers
 
-Sie können den Verschlüsselungsstatus über das Azure-Verwaltungsportal, mit [PowerShell-Cmdlets](https://msdn.microsoft.com/library/azure/mt622700.aspx) oder mithilfe von CLI-Befehlen abrufen. In den folgenden Abschnitten wird erläutert, wie Sie das Azure-Portal und CLI-Befehle zum Abrufen des Verschlüsselungsstatus verwenden.
+Sie können den Verschlüsselungsstatus über das Azure-Verwaltungsportal, mit [PowerShell-Cmdlets](https://msdn.microsoft.com/library/azure/mt622700.aspx) oder mithilfe von Befehlen der Befehlszeilenschnittstelle abrufen. In den folgenden Abschnitten wird erläutert, wie Sie das Azure-Portal und CLI-Befehle zum Abrufen des Verschlüsselungsstatus verwenden.
 
 #### Abrufen des Verschlüsselungsstatus einer verschlüsselten virtuellen IaaS-Maschine mit dem Azure-Verwaltungsportal
 
-Sie können den Verschlüsselungsstatus der virtuellen IaaS-Maschine über das Azure-Verwaltungsportal abrufen. Melden Sie sich unter https://portal.azure.com/ beim Azure-Portal an, und klicken Sie im linken Menü auf den Link zu den virtuellen Computern, um eine Zusammenfassung der virtuellen Computer Ihres Abonnements anzuzeigen. Sie können die Ansicht mit den virtuellen Computern filtern, indem Sie den Abonnementnamen in der Abonnement-Dropdownliste auswählen. Klicken Sie auf die Spalten, die sich am oberen Rand des Seitenmenüs für die virtuellen Computer befinden. Wählen Sie im Blatt „Spalte auswählen“ die Spalte „Datenträgerverschlüsselung“, und klicken Sie auf „Aktualisieren“. Sie sehen, dass in der Spalte „Datenträgerverschlüsselung“ für jeden virtuellen Computer der Verschlüsselungsstatus „Aktiviert“ oder „Nicht aktiviert“ angezeigt wird. Dies ist unten in der Abbildung dargestellt.
+Sie können den Verschlüsselungsstatus der virtuellen IaaS-Maschine über das Azure-Verwaltungsportal abrufen. Melden Sie sich unter https://portal.azure.com/ beim Azure-Portal an, und klicken Sie im linken Menü auf den Link zu den virtuellen Computern, um eine Zusammenfassung der virtuellen Computer in Ihrem Abonnement anzuzeigen. Sie können die Ansicht mit den virtuellen Computern filtern, indem Sie den Abonnementnamen in der Abonnement-Dropdownliste auswählen. Klicken Sie auf die Spalten, die sich am oberen Rand des Seitenmenüs für die virtuellen Computer befinden. Wählen Sie im Blatt „Spalte auswählen“ die Spalte „Datenträgerverschlüsselung“, und klicken Sie auf „Aktualisieren“. Sie sehen, dass in der Spalte „Datenträgerverschlüsselung“ für jeden virtuellen Computer der Verschlüsselungsstatus „Aktiviert“ oder „Nicht aktiviert“ angezeigt wird. Dies ist unten in der Abbildung dargestellt.
 
 ![Microsoft-Antischadsoftware in Azure](./media/azure-security-disk-encryption/disk-encryption-fig2.JPG)
 
@@ -606,7 +606,7 @@ Das PS-Cmdlet [Disable-AzureRmVMDiskEncryption](https://msdn.microsoft.com/libra
 
 ### Verbinden mit Ihrem Abonnement
 
-Lesen Sie sich in diesem Artikel den Abschnitt *Voraussetzungen* durch, bevor Sie fortfahren. Führen Sie nach dem Sicherstellen, dass alle Voraussetzungen erfüllt sind, die folgenden Schritte aus, um eine Verbindung mit Ihrem Abonnement herzustellen:
+Lesen Sie in diesem Artikel den Abschnitt *Voraussetzungen* durch, bevor Sie fortfahren. Führen Sie nach dem Sicherstellen, dass alle Voraussetzungen erfüllt sind, die folgenden Schritte aus, um eine Verbindung mit Ihrem Abonnement herzustellen:
 
 1\. Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich mit dem folgenden Befehl bei Ihrem Azure-Konto an:
 
@@ -645,11 +645,11 @@ Sie müssen die BitLocker-Gruppenrichtlinieneinstellung mit dem Namen „BitLock
 ![Microsoft-Antischadsoftware in Azure](./media/azure-security-disk-encryption/disk-encryption-fig8.JPG)
 
 #### Installieren der Komponenten der BitLocker-Funktion
-Verwenden Sie für Windows Server 2012 und höher den folgenden Befehl:
+Verwenden Sie für Windows Server 2012 und höher den folgenden Befehl:
 
     dism /online /Enable-Feature /all /FeatureName:Bitlocker /quiet /norestart
 
-Verwenden Sie für Windows Server 2008 R2 den folgenden Befehl:
+Verwenden Sie für Windows Server 2008 R2 den folgenden Befehl:
 
     ServerManagerCmd -install BitLockers
 
@@ -669,7 +669,7 @@ Verwenden Sie den Befehl [manage-bde](https://technet.microsoft.com/library/ff82
 
 #### Vorbereiten einer vorverschlüsselten Linux-VHD
 
-##### Ubuntu 14:
+##### Ubuntu 14:
 
 1\. Erstellen Sie unter „/usr/local/sbin/azure\_crypt\_key.sh“ eine Datei mit dem Inhalt, der unten im Skript enthalten ist. Achten Sie auf KeyFileName, da dies der von Azure vergebene Passphrase-Name ist.
 
@@ -679,13 +679,14 @@ Verwenden Sie den Befehl [manage-bde](https://technet.microsoft.com/library/ff82
     echo "Trying to get the key from disks ..." >&2
     mkdir -p $MountPoint
     modprobe vfat >/dev/null 2>&1
+    modprobe ntfs >/dev/null 2>&1
     sleep 2
     OPENED=0
-    for SFS in /sys/block/sd*; do
-        DEV=`basename $SFS`
-        F=$SFS/${DEV}1/dev
+    cd /sys/block
+    for DEV in sd*; do
         echo "> Trying device: $DEV ..." >&2
-        mount /dev/${DEV}1 $MountPoint -t vfat -r >/dev/null
+        mount -t vfat -r /dev/${DEV}1 $MountPoint >/dev/null||
+        mount -t ntfs -r /dev/${DEV}1 $MountPoint >/dev/null
         if [ -f $MountPoint/$KeyFileName ]; then
                 cat $MountPoint/$KeyFileName
                 umount $MountPoint 2>/dev/null
@@ -709,11 +710,19 @@ Verwenden Sie den Befehl [manage-bde](https://technet.microsoft.com/library/ff82
 
     Sda5_crypt uuid=xxxxxxxxxxxxxxxxxxxxx none luks,discard,keyscript=/usr/local/sbin/azure_crypt_key.sh
 
-3\. Wenn Sie die Datei *azure\_crypt\_key.sh* in Windows bearbeitet und nach Linux kopiert haben, sollten Sie nicht vergessen, *dos2unix /usr/local/sbin/azure\_crypt\_key.sh* auszuführen. 4. Führen Sie *update-initramfs -u -k all* aus, um initramfs zu aktualisieren, damit das Schlüsselskript wirksam wird.
+3\. Wenn Sie die Datei *azure\_crypt\_key.sh* in Windows bearbeitet und nach Linux kopiert haben, sollten Sie nicht vergessen, *dos2unix /usr/local/sbin/azure\_crypt\_key.sh* auszuführen. 4. Bearbeiten Sie */etc/initramfs-tools/modules*, indem Sie Zeilen anfügen:
 
-##### openSUSE 13.2:
+    vfat
+    ntfs
+    nls_cp437
+    nls_utf8
+    nls_iso8859-1
 
-1\. Bearbeiten Sie „/etc/dracut.conf add\_drivers+="vfat nls\_cp437 nls\_iso8859-1“.
+5\. Führen Sie *update-initramfs -u -k all* aus, um initramfs zu aktualisieren, damit das Schlüsselskript wirksam wird.
+
+##### openSUSE 13.2:
+
+1\. Bearbeiten Sie /etc/dracut.conf add\_drivers+="vfat ntfs nls\_cp437 nls\_iso8859-1"
 
 2\. Kommentieren Sie diese Zeilen am Ende der Datei „/usr/lib/dracut/modules.d/90crypt/module-setup.sh“ aus:
 
@@ -737,9 +746,11 @@ Verwenden Sie den Befehl [manage-bde](https://technet.microsoft.com/library/ff82
     echo "Trying to get the key from disks ..." >&2
     mkdir -p $MountPoint >&2
     modprobe vfat >/dev/null >&2
+    modprobe ntfs >/dev/null >&2
     for SFS in /dev/sd*; do
        echo "> Trying device:$SFS..." >&2
-       mount ${SFS}1 $MountPoint -t vfat -r >&2
+       mount ${SFS}1 $MountPoint -t vfat -r >&2 ||
+       mount ${SFS}1 $MountPoint -t ntfs -r >&2
        if [ -f $MountPoint/$KeyFileName ]; then
           echo "> keyfile got..." >&2
           luksfile=$MountPoint/$KeyFileName
@@ -749,8 +760,8 @@ Verwenden Sie den Befehl [manage-bde](https://technet.microsoft.com/library/ff82
 
 5\. Führen Sie „dracut –f -v“ aus, um initrd zu aktualisieren.
 
-##### CentOS 7:
-1\. Bearbeiten Sie „/etc/dracut.conf add\_drivers+=" vfat nls\_cp437 nls\_iso8859-1“.
+##### CentOS 7:
+1\. Bearbeiten Sie /etc/dracut.conf add\_drivers+=" vfat ntfs nls\_cp437 nls\_iso8859-1"
 
 2\. Kommentieren Sie diese Zeilen am Ende der Datei „/usr/lib/dracut/modules.d/90crypt/module-setup.sh“ aus:
 
@@ -775,9 +786,11 @@ Verwenden Sie den Befehl [manage-bde](https://technet.microsoft.com/library/ff82
     echo "Trying to get the key from disks ..." >&2
     mkdir -p $MountPoint >&2
     modprobe vfat >/dev/null >&2
+    modprobe ntfs >/dev/null >&2
     for SFS in /dev/sd*; do
     echo "> Trying device:$SFS..." >&2
-    mount ${SFS}1 $MountPoint -t vfat -r >&2
+    mount ${SFS}1 $MountPoint -t vfat -r >&2 ||
+    mount ${SFS}1 $MountPoint -t ntfs -r >&2
     if [ -f $MountPoint/$KeyFileName ]; then
         echo "> keyfile got..." >&2
         luksfile=$MountPoint/$KeyFileName
@@ -845,4 +858,4 @@ Sie können diese Anleitung aus dem [TechNet-Katalog](https://gallery.technet.mi
 
 [Explore Azure Disk Encryption with Azure PowerShell - Part 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

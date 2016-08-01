@@ -44,4 +44,4 @@ Eine Skalierungsgruppe, die auf der Grundlage eines Plattformimages erstellt wir
 
 Wenn die Anzahl benötigter virtueller Computer über diese Grenzwerte hinausgeht, müssen Sie mehrere Skalierungsgruppen bereitstellen. Eine exemplarische Vorgehensweise finden Sie in [dieser Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

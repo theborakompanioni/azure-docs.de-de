@@ -13,20 +13,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="06/03/2016"
+   ms.date="07/19/2016"
    ms.author="v-six" />
 
 # Standardmäßige Größe des TEMP-Ordners ist für eine Clouddienst-Web-/Workerrolle zu gering
 
-Das standardmäßige temporäre Verzeichnis einer Clouddienst-Web- oder -Workerrolle hat eine maximale Größe von 100 MB. Es kann vorkommen, dass dieser Platz auch belegt wird. In diesem Artikel wird beschrieben, wie Sie verhindern, dass der Speicherplatz des temporären Verzeichnisses erschöpft ist.
-
->[AZURE.NOTE] Dies gilt nur für die Verwendung von Web- und Workerrollen in Azure SDK 1.0 bis SDK 1.4.
+Das standardmäßige temporäre Verzeichnis einer Clouddienst-Web- oder -Workerrolle hat eine maximale Größe von 100 MB. Es kann vorkommen, dass dieser Platz auch belegt wird. In diesem Artikel wird beschrieben, wie Sie verhindern, dass der Speicherplatz des temporären Verzeichnisses erschöpft ist.
 
 [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## Wie kann es passieren, dass kein Speicherplatz mehr übrig ist?
 
-Die standardmäßigen Windows-Umgebungsvariablen TEMP und TMP stehen für Code zu Verfügung, der in Ihrer Anwendung ausgeführt wird. Sowohl TEMP als auch TMP zeigen auf ein einzelnes Verzeichnis mit einer maximalen Größe von 100 MB. Alle Daten, die in diesem Verzeichnis gespeichert werden, werden nicht über den Lebenszyklus des Clouddiensts beibehalten. Wenn die Rolleninstanzen in einem Clouddienst recycelt werden, wird das Verzeichnis bereinigt.
+Die standardmäßigen Windows-Umgebungsvariablen TEMP und TMP stehen für Code zu Verfügung, der in Ihrer Anwendung ausgeführt wird. Sowohl TEMP als auch TMP zeigen auf ein einzelnes Verzeichnis mit einer maximalen Größe von 100 MB. Alle Daten, die in diesem Verzeichnis gespeichert werden, werden nicht über den Lebenszyklus des Clouddiensts beibehalten. Wenn die Rolleninstanzen in einem Clouddienst recycelt werden, wird das Verzeichnis bereinigt.
 
 ## Vorschläge zum Beheben des Problems
 
@@ -79,4 +77,4 @@ Sehen Sie sich weitere [Artikel zur Problembehandlung](https://azure.microsoft.c
 
 Erfahren Sie in der [Blogreihe von Kevin Williamson](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx), wie Sie Probleme bei Clouddienstrollen mithilfe der Computerdiagnosedaten von Azure-PaaS beheben.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0720_2016-->

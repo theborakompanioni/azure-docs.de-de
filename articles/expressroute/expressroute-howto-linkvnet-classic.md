@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/14/2016"
+   ms.date="07/19/2016"
    ms.author="ganesr" />
 
 # Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
@@ -157,4 +157,4 @@ Mit dem folgenden Cmdlet können Benutzer einer Verbindung eine Verknüpfungsaut
 
 Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

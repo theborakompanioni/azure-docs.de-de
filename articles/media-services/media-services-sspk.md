@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"  
+	ms.date="07/19/2016"  
 	ms.author="xpouyat"/>
 
 #Lizenzierung des Microsoft® Smooth Streaming Client Porting Kit
@@ -59,7 +59,7 @@ Mit dieser Lizenz bietet Microsoft ein Smooth Streaming Client Porting Kit und d
 
 ####Gebührenstruktur
 
-Eine einmalige Lizenzgebühr von 50.000 US-Dollar ermöglicht den Zugriff auf Smooth Streaming Client Porting Kit.
+Eine einmalige Lizenzgebühr von 50.000 US-Dollar ermöglicht den Zugriff auf Smooth Streaming Client Porting Kit.
 
 ###Finale Produktlizenz für das Microsoft Smooth Streaming Client Porting Kit
 
@@ -69,8 +69,8 @@ Mit dieser Lizenz bietet Microsoft alle erforderlichen Schutz- und Urheberrechte
 
 Finale Smooth Streaming Client-Produkte werden mit dem folgenden Lizenzmodell angeboten:
 
-- 0,10 US-Dollar pro gelieferte Geräteimplementierung
-- Die Lizenz ist pro Jahr auf 50.000 US-Dollar begrenzt.
+- 0,10 US-Dollar pro gelieferte Geräteimplementierung
+- Die Lizenz ist pro Jahr auf 50.000 US-Dollar begrenzt.
 - Für die ersten 10.000 Geräteimplementierungen im Jahr fällt keine Lizenzgebühr an.
 
 ##Lizenzierungsverfahren und SSPK-Zugriff
@@ -150,6 +150,7 @@ Lizenznehmer von SSPK-Lizenzen (Interim und final) können sich bei technischen 
 - Sony Corporation
 - TCL Overseas Marketing (Macao Commercial Offshore) Limited
 - Technicolor Delivery Technologies, SAS
+- Tongfang Global Ltd.
 - Toshiba Lifestyle Products & Services Corporation
 - Universal Media Corporation /Slowakische Republik/ s.r.o.
 - VIZIO, Inc.
@@ -164,4 +165,4 @@ Lizenznehmer von SSPK-Lizenzen (Interim und final) können sich bei technischen 
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="04/29/2016"
+ ms.date="07/19/2016"
  ms.author="dobett"/>
 
 # Massenverwaltung von IoT Hub-Geräte-Identitäten
@@ -354,4 +354,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

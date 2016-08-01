@@ -1,6 +1,6 @@
 <properties
  pageTitle="Geräteinformationen-Metadaten in der Lösung für die Remoteüberwachung | Microsoft Azure"
- description="Eine Beschreibung der vorkonfigurierten Lösung für Remoteüberwachung von Azure IoT und deren Architektur."
+ description="Eine Beschreibung der vorkonfigurierten Lösung für Remoteüberwachung von Azure IoT und deren Architektur."
  services=""
  suite="iot-suite"
  documentationCenter=""
@@ -11,7 +11,7 @@
 <tags
  ms.service="iot-suite"
  ms.devlang="na"
- ms.topic="get-started-article"
+ ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
  ms.date="06/20/2016"
@@ -279,4 +279,4 @@ Weitere Informationen zum Anpassen der vorkonfigurierten Lösungen finden Sie un
 [lnk-dm-preview]: ../iot-hub/iot-hub-device-management-overview.md
 [lnk-dynamic-telemetry]: iot-suite-dynamic-telemetry.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

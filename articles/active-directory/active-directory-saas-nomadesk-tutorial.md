@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="07/19/2016"
 	ms.author="jeedes"/>
 
 
@@ -23,11 +23,11 @@ Dieses Tutorial soll Ihnen zeigen, wie Sie Nomadesk in Azure Active Directory (A
 
 Die Integration von Nomadesk in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer Zugriff auf Nomadesk hat.
+- Sie können in Azure AD steuern, wer Zugriff auf Nomadesk hat.
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Nomadesk anzumelden (einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## Voraussetzungen
 
@@ -60,7 +60,7 @@ Zum Konfigurieren der Integration von Nomadesk in Azure AD müssen Sie Nomadesk 
 
 **Um Nomadesk aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
 
 	![Active Directory][1]
 
@@ -87,7 +87,7 @@ Zum Konfigurieren der Integration von Nomadesk in Azure AD müssen Sie Nomadesk 
 	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-nomadesk-tutorial/tutorial_nomadesk_02.png)
 
 ##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden in Azure AD mit Nomadesk konfiguriert und getestet werden kann.
+In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden in Azure AD mit Nomadesk konfiguriert und getestet werden kann.
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Nomadesk als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Nomadesk muss eine Linkbeziehung eingerichtet werden.
 
@@ -198,7 +198,7 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
 
-	![Erstellen einen Azure AD-Testbenutzers](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_08.png)
+	![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-nomadesk-tutorial/create_aaduser_08.png)
 
     a. Notieren Sie den Wert von **Neues Kennwort**.
 
@@ -210,7 +210,7 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Nomadesk. Nomadesk unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist.
 
-Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Nomadesk ein neuer Benutzer erstellt. [Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on).
+Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Nomadesk ein neuer Benutzer erstellt. [Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on).
 
 > [AZURE.NOTE] Setzen Sie sich mit dem Supportteam von Nomadesk in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
@@ -274,4 +274,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Nomadesk“ klicken, sollten Sie a
 [204]: ./media/active-directory-saas-nomadesk-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-nomadesk-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->
