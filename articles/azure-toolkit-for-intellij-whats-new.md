@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="06/24/2016" 
-	ms.author="robmcm"/>
+	ms.date="07/07/2016" 
+	ms.author="robmcm;asirveda"/>
 
 # Neuerungen im Azure-Toolkit für IntelliJ
 
@@ -32,7 +32,7 @@ Die Version des Azure-Toolkits für IntelliJ vom Juni 2016 umfasst folgende Erwe
 * **Unterstützung der neuesten Java JDKs**. Die neuesten Versionen der Java JDKs werden jetzt vom Azure-Toolkit für IntelliJ unterstützt.
 * **Unterstützung des Azure SDK, Version 2.9.1**. Die neueste Version des Azure SDK ist jetzt die Mindestvoraussetzung für das Azure-Toolkit für IntelliJ.
 * **Integrierte Beispiele**. Das Azure-Toolkit für IntelliJ bietet jetzt mehrere Beispielanwendungen, die Entwicklern den Einstieg erleichtern sollen.
-* **Integration von HDInsight-Tools**. Die Azure HDInsight-Tools stehen nun im Paket mit dem Azure-Toolkit für IntelliJ zur Verfügung.
+* **Integration von HDInsight-Tools**. Die Azure HDInsight-Tools stehen nun im Paket mit dem Azure-Toolkit für IntelliJ zur Verfügung. Weitere Informationen finden Sie unter [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen von Spark-Anwendungen für HDInsight Spark-Cluster unter Linux].
 * **Remotedebuggen von Java-Web-Apps**. Das Azure-Toolkit für IntelliJ unterstützt jetzt das Remotedebuggen von Java-Web-Apps in Azure App Service.
 
 ### 12\. April 2016
@@ -56,7 +56,7 @@ Weitere Informationen zu den Azure-Toolkits für Java-IDEs finden Sie unter den 
   - [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]
   - *Neuerungen im Azure-Toolkit für IntelliJ (dieser Artikel)*
 
-Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center].
+Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center] (in englischer Sprache).
 
 <!-- URL List -->
 
@@ -71,4 +71,6 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 
 [Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
 
-<!---HONumber=AcomDC_0706_2016-->
+[Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen von Spark-Anwendungen für HDInsight Spark-Cluster unter Linux]: ./hdinsight/hdinsight-apache-spark-eclipse-tool-plugin.md
+
+<!---HONumber=AcomDC_0720_2016-->

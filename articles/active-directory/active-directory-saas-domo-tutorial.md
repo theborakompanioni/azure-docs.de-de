@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/26/2016"
+	ms.date="07/15/2016"
 	ms.author="jeedes"/>
 
 
@@ -21,11 +21,11 @@
 
 Dieses Tutorial soll Ihnen zeigen, wie Sie Domo in Azure Active Directory (Azure AD) integrieren können. Die Integration von Domo in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer Zugriff auf Domo hat.
+- Sie können in Azure AD steuern, wer Zugriff auf Domo hat.
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Domo anzumelden (einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 
 ## Voraussetzungen
@@ -57,7 +57,7 @@ Zum Konfigurieren der Integration von Domo in Azure AD müssen Sie Domo aus dem 
 
 **Um Domo aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
 
 	![Active Directory][1]
 
@@ -100,19 +100,44 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Domo müss
 
 Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer Domo-Anwendung zu konfigurieren.
 
+Die Domo-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie für diese Anwendung die folgenden Ansprüche. Sie können die Werte dieser Attribute auf der Registerkarte **Attribut** der Anwendung verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
 
+![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-domo-tutorial/tutorial_domo_06.png)
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Domo die folgenden Schritte aus:**
 
-1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Domo** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+
+1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite von **Domo** im Menü oben auf **Attribute**.
+
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-domo-tutorial/tutorial_general_80.png)
+
+
+1. Führen Sie im Dialogfeld **SAML-Tokenattribute** für jede Zeile in der folgenden Tabelle die folgenden Schritte aus:
+
+	| Attributname | Attributwert |
+	| --- | --- |    
+	| Name | user.displayname |
+	| E-Mail | user.mail |
+
+	a. Klicken Sie auf **Benutzerattribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
+
+	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-domo-tutorial/tutorial_general_81.png)
+
+	b. Geben Sie im Textfeld **Attributname** den für die Zeile angezeigten Attributnamen ein.
+
+    c. Wählen Sie in der Liste **Attributwert** den für die Zeile angezeigten Attributwert aus.
+
+    d. Klicken Sie auf **Fertig stellen**.
+
+2. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Domo** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
 	![Einmaliges Anmelden konfigurieren][6]
 
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Domo anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+3. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Domo anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
 	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-domo-tutorial/tutorial_domo_03.png)
 
-3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
+4. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
 
 	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-domo-tutorial/tutorial_domo_04.png)
 
@@ -121,7 +146,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
 
     b. Klicken Sie auf **Weiter**.
 
-4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Domo** die folgenden Schritte aus:
+5. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Domo** die folgenden Schritte aus:
 
 	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-domo-tutorial/tutorial_domo_05.png)
 
@@ -130,14 +155,14 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
     b. Klicken Sie auf **Weiter**.
 
 
-5. Lassen Sie das einmalige Anmelden (SSO, Single Sign-On) für Ihre Anwendung konfigurieren. Wenden Sie sich dazu unter [support@domo.com](mailto: support@domo.com) an das Supportteam von Domo, und fügen Sie der E-Mail das heruntergeladene Zertifikat an. Geben Sie außerdem die **Aussteller-URL**, die **SAML-SSO-URL** und die **Abmelde-URL** an.
+6. Lassen Sie das einmalige Anmelden (SSO, Single Sign-On) für Ihre Anwendung konfigurieren. Wenden Sie sich dazu unter [support@domo.com](mailto: support@domo.com) an das Supportteam von Domo, und fügen Sie der E-Mail das heruntergeladene Zertifikat an. Geben Sie außerdem die **Aussteller-URL**, die **SAML-SSO-URL** und die **Abmelde-URL** an.
 
 
-6. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
+7. Bestätigen Sie im klassischen Azure-Portal die Konfiguration des einmaligen Anmeldens, und klicken Sie dann auf **Weiter**.
 
 	![Azure AD – einmaliges Anmelden][10]
 
-7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
+8. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
 
 	![Azure AD – einmaliges Anmelden][11]
 
@@ -157,7 +182,7 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. Klicken Sie im Menü oben auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
+3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
 
 	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-domo-tutorial/create_aaduser_03.png)
 
@@ -207,7 +232,7 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Domo. Domo unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist.
 
-Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Domo ein neuer Benutzer erstellt. [Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on).
+Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Domo ein neuer Benutzer erstellt. [Konfigurieren der einmaligen Anmeldung in Azure AD](#configuring-azure-ad-single-single-sign-on).
 
 > [AZURE.NOTE] Setzen Sie sich mit dem Supportteam von Domo in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
@@ -220,7 +245,7 @@ Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmal
 
 **Um Britta Simon Domo zuzuweisen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal in der Verzeichnisansicht im oberen Menü auf **Anwendungen**.
+1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal im oberen Menü der Verzeichnisansicht auf **Anwendungen**.
 
 	![Benutzer zuweisen][201]
 
@@ -269,4 +294,4 @@ In diesem Abschnitt soll Ihre Azure AD-Konfiguration für das einmalige Anmelden
 [204]: ./media/active-directory-saas-domo-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-domo-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

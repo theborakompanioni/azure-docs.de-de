@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Exemplarische Vorgehensweise, Schritt 4: Trainieren und Auswerten des Predictive Analytics-Modells | Microsoft Azure"
-	description="Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 4: Trainieren, Bewerten und Auswerten mehrerer Modelle in Azure Machine Learning Studio."
+	description="Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 4: Trainieren, Bewerten und Auswerten mehrerer Modelle in Azure Machine Learning Studio."
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/10/2016"
+	ms.date="07/06/2016"
 	ms.author="garye"/>
 
 
-# Exemplarische Vorgehensweise, Schritt 4: Trainieren und Auswerten des Predictive Analytics-Modells
+# Exemplarische Vorgehensweise, Schritt 4: Trainieren und Auswerten des Predictive Analytics-Modells
 
 Dies ist der vierte Schritt der exemplarischen Vorgehensweise zum [Entwickeln einer Predictive Analytics-Lösung in Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md).
 
@@ -65,15 +65,15 @@ Zunächst soll SVM ein wenig erläutert werden. Boosted Decision Trees funktioni
 Um das SVM-Modell einzurichten, führen Sie folgende Schritte aus:
 
 1.	Suchen Sie das Modul [Zweiklassige Support Vector Machine][two-class-support-vector-machine] in der Modulpalette, und ziehen Sie es in den Bereich.
-2.	Klicken Sie mit der rechten Maustaste auf das Modul [Train Model][train-model], und wählen Sie **Copy** aus. Klicken Sie anschließend mit der rechten Maustaste auf die Canvas, und wählen Sie **Paste** aus. Beachten Sie, dass die Kopie des Moduls [Modell trainieren][train-model] die gleiche Spaltenauswahl wie das Original hat.
-3.	Verbinden Sie die Ausgabe des SVM-Moduls mit dem linken Eingabeport („Untrainiertes Modell“) des Moduls [Modell trainieren][train-model].
+2.	Klicken Sie mit der rechten Maustaste auf das Modul [Train Model][train-model], und wählen Sie **Copy** aus. Klicken Sie anschließend mit der rechten Maustaste auf die Canvas, und wählen Sie **Paste** aus. Beachten Sie, dass die Kopie des Moduls [Train Model][train-model] die gleiche Spaltenauswahl wie das Original hat.
+3.	Verbinden Sie die Ausgabe des SVM-Moduls mit dem linken Eingabeport („Untrainiertes Modell“) des zweiten Moduls [Train Model][train-model].
 4.	Suchen Sie das Modul [Normalize Data][normalize-data], und ziehen Sie es auf die Canvas.
 5.	Verbinden Sie die Eingabe dieses Moduls mit der linken Ausgabe des linken Moduls [Execute R Script][execute-r-script] (beachten Sie, dass der Ausgabeport eines Moduls mit mehr als einem anderen Modul verbunden sein kann).
-6.	Verbinden Sie den linken Ausgabeport („Transformiertes Dataset“) des Moduls [Normalize Data][normalize-data] mit dem rechten Eingabeport („Dataset“) des Moduls [Train Model][train-model].
+6.	Verbinden Sie den linken Ausgabeport („Transformiertes Dataset“) des Moduls [Normalize Data][normalize-data] mit dem rechten Eingabeport („Dataset“) des zweiten Moduls [Train Model][train-model].
 7.	Wählen Sie im Bereich **Properties** des Moduls [Normalize Data][normalize-data] den Wert **Tanh** für den Parameter **Transformation method** aus.
 8.	Klicken Sie auf **Launch column selector**, wählen Sie für **Begin With** „No columns“ und wählen Sie in der ersten Dropdownliste **Include**, in der zweiten Dropdownliste **column type** und in der dritten Dropdownliste **Numeric** aus. Damit wird festgelegt, dass alle numerischen Spalten (und nur die numerischen Spalten) transformiert werden.
-9.	Klicken Sie auf das Pluszeichen (+) rechts neben dieser Zeile. Dadurch wird eine neue Zeile mit Dropdownlisten erstellt. Wählen Sie in der ersten Dropdownliste **Exclude** und in der zweiten **column names** aus, und geben Sie „Kreditrisiko“ in das Textfeld ein (oder wählen Sie **column indices** aus, und geben Sie „21“ ein). Dies gibt an, dass die Spalte „Kreditrisiko“ ignoriert werden soll (wir müssen dies tun, da diese Spalte numerisch ist und daher andernfalls transformiert würde).
-10.	Klicken Sie auf **OK**.  
+9.	Klicken Sie auf das Pluszeichen (+) rechts neben dieser Zeile. Dadurch wird eine neue Zeile mit Dropdownlisten erstellt. Wählen Sie in der ersten Dropdownliste **Exclude** und in der zweiten **column names** aus. Klicken Sie auf das Textfeld, und wählen in der Liste der Spalten „Credit risk“ aus. Dies gibt an, dass die Spalte „Kreditrisiko“ ignoriert werden soll (wir müssen dies tun, da diese Spalte numerisch ist und daher andernfalls transformiert würde).
+10.	Klicken Sie auf **OK**.
 
 
 Das Modul [Normalize Data][normalize-data] ist jetzt für eine Tanh-Transformation aller numerischen Spalten mit Ausnahme der Spalte „Credit Risk“ eingerichtet.
@@ -86,7 +86,7 @@ Dieser Teil des Experiments sieht jetzt in etwa wie folgt aus:
 Wir verwenden die Testdaten, die durch das Modul [Split Data][split] getrennt wurden, um die trainierten Modelle zu bewerten. Danach können die Ergebnisse der beiden Modelle verglichen werden, um festzustellen, welches bessere Ergebnisse erbrachte.
 
 1.	Suchen Sie das Modul [Modell bewerten][score-model], und ziehen Sie es in den Bereich.
-2.	Verbinden Sie den linken Eingabeport dieses Moduls mit dem Boosted Decision Tree-Modell (d. h., verbinden Sie es mit dem Ausgabeport des Moduls [Modell trainieren][train-model], das mit dem Modul [Zweiklassiger Boosted Decision Tree][two-class-boosted-decision-tree] verbunden ist).
+2.	Verbinden Sie den linken Eingabeport dieses Moduls mit dem Boosted Decision Tree-Modell (d. h., verbinden Sie es mit dem Ausgabeport des Moduls [Modell trainieren][train-model], das mit dem Modul [Zweiklassiger Boosted Decision Tree][two-class-boosted-decision-tree] verbunden ist).
 3.	Verbinden Sie den rechten Eingabeport des Moduls [Score Model][score-model] mit der linken Ausgabe des rechten Moduls [Execute R Script][execute-r-script].
 
     Das Modul [Score Model][score-model] kann die Kreditinformationen aus den Testdaten entnehmen, sie durch das Modell laufen lassen und vom Modell generierte Vorhersagen mit der Spalte mit dem tatsächlichen Kreditrisiko in den Testdaten vergleichen.
@@ -94,13 +94,13 @@ Wir verwenden die Testdaten, die durch das Modul [Split Data][split] getrennt wu
 4.	Kopieren Sie das Modul [Modell bewerten][score-model] und fügen Sie es ein, um eine zweite Kopie zu erstellen, oder ziehen Sie ein neues Modul in den Bereich.
 5.	Verbinden Sie den linken Eingabeport dieses Moduls mit dem SVM-Modell (d.h., verbinden Sie es mit dem Ausgabeport des Moduls [Modell trainieren][train-model], das mit dem Modul [Zweiklassige Support Vector Machine][two-class-support-vector-machine] verbunden ist).
 6.	Für das SVM-Modell muss die gleiche Transformation für die Testdaten durchgeführt werden wie für die Trainingsdaten. Kopieren Sie also das Modul [Normalize Data][normalize-data], und fügen Sie es ein, um eine zweite Kopie zu erstellen, und verbinden Sie es mit der linken Ausgabe des rechten Moduls [Execute R Script][execute-r-script].
-7.	Verbinden Sie den rechten Eingabeport des Moduls [Score Model][score-model] mit der linken Ausgabe des Moduls [Normalize Data][normalize-data].  
+7.	Verbinden Sie den rechten Eingabeport des Moduls [Score Model][score-model] mit der linken Ausgabe des Moduls [Normalize Data][normalize-data].
 
 Zur Evaluierung der beiden Bewertungsergebnisse wird das Modul [Modell evaluieren][evaluate-model] verwendet.
 
 1.	Suchen Sie das Modul [Modell evaluieren][evaluate-model], und ziehen Sie es in den Bereich.
 2.	Verbinden Sie den linken Eingangsport mit dem Ausgangsport des Moduls [Modell bewerten][score-model], das dem Boosted Decision Tree-Modell zugeordnet ist.
-3.	Verbinden Sie den rechten Eingabeport mit dem anderen Modul [Modell bewerten][score-model].  
+3.	Verbinden Sie den rechten Eingabeport mit dem anderen Modul [Modell bewerten][score-model].
 
 Klicken Sie auf die Schaltfläche **AUSFÜHREN** unter dem Bereich, um das Experiment auszuführen. Dies kann einige Minuten dauern. Für jedes Modul wird ein Drehindikator angezeigt, um anzugeben, dass es ausgeführt wird. Wenn das Modul abgeschlossen ist, wird ein grünes Häkchen angezeigt. Wenn alle Module ein Häkchen aufweisen, ist die Ausführung des Experiments beendet.
 
@@ -143,4 +143,4 @@ Wenn Sie diese Werte prüfen, können Sie entscheiden, welches Modell am ehesten
 [two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

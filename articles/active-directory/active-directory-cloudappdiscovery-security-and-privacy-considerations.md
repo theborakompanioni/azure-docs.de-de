@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
-	manager="msStevenPo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/30/2016"
+	ms.date="07/19/2016"
 	ms.author="markusvi"/>
 
 # Überlegungen zu Sicherheit und Datenschutz in Cloud App Discovery
@@ -27,7 +27,7 @@ In diesem Thema wird erläutert, wie Daten in Azure Active Directory Cloud App D
 
 ##Übersicht
 
-Cloud App Discovery ist ein Feature von Azure AD und wird in Microsoft Azure gehostet. <br> Der Cloud App Discovery-Endpunkt-Agent wird verwendet, um Ermittlungsdaten für Anwendungen von IT-verwalteten Computern zu sammeln. <br> Die gesammelten Daten werden sicher über einen verschlüsselten Kanal an den Azure AD Cloud App Discovery-Dienst gesendet. <br> Die Cloud App Discovery-Daten für eine Organisation sind dann im Azure-Portal sichtbar. <br>
+Cloud App Discovery ist ein Feature von Azure AD und wird in Microsoft Azure gehostet. <br> Der Cloud App Discovery-Endpunkt-Agent wird verwendet, um Ermittlungsdaten für Anwendungen von IT-verwalteten Computern zu sammeln. <br> Die gesammelten Daten werden sicher über einen verschlüsselten Kanal an den Azure AD Cloud App Discovery-Dienst gesendet. <br> Die Cloud App Discovery-Daten für eine Organisation sind dann im Azure-Portal sichtbar. <br>
 
 
 <center>![Funktionsweise von Cloud App Discovery](./media/active-directory-cloudappdiscovery-security-and-privacy-considerations/cad01.png) </center> <br>
@@ -39,7 +39,7 @@ In den folgenden Abschnitten wird entsprechend dem Informationsfluss beschrieben
 
 ## Sammeln von Daten aus Ihrer Organisation
 
-Um mithilfe des Azure Active Directory-Features Cloud App Discovery Einblicke in die von Mitarbeitern Ihrer Organisation verwendeten Anwendungen zu erhalten, müssen Sie zuerst den Azure AD Cloud App Discovery-Endpunkt-Agent auf Computern in Ihrer Organisation bereitstellen.
+Um mithilfe des Azure Active Directory-Features Cloud App Discovery Einblicke in die von Mitarbeitern Ihrer Organisation verwendeten Anwendungen zu erhalten, müssen Sie zuerst den Azure AD Cloud App Discovery-Endpunkt-Agent auf Computern in Ihrer Organisation bereitstellen.
 
 Administratoren des Azure Active Directory-Mandanten (oder ihre Delegaten) können das Agent-Installationspaket vom Azure-Portal herunterladen. Der Agent kann manuell oder mithilfe von SCCM oder Gruppenrichtlinien auf mehreren Computern in der Organisation installiert werden.
 
@@ -47,10 +47,10 @@ Weitere Anweisungen zu Bereitstellungsoptionen finden Sie unter [Bereitstellungs
 
 ### Vom Agent gesammelte Daten
 
-Die Informationen in der folgenden Liste werden vom Agent beim Herstellen einer Verbindung mit einer Webanwendung gesammelt. Es werden nur Informationen für solche Anwendungen gesammelt, die der Administrator für die Ermittlung konfiguriert hat. <br> Sie können die Liste der Cloud-Apps bearbeiten, die der Agent über das Blatt "Cloud App Discovery" im Microsoft [Azure-Portal](https://portal.azure.com/) unter **Einstellungen** -> **Datensammlung** -> **App-Sammlungsliste** überwacht. Weitere Informationen finden Sie unter [Getting Started With Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx) (in englischer Sprache) <br> **Informationskategorie**: Benutzerinformationen <br> **Beschreibung**: <br> Der Windows-Benutzername des Prozesses, der eine Anforderung an die Zielwebanwendung gestellt hat (z. B. DOMÄNE\\Benutzername) sowie die Windows-Sicherheits-ID (SID) des Benutzers.
+Die Informationen in der folgenden Liste werden vom Agent beim Herstellen einer Verbindung mit einer Webanwendung gesammelt. Es werden nur Informationen für solche Anwendungen gesammelt, die der Administrator für die Ermittlung konfiguriert hat. <br> Sie können die Liste der Cloud-Apps bearbeiten, die der Agent über das Blatt "Cloud App Discovery" im Microsoft [Azure-Portal](https://portal.azure.com/) unter **Einstellungen** -> **Datensammlung** -> **App-Sammlungsliste** überwacht. Weitere Informationen finden Sie unter [Getting Started With Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx) (in englischer Sprache) <br> **Informationskategorie**: Benutzerinformationen <br> **Beschreibung**: <br> Der Windows-Benutzername des Prozesses, der eine Anforderung an die Zielwebanwendung gestellt hat (z. B. DOMÄNE\\Benutzername) sowie die Windows-Sicherheits-ID (SID) des Benutzers.
 
 
-**Informationskategorie**: Prozessinformationen <br> **Beschreibung**: <br> Der Name des Prozesses, der die Anforderung an die Zielwebanwendung gestellt hat (z. B. "iexplore.exe").
+**Informationskategorie**: Prozessinformationen <br> **Beschreibung**: <br> Der Name des Prozesses, der die Anforderung an die Zielwebanwendung gestellt hat (z. B. "iexplore.exe").
 
 **Informationskategorie**: Computerinformationen <br> **Beschreibung**: <br> Der NetBIOS-Name des Computers, auf dem der Agent installiert ist.
 
@@ -129,7 +129,7 @@ Wie bereits erwähnt können Administratoren den Agent zum Überwachen von Daten
 
 Während der durchgängig sicher verschlüsselte Kanal von TLS eine grundlegende Sicherheit und Datenschutz ermöglicht, wird das Protokoll häufig zu schädlichen oder böswilligen Zwecken missbraucht. Dies geht so weit, dass TLS oft als "universelles Protokoll zur Firewallumgehung" bezeichnet wird. Die Ursache des Problems ist, dass die meisten Firewalls die TLS-Kommunikation nicht überprüfen können, da die Daten auf Anwendungsebene mit SSL verschlüsselt werden. Mit diesem Wissen nutzen Angreifer häufig TLS zur Übermittlung von bösartigen Inhalten an einen Benutzer. Den Angreifern ist dabei klar, dass selbst die intelligentesten Firewalls auf Anwendungsebene TLS nicht erkennen und einfach die TLS-Kommunikation zwischen Hosts weitergeleitet werden muss. Häufig nutzen Endbenutzer TLS zum Umgehen der Zugriffskontrolle, die von den Firewalls und Proxyservern ihres Unternehmens erzwungen werden, um die Verbindung zu öffentlichen Proxys herzustellen und nicht-TLS-Protokolle durch die Firewall zu tunneln, die andernfalls von der Richtlinie blockiert werden.
 
-Mithilfe der verschärften Inspektion kann der Cloud App Discovery-Agent als vertrauenswürdiger Man-in-the-Middle fungieren. Wenn eine Clientanforderung für den Zugriff auf eine durch HTTPS geschützte Ressource erfolgt, fängt der Endpunkt-Agent-Treiber die Verbindung ab und stellt eine neue Verbindung mit dem Zielserver her, über die das SSL-Zertifikat für den Client abgerufen wird. Der Agent überprüft dann, ob das Zertifikat vertrauenswürdig ist (indem er sicherstellt, dass es nicht gesperrt wurde, und andere Zertifikatprüfungen ausführt). Nach einer erfolgreichen Prüfung kopiert der Endpunkt-Agent die Informationen aus dem Serverzertifikat und erstellt mit diesen Informationen ein eigenes Serverzertifikat – bekannt als Abfangzertifikat. Das Abfangzertifikat wird vom Endpunkt-Agent umgehend mit einem Stammzertifikat signiert, das im vertrauenswürdigen Windows-Zertifikatspeicher installiert ist. Dieses selbstsignierte Stammzertifikat ist als nicht exportierbar gekennzeichnet, und der Zugriff wird per ACL auf Administratoren beschränkt. Es bleibt immer auf dem Computer, auf dem es erstellt wurde, und wird nie freigegeben. Wenn die Clientanwendung des Endbenutzers das Abfangzertifikat empfängt, stuft sie es als vertrauenswürdig ein, da die Zertifikatkette bis hin zum Stammzertifikat erfolgreich validiert werden kann. Dieser Prozess ist aus Sicht des Endbenutzers größtenteils transparent, weist jedoch einige Vorsichtsmaßnahmen auf, wie im Folgenden beschrieben.
+Mithilfe der verschärften Inspektion kann der Cloud App Discovery-Agent als vertrauenswürdiger Man-in-the-Middle fungieren. Wenn eine Clientanforderung für den Zugriff auf eine durch HTTPS geschützte Ressource erfolgt, fängt der Endpunkt-Agent-Treiber die Verbindung ab und stellt eine neue Verbindung mit dem Zielserver her, über die das SSL-Zertifikat für den Client abgerufen wird. Der Agent überprüft dann, ob das Zertifikat vertrauenswürdig ist (indem er sicherstellt, dass es nicht gesperrt wurde, und andere Zertifikatprüfungen ausführt). Nach einer erfolgreichen Prüfung kopiert der Endpunkt-Agent die Informationen aus dem Serverzertifikat und erstellt mit diesen Informationen ein eigenes Serverzertifikat – bekannt als Abfangzertifikat. Das Abfangzertifikat wird vom Endpunkt-Agent umgehend mit einem Stammzertifikat signiert, das im vertrauenswürdigen Windows-Zertifikatspeicher installiert ist. Dieses selbstsignierte Stammzertifikat ist als nicht exportierbar gekennzeichnet, und der Zugriff wird per ACL auf Administratoren beschränkt. Es bleibt immer auf dem Computer, auf dem es erstellt wurde, und wird nie freigegeben. Wenn die Clientanwendung des Endbenutzers das Abfangzertifikat empfängt, stuft sie es als vertrauenswürdig ein, da die Zertifikatkette bis hin zum Stammzertifikat erfolgreich validiert werden kann. Dieser Prozess ist aus Sicht des Endbenutzers größtenteils transparent, weist jedoch einige Vorsichtsmaßnahmen auf, wie im Folgenden beschrieben.
 
 Durch Aktivieren der verschärften Inspektion kann der Cloud App Discovery-Endpunkt-Agent von TLS verschlüsselte Kommunikationen entschlüsseln und überprüfen, sodass der Dienst Rauschen reduzieren und Einblicke in die Verwendung von verschlüsselten Cloud-Apps geben kann.
 
@@ -139,7 +139,7 @@ Bevor Sie die verschärfte Inspektion aktivieren, wird dringend empfohlen, dass 
 ### Bekannte Probleme und Nachteile
 Es gibt einige Fälle, in denen das Abfangen durch TLS Auswirkungen auf die Endbenutzererfahrung haben kann:
 
-- Zertifikate für die erweiterte Überprüfung rendern die Adressleiste des Webbrowsers in grün, als visueller Hinweis, dass Sie eine vertrauenswürdige Website besuchen. TLS-Prüfung kann keine erweiterte Überprüfung im selbst an den Client ausgegebenen Zertifikat duplizieren, sodass Websites, die erweiterte Überprüfung nutzen, normal funktionieren, die Adressleiste jedoch nicht grün angezeigt wird.  
+- Zertifikate für die erweiterte Überprüfung rendern die Adressleiste des Webbrowsers in grün, als visueller Hinweis, dass Sie eine vertrauenswürdige Website besuchen. TLS-Prüfung kann keine erweiterte Überprüfung im selbst an den Client ausgegebenen Zertifikat duplizieren, sodass Websites, die erweiterte Überprüfung nutzen, normal funktionieren, die Adressleiste jedoch nicht grün angezeigt wird.
 
 - Anheften öffentlicher Schlüssel (auch bezeichnet als Zertifikatfixierung) dient zum Schutz von Benutzern vor Man-in-the-Middle-Angriffen und nicht autorisierten Zertifizierungsstellen. Wenn das Stammzertifikat einer angehefteten Seite nicht mit einer der bekannten, vertrauenswürdigen Zertifizierungsstellen übereinstimmt, lehnt der Browser die Verbindung mit einer Fehlermeldung ab. Da das Abfangen durch TLS tatsächlich ein Man-in-the-Middle ist, schlagen solche Verbindungen fehl.
 
@@ -150,9 +150,9 @@ Um das Auftreten dieser Probleme zu reduzieren, verfolgen wir Clouddienste und C
 
 ## Senden von Daten an Cloud App Discovery
 
-Die vom Agent erfassten Metadaten werden bis zu einer Minute lang oder bis die zwischengespeicherten Daten 5 MB erreicht haben, auf dem Computer zwischengespeichert. Anschließend werden sie komprimiert und über eine sichere Verbindung an den Cloud App Discovery-Dienst gesendet.
+Die vom Agent erfassten Metadaten werden bis zu einer Minute lang oder bis die zwischengespeicherten Daten 5 MB erreicht haben, auf dem Computer zwischengespeichert. Anschließend werden sie komprimiert und über eine sichere Verbindung an den Cloud App Discovery-Dienst gesendet.
 
-Wenn die Kommunikation zwischen Agent und Cloud App Discovery-Dienst aus irgendeinem Grund nicht möglich ist, werden die gesammelten Metadaten in einem lokalen Dateicache gespeichert. Auf diesen Cache können nur berechtigte Benutzer auf dem Computer (z. B. die Gruppe "Administratoren") zugreifen. <br> Der Agent sendet die zwischengespeicherten Metadaten automatisch erneut, bis sie vom Cloud App Discovery-Dienst erfolgreich empfangen wurden.
+Wenn die Kommunikation zwischen Agent und Cloud App Discovery-Dienst aus irgendeinem Grund nicht möglich ist, werden die gesammelten Metadaten in einem lokalen Dateicache gespeichert. Auf diesen Cache können nur berechtigte Benutzer auf dem Computer (z. B. die Gruppe "Administratoren") zugreifen. <br> Der Agent sendet die zwischengespeicherten Metadaten automatisch erneut, bis sie vom Cloud App Discovery-Dienst erfolgreich empfangen wurden.
 
 
 
@@ -170,7 +170,7 @@ Um die Sicherheit der erfassten Metadaten zu gewährleisten, haben standardmäß
 
 > [AZURE.NOTE] Nähere Informationen finden Sie unter [Getting Started With Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx) (in englischer Sprache).
 
-<br> Jeder Benutzer, der auf die Daten im Portal zugreift, muss mit einer Azure AD Premium-Lizenz lizenziert sein.
+<br> Jeder Benutzer, der auf die Daten im Portal zugreift, muss mit einer Azure AD Premium-Lizenz lizenziert sein.
 
 
 
@@ -180,4 +180,4 @@ Um die Sicherheit der erfassten Metadaten zu gewährleisten, haben standardmäß
 * [Wie ermittle ich nicht genehmigte Cloud-Apps, die in meiner Organisation verwendet werden?](active-directory-cloudappdiscovery-whatis.md)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

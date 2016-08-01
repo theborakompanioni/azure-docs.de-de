@@ -29,6 +29,10 @@ Das in diesem Thema verwendete Beispielskript erstellt einen Solr-Cluster mit ei
 
 [Apache Solr](http://lucene.apache.org/solr/features.html) ist eine Unternehmensplattform für die leistungsstarke Volltextsuche in Daten. Während Hadoop das Speichern und Verwalten von großen Datenmengen ermöglicht, bietet Apache Solr die Suchfunktionen, um schnell Daten abzurufen. In diesem Thema wird beschrieben, wie Sie ein HDInsight-Cluster zum Installieren von Solr anpassen können.
 
+> [AZURE.WARNING] Komponenten, die mit dem HDInsight-Cluster bereitgestellt werden, werden vollständig unterstützt, und Microsoft Support hilft Ihnen, Probleme im Zusammenhang mit diesen Komponenten zu isolieren und zu beheben.
+>
+> Für benutzerdefinierte Komponenten wie Solr steht in wirtschaftlich angemessenem Rahmen Support für eine weiterführende Behebung des Problems zur Verfügung. Auf diese Weise kann das Problem behoben werden, ODER Sie werden aufgefordert, verfügbare Kanäle für Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. So können z. B. viele Communitywebsites verwendet werden, wie: das [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [http://apache.org](http://apache.org), z.B. [Hadoop](http://hadoop.apache.org/).
+
 ## Funktion des Skripts
 
 Mit diesem Skript werden die folgenden Änderungen am HDInsight-Cluster vorgenommen:
@@ -170,7 +174,7 @@ Wenn Sie einen SSH-Tunnel eingerichtet haben, gehen Sie folgendermaßen vor, um 
     
     3. Wählen Sie den Eintrag aus, der mit __hn0__ beginnt. Beim Öffnen der Seite wird oben der Hostname angezeigt. Das Format des Hostnamens ist __hn0 PARTOFCLUSTERNAME.randomcharacters.cx.internal.cloudapp.net__. Dieser Hostname muss bei der Verbindung mit dem Solr-Dashboard verwendet werden.
     
-1. Stellen Sie in Ihrem Browser eine Verbindung mit \_\___http://HOSTNAME:8983/solr/#/__ her, wobei __HOSTNAME__ der Name ist, die Sie in den vorherigen Schritten bestimmt haben.
+1. Stellen Sie in Ihrem Browser eine Verbindung mit __http://HOSTNAME:8983/solr/#/__ her, wobei __HOSTNAME\_\_ der Name ist, die Sie in den vorherigen Schritten bestimmt haben.
 
     Die Anfrage sollte über den SSH-Tunnel auf den Hauptknoten für Ihren HDInsight-Cluster weitergeleitet werden. Eine Seite ähnlich der folgenden wird angezeigt:
 
@@ -307,4 +311,4 @@ Weitere Informationen zum Arbeiten mit Solr-Backups und -Wiederherstellungen fin
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

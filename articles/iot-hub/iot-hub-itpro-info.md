@@ -36,7 +36,7 @@ Nachdem Sie einen IoT Hub in einer Azure-Region erstellt haben, behält er seine
 
 ## IoT Hub und Sicherheit
 
-Nur Geräte, die bei einem IoT Hub registriert sind, dürfen mit diesem kommunizieren. Einem registrierten Gerät muss die *DeviceConnect*-Berechtigung gewährt werden. Ein Gerät identifiziert sich durch ein Token, das die eindeutige Geräte-ID in jeder ausgeführten Anforderung kapselt. Der Hub überprüft die Gültigkeit des Tokens und stellt sicher, dass das Gerät nicht gesperrt ist (die *DeviceConnect*-Berechtigung widerrufen wurde).
+Nur Geräte, die bei einem IoT Hub registriert sind, dürfen mit diesem kommunizieren. Einem registrierten Gerät muss die *DeviceConnect*-Berechtigung gewährt werden. Ein Gerät identifiziert sich durch ein Token, das die eindeutige Geräte-ID in jeder ausgeführten Anforderung kapselt. Der Hub überprüft die Gültigkeit des Tokens und stellt sicher, dass das Gerät nicht gesperrt ist (die *DeviceConnect*-Berechtigung widerrufen wurde). Informationen zu den von IoT Hub unterstützten Token finden Sie unter [Verwenden von IoT Hub-Sicherheitstoken und X.509-Zertifikaten][lnk-tokens].
 
 Der Zugriff auf andere Verwaltungsendpunkte in einem IoT Hub wird auch über einen Berechtigungssatz gesteuert: *iothubowner*, *service*, *registryRead* und *registryReadWrite*. Jede Clientverwaltungsanwendung, die eine Verbindung mit einem IoT Hub herstellt, muss ein Token mit den entsprechenden Berechtigungen enthalten.
 
@@ -51,13 +51,12 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 - [Erkunden der Geräteverwaltung mithilfe der Beispielbenutzeroberfläche][lnk-dmui]
 - [Simulieren eines Geräts mit dem Gateway SDK][lnk-gateway]
 
-[lnk-iothub]: iot-hub-what-is-iot-hub.md
 [lnk-devguide]: iot-hub-devguide.md#security
-[lnk-manage-portal]: iot-hub-manage-through-portal.md
 
 [lnk-design]: iot-hub-guidance.md
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-tokens]: iot-hub-sas-tokens.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

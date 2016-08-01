@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/02/2016" 
+	ms.date="07/06/2016" 
 	ms.author="garye" />
 
 
@@ -40,10 +40,17 @@ Azure Machine Learning verfügt über zwei Arten von Diensten:
 Weitere Informationen zu Machine Learning-Webdiensten finden Sie unter [Bereitstellen eines Machine Learning-Webdiensts](machine-learning-publish-a-machine-learning-web-service.md).
 
 ## Abrufen eines Autorisierungsschlüssels für Azure Machine Learning ##
-Sie erhalten einen Webdienst-API-Schlüssel von einem Machine Learning-Webdienst. Sie können ihn über Machine Learning Studio oder das Azure-Portal abrufen.
+
+Wenn Sie Ihr Experiment bereitstellen, werden API-Schlüssel für den Webdienst erstellt. Wo Sie die Schlüssel abrufen, hängt davon ab, ob das Experiment als neuer oder klassischer Webdienst bereitgestellt wurde.
+
+## Klassischer Webdienst ##
+
+ Sie können einen Schlüssel aus Machine Learning Studio oder dem Azure-Portal abrufen.
+
 ### Machine Learning Studio ###
+
 1. Klicken Sie in Machine Learning Studio links auf **WEB SERVICES**.
-2. Klicken Sie auf einen Webdienst. Der "API Key" befindet sich auf der Registerkarte **DASHBOARD**.
+2. Klicken Sie auf einen Webdienst. Der **API Key** befindet sich auf der Registerkarte **DASHBOARD**.
 
 ### Azure-Portal ###
 
@@ -53,24 +60,36 @@ Sie erhalten einen Webdienst-API-Schlüssel von einem Machine Learning-Webdienst
 4. Klicken Sie auf einen Webdienst.
 5. Klicken Sie auf einen Endpunkt. "API KEY" befindet sich unten rechts.
 
+
+## Neuer Webdienst 
+
+Zum Abrufen des API-Schlüssels für einen Machine Learning-Webdienst müssen Sie sich beim [Microsoft Azure Machine Learning Web Services](https://services.azureml.net/quickstart)-Portal anmelden.
+
+1. Klicken Sie im Azure Machine Learning Web Services-Portal im oberen Menü auf **WEB SERVICES**.
+2. Klicken Sie auf den Webdienst, für den der Schlüssel abgerufen werden soll.
+3. Klicken Sie im oberen Menü auf **Consume**.
+4. Kopieren und speichern Sie den **Primary Key**.
+
 ## <a id="connect"></a>Herstellen der Verbindung mit einem Machine Learning-Webdienst
 
 Sie können mit jeder Programmiersprache, die HTTP-Anforderungen und -Antworten unterstützt, eine Verbindung mit einem Machine Learning-Webdienst herstellen. Sie können Beispiele in C#, Python und R auf einer Hilfeseite für den Machine Learning-Webdienst anzeigen.
 
-### So zeigen Sie eine Hilfeseite einer Machine Learning-Webdienst-API an ###
-Wenn Sie einen Webdienst bereitstellen, wird eine Machine Learning-API-Hilfeseite erstellt. Weitere Informationen finden Sie unter [Azure Machine Learning – exemplarische Vorgehensweise – Veröffentlichen eines Webdiensts](machine-learning-walkthrough-5-publish-web-service.md).
+**Hilfe zur Machine Learning-API** Wenn Sie einen Webdienst bereitstellen, wird Hilfe zur Machine Learning-API erstellt. Weitere Informationen finden Sie unter [Azure Machine Learning – exemplarische Vorgehensweise – Veröffentlichen eines Webdiensts](machine-learning-walkthrough-5-publish-web-service.md). Die Machine Learning-API-Hilfeseite enthält Details zu einem Vorhersagewebdienst.
 
+**So zeigen Sie eine Machine Learning-API-Hilfeseite für einen klassischen Webdienst** in Machine Learning Studio an
 
-**So zeigen Sie eine Machine Learning-API-Hilfeseite** in Machine Learning Studio an:
+1. Klicken Sie auf **WEB SERVICES**.
+2. Klicken Sie auf einen Webdienst.
+3. Klicken Sie auf **API-Hilfeseite** -> **REQUEST/RESPONSE** oder **BATCH EXECUTION**
 
-1. Wählen Sie **WEB SERVICES** aus.
-2. Wählen Sie einen Webdienst aus.
-3. Wählen Sie **API help page** - **REQUEST/RESPONSE** oder **BATCH EXECUTION** aus.
+**So zeigen Sie eine Machine Learning-API-Hilfeseite für einen neuen Webdienst** im Azure Machine Learning Web Services-Portal an
 
+1. Klicken Sie im oberen Menü auf **WEB SERVICES**.
+2. Klicken Sie auf den Webdienst, für den der Schlüssel abgerufen werden soll.
 
-**Machine Learning-API-Hilfeseite** Die Machine Learning-API-Hilfeseite enthält Details zu einem Vorhersage-Webdienst.
+Klicken Sie auf **Consume**, um die URIs für die Dienste „Request-Reposonse“ und „Batch Execution“ und Beispielcode in C#, R und Python abzurufen.
 
-
+Klicken Sie auf **Swagger API**, um auf Swagger basierende Dokumentation zu den APIs abzurufen, die über die angegebenen URIs aufgerufen werden.
 
 ### C#-Beispiel ###
 
@@ -98,8 +117,8 @@ Verwenden Sie zum Verbinden mit einem Machine Learning-Webdienst die **urllib2**
 
 **So führen Sie das Codebeispiel aus**
 
-1. Veröffentlichen Sie das Experiment „Sample 1: Download dataset from UCI: Adult 2 class dataset“, Teil der Machine Learning-Beispielauflistung.
+1. Stellen Sie das Experiment „Sample 1: Download dataset from UCI: Adult 2 class dataset“ bereit, das Teil der Machine Learning-Beispielsammlung ist.
 2. Weisen Sie "apiKey" den Schlüssel von einem Webdienst zu. Siehe oben: **Abrufen eines Autorisierungsschlüssels für Azure Machine Learning**.
-3. Weisen Sie "serviceUri" die Anforderungs-URI zu. Weitere Informationen finden Sie unter "Abrufen einer Anforderungs-URI".
+3. Weisen Sie "serviceUri" die Anforderungs-URI zu.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

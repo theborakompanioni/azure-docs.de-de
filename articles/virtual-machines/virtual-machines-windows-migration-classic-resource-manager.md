@@ -47,6 +47,7 @@ Es gibt drei Migrationsbereiche, bei denen es hauptsächlich um Compute-, Netzwe
 ### Migration virtueller Computer (nicht in einem virtuellen Netzwerk)
 
 Beim Resource Manager-Bereitstellungsmodell wird die Sicherheit Ihrer Anwendungen standardmäßig erzwungen. Beim Resource Manager-Modell müssen sich alle virtuellen Computer in einem virtuellen Netzwerk befinden. Daher werden die virtuellen Computer im Rahmen der Migration neu gestartet (`Stop`, `Deallocate` und `Start`). Für die virtuellen Netzwerke haben Sie zwei Optionen:
+
 - Sie können für die Plattform die Erstellung eines neuen virtuellen Netzwerks anfordern und den virtuellen Computer zum neuen virtuellen Netzwerk migrieren.
 - Sie können den virtuellen Computer zu einem vorhandenen virtuellen Netzwerk in Resource Manager migrieren.
 
@@ -97,6 +98,7 @@ Compute | Mehrere Subnetze, die einem virtuellen Computer zugeordnet sind | Aktu
 Compute | Virtuelle Computer, die zu einem virtuellen Netzwerk gehören, aber denen kein explizites Subnetz zugewiesen ist | Sie können die VM optional löschen.
 Compute | Virtuelle Computer mit Warnungen, Richtlinien für automatische Skalierung | Derzeit ist diese Migration erfolgreich, und diese Einstellungen werden verworfen. Wir empfehlen Ihnen dringend, vor der Migration Ihre Umgebung auszuwerten. Alternativ hierzu können Sie die Warnungseinstellungen nach Abschluss der Migration neu konfigurieren.
 Compute | XML-VM-Erweiterungen (Visual Studio Debugger, Web Deploy und Remotedebuggen) | Dies wird nicht unterstützt. Wir empfehlen, diese Erweiterungen vom virtuellen Computer zu entfernen, um die Migration fortzusetzen.
+Compute | Startdiagnose mit Storage Premium | Deaktivieren Sie die Funktion „Startdiagnose“ für die virtuellen Computer, bevor Sie mit der Migration fortfahren. Sobald die Migration abgeschlossen ist, können Sie die Startdiagnose im Resource Manager-Stapel erneut aktivieren. Darüber hinaus sollten für Screenshots und serielle Protokolle verwendete Blobs gelöscht werden, damit diese Blobs nicht mehr berechnet werden.
 Compute | Clouddienste, die Web-/Workerrollen enthalten | Dies wird derzeit nicht unterstützt.
 Netzwerk | Virtuelle Netzwerke, die virtuelle Computer und Web-/Workerrollen enthalten | Dies wird derzeit nicht unterstützt.
 Azure App Service | Virtuelle Netzwerke, die App Service-Umgebungen enthalten | Dies wird derzeit nicht unterstützt.
@@ -120,15 +122,21 @@ Der Migrationsworkflow sieht wie folgt aus:
 
 >[AZURE.NOTE] Alle in den folgenden Abschnitten beschriebenen Vorgänge sind idempotent. Sollte ein Problem auftreten, das nicht auf ein nicht unterstütztes Feature oder auf einen Konfigurationsfehler zurückzuführen ist, wiederholen Sie den Vorbereitungs-, Abbruch- oder Commitvorgang. Die Plattform versucht dann erneut, die Aktion auszuführen.
 
+### Überprüfen
+
+Der Überprüfungsvorgang ist der erste Schritt im Migrationsprozess. Das Ziel dieses Schritts ist, im Hintergrund die Daten für die zu migrierenden Ressourcen zu analysieren und durch „Erfolgreich“/„Fehler“ anzugeben, ob die Ressourcen für die Migration bereit sind.
+
+Sie wählen das virtuelle Netzwerk oder den gehosteten Dienst aus (sofern es kein virtuelles Netzwerk ist), das bzw. den Sie für die Migration überprüfen möchten.
+
+* Wenn die Migration für die Ressource nicht möglich ist, werden auf der Plattform alle Gründe dafür angegeben, warum die Migration nicht unterstützt wird.
+
 ### Vorbereiten
 
-Der Vorbereitungsvorgang ist der erste Schritt im Migrationsprozess. Das Ziel dieses Schritts besteht darin, die Transformation der IaaS-Ressourcen von Ressourcen des klassischen Bereitstellungsmodells zu Resource Manager-Ressourcen zu simulieren und diese zu Visualisierungszwecken nebeneinander darzustellen.
+Der Vorbereitungsvorgang ist der zweite Schritt im Migrationsprozess. Das Ziel dieses Schritts besteht darin, die Transformation der IaaS-Ressourcen von Ressourcen des klassischen Bereitstellungsmodells zu Resource Manager-Ressourcen zu simulieren und diese zu Visualisierungszwecken nebeneinander darzustellen.
 
 Sie wählen das virtuelle Netzwerk oder den gehosteten Dienst aus (sofern es kein virtuelles Netzwerk ist), den Sie für die Migration vorbereiten möchten.
 
-Zuerst analysiert die Plattform im Hintergrund immer die Daten für die zu migrierenden Ressourcen und gibt durch „Erfolgreich“/„Fehler“ an, ob die Ressourcen für die Migration bereit sind.
-
-* Wenn die Migration für die Ressource nicht möglich ist, werden über die Plattform die Gründe dafür angegeben, warum die Migration nicht unterstützt wird.
+* Wenn die Migration für die Ressource nicht möglich ist, beendet die Plattform den Migrationsprozesses und gibt den Grund dafür an, warum der Vorbereitungsvorgang fehlgeschlagen ist.
 * Wenn die Migration für die Ressource durchgeführt werden kann, sperrt die Plattform zuerst die Vorgänge der Verwaltungsebene für die zu migrierenden Ressourcen. Beispielsweise ist es nicht möglich, einem in der Migration befindlichen virtuellen Computer einen Datenträger hinzuzufügen.
 
 Die Plattform startet dann für die zu migrierenden Ressourcen die Migration der Metadaten vom klassischen Bereitstellungsmodell zu Resource Manager.
@@ -201,7 +209,7 @@ Die Unterstützung für Azure Site Recovery und Backup für virtuelle Computer u
 
 **Kann ich mein Abonnement oder meine Ressourcen überprüfen, um zu ermitteln, ob sie für die Migration geeignet sind?**
 
-Derzeit wird während des Vorbereitungsvorgangs eine implizite Überprüfung für die Ressourcen durchgeführt, die für die Migration vorbereitet werden. Bei der Option für die plattformgestützte Migration besteht der erste Schritt zum Vorbereiten der Migration darin, zu überprüfen, ob die Ressourcen für die Migration geeignet sind. Wenn die Überprüfung nicht erfolgreich ist, werden die Ressourcen nicht „angefasst“.
+Ja. Bei der Option für die plattformgestützte Migration besteht der erste Schritt zum Vorbereiten der Migration darin, zu überprüfen, ob die Ressourcen für die Migration geeignet sind. Für den Fall, dass der Überprüfungsvorgang fehlschlägt, erhalten Sie alle Meldungen über alle Gründe, aus denen die Migration nicht abgeschlossen werden kann.
 
 **Was passiert, wenn ein Kontingentfehler auftritt, während ich die IaaS-Ressourcen für die Migration vorbereite?**
 
@@ -215,6 +223,9 @@ Posten Sie Ihre Probleme und Fragen zur Migration in unserem [VM-Forum](https://
 
 Für alle Ressourcen, für die Sie unter dem klassischen Bereitstellungsmodell explizit Namen angeben, werden diese während der Migration beibehalten. In einigen Fällen werden neue Ressourcen erstellt. Beispiel: Für jeden virtuellen Computer wird eine Netzwerkschnittstelle erstellt. Derzeit wird es nicht unterstützt, die Namen dieser neuen Ressourcen, die während der Migration erstellt werden, zu steuern. Besuchen Sie das [Azure-Feedbackforum](http://feedback.azure.com), um für dieses Feature abzustimmen.
 
+**Ich erhalte die Fehlermeldung *„Der VM-Agent für die VM meldet den Gesamtstatus des Agents als „Nicht bereit“. Daher kann die VM nicht migriert werden. Stellen Sie sicher, dass der VM-Agent den Gesamtstatus des Agents als „Bereit“ meldet“* oder *„Die VM enthält die Erweiterung, deren Status nicht von der VM gemeldet wird. Daher kann diese VM nicht migriert werden.“***
+
+Diese Meldung wird empfangen, wenn der virtuelle Computer keine ausgehende Verbindung mit dem Internet aufweist. Der VM-Agent verwendet ausgehende Verbindungen, um das Azure-Speicherkonto für die Aktualisierung des Agent-Status alle 5 Minuten zu erreichen.
 
 ## Nächste Schritte
 Nachdem Sie nun eine Vorstellung von der Migration klassischer IaaS-Ressourcen zu Resource Manager haben, können Sie damit beginnen, die Ressourcen zu migrieren.
@@ -224,4 +235,4 @@ Nachdem Sie nun eine Vorstellung von der Migration klassischer IaaS-Ressourcen z
 - [Migrieren von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe der Befehlszeilenschnittstelle](virtual-machines-linux-cli-migration-classic-resource-manager.md)
 - [Klonen eines klassischen virtuellen Computers nach Azure Resource Manager mithilfe von PowerShell-Skripts aus der Community](virtual-machines-windows-migration-scripts.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="05/03/2016"
+ms.date="07/19/2016"
 ms.author="larryfr"/>
 
 # Verwenden der Tez-Benutzeroberfläche zum Debuggen von Tez-Aufträgen in Windows-basiertem HDInsight
@@ -137,7 +137,7 @@ Gehen Sie folgendermaßen vor, um eine Hive-Abfrage mit Tez auszuführen.
 
     > [AZURE.NOTE] Wie beim vorherigen Menü können Sie die Spaltenanzeige für „Tasks“, „Task Attempts“ und „Sources & Sinks“ durchlaufen, um Links zu weiteren Informationen zu den einzelnen Elementen anzuzeigen.
 
-10. Wählen Sie __Tasks__ und dann das Element mit dem Namen __00\_000000__ aus. Dadurch werden __Task Details__ für diese Aufgabe angezeigt. Auf diesem Bildschirm können Sie __Task Counters__ und __Task Attempts__ anzeigen.
+10. Wählen Sie __Tasks__ und dann das Element mit dem Namen __00_000000_\_ aus. Dadurch werden __Task Details__ für diesen Task angezeigt. Auf diesem Bildschirm können Sie __Task Counters__ und __Task Attempts\_\_ anzeigen.
 
     ![Aufgabendetails](./media/hdinsight-debug-tez-ui/taskdetails.png)
 
@@ -147,4 +147,4 @@ Nachdem Sie sich mit der Verwendung der Tez-Ansicht vertraut gemacht haben, erfa
 
 Ausführliche technische Informationen zu Tez finden Sie auf der [Seite zu Tez bei Hortonworks](http://hortonworks.com/hadoop/tez/).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -98,11 +98,13 @@ Wenn alle Endpunkte eines Profils deaktiviert werden oder das Profil selbst deak
 ## Häufig gestellte Fragen
 
 ### Kann ich Traffic Manager mit Endpunkten mehrerer Abonnements verwenden?
-Ja. Ihre Vorgehensweise hängt hierbei davon ab, ob Sie die Dienstverwaltungs-APIs oder die Resource Manager-APIs für Traffic Manager verwenden. Im [Azure-Portal](https://portal.azure.com) wird Resource Manager verwendet, im [„klassischen“ Portal](https://manage.windowsazure.com) dagegen die Dienstverwaltung.
+Für Azure-Web-Apps ist dies nicht möglich. Die Ursache ist, dass es für die Web-Apps erforderlich ist, dass mit Web-Apps verwendete benutzerdefinierte Domänennamen nur innerhalb eines einzelnen Abonnements genutzt werden. Es ist nicht möglich, Web-Apps aus mehreren Abonnements mit dem gleichen Domänennamen zu verwenden, und daher können sie nicht mit Traffic Manager genutzt werden.
+
+Für andere Endpunkttypen kann Traffic Manager mit Endpunkten aus mehreren Abonnements verwendet werden. Ihre Vorgehensweise hängt hierbei davon ab, ob Sie die Dienstverwaltungs-APIs oder die Resource Manager-APIs für Traffic Manager verwenden. Im [Azure-Portal](https://portal.azure.com) wird Resource Manager verwendet, im [„klassischen“ Portal](https://manage.windowsazure.com) dagegen die Dienstverwaltung.
 
 In Resource Manager können Endpunkte aus jedem Abonnement Traffic Manager hinzugefügt werden, solange die Person, die das Traffic Manager-Profil konfiguriert, über Lesezugriff für den Endpunkt verfügt. Diese Berechtigungen können über die [rollenbasierte Zugriffssteuerung (RBAC) von Azure Resource Manager](../active-directory/role-based-access-control-configure.md) gewährt werden.
 
-In der Dienstverwaltung ist es für Traffic Manager erforderlich, dass sich der als Azure-Endpunkt konfigurierte Clouddienst bzw. die Web-App unter demselben Abonnement wie das Traffic Manager-Profil befindet. Clouddienst-Endpunkte in anderen Abonnements können Traffic Manager als „externe“ Endpunkte hinzugefügt werden (sie werden weiterhin mit der Rate für interne Endpunkte berechnet). Web-Apps aus anderen Abonnements können nicht verwendet werden.
+In der Dienstverwaltung ist es für Traffic Manager erforderlich, dass sich der als Azure-Endpunkt konfigurierte Clouddienst bzw. die Web-App unter demselben Abonnement wie das Traffic Manager-Profil befindet. Clouddienst-Endpunkte in anderen Abonnements können Traffic Manager als „externe“ Endpunkte hinzugefügt werden (sie werden weiterhin mit der Rate für interne Endpunkte berechnet).
 
 ### Kann ich Traffic Manager mit „Stagingslots“ des Clouddiensts verwenden?
 Ja. Stagingslots des Clouddiensts können in Traffic Manager als externe Endpunkte konfiguriert werden.
@@ -142,4 +144,4 @@ Im Fall von Web-Apps lassen die Traffic Manager-Azure-Endpunkte es aber nicht zu
 
 - Informationen zu Traffic Manager-[Routingmethoden für Datenverkehr](traffic-manager-routing-methods.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

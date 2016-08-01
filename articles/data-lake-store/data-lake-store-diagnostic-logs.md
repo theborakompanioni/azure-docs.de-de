@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="07/11/2016"
+   ms.date="07/19/2016"
    ms.author="nitinme"/>
 
 # Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store
@@ -50,7 +50,14 @@ Nachdem Sie die Diagnoseeinstellungen aktiviert haben, können Sie die Protokoll
 
 ## Anzeigen der Diagnoseprotokolle für Ihr Data Lake Store-Konto
 
-1. Klicken Sie auf Ihrem Data Lake Store-Kontoblatt **Einstellungen** auf **Diagnoseprotokolle**.
+Es gibt zwei Möglichkeiten, die Protokolldaten Ihres Data Lake Store-Kontos anzuzeigen:
+
+* Über die Ansicht „Einstellungen“ des Data Lake Store-Kontos
+* Über das Azure Storage-Konto, in dem die Daten gespeichert sind
+
+### Verwenden der Data Lake Store-Ansicht „Einstellungen“
+
+1. Klicken Sie in Ihrem Data Lake Store-Konto auf dem Blatt **Einstellungen** auf **Diagnoseprotokolle**.
 
 	![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "Anzeigen der Diagnoseprotokolle")
 
@@ -58,7 +65,24 @@ Nachdem Sie die Diagnoseeinstellungen aktiviert haben, können Sie die Protokoll
 	* Anforderungsprotokolle erfassen jede API-Anforderung im Data Lake Store-Konto.
 	* Überwachungsprotokolle ähneln Anforderungsprotokollen, bieten aber eine viel detailliertere Aufschlüsselung der Vorgänge, die auf dem Data Lake Store-Konto ausgeführt werden. Ein einzelner API-Hochladeaufruf in Anforderungsprotokollen könnte möglicherweise in den Überwachungsprotokollen in mehreren „Anfügen“-Vorgängen resultieren.
 
-3. Klicken Sie auf den **Herunterladen**-Link jedes Protokolleintrags, um die Protokolle herunterzuladen.
+3. Klicken Sie für jeden Protokolleintrag auf den Link **Herunterladen**, um die Protokolle herunterzuladen.
+
+### Im Azure Storage-Konto, das die Protokolldaten enthält
+
+1. Öffnen Sie das Azure Storage-Kontoblatt, das zur Protokollierung dem Data Lake Store zugeordnet ist, und klicken Sie dann auf „Blobs“. Auf dem Blatt **Blobdienst** werden zwei Container aufgelistet.
+
+	![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "Anzeigen der Diagnoseprotokolle")
+
+	* Der Container **insights-logs-audit** enthält die Überwachungsprotokolle.
+	* Der Container **insights-logs-requests** enthält die Anforderungsprotokolle.
+
+2. Innerhalb dieser Container werden die Protokolle in der folgenden Struktur gespeichert.
+
+	![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "Anzeigen der Diagnoseprotokolle")
+
+	Der vollständige Pfad zu einem Überwachungsprotokoll könnte z.B. folgendermaßen lauten: `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
+
+	Entsprechend könnte der vollständige Pfad zu einem Anforderungsprotokoll folgendermaßen lauten: `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
 
 ## Grundlegendes zur Struktur der Protokolldaten
 
@@ -95,7 +119,7 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotok
 |-----------------|--------|--------------------------------------------------------------------------------|
 | in | String | Der Zeitstempel (UTC) des Protokolls. |
 | Ressourcen-ID | String | Die ID der Ressource, auf der der Vorgang stattfand. |
-| category | String | Die Protokollkategorie. Beispielsweise **Anforderungen**. |
+| category | String | Die Protokollkategorie. Zum Beispiel **Anforderungen**. |
 | operationName | String | Der Name des protokollierten Vorgangs. Beispielsweise „getfilestatus“. |
 | resultType | String | Der Status des Vorgangs, beispielsweise 200. |
 | callerIpAddress | String | Die IP-Adresse des Clients, der die Anforderung gestellt hat. |
@@ -157,9 +181,15 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
 |------------|--------|------------------------------------------|
 | StreamName | String | Der Pfad, in dem der Vorgang durchgeführt wurde. |
 
+
+## Beispiele für die Verarbeitung der Protokolldaten
+
+Azure Data Lake Store stellt ein Muster bereit, nach dem die Protokolldaten verarbeitet und analysiert werden sollen. Sie finden das Beispiel hier: [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample).
+
+
 ## Weitere Informationen
 
 - [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
 - [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

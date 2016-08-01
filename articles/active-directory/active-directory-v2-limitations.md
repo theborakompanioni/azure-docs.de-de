@@ -56,6 +56,29 @@ Ebenso können Apps, die im neuen App-Registrierungsportal registriert sind, nic
 
 Apps, die im neuen Anwendungs-Registrierungsportal registriert sind, sind derzeit auf eine begrenzte Anzahl von Umleitungs-URI-Werten beschränkt. Der Umleitungs-URI für Web-Apps und -Dienste muss mit dem Schema oder `https` beginnen, während er für alle anderen Plattformen den hartcodierten Wert `urn:ietf:oauth:2.0:oob` verwenden muss.
 
+## Einschränkungen für Umleitungs-URIs
+Für Web-Apps müssen alle Umleitungs-URI-Werte die gleiche DNS-Domäne verwenden. Beispielsweise ist es nicht möglich, eine Web-App mit folgenden Umleitungs-URIs zu registrieren:
+
+`https://login-east.contoso.com` `https://login-west.contoso.com`
+
+Das Registrierungssystem vergleicht den gesamten DNS-Namen des vorhandenen Umleitungs-URI mit dem DNS-Namen des Umleitungs-URI, den Sie hinzufügen. Wenn der gesamte DNS-Name des neuen Umleitungs-URI nicht exakt dem DNS-Namen des vorhandenen Umleitungs-URI entspricht oder der gesamte DNS-Name des neuen Umleitungs-URI keine Unterdomäne des vorhandenen Umleitungs-URI ist, tritt beim Hinzufügen ein Fehler auf. Ein Beispiel: Angenommen, die App besitzt aktuell den folgenden Umleitungs-URI:
+
+`https://login.contoso.com`
+
+Dann können Sie Folgendes hinzufügen:
+
+`https://login.contoso.com/new`
+
+(Entspricht exakt dem DNS-Namen.) Oder Folgendes:
+
+`https://new.login.contoso.com`
+
+(Hierbei handelt es sich um eine DNS-Unterdomäne von „login.contoso.com“.) Wenn Sie eine Anwendung mit den Umleitungs-URIs „login-east.contoso.com“ und login-west.contoso.com“ benötigen, müssen Sie die folgenden Umleitungs-URIs in der angegebenen Reihenfolge hinzufügen:
+
+`https://contoso.com` `https://login-east.contoso.com` `https://login-west.contoso.com`
+
+Die letzten beiden können hinzugefügt werden, da es sich bei ihnen um Unterdomänen des ersten Umleitungs-URI „contoso.com“ handelt. Diese Einschränkung wird in einer zukünftigen Version aufgehoben.
+
 Um zu erfahren, wie Sie eine Anwendung im neuen Anwendungs-Registrierungsportal registrieren, lesen Sie [diesen Artikel](active-directory-v2-app-registration.md).
 
 ## Einschränkungen für Dienste und APIs
@@ -63,18 +86,18 @@ Der v2.0-Endpunkt unterstützt derzeit die Anmeldung für jede App, die im neuen
 
 - Die App, die das Token angefordert hat. Eine App kann einen Zugriffstoken für sich selbst anfordern, wenn die logische App aus mehreren unterschiedlichen Komponenten oder Schichten besteht. Wenn Sie dieses Szenario in Aktion sehen möchten, besuchen Sie unsere [Erste Schritte](active-directory-appmodel-v2-overview.md#getting-started)-Tutorials.
 - Outlook Mail-, Calendar- und Contacts-REST-APIs befinden sich unter https://outlook.office.com. Um zu erfahren, wie Sie eine App schreiben können, die auf diese APIs zugreift, gehen Sie zu den [Erste Schritte mit Office](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2)-Tutorials.
-- Die Microsoft Graph-APIs. Weitere Informationen über Microsoft Graph und alle verfügbaren Daten finden Sie unter [https://graph.microsoft.io](https://graph.microsoft.io).
+- Die Microsoft Graph-APIs. Weitere Informationen zu Microsoft Graph sowie zu den verfügbaren Daten finden Sie unter [https://graph.microsoft.io](https://graph.microsoft.io).
 
 Zu diesem Zeitpunkt werden keine anderen Dienste unterstützt. In Zukunft werden weitere Microsoft Online-Dienste sowie der Support für Ihre eigenen Web-APIs und Dienste hinzugefügt.
 
 ## Einschränkungen für Bibliotheken und SDKs
-Damit Sie den Vorgang ausprobieren können, haben wir eine experimentelle Version der Active Directory Authentication Library bereitgestellt, die mit dem v2.0-Endpunkt kompatibel ist. Allerdings befindet sich diese Version von ADAL in der Vorschauphase. Sie wird nicht unterstützt und in den nächsten Monaten erheblich überarbeitet. In unserem Abschnitt [Erste Schritte](active-directory-appmodel-v2-overview.md#getting-started) stehen Codebeispiele mit ADAL für .NET, iOS, Android und JavaScript zur Verfügung, wenn Sie schnell eine App mit dem v2.0-Endpunkt ausführen möchten.
+Damit Sie den Vorgang ausprobieren können, haben wir eine experimentelle Version der Active Directory Authentication Library bereitgestellt, die mit dem v2.0-Endpunkt kompatibel ist. Allerdings befindet sich diese Version von ADAL in der Vorschauphase. Sie wird nicht unterstützt und in den nächsten Monaten erheblich überarbeitet. In unserem Abschnitt [Erste Schritte](active-directory-appmodel-v2-overview.md#getting-started) stehen Codebeispiele mit ADAL für .NET, iOS, Android und JavaScript zur Verfügung, wenn Sie schnell eine App mit dem v2.0-Endpunkt zum Laufen bringen möchten.
 
 Wenn Sie den v2.0-Endpunkt in einer Produktionsanwendung verwenden möchten, besitzen Sie die folgenden Optionen:
 
 - Wenn Sie eine Webanwendung erstellen, können Sie unsere allgemein verfügbare serverseitige Middleware bedenkenlos für die Anmeldung und die Tokenüberprüfung einsetzen. Dazu gehören die OWIN Open ID Connect-Middleware für ASP.NET und unser NodeJS Passport-Plug-In. Codebeispiele, in denen diese Middleware verwendet wird, stehen in unserem Abschnitt [Erste Schritte](active-directory-appmodel-v2-overview.md#getting-started) ebenfalls zur Verfügung.
 - Für andere Plattformen sowie für native und mobile Anwendungen können Sie die Integration mit dem v2.0-Endpunkt auch durchführen, indem Sie Nachrichten direkt in Ihrem Anwendungscode senden und empfangen. Die v2.0-Protokolle OpenID Connect und OAuth [wurden explizit dokumentiert](active-directory-v2-protocols.md), um Sie bei einer solchen Integration zu unterstützen.
-- Zudem können Sie die Open ID Connect- und OAuth-Open Source-Bibliotheken für die Integration in den v2.0-Endpunkt verwenden. Das v2.0-Protokoll sollte ohne wesentliche Änderungen mit vielen Open Source-Protokollbibliotheken kompatibel sein. Die Verfügbarkeit solcher Bibliotheken ist abhängig von Sprache und Plattform, und auf den [Open ID Connect](http://openid.net/connect/)- und [OAuth 2.0](http://oauth.net/2/)-Websites wird eine Liste der gängigen Implementierungen verwaltet. Im Folgenden sind die Open Source-Clientbibliotheken und -Beispiele aufgeführt, die mit dem v2.0-Endpunkt getestet wurden.
+- Zudem können Sie die Open ID Connect- und OAuth-Open Source-Bibliotheken für die Integration in den v2.0-Endpunkt verwenden. Das v2.0-Protokoll sollte ohne wesentliche Änderungen mit vielen Open Source-Protokollbibliotheken kompatibel sein. Die Verfügbarkeit solcher Bibliotheken ist abhängig von der Sprache und der Plattform, und auf den Websites für [Open ID Connect](http://openid.net/connect/) und [OAuth 2.0](http://oauth.net/2/) steht eine Liste mit gängigen Implementierungen zur Verfügung. Im Folgenden sind die Open Source-Clientbibliotheken und -Beispiele aufgeführt, die mit dem v2.0-Endpunkt getestet wurden.
 
   - [Java WSO2 Identity Server](https://docs.wso2.com/display/IS500/Introducing+the+Identity+Server)
   - [Java Gluu Federation](https://github.com/GluuFederation/oxAuth)
@@ -90,7 +113,7 @@ Der v2.0-Endpunkt unterstützt nur Open ID Connect und OAuth 2.0. Allerdings wur
 - Der OpenID Connect-`end_sesssion_endpoint`
 - Das Erteilen von OAuth 2.0-Clientanmeldeinformationen
 
-Um den Umfang der im v2.0-Endpunkt unterstützten Protokollfunktionalität besser zu verstehen, lesen Sie unsere [OpenID Connect- und OAuth 2.0-Protokollreferenz](active-directory-v2-protocols.md).
+Informationen zum Umfang der vom v2.0-Endpunkt unterstützten Protokollfunktionen finden Sie in unserer [OpenID Connect- und OAuth 2.0-Protokollreferenz](active-directory-v2-protocols.md).
 
 ## Erweiterte Azure AD-Features für Entwickler
 Im Azure Active Directory-Dienst steht eine Reihe von Entwicklerfeatures zur Verfügung, die für den v2.0-Endpunkt noch nicht unterstützt werden. Dazu gehören:
@@ -98,4 +121,4 @@ Im Azure Active Directory-Dienst steht eine Reihe von Entwicklerfeatures zur Ver
 - Gruppenansprüche für Azure AD-Benutzer
 - Anwendungsrollen und Rollenansprüche
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -29,10 +29,10 @@ Wenn dem so ist, haben wir zwei informative Dokumente für Sie:
  - Unterscheidung zwischen operativen Daten, die von Anwendungen gelesen und geschrieben werden, und analytischen Daten, die zur Bereitstellung von Business Intelligence (BI) dienen, damit Sie die richtige Technologie für Ihre Anforderungen bestimmen können.
  - Eine kurze Übersicht über relationale Technologien.
  - Eine Einführung in die einzelnen NoSQL-Technologien von Azure: DocumentDB, Tabellenspeicher, HBase und HDInsight.
- - Ein Vergleich zwischen den NoSQL-Technologien und Azure SQL-Datenbank. 
- - Verwendung von DocumentDB im Vergleich zu Tabellenspeicher im Vergleich zu HBase im Vergleich zu HDInsight im Vergleich zu eingeben.
+ - Ein Vergleich zwischen den NoSQL-Technologien und Azure SQL-Datenbank.
+ - Verwendung von Azure DocumentDB im Vergleich zu Tabellenspeicher im Vergleich zu HBase im Vergleich zu HDInsight im Vergleich zu SQL-Datenbank.
 
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

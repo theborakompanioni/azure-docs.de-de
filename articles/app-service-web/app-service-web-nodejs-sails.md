@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="07/01/2016"
+	ms.date="07/19/2016"
 	ms.author="cephalin"/>
 
 # Bereitstellen einer Sails.js-Web-App in Azure App Service
@@ -22,11 +22,11 @@ In diesem Tutorial wird gezeigt, wie Sie eine Sails.js-Web-App in Azure App Serv
 
 ## Voraussetzungen
 
-- Node.js. Binärdateien für die Installation finden Sie [hier](https://nodejs.org/).
-- Sails.js. Eine Installationsanleitung finden Sie [hier](http://sailsjs.org/get-started).
+- [Node.js](https://nodejs.org/).
+- [Sails.js](http://sailsjs.org/get-started).
 - Ausreichende Kenntnisse zu Sails.js. Dieses Tutorial ist nicht dazu gedacht, Ihnen bei Problemen im Zusammenhang mit Sail.js im Allgemeinen zu helfen.
-- Git. Binärdateien für die Installation finden Sie [hier](http://www.git-scm.com/downloads).
-- Azure-Befehlszeilenschnittstelle. Eine Installationsanleitung finden Sie [hier](../xplat-cli-install.md).
+- [Git](http://www.git-scm.com/downloads).
+- [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
 - Ein Microsoft Azure-Konto. Wenn Sie kein Konto haben, können Sie sich [für eine kostenlose Testversion registrieren](/pricing/free-trial/?WT.mc_id=A261C142F) oder [Ihre Visual Studio-Abonnentenvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
 >[AZURE.NOTE] Unter [Azure App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) können Sie Azure App Service in Aktion erleben, bevor Sie sich für ein Azure-Konto registrieren. Dort können Sie sofort eine kurzzeitige Start-App in App Service erstellen – ohne Kreditkarte und weitere Verpflichtungen.
@@ -99,36 +99,21 @@ Folgen Sie diesen Schritten:
 
     Sie finden die Dokumentation für diese Konfigurationseinstellungen in der [Sails.js-Dokumentation](http://sailsjs.org/documentation/reference/configuration/sails-config).
 
-    Als Nächstes müssen Sie sicherstellen, dass [Grunt](https://www.npmjs.com/package/grunt) mit den Netzlaufwerken von Azure kompatibel ist. Zum Zeitpunkt, als dieser Artikel verfasst wurde, konnte Grunt den Fehler [ENOTSUP: operation not supported on socket](https://github.com/isaacs/node-glob/issues/205) erzeugen, da aktuell ein veraltetes [Glob](https://www.npmjs.com/package/glob)-Paket (v3.1.21) verwendet wird, das Netzlaufwerke nicht unterstützt. In den nächsten Schritten wird gezeigt, wie Sie Grunt für die Verwendung von [Glob v5.0.14 oder höher](https://github.com/isaacs/node-glob/commit/bf3381e90e283624fbd652835e1aefa55d45e2c7) einrichten.
+    Als Nächstes müssen Sie sicherstellen, dass [Grunt](https://www.npmjs.com/package/grunt) mit den Netzlaufwerken von Azure kompatibel ist. Grunt-Versionen vor 1.0.0 verwenden ein veraltetes [Globpaket](https://www.npmjs.com/package/glob) (vor 5.0.14), das keine Netzlaufwerke unterstützt.
 
-3. Da `npm install` bereits ausgeführt wurde, als Ihre App erstellt wurde, generieren Sie „npm-shrinkwrap.json“ im Stammverzeichnis des Projekts:
+3. Öffnen Sie „Package.json“, ändern Sie die `grunt`-Version in `1.0.0`, und entfernen Sie alle `grunt-*`-Pakete. Ihre `dependencies`-Eigenschaft sollte wie folgt aussehen:
 
-        npm shrinkwrap
-
-4. Öffnen Sie „npm-shrinkwrap.json“, suchen Sie den JSON-Code für `"grunt":`, und fügen Sie dann die Abhängigkeit für die gewünschte Glob-Version hinzu. Der fertige JSON-Code sollte wie folgt aussehen:
-
-        "grunt": {
-            "version": "0.4.5",
-            "from": "grunt@0.4.5",
-            "resolved": "https://registry.npmjs.org/grunt/-/grunt-0.4.5.tgz",
-            "dependencies": {
-                "glob": {
-                    "version": "5.0.14",
-                    "from": "glob@5.0.14",
-                    "resolved": "https://registry.npmjs.org/glob/-/glob-5.0.14.tgz"
-                }
-            }
+        "dependencies": {
+            "ejs": "<leave-as-is>",
+            "grunt": "1.0.0",
+            "include-all": "<leave-as-is>",
+            "rc": "<leave-as-is>",
+            "sails": "<leave-as-is>",
+            "sails-disk": "<leave-as-is>",
+            "sails-sqlserver": "<leave-as-is>"
         },
 
-5. Suchen Sie mit `"glob":` alle Verweise auf Glob. Wenn ein Verweis v3.1.21 oder niedriger ist, ändern Sie den JSON-Code in:
-
-        "glob": {
-            "version": "5.0.14",
-            "from": "glob@5.0.14",
-            "resolved": "https://registry.npmjs.org/glob/-/glob-5.0.14.tgz"
-        }
-
-6. Speichern Sie die Änderungen, und testen Sie die Änderungen, um sicherzustellen, dass Ihre App noch lokal ausgeführt wird:
+6. Speichern und testen Sie Ihre Änderungen, um sicherzustellen, dass Ihre App noch lokal ausgeführt wird. Löschen Sie hierzu den Ordner `node_modules`, und führen Sie dann Folgendes aus:
 
         npm install
         sails lift
@@ -154,7 +139,7 @@ Wenn Ihre Sails.js-Anwendung aus irgendeinem Grund in App Service ausfällt, suc
                 .-..-.
 
     Sails              <|    .-..-.
-    v0.12.1             |\
+    v0.12.3             |\
                         /|.\
                         / || \
                     ,'  |'  \
@@ -167,27 +152,19 @@ Wenn Ihre Sails.js-Anwendung aus irgendeinem Grund in App Service ausfällt, suc
     To see your app, visit http://localhost:\\.\pipe\a76e8111-663e-449d-956e-5c5deff2d304
     To shut down Sails, press <CTRL> + C at any time.
 
+Die Granularität der stdout-Protokolle kann in der Datei [config/log.js](http://sailsjs.org/#!/documentation/concepts/Logging) gesteuert werden.
+
 ## Herstellen einer Verbindung mit einer Datenbank in Azure
 
-Für eine Verbindung mit einer Datenbank in Azure erstellen Sie die Datenbank Ihrer Wahl in Azure, z. B. Azure SQL-Datenbank, MySQL, MongoDB, Azure (Redis) Cache usw., und verwenden den entsprechenden [Datenspeicheradapter](https://github.com/balderdashy/sails#compatibility), um die Verbindung herzustellen. Mit den Schritten in diesem Abschnitt wird gezeigt, wie eine Verbindung mit einer Azure SQL-Datenbank hergestellt wird.
+Erstellen Sie zum Herstellen einer Verbindung mit einer Datenbank in Azure die gewünschte Datenbank in Azure (Azure SQL-Datenbank, MySQL, MongoDB, Azure (Redis) Cache oder Ähnliches), und verwenden Sie den entsprechenden [Datenspeicheradapter](https://github.com/balderdashy/sails#compatibility), um die Verbindung herzustellen. Mit den Schritten in diesem Abschnitt wird gezeigt, wie eine Verbindung mit einer Azure SQL-Datenbank hergestellt wird.
 
-1. Führen Sie das Tutorial [hier](../sql-database/sql-database-get-started.md) aus, um eine leere Azure SQL-Datenbank auf einer neuen SQL Server-Instanz zu erstellen. Die Standardeinstellungen der Firewall ermöglichen es, dass Azure-Dienste (z. B. App Service) eine Verbindung herstellen.
+1. Führen Sie [dieses Tutorial](../sql-database/sql-database-get-started.md) aus, um eine leere Azure SQL-Datenbank in einer neuen SQL Server-Instanz zu erstellen. Die Standardeinstellungen der Firewall ermöglichen es, dass Azure-Dienste (z. B. App Service) eine Verbindung herstellen.
 
 2. Installieren Sie über das Befehlszeilenterminal den SQL Server-Adapter:
 
         npm install sails-sqlserver --save
 
-    Da Sie „package.json“ geändert haben, müssen Sie „npm-shrinkwrap.json“ neu generieren. Sie machen dies als Nächstes.
-    
-3. Löschen Sie das Verzeichnis „node\_modules/“.
-
-4. Führen Sie `npm shrinkwrap` aus.
-
-5. Öffnen Sie „npm-shrinkwrap.json“ erneut, und aktualisieren Sie die `glob`-Paketversionen wie im vorherigen Abschnitt.
-
-    Jetzt zurück zur Hauptaufgabe.
-        
-3. Öffnen Sie „config/connections.js“, und fügen Sie der Liste der Adapter den folgenden JSON-Code hinzu:
+3. Öffnen Sie „config/connections.js“, und fügen Sie der Liste das folgende Verbindungsobjekt hinzu:
 
         sqlserver: {
             adapter: 'sails-sqlserver',
@@ -200,42 +177,75 @@ Für eine Verbindung mit einer Datenbank in Azure erstellen Sie die Datenbank Ih
             }
         },
 
-4. Für jede Umgebungsvariable (`process.env.*`) müssen Sie dies in App Service festlegen. Führen Sie dazu den folgenden Befehl über das Terminal aus:
+4. Dies muss in App Service für jede Umgebungsvariable (`process.env.*`) festgelegt werden. Führen Sie dazu den folgenden Befehl über das Terminal aus:
 
         azure site appsetting add dbuser="<database server administrator>"
         azure site appsetting add dbpassword="<database server password>"
         azure site appsetting add sqlserver="<database server name>.database.windows.net"
         azure site appsetting add dbname="<database name>"
         
-4. Öffnen Sie „config/env/production.js“, um Ihre Produktionsumgebung zu konfigurieren, und legen Sie `connection` und `migrate` im JSON-Objekt `models` fest:
+    Durch die Platzierung Ihrer Einstellungen in den Azure-App-Einstellungen bleiben vertrauliche Daten von Ihrer Quellcodeverwaltung (Git) getrennt. Als Nächstes konfigurieren Sie Ihre Entwicklungsumgebung für die Verwendung der gleichen Verbindungsinformationen.
+
+4. Öffnen Sie „config/local.js“, und fügen Sie das folgende Verbindungsobjekt hinzu:
+
+        connections: {
+            sqlserver: {
+                user: "<database server administrator>",
+                password: "<database server password>",
+                host: "<database server name>.database.windows.net", 
+                database: "<database name>",
+            },
+        },
+    
+    Diese Konfiguration überschreibt die Einstellungen in der Datei „config/connections.js“ für die lokale Umgebung. Die Datei wird durch die standardmäßige GITIGNORE-Datei in Ihrem Projekt ausgeschlossen und somit nicht in Git gespeichert. Nun können Sie sowohl über Ihre Azure-Web-App als auch über Ihre lokale Entwicklungsumgebung eine Verbindung mit Ihrer Azure SQL-Datenbank herstellen.
+
+4. Öffnen Sie „config/env/production.js“, um Ihre Produktionsumgebung zu konfigurieren, und fügen Sie das folgende `models`-Objekt hinzu:
+
+        models: {
+            connection: 'sqlserver',
+            migrate: 'safe'
+        },
+
+4. Öffnen Sie „config/env/development.js“, um Ihre Entwicklungsumgebung zu konfigurieren, und fügen Sie das folgende `models`-Objekt hinzu:
 
         models: {
             connection: 'sqlserver',
             migrate: 'alter'
         },
 
-4. [Generieren](http://sailsjs.org/documentation/reference/command-line-interface/sails-generate) Sie über das Terminal wie gewohnt eine Sails.js-[Blaupausen-API](http://sailsjs.org/documentation/concepts/blueprints). Beispiel:
+    `migrate: 'alter'` ermöglicht die Verwendung von Datenbankmigrationsfeatures zum problemlosen Erstellen und Aktualisieren der Datenbanktabellen in Ihrer Azure SQL-Datenbank. Für die Azure-(Produktions-)Umgebung wird allerdings `migrate: 'safe'` verwendet, da „Sails.js“ die Verwendung von `migrate: 'alter'` in einer Produktionsumgebung nicht zulässt. (Weitere Informationen finden Sie in der [Sails.js-Dokumentation](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings)).
+
+4. [Generieren](http://sailsjs.org/documentation/reference/command-line-interface/sails-generate) Sie über das Terminal wie gewohnt eine Sails.js-[Blaupausen-API](http://sailsjs.org/documentation/concepts/blueprints). Führen Sie dann `sails lift` aus, um die Datenbank mit Sails.js-Datenbankmigration zu erstellen. Zum Beispiel:
 
          sails generate api mywidget
-     
-5. Speichern Sie alle Änderungen, übertragen Sie die Änderungen in Azure, und navigieren Sie zu Ihrer App, um sicherzustellen, dass sie weiterhin funktioniert.
+         sails lift
+
+    Das durch diesen Befehl erstellte `mywidget`-Modell ist zwar leer, wir können damit jedoch zeigen, dass eine Verbindung mit der Datenbank besteht. Wenn Sie `sails lift` ausführen, werden die fehlenden Tabellen für die von Ihrer App verwendeten Modelle erstellt.
+
+6. Greifen Sie über den Browser auf die soeben erstellte Blaupausen-API zu. Beispiel:
+
+        http://localhost:1337/mywidget/create
+    
+    Die API sollte den erstellen Eintrag im Browserfenster zurückgeben. So wissen Sie, dass die Datenbank erfolgreich erstellt wurde.
+
+        {"id":1,"createdAt":"2016-03-28T23:08:01.000Z","updatedAt":"2016-03-28T23:08:01.000Z"}
+
+5. Übertragen Sie Ihre Änderungen mittel Push an Azure, und navigieren Sie zu Ihrer App, um sich zu vergewissern, dass sie weiterhin funktioniert.
 
         git add .
         git commit -m "<your commit message>"
         git push azure master
         azure site browse
 
-6. Greifen Sie nun auf die Blaupausen-API zu, die Sie gerade im Browser erstellt haben. Beispiel:
+6. Greifen Sie auf die Blaupausen-API Ihrer Azure-Web-App zu. Zum Beispiel:
 
-        http://<appname>.azurewebsites.net/widget/create
-    
-    Die API sollte Ihnen den erstellten Eintrag im Browserfenster zurückgeben:
-    
-        {"id":1,"createdAt":"2016-03-28T23:08:01.000Z","updatedAt":"2016-03-28T23:08:01.000Z"}
+        http://<appname>.azurewebsites.net/mywidget/create
+
+    Wenn die API einen weiteren neuen Eintrag zurückgibt, kommuniziert Ihre Azure-Web-App mit Ihrer Azure SQL-Datenbank.
 
 ## Weitere Ressourcen
 
 - [Erste Schritte mit Node.js-Web-Apps in Azure App Service](app-service-web-nodejs-get-started.md)
 - [Verwenden von Node.js-Modulen mit Azure-Anwendungen](../nodejs-use-node-modules-azure-apps.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

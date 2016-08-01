@@ -252,7 +252,7 @@ Gehen Sie wie folgt vor, um die Verbindung zu testen:
 
 1. Testen Sie die Verbindung mithilfe des Hilfsprogramms **sqlcmd**. Das folgende Skript stellt beispielsweise über den Listener eine **sqlcmd**-Verbindung mit Windows-Authentifizierung mit dem primären Replikat her:
 
-        sqlmd -S <listenerName> -E
+        sqlcmd -S <listenerName> -E
 
 Die sqlcmd-Verbindung wird automatisch mit der SQL Server-Instanz hergestellt, die das primäre Replikat hostet.
 
@@ -265,4 +265,4 @@ Für Verfügbarkeitsgruppenlistener in Azure mit internem Load Balancer gelten f
 - Bei Verwendung eines internen Load Balancers erfolgt der Zugriff auf den Listener nur innerhalb des gleichen virtuellen Netzwerks.
  
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

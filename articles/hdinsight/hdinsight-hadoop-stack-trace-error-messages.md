@@ -14,24 +14,28 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
 	ms.workload="big-data"
-	ms.date="03/21/2016"
+	ms.date="07/14/2016"
 	ms.author="rashimg;jgao"/>
 
-# Hadoop-Stapelüberwachungsfehler in HDInsight: Index der Artikel zur Problembehandlung
+# Übersicht über Artikel zur Problembehandlung für Hadoop in HDInsight
 
-Verwenden Sie diesen Index von Hadoop-Stapelüberwachungsfehlern zur Problembehandlung in HDInsight. Die Artikel sind nach Art der Fehlermeldung unterteilt.
+Die Artikel sind nach Art der Fehler unterteilt.
 
-## Fehlermeldungen aufgrund von ungenügendem Speicher
+## Fehler durch ungenügenden Arbeitsspeicher
+
 * [Beheben eines Fehlers aufgrund ungenügenden Arbeitsspeichers (Out of Memory, OOM) mit Hive Einstellungen](hdinsight-hadoop-hive-out-of-memory-error-oom.md): Beheben eines Fehlers aufgrund ungenügenden Arbeitsspeichers mithilfe einer Hive-Abfrage. Das Kundenszenario enthält eine Abfrage über viele große Tabellen.
 
-> [AZURE.NOTE] Weitere Artikel zur Problembehandlung bei Stapelüberwachungsfehlern sind in Kürze verfügbar.
+## Leistung von Hive-Abfragen
 
-## Weitere Artikel zur Problembehandlung in HDInsight
+* [Optimieren von Hive-Abfragen für Hadoop in HDInsight](hdinsight-hadoop-optimize-hive-query.md): Dieser Artikel erläutert die gängigsten Methoden zum Optimieren der Hive-Leistung, die Sie auf Hive-Abfragen anwenden können.
+* [Troubleshoot Hive query performance issues in HDInsight Hadoop cluster](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/) (Problembehandlung für Leistungsprobleme bei Hive-Abfragen in einem HDInsight Hadoop-Cluster).
+
+## Weitere Artikel zur Problembehandlung
 
 * [Informationen zur Verwendung von HDInsight unter Linux](hdinsight-hadoop-linux-information.md)
 * [Debuggen von Hadoop in HDInsight: Anzeigen von Protokollen und Verstehen von Fehlermeldungen](hdinsight-debug-jobs.md)
-* [Programmgesteuerter Zugriff auf YARN-Anwendungsprotokolle in Hadoop in HDInsight](hdinsight-hadoop-access-yarn-app-logs.md)
-* [Sammeln von Heapdumps im Blobspeicher zum Debuggen und Analysieren von Hadoop-Diensten](hdinsight-hadoop-collect-debug-heap-dumps.md)
+* [Zugriff auf YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Aktivieren von Heapdumps für Hadoop-Dienste auf Linux-basierten HDInsight-Clustern](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [Versionshinweise zu Hadoop-Komponenten in Azure HDInsight](hdinsight-release-notes.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Ressourcen, Rollen und Zugriffssteuerung in Application Insights"
-	description="Besitze, Mitwirkende und Leser; für die gewonnenen Unternehmensinformationen."
+	description="";Besitzer";, ";Mitwirkende"; und ";Leser"; für die gewonnenen Unternehmensinformationen."
 	services="application-insights"
     documentationCenter=""
 	authors="alancameronwills"
@@ -104,8 +104,8 @@ Wenn der gewünschte Benutzer nicht im Verzeichnis enthalten ist, können Sie je
 <!--Link references-->
 
 [account]: https://account.microsoft.com
-[group]: ../azure-portal/resource-group-portal.md
+[group]: ../resource-group-overview.md
 [portal]: https://portal.azure.com/
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

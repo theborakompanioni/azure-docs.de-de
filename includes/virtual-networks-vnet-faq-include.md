@@ -16,7 +16,7 @@ Verwenden Sie VNets für Folgendes:
 
 - Unterstützung von Hybrid Cloud-Szenarios
 									
-	VNets bieten flexible Möglichkeiten, verschiedene Hybrid Cloud-Szenarios zu unterstützen. Sie können cloudbasierte Anwendungen auf sichere Weise mit beliebigen lokalen Systemen wie z. B. Mainframes oder Unix-Systemen verbinden.
+	VNets bieten flexible Möglichkeiten, verschiedene Hybrid Cloud-Szenarios zu unterstützen. Sie können cloudbasierte Anwendungen auf sichere Weise mit beliebigen lokalen Systemen wie z. B. Mainframes oder Unix-Systemen verbinden.
 
 ### Wie finde ich heraus, ob ich ein virtuelles Netzwerk benötige?
 
@@ -28,7 +28,7 @@ Auf der Webseite [Dokumentation zu virtuellen Netzwerken](https://azure.microsof
 
 ### Welche Dienste können in VNets genutzt werden?
 
-VNets können mit einer Vielzahl unterschiedlicher Azure-Dienste, z. B. Cloud Services (PaaS), Virtual Machines und Web-Apps, verwendet werden. Es gibt jedoch auch einige Dienste, die in einem VNet nicht unterstützt werden. Überprüfen Sie den spezifischen Dienst, den Sie verwenden möchten, und vergewissern Sie sich, ob er kompatibel ist.
+VNets können mit einer Vielzahl unterschiedlicher Azure-Dienste, z. B. Cloud Services (PaaS), Virtual Machines und Web-Apps, verwendet werden. Es gibt jedoch auch einige Dienste, die in einem VNet nicht unterstützt werden. Überprüfen Sie den spezifischen Dienst, den Sie verwenden möchten, und vergewissern Sie sich, ob er kompatibel ist.
 
 ### Können VNets ohne standortübergreifende Konnektivität verwendet werden?
 
@@ -100,7 +100,7 @@ Nein.
 
 Ja. Subnetze können VNets jederzeit hinzugefügt werden, solange die Subnetzadresse nicht Teil eines anderen Subnetzes im VNet ist.
 
-### Kann die Größe des VNet nach dessen Erstellung geändert werden?
+### Kann die Größe des Subnetzes nach dessen Erstellung geändert werden?
 
 Sie können mit PowerShell-Cmdlets oder der NETCFG-Datei ein Subnetz hinzufügen, entfernen, erweitern oder verkleinern, wenn in diesem Subnetz keine virtuellen Computer oder Dienste bereitgestellt werden. Sie können auch beliebige Präfixe hinzufügen, entfernen, erweitern oder verkleinern, solange die Subnetze, die virtuelle Computer oder Dienste enthalten, nicht von der Änderung betroffen sind.
 
@@ -136,7 +136,7 @@ Ja. Sie haben die Möglichkeit, IP-Adressen von DNS-Servern in den Einstellungen
 
 ### Wie viele DNS-Server können angegeben werden?
 
-Sie können bis zu 12 DNS-Server angeben.
+Sie können bis zu 12 DNS-Server angeben.
 
 ### Können DNS-Server geändert werden, nachdem das Netzwerk erstellt wurde?
 
@@ -147,7 +147,7 @@ Ja. Sie können die Liste der DNS-Server für das VNet jederzeit ändern. Wenn S
 
 Der von Azure bereitgestellte DNS-Dienst ist ein von Microsoft angebotener mehrinstanzenfähiger DNS-Dienst. In Azure werden alle Ihre virtuellen Computer und Rolleninstanzen in diesem Dienst registriert. Dieser Dienst stellt die Namensauflösung nach dem Hostnamen für virtuelle Computer und Rolleninstanzen, die im gleichen Clouddienst enthalten sind, und nach dem FQDN für virtuelle Computer und Rolleninstanzen im gleichen VNet zur Verfügung.
 
-> [AZURE.NOTE] Die mandantenübergreifende Namensauflösung mithilfe des von Azure bereitgestellten DNS-Diensts ist derzeit auf die ersten 100 Clouddienste im virtuellen Netzwerk beschränkt. Diese Einschränkung gilt nicht, wenn Sie einen eigenen DNS-Server verwenden.
+> [AZURE.NOTE] Die mandantenübergreifende Namensauflösung mithilfe des von Azure bereitgestellten DNS-Diensts ist derzeit auf die ersten 100 Clouddienste im virtuellen Netzwerk beschränkt. Diese Einschränkung gilt nicht, wenn Sie einen eigenen DNS-Server verwenden.
 
 ### Können DNS-Einstellungen für einzelne virtuelle Computer und Dienste überschrieben werden?
 
@@ -270,4 +270,4 @@ Ja. VNets und die standortübergreifende Konnektivität können mithilfe von RES
 
 Ja. Sie können PowerShell und Befehlszeilentools für zahlreiche Plattformen verwenden. Weitere Informationen finden Sie [hier](http://go.microsoft.com/fwlink/?LinkId=317721).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0720_2016-->

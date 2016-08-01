@@ -19,7 +19,7 @@
 
 # Konsistenzebenen in DocumentDB
 
-DocumentDB ist von Grund auf für eine globale Verteilung konzipiert. Ziel ist das Bieten vorhersehbarer Garantien niedriger Latenz, einer SLA mit einer Verfügbarkeit von 99,99% und mehrerer überlegt definierter gelockerter Konsistenzmodelle. DocumentDB bietet derzeit vier Konsistenzebenen: STARK, BEGRENZTE VERALTUNG, SITZUNG und LETZTLICH. Neben den Konsistenzmodellen **STARK** und **LETZTLICH**, die meist von anderen NoSQL-Datenbanken geboten werden, bietet DocumentDB auch zwei sorgfältig programmierte und operationalisierte Modelle, **BEGRENZTE VERALTUNG** und **SITZUNG**, die ihren Nutzen in praktischen Anwendungsfällen unter Beweis gestellt haben. Diese vier Konsistenzebenen ermöglichen Ihnen, fundierte Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz zu finden.
+Azure DocumentDB ist von Grund auf im Hinblick auf eine globale Verteilung konzipiert. Ziel ist das Bieten vorhersehbarer Garantien niedriger Latenz, einer SLA mit einer Verfügbarkeit von 99,99% und mehrerer überlegt definierter gelockerter Konsistenzmodelle. DocumentDB bietet derzeit vier Konsistenzebenen: STARK, BEGRENZTE VERALTUNG, SITZUNG und LETZTLICH. Neben den Konsistenzmodellen **STARK** und **LETZTLICH**, die meist von anderen NoSQL-Datenbanken geboten werden, bietet DocumentDB auch zwei sorgfältig programmierte und operationalisierte Modelle, **BEGRENZTE VERALTUNG** und **SITZUNG**, die ihren Nutzen in praktischen Anwendungsfällen unter Beweis gestellt haben. Diese vier Konsistenzebenen ermöglichen Ihnen, fundierte Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz zu finden.
 
 ## Umfang der Konsistenz
 
@@ -33,38 +33,38 @@ Sie können eine Standardkonsistenzebene für Ihr Datenbankkonto konfigurieren, 
 
 **STARK (Strong)**:
 
-- STARK bietet garantierte [Linearisierbarkeit](https://aphyr.com/posts/313-strong-consistency-models), was heißt, dass die Lesevorgänge auf jeden Fall die neueste Version eines Dokuments zurückgeben. 
-- Mit der Konsistenzebene STARK wird gewährleistet, dass ein Schreibvorgang erst sichtbar ist, nachdem er dauerhaft vom Mehrheitsquorum der Replikate bestätigt wurde. Ein Schreibvorgang wird entweder synchron dauerhaft sowohl vom primären Replikat als auch vom Quorum der sekundären Replikate bestätigt oder abgebrochen. Ein Lesevorgang wird immer von dem Mehrheitslesequorum bestätigt. Ein Client kann niemals einen unbestätigten oder unvollständigen Schreibvorgang sehen, wodurch gewährleistet wird, dass er immer auf die neuesten bestätigten Schreibvorgänge zugreift. 
-- DocumentDB-Konten, die mit dem Konsistenzmodell STARK konfiguriert sind, kann nur eine Azure-Region zugeordnet werden. 
+- STARK bietet garantierte [Linearisierbarkeit](https://aphyr.com/posts/313-strong-consistency-models), was heißt, dass die Lesevorgänge auf jeden Fall die neueste Version eines Dokuments zurückgeben.
+- Mit der Konsistenzebene STARK wird gewährleistet, dass ein Schreibvorgang erst sichtbar ist, nachdem er dauerhaft vom Mehrheitsquorum der Replikate bestätigt wurde. Ein Schreibvorgang wird entweder synchron dauerhaft sowohl vom primären Replikat als auch vom Quorum der sekundären Replikate bestätigt oder abgebrochen. Ein Lesevorgang wird immer von dem Mehrheitslesequorum bestätigt. Ein Client kann niemals einen unbestätigten oder unvollständigen Schreibvorgang sehen, wodurch gewährleistet wird, dass er immer auf die neuesten bestätigten Schreibvorgänge zugreift.
+- DocumentDB-Konten, die mit dem Konsistenzmodell STARK konfiguriert sind, kann nur eine Azure-Region zugeordnet werden.
 - Die Kosten eines Lesevorgangs (im Sinne genutzter [Anforderungseinheiten](documentdb-request-units.md)) mit der Konsistenzebene STARK sind höher als bei SITZUNG und LETZTLICH, jedoch identisch mit BEGRENZTE VERALTUNG.
  
 
 **Begrenzte Veraltung (Bounded staleness)**:
 
-- Die Konsistenzebene BEGRENZTE VERALTUNG garantiert, dass Lesevorgänge hinter Schreibvorgängen höchstens *K* Versionen oder Präfixe eines Dokuments oder mit dem Zeitintervall *t* zurückbleiben. 
-- Bei Wahl von BEGRENZTE VERALTUNG kann „Veraltung“ deshalb auf zwei Weisen konfiguriert werden: 
+- Die Konsistenzebene BEGRENZTE VERALTUNG garantiert, dass Lesevorgänge hinter Schreibvorgängen höchstens *K* Versionen oder Präfixe eines Dokuments oder mit dem Zeitintervall *t* zurückbleiben.
+- Bei Wahl von BEGRENZTE VERALTUNG kann „Veraltung“ deshalb auf zwei Weisen konfiguriert werden:
     - Anzahl der *K* Versionen des Dokuments, um die die Lesevorgänge hinter den Schreibvorgängen zurückbleiben
-    - Zeitintervall *t* 
-- BEGRENZTE VERALTUNG bietet eine vollständige globale Reihenfolge außer innerhalb des „Veraltungsfensters“. Beachten Sie, dass die monotonen Lesegarantien innerhalb einer Region sowohl innerhalb als auch außerhalb des „Veraltungsfensters“ vorliegen. 
-- BEGRENZTE VERALTUNG bietet eine stärkere Konsistenzgarantie als die Konsistenzebenen SITZUNG und LETZTLICH. Für global verteilte Anwendungen wird empfohlen, BEGRENZTE VERALTUNG in Szenarien zu nutzen, in denen Sie eine hohe Konsistenz, aber auch eine Verfügbarkeit von 99,99% und niedrige Latenz wünschen. 
-- DocumentDB-Konten, die mit der Konsistenzebene BEGRENZTE VERALTUNG konfiguriert sind, kann eine beliebige Anzahl von Azure-Regionen zugeordnet werden. 
+    - Zeitintervall *t*
+- BEGRENZTE VERALTUNG bietet eine vollständige globale Reihenfolge außer innerhalb des „Veraltungsfensters“. Beachten Sie, dass die monotonen Lesegarantien innerhalb einer Region sowohl innerhalb als auch außerhalb des „Veraltungsfensters“ vorliegen.
+- BEGRENZTE VERALTUNG bietet eine stärkere Konsistenzgarantie als die Konsistenzebenen SITZUNG und LETZTLICH. Für global verteilte Anwendungen wird empfohlen, BEGRENZTE VERALTUNG in Szenarien zu nutzen, in denen Sie eine hohe Konsistenz, aber auch eine Verfügbarkeit von 99,99% und niedrige Latenz wünschen.
+- DocumentDB-Konten, die mit der Konsistenzebene BEGRENZTE VERALTUNG konfiguriert sind, kann eine beliebige Anzahl von Azure-Regionen zugeordnet werden.
 - Die Kosten eines Lesevorgangs (im Sinne genutzter Anforderungseinheiten) mit der Konsistenzebene STARK sind höher als bei SITZUNG und LETZTLICH, jedoch identisch mit BEGRENZTE VERALTUNG.
 
 **Sitzung (Session)**:
 
-- Anders als die globalen Konsistenzmodelle, die von den Konsistenzebenen STARK und BEGRENZTE VERALTUNG geboten werden, ist die Konsistenzebene SITZUNG auf eine bestimmte Clientsitzung beschränkt. 
-- Die Konsistenzebene SITZUNG ist ideal für alle Szenarien, an denen eine Geräte- oder Benutzersitzung beteiligt ist, da sie monotone Lese- und Schreibvorgänge garantiert und RYW-Garantien bietet (Read Your Own Writes, eigene Schreibvorgänge lesen). 
-- Die Konsistenzebene SITZUNG bietet vorhersagbare Konsistenz für eine Sitzung, einen maximalen Lesedurchsatz und Lese- und Schreibvorgänge mit niedrigster Latenz. 
-- DocumentDB-Konten, die mit der Konsistenzebene SITZUNG konfiguriert sind, kann eine beliebige Anzahl von Azure-Regionen zugeordnet werden. 
+- Anders als die globalen Konsistenzmodelle, die von den Konsistenzebenen STARK und BEGRENZTE VERALTUNG geboten werden, ist die Konsistenzebene SITZUNG auf eine bestimmte Clientsitzung beschränkt.
+- Die Konsistenzebene SITZUNG ist ideal für alle Szenarien, an denen eine Geräte- oder Benutzersitzung beteiligt ist, da sie monotone Lese- und Schreibvorgänge garantiert und RYW-Garantien bietet (Read Your Own Writes, eigene Schreibvorgänge lesen).
+- Die Konsistenzebene SITZUNG bietet vorhersagbare Konsistenz für eine Sitzung, einen maximalen Lesedurchsatz und Lese- und Schreibvorgänge mit niedrigster Latenz.
+- DocumentDB-Konten, die mit der Konsistenzebene SITZUNG konfiguriert sind, kann eine beliebige Anzahl von Azure-Regionen zugeordnet werden.
 - Die Kosten für einen Lesevorgang (hinsichtlich genutzter Anforderungseinheiten) mit der Konsistenzebene SITZUNG sind niedriger als bei STARK und BEGRENZTE VERALTUNG, aber höher als bei LETZTLICH.
  
 
 **Letztlich (Eventual)**:
 
-- Die Konsistenzebene LETZTLICH garantiert bei Fehlen weiterer Schreibvorgänge, dass es bei den Replikaten innerhalb der Gruppe letztendlich zur Konvergenz kommt. 
+- Die Konsistenzebene LETZTLICH garantiert bei Fehlen weiterer Schreibvorgänge, dass es bei den Replikaten innerhalb der Gruppe letztendlich zur Konvergenz kommt.
 - Die Konsistenzebene LETZTLICH stellt die schwächste Form von Konsistenz dar, bei der ein Client ggf. ältere Werte als die ihm zuvor angezeigten abruft.
 - Die Konsistenzebene LETZTLICH bietet die schwächste Lesekonsistenz, jedoch die niedrigste Latenz für Lese- und Schreibvorgänge.
-- DocumentDB-Konten, die mit der Konsistenzebene LETZTLICH konfiguriert sind, kann eine beliebige Anzahl von Azure-Regionen zugeordnet werden. 
+- DocumentDB-Konten, die mit der Konsistenzebene LETZTLICH konfiguriert sind, kann eine beliebige Anzahl von Azure-Regionen zugeordnet werden.
 - Die Kosten für einen Lesevorgang (hinsichtlich genutzter Anforderungseinheiten) mit der Konsistenzebene LETZTLICH sind die niedrigsten aller Konsistenzebenen von DocumentDB.
 
 
@@ -122,4 +122,4 @@ Wenn Sie weitere Informationen zu Konsistenzebenen und deren Vor- und Nachteile 
 
 [1]: ./media/documentdb-consistency-levels/consistency-tradeoffs.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

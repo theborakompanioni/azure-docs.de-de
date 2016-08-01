@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/18/2016"
+   ms.date="07/19/2016"
    ms.author="tomfitz"/>
 
 # Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals
@@ -24,16 +24,13 @@
 - [Portal](resource-group-create-service-principal-portal.md)
 
 
-Bei Verwendung eines automatisierten Prozesses oder einer automatisierten Anwendung, der bzw. die auf Ressourcen zugreifen oder diese ändern muss, müssen Sie eine Active Directory-Anwendung einrichten und ihr die erforderlichen Berechtigungen zuweisen. In diesem Thema erfahren Sie, wie diese Schritte über das Portal ausgeführt werden. Derzeit müssen Sie das klassische Portal verwenden, um eine neue Active Directory-Anwendung zu erstellen, und dann zum Azure-Portal wechseln, um der Anwendung eine Rolle zuzuweisen.
+Bei Verwendung einer Anwendung, die auf Ressourcen zugreifen oder diese ändern muss, müssen Sie eine Active Directory-Anwendung (AD) einrichten und ihr die erforderlichen Berechtigungen zuweisen. In diesem Thema erfahren Sie, wie diese Schritte über das Portal ausgeführt werden. Derzeit müssen Sie das klassische Portal verwenden, um eine neue Active Directory-Anwendung zu erstellen, und dann zum Azure-Portal wechseln, um der Anwendung eine Rolle zuzuweisen.
 
-Es gibt zwei Authentifizierungsoptionen für die Active Directory-Anwendung:
-
-1. Erstellen einer ID und eines Schlüssel für die Anwendung und Bereitstellen dieser Anmeldeinformationen, wenn die Anwendung ausgeführt wird. Verwenden Sie diese Option für automatisierte Prozesse, die ohne Benutzereingriffe ausgeführt werden.
-2. Ermöglichen der Anmeldung bei Azure über Ihre Anwendung und anschließendes Zugreifen auf Ressourcen mithilfe dieser Anmeldeinformationen im Namen des Benutzers. Verwenden Sie diese Option für Clientanwendungen, die von einem Benutzer ausgeführt werden.
+> [AZURE.NOTE] Unter Umständen ist es für Sie einfacher, die AD-Anwendung und den Dienstprinzipal über die [PowerShell](resource-group-authenticate-service-principal.md) oder die [Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md) einzurichten. Dies gilt besonders, wenn Sie für die Authentifizierung ein Zertifikat verwenden möchten. In diesem Thema wird die Verwendung eines Zertifikats nicht beschrieben.
 
 Eine Erläuterung der Active Directory-Konzepte finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](./active-directory/active-directory-application-objects.md). Weitere Informationen zur Active Directory-Authentifizierung finden Sie unter [Authentifizierungsszenarien für Azure AD](./active-directory/active-directory-authentication-scenarios.md).
 
-Ausführliche Informationen zum Integrieren einer Anwendung für die Ressourcenverwaltung in Azure finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](resource-manager-api-authentication.md).
+Ausführliche Schritte zum Integrieren einer Anwendung in Azure zur Verwaltung von Ressourcen finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](resource-manager-api-authentication.md).
 
 ## Erstellen einer Active Directory-Anwendung
 
@@ -117,7 +114,7 @@ Oder mit der Azure-Befehlszeilenschnittstelle:
 
 ## Festlegen der delegierten Berechtigungen
 
-Wenn Ihre Anwendung im Auftrag eines angemeldeten Benutzers auf Ressourcen zugreift, müssen Sie der Anwendung die delegierten Berechtigungen für den Zugriff auf andere Anwendungen gewähren. Dieser Schritt wird auf der Registerkarte **Konfigurieren** im Abschnitt **Berechtigungen für andere Anwendungen** durchgeführt. Eine delegierte Berechtigung ist standardmäßig bereits für die Azure Active Directory-Instanz aktiviert. Lassen Sie diese delegierte Berechtigung unverändert.
+Wenn Ihre Anwendung im Auftrag eines angemeldeten Benutzers auf Ressourcen zugreift, müssen Sie der Anwendung die delegierten Berechtigungen für den Zugriff auf andere Anwendungen gewähren. Dieser Schritt wird auf der Registerkarte **Konfigurieren** im Abschnitt **Berechtigungen für andere Anwendungen** ausgeführt. Eine delegierte Berechtigung ist standardmäßig bereits für die Azure Active Directory-Instanz aktiviert. Lassen Sie diese delegierte Berechtigung unverändert.
 
 1. Wählen Sie **Anwendung hinzufügen** aus.
 
@@ -140,6 +137,8 @@ Wenn Benutzer aus anderen Azure Active Directory-Instanzen ihre Zustimmung für 
 ## Zuweisen einer Anwendung zur Rolle
 
 Wenn Ihre Anwendung mit ihren eigenen Anmeldeinformationen ausgeführt wird, müssen Sie die Anwendung einer Rolle zuweisen. Sie müssen entscheiden, welche Rolle die geeigneten Berechtigungen für die Anwendung darstellt. Informationen zu verfügbaren Rollen finden Sie unter [RBAC: Integrierte Rollen](./active-directory/role-based-access-built-in-roles.md).
+
+Für die Rollenzuweisung benötigen Sie `Microsoft.Authorization/*/Write`-Zugriff. Dieser wird über die Rolle [Besitzer](./active-directory/role-based-access-built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](./active-directory/role-based-access-built-in-roles.md#user-access-administrator) gewährt.
 
 Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene festlegen. Die Berechtigungen werden in niedrigere Umfangsebenen übernommen (wird der Leserrolle für eine Ressourcengruppe beispielsweise eine Anwendung hinzugefügt, kann sie die Ressourcengruppe und alle darin enthaltenen Ressourcen lesen).
 
@@ -171,22 +170,39 @@ Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene 
 
 Weitere Informationen zum Zuweisen von Benutzern und Anwendungen zu Rollen über das Portal finden Sie unter [Verwalten des Zugriffs über das Azure-Verwaltungsportal](role-based-access-control-configure.md#manage-access-using-the-azure-management-portal).
 
-## Abrufen des Zugriffstokens mit Code
+## Beispielanwendungen
 
-Die Active Directory-Anwendung ist jetzt zum Zugreifen auf Ressourcen konfiguriert. In der Anwendung geben Sie die Anmeldeinformationen an und erhalten ein Zugriffstoken. Sie verwenden dieses Zugriffstoken für Anforderungen zum Zugreifen auf Ressourcen.
+Die folgenden Beispielanwendungen veranschaulichen die Anmeldung als Dienstprinzipal:
 
-Nun können Sie sich programmgesteuert bei der Anwendung anmelden.
+**.NET**
 
-- .NET-Beispiele finden Sie unter [Azure Resource Manager SDK für .NET](resource-manager-net-sdk.md).
-- Java-Beispiele finden Sie unter [Azure Resource Manager SDK für Java](resource-manager-java-sdk.md).
-- Python-Beispiele finden Sie unter [Resource Management Authentication](https://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagementauthentication.html) (Ressourcenverwaltungsauthentifizierung) für Python.
-- REST-Beispiele finden Sie unter [Resource Manager-REST-APIs](resource-manager-rest-api.md).
+- [Deploy an SSH Enabled VM with a Template with .NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/) (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage mit .NET)
+- [Manage Azure resources and resource groups with .NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/) (Verwalten von Azure-Ressourcen und -Ressourcengruppen mit .NET)
 
-Ausführliche Informationen zum Integrieren einer Anwendung für die Ressourcenverwaltung in Azure finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](resource-manager-api-authentication.md).
+**Java**
+
+- [Getting Started with Resources - Deploy Using ARM Template - in Java](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/) (Erste Schritte mit Ressourcen – Bereitstellen mithilfe einer Azure Resource Manager-Vorlage – in Java)
+- [Getting Started with Resources - Manage Resource Group - in Java](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group//) (Erste Schritte mit Ressourcen – Verwalten von Ressourcengruppen – in Java)
+
+**Python**
+
+- [Deploy an SSH Enabled VM with a Template in Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/) (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage in Python)
+- [Manage Azure resources and resource groups with Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/) (Verwalten von Azure-Ressourcen und -Ressourcengruppen mit Python)
+
+**Node.js**
+
+- [Deploy an SSH Enabled VM with a Template in Node.js](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/) (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage in Node.js)
+- [Manage Azure resources and resource groups with Node.js](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/) (Verwalten von Azure-Ressourcen und -Ressourcengruppen mit Node.js)
+
+**Ruby**
+
+- [Deploy an SSH Enabled VM with a Template in Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-template-deployment/) (Bereitstellen eines SSH-fähigen virtuellen Computers mit einer Vorlage in Ruby)
+- [Manage Azure resources and resource groups with Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/) (Verwalten von Azure-Ressourcen und -Ressourcengruppen mit Ruby)
+
 
 ## Nächste Schritte
 
 - Informationen zum Festlegen von Sicherheitsrichtlinien finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](./active-directory/role-based-access-control-configure.md).
 - Eine Videodemo dieser Schritte finden Sie unter [Aktivieren der programmgesteuerten Verwaltung einer Azure-Ressource mit Azure Active Directory](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Enabling-Programmatic-Management-of-an-Azure-Resource-with-Azure-Active-Directory).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

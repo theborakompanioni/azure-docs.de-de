@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/27/2016"
+   ms.date="07/15/2016"
    ms.author="terrylan"/>
 
 # Aktivieren von Transparent Data Encryption in Azure Security Center
@@ -26,14 +26,14 @@ Diese Empfehlung gilt für nur den Azure SQL-Dienst und nicht für auf Ihren vir
 
 ## Implementieren der Empfehlung
 
-1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Transparent Data Encryption aktivieren** aus. ![][1]
+1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Transparent Data Encryption aktivieren** aus. ![Transparent Data Encryption aktivieren][1]
 
-2. Das Blatt **Transparent Data Encryption für SQL-Datenbanken aktivieren** wird geöffnet. Wählen Sie eine SQL-Datenbank aus, für die TDE aktiviert werden soll. ![][2]
-3. Wählen Sie auf dem Blatt **Transparent Data Encryption** unter „Datenverschlüsselung“ **EIN** und dann auf dem oberen Menüband des Blatts **Speichern** aus. ![][3]
+2. Das Blatt **Transparent Data Encryption für SQL-Datenbanken aktivieren** wird geöffnet. Wählen Sie eine SQL-Datenbank aus, für die TDE aktiviert werden soll. ![Auswählen einer SQL-Datenbank, um TDE zu aktivieren][2]
+3. Wählen Sie auf dem Blatt **Transparent Data Encryption** unter „Datenverschlüsselung“ **EIN** und dann auf dem oberen Menüband des Blatts **Speichern** aus. ![Aktivieren von TDE][3]
 
   Nach der Aktivierung von TDE für die ausgewählte SQL-Datenbank ändert sich **Verschlüsselungsstatus** in **Verschlüsselt**.
 
-  ![][4]
+  ![Verschlüsselungsstatus][4]
 
 ## Nächste Schritte
 
@@ -58,4 +58,4 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 [3]: ./media/security-center-enable-tde-on-sql-databases/turn-on-tde.png
 [4]: ./media/security-center-enable-tde-on-sql-databases/encrypted.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

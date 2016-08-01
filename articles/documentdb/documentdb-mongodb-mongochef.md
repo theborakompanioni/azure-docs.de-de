@@ -19,7 +19,7 @@
 
 # Verwenden von MongoChef mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB
 
-Voraussetzungen für das Herstellen einer Verbindung mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB mithilfe von MongoChef:
+Voraussetzungen für das Herstellen einer Verbindung mit einem Azure DocumentDB-Konto mit Protokollunterstützung für MongoDB mithilfe von MongoChef:
 
 - Herunterladen und Installieren von [MongoChef](http://3t.io/mongochef)
 - Informationen zur [Verbindungszeichenfolge](documentdb-connect-mongodb-account.md) für das DocumentDB-Konto mit Protokollunterstützung für MongoDB
@@ -132,4 +132,4 @@ Führen Sie die folgenden Schritte aus, um Datenbanken, Sammlungen und Dokumente
 
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

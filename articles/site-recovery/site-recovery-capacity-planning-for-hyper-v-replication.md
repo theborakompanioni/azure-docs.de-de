@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="02/15/2016"
+	ms.date="07/12/2016"
 	ms.author="raynew" />
 
 # Ausführen des Hyper-V Capacity Planner-Tools für Site Recovery
@@ -27,21 +27,21 @@ In diesem Artikel wird beschrieben, wie Sie das Hyper-V Capacity Planner-Tool au
 
 Sie führen das Tool auf einem Hyper-V-Server- oder Clusterknoten an Ihrem primären Standort aus. Der Hyper-V-Hostserver benötigt zum Ausführen des Tools Folgendes:
 
-- Betriebssystem: Windows Server® 2012 oder Windows Server® 2012 R2
-- Arbeitsspeicher: 20 MB (Minimum)
-- CPU: 5 % freie Auslastung (Minimum)
-- Festplattenspeicher: 5 MB (Minimum)
+- Betriebssystem: Windows Server® 2012 oder Windows Server® 2012 R2
+- Arbeitsspeicher: 20 MB (Minimum)
+- CPU: 5 % freie Auslastung (Minimum)
+- Festplattenspeicher: 5 MB (Minimum)
 
 Vor dem Ausführen des Tools müssen Sie den primären Standort vorbereiten. Wenn Sie die Replikation zwischen zwei lokalen Standorten durchführen und die Bandbreite überprüfen möchten, müssen Sie zusätzlich einen Replikatserver vorbereiten.
 
 
-## Schritt 1: Vorbereiten des primären Standorts
+## Schritt 1: Vorbereiten des primären Standorts
 1. Erstellen Sie am primären Standort eine Liste mit allen virtuellen Hyper-V-Maschinen, die Sie replizieren möchten, sowie mit den Hyper-V-Hosts/-Clustern, auf denen sich die Maschinen befinden. Das Tool kann jeweils für mehrere eigenständige Hosts oder für einen einzelnen Cluster ausgeführt werden, aber nicht für beides zusammen. Außerdem muss es für jedes Betriebssystem separat ausgeführt werden. Erfassen und notieren Sie Ihre Hyper-V-Server also wie folgt:
 
-  - Eigenständige Windows Server® 2012-Server
-  - Windows Server® 2012-Cluster
-  - Eigenständige Windows Server® 2012 R2-Server
-  - Windows Server® 2012 R2-Cluster
+  - Eigenständige Windows Server® 2012-Server
+  - Windows Server® 2012-Cluster
+  - Eigenständige Windows Server® 2012 R2-Server
+  - Windows Server® 2012 R2-Cluster
 
 3. Aktivieren Sie den Remotezugriff auf WMI auf allen Hyper-V-Hosts und -Clustern. Führen Sie diesen Befehl auf allen Servern/Clustern aus, um sicherzustellen, dass die Firewallregeln und Benutzerberechtigungen festgelegt sind:
 
@@ -51,7 +51,7 @@ Vor dem Ausführen des Tools müssen Sie den primären Standort vorbereiten. Wen
 
   - Öffnen Sie die Windows-Firewall mit dem Snap-In **Erweiterte Sicherheit**, und aktivieren Sie dann die folgenden eingehenden Regeln: **COM+-Netzwerkzugriff (DCOM-IN)** und alle Regeln in der **Gruppe „Remote-Ereignisprotokollverwaltung“**.
 
-## Schritt 2: Vorbereiten eines Replikatservers (Replikation zwischen zwei lokalen Standorten)
+## Schritt 2: Vorbereiten eines Replikatservers (Replikation zwischen zwei lokalen Standorten)
 
 Sie müssen diesen Schritt nicht ausführen, wenn Sie zu Azure replizieren.
 
@@ -75,7 +75,7 @@ Wir empfehlen Ihnen, einen zentralen Hyper-V-Host als Wiederherstellungsserver e
 
 	![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image1.png)
 
-	- Führen Sie **netsh http show servicestate** aus, um zu überprüfen, ob der Listener für das von Ihnen angegebene Protokoll bzw. den Port ausgeführt wird:  
+	- Führen Sie **netsh http show servicestate** aus, um zu überprüfen, ob der Listener für das von Ihnen angegebene Protokoll bzw. den Port ausgeführt wird:
 4. Einrichten von Firewalls: Bei der Hyper-V-Installation werden Firewallregeln erstellt, um den Datenverkehr über die Standardports zuzulassen (443 für HTTPS, 80 für Kerberos). Aktivieren Sie diese Regeln wie folgt:
 
 		- Certificate authentication on cluster (443): **Get-ClusterNode | ForEach-Object {Invoke-command -computername \$\_.name -scriptblock {Enable-Netfirewallrule -displayname "Hyper-V Replica HTTPS Listener (TCP-In)"}}**
@@ -83,7 +83,7 @@ Wir empfehlen Ihnen, einen zentralen Hyper-V-Host als Wiederherstellungsserver e
 		- Certificate authentication on standalone server: **Enable-Netfirewallrule -displayname "Hyper-V Replica HTTPS Listener (TCP-In)"**
 		- Kerberos authentication on standalone server: **Enable-Netfirewallrule -displayname "Hyper-V Replica HTTP Listener (TCP-In)"**
 
-## Schritt 3: Ausführen des Tools Capacity Planner
+## Schritt 3: Ausführen des Tools Capacity Planner
 
 Nachdem Sie Ihren primären Standort vorbereitet und einen Wiederherstellungsserver eingerichtet haben, können Sie das Tool ausführen.
 
@@ -112,7 +112,7 @@ Nachdem Sie Ihren primären Standort vorbereitet und einen Wiederherstellungsser
 	![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image6.png)
 
 
-## Schritt 4: Interpretieren der Ergebnisse
+## Schritt 4: Interpretieren der Ergebnisse
 Hier werden die wichtigen Ergebnisse angegeben. Sie können Metriken ignorieren, die hier nicht aufgelistet sind. Sie sind für Site Recovery nicht relevant.
 
 ### Replikation zwischen zwei lokalen Standorten
@@ -139,10 +139,10 @@ Hier werden die wichtigen Ergebnisse angegeben. Sie können Metriken ignorieren,
 
 Nachdem Sie die Planung abgeschlossen haben, können Sie mit der Bereitstellung von Site Recovery beginnen:
 
-- [Einrichten von Schutz zwischen einem lokalen VMM-Standort und Azure](site-recovery-vmm-to-azure.md)
-- [Einrichten von Schutz zwischen einem lokalen Hyper-V-Standort und Azure](site-recovery-hyper-v-site-to-azure.md)
-- [Einrichten von Schutz zwischen zwei lokalen VMM-Standorten](site-recovery-vmm-to-vmm.md)
-- [Einrichten von Schutz zwischen lokalen VMM-Standorten mit einem SAN](site-recovery-vmm-san.md)
-- [Einrichten von Schutz mit einem einzelnen VMM-Server](site-recovery-single-vmm.md)
+- [Replizieren Sie Hyper-V-VMs in VMM-Clouds zu Azure.](site-recovery-vmm-to-azure.md)
+- [Replizieren von Hyper-V-VMs (ohne VMM) in Azure](site-recovery-hyper-v-site-to-azure.md)
+- [Replizieren von Hyper-V-VMs zwischen VMM-Standorten](site-recovery-vmm-to-vmm.md)
+- [Replizieren von Hyper-V-VMs zwischen VMM-Standorten mit SAN](site-recovery-vmm-san.md)
+- [Replizieren von Hyper-V-VMs auf einem einzelnen VMM-Server](site-recovery-single-vmm.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0720_2016-->

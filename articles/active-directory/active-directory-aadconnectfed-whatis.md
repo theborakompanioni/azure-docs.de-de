@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/06/2016"
+	ms.date="07/14/2016"
 	ms.author="anandy"/>
 
 
@@ -40,11 +40,12 @@ Dieses Thema ist das zentrale Thema zu verbundbezogenen Funktionen für Azure AD
 |**Aufgaben nach der Installation**||
 | [Benutzerdefiniertes Firmenlogo/benutzerdefinierte Abbildung hinzufügen](active-directory-aadconnect-federation-management.md#add-custom-company-logo-or-illustration)| Ändern der Anmeldeerfahrung durch Angeben des benutzerdefinierten Logos, das auf der AD FS-Anmeldeseite angezeigt wird |
 | [Anmeldebeschreibung hinzufügen](active-directory-aadconnect-federation-management.md#add-sign-in-description) | Ändern der Anmeldebeschreibung auf der AD FS-Anmeldeseite | 
-| [Ändern von AD FS-Anspruchsregeln](active-directory-aadconnect-federation-management.md#modifying-ad-fs-claim-rules) | Ändern/Hinzufügen von Anspruchsregeln in AD FS entsprechend der Azure AD Connect-Synchronisierungskonfiguration |
+| [Ändern von AD FS-Anspruchsregeln](active-directory-aadconnect-federation-management.md#modifying-ad-fs-claim-rules) | Ändern/Hinzufügen von Anspruchsregeln in AD FS entsprechend der Azure AD Connect-Synchronisierungskonfiguration |
 
 
 ## Zusätzliche Ressourcen
 
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
+* [AD FS-Bereitstellung in Azure](active-directory-aadconnect-azure-adfs.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0720_2016-->

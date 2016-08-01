@@ -13,14 +13,14 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="backup-recovery"
-	ms.date="06/15/2016"
+	ms.date="07/12/2016"
 	ms.author="bsiva"/>
 
 # Replizieren zwischen lokalen virtuellen Hyper-V-Computern und Azure mithilfe von PowerShell und Azure Resource Manager
 
 > [AZURE.SELECTOR]
 - [Azure-Portal](site-recovery-hyper-v-site-to-azure.md)
-- [PowerShell ARM](site-recovery-deploy-with-powershell-resource-manager.md)
+- [PowerShell – Resource Manager](site-recovery-deploy-with-powershell-resource-manager.md)
 - [Klassisches Portal](site-recovery-hyper-v-site-to-azure-classic.md)
 
 
@@ -48,7 +48,7 @@ Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit Azure
 Stellen Sie sicher, dass diese Voraussetzungen erfüllt werden:
 
 - Ein [Microsoft Azure](https://azure.microsoft.com/)-Konto. Für den Einstieg steht eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung. Darüber hinaus können Sie sich über die [Preisgestaltung für Azure Site Recovery-Manager](https://azure.microsoft.com/pricing/details/site-recovery/) informieren.
-- Azure PowerShell 1.0. Informationen zu dieser Version, und wie Sie diese installieren, finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/).
+- Azure PowerShell 1.0. Informationen zu dieser Version, und wie Sie diese installieren, finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/).
 - Die Module [AzureRM.SiteRecovery](https://www.powershellgallery.com/packages/AzureRM.SiteRecovery/) und [AzureRM.RecoveryServices](https://www.powershellgallery.com/packages/AzureRM.RecoveryServices/). Sie erhalten die neuesten Versionen dieser Module im [PowerShell-Katalog](https://www.powershellgallery.com/).
 
 In diesem Artikel wird das Verwenden von Azure PowerShell mit Azure Resource Manager zum Konfigurieren und Verwalten des Schutzes Ihrer Server veranschaulicht. Das Beispiel in diesem Artikel zeigt, wie Sie einen auf einem Hyper-V-Host ausgeführten virtuellen Computer in Azure schützen. Die folgenden Anforderungen sind für dieses Beispiel spezifisch. Eine umfassendere Aufstellung von Voraussetzungen für die verschiedenen Site Recovery-Szenarien finden Sie in der Dokumentation zum jeweiligen Szenario.
@@ -236,7 +236,7 @@ In diesem Artikel wird das Verwenden von Azure PowerShell mit Azure Resource Man
 
 
 
-## Schritt 8: Ausführen eines Testfailovers
+## Schritt 8: Ausführen eines Testfailovers
 
 1. Führen Sie einen Testfailoverauftrag folgendermaßen aus:
 
@@ -257,4 +257,4 @@ In diesem Artikel wird das Verwenden von Azure PowerShell mit Azure Resource Man
 
 [Erfahren Sie mehr](https://msdn.microsoft.com/library/azure/mt637930.aspx) über Azure Site Recovery mit PowerShell-Cmdlets für Azure Resource Manager.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0720_2016-->

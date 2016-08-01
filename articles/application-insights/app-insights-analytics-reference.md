@@ -26,7 +26,7 @@
 **„let“ und „set“** [let](#let-clause) | [set](#set-clause)
 
 
-**Abfragen und Operatoren** [count](#count-operator) | [extend](#extend-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict clause](#restrict-clause) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator)
+**Abfragen und Operatoren** [count](#count-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict clause](#restrict-clause) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator)
 
 **Aggregationen** [any](#any) | [argmax](#argmax) | [argmin](#argmin) | [avg](#avg) | [buildschema](#buildschema) | [count](#count) | [countif](#countif) | [dcount](#dcount) | [dcountif](#dcountif) | [makelist](#makelist) | [makeset](#makeset) | [max](#max) | [min](#min) | [percentile](#percentile) | [percentiles](#percentiles) | [percentilesw](#percentilesw) | [percentilew](#percentilew) | [stdev](#stdev) | [sum](#sum) | [variance](#variance)
 
@@ -134,7 +134,7 @@ requests // The request table starts this pipeline.
 | count 
 ```
     
-Jeder Filter mit einem senkrechten Strich (`|`) als Präfix ist eine Instanz eines *Operators* mit einigen Parametern. Die Eingabe des Operators ist die Tabelle, die das Ergebnis der vorhergehenden Pipeline ist. In den meisten Fällen sind alle Parameter [skalare Ausdrücke](#scalars) über die Spalten der Eingabe. In einigen Fällen sind die Parameter die Namen von Eingabespalten, und in einigen Fällen ist der Parameter eine zweite Tabelle. Das Ergebnis einer Abfrage ist immer eine Tabelle, auch wenn sie nur eine Spalte und eine Zeile enthält.
+Jeder Filter mit einem senkrechten Strich (`|`) als Präfix ist eine Instanz eines *Operators* mit einigen Parametern. Die Eingabe des Operators ist die Tabelle, die das Ergebnis der vorhergehenden Pipeline ist. In den meisten Fällen sind alle Parameter [skalare Ausdrücke](#scalars) über die Spalten der Eingabe hinweg. In einigen Fällen sind die Parameter die Namen von Eingabespalten, und in einigen Fällen ist der Parameter eine zweite Tabelle. Das Ergebnis einer Abfrage ist immer eine Tabelle, auch wenn sie nur eine Spalte und eine Zeile enthält.
 
 Abfragen können einzelne Zeilenumbrüche enthalten, aber sie werden mit einer Leerzeile beendet. Unter Umständen enthalten sie Kommentare zwischen `//` und dem Ende der Zeile.
 
@@ -175,6 +175,227 @@ Diese Funktion gibt eine Tabelle mit einem einzelnen Datensatz und einer Spalte 
 requests | count
 ```
 
+### evaluate-Operator
+
+`evaluate` ist ein Erweiterungsmechanismus, mit dem spezielle Algorithmen an Abfragen angefügt werden können.
+
+`evaluate` muss der letzte Operator in der Abfragepipeline sein (mit Ausnahme eines möglichen `render`-Elements). Er darf nicht in einem Funktionsrumpf erscheinen.
+
+[evaluate autocluster](#evaluate-autocluster) | [evaluate basket](#evaluate-basket) | [evaluate diffpatterns](#evaluate-diffpatterns) | [evaluate extractcolumns](#evaluate-extractcolumns)
+
+#### evaluate autocluster
+
+     T | evaluate autocluster()
+
+Mit AutoCluster werden häufige Muster von diskreten Attributen (Dimensionen) in den Daten ermittelt, und die Ergebnisse der ursprünglichen Abfrage (ob mit 100 oder 100.000 Zeilen) werden auf eine kleine Anzahl von Mustern reduziert. AutoCluster wurde als Hilfe beim Analysieren von Fehlern (z.B. Ausnahmen, Abstürze) entwickelt, kann aber für jedes gefilterte Dataset verwendet werden.
+
+**Syntax**
+
+    T | evaluate autocluster( arguments )
+
+**Rückgabe**
+
+AutoCluster gibt eine (in der Regel kleine) Gruppe von Mustern zurück, in der Teile der Daten mit gemeinsamen Werten über mehrere diskrete Attribute hinweg erfasst werden. Jede Zeile in den Ergebnissen steht für ein Muster.
+
+Die ersten beiden Spalten enthalten die Anzahl und den Prozentsatz der Zeilen aus der ursprünglichen Abfrage, die mit dem Muster erfasst wurden. Die restlichen Spalten stammen aus der ursprünglichen Abfrage. Sie enthalten als Wert entweder einen bestimmten Wert aus der Spalte oder „*“ (variable Werte).
+
+Beachten Sie, dass die Muster nicht unzusammenhängend sind: sie können sich überlappen und decken normalerweise nicht alle ursprünglichen Zeilen ab. Einige Zeilen fallen ggf. nicht in eines der Muster.
+
+**Tipps**
+
+* Verwenden Sie `where` und `project` im Pipe-Eingangselement, um die Daten auf den Teil zu reduzieren, der für Sie interessant ist.
+* Wenn Sie eine interessante Zeile finden, können Sie dafür einen Drilldown durchführen, indem Sie die jeweiligen Werte dem `where`-Filter hinzufügen.
+
+**Argumente (alle optional)**
+
+* `output=all | values | minimal`
+
+    Das Format der Ergebnisse. Die Spalten „Count“ und „Percent“ werden immer in den Ergebnissen angezeigt.
+
+ * `all` – Alle Spalten der Eingabe werden ausgegeben.
+ * `values` – Filtert alle Spalten heraus, die in den Ergebnissen nur „*“ enthalten.
+ * `minimal` – Filtert auch Spalten heraus, die für alle Zeilen in der ursprünglichen Abfrage identisch sind.
+
+
+* `min_percent=`*double* (Standardwert: 1)
+
+    Die prozentuale Mindestabdeckung der generierten Zeilen.
+
+    Beispiel: `T | evaluate autocluster("min_percent=5.5")`
+
+
+* `num_seeds=` *int* (Standardwert: 25)
+
+    Die Anzahl von Startwerten bestimmt die Anzahl von anfänglichen lokalen Suchpunkten des Algorithmus. Je nach der Struktur der Daten erhöht sich beim Erhöhen der Anzahl von Startwerten in einigen Fällen die Anzahl (bzw. Qualität) von Ergebnissen, da ein größerer Suchbereich vorhanden ist. Gleichzeitig verlangsamen sich die Abfragen. Das Argument „num\_seeds“ verfügt in beiden Richtungen über abnehmende Ergebnisse. Eine Verringerung unter den Wert 5 führt daher nur zu vernachlässigbaren Leistungssteigerungen, und bei einer Erhöhung auf über 50 werden nur selten weitere Muster generiert.
+
+    Beispiel: `T | evaluate autocluster("num_seeds=50")`
+
+
+* `size_weight=` *0<double<1*+ (Standardwert: 0,5)
+
+    Hiermit erhalten Sie Kontrolle über die Balance zwischen der „generischen“ (hohe Abdeckung) und „informativen“ (viele gemeinsame Werte) Vorgehensweise. Wenn Sie „size\_weight“ erhöhen, wird die Anzahl von Mustern normalerweise reduziert, und jedes Muster deckt einen größeren Prozentsatz ab. Wenn Sie „size\_weight“ verringern, werden normalerweise mehr spezifische Muster mit mehr gemeinsamen Werten und einer geringeren prozentualen Abdeckung produziert. Die Formel im Hintergrund ist ein gewichteter geometrischer Mittelwert zwischen der normalisierten generischen Punktzahl und der informativen Punktzahl mit „size\_weight“ und „1-size\_weight“ als Gewichtungen.
+
+    Beispiel: `T | evaluate autocluster("size_weight=0.8")`
+
+
+* `weight_column=` *column\_name*
+
+    Berücksichtigt jede Zeile der Eingabe gemäß der angegebenen Gewichtung (jede Zeile hat standardmäßig eine Gewichtung von „1“). Die übliche Nutzung einer Gewichtungsspalte besteht darin, die Stichprobenerstellung oder die Bucket-Zuordnung/Aggregation der Daten zu berücksichtigen, die bereits in die einzelnen Zeilen eingebettet sind.
+
+    Beispiel: `T | evaluate autocluster("weight_column=sample_Count")`
+
+
+
+#### evaluate basket
+
+     T | evaluate basket()
+
+Mit „Basket“ werden alle häufigen Muster diskreter Attribute (Dimensionen) in den Daten ermittelt und alle häufigen Muster zurückgegeben, die den Häufigkeitsschwellenwert in der ursprünglichen Abfrage überschritten haben. Mit Basket ist sichergestellt, dass alle häufigen Muster in den Daten gefunden werden, aber es ist nicht sichergestellt, dass eine polynomische Laufzeit vorhanden ist. Die Laufzeit der Abfrage liegt linear in der Anzahl von Zeilen vor, aber in einigen Fällen auch exponentiell in der Anzahl von Spalten (Dimensionen). Basket basiert auf dem Apriori-Algorithmus, der ursprünglich für das Data Mining per Basket-Analyse entwickelt wurde.
+
+**Rückgabe**
+
+Alle Muster, die in mehr als einem angegebenen Bruchteil (Standardwert: 0,05) der Ereignisse enthalten sind.
+
+**Argumente (alle optional)**
+
+
+* `threshold=` *0,015<double<1* (Standardwert: 0,05)
+
+    Legt das minimale Verhältnis der Zeilen fest, das als häufig angesehen werden soll (Muster mit einem geringeren Verhältnis werden nicht zurückgegeben).
+
+    Beispiel: `T | evaluate basket("threshold=0.02")`
+
+
+* `weight_column=` *column\_name*
+
+    Berücksichtigt jede Zeile der Eingabe gemäß der angegebenen Gewichtung (jede Zeile hat standardmäßig eine Gewichtung von „1“). Die übliche Nutzung einer Gewichtungsspalte besteht darin, die Stichprobenerstellung oder die Bucket-Zuordnung/Aggregation der Daten zu berücksichtigen, die bereits in die einzelnen Zeilen eingebettet sind.
+
+    Beispiel: T | evaluate basket("weight\_column=sample\_Count")
+
+
+* `max_dims=` *1<int* (Standardwert: 5)
+
+    Legt die maximale Anzahl von nicht korrelierten Dimensionen pro Basket fest – standardmäßig begrenzt, um die Abfragelaufzeit zu verringern.
+
+
+* `output=minimize` | `all`
+
+    Das Format der Ergebnisse. Die Spalten „Count“ und „Percent“ werden immer in den Ergebnissen angezeigt.
+
+ * `minimize` – Filtert alle Spalten heraus, die in den Ergebnissen nur „*“ enthalten.
+ * `all` – Alle Spalten der Eingabe werden ausgegeben.
+
+
+
+
+#### evaluate diffpatterns
+
+     requests | evaluate diffpatterns("split=success")
+
+Mit Diffpatterns werden zwei Datasets mit der gleichen Struktur verglichen und Muster mit diskreten Attributen (Dimensionen) ermittelt, die die Unterschiede zwischen den beiden Datasets ausmachen. Diffpatterns wurde als Hilfe bei der Analyse von Fehlern entwickelt (z.B. per Vergleich von Fehlern mit Nicht-Fehlern in einem bestimmten Zeitraum). Es ist damit ggf. aber auch möglich, Unterschiede zwischen zwei beliebigen Datasets mit derselben Struktur zu ermitteln.
+
+**Syntax**
+
+`T | evaluate diffpatterns("split=` *BinaryColumn* `" [, arguments] )`
+
+**Rückgabe**
+
+Diffpatterns gibt eine (normalerweise kleine) Gruppe von Mustern zurück, in denen unterschiedliche Teile der Daten in den beiden Datasets erfasst werden (also ein Muster, bei dem ein größerer Prozentsatz der Zeilen im ersten Dataset und ein geringerer Prozentsatz der Zeilen im zweiten Dataset erfasst wird). Jede Zeile in den Ergebnissen steht für ein Muster.
+
+Die ersten vier Spalten enthalten die Anzahl und den Prozentsatz von Spalten der ursprünglichen Abfrage, die vom Muster in jedem Dataset erfasst werden. Die fünfte Spalte enthält die Differenz (in absoluten Prozentpunkten) zwischen den beiden Datasets. Die restlichen Spalten stammen aus der ursprünglichen Abfrage. Sie enthalten als Wert entweder einen bestimmten Wert aus der Spalte oder „*“ (variable Werte).
+
+Beachten Sie, dass die Muster nicht unzusammenhängend sind: sie können sich überlappen und decken normalerweise nicht alle ursprünglichen Zeilen ab. Einige Zeilen fallen ggf. nicht in eines der Muster.
+
+**Tipps**
+
+* Verwenden Sie „where“ und „project“ im Pipe-Eingangselement, um die Daten auf den Teil zu reduzieren, der für Sie interessant ist.
+
+* Wenn Sie eine interessante Zeile finden, können Sie dafür einen Drilldown durchführen, indem Sie die jeweiligen Werte dem where-Filter hinzufügen.
+
+**Argumente**
+
+* `split=` *column name* (erforderlich)
+
+    Die Spalte muss genau zwei Werte haben. Erstellen Sie diese Spalte bei Bedarf:
+
+    `requests | extend fault = toint(resultCode) >= 500` <br/> `| evaluate diffpatterns("split=fault")`
+
+* `target=` *string*
+
+    Weist den Algorithmus an, nur nach Mustern zu suchen, die im Zieldataset über einen höheren Prozentsatz verfügen. Das Ziel muss einer der beiden Werte der split-Spalte sein.
+
+    `requests | evaluate diffpatterns("split=success", "target=false")`
+
+* `threshold=` *0,015<double<1* (Standardwert: 0,05)
+
+    Legt die minimale Musterdifferenz (Verhältnis) zwischen den beiden Datasets fest.
+
+    `requests | evaluate diffpatterns("split=success", "threshold=0.04")`
+
+* `output=minimize | all`
+
+    Das Format der Ergebnisse. Die Spalten „Count“ und „Percent“ werden immer in den Ergebnissen angezeigt.
+
+ * `minimize` – Filtert alle Spalten heraus, die in den Ergebnissen nur „*“ enthalten.
+ * `all` – Alle Spalten der Eingabe werden ausgegeben.
+
+* `weight_column=` *column\_name*
+
+    Berücksichtigt jede Zeile in der Eingabe gemäß dem angegebenen Gewicht (standardmäßig verfügt jede Spalte über eine Gewichtung von „1“). Eine übliche Nutzung einer Gewichtungsspalte besteht darin, die Stichprobenerstellung oder die Bucket-Zuordnung/Aggregation der Daten zu berücksichtigen, die bereits in die einzelnen Zeilen eingebettet sind.
+
+    `requests | evaluate autocluster("weight_column=itemCount")`
+
+
+
+
+
+
+#### evaluate extractcolumns
+
+     exceptions | take 1000 | evaluate extractcolumns("details=json") 
+
+Extractcolumns wird verwendet, um eine Tabelle mit mehreren einfachen Spalten zu füllen, die basierend auf dem Typ dynamisch aus strukturierten (bzw. halbstrukturierten) Spalten extrahiert werden. Derzeit werden nur JSON-Spalten unterstützt (sowohl dynamische als auch Zeichenfolgenserialisierung).
+
+
+* `max_columns=` *int* (Standardwert: 10)
+
+    Die Anzahl von neu hinzugefügten Spalten ist dynamisch und kann sehr hoch sein (Anzahl von einzelnen Schlüsseln in allen JSON-Datensätzen), sodass wir sie beschränken müssen. Die neuen Spalten werden in absteigender Reihenfolge basierend auf ihrer Häufigkeit sortiert, und bis zu „max\_columns“ (Zahlenwert) werden der Tabelle hinzugefügt.
+
+    `T | evaluate extractcolumns("json_column_name=json", "max_columns=30")`
+
+
+* `min_percent=`*double* (Standardwert: 10,0)
+
+    Eine weitere Möglichkeit zum Beschränken neuer Spalten, indem Spalten ignoriert werden, deren Häufigkeit unter „min\_percent“ liegt.
+
+    `T | evaluate extractcolumns("json_column_name=json", "min_percent=60")`
+
+
+* `add_prefix=` *bool* (Standardwert: true)
+
+    Bei „true“ wird der Name der komplexen Spalte den extrahierten Spaltennamen als Präfix hinzugefügt.
+
+
+* `prefix_delimiter=` *string* (Standardwert: "\_")
+
+    Wenn „add\_prefix=true“ gilt, definiert dieser Parameter das Trennzeichen, das verwendet wird, um die Namen der neuen Spalten zu verketten.
+
+    `T | evaluate extractcolumns("json_column_name=json",` <br/> `"add_prefix=true", "prefix_delimiter=@")`
+
+
+* `keep_original=` *bool* (Standardwert: false)
+
+    Bei „true“ werden die ursprünglichen Spalten (JSON) in der Ausgabetabelle beibehalten.
+
+
+* `output=query | table`
+
+    Das Format der Ergebnisse.
+
+ * `table` – Die Ausgabe entspricht der empfangenen Tabelle abzüglich der angegebenen Eingabespalten und zuzüglich der neuen Spalten, die aus den Eingabespalten extrahiert wurden.
+ * `query` – Die Ausgabe ist eine Zeichenfolge, die für die Abfrage steht, die Sie zum Abrufen des Ergebnisses als Tabelle durchführen.
+
+
 
 
 ### extend-Operator
@@ -191,8 +412,8 @@ Fügen Sie eine oder mehrere berechnete Spalten an eine Tabelle an.
 **Argumente**
 
 * *T:* Die Eingabetabelle.
-* *ColumnName:* Der Name einer hinzuzufügenden Spalte. Bei [Namen](#names) muss die Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder einen Unterstrich („\_“) enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
-* *Expression:* Eine Berechnung über die vorhandenen Spalten.
+* *ColumnName:* Der Name einer hinzuzufügenden Spalte. Bei [Namen](#names) muss die Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder Unterstriche („\_“) enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
+* *Expression:* Eine Berechnung über die vorhandenen Spalten hinweg.
 
 **Rückgabe**
 
@@ -203,7 +424,7 @@ Eine Kopie der Eingabetabelle mit den angegebenen zusätzlichen Spalten.
 * Verwenden Sie stattdessen [`project`](#project-operator), wenn Sie auch einige Spalten löschen oder umbenennen möchten.
 * Verwenden Sie nicht einfach `extend`, um einen kürzeren Namen zur Verwendung in einem langen Ausdruck zu erhalten. `...| extend x = anonymous_user_id_from_client | ... func(x) ...`
 
-    Die systemeigenen Spalten der Tabelle wurden indiziert; der neue Name definiert eine zusätzliche, nicht indizierte Spalte, d. h. die Abfrage wird wahrscheinlich langsamer ausgeführt.
+    Die systemeigenen Spalten der Tabelle wurden indiziert; der neue Name definiert eine zusätzliche, nicht indizierte Spalte, d. h. die Abfrage wird wahrscheinlich langsamer ausgeführt.
 
 **Beispiel**
 
@@ -237,7 +458,7 @@ Führt die Zeilen zweier Tabellen anhand von übereinstimmenden Werten der angeg
 Eine Tabelle mit:
 
 * Einer Spalte für jede Spalte in jeder der beiden Tabellen, einschließlich der übereinstimmenden Schlüssel. Die Spalten der rechten Seite werden bei Namenskonflikten automatisch umbenannt.
-* Einer Zeile für jede Übereinstimmung zwischen den Eingabetabellen. Eine Übereinstimmung ist eine ausgewählte Zeile in einer Tabelle, die in allen `on`-Feldern denselben Wert aufweist wie eine Zeile in der anderen Tabelle.
+* Einer Zeile für jede Übereinstimmung zwischen den Eingabetabellen. Eine Übereinstimmung ist eine ausgewählte Zeile in einer Tabelle, die in allen `on`-Feldern denselben Wert wie eine Zeile in der anderen Tabelle aufweist.
 
 * `Kind` – nicht angegeben
 
@@ -412,7 +633,7 @@ Die Elemente in der `with`-Klausel werden wiederum mit dem Quelltext abgeglichen
 * Bei der Analyse eines regulären Ausdrucks kann ein regulärer Ausdruck den Minimierungsoperator „?“ verwenden, um so schnell wie möglich zur folgenden Übereinstimmung zu wechseln.
 * Ein Spaltenname mit einem Typ analysiert den Text als den angegebenen Typ. Außer bei „kind=relaxed“ macht eine nicht erfolgreiche Analyse Übereinstimmungen mit dem gesamten Muster ungültig.
 * Ein Spaltenname ohne einen Typ oder mit dem Typ „string“ kopiert die Mindestanzahl von Zeichen, um die folgende Übereinstimmung abzurufen.
-* „*“ überspringt die Mindestanzahl von Zeichen, um die folgende Übereinstimmung abzurufen. Sie können „*“ am Anfang und Ende des Musters oder hinter einem Typ, der keine Zeichenfolge ist, oder zwischen Zeichenfolgenübereinstimmungen verwenden.
+* „*“ überspringt die Mindestanzahl von Zeichen, um die folgende Übereinstimmung zu erhalten. Sie können „*“ am Anfang und Ende des Musters oder hinter einem Typ, der keine Zeichenfolge ist, oder zwischen Zeichenfolgenübereinstimmungen verwenden.
 
 Alle Elemente in einem Analysemuster müssen genau übereinstimmen. Andernfalls werden keine Ergebnisse erzeugt. Die Ausnahme dieser Regel lautet, dass wenn bei „kind=relaxed“ die Analyse einer typisierten Variablen misslingt, die restliche Analyse fortgesetzt wird.
 
@@ -509,7 +730,7 @@ Wählen Sie die Spalten aus, die einbezogen, umbenannt oder gelöscht werden sol
 **Argumente**
 
 * *T:* Die Eingabetabelle.
-* *ColumnName:* Der Name einer Spalte, der in der Ausgabe angezeigt wird. Wenn kein *Ausdruck* vorhanden ist, muss die Eingabe eine Spalte mit diesem Namen enthalten. Bei [Namen](#names) muss die Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder einen Unterstrich („\_“) enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
+* *ColumnName:* Der Name einer Spalte, der in der Ausgabe angezeigt wird. Wenn kein *Ausdruck* vorhanden ist, muss die Eingabe eine Spalte mit diesem Namen enthalten. Bei [Namen](#names) muss die Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder Unterstriche („\_“) enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
 * *Expression:* Optionaler skalarer Ausdruck, der auf die Eingabespalten verweist.
 
     Das Zurückgeben einer neuen berechneten Spalte mit dem gleichen Namen wie eine vorhandene Spalte der Eingabe ist zulässig.
@@ -568,7 +789,7 @@ Die Argumente müssen numerische Werte, Datums- oder TimeSpan-Werte sein. Sie k�
 
 **Rückgabe**
 
-Eine Tabelle mit einer einzelnen Spalte namens *ColumnName*, deren Werte *Start*, *Start* + *Step*, ... bis einschließlich *Stop* lauten.
+Eine Tabelle mit einer einzelnen Spalte namens *ColumnName*, deren Werte *Start*, *Start* + *Step* usw. bis einschließlich *Stop* lauten.
 
 **Beispiel**
 
@@ -597,7 +818,7 @@ range timestamp from ago(4h) to now() step 1m
 | render timechart  
 ```
 
-Zeigt, wie mit dem `range`-Operator eine kleine Ad-hoc-Dimensionstabelle erstellt werden kann, mit der anschließend Nullen eingeführt werden, wenn die Quelldaten keine Werte aufweisen.
+Zeigt, wie mit dem `range`-Operator eine kleine Ad-hoc-Dimensionstabelle erstellt werden kann, mit der anschließend Nullen eingefügt werden, wenn die Quelldaten keine Werte aufweisen.
 
 ### reduce-Operator
 
@@ -688,7 +909,7 @@ Tabelle, die die Anzahl, durchschnittliche Anforderungsdauer und Menge von Städ
 
     T | summarize count() by price_range=bin(price, 10.0)
 
-Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0, 10,0], [10,0, 20,0] usw. Preise aufweisen. In diesem Beispiel ist eine Spalte für die Anzahl und eine für den Preisbereich vorhanden. Alle anderen Eingabespalten werden ignoriert.
+Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0, 10,0][10,0, 20,0] usw. Preise aufweisen. In diesem Beispiel ist eine Spalte für die Anzahl und eine für den Preisbereich vorhanden. Alle anderen Eingabespalten werden ignoriert.
 
 
 **Syntax**
@@ -700,9 +921,9 @@ Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0, 10,0], [10,0,
 
 **Argumente**
 
-* *Column:* Optionaler Name für eine Ergebnisspalte. Nimmt standardmäßig den vom Ausdruck abgeleiteten Namen an. Bei [Namen](#names) muss die Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder einen Unterstrich („\_“) enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
+* *Column:* Optionaler Name für eine Ergebnisspalte. Nimmt standardmäßig den vom Ausdruck abgeleiteten Namen an. Bei [Namen](#names) muss die Groß-/Kleinschreibung beachtet werden. Sie können alphabetische oder numerische Zeichen oder Unterstriche („\_“) enthalten. Verwenden Sie `['...']` oder `["..."]` zum Angeben von Schlüsselwörtern oder Namen mit anderen Zeichen.
 * *Aggregation:* Ein Aufruf einer Aggregationsfunktion, z.B. `count()` oder `avg()`, mit Spaltennamen als Argumente. Siehe [Aggregationen](#aggregations).
-* *GroupExpression:* Ein Ausdruck für die Spalten, der einen Satz von unterschiedlichen Werten bereitstellt. Normalerweise handelt es sich entweder um einen Spaltennamen, der bereits einen eingeschränkten Satz von Werten bereitstellt, oder um `bin()` mit einer numerischen Spalte oder Zeitspalte als Argument.
+* *GroupExpression:* Ein spaltenübergreifender Ausdruck, mit dem ein Satz von unterschiedlichen Werten bereitgestellt wird. Normalerweise handelt es sich entweder um einen Spaltennamen, der bereits einen eingeschränkten Satz von Werten bereitstellt, oder um `bin()` mit einer numerischen Spalte oder Zeitspalte als Argument.
 
 Wenn Sie einen numerischen Ausdruck oder Zeitausdruck ohne `bin()` bereitstellen, wendet Analytics ihn automatisch mit einem Intervall von `1h` für Uhrzeiten oder von `1.0` für Zahlen an.
 
@@ -742,8 +963,8 @@ Gibt die ersten *N* Datensätze nach den angegebenen Spalten sortiert zurück.
 
 * *NumberOfRows:* Die zurückzugebende Zeilenanzahl von *T*.
 * *Sort\_expression:* Ein Ausdruck, nach dem die Zeilen sortiert werden. Dies ist in der Regel nur ein Spaltenname. Sie können mehrere „Sort\_expression“-Angaben machen.
-* Unter Umständen wird `asc` oder `desc` (Standard) angezeigt, um zu steuern, ob die tatsächliche Auswahl am „unteren“ oder „oberen“ Ende des Bereichs erfolgt.
-* `nulls first` oder `nulls last` steuert, wo der Wert null zurückgegeben wird. `First` ist die Standardeinstellung für `asc`, `last` die Standardeinstellung für `desc`.
+* Unter Umständen wird `asc` oder `desc` (Standard) angezeigt, um zu steuern, ob die tatsächliche Auswahl vom „unteren“ oder „oberen“ Ende des Bereichs erfolgt.
+* `nulls first` oder `nulls last` steuert, wo der Nullwerte zurückgegeben werden. `First` ist die Standardeinstellung für `asc`, `last` die Standardeinstellung für `desc`.
 
 
 **Tipps**
@@ -848,7 +1069,7 @@ Filtert eine Tabelle auf die Teilmenge der Zeilen, die ein Prädikat erfüllen.
 
 **Rückgabe**
 
-Zeilen in *T*, für die *Predicate* `true` ist.
+Zeilen in *T*, für die *Predicate* auf `true` festgelegt ist.
 
 **Tipps**
 
@@ -870,7 +1091,7 @@ Traces
     and ActivityId == SubActivityIt 
 ```
 
-Datensätze, die nicht älter als 1 Stunde sind, aus der Quelle namens „Kuskus“ stammen und zwei Spalten mit dem gleichen Wert aufweisen.
+Datensätze, die nicht älter als 1 Stunde sind, aus der Quelle namens „Kuskus“ stammen und zwei Spalten mit dem gleichen Wert aufweisen.
 
 Beachten Sie, dass wir den Vergleich zwischen zwei Spalten an das Ende stellen, da der Index nicht genutzt werden kann und ein Scan erzwungen wird.
 
@@ -888,7 +1109,7 @@ Aggregationen dienen zum Kombinieren von Werten in Gruppen, die im [summarize-Vo
 
 Wählt eine Zeile der Gruppe nach dem Zufallsprinzip aus, und gibt den Wert des angegebenen Ausdrucks zurück.
 
-Dies empfiehlt sich beispielsweise, wenn eine Spalte über eine große Anzahl von ähnlichen Werten verfügt (z. B. eine Spalte „Fehlertext“) und Sie einmal pro eindeutigem Wert für den zusammengesetzten Gruppenschlüssel Stichproben aus dieser Spalte abrufen möchten.
+Dies empfiehlt sich beispielsweise, wenn eine Spalte über eine große Anzahl von ähnlichen Werten verfügt (z. B. eine Spalte „Fehlertext“) und Sie einmal pro eindeutigem Wert für den zusammengesetzten Gruppenschlüssel Stichproben aus dieser Spalte abrufen möchten.
 
 **Beispiel**
 
@@ -944,7 +1165,7 @@ Berechnet den Durchschnitt von *Expression* in der Gruppe.
 
 Gibt das minimale Schema zurück, das alle Werte von *DynamicExpression* zulässt.
 
-Der Parameterspaltentyp sollte `dynamic` sein, d.h. ein Array oder ein Eigenschaftenbehälter.
+Der Parameterspaltentyp sollte `dynamic` lauten, d.h. ein Array oder ein Eigenschaftenbehälter.
 
 **Beispiel**
 
@@ -1055,7 +1276,7 @@ Gibt eine Schätzung der Anzahl von unterschiedlichen Werten für *Expr* in der 
 Mit *Accuracy* wird, sofern angegeben, der Ausgleich zwischen Geschwindigkeit und Genauigkeit gesteuert.
 
  * `0` ist die am wenigsten präzise und schnellste Berechnung.
- * `1` ist die Standardeinstellung, die Genauigkeit und Berechnungszeit ausgleicht; etwa 0,8% Fehlerwahrscheinlichkeit.
+ * `1` ist die Standardeinstellung, bei der Genauigkeit und Berechnungszeit ausgeglichen sind; etwa 0,8% Fehlerwahrscheinlichkeit.
  * `2` ist die präziseste und langsamste Berechnung; etwa 0,4% Fehlerwahrscheinlichkeit.
 
 **Beispiel**
@@ -1071,12 +1292,12 @@ Mit *Accuracy* wird, sofern angegeben, der Ausgleich zwischen Geschwindigkeit un
 
     dcountif( Expression, Predicate [ ,  Accuracy ])
 
-Gibt eine Schätzung der Anzahl von eindeutigen Werten für *Expr* in Zeilen der Gruppe zurück, für die *Predicate* TRUE ist. (Verwenden Sie zum Auflisten der eindeutigen Werte [`makeset`](#makeset).)
+Gibt eine Schätzung der Anzahl von eindeutigen Werten für *Expr* in Zeilen der Gruppe zurück, für die *Predicate* auf „true“ festgelegt ist. (Verwenden Sie zum Auflisten der unterschiedlichen Werte [`makeset`](#makeset).)
 
 Mit *Accuracy* wird, sofern angegeben, der Ausgleich zwischen Geschwindigkeit und Genauigkeit gesteuert.
 
  * `0` ist die am wenigsten präzise und schnellste Berechnung.
- * `1` ist die Standardeinstellung, die Genauigkeit und Berechnungszeit ausgleicht; etwa 0,8% Fehlerwahrscheinlichkeit.
+ * `1` ist die Standardeinstellung, bei der Genauigkeit und Berechnungszeit ausgeglichen sind; etwa 0,8% Fehlerwahrscheinlichkeit.
  * `2` ist die präziseste und langsamste Berechnung; etwa 0,4% Fehlerwahrscheinlichkeit.
 
 **Beispiel**
@@ -1166,7 +1387,7 @@ Berechnen Sie gleichzeitig mehrere Perzentile für andere Anforderungsnamen:
 
 ![](./media/app-insights-analytics-reference/percentiles.png)
 
-Die Ergebnisse zeigen, dass für die Anforderung „/Events/Index“ auf 5 % der Anforderungen in weniger als 2,44 Sekunden reagiert wird, auf die Hälfte in 3,52 Sekunden und auf 5 % langsamer als 6,85 Sekunden.
+Die Ergebnisse zeigen, dass für die Anforderung „/Events/Index“ auf 5 % der Anforderungen in weniger als 2,44 Sekunden reagiert wird, auf die Hälfte in 3,52 Sekunden und auf 5 % langsamer als 6,85 Sekunden.
 
 Berechnen Sie mehrere Statistiken:
 
@@ -1211,16 +1432,16 @@ Um ein exaktes Bild der ursprünglichen Verteilung der Ereignislatenzen zu erhal
 
 Die Ergebnisse sind die gleichen, als hätten wir einfache `percentiles`-Elemente im ursprünglichen Messungssatz verwendet.
 
-> [AZURE.NOTE] Gewichtete Perzentile gelten nicht für [Stichprobendaten](app-insights-sampling.md), bei denen jede erfasste Zeile eine zufällige Stichprobe der ursprünglichen Zeilen darstellt, keinen Container. Die einfachen Perzentilfunktionen eignen sich für Stichprobendaten.
+> [AZURE.NOTE] Gewichtete Perzentile gelten nicht für [Stichprobendaten](app-insights-sampling.md), bei denen jede erfasste Zeile eine zufällige Stichprobe der ursprünglichen Zeilen darstellt, und keinen Container. Die einfachen Perzentilfunktionen eignen sich für Stichprobendaten.
 
 #### Schätzungsfehler in Perzentilen
 
-Das Perzentilaggregat bietet einen ungefähren Wert mithilfe von [T-Digest](https://github.com/tdunning/t-digest/blob/master/docs/t-digest-paper/histo.pdf).
+Das Perzentilaggregat stellt einen ungefähren Wert mithilfe von [T-Digest](https://github.com/tdunning/t-digest/blob/master/docs/t-digest-paper/histo.pdf) bereit.
 
 Einige wichtige Punkte:
 
-* Die Grenzen für den Schätzungsfehler variieren je nach dem Wert des angeforderten Perzentils. Die beste Genauigkeit erhalten Sie an den Enden der Skala von [0 bis 100]. Die Perzentile 0 und 100 sind die Mindest- und Maximalwerte für die Verteilung. Die Genauigkeit nimmt zur Mitte der Skala hin ab. Am Mittelpunkt ist die Genauigkeit am unpräzisesten und auf 1 % begrenzt.
-* Fehlergrenzen werden in Bezug auf den Rang, nicht auf den Wert sichtbar. Beispiel: Perzentil(X, 50) hat den Wert Xm zurückgegeben. Die Schätzung garantiert, dass mindestens 49 % und höchstens 51 % der Werte von X kleiner sind als Xm. Es gibt keine theoretische Beschränkung hinsichtlich des Unterschieds zwischen Xm und dem tatsächlichen Mittelwert von X.
+* Die Grenzen für den Schätzungsfehler variieren je nach dem Wert des angeforderten Perzentils. Die beste Genauigkeit erhalten Sie an den Enden der Skala von [0 bis 100]. Die Perzentile 0 und 100 sind die Mindest- und Maximalwerte für die Verteilung. Die Genauigkeit nimmt zur Mitte der Skala hin ab. Am Mittelpunkt ist die Genauigkeit am unpräzisesten und auf 1 % begrenzt.
+* Fehlergrenzen werden in Bezug auf den Rang, nicht auf den Wert sichtbar. Beispiel: Perzentil(X, 50) hat den Wert Xm zurückgegeben. Die Schätzung garantiert, dass mindestens 49 % und höchstens 51 % der Werte von X kleiner sind als Xm. Es gibt keine theoretische Beschränkung hinsichtlich des Unterschieds zwischen Xm und dem tatsächlichen Mittelwert von X.
 
 ### stdev
 
@@ -1462,17 +1683,7 @@ Das ausgewertete Argument. Wenn das Argument eine Tabelle ist, wird die erste Sp
 || |
 |---|-------------|
 | + | Hinzufügen |
-| - | Subtrahieren |
-| * | Multiplizieren |
-| / | Dividieren |
-| % | Modulo |
-||
-| `<` | Kleiner
-| `<=` | Kleiner gleich
-| `>` | Größer
-|`>=` | Größer gleich
-| `<>` | Ungleich
-| `!=` | Ungleich
+| - | Subtrahieren | | * | Multiplizieren | | / | Dividieren | | % | Modulo | || | `<` | Kleiner | `<=` | Kleiner gleich | `>` | Größer |`>=` | Größer gleich | `<>` | Ungleich | `!=` | Ungleich
 
 
 ### abs
@@ -1574,7 +1785,7 @@ Die Quadratwurzelfunktion.
 
 **Rückgabe**
 
-* Eine positive Zahl, sodass `sqrt(x) * sqrt(x) == x`.
+* Eine positive Zahl, sodass Folgendes gilt: `sqrt(x) * sqrt(x) == x`.
 * `null`, wenn das Argument negativ ist oder nicht in einen `real`-Wert konvertiert werden kann.
 
 
@@ -1612,7 +1823,7 @@ Die Quadratwurzelfunktion.
 
 [ago](#ago) | [dayofmonth](#dayofmonth) | [dayofweek](#dayofweek) | [dayofyear](#dayofyear) |[datepart](#datepart) | [endofday](#endofday) | [endofmonth](#endofmonth) | [endofweek](#endofweek) | [endofyear](#endofyear) | [getmonth](#getmonth)| [getyear](#getyear) | [now](#now) | [startofday](#startofday) | [startofmonth](#startofmonth) | [startofweek](#startofweek) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan) | [weekofyear](#weekofyear)
 
-### Datum und Uhrzeit – Literale
+### Datum und Uhrzeit – Literale
 
 |||
 ---|---
@@ -1622,19 +1833,19 @@ Die Quadratwurzelfunktion.
 `now(`-*timespan*`)`|`now()-`*timespan*
 `ago(`*timespan*`)`|`now()-`*timespan*
 **timespan**|
-`2d`|2 Tage
+`2d`|2 Tage
 `1.5h`|1,5 Stunden 
 `30m`|30 Minuten
-`10s`|10 Sekunden
-`0.1s`|0,1 Sekunde
-`100ms`| 100 Millisekunden
+`10s`|10 Sekunden
+`0.1s`|0,1 Sekunde
+`100ms`| 100 Millisekunden
 `10microsecond`|
-`1tick`|100 ns
+`1tick`|100 ns
 `time("15 seconds")`|
-`time("2")`| 2 Tage
+`time("2")`| 2 Tage
 `time("0.12:34:56.7")`|`0d+12h+34m+56.7s`
 
-### Datum und Uhrzeit – Ausdrücke
+### Datum und Uhrzeit – Ausdrücke
 
 Ausdruck |Ergebnis
 ---|---
@@ -1642,7 +1853,7 @@ Ausdruck |Ergebnis
 `datetime("2015-01-01") + 1d`| `datetime("2015-01-02")`
 `datetime("2015-01-01") - 1d`| `datetime("2014-12-31")`
 `2h * 24` | `2d`
-`2d`/`2h` | `24`
+`2d` / `2h` | `24`
 `datetime("2015-04-15T22:33") % 1d` | `timespan("22:33")`
 `bin(datetime("2015-04-15T22:33"), 1d)` | `datetime("2015-04-15T00:00")`
 ||
@@ -1693,7 +1904,7 @@ Extrahiert einen bestimmten Abschnitt eines Datums als ganze Zahl.
 
 **Argumente**
 
-* `part:String` - {„Jahr“, „Monat“, „Tag“, „Stunde“, „Minute“, „Sekunde“, „Millisekunde“, „Mikrosekunde“, „Nanosekunde“}
+* `part:String` – {„Jahr“, „Monat“, „Tag“, „Stunde“, „Minute“, „Sekunde“, „Millisekunde“, „Mikrosekunde“, „Nanosekunde“}
 * `datetime`
 
 **Rückgabe**
@@ -1985,7 +2196,7 @@ Wenn keine Übereinstimmung vorhanden ist oder bei der Typkonvertierung ein Fehl
 
 **Beispiele**
 
-Die Beispielzeichenfolge `Trace` wird nach einer Definition für `Duration` durchsucht. Die Übereinstimmung wird in `real` konvertiert und dann mit einer Zeitkonstanten (`1s`) multipliziert, damit `Duration` den Typ `timespan` erhält. In diesem Beispiel entspricht dies 123,45 Sekunden:
+Die Beispielzeichenfolge `Trace` wird nach einer Definition für `Duration` durchsucht. Die Übereinstimmung wird in `real` konvertiert und dann mit einer Zeitkonstanten (`1s`) multipliziert, damit `Duration` den Typ `timespan` erhält. In diesem Beispiel entspricht dies 123,45 Sekunden:
 
 ```AIQL
 ...
@@ -2049,7 +2260,7 @@ Ersetzen Sie alle regex-Übereinstimmungen mit einer anderen Zeichenfolge.
 **Argumente**
 
 * *regex:* Der [reguläre Ausdruck](https://github.com/google/re2/wiki/Syntax) zum Durchsuchen von *text*. Er kann Erfassungsgruppen in „('Klammern')“ enthalten.
-* *rewrite:* Der reguläre Ersetzungsausdruck für jede Übereinstimmung, die mit *matchingRegex* erzielt wurde. Verwenden Sie `\0`, um auf die gesamte Übereinstimmung zu verweisen, `\1` für die erste Erfassungsgruppe, `\2` usw. für nachfolgende Erfassungsgruppen.
+* *rewrite:* Der reguläre Ersetzungsausdruck für jede Übereinstimmung, die mit *matchingRegex* erzielt wurde. Verwenden Sie `\0`, um auf die gesamte Übereinstimmung zu verweisen: `\1` für die erste Erfassungsgruppe, `\2` usw. für nachfolgende Erfassungsgruppen.
 * *text:* Eine Zeichenfolge.
 
 **Rückgabe**
@@ -2116,7 +2327,7 @@ split("aabbcc", "bb")         // ["aa","cc"]
 
     strcat("hello", " ", "world")
 
-Verkettet zwischen 1 und 16 Argumente, bei denen es sich um Zeichenfolgen handeln muss.
+Verkettet zwischen 1 und 16 Argumente, bei denen es sich um Zeichenfolgen handeln muss.
 
 ### strlen
 
@@ -2500,4 +2711,4 @@ Geben Sie einen Namen mit ['... '] oder [" ... "] an, um andere Zeichen einzubez
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

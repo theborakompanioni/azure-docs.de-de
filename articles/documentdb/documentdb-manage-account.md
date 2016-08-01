@@ -19,7 +19,7 @@
 
 # Verwalten eines DocumentDB-Kontos
 
-Erfahren Sie, wie Sie für global verfügbare Daten die globale Konsistenz sicherstellen und mehrere Regionen verwalten. Erfahren Sie, wie Sie mit Schlüsseln arbeiten und ein Konto im Azure-Portal löschen.
+Erfahren Sie, wie Sie in Azure DocumentDB für global verfügbare Daten die globale Konsistenz sicherstellen und mehrere Regionen verwalten. Erfahren Sie, wie Sie mit Schlüsseln arbeiten und ein Konto im Azure-Portal löschen.
 
 ## <a id="consistency"></a>Verwalten von DocumentDB-Konsistenzeinstellungen
 
@@ -33,7 +33,7 @@ Die Auswahl der richtigen Konsistenzebene richtet sich nach der Semantik Ihrer A
 3. Klicken Sie auf dem Blatt **Alle Einstellungen** auf den Eintrag **Standardkonsistenz** unter **Feature**. ![Standardkonsistenz - Sitzung][6]
 
 4. Wählen Sie im Blatt **Standardkonsistenz** die neue Konsistenzebene aus und klicken Sie auf **Speichern**.
-
+5. Sie können den Fortschritt des Vorgangs im Notification Hub des Azure-Portals überwachen.
 
 > [AZURE.NOTE] Beachten Sie, dass es einige Minuten dauern kann, bis sich die Änderung der Standardkonsistenz auf Ihr DocumentDB-Konto auswirkt.
 
@@ -86,7 +86,7 @@ Zudem enthält es Nur-Lese-Schlüssel, um Benutzern den schreibgeschützten Zugr
 
 ### Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal
 
-1. Greifen Sie im [Azure-Portal](https://portal.azure.com/) auf Ihr DocumentDB-Konto zu. 
+1. Greifen Sie im [Azure-Portal](https://portal.azure.com/) auf Ihr DocumentDB-Konto zu.
 2. Klicken Sie auf der Leiste **Essentials** des Blatts **DocumentDB-Konto** auf **Schlüssel**.
 3. Klicken Sie im Blatt **Schlüssel** rechts neben dem Schlüssel, den Sie kopieren möchten, auf die Schaltfläche **Kopieren**. ![Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal, Blatt „Schlüssel“](./media/documentdb-manage-account/copykeys.png)
 
@@ -96,7 +96,7 @@ Sie sollten regelmäßig die Zugriffsschlüssel für Ihr DocumentDB-Konto änder
 
 > [AZURE.WARNING] Das erneute Generieren der Zugriffsschlüssel wirkt sich auf alle Anwendungen aus, die vom aktuellen Schlüssel abhängen. Alle Clients, die den Zugriffsschlüssel verwenden, um auf das DocumentDB-Konto zuzugreifen, müssen aktualisiert werden, um den neuen Schlüssel zu verwenden.
 
-Falls Sie über Webanwendungen oder Cloud-Dienste verfügen, die das DocumentDB-Konto verwenden, verlieren Sie die Verbindungen beim erneuten Generieren von Schlüsseln – es sei denn, Sie führen einen Rollup für die Schlüssel aus. Die folgenden Schritte stellen den Prozess für das Rollup der Schlüssel dar.
+Falls Sie über Webanwendungen oder Cloud-Dienste verfügen, die das DocumentDB-Konto verwenden, verlieren Sie die Verbindungen beim erneuten Generieren von Schlüsseln – es sei denn, Sie führen einen Rollup für die Schlüssel aus. Die folgenden Schritte stellen den Prozess für das Rollup der Schlüssel dar.
 
 1. Aktualisieren Sie den Zugriffsschlüssel im Anwendungscode, damit er auf den sekundären Zugriffsschlüssel des DocumentDB-Kontos verweist.
 
@@ -106,7 +106,7 @@ Falls Sie über Webanwendungen oder Cloud-Dienste verfügen, die das DocumentDB-
 
 4. Klicken Sie im Blatt **Schlüssel** auf den Befehl **Primären Zugriffsschlüssel neu generieren**, und klicken Sie dann auf **OK**, um das Generieren eines neuen Schlüssels zu bestätigen.
 
-5. Sobald Sie sichergestellt haben, dass der neue Schlüssel verwendet werden kann (etwa 5 Minuten nach der erneuten Erzeugung), aktualisieren Sie den Zugriffsschlüssel im Anwendungscode, damit er auf den neuen primären Zugriffsschlüssel verweist.
+5. Sobald Sie sichergestellt haben, dass der neue Schlüssel verwendet werden kann (etwa 5 Minuten nach der erneuten Erzeugung), aktualisieren Sie den Zugriffsschlüssel im Anwendungscode, damit er auf den neuen primären Zugriffsschlüssel verweist.
 
 6. Generieren Sie den sekundären Zugriffsschlüssel neu.
 
@@ -145,4 +145,4 @@ Weitere Informationen zu DocumentDB finden Sie in der Azure DocumentDB-Dokumenta
 [azureregions]: https://azure.microsoft.com/de-DE/regions/#services
 [offers]: https://azure.microsoft.com/de-DE/pricing/details/documentdb/
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

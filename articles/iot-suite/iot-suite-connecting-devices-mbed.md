@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/26/2016"
+   ms.date="07/14/2016"
    ms.author="dobett"/>
 
 
@@ -22,11 +22,11 @@
 
 [AZURE.INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-## Erstellen und Ausführen der C-Beispielprojektmappe unter mbed
+## Erstellen und Ausführen der C-Beispielprojektmappe
 
 Im Folgenden werden die Schritte zum Verbinden eines [mbed-fähigen Freescale FRDM-K64F-Geräts][lnk-mbed-home] mit der Remoteüberwachungslösung beschrieben.
 
-### Verbinden des Geräts mit Ihrem Netzwerk und Desktopcomputer
+### Verbinden des mbed-Geräts mit Ihrem Netzwerk und Desktopcomputer
 
 1. Verbinden Sie das mbed-Gerät mithilfe eines Ethernet-Kabels mit Ihrem Netzwerk. Dieser Schritt ist erforderlich, da die Beispielanwendung Zugriff auf das Internet benötigt.
 
@@ -36,7 +36,7 @@ Im Folgenden werden die Schritte zum Verbinden eines [mbed-fähigen Freescale FR
 
 ### Erstellen eines mbed-Projekts und Importieren des Beispielcodes
 
-1. Wechseln Sie in Ihrem Webbrowser zur [Entwicklerwebsite](https://developer.mbed.org/) von mbed.org. Wenn Sie sich noch nicht registriert haben, können Sie die Option zum Erstellen eines neuen Kontos verwenden (kostenlos). Melden Sie sich andernfalls mit Ihren Anmeldeinformationen an. Klicken Sie anschließend rechts oben auf der Seite auf **Compiler**. Sie gelangen auf die Benutzeroberfläche für die Arbeitsbereichsverwaltung.
+1. Wechseln Sie in Ihrem Webbrowser zur [Entwicklerwebsite](https://developer.mbed.org/) von mbed.org. Wenn Sie sich noch nicht registriert haben, können Sie die Option zum Erstellen eines neuen Kontos verwenden (kostenlos). Melden Sie sich andernfalls mit Ihren Anmeldeinformationen an. Klicken Sie anschließend rechts oben auf der Seite auf **Compiler**. Dadurch gelangen Sie zur Schnittstelle *Arbeitsbereich*.
 
 2. Stellen Sie sicher, dass die von Ihnen verwendete Hardwareplattform in der oberen rechten Ecke des Fensters angezeigt wird, oder klicken Sie auf das Symbol in der rechten Ecke, um Ihre Hardwareplattform auszuwählen.
 
@@ -48,7 +48,7 @@ Im Folgenden werden die Schritte zum Verbinden eines [mbed-fähigen Freescale FR
 
     ![][7]
 
-5. Im Fenster des mbed-Compilers sehen Sie, dass der Import dieses Projekts verschiedene Bibliotheken umfasst. Einige werden vom Azure IoT-Team verwaltet ([azureiot\_common](https://developer.mbed.org/users/AzureIoTClient/code/azureiot_common/), [iothub\_client](https://developer.mbed.org/users/AzureIoTClient/code/iothub_client/), [iothub\_amqp\_transport](https://developer.mbed.org/users/AzureIoTClient/code/iothub_amqp_transport/), [azure\_uamqp](https://developer.mbed.org/users/AzureIoTClient/code/azure_uamqp/)), und bei anderen handelt es sich um Bibliotheken von Drittanbietern, die im Katalog mit den mbed-Bibliotheken verfügbar sind.
+5. Im Fenster des mbed-Compilers sehen Sie, dass während des Imports dieses Projekts auch verschiedene Bibliotheken importiert werden. Einige werden vom Azure IoT-Team bereitgestellt und verwaltet ([azureiot\_common](https://developer.mbed.org/users/AzureIoTClient/code/azureiot_common/), [iothub\_client](https://developer.mbed.org/users/AzureIoTClient/code/iothub_client/), [iothub\_amqp\_transport](https://developer.mbed.org/users/AzureIoTClient/code/iothub_amqp_transport/), [azure\_uamqp](https://developer.mbed.org/users/AzureIoTClient/code/azure_uamqp/)), bei anderen handelt es sich um Bibliotheken von Drittanbietern, die im Katalog mit den mbed-Bibliotheken verfügbar sind.
 
     ![][8]
 
@@ -61,7 +61,7 @@ Im Folgenden werden die Schritte zum Verbinden eines [mbed-fähigen Freescale FR
     static const char* hubSuffix = "[IoTHub Suffix, i.e. azure-devices.net]";
     ```
 
-7. Ersetzen Sie [Device Id] und [Device Key] durch Ihre Gerätedaten, damit das Beispielprogramm eine Verbindung mit Ihrem IoT Hub herstellen kann. Verwenden Sie den Wert für „IoT Hub Hostname“, um die Platzhalter [IoTHub Name] und [IoTHub Suffix, d. h. „azure-devices.net“] zu ersetzen. Wenn der IoT Hub-Hostname also beispielsweise „contoso.azure-devices.net“ lautet, ist „Contoso“ der **hubName**, und der restliche Text ist das **hubSuffix**.
+7. Ersetzen Sie [Device Id] und [Device Key] durch Ihre Gerätedaten, damit das Beispielprogramm eine Verbindung mit Ihrem IoT Hub herstellen kann. Verwenden Sie den Wert für „IoT Hub Hostname“, um die Platzhalter [IoTHub Name] und [IoTHub Suffix, d. h. „azure-devices.net“] zu ersetzen. Wenn der IoT Hub-Hostname also beispielsweise **contoso.azure-devices.net** lautet, ist **contoso** der **hubName**, und der restliche Text ist das **hubSuffix**:
 
     ```
     static const char* deviceId = "mydevice";
@@ -78,7 +78,7 @@ Wenn Sie daran interessiert sind, wie das Programm funktioniert, können Sie sic
 
 #### Definieren des Modells
 
-In diesem Beispiel wird die Serialisierungsbibliothek ([serializer][lnk-serializer]) zum Definieren eines Modells verwendet, mit dem die Nachrichten angegeben werden, die vom Gerät an den IoT Hub gesendet und vom IoT Hub empfangen werden können. In diesem Beispiel definiert der **Contoso**-Namespace das Modell **Thermostat**, mit dem die Telemetriedaten **Temperature** (Temperatur), **ExternalTemperature** (Außentemperatur) und **Humidity** (Luftfeuchtigkeit) sowie Metadaten angegeben werden, z.B. die Geräte-ID, Geräteeigenschaften und die Befehle, auf die das Gerät reagiert:
+In diesem Beispiel wird die Serialisierungsbibliothek ([serializer][lnk-serializer]) zum Definieren eines Modells verwendet, mit dem die Nachrichten angegeben werden, die vom Gerät an IoT Hub gesendet und von IoT Hub empfangen werden können. In diesem Beispiel definiert der Namespace **Contoso** das Modell **Thermostat**, mit dem die Telemetriedaten **Temperature** (Temperatur), **ExternalTemperature** (Außentemperatur) und **Humidity** (Luftfeuchtigkeit) sowie Metadaten angegeben werden, z.B. die Geräte-ID, Geräteeigenschaften und die Befehle, auf die das Gerät reagiert:
 
 ```
 BEGIN_NAMESPACE(Contoso);
@@ -136,13 +136,13 @@ EXECUTE_COMMAND_RESULT SetHumidity(Thermostat* thermostat, int humidity)
 
 #### Herstellen einer Verbindung zwischen Modell und Bibliothek
 
-Die Funktionen **sendMessage** und **IoTHubMessage** sind Codebausteine zum Senden von Telemetriedaten vom Gerät und Verbinden von Nachrichten vom IoT Hub mit den Befehlshandlern.
+Die Funktionen **sendMessage** und **IoTHubMessage** sind Codebausteine zum Senden von Telemetriedaten vom Gerät und zum Verbinden der Nachrichten von IoT Hub mit den Befehlshandlern.
 
 #### Funktion „remote\_monitoring\_run“
 
-Die Funktion **main** des Programms ruft die Funktion **remote\_monitoring\_run** auf, wenn die Anwendung gestartet wird, um das Verhalten des Geräts als IoT Hub-Geräteclient auszuführen. Die Funktion **remote\_monitoring\_run** besteht hauptsächlich aus verschachtelten Funktionspaaren:
+Die Funktion **main** des Programms ruft die Funktion **remote\_monitoring\_run** auf, wenn die Anwendung gestartet wird, um das Verhalten des Geräts als IoT Hub-Geräteclient auszuführen. Die Funktion **remote\_monitoring\_run** besteht hauptsächlich aus geschachtelten Funktionspaaren:
 
-- Mit **platform\_init** und **platform\_deinit** werden plattformspezifische Vorgänge für die Initialisierung und zum Herunterfahren durchgeführt.
+- Mit **platform\_init** und **platform\_deinit** werden plattformspezifische Vorgänge zum Initialisieren und Herunterfahren durchgeführt.
 - Mit **serializer\_init** und **serializer\_deinit** wird die Serialisierungsbibliothek initialisiert und deren Initialisierung aufgehoben.
 - Mit **IoTHubClient\_Create** und **IoTHubClient\_Destroy** wird ein Clienthandle (**iotHubClientHandle**) erstellt, indem die Geräteanmeldeinformationen zum Herstellen der Verbindung mit Ihrem IoT Hub verwendet werden.
 
@@ -150,9 +150,9 @@ Im Hauptteil der Funktion **remote\_monitoring\_run** führt das Programm die fo
 
 - Erstellt eine Instanz des Contoso-Thermostat-Modells und richtet die Nachrichtenrückrufe für die beiden Befehle ein.
 - Sendet über die Serialisierungsbibliothek Informationen zum Gerät selbst, einschließlich der unterstützten Befehle, an Ihren IoT Hub. Wenn der Hub diese Nachricht empfängt, wird der Gerätestatus im Dashboard von **Ausstehend** in **Wird ausgeführt** geändert.
-- Startet eine **while**-Schleife, mit der Werte zu Temperatur, Außentemperatur und Luftfeuchtigkeit jede Sekunde an den IoT Hub gesendet werden.
+- Startet eine **while**-Schleife, mit der jede Sekunde Werte zu Temperatur, Außentemperatur und Luftfeuchtigkeit an IoT Hub gesendet werden.
 
-Zu Referenzzwecken finden Sie nachstehend ein Beispiel für die **DeviceInfo**-Nachricht, die beim Start an IoT Hub gesendet wurde:
+Zu Referenzzwecken finden Sie nachstehend ein Beispiel für die **DeviceInfo**-Nachricht, die beim Start an IoT Hub gesendet wird:
 
 ```
 {
@@ -171,13 +171,13 @@ Zu Referenzzwecken finden Sie nachstehend ein Beispiel für die **DeviceInfo**-N
 }
 ```
 
-Zu Referenzzwecken finden Sie nachstehend ein Beispiel für die **Telemetry**-Nachricht, die an IoT Hub gesendet wurde:
+Zu Referenzzwecken finden Sie nachstehend ein Beispiel für die **Telemetrie**-Nachricht, die an IoT Hub gesendet wird:
 
 ```
 {"DeviceId":"mydevice01", "Temperature":50, "Humidity":50, "ExternalTemperature":55}
 ```
 
-Zu Referenzzwecken finden Sie nachstehend ein Beispiel für einen **Befehl**, der vom IoT Hub empfangen wurde:
+Zu Referenzzwecken finden Sie nachstehend ein Beispiel für einen **Befehl**, der von IoT Hub empfangen wird:
 
 ```
 {
@@ -195,11 +195,11 @@ Zu Referenzzwecken finden Sie nachstehend ein Beispiel für einen **Befehl**, de
 
 2. Wenn die Erstellung erfolgreich ist, generiert die mbed-Compilerwebsite eine BIN-Datei mit dem Namen Ihres Projekts und lädt sie auf Ihren lokalen Computer herunter. Kopieren Sie die BIN-Datei auf das Gerät. Durch das Speichern der BIN-Datei auf dem Gerät wird dieses neu gestartet, und das in der BIN-Datei enthaltene Programm wird ausgeführt. Sie können das Programm zu einem beliebigen Zeitpunkt starten, indem Sie die Schaltfläche zum Zurücksetzen am mbed-Gerät drücken.
 
-3. Stellen Sie mit einer SSH-Clientanwendung eine Verbindung mit dem Gerät her, z. B. PuTTY. Sie können ermitteln, welcher serielle Port von Ihrem Gerät verwendet wird, indem Sie dies im Windows-Geräte-Manager überprüfen:
+3. Stellen Sie mit einer SSH-Clientanwendung eine Verbindung mit dem Gerät her, z. B. PuTTY. Sie können ermitteln, welcher serielle Port von Ihrem Gerät verwendet wird, indem Sie dies im Windows-Geräte-Manager überprüfen.
 
     ![][11]
 
-4. Klicken Sie in PuTTY auf den Verbindungstyp **Seriell**. Das Gerät stellt in der Regel eine Verbindung mit 9.600 Baud her. Geben Sie also in das Feld **Geschwindigkeit** den Wert „9600“ ein. Klicken Sie anschließend auf **Öffnen**.
+4. Klicken Sie in PuTTY auf den Verbindungstyp **Seriell**. Das Gerät stellt in der Regel eine Verbindung mit 9.600 Baud her. Geben Sie also in das Feld **Geschwindigkeit** den Wert „9600“ ein. Klicken Sie dann auf **Öffnen**.
 
 5. Das Programm wird gestartet. Unter Umständen müssen Sie das Board zurücksetzen (drücken Sie STRG+UNTBR, oder drücken Sie die Reset-Taste des Boards), falls das Programm nach dem Herstellen der Verbindung nicht automatisch gestartet wird.
 
@@ -220,4 +220,4 @@ Zu Referenzzwecken finden Sie nachstehend ein Beispiel für einen **Befehl**, de
 [lnk-mbed-pcconnect]: https://developer.mbed.org/platforms/FRDM-K64F/#pc-configuration
 [lnk-serializer]: https://azure.microsoft.com/documentation/articles/iot-hub-device-sdk-c-intro/#serializer
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

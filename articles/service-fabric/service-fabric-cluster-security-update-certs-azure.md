@@ -25,12 +25,12 @@ Service Fabric ermöglicht Ihnen, zwei Zertifikate anzugeben – ein primäres u
 ## Hinzufügen eines sekundären Zertifikats
 Um ein anderes Zertifikat als sekundäres hinzuzufügen, müssen Sie das Zertifikat in einen Azure-Schlüsseltresor hochladen und dann für die virtuellen Computer im Cluster bereitstellen. Weitere Informationen finden Sie unter [Deploy certificates to VMs from a customer-managed Key Vault](http://blogs.technet.com/b/kv/archive/2015/07/14/vm_2d00_certificates.aspx) (Bereitstellen von Zertifikaten für VMs über einen vom Kunden verwalteten Schlüsseltresor).
 
-1. [Hochladen eines X.509-Zertifikats in den Schlüsseltresor](service-fabric-cluster-azure-secure-with-certs.md#step-2-upload-the-x509-certificate-to-the-key-vault)
+1. [Hochladen eines X.509-Zertifikats in den Schlüsseltresor](service-fabric-secure-azure-cluster-with-certs.md#step-2-upload-the-x509-certificate-to-the-key-vault)
 2. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und wechseln Sie zu der Clusterressource, der Sie dieses Zertifikat hinzufügen möchten.
 3. Klicken Sie unter **Einstellungen** auf die Zertifikateinstellung, und geben Sie den sekundären Zertifikatfingerabdruck ein.
 4. Klicken Sie auf **Speichern**. Eine Bereitstellung wird gestartet, nach deren erfolgreichem Abschluss Sie sowohl das primäre als auch das sekundäre Zertifikat zum Ausführen von Verwaltungsvorgängen im Cluster verwenden können.
 
-![Screenshot mit Zertifikatfingerabdrücken im Portal][SecurityConfigurations_02]
+![Screenshot mit Zertifikatfingerabdrücken im Portal][SecurityConfigurations\_02]
 
 ## Entfernen eines Zertifikats
 Es folgt der Prozess zum Entfernen eines alten Zertifikats, damit der Cluster es nicht mehr verwendet:
@@ -49,4 +49,4 @@ Lesen Sie die folgenden Artikel, um weitere Informationen zur Clusterverwaltung 
 <!--Image references-->
 [SecurityConfigurations_02]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_02.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0720_2016-->

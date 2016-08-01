@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/01/2016" 
+	ms.date="07/19/2016" 
 	ms.author="josephd"/>
 
 # Einrichten einer Hybrid Cloud-Umgebung zu Testzwecken
@@ -41,7 +41,7 @@ Das Einrichten dieser Hybrid Cloud-Testumgebung umfasst folgenden fünf Phasen:
 2.	Konfigurieren von RRAS1
 3.	Erstellen des standortübergreifenden virtuellen Azure-Netzwerks
 4.	Erstellen der Site-to-Site-VPN-Verbindung
-5.	Konfigurieren von DC2 
+5.	Konfigurieren von DC2
 
 Wenn Sie noch kein Azure-Abonnement besitzen, können Sie sich unter [Azure ausprobieren](https://azure.microsoft.com/pricing/free-trial/) für ein kostenloses Konto registrieren. Wenn Sie ein MSDN- oder Visual Studio-Abonnement besitzen, finden Sie weitere Informationen unter [Monatliche Azure-Gutschrift für Visual Studio-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
 
@@ -77,7 +77,7 @@ Installieren Sie zunächst das Betriebssystem für RRAS1.
 
 Als Nächstes konfigurieren Sie die TCP/IP-Eigenschaften von RRAS1. Sie benötigen eine öffentliche IP-Adresskonfiguration, einschließlich einer Adresse, Subnetzmaske (oder Präfixlänge), und das Standardgateway und DNS-Server von Ihrem Internet-Service Provider (ISP). Sie benötigen die öffentliche IP-Adresse für Phase 3.
 
-Verwenden Sie diese Befehle in einer Windows PowerShell-Eingabeaufforderung auf Administratorebene für RRAS1. Füllen Sie vor dem Ausführen dieser Befehle die Variablenwerte aus, und entfernen Sie die Zeichen < and >. Sie können die aktuellen Namen der Netzwerkkarten der Anzeige des Befehls **Get-NetAdapter** entnehmen.
+Verwenden Sie diese Befehle in einer Windows PowerShell-Eingabeaufforderung auf Administratorebene für RRAS1. Füllen Sie vor dem Ausführen dieser Befehle die Variablenwerte aus, und entfernen Sie die Zeichen < und >. Sie können die aktuellen Namen der Netzwerkkarten der Anzeige des Befehls **Get-NetAdapter** entnehmen.
 
 	$corpnetAdapterName="<Name of the adapter attached to the Corpnet subnet>"
 	$internetAdapterName="<Name of the adapter attached to the Internet>"
@@ -108,7 +108,7 @@ Die aktuelle Konfiguration sieht folgendermaßen aus.
 
 Starten Sie eine Azure PowerShell-Eingabeaufforderung.
 
-> [AZURE.NOTE] Die folgenden Befehlssätze verwenden Azure PowerShell 1.0 und höher. Weitere Informationen finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/) (in englischer Sprache).
+> [AZURE.NOTE] Die folgenden Befehlssätze verwenden Azure PowerShell 1.0 und höher. Weitere Informationen finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/) (in englischer Sprache).
 
 Melden Sie sich bei Ihrem Konto an.
 
@@ -118,7 +118,7 @@ Rufen Sie Ihren Abonnementnamen mit dem folgenden Befehl ab.
 
 	Get-AzureRMSubscription | Sort SubscriptionName | Select SubscriptionName
 
-Legen Sie Ihr Azure-Abonnement fest. Verwenden Sie das gleiche Abonnement, das Sie zum Erstellen der grundlegenden Konfiguration verwendet haben. Ersetzen Sie alles in den Anführungszeichen, einschließlich der Zeichen < and >, durch die korrekten Namen.
+Legen Sie Ihr Azure-Abonnement fest. Verwenden Sie das gleiche Abonnement, das Sie zum Erstellen der grundlegenden Konfiguration verwendet haben. Ersetzen Sie alles in den Anführungszeichen, einschließlich der Zeichen < und >, durch die korrekten Namen.
 
 	$subscr="<subscription name>"
 	Get-AzureRmSubscription –SubscriptionName $subscr | Select-AzureRmSubscription
@@ -179,7 +179,7 @@ Verwenden Sie diese Befehle, um die Gateways für die Site-to-Site-VPN-Verbindun
 	$localNetworkPrefix="10.0.0.0/8"
 	$localGateway=New-AzureRMLocalNetworkGateway -Name $localGatewayName -ResourceGroupName $rgName -Location $locName -GatewayIpAddress $localGatewayIP -AddressPrefix $localNetworkPrefix
 
-Bedenken Sie, dass die Erstellung neuer Gateways 20 Minuten oder mehr in Anspruch nehmen kann.
+Bedenken Sie, dass die Erstellung neuer Gateways 20 Minuten oder mehr in Anspruch nehmen kann.
 
 Als Nächstes verwenden Sie den folgenden Befehl zum Ermitteln der öffentlichen IP-Adresse des Azure VPN Gateways für Ihr virtuelles Netzwerk.
 
@@ -223,7 +223,7 @@ Warten Sie einige Minuten, bis die Verbindung zwischen RRAS1 und dem Azure VPN G
 
 Als Nächstes konfigurieren Sie RRAS1 zur Unterstützung von übersetztem Datenverkehr für Internetspeicherorte. Führen Sie für RRAS1 folgende Schritte aus:
 
-1.	Geben Sie im Startbildschirm **rras** ein, und klicken Sie dann auf **Routing und Remotezugriff**. 
+1.	Geben Sie im Startbildschirm **rras** ein, und klicken Sie dann auf **Routing und Remotezugriff**.
 2.	Öffnen Sie in der Konsolenstruktur den Servernamen, und klicken Sie dann auf **IPv4**.
 3.	Klicken Sie mit der rechten Maustaste auf **Allgemein**, und klicken Sie dann auf **Neues Routingprotokoll**.
 4.	Klicken Sie auf **NAT** und anschließend auf **OK**.
@@ -329,4 +329,4 @@ Die Hybrid Cloud-Umgebung kann nun getestet werden.
 
 - Richten Sie in dieser Umgebung eine [SharePoint-Intranetfarm](virtual-machines-windows-ps-hybrid-cloud-test-env-sp.md), eine [webbasierte Branchenanwendung](virtual-machines-windows-ps-hybrid-cloud-test-env-lob.md) oder einen [Office 365-Verzeichnissynchronisierungsserver (DirSync)](virtual-machines-windows-ps-hybrid-cloud-test-env-dirsync.md) ein.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

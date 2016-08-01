@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="05/02/2016"
+	ms.date="07/19/2016"
 	ms.author="carlrab" />
 
 
@@ -60,7 +60,7 @@ Eine erweiterte Definition der einzelnen Ressourcen, die in den vorangehenden Ta
 | Bereich | Begrenzung | Beschreibung |
 |---|---|---|
 | Datenbanken mit automatisiertem Export pro Abonnement | 10 | Automatisierter Export ermöglicht es Ihnen, einen benutzerdefinierten Zeitplan für die Sicherung Ihrer SQL-Datenbanken zu erstellen. Weitere Informationen finden Sie unter [SQL Databases: Support for Automated SQL Database Exports](http://weblogs.asp.net/scottgu/windows-azure-july-updates-sql-database-traffic-manager-autoscale-virtual-machines).|
-| Datenbanken pro Server | Bis zu 5.000 | Bis zu 5.000 Datenbanken pro Server sind auf V12-Servern zulässig. In der Praxis gelten möglicherweise niedrigere Grenzwerte, abhängig von der Anmeldeaktivität in allen Datenbanken auf dem Server und der Abfragenutzung von Systemsichten in der Masterdatenbank. Die Kunden sollten die Datenbankverbindungen auf Probleme überwachen, wenn die Anzahl der Datenbanken auf einem Server deutlich steigt. |  
+| Datenbanken pro Server | Bis zu 5.000 | Bis zu 5.000 Datenbanken pro Server sind auf V12-Servern zulässig. |  
 | DTUs pro Server. | 45000 | 45\.000 DTUs pro Server sind auf V12-Servern für die Bereitstellung von Datenbanken, elastischen Pools und Data Warehouses verfügbar. |
 
 
@@ -73,4 +73,4 @@ Eine erweiterte Definition der einzelnen Ressourcen, die in den vorangehenden Ta
 
 [Fehlermeldungen für Clientprogramme der SQL-Datenbank](sql-database-develop-error-messages.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

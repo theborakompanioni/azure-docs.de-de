@@ -19,11 +19,21 @@
 
 # Data Science für Einsteiger, 1. Video: Die 5 Fragen, die Data Science beantwortet
 
-In den fünf kurzen Videos der Reihe *Data Science für Einsteiger* erhalten Sie eine kurze Einführung in Data Science. Diese Videoreihe ist hilfreich, wenn Sie an Data Science interessiert sind oder mit Leuten zusammenarbeiten, die sich mit Data Science beschäftigen, und sich mit den grundlegenden Konzepten vertraut machen möchten.
+In den fünf kurzen Videos der Reihe *Data Science für Einsteiger* erhalten Sie eine kurze Einführung in Data Science. Diese Videoreihe ist hilfreich, wenn Sie an Data Science interessiert sind oder mit Leuten zusammenarbeiten, die sich mit Data Science beschäftigen, und sich mit einigen grundlegenden Konzepten vertraut machen möchten.
 
-Die Reihe bietet den größten Nutzen, wenn Sie sich die Videos in der vorgegebenen Reihenfolge ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)
+In diesem ersten Video geht es um die Arten von Fragen, die Data Science beantworten kann. Data Science prognostiziert Antworten auf Fragen mithilfe einer Zahl oder Kategorie. Die Reihe bietet den größten Nutzen, wenn Sie sich die Videos in der vorgegebenen Reihenfolge ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)
 
 > [AZURE.VIDEO data-science-for-beginners-series-the-5-questions-data-science-answers]
+
+## Andere Videos in dieser Reihe
+
+In *Data Science für Einsteiger* erhalten Sie eine ca. 25 Minuten dauernde Schnelleinführung in Data Science. Sehen Sie sich die anderen vier Videos an:
+
+  * 1\. Video: Die 5 Fragen, die Data Science beantwortet
+  * 2\. Video: [Sind Ihre Daten für Data Science bereit?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4:56 Min.)*
+  * 3\. Video: [Stellen einer Frage, die Sie mit Daten beantworten können](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4:17 Min.)*
+  * 4\. Video: [Vorhersagen einer Antwort mit einem einfachen Modell](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7:42 Min.)*
+  * 5\. Video: [Kopieren der Arbeit anderer für Ihre Data Science](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3:18 Min.)*
 
 ## Aufzeichnung: Die 5 Fragen, die Data Science beantwortet
 
@@ -46,7 +56,7 @@ Es mag Sie vielleicht überraschen, doch *es gibt nur fünf Fragen, die Data Sci
   Jede dieser Fragen wird mithilfe einer eigenen Gruppe von Machine Learning-Methoden beantwortet, die Algorithmen genannt werden.
 
 
-Es ist hilfreich, sich einen Algorithmus als Rezept und Ihre Daten als die Zutaten vorzustellen. Ein Algorithmus gibt vor, wie die Daten zu kombinieren und mischen sind, um eine Antwort zu erhalten. Computer fungieren dabei als ein Mixer. Sie übernehmen einen Großteil der harten Arbeit des Algorithmus für Sie, und zwar ziemlich schnell.
+Es ist hilfreich, sich einen Algorithmus als Rezept und Ihre Daten als die Zutaten vorzustellen. Ein Algorithmus gibt vor, wie die Daten zu kombinieren und zu mischen sind, um eine Antwort zu erhalten. Computer fungieren dabei als ein Mixer. Sie übernehmen einen Großteil der harten Arbeit des Algorithmus für Sie, und zwar ziemlich schnell.
 
 ## Für die 1. Frage „Ist dies A oder B?“ werden Klassifizierungsalgorithmen verwendet.
 
@@ -60,8 +70,8 @@ Sie empfiehlt sich für Fragen, die nur zwei mögliche Antworten haben.
 
 Beispiel:
 
-  *	Übersteht dieser Reifen die nächsten 1.500 km: Ja oder nein?
-  *	Was bringt mehr Kunden: ein 5-€-Gutschein oder ein Rabatt von 25 %?
+  *	Übersteht dieser Reifen die nächsten 1.500 km: ja oder nein?
+  *	Was bringt mehr Kunden: ein 5-€-Gutschein oder ein Rabatt von 25 %?
 
 Diese Frage kann auch so umformuliert werden, dass es mehr als zwei Optionen gibt: Ist dies A oder B oder C oder D usw.? Dies wird als Multiklassenklassifizierung bezeichnet und ist nützlich, wenn es mehrere (oder mehrere tausend) mögliche Antworten gibt. Die Multiklassenklassifizierung wählt die wahrscheinlichste Antwort.
 
@@ -136,19 +146,9 @@ Das sind sie also: Die 5 Fragen, die Data Science beantworten kann.
 
 
 
-## Andere Videos in dieser Reihe
-
-In fünf Kurzvideos der Reihe *Data Science für Einsteiger* erhalten Sie eine Schnelleinführung in Data Science. Sehen Sie sich die anderen vier Videos an:
-
-  * 1\. Video: Die 5 Fragen, die Data Science beantwortet
-  * 2\. Video: [Sind Ihre Daten für Data Science bereit?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md)
-  * 3\. Video: [Stellen einer Frage, die Sie mit Daten beantworten können](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)
-  * 4\. Video: [Vorhersagen einer Antwort mit einem einfachen Modell](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md)
-  * 5\. Video: [Kopieren der Arbeit anderer für Ihre Data Science](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)
-
 ## Nächste Schritte
 
   * [Durchführen Ihres ersten Data Science-Experiments mit Azure Machine Learning](machine-learning-create-experiment.md)
   * [Einführung in Machine Learning in Microsoft Azure](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

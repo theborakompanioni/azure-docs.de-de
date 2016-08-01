@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure-Speicher-Explorer | Microsoft Azure"
-	description="Enthält eine Liste der Speicher-Explorer, die das Anzeigen bzw. Interagieren mit Ihren Azure Storage-Daten ermöglichen."
+	pageTitle="Azure Storage-Clienttools | Microsoft Azure"
+	description="Enthält eine Liste der Tools, die das Anzeigen von bzw. Interagieren mit Azure Storage-Daten ermöglichen."
 	services="storage"
 	documentationCenter=""
 	authors="micurd"
@@ -13,22 +13,20 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="07/20/2016"
 	ms.author="micurd"/>
 
-# Microsoft Azure-Speicher-Explorer
+# Azure Storage-Clienttools
 
-Benutzer von Azure Storage möchten häufig dazu in der Lage sein, ihre Daten in einem „Explorer“ anzuzeigen. Hierbei handelt es sich um ein Tool, mit dem die Daten in einem Speicherkonto angezeigt werden.
+Häufig möchten Benutzer von Azure Storage ihre Daten mithilfe eines Azure Storage-Clienttools anzeigen oder mit den Daten interagieren. In den folgenden Tabellen sind eine Reihe von Tools aufgeführt, die Ihnen dies ermöglichen. Ein Block ist jeweils mit „X“ gekennzeichnet, wenn er das Aufzählen bzw. Zugreifen auf die Datenabstraktion ermöglicht. In der Tabelle ist auch angegeben, ob die Tools kostenlos sind. Mit „Testversion“ wird angegeben, dass es eine kostenlose Testversion gibt, das vollständige Produkt aber nicht kostenfrei ist. Mit „J/N“ wird angegeben, dass eine Version kostenlos erhältlich ist und eine andere Version zum Kauf zur Verfügung steht.
 
-In den folgenden Tabellen sind die verschiedenen Azure-Speicher-Explorer aufgeführt. Ein Block ist jeweils mit „X“ gekennzeichnet, wenn er das Aufzählen bzw. Zugreifen auf die Datenabstraktion ermöglicht. In der Tabelle ist auch angegeben, ob der Explorer kostenlos ist. Mit „Testversion“ wird angegeben, dass es eine kostenlose Testversion gibt, das vollständige Produkt aber nicht kostenfrei ist. Mit „J/N“ wird angegeben, dass eine Version kostenlos erhältlich ist und eine andere Version zum Kauf zur Verfügung steht.
+Dies ist nur eine Momentaufnahme der verfügbaren Azure Storage-Clienttools. Diese Tools werden ggf. weiterentwickelt und mit weiteren Funktionen ausgestattet. Wenn Korrekturen oder Updates vorhanden sind, können Sie einen Kommentar hinterlassen, um uns dies mitzuteilen. Dies gilt auch, wenn Sie Tools kennen, die hier aufgeführt sein sollten. Wir fügen sie dann gerne hinzu.
 
-Dies ist nur eine Momentaufnahme der verfügbaren Azure-Speicher-Explorer. Diese Tools werden ggf. weiterentwickelt und mit weiteren Funktionen ausgestattet. Wenn Korrekturen oder Updates vorhanden sind, können Sie einen Kommentar hinterlassen, um uns dies mitzuteilen. Dies gilt auch, wenn Sie Tools kennen, die hier aufgeführt sein sollten. Wir fügen sie dann gerne hinzu.
-
-**Microsoft Azure-Speicher-Explorer**
+**Microsoft Azure Storage-Clienttools**
 
 <table>
   <tr>
-    <th rowspan="2">Azure-Speicher-Explorer</th>
+    <th rowspan="2">Azure Storage-Clienttool</th>
     <th rowspan="2">Blockblob</th>
     <th rowspan="2">Seitenblob</th>
     <th rowspan="2">Blob anfügen</th>
@@ -65,7 +63,7 @@ Dies ist nur eine Momentaufnahme der verfügbaren Azure-Speicher-Explorer. Diese
     <td>X</td>
     <td>X</td>
     <td>X</td>
-    <td></td>
+    <td>X</td>
     <td>J</td>
     <td></td>
     <td>X</td>
@@ -88,13 +86,13 @@ Dies ist nur eine Momentaufnahme der verfügbaren Azure-Speicher-Explorer. Diese
   </tr>
 </table>
 
-**Azure-Speicher-Explorer von Drittanbietern**
+**Azure Storage-Clienttools von Drittanbietern**
 
-Wir haben die Funktionalität oder Qualität nicht überprüft, die für die folgenden Explorer von Drittanbietern angegeben wird, und das Aufführen in dieser Liste stellt keinerlei Empfehlung durch Microsoft dar.
+Wir haben die Funktionalität oder Qualität nicht überprüft, die für die folgenden Tools von Drittanbietern angegeben wird, und das Aufführen in dieser Liste stellt keinerlei Empfehlung durch Microsoft dar.
 
 <table>
   <tr>
-    <th rowspan="2">Azure-Speicher-Explorer</th>
+    <th rowspan="2">Azure Storage-Clienttool</th>
     <th rowspan="2">Blockblob</th>
     <th rowspan="2">Seitenblob</th>
     <th rowspan="2">Blob anfügen</th>
@@ -252,4 +250,4 @@ Wir haben die Funktionalität oder Qualität nicht überprüft, die für die fol
   </tr>
 </table>
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0720_2016-->

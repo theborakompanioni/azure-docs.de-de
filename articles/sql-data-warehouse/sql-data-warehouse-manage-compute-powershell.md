@@ -41,13 +41,13 @@ Informationen hierzu finden Sie in der [Übersicht über das Verwalten von Compu
 
 ### Installieren der neuesten Version von Azure PowerShell
 
-> [AZURE.NOTE]  Damit Sie Azure Powershell mit SQL Data Warehouse verwenden können, benötigen Sie Azure Powershell Version 1.0.3 oder höher. Führen Sie den Befehl **Get-Module -ListAvailable -Name Azure** aus, um Ihre aktuelle Version zu überprüfen. Die neueste Version können Sie mithilfe des [Microsoft-Webplattform-Installers][] installieren. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][].
+> [AZURE.NOTE]  Damit Sie Azure Powershell mit SQL Data Warehouse verwenden können, benötigen Sie Azure Powershell Version 1.0.3 oder höher. Führen Sie den Befehl **Get-Module -ListAvailable -Name Azure** aus, um Ihre aktuelle Version zu überprüfen. Die neueste Version können Sie mithilfe des [Microsoft-Webplattform-Installers][] installieren. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][].
 
 ### Erste Schritte mit Azure PowerShell-Cmdlets
 
 Erste Schritte:
 
-1. Öffnen Sie Azure PowerShell. 
+1. Öffnen Sie Azure PowerShell.
 2. Zum Anmelden bei Azure Resource Manager und Auswählen Ihres Abonnements führen Sie bei der PowerShell-Eingabeaufforderung die folgenden Befehle aus:
 
     ```PowerShell
@@ -125,6 +125,7 @@ Andere Verwaltungsaufgaben finden Sie in der [Verwaltungsübersicht][].
 [Service capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
 [Verwaltungsübersicht]: ./sql-data-warehouse-overview-manage.md
 [Installieren und Konfigurieren von Azure PowerShell]: ./powershell-install-configure.md
+[Übersicht über das Verwalten von Computeleistung]: ./sql-data-warehouse-manage-compute-overview.md
 
 <!--MSDN references-->
 [Resume-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619347.aspx
@@ -135,4 +136,4 @@ Andere Verwaltungsaufgaben finden Sie in der [Verwaltungsübersicht][].
 [Microsoft-Webplattform-Installers]: https://aka.ms/webpi-azps
 [Azure portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

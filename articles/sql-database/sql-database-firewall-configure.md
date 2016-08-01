@@ -66,9 +66,11 @@ Wenn ein Computer versucht, eine Verbindung mit dem Datenbankserver über das In
 
 Wenn eine Azure-Anwendung versucht, eine Verbindung mit dem Datenbankserver herzustellen, prüft die Firewall, ob Azure-Verbindungen zulässig sind. Eine Firewalleinstellung, bei der die Start- und Endadresse den Wert 0.0.0.0 aufweist, gibt an, dass diese Verbindungen zulässig sind. Ist der Verbindungsversuch nicht zulässig, gelangt die Anforderung nicht zum Azure SQL-Datenbankserver.
 
+> [AZURE.IMPORTANT] Mit dieser Option wird die Firewall so konfiguriert, dass alle Verbindungen von Azure zugelassen werden, einschließlich der Verbindungen von Abonnements anderer Kunden. Wenn Sie diese Option auswählen, stellen Sie sicher, dass die Anmelde- und die Benutzerberechtigungen den Zugriff nur auf autorisierte Benutzer beschränken.
+
 Sie können Verbindungen über Azure auf zwei Arten ermöglichen:
 
-- Aktivieren Sie im [Microsoft Azure-Portal](https://portal.azure.com/) beim Erstellen eines neuen Servers das Kontrollkästchen **Azure-Diensten Zugriff auf den Server erlauben**. **Wichtig:** Mit dieser Option wird die Firewall so konfiguriert, dass alle Verbindungen von Azure zugelassen werden, einschließlich der Verbindungen von Abonnements anderer Kunden. Wenn Sie diese Option auswählen, stellen Sie sicher, dass die Anmelde- und die Benutzerberechtigungen den Zugriff nur auf autorisierte Benutzer beschränken.
+- Aktivieren Sie im [Microsoft Azure-Portal](https://portal.azure.com/) beim Erstellen eines neuen Servers das Kontrollkästchen **Azure-Diensten Zugriff auf den Server erlauben**.
 
 - Klicken Sie im [klassischen Portal](http://go.microsoft.com/fwlink/p/?LinkID=161793) auf der Registerkarte **Konfigurieren** eines Servers im Abschnitt **Zulässige Dienste** für **Microsoft Azure-Dienste** auf **Ja**.
 
@@ -121,7 +123,7 @@ Außer im Azure-Portal können Firewallregeln mithilfe von Transact-SQL, REST-AP
 
 Wenn der Zugriff auf den Microsoft Azure SQL-Datenbankdienst nicht das erwartete Verhalten aufweist, sind folgende Punkte zu beachten:
 
-- **Lokale Firewallkonfiguration:** Bevor Ihr Computer auf Azure SQL-Datenbank zugreifen kann, müssen Sie möglicherweise eine Firewallausnahme auf Ihrem Computer für TCP-Port 1433 erstellen. Sie müssen möglicherweise zusätzliche Ports öffnen, wenn Sie Verbindungen innerhalb der Grenzen der Azure-Cloud herstellen möchten. Weitere Informationen finden Sie im Abschnitt **SQL-Datenbank V12: „Außerhalb“ im Vergleich zu „Innerhalb“** im Artikel [Andere Ports als 1433 für ADO.NET 4.5 und SQL-Datenbank V12](sql-database-develop-direct-route-ports-adonet-v12.md).
+- **Lokale Firewallkonfiguration:** Bevor Ihr Computer auf Azure SQL-Datenbank zugreifen kann, müssen Sie möglicherweise eine Firewallausnahme auf Ihrem Computer für TCP-Port 1433 erstellen. Sie müssen möglicherweise zusätzliche Ports öffnen, wenn Sie Verbindungen innerhalb der Grenzen der Azure-Cloud herstellen möchten. Weitere Informationen finden Sie im Abschnitt **SQL-Datenbank V12: „Außerhalb“ im Vergleich zu „Innerhalb“** im Artikel [Andere Ports als 1433 für ADO.NET 4.5 und SQL-Datenbank V12](sql-database-develop-direct-route-ports-adonet-v12.md).
 
 - **Netzwerkadressübersetzung (NAT):** Aufgrund von NAT kann die IP-Adresse, die vom Computer zum Herstellen einer Verbindung mit Azure SQL-Datenbank verwendet wird, von der IP-Adresse abweichen, die in den IP-Konfigurationseinstellungen des Computers angezeigt wird. Melden Sie sich beim Portal an, und navigieren Sie zur Registerkarte **Konfigurieren** für den Server, auf dem die Datenbank gehostet wird, um die IP-Adresse anzuzeigen, die zum Herstellen einer Verbindung mit Azure verwendet wird. Im Abschnitt **Zulässige IP-Adressen** wird die aktuelle Client-IP-Adresse angezeigt. Klicken Sie auf **Hinzufügen** für **Zulässige IP-Adressen**, um diesem Computer den Zugriff auf den Server zu gestatten.
 
@@ -156,4 +158,4 @@ Ein Tutorial zum Erstellen einer Datenbank finden Sie unter [Erstellen einer SQL
 <!--Image references-->
 [1]: ./media/sql-database-firewall-configure/sqldb-firewall-1.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0720_2016-->

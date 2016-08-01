@@ -188,7 +188,9 @@ Spoofing: Ein Angreifer kann kryptografische Schlüsseldaten von einem Gerät en
 
 **Denial of Service:** Das Gerät kann ausgeschaltet oder in einen Modus geschaltet werden, in dem die Kommunikation nicht möglich ist (dies ist bei vielen Maschinen in der Industrie beabsichtigt).
 
-**Manipulation:** Das Gerät kann umkonfiguriert werden, damit es in einem für das Steuersystem unbekannten Zustand betrieben wird (außerhalb der bekannten Kalibrierungsparameter), und so Daten liefern, die fehlinterpretiert werden können. Rechteerweiterungen: Ein Gerät, das eine bestimmte Funktion erfüllt, kann dazu gebracht werden, eine andere Funktion auszuführen. Für ein Ventil, das für das halbe Öffnen programmiert ist, kann beispielsweise erreicht werden, dass es ganz geöffnet wird.
+**Manipulation:** Das Gerät kann umkonfiguriert werden, damit es in einem für das Steuersystem unbekannten Zustand betrieben wird (außerhalb der bekannten Kalibrierungsparameter), und so Daten liefern, die fehlinterpretiert werden können.
+
+**Rechteerweiterungen:** Ein Gerät, das eine bestimmte Funktion erfüllt, kann dazu gebracht werden, eine andere Funktion auszuführen. Für ein Ventil, das für das halbe Öffnen programmiert ist, kann beispielsweise erreicht werden, dass es ganz geöffnet wird.
 
 **Denial of Service:** Das Gerät kann in einen Zustand geschaltet werden, in dem keine Kommunikation möglich ist.
 
@@ -212,7 +214,7 @@ Hier sind einige Beispiele für Bedrohungen in dieser Kategorie aufgeführt:
 
 **Denial of Service:** Eingeschränkte Geräte sind im Allgemeinen für DoS-Bedrohungen anfällig, wenn sie im Netzwerk aktiv auf eingehende Verbindungen oder nicht angeforderte Datagramme lauschen. Ein Angreifer kann dann viele Verbindungen parallel öffnen und nicht oder nur sehr langsam verarbeiten, oder das Gerät kann mit unerwünschtem Datenverkehr überschwemmt werden. In beiden Fällen kann dies dazu führen, dass das Gerät im Netzwerk nicht mehr betriebsbereit ist.
 
-**Spoofing, Offenlegung von Daten:** Eingeschränkte Geräte und Geräte für spezielle Zwecke verfügen häufig nur über einen zentralen Sicherheitsmechanismus, z.B. Kennwort- oder PIN-Schutz, oder sie verlassen sich ganz auf die Vertrauenswürdigkeit des Netzwerks. Das bedeutet, dass der Zugriff auf die Informationen gewährt wird, wenn sich ein Gerät in dem gleichen Netzwerk befindet. Häufig ist das Netzwerk dabei nur mit einem gemeinsam verwendeten Schlüssel geschützt. Wenn der gemeinsame geheime Schlüssel für das Gerät oder das Netzwerk also offengelegt wird, kann das Gerät gesteuert werden, oder es können vom Gerät übermittelte Daten mitverfolgt werden.
+**Spoofing, Offenlegung von Daten:** Eingeschränkte Geräte und Geräte für spezielle Zwecke verfügen häufig nur über einen zentralen Sicherheitsmechanismus, z.B. Kennwort- oder PIN-Schutz, oder sie verlassen sich ganz auf die Vertrauenswürdigkeit des Netzwerks. Das bedeutet, dass der Zugriff auf die Informationen gewährt wird, wenn sich ein Gerät im gleichen Netzwerk befindet. Häufig ist das Netzwerk dabei nur mit einem gemeinsam verwendeten Schlüssel geschützt. Wenn der gemeinsame geheime Schlüssel für das Gerät oder das Netzwerk also offengelegt wird, kann das Gerät gesteuert werden, oder es können vom Gerät übermittelte Daten mitverfolgt werden.
 
 **Spoofing:** Ein Angreifer kann die Übermittlung abfangen oder teilweise außer Kraft setzen und den Absender nachahmen („Man in the middle“).
 
@@ -250,4 +252,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 - [Microsoft Azure IoT reference architecture available (Microsoft Azure IoT-Referenzarchitektur verfügbar)](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/)
  
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

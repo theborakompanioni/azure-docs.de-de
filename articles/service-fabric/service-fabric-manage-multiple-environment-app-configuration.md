@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/26/2016"
+   ms.date="07/19/2016"
    ms.author="seanmck"/>
 
 # Verwalten von Anwendungsparametern für mehrere Umgebungen
@@ -61,7 +61,7 @@ Die DefaultValue-Attribute geben den zu verwendenden Wert an, wenn ein spezifisc
 
 ### Dienstkonfigurationseinstellungen pro Umgebung
 
-Das [Service Fabric-Anwendungsmodel](service-fabric-application-model.md) ermöglicht es Diensten, Konfigurationspakete zu einzubinden, die zu Laufzeit lesbare, benutzerdefinierte Schlüssel-Wert-Paare enthalten. Die Werte dieser Einstellungen können auch nach Umgebung unterschieden werden, indem `ConfigOverride` im Anwendungsmanifest angegeben wird.
+Aufgrund des [Service Fabric-Anwendungsmodells](service-fabric-application-model.md) können Dienste Konfigurationspakete mit benutzerdefinierten Schlüssel-Wert-Paaren enthalten, die zur Laufzeit gelesen werden können. Die Werte dieser Einstellungen können auch nach Umgebung unterschieden werden, indem `ConfigOverride` im Anwendungsmanifest angegeben wird.
 
 Angenommen, es gibt die folgende Einstellung in der Datei „Config\\Settings.xml“ für den `Stateful1`-Dienst:
 
@@ -70,7 +70,7 @@ Angenommen, es gibt die folgende Einstellung in der Datei „Config\\Settings.xm
       <Parameter Name="MaxQueueSize" Value="25" />
     </Section>
 
-Erstellen Sie `ConfigOverride` beim Importieren des Dienstmanifests in das Anwendungsmanifest, um diesen Wert für ein bestimmtes Paar aus Anwendung und Umgebung zu überschreiben.
+Um diesen Wert für ein bestimmtes Paar aus Anwendung und Umgebung zu überschreiben, erstellen Sie `ConfigOverride` beim Importieren des Dienstmanifests in das Anwendungsmanifest.
 
     <ConfigOverrides>
      <ConfigOverride Name="Config">
@@ -119,7 +119,7 @@ Sie können in der Liste mit den verfügbaren Parameterdateien eine Auswahl tref
 
 ### Bereitstellen über PowerShell
 
-Das PowerShell-Skript `Deploy-FabricApplication.ps1` in der Projektvorlage der Anwendung akzeptiert ein Veröffentlichungsprofil als Parameter, und PublishProfile enthält einen Verweis auf die Anwendungsparameterdatei.
+Das PowerShell-Skript `Deploy-FabricApplication.ps1` in der Projektvorlage der Anwendung akzeptiert ein Veröffentlichungsprofil als Parameter, und „PublishProfile“ enthält einen Verweis auf die Anwendungsparameterdatei.
 
   ```PowerShell
     ./Deploy-FabricApplication -ApplicationPackagePath <app_package_path> -PublishProfileFile <publishprofile_path>
@@ -134,4 +134,4 @@ Weitere Informationen zu einigen grundlegenden Konzepten, die in diesem Thema be
 [publishdialog]: ./media/service-fabric-manage-multiple-environment-app-configuration/publish-dialog-choose-app-config.png
 [app-parameters-solution-explorer]: ./media/service-fabric-manage-multiple-environment-app-configuration/app-parameters-in-solution-explorer.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

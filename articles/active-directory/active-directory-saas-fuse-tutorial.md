@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="07/19/2016"
 	ms.author="jeedes"/>
 
 
@@ -23,11 +23,11 @@ Dieses Tutorial soll Ihnen zeigen, wie Sie Fuse in Azure Active Directory (Azure
 
 Die Integration von Fuse in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer Zugriff auf Fuse hat.
+- Sie können in Azure AD steuern, wer Zugriff auf Fuse hat.
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Fuse anzumelden (einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## Voraussetzungen
 
@@ -60,7 +60,7 @@ Zum Konfigurieren der Integration von Fuse in Azure AD müssen Sie Fuse aus dem 
 
 **Um Fuse aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
 
 	![Active Directory][1]
 
@@ -91,7 +91,7 @@ In diesem Abschnitt soll veranschaulicht werden, wie basierend auf einem Testben
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Fuse als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Fuse muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als Wert dem **Benutzernamen** in Fuse zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als Wert dem **Benutzernamen** in Fuse zuweisen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Fuse müssen Sie die folgenden Bausteine ausführen:
 
@@ -137,7 +137,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
     b. Kopieren Sie die **Aussteller-URL**, die **Dienst-URL für einmalige Anmeldung** und die **Dienst-URL für einmalige Abmeldung**.
 
    
-5. Lassen Sie das einmalige Anmelden (SSO, Single Sign-On) für Ihre Anwendung konfigurieren. Wenden Sie sich dazu über **support@fusion-universal.com** an das Supportteam von Fuse, und fügen Sie die heruntergeladene Zertifikatsdatei an. Geben Sie außerdem die **Aussteller-URL**, die **Dienst-URL für einmalige Anmeldung** und die **Dienst-URL für einmalige Abmeldung an**.
+5. Lassen Sie das einmalige Anmelden (SSO, Single Sign-On) für Ihre Anwendung konfigurieren. Wenden Sie sich dazu unter **support@fusion-universal.com** an das Supportteam von Fuse, und fügen Sie die heruntergeladene Zertifikatsdatei an. Geben Sie außerdem die **Aussteller-URL**, die **Dienst-URL für einmalige Anmeldung** und die **Dienst-URL für einmalige Abmeldung** an.
 
 
 6. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
@@ -204,7 +204,7 @@ Wählen Sie in der Benutzerliste **Britta Simon** aus.
 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
 
-	![Erstellen einen Azure AD-Testbenutzers](./media/active-directory-saas-fuse-tutorial/create_aaduser_08.png)
+	![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-fuse-tutorial/create_aaduser_08.png)
 
     a. Notieren Sie den Wert von **Neues Kennwort**.
 
@@ -278,4 +278,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Fuse“ klicken, sollten Sie autom
 [204]: ./media/active-directory-saas-fuse-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-fuse-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

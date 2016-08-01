@@ -35,9 +35,9 @@ Erstellen Sie eine neue explizite App-ID für Ihre Anwendung bei Apple, und konf
 2. Aktualisieren Sie die folgenden drei Felder für Ihre neue App, und klicken Sie dann auf **Weiter**:
 
 	* **Name**: Geben Sie im Abschnitt **App ID Description** in das Feld **Name** einen beschreibenden Namen für Ihre App ein.
-	
-	* **Bundle ID**: Geben Sie im Abschnitt **Explicit App ID** eine **Bundle ID** im Format `<Organization Identifier>.<Product Name>` (entsprechend den Angaben im [App Distribution Guide](https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW8)) ein. Dieser muss mit dem übereinstimmen, was auch im XCode- oder Xamarin-Projekt für Ihre App verwendet wird.
-	 
+
+	* **Bundle ID**: Geben Sie im Abschnitt **Explicit App ID** eine **Bundle ID** im Format `<Organization Identifier>.<Product Name>` (entsprechend den Angaben im [App Distribution Guide](https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW8)) ein. Dieser muss mit dem übereinstimmen, was auch im XCode-, Xamarin- oder Cordova-Projekt für Ihre App verwendet wird.
+
 	* **Pushbenachrichtigungen**: Aktivieren Sie die Option **Push Notifications** im Bereich **App Services**.
 
 	![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
@@ -54,7 +54,7 @@ Erstellen Sie eine neue explizite App-ID für Ihre Anwendung bei Apple, und konf
 
    	Hierdurch wird der Assistent „Add iOS Certificate“ angezeigt.
 
-    > [AZURE.NOTE]In diesem Lernprogramm wird ein Entwicklungszertifikat verwendet. Derselbe Prozess wird auch zum Registrieren eines Produktionszertifikats durchgeführt. Achten Sie darauf, dass Sie denselben Zertifikattyp beim Senden von Benachrichtigungen verwenden.
+    > [AZURE.NOTE] In diesem Lernprogramm wird ein Entwicklungszertifikat verwendet. Derselbe Prozess wird auch zum Registrieren eines Produktionszertifikats durchgeführt. Achten Sie darauf, dass Sie denselben Zertifikattyp beim Senden von Benachrichtigungen verwenden.
 
 7. Klicken Sie auf **Choose File**, navigieren Sie zum Speicherort der CSR-Datei für Ihr Pushzertifikat. Klicken Sie dann auf **Generate**.
 
@@ -68,13 +68,13 @@ Erstellen Sie eine neue explizite App-ID für Ihre Anwendung bei Apple, und konf
 
   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-downloaded.png)
 
-    > [AZURE.NOTE]Standardmäßig ist die heruntergeladene Datei ein Entwicklungszertifikat namens **aps\_development.cer**.
+    > [AZURE.NOTE] Standardmäßig ist die heruntergeladene Datei ein Entwicklungszertifikat namens **aps\_development.cer**.
 
 9. Doppelklicken Sie auf dem heruntergeladenen Pushzertifikat **aps\_development.cer**. Hierdurch wird das neue Zertifikat im Schlüsselbund installiert, wie unten gezeigt:
 
    	![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
 
-    > [AZURE.NOTE]Der Name in Ihrem Zertifikat kann sich davon unterscheiden, er enthält jedoch das Präfix **Apple Development iOS Push Services:**.
+    > [AZURE.NOTE] Der Name in Ihrem Zertifikat kann sich davon unterscheiden, er enthält jedoch das Präfix **Apple Development iOS Push Services:**.
 
 10. Klicken Sie in der Kategorie **Certificates** in der Schlüsselbundverwaltung mit der rechten Maustaste auf das gerade neu erstellte Pushzertifikat. Klicken Sie auf **Exportieren**, benennen Sie die Datei, wählen Sie das Format **.p12** aus, und klicken Sie dann auf **Speichern**.
 
@@ -110,4 +110,4 @@ Erstellen Sie eine neue explizite App-ID für Ihre Anwendung bei Apple, und konf
 
    	![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-provisioning-name-profile.png)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0720_2016-->

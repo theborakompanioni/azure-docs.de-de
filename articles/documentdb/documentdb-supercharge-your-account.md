@@ -18,7 +18,7 @@
 
 # Steigern der Leistung Ihres DocumentDB-Kontos
 
-Führen Sie die hier beschriebenen Schritte durch, um den Durchsatz für Ihr DocumentDB-S1-Konto zu steigern. Mit geringen bis gar keinen Zusatzkosten können Sie den Durchsatz Ihres vorhandenen S1-Kontos von 250 [RU/s](documentdb-request-units.md) auf 400 RU/s oder noch mehr erhöhen!
+Führen Sie die hier beschriebenen Schritte durch, um den Durchsatz für Ihr Azure DocumentDB-S1-Konto zu steigern. Mit geringen bis gar keinen Zusatzkosten können Sie den Durchsatz Ihres vorhandenen S1-Kontos von 250 [RU/s](documentdb-request-units.md) auf 400 RU/s oder noch mehr erhöhen!
 
 > [AZURE.VIDEO changedocumentdbcollectionperformance]
 
@@ -51,4 +51,4 @@ Weitere Informationen zu Änderungen in Verbindung mit benutzerdefiniertem und v
 
 Wenn Sie feststellen, dass Sie einen höheren Durchsatz (größer als 10.000 RU/s) oder mehr Speicher (größer als 10 GB) benötigen, können Sie eine partitionierte Sammlung erstellen. Weitere Informationen zum Erstellen einer partitionierten Sammlung finden Sie unter [So erstellen Sie eine DocumentDB-Sammlung über das Azure-Portal](documentdb-create-collection.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

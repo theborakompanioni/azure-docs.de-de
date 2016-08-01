@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="07/19/2016"
 	ms.author="jeedes"/>
 
 
@@ -23,11 +23,11 @@ Dieses Tutorial soll Ihnen zeigen, wie Sie Halogen Software in Azure Active Dire
 
 Die Integration von Halogen Software in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer auf Halogen Software Zugriff hat. 
+- Sie können in Azure AD steuern, wer auf Halogen Software Zugriff hat.
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch für Halogen Software anzumelden (einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## Voraussetzungen 
 
@@ -43,7 +43,7 @@ Um die Azure AD-Integration mit Halogen Software konfigurieren zu können, benö
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern. 
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 
  
 ## Beschreibung des Szenarios
@@ -51,7 +51,7 @@ Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testu
 
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-1. Hinzufügen von Halogen Software aus dem Katalog 
+1. Hinzufügen von Halogen Software aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 
@@ -60,7 +60,7 @@ Zum Konfigurieren der Integration von Halogen Software in Azure AD müssen Sie H
 
 **Um Halogen Software aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
 
 	![Active Directory][1]
 
@@ -124,20 +124,20 @@ Das Ziel dieses Abschnitts ist es, das einmalige Anmelden von Azure AD im klassi
  
 4. Klicken Sie auf der Seite **Einmaliges Anmelden für Halogen Software konfigurieren** auf **Metadaten herunterladen**, und speichern Sie die Metadatendatei lokal auf Ihrem Computer.
 	
-	![Was ist Azure AD Connect?][11]
+	![Was ist Azure AD Connect?][11]
 
 5. Melden Sie sich in einem anderen Browserfenster in Ihrer **Halogen Software**-Anwendung als Administrator an.
 
 6. Klicken Sie auf die Registerkarte **Options**.
 
-	![Was ist Azure AD Connect?][12]
+	![Was ist Azure AD Connect?][12]
 
 
 7. Klicken Sie im linken Navigationsbereich auf **SAML-Konfiguration**.
 
-	![Was ist Azure AD Connect?][13]
+	![Was ist Azure AD Connect?][13]
 
-8. Führen Sie auf der Seite **SAML-Konfiguration** die folgenden Schritte aus: ![Was ist Azure AD Connect?][14]
+8. Führen Sie auf der Seite **SAML-Konfiguration** die folgenden Schritte aus: ![Was ist Azure AD Connect?][14]
 
     a. Wählen Sie als **Eindeutigen Bezeichner** **NameID** aus.
 
@@ -156,11 +156,11 @@ Das Ziel dieses Abschnitts ist es, das einmalige Anmelden von Azure AD im klassi
 
 9. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
-	![Was ist Azure AD Connect?][15]
+	![Was ist Azure AD Connect?][15]
 
 10. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
 
-	![Was ist Azure AD Connect?][16]
+	![Was ist Azure AD Connect?][16]
 
 
 
@@ -172,21 +172,21 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
 
 1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
 
-	![Was ist Azure AD Connect?][100]
+	![Was ist Azure AD Connect?][100]
 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
 3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
 
-	![Was ist Azure AD Connect?][101]
+	![Was ist Azure AD Connect?][101]
 
 4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
 
-	![Was ist Azure AD Connect?][102]
+	![Was ist Azure AD Connect?][102]
 
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
 
-	![Was ist Azure AD Connect?][103]
+	![Was ist Azure AD Connect?][103]
  
     a. Wählen Sie als **Benutzertyp** die Option **Neuer Benutzer in Ihrer Organisation** aus.
 
@@ -196,7 +196,7 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
 
 6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
 
-	![Was ist Azure AD Connect?][104]
+	![Was ist Azure AD Connect?][104]
 
     a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.
 
@@ -210,11 +210,11 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
 
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
 
-	![Was ist Azure AD Connect?][105]
+	![Was ist Azure AD Connect?][105]
 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
 
-	![Was ist Azure AD Connect?][106]
+	![Was ist Azure AD Connect?][106]
 
     a. Notieren Sie den Wert von **Neues Kennwort**. b. Klicken Sie auf **Fertig stellen**.
   
@@ -229,11 +229,11 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 
 2. Klicken Sie auf die Registerkarte **Benutzercenter** und dann auf **Benutzer erstellen**.
 
-	![Was ist Azure AD Connect?][300]
+	![Was ist Azure AD Connect?][300]
 
 3. Führen Sie auf der Dialogfeldseite **Neuer Benutzer** die folgenden Schritte aus:
 
-	![Was ist Azure AD Connect?][301]
+	![Was ist Azure AD Connect?][301]
 
     a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.
   
@@ -250,29 +250,29 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 
 Das Ziel dieses Abschnitts ist es, Britta Simon für das einmalige Anmelden bei Azure zu aktivieren, indem sie Zugriff auf Halogen Software erhält.
 
-![Was ist Azure AD Connect?][200]
+![Was ist Azure AD Connect?][200]
 
 **Um Britta Simon Halogen Software zuzuweisen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen**.
 
-	![Was ist Azure AD Connect?][201]
+	![Was ist Azure AD Connect?][201]
 
 2. Wählen Sie in der Anwendungsliste **Halogen Software** aus.
 
-	![Was ist Azure AD Connect?][202]
+	![Was ist Azure AD Connect?][202]
 
 1. Klicken Sie im oberen Menü auf **Benutzer**.
 
-	![Was ist Azure AD Connect?][203]
+	![Was ist Azure AD Connect?][203]
 
 1. Wählen Sie in der Benutzerliste **Britta Simon** aus.
 
-	![Was ist Azure AD Connect?][204]
+	![Was ist Azure AD Connect?][204]
 
 2. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
 
-	![Was ist Azure AD Connect?][205]
+	![Was ist Azure AD Connect?][205]
 
 
 
@@ -321,4 +321,4 @@ Wenn Sie auf die Kachel Halogen Software im Zugriffsbereich klicken, sollten Sie
 [300]: ./media/active-directory-saas-halogen-software-tutorial/tutorial_halogen_300.png
 [301]: ./media/active-directory-saas-halogen-software-tutorial/tutorial_halogen_301.png
 
-<!----HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->
