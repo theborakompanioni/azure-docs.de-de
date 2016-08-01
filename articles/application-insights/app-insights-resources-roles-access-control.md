@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Ressourcen, Rollen und Zugriffssteuerung in Application Insights"
-	description="";Besitzer";, ";Mitwirkende"; und ";Leser"; für die gewonnenen Unternehmensinformationen."
+	description="Owners, contributors and readers of your organization's insights."
 	services="application-insights"
     documentationCenter=""
 	authors="alancameronwills"
