@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/18/2016"
+   ms.date="07/18/2016"
    ms.author="seanmck"/>
 
 # Übersicht über die Service Fabric-Programmiermodelle
@@ -45,4 +45,4 @@ Da es sich bei Reliable Actors selbst um ein Anwendungsframework handelt, das au
 ## Nächste Schritte
 [Erfahren Sie mehr über Reliable Actors](service-fabric-reliable-actors-introduction.md), oder legen Sie direkt los, indem Sie [Ihren ersten Reliable Actor-Dienst erstellen](service-fabric-reliable-actors-get-started.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="06/22/2016"
+   ms.date="07/18/2016"
    ms.author="nitinme"/>
 
 # Sicherheit im Azure Data Lake-Speicher
@@ -43,7 +43,10 @@ Heutzutage kann jedes Azure-Abonnement mit einer Azure Active Directory-Instanz 
 
 ## Autorisierung und Zugriffssteuerung
 
-Nachdem ein Benutzer von AAD für den Zugriff auf den Azure Data Lake-Speicher authentifiziert wurde, werden die Zugriffsberechtigungen für den Data Lake-Speicher per Autorisierung gesteuert. Data Lake-Speicher trennt die Autorisierung für kontobezogene und datenbezogene Aktivitäten wie folgt: Kontoverwaltung von Datenverwaltung ([Rollenbasierte Zugriffssteuerung](../active-directory/role-based access control-what-is.md) (RBAC) von Azure für die Kontoverwaltung). Außerdem wird die POSIX-ACL für das Zugreifen auf Daten im Speicher unterstützt.
+Nachdem ein Benutzer von AAD für den Zugriff auf den Azure Data Lake-Speicher authentifiziert wurde, werden die Zugriffsberechtigungen für den Data Lake-Speicher per Autorisierung gesteuert. Data Lake Store trennt die Autorisierung von konto- und datenbezogenen Aktivitäten auf folgende Weise.
+
+* [Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md) (Role-Based Access Control, RBAC) von Azure zur Kontoverwaltung
+* POSIX ACL für den Zugriff auf die Daten im Store.
 
 ### Verwenden von RBAC für die Kontoverwaltung
 
@@ -61,13 +64,13 @@ Beachten Sie Folgendes: Die Zuweisung dieser Rollen dient zwar der Kontoverwaltu
 | Mitwirkender | Alle Rechte mit Ausnahme de Hinzufügens und Entfernens von Rollen | Per ACL gesteuert | Ein „Mitwirkender“ kann andere Aspekte eines Kontos verwalten, z.B. das Erstellen/Verwalten von Warnungen, Bereitstellung usw. Ein „Mitwirkender“ kann keine Rollen hinzufügen oder entfernen. |
 | Benutzerzugriffsadministrator | Rollen hinzufügen und entfernen | Per ACL gesteuert | Mit der Rolle „Benutzerzugriffsadministrator“ können Sie den Benutzerzugriff auf Konten verwalten. |
 
-Eine Anleitung finden Sie unter [Zuweisen von Benutzern oder Sicherheitsgruppen zu Azure Data Lake-Speicherkonten](data-lake-store-secure-data.md#assign-users-or-security-groups-to-azure-data-lake-store-accounts).
+Eine Anleitung finden Sie unter [Zuweisen von Benutzern oder Sicherheitsgruppen zu Azure Data Lake Store-Konten](data-lake-store-secure-data.md#assign-users-or-security-groups-to-azure-data-lake-store-accounts).
 
 ### Verwenden von ACLs für Vorgänge in Dateisystemen
 
-Azure Data Lake-Speicher ist ein hierarchisches Dateisystem wie HDFS und unterstützt [POSIX-ACLs](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Es werden Zugriffsrechte vom Typ „Lesen“ (r), „Schreiben“ (w) und „Ausführen“ (x) für Ressourcen von Besitzern, besitzenden Gruppen und anderen Benutzern/Gruppen gewährt. In der öffentlichen Vorschauversion des Data Lake-Speichers (aktuelle Version) werden ACLs nur im Stammordner aktiviert. Dies bedeutet, dass die ACLs, die Sie auf den Stammordner anwenden, auch für alle untergeordneten Ordner und Dateien gelten. In zukünftigen Versionen können Sie ACLs für jede Datei bzw. jeden Ordner festlegen.
+Azure Data Lake Store ist ein hierarchisches Dateisystem wie HDFS und unterstützt [POSIX-ACLs](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Es werden Besitzern, besitzenden Gruppen und anderen Benutzern/Gruppen die Zugriffsrechte „Lesen“ (r), „Schreiben“ (w) und „Ausführen“ (x) für Ressourcen gewährt. In der öffentlichen Vorschauversion des Data Lake-Speichers (aktuelle Version) werden ACLs nur im Stammordner aktiviert. Dies bedeutet, dass die ACLs, die Sie auf den Stammordner anwenden, auch für alle untergeordneten Ordner und Dateien gelten. In zukünftigen Versionen können Sie ACLs für jede Datei bzw. jeden Ordner festlegen.
 
-Es wird empfohlen, ACLs für viele Benutzer auf einmal zu definieren, indem Sie [Sicherheitsgruppen](../active-directory/active-directory-accessmanagement-manage-groups.md) verwenden. Gruppieren Sie die Benutzer in einer Sicherheitsgruppe, und weisen Sie die ACLs für die Datei und den Ordner dann dieser Sicherheitsgruppe zu. Dies ist bei der Bereitstellung von benutzerdefiniertem Zugriff nützlich, da Sie im Rahmen eines benutzerdefinierten Zugriffs nur maximal neun Einträge hinzufügen können. Weitere Informationen zum Schützen von Daten, die im Data Lake-Speicher gespeichert sind, mithilfe von AAD-Sicherheitsgruppen finden Sie unter [Zuweisen von Benutzern oder Sicherheitsgruppen als Zugriffssteuerungslisten zum Azure Data Lake-Speicher-Dateisystem](data-lake-store-secure-data.md#filepermissions).
+Es wird empfohlen, ACLs für viele Benutzer auf einmal mithilfe von [Sicherheitsgruppen](../active-directory/active-directory-accessmanagement-manage-groups.md) zu definieren. Gruppieren Sie die Benutzer in einer Sicherheitsgruppe, und weisen Sie die ACLs für die Datei und den Ordner dann dieser Sicherheitsgruppe zu. Dies ist bei der Bereitstellung von benutzerdefiniertem Zugriff nützlich, da Sie im Rahmen eines benutzerdefinierten Zugriffs nur maximal neun Einträge hinzufügen können. Weitere Informationen zum Schützen von Daten, die im Azure Data Lake Store gespeichert sind, mithilfe von AAD-Sicherheitsgruppen finden Sie unter [Zuweisen von Benutzern oder Sicherheitsgruppen als Zugriffssteuerungslisten zum Azure Data Lake Store-Dateisystem](data-lake-store-secure-data.md#filepermissions).
 
 ![Standardzugriff und benutzerdefinierten Zugriff auflisten](./media/data-lake-store-security-overview/adl.acl.2.png "Standardzugriff und benutzerdefinierten Zugriff auflisten")
 
@@ -110,7 +113,7 @@ Nachdem Sie die Diagnoseeinstellungen aktiviert haben, können Sie die Protokoll
 
 Unternehmenskunden wünschen sich eine Cloudplattform für die Datenanalyse, die sicher und einfach zu verwenden ist. Azure Data Lake-Speicher wurde für die Erfüllung dieser Anforderungen konzipiert und verfügt über Identitätsverwaltung und Authentifizierung per Azure Active Direction-Integration, ACL-basierte Autorisierung, Netzwerkisolation, Verschlüsselung von Daten während der Übertragung und im ruhenden Zustand (in zukünftigen Versionen verfügbar) sowie Überwachung.
 
-Falls Sie sich neue Features für den Data Lake-Speicher wünschen, können Sie uns Ihre Rückmeldungen im [UserVoice-Forum](https://feedback.azure.com/forums/327234-data-lake) zukommen lassen.
+Wenn Sie neue Features für den Data Lake Store wünschen, senden Sie uns Ihr Feedback im [UserVoice-Forum](https://feedback.azure.com/forums/327234-data-lake).
 
 ## Weitere Informationen
 
@@ -118,4 +121,4 @@ Falls Sie sich neue Features für den Data Lake-Speicher wünschen, können Sie 
 - [Erste Schritte mit dem Data Lake-Speicher](data-lake-store-get-started-portal.md)
 - [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0720_2016-->

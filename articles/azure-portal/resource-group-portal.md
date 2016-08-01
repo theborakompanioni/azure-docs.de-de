@@ -23,6 +23,7 @@
 - [Portal](azure-portal/resource-group-portal.md)
 - [Azure-Befehlszeilenschnittstelle](xplat-cli-azure-resource-manager.md)
 - [Azure PowerShell](powershell-azure-resource-manager.md)
+- [.NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/)
 - [Java](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group/)
 - [Knoten](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
 - [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
@@ -72,7 +73,7 @@ Einzelne Kacheln im Dashboard erzwingen basierend auf den von ihnen gezeigten Re
 
     ![Kachel ziehen](./media/resource-group-portal/drag-tile.png)
 
-6. Nachdem Sie oben im Portal **Fertig** ausgewählt haben, ist die neue Sicht Teil des Blatts.
+6. Nachdem Sie oben im Portal **Fertig** ausgewählt haben, ist die neue Ansicht Teil des Blatts.
 
     ![Kachel anzeigen](./media/resource-group-portal/show-lens.png)
 
@@ -131,4 +132,4 @@ Beim Löschen einer Ressourcengruppe werden alle darin enthaltenen Ressourcen ge
 - Informationen zur Behebung von Bereitstellungsfehlern finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md).
 - Informationen zum Bereitstellen von Ressourcen über das Portal finden Sie unter [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Azure-Portal](../resource-group-template-deploy-portal.md).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -23,6 +23,7 @@
 - [Azure-Befehlszeilenschnittstelle](resource-group-template-deploy-cli.md)
 - [Portal](resource-group-template-deploy-portal.md)
 - [REST-API](resource-group-template-deploy-rest.md)
+- [.NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/)
 - [Java](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
 - [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
 - [Knoten](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
@@ -85,7 +86,7 @@ Wenn Sie die Azure-Befehlszeilenschnittstelle noch nicht mit dem Ressourcen-Mana
         data:
         info:    group create command OK
 
-5. Überprüfen Sie die Bereitstellung vor der Implementierung, indem Sie den Befehl **azure group template validate** ausführen. Geben Sie die Parameter beim Testen der Bereitstellung genauso an wie beim Ausführen der Bereitstellung (wie im nächsten Schritt zu sehen).
+5. Überprüfen Sie die Bereitstellung vor der Ausführung, indem Sie den Befehl **azure group template validate** ausführen. Geben Sie die Parameter beim Testen der Bereitstellung genauso an wie beim Ausführen der Bereitstellung (wie im nächsten Schritt zu sehen).
 
         azure group template validate -f <PathToTemplate> -p "{"ParameterName":{"value":"ParameterValue"}}" -g ExampleResourceGroup
 
@@ -175,4 +176,4 @@ Ein Beispiel der Verwendung eines SAS-Tokens mit verknüpften Vorlagen finden Si
 - Informationen zum Bereitstellen der Lösung in andere Umgebungen finden Sie unter [Entwicklungs- und Testumgebungen in Microsoft Azure](solution-dev-test-environments.md).
 - Weitere Informationen zum Verwenden eines KeyVault-Verweises zum Übergeben sicherer Werte finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

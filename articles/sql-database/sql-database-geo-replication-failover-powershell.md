@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="04/27/2016"
+    ms.date="07/19/2016"
     ms.author="sstein"/>
 
 # Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit PowerShell
@@ -32,7 +32,7 @@ Dieser Artikel erläutert das Initiieren eines geplanten oder ungeplanten Failov
 
 ## Initiieren eines geplanten Failovers
 
-Mit dem Cmdlet **Set-AzureRmSqlDatabaseSecondary** und dem **-Failover**-Parameter können Sie eine sekundäre Datenbank zur neuen primären Datenbank heraufstufen und die vorhandene primäre Datenbank zu einer sekundären Datenbank herabstufen. Diese Funktionalität ist auf ein geplantes Failover ausgelegt, z. B. bei Notfallwiederherstellungsverfahren, und erfordert, dass die primäre Datenbank verfügbar ist.
+Mit dem Cmdlet **Set-AzureRmSqlDatabaseSecondary** und dem **-Failover**-Parameter können Sie eine sekundäre Datenbank zur neuen primären Datenbank heraufstufen und die vorhandene primäre Datenbank zu einer sekundären Datenbank herabstufen. Diese Funktionalität ist auf ein geplantes Failover ausgelegt, z. B. bei Notfallwiederherstellungsverfahren, und erfordert, dass die primäre Datenbank verfügbar ist.
 
 Der Befehl hat den folgenden Workflow:
 
@@ -40,7 +40,7 @@ Der Befehl hat den folgenden Workflow:
 
 2. Vertauschen Sie die Rollen der beiden Datenbanken in der Georeplikationspartnerschaft.
 
-Durch diese Sequenz wird sichergestellt, dass die beiden Datenbanken vor dem Rollenwechsel synchronisiert werden, damit keine Daten verloren gehen. Es gibt einen kurzer Zeitraum, in dem beide Datenbanken während des Rollenwechsels (ca. 0 bis 25 Sekunden) nicht verfügbar sind. Unter normalen Umständen dauert der gesamte Vorgang nicht länger als 1 Minute. Weitere Informationen finden Sie unter [Set- AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt619393.aspx).
+Durch diese Sequenz wird sichergestellt, dass die beiden Datenbanken vor dem Rollenwechsel synchronisiert werden, damit keine Daten verloren gehen. Es gibt einen kurzer Zeitraum, in dem beide Datenbanken während des Rollenwechsels (ca. 0 bis 25 Sekunden) nicht verfügbar sind. Unter normalen Umständen dauert der gesamte Vorgang nicht länger als 1 Minute. Weitere Informationen finden Sie unter [Set- AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt619393.aspx).
 
 
 
@@ -87,4 +87,4 @@ Mit dem folgenden Befehl tauschen Sie die Rollen der „mydb“-Datenbank, wenn 
 - [SQL-Datenbankdokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
 - [Warnungen zur Notfallwiederherstellung](sql-database-disaster-recovery-drills.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

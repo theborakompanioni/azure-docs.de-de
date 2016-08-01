@@ -26,9 +26,9 @@
 - [Python-Beispiele](documentdb-python-samples.md)
 - [Katalog mit Azure-Codebeispielen](https://azure.microsoft.com/documentation/samples/?service=documentdb)
 
-Beispiellösungen, in denen CRUD-Vorgänge und andere gängige Vorgänge für DocumentDB-Ressourcen ausgeführt werden, finden Sie im GitHub-Repository [azure-documentdb-nodejs](https://github.com/Azure/azure-documentdb-node/tree/master/samples). Dieser Artikel enthält Folgendes:
+Beispiellösungen, in denen CRUD-Vorgänge und andere gängige Vorgänge für Azure DocumentDB-Ressourcen ausgeführt werden, finden Sie im GitHub-Repository [azure-documentdb-nodejs](https://github.com/Azure/azure-documentdb-node/tree/master/samples). Dieser Artikel enthält Folgendes:
 
-- Links zu den Aufgaben in den einzelnen Node.js-Beispielprojektdateien. 
+- Links zu den Aufgaben in den einzelnen Node.js-Beispielprojektdateien.
 - Links zum zugehörigen API-Referenzinhalt.
 
 **Voraussetzungen**
@@ -36,7 +36,7 @@ Beispiellösungen, in denen CRUD-Vorgänge und andere gängige Vorgänge für Do
 1. Sie benötigen ein Azure-Konto, um diese Node.js-Beispiele zu verwenden:
     - Sie können [ein Azure-Konto kostenlos erstellen](https://azure.microsoft.com/pricing/free-trial/): Sie erhalten ein Guthaben, das Sie zum Ausprobieren zahlungspflichtiger Azure-Dienste nutzen können, und Sie können das Konto selbst dann behalten und die kostenlosen Azure-Dienste wie Websites nutzen, wenn das Guthaben aufgebraucht ist. Ihre Kreditkarte wird nur dann belastet, wenn Sie Ihre Einstellungen explizit ändern und mit einer Zahlung einverstanden sind.
    - Sie können Ihre [Vorteile für Visual Studio-Abonnenten aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/): Ihr Visual Studio-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste nutzen können.
-2. Sie benötigen zudem das [Node.js SDK](documentdb-sdk-node.md). 
+2. Sie benötigen zudem das [Node.js SDK](documentdb-sdk-node.md).
 
     > [AZURE.NOTE] Jedes Beispiel ist eigenständig, richtet sich selbst ein und bereinigt sich selbst. Dementsprechend richten die Beispiele mehrere Aufrufe an [DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html). Bei jeder Ausführung dieses Vorgangs wird Ihrem Abonnement 1 Stunde Nutzung gemäß Leistungsebene der erstellten Sammlung in Rechnung gestellt.
 
@@ -60,15 +60,15 @@ Aufgabe | API-Referenz
 --- | ---
 [Erstellen einer Sammlung](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.CollectionManagement/app.js#L97-L118) | [DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createCollection)
 [Lesen einer Liste aller Sammlungen in einer Datenbank](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.CollectionManagement/app.js#L120-L130) | [DocumentClient.listCollections](http://azure.github.io/azure-documentdb-node/DocumentClient.html#listCollections)
-[Abrufen einer Sammlung nach „\_self“](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.CollectionManagement/app.js#L132-L141) | [DocumentClient.readCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#readCollection) 
-[Abrufen einer Auflistung nach ID](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.CollectionManagement/app.js#L143-L156) | [DocumentClient.readCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#readCollection) 
-[Abrufen der Leistungsebene einer Sammlung](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.CollectionManagement/app.js#L158-L186) | [DocumentQueryable.queryOffers](http://azure.github.io/azure-documentdb-node/DocumentClient.html#queryOffers) 
-[Ändern der Leistungsebene einer Sammlung](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.CollectionManagement/app.js#L188-L202) | [DocumentClient.replaceOffer](http://azure.github.io/azure-documentdb-node/DocumentClient.html#replaceOffer) 
+[Abrufen einer Auflistung nach „\_self“](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.CollectionManagement/app.js#L132-L141) | [DocumentClient.readCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#readCollection)
+[Abrufen einer Auflistung nach ID](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.CollectionManagement/app.js#L143-L156) | [DocumentClient.readCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#readCollection)
+[Abrufen der Leistungsebene einer Sammlung](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.CollectionManagement/app.js#L158-L186) | [DocumentQueryable.queryOffers](http://azure.github.io/azure-documentdb-node/DocumentClient.html#queryOffers)
+[Ändern der Leistungsebene einer Sammlung](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.CollectionManagement/app.js#L188-L202) | [DocumentClient.replaceOffer](http://azure.github.io/azure-documentdb-node/DocumentClient.html#replaceOffer)
 [Löschen einer Sammlung](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.CollectionManagement/app.js#L204-L215) | [DocumentClient.deleteCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#deleteCollection)
 
 ## Dokumentbeispiele
 
-Die Datei [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/DocumentManagement/app.js) im Projekt [DocumentManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/DocumentManagement) zeigt, wie die folgenden Aufgaben ausgeführt werden:
+Die Datei [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/DocumentManagement/app.js) im Projekt [DocumentManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/DocumentManagement) zeigt, wie die folgenden Aufgaben ausgeführt werden.
 
 Aufgabe | API-Referenz
 --- | ---
@@ -83,7 +83,7 @@ Aufgabe | API-Referenz
 
 ## Indizierungsbeispiele
 
-Die Datei [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/IndexManagement/app.js) im Projekt [IndexManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/IndexManagement) zeigt, wie die folgenden Aufgaben ausgeführt werden:
+Die Datei [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/IndexManagement/app.js) im Projekt [IndexManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/IndexManagement) zeigt, wie die folgenden Aufgaben ausgeführt werden.
 
 Aufgabe | API-Referenz
 --- | ---
@@ -101,7 +101,7 @@ Weitere Informationen zur Indizierung finden Sie unter [Indizierungsrichtlinien 
 
 ## Serverseitige Programmierbeispiele
 
-Die Datei [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/ServerSideScripts/app.js) im Projekt [ServerSideScripts](https://github.com/Azure/azure-documentdb-node/tree/master/samples/ServerSideScripts) zeigt, wie die folgenden Aufgaben ausgeführt werden:
+Die Datei [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/ServerSideScripts/app.js) im Projekt [ServerSideScripts](https://github.com/Azure/azure-documentdb-node/tree/master/samples/ServerSideScripts) zeigt, wie die folgenden Aufgaben ausgeführt werden.
 
 Aufgabe | API-Referenz
 --- | ---
@@ -112,7 +112,7 @@ Weitere Informationen zur serverseitigen Programmierung finden Sie unter [Docume
 
 ## Partitionierungsbeispiele
 
-Die Datei [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/Partitioning/app.js) im Projekt [Partitioning](https://github.com/Azure/azure-documentdb-node/tree/master/samples/Partitioning) zeigt, wie die folgenden Aufgaben ausgeführt werden:
+Die Datei [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/Partitioning/app.js) im Projekt [Partitioning](https://github.com/Azure/azure-documentdb-node/tree/master/samples/Partitioning) zeigt, wie die folgenden Aufgaben ausgeführt werden.
 
 Aufgabe | API-Referenz
 --- | ---
@@ -120,4 +120,4 @@ Aufgabe | API-Referenz
 
 Weitere Informationen zur Partitionierung von Daten in DocumentDB finden Sie unter [Partitionieren und Skalieren von Daten in DocumentDB](documentdb-partition-data.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0720_2016-->

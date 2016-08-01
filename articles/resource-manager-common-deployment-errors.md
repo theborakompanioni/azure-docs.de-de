@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/06/2016"
+   ms.date="07/14/2016"
    ms.author="tomfitz"/>
 
 # Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager
@@ -24,24 +24,72 @@ In diesem Thema wird beschrieben, wie Sie einige gängige Fehler beheben können
 
 ## Ungültige Vorlage oder Ressource
 
-Wenn Sie eine Fehlermeldung erhalten, dass die Vorlage oder eine Eigenschaft für eine Ressource ungültig ist, fehlt in Ihrer Vorlage möglicherweise ein Zeichen. Dieser Fehler passiert schnell, wenn Sie Vorlagenausdrücke verwenden, da der Ausdruck in Anführungszeichen steht, sodass die Überprüfung durch JSON erfolgt, der Editor den Fehler aber möglicherweise nicht erkennt. Beispielsweise enthält die folgenden Namenszuweisung für ein Speicherkonto Klammern, drei Funktionen, drei Sätze mit Klammern, einen Satz mit einfachen Anführungszeichen und eine Eigenschaft:
+Beim Bereitstellen einer Vorlage wird unter Umständen Folgendes angezeigt:
+
+    Code=InvalidTemplate 
+    Message=Deployment template validation failed
+
+Wenn Sie eine Fehlermeldung mit dem Hinweis erhalten, dass die Vorlage oder eine Eigenschaft für eine Ressource ungültig ist, enthält Ihre Vorlage möglicherweise einen Syntaxfehler. Solche Fehler können sehr leicht passieren, da Vorlagenausdrücke recht kompliziert sein können. Beispielsweise enthält die folgenden Namenszuweisung für ein Speicherkonto Klammern, drei Funktionen, drei Sätze mit Klammern, einen Satz mit einfachen Anführungszeichen und eine Eigenschaft:
 
     "name": "[concat('storage', uniqueString(resourceGroup().id))]",
 
 Wenn Sie nicht die entsprechende Syntax bereitstellen, wird die Vorlage einen Wert erstellen, der sich von Ihrer Absicht stark unterscheidet.
 
-Je nachdem, wo sich das fehlende Zeichen in Ihrer Vorlage befindet, erhalten Sie eine Fehler, dass die Vorlage oder eine Ressource ungültig ist. Der Fehler kann auch darauf angeben, dass der Bereitstellungsprozess den Vorlagensprachausdruck nicht verarbeiten konnte. Wenn Sie diese Art von Fehler erhalten, überprüfen Sie sorgfältig die Ausdruckssyntax.
+Wenn Sie diese Art von Fehler erhalten, überprüfen Sie sorgfältig die Ausdruckssyntax. Verwenden Sie ggf. einen JSON-Editor, der Sie auf Syntaxfehler aufmerksam machen kann (etwa [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) oder [Visual Studio Code](resource-manager-vs-code.md)).
 
-## Der Ressourcenname ist bereits vorhanden oder wird bereits von einer anderen Ressource verwendet.
+## Falsche Segmentlängen
 
-Bei einigen Ressourcen, insbesondere Speicherkonten, Datenbankservern und Websites, müssen Sie einen im gesamten Azure-Dienst eindeutigen Namen für die Ressource angeben. Sie können einen eindeutigen Namen erstellen, indem Sie Ihre Benennungskonvention mit dem Ergebnis der [uniqueString](resource-group-template-functions.md#uniquestring)-Funktion verketten.
+Ein weiterer Fehler vom Typ „Ungültige Vorlage“ tritt auf, wenn der Ressourcenname nicht im richtigen Format vorliegt.
+
+    Code=InvalidTemplate
+    Message=Deployment template validation failed: 'The template resource {resource-name}' 
+    for type {resource-type} has incorrect segment lengths.
+
+Eine Ressource auf der Stammebene muss im Namen ein Segment weniger haben als im Ressourcentyp. Die einzelnen Segmente sind jeweils durch einen Schrägstrich getrennt. Im folgenden Beispiel besitzt der Typ zwei Segmente und Name ein Segment, sodass es sich hier um einen **gültigen Namen** handelt.
+
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "name": "myHostingPlanName",
+
+Im nächsten Beispiel liegt dagegen **kein gültiger Name** vor, da er die gleiche Anzahl von Segmenten besitzt wie der Typ.
+
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "name": "appPlan/myHostingPlanName",
+
+Bei untergeordneten Ressourcen müssen Typ und Name die gleiche Anzahl von Segmenten besitzen. Das ist plausibel, da der vollständige Name und Typ des untergeordneten Elements den Namen und Typ des übergeordneten Elements enthält, sodass der vollständige Name weiterhin ein Segment kürzer ist als der vollständige Typ.
+
+    "resources": [
+        {
+            "type": "Microsoft.KeyVault/vaults",
+            "name": "contosokeyvault",
+            ...
+            "resources": [
+                {
+                    "type": "secrets",
+                    "name": "appPassword",
+
+Die korrekte Verwendung der Segmente kann insbesondere bei Resource Manager-Typen problematisch sein, die ressourcenanbieterübergreifend angewendet werden. Wenn Sie beispielsweise eine Website mit einer Ressourcensperre belegen möchten, benötigen Sie einen Typ mit vier Segmenten. Folglich umfasst der Name drei Segmente:
+
+    {
+        "type": "Microsoft.Web/sites/providers/locks",
+        "name": "[concat(variables('siteName'),'/Microsoft.Authorization/MySiteLock')]",
+
+## Bereits vorhandener oder bereits von einer anderen Ressource verwendeter Ressourcenname
+
+Bei einigen Ressourcen, insbesondere Speicherkonten, Datenbankservern und Websites, müssen Sie einen im gesamten Azure-Dienst eindeutigen Namen für die Ressource angeben. Wenn Sie keinen eindeutigen Namen angeben, tritt unter Umständen ein Fehler wie der folgende auf:
+
+    Code=StorageAccountAlreadyTaken 
+    Message=The storage account named mystorage is already taken.
+
+Sie können einen eindeutigen Namen erstellen, indem Sie Ihre Benennungskonvention mit dem Ergebnis der [uniqueString](resource-group-template-functions.md#uniquestring)-Funktion verketten.
 
     "name": "[concat('contosostorage', uniqueString(resourceGroup().id))]",
     "type": "Microsoft.Storage/storageAccounts",
 
 ## Die Ressource kann während der Bereitstellung nicht gefunden werden
 
-Resource Manager optimiert die Bereitstellung, indem, sofern möglich, gleichzeitig Ressourcen erstellt werden. Wenn eine Ressource nach einer anderen Ressource bereitgestellt werden muss, müssen Sie das **dependsOn**-Element in der Vorlage verwenden, um eine Abhängigkeit zur anderen Ressource herzustellen. Beim Bereitstellen einer Web-App muss z. B. der App Service-Plan vorhanden sein. Wenn Sie nicht angegeben haben, dass die Web-App vom App Service-Plan abhängig ist, erstellt Resource Manager beide Ressourcen zur gleichen Zeit. Wenn Sie versuchen, eine Eigenschaft für die Web-App festzulegen, erhalten Sie eine Fehlermeldung, dass die App Service-Planressource nicht gefunden werden kann, da sie noch nicht vorhanden ist. Sie können diesen Fehler verhindern, indem Sie die Abhängigkeit in der Web-App festlegen.
+Resource Manager optimiert die Bereitstellung, indem, sofern möglich, gleichzeitig Ressourcen erstellt werden. Wenn eine Ressource nach einer anderen Ressource bereitgestellt werden muss, müssen Sie das **dependsOn**-Element in der Vorlage verwenden, um eine Abhängigkeitsbeziehung mit der anderen Ressource herzustellen. Beim Bereitstellen einer Web-App muss z. B. der App Service-Plan vorhanden sein. Wenn Sie nicht angegeben haben, dass die Web-App vom App Service-Plan abhängig ist, erstellt Resource Manager beide Ressourcen zur gleichen Zeit. Wenn Sie versuchen, eine Eigenschaft für die Web-App festzulegen, erhalten Sie eine Fehlermeldung, dass die App Service-Planressource nicht gefunden werden kann, da sie noch nicht vorhanden ist. Sie können diesen Fehler verhindern, indem Sie die Abhängigkeit in der Web-App festlegen.
 
     {
       "apiVersion": "2015-08-01",
@@ -94,7 +142,7 @@ Verwenden Sie zum Anzeigen des Registrierungsstatus **Get-AzureRmResourceProvide
 
     Get-AzureRmResourceProvider -ListAvailable
 
-Um einen Anbieter zu registrieren, verwenden Sie **Register-AzureRmResourceProvider**, und geben Sie den Namen des zu registrierenden Ressourcenanbieters an.
+Verwenden Sie **Register-AzureRmResourceProvider**, um einen Anbieter zu registrieren, und geben Sie den Namen des zu registrierenden Ressourcenanbieters an.
 
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Cdn
 
@@ -108,11 +156,11 @@ Verwenden Sie zum Abrufen der unterstützten API-Versionen für einen bestimmten
 
 ### Azure-Befehlszeilenschnittstelle
 
-Mit dem Befehl `azure provider list` können Sie feststellen, ob der Anbieter registriert ist.
+Mit dem Befehl `azure provider list` können Sie ermitteln, ob der Anbieter registriert ist.
 
     azure provider list
 
-Um einen Ressourcenanbieter zu registrieren, verwenden Sie den Befehl `azure provider register`, und geben Sie den zu registrierenden *Namespace* an.
+Verwenden Sie den Befehl `azure provider register`, um einen Ressourcenanbieter zu registrieren, und geben Sie den zu registrierenden *Namespace* an.
 
     azure provider register Microsoft.Cdn
 
@@ -124,7 +172,7 @@ Verwenden Sie zum Anzeigen der unterstützten Standorte und API-Versionen für e
 
 Probleme können auftreten, wenn eine Bereitstellung ein Kontingent überschreitet (etwa für eine Ressourcengruppe, ein Abonnement, ein Konto oder Ähnliches). Ihr Abonnement kann beispielsweise so konfiguriert werden, um die Anzahl der Kerne für eine Region zu begrenzen. Wenn Sie versuchen, einen virtuellen Computer mit mehr Kernen als der zulässigen Anzahl bereitzustellen, erhalten Sie eine Fehlermeldung, die darauf hinweist, dass das Kontingent überschritten wurde. Die vollständigen Kontingentinformationen finden Sie unter [Grenzwerte, Kontingente und Einschränkungen für Azure-Abonnements und -Dienste](azure-subscription-service-limits.md).
 
-Zum Untersuchen der Kontingente Ihres eigenen Abonnements für Kerne können Sie den Befehl `azure vm list-usage` in der Azure-CLI verwenden. Im folgenden Beispiel wird veranschaulicht, dass das Kernkontingent für ein kostenloses Testkonto 4 ist:
+Mit dem Befehl `azure vm list-usage` können Sie über die Azure-Befehlszeilenschnittstelle die Kernkontingente Ihres eigenen Abonnements untersuchen. Im folgenden Beispiel wird veranschaulicht, dass das Kernkontingent für ein kostenloses Testkonto 4 ist:
 
     azure vm list-usage
 
@@ -161,23 +209,23 @@ Ausgabe des Befehls:
 
 In diesen Fällen sollten Sie zum Portal navigieren und ein Supportproblem einreichen, um Ihr Kontingent für die Region, in der Sie diese bereitstellen möchten, zu erhöhen.
 
-> [AZURE.NOTE] Denken Sie daran, dass für Ressourcengruppen das Kontingent für jede einzelne Region und nicht für das gesamte Abonnement gilt. Wenn Sie 30 Kerne in der Region "USA, Westen" bereitstellen möchten, müssen Sie 30 Ressourcen-Manager-Kerne für "USA, Westen" anfordern. Wenn Sie 30 Kerne in allen Regionen, auf die Sie Zugriff haben, bereitstellen möchten, müssen Sie 30 Ressourcen-Manager-Kerne in allen Regionen anfordern.
+> [AZURE.NOTE] Denken Sie daran, dass für Ressourcengruppen das Kontingent für jede einzelne Region und nicht für das gesamte Abonnement gilt. Wenn Sie 30 Kerne in der Region "USA, Westen" bereitstellen möchten, müssen Sie 30 Ressourcen-Manager-Kerne für "USA, Westen" anfordern. Wenn Sie 30 Kerne in allen Regionen, auf die Sie Zugriff haben, bereitstellen möchten, müssen Sie 30 Ressourcen-Manager-Kerne in allen Regionen anfordern.
 
 
 ## Fehler bei der Autorisierung
 
 Möglicherweise wird während der Bereitstellung ein Fehler angezeigt, da das Konto oder ein Dienstprinzipal, der versucht die Ressourcen bereitzustellen, keinen Zugriff zum Ausführen dieser Aktionen hat. Mit Azure Active Directory können Sie oder Ihr Administrator sehr genau kontrollieren, welche Identitäten auf welche Ressourcen Zugriff haben. Wenn Ihr Konto der Leserrolle zugewiesen ist, kann es beispielsweise keine neuen Ressourcen erstellen. In diesem Fall wird eine Fehlermeldung angezeigt, die darauf hinweist, dass die Autorisierung fehlgeschlagen ist.
 
-Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](./active-directory/role-based-access-control-configure.md).
+Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure Active Directory-Ressourcen](./active-directory/role-based-access-control-configure.md).
 
-Neben rollenbasierter Zugriffssteuerung können Ihre Bereitstellungsaktionen auch durch Richtlinien für das Abonnement eingeschränkt werden. Durch Richtlinien kann der Administrator Konventionen für alle Ressourcen durchsetzen, die in dem Abonnement bereitgestellt sind. Ein Administrator kann beispielsweise fordern, dass ein bestimmter Tagwert für einen Ressourcentyp angegeben wird. Wenn Sie die Richtlinienanforderungen nicht erfüllt haben, wird während der Bereitstellung ein Fehler ausgegeben. Weitere Informationen zu Richtlinien finden Sie unter [Verwenden von Richtlinien zum Verwalten von Ressourcen und Steuern des Zugriffs](resource-manager-policy.md).
+Neben rollenbasierter Zugriffssteuerung können Ihre Bereitstellungsaktionen auch durch Richtlinien für das Abonnement eingeschränkt werden. Durch Richtlinien kann der Administrator Konventionen für alle Ressourcen durchsetzen, die in dem Abonnement bereitgestellt sind. Ein Administrator kann beispielsweise fordern, dass ein bestimmter Tagwert für einen Ressourcentyp angegeben wird. Wenn Sie die Richtlinienanforderungen nicht erfüllt haben, wird während der Bereitstellung ein Fehler ausgegeben. Weitere Informationen zu Richtlinien finden Sie unter [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](resource-manager-policy.md).
 
 ## Problembehandlung bei virtuellen Computern
 
 | Error | Artikel |
 | -------- | ----------- |
 | Fehler der benutzerdefinierten Skripterweiterung | [Problembehandlung bei Fehlern im Zusammenhang mit Azure Windows-VM-Erweiterungen](./virtual-machines/virtual-machines-windows-extensions-troubleshoot.md)<br />oder<br />[Problembehandlung für Fehler bei Azure-Erweiterungen für virtuelle Linux-Computer](./virtual-machines/virtual-machines-linux-extensions-troubleshoot.md) |
-| Fehler bei der Bereitstellung des Betriebssystemimage | [Behandeln von Problemen beim Erstellen eines neuen virtuellen Windows-Computers in Azure (Resource Manager-Bereitstellungsmodell)](./virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md)<br />oder<br />[Behandeln von Ressourcen-Manager-Bereitstellungsproblemen beim Erstellen eines neuen virtuellen Linux-Computers in Azure](./virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm.md) |
+| Fehler bei der Bereitstellung des Betriebssystemimage | [Behandeln von Problemen beim Erstellen eines neuen virtuellen Windows-Computers in Azure (Resource Manager-Bereitstellungsmodell)](./virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md)<br />oder<br />[Behandeln von Resource Manager-Bereitstellungsproblemen beim Erstellen eines neuen virtuellen Linux-Computers in Azure](./virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm.md) |
 | Fehler bei der Zuordnung | [Problembehandlung für Zuordnungsfehler beim Erstellen, Neustarten oder Ändern der Größe von virtuellen Windows-Computern in Azure](./virtual-machines/virtual-machines-windows-allocation-failure.md)<br />oder<br />[Problembehandlung für Zuordnungsfehler beim Erstellen, Neustarten oder Ändern der Größe von virtuellen Linux-Computern in Azure](./virtual-machines/virtual-machines-linux-allocation-failure.md) |
 | Secure Shell (SSH)-Fehler beim Herstellen einer Verbindung | [Problembehandlung für SSH-Verbindungen (Secure Shell) mit einem Linux-basierten virtuellen Azure-Computer](./virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md) |
 | Fehler beim Herstellen einer Verbindung mit einer Anwendung, die auf einem virtuellen Computer ausgeführt wird | [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird (Windows)](./virtual-machines/virtual-machines-windows-troubleshoot-app-connection.md)<br />oder<br />[Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird (Linux)](./virtual-machines/virtual-machines-linux-troubleshoot-app-connection.md) |
@@ -211,6 +259,6 @@ Sie können jedoch Azure daran hindern, einen erfolgreichen Bereitstellungsstatu
 ## Nächste Schritte
 
 - Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).
-- Weitere Informationen zu Aktionen zum Bestimmen der Fehler während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen](resource-manager-troubleshoot-deployments-portal.md).
+- Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](resource-manager-troubleshoot-deployments-portal.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

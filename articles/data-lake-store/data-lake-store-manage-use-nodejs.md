@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/21/2016"
+   ms.date="07/18/2016"
    ms.author="nitinme"/>
 
 # Verwalten von Azure Data Lake-Speicher mithilfe des Azure SDK für Node.js
@@ -141,4 +141,4 @@ filesystemClient.filesystem.listFileStatus(accountName, pathToEnumerate, functio
 - [Microsoft Azure SDK für Node.js](https://github.com/azure/azure-sdk-for-node)
 - [Microsoft Azure SDK für Node.js – Data Lake Analytics-Verwaltung](https://www.npmjs.com/package/azure-arm-datalake-analytics)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

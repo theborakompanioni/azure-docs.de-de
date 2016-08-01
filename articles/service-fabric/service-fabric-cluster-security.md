@@ -27,7 +27,7 @@ Ein Service Fabric-Cluster ist eine Ressource, die sich in Ihrem Besitz befindet
 ## Knoten-zu-Knoten-Sicherheit
 Dient zum Schutz der Kommunikation zwischen den (virtuellen) Computern im Cluster. So wird sichergestellt, dass nur Computer, die zum Beitreten zum Cluster berechtigt sind, Anwendungen und Dienste im Cluster hosten können.
 
-	![Diagramm für die Kommunikation zwischen Knoten][Node-to-Node]
+![Diagramm für die Kommunikation zwischen Knoten][Node-to-Node]
 
 Cluster unter Azure oder eigenständige Cluster unter Windows können entweder [Zertifikatsicherheit](https://msdn.microsoft.com/library/ff649801.aspx) oder [Windows-Sicherheit](https://msdn.microsoft.com/library/ff649396.aspx) für Windows Server-Computer verwenden.
 ### Zertifikatsicherheit (Knoten zu Knoten)

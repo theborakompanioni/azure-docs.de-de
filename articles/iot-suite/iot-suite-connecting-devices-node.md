@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/26/2016"
+   ms.date="07/14/2016"
    ms.author="dobett"/>
 
 
@@ -37,13 +37,13 @@
     var connectionString = "[IoT Hub device connection string]";
     ```
 
-4. Ersetzen Sie **[IoT Hub device connection string]** durch Ihre Geräteverbindungszeichenfolge. Die Werte für IoT Hub-Hostname, Geräte-ID und Geräteschlüssel finden Sie auf dem Dashboard der Remoteüberwachungslösung. Eine Geräteverbindungszeichenfolge hat folgendes Format:
+4. Ersetzen Sie **[IoT Hub device connection string]** durch Ihre Geräteverbindungszeichenfolge. Die Werte für IoT Hub-Hostname, Geräte-ID und Geräteschlüssel finden Sie auf dem Dashboard der Remoteüberwachungslösung. Eine Geräteverbindungszeichenfolge hat folgendes Format:
 
     ```
     HostName={your IoT Hub hostname};DeviceId={your device id};SharedAccessKey={your device key}
     ```
 
-    Wenn der IoT Hub-Hostname **contoso** und die Geräte-ID **mydevice** lautet, ergibt sich folgende Verbindungszeichenfolge:
+    Wenn der IoT Hub-Hostname **contoso** und die Geräte-ID **mydevice** lautet, ergibt sich folgende Verbindungszeichenfolge:
 
     ```
     var connectionString = "HostName=contoso.azure-devices.net;DeviceId=mydevice;SharedAccessKey=2s ... =="
@@ -59,7 +59,6 @@
 [AZURE.INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]
 
 [lnk-github-repo]: https://github.com/azure/azure-iot-sdks
-[lnk-node-installers]: https://nodejs.org/download/
 [lnk-github-prepare]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

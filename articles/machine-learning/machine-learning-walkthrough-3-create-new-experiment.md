@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Schritt 3: Erstellen eines neuen Machine Learning-Experiments | Microsoft Azure"
-	description="Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 3: Erstellen eines neuen Trainingsexperiments in Azure Machine Learning Studio."
+	pageTitle="Schritt 3: Erstellen eines neuen Machine Learning-Experiments | Microsoft Azure"
+	description="Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 3: Erstellen eines neuen Trainingsexperiments in Azure Machine Learning Studio."
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/10/2016" 
+	ms.date="07/06/2016" 
 	ms.author="garye"/>
 
 
-# Exemplarische Vorgehensweise, Schritt 3: Erstellen eines neuen Azure Machine Learning-Experiments
+# Exemplarische Vorgehensweise, Schritt 3: Erstellen eines neuen Azure Machine Learning-Experiments
 
 Dies ist der dritte Schritt der exemplarischen Vorgehensweise zum [Entwickeln einer Predictive Analytics-Lösung in Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md).
 
@@ -39,10 +39,10 @@ Der nächste Schritt in dieser exemplarischen Vorgehensweise ist die Erstellung 
 	> [AZURE.TIP] Es ist eine bewährte Methode, die Felder **Zusammenfassung** und **Beschreibung** für das Experiment im Bereich **Eigenschaften** auszufüllen. Diese Eigenschaften geben Ihnen die Möglichkeit, das Experiment zu dokumentieren. Wenn Benutzer später darauf zugreifen, können sie Ihre Ziele und die Methodik verstehen.
 
 3.	Erweitern Sie in der Modulpalette links vom Experimentbereich **Gespeicherte Datasets**.
-4.	Suchen Sie das Dataset, das Sie unter **Meine Datasets** erstellt haben, und ziehen Sie es in den Bereich. Sie können auch nach dem Dataset suchen, indem Sie den Namen in das Feld **Suchen** oberhalb der Palette eingeben.  
+4.	Suchen Sie das Dataset, das Sie unter **Meine Datasets** erstellt haben, und ziehen Sie es in den Bereich. Sie können auch nach dem Dataset suchen, indem Sie den Namen in das Feld **Suchen** oberhalb der Palette eingeben.
 
 ##Vorbereiten der Daten
-Sie können die ersten 100 Datenzeilen sowie einige statistische Informationen für das ganze Dataset anzeigen, indem Sie auf den Ausgabeport des Datasets (den kleinen Kreis unten) klicken und die Option **Visualize** auswählen.
+Sie können die ersten 100 Datenzeilen sowie einige statistische Informationen für das ganze Dataset anzeigen, indem Sie auf den Ausgabeport des Datasets (den kleinen Kreis unten) klicken und die Option **Visualize** auswählen.
 
 Da die Datendatei keine Spaltenüberschriften aufweist, hat Studio allgemeine Überschriften (Col1, Col2 *usw.*) bereitgestellt. Aussagekräftige Überschriften haben keine Bedeutung für die Erstellung eines Modells, erleichtern aber die Arbeit mit den Daten im Experiment. Wenn später das Modell in einem Webdienst veröffentlicht wird, kann der Benutzer des Diensts die Spalten anhand der Überschriften auch leichter identifizieren.
 
@@ -52,7 +52,7 @@ Zum Verwenden von [Edit Metadata][edit-metadata] geben Sie zuerst an, welche Spa
 
 1.	Geben Sie in der Modulpalette „Metadaten“ in das Feld **Suchen** ein. [Edit Metadata][edit-metadata] wird in der Modulliste angezeigt.
 2.	Klicken und ziehen Sie das Modul [Edit Metadata][edit-metadata] in den Experimentbereich, und legen Sie es unter dem zuvor hinzugefügten Dataset ab.
-3.	Verbinden Sie das Dataset mit [Edit Metadata][edit-metadata]\: Klicken Sie auf den Ausgabeport des Datasets (den kleinen Kreis unten im Dataset), ziehen Sie ihn zum Eingabeport von [Edit Metadata][edit-metadata] (den kleinen Kreis oben im Modul), und lassen Sie die Maustaste los. Das Dataset und das Modul bleiben verbunden, auch wenn Sie diese im Bereich verschieben.
+3.	Verbinden Sie das Dataset mit [Edit Metadata][edit-metadata]\: Klicken Sie auf den Ausgabeport des Datasets (den kleinen Kreis unten im Dataset), ziehen Sie ihn zum Eingabeport von [Edit Metadata][edit-metadata] \(den kleinen Kreis oben im Modul), und lassen Sie die Maustaste los. Das Dataset und das Modul bleiben verbunden, auch wenn Sie diese im Bereich verschieben.
 
     Das Experiment sollte in etwa wie folgt aussehen:
 
@@ -63,10 +63,9 @@ Zum Verwenden von [Edit Metadata][edit-metadata] geben Sie zuerst an, welche Spa
     > [AZURE.TIP] Sie können einen Kommentar zu einem Modul eingeben, indem Sie auf das Modul doppelklicken und Text eingeben. Auf diese Weise können Sie mit einem Blick sehen, welche Funktion das Modul in Ihrem Experiment erfüllt. Doppelklicken Sie hierfür auf das Modul [Edit Metadata][edit-metadata], und geben Sie den Kommentar „Spaltenüberschriften hinzufügen“ ein. Klicken Sie auf eine Stelle des Experimentbereichs, um das Textfeld zu schließen. Klicken Sie auf den nach unten zeigenden Pfeil für das Modul, um den Kommentar anzuzeigen.
 
 4.	Klicken Sie bei ausgewähltem [Edit Metadata][edit-metadata] im Bereich **Eigenschaften** rechts neben dem Experimentbereich auf **Launch column selector**.
-5.	Legen Sie im Dialogfeld **Select columns** das Feld **Begin With** auf „All columns“ fest.
-6.	In der Zeile unterhalb von **Begin With** können Sie bestimmte Spalten für die Bearbeitung durch [Edit Metadata][edit-metadata] ein- oder ausschließen. Da in diesem Beispiel *alle* Spalten bearbeitet werden sollen, löschen Sie diese Zeile, indem Sie auf das Minuszeichen (-) rechts neben der Zeile klicken. Das Dialogfeld sollte wie folgt aussehen: ![Spaltenauswahl, alle Spalten ausgewählt][4]
+5.	Wählen Sie im Dialogfeld **Select columns** in **Available Columns** alle Zeilen aus, und klicken Sie auf „>“, um sie in **Selected Columns** zu verschieben. Das Dialogfeld sollte wie folgt aussehen: ![Spaltenauswahl, alle Spalten ausgewählt][4]
 7.	Klicken Sie auf das Häkchen **OK**.
-8.	Suchen Sie im Bereich **Properties** nach dem Parameter **New column name**. Geben Sie in diesem Feld eine Liste der Namen für die 21 Spalten im Dataset ein, durch Kommas getrennt und in der Reihenfolge der Spalten. Die Spaltennamen können Sie der Datasetdokumentation auf der UCI-Website entnehmen, oder Sie können einfach die folgende Liste kopieren und einfügen:  
+8.	Suchen Sie im Bereich **Properties** nach dem Parameter **New column name**. Geben Sie in diesem Feld eine Liste der Namen für die 21 Spalten im Dataset ein, durch Kommas getrennt und in der Reihenfolge der Spalten. Die Spaltennamen können Sie der Datasetdokumentation auf der UCI-Website entnehmen, oder Sie können einfach die folgende Liste kopieren und einfügen:
 
 		  Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
 
@@ -81,10 +80,10 @@ Der nächste Schritt des Experiments besteht im Erstellen getrennter Datasets, d
 
 Dafür wird das Modul [Split Data][split] verwendet.
 
-1.	Suchen Sie das Modul [Split Data][split], ziehen Sie es in den Experimentbereich, und verbinden Sie es mit dem letzten Modul [Edit Metadata][edit-metadata].
-2.	Standardmäßig beträgt das Aufteilungsverhältnis 0,5, und der Parameter **Randomized split** ist festgelegt. Das bedeutet, dass eine zufällig ausgewählte Hälfte der Daten über einen Port des Moduls [Split Data][split] ausgegeben wird, die andere Hälfte über den anderen Port. Sie können diese Werte und den Parameter **Random seed** anpassen, um die Aufteilung zwischen Trainings- und Bewertungsdaten zu ändern. Für dieses Beispiel bleiben die Werte unverändert.
-	> [AZURE.TIP] Die Eigenschaft **Fraction of rows in the first output dataset** bestimmt, welcher Anteil der Daten über den linken Ausgabeport ausgegeben werden. Wenn Sie z. B. ein Aufteilungsverhältnis von 0,7 festlegen, werden 70 % der Daten über den linken Port und 30 % der Daten über den rechten Port ausgegeben.  
-3. Doppelklicken Sie auf das Modul [Split Data][split], und geben Sie den Kommentar „Aufteilung zwischen Trainings- und Testdaten 50 %“ ein. 
+1.	Wechseln Sie zum Modul [Split Data][split], ziehen Sie es in den Experimentbereich, und verbinden Sie es mit dem letzten Modul [Edit Metadata][edit-metadata].
+2.	Standardmäßig beträgt das Aufteilungsverhältnis 0,5, und der Parameter **Zufällige Aufteilung** ist festgelegt. Das bedeutet, dass eine zufällig ausgewählte Hälfte der Daten über einen Port des Moduls [Split Data][split] ausgegeben wird, die andere Hälfte über den anderen Port. Sie können diese Werte und den Parameter **Random seed** anpassen, um die Aufteilung zwischen Trainings- und Bewertungsdaten zu ändern. Für dieses Beispiel bleiben die Werte unverändert.
+	> [AZURE.TIP] Die Eigenschaft **Fraction of rows in the first output dataset** bestimmt, welcher Anteil der Daten über den linken Ausgabeport ausgegeben werden. Wenn Sie z. B. ein Aufteilungsverhältnis von 0,7 festlegen, werden 70 % der Daten über den linken Port und 30 % der Daten über den rechten Port ausgegeben.
+3. Doppelklicken Sie auf das Modul [Split Data][split], und geben Sie den Kommentar „Aufteilung zwischen Trainings- und Testdaten 50 %“ ein.
 
 Die Ausgaben des Moduls [Split Data][split] können beliebig verwendet werden. In diesem Fall wählen wir die linke Ausgabe als Trainingsdaten und die rechte Ausgabe als Testdaten.
 
@@ -107,7 +106,7 @@ Wir müssen den gleichen Replikationsvorgang für jede Ausgabe des Moduls [Split
 
 1.	Klicken Sie mit der rechten Maustaste auf das Modul [R-Skript ausführen][execute-r-script], und wählen Sie **Kopieren** aus.
 2.	Klicken Sie mit der rechten Maustaste in den Experimentbereich, und wählen Sie **Einfügen** aus.
-3.	Verbinden Sie den ersten Eingabeport dieses Moduls [Execute R Script][execute-r-script] mit dem rechten Ausgabeport des Moduls [Split Data][split].  
+3.	Verbinden Sie den ersten Eingabeport dieses Moduls [Execute R Script][execute-r-script] mit dem rechten Ausgabeport des Moduls [Split Data][split].
 
 > [AZURE.TIP] Die Kopie des Moduls "Execute R Script" enthält das gleiche Skript wie das Originalmodul. Wenn Sie ein Modul kopieren und im Bereich einfügen, behält die Kopie alle Eigenschaften des Originals bei.
 
@@ -131,4 +130,4 @@ Weitere Informationen zum Verwenden von R-Skripts in Ihren Experimenten finden S
 [edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

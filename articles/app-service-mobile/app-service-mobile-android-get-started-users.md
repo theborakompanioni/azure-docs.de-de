@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="05/03/2016"
+	ms.date="07/18/2016"
 	ms.author="ricksal"/>
 
 # Hinzufügen der Authentifizierung zu Ihrer Android-App
@@ -68,4 +68,4 @@ Nachdem Sie dieses einfache Tutorial zur Authentifizierung abgeschlossen haben, 
 <!-- URLs. -->
 [Erste Schritte mit Mobile Apps]: app-service-mobile-android-get-started.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

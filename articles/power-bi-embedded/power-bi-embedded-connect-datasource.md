@@ -46,10 +46,10 @@ Die Verwendung von **DirectQuery** bietet zwei wesentliche Vorteile:
 <a name="measures"/>
 ## DirectQuery und Measures
 
-Um sicherzustellen, dass die an die zugrunde liegende Datenquelle gesendeten Abfragen eine akzeptable Leistung zeigen, werden den Measures Einschränkungen auferlegt. Bei Verwendung von **Power BI Desktop** können fortgeschrittene Benutzer diese Einschränkung umgehen, indem sie **Datei > Optionen und Einstellungen > Optionen** wählen. Wählen Sie im Dialogfeld **Optionen** die Option **DirectQuery**, und wählen Sie dann die Option **Unbeschränkte Measures im DirectQuery-Modus zulassen**. Wenn diese Option ausgewählt ist, kann jeder DAX-Ausdruck verwendet werden, der für ein Measure gültig ist. Benutzer müssen sich jedoch bewusst sein, dass einige Ausdrücke, die beim Importieren der Daten eine sehr gute Leistung zeigen, im **DirectQuery**-Modus zu sehr langsamen Abfragen an die Back-End-Datenquelle führen können. Weitere Informationen zur Verwendung von **Power BI Desktop** finden Sie unter [Getting Started with Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/) (Erste Schritte mit Power BI Desktop).
+Um sicherzustellen, dass die an die zugrunde liegende Datenquelle gesendeten Abfragen eine akzeptable Leistung zeigen, werden den Measures Einschränkungen auferlegt. Bei Verwendung von **Power BI Desktop** können fortgeschrittene Benutzer diese Einschränkung umgehen, indem sie **Datei > Optionen und Einstellungen > Optionen** wählen. Wählen Sie im Dialogfeld **Optionen** die Option **DirectQuery**, und wählen Sie dann die Option **Unbeschränkte Measures im DirectQuery-Modus zulassen**. Wenn diese Option ausgewählt ist, kann jeder DAX-Ausdruck verwendet werden, der für ein Measure gültig ist. Benutzer müssen sich jedoch bewusst sein, dass einige Ausdrücke, die beim Importieren der Daten eine sehr gute Leistung zeigen, im **DirectQuery**-Modus zu sehr langsamen Abfragen an die Back-End-Datenquelle führen können.
 
 ## Siehe auch
 - [Erste Schritte mit Microsoft Power BI Embedded](power-bi-embedded-get-started.md)
 - [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

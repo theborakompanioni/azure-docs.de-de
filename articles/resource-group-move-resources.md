@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/06/2016" 
+	ms.date="07/19/2016" 
 	ms.author="tomfitz"/>
 
 # Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
@@ -44,7 +44,7 @@ Beim Verschieben einer Ressource sollten Sie einige wichtige Schritte ausführen
 Derzeit unterstützen die folgenden Dienste das Verschieben in eine neue Ressourcengruppe und ein neues Abonnement:
 
 - API Management
-- App Service-Apps – siehe [App Service-Einschränkungen](#app-service-limitations)
+- App Service-Apps (Web-Apps) – siehe [App Service-Einschränkungen](#app-service-limitations)
 - Automation
 - Batch
 - CDN
@@ -62,7 +62,7 @@ Derzeit unterstützen die folgenden Dienste das Verschieben in eine neue Ressour
 - Suchen
 - Speicher
 - Speicher (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
-- SQL-Datenbankserver – die Datenbank und der Server müssen sich in derselben Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle zugehörigen Datenbanken verschoben.
+- SQL-Datenbankserver – die Datenbank und der Server müssen sich in derselben Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle zugehörigen Datenbanken verschoben.
 - Virtual Machines
 - Virtual Machines (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 - Virtuelle Netzwerke
@@ -272,4 +272,4 @@ Mit dem Anforderungstext:
 - Informationen zu Portalfeatures zum Verwalten Ihres Abonnements finden Sie unter [Verwenden des Azure-Portals zum Verwalten von Ressourcen](./azure-portal/resource-group-portal.md).
 - Informationen zum Anwenden einer logischen Organisation auf Ihre Ressourcen finden Sie unter [Verwenden von Tags zum Organisieren von Ressourcen](resource-group-using-tags.md).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

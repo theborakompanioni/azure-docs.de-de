@@ -20,7 +20,7 @@
 # Beispiele für die DocumentDB-Protokollunterstützung für MongoDB
 Um diese Beispiele verwenden zu können, müssen Sie folgende Aktionen ausführen:
 
-- [Erstellen](documentdb-create-mongodb-account.md) eines DocumentDB-Kontos mit Protokollunterstützung für MongoDB.
+- [Erstellen](documentdb-create-mongodb-account.md) eines Azure DocumentDB-Kontos mit Protokollunterstützung für MongoDB.
 - Abrufen der Informationen zur [Verbindungszeichenfolge](documentdb-connect-mongodb-account.md) für das DocumentDB-Konto mit Protokollunterstützung für MongoDB.
 
 ## Erste Schritte mit einer Beispielanwendung für eine ASP.NET-MVC-Aufgabenliste
@@ -175,4 +175,4 @@ Sie können das Tutorial [Erstellen einer Web-App in Azure, die eine Verbindung 
 
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

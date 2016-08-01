@@ -160,6 +160,28 @@ Sie können sowohl leere Datenträger, als auch Datenträger mit Daten an Ihre v
 
 >[AZURE.NOTE] Wenn Sie später einen Datenträger entfernen, ohne "fstab" zu bearbeiteten, kann der Start des virtuellen Computers fehlschlagen. Für den Fall, dass dieses Problem häufiger auftritt, bieten die meisten Verteilungen die fstab-Optionen `nofail` und/oder `nobootwait`, die einen Systemstart auch dann erlauben, wenn der Datenträger zur Startzeit nicht eingebunden werden kann. Weitere Informationen zu diesen Parametern finden Sie in der Dokumentation zu Ihrer Verteilung.
 
+### TRIM/UNMAP-Unterstützung für Linux in Azure
+Einige Linux-Kernels unterstützen TRIM/UNMAP-Vorgänge, um ungenutzte Blöcke auf dem Datenträger zu verwerfen. Dies ist in erster Linie für Standardspeicher nützlich, um Azure darüber zu informieren, dass gelöschte Seiten nicht mehr gültig sind und verworfen werden können. Dies kann Kosten sparen, wenn Sie große Dateien erstellen und diese dann löschen.
+
+Es gibt zwei Methoden, TRIM-Unterstützung auf Ihrem virtuellen Linux-Computer zu aktivieren. Den empfohlenen Ansatz finden Sie wie üblich in Ihrer Distribution:
+
+- Verwenden Sie die `discard`-Bereitstellungsoption in `/etc/fstab`, Beispiel:
+
+		UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
+
+- Alternativ können Sie den Befehl `fstrim` manuell über die Befehlszeile ausführen oder zu „crontab“ für eine regelmäßige Ausführung hinzufügen:
+
+	**Ubuntu**
+
+		# sudo apt-get install util-linux
+		# sudo fstrim /datadrive
+
+	**RHEL/CentOS**
+
+		# sudo yum install util-linux
+		# sudo fstrim /datadrive
+
+
 ## Nächste Schritte
 Informieren Sie sich in den folgenden Artikeln ausführlicher über das Verwenden von virtuellen Linux-Computern:
 
@@ -173,4 +195,4 @@ Informieren Sie sich in den folgenden Artikeln ausführlicher über das Verwende
 [Agent]: virtual-machines-linux-agent-user-guide.md
 [Logon]: virtual-machines-linux-classic-log-on.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

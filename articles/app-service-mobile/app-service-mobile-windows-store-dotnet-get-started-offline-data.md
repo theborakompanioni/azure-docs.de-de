@@ -162,11 +162,14 @@ In diesem Abschnitt verbinden Sie die App erneut mit dem mobilen App-Back-End. D
 
 Zur Unterstützung der Offlinefunktionen mobiler Dienste haben Sie die Schnittstelle [IMobileServiceSyncTable] verwendet und [MobileServiceClient.SyncContext][synccontext] mit einer lokalen SQLite-Datenbank initialisiert. In einer Offlinesituation funktionieren die normalen CRUD-Operationen für Mobile Apps so, als ob die App immer noch verbunden wäre. Alle Operationen werden jedoch nur im lokalen Speicher ausgeführt. Zur Synchronisierung des lokalen Speichers mit dem Server werden die folgenden Methoden verwendet:
 
-*  **[PushAsync]** Da diese Methode [IMobileServicesSyncContext] angehört, werden Änderungen an allen Tabellen per Pushvorgang an das Back-End übertragen. Nur Datensätze mit lokalen Änderungen werden an den Server gesendet.
+*  **[PushAsync]**  
+   Da diese Methode [IMobileServicesSyncContext] angehört, werden Änderungen an allen Tabellen per Pushvorgang an das Back-End übertragen. Nur Datensätze mit lokalen Änderungen werden an den Server gesendet.
 
-* **[PullAsync]** Ein Pullvorgang wird von einer [IMobileServiceSyncTable] aus gestartet. Wenn verfolgte Änderungen in der Tabelle vorhanden sind, wird ein impliziter Pushvorgang ausgeführt, um sicherzustellen, dass alle Tabellen im lokalen Speicher gemeinsam mit den Beziehungen konsistent bleiben. Der *pushOtherTables*-Parameter steuert, ob bei einem impliziten Pushvorgang auch andere Tabellen per Push übertragen werden. Der *query*-Parameter akzeptiert eine [IMobileServiceTableQuery&lt;U&gt;][IMobileServiceTableQuery] oder eine OData-Abfragezeichenfolge, um die zurückgegebenen Daten zu filtern. Der *queryId*-Parameter dient zum Definieren der inkrementellen Synchronisierung. Weitere Informationen finden Sie unter [Synchronisierung von Offlinedaten in Azure Mobile Apps](app-service-mobile-offline-data-sync.md#how-sync-works).
+* **[PullAsync]**   
+   Ein Pullvorgang wird von einer [IMobileServiceSyncTable] aus gestartet. Wenn verfolgte Änderungen in der Tabelle vorhanden sind, wird ein impliziter Pushvorgang ausgeführt, um sicherzustellen, dass alle Tabellen im lokalen Speicher gemeinsam mit den Beziehungen konsistent bleiben. Der *pushOtherTables*-Parameter steuert, ob bei einem impliziten Pushvorgang auch andere Tabellen per Push übertragen werden. Der *query*-Parameter akzeptiert eine [IMobileServiceTableQuery&lt;U&gt;][IMobileServiceTableQuery] oder eine OData-Abfragezeichenfolge, um die zurückgegebenen Daten zu filtern. Der *queryId*-Parameter dient zum Definieren der inkrementellen Synchronisierung. Weitere Informationen finden Sie unter [Synchronisierung von Offlinedaten in Azure Mobile Apps](app-service-mobile-offline-data-sync.md#how-sync-works).
 
-* **[PurgeAsync]** Ihre App sollte diese Methode in regelmäßigen Abständen aufrufen, um veraltete Daten aus dem lokalen Speicher zu löschen. Verwenden Sie den *force*-Parameter, wenn Sie noch nicht synchronisierte Änderungen löschen müssen.
+* **[PurgeAsync]**  
+   Ihre App sollte diese Methode in regelmäßigen Abständen aufrufen, um veraltete Daten aus dem lokalen Speicher zu löschen. Verwenden Sie den *force*-Parameter, wenn Sie noch nicht synchronisierte Änderungen löschen müssen.
 
 Weitere Informationen zu diesen Konzepten finden Sie unter [Synchronisierung von Offlinedaten in Azure Mobile Apps](app-service-mobile-offline-data-sync.md#how-sync-works).
 

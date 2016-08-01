@@ -23,6 +23,7 @@
 - [Azure-Befehlszeilenschnittstelle](resource-group-template-deploy-cli.md)
 - [Portal](resource-group-template-deploy-portal.md)
 - [REST-API](resource-group-template-deploy-rest.md)
+- [.NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/)
 - [Java](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
 - [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
 - [Knoten](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
@@ -127,11 +128,11 @@ Weitere Informationen zu Optionen für die Bereitstellung, die für Ihr Szenario
 
      Enthält die Vorlage einen Parameter mit einem Namen, der einem der Parameter im Befehl zum Bereitstellen der Vorlage entspricht (z.B. einen Parameter namens **ResourceGroupName** in der Vorlage, der mit dem Parameter **ResourceGroupName** im Cmdlet [New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) identisch ist), werden Sie aufgefordert, einen Wert für einen Parameter mit dem Postfix **FromTemplate** anzugeben (z.B. **ResourceGroupNameFromTemplate**). Im Allgemeinen sollten Sie diese Verwirrung vermeiden, indem Sie Parametern nicht dieselben Namen wie Parametern für Bereitstellungsvorgänge geben.
 
-6. Wenn Sie zusätzliche Informationen über die Bereitstellung, die Ihnen möglicherweise bei der Behebung von Bereitstellungsfehlern helfen können, protokollieren möchten, verwenden Sie den Parameter **DeploymentDebugLogLevel**. Sie können angeben, dass der Anforderungsinhalt, der Antwortinhalt oder beide beim Bereitstellungsvorgang protokolliert werden.
+6. Wenn Sie zusätzliche Informationen über die Bereitstellung protokollieren möchten, die Ihnen möglicherweise bei der Behebung von Bereitstellungsfehlern helfen können, verwenden Sie den Parameter **DeploymentDebugLogLevel**. Sie können angeben, dass der Anforderungsinhalt, der Antwortinhalt oder beide beim Bereitstellungsvorgang protokolliert werden.
 
         New-AzureRmResourceGroupDeployment -Name ExampleDeployment -DeploymentDebugLogLevel All -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate>
         
-     Weitere Informationen zur Verwendung dieses Debuginhalts zur Behebung von Problemen in der Bereitstellung finden Sie unter [Problembehandlung Ressourcengruppen-Bereitstellungen mit Azure PowerShell](resource-manager-troubleshoot-deployments-powershell.md).
+     Weitere Informationen zur Verwendung dieses Debuginhalts zur Behebung von Problemen in der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit Azure PowerShell](resource-manager-troubleshoot-deployments-powershell.md).
 
 ## Bereitstellen einer Vorlage aus Speicher mithilfe eines SAS-Tokens
 
@@ -189,4 +190,4 @@ Ein Beispiel der Verwendung eines SAS-Tokens mit verknüpften Vorlagen finden Si
 - Informationen zum Bereitstellen der Lösung in andere Umgebungen finden Sie unter [Entwicklungs- und Testumgebungen in Microsoft Azure](solution-dev-test-environments.md).
 - Weitere Informationen zum Verwenden eines KeyVault-Verweises zum Übergeben sicherer Werte finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

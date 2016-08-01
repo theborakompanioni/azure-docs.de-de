@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/27/2016"
+	ms.date="07/19/2016"
 	ms.author="jeedes"/>
 
 
@@ -27,7 +27,7 @@ Die Integration von CA PPM in Azure AD bietet die folgenden Vorteile:
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei CA PPM anzumelden (einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## Voraussetzungen
 
@@ -197,7 +197,7 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
 
-	![Erstellen einen Azure AD-Testbenutzers](./media/active-directory-saas-cappm-tutorial/create_aaduser_08.png)
+	![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-cappm-tutorial/create_aaduser_08.png)
 
     a. Notieren Sie den Wert von **Neues Kennwort**.
 
@@ -268,4 +268,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „CA PPM“ klicken, sollten Sie aut
 [204]: ./media/active-directory-saas-cappm-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-cappm-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

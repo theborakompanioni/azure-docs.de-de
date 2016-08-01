@@ -76,7 +76,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Microsoft Azure AD – einmaliges Anmelden](./media/active-directory-saas-samanage-tutorial/IC771710.png "Microsoft Azure AD – einmaliges Anmelden")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Samanage-Anmelde-URL** die URL im Format „*https://\<Mandantenname>.Samanage.com*“ ein, und klicken Sie dann auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Samanage-Anmelde-URL** die URL im Format „ *https://\<Mandantenname>.Samanage.com* “ ein, und klicken Sie dann auf **Weiter**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-samanage-tutorial/IC771711.png "App-URL konfigurieren")
 

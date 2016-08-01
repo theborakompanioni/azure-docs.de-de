@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/13/2016" 
     ms.author="jeedes" />
 
 
@@ -45,7 +45,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Box
 
 ###So aktivieren Sie die Anwendungsintegration für Box
 
-1.  Klicken Sie im linken Navigationsbereich des Azure-Verwaltungsportals auf **Active Directory**.
+1.  Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-box-tutorial/IC700993.png "Active Directory")
 
@@ -75,19 +75,19 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Box
 
 ##Konfigurieren der einmaligen Anmeldung
   
-In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Box zu authentifizieren. <br> Im Rahmen dieses Verfahrens müssen Sie Metadaten auf Box.com hochladen.
+In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Box zu authentifizieren. Im Rahmen dieses Verfahrens müssen Sie Metadaten auf Box.com hochladen.
 
-###So konfigurieren Sie einmaliges Anmelden:
+###So konfigurieren Sie einmaliges Anmelden
 
-1.  Klicken Sie im Azure AD-Portal auf der Anwendungsintegrationsseite für **Box** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+1.  Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Box** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-box-tutorial/IC769538.png "Einmaliges Anmelden konfigurieren")
 
-2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Box anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Box anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-box-tutorial/IC769539.png "Einmaliges Anmelden konfigurieren")
 
-3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Box-Mandanten-URL** die URL Ihres Box-Mandanten ein (z. B. https://<mydomainname>.box.com), und klicken Sie auf **Weiter**.
+3.  Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Box-Mandanten-URL** die URL Ihres Box-Mandanten ein (z. B. https://<mydomainname>.box.com), und klicken Sie auf **Weiter**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-box-tutorial/IC669826.png "App-URL konfigurieren")
 
@@ -104,51 +104,65 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
   
 In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Directory-Benutzerkonten für Box aktivieren.
 
-###So konfigurieren Sie einmaliges Anmelden:
+###So konfigurieren Sie einmaliges Anmelden
 
-1. Klicken Sie im Azure-Verwaltungsportal auf der Anwendungsintegrationsseite für **Box** auf **Benutzerbereitstellung konfigurieren**, um das Dialogfeld **Benutzerbereitstellung konfigurieren** zu öffnen. <br> <br> ![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769541.png "Automatische Benutzerbereitstellung aktivieren")
+1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Box** auf **Benutzerbereitstellung konfigurieren**, um das Dialogfeld **Benutzerbereitstellung konfigurieren** zu öffnen.
 
-2. Klicken Sie auf der Dialogfeldseite **Benutzerbereitstellung aktivieren für Box** auf **Benutzerbereitstellung aktivieren**. <br><br> ![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769544.png "Automatische Benutzerbereitstellung aktivieren")
+	![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769541.png "Automatische Benutzerbereitstellung aktivieren")
 
-3. Stellen Sie auf der Seite **Anmelden, um Zugriff auf Box zu gewähren** die erforderlichen Anmeldeinformationen bereit, und klicken Sie dann auf **Autorisieren**. <br><br> ![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769546.png "Automatische Benutzerbereitstellung aktivieren")
+2. Klicken Sie auf der Dialogfeldseite **Benutzerbereitstellung aktivieren für Box** auf **Benutzerbereitstellung aktivieren**.
+
+	![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769544.png "Automatische Benutzerbereitstellung aktivieren")
+
+3. Stellen Sie auf der Seite **Anmelden, um Zugriff auf Box zu gewähren** die erforderlichen Anmeldeinformationen bereit, und klicken Sie dann auf **Autorisieren**.
+
+	![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769546.png "Automatische Benutzerbereitstellung aktivieren")
 
 
-4. Klicken Sie auf **Zugriff gewähren auf Box**, um diesen Vorgang zu autorisieren und zum Azure-Verwaltungsportal zurückzukehren. <br><br> ![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769549.png "Automatische Benutzerbereitstellung aktivieren")
+4. Klicken Sie auf **Zugriff gewähren auf Box**, um diesen Vorgang zu autorisieren und zum klassischen Azure-Portal zurückzukehren.
+
+	![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769549.png "Automatische Benutzerbereitstellung aktivieren")
 
 
 5. Auf der Seite **Bereitstellungsoptionen** können Sie mit den Kontrollkästchen **Bereitzustellende Objekttypen** auswählen, ob neben Benutzerobjekten auch Gruppenobjekte in Box bereitgestellt werden. Weitere Informationen finden Sie weiter unter im Abschnitt „Zuweisen von Benutzern und Gruppen“.
 
 
-6. Klicken Sie zum Abschließen der Konfiguration auf die Schaltfläche "Abschließen". <br><br> ![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769551.png "Automatische Benutzerbereitstellung aktivieren")
+6. Klicken Sie zum Abschließen der Konfiguration auf die Schaltfläche „Abschließen“.
+
+	![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769551.png "Automatische Benutzerbereitstellung aktivieren")
 
 
 
 ##Zuweisen eines Testbenutzers
   
-Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
+Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
 ###So weisen Sie Box Benutzer zu
 
-1. Erstellen Sie im Azure AD-Portal ein Testkonto.
+1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
-2. Klicken Sie auf der Anwendungsintegrationsseite für **Box** auf **Benutzer zuweisen**. <br><br> ![Benutzer zuweisen](./media/active-directory-saas-box-tutorial/IC769552.png "Benutzer zuweisen")
+2. Klicken Sie auf der Anwendungsintegrationsseite für **Box** auf **Benutzer zuweisen**.
 
-3.  Wählen Sie den Testbenutzer aus, und klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen. <br><br> ![Ja](./media/active-directory-saas-box-tutorial/IC767830.png "Ja")
+	![Benutzer zuweisen](./media/active-directory-saas-box-tutorial/IC769552.png "Benutzer zuweisen")
+
+3.  Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
+
+	![Ja](./media/active-directory-saas-box-tutorial/IC767830.png "Ja")
   
-Nach 10 Minuten können Sie überprüfen, ob das Konto mit Box synchronisiert wurde.
+Nach 10 Minuten können Sie überprüfen, ob das Konto mit Box synchronisiert wurde.
 
-Als ersten Überprüfungsschritt können Sie den Bereitstellungsstatus überprüfen, indem Sie im Azure-Verwaltungsportal auf der Anwendungsintegrationsseite für "Box" auf "Dashboard" klicken.
+Als ersten Überprüfungsschritt können Sie den Bereitstellungsstatus überprüfen, indem Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für Box auf „Dashboard“ klicken.
 
-<br><br> ![Dashboard](./media/active-directory-saas-box-tutorial/IC769553.png "Dashboard")
+![Dashboard](./media/active-directory-saas-box-tutorial/IC769553.png "Dashboard")
 
 Ein erfolgreich abgeschlossener Benutzerbereitstellungszyklus wird durch einen entsprechenden Status angezeigt:
 
-<br><br> ![Integrationsstatus](./media/active-directory-saas-box-tutorial/IC769555.png "Integrationsstatus")
+![Integrationsstatus](./media/active-directory-saas-box-tutorial/IC769555.png "Integrationsstatus")
 
 
 In Ihrem Box-Mandanten werden synchronisierte Benutzer in der **Verwaltungskonsole** unter **Verwaltete Benutzer** aufgelistet.
 
-<br><br> ![Integrationsstatus](./media/active-directory-saas-box-tutorial/IC769556.png "Integrationsstatus")
+![Integrationsstatus](./media/active-directory-saas-box-tutorial/IC769556.png "Integrationsstatus")
 
 
 ##Zuweisen von Benutzern und Gruppen
@@ -161,7 +175,7 @@ Auf der Registerkarte **Box > Benutzer und Gruppen** im klassischen Azure-Portal
 
 * Wenn die automatische Bereitstellung aktiviert ist, werden die zugewiesenen Benutzer und/oder Gruppen der Bereitstellungswarteschlange hinzugefügt, damit sie automatisch bereitgestellt werden.
 
-    * Wenn nur Benutzerobjekte zur Bereitstellung konfiguriert wurden, werden alle direkt zugewiesenen Benutzer in der Bereitstellungswarteschlange platziert. Zudem werden alle Benutzer, die Mitglieder von zugewiesenen Gruppen sind, in die Bereitstellungswarteschlange aufgenommen. 
+    * Wenn nur Benutzerobjekte zur Bereitstellung konfiguriert wurden, werden alle direkt zugewiesenen Benutzer in der Bereitstellungswarteschlange platziert. Zudem werden alle Benutzer, die Mitglieder von zugewiesenen Gruppen sind, in die Bereitstellungswarteschlange aufgenommen.
     
     * Wenn Gruppenobjekte zur Bereitstellung konfiguriert wurden, werden alle zugewiesenen Gruppenobjekte in Box bereitgestellt. Darüber hinaus werden auch alle Benutzer bereitgestellt, die Mitglieder dieser Gruppen sind. Die Gruppen- und Benutzermitgliedschaften bleiben erhalten, nachdem sie an Box übertragen wurden.
     
@@ -175,4 +189,4 @@ Auf der Registerkarte **Attribute > Einmaliges Anmelden** können Sie konfigurie
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0720_2016-->

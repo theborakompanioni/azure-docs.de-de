@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/02/2016"
+	ms.date="07/18/2016"
 	ms.author="jodebrui"/>
 
 
@@ -26,7 +26,7 @@ Bei der Verwendung von [In-Memory-OLTP](sql-database-in-memory.md) befinden sich
 
 Bestimmen Sie die Speicherabdeckung: Nutzen Sie zur Information über die Speicherabdeckungen der verschiedenen Premium-Serviceebenen den [Artikel zu Serviceebenen von SQL-Datenbanken](sql-database-service-tiers.md#service-tiers-for-single-databases).
 
-Das Einschätzen des Speicherbedarfs für eine speicheroptimierte Tabelle funktioniert für SQL Server genauso wie in Azure SQL-Datenbank. Lesen Sie die Informationen hierzu in [MSDN](https://msdn.microsoft.com/library/dn282389.aspx).
+Das Einschätzen des Speicherbedarfs für eine speicheroptimierte Tabelle funktioniert für SQL Server genauso wie in Azure SQL-Datenbank. Lesen Sie die Informationen hierzu in [MSDN](https://msdn.microsoft.com/library/dn282389.aspx).
 
 Beachten Sie, dass sowohl die Tabellen- und Tabellenvariablenzeilen als auch die Indizes in die maximale Größe für Benutzerdaten eingerechnet werden. Darüber hinaus benötigt ALTER TABLE genügend Platz, um eine neue Version der gesamten Tabelle und ihrer Indizes zu erstellen.
 
@@ -58,4 +58,4 @@ Beheben Sie den Fehler mit einer der folgenden Methoden:
 ## Nächste Schritte
 Zusätzliche Ressourcen zum [Überwachen der Azure SQL-Datenbank mit dynamischen Verwaltungssichten](sql-database-monitoring-with-dmvs.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

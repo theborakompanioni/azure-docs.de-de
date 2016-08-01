@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Installieren von Update 2.1 auf dem StorSimple-Gerät | Microsoft Azure"
-   description="Erfahren Sie, wie Sie Update 2.1 für die StorSimple 8000-Serie auf Ihrem StorSimple-Gerät der Serie 8000 installieren."
+   pageTitle="Installieren von Update 2.2 auf dem StorSimple-Gerät | Microsoft Azure"
+   description="Erfahren Sie, wie Sie Update 2.2 für die StorSimple 8000-Serie auf Ihrem StorSimple-Gerät der Serie 8000 installieren."
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -12,29 +12,28 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/25/2016"
+   ms.date="07/18/2016"
    ms.author="alkohli" />
 
-# Installieren von Update 2.1 auf Ihrem StorSimple-Gerät
+# Installieren von Update 2.2 auf Ihrem StorSimple-Gerät
 
 ## Übersicht
 
-In diesem Tutorial wird beschrieben, wie Sie Update 2.1 auf einem StorSimple-Gerät mit einer früheren Softwareversion im klassischen Azure-Portal und mithilfe der Hotfix-Methode ausführen. Die Hotfix-Methode wird verwendet, wenn ein Gateway auf einer anderen Netzwerkschnittstelle als DATA 0 des StorSimple-Geräts konfiguriert ist und Sie versuchen, das Update von einer Softwareversion durchzuführen, die noch nicht Update 1 enthält.
+In diesem Tutorial wird beschrieben, wie Sie Update 2.2 auf einem StorSimple-Gerät mit einer früheren Softwareversion über das klassische Azure-Portal und mithilfe der Hotfixmethode ausführen. Die Hotfixmethode wird verwendet, wenn ein Gateway auf einer anderen Netzwerkschnittstelle als DATA 0 des StorSimple-Geräts konfiguriert ist und Sie versuchen, das Update von einer Softwareversion durchzuführen, die noch nicht Update 1 enthält.
 
-Update 2.1 enthält Gerätesoftware, WMI und iSCSI-Updates. Wenn Sie von einer Version aktualisieren, die noch nicht Update 2 enthält, müssen Sie ebenso Updates des LSI-Treibers, Spaceport, Storport und Datenträgerfirmware anwenden. Die Fehlerbehebungen von Gerätesoftware, WMI, iSCSI, LSI-Treiber, Spaceport und Storport sind unterbrechungsfreie Updates und können über das klassische Azure-Portal angewendet werden. Die Updates für die Datenträgerfirmware führen zu einer Betriebsunterbrechung und können nur über die Windows PowerShell-Schnittstelle des Geräts angewendet werden.
+Update 2.2 enthält Gerätesoftware-, WMI- und iSCSI-Updates. Wenn Sie von einer Version aktualisieren, die noch nicht Update 2 enthält, müssen Sie ebenso Updates des LSI-Treibers, Spaceport, Storport und Datenträgerfirmware anwenden. Die Fehlerbehebungen von Gerätesoftware, WMI, iSCSI, LSI-Treiber, Spaceport und Storport sind unterbrechungsfreie Updates und können über das klassische Azure-Portal angewendet werden. Die Updates für die Datenträgerfirmware führen zu einer Betriebsunterbrechung und können nur über die Windows PowerShell-Schnittstelle des Geräts angewendet werden.
 
 > [AZURE.IMPORTANT]
 
-> -  Update 2.1 wird möglicherweise nicht sofort angezeigt, da Updates in mehreren Phasen bereitgestellt werden. Suchen Sie in einigen Tagen erneut nach Updates, da dieses Update bald zur Verfügung steht.
 > - Vor der Installation wird ein Satz manueller und automatischer Vorabprüfungen durchgeführt, mit denen die Geräteintegrität in Bezug auf Hardwarestatus und Netzwerkkonnektivität ermittelt wird. Diese Vorabprüfungen werden nur ausgeführt, wenn Sie die Updates aus dem klassischen Azure-Portal ausführen.
-> - Wir empfehlen, die Software- und Treiberupdates über das klassische Azure-Portal zu installieren. Sie sollten nur dann die Windows PowerShell-Schnittstelle des Geräts (zum Installieren der Updates) verwenden, wenn die Vorabprüfung für das Gateway im Portal fehlschlägt. Abhängig von der Version, von der aus Sie aktualisieren, dauern die Installation des Updates 1,5-2,5 Stunden. Wartungsmodusupdates müssen über die Windows PowerShell-Schnittstelle des Geräts ausgeführt werden. Da Updates im Wartungsmodus den Betrieb unterbrechen, führen sie zu einer Ausfallzeit für Ihr Gerät.
-> - Stellen Sie bei Ausführung des optionalen StorSimple Snapshot Manager sicher, dass Sie die Snapshot Manager-Version auf Update 2.1 aktualisiert haben, bevor Sie das Gerät aktualisieren.
+> - Wir empfehlen, die Software- und Treiberupdates über das klassische Azure-Portal zu installieren. Sie sollten nur dann die Windows PowerShell-Schnittstelle des Geräts (zum Installieren der Updates) verwenden, wenn die Vorabprüfung für das Gateway im Portal fehlschlägt. Abhängig von der Version, von der aus Sie aktualisieren, dauert die Installation des Updates 1,5-2,5 Stunden. Wartungsmodusupdates müssen über die Windows PowerShell-Schnittstelle des Geräts ausgeführt werden. Da Updates im Wartungsmodus den Betrieb unterbrechen, führen sie zu einer Ausfallzeit für Ihr Gerät.
+> - Stellen Sie bei Ausführung des optionalen StorSimple Snapshot Manager sicher, dass Sie die Snapshot Manager-Version auf Update 2.2 aktualisiert haben, bevor Sie das Gerät aktualisieren.
 
 [AZURE.INCLUDE [storsimple-preparing-for-update](../../includes/storsimple-preparing-for-updates.md)]
 
-## Installieren von Update 2.1 über das klassische Azure-Portal
+## Installieren von Update 2.2 über das klassische Azure-Portal
 
-Führen Sie die folgenden Schritte aus, um Ihr Gerät auf [Update 2.1](storsimple-update21-release-notes.md) zu aktualisieren.
+Führen Sie die folgenden Schritte aus, um Ihr Gerät auf [Update 2.2](storsimple-update21-release-notes.md) zu aktualisieren.
 
 
 > [AZURE.NOTE]
@@ -42,7 +41,7 @@ Wenn Sie Update 2 oder höher anwenden (einschließlich Update 2.1), wird Micros
 
 [AZURE.INCLUDE [storsimple-install-update2-via-portal](../../includes/storsimple-install-update2-via-portal.md)]
 
-12. Stellen Sie sicher, dass auf Ihrem Gerät **Update 2.1 der StorSimple 8000-Serie (6.3.9600.17705)** ausgeführt wird. Das **Datum der letzten Aktualisierung** hat sich ebenfalls geändert. 
+12. Stellen Sie sicher, dass auf Ihrem Gerät Folgendes ausgeführt wird: **StorSimple 8000 Series Update 2.2 (6.3.9600.17708)**. Das **Datum der letzten Aktualisierung** hat sich ebenfalls geändert.
 
 	Wenn Sie eine Version vor Update 2 aktualisieren, werden Sie auch feststellen, dass Wartungsmodus-Updates verfügbar sind. (Diese Meldung wird nach der Updateinstallation unter Umständen noch bis zu 24 Stunden lang angezeigt.)
 
@@ -50,21 +49,21 @@ Wenn Sie Update 2 oder höher anwenden (einschließlich Update 2.1), wird Micros
 
 	Wenn Sie ein Update von Update 2 durchführen, sollte Ihr Gerät nun auf dem neuesten Stand sein. Sie können die verbleibenden Schritte überspringen.
 
-13. Laden Sie die Wartungsmodus-Updates herunter, indem Sie mithilfe der unter [Herunterladen von Hotfixes](#to-download-hotfixes) angegebenen Schritte nach KB3121899 suchen und es herunterladen, um Datenträger-Firmwareupdates zu installieren. (Die anderen Updates müssten inzwischen bereits installiert sein.)
+13. Laden Sie die Wartungsmodus-Updates herunter, indem Sie mithilfe der unter [Herunterladen von Hotfixes](#to-download-hotfixes) angegebenen Schritte KB3121899 suchen und herunterladen, um Datenträger-Firmwareupdates zu installieren. (Die anderen Updates müssten inzwischen bereits installiert sein.)
 
 13. Führen Sie die unter [Installieren und Überprüfen von Wartungsmodus-Hotfixes](#to-install-and-verify-maintenance-mode-hotfixes) angegebenen Schritte aus, um die Wartungsmodus-Updates zu installieren.
 
   
 
-## Installieren von Update 2.1 als Hotfix
+## Installieren von Update 2.2 als Hotfix
 
-Gehen Sie wie folgt vor, falls beim Installieren über das klassische Azure-Portal ein Fehler bei der Gatewayprüfung auftritt. Die Überprüfung zeigt einen Fehler, weil Sie ein Gateway auf einer anderen Netzwerkschnittstelle als DATA 0 zugewiesen haben und auf Ihrem Gerät eine Softwareversion vor Update 1 ausgeführt wird.
+Gehen Sie wie folgt vor, falls beim Installieren über das klassische Azure-Portal ein Fehler bei der Gatewayprüfung auftritt. Die Überprüfung zeigt einen Fehler, weil Sie ein Gateway auf einer anderen Netzwerkschnittstelle als DATA 0 zugewiesen haben und auf Ihrem Gerät eine Softwareversion vor Update 1 ausgeführt wird.
 
 Die Softwareversionen, die mithilfe dieser Methode aktualisiert werden können, sind:
 
 - Update 0.1, 0.2, 0.3
 - Update 1, 1.1, 1.2
-- Update 2 
+- Update 2. 2.1
 
 > [AZURE.IMPORTANT]
 >
@@ -76,18 +75,23 @@ Das Hotfixverfahren umfasst die folgenden drei Schritte:
 - Installieren und überprüfen Sie die Hotfixes für den normalen Modus.
 - Installieren und überprüfen Sie den Wartungsmodus-Hotfix (nur, wenn Sie ein Update von der Software durchführen, die noch nicht Update 2 enthält).
 
-#### Herunterladen von Updates für ein Gerät mit der Update 2-Software
+#### Herunterladen von Updates für ein Gerät mit der Update 2.1-Software
+
+**Wenn auf Ihrem Gerät Update 2.1 ausgeführt wird**, müssen Sie nur das Update für die Gerätesoftware KB3179904 herunterladen. Installieren Sie nur die Binärdatei mit dem Präfix „all-hcsmdssoftwareudpate“. Installieren Sie das CIS- und das MDS-Agent-Update mit dem Präfix `all-cismdsagentupdatebundle` nicht. Andernfalls kommt es zu einem Fehler.
+
+
+#### Herunterladen von Updates für ein Gerät mit der Update 2- oder 2.1-Software
 
 **Wenn auf Ihrem Gerät Update 2 ausgeführt wird**, müssen Sie die folgenden Hotfixes in der vorgeschriebenen Reihenfolge herunterladen und installieren:
 
 | Reihenfolge | KB | Beschreibung | Updatetyp | Installationszeit |
 |--------|-----------|-------------------------|------------- |-------------|
-| 1\. | KB3162954 | Softwareupdate &#42; | Normal | ~ 45 Min. |
+| 1\. | KB3179954 | Softwareupdate &#42; | Normal | ~ 45 Min. |
 | 2\. | KB3146621 | iSCSI-Paket | Normal | ~ 20 Min. |
 | 3\. | KB3103616 | WMI-Paket | Normal | ~ 12 Min. |
 
 
- &#42; *Beachten Sie, dass das Softwareupdate aus zwei Binärdateien besteht: `all-hcsmdssoftwareupdate_d5db7c7a86fc0fffd7fd7e8a1b58584ca4850936.exe` und `all-cismdsagentupdatebundle_a3b6e721045c9229f62ffe3374fb5715bf3699e3.exe`. Das Update für die Gerätesoftware `all-hcsmdssoftwareupdate_d5db7c7a86fc0fffd7fd7e8a1b58584ca4850936.exe` muss vor dem CIS- und MDS-Agent `all-cismdsagentupdatebundle_a3b6e721045c9229f62ffe3374fb5715bf3699e3.exe` installiert werden. Sie müssen auch den aktiven Controller über das `Restart-HcsController`-Cmdlet neu starten, nachdem Sie das Update für den CIS- und MDS-Agent angewendet haben (und bevor Sie die verbleibenden Updates anwenden).*
+ &#42;*Beachten Sie, dass das Softwareupdate aus zwei Binärdateien besteht: Update für die Gerätesoftware mit dem Präfix `all-hcsmdssoftwareupdate` und CIS- und MDS-Agent mit dem Präfix `all-cismdsagentupdatebundle`. Das Update für die Gerätesoftware muss vor dem CIS- und MDS-Agent installiert werden. Sie müssen auch den aktiven Controller über das `Restart-HcsController`-Cmdlet neu starten, nachdem Sie das Update für den CIS- und MDS-Agent angewendet haben (und bevor Sie die verbleibenden Updates anwenden).*
 
 #### Herunterladen von Updates für ein Gerät mit der Software vor Update 2
 
@@ -118,7 +122,7 @@ Das Hotfixverfahren umfasst die folgenden drei Schritte:
 
 > [AZURE.IMPORTANT]
 >
-> - Dieses Verfahren muss nur einmal ausgeführt werden, um Update 2.1 anzuwenden. Über das klassischen Azure-Portal können Sie nachfolgende Updates installieren.
+> - Dieses Verfahren muss nur einmal ausgeführt werden, um Update 2.2 anzuwenden. Über das klassischen Azure-Portal können Sie nachfolgende Updates installieren.
 > - Wenn Sie von Update 2 aktualisieren, dauert die gesamte Installation etwa 1,5 Stunden.
 > - Stellen Sie vor dem Verwenden dieses Verfahrens zum Anwenden des Updates sicher, dass beide Gerätecontroller online und alle Hardwarekomponenten fehlerfrei sind.
 
@@ -132,4 +136,4 @@ Führen Sie die folgenden Schritte aus, um diese Datei herunterzuladen und die H
 
 Weitere Informationen finden Sie unter [Versionsanmerkungen zu Update 2.1](storsimple-update21-release-notes.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

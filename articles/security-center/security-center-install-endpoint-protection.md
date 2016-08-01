@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/12/2016"
+   ms.date="07/15/2016"
    ms.author="terrylan"/>
 
 # Installieren von Endpoint Protection in Azure Security Center
@@ -30,7 +30,7 @@ In Azure Security Center wird die Bereitstellung einer Antischadsoftware für Ih
 
 3. Das Blatt **Select Endpoint Protection** (Endpoint Protection auswählen) wird geöffnet, auf dem Sie die Antischadsoftware-Lösung auswählen können, die Sie verwenden möchten. Wählen wir in diesem Beispiel **Microsoft Antimalware**. ![Endpoint Protection auswählen][3]
 
-4. Weitere Informationen zur Antischadsoftware-Lösung werden angezeigt. Klicken Sie auf **Erstellen**. ![][4]
+4. Weitere Informationen zur Antischadsoftware-Lösung werden angezeigt. Klicken Sie auf **Erstellen**. ![Erstellen einer Antischadsoftware-Lösung][4]
 
 5. Geben Sie die erforderlichen Konfigurationseinstellungen auf dem Blatt **Erweiterung hinzufügen** ein, und wählen Sie anschließend **OK**. Weitere Informationen zu den Konfigurationseinstellungen finden Sie unter [Standardmäßige und benutzerdefinierte Antimalware-Konfiguration](../azure-security-antimalware.md#default-and-custom-antimalware-configuration).
 
@@ -45,9 +45,9 @@ In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Endpo
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
 - [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Hier erfahren Sie, wie Sie Sicherheitsrichtlinien konfigurieren.
-- [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz Ihrer Azure-Ressourcen helfen.
-- [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-- [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
+- [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
+- [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
+- [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md): Hier erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
 - [Überwachen von Partnerlösungen mit Azure Security Center:](security-center-partner-solutions.md) Erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
 - [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 - [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
@@ -58,4 +58,4 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 [3]: ./media/security-center-install-endpoint-protection/select-endpoint-protection.png
 [4]: ./media/security-center-install-endpoint-protection/create-antimalware-solution.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

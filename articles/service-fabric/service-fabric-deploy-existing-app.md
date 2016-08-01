@@ -18,7 +18,7 @@
 
 # Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric
 
-Sie können beliebige Anwendungen, z. B. Node.js-, Java- oder native Anwendungen, in Azure Service Fabric ausführen. Im Zusammenhang mit Service Fabric werden diese Anwendungen als ausführbare Gastanwendungsdateien bezeichnet. Ausführbare Gastanwendungsdateien werden von Service Fabric wie zustandslose Dienste behandelt. Folglich werden sie basierend auf Verfügbarkeit und anderen Metriken auf Knoten innerhalb eines Clusters platziert. In diesem Artikel wird beschrieben, wie Sie eine ausführbare Gastanwendungsdatei packen und in einem Service Fabric-Cluster bereitstellen, indem Sie Visual Studio oder ein Befehlszeilenprogramm verwenden.
+Sie können beliebige Anwendungen, z. B. Node.js-, Java- oder native Anwendungen, in Azure Service Fabric ausführen. Im Zusammenhang mit Service Fabric werden diese Anwendungen als ausführbare Gastanwendungsdateien bezeichnet. Ausführbare Gastanwendungsdateien werden von Service Fabric wie zustandslose Dienste behandelt. Folglich werden sie basierend auf Verfügbarkeit und anderen Metriken auf Knoten innerhalb eines Clusters platziert. In diesem Artikel wird beschrieben, wie Sie eine ausführbare Gastanwendungsdatei packen und in einem Service Fabric-Cluster bereitstellen, indem Sie Visual Studio oder ein Befehlszeilenprogramm verwenden.
 
 ## Vorteile der Ausführung einer ausführbaren Gastanwendungsdatei in Service Fabric
 
@@ -43,7 +43,7 @@ Im Rahmen der Bereitstellung einer ausführbaren Gastanwendungsdatei sollten Sie
 
 * **Dienstmanifest**
 
-  Das Dienstmanifest beschreibt die Komponenten eines Diensts. Es enthält Daten, z. B. den Namen und den Typ des Diensts (die Informationen, die Service Fabric zur Verwaltung des Diensts verwendet), und seine Code-, Konfigurations- und Datenkomponenten. Das Dienstmanifest enthält auch einige zusätzliche Parameter, die verwendet werden können, um den Dienst zu konfigurieren, nachdem er bereitgestellt wurde.
+  Das Dienstmanifest beschreibt die Komponenten eines Diensts. Es enthält Daten, z. B. den Namen und den Typ des Diensts (die Informationen, die Service Fabric zur Verwaltung des Diensts verwendet), und seine Code-, Konfigurations- und Datenkomponenten. Das Dienstmanifest enthält auch einige zusätzliche Parameter, die verwendet werden können, um den Dienst zu konfigurieren, nachdem er bereitgestellt wurde.
 
   Hier werden nicht die Details aller unterschiedlichen Parameter beschrieben, die im Dienstmanifest verfügbar sind. Wir werden auf den relevanten Abschnitt eingehen, um eine ausführbare Gastanwendungsdatei in Service Fabric auszuführen.
 
@@ -65,7 +65,7 @@ Das Stammverzeichnis enthält die Datei „applicationmanifest.xml“, welche di
 
 - *Code*. Dieses Verzeichnis enthält den Code des Diensts.
 - *Config*. Dieses Verzeichnis enthält die Datei „Settings.xml“ (sowie andere Dateien, falls erforderlich), auf die der Dienst zur Laufzeit zugreifen kann, um bestimmte Konfigurationseinstellungen abzurufen.
-- *Data*. Dies ist ein zusätzliches Verzeichnis zum Speichern zusätzlicher lokaler Daten, die der Dienst möglicherweise benötigt. Hinweis: Das Verzeichnis „data“ sollte nur verwendet werden, um kurzlebige Daten zu speichern. Service Fabric kopiert/repliziert keine Änderungen in das Verzeichnis „data“, wenn der Dienst z. B. bei einem Failover verschoben werden muss.
+- *Data*. Dies ist ein zusätzliches Verzeichnis zum Speichern zusätzlicher lokaler Daten, die der Dienst möglicherweise benötigt. Hinweis: Das Verzeichnis „data“ sollte nur verwendet werden, um kurzlebige Daten zu speichern. Service Fabric kopiert/repliziert keine Änderungen in das Verzeichnis „data“, wenn der Dienst z. B. bei einem Failover verschoben werden muss.
 
 Hinweis: Sie müssen die Verzeichnisse `config` und `data` nur erstellen, falls Sie sie benötigen.
 
@@ -161,7 +161,7 @@ Das Element `Name` wird verwendet, um den Namen des Verzeichnisses im Anwendungs
 ```
 Der Element „SetupEntryPoint“ wird verwendet, um eine ausführbare Datei oder eine Batchdatei anzugeben, die vor dem Starten des Dienstcodes ausgeführt werden soll. Dies ist ein optionales Element, das nicht angegeben werden muss, wenn keine Initialisierung/kein Setup erforderlich ist. Der „SetupEntryPoint“ wird bei jedem Neustart des Diensts ausgeführt.
 
-Es gibt nur ein Element „SetupEntryPoint“. Daher müssen Setup-/Konfigurationsskripts in einer Batchdatei gebündelt werden, wenn für das Setup bzw. die Konfiguration der Anwendung mehrere Skripts erforderlich sind. Wie das Element „SetupEntryPoint“ kann auch „SetupEntryPoint“ jeden beliebigen Dateityp ausführen: ausführbare Dateien, Batchdateien und PowerShell-Cmdlets. Im obigen Beispiel basiert „SetupEntryPoint“ auf der Batchdatei „LaunchConfig.cmd“, die sich im Unterverzeichnis `scripts` des Verzeichnisses „code“ befindet (sofern das Element „WorkingFolder“ auf „code“ festgelegt ist).
+Es gibt nur ein Element „SetupEntryPoint“. Daher müssen Setup-/Konfigurationsskripts in einer Batchdatei gebündelt werden, wenn für das Setup bzw. die Konfiguration der Anwendung mehrere Skripts erforderlich sind. Das Element „SetupEntryPoint“ kann jeden beliebigen Dateityp ausführen: ausführbare Dateien, Batchdateien und PowerShell-Cmdlets. Im obigen Beispiel basiert „SetupEntryPoint“ auf der Batchdatei „LaunchConfig.cmd“, die sich im Unterverzeichnis `scripts` des Verzeichnisses „code“ befindet (sofern das Element „WorkingFolder“ auf „code“ festgelegt ist).
 
 ### Entrypoint
 
@@ -192,7 +192,7 @@ Mit dem Element `Entrypoint` in der Dienstmanifestdatei wird angegeben, wie der 
 </Endpoints>
 
 ```
-Das Element `Endpoint` gibt die Endpunkte an, an denen die Anwendung lauschen kann. In diesem Beispiel lauscht die Node.js-Anwendung an Port 3000.
+Das Element `Endpoint` gibt die Endpunkte an, an denen die Anwendung lauschen kann. In diesem Beispiel lauscht die Node.js-Anwendung an Port 3000.
 
 ## Bearbeiten der Anwendungsmanifestdatei
 
@@ -218,7 +218,7 @@ Im Element `ServiceManifestImport` können Sie einen oder mehrere Dienste angebe
 ```
 
 ### Einrichten der Protokollierung
-Bei ausführbaren Gastanwendungsdateien ist es äußerst nützlich, Konsolenprotokolle anzeigen zu können, um festzustellen, ob die Anwendungs- und Konfigurationskripts Fehler aufweisen. In der Datei `ServiceManifest.xml` kann mit dem Element `ConsoleRedirection` eine Konsolenumleitung konfiguriert werden.
+Bei ausführbaren Gastanwendungsdateien ist es äußerst nützlich, Konsolenprotokolle anzeigen zu können, um festzustellen, ob die Anwendungs- und Konfigurationsskripts Fehler aufweisen. In der Datei `ServiceManifest.xml` kann mit dem Element `ConsoleRedirection` eine Konsolenumleitung konfiguriert werden.
 
 ```xml
 <EntryPoint>
@@ -233,7 +233,7 @@ Bei ausführbaren Gastanwendungsdateien ist es äußerst nützlich, Konsolenprot
 
 * Mit `ConsoleRedirection` kann die Konsolenausgabe (stdout und stderr) in ein Arbeitsverzeichnis umgeleitet werden, um sicherzustellen, dass bei der Konfiguration oder Ausführung der Anwendung im Service Fabric-Cluster keine Fehler aufgetreten sind.
 
-	* `FileRetentionCount` legt fest, wie viele Dateien im Arbeitsverzeichnis gespeichert werden. Der Wert 5 bedeutet beispielsweise, dass die Protokolldateien für die letzten fünf Ausführungsvorgänge im Arbeitsverzeichnis gespeichert werden.
+	* `FileRetentionCount` legt fest, wie viele Dateien im Arbeitsverzeichnis gespeichert werden. Der Wert 5 bedeutet beispielsweise, dass die Protokolldateien für die letzten fünf Ausführungsvorgänge im Arbeitsverzeichnis gespeichert werden.
 	* `FileMaxSizeInKb` gibt die maximale Größe der Protokolldateien an.
 
 Protokolldateien werden in einem der Arbeitsverzeichnisse des Diensts gespeichert. Um zu bestimmen, wo sich die Dateien befinden, müssen Sie den Service Fabric-Explorer verwenden. Damit können Sie ermitteln, auf welchem Knoten der Dienst ausgeführt wird und welches Arbeitsverzeichnis verwendet wird. Dieser Vorgang wird weiter unten in diesem Artikel erläutert.
@@ -264,7 +264,7 @@ Mit dem `InstanceCount`-Parameter des Cmdlets `New-ServiceFabricService` wird an
 
 * `InstanceCount ="-1"`. In diesem Fall wird eine Instanz des Diensts auf jedem Knoten im Service Fabric-Cluster bereitgestellt. Das Endergebnis ist eine (und nur eine) Instanz des Diensts für jeden Knoten im Cluster.
 
-Dies ist eine praktische Konfiguration für Front-End-Anwendungen (z. B. REST-Endpunkte), da Clientanwendungen nur eine Verbindung mit einem Knoten im Cluster herstellen müssen, um den Endpunkt zu verwenden. Diese Konfiguration kann z. B. auch verwendet werden, wenn alle Knoten des Service Fabric-Clusters mit einem Lastenausgleichsmodul verbunden sind, damit der Datenverkehr der Clients über den Dienst verteilt werden kann, der auf allen Knoten im Cluster ausgeführt wird.
+Dies ist eine praktische Konfiguration für Front-End-Anwendungen (z. B. REST-Endpunkte), da Clientanwendungen nur eine Verbindung mit einem Knoten im Cluster herstellen müssen, um den Endpunkt zu verwenden. Diese Konfiguration kann z. B. auch verwendet werden, wenn alle Knoten des Service Fabric-Clusters mit einem Lastenausgleichsmodul verbunden sind, damit der Datenverkehr der Clients über den Dienst verteilt werden kann, der auf allen Knoten im Cluster ausgeführt wird.
 
 ### Überprüfen der ausgeführten Anwendung
 
@@ -308,4 +308,4 @@ In diesem Artikel wurden das Packen einer ausführbaren Gastanwendungsdatei sowi
 - [Bereitstellen mehrerer ausführbarer Gastanwendungsdateien](service-fabric-deploy-multiple-apps.md)
 - [Erstellen Ihrer ersten Service Fabric-Anwendung in Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

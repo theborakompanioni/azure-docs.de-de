@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="04/20/2016"
+	ms.date="07/15/2016"
 	ms.author="jroth" />
 
 # Bereitstellen eines virtuellen SQL Server-Computers mit Azure PowerShell (klassisch)
@@ -79,7 +79,7 @@ Ihr virtueller Computer mit SQL Server wird in einem Clouddienst gehostet, der s
 
 		Get-AzureVMImage | where { $_.ImageFamily -like "SQL*" } | select ImageFamily -Unique | Sort-Object -Property ImageFamily
 
-1. Wenn Sie die Imagefamilie für virtuelle Computer gefunden haben, gibt es möglicherweise mehrere veröffentlichte Images in dieser Familie. Verwenden Sie das folgende Skript, um den Namen des Image zu ermitteln, das für die von Ihnen ausgewählte Imagefamilie das zuletzt veröffentlichte Image für virtuelle Computer ist (z. B. **SQL Server 2014 SP1 Enterprise on Windows Server 2012 R2**):
+1. Wenn Sie die Imagefamilie für virtuelle Computer gefunden haben, gibt es möglicherweise mehrere veröffentlichte Images in dieser Familie. Verwenden Sie das folgende Skript, um den Namen des Image zu ermitteln, das für die von Ihnen ausgewählte Imagefamilie das zuletzt veröffentlichte Image für virtuelle Computer ist (z. B. **SQL Server 2014 SP1 Enterprise on Windows Server 2012 R2**):
 
 		$family="<ImageFamily value>"
 		$image=Get-AzureVMImage | where { $_.ImageFamily -eq $family } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
@@ -156,7 +156,7 @@ Das folgende Skript ist ein Beispiel für ein vollständiges Skript, das einen v
 		$documentspath = [environment]::getfolderpath("mydocuments")
 		Get-AzureRemoteDesktopFile -ServiceName $svcname -Name $vmname -LocalPath "$documentspath\vm1.rdp"
 
-1. Starten Sie die RDP-Datei im Verzeichnis „Dokumente“. Stellen Sie über die früher bereitgestellten Administrator-Anmeldeinformationen (Benutzername und Kennwort) eine Verbindung her (ist Ihr Benutzername z. B. „VMAdmin“, geben Sie „\\VMAdmin“ als Benutzer ein, und stellen Sie das Kennwort bereit).
+1. Starten Sie die RDP-Datei im Verzeichnis „Dokumente“. Stellen Sie über die früher bereitgestellten Administrator-Anmeldeinformationen (Benutzername und Kennwort) eine Verbindung her (ist Ihr Benutzername z. B. „VMAdmin“, geben Sie „\\VMAdmin“ als Benutzer ein, und stellen Sie das Kennwort bereit).
 
 		.\vm1.rdp
 
@@ -166,7 +166,7 @@ Nachdem Sie sich über Remotedesktop bei dem Computer angemeldet haben, konfigur
 
 ## Nächste Schritte
 
-Weitere Anleitungen zur Bereitstellung von virtuellen Computern mit PowerShell finden Sie in der [Dokumentation über virtuelle Computer](virtual-machines-windows-classic-create-powershell.md). Weitere Skripts im Zusammenhang mit SQL Server und Storage Premium finden Sie unter [Verwenden von Azure Premium-Speicher mit SQL Server auf virtuellen Computern](virtual-machines-windows-classic-sql-server-premium-storage.md).
+Weitere Anleitungen zur Bereitstellung von virtuellen Computern mit PowerShell finden Sie in der [Dokumentation über virtuelle Computer](virtual-machines-windows-classic-create-powershell.md). Weitere Skripts im Zusammenhang mit SQL Server und Storage Premium finden Sie unter [Verwenden von Azure Premium-Speicher mit SQL Server auf virtuellen Computern](virtual-machines-windows-classic-sql-server-premium-storage.md).
 
 In vielen Fällen ist der nächste Schritt, die Datenbanken auf diese neue SQL Server-VM zu migrieren. Anleitungen zur Datenbankmigration finden Sie unter [Migrieren einer Datenbank zu SQL Server auf einer Azure-VM](virtual-machines-windows-migrate-sql.md).
 
@@ -174,4 +174,4 @@ Wenn Sie auch wissen möchten, wie Sie das Azure-Portal zum Erstellen von virtue
 
 Zusätzlich zu diesen Ressourcen wird empfohlen, dass Sie sich die [anderen Themen im Zusammenhang mit Ausführen von SQL Server auf virtuellen Azure Computern](virtual-machines-windows-sql-server-iaas-overview.md) ansehen.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!----HONumber=AcomDC_0720_2016-->

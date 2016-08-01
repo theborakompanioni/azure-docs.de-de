@@ -18,7 +18,7 @@
 
 # Entwicklungsrichtlinien für DocumentDB-Konten mit Protokollunterstützung für MongoDB (Vorschau)
 
-Sie können mit DocumentDB über einen beliebigen Open-Source-MongoDB-[Clienttreiber](https://docs.mongodb.org/ecosystem/drivers/) kommunizieren. Für die Protokollunterstützung für MongoDB wird davon ausgegangen, dass die MongoDB-Clienttreiber mit einem Serverendpunkt mit MongoDB 2.6 oder höher kommunizieren. DocumentDB unterstützt dies durch Nutzung des MongoDB-[Verbindungsprotokolls](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol/) der Version 2.6. (Beachten Sie, dass das Verbindungsprotokoll der Version 3.2 fast vollständig unterstützt wird, aber bestimmte Clientumgebungen wie MongoDB-Shellsitzungen der Version 3.2 könnten angeben, dass sie „in einen veralteten Modus heruntergestuft werden“.)
+Sie können über einen beliebigen Open-Source-MongoDB-[Clienttreiber](https://docs.mongodb.org/ecosystem/drivers/) mit Azure DocumentDB kommunizieren. Für die Protokollunterstützung für MongoDB wird davon ausgegangen, dass die MongoDB-Clienttreiber mit einem Serverendpunkt mit MongoDB 2.6 oder höher kommunizieren. DocumentDB unterstützt dies durch Nutzung des MongoDB-[Verbindungsprotokolls](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol/) der Version 2.6. (Beachten Sie, dass das Verbindungsprotokoll der Version 3.2 fast vollständig unterstützt wird, aber bestimmte Clientumgebungen wie MongoDB-Shellsitzungen der Version 3.2 könnten angeben, dass sie „in einen veralteten Modus heruntergestuft werden“.)
 
 DocumentDB unterstützt die MongoDB-API-Kernfunktionen zum Erstellen, Lesen, Aktualisieren und Löschen (Create, Read, Update, Delete, CRUD) von Daten sowie Datenbankabfragen. Die implementierten Funktionen wurden basierend auf den Anforderungen gängiger Plattformen, Frameworks, Tools und Anwendungsmuster priorisiert.
 
@@ -100,4 +100,4 @@ Diagnose|listDatabases, collStats, dbStats| |Alle anderen
 
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

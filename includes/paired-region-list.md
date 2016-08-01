@@ -4,8 +4,8 @@
 |USA (Mitte/Süden) |USA (Mitte/Norden) |
 |USA (Ost) |USA (West) |
 |USA (West) |USA (Ost) |
-|USA (Ost 2) |USA (Mitte) |
-|USA (Mitte) |USA (Ost 2) |
+|USA (Ost 2) |USA (Mitte) |
+|USA (Mitte) |USA (Ost 2) |
 |Nordeuropa |Westeuropa |
 |Westeuropa |Nordeuropa |
 |Südostasien |Ostasien |
@@ -19,5 +19,6 @@
 |Australien (Südost)|Australien (Ost) |
 |Kanada, Osten |Kanada, Mitte |
 |Kanada, Mitte |Kanada, Osten |
+|USA, Westen 2 |USA, Westen-Mitte |
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0720_2016-->

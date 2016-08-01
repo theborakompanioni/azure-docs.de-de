@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Erstellen von SharePoint-Serverfarmen | Microsoft Azure"
-	description="Erstellen Sie im Marketplace des Azure-Portals schnell eine neue grundlegende oder hoch verfügbare SharePoint Server 2013-Farm."
+	description="Erstellen Sie schnell eine neue SharePoint 2013- oder SharePoint 2016-Farm in Azure."
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="JoeDavies-MSFT"
@@ -14,10 +14,14 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="07/19/2016"
 	ms.author="josephd"/>
 
 # Erstellen von SharePoint-Serverfarmen
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] klassisches Modell.
+
+## SharePoint 2013-Farmen
 
 Mit dem Marketplace im Microsoft Azure-Portal können Sie schnell eine vorkonfigurierte SharePoint Server 2013-Farm erstellen. Damit können Sie viel Zeit sparen, wenn Sie eine grundlegende oder hochverfügbare SharePoint-Farm für eine Test- oder Entwicklungsumgebung benötigen oder wenn Sie SharePoint Server 2013 als Zusammenarbeitslösung für Ihre Organisation bewerten möchten.
 
@@ -49,9 +53,15 @@ So erstellen Sie die hoch verfügbare SharePoint-Farm (neun Server):
 3. Klicken Sie im Bereich **SharePoint 2013 hoch verfügbare Farm** auf **Erstellen**.
 4. Geben Sie die Einstellungen für die sieben Schritte des Bereichs **SharePoint 2013 hoch verfügbare Farm erstellen** ein, und klicken Sie dann auf **Erstellen**.
 
-> [AZURE.NOTE] Die **SharePoint 2013 nicht hoch verfügbare Farm** bzw. die **SharePoint 2013 hoch verfügbare Farm** kann nicht mit einer kostenlosen Azure-Testversion erstellt werden.
+> [AZURE.NOTE] Die **nicht hoch verfügbare SharePoint 2013-Farm** bzw. die **hoch verfügbare SharePoint 2013-Farm** kann nicht mit einer kostenlosen Azure-Testversion erstellt werden.
 
 Das Azure-Portal erstellt beide Farmen in einem virtuellen Cloudnetzwerk mit einer über das Internet zugänglichen Webpräsenz. Es gibt keine Standort-zu-Standort-VPN- oder ExpressRoute-Verbindung mit Ihrem Unternehmensnetzwerk.
+
+## SharePoint 2016-Farmen
+
+[In diesem Thema](https://technet.microsoft.com/library/mt723354.aspx) finden Sie Anweisungen zum Erstellen der folgenden SharePoint 2016-Einzelserverfarm.
+
+![SharePoint-Farm](./media/virtual-machines-windows-sharepoint-farm/SP2016Farm.png)
 
 ## Verwalten der SharePoint-Farmen
 
@@ -59,10 +69,8 @@ Sie können die Server dieser Farmen über Remotedesktopverbindungen verwalten. 
 
 Auf der SharePoint-Website für die Zentraladministration können Sie eigene Websites, SharePoint-Anwendungen und andere Funktionen konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren von SharePoint 2013](http://technet.microsoft.com/library/ee836142.aspx).
 
-> [AZURE.NOTE] Mit dem [SharePoint Server 2016-Testimage](https://azure.microsoft.com/blog/test-sharepoint-server-2016/) können Sie einen virtuellen Computer mit SharePoint Server 2016 erstellen.
-
 ## Nächste Schritte
 
 - Lernen Sie weitere Konfigurationen von [SharePoint 2013](https://technet.microsoft.com/library/dn635309.aspx) in Azure-Infrastrukturdiensten kennen.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

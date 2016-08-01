@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo"
+	manager="femila"
 	tags="azure-classic-portal"/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/07/2016"
+	ms.date="07/13/2016"
 	ms.author="markusvi"/>
 
 
@@ -42,4 +42,4 @@ Dieses Navigationsthema enthält Links zu anderen Themen zum Bereitstellen von W
 - [Als Organisation für Azure registrieren](sign-up-organization.md)
 - [Azure-Identität](fundamentals-identity.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/01/2016" 
+	ms.date="07/19/2016" 
 	ms.author="josephd"/>
 
 # Einrichten einer webbasierten Branchenanwendung in einer Hybrid Cloud zu Testzwecken
@@ -45,7 +45,7 @@ Die Einrichtung dieser Hybrid Cloud-Testumgebung besteht aus drei Hauptphasen:
 
 Für diese Workload ist ein Azure-Abonnement nötig. Wenn Sie ein MSDN- oder Visual Studio-Abonnement besitzen, finden Sie weitere Informationen unter [Monatliche Azure-Gutschrift für Visual Studio-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
 
-## Phase 1: Einrichten der Hybridcloudumgebung
+## Phase 1: Einrichten der Hybridcloudumgebung
 
 Folgen Sie den Anweisungen im Thema [Einrichten einer Hybridcloudumgebung zu Testzwecken](virtual-machines-windows-ps-hybrid-cloud-test-env-base.md). Da das Vorhandensein des APP1-Servers im Subnetz des Unternehmensnetzwerks in dieser Testumgebung nicht erforderlich ist, können Sie jetzt herunterfahren.
 
@@ -55,11 +55,11 @@ Die aktuelle Konfiguration sieht folgendermaßen aus.
 
 > [AZURE.NOTE] Für Phase 1 können Sie auch die [simulierte Hybrid Cloud-Testumgebung](virtual-machines-windows-ps-hybrid-cloud-test-env-sim.md) einrichten.
  
-## Phase 2: Konfigurieren des SQL Server-Computers (SQL1)
+## Phase 2: Konfigurieren des SQL Server-Computers (SQL1)
 
 Starten Sie gegebenenfalls den DC2-Computer über das Azure-Portal.
 
-Erstellen Sie dann in einer Azure PowerShell-Eingabeaufforderung auf dem lokalen Computer mit den folgenden Befehlen einen virtuellen Azure-Computer für SQL1. Füllen Sie vor dem Ausführen dieser Befehle die Variablenwerte aus, und entfernen Sie die Zeichen < and >.
+Erstellen Sie dann in einer Azure PowerShell-Eingabeaufforderung auf dem lokalen Computer mit den folgenden Befehlen einen virtuellen Azure-Computer für SQL1. Füllen Sie vor dem Ausführen dieser Befehle die Variablenwerte aus, und entfernen Sie die Zeichen < und >.
 
 	$rgName="<your resource group name>"
 	$locName="<the Azure location of your resource group>"
@@ -86,7 +86,7 @@ Erstellen Sie dann in einer Azure PowerShell-Eingabeaufforderung auf dem lokalen
 Verwenden Sie das Azure-Portal zum Herstellen einer Verbindung mit SQL1 mithilfe des lokalen Administratorkontos.
 
 1.	Klicken Sie im linken Bereich des Azure-Verwaltungsportals auf **Virtuelle Computer**, und klicken Sie dann in der Statusspalte für "SQL1" auf **Wird ausgeführt**.
-2.	Klicken Sie in der Taskleiste auf **Verbinden**. 
+2.	Klicken Sie in der Taskleiste auf **Verbinden**.
 3.	Wenn Sie zum Öffnen von "SQL1.rdp" aufgefordert werden, klicken Sie auf **Öffnen**.
 4.	Wenn ein Meldungsfeld der Remotedesktopverbindung angezeigt wird, klicken Sie auf **Verbinden**.
 5.	Wenn Sie zur Eingabe von Anmeldeinformationen aufgefordert werden, geben Sie Folgendes ein:
@@ -128,7 +128,7 @@ Verknüpfen Sie SQL1 als Nächstes mit der Active Directory-Domäne CORP, indem 
 
 Verwenden Sie das Konto „CORP\\User1“, wenn Sie aufgefordert werden, für den Befehl **Add-Computer** Anmeldeinformationen für ein Domänenkonto anzugeben.
 
-Verwenden Sie nach dem Neustart das Azure-Portal zum Herstellen einer Verbindung mit SQL1 mithilfe des *lokalen Administratorkontos*.
+Verwenden Sie nach dem Neustart das Azure-Portal zum Herstellen einer Verbindung mit SQL1 *mithilfe des lokalen Administratorkontos*.
 
 Konfigurieren Sie anschließend SQL Server 2014 so, dass das Laufwerk F: für neue Datenbanken und Berechtigungen für Benutzerkonten verwendet werden kann.
 
@@ -136,7 +136,7 @@ Konfigurieren Sie anschließend SQL Server 2014 so, dass das Laufwerk F: für ne
 2.	Klicken Sie unter **Mit Server verbinden** auf **Verbinden**.
 3.	Klicken Sie im Strukturbereich "Objekt-Explorer" mit der rechten Maustaste auf **SQL1**, und klicken Sie anschließend auf **Eigenschaften**.
 4.	Klicken Sie im Fenster **Servereigenschaften** auf **Datenbankeinstellungen**.
-5.	Suchen Sie den Eintrag **Standardspeicherorte für Datenbank**, und legen Sie die folgenden Werte fest: 
+5.	Suchen Sie den Eintrag **Standardspeicherorte für Datenbank**, und legen Sie die folgenden Werte fest:
 	- Geben Sie für **Daten** den Pfad **f:\\Data** ein.
 	- Geben Sie für **Protokoll** den Pfad **f:\\Log** ein.
 	- Geben Sie für **Sicherung** den Pfad **f:\\Backup** ein.
@@ -152,7 +152,7 @@ Die aktuelle Konfiguration sieht folgendermaßen aus.
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-lob/virtual-machines-windows-ps-hybrid-cloud-test-env-lob-ph2.png)
  
-## Phase 3: Konfigurieren den Branchenservers (LOB1)
+## Phase 3: Konfigurieren den Branchenservers (LOB1)
 
 Führen Sie als Erstes auf dem lokalen Computer die folgenden Befehlen in der Azure PowerShell-Eingabeaufforderung aus, um einen virtuellen Azure-Computer für LOB1 zu erstellen.
 
@@ -216,6 +216,6 @@ Diese Umgebung kann jetzt zum Bereitstellen von webbasierten Anwendungen auf LOB
 
 ## Nächster Schritt
 
-- Stellen Sie die [Produktionsumgebung](virtual-machines-windows-lob-overview.md) bereit.
+- Bereitstellen anderer [Workloads](virtual-machines-windows-ps-hybrid-cloud-test-envs.md) in dieser Umgebung.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

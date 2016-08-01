@@ -19,7 +19,7 @@
 
 # Benachrichtigungen über neue oder geänderte DocumentDB-Ressourcen mit Logik-Apps
 
-Den Anstoß für diesen Artikel gab mir eine Frage, die in einem der DocumentDB-Communityforen veröffentlicht wurde. Die Frage lautete: **Unterstützt DocumentDB Benachrichtigungen über geänderte Ressourcen**?
+Den Anstoß für diesen Artikel gab eine Frage, die ich in einem der Azure DocumentDB-Communityforen las. Die Frage lautete: **Unterstützt DocumentDB Benachrichtigungen über geänderte Ressourcen**?
 
 Ich habe seit vielen Jahren mit BizTalk Server gearbeitet, und dies ist ein sehr gängiges Szenario bei Verwendung des [WCF-LOB-Adapters](https://msdn.microsoft.com/library/bb798128.aspx). Also entschied ich mich, festzustellen, ob ich diese Funktionalität in DocumentDB für neue und/oder geänderte Dokumente duplizieren konnte.
 
@@ -1156,4 +1156,4 @@ Bitte verwenden Sie den Logik-App-Code, den Sie bei [Github](https://github.com/
 
 Weitere Informationen zu DocumentDB finden Sie im [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/documentdb/).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

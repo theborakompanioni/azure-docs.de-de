@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="data-management" 
-    ms.date="04/27/2016"
+    ms.date="07/19/2016"
     ms.author="sstein"/>
 
 # Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit dem Azure-Portal
@@ -42,7 +42,7 @@ Für die sekundäre Datenbank kann ein Wechsel durchgeführt werden, bei dem sie
 
 Durch den Befehl wird die sekundäre Datenbank sofort in die primäre Rolle geändert.
 
-Es gibt einen kurzer Zeitraum, in dem beide Datenbanken während des Rollenwechsels (ca. 0 bis 25 Sekunden) nicht verfügbar sind. Wenn die primäre Datenbank über mehrere sekundäre Datenbanken verfügt, werden die anderen sekundären Datenbanken durch den Befehl automatisch neu konfiguriert, sodass sie eine Verbindung mit der neuen primären Datenbank herstellen. Unter normalen Umständen dauert der gesamte Vorgang nicht länger als 1 Minute.
+Es gibt einen kurzer Zeitraum, in dem beide Datenbanken während des Rollenwechsels (ca. 0 bis 25 Sekunden) nicht verfügbar sind. Wenn die primäre Datenbank über mehrere sekundäre Datenbanken verfügt, werden die anderen sekundären Datenbanken durch den Befehl automatisch neu konfiguriert, sodass sie eine Verbindung mit der neuen primären Datenbank herstellen. Unter normalen Umständen dauert der gesamte Vorgang nicht länger als 1 Minute.
 
 >[AZURE.NOTE] Wenn die primäre Datenbank bei Ausgabe des Befehls online ist und gerade Commits für Transaktionen ausführt, können einige Daten verloren gehen.
 
@@ -61,4 +61,4 @@ Es gibt einen kurzer Zeitraum, in dem beide Datenbanken während des Rollenwechs
 [1]: ./media/sql-database-geo-replication-failover-portal/failover.png
 [2]: ./media/sql-database-geo-replication-failover-portal/secondaries.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

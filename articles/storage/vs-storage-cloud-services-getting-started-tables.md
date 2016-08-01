@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-    ms.date="05/08/2016"
+    ms.date="07/18/2016"
 	ms.author="tarcher"/>
 
 # Erste Schritte mit Azure-Tabellenspeicher und verbundenen Visual Studio-Diensten (Clouddienstprojekte)
+
+[AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
 
 ##Übersicht
 
@@ -197,4 +199,4 @@ Sie können eine Entität nach dem Abrufen löschen. Der folgende Code sucht nac
 
 [AZURE.INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

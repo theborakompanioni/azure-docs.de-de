@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management" 
-   ms.date="04/28/2016"
+   ms.date="07/19/2016"
    ms.author="sstein"/>
 
 # Einblicke in die SQL-Datenbankleistung
@@ -68,4 +68,4 @@ Mithilfe von [Query Performance Insight](sql-database-query-performance.md) kön
 - [Leitfaden zur Azure SQL-Datenbankleistung für Einzeldatenbanken](sql-database-performance-guidance.md)
 - [Wo sollte ein Pool für elastische Datenbanken verwendet werden?](sql-database-elastic-pool-guidance.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

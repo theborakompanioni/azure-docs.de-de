@@ -39,7 +39,7 @@ Replicator-Konfigurationen konfigurieren den Replicator, der dafür verantwortli
 
 |Name|Unit|Standardwert|Hinweise|
 |----|----|-------------|-------|
-|BatchAcknowledgementInterval|Sekunden|0,05|So lange wartet der Replicator auf dem sekundären Replicator nach dem Empfang eines Vorgangs, bevor er eine Bestätigung an den primären Replicator sendet. Alle anderen Bestätigungen, die für innerhalb dieses Intervalls verarbeitete Vorgänge gesendet werden, werden als eine einzelne Antwort gesendet.|
+|BatchAcknowledgementInterval|Sekunden|0,015|So lange wartet der Replicator auf dem sekundären Replicator nach dem Empfang eines Vorgangs, bevor er eine Bestätigung an den primären Replicator sendet. Alle anderen Bestätigungen, die für innerhalb dieses Intervalls verarbeitete Vorgänge gesendet werden, werden als eine einzelne Antwort gesendet.|
 |ReplicatorEndpoint|N/V|Kein Standardwert – Erforderlicher Parameter|Die IP-Adresse und der Port, die der primäre/sekundäre Replicator für die Kommunikation mit anderen Replicatoren in der Replikatgruppe verwendet. Dabei sollte im Dienstmanifest auf einen TCP-Ressourcenendpunkt verwiesen werden. Weitere Informationen zum Definieren von Endpunktressourcen im Dienstmanifest finden Sie unter [Dienstmanifestressourcen](service-fabric-service-manifest-resources.md). |
 |RetryInterval|Sekunden|5|Der Zeitraum, nach dem der Replicator eine Nachricht erneut überträgt, wenn er keine Bestätigung für einen Vorgang erhält.|
 |MaxReplicationMessageSize|Byte|50 MB|Die maximale Größe der Replikationsdaten, die in einer einzelnen Nachricht übertragen werden können.|
@@ -86,4 +86,4 @@ Speicherkonfigurationen werden zum Konfigurieren des lokalen Speichers verwendet
 
 Der Parameter „BatchAcknowledgementInterval“ steuert die Replikationslatenz. Der Wert "0" ergibt die geringstmögliche Latenz, allerdings auf Kosten des Durchsatzes (da eine größer Anzahl von Bestätigungsnachrichten gesendet und verarbeitet werden muss, von denen jede weniger Bestätigungen enthält). Je größer der Wert für "BatchAcknowledgementInterval" ist, um so höher ist der Gesamtdurchsatz der Replikation, zu Lasten einer höheren Vorgangslatenz. Daraus ergibt sich direkt die Latenz von Transaktions-Commits.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

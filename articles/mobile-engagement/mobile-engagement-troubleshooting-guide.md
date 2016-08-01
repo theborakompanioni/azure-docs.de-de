@@ -26,8 +26,8 @@ Mithilfe dieses Handbuchs zur Problembehandlung können Sie die Ursachen einiger
 Im Allgemeinen sollten Sie immer Folgendes sicherstellen:
 
 1. Stellen Sie sicher, dass Sie alle in den [Erste-Schritte-Lernprogrammen](mobile-engagement-windows-store-dotnet-get-started.md) beschriebenen Schritte ausgeführt haben, die für die Integration erforderlich sind.
-2. Sie verwenden die neueste Version der Plattform-SDKs. 
-3. Führen Sie Tests auf einem Originalgerät und einem Emulator durch, da bestimmte Probleme nur beim Emulator auftreten. 
+2. Sie verwenden die neueste Version der Plattform-SDKs.
+3. Führen Sie Tests auf einem Originalgerät und einem Emulator durch, da bestimmte Probleme nur beim Emulator auftreten.
 4. Es treten keine der Beschränkungen/Drosselungen für Mobile Engagement auf, die [hier](../azure-subscription-service-limits.md) dokumentiert sind.
 5. Wenn Sie keine Verbindung mit dem Engagement Mobile Service Back-End herstellen können oder festzustellen, dass Daten nicht kontinuierlich geladen werden, vergewissern Sie sich [hier](https://azure.microsoft.com/status/), dass keine aktiven Servicevorfälle vorliegen.
 
@@ -38,7 +38,7 @@ Auf der Registerkarte „Überwachen“ werden die Geräte in Echtzeit angezeigt
 
 Wenn Ihr Gerät nicht auf der Registerkarte „Überwachen“ angezeigt wird, ist die Ursache wahrscheinlich ein Problem bei der SDK-Integration. Einige allgemeine Schritte zur Problembehandlung:
 
-1. Stellen Sie sicher, dass Sie die richtige Verbindungszeichenfolge aus dem Abschnitt für die SDK-Schlüssel und nicht die API-Schlüssel in der mobilen App verwenden. Unter Verwendung der Verbindungszeichenfolge wird die Verbindung der mobilen App mit der Instanz der Mobile Engagement-App hergestellt, in der Ihr Gerät auf der Registerkarte „Überwachen“ angezeigt wird. 
+1. Stellen Sie sicher, dass Sie die richtige Verbindungszeichenfolge aus dem Abschnitt für die SDK-Schlüssel und nicht die API-Schlüssel in der mobilen App verwenden. Unter Verwendung der Verbindungszeichenfolge wird die Verbindung der mobilen App mit der Instanz der Mobile Engagement-App hergestellt, in der Ihr Gerät auf der Registerkarte „Überwachen“ angezeigt wird.
 2. Windows-Plattform: Wenn die `OnNavigatedTo`-Methode von Ihrer Seite überschrieben wird, vergewissern Sie sich, dass `base.OnNavigatedTo(e)` aufgerufen wird.
 3. Wenn Mobile Engagement in eine vorhandene mobile App integriert wird, können Sie sich auch vergewissern, dass Sie keine Schritte ausgelassen haben, indem Sie die [hier](mobile-engagement-windows-store-integrate-engagement.md) aufgeführten erweiterten Integrationsschritte durchgehen.
 4. Stellen Sie sicher, dass Sie mindestens einen Bildschirm oder eine Aktivität senden, indem Sie je nach verwendeter Plattform entsprechend der Beschreibung in den [Erste-Schritte-Lernprogrammen](mobile-engagement-windows-store-dotnet-get-started.md) die Seite mit EngagementActivity überschreiben.
@@ -63,34 +63,34 @@ Die Segmenterstellung erfolgt derzeit nicht in Echtzeit. Sie wird gleichzeitig m
 
 ### Pushmeldungen werden nicht übermittelt 
 
-1. Versuchen Sie zunächst, Benachrichtigungen an ein Testgerät zu senden, um sicherzustellen, dass alle Komponenten – die mobile App, das SDK und der Dienst – korrekt verbunden sind und Pushbenachrichtigungen übermitteln können. 
-2. Senden Sie zunächst immer die einfachste Out-of-App-Benachrichtigung über eine Kampagne, die nicht geplant und für die kein Benutzergruppenkriterium festgelegt wurde. Damit soll wiederum überprüft werden, ob die Benachrichtigungsverbindungen ordnungsgemäß funktionieren. 
-3. Wenn bei der Übermittlung von In-App-Benachrichtigungen Probleme auftreten, empfiehlt es sich, als ersten Schritt zu versuchen, zunächst eine Out-of-App-Benachrichtigung zu senden. 
+1. Versuchen Sie zunächst, Benachrichtigungen an ein Testgerät zu senden, um sicherzustellen, dass alle Komponenten – die mobile App, das SDK und der Dienst – korrekt verbunden sind und Pushbenachrichtigungen übermitteln können.
+2. Senden Sie zunächst immer die einfachste Out-of-App-Benachrichtigung über eine Kampagne, die nicht geplant und für die kein Benutzergruppenkriterium festgelegt wurde. Damit soll wiederum überprüft werden, ob die Benachrichtigungsverbindungen ordnungsgemäß funktionieren.
+3. Wenn bei der Übermittlung von In-App-Benachrichtigungen Probleme auftreten, empfiehlt es sich, als ersten Schritt zu versuchen, zunächst eine Out-of-App-Benachrichtigung zu senden.
 4. Vergewissern Sie sich, dass der „systemeigene Push“ für Ihre mobile App korrekt konfiguriert ist. Je nach Plattform werden dabei entweder Schlüssel (Android, Windows) oder Zertifikate (iOS) verwendet. Weitere Informationen finden Sie unter [Benutzeroberfläche – Einstellungen](mobile-engagement-user-interface-settings.md).
-5. Außerdem ist es möglich, dass Out-of-App-Benachrichtigungen vom Benutzer über das mobile Betriebssystem blockiert wurden. Vergewissern Sie sich also, dass dies nicht der Fall ist. 
-6. Vergewissern Sie sich außerdem, dass Sie im Bereich **Kampagne** einer Reach-Kampagne nicht die Option *Zielgruppe ignorieren, Push wird über die API an Benutzer gesendet* festgelegt haben, da dies dazu führt, dass Pushbenachrichtigungen nur über APIs gesendet werden können. 
+5. Außerdem ist es möglich, dass Out-of-App-Benachrichtigungen vom Benutzer über das mobile Betriebssystem blockiert wurden. Vergewissern Sie sich also, dass dies nicht der Fall ist.
+6. Vergewissern Sie sich außerdem, dass Sie im Bereich **Kampagne** einer Reach-Kampagne nicht die Option *Zielgruppe ignorieren, Push wird über die API an Benutzer gesendet* festgelegt haben, da dies dazu führt, dass Pushbenachrichtigungen nur über APIs gesendet werden können.
 7. Sie müssen Ihre Pushkampagne sowohl mit einem Gerät, das über WLAN verbunden ist, als auch mit einem Gerät testen, das über ein Mobilfunknetz verbunden ist, um die Netzwerkverbindung als mögliche Problemquelle auszuschließen.
-8. Stellen Sie sicher, dass Systemdatum und -uhrzeit für den Geräteemulator korrekt eingestellt sind, da ein nicht synchronisiertes Gerät ebenfalls die Übermittlung von Benachrichtigungen durch den Pushbenachrichtigungsdienst beeinträchtigt. 
+8. Stellen Sie sicher, dass Systemdatum und -uhrzeit für den Geräteemulator korrekt eingestellt sind, da ein nicht synchronisiertes Gerät ebenfalls die Übermittlung von Benachrichtigungen durch den Pushbenachrichtigungsdienst beeinträchtigt.
 
 Im Folgenden finden Sie weitere plattformspezifische Anweisungen zur Problembehandlung:
 
-1. **iOS** 
+1. **iOS**
 
-	- Stellen Sie sicher, dass die Zertifikate für iOS-Pushbenachrichtigungen gültig und nicht abgelaufen sind. 
-	- Vergewissern Sie sich, dass Sie ein *Produktionszertifikat* in Ihrer Mobile Engagement-App korrekt konfiguriert haben. 
+	- Stellen Sie sicher, dass die Zertifikate für iOS-Pushbenachrichtigungen gültig und nicht abgelaufen sind.
+	- Vergewissern Sie sich, dass Sie ein *Produktionszertifikat* in Ihrer Mobile Engagement-App korrekt konfiguriert haben.
 	- Stellen Sie sicher, dass Sie den Test auf eine *realen, physischen Gerät* durchführen. Der iOS-Simulator kann keine Pushnachrichten verarbeiten.
 	- Stellen Sie sicher, dass die Bündel-ID in der mobilen App ordnungsgemäß konfiguriert ist. Anweisungen finden Sie [hier](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6).
 	- Verwenden Sie beim Testen die „Ad Hoc“-Verteilung in Ihrem mobile Bereitstellungsprofil. Sie werden nicht benachrichtigt, wenn Ihre App mithilfe von „Debug“ kompiliert wird.
 
 2. **Android**
 
-	- Vergewissern Sie sich, dass Sie in der Datei „AndroidManifest.xml“ Ihrer mobilen App die korrekte Projektnummer gefolgt vom Zeichen „\\n“ angegeben haben. 
+	- Vergewissern Sie sich, dass Sie in der Datei „AndroidManifest.xml“ Ihrer mobilen App die korrekte Projektnummer gefolgt vom Zeichen „\\n“ angegeben haben.
 	
 	    	<meta-data android:name="engagement:gcm:sender" android:value="************\n" />
 	    
 	- Stellen Sie sicher, dass in der Android-Manifestdatei keine Berechtigungen fehlen oder falsch konfiguriert sind.
-	- Stellen Sie sicher, dass die Projektnummer, die Sie der Client-App hinzufügen, aus dem Konto stammt, in dem Sie auch den GCM-Serverschlüssel erhalten haben. Jede Abweichung zwischen den beiden verhindert, dass Ihre Pushes gesendet werden. 
-	- Wenn Sie Systembenachrichtigungen empfangen, aber keine In-App-Benachrichtigungen, überprüfen Sie den Abschnitt [Angeben eines Symbol für Benachrichtigungen](mobile-engagement-android-get-started.md), da in der Android-Manifestdatei wahrscheinlich nicht das richtige Symbol angegeben ist. 
+	- Stellen Sie sicher, dass die Projektnummer, die Sie der Client-App hinzufügen, aus dem Konto stammt, in dem Sie auch den GCM-Serverschlüssel erhalten haben. Jede Abweichung zwischen den beiden verhindert, dass Ihre Pushes gesendet werden.
+	- Wenn Sie Systembenachrichtigungen empfangen, aber keine In-App-Benachrichtigungen, überprüfen Sie den Abschnitt [Angeben eines Symbol für Benachrichtigungen](mobile-engagement-android-get-started.md), da in der Android-Manifestdatei wahrscheinlich nicht das richtige Symbol angegeben ist.
 	- Wenn Sie eine BigPicture-Benachrichtigung senden und über externe Bildserver verfügen, müssen diese "GET" und "HEAD" für HTTP unterstützen.
 
 3. **Windows**
@@ -110,9 +110,9 @@ Dieser Fall tritt wahrscheinlich beim Testen auf, wenn Sie Emulatoren oder ein T
 
 Wenn Sie das Problem nicht selbst beheben können, haben Sie folgende Möglichkeiten
 
-1. Suchen Sie in den vorhandenen Threads im StackOverflow-Forum und [MSDN-Forum](https://social.msdn.microsoft.com/Forums/windows/de-DE/home?forum=azuremobileengagement) nach dem Problem. Stellen Sie dort ggf. eine Frage. 
+1. Suchen Sie in den vorhandenen Threads im StackOverflow-Forum und [MSDN-Forum](https://social.msdn.microsoft.com/Forums/windows/de-DE/home?forum=azuremobileengagement) nach dem Problem. Stellen Sie dort ggf. eine Frage.
 2. Wenn Sie der Meinung sind, dass ein Feature fehlt, stellen Sie im [UserVoice-Forum](https://feedback.azure.com/forums/285737-mobile-engagement/) eine Anfrage, oder stimmen Sie für eine Anfrage ab.
-3. Wenn Sie zu Microsoft-Support berechtigt sind, stellen Sie eine Supportanfrage mit folgenden Angaben: 
+3. Wenn Sie zu Microsoft-Support berechtigt sind, stellen Sie eine Supportanfrage mit folgenden Angaben:
 	- Azure-Abonnement-ID
 	- Plattform (iOS, Android usw.)
 	- App-ID
@@ -121,4 +121,4 @@ Wenn Sie das Problem nicht selbst beheben können, haben Sie folgende Möglichke
 	- Mobile Engagement SDK-Version (z. B. „Android SDK v2.1.0“)
 	- Fehlerdetails mit der genauen Fehlermeldung und dem Fehlerszenario
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0720_2016-->

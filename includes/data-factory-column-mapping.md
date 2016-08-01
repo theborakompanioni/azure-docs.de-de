@@ -3,14 +3,14 @@ Die Spaltenzuordnung kann verwendet werden, um anzugeben, wie die in "structure"
 
 Spaltenzuordnungen unterstützen die folgenden Szenarien:
 
-1.	Alle Spalten in "structure" der Quelltabelle werden allen Spalten in "structure" der Senkentabelle zugeordnet.
-2.	Eine Teilmenge der Spalten in "structure" der Quelltabelle wird allen Spalten in "structure" der Senkentabelle zugeordnet.
+- Alle Spalten in "structure" der Quelltabelle werden allen Spalten in "structure" der Senkentabelle zugeordnet.
+- Eine Teilmenge der Spalten in "structure" der Quelltabelle wird allen Spalten in "structure" der Senkentabelle zugeordnet.
 
 Im Folgenden sind Fehlerbedingungen angegeben, die zu einer Ausnahme führen:
 
-1.	Weniger Spalten oder mehr Spalten in "structure" der Senkentabelle als in der Zuordnung angegeben sind.
-2.	Doppelte Zuordnung.
-3.	Das Ergebnis der SQL-Abfrage enthält keinen Spaltennamen, der in der Zuordnung angegeben ist.
+- Weniger Spalten oder mehr Spalten in "structure" der Senkentabelle als in der Zuordnung angegeben sind.
+- Doppelte Zuordnung.
+- Das Ergebnis der SQL-Abfrage enthält keinen Spaltennamen, der in der Zuordnung angegeben ist.
 
 ## Beispiele für Spaltenzuordnungen
 > [AZURE.NOTE] Die folgenden Beispiele beziehen sich auf Azure SQL und Azure Blob, sie gelten aber auch für beliebige Datenspeicher, die rechteckige Datasets unterstützen. Sie müssen die Definitionen von Datasets und verknüpften Diensten in den folgenden Beispielen anpassen, damit sie auf Daten in der relevanten Datenquelle verweisen.
@@ -149,4 +149,4 @@ In diesem Fall werden die Abfrageergebnisse zuerst den in "structure" der Quelle
 
 ![Ablauf der Spaltenzuordnung-2](./media/data-factory-data-stores-with-rectangular-tables/column-mapping-flow-2.png)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0720_2016-->

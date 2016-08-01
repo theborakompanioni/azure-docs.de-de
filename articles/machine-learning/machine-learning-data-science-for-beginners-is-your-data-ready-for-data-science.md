@@ -14,17 +14,29 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/27/2016"
+   ms.date="07/15/2016"
    ms.author="cgronlun;brohrer;garye"/>
 
 
-# Data Science für Einsteiger, 2. Video: Sind Ihre Daten für Data Science bereit?
+# Sind Ihre Daten für Data Science bereit?
+
+## 2\. Video der Reihe „Data Science für Einsteiger“
 
 Erfahren Sie, wie Sie Ihre Daten bewerten können, um sicherzustellen, dass sie die Basiskriterien für Data Science erfüllen.
 
 Die Reihe bietet den größten Nutzen, wenn Sie sich die Videos in der vorgegebenen Reihenfolge ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)
 
 > [AZURE.VIDEO data-science-for-beginners-series-is-your-data-ready-for-data-science]
+
+## Andere Videos in dieser Reihe
+
+In fünf Kurzvideos der Reihe *Data Science für Einsteiger* erhalten Sie eine Schnelleinführung in Data Science.
+
+  * 1\. Video: [Die 5 Fragen, die Data Science beantwortet](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5:14 Min.)*
+  * 2\. Video: Sind Ihre Daten für Data Science bereit?
+  * 3\. Video: [Stellen einer Frage, die Sie mit Daten beantworten können](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4:17 Min.)*
+  * 4\. Video: [Vorhersagen einer Antwort mit einem einfachen Modell](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7:42 Min.)*
+  * 5\. Video: [Kopieren der Arbeit anderer für Ihre Data Science](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3:18 Min.)*
 
 ## Aufzeichnung: Sind Ihre Daten für Data Science bereit?
 
@@ -91,7 +103,7 @@ Stellen Sie sich jeden Datenpunkt in Ihrer Tabelle als einen Pinselstrich auf ei
 
 Wenn Sie weitere Striche hinzufügen, beginnt Ihr Bild, etwas schärfer zu werden.
 
-Wenn es gerade genug Striche gibt, können Sie ungefähr so viel erkennen, dass einige allgemeinen Entscheidungen getroffen werden können. Handelt es sich um etwas, dass ich möglicherweise besuchen möchte? Es sieht hell aus, wie klares Wasser, ja, dahin möchte in Urlaub fahren.
+Wenn gerade genügend Striche vorhanden sind, können Sie in etwa ausreichend viel erkennen, um einige allgemeine Entscheidungen treffen zu können. Handelt es sich um etwas, dass ich möglicherweise besuchen möchte? Es sieht hell aus, wie klares Wasser, ja, dahin möchte in Urlaub fahren.
 
 Je mehr Daten Sie hinzufügen, umso klarer wird Ihr Bild, sodass Sie detaillierte Entscheidungen treffen können. Jetzt kann ich die drei Hotels am linken Ufer erkennen. Mir gefallen besonders die architektonischen Merkmale des Hotels im Vordergrund. Da möchte ich hin, in den dritten Stock.
 
@@ -100,15 +112,6 @@ Mit Daten, die relevant, verbunden, genau und in ausreichender Menge vorhanden s
 Sehen Sie sich unbedingt auch die anderen vier Videos in der Reihe *Data Science für Einsteiger* von Microsoft Azure Machine Learning an.
 
 
-## Andere Videos in dieser Reihe
-
-In fünf Kurzvideos der Reihe *Data Science für Einsteiger* erhalten Sie eine Schnelleinführung in Data Science.
-
-  * 1\. Video: [Die 5 Fragen, die Data Science beantwortet](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)
-  * 2\. Video: Sind Ihre Daten für Data Science bereit?
-  * 3\. Video: [Stellen einer Frage, die Sie mit Daten beantworten können](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)
-  * 4\. Video: [Vorhersagen einer Antwort mit einem einfachen Modell](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md)
-  * 5\. Video: [Kopieren der Arbeit anderer für Ihre Data Science](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)
 
 
 ## Nächste Schritte
@@ -116,4 +119,4 @@ In fünf Kurzvideos der Reihe *Data Science für Einsteiger* erhalten Sie eine S
   * [Durchführen Ihres ersten Data Science-Experiments mit Azure Machine Learning](machine-learning-create-experiment.md)
   * [Einführung in Machine Learning in Microsoft Azure](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

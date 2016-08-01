@@ -26,9 +26,9 @@
 - [Python-Beispiele](documentdb-python-samples.md)
 - [Katalog mit Azure-Codebeispielen](https://azure.microsoft.com/documentation/samples/?service=documentdb)
 
-Beispiellösungen, in denen CRUD-Vorgänge und andere gängige Vorgänge für DocumentDB-Ressourcen ausgeführt werden, finden Sie im GitHub-Repository [azure-documentdb-net](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples). Dieser Artikel enthält Folgendes:
+Beispiellösungen, in denen CRUD-Vorgänge und andere gängige Vorgänge für Azure DocumentDB-Ressourcen ausgeführt werden, finden Sie im GitHub-Repository [azure-documentdb-net](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples). Dieser Artikel enthält Folgendes:
 
-- Links zu den Aufgaben in den einzelnen C#-Beispielprojektdateien. 
+- Links zu den Aufgaben in den einzelnen C#-Beispielprojektdateien.
 - Links zum zugehörigen API-Referenzinhalt.
 
 **Voraussetzungen**
@@ -36,10 +36,10 @@ Beispiellösungen, in denen CRUD-Vorgänge und andere gängige Vorgänge für Do
 1. Sie benötigen ein Azure-Konto, um diese NoSQL-Beispiele zu verwenden:
     - Sie können [ein Azure-Konto kostenlos erstellen](https://azure.microsoft.com/pricing/free-trial/): Sie erhalten ein Guthaben, das Sie zum Ausprobieren zahlungspflichtiger Azure-Dienste nutzen können, und Sie können das Konto selbst dann behalten und die kostenlosen Azure-Dienste wie Websites nutzen, wenn das Guthaben aufgebraucht ist. Ihre Kreditkarte wird nur dann belastet, wenn Sie Ihre Einstellungen explizit ändern und mit einer Zahlung einverstanden sind.
    - Sie können Ihre [Vorteile für Visual Studio-Abonnenten aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/): Ihr Visual Studio-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste nutzen können.
-2. Außerdem benötigen Sie das [Microsoft.Azure.DocumentDB-NuGet-Paket](http://www.nuget.org/packages/Microsoft.Azure.DocumentDB/). 
+2. Außerdem benötigen Sie das [Microsoft.Azure.DocumentDB-NuGet-Paket](http://www.nuget.org/packages/Microsoft.Azure.DocumentDB/).
 
 > [AZURE.NOTE]
-Jedes Beispiel ist eigenständig mit eigener Einrichtung und Bereinigung. In den Beispielen werden mehrere Aufrufe von CreateDocumentCollectionAsync() ausgegeben. Jedes Mal, wenn dies geschieht, wird Ihrem Abonnement 1 Stunde Nutzung gemäß dem Leistungstarif der erstellten Sammlung berechnet.
+Jedes Beispiel ist eigenständig mit eigener Einrichtung und Bereinigung. In den Beispielen werden mehrere Aufrufe von CreateDocumentCollectionAsync() ausgegeben. Jedes Mal, wenn dies geschieht, wird Ihrem Abonnement 1 Stunde Nutzung gemäß dem Leistungstarif der erstellten Sammlung berechnet.
 
 ## Datenbankbeispiele
 
@@ -179,4 +179,4 @@ Aufgabe | API-Referenz
 [Festlegen von Berechtigungen für eine Sammlung oder ein Dokument](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/UserManagement/Program.cs#L85) | [DocumentClient.CreatePermissionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createpermissionasync.aspx)
 [Abrufen einer Liste mit Berechtigungen eines Benutzers](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/UserManagement/Program.cs#L218) | [DocumentClient.ReadUserAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readuserasync.aspx)<br>[DocumentClient.ReadPermissionFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readpermissionfeedasync.aspx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0720_2016-->

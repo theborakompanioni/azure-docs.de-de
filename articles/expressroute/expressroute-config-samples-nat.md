@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/18/2016"
+   ms.date="07/19/2016"
    ms.author="cherylmc"/>
 
 # Beispiele für die Routerkonfiguration zum Einrichten und Verwalten von NAT (Network Address Translation, Netzwerkadressübersetzung)
@@ -317,6 +317,6 @@ Beispielen finden Sie auf der Seite [Beispiele für Routingkonfiguration](expres
 
 ## Nächste Schritte
 
-Weitere Informationen finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
+Weitere Informationen finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0720_2016-->

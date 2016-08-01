@@ -5,9 +5,9 @@ Die Standardgrößen bestehen aus mehreren Serien: A, D, DS, F, Fs, G und GS. Be
 
 *   VMs der D-Serie dienen zum Ausführen von Anwendungen, die eine höhere Rechenleistung und eine höhere temporäre Datenträgerleistung erfordern. VMs der D-Serie bieten schnellere Prozessoren, ein höheres Verhältnis von Speicher zu Kern und ein SSD (Solid State Drive) für den temporären Datenträger. Einzelheiten finden Sie in der Ankündigung im Azure-Blog unter [New D-Series Virtual Machine Sizes](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/) (Neue VM-Größen der D-Serie, in englischer Sprache).
 
-*   Die Dv2-Serie, eine Nachfolgerin der ursprünglichen D-Serie, hat eine leistungsfähigere CPU. Die CPU der Dv2-Serie ist ca. 35 % schneller als die CPU der D-Serie. Sie basiert auf der neuesten Generation des 2,4-GHz-Intel Xeon® E5-2673 v3-Prozessors (Haswell) und kann mit der Intel Turbo Boost Technology 2.0 bis auf 3,1 GHz erhöht werden. Die Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
+*   Die Dv2-Serie, eine Nachfolgerin der ursprünglichen D-Serie, hat eine leistungsfähigere CPU. Die CPU der Dv2-Serie ist ca. 35 % schneller als die CPU der D-Serie. Sie basiert auf der neuesten Generation des 2,4-GHz-Intel Xeon® E5-2673 v3-Prozessors (Haswell) und kann mit der Intel Turbo Boost Technology 2.0 bis auf 3,1 GHz erhöht werden. Die Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
 
-* Die F-Serie basiert auf dem Intel Xeon® E5-2673 v3-Prozessor (Haswell) mit 2,4 GHz, der mit der Intel Turbo Boost Technology 2.0 Taktfrequenzen von 3,1 GHz erreichen kann. Dies ist die gleiche CPU-Leistung wie bei virtuellen Computern (VMs) der Dv2-Serie. Die F-Serie hat einen niedrigeren Listenpreis pro Stunde und bietet auf Basis der Azure-Berechnungseinheit ACU (Azure Compute Unit) pro Kern das beste Preis-Leistungs-Verhältnis im Azure-Portfolio.
+* Die F-Serie basiert auf dem Intel Xeon® E5-2673 v3-Prozessor (Haswell) mit 2,4 GHz, der mit der Intel Turbo Boost Technology 2.0 Taktfrequenzen von 3,1 GHz erreichen kann. Dies ist die gleiche CPU-Leistung wie bei virtuellen Computern (VMs) der Dv2-Serie. Die F-Serie hat einen niedrigeren Listenpreis pro Stunde und bietet auf Basis der Azure-Berechnungseinheit ACU (Azure Compute Unit) pro Kern das beste Preis-Leistungs-Verhältnis im Azure-Portfolio.
 
 	Bei der F-Serie wird außerdem ein neuer Standard bei der Benennung von VM-Größen in Azure eingeführt. Bei dieser Serie und bei künftig freigegebenen VM-Größen entspricht der hinter dem Buchstaben für den Familiennamen angegebene Zahlenwert der Anzahl von CPU-Kernen. Weitere Eigenschaften und Fähigkeiten, wie z.B. die Optimierung für Storage Premium, werden nach dem Zahlenwert für die Anzahl von CPU-Kernen durch Buchstaben angegeben. Dieses Namensformat wird für zukünftig freigegebene VM-Größen verwendet. Die Namen von bestehenden und freigegebenen VM-Größen werden jedoch nicht rückwirkend geändert.
 
@@ -20,7 +20,7 @@ Die Standardgrößen bestehen aus mehreren Serien: A, D, DS, F, Fs, G und GS. Be
 
 *   Die VMs der A-Reihe können auf vielen verschiedenen Hardwaretypen und Prozessoren bereitgestellt werden. Die Größe ist basierend auf der Hardware gedrosselt, um eine konsistente Prozessorleistung für die ausgeführte Instanz zu ermöglichen – unabhängig von der Hardware, die für die Bereitstellung gewählt wird. Fragen Sie die virtuelle Hardware über die virtuelle Maschine ab, um die physische Hardware zu ermitteln, auf der diese Größe bereitgestellt wird.
 
-*   Die Größe „A0“ ist auf der physischen Hardware „überzeichnet“. Nur für diese spezielle Größe kann es dazu kommen, dass sich andere Kundenbereitstellungen negativ auf die Leistung Ihrer aktiven Workload auswirken. Die relative Leistung ist unten als erwartete Baseline beschrieben und unterliegt einer ungefähren Variabilität von 15 Prozent.
+*   Die Größe „A0“ ist auf der physischen Hardware „überzeichnet“. Nur für diese spezielle Größe kann es dazu kommen, dass sich andere Kundenbereitstellungen negativ auf die Leistung Ihrer aktiven Workload auswirken. Die relative Leistung ist unten als erwartete Baseline beschrieben und unterliegt einer ungefähren Variabilität von 15 Prozent.
 
 
 Die Größe des virtuellen Computers wirkt sich auf den Preis aus. Die Größe beeinflusst auch die Verarbeitung, den Arbeitsspeicher und die Speicherkapazität des virtuellen Computers. Speicherkosten werden separat basierend auf bereits verwendete Seiten im Speicherkonto berechnet. Weitere Informationen finden Sie unter [Virtuelle Computer – Preisdetails](https://azure.microsoft.com/pricing/details/virtual-machines/) und [Preisdetails zu Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
@@ -78,14 +78,14 @@ In den folgenden Tabellen sind die Größe und die von den einzelnen Größen be
 
 |Größe |CPU-Kerne|Arbeitsspeicher|Netzwerkkarten (max.)|Maximale Datenträgergröße|Max. Datenträger (jeweils 1023 GB)|Max. IOPS (500 pro Datenträger)| Maximale Netzwerkbandbreite |
 |---|---|---|---|---|---|---|---|
-|Standard\_A0 |1|768 MB|1| Temporär = 20 GB |1|1 x 500| niedrig |
-|Standard\_A1 |1|1,75 GB|1|Temporär = 70 GB |2|2 x 500| mittel |
-|Standard\_A2 |2|3,5 GB|1|Temporär = 135 GB |4|4 x 500| mittel |
-|Standard\_A3 |4|7 GB|2|Temporär = 285 GB |8|8 x 500| hoch |
-|Standard\_A4 |8|14 GB|4|Temporär = 605 GB |16|16 x 500| hoch |
-|Standard\_A5 |2|14 GB|1|Temporär = 135 GB |4|4 x 500| mittel |
-|Standard\_A6 |4|28 GB|2|Temporär = 285 GB |8|8 x 500| hoch |
-|Standard\_A7 |8|56 GB|4|Temporär = 605 GB |16|16 x 500| hoch |
+|Standard\_A0 |1|768 MB|1| Temporär = 20 GB |1|1 x 500| niedrig |
+|Standard\_A1 |1|1,75 GB|1|Temporär = 70 GB |2|2 x 500| mittel |
+|Standard\_A2 |2|3,5 GB|1|Temporär = 135 GB |4|4 x 500| mittel |
+|Standard\_A3 |4|7 GB|2|Temporär = 285 GB |8|8 x 500| hoch |
+|Standard\_A4 |8|14 GB|4|Temporär = 605 GB |16|16 x 500| hoch |
+|Standard\_A5 |2|14 GB|1|Temporär = 135 GB |4|4 x 500| mittel |
+|Standard\_A6 |4|28 GB|2|Temporär = 285 GB |8|8 x 500| hoch |
+|Standard\_A7 |8|56 GB|4|Temporär = 605 GB |16|16 x 500| hoch |
 
 
 
@@ -95,38 +95,38 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 
 |Größe |CPU-Kerne|Arbeitsspeicher|Netzwerkkarten (max.)|Maximale Datenträgergröße|Max. Datenträger (jeweils 1023 GB)|Max. IOPS (500 pro Datenträger)| Maximale Netzwerkbandbreite |
 |---|---|---|---|---|---|---|---|
-|Standard\_A8|8|56 GB|2| Temporär = 382 GB |16|16 x 500| hoch |
-|Standard\_A9|16|112 GB|4| Temporär = 382 GB |16|16 x 500| sehr hoch |
-|Standard\_A10|8|56 GB|2| Temporär = 382 GB |16|16 x 500| hoch |
-|Standard\_A11|16|112 GB|4| Temporär = 382 GB |16|16 x 500| sehr hoch |
+|Standard\_A8|8|56 GB|2| Temporär = 382 GB |16|16 x 500| hoch |
+|Standard\_A9|16|112 GB|4| Temporär = 382 GB |16|16 x 500| sehr hoch |
+|Standard\_A10|8|56 GB|2| Temporär = 382 GB |16|16 x 500| hoch |
+|Standard\_A11|16|112 GB|4| Temporär = 382 GB |16|16 x 500| sehr hoch |
 
 ## D-Serie
 
 |Größe |CPU-Kerne|Arbeitsspeicher|Netzwerkkarten (max.)|Maximale Datenträgergröße|Max. Datenträger (jeweils 1023 GB)|Max. IOPS (500 pro Datenträger)| Maximale Netzwerkbandbreite |
 |---|---|---|---|---|---|---|---|
-|Standard\_D1 |1|3,5 GB|1|Temporär (SSD) =50 GB |2|2 x 500| mittel |
-|Standard\_D2 |2|7 GB|2|Temporär (SSD) = 100 GB |4|4 x 500| hoch |
-|Standard\_D3 |4|14 GB|4|Temporär (SSD) = 200 GB |8|8 x 500| hoch |
-|Standard\_D4 |8|28 GB|8|Temporär (SSD) = 400 GB |16|16 x 500| hoch |
-|Standard\_D11 |2|14 GB|2|Temporär (SSD) = 100 GB |4|4 x 500| hoch |
-|Standard\_D12 |4|28 GB|4|Temporär (SSD) = 200 GB |8|8 x 500| hoch |
-|Standard\_D13 |8|56 GB|8|Temporär (SSD) = 400 GB |16|16 x 500| hoch |
-|Standard\_D14 |16|112 GB|8|Temporär (SSD) = 800 GB |32|32 x 500| sehr hoch |
+|Standard\_D1 |1|3,5 GB|1|Temporär (SSD) =50 GB |2|2 x 500| mittel |
+|Standard\_D2 |2|7 GB|2|Temporär (SSD) = 100 GB |4|4 x 500| hoch |
+|Standard\_D3 |4|14 GB|4|Temporär (SSD) = 200 GB |8|8 x 500| hoch |
+|Standard\_D4 |8|28 GB|8|Temporär (SSD) = 400 GB |16|16 x 500| hoch |
+|Standard\_D11 |2|14 GB|2|Temporär (SSD) = 100 GB |4|4 x 500| hoch |
+|Standard\_D12 |4|28 GB|4|Temporär (SSD) = 200 GB |8|8 x 500| hoch |
+|Standard\_D13 |8|56 GB|8|Temporär (SSD) = 400 GB |16|16 x 500| hoch |
+|Standard\_D14 |16|112 GB|8|Temporär (SSD) = 800 GB |32|32 x 500| sehr hoch |
 
 
 ## Dv2-Serie
 
 |Größe |CPU-Kerne|Arbeitsspeicher|Netzwerkkarten (max.)|Maximale Datenträgergröße|Max. Datenträger (jeweils 1023 GB)|Max. IOPS (500 pro Datenträger)| Maximale Netzwerkbandbreite |
 |---|---|---|---|---|---|---|---|
-|Standard\_D1\_v2 |1|3,5 GB|1|Temporär (SSD) =50 GB |2|2 x 500| mittel |
-|Standard\_D2\_v2 |2|7 GB|2|Temporär (SSD) = 100 GB |4|4 x 500| hoch |
-|Standard\_D3\_v2 |4|14 GB|4|Temporär (SSD) = 200 GB |8|8 x 500| hoch |
-|Standard\_D4\_v2 |8|28 GB|8|Temporär (SSD) = 400 GB |16|16 x 500| hoch |
-|Standard\_D5\_v2 |16|56 GB|8|Temporär (SSD) = 800 GB |32|32 x 500| äußerst hoch |
-|Standard\_D11\_v2 |2|14 GB|2|Temporär (SSD) = 100 GB |4|4 x 500| hoch |
-|Standard\_D12\_v2 |4|28 GB|4|Temporär (SSD) = 200 GB |8|8 x 500| hoch |
-|Standard\_D13\_v2 |8|56 GB|8|Temporär (SSD) = 400 GB |16|16 x 500| hoch |
-|Standard\_D14\_v2 |16|112 GB|8|Temporär (SSD) = 800 GB |32|32 x 500| äußerst hoch |
+|Standard\_D1\_v2 |1|3,5 GB|1|Temporär (SSD) =50 GB |2|2 x 500| mittel |
+|Standard\_D2\_v2 |2|7 GB|2|Temporär (SSD) = 100 GB |4|4 x 500| hoch |
+|Standard\_D3\_v2 |4|14 GB|4|Temporär (SSD) = 200 GB |8|8 x 500| hoch |
+|Standard\_D4\_v2 |8|28 GB|8|Temporär (SSD) = 400 GB |16|16 x 500| hoch |
+|Standard\_D5\_v2 |16|56 GB|8|Temporär (SSD) = 800 GB |32|32 x 500| äußerst hoch |
+|Standard\_D11\_v2 |2|14 GB|2|Temporär (SSD) = 100 GB |4|4 x 500| hoch |
+|Standard\_D12\_v2 |4|28 GB|4|Temporär (SSD) = 200 GB |8|8 x 500| hoch |
+|Standard\_D13\_v2 |8|56 GB|8|Temporär (SSD) = 400 GB |16|16 x 500| hoch |
+|Standard\_D14\_v2 |16|112 GB|8|Temporär (SSD) = 800 GB |32|32 x 500| äußerst hoch |
 |Standard\_D15\_v2 |20|140 GB|10|Temporär (SSD) = 1 TB |40|40 x 500| äußerst hoch |
 
 
@@ -135,13 +135,13 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 |Größe |CPU-Kerne|Arbeitsspeicher|Netzwerkkarten (max.)|Maximale Datenträgergröße|Max. Datenträger (jeweils 1023 GB)|Cachegröße (GB)|Max. Datenträger-IOPS &amp; Bandbreite| Maximale Netzwerkbandbreite |
 |---|---|---|---|---|---|---|---|---|
 |Standard\_DS1 |1|3,5|1|Lokales SSD-Laufwerk = 7 GB |2|43| 3\.200, 32 MB pro Sekunde | mittel |
-|Standard\_DS2 |2|7|2|Lokales SSD-Laufwerk = 14 GB |4|86| 6\.400, 64 MB pro Sekunde | hoch |
-|Standard\_DS3 |4|14|4|Lokales SSD-Laufwerk = 28 GB |8|172| 12\.800, 128 MB pro Sekunde | hoch |
-|Standard\_DS4 |8|28|8|Lokales SSD-Laufwerk = 56 GB |16|344| 25\.600, 256 MB pro Sekunde | hoch |
-|Standard\_DS11 |2|14|2|Lokales SSD-Laufwerk = 28 GB |4|72| 6\.400, 64 MB pro Sekunde | hoch |
-|Standard\_DS12 |4|28|4|Lokales SSD-Laufwerk = 56 GB |8|144| 12\.800, 128 MB pro Sekunde | hoch |
-|Standard\_DS13 |8|56|8|Lokales SSD-Laufwerk = 112 GB |16|288| 25\.600, 256 MB pro Sekunde | hoch |
-|Standard\_DS14 |16|112|8|Lokales SSD-Laufwerk = 224 GB |32|576| 51\.200, 512 MB pro Sekunde | sehr hoch |
+|Standard\_DS2 |2|7|2|Lokales SSD-Laufwerk = 14 GB |4|86| 6\.400, 64 MB pro Sekunde | hoch |
+|Standard\_DS3 |4|14|4|Lokales SSD-Laufwerk = 28 GB |8|172| 12\.800, 128 MB pro Sekunde | hoch |
+|Standard\_DS4 |8|28|8|Lokales SSD-Laufwerk = 56 GB |16|344| 25\.600, 256 MB pro Sekunde | hoch |
+|Standard\_DS11 |2|14|2|Lokales SSD-Laufwerk = 28 GB |4|72| 6\.400, 64 MB pro Sekunde | hoch |
+|Standard\_DS12 |4|28|4|Lokales SSD-Laufwerk = 56 GB |8|144| 12\.800, 128 MB pro Sekunde | hoch |
+|Standard\_DS13 |8|56|8|Lokales SSD-Laufwerk = 112 GB |16|288| 25\.600, 256 MB pro Sekunde | hoch |
+|Standard\_DS14 |16|112|8|Lokales SSD-Laufwerk = 224 GB |32|576| 51\.200, 512 MB pro Sekunde | sehr hoch |
 
 *Die bei einer DS-Serie möglichen Höchstwerte für E/A-Vorgänge pro Sekunde (IOPS) und Durchsatz (Bandbreite) werden durch die Größe des Datenträgers beeinflusst. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
 
@@ -152,13 +152,13 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 |---|---|---|---|---|---|---|---|---|
 |Standard\_DS1\_v2 |1|3,5|1|Lokales SSD-Laufwerk = 7 GB |2|43| 3\.200 48 MB pro Sekunde | mittel |
 |Standard\_DS2\_v2 |2|7|2|Lokales SSD-Laufwerk = 14 GB |4|86| 6\.400 96 MB pro Sekunde | hoch |
-|Standard\_DS3\_v2 |4|14|4|Lokales SSD-Laufwerk = 28 GB |8|172| 12\.800 192 MB pro Sekunde | hoch |
-|Standard\_DS4\_v2 |8|28|8|Lokales SSD-Laufwerk = 56 GB |16|344| 25\.600 384 MB pro Sekunde | hoch |
-|Standard\_DS5\_v2 |16|56|8|Lokales SSD-Laufwerk = 112 GB |32|688| 51\.200 768 MB pro Sekunde | äußerst hoch |
-|Standard\_DS11\_v2 |2|14|2|Lokales SSD-Laufwerk = 28 GB |4|72| 6\.400 96 MB pro Sekunde | hoch |
-|Standard\_DS12\_v2 |4|28|4|Lokales SSD-Laufwerk = 56 GB |8|144| 12\.800 192 MB pro Sekunde | hoch |
-|Standard\_DS13\_v2 |8|56|8|Lokales SSD-Laufwerk = 112 GB |16|288| 25\.600 384 MB pro Sekunde | hoch |
-|Standard\_DS14\_v2 |16|112|8|Lokales SSD-Laufwerk = 224 GB |32|576| 51\.200 768 MB pro Sekunde | äußerst hoch |
+|Standard\_DS3\_v2 |4|14|4|Lokales SSD-Laufwerk = 28 GB |8|172| 12\.800 192 MB pro Sekunde | hoch |
+|Standard\_DS4\_v2 |8|28|8|Lokales SSD-Laufwerk = 56 GB |16|344| 25\.600 384 MB pro Sekunde | hoch |
+|Standard\_DS5\_v2 |16|56|8|Lokales SSD-Laufwerk = 112 GB |32|688| 51\.200 768 MB pro Sekunde | äußerst hoch |
+|Standard\_DS11\_v2 |2|14|2|Lokales SSD-Laufwerk = 28 GB |4|72| 6\.400 96 MB pro Sekunde | hoch |
+|Standard\_DS12\_v2 |4|28|4|Lokales SSD-Laufwerk = 56 GB |8|144| 12\.800 192 MB pro Sekunde | hoch |
+|Standard\_DS13\_v2 |8|56|8|Lokales SSD-Laufwerk = 112 GB |16|288| 25\.600 384 MB pro Sekunde | hoch |
+|Standard\_DS14\_v2 |16|112|8|Lokales SSD-Laufwerk = 224 GB |32|576| 51\.200 768 MB pro Sekunde | äußerst hoch |
 |Standard\_DS15\_v2 |20|140 GB|10|Lokales SSD-Laufwerk = 280 GB |40| 720|64\.000 960 MB pro Sekunde | äußerst hoch |
 
 
@@ -200,11 +200,11 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 
 |Größe |CPU-Kerne|Arbeitsspeicher|Netzwerkkarten (max.)|Maximale Datenträgergröße|Max. Datenträger (jeweils 1023 GB)|Max. IOPS (500 pro Datenträger)| Maximale Netzwerkbandbreite |
 |---|---|---|---|---|---|---|---|
-|Standard\_G1 |2|28 GB|1|Lokales SSD-Laufwerk = 384 GB |4|4 x 500| hoch |
-|Standard\_G2 |4|56 GB|2|Lokales SSD-Laufwerk = 768 GB |8|8 x 500| hoch |
-|Standard\_G3 |8|112 GB|4|Lokales SSD-Laufwerk = 1.536 GB |16|16 x 500| sehr hoch | 
-|Standard\_G4 |16|224 GB|8|Lokales SSD-Laufwerk = 3.072 GB |32|32 x 500| äußerst hoch |
-|Standard\_G5 |32|448 GB|8|Lokales SSD-Laufwerk = 6.144 GB |64| 64 x 500 | äußerst hoch |
+|Standard\_G1 |2|28 GB|1|Lokales SSD-Laufwerk = 384 GB |4|4 x 500| hoch |
+|Standard\_G2 |4|56 GB|2|Lokales SSD-Laufwerk = 768 GB |8|8 x 500| hoch |
+|Standard\_G3 |8|112 GB|4|Lokales SSD-Laufwerk = 1.536 GB |16|16 x 500| sehr hoch | 
+|Standard\_G4 |16|224 GB|8|Lokales SSD-Laufwerk = 3.072 GB |32|32 x 500| äußerst hoch |
+|Standard\_G5 |32|448 GB|8|Lokales SSD-Laufwerk = 6.144 GB |64| 64 x 500 | äußerst hoch |
 
 
 
@@ -213,19 +213,19 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 
 |Größe |CPU-Kerne|Arbeitsspeicher|Netzwerkkarten (max.)|Maximale Datenträgergröße|Max. Datenträger (jeweils 1023 GB)|Cachegröße (GB)|Max. Datenträger-IOPS &amp; Bandbreite| Maximale Netzwerkbandbreite |
 |---|---|---|---|---|---|---|---|---|
-|Standard\_GS1|2|28|1|Lokales SSD-Laufwerk = 56 GB |4|264| 5\.000, 125 MB pro Sekunde | hoch |
-|Standard\_GS2|4|56|2|Lokales SSD-Laufwerk = 112 GB |8|528| 10\.000, 250 MB pro Sekunde | hoch | 
-|Standard\_GS3|8|112|4|Lokales SSD-Laufwerk = 224 GB |16|1056| 20\.000, 500 MB pro Sekunde | sehr hoch |
-|Standard\_GS4|16|224|8|Lokales SSD-Laufwerk = 448 GB |32|2112| 40\.000, 1.000 MB pro Sekunde | äußerst hoch |
-|Standard\_GS5|32|448|8|Lokales SSD-Laufwerk = 896 GB |64|4224| 80\.000, 2.000 MB pro Sekunde | äußerst hoch |
+|Standard\_GS1|2|28|1|Lokales SSD-Laufwerk = 56 GB |4|264| 5\.000, 125 MB pro Sekunde | hoch |
+|Standard\_GS2|4|56|2|Lokales SSD-Laufwerk = 112 GB |8|528| 10\.000, 250 MB pro Sekunde | hoch | 
+|Standard\_GS3|8|112|4|Lokales SSD-Laufwerk = 224 GB |16|1056| 20\.000, 500 MB pro Sekunde | sehr hoch |
+|Standard\_GS4|16|224|8|Lokales SSD-Laufwerk = 448 GB |32|2112| 40\.000, 1.000 MB pro Sekunde | äußerst hoch |
+|Standard\_GS5|32|448|8|Lokales SSD-Laufwerk = 896 GB |64|4224| 80\.000, 2.000 MB pro Sekunde | äußerst hoch |
 
 
 
 
-## Hinweise: Standard\_A0–A4 mit Befehlszeilenschnittstelle (CLI) und PowerShell 
+## Hinweise: Standard\_A0 – A4 mit Befehlszeilenschnittstelle (CLI) und PowerShell 
 
 
-Im klassischen Bereitstellungsmodell unterscheiden sich einige VM-Größennamen in CLI und PowerShell:
+Im klassischen Bereitstellungsmodell unterscheiden sich einige VM-Größennamen in der Befehlszeilenschnittstelle und in PowerShell:
 
 * Standard\_A0 ist „Sehr klein“
 * Standard\_A1 ist „Klein“
@@ -239,4 +239,4 @@ Im klassischen Bereitstellungsmodell unterscheiden sich einige VM-Größennamen 
 - Erfahren Sie mehr über [Einschränkungen für Azure-Abonnements und -Dienste, Kontingente und Einschränkungen](../articles/azure-subscription-service-limits.md).
 - Erfahren Sie mehr über [rechenintensive A8-, A9-, A10- und A11-Instanzen](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md) für Workloads wie etwa High-Performance Computing (HPC).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

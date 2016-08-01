@@ -3,8 +3,8 @@
 	description="Erfahren Sie, wie Sie virtuelle Hyper-V-Computer in VMM-Clouds mithilfe von Site Recovery und PowerShell replizieren."
 	services="site-recovery"
 	documentationCenter=""
-	authors="csilauraa"
-	manager="jwhit"
+	authors="bsiva"
+	manager="abhiag"
 	editor="tysonn"/>
 
 <tags
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/14/2015"
-	ms.author="lauraa"/>
+	ms.date="07/12/2016"
+	ms.author="bsiva"/>
 
 # Replizieren virtueller Hyper-V-Computer in VMM-Clouds in Azure mithilfe von PowerShell – klassisch
 
 > [AZURE.SELECTOR]
 - [Azure-Portal](site-recovery-vmm-to-azure.md)
-- [PowerShell ARM](site-recovery-vmm-to-azure-powershell-resource-manager.md)
+- [PowerShell – Resource Manager](site-recovery-vmm-to-azure-powershell-resource-manager.md)
 - [Klassisches Portal](site-recovery-vmm-to-azure-classic.md)
 - [PowerShell – klassisch](site-recovery-deploy-with-powershell.md)
 
@@ -33,7 +33,7 @@ In diesem Artikel erfahren Sie, wie Sie PowerShell zur Automatisierung häufiger
 
 Der Artikel Handbuch enthält Informationen zu Voraussetzungen für das Szenario und zeigt, wie Sie einen Site Recovery-Tresor einrichten, den Azure Site Recovery-Anbieter auf dem Quell-VMM-Server installieren, den Server im Tresor registrieren, Azure-Speicherkonten hinzufügen, den Azure Recovery Services Agent auf Hyper-V-Hostservern installieren, Schutzeinstellungen für VMM-Clouds konfigurieren, die auf alle geschützten virtuellen Computer angewendet werden, und den Schutz für diese virtuellen Computer aktivieren. Zum Schluss testen Sie das Failover, um sicherzustellen, dass alles wie erwartet funktioniert.
 
-Sollten beim Einrichten dieses Szenarios Probleme auftreten, besuchen Sie das [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Sollten beim Einrichten dieses Szenarios Probleme auftreten, besuchen Sie das [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
 > [AZURE.NOTE] Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells.
@@ -46,7 +46,7 @@ Stellen Sie sicher, dass diese Voraussetzungen erfüllt werden:
 
 ### Voraussetzungen für Azure
 
-- Sie benötigen ein [Microsoft Azure](https://azure.microsoft.com/)-Konto. Für den Einstieg steht ein [kostenloses Testkonto](pricing/free-trial/) zur Verfügung.
+- Sie benötigen ein [Microsoft Azure](https://azure.microsoft.com/)-Konto. Für den Einstieg steht ein [kostenloses Testkonto](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung.
 - Sie benötigen ein Azure-Speicherkonto, um replizierte Daten zu speichern. Für das Konto muss Georeplikation aktiviert sein. Es muss sich in der gleichen Region wie der Azure Site Recovery-Tresor befinden und dem gleichen Abonnement zugeordnet sein. [Weitere Informationen zu Azure Storage](../storage/storage-introduction.md)
 - Sie müssen sicherstellen, dass die virtuellen Computer, die Sie schützen möchten, den [Anforderungen an virtuelle Azure-Computer](site-recovery-best-practices.md#virtual-machines) entsprechen.
 
@@ -60,7 +60,7 @@ Stellen Sie sicher, dass diese Voraussetzungen erfüllt werden:
 ### Hyper-V-Voraussetzungen
 
 - Auf den Hyper-V-Hostservern muss mindestens Windows Server 2012 mit Hyper-V-Rolle ausgeführt werden, und die neuesten Updates müssen installiert sein.
-- Wenn Sie Hyper-V in einem Cluster ausführen, wird der Clusterbroker nicht automatisch erstellt, wenn Sie einen Cluster mit statischen IP-Adressen verwenden. Sie müssen den Clusterbroker manuell konfigurieren. Stellen Sie dazu in Server-Manager > Failovercluster-Manager eine Verbindung mit dem Cluster her, klicken Sie auf **Rolle konfigurieren**, und wählen Sie **Hyper-V-Replikatbroker** auf dem Bildschirm **Rolle auswählen** des Assistenten für hohe Verfügbarkeit aus. 
+- Wenn Sie Hyper-V in einem Cluster ausführen, wird der Clusterbroker nicht automatisch erstellt, wenn Sie einen Cluster mit statischen IP-Adressen verwenden. Sie müssen den Clusterbroker manuell konfigurieren. Stellen Sie dazu in Server-Manager > Failovercluster-Manager eine Verbindung mit dem Cluster her, klicken Sie auf **Rolle konfigurieren**, und wählen Sie **Hyper-V-Replikatbroker** auf dem Bildschirm **Rolle auswählen** des Assistenten für hohe Verfügbarkeit aus.
 - Alle Hyper-V-Hostserver oder Cluster, deren Schutz Sie verwalten möchten, müssen in einer VMM-Cloud enthalten sein.
 
 ### Voraussetzungen für die Netzwerkzuordnung
@@ -81,7 +81,7 @@ Stellen Sie sicher, dass Azure PowerShell einsatzbereit ist. Wenn Sie PowerShell
 
 Tipps für die Verwendung von Cmdlets, z. B. wie Parameterwerte, Eingaben und Ausgaben in der Regel in Azure-PowerShell behandelt werden, finden Sie unter [Erste Schritte mit Azure-Cmdlets](https://msdn.microsoft.com/library/azure/jj554332.aspx).
 
-## Schritt 1: Festlegen des Abonnements 
+## Schritt 1: Festlegen des Abonnements 
 
 Führen Sie diese Cmdlets in PowerShell aus:
 
@@ -225,7 +225,7 @@ marsagentinstaller.exe /q /nu
 ```
 
 
-## Schritt 7: Konfigurieren der Cloudschutzeinstellungen
+## Schritt 7: Konfigurieren der Cloudschutzeinstellungen
 
 1.	Erstellen Sie ein Cloudschutzprofil für Azure durch Ausführen des folgenden Befehls:
 	
@@ -449,4 +449,4 @@ Verwenden Sie die folgenden Befehle zum Überwachen der Aktivität. Beachten Sie
 
 [Erfahren Sie mehr](https://msdn.microsoft.com/library/dn850420.aspx) über PowerShell-Cmdlets für Azure Site Recovery. </a>
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

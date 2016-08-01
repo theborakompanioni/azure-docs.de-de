@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/02/2016"
+	ms.date="07/06/2016"
 	ms.author="garye"/>
 
 # Bereitstellen eines Azure Machine Learning-Webdiensts
@@ -22,25 +22,11 @@ Azure Machine Learning ermöglicht es Ihnen, Vorhersageanalyselösungen zu erste
 
 Allgemein betrachtet, geschieht dies in drei Schritten:
 
-- **[Erstellen eines Trainingsexperiments]** – Azure Machine Learning Studio ist eine gemeinsame visuelle Entwicklungsumgebung, mit der Sie ein Vorhersageanalysemodell mithilfe von Trainingsdaten, die Sie bereitstellen, trainieren und testen können.
-- **[Konvertieren in ein Vorhersageexperiment]** – Sobald Ihr Modell mit vorhandenen Daten trainiert wurde, können Sie es verwenden, um neue Daten zu bewerten. Sie bereiten das Experiment auf die Bewertung vor und optimieren es.
-- **[Als Webdienst bereitstellen]** – Mit nur einem Klick können Sie nun das Bewertungsexperiment als Azure-Webdienst bereitstellen. Die Benutzer Daten an Ihr Modell senden und die Vorhersagen Ihres Modells empfangen.
+- **[Erstellen eines Trainingsexperiments]**: Azure Machine Learning Studio ist eine gemeinsame visuelle Entwicklungsumgebung, mit der Sie ein Vorhersageanalysemodell mithilfe von Trainingsdaten, die Sie bereitstellen, trainieren und testen können.
+- **[Konvertieren in ein Vorhersageexperiment]**: Sobald Ihr Modell mit vorhandenen Daten trainiert wurde, können Sie es verwenden, um neue Daten zu bewerten. Sie bereiten das Experiment auf Vorhersagen vor und optimieren es.
+- **Als Webdienst bereitstellen**: Sie können Ihr Vorhersageexperiment als [neuen] oder [klassischen] Azure-Webdienst bereitstellen. Die Benutzer Daten an Ihr Modell senden und die Vorhersagen Ihres Modells empfangen.
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
-
-Nachdem Sie den Webdienst bereitgestellt haben, können Sie Folgendes tun:
-
-- **[Zugreifen auf den Webdienst]** über die Webdienst-API,
-- **[Verwalten des Webdiensts]** über das klassische Azure-Portal und
-- **[Aktualisieren des Webdiensts]**, wenn sich das Modell ändert.
-
-[Erstellen eines Trainingsexperiments]: #create-a-training-experiment
-[Konvertieren in ein Vorhersageexperiment]: #convert-the-training-experiment-to-a-predictive-experiment
-[Als Webdienst bereitstellen]: #deploy-the-predictive-experiment-as-a-web-service
-[Zugreifen auf den Webdienst]: #access-the-web-service
-[Verwalten des Webdiensts]: #manage-the-web-service-in-the-azure-management-portal
-[Aktualisieren des Webdiensts]: #update-the-web-service
-
 
 ## Erstellen eines Trainingsexperiments
 
@@ -55,16 +41,84 @@ Der Prozess der Erstellung und Verwaltung von Trainingsexperimenten an anderer S
 
 ## Konvertieren des Trainingsexperiments in ein Vorhersageexperiment
 
-Nachdem Sie das Modell trainiert haben, können Sie es verwenden, um neue Daten zu bewerten. Hierzu konvertieren Sie das Trainingsexperiment in ein Vorhersageexperiment. Durch die Konvertierung in ein Vorhersageexperiment wird das trainierte Modell darauf vorbereitet, als Bewertungswebdienst bereitgestellt zu werden. Benutzer des Webdiensts senden Eingabedaten an das Modell, und das Modell sendet Vorhersageergebnisse zurück. Während der Konvertierung in ein Vorhersageexperiment sollten Sie daher berücksichtigen, wie das Modell aus Ihrer Sicht erwartungsgemäß von anderen Benutzern verwendet wird.
+Nachdem Sie das Modell trainiert haben, können Sie es verwenden, um neue Daten zu bewerten. Hierzu konvertieren Sie das Trainingsexperiment in ein Vorhersageexperiment.
+
+Durch die Konvertierung in ein Vorhersageexperiment wird das trainierte Modell darauf vorbereitet, als Bewertungswebdienst bereitgestellt zu werden. Benutzer des Webdiensts senden Eingabedaten an das Modell, und das Modell sendet Vorhersageergebnisse zurück. Während der Konvertierung in ein Vorhersageexperiment sollten Sie daher berücksichtigen, wie das Modell aus Ihrer Sicht erwartungsgemäß von anderen Benutzern verwendet wird.
 
 Zum Konvertieren Ihres Trainingsexperiments in ein Vorhersageexperiment klicken Sie im Experimentbereich unten auf **Ausführen** und dann auf **Webdienst einrichten**. Wählen Sie dann **Vorhersagewebdienst** aus.
 
 ![Konvertieren in ein Bewertungsexperiment](./media/machine-learning-publish-a-machine-learning-web-service/figure-1.png)
 
-Weitere Informationen zum Ausführen dieser Konvertierung finden Sie unter [Konvertieren eines Machine Learning-Trainingsexperiments in ein Vorhersageexperiment](machine-learning-convert-training-experiment-to-scoring-experiment.md).
+Weitere Informationen zu dieser Konvertierung finden Sie unter [Konvertieren eines Machine Learning-Trainingsexperiments in ein Vorhersageexperiment](machine-learning-convert-training-experiment-to-scoring-experiment.md).
 
+Die folgenden Schritte zeigen, wie Sie Ihr Vorhersageexperiment als neuen Webdienst bereitstellen.
 
-## Bereitstellung des Vorhersageexperiments als Webdienst
+Die folgenden Schritte zeigen, wie Sie ein Vorhersageexperiment als [neuen] Webdienst bereitstellen. Sie können das Experiment auch als [klassischen] Webdienst bereitstellen.
+
+## Bereitstellen des Vorhersageexperiments als neuen Webdienst
+
+Nachdem das Vorhersageexperiment ausreichend vorbereitet wurde, können Sie es als Azure-Webdienst bereitstellen. Mithilfe des Webdiensts können Benutzer Daten an das Modell senden, und das Modell gibt seine Vorhersagen zurück.
+
+Um das Vorhersageexperiment bereitzustellen, klicken Sie unten im Experimentbereich auf **Run**. Sobald das Experiment ausgeführt wurde, klicken Sie auf **Deploy Web Service**, und wählen Sie **Deploy Web Service** -> [New] aus. Die Bereitstellungsseite des Machine Learning Web Service-Portals wird geöffnet.
+
+### Machine Learning Web Service-Portal – Seite „Deploy Experiment“
+Geben Sie auf der Seite „Deploy Experiment“ einen Namen für den Webdienst ein. Wählen Sie einen Preisplan aus. Wenn Sie bereits einen Preisplan gewählt haben, können Sie diesen auswählen. Andernfalls müssen Sie einen Preisplan für den Dienst wählen.
+
+1.	Wählen Sie in der Dropdownliste **Price Plan** einen Preisplan aus, oder wählen Sie die Option **Select new plan**.
+2.	Geben Sie in **Plan Name** einen Namen ein, der den Plan in Ihrer Rechnung bestimmt.
+3.	Wählen Sie in **Monthly Plan Tiers** eine Option aus. Beachten Sie, dass die Plantarife standardmäßig auf die Pläne für Ihre Standardregion und Ihren Webdienst festgelegt sind, der in dieser Region bereitgestellt ist.
+
+Klicken Sie auf die **Deploy**. Die Seite **Quickstart** für Ihren Webdienst wird geöffnet.
+
+Die Seite „Quickstart“ des Webdiensts bietet Zugriff auf und Anleitungen für die gängigsten Aufgaben, die Sie nach dem Erstellen eines neuen Webdiensts ausführen. Hier können Sie auch auf die Seiten „Test“ und „Consume“ zugreifen.
+
+<!-- ![Deploy the web service](./media/machine-learning-publish-a-machine-learning-web-service/figure-2.png)-->
+
+### Testen des Webdiensts
+
+Klicken Sie zum Testen Ihres neuen Webdiensts unter „Common Tasks“ auf **Test web service**. Auf der Seite „Test“ können Sie Ihren Webdienst als Request-Response Service (RRS) oder Batch Execution Service (BES) testen.
+
+Die RRS-Testseite zeigt die Eingaben, Ausgaben und alle globalen Parameter, die Sie für das Experiment definiert haben. Um den Webdienst zu testen, können Sie für die Eingaben geeignete Werte manuell eingeben oder eine CSV-Datei mit den Testwerten angeben.
+
+Zum Testen mit dem RRS geben Sie im Listenansichtsmodus für die Eingaben geeignete Werte ein und klicken dann auf **Test Request-Response**. Ihre Vorhersageergebnisse werden in der Ausgabespalte links angezeigt.
+
+![Bereitstellen des Webdiensts](./media/machine-learning-publish-a-machine-learning-web-service/figure-5-test-request-response.png)
+
+Klicken Sie zum Testen Ihres BES auf **Batch**. Klicken Sie auf der Testseite „Batch“ unter Ihrer Eingabe auf „Browse“, und wählen Sie eine CSV-Datei mit den entsprechenden Beispielwerten aus. Wenn Sie keine CSV-Dateien und Ihr Vorhersageexperiment mithilfe von Machine Learning Studio erstellt haben, können Sie das Dataset für Ihr Vorhersageexperiment herunterladen und nutzen.
+
+Um das Dataset herunterzuladen, öffnen Sie Machine Learning Studio. Öffnen Sie das Vorhersageexperiment, und klicken Sie mit der rechten Maustaste auf die Eingabe für das Experiment. Wählen Sie im Kontextmenü **Dataset** und dann **Download** aus.
+
+![Bereitstellen des Webdiensts](./media/machine-learning-publish-a-machine-learning-web-service/figure-7-mls-download.png)
+
+Klicken Sie auf **Test**. Der Status Ihres Batchausführungsauftrags wird rechts unter **Test Batch Jobs** angezeigt.
+
+![Bereitstellen des Webdiensts](./media/machine-learning-publish-a-machine-learning-web-service/figure-6-test-batch-execution.png)
+
+<!--![Test the web service](./media/machine-learning-publish-a-machine-learning-web-service/figure-3.png)-->
+
+Auf der Seite **CONFIGURATION** können Sie die Beschreibung und den Titel ändern, den Speicherkontoschlüssel aktualisieren und Beispieldaten für Ihren Webdienst aktivieren.
+
+![Konfigurieren des Webdiensts](./media/machine-learning-publish-a-machine-learning-web-service/figure-8-arm-configure.png)
+
+Nachdem Sie den Webdienst bereitgestellt haben, können Sie Folgendes tun:
+
+- Über die Webdienst-API darauf **zugreifen**
+- ihn über das Azure Machine Learning Web Services-Portal oder klassische Azure-Portal **verwalten**
+- ihn **aktualisieren**, wenn sich Ihr Modell ändert
+
+### Zugreifen auf den Webdienst
+
+Nachdem Sie den Webdienst in Machine Learning Studio bereitgestellt haben, können Sie Daten an den Dienst senden und programmgesteuert Antworten erhalten.
+
+Die Seite **Consume** bietet alle Informationen, die Sie benötigen, um auf den Webdienst zuzugreifen. Beispielsweise wird der API-Schlüssel bereitgestellt, um den autorisierten Zugriff auf den Dienst zuzulassen.
+
+Weitere Informationen zum Zugreifen auf einen Machine Learning-Webdienst finden Sie unter [Nutzen eines bereitgestellten Azure Machine Learning-Webdiensts](machine-learning-consume-web-services.md).
+
+### Verwalten des neuen Webdiensts
+
+Sie können Ihre klassischen Webdienste im Machine Learning Web Services-Portal verwalten. Klicken Sie auf der [Hauptseite des Portals](https://services.azureml-test.net/) auf **Web Services**. Auf der Seite „Web Services“ können Sie einen Dienst löschen oder kopieren. Um einen bestimmten Dienst zu überwachen, klicken Sie auf den Dienst und dann auf **Dashboard**. Klicken Sie zum Überwachen von Batchaufträgen im Zusammenhang mit dem Webdienst auf **Batch Request Log**.
+
+## Bereitstellen des Vorhersageexperiments als klassischen Webdienst
 
 Nachdem das Vorhersageexperiment ausreichend vorbereitet wurde, können Sie es als Azure-Webdienst bereitstellen. Mithilfe des Webdiensts können Benutzer Daten an das Modell senden, und das Modell gibt seine Vorhersagen zurück.
 
@@ -76,14 +130,15 @@ Klicken Sie zum Testen des Webdiensts im Webdienst-Dashboard auf den Link **Test
 
 ![Testen des Webdiensts](./media/machine-learning-publish-a-machine-learning-web-service/figure-3.png)
 
-Auf der Registerkarte **CONFIGURATION** (KONFIGURATION) können Sie den Anzeigenamen des Dienstes ändern und eine Beschreibung dafür eingeben. Der Namen und die Beschreibung werden im [klassischen Azure-Portal](http://manage.windowsazure.com/) angezeigt, wo Sie Ihre Webdienste verwalten. Sie können eine Beschreibung für die Eingabedaten, Ausgabedaten und Webdienstparameter bereitstellen, indem Sie Zeichenfolgen für jede Spalte unter **EINGABESCHEMA**, **AUSGABESCHEMA** und **WEBDIENSTPARAMETER** eingeben. Diese Beschreibungen werden in der Beispielcodedokumentation für den Webdienst verwendet. Sie können auch die Protokollierung aktivieren, um Fehler zu diagnostizieren, die angezeigt werden, wenn Sie auf den Webdienst zugreifen.
+Auf der Registerkarte **CONFIGURATION** (KONFIGURATION) können Sie den Anzeigenamen des Dienstes ändern und eine Beschreibung dafür eingeben. Der Name und die Beschreibung werden im [klassischen Azure-Portal](http://manage.windowsazure.com/) angezeigt, in dem Sie Ihre Webdienste verwalten.
+
+Sie können eine Beschreibung für die Eingabedaten, Ausgabedaten und Webdienstparameter bereitstellen, indem Sie Zeichenfolgen für jede Spalte unter **EINGABESCHEMA**, **AUSGABESCHEMA** und **WEBDIENSTPARAMETER** eingeben. Diese Beschreibungen werden in der Beispielcodedokumentation für den Webdienst verwendet. Sie können auch die Protokollierung aktivieren, um Fehler zu diagnostizieren, die angezeigt werden, wenn Sie auf den Webdienst zugreifen.
 
 Weitere Informationen hierzu finden Sie unter [Aktivieren der Protokollierung für Machine Learning-Webdienste](machine-learning-web-services-logging.md).
 
 ![Konfigurieren des Webdiensts](./media/machine-learning-publish-a-machine-learning-web-service/figure-4.png)
 
-
-## Zugreifen auf den Webdienst
+### Zugreifen auf den Webdienst
 
 Nachdem Sie den Webdienst in Machine Learning Studio bereitgestellt haben, können Sie Daten an den Dienst senden und programmgesteuert Antworten erhalten.
 
@@ -91,25 +146,36 @@ Das Dashboard bietet alle Informationen, die Sie benötigen, um auf den Webdiens
 
 Weitere Informationen zum Zugreifen auf einen Machine Learning-Webdienst finden Sie unter [Nutzen eines bereitgestellten Azure Machine Learning-Webdiensts](machine-learning-consume-web-services.md).
 
+### Verwalten des Webdiensts im klassischen Azure-Portal
 
-## Verwalten des Webdiensts im klassischen Azure-Portal
-
-Im [klassischen Azure-Portal](http://manage.windowsazure.com/) können Sie Ihre Webdienste verwalten, indem Sie auf den Dienst **Machine Learning** klicken, den Machine Learning-Arbeitsbereich öffnen und anschließend auf der Registerkarte **Webdienste** den Webdienst öffnen. Auf dieser Seite aus können Sie den Webdienst überwachen, aktualisieren und löschen. Sie können auch zusätzlich zu dem Standardendpunkt, der beim Bereitstellen erstellt wird, einen zweiten Endpunkt für den Webdienst hinzufügen.
+Im [klassischen Azure-Portal](http://manage.windowsazure.com/) können Sie Ihre Webdienste verwalten, indem Sie auf den Dienst **Machine Learning** klicken, den Machine Learning-Arbeitsbereich öffnen und anschließend auf der Registerkarte **WEB SERVICES** den Webdienst öffnen. Auf dieser Seite aus können Sie den Webdienst überwachen, aktualisieren und löschen. Sie können auch zusätzlich zu dem Standardendpunkt, der beim Bereitstellen erstellt wird, einen zweiten Endpunkt für den Webdienst hinzufügen.
 
 Weitere Informationen finden Sie unter [Verwalten eines Azure Machine Learning-Arbeitsbereichs](machine-learning-manage-workspace.md).
 <!-- When this article gets published, fix the link and uncomment
 For more information on how to manage Azure Machine Learning web service endpoints using the REST API, see **Azure machine learning web service endpoints**.
 -->
 
-
 ## Aktualisieren des Webdiensts
 
 Sie können Änderungen am Webdienst vornehmen, z. B. das Modell mit zusätzlichen Trainingsdaten aktualisieren, und ihn dann erneut bereitstellen, wobei der ursprüngliche Webdienst überschrieben wird.
 
-Um den Webdienst zu aktualisieren, öffnen Sie das ursprüngliche Vorhersageexperiment, das Sie zum Bereitstellen des Webdiensts verwendet haben, und klicken Sie auf **SPEICHERN UNTER**, um eine bearbeitbare Kopie zu erstellen. Nehmen Sie die gewünschten Änderungen vor, und klicken Sie dann auf **Webdienst bereitstellen**. Da Sie dieses Experiment zuvor bereits bereitgestellt hatten, werden Sie von Machine Learning Studio gefragt, ob Sie den vorhandenen Dienst überschreiben möchten. Wenn Sie auf **JA** klicken, wird der vorhandenen Webdienst beendet, und das neue Vorhersageexperiment wird an seiner Stelle veröffentlicht.
+Um den Webdienst zu aktualisieren, öffnen Sie das ursprüngliche Vorhersageexperiment, das Sie zum Bereitstellen des Webdiensts verwendet haben, und klicken Sie auf **SPEICHERN UNTER**, um eine bearbeitbare Kopie zu erstellen. Nehmen Sie die gewünschten Änderungen vor, und klicken Sie dann auf **Webdienst bereitstellen**.
+
+Da Sie dieses Experiment zuvor bereitgestellt haben, werden Sie gefragt, ob Sie den vorhandenen Dienst überschreiben (klassischer Webdienst) oder aktualisieren (neuer Webdienst) möchten. Wenn Sie auf **YES** oder **Update** klicken, wird der vorhandene Webdienst beendet und das neue Vorhersageexperiment an seiner Stelle bereitgestellt.
 
 > [AZURE.NOTE] Wenn Sie Konfigurationsänderungen im ursprünglichen Webdienst vorgenommen haben, z. B. einen anderen Anzeigenamen oder eine andere Beschreibung eingegeben haben, dann müssen Sie diese Werte erneut eingeben.
 
 Eine Option zum Aktualisieren des Webdiensts ist das programmgesteuerte erneute Trainieren des Modells. Weitere Informationen finden Sie unter [Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen](machine-learning-retrain-models-programmatically.md).
 
-<!---HONumber=AcomDC_0504_2016-->
+
+<!-- internal links -->
+[Erstellen eines Trainingsexperiments]: #create-a-training-experiment
+[Konvertieren in ein Vorhersageexperiment]: #convert-the-training-experiment-to-a-predictive-experiment
+[new]: #deploy-the-predictive-experiment-as-a-new-web-service
+[neuen]: #deploy-the-predictive-experiment-as-a-new-web-service
+[klassischen]: #deploy-the-predictive-experiment-as-a-new-web-service
+[Access]: #access-the-web-service
+[Manage]: #manage-the-web-service-in-the-azure-management-portal
+[Update]: #update-the-web-service
+
+<!---HONumber=AcomDC_0720_2016-->

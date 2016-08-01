@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/02/2016"
+	ms.date="07/18/2016"
 	ms.author="jodebrui"/>
 
 
@@ -24,7 +24,7 @@
 
 Führen Sie diese Schritte durch, um In-Memory-OLTP in Ihrer vorhandenen Datenbank zu übernehmen.
 
-## Schritt 1: Stellen Sie sicher, dass die Premium-Datenbank In-Memory-OLTP unterstützt
+## Schritt 1: Stellen Sie sicher, dass die Premium-Datenbank In-Memory-OLTP unterstützt
 
 Premium-Datenbanken, die im November 2015 oder später erstellt wurden, unterstützen das In-Memory-Feature. Sie können feststellen, ob Ihre Premium-Datenbank das In-Memory-Feature unterstützt, indem Sie die folgende Transact-SQL-Anweisung ausführen. In-Memory wird unterstützt, wenn das zurückgegebene Ergebnis 1 ist (nicht 0):
 
@@ -42,7 +42,7 @@ Exportieren Sie Ihre Produktionsdatenbank mithilfe einer der folgenden Funktione
 
 - Die Funktion [Exportieren](sql-database-export.md) im [Portal](https://portal.azure.com/).
 
-- Die Funktion **Datenebenenanwendung exportieren** in einer [aktuellen Version von „SSMS.exe“](http://msdn.microsoft.com/library/mt238290.aspx) (SQL Server Management Studio).
+- Die Funktion **Datenebenenanwendung exportieren** in einer [aktuellen Version von „SSMS.exe“](http://msdn.microsoft.com/library/mt238290.aspx) (SQL Server Management Studio).
  1. Erweitern Sie im **Objekt-Explorer** den Knoten **Datenbanken**.
  2. Klicken Sie mit der rechten Maustaste auf den Datenbankknoten.
  3. Klicken Sie auf **Aufgaben** > **Datenebenenanwendung exportieren**.
@@ -64,7 +64,7 @@ Importieren Sie die „bacpac“-Datei in eine neue Premium-Datenbank.
  - Arbeiten Sie im nun angezeigten Assistentenfenster.
 
 
-## Schritt 2: Identifizieren der nach In-Memory OLTP zu migrierenden Objekte
+## Schritt 2: Identifizieren der nach In-Memory OLTP zu migrierenden Objekte
 
 SSMS umfasst einen Bericht **Übersicht der Transaktionsleistungsanalyse**, den Sie für eine Datenbank mit einer aktiven Workload erstellen können. Der Bericht identifiziert Tabellen und gespeicherte Prozeduren, die für die Migration zu In-Memory OLTP geeignet sind.
 
@@ -93,7 +93,7 @@ ALTER DATABASE CURRENT
 ```
 
 
-## Schritt 4: Migrieren von Tabellen
+## Schritt 4: Migrieren von Tabellen
 
 Sie müssen eine speicheroptimierte Kopie der Tabelle, die Sie testen möchten, erstellen und auffüllen. Zum Erstellen können Sie eine der folgenden Möglichkeiten wählen:
 
@@ -144,7 +144,7 @@ INSERT INTO <new_memory_optimized_table>
 ```
 
 
-## Schritt 5 (optional): Migrieren von gespeicherten Prozeduren
+## Schritt 5 (optional): Migrieren von gespeicherten Prozeduren
 
 Das In-Memory-Feature kann auch eine gespeicherte Prozedur zur Verbesserung der Leistung ändern.
 
@@ -203,7 +203,7 @@ Die Migrationsschritte sind wie folgt:
 5. Führen Sie das bearbeitete CREATE PROCEDURE T-SQL-Skript aus.
 
 
-## Schritt 6: Ausführen der Workload im Test
+## Schritt 6: Ausführen der Workload im Test
 
 Führen Sie eine Workload in der Testdatenbank aus, die der Workload ähnelt, die in der Produktionsdatenbank ausgeführt wird. Dies sollte den Leistungsgewinn zeigen, den Sie mit der Verwendung des In-Memory-Features für Tabellen und gespeicherte Prozeduren erzielen.
 
@@ -237,4 +237,4 @@ Sie sollten die Leistungseffekte Ihrer In-Memory-Implementierungen in der Produk
 
 - [Ratgeber für die Speicheroptimierung](http://msdn.microsoft.com/library/dn284308.aspx)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

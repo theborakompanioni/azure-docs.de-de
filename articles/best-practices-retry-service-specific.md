@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/01/2016"
+   ms.date="07/13/2016"
    ms.author="masashin"/>
 
 # Anleitung zu dienstspezifischen Wiederholungsmechanismen
@@ -39,7 +39,7 @@ In der folgende Tabelle werden die Wiederholungsfunktionen für die in dieser An
 | **[DocumentDB](#documentdb-pre-release-retry-guidelines)** | Systemeigen im Dienst | Nicht konfigurierbar | Global | TraceSource |
 | **[Suchen](#search-retry-guidelines)** | Topaz* (mit benutzerdefinierter Strategie zur Erkennung) | Deklarativ und programmatisch | Codeblöcke | Benutzerdefiniert |
 | **[Active Directory](#azure-active-directory-retry-guidelines)** | Topaz* (mit benutzerdefinierter Strategie zur Erkennung) | Deklarativ und programmatisch | Codeblöcke | Benutzerdefiniert |
-**Topaz in den Anzeigenamen für den Anwendungsblock zur Handhabung vorübergehender Fehler, der Bestandteil von <a href="http://msdn.microsoft.com/library/dn440719.aspx">Enterprise Library 6.0</a> ist. Sie können für die meisten Dienste wie in diesem Handbuch beschrieben eine benutzerdefinierte Strategie zur Erkennung mit Topaz verwenden. Standardstrategien für Topaz werden Abschnitt [Strategien für den Anwendungsblock zur Handhabung vorübergehender Fehler (Topaz)](#transient-fault-handling-application-block-topaz-strategies) am Ende dieses Handbuchs gezeigt. Beachten Sie, dass der Block jetzt ein Open Source-Framework ist und nicht direkt von Microsoft unterstützt wird.
+*Topaz in den Anzeigenamen für den Anwendungsblock zur Handhabung vorübergehender Fehler, der Bestandteil von <a href="http://msdn.microsoft.com/library/dn440719.aspx">Enterprise Library 6.0</a> ist. Sie können für die meisten Dienste wie in diesem Handbuch beschrieben eine benutzerdefinierte Strategie zur Erkennung mit Topaz verwenden. Standardstrategien für Topaz werden Abschnitt [Strategien für den Anwendungsblock zur Handhabung vorübergehender Fehler (Topaz)](#transient-fault-handling-application-block-topaz-strategies) am Ende dieses Handbuchs gezeigt. Beachten Sie, dass der Block jetzt ein Open Source-Framework ist und nicht direkt von Microsoft unterstützt wird.
 
 > [AZURE.NOTE] Für die meisten der integrierten Azure Mechanismen gibt es derzeit keine Möglichkeit, unterschiedliche Wiederholungsrichtlinien für verschiedene Typen von Fehler oder Ausnahmen anzuwenden, die über die in der Wiederholungsrichtlinie integrierte Funktionalität hinausgeht. Daher ist die beste gegenwärtige Anweisung zum Redaktionszeitpunkt eine Richtlinie zu konfigurieren, die die optimale durchschnittliche Leistung und Verfügbarkeit bietet. Eine Möglichkeit zur Optimierung der Richtlinie ist die Analyse von Protokolldateien, um den Typ der vorübergehenden Fehler zu bestimmen, die auftreten. Wenn z. B. die meisten Fehler mit der Netzwerkkonnektivität verknüpft sind, können Sie eine sofortige Wiederholung versuchen, anstatt langer für die erste Wiederholung zu warten.
 
@@ -1107,4 +1107,4 @@ Der Anwendungsblock zur Handhabung von vorübergehenden Fehlern verfügt über d
 | **Linear (festgelegtes Intervall)** | retryCount<br />retryInterval<br />fastFirstRetry<br /> | 10<br />1 Sekunde<br />true | Die Anzahl der Wiederholungsversuche.<br />Die Verzögerung zwischen Wiederholungen.<br />Gibt an, ob der erste Wiederholungsversuch sofort erfolgt. |
 Beispiele für die Verwendung des Anwendungsblocks zur Handhabung von vorübergehenden Fehlern finden Sie in den Abschnitten „Beispiele“ weiter vorne in diesem Handbuch für die Azure SQL-Datenbank mit ADO.NET und Azure Active Directory.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

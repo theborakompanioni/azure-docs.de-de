@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/13/2016"
+	ms.date="07/15/2016"
 	ms.author="tomfitz"/>
 
 # Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen
@@ -34,17 +34,17 @@ Hilfe zum Festlegen einer Benennungskonvention finden Sie unter [Benennungsricht
 
 Sie müssen einen eindeutigen Ressourcennamen für alle Ressourcentypen angeben, die einen Datenzugriffsendpunkt haben. Es folgen allgemeine Typen, für die ein eindeutiger Name erforderlich ist:
 
-- Speicher
-- Web-App
+- Speicherkonto
+- Website
 - SQL Server
 - Schlüsseltresor
 - Redis-Cache
-- Batch
+- Batch-Konto
 - Traffic Manager
 - Suchdienst
-- HDInsight
+- HDInsight-Cluster
 
-Darüber hinaus gilt für Namen von Speicherkonten Folgendes: Kleinbuchstaben, max. 24 Zeichen, keine Bindestriche.
+Darüber hinaus gilt für Namen von Speicherkonten Folgendes: Kleinbuchstaben, max. 24 Zeichen, keine Bindestriche.
 
 Anstatt einen Parameter für diese Ressourcen bereitzustellen und zu versuchen, einen eindeutigen Namen während der Bereitstellung zu raten, können Sie eine Variable erstellen, die die [uniqueString()](resource-group-template-functions.md#uniquestring)-Funktion zum Generieren eines Namens verwendet. Es empfiehlt sich häufig auch, dem Ergebnis von **uniqueString** ein Präfix oder Postfix hinzuzufügen, damit Sie den Ressourcentyp beim Untersuchen des Namens einfacher bestimmen können. Beispielsweise können Sie einen eindeutigen Namen für ein Speicherkonto mit der folgenden Variablen generieren.
 
@@ -249,7 +249,7 @@ Für Ressourcentypen, auf die hauptsächlich über eine andere Ressource zugegri
      - [Zulassen des externen Zugriffs auf eine VM mithilfe von PowerShell](./virtual-machines/virtual-machines-windows-nsg-quickstart-powershell.md)
      - [Öffnen von Ports und Endpunkten](./virtual-machines/virtual-machines-linux-nsg-quickstart.md)
 
-1. Die **domainNameLabel**-Eigenschaft für „publicIPAddresses“ muss eindeutig sein.„domainNameLabel“ muss 3 bis 63 Zeichen lang sein und den Regeln des regulären Ausdrucks `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` entsprechen. Da die „uniqueString“-Funktion im folgenden Beispiel eine Zeichenfolge mit 13 Zeichen erstellt, wird angenommen, dass die Präfixzeichenfolge von „dnsPrefixString“ überprüft wurde und nicht mehr als 50 Zeichen lang ist, um diesen Regeln zu entsprechen.
+1. Die Eigenschaft **domainNameLabel** für „publicIPAdresses“ muss eindeutig sein. „domainNameLabel“ muss 3 bis 63 Zeichen lang sein und den Regeln des regulären Ausdrucks `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` entsprechen. Da die „uniqueString“-Funktion im folgenden Beispiel eine Zeichenfolge mit 13 Zeichen erstellt, wird angenommen, dass die Präfixzeichenfolge von „dnsPrefixString“ überprüft wurde und nicht mehr als 50 Zeichen lang ist, um diesen Regeln zu entsprechen.
 
         "parameters": {
             "dnsPrefixString": {
@@ -361,4 +361,4 @@ Sie können mit geschachtelten Vorlagen eine bedingte Verknüpfung erstellen, in
 2. Eine Anleitung zum Einrichten eines Speicherkontos finden Sie unter [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](./storage/storage-performance-checklist.md).
 3. Hilfe zu virtuellen Netzwerken finden Sie unter [Richtlinien für die Netzwerkinfrastruktur](./virtual-machines/virtual-machines-windows-infrastructure-networking-guidelines.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

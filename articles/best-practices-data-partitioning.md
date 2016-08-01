@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/26/2016"
+   ms.date="07/14/2016"
    ms.author="masashin"/>
 
 # Leitfaden zur Datenpartitionierung
@@ -38,7 +38,7 @@ Partitionieren von Daten kann eine Reihe von Vorteilen bieten. Es kann z. B. ang
 - **Verbesserung der Verfügbarkeit**. Das Aufteilen von Daten über mehrere Server hinweg vermeidet eine einzelne Fehlerquelle. Wenn ein Server ausfällt oder planmäßig gewartet wird, sind nur die Daten in der Partition nicht verfügbar. Vorgänge auf anderen Partitionen können fortgesetzt werden. Durch Erhöhen der Anzahl von Partitionen verringern sich die relativen Auswirkungen des Ausfalls eines einzelnen Servers, da der Prozentsatz an Daten reduziert wird, die nicht verfügbar sind. Das Replizieren jeder Partition kann das Risiko eines einzelnen Partitionsausfalls, der sich auf die Vorgänge auswirkt, reduzieren. Auch können kritische Daten, die dauerhaft hochverfügbar sein müssen, von Daten mit geringerem Wert (z. B. Protokolldateien) getrennt werden, die geringere Verfügbarkeitsanforderungen haben.
 - **Verbesserung die Sicherheit**. Abhängig von der Art der Daten und ihrer Partitionierung können sensible und nicht sensible Daten in verschiedenen Partitionen und somit auf unterschiedlichen Servern bzw. in unterschiedlichen Datenspeichern gespeichert werden. Die Sicherheit kann dann speziell für die sensiblen Daten optimiert werden.
 - **Bereitstellen von Flexibilität bei Vorgängen**. Partitionieren bietet viele Möglichkeiten für die Feinabstimmung von Vorgängen, das Maximieren administrativer Effizienz und die Minimierung von Kosten. Sie können beispielsweise basierend auf der Wichtigkeit der Daten in jeder Partition unterschiedliche Strategien für die Verwaltung, Überwachung, Sicherung und Wiederherstellung sowie für andere administrative Aufgaben definieren.
-- **Übereinstimmung der Daten mit dem Anwendungsmuster**. Mithilfe der Partitionierung kann jede Partition basierend auf den Kosten und integrierten Funktionen, die dieser Datenspeicher bietet, auf einer anderen Art von Datenspeicher bereitgestellt werden. Umfangreiche binäre Daten können z. B. in einem Blobdatenspeicher gespeichert werden, strukturiertere Daten dagegen in einer Dokumentendatenbank. Weitere Informationen finden Sie im Patterns & Practices-Handbuch auf der Microsoft-Website unter [Building a polyglot solution] \(Erstellen einer Polyglot-Lösung) sowie unter [Data access for highly-scalable solutions: Using SQL, NoSQL, and polyglot persistence]\ (Datenzugriff für hoch skalierbare Lösungen: mit SQL, NoSQL und Polyglot Persistence).
+- **Übereinstimmung der Daten mit dem Anwendungsmuster**. Mithilfe der Partitionierung kann jede Partition basierend auf den Kosten und integrierten Funktionen, die dieser Datenspeicher bietet, auf einer anderen Art von Datenspeicher bereitgestellt werden. Umfangreiche binäre Daten können z. B. in einem Blobdatenspeicher gespeichert werden, strukturiertere Daten dagegen in einer Dokumentendatenbank. Weitere Informationen finden Sie im Patterns & Practices-Handbuch auf der Microsoft-Website unter [Building a polyglot solution] \(Erstellen einer Polyglot-Lösung) sowie unter [Data access for highly-scalable solutions: Using SQL, NoSQL, and polyglot persistence] \(Datenzugriff für hoch skalierbare Lösungen: mit SQL, NoSQL und Polyglot Persistence).
 
 Einige Systeme implementieren keine Partitionierung, da sie als aufwendig anstatt als vorteilhaft empfunden wird. Häufige Erklärungen für diese Begründung umschließen:
 
@@ -70,7 +70,7 @@ Abbildung 1 zeigt eine Übersicht der horizontalen Partitionierung oder Sharding
 
 ![Horizontale Partitionierung (Sharding) von Daten auf Grundlage eines Partitionsschlüssels](media/best-practices-data-partitioning/DataPartitioning01.png)
 
-_Abbildung 1: Horizontale Partitionierung (Sharding) von Daten auf Grundlage eines Partitionsschlüssels_
+_Abbildung 1: Horizontale Partitionierung (Sharding) von Daten auf Grundlage eines Partitionsschlüssels_
 
 Durch Sharding können Sie die Last auf mehrere Computer verteilen, was Konflikte reduziert und die Leistung verbessert. Sie können das System horizontal hochskalieren, indem Sie weitere Shards hinzufügen, die auf zusätzlichen Servern ausgeführt werden.
 
@@ -92,7 +92,7 @@ Die häufigste Verwendung für die vertikale Partitionierung ist, die E/A und di
 
 ![Vertikale Partitionierung von Daten nach Verwendungsmuster](media/best-practices-data-partitioning/DataPartitioning02.png)
 
-_Abbildung 2: Vertikale Partitionierung von Daten nach Verwendungsmuster_
+_Abbildung 2: Vertikale Partitionierung von Daten nach Verwendungsmuster_
 
 In diesem Beispiel fragt die Anwendung regelmäßig den Produktnamen, die Beschreibung und den Preis ab, wenn Kunden Produktdetails angezeigt werden. Die Lagerbestand und das Datum, an dem das Produkt zuletzt vom Hersteller bestellt wurde, sind in einer separaten Partition enthalten, da diese beiden Elemente häufig zusammen verwendet werden.
 
@@ -110,7 +110,7 @@ Für Systeme, in denen es möglich ist, einen gebundenen Kontext für jeden best
 
 ![Funktionale Datenpartitionierung nach begrenztem Kontext oder Unterdomäne](media/best-practices-data-partitioning/DataPartitioning03.png)
 
-_Abbildung 3: Funktionale Datenpartitionierung nach begrenztem Kontext oder Unterdomäne_
+_Abbildung 3: Funktionale Datenpartitionierung nach begrenztem Kontext oder Unterdomäne_
 
 Diese Partitionierungsstrategie kann helfen, Datenzugriffskonflikte über verschiedene Teile eines Systems hinweg zu reduzieren.
 
@@ -221,19 +221,19 @@ Elastische Datenbanken bieten zwei Schemas für das Zuordnen von Daten zu Shardl
 
 ![Verwenden einer listenbasierten Shardzuordnung zum Speichern von Mandantendaten in separaten Shards](media/best-practices-data-partitioning/PointShardlet.png)
 
-_Abbildung 4. Verwenden einer listenbasierten Shardzuordnung zum Speichern von Mandantendaten in separaten Shards_
+_Abbildung 4. Verwenden einer listenbasierten Shardzuordnung zum Speichern von Mandantendaten in separaten Shards_
 
 - Eine **bereichsbasierte Shardzuordnung** beschreibt die Zuordnung zwischen einem Satz zusammenhängender Schlüsselwerte und einem Shardlet. Im zuvor beschriebenen Beispiel einer mehrinstanzenfähigen Anwendung können Sie als Alternative zum Implementieren dedizierter Shardlets die Daten für eine Reihe von Mandanten (jeweils mit ihrem eigenen Schlüssel) innerhalb des gleichen Shardlets gruppieren. Dieses Schema ist kostengünstiger als das erste (da Mandanten Datenspeicherressourcen gemeinsam nutzen), birgt jedoch das Risiko eines geringeren Datenschutzes und einer weniger strikten Trennung.
 
 ![Verwenden einer bereichsbasierten Shardzuordnung zum Speichern von Daten für einen Reihe von Mandanten in einem Shard](media/best-practices-data-partitioning/RangeShardlet.png)
 
-_Abbildung 5: Verwenden einer bereichsbasierten Shardzuordnung zum Speichern von Daten für einen Reihe von Mandanten in einem Shard_
+_Abbildung 5: Verwenden einer bereichsbasierten Shardzuordnung zum Speichern von Daten für einen Reihe von Mandanten in einem Shard_
 
 Beachten Sie, dass ein einzelnes Shard die Daten für mehrere Shardlets enthalten kann. Beispielsweise können Sie listenbasierte Shardlets verwenden, um Daten für verschiedene nicht zusammenhängende Mandanten im gleichen Shard zu speichern. Sie können auch bereichs- und listenbasierte Shardlets im gleichen Shard kombinieren, obwohl der Zugriff auf die Shardlets über verschiedene Zuordnungen hinweg in der globalen Datenbank des Shardzuordnungs-Managers erfolgt. (Die globale Datenbank des Shardzuordnungs-Managers kann mehrere Shardzuordnungen enthalten.) Abbildung 6 zeigt diesen Ansatz.
 
 ![Implementieren von mehreren Shardzuordnungen](media/best-practices-data-partitioning/MultipleShardMaps.png)
 
-_Abbildung 6: Implementieren von mehreren Shardzuordnungen_
+_Abbildung 6: Implementieren von mehreren Shardzuordnungen_
 
 Das Partitionierungsschema, das Sie implementieren, kann die Leistung Ihres Systems erheblich beeinflussen. Es kann sich auch darauf auswirken, wie häufig Shards hinzugefügt oder entfernt oder wie häufig Daten über Shards hinweg neu partitioniert werden müssen. Berücksichtigen Sie beim Partitionieren von Daten mithilfe einer elastischen Datenbank folgende Punkte:
 
@@ -290,7 +290,7 @@ In der Tabelle mit den Kundeninformationen sind die Daten nach der Stadt partiti
 
 ![Die Tabellen und Partitionen in einem Beispielspeicherkonto](media/best-practices-data-partitioning/TableStorage.png)
 
-_Abbildung 7: Die Tabellen und Partitionen in einem Beispielspeicherkonto_
+_Abbildung 7: Die Tabellen und Partitionen in einem Beispielspeicherkonto_
 
 > [AZURE.NOTE] Azure-Tabellenspeicher fügt auch ein Timestamp-Feld für jede Entität hinzu. Das Timestamp-Feld wird vom Tabellenspeicher verwaltet und wird jedes Mal aktualisiert, wenn die Entität geändert und erneut in eine Partition geschrieben wird. Der Tabellenspeicherdienst verwendet dieses Feld zum Implementieren einer optimistischen Nebenläufigkeit. Jedes Mal, wenn eine Anwendung eine Entität zurück in den Tabellenspeicher schreibt, vergleicht der Tabellenspeicherdienst den Wert des Zeitstempels in der geschriebenen Entität mit dem im Tabellenspeicher vorhandenen Wert. Wenn sich die Werte unterscheiden, bedeutet dies, dass eine andere Anwendung die Entität seit dem letzten Abruf geändert hat, und beim Schreibvorgang tritt ein Fehler auf. Ändern Sie dieses Feld in Ihrem eigenen Code nicht, und legen Sie auch keinen Wert für dieses Feld fest, wenn Sie eine neue Identität erstellen.
 
@@ -346,7 +346,7 @@ Mit dieser Struktur kann die Last auf die Nachrichtenbroker und Nachrichtenspeic
 
 Service Bus ordnet jeder Nachricht folgendermaßen ein Fragment zu:
 
-- Wenn die Nachricht zu einer Sitzung gehört, werden alle Nachrichten mit dem gleichen Wert für die\_SessionID\_Eigenschaft an dasselbe Fragment gesendet.
+- Wenn die Nachricht zu einer Sitzung gehört, werden alle Nachrichten mit dem gleichen Wert für die _SessionId_-Eigenschaft an dasselbe Fragment gesendet.
 - Wenn die Nachricht nicht zu einer Sitzung gehört, aber der Absender einen Wert für die _PartitionKey_-Eigenschaft angegeben hat, werden alle Nachrichten mit demselben _PartitionKey_-Wert an dasselbe Fragment gesendet.
 
 	> [AZURE.NOTE] Wenn die Eigenschaften _SessionId_ und _PartitionKey_ angegeben werden, müssen sie auf denselben Wert festgelegt werden, andernfalls wird die Nachricht abgelehnt.
@@ -356,7 +356,7 @@ Service Bus ordnet jeder Nachricht folgendermaßen ein Fragment zu:
 Beachten Sie die folgende Punkte, wenn Sie entscheiden, ob und wie Sie eine Service Bus-Nachrichtenwarteschlange oder ein Service Bus-Topic partitionieren:
 
 - Service Bus-Warteschlangen und -Themen werden im Umfang des Service Bus-Namespace erstellt. Service Bus erlaubt derzeit bis zu 100 partitionierte Warteschlangen oder Themen pro Namespace.
-- Jeder Service Bus-Namespace setzt Kontingente für die verfügbaren Ressourcen fest, wie z. B. die Anzahl der Abonnements pro Topic, die Anzahl gleichzeitiger Sende- und Empfangsanforderungen und die maximale Anzahl gleichzeitiger Verbindungen, die aufgebaut werden können. Diese Kontingente sind auf der Microsoft-Website unter [Service Bus-Kontingente] dokumentiert. Wenn Sie diese Werte überschreiten möchten, dann erstellen Sie zusätzliche Namespaces mit ihren eigenen Warteschlangen und Themen und verteilen Sie die Arbeit auf diese Namespaces. Erstellen Sie z. B. in einer globalen Anwendung separate Namespaces in jeder Region und konfigurieren Sie die Anwendungsinstanzen so, dass sie die Warteschlangen und Themen in nächstliegendem Namespace verwenden.
+- Jeder Service Bus-Namespace setzt Kontingente für die verfügbaren Ressourcen fest, wie z. B. die Anzahl der Abonnements pro Topic, die Anzahl gleichzeitiger Sende- und Empfangsanforderungen und die maximale Anzahl gleichzeitiger Verbindungen, die aufgebaut werden können. Diese Kontingente sind auf der Microsoft-Website unter [Service Bus-Kontingente] dokumentiert. Wenn Sie diese Werte überschreiten möchten, dann erstellen Sie zusätzliche Namespaces mit ihren eigenen Warteschlangen und Themen und verteilen Sie die Arbeit auf diese Namespaces. Erstellen Sie z. B. in einer globalen Anwendung separate Namespaces in jeder Region und konfigurieren Sie die Anwendungsinstanzen so, dass sie die Warteschlangen und Themen in nächstliegendem Namespace verwenden.
 - Nachrichten, die als Teil einer Transaktion gesendet werden, müssen einen Partitionsschlüssel angeben. Dies kann eine _SessionId_-, _PartitionKey_- oder _MessageId_-Eigenschaft sein. Alle Nachrichten, die als Teil derselben Transaktion gesendet werden, müssen denselben Partitionsschlüssel angeben, da sie vom selben Nachrichtenbroker-Prozess verarbeitet werden müssen. Sie können keine Nachrichten an verschiedene Warteschlangen oder Themen innerhalb der gleichen Transaktion senden.
 - Partitionierte Warteschlangen und Topics können nicht so konfiguriert werden, dass sie im Leerlauf automatisch gelöscht werden.
 - Partitionierte Warteschlangen und Topics können zurzeit nicht mit dem Advanced Message Queuing Protocol (AMQP) verwendet werden, wenn Sie plattformübergreifende oder hybride Lösungen erstellen.
@@ -369,7 +369,7 @@ Dokumente werden in Auflistungen organisiert. In einer Sammlung können Sie verw
 
 Dokumentsammlungen bieten einen natürlichen Mechanismus zum Partitionieren von Daten innerhalb einer Einzeldatenbank. Intern kann eine DocumentDB-Datenbank mehrere Server umspannen und versucht möglicherweise, die Last zu verteilen, indem Sammlungen auf die Server aufgeteilt werden. Der einfachste Weg Sharding zu implementieren, ist für jedes Shard eine Auflistung zu erstellen.
 
-> [AZURE.NOTE] Jede DocumentDB-Datenbank weist eine bestimmte _Leistungsebene_ auf, die den Umfang der Ressourcen festlegt, die von der Datenbank genutzt werden können. Jeder Leistungsebene ist eine Ratenbegrenzung für _Anforderungseinheiten_ (Request Unit, RU) zugeordnet. Die RU-Ratenbegrenzung gibt die Menge der Ressourcen an, die für diese Sammlung reserviert sind und für die ausschließliche Verwendung durch diese Sammlung zur Verfügung stehen. Die Kosten einer Sammlung richten sich nach der Leistungsstufe, die für diese Sammlung gewählt wurde. Je höher die Leistungsstufe (und die RU-Ratenbegrenzung), desto höher die Kosten. Sie können die Leistungsstufe einer Sammlung über das Azure-Portal anpassen. Weitere Informationen finden Sie unter [Leistungsebenen in DocumentDB] auf der Microsoft-Website.
+> [AZURE.NOTE] Jede DocumentDB-Datenbank weist eine bestimmte _Leistungsebene_ auf, die den Umfang der Ressourcen festlegt, die von der Datenbank genutzt werden können. Jeder Leistungsstufe ist eine Ratenbegrenzung für _Anforderungseinheiten_ (Request Unit, RU) zugeordnet. Die RU-Ratenbegrenzung gibt die Menge der Ressourcen an, die für diese Sammlung reserviert sind und für die ausschließliche Verwendung durch diese Sammlung zur Verfügung stehen. Die Kosten einer Sammlung richten sich nach der Leistungsstufe, die für diese Sammlung gewählt wurde. Je höher die Leistungsstufe (und die RU-Ratenbegrenzung), desto höher die Kosten. Sie können die Leistungsstufe einer Sammlung über das Azure-Portal anpassen. Weitere Informationen finden Sie unter [Leistungsebenen in DocumentDB] auf der Microsoft-Website.
 
 Alle Datenbanken werden im Kontext eines DocumentDB-Kontos erstellt. Ein einzelnes DocumentDB-Konto kann mehrere Datenbanken enthalten und gibt an, in welcher Region die Datenbanken erstellt werden. Jedes DocumentDB-Konto erzwingt auch seine eigene Zugriffskontrolle. Sie können DocumentDB-Konten verwenden, um Shards (Sammlungen in Datenbanken) geografisch in der Nähe der Benutzer zu platzieren, die darauf zugreifen müssen, und Einschränkungen erzwingen, sodass sich nur diese Benutzer mit ihnen verbinden können.
 
@@ -381,13 +381,13 @@ Abbildung 8 zeigt die Struktur auf oberster Ebene der DocumentDB-Architektur
 
 ![Die Struktur von DocumentDB](media/best-practices-data-partitioning/DocumentDBStructure.png)
 
-_Abbildung 8: Struktur der DocumentDB-Architektur_
+_Abbildung 8: Struktur der DocumentDB-Architektur_
 
 Es ist Aufgabe der Clientanwendung, Anforderungen an den geeigneten Shard zu leiten, für gewöhnlich durch Implementieren ihres eigenen Zuordnungsmechanismus, basierend auf einigen Attributen der Daten, die den Shardschlüssel definieren. Abbildung 9 zeigt zwei DocumentDB-Datenbanken, von denen jede zwei Sammlungen enthält, die als Shards agieren. Das Sharding der Daten erfolgt über eine Mandanten-ID, und die Daten sind spezifisch für einen bestimmten Mandanten. Die Datenbanken werden in separaten DocumentDB-Konten erstellt. Diese Konten befinden sich in der gleichen Region wie die Mandanten, deren Daten sie enthalten. Die Routinglogik in der Clientanwendung verwendet die Mandanten-ID als Shardschlüssel.
 
 ![Implementierung von Sharding mithilfe von Azure DocumentDB](media/best-practices-data-partitioning/DocumentDBPartitions.png)
 
-_Abbildung 9: Implementierung von Sharding mithilfe einer Azure-DocumentDB-Datenbank_
+_Abbildung 9: Implementierung von Sharding mithilfe einer Azure-DocumentDB-Datenbank_
 
 Berücksichtigen Sie folgende Punkte bei der Entscheidung, wie Daten mit einer DocumentDB-Datenbank partitioniert werden sollen:
 
@@ -396,7 +396,7 @@ Berücksichtigen Sie folgende Punkte bei der Entscheidung, wie Daten mit einer D
 - **Alle Vorgänge für ein Dokument werden im Kontext einer Transaktion ausgeführt. Transaktionen in DocumentDB-Datenbanken sind auf die Sammlung begrenzt, in der das Dokument enthalten ist.** Wenn ein Vorgang fehlschlägt, wird die Arbeit, die durch ihn ausgeführt wurde, zurückgesetzt. Während ein Vorgang für ein Dokument ausgeführt wird, unterliegen alle vorgenommenen Änderungen einer Isolierung auf Snapshotebene. Wenn z. B. eine Anforderung zum Erstellen eines neuen Dokuments fehlschlägt, stellt dieser Mechanismus sicher, dass einem anderen Benutzer, der die Datenbank gleichzeitig abfragt, kein Teildokument angezeigt wird, das dann entfernt wird.
 - **DocumentDB-Datenbankabfragen sind auch auf die Sammlungsebene begrenzt.** Eine einzelne Abfrage kann nur Daten aus einer Sammlung abrufen. Wenn Sie Daten aus mehreren Sammlungen abrufen müssen, müssen Sie jede Sammlung einzeln abfragen und die Ergebnisse in Ihrem Anwendungscode zusammenführen.
 - **DocumentDB-Datenbanken unterstützen programmierbare Elemente, die alle zusammen mit Dokumenten in einer Sammlung gespeichert werden können**. Hierzu gehören gespeicherte Prozeduren, benutzerdefinierte Funktionen und Trigger (geschrieben in JavaScript). Diese Elemente können auf alle Dokumente in der gleichen Auflistung zugreifen. Außerdem werden diese Elemente entweder im Rahmen der Ambient-Transaktion ausgeführt (im Fall eines Triggers, der als Ergebnis eines für ein Dokument ausgeführten Erstellungs-, Lösch- oder Ersetzungsvorgangs ausgelöst wird) oder durch Starten einer neuen Transaktion (im Fall einer gespeicherten Prozedur, die als Ergebnis einer expliziten Clientanforderung ausgeführt wird). Wenn der Code in einem programmierbaren Element eine Ausnahme auslöst, wird für die Transaktion ein Rollback ausgeführt. Sie können gespeicherte Prozeduren und Trigger verwenden, um die Integrität und Konsistenz zwischen den Dokumenten zu verwalten, aber diese Dokumente müssen alle derselben Auflistung angehören.
-- **Die Sammlungen, die Sie in den Datenbanken in einem DocumentDB-Konto speichern möchten, sollten die von den Leistungsebenen der Sammlungen definierten Durchsatzgrenzen nicht überschreiten.** Diese Grenzwerte werden auf der Microsoft-Website im Artikel [Verwalten eines DocumentDB-Kontos] beschrieben. Wenn Sie davon ausgehen, diese Grenzwerte zu erreichen, sollten Sie in Betracht ziehen, die Auflistungen auf Datenbanken in verschiedenen DocumentDB-Konten zu verteilen, um die Last pro Auflistung zu verringern.
+- **Die Sammlungen, die Sie in den Datenbanken in einem DocumentDB-Konto speichern möchten, sollten die von den Leistungsstufen der Sammlungen definierten Durchsatzgrenzen nicht überschreiten.** Diese Grenzwerte werden auf der Microsoft-Website im Artikel [Weitere Informationen zu Kapazität und Dokumentspeicherung in DocumentDB] beschrieben. Wenn Sie davon ausgehen, diese Grenzwerte zu erreichen, sollten Sie in Betracht ziehen, die Auflistungen auf Datenbanken in verschiedenen DocumentDB-Konten zu verteilen, um die Last pro Auflistung zu verringern.
 
 ## Partitionierungsstrategien für Azure Search
 
@@ -453,11 +453,11 @@ Berücksichtigen Sie folgende Punkte bei der Entscheidung, wie Daten mit Azure R
 
 ![Vorgeschlagene Struktur im Redis-Speicher für die Aufzeichnung von Bestellungen und Informationen von Kunden](media/best-practices-data-partitioning/RedisCustomersandOrders.png)
 
-_Abbildung 10: Vorgeschlagene Struktur im Redis-Speicher für die Aufzeichnung von Bestellungen und Informationen von Kunden_
+_Abbildung 10: Vorgeschlagene Struktur im Redis-Speicher für die Aufzeichnung von Bestellungen und Informationen von Kunden_
 
 > [AZURE.NOTE] In Redis sind alle Schlüssel binäre Datenwerte (wie Redis-Zeichenfolgen) und können bis zu 512 MB Daten enthalten. Theoretisch kann ein Schlüssel nahezu jegliche Informationen enthalten. Es empfiehlt sich jedoch, eine konsistente Benennungskonvention für Schlüssel anzuwenden, die den Datentyp beschreibt und die Entität identifiziert, aber nicht übermäßig lang ist. Eine gängige Methode ist die Verwendung von Schlüsseln im Format „Entitätstyp:ID“. Beispielsweise können Sie „Kunde:99“ verwenden, um den Schlüssel für einen Kunden mit der ID 99 anzugeben.
 
-- Sie können die vertikale Partitionierung durch das Speichern von verwandten Informationen in anderen Aggregationen in derselben Datenbank implementieren. Sie können z. B. in einer E-Commerce-Anwendung häufig abgerufene Informationen zu Produkten in einem Redis-Hash speichern und weniger häufig verwendete Detailinformationen in einem anderen. Beide Hashes können die gleiche Produkt-ID als Teil des Schlüssels verwenden. Sie können z. B. „Produkt:_nn_“ für die allgemeinen Produktinformationen verwenden (_nn_ ist die Produkt-ID) und „Produktdetails:_nn_“ für die Detailinformationen. Mit dieser Strategie lässt sich die Datenmenge reduzieren, die bei den meisten Abfragen wahrscheinlich abgerufen werden.
+- Sie können die vertikale Partitionierung durch das Speichern von verwandten Informationen in anderen Aggregationen in derselben Datenbank implementieren. Sie können z. B. in einer E-Commerce-Anwendung häufig abgerufene Informationen zu Produkten in einem Redis-Hash speichern und weniger häufig verwendete Detailinformationen in einem anderen. Beide Hashes können die gleiche Produkt-ID als Teil des Schlüssels verwenden. Sie können z.B. „Produkt:_nn_“ für die allgemeinen Produktinformationen verwenden (_nn_ ist die Produkt-ID) und „Produktdetails:_nn_“ für die Detailinformationen. Mit dieser Strategie lässt sich die Datenmenge reduzieren, die bei den meisten Abfragen wahrscheinlich abgerufen werden.
 - Sie können einen Redis-Datenspeicher neu partitionieren, denken Sie jedoch daran, dass dies eine komplexe und zeitaufwendige Aufgabe ist. Redis-Clustering kann Daten automatisch neu partitionieren, diese Funktion ist allerdings mit Azure Redis Cache nicht verfügbar. Daher sollten Sie beim Entwerfen Ihres Partitionierungsschemas für ausreichend freien Speicherplatz in jeder Partition sorgen, um den langfristig zu erwartenden Datenzuwachs zu ermöglichen. Denken Sie jedoch daran, dass Azure Redis Cache zur vorübergehenden Zwischenspeicherung von Daten vorgesehen ist, und dass im Cache gehaltene Daten eine begrenzte Lebensdauer haben, die als Time-to-live (TTL) Wert angegeben wird. Für relativ flüchtige Daten sollte der TTL-Wert klein, für statische Daten kann er jedoch wesentlich größer sein. Vermeiden Sie die Speicherung großer Mengen langlebiger Daten im Cache, wenn die Datenmenge wahrscheinlich den kompletten Cache belegen wird. Sie können eine Entfernungsrichtlinie angeben, die bewirkt, dass Azure Redis Cache die Daten entfernt, wenn der Speicherplatz knapp bemessen ist.
 
 	> [AZURE.NOTE] Wenn Sie Azure Redis Cache verwenden, können Sie durch Auswahl des entsprechenden Tarifs die maximale Größe des Caches (von 250 MB bis 53 GB) angeben. Sie können einen Azure Redis Cache jedoch nach dem Erstellen nicht vergrößern (oder verkleinern).
@@ -512,17 +512,17 @@ Wenn Sie Strategien zum Implementieren der Datenkonsistenz in Betracht ziehen, k
 - Im Artikel [Sharding Pattern] \(Shardingmuster) auf der Microsoft-Website sind einige allgemeine Strategien für das Sharding von Daten zusammengefasst.
 - Im Artikel [Index Table Pattern] \(Indextabellenmuster) auf der Microsoft-Website wird veranschaulicht, wie Sie sekundäre Indizes für Daten erstellen. Mit diesem Ansatz kann eine Anwendung Daten durch Abfragen, die nicht auf den Primärschlüssel einer Sammlung verweisen, schnell abrufen.
 - Im Artikel [Materialized View Pattern] \(Muster für materialisierte Sichten) auf der Microsoft-Website wird erläutert, wie Sie vorab aufgefüllte Ansichten generieren können, die Daten zusammenfassen, um schnelle Abfragevorgänge zu unterstützen. Dieser Ansatz kann in einem partitionierten Datenspeicher hilfreich sein, wenn die Partitionen, die die Daten enthalten, die zusammengefasst werden, über mehrere Standorte verteilt sind.
-- Der Artikel [Aktivieren des Azure Content Delivery Network] auf der Microsoft-Website stellt zusätzliche Anleitungen zum Konfigurieren und Verwenden eines Content Delivery Network mit Azure bereit.
+- Der Artikel [Verwenden von Azure CDN] auf der Microsoft-Website stellt zusätzliche Anleitungen zum Konfigurieren und Verwenden eines Content Delivery Network mit Azure bereit.
 
 ## Weitere Informationen
 
-- Im Artikel [Was ist Azure SQL-Datenbank?] auf der Microsoft-Website finden Sie ausführliche Informationen zum Erstellen und Verwenden von SQL-Datenbanken.
+- Im Artikel [Was ist SQL-Datenbank?] auf der Microsoft-Website finden Sie ausführliche Informationen zum Erstellen und Verwenden von SQL-Datenbanken.
 - Die Seite [Übersicht über Features für elastische Datenbanken] auf der Microsoft-Website bietet eine umfassende Einführung in elastische Datenbanken.
 - Im Artikel [Skalierung mit dem Split-Merge-Tool für elastische Datenbanken] auf der Microsoft-Website erhalten Sie Informationen zur Verwaltung elastischer Datenbanken mithilfe des Diensts zum Aufteilen/Zusammenführen.
-- Im Artikel [Skalierbarkeits- und Leistungsziele für Azure Storage](https://msdn.microsoft.com/library/azure/dn249410.aspx) auf der Microsoft-Website sind die aktuellen Größen- und Durchsatzgrenzen von Azure Storage dokumentiert.
+- Im Artikel [Skalierbarkeits- und Leistungsziele für Azure Storage](https://msdn.microsoft.com/library/azure/dn249410.aspx) auf der Microsoft-Website sind die aktuellen Größen- und Durchsatzgrenzen vom Azure Storage dokumentiert.
 - Im Artikel [Ausführen von Entitätsgruppentransaktionen] auf der Microsoft-Website erhalten Sie detaillierte Informationen zur Implementierung der Transaktionsvorgänge für Entitäten, die im Azure-Tabellenspeicher gespeichert sind.
 - Im Artikel [Azure-Speichertabellen – Entwurfshandbuch] auf der Microsoft-Website finden Sie ausführliche Informationen zum Partitionieren von Daten im Azure-Tabellenspeicher.
-- Im Artikel [Aktivieren des Azure Content Delivery Network] auf der Microsoft Website wird beschrieben, wie Daten in Azure-Blobspeichern mithilfe von Azure Content Delivery Network (CDN) repliziert werden können.
+- Im Artikel [Verwenden von Azure CDN] auf der Microsoft Website wird beschrieben, wie Daten in Azure-Blobspeichern mithilfe von Azure Content Delivery Network (CDN) repliziert werden können.
 - Der Artikel [Verwalten von DocumentDB-Kapazitätsanforderungen] auf der Microsoft-Website enthält Informationen dazu, wie Azure-DocumentDB-Datenbanken Ressourcen zuordnen.
 - Im Artikel [Was ist Azure Search?] auf der Microsoft-Website finden Sie eine vollständige Beschreibung der Funktionen von Azure Search.
 - Im Artikel [Grenzwerte für den Azure Search-Dienst] auf der Microsoft-Website finden Sie Informationen zur Kapazität der einzelnen Instanzen von Azure Search.
@@ -546,8 +546,8 @@ Wenn Sie Strategien zum Implementieren der Datenkonsistenz in Betracht ziehen, k
 [Übersicht über Features für elastische Datenbanken]: sql-database/sql-database-elastic-scale-introduction.md
 [Federations Migration Utility]: https://code.msdn.microsoft.com/vstudio/Federations-Migration-ce61e9c1
 [Index Table Pattern]: http://aka.ms/Index-Table-Pattern
-[Verwalten eines DocumentDB-Kontos]: documentdb/documentdb-manage.md
 [Verwalten von DocumentDB-Kapazitätsanforderungen]: documentdb/documentdb-manage.md
+[Weitere Informationen zu Kapazität und Dokumentspeicherung in DocumentDB]: documentdb/documentdb-manage.md
 [Materialized View Pattern]: http://aka.ms/Materialized-View-Pattern
 [Abfragen von mehreren Shards]: sql-database/sql-database-elastic-scale-multishard-querying.md
 [Partitioning: how to split data among multiple Redis instances]: http://redis.io/topics/partitioning
@@ -556,14 +556,14 @@ Wenn Sie Strategien zum Implementieren der Datenkonsistenz in Betracht ziehen, k
 [Redis-Cluster-Lernprogramm]: http://redis.io/topics/cluster-tutorial
 [Running Redis on a CentOS Linux VM in Azure]: http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx
 [Skalierung mit dem Split-Merge-Tool für elastische Datenbanken]: sql-database/sql-database-elastic-scale-overview-split-and-merge.md
-[Aktivieren des Azure Content Delivery Network]: cdn/cdn-create-new-endpoint.md
-[Service Bus-Kontingente]: service-bus/service-bus-quotas.md
+[Verwenden von Azure CDN]: cdn/cdn-create-new-endpoint.md
+[Service Bus-Kontingente]: service-bus/service-bus-quotas.md
+[Grenzwerte für den Azure Search-Dienst]: search/search-limits-quotas-capacity.md
 [Grenzwerte für den Azure Search-Dienst]: search/search-limits-quotas-capacity.md
 [Sharding pattern]: http://aka.ms/Sharding-Pattern
 [Unterstützte Datentypen (Azure Search)]: https://msdn.microsoft.com/library/azure/dn798938.aspx
 [Transactions]: http://redis.io/topics/transactions
 [Was ist Azure Search?]: search/search-what-is-azure-search.md
-[Was ist Azure SQL-Datenbank?]: sql-database/sql-database-technical-overview.md
 [Was ist SQL-Datenbank?]: sql-database/sql-database-technical-overview.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

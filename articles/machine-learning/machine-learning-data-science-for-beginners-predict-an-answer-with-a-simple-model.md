@@ -14,16 +14,28 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/29/2016"
+   ms.date="07/15/2016"
    ms.author="cgronlun;brohrer;garye"/>
 
-# Data Science für Einsteiger, 4. Video: Vorhersagen einer Antwort mit einem einfachen Modell
+# 4\. Video: Vorhersagen einer Antwort mit einem einfachen Modell
+
+## 4\. Video der Reihe „Data Science für Einsteiger“
 
 Erfahren Sie im 4. Video von „Data Science für Einsteiger“ mehr über das Erstellen eines einfachen Modells zum Vorhersagen des Preises eines Diamanten. Wir zeichnen ein Regressionsmodell mit Zieldaten.
 
 Die Reihe bietet den größten Nutzen, wenn Sie sich die Videos in der vorgegebenen Reihenfolge ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)
 
 > [AZURE.VIDEO data-science-for-beginners-series-predict-an-answer-with-a-simple-model]
+
+## Andere Videos in dieser Reihe
+
+In fünf Kurzvideos der Reihe *Data Science für Einsteiger* erhalten Sie eine Schnelleinführung in Data Science.
+
+  * 1\. Video: [Die 5 Fragen, die Data Science beantwortet](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5:14 Min.)*
+  * 2\. Video: [Sind Ihre Daten für Data Science bereit?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4:56 Min.)*
+  * 3\. Video: [Stellen einer Frage, die Sie mit Daten beantworten können](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4:17 Min.)*
+  * 4\. Video: Vorhersagen einer Antwort mit einem einfachen Modell
+  * 5\. Video: [Kopieren der Arbeit anderer für Ihre Data Science](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3:18 Min.)*
 
 ## Aufzeichnung: Vorhersagen einer Antwort mit einem einfachen Modell
 
@@ -33,7 +45,7 @@ Ein *Modell* ist eine vereinfachte, aber aussagekräftige Darstellung unserer Da
 
 ## Sammeln relevanten, genauer und verbundener Daten in ausreichender Menge
 
-Angenommen, ich möchte einen Diamanten kaufen. Ich habe einen Ring, der meiner Großmutter gehört hat, mit einer Fassung für einen Diamanten mit 1,35 Karat, und möchte eine Vorstellung erhalten, wie viel er kostet. Ich gehe mit einem Notizbuch und einem Stift zu einem Juwelier und notiere den Preis aller Diamanten in der Auslage und ihr Gewicht in Karat. Der erste Diamant hat 1,01 Karat und kostet 7.366 US-Dollar.
+Angenommen, ich möchte einen Diamanten kaufen. Ich habe einen Ring, der meiner Großmutter gehört hat, mit einer Fassung für einen Diamanten mit 1,35 Karat, und möchte eine Vorstellung erhalten, wie viel er kostet. Deswegen begebe ich mich zu einem Juwelier und notiere mir dort die Preise aller Diamanten in der Auslage und ihr Gewicht in Karat. Der erste Diamant hat 1,01 Karat und kostet 7.366 US-Dollar.
 
 Das wiederhole ich jetzt für alle anderen Diamanten in dem Geschäft.
 
@@ -92,7 +104,7 @@ Um unsere Frage zu beantworten, machen wir 1,35 Karat aus und zeichnen eine vert
 
 ## Erstellen eines Konfidenzintervalls
 
-Es stellt sich natürlich die Frage, wie genau diese Vorhersage ist. Es ist hilfreich zu wissen, ob ein Diamant mit 1,35 Karat sehr nah bei 10.000 US-Dollar liegt oder sehr viel darüber oder darunter. Um das herauszufinden, lassen Sie uns einen Umschlag um die Regressionsgeraden zeichnen, der die meisten Punkte einschließt. Diesen Umschlag bezeichnen wir als unser *Konfidenzintervall*: Wir sind zuversichtlich, dass sich Preise in diesem Umschlag befinden, da dies in der Vergangenheit meist der Fall war. Wir können zwei weitere horizontale Geraden zeichnen, und zwar an den Stellen, an denen die Gerade von 1,35 Karat den oberen und den unteren Rand des Umschlags schneidet.
+Es stellt sich natürlich die Frage, wie genau diese Vorhersage ist. Es ist hilfreich zu wissen, ob ein Diamant mit 1,35 Karat sehr nah bei 10.000 US-Dollar liegt oder sehr viel darüber oder darunter. Um das herauszufinden, wollen wir eine Umhüllungskurve um die Regressionsgerade zeichnen, die die meisten Punkte einschließt. Diese Umhüllungskurve bezeichnen wir als unser *Konfidenzintervall*: Wir sind zuversichtlich, dass sich Preise in dieser Umhüllungskurve befinden, da dies in der Vergangenheit meist der Fall war. Wir können zwei weitere horizontale Geraden zeichnen, und zwar an den Stellen, an denen die Gerade von 1,35 Karat den oberen und den unteren Rand der Umhüllungskurve schneidet.
 
 ![Konfidenzintervall](./media/machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model/confidence-interval.png)
 
@@ -123,19 +135,10 @@ Heute haben wir uns über lineare Regression unterhalten und eine Vorhersage mit
 Sehen Sie sich unbedingt auch die anderen Videos in der Reihe „Data Science für Einsteiger“ von Microsoft Azure Machine Learning an.
 
 
-## Andere Videos in dieser Reihe
-
-In fünf Kurzvideos der Reihe *Data Science für Einsteiger* erhalten Sie eine Schnelleinführung in Data Science.
-
-  * 1\. Video: [Die 5 Fragen, die Data Science beantwortet](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)
-  * 2\. Video: [Sind Ihre Daten für Data Science bereit?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md)
-  * 3\. Video: [Stellen einer Frage, die Sie mit Daten beantworten können](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)
-  * 4\. Video: Vorhersagen einer Antwort mit einem einfachen Modell
-  * 5\. Video: [Kopieren der Arbeit anderer für Ihre Data Science](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)
 
 ## Nächste Schritte
 
   * [Durchführen Ihres ersten Data Science-Experiments mit Azure Machine Learning](machine-learning-create-experiment.md)
   * [Einführung in Machine Learning in Microsoft Azure](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

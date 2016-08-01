@@ -19,7 +19,7 @@
 
 # Herstellen einer Verbindung mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB
 
-Erfahren Sie, wie Sie eine Verbindung mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB mit dem standardmäßigen URI-Format für MongoDB-Verbindungszeichenfolgen herstellen.
+Erfahren Sie, wie Sie mithilfe des standardmäßigen URI-Formats für MongoDB-Verbindungszeichenfolgen eine Verbindung mit einem Azure DocumentDB-Konto mit Protokollunterstützung für MongoDB herstellen.
 
 ## Abrufen der Informationen zur Verbindungszeichenfolge für das Konto
 
@@ -84,4 +84,4 @@ Wie bereits erwähnt, erfordern alle DocumentDB-Konten eine Authentifizierung un
 
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

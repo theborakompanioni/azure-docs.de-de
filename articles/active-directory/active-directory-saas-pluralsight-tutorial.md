@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="07/19/2016"
 	ms.author="jeedes"/>
 
 
@@ -28,7 +28,7 @@ Die Integration von Pluralsight in Azure AD bietet die folgenden Vorteile:
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## Voraussetzungen
 
@@ -61,7 +61,7 @@ Zum Konfigurieren der Integration von Pluralsight in Azure AD müssen Sie Plural
 
 **Um Pluralsight aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
 
     ![Active Directory][1]
 
@@ -88,7 +88,7 @@ Zum Konfigurieren der Integration von Pluralsight in Azure AD müssen Sie Plural
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_06.png)
 
 ##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden in Azure AD mit Pluralsight konfiguriert und getestet werden kann.
+In diesem Abschnitt soll anhand eines Testbenutzers namens Britta Simon veranschaulicht werden, wie das einmalige Anmelden in Azure AD mit Pluralsight konfiguriert und getestet werden kann.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit Pluralsight müssen Sie die folgenden Bausteine ausführen:
 
@@ -108,7 +108,7 @@ Die Pluralsight-Anwendung erwartet die SAML-Assertionen in einem bestimmten Form
 
 Sie können auch das Attribut **Unique ID** mit einem Wert wie z.B. EmployeeID oder einem anderen für Ihre Organisation geeigneten Wert verwenden. Beachten Sie, dass dieses Attribut nicht erforderlich ist. Sie können es jedoch zum eindeutigen Identifizieren des Benutzers hinzufügen.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Pluralsight die folgenden Schritte aus:**
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Pluralsight die folgenden Schritte aus:**
 
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite von **Pluralsight** im Menü oben auf **Attribute**.
 
@@ -256,7 +256,7 @@ Wählen Sie in der Benutzerliste **Britta Simon** aus.
 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
 
-    ![Erstellen einen Azure AD-Testbenutzers](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_08.png)
+    ![Erstellen einesAzure AD-Testbenutzers](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_08.png)
 
     a. Notieren Sie den Wert von **Neues Kennwort**.
 
@@ -331,4 +331,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Pluralsight“ klicken, sollten Si
 [204]: ./media/active-directory-saas-pluralsight-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-pluralsight-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

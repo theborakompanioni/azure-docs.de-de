@@ -2,10 +2,10 @@
 	pageTitle="Installieren einer Active Directory-Gesamtstruktur in einem virtuellen Azure-Netzwerk | Microsoft Azure"
 	description="Ein Lernprogramm, in dem erläutert wird, wie Sie eine neue Active Directory-Gesamtstruktur auf einer virtuellen Maschine (VM) in einem virtuellen Azure-Netzwerk erstellen"
 	services="active-directory, virtual-network"
-    keywords="Virtuelle Active Directory-Maschine, Active Directory-Gesamtstruktur installieren, Azure Active Directory-Videos"
+    keywords="Virtuelle Active Directory-Maschine, Active Directory-Gesamtstruktur installieren, Azure Active Directory-Videos "
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo"
+	manager="femila"
 	tags=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-	ms.date="04/07/2016"
+	ms.date="07/13/2016"
 	ms.author="markusvi"/>
 
 
@@ -82,7 +82,7 @@ Weitere Informationen zum Festlegen einer statischen IP-Adresse finden Sie unter
 
 ## Installieren von Windows Server Active Directory
 
-Verwenden Sie dieselbe Routine zum [Installieren von AD DS](https://technet.microsoft.com/library/jj574166.aspx), die Sie lokal verwenden (d. h. Sie können die Benutzeroberfläche, eine Antwortdatei oder Windows PowerShell verwenden). Für die Installation einer neuen Gesamtstruktur brauchen Sie Administratoranmeldeinformationen. Damit die Active Directory-Datenbank, Protokolle und SYSVOL auf dem zusätzlich an den virtuellen Computer angeschlossenen Datenträger gespeichert werden können, müssen Sie den Standardspeicherort vom Betriebssystemlaufwerk auf den zusätzlichen Datenträger verlagern.
+Verwenden Sie dieselbe Routine zum [Installieren von AD DS](https://technet.microsoft.com/library/jj574166.aspx), die Sie lokal verwenden (d. h. Sie können die Benutzeroberfläche, eine Antwortdatei oder Windows PowerShell verwenden). Für die Installation einer neuen Gesamtstruktur brauchen Sie Administratoranmeldeinformationen. Damit die Active Directory-Datenbank, Protokolle und SYSVOL auf dem zusätzlich an den virtuellen Computer angeschlossenen Datenträger gespeichert werden können, müssen Sie den Standardspeicherort vom Betriebssystemlaufwerk auf den zusätzlichen Datenträger verlagern.
 
 Wenn die DC-Installation beendet ist, schließen Sie den virtuellen Computer wieder an und melden sich beim DC an. Denken Sie daran, die Domänenanmeldeinformationen anzugeben.
 
@@ -136,4 +136,4 @@ Weitere Informationen zum Verwenden von Windows PowerShell finden Sie unter [Ers
 <!--Image references-->
 [1]: ./media/active-directory-new-forest-virtual-machine/AD_Forest.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

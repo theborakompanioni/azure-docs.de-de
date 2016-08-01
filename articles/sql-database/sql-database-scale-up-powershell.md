@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="04/29/2016"
+	ms.date="07/19/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -32,7 +32,7 @@ Beachten Sie, dass durch das Ändern des Diensttarifs und/oder der Leistungsstuf
 Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt sowohl von der Größe als auch vom Diensttarif der Datenbank vor und nach der Änderung ab. Beispielsweise sollte eine 250-GB-Datenbank beim Wechsel in, aus oder innerhalb eines Standarddiensttarifs innerhalb von sechs Stunden zentral hochskalieren. Für eine Datenbank der gleichen Größe, die ihre Leistungsstufen innerhalb des Premium-Diensttarifs ändert, sollte er innerhalb von drei Stunden abgeschlossen sein.
 
 
-- Für ein Downgrade einer Datenbank sollte die Datenbank kleiner als die in der Zieldienstebene maximal zulässige Größe sein. 
+- Für ein Downgrade einer Datenbank sollte die Datenbank kleiner als die in der Zieldienstebene maximal zulässige Größe sein.
 - Beim Aktualisieren einer Datenbank, für die [Georeplikation](sql-database-geo-replication-portal.md) aktiviert ist, müssen Sie vor der Aktualisierung der primären Datenbank zunächst die zugehörigen sekundären Datenbanken auf die gewünschte Leistungsstufe aktualisieren.
 - Beim Downgrade von einer Premium-Dienstebene müssen Sie zuerst alle geografischen Replikationsbeziehungen beenden. Sie können die im Thema [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md) beschriebenen Schritte verwenden, um den Replikationsprozess zwischen der primären und den aktiven sekundären Datenbanken zu beenden.
 - Die Angebote des Wiederherstellungsdienstes variieren für die verschiedenen Dienstebenen. Wenn Sie ein Downgrade durchführen, verlieren Sie eventuell die Möglichkeit einer Zeitpunktwiederherstellung, oder der Aufbewahrungszeitraum für Sicherungen verkürzt sich. Weitere Informationen finden Sie unter [Sichern und Wiederherstellen der Azure SQL-Datenbank](sql-database-business-continuity.md).
@@ -47,32 +47,13 @@ Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt sowohl von der G
 - Azure PowerShell.
 
 
-Zum Ausführen von PowerShell-Cmdlets muss Azure PowerShell installiert sein und ausgeführt werden. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
-
-
-
-## Konfigurieren der Anmeldeinformationen und Auswählen des Abonnements
-
-Zuerst müssen Sie den Zugriff auf Ihr Azure-Konto einrichten. Starten Sie also PowerShell, und führen Sie dann das folgende Cmdlet aus. Geben Sie auf dem Anmeldebildschirm die E-Mail-Adresse und das Kennwort wie für die Anmeldung beim Azure-Portal ein.
-
-	Login-AzureRmAccount
-
-Nach der erfolgreichen Anmeldung werden einige Informationen auf dem Bildschirm angezeigt, wie die ID, mit der Sie sich angemeldet haben, und die Azure-Abonnements, auf die Sie zugreifen können.
-
-
-### Auswählen des Azure-Abonnements
-
-Zur Auswahl des Abonnements benötigen Sie Ihre Abonnement-ID oder den Anmeldenamen für das Abonnement (**-SubscriptionName**). Sie können die Abonnement-ID aus den Informationen im vorherigen Schritt kopieren. Falls Sie über mehrere Abonnements verfügen und mehr Details benötigen, können Sie auch das **Get-AzureSubscription**-Cmdlet ausführen und die gewünschten Abonnementinformationen aus dem Resultset kopieren. Wenn Sie Ihre Abonnementinformationen haben, führen Sie das folgende Cmdlet aus:
-
-	$SubscriptionId = "4cac86b0-1e56-bbbb-aaaa-000000000000"
-    Select-AzureRmSubscription -SubscriptionId $SubscriptionId
-
+[AZURE.INCLUDE [Starten der PowerShell-Sitzung](../../includes/sql-database-powershell.md)]
 
 
 
 ## Ändern der Dienstebene und Leistungsstufe Ihrer SQL-Datenbank
 
-Führen Sie das Cmdlet **Set-AzureRmSqlDatabase** aus, und legen Sie **-RequestedServiceObjectiveName** auf die Leistungsstufe des gewünschten Tarifs fest, z. B. *S0*, *S1*, *S2*, *S3*, *P1*, *P2*, ...
+Führen Sie das Cmdlet **Set-AzureRmSqlDatabase** aus, und legen Sie **-RequestedServiceObjectiveName** auf die Leistungsstufe des gewünschten Tarifs fest, z. B. *S0*, *S1*, *S2*, *S3*, *P1*, *P2*, ...
 
     $ResourceGroupName = "resourceGroupName"
     
@@ -128,4 +109,4 @@ Führen Sie das Cmdlet **Set-AzureRmSqlDatabase** aus, und legen Sie **-Requeste
 - [SQL-Datenbankdokumentation](http://azure.microsoft.com/documentation/services/sql-database/)
 - [Azure SQL-Datenbank-Cmdlets](http://msdn.microsoft.com/library/mt574084.aspx)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

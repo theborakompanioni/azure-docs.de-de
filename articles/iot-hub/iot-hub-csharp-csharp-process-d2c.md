@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="04/29/2016"
+     ms.date="07/19/2016"
      ms.author="dobett"/>
 
 # Lernprogramm: Verarbeiten von D2C-Nachrichten mit IoT Hub
@@ -447,4 +447,4 @@ Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Io
 [lnk-c2d]: iot-hub-csharp-csharp-process-d2c.md
 [lnk-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

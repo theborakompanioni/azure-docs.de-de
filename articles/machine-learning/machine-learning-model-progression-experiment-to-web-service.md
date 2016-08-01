@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/02/2016"
+	ms.date="07/06/2016"
 	ms.author="garye"/>
 
 
@@ -21,11 +21,11 @@
 
 Ein ***Experiment*** ist ein Arbeitsbereich in Azure Machine Learning Studio, in dem Sie interaktiv entwickeln, ausführen, testen und Iterationen durchlaufen können, während Sie ein Vorhersageanalysemodell erstellen. Eine Vielzahl von Modulen stehen zur Verfügung, mit denen Sie Daten in Ihr Experiment einbeziehen, die Daten bearbeiten, ein Modell mithilfe von Machine Learning-Algorithmen trainieren, das Modell bewerten, die Ergebnisse auswerten und endgültige Werte ausgeben können.
 
-Sobald Sie mit dem Experiment zufrieden sind, können Sie es als ***Azure-Webdienst*** bereitstellen, damit Benutzer neue Daten senden und Ergebnisse zurückerhalten können.
+Sobald Sie mit dem Experiment zufrieden sind, können Sie es als ***klassischen Azure-Webdienst*** oder ***neuen Azure-Webdienst*** bereitstellen, damit Benutzer neue Daten an diesen senden und Ergebnisse abrufen können.
 
 In diesem Artikel geben wir einen Überblick darüber, wie Ihr Machine Learning-Modell sich von einem Entwicklungsexperiment zu einem betriebsbereiten Webdienst entwickelt.
 
->[AZURE.NOTE] Es gibt noch weitere Methoden zum Entwickeln und Bereitstellen von Machine Learning-Modellen, aber dieser Artikel beschränkt sich auf die Verwendung von Machine Learning Studio. Eine Erläuterung zum Erstellen eines Vorhersagewebdiensts mit R finden Sie im Blogbeitrag [Build & Deploy Predictive Web Apps Using RStudio and Azure ML](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx) (in englischer Sprache).
+>[AZURE.NOTE] Es gibt noch weitere Methoden zum Entwickeln und Bereitstellen von Machine Learning-Modellen, aber dieser Artikel beschränkt sich auf die Verwendung von Machine Learning Studio. Eine Erläuterung zum Erstellen eines klassischen Vorhersagewebdiensts mit R finden Sie im Blogbeitrag [Build & Deploy Predictive Web Apps Using RStudio and Azure ML](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx) (Erstellen und Bereitstellen von Vorhersage-Web-Apps mit RStudio und Azure ML).
 
 Azure Machine Learning Studio ist in erster Linie darauf ausgerichtet, Sie beim Entwickeln und Bereitstellen eines *Vorhersageanalysemodells* zu unterstützen. Es ist jedoch auch möglich, mithilfe von Studio ein Experiment zu entwickeln, das kein Vorhersageanalysemodell umfasst. Beispielsweise kann ein Experiment nur Daten eingeben, bearbeiten und anschließend die Ergebnisse ausgeben. Genau wie ein Vorhersageanalysemodell können Sie dieses Nicht-Vorhersageexperiment als Webdienst bereitstellen, es ist jedoch ein einfacherer Vorgang, da durch das Experiment kein Machine Learning-Modell trainiert oder bewertet wird. Auch wenn dies nicht das typische Einsatzgebiet von Studio ist, wird es in diesem Thema berücksichtigt, um Ihnen eine vollständige Erläuterung der Funktionsweise von Studio zu geben.
 
@@ -61,16 +61,16 @@ In diesem Konvertierungsprozess wird das Trainingsexperiment nicht verworfen. Na
 
 ### Der Webdienst
 
-Sobald Sie mit dem Vorhersageexperiment zufrieden sind, klicken Sie auf **Deploy Web Service**, um Ihr Modell in Betrieb zu nehmen, indem Sie es als ***Azure-Webdienst*** bereitstellen. Benutzer können jetzt über die Webdienst-REST-API Daten an Ihr Modell senden und Ergebnisse zurückerhalten. Weitere Informationen zur Vorgehensweise finden Sie unter [Nutzen eines Azure Machine Learning-Webdiensts, der von einem Machine Learning-Experiment aus bereitgestellt wurde](machine-learning-consume-web-services.md).
+Sobald Sie mit Ihrem Vorhersageexperiment zufrieden sind, können Sie Ihren Dienst entweder als klassischen Webdienst oder neuen auf Azure Resource Manager basierenden Webdienst bereitstellen. Um das Modell durch Bereitstellung als *klassischen Webdienst* in Betrieb zu nehmen, klicken Sie auf **Deploy Web Service** und wählen **Deploy Web Service [Classic]**. Um es als *neuen Webdienst* bereitzustellen, klicken Sie auf **Deploy Web Service** und wählen **Deploy Web Service [New]**. Benutzer können jetzt über die Webdienst-REST-API Daten an Ihr Modell senden und Ergebnisse zurückerhalten. Weitere Informationen zur Vorgehensweise finden Sie unter [Nutzen eines Azure Machine Learning-Webdiensts, der von einem Machine Learning-Experiment aus bereitgestellt wurde](machine-learning-consume-web-services.md).
 
 Nachdem Sie den Webdienst bereitgestellt haben, bleiben das Vorhersageexperiment und der Webdienst verbunden, und Sie können zwischen beiden hin und her wechseln:
 
-|***Seite***|***Option***|***Geöffnete Seite***|
+| ***Seite*** | ***Option*** | ***Geöffnete Seite*** |
 | ------------------- | --------------- | ---------------------- |
 |Experimentbereich in Studio|**Go to web service**|Webdienstkonfiguration in Studio|
 |Webdienstkonfiguration in Studio|**View latest**|Experimentbereich in Studio|
-|Webdienstkonfiguration in Studio|**Manage endpoints…**|Endpunktverwaltung im klassischen Azure-Portal|
-|Endpunktverwaltung im klassischen Azure-Portal|**Edit in Studio**|Experimentbereich in Studio|
+|Konfiguration des Webdiensts in Studio (nur klassischer Webdienst)|**Manage endpoints…**|Endpunktverwaltung im klassischen Azure-Portal|
+|Endpunktverwaltung im klassischen Azure-Portal (nur klassischer Webdienst)|**Edit in Studio**|Experimentbereich in Studio|
 
 ![](media\machine-learning-model-progression-experiment-to-web-service\connections-between-experiment-and-web-service.png)
 
@@ -86,7 +86,7 @@ Wenn Sie Ihr Experiment durchlaufen haben und damit zufrieden sind:
 
 2.  Klicken Sie auf **Run**.
 
-3.  Klicken Sie auf **Deploy Web Service**.
+3. Klicken Sie auf **Deploy Web Service**, und wählen Sie **Deploy Web Service [Classic]** oder **Deploy Web Service [New]**, was von der Umgebung abhängig, in der die Bereitstellung erfolgen soll.
 
 Ihr Webdienst wird jetzt bereitgestellt, und Sie können genau wie bei einem Vorhersagewebdienst darauf zugreifen und ihn verwalten.
 
@@ -106,8 +106,10 @@ Wenn das Experiment ein Vorhersagemodell trainiert und bewertet, führen die Web
 |Trainingsexperiment|**Set Up Web Service**|Bietet zwei Optionen|
 |&nbsp;|- **Update Predictive Experiment**|Aktualisiert das zugeordnete Vorhersageexperiment durch Änderungen, die Sie am Trainingsexperiment vorgenommen haben|
 |&nbsp;|- **Retraining Web Service**|Konvertiert das Trainingsexperiment in ein Neutrainingsexperiment (weitere Informationen finden Sie unten im Abschnitt "Aktualisieren")|
-|&nbsp;|-*oder*- **Deploy Web Service**|Wenn Sie das Neutrainingsexperiment für die Bereitstellung eingerichtet haben, wird es hierdurch als Webdienst bereitgestellt|
-|Vorhersageexperiment|**Deploy Web Service**|Stellt das Vorhersageexperiment als Webdienst bereit|
+|&nbsp;|*oder* **Deploy Web Service [Classic]** |Wenn Sie das Neutrainingsexperiment für die Bereitstellung eingerichtet haben, wird es hierdurch als klassischer Webdienst bereitgestellt.|
+|&nbsp;|*oder* **Deploy Web Service [New]** |Wenn Sie das Neutrainingsexperiment für die Bereitstellung eingerichtet haben, wird es hierdurch als neuer Webdienst bereitgestellt.|
+|Vorhersageexperiment|**Deploy Web Service [Classic]** |Stellt das Vorhersageexperiment als klassischen Webdienst bereit.|
+|Vorhersageexperiment|**Deploy Web Service [New]** |Stellt das Vorhersageexperiment als neuen Webdienst bereit.|
 
 **Experiment enthält *kein* Vorhersagemodell**
 
@@ -116,7 +118,8 @@ Wenn das Experiment kein Vorhersagemodell trainiert und bewertet, fallen die Web
 |**Typ des Experiments**|**Schaltfläche**|**Funktionsbeschreibung**|
 | -------------------- | -------- | -------------- |
 |Experiment in der Entwicklungsphase|**Set Up Web Service**|Bereitet das Experiment für die Bereitstellung als Webdienst vor|
-|Für die Bereitstellung vorbereitetes Experiment|**Deploy Web Service**|Stellt das Experiment als Webdienst bereit, öffnet die Konfigurationsseite für den Webdienst|
+|Für die Bereitstellung vorbereitetes Experiment|***Deploy Web Service [Classic]**|Stellt das Experiment als Webdienst bereit und öffnet die Konfigurationsseite für den klassischen Webdienst.|
+|&nbsp;|*oder* **Deploy Web Service [New]**| Wird als neuer Webdienst bereitgestellt.|
 
 ## Aktualisieren des Webdiensts
 
@@ -126,9 +129,9 @@ Das hängt davon ab, was Sie aktualisieren möchten:
 
 **Sie möchten die Eingabe oder Ausgabe ändern, oder Sie möchten die Bearbeitung von Daten durch den Webdienst ändern**
 
-Wenn Sie nicht das Modell ändern möchten, sondern nur die Art und Weise, wie Daten vom Webdienst verarbeitet werden, können Sie das Vorhersageexperiment bearbeiten und dann erneut auf **Deploy Web Service** klicken. Der Webdienst wird beendet, das aktualisierte Vorhersageexperiment wird bereitgestellt, und der Webdienst wird erneut gestartet.
+Wenn Sie nicht das Modell ändern möchten, sondern nur die Art und Weise, wie Daten vom Webdienst verarbeitet werden, können Sie das Vorhersageexperiment bearbeiten, erneut auf **Deploy Web Service** klicken und dann **Deploy Web Service [Classic]** oder **Deploy Web Service [New]** auswählen. Der Webdienst wird beendet, das aktualisierte Vorhersageexperiment wird bereitgestellt, und der Webdienst wird erneut gestartet.
 
-Beispiel: Angenommen, das Vorhersageexperiment gibt die gesamte Zeile der Eingabedaten mit dem vorhergesagten Ergebnis zurück. Sie beschließen, dass der Webdienst nur das Ergebnis zurückgeben soll. Sie können im Vorhersageexperiment direkt vor dem Ausgabeport ein **Select Columns in Dataset**-Modul hinzufügen, um andere Spalten außer dem Ergebnis auszuschließen. Wenn Sie erneut auf **Deploy Web Service** klicken, wird der Webdienst aktualisiert.
+Beispiel: Angenommen, das Vorhersageexperiment gibt die gesamte Zeile der Eingabedaten mit dem vorhergesagten Ergebnis zurück. Sie beschließen, dass der Webdienst nur das Ergebnis zurückgeben soll. Sie können im Vorhersageexperiment direkt vor dem Ausgabeport ein Modul **Project Columns** hinzufügen, um andere Spalten außer dem Ergebnis auszuschließen. Wenn Sie auf **Deploy Web Service** klicken und erneut **Deploy Web Service [Classic]** oder **Deploy Web Service [New]** wählen, wird der Webdienst aktualisiert.
 
 **Sie möchten das Modell mit neuen Daten neu trainieren**
 
@@ -142,7 +145,7 @@ Wenn Sie Ihr Machine Learning-Modell beibehalten, es aber mit neuen Daten neu tr
 
 **Sie möchten ein anderes Modell trainieren**
 
-Wenn Sie am ursprünglichen Vorhersageexperiment Änderungen vornehmen möchten (z. B. einen anderen Machine Learning-Algorithmus auswählen oder eine andere Trainingsmethode ausprobieren), müssen Sie die zweite oben beschriebene Vorgehensweise zum Neutrainieren Ihres Modells befolgen: Öffnen Sie das Trainingsexperiment, klicken Sie auf **Speichern unter**, um eine Kopie zu erstellen, und starten Sie einen neuen Pfad zur Entwicklung des Modells, zur Erstellung des Vorhersageexperiments und zur Bereitstellung des Webdiensts. Dadurch wird ein neuer Webdienst erstellt, der vom ursprünglichen unabhängig ist. Sie können entscheiden, welcher von beiden weiterhin ausgeführt wird bzw. ob beide parallel ausgeführt werden.
+Wenn Sie am ursprünglichen Vorhersageexperiment Änderungen vornehmen möchten (z. B. einen anderen Machine Learning-Algorithmus auswählen oder eine andere Trainingsmethode ausprobieren), müssen Sie die zweite oben beschriebene Vorgehensweise zum Neutrainieren Ihres Modells befolgen: Öffnen Sie das Trainingsexperiment, klicken Sie auf **Speichern unter**, um eine Kopie zu erstellen, und starten Sie einen neuen Pfad zur Entwicklung des Modells, zur Erstellung des Vorhersageexperiments und zur Bereitstellung des Webdiensts. Dadurch wird ein neuer Webdienst erstellt, der vom ursprünglichen unabhängig ist. Sie können entscheiden, welcher von beiden weiterhin ausgeführt wird bzw. ob beide parallel ausgeführt werden.
 
 ## Weitere nützliche Informationen
 
@@ -160,4 +163,4 @@ Beispiele für den gesamten Prozess finden Sie unter:
 
 -   [Exemplarische Vorgehensweise: Entwickeln einer Lösung zur Vorhersageanalyse für die Kreditrisikobewertung in Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0720_2016-->

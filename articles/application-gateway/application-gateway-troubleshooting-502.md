@@ -87,8 +87,8 @@ Stellen Sie sicher, dass die Instanzen fehlerfrei sind und die Anwendung ordnung
 | Fehlerhafter Schwellenwert | 3 | Anzahl der Wiederholungsversuche der Überprüfung Der Back-End-Server wird als außer Betrieb markiert, nachdem die Anzahl der aufeinanderfolgenden fehlgeschlagenen Überprüfungen den fehlerhaften Schwellenwert erreicht. |
 
 ###Lösung
-- Stellen Sie sicher, dass die Standardwebsite konfiguriert ist und an 127.0.0.1 lauscht. 
-- Falls im BackendHttpSetting-Element nicht der Port 80 angegeben ist, muss die Standardwebsite so konfiguriert werden, dass sie am angegebenen Port lauscht. 
+- Stellen Sie sicher, dass die Standardwebsite konfiguriert ist und an 127.0.0.1 lauscht.
+- Falls im BackendHttpSetting-Element nicht der Port 80 angegeben ist, muss die Standardwebsite so konfiguriert werden, dass sie am angegebenen Port lauscht.
 - Der Aufruf von http://127.0.0.1:port muss den HTTP-Ergebniscode 200 zurückgeben. Dieser muss innerhalb des Timeoutzeitraums von 30 Sekunden zurückgegeben werden.
 - Stellen Sie sicher, dass der konfigurierte Port geöffnet ist und dass am konfigurierten Port eingehender oder ausgehender Datenverkehr nicht durch Firewallregeln oder Azure-Netzwerksicherheitsgruppen blockiert wird.
 - Stellen Sie bei Verwendung klassischer virtueller Azure-Computer sowie bei Verwendung des Clouddiensts mit FQDN oder öffentlicher IP-Adresse außerdem sicher, dass der entsprechende [Endpunkt](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md) geöffnet ist.
@@ -112,10 +112,10 @@ Benutzerdefinierte Integritätsüberprüfungen sorgen für zusätzliche Flexibil
 
 
 ###Lösung
-Vergewissern Sie sich anhand der Tabelle weiter unten, dass die benutzerdefinierte Integritätsüberprüfung ordnungsgemäß konfiguriert ist. Stellen Sie zusätzlich zu den oben aufgeführten Problembehandlungsschritten auch Folgendes sicher:
+Vergewissern Sie sich anhand der Tabelle weiter oben, dass die benutzerdefinierte Integritätsüberprüfung ordnungsgemäß konfiguriert ist. Stellen Sie zusätzlich zu den oben aufgeführten Problembehandlungsschritten auch Folgendes sicher:
 
 - Stellen Sie sicher, dass das Protokoll nur auf HTTP festgelegt ist. HTTPS wird derzeit nicht unterstützt.
-- Stellen Sie anhand der [Anleitung](application-gateway-create-probe-ps.md) sicher, dass die Überprüfung ordnungsgemäß angegeben ist. 
+- Stellen Sie anhand der [Anleitung](application-gateway-create-probe-ps.md) sicher, dass die Überprüfung ordnungsgemäß angegeben ist.
 - Falls Application Gateway für einen einzelnen Standort konfiguriert ist, muss der Hostname standardmäßig als „127.0.0.1“ angegeben werden, sofern in der benutzerdefinierten Überprüfung nichts anderes konfiguriert ist.
 - Stellen Sie sicher, dass ein Aufruf von „http://\<Host>:<Port><Pfad>“ den HTTP-Ergebniscode 200 zurückgibt.
 - Stellen Sie sicher, dass „Intervall“, „Zeitüberschreitung“ und „Fehlerhafter Schwellenwert“ innerhalb des zulässigen Bereichs liegen.
@@ -134,4 +134,4 @@ Mit Application Gateway können Benutzer diese Einstellung über das BackendHttp
 
 Sollte sich das Problem mit den oben genannten Schritten nicht beheben lassen, erstellen Sie ein [Supportticket](https://azure.microsoft.com/support/options/).
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0720_2016-->

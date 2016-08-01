@@ -52,8 +52,12 @@ Dieses Beispiel zeigt, welche Änderungen in einer Entity Framework-Anwendung er
 
 Bei diesem Beispiel handelt es sich um eine mehrinstanzenfähige Webanwendung namens „Surveys“, die Benutzern die Erstellung von Onlineumfragen ermöglicht. Das Beispiel veranschaulicht einige wichtige Aspekte der Verwaltung von Benutzeridentitäten in einer mehrinstanzenfähigen Anwendung (einschließlich Registrierung, Authentifizierung, Autorisierung und App-Rollen). Informationen zum Ausführen dieses Beispiels finden Sie unter [How to run the Tailspin Surveys sample application](https://github.com/Azure-Samples/guidance-identity-management-for-multitenant-apps/blob/master/docs/running-the-app.md) (Gewusst wie: Ausführen der Tailspin-Beispielanwendung „Surveys“).
 
+## Contoso Clinic-Demoanwendung
+
+In diesem Beispiel werden die Sicherheitsfeatures von Azure SQL-Datenbank (V12) vorgestellt. Um dieses Beispiel auszuführen, wechseln Sie zu [Contoso Clinic Demo Application](https://github.com/Microsoft/azure-sql-security-sample) (Contoso Clinic-Demoanwendung).
+
 ## Nächste Schritte
 
 [Kennenlernen der Azure SQL-Datenbank-Tutorials](sql-database-explore-tutorials.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

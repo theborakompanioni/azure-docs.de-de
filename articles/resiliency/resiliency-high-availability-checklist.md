@@ -71,7 +71,7 @@ Der Support von Azure kann Sie beim Heraufsetzen Ihrer Diensteinschränkungen un
 
 __Was passiert, wenn Sie sich bei einem Ereignis mit hohem Datenverkehrsaufkommen nicht an den Support von Azure wenden?__ Wenn Sie die Informationen zu einem Ereignis mit hohem Datenverkehrsaufkommen nicht weitergeben bzw. dieses Ereignis nicht einplanen, besteht das Risiko, dass Sie bestimmte [Azure-Diensteinschränkungen](../azure-subscription-service-limits.md) erreichen und während des Ereignisses die Benutzerfreundlichkeit leidet (oder es sogar zu einem Ausfall kommt). Sie können dieses Risiko verringern, wenn Sie die Architektur prüfen und hohe Datenverkehrsaufkommen ankündigen.
 
-###Haben Sie Ihren Speicherblobs und statischen Assets ein Content Delivery Network (Azure CDN) vorgeschaltet?
+###Haben Sie Ihren Speicherblobs und statischen Medienobjekten ein Content Delivery Network (Azure CDN) vorgeschaltet?
 Mit einem CDN können Sie die Last für die Server verringern, indem Sie Inhalte an den CDN POP/edge-Standorten zwischenspeichern, die weltweit verteilt sind. Dies können Sie tun, um die Latenz zu verringern, die Skalierbarkeit zu erhöhen und die Serverlast zu verringern. Außerdem kann dies Teil einer Strategie zum Schützen vor Denial-of-Service-Angriffen (DOS) sein. Weitere Informationen dazu, wie Sie Azure CDN zum Erhöhen der Resilienz sowie zum Verringern der Kundenlatenz verwenden, finden Sie unter [Übersicht über das Azure Content Delivery Network (CDN)](../cdn/cdn-overview.md).
 
 __Was passiert, wenn Sie kein CDN verwenden?__ Wenn Sie kein CDN verwenden, gelangt der gesamte Kundendatenverkehr direkt auf Ihre Ressourcen. Dies bedeutet, dass die Last der Server zunimmt, was wiederum zu einer Verringerung der Skalierbarkeit führt. Außerdem kommt es für Kunden ggf. zu einer höheren Latenz, da im Rahmen von CDNs weltweite Standorte angeboten werden, die unter Umständen weniger weit von Ihren Kunden entfernt sind.
@@ -79,4 +79,4 @@ __Was passiert, wenn Sie kein CDN verwenden?__ Wenn Sie kein CDN verwenden, gela
 ##Nächste Schritte:
 Weitere Informationen dazu, wie Sie Ihre Anwendungen für hohe Verfügbarkeit konzipieren, finden Sie unter [Hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](resiliency-high-availability-azure-applications.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

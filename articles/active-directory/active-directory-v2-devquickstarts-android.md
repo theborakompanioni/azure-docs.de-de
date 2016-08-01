@@ -45,7 +45,7 @@ git@github.com:Azure-Samples/active-directory-android-native-oidcandroidlib-v2.g
 ```
 
 ## Registrieren einer App
-Erstellen Sie im [Anwendungsregistrierungsportal](https://apps.dev.microsoft.com) eine neue App, oder führen Sie die detaillierten Schritte unter [Registrieren einer App mit dem v2.0-Endpunkt](active-directory-v2-app-registration.md) aus. Stellen Sie Folgendes sicher:
+Erstellen Sie im [Anwendungsregistrierungsportal](https://apps.dev.microsoft.com) eine neue App, oder führen Sie die detaillierten Schritte unter [Registrieren einer App mit dem v2.0-Endpunkt](active-directory-v2-app-registration.md) aus. Stellen Sie sicher, dass Sie:
 
 - Kopieren Sie die Ihrer App zugewiesene **Anwendungs-ID**. Sie benötigen sie in Kürze.
 - Fügen Sie die **Mobile**-Plattform Ihrer App hinzu.
@@ -148,12 +148,12 @@ Nachdem `oidlib-sample` nun erfolgreich ausgeführt wird, bearbeiten Sie einige 
 	```xml
 	    <string-array name="oidc_scopes">
 	        <item>openid</item>
-	        <item>User.ReadBasic.All</item>
+	        <item>https://graph.microsoft.com/User.Read</item>
 	        <item>offline_access</item>
 	    </string-array>
 	```
 
-Der `User.ReadBasic.All`-Wert in `oidc_scopes` ermöglicht Ihnen das Lesen der Basisprofile aller Benutzer in Ihrem Verzeichnis. Weitere Informationen zu allen verfügbaren Bereichen finden Sie unter [Microsoft Graph-Berechtigungsbereiche](https://graph.microsoft.io/docs/authorization/permission_scopes).
+Der `User.Read`-Wert in `oidc_scopes` ermöglicht Ihnen das Lesen des Basisprofils des angemeldeten Benutzers. Weitere Informationen zu allen verfügbaren Bereichen finden Sie unter [Microsoft Graph-Berechtigungsbereiche](https://graph.microsoft.io/docs/authorization/permission_scopes).
 
 Erläuterungen zu `openid` oder `offline_access` als Bereiche in OpenID Connect finden Sie unter [v2.0-Protokolle – OAuth 2.0-Autorisierungscodefluss](active-directory-v2-protocols-oauth-code.md).
 
@@ -196,4 +196,4 @@ Klicken Sie nach erfolgreicher Authentifizierung auf die Schaltfläche **Request
 
 Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen einzurichten. Rufen Sie dazu das [Security TechCenter](https://technet.microsoft.com/security/dd252948) auf, und abonnieren Sie die Sicherheitsempfehlungen.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

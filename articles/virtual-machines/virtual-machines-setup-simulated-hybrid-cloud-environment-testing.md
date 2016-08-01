@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/25/2016" 
+	ms.date="07/19/2016" 
 	ms.author="josephd"/>
 
 # Einrichten einer simulierten Hybrid Cloud-Umgebung zu Testzwecken
@@ -40,19 +40,19 @@ Die Einrichtung dieser Hybrid Cloud-Testumgebung besteht aus vier Hauptphasen:
 1.	Konfigurieren des virtuellen Netzwerks TestLab
 2.	Erstellen des standortübergreifenden virtuellen Netzwerks TestVNET
 3.	Herstellen der VNet-zu-VNet-VPN-Verbindung
-4.	Konfigurieren von DC2 
+4.	Konfigurieren von DC2
 
 Wenn Sie noch über kein Azure-Abonnement verfügen, können Sie sich unter [Azure testen](https://azure.microsoft.com/pricing/free-trial/) für eine kostenlose Testversion anmelden. Wenn Sie über ein MSDN-Abonnement verfügen, lesen Sie [Azure-Vorteil für MSDN-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
 
 >[AZURE.NOTE] Für virtuelle Computer und virtuelle Netzwerkgateways in Azure fallen laufende Kosten an, wenn sie ausgeführt werden. Diese Kosten werden im Rahmen der kostenlosen Testversion, des MSDN-Abonnements oder des kostenpflichtigen Abonnements abgerechnet. Ein Azure-VPN-Gateway wird als Gruppe von zwei virtuellen Computern in Azure implementiert. Erstellen Sie zum Verringern der Kosten die Testumgebung, und führen Sie die erforderlichen Tests und Demonstrationen möglichst schnell aus.
 
-## Phase 1: Konfigurieren des virtuellen Netzwerks "TestLab"
+## Phase 1: Konfigurieren des virtuellen Netzwerks "TestLab"
 
 Erstellen Sie gemäß den Anweisungen zur [Testumgebung für die Basiskonfiguration](virtual-machines-windows-test-config-env.md) die Computer "DC1", "APP1" und "CLIENT1" in einem virtuellen Azure-Netzwerk mit dem Namen "TestLab".
 
 Starten Sie als Nächstes eine Azure PowerShell-Eingabeaufforderung.
 
-> [AZURE.NOTE] Die folgenden Befehlssätze verwenden Azure PowerShell 1.0 und höher. Weitere Informationen finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/) (in englischer Sprache).
+> [AZURE.NOTE] Die folgenden Befehlssätze verwenden Azure PowerShell 1.0 und höher. Weitere Informationen finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/) (in englischer Sprache).
 
 Melden Sie sich in Ihrem Konto an.
 
@@ -62,7 +62,7 @@ Rufen Sie Ihren Abonnementnamen mit dem folgenden Befehl ab.
 
 	Get-AzureRMSubscription | Sort SubscriptionName | Select SubscriptionName
 
-Legen Sie Ihr Azure-Abonnement fest. Verwenden Sie das gleiche Abonnement, das Sie zum Erstellen der grundlegenden Konfiguration verwendet haben. Ersetzen Sie alles in den Anführungszeichen, einschließlich der Zeichen < and >, durch die korrekten Namen.
+Legen Sie Ihr Azure-Abonnement fest. Verwenden Sie das gleiche Abonnement, das Sie zum Erstellen der grundlegenden Konfiguration verwendet haben. Ersetzen Sie alles in den Anführungszeichen, einschließlich der Zeichen < und >, durch die korrekten Namen.
 
 	$subscr="<subscription name>"
 	Get-AzureRmSubscription –SubscriptionName $subscr | Select-AzureRmSubscription
@@ -86,7 +86,7 @@ Erstellen Sie im nächsten Schritt Ihr Gateway.
 	$gwipconfig=New-AzureRmVirtualNetworkGatewayIpConfig -Name TestLab_GWConfig -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id 
 	New-AzureRmVirtualNetworkGateway -Name TestLab_GW -ResourceGroupName $rgName -Location $locName -IpConfigurations $gwipconfig -GatewayType Vpn -VpnType RouteBased
 
-Bedenken Sie, dass die Erstellung neuer Gateways 20 Minuten oder mehr in Anspruch nehmen kann.
+Bedenken Sie, dass die Erstellung neuer Gateways 20 Minuten oder mehr in Anspruch nehmen kann.
 
 Stellen Sie im Azure-Portal auf Ihrem lokalen Computer eine Verbindung mit DC1 her. Verwenden Sie dafür die Anmeldeinformationen für CORP\\User1. Führen Sie die folgenden Befehle von einer Windows PowerShell-Eingabeaufforderung aus, um die CORP-Domäne so zu konfigurieren, dass Computer und Benutzer ihren lokalen Domänencontroller zur Authentifizierung verwenden.
 
@@ -99,7 +99,7 @@ Die aktuelle Konfiguration sieht folgendermaßen aus.
 
 ![](./media/virtual-machines-setup-simulated-hybrid-cloud-environment-testing/virtual-machines-setup-simulated-hybrid-cloud-environment-testing-ph1.png)
  
-## Phase 2: Erstellen des virtuellen Netzwerks "TestVNET"
+## Phase 2: Erstellen des virtuellen Netzwerks "TestVNET"
 
 Zunächst erstellen Sie das virtuelle Netzwerk „TestVNET“ und schützen es mit einer Netzwerksicherheitsgruppe.
 
@@ -127,9 +127,9 @@ Die aktuelle Konfiguration sieht folgendermaßen aus.
 
 ![](./media/virtual-machines-setup-simulated-hybrid-cloud-environment-testing/virtual-machines-setup-simulated-hybrid-cloud-environment-testing-ph2.png)
  
-##Phase 3: Erstellen der VNet-zu-VNet-Verbindung
+##Phase 3: Erstellen der VNet-zu-VNet-Verbindung
 
-Besorgen Sie sich zunächst einen zufällig generierten vorinstallierten Schlüssel mit 32 Zeichen und starker Kryptografie vom Netzwerk- oder Systemadministrator. Verwenden Sie zum Erhalten eines vorinstallierten Schlüssels alternativ die Informationen im Artikel [Create a random string for an IPsec preshared key](http://social.technet.microsoft.com/wiki/contents/articles/32330.create-a-random-string-for-an-ipsec-preshared-key.aspx) (Erstellen einer zufälligen Zeichenfolge für einen vorinstallierten IPsec-Schlüssel).
+Besorgen Sie sich zunächst einen zufällig generierten vorinstallierten Schlüssel mit 32 Zeichen und starker Kryptografie vom Netzwerk- oder Systemadministrator. Verwenden Sie zum Erhalten eines vorinstallierten Schlüssels alternativ die Informationen im Artikel [Create a random string for an IPsec preshared key](http://social.technet.microsoft.com/wiki/contents/articles/32330.create-a-random-string-for-an-ipsec-preshared-key.aspx) (Erstellen einer zufälligen Zeichenfolge für einen vorinstallierten IPsec-Schlüssel).
 
 Verwenden Sie im nächsten Schritt diese Befehle, um die Site-to-Site-VPN-Verbindung zu erstellen. Dies kann einige Zeit in Anspruch nehmen.
 
@@ -213,4 +213,4 @@ Die simulierte Hybrid Cloud-Umgebung kann jetzt zum Testen verwendet werden.
 
 - Sie können dem TestVNET-Subnetz [einen neuen virtuellen Computer hinzufügen](virtual-machines-windows-ps-create.md), beispielsweise einen Computer mit Microsoft SQL Server.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0720_2016-->

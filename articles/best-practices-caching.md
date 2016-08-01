@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/01/2016"
+   ms.date="07/14/2016"
    ms.author="masashin"/>
 
 
@@ -934,4 +934,4 @@ Eventuell sind auch folgende Muster für Ihr Szenario interessant, wenn Sie in I
 - Seite [Transactions in Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Transactions.md) (Transaktionen in Redis) im Repository zu StackExchange.Redis
 - Seite [Data Partitioning Guidance](http://msdn.microsoft.com/library/dn589795.aspx) (Anleitung zur Datenpartitionierung) auf der Microsoft-Website
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->
