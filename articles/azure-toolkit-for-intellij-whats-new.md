@@ -56,7 +56,7 @@ Weitere Informationen zu den Azure-Toolkits für Java-IDEs finden Sie unter den 
   - [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]
   - *Neuerungen im Azure-Toolkit für IntelliJ (dieser Artikel)*
 
-Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center] (in englischer Sprache).
+Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center] \(in englischer Sprache).
 
 <!-- URL List -->
 

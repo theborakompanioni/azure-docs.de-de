@@ -140,7 +140,7 @@ Wenn Sie die einzelnen Windows PowerShell-Befehle **New-ADUser** ausführen, wer
 
 Installieren und konfigurieren Sie als Nächstes das Azure AD Connect-Tool auf DS1.
 
-1.	Führen Sie Internet Explorer aus, geben Sie **https://www.microsoft.com/download/details.aspx?id=47594**** in der Adressleiste ein, und drücken Sie dann die EINGABETASTE.
+1.	Führen Sie Internet Explorer aus, geben Sie **https://www.microsoft.com/download/details.aspx?id=47594** in der Adressleiste ein, und drücken Sie dann die EINGABETASTE.
 2.	Führen Sie das Microsoft Azure AD Connect-Setupprogramm aus.
 3.	Doppelklicken Sie auf dem Desktop auf ** Azure AD Connect**.
 4.	Wählen Sie auf der Seite **Willkommen** die Option **Ich stimme den Lizenzbedingungen und dem Datenschutzhinweis zu**, und klicken Sie dann auf **Weiter**.

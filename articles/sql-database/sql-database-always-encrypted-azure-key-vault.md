@@ -67,8 +67,8 @@ Sie müssen zuerst Ihre Clientanwendung aktivieren, um auf den SQL-Datenbank-Die
 7. Kopieren Sie die **CLIENT-ID** (Sie benötigen diesen Wert später für Ihren Code).
 8. Legen Sie im Schlüsselabschnitt die Dropdownliste **Dauer auswählen** auf **1 Jahr** fest. (Den Schlüssel kopieren Sie nach dem Speichern.)
 11. Scrollen Sie nach unten, und klicken Sie auf **Anwendung hinzufügen**.
-12. Behalten Sie für **ANZEIGEN** den Wert **Microsoft-Apps** bei, wählen Sie **Windows Azure Service Management**, und klicken Sie auf das Häkchen, um den Vorgang fortzusetzen.
-13. Klicken Sie in der Zeile **Windows Azure Service Management** auf die Dropdownliste **Delegierte Berechtigungen**, und wählen Sie **Auf Azure Service Management zugreifen** aus.
+12. Behalten Sie für **ANZEIGEN** den Wert **Microsoft-Apps** bei, wählen Sie **Microsoft Azure Service Management**, und klicken Sie auf das Häkchen, um den Vorgang fortzusetzen.
+13. Klicken Sie in der Zeile **Microsoft Azure Service Management** auf die Dropdownliste **Delegierte Berechtigungen**, und wählen Sie **Auf Azure Service Management zugreifen** aus.
 14. Klicken Sie auf **Speichern** (unten).
 15. Suchen Sie nach Abschluss des Speichervorgangs den Schlüsselwert, und kopieren Sie ihn in den Abschnitt **Schlüssel**. (Sie benötigen diesen Wert später für Ihren Code.)
 

@@ -103,7 +103,7 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr virtuelles Sto
 
     Auf der Seite **Webproxy**:
 
-    1. Geben Sie die **Webproxy-URL** in diesem Format an: *http://host-IP-Adresse * oder *FQDN:Portnummer*. Beachten Sie, dass HTTPS-URLs nicht unterstützt werden.
+    1. Geben Sie die **Webproxy-URL** in diesem Format an: *http://host-IP-Adresse* oder *FQDN:Portnummer*. Beachten Sie, dass HTTPS-URLs nicht unterstützt werden.
 
     2. Geben Sie unter **Authentifizierung** die Option **Einfach** oder **Keine** an.
 

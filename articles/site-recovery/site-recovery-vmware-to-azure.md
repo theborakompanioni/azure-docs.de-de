@@ -310,7 +310,7 @@ Parameter:
 
 	![Konto hinzufügen](./media/site-recovery-vmware-to-azure/credentials1.png)
 
-3. Fügen Sie unter **Kontodetails** das Konto hinzu, das für die automatische Ermittlung verwendet werden soll. Beachten Sie, dass es 15 Minuten oder länger dauern kann, bis der Kontoname im Portal angezeigt wird. Klicken Sie zur sofortigen Aktualisierung auf **Konfigurationsserver** > <Servername> > **Server aktualisieren**.
+3. Fügen Sie unter **Kontodetails** das Konto hinzu, das für die automatische Ermittlung verwendet werden soll. Beachten Sie, dass es 15 Minuten oder länger dauern kann, bis der Kontoname im Portal angezeigt wird. Klicken Sie zur sofortigen Aktualisierung auf **Konfigurationsserver** > „Servername“ > **Server aktualisieren**.
 
 	![Details](./media/site-recovery-vmware-to-azure/credentials2.png)
 
