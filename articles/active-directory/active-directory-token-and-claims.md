@@ -1,7 +1,7 @@
  <properties
-   pageTitle="Unterstützte Token- und Anspruchstypen | Microsoft Azure"
+   pageTitle="Azure AD-Tokenreferenz| Microsoft Azure"
    description="Anleitung zum Verstehen und Auswerten der Ansprüche in den SAML 2.0- und JWT-Token (JSON Web Tokens), die Azure Active Directory (Azure AD) ausstellt."
-   documentationCenter="dev-center-name"
+   documentationCenter="na"
    authors="msmbaldwin"
    services="active-directory"
    manager="mbaldwin"
@@ -13,249 +13,116 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/23/2016"
+   ms.date="07/19/2016"
    ms.author="mbaldwin"/>
 
-# Unterstützte Token- und Anspruchstypen
+# Azure AD-Tokenreferenz
 
-Zweck dieses Themas ist es, Ihnen das Verstehen und Auswerten der Ansprüche in den SAML 2.0- und JWT-Token (JSON Web Tokens) zu erleichtern, die Azure Active Directory (Azure AD) ausstellt.
+Azure Active Directory (Azure AD) stellt bei der Verarbeitung der einzelnen Authentifizierungsflüsse verschiedene Arten von Sicherheitstoken aus. In diesem Dokument sind das Format, die Sicherheitsmerkmale und der Inhalt aller Tokentypen beschrieben.
 
-Das Thema beginnt mit einer Beschreibung der einzelnen Tokenansprüche und zeigt ein Beispiel des Anspruchs in einem SAML-Token und einem JWT-Token. Ansprüche mit Vorschaustatus sind separat aufgeführt. Am Ende finden Sie Beispieltoken, damit Sie die Ansprüche im Kontext sehen können.
+## Tokentypen
 
-Mit der Zeit werden von Azure weitere Ansprüche zu Token hinzugefügt, um neue Szenarien zu ermöglichen. In der Regel führen wir diese Ansprüche im Vorschaustatus ein. Nach einer Testphase wird für die Ansprüche der volle Support geboten. Zur Vorbereitung auf Anspruchsänderungen sollten Anwendungen, die Token von Azure AD akzeptieren, nicht vertraute Tokenansprüche ignorieren, damit neue Ansprüche die Anwendung nicht beeinträchtigen. Anwendungen, die Ansprüche im Vorschaustatus verwenden, sollten nicht von diesen Ansprüchen abhängig sein und keine Ausnahmen auslösen, wenn der Anspruch nicht im Token enthalten ist. Wenn Ihre Anwendung Ansprüche benötigt, die in von Azure AD-ausgestellten SAML- oder JWT-Token nicht verfügbar sind, können Sie unten auf dieser Seite im Abschnitt "Ergänzungen aus der Community" neue Anspruchstypen vorschlagen und diskutieren.
+Azure AD unterstützt das [OAuth 2.0-Autorisierungsprotokoll](active-directory-protocols-oauth-code.md), das sowohl Zugriffstoken (access\_tokens) als auch Aktualisierungstoken (refresh\_tokens) verwendet. Er unterstützt darüber hinaus die Authentifizierung und Anmeldung über [OpenID Connect](active-directory-protocols-openid-connect-code.md). Dabei wird ein dritter Tokentyp, das ID-Token, eingeführt. Alle diese Token werden als Bearertoken dargestellt.
 
-## Referenz zu Tokenansprüchen
+Ein Trägertoken ist ein einfaches Sicherheitstoken, das dem „Träger“ den Zugriff auf eine geschützte Ressource ermöglicht. In diesem Kontext ist der „Träger“ jede beliebige Partei, die das Token vorweisen kann. Um das Trägertoken zu erhalten, muss sich die Partei zwar zunächst bei Azure AD authentifizieren, falls jedoch keine Maßnahmen ergriffen werden, um das Token bei der Übertragung und Speicherung zu schützen, kann das Token von einer fremden Partei abgefangen und verwendet werden. Einige Sicherheitstoken verfügen über einen integrierten Mechanismus, der eine unbefugte Verwendung durch nicht autorisierte Parteien verhindert. Trägertoken besitzen dagegen keinen solchen Mechanismus und müssen über einen sicheren Kanal wie etwa Transport Layer Security (HTTPS) übertragen werden. Wird ein Trägertoken als Klartext gesendet, kann eine böswillige Partei das Token mithilfe eines Man-in-the-Middle-Angriffs abfangen und damit unautorisiert auf eine geschützte Ressource zugreifen. Die gleichen Sicherheitsprinzipien gelten für die (Zwischen-)Speicherung von Trägertoken zur späteren Verwendung. Stellen Sie daher sicher, dass Ihre App Bearertoken stets auf sichere Weise überträgt und speichert. Weitere Sicherheitsüberlegungen zu Trägertoken finden Sie unter [RFC 6750, Abschnitt 5](http://tools.ietf.org/html/rfc6750).
 
-In diesem Abschnitt werden die Ansprüche in Token aufgelistet und beschrieben, die Azure AD zurückgibt. Enthalten sind die SAML-Version und JWT-Version des Anspruchs und eine Beschreibung des Anspruchs und seiner Verwendung. Die Ansprüche sind in alphabetischer Reihenfolge aufgeführt.
+Viele der von Azure AD ausgestellten Token werden als JSON Web Token (JWT) implementiert. Ein JWT stellt eine kompakte, URL-sichere Methode zum Übertragen von Informationen zwischen zwei Parteien dar. Die in JWTs enthaltenen Informationen werden als „Ansprüche“ oder Assertionen von Informationen zum Träger und Antragsteller des Tokens bezeichnet. Die Ansprüche in JWTs sind JSON-Objekte, die für die Übertragung codiert und serialisiert wurden. Da die von Azure AD ausgestellten JWTs signiert, aber nicht verschlüsselt sind, können Sie den Inhalt eines JWTs problemlos für Debugzwecke untersuchen. Dafür stehen mehrere Tools zur Verfügung (etwa [jwt.calebb.net](http://jwt.calebb.net)). Weitere Informationen zu JWTs finden Sie in der [JWT-Spezifikation](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
 
-### Anwendungs-ID
+## ID-Token
 
-Der Anspruch "Anwendungs-ID" identifiziert die Anwendung, die das Token verwendet, um auf eine Ressource zuzugreifen. Die Anwendung kann als sie selbst oder im Auftrag eines Benutzers agieren. Die Anwendungs-ID stellt in der Regel ein Anwendungsobjekt dar, kann aber auch ein Dienstprinzipalobjekt in Azure AD darstellen.
+ID-Token sind eine Form von Anmeldesicherheitstoken, die Ihre App empfängt, wenn die Authentifizierung mit [OpenID Connect](active-directory-protocols-openid-connect-code.md) ausgeführt wird. Sie werden als [JWTs](#types-of-tokens) dargestellt und enthalten Ansprüche, die Sie für die Anmeldung der Benutzer bei der App verwenden können. Sie können die Ansprüche nach Bedarf in einem ID-Token verwenden. Im Allgemeinen werden Sie in einer App zum Anzeigen von Kontoinformationen oder zum Treffen von Entscheidungen hinsichtlich der Zugriffssteuerung eingesetzt.
 
-Azure AD unterstützt in einem SAML-Token keinen Anwendungs-ID-Anspruch.
+ID-Token sind zu diesem Zeitpunkt zwar signiert, aber nicht verschlüsselt. Wenn Ihre App ein ID-Token empfängt, muss sie [die Signatur überprüfen](#validating-tokens), um die Authentizität des Tokens nachzuweisen. Zudem müssen einige Ansprüche im Token überprüft werden, um seine Gültigkeit zu belegen. Die von einer App überprüften Ansprüche variieren je nach Szenarioanforderungen. Es gibt jedoch einige [allgemeine Anspruchsüberprüfungen](#validating-tokens), die Ihre App in jedem Szenario ausführen muss.
 
-In einem JWT-Token ist die Anwendungs-ID in einem "appid"-Anspruch enthalten.
+Vollständige Informationen zu den Ansprüchen in ID-Token sowie ein Beispiel für ein ID-Token sind nachfolgend aufgeführt. Beachten Sie, dass die Ansprüche in ID-Token nicht in einer bestimmten Reihenfolge zurückgegeben werden. Darüber hinaus können neue Ansprüche in ID-Token zu einem beliebigen Zeitpunkt eingeführt werden. Ihre App darf jedoch nicht unterbrochen werden, wenn neue Ansprüche eingeführt werden. Die folgende Liste enthält die Ansprüche, die Ihre App zum Zeitpunkt der Erstellung dieses Dokuments zuverlässig interpretieren kann. Ausführlichere Informationen finden Sie ggf. in der [OpenID Connect-Spezifikation](http://openid.net/specs/openid-connect-core-1_0.html).
 
-    "appid":"15CB020F-3984-482A-864D-1D92265E8268"
+#### ID-Beispieltoken
 
-### Audience (Zielgruppe)
-Die Zielgruppe eines Tokens ist der beabsichtigte Empfänger des Tokens. Die Anwendung, die das Token empfängt, muss prüfen, ob der "Audience"-Wert ordnungsgemäß ist, und alle Token ablehnen, die für eine andere Zielgruppe vorgesehen sind.
+```
+eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0yNzRhNzJhNzMwOWUiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83ZmU4MTQ0Ny1kYTU3LTQzODUtYmVjYi02ZGU1N2YyMTQ3N2UvIiwiaWF0IjoxMzg4NDQwODYzLCJuYmYiOjEzODg0NDA4NjMsImV4cCI6MTM4ODQ0NDc2MywidmVyIjoiMS4wIiwidGlkIjoiN2ZlODE0NDctZGE1Ny00Mzg1LWJlY2ItNmRlNTdmMjE0NzdlIiwib2lkIjoiNjgzODlhZTItNjJmYS00YjE4LTkxZmUtNTNkZDEwOWQ3NGY1IiwidXBuIjoiZnJhbmttQGNvbnRvc28uY29tIiwidW5pcXVlX25hbWUiOiJmcmFua21AY29udG9zby5jb20iLCJzdWIiOiJKV3ZZZENXUGhobHBTMVpzZjd5WVV4U2hVd3RVbTV5elBtd18talgzZkhZIiwiZmFtaWx5X25hbWUiOiJNaWxsZXIiLCJnaXZlbl9uYW1lIjoiRnJhbmsifQ.
+```
 
-Der "Audience"-Wert ist eine Zeichenfolge (in der Regel die Basisadresse der Ressource, auf die zugegriffen wird), z. B. "https://contoso.com". In Azure AD-Token ist die Zielgruppe der App-ID-URI der Anwendung, die das Token angefordert hat. Wenn die Anwendung (welche die Zielgruppe ist) über mehr als einen App-ID-URI verfügt, entspricht der App-ID-URI im "Audience"-Anspruch des Tokens dem App-ID-URI in der Tokenanforderung. Bei einem SAML-Token wird der "Audience"-Anspruch im "Audience"-Element des "AudienceRestriction"-Elements definiert.
+> [AZURE.TIP] Überprüfen Sie zu Übungszwecken die Ansprüche im ID-Beispieltoken, indem Sie sie in [calebb.net](http://jwt.calebb.net) einfügen.
 
-    <AudienceRestriction>
-    <Audience>https://contoso.com</Audience>
-    </AudienceRestriction>
+#### Ansprüche in ID-Token
 
-Bei einem JWT-Token ist die Zielgruppe in einem "aud"-Anspruch enthalten.
+| JWT-Anspruch | Name | Beschreibung |
+|-----------|------|-------------|
+| `appid`| Application ID (Anwendungs-ID) | Identifiziert die Anwendung, die das Token verwendet, um auf eine Ressource zuzugreifen. Die Anwendung kann als sie selbst oder im Auftrag eines Benutzers agieren. Die Anwendungs-ID stellt in der Regel ein Anwendungsobjekt dar, kann aber auch ein Dienstprinzipalobjekt in Azure AD darstellen. <br><br> **JWT-Beispielwert**: <br> `"appid":"15CB020F-3984-482A-864D-1D92265E8268"` |
+| `aud`| Audience (Zielgruppe) | Der vorgesehene Empfänger des Tokens. Die Anwendung, die das Token empfängt, muss prüfen, ob der "Audience"-Wert ordnungsgemäß ist, und alle Token ablehnen, die für eine andere Zielgruppe vorgesehen sind. <br><br> **SAML-Beispielwert**: <br> `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>` <br><br> **JWT-Beispielwert**: <br> `"aud":"https://contoso.com"` |
+| `appidacr`| Application Authentication Context Class Reference (Kontextklassenreferenz für die Anwendungsauthentifizierung) | Gibt an, wie der Client authentifiziert wurde. Bei einem öffentlichen Client ist der Wert 0. Wenn die Client-ID und der geheime Clientschlüssel verwendet werden, ist der Wert 1. <br><br> **JWT-Beispielwert**: <br> `"appidacr": "0"`|
+| `acr`| Authentication Context Class Reference (Klassenreferenz des Anwendungskontexts) | Gibt an, wie der Antragsteller authentifiziert wurde (im Gegensatz zum Client im Anspruch „Kontextklassenreferenz für die Anwendungsauthentifizierung“). Der Wert "0" gibt an, dass die Endbenutzerauthentifizierung nicht die ISO/IEC 29115-Anforderungen erfüllt. <br><br> **JWT-Beispielwert**: <br> `"acr": "0"`|
+| | Authentication Instant (Authentifizierungszeitpunkt) | Erfasst Datum und Uhrzeit der Authentifizierung. <br><br> **SAML-Beispielwert**: <br> `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` |
+| `amr`| Authentication Method (Authentifizierungsmethode) | Gibt an, wie der Antragsteller des Tokens authentifiziert wurde. <br><br> **SAML-Beispielwert**: <br> `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` <br><br> **JWT-Beispielwert**: `“amr”: ["pwd"]` |
+| `given_name`| First Name (Vorname) | Gibt den Vornamen des Benutzers entsprechend der Festlegung im Azure AD-Benutzerobjekt an. <br><br> **SAML-Beispielwert**: <br> `<Attribute Name=”http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname”>`<br>`<AttributeValue>Frank<AttributeValue>` <br><br> **JWT-Beispielwert**: <br> `"given_name": "Frank"` |
+| `groups`| Groups (Gruppen) | Enthält die Objekt-IDs, die die Gruppenmitgliedschaften des Antragstellers darstellen. Diese Werte sind eindeutig (siehe "Object ID") und eignen sich zum sicheren Verwalten des Zugriffs, z. B. für das Erzwingen der Autorisierung für den Zugriff auf eine Ressource. Die im Anspruch "Groups" enthaltenen Gruppen werden über die "GroupMembershipClaims"-Eigenschaft des Anwendungsmanifests anwendungsbezogen konfiguriert. Mit dem Wert "null" werden alle Gruppen ausgeschlossen. Beim Wert "SecurityGroup" sind nur Active Directory-Sicherheitsgruppenmitglieder enthalten. Beim Wert "All" sind sowohl Sicherheitsgruppen als auch Office 365-Verteilerlisten enthalten. <br><br> **SAML-Beispielwert**: <br> `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` <br><br> **JWT-Beispielwert**: <br> `“groups”: ["0e129f5b-6b0a-4944-982d-f776045632af", … ]` |
+| `idp` | Identity Provider (Identitätsanbieter) | Der Identitätsanbieter, der den Antragsteller des Tokens authentifiziert hat. Dieser Wert ist identisch mit dem Wert des "Issuer "-Anspruchs, es sei denn, das Benutzerkonto gehört zu einem anderen Mandanten als der Aussteller. <br><br> **SAML-Beispielwert**: <br> `<Attribute Name=” http://schemas.microsoft.com/identity/claims/identityprovider”>`<br>`<AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>` <br><br> **JWT-Beispielwert**: <br> `"idp":”https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/”` |
+| `iat` | IssuedAt (Ausgestellt um) | Speichert die Uhrzeit, zu der das Token ausgestellt wurde. Er wird häufig verwendet, um die Aktualität von Token zu messen. <br><br> **SAML-Beispielwert**: <br> `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` <br><br> **JWT-Beispielwert**: <br> `"iat": 1390234181` |
+| `iss` | Issuer (Aussteller) | Identifiziert den Sicherheitstokendienst (Security Token Service, STS), der das Token erstellt und zurückgibt. Bei den Token, die Azure AD zurückgibt, ist der Aussteller "sts.windows.net". Die GUID im "Issuer"-Anspruch ist die Mandanten-ID des Azure AD-Verzeichnisses. Die Mandanten-ID ist ein unveränderlicher und zuverlässiger Bezeichner des Verzeichnisses. <br><br> **SAML-Beispielwert**: <br> `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` <br><br> **JWT-Beispielwert**: <br> `"iss":”https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/”` |
+| `family_name` | Last Name (Nachname) | Gibt den Nachnamen des Benutzers entsprechend der Definition im Azure AD-Benutzerobjekt an. <br><br> **SAML-Beispielwert**: <br> `<Attribute Name=” http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname”>`<br>`<AttributeValue>Miller<AttributeValue>` <br><br> **JWT-Beispielwert**: <br> `"family_name": "Miller"` |
+| `unique_name`| Name | Ein lesbarer Wert, der Aufschluss über den Antragsteller des Tokens gibt. Es wird nicht garantiert, dass der Wert innerhalb eines Mandanten eindeutig ist, weshalb er nur zu Anzeigezwecken dient. <br><br> **SAML-Beispielwert**: <br> `<Attribute Name=”http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name”>`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>` <br><br> **JWT-Beispielwert**: <br> `"unique_name": "frankm@contoso.com"` |
+| `oid` | Object ID (Objekt-ID) | Enthält einen eindeutigen Bezeichner eines Objekts in Azure AD. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Verwenden Sie die Objekt-ID zum Identifizieren eines Objekts in Abfragen von Azure AD. <br><br> **SAML-Beispielwert**: <br> `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` <br><br> **JWT-Beispielwert**: <br> `"oid":"528b2ac2-aa9c-45e1-88d4-959b53bc7dd0"` |
+| `roles` | Roles (Rollen) | Stellt alle Anwendungsrollen dar, die dem Antragsteller direkt und indirekt über eine Gruppenmitgliedschaft zugewiesen wurden und zum Erzwingen der rollenbasierten Zugriffssteuerung verwendet werden können. Anwendungsrollen werden über die `appRoles`-Eigenschaft des Anwendungsmanifests anwendungsspezifisch definiert. Die `value`-Eigenschaft der einzelnen Anwendungsrollen ist der Wert, der im Roles-Anspruch enthalten ist. <br><br> **SAML-Beispielwert**: <br> `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`<br>`<AttributeValue>Admin</AttributeValue>` <br><br> **JWT-Beispielwert**: <br> `“roles”: ["Admin", … ]` |
+| `scp` | Scope (Umfang) | Gibt die Identitätswechselberechtigungen an, die der Clientanwendung gewährt wurden. Standardberechtigung: `user_impersonation`. Der Besitzer der gesicherten Ressource kann zusätzliche Werte in Azure AD registrieren. <br><br> **JWT-Beispielwert**: <br> `"scp": "user_impersonation"`|
+| `sub` |Subject (Antragsteller)| Identifiziert den Prinzipal, für den das Token Informationen bestätigt (beispielsweise der Benutzer einer Anwendung). Dieser Wert ist unveränderlich und kann nicht neu zugewiesen oder wiederverwendet werden. Daher kann er für die sichere Durchführung von Autorisierungsüberprüfungen verwendet werden. Da der Antragsteller immer in den Token vorhanden ist, die Azure AD ausstellt, wird die Nutzung dieses Werts in einem allgemeinen Autorisierungssystem empfohlen. <br> `SubjectConfirmation` ist kein Anspruch. Das Element beschreibt, wie der Antragsteller des Tokens verifiziert wird. `Bearer` gibt an, dass der Antragsteller durch den Besitz des Tokens bestätigt wird. <br><br> **SAML-Beispielwert**: <br> `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>` <br><br> **JWT-Beispielwert**: <br> `"sub":"92d0312b-26b9-4887-a338-7b00fb3c5eab"`|
+| `tid` | Tenant ID (Mandanten-ID) | Ein unveränderlicher, nicht wieder verwendbarer Bezeichner, der den Verzeichnismandanten identifiziert, welcher das Token ausgestellt hat. Sie können diesen Wert verwenden, um auf mandantenspezifische Verzeichnisressourcen in einer mehrinstanzenfähigen Anwendung zugreifen. Sie können z. B. diesen Wert verwenden, um den Mandanten in einem Aufruf der Graph-API zu identifizieren. <br><br> **SAML-Beispielwert**: <br> `<Attribute Name=”http://schemas.microsoft.com/identity/claims/tenantid”>`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>` <br><br> **JWT-Beispielwert**: <br> `"tid":"cbb1a5ac-f33b-45fa-9bf5-f37db0fed422"`|
+| `nbf`, `exp`|Token Lifetime (Tokengültigkeitsdauer) | Das Zeitintervall, für das ein Token gültig ist. Der Dienst, der das Token überprüft, muss bestätigen, dass das aktuelle Datum innerhalb der Gültigkeitsdauer des Tokens liegt. Andernfalls wird das Token abgelehnt. Der Dienst kann einen Puffer von bis zu fünf Minuten über die Tokengültigkeitsdauer hinaus zulassen, um Differenzen bei der Istzeit (d. h. den zeitlichen Versatz) zwischen Azure AD und dem Dienst zu berücksichtigen. <br><br> **SAML-Beispielwert**: <br> `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br><br> **JWT-Beispielwert**: <br> `"nbf":1363289634, "exp":1363293234` |
+| `upn`| User Principal Name (Benutzerprinzipalname) | Speichert den Benutzernamen des Benutzerprinzipals.<br><br> **JWT-Beispielwert**: <br> `"upn": frankm@contoso.com`|
+| `ver`| Version | Speichert die Versionsnummer des Tokens. <br><br> **JWT-Beispielwert**: <br> `"ver": "1.0"`|
 
-    "aud":"https://contoso.com"
+## Zugriffstoken
 
-### Kontextklassenreferenz für die Anwendungsauthentifizierung
+Zugriffstoken können aktuell nur von Microsoft-Diensten genutzt werden. Apps sollten keine Validierung oder Überprüfung der Zugriffstoken für alle derzeit unterstützten Szenarien ausführen müssen. Der Inhalt von Zugriffstoken ist nicht zugänglich. Bei ihnen handelt es sich lediglich um Zeichenfolgen, die von Ihrer App in HTTP-Anforderungen an Microsoft gesendet werden können.
 
-Der Anspruch "Kontextklassenreferenz für die Anwendungsauthentifizierung" gibt an, wie der Client authentifiziert wurde. Bei einem öffentlichen Client ist der Wert 0. Wenn die Client-ID und der geheime Clientschlüssel verwendet werden, ist der Wert 1.
+Wenn Sie ein Zugriffstoken anfordern, gibt Azure AD auch einige Metadaten zum Zugriffstoken zurück, die von Ihrer App genutzt werden können. Diese Informationen umfassen die Ablaufzeit eines Zugriffstokens und die Bereiche, für die es gilt. Dies ermöglicht Ihrer App das intelligente Zwischenspeichern von Zugriffstoken, ohne dass dabei das Zugriffstoken selbst analysiert werden muss.
 
-Bei einem JWT-Token ist der Wert der Kontextklassenreferenz für die Anwendungsauthentifizierung in einem "appidacr"-Anspruch (anwendungsspezifischer ACR-Wert) enthalten.
+## Aktualisierungstoken
 
-    "appidacr": "0"
+Aktualisierungstoken sind Sicherheitstoken, mit denen Ihre App neue Zugriffstoken in einem OAuth 2.0-Fluss abrufen kann. Dadurch erhält Ihre App langfristig Zugriff auf Ressourcen im Auftrag eines Benutzers, ohne dass ein Benutzereingriff erforderlich ist.
 
-### Klassenreferenz des Anwendungskontexts
-Der Anspruch "Klassenreferenz des Anwendungskontexts" gibt an, wie der Antragsteller im Gegensatz zum Client im Anspruch "Kontextklassenreferenz für die Anwendungsauthentifizierung" authentifiziert wurde. Der Wert "0" gibt an, dass die Endbenutzerauthentifizierung nicht die ISO/IEC 29115-Anforderungen erfüllt.
+Aktualisierungstoken bestehen aus mehreren Ressourcen. Das bedeutet, dass ein Aktualisierungstoken, das bei einer Tokenanforderung für eine Ressource empfangen wurde, für Zugriffstoken bei einer völlig anderen Ressource eingelöst werden kann. Legen Sie hierzu den `resource`-Parameter in der Anforderung auf die Zielressource fest.
 
-- Bei einem JWT-Token ist der Anspruch der Klassenreferenz des Anwendungskontexts in einem "acr"-Anspruch (anwendungsspezifischer ACR-Wert) enthalten.
+Der Inhalt von Aktualisierungstoken ist für Ihre App niemals zugänglich. Sie sind zwar sehr lange gültig, in Ihrer App darf aber nicht von einer unbegrenzten Gültigkeitsdauer ausgegangen werden. Aktualisierungstoken können jederzeit aus unterschiedlichen Gründen ungültig werden. Die einzige Möglichkeit für Ihre App, die Gültigkeit eines Aktualisierungstokens zu überprüfen, besteht in der Einlösung des Tokens. Führen Sie dazu eine Tokenanforderung am Azure AD-Tokenendpunkt aus.
 
-    "acr": "0"
+Wenn Sie ein Aktualisierungstoken für ein neues Zugriffstoken einlösen, erhalten Sie ein neues Aktualisierungstoken in der Tokenantwort. Speichern Sie das neu ausgestellte Aktualisierungstoken, und ersetzen Sie das in der Anforderung verwendete Token. Dadurch wird sichergestellt, dass die Aktualisierungstoken möglichst lange gültig bleiben.
 
-### Authentication Instant (Authentifizierungszeitpunkt)
+## Überprüfen von Token
 
-Der "Authentication Instant"-Anspruch zeichnet Datum und Uhrzeit des Erfolgens der Authentifizierung auf.
+Aktuell muss Ihre Client-App lediglich ID-Token überprüfen. Bei der Überprüfung eines ID-Tokens muss Ihre App sowohl die Signatur des ID-Tokens als auch die Ansprüche im ID-Token überprüfen.
 
-Bei einem SAML-Token ist der Authentifizierungszeitpunkt im "AuthnInstant"-Attribut des "AuthnStatement"-Elements enthalten. Es stellt einen "datetime"-Wert in UTC-Zeit (Z) dar.
+Wir stellen Bibliotheken und Codebeispiele bereit, die die Tokenüberprüfung veranschaulichen. Die folgenden Informationen werden lediglich für Benutzer bereitgestellt, die den zugrunde liegenden Prozess nachvollziehen möchten. Für die JWT-Überprüfung stehen zudem verschiedene Open Source-Bibliotheken von Drittanbietern zur Verfügung. Für nahezu jede Plattform und Sprache ist mindestens eine Option verfügbar. Weitere Informationen zu Azure AD-Authentifizierungsbibliotheken sowie Codebeispiele finden Sie unter [Azure Active Directory-Authentifizierungsbibliotheken](active-directory-authentication-libraries.md).
 
-    <AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">
+#### Überprüfen der Signatur
 
-Azure AD unterstützt in JWT-Token keinen vergleichbaren Anspruch.
+Ein JWT enthält drei Segmente, die durch das Zeichen `.` getrennt sind. Das erste Segment wird als **Header**, das zweite als **Text** und das dritte als **Signatur** bezeichnet. Mit dem Signatursegment kann die Authentizität des ID-Tokens überprüft werden, sodass es für Ihre App als vertrauenswürdig eingestuft werden kann.
 
-### Authentication Method (Authentifizierungsmethode)
+ID-Token werden mit branchenüblichen asymmetrischen Verschlüsselungsalgorithmen wie etwa RSA 256 signiert. Der Header des ID-Tokens enthält Informationen zum Schlüssel und zur Verschlüsselungsmethode, die zum Signieren des Tokens verwendet wird:
 
-Der "Authentication Method"-Anspruch gibt an, wie der Antragsteller des Tokens authentifiziert wurde. Bei diesem Beispiel hat der Identitätsanbieter ein Kennwort zur Authentifizierung des Benutzers verwendet. http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password
+```
+{
+  "typ": "JWT",
+  "alg": "RS256",
+  "x5t": "kriMPdmBvx68skT8-mPAB3BseeA"
+}
+```
 
-Bei einem SAML-Token ist der "Authentication Method"-Wert im "AuthnContextClassRef"-Element enthalten.
+Der `alg`-Anspruch gibt den Algorithmus an, mit dem das Token signiert wurde. Der `x5t`-Anspruch hingegen bezeichnet den bestimmten öffentlichen Schlüssel, mit dem das Token signiert wurde.
 
-    <AuthnContextClassRef>http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password</AuthnContextClassRef>
+Zu einem beliebigen Zeitpunkt signiert Azure AD unter Umständen ein ID-Token mithilfe eines bestimmten Satzes von Paaren aus öffentlichen und privaten Schlüsseln. Azure AD wechselt regelmäßig durch die möglichen Sätze von Schlüsseln. Ihre App muss also auf die automatische Verarbeitung dieser Schlüsseländerungen ausgelegt sein. Die von Azure AD verwendeten öffentlichen Schlüssel sollten alle 24 Stunden auf Änderungen überprüft werden.
 
-Bei einem JWT-Token ist der "Authentication Method"-Wert im "amr"-Anspruch enthalten.
+#### Überprüfen der Ansprüche
 
-    “amr”: ["pwd"]
+Wenn Ihre App bei der Benutzeranmeldung ein ID-Token empfängt, sollte sie auch die Ansprüche im ID-Token überprüfen. Dazu gehören unter anderem folgende Ansprüche:
 
-###Vorname
+  - Anspruch **Zielgruppe**: Zum Überprüfen, ob das ID-Token an Ihre App übergeben werden sollte.
+  - Ansprüche **Nicht vor** und **Ablaufzeit**: Zum Sicherstellen, dass das ID-Token nicht abgelaufen ist.
+  - Anspruch **Aussteller**: Zum Überprüfen, ob das Token tatsächlich von Azure AD für Ihre App ausgestellt wurde.
+  - **Nonce**: Zur Abwehr von Tokenwiedergabeangriffen.
+  - und vieles mehr...
 
-Der Anspruch "First Name" oder "Given Name" gibt den Vornamen des Benutzers entsprechend der Festlegung im Azure AD-Benutzerobjekt an.
+Eine vollständige Liste mit Anspruchsüberprüfungen, die von Ihrer App ausgeführt werden sollten, finden Sie in der [OpenID Connect-Spezifikation](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation).
 
-Bei einem SAML-Token ist der Vorname in einen Anspruch im SAML-Attributelement "givenName" enthalten.
-
-    <Attribute Name=” http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname”>
-    <AttributeValue>Frank<AttributeValue>
-
-Bei einem JWT-Token ist der Vorname in einem "given\_name"-Anspruch enthalten.
-
-    "given_name": "Frank"
-
-### Groups (Gruppen)
-
-Der Anspruch "Groups" enthält die Objekt-IDs, die die Gruppenmitgliedschaften des Antragstellers darstellen. Diese Werte sind eindeutig (siehe "Object ID") und eignen sich zum sicheren Verwalten des Zugriffs, z. B. für das Erzwingen der Autorisierung für den Zugriff auf eine Ressource. Die im Anspruch "Groups" enthaltenen Gruppen werden über die "GroupMembershipClaims"-Eigenschaft des Anwendungsmanifests anwendungsbezogen konfiguriert. Mit dem Wert "null" werden alle Gruppen ausgeschlossen. Beim Wert "SecurityGroup" sind nur Active Directory-Sicherheitsgruppenmitglieder enthalten. Beim Wert "All" sind sowohl Sicherheitsgruppen als auch Office 365-Verteilerlisten enthalten. Bei jeder Konfiguration stellt der Gruppenanspruch transitive Gruppenmitgliedschaften des Antragstellers dar.
-
-Bei einem SAML-Token ist der Gruppenanspruch im "Groups"-Attribut enthalten.
-
-    <Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">
-    <AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>
-
-Bei einem JWT-Token ist der Gruppenanspruch im "Groups"-Anspruch enthalten.
-
-    “groups”: ["0e129f5b-6b0a-4944-982d-f776045632af", … ]
-
-### Identity Provider (Identitätsanbieter)
-
-Der "Identity Provider"-Anspruch zeichnet den Identitätsanbieter auf, der den Antragsteller des Tokens authentifiziert hat. Dieser Wert ist identisch mit dem Wert des "Issuer "-Anspruchs, es sei denn, das Benutzerkonto gehört zu einem anderen Mandanten als der Aussteller.
-
-Bei einem SAML-Token ist der Identitätsanbieter in einem Anspruch im SAML-Attributelement "identityprovider" enthalten.
-
-    <Attribute Name=” http://schemas.microsoft.com/identity/claims/identityprovider”>
-    <AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>
-
-Bei einem JWT-Token ist der Identitätsanbieter in einem "ipd"-Anspruch enthalten.
-
-    "idp":”https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/”
-
-### IssuedAt (Ausgestellt um)
-
-Der "IssuedAt"-Anspruch speichert die Uhrzeit, zu der das Token ausgestellt wurde. Er wird häufig verwendet, um die Aktualität von Token zu messen. Bei einem SAML-Token ist der "IssuedAt"-Wert in der "IssueInstant"-Assertion enthalten.
-
-    <Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">
-
-Bei einem JWT-Token ist der "IssuedAt"-Wert in einem "iat"-Anspruch enthalten. Der Wert wird ausgedrückt als Anzahl der Sekunden seit 1970-01-010:0:0Z in koordinierter Weltzeit (UTC).
-
-    "iat": 1390234181
-
-### Issuer (Aussteller)
-
-Der "Issuer"-Anspruch identifiziert den Sicherheitstokendienst (STS), der das Token und den Azure AD-Mandanten erstellt und zurückgibt. Bei den Token, die Azure AD zurückgibt, ist der Aussteller "sts.windows.net". Die GUID im "Issuer"-Anspruch ist die Mandanten-ID des Azure AD-Verzeichnisses. Die Mandanten-ID ist ein unveränderlicher und zuverlässiger Bezeichner des Verzeichnisses.
-
-Bei einem SAML-Token ist der "Issuer"-Anspruch im "Issuer"-Element enthalten.
-
-    <Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>
-
-Bei einem JWT-Token ist der Antragsteller in einem "iss"-Anspruch enthalten.
-
-    "iss":”https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/”
-
-### Nachname
-
-Der Anspruch "Nachname" gibt den Nachnamen des Benutzers entsprechend der Definition im Azure AD-Benutzerobjekt an. Bei einem SAML-Token ist der Nachname in einen Anspruch im SAML-Attributelement "surname" enthalten.
-
-    <Attribute Name=” http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname”>
-    <AttributeValue>Miller<AttributeValue>
-
-Bei einem JWT-Token ist der Nachname in einem "family\_name"-Anspruch enthalten.
-
-    "family_name": "Miller"
-
-### Name
-
-Der Anspruch "Name" gibt einen von Menschen lesbaren Wert an, der den Antragsteller des Tokens identifiziert. Es wird nicht garantiert, dass der Wert innerhalb eines Mandanten eindeutig ist, weshalb er nur zu Anzeigezwecken dient. Bei einem SAML-Token ist der Name im "Name"-Attribut enthalten.
-
-    <Attribute Name=”http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name”>
-    <AttributeValue>frankm@contoso.com<AttributeValue>
-
-Bei einem JWT-Token ist der Name im "unique\_name"-Anspruch enthalten.
-
-    "unique_name": "frankm@contoso.com"
-
-### Object ID (Objekt-ID)
-
-Der "Object ID"-Anspruch enthält einen eindeutigen Bezeichner eines Objekts in Azure AD. Dieser Wert ist unveränderlich und kann nicht neu zugewiesen oder wiederverwendet werden. Daher können Sie ihn für die sichere Durchführung von Autorisierungsüberprüfungen verwenden, z. B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Verwenden Sie die Objekt-ID zum Identifizieren eines Objekts in Abfragen von Azure AD. Bei einem SAML-Token ist die Objekt-ID im "objectidentifier"-Attribut enthalten.
-
-    <Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">
-    <AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>
-
-Bei einem JWT-Token ist die Objekt-ID in einem "oid"-Anspruch enthalten.
-
-    "oid":"528b2ac2-aa9c-45e1-88d4-959b53bc7dd0"
-
-### Roles (Rollen)
-
-Der "Roles"-Anspruch bietet benutzerfreundliche Zeichenfolgen, die die Rollenzuweisungen für Anwendungen für den Antragsteller in Azure AD darstellen und zum Erzwingen der rollenbasierten Zugriffssteuerung verwendet werden können. Anwendungsrollen werden über die "appRoles"-Eigenschaft des Anwendungsmanifests anwendungsbezogen definiert. Die "value"-Eigenschaft der einzelnen Anwendungsrollen ist der Wert, der im "roles"-Anspruch enthalten ist. Die Rollen im "roles"-Anspruch stellen alle Anwendungsrollen dar, die dem Antragsteller direkt und indirekt über eine Gruppenmitgliedschaft zugewiesen wurden. Bei einem SAML-Token ist der Rollenanspruch im "roles"-Attribut enthalten.
-
-    <Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">
-    <AttributeValue>Admin</AttributeValue>
-
-Bei einem JWT-Token ist der Rollenanspruch im "roles"-Anspruch enthalten.
-
-    “roles”: ["Admin", … ]
-
-### Umfang
-
-Der Umfang des Tokens gibt die Identitätswechselberechtigungen an, die der Clientanwendung erteilt wurden. Die Standardberechtigung ist "user\_impersonation". Der Besitzer der gesicherten Ressource kann zusätzliche Werte in Azure AD registrieren.
-
-Bei einem JWT-Token wird der Umfang des Tokens in einem "scp"-Anspruch angegeben.
-
-    "scp": "user_impersonation"
-
-### Betreff
-
-Der Antragsteller des Tokens ist der Prinzipal, für den das Token Informationen zusichert, z. B. der Benutzer einer Anwendung. Dieser Wert ist unveränderlich und kann nicht neu zugewiesen oder wiederverwendet werden. Daher kann er für die sichere Durchführung von Autorisierungsüberprüfungen verwendet werden, z. B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Da der Antragsteller immer in den Token vorhanden ist, die Azure AD ausstellt, wird die Nutzung dieses Werts in einem allgemeinen Autorisierungssystem empfohlen.
-
-Bei einem SAML-Token wird der Antragsteller des Tokens im "NameID"-Element des "Subject"-Elements angegeben. "NameID" ist ein eindeutiger, nicht wiederverwendeter Bezeichner des Antragstellers, der ein Benutzer, eine Anwendung oder ein Dienst sein kann.
-
-"SubjectConfirmation" ist kein Anspruch. Mit dem Element wird beschrieben, wie der Antragsteller des Tokens verifiziert wird. "Bearer" gibt an, dass der Antragsteller durch den Besitz des Tokens bestätigt wird.
-
-    <Subject>
-    <NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>
-    <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />
-    </Subject>
-
-Bei einem JWT-Token ist der Antragsteller in einem "sub"-Anspruch enthalten.
-
-    "sub":"92d0312b-26b9-4887-a338-7b00fb3c5eab"
-
-### Tenant ID (Mandanten-ID)
-Die Mandanten-ID ist ein unveränderlicher, nicht wieder verwendbarer Bezeichner, der den Verzeichnismandanten identifiziert, der das Token ausgestellt hat. Sie können diesen Wert verwenden, um auf mandantenspezifische Verzeichnisressourcen in einer mehrinstanzenfähigen Anwendung zugreifen. Sie können z. B. diesen Wert verwenden, um den Mandanten in einem Aufruf der Graph-API zu identifizieren.
-
-Bei einem SAML-Token ist die Mandanten-ID in einem Anspruch im SAML-Attributelement "tenantid" enthalten.
-
-    <Attribute Name=”http://schemas.microsoft.com/identity/claims/tenantid”>
-    <AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>
-
-Bei einem JWT-Token ist die Mandanten-ID in einem "tid"-Anspruch enthalten.
-
-    "tid":"cbb1a5ac-f33b-45fa-9bf5-f37db0fed422"
-
-### Token Lifetime (Tokengültigkeitsdauer)
-Der Anspruch "Tokengültigkeitsdauer" definiert das Zeitintervall, in dem ein Token gültig ist. Der Dienst, der das Token überprüft, muss bestätigen, dass das aktuelle Datum innerhalb der Gültigkeitsdauer des Tokens liegt. Andernfalls muss er das Token ablehnen. Der Dienst kann einen Puffer von bis zu fünf Minuten über die Tokengültigkeitsdauer hinaus zulassen, um Differenzen bei der Istzeit (d. h. den zeitlichen Versatz) zwischen Azure AD und dem Dienst zu berücksichtigen.
-
-Bei einem SAML-Token wird der Anspruch "Tokengültigkeitsdauer" im "Conditions"-Element mit den Attributen "NotBefore" und "NotOnOrAfter" definiert.
-
-    <Conditions
-    NotBefore="2013-03-18T21:32:51.261Z"
-    NotOnOrAfter="2013-03-18T22:32:51.261Z"
-    >
-
-Bei einem JWT-Token wird die Tokengültigkeitsdauer mithilfe der Ansprüche "nbf" (nicht vor) und "exp" (Ablaufzeit) definiert. Der Wert dieser Ansprüche wird ausgedrückt als Anzahl der Sekunden seit 1970-01-010:0:0Z in koordinierter Weltzeit (UTC). Weitere Informationen finden Sie unter "RFC 3339".
-
-    "nbf":1363289634,
-    "exp":1363293234
-
-### User Principal Name (Benutzerprinzipalname)
-Der "User Principal Name"-Anspruch speichert den Benutzernamen des Benutzerprinzipals.
-
-Bei einem JWT-Token ist der Benutzerprinzipalname in einem "upn"-Anspruch enthalten.
-
-    "upn": frankm@contoso.com
-
-### Version
-Der Anspruch "Version" speichert die Versionsnummer des Tokens. Bei einem JWT-Token ist die Version in einem "ver"-Anspruch enthalten.
-
-    "ver": "1.0"
+Details zu den erwarteten Werten für diese Ansprüche finden Sie oben im Abschnitt [ID-Token](#id_tokens).
 
 ## Beispieltoken
 
@@ -365,7 +232,7 @@ Dies ist ein Beispiel eines typischen SAML-Tokens.
 
 ### JWT-Token – Benutzeridentitätswechsel
 
-Dies ist ein Beispiel eines typischen JWT-Tokens (JSON webtoken), das bei einem Benutzeridentitätswechsel verwendet wird. Zusätzlich zu den Ansprüchen enthält das Token eine Versionsnummer in **ver** und **appidacr** und die Klassenreferenz des Anwendungskontexts, die angibt, wie der Client authentifiziert wurde. Bei einem öffentlichen Client ist der Wert 0. Wenn eine Client-ID oder ein geheimer Clientschlüssel verwendet wird, ist der Wert 1.
+Dies ist ein Beispiel für ein typisches JSON Web Token (JWT), das in einem Autorisierungscodegewährungs-Fluss verwendet wird. Zusätzlich zu den Ansprüchen enthält das Token eine Versionsnummer in **ver** und **appidacr** und die Klassenreferenz des Anwendungskontexts, die angibt, wie der Client authentifiziert wurde. Bei einem öffentlichen Client ist der Wert 0. Wenn eine Client-ID oder ein geheimer Clientschlüssel verwendet wird, ist der Wert 1.
 
     {
      typ: "JWT",
@@ -408,8 +275,4 @@ Dies ist ein Beispiel eines typischen JWT-Tokens (JSON webtoken), das bei einem 
      acr: "1"
     }.
 
-##Weitere Informationen
-
-[Azure Active Directory-Authentifizierungsprotokolle](https://msdn.microsoft.com/library/azure/dn151124.aspx)
-
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

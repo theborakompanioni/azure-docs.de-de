@@ -21,7 +21,7 @@
 
 Anwendungen können Unmengen an Daten generieren und speichern. Einige dieser Daten (etwa vom Computer generierte Ereignisdaten, Protokolle und Benutzersitzungsinformationen) sind allerdings nur für einen begrenzten Zeitraum relevant. Sobald die Daten von der Anwendung nicht mehr benötigt werden, können sie gefahrlos gelöscht werden, um den Speicherbedarf einer Anwendung zu verringern.
 
-Mit der Gültigkeitsdauer (Time To Live, TTL) bietet Microsoft Azure DocumentDB die Möglichkeit, im System vorhandene Dokumente nach einem bestimmten Zeitraum automatisch zu löschen. Die standardmäßige Gültigkeitsdauer kann auf Sammlungsebene festgelegt und für individuelle Dokumente überschrieben werden. Nach dem Festlegen der Gültigkeitsdauer (auf Sammlungs- oder Dokumentebene) werden Dokumente, die nach dem in Sekunden angegebenen Zeitraum (beginnend ab der letzten Änderung) vorhanden sind, von DocumentDB automatisch entfernt.
+Mit der Gültigkeitsdauer (Time To Live, TTL) bietet Microsoft Azure DocumentDB die Möglichkeit, Dokumente nach einem bestimmten Zeitraum automatisch aus der Datenbank zu löschen. Die standardmäßige Gültigkeitsdauer kann auf Sammlungsebene festgelegt und für individuelle Dokumente überschrieben werden. Nach dem Festlegen der Gültigkeitsdauer (auf Sammlungs- oder Dokumentebene) werden Dokumente, die nach dem in Sekunden angegebenen Zeitraum (beginnend ab der letzten Änderung) vorhanden sind, von DocumentDB automatisch entfernt.
 
 Die Gültigkeitsdauer in DocumentDB basiert auf einem Offset für den letzten Änderungszeitpunkt eines Dokuments. Zu diesem Zweck wird das für jedes Dokument vorhandene Feld „\_ts“ verwendet. Bei dem Feld „\_ts“ handelt es sich um einen Epochenzeitstempel im Unix-Format zur Darstellung von Datum und Uhrzeit. Das Feld „\_ts“ wird bei jeder Änderung eines Dokuments aktualisiert.
 
@@ -36,7 +36,7 @@ Das TTL-Feature wird über TTL-Eigenschaften auf zwei Ebenen (Sammlungsebene und
   
   * Ist die Angabe vorhanden und der Wert auf eine beliebige Zahl (n) festgelegt, laufen Dokumente n Sekunden nach der letzten Änderung ab.
 
- 2.  TTL für die Dokumente 
+ 2.  TTL für die Dokumente
   * Die Eigenschaft wird nur angewendet, wenn DefaultTTL für die übergeordnete Auflistung vorhanden ist.
   
   * Überschreibt den DefaultTTL-Wert für die übergeordnete Auflistung.
@@ -157,4 +157,4 @@ Ja. Die [Indizierungsrichtlinie](documentdb-indexing-policies.md) der Sammlung m
 
 Weitere Informationen zu Azure DocumentDB finden Sie auf der [*Dokumentationsseite*](https://azure.microsoft.com/documentation/services/documentdb/) des Diensts.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

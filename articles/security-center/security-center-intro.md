@@ -4,16 +4,16 @@
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
-   manager="StevenPo"
+   manager="MBaldwin"
    editor=""/>
 
 <tags
    ms.service="security-center"
    ms.devlang="na"
-   ms.topic="get-started-article"
+   ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/22/2016"
+   ms.date="07/19/2016"
    ms.author="terrylan"/>
 
 # Einführung in Azure Security Center
@@ -23,7 +23,7 @@ Sie erhalten Informationen zu Azure Security Center, zu dessen wichtigsten Funkt
 > [AZURE.NOTE] Die Informationen in diesem Dokument gelten für die Vorschauversion von Azure Security Center. Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.
 
 ## Was ist Azure Security Center?
- Security Center unterstützt Sie beim Vorbeugen, Erkennen und Beheben von Bedrohungen. Mit dieser Cloudlösung gewinnen Sie mehr Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Sektrum an Sicherheitslösungen verwendet werden.
+ Security Center unterstützt Sie beim Vorbeugen, Erkennen und Beheben von Bedrohungen. Mit dieser Cloudlösung gewinnen Sie mehr Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
 
 ##	Wichtige Funktionen
  Security Center stellt benutzerfreundliche und effektive Funktionen bereit, die in Azure integriert sind und verwendet werden können, um Bedrohungen zu verhindern, zu erkennen und darauf zu reagieren. Wichtige Funktionen sind:
@@ -71,7 +71,7 @@ Durch **Ein Speicherkonto pro Region auswählen** (siehe oben) können Sie für 
 
 > [AZURE.NOTE] Die Datensammlung und die Auswahl eines Speicherkontos pro Region werden auf Abonnementebene konfiguriert.
 
-**Empfehlungen anzeigen für** (siehe oben) ermöglicht es Ihnen, die Sicherheitsmechanismen auszuwählen, die Sie entsprechend den Sicherheitsanforderungen der Ressourcen im Abonnement überwachen und empfehlen möchten.
+Wählen Sie **Vorbeugungsrichtlinie** (siehe oben), um das Blatt **Vorbeugungsrichtlinie** zu öffnen. **Empfehlungen anzeigen für** ermöglicht es Ihnen, die Sicherheitsmechanismen auszuwählen, die Sie entsprechend den Sicherheitsanforderungen der Ressourcen im Abonnement überwachen und empfehlen möchten.
 
 Wählen Sie anschließend eine Ressourcengruppe aus, um Einzelheiten zur Richtlinie anzuzeigen.
 
@@ -127,7 +127,7 @@ Wenn Sie eine Warnung auswählen, werden weitere Informationen zum Angriff sowie
 
 Mit der Kachel **Partnerlösungen** können Sie auf einen Blick den Integritätsstatus Ihrer Partnerlösungen prüfen, die in Ihr Azure-Abonnement integriert sind. Von den Lösungen ausgegebene Warnungen werden in Security Center angezeigt.
 
-Wählen Sie die Kachel **Partnerlösungen** aus. Ein Blatt mit einer Liste aller verbundenen Partnerlösungen wird geöffnet.
+Wählen Sie die Kachel **Partnerlösungen**. Ein Blatt mit einer Liste aller verbundenen Partnerlösungen wird geöffnet.
 
 ![Partnerlösungen][9]
 
@@ -138,16 +138,16 @@ Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonneme
 
 Unter [Erste Schritte mit Azure Security Center](security-center-get-started.md) werden Sie schnell durch die Komponenten zur Sicherheitsüberwachung und Richtlinienverwaltung von Security Center geführt.
 
-## Nächste Schritte
+## Weitere Informationen
 In diesem Dokument wurden Security Center, seine wichtigsten Funktionen sowie die ersten Schritte zu seiner Nutzung vorgestellt. Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md): Hier erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+- [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
 - [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
-- [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-- [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md): Hier erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
-- [Monitoring partner solutions with Azure Security Center (Überwachen von Partnerlösungen mit Azure Security Center)](security-center-partner-solutions.md): Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
-- [Azure Security Center – häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/): Hier finden Sie sicherheitsbezogene Neuigkeiten und Informationen zu Azure.
+- [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
+- [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
+- [Überwachen von Partnerlösungen mit Azure Security Center:](security-center-partner-solutions.md) Erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
+- [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
+- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Neuigkeiten und Informationen zur Azure-Sicherheit.
 
 <!--Image references-->
 [1]: ./media/security-center-intro/security-tile.PNG
@@ -160,4 +160,4 @@ In diesem Dokument wurden Security Center, seine wichtigsten Funktionen sowie di
 [8]: ./media/security-center-intro/security-alert-detail.png
 [9]: ./media/security-center-intro/partner-solutions.png
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -8,13 +8,13 @@ Das Dashboard in der Remoteüberwachungslösung ermöglicht Ihnen das Anzeigen d
 
     ![][18]
 
-3. Klicken Sie auf **Dashboard**, um zu diesem zurückzukehren. Wählen Sie Ihr Gerät in der Dropdownliste **Anzuzeigendes Gerät** aus, um seine Telemetrie anzuzeigen. Die Telemetrie der Beispielanwendung ist mit 50 Einheiten für die Innentemperatur, 55 Einheiten für die Außentemperatur und 50 Einheiten für die Luftfeuchtigkeit konfiguriert. Bitte beachten Sie, dass im Dashboard standardmäßig nur die Werte für Temperatur und die Luftfeuchtigkeit angezeigt werden.
+3. Klicken Sie auf **Dashboard**, um zu diesem zurückzukehren. Wählen Sie Ihr Gerät in der Dropdownliste **Anzuzeigendes Gerät** aus, um seine Telemetrie anzuzeigen. Die Telemetrie der Beispielanwendung ist mit 50 Einheiten für die Innentemperatur, 55 Einheiten für die Außentemperatur und 50 Einheiten für die Luftfeuchtigkeit konfiguriert. Bitte beachten Sie, dass im Dashboard standardmäßig nur die Werte für Temperatur und die Luftfeuchtigkeit angezeigt werden.
 
     ![][img-telemetry]
 
 ## Senden eines Befehls an ein Gerät
 
-Das Dashboard in der Remoteüberwachungslösung ermöglicht es Ihnen, IoT Hub anzuweisen, Befehle an Ihre Geräte zu senden. In der Remoteüberwachungslösung können Sie beispielsweise einen Befehl senden, mit dem die Innentemperatur eines Geräts eingestellt wird.
+Das Dashboard in der Remoteüberwachungslösung ermöglicht es Ihnen, über IoT Hub Befehle an Ihre Geräte zu senden. In der Remoteüberwachungslösung können Sie beispielsweise einen Befehl senden, mit dem die Innentemperatur eines Geräts eingestellt wird.
 
 1. Klicken Sie im Dashboard der Remoteüberwachungslösung im linken Bereich auf **Geräte**, um zur **Geräteliste** zu gelangen.
 
@@ -41,6 +41,5 @@ Der Artikel [Anpassen vorkonfigurierter Lösungen][lnk-customize] beschreibt ein
 [18]: ./media/iot-suite-visualize-connecting/suite10.png
 [img-telemetry]: ./media/iot-suite-visualize-connecting/telemetry.png
 [lnk-customize]: ../articles/iot-suite/iot-suite-guidance-on-customizing-preconfigured-solutions.md
-[lnk-dev-messaging]: ../articles/iot-hub/iot-hub-devguide.md#messaging
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0720_2016-->

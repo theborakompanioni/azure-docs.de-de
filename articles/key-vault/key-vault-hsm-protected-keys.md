@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="07/15/2016"
 	ms.author="cabailey"/>
 #Gewusst wie: Generieren und Übertragen von HSM-geschützten Schlüsseln für den Azure-Schlüsseltresor
 
@@ -27,7 +27,7 @@ Diese Funktion für Azure China nicht zur Verfügung.
 
 >[AZURE.NOTE] Weitere Informationen zum Azure-Schlüsseltresor finden Sie unter [Was ist der Azure-Schlüsseltresor?](key-vault-whatis.md).
 >
->Ein Lernprogramm zu den ersten Schritten, z. B. der Erstellung eines Schlüsseltresors für HSM-geschützte Schlüssel, finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md).
+>Ein Lernprogramm zu den ersten Schritten, z. B. der Erstellung eines Schlüsseltresors für HSM-geschützte Schlüssel, finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md).
 
 Weitere Informationen zum Generieren und Übertragen eines HSM-geschützten Schlüssels über das Internet:
 
@@ -45,7 +45,7 @@ Weitere Informationen zum Generieren und Übertragen eines HSM-geschützten Schl
 
 ##Weitere Informationen zu Thales-HSMs und Microsoft-Diensten
 
-Thales e-Security ist ein weltweit führender Anbieter von Lösungen für Datenverschlüsselung und Cybersicherheit für die Bereiche Finanzdienstleistungen, Hightech, Fertigung, Behörden und Technologie. Thales hat über 40 Jahre Erfahrung, was den Schutz der Daten von Unternehmen und Behörden betrifft. Die Lösungen der Firma werden von vier der fünf größten Energie- und Luft- und Raumfahrtunternehmen und 22 NATO-Ländern genutzt und tragen zum Schutz von mehr als 80 % der weltweiten Zahlungstransaktionen bei.
+Thales e-Security ist ein weltweit führender Anbieter von Lösungen für Datenverschlüsselung und Cybersicherheit für die Bereiche Finanzdienstleistungen, Hightech, Fertigung, Behörden und Technologie. Thales hat über 40 Jahre Erfahrung, was den Schutz der Daten von Unternehmen und Behörden betrifft. Die Lösungen der Firma werden von vier der fünf größten Energie- und Luft- und Raumfahrtunternehmen und 22 NATO-Ländern genutzt und tragen zum Schutz von mehr als 80 % der weltweiten Zahlungstransaktionen bei.
 
 Microsoft hat mit Thales zusammengearbeitet, um den Entwicklungsstand der HSMs zu verbessern. Dank dieser Verbesserungen können Sie die typischen Vorteile von gehosteten Diensten nutzen, ohne die Kontrolle über Ihre Schlüssel abzugeben. Vor allem ist es vorteilhaft, dass die HSMs aufgrund dieser Verbesserungen von Microsoft verwaltet werden können, damit Sie dies nicht übernehmen müssen. Als Clouddienst kann der Azure-Schlüsseltresor schnell zentral hochskaliert werden, um die Auslastungsspitzen Ihrer Organisation zu bewältigen. Gleichzeitig ist der Schlüssel in den HSMs von Microsoft geschützt: Sie behalten die Kontrolle über den Lebenszyklus des Schlüssels, da Sie ihn generieren und an die HSMs von Microsoft übertragen.
 
@@ -63,29 +63,29 @@ Die folgende Tabelle enthält eine Liste mit Voraussetzungen, die beim Azure-Sch
 |Azure-Abonnement|Um einen Azure-Schlüsseltresor erstellen zu können, benötigen Sie ein Azure-Abonnement: [Registrieren Sie sich für die kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).|
 |Azure-Schlüsseltresor, der HSMs unterstützt|Weitere Informationen zu den Dienstebenen und Funktionen für den Azure-Schlüsseltresor finden Sie auf der Website [Azure-Schlüsseltresor – Preise](https://azure.microsoft.com/pricing/details/key-vault/).|
 |Thales-HSM, Smartcards und Supportsoftware|Sie benötigen Zugriff auf ein Thales-Hardwaresicherheitsmodul sowie grundlegende Kenntnisse zum Betrieb von Thales-HSMs. Eine Liste mit kompatiblen Modellen bzw. Informationen zum Kauf eines HSM, falls Sie noch keins besitzen, finden Sie unter [Thales-Hardwaresicherheitsmodul](https://www.thales-esecurity.com/msrms/buy).|
-|Folgende Hardware und Software:<ol><li>x64-Offlinearbeitsstation mit Windows 7 als Betriebssystem-Mindestversion und Thales nShield-Software (mindestens Version 11.50).<br/><br/>Wenn auf der Arbeitsstation Windows 7 ausgeführt wird, müssen Sie [Microsoft .NET Framework 4.5 installieren](http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Eine Arbeitsstation mit Internetverbindung und Windows 7 als Betriebssystem-Mindestversion.</li><li>Ein USB-Laufwerk oder anderes tragbares Speichergerät mit mindestens 16 MB freiem Speicherplatz.</li></ol>|Aus Sicherheitsgründen wird empfohlen, die erste Arbeitsstation nicht mit einem Netzwerk zu verbinden. Dies wird jedoch nicht programmgesteuert erzwungen.<br/><br/>Beachten Sie, dass diese Arbeitsstation in den folgenden Anleitungen als „verbindungslose Arbeitsstation“ bezeichnet wird.</p></blockquote><br/>Falls Ihr Mandantenschlüssel für ein Produktionsnetzwerk gilt, empfehlen wir außerdem, eine zweite separate Arbeitsstation zu verwenden, um das Toolset herunterzuladen und den Mandantenschlüssel hochzuladen. Zu Testzwecken können Sie aber auch ein und dieselbe Arbeitsstation verwenden.<br/><br/>Beachten Sie, dass diese zweite Arbeitsstation in den folgenden Anleitungen als „Arbeitsstation mit Internetverbindung“ bezeichnet wird.</p></blockquote><br/>|
+|Folgende Hardware und Software:<ol><li>x64-Offlinearbeitsstation mit Windows 7 als Betriebssystem-Mindestversion und Thales nShield-Software (mindestens Version 11.50).<br/><br/>Wenn auf der Arbeitsstation Windows 7 ausgeführt wird, müssen Sie [Microsoft .NET Framework 4.5 installieren](http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Eine Arbeitsstation mit Internetverbindung und Windows 7 als Betriebssystem-Mindestversion.</li><li>Ein USB-Laufwerk oder anderes tragbares Speichergerät mit mindestens 16 MB freiem Speicherplatz.</li></ol>|Aus Sicherheitsgründen wird empfohlen, die erste Arbeitsstation nicht mit einem Netzwerk zu verbinden. Dies wird jedoch nicht programmgesteuert erzwungen.<br/><br/>Beachten Sie, dass diese Arbeitsstation in den folgenden Anleitungen als „verbindungslose Arbeitsstation“ bezeichnet wird.</p></blockquote><br/>Falls Ihr Mandantenschlüssel für ein Produktionsnetzwerk gilt, empfehlen wir außerdem, eine zweite separate Arbeitsstation zu verwenden, um das Toolset herunterzuladen und den Mandantenschlüssel hochzuladen. Zu Testzwecken können Sie aber auch ein und dieselbe Arbeitsstation verwenden.<br/><br/>Beachten Sie, dass diese zweite Arbeitsstation in den folgenden Anleitungen als „Arbeitsstation mit Internetverbindung“ bezeichnet wird.</p></blockquote><br/>|
 
 ##Generieren und Übertragen des Schlüssels an das HSM des Azure-Schlüsseltresors
 
 Sie verwenden die folgenden fünf Schritte zum Generieren und Übertragen Ihres Schlüssels an das HSM des Azure-Schlüsseltresors:
 
-- [Schritt 1: Vorbereiten der Arbeitsstation mit Internetverbindung](#step-1-prepare-your-internet-connected-workstation)
-- [Schritt 2: Vorbereiten der verbindungslosen Arbeitsstation](#step-2-prepare-your-disconnected-workstation)
-- [Schritt 3: Generieren des Schlüssels](#step-3-generate-your-key)
-- [Schritt 4: Vorbereiten des Schlüssels für die Übertragung](#step-4-prepare-your-key-for-transfer)
-- [Schritt 5: Übertragen des Schlüssels an den Azure-Schlüsseltresor](#step-5-transfer-your-key-to-azure-key-vault)
+- [Schritt 1: Vorbereiten der Arbeitsstation mit Internetverbindung](#step-1-prepare-your-internet-connected-workstation)
+- [Schritt 2: Vorbereiten der verbindungslosen Arbeitsstation](#step-2-prepare-your-disconnected-workstation)
+- [Schritt 3: Generieren des Schlüssels](#step-3-generate-your-key)
+- [Schritt 4: Vorbereiten des Schlüssels für die Übertragung](#step-4-prepare-your-key-for-transfer)
+- [Schritt 5: Übertragen des Schlüssels an den Azure-Schlüsseltresor](#step-5-transfer-your-key-to-azure-key-vault)
 
-## Schritt 1: Vorbereiten der Arbeitsstation mit Internetverbindung
+## Schritt 1: Vorbereiten der Arbeitsstation mit Internetverbindung
 Führen Sie für diesen ersten Schritt die folgenden Verfahren auf der Arbeitsstation mit Internetverbindung aus.
 
 
-###Schritt 1.1: Installieren von Azure PowerShell
+###Schritt 1.1: Installieren von Azure PowerShell
 
-Laden Sie auf der Arbeitsstation mit Internetverbindung das Azure PowerShell-Modul herunter, das die Cmdlets zum Verwalten des Azure-Schlüsseltresors enthält, und installieren Sie es. Hierfür ist mindestens die Version 0.8.13 erforderlich.
+Laden Sie auf der Arbeitsstation mit Internetverbindung das Azure PowerShell-Modul herunter, das die Cmdlets zum Verwalten des Azure-Schlüsseltresors enthält, und installieren Sie es. Hierfür ist mindestens die Version 0.8.13 erforderlich.
 
 Installationsanweisungen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
-###Schritt 1.2: Abrufen der Azure-Abonnement-ID
+###Schritt 1.2: Abrufen der Azure-Abonnement-ID
 
 Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich mit dem folgenden Befehl bei Ihrem Azure-Konto an:
 
@@ -97,7 +97,7 @@ Suchen Sie in der Ausgabe die ID für das Abonnement, das Sie für den Azure-Sch
 
 Lassen Sie das Azure PowerShell-Fenster geöffnet.
 
-###Schritt 1.3: Herunterladen des BYOK-Toolsets für den Azure-Schlüsseltresor
+###Schritt 1.3: Herunterladen des BYOK-Toolsets für den Azure-Schlüsseltresor
 
 Wechseln Sie zum Microsoft Download Center, und [laden Sie das Azure-Schlüsseltresor-BYOK-Toolset für Ihre geografische Region oder Instanz von Azure herunter](http://www.microsoft.com/download/details.aspx?id=45345). Ermitteln Sie anhand der folgenden Informationen den Namen des herunterzuladenden Pakets und seinen entsprechenden SHA-256-Pakethash:
 
@@ -190,18 +190,18 @@ Das Toolset enthält Folgendes:
 
 - Ein Schlüsselaustauschschlüssel-Paket (Key Exchange Key, KEK), dessen Name mit **BYOK-KEK-pkg-.** beginnt.
 - Ein Security World-Paket, dessen Name mit **BYOK-SecurityWorld-pkg-.** beginnt.
-- Ein Python-Skript mit dem Namen „v**erifykeypackage.py.**“.
+- Ein Python-Skript mit dem Namen **verifykeypackage.py**.
 - Eine ausführbare Befehlszeilendatei namens **KeyTransferRemote.exe** und die zugehörigen DLLs.
 - Ein Visual C++ Redistributable Package namens **vcredist\_x64.exe**.
 
 Kopieren Sie das Paket auf ein USB-Laufwerk oder ein anderes tragbares Speichergerät.
 
-##Schritt 2: Vorbereiten der verbindungslosen Arbeitsstation
+##Schritt 2: Vorbereiten der verbindungslosen Arbeitsstation
 
 Führen Sie für diesen zweiten Schritt die folgenden Verfahren auf der Arbeitsstation durch, die nicht mit einem Netzwerk (dem Internet oder Ihrem internen Netzwerk) verbunden ist.
 
 
-###Schritt 2.1: Vorbereiten der verbindungslosen Arbeitsstation per Thales-HSM
+###Schritt 2.1: Vorbereiten der verbindungslosen Arbeitsstation per Thales-HSM
 
 Installieren Sie die Supportsoftware nCipher (Thales) auf einem Windows-Computer, und schließen Sie dann ein Thales-HSM an diesen Computer an.
 
@@ -211,15 +211,15 @@ Stellen Sie sicher, dass sich die Thales-Tools in Ihrem Pfad befinden (**%nfast\
 
 Weitere Informationen finden Sie im Benutzerhandbuch zum Thales-HSM.
 
-###Schritt 2.2: Installieren des BYOK-Toolsets auf der verbindungslosen Arbeitsstation
+###Schritt 2.2: Installieren des BYOK-Toolsets auf der verbindungslosen Arbeitsstation
 
 Kopieren Sie das BYOK-Toolsetpaket vom USB-Laufwerk bzw. vom tragbaren Speichergerät, und führen Sie Folgendes aus:
 
 1. Extrahieren Sie die Dateien aus dem heruntergeladenen Paket in einen beliebigen Ordner.
 2. Führen Sie in diesem Ordner die Datei „vcredist\_x64.exe“ aus.
-3. Folgen Sie den Anweisungen zum Installieren der Visual C++-Laufzeitkomponenten für Visual Studio 2013.
+3. Folgen Sie den Anweisungen zum Installieren der Visual C++-Laufzeitkomponenten für Visual Studio 2013.
 
-##Schritt 3: Generieren des Schlüssels
+##Schritt 3: Generieren des Schlüssels
 
 Führen Sie für diesen dritten Schritt die folgenden Verfahren auf der verbindungslosen Arbeitsstation durch.
 
@@ -235,7 +235,7 @@ Gehen Sie wie folgt vor:
 
 - Sichern Sie die World-Datei. Bewahren Sie die World-Datei, die Administratorkarten und die dazugehörigen PINs an einem geschützten Ort auf, und stellen Sie sicher, dass Personen jeweils nur Zugang zu einer Karte haben.
 
-###Schritt 3.2: Überprüfen des heruntergeladenen Pakets
+###Schritt 3.2: Überprüfen des heruntergeladenen Pakets
 
 Dieser Schritt ist optional, wird aber empfohlen, damit Sie Folgendes überprüfen können:
 
@@ -243,7 +243,7 @@ Dieser Schritt ist optional, wird aber empfohlen, damit Sie Folgendes überprüf
 - Der Hash der Security World, der im Toolset enthalten ist, wurde mit einem Original-HSM von Thales generiert.
 - Der Schlüsselaustauschschlüssel kann nicht exportiert werden.
 
->[AZURE.NOTE]Um das heruntergeladene Paket überprüfen zu können, muss das HSM verbunden sein, eingeschaltet sein und über eine Security World verfügen (z. B. die eben erstellte).
+>[AZURE.NOTE]Um das heruntergeladene Paket überprüfen zu können, muss das HSM verbunden sein, eingeschaltet sein und über eine Security World verfügen (z. B. die eben erstellte).
 
 So überprüfen Sie das heruntergeladene Paket
 
@@ -286,7 +286,7 @@ Mit diesem Skript wird die Signaturgeberkette bis zum Thales-Stammschlüssel üb
 
 Sie können nun einen neuen Schlüssel erstellen.
 
-###Schritt 3.3: Erstellen eines neuen Schlüssels
+###Schritt 3.3: Erstellen eines neuen Schlüssels
 
 Generieren Sie einen Schlüssel, indem Sie das Thales-Programm **generatekey** verwenden.
 
@@ -296,7 +296,7 @@ Führen Sie den folgenden Befehl aus, um den Schlüssel zu generieren:
 
 Gehen Sie wie folgt vor, wenn Sie diesen Befehl ausführen:
 
-- Der Parameter *protect* muss wie gezeigt auf den Wert **module** gesetzt werden. So wird ein modulgeschützter Schlüssel erstellt. Das BYOK-Toolset unterstützt OCS-geschützte Schlüssel nicht.
+- Der Parameter *protect* muss wie gezeigt auf den Wert **module** festgelegt werden. So wird ein modulgeschützter Schlüssel erstellt. Das BYOK-Toolset unterstützt OCS-geschützte Schlüssel nicht.
 
 - Ersetzen Sie den Wert von *contosokey* für **ident** und **plainname** durch einen beliebigen Zeichenfolgenwert. Um den Verwaltungsaufwand zu minimieren und das Fehlerrisiko zu senken, empfehlen wir, jeweils den gleichen Wert zu verwenden. Der Wert **Ident** darf nur Zahlen, Bindestriche und Kleinbuchstaben enthalten.
 
@@ -310,11 +310,11 @@ Sichern Sie diese Tokenschlüsseldatei an einem sicheren Ort.
 
 Sie können Ihren Schlüssel jetzt an den Azure-Schlüsseltresor übertragen.
 
-##Schritt 4: Vorbereiten des Schlüssels für die Übertragung
+##Schritt 4: Vorbereiten des Schlüssels für die Übertragung
 
 Führen Sie für diesen vierten Schritt die folgenden Verfahren auf der verbindungslosen Arbeitsstation durch.
 
-###Schritt 4.1: Erstellen einer Kopie des Schlüssels mit reduzierten Berechtigungen
+###Schritt 4.1: Erstellen einer Kopie des Schlüssels mit reduzierten Berechtigungen
 
 Um die Berechtigungen für den Schlüssel zu reduzieren, führen Sie an einer Eingabeaufforderung je nach Region oder Instanz von Azure Folgendes aus:
 
@@ -350,13 +350,13 @@ Um die Berechtigungen für den Schlüssel zu reduzieren, führen Sie an einer Ei
 		KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-INDIA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-INDIA-1
 
 
-Ersetzen Sie beim Ausführen dieses Befehls *contosokey* durch den gleichen Wert, den Sie in **Schritt 3.3: Erstellen eines neuen Schlüssels** unter [Generieren des Schlüssels](#step-3-generate-your-key) angegeben haben.
+Ersetzen Sie beim Ausführen dieses Befehls *contosokey* durch den gleichen Wert, den Sie in **Schritt 3.3: Erstellen eines neuen Schlüssels** unter [Generieren des Schlüssels](#step-3-generate-your-key) angegeben haben.
 
 Sie werden aufgefordert, Ihre Security World-Administratorkarten einzuführen.
 
-Wenn der Befehl abgeschlossen ist, wird **Result: SUCCESS** angezeigt, und die Kopie Ihres Schlüssels mit reduzierten Berechtigungen ist in der Datei mit dem Namen "key\_xferacId\_<contosokey>" enthalten.
+Wenn der Befehl abgeschlossen ist, wird **Result: SUCCESS** angezeigt, und die Kopie Ihres Schlüssels mit reduzierten Berechtigungen ist in der Datei mit dem Namen „key\_xferacId\_<contosokey>“ enthalten.
 
-###Schritt 4.2: Überprüfen der neuen Kopie des Schlüssels
+###Schritt 4.2: Überprüfen der neuen Kopie des Schlüssels
 
 Optional können Sie die Thales-Hilfsprogramme ausführen, um zu bestätigen, dass der neue Schlüssel nur über minimale Berechtigungen verfügt:
 
@@ -366,9 +366,9 @@ Optional können Sie die Thales-Hilfsprogramme ausführen, um zu bestätigen, da
 - kmfile-dump.exe:
 
 		"%nfast_home%\bin\kmfile-dump.exe" "%NFAST_KMDATA%\local\key_xferacld_contosokey"
-Ersetzen Sie beim Ausführen dieser Befehle "contosokey" durch den Wert, den Sie in **Schritt 3.3: Erstellen eines neuen Schlüssels** unter [Generieren des Schlüssels](#step-3-generate-your-key) angegeben haben.
+Ersetzen Sie beim Ausführen dieser Befehle "contosokey" durch den Wert, den Sie in **Schritt 3.3: Erstellen eines neuen Schlüssels** unter [Generieren des Schlüssels](#step-3-generate-your-key) angegeben haben.
 
-###Schritt 4.3: Verschlüsseln des Schlüssels mit dem Schlüsselaustauschschlüssel von Microsoft
+###Schritt 4.3: Verschlüsseln des Schlüssels mit dem Schlüsselaustauschschlüssel von Microsoft
 
 Führen Sie je nach geografischer Region oder Instanz von Azure einen der folgenden Befehle aus:
 
@@ -406,19 +406,19 @@ Führen Sie je nach geografischer Region oder Instanz von Azure einen der folgen
 
 Gehen Sie wie folgt vor, wenn Sie diesen Befehl ausführen:
 
-- Ersetzen Sie *contosokey* durch den Bezeichner, den Sie unter **Schritt 3.3: Erstellen eines neuen Schlüssels** im Schritt [Generieren des Schlüssels](#step-3-generate-your-key) verwendet haben.
+- Ersetzen Sie *contosokey* durch den Bezeichner, den Sie unter **Schritt 3.3: Erstellen eines neuen Schlüssels** im Schritt [Generieren des Schlüssels](#step-3-generate-your-key) verwendet haben.
 
-- Ersetzen Sie *SubscriptionID* durch die ID des Azure-Abonnements, das Ihren Schlüsseltresor enthält. Sie haben diesen Wert vorher unter **Schritt 1.2: Abrufen der Azure-Abonnement-ID** im Schritt [Vorbereiten der Arbeitsstation mit Internetverbindung](#step-1-prepare-your-internet-connected-workstation) abgerufen.
+- Ersetzen Sie *SubscriptionID* durch die ID des Azure-Abonnements, das Ihren Schlüsseltresor enthält. Sie haben diesen Wert vorher unter **Schritt 1.2: Abrufen der Azure-Abonnement-ID** im Schritt [Vorbereiten der Arbeitsstation mit Internetverbindung](#step-1-prepare-your-internet-connected-workstation) abgerufen.
 
 - Ersetzen Sie *ContosoFirstHSMKey* durch eine Bezeichnung, die als Name Ihrer Ausgabedatei verwendet werden soll.
 
 Wenn dieser Vorgang erfolgreich ist, wird **Result: SUCCESS** angezeigt, und im aktuellen Ordner ist eine neue Datei mit dem folgenden Namen enthalten: "TransferPackage-*ContosoFirstHSMkey**byok".
 
-###Schritt 4.4: Kopieren des Schlüsselübertragungspakets auf die Arbeitsstation mit Internetverbindung
+###Schritt 4.4: Kopieren des Schlüsselübertragungspakets auf die Arbeitsstation mit Internetverbindung
 
 Verwenden Sie ein USB-Laufwerk oder anderes tragbares Speichergerät, um die Ausgabedatei aus dem vorherigen Schritt (KeyTransferPackage-ContosoFirstHSMkey.byok) auf die Arbeitsstation mit Internetverbindung zu kopieren.
 
-##Schritt 5: Übertragen des Schlüssels an den Azure-Schlüsseltresor
+##Schritt 5: Übertragen des Schlüssels an den Azure-Schlüsseltresor
 
 Verwenden Sie für diesen letzten Schritt auf der Arbeitsstation mit Internetverbindung das [Add-AzureKeyVaultKey](https://msdn.microsoft.com/library/azure/dn868048.aspx)-Cmdlet, um das Schlüsselübertragungspaket hochzuladen, das Sie von der verbindungslosen Arbeitsstation in das HSM des Azure-Schlüsseltresors kopiert haben:
 
@@ -431,4 +431,4 @@ Wenn der Upload erfolgreich ist, werden die Eigenschaften des gerade hinzugefüg
 
 Sie können diesen HSM-geschützten Schlüssel jetzt in Ihrem Schlüsseltresor verwenden. Weitere Informationen finden Sie im Abschnitt **Verwenden eines Hardwaresicherheitsmoduls (HSM)** im Lernprogramm [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

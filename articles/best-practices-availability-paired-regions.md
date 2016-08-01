@@ -35,7 +35,8 @@ Abbildung 1 – Diagramm von Azure-Regionspaaren
 | :-------------| :-------------   | :-------------   |
 | Nordamerika | USA (Mitte/Norden) | USA (Mitte/Süden) |
 | Nordamerika | USA (Ost) | USA (West) |
-| Nordamerika | USA (Ost 2) | USA, Mitte |
+| Nordamerika | USA (Ost 2) | USA, Mitte |
+|Nordamerika | USA, Westen 2 | USA, Westen-Mitte |
 | Europa | Nordeuropa | Westeuropa |
 | Asien | Südostasien | Ostasien |
 | China | Ostchina | Nordchina |
@@ -45,6 +46,7 @@ Abbildung 1 – Diagramm von Azure-Regionspaaren
 | US Government | US Government, Iowa | US Government, Virginia |
 | Indien | Indien (Mitte) | Indien (Süden) |
 | Kanada | Kanada, Mitte | Kanada, Osten |
+
 
 Tabelle 1: Übersicht über Azure-Regionspaare
 
@@ -75,7 +77,7 @@ Wie in Abbildung 2 dargestellt.
 ## Vorteile eines Regionspaars
 Wie in Abbildung 2 dargestellt.
 
-![5Orange](./media/best-practices-availability-paired-regions/5Orange.png) **Physische Isolierung** – Sofern möglich, sollte zwischen Azure-Datencentern in einem Regionspaar eine Entfernung von mindestens 480 km bestehen, was allerdings nicht in allen Gebieten zweckmäßig oder möglich ist. Durch die Trennung physischer Datencenter wird die Wahrscheinlichkeit einer gleichzeitigen Beeinträchtigung beider Regionen durch Naturkatastrophen, politische Unruhen, Stromausfälle oder physische Netzwerkausfälle verringert. Die Isolierung unterliegt den Einschränkungen des jeweiligen Gebiets (Größe, Verfügbarkeit der Energieversorgungs-/Netzwerkinfrastruktur, Vorschriften usw.).
+![5Orange](./media/best-practices-availability-paired-regions/5Orange.png) **Physische Isolierung** – Sofern möglich, sollte zwischen Azure-Datencentern in einem Regionspaar eine Entfernung von mindestens 480 km bestehen, was allerdings nicht in allen Gebieten zweckmäßig oder möglich ist. Durch die Trennung physischer Datencenter wird die Wahrscheinlichkeit einer gleichzeitigen Beeinträchtigung beider Regionen durch Naturkatastrophen, politische Unruhen, Stromausfälle oder physische Netzwerkausfälle verringert. Die Isolierung unterliegt den Einschränkungen des jeweiligen Gebiets (Größe, Verfügbarkeit der Energieversorgungs-/Netzwerkinfrastruktur, Vorschriften usw.).
 
 ![6Orange](./media/best-practices-availability-paired-regions/6Orange.png)**Von der Plattform bereitgestellte Replikation** – Einige Dienste, wie z. B. georedundanter Speicher, bieten eine automatische Replikation in das Regionspaar.
 
@@ -86,4 +88,4 @@ Wie in Abbildung 2 dargestellt.
 
 ![9Orange](./media/best-practices-availability-paired-regions/9Orange.png) **Speicherort von Daten** – Eine Region befindet sich innerhalb desselben Gebiets wie ihr Paar (mit Ausnahme von Brasilien, Süden), um steuerliche und rechtliche Anforderungen an den Speicherort von Daten zu erfüllen.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

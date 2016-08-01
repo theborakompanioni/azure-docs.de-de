@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/28/2016"
+	ms.date="07/18/2016"
 	ms.author="glenga"/>
 
 # Arbeiten Sie mit der Back-End-Server-SDK für Azure Mobile Apps
@@ -31,7 +31,7 @@ Die Referenzdokumentation für das Server-SDK finden Sie hier: [Azure Mobile App
 
 ## <a name="create-app"></a>Erstellen eines .NET-Back-Ends für Ihre mobile Anwendung
 
-Wenn Sie ein neues Projekt beginnen, können Sie entweder über das [Azure-Portal] oder mit Visual Studio eine App Service-Anwendung erstellen. In diesem Abschnitt wird erläutert, wie Sie mit einer dieser Komponenten ein neues Back-End für eine mobile Anwendung erstellen, das eine einfache Aufgabenlisten-API hostet. Sie können die Erstellung lokal vornehmen oder das Projekt in der cloudbasierten mobilen App Service-App veröffentlichen.
+Wenn Sie ein neues Projekt beginnen, können Sie entweder über das [Azure-Portal] oder mit Visual Studio eine App Service-Anwendung erstellen. In diesem Abschnitt wird erläutert, wie Sie mit einer dieser Komponenten ein neues Back-End für eine mobile Anwendung erstellen, das eine einfache Aufgabenlisten-API hostet. Sie können die Erstellung lokal vornehmen oder das Projekt in der cloudbasierten mobilen App Service-App veröffentlichen.
 
 Wenn Sie einem vorhandenen Projekt mobile Funktionen hinzufügen, lesen Sie weiter unten die Informationen im Abschnitt [Herunterladen und Initialisieren des SDKs](#install-sdk).
 
@@ -47,7 +47,7 @@ Sie können direkt im [Azure-Portal ] eine neue mobile Anwendung erstellen. Sie 
 
 ### Erstellen eines .NET-Back-Ends mithilfe von Visual Studio 2013 und Visual Studio 2015
 
-Um ein Mobile Apps-Projekt in Visual Studio zu erstellen, müssen Sie [Azure SDK für .NET](https://azure.microsoft.com/downloads/) (Version 2.8.1 oder höher) installieren. Erstellen Sie nach dem Installieren des SDKs eine neue ASP.NET-Anwendung:
+Um ein Mobile Apps-Projekt in Visual Studio zu erstellen, müssen Sie [Azure SDK für .NET](https://azure.microsoft.com/downloads/) (Version 2.8.1 oder höher) installieren. Erstellen Sie nach dem Installieren des SDKs eine neue ASP.NET-Anwendung:
 
 1. Öffnen Sie das Dialogfeld **Neues Projekt** (über *Datei* > **Neu** > **Projekt...**).
 
@@ -97,7 +97,7 @@ Um einzelne Funktionen zu aktivieren, müssen Sie die Erweiterungsmethoden im **
 	    .MapApiControllers()
 	    .ApplyTo(config);
 
-Beachten Sie, dass mit `MapApiControllers` nur Controller mit dem `[MobileAppController]`-Attribut zugeordnet werden.
+Beachten Sie, dass mit `MapApiControllers` nur Controller mit dem `[MobileAppController]`-Attribut zugeordnet werden. Verwenden Sie zum Zuordnen weiterer Controller die [MapHttpAttributeRoutes]-Methode.
 
 Viele der Methoden zur Funktionserweiterung sind über zusätzliche NuGet-Pakete verfügbar, die Sie übernehmen können und die im folgenden Abschnitt beschrieben werden.
 
@@ -134,7 +134,7 @@ Die folgenden NuGet-basierten Erweiterungspakete bieten verschiedene mobile Funk
 
 - [Microsoft.Azure.Mobile.Server.CrossDomain](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/): Erstellt einen Controller, der Daten aus Ihrer mobilen App auf älteren Webbrowsern bereitstellt. Wird durch Aufrufen der **MapLegacyCrossDomainController**-Erweiterungsmethode zur Konfiguration hinzugefügt.
 
-- [Microsoft.Azure.Mobile.Server.Login] bietet Vorschauunterstützung für die benutzerdefinierte Authentifizierung über die AppServiceLoginHandler.CreateToken()-Methode. Hierbei handelt es sich um eine statische Methode, die nicht in der Konfiguration aktiviert werden muss.
+- [Microsoft.Azure.Mobile.Server.Login] bietet Unterstützung für die benutzerdefinierte Authentifizierung über die AppServiceLoginHandler.CreateToken()-Methode. Hierbei handelt es sich um eine statische Methode, die nicht in der Konfiguration aktiviert werden muss.
 
 ## <a name="publish-server-project"></a>Vorgehensweise: Veröffentlichen des Serverprojekts
 
@@ -160,7 +160,7 @@ In diesem Abschnitt erfahren Sie, wie Sie Ihr .NET-Back-End-Projekt über Visual
 
 	![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-success.png)
 
-##<a name="define-table-controller"></a>Vorgehensweise: Definieren eines Tabellencontrollers
+##<a name="define-table-controller"></a> Vorgehensweise: Definieren eines Tabellencontrollers
 
 Ein Tabellecontroller ermöglicht den Zugriff auf Entitätsdaten in einem tabellenbasierten Datenspeicher, z. B. SQL-Datenbank oder Azure Tabellenspeicher. Tabellencontroller erben von der generischen **TableController**-Klasse, in der der generische Typ eine Entität im Modell ist, die das Tabellenschema wie folgt darstellt:
 
@@ -190,11 +190,11 @@ Stellen Sie sicher, dass die PageSize mindestens der Größe entspricht, die vom
 
 ## Gewusst wie: Definieren eines benutzerdefinierten API-Controllers
 
-Der benutzerdefinierte API-Controller bietet Grundfunktionen für Ihr Mobile App-Back-End, indem ein Endpunkt verfügbar gemacht wird. Mit dem [MobileAppController]-Attribut können Sie einen mobilspezifischen API-Controller registrieren. Mit diesem Attribut wird die Route registriert und zudem das JSON-Serialisierungsprogramm für Mobile Apps eingerichtet.
+Der benutzerdefinierte API-Controller bietet Grundfunktionen für Ihr Mobile App-Back-End, indem ein Endpunkt verfügbar gemacht wird. Mit dem [MobileAppController]-Attribut können Sie einen mobilspezifischen API-Controller registrieren. Mit diesem Attribut wird die Route registriert, das JSON-Serialisierungsprogramm für Mobile Apps eingerichtet und die [Clientversionsüberprüfung](app-service-mobile-client-and-server-versioning.md) aktiviert.
 
 1. Klicken Sie in Visual Studio mit der rechten Maustaste auf den Ordner "Controller", und klicken Sie dann auf **Hinzufügen** > **Controller**. Wählen Sie **Web-API 2-Controller &ndash;Empty**, und klicken Sie auf **Hinzufügen**.
 
-2. Geben Sie einen **Controllernamen** an, z. B. `CustomController`, und klicken Sie auf **Hinzufügen**. Dadurch wird eine neue **CustomController**-Klasse erstellt, die von **ApiController** erbt.
+2. Geben Sie einen **Controllernamen** an, z. B. `CustomController`, und klicken Sie auf **Hinzufügen**. Dadurch wird eine neue **CustomController**-Klasse erstellt, die von **ApiController** erbt.
 
 3. Fügen Sie in der neuen Controller-Klassendatei die folgende using-Anweisung hinzu:
 
@@ -220,7 +220,7 @@ Clients haben noch immer Zugriff auf alle Controller ohne angewendetes **MobileA
 
 ## Vorgehensweise: Verwenden der Authentifizierung
 
-Mobile Apps greift zur Vereinfachung der Authentifizierungsimplementierung in Ihre Apps auf die App Service-Authentifizierung und auf ASP.NET zurück. In diesem Abschnitt erfahren Sie, wie Sie die folgenden authentifizierungsbezogenen Aufgaben in Ihrem .NET-Back-End-Serverprojekt ausführen:
+Mobile Apps greift zur Vereinfachung der Authentifizierungsimplementierung in Ihre Apps auf die App Service-Authentifizierung und auf ASP.NET zurück. In diesem Abschnitt erfahren Sie, wie Sie die folgenden authentifizierungsbezogenen Aufgaben in Ihrem .NET-Back-End-Serverprojekt ausführen:
 
 + [Vorgehensweise: Authentifizierung zu einem Serverprojekt hinzufügen](#add-auth)
 + [Vorgehensweise: Verwenden einer benutzerdefinierten Authentifizierung für Ihre Anwendung](#custom-auth)
@@ -250,6 +250,8 @@ Sie können auch eigene Anmeldesysteme bereitstellen, wenn Sie keinen der Authen
 Sie müssen Ihre eigene Logik bereitstellen, mit der ermittelt wird, ob ein Benutzer angemeldet werden soll. Sie können beispielsweise eine Datenbank auf Kennwörter mit Salt und Hash überprüfen. Im folgenden Beispiel übernimmt die `isValidAssertion()`-Methode diese Überprüfungen. Sie wird an anderer Stelle definiert.
 
 Die benutzerdefinierte Authentifizierung wird durch Erstellen eines neuen ApiController-Elements und Anmeldeaktionen (siehe weiter unten) verfügbar gemacht. Der Client kann die Anmeldung ausführen, indem er die relevanten Informationen vom Benutzer abruft und einen HTTPS-POST-Aufruf mit den Benutzerinformationen im Text an die API sendet. Wenn der Server die Assertion überprüft, kann mithilfe der `AppServiceLoginHandler.CreateToken()`-Methode ein Token ausgegeben werden.
+
+Beachten Sie, dass dieses ApiController-Element **nicht** das `[MobileAppController]`-Attribut verwenden sollte, da sonst Fehler bei Clientanmeldeanforderungen auftreten. Das `[MobileAppController]`-Attribut erfordert den Anforderungsheader [ZUMO-API-VERSION](app-service-mobile-client-and-server-versioning.md). Dieser Header wird **nicht** vom Client-SDK für Anmelderouten gesendet.
 
 Beispiel für eine Anmeldeaktion:
 
@@ -388,7 +390,7 @@ An diesem Punkt können Sie den Notification Hubs-Client zum Senden von Pushbena
 
 ##<a name="tags"></a>Vorgehensweise: Hinzufügen von Tags zu einer Geräteinstallation zum Ermöglichen von zielgerichteten Pushvorgängen
 
-Mit Notification Hubs können Sie zielgerichtete Benachrichtigungen an spezielle Registrierungen senden, indem Sie Tags verwenden. Ein Tag, das automatisch erstellt wird, ist die Installations-ID, die speziell für eine Instanz der App auf einem bestimmten Gerät gilt. Eine Registrierung mit einer Installations-ID wird auch als *Installation* bezeichnet. Sie können die Installations-ID zum Verwalten einer Installation verwenden, z. B. zum Hinzufügen von Tags. Der Zugriff auf die Installations-ID ist über die **installationId**-Eigenschaft von **MobileServiceClient** möglich.
+Mit Notification Hubs können Sie zielgerichtete Benachrichtigungen an spezielle Registrierungen senden, indem Sie Tags verwenden. Ein Tag, das automatisch erstellt wird, ist die Installations-ID, die speziell für eine Instanz der App auf einem bestimmten Gerät gilt. Eine Registrierung mit einer Installations-ID wird auch als *Installation* bezeichnet. Sie können die Installations-ID zum Verwalten einer Installation verwenden, z. B. zum Hinzufügen von Tags. Der Zugriff auf die Installations-ID ist über die **installationId**-Eigenschaft von **MobileServiceClient** möglich.
 
 Im folgenden Beispiel wird veranschaulicht, wie Sie eine Installations-ID verwenden, um ein Tag einer bestimmten Installation in Notification Hubs hinzuzufügen:
 
@@ -402,7 +404,7 @@ Im folgenden Beispiel wird veranschaulicht, wie Sie eine Installations-ID verwen
 	    }
 	});
 
-Beachten Sie, dass alle Tags, die vom Client während der Registrierung von Pushbenachrichtigungen bereitgestellt werden, vom Back-End beim Erstellen der Installation ignoriert werden. Damit ein Client der Installation Tags hinzufügen kann, müssen Sie eine neue benutzerdefinierte API erstellen, die Tags nach dem obigen Muster hinzufügt. Ein Beispiel für einen benutzerdefinierten API-Controller, mit dem Clients einer Installation Tags hinzufügen können, finden Sie unter [Client-added push notification tags](https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags) (Vom Client hinzugefügte Tags für Pushbenachrichtigungen) als Teil des Beispiels „App Service Mobile Apps completed quickstart for .NET backend“.
+Beachten Sie, dass alle Tags, die vom Client während der Registrierung von Pushbenachrichtigungen bereitgestellt werden, vom Back-End beim Erstellen der Installation ignoriert werden. Damit ein Client der Installation Tags hinzufügen kann, müssen Sie eine neue benutzerdefinierte API erstellen, die Tags nach dem obigen Muster hinzufügt. Ein Beispiel für einen benutzerdefinierten API-Controller, mit dem Clients einer Installation Tags hinzufügen können, finden Sie im abgeschlossenen Schnellstartbeispiel mit Mobile App Service-Apps für .NET-Back-Ends unter [Client-added push notification tags](https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags) (Vom Client hinzugefügte Tags für Pushbenachrichtigungen).
 
 ##<a name="push-user"></a>Vorgehensweise: Senden von Pushbenachrichtigungen an einen authentifizierten Benutzer
 
@@ -419,7 +421,7 @@ Wenn ein authentifizierter Benutzer für Pushbenachrichtigungen registriert wird
     // Send a template notification to the user ID.
     await hub.SendTemplateNotificationAsync(notification, userTag);
 
-Stellen Sie vor der Registrierung für Pushbenachrichtigungen von einem authentifizierten Client sicher, dass die Authentifizierung abgeschlossen ist. Weitere Informationen finden Sie unter [Push to users](https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users) (Push an Benutzer) im Beispiel „App Service Mobile Apps completed quickstart for .NET backend“.
+Stellen Sie vor der Registrierung für Pushbenachrichtigungen von einem authentifizierten Client sicher, dass die Authentifizierung abgeschlossen ist. Weitere Informationen finden Sie im abgeschlossenen Schnellstartbeispiel mit Mobile App Service-Apps für .NET-Back-Ends unter [Push to users](https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users) (Push an Benutzer).
 
 ## Vorgehensweise: Debuggen und Problembehandlung des .NET-Server-SDKs
 
@@ -431,7 +433,7 @@ Azure App Service stellt mehrere Debug- und Problembehandlungsverfahren für ASP
 
 ### Protokollierung
 
-Zum Schreiben in App Service-Diagnoseprotokolle kann das standardmäßige Schreiben von ASP.NET-Ablaufverfolgungen verwendet werden. Um in die Protokolle schreiben zu können, müssen Sie in Ihrem Mobile App-Back-End die Diagnose aktivieren.
+Zum Schreiben in App Service-Diagnoseprotokolle kann das standardmäßige Schreiben von ASP.NET-Ablaufverfolgungen verwendet werden. Um in die Protokolle schreiben zu können, müssen Sie in Ihrem Mobile App-Back-End die Diagnose aktivieren.
 
 So können Sie die Diagnose aktivieren und in die Protokolle schreiben:
 
@@ -441,12 +443,12 @@ So können Sie die Diagnose aktivieren und in die Protokolle schreiben:
 
 		using System.Web.Http.Tracing;
 
-3. Erstellen Sie wie folgt einen Ablaufverfolgungs-Writer für Schreibvorgänge aus dem .NET Back-End in die Diagnoseprotokolle:
+3. Erstellen Sie wie folgt einen Ablaufverfolgungs-Writer für Schreibvorgänge aus dem .NET Back-End in die Diagnoseprotokolle:
 
 		ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
 		traceWriter.Info("Hello, World");
 
-4. Veröffentlichen Sie Ihr Serverprojekt neu, und greifen Sie auf das Mobile App-Back-End zu, um den Codepfad mit der Protokollierung auszuführen.
+4. Veröffentlichen Sie Ihr Serverprojekt neu, und greifen Sie auf das Mobile App-Back-End zu, um den Codepfad mit der Protokollierung auszuführen.
 
 5. Gehen Sie zum Herunterladen und Auswerten der Protokolle wie unter [Vorgehensweise: Herunterladen von Protokollen](../app-service-web/web-sites-enable-diagnostic-log.md#download) beschrieben vor.
 
@@ -478,5 +480,6 @@ Ihr lokal ausgeführter Server kann nun Token überprüfen, die der Client vom c
 [Microsoft.Azure.Mobile.Server.Authentication]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
+[MapHttpAttributeRoutes]: https://msdn.microsoft.com/library/dn479134(v=vs.118).aspx
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

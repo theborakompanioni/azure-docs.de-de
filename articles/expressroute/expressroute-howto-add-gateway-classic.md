@@ -13,7 +13,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/06/2016"
+   ms.date="07/19/2016"
    ms.author="charwen"/>
 
 # Konfigurieren eines virtuellen Netzwerkgateways für ExpressRoute über das klassische Bereitstellungsmodell und PowerShell
@@ -40,4 +40,4 @@ Stellen Sie sicher, dass Sie die für diese Konfiguration erforderlichen Azure P
 
 Nachdem Sie das VNet-Gateway erstellt haben, können Sie Ihr VNet mit einer ExpressRoute-Verbindung verknüpfen. Weitere Informationen finden Sie unter [Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-classic.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0720_2016-->

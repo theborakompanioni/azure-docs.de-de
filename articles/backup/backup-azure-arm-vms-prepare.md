@@ -26,29 +26,29 @@
 
 Dieser Artikel enthält die Schritte zum Vorbereiten Ihrer Umgebung zum Sichern eines mit Resource Manager bereitgestellten virtuellen Computers (VM). In den im Verfahren dargestellten Schritten wird das Azure-Portal genutzt.
 
-Der Azure Backup-Dienst bietet zwei Typen von Tresoren (Sicherungstresore und Recovery Services-Tresore) zum Schutz Ihrer virtuellen Computer. Ein Sicherungstresor schützt VMs, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden. Ein Recovery Services-Tresor schützt **sowohl klassisch als auch mit Resource Manager bereitgestellte virtuelle Computer**. Um einen mit Resource Manager bereitgestellten virtuellen Computer zu schützen, müssen Sie einen Recovery Services-Tresor verwenden.
+Der Azure Backup-Dienst bietet zwei Typen von Tresoren (Sicherungstresore und Recovery Services-Tresore) zum Schutz Ihrer virtuellen Computer. Ein Sicherungstresor schützt VMs, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden. Ein Recovery Services-Tresor schützt **sowohl klassisch bereitgestellte als auch mit Resource Manager bereitgestellte virtuelle Computer**. Um einen mit Resource Manager bereitgestellten virtuellen Computer zu schützen, müssen Sie einen Recovery Services-Tresor verwenden.
 
->[AZURE.NOTE] Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../resource-manager-deployment-model.md). Unter [Vorbereiten der Umgebung für die Sicherung virtueller Azure-Computer](backup-azure-vms-prepare.md) finden Sie ausführliche Informationen zum Arbeiten mit VMs, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden.
+>[AZURE.NOTE] Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../resource-manager-deployment-model.md). Unter [Vorbereiten der Umgebung für die Sicherung virtueller Azure-Computer](backup-azure-vms-prepare.md) finden Sie ausführliche Informationen zum Arbeiten mit virtuellen Computern, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden.
 
 Bevor Sie einen mit Resource Manager bereitgestellten virtuellen Computer (VM) schützen oder sichern können, schaffen Sie folgende Voraussetzungen:
 
-- Erstellen Sie einen Recovery Services-Tresor *am gleichen Speicherort, an dem sich Ihr virtueller Computer befindet* (oder geben Sie einen dort vorhandenen Recovery Services-Tresor an).
+- Erstellen Sie einen Recovery Services-Tresor *am gleichen Ort, an dem sich Ihr virtueller Computer befindet* (oder geben Sie einen dort vorhandenen Recovery Services-Tresor an).
 - Wählen Sie ein Szenario aus, definieren Sie die Sicherungsrichtlinie, und definieren Sie die zu schützenden Elemente.
 - Überprüfen Sie die Installation des VM-Agents auf dem virtuellen Computer.
 - Überprüfen Sie die Netzwerkverbindung.
 
-Wenn Sie wissen, dass diese Bedingungen in Ihrer Umgebung bereits erfüllt sind, fahren Sie mit dem Artikel [Sichern von virtuellen Azure-Computern](backup-azure-vms.md) fort. Wenn Sie beliebige dieser Voraussetzungen einrichten oder überprüfen möchten, führt dieser Artikel Sie durch die Schritte zum Vorbereiten der jeweiligen Voraussetzung.
+Wenn Sie bereits wissen, dass diese Bedingungen in Ihrer Umgebung erfüllt sind, fahren Sie mit dem Artikel [Sichern von virtuellen Azure-Computern](backup-azure-vms.md) fort. Wenn Sie beliebige dieser Voraussetzungen einrichten oder überprüfen möchten, führt dieser Artikel Sie durch die Schritte zum Vorbereiten der jeweiligen Voraussetzung.
 
 
 ## Einschränkungen beim Sichern und Wiederherstellen eines virtuellen Computers
 
 Bitte machen Sie sich vor der Vorbereitung der Umgebung mit den Einschränkungen vertraut.
 
-- Die Sicherung von virtuellen Computern mit mehr als 16 Datenträgern wird nicht unterstützt.
+- Die Sicherung von virtuellen Computern mit mehr als 16 Datenträgern wird nicht unterstützt.
 - Die Sicherung von virtuellen Computern mit einer reservierten IP-Adresse und ohne definierten Endpunkt wird nicht unterstützt.
 - Das Ersetzen eines vorhandenen virtuellen Computers während der Wiederherstellung wird nicht unterstützt. Wenn Sie versuchen, die VM wiederherzustellen, obwohl die VM vorhanden ist, wird die Wiederherstellung nicht ausgeführt.
 - Regionsübergreifende Sicherungs- und Wiederherstellungsvorgänge werden nicht unterstützt.
-- Sie können VMs in allen öffentlichen Regionen von Azure sichern (siehe [Checkliste](https://azure.microsoft.com/regions/#services) der unterstützten Regionen). Wenn die gewünschte Region derzeit nicht unterstützt wird, wird sie bei der Erstellung des Tresors in der Dropdownliste nicht angezeigt.
+- Sie können virtuelle Computer in allen öffentlichen Regionen von Azure sichern (siehe [Checkliste](https://azure.microsoft.com/regions/#services) der unterstützten Regionen). Wenn die gewünschte Region derzeit nicht unterstützt wird, wird sie bei der Erstellung des Tresors in der Dropdownliste nicht angezeigt.
 - Sie können VMs nur für ausgewählte Betriebssystemversionen sichern:
   - **Linux**: Die [Liste der von Azure unterstützten Verteilungen](../virtual-machines/virtual-machines-linux-endorsed-distros.md) finden Sie hier. Andere Bring-Your-Own-Linux-Verteilungen sollten ebenfalls funktionieren, sofern der VM-Agent auf dem virtuellen Computer verfügbar ist.
   - **Windows Server**: Versionen, die älter als Windows Server 2008 R2 sind, werden nicht unterstützt.
@@ -80,13 +80,13 @@ So erstellen Sie einen Recovery Services-Tresor:
 
     ![Erstellen eines Recovery Services-Tresors – Schritt 5](./media/backup-azure-vms-first-look-arm/rs-vault-attributes.png)
 
-4. Geben Sie unter **Name** einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der zwischen 2 und 50 Zeichen enthält. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
+4. Geben Sie unter **Name** einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der zwischen 2 und 50 Zeichen enthält. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
 
 5. Klicken Sie auf **Abonnement**, um die Liste mit den verfügbaren Abonnements anzuzeigen. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Organisationskonto mehreren Azure-Abonnements zugeordnet ist.
 
-6. Klicken Sie auf **Ressourcengruppe**, um die Liste mit den verfügbaren Ressourcengruppen anzuzeigen, oder klicken Sie auf **Neu**, um eine neue Ressourcengruppe zu erstellen. Die vollständigen Informationen zu Ressourcengruppen finden Sie unter [Verwenden des Azure-Portals zum Bereitstellen und Verwalten Ihrer Azure-Ressourcen](../azure-portal/resource-group-portal.md).
+6. Klicken Sie auf **Ressourcengruppe**, um die Liste mit den verfügbaren Ressourcengruppen anzuzeigen, oder klicken Sie auf **Neu**, um eine neue Ressourcengruppe zu erstellen. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../resource-group-overview.md).
 
-7. Klicken Sie auf **Standort**, um die geografische Region für den Tresor auszuwählen. Der Tresor **muss** sich in der gleichen Region wie die zu schützenden virtuellen Computer befinden.
+7. Klicken Sie auf **Standort**, um die geografische Region für den Tresor auszuwählen. Der Tresor **muss** sich in der gleichen Region befinden wie die zu schützenden virtuellen Computer.
 
     >[AZURE.IMPORTANT] Wenn Sie sich nicht sicher sind, an welchem Standort sich Ihr virtueller Computer befindet, schließen Sie das Dialogfeld zur Tresorerstellung, und wechseln Sie zur Liste der virtuellen Computer im Portal. Wenn Sie über virtuelle Computer in mehreren Regionen verfügen, müssen Sie in jeder Region einen Recovery Services-Tresor erstellen. Erstellen Sie den Tresor am ersten Standort, bevor Sie mit dem nächsten Standort fortfahren. Es müssen keine Speicherkonten zum Speichern der Sicherungsdaten angegeben werden. Dies erfolgt automatisch über den Recovery Services-Tresor und den Azure Backup-Dienst.
 
@@ -98,13 +98,13 @@ So erstellen Sie einen Recovery Services-Tresor:
 
 ## Festlegen der Speicherreplikation
 
-Bei der Speicherreplikation haben Sie die Wahl zwischen georedundantem Speicher und lokal redundantem Speicher. Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher. Behalten Sie den georedundanten Speicher bei, wenn es sich hierbei um Ihre primäre Sicherung handelt. Wählen Sie lokal redundanten Speicher, wenn Sie eine günstigere und weniger langfristige Option wünschen. Weitere Informationen zu den Optionen für [georedundanten](../storage/storage-redundancy.md#geo-redundant-storage) und [lokal redundanten](../storage/storage-redundancy.md#locally-redundant-storage) Speicher finden Sie in der Übersicht [Azure Storage-Replikation](../storage/storage-redundancy.md).
+Bei der Speicherreplikation haben Sie die Wahl zwischen georedundantem Speicher und lokal redundantem Speicher. Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher. Behalten Sie den georedundanten Speicher bei, wenn es sich hierbei um Ihre primäre Sicherung handelt. Wählen Sie lokal redundanten Speicher, wenn Sie eine günstigere und weniger langfristige Option wünschen. Unter [Azure Storage-Replikation](../storage/storage-redundancy.md) erfahren Sie mehr über die Optionen für [georedundante](../storage/storage-redundancy.md#geo-redundant-storage) und [lokal redundante](../storage/storage-redundancy.md#locally-redundant-storage) Speicher.
 
 So bearbeiten Sie die Einstellung für die Speicherreplikation:
 
 1. Wählen Sie Ihren Tresor aus, um das Tresordashboard und das Blatt „Einstellungen“ zu öffnen. Sollte das Blatt **Einstellungen** nicht geöffnet werden, klicken Sie im Tresordashboard auf **Alle Einstellungen**.
 
-2. Klicken Sie auf dem Blatt **Einstellungen** auf **Sicherungsinfrastruktur** > **Sicherungskonfiguration**, um das Blatt **Sicherungskonfiguration** zu öffnen. Wählen Sie auf dem Blatt **Sicherungskonfiguration** die Speicherreplikationsoption für Ihren Tresor aus.
+2. Klicken Sie auf dem Blatt **Einstellungen** auf **Sicherungsinfrastruktur** > **Sicherungskonfiguration**, um das Blatt **Sicherungskonfiguration** zu öffnen. Wählen Sie auf dem Blatt **Speicherkonfiguration** die Speicherreplikationsoption für Ihren Tresor aus.
 
     ![Liste der Sicherungstresore](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -137,11 +137,11 @@ Führen Sie zunächst den Ermittlungsprozess durch, bevor Sie einen virtuellen C
 
     ![VMs ermitteln](./media/backup-azure-vms-first-look-arm/discovering-new-vms.png)
 
-3. Klicken Sie auf dem Blatt „Sicherung“ auf **Sicherungsziel**, um das Blatt „Sicherungsziel“ zu öffnen.
+3. Klicken Sie auf dem Blatt „Sicherung“ auf **Sicherungsziel**, um das gleichnamige Blatt zu öffnen.
 
     ![Blatt „Szenario“ öffnen](./media/backup-azure-vms-first-look-arm/select-backup-goal-one.png)
 
-4. Legen Sie auf dem Blatt „Sicherungsziel“ für die Option **Wo wird Ihre Workload ausgeführt?** „Azure“ und für die Option **Was möchten Sie sichern?** „Virtueller Computer“ fest, und klicken Sie auf **OK**.
+4. Legen Sie auf dem Blatt für das Sicherungsziel die Option **Wo wird Ihre Workload ausgeführt?** auf „Azure“ und die Option **What do you want to backup** (Was möchten Sie sichern?) auf „Virtueller Computer“ fest, und klicken Sie anschließend auf **OK**.
 
     Das Blatt für das Sicherungsziel wird geschlossen, und das Blatt „Sicherungsrichtlinie“ wird geöffnet.
 
@@ -161,7 +161,7 @@ Führen Sie zunächst den Ermittlungsprozess durch, bevor Sie einen virtuellen C
 
     Sollte der gewünschte virtuelle Computer nicht angezeigt werden, überprüfen Sie, ob er sich am gleichen Azure-Standort befindet wie der Recovery Services-Tresor.
 
-7. Nachdem Sie nun alle Einstellungen für den Tresor definiert haben, klicken Sie unten auf der Seite „Sicherung“ auf **Sicherung aktivieren**. Die Richtlinie wird im Tresor und auf den VMs bereitgestellt.
+7. Nachdem Sie nun alle Einstellungen für den Tresor definiert haben, klicken Sie unten auf dem Blatt „Sicherung“ auf **Sicherung aktivieren**. Die Richtlinie wird im Tresor und auf den VMs bereitgestellt.
 
     ![Sicherung aktivieren](./media/backup-azure-vms-first-look-arm/enable-backup-settings-new.png)
 
@@ -170,9 +170,9 @@ Die nächste Phase der Vorbereitung ist die Installation des VM-Agents, bzw. sic
 
 ## Installieren des VM-Agents auf dem virtuellen Computer
 
-Der Azure VM-Agent muss auf dem virtuellen Azure-Computer installiert werden, damit die Sicherungserweiterung funktioniert. Wenn Ihr virtueller Computer aus dem Azure-Katalog erstellt wurde, ist der VM-Agent auf dem virtuellen Computer bereits vorhanden. Diese Informationen gelten für die Situationen, in denen Sie *nicht* eine VM verwenden, die aus dem Azure-Katalog erstellt wurde – wenn Sie z.B. eine VM aus einem lokalen Datencenter migriert haben. In diesem Fall muss der VM-Agent installiert werden, um den virtuellen Computer zu schützen.
+Der Azure VM-Agent muss auf dem virtuellen Azure-Computer installiert werden, damit die Sicherungserweiterung funktioniert. Wenn Ihr virtueller Computer aus dem Azure-Katalog erstellt wurde, ist der VM-Agent auf dem virtuellen Computer bereits vorhanden. Diese Informationen gelten für Szenarien, in denen Sie *keinen* virtuellen Computer verwenden, der über den Azure-Katalog erstellt wurde (wenn Sie also beispielsweise einen virtuellen Computer aus einem lokalen Datencenter migriert haben). In diesem Fall muss der VM-Agent installiert werden, um den virtuellen Computer zu schützen.
 
-In diesen Artikeln erfahren Sie mehr über den [VM-Agent](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409) und [seine Installation](../virtual-machines/virtual-machines-windows-classic-manage-extensions.md).
+In diesen Artikeln erfahren Sie mehr über den [VM-Agent](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409) und [dessen Installation](../virtual-machines/virtual-machines-windows-classic-manage-extensions.md).
 
 Falls beim Sichern des virtuellen Azure-Computers Probleme auftreten, müssen Sie sicherstellen, dass der Azure VM-Agent auf dem virtuellen Computer korrekt installiert ist (s. Tabelle unten). Wenn Sie einen benutzerdefinierten virtuellen Computer erstellt haben, [müssen Sie das Kontrollkästchen **VM-Agent installieren** aktivieren](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md), bevor Sie den virtuellen Computer bereitstellen.
 
@@ -181,7 +181,7 @@ Die folgende Tabelle enthält weitere Informationen zum VM-Agent für virtuelle 
 | **Vorgang** | **Windows** | **Linux** |
 | --- | --- | --- |
 | Installieren des VM-Agent | <li>Laden Sie den [Agent-MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) herunter, und installieren Sie ihn. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. <li>[Aktualisieren Sie die VM-Eigenschaft](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx), um anzugeben, dass der Agent installiert wurde. | <li>Installieren Sie den neuesten [Linux-Agent](https://github.com/Azure/WALinuxAgent) aus GitHub. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. <li> [Aktualisieren Sie die VM-Eigenschaft](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx), um anzugeben, dass der Agent installiert wurde. |
-| Aktualisieren des VM-Agents | Das Aktualisieren des VM-Agents ist so einfach wie das Neuinstallieren der [Binärdateien für den VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. | Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents](../virtual-machines-linux-update-agent.md). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |
+| Aktualisieren des VM-Agents | Das Aktualisieren des VM-Agents ist so einfach wie das Neuinstallieren der [Binärdateien für den VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. | Folgen Sie den Anweisungen unter [Aktualisieren des Azure Linux-Agents auf einem virtuellen Computer auf die neueste Version von GitHub](../virtual-machines-linux-update-agent.md). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |
 | Überprüfen der VM-Agent-Installation | <li>Navigieren Sie auf dem virtuellen Azure-Computer zum Ordner *C:\\WindowsAzure\\Packages*. <li>Dieser Ordner enthält die Datei „WaAppAgent.exe“.<li> Klicken Sie mit der rechten Maustaste auf die Datei, wechseln Sie zu **Eigenschaften**, und wählen Sie dann die Registerkarte **Details** aus. Im Feld mit der Produktversion sollte 2.6.1198.718 oder eine höhere Version angegeben sein. | N/V |
 
 
@@ -196,7 +196,7 @@ Die Sicherungserweiterung wird vom Sicherungsdienst installiert, unabhängig dav
 
 Um die VM-Momentaufnahmen zu verwalten, benötigt die Sicherungserweiterung eine Verbindung mit den öffentlichen Azure-IP-Adressen. Ohne die richtige Internetverbindung tritt bei diesen HTTP-Anforderungen des virtuellen Computers ein Timeout auf, und der Sicherungsvorgang funktioniert nicht. Wenn in Ihrer Bereitstellung Zugriffseinschränkungen aktiv sind (z.B. über eine Netzwerksicherheitsgruppe [NSG]), wählen Sie eine der folgenden Optionen für die Bereitstellung eines freien Pfades für den Sicherungsdatenverkehr:
 
-- [Whitelist der Azure-Datencenter-IP-Bereiche](http://www.microsoft.com/de-DE/download/details.aspx?id=41653) – finden Sie im Artikel mit Anweisungen zum Erstellen einer Whitelist der IP-Adressen.
+- [Whitelist der Azure-Datencenter-IP-Bereiche](http://www.microsoft.com/de-DE/download/details.aspx?id=41653): Der Artikel enthält Anweisungen zum Erstellen einer Whitelist der IP-Adressen.
 - Stellen Sie einen HTTP-Proxyserver zum Weiterleiten des Datenverkehrs bereit.
 
 Bei der Entscheidung, welche Option Sie verwenden, müssen Sie die Kompromisse zwischen Verwaltbarkeit, differenzierter Kontrolle und Kosten abwägen.
@@ -208,7 +208,7 @@ Bei der Entscheidung, welche Option Sie verwenden, müssen Sie die Kompromisse z
 
 ### Aufnehmen der IP-Bereiche des Azure-Rechenzentrums in eine Positivliste
 
-Ausführliche Informationen zur Aufnahme der Azure-Datencenter-IP-Bereiche in eine Whitelist und Anweisungen finden Sie auf der [Azure-Website](http://www.microsoft.com/de-DE/download/details.aspx?id=41653).
+Ausführliche Informationen zur Aufnahme der Azure-Datencenter-IP-Bereiche in eine Whitelist sowie entsprechende Anweisungen finden Sie auf der [Azure-Website](http://www.microsoft.com/de-DE/download/details.aspx?id=41653).
 
 ### Verwenden eines HTTP-Proxys für die Sicherung von virtuellen Computern
 Beim Sichern eines virtuellen Computers werden die Befehle für die Momentaufnahmenverwaltung von der Sicherungserweiterung auf der VM per HTTPS-API an Azure Storage gesendet. Leiten Sie den Verkehr der Sicherungserweiterung über den HTTP-Proxy, da dies die einzige Komponente ist, die für den Zugriff auf das öffentliche Internet konfiguriert ist.
@@ -236,7 +236,7 @@ Damit wird die Proxyserverkonfiguration für das lokale Systemkonto eingerichtet
      ```
      psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"
      ```
-    Er öffnet das Internet Explorer-Fenster.
+     Er öffnet das Internet Explorer-Fenster.
 3. Wechseln Sie zu „Extras -> Internetoptionen -> Verbindungen -> LAN-Einstellungen“.
 4. Überprüfen Sie die Proxyeinstellungen für das Systemkonto. Legen Sie Proxy-IP und Port fest.
 5. Schließen Sie Internet Explorer.
@@ -258,7 +258,7 @@ Wenn Sie einen Proxyserver auf einem aktuellen Benutzerkonto (keinem lokalen Sys
 
 ######Für Linux-Computer
 
-Fügen Sie die folgende Zeile der ```/etc/environment```-Datei hinzu:
+Fügen Sie der Datei ```/etc/environment``` die folgende Zeile hinzu:
 
 ```
 http_proxy=http://<proxy IP>:<proxy port>
@@ -277,20 +277,20 @@ HttpProxy.Port=<proxy port>
 
     ![Firewall öffnen](./media/backup-azure-vms-prepare/firewall-01.png)
 
-2. Klicken Sie im Dialogfeld „Windows-Firewall“ mit der rechten Maustaste auf **Eingehende Regeln**, und klicken Sie auf **Neue Regel...**.
+2. Klicken Sie im Dialogfeld „Windows-Firewall“ mit der rechten Maustaste auf **Eingehende Regeln**, und klicken Sie anschließend auf **Neue Regel...**.
 
     ![Neue Regel erstellen](./media/backup-azure-vms-prepare/firewall-02.png)
 
 3. Wählen Sie im **Assistenten für neue eingehende Regel** für **Regeltyp** die Option **Benutzerdefiniert**, und klicken Sie auf **Weiter**.
 4. Wählen Sie auf der Seite zum Auswählen des **Programms** die Option **Alle Programme**, und klicken Sie auf **Weiter**.
 
-5. Geben Sie auf der Seite **Protokoll und Ports** die folgenden Informationen ein, und klicken Sie auf **Weiter**:
+5. Geben Sie auf der Seite **Protokoll und Ports** die folgenden Informationen ein, und klicken Sie anschließend auf **Weiter**:
 
     ![Neue Regel erstellen](./media/backup-azure-vms-prepare/firewall-03.png)
 
-    - Für *Protokolltyp* wählen Sie *TCP*.
-    - Für *Lokaler Port* wählen Sie *Bestimmte Ports*. Geben Sie im unteren Feld den konfigurierten ```<Proxy Port>``` an.
-    - Für *Remoteport* wählen Sie *Alle Ports*.
+    - Wählen Sie unter *Protokolltyp* die Option *TCP* aus.
+    - Wählen Sie unter *Lokaler Port* die Option *Bestimmte Ports* aus, und geben Sie anschließend im Feld darunter den konfigurierten ```<Proxy Port>``` an.
+    - Wählen Sie unter *Remoteport* die Option *Alle Ports* aus.
 
     Klicken Sie sich im Assistenten bis zum Ende durch, und geben Sie dieser Regel einen Namen.
 
@@ -298,7 +298,7 @@ HttpProxy.Port=<proxy port>
 
 Geben Sie an einer Azure PowerShell-Eingabeaufforderung den folgenden Befehl ein:
 
-Der folgende Befehl fügt der NSG eine Ausnahme hinzu. Diese Ausnahme lässt TCP-Datenverkehr von allen Ports unter 10.0.0.5 an alle Internetadressen über Port 80 (HTTP) oder 443 (HTTPS) zu. Falls Sie einen bestimmten Port im öffentlichen Internet benötigen, müssen Sie diesen Port auch ```-DestinationPortRange``` hinzufügen.
+Der folgende Befehl fügt der NSG eine Ausnahme hinzu. Diese Ausnahme lässt TCP-Datenverkehr von allen Ports unter 10.0.0.5 an alle Internetadressen über Port 80 (HTTP) oder 443 (HTTPS) zu. Falls Sie einen bestimmten Port im öffentlichen Internet benötigen, müssen Sie diesen ebenfalls zu ```-DestinationPortRange``` hinzufügen.
 
 ```
 Get-AzureNetworkSecurityGroup -Name "NSG-lockdown" |
@@ -306,10 +306,10 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 ```
 
 
-*In diesen Schritten werden bestimmte Namen und Werte für dieses Beispiel verwendet. Verwenden Sie die Namen und Werte für Ihre Bereitstellung beim Eingeben bzw. Ausschneiden und Einfügen von Informationen in Ihren Code.*
+*In diesen Schritten werden spezifische Namen und Werte für dieses Beispiel verwendet. Verwenden Sie die Namen und Werte für Ihre Bereitstellung beim Eingeben bzw. Ausschneiden und Einfügen von Informationen in Ihren Code.*
 
 
-Da Sie jetzt sichergestellt haben, dass Sie über eine Netzwerkverbindung verfügen, können Sie den virtuellen Computer sichern. Siehe [Sichern von mit Resource Manager bereitgestellten virtuellen Computern](backup-azure-arm-vms.md).
+Da Sie jetzt sichergestellt haben, dass Sie über eine Netzwerkverbindung verfügen, können Sie den virtuellen Computer sichern. Weitere Informationen finden Sie unter [Sichern virtueller Azure Resource Manager-Computer (ARM)](backup-azure-arm-vms.md).
 
 ## Fragen?
 Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](http://aka.ms/azurebackup_feedback).
@@ -321,4 +321,4 @@ Ihre Umgebung ist jetzt für das Sichern Ihres virtuellen Computers vorbereitet.
 - [Planen der Sicherungsinfrastruktur für virtuelle Computer](backup-azure-vms-introduction.md)
 - [Verwalten der Sicherung virtueller Computer](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -2,7 +2,7 @@
 	pageTitle="CDN – Problembehandlung bei der Dateikomprimierung"
 	description="Behandeln Sie Probleme mit der CDN-Dateikomprimierung."
 	services="cdn"
-	documentationCenter=".NET"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/14/2016"
 	ms.author="casoper"/>
     
 # Problembehandlung bei der CDN-Dateikomprimierung
@@ -79,7 +79,7 @@ Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Endpunkt, un
 Überprüfen Sie mithilfe der Entwicklertools Ihres Browsers die Antwortheader, um sicherzustellen, dass die Datei in der Region zwischengespeichert wird, in der sie angefordert wird.
 
 - Überprüfen Sie den Antwortheader **Server**. Dieser Header sollte das Format **Plattform (POP-/Server-ID)** aufweisen, wie im Beispiel unten gezeigt.
-- Überprüfen Sie den Antwortheader **X-Cache**. Dieser Header sollte **HIT** lauten.  
+- Überprüfen Sie den Antwortheader **X-Cache**. Dieser Header sollte **HIT** lauten.
 
 ![CDN-Antwortheader](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
 
@@ -92,4 +92,11 @@ Um sich für die Komprimierung zu eignen, muss eine Datei folgende Größenanfor
 - Größer als 128 Bytes.
 - Kleiner als 1 MB.
 
-<!---HONumber=AcomDC_0518_2016-->
+### Überprüfen Sie die Anforderung auf dem Ursprungsserver auf einen **Über**-Header.
+
+Der **Über**-HTTP-Header informiert den Webserver darüber, dass die Anforderung von einem Proxyserver übergeben wird. Microsoft IIS-Webserver komprimieren Antworten standardmäßig nicht, wenn die Anforderung einen **Über**-Header enthält. Führen Sie folgende Schritte aus, um dieses Verhalten außer Kraft zu setzen:
+
+- **IIS 6**: [Legen Sie in den IIS-Metabasiseigenschaften „HcNoCompressionForProxies="FALSE"“ fest](https://msdn.microsoft.com/library/ms525390.aspx).
+- **IIS 7 und höher**: [Legen Sie in der Serverkonfiguration sowohl für **noCompressionForHttp10** als auch für **noCompressionForProxies** die Option „False“ fest.](http://www.iis.net/configreference/system.webserver/httpcompression)
+
+<!---HONumber=AcomDC_0720_2016-->

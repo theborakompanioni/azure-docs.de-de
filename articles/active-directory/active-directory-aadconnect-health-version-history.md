@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="07/14/2016" 
 	ms.author="billmath"/>
 
 # Azure AD Connect Health: Versionsveröffentlichungsverlauf
@@ -21,6 +21,13 @@
 Das Azure Active Directory-Team aktualisiert Azure AD Connect Health regelmäßig mit neuen Features und Funktionen.
 
 Dieser Artikel soll Ihnen dabei behilflich sein, die bereits veröffentlichten Versionen nachzuverfolgen.
+
+
+## Juli 2016
+
+**Neue Vorschaufeatures:**
+
+- [Azure AD Connect Health für AD DS](active-directory-aadconnect-health-adds.md).
 
 
 ## Januar 2016
@@ -50,22 +57,22 @@ Dieser Artikel soll Ihnen dabei behilflich sein, die bereits veröffentlichten V
 
 **Behobene Probleme:**
 
-- Fehlerbehebungen für bei Agent-Registrierungen aufgetretene Fehler 
+- Fehlerbehebungen für bei Agent-Registrierungen aufgetretene Fehler
 
 ## September 2015
 
 **Neue Features:**
 
-- Bericht über falschen Benutzernamen/falsches Kennwort für AD FS 
-- Konfigurationsunterstützung für nicht authentifizierten HTTP-Proxy 
+- Bericht über falschen Benutzernamen/falsches Kennwort für AD FS
+- Konfigurationsunterstützung für nicht authentifizierten HTTP-Proxy
 - Konfigurationsunterstützung für Agents auf Serverkern
-- Verbesserte Warnungen für AD FS 
-- Verbesserte Verbindungen und Datenuploads beim Azure AD Connect Health-Agent für AD FS 
+- Verbesserte Warnungen für AD FS
+- Verbesserte Verbindungen und Datenuploads beim Azure AD Connect Health-Agent für AD FS
 
 
 **Behobene Probleme:**
 
-- Fehlerbehebungen bei den Nutzungsinformationen für AD FS-Fehlertypen 
+- Fehlerbehebungen bei den Nutzungsinformationen für AD FS-Fehlertypen
 
 
 ## Juni 2015
@@ -74,11 +81,11 @@ Dieser Artikel soll Ihnen dabei behilflich sein, die bereits veröffentlichten V
 
 **Neue Features:**
 
-- Warnungen für die Überwachung von AD FS und AD FS-Proxy-Server mit E-Mail-Benachrichtigungen 
-- Einfacher Zugriff auf AD FS-Topologien und Muster in AD FS-Leistungsindikatoren 
-- Trend bei erfolgreichen Tokenanforderungen auf AD FS-Servern gruppiert nach Anwendungen, Authentifizierungsmethoden, Netzwerkspeicherort-Anforderungen usw. 
+- Warnungen für die Überwachung von AD FS und AD FS-Proxy-Server mit E-Mail-Benachrichtigungen
+- Einfacher Zugriff auf AD FS-Topologien und Muster in AD FS-Leistungsindikatoren
+- Trend bei erfolgreichen Tokenanforderungen auf AD FS-Servern gruppiert nach Anwendungen, Authentifizierungsmethoden, Netzwerkspeicherort-Anforderungen usw.
 - Trends bei fehlgeschlagenen Anforderungen an AD FS-Server gruppiert nach Anwendungen, Fehlertypen usw.
-- Einfachere Agent-Bereitstellung mit den Anmeldeinformationen für globale Azure AD-Administratoren  
+- Einfachere Agent-Bereitstellung mit den Anmeldeinformationen für globale Azure AD-Administratoren
 
 
 
@@ -86,4 +93,4 @@ Dieser Artikel soll Ihnen dabei behilflich sein, die bereits veröffentlichten V
 ## Nächste Schritte
 Weitere Informationen zum [Überwachen Ihrer lokalen Identitätsinfrastruktur und Synchronisierung von Diensten in der Cloud](active-directory-aadconnect-health.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

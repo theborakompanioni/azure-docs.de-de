@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="index-page"
-	ms.date="04/01/2016"
+	ms.date="07/19/2016"
 	ms.author="josephd"/>
 
 # Testumgebungen für Azure-Hybridclouds
@@ -50,4 +50,4 @@ Für Organisationen und Einzelpersonen, für die eine direkte Internetverbindung
 
 - Erfahren Sie mehr über [Implementierungsrichtlinien](virtual-machines-linux-infrastructure-service-guidelines.md), um eine benutzerdefinierte Entwicklungs-/Testbereitstellung oder eine Produktionsbereitstellung in Azure-Infrastrukturdiensten zu entwerfen.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

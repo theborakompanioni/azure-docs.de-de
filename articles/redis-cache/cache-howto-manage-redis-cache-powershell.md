@@ -109,7 +109,7 @@ Die folgende Tabelle enthält Eigenschaften und Beschreibungen für Parameter, d
 | Name | Name des Caches | |
 | Standort | Ort des Caches | |
 | ResourceGroupName | Name der Ressourcengruppe, in der der Cache erstellt werden soll | |
-| Größe | Die Größe des Caches. Gültige Werte sind: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250 MB, 1 GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB | 1 GB |
+| Größe | Die Größe des Caches. Gültige Werte sind: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250 MB, 1 GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB | 1 GB |
 | ShardCount | Die Anzahl der zu erstellenden Shards beim Erstellen eines Premium-Caches mit Clusterunterstützung. Gültige Werte sind: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
 | SKU | Gibt die SKU des Caches an. Gültige Werte sind: Basic, Standard, Premium | Standard |
 | RedisConfiguration | Gibt die Konfigurationseinstellungen für Redis an. Details zu den einzelnen Einstellungen finden Sie in der folgenden Tabelle [RedisConfiguration-Eigenschaften](#redisconfiguration-properties). | |
@@ -224,13 +224,13 @@ Um einen Cache mit Standardparametern zu erstellen, führen Sie den folgenden Be
 
 	New-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US"
 
-`ResourceGroupName`, `Name` und `Location` sind erforderliche Parameter, aber die übrigen sind optional und haben Standardwerte. Mit dem vorherigen Befehl erstellen Sie eine Standard-SKU-Azure Redis Cache-Instanz mit Name, Speicherort und Ressourcengruppe gemäß der entsprechenden Angaben und einer Größe von 1 GB, für die der Nicht-SSL-Port deaktiviert ist.
+`ResourceGroupName`, `Name` und `Location` sind erforderliche Parameter, aber die übrigen sind optional und haben Standardwerte. Mit dem vorherigen Befehl erstellen Sie eine Standard-SKU-Azure Redis Cache-Instanz mit Name, Speicherort und Ressourcengruppe gemäß der entsprechenden Angaben und einer Größe von 1 GB, für die der Nicht-SSL-Port deaktiviert ist.
 
-Um einen Premium-Cache zu erstellen, geben Sie eine Größe von P1 (6 bis 60 GB), P2 (13 bis 130 GB), P3 (26 bis 260 GB), oder P4 (53 bis 530 GB) ein. Um Clustering zu aktivieren, geben Sie eine Shardanzahl mit dem Parameter `ShardCount` ein. Das folgende Beispiel erstellt einen P1-Premium-Cache mit 3 Shards. Ein P1-Premium-Cache ist 6 GB groß, und da wir drei Shards angegeben haben, beträgt die Gesamtgröße 18 GB (3 x 6 GB).
+Um einen Premium-Cache zu erstellen, geben Sie eine Größe von P1 (6 bis 60 GB), P2 (13 bis 130 GB), P3 (26 bis 260 GB), oder P4 (53 bis 530 GB) ein. Um Clustering zu aktivieren, geben Sie eine Shardanzahl mit dem Parameter `ShardCount` ein. Das folgende Beispiel erstellt einen P1-Premium-Cache mit 3 Shards. Ein P1-Premium-Cache ist 6 GB groß, und da wir drei Shards angegeben haben, beträgt die Gesamtgröße 18 GB (3 x 6 GB).
 
 	New-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P1 -ShardCount 3
 
-Um Werte für die `RedisConfiguration`-Parameter anzugeben , schließen Sie die Werte als Schlüssel-/Wertpaare in `{}` ein, wie z. B. `@{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}`. Im folgenden Beispiel wird ein standardmäßiger 1 GB-Cache mit `allkeys-random`-maxmemory-Richtlinie und mit `KEA` konfigurierten Keyspace-Benachrichtigungen erstellt. Weitere Informationen finden Sie unter [Keyspace-Benachrichtigungen (Erweiterte Einstellungen)](cache-configure.md#keyspace-notifications-advanced-settings) und [maxmemory-Policy und maxmemory-reserved](cache-configure.md#maxmemory-policy-and-maxmemory-reserved).
+Um Werte für die `RedisConfiguration`-Parameter anzugeben , schließen Sie die Werte als Schlüssel-/Wertpaare in `{}` ein, wie z. B. `@{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}`. Im folgenden Beispiel wird ein standardmäßiger 1 GB-Cache mit `allkeys-random`-maxmemory-Richtlinie und mit `KEA` konfigurierten Keyspace-Benachrichtigungen erstellt. Weitere Informationen finden Sie unter [Keyspace-Benachrichtigungen (Erweiterte Einstellungen)](cache-configure.md#keyspace-notifications-advanced-settings) und [maxmemory-Policy und maxmemory-reserved](cache-configure.md#maxmemory-policy-and-maxmemory-reserved).
 
 	New-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}
 
@@ -356,7 +356,7 @@ Nach Eingabe dieses Befehls wird der Status des Caches zurückgegeben (ähnlich 
 	TenantSettings     : {}
 	ShardCount         :
 
-Wenn der Skalierungsvorgang abgeschlossen ist, ändert sich `ProvisioningState` in `Succeeded`. Wenn Sie weitere Skalierungen vornehmen möchten, z. B. Wechsel von Basic zu Standard und Änderung der Größe, müssen Sie warten, bis der vorherige Vorgang abgeschlossen ist, oder Sie erhalten eine Fehlermeldung ähnlich der folgenden.
+Wenn der Skalierungsvorgang abgeschlossen ist, ändert sich `ProvisioningState` in `Succeeded`. Wenn Sie weitere Skalierungen vornehmen möchten, z. B. Wechsel von Basic zu Standard und Änderung der Größe, müssen Sie warten, bis der vorherige Vorgang abgeschlossen ist, oder Sie erhalten eine Fehlermeldung ähnlich der folgenden.
 
 	Set-AzureRmRedisCache : Conflict: The resource '...' is not in a stable state, and is currently unable to accept the update request.
 
@@ -812,9 +812,9 @@ Weitere Informationen zur Verwendung von Windows PowerShell mit Azure finden Sie
 
 - [Dokumentation zu den Azure Redis Cache-Cmdlets auf MSDN](https://msdn.microsoft.com/library/azure/mt634513.aspx)
 - [Azure Resource Manager Cmdlets](http://go.microsoft.com/fwlink/?LinkID=394765) (in englischer Sprache): Verwenden der Cmdlets im AzureResourceManager-Modul.
-- [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-portal/resource-group-portal.md): Erfahren Sie, wie Sie Ressourcengruppen im Azure-Portal erstellen und verwalten.
+- [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../resource-group-template-deploy-portal.md): Erfahren Sie, wie Sie Ressourcengruppen im Azure-Portal erstellen und verwalten.
 - [Azure-Blog](http://blogs.msdn.com/windowsazure): Informationen zu neuen Funktionen in Azure.
 - [Windows PowerShell-Blog](http://blogs.msdn.com/powershell): Informationen zu neuen Funktionen in Windows PowerShell.
 - ["Hey, Scripting Guy!"- Blog](http://blogs.technet.com/b/heyscriptingguy/): Praktische Tipps und Tricks aus der Windows PowerShell-Community.
 
-<!-----HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

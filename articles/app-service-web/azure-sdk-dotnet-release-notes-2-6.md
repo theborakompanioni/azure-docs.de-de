@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="04/25/2016"
+   ms.date="07/18/2016"
    ms.author="juliako"/>
 
  
@@ -26,7 +26,7 @@ Mit Azure SDK 2.6 können Sie Cloud-Dienst-Anwendungen (PaaS) entwickeln, die au
 
 ##Service Bus Updates
 
-- Event Hubs: 
+- Event Hubs:
 
 	- Ermöglicht jetzt durch die Zurverfügungstellung zusätzlicher Publisher-Endpunkte für Event Hubs gezielte Zugriffssteuerung beim Senden von Ereignissen .
 	- Zusätzliche Stabilität und Verbesserung der Event Hubs-Funktion.
@@ -36,7 +36,7 @@ Mit Azure SDK 2.6 können Sie Cloud-Dienst-Anwendungen (PaaS) entwickeln, die au
 
 - **IntelliSense-Erweiterung**: Remote-Metadatenvorschlag
 
-	HDInsight Tools für Visual Studio unterstützt das Abrufen von Remote-Metadaten, wenn Sie Ihr Hive-Skript bearbeiten. Sie können z. B. **WÄHLEN* AUS** eingeben, um alle Tabellennamen anzeigen zu lassen. Darüber hinaus werden die Spaltennamen nach der Angabe einer Tabelle angezeigt.
+	HDInsight Tools für Visual Studio unterstützt das Abrufen von Remote-Metadaten, wenn Sie Ihr Hive-Skript bearbeiten. Sie können z.B. **WÄHLEN * AUS** eingeben, um alle Tabellennamen anzeigen zu lassen. Darüber hinaus werden die Spaltennamen nach der Angabe einer Tabelle angezeigt.
 
 - **HDInsight Emulator-Support**
 
@@ -48,21 +48,21 @@ Mit Azure SDK 2.6 können Sie Cloud-Dienst-Anwendungen (PaaS) entwickeln, die au
 
 	HDInsight-Tools für Visual Studio unterstützt jetzt generische Hadoop-Cluster, wodurch Sie HDInsight Tools für Visual Studio verwenden können, um folgende Aufgaben auszuführen:
 
-	- Verbinden mit Ihrem Cluster, 
-	- Schreiben einer Hive-Abfrage mit erweiterter Unterstützung von IntelliSense/Autokomplettierung, 
-	- Anzeigen aller Aufträge in Ihrem Cluster mit einer intuitiven Benutzeroberfläche. 
+	- Verbinden mit Ihrem Cluster,
+	- Schreiben einer Hive-Abfrage mit erweiterter Unterstützung von IntelliSense/Autokomplettierung,
+	- Anzeigen aller Aufträge in Ihrem Cluster mit einer intuitiven Benutzeroberfläche.
 
 	Weitere Informationen finden Sie in [diesem Handbuch](http://go.microsoft.com/fwlink/?LinkID=529540&clcid=0x409).
 
 ##In-Role Cache Updates
 
-- **In-Role Cache** wurde aktualisiert, um **Microsoft Azure Storage SDK** Version 4.3 zu verwenden. Bis jetzt hat **In-Role Cache** Azure Storage SDK, Version 1.7 verwendet.
+- **In-Role Cache** wurde aktualisiert, um **Microsoft Azure Storage SDK** Version 4.3 zu verwenden. Bis jetzt hat **In-Role Cache ** Azure Storage SDK, Version 1.7 verwendet.
 
 	Kunden, die Azure SDK 2.5 oder niedriger verwenden, sollten auf Azure SDK 2.6 aktualisieren und die neue Version von Azure Storage-SDK verwenden.
 
-	Gegenwärtig ist geplant, Azure Storage Version 2011-08-18 am 1. August 2016 zu entfernen. Alle Migrationen von In-Role Cache von Azure SDK 2.5 oder niedriger auf die Version 2.6 müssen bis dahin abgeschlossen sein. Weitere Informationen zum Auslaufen von Azure Storage Version 2011-08-18 finden Sie unter [Aktualisierung bezüglich der Entfernung der Dienstversion Microsoft Azure Storage: Verlängerung bis 2016](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx).
+	Gegenwärtig ist geplant, Azure Storage Version 2011-08-18 am 1. August 2016 zu entfernen. Alle Migrationen von In-Role Cache von Azure SDK 2.5 oder niedriger auf die Version 2.6 müssen bis dahin abgeschlossen sein. Weitere Informationen zum Auslaufen von Azure Storage Version 2011-08-18 finden Sie unter [Aktualisierung bezüglich der Entfernung der Dienstversion Microsoft Azure Storage: Verlängerung bis 2016](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx).
 
->[AZURE.IMPORTANT]Wir geben die Deaktivierung der Dienste Azure Managed Cache Service und Azure In-Role Cache zum 30. November 2016 bekannt. Es wird empfohlen, als Vorbereitung für diese Einstellung dieser Dienste zu Azure Redis Cache zu migrieren. Weitere Informationen zu Daten und Hinweise zur Migration finden Sie unter [Welches Azure Cache-Angebot ist für mich das richtige?](../redis-cache/cache-faq.md#which-azure-cache-offering-is-right-for-me)
+>[AZURE.IMPORTANT]Wir geben die Deaktivierung der Dienste Azure Managed Cache Service und Azure In-Role Cache zum 30. November 2016 bekannt. Es wird empfohlen, als Vorbereitung für diese Einstellung dieser Dienste zu Azure Redis Cache zu migrieren. Weitere Informationen zu Daten und Hinweise zur Migration finden Sie unter [Welches Azure Cache-Angebot ist für mich das richtige?](../redis-cache/cache-faq.md#which-azure-cache-offering-is-right-for-me)
 
 ##Azure App Service Tools
 
@@ -72,7 +72,7 @@ Die folgenden Elemente wurden in Version 2.6 von Azure SDK aktualisiert.
 - API-Apps Bereitstellungsfunktion, um Benutzern API-App-Erstellung und Bereitstellungsfunktion zu eröffnen.
 - Server-Explorer geändert, um neuen App Service Knoten mit Web-, Mobil- und API-Apps, gruppiert nach Ressourcengruppe, widerzuspiegeln.
 - Hinzufügen von Azure API-App-Client-Bewegung, die für die meisten C#-Projekte ergänzt wird. Diese ermöglicht die automatische Generierung von Swagger-fähigen API-Apps, die im Azure-Abonnement des Benutzers ausgeführt werden können.
-- API-Apps Tools und App Service Knoten im Server-Explorer sind nur in Visual Studio 2013 verfügbar. 
+- API-Apps Tools und App Service Knoten im Server-Explorer sind nur in Visual Studio 2013 verfügbar.
 
 ##Azure Ressourcen-Manager Tools Updates
 
@@ -93,7 +93,7 @@ Das Speicherkonto für die Diagnose kann jetzt in der Dienstkonfigurationsdatei 
  
 ##Bekannte Probleme
 
-- Für das Sammeln von Diagnoseprotokollen im Emulator ist ein 64-Bit-Betriebssystem erforderlich. Bei der Ausführung auf einem 32-Bit-Betriebssystem werden keine Diagnoseprotokolle gesammelt. Dies wirkt sich nicht auf andere Emulatorfunktionen aus. 
+- Für das Sammeln von Diagnoseprotokollen im Emulator ist ein 64-Bit-Betriebssystem erforderlich. Bei der Ausführung auf einem 32-Bit-Betriebssystem werden keine Diagnoseprotokolle gesammelt. Dies wirkt sich nicht auf andere Emulatorfunktionen aus.
 
 - Azure SDK 2.6, veröffentlicht am 29.04.2015, hatte zwei Probleme:
 
@@ -108,4 +108,4 @@ Das Speicherkonto für die Diagnose kann jetzt in der Dienstkonfigurationsdatei 
 
 [Unterstützungs- und Deaktivierungsinformationen zum Azure SDK für .NET und APIs](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0720_2016-->

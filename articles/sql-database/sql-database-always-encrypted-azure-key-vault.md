@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="07/18/2016"
 	ms.author="sstein"/>
 
 # Always Encrypted – Schützen von vertraulichen Daten in SQL-Datenbank mithilfe der Datenverschlüsselung und Speichern der Verschlüsselungsschlüssel in Azure Key Vault
@@ -40,18 +40,16 @@ Führen Sie die Schritte in diesem Artikel aus, um zu lernen, wie Sie Always Enc
 - Erstellen einer Datenbanktabelle und Verschlüsseln einiger Spalten
 - Erstellen einer Anwendung zum Einfügen, Auswählen und Anzeigen von Daten aus den verschlüsselten Spalten
 
-> [AZURE.NOTE] Always Encrypted für Azure SQL-Datenbank befindet sich derzeit in der Vorschauphase.
-
 
 ## Voraussetzungen
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
 - Ein Azure-Konto und ein Azure-Abonnement, bevor Sie beginnen. Falls Sie diese benötigen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) registrieren.
-- [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) Version 13.0.700.242 oder höher
-- [.NET Framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) oder höher (auf dem Clientcomputer)
+- [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) Version 13.0.700.242 oder höher
+- [.NET Framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) oder höher (auf dem Clientcomputer)
 - [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
-- [Azure PowerShell](../powershell-install-configure.md), mindestens Version 1.0.
+- [Azure PowerShell](../powershell-install-configure.md), mindestens Version 1.0.
     - Geben Sie **(Get-Module Azure -ListAvailable).Version** ein, um herauszufinden, welche Version von PowerShell ausgeführt wird.
 
 
@@ -63,16 +61,16 @@ Sie müssen zuerst Ihre Clientanwendung aktivieren, um auf den SQL-Datenbank-Die
 1. Öffnen Sie das [klassische Portal](http://manage.windowsazure.com).
 2. Wählen Sie im linken Menü **Active Directory**, und klicken Sie auf das Active Directory, das in Ihrer Anwendung verwendet wird.
 3. Klicken Sie auf **Anwendungen** und dann auf **ADD** (unten).
-4. Geben Sie einen Namen für die Anwendung ein (z. B. *MyClientApp*), wählen Sie **WEBANWENDUNG**, und klicken Sie auf den Pfeil, um den Vorgang fortzusetzen.
-5. Unter „URL für Anmeldung“ und „APP-ID-URI“ können Sie einfach eine gültige URL eingeben (z. B. **http://myClientApp*) und dann fortfahren.
+4. Geben Sie einen Namen für die Anwendung ein (z.B. *MyClientApp*), wählen Sie **WEBANWENDUNG**, und klicken Sie auf den Pfeil, um den Vorgang fortzusetzen.
+5. Unter „URL für Anmeldung“ und „APP-ID-URI“ können Sie einfach eine gültige URL eingeben (z.B. *http://myClientApp*) und dann fortfahren.
 6. Klicken Sie auf **KONFIGURIEREN**.
 7. Kopieren Sie die **CLIENT-ID** (Sie benötigen diesen Wert später für Ihren Code).
-8. Legen Sie im Schlüsselabschnitt die Dropdownliste **Dauer auswählen** auf **1 Jahr** fest .(Den Schlüssel kopieren Sie nach dem Speichern.)
+8. Legen Sie im Schlüsselabschnitt die Dropdownliste **Dauer auswählen** auf **1 Jahr** fest. (Den Schlüssel kopieren Sie nach dem Speichern.)
 11. Scrollen Sie nach unten, und klicken Sie auf **Anwendung hinzufügen**.
-12. Behalten Sie für **ANZEIGEN** den Wert **Microsoft-Apps** bei, wählen Sie **Windows Azure Service Management**, und klicken Sie auf das Häkchen, um den Vorgang fortzusetzen.
-13. Klicken Sie in der Zeile **Windows Azure Service Management** auf die Dropdownliste **Delegierte Berechtigungen**, und wählen Sie **Auf Azure Service Management zugreifen** aus.
+12. Behalten Sie für **ANZEIGEN** den Wert **Microsoft-Apps** bei, wählen Sie **Microsoft Azure Service Management**, und klicken Sie auf das Häkchen, um den Vorgang fortzusetzen.
+13. Klicken Sie in der Zeile **Microsoft Azure Service Management** auf die Dropdownliste **Delegierte Berechtigungen**, und wählen Sie **Auf Azure Service Management zugreifen** aus.
 14. Klicken Sie auf **Speichern** (unten).
-15. Suchen Sie nach Abschluss des Speichervorgangs den Schlüsselwert, und kopieren Sie ihn in den Abschnitt **Schlüssel**. (Sie benötigen diesen Wert später für Ihren Code.) 
+15. Suchen Sie nach Abschluss des Speichervorgangs den Schlüsselwert, und kopieren Sie ihn in den Abschnitt **Schlüssel**. (Sie benötigen diesen Wert später für Ihren Code.)
 
 
 
@@ -135,7 +133,7 @@ Sie benötigen die Verbindungszeichenfolge später im Tutorial. Navigieren Sie n
 
 ## Erstellen einer Tabelle
 
-Zunächst erstellen Sie eine Tabelle für Patientendaten (die anfangs nicht verschlüsselt ist – die Verschlüsselung wird im nächsten Abschnitt konfiguriert).
+Zunächst erstellen Sie eine Tabelle für Patientendaten (die anfangs nicht verschlüsselt ist – die Verschlüsselung wird im nächsten Abschnitt konfiguriert).
 
 1. Erweitern Sie **Datenbanken**.
 1. Klicken Sie mit der rechten Maustaste auf die Datenbank **Clinic**, und klicken Sie dann auf **Neue Abfrage**.
@@ -219,7 +217,7 @@ Nach dem Einrichten von Always Encrypted erstellen wir jetzt eine Anwendung, mit
 > [AZURE.IMPORTANT] Für Ihre Anwendung müssen [SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx)-Objekte verwendet werden, wenn Klartextdaten an den Server mit Always Encrypted-Spalten übergeben werden. Das Übergeben von Literalwerten ohne SqlParameter-Objekte führt zu einer Ausnahme.
 
 
-1. Öffnen Sie Visual Studio, und erstellen Sie eine neue C#-Konsolenanwendung. Stellen Sie sicher, dass Ihr Projekt auf **.NET Framework 4.6** oder höher festgelegt ist.
+1. Öffnen Sie Visual Studio, und erstellen Sie eine neue C#-Konsolenanwendung. Stellen Sie sicher, dass Ihr Projekt auf **.NET Framework 4.6** oder höher festgelegt ist.
 2. Geben Sie dem Projekt den Namen **AlwaysEncryptedConsoleAKVApp**, und klicken Sie auf **OK**.
 
 
@@ -292,7 +290,7 @@ Der folgende Code zeigt, wie Sie den Azure-Schlüsseltresor-Anbieter mit dem ADO
 In diesem Beispiel wird Folgendes veranschaulicht:
 
 - Ändern der Verbindungszeichenfolge zur Aktivierung von Always Encrypted
-- Registrieren Sie den Azure Key Vault als Schlüsselspeicheranbieter für die Anwendung.  
+- Registrieren Sie den Azure Key Vault als Schlüsselspeicheranbieter für die Anwendung.
 - Einfügen von Daten in die verschlüsselten Spalten
 - Auswählen eines Datensatzes per Filterung nach einem bestimmten Wert in einer verschlüsselten Spalte
 
@@ -655,7 +653,7 @@ Sie sehen, dass die verschlüsselten Spalten keine Klartextdaten enthalten.
    ![Neue Konsolenanwendung](./media/sql-database-always-encrypted-azure-key-vault/ssms-encrypted.png)
 
 
-Um SSMS zum Zugreifen auf die Klartextdaten zu verwenden, können wir der Verbindung den Parameter **Column Encryption Setting=enabled** hinzufügen.
+Zum Verwenden von SSMS zum Zugreifen auf die Klartextdaten können wir der Verbindung den Parameter **Column Encryption Setting=enabled** hinzufügen.
 
 1. Klicken Sie in SSMS im **Objekt-Explorer** mit der rechten Maustaste auf Ihren Server und dann auf **Trennen**.
 2. Klicken Sie auf **Verbinden** > **Datenbankmodul**, um das Fenster **Mit Server verbinden** zu öffnen, und klicken Sie dann auf **Optionen**.
@@ -676,7 +674,7 @@ Um SSMS zum Zugreifen auf die Klartextdaten zu verwenden, können wir der Verbin
 ## Nächste Schritte
 Nach dem Erstellen einer Datenbank, für die Always Encrypted verwendet wird, ist es ratsam, die folgenden Schritte auszuführen:
 
-- [Rotation und Bereinigung der Schlüssel](https://msdn.microsoft.com/library/mt607048.aspx).
+- [Column Master Key Rotation and Cleanup](https://msdn.microsoft.com/library/mt607048.aspx)
 - [Migrate Sensitive Data Protected by Always Encrypted](https://msdn.microsoft.com/library/mt621539.aspx)
 
 
@@ -689,4 +687,4 @@ Nach dem Erstellen einer Datenbank, für die Always Encrypted verwendet wird, is
 - [Always Encrypted Wizard](https://msdn.microsoft.com/library/mt459280.aspx)
 - [Always Encrypted Blog](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

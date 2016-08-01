@@ -19,12 +19,40 @@
 # Azure Data Factory – .NET-API-Änderungsprotokoll 
 Dieser Artikel enthält Informationen zu Änderungen am Azure Data Factory SDK einer bestimmten Version. [Hier](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories) finden Sie das neueste NuGet-Paket für Azure Data Factory.
 
+## Version 4.9.1
+_Veröffentlichungsdatum: 05.07.2016_
+
+### Fehlerbehebung
+
+- Ausmusterung der WebApi-basierten Authentifizierung für [WebLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.weblinkedservice.authenticationtype.aspx).
+
+## Version 4.9.0
+_Veröffentlichungsdatum: 10.06.2016_
+
+### Hinzugefügte Features
+
+- Hinzufügen der Eigenschaften [EnableStaging](https://msdn.microsoft.com/library/mt767916.aspx) und [StagingSettings](https://msdn.microsoft.com/library/mt767918.aspx) zu „CopyActivity“. Ausführliche Informationen zu diesem Feature finden Sie unter [Gestaffeltes Kopieren](data-factory-copy-activity-performance.md#staged-copy).
+
+
+### Fehlerbehebung
+
+- Führen Sie eine Überladung der [ActivityWindowOperationExtensions.List](https://msdn.microsoft.com/library/mt767915.aspx)-Methode hinzu, die eine [ActivityWindowsByActivityListParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx)-Instanz akzeptiert.
+- Markieren Sie [WriteBatchSize](https://msdn.microsoft.com/library/dn884293.aspx) und [WriteBatchTimeout](https://msdn.microsoft.com/library/dn884245.aspx) in „CopySink“ als optional.
+
+## Version 4.8.0
+_Veröffentlichungsdatum: 25.05.2016_
+
+### Hinzugefügte Features
+- Dem Kopieraktivitätstyp wurden die folgenden optionalen Eigenschaften hinzugefügt, um die Optimierung der Kopierleistung zu ermöglichen:
+	- [ParallelCopies](https://msdn.microsoft.com/library/mt767910.aspx)
+	- [CloudDataMovementUnits](https://msdn.microsoft.com/library/mt767912.aspx)
+
 ## Version 4.7.0
 Veröffentlichungsdatum: 20.5.2016
 
 ### Hinzugefügte Features
 * Es wurde ein neuer StorageFormat-Typ vom Typ [OrcFormat](https://msdn.microsoft.com/library/mt723391.aspx) hinzugefügt, um Dateien im einspaltig optimierten Zeilenformat (ORC) zu kopieren.
-* Hinzufügen von [AllowPolyBase](https://msdn.microsoft.com/library/mt723396.aspx)- und PolyBaseSettings-Eigenschaften zu SqlDWSink.
+* Hinzufügen von [AllowPolyBase](https://msdn.microsoft.com/library/mt723396.aspx)- und PolyBaseSettings-Eigenschaften zu „SqlDWSink“.
     * Ermöglicht die Verwendung von PolyBase zum Kopieren von Daten in SQL Data Warehouse.
 
 ## Version 4.6.1
@@ -39,11 +67,11 @@ Veröffentlichungsdatum: 14.04.2016
 
 ### Hinzugefügte Features
 
-- Die folgende Eigenschaften wurden zu [PipelineProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties_properties.aspx) hinzugefügt:
+- Die folgenden Eigenschaften wurden zu [PipelineProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties_properties.aspx) hinzugefügt:
 	- [PipelineMode](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.pipelinemode.aspx)
 	- [ExpirationTime](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.expirationtime.aspx)
 	- [Datasets](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.datasets.aspx)
-- Die folgende Eigenschaften wurden zu [PipelineRuntimeInfo](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.aspx) hinzugefügt:
+- Die folgenden Eigenschaften wurden zu [PipelineRuntimeInfo](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.aspx) hinzugefügt:
 	- [PipelineState](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.pipelinestate.aspx)
 - Es wurde ein neuer [StorageFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.storageformat.aspx)-Typ vom Typ [JsonFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.jsonformat.aspx) hinzugefügt, um Datasets zu definieren, deren Daten im JSON-Format vorliegen.
 
@@ -164,4 +192,4 @@ Veröffentlichungsdatum: 02.10.2015
 
 - Wir unterstützen jetzt im Rahmen der Kopieraktivität das Ausführen einer gespeicherten Prozedur für Azure SQL-Datenbank- und Azure SQL Data Warehouse-Datenquellen. Die Klassen [SQLSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) und [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) verfügen über die folgenden Eigenschaften, um dies zu unterstützen: **SqlReaderStoredProcedureName** und **StoredProcedureParameters**. In den Artikeln [Azure SQL-Datenbank](data-factory-azure-sql-connector.md#sqlsource) und [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) auf Azure.com finden Sie ausführliche Informationen zu diesen Eigenschaften.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

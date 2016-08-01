@@ -18,20 +18,20 @@
 	ms.author="stbaro"/>
 
 #Modellieren von Daten in DocumentDB#
-Schemafreie Datenbanken wie DocumentDB erleichtern die Übernahme von Änderungen an Ihrem Datenmodell, dennoch sollten Sie etwas über Ihre Daten nachdenken.
+Schemafreie Datenbanken wie Azure DocumentDB erleichtern die Übernahme von Änderungen an Ihrem Datenmodell, dennoch sollten Sie die Verwendung und Verarbeitung Ihrer Daten sorgfältig bedenken.
 
 Wie werden die Daten gespeichert? Wie wird Ihre Anwendung Daten abrufen und abfragen? Ist Ihre Anwendung lese- und schreibintensiv?
 
 Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 
 - Was sollte ich über ein Dokument in einer Dokumentendatenbank wissen?
-- Was ist Datenmodellierung und warum sollte ich mich dafür interessieren? 
+- Was ist Datenmodellierung und warum sollte ich mich dafür interessieren?
 - Inwiefern unterscheidet sich das Modellieren von Daten in einer Dokumentendatenbank von einer relationalen Datenbank?
 - Wie kann ich Datenbeziehungen in einer nicht-relationalen Datenbank ausdrücken?
 - Wann bette ich Daten ein, und wann verknüpfe ich sie?
 
 ##Einbetten von Daten##
-Versuchen Sie beim ersten Modellieren von Daten in einer Dokumentenablage, wie z. B. DocumentDB, Ihre Entitäten als **eigenständige Dokumente**, dargestellt im JSON-Format, zu behandeln.
+Versuchen Sie beim ersten Modellieren von Daten in einer Dokumentenablage, wie z. B. DocumentDB, Ihre Entitäten als **eigenständige Dokumente**, dargestellt im JSON-Format, zu behandeln.
 
 Bevor wir uns stärker damit befassen, sehen Sie sich zunächst einmal genau an, wie Sie eine Entität in einer relationalen Datenbank modellieren, ein Konzept, mit dem viele von uns bereits vertraut sind. Das folgende Beispiel zeigt, wie eine Person in einer relationalen Datenbank gespeichert werden kann.
 
@@ -39,7 +39,7 @@ Bevor wir uns stärker damit befassen, sehen Sie sich zunächst einmal genau an,
 
 Bei der Arbeit mit relationalen Datenbanken galt viele Jahre lang das Motto: normalisieren, normalisieren, normalisieren.
 
-Beim Normalisieren von Daten wird in der Regel eine Entität, z. B. eine Person, in einzelne Datenelemente unterteilt. Im obigen Beispiel kann eine Person über mehrere Kontaktdetaildatensätze sowie mehrere Adressdatensätze verfügen. Wir gehen sogar noch einen Schritt weiter und unterteilen auch die Kontaktdetails, indem zusätzliche allgemeine Felder, wie z. B. Typ, extrahiert werden. Das Gleiche gilt für Adressen: Jeder Datensatz einem Typ wie z. B. *Privat* oder *Geschäftlich* zugeordnet.
+Beim Normalisieren von Daten wird in der Regel eine Entität, z. B. eine Person, in einzelne Datenelemente unterteilt. Im obigen Beispiel kann eine Person über mehrere Kontaktdetaildatensätze sowie mehrere Adressdatensätze verfügen. Wir gehen sogar noch einen Schritt weiter und unterteilen auch die Kontaktdetails, indem zusätzliche allgemeine Felder, wie z. B. Typ, extrahiert werden. Das Gleiche gilt für Adressen: Jeder Datensatz einem Typ wie z. B. *Privat* oder *Geschäftlich* zugeordnet.
 
 Die beim Normalisieren von Daten geltende Prämisse besteht darin, dass das **Speichern von redundanten Daten in jedem Datensatz zu vermeiden** ist und dass stattdessen auf die einzelnen Daten verwiesen werden soll. Um in diesem Beispiel eine Person mit allen ihren Kontaktdaten und Adressen zu lesen, müssen Sie Verknüpfungen verwenden, um die Daten effektiv zur Laufzeit zu aggregieren.
 
@@ -72,11 +72,11 @@ Sehen Sie sich jetzt an, wie Sie die gleichen Daten als eigenständige Entität 
 	    ] 
 	}
 
-Mit dem oben stehenden Ansatz haben wir jetzt den Personendatensatz **denormalisiert**, indem wir alle Informationen im Zusammenhang mit dieser Person, z. B. ihre Kontaktdaten und Adressen, in ein einzelnes JSON-Dokument **eingebettet** haben. Da wir nicht auf ein festes Schema beschränkt sind, haben wir darüber hinaus die Flexibilität, z. B. Kontaktdetails in vollständig verschiedenen Formen zu haben.
+Mit dem oben stehenden Ansatz haben wir jetzt den Personendatensatz **denormalisiert**, indem wir alle Informationen im Zusammenhang mit dieser Person, z. B. ihre Kontaktdaten und Adressen, in ein einzelnes JSON-Dokument **eingebettet** haben. Da wir nicht auf ein festes Schema beschränkt sind, haben wir darüber hinaus die Flexibilität, z. B. Kontaktdetails in vollständig verschiedenen Formen zu haben.
 
 Das Abrufen eines vollständigen Personendatensatzes aus der Datenbank besteht jetzt aus einem einzelnen Lesevorgang einer einzelne Sammlung und für ein einzelnes Dokument. Das Aktualisieren eines Personendatensatzes zusammen mit den Kontaktinformationen und Adressen ist auch ein einzelner Schreibvorgang in einem einzelnen Dokument.
 
-Durch das Denormalisieren von Daten muss Ihre Anwendung u. U. weniger Abfragen und Aktualisierungen ausgeben, um allgemeine Vorgänge abzuschließen.
+Durch das Denormalisieren von Daten muss Ihre Anwendung u. U. weniger Abfragen und Aktualisierungen ausgeben, um allgemeine Vorgänge abzuschließen.
 
 ###Wann Sie einbetten sollten
 
@@ -112,7 +112,7 @@ Nehmen Sie beispielsweise diesen JSON-Ausschnitt.
 		]
 	}
 
-So könnte eine Beitragsentität mit eingebetteten Kommentaren aussehen, wenn wir ein typisches Blog- oder CMS-System modellieren würden. Das Problem bei diesem Beispiel besteht darin, dass das Kommentar-Array **unbegrenzt** ist, d. h., es gibt (praktisch) keine Begrenzung hinsichtlich der Anzahl an Kommentaren zu einem einzelnen Beitrag. Dies wird zu einem Problem, da die Größe des Dokuments erheblich zunehmen kann.
+So könnte eine Beitragsentität mit eingebetteten Kommentaren aussehen, wenn wir ein typisches Blog- oder CMS-System modellieren würden. Das Problem bei diesem Beispiel besteht darin, dass das Kommentar-Array **unbegrenzt** ist, d. h., es gibt (praktisch) keine Begrenzung hinsichtlich der Anzahl an Kommentaren zu einem einzelnen Beitrag. Dies wird zu einem Problem, da die Größe des Dokuments erheblich zunehmen kann.
 
 > [AZURE.TIP] Dokumente in DocumentDB weisen eine Maximalgröße auf. Weitere Informationen dazu finden Sie unter [DocumentDB-Grenzen](documentdb-limits.md).
 
@@ -151,7 +151,7 @@ In einem solchen Fall sollte lieber das folgende Modell in Betracht gezogen werd
 		]
 	}
 
-Bei diesem Modell sind die drei aktuellsten Kommentare in den Beitrag selbst eingebettet, wobei es sich diesmal um ein Array mit einer festen Grenze handelt. Die anderen Kommentare sind zu Stapeln von je 100 Kommentaren gruppiert und in separaten Dateien gespeichert. Die Größe des Stapels wurde auf 100 festgelegt, da unsere fiktive Anwendung es dem Benutzer ermöglicht, 100 Kommentare gleichzeitig zu laden.
+Bei diesem Modell sind die drei aktuellsten Kommentare in den Beitrag selbst eingebettet, wobei es sich diesmal um ein Array mit einer festen Grenze handelt. Die anderen Kommentare sind zu Stapeln von je 100 Kommentaren gruppiert und in separaten Dateien gespeichert. Die Größe des Stapels wurde auf 100 festgelegt, da unsere fiktive Anwendung es dem Benutzer ermöglicht, 100 Kommentare gleichzeitig zu laden.
 
 Das Einbetten von Daten ist auch dann keine gute Idee, wenn die eingebetteten Daten häufig in Dokumenten verwendet und häufig geändert werden.
 
@@ -173,7 +173,7 @@ Nehmen Sie beispielsweise diesen JSON-Ausschnitt.
 	    ]
 	}
 
-Dabei kann es sich um das Aktienportfolio einer Person handeln. Wir haben uns dazu entschlossen, die Aktiendaten in jedes Portfoliodokument einzubetten. In einer Umgebung, in der verknüpfte Daten häufig geändert werden, wie z. B. eine Aktienhandelsanwendung, bedeutet das Einbetten von sich häufig ändernden Daten, dass Sie bei jedem Aktienhandel jedes Portfoliodokument aktualisieren müssen.
+Dabei kann es sich um das Aktienportfolio einer Person handeln. Wir haben uns dazu entschlossen, die Aktiendaten in jedes Portfoliodokument einzubetten. In einer Umgebung, in der verknüpfte Daten häufig geändert werden, wie z. B. eine Aktienhandelsanwendung, bedeutet das Einbetten von sich häufig ändernden Daten, dass Sie bei jedem Aktienhandel jedes Portfoliodokument aktualisieren müssen.
 
 Die Aktie *zaza* kann jeden Tag mehrere Hundert Mal gehandelt werden, und Tausende Benutzer besitzen *zaza* in ihrem Portfolio. Bei einem Datenmodell wie dem obigen müssten wir viele Tausend Portfoliodokumente mehrmals täglich aktualisieren, was zu einem schlecht skalierbaren System führt.
 
@@ -376,7 +376,7 @@ Wenn sich der Name des Autors ändert oder das Foto aktualisiert werden soll, m�
 
 Im Beispiel gibt es vorab **berechnete Aggregatwerte**, um sich die teure Verarbeitung eines Lesevorgangs zu ersparen. Im Beispiel werden einige der im Autorendokument eingebetteten Daten zur Laufzeit berechnet. Jedes Mal, wenn ein neues Buch veröffentlicht wird, wird ein Buchdokument erstellt, **und** das Feld „CountOfBooks“ wird auf einen berechneten Wert festgelegt, basierend auf der Anzahl der Buchdokumente, die für einen bestimmten Autor vorhanden sind. Diese Optimierung wäre in schreibintensiven Systemen gut, in denen wir uns Berechnungen für Schreibvorgänge leisten können, um Lesevorgänge zu optimieren.
 
-Die Möglichkeit über ein Modell mit vorab berechneten Felder zu verfügen, wird dank der Unterstützung von **Transaktionen mit mehreren Dokumenten** durch DocumentDB ermöglicht. Viele NoSQL-Speicher können keine Transaktionen über Dokumente hinweg durchführen und bevorzugen aufgrund dieser Einschränkung Entwurfsentscheidungen, wie z. B. "Immer alles einbetten". Mit DocumentDB können Sie serverseitige Trigger oder gespeicherte Prozeduren verwenden, mit denen Bücher eingefügt und Autoren in einer einzigen ACID-Transaktion aktualisiert werden. Sie **müssen** nicht alles in ein Dokument einbetten, nur um sicherzustellen, dass Ihre Daten konsistent bleiben.
+Die Möglichkeit über ein Modell mit vorab berechneten Felder zu verfügen, wird dank der Unterstützung von **Transaktionen mit mehreren Dokumenten** durch DocumentDB ermöglicht. Viele NoSQL-Speicher können keine Transaktionen über Dokumente hinweg durchführen und bevorzugen aufgrund dieser Einschränkung Entwurfsentscheidungen, wie z. B. "Immer alles einbetten". Mit DocumentDB können Sie serverseitige Trigger oder gespeicherte Prozeduren verwenden, mit denen Bücher eingefügt und Autoren in einer einzigen ACID-Transaktion aktualisiert werden. Sie **müssen** nicht alles in ein Dokument einbetten, nur um sicherzustellen, dass Ihre Daten konsistent bleiben.
 
 ##<a name="NextSteps"></a>Nächste Schritte
 
@@ -393,4 +393,4 @@ Informationen zur horizontalen Partitionierung („Sharding“) Ihrer Daten auf 
 Anleitungen für die Datenmodellierung und das Sharding für mehrinstanzenfähige Anwendungen finden Sie unter [Skalieren einer mehrinstanzenfähigen Anwendung mit Azure DocumentDB](http://blogs.msdn.com/b/documentdb/archive/2014/12/03/scaling-a-multi-tenant-application-with-azure-documentdb.aspx).
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

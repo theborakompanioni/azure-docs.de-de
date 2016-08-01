@@ -79,7 +79,7 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 
         {"id":"job_1415651640909_0026"}
 
-3. Verwenden Sie den folgenden Befehl, um den Status des Auftrags zu prüfen. Ersetzen Sie **JOBID** durch den Wert, der im vorherigen Schritt zurückgegeben wurde. Wenn der Rückgabewert z. B. `{"id":"job_1415651640909_0026"}` lautet, ist die **JOBID** `job_1415651640909_0026` .
+3. Verwenden Sie den folgenden Befehl, um den Status des Auftrags zu prüfen. Ersetzen Sie **JOBID** durch den Wert, der im vorherigen Schritt zurückgegeben wurde. Wenn der Rückgabewert z. B. `{"id":"job_1415651640909_0026"}` lautet, ist die **JOBID** `job_1415651640909_0026` .
 
         curl -G -u USERNAME:PASSWORD -d user.name=USERNAME https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
 
@@ -87,9 +87,9 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 
     > [AZURE.NOTE] Diese Curl-Anforderung gibt ein JSON-Dokument (JavaScript Object Notation) mit Informationen zum Auftrag zurück. Mithilfe von "jq" wird nur der Statuswert abgerufen.
 
-4. Sobald der Status des Auftrags zu **ERFOLGREICH** wechselt, können Sie die Ergebnisse des Auftrags aus dem Azure Blob-Speicher abrufen. Der mit der Abfrage übergebene Parameter `statusdir` enthält den Speicherort der Ausgabedatei, in diesem Fall **wasb:///example/curl**. Diese Adresse speichert die Ausgabe des Auftrags im Verzeichnis **example/curl** des Standardspeichercontainers, der von Ihrem HDInsight-Cluster verwendet wird.
+4. Sobald der Status des Auftrags zu **ERFOLGREICH** wechselt, können Sie die Ergebnisse des Auftrags aus dem Azure Blob-Speicher abrufen. Der mit der Abfrage übergebene Parameter `statusdir` enthält den Speicherort der Ausgabedatei. In diesem Fall **wasb:///example/curl**. Diese Adresse speichert die Ausgabe des Auftrags im Verzeichnis **example/curl** des Standardspeichercontainers, der von Ihrem HDInsight-Cluster verwendet wird.
 
-    Sie können diese Dateien mithilfe der [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) auflisten und herunterladen. Wenn Sie z. B. Dateien im Verzeichnis **Beispiel/Curl** auflisten möchten, verwenden Sie den folgenden Befehl:
+    Sie können diese Dateien mithilfe der [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) auflisten und herunterladen. Wenn Sie z. B. Dateien im Verzeichnis **Beispiel/Curl** auflisten möchten, verwenden Sie den folgenden Befehl:
 
 		azure storage blob list <container-name> example/curl
 
@@ -99,6 +99,11 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 
 	> [AZURE.NOTE] Sie müssen entweder den Namen des Speicherkontos, das den Blob enthält, mithilfe der Parameter `-a` und `-k` angeben oder die Umgebungsvariablen **AZURE\\_STORAGE\\_ACCOUNT** und **AZURE\\_STORAGE\\_ACCESS\\_KEY** festlegen. Weitere Informationen finden Sie unter<a href="hdinsight-upload-data.md" target="\_blank".
 
+##Einschränkungen
+
+* Massenexport: Bei Linux-basiertem HDInsight unterstützt der zum Exportieren von Daten nach Microsoft SQL Server oder Azure SQL-Datenbank verwendete Sqoop-Connector derzeit keine Masseneinfügungen.
+
+* Batchverarbeitung: Wenn Sie in Linux-basiertem HDInsight zum Ausführen von Einfügevorgängen den Schalter `-batch` verwenden, führt Sqoop mehrere Einfügevorgänge aus, anstatt diese zu einem Batch zusammenzufassen.
 
 ##Zusammenfassung
 
@@ -145,4 +150,4 @@ Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeite
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

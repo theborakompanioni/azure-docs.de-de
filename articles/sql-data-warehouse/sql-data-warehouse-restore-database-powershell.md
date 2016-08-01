@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/28/2016"
+   ms.date="07/18/2016"
    ms.author="sonyama;barbkess"/>
 
 # Wiederherstellen einer Azure SQL Data Warehouse-Instanz (PowerShell)
@@ -28,9 +28,7 @@ In diesem Artikel erfahren Sie, wie Sie eine Azure SQL Data Warehouse-Instanz mi
 
 ## Voraussetzungen
 
-### Überprüfen Sie Ihre Kapazität der SQL-Datenbank-DTU. 
-
-Jede SQL Data Warehouse-Instanz wird von einem logischen Server mit SQL Server gehostet. Dieser logische Server verfügt über ein in DTU gemessenes Kapazitätslimit. Vor dem Wiederherstellen einer SQL Data Warehouse-Instanz muss zunächst geprüft werden, ob die DTU-Kapazität des logischen Servers mit SQL Server, der als Host für Ihre Datenbank fungiert, für die wiederherzustellende Datenbank ausreicht. Weitere Informationen zum Anzeigen und Erhöhen des DTU-Kontingents finden Sie in [diesem Blogbeitrag][].
+**Überprüfen Sie Ihre DTU-Kapazität.** Jedes SQL Data Warehouse wird von einer SQL Server-Instanz gehostet (z.B. myserver.database.windows.net), die über ein Standard-DTU-Kontingent verfügt. Bevor Sie ein SQL Data Warehouse wiederherstellen können, überprüfen Sie, ob Ihre SQL Server-Instanz über genügend verbleibendes DTU-Kontingent für die Datenbank-Wiederherstellung verfügt. Informationen zum Berechnen des DTU-Bedarfs bzw. zur Anforderung weiterer DTUs finden Sie unter [Gewusst wie: Erstellen eines Supporttickets für SQL Data Warehouse][].
 
 ### Installieren von PowerShell
 
@@ -157,6 +155,7 @@ Informationen zu den Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank-E
 
 <!--Article references-->
 [Azure SQL-Datenbank-Übersicht zur Geschäftskontinuität]: sql-database-business-continuity.md
+[Gewusst wie: Erstellen eines Supporttickets für SQL Data Warehouse]: ./sql-data-warehouse-get-started-create-support-ticket.md#request-quota-change
 [Finalize a recovered database]: sql-database-recovered-finalize.md
 [Installieren und Konfigurieren von Azure PowerShell]: powershell-install-configure.md
 [Übersicht]: ./sql-data-warehouse-restore-database-overview.md
@@ -168,11 +167,8 @@ Informationen zu den Geschäftskontinuitätsfunktionen von Azure SQL-Datenbank-E
 <!--MSDN references-->
 [Restore-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt693390.aspx
 
-<!--Blog references-->
-[diesem Blogbeitrag]: https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/
-
 <!--Other Web references-->
 [Azure Portal]: https://portal.azure.com/
 [Microsoft-Webplattform-Installer]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

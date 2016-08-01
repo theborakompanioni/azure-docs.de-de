@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Schritt 5: Bereitstellen des Machine Learning-Webdiensts | Microsoft Azure"
-	description="Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 5: Bereitstellen eines Vorhersageexperiments als Webdienst in Machine Learning Studio."
+	pageTitle="Schritt 5: Bereitstellen des Machine Learning-Webdiensts | Microsoft Azure"
+	description="Exemplarische Vorgehensweise zum Entwickeln einer Vorhersagelösung – Schritt 5: Bereitstellen eines Vorhersageexperiments als Webdienst in Machine Learning Studio."
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/10/2016"
+	ms.date="07/06/2016"
 	ms.author="garye"/>
 
 
-# Anleitung Schritt 5: Bereitstellen des Azure Machine Learning-Webdiensts
+# Anleitung Schritt 5: Bereitstellen des Azure Machine Learning-Webdiensts
 
 Dies ist der fünfte Schritt der exemplarischen Vorgehensweise zum [Predictive Analytics-Lösung in Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md).
 
@@ -48,7 +48,7 @@ Folgende Module müssen gelöscht werden:
 
 - [Two-Class Support Vector Machine][two-class-support-vector-machine]
 - Die damit verbundenen Module [Train Model][train-model] und [Score Model][score-model]
-- [Normalize Data][normalize-data] (beide)
+- [Normalize Data][normalize-data] \(beide)
 - [Evaluate Model][evaluate-model]
 
 Wählen Sie das Modul aus, und drücken Sie die ENTF-Taste, oder klicken Sie mit der rechten Maustaste auf das Modul, und wählen Sie **Delete** aus.
@@ -63,9 +63,9 @@ Die Konvertierung in ein Vorhersageexperiment umfasst drei Schritte:
 2. Optimieren des Experiments, um Module zu entfernen, die nur zu Trainingszwecken benötigt wurden
 3. Festlegen, wo der Webdienst Eingaben akzeptiert und wo er Ausgaben generiert
 
-Glücklicherweise können alle drei Schritte ausgeführt werden, indem Sie einfach unten im Experimentbereich auf **Webdienst bereitstellen** klicken (wählen Sie die Option **Vorhersagewebdienst**).
+Glücklicherweise können alle drei Schritte ausgeführt werden, indem Sie einfach unten im Experimentbereich auf **Set Up Web Service** klicken (wählen Sie die Option **Predictive Web Service**).
 
-Beim Klicken auf **Webdienst bereitstellen** geschehen mehrere Dinge:
+Beim Klicken auf **Set Up Web Service** geschehen mehrere Dinge:
 
 - Das trainierte Modell wird als Modul **Trained Model** in der Modulpalette gespeichert, die sich links neben dem Experimentbereich befindet. (Sie finden sie unter **Trained Models**.)
 - Module, die zum Training verwendet wurden, werden entfernt. Dies gilt insbesondere in folgenden Fällen:
@@ -78,7 +78,7 @@ Beim Klicken auf **Webdienst bereitstellen** geschehen mehrere Dinge:
 
 > [AZURE.NOTE] Das Experiment wurde in zwei Teilen unter Registerkarten gespeichert, die oben im Experimentbereich hinzugefügt wurden: das ursprüngliche Trainingsexperiment befindet sich unter der Registerkarte **Trainingsexperiment**, und das neu erstellte Vorhersageexperiment finden Sie unter **Vorhersageexperiment**.
 
-Bei diesem bestimmten Experiment ist ein zusätzlicher Schritt erforderlich. Wir haben zwei [Execute R Script][execute-r-script]-Module hinzugefügt, um die Daten für Training und Tests mit einer Gewichtungsfunktion zu versehen. Im endgültigen Modell ist dies nicht erforderlich. Machine Learning Studio hat ein [Execute R Script][execute-r-script]-Modul beim Entfernen des Moduls [Split Data][split] entfernt. Deshalb können wir jetzt das andere entfernen und [Edit Metadata][edit-metadata] direkt mit dem Modul [Score Model][score-model] verbinden.
+Bei diesem bestimmten Experiment ist ein zusätzlicher Schritt erforderlich. Wir haben zwei [Execute R Script][execute-r-script]-Module hinzugefügt, um die Daten für Training und Tests mit einer Gewichtungsfunktion zu versehen. Im endgültigen Modell ist dies nicht erforderlich. Machine Learning Studio hat ein [Execute R Script][execute-r-script]-Modul beim Entfernen des Moduls [Split Data][split] entfernt. Deshalb können wir jetzt das andere entfernen und [Metadata Editor][metadata-editor] direkt mit dem Modul [Score Model][score-model] verbinden.
 
 Unser Experiment sollte nun wie folgt aussehen:
 
@@ -93,31 +93,63 @@ Führen Sie das Experiment ein letztes Mal aus (klicken Sie auf **Ausführen**).
 
 ## Bereitstellen des Webdiensts
 
-Zum Bereitstellen eines aus dem Experiment abgeleiteten Webdiensts klicken Sie unter dem Bereich auf **Webdienst bereitstellen**. Machine Learning Studio stellt das Experiment als Webdienst bereit und führt Sie zum Dashboard dieses Webdiensts. Von hier aus können Sie zum Experiment zurückkehren (**View snapshot** oder **View latest**) und einen einfachen Test des Webdiensts ausführen (Schaltfläche **Test** – siehe **Testen des Webdiensts** weiter unten). Dort befinden sich auch Informationen zum Erstellen von Anwendungen, die auf den Webdienst zugreifen können (mehr dazu im nächsten Schritt dieser exemplarischen Vorgehensweise).
+Sie können das Experiment entweder als klassischen Webdienst oder neuen auf Azure Resource Manager basierenden Webdienst bereitstellen.
+
+### Bereitstellen als klassischen Webdienst ###
+
+Zum Bereitstellen eines aus dem Experiment abgeleiteten klassischen Webdiensts klicken Sie unter dem Experimentbereich auf **Deploy Web Service** und wählen dann **Deploy Web Service [Classic]**. Machine Learning Studio stellt das Experiment als Webdienst bereit und führt Sie zum Dashboard dieses Webdiensts. Von hier aus können Sie zum Experiment zurückkehren (**View snapshot** oder **View latest**) und einen einfachen Test des Webdiensts ausführen (Schaltfläche **Test** – siehe **Testen des Webdiensts** weiter unten). Dort befinden sich auch Informationen zum Erstellen von Anwendungen, die auf den Webdienst zugreifen können (mehr dazu im nächsten Schritt dieser exemplarischen Vorgehensweise).
 
 ![Dashboard des Webdiensts][6]
-
-> [AZURE.TIP] Sie können den Webdienst nach der Bereitstellung aktualisieren. Wenn Sie das Modell ändern möchten, bearbeiten Sie einfach die Modellparameter im Trainingsexperiment und klicken auf **Webdienst bereitstellen**. Wenn Sie das Experiment erneut bereitstellen, wird der Webdienst ersetzt und das aktualisierte Modell verwendet.
 
 Sie können den Dienst konfigurieren, indem Sie auf die Registerkarte **KONFIGURATION** klicken. Hier können Sie den Dienstnamen ändern (er erhält standardmäßig den Namen des Experiments) und eine Beschreibung hinzufügen. Sie können auch benutzerfreundlichere Beschriftungen für die Eingabe- und Ausgabespalten festlegen.
 
 ![Konfigurieren des Webdiensts][5]
 
+### Bereitstellen als neuer Webdienst
+
+Zum Bereitstellen eines aus dem Experiment abgeleiteten neuen Webdiensts klicken Sie unter dem Experimentbereich auf **Deploy Web Service** und wählen dann **Deploy Web Service [New]**. Machine Learning Studio leitet Sie zur Seite „Azure Machine Learning Web Services Deploy Experiment“ weiter.
+
+Geben Sie einen Namen für den Webdienst ein, und wählen Sie einen Preisplan. Wenn Sie bereits einen Preisplan gewählt haben, können Sie diesen auswählen. Andernfalls müssen Sie einen Preisplan für den Dienst wählen.
+
+1.	Wählen Sie in der Dropdownliste **Price Plan** einen Preisplan aus, oder wählen Sie die Option **Select new plan**.
+2.	Geben Sie in **Plan Name** einen Namen ein, der den Plan in Ihrer Rechnung bestimmt.
+3.	Wählen Sie in **Monthly Plan Tiers** eine Option aus. Beachten Sie, dass die Plantarife standardmäßig auf die Pläne für Ihre Standardregion und Ihren Webdienst festgelegt sind, der in dieser Region bereitgestellt ist.
+
+Klicken Sie auf die **Deploy**. Die Seite **Quickstart** für Ihren Webdienst wird geöffnet.
+
+Sie können den Dienst konfigurieren, indem Sie auf die Menüoption **Configure** klicken. Hier können Sie den Dienstnamen ändern (er erhält standardmäßig den Namen des Experiments) und eine Beschreibung hinzufügen. Sie können auch die Fehlerprotokollierung und die Beispieldaten aktivieren oder deaktivieren, die zum Testen des Diensts verwendet werden können.
+
+Um den Webdienst zu testen, klicken Sie auf die Menüoption **Test** (siehe **Testen des Webdiensts** unten). Informationen zum Erstellen von Anwendungen, die auf den Webdienst zugreifen können, erhalten Sie durch Klicken auf die Menüoption **Consume** (mehr dazu im nächsten Schritt dieser exemplarischen Vorgehensweise).
+
+
+> [AZURE.TIP] Sie können den Webdienst nach der Bereitstellung aktualisieren. Wenn Sie das Modell ändern möchten, bearbeiten Sie einfach die Modellparameter im Trainingsexperiment und klicken auf **Webdienst bereitstellen**. Wählen Sie dann **Deploy Web Service [Classic]** oder **Deploy Web Service [New]**. Wenn Sie das Experiment erneut bereitstellen, wird der Webdienst ersetzt und das aktualisierte Modell verwendet.
+
+
 ## Testen des Webdiensts
-Klicken Sie auf der Seite **DASHBOARD** unter **Default Endpoint** auf die Schaltfläche **Test**.
 
-![Testen des Webdiensts][7]
-
-Ein Dialogfeld wird geöffnet, in dem Sie nach den Eingabedaten für den Dienst gefragt werden. Dies sind die gleichen Spalten, die im Originaldataset „German Credit Risk“ angezeigt wurden.
+**Testen eines klassischen Webdiensts**Klicken Sie auf der Seite **DASHBOARD** unter **Default Endpoint** auf die Schaltfläche **Test**. Ein Dialogfeld wird geöffnet, in dem Sie nach den Eingabedaten für den Dienst gefragt werden. Dies sind die gleichen Spalten, die im Originaldataset „German Credit Risk“ angezeigt wurden.
 
 Geben Sie eine Reihe von Daten ein, und klicken Sie auf **OK**.
 
-Im Webdienst durchlaufen die Daten das Modul **Web Service Input**, dann das Modul [Edit Metadata][edit-metadata] und schließlich das Modul [Score Model][score-model], in dem sie bewertet werden. Die Ergebnisse werden danach vom Webdienst über das Modul **Web service output** ausgegeben.
+Im Webdienst durchlaufen die Daten das Modul **Web Service Input**, dann das Modul [Metadata Editor][metadata-editor] und schließlich das Modul [Score Model][score-model], in dem sie bewertet werden. Die Ergebnisse werden danach vom Webdienst über das Modul **Web service output** ausgegeben.
 
-> [AZURE.TIP] So wie wir das Vorhersageexperiment konfiguriert haben, gibt das Modul [Score Model][score-model] sämtliche Ergebnisse zurück. Dies schließt alle Eingabedaten sowie den Kreditrisikowert und die Bewertungswahrscheinlichkeit ein. Wenn Sie etwas anderes zurückgeben möchten, z.B. nur den Kreditrisikowert, können Sie ein Modul des Typs [Select Columns in Dataset][select-columns] zwischen [Score Model][score-model] und **Web service output** einfügen, um Spalten auszuschließen, die der Webdienst nicht zurückgeben soll.
+**Testen eines neuen Webdiensts**
+
+Klicken Sie im Azure Machine Learning Web Services-Portal oben auf der Seite auf die Menüoption **Test**. Die Seite „Test“ wird geöffnet, auf der Sie Daten für den Dienst eingeben können. Die angezeigten Eingabefelder entsprechen den Spalten im Originaldataset „German Credit Risk“.
+
+Geben Sie eine Reihe von Daten ein, und klicken Sie auf **Test Request-Response**.
+
+Sie können Beispieldaten aktivieren, mit denen Sie Ihren „Request-Response“-Dienst testen können. Wenn Sie den Webdienst in Machine Learning Studio erstellt haben, stammen die Beispieldaten aus den Daten, mit denen Sie Ihr Modell trainiert haben.
+
+Die Ergebnisse des Tests werden rechts auf der Seite in der Ausgabespalte angezeigt.
+
+> [AZURE.TIP] So wie wir das Vorhersageexperiment konfiguriert haben, gibt das Modul [Score Model][score-model] sämtliche Ergebnisse zurück. Dies schließt alle Eingabedaten sowie den Kreditrisikowert und die Bewertungswahrscheinlichkeit ein. Wenn Sie etwas anderes zurückgeben möchten, z.B. nur den Kreditrisikowert, können Sie ein Modul des Typs [Project Columns][project-columns] zwischen [Score Model][score-model] und **Web service output** einfügen, um Spalten auszuschließen, die der Webdienst nicht zurückgeben soll.
 
 ## Verwalten des Webdiensts
-Nachdem Sie den Webdienst bereitgestellt haben, können Sie ihn im [klassischen Azure-Portal](https://manage.windowsazure.com) verwalten.
+
+**Verwalten eines klassischen Webdiensts**
+
+Nachdem Sie Ihren klassischen Webdienst bereitgestellt haben, können Sie ihn im [klassischen Azure-Portal](https://manage.windowsazure.com) verwalten.
 
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
 2. Klicken Sie im Microsoft Azure-Dienstbereich auf **MACHINE LEARNING**.
@@ -134,6 +166,16 @@ Weitere Informationen finden Sie unter:
 - [Skalieren von Webdiensten](machine-learning-scaling-webservice.md)
 - [Veröffentlichen Ihres Azure Machine Learning-Webdiensts im Azure Marketplace](machine-learning-publish-web-service-to-azure-marketplace.md)
 
+**Verwalten eines neuen Webdiensts**
+
+Nachdem Sie Ihren neuen Webdienst bereitgestellt haben, können Sie ihn im [klassischen Azure-Portal](https://servics.azureml.net) verwalten.
+
+So überwachen Sie die Leistung des Webdiensts
+1. Melden Sie sich beim [Azure Machine Learning Web Services-Portal](https://servics.azureml.net) an.
+2. Klicken Sie auf **Web Services**.
+3. Klicken Sie auf den Webdienst.
+4. Klicken Sie auf das **Dashboard**.
+
 ----------
 
 **Nächster Schritt: [Zugreifen auf den Webdienst](machine-learning-walkthrough-6-access-web-service.md)**
@@ -144,19 +186,18 @@ Weitere Informationen finden Sie unter:
 [4]: ./media/machine-learning-walkthrough-5-publish-web-service/publish4.png
 [5]: ./media/machine-learning-walkthrough-5-publish-web-service/publish5.png
 [6]: ./media/machine-learning-walkthrough-5-publish-web-service/publish6.png
-[7]: ./media/machine-learning-walkthrough-5-publish-web-service/publish7.png
 
 
 <!-- Module References -->
 [evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-[edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
+[metadata-editor]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
 [normalize-data]: https://msdn.microsoft.com/library/azure/986df333-6748-4b85-923d-871df70d6aaf/
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 [two-class-boosted-decision-tree]: https://msdn.microsoft.com/library/azure/e3c522f8-53d9-4829-8ea4-5c6a6b75330c/
 [two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
-[select-columns]: https://msdn.microsoft.com/de-DE/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
+[project-columns]: https://msdn.microsoft.com/de-DE/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

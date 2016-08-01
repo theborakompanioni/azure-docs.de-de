@@ -26,9 +26,9 @@
 - [Python-Beispiele](documentdb-python-samples.md)
 - [Katalog mit Azure-Codebeispielen](https://azure.microsoft.com/documentation/samples/?service=documentdb)
 
-Beispiellösungen, in denen CRUD-Vorgänge und andere gängige Vorgänge für DocumentDB-Ressourcen ausgeführt werden, finden Sie im GitHub-Repository [azure-documentdb-python](https://github.com/Azure/azure-documentdb-python/tree/master/samples). Dieser Artikel enthält Folgendes:
+Beispiellösungen, in denen CRUD-Vorgänge und andere gängige Vorgänge für Azure DocumentDB-Ressourcen ausgeführt werden, finden Sie im GitHub-Repository [azure-documentdb-python](https://github.com/Azure/azure-documentdb-python/tree/master/samples). Dieser Artikel enthält Folgendes:
 
-- Links zu den Aufgaben in den einzelnen Python-Beispielprojektdateien. 
+- Links zu den Aufgaben in den einzelnen Python-Beispielprojektdateien.
 - Links zum zugehörigen API-Referenzinhalt.
 
 **Voraussetzungen**
@@ -36,7 +36,7 @@ Beispiellösungen, in denen CRUD-Vorgänge und andere gängige Vorgänge für Do
 1. Sie benötigen ein Azure-Konto, um diese Python-Beispiele zu verwenden:
     - Sie können [ein Azure-Konto kostenlos erstellen](https://azure.microsoft.com/pricing/free-trial/): Sie erhalten ein Guthaben, das Sie zum Ausprobieren zahlungspflichtiger Azure-Dienste nutzen können, und Sie können das Konto selbst dann behalten und die kostenlosen Azure-Dienste wie Websites nutzen, wenn das Guthaben aufgebraucht ist. Ihre Kreditkarte wird nur dann belastet, wenn Sie Ihre Einstellungen explizit ändern und mit einer Zahlung einverstanden sind.
    - Sie können Ihre [Vorteile für Visual Studio-Abonnenten aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/): Ihr Visual Studio-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste nutzen können.
-2. Sie benötigen zudem das [Python SDK](documentdb-sdk-python.md). 
+2. Sie benötigen zudem das [Python SDK](documentdb-sdk-python.md).
 
     > [AZURE.NOTE] Jedes Beispiel ist eigenständig, richtet sich selbst ein und bereinigt sich selbst. Dementsprechend richten die Beispiele mehrere Aufrufe an [document\_client.CreateCollection](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.document_client.html). Bei jeder Ausführung dieses Vorgangs wird Ihrem Abonnement 1 Stunde Nutzung gemäß Leistungsebene der erstellten Sammlung in Rechnung gestellt.
 
@@ -65,4 +65,4 @@ Aufgabe | API-Referenz
 [Ändern der Leistungsebene einer Sammlung](https://github.com/Azure/azure-documentdb-python/blob/d78170214467e3ab71ace1a7400f5a7fa5a7b5b0/samples/CollectionManagement/Program.py#L163-L175) | [document\_client.ReplaceOffer](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.document_client.html#CreateCollection)
 [Löschen einer Sammlung](https://github.com/Azure/azure-documentdb-python/blob/d78170214467e3ab71ace1a7400f5a7fa5a7b5b0/samples/CollectionManagement/Program.py#L212-L225) | [document\_client.DeleteCollection](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.document_client.html#CreateCollection)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -1,9 +1,9 @@
 <properties 
 	pageTitle="Verwenden von Analytics, dem leistungsfähigen Suchtool von Application Insights | Microsoft Azure" 
-	description="Verwenden von Analytics, dem leistungsfähigen Diagnosesuchtool von Application Insights" 
+	description="Verwenden von Analytics, dem leistungsfähigen Diagnosesuchtool von Application Insights " 
 	services="application-insights" 
     documentationCenter=""
-	authors="alancameronwills" 
+	authors="danhadari" 
 	manager="douge"/>
 
 <tags 
@@ -12,10 +12,8 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/30/2016" 
-	ms.author="awills"/>
-
-
+	ms.date="07/15/2016" 
+	ms.author="danha"/>
 
 
 # Verwenden von Analytics in Application Insights
@@ -34,34 +32,83 @@ Das Inlinetutorial bietet Ihnen Anregungen, wozu Sie Analytics verwenden können
 
 Eine [ausführlichere Einführung finden Sie hier](app-insights-analytics-tour.md).
 
-## Schreiben von Abfragen
+## Abfragen der Telemetrie
 
-Schreiben Sie eine Abfrage, indem Sie mit den Namen der Tabellen auf der linken Seite beginnen. Verwenden Sie `|` zum Erstellen einer Pipeline von [Operatoren](app-insights-analytics-reference.md#queries-and-operators).
-
+### Schreiben Sie eine Abfrage.
 
 ![](./media/app-insights-analytics-using/150.png)
 
-* Verwenden Sie keine Leerzeilen in Ihrer Abfrage.
-* Einzelne Zeilenumbrüche können Sie in einer Abfrage verwenden.
-* Außerdem können Sie mehrere Abfragen im Fenster beibehalten, indem Sie sie durch Leerzeilen trennen.
-* Zum Ausführen einer Abfrage **setzen Sie den Cursor in die Mitte oder an das Ende der Abfrage**, und klicken Sie auf „Los“.
+Beginnen Sie mit den Namen der Tabellen auf der linken Seite (oder mit den Operatoren [range](app-insights-analytics-reference.md#range-operator) oder [union](app-insights-analytics-reference.md#union-operator)). Verwenden Sie `|`, um eine Pipeline von [Operatoren](app-insights-analytics-reference.md#queries-and-operators) zu erstellen. IntelliSense schlägt Ihnen die Operatoren und einige der Ausdruckselemente vor, die Sie verwenden können.
+
+Weitere Informationen finden Sie in der [Einführung in Analytics in Application Insights](app-insights-analytics-tour.md) sowie in der [Sprachreferenz](app-insights-analytics-reference.md).
+
+### Ausführen einer Abfrage
+
+![Ausführen einer Abfrage](./media/app-insights-analytics-using/130.png)
+
+1. Einzelne Zeilenumbrüche können Sie in einer Abfrage verwenden.
+2. Platzieren Sie den Cursor in oder am Ende der Abfrage, die Sie ausführen möchten.
+3. Klicken Sie auf „Los“, um die Abfrage auszuführen.
+4. Verwenden Sie keine Leerzeilen in Ihrer Abfrage. Mehrere separate Abfragen können auf einer Abfrageregisterkarte durch Leerzeilen getrennt werden. Nur das Element mit dem Cursor wird ausgeführt.
+
+### Speichern einer Abfrage
+
+![Speichern einer Abfrage](./media/app-insights-analytics-using/140.png)
+
+1. Aktuelle Abfragedatei speichern
+2. Gespeicherte Abfragedatei öffnen
+3. Neue Abfragedatei erstellen
 
 
-![](./media/app-insights-analytics-using/130.png)
+## Details
 
-* Sie können den Inhalt des Abfragefensters speichern und wieder aufrufen.
+Erweitern Sie in den Ergebnissen eine beliebige Zeile, um eine umfassende Liste mit Eigenschaften anzuzeigen. Eigenschaften, bei denen es sich um einen strukturierten Wert handelt, können nochmals erweitert werden. Beispiele wären etwa benutzerdefinierte Dimensionen oder die Stapellisten in einer Ausnahme.
 
-![](./media/app-insights-analytics-using/140.png)
+![Erweitern einer Zeile](./media/app-insights-analytics-using/070.png)
+
+ 
 
 ## Anordnen der Ergebnisse
 
-Sie können die Spalten auswählen, die Sie anzeigen möchten. Erweitern Sie ein beliebiges Element, um alle zurückgegebenen Spaltenwerte anzuzeigen.
+Die zurückgegebenen Abfrageergebnisse können sortiert, gefiltert, umgebrochen und gruppiert werden.
 
-![](./media/app-insights-analytics-using/030.png)
+> [AZURE.NOTE] Beim Sortieren, Gruppieren und Filtern im Browser wird Ihre Abfrage nicht erneut ausgeführt. Hierbei werden lediglich die Ergebnisse Ihrer letzten Abfrage neu angeordnet.
+> 
+> Wenn diese Aufgaben auf dem Server ausgeführt werden sollen, bevor die Ergebnisse zurückgegeben werden, verwenden Sie in Ihrer Abfrage die Operatoren [sort](app-insights-analytics-reference.md#sort-operator), [summarize](app-insights-analytics-reference.md#summarize-operator) und [where](app-insights-analytics-reference.md#where-operator).
 
-> [AZURE.NOTE] Klicken Sie auf den Anfang einer Spalte, um die im Webbrowser zur Verfügung stehenden Ergebnisse schnell neu zu ordnen. Beachten Sie jedoch, dass die Anzahl von in den Browser heruntergeladen Zeilen bei einem großen Resultset beschränkt ist. Diese Sortierung zeigt Ihnen aus diesem Grund nicht unbedingt die tatsächlichen höchsten oder niedrigsten Elemente an. Dazu sollten Sie den [top](app-insights-analytics-reference.md#top-operator)- oder [sort](app-insights-analytics-reference.md#sort-operator)-Operator verwenden.
+Wählen Sie die anzuzeigenden Spalten aus, ordnen Sie Spaltenüberschriften durch Ziehen neu an, um passen Sie die Spaltengröße durch Ziehen des jeweiligen Rahmens an.
 
-Es ist allerdings üblich, den [take](app-insights-analytics-reference.md#take-operator)-, [top](app-insights-analytics-reference.md#top-operator)- oder [summarize](app-insights-analytics-reference.md#summarize-operator)-Operator zu verwenden, um zu vermeiden, dass sehr große Tabellen vom Server heruntergeladen werden. Die automatische Beschränkung liegt ohnehin bei 10.000 Zeilen pro Abfrage.
+![Anordnen von Spalten](./media/app-insights-analytics-using/030.png)
+
+### Sortieren und Filtern von Elementen
+
+Sortieren Sie Ihre Ergebnisse durch Klicken auf eine Spaltenüberschrift. Klicken Sie erneut, um die Sortierung umzukehren. Wenn Sie ein drittes Mal klicken, erhalten Sie wieder die ursprüngliche, von der Abfrage zurückgegebene Reihenfolge.
+
+Über das Filtersymbol können Sie Ihre Suche eingrenzen.
+
+![Sortieren und Filtern von Spalten](./media/app-insights-analytics-using/040.png)
+
+
+
+### Gruppieren von Elementen
+
+Wenn Sie nach mehreren Spalten sortieren möchten, verwenden Sie eine Gruppierung. Aktivieren Sie dazu zunächst die Funktion, und ziehen Sie dann Spaltenüberschriften in den Bereich über der Tabelle.
+
+![Gruppieren](./media/app-insights-analytics-using/060.png)
+
+
+
+### Werden nicht alle Ergebnisse angezeigt?
+
+Die Anzahl von Ergebniszeilen, die vom Portal zurückgegeben werden können, ist auf ungefähr 10.000 Zeilen beschränkt. Bei einer Überschreitung des Grenzwerts wird eine Warnung angezeigt. In diesem Fall werden beim Sortieren der Ergebnisse in der Tabelle nicht immer alle ersten oder letzten Ergebnisse angezeigt.
+
+Daher empfiehlt es sich, eine Überschreitung des Grenzwerts zu vermeiden. Verwenden beispielsweise folgende Operatoren:
+
+* [where timestamp > ago(3d)](app-insights-analytics-reference.md#where-operator)
+* [top 100 by timestamp](app-insights-analytics-reference.md#top-operator)
+* [take 100](app-insights-analytics-reference.md#take-operator)
+* [summarize](app-insights-analytics-reference.md#summarize-operator)
+
 
 
 ## Diagramme
@@ -70,9 +117,7 @@ Wählen Sie den gewünschten Diagrammtyp:
 
 ![](./media/app-insights-analytics-using/230.png)
 
-Wenn Sie über mehrere Spalten mit den richtigen Typen verfügen, können Sie die x- und y-Achsen und eine Spalte mit Dimensionen auswählen, um die Ergebnisse wie folgt aufzuteilen:
-
-![](./media/app-insights-analytics-using/100.png)
+Wenn Sie über mehrere Spalten mit den richtigen Typen verfügen, können Sie die X- und Y-Achse sowie eine Spalte mit Dimensionen auswählen, um die Ergebnisse aufzuteilen.
 
 Die Ergebnisse werden standardmäßig zunächst als Tabelle angezeigt. Sie wählen die Diagrammdarstellung dann manuell aus. Sie können jedoch die [render-Anweisung](app-insights-analytics-reference.md#render-directive) am Ende einer Abfrage verwenden, um ein Diagramm auszuwählen.
 
@@ -82,7 +127,7 @@ Nachdem Sie eine Abfrage ausgeführt haben, können Sie eine CSV-Datei herunterl
 
 ## Exportieren nach Power BI
 
-1. Positionieren Sie den Cursor in einer Abfrage, und wählen Sie **Nach Power BI Exportieren**.
+1. Positionieren Sie den Cursor in einer Abfrage, und wählen Sie **Export to Power BI** (Nach Power BI exportieren) aus.
 
     ![](./media/app-insights-analytics-using/240.png)
 
@@ -90,7 +135,7 @@ Nachdem Sie eine Abfrage ausgeführt haben, können Sie eine CSV-Datei herunterl
 
 3. Kopieren Sie das M-Sprachskript in den erweiterten Abfrage-Editor von Power BI Desktop.
  * Öffnen Sie die exportierte Datei.
- * Wählen Sie in Power BI Desktop **Daten abrufen, leere Abfrage, Erweiterter Editor** aus, und fügen Sie das M-Sprachskript ein.
+ * Wählen Sie in Power BI Desktop **Daten abrufen > leere Abfrage > Erweiterter Editor** aus, und fügen Sie das M-Sprachskript ein.
 
     ![](./media/app-insights-analytics-using/250.png)
 
@@ -103,4 +148,4 @@ Nachdem Sie eine Abfrage ausgeführt haben, können Sie eine CSV-Datei herunterl
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

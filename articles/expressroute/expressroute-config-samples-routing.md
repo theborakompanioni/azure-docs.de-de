@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/19/2016"
+   ms.date="07/19/2016"
    ms.author="cherylmc"/>
 
 # Beispiele für die Routerkonfiguration zum Einrichten und Verwalten des Routings
@@ -208,6 +208,6 @@ Anhand von Routenzuordnungen und Präfixlisten können Sie Präfixe filtern, die
 
 ## Nächste Schritte
 
-Weitere Informationen finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
+Weitere Informationen finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0720_2016-->

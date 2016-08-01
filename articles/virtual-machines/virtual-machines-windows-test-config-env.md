@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/25/2016"
+	ms.date="07/19/2016"
 	ms.author="josephd"/>
 
 # Testumgebung für die Basiskonfiguration
 
-Dieser Artikel enthält Schritt-für-Schritt-Anleitungen zum Erstellen der Testumgebung „Basiskonfiguration“ in einem Microsoft Azure Virtual Network mit virtuellen Computern, die im Ressourcen-Manager erstellt wurden.
+Dieser Artikel enthält Schritt-für-Schritt-Anleitungen zum Erstellen der Testumgebung „Basiskonfiguration“ in einem virtuellen Microsoft Azure-Netzwerk mit virtuellen Computern, die in Resource Manager erstellt wurden.
 
 Sie können die Testumgebung zu folgenden Zwecken verwenden:
 
@@ -33,12 +33,12 @@ Die Testumgebung für die Basiskonfiguration besteht aus dem Corpnet-Subnetz in 
 Sie enthält folgende Elemente:
 
 - Einen virtuellen Azure-Computer mit Windows Server 2012 R2 mit dem Namen „DC1“, der als Intranetdomänencontroller und DNS-Server (Domain Name System) konfiguriert ist
-- Einen virtuellen Azure-Computer mit Windows Server 2012 R2 und dem Namen „APP1“, der als allgemeine Anwendung und Webserver konfiguriert ist
-- Einen virtuellen Azure-Computer mit Windows Server 2012 R2 und dem Namen „CLIENT1“, der als Intranetclient verwendet wird
+- Einen virtuellen Azure-Computer mit Windows Server 2012 R2 und dem Namen „APP1“, der als allgemeine Anwendung und Webserver konfiguriert ist
+- Einen virtuellen Azure-Computer mit Windows Server 2012 R2 und dem Namen „CLIENT1“, der als Intranetclient verwendet wird
 
 Diese Konfiguration ermöglicht „DC1“, „APP1“, „CLIENT1“ sowie zusätzlichen Corpnet-Subnetzcomputern Folgendes:
 
-- Internetzugang zwecks Installation von Updates, Zugriff auf Ressourcen im Internet in Echtzeit, Teilnahme an öffentlichen Cloudtechnologien wie Microsoft Office 365 und weiteren Azure-Diensten
+- Internetzugang zwecks Installation von Updates, Zugriff auf Ressourcen im Internet in Echtzeit, Teilnahme an öffentlichen Cloudtechnologien wie Microsoft Office 365 und weiteren Azure-Diensten
 - Remoteverwaltung mithilfe von Remotedesktopverbindungen von Ihrem Computer aus, der mit dem Internet oder Ihrem Organisationsnetzwerk verbunden ist
 
 Die Einrichtung des Corpnet-Subnetzes der Testumgebung für die Basiskonfiguration von Windows Server 2012 R2 in Azure besteht aus den folgenden vier Phasen:
@@ -52,11 +52,11 @@ Wenn Sie noch nicht über ein Azure-Konto verfügen, erhalten Sie unter [Try Azu
 
 > [AZURE.NOTE] Durch virtuelle Computer, die in Azure ausgeführt werden, entstehen fortlaufend Kosten. Diese Kosten werden im Rahmen der kostenlosen Testversion, des MSDN-Abonnements oder des kostenpflichtigen Abonnements abgerechnet. Weitere Informationen zu den Kosten der in Azure ausgeführten virtuellen Computer finden Sie unter [Virtuelle Computer – Preisübersicht](https://azure.microsoft.com/pricing/details/virtual-machines/) und [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/). Informationen dazu, wie Sie die Kosten möglichst gering halten können, finden Sie unter [Minimieren der Kosten von Testumgebungen für virtuelle Computer in Azure](#costs).
 
-## Phase 1: Erstellen des virtuellen Netzwerks
+## Phase 1: Erstellen des virtuellen Netzwerks
 
 Starten Sie zunächst eine Azure PowerShell-Eingabeaufforderung.
 
-> [AZURE.NOTE] Die folgenden Befehlssätze verwenden Azure PowerShell 1.0 und höher. Weitere Informationen finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/) (in englischer Sprache).
+> [AZURE.NOTE] Die folgenden Befehlssätze verwenden Azure PowerShell 1.0 und höher. Weitere Informationen finden Sie unter [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/) (in englischer Sprache).
 
 Melden Sie sich in Ihrem Konto an.
 
@@ -66,7 +66,7 @@ Rufen Sie Ihren Abonnementnamen mit dem folgenden Befehl ab.
 
 	Get-AzureRMSubscription | Sort SubscriptionName | Select SubscriptionName
 
-Legen Sie Ihr Azure-Abonnement fest. Ersetzen Sie alles in den Anführungszeichen, einschließlich der Zeichen < and >, durch die korrekten Namen.
+Legen Sie Ihr Azure-Abonnement fest. Ersetzen Sie alles in den Anführungszeichen, einschließlich der Zeichen < und >, durch die korrekten Namen.
 
 	$subscr="<subscription name>"
 	Get-AzureRmSubscription –SubscriptionName $subscr | Select-AzureRmSubscription
@@ -75,7 +75,7 @@ Erstellen Sie als Nächstes eine neue Ressourcengruppe für das Basiskonfigurati
 
 	Get-AzureRMResourceGroup | Sort ResourceGroupName | Select ResourceGroupName
 
-Erstellen Sie die neue Ressourcengruppe mit diesen Befehlen. Ersetzen Sie alles in den Anführungszeichen, einschließlich der Zeichen < and >, durch die korrekten Namen.
+Erstellen Sie die neue Ressourcengruppe mit diesen Befehlen. Ersetzen Sie alles in den Anführungszeichen, einschließlich der Zeichen < und >, durch die korrekten Namen.
 
 	$rgName="<resource group name>"
 	$locName="<location name, such as West US>"
@@ -92,7 +92,7 @@ Erstellen Sie mit diesen Befehlen ein neues Speicherkonto für die neue Testumge
 	$saName="<storage account name>"
 	New-AzureRMStorageAccount -Name $saName -ResourceGroupName $rgName –Type Standard_LRS -Location $locName
 
-Erstellen Sie als Nächstes das Azure Virtual Network „TestLab“, in dem das Corpnet-Subnetz der Basiskonfiguration gehostet wird, und schützen Sie es mit einer Netzwerksicherheitsgruppe.
+Erstellen Sie als Nächstes das virtuelle Netzwerk „TestLab“, in dem das Corpnet-Subnetz der Basiskonfiguration gehostet wird, und schützen Sie es mit einer Netzwerksicherheitsgruppe.
 
 	$rgName="<name of your new resource group>"
 	$locName="<Azure location name, such as West US>"
@@ -135,8 +135,8 @@ Geben Sie zuerst den Namen der Ressourcengruppe, den Azure-Standort und den Name
 
 Stellen Sie dann eine Verbindung mit dem virtuellen Computer DC1 her.
 
-1.	Klicken Sie im Azure-Portal auf **Virtuelle Computer** und anschließend auf den virtuellen Computer **DC1**.  
-2.	Klicken Sie unter **DC1** auf **Verbinden**.
+1.	Klicken Sie im Azure-Portal auf **Virtuelle Computer** und anschließend auf den virtuellen Computer **DC1**.
+2.	Klicken Sie im Bereich **DC1** auf **Verbinden**.
 3.	Öffnen Sie die heruntergeladene Datei „DC1.rdp“, wenn Sie dazu aufgefordert werden.
 4.	Wenn ein Meldungsfeld der Remotedesktopverbindung angezeigt wird, klicken Sie auf **Verbinden**.
 5.	Wenn Sie zur Eingabe von Anmeldeinformationen aufgefordert werden, geben Sie Folgendes ein:
@@ -167,7 +167,7 @@ Beachten Sie, dass die Ausführung dieser Befehle einige Minuten in Anspruch neh
 Stellen Sie nach dem Neustart des virtuellen Computers DC1 erneut eine Verbindung mit DC1 her.
 
 1.	Klicken Sie im Azure-Portal auf **Virtuelle Computer** und anschließend auf den virtuellen Computer **DC1**.
-2.	Klicken Sie unter **DC1** auf **Verbinden**.
+2.	Klicken Sie im Bereich **DC1** auf **Verbinden**.
 3.	Wenn Sie zum Öffnen von „DC1.rdp“ aufgefordert werden, klicken Sie auf **Öffnen**.
 4.	Wenn ein Meldungsfeld der Remotedesktopverbindung angezeigt wird, klicken Sie auf **Verbinden**.
 5.	Wenn Sie zur Eingabe von Anmeldeinformationen aufgefordert werden, geben Sie Folgendes ein:
@@ -244,7 +244,7 @@ Die aktuelle Konfiguration sieht folgendermaßen aus.
 
 ![](./media/virtual-machines-windows-test-config-env/virtual-machines-windows-test-config-env-ph3.png)
 
-## Phase 4: Konfigurieren von CLIENT1
+## Phase 4: Konfigurieren von CLIENT1
 
 CLIENT1 fungiert als typischer Laptop-, Tablet- oder Desktopcomputer im Contoso-Intranet.
 
@@ -333,4 +333,4 @@ Zum Starten der virtuellen Computer mit Azure PowerShell in der richtigen Reihen
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "APP1"
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "CLIENT1"
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

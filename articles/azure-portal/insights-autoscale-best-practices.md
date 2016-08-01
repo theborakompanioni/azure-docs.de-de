@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="07/15/2016"
 	ms.author="ashwink"/>
 
 # Empfohlene Methoden für die automatische Skalierung in Azure Insights
@@ -75,7 +75,7 @@ Veranschaulichen wir diesen Punkt mit einem Beispiel, um sicherzustellen, dass S
 - Erhöhe die Anzahl der Instanzen um 1, wenn Anzahl der Nachrichten in Speicherwarteschlange >= 50
 - Verringere die Anzahl der Instanzen um 1, wenn Anzahl der Nachrichten in Speicherwarteschlange <= 10
 
-Angenommen, es gibt zu Anfang 2 Instanzen. Nehmen Sie dann an, dass weiterhin Nachrichten eintreffen, und dass die Anzahl beim Ansehen der Speicherwarteschlange bei 50 liegt. Sie könnten annehmen, dass die automatische Skalierung eine horizontale Hochskalierungsaktion starten sollte. Beachten Sie jedoch, dass es sich immer noch um 50 / 2 = 25 Nachrichten pro Instanz handelt. Daher wird keine horizontale Hochskalierung ausgeführt. Damit die erste horizontale Hochskalierung ausgeführt wird, sollte die Gesamtanzahl der Nachrichten in der Speicherwarteschlange 100 sein. Nehmen Sie jetzt an, dass die Gesamtanzahl der Nachrichten 100 erreicht. Eine dritte Instanz wird aufgrund einer horizontalen Hochskalierungsaktion hinzugefügt. Die nächste horizontale Hochskalierungsaktion wird erst durchgeführt, wenn die Gesamtzahl der Nachrichten in der Warteschlange 300 erreicht. Sehen wir uns nun die horizontale Herunterskalierungsaktion an. Nehmen Sie an, dass die Anzahl der Instanzen 3 ist. Die erste horizontale Herunterskalierungsaktion wird durchgeführt, wenn die Gesamtzahl der Nachrichten in der Warteschlange 30 beträgt, da 30 / 3 = 10 Nachrichten pro Instanz ergeben, den Schwellenwert zum horizontalen Herunterskalieren.
+Angenommen, es gibt zu Anfang 2 Instanzen. Nehmen Sie dann an, dass weiterhin Nachrichten eintreffen, und dass die Anzahl beim Ansehen der Speicherwarteschlange bei 50 liegt. Sie könnten annehmen, dass die automatische Skalierung eine horizontale Hochskalierungsaktion starten sollte. Beachten Sie jedoch, dass es sich immer noch um 50 / 2 = 25 Nachrichten pro Instanz handelt. Daher wird keine horizontale Hochskalierung ausgeführt. Damit die erste horizontale Hochskalierung ausgeführt wird, sollte die Gesamtanzahl der Nachrichten in der Speicherwarteschlange 100 sein. Nehmen Sie jetzt an, dass die Gesamtanzahl der Nachrichten 100 erreicht. Eine dritte Instanz wird aufgrund einer horizontalen Hochskalierungsaktion hinzugefügt. Die nächste horizontale Hochskalierungsaktion wird erst durchgeführt, wenn die Gesamtzahl der Nachrichten in der Warteschlange 150 erreicht. Sehen wir uns nun die horizontale Herunterskalierungsaktion an. Nehmen Sie an, dass die Anzahl der Instanzen 3 ist. Die erste horizontale Herunterskalierungsaktion wird durchgeführt, wenn die Gesamtzahl der Nachrichten in der Warteschlange 30 beträgt, da 30 / 3 = 10 Nachrichten pro Instanz ergeben, den Schwellenwert zum horizontalen Herunterskalieren.
 
 ### Überlegungen zur Skalierung, wenn mehrere Profile in einer Einstellung für die automatische Skalierung konfiguriert sind
 
@@ -126,4 +126,4 @@ Die automatische Skalierung benachrichtigt die Administratoren und die Mitwirken
 - Für den Autoskalierungsdienst stehen keine Metriken zur Verfügung, auf deren Grundlage eine Skalierungsentscheidung getroffen werden kann.
 - Metriken stehen wieder zur Verfügung (Wiederherstellung), um eine Skalierungsentscheidung zu treffen. Zusätzlich zu den oben aufgeführten Bedingungen, können Sie E-Mail- oder Webhook-Benachrichtigungen konfigurieren, um bei erfolgreichen Skalierungsaktionen informiert zu werden.
 
-<!----HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0720_2016-->

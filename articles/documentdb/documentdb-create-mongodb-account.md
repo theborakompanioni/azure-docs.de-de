@@ -18,7 +18,7 @@
 
 # Erstellen eines DocumentDB-Kontos mit Protokollunterstützung für MongoDB über das Azure-Portal
 
-Zum Erstellen eines DocumentDB-Kontos mit Protokollunterstützung für MongoDB benötigen Sie Folgendes:
+Zum Erstellen eines Azure DocumentDB-Kontos mit Protokollunterstützung für MongoDB benötigen Sie Folgendes:
 
 - Ein Azure-Konto. Sie können ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) einrichten, falls Sie noch kein Konto besitzen.
 
@@ -48,7 +48,7 @@ Führen Sie die folgenden Schritte aus, um ein DocumentDB-Konto mit Protokollunt
 	![Screenshot des Blatts für ein neues DocumentDB-Konto mit Protokollunterstützung für MongoDB](./media/documentdb-create-mongodb-account/create-documentdb-mongodb-account.png)
 
 
-	- Geben Sie im Feld **ID** einen Namen zur Identifizierung des Kontos ein. Wenn die **ID** überprüft wurde, wird im Feld **ID** ein grünes Häkchen angezeigt. Der Wert für **ID** wird zum Hostnamen innerhalb des URI. Die **ID** darf nur Kleinbuchstaben, Ziffern und den Bindestrich "-" enthalten und muss zwischen 3 und 50 Zeichen lang sein. Beachten Sie, dass *documents.azure.com* an den gewählten Namen des Endpunkts angehängt wird, um den Endpunkt des Kontos zu erstellen.
+	- Geben Sie im Feld **ID** einen Namen zur Identifizierung des Kontos ein. Wenn die **ID** überprüft wurde, wird im Feld **ID** ein grünes Häkchen angezeigt. Der Wert für **ID** wird zum Hostnamen innerhalb des URI. Die **ID** darf nur Kleinbuchstaben, Ziffern und den Bindestrich "-" enthalten und muss zwischen 3 und 50 Zeichen lang sein. Beachten Sie, dass *documents.azure.com* an den gewählten Namen des Endpunkts angehängt wird, um den Endpunkt des Kontos zu erstellen.
 
 	- Wählen Sie unter **Abonnement** das Azure-Abonnement für das Konto aus. Wenn Ihr Konto nur über ein Abonnement verfügt, wird dieses Konto standardmäßig ausgewählt.
 
@@ -78,4 +78,4 @@ Führen Sie die folgenden Schritte aus, um ein DocumentDB-Konto mit Protokollunt
 
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

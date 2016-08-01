@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="05/16/2016"
+	ms.date="07/14/2016"
 	ms.author="jroth"/>
 
 # SQL Server-Agent-Erweiterung für virtuelle SQL Server-Computer (Resource Manager)
@@ -25,10 +25,9 @@
 
 Die Erweiterung für SQL Server-IaaS-Agent (SQLIaaSExtension) wird auf virtuellen Azure-Computern zum Automatisieren von Verwaltungsaufgaben ausgeführt. Dieses Thema bietet eine Übersicht über die Dienste, die von der Erweiterung unterstützt werden, sowie Anweisungen zu Installation, Status und Deinstallation.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] Klassisches Bereitstellungsmodell. 
 
-
-Klassisches Bereitstellungsmodell. Den Artikel zum klassischen Bereitstellungsmodell finden Sie unter [SQL Server-Agent-Erweiterung für virtuelle SQL Server-Computer (Klassisch)](virtual-machines-windows-classic-sql-server-agent-extension.md).
+Den Artikel zum klassischen Bereitstellungsmodell finden Sie unter [SQL Server-Agent-Erweiterung für virtuelle SQL Server-Computer (Klassisch)](virtual-machines-windows-classic-sql-server-agent-extension.md).
 
 ## Unterstützte Dienste
 
@@ -69,9 +68,11 @@ Wenn Sie einen virtuellen Windows Server-Computer nur mit dem Betriebssystem ers
 
 Bei einer Aktualisierung auf die aktuelle Version der SQL-IaaS-Agent-Erweiterung müssen Sie den virtuellen Computer nach der Aktualisierung neu starten.
 
+>[AZURE.NOTE] Wenn Sie die SQL Server-IaaS-Agent-Erweiterung manuell auf einem virtuellen Windows Server-Computer installieren, müssen Sie ihre Funktionen mithilfe von PowerShell-Befehlen verwenden und verwalten. Die Portaloberfläche steht nur für SQL Server-Katalogimages zur Verfügung.
+
 ## Status
 
-Eine Möglichkeit, zu überprüfen, ob die Erweiterung installiert ist, ist das Anzeigen des Agent-Status im Azure-Portal. Wählen Sie auf dem Blatt für den virtuellen Computer **Alle Einstellungen**, und klicken Sie dann auf **Erweiterungen**. Die Erweiterung **SQLIaaSExtension** sollte aufgeführt sein.
+Eine Möglichkeit, zu überprüfen, ob die Erweiterung installiert ist, ist das Anzeigen des Agent-Status im Azure-Portal. Wählen Sie auf dem Blatt für den virtuellen Computer **Alle Einstellungen** aus, und klicken Sie dann auf **Erweiterungen**. Die Erweiterung **SQLIaaSExtension** sollte aufgeführt sein.
 
 ![Erweiterung für SQL Server-IaaS-Agent im Azure-Portal](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-portal.png)
 
@@ -87,7 +88,7 @@ Mit dem Befehl oben wird überprüft, ob der Agent installiert ist. Zudem werden
 
 ## Entfernen   
 
-Im Azure-Portal können Sie die Erweiterung deinstallieren, indem Sie in den Eigenschaften des virtuellen Computers auf dem Blatt **Erweiterungen** auf die Auslassungszeichen klicken. Klicken Sie dann auf **Löschen**.
+Im Azure-Portal können Sie die Erweiterung deinstallieren, indem Sie in den Eigenschaften des virtuellen Computers auf dem Blatt **Erweiterungen** auf die Auslassungspunkte klicken. Klicken Sie dann auf **Löschen**.
 
 ![Deinstallieren der Erweiterung für SQL Server-IaaS-Agent im Azure-Portal](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-uninstall.png)
 
@@ -99,6 +100,6 @@ Sie können auch das PowerShell-Cmdlet **Remove-AzureRmVMSqlServerExtension** ve
 
 Verwenden Sie einen der von der Erweiterung unterstützten Dienste. Weitere Informationen finden Sie in den im Abschnitt [Unterstützte Dienste](#supported-services) in diesem Artikel aufgeführten Themen.
 
-Ausführlichere Informationen zur Verwendung von SQL Server auf virtuellen Azure-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
+Ausführlichere Informationen zur Verwendung von SQL Server auf virtuellen Azure-Computern finden Sie unter [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!----HONumber=AcomDC_0525_2016-->
+<!----HONumber=AcomDC_0720_2016-->

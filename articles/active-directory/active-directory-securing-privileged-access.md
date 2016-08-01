@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="kgremban"
-	manager="stevenpo"
+	manager="femila"
 	editor="mwahl"/>
 
 <tags
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/15/2016"
+	ms.date="07/14/2016"
 	ms.author="kgremban"/>
 
 
 # Sichern des privilegierten Zugriffs in Azure AD
 
-Das Sichern des privilegierten Zugriffs ist ein entscheidender erster Schritt, um die geschäftlichen Ressourcen in einem modernen Unternehmen zu schützen. Die Sicherheit der meisten oder sogar aller geschäftlichen Ressourcen in einem Unternehmen hängt von der Integrität der privilegierten Konten ab, über die IT-Systeme verwaltet und betrieben werden. Cyberkriminelle versuchen diese Konten anzugreifen, um Zugriff auf die Daten und Systeme eines Unternehmens zu erhalten.
+Das Sichern des privilegierten Zugriffs ist ein entscheidender erster Schritt, um die geschäftlichen Ressourcen in einem modernen Unternehmen zu schützen. Mit privilegierten Konten werden IT-Systeme verwaltet. Cyberkriminelle versuchen diese Konten anzugreifen, um Zugriff auf die Daten und Systeme eines Unternehmens zu erhalten. Zum Schutz des privilegierten Zugriffs empfiehlt es sich, Konten und Systeme zu isolieren, um sie vor dem Zugriff durch böswillige Benutzer zu schützen.
 
-Um den administrativen Zugriff vor solchen entschlossenen Angreifern zu schützen, müssen diese administrativen Konten und Systeme von Risiken isoliert werden. Über Clouddienste erhalten immer mehr Benutzer privilegierten Zugriff. Hierzu gehören globale Administratoren von Office 365, Azure-Abonnementadministratoren und Benutzer die administrativen Zugriff zu virtuellen Computern oder SaaS-Apps besitzen.
+Über Clouddienste erhalten immer mehr Benutzer privilegierten Zugriff. Hierzu gehören globale Administratoren von Office 365, Azure-Abonnementadministratoren und Benutzer die administrativen Zugriff zu virtuellen Computern oder SaaS-Apps besitzen.
 
 Microsoft empfiehlt, der Roadmap unter [Securing Privileged Access](https://technet.microsoft.com/library/mt631194.aspx) (Sichern des privilegierten Zugriffs) zu folgen.
 
@@ -63,11 +63,7 @@ Mit der bedingten Zugriffssteuerung überprüft Azure Active Directory beim Auth
 ![Festlegen bedingter Zugriffsregeln mit MFA][4]
 
 
-## Rollenmodell
-
-Um Sicherheitsrisiken zu verringern, sollten Sie Ihr Rollen- und Delegierungsmodell überprüfen und Administratorrollen von Clouddiensten sowie die Nutzbarkeit dieser Administratorrollen als wichtigen Grundsatz einbeziehen. Dieses Modell sollte Just-In-Time-Funktionen nutzen.
-
-## Nächste Schritte
+## Verwandte Artikel
 
 - [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md) aktivieren
 - [Azure AD Privileged Identity Management](active-directory-privileged-identity-management-configure.md) aktivieren
@@ -75,7 +71,7 @@ Um Sicherheitsrisiken zu verringern, sollten Sie Ihr Rollen- und Delegierungsmod
 - [Steuerung des bedingten Zugriffs](active-directory-conditional-access.md) aktivieren
 
 
-Weitere Informationen zum Aufbau einer vollständigen Sicherheitsroadmap finden Sie im Abschnitt „Customer responsibilities and roadmap“ (Zuständigkeiten des Kunden und Kundenroadmap) des Dokuments [Microsoft Cloud Security for Enterprise Architects](http://aka.ms/securecustomer) (Microsoft-Cloudsicherheit für Unternehmensarchitekten). Wenn Sie weitere Informationen zum Einsatz von Microsoft-Diensten im Zusammenhang mit einem dieser Themen wünschen, wenden Sie sich an Ihren Microsoft-Vertriebsbeauftragten, oder besuchen Sie unsere Seite zu [Cybersicherheitslösungen](https://www.microsoft.com/microsoftservices/campaigns/cybersecurity-protection.aspx).
+Weitere Informationen zum Aufbau einer vollständigen Sicherheitsroadmap finden Sie im Abschnitt „Customer responsibilities and roadmap“ (Zuständigkeiten des Kunden und Kundenroadmap) des Dokuments [Microsoft Cloud Security for Enterprise Architects](http://aka.ms/securecustomer) (Microsoft-Cloudsicherheit für Unternehmensarchitekten). Um weitere Informationen zum Einsatz von Microsoft-Diensten zur Unterstützung bei einem dieser Themen zu erhalten, wenden Sie sich an Ihren Microsoft-Vertriebsbeauftragten, oder besuchen Sie unsere Seite zu [Cybersecurity solutions](https://www.microsoft.com/microsoftservices/campaigns/cybersecurity-protection.aspx) (Cybersicherheitslösungen).
 
 <!--Image references-->
 [1]: ./media/active-directory-privileged-identity-management-configure/Search_PIM.png
@@ -83,4 +79,4 @@ Weitere Informationen zum Aufbau einer vollständigen Sicherheitsroadmap finden 
 [3]: ./media/active-directory-identityprotection/29.png
 [4]: ./media/active-directory-conditional-access/conditionalaccess-saas-apps.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

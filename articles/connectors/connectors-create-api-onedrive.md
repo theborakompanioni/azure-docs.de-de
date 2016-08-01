@@ -1,315 +1,409 @@
 <properties
-pageTitle="Hinzufügen des OneDrive-Connectors zu PowerApps Enterprise oder Logik-Apps | Microsoft Azure"
-description="Übersicht über den OneDrive-Connector mit REST-API-Parametern"
-services=""    
-documentationCenter=""     
-authors="msftman"    
-manager="erikre"    
-editor=""
-tags="connectors"/>
+	pageTitle="Hinzufügen des OneDrive-Connectors zu Ihren Logik-Apps | Microsoft Azure"
+	description="Übersicht über den OneDrive-Connector mit REST-API-Parametern"
+	services="app-servicelogic"    
+	documentationCenter=""     
+	authors="MandiOhlinger"    
+	manager="erikre"    
+	editor=""
+	tags="connectors"/>
 
 <tags
-ms.service="multiple"
-ms.devlang="na"
-ms.topic="article"
-ms.tgt_pltfrm="na"
-ms.workload="na"
-ms.date="05/18/2016"
-ms.author="mandia"/>
+   ms.service="app-service-logic"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="integration"
+   ms.date="07/19/2016"
+   ms.author="mandia"/>
 
 # Erste Schritte mit dem OneDrive-Connector
 
-Stellen Sie eine Verbindung mit OneDrive her, um Ihre Dateien zu verwalten, d. h. diese hochzuladen, abzurufen, zu löschen usw. Der OneDrive-Connector kann in Folgendem verwendet werden:
+Stellen Sie eine Verbindung mit OneDrive her, um Ihre Dateien zu verwalten, d. h. diese hochzuladen, abzurufen, zu löschen usw. OneDrive ermöglicht Folgendes:
 
-- Logik-Apps 
-- PowerApps
+- Erstellen Ihres Workflows durch Speichern von Dateien in OneDrive oder Aktualisieren vorhandener Dateien in OneDrive.
+- Verwenden von Triggern, um den Workflow zu starten, wenn eine Datei in OneDrive erstellt oder aktualisiert wird.
+- Verwenden von Aktionen, um z. B. eine Datei zu kopieren oder zu löschen. So kann beispielsweise bei Eingang einer neuen Office 365-E-Mail mit einer Anlage (Trigger) eine neue Datei in OneDrive erstellt werden (Aktion).
 
-> [AZURE.SELECTOR]
-- [Logik-Apps](../articles/connectors/connectors-create-api-onedrive.md)
-- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-onedrive.md)
+Dieses Thema beschreibt, wie Sie den OneDrive-Connector in einer Logik-App verwenden, und enthält eine Liste mit den Triggern und Aktionen.
 
-&nbsp;
-
->[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
-
-OneDrive ermöglicht Folgendes:
-
-- Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus OneDrive abgerufen werden. 
-- Verwenden von Triggern, wenn eine Datei erstellt oder aktualisiert wird.
-- Verwenden von Aktionen, um z. B. eine Datei zu kopieren oder zu löschen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn eine neue Datei in OneDrive erstellt wird, können Sie die Datei mit Office 365 per E-Mail senden.
-- Fügen Sie den OneDrive-Connector in PowerApps Enterprise hinzu. Die Benutzer können diesen Connector anschließend in ihren Apps verwenden. 
-
-Informationen zum Hinzufügen eines Connectors in PowerApps Enterprise finden Sie unter [Registrieren einer Microsoft-verwalteten API oder einer IT-verwalteten API](../power-apps/powerapps-register-from-available-apis.md).
-
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
-
-## Trigger und Aktionen
-Der OneDrive-Connector enthält die folgenden Trigger und Aktionen.
-
-| Trigger | Aktionen|
-| --- | --- |
-|<ul><li>Wenn eine Datei erstellt wird</li><li>Wenn eine Datei geändert wird</li></ul> | <ul><li>Datei erstellen</li><li>Dateien in einem Ordner auflisten</li><li>Wenn eine Datei erstellt wird</li><li>Datei kopieren</li><li>Datei löschen</li><li>Ordner extrahieren</li><li>Dateiinhalt anhand der ID abrufen</li><li>Dateiinhalt anhand des Pfads abrufen</li><li>Dateimetadaten anhand der ID abrufen</li><li>Dateimetadaten anhand des Pfads abrufen</li><li>Stammordner auflisten</li><li>Datei aktualisieren</li><li>Wenn eine Datei geändert wird</li></ul>
-
-Alle Connectors unterstützen Daten im JSON- und XML-Format.
+>[AZURE.NOTE] Diese Version des Artikels gilt für die allgemein verfügbare Version von Logic Apps.
 
 ## Herstellen einer Verbindung mit OneDrive
 
-Wenn Sie diesen Connector Ihren Logik-Apps hinzufügen, müssen Sie ihnen das Herstellen einer Verbindung mit Ihrem OneDrive erlauben.
+Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, muss zunächst eine *Verbindung* mit dem Dienst hergestellt werden. Eine Verbindung stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her. Wenn Sie also beispielsweise eine Verbindung mit OneDrive herstellen möchten, müssen Sie zunächst eine entsprechende *Verbindung* erstellen. Geben Sie zum Erstellen einer Verbindung die Anmeldeinformationen ein, mit denen Sie normalerweise auf den Dienst zugreifen, mit dem Sie eine Verbindung herstellen möchten. Geben Sie für OneDrive also die Anmeldeinformationen Ihres OneDrive-Kontos ein, um die Verbindung zu erstellen.
 
-1. Melden Sie sich bei Ihrem OneDrive-Konto an.
-2. Erlauben Sie, dass Ihre Logik-Apps sich mit Ihrem OneDrive verbinden und es nutzen. 
+### Erstellen der Verbindung
 
 >[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit OneDrive](../../includes/connectors-create-api-onedrive.md)]
 
->[AZURE.TIP] Sie können dieselbe Verbindung in anderen Logik-Apps verwenden.
+## Verwenden eines Triggers
 
-## Swagger-REST-API – Referenz
-Gilt für Version: 1.0.
+Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
+
+1. Geben Sie in der Logik-App „onedrive“ ein, um eine Liste mit den Triggern abzurufen:
+
+	![](./media/connectors-create-api-onedrive/onedrive-1.png)
+
+2. Wählen Sie **When a file is modified** (Wenn eine Datei geändert wird) aus. Falls bereits eine Verbindung vorhanden ist, wählen Sie die Schaltfläche **...** (Auswahl anzeigen) aus, um einen Ordner auszuwählen.
+
+	![](./media/connectors-create-api-onedrive/sample-folder.png)
+
+	Wenn Sie zur Anmeldung aufgefordert werden, geben Sie die Anmeldeinformationen ein, um die Verbindung zu erstellen. Die erforderlichen Schritte sind in diesem Thema unter [Erstellen der Verbindung](connectors-create-api-onedrive.md#create-the-connection) aufgeführt.
+
+	> [AZURE.NOTE] In diesem Beispiel wird die Logik-App ausgeführt, wenn eine Datei im ausgewählten Ordner aktualisiert wird. Fügen Sie zum Anzeigen der Ergebnisse dieses Triggers eine weitere Aktion hinzu, die Ihnen eine E-Mail sendet. Fügen Sie beispielsweise die Office 365 Outlook-Aktion *E-Mail senden* hinzu, um eine E-Mail zu erhalten, wenn eine Datei aktualisiert wird.
+
+3. Speichern Sie Ihre Änderungen. (Die Option **Speichern** befindet sich links oben auf der Symbolleiste.) Ihre Logik-App wird gespeichert und ggf. automatisch aktiviert.
 
 
-### Dateimetadaten anhand der ID abrufen
-Ruft Metadaten einer Datei in OneDrive anhand der ID ab. ```GET: /datasets/default/files/{id}```
+## Verwenden einer Aktion
 
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner der Datei in OneDrive|
+Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
 
-### Antworten
+1. Wählen Sie das Pluszeichen aus. Es stehen mehrere Auswahlmöglichkeiten zur Verfügung: **Aktion hinzufügen**, **Bedingung hinzufügen** oder eine der Optionen unter **Mehr**.
+
+	![](./media/connectors-create-api-onedrive/add-action.png)
+
+2. Wählen Sie **Aktion hinzufügen** aus.
+
+3. Geben Sie im Textfeld die Zeichenfolge „onedrive“ ein, um eine Liste mit allen verfügbaren Aktionen zu erhalten.
+
+	![](./media/connectors-create-api-onedrive/onedrive-actions.png)
+
+4. In unserem Beispiel wählen wir **OneDrive - Create file** (OneDrive – Datei erstellen) aus. Falls bereits eine Verbindung vorhanden ist, wählen Sie den Pfad des Zielordners für die Datei aus, geben Sie den Dateinamen ein, und wählen Sie den gewünschten Dateiinhalt aus:
+
+	![](./media/connectors-create-api-onedrive/sample-action.png)
+
+	Wenn Sie zur Eingabe der Verbindungsinformationen aufgefordert werden, geben Sie die Details ein, um die Verbindung zu erstellen. Die Eigenschaften werden in diesem Thema unter [Erstellen der Verbindung](connectors-create-api-onedrive.md#create-the-connection) beschrieben.
+
+	> [AZURE.NOTE] In diesem Beispiel erstellen wir eine neue Datei in einem OneDrive-Ordner. Für die Erstellung der OneDrive-Datei kann die Ausgabe eines anderen Triggers verwendet werden. Fügen Sie beispielsweise den Office 365 Outlook-Trigger *When a new email arrives* (Wenn eine neue E-Mail eingeht) hinzu. Fügen Sie dann die OneDrive-Aktion *Datei erstellen* hinzu, die die Felder „Anlagen“ und „Inhaltstyp“ innerhalb einer ForEach-Schleife verwendet, um die neue Datei in OneDrive zu erstellen.
+	> 
+	> ![](./media/connectors-create-api-onedrive/foreach-action.png)
+
+5. Speichern Sie Ihre Änderungen. (Die Option **Speichern** befindet sich links oben auf der Symbolleiste.) Ihre Logik-App wird gespeichert und ggf. automatisch aktiviert.
+
+
+## Technische Details
+
+## Trigger
+
+|Trigger | Beschreibung|
+|--- | ---|
+|[Wenn eine Datei erstellt wird](connectors-create-api-onedrive.md#when-a-file-is-created)|Dieser Vorgang löst einen Fluss aus, wenn in einem Ordner eine neue Datei erstellt wird.|
+|[Wenn eine Datei geändert wird](connectors-create-api-onedrive.md#when-a-file-is-modified)|Dieser Vorgang löst einen Fluss aus, wenn in einem Ordner eine Datei geändert wird.|
+
+
+## Aktionen
+
+|Aktion|Beschreibung|
+|--- | ---|
+|[Dateimetadaten abrufen](connectors-create-api-onedrive.md#get-file-metadata)|Dieser Vorgang ruft die Metadaten für eine Datei ab.|
+|[Datei aktualisieren](connectors-create-api-onedrive.md#update-file)|Dieser Vorgang aktualisiert eine Datei.|
+|[Datei löschen](connectors-create-api-onedrive.md#delete-file)|Dieser Vorgang löscht eine Datei.|
+|[Dateimetadaten anhand des Pfads abrufen](connectors-create-api-onedrive.md#get-file-metadata-using-path)|Dieser Vorgang ruft die Metadaten einer Datei unter Verwendung des Pfads ab.|
+|[Dateiinhalt anhand des Pfads abrufen](connectors-create-api-onedrive.md#get-file-content-using-path)|Dieser Vorgang ruft den Inhalt einer Datei unter Verwendung des Pfads ab.|
+|[Dateiinhalte abrufen](connectors-create-api-onedrive.md#get-file-content)|Dieser Vorgang ruft den Inhalt einer Datei ab.|
+|[Datei erstellen](connectors-create-api-onedrive.md#create-file)|Dieser Vorgang erstellt eine Datei.|
+|[Datei kopieren](connectors-create-api-onedrive.md#copy-file)|Dieser Vorgang kopiert eine Datei in OneDrive.|
+|[Dateien im Ordner aufführen](connectors-create-api-onedrive.md#list-files-in-folder)|Dieser Vorgang ruft die Liste mit den in einem Ordner enthaltenen Dateien und Unterordnern ab.|
+|[Dateien im Stammordner aufführen](connectors-create-api-onedrive.md#list-files-in-root-folder)|Dieser Vorgang ruft die Liste mit den im Stammordner enthaltenen Dateien und Unterordnern ab.|
+|[Archiv in Ordner extrahieren](connectors-create-api-onedrive.md#extract-archive-to-folder)|Dieser Vorgang extrahiert eine Archivdatei (beispielsweise eine ZIP-Datei) in einen Ordner.|
+
+### Aktionsdetails
+
+Dieser Abschnitt enthält spezifische Details zu den einzelnen Aktionen. Hierzu zählen unter anderem erforderliche oder optionale Eingabeeigenschaften sowie entsprechende Ausgaben im Zusammenhang mit dem Connector.
+
+
+#### Dateimetadaten abrufen
+Dieser Vorgang ruft die Metadaten für eine Datei ab.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|id*|File|Datei auswählen|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+BlobMetadata
+
+| Eigenschaftenname | Datentyp |
+|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+#### Datei aktualisieren
+Dieser Vorgang aktualisiert eine Datei.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|id*|File|Datei auswählen|
+|body*|Dateiinhalte|Inhalt der Datei|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+BlobMetadata
+
+| Eigenschaftenname | Datentyp |
+|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+#### Datei löschen
+Dieser Vorgang löscht eine Datei.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|id*|File|Datei auswählen|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+Keine.
+
+#### Dateimetadaten anhand des Pfads abrufen
+Dieser Vorgang ruft die Metadaten einer Datei unter Verwendung des Pfads ab.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|path*|Dateipfad|Datei auswählen|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+BlobMetadata
+
+| Eigenschaftenname | Datentyp |
+|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+#### Dateiinhalt anhand des Pfads abrufen
+Dieser Vorgang ruft den Inhalt einer Datei unter Verwendung des Pfads ab.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|path*|Dateipfad|Datei auswählen|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+Keine.
+
+
+#### Dateiinhalte abrufen
+Dieser Vorgang ruft den Inhalt einer Datei ab.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|id*|File|Datei auswählen|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+Keine.
+
+#### Datei erstellen
+Dieser Vorgang erstellt eine Datei.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|folderPath*|Ordnerpfad|Ordner auswählen|
+|name*|Dateiname|Name der Datei|
+|body*|Dateiinhalte|Inhalt der Datei|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+BlobMetadata
+
+| Eigenschaftenname | Datentyp |
+|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+#### Datei kopieren
+Dieser Vorgang kopiert eine Datei in OneDrive.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|source*|Quell-URL|URL zur Quelldatei|
+|destination*|Zieldateipfad|Zieldateipfad einschließlich Zieldateiname|
+|overwrite|Überschreiben?|Überschreibt die Zieldatei, falls auf „True“ festgelegt|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+BlobMetadata
+
+| Eigenschaftenname | Datentyp |
+|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+#### Wenn eine Datei erstellt wird
+Dieser Vorgang löst einen Fluss aus, wenn in einem Ordner eine neue Datei erstellt wird.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|folderId*|Ordner|Ordner auswählen|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+Keine.
+
+#### Wenn eine Datei geändert wird
+Dieser Vorgang löst einen Fluss aus, wenn in einem Ordner eine Datei geändert wird.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|folderId*|Ordner|Ordner auswählen|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+Keine.
+
+#### Dateien im Ordner aufführen
+Dieser Vorgang ruft die Liste mit den in einem Ordner enthaltenen Dateien und Unterordnern ab.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|id*|Ordner|Ordner auswählen|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+BlobMetadata
+
+| Eigenschaftenname | Datentyp |
+|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string||
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+#### Dateien im Stammordner aufführen
+Dieser Vorgang ruft die Liste mit den im Stammordner enthaltenen Dateien und Unterordnern ab.
+
+Es gibt keine Parameter für diesen Aufruf.
+
+
+##### Ausgabedetails
+BlobMetadata
+
+| Eigenschaftenname | Datentyp |
+|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+#### Archiv in Ordner extrahieren
+Dieser Vorgang extrahiert eine Archivdatei (beispielsweise eine ZIP-Datei) in einen Ordner.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|source*|Quellarchiv-Dateipfad|Pfad zur Archivdatei|
+|destination*|Zielordnerpfad|Pfad, an dem der Archivinhalt extrahiert werden soll|
+|overwrite|Überschreiben?|Überschreibt die Zieldateien, falls auf „True“ festgelegt|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+BlobMetadata
+
+| Eigenschaftenname | Datentyp |
+|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+## HTTP-Antworten
+
+In der folgenden Tabelle werden die Antworten auf die Aktionen und Trigger aufgeführt und beschrieben:
+
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
-
-
-### Datei aktualisieren
-Aktualisiert eine Datei in OneDrive. ```PUT: /datasets/default/files/{id}```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner der Datei, die in OneDrive aktualisiert werden soll|
-|body| |Ja|body|(Keine)|Inhalt der Datei, die in OneDrive aktualisiert werden soll|
-
-
-### Antwort
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-### Datei löschen
-Löscht eine Datei aus OneDrive. ```DELETE: /datasets/default/files/{id}```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner der aus OneDrive zu löschenden Datei|
-
-
-### Antwort
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-### Dateimetadaten anhand des Pfads abrufen
-Ruft Metadaten einer Datei in OneDrive anhand des Pfads ab. ```GET: /datasets/default/GetFileByPath```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|path|string|Ja|query|(Keine)|Eindeutiger Pfad zur Datei in OneDrive|
-
-
-### Antwort
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-
-
-### Dateiinhalt anhand des Pfads abrufen
-Ruft den Inhalt einer Datei in OneDrive anhand des Pfads ab. ```GET: /datasets/default/GetFileContentByPath```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|path|string|Ja|query|(Keine)|Eindeutiger Pfad zur Datei in OneDrive|
-
-
-### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-
-
-### Dateiinhalt anhand der ID abrufen
-Ruft den Inhalt einer Datei in OneDrive anhand der ID ab. ```GET: /datasets/default/files/{id}/content```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner der Datei in OneDrive|
-
-
-### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-
-
-### Datei erstellen
-Lädt eine Datei in OneDrive hoch. ```POST: /datasets/default/files```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|folderPath|string|Ja|query|(Keine)|Ordnerpfad zum Hochladen der Datei in OneDrive|
-|name|string|Ja|query|(Keine)|Name der Datei, die in OneDrive erstellt werden soll|
-|body| |Ja|body|(Keine)|Inhalt der Datei, die in OneDrive hochgeladen werden soll|
-
-
-### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-
-### Datei kopieren
-Kopiert eine Datei in OneDrive. ```POST: /datasets/default/copyFile```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|source|string|Ja|query|(Keine)|URL zur Quelldatei|
-|destination|string|Ja|query|(Keine)|Zieldateipfad in OneDrive, einschließlich Zieldateiname|
-|overwrite|Boolescher Wert|no|query|false|Überschreibt die Zieldatei, falls auf „True“ festgelegt|
-
-
-### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-
-### Wenn eine Datei erstellt wird
-Löst einen Datenfluss aus, wenn in einem OneDrive-Ordner eine neue Datei erstellt wird. ```GET: /datasets/default/triggers/onnewfile```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|folderId|string|Ja|query|(Keine)|Eindeutiger Bezeichner des Ordners in OneDrive|
-
-
-### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-
-### Löst einen Datenfluss aus, wenn in einem OneDrive-Ordner eine Datei geändert wird.
-Löst einen Datenfluss aus, wenn in einem OneDrive-Ordner eine Datei geändert wird. ```GET: /datasets/default/triggers/onupdatedfile```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|folderId|string|Ja|query|(Keine)|Eindeutiger Bezeichner des Ordners in OneDrive|
-
-
-### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-
-### Ordner extrahieren
-Extrahiert einen Ordner in OneDrive. ```POST: /datasets/default/extractFolderV2```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|source|string|Ja|query|(Keine)|Pfad zur Archivdatei|
-|destination|string|Ja|query|(Keine)|Pfad in OneDrive, in den der Archivinhalt extrahiert wird|
-|overwrite|Boolescher Wert|no|query|false|Überschreibt die Zieldateien, falls auf „True“ festgelegt|
-
-
-### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-
-## Objektdefinitionen
-
-#### DataSetsMetadata
-
-|Eigenschaftenname | Datentyp | Erforderlich|
-|---|---|---|
-|tabular|nicht definiert|no|
-|Blob|nicht definiert|no|
-
-
-#### TabularDataSetsMetadata
-
-|Eigenschaftenname | Datentyp |Erforderlich|
-|---|---|---|
-|source|string|no|
-|displayName|string|no|
-|urlEncoding|string|no|
-|tableDisplayName|string|no|
-|tablePluralName|string|no|
-
-
-#### BlobDataSetsMetadata
-
-|Eigenschaftenname | Datentyp |Erforderlich|
-|---|---|---|
-|source|string|no|
-|displayName|string|no|
-|urlEncoding|string|no|
-
-
-
-#### BlobMetadata
-
-|Eigenschaftenname | Datentyp |Erforderlich|
-|---|---|---|
-|ID|string|no|
-|Name|string|no|
-|DisplayName|string|no|
-|Path|string|no|
-|LastModified|string|no|
-|Größe|integer|no|
-|MediaType|string|no|
-|IsFolder|Boolescher Wert|no|
-|ETag|string|no|
-|FileLocator|string|no|
+|202|Zulässig|
+|400|Ungültige Anforderung|
+|401|Nicht autorisiert|
+|403|Verboten|
+|404|Nicht gefunden|
+|500|Interner Serverfehler. Unbekannter Fehler ist aufgetreten|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## Nächste Schritte
 
-[Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+[Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Informieren Sie sich in unserer [API-Liste](apis-list.md) über die anderen verfügbaren Connectors für Logic Apps.
 
-Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
-
-[5]: https://account.live.com/developers/applications/create
-[6]: ./media/connectors-create-api-onedrive/onedrive-new-app.png
-[7]: ./media/connectors-create-api-onedrive/onedrive-app-api-settings.png
-
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0720_2016-->

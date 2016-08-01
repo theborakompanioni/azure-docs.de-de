@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/29/2016"
+   ms.date="07/18/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Partitionieren von Tabellen in SQL Data Warehouse
@@ -145,6 +145,8 @@ AND     rp.[name]    = 'SloDWPool'
 ```
 
 ## Partitionswechsel
+
+SQL Data Warehouse unterstützt das Aufteilen, Zusammenführen und Wechseln von Partitionen. Jede dieser Funktionen wird mithilfe der Anweisung [ALTER TABLE][] ausgeführt.
 
 Für den Wechsel zweier Partitionen zwischen zwei Tabellen müssen Sie sicherstellen, dass die Partitionen an ihren jeweiligen Grenzen ausgerichtet sind und die Tabellendefinitionen übereinstimmen. Da keine Überprüfungseinschränkungen verfügbar sind, um den Bereich der Werte in einer Tabelle zu erzwingen, muss die Quelltabelle die gleichen Partitionsgrenzen enthalten wie die Zieltabelle. Ist dies nicht der Fall, schlägt der Partitionswechsel fehl, da die Partitionsmetadaten nicht synchronisiert werden.
 
@@ -350,7 +352,7 @@ Bei diesem Ansatz bleibt der Code in der Quellcodeverwaltung statisch und die Pa
 
 ## Nächste Schritte
 
-Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Overview], [Tabellendatentypen][Data Types], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index], [Managing statistics on tables in SQL Data Warehouse][Statistics] (Verwalten von Statistiken für Tabellen in SQL Data Warehouse) und [Temporäre Tabellen][Temporary]. Weitere Informationen zu bewährten Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][].
+Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Overview], [Tabellendatentypen][Data Types], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index], [Managing statistics on tables in SQL Data Warehouse][Statistics] \(Verwalten von Statistiken für Tabellen in SQL Data Warehouse) und [Temporäre Tabellen][Temporary]. Weitere Informationen zu bewährten Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][].
 
 <!--Image references-->
 
@@ -372,6 +374,7 @@ Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Ove
 
 <!-- MSDN Articles -->
 [Partitionierte Tabellen und Indizes]: https://msdn.microsoft.com/library/ms190787.aspx
+[ALTER TABLE]: https://msdn.microsoft.com/de-DE/library/ms190273.aspx
 [CREATE TABLE]: https://msdn.microsoft.com/library/mt203953.aspx
 [Partitionsfunktion]: https://msdn.microsoft.com/library/ms187802.aspx
 [Partitionsschema]: https://msdn.microsoft.com/library/ms179854.aspx
@@ -379,4 +382,4 @@ Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Ove
 
 <!-- Other web references -->
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

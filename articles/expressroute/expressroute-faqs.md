@@ -1,5 +1,5 @@
 <properties
-   pageTitle="ExpressRoute – FAQ"
+   pageTitle="ExpressRoute – FAQ"
    description="Die FAQs zu ExpressRoute enthalten Informationen zu unterstützten Azure-Diensten, Kosten, Daten und Verbindungen, SLAs, Anbietern und Standorten, Bandbreite sowie zusätzliche technische Details."
    documentationCenter="na"
    services="expressroute"
@@ -15,7 +15,7 @@
    ms.date="06/13/2016"
    ms.author="cherylmc"/>
 
-# ExpressRoute – FAQ
+# ExpressRoute – FAQ
 
 
 ## Was ist ExpressRoute?
@@ -25,7 +25,7 @@ ExpressRoute ist ein Azure-Dienst, der es Ihnen ermöglicht, private Verbindunge
 ExpressRoute-Verbindungen erfolgen nicht über das öffentliche Internet und bieten eine höhere Sicherheit, größere Zuverlässigkeit und schnellere Geschwindigkeit bei konstanter Latenz als herkömmliche Verbindungen über das Internet. In einigen Fällen können durch die Verwendung von ExpressRoute-Verbindungen zum Übertragen von Daten zwischen lokalen Geräten und Azure auch drastische Kosteneinsparungen erzielt werden.
 
 ### Welche Microsoft-Clouddienste werden von ExpressRoute unterstützt?
-ExpressRoute unterstützt die meisten der derzeit verfügbaren Microsoft Azure-Dienste, z. B. Office 365. Achten Sie in nächster Zeit auf Updates hinsichtlich der allgemeinen Verfügbarkeit.
+ExpressRoute unterstützt die meisten der derzeit verfügbaren Microsoft Azure-Dienste, z. B. Office 365. Achten Sie in nächster Zeit auf Updates hinsichtlich der allgemeinen Verfügbarkeit.
 
 ### Wo ist der Dienst verfügbar?
 Auf der folgenden Seite finden Sie Informationen bezüglich der Dienststandorte und Verfügbarkeit: [ExpressRoute-Partner und -Standorte](expressroute-locations.md).
@@ -53,7 +53,7 @@ ExpressRoute unterstützt die meisten Azure-Dienste.
 
 - Verbindungen mit virtuellen Computern und Clouddiensten, die in virtuellen Netzwerken bereitgestellt werden, werden über den privaten Peeringpfad unterstützt.
 - Azure Websites werden über den öffentlichen Peeringpfad unterstützt.
-- Office 365 wird über den Microsoft-Peeringpfad unterstützt.
+- Office 365 wird über den Microsoft-Peeringpfad unterstützt.
 - Alle anderen Dienste sind über den öffentlichen Peeringpfad zugänglich. Es gibt folgende Ausnahmen.
 
 	**Die folgenden Dienste werden nicht unterstützt:**
@@ -71,7 +71,7 @@ Wir haben keine Limits hinsichtlich der übertragenen Datenmenge festgelegt. In 
 ### Welche Verbindungsgeschwindigkeiten werden von ExpressRoute unterstützt?
 Unterstützte Bandbreiten:
 
-|50 MBit/s, 100 MBit/s, 200 MBit/s, 500 MBit/s, 1 GBit/s, 2 GBit/s, 5 GBit/s, 10 GBit/s|
+|50 MBit/s, 100 MBit/s, 200 MBit/s, 500 MBit/s, 1 GBit/s, 2 GBit/s, 5 GBit/s, 10 GBit/s|
 
 ### Welche Dienstanbieter sind verfügbar?
 Eine Liste der Dienstanbieter und Standorte finden Sie unter [ExpressRoute-Partner und -Standorte](expressroute-locations.md).
@@ -147,7 +147,7 @@ Ja. Sie müssen in Ihrem virtuellen Netzwerk ein ExpressRoute-Gateway erstellen.
 Sie müssen eine ExpressRoute-Verbindung einrichten und Routen für öffentliches Peering konfigurieren.
 
 ### Gibt es Limits hinsichtlich der Anzahl von Routen, die ich ankündigen kann?
-Ja. Wir akzeptieren bis zu 4.000 Routenpräfixe für privates Peering und je 200 für öffentliches Peering und Microsoft-Peering. Sie können diesen Wert auf 10.000 Routen für privates Peering erhöhen, wenn Sie für ExpressRoute das Premium-Feature aktivieren.
+Ja. Wir akzeptieren bis zu 4.000 Routenpräfixe für privates Peering und je 200 für öffentliches Peering und Microsoft-Peering. Sie können diesen Wert auf 10.000 Routen für privates Peering erhöhen, wenn Sie für ExpressRoute das Premium-Feature aktivieren.
 
 ### Gibt es Einschränkungen hinsichtlich der IP-Adressbereiche, die ich über die BGP-Sitzung ankündigen kann?
 Wir akzeptieren keine privaten Präfixe (RFC1918) in der öffentlichen und Microsoft-BGP-Peeringsitzung.
@@ -156,7 +156,7 @@ Wir akzeptieren keine privaten Präfixe (RFC1918) in der öffentlichen und Micro
 BGP-Sitzungen werden abgebrochen. Sie werden zurückgesetzt, sobald die Präfixanzahl unter das Limit fällt.
 
 ### Wie lang ist die BGP-Haltezeit für ExpressRoute? Kann sie angepasst werden?
-Die Haltezeit ist 180. Die Keep-Alive-Nachrichten werden alle 60 Sekunden gesendet. Diese Einstellungen werden auf Microsoft-Seite festgelegt und können nicht geändert werden.
+Die Haltezeit ist 180. Die Keep-Alive-Nachrichten werden alle 60 Sekunden gesendet. Diese Einstellungen werden auf Microsoft-Seite festgelegt und können nicht geändert werden.
 
 ### Nachdem ich die Standardroute (0.0.0.0/0) für meine Virtual Networks angekündigt habe, kann ich Windows, das auf meinen Azure-VMs ausgeführt wird, nicht mehr aktivieren. Wie kann ich dieses Problem beheben?
 Die folgenden Schritte helfen Azure dabei, die Aktivierungsanforderung zu erkennen:
@@ -164,7 +164,7 @@ Die folgenden Schritte helfen Azure dabei, die Aktivierungsanforderung zu erkenn
 1. Richten Sie für die ExpressRoute-Verbindung öffentliches Peering ein.
 2. Führen Sie ein DNS-Lookup durch, und suchen Sie die IP-Adresse von **kms.core.windows.net**.
 3. Führen Sie eines der beiden folgenden Elemente aus, damit der Schlüsselverwaltungsdienst erkennt, dass die Aktivierungsanforderung von Azure stammt und die Anforderung berücksichtigt.
-	- Leiten Sie in Ihrem lokalen Netzwerk den Datenverkehr für die IP-Adresse (abgerufen in Schritt 2) über das öffentliche Peering zurück an Azure.
+	- Leiten Sie in Ihrem lokalen Netzwerk den Datenverkehr für die IP-Adresse (abgerufen in Schritt 2) über das öffentliche Peering zurück an Azure.
 	- Fordern Sie Ihren Netzwerkdienstanbieter auf, den Datenverkehr über das öffentliche Peering wieder an Azure zurückzuleiten.
 
 ### Kann ich die Bandbreite einer ExpressRoute-Verbindung ändern?
@@ -178,7 +178,7 @@ Sie können die Bandbreite der ExpressRoute-Verbindung mithilfe der API zum Aktu
 ### Was ist ExpressRoute Premium?
 ExpressRoute Premium ist eine Sammlung der unten aufgeführten Features.
 
- - Erhöhung des Grenzwerts für Routingtabellen von 4.000 auf 10.000 Routen für privates Peering.
+ - Erhöhung des Grenzwerts für Routingtabellen von 4.000 auf 10.000 Routen für privates Peering.
  - Größere Anzahl an VNets, die mit der ExpressRoute-Verbindung verbunden werden können. (Der Standardwert ist 10.) Weitere Details finden Sie in der Tabelle unten.
  - Globale Konnektivität über das Microsoft-Kernnetzwerk. Jetzt können Sie ein VNet in einer geopolitischen Region mit einer ExpressRoute-Verbindung in einer anderen Region verknüpfen. **Beispiel:** Sie können ein in Westeuropa erstelltes VNet mit einer ExpressRoute-Verbindung verknüpfen, die im Silicon Valley erstellt wurde.
  - Verbindung mit Office 365-Diensten und CRM Online.
@@ -190,13 +190,13 @@ Die folgende Tabelle enthält die erhöhten Limits für die Anzahl der VNets, di
 
 | **Verbindungsgröße** | **Anzahl der VNet-Links für das Standardsetup** | **Anzahl der VNet-Links mit ExpressRoute Premium** |
 |--------------|----------------------------------------|-----------------------------------------------|
-| 50 MBit/s | 10 | 10 |
-| 100 MBit/s | 10 | 20 |
-| 200 MBit/s | 10 | 25 |
-| 500 MBit/s | 10 | 40 |
-| 1 GBit/s | 10 | 50 |
-| 2 GBit/s | 10 | 60 |
-| 5 GBit/s | 10 | 75 |
+| 50 MBit/s | 10 | 10 |
+| 100 MBit/s | 10 | 20 |
+| 200 MBit/s | 10 | 25 |
+| 500 MBit/s | 10 | 40 |
+| 1 GBit/s | 10 | 50 |
+| 2 GBit/s | 10 | 60 |
+| 5 GBit/s | 10 | 75 |
 | 10 GBit/s | 10 | 100 |
 
 
@@ -224,7 +224,7 @@ Ja. Für ExpressRoute Premium werden neben den ExpressRoute-Verbindungsgebühren
 
 1. Überprüfen Sie die Anforderungen auf der Seite mit den [ExpressRoute-Voraussetzungen](expressroute-prerequisites.md), um sicherzustellen, dass Sie die Anforderungen erfüllen.
 2. Überprüfen Sie die Liste der Dienstanbieter und Standorte unter [ExpressRoute-Partner und -Standorte](expressroute-locations.md), um sicherzustellen, dass Ihre Konnektivitätsanforderungen erfüllt werden.
-3. Planen Sie Ihre Kapazitätsanforderungen mithilfe der Informationen unter [Netzwerkplanung und Leistungsoptimierung für Office 365](http://aka.ms/tune/).
+3. Planen Sie Ihre Kapazitätsanforderungen mithilfe der Informationen unter [Netzwerkplanung und Leistungsoptimierung für Office 365](http://aka.ms/tune/).
 4. Befolgen Sie die Schritte in den folgenden Workflows zum Einrichten der Verbindung: [ExpressRoute-Workflows für die Verbindungsbereitstellung und Verbindungszustände](expressroute-workflows.md).
 
 >[AZURE.IMPORTANT] Stellen Sie sicher, dass das ExpressRoute Premium-Add-On aktiviert ist, wenn Sie eine Verbindung mit Office 365-Diensten und CRM Online konfigurieren.
@@ -248,7 +248,7 @@ Weitere Informationen zur Liste der Partner und Standorte, die ExpressRoute unte
 ### Kann ich über das Internet auf Office 365 zugreifen, selbst wenn für meine Organisation ExpressRoute konfiguriert wurde?
 Ja. Office 365-Dienstendpunkte sind über das Internet erreichbar, selbst wenn ExpressRoute für Ihr Netzwerk konfiguriert wurde. Wenn Sie sich an einem Ort befinden, an dem die Verbindung mit Office 365-Diensten über ExpressRoute konfiguriert wurde, wird die Verbindung über ExpressRoute hergestellt.
 
-### Kann über eine ExpressRoute-Verbindung auf Dynamics AX zugegriffen werden?
+### Kann ich über eine ExpressRoute-Verbindung auf Dynamics AX Online zugreifen?
 Nein, dies wird nicht unterstützt.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

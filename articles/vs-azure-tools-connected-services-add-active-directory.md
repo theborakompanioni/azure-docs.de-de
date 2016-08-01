@@ -7,18 +7,18 @@
    manager="douge"
    editor="" />
 <tags 
-   ms.service="visual-studio-online"
+   ms.service="active-directory"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="visual-studio-online"
+   ms.workload="na"
    ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Hinzufügen von Azure Active Directory mithilfe von verbundenen Diensten in Visual Studio 
 
 ##Übersicht
-Mithilfe von Azure Active Directory (Azure AD) können Sie einmaliges Anmelden (Single Sign-On, SSO) für ASP.NET MVC-Webanwendungen oder AD-Authentifizierung in Web-API-Diensten unterstützen. Mit der Azure AD-Authentifizierung können Benutzer ihre Konten in Azure AD verwenden, um eine Verbindung mit Webanwendungen herzustellen. Die Vorteile der Azure AD-Authentifizierung mit Web-API sind u. a. eine verbesserte Sicherheit, wenn eine API über eine Webanwendung verfügbar gemacht wird. Mit Azure AD benötigen Sie kein separates Authentifizierungssystem mit eigenem Konto und Benutzerverwaltung.
+Mithilfe von Azure Active Directory (Azure AD) können Sie einmaliges Anmelden (Single Sign-On, SSO) für ASP.NET MVC-Webanwendungen oder AD-Authentifizierung in Web-API-Diensten unterstützen. Mit der Azure AD-Authentifizierung können Benutzer ihre Konten in Azure AD verwenden, um eine Verbindung mit Webanwendungen herzustellen. Die Vorteile der Azure AD-Authentifizierung mit Web-API sind u. a. eine verbesserte Sicherheit, wenn eine API über eine Webanwendung verfügbar gemacht wird. Mit Azure AD benötigen Sie kein separates Authentifizierungssystem mit eigenem Konto und Benutzerverwaltung.
 
 ## Unterstützte Projekttypen
 
@@ -75,8 +75,8 @@ Stellen Sie Fragen, und holen Sie sich Hilfe.
 
  - [MSDN-Forum: Azure AD](https://social.msdn.microsoft.com/forums/azure/home?forum=WindowsAzureAD)
 
- - [Azure AD-Dokumentation](https://azure.microsoft.com/documentation/services/active-directory/)
+ - [Azure AD-Dokumentation](https://azure.microsoft.com/documentation/services/active-directory/)
 
  - [Blogbeitrag: Intro to Azure AD (in englischer Sprache)](http://blogs.msdn.com/b/brunoterkaly/archive/2014/03/03/introduction-to-windows-azure-active-directory.aspx)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

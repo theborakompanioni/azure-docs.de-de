@@ -11,17 +11,17 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/11/2016" 
+    ms.date="07/19/2016" 
     ms.author="jeedes" />
 
 #Lernprogramm: Azure Active Directory-Integration mit AnswerHub
 
-In diesem Lernprogramm wird die Integration von Azure und AnswerHub erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+In diesem Tutorial wird die Integration von Azure und [AnswerHub](http://www.dzonesoftware.com/products/answerhub-question-answer-software) erläutert. Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 -   Ein gültiges Azure-Abonnement
--   Ein AnswerHub-Abonnement, für das das einmalige Anmelden aktiviert ist.
+-   Ein [AnswerHub](http://www.dzonesoftware.com/products/answerhub-question-answer-software)-Abonnement, für das das einmalige Anmelden aktiviert ist
 
-Nach Abschluss dieses Lernprogramms können sich die AnswerHub zugewiesenen Azure AD-Benutzer mittels einmaligen Anmeldens auf Ihrer AnswerHub-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie auch die [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md) nutzen.
+Nach Abschluss dieses Tutorials können sich die AnswerHub zugewiesenen Azure AD-Benutzer mittels einmaligen Anmeldens auf Ihrer AnswerHub-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Sie können aber auch den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
 
 Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
 
@@ -31,6 +31,7 @@ Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Baust
 4.  Zuweisen von Benutzern
 
 ![Szenario](./media/active-directory-saas-answerhub-tutorial/IC785165.png "Szenario")
+
 ##Aktivieren der Anwendungsintegration für AnswerHub
 
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für AnswerHub aktivieren.
@@ -62,9 +63,10 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Ans
 7.  Wählen Sie im Ergebnisbereich **AnswerHub** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
 
     ![AnswerHub](./media/active-directory-saas-answerhub-tutorial/IC785167.png "AnswerHub")
+
 ##Konfigurieren der einmaligen Anmeldung
 
-In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei AnswerHub zu authentifizieren. Im Rahmen dieses Verfahrens müssen Sie eine Base64-codierte Zertifikatsdatei erstellen. Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Konvertieren eines binären Zertifikats in eine Textdatei](http://youtu.be/PlgrzUZ-Y1o) weitere Informationen.
+In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei AnswerHub zu authentifizieren. Im Rahmen dieses Verfahrens müssen Sie eine Base64-codierte Zertifikatsdatei erstellen. Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Konvertieren eines binären Zertifikats in eine Textdatei](http://youtu.be/PlgrzUZ-Y1o) weitere Informationen.
 
 ###So konfigurieren Sie einmaliges Anmelden
 
@@ -72,7 +74,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-answerhub-tutorial/IC785168.png "Einmaliges Anmelden konfigurieren")
 
-2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer bei AnswerHub anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+2.  Wählen Sie auf der Seite **Wie sollen sich Benutzer bei AnswerHub anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-answerhub-tutorial/IC785169.png "Einmaliges Anmelden konfigurieren")
 
@@ -85,6 +87,14 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-answerhub-tutorial/IC785171.png "Einmaliges Anmelden konfigurieren")
 
 5.  Melden Sie sich in einem anderen Webbrowserfenster bei der AnswerHub-Unternehmenswebsite als Administrator an.
+    >[AZURE.NOTE] Wenn Sie Hilfe beim Konfigurieren von AnswerHub benötigen, wenden Sie sich an das [Supportteam von AnswerHub](mailto:success@answerhub.com.).
+
+
+
+
+
+
+
 
 6.  Wechseln Sie zu **Administration**.
 
@@ -98,9 +108,9 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![SAML Setup](./media/active-directory-saas-answerhub-tutorial/IC785172.png "SAML Setup")
 
-    1.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für AnswerHub** den Wert der **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **IDP Login URL** ein.
-    2.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für AnswerHub** den Wert der **Remoteabmelde-URL**, und fügen Sie ihn in das Textfeld **IDP Logout URL** ein.
-    3.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für AnswerHub** den Wert für **Namensbezeichnerformat**, und fügen Sie ihn in das Textfeld **IDP Name Identifier Format** ein.
+    1.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für AnswerHub** den Wert der **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **IDP Login URL** (IDP-Anmelde-URL) ein.
+    2.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für AnswerHub** den Wert der **Remoteabmelde-URL**, und fügen Sie ihn in das Textfeld **IDP Logout URL** (IDP-Abmelde-URL) ein.
+    3.  Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für AnswerHub** den Wert für **Namensbezeichnerformat**, und fügen Sie ihn in das Textfeld **IDP Name Identifier Format** (IDP-Namensbezeichnerformat) ein.
     4.  Klicken Sie auf **Keys and Certificates**.
 
 11. Führen Sie auf der Registerkarte "Keys and Certificates" die folgenden Schritte aus:
@@ -119,9 +129,10 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 13. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-answerhub-tutorial/IC785174.png "Einmaliges Anmelden konfigurieren")
+
 ##Konfigurieren der Benutzerbereitstellung
 
-Damit sich Azure AD-Benutzer bei AnswerHub anmelden können, müssen sie in AnswerHub bereitgestellt werden. Im Fall von AnswerHub ist die Bereitstellung eine manuelle Aufgabe.
+Damit sich Azure AD-Benutzer bei AnswerHub anmelden können, müssen sie in AnswerHub bereitgestellt werden. Im Fall von AnswerHub ist die Bereitstellung eine manuelle Aufgabe.
 
 ###So konfigurieren Sie die Benutzerbereitstellung
 
@@ -141,7 +152,7 @@ Damit sich Azure AD-Benutzer bei AnswerHub anmelden können, müssen sie in Ans
 
 ##Zuweisen von Benutzern
 
-Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
+Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
 ###So weisen Sie AnswerHub Benutzer zu
 
@@ -157,4 +168,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

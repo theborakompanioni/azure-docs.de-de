@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="07/14/2016"
 	ms.author="jeedes"/>
 
 
@@ -23,15 +23,15 @@ Dieses Tutorial soll Ihnen zeigen, wie Sie OpsGenie in Azure Active Directory (A
 
 Die Integration von OpsGenie in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer Zugriff auf OpsGenie hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei OpsGenie anzumelden (einmaliges Anmelden).
+- Sie können in Azure AD steuern, wer Zugriff auf OpsGenie hat.
+- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei OpsGenie anzumelden (einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## Voraussetzungen
 
-Um die Azure AD-Integration mit OpsGenie konfigurieren zu können, benötigen Sie Folgendes:
+Um die Azure AD-Integration mit OpsGenie konfigurieren zu können, benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
 - Ein OpsGenie-Abonnement, für das einmaliges Anmelden aktiviert ist
@@ -56,11 +56,11 @@ Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 
 ## Hinzufügen von OpsGenie aus dem Katalog
-Zum Konfigurieren der Integration von OpsGenie in Azure AD müssen Sie OpsGenie aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von OpsGenie in Azure AD müssen Sie OpsGenie aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
 **Um OpsGenie aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
 
 	![Active Directory][1]
 
@@ -88,17 +88,17 @@ Zum Konfigurieren der Integration von OpsGenie in Azure AD müssen Sie OpsGenie
 
 
 ##  Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt soll anhand eines Testbenutzers namens „Britta Simon“ veranschaulicht werden, wie das einmalige Anmelden von Azure AD in OpsGenie konfiguriert und getestet werden kann.
+In diesem Abschnitt soll anhand eines Testbenutzers namens „Britta Simon“ veranschaulicht werden, wie das einmalige Anmelden von Azure AD in OpsGenie konfiguriert und getestet werden kann.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in OpsGenie als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in OpsGenie muss eine Linkbeziehung eingerichtet werden.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in OpsGenie als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in OpsGenie muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als Wert dem **Benutzernamen** in OpsGenie zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als Wert dem **Benutzernamen** in OpsGenie zuweisen.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei OpsGenie müssen Sie die folgenden Bausteine ausführen:
+Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei OpsGenie müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Erstellen eines OpsGenie-Testbenutzers](#creating-a-opsgenie-test-user)**, um eine Entsprechung von Britta Simon in OpsGenie zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Erstellen eines OpsGenie-Testbenutzers](#creating-a-opsgenie-test-user)**, um eine Entsprechung von Britta Simon in OpsGenie zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 5. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
@@ -108,7 +108,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
 
 
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei OpsGenie die folgenden Schritte aus:**
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei OpsGenie die folgenden Schritte aus:**
 
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **OpsGenie** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
 
@@ -324,4 +324,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „OpsGenie“ klicken, sollten Sie a
 [204]: ./media/active-directory-saas-opsgenie-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-opsgenie-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -20,7 +20,7 @@
 
 Sie können für Kunden, die Windows Server mit Software Assurance verwenden, lokale Windows Server-Lizenzen in Azure übertragen und virtuelle Computer mit Windows Server in Azure zu geringeren Kosten ausführen. Durch den Azure-Vorteil bei Hybridnutzung können Sie virtuelle Windows Server-Computer in Azure ausführen und müssen nur die Grundgebühr für die Computekapazität bezahlen. Weitere Informationen finden Sie auf der [Lizenzierungsseite für den Azure-Vorteil bei Hybridnutzung](https://azure.microsoft.com/pricing/hybrid-use-benefit/). In diesem Artikel wird die Bereitstellung von virtuellen Windows Server-Computern in Azure erläutert, durch die dieser Lizenzierungsvorteil genutzt werden kann.
 
-> [AZURE.NOTE] Sie können keine Azure Marketplace-Images verwenden, um virtuelle Windows Server-Computer bereitzustellen, und dabei den Azure-Vorteil bei Hybridnutzung nutzen. Sie müssen Ihre virtuellen Computer mit PowerShell- oder Ressourcen-Manager-Vorlagen bereitstellen, um die virtuellen Computer ordnungsgemäß als für die rabattierte Grundgebühr für Computekapazität berechtigt zu registrieren.
+> [AZURE.NOTE] Sie können keine Azure Marketplace-Images verwenden, um virtuelle Windows Server-Computer bereitzustellen, und dabei den Azure-Vorteil bei Hybridnutzung nutzen. Sie müssen Ihre virtuellen Computer mit PowerShell- oder Resource Manager-Vorlagen bereitstellen, um die virtuellen Computer ordnungsgemäß als für die rabattierte Grundgebühr für Computekapazität berechtigt zu registrieren.
 
 ## Voraussetzungen
 Es gibt einige Voraussetzungen, um den Azure-Vorteil bei Hybridnutzung für virtuelle Windows Server-Computer in Azure nutzen zu können:
@@ -49,8 +49,7 @@ Add-AzureRmVhd -ResourceGroupName MyResourceGroup -Destination "https://mystorag
 Beim Bereitstellen des virtuellen Windows Server-Computers über PowerShell ist ein zusätzlicher Parameter für `-LicenseType` vorhanden. Nachdem Sie die virtuelle Festplatte in Azure hochgeladen haben, erstellen Sie einen neuen virtuellen Computer mit `New-AzureRmVM` und geben den Lizenzierungstyp wie folgt an:
 
 ```
-New-AzureRmVM -ResourceGroupName MyResourceGroup -Location "West US" -VM $vm
-    -LicenseType Windows_Server
+New-AzureRmVM -ResourceGroupName MyResourceGroup -Location "West US" -VM $vm -LicenseType Windows_Server
 ```
 
 Eine [ausführliche Anleitung zum Bereitstellen eines virtuellen Computers in Azure mit PowerShell](./virtual-machines-windows-hybrid-use-benefit-licensing.md#deploy-windows-server-vm-via-powershell-detailed-walkthrough) finden Sie weiter unten. Alternativ können Sie eine ausführliche Anleitung zu den verschiedenen Schritten beim [Erstellen eines virtuellen Windows-Computers mit Resource Manager und PowerShell](./virtual-machines-windows-ps-create.md) lesen.
@@ -67,7 +66,7 @@ In den Resource Manager-Vorlagen kann ein zusätzlicher Parameter für `licenseT
 ```
  
 ## Überprüfen, ob für den virtuellen Computer der Lizenzierungsvorteil genutzt wird
-Sobald Sie den virtuellen Computer über PowerShell oder Resource Manager bereitgestellt haben, überprüfen Sie die den Lizenztyp wie folgt mit `Get-AzureRmVM`:
+Sobald Sie den virtuellen Computer über die PowerShell- oder Resource Manager-Bereitstellungsmethode bereitgestellt haben, überprüfen Sie die den Lizenztyp wie folgt mit `Get-AzureRmVM`:
  
 ```
 Get-AzureRmVM -ResourceGroup MyResourceGroup -Name MyVM
@@ -151,7 +150,7 @@ Laden Sie die VHD entsprechend vorbereitet hoch, und fügen Sie sie zur Verwendu
 $osDiskName = "licensing.vhd"
 $osDiskUri = '{0}vhds/{1}{2}.vhd' -f $storageAcc.PrimaryEndpoints.Blob.ToString(), $vmName.ToLower(), $osDiskName
 $urlOfUploadedImageVhd = "https://testlicensing.blob.core.windows.net/vhd/licensing.vhd"
-$vm = Set-AzureRmVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri -CreateOption fromImage -SourceImageUri $urlOfUploadedImageVhd -Windows
+$vm = Set-AzureRmVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri -CreateOption FromImage -SourceImageUri $urlOfUploadedImageVhd -Windows
 ```
 
 Erstellen Sie schließlich den virtuellen Computer, und definieren Sie den Lizenzierungstyp so, dass der Azure-Vorteil bei Hybridnutzung verwendet wird:
@@ -166,4 +165,4 @@ Weitere Informationen zur [Lizenzierung für den Azure-Vorteil bei Hybridnutzung
 
 Weitere Informationen zum [Verwenden von Resource Manager-Vorlagen](../resource-group-overview.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

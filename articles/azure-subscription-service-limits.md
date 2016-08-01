@@ -22,11 +22,11 @@
 
 Dieses Dokument beschreibt einige der wichtigsten Einschränkungen in Microsoft Azure. Beachten Sie, dass dieses Dokument nicht alle Azure-Dienste behandelt. Mit der Zeit wird diese Liste der Einschränkungen erweitert, um größere Teile der Plattform abzudecken.
 
-> [AZURE.NOTE] Falls Sie einen Grenzwert über den **Standardgrenzwert** anheben möchten, können Sie [eine gebührenfreie Onlinekundensupport-Anforderung öffnen](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) . Die Limits können nicht über die Werte unter **Maximales Limit** in der folgenden Tabelle angehoben werden. Falls keine Spalte **Maximales Limit** existiert, bedeutet dies, dass für die entsprechende Ressource keine änderbaren Limits existieren.
+> [AZURE.NOTE] Falls Sie einen Grenzwert über den **Standardgrenzwert** anheben möchten, können Sie [eine gebührenfreie Onlinekundensupport-Anforderung öffnen](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). Die Limits können nicht über die Werte unter **Maximales Limit** in der folgenden Tabelle angehoben werden. Falls keine Spalte **Maximales Limit** existiert, bedeutet dies, dass für die entsprechende Ressource keine änderbaren Limits existieren.
 
 ## Grenzwerte und der Azure-Ressourcen-Manager
 
-Es ist jetzt möglich, mehrere Azure-Ressourcen in einer einzigen Azure-Ressourcengruppe zu kombinieren. Bei der Verwendung von Ressourcengruppen werden Grenzwerte, die bisher global waren, auf einer regionalen Ebene mit dem Azure-Ressourcen-Manager verwaltet. Weitere Informationen zu Azure- Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](azure-portal/resource-group-portal.md) .
+Es ist jetzt möglich, mehrere Azure-Ressourcen in einer einzigen Azure-Ressourcengruppe zu kombinieren. Bei der Verwendung von Ressourcengruppen werden Grenzwerte, die bisher global waren, auf einer regionalen Ebene mit dem Azure-Ressourcen-Manager verwaltet. Weitere Informationen zu Azure-Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](resource-group-overview.md).
 
 In den folgenden Grenzwerten wurde eine neue Tabelle hinzugefügt, um alle abweichenden Grenzwerte bei Verwendung des Azure-Ressourcen-Managers aufzuzeigen. Es gibt beispielsweise eine Tabelle **Einschränkungen für Abonnements** und eine Tabelle **Abonnementgrenzwerte - Azure-Ressourcen-Manager**. Wenn ein Grenzwert für beide Szenarien gilt, wird er nur in der ersten Tabelle angezeigt. Sofern nicht anders angegeben, gelten Grenzwerte global für alle Regionen.
 
@@ -65,7 +65,7 @@ Daher sollten Sie gegebenenfalls überlegen, wie hoch Ihre Azure-Ressourcengrupp
 - [Operational Insights](#operational-insights-limits)
 - [Ressourcengruppe](#resource-group-limits)
 - [Scheduler](#scheduler-limits)
-- [Suchen](#search-limits)
+- [Suchen,](#search-limits)
 - [Service Bus](#service-bus-limits)
 - [Site Recovery](#site-recovery-limits)
 - [SQL-Datenbank](#sql-database-limits)
@@ -125,7 +125,7 @@ Die folgenden Grenzwerte gelten bei Verwendung des Azure-Ressourcen-Managers und
 
 ### Speichergrenzwerte
 
-Weitere Informationen zu Grenzwerten für Speicherkonten finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../articles/storage/storage-scalability-targets.md) .
+Weitere Informationen zu Grenzwerten für Speicherkonten finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../articles/storage/storage-scalability-targets.md).
 
 #### Grenzwerte für den Speicherdienst
 
@@ -135,7 +135,7 @@ Weitere Informationen zu Grenzwerten für Speicherkonten finden Sie unter [Skali
 
 [AZURE.INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
 
-Weitere Informationen finden Sie unter [Größen virtueller Computer](../articles/virtual-machines/virtual-machines-linux-sizes.md) .
+Weitere Informationen finden Sie unter [Größen virtueller Computer](../articles/virtual-machines/virtual-machines-linux-sizes.md).
 
 **Standardspeicherkonten**
 
@@ -178,7 +178,7 @@ In der folgende Tabelle werden die Grenzwerte für Azure Biztalk Services aufgef
 
 [AZURE.INCLUDE [azure-documentdb-limits](../includes/azure-documentdb-limits.md)]
 
-Kontingente mit einem Sternchen (*) [können angepasst werden. Wenden Sie sich dafür an den Azure-Support](./documentdb/documentdb-increase-limits.md) .
+Kontingente mit einem Sternchen (*) [können angepasst werden. Wenden Sie sich dafür an den Azure-Support](./documentdb/documentdb-increase-limits.md).
 
 ### Mobile Engagement-Grenzwerte
 
@@ -243,7 +243,7 @@ Detailliertere Informationen zu anderen Grenzwerten, einschließlich Dokumentgr�
 | Grenzwertbezeichner | Begrenzung | Kommentare |
 |----------------- | ------------|--------- |
 | Maximale Anzahl der Streamingeinheiten pro Abonnement und Region | 50 | Beim [Microsoft Support](https://support.microsoft.com/de-DE) können Sie die Erhöhung der Streamingeinheiten auf über 50 für Ihr Abonnement anfordern. |
-| Maximaler Durchsatz einer Streamingeinheit | 1 MB/s* | Der maximale Durchsatz pro Streamingeinheit hängt vom jeweiligen Szenario ab. Der tatsächliche Durchsatz kann geringer ausfallen und hängt von der Komplexität der Abfragen und von der Partitionierung ab. Weitere Informationen finden Sie im Artikel [Skalieren von Azure Stream Analytics-Aufträgen](../articles/stream-analytics/stream-analytics-scale-jobs.md). |
+| Maximaler Durchsatz einer Streamingeinheit | 1 MB/s* | Der maximale Durchsatz pro Streamingeinheit hängt vom jeweiligen Szenario ab. Der tatsächliche Durchsatz kann geringer ausfallen und hängt von der Komplexität der Abfragen und von der Partitionierung ab. Weitere Informationen finden Sie im Artikel [Skalieren von Azure Stream Analytics-Aufträgen](../articles/stream-analytics/stream-analytics-scale-jobs.md). |
 
 ### Active Directory-Grenzwerte
 
@@ -295,7 +295,7 @@ Detailliertere Informationen zu anderen Grenzwerten, einschließlich Dokumentgr�
 
 ### Grenzwerte für SQL-Datenbanken
 
-Einschränkungen für SQL-Datenbanken finden Sie unter [Ressourceneinschränkungen für SQL-Datenbank](sql-database/sql-database-resource-limits.md) .
+Einschränkungen für SQL-Datenbanken finden Sie unter [Ressourceneinschränkungen für SQL-Datenbank](sql-database/sql-database-resource-limits.md).
 
 ## Weitere Informationen
 
@@ -305,4 +305,4 @@ Einschränkungen für SQL-Datenbanken finden Sie unter [Ressourceneinschränkung
 
 [Größen für Cloud Services](cloud-services/cloud-services-sizes-specs.md)
 
-<!----HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

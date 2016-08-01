@@ -54,8 +54,8 @@ Folgende StreamingEndPoint-Metriken können abgefragt werden:
 - **ResultCode**: Ruft den Ergebniscode ab.
 - **RequestCount**: Ruft die Anforderungsanzahl ab.
 - **BytesSent**: Ruft die gesendeten Bytes ab.
-- **BytesSent**: Ruft die Serverlatenz ab.
-- **BytesSent**: Ruft die Gesamtanforderungszeit ab.
+- **ServerLatency**: Ruft die Serverlatenz ab.
+- **EndToEndLatency**: Ruft die Gesamtanforderungszeit ab.
 
 ###Beispielergebnis einer Streamingendpunkt-Abfrage
 
@@ -235,4 +235,4 @@ Unter den Azure Media Services-Lernpfaden finden Sie Informationen zu weiteren A
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

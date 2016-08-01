@@ -12,8 +12,8 @@
     ms.devlang="NA"
     ms.topic="article"
     ms.tgt_pltfrm="NA"
-   ms.workload="sqldb-bcdr"
-    ms.date="06/14/2016"
+    ms.workload="sqldb-bcdr"
+    ms.date="07/18/2016"
     ms.author="carlrab"/>
 
 # Konfigurieren der Georeplikation für Azure SQL-Datenbank mit Transact-SQL
@@ -52,7 +52,7 @@ Mithilfe der **ALTER DATABASE**-Anweisung können Sie auf einem Partnerserver ei
 
 Führen Sie zum Erstellen einer nicht lesbaren sekundären Datenbank als Einzeldatenbank die folgenden Schritte aus.
 
-1. Verwenden von Version 13.0.600.65 oder höher von SQL Server Management Studio
+1. Verwenden von Version 13.0.600.65 oder höher von SQL Server Management Studio
 
  	 > [AZURE.IMPORTANT] Laden Sie die [aktuelle](https://msdn.microsoft.com/library/mt238290.aspx) Version von SQL Server Management Studio herunter. Es wird empfohlen, immer die neueste Version von Management Studio zu verwenden, damit Sie mit Updates des Azure-Portals synchron sind.
 
@@ -163,6 +163,23 @@ Gehen Sie folgendermaßen vor, um eine Georeplikationspartnerschaft zu überwach
 
 9. Klicken Sie auf **Ausführen**, um die Abfrage durchzuführen.
 
+## Aktualisieren einer nicht lesbaren sekundären Datenbank auf „lesbar“
+
+Im April 2017 wird der nicht lesbare sekundäre Typ eingestellt, und vorhandene nicht lesbare Datenbanken werden automatisch auf lesbare sekundäre Datenbanken aktualisiert. Wenn Sie heute nicht lesbare sekundäre Datenbanken verwenden und auf lesbare Datenbanken aktualisieren möchten, können Sie die folgenden einfachen Schritte für jede sekundäre Datenbank ausführen.
+
+> [AZURE.IMPORTANT] Es gibt keine Self-Service-Methode der direkten Aktualisierung einer nicht lesbaren sekundären Datenbank auf „lesbar“. Wenn Sie die einzige sekundäre Datenbank löschen, bleibt die primäre Datenbank ungeschützt, bis die neue sekundäre Datenbank vollständig synchronisiert ist. Wenn die SLA Ihrer Anwendung erfordert, dass die primäre Datenbank immer geschützt ist, sollten Sie das Erstellen einer parallelen sekundären Datenbank auf einem anderen Server erwägen, bevor Sie die oben genannten Schritte anwenden. Beachten Sie, dass jede primäre Datenbank bis zu 4 sekundäre Datenbanken haben kann.
+
+
+1. Stellen Sie zunächst eine Verbindung mit dem *sekundären* Server her, und löschen Sie die nicht lesbare sekundäre Datenbank:
+        
+        DROP DATABASE <MyNonReadableSecondaryDB>;
+
+2. Stellen Sie jetzt eine Verbindung mit dem *primären* Server her, und fügen Sie eine neue lesbare sekundäre Datenbank hinzu.
+
+        ALTER DATABASE <MyDB>
+            ADD SECONDARY ON SERVER <MySecondaryServer> WITH (ALLOW_CONNECTIONS = ALL);
+
+
 
 
 ## Nächste Schritte
@@ -170,4 +187,4 @@ Gehen Sie folgendermaßen vor, um eine Georeplikationspartnerschaft zu überwach
 - Weitere Informationen zur aktiven Georeplikation finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
 - Informationen über Entwurfs- und Wiederherstellungsszenarien für die Geschäftskontinuität finden Sie unter [Geschäftskontinuitätsszenarien](sql-database-business-continuity-scenarios.md).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

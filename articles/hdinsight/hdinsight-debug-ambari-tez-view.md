@@ -13,14 +13,14 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="05/03/2016"
+ms.date="07/19/2016"
 ms.author="larryfr"/>
 
 # Debuggen von Tez-Aufträgen in HDInsight mithilfe von Ambari-Ansichten
 
 Die Ambari-Webbenutzeroberfläche für HDInsight enthält eine Tez-Ansicht, die verwendet werden kann, um Aufträge zu verstehen und zu debuggen, die Tez als Ausführungsmodul nutzen. Die Tez-Ansicht ermöglicht Ihnen das Visualisieren des Auftrags als Graphen verbundener Elemente, einen Drilldown in die einzelnen Elemente und das Abrufen von Statistiken und Protokollinformationen.
 
-> [AZURE.NOTE] Die Informationen in diesem Artikel gelten für Linux-basierte HDInsight-Cluster. Informationen zum Debuggen von Tez-Aufträgen mithilfe von Windows-basiertem HDInsight finden Sie unter [Verwenden der Tez-Benutzeoberfläche zum Debuggen von Tez-Aufträgen in Windows-basiertem HDInsight](hdinsight-debug-tez-ui.md).
+> [AZURE.NOTE] Die Informationen in diesem Artikel gelten für Linux-basierte HDInsight-Cluster. Informationen zum Debuggen von Tez-Aufträgen mithilfe von Windows-basiertem HDInsight finden Sie unter [Verwenden der Tez-Benutzeroberfläche zum Debuggen von Tez-Aufträgen in Windows-basiertem HDInsight](hdinsight-debug-tez-ui.md).
 
 ##Voraussetzungen
 
@@ -129,7 +129,7 @@ Gehen Sie folgendermaßen vor, um eine Hive-Abfrage mit Tez auszuführen.
 
     > [AZURE.NOTE] Wie beim vorherigen Menü können Sie die Spaltenanzeige für „Tasks“, „Task Attempts“ und „Sources & Sinks“ durchlaufen, um Links zu weiteren Informationen zu den einzelnen Elementen anzuzeigen.
 
-10. Wählen Sie __Tasks__ und dann das Element mit dem Namen __00\_000000__ aus. Dadurch werden __Task Details__ für diese Aufgabe angezeigt. Auf diesem Bildschirm können Sie __Task Counters__ und __Task Attempts__ anzeigen.
+10. Wählen Sie __Tasks__ und dann das Element mit dem Namen __00_000000_\_ aus. Dadurch werden __Task Details__ für diesen Task angezeigt. Auf diesem Bildschirm können Sie __Task Counters__ und __Task Attempts\_\_ anzeigen.
 
     ![Aufgabendetails](./media/hdinsight-debug-ambari-tez-view/taskdetails.png)
 
@@ -141,4 +141,4 @@ Ausführliche technische Informationen zu Tez finden Sie auf der [Seite zu Tez b
 
 Weitere Informationen zur Verwendung von Ambari mit HDInsight finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

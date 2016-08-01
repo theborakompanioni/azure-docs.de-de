@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/30/2016"
+	ms.date="07/19/2016"
 	ms.author="markusvi"/>
 
 
 # Einführung in den Zugriffsbereich
 
 
-Der Zugriffsbereich ist ein webbasiertes Portal, das einem Endbenutzer mit einem Organisationskonto in Azure Active Directory erlaubt, cloudbasierte Anwendungen anzuzeigen und zu starten, für die der Azure AD-Administrator Zugriff gewährt hat. Als Endbenutzer mit Azure Active Directory-Editionen können Sie über den Zugriffsbereich auch Self-Service-Gruppenverwaltungsfunktionen verwenden. <br> Der Zugriffsbereich ist unabhängig vom Azure-Verwaltungsportal und setzt nicht voraus, dass Benutzer über ein Azure-Abonnement verfügen.
+Der Zugriffsbereich ist ein webbasiertes Portal, das einem Endbenutzer mit einem Organisationskonto in Azure Active Directory erlaubt, cloudbasierte Anwendungen anzuzeigen und zu starten, für die der Azure AD-Administrator Zugriff gewährt hat. Als Endbenutzer mit Azure Active Directory-Editionen können Sie über den Zugriffsbereich auch Self-Service-Gruppenverwaltungsfunktionen verwenden. <br> Der Zugriffsbereich ist unabhängig vom Azure-Verwaltungsportal und setzt nicht voraus, dass Benutzer über ein Azure-Abonnement verfügen.
 
 
 ![Anpassung des Zugriffsbereichs][1]
@@ -34,11 +34,11 @@ Der Zugriffsbereich ermöglicht Benutzern, einige ihrer Profileinstellungen zu b
 
 - Bearbeiten der Kontakt- und Voreinstellungen, die sich auf die mehrstufige Authentifizierung beziehen (für Konten, für die dies vom Administrator verlangt wird).
 
-- Anzeigen von Kontodetails wie z. B. Benutzer-ID, alternative E-Mail-Adresse, Mobil- und geschäftliche Telefonnummern.
+- Anzeigen von Kontodetails wie z. B. Benutzer-ID, alternative E-Mail-Adresse, Mobil- und geschäftliche Telefonnummern.
 
-- Anzeigen und Starten der cloudbasierten Anwendungen, für die Ihnen der Azure AD-Administrator Zugriff gewährt hat. Informationen über den Zugriffsbereich aus Sicht der Endbenutzer finden Sie unter [Verwenden des Zugriffsbereichs](https://msdn.microsoft.com/library/azure/dn756411.aspx).
+- Anzeigen und Starten der cloudbasierten Anwendungen, für die Ihnen der Azure AD-Administrator Zugriff gewährt hat. Informationen über den Zugriffsbereich aus Sicht der Endbenutzer finden Sie unter [Verwenden des Zugriffsbereichs](https://msdn.microsoft.com/library/azure/dn756411.aspx).
 
-- Selbstständiges Verwalten von Gruppen. Sie können Sicherheitsgruppen erstellen und verwalten und die Mitgliedschaft in Sicherheitsgruppen in Azure AD anfordern. Weitere Informationen finden Sie unter [Self-Service-Gruppenverwaltung für Benutzer in Azure AD](active-directory-accessmanagement-self-service-group-management.md) und [Verwalten Ihrer Gruppen](active-directory-manage-groups.md).
+- Selbstständiges Verwalten von Gruppen. Sie können Sicherheitsgruppen erstellen und verwalten und die Mitgliedschaft in Sicherheitsgruppen in Azure AD anfordern. Weitere Informationen finden Sie unter [Self-Service-Gruppenverwaltung für Benutzer in Azure AD](active-directory-accessmanagement-self-service-group-management.md) und [Verwalten Ihrer Gruppen](active-directory-manage-groups.md).
 
 
 
@@ -56,7 +56,7 @@ In diesem Fall kann jeder aktive oder überprüfte Domänenname verwendet werden
 ![Wingtip Toys][2]
 
 
-Diese URL muss allen Benutzern mitgeteilt werden, die sich bei in Azure AD integrierten Anwendungen anmelden.
+Diese URL muss allen Benutzern mitgeteilt werden, die sich bei in Azure AD integrierten Anwendungen anmelden.
  
 
 
@@ -64,11 +64,11 @@ Diese URL muss allen Benutzern mitgeteilt werden, die sich bei in Azure AD inte
 
 ## Authentifizierung
 
-Um auf den Zugriffsbereich zugreifen zu können, muss ein Benutzer unter Verwendung eines Organisationskontos in Azure AD authentifiziert sein. <br> Ein Benutzer kann direkt bei Azure AD authentifiziert sein. <br> Wenn eine Organisation mithilfe von ADFS oder anderen Technologien einen Verbund konfiguriert hat, können Benutzer alternativ dazu auch über Windows Server Active Directory authentifiziert werden.
+Um auf den Zugriffsbereich zugreifen zu können, muss ein Benutzer unter Verwendung eines Organisationskontos in Azure AD authentifiziert sein. <br> Ein Benutzer kann direkt bei Azure AD authentifiziert sein. <br> Wenn eine Organisation mithilfe von ADFS oder anderen Technologien einen Verbund konfiguriert hat, können Benutzer alternativ dazu auch über Windows Server Active Directory authentifiziert werden.
 
-Wenn ein Benutzer über ein Abonnement für Azure oder Office 365 verfügt und das Azure-Verwaltungsportal oder eine Office 365-Anwendung verwendet hat, wird dem Benutzer die Liste der Anwendungen angezeigt, ohne dass eine erneute Anmeldung erforderlich ist. Benutzer, die nicht authentifiziert sind, werden aufgefordert, sich mit dem Benutzernamen und Kennwort für ihr Konto in Azure AD anzumelden. Wenn die Organisation einen Verbund konfiguriert hat, reicht die Eingabe des Benutzernamens aus.
+Wenn ein Benutzer über ein Abonnement für Azure oder Office 365 verfügt und das Azure-Verwaltungsportal oder eine Office 365-Anwendung verwendet hat, wird dem Benutzer die Liste der Anwendungen angezeigt, ohne dass eine erneute Anmeldung erforderlich ist. Benutzer, die nicht authentifiziert sind, werden aufgefordert, sich mit dem Benutzernamen und Kennwort für ihr Konto in Azure AD anzumelden. Wenn die Organisation einen Verbund konfiguriert hat, reicht die Eingabe des Benutzernamens aus.
 
-Nach der Authentifizierung können Benutzer mit den Anwendungen interagieren, die durch den Administrator in das Verzeichnis integriert wurden. Informationen zum Integrieren von Anwendungen in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Nach der Authentifizierung können Benutzer mit den Anwendungen interagieren, die durch den Administrator in das Verzeichnis integriert wurden. Informationen zum Integrieren von Anwendungen in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
  
 
 
@@ -78,7 +78,7 @@ Nach der Authentifizierung können Benutzer mit den Anwendungen interagieren, di
 
 Die Mindestanforderung für den Zugriffsbereich besteht in einem Browser mit aktivierter Unterstützung für JavaScript und CSS. Damit der Benutzer bei Anwendungen mithilfe von kennwortbasiertem SSO (Single Sign-On, einmaliges Anmelden) angemeldet werden kann, muss die Erweiterung für den Zugriffsbereich im Browser des Benutzers installiert sein. Diese Zugriffsbereichserweiterung wird automatisch heruntergeladen, wenn ein Benutzer eine Anwendung auswählt, die für kennwortbasiertes SSO konfiguriert ist.
 
-Zurzeit ist die Zugriffsbereichserweiterung für die Browser Internet Explorer 8 oder höher, Chrome und Firefox verfügbar.
+Zurzeit ist die Zugriffsbereichserweiterung für die Browser Internet Explorer 8 oder höher, Chrome und Firefox verfügbar.
 
 
 
@@ -116,7 +116,7 @@ Damit Benutzer sich bei kennwortbasierten SSO-Anwendungen auf iOS- und Android-G
 
 
 
-> [AZURE.NOTE] Bei Anwendungen, die den Verbund mit Azure AD unterstützen (einschließlich Salesforce, Google Apps, Dropbox, Box, Concur, Workday, Office 365 und mehr als 70 weiteren), kann die Anmeldung mit beinahe jedem Webbrowser auf beliebigen Geräten erfolgen, ohne dass ein Plug-In oder eine mobile App erforderlich ist. Für den restlichen Zugriffsbereich unter [https://myapps.microsoft.com](https://myapps.microsoft.com/) ist es ebenfalls nicht erforderlich, die mobile App "Meine Apps" auf einem mobilen Gerät zu verwenden.
+> [AZURE.NOTE] Bei Anwendungen, die den Verbund mit Azure AD unterstützen (einschließlich Salesforce, Google Apps, Dropbox, Box, Concur, Workday, Office 365 und mehr als 70 weiteren), kann die Anmeldung mit beinahe jedem Webbrowser auf beliebigen Geräten erfolgen, ohne dass ein Plug-In oder eine mobile App erforderlich ist. Für den restlichen Zugriffsbereich unter [https://myapps.microsoft.com](https://myapps.microsoft.com/) ist es ebenfalls nicht erforderlich, die mobile App "Meine Apps" auf einem mobilen Gerät zu verwenden.
  
 
 
@@ -128,7 +128,7 @@ Wenn Sie Azure-Administrator und mit einem Konto im Verzeichnis am Azure-Verwalt
 
 **So testen Sie ein anderes Benutzerkonto:**
 
-1. Klicken Sie in der oberen rechten Ecke des Azure-Portals oder des Zugriffsbereichs auf das Benutzermenü, und wählen Sie **Abmelden** aus. Sie werden von Azure AD abgemeldet.
+1. Klicken Sie in der oberen rechten Ecke des Azure-Portals oder des Zugriffsbereichs auf das Benutzermenü, und wählen Sie **Abmelden**. Sie werden von Azure AD abgemeldet.
 
 2. Wechseln Sie zum Zugriffsbereich: **http://myapps.microsoft.com**.
 
@@ -140,33 +140,33 @@ Es gibt mehrere Arten von Anwendungen, die im Zugriffsbereich angezeigt werden k
  
 ### Office 365-Anwendungen
 
-Wenn eine Organisation Office 365-Anwendungen verwendet und der Benutzer für diese lizenziert ist, werden die Office 365-Anwendungen im Zugriffsbereich des Benutzers angezeigt.
+Wenn eine Organisation Office 365-Anwendungen verwendet und der Benutzer für diese lizenziert ist, werden die Office 365-Anwendungen im Zugriffsbereich des Benutzers angezeigt.
 
-Wenn ein Benutzer auf eine Anwendungskachel für eine Office 365-Anwendung klickt, wird er an diese Anwendung weitergeleitet und automatisch angemeldet.
+Wenn ein Benutzer auf eine Anwendungskachel für eine Office 365-Anwendung klickt, wird er an diese Anwendung weitergeleitet und automatisch angemeldet.
 
 ### Anwendungen von Microsoft und Drittanbietern, die mit verbundbasiertem SSO konfiguriert sind
 
-Dabei handelt es sich um Anwendungen, die der Administrator im Abschnitt "Active Directory" des Azure-Verwaltungsportals hinzugefügt und für die er den SSO-Modus auf *Azure AD – einmaliges Anmelden* festgelegt hat. Ein Benutzer sieht diese Anwendungen nur, wenn ihm durch den Administrator ausdrücklich Zugriff auf die Anwendung erteilt wurde.
+Dabei handelt es sich um Anwendungen, die der Administrator im Abschnitt „Active Directory“ des Azure-Verwaltungsportals hinzugefügt und für die er den SSO-Modus auf *Azure AD – einmaliges Anmelden* festgelegt hat. Ein Benutzer sieht diese Anwendungen nur, wenn ihm durch den Administrator ausdrücklich Zugriff auf die Anwendung erteilt wurde.
 
 Wenn ein Benutzer auf eine Anwendungskachel für eine dieser Anwendungen klickt, wird er an die betreffende Anwendung weitergeleitet und automatisch angemeldet.
 
 ### Kennwortbasiertes SSO ohne Identitätsbereitstellung
 
-Dabei handelt es sich um Anwendungen, die der Administrator im Abschnitt "Active Directory" des Azure-Verwaltungsportals hinzugefügt und für die er den SSO-Modus auf *Kennwortbasiertes einmaliges Anmelden* festgelegt hat. <br> Alle Benutzer im Verzeichnis sehen alle Anwendungen, die in diesem Modus konfiguriert wurden.
+Dabei handelt es sich um Anwendungen, die der Administrator im Abschnitt „Active Directory“ des Azure-Verwaltungsportals hinzugefügt und für die er den SSO-Modus auf *Kennwortbasiertes einmaliges Anmelden* festgelegt hat. <br> Alle Benutzer im Verzeichnis sehen alle Anwendungen, die in diesem Modus konfiguriert wurden.
 
-Wenn ein Benutzer erstmals auf eine Anwendungskachel für eine dieser Anwendungen klickt, wird er aufgefordert, das Plug-In für kennwortbasiertes SSO für Internet Explorer oder Chrome zu installieren. Dies erfordert ggf. einen Neustart des Webbrowsers. Wenn der Benutzer in den Zugriffsbereich zurückkehrt und nochmals auf die Anwendungskachel klickt, wird er zur Eingabe eines Benutzernamens und Kennworts für die Anwendung aufgefordert. Nachdem der Benutzername und das Kennwort eingegeben wurden, werden diese Anmeldeinformationen sicher in Azure AD gespeichert und mit dem entsprechenden Konto in Azure AD verknüpft. Der Zugriffsbereich automatisiert die Anmeldung des Benutzers bei der Anwendung mit diesen Anmeldeinformationen.
+Wenn ein Benutzer erstmals auf eine Anwendungskachel für eine dieser Anwendungen klickt, wird er aufgefordert, das Plug-In für kennwortbasiertes SSO für Internet Explorer oder Chrome zu installieren. Dies erfordert ggf. einen Neustart des Webbrowsers. Wenn der Benutzer in den Zugriffsbereich zurückkehrt und nochmals auf die Anwendungskachel klickt, wird er zur Eingabe eines Benutzernamens und Kennworts für die Anwendung aufgefordert. Nachdem der Benutzername und das Kennwort eingegeben wurden, werden diese Anmeldeinformationen sicher in Azure AD gespeichert und mit dem entsprechenden Konto in Azure AD verknüpft. Der Zugriffsbereich automatisiert die Anmeldung des Benutzers bei der Anwendung mit diesen Anmeldeinformationen.
 
 Wenn der Benutzer das nächste Mal auf die Anwendungskachel klickt, wird er automatisch bei der Anwendung angemeldet. Er muss nicht nochmals Anmeldeinformationen eingeben oder das Plug-In für kennwortbasiertes SSO erneut installieren.
 
-Wenn sich die Anmeldeinformationen in der Drittanbieteranwendung geändert haben, muss der Benutzer seine in Azure AD gespeicherten Anmeldeinformationen aktualisieren. Zu diesem Zweck wählt der Benutzer das Symbol in der unteren rechten Ecke der Anwendungskachel und dann "Anmeldeinformationen aktualisieren" aus, um den Benutzernamen und das Kennwort für die betreffende Anwendung erneut einzugeben.
+Wenn sich die Anmeldeinformationen in der Drittanbieteranwendung geändert haben, muss der Benutzer seine in Azure AD gespeicherten Anmeldeinformationen aktualisieren. Zu diesem Zweck wählt der Benutzer das Symbol in der unteren rechten Ecke der Anwendungskachel und dann "Anmeldeinformationen aktualisieren" aus, um den Benutzernamen und das Kennwort für die betreffende Anwendung erneut einzugeben.
 
 ### Kennwortbasiertes SSO mit Identitätsbereitstellung
 
-Dabei handelt es sich um Anwendungen, die der Administrator im Abschnitt "Active Directory" des Azure-Verwaltungsportals hinzugefügt und für die er den SSO-Modus auf *Kennwortbasiertes einmaliges Anmelden* festgelegt sowie die Identitätsbereitstellung eingerichtet hat.
+Dabei handelt es sich um Anwendungen, die der Administrator im Abschnitt „Active Directory“ des Azure-Verwaltungsportals hinzugefügt und für die er den SSO-Modus auf *Kennwortbasiertes einmaliges Anmelden* festgelegt sowie die Identitätsbereitstellung eingerichtet hat.
 
 Wenn ein Benutzer erstmals auf eine Anwendungskachel für eine dieser Anwendungen klickt, wird er aufgefordert, das Plug-In für kennwortbasiertes SSO für Internet Explorer oder Chrome zu installieren. Dies erfordert ggf. einen Neustart des Webbrowsers. Wenn der Benutzer in den Zugriffsbereich zurückkehrt und nochmals auf die Anwendungskachel klickt, wird automatisch bei der Anwendung angemeldet.
 
-Bei einigen Anwendungen kann es erforderlich sein, dass ein Benutzer sein Kennwort bei der ersten Anmeldung ändert. Wenn sich die Anmeldeinformationen in der Drittanbieteranwendung geändert haben, muss der Benutzer seine in Azure AD gespeicherten Anmeldeinformationen aktualisieren. Zu diesem Zweck wählt der Benutzer das Symbol in der unteren rechten Ecke der Anwendungskachel und dann "Anmeldeinformationen aktualisieren" aus, um den Benutzernamen und das Kennwort für die betreffende Anwendung erneut einzugeben.
+Bei einigen Anwendungen kann es erforderlich sein, dass ein Benutzer sein Kennwort bei der ersten Anmeldung ändert. Wenn sich die Anmeldeinformationen in der Drittanbieteranwendung geändert haben, muss der Benutzer seine in Azure AD gespeicherten Anmeldeinformationen aktualisieren. Zu diesem Zweck wählt der Benutzer das Symbol in der unteren rechten Ecke der Anwendungskachel und dann "Anmeldeinformationen aktualisieren" aus, um den Benutzernamen und das Kennwort für die betreffende Anwendung erneut einzugeben.
 
 ### Anwendung mit vorhandenen SSO-Lösungen
 
@@ -185,4 +185,4 @@ Beim Konfigurieren der einmaligen Anmeldung für eine Anwendung bietet das Azure
 [3]: ./media/active-directory-saas-access-panel-introduction/ic767168.png
 [4]: ./media/active-directory-saas-access-panel-introduction/ic767169.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

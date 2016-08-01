@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="07/18/2016"
 	ms.author="tarcher"/>
 
 # Erste Schritte mit Azure Storage (Azure WebJob-Projekte)
+
+[AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
 
 ## Übersicht
 
@@ -24,11 +26,11 @@ Dieser Artikel enthält C#-Codebeispiele, die zeigen, wie das Azure WebJobs-SDK 
 
 Der Azure-Tabellenspeicherdienst ermöglicht das Speichern großer Mengen von strukturierten Daten. Der Dienst ist ein NoSQL-Datenspeicher, der authentifizierte Aufrufe von innerhalb und außerhalb der Azure-Cloud akzeptiert. Azure-Tabellen sind hervorragend zur Speicherung strukturierter nicht relationaler Daten geeignet. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Table Storage mit .NET](storage-dotnet-how-to-use-tables.md#create-a-table).
 
-Einige der Codeausschnitte zeigen das **Table**-Attribut in Funktionen, die manuell aufgerufen werden, d. h. nicht mit einem der Triggerattribute.
+Einige der Codeausschnitte zeigen das **Table**-Attribut in Funktionen, die manuell aufgerufen werden, also nicht mit einem der Triggerattribute.
 
 ## Hinzufügen von Entitäten zu einer Tabelle
 
-Um einer Tabelle Entitäten hinzuzufügen, verwenden Sie das **Table**-Attribut mit einem **ICollector<T>** oder **IAsyncCollector<T>**-Parameter, wobei **T** das Schema der Entitäten angibt, die Sie hinzufügen möchten. Der Attributkonstruktor verwendet einen Zeichenfolgenparameter, der den Namen der Tabelle angibt.
+Um einer Tabelle Entitäten hinzuzufügen, verwenden Sie das **Table**-Attribut mit einem **ICollector<T>**- oder **IAsyncCollector<T>**-Parameter, wobei **T** das Schema der Entitäten angibt, die Sie hinzufügen möchten. Der Attributkonstruktor verwendet einen Zeichenfolgenparameter, der den Namen der Tabelle angibt.
 
 Das folgende Codebeispiel fügt einer Tabelle namens *Ingress* **Person**-Entitäten hinzu.
 
@@ -145,12 +147,12 @@ Weitere Informationen zur Verwendung des **CloudTable**-Objekts finden Sie unter
 
 ## Verwandte in den Artikeln zu Warteschlangen behandelte Themen
 
-Informationen zur Handhabung der durch eine Warteschlangennachricht ausgelösten Tabellenverarbeitung oder zu Szenarios für das WebJobs SDK, die nicht spezifisch für die Tabellenverarbeitung sind, finden Sie unter [Erste Schritte mit Azure Queue Storage und verbundenen Diensten in Visual Studio (WebJobs-Projekte)](vs-storage-webjobs-getting-started-queues.md).
+Informationen zur Handhabung der durch eine Warteschlangennachricht ausgelösten Tabellenverarbeitung oder zu Szenarien für das WebJobs SDK, die nicht spezifisch für die Tabellenverarbeitung sind, finden Sie unter [Erste Schritte mit Azure Queue Storage und verbundenen Diensten in Visual Studio (WebJob-Projekte)](vs-storage-webjobs-getting-started-queues.md).
 
 
 
 ## Nächste Schritte
 
-In diesem Artikel wurden Codebeispiele bereitgestellt, in denen veranschaulicht wird, wie häufige Szenarien für das Arbeiten mit Azure-Tabellen behandelt werden. Weitere Informationen zur Verwendung von Azure WebJobs und dem WebJobs-SDK finden Sie unter [Dokumentationsressourcen für Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
+In diesem Artikel wurden Codebeispiele bereitgestellt, in denen veranschaulicht wird, wie häufige Szenarien für das Arbeiten mit Azure-Tabellen behandelt werden. Weitere Informationen zur Verwendung von Azure WebJobs und des WebJobs SDK finden Sie unter [Dokumentationsressourcen für Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

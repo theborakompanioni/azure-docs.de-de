@@ -38,6 +38,7 @@ Die folgenden Lernprogramme zeigen, wie Sie die Offlinesynchronisierung zu Ihren
 * [iOS: Offlinesynchronisierung aktivieren]
 * [Xamarin iOS: Offlinesynchronisierung aktivieren]
 * [Xamarin Android: Offlinesynchronisierung aktivieren]
+* [Xamarin.Forms: Offlinesynchronisierung aktivieren](app-service-mobile-xamarin-forms-get-started-offline-data.md)
 * [Windows 8.1: Offlinesynchronisierung aktivieren]
 
 ## Was ist eine Synchronisierungstabelle?
@@ -58,7 +59,7 @@ Entwickler können auch ihren eigenen lokalen Speicher implementieren. Wenn Sie 
 
 Ein *Synchronisierungskontext* ist einem mobilen Client-Objekt zugeordnet (z. B. `IMobileServiceClient` oder `MSClient`) und verfolgt die Änderungen, die mithilfe von Synchronisierungstabellen vorgenommen werden. Der Synchronisierungskontext verwaltet eine *Vorgangswarteschlange* mit einer geordneten Liste an CUD-Vorgängen (Erstellen, Aktualisieren und Löschen), die später an den Server gesendet wird.
 
-Ein lokaler Speicher wird mithilfe einer Initialisierungsmethode wie `IMobileServicesSyncContext.InitializeAsync(localstore)` im [.NET-Client-SDK] dem Synchronisierungskontext zugeordnet.
+Ein lokaler Speicher wird mithilfe einer Initialisierungsmethode wie `IMobileServicesSyncContext.InitializeAsync(localstore)` im [.NET Client SDK] dem Synchronisierungskontext zugeordnet.
 
 ## <a name="how-sync-works"></a>So funktioniert die Offlinesynchronisierung
 
@@ -97,7 +98,7 @@ Beim Synchronisieren von Tabellen steuert der Clientcode, wann lokale Änderunge
 * [Windows 8.1: Offlinesynchronisierung aktivieren]
 
 <!-- Links -->
-[.NET-Client-SDK]: app-service-mobile-dotnet-how-to-use-client-library.md
+[.NET client SDK]: app-service-mobile-dotnet-how-to-use-client-library.md
 [Android: Offlinesynchronisierung aktivieren]: app-service-mobile-android-get-started-offline-data.md
 [iOS: Offlinesynchronisierung aktivieren]: app-service-mobile-ios-get-started-offline-data.md
 [Xamarin iOS: Offlinesynchronisierung aktivieren]: app-service-mobile-xamarin-ios-get-started-offline-data.md
@@ -105,4 +106,4 @@ Beim Synchronisieren von Tabellen steuert der Clientcode, wann lokale Änderunge
 [Windows 8.1: Aktivieren der Offline-Synchronisierung]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
 [Windows 8.1: Offlinesynchronisierung aktivieren]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

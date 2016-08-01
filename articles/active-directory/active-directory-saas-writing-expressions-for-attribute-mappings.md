@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/30/2016"
+	ms.date="07/19/2016"
 	ms.author="markusvi"/>
 
 
@@ -29,10 +29,10 @@ Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer de
 
 Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von Visual Basic for Applications (VBA) ähnlich.
 
-- Der gesamte Ausdruck muss mittels Funktionen definiert werden, die aus einem Namen mit darauffolgenden Argumenten in Klammern bestehen: <br>*Funktionsname(<<argument 1>>,<<argument N>>)*
+- Der gesamte Ausdruck muss mittels Funktionen definiert werden, die aus einem Namen mit darauffolgenden Argumenten in Klammern bestehen: <br> *FunctionName(<<argument 1>>,<<argument N>>)*
 
 
-- Sie können Funktionen ineinander verschachteln. Beispiel: <br> *FunktionEins(FunktionZwei(<<argument1>>))*
+- Sie können Funktionen ineinander verschachteln. Beispiel: <br> *FunctionOne(FunctionTwo(<<argument1>>))*
 
 
 - Sie können drei verschiedene Argumententypen an die Funktionen übergeben:
@@ -41,7 +41,7 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 
    2. Zeichenfolgenkonstanten, die in doppelte Anführungszeichen eingeschlossen werden müssen. Beispiel: "USA"
 
-   3. Andere Funktionen Beispiel: FunktionEins(<<argument1>>, FunktionZwei(<<argument2>>))
+   3. Andere Funktionen Beispiel: FunctionOne(<<argument1>>, FunctionTwo(<<argument2>>))
 
 
 - Bei Zeichenfolgenkonstanten, in denen ein umgekehrter Schrägstrich ( \\ ) oder ein Anführungszeichen ( " ) benötigt wird, muss dieser bzw. dieses mit einem umgekehrten Schrägstrichsymbol ( \\ ) versehen werden. Beispiel: "Firmenname: \"Contoso\""
@@ -103,7 +103,7 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 |Name| Erforderlich/wiederholt | Typ | Hinweise |
 |--- | ---                 | ---  | ---   |
 | **Trennzeichen** | Erforderlich | String | Zeichenfolge, die zur Trennung von Quellwerten verwendet wird, wenn diese zu einer einzelnen Zeichenfolge zusammengesetzt werden. Kann "" sein, wenn kein Trennzeichen erforderlich ist. |
-| **Quelle1 … QuelleN** | Erforderlich, unterschiedlich oft | String | Zeichenfolgenwerte, die zusammengesetzt werden sollen. |
+| **Quelle1 … QuelleN ** | Erforderlich, unterschiedlich oft | String | Zeichenfolgenwerte, die zusammengesetzt werden sollen. |
 
 
 
@@ -315,4 +315,4 @@ Sie müssen die Zeitzone des Benutzers anhand des Bundesstaatscodes festlegen, d
 - [Kontobereitstellungsbenachrichtigungen](active-directory-saas-account-provisioning-notifications.md)
 - [Liste der Tutorials zur Integration von SaaS-Apps](active-directory-saas-tutorial-list.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

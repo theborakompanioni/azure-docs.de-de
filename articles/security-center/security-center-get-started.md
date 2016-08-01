@@ -10,10 +10,10 @@
 <tags
    ms.service="security-center"
    ms.devlang="na"
-   ms.topic="get-started-article"
+   ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/10/2016"
+   ms.date="07/19/2016"
    ms.author="terrylan"/>
 
 # Schnellstarthandbuch zu Azure Security Center
@@ -21,9 +21,6 @@
 Dieses Dokument unterstützt Sie beim Einstieg in Azure Security Center. Sie erhalten eine Einführung in die Sicherheitsüberwachungs- und Richtlinienverwaltungs-Komponenten und werden zu weiterführenden Schritten geleitet.
 
 > [AZURE.NOTE] Die Informationen in diesem Dokument gelten für die Vorschauversion von Azure Security Center. Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
-
-## Was ist Azure Security Center?
-Security Center unterstützt Sie beim Vorbeugen, Erkennen und Beheben von Bedrohungen. Mit dieser Cloudlösung gewinnen Sie mehr Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Sektrum an Sicherheitslösungen verwendet werden.
 
 ## Datensammlung
 
@@ -47,13 +44,13 @@ Führen Sie im Portal folgende Schritte aus, um auf Security Center zuzugreifen:
 
 ## Verwenden von Security Center
 
-Sie können die Sicherheitsrichtlinien für Ihre Azure-Abonnements und Ressourcengruppen konfigurieren. Wir konfigurieren jetzt eine **Sicherheitsrichtlinie** für Ihr Abonnement:
+Sie können die Sicherheitsrichtlinien für Ihre Azure-Abonnements und Ressourcengruppen konfigurieren. Konfigurieren wir eine **Sicherheitsrichtlinie** für Ihre Abonnements:
 
-1. Klicken Sie im Blatt **Security Center** auf die Kachel **Richtlinie**. ![Security Center][3]
+1. Klicken Sie auf dem Blatt **Security Center** auf die Kachel **Richtlinie**. ![Security Center][3]
 
-2. Wählen Sie im Blatt **Sicherheitsrichtlinie – Richtlinie pro Abonnement oder Ressourcengruppe definieren** ein Abonnement aus. ![Blatt „Sicherheitsrichtlinie“ in Azure Security Center][4]
+2. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie – Richtlinie pro Abonnement oder Ressourcengruppe definieren** ein Abonnement aus. ![Blatt „Sicherheitsrichtlinie“ in Azure Security Center][4]
 
-3. Im Blatt **Sicherheitsrichtlinie** ist die Option **Datensammlung** aktiviert, um automatisch Protokolle zu erfassen. Die Überwachungserweiterung wird auf allen aktuellen und neuen VMs im Abonnement bereitgestellt. (Sie können die Datensammlung auch deaktivieren, indem Sie die Option **Datensammlung** auf „Aus“ festlegen. Security Center kann für Sie dann aber keine Sicherheitswarnungen und Empfehlungen mehr bereitstellen.)
+3. Auf dem Blatt **Sicherheitsrichtlinie** ist die Option **Datensammlung** aktiviert, um automatisch Protokolle zu erfassen. Die Überwachungserweiterung wird auf allen aktuellen und neuen VMs im Abonnement bereitgestellt. (Sie können die Datensammlung auch deaktivieren, indem Sie die Option **Datensammlung** auf „Aus“ festlegen. Security Center kann für Sie dann aber keine Sicherheitswarnungen und Empfehlungen mehr bereitstellen.)
 4. Wählen Sie **Ein Speicherkonto pro Region auswählen** aus. Wählen Sie für jede Region, in der Sie virtuelle Computer ausführen, ein Speicherkonto, in dem Daten dieser virtuellen Computer gespeichert werden. Wenn Sie kein Speicherkonto für die einzelnen Regionen auswählen, wird ein Speicherkonto für Sie erstellt. Die gesammelten Daten werden aus Sicherheitsgründen logisch von anderen Kundendaten getrennt.
 
      > [AZURE.NOTE] Es wird empfohlen, dass Sie zunächst die Datensammlung aktivieren und ein Speicherkonto auf Abonnementebene auswählen. Sicherheitsrichtlinien können auf der Ebene von Azure-Abonnement und Ressourcengruppe festgelegt werden, die Konfiguration von Datensammlung und Speicherkonten erfolgt jedoch nur auf Abonnementebene.
@@ -61,7 +58,7 @@ Sie können die Sicherheitsrichtlinien für Ihre Azure-Abonnements und Ressource
 5. Aktivieren Sie die **Empfehlungen**, die Sie als Teil Ihrer Sicherheitsrichtlinie verwenden möchten. Beispiele:
 
  - Durch das Aktivieren von **Systemupdates** werden alle unterstützten virtuellen Computer auf fehlende Betriebssystemupdates überprüft.
- - Durch das Aktivieren von **Basisregeln** werden alle unterstützten virtuellen Computer untersucht, um Betriebssystemkonfigurationen zu ermitteln, die den virtuellen Computer anfälliger für Angriffe machen können.
+ - Bei Aktivieren von **Sicherheitsrisiken des Betriebssystems** werden alle unterstützten virtuellen Computer untersucht, um Betriebssystemkonfigurationen zu ermitteln, die den virtuellen Computer anfälliger für Angriffe machen können.
 
 **Empfehlungen**:
 
@@ -90,16 +87,16 @@ Anzeigen der Integrität Ihrer **Partnerlösungen**:
 
 3. Wählen Sie eine Partnerlösung aus. In diesem Beispiel wählen wir die Lösung **F5-WAF2** aus. Auf einem Blatt werden der Status der Partnerlösung und die zugeordneten Ressourcen der Lösung angezeigt. Wählen Sie die Option **Lösungskonsole**, um die Verwaltungsoberfläche des Partners für diese Lösung zu öffnen. ![Details der Partnerlösung][10]
 
-## Nächste Schritte
+## Weitere Informationen
 In diesem Dokument wurden die Sicherheitsüberwachungs- und Richtlinienverwaltungskomponenten in Security Center vorgestellt. Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md): Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
-- [Verwalten von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md): Erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
-- [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-- [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md): Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
-- [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md): Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
-- [Azure Security Center – häufig gestellte Fragen](security-center-faq.md) zur Verwendung des Diensts.
-- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie sicherheitsbezogene Neuigkeiten und Informationen zu Azure.
+- [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Hier erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+- [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
+- [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
+- [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
+- [Überwachen von Partnerlösungen mit Azure Security Center:](security-center-partner-solutions.md) Erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
+- [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
+- [Azure Security Blog:](http://blogs.msdn.com/b/azuresecurity/) Hier finden Sie sicherheitsbezogene Neuigkeiten und Informationen zu Azure.
 
 <!--Image references-->
 [1]: ./media/security-center-get-started/security-tile.png
@@ -113,4 +110,4 @@ In diesem Dokument wurden die Sicherheitsüberwachungs- und Richtlinienverwaltun
 [9]: ./media/security-center-get-started/partner-solutions.png
 [10]: ./media/security-center-get-started/partner-solutions-detail.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

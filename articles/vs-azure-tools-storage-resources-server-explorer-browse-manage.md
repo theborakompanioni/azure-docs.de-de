@@ -12,11 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/08/2016"
+   ms.date="07/18/2016"
    ms.author="tarcher" />
 
 # Durchsuchen und Verwalten von Speicherressourcen mit dem Server-Explorer
 
+[AZURE.INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
+
+## Übersicht
 Wenn Sie die Azure Tools für Microsoft Visual Studio installiert haben, können Sie Blob-, Warteschlangen- und Tabellendaten von Ihren Speicherkonten für Azure aus anzeigen. Der Knoten für Azure Storage im Server-Explorer zeigt Daten, die sich in Ihrem lokalen Speicheremulatorkonto und Ihren anderen Azure-Speicherkonten befinden.
 
 Wählen Sie zum Anzeigen des Server-Explorers in Visual Studio in der Menüleiste nacheinander die Optionen **Ansicht** und **Server-Explorer**. Der Speicherknoten zeigt alle Speicherkonten an, die unter jedem Azure-Abonnement/-Zertifikat vorhanden sind, mit dem Sie verbunden sind. Wird das Speicherkonto nicht angezeigt, befolgen Sie die Anweisungen am [Ende des Themas](#add-storage-accounts-by-using-server-explorer), um das Konto hinzuzufügen.
@@ -185,7 +188,7 @@ Der Azure Tabellenspeicherdienst erlaubt die Speicherung großer Mengen von stru
 
     ![Eine Azure-Tabelle im Projektmappen-Explorer](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC744165.png)
 
-Die Tabelle ist in Entitäten (Anzeige in Zeilen) und Eigenschaften (Anzeige in Spalten) organisiert. Die folgende Abbildung zeigt z. B. Entitäten, die im **Tabellen-Designer** aufgeführt sind:
+Die Tabelle ist in Entitäten (Anzeige in Zeilen) und Eigenschaften (Anzeige in Spalten) organisiert. Die folgende Abbildung zeigt z. B. Entitäten, die im **Tabellen-Designer** aufgeführt sind:
 
 ### So bearbeiten Sie Tabellendaten
 
@@ -314,4 +317,4 @@ Es gibt zwei Möglichkeiten, Speicherkonten mithilfe des Server-Explorers hinzuz
 
 Weitere Informationen dazu, wie Azure Storage Services verwendet wird, finden Sie unter [Zugreifen auf Azure Storage Services](https://msdn.microsoft.com/library/azure/ee405490.aspx).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->
