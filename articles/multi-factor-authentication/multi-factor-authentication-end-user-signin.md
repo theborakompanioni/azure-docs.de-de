@@ -30,10 +30,10 @@ Vorgehensweise|Beschreibung
 :------------- | :------------- | 
 [Anmeldung mit Mobil- oder Bürotelefon](#anmeldung-mit-mobil-oder-b&#252;rotelefon) | Beschreibt die Anmeldung mit einem Mobil- oder Bürotelefon.
 [Anmelden mit der mobilen App über eine Benachrichtigung](#anmelden-mit-der-mobilen-app-&#252;ber-eine-benachrichtigung) | Beschreibt die Anmeldung bei der mobilen App mit einer Benachrichtigung.
-[Anmelden mit der mobilen App über einen Überprüfungscode](#anmelden-mit-der-mobilen-app-über-einen-&#252;berpr&#252;fungscode)|Beschreibt die Anmeldung bei der mobilen App mit einem Überprüfungscode.
+[Anmelden mit der mobilen App über einen Überprüfungscode](#anmelden-mit-der-mobilen-app-&#246;ber-einen-&#252;berpr&#252;fungscode)|Beschreibt die Anmeldung bei der mobilen App mit einem Überprüfungscode.
 [Anmelden mit einer alternativen Methode](#anmelden-mit-einer-alternativen-methode)|Hier erfahren Sie, was Sie erwartet, wenn Sie eine alternative Methode verwenden möchten.
 
-## Anmeldung mit Mobil- oder Bürotelefon
+## Anmeldung mit Mobil- oder B&#252;rotelefon
 
 Im Folgenden wird der Vorgang für Multi-Factor Authentication mit dem Büro- oder Mobiltelefon beschrieben.
 
@@ -50,7 +50,7 @@ Im Folgenden wird der Vorgang für Multi-Factor Authentication mit dem Büro- od
 
 - Sie sollten jetzt angemeldet sein.</li>
 
-## Anmelden mit der mobilen App über eine Benachrichtigung
+## Anmelden mit der mobilen App &#252;ber eine Benachrichtigung
 
 Die folgenden Informationen beschreiben die Verwendung von Multi-Factor Authentication mit der mobilen App, wenn Sie eine Benachrichtigung erhalten.
 
@@ -70,7 +70,7 @@ Die folgenden Informationen beschreiben die Verwendung von Multi-Factor Authenti
 - Sie sollten jetzt angemeldet sein.
 
 
-## Anmelden mit der mobilen App über einen Überprüfungscode
+## Anmelden mit der mobilen App &#246;ber einen &#252;berpr&#252;fungscode
 
 Im Folgenden wird der Vorgang für Multi-Factor Authentication mit der mobilen App beschrieben, wenn Sie sie mit einem Bestätigungscode verwenden.
 
