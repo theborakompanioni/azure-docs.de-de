@@ -14,7 +14,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="06/13/2016"
+	ms.date="07/22/2016"
 	ms.author="jroth"/>
 
 # Erste Schritte mit SQL Server auf Azure Virtual Machines
@@ -31,7 +31,7 @@ Evaluieren Sie zunächst, welche Vorteile sich für Sie durch die Verwendung von
 
 Wenn Sie andere Workloads in Azure verschieben, z.B. eine Unternehmensanwendung, ist es sinnvoll, auch alle abhängigen SQL Server-Datenbanken in Azure zu verschieben. So erzielen Sie eine bessere Leistung. Das Hosten von SQL Server auf Azure VMs hat aber noch weitere Vorteile. Beispielsweise haben Sie automatisch Zugriff auf mehrere Rechenzentren, um weltweite Präsenz und die Notfallwiederherstellung zu ermöglichen. Eine vollständige Liste mit den Szenarien und Vorteilen finden Sie auf der Produktseite [SQL Server auf virtuellen Computern](https://azure.microsoft.com/services/virtual-machines/sql-server/).
 
-> [AZURE.NOTE] Sehen Sie sich beim Evaluieren von SQL Server auf Azure VMs auch die anderen Speicher- und SQL-Optionen unter Azure an, z.B. [SQL-Datenbank](../sql-database/sql-database-technical-overview.md), [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) und [SQL Server Stretch-Datenbank](../sql -server-stretch-database/sql-server-stretch-database-overview.md). Einen ausführlichen Vergleich finden Sie unter [Wählen Sie eine SQL Server-Cloudoption: Azure SQL-Datenbank (PaaS) oder SQL Server auf Azure-VMs (IaaS)](../sql-database/data-management-azure-sql-database-and-sql-server-iaas.md).
+> [AZURE.NOTE] Sehen Sie sich beim Evaluieren von SQL Server auf Azure VMs auch die anderen Speicher- und SQL-Optionen unter Azure an, z.B. [SQL-Datenbank](../sql-database/sql-database-technical-overview.md), [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) und [SQL Server Stretch-Datenbank](../sql -server-stretch-database/sql-server-stretch-database-overview.md). Einen ausführlichen Vergleich finden Sie unter [Choose a cloud SQL Server option: Azure SQL (PaaS) Database or SQL Server on Azure VMs (IaaS)](../sql-database/sql-database-paas-vs-sql-server-iaas.md) (Auswählen einer SQL Server-Cloudoption: Azure SQL-Datenbank (PaaS) oder SQL Server auf Azure-VMs (IaaS)).
 
 Nachdem Sie sich für die Ausführung von SQL Server auf Azure VMs entschieden haben, müssen Sie unter anderem zuerst entscheiden, ob Sie ein VM-Image verwenden, in dem die SQL Server-Lizenzkosten enthalten sind. Eine andere Möglichkeit ist „Bring Your Own License“ (BYOL). Hierbei zahlen Sie nur für die VM selbst. Diese Optionen werden in den nächsten beiden Abschnitten beschrieben.
 
@@ -78,7 +78,7 @@ Wenn Sie hohe Verfügbarkeit benötigen, sollten Sie SQL Server-Verfügbarkeitsg
 Weitere Informationen finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-high-availability-dr.md).
 
 ### Sichern der Daten
-Für Azure-VMs kann die [automatisierte Sicherung](virtual-machines-windows-sql-automated-backup.md) verwendet werden, bei der regelmäßig Sicherungen Ihrer Datenbank im Blobspeicher erstellt werden. Sie können dieses Verfahren auch manuell verwenden. Weitere Informationen finden Sie unter [Verwenden von Azure Storage für SQL Server-Sicherung und -Wiederherstellung](../sql-database/storage-use-storage-sql-server-backup-restore.md). Eine Übersicht über alle Sicherungs- und Wiederherstellungsoptionen finden Sie unter [Sicherung und Wiederherstellung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-backup-recovery.md).
+Für Azure-VMs kann die [automatisierte Sicherung](virtual-machines-windows-sql-automated-backup.md) verwendet werden, bei der regelmäßig Sicherungen Ihrer Datenbank im Blobspeicher erstellt werden. Sie können dieses Verfahren auch manuell verwenden. Weitere Informationen finden Sie unter [Verwenden von Azure Storage für SQL Server-Sicherung und -Wiederherstellung](virtual-machines-windows-use-storage-sql-server-backup-restore.md). Eine Übersicht über alle Sicherungs- und Wiederherstellungsoptionen finden Sie unter [Sicherung und Wiederherstellung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-backup-recovery.md).
 
 ### Automatisieren von Updates
 Für Azure-VMs kann das [automatisierte Patchen](virtual-machines-windows-sql-automated-patching.md) verwendet werden, um ein Wartungsfenster zum automatischen Installieren wichtiger Fenster und SQL Server-Updates zu planen.
@@ -91,4 +91,4 @@ Das Programm zur Verbesserung der Benutzerfreundlichkeit (Customer Experience Im
 
 Haben Sie noch eine Frage? Lesen Sie sich zunächst [SQL Server auf virtuellen Azure-Computern – FAQ](virtual-machines-windows-sql-server-iaas-faq.md) durch. Fügen Sie außerdem Ihre Fragen oder Kommentare zur Interaktion mit Microsoft und der Community beliebigen SQL-VM-Themen an.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

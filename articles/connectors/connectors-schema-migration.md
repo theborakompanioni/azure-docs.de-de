@@ -9,7 +9,7 @@
     tags="connectors"/>
 
 <tags
-	ms.service="app-service-logic"
+	ms.service="logic-apps"
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -20,7 +20,7 @@
 # Gewusst wie: Migrieren von Logik-Apps zur Schemaversion 2015-08-01-preview
 
 Um Ihre vorhandenen Logik-Apps in das neue Schema zu verschieben, führen Sie folgende Schritte aus:
-1. Öffnen Sie Ihre Logik-App im Azure-Portal.  
+1. Öffnen Sie Ihre Logik-App im Azure-Portal.
 2. Klicken Sie auf „Schema aktualisieren“.
 
  ![API-Symbol][step1] Die Seite „Schema aktualisieren“ wird angezeigt. Sie enthält einen Link zu einem Dokument, das Details zu den Verbesserungen des neuen Schemas bereitstellt: ![API-Symbol][step2]
@@ -42,4 +42,4 @@ Um Ihre vorhandenen Logik-Apps in das neue Schema zu verschieben, führen Sie fo
 [step1]: ./media/connectors-schema-migration/migrateschema1.png
 [step2]: ./media/connectors-schema-migration/migrateschema2.png
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0727_2016-->

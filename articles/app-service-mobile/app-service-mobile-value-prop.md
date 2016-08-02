@@ -18,7 +18,7 @@
 
 # <a name="getting-started"> </a>Was sind Mobile Apps?
 
-Azure App Service ist ein vollständiges PaaS-Angebot (Platform as a Service) für professionelle Entwickler, das einen umfangreichen Satz von Funktionen für Web-, mobile und Integrationsszenarien bereitstellt. *Mobile Apps* in *Azure App Service* bietet eine hochgradig skalierbare, global verfügbare Entwicklungsplattform für mobile Anwendungen für Unternehmensentwickler und Systemintegratoren, die umfassende Funktionen für mobile Entwickler bereitstellt.
+Azure App Service ist ein vollständig verwaltetes [PaaS](https://azure.microsoft.com/overview/what-is-paas/)-Angebot (Platform as a Service) für professionelle Entwickler, das einen umfangreichen Satz von Funktionen für Web- und Integrationsszenarien sowie mobile Szenarien bereitstellt. *Mobile Apps* in *Azure App Service* bietet eine hochgradig skalierbare, global verfügbare Entwicklungsplattform für mobile Anwendungen für Unternehmensentwickler und Systemintegratoren, die umfassende Funktionen für mobile Entwickler bereitstellt.
 
 ![Mobile Apps](./media/app-service-mobile-value-prop/overview.png)
 
@@ -33,7 +33,7 @@ Azure App Service ist ein vollständiges PaaS-Angebot (Platform as a Service) f�
 ## Mobile App-Features
 Die folgenden Features sind für die cloudfähige mobile Entwicklung wichtig:
 
-- **Authentifizierung und Autorisierung** – Wählen Sie einen Eintrag aus der ständig wachsenden Liste der Identitätsanbieter aus, z.B. Azure Active Directory für die Authentifizierung von Unternehmen, sowie Anbieter von sozialen Netzwerken wie Facebook, Google, Twitter und Microsoft-Konto. Azure Mobile Apps stellt einen OAuth 2.0-Dienst für jeden Anbieter bereit. Sie können auch das SDK für den Identitätsanbieter integrieren, um anbieterspezifische Funktionen zu erhalten.
+- **Authentifizierung und Autorisierung** – Wählen Sie einen Eintrag aus der ständig wachsenden Liste mit Identitätsanbietern (wie etwa Azure Active Directory für die Authentifizierung von Unternehmen) sowie mit Anbietern von sozialen Netzwerken wie Facebook, Google, Twitter und Microsoft-Konto aus. Azure Mobile Apps stellt einen OAuth 2.0-Dienst für jeden Anbieter bereit. Sie können auch das SDK für den Identitätsanbieter integrieren, um anbieterspezifische Funktionen zu erhalten.
 
   Erfahren Sie mehr über unsere [Authentifizierungsfeatures].
 
@@ -55,7 +55,7 @@ Die folgenden Plattformfeatures sind allgemein nützlich für mobile Produktions
 
   Erfahren Sie mehr über die [automatische Skalierung].
 
-- **Stagingumgebungen** – App Service kann mehrere Versionen Ihrer Website ausführen, sodass Sie A/B-Tests , Tests in der Produktion im Rahmen eines umfassenderen DevOps-Plans und das direkte Staging eines neuen Back-Ends durchführen können.
+- **Stagingumgebungen** – App Service kann mehrere Versionen Ihrer Website ausführen, sodass Sie A/B-Tests, Tests in der Produktion im Rahmen eines umfassenderen DevOps-Plans und das direkte Staging eines neuen Back-Ends durchführen können.
 
   Erfahren Sie mehr über [Stagingumgebungen].
 
@@ -102,4 +102,4 @@ Weitere Informationen zu Azure Mobile Apps finden Sie in unserem [Lernpfad]. Wei
 [App Service-Umgebungen]: ../app-service-web/app-service-app-service-environment-intro.md
 [Lernpfad]: https://azure.microsoft.com/de-DE/documentation/learning-paths/appservice-mobileapps/
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

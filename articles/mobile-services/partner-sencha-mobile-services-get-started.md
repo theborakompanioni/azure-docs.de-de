@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-sencha"
 	ms.devlang="multiple"
 	ms.topic="get-started-article"
-	ms.date="02/10/2016"
+	ms.date="07/21/2016"
 	ms.author="glenga"/>
 
 # <a name="getting-started"></a>Erste Schritte mit Mobile Services und Sencha Touch
@@ -23,7 +23,7 @@
 &nbsp;
 
 
-[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]&nbsp;
+[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)] &nbsp;
 
 [AZURE.INCLUDE [mobile-services-hero-slug](../../includes/mobile-services-hero-slug.md)]
 
@@ -675,7 +675,7 @@ Der letzte Schritt dieses Lernprogramms besteht im Hosten und Ausführen der neu
 
     ![sencha web start](./media/partner-sencha-mobile-services-get-started/sencha-web-start.png)
 
-  3. Öffnen Sie die in Ihrem Terminal aufgelistete URL in einem Webbrowser, um die App zu starten (z. B. http://localhost:1841)).
+  3. Öffnen Sie die in Ihrem Terminal aufgelistete URL in einem Webbrowser, um die App zu starten (z.B. http://localhost:1841).
 
   4. Geben Sie in der App einen sinnvollen Text ein, beispielsweise "Lernprogramm beenden", und klicken Sie dann auf **Hinzufügen**.
 
@@ -724,4 +724,4 @@ Für weitere Informationen zu den ersten Schritten mit Sencha Touch besuchen Sie
 
 [klassischen Azure-Portal]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -14,7 +14,7 @@
 	ms.topic="get-started-article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="05/03/2016" 
+	ms.date="07/27/2016" 
 	ms.author="jeffstok"/>
 
 
@@ -30,7 +30,7 @@ Stream Analytics nutzt die jahrelange Arbeit von Microsoft Research bei der Entw
 Große Datenmengen werden heute mit hoher Geschwindigkeit über das Netz übertragen. Organisationen, die diese Streamingdaten in Echtzeit verarbeiten und nutzen können, verbessern die Effizienz unter Umständen erheblich und setzen sich auf dem Markt von den Mitbewerbern ab. Szenarios für Streaming Analytics in Echtzeit finden sich in allen Branchen: personalisierte Aktienhandelsanalysen und Warnungen von Finanzdienstleistern in Echtzeit, Betrugserkennung in Echtzeit, Daten- und Identitätsschutzdienste, zuverlässige Erfassung und Analyse von Daten, die von Sensoren und Stellgliedern generiert wurden und in physische Objekte eingebettet sind (IoT), Webklickstream-Analyse und CRM-Anwendungen, die Warnungen ausgeben, wenn die Benutzerfreundlichkeit innerhalb eines Zeitraums beeinträchtigt wird. Unternehmen suchen die flexibelste, zuverlässigste und kostengünstigste Möglichkeit, um eine solche Streaming-Datenanalyse in Echtzeit durchzuführen, um in einer stark durch Wettbewerb geprägten, modernen Geschäftswelt erfolgreich zu sein.
 
 ## Wichtige Funktionen und Vorteile
--   **Einfache Bedienung:** Stream Analytics unterstützt ein einfaches, deklaratives Abfragemodell zum Beschreiben der Transformationen. Zur Optimierung der Bedienfreundlichkeit verwendet Stream Analytics eine SQL-Variante und beseitigt die Notwendigkeit für Kunden, sich mit den technischen Aspekten des Stromverarbeitungssystems auseinandersetzen zu müssen. Mithilfe der [Stream Analytics-Abfragesprache](https://msdn.microsoft.com/library/azure/dn834998.aspx) können Sie im Abfrageeditor des Browsers die IntelliSense-Funktion zur automatischen Vervollständigung nutzen, um schnell und einfach zeitliche Funktionen zu implementieren, darunter zeitlich basierte Verknüpfungen, Fensteraggregate, zeitliche Filter sowie andere allgemeine Vorgänge wie z. B. Verknüpfungen, Aggregate, Projektionen und Filter. Darüber hinaus ermöglichen browserinterne Abfragetests einer Beispieldatendatei eine schnelle und iterative Entwicklung.  
+-   **Einfache Bedienung:** Stream Analytics unterstützt ein einfaches, deklaratives Abfragemodell zum Beschreiben der Transformationen. Zur Optimierung der Bedienfreundlichkeit verwendet Stream Analytics eine SQL-Variante und beseitigt die Notwendigkeit für Kunden, sich mit den technischen Aspekten des Stromverarbeitungssystems auseinandersetzen zu müssen. Mithilfe der [Stream Analytics-Abfragesprache](https://msdn.microsoft.com/library/azure/dn834998.aspx) können Sie im Abfrageeditor des Browsers die IntelliSense-Funktion zur automatischen Vervollständigung nutzen, um schnell und einfach zeitliche Funktionen zu implementieren, darunter zeitlich basierte Verknüpfungen, Fensteraggregate, zeitliche Filter sowie andere allgemeine Vorgänge wie z. B. Verknüpfungen, Aggregate, Projektionen und Filter. Darüber hinaus ermöglichen browserinterne Abfragetests einer Beispieldatendatei eine schnelle und iterative Entwicklung.
 
 -   **Skalierbarkeit**: Stream Analytics kann einen hohen Ereignisdurchsatz von bis zu 1 GB/s verarbeiten. Die Integration in [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) ermöglicht es der Lösung, Millionen Ereignisse pro Sekunde zu erfassen, die von verbundenen Geräten, aus Klickstreams, aus Protokolldateien usw. stammen. Um dies zu erreichen, nutzt Stream Analytics die Partitionierungsmöglichkeit von Event Hubs, sodass sich pro Partition bis zu 1 MB/s ergeben. Benutzer können die Berechnung in eine Anzahl von logischen Schritten innerhalb der Abfragedefinition partitionieren, die jeweils die Möglichkeit haben, weiter partitioniert zu werden, um die Skalierbarkeit zu erhöhen.
 
@@ -53,4 +53,4 @@ Sie haben nun Stream Analytics kennengelernt, einen verwalteten Dienst für Stre
 - [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

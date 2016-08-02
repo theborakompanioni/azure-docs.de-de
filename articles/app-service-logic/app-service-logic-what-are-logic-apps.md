@@ -8,7 +8,7 @@
 	documentationCenter=""/>
 
 <tags
-	ms.service="app-service-logic"
+	ms.service="logic-apps"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -18,51 +18,42 @@
 
 #Was sind Logik-Apps?
 
-| Kurzübersicht |
-| --------------- |
-| [Logik-Apps – Definitionssprache](https://msdn.microsoft.com/library/azure/mt643789.aspx) |
-| [Logik-Apps – Connector-Dokumentation](../connectors/apis-list.md) |
-| [Logik-Apps – Forum](https://social.msdn.microsoft.com/Forums/de-DE/home?forum=azurelogicapps) |
-
-Mit Logik-Apps können Sie komplexe Geschäftsprozesse vereinfachen und implementieren. Es wird ein visueller Designer bereitgestellt, mit dem Sie Ihre Geschäftsprozesse in Form von Schritten (als Workflow bezeichnet) modellieren und automatisieren können. Sie können Workflows so entwerfen, dass sie über einen „Trigger“ gestartet und dann die einzelnen Schritte ausgeführt werden. Bei jedem Schritt wird eine API aufgerufen, und zugleich werden eine sichere Authentifizierung sowie die Einhaltung bewährter Methoden wie Prüfpunktausführung und beständige Ausführung gewährleistet.
+Logik-Apps ermöglichen die Vereinfachung und die Implementierung skalierbarer Integrationen und Workflows in die Cloud. Es wird ein visueller Designer bereitgestellt, mit dem Sie Ihre Prozesse in Form von Schritten (als Workflow bezeichnet) modellieren und automatisieren können. In der Cloud und der lokalen Umgebung sind [viele Connectors](../connectors/apis-list.md) zur schnellen Integration für Dienste und Protokolle enthalten. Eine Logik-App beginnt mit einem Trigger (z.B. „Wenn Dynamics CRM ein Konto hinzugefügt wird“), und nach der Auslösung sind viele verschiedene Kombinationen von Aktionen, Konvertierungen und Bedingungslogikabläufen möglich.
 
 Die Verwendung von Logik-Apps hat u.a. die folgenden Vorteile:
 
 - Sparen von Zeit, indem komplexe Prozesse mit einfachen Designtools entworfen werden
-- Einfaches Implementieren von Aufgaben, die im Code sonst nur schwer zu implementieren sind
+- Nahtloses Implementieren von Mustern und Workflows, die andernfalls im Code nur schwer zu implementieren sind
 - Schnelles Starten mit Vorlagen
-- Anpassen von Logik-Apps mit APIs
-- Verbinden unterschiedlicher Systeme
-- Monetarisieren Ihrer Logik-App über den Marketplace
-- Problemloses Starten und Wachsen nach Bedarf
+- Anpassen der Logik-App mit eigenen APIs, Codeelementen und Aktionen
+- Herstellen einer Verbindung und Synchronisieren von unterschiedlichen Systemen in lokalen Umgebungen und der Cloud
+- Erstellen mit BizTalk Server, API Management, Azure Functions und Azure Service Bus mit erstklassiger Integrationsunterstützung
 
-Bei Logik-Apps handelt es sich um einen vollständig verwalteten Dienst vom Typ „iPaaS“ (integration Platform as a Service), mit dem Entwickler sich keine Sorgen müssen, dass sie in Bezug auf Hosting, Skalierbarkeit, Verfügbarkeit und Verwaltung zusätzliche Arbeitsschritte ausführen müssen.
-
-Und was am wichtigsten ist: Logik-Apps können mit integrierten [verwalteten Connectors][managedapis] kombiniert werden, um selbst schwierige Integrationsszenarien problemlos zu meistern:
+Bei Logik-Apps handelt es sich um einen vollständig verwalteten Dienst vom Typ „iPaaS“ (integration Platform as a Service), mit dem Entwickler sich keine Sorgen in Bezug auf Hosting, Skalierbarkeit, Verfügbarkeit und Verwaltung machen müssen. Logik-Apps werden automatisch zentral hochskaliert, um den Bedarf zu decken.
 
 ![Datenfluss-App-Designer](./media/app-service-logic-what-are-logic-apps/LogicAppCapture2.png)
 
 Wie erwähnt können Sie mit Logik-Apps Geschäftsprozesse automatisieren. Hier sind einige Beispiele:
  
-* Sie können z. B. neue Datensätze in Ihrer SQL-Datenbank automatisch replizieren und per E-Mail an die Mitarbeiter mit Kundenkontakt senden.
-* Sie können automatisch negative Tweets suchen und an einen Slack-Kanal senden.
-* Gehen Sie wie folgt vor, wenn auf einem FTP-Server eine Datei erstellt wird: Analysieren Sie die Datei, fügen Sie Dynamics CRM neue Datensätze hinzu, und erstellen Sie ein Element in einer SharePoint-Liste.
+* Verschieben von auf einen FTP-Server hochgeladenen Dateien nach Azure Storage
+* Verarbeiten und Weiterleiten von Bestellungen in lokalen Systemen und Cloudsystemen
+* Überwachen aller Tweets zu einem bestimmten Thema, Analysieren der Stimmung und Erstellen von Warnungen und Aufgaben für Elemente, für die weitere Maßnahmen erforderlich sind
 
-Ähnliche Szenarios können über den visuellen Designer konfiguriert werden, ohne eine einzige Codezeile schreiben zu müssen. Erste Schritte zum sofortigen [Erstellen Ihrer Logik-App][create].
+Ähnliche Szenarios können über den visuellen Designer konfiguriert werden, ohne eine einzige Codezeile schreiben zu müssen. Erste Schritte zum sofortigen [Erstellen Ihrer Logik-App][create]. Nachdem sie geschrieben wurde, kann eine Logik-App über mehrere Umgebungen und Regionen hinweg [schnell bereitgestellt und neu konfiguriert werden](app-service-logic-create-deploy-template.md).
 
 ## Gründe für Logik-Apps
 
-Wenn Sie einen beliebigen Geschäftsprozess automatisieren möchten (z.B. negative Tweets finden und an Ihren internen Slack-Kanal senden oder neue Kundendatensätze aus SQL gleich bei ihrem Eintreffen in das CRM-System replizieren), können Sie mit Logik-Apps ganz leicht verschiedene Datenquellen integrieren – ob in der Cloud oder lokal. Lesen Sie sich die interessanten Informationen zu unseren [verwalteten Connectors][managedapis] durch. Führen Sie jetzt die [ersten Schritte][create] aus, um Ihre Optionen kennenzulernen.
+Logik-Apps sorgen in Unternehmen in Bezug auf die Integration für Geschwindigkeit und Skalierbarkeit. Die einfache Verwendung des Designers, die Vielzahl der verfügbaren Trigger und Aktionen und leistungsfähige Verwaltungstools machen das Zentralisieren der Apps einfacher als jemals zuvor. Die Digitalisierung wird in Unternehmen immer weiter vorangetrieben, und mit Logik-Apps können Sie bestehende und moderne Systeme miteinander verbinden.
 
-Mit unserem [Unternehmensintegrationskonto][biztalk] können Sie erweiterte Integrationsszenarien nutzen, z.B. mit [XML-Messaging][xml], [Handelspartnerverwaltung][tpm] und vielem mehr.
+Mit unserem [Unternehmensintegrationskonto][biztalk] können Sie erweiterte Integrationsszenarien nutzen, z.B. [XML-Messaging][xml], [Handelspartnerverwaltung][tpm] und vielem mehr.
 
-- **Leicht zu bedienende Entwurfstools** – Logik-Apps können von A bis Z im Browser entwickelt werden. Beginnen Sie mit einem Trigger - von einem einfachen Zeitplan bis zum Auftauchen eines Tweets zu Ihrem Unternehmen. Orchestrieren Sie anschließend eine beliebige Anzahl von Aktionen mithilfe des umfassenden Angebots an Connectors.
+- **Leicht zu bedienende Entwurfstools** – Logik-Apps können von A bis Z im Browser oder mit Visual Studio-Tools entwickelt werden. Beginnen Sie mit einem Trigger – von einem einfachen Zeitplan bis zur Erstellung eines GitHub-Problems. Orchestrieren Sie anschließend eine beliebige Anzahl von Aktionen mithilfe des umfassenden Angebots an Connectors.
 
-- **Einfaches Zusammensetzen von SaaS** – Zusammensetzungsaufgaben, die einfach zu beschreiben sind, lassen sich nur schwierig in Code implementieren. Mit Logik-Apps ist es kinderleicht, verschiedenartige Systeme miteinander zu verbinden. Möchten Sie in Ihrer CRM-Software eine Aufgabe erstellen, die auf Aktivität in Ihren Facebook- oder Twitter-Konten basiert? Wollen Sie Ihre Marketinglösung in der Cloud mit Ihrem lokalen Abrechnungssystem verbinden? Logik-Apps sind die schnellste und zuverlässigste Möglichkeit, Lösungen für diese Probleme bereitzustellen.
+- **Einfaches Verbinden von APIs** – Auch Zusammensetzungsaufgaben, die einfach zu beschreiben sind, lassen sich nur schwer in Code implementieren. Mit Logik-Apps ist es kinderleicht, verschiedenartige Systeme miteinander zu verbinden. Wollen Sie Ihre Marketinglösung in der Cloud mit Ihrem lokalen Abrechnungssystem verbinden? Möchten Sie das Messaging per Enterprise Service Bus über APIs und Systeme hinweg zentralisieren? Logik-Apps sind die schnellste und zuverlässigste Möglichkeit, Lösungen für diese Probleme bereitzustellen.
 
-- **Schneller Einstieg mit Vorlagen** – Um Ihnen den Einstieg zu erleichtern, bieten wir einen [Katalog mit Vorlagen][templates], mit deren Hilfe Sie einige allgemeine Lösungen rasch erstellen können. Von BizTalk-Lösungen bis zu einfachen SaaS-Konnektivitätslösungen und sogar einigen, die "just for fun" sind – der Katalog ist die schnellste Möglichkeit, sich mit der Leistungsfähigkeit von Logik-Apps vertraut zu machen.
+- **Schneller Einstieg mit Vorlagen** – Um Ihnen den Einstieg zu erleichtern, bieten wir einen [Katalog mit Vorlagen][templates], mit deren Hilfe Sie einige allgemeine Lösungen rasch erstellen können. Von erweiterten B2B-Lösungen bis zu einfachen SaaS-Konnektivitätslösungen und sogar einigen Just-for-fun-Lösungen: der Katalog ist die schnellste Möglichkeit, sich mit der Leistungsfähigkeit von Logik-Apps vertraut zu machen.
 
-- **Integrierte Erweiterbarkeit** – Sie finden den benötigten Connector nicht? Logik-Apps sind für das Arbeiten mit API-Apps ausgelegt. Sie können problemlos eine eigene API-App entwickeln und anschließend als benutzerdefinierte API nutzen. Entwickeln Sie eine neue App nur für sich allein, oder veröffentlichen Sie sie im Marketplace, um sie kommerziell zu verwerten.
+- **Integrierte Erweiterbarkeit** – Sie finden den benötigten Connector nicht? Logik-Apps sind für die Zusammenarbeit mit Ihren eigenen APIs und Codeelementen konzipiert. Sie können auf einfache Weise eine eigene API-App als benutzerdefinierten Connector erstellen oder eine [Azure-Funktion](https://functions.azure.com) aufrufen, um Codeausschnitte bedarfsgesteuert auszuführen.
 
 - **Hohes Integrationspotenzial** – Fangen Sie einfach an, und wachsen Sie Ihrem Bedarf entsprechend. Logik-Apps können problemlos die Leistungsstärke von BizTalk, der branchenführenden Integrationslösung von Microsoft nutzen, damit Integrationsexperten die Lösungen erstellen können, die sie brauchen. Informieren Sie sich eingehender über das [Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md).
 
@@ -78,11 +69,10 @@ Es folgt eine Beschreibung einiger der wichtigsten Elemente von Logik-Apps.
 
 ## Erste Schritte  
 
- - Befolgen Sie zum Einstieg in Logik-Apps das Lernprogramm [Erstellen einer Logik-App][create].
- - [Anzeigen allgemeiner Beispiele und Szenarien](app-service-logic-examples-and-scenarios.md)
- - [Sie können Geschäftsprozesse mit Logik-Apps automatisieren.](http://channel9.msdn.com/Events/Build/2016/T694)
- - [Erfahren Sie, wie Sie Ihre Systeme in Logik-Apps integrieren.](http://channel9.msdn.com/Events/Build/2016/P462)
-- Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure App Service][appservice].
+- Befolgen Sie zum Einstieg in Logik-Apps das Lernprogramm [Erstellen einer Logik-App][create].
+- [Anzeigen allgemeiner Beispiele und Szenarien](app-service-logic-examples-and-scenarios.md)
+- [Sie können Geschäftsprozesse mit Logik-Apps automatisieren.](http://channel9.msdn.com/Events/Build/2016/T694)
+- [Erfahren Sie, wie Sie Ihre Systeme in Logik-Apps integrieren.](http://channel9.msdn.com/Events/Build/2016/P462)
 
 [biztalk]: app-service-logic-enterprise-integration-accounts.md
 [appservice]: ../app-service/app-service-value-prop-what-is.md
@@ -92,4 +82,4 @@ Es folgt eine Beschreibung einiger der wichtigsten Elemente von Logik-Apps.
 [xml]: app-service-logic-enterprise-integration-b2b.md
 [templates]: app-service-logic-use-logic-app-templates.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

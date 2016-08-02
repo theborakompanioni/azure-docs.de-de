@@ -98,7 +98,7 @@ Aktualisieren Sie dann die Projektabhängigkeiten, damit die Binärdateien herun
       // or applicationinsights-core for bare API
     }
 
-* *Build- oder Prüfsummenvalidierungsfehler? Versuchen Sie es mit einer bestimmten Version, z. B.:* `version:'1.0.n'`. *Sie finden die neueste Version in den [SDK-Versionshinweisen](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).*
+* *Build- oder Prüfsummenvalidierungsfehler? Versuchen Sie es mit einer bestimmten Version, z. B.: * `version:'1.0.n'`. *Sie finden die neueste Version in den [SDK-Versionshinweisen](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).*
 * *So aktualisieren Sie auf ein neues SDK*
  * Aktualisieren Sie die Abhängigkeiten des Projekts.
 
@@ -162,6 +162,7 @@ Fügen Sie den Instrumentationsschlüssel ein, den Sie aus dem Azure-Portal abge
 * Der Instrumentationsschlüssel wird zusammen mit jedem Telemetrieelement übermittelt und weist Application Insights an, ihn in Ihrer Ressource anzuzeigen.
 * Die Komponente "HTTP-Anforderung" ist optional. Sie sendet automatisch Telemetriedaten zu Anforderungen und Antwortzeiten zum Portal.
 * Die Korrelation von Ereignissen ist eine Ergänzung der HTTP-Anforderungskomponente. Sie weist den einzelnen Anforderungen, die vom Server empfangen wurden, einen Bezeichner zu und fügt diesen als Eigenschaft 'Operation.Id' jedem Telemetrieelement hinzu. Diese Eigenschaft ermöglicht das Korrelieren der jeder Anforderung zugeordneten Telemetriedaten, indem in [Diagnosesuche][diagnostic] ein Filter festgelegt wird.
+* Der Application Insight-Schlüssel kann dynamisch vom Azure-Portal als Systemeigenschaft (-DAPPLICATION\_INSIGHTS\_IKEY=your\_ikey) übergeben werden. Ist keine Eigenschaft definiert, wird in den App-Einstellungen in Azure nach der Umgebungsvariablen (APPLICATION\_INSIGHTS\_IKEY) gesucht. Sind beide Eigenschaften nicht definiert, wird das InstrumentationKey-Standardelement aus „ApplicationInsights.xml“ verwendet. Das hilft bei der dynamischen Verwaltung verschiedener InstrumentationKey-Elemente für verschiedene Umgebungen.
 
 ### Alternative Methoden zum Festlegen des Instrumentationsschlüssels
 
@@ -240,7 +241,7 @@ Klicken Sie sich durch ein beliebiges Diagramm, um ausführliche aggregierte Met
 
 ![](./media/app-insights-java-get-started/6-barchart.png)
 
-> Application Insights setzt voraus, dass das Format von HTTP-Anforderungen für MVC-Anwendungen wie folgt lautet: `VERB controller/action` `GET Home/Product/f9anuh81`, `GET Home/Product/2dffwrf5` und `GET Home/Product/sdf96vws` werden beispielsweise in `GET Home/Product` gruppiert. Dadurch werden aussagekräftige Aggregationen von Anforderungen ermöglicht, z. B. die Anzahl der Anforderungen und die durchschnittliche Ausführungszeit von Anforderungen.
+> Application Insights setzt voraus, dass das Format von HTTP-Anforderungen für MVC-Anwendungen wie folgt lautet: `VERB controller/action`. `GET Home/Product/f9anuh81`, `GET Home/Product/2dffwrf5` und `GET Home/Product/sdf96vws` werden beispielsweise in `GET Home/Product` gruppiert. Dadurch werden aussagekräftige Aggregationen von Anforderungen ermöglicht, z. B. die Anzahl der Anforderungen und die durchschnittliche Ausführungszeit von Anforderungen.
 
 
 ### Instanzdaten 
@@ -285,7 +286,7 @@ Nicht behandelte Ausnahmen werden automatisch gesammelt:
 
 Um Daten zu anderen Ausnahmen zu erfassen, haben Sie zwei Möglichkeiten:
 
-* [Fügen Sie „trackException()“-Aufrufe in den Code ein][apiexceptions]. 
+* [Fügen Sie „trackException()“-Aufrufe in den Code ein][apiexceptions].
 * [Installieren Sie den Java-Agent auf dem Server](app-insights-java-agent.md). Sie geben die Methoden an, die Sie überwachen möchten.
 
 
@@ -412,4 +413,4 @@ Weitere Informationen finden Sie im [Java Developer Center](/develop/java/).
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->
