@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="hero-article" 
-	ms.date="06/30/2016" 
+	ms.date="07/22/2016" 
 	ms.author="sdanie"/>
 
 # Gewusst wie: Erstellen einer Web-App mit Redis Cache
@@ -802,6 +802,8 @@ Nachdem Sie den zu verwendenden Cache ausgewählt oder erstellt haben, navigiere
 ## Nächste Schritte
 
 -	Informieren Sie sich auf der [ASP.NET-Website](http://asp.net/) ausführlicher über die [ersten Schritte mit ASP.NET MVC 5](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started).
+-	Weitere Beispiele zum Erstellen einer ASP.NET-Web-App in App Service finden Sie in der 2015 Connect-[Demo](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/) [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) unter [Create and deploy an ASP.NET web app in Azure App Service](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-an-ASP.NET-web-app-in-Azure-App-Service) (Erstellen und Bereitstellen einer ASP.NET-Web-App in Azure App Service).
+	-	Weitere Schnellstarts aus der Demo „HealthClinic.biz“ finden Sie unter [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts) (Schnellstarts zu Azure-Entwicklungstools).
 -	Beschäftigen Sie sich unter [Code First für eine neue Datenbank](https://msdn.microsoft.com/data/jj193542) ausführlicher mit dem in diesem Tutorial verwendeten Code First-Ansatz für Entity Framework.
 -	Machen Sie sich ausführlicher mit [Web-Apps in Azure App Service](../app-service-web/app-service-web-overview.md) vertraut.
 -	Informieren Sie sich, wie Sie Ihren Cache im Azure-Portal [überwachen](cache-how-to-monitor.md).
@@ -811,6 +813,7 @@ Nachdem Sie den zu verwendenden Cache ausgewählt oder erstellt haben, navigiere
 	-	[Konfigurieren von Clustern für Azure Redis Cache vom Typ "Premium"](cache-how-to-premium-clustering.md)
 	-	[Konfigurieren der Unterstützung virtueller Netzwerke für Azure Redis Cache vom Typ "Premium"](cache-how-to-premium-vnet.md)
 	-	Ausführliche Informationen zu Größe, Durchsatz und Bandbreite von Premium-Caches finden Sie in den [häufig gestellten Fragen zu Azure Redis Cache](cache-faq.md#what-redis-cache-offering-and-size-should-i-use).
+
 
 
 <!-- IMAGES -->
@@ -846,4 +849,4 @@ Nachdem Sie den zu verwendenden Cache ausgewählt oder erstellt haben, navigiere
 [cache-delete-resource-group]: ./media/cache-web-app-howto/cache-delete-resource-group.png
 [cache-delete-confirm]: ./media/cache-web-app-howto/cache-delete-confirm.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

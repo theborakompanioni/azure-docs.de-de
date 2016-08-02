@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/21/2016"
+	ms.date="07/20/2016"
 	ms.author="carlrab"/>
 
 # Wählen Sie eine SQL Server-Cloudoption: Azure SQL-Datenbank (PaaS) oder SQL Server auf Azure-VMs (IaaS)
@@ -31,7 +31,7 @@ Erfahren Sie, welchen Platz diese beiden Optionen in der Microsoft-Datenplattfor
 
 Eines der ersten Dinge, die in jeder Diskussion von Azure im Vergleich zu lokalen SQL Server-Datenbanken verstanden werden müssen, ist, dass Sie alles verwenden können. Die Microsoft-Datenplattform nutzt SQL Server-Technologie und stellt sie auf unterschiedlichen lokalen physischen Computern, in privaten Cloudumgebungen, in von Drittanbietern gehosteten privaten Cloudumgebungen und in öffentlichen Clouds zur Verfügung. So sind Sie in der Lage, verschiedene einzigartige Geschäftsanforderungen durch eine Kombination aus lokalen und Cloud-gehosteten Bereitstellungen zu erfüllen, können für all diese Umgebungen jedoch auf dieselben Serverprodukte, Entwicklungstools und Fachkenntnisse zurückgreifen.
 
-   ![SQL Server-Cloudoptionen: SQL Server auf IaaS oder SQL-Datenbank (SaaS) in der Cloud.](./media/data-management-azure-sql-database-and-sql-server-iaas/SQLIAAS_SQL_Server_Cloud_Continuum.png)
+   ![SQL Server-Cloudoptionen: SQL Server auf IaaS oder SQL-Datenbank (SaaS) in der Cloud.](./media/sql-database-paas-vs-sql-server-iaas/SQLIAAS_SQL_Server_Cloud_Continuum.png)
 
 Wie Sie im Diagramm sehen können, kann jedes dieser Angebote durch die Administrationsebene in Bezug auf die Infrastruktur (auf der x-Achse) und den Grad der erreichten Kosteneffizienz durch Datenbankkonsolidierung und Automatisierung (auf der y-Achse) beschrieben werden.
 
@@ -156,4 +156,4 @@ Entscheiden Sie sich für **SQL Server auf Azure Virtual Machines**, wenn für S
 - Informationen zu den ersten Schritten mit SQL Server auf virtuellen Azure-Computern finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](../virtual-machines/virtual-machines-windows-portal-sql-server-provision.md).
 - Weitere Informationen finden Sie unter [SQL Server auf Azure Virtual Machines: Lernpfad](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

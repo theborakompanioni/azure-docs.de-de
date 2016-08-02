@@ -193,7 +193,9 @@ Nachdem Sie sich nun mit den Grundlagen vertraut gemacht haben, lesen Sie die fo
 -	[Aktivieren Sie die Cachediagnose](cache-how-to-monitor.md#enable-cache-diagnostics), damit Sie die Integrität Ihres Caches [überwachen](cache-how-to-monitor.md) können. Sie können die Metriken im Azure-Portal anzeigen und sie anschließend mit einem Tool Ihrer Wahl [herunterladen und prüfen](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring).
 -	Lesen Sie die [Dokumentation für den StackExchange.Redis-Cacheclient][].
 	-	Auf Azure Redis Cache können viele Redis-Clients und Entwicklungssprachen zugreifen. Weitere Informationen finden Sie unter [http://redis.io/clients][].
-	-	Azure Redis Cache kann auch mit Diensten wie Redsmin verwendet werden. Weitere Informationen finden Sie unter [Abrufen einer Azure Redis-Verbindungszeichenfolge und ihre Verwendung mit Redsmin][].
+-	Azure Redis Cache kann auch mit Drittanbieterdiensten und -tools wie Redsmin und Redis Desktop Manager verwendet werden.
+	-	Weitere Informationen zu Redsmin finden Sie unter [Abrufen einer Azure Redis-Verbindungszeichenfolge und ihre Verwendung mit Redsmin][].
+	-	Sie können über eine GUI unter Verwendung von [RedisDesktopManager](https://github.com/uglide/RedisDesktopManager) in Azure Redis Cache auf Ihre Daten zugreifen und die Daten anzeigen.
 -	Lesen Sie außerdem die [Redis][]-Dokumentation und die Artikel zu [Redis-Datentypen][] und die [15-minütige Einführung in Redis-Datentypen][].
 
 
@@ -284,4 +286,4 @@ Nachdem Sie sich nun mit den Grundlagen vertraut gemacht haben, lesen Sie die fo
 
 [Funktionsweise von Anwendungs- und Verbindungszeichenfolgen]: http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

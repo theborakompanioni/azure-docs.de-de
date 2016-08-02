@@ -34,7 +34,7 @@ Das folgende Diagramm beschreibt die logischen Komponenten der vorkonfigurierten
 
 ## Simulierte Geräte
 
-In der vorkonfigurierten Lösung ist das simulierte Gerät ein Kühlgerät (z. B. die Klimaanlage eines Gebäudes oder die Lüftungsanlage einer Anlage). Wenn Sie die vorkonfigurierte Lösung bereitstellen, werden automatisch auch vier simulierte Geräte bereitgestellt, die in einem [Azure WebJob][lnk-webjobs] ausgeführt werden. Die simulierten Geräte erleichtern Ihnen das Untersuchen des Verhaltens einer Lösung, ohne dass Sie physische Geräte bereitstellen müssen. Informationen zum Bereitstellen eines echten physischen Geräts finden Sie im Tutorial [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung][lnk-connectyourdevice].
+In der vorkonfigurierten Lösung ist das simulierte Gerät ein Kühlgerät (z. B. die Klimaanlage eines Gebäudes oder die Lüftungsanlage einer Anlage). Wenn Sie die vorkonfigurierte Lösung bereitstellen, werden automatisch auch vier simulierte Geräte bereitgestellt, die in einem [Azure WebJob][lnk-webjobs] ausgeführt werden. Die simulierten Geräte erleichtern Ihnen das Untersuchen des Verhaltens einer Lösung, ohne dass Sie physische Geräte bereitstellen müssen. Informationen zum Bereitstellen eines echten physischen Geräts finden Sie im Tutorial [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung][lnk-connect-rm].
 
 Jedes simulierte Gerät kann die folgenden Nachrichtentypen an den IoT Hub senden:
 
@@ -85,7 +85,7 @@ Der [IoT Hub][lnk-iothub] erfasst Daten, die von den Geräten in die Cloud gesen
 
 ## Azure Stream Analytics
 
-In der Lösung für die Remoteüberwachung übermittelt [Azure Stream Analytics][lnk-asa] (ASA) Nachrichten, die über den IoT Hub von Ihren Geräten eingehen, zur Verarbeitung oder Speicherung an andere Back-End-Komponenten. Unterschiedliche ASA-Aufträge führen bestimmte Funktionen basierend auf dem Inhalt der Nachrichten durch.
+In der Lösung für die Remoteüberwachung übermittelt [Azure Stream Analytics][lnk-asa] \(ASA) Nachrichten, die über den IoT Hub von Ihren Geräten eingehen, zur Verarbeitung oder Speicherung an andere Back-End-Komponenten. Unterschiedliche ASA-Aufträge führen bestimmte Funktionen basierend auf dem Inhalt der Nachrichten durch.
 
 **Auftrag 1: Geräteinformationen** filtert Meldungen mit Geräteinformationen aus dem eingehenden Meldungsdatenstrom und sendet diese an einen Event Hub-Endpunkt. Ein Gerät sendet Meldungen mit Geräteinformationen beim Start und als Antwort auf den Befehl **SendDeviceInfo**. Bei diesem Auftrag wird die folgende Abfragedefinition verwendet, um Nachrichten vom Typ **Geräteinformationen** zu identifizieren:
 
@@ -218,12 +218,17 @@ In den folgenden TechNet-Blogbeiträgen finden Sie weitere Informationen zur vor
 - [IoT Suite - Under The Hood - Remote Monitoring (IoT Suite – Weitere Informationen – Remoteüberwachung)](http://social.technet.microsoft.com/wiki/contents/articles/32941.iot-suite-under-the-hood-remote-monitoring.aspx)
 - [IoT Suite - Remote Monitoring - Adding Live and Simulated Devices (IoT Suite – Remoteüberwachung – Hinzufügen von simulierten und Live-Geräten)](http://social.technet.microsoft.com/wiki/contents/articles/32975.iot-suite-remote-monitoring-adding-live-and-simulated-devices.aspx)
 
+Sie können mit den ersten Schritten mit IoT Suite fortfahren. Lesen Sie dazu die folgenden Artikel:
+
+- [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung (Windows)][lnk-connect-rm]
+- [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions]
 
 [lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
 [lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
-[lnk-connectyourdevice]: iot-suite-connecting-devices.md
 [lnk-iothub]: https://azure.microsoft.com/documentation/services/iot-hub/
 [lnk-asa]: https://azure.microsoft.com/documentation/services/stream-analytics/
 [lnk-webjobs]: https://azure.microsoft.com/documentation/articles/websites-webjobs-resources/
+[lnk-connect-rm]: iot-suite-connecting-devices.md
+[lnk-permissions]: iot-suite-permissions.md
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

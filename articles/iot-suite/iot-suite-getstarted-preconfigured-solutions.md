@@ -91,7 +91,7 @@ Die Lösung verfolgt den Status jedes einzelnen Befehls, der gesendet wird. Zun�
 
 ## Hinzufügen eines neuen simulierten Geräts
 
-Bei der Bereitstellung der vorkonfigurierten Lösung stellen Sie automatisch die vier Beispielgeräte bereit, die in der Geräteliste angezeigt werden. Dies sind *simulierte Geräte*, die in einem Azure WebJob ausgeführt werden. Simulierte Geräte erleichtern Ihnen das Experimentieren mit der vorkonfigurierten Lösung, ohne dass Sie echte physische Geräte bereitstellen müssen. Falls Sie für ein echtes Gerät eine Verbindung mit der Lösung herstellen möchten, hilft Ihnen das Tutorial [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung][lnk-connecting-devices] weiter.
+Bei der Bereitstellung der vorkonfigurierten Lösung stellen Sie automatisch die vier Beispielgeräte bereit, die in der Geräteliste angezeigt werden. Dies sind *simulierte Geräte*, die in einem Azure WebJob ausgeführt werden. Simulierte Geräte erleichtern Ihnen das Experimentieren mit der vorkonfigurierten Lösung, ohne dass Sie echte physische Geräte bereitstellen müssen. Falls Sie für ein echtes Gerät eine Verbindung mit der Lösung herstellen möchten, hilft Ihnen das Tutorial [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung][lnk-connect-rm] weiter.
 
 Die folgenden Schritte verdeutlichen, wie Sie der Lösung ein neues simuliertes Gerät hinzufügen:
 
@@ -105,7 +105,7 @@ Die folgenden Schritte verdeutlichen, wie Sie der Lösung ein neues simuliertes 
 
     ![Neue Gerätedetails im Dashboard festlegen][img-addnew]
     
-    Zusätzlich zum Erstellen eines neuen simulierten Geräts können Sie auch ein physisches Gerät hinzufügen, wenn Sie sich für die Erstellung eines **benutzerdefinierten Geräts** entscheiden. Weitere Informationen finden Sie unter [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung von IoT Suite][lnk-connecting-devices].
+    Zusätzlich zum Erstellen eines neuen simulierten Geräts können Sie auch ein physisches Gerät hinzufügen, wenn Sie sich für die Erstellung eines **benutzerdefinierten Geräts** entscheiden. Weitere Informationen finden Sie unter [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung von IoT Suite][lnk-connect-rm].
 
 4.  Wählen Sie **Eigene Geräte-ID definieren** aus, und geben Sie einen eindeutigen Geräte-ID-Namen wie **mydevice\_01** ein.
 
@@ -207,10 +207,11 @@ Wenn Sie fertig sind, können Sie die vorkonfigurierte Lösung auf der Website [
 
 ## Nächste Schritte
 
-Nachdem Sie jetzt eine funktionsfähige vorkonfigurierte Lösung erstellt haben, können Sie mit den folgenden exemplarischen Vorgehensweisen fortfahren:
+Sie haben eine funktionierende vorkonfigurierte Lösung bereitgestellt und können nun mit den ersten Schritten mit IoT Suite fortfahren. Lesen Sie dazu die folgenden Artikel:
 
--   [Anleitung zum Anpassen vorkonfigurierter Lösungen][lnk-customize]
--   [Übersicht über die vorkonfigurierte Lösung für vorhersagbaren Wartungsbedarf][lnk-predictive]
+- [Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für Remoteüberwachung][lnk-rm-walkthrough]
+- [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung (Windows)][lnk-connect-rm]
+- [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions]
 
 [img-launch-solution]: media/iot-suite-getstarted-preconfigured-solutions/launch.png
 [img-dashboard]: media/iot-suite-getstarted-preconfigured-solutions/dashboard.png
@@ -239,13 +240,13 @@ Nachdem Sie jetzt eine funktionsfähige vorkonfigurierte Lösung erstellt haben,
 [lnk_free_trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
 [lnk-azureiotsuite]: https://www.azureiotsuite.com
-[lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
-[lnk-predictive]: iot-suite-predictive-overview.md
-[lnk-connecting-devices]: iot-suite-connecting-devices.md
 [lnk-logic-apps]: https://azure.microsoft.com/documentation/services/app-service/logic/
 [lnk-portal]: http://portal.azure.com/
 [lnk-rmgithub]: https://github.com/Azure/azure-iot-remote-monitoring
 [lnk-devicemetadata]: iot-suite-what-are-preconfigured-solutions.md#device-identity-registry-and-documentdb
 [lnk-logicapptutorial]: iot-suite-logic-apps-tutorial.md
+[lnk-rm-walkthrough]: iot-suite-remote-monitoring-sample-walkthrough.md
+[lnk-connect-rm]: iot-suite-connecting-devices.md
+[lnk-permissions]: iot-suite-permissions.md
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

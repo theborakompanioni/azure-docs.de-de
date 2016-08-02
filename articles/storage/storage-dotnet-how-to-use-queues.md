@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="06/09/2016"
+	ms.date="07/26/2016"
 	ms.author="gusapost"/>
 
 # Erste Schritte mit Azure Queue Storage mit .NET
 
-[AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
+[AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## Übersicht
 
@@ -35,7 +35,7 @@ In diesem Tutorial wird gezeigt, wie Sie .NET-Code für einige häufig verwendet
 - [Microsoft Visual Studio](https://www.visualstudio.com/de-DE/visual-studio-homepage-vs.aspx)
 - [Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/WindowsAzure.Storage/)
 - [Azure Configuration Manager für .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
-- Ein [Azure-Speicherkonto](storage-create-storage-account.md#create-a-storage-account)
+- Ein [Azure Storage-Konto](storage-create-storage-account.md#create-a-storage-account)
 
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
@@ -48,7 +48,7 @@ In diesem Tutorial wird gezeigt, wie Sie .NET-Code für einige häufig verwendet
 
 ### Hinzufügen von Namespace-Deklarationen
 
-Fügen Sie am Anfang der Datei `program.cs`die folgenden `using`-Anweisungen ein:
+Fügen Sie am Anfang der Datei `program.cs` die folgenden `using`-Anweisungen ein:
 
 	using Microsoft.Azure; // Namespace for CloudConfigurationManager 
 	using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
@@ -275,4 +275,4 @@ Nachdem Sie sich nun mit den Grundlagen des Warteschlangenspeichers vertraut gem
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

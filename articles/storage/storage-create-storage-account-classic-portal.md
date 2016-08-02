@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/09/2016"
+	ms.date="07/26/2016"
 	ms.author="robinsh"/>
 
 
 # Informationen zu Azure-Speicherkonten
 
-[AZURE.INCLUDE [storage-selector-portal-create-storage-account](../../includes/storage-selector-portal-create-storage-account.md)]
+[AZURE.INCLUDE [storage-selector-portal-create-storage-account](../../includes/storage-selector-portal-create-storage-account.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
 
 ## Übersicht
 
@@ -28,7 +28,7 @@ Ein Azure-Speicherkonto bietet Ihnen Zugriff auf die Azure Blob-, Warteschlangen
 Zwei Typen von Speicherkonten stehen zur Verfügung:
 
 - Ein Standardspeicherkonto umfasst Blob-, Tabellen- und Warteschlangenspeicher.
-- Ein Storage Premium-Konto unterstützt aktuell ausschließlich Festplatten virtueller Azure-Computer. Eine ausführliche Übersicht über Azure Premium Storage finden Sie unter [Premium Storage: Hochleistungsspeicher für Workloads auf virtuellen Azure-Maschinen](storage-premium-storage.md).
+- Ein Storage Premium-Konto unterstützt aktuell ausschließlich Festplatten virtueller Azure-Computer. Eine ausführliche Übersicht über Azure Premium Storage finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](storage-premium-storage.md).
 
 ## Speicherkontoabrechnung
 
@@ -37,7 +37,7 @@ Die Rechnungsstellung für Azure-Speicher basiert auf Ihrem Speicherkonto. Speic
 - Speicherkapazität bezieht sich darauf, wie viel von Ihrer Speicherkontozuweisung zum Speichern von Daten verwendet wird. Die Kosten des einfachen Speicherns von Daten wird dadurch bestimmt, wie viele Daten Sie speichern und wie diese Daten repliziert werden.
 - Die Replikation bestimmt, wie viele Kopien Ihrer Daten gleichzeitig unterhalten werden und an welchen Standorten.
 - Transaktionen beziehen sich auf alle Lese- und Schreibvorgänge im Azure-Speicher.
-- Datenausgang bezieht sich auf Daten, die aus einer Azure-Region übertragen werden. Wenn eine Anwendung, die nicht in der gleichen Region ausgeführt wird und entweder ein Clouddienst oder ein anderer Anwendungstyp ist, auf die Daten in Ihrem Speicherkonto zugreift, fallen Gebühren für den Datenausgang an. (Für Azure-Dienste können Sie Maßnahmen durchführen, um Daten und Dienste in den gleichen Rechenzentren zu gruppieren und so Datenausgangsgebühren zu reduzieren oder zu eliminieren.)  
+- Datenausgang bezieht sich auf Daten, die aus einer Azure-Region übertragen werden. Wenn eine Anwendung, die nicht in der gleichen Region ausgeführt wird und entweder ein Clouddienst oder ein anderer Anwendungstyp ist, auf die Daten in Ihrem Speicherkonto zugreift, fallen Gebühren für den Datenausgang an. (Für Azure-Dienste können Sie Maßnahmen durchführen, um Daten und Dienste in den gleichen Rechenzentren zu gruppieren und so Datenausgangsgebühren zu reduzieren oder zu eliminieren.)
 
 Die Seite [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage) bietet detaillierte Preisinformationen für Speicherkapazität, Replikation und Transaktionen. Auf der Seite [Datenübertragungen – Preisübersicht](https://azure.microsoft.com/pricing/details/data-transfers/) finden Sie detaillierte Preisinformationen für den Datenausgang.
 
@@ -99,7 +99,7 @@ Sie sehen die Endpunkte für Ihr Speicherkonto im Dashboard des Speichers, sobal
 
 Die URL für den Zugriff auf ein Objekt in einem Speicherkonto wird durch Anhängen des Objektstandorts im Speicherkonto an den Endpunkt generiert. Eine Blob-Adresse kann beispielsweise folgendes Format haben: http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*
 
-Sie können auch einen benutzerdefinierten Domänennamen konfigurieren, den Sie mit Ihrem Speicherkonto verwenden. Details finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt](storage-custom-domain-name.md).
+Sie können auch einen benutzerdefinierten Domänennamen konfigurieren, den Sie mit Ihrem Speicherkonto verwenden. Details finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt](storage-custom-domain-name.md).
 
 ### Dienstzusammenstellung mit einer Affinitätsgruppe
 
@@ -139,7 +139,7 @@ Sie sollten die Zugriffsschlüssel für Ihr Speicherkonto regelmäßig ändern, 
 
 **Anwendungen**: Falls Sie Webanwendungen oder Clouddienste haben, die das Speicherkonto verwenden, verlieren Sie die Verbindungen beim erneuten Generieren von Schlüsseln – es sei denn, Sie führen einen Rollup für die Schlüssel aus.
 
-**Speicher-Explorer**: Wenn Sie beliebige [Speicher-Explorer-Anwendungen](storage-explorers.md) verwenden, müssen Sie möglicherweise den von diesen Anwendungen verwendeten Speicherschlüssel aktualisieren.
+**Speicher-Explorer:** Wenn Sie beliebige [Speicher-Explorer-Anwendungen](storage-explorers.md) verwenden, müssen Sie möglicherweise den von diesen Anwendungen verwendeten Speicherschlüssel aktualisieren.
 
 Mit dem folgenden Prozess wechseln Sie Ihre Speicherzugriffsschlüssel:
 
@@ -171,8 +171,8 @@ Um ein nicht mehr verwendetes Speicherkonto zu entfernen, verwenden Sie **Lösch
 
 ## Nächste Schritte
 
-- Weitere Informationen über Azure Storage finden Sie in der [Azure Storage-Dokumentation](https://azure.microsoft.com/documentation/services/storage/).
+- Weitere Informationen zu Azure Storage finden Sie in der [Azure Storage-Dokumentation](https://azure.microsoft.com/documentation/services/storage/).
 - Besuchen Sie den [Blog des Azure-Speicherteams](http://blogs.msdn.com/b/windowsazurestorage/).
 - [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

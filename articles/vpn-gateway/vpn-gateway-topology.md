@@ -22,7 +22,7 @@ In diesem Artikel werden die grundlegenden VPN Gateway-Verbindungstopologien bes
 
 Jede Topologie enthält eine Tabelle mit dem Bereitstellungsmodell, für das die Topologie verfügbar ist, und mit den Bereitstellungstools, die Sie zum Konfigurieren der einzelnen Topologien verwenden können. Falls ein Artikel verfügbar ist, ist jeweils ein direkter Link angegeben. Die Tabellen werden häufig aktualisiert, wenn neue Artikel und Bereitstellungstools verfügbar sind und von Ihnen genutzt werden können.
 
-Die Anleitung, die Sie zum Erstellen des VPN Gateways verwenden, richtet sich nach dem Bereitstellungsmodell, das Sie bei der Erstellung Ihres virtuellen Netzwerks genutzt haben. Wenn Sie Ihr VNET beispielsweise mit dem klassischen Bereitstellungsmodell erstellt haben, verwenden Sie die Richtlinien und Anleitungen für das klassische Bereitstellungsmodell, um das VPN Gateway zu erstellen und zu konfigurieren. Es ist nicht möglich, ein Resource Manager VPN Gateway für ein virtuelles Netzwerk zu erstellen, das auf dem klassischen Bereitstellungsmodell basiert. Weitere Informationen zu Bereitstellungsmodellen finden Sie unter [Grundlagen des Resource Manager- und klassischen Bereitstellungsmodells](../resource-manager-deployment-model.md).
+Abhängig von der zu erstellenden Verbindung richtet sich die Anleitung, die Sie zum Erstellen des VPN-Gateways verwenden, nach dem Bereitstellungsmodell, das Sie bei der Erstellung Ihres virtuellen Netzwerks genutzt haben. Wenn Sie Ihr VNET beispielsweise mit dem klassischen Bereitstellungsmodell erstellt haben, verwenden Sie die Richtlinien und Anleitungen für das klassische Bereitstellungsmodell, um das VPN Gateway zu erstellen und zu konfigurieren. Es ist nicht möglich, ein Resource Manager VPN Gateway für ein virtuelles Netzwerk zu erstellen, das auf dem klassischen Bereitstellungsmodell basiert. Weitere Informationen zu Bereitstellungsmodellen finden Sie unter [Grundlagen des Resource Manager- und klassischen Bereitstellungsmodells](../resource-manager-deployment-model.md).
 
 ## Site-to-Site und Multi-Site
 
@@ -62,6 +62,28 @@ Azure verfügt derzeit über zwei Bereitstellungsmodelle: Azure Service Manageme
 [AZURE.INCLUDE [vpn-gateway-table-vnet-to-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
 
 
+## Punkt-zu-Standort
+
+Mit einer Punkt-zu-Standort-Konfiguration können Sie von einem Clientcomputer eine einzelne sichere Verbindung mit Ihrem virtuellen Netzwerk herstellen. Eine VPN-Verbindung wird hergestellt, indem Sie die Verbindung vom Clientcomputer aus starten. Dies ist eine nützliche Lösung, wenn Sie von einem Remotestandort, z.B. von zu Hause oder in einer Konferenz, eine Verbindung mit Ihrem VNet herstellen möchten. Diese Methode eignet sich auch, wenn Sie nur wenige Clients besitzen, die mit einem virtuellen Netzwerk verbunden werden müssen.
+
+Eine Point-to-Site-Verbindung ist eine VPN-Verbindung per SSTP (Secure Socket Tunneling Protocol). Damit Punkt-zu-Standort-Verbindungen funktionieren, ist kein VPN-Gerät und keine öffentliche IP-Adresse erforderlich.
+
+**P2S-Diagramm**
+
+![Point-to-Site-Verbindung](./media/vpn-gateway-topology/point2site.png "Point-to-Site")
+
+**Verfügbare Bereitstellungsmodelle und -methoden**
+
+[AZURE.INCLUDE [vpn-gateway-table-point-to-site](../../includes/vpn-gateway-table-point-to-site-include.md)]
+
+
+##ExpressRoute
+
+[AZURE.INCLUDE [expressroute-intro](../../includes/expressroute-intro-include.md)]
+
+Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – Technische Übersicht](../expressroute/expressroute-introduction.md).
+
+
 
 ## Parallel bestehende Site-to-Site- und ExpressRoute-Verbindungen
 
@@ -78,23 +100,11 @@ ExpressRoute ist eine direkte, dedizierte Verbindung aus Ihrem WAN mit Microsoft
 [AZURE.INCLUDE [vpn-gateway-table-coexist](../../includes/vpn-gateway-table-coexist-include.md)]
 
 
-## Punkt-zu-Standort
 
-Mit einer Punkt-zu-Standort-Konfiguration können Sie von einem Clientcomputer eine einzelne sichere Verbindung mit Ihrem virtuellen Netzwerk herstellen. Eine VPN-Verbindung wird hergestellt, indem Sie die Verbindung vom Clientcomputer aus starten. Dies ist eine nützliche Lösung, wenn Sie von einem Remotestandort, z.B. von zu Hause oder in einer Konferenz, eine Verbindung mit Ihrem VNet herstellen möchten. Diese Methode eignet sich auch, wenn Sie nur wenige Clients besitzen, die mit einem virtuellen Netzwerk verbunden werden müssen.
-
-Eine Point-to-Site-Verbindung ist eine VPN-Verbindung per SSTP (Secure Socket Tunneling Protocol). Damit Punkt-zu-Standort-Verbindungen funktionieren, ist kein VPN-Gerät und keine öffentliche IP-Adresse erforderlich.
-
-**P2S-Diagramm**
-
-![Point-to-Site-Verbindung](./media/vpn-gateway-topology/point2site.png "Point-to-Site")
-
-**Verfügbare Bereitstellungsmodelle und -methoden**
-
-[AZURE.INCLUDE [vpn-gateway-table-point-to-site](../../includes/vpn-gateway-table-point-to-site-include.md)]
 
 ## Nächste Schritte
 
-Es ist ratsam, dass Sie sich mit den Informationen in den Artikeln [Informationen zu VPN-Gateways](vpn-gateway-about-vpngateways.md) und [Häufig gestellte Fragen zum VPN-Gateway](vpn-gateway-vpn-faq.md) vertraut machen. So entwickeln Sie ein besseres Verständnis für VPN Gateways, bevor Sie mit der Planung und dem Entwurf Ihrer Verbindung fortfahren.
+Es wird empfohlen, sich mit den Informationen in den Artikeln [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md) und [Häufig gestellte Fragen zum VPN-Gateway](vpn-gateway-vpn-faq.md) vertraut zu machen. So entwickeln Sie ein besseres Verständnis für VPN Gateways.
 
 
 
@@ -102,4 +112,4 @@ Es ist ratsam, dass Sie sich mit den Informationen in den Artikeln [Informatione
 
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

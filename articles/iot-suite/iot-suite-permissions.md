@@ -39,7 +39,7 @@ Weitere Informationen zu Administratorrollen in AAD finden Sie unter [Zuweisen v
 
 **Globaler Administrator:** Es können viele globale Administratoren pro AAD-Mandanten vorhanden sein. Wenn Sie einen AAD-Mandanten erstellen, sind Sie standardmäßig der globale Administrator dieses Mandanten. Der globale Administrator kann eine vorkonfigurierte Lösung bereitstellen und erhält die Rolle **ADMINISTRATOR** für die Anwendung innerhalb des AAD-Mandanten. Wenn jedoch ein anderer Benutzer im gleichen AAD-Mandanten eine Anwendung erstellt, ist **IMPLICIT READ ONLY** die Standardrolle, die dem globalen Administrator zugewiesen wird. Globale Administratoren können im [klassischen Azure-Portal][lnk-classic-portal] Rollen für Anwendungen zuweisen.
 
-**Domänenbenutzer/-mitglied:** Es können viele Domänenbenutzer/-mitglieder pro AAD-Mandanten vorhanden sein. Domänenbenutzer können eine vorkonfigurierte Lösung über die Website [azureiotsuite.com][lnk-azureiotsuite] bereitstellen. Die Standardrolle, die ihnen für die von ihnen bereitgestellte Anwendung gewährt wird, ist **ADMINISTRATOR**. Sie können im Repository [azure-iot-solution][lnk-github-repo] mithilfe des Skripts „build.cmd“ eine Anwendung erstellen. Doch die Standardrolle, die ihnen zugewiesen wird, ist **IMPLICIT READONLY**, da sie keine Berechtigung zum Zuweisen von Rollen haben. Wenn ein anderer Benutzer im AAD-Mandanten eine Anwendung erstellt, wird ihm standardmäßig die Rolle **IMPLICIT READONLY** für diese Anwendung zugewiesen. Benutzer können keine Rollen für Anwendungen zuweisen und daher keine Benutzer oder Rollen für Benutzer einer Anwendung zuweisen, auch wenn sie sie bereitgestellt haben.
+**Domänenbenutzer/-mitglied:** Es können viele Domänenbenutzer/-mitglieder pro AAD-Mandanten vorhanden sein. Domänenbenutzer können eine vorkonfigurierte Lösung über die Website [azureiotsuite.com][lnk-azureiotsuite] bereitstellen. Die Standardrolle, die ihnen für die von ihnen bereitgestellte Anwendung gewährt wird, ist **ADMINISTRATOR**. Sie können im Repository [azure-iot-remote-monitoring][lnk-rm-github-repo] oder [azure-iot-predictive-maintenance][lnk-pm-github-repo] mithilfe des Skripts „build.cmd“ eine Anwendung erstellen. Doch die Standardrolle, die ihnen zugewiesen wird, ist **IMPLICIT READONLY**, da sie keine Berechtigung zum Zuweisen von Rollen haben. Wenn ein anderer Benutzer im AAD-Mandanten eine Anwendung erstellt, wird ihm standardmäßig die Rolle **IMPLICIT READONLY** für diese Anwendung zugewiesen. Benutzer können keine Rollen für Anwendungen zuweisen und daher keine Benutzer oder Rollen für Benutzer einer Anwendung zuweisen, auch wenn sie sie bereitgestellt haben.
 
 **Gastbenutzer/Gast:** Pro AAD-Mandanten kann es viele Gastbenutzer/Gäste geben. Gastbenutzer verfügen im AAD-Mandanten über begrenzte Rechte. Daher können Gastbenutzer keine vorkonfigurierte Lösung im AAD-Mandanten bereitstellen.
 
@@ -72,7 +72,7 @@ Mithilfe des folgenden Verfahrens können Sie einen Benutzer in Ihrem Active Dir
 
 Sie müssen globaler AAD-Administrator sein, um Rollen für einen Benutzer zu ändern:
 
-1. Melden Sie sich beim [klassischen Azure-Portal][lnk-classic-portal] an.
+1. Wechseln Sie zum [klassischen Azure-Portal][lnk-classic-portal].
 
 2. Wählen Sie **Active Directory** aus.
 
@@ -86,7 +86,7 @@ Sie müssen globaler AAD-Administrator sein, um Rollen für einen Benutzer zu ä
 
 8. Wählen Sie den Benutzer aus, dessen Rolle gewechselt werden soll.
 
-9. Klicken Sie auf **Zuweisen**, und wählen Sie die Rolle (z.B. **Admin**), die sie dem Benutzer zuweisen wollen. Klicken Sie auf das Häkchen.
+9. Klicken Sie auf **Zuweisen**, und wählen Sie die Rolle (z.B. **Admin**) aus, die sie dem Benutzer zuweisen wollen. Klicken Sie auf das Häkchen.
 
 ## Häufig gestellte Fragen
 
@@ -135,10 +135,15 @@ Sehen Sie sich das folgende Diagramm an:
 
 Wenn Sie sicher sind, dass Sie über ein Azure-Abonnement verfügen, überprüfen Sie die Mandantenzuordnung für Ihr Abonnement, und stellen Sie sicher, dass der ordnungsgemäße Mandant in der Dropdownliste ausgewählt ist. Nachdem Sie überprüft haben, ob der gewünschte Mandant ordnungsgemäß ist, befolgen Sie das obige Diagramm, und überprüfen Sie die Zuordnung Ihres Abonnements und dieses AAD-Mandanten.
 
+## Nächste Schritte
+
+Wenn Sie mehr über IoT Suite erfahren möchten, lesen Sie, wie Sie [eine vorkonfigurierte Lösung anpassen][lnk-customize].
+
 [img-flowchart]: media/iot-suite-permissions/flowchart.png
 
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
-[lnk-github-repo]: https://github.com/Azure/azure-iot-solution
+[lnk-rm-github-repo]: https://github.com/Azure/azure-iot-remote-monitoring
+[lnk-pm-github-repo]: https://github.com/Azure/azure-iot-predictive-maintenance
 [lnk-aad-admin]: https://azure.microsoft.com/documentation/articles/active-directory-assign-admin-roles/
 [lnk-classic-portal]: https://manage.windowsazure.com/
 [lnk-create-edit-users]: https://azure.microsoft.com/documentation/articles/active-directory-create-users/
@@ -147,5 +152,6 @@ Wenn Sie sicher sind, dass Sie über ein Azure-Abonnement verfügen, überprüfe
 [lnk-admin-roles]: https://azure.microsoft.com/documentation/articles/billing-add-change-azure-subscription-administrator/
 [lnk-resource-cs]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/DeviceAdministration/Web/Security/RolePermissions.cs
 [lnk-help-support]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade
+[lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

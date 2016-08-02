@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="get-started-article"
-	ms.date="03/05/2016"
+	ms.date="07/21/2016"
 	ms.author="ricksal"/>
 
 
@@ -33,7 +33,7 @@ Unten sehen Sie einen Screenshot aus der fertigen App:
 
 ![](./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-completed-android.png)
 
-Sie benötigen die [Android Developer Tools][Android Studio], die die integrierte Entwicklungsumgebung Android Studio enthalten, sowie die neueste Android-Plattform. Android 4.2 oder eine höhere Version ist erforderlich.
+Sie benötigen die [Android Developer Tools][Android Studio], die die integrierte Entwicklungsumgebung Android Studio enthalten, sowie die neueste Android-Plattform. Android 4.2 oder eine höhere Version ist erforderlich.
 
 Das heruntergeladene Schnellstartprojekt enthält den Mobile Services SDK für Android.
 
@@ -129,4 +129,4 @@ Da Sie den Schnellstart jetzt abgeschlossen haben, erfahren Sie, wie zusätzlich
 
 [klassischen Azure-Portal]: https://manage.windowsazure.com/
 
-<!-----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0727_2016-->

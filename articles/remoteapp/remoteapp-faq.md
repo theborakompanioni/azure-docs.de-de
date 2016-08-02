@@ -4,7 +4,7 @@
 	services="remoteapp" 
 	documentationCenter="" 
 	authors="lizap" 
-	manager="mbaldwin" 
+	manager="swadhwa" 
 	editor=""/>
 
 <tags 
@@ -13,11 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="06/27/2016" 
+	ms.date="07/25/2016" 
 	ms.author="elizapo"/>
 
 # Azure RemoteApp – Häufig gestellte Fragen
 Folgende Fragen wurden zu Azure RemoteApp an uns gestellt. Haben Sie weitere Fragen? Besuchen Sie die [RemoteApp-Foren](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureRemoteApp), und teilen Sie uns mit, was Sie wissen müssen, oder hinterlassen Sie uns unten einen Kommentar.
+
+## Können Sie die gesuchten Informationen nicht finden? Haben Sie eine Frage, die wir nicht beantwortet haben?
+Falls Sie die benötigten Informationen nicht finden oder eine Frage haben, die hier nicht beantwortet wird, wechseln Sie zum [Azure RemoteApp-Forum](http://aka.ms/araforum), und stellen Sie dort Ihre Frage. Wir können hier jederzeit weitere Antworten hinzufügen.
 
 ## Was ist Azure RemoteApp? ##
 
@@ -114,4 +117,4 @@ Unter [Zugreifen auf Anwendungen in Azure RemoteApp](remoteapp-clients.md) finde
 ### Helfen Sie uns, Ihnen zu helfen 
 Wussten Sie schon, dass Sie diesen Artikel im Bereich unten nicht nur bewerten und kommentieren, sondern ihn auch selbst ändern können? Fehlt etwas? Ist etwas nicht ganz richtig? Habe ich etwas geschrieben, das eher verwirrend ist? Scrollen Sie nach oben, und klicken Sie auf **Edit on GitHub**, um die gewünschten Änderungen vorzunehmen. Ihr Vorschlag wird uns vorgelegt, und wenn wir ihn bestätigt haben, werden Ihre Änderungen und Verbesserungen hier angezeigt.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

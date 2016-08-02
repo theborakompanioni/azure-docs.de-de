@@ -3,7 +3,7 @@
     description="Verwenden Sie C#-Datenbankentwicklungstechniken, um einen skalierbaren Pool für elastische Datenbanken in Azure SQL-Datenbank zu erstellen, damit Sie Ressourcen für zahlreiche Datenbanken freigeben können."
     services="sql-database"
     documentationCenter=""
-    authors="srinia"
+    authors="stevestein"
     manager="jhubbard"
     editor=""/>
 
@@ -13,8 +13,8 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="csharp"
     ms.workload="data-management"
-    ms.date="07/05/2016"
-    ms.author="srinia"/>
+    ms.date="07/22/2016"
+    ms.author="sstein"/>
 
 # Erstellen eines neuen Pools für elastische Datenbanken mit C&#x23;
 
@@ -24,13 +24,13 @@
 - [C#](sql-database-elastic-pool-create-csharp.md)
 
 
-Hier erfahren Sie, wie Sie mithilfe von (C&#x23;) einen [Pool für elastische Datenbanken](sql-database-elastic-pool.md) erstellen.
+Hier erfahren Sie, wie Sie mithilfe von C#; einen [Pool für elastische Datenbanken](sql-database-elastic-pool.md) erstellen.
 
 Häufige Fehlercodes finden Sie unter [SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen: Datenbankverbindungsfehler und andere Probleme](sql-database-develop-error-messages.md).
 
 In den Beispielen unten wird die [SQL-Datenbankbibliothek für .NET](https://msdn.microsoft.com/library/azure/mt349017.aspx) verwendet. Sie müssen diese Bibliothek also installieren, bevor Sie fortfahren, falls sie noch nicht installiert wurde. Verwenden Sie den folgenden Befehl zur Installation der Bibliothek über die [Paket-Manager-Konsole](http://docs.nuget.org/Consume/Package-Manager-Console) in Visual Studio (**Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**):
 
-    PM> Install-Package Microsoft.Azure.Management.Sql –Pre
+    Install-Package Microsoft.Azure.Management.Sql –Pre
 
 ## Erstellen eines neuen Pools
 
@@ -82,7 +82,7 @@ In diesem Beispiel wird eine neue Azure-Ressourcengruppe eine neue Azure SQL Ser
 Die folgenden Bibliotheken sind erforderlich, um dieses Beispiel auszuführen. Verwenden Sie zur Installation die folgenden Befehle in der [Paket-Manager-Konsole](http://docs.nuget.org/Consume/Package-Manager-Console) in Visual Studio (**Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**):
 
     Install-Package Microsoft.Azure.Management.Sql –Pre
-    Install-Package Microsoft.Azure.Management.Resources –Pre
+    Install-Package Microsoft.Azure.Management.ResourceManager –Pre -Version 1.1.1-preview
     Install-Package Microsoft.Azure.Common.Authentication –Pre
 
 Erstellen Sie eine Konsolenanwendung, und ersetzen Sie den Inhalt von Program.cs durch den folgenden Code. Die erforderliche Client-ID und die verknüpften Werte finden Sie unter [Abrufen der Client-ID und des Schlüssels für die Verbindung mit der SQL-Datenbank aus dem Code](sql-database-client-id-keys.md). Verwenden Sie das [Get-AzureRmSubscription](https://msdn.microsoft.com/library/mt619284.aspx)-Cmdlet, um den subscriptionId-Wert abzurufen.
@@ -249,4 +249,4 @@ Erstellen Sie eine Konsolenanwendung, und ersetzen Sie den Inhalt von Program.cs
 - [SQL-Datenbank](https://azure.microsoft.com/documentation/services/sql-database/)
 - [APIs für Azure-Ressourcenverwaltung](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->
