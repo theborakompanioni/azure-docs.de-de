@@ -39,7 +39,7 @@ Zum Abschluss dieses Lernprogramms ist Folgendes erforderlich:
 + PhoneGap unterstützt die Entwicklung für verschiedene Plattformen. Zusätzlich zu den eigentlichen PhoneGap-Tools müssen Sie die Tools für jede geplante Plattform installieren:
 
 	- Windows Phone: Installieren Sie [Visual Studio 2012 Express für Windows Phone](https://go.microsoft.com/fwLink/p/?LinkID=268374)
-	- iOS: Installieren Sie [Xcode] (V4.4 oder höher erforderlich)
+	- iOS: Installieren Sie [Xcode] \(V4.4 oder höher erforderlich)
 	- Android: Installieren Sie die [Android Developer Tools][Android SDK] <br/> (das Mobile Services SDK für Android unterstützt Apps für Android 2.2 oder höhere Versionen. Android 4.2 oder höher ist zum Ausführen der Schnellstart-App erforderlich.)
 
 ## Erstellen eines neuen mobilen Diensts

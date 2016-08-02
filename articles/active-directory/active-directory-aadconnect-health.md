@@ -44,7 +44,7 @@ Azure AD Connect Health für AD FS unterstützt AD FS 2.0 unter Windows Server 2
 
 Das folgende Video bietet eine Übersicht über Azure AD Connect Health für AD FS:
 
->[AZURE.VIDEO azure-ad-connect-health--monitor-you-identity-bridge]
+> [AZURE.VIDEO azure-ad-connect-health--monitor-you-identity-bridge]
 
 ## [Azure AD Connect Health für die Synchronisierung](active-directory-aadconnect-health-sync.md)
 

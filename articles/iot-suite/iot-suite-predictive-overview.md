@@ -46,7 +46,7 @@ Die vorkonfigurierte Azure IoT-Lösung für den vorhersagbaren Wartungsbedarf ve
 
 ## Nächste Schritte
 
-Informationen darüber, wie Azure IoT Szenarios mit vorhersagbarem Wartungsbedarf ermöglicht, finden Sie unter [Capture value from the Internet of Things][lnk_capture_value] (in englischer Sprache).
+Informationen darüber, wie Azure IoT Szenarios mit vorhersagbarem Wartungsbedarf ermöglicht, finden Sie unter [Capture value from the Internet of Things][lnk_capture_value] \(in englischer Sprache).
 
 Sehen Sie sich die [exemplarische Vorgehensweise][lnk-predictive-walkthrough] zur vorkonfigurierten Lösung für die vorbeugende Wartung an.
 
