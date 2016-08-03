@@ -69,14 +69,13 @@ Aus dieser Tabelle können folgende Schlussfolgerungen gezogen werden.
 | Tarif | Größe | CPU-Kerne | Verfügbare Bandbreite | 1 KB Schlüsselgröße |
 |--------------------------|--------|-----------|--------------------------------------------------------|------------------------------------------|
 | **Standard-Cachegröße** | | | **Megabits pro Sekunde (MBit/s)/Megabyte pro Sekunde (MB/s)** | **Anforderungen pro Sekunde (RPS)** |
-| C0 | 250 MB | Shared  
- | 5 / 0,625 | 600 |
-| C1 | 1 GB | 1 | 100 / 12,5 | 12\.200 |
-| C2 | 2,5 GB | 2 | 200 / 25 | 24\.000 |
-| C3 | 6 GB | 4 | 400 / 50 | 49\.000 |
-| C4 | 13 GB | 2 | 500 / 62,5 | 61\.000 |
-| C5 | 26 GB | 4 | 1\.000 / 125 | 115\.000 |
-| C6 | 53 GB | 8 | 2\.000 / 250 | 150\.000 |
+| C0                       | 250 MB | Shared    | 5 / 0.625                                              | 600                                      |
+| C1                       | 1 GB   | 1         | 100 / 12.5                                             | 12200                                    |
+| C2                       | 2.5 GB | 2         | 200 / 25                                               | 24000                                    |
+| C3                       | 6 GB   | 4         | 400 / 50                                               | 49000                                    |
+| C4                       | 13 GB  | 2         | 500 / 62.5                                             | 61000                                    |
+| C5                       | 26 GB  | 4         | 1000 / 125                                             | 115000                                   |
+| C6                       | 53 GB  | 8         | 2000 / 250                                             | 150000                                   |
 | **Premium-Cachegröße** | | **CPU-Kerne pro Shard** | | **Anforderungen pro Sekunde (RPS), pro Shard** |
 | P1 | 6 GB | 2 | 1\.000 / 125 | 140\.000 |
 | P2 | 13 GB | 4 | 2\.000 / 250 | 220\.000 |
