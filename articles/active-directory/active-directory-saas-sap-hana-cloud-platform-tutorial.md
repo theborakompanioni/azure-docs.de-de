@@ -156,7 +156,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
   
 Als optionalen Schritt können Sie Assertion-Gruppen für Ihren Azure Active Directory-Identitätsanbieter konfigurieren.
 
->[AZURE.NOTE]Mithilfe von Gruppen auf SAP HANA Cloud Platform können Sie auf dynamische Weise eine oder mehrere Rollen in Ihren SAP HANA Cloud Platform-Anwendungen zuweisen, durch die Werte der Attribute in der SAML 2.0-Assertion definiert. Beispiel: Wenn die Assertion das Attribut „*contract=temporary*“ enthält, möchten Sie ggf. alle betroffenen Benutzer der Gruppe „*TEMPORÄR*“ hinzufügen. Die Gruppe „*Temporär*“ enthält möglicherweise eine oder mehrere Rollen aus einer oder mehreren Anmeldung(en), die auf Ihrem SAP HANA Cloud Platform-Konto bereitgestellt sind.
+>[AZURE.NOTE]Mithilfe von Gruppen auf SAP HANA Cloud Platform können Sie auf dynamische Weise eine oder mehrere Rollen in Ihren SAP HANA Cloud Platform-Anwendungen zuweisen, durch die Werte der Attribute in der SAML 2.0-Assertion definiert. Beispiel: Wenn die Assertion das Attribut „ *contract=temporary* “ enthält, möchten Sie ggf. alle betroffenen Benutzer der Gruppe „ *TEMPORÄR* “ hinzufügen. Die Gruppe „ *Temporär* “ enthält möglicherweise eine oder mehrere Rollen aus einer oder mehreren Anmeldung(en), die auf Ihrem SAP HANA Cloud Platform-Konto bereitgestellt sind.
 >  
 >Verwenden Sie Assertion-Gruppen, wenn Sie viele Benutzer einer oder mehreren Rolle(n) auf Ihrem SAP HANA Cloud Platform-Konto zuweisen möchten. Wenn Sie nur einen einzelnen Benutzer oder eine geringe Anzahl von Benutzern zu einer oder mehreren speziellen Rolle(n) zuweisen möchten, empfiehlt es sich, diese direkt im SAP HANA Cloud Platform-Cockpit auf der Registerkarte **Authorizations** zuzuweisen.
 
