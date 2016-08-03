@@ -56,7 +56,7 @@ Mit Azure SDK 2.6 können Sie Cloud-Dienst-Anwendungen (PaaS) entwickeln, die au
 
 ##In-Role Cache Updates
 
-- **In-Role Cache** wurde aktualisiert, um **Microsoft Azure Storage SDK** Version 4.3 zu verwenden. Bis jetzt hat **In-Role Cache ** Azure Storage SDK, Version 1.7 verwendet.
+- **In-Role Cache** wurde aktualisiert, um **Microsoft Azure Storage SDK** Version 4.3 zu verwenden. Bis jetzt hat **In-Role Cache** Azure Storage SDK, Version 1.7 verwendet.
 
 	Kunden, die Azure SDK 2.5 oder niedriger verwenden, sollten auf Azure SDK 2.6 aktualisieren und die neue Version von Azure Storage-SDK verwenden.
 
@@ -108,4 +108,4 @@ Das Speicherkonto für die Diagnose kann jetzt in der Dienstkonfigurationsdatei 
 
 [Unterstützungs- und Deaktivierungsinformationen zum Azure SDK für .NET und APIs](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!----HONumber=AcomDC_0720_2016-->
