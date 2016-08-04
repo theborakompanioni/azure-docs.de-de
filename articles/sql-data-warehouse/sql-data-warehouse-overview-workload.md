@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/01/2016"
+   ms.date="07/25/2016"
    ms.author="barbkess;mausher;jrj;sonyama"/>
 
 
@@ -38,7 +38,7 @@ Das Laden von Daten ist ein großer Teil des Data Warehouse-Workloads. Unternehm
 
 - Normalerweise wird er Prozess des Ladens als ETL bezeichnet: Extrahieren, Transformieren und Laden. Daten müssen in der Regel umgewandelt (transformiert) werden, damit sie mit anderen Daten im Data Warehouse konsistent sind. Früher haben Unternehmen dedizierte ETL-Server für Transformationen verwendet. Jetzt – mit der schnellen umfangreichen parallelen Verarbeitung – können Sie Daten zuerst in SQL Data Warehouse laden und dann die Transformationen ausführen. Dieser Prozess wird als Extrahieren, Laden und Transformieren (ELT) bezeichnet und wird ein neuer Standard für die Data Warehouse-Workloads.
 
-> [AZURE.NOTE] Mit SQL Server CTP2 können Sie jetzt Analysen in Echtzeit für eine OLTP-Tabelle ausführen. Dies ist kein Ersatz für ein Data Warehouse zum Speichern und Analysieren von Daten, stellt aber eine Möglichkeit für die Analyse in Echtzeit bereit.
+> [AZURE.NOTE] Mit SQL Server 2016 können Sie jetzt Analysen in Echtzeit für eine OLTP-Tabelle ausführen. Dies ist kein Ersatz für ein Data Warehouse zum Speichern und Analysieren von Daten, stellt aber eine Möglichkeit für die Analyse in Echtzeit bereit.
 
 ### Berichterstellung und Analyseabfragen
 Berichterstellung und Analyseabfragen werden häufig in die Kategorien klein, mittel und groß unterteilt – basierend auf einer Reihe von Kriterien, aber in der Regel zeitbasiert. In den meisten Data Warehouse gibt es gemischte Workloads mit kurzen und lang andauernden Abfragen. In jedem Fall ist es wichtig, bestimmen diese Mischung und ihre Häufigkeit (stündlich, täglich, am Monatsende, am Quartalsende usw.) zu bestimmen. Es ist wichtig zu verstehen, dass gemischte Abfrageworkloads in Verbindung mit der Parallelität zu einer ordnungsgemäßen Kapazitätsplanung für ein Data Warehouse führt.
@@ -71,4 +71,4 @@ Nachdem Sie sich mit den Grundlagen von SQL Data Warehouse vertraut gemacht habe
 
 <!--Other web references-->
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

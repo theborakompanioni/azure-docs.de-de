@@ -28,10 +28,10 @@ Der Anmeldevorgang hängt davon ab, wie Sie sich anmelden und Multi-Factor Authe
 
 Vorgehensweise|Beschreibung
 :------------- | :------------- | 
-[Anmeldung mit Mobil- oder Bürotelefon](#signing-in-with-mobile-or-office-phone) | Beschreibt die Anmeldung mit einem Mobil- oder Bürotelefon.
-[Anmelden mit der mobilen App über eine Benachrichtigung](#signing-in-with-the-mobile-app-using-notification) | Beschreibt die Anmeldung bei der mobilen App mit einer Benachrichtigung.
-[Anmelden mit der mobilen App über einen Überprüfungscode](#signing-in-with-the-mobile-app-using-verification-code)|Beschreibt die Anmeldung bei der mobilen App mit einem Überprüfungscode.
-[Anmelden mit einer alternativen Methode](#signing-in-with-an-alternate-method)|Hier erfahren Sie, was Sie erwartet, wenn Sie eine alternative Methode verwenden möchten.
+[Anmeldung mit Mobil- oder Bürotelefon](#anmeldung-mit-mobil--oder-brotelefon) | Beschreibt die Anmeldung mit einem Mobil- oder Bürotelefon.
+[Anmelden mit der mobilen App über eine Benachrichtigung](#anmelden-mit-der-mobilen-app-ber-eine-benachrichtigung) | Beschreibt die Anmeldung bei der mobilen App mit einer Benachrichtigung.
+[Anmelden mit der mobilen App über einen Überprüfungscode](#anmelden-mit-der-mobilen-app-ber-einen-berprfungscode)|Beschreibt die Anmeldung bei der mobilen App mit einem Überprüfungscode.
+[Anmelden mit einer alternativen Methode](#anmelden-mit-einer-alternativen-methode)|Hier erfahren Sie, was Sie erwartet, wenn Sie eine alternative Methode verwenden möchten.
 
 ## Anmeldung mit Mobil- oder Bürotelefon
 

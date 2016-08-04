@@ -13,13 +13,11 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/19/2016"
+   ms.date="07/21/2016"
    ms.author="yurid"/>
 
 #Überwachen der Sicherheitsintegrität in Azure Security Center
 Dieses Dokument unterstützt Sie bei der Verwendung der Überwachungsfunktionen in Azure Security Center zur Überwachung der Richtliniencompliance.
-
-> [AZURE.NOTE] Die Informationen in diesem Dokument gelten für die Vorschauversion von Azure Security Center.
 
 ##Was ist Überwachen der Sicherheitsintegrität?
 Überwachung wird häufig als Beobachten und Warten auf ein Eintreten eines Ereignisses aufgefasst, damit auf diese Situation reagiert werden kann. Sicherheitsüberwachung bezieht sich auf eine proaktive Strategie, bei der Ihre Ressourcen überwacht werden, um Systeme zu erkennen, die nicht den Unternehmensstandards oder bewährten Methoden entsprechen.
@@ -31,14 +29,14 @@ Weitere Informationen zur Anwendung der Empfehlungen finden Sie unter [Implement
 
 Auf der Kachel **Ressourcensicherheitsintegrität** können Sie den Sicherheitsstatus Ihrer Ressourcen überwachen. Im Beispiel unten sehen Sie eine Reihe von Problemen mit hohem und mittlerem Schweregrad, die Aufmerksamkeit erfordern. Die Sicherheitsrichtlinien, die aktiviert sind, wirken sich auf die Arten von Sicherheitsmechanismen aus, die überwacht werden.
 
-![Ressourcenintegrität](./media/security-center-monitoring/security-center-monitoring-fig1-new3.png)
+![Ressourcenintegrität](./media/security-center-monitoring/security-center-monitoring-fig1-ga.png)
 
 Erkennt Security Center ein Sicherheitsrisiko, das behoben werden muss – etwa ein virtueller Computer mit fehlenden Sicherheitsupdates oder ein Subnetz ohne [Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-nsg.md) –, wird dies hier angegeben.
 
 ###Überwachen virtueller Maschinen
 Wenn Sie auf der Kachel **Ressourcensicherheitsintegrität** auf **Virtuelle Computer** klicken, wird das Blatt **Virtuelle Computer** geöffnet. Dieses Blatt enthält weitere Details zu den Integrations- und Vorbeugungsschritten sowie eine Liste aller virtuellen Computer, die von Security Center überwacht werden (siehe folgende Abbildung).
 
-![Fehlendes Systemupdate nach VM](./media/security-center-monitoring/security-center-monitoring-fig2-2-new.png)
+![Fehlendes Systemupdate nach VM](./media/security-center-monitoring/security-center-monitoring-fig2-ga.png)
 
 - Schritte zur Integration
 - Empfehlungen für virtuelle Computer
@@ -46,22 +44,22 @@ Wenn Sie auf der Kachel **Ressourcensicherheitsintegrität** auf **Virtuelle Com
 
 In jedem Abschnitt können Sie eine einzelne Option auswählen, um weitere Details zum empfohlenen Schritt für die Lösung des Problems anzuzeigen. In den folgenden Abschnitten werden diese Bereiche ausführlicher behandelt.
 
-####Schritte zur Integration
-In diesem Abschnitt wird die Gesamtzahl der virtuellen Maschinen angezeigt, die für die Datensammlung initialisiert wurden, sowie deren aktueller Status. Sobald für alle virtuellen Maschinen die Datensammlung initialisiert wurde, sind sie bereit für den Empfang der Security Center-Sicherheitsrichtlinien. Wenn Sie auf diesen Eintrag klicken, wird das Blatt **Datensammlung wird initialisiert** angezeigt, und Sie sehen die Namen der virtuellen Computer und den aktuellen Status der Datensammlung in der Spalte **Installationsstatus**. Dies ist unten dargestellt.
+#### Überwachen der Empfehlungen
+In diesem Abschnitt wird die Gesamtzahl der virtuellen Maschinen angezeigt, die für die Datensammlung initialisiert wurden, sowie deren aktueller Status. Sobald für alle virtuellen Maschinen die Datensammlung initialisiert wurde, sind sie bereit für den Empfang der Security Center-Sicherheitsrichtlinien. Wenn Sie auf diesen Eintrag klicken, wird das Blatt **Data collection installation status** (Installationsstatus der Datensammlung) angezeigt, und Sie sehen die Namen der virtuellen Computer und den aktuellen Status der Datensammlung in der Spalte **INSTALLATIONSSTATUS**. Dies ist unten dargestellt.
 
-![Initialisierungsstatus](./media/security-center-monitoring/security-center-monitoring-fig3-new.png)
+![Initialisierungsstatus](./media/security-center-monitoring/security-center-monitoring-fig3-ga.png)
 
 
 ####Empfehlungen für virtuelle Computer
 Dieser Abschnitt enthält eine Reihe von Empfehlungen für jeden virtuellen Computer, der von Azure Security Center überwacht wird. Die erste Spalte enthält die Empfehlung, und in der zweiten Spalte wird die Gesamtzahl der VMs angegeben, die von der Empfehlung betroffen sind. Die dritte Spalte enthält den Schweregrad des Problems, wie in der folgenden Abbildung dargestellt.
 
-![Empfehlungen für virtuelle Computer](./media/security-center-monitoring/security-center-monitoring-fig4-2-new.png)
+![Empfehlungen für virtuelle Computer](./media/security-center-monitoring/security-center-monitoring-fig4-ga.png)
 
 > [AZURE.NOTE] Nur VMs mit mindestens einem öffentlichen Endpunkt werden auf dem Blatt „Networking Health“ (Netzwerkintegrität) in der Liste „Network topology“ (Netzwerktopologie) angezeigt.
 
 Jeder Empfehlung ist eine Reihe von Aktionen zugeordnet, die ausgeführt werden können, wenn Sie darauf klicken. Wenn Sie beispielsweise auf **Fehlende Systemupdates** klicken, wird das Blatt **Fehlende Systemupdates** geöffnet. Auf dem Blatt sind die VMs, für die Patches fehlen, und der Schweregrad des fehlendes Updates wie unten dargestellt aufgeführt.
 
-![Fehlende Systemupdates](./media/security-center-monitoring/security-center-monitoring-fig5-new.png)
+![Fehlende Systemupdates](./media/security-center-monitoring/security-center-monitoring-fig5-ga.png)
 
 Auf dem Blatt **Fehlende Systemupdates** wird eine Tabelle mit folgenden Informationen angezeigt:
 
@@ -79,20 +77,20 @@ Auf dem Blatt **Fehlende Systemupdates** wird eine Tabelle mit folgenden Informa
 
 Um die Details zur Empfehlung anzuzeigen, klicken Sie auf den Namen der jeweiligen virtuellen Maschine. Es wird ein neues Blatt für die virtuelle Maschine mit der Liste geöffnet. Dies ist hier dargestellt:
 
-![Fehlende Systemupdates nach virtuellem Computer](./media/security-center-monitoring/security-center-monitoring-fig6-new.png)
+![Fehlende Systemupdates nach virtuellem Computer](./media/security-center-monitoring/security-center-monitoring-fig6-ga.png)
 
 > [AZURE.NOTE] Die Sicherheitsempfehlungen hier sind mit denen auf dem Blatt für Empfehlungen identisch. Weitere Informationen zur Umsetzung der Empfehlungen finden Sie unter [Implementieren von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md). Dies gilt nicht nur für virtuelle Computer, sondern auch für alle Ressourcen, die auf der Kachel „Ressourcenintegrität“ verfügbar sind.
 
 ####Abschnitt „Virtuelle Computer“
 Der Abschnitt „Virtuelle Computer“ enthält eine Übersicht über alle virtuellen Computer und Empfehlungen. Jede Spalte steht für eine Gruppe von Empfehlungen (siehe folgende Abbildung):
 
-![VMs](./media/security-center-monitoring/security-center-monitoring-fig7-new.png)
+![VMs](./media/security-center-monitoring/security-center-monitoring-fig7-ga.png)
 
 Anhand der Symbole, die unter jeder Empfehlung angezeigt werden, können Sie schnell erkennen, bei welchen virtuellen Maschinen Aufmerksamkeit nötig ist und welche Arten von Empfehlungen vorhanden sind.
 
-Im obigen Beispiel wird für eine virtuelle Maschine eine dringende Empfehlung in Bezug auf Antischadsoftware angezeigt. Klicken Sie auf die VM, um weitere Informationen anzuzeigen. Es wird ein neues Blatt geöffnet, auf dem die Informationen zur VM wie unten dargestellt angegeben werden.
+Im obigen Beispiel wird für einen virtuellen Computer eine dringende Empfehlung in Bezug auf den Endpunktschutz angezeigt. Klicken Sie auf die VM, um weitere Informationen anzuzeigen. Es wird ein neues Blatt geöffnet, auf dem die Informationen zur VM wie unten dargestellt angegeben werden.
 
-![Sicherheitsdetails für virtuelle Computer](./media/security-center-monitoring/security-center-monitoring-fig8-new.png)
+![Sicherheitsdetails für virtuelle Computer](./media/security-center-monitoring/security-center-monitoring-fig8-ga.png)
 
 Dieses Blatt enthält die Sicherheitsdetails für den virtuellen Computer. Unten auf dem Blatt werden die empfohlenen Aktionen sowie der Schweregrad der einzelnen Probleme angezeigt.
 
@@ -128,7 +126,7 @@ Im Abschnitt für die Statusanalyse der Netzwerke sind potenzielle Sicherheitspr
 
 Wenn Sie auf eine dieser Empfehlungen klicken, wird ein neues Blatt mit weiteren Details zur Empfehlung angezeigt (siehe folgendes Beispiel).
 
-![Endpunkt einschränken](./media/security-center-monitoring/security-center-monitoring-fig11-new2.png)
+![Endpunkt einschränken](./media/security-center-monitoring/security-center-monitoring-fig9-ga.png)
 
 In diesem Beispiel befindet sich auf dem Blatt **Fehlende Netzwerksicherheitsgruppen für Subnetze konfigurieren** eine Liste mit Subnetzen und virtuellen Computern ohne NSG-Schutz. Wenn Sie auf das Subnetz klicken, auf das Sie die NSG anwenden möchten, wird ein weiteres Blatt geöffnet.
 
@@ -138,7 +136,7 @@ Auf dem Blatt **Netzwerksicherheitsgruppe auswählen** können Sie eine geeignet
 
 Im Abschnitt **Endpunkte mit Internetanbindung** werden die virtuellen Computer, die derzeit mit einem Endpunkt mit Internetanbindung konfiguriert sind, und der jeweilige Status angezeigt.
 
-![Endpunkt mit Internetanbindung](./media/security-center-monitoring/security-center-monitoring-fig121-new5.png)
+![Endpunkt mit Internetanbindung](./media/security-center-monitoring/security-center-monitoring-fig10-ga.png)
 
 Diese Tabelle enthält den Endpunktnamen, der den virtuellen Computer darstellt, die Internet-IP-Adresse und den aktuellen Status der NSG und der NGFW. Die Tabelle ist nach Schweregrad sortiert, wie nachfolgend beschrieben:
 - Rot (oben): hohe Priorität; sollte umgehend behoben werden
@@ -156,20 +154,20 @@ Diese Tabelle ist nach Schweregrad sortiert (virtuelle Computer und Subnetze):
 - Orange: mittlere Priorität; sollte zeitnah behoben werden
 - Grün (ganz unten): fehlerfrei
 
-In dieser Hierarchie umfasst die erste Ebene [virtuelle Netzwerke](../virtual-network/virtual-networks-overview.md), [Virtual Network-Gateways](../vpn-gateway/vpn-gateway-site-to-site-create.md) und [Virtual Network (klassisch)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Die zweite Ebene umfasst Subnetze. Die dritte Ebene enthält die virtuellen Computer dieser Subnetze. Die rechte Spalte enthält den aktuellen Status der Netzwerksicherheitsgruppe (NSG) für diese Ressourcen. Im folgenden Beispiel wurde der virtuelle Computer „VM-CL-W1“ ausgewählt:
+In dieser Hierarchie umfasst die erste Ebene [virtuelle Netzwerke](../virtual-network/virtual-networks-overview.md), [Virtual Network-Gateways](../vpn-gateway/vpn-gateway-site-to-site-create.md) und [Virtual Network (klassisch)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Die zweite Ebene umfasst Subnetze. Die dritte Ebene enthält die virtuellen Computer dieser Subnetze. Die rechte Spalte enthält den aktuellen Status der Netzwerksicherheitsgruppe (NSG) für diese Ressourcen. Dies wird im folgenden Beispiel veranschaulicht:
 
-![Netzwerkstruktur](./media/security-center-monitoring/security-center-monitoring-fig13-new2.png)
+![Netzwerkstruktur](./media/security-center-monitoring/security-center-monitoring-fig12-ga.png)
 
 Im unteren Teil des Blatts befinden sich Empfehlungen für diesen virtuellen Computer (ähnlich wie weiter oben beschrieben). Sie können auf eine Empfehlung klicken, um weitere Informationen zu erhalten oder die erforderliche Sicherheitskontrolle/-konfiguration anzuwenden.
 
 ###Überwachen von SQL-Ressourcen
 Wenn Sie auf der Kachel **Ressourcensicherheitsintegrität** auf **SQL** klicken, wird das Blatt „SQL“ geöffnet. Es enthält Empfehlungen zu Problemen, die mit der Überwachung oder der nicht aktivierten Transparent Data Encryption zusammenhängen. Außerdem werden Empfehlungen zum allgemeinen Integritätsstatus der Datenbank angegeben.
 
-![Ressourcenintegrität für SQL](./media/security-center-monitoring/security-center-monitoring-fig15-new.png)
+![Ressourcenintegrität für SQL](./media/security-center-monitoring/security-center-monitoring-fig13-ga.png)
 
 Sie können auf eine dieser Empfehlungen klicken, um weitere Details zu Aktionen zu erhalten, mit denen das jeweilige Problem behoben werden kann. Das folgende Beispiel zeigt die Erweiterung der Empfehlung **Datenbanküberwachung nicht aktiviert**.
 
-![Ressourcenintegrität für SQL](./media/security-center-monitoring/security-center-monitoring-fig16-new.png)
+![Ressourcenintegrität für SQL](./media/security-center-monitoring/security-center-monitoring-fig14-ga.png)
 
 Das Blatt **Überwachung für SQL-Datenbanken aktivieren** enthält folgende Informationen:
 
@@ -181,30 +179,31 @@ Das Blatt **Überwachung für SQL-Datenbanken aktivieren** enthält folgende Inf
 
 Wenn Sie auf die Datenbank klicken, um die Empfehlung umzusetzen, wird das Blatt **Überwachung und Bedrohungserkennung** angezeigt:
 
-![Ressourcenintegrität für SQL](./media/security-center-monitoring/security-center-monitoring-fig17-new.png)
+![Ressourcenintegrität für SQL](./media/security-center-monitoring/security-center-monitoring-fig15-ga.png)
 
-Um die Überwachung zu aktivieren, klicken Sie unter der Option **Überwachung** einfach auf **EIN** und dann auf **Speichern**.
+Um die Überwachung zu aktivieren, klicken Sie unter der Option **Überwachung** einfach auf **EIN**.
 
-###Überwachen von Anwendungen
+### Überwachen von Anwendungen
+
 Wenn Ihre Azure-Workload Anwendungen umfasst, die sich auf [Resource Manager-VMs](../resource-manager-deployment-model.md) mit verfügbar gemachten Webports (TCP-Ports 80 und 443) befinden, kann Security Center diese Ports überwachen, um potenzielle Sicherheitsprobleme zu erkennen und Wartungsschritte zu empfehlen. Wenn Sie auf die Kachel **Anwendungen** klicken, wird das Blatt **Anwendungen** mit einer Reihe von Empfehlungen im Abschnitt „Vorbeugungsschritte“ geöffnet. Außerdem werden die Anwendungen nach Host/virtueller IP aufgeschlüsselt. Die ist unten dargestellt.
 
-![Sicherheitsintegrität für Anwendungen](./media/security-center-monitoring/security-center-monitoring-fig18-new.png)
+![Sicherheitsintegrität für Anwendungen](./media/security-center-monitoring/security-center-monitoring-fig16-ga.png)
 
 Sie können wie bei den anderen Empfehlungen auch auf eine Empfehlung klicken, um weitere Details zum Problem sowie Informationen zu dessen Beseitigung anzuzeigen. Das in der nächsten Abbildung gezeigte Beispiel ist eine Anwendung, die als unsichere Webanwendung identifiziert wurde. Wenn Sie die als unsicher angesehene Anwendung auswählen, wird ein weiteres Blatt mit der folgenden verfügbaren Option geöffnet:
 
-![Apps](./media/security-center-monitoring/security-center-monitoring-fig19-new.png)
+![Apps](./media/security-center-monitoring/security-center-monitoring-fig17-ga.png)
 
-Auf dem Blatt **Ungesicherte Webanwendungen** wird eine Liste mit allen virtuellen Computern angezeigt, die als unsicher geltende Anwendungen enthalten. In der Liste werden der Name der virtuellen Maschine, der aktuelle Problemstatus und der Schweregrad des Problems angezeigt. Wenn Sie auf diese Webanwendung klicken, wird das Blatt **Web Application Firewall hinzufügen** mit Optionen zum Installieren einer Web Application Firewall (WAF) eines Drittanbieters angezeigt:
+Dieses Blatt enthält eine Liste mit allen Empfehlungen für diese Anwendung. Wenn Sie auf die Empfehlung **Web Application Firewall hinzufügen** klicken, wird das Blatt **Web Application Firewall hinzufügen** mit Optionen zum Installieren einer Drittanbieter WAF (Web Application Firewall) geöffnet. Dies ist unten dargestellt.
 
-![Web Application Firewall (WAF) hinzufügen](./media/security-center-monitoring/security-center-monitoring-fig20-new.png)
+![Web Application Firewall (WAF) hinzufügen](./media/security-center-monitoring/security-center-monitoring-fig18-ga.png)
 
 ## Weitere Informationen
 In diesem Dokument haben Sie erfahren, wie Sie die Überwachungsfunktionen in Azure Security Center verwenden können. Weitere Informationen zu Azure Security Center finden Sie in den folgenden Quellen:
 
-- [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md) – erfahren Sie, wie Sie Sicherheitseinstellungen in Azure Security Center konfigurieren.
+- [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md) – Erfahren Sie, wie Sie Sicherheitseinstellungen in Azure Security Center konfigurieren.
 - [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) – Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
-- [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md): Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
-- [Azure Security Center – häufig gestellte Fragen](security-center-faq.md) zur Verwendung des Diensts.
-- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) – suchen Sie nach Blogbeiträgen über Azure-Sicherheit und -Compliance.
+- [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md) – Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
+- [Häufig gestellte Fragen (FAQ) zu Security Center](security-center-faq.md) – Häufig gestellte Fragen zur Verwendung des Diensts.
+- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) – Suchen Sie nach Blogbeiträgen über Azure-Sicherheit und -Compliance.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

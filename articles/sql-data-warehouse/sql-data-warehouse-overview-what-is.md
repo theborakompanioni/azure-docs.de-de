@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/16/2016"
+   ms.date="07/23/2016"
    ms.author="lodipalm;barbkess;mausher;jrj;sonyama;kevin"/>
 
 
@@ -128,7 +128,7 @@ In SQL Data Warehouse sind außerdem viele Tools integriert, mit denen SQL Serve
 
 **Herkömmliche SQL Server-Tools**: SQL Data Warehouse ist vollständig in SQL Server Analysis Services, Integration Services und Reporting Services integriert.
 
-**Cloudbasierte Tools**: SQL Data Warehouse kann zusammen mit einer Reihe von neuen Tools in Azure verwendet werden, z.B. Data Factory, Stream Analytics, Machine Learning und Power BI. Eine vollständige Liste finden Sie unter [Integrated Tools Overview][] (Übersicht über die integrierten Tools).
+**Cloudbasierte Tools**: SQL Data Warehouse kann zusammen mit einer Reihe von neuen Tools in Azure verwendet werden, z.B. Data Factory, Stream Analytics, Machine Learning und Power BI. Eine vollständige Liste finden Sie unter [Integrated Tools Overview][] \(Übersicht über die integrierten Tools).
 
 **Drittanbietertools**: Viele Anbieter von Drittanbietertools haben sich die Integration ihrer Tools in SQL Data Warehouse zertifizieren lassen. Eine vollständige Liste finden Sie unter [SQL Data Warehouse-Lösungspartner][].
 
@@ -146,7 +146,7 @@ PolyBase ermöglicht es Ihnen, Ihre Daten aus unterschiedlichen Quellen mithilfe
 
 ## Nächste Schritte
 
-Nachdem Sie sich mit den Grundlagen von SQL Data Warehouse vertraut gemacht haben, können Sie sich nun darüber informieren, wie Sie schnell [eine SQL Data Warehouse-Instanz erstellen][] und [Beispieldaten laden][]. Oder sehen Sie sich die folgenden SQL Data Warehouse-Ressourcen an:
+Nachdem Sie sich mit den Grundlagen von SQL Data Warehouse vertraut gemacht haben, können Sie sich nun darüber informieren, wie Sie schnell [eine SQL Data Warehouse-Instanz erstellen][] und [Beispieldaten laden][]. Falls Sie mit Azure noch nicht vertraut sind und auf neue Terminologie stoßen, ist das [Azure-Glossar][] sehr nützlich. Oder sehen Sie sich die folgenden SQL Data Warehouse-Ressourcen an:
 
 - [Blogs]
 - [Funktionsanfragen]
@@ -169,6 +169,7 @@ Nachdem Sie sich mit den Grundlagen von SQL Data Warehouse vertraut gemacht habe
 [SQL Data Warehouse-Lösungspartner]: sql-data-warehouse-partner-business-intelligence.md
 [Integrated tools overview]: sql-data-warehouse-overview-integrate.md
 [Sichern und Wiederherstellen – Übersicht]: sql-data-warehouse-restore-database-overview.md
+[Azure-Glossar]: ../azure-glossary-cloud-terminology.md
 
 <!--MSDN references-->
 
@@ -181,4 +182,4 @@ Nachdem Sie sich mit den Grundlagen von SQL Data Warehouse vertraut gemacht habe
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

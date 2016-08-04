@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="mobile-phonegap"
 	ms.devlang="multiple"
 	ms.topic="get-started-article" 
-	ms.date="02/10/2016"
+	ms.date="07/21/2016"
 	ms.author="ggailey777"/>
 
 # Erste Schritte mit Mobile Services
 
-[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]&nbsp;
+[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)] &nbsp;
 
 [AZURE.INCLUDE [mobile-services-hero-slug](../../includes/mobile-services-hero-slug.md)]
 
@@ -39,7 +39,7 @@ Zum Abschluss dieses Lernprogramms ist Folgendes erforderlich:
 + PhoneGap unterstützt die Entwicklung für verschiedene Plattformen. Zusätzlich zu den eigentlichen PhoneGap-Tools müssen Sie die Tools für jede geplante Plattform installieren:
 
 	- Windows Phone: Installieren Sie [Visual Studio 2012 Express für Windows Phone](https://go.microsoft.com/fwLink/p/?LinkID=268374)
-	- iOS: Installieren Sie [Xcode] (V4.4 oder höher erforderlich)
+	- iOS: Installieren Sie [Xcode] \(V4.4 oder höher erforderlich)
 	- Android: Installieren Sie die [Android Developer Tools][Android SDK] <br/> (das Mobile Services SDK für Android unterstützt Apps für Android 2.2 oder höhere Versionen. Android 4.2 oder höher ist zum Ausführen der Schnellstart-App erforderlich.)
 
 ## Erstellen eines neuen mobilen Diensts
@@ -153,7 +153,7 @@ Der letzte Schritt dieses Lernprogramms besteht im Erstellen und Ausführen der 
 ## Nächste Schritte
 Da Sie den Schnellstart jetzt abgeschlossen haben, erfahren Sie, wie zusätzliche wichtige Aufgaben in Mobile Services ausgeführt werden:
 
-* **[Hinzufügen von Authentifizierung zur App]** Informationen über die Authentifizierung von Benutzern der App mit einem Identitätsanbieter.  
+* **[Hinzufügen von Authentifizierung zur App]** Informationen über die Authentifizierung von Benutzern der App mit einem Identitätsanbieter.
 
 * **[Hinzufügen von Pushbenachrichtigungen zur App](https://msdn.microsoft.com/magazine/dn879353.aspx)** Erfahren Sie, wie Sie die Registrierung für Pushbenachrichtigungen durchführen und wie Sie Pushbenachrichtigungen an Ihre App senden.
 
@@ -176,4 +176,4 @@ Da Sie den Schnellstart jetzt abgeschlossen haben, erfahren Sie, wie zusätzlich
 [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0727_2016-->

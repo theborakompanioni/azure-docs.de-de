@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="get-started-article" 
-	ms.date="05/23/2016"
+	ms.date="07/21/2016"
 	ms.author="tamram"/>
 
 # Erste Schritte mit Azure Storage – Einstieg in fünf Minuten 
@@ -28,7 +28,7 @@ Wenn Sie mehr über Azure Storage erfahren möchten, bevor Sie am Code arbeiten,
 
 Folgende Voraussetzungen müssen erfüllt sein, bevor Sie beginnen:
 
-1. Zum Kompilieren und Erstellen der Anwendung muss [Visual Studio](https://www.visualstudio.com/) auf Ihrem Computer installiert sein. 
+1. Zum Kompilieren und Erstellen der Anwendung muss [Visual Studio](https://www.visualstudio.com/) auf Ihrem Computer installiert sein.
 
 2. Installieren Sie die neueste Version von [Azure SDK für .NET](https://azure.microsoft.com/downloads/). Das SDK enthält die Azure-Schnellstart-Beispielprojekte, den Azure-Speicheremulator und die [Azure Storage Client Library for .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
@@ -90,14 +90,15 @@ Vor dem Ausführen der Anwendung sollten Sie den Quellcode überprüfen. Um den 
 Führen Sie nun die Beispielanwendung im Azure-Speicheremulator aus:
 
 1.	Klicken Sie auf die Schaltfläche **Start**, oder drücken Sie die Windows-Taste, suchen Sie nach *Microsoft Azure-Speicheremulator*, und starten Sie die Anwendung. Wenn der Emulator gestartet wird, werden in der Windows-Ansicht der aktiven Anwendungen ein Symbol und eine Benachrichtigung angezeigt.
-2.	Wählen Sie in Visual Studio im Menü **Build** die Option **Projektmappe erstellen** aus. 
-3.	Drücken Sie im Menü **Debuggen** auf **F11**, um die Projektmappe Schritt für Schritt auszuführen, oder auf **F5**, um die Projektmappe vollständig auszuführen.
+2.	Wählen Sie in Visual Studio im Menü **Build** die Option **Projektmappe erstellen** aus.
+3.	Drücken Sie im Menü **Debuggen** die Taste **F11**, um die Projektmappe Schritt für Schritt auszuführen, oder **F5**, um die Projektmappe vollständig auszuführen.
 
 ## Nächste Schritte
 
 Weitere Informationen zu Azure Storage finden Sie in den folgenden Ressourcen:
 
 * [Einführung in Microsoft Azure Storage](storage-introduction.md)
+* [Erste Schritte mit dem Speicher-Explorer (Vorschau)](../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Erste Schritte mit Azure Blob Storage mit .NET](storage-dotnet-how-to-use-blobs.md)
 * [Erste Schritte mit Azure Table Storage mit .NET](storage-dotnet-how-to-use-tables.md)
 * [Erste Schritte mit Azure Queue Storage mit .NET](storage-dotnet-how-to-use-queues.md)
@@ -110,4 +111,4 @@ Weitere Informationen zu Azure Storage finden Sie in den folgenden Ressourcen:
 [Image1]: ./media/storage-getting-started-guide/QuickStart.png
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

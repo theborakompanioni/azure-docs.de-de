@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="05/18/2016"
+    ms.date="07/20/2016"
     ms.author="elizapo" />
 
 # Verwenden Microsoft Outlook in Azure RemoteApp
@@ -27,8 +27,8 @@ Der Benutzer kann bei der Kontoeinrichtung zwischen **Exchange-Cachemodus** oder
 Informationen dazu finden Sie unter [Schrittweise Anweisungen zum Aktivieren des Cache-Modus](https://technet.microsoft.com/library/c6f4cad9-c918-420e-bab3-8b49e1885034#proc).
 
 ## Suchen
-In Azure RemoteApp ist die Suche in Outlook eingeschränkt. Azure RemoteApp verwendet VM-Pools, um Benutzersitzungen zu ermöglichen. Die Suchindizierung hängt von der VM-ID ab, die sich je nach virtueller Maschine unterscheidet. So ist es möglich, dass ein Benutzer bei jeder Anmeldung bei der Azure RemoteApp an eine neue virtuelle Maschine weitergeleitet wird. Bei Aktivierung der lokalen Suche würde bei jeder Änderung der VM-ID (wenn der Benutzer an eine andere virtuelle Maschine geleitet wird) der Indexer ausgeführt werden. Je nach Größe der OST-Datei könnte die Ausführung des Indexers sehr lange dauern und die erforderlichen Ressourcen für andere Apps belegen. Die Suche wäre nicht nur langsam, sondern ergäbe möglicherweise keine Ergebnisse. Dieses Problem kann durch standardmäßige Verwendung der Onlinesuche umgangen werden. Leider kann die indizierte/lokale Suche nicht deaktiviert werden, und die Online-Suche kann in Outlook 2013 nicht standardmäßig aktiviert werden.
+In Azure RemoteApp ist die Suche in Outlook eingeschränkt. Azure RemoteApp verwendet VM-Pools, um Benutzersitzungen zu ermöglichen. Die Suchindizierung hängt von der VM-ID ab, die sich je nach virtueller Maschine unterscheidet. So ist es möglich, dass ein Benutzer bei jeder Anmeldung bei der Azure RemoteApp an eine neue virtuelle Maschine weitergeleitet wird. Bei Aktivierung der lokalen Suche würde bei jeder Änderung der VM-ID (wenn der Benutzer an eine andere virtuelle Maschine geleitet wird) der Indexer ausgeführt werden. Je nach Größe der OST-Datei könnte die Ausführung des Indexers sehr lange dauern und die erforderlichen Ressourcen für andere Apps belegen. Die Suche wäre nicht nur langsam, sondern ergäbe möglicherweise keine Ergebnisse. Mit einem Kontoprofil im Onlinemodus können Sie dieses Problem umgehen, die Gesamtleistung wäre jedoch aufgrund des fehlenden lokalen Cache beeinträchtigt (unter dem oben genannten Link finden Sie weitere Informationen zum Unterschied zwischen dem Cache- und dem Onlinemodel). Leider kann die indizierte/lokale Suche nicht deaktiviert werden, und die Online-Suche kann in Outlook 2013 nicht standardmäßig aktiviert werden.
 
-Outlook 2016 bietet hierfür eine Lösung durch die Bereitstellung einer neuen Online-Suchfunktion für Postfächer, die auf Exchange 2016 gehostet (oder in Office 365 gehostet) werden. Hierbei werden die Suchergebnisse des Servers für den lokalen Cache (OST) verwendet. Outlook greift in gewissen Fällen möglicherweise auf den Search-Indexer zurück, aber die meisten Suchvorgänge erfolgen im Onlinemodus. Wenn die Mail-Suche ein wichtiges Szenario darstellt, wird von Azure Remote-App die Verwendung von Outlook 2016 empfohlen.
+Outlook 2016 bietet hierfür eine Lösung im Cachemodus durch die Bereitstellung einer neuen Dienstsuchfunktion für Postfächer, die unter Exchange 2016 (oder in Office 365) gehostet werden. Hierbei werden die Dienstsuchergebnisse für den lokalen Cache (OST) verwendet. Outlook greift in gewissen Fällen möglicherweise auf den lokalen Search-Indexer zurück, aber die meisten Suchvorgänge würden dieses neue Dienstsuchfeature verwenden. Wenn die Mail-Suche ein wichtiges Szenario darstellt, wird von Azure Remote-App die Verwendung von Outlook 2016 empfohlen.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

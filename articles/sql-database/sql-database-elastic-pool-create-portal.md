@@ -11,7 +11,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="05/06/2016"
+	ms.date="07/20/2016"
 	ms.author="ninarn"
 	ms.workload="data-management"
 	ms.topic="get-started-article"
@@ -33,9 +33,11 @@ Sie können einem Server mehrere Pools hinzufügen, aber es ist nicht möglich, 
 
 ## Schritt 1: Erstellen eines neuen Pools
 
-Erstellen Sie einen elastischen Datenbankpool, indem Sie einen neuen Pool zu einem Server hinzufügen. Sie können einem Server mehrere Pools hinzufügen, aber es ist nicht möglich, Datenbanken von verschiedenen Servern in demselben Pool zusammenzufassen.
+In diesem Artikel wird gezeigt, wie Sie aus einem im Portal vorhandenen Blatt **Server** einen neuen Pool erstellen. Dies ist die einfachste Möglichkeit, um vorhandene Datenbanken in einen Pool zu verschieben.
 
-1. Klicken Sie im [Azure-Portal](http://portal.azure.com/) auf **SQL-Server** und dann auf den Server mit den Datenbanken, die Sie einem Pool hinzufügen möchten.
+> [AZURE.NOTE] Es spielt keine Rolle, ob Sie bereits über einen Server verfügen: Sie können einen neuen Pool auch über das Blatt **Elastische SQL-Pools** erstellen. (Klicken Sie links im Portal unterhalb der Liste auf **Durchsuchen** **>** **Elastische SQL-Pools**.) Wenn Sie auf dem Blatt **Elastische SQL-Pools** auf **+ Hinzufügen** klicken, werden die Schritte zum Erstellen eines neuen Servers während des Workflows zur Bereitstellung des Pools angezeigt.
+
+1. Klicken Sie im [Azure-Portal](http://portal.azure.com/) unterhalb der Liste auf der linken Seite auf **Durchsuchen** **>** **Computer mit SQL Server** und dann auf den Server mit den Datenbanken, die Sie einem Pool hinzufügen möchten.
 2. Klicken Sie auf **Neuer Pool**.
 
     ![Hinzufügen eines Pools zu einem Server](./media/sql-database-elastic-pool-create-portal/new-pool.png)
@@ -46,7 +48,7 @@ Erstellen Sie einen elastischen Datenbankpool, indem Sie einen neuen Pool zu ein
 
     ![Empfohlener Pool](./media/sql-database-elastic-pool-create-portal/recommended-pool.png)
 
-    Das Blatt **Pool für elastische Datenbanken**, in dem Sie den Pool einrichten, wird angezeigt. Wenn Sie im vorherigen Schritt auf **Neuer Pool** geklickt haben, werden vom Portal unter **Tarif** ein **Standard-Pool**, ein eindeutiger **Name** für den Pool und eine Standardkonfiguration für den Pool ausgewählt. Wenn Sie einen empfohlenen Pool ausgewählt haben, sind die empfohlene Ebene und die Konfiguration des Pools bereits ausgewählt, aber Sie können diese Angaben immer noch ändern.
+    Das Blatt **Pool für elastische Datenbanken**, auf dem Sie den Pool einrichten, wird angezeigt. Wenn Sie im vorherigen Schritt auf **Neuer Pool** geklickt haben, werden vom Portal unter **Tarif** ein **Standard-Pool**, ein eindeutiger **Name** für den Pool und eine Standardkonfiguration für den Pool ausgewählt. Wenn Sie einen empfohlenen Pool ausgewählt haben, sind die empfohlene Ebene und die Konfiguration des Pools bereits ausgewählt, aber Sie können diese Angaben immer noch ändern.
 
     ![Konfigurieren eines elastischen Pools](./media/sql-database-elastic-pool-create-portal/configure-elastic-pool.png)
 
@@ -109,6 +111,6 @@ Nach dem Hinzufügen von Datenbanken zum Pool werden Empfehlungen basierend auf 
 - [Verwalten eines elastischen SQL-Datenbankpools mit dem Portal](sql-database-elastic-pool-manage-portal.md)
 - [Verwalten eines elastischen SQL-Datenbankpools mit PowerShell](sql-database-elastic-pool-manage-powershell.md)
 - [Verwalten eines elastischen SQL-Datenbankpools mit C#](sql-database-elastic-pool-manage-csharp.md)
-- [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md) 
+- [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->
