@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="kgremban"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,18 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/17/2016"
+	ms.date="07/19/2016"
 	ms.author="kgremban"/>
 
 
 # Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy
 
-
-Nachdem Sie den Microsoft Azure Active Directory (AD)-Anwendungsproxy aktiviert haben, können Sie lokale Anwendungen veröffentlichen, damit Remotebenutzer darauf von außerhalb des privaten Netzwerks zugreifen können.
-
-In diesem Artikel werden Sie durch die Schritte zum Veröffentlichen von Anwendungen geführt, die in Ihrem lokalen Netzwerk ausgeführt werden, sowie zum Ermöglichen des sicheren Remotezugriffs von außerhalb Ihres Netzwerks. Führen Sie vor dem Fortfahren die Schritte unter [Aktivieren des Anwendungsproxys im Azure-Portal](active-directory-application-proxy-enable.md) aus, falls Sie den Anwendungsproxy noch nicht eingerichtet und noch keine Connectors installiert haben.
-
-Wenn Sie den Azure AD-Anwendungsproxy zum ersten Mal verwenden, sollten Sie den Connector testen, indem Sie vor dem Veröffentlichen von Anwendungen eine Website aus Ihrem privaten Netzwerk veröffentlichen.
+Mit Azure AD-Anwendungsproxy können Sie Remotearbeiter unterstützen, indem Sie lokale Anwendungen veröffentlichen, auf die über das Internet zugegriffen werden kann. Zu diesem Zeitpunkt sollten Sie den [Anwendungsproxy im klassischen Azure-Portal bereits aktiviert haben](active-directory-application-proxy-enable.md). In diesem Artikel werden Sie durch die Schritte zum Veröffentlichen von Anwendungen geführt, die in Ihrem lokalen Netzwerk ausgeführt werden, sowie zum Ermöglichen des sicheren Remotezugriffs von außerhalb Ihres Netzwerks. Nach dem Durcharbeiten dieses Artikels können Sie die Anwendung mit personalisierten Informationen oder Sicherheitsanforderungen konfigurieren.
 
 > [AZURE.NOTE] Das Feature "Anwendungsproxy" ist nur verfügbar, wenn Sie Azure Active Directory auf die Premium oder Basic Edition aktualisiert haben. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
 
@@ -45,8 +40,11 @@ Wenn Sie den Azure AD-Anwendungsproxy zum ersten Mal verwenden, sollten Sie den 
 
 5. Geben Sie die folgenden Informationen zur Anwendung an:
 
-	- **Name**: Dies ist der benutzerfreundliche Namen für Ihre Anwendung. Er muss in Ihrem Verzeichnis eindeutig sein.
-	- **Interne URL**: Die Adresse, die vom Anwendungsproxy-Connector verwendet wird, um aus dem internen privaten Netzwerk auf die Anwendung zuzugreifen. Sie können einen bestimmten Pfad auf dem Back-End-Server für die Veröffentlichung angeben, während der Rest des Servers nicht veröffentlicht wird. Auf diese Weise können Sie unterschiedliche Websites auf demselben Server veröffentlichen und jeweils einen eigenen Namen und Zugriffsregeln vergeben.
+	- **Name**: Dies ist der benutzerfreundliche Name für Ihre Anwendung. Er muss in Ihrem Verzeichnis eindeutig sein.
+	- **Interne URL**: Die Adresse, die vom Anwendungsproxy-Connector verwendet wird, um aus dem privaten Netzwerk auf die Anwendung zuzugreifen. Sie können einen bestimmten Pfad auf dem Back-End-Server für die Veröffentlichung angeben, während der Rest des Servers nicht veröffentlicht wird. Auf diese Weise können Sie unterschiedliche Websites auf demselben Server veröffentlichen und jeweils einen eigenen Namen und Zugriffsregeln vergeben.
+
+		> [AZURE.TIP] Stellen Sie beim Veröffentlichen eines Pfads sicher, dass er alle erforderlichen Bilder, Skripts und Stylesheets für Ihre Anwendung enthält. Wenn sich die App beispielsweise unter https://yourapp/app befindet und Bilder unter https://yourapp/media genutzt werden, sollten Sie https://yourapp/ als Pfad veröffentlichen.
+
 	- **Präauthentifizierungsmethode**: Gibt das Verfahren an, wie der Anwendungsproxy Benutzer überprüft, bevor diese Zugriff auf Ihre Anwendung erhalten. Wählen Sie im Dropdownmenü eine Option aus.
 
 		- Azure Active Directory: Der Anwendungsproxy leitet Benutzer an die Anmeldung mit Azure AD um. Hierbei werden deren Berechtigungen für das Verzeichnis und die Anwendung authentifiziert.
@@ -59,7 +57,9 @@ Wenn Sie den Azure AD-Anwendungsproxy zum ersten Mal verwenden, sollten Sie den 
 
 ## Zuweisen von Benutzern und Gruppen zur Anwendung
 
-Damit Benutzer auf die von Ihnen veröffentlichte Anwendung zugreifen können, müssen Sie diese entweder einzeln oder in Gruppen zuweisen. Bei Apps, für die eine Präauthentifizierung erforderlich ist, werden hierbei Berechtigungen zum Verwenden der App erteilt. Bei Apps, für die keine Präauthentifizierung erforderlich ist, müssen Benutzer der App trotzdem zugewiesen sein, damit sie in der Anwendungsliste angezeigt wird.
+Damit Benutzer auf die von Ihnen veröffentlichte Anwendung zugreifen können, müssen Sie diese entweder einzeln oder in Gruppen zuweisen. (Denken Sie daran, auch sich selbst den Zugriff zuzuweisen.) Hierfür ist es erforderlich, dass jeder Benutzer über eine Lizenz für Azure Basic oder höher verfügt. Sie können Lizenzen einzeln oder für Gruppen zuweisen. Weitere Informationen finden Sie unter [Zuweisen von Benutzern zu einer Anwendung](active-directory-applications-guiding-developers-assigning-users.md).
+
+Bei Apps, für die eine Präauthentifizierung erforderlich ist, werden hierbei Berechtigungen zum Verwenden der App erteilt. Bei Apps, für die keine Präauthentifizierung erforderlich ist, können Benutzer der App trotzdem zugewiesen werden, damit sie in der Anwendungsliste angezeigt wird, z.B. MyApps.
 
 1. Nach dem Beenden des Assistenten für das Hinzufügen von Apps wird die Schnellstartseite für die Anwendung angezeigt. Wählen Sie die Option **Benutzer und Gruppen**, um zu verwalten, wer Zugriff auf die App hat.
 
@@ -73,8 +73,11 @@ Damit Benutzer auf die von Ihnen veröffentlichte Anwendung zugreifen können, m
 
 > [AZURE.NOTE] Für Apps mit „Integrierter Windows-Authentifizierung“ können Sie nur Benutzer und Gruppen zuweisen, die über Ihr lokales Active Directory synchronisiert werden. Benutzer, die sich über ein Microsoft-Konto anmelden, und Gäste können nicht für Apps zugewiesen werden, die mit dem Azure Active Directory-Anwendungsproxy veröffentlicht werden. Stellen Sie sicher, dass Ihre Benutzer sich mit Anmeldeinformationen anmelden, die derselben Domäne wie die von Ihnen veröffentlichte App angehören.
 
+## Testen der veröffentlichten Anwendung
 
-## Erweiterte Konfiguration
+Nachdem Sie die Anwendung veröffentlicht haben, können Sie sie testen, indem Sie zur veröffentlichten URL navigieren. Stellen Sie sicher, dass Sie darauf zugreifen können, dass sie richtig gerendert wird und dass alles wie erwartet funktioniert. Wenn Sie Probleme haben oder eine Fehlermeldung erhalten, hilft Ihnen das [Handbuch zur Problembehandlung](active-directory-application-proxy-troubleshoot.md) weiter.
+
+## Konfigurieren der Anwendung
 
 Auf der Seite „Konfigurieren“ können Sie veröffentlichte Apps ändern oder erweiterte Optionen einrichten. Auf dieser Seite können Sie Ihre App anpassen, indem Sie den Namen ändern oder ein Logo hochladen. Außerdem können Sie Zugriffsregeln verwalten, z.B. die Präauthentifizierungsmethode oder die Multi-Factor Authentication.
 
@@ -98,4 +101,4 @@ Um eine Anwendung zu löschen, wählen Sie eine Anwendung in der Liste aus, und 
 
 Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0727_2016-->

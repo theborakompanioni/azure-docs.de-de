@@ -399,9 +399,9 @@ Die Nachricht **保存成功！** (**Erfolgreich gespeichert!**) wird angezeigt.
 ##Senden von Benachrichtigungen an Ihre App
 
 
-Sie können den Empfang von Benachrichtigungen in Ihrer App testen, indem Sie wie im Bildschirm unten abgebildet Benachrichtigungen im klassischen Azure-Portal über die Registerkarte zum Debuggen im Notification Hub senden.
+Sie können den Empfang von Benachrichtigungen in Ihrer App schnell testen, indem Sie wie im Bildschirm unten abgebildet Benachrichtigungen im [Azure-Portal](https://portal.azure.com/) mithilfe der Schaltfläche **Testsendung** im Notification Hub senden.
 
-![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-debug.png)
+![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-test-send-wns.png)
 
 Pushbenachrichtigungen werden normalerweise in einem Back-End-Dienst wie z. B. Mobile Services oder ASP.NET mit einer kompatiblen Bibliothek gesendet. Sie können Benachrichtigungsmeldungen zudem direkt über die REST-API senden, wenn für Ihr Back-End keine Bibliothek verfügbar ist.
 
@@ -503,4 +503,4 @@ Zum Senden einer Testbenachrichtigung können Sie die Registerkarte „Debuggen�
 [klassischen Azure-Portal]: https://manage.windowsazure.com/
 [Baidu-Portal]: http://www.baidu.com/
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0727_2016-->

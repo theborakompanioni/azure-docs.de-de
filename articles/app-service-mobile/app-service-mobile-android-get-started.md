@@ -3,7 +3,7 @@
     description="Befolgen Sie dieses Lernprogramm für die ersten Schritte bei der Verwendung mobiler Azure-App-Back-Ends für die Android-Entwicklung."
     services="app-service\mobile"
     documentationCenter="android"
-    authors="ysxu"
+    authors="RickSaling"
     manager="erikre"
     editor=""/>
 
@@ -13,8 +13,8 @@
     ms.tgt_pltfrm="mobile-android"
     ms.devlang="java"
     ms.topic="hero-article"
-    ms.date="07/18/2016"
-    ms.author="yuaxu;ricksal"/>
+    ms.date="07/21/2016"
+    ms.author="ricksal"/>
 
 #Erstellen einer Android-App
 
@@ -54,4 +54,4 @@ Für dieses Lernprogramm benötigen Sie Folgendes:
 [Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -257,7 +257,7 @@ Generell benötigen Sie die folgenden Regeln, um Ihr internes Subnetz effizient 
 
 |Regel|Beschreibung|Flow|
 |:----|:----|:------:|
-|AllowHTTPSFromDMZ|	Mit dieser Regel wird die HTTPS-Kommunikation mit der DMZ zugelassen. | Eingehend |
+|AllowHTTPSFromDMZ| Mit dieser Regel wird die HTTPS-Kommunikation von der DMZ zugelassen. | Eingehend |
 |DenyAllFromDMZ| Mit dieser Regel wird der gesamte Datenverkehr aus der DMZ in das interne Subnetz blockiert. Mit der Regel AllowHTTPSFromDMZ wird bereits sichergestellt, dass die HTTPS-Kommunikation funktioniert, und alles andere wird mit dieser Regel blockiert. | Eingehend |
 |DenyInternetOutbound| Es besteht kein Zugriff auf das Internet. | Ausgehend |
 
@@ -303,4 +303,4 @@ Bei einer erfolgreichen Anmeldung wird die folgende Erfolgsmeldung angezeigt:
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 * [Azure AD Connect und Verbund](active-directory-aadconnectfed-whatis.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

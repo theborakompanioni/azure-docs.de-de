@@ -154,6 +154,7 @@ Im folgenden Beispiel ist die benutzerdefinierte Rolle *Virtual Machine Operator
 ![RBAC PowerShell – Get-AzureRmRoleDefinition – Screenshot](./media/role-based-access-control-manage-access-powershell/5-get-azurermroledefinition2.png)
 
 ## Weitere Informationen
-- [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md) [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
+- [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md)
+[AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
 <!---HONumber=AcomDC_0720_2016-->

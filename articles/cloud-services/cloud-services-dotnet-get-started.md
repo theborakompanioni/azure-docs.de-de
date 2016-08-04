@@ -229,7 +229,7 @@ Sie werden eine [Web.config-Transformation](http://www.asp.net/mvc/tutorials/dep
         providerName="System.Data.SqlClient" xdt:Transform="SetAttributes" xdt:Locator="Match(name)"/>
     </connectionStrings>
     ```
-    
+
 	Lassen Sie die Datei geöffnet.
 
 2. Klicken Sie im [klassischen Azure-Portal](http://manage.windowsazure.com) im linken Bereich auf **SQL-Datenbanken**, klicken Sie auf die Datenbank, die Sie für dieses Tutorial erstellt haben, dann auf die Registerkarte **Dashboard** und dann auf **Verbindungszeichenfolgen anzeigen**.
@@ -314,10 +314,10 @@ Und die Datei *ServiceConfiguration.Cloud.cscfg* enthält die Werte, die Sie fü
         <Setting name="StorageConnectionString" value="{yourconnectionstring}" />
         <Setting name="ContosoAdsDbConnectionString" value="{yourconnectionstring}" />
         <!-- other settings not shown -->
-    
+
     </ConfigurationSettings>
     <!-- other settings not shown -->
-    
+
 </Role>
 ```
 
@@ -442,7 +442,7 @@ In diesem Abschnitt konfigurieren Sie die Verbindungszeichenfolgen für den Azur
         <add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;" providerName="System.Data.SqlClient" />
     </connectionStrings>
     ```
-    
+
 	Wenn Sie Visual Studio 2015 verwenden, ersetzen Sie „v11.0“ durch „MSSQLLocalDB“.
 
 2. Speichern Sie die Änderungen.
@@ -482,7 +482,7 @@ Um Dateien zu einem Projekt oder einem Ordner hinzuzufügen, klicken Sie mit der
 3. Löschen Sie im Projekt ContosoAdsCommon die Datei *Class1.cs* und fügen Sie an deren Stelle die Dateien *Ad.cs* und *ContosoAdscontext.cs* aus dem heruntergeladenen Projekt hinzu.
 
 3. Fügen Sie im Projekt ContosoAdsWeb die folgenden Dateien aus dem heruntergeladenen Projekt hinzu.
-	- *Global.asax.cs*.  
+	- *Global.asax.cs*.
 	- Im Ordner *Views\\Shared*: *\_Layout.cshtml*
 	- Im Ordner *Views\\Home*: *Index.cshtml*
 	- Im Ordner *Controllers*: *AdController.cs*
@@ -599,7 +599,7 @@ imagesQueue.CreateIfNotExists();
 
 ### ContosoAdsWeb - \_Layout.cshtml
 
-Die *\_Layout.cshtml*-Datei setzt den App-Namen in Kopf- und Fußzeile und erstellt einen "Ads"-Menüeintrag.
+Die Datei *\_Layout.cshtml* setzt den App-Namen in Kopf- und Fußzeile und erstellt den Menüeintrag „Ads“.
 
 ### ContosoAdsWeb - Views\\Home\\Index.cshtml
 
@@ -868,5 +868,6 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [Azure Cloud Services Teil 1: Einführung](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Verwalten von Cloud Services](cloud-services-how-to-manage.md)
 * [Azure Storage (in englischer Sprache)](/documentation/services/storage/)
+* [Wie wähle ich den richtigen Clouddienstanbieter?](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

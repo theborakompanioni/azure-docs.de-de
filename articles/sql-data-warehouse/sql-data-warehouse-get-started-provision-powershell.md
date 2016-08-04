@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Erstellen von SQL Data Warehouse mithilfe von Powershell | Microsoft Azure"
-   description="Erstellen von SQL Data Warehouse mithilfe von Powershell"
+   pageTitle="Erstellen von SQL Data Warehouse mithilfe von PowerShell | Microsoft Azure"
+   description="Erstellen von SQL Data Warehouse mithilfe von PowerShell"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="lodipalm"
@@ -13,27 +13,31 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/11/2016"
+   ms.date="07/20/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
-# Erstellen von SQL Data Warehouse mithilfe von Powershell
+# Erstellen von SQL Data Warehouse mithilfe von PowerShell
 
 > [AZURE.SELECTOR]
 - [Azure-Portal](sql-data-warehouse-get-started-provision.md)
 - [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
 - [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 
+In diesem Artikel erfahren Sie, wie Sie ein SQL Data Warehouse mithilfe von PowerShell erstellen.
+
 ## Voraussetzungen
-Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie beginnen.
+
+Zunächst benötigen Sie Folgendes:
 
 - **Azure-Konto:** Lesen Sie zum Erstellen eines Kontos die Informationen unter [Kostenlose Azure-Testversion][] oder [MSDN-Azure-Gutschriften][].
-- **V12 Azure SQL Server:** Informationen finden Sie unter [Erstellen eines logischen Azure SQL-Datenbankservers mit dem Azure-Portal][] oder [Erstellen einer neuen SQL-Datenbank und Ausführen gängiger Datenbankeinrichtungsaufgaben mithilfe von PowerShell-Cmdlets][].
-- **Ressourcengruppenname:** Verwenden Sie entweder die gleiche Ressourcengruppe wie V12 Azure SQL Server, oder lesen Sie die Informationen unter [Ressourcengruppen][], um eine neue Ressourcengruppe zu erstellen.
-- **PowerShell-Version 1.0.3 oder höher:** Sie können die Version überprüfen, indem Sie **Get-Module -ListAvailable -Name Azure** ausführen. Sie können die neueste Version über [Microsoft-Webplattform-Installer][] installieren. Weitere Informationen zum Installieren der neuesten Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][].
+- **Azure SQL Server:** Ausführliche Informationen finden Sie unter [Erstellen eines logischen Azure SQL-Datenbankservers mit dem Azure-Portal][] oder [Erstellen einer neuen SQL-Datenbank und Ausführen gängiger Datenbankeinrichtungsaufgaben mithilfe von PowerShell-Cmdlets][].
+- **Ressourcengruppe:** Verwenden Sie entweder die gleiche Ressourcengruppe wie Ihre Azure SQL Server-Instanz, oder lesen Sie die Informationen zum [Erstellen einer neuen Ressourcengruppe][].
+- **PowerShell-Version 1.0.3 oder höher:** Sie können die Version überprüfen, indem Sie **Get-Module -ListAvailable -Name Azure** ausführen. Die neueste Version können Sie über den [Microsoft-Webplattform-Installer][] installieren. Weitere Informationen zum Installieren der neuesten Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][].
 
 > [AZURE.NOTE] Wenn Sie ein neues SQL Data Warehouse erstellen, wird dadurch unter Umständen auch ein neuer abrechenbarer Dienst erstellt. Unter [SQL Data Warehouse – Preise][] finden Sie weitere Informationen zu den Preisen.
 
 ## Erstellen eines SQL Data Warehouse
+
 1. Öffnen Sie Windows PowerShell.
 2. Führen Sie dieses Cmdlet aus, um sich am Azure-Ressourcen-Manager anzumelden.
 
@@ -84,7 +88,7 @@ Weitere Informationen zur programmgesteuerten Verwaltung von SQL Data Warehouse 
 [how to create a SQL Data Warehouse from the Azure Portal]: ./sql-data-warehouse-get-started-provision.md
 [Erstellen eines logischen Azure SQL-Datenbankservers mit dem Azure-Portal]: ../sql-database/sql-database-get-started.md#create-an-azure-sql-database-logical-server
 [Erstellen einer neuen SQL-Datenbank und Ausführen gängiger Datenbankeinrichtungsaufgaben mithilfe von PowerShell-Cmdlets]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
-[Ressourcengruppen]: ../resource-group-template-deploy-portal.md
+[Erstellen einer neuen Ressourcengruppe]: ../resource-group-template-deploy-portal.md#create-resource-group
 
 <!--MSDN references--> 
 [MSDN]: https://msdn.microsoft.com/library/azure/dn546722.aspx
@@ -97,4 +101,4 @@ Weitere Informationen zur programmgesteuerten Verwaltung von SQL Data Warehouse 
 [Kostenlose Azure-Testversion]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN-Azure-Gutschriften]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

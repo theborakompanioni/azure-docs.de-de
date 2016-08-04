@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/27/2016"
+	ms.date="07/25/2016"
 	ms.author="jgao"/>
 
 
@@ -118,7 +118,7 @@ Diese Darstellung ergibt nach Abschluss der nächsten Prozedur mehr Sinn.
 HBase bietet mehrere Methoden zum Laden von Daten in Tabellen. Weitere Informationen finden Sie unter [Laden von Massendaten](http://hbase.apache.org/book.html#arch.bulk.load).
 
 
-Eine Beispieldatendatei befindet sich in folgendem öffentlichen Blobcontainer: *wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt*. Diese Datendatei hat folgenden Inhalt:
+Eine Beispieldatendatei befindet sich im folgenden öffentlichen Blobcontainer: *wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt*. Diese Datendatei hat folgenden Inhalt:
 
 	8396	Calvin Raji		230-555-0191	230-555-0191	5415 San Gabriel Dr.
 	16600	Karen Wu		646-555-0113	230-555-0192	9265 La Paz
@@ -137,7 +137,7 @@ Wenn Sie möchten, können Sie eine Textdatei erstellen und die Datei in Ihr eig
 
 1. Führen Sie unter SSH den folgenden Befehl aus, um die Datendatei in das StoreFiles-Format zu konvertieren und unter dem durch „Dimporttsv.bulk.output“ angegebenen relativen Pfad zu speichern: Verwenden Sie den exit-Befehl, um den Vorgang zu beenden, falls Sie sich in der HBase Shell befinden.
 
-		hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name, Personal:Phone, Office:Phone, Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
+		hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name, Personal:Phone, Office:Phone, Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
 
 4. Führen Sie den folgenden Befehl aus, um die Daten aus "/example/data/storeDataFileOutput" in die HBase-Tabelle hochzuladen:
 
@@ -238,7 +238,7 @@ SSH kann auch zum Tunneln lokaler Anforderungen, z. B. Webanforderungen, zum HDI
 
 **So richten Sie eine SSH-Tunnelsitzung ein**
 
-1. Öffnen Sie **PuTTY**.  
+1. Öffnen Sie **PuTTY**.
 2. Wenn Sie während des Erstellungsprozesses beim Erstellen des Benutzerkontos einen SSH-Schlüssel bereitgestellt haben, müssen Sie den folgenden Schritt ausführen, um den privaten Schlüssel auszuwählen, der zum Authentifizieren beim Cluster verwendet wird:
 
 	Erweitern Sie in **Category** erst **Connection**, dann **SSH**, und wählen Sie anschließend **Auth** aus. Klicken Sie abschließend auf **Browse**, und wählen Sie die PPK-Datei aus, die Ihren privaten Schlüssel enthält.
@@ -247,7 +247,7 @@ SSH kann auch zum Tunneln lokaler Anforderungen, z. B. Webanforderungen, zum HDI
 4. Geben Sie für die grundlegenden Optionen im PuTTY-Sitzungsbildschirm die folgenden Werte ein:
 
 	- **Hostname**: Die SSH-Adresse des HDInsight-Servers im Feld "Hostname" (oder "IP-Adresse"). Die SSH-Adresse ist Ihr Clustername, gefolgt von **-ssh.azurehdinsight.net**. Beispiel: *mycluster-ssh.azurehdinsight.net*.
-	- **Port**: 22. Der SSH-Port auf dem Hauptknoten 0 ist „22“.  
+	- **Port**: 22. Der SSH-Port auf dem Hauptknoten 0 ist „22“.
 5. Erweitern Sie auf der linken Seite des Dialogfelds im Abschnitt **Category** erst **Connection**, dann **SSH**, und klicken Sie anschließend auf **Tunnels**.
 6. Geben Sie die folgenden Informationen in das Formular "Options controlling SSH port forwarding" ein:
 
@@ -325,4 +325,4 @@ Weitere Informationen finden Sie unter:
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -1,23 +1,23 @@
 <properties
-			pageTitle="Erste Schritte mit Azure File Storage unter Windows | Microsoft Azure"
-    		description="Speichern Sie Dateidaten mit Azure File Storage in der Cloud, und stellen Sie Ihre Clouddateifreigabe über eine virtuelle Azure-Maschine (VM) oder eine lokale Anwendung mit Windows bereit."
-            services="storage"
-            documentationCenter=".net"
-            authors="mine-msft"
-            manager="aungoo"
-            editor="tysonn" />
+	pageTitle="Erste Schritte mit Azure File Storage unter Windows | Microsoft Azure"
+	description="Speichern Sie Dateidaten mit Azure File Storage in der Cloud, und stellen Sie Ihre Clouddateifreigabe über eine virtuelle Azure-Maschine (VM) oder eine lokale Anwendung mit Windows bereit."
+	services="storage"
+	documentationCenter=".net"
+	authors="mine-msft"
+	manager="aungoo"
+	editor="tysonn" />
 
 <tags ms.service="storage"
-      ms.workload="storage"
-      ms.tgt_pltfrm="na"
-      ms.devlang="dotnet"
-      ms.topic="hero-article"
-	ms.date="06/09/2016"
-      ms.author="minet" />
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="hero-article"
+	ms.date="07/26/2016"
+	ms.author="minet" />
 
 # Erste Schritte mit Azure File Storage unter Windows
 
-[AZURE.INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
+[AZURE.INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-files](../../includes/storage-try-azure-tools-files.md)]
 
 ## Übersicht
 
@@ -65,7 +65,7 @@ Das [Azure-Portal](https://portal.azure.com) bietet eine Benutzeroberfläche, ü
 - Hoch- und Herunterladen von Dateien für die Dateifreigabe
 - Überwachen der tatsächlichen Nutzung der einzelnen Dateifreigaben
 - Anpassen des Kontingents für die Freigabegröße
-- Verwenden des Befehls `net use` zum Bereitstellen der Dateifreigabe über einen Windows-Client 
+- Verwenden des Befehls `net use` zum Bereitstellen der Dateifreigabe über einen Windows-Client
 
 ### Erstellen einer Dateifreigabe
 
@@ -107,7 +107,7 @@ Das [Azure-Portal](https://portal.azure.com) bietet eine Benutzeroberfläche, ü
 
 ### Verwalten von Dateifreigaben
 
-1. Klicken Sie auf **Kontingent**, um die Größe der Dateifreigabe (bis zu 5.120 GB) zu ändern.
+1. Klicken Sie auf **Kontingent**, um die Größe der Dateifreigabe (bis zu 5.120 GB) zu ändern.
 
 	![Screenshot, der das Konfigurieren des Kontingents der Dateifreigabe veranschaulicht](./media/storage-dotnet-how-to-use-files/files-manage-1.png)
 
@@ -195,7 +195,7 @@ Dank der Unterstützung von SMB 3.0 unterstützt der Dateispeicher jetzt die Ve
 
 - Einem virtuellen Azure-Computer in derselben Region (wird auch von SMB 2.1 unterstützt)
 - Einem virtuellen Azure-Computer in einer anderen Region (nur SMB 3.0)
-- Einer lokalen Clientanwendung (nur SMB 3.0) 
+- Einer lokalen Clientanwendung (nur SMB 3.0)
 
 Wenn ein Client auf den Dateispeicher zugreift, richtet sich die verwendete SMB-Version nach der SMB-Version, die vom Betriebssystem unterstützt wird. Die folgende Tabelle enthält eine Zusammenfassung der Unterstützung für Windows-Clients. In diesem Blog finden Sie ausführlichere Informationen zu [SMB-Versionen](http://blogs.technet.com/b/josebda/archive/2013/10/02/windows-server-2012-r2-which-version-of-the-smb-protocol-smb-1-0-smb-2-0-smb-2-1-smb-3-0-or-smb-3-02-you-are-using.aspx).
 
@@ -251,8 +251,8 @@ Sie können die Dateifreigabe auch über eine im Azure-Clouddienst ausgeführte 
 
 Um die Dateifreigabe über einen lokalen Client bereitzustellen, müssen Sie zuerst die folgenden Schritte ausführen:
 
-- Installieren Sie eine Version von Windows, die SMB 3.0 unterstützt. Windows nutzt die SMB 3.0-Verschlüsselung zum sicheren Übertragen von Daten zwischen Ihrem lokalen Client und der Azure-Dateifreigabe in der Cloud. 
-- Öffnen Sie den Internetzugriff für Port 445 (TCP ausgehend) im lokalen Netzwerk, wie dies für das SMB-Protokoll erforderlich ist. 
+- Installieren Sie eine Version von Windows, die SMB 3.0 unterstützt. Windows nutzt die SMB 3.0-Verschlüsselung zum sicheren Übertragen von Daten zwischen Ihrem lokalen Client und der Azure-Dateifreigabe in der Cloud.
+- Öffnen Sie den Internetzugriff für Port 445 (TCP ausgehend) im lokalen Netzwerk, wie dies für das SMB-Protokoll erforderlich ist.
 
 > [AZURE.NOTE] Von einigen Internet Service Providern wird Port 445 unter Umständen blockiert. Erfragen Sie dies, falls erforderlich, bei Ihrem Service Provider.
 
@@ -582,7 +582,7 @@ Beachten Sie, dass bei Blob, Table und Queue Storage zwar der gemeinsam genutzte
 
 ## Dateispeicher – Häufig gestellte Fragen
 
-1. **Wird die auf Active Directory basierende Authentifizierung von Dateispeicher unterstützt?** 
+1. **Wird die auf Active Directory basierende Authentifizierung von Dateispeicher unterstützt?**
 
 	Derzeit ist keine Unterstützung für die AD-basierte Authentifizierung oder Zugriffssteuerungslisten (ACLs) vorhanden, aber wir haben es in die Liste mit den angeforderten Features aufgenommen. Vorläufig werden die Azure Storage-Kontoschlüssel für die Authentifizierung gegenüber der Dateifreigabe genutzt. Als Alternative bieten wir die Verwendung von Shared Access Signatures (SAS) über die REST-API oder die Clientbibliotheken an. Mit SAS können Sie Token mit bestimmten Berechtigungen generieren, die für ein bestimmtes Zeitintervall gültig sind. Beispielsweise können Sie ein Token mit Lesezugriff für eine bestimmte Datei generieren. Jeder Benutzer, der dieses Token während des Gültigkeitszeitraums besitzt, hat Lesezugriff auf die Datei.
 
@@ -663,8 +663,8 @@ Weitere Informationen zum Azure-Dateispeicher erhalten Sie über diese Links.
 ### Blogbeiträge
 
 - [Azure-Dateispeicher ist jetzt allgemein verfügbar](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
-- [Azure-Dateispeicher](https://azure.microsoft.com/blog/inside-azure-file-storage/) 
+- [Azure-Dateispeicher](https://azure.microsoft.com/blog/inside-azure-file-storage/)
 - [Einführung in den Microsoft Azure-Dateidienst](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Beibehalten von Verbindungen zu Microsoft Azure-Dateien](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

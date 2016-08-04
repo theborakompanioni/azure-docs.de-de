@@ -142,13 +142,13 @@ Der Code in diesen SDKs wird jeweils über Azure RESTful-API-Spezifikationen gen
 **Beispiele**: Schneller Einstieg mit der Sprache Ihrer Wahl.
 
 - [.NET](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=dotnet)
-- [Java](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=java) *In Kürze verfügbar*
+- [Java](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=java)
 - [Node.js](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=nodejs)
 - [Python](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=python)
 - [PHP](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=php) *In Kürze verfügbar*
 - [Ruby](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=ruby)
 
-**Open-Source-SDK-Repositorys**: Wir freuen uns über Feedback, Hinweise zu Problemen und Pull Requests.
+**Open Source-SDK-Repositorys**: Wir freuen uns über Feedback, Hinweise zu Problemen und Pull Requests.
 
 - [.NET](https://github.com/Azure/azure-sdk-for-net)
 - [Java](https://github.com/Azure/azure-sdk-for-java)
@@ -171,4 +171,4 @@ Hier sehen Sie eine Videodemonstration dieser Übersicht:
 
 [AZURE.VIDEO azure-resource-manager-overview]
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="06/06/2016"
+   ms.date="07/27/2016"
    ms.author="larryfr"/>
 
 #Einführung in Apache Storm in HDInsight: Echtzeitanalysen für Hadoop
@@ -206,6 +206,12 @@ Wenn Ihre Topologie darauf abzielt, einen "Top N"-Wert zu ermitteln, z. B. die T
 
 Ein Beispiel hierfür finden Sie im [RollingTopWords](https://github.com/nathanmarz/storm-starter/blob/master/src/jvm/storm/starter/RollingTopWords.java)-Beispiel.
 
+##Welche Art der Protokollierung verwendet Storm?
+
+Storm verwendet Apache Log4j für die Protokollierung von Informationen. Standardmäßig wird eine große Datenmenge protokolliert, was die Durchsicht der Informationen erschweren kann. Sie können eine Protokollierungskonfigurationsdatei als Teil Ihrer Storm-Topologie hinzufügen, um das Protokollierungsverhalten zu steuern.
+
+Eine Beispieltopologie, die das Konfigurieren der Protokollierung veranschaulicht, finden Sie im [Java-basierten WordCount](hdinsight-storm-develop-java-topology.md)-Beispiel für Storm in HDInsight.
+
 ##Nächste Schritte
 
 Weitere Informationen zu Lösungen für Echtzeitanalysen mit Apache Storm in HDInsight:
@@ -219,4 +225,4 @@ Weitere Informationen zu Lösungen für Echtzeitanalysen mit Apache Storm in HDI
 [apachetutorial]: https://storm.apache.org/documentation/Tutorial.html
 [gettingstarted]: hdinsight-apache-storm-tutorial-get-started-linux.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

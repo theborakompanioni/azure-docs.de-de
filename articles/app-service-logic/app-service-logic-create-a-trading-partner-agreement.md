@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
 	ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
@@ -53,7 +53,7 @@ Die folgenden API-Apps ermöglichen diese Funktionen mithilfe der funktionsreich
 
 
 ## BizTalk X12
-- Richtet X12-Vereinbarungen gemäß der Definition in der zugehörigen TPM-API-App-Instanz ein. 
+- Richtet X12-Vereinbarungen gemäß der Definition in der zugehörigen TPM-API-App-Instanz ein.
 - Stellt X12-Verarbeitungs-/Nachverfolgungsinformationen für die Problembehandlung zur Verfügung.
 - Bietet eine Zustandsverwaltung von Batches (Start und Ende) gemäß der Definition in den X12-Vereinbarungen in der zugehörigen TPM-API-App-Instanz.
 
@@ -79,4 +79,4 @@ So erstellen Sie Handelspartnervereinbarungen:
 [3]: ./media/app-service-logic-create-a-trading-partner-agreement/X12AgreementCreation.png
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0727_2016-->

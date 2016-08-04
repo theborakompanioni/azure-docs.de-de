@@ -152,18 +152,14 @@ Das URI-Schema für den Zugriff auf Dateien im Blobspeicher aus HDInsight ist:
 	wasb[s]://<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>
 
 
-> [AZURE.NOTE] Die Syntax für den Zugriff auf die Dateien im Speicheremulator (ausgeführt im HDInsight-Emulator) lautet <i>wasb://&lt;ContainerName&gt;@storageemulator</i>.
-
-
-
 Das URI-Schema bietet unverschlüsselten Zugriff (mit dem Präfix *wasb:*) wie auch SSL-verschlüsselten Zugriff (mit *wasbs*). Wir empfehlen die Verwendung von *wasbs*, und zwar auch für den Zugriff auf Daten, die sich in Azure in derselben Region befinden.
 
 &lt;BlobStorageContainerName&gt; ist der Name des Containers im Azure-Blobspeicher. &lt;StorageAccountName&gt; ist der Name des Azure-Speicherkontos. Ein vollqualifizierter Domänenname (FQDN) ist erforderlich.
 
 Wenn weder &lt;BlobStorageContainerName&gt; noch &lt;StorageAccountName&gt; angegeben ist, wird das Standarddateisystem verwendet. Für die Dateien im Standarddateisystem können Sie relative oder absolute Pfade verwenden. Auf die Datei *hadoop-mapreduce-examples.jar*, die sich in HDInsight-Clustern befindet, kann z. B. mit einem der folgenden Befehle verwiesen werden:
 
-	wasb://mycontainer@myaccount.blob.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
-	wasb:///example/jars/hadoop-mapreduce-examples.jar
+	wasbs://mycontainer@myaccount.blob.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
+	wasbs:///example/jars/hadoop-mapreduce-examples.jar
 	/example/jars/hadoop-mapreduce-examples.jar
 
 > [AZURE.NOTE] In HDInsight-Clustern der Version 2.1 und 1.6 lautet der Dateiname <i>hadoop-examples.jar</i>.
@@ -272,7 +268,7 @@ Dieses Beispiel zeigt, wie der Inhalt des Ordners eines Speicherkontos aufgelist
 	$defines = @{}
 	$defines.Add("fs.azure.account.key.$undefinedStorageAccount.blob.core.windows.net", $undefinedStorageKey)
 
-	Invoke-AzureRmHDInsightHiveJob -Defines $defines -Query "dfs -ls wasb://$undefinedContainer@$undefinedStorageAccount.blob.core.windows.net/;"
+	Invoke-AzureRmHDInsightHiveJob -Defines $defines -Query "dfs -ls wasbs://$undefinedContainer@$undefinedStorageAccount.blob.core.windows.net/;"
 
 ## Nächste Schritte
 
@@ -301,4 +297,4 @@ Weitere Informationen finden Sie unter:
 [img-hdi-quick-create]: ./media/hdinsight-hadoop-use-blob-storage/HDI.QuickCreateCluster.png
 [img-hdi-custom-create-storage-account]: ./media/hdinsight-hadoop-use-blob-storage/HDI.CustomCreateStorageAccount.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

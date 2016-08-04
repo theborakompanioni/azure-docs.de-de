@@ -8,7 +8,7 @@
 	editor=""/>
 
 <tags 
-	ms.service="app-service-logic" 
+	ms.service="logic-apps" 
 	ms.workload="integration" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
@@ -50,4 +50,4 @@ Geschäftsregeln umfassen die Richtlinien und Entscheidungen, welche Geschäftsp
 Eine vollständige Liste der Connectors und API-Apps, die in den einzelnen Kategorien wie den Standardconnectors, BizTalk-EAI, Premiumconnectors usw. enthalten sind, finden Sie unter [Liste mit Connectors und API-Apps](app-service-logic-connectors-list.md).
  
 
-<!----HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0727_2016-->
