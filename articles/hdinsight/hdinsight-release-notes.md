@@ -99,7 +99,7 @@ Die vollständigen Versionsnummern für mit dieser Version bereitgestellte HDIns
 * HDInsight (Linux) 3.2.1000.0.7339916 (HDP 2.2.9.1-10)
 * HDInsight (Linux) 3.3.1000.0.7339916 (HDP 2.3.3.1-16)
 * HDInsight (Linux) 3.4.1000.0.7338911 (HDP 2.4.1.1-3)
-* SDK 1.5.8
+* SDK			1.5.8
 
 Diese Version enthält die folgenden Updates.
 
@@ -1632,4 +1632,4 @@ Versionshinweise zu den HDPs (Hortonworks Data Platforms), die von den Versionen
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!-----HONumber=AcomDC_0720_2016-->
