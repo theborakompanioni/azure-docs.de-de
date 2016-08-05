@@ -28,12 +28,14 @@ Die Auswahl der richtigen Konsistenzebene richtet sich nach der Semantik Ihrer A
 ### So legen Sie die Standardkonsistenz für ein DocumentDB-Konto fest
 
 1. Greifen Sie im [Azure-Portal](https://portal.azure.com/) auf Ihr DocumentDB-Konto zu.
-2. Falls auf dem Blatt „Konto“ das Blatt **Einstellungen** nicht bereits geöffnet ist, klicken Sie auf **Alle Einstellungen**. ![Standardkonsistenz - Sitzung][5]
+2. Falls auf dem Blatt „Konto“ das Blatt **Einstellungen** nicht bereits geöffnet ist, klicken Sie auf **Alle Einstellungen**.
+![Standardkonsistenz - Sitzung][5]
 
-3. Klicken Sie auf dem Blatt **Alle Einstellungen** auf den Eintrag **Standardkonsistenz** unter **Feature**. ![Standardkonsistenz - Sitzung][6]
+3. Klicken Sie auf dem Blatt **Alle Einstellungen** auf den Eintrag **Standardkonsistenz** unter **Feature**.
+    ![Standardkonsistenz - Sitzung][6]
 
-4. Wählen Sie im Blatt **Standardkonsistenz** die neue Konsistenzebene aus und klicken Sie auf **Speichern**.
-5. Sie können den Fortschritt des Vorgangs im Notification Hub des Azure-Portals überwachen.
+4. Wählen Sie im Blatt **Standardkonsistenz** die neue Konsistenzebene aus und klicken Sie auf **Speichern**.
+5. Sie können den Fortschritt des Vorgangs im Notification Hub des Azure-Portals überwachen.
 
 > [AZURE.NOTE] Beachten Sie, dass es einige Minuten dauern kann, bis sich die Änderung der Standardkonsistenz auf Ihr DocumentDB-Konto auswirkt.
 

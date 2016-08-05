@@ -120,7 +120,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden in Azure AD im 
  
     a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei Ihrer CloudPassage-Anwendung verwenden (Beispiel: *https://portal.cloudpassage.com/saml/init/accountid*).
 
-    b. Geben Sie im Textfeld **Antwort-URL** Ihre AssertionConsumerService-URL ein (Beispiel: *https://portal.cloudpassage.com/saml/consume/accountid*). Sie können Ihren Wert für dieses Attribut abrufen, indem Sie auf die **Dokumentation der SSO-Einrichtung** im Abschnitt mit den **Einstellungen für einmaliges Anmelden* Ihres CloudPassage-Portals klicken. ![Einmaliges Anmelden konfigurieren][10]
+    b. Geben Sie im Textfeld **Antwort-URL** Ihre AssertionConsumerService-URL ein (Beispiel: *https://portal.cloudpassage.com/saml/consume/accountid*). Sie können Ihren Wert für dieses Attribut abrufen, indem Sie auf die **Dokumentation der SSO-Einrichtung** im Abschnitt mit den **Einstellungen für einmaliges Anmelden** Ihres CloudPassage-Portals klicken. ![Einmaliges Anmelden konfigurieren][10]
 
     C. Klicken Sie auf **Weiter**.
 
