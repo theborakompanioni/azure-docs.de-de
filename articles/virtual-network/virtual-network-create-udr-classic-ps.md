@@ -110,4 +110,4 @@ Führen Sie zum Aktivieren der IP-Weiterleitung auf dem virtuellen Computer "FW1
 		Get-AzureVM -Name FW1 -ServiceName TestRGFW `
 			| Set-AzureIPForwarding -Enable
 
-<!---HONumber=AcomDC_0720_2016--->
+<!----HONumber=AcomDC_0720_2016--->
