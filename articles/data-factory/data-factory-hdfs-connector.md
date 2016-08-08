@@ -126,7 +126,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 	                    "value": {
 	                        "type": "DateTime",
 	                        "date": "SliceStart",
-	                        "format": "%M"
+	                        "format": "MM"
 	                    }
 	                },
 	                {
@@ -134,7 +134,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 	                    "value": {
 	                        "type": "DateTime",
 	                        "date": "SliceStart",
-	                        "format": "%d"
+	                        "format": "dd"
 	                    }
 	                },
 	                {
@@ -142,7 +142,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 	                    "value": {
 	                        "type": "DateTime",
 	                        "date": "SliceStart",
-	                        "format": "%H"
+	                        "format": "HH"
 	                    }
 	                }
 	            ]
@@ -261,9 +261,9 @@ Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset un
 Eigenschaft | Beschreibung | Erforderlich
 -------- | ----------- | --------
 folderPath | Pfad zum Ordner. Beispiel: myfolder<br/><br/>Verwenden Sie für Sonderzeichen in der Zeichenfolge das Escapezeichen "\". Geben Sie für "folder\\subfolder" z. B. "folder\\\subfolder" und für "d:\\samplefolder" die Syntax "d:\\\samplefolder" an.<br/><br/>Sie können dies mit **partitionBy** kombinieren, damit Ordnerpfade auf der Datum-/Uhrzeitangabe für Anfangs- und Endwert von Slices basieren. | Ja
-fileName | Geben Sie den Namen der Datei in **folderPath** an, wenn die Tabelle auf eine bestimmte Datei im Ordner verweisen soll. Wenn Sie keine Werte für diese Eigenschaft angeben, verweist die Tabelle auf alle Dateien im Ordner.<br/><br/>Wenn "fileName" für ein Ausgabedataset nicht angegeben wird, hat der Name der generierten Datei das folgende Format: <br/><br/>Data.<Guid>.txt (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) | Nein
+fileName | Geben Sie den Namen der Datei in **folderPath** an, wenn die Tabelle auf eine bestimmte Datei im Ordner verweisen soll. Wenn Sie keine Werte für diese Eigenschaft angeben, verweist die Tabelle auf alle Dateien im Ordner.<br/><br/>Wenn fileName für ein Ausgabedataset nicht angegeben ist, hat der Name der generierten Datei das folgende Format: <br/><br/>Data.<GUID>.txt (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) | Nein
 partitionedBy | "partitionedBy" kann genutzt werden, um einen dynamischen Wert für "folderPath" oder "filename" für Zeitreihendaten anzugeben. Beispiel: "folderPath" als Parameter für jedes Stunde mit Daten. | Nein
-fileFilter | Geben Sie einen Filter zur Auswahl einer Teilmenge der Dateien in "folderPath" statt alle Dateien an. <br/><br/>Zulässige Werte sind: * (mehrere Zeichen) und ? (einzelnes Zeichen).<br/><br/>Beispiel 1: "fileFilter": "*.log"<br/>Beispiel 2: "fileFilter": 2014-1-?.txt"<br/><br/>** Hinweis**: "fileFilter" eignet sich für ein Eingabedataset des Typs "FileShare". | Nein
+fileFilter | Geben Sie einen Filter zur Auswahl einer Teilmenge der Dateien in "folderPath" statt alle Dateien an. <br/><br/>Zulässige Werte: * (mehrere Zeichen) und ? (einzelnes Zeichen).<br/><br/>Beispiel 1: „fileFilter“: „*.log“<br/>Beispiel 2: „fileFilter“: „2014-1-?.txt“<br/><br/>**Hinweis:** fileFilter eignet sich für ein FileShare-Eingabedataset. | Nein
 | Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Folgende Typen werden unterstützt: **GZip**, **Deflate** und **BZip2**. Folgende Komprimierungsgrade werden unterstützt: **Optimal** und **Schnellste**. Beachten Sie, dass für Daten im **AvroFormat** oder **OrcFormat** derzeit keine Komprimierungseinstellungen unterstützt werden. Weitere Einzelheiten finden Sie im Abschnitt [Komprimierungsunterstützung](#compression-support). | Nein |
 | Format | Die folgenden Formattypen werden unterstützt: **TextFormat**, **AvroFormat**, **JsonFormat**, **OrcFormat**. Sie müssen die **type**-Eigenschaft unter „Format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Angeben von TextFormat](#specifying-textformat), [Angeben von AvroFormat](#specifying-avroformat), [Angeben von JsonFormat](#specifying-jsonformat) und [Angeben von OrcFormat](#specifying-orcformat). Wenn Sie Dateien unverändert zwischen dateibasierten Speichern kopieren möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen. | Nein 
 
@@ -325,4 +325,4 @@ Wenn die Quelle bei der Kopieraktivität vom Typ **FileSystemSource** ist, sind 
 ## Leistung und Optimierung  
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -1,6 +1,6 @@
 <properties
  pageTitle="IoT Hub-Lösung – Anleitung | Microsoft Azure"
- description="Themen mit Anleitungen zu Gateways, zur Gerätebereitstellung und zur Authentifizierung für die Entwicklung von IoT-Lösungen mithilfe von Azure IoT Hub."
+ description="Themen mit Anleitungen zu Gateways, zur Gerätebereitstellung und zur Authentifizierung für die Entwicklung von IoT-Lösungen mithilfe von Azure IoT Hub."
  services="iot-hub"
  documentationCenter=""
  authors="dominicbetts"
@@ -27,7 +27,7 @@ Dieser Artikel enthält Anleitungen zum Entwerfen der folgenden Funktionen in de
 
 ## Gerätebereitstellung
 
-IoT-Lösungen speichern Daten zu einzelnen Geräten wie z. B.:
+IoT-Lösungen speichern Daten zu einzelnen Geräten wie z. B.:
 
 - Geräteidentität und Authentifizierungsschlüssel
 - Typ und Version der Gerätehardware
@@ -35,17 +35,17 @@ IoT-Lösungen speichern Daten zu einzelnen Geräten wie z. B.:
 - Softwareversionen und -funktionen
 - Befehlsverlauf des Geräts
 
-Die Gerätedaten, die von einer bestimmten IoT-Lösung gespeichert werden, richten sich nach den jeweiligen Anforderungen der Lösung. Von einer Lösung müssen aber mindestens die Geräteidentitäten und Authentifizierungsschlüssel gespeichert werden. Azure IoT Hub enthält eine [Identitätsregistrierung][lnk-devguide-identityregistry], die Werte für jedes Gerät speichern kann, z. B. IDs, Authentifizierungsschlüssel und Statuscodes. Eine Lösung kann andere Azure-Dienste wie Tabellen, Blobs oder Azure DocumentDB nutzen, um zusätzliche Gerätedaten zu speichern.
+Die Gerätedaten, die von einer bestimmten IoT-Lösung gespeichert werden, richten sich nach den jeweiligen Anforderungen der Lösung. Von einer Lösung müssen aber mindestens die Geräteidentitäten und Authentifizierungsschlüssel gespeichert werden. Azure IoT Hub enthält eine [Identitätsregistrierung][lnk-devguide-identityregistry], die Werte für jedes Gerät speichern kann, z. B. IDs, Authentifizierungsschlüssel und Statuscodes. Eine Lösung kann andere Azure-Dienste wie Tabellen, Blobs oder Azure DocumentDB nutzen, um zusätzliche Gerätedaten zu speichern.
 
-Die *Gerätebereitstellung* ist der Prozess des Hinzufügens der ersten Gerätedaten zu den Speichern in Ihrer Lösung. Damit ein neues Gerät eine Verbindung mit Ihrem Hub herstellen kann, müssen Sie der [IoT Hub-Identitätsregistrierung][lnk-devguide-identityregistry] eine neue Geräte-ID und Schlüssel hinzufügen. Im Rahmen des Bereitstellungsprozesses müssen Sie unter Umständen gerätespezifische Daten in anderen Lösungsspeichern initialisieren.
+Die *Gerätebereitstellung* ist der Prozess des Hinzufügens der ersten Gerätedaten zu den Speichern in Ihrer Lösung. Damit ein neues Gerät eine Verbindung mit Ihrem Hub herstellen kann, müssen Sie der [IoT Hub-Identitätsregistrierung][lnk-devguide-identityregistry] eine neue Geräte-ID und Schlüssel hinzufügen. Im Rahmen des Bereitstellungsprozesses müssen Sie unter Umständen gerätespezifische Daten in anderen Lösungsspeichern initialisieren.
 
-Mit den [IoT Hub-Identitätsregistrierungs-APIs][lnk-devguide-identityregistry] können Sie IoT Hub in Ihren Bereitstellungsprozess integrieren.
+Mit den [IoT Hub-Identitätsregistrierungs-APIs][lnk-devguide-identityregistry] können Sie IoT Hub in Ihren Bereitstellungsprozess integrieren.
 
 ## Bereichsgateways
 
 Bei einer IoT-Lösung ist zwischen Ihren Geräten und Ihrem IoT Hub ein *Bereichsgateway* angeordnet. Es befindet sich normalerweise in der Nähe Ihrer Geräte. Ihre Geräte kommunizieren direkt mit dem Bereichsgateway, indem sie ein von den Geräten unterstütztes Protokoll nutzen. Das Bereichsgateway kommuniziert mit IoT Hub über ein Protokoll, das von IoT Hub unterstützt wird. Bei einem Bereichsgateway kann es sich um hochspezialisierte Hardware oder einen Computer mit niedriger Leistung handeln, auf dem Software für das End-to-End-Szenario ausgeführt wird, für das das Gateway vorgesehen ist.
 
-Ein Bereichsgateway unterscheidet sich von einem einfachen Gerät für das Routing von Datenverkehr (z. B. einem Gerät für die Netzwerkadressübersetzung (NAT) oder einer Firewall), da es üblicherweise eine aktive Rolle bei der Verwaltung des Zugriffs und des Informationsflusses in der Lösung hat. Beispielsweise kann ein Bereichsgateway folgende Aufgaben ausführen:
+Ein Bereichsgateway unterscheidet sich von einem einfachen Gerät für das Routing von Datenverkehr (z. B. einem Gerät für die Netzwerkadressübersetzung (NAT) oder einer Firewall), da es üblicherweise eine aktive Rolle bei der Verwaltung des Zugriffs und des Informationsflusses in der Lösung hat. Beispielsweise kann ein Bereichsgateway folgende Aufgaben ausführen:
 
 - **Hinzufügen von Unterstützung für neue und ältere Geräte**: Es gibt Millionen von neuen und älteren Sensoren und Stellantrieben, die Daten nicht direkt in die Cloud senden können. Diese Geräte verwenden entweder ein nicht internetfähiges Protokoll, implementieren keine Verschlüsselung oder können keine Identitätszertifikate speichern. Die Verwendung eines Gateways verringert den Aufwand und die Kosten für die Verbindung dieser Geräte.
 - **Ausführen von Edgeanalysen**: Es gibt viele Vorgänge, die lokal ausgeführt werden können, um die Menge an Daten zu reduzieren, die mit der Cloud ausgetauscht werden. Hierzu gehören beispielsweise die Filterung, Batchverarbeitung und Komprimierung von Daten. Es kann auch wünschenswert sein, einige Berechnungen wie etwa Datenbereinigung oder die Bewertung eines Machine Learning-Modells mit Echtzeitdaten lokal auszuführen.
@@ -77,7 +77,7 @@ Dies sind die wichtigsten Schritte des Tokendienstmusters:
 
 Der Tokendienst kann die Gültigkeitsdauer für das Token wie gewünscht festlegen. Wenn das Token abläuft, trennt IoT Hub die Geräteverbindung. Das Gerät muss dann ein neues Token vom Tokendienst anfordern. Wenn Sie eine kurze Ablaufzeit verwenden, erhöht sich die Last für das Gerät und den Tokendienst gleichermaßen.
 
-Damit ein Gerät eine Verbindung mit Ihrem Hub herstellen kann, müssen Sie es der IoT Hub-Geräteidentitätsregistrierung hinzufügen – auch wenn das Gerät für die Verbindung ein Token und keinen Geräteschlüssel verwendet. Aus diesem Grund können Sie weiterhin die Zugriffssteuerung pro Gerät nutzen, indem Sie Geräteidentitäten in der [IoT Hub-Identitätsregistrierung][lnk-devguide-identityregistry] aktivieren oder deaktivieren, wenn sich das Gerät mit einem Token authentifiziert. Dies verringert die Risiken der Verwendung von Token mit langen Ablaufzeiten.
+Damit ein Gerät eine Verbindung mit Ihrem Hub herstellen kann, müssen Sie es der IoT Hub-Geräteidentitätsregistrierung hinzufügen – auch wenn das Gerät für die Verbindung ein Token und keinen Geräteschlüssel verwendet. Aus diesem Grund können Sie weiterhin die Zugriffssteuerung pro Gerät nutzen, indem Sie Geräteidentitäten in der [IoT Hub-Identitätsregistrierung][lnk-devguide-identityregistry] aktivieren oder deaktivieren, wenn sich das Gerät mit einem Token authentifiziert. Dies verringert die Risiken der Verwendung von Token mit langen Ablaufzeiten.
 
 ### Vergleich mit einem benutzerdefinierten Gateway
 
@@ -87,7 +87,7 @@ Das Tokendienstmuster ist der empfohlene Weg zur Implementierung einer benutzerd
 
 Die [IoT Hub-Identitätsregistrierung][lnk-devguide-identityregistry] enthält das Feld **connectionState**. Sie sollten das Feld **connectionState** nur während der Entwicklung und des Debuggens verwenden. IoT-Lösungen sollten das Feld zur Laufzeit nicht abfragen (um beispielsweise eine Geräteverbindung zu prüfen und dann zu bestimmen, ob eine C2D-Nachricht oder eine SMS gesendet werden soll). Wenn Ihre IoT-Lösung wissen muss, ob ein Gerät verbunden ist (entweder zur Laufzeit oder mit höherer Genauigkeit als von der **connectionState**-Eigenschaft bereitgestellt), sollte Ihre Lösung das *Taktmuster* implementieren.
 
-Beim Taktmuster sendet das Gerät D2C-Nachrichten mindestens einmal pro festgelegtem Zeitraum (z. B. mindestens einmal pro Stunde). Dies bedeutet, dass selbst wenn ein Gerät keine zu sendenden Daten hat, es dennoch eine leere D2C-Nachricht sendet (in der Regel mit einer Eigenschaft, die sie als Takt identifiziert). Auf Dienstseite verwaltet die Lösung eine Zuordnung mit dem letzten für jedes Gerät empfangenen Takts und nimmt an, dass es ein Problem mit einem Gerät gibt, wenn es innerhalb des erwarteten Zeitraums keine Taktnachricht empfängt.
+Beim Taktmuster sendet das Gerät D2C-Nachrichten mindestens einmal pro festgelegtem Zeitraum (z. B. mindestens einmal pro Stunde). Dies bedeutet, dass selbst wenn ein Gerät keine zu sendenden Daten hat, es dennoch eine leere D2C-Nachricht sendet (in der Regel mit einer Eigenschaft, die sie als Takt identifiziert). Auf Dienstseite verwaltet die Lösung eine Zuordnung mit dem letzten für jedes Gerät empfangenen Takts und nimmt an, dass es ein Problem mit einem Gerät gibt, wenn es innerhalb des erwarteten Zeitraums keine Taktnachricht empfängt.
 
 Eine komplexere Implementierung kann die Informationen aus der [Vorgangsüberwachung][lnk-devguide-opmon] enthalten, um Geräte zu ermitteln, die erfolglos versuchen, eine Verbindung herzustellen oder zu kommunizieren. Wenn Sie das Taktmuster implementieren, sollten Sie die [IoT Hub-Kontingente und -Drosselungen][] überprüfen.
 
@@ -109,6 +109,7 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 - [Erkunden der Geräteverwaltung mithilfe der Beispielbenutzeroberfläche][lnk-dmui]
 - [Simulieren eines Geräts mit dem Gateway SDK][lnk-gateway]
 - [Verwenden des Azure-Portals zur Verwaltung von IoT Hub][lnk-portal-manage]
+- [Schützen Ihrer IoT-Lösung von Grund auf][lnk-securing]
 
 [img-tokenservice]: ./media/iot-hub-guidance/tokenservice.png
 
@@ -135,5 +136,6 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal-manage]: iot-hub-manage-through-portal.md
 [lnk-sas-token]: iot-hub-sas-tokens.md
+[lnk-securing]: iot-hub-security-ground-up.md
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

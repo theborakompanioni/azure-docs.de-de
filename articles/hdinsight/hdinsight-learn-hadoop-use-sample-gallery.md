@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="04/27/2016"
+   ms.date="07/25/2016"
    ms.author="jgao"/>
 
 # Kennenlernen von Hadoop mithilfe der Azure HDInsight-Galerie für erste Schritte
@@ -36,7 +36,7 @@ Das folgende Video zeigt, wie das Beispiel zur Twitter-Trendanalyse ausgeführt 
 
 <center><a href="https://www.youtube.com/embed/7ePbHot1SN4">https://www.youtube.com/embed/7ePbHot1SN4></a></center>
 
-Zugriff auf das Dashboard ist über http://<YourHDInsightClusterName>.azurehdinsight.net/ oder das Azure-Portal möglich.
+Zugriff auf das Dashboard ist über „http://<Name\_Ihres-HDInsight-Clusters>.azurehdinsight.net/“ oder das Azure-Portal möglich.
 
 **So führen Sie ein Beispiel aus der Galerie für erste Schritte aus**
 
@@ -64,4 +64,4 @@ Andere Möglichkeiten zum Kennenlernen von HDInsight:
 [hdinsight.infographic]: http://go.microsoft.com/fwlink/?linkid=523960
 [azure.portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

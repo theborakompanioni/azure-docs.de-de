@@ -136,7 +136,7 @@ Hive eignet sich besonders für die Arbeit mit Daten in HDInsight. Mitunter wird
 
 2. Sobald Sie bei der Eingabeaufforderung `jdbc:hive2://localhost:10001/>` ankommen, geben Sie Folgendes ein, um die UDF zu Hive hinzuzufügen und sie als Funktion verfügbar zu machen.
 
-        ADD JAR wasb:///example/jar/ExampleUDF-1.0-SNAPSHOT.jar;
+        ADD JAR wasbs:///example/jar/ExampleUDF-1.0-SNAPSHOT.jar;
         CREATE TEMPORARY FUNCTION tolower as 'com.microsoft.examples.ExampleUDF';
 
 3. Verwenden Sie die UDF, um aus einer Tabelle abgerufene Werte in Zeichenfolgen mit Kleinbuchstaben zu konvertieren.
@@ -166,4 +166,4 @@ Andere Möglichkeiten zum Arbeiten mit Hive finden Sie unter [Verwenden von Hive
 
 Weitere Informationen zu benutzerdefinierten Hive-Funktionen finden Sie im Abschnitt [Hive Operators and User-Defined Functions](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) (Hive-Operatoren und benutzerdefinierte Funktionen) des Hive-Wikis unter apache.org.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

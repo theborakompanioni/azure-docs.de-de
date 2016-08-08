@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/05/2016"
+	ms.date="07/21/2016"
 	ms.author="glenga"/>
 
 # Erstellen eines mobilen .NET-Back-End-Diensts, der den Tabellenspeicher verwendet
@@ -103,7 +103,7 @@ Da das TodoList-Schnellstartprojekt für die Ausführung mit einer SQL-Datenbank
             return DomainManager.QueryAsync(options);
         }
 
-	Im Gegensatz zu einer SQL-Datenbank gibt diese Version nicht IQueryable<TEntity> zurück. Daher kann das Ergebnis an eine Abfrage gebunden, jedoch nicht in eine weitere Abfrage eingefügt werden.
+	Im Gegensatz zu einer SQL-Datenbank gibt diese Version nicht IQueryable<TEntity> zurück. Daher kann das Ergebnis an eine Abfrage gebunden, aber nicht weiter zusammengestellt werden.
 
 ## Aktualisieren der Client-App
 
@@ -156,4 +156,4 @@ Da Sie jetzt gesehen haben, wie einfach sich der Tabellenspeicher mit dem .NET B
 [What is the Table Service]: ../storage-dotnet-how-to-use-tables.md#what-is
 [MongoLab Add-on Page]: /gallery/store/mongolab/mongolab
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0727_2016-->

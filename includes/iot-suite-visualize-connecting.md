@@ -8,7 +8,7 @@ Das Dashboard in der Remoteüberwachungslösung ermöglicht Ihnen das Anzeigen d
 
     ![][18]
 
-3. Klicken Sie auf **Dashboard**, um zu diesem zurückzukehren. Wählen Sie Ihr Gerät in der Dropdownliste **Anzuzeigendes Gerät** aus, um seine Telemetrie anzuzeigen. Die Telemetrie der Beispielanwendung ist mit 50 Einheiten für die Innentemperatur, 55 Einheiten für die Außentemperatur und 50 Einheiten für die Luftfeuchtigkeit konfiguriert. Bitte beachten Sie, dass im Dashboard standardmäßig nur die Werte für Temperatur und die Luftfeuchtigkeit angezeigt werden.
+3. Klicken Sie auf **Dashboard**, um zu diesem zurückzukehren. Wählen Sie Ihr Gerät in der Dropdownliste **Anzuzeigendes Gerät** aus, um seine Telemetrie anzuzeigen. Die Telemetrie der Beispielanwendung ist mit 50 Einheiten für die Innentemperatur, 55 Einheiten für die Außentemperatur und 50 Einheiten für die Luftfeuchtigkeit konfiguriert. Bitte beachten Sie, dass im Dashboard standardmäßig nur die Werte für Temperatur und die Luftfeuchtigkeit angezeigt werden.
 
     ![][img-telemetry]
 
@@ -36,10 +36,13 @@ Das Dashboard in der Remoteüberwachungslösung ermöglicht es Ihnen, über IoT 
 
 Der Artikel [Anpassen vorkonfigurierter Lösungen][lnk-customize] beschreibt einige Möglichkeiten zum Erweitern dieses Beispiels. Mögliche Erweiterungen umfassen die Verwendung echter Sensoren und die Implementierung zusätzlicher Befehle.
 
+Weitere Informationen finden Sie unter [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions].
+
 [13]: ./media/iot-suite-visualize-connecting/suite4.png
 [14]: ./media/iot-suite-visualize-connecting/suite7-1.png
 [18]: ./media/iot-suite-visualize-connecting/suite10.png
 [img-telemetry]: ./media/iot-suite-visualize-connecting/telemetry.png
 [lnk-customize]: ../articles/iot-suite/iot-suite-guidance-on-customizing-preconfigured-solutions.md
+[lnk-permissions]: ../articles/iot-suite/iot-suite-permissions.md
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -95,7 +95,7 @@ Verwenden wir jetzt Geschäftsregeln zum Implementieren dieser Geschäftslogik.
 2. Wählen Sie „Neu“ -> „Marketplace“ aus, und suchen Sie dann nach *BizTalk Rules*.
 3. Wählen Sie „BizTalk Rules“ in der Ergebnisliste aus. Das Blatt „BizTalk Rules“ wird geöffnet.
 4. Wählen Sie die Schaltfläche *Erstellen* ![Alt text][3].
-1. Geben Sie auf dem neuen Blatt, das geöffnet wird, Folgendes ein:  
+1. Geben Sie auf dem neuen Blatt, das geöffnet wird, Folgendes ein:
 	1. Name – Geben Sie einen Namen für die Regel-API-App ein.
 	1. App Service-Plan – Wählen Sie einen App Service-Plan aus, oder erstellen Sie einen neuen.
 	1. Preisstufe – Wählen Sie die Preisstufe, der diese App angehören soll.
@@ -108,12 +108,12 @@ Verwenden wir jetzt Geschäftsregeln zum Implementieren dieser Geschäftslogik.
 Nach dem Erstellen einer BizTalk-Regel-API-App besteht der nächste Schritt im Erstellen von Vokabularen. Diese Übung wird erwartungsgemäß eher vom Entwickler durchgeführt. Dazu müssen folgende Schritte ausgeführt werden:
 
 
-1. Starten Sie die BizTalk-Regel-API-App über das Portal, indem Sie „Durchsuchen“ -> „API-Apps“ -> <Your Rules API App> öffnen. Das Dashboard der Regel-API-App wird angezeigt und sieht etwa folgendermaßen aus:
+1. Starten Sie die BizTalk-Regel-API-App über das Portal, indem Sie „Durchsuchen“ -> „API-Apps“ -> <Ihre Regel-API-App> öffnen. Das Dashboard der Regel-API-App wird angezeigt und sieht etwa folgendermaßen aus:
 
    ![Alt text][4]
 
-2\. Wählen Sie „Vocabulary definitions“ aus. Der Bildschirm zum Verfassen des Vokabulars wird angezeigt.  
-3\. Wählen Sie „Hinzufügen“ aus, um neue Vokabulardefinitionen hinzuzufügen. Derzeit werden zwei Arten von Vokabulardefinitionen unterstützt – literal und XML.
+2\. Wählen Sie „Vocabulary definitions“ aus. Der Bildschirm zum Verfassen des Vokabulars wird angezeigt. 
+3. Wählen Sie „Hinzufügen“ aus, um neue Vokabulardefinitionen hinzuzufügen. Derzeit werden zwei Arten von Vokabulardefinitionen unterstützt – literal und XML.
 
 ##Literale Definition
 1.	Nach dem Klicken auf "Hinzufügen" wird ein neues Blatt "Definition hinzufügen" geöffnet. Geben Sie die folgenden Werte ein:
@@ -122,18 +122,18 @@ Nach dem Erstellen einer BizTalk-Regel-API-App besteht der nächste Schritt im E
   3.	Definitionstyp – Es werden 2 Typen unterstützt. Wählen Sie in diesem Beispiel "Literal".
   4.	Datentyp – Ermöglicht Benutzern das Auswählen des Datentyps der Definition. Derzeit werden 4 Datentypen unterstützt: 
   	i. String – Diese Werte müssen in doppelte Anführungszeichen (“Beispielzeichenfolge”) eingeschlossen werden. 
- 	 ii. Boolean – Kann entweder "true" oder "false" sein. 
-  	iii. Number – Kann jede Dezimalzahl sein. 
- 	 iv. DateTime – Die Definition ist vom Typ Datum/Uhrzeit. Daten müssen in diesem Format eingegeben werden: mm/tt/jjjj hh:mm:ss AM\\PM.  
+	ii. Boolean – Kann entweder "true" oder "false" sein. 
+	iii. Number – Kann jede Dezimalzahl sein. 
+	iv. DateTime – Die Definition ist vom Typ Datum/Uhrzeit. Daten müssen in diesem Format eingegeben werden: mm/tt/jjjj hh:mm:ss AM\\PM.
   5. Input – Hier geben Sie den Wert Ihrer Definition ein. Die hier eingegebenen Werte müssen dem ausgewählten Datentyp entsprechen. Sie können einen einzelnen Wert, einen durch Kommas getrennten Satz von Werten oder einen Bereich von Werten mit dem Schlüsselwort *to* eingeben. Beispielsweise können Sie den eindeutigen Wert 1, den Satz 1, 2, 3 oder einen Bereich von 1 bis 5 angeben. Beachten Sie, dass Bereiche nur für Zahlen unterstützt werden.
   6. Klicken Sie auf *OK*.
 
 ![Alt text][5]
 ##XML-Definition
-Wenn als Vokabulartyp XML ausgewählt wird, muss folgende Eingabe bereitgestellt werden:  
-  a. 	Schema – Durch Klicken auf diese Option wird ein neues Blatt geöffnet, in dem der Benutzer entweder aus einer Liste bereits hochgeladener Schemas auswählen oder ein neues Schema hochladen kann.  
-  b. 	XPATH – Diese Eingabe wird erst freigegeben, wenn Sie im vorherigen Schritt ein Schema ausgewählt haben. Durch Klicken auf diese Option wird das ausgewählte Schema angezeigt. Der Benutzer kann den Knoten auswählen, für den eine Vokabulardefinition erstellt werden soll.  
-  c. 	FACT – Diese Eingabe legt fest, welches Datenobjekt dem Regelmodul zur Verarbeitung vorgelegt wird. Dies ist eine erweiterte Eigenschaft, die standardmäßig auf das übergeordnete Element des ausgewählten XPATH festgelegt ist. FACT ist für die Verkettung und Auflistung von Szenarien besonders wichtig.
+Wenn als Vokabulartyp XML ausgewählt wird, muss folgende Eingabe bereitgestellt werden: 
+  a. Schema – Durch Klicken auf diese Option wird ein neues Blatt geöffnet, in dem der Benutzer entweder aus einer Liste bereits hochgeladener Schemas auswählen oder ein neues Schema hochladen kann.  
+    b. XPATH – Diese Eingabe wird erst freigegeben, wenn Sie im vorherigen Schritt ein Schema ausgewählt haben. Durch Klicken auf diese Option wird das ausgewählte Schema angezeigt. Der Benutzer kann den Knoten auswählen, für den eine Vokabulardefinition erstellt werden soll.  
+    c. FACT – Diese Eingabe legt fest, welches Datenobjekt dem Regelmodul zur Verarbeitung vorgelegt wird. Dies ist eine erweiterte Eigenschaft, die standardmäßig auf das übergeordnete Element des ausgewählten XPATH festgelegt ist. FACT ist für die Verkettung und Auflistung von Szenarien besonders wichtig.
 
 ![Alt text][6]
 
@@ -156,37 +156,37 @@ Nachdem der Entwickler die erforderlichen Vokabulare erstellt hat, ist der Busin
 ##Regelerstellung
 Eine Regel ist eine Auflistung von Bedingungs- und Aktionsanweisungen. Die Aktionen werden ausgeführt, wenn die Bedingung als wahr („true“) ausgewertet wird. Geben Sie auf dem Blatt zur Regelerstellung einen eindeutigen Regelnamen (für diese Richtlinie) und eine Beschreibung (optional) ein. 
 Das Bedingungsfeld („IF“) kann zum Erstellen komplexer Bedingungsanweisungen verwendet werden. Folgende Schlüsselwörter werden unterstützt:
-1. 	Und – bedingter Operator  
-2. 	Oder – bedingter Operator  
-3. 	does\_not\_exist  
-4. 	exists  
-5. 	false  
-6. 	is\_equal\_to  
-7. 	is\_greater\_than  
-8. 	is\_greater\_than\_equal\_to  
-9. 	is\_in  
-10. is\_less\_than  
-11. is\_less\_than\_equal\_to  
-12. is\_not\_in  
-13. is\_not\_equal\_to  
-14. mod  
-15. true  
+1. 	Und – bedingter Operator
+2. 	Oder – bedingter Operator
+3. 	does\_not\_exist
+4. 	exists
+5. 	false
+6. 	is\_equal\_to
+7. 	is\_greater\_than
+8. 	is\_greater\_than\_equal\_to
+9. 	is\_in
+10. is\_less\_than
+11. is\_less\_than\_equal\_to
+12. is\_not\_in
+13. is\_not\_equal\_to
+14. mod
+15. true
 
 Das Aktionsfeld („THEN“) kann mehrere Anweisungen enthalten, eine pro Zeile, um Aktionen zu erstellen, die ausgeführt werden sollen. Folgende Schlüsselwörter werden unterstützt:
-1.	equals  
-2.	false  
-3.	true  
-4.	halt  
-5.	mod  
-6.	null  
-7.	aktualisieren  
+1.	equals
+2.	false
+3.	true
+4.	halt
+5.	mod
+6.	null
+7.	aktualisieren
 
 Das Bedingungs- und das Aktionsfeld bieten Intellisense, damit Sie schnell eine Regel erstellen können. Dies kann durch Drücken von STRG+LEERTASTE oder einfach durch den Beginn der Eingabe ausgelöst werden. Schlüsselwörter, die den eingegebenen Zeichen entsprechen, werden automatisch gefiltert und dargestellt. Das Intellisense-Fenster zeigt alle Schlüsselwörter und Vokabulardefinitionen an.  
 ![Alt text][9]
 
 ##Explizite Vorwärtsverkettung
-BizTalk-Regeln unterstützen die explizite Vorwärtsverkettung, sodass Benutzer, die Regeln auf bestimmte Aktionen hin erneut auswerten möchten, diesen Vorgang anhand von bestimmten Schlüsselwörtern auslösen können. Folgende Schlüsselwörter werden unterstützt:  
-   1.	update <vocabulary definition> – Durch dieses Schlüsselwort werden alle Regeln neu ausgewertet, die die angegebene Vokabulardefinition in ihrer Bedingung verwenden.  
+BizTalk-Regeln unterstützen die explizite Vorwärtsverkettung, sodass Benutzer, die Regeln auf bestimmte Aktionen hin erneut auswerten möchten, diesen Vorgang anhand von bestimmten Schlüsselwörtern auslösen können. Folgende Schlüsselwörter werden unterstützt:
+   1.	<Vokabulardefinition> aktualisieren – Durch dieses Schlüsselwort werden alle Regeln neu ausgewertet, die die angegebene Vokabulardefinition in ihrer Bedingung verwenden.
    2.	Halt – Dieses Schlüsselwort beendet alle Regelausführungen.
 
 ##Aktivieren/Deaktivieren von Regeln
@@ -253,4 +253,4 @@ Einer der Hauptvorteile der Verwendung von Geschäftsregeln ist, dass Änderunge
 [10]: ./media/app-service-logic-use-biztalk-rules/APIDef.PNG
 [11]: ./media/app-service-logic-use-biztalk-rules/PublicAnon.PNG
 
-<!----HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0727_2016-->

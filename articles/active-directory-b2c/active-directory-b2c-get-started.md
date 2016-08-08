@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory B2C-Vorschau: Erstellen eines Azure Active Directory B2C-Mandanten | Microsoft Azure"
+	pageTitle="Azure Active Directory B2C: Erstellen eines Azure Active Directory B2C-Mandanten | Microsoft Azure"
 	description="Thema zum Erstellen eines Azure Active Directory B2C-Mandanten"
 	services="active-directory-b2c"
 	documentationCenter=""
@@ -11,27 +11,22 @@
 	ms.service="active-directory-b2c"
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="05/16/2016"
+	ms.topic="article"
+    ms.devlang="na"
+	ms.date="07/24/2016"
 	ms.author="swkrish"/>
 
-# Azure Active Directory B2C-Vorschau: Erstellen eines Azure AD B2C-Mandanten
+# Azure Active Directory B2C: Erstellen eines Azure AD B2C-Mandanten
 
 Zum Einstieg in Microsoft Azure Active Directory (Azure AD) B2C führen Sie die drei Schritte aus, die in diesem Artikel beschrieben werden.
-
-[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
 ## Schritt 1: Registrieren für ein Azure-Abonnement
 
 Wenn Sie bereits über ein Azure-Abonnement verfügen, überspringen Sie diesen Schritt. Andernfalls registrieren Sie sich für ein [Azure-Abonnement](../active-directory/sign-up-organization.md), um Zugriff auf Azure AD B2C zu erhalten.
 
-> [AZURE.NOTE]
-Derzeit können Sie die Vorschauversion von Azure AD B2C kostenlos nutzen. Die Nutzung ist jedoch auf 50.000 Benutzer pro Mandant beschränkt. Für den Zugriff auf das [klassische Azure-Portal](http://manage.windowsazure.com/) ist ein Azure-Abonnement erforderlich.
-
 ## Schritt 2: Erstellen eines Azure AD B2C-Mandanten
 
-Führen Sie die folgenden Schritte aus, um einen neuen Azure AD B2C-Mandanten zu erstellen. Derzeit können B2C-Features in Ihren vorhandenen Verzeichnissen nicht aktiviert werden, sofern vorhanden.
+Führen Sie die folgenden Schritte aus, um einen neuen Azure AD B2C-Mandanten zu erstellen. Derzeit können B2C-Features in Ihren vorhandenen Mandanten noch nicht aktiviert werden.
 
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com/) als Abonnementadministrator an. Dies ist dasselbe Geschäfts-, Schul- oder Unikonto bzw. dasselbe Microsoft-Konto, mit dem Sie sich bei Azure registriert haben.
 2. Klicken Sie auf **Neu** > **App Services** > **Active Directory** > **Verzeichnis** > **Benutzerdefiniert erstellen**.
@@ -45,6 +40,9 @@ Führen Sie die folgenden Schritte aus, um einen neuen Azure AD B2C-Mandanten zu
     ![Screenshot des Kontrollkästchens zum Erstellen eines B2C-Verzeichnisses](./media/active-directory-b2c-get-started/create-b2c-directory.png)
 
 6. Der Mandant wird jetzt erstellt und in der Active Directory-Erweiterung aufgeführt. Außerdem werden Sie als globaler Administrator des Mandanten festgelegt. Sie können bei Bedarf weitere globale Administratoren hinzufügen.
+
+    > [AZURE.IMPORTANT]
+	Wenn Sie einen B2C-Mandanten für eine Produktions-App verwenden möchten, lesen Sie den Artikel zum [Vergleich zwischen Produktionsmandanten und B2C-Vorschaumandanten](active-directory-b2c-reference-tenant-type.md).
 
 ## Schritt 3: Navigieren zum Blatt „B2C-Funktionen“ im Azure-Portal
 
@@ -67,8 +65,18 @@ Führen Sie die folgenden Schritte aus, um einen neuen Azure AD B2C-Mandanten zu
     > [AZURE.NOTE]
     Im [klassischen Azure-Portal](https://manage.windowsazure.com/) können Sie Benutzer und Gruppen, die Konfiguration für die Self-Service-Kennwortzurücksetzung und die Features des Unternehmensbrandings für Ihren Mandanten verwalten.
 
+## Einfacher Zugriff auf das Blatt „B2C-Funktionen“ im Azure-Portal
+
+Um die Auffindbarkeit zu verbessern, haben wir eine Verknüpfung zum Blatt „B2C-Funktionen“ im Azure-Portal hinzugefügt.
+
+1. Melden Sie sich als globaler Administrator Ihres B2C-Mandanten im Azure-Portal an. Wenn Sie bereits bei einem anderen Mandanten angemeldet sind, wechseln Sie die Mandanten (in der oberen rechten Ecke).
+2. Klicken Sie im linken Navigationsbereich auf **Durchsuchen**.
+3. Klicken Sie auf **Azure AD B2C**, um auf das Blatt „B2C-Funktionen“ zuzugreifen.
+
+    ![Screenshot des Blatts „Navigieren zu B2C-Funktionen“](./media/active-directory-b2c-get-started/b2c-browse.png)
+
 ## Nächste Schritte
 
-Informationen zum Registrieren einer Anwendung in Azure AD B2C und zum Erstellen einer Schnellstartanwendung finden Sie unter [Azure Active Directory B2C-Vorschau: Registrieren der Anwendung](active-directory-b2c-app-registration.md).
+Informationen zum Registrieren einer Anwendung in Azure AD B2C und zum Erstellen einer Schnellstartanwendung finden Sie unter [Azure Active Directory B2C: Registrieren der Anwendung](active-directory-b2c-app-registration.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

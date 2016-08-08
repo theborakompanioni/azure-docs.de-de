@@ -33,7 +33,7 @@ Azure Traffic Manager unterstützt eine Reihe von Algorithmen, um zu bestimmen, 
 
 Drei Methoden für das Datenverkehrsrouting sind in Traffic Manager verfügbar:
 
-- **Priorität**: Wählen Sie „Priorität“ aus, wenn Sie einen primären Dienstendpunkt für sämtlichen Datenverkehr verwenden möchten. Stellen Sie Backups bereit, falls der primäre Endpunkt nicht verfügbar ist. Weitere Informationen finden Sie unter [Prioritätsmethode für das Datenverkehrsrouting](#wriority-traffic-routing-method).
+- **Priorität**: Wählen Sie „Priorität“ aus, wenn Sie einen primären Dienstendpunkt für sämtlichen Datenverkehr verwenden möchten. Stellen Sie Backups bereit, falls der primäre Endpunkt nicht verfügbar ist. Weitere Informationen finden Sie unter [Prioritätsmethode für das Datenverkehrsrouting](#priority-traffic-routing-method).
 
 - **Gewichtet**: Wählen Sie „Gewichtet“, wenn Sie Datenverkehr über eine Gruppe von Endpunkten verteilen möchten – gleichmäßig oder gemäß einer von Ihnen definieren Gewichtung. Weitere Informationen finden Sie unter [Gewichtete Methode für das Datenverkehrsrouting](#weighted-traffic-routing-method).
 
@@ -126,4 +126,4 @@ Informationen zum [Erstellen eines Traffic Manager-Profils](traffic-manager-mana
 [2]: ./media/traffic-manager-routing-methods/weighted.png
 [3]: ./media/traffic-manager-routing-methods/performance.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

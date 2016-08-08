@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/22/2016"
+	ms.date="07/19/2016"
 	ms.author="kgremban"/>
 
 
@@ -27,6 +27,13 @@ Wenn beim Zugriff auf eine veröffentlichte Anwendung oder beim Veröffentlichen
 - Öffnen Sie die Ereignisanzeige, und suchen Sie unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **AadApplicationProxy** > **Connector** > **Administrator** nach Ereignissen, die sich auf den Anwendungsproxy-Connector beziehen.
 - Bei Bedarf sind ausführlichere Protokolle verfügbar, indem Sie die Analyse- und Debugprotokolle aktivieren und das Sitzungsprotokoll des Anwendungsproxy-Connectors aktivieren.
 
+## Die Seite wird nicht richtig gerendert
+
+Wenn Sie keine spezielle Fehlermeldung erhalten, können trotzdem Probleme mit dem Rendering der Anwendung oder einer fehlerhaften Funktionsweise auftreten. Dies kann der Fall sein, wenn Sie den Artikelpfad veröffentlicht haben, für die Anwendung aber Inhalt erforderlich ist, der außerhalb des Pfads vorliegt.
+
+Wenn Sie beispielsweise den Pfad https://yourapp/app veröffentlichen, die Anwendung aber Bilder in https://yourapp/media aufruft, werden sie nicht gerendert. Stellen Sie sicher, dass Sie die Anwendung mit dem Pfad der höchsten benötigten Ebene veröffentlichen, damit der gesamte relevante Inhalt einbezogen wird. In diesem Beispiel ist dies http://yourapp/.
+
+Wenn Sie den Pfad so ändern, dass er referenzierten Inhalt enthält, Benutzer aber an einen Link tiefer im Pfad verwiesen werden sollen, helfen Ihnen die Informationen im folgenden Blogbeitrag weiter: [Setting the right link for Application Proxy applications in the Azure AD access panel and Office 365 app launcher](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/) (Festlegen des richtigen Links für Anwendungsproxy-Anwendungen im Azure AD-Zugriffsbereich und Office 365-Startprogramm).
 
 ## Allgemeine Fehler
 
@@ -37,7 +44,7 @@ Auf diese Unternehmens-App kann nicht zugegriffen werden. Sie haben keine Befugn
 
 
 ## Problembehandlung des Connectors
-Wenn während der Connector-Installation durch den Assistenten ein Fehler bei der Registrierung auftritt, können Sie die Ursache des Fehlers im Ereignisprotokoll unter **Windows-Protokolle** > **Anwendung** oder durch Ausführen des folgenden Windows PowerShell-Befehls anzeigen.
+Wenn während der Connector-Installation durch den Assistenten ein Fehler bei der Registrierung auftritt, können Sie die Ursache des Fehlers im Ereignisprotokoll unter „Anwendungs- und Dienstprotokolle\\Microsoft\\AadApplicationProxy\\Connector\\Admin“ oder durch Ausführen des folgenden Windows PowerShell-Befehls anzeigen:
 
     Get-EventLog application –source “Microsoft AAD Application Proxy Connector” –EntryType “Error” –Newest 1
 
@@ -84,4 +91,4 @@ Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http:/
 [1]: ./media/active-directory-application-proxy-troubleshoot/connectorproperties.png
 [2]: ./media/active-directory-application-proxy-troubleshoot/sessionlog.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0727_2016-->

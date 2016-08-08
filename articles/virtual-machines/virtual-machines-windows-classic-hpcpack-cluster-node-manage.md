@@ -13,7 +13,7 @@ ms.service="virtual-machines-windows"
  ms.topic="article"
  ms.tgt_pltfrm="vm-multiple"
  ms.workload="big-compute"
- ms.date="04/18/2016"
+ ms.date="07/22/2016"
  ms.author="danlep"/>
 
 # Verwalten der Anzahl und Verfügbarkeit von Computeknoten in einem HPC Pack-Cluster in Azure
@@ -68,7 +68,7 @@ Add-HPCIaaSNode.ps1 [-ServiceName] <String> [-ImageName] <String>
 
     3. Bei dem Image muss es sich um ein privates Image in der Kategorie "Benutzer" und nicht um ein öffentliches Azure-VM-Image handeln.
 
-* **Quantity**: Anzahl der hinzufügenden virtuellen Computer für Computeknoten.
+* **Quantity**: Anzahl der hinzufügenden virtuellen Computer für Serverknoten.
 
 * **InstanceSize**: Größe der virtuellen Computer für Computeknoten.
 
@@ -179,4 +179,4 @@ Stop-HPCIaaSNode.ps1 –Name HPCNodeCN-* -Force
 
 * Wenn Sie die Clusterknoten entsprechend der aktuellen Arbeitsauslastung der Aufträge und Aufgaben im Cluster automatisch vergrößern oder verkleinern möchten, finden Sie entsprechende Informationen unter [Automatisches zentrales Hoch- und Herunterskalieren von Azure-Computeressourcen in einem HPC Pack-Cluster entsprechend der Clusterworkload](virtual-machines-windows-classic-hpcpack-cluster-node-autogrowshrink.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

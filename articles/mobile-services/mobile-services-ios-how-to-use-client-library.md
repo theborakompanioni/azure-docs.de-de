@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="03/09/2016"
+	ms.date="07/21/2016"
 	ms.author="krisragh"/>
 
 # Verwenden der iOS-Clientbibliothek für Azure Mobile Services
@@ -99,8 +99,8 @@ Um eine komplexe Abfrage (einschließlich Sortierung und Paging) auszuführen, e
 
 Mit `MSQuery` können Sie verschiedene Abfrageeigenschaften steuern, darunter die Folgenden. Führen Sie eine `MSQuery`-Abfrage durch, indem Sie `readWithCompletion` aufrufen, wie im folgenden Beispiel gezeigt.
 * Festlegen der Reihenfolge der Ergebnisse
-* Einschränkung der zurückzugebenden Felder
-* Einschränkung der Anzahl der zurückzugebenden Datensätze
+* Einschränken der zurückzugebenden Felder
+* Einschränken der Anzahl der zurückzugebenden Datensätze
 * Festlegen der Gesamtanzahl in der Antwort
 * Festlegen benutzerdefinierter Abfrageparameter in der Anforderung
 * Anwenden zusätzlicher Funktionen
@@ -173,7 +173,7 @@ Um die in einer Abfrage zurückzugebenden Felder einzuschränken, geben Sie die 
 	query.selectFields = @[@"text", @"completed"];
 ```
 
-Um zusätzliche Abfragezeichenfolgen-Parameter in die Anforderung einzubinden (z. B. weil diese Parameter von einem benutzerdefinierten serverseitigen Skript verwendet werden), füllen Sie `query.parameters` wie folgt aus:
+Um zusätzliche Abfragezeichenfolgen-Parameter in die Anforderung einzubinden (z. B. weil diese Parameter von einem benutzerdefinierten serverseitigen Skript verwendet werden), füllen Sie `query.parameters` wie folgt aus:
 
 ```
 	query.parameters = @{
@@ -285,7 +285,7 @@ Das folgende Beispiel verwendet das [Live Connect SDK], um die einmalige Anmeldu
 
 ##<a name="caching-tokens"></a>Gewusst wie: Zwischenspeichern von Authentifizierungstoken
 
-Im Folgenden wird gezeigt, wie Sie Token im Projekt aus [Mobile Services-Schnellstart] zwischenspeichern. Sie können ähnliche Schritte für jedes andere Projekt verwenden.[AZURE.INCLUDE [mobile-services-ios-authenticate-app-with-token](../../includes/mobile-services-ios-authenticate-app-with-token.md)]
+Im Folgenden wird gezeigt, wie Sie Token im Projekt aus [Mobile Services-Schnellstart] zwischenspeichern. Sie können ähnliche Schritte für jedes andere Projekt verwenden. [AZURE.INCLUDE [mobile-services-ios-authenticate-app-with-token](../../includes/mobile-services-ios-authenticate-app-with-token.md)]
 
 ##<a name="errors"></a>Gewusst wie: Fehlerbehandlung
 
@@ -339,4 +339,4 @@ Die Datei [`<WindowsAzureMobileServices/MSError.h>`](https://github.com/Azure/az
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md#Mobile_Tables
 [Konflikthandler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0727_2016-->

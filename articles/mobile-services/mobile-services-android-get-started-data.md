@@ -4,7 +4,7 @@
 	services="mobile-services"
 	documentationCenter="android"
 	authors="RickSaling"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="01/20/2016"
+	ms.date="07/21/2016"
 	ms.author="ricksal"/>
 
 # Hinzufügen von Mobile Services zu einer vorhandenen Android-App (JavaScript-Back-End)
@@ -35,7 +35,7 @@ Für dieses Lernprogramm benötigen Sie Folgendes:
 
 
 - das [Azure Mobile Services Android SDK];
-- die [integrierte Entwicklungsumgebung Android Studio](https://developer.android.com/sdk/index.html), die das Android SDK enthält, sowie Android 4.2 oder eine höhere Version. Das heruntergeladene GetStartedWithData-Projekt benötigt Android 4.2 oder eine neuere Version. Für das Mobile Services SDK ist Android 2.2 oder eine höhere Version erforderlich.
+- die [integrierte Entwicklungsumgebung Android Studio](https://developer.android.com/sdk/index.html), die das Android SDK enthält, sowie Android 4.2 oder eine höhere Version. Das heruntergeladene GetStartedWithData-Projekt benötigt Android 4.2 oder eine neuere Version. Für das Mobile Services SDK ist Android 2.2 oder eine höhere Version erforderlich.
 
 ## Beispielcode
 
@@ -126,4 +126,4 @@ Dieses Lernprogramm zeigt die Grundlagen für die Integration von Daten in mobil
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkID=282122
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0727_2016-->

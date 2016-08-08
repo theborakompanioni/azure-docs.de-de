@@ -8,12 +8,12 @@
 	documentationCenter=""/>
 
 <tags
-	ms.service="app-service-logic"
+	ms.service="logic-apps"
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"	
 	ms.topic="article"
-	ms.date="04/05/2016"
+	ms.date="07/25/2016"
 	ms.author="jehollan"/>
     
 # Erstellen einer benutzerdefinierten API zur Verwendung mit Logik-Apps
@@ -30,15 +30,17 @@ Die grundlegende Aktion für eine Logik-App ist ein Controller, der eine HTTP-An
 
 Standardmäßig tritt für eine Anforderung nach einer Minute ein Timeout durch die Logik-App ein. Allerdings können Sie Ihre API auch längerfristige Aktionen ausführen und das Modul auf deren Abschluss warten lassen, indem Sie entweder einem Async- oder einem Webhookmuster folgen, wie unten beschrieben.
 
+Schreiben Sie für Standardaktionen einfach eine HTTP-Anforderungsmethode in Ihrer API, die über Swagger verfügbar gemacht wird. Beispiele für API-Apps, die mit Logic-Apps arbeiten, finden Sie in unserem [GitHub-Repository](https://github.com/logicappsio). Nachfolgend finden Sie Möglichkeiten, um mit einem benutzerdefinierten Connector allgemeine Muster zu erreichen.
+
 ### Aktionen mit langer Ausführungszeit – Async-Muster
 
 Beim Ausführen eines Schritts oder einer Aufgabe mit langer Ausführungszeit müssen Sie als Erstes dem Modul angeben, dass kein Timeout aufgetreten ist. Sie müssen dem Modul außerdem mitteilen, wie es feststellen kann, wann die Aufgabe beendet ist. Zuletzt müssen Sie relevante Daten an das Modul zurückgeben, damit der Workflow fortgesetzt werden kann. Dies kann über eine API umgesetzt werden, indem Sie den unten aufgeführten Fluss befolgen. Diese Schritte werden aus der Sicht der benutzerdefinierten API beschrieben:
 
-1. Wenn eine Anforderung empfangen wird, sofort eine Antwort zurückgeben (bevor die Arbeit abgeschlossen ist). Diese Antwort ist eine `202 ACCEPTED`-Antwort, um dem Modul mitzuteilen, dass die Daten erhalten wurden, die Nutzlast angenommen wurde und jetzt die Verarbeitung stattfindet. Die 202-Antwort sollte die folgenden Header enthalten: 
+1. Wenn eine Anforderung empfangen wird, sofort eine Antwort zurückgeben (bevor die Arbeit abgeschlossen ist). Diese Antwort ist eine `202 ACCEPTED`-Antwort, um dem Modul mitzuteilen, dass die Daten erhalten wurden, die Nutzlast angenommen wurde und jetzt die Verarbeitung stattfindet. Die 202-Antwort sollte die folgenden Header enthalten:
  * `location`-Header (erforderlich): Dies ist ein absoluter Pfad zu der URL, die von Logik-Apps zum Überprüfen des Status des Auftrags verwendet werden kann.
  * `retry-after` (optional, Standardwert für Aktionen lautet 20). Dies ist die Anzahl der Sekunden, die das Modul warten soll, bevor die Adressheader-URL abgerufen wird, um den Status zu überprüfen.
 
-2. Bei der Überprüfung des Auftragsstatus folgende Prüfungen durchführen: 
+2. Bei der Überprüfung des Auftragsstatus folgende Prüfungen durchführen:
  * Wenn der Auftrag abgeschlossen ist: eine `200 OK`-Antwort mit der Antwortnutzlast zurückgeben.
  * Wenn der Auftrag noch immer verarbeitet wird: Eine weitere `202 ACCEPTED`-Antwort mit den gleichen Headern wie in der ersten Antwort zurückgeben.
 
@@ -72,7 +74,7 @@ Wenn Sie beispielsweise einen Abruf durchführen, um die Verfügbarkeit einer Da
 
 * Wenn eine Anforderung ohne triggerState empfangen wird, gibt die API `202 ACCEPTED` mit einem `location`-Header zurück, der einen triggerState mit der aktuellen Uhrzeit und einen `retry-after`-Wert von 15 enthält.
 * Wenn eine Anforderung mit einem triggerState empfangen wird:
- * Es wird überprüft, ob nach dem DateTime-Wert von triggerState Dateien hinzugefügt wurden. 
+ * Es wird überprüft, ob nach dem DateTime-Wert von triggerState Dateien hinzugefügt wurden.
   * Wenn 1 Datei hinzugefügt wurde, wird eine `200 OK`-Antwort mit der Inhaltsnutzlast zurückgegeben, triggerState wird auf den DateTime-Wert der zurückgegebenen Datei erhöht, und `retry-after` wird auf 15 festgelegt.
   * Wenn mehrere Dateien hinzugefügt wurden, kann eine nach der anderen mit `200 OK` zurückgegeben werden. triggerState wird im `location`-Header erhöht, und `retry-after` wird auf 0 festgelegt. Auf diese Weise wird dem Modul mitgeteilt, dass weitere Daten vorhanden sind, die sofort am angegebenen `location`-Header angefordert werden.
   * Wenn keine Dateien verfügbar sind, wird eine `202 ACCEPTED`-Antwort zurückgegeben, und der `location`-triggerState bleibt unverändert. Legen Sie `retry-after` auf 15 fest.
@@ -89,4 +91,4 @@ Derzeit wird das Ermitteln eines Webhooktriggers über Swagger nicht vom Logik-A
 
 Ein Beispiel für einen Webhooktrigger finden Sie [hier](https://github.com/jeffhollan/LogicAppTriggersExample/tree/master/LogicAppTriggers) in GitHub.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

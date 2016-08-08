@@ -13,10 +13,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="05/26/2016"
+	ms.date="07/22/2016"
 	ms.author="jroth"/>
-
-
 
 # Verwenden von Azure Storage für SQL Server-Sicherung und -Wiederherstellung
 
@@ -33,9 +31,9 @@ In diesem Thema werden die Vorteile des Azure-Speichers für SQL-Sicherungen erl
 Bei der Sicherung von SQL Server gibt es verschiedene Herausforderungen. Hierzu gehören die Speicherverwaltung, das Risiko eines Speicherausfalls, der Zugriff auf Offsitespeicher und die Konfiguration der Hardware. Viele dieser Herausforderungen lassen sich durch Verwendung des Azure-Blobspeicherdiensts für SQL Server-Sicherungen meistern. Betrachten Sie die folgenden Vorteile:
 
 - **Einfache Bedienung**: Das Speichern von Sicherungen in Azure-Blobs ist eine praktische, flexible und leicht zugängliche Option für die Offsitespeicherung. Die Erstellung von Offsitespeicher für SQL Server-Sicherungen erfordert ggf. lediglich das Ändern vorhandener Skripts/Aufträge für die Verwendung der **BACKUP TO URL**-Syntax. Offsitespeicher sollte normalerweise weit genug vom Standort der Produktionsdatenbank entfernt sein, um zu verhindern, dass ein einziger Notfall sich auf beide Standorte (den des Offsitespeichers und den der Produktionsdatenbank) auswirkt. Die [Georeplikation Ihrer Azure-Blobs](../storage/storage-redundancy.md) bietet zusätzlichen Schutz bei einem Notfall, der sich auf die gesamte Region auswirkt.
-- **Sicherungsarchiv**: Der Azure-Blobspeicherdienst bietet eine bessere Alternative als die sonst übliche Archivierung von Sicherungen auf Band. Bandspeicher muss ggf. physisch an einen Offsitestandort transportiert werden und erfordert Schutzmaßnahmen für die Medien. Die Speicherung von Sicherungen im Azure-Blob-Speicher stellt eine sofortige, hochverfügbare und dauerhafte Archivierungsoption dar. 
+- **Sicherungsarchiv**: Der Azure-Blobspeicherdienst bietet eine bessere Alternative als die sonst übliche Archivierung von Sicherungen auf Band. Bandspeicher muss ggf. physisch an einen Offsitestandort transportiert werden und erfordert Schutzmaßnahmen für die Medien. Die Speicherung von Sicherungen im Azure-Blob-Speicher stellt eine sofortige, hochverfügbare und dauerhafte Archivierungsoption dar.
 - **Verwaltete Hardware**: Bei Azure-Diensten fällt kein Mehraufwand für Hardwareverwaltung an. Azure-Dienste verwalten die Hardware und stellen geografische Replikation für Redundanz und Schutz vor Hardwareausfällen zur Verfügung.
-- **Unbegrenzter Speicherplatz**: Durch eine direkte Sicherung in Azure-Blobs haben Sie Zugriff auf praktisch unbegrenzten Speicher. Die Sicherung in einem virtuellen Azure-Computer dagegen weist Einschränkungen aufgrund der Computergröße auf. Die Anzahl von Datenträgern, die für Sicherungen an einen virtuellen Azure-Computer angefügt werden können, ist begrenzt. Bei einer sehr großen Instanz beträgt die maximale Anzahl 16 Datenträger, während kleinere Instanzen weniger Datenträger unterstützen. 
+- **Unbegrenzter Speicherplatz**: Durch eine direkte Sicherung in Azure-Blobs haben Sie Zugriff auf praktisch unbegrenzten Speicher. Die Sicherung in einem virtuellen Azure-Computer dagegen weist Einschränkungen aufgrund der Computergröße auf. Die Anzahl von Datenträgern, die für Sicherungen an einen virtuellen Azure-Computer angefügt werden können, ist begrenzt. Bei einer sehr großen Instanz beträgt die maximale Anzahl 16 Datenträger, während kleinere Instanzen weniger Datenträger unterstützen.
 - **Verfügbarkeit der Sicherungen**: In Azure-Blobs gespeicherte Sicherungen sind jederzeit von überall aus erreichbar. So können Sie Daten ganz einfach auf einer lokalen SQL Server-Instanz oder einer anderen, auf einem virtuellen Azure-Computer ausgeführten SQL Server-Instanz wiederherstellen, ohne dass Sie Datenbanken anfügen/trennen oder die VHD herunterladen und anfügen müssen.
 - **Kosten**: Sie zahlen nur für den tatsächlich genutzten Dienst. Die Option kann genauso kosteneffizient wie eine Offsitesicherungs-/-archivierungslösung sein. Weitere Informationen finden Sie im [Azure-Preisrechner](http://go.microsoft.com/fwlink/?LinkId=277060 "Preisrechner") und in der [Azure-Preisübersicht](http://go.microsoft.com/fwlink/?LinkId=277059 "Preisübersicht").
 - **Speichermomentaufnahmen**: Wenn Datenbankdateien in einem Azure-Blob gespeichert werden und Sie SQL Server 2016 verwenden, können Sie die [Dateimomentaufnahme-Sicherung](http://msdn.microsoft.com/library/mt169363.aspx) für nahezu sofortige Sicherungen und unglaublich schnelle Wiederherstellungen verwenden.
@@ -80,4 +78,4 @@ Wenn Probleme auftreten, lesen Sie das Thema [SQL Server-URL-Sicherung – bewä
 
 Weitere Sicherungs- und Wiederherstellungsoptionen für SQL Server finden Sie unter [Sicherung und Wiederherstellung für SQL Server auf virtuellen Azure-Computern](../virtual-machines/virtual-machines-windows-sql-backup-recovery.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -109,15 +109,9 @@ Beim Ausführen dieses Befehls werden Sie zur Eingabe eines Kennworts aufgeforde
 
     Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest .OperationStatusLink
 
+
 ## Nächste Schritte
 
-- [Importieren einer Azure SQL-Datenbank](sql-database-import-powershell.md)
+- Informationen zum Importieren einer Azure SQL-Datenbank mithilfe von PowerShell finden Sie unter [Importieren einer BACPAC-Datei mithilfe von PowerShell](sql-database-import-powershell.md).
 
-
-## Zusätzliche Ressourcen
-
-- [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-- [Warnungen zur Notfallwiederherstellung](sql-database-disaster-recovery-drills.md)
-- [SQL-Datenbankdokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
-
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="03/07/2016"
+	ms.date="07/21/2016"
 	ms.author="glenga"/>
 
 # Hinzufügen von Mobile Services zu einer vorhandenen App
@@ -31,14 +31,14 @@ In diesem Thema wird gezeigt, wie Sie Azure Mobile Services als Backend-Datenque
 
 Der mobile Dienst, der in diesem Lernprogramm erstellt wird, ist ein mobiler .NET Back-End-Dienst. Dank des .NET-Back-Ends können Sie .NET-Sprachen und Visual Studio für die serverseitige Geschäftslogik im mobilen Dienst verwenden und Ihren mobilen Dienst auf Ihrem lokalen Computer ausführen und debuggen. Informationen zum Erstellen eines mobilen Diensts, dessen serverseitige Geschäftslogik Sie in JavaScript schreiben können, finden Sie in der JavaScript-Backend-Version dieses Themas.
 
->[AZURE.NOTE]In diesem Thema wird erläutert, wie Sie mit den in Visual Studio Professional 2013 mit Update 3 enthaltenen Tools einen mobilen Dienst mit einer universellen Windows-App verbinden. Mit denselben Schritten können Sie einen mobilen Dienst mit einer Windows Store- oder einer Windows Phone Store 8.1-App verbinden. Informationen zum Verbinden eines mobilen Diensts mit einer Windows Phone 8.0- oder Windows Phone Silverlight 8.1-App finden Sie unter [Erste Schritte mit Daten für Windows Phone](mobile-services-windows-phone-get-started-data.md).
+>[AZURE.NOTE]In diesem Thema wird erläutert, wie Sie mit den in Visual Studio Professional 2013 mit Update 3 enthaltenen Tools einen mobilen Dienst mit einer universellen Windows-App verbinden. Mit denselben Schritten können Sie einen mobilen Dienst mit einer Windows Store- oder einer Windows Phone Store 8.1-App verbinden. Informationen zum Verbinden eines mobilen Diensts mit einer Windows Phone 8.0- oder Windows Phone Silverlight 8.1-App finden Sie unter [Erste Schritte mit Daten für Windows Phone](mobile-services-windows-phone-get-started-data.md).
 
 ##Voraussetzungen
 
 Für dieses Lernprogramm benötigen Sie Folgendes:
 
 * Ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [Kostenloses Azure-Testkonto](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-universal-dotnet-get-started-data%2F).
-* <a href="https://go.microsoft.com/fwLink/p/?LinkID=391934" target="_blank">Visual Studio 2013</a> (Update 3 oder eine höhere Version).
+* <a href="https://go.microsoft.com/fwLink/p/?LinkID=391934" target="_blank">Visual Studio 2013</a> (Update 3 oder eine höhere Version).
 
 ##Download des GetStartedWithData-Projekts
 
@@ -118,12 +118,10 @@ In diesem Lernprogramm wurden die Grundlagen der Aktivierung einer universellen 
 [Erste Schritte mit Pushbenachrichtigungen]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md
 
 [Get started with offline data sync]: mobile-services-windows-store-dotnet-get-started-offline-data.md
-[Erste Schritte mit der Synchronisierung von Offlinedaten]: mobile-services-windows-store-dotnet-get-started-offline-data.md
 
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkId=257545
 [Developer Code Samples site]: http://go.microsoft.com/fwlink/p/?LinkID=510826
-[Website mit den Codebeispielen für Entwickler]: http://go.microsoft.com/fwlink/p/?LinkID=510826
 [Mobile Services .NET How-to Conceptual Reference]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [MobileServiceClient class]: http://go.microsoft.com/fwlink/p/?LinkId=302030
 
-<!----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0727_2016-->

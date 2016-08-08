@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="04/19/2016"
+   ms.date="07/27/2016"
    ms.author="alkohli" />
 
 # Klonen eines Volumes mithilfe des StorSimple Manager-Diensts (Update 2)
@@ -90,9 +90,9 @@ Dieser Klon ist jetzt ein reguläres Volume, und jeder mit einem Volume möglich
 
 ## Vergleich von vorübergehenden und dauerhaften Klonen
 
-Vorübergehende und dauerhafte Klone werden nur erstellt, wenn das Klonen auf einem anderen Gerät erfolgt. Sie können ein bestimmtes Volume aus einem Sicherungssatz auf einem anderen Gerät klonen. Ein auf diese Weise erstellter Klon ist ein *vorübergehender* Klon. Der vorübergehende Klon enthält Verweise auf das ursprüngliche Volume, und er verwendet dieses für das Lesen während des lokalen Schreibens.
+Vorübergehende Klone werden nur erstellt, wenn das Klonen auf einem anderen Gerät erfolgt. Sie können ein bestimmtes Volume aus einem Sicherungssatz auf einem anderen, vom StorSimple Manager verwalteten Gerät klonen. Der vorübergehende Klon enthält Verweise auf die Daten im ursprünglichen Volume, und er verwendet diese Daten zum lokalen Lesen und Schreiben auf dem Zielgerät.
 
-Nachdem Sie eine Cloudmomentaufnahme eines vorübergehenden Klons erstellt haben, wird der daraus resultierende Klon ein *dauerhafter* Klon. Der dauerhafte Klon ist unabhängig und verfügt nicht über Verweise auf das ursprüngliche Volume, aus dem er geklont wurde.
+Nachdem Sie eine Cloudmomentaufnahme eines vorübergehenden Klons erstellt haben, wird der daraus resultierende Klon ein *dauerhafter* Klon. Während dieses Vorgangs wird eine Kopie der Daten in der Cloud erstellt, und die Zeit zum Kopieren dieser Daten wird durch die Datenmenge und die Azure-Latenzen bestimmt (hierbei handelt es sich um eine Azure-zu-Azure-Kopie). Dieser Vorgang kann einige Tage bis Wochen dauern. Der vorübergehende Klon wird so zum dauerhaften Klon und verfügt nicht über Verweise auf die ursprünglichen Volumedaten, aus denen er geklont wurde.
 
 ## Szenarios für vorübergehende und dauerhafte Klone
 
@@ -117,4 +117,4 @@ Sie müssen einen Testfehler in der Produktionsumgebung überprüfen. Sie erstel
 
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

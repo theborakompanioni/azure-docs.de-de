@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Verwendung des HTTP-Listeners und -Connectors in Logik-Apps | Microsoft Azure App Service"
+   pageTitle="Verwendung des HTTP-Listeners und -Connectors in Logik-Apps | Microsoft Azure App Service "
    description="Erstellen und Konfigurieren des Connectors für HTTP-Listener und -Aktionen oder einer API-App und Verwenden in einer Logik-App in Azure App Service"
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -89,4 +89,4 @@ Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connec
 [9]: ./media/app-service-logic-connector-http/9.png
 [10]: ./media/app-service-logic-connector-http/10.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0727_2016-->

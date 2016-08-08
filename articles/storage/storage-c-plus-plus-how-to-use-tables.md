@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-	ms.date="04/29/2016"
+	ms.date="07/26/2016"
     ms.author="dineshm"/>
 
 # Verwenden des Tabellenspeichers mit C++
@@ -34,8 +34,8 @@ In diesem Leitfaden verwenden Sie Speicherfunktionen, die in einer C++-Anwendung
 
 Zum Installieren der Azure-Speicherclientbibliothek für C++ können Sie die folgenden Methoden verwenden:
 
--	**Linux**: Befolgen Sie die Anweisungen auf der Seite [Azure Storage Client Library for C++ README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) (in englischer Sprache).  
--	**Windows:** Klicken Sie in Visual Studio auf **Extras > NuGet-Paket-Manager > Paket-Manager-Konsole**. Geben Sie in der [NuGet-Paket-Manager-Konsole](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) den folgenden Befehl ein, und drücken Sie die Eingabetaste.  
+-	**Linux**: Befolgen Sie die Anweisungen auf der Seite [Azure Storage Client Library for C++ README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) (in englischer Sprache).
+-	**Windows:** Klicken Sie in Visual Studio auf **Extras > NuGet-Paket-Manager > Paket-Manager-Konsole**. Geben Sie in der [NuGet-Paket-Manager-Konsole](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) den folgenden Befehl ein, und drücken Sie die Eingabetaste.
 
 		Install-Package wastorage
 
@@ -167,10 +167,10 @@ Sie können einen Entitätsbatch in einem Schreibvorgang in den Tabellenspeicher
 
 Beachten Sie im Zusammenhang mit Batchvorgängen Folgendes:
 
--	Bis zu 100 Einfüge-, Lösch-, Zusammenführungs-, Ersetzungs-, Einfüge- oder Zusammenführungs- und Einfüge- oder Ersetzungsvorgänge können in beliebiger Kombination in einem einzelnen Batch ausgeführt werden.  
--	Ein Batchvorgang kann einen Abfragevorgang enthalten, allerdings nur als einzigen Vorgang in diesem Batch.  
--	Alle Entitäten in einem Batchvorgang müssen über denselben Partitionsschlüssel verfügen.  
--	Ein Batchvorgang ist auf eine Datennutzlast von 4 MB beschränkt.  
+-	Bis zu 100 Einfüge-, Lösch-, Zusammenführungs-, Ersetzungs-, Einfüge- oder Zusammenführungs- und Einfüge- oder Ersetzungsvorgänge können in beliebiger Kombination in einem einzelnen Batch ausgeführt werden.
+-	Ein Batchvorgang kann einen Abfragevorgang enthalten, allerdings nur als einzigen Vorgang in diesem Batch.
+-	Alle Entitäten in einem Batchvorgang müssen über denselben Partitionsschlüssel verfügen.
+-	Ein Batchvorgang ist auf eine Datennutzlast von 4 MB beschränkt.
 
 ## Abrufen aller Entitäten in einer Partition
 Verwenden Sie ein **table\_query**-Objekt, um eine Tabelle für alle Entitäten in einer Partition abzurufen. Im folgenden Codebeispiel wird ein Filter für Entitäten erstellt, wobei "Smith" der Partitionsschlüssel ist. In diesem Beispiel werden die Felder der einzelnen Entitäten in den Abfrageergebnissen an die Konsole ausgegeben.
@@ -414,4 +414,4 @@ Nachdem Sie sich nun mit den Grundlagen von Tabellenspeichern vertraut gemacht h
 -	[Referenz zur Speicherclientbibliothek für C++](http://azure.github.io/azure-storage-cpp)
 -	[Azure Storage-Dokumentation](https://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

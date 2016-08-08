@@ -12,7 +12,7 @@
     ms.devlang="NA"
     ms.topic="article"
     ms.tgt_pltfrm="NA"
-    ms.workload="sqldb-bcdr"
+    ms.workload="NA"
     ms.date="07/18/2016"
     ms.author="carlrab"/>
 
@@ -52,7 +52,7 @@ Mithilfe der **ALTER DATABASE**-Anweisung können Sie auf einem Partnerserver ei
 
 Führen Sie zum Erstellen einer nicht lesbaren sekundären Datenbank als Einzeldatenbank die folgenden Schritte aus.
 
-1. Verwenden von Version 13.0.600.65 oder höher von SQL Server Management Studio
+1. Verwenden von Version 13.0.600.65 oder höher von SQL Server Management Studio
 
  	 > [AZURE.IMPORTANT] Laden Sie die [aktuelle](https://msdn.microsoft.com/library/mt238290.aspx) Version von SQL Server Management Studio herunter. Es wird empfohlen, immer die neueste Version von Management Studio zu verwenden, damit Sie mit Updates des Azure-Portals synchron sind.
 
@@ -185,6 +185,6 @@ Im April 2017 wird der nicht lesbare sekundäre Typ eingestellt, und vorhandene 
 ## Nächste Schritte
 
 - Weitere Informationen zur aktiven Georeplikation finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
-- Informationen über Entwurfs- und Wiederherstellungsszenarien für die Geschäftskontinuität finden Sie unter [Geschäftskontinuitätsszenarien](sql-database-business-continuity-scenarios.md).
+- Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

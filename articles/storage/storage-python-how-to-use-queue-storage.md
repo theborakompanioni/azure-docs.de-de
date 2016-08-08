@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="07/26/2016"
 	ms.author="emgerner"/>
 
 # Verwenden des Warteschlangenspeichers mit Python
 
-[AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
+[AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## Übersicht
 
@@ -84,7 +84,7 @@ Sie können den Inhalt einer Nachricht vor Ort in der Warteschlange ändern. Wen
 
 ## Abrufen der Warteschlangenlänge
 
-Sie können die Anzahl der Nachrichten in einer Warteschlange schätzen lassen. Die **get\_queue\_metadata()**-Methode ruft den Warteschlangendienst ab, um Metadaten zur Warteschlange und die **approximate\_message\_count** zurückzugeben. Die Anzahl ist nur ein ungefährer Wert, da seit der Antwort des Warteschlangendienstes möglicherweise bereits Nachrichten hinzugefügt oder gelöscht wurden.
+Sie können die Anzahl der Nachrichten in einer Warteschlange schätzen lassen. Die **get\_queue\_metadata**-Methode ruft den Warteschlangendienst ab, um Metadaten zur Warteschlange und die **approximate\_message\_count** zurückzugeben. Die Anzahl ist nur ein ungefährer Wert, da seit der Antwort des Warteschlangendienstes möglicherweise bereits Nachrichten hinzugefügt oder gelöscht wurden.
 
 	metadata = queue_service.get_queue_metadata('taskqueue')
 	count = metadata.approximate_message_count
@@ -107,4 +107,4 @@ Nachdem Sie sich nun mit den Grundlagen von Queue Storage vertraut gemacht haben
 [Azure Storage-Teamblog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage-SDK für Python]: https://github.com/Azure/azure-storage-python
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

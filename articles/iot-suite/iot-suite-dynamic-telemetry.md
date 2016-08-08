@@ -21,7 +21,7 @@
 
 ## Einführung
 
-Die an die vorkonfigurierte Lösung für die Remoteüberwachung gesendeten dynamischer Telemetriedaten lassen sich visualisieren. Die simulierten Geräte, die mit der vorkonfigurierten Lösung bereitgestellt werden, senden Telemetriedaten zu Temperatur und Feuchtigkeit, die Sie im Dashboard visualisieren können. Wenn Sie die vorhandenen simulierten Geräte anpassen, neue simulierte Geräte erstellen oder physische Geräte mit der vorkonfigurierten Lösung verbinden, können Sie andere Telemetriewerte wie Außentemperatur, U/min. oder Windgeschwindigkeit senden. Sie können diese zusätzlichen Telemetriedaten dann im Dashboard visualisieren.
+Die an die vorkonfigurierte Lösung für die Remoteüberwachung gesendeten dynamischen Telemetriedaten lassen sich visualisieren. Die simulierten Geräte, die mit der vorkonfigurierten Lösung bereitgestellt werden, senden Telemetriedaten zu Temperatur und Feuchtigkeit, die Sie im Dashboard visualisieren können. Wenn Sie die vorhandenen simulierten Geräte anpassen, neue simulierte Geräte erstellen oder physische Geräte mit der vorkonfigurierten Lösung verbinden, können Sie andere Telemetriewerte wie Außentemperatur, U/min. oder Windgeschwindigkeit senden. Sie können diese zusätzlichen Telemetriedaten dann im Dashboard visualisieren.
 
 Dieses Tutorial verwendet ein einfaches simuliertes Node.js-Gerät, das Sie problemlos anpassen können, um mit dynamischen Telemetriedaten zu experimentieren.
 
@@ -30,7 +30,7 @@ Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 - Ein aktives Azure-Abonnement. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][lnk_free_trial].
 - Mindestens die [Node.js][lnk-node]-Version 0.12.x.
 
-Sie können dieses Tutorial unter allen Betriebssystemen, z.B. Windows oder Linux, durcharbeiten, die die Installation von Node.js unterstützen.
+Sie können dieses Tutorial unter allen Betriebssystemen durcharbeiten, die die Installation von Node.js unterstützen (z.B. Windows oder Linux).
 
 [AZURE.INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
@@ -166,7 +166,7 @@ Die Nachricht **Device-Info** kann Metadaten zur Telemetrie enthalten, die das G
 }]
 ```
 
-> [AZURE.NOTE] Die Remoteüberwachungslösung unterscheidet beim Vergleichen der Metadatendefinition mit Daten im Telemetriedatenstrom nicht zwischen Groß-/Kleinschreibung.
+> [AZURE.NOTE] Die Remoteüberwachungslösung unterscheidet beim Vergleichen der Metadatendefinition mit Daten im Telemetriedatenstrom keine Groß-/Kleinschreibung.
 
 Durch Hinzufügen der Definition **Telemetry**, wie im obigen Beispiel, ändert sich nicht das Verhalten des Dashboards. Allerdings können die Metadaten auch das **DisplayName**-Attribut enthalten, um die Anzeige im Dashboard anzupassen. Aktualisieren Sie die Metadatendefinition von **Telemetry** wie folgt:
 
@@ -236,10 +236,9 @@ Um einen Datenstrom im Diagramm anzuzeigen, muss dessen **Typ** in den Metadaten
 
 ## Nächste Schritte
 
-Nachdem Sie jetzt eine funktionsfähige vorkonfigurierte Lösung erstellt haben, können Sie mit den folgenden exemplarischen Vorgehensweisen fortfahren:
+Sie wissen nun, wie Sie dynamische Telemetriedaten verwenden. Weitere Informationen dazu, wie die vorkonfigurierten Lösungen Geräteinformationen nutzen, finden Sie unter: [Geräteinformationen-Metadaten in der vorkonfigurierten Lösung für die Remoteüberwachung][lnk-devinfo].
 
--   [Anleitung zum Anpassen vorkonfigurierter Lösungen][lnk-customize]
--   [Übersicht über die vorkonfigurierte Lösung für vorhersagbaren Wartungsbedarf][lnk-predictive]
+[lnk-devinfo]: iot-suite-remote-monitoring-device-info.md
 
 [image1]: media/iot-suite-dynamic-telemetry/image1.png
 [image2]: media/iot-suite-dynamic-telemetry/image2.png
@@ -248,10 +247,8 @@ Nachdem Sie jetzt eine funktionsfähige vorkonfigurierte Lösung erstellt haben,
 [image5]: media/iot-suite-dynamic-telemetry/image5.png
 
 [lnk_free_trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
-[lnk-predictive]: iot-suite-predictive-overview.md
 [lnk-node]: http://nodejs.org
 [node-linux]: https://github.com/nodejs/node-v0.x-archive/wiki/Installing-Node.js-via-package-manager
 [lnk-github-repo]: https://github.com/Azure/azure-iot-sdks
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

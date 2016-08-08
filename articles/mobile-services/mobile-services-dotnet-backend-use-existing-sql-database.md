@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="11/09/2015"
+	ms.date="07/21/2016"
 	ms.author="glenga"/>
 
 
@@ -619,4 +619,4 @@ Beachten Sie, dass beide Controllerimplementierungen die DTOs **MobileCustomer**
 
 Als nächsten Schritt können Sie nun die Client-App erstellen, um auf den Dienst zuzugreifen.
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="07/14/2016"
+	ms.date="07/22/2016"
 	ms.author="kgremban"/>
 
 # Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell
@@ -28,42 +28,52 @@ Mit der rollenbasierten Access Control (RBAC) im Azure-Portal und in der Azure R
 
 Bevor Sie PowerShell verwenden können, um die RBAC zu verwalten, benötigen Sie Folgendes:
 
-- Azure PowerShell, Version 0.8.8 oder höher. Um die neueste Version zu installieren und sie Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+- Azure PowerShell, Version 0.8.8 oder höher. Um die neueste Version zu installieren und sie Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
 - Azure Resource Manager-Cmdlets Installieren Sie die [Azure Resource Manager-Cmdlets](https://msdn.microsoft.com/library/mt125356.aspx) in PowerShell.
 
 ## Auflisten der Rollen
 
 ### Auflisten aller verfügbaren Rollen
-Zum Auflisten von RBAC-Rollen für die Zuweisung und Überprüfung der Vorgänge, auf die sie Zugriff gewähren, verwenden Sie Folgendes:
+Zum Auflisten von RBAC-Rollen für die Zuweisung und Überprüfung der Vorgänge, auf die sie Zugriff gewähren, verwenden Sie `Get-AzureRmRoleDefinition`.
 
-		Get-AzureRmRoleDefinition
+```
+Get-AzureRmRoleDefinition | FT Name, Description
+```
 
 ![RBAC PowerShell – Get-AzureRmRoleDefinition – Screenshot](./media/role-based-access-control-manage-access-powershell/1-get-azure-rm-role-definition1.png)
 
 ### Auflisten der Aktionen einer Rolle
-Zum Auflisten der Aktionen für eine bestimmte Rolle verwenden Sie Folgendes:
+Zum Auflisten der Aktionen für eine bestimmte Rolle verwenden Sie `Get-AzureRmRoleDefinition <role name>`.
 
-    Get-AzureRmRoleDefinition <role name>
+```
+Get-AzureRmRoleDefinition Contributor | FL Actions, NotActions
+
+(Get-AzureRmRoleDefinition "Virtual Machine Contributor").Actions
+```
 
 ![RBAC PowerShell – Get-AzureRmRoleDefinition für eine bestimmte Rolle – Screenshot](./media/role-based-access-control-manage-access-powershell/1-get-azure-rm-role-definition2.png)
 
 ## Sehen, wer Zugriff hat
-Zum Auflisten der RBAC-Zugriffszuweisungen verwenden Sie:
-
-    Get-AzureRmRoleAssignment
+Zum Auflisten der RBAC-Zugriffszuweisungen verwenden Sie `Get-AzureRmRoleAssignment`.
 
 ###	Auflistung der Rollenzuweisungen für einen bestimmten Bereich
-Sie können alle Zugriffszuweisungen für ein angegebenes Abonnement, eine angegebene Ressourcengruppe oder Ressource sehen. Um beispielsweise alle aktiven Zuweisungen für eine Ressourcengruppe zu sehen, verwenden Sie Folgendes:
+Sie können alle Zugriffszuweisungen für ein angegebenes Abonnement, eine angegebene Ressourcengruppe oder Ressource sehen. Um beispielsweise alle aktiven Zuweisungen für eine Ressourcengruppe zu sehen, verwenden Sie `Get-AzureRmRoleAssignment -ResourceGroupName <resource group name>`.
 
-    Get-AzureRmRoleAssignment -ResourceGroupName <resource group name>
+```
+Get-AzureRmRoleAssignment -ResourceGroupName Pharma-Sales-ProjectForcast | FL DisplayName, RoleDefinitionName, Scope
+```
 
 ![RBAC PowerShell – Get-AzureRmRoleAssignment für eine Ressourcengruppe – Screenshot](./media/role-based-access-control-manage-access-powershell/4-get-azure-rm-role-assignment1.png)
 
 ### Zugewiesenen Rollen eines Benutzers auflisten
-Um alle einem bestimmten Benutzer zugewiesenen Rollen aufzulisten, inklusive der Rollen, die den Gruppen zugewiesen sind, denen er angehört, verwenden Sie Folgendes:
+Um alle einem bestimmten Benutzer zugewiesenen Rollen aufzulisten, inklusive der Rollen, die den Gruppen zugewiesen sind, denen er angehört, verwenden Sie `Get-AzureRmRoleAssignment -SignInName <User email> -ExpandPrincipalGroups`.
 
-    Get-AzureRmRoleAssignment -SignInName <User email> -ExpandPrincipalGroups
+```
+Get-AzureRmRoleAssignment -SignInName sameert@aaddemo.com | FL DisplayName, RoleDefinitionName, Scope
+
+Get-AzureRmRoleAssignment -SignInName sameert@aaddemo.com -ExpandPrincipalGroups | FL DisplayName, RoleDefinitionName, Scope
+```
 
 ![RBAC PowerShell – Get-AzureRmRoleAssignment für einen Benutzer – Screenshot](./media/role-based-access-control-manage-access-powershell/4-get-azure-rm-role-assignment2.png)
 
@@ -89,7 +99,7 @@ Zum Abrufen der Objekt-ID für einen Azure AD-Dienstprinzipal oder eine Anwendun
 ### Zuweisen einer Rolle zu einer Anwendung im Abonnementkontext
 Zum Zuweisen des Zugriffs zu einer Anwendung im Abonnementkontext verwenden Sie Folgendes:
 
-    New-AzureRmRoleAssignment -ObjectId <application id> -RoleDefinitionName <role name in quotes> -Scope <subscription id>
+    New-AzureRmRoleAssignment -ObjectId <application id> -RoleDefinitionName <role name> -Scope <subscription id>
 
 ![RBAC PowerShell – New-AzureRmRoleAssignment – Screenshot](./media/role-based-access-control-manage-access-powershell/2-new-azure-rm-role-assignment2.png)
 
@@ -121,6 +131,27 @@ Wenn Sie eine benutzerdefinierte Rolle in PowerShell erstellen, müssen Sie mit 
 
 Im folgenden Beispiel wird mit der Rolle *Virtual Machine Contributor* begonnen. Diese Rolle wird zum Erstellen einer benutzerdefinierten Rolle namens *Virtual Machine Operator* verwendet. Die neue Rolle gewährt Zugriff auf alle Lesevorgänge der Ressourcenanbieter *Microsoft.Compute*, *Microsoft.Storage* und *Microsoft.Network* sowie zum Starten, Neustarten und Überwachen virtueller Computer. Die benutzerdefinierte Rolle kann in zwei Abonnements verwendet werden.
 
+```
+$role = Get-AzureRmRoleDefinition "Virtual Machine Contributor"
+$role.Id = $null
+$role.Name = "Virtual Machine Operator"
+$role.Description = "Can monitor and restart virtual machines."
+$role.Actions.Clear()
+$role.Actions.Add("Microsoft.Storage/*/read")
+$role.Actions.Add("Microsoft.Network/*/read")
+$role.Actions.Add("Microsoft.Compute/*/read")
+$role.Actions.Add("Microsoft.Compute/virtualMachines/start/action")
+$role.Actions.Add("Microsoft.Compute/virtualMachines/restart/action")
+$role.Actions.Add("Microsoft.Authorization/*/read")
+$role.Actions.Add("Microsoft.Resources/subscriptions/resourceGroups/read")
+$role.Actions.Add("Microsoft.Insights/alertRules/*")
+$role.Actions.Add("Microsoft.Support/*")
+$role.AssignableScopes.Clear()
+$role.AssignableScopes.Add("/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e")
+$role.AssignableScopes.Add("/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624")
+New-AzureRmRoleDefinition -Role $role
+```
+
 ![RBAC PowerShell – Get-AzureRmRoleDefinition – Screenshot](./media/role-based-access-control-manage-access-powershell/2-new-azurermroledefinition.png)
 
 ## Ändern einer benutzerdefinierten Rolle
@@ -128,9 +159,23 @@ Um eine benutzerdefinierte Rolle zunächst zu ändern, verwenden Sie den Befehl 
 
 Im folgenden Beispiel wird der Vorgang `Microsoft.Insights/diagnosticSettings/*` zur benutzerdefinierten Rolle *Virtual Machine Operator* hinzugefügt.
 
+```
+$role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
+$role.Actions.Add("Microsoft.Insights/diagnosticSettings/*")
+Set-AzureRmRoleDefinition -Role $role
+```
+
 ![RBAC PowerShell – Set-AzureRmRoleDefinition – Screenshot](./media/role-based-access-control-manage-access-powershell/3-set-azurermroledefinition-1.png)
 
 Im folgenden Beispiel wird ein Azure-Abonnement den zuweisbaren Bereichen der benutzerdefinierten Rolle „Virtual Machine Operator“ hinzugefügt.
+
+```
+Get-AzureRmSubscription - SubscriptionName Production3
+
+$role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
+$role.AssignableScopes.Add("/subscriptions/34370e90-ac4a-4bf9-821f-85eeedead1a2"
+Set-AzureRmRoleDefinition -Role $role)
+```
 
 ![RBAC PowerShell – Set-AzureRmRoleDefinition – Screenshot](./media/role-based-access-control-manage-access-powershell/3-set-azurermroledefinition-2.png)
 
@@ -140,12 +185,22 @@ Verwenden Sie zum Löschen einer benutzerdefinierten Rolle den Befehl `Remove-Az
 
 Im folgenden Beispiel wird die benutzerdefinierte Rolle *Virtual Machine Operator* entfernt.
 
+```
+Get-AzureRmRoleDefinition "Virtual Machine Operator"
+
+Get-AzureRmRoleDefinition "Virtual Machine Operator" | Remove-AzureRmRoleDefinition
+```
+
 ![RBAC PowerShell – Remove-AzureRmRoleDefinition – Screenshot](./media/role-based-access-control-manage-access-powershell/4-remove-azurermroledefinition.png)
 
 ## Auflisten benutzerdefinierter Rollen
 Zum Auflisten der Rollen, die in einem Bereich für die Zuweisung verfügbar sind, wählen Sie den Befehl `Get-AzureRmRoleDefinition`.
 
 Im folgenden Beispiel werden alle Rollen aufgelistet, die für die Zuweisung im ausgewählten Abonnement verfügbar sind.
+
+```
+Get-AzureRmRoleDefinition | FT Name, IsCustom
+```
 
 ![RBAC PowerShell – Get-AzureRmRoleDefinition – Screenshot](./media/role-based-access-control-manage-access-powershell/5-get-azurermroledefinition-1.png)
 
@@ -157,4 +212,4 @@ Im folgenden Beispiel ist die benutzerdefinierte Rolle *Virtual Machine Operator
 - [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md)
 [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-<!----HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

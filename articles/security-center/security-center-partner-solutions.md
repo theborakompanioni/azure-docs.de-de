@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/19/2016"
+   ms.date="07/21/2016"
    ms.author="terrylan"/>
 
 # Überwachen von Partnerlösungen mit Azure Security Center
 
 In diesem Dokument erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen in Azure Security Center überwacht wird.
 
-> [AZURE.NOTE] Die Informationen in diesem Dokument gelten für die Vorschauversion von Azure Security Center. Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
+> [AZURE.NOTE] Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
 
 ## Überwachen von Partnerlösungen
 
@@ -63,4 +63,4 @@ In diesem Dokument wurden Ihnen die **Partnerlösungen** in Security Center vorg
 [4]: ./media/security-center-partner-solutions/partner-solutions-detail.png
 [5]: ./media/security-center-partner-solutions/link-applications.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -1,771 +1,774 @@
 <properties
-    pageTitle="Hinzufügen des Office 365 Outlook-Connectors zu PowerApps Enterprise oder Logik-Apps | Microsoft Azure"
-    description="Übersicht über den Office 365-Connector mit REST-API-Parametern"
+    pageTitle="Hinzufügen des Office 365 Outlook-Connectors in Ihren Logik-Apps | Microsoft Azure"
+    description="Erstellen Sie Logik-Apps mit Office 365-Connector, um die Interaktion mit Office 365 zu ermöglichen. Sie können beispielsweise Kontakte und Kalendereinträge erstellen, bearbeiten und aktualisieren."
     services=""    
     documentationCenter=""     
-    authors="msftman"    
+    authors="MandiOhlinger"    
     manager="erikre"    
     editor="" 
     tags="connectors" />
 
 <tags
-ms.service="multiple"
+ms.service="logic-apps"
 ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="05/18/2016"
+ms.date="07/26/2016"
 ms.author="mandia"/>
 
 # Erste Schritte mit dem Office 365 Outlook-Connector 
 
-Stellen Sie eine Verbindung mit Office 365 Outlook her, um E-Mail zu erhalten, auf eine E-Mail zu antworten, Ihren Kalender und Kontakte zu aktualisieren und vieles mehr. Der Office 365 Outlook-Connector kann verwendet werden in:
+Der Office 365 Outlook-Connector ermöglicht die Interaktion mit Outlook in Office 365. Verwenden Sie diesen Connector zum Erstellen, Bearbeiten und Aktualisieren von Kontakten und Kalenderelementen sowie zum Empfangen, Senden und Beantworten von E-Mails.
 
-- Logik-Apps 
-- PowerApps
+Office 365 Outlook ermöglicht Folgendes:
 
-> [AZURE.SELECTOR]
-- [Logik-Apps](../articles/connectors/connectors-create-api-office365-outlook.md)
-- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-office365-outlook.md)
+- Erstellen Ihres Workflows unter Verwendung der E-Mail- und Kalenderfeatures in Office 365.
+- Verwenden von Triggern, um den Workflow zu starten, wenn beispielsweise eine neue E-Mail vorliegt oder ein Kalenderelement aktualisiert wird.
+- Verwenden von Aktionen, um beispielsweise eine E-Mail zu senden oder ein neues Kalenderereignis zu erstellen. Wenn also beispielsweise ein neues Objekt in Salesforce vorhanden ist (Trigger), kann eine E-Mail an Office 365 Outlook gesendet werden (Aktion).
 
-&nbsp;
+Dieses Thema beschreibt, wie Sie den Office 365 Outlook-Connector in einer Logik-App verwenden, und enthält eine Liste mit den Triggern und Aktionen.
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
+>[AZURE.NOTE] Diese Version des Artikels gilt für die allgemein verfügbare Version von Logic Apps.
 
-Mit Office 365 Outlook können Sie folgende Aktionen ausführen:
+Weitere Informationen zu Logic Apps finden Sie unter [Was sind Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md) sowie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-- Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus Office 365 Outlook abgerufen werden. 
-- Verwenden eines Triggers, wenn neue E-Mails eingegangen sind, wenn Sie einen neuen Kontakt erstellen usw.
-- Verwenden von Aktionen, die auf eine E-Mail antworten, ein neues Kalenderereignis erstellen usw. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn beispielsweise ein neues Objekt in Salesforce vorhanden ist, können Sie dieses Objekt abrufen und Ihre Office 365 Outlook-Kontakte aktualisieren. 
-- Hinzufügen des Office 365 Outlook-Connectors zu PowerApps Enterprise. Die Benutzer können diesen Connector anschließend in ihren Apps verwenden. 
+## Herstellen einer Verbindung mit Office 365
 
-Informationen zum Hinzufügen eines Connectors in PowerApps Enterprise finden Sie unter [Registrieren einer Microsoft-verwalteten API oder einer IT-verwalteten API](../power-apps/powerapps-register-from-available-apis.md).
-
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
-
-## Trigger und Aktionen
-
-Der Office 365 Outlook-Connector verfügt über folgende Trigger und Aktionen:
-
-| Trigger | Aktionen|
-| --- | --- |
-|<ul><li>Bei Start eines anstehenden Ereignisses</li><li>Bei neuer E-Mail</li><li>Bei neuen Elementen</li><li>Bei aktualisierten Elementen</li></ul>| <ul><li>Kontakt erstellen</li><li>Ereignis erstellen</li><li>Genehmigungs-E-Mail senden</li><li>E-Mail senden</li><li>Kontakt löschen</li><li>E-Mail löschen</li><li>Ereignis löschen</li><li>Anlage abrufen</li><li>Kalender abrufen</li><li>Kontakt abrufen</li><li>Kontaktordner abrufen</li><li>Kontakte abrufen</li><li>E-Mails abrufen</li><li>Ereignis abrufen</li><li>Ereignisse abrufen</li><li>Als gelesen markieren</li><li>Bei Start eines anstehenden Ereignisses</li><li>Bei neuer E-Mail</li><li>Bei neuen Elementen</li><li>Bei aktualisierten Elementen</li><li>Auf eine Nachricht antworten</li><li>E-Mail mit Optionen senden</li><li>Kontakt aktualisieren</li><li>Ereignis aktualisieren</li></ul> |
-
-Alle Connectors unterstützen Daten im JSON- und XML-Format.
+Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, muss zunächst eine *Verbindung* mit dem Dienst hergestellt werden. Eine Verbindung stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her. Wenn Sie also etwa eine Verbindung mit Office 365 Outlook herstellen möchten, benötigen Sie zunächst eine *Verbindung* mit Office 365. Geben Sie zum Erstellen einer Verbindung die Anmeldeinformationen ein, mit denen Sie normalerweise auf den Dienst zugreifen, mit dem Sie eine Verbindung herstellen möchten. Geben Sie für Office 365 Outlook also die Anmeldeinformationen Ihres Office 365-Kontos ein, um die Verbindung zu erstellen.
 
 
-## Herstellen einer Verbindung mit Office 365
+## Erstellen der Verbindung
 
-Wenn Sie Ihren Logik-Apps diesen Connector hinzufügen, müssen Sie sich bei Ihrem Office 365 Outlook-Konto anmelden und den Logik-Apps das Herstellen einer Verbindung mit Ihrem Konto erlauben.
+>[AZURE.INCLUDE [Schritte zum Erstellen einer Verbindung mit Office 365](../../includes/connectors-create-api-office365-outlook.md)]
 
-1. Melden Sie sich bei Ihrem Office 365 Outlook-Konto an.
-2. Erlauben Sie Ihren Logik-Apps, sich mit Ihrem Office 365-Konto zu verbinden und es zu nutzen. 
+## Verwenden eines Triggers
 
-Nachdem Sie die Verbindung hergestellt haben, geben Sie die Office 365 Outlook-Eigenschaften ein, z. B. den Posteingangsordner oder die E-Mail. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
+Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Trigger fragen den Dienst im gewünschten Intervall und mit der gewünschten Häufigkeit ab. Weitere Informationen zu Triggern finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
 
->[AZURE.TIP] Sie können dieselbe Office 365 Outlook-Verbindung in anderen Logik-Apps verwenden.
+1. Geben Sie in der Logik-App die Zeichenfolge „office 365“ ein, um eine Liste mit den Triggern abzurufen:
 
-## Swagger-REST-API – Referenz
-Gilt für Version: 1.0.
+	![](./media/connectors-create-api-office365-outlook/office365-trigger.png)
+
+2. Wählen Sie **Office 365 Outlook - When an upcoming event is starting soon** (Office 365 Outlook – Wenn ein anstehendes Ereignis in Kürze beginnt) aus. Falls bereits eine Verbindung vorhanden ist, wählen Sie in der Dropdownliste einen Kalender aus.
+
+	![](./media/connectors-create-api-office365-outlook/sample-calendar.png)
+
+	Wenn Sie zur Anmeldung aufgefordert werden, geben Sie die Anmeldeinformationen ein, um die Verbindung zu erstellen. Die erforderlichen Schritte sind in diesem Thema unter [Erstellen der Verbindung](connectors-create-api-office365-outlook.md#create-the-connection) aufgeführt.
+
+	> [AZURE.NOTE] In diesem Beispiel wird die Logik-App ausgeführt, wenn ein Kalenderereignis aktualisiert wird. Fügen Sie zum Anzeigen der Ergebnisse dieses Triggers eine weitere Aktion hinzu, die Ihnen eine SMS sendet. Fügen Sie beispielsweise die Twilio-Aktion *Nachricht senden* hinzu, um eine SMS zu erhalten, wenn das Ereignis in 15 Minuten beginnt.
+
+3. Wählen Sie die Schaltfläche **Bearbeiten** aus, und legen Sie Werte für **Häufigkeit** und **Intervall** fest. Falls die Abfrage durch den Trigger also beispielsweise alle 15 Minuten erfolgen soll, legen Sie **Häufigkeit** auf **Minute** und **Intervall** auf **15** fest.
+
+	![](./media/connectors-create-api-office365-outlook/calendar-settings.png)
+
+4. Speichern Sie Ihre Änderungen. (Die Option **Speichern** befindet sich links oben auf der Symbolleiste.) Ihre Logik-App wird gespeichert und ggf. automatisch aktiviert.
 
 
-### Bei Start eines anstehenden Ereignisses 
-Löst einen Datenfluss aus, wenn ein anstehendes Kalenderereignis beginnt. ```GET: /Events/OnUpcomingEvents```
+## Verwenden einer Aktion
 
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|table|string|Ja|query|(Keine)|Eindeutiger Bezeichner des Kalenders|
-|lookAheadTimeInMinutes|integer|no|query|15|Zeit (in Minuten) für Suche nach anstehenden Ereignissen.|
+Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
 
-#### Antwort
+1. Wählen Sie das Pluszeichen aus. Es stehen mehrere Auswahlmöglichkeiten zur Verfügung: **Aktion hinzufügen**, **Bedingung hinzufügen** oder eine der Optionen unter **Mehr**.
+
+	![](./media/connectors-create-api-office365-outlook/add-action.png)
+
+2. Wählen Sie **Aktion hinzufügen** aus.
+
+3. Geben Sie im Textfeld die Zeichenfolge „office 365“ ein, um eine Liste mit allen verfügbaren Aktionen zu erhalten.
+
+	![](./media/connectors-create-api-office365-outlook/office365-actions.png)
+
+4. In unserem Beispiel wählen wir **Office 365 Outlook – Kontakt erstellen** aus. Falls bereits eine Verbindung vorhanden ist, wählen Sie **Ordner-ID**, **Vorname** und andere Eigenschaften aus:
+
+	![](./media/connectors-create-api-office365-outlook/office365-sampleaction.png)
+
+	Wenn Sie zur Eingabe der Verbindungsinformationen aufgefordert werden, geben Sie die Details ein, um die Verbindung zu erstellen. Die Eigenschaften werden in diesem Thema unter [Erstellen der Verbindung](connectors-create-api-office365-outlook.md#create-the-connection) beschrieben.
+
+	> [AZURE.NOTE] In diesem Beispiel erstellen wir einen neuen Kontakt in Office 365 Outlook. Für die Erstellung des Kontakts kann die Ausgabe eines anderen Triggers verwendet werden. Fügen Sie beispielsweise den Salesforce-Trigger *Wenn ein Objekt erstellt wird* hinzu. Fügen Sie dann die Office 365 Outlook-Aktion *Kontakt erstellen* hinzu, die den neuen Kontakt in Office 365 auf der Grundlage der Salesforce-Felder erstellt.
+
+5. Speichern Sie Ihre Änderungen. (Die Option **Speichern** befindet sich links oben auf der Symbolleiste.) Ihre Logik-App wird gespeichert und ggf. automatisch aktiviert.
+
+
+## Technische Details
+
+Im Anschluss finden Sie ausführliche Informationen zu den Triggern, Aktionen und Antworten, die von dieser Verbindung unterstützt werden:
+
+## Office 365-Trigger
+
+|Trigger | Beschreibung|
+|--- | ---|
+|[When an upcoming event is starting soon](connectors-create-api-office365-outlook.md#when-an-upcoming-event-is-starting-soon) (Wenn ein anstehendes Ereignis in Kürze beginnt)|Dieser Vorgang löst einen Ablauf aus, wenn ein anstehendes Kalenderereignis gestartet wird.|
+|[When a new email arrives](connectors-create-api-office365-outlook.md#when-a-new-email-arrives) (Wenn eine neue E-Mail eingeht)|Dieser Vorgang löst einen Ablauf aus, wenn eine neue E-Mail eingeht.|
+|[When a new event is created](connectors-create-api-office365-outlook.md#when-a-new-event-is-created) (Wenn ein neues Ereignis erstellt wird)|Dieser Vorgang löst einen Ablauf aus, wenn in einem Kalender ein neues Ereignis erstellt wird.|
+|[When an event is modified](connectors-create-api-office365-outlook.md#when-an-event-is-modified) (Wenn ein Ereignis geändert wird)|Dieser Vorgang löst einen Ablauf aus, wenn in einem Kalender ein Ereignis geändert wird.|
+
+
+## Office 365-Aktionen
+
+|Aktion|Beschreibung|
+|--- | ---|
+|[E-Mails abrufen](connectors-create-api-office365-outlook.md#get-emails)|Dieser Vorgang ruft E-Mails aus einem Ordner ab.|
+|[Senden einer E-Mail](connectors-create-api-office365-outlook.md#send-an-email)|Dieser Vorgang sendet eine E-Mail.|
+|[E-Mail löschen](connectors-create-api-office365-outlook.md#delete-email)|Dieser Vorgang löscht eine E-Mail anhand der ID.|
+|[Als gelesen markieren](connectors-create-api-office365-outlook.md#mark-as-read)|Dieser Vorgang markiert eine E-Mail als gelesen.|
+|[Reply to email](connectors-create-api-office365-outlook.md#reply-to-email) (E-Mail beantworten)|Dieser Vorgang beantwortet eine E-Mail.|
+|[Anlagen abrufen](connectors-create-api-office365-outlook.md#get-attachment)|Dieser Vorgang ruft eine E-Mail-Anlage anhand der ID ab.|
+|[E-Mails mit Optionen senden](connectors-create-api-office365-outlook.md#send-email-with-options)|Dieser Vorgang sendet eine E-Mail mit mehreren Optionen und wartet, bis der Empfänger mit einer der Optionen antwortet.|
+|[Genehmigungs-E-Mail senden](connectors-create-api-office365-outlook.md#send-approval-email)|Dieser Vorgang sendet eine Genehmigungs-E-Mail und wartet auf eine Antwort des Empfängers.|
+|[Kalender abrufen](connectors-create-api-office365-outlook.md#get-calendars)|Dieser Vorgang führt die verfügbaren Kalender auf.|
+|[Ereignisse abrufen](connectors-create-api-office365-outlook.md#get-events)|Dieser Vorgang ruft Ereignisse aus einem Kalender ab.|
+|[Ereignis erstellen](connectors-create-api-office365-outlook.md#create-event)|Dieser Vorgang erstellt ein neues Ereignis in einem Kalender.|
+|[Ereignis abrufen](connectors-create-api-office365-outlook.md#get-event)|Dieser Vorgang ruft ein spezifisches Ereignis aus einem Kalender ab.|
+|[Ereignis löschen](connectors-create-api-office365-outlook.md#delete-event)|Dieser Vorgang löscht ein Ereignis in einem Kalender.|
+|[Ereignis aktualisieren](connectors-create-api-office365-outlook.md#update-event)|Dieser Vorgang aktualisiert ein Ereignis in einem Kalender.|
+|[Ordner „Kontakte“ abrufen](connectors-create-api-office365-outlook.md#get-contact-folders)|Dieser Vorgang führt die verfügbaren Ordner vom Typ „Kontakte“ auf.|
+|[Kontakte abrufen](connectors-create-api-office365-outlook.md#get-contacts)|Dieser Vorgang ruft Kontakte aus einem Ordner vom Typ „Kontakte“ ab.|
+|[Kontakt erstellen](connectors-create-api-office365-outlook.md#create-contact)|Dieser Vorgang erstellt einen neuen Kontakt in einem Ordner vom Typ „Kontakte“.|
+|[Kontakt abrufen](connectors-create-api-office365-outlook.md#get-contact)|Dieser Vorgang ruft einen spezifischen Kontakt aus einem Ordner vom Typ „Kontakte“ ab.|
+|[Kontakt löschen](connectors-create-api-office365-outlook.md#delete-contact)|Dieser Vorgang löscht einen Kontakt aus einem Ordner vom Typ „Kontakte“.|
+|[Kontakt aktualisieren](connectors-create-api-office365-outlook.md#update-contact)|Dieser Vorgang aktualisiert einen Kontakt in einem Ordner vom Typ „Kontakte“.|
+
+### Trigger- und Aktionsdetails
+
+Dieser Abschnitt enthält spezifische Details zu den einzelnen Triggern und Aktionen. Hierzu zählen unter anderem erforderliche oder optionale Eingabeeigenschaften sowie entsprechende Ausgaben im Zusammenhang mit dem Connector.
+
+#### When an upcoming event is starting soon (Wenn ein anstehendes Ereignis in Kürze beginnt)
+Dieser Vorgang löst einen Ablauf aus, wenn ein anstehendes Kalenderereignis gestartet wird.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|table*|Kalender-ID|Eindeutiger Bezeichner des Kalenders|
+|lookAheadTimeInMinutes|Lookahead-Zeit|Zeit (in Minuten) für Suche nach anstehenden Ereignissen.|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+CalendarItemsList: Die Liste der Kalenderelemente
+
+| Eigenschaftenname | Datentyp | Beschreibung |
+|---|---|---|
+|value|array|Liste mit Kalenderelementen|
+
+
+#### E-Mails abrufen
+Dieser Vorgang ruft E-Mails aus einem Ordner ab.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|folderPath|Ordnerpfad|Pfad des Ordners zum Abrufen von E-Mails (Standard: Posteingang)|
+|top|Top|Anzahl der abzurufenden E-Mails (Standardeinstellung: 10)|
+|fetchOnlyUnread|Fetch Only Unread Messages (Nur ungelesene Nachrichten abrufen)|Nur ungelesene E-Mails abrufen?|
+|includeAttachments|Anlagen einschließen|Falls auf „true“ festgelegt, werden Anlagen zusammen mit der E-Mail abgerufen.|
+|searchQuery|Suchabfrage|Suchabfrage zum Filtern von E-Mails|
+|skip|Überspringen|Anzahl der zu überspringenden E-Mails (Standardeinstellung: 0)|
+|skipToken|Skip Token (Token überspringen)|Token überspringen, um neue Seite abzurufen|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+ReceiveMessage: E-Mail empfangen
+
+| Eigenschaftenname | Datentyp | Beschreibung |
+|---|---|---|
+|Aus|string|Aus|
+|To  
+|string|To  
+|
+|Betreff|string|Betreff|
+|Body|string|Body|
+|Priorität|string|Priorität|
+|HasAttachment|Boolescher Wert|Mit Anlage|
+|ID|string|Nachrichten-ID|
+|IsRead|Boolescher Wert|Gelesen|
+|DateTimeReceived|string|Empfangsdatum/-uhrzeit|
+|Anlagen|array|Anlagen|
+|Cc|string|Geben Sie E-Mail-Adressen an, und trennen Sie sie jeweils durch ein Semikolon. (Beispiel: someone@contoso.com)|
+|Bcc|string|Geben Sie E-Mail-Adressen an, und trennen Sie sie jeweils durch ein Semikolon. (Beispiel: someone@contoso.com)|
+|IsHtml|Boolescher Wert|Ist HTML|
+
+
+#### Senden einer E-Mail
+Dieser Vorgang sendet eine E-Mail.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|emailMessage*|E-Mail|E-Mail|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+Keine.
+
+#### E-Mail löschen
+Dieser Vorgang löscht eine E-Mail anhand der ID.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|messageId*|Nachrichten-ID|ID der zu löschenden E-Mail|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+Keine.
+
+#### Als gelesen markieren
+Dieser Vorgang markiert eine E-Mail als gelesen.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|messageId*|Nachrichten-ID|ID der E-Mail, die als gelesen markiert werden soll|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+Keine.
+
+
+#### Reply to email (E-Mail beantworten)
+Dieser Vorgang beantwortet eine E-Mail.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|messageId*|Nachrichten-ID|ID der zu beantwortenden E-Mail|
+|comment*|Kommentar|Antwortkommentar|
+|replyAll|Allen antworten|Allen Empfängern antworten|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+Keine.
+
+
+#### Anlagen abrufen
+Dieser Vorgang ruft eine E-Mail-Anlage anhand der ID ab.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|messageId*|Nachrichten-ID|ID der E-Mail|
+|attachmentId*|Anlagen-ID|ID der herunterzuladenden Anlage|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+Keine.
+
+
+#### When a new email arrives (Wenn eine neue E-Mail eingeht)
+Dieser Vorgang löst einen Ablauf aus, wenn eine neue E-Mail eingeht.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|folderPath|Ordnerpfad|Abzurufender E-Mail-Ordner (Standard: Posteingang)|
+|to|To  
+|E-Mail-Adressen der Empfänger|
+|from|Aus|Absenderadresse|
+|importance|Priorität|Wichtigkeit der E-Mail (High, Normal, Low) (Standard: Normal)|
+|fetchOnlyWithAttachment|Has Attachments (Mit Anlagen)|Nur E-Mail-Nachrichten mit einer Anlage abrufen|
+|includeAttachments|Anlagen einschließen|Anlagen einbeziehen|
+|subjectFilter|Subject Filter (Betrefffilter)|Zeichenfolge, die in der Betreffzeile gesucht werden soll.|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+TriggerBatchResponse[ReceiveMessage]
+
+| Eigenschaftenname | Datentyp |
+|---|---|
+|value|array|
+
+
+#### E-Mails mit Optionen senden
+Dieser Vorgang sendet eine E-Mail mit mehreren Optionen und wartet, bis der Empfänger mit einer der Optionen antwortet.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|optionsEmailSubscription*|Abonnementanforderung für E-Mail-Optionen|Abonnementanforderung für E-Mail-Optionen|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+SubscriptionResponse: Modell für das Genehmigungs-E-Mail-Abonnement
+
+| Eigenschaftenname | Datentyp | Beschreibung |
+|---|---|---|
+|id|string|ID des Abonnements|
+|Ressource|string|Ressource der Abonnementanforderung|
+|notificationType|string|Benachrichtigungstyp|
+|notificationUrl|string|Benachrichtigungs-URL|
+
+
+#### Genehmigungs-E-Mail senden
+Dieser Vorgang sendet eine Genehmigungs-E-Mail und wartet auf eine Antwort des Empfängers.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|approvalEmailSubscription*|Abonnementanforderung für Genehmigungs-E-Mail.|Abonnementanforderung für Genehmigungs-E-Mail.|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+SubscriptionResponse: Modell für das Genehmigungs-E-Mail-Abonnement
+
+| Eigenschaftenname | Datentyp | Beschreibung |
+|---|---|---|
+|id|string|ID des Abonnements|
+|Ressource|string|Ressource der Abonnementanforderung|
+|notificationType|string|Benachrichtigungstyp|
+|notificationUrl|string|Benachrichtigungs-URL|
+
+
+#### Kalender abrufen
+Dieser Vorgang führt die verfügbaren Kalender auf.
+
+Es gibt keine Parameter für diesen Aufruf.
+
+##### Ausgabedetails
+TablesList
+
+| Eigenschaftenname | Datentyp |
+|---|---|
+|value|array|
+
+
+#### Ereignisse abrufen
+Dieser Vorgang ruft Ereignisse aus einem Kalender ab.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|table*|Kalender-ID|Wählen Sie einen Kalender aus.|
+|$filter|Filterabfrage|Eine ODATA-Filterabfrage zum Einschränken der Anzahl zurückgegebener Einträge|
+|$orderby|Sortieren nach|Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen|
+|$skip|Auslassungsanzahl|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
+|$top|Maximale Anzahl von Get-Anforderungen|Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256)|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+CalendarEventList: Die Liste mit den Kalenderelementen
+
+| Eigenschaftenname | Datentyp | Beschreibung |
+|---|---|---|
+|value|array|Liste mit Kalenderelementen|
+
+
+#### Ereignis erstellen
+Dieser Vorgang erstellt ein neues Ereignis in einem Kalender.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|table*|Kalender-ID|Wählen Sie einen Kalender aus.|
+|item*|Item|Zu erstellendes Ereignis|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+CalendarEvent: Connector-spezifische Kalenderereignis-Modellklasse.
+
+| Eigenschaftenname | Datentyp | Beschreibung |
+|---|---|---|
+|ID|string|Der eindeutige Bezeichner des Ereignisses.|
+|Attendees|array|Liste mit den Teilnehmern für das Ereignis.|
+|Body|nicht definiert|Der Text der dem Ereignis zugeordneten Nachricht.|
+|BodyPreview|string|Die Vorschau der dem Ereignis zugeordneten Nachricht.|
+|Kategorien|array|Die dem Ereignis zugeordneten Kategorien.|
+|ChangeKey|string|Identifiziert die Version des Ereignisobjekts. ChangeKey ändert sich bei jeder Änderung des Ereignisses.|
+|DateTimeCreated|string|Datum und Uhrzeit der Ereigniserstellung.|
+|DateTimeLastModified|string|Datum und Uhrzeit der letzten Änderung des Ereignisses.|
+|End|string|Die Endzeit des Ereignisses.|
+|EndTimeZone|string|Gibt die Zeitzone der Besprechungsendzeit an. Dieser Wert muss der Definition in Windows entsprechen. (Beispiel: Pacific Normalzeit)|
+|HasAttachments|Boolescher Wert|„True“, wenn das Ereignis über Anlagen verfügt.|
+|Priorität|string|Die Wichtigkeit des Ereignisses: gering, normal oder hoch.|
+|IsAllDay|Boolescher Wert|„True“, wenn das Ereignis den ganzen Tag dauert.|
+|IsCancelled|Boolescher Wert|„True“, wenn das Ereignis storniert wurde.|
+|IsOrganizer|Boolescher Wert|„True“, wenn der Absender der Nachricht auch der Organisator ist.|
+|Standort|nicht definiert|Der Ort des Ereignisses.|
+|Organizer|nicht definiert|Der Organisator des Ereignisses.|
+|Serie|nicht definiert|Das Serienmuster für das Ereignis.|
+|Reminder|integer|Zeit für die Erinnerung vor Beginn des Ereignisses (in Minuten).|
+|ResponseRequested|Boolescher Wert|„True“, falls der Absender eine Antwort erhalten möchte, wenn das Ereignis angenommen oder abgelehnt wird.|
+|ResponseStatus|nicht definiert|Gibt die Art der Antwort an, die als Reaktion auf eine Ereignisnachricht gesendet wurde.|
+|SeriesMasterId|string|Eindeutiger Bezeichner für den Ereignistyp „Serienmaster“.|
+|ShowAs|string|Zeigt den Verfügbarkeitsstatus (verfügbar oder beschäftigt) an.|
+|Starten|string|Die Startzeit des Ereignisses.|
+|StartTimeZone|string|Gibt die Zeitzone der Besprechungsstartzeit an. Dieser Wert muss der Definition in Windows entsprechen. (Beispiel: Pacific Normalzeit)|
+|Betreff|string|Der Betreff des Ereignisses.|
+|Typ|string|Der Ereignistyp: einfache Instanz, Vorkommen, Ausnahme oder Serienmaster.|
+|WebLink|string|Die Vorschau der dem Ereignis zugeordneten Nachricht.|
+
+
+#### Ereignis abrufen
+Dieser Vorgang ruft ein spezifisches Ereignis aus einem Kalender ab.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|table*|Kalender-ID|Wählen Sie einen Kalender aus.|
+|id*|Element-ID|Wählen Sie ein Ereignis aus.|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+CalendarEvent: Connector-spezifische Kalenderereignis-Modellklasse.
+
+| Eigenschaftenname | Datentyp | Beschreibung |
+|---|---|---|
+|ID|string|Der eindeutige Bezeichner des Ereignisses.|
+|Attendees|array|Liste mit den Teilnehmern für das Ereignis.|
+|Body|nicht definiert|Der Text der dem Ereignis zugeordneten Nachricht.|
+|BodyPreview|string|Die Vorschau der dem Ereignis zugeordneten Nachricht.|
+|Kategorien|array|Die dem Ereignis zugeordneten Kategorien.|
+|ChangeKey|string|Identifiziert die Version des Ereignisobjekts. ChangeKey ändert sich bei jeder Änderung des Ereignisses.|
+|DateTimeCreated|string|Datum und Uhrzeit der Ereigniserstellung.|
+|DateTimeLastModified|string|Datum und Uhrzeit der letzten Änderung des Ereignisses.|
+|End|string|Die Endzeit des Ereignisses.|
+|EndTimeZone|string|Gibt die Zeitzone der Besprechungsendzeit an. Dieser Wert muss der Definition in Windows entsprechen. (Beispiel: Pacific Normalzeit)|
+|HasAttachments|Boolescher Wert|„True“, wenn das Ereignis über Anlagen verfügt.|
+|Priorität|string|Die Wichtigkeit des Ereignisses: gering, normal oder hoch.|
+|IsAllDay|Boolescher Wert|„True“, wenn das Ereignis den ganzen Tag dauert.|
+|IsCancelled|Boolescher Wert|„True“, wenn das Ereignis storniert wurde.|
+|IsOrganizer|Boolescher Wert|„True“, wenn der Absender der Nachricht auch der Organisator ist.|
+|Standort|nicht definiert|Der Ort des Ereignisses.|
+|Organizer|nicht definiert|Der Organisator des Ereignisses.|
+|Serie|nicht definiert|Das Serienmuster für das Ereignis.|
+|Reminder|integer|Zeit für die Erinnerung vor Beginn des Ereignisses (in Minuten).|
+|ResponseRequested|Boolescher Wert|„True“, falls der Absender eine Antwort erhalten möchte, wenn das Ereignis angenommen oder abgelehnt wird.|
+|ResponseStatus|nicht definiert|Gibt die Art der Antwort an, die als Reaktion auf eine Ereignisnachricht gesendet wurde.|
+|SeriesMasterId|string|Eindeutiger Bezeichner für den Ereignistyp „Serienmaster“.|
+|ShowAs|string|Zeigt den Verfügbarkeitsstatus (verfügbar oder beschäftigt) an.|
+|Starten|string|Die Startzeit des Ereignisses.|
+|StartTimeZone|string|Gibt die Zeitzone der Besprechungsstartzeit an. Dieser Wert muss der Definition in Windows entsprechen. (Beispiel: Pacific Normalzeit)|
+|Betreff|string|Der Betreff des Ereignisses.|
+|Typ|string|Der Ereignistyp: einfache Instanz, Vorkommen, Ausnahme oder Serienmaster.|
+|WebLink|string|Die Vorschau der dem Ereignis zugeordneten Nachricht.|
+
+
+#### Ereignis löschen
+Dieser Vorgang löscht ein Ereignis in einem Kalender.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|table*|Kalender-ID|Wählen Sie einen Kalender aus.|
+|id*|ID|Wählen Sie ein Ereignis aus.|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+Keine.
+
+
+#### Ereignis aktualisieren
+Dieser Vorgang aktualisiert ein Ereignis in einem Kalender.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|table*|Kalender-ID|Wählen Sie einen Kalender aus.|
+|id*|ID|Wählen Sie ein Ereignis aus.|
+|item*|Item|Zu aktualisierendes Ereignis|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+CalendarEvent: Connector-spezifische Kalenderereignis-Modellklasse.
+
+| Eigenschaftenname | Datentyp | Beschreibung |
+|---|---|---|
+|ID|string|Der eindeutige Bezeichner des Ereignisses.|
+|Attendees|array|Liste mit den Teilnehmern für das Ereignis.|
+|Body|nicht definiert|Der Text der dem Ereignis zugeordneten Nachricht.|
+|BodyPreview|string|Die Vorschau der dem Ereignis zugeordneten Nachricht.|
+|Kategorien|array|Die dem Ereignis zugeordneten Kategorien.|
+|ChangeKey|string|Identifiziert die Version des Ereignisobjekts. ChangeKey ändert sich bei jeder Änderung des Ereignisses.|
+|DateTimeCreated|string|Datum und Uhrzeit der Ereigniserstellung.|
+|DateTimeLastModified|string|Datum und Uhrzeit der letzten Änderung des Ereignisses.|
+|End|string|Die Endzeit des Ereignisses.|
+|EndTimeZone|string|Gibt die Zeitzone der Besprechungsendzeit an. Dieser Wert muss der Definition in Windows entsprechen. (Beispiel: Pacific Normalzeit)|
+|HasAttachments|Boolescher Wert|„True“, wenn das Ereignis über Anlagen verfügt.|
+|Priorität|string|Die Wichtigkeit des Ereignisses: gering, normal oder hoch.|
+|IsAllDay|Boolescher Wert|„True“, wenn das Ereignis den ganzen Tag dauert.|
+|IsCancelled|Boolescher Wert|„True“, wenn das Ereignis storniert wurde.|
+|IsOrganizer|Boolescher Wert|„True“, wenn der Absender der Nachricht auch der Organisator ist.|
+|Standort|nicht definiert|Der Ort des Ereignisses.|
+|Organizer|nicht definiert|Der Organisator des Ereignisses.|
+|Serie|nicht definiert|Das Serienmuster für das Ereignis.|
+|Reminder|integer|Zeit für die Erinnerung vor Beginn des Ereignisses (in Minuten).|
+|ResponseRequested|Boolescher Wert|„True“, falls der Absender eine Antwort erhalten möchte, wenn das Ereignis angenommen oder abgelehnt wird.|
+|ResponseStatus|nicht definiert|Gibt die Art der Antwort an, die als Reaktion auf eine Ereignisnachricht gesendet wurde.|
+|SeriesMasterId|string|Eindeutiger Bezeichner für den Ereignistyp „Serienmaster“.|
+|ShowAs|string|Zeigt den Verfügbarkeitsstatus (verfügbar oder beschäftigt) an.|
+|Starten|string|Die Startzeit des Ereignisses.|
+|StartTimeZone|string|Gibt die Zeitzone der Besprechungsstartzeit an. Dieser Wert muss der Definition in Windows entsprechen. (Beispiel: Pacific Normalzeit)|
+|Betreff|string|Der Betreff des Ereignisses.|
+|Typ|string|Der Ereignistyp: einfache Instanz, Vorkommen, Ausnahme oder Serienmaster.|
+|WebLink|string|Die Vorschau der dem Ereignis zugeordneten Nachricht.|
+
+
+#### When a new event is created (Wenn ein neues Ereignis erstellt wird)
+Dieser Vorgang löst einen Ablauf aus, wenn in einem Kalender ein neues Ereignis erstellt wird.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|table*|Kalender-ID|Wählen Sie einen Kalender aus.|
+|$filter|Filterabfrage|Eine ODATA-Filterabfrage zum Einschränken der Anzahl zurückgegebener Einträge|
+|$orderby|Sortieren nach|Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen|
+|$skip|Auslassungsanzahl|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
+|$top|Maximale Anzahl von Get-Anforderungen|Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256)|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+CalendarItemsList: Die Liste der Kalenderelemente
+
+| Eigenschaftenname | Datentyp | Beschreibung |
+|---|---|---|
+|value|array|Liste mit Kalenderelementen|
+
+
+#### When an event is modified (Wenn ein Ereignis geändert wird)
+Dieser Vorgang löst einen Ablauf aus, wenn in einem Kalender ein Ereignis geändert wird.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|table*|Kalender-ID|Wählen Sie einen Kalender aus.|
+|$filter|Filterabfrage|Eine ODATA-Filterabfrage zum Einschränken der Anzahl zurückgegebener Einträge|
+|$orderby|Sortieren nach|Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen|
+|$skip|Auslassungsanzahl|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
+|$top|Maximale Anzahl von Get-Anforderungen|Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256)|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+CalendarItemsList: Die Liste der Kalenderelemente
+
+
+| Eigenschaftenname | Datentyp | Beschreibung |
+|---|---|---|
+|value|array|Liste mit Kalenderelementen|
+
+
+#### Ordner „Kontakte“ abrufen
+Dieser Vorgang führt die verfügbaren Ordner vom Typ „Kontakte“ auf.
+
+Es gibt keine Parameter für diesen Aufruf.
+
+##### Ausgabedetails
+TablesList
+
+| Eigenschaftenname | Datentyp |
+|---|---|
+|value|array|
+
+
+#### Kontakte abrufen
+Dieser Vorgang ruft Kontakte aus einem Ordner vom Typ „Kontakte“ ab.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|table*|Ordner-ID|Eindeutiger Bezeichner des abzurufenden Ordners „Kontakte“|
+|$filter|Filterabfrage|Eine ODATA-Filterabfrage zum Einschränken der Anzahl zurückgegebener Einträge|
+|$orderby|Sortieren nach|Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen|
+|$skip|Auslassungsanzahl|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
+|$top|Maximale Anzahl von Get-Anforderungen|Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256)|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+ContactList: Die Liste mit den Kontakten
+
+| Eigenschaftenname | Datentyp | Beschreibung |
+|---|---|---|
+|value|array|Kontaktliste|
+
+
+#### Kontakt erstellen
+Dieser Vorgang erstellt einen neuen Kontakt in einem Ordner vom Typ „Kontakte“.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|table*|Ordner-ID|Wählen Sie einen Ordner für Kontakte aus.|
+|item*|Item|Zu erstellender Kontakt|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+Contact: Kontakt
+
+| Eigenschaftenname | Datentyp | Beschreibung |
+|---|---|---|
+|ID|string|Der eindeutige Bezeichner des Kontakts.|
+|ParentFolderId|string|Die ID des übergeordneten Ordners des Kontakts.|
+|Birthday|string|Das Geburtsdatum des Kontakts.|
+|FileAs|string|Der Name, unter dem der Kontakt gespeichert ist.|
+|DisplayName|string|Der Anzeigename des Kontakts.|
+|GivenName|string|Der Vorname des Kontakts.|
+|Initials|string|Die Initialen des Kontakts.|
+|MiddleName|string|Der zweite Vorname des Kontakts.|
+|NickName|string|Der Spitzname des Kontakts.|
+|Surname|string|Der Nachname des Kontakts.|
+|Titel|string|Der Titel des Kontakts.|
+|Generation|string|Die Generation des Kontakts.|
+|EmailAddresses|array|Die E-Mail-Adressen des Kontakts.|
+|ImAddresses|array|Die Sofortnachrichtenadressen des Kontakts.|
+|JobTitle|string|Die Position des Kontakts.|
+|CompanyName|string|Der Name des Unternehmens des Kontakts.|
+|Abteilung|string|Die Abteilung des Kontakts.|
+|OfficeLocation|string|Der Standort der Niederlassung des Kontakts.|
+|Profession|string|Der Beruf des Kontakts.|
+|BusinessHomePage|string|Die geschäftliche Homepage des Kontakts.|
+|AssistantName|string|Der Name des Assistenten des Kontakts.|
+|Manager|string|Der Name des Vorgesetzten des Kontakts.|
+|HomePhones|array|Die privaten Telefonnummern des Kontakts.|
+|BusinessPhones|array|Die geschäftlichen Telefonnummern des Kontakts.|
+|MobilePhone1|string|Die Mobiltelefonnummer des Kontakts.|
+|HomeAddress|nicht definiert|Die Privatadresse des Kontakts.|
+|BusinessAddress|nicht definiert|Die Geschäftsadresse des Kontakts.|
+|OtherAddress|nicht definiert|Sonstige Adressen für den Kontakt.|
+|YomiCompanyName|string|Der phonetische japanische Unternehmensname des Kontakts.|
+|YomiGivenName|string|Der phonetische japanische Vorname des Kontakts.|
+|YomiSurname|string|Der phonetische japanische Nachname des Kontakts.|
+|Kategorien|array|Die dem Kontakt zugeordneten Kategorien.|
+|ChangeKey|string|Identifiziert die Version des Ereignisobjekts.|
+|DateTimeCreated|string|Der Zeitpunkt der Kontakterstellung.|
+|DateTimeLastModified|string|Der Zeitpunkt der Kontaktänderung.|
+
+
+#### Kontakt abrufen
+Dieser Vorgang ruft einen spezifischen Kontakt aus einem Ordner vom Typ „Kontakte“ ab.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|table*|Ordner-ID|Wählen Sie einen Ordner für Kontakte aus.|
+|id*|Element-ID|Eindeutiger Bezeichner des abzurufenden Kontakts|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+Contact: Kontakt
+
+| Eigenschaftenname | Datentyp | Beschreibung |
+|---|---|---|
+|ID|string|Der eindeutige Bezeichner des Kontakts.|
+|ParentFolderId|string|Die ID des übergeordneten Ordners des Kontakts.|
+|Birthday|string|Das Geburtsdatum des Kontakts.|
+|FileAs|string|Der Name, unter dem der Kontakt gespeichert ist.|
+|DisplayName|string|Der Anzeigename des Kontakts.|
+|GivenName|string|Der Vorname des Kontakts.|
+|Initials|string|Die Initialen des Kontakts.|
+|MiddleName|string|Der zweite Vorname des Kontakts.|
+|NickName|string|Der Spitzname des Kontakts.|
+|Surname|string|Der Nachname des Kontakts.|
+|Titel|string|Der Titel des Kontakts.|
+|Generation|string|Die Generation des Kontakts.|
+|EmailAddresses|array|Die E-Mail-Adressen des Kontakts.|
+|ImAddresses|array|Die Sofortnachrichtenadressen des Kontakts.|
+|JobTitle|string|Die Position des Kontakts.|
+|CompanyName|string|Der Name des Unternehmens des Kontakts.|
+|Abteilung|string|Die Abteilung des Kontakts.|
+|OfficeLocation|string|Der Standort der Niederlassung des Kontakts.|
+|Profession|string|Der Beruf des Kontakts.|
+|BusinessHomePage|string|Die geschäftliche Homepage des Kontakts.|
+|AssistantName|string|Der Name des Assistenten des Kontakts.|
+|Manager|string|Der Name des Vorgesetzten des Kontakts.|
+|HomePhones|array|Die privaten Telefonnummern des Kontakts.|
+|BusinessPhones|array|Die geschäftlichen Telefonnummern des Kontakts.|
+|MobilePhone1|string|Die Mobiltelefonnummer des Kontakts.|
+|HomeAddress|nicht definiert|Die Privatadresse des Kontakts.|
+|BusinessAddress|nicht definiert|Die Geschäftsadresse des Kontakts.|
+|OtherAddress|nicht definiert|Sonstige Adressen für den Kontakt.|
+|YomiCompanyName|string|Der phonetische japanische Unternehmensname des Kontakts.|
+|YomiGivenName|string|Der phonetische japanische Vorname des Kontakts.|
+|YomiSurname|string|Der phonetische japanische Nachname des Kontakts.|
+|Kategorien|array|Die dem Kontakt zugeordneten Kategorien.|
+|ChangeKey|string|Identifiziert die Version des Ereignisobjekts.|
+|DateTimeCreated|string|Der Zeitpunkt der Kontakterstellung.|
+|DateTimeLastModified|string|Der Zeitpunkt der Kontaktänderung.|
+
+
+#### Kontakt löschen
+Dieser Vorgang löscht einen Kontakt aus einem Ordner vom Typ „Kontakte“.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|table*|Ordner-ID|Wählen Sie einen Ordner für Kontakte aus.|
+|id*|ID|Eindeutiger Bezeichner des zu löschenden Kontakts|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+Keine.
+
+
+#### Kontakt aktualisieren
+Dieser Vorgang aktualisiert einen Kontakt in einem Ordner vom Typ „Kontakte“.
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|table*|Ordner-ID|Wählen Sie einen Ordner für Kontakte aus.|
+|id*|ID|Eindeutiger Bezeichner des zu aktualisierenden Kontakts|
+|item*|Item|Zu aktualisierendes Kontaktelement|
+
+Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
+
+##### Ausgabedetails
+Contact: Kontakt
+
+| Eigenschaftenname | Datentyp | Beschreibung |
+|---|---|---|
+|ID|string|Der eindeutige Bezeichner des Kontakts.|
+|ParentFolderId|string|Die ID des übergeordneten Ordners des Kontakts.|
+|Birthday|string|Das Geburtsdatum des Kontakts.|
+|FileAs|string|Der Name, unter dem der Kontakt gespeichert ist.|
+|DisplayName|string|Der Anzeigename des Kontakts.|
+|GivenName|string|Der Vorname des Kontakts.|
+|Initials|string|Die Initialen des Kontakts.|
+|MiddleName|string|Der zweite Vorname des Kontakts.|
+|NickName|string|Der Spitzname des Kontakts.|
+|Surname|string|Der Nachname des Kontakts.|
+|Titel|string|Der Titel des Kontakts.|
+|Generation|string|Die Generation des Kontakts.|
+|EmailAddresses|array|Die E-Mail-Adressen des Kontakts.|
+|ImAddresses|array|Die Sofortnachrichtenadressen des Kontakts.|
+|JobTitle|string|Die Position des Kontakts.|
+|CompanyName|string|Der Name des Unternehmens des Kontakts.|
+|Abteilung|string|Die Abteilung des Kontakts.|
+|OfficeLocation|string|Der Standort der Niederlassung des Kontakts.|
+|Profession|string|Der Beruf des Kontakts.|
+|BusinessHomePage|string|Die geschäftliche Homepage des Kontakts.|
+|AssistantName|string|Der Name des Assistenten des Kontakts.|
+|Manager|string|Der Name des Vorgesetzten des Kontakts.|
+|HomePhones|array|Die privaten Telefonnummern des Kontakts.|
+|BusinessPhones|array|Die geschäftlichen Telefonnummern des Kontakts.|
+|MobilePhone1|string|Die Mobiltelefonnummer des Kontakts.|
+|HomeAddress|nicht definiert|Die Privatadresse des Kontakts.|
+|BusinessAddress|nicht definiert|Die Geschäftsadresse des Kontakts.|
+|OtherAddress|nicht definiert|Sonstige Adressen für den Kontakt.|
+|YomiCompanyName|string|Der phonetische japanische Unternehmensname des Kontakts.|
+|YomiGivenName|string|Der phonetische japanische Vorname des Kontakts.|
+|YomiSurname|string|Der phonetische japanische Nachname des Kontakts.|
+|Kategorien|array|Die dem Kontakt zugeordneten Kategorien.|
+|ChangeKey|string|Identifiziert die Version des Ereignisobjekts.|
+|DateTimeCreated|string|Der Zeitpunkt der Kontakterstellung.|
+|DateTimeLastModified|string|Der Zeitpunkt der Kontaktänderung.|
+
+
+
+## HTTP-Antworten
+
+Von den oben angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes zurückgegeben werden:
+
 |Name|Beschreibung|
 |---|---|
-|200|Vorgang erfolgreich|
-|202|Vorgang erfolgreich|
-|400|BadRequest|
-|401|Nicht autorisiert|
-|403|Verboten (403)|
-|500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
-
-
-### E-Mails abrufen 
-Ruft E-Mails aus einem Ordner ab. ```GET: /Mail```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|folderPath|string|no|query|Posteingang|Pfad des Ordners zum Abrufen von Nachrichten (Standard: Posteingang)|
-|top|integer|no|query|10|Anzahl der abzurufenden E-Mails (Standardeinstellung: 10)|
-|fetchOnlyUnread|Boolescher Wert|no|query|true|Nur ungelesene Nachrichten abrufen?|
-|includeAttachments|Boolescher Wert|no|query|false|Falls auf „true“ festgelegt, werden Anlagen zusammen mit der E-Mail-Nachricht abgerufen.|
-|searchQuery|string|no|query|(Keine)|Suchabfrage zum Filtern von E-Mails|
-|skip|integer|no|query|0|Anzahl der zu überspringenden E-Mails (Standardeinstellung: 0)|
-|skipToken|string|no|query|(Keine)|Token überspringen, um neue Seite abzurufen|
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|Vorgang erfolgreich|
-|400|BadRequest|
-|401|Nicht autorisiert|
-|403|Verboten (403)|
-|500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
-
-
-### E-Mail senden 
-Sendet eine E-Mail. ```POST: /Mail```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|emailMessage| |Ja|body|(Keine)|E-Mail-Nachricht-Instanz|
-
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|Vorgang erfolgreich|
-|400|BadRequest|
-|401|Nicht autorisiert|
-|403|Verboten (403)|
-|500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
-
-
-### E-Mail löschen 
-Löscht eine E-Mail anhand der ID. ```DELETE: /Mail/{messageId}```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|messageId|string|Ja|path|(Keine)|ID der zu löschenden Nachricht|
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|Vorgang erfolgreich|
-|400|BadRequest|
-|401|Nicht autorisiert|
-|403|Verboten (403)|
-|500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
-
-
-### Als gelesen markieren 
-Markiert eine E-Mail als gelesen. ```POST: /Mail/MarkAsRead/{messageId}```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|messageId|string|Ja|path|(Keine)|ID der Nachricht, die als gelesen markiert werden soll|
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|Vorgang erfolgreich|
-|400|BadRequest|
-|401|Nicht autorisiert|
-|403|Verboten (403)|
-|500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
-
-
-### Nachricht beantworten 
-Antwortet auf eine E-Mail. ```POST: /Mail/ReplyTo/{messageId}```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|messageId|string|Ja|path|(Keine)|ID der zu beantwortenden Nachricht|
-|comment|string|Ja|query|(Keine)|Antwortkommentar|
-|replyAll|Boolescher Wert|no|query|false|Allen Empfängern antworten|
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|Vorgang erfolgreich|
-|400|BadRequest|
-|401|Nicht autorisiert|
-|403|Verboten (403)|
-|500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
-
-
-### Anlagen abrufen 
-Ruft die Nachrichtenanlage anhand der ID ab. ```GET: /Mail/{messageId}/Attachments/{attachmentId}```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|messageId|string|Ja|path|(Keine)|ID der Nachricht|
-|attachmentId|string|Ja|path|(Keine)|ID der herunterzuladenden Anlage|
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|Vorgang erfolgreich|
-|400|BadRequest|
-|401|Nicht autorisiert|
-|403|Verboten (403)|
-|500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
-
-
-### Bei neuer E-Mail 
-Löst einen Datenfluss aus, wenn eine neue E-Mail eingeht. ```GET: /Mail/OnNewEmail```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|folderPath|string|no|query|Posteingang|Abzurufender E-Mail-Ordner (Standard: Posteingang)|
-|to|string|no|query|(Keine)|E-Mail-Adressen der Empfänger|
-|from|string|no|query|(Keine)|Absenderadresse|
-|importance|string|no|query|Normal|Wichtigkeit der E-Mail (High, Normal, Low) (Standard: Normal)|
-|fetchOnlyWithAttachment|Boolescher Wert|no|query|false|Nur E-Mail-Nachrichten mit einer Anlage abrufen|
-|includeAttachments|Boolescher Wert|no|query|false|Anlagen einbeziehen|
-|subjectFilter|string|no|query|(Keine)|Zeichenfolge, die in der Betreffzeile gesucht werden soll.|
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|Vorgang erfolgreich|
+|200|OK|
 |202|Zulässig|
-|400|BadRequest|
+|400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
-|500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
-
-
-### E-Mails mit Optionen senden 
-Sendet eine E-Mail mit mehreren Optionen und wartet, bis der Empfänger mit einer der Optionen antwortet. ```POST: /mailwithoptions/$subscriptions```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|optionsEmailSubscription| |Ja|body|(Keine)|Abonnementanforderung für E-Mail-Optionen|
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|201|Abonnement erstellt|
-|400|BadRequest|
-|401|Nicht autorisiert|
-|403|Verboten (403)|
-|500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
-
-
-### Genehmigungs-E-Mail senden 
-Sendet eine Genehmigungs-E-Mail und wartet auf eine Antwort des Empfängers. ```POST: /approvalmail/$subscriptions```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|approvalEmailSubscription| |Ja|body|(Keine)|Abonnementanforderung für Genehmigungs-E-Mail.|
-
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|201|Abonnement erstellt|
-|400|BadRequest|
-|401|Nicht autorisiert|
-|403|Verboten (403)|
-|500|Interner Serverfehler|
-|default|Fehler beim Vorgang.|
-
-
-
-
-### Kalender abrufen 
-Ruft Kalender ab. ```GET: /datasets/calendars/tables```
-
-Es gibt keine Parameter für diesen Aufruf.
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-
-
-### Ereignisse abrufen 
-Ruft Elemente aus einem Kalender ab. ```GET: /datasets/calendars/tables/{table}/items```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|table|string|Ja|path|(Keine)|Eindeutiger Bezeichner des abzurufenden Kalenders|
-|$skip|integer|no|query|(Keine)|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
-|$top|integer|no|query|(Keine)|Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256)|
-|$filter|string|no|query|(Keine)|Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge|
-|$orderby|string|no|query|(Keine)|Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen|
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-### Ereignis erstellen 
-Erstellt ein neues Ereignis. ```POST: /datasets/calendars/tables/{table}/items```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|table|string|Ja|path|(Keine)|Eindeutiger Bezeichner eines Kalenders|
-|item| |Ja|body|(Keine)|Zu erstellendes Kalenderelement|
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-### Ereignis abrufen 
-Ruft ein bestimmtes Element aus einem Kalender ab. ```GET: /datasets/calendars/tables/{table}/items/{id}```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|table|string|Ja|path|(Keine)|Eindeutiger Bezeichner eines Kalenders|
-|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner eines abzurufenden Kalenderelements|
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-### Ereignis löschen 
-Löscht ein Kalenderelement. ```DELETE: /datasets/calendars/tables/{table}/items/{id}```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|table|string|Ja|path|(Keine)|Eindeutiger Bezeichner eines Kalenders.|
-|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner eines zu löschenden Kalenderelements|
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-### Ereignis aktualisieren 
-Aktualisiert ein Kalenderelement teilweise. ```PATCH: /datasets/calendars/tables/{table}/items/{id}```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|table|string|Ja|path|(Keine)|Eindeutiger Bezeichner eines Kalenders|
-|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner eines zu aktualisierenden Kalenderelements|
-|item| |Ja|body|(Keine)|Zu aktualisierendes Kalenderelement|
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-### Bei neuen Elementen 
-Wird ausgelöst, wenn ein neues Kalenderelement erstellt wird. ```GET: /datasets/calendars/tables/{table}/onnewitems```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|table|string|Ja|path|(Keine)|Eindeutiger Bezeichner eines Kalenders|
-|$skip|integer|no|query|(Keine)|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
-|$top|integer|no|query|(Keine)|Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256)|
-|$filter|string|no|query|(Keine)|Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge|
-|$orderby|string|no|query|(Keine)|Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen|
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-### Bei aktualisierten Elementen 
-Wird ausgelöst, wenn ein Kalenderelement geändert wird. ```GET: /datasets/calendars/tables/{table}/onupdateditems```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|table|string|Ja|path|(Keine)|Eindeutiger Bezeichner eines Kalenders|
-|$skip|integer|no|query|(Keine)|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
-|$top|integer|no|query|(Keine)|Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256)|
-|$filter|string|no|query|(Keine)|Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge|
-|$orderby|string|no|query|(Keine)|Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen|
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-### Ordner „Kontakte“ abrufen 
-Ruft Ordner des Typs „Kontakte“ ab. ```GET: /datasets/contacts/tables```
-
-Es gibt keine Parameter für diesen Aufruf.
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-### Kontakte abrufen 
-Ruft Kontakte aus einem Ordner des Typs „Kontakte“ ab. ```GET: /datasets/contacts/tables/{table}/items```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|table|string|Ja|path|(Keine)|Eindeutiger Bezeichner des abzurufenden Ordners „Kontakte“|
-|$skip|integer|no|query|(Keine)|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
-|$top|integer|no|query|(Keine)|Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256)|
-|$filter|string|no|query|(Keine)|Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge|
-|$orderby|string|no|query|(Keine)|Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen|
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-### Kontakt erstellen 
-Erstellt einen neuen Kontakt. ```POST: /datasets/contacts/tables/{table}/items```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|table|string|Ja|path|(Keine)|Eindeutiger Bezeichner eines Ordners des Typs „Kontakte“|
-|item| |Ja|body|(Keine)|Zu erstellender Kontakt|
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-### Kontakt abrufen 
-Ruft einen bestimmten Kontakt aus einem Ordner „Kontakte“ ab. ```GET: /datasets/contacts/tables/{table}/items/{id}```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|table|string|Ja|path|(Keine)|Eindeutiger Bezeichner eines Ordners des Typs „Kontakte“|
-|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner des abzurufenden Kontakts|
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-### Kontakt löschen 
-Löscht einen Kontakt. ```DELETE: /datasets/contacts/tables/{table}/items/{id}```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|table|string|Ja|path|(Keine)|Eindeutiger Bezeichner eines Ordners des Typs „Kontakte“.|
-|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner des zu löschenden Kontakts|
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-### Kontakt aktualisieren 
-Aktualisiert einen Kontakt teilweise. ```PATCH: /datasets/contacts/tables/{table}/items/{id}```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|table|string|Ja|path|(Keine)|Eindeutiger Bezeichner eines Ordners des Typs „Kontakte“|
-|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner des zu aktualisierenden Kontakts|
-|item| |Ja|body|(Keine)|Zu aktualisierendes Kontaktelement|
-
-#### Antwort
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-## Objektdefinitionen
-
-#### TriggerBatchResponse[IDictionary[String,Object]]
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|value|array|no|
-
-
-#### SendMessage: E-Mail senden
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|Attachments|array|no|
-|Aus|string|no|
-|Cc|string|no|
-|Bcc|string|no|
-|Betreff|string|Ja|
-|Body|string|Ja|
-|Priorität|string|no|
-|IsHtml|Boolescher Wert|no|
-|To|string|Ja|
-
-#### SendAttachment: Anlage
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|@odata.type|string|no|
-|Name|string|Ja|
-|ContentBytes|string|Ja|
-
-
-#### ReceiveMessage: E-Mail empfangen
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|ID|string|no|
-|IsRead|Boolescher Wert|no|
-|HasAttachment|Boolescher Wert|no|
-|DateTimeReceived|string|no|
-|Anlagen|array|no|
-|Aus|string|no|
-|Cc|string|no|
-|Bcc|string|no|
-|Betreff|string|Ja|
-|Body|string|Ja|
-|Priorität|string|no|
-|IsHtml|Boolescher Wert|no|
-|To|string|Ja|
-
-
-#### ReceiveAttachment: Anlage empfangen
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|ID|string|Ja|
-|ContentType|string|Ja|
-|@odata.type|string|no|
-|Name|string|no|
-|ContentBytes|string|Ja|
-
-
-#### DigestMessage: E-Mail senden
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|Subject|string|Ja|
-|Body|string|no|
-|Priorität|string|no|
-|Digest|array|Ja|
-|Anlagen|array|no|
-|To|string|Ja|
-
-#### TriggerBatchResponse[ReceiveMessage]
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|value|array|no|
-
-
-#### DataSetsMetadata
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|tabular|nicht definiert|no|
-|Blob|nicht definiert|no|
-
-
-#### TabularDataSetsMetadata
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|source|string|no|
-|displayName|string|no|
-|urlEncoding|string|no|
-|tableDisplayName|string|no|
-|tablePluralName|string|no|
-
-
-#### BlobDataSetsMetadata
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|source|string|no|
-|displayName|string|no|
-|urlEncoding|string|no|
-
-
-#### TableMetadata
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|name|string|no|
-|title|string|no|
-|x-ms-permission|string|no|
-|schema|nicht definiert|no|
-
-
-#### OptionsEmailSubscription: Modell für Optionen für E-Mail-Abonnement
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|NotificationUrl|string|no|
-|Message|nicht definiert|no|
-
-#### MessageWithOptions: E-Mail mit Benutzeroptionen Dies ist die Nachricht, die als Teil der Benutzereingabe erwartet wird
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|Subject|string|Ja|
-|Optionen|string|Ja|
-|Body|string|no|
-|Priorität|string|no|
-|Anlagen|array|no|
-|To|string|Ja|
-
-#### SubscriptionResponse: Modell für das Genehmigungs-E-Mail-Abonnement
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|id|string|no|
-|resource|string|no|
-|notificationType|string|no|
-|notificationUrl|string|no|
-
-
-#### ApprovalEmailSubscription: Modell für das Genehmigungs-E-Mail-Abonnement
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|NotificationUrl|string|no|
-|Message|nicht definiert|no|
-
-
-#### ApprovalMessage: Genehmigungs-E-Mail-Nachricht. Dies ist die Nachricht, die als Teil der Benutzereingabe erwartet wird
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|Subject|string|Ja|
-|Optionen|string|Ja|
-|Body|string|no|
-|Priorität|string|no|
-|Anlagen|array|no|
-|To|string|Ja|
-
-#### ApprovalEmailResponse: Genehmigungs-E-Mail-Antwort
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|SelectedOption|string|no|
-
-#### TablesList
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|value|array|no|
-
-
-#### Tabelle
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|Name|string|no|
-|DisplayName|string|no|
-
-
-#### Item
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|ItemInternalId|string|no|
-
-
-#### CalendarItemsList: Die Liste der Kalenderelemente
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|value|array|no|
-
-
-#### CalendarItem: Stellt ein Kalendertabellenelement dar
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|ItemInternalId|string|no|
-
-
-#### ContactItemsList: Die Liste der Kontaktelemente
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|value|array|no|
-
-
-#### ContactItem: Stellt ein Kontakttabellenelement dar
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|ItemInternalId|string|no|
-
-
-#### DataSetsList
-
-| Name | Datentyp |Erforderlich|
-|---|---|---|
-|value|array|no|
-
-
-#### DataSet
-
-| Name | Datentyp | Erforderlich|
-|---|---|---|
-|Name|string|no|
-|DisplayName|string|no|
+|403|Verboten|
+|404|Nicht gefunden|
+|500|Interner Serverfehler. Unbekannter Fehler ist aufgetreten|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
 ## Nächste Schritte
 
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+[Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Informieren Sie sich in unserer [API-Liste](apis-list.md) über die anderen verfügbaren Connectors für Logic Apps.
 
-Gehen Sie zur [Liste der APIs](apis-list.md) zurück.
-
-<!--References-->
-[5]: https://portal.azure.com
-[7]: ./media/connectors-create-api-office365-outlook/aad-tenant-applications.png
-[8]: ./media/connectors-create-api-office365-outlook/aad-tenant-applications-add-appinfo.png
-[9]: ./media/connectors-create-api-office365-outlook/aad-tenant-applications-add-app-properties.png
-[10]: ./media/connectors-create-api-office365-outlook/contoso-aad-app.png
-[11]: ./media/connectors-create-api-office365-outlook/contoso-aad-app-configure.png
-[12]: ./media/connectors-create-api-office365-outlook/contoso-aad-app-delegate-office365-outlook.png
-[13]: ./media/connectors-create-api-office365-outlook/contoso-aad-app-delegate-office365-outlook-permissions.png
-
-<!----HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

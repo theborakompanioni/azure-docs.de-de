@@ -8,7 +8,7 @@
 	documentationCenter=""/>
 
 <tags
-	ms.service="app-service-logic"
+	ms.service="logic-apps"
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -169,4 +169,4 @@ Wenn Sie dies darüber hinaus vollständig in Ihrem eigenen Code implementieren 
 
 Sie müssen dennoch die obigen Schritte ausführen, um die Anwendungsidentität für Ihre Logik-App zu erstellen und diese zum Aufrufen der API zu verwenden.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

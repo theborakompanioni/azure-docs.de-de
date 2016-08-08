@@ -8,7 +8,7 @@
 	documentationCenter=""/>
 
 <tags
-	ms.service="app-service-logic"
+	ms.service="logic-apps"
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -70,7 +70,7 @@ Die forEach-Schleife erwartet ein Array, über das eine Aktion wiederholt wird. 
 
 Außer im Designer können Sie die Definition einer Logik-App wie folgt direkt bearbeiten.
 
-1. Klicken Sie auf der Befehlsleiste auf die Schaltfläche **Codeansicht**. 
+1. Klicken Sie auf der Befehlsleiste auf die Schaltfläche **Codeansicht**.
 
 	Dadurch wird ein vollständiger Editor geöffnet, der die Definition zeigt, die Sie gerade bearbeitet haben.
 
@@ -112,4 +112,4 @@ Dienste können einen Logik-App-Endpunkt zum Starten eines Workflows aufrufen. W
 <!-- Shared links -->
 [Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0727_2016-->

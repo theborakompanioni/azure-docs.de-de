@@ -20,7 +20,7 @@
 >[AZURE.TIP]Klicken Sie [hier](http://go.microsoft.com/fwlink/?LinkId=521878), um Feedback abzugeben.
   
 In diesem Tutorial wird die Integration von Azure und Salesforce Sandbox erläutert.  
-Sandboxes bieten Ihnen die Möglichkeit, mehrere Kopien Ihres Unternehmens in separaten Umgebungen für eine Vielzahl von Zwecken, wie z. B. Entwicklung, Tests und Schulungen, ohne eine Beeinträchtigung der Daten und Anwendungen in Ihrer Vertriebsproduktions-Organisation zu erstellen. 
+Sandboxes bieten Ihnen die Möglichkeit, mehrere Kopien Ihres Unternehmens in separaten Umgebungen für eine Vielzahl von Zwecken, wie z. B. Entwicklung, Tests und Schulungen, ohne eine Beeinträchtigung der Daten und Anwendungen in Ihrer Vertriebsproduktions-Organisation zu erstellen.  
 Weitere Informationen finden Sie unter [Sandbox-Übersicht](https://help.salesforce.com/HTViewHelpDoc?id=create_test_instance.htm&language=en_US)
   
 Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
@@ -126,7 +126,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     
     g. Kopieren Sie im klassischen Azure-Portal auf der Dialogseite **Einmaliges Anmelden konfigurieren um Salesforce Sandbox** den Wert für **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **Anmelde-URL des Identitätsanbieters** ein.
     
-    h. Kopieren Sie im klassischen Azure-Portal auf der Dialogseite **Einmaliges Anmelden konfigurieren um Salesforce Sandbox** den Wert für **Remoteabmelde-URL**, und fügen Sie ihn in das Textfeld **Abmelde-URL des Identitätsanbieters** ein.
+    h. SFDC unterstützt die SAML-Abmeldung nicht. Fügen Sie 'https://login.windows.net/common/wsfederation?wa=wsignout1.0' in das Textfeld **Abmelde-URL des Identitätsanbieter** ein, um dieses Problem zu umgehen.
     
     i. Wählen Sie für **Service Provider Initiated Request Binding** die Option **HTTP Post** aus.
     
@@ -138,8 +138,8 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 ##Aktivieren Ihrer Domäne
   
-In diesem Abschnitt wird davon ausgegangen, dass Sie bereits eine Domäne erstellt haben.  
-Weitere Informationen finden Sie unter [Define Your Domain Name](https://help.salesforce.com/HTViewHelpDoc?id=domain_name_define.htm&language=en_US) (in englischer Sprache).
+In diesem Abschnitt wird davon ausgegangen, dass Sie bereits eine Domäne erstellt haben.
+ Weitere Informationen finden Sie unter [Define Your Domain Name](https://help.salesforce.com/HTViewHelpDoc?id=domain_name_define.htm&language=en_US) (in englischer Sprache).
 
 ###Führen Sie zum Aktivieren Ihrer Domäne die folgenden Schritte aus:
 
@@ -174,7 +174,7 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 
     ![Neues Token](./media/active-directory-saas-salesforce-sandbox-tutorial/IC698776.png "Neues Token")
 
-5.  Prüfen Sie Ihren Posteingang auf eine E-Mail von Salesforce.com mit "**salesforce.com.com Security Bestätigung**" als Betreff.
+5.  Prüfen Sie Ihren Posteingang auf eine E-Mail von Salesforce.com mit „**salesforce.com.com Security Bestätigung**“ als Betreff.
 
 6.  Öffnen Sie die E-Mail, und kopieren Sie das Sicherheitstoken.
 
@@ -205,7 +205,7 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 1.  Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 
-2.  Klicken Sie auf der Anwendungsintegrationsseite für Salesforce Sandbox auf **Benutzer zuweisen**.
+2.  Klicken Sie auf der Anwendungsintegrationsseite für **Salesforce Sandbox** auf **Benutzer zuweisen**.
 
     ![Benutzer zuweisen](./media/active-directory-saas-salesforce-sandbox-tutorial/IC769574.png "Benutzer zuweisen")
 
@@ -217,4 +217,4 @@ Nach 10 Minuten können Sie überprüfen, ob das Konto mit Salesforce Sandbox s
   
 Wenn Sie die Einstellungen für einmaliges Anmelden testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://msdn.microsoft.com/library/dn308586).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

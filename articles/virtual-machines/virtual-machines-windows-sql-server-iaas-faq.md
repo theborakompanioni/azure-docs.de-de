@@ -31,7 +31,7 @@ Dieses Thema bietet Antworten auf einige der häufigsten Fragen zur Ausführung 
 
 1. **Was ist der Unterschied zwischen SQL-VMs und dem SQL-Datenbank-Dienst?**
 
-	Im Prinzip unterscheidet sich die Ausführung von SQL Server auf virtuellen Azure-Computern nicht von der Ausführung in einem Remoterechenzentrum. Im Gegensatz dazu bietet [SQL-Datenbank](../sql-database/sql-database-technical-overview.md) Database-as-a-Service. Mit SQL-Datenbank haben Sie keinen Zugriff auf die Computer, die Ihre Datenbanken hosten. Einen vollständigen Vergleich finden Sie unter [Wählen Sie eine SQL Server-Cloudoption: Azure SQL-Datenbank (PaaS) oder SQL Server auf Azure-VMs (IaaS)](../sql-database/media/data-management-azure-sql-database-and-sql-server-iaas.md).
+	Im Prinzip unterscheidet sich die Ausführung von SQL Server auf virtuellen Azure-Computern nicht von der Ausführung in einem Remoterechenzentrum. Im Gegensatz dazu bietet [SQL-Datenbank](../sql-database/sql-database-technical-overview.md) Database-as-a-Service. Mit SQL-Datenbank haben Sie keinen Zugriff auf die Computer, die Ihre Datenbanken hosten. Einen vollständigen Vergleich finden Sie unter [Wählen Sie eine SQL Server-Cloudoption: Azure SQL-Datenbank (PaaS) oder SQL Server auf Azure-VMs (IaaS)](../sql-database/sql-database-paas-vs-sql-server-iaas.md).
 
 1. **Wie kann ich meine lokale SQL Server-Datenbank zur Cloud migrieren?**
 
@@ -67,7 +67,7 @@ Dieses Thema bietet Antworten auf einige der häufigsten Fragen zur Ausführung 
 
 ## Ressourcen
 
-Eine Übersicht über SQL Server auf virtuellen Azure-Computern bietet das Video [Azure VM is the best platform for SQL Server 2016](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016) (Azure-VM ist die beste Plattform für SQL Server 2016). Sie erhalten auch eine gute Einführung im Thema [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
+Eine Übersicht über SQL Server auf virtuellen Azure-Computern bietet das Video [Azure VM is the best platform for SQL Server 2016](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016) (Azure VM ist die beste Plattform für SQL Server 2016). Sie erhalten auch eine gute Einführung im Thema [Übersicht zu SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md).
 
 Zu weiteren Ressourcen zählen:
 
@@ -77,4 +77,4 @@ Zu weiteren Ressourcen zählen:
 - [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](virtual-machines-windows-sql-performance.md)
 - [Anwendungsmuster und Entwicklungsstrategien für SQL Server auf Azure Virtual Machines](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

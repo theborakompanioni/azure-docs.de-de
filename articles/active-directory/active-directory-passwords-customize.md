@@ -37,7 +37,7 @@ Es wird empfohlen, alle verfügbaren Konfigurationsoptionen für die Kennwortver
 | Wie kann ich Benutzern das Entsperren von AD-Konten ohne Zurücksetzen eines Kennworts ermöglichen? | [Einstellung: Benutzern ermöglichen, ihre AD-Konten ohne Zurücksetzen eines Kennworts zu entsperren](#allow-users-to-unlock-accounts-without-resetting-their-password) |
 | Wie kann ich Benachrichtigungen zur Kennwortzurücksetzung für Benutzer aktivieren? | [Einstellung: Benutzer benachrichtigen, wenn ihre Kennwörter zurückgesetzt wurden](#notify-users-and-admins-when-their-own-password-has-been-reset) |
 | Wie kann ich Benachrichtigungen zur Kennwortzurücksetzung für Administratoren aktivieren? | [Einstellung: Andere Administratoren benachrichtigen, wenn ein Administrator sein eigenes Kennwort zurückgesetzt hat](#notify-admins-when-other-admins-reset-their-own-passwords) |
-| Wie kann ich das Look-and-Feel für das Zurücksetzen von Kennwörtern anpassen? | [Einstellung: Firmenname, Branding und Logo](#password-managment-look-and-feel) |
+| Wie kann ich das Look-and-Feel für das Zurücksetzen von Kennwörtern anpassen? | [Einstellung: Firmenname, Branding und Logo](#password-management-look-and-feel) |
 
 
 ## Aussehen und Verhalten der Kennwortverwaltung
@@ -875,4 +875,4 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 
 [001]: ./media/active-directory-passwords-customize/001.jpg "Image_001.jpg"
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

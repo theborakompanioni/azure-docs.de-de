@@ -1,6 +1,6 @@
 <properties
 pageTitle="Indizierung der JSON-Blobs mit Azure Search-Blobindexer"
-description="Erfahren Sie, wie Sie JSON-Blobs mit Azure Search indizieren können."
+description="Indizierung der JSON-Blobs mit Azure Search-Blobindexer"
 services="search"
 documentationCenter=""
 authors="chaosrealm"
@@ -12,12 +12,16 @@ ms.service="search"
 ms.devlang="rest-api"
 ms.workload="search" ms.topic="article"  
 ms.tgt_pltfrm="na"
-ms.date="04/20/2016"
+ms.date="07/26/2016"
 ms.author="eugenesh" />
 
 # Indizierung der JSON-Blobs mit Azure Search-Blobindexer 
 
-In der Standardeinstellung analysiert der [Azure Search-Blob-Indexer](search-howto-indexing-azure-blob-storage.md) JSON-Blobs als ein einzelnes Segment des Texts. Häufig möchten Sie die Struktur Ihrer JSON-Dokumente beibehalten. Möglicherweise möchten Sie das folgende JSON-Dokument
+Dieser Artikel beschreibt die Konfiguration des Azure Search-Blobindexers, um strukturierte Inhalte aus Blobs zu extrahieren, die JSON enthalten.
+
+## Szenarios
+
+In der Standardeinstellung analysiert der [Azure Search-Blob-Indexer](search-howto-indexing-azure-blob-storage.md) JSON-Blobs als einen einzelnen Textblock. Häufig möchten Sie die Struktur Ihrer JSON-Dokumente beibehalten. Möglicherweise möchten Sie das folgende JSON-Dokument
 
 	{ 
 		"article" : {
@@ -27,25 +31,33 @@ In der Standardeinstellung analysiert der [Azure Search-Blob-Indexer](search-how
 	    }
 	}
 
-nach den Feldern „text“, „datePublished“ und „tags“ im Suchindex analysieren.
+in einem Azure Search-Dokument mit den Feldern „text“, „datePublished“ und „tags“ analysieren.
 
-Dieser Artikel beschreibt die Vorgehensweise beim Konfigurieren von Azure Search-Blob-Indexer für die JSON-Analyse. Viel Spaß beim Indizieren!
+Wenn Ihre Blobs ein **Array aus JSON-Objekten** enthalten, können Sie alternativ dazu auch jedes Element des Arrays in ein separates Azure Search-Dokument umwandeln. Als Beispiel ein Blob mit folgender JSON:
+
+	[
+		{ "id" : "1", "text" : "example 1" },
+		{ "id" : "2", "text" : "example 2" },
+		{ "id" : "3", "text" : "example 3" }
+	]
+
+Damit können Sie Ihren Azure Search-Index mit 3 separaten Dokumenten auffüllen, die jeweils die Felder „id“ und „text“ aufweisen.
 
 > [AZURE.IMPORTANT] Diese Funktion befindet sich derzeit in der Vorschauphase. Sie ist nur im Rahmen der REST-API unter der Version **2015-02-28-Preview** verfügbar. Beachten Sie hierbei, dass Vorschau-APIs für Tests und Evaluierungen bestimmt sind und nicht in Produktionsumgebungen eingesetzt werden sollten.
 
 ## Einrichten der JSON-Indizierung
 
-Um JSON-Blobs zu indizieren, verwenden Sie den Blobindexer im Modus „JSON-Analyse“. Aktivieren Sie die `useJsonParser`-Konfigurationseinstellung in der Eigenschaft `parameters` der Indexerdefinition:
+Um JSON-Blobs zu indizieren, legen Sie den `parsingMode`-Konfigurationsparameter auf `json` (um jedes Blob als ein einzelnes Dokument zu indizieren) oder auf `jsonArray` fest (wenn Ihre Blobs ein JSON-Array enthalten):
 
 	{
 	  "name" : "my-json-indexer",
 	  ... other indexer properties
-	  "parameters" : { "configuration" : { "useJsonParser" : true } }
+	  "parameters" : { "configuration" : { "parsingMode" : "json" | "jsonArray" } }
 	}
 
-Verwenden Sie bei Bedarf **Feldzuordnungen**, um die Eigenschaften des JSON-Quelldokuments auszuwählen, die zum Auffüllen des Suchindexes verwendet werden. Dies wird weiter unten ausführlicher beschrieben.
+Verwenden Sie bei Bedarf **Feldzuordnungen**, um die Eigenschaften des JSON-Quelldokuments auszuwählen, die zum Auffüllen des Zielsuchindexes verwendet werden. Dies wird weiter unten ausführlicher beschrieben.
 
-> [AZURE.IMPORTANT] Bei Verwendung des JSON-Analysemodus betrachtet Azure Search alle Blobs in Ihrer Datenquelle als JSON-Blobs. Wenn Sie eine Mischung aus JSON- und Nicht-JSON-Blobs in der gleichen Datenquelle unterstützen müssen, informieren Sie uns auf [unserer UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search).
+> [AZURE.IMPORTANT] Bei Verwendung der Modi `json` oder `jsonArray` betrachtet Azure Search alle Blobs in Ihrer Datenquelle als JSON-Blobs. Wenn Sie eine Mischung aus JSON- und Nicht-JSON-Blobs in der gleichen Datenquelle unterstützen müssen, informieren Sie uns auf [unserer UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search).
 
 ## Verwenden von Feldzuordnungen zum Erstellen von Suchdokumenten 
 
@@ -61,7 +73,7 @@ Kommen wir nun zu unserem JSON-Beispieldokument zurück:
 	    }
 	}
 
-Angenommen, Sie haben einen Suchindex mit den folgenden Feldern: `text` vom Typ „Edm.String“, `date` vom Typ „Edm.DateTimeOffset“ und `tags` vom Typ „Collection(Edm.String)“. Um das JSON-Objekt in der gewünschten Form zuzuordnen, verwenden Sie die folgenden Feldzuordnungen:
+Angenommen, Sie haben einen Suchindex mit den folgenden Feldern: `text` vom Typ Edm.String, `date` vom Typ Edm.DateTimeOffset und `tags` vom Typ Collection(Edm.String). Um das JSON-Objekt in der gewünschten Form zuzuordnen, verwenden Sie die folgenden Feldzuordnungen:
 
 	"fieldMappings" : [ 
         { "sourceFieldName" : "/article/text", "targetFieldName" : "text" },
@@ -85,7 +97,28 @@ Wenn Ihre JSON-Dokumente nur einfache Eigenschaften der obersten Ebene enthalten
        "tags" : [ "search", "storage", "howto" ]    
  	}
 
-> [AZURE.NOTE] Azure Search unterstützt derzeit nur die Analyse eines einzigen JSON-Blobs in einem einzigen Suchdokument. Wenn Ihre Blobs JSON-Arrays enthalten, die Sie in mehreren Suchdokumenten analysieren möchten, stimmen Sie für [diese UserVoice-Empfehlung](https://feedback.azure.com/forums/263029-azure-search/suggestions/13431384-parse-blob-containing-a-json-array-into-multiple-d), um uns zu helfen, diese Arbeit zu priorisieren.
+## Indizieren von geschachtelten JSON-Arrays
+
+Was geschieht, wenn Sie ein Array aus JSON-Objekten indizieren möchten, dieses Array aber irgendwo im Dokument geschachtelt ist? Sie können mithilfe der Konfigurationseigenschaft `documentRoot` auswählen, welche Eigenschaft das Array enthält. Angenommen, Ihre Blobs sehen folgendermaßen aus:
+
+	{ 
+		"level1" : {
+			"level2" : [
+				{ "id" : "1", "text" : "Use the documentRoot property" }, 
+				{ "id" : "2", "text" : "to pluck the array you want to index" },
+				{ "id" : "3", "text" : "even if it's nested inside the document" }  
+			]
+		}
+	} 
+
+Dann verwenden Sie diese Konfiguration, um das in der Eigenschaft „level2“ enthaltene Array zu indizieren:
+
+	{
+		"name" : "my-json-array-indexer",
+		... other indexer properties
+		"parameters" : { "configuration" : { "parsingMode" : "jsonArray", "documentRoot" : "/level1/level2" } }
+	}
+
 
 ## Beispiele für Anforderungen
 
@@ -127,4 +160,4 @@ Indexer:
 
 Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/) mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

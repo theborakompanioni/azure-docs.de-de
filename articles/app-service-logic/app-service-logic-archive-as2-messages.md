@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -26,8 +26,8 @@ Der [AS2-Connector](app-service-logic-connector-as2.md) stellt die Möglichkeit 
 
 Die Archivierung wird an zwei Punkten sowohl für Nachrichten als auch für Bestätigungen (MDNs) bereitgestellt:
 
-1. **Trigger bei Empfang/Decodierung:** Die Nachricht wird archiviert, sobald sie bei der API-App-Instanz eingegangen ist. 
-2. **Codierungs-/Sendeaktion:** Die codierte Nachricht wird archiviert, nachdem die gesamte Verarbeitung abgeschlossen ist und kurz bevor sie an den Partner gesendet wird. 
+1. **Trigger bei Empfang/Decodierung:** Die Nachricht wird archiviert, sobald sie bei der API-App-Instanz eingegangen ist.
+2. **Codierungs-/Sendeaktion:** Die codierte Nachricht wird archiviert, nachdem die gesamte Verarbeitung abgeschlossen ist und kurz bevor sie an den Partner gesendet wird.
 
 ## Vorgehensweise: Abrufen der archivierten URL der Nachricht
 
@@ -42,4 +42,4 @@ Verwenden Sie die oben abgerufene URL, um die archivierte Nachricht aus dem Azur
 [1]: ./media/app-service-logic-archive-as2-messages/Tracking.jpg
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0727_2016-->

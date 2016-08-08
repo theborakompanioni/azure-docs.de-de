@@ -103,7 +103,7 @@ Das HDInsight .NET SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HD
                 {
                     var parameters = new PigJobSubmissionParameters
                     {
-                        Query = @"LOGS = LOAD 'wasb:///example/data/sample.log';
+                        Query = @"LOGS = LOAD 'wasbs:///example/data/sample.log';
                                     LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
                                     FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
                                     GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
@@ -143,4 +143,4 @@ Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeite
 * [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md)
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -13,10 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/14/2016"
+   ms.date="07/25/2016"
    ms.author="kipandya"/>
    
 # Entwickeln mit regionsübergreifenden DocumentDB-Konten
+
+> [AZURE.NOTE] Die globale Verteilung von DocumentDB-Datenbanken ist allgemein verfügbar und für alle neu erstellten DocumentDB-Konten automatisch aktiviert. Wir arbeiten daran, die globale Verteilung für alle vorhandenen Konten zu aktivieren. Wenn Sie jedoch in der Zwischenzeit die globale Verteilung für Ihr Konto aktivieren möchten, [kontaktieren Sie den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), der diesen Schritt für Sie ausführt.
 
 Um von der [globalen Verteilung](documentdb-distribute-data-globally.md) zu profitieren, können Clientanwendungen in einer Liste die Reihenfolge angeben, in der Regionen bei Dokumentvorgängen bevorzugt verwendet werden sollen. Dies lässt sich durch Einrichten einer Verbindungsrichtlinie erreichen. Basierend auf der Azure DocumentDB-Kontokonfiguration, der aktuellen regionalen Verfügbarkeit und der angegebenen Reihenfolgeliste der bevorzugten Regionen wählt das SDK den optimalen Endpunkt für Schreib- und Lesevorgänge aus.
 
@@ -143,4 +145,4 @@ In den folgenden Artikeln erfahren Sie mehr über die globale Verteilung von Dat
 
 [regions]: https://azure.microsoft.com/regions/
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

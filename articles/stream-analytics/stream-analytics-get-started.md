@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="05/20/2016"
+	ms.date="07/27/2016"
 	ms.author="jeffstok" />
 
 
@@ -36,7 +36,7 @@ In typischen Szenarien des Internet der Dinge (IoT) werden unzählige Telemetrie
 
 ## Voraussetzungen
 
-- Herunterladen von [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) aus dem Microsoft Download Center 
+- Herunterladen von [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) aus dem Microsoft Download Center
 - Optional: Quellcode des Ereignisgenerators von [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TelcoGenerator)
 
 ## Erstellen einer Azure Event Hub-Eingabe und einer Consumergruppe
@@ -45,7 +45,7 @@ Die Beispielanwendung generiert Ereignisse und überträgt sie mithilfe von Push
 
 So erstellen Sie ein Event Hub
 
-1.	Klicken Sie im [Azure-Portal](https://manage.windowsazure.com/) auf **Neu** > **App Services** > **Service Bus** > **Event Hub** > **Schnellerfassung**. Geben Sie einen Namen, eine Region und den neuen oder vorhandenen Namespace an, um einen neuen Ereignis-Hub zu erstellen.  
+1.	Klicken Sie im [Azure-Portal](https://manage.windowsazure.com/) auf **Neu** > **App Services** > **Service Bus** > **Event Hub** > **Schnellerfassung**. Geben Sie einen Namen, eine Region und den neuen oder vorhandenen Namespace an, um einen neuen Ereignis-Hub zu erstellen.
 2.	Als bewährte Methode sollte jeder Stream Analytics-Auftrag eine einzelne Event Hub-Verbrauchergruppe lesen. Im Folgenden werden Sie durch den Prozess des Erstellens einer Verbrauchergruppe geführt. Zudem können Sie [mehr über Verbrauchergruppen erfahren](https://msdn.microsoft.com/library/azure/dn836025.aspx). Um eine Verbrauchergruppe zu erstellen, wechseln Sie zu dem neu erstellten Event Hub, klicken Sie auf die Registerkarte **Verbrauchergruppen** und anschließend auf **Erstellen** am unteren Rand der Seite. Geben Sie einen Namen für die Verbrauchergruppe ein.
 3.	Um Zugriff auf den Event Hub zu gewähren, müssen wir eine Richtlinie für gemeinsamen Zugriff erstellen. Klicken Sie auf die Registerkarte **Konfigurieren** des Event Hubs.
 4.	Erstellen Sie unter **Freigegebene Zugriffsrichtlinien** eine neue Richtlinie mit Berechtigungen zum **Verwalten**.
@@ -65,7 +65,7 @@ Wir haben eine Clientanwendung bereitgestellt, die Beispielmetadaten für eingeh
 
 2.	Ersetzen Sie die Werte „Microsoft.ServiceBus.ConnectionString“ und „EventHubName“ in **telcodatagen.exe.config** durch die Verbindungszeichenfolge und den Namen Ihres Event Hubs.
 
-    **Hinweis:** Die im Azure-Portal kopierte Verbindungszeichenfolge stellt den Namen der Verbindung ans Ende. Entfernen Sie „;EntityPath=<value>“ aus dem Feld „add key=“.
+    **Hinweis:** Die im Azure-Portal kopierte Verbindungszeichenfolge stellt den Namen der Verbindung ans Ende. Entfernen Sie „;EntityPath=<Wert>“ aus dem Feld „add key=“.
 
 3.	Starten Sie die Anwendung. Die Nutzung lautet wie folgt:
 
@@ -265,4 +265,4 @@ Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://so
 - [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

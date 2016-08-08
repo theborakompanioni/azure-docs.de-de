@@ -118,7 +118,7 @@ Die **maximale Datenbankgröße** ist lediglich die Obergrenze für die Datenban
 
 ### Point-in-Time-Wiederherstellung
 
-Die **Point-in-Time-Wiederherstellung** ist die Möglichkeit, für Ihre Datenbank den Stand zu einem früheren Zeitpunkt wiederherzustellen. Es hängt von Ihrer Dienstebene ab, wie viele Tage Sie zurückgehen können. Weitere Informationen finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank nach einem Benutzerfehler](sql-database-user-error-recovery.md).
+Die **Point-in-Time-Wiederherstellung** ist die Möglichkeit, für Ihre Datenbank den Stand zu einem früheren Zeitpunkt wiederherzustellen. Es hängt von Ihrer Dienstebene ab, wie viele Tage Sie zurückgehen können. Weitere Informationen finden Sie unter [Point-In-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 ### Notfallwiederherstellung
 
@@ -507,4 +507,4 @@ Einige Datenbankanwendungen enthalten Workloads mit einer hohen Zahl von Lesevor
 
 Dank der Dienstebenen in Azure SQL-Datenbank verfügen Sie in Bezug auf die Typen von Anwendungen, die Sie in der Cloud erstellen, über mehr Flexibilität. In Kombination mit einer sorgfältigen Anwendungsoptimierung können Sie für Ihre Anwendung eine hohe und vorhersagbare Leistung erzielen. In diesem Dokument werden empfohlene Verfahren zum Optimieren des Ressourcenverbrauchs einer Datenbank und Ermitteln der Eignung für eine der Leistungsebenen beschrieben. Die Optimierung ist beim Cloudmodell ein fortlaufender Prozess, und die Dienstebenen und ihre Leistungsebenen ermöglichen Administratoren die Steigerung der Leistung, während die Kosten auf der Microsoft Azure Platform gesenkt werden.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

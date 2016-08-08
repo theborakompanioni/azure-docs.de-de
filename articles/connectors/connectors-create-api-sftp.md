@@ -1,257 +1,422 @@
 <properties
-    pageTitle="Hinzufügen des SFTP-Connectors zu Ihren Logik-Apps | Microsoft Azure"
-    description="Übersicht über den SFTP-Connector mit REST-API-Parametern"
-    services=""
-    documentationCenter="" 
-    authors="MandiOhlinger"
-    manager="erikre"
-    editor=""
-    tags="connectors"/>
+pageTitle="So wird's gemacht: Verwenden des SFTP-Connectors in Ihren Logik-Apps | Microsoft Azure"
+description="Erstellen Sie Logik-Apps mit Azure App Service. Stellen Sie eine Verbindung mit der SFTP-API her, um Dateien zu senden und zu empfangen. Sie können verschiedene Vorgänge ausführen und beispielsweise Dateien erstellen, aktualisieren, abrufen oder löschen."
+services="app-servicelogic"	
+documentationCenter=".net,nodejs,java" 	
+authors="msftman"	
+manager="erikre"	
+editor=""
+tags="connectors" />
 
 <tags
-   ms.service="multiple"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na" 
-   ms.date="05/18/2016"
-   ms.author="mandia"/>
+ms.service="logic-apps"
+ms.devlang="multiple"
+ms.topic="article"
+ms.tgt_pltfrm="na"
+ms.workload="integration"
+ms.date="07/20/2016"
+ms.author="deonhe"/>
 
-# Erste Schritte mit dem SFTP-Connector 
-Sie stellen eine Verbindung mit einem SFTP-Server her, um Dateien zu verwalten. Sie können auf dem SFTP-Server verschiedene Aufgaben ausführen, z. B. Dateien hochladen, Dateien löschen und mehr. Der SFTP-Connector kann verwendet werden in:
+# Erste Schritte mit dem SFTP-Connector
 
-- Logik-Apps
+Greifen Sie mithilfe des SFTP-Connectors auf ein SFTP-Konto zu, um Dateien zu senden und zu empfangen. Sie können verschiedene Vorgänge ausführen und beispielsweise Dateien erstellen, aktualisieren, abrufen oder löschen.
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
-
-Mit SFTP können Sie folgende Aktionen ausführen:
-
-- Erstellen eines Geschäftsworkflows basierend auf den Daten, die über SFTP abgerufen werden. 
-- Implementieren eines Triggers, wenn eine Datei aktualisiert wird.
-- Ausführen von Aktionen, um Dateien zu erstellen, zu löschen usw. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Sie können z. B. den Inhalt einer Datei abrufen und dann eine SQL-Datenbank aktualisieren. 
-
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
-
-
-## Trigger und Aktionen
-Der SFTP-Connector verfügt über folgende Trigger und Aktionen.
-
-Trigger | Actions
---- | ---
-<ul><li>Wenn eine Datei geändert oder erstellt wird </li></ul> | <ul><li>Datei erstellen</li><li>Datei kopieren</li><li>Datei löschen</li><li>Ordner extrahieren</li><li>Dateiinhalt abrufen</li><li>Dateiinhalt anhand des Pfads abrufen</li><li>Dateimetadaten abrufen</li><li>Dateimetadaten anhand des Pfads abrufen</li><li>Datei aktualisieren</li><li>Wenn eine Datei erstellt oder geändert wird </li></ul>
-
-Alle Connectors unterstützen Daten im JSON- und XML-Format.
-
+Wenn Sie einen [Connector](./apis-list.md) verwenden möchten, müssen Sie zuerst eine Logik-App erstellen. Erstellen Sie daher erst einmal eine Logik-App, wie [hier](../app-service-logic/app-service-logic-create-a-logic-app.md) beschrieben.
 
 ## Herstellen einer Verbindung mit SFTP
-Wenn Sie diesen Connector Ihren Logik-Apps hinzufügen, geben Sie die folgenden Werte ein:
 
-|Eigenschaft| Erforderlich|Beschreibung|
+Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, muss zunächst eine *Verbindung* mit dem Dienst hergestellt werden. Eine [Verbindung](./connectors-overview.md) stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her.
+
+### Herstellen einer Verbindung mit SFTP
+
+>[AZURE.INCLUDE [Schritte zum Erstellen einer Verbindung mit SFTP](../../includes/connectors-create-api-sftp.md)]
+
+## Verwenden eines SFTP-Triggers
+
+Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
+
+In diesem Beispiel erfahren Sie, wie Sie mithilfe des Triggers **SFTP - When a file is added or modified** (SFTP – Wenn eine Datei hinzugefügt oder geändert wird) einen Logik-App- Workflow auslösen, wenn einem SFTP-Server eine Datei hinzugefügt oder eine Datei auf einem SFTP-Server geändert wird. Darüber hinaus erfahren Sie in diesem Beispiel, wie Sie eine Bedingung hinzufügen, die den Inhalt der neuen oder geänderten Datei überprüft, und wie Sie entscheiden, dass die Datei extrahiert werden soll, wenn deren Inhalt darauf hindeutet, dass die Datei vor der Verwendung des Inhalts extrahiert werden muss. Und schließlich erfahren Sie, wie Sie eine Aktion hinzufügen, die den Inhalt einer Datei extrahiert und in einem Ordner auf dem SFTP-Server ablegt.
+
+In einem Unternehmensszenario können Sie mit diesem Trigger beispielsweise einen SFTP-Ordner auf neue Dateien überwachen, die jeweils Bestellungen von Kunden darstellen. Anschließend können Sie den Inhalt der Bestellung zur weiteren Verarbeitung und Speicherung in Ihrer Bestelldatenbank mithilfe einer SFTP-Connectoraktion wie **Get file content** (Dateiinhalt abrufen) abrufen.
+
+>[AZURE.INCLUDE [Schritte zum Erstellen eines SFTP-Triggers](../../includes/connectors-create-api-sftp-trigger.md)]
+
+## Bedingung hinzufügen
+
+>[AZURE.INCLUDE [Schritte zum Hinzufügen einer Bedingung](../../includes/connectors-create-api-sftp-condition.md)]
+
+## Verwenden einer SFTP-Aktion
+
+Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
+
+>[AZURE.INCLUDE [Schritte zum Erstellen einer SFTP-Aktion](../../includes/connectors-create-api-sftp-action.md)]
+
+
+## Technische Details
+
+Im Anschluss finden Sie ausführliche Informationen zu den Triggern, Aktionen und Antworten, die von dieser Verbindung unterstützt werden:
+
+## SFTP-Trigger
+
+Für SFTP stehen folgende Trigger zur Verfügung:
+
+|Trigger | Beschreibung|
+|--- | ---|
+|[When a file is added or modified](connectors-create-api-sftp.md#when-a-file-is-added-or-modified) (Wenn eine Datei hinzugefügt oder geändert wird)|Dieser Vorgang löst einen Ablauf aus, wenn einem Ordner eine Datei hinzugefügt oder in einem Ordner eine Datei geändert wird.|
+
+
+## SFTP-Aktionen
+
+Für SFTP stehen folgende Aktionen zur Verfügung:
+
+
+|Aktion|Beschreibung|
+|--- | ---|
+|[Dateimetadaten abrufen](connectors-create-api-sftp.md#get-file-metadata)|Dieser Vorgang ruft Dateimetadaten unter Verwendung der Datei-ID ab.|
+|[Datei aktualisieren](connectors-create-api-sftp.md#update-file)|Dieser Vorgang aktualisiert Dateiinhalte.|
+|[Datei löschen](connectors-create-api-sftp.md#delete-file)|Dieser Vorgang löscht eine Datei.|
+|[Dateimetadaten anhand des Pfads abrufen](connectors-create-api-sftp.md#get-file-metadata-using-path)|Dieser Vorgang ruft Dateimetadaten unter Verwendung des Dateipfads ab.|
+|[Dateiinhalt anhand des Pfads abrufen](connectors-create-api-sftp.md#get-file-content-using-path)|Dieser Vorgang ruft Dateiinhalte unter Verwendung des Dateipfads ab.|
+|[Dateiinhalte abrufen](connectors-create-api-sftp.md#get-file-content)|Dieser Vorgang ruft Dateiinhalte unter Verwendung der Datei-ID ab.|
+|[Datei erstellen](connectors-create-api-sftp.md#create-file)|Dieser Vorgang lädt eine Datei an einen SFTP-Server hoch.|
+|[Datei kopieren](connectors-create-api-sftp.md#copy-file)|Dieser Vorgang kopiert eine Datei auf einen SFTP-Server.|
+|[Dateien im Ordner aufführen](connectors-create-api-sftp.md#list-files-in-folder)|Dieser Vorgang ruft in einem Ordner enthaltene Dateien ab.|
+|[Dateien im Stammordner aufführen](connectors-create-api-sftp.md#list-files-in-root-folder)|Dieser Vorgang ruft die Dateien im Stammordner ab.|
+|[Ordner extrahieren](connectors-create-api-sftp.md#extract-folder)|Dieser Vorgang extrahiert eine Archivdatei (beispielsweise eine ZIP-Datei) in einen Ordner.|
+### Aktionsdetails
+
+Im Anschluss finden Sie ausführliche Informationen zu den Aktionen und Triggern für diesen Connector sowie die jeweiligen Antworten:
+
+
+
+### Dateimetadaten abrufen
+Dieser Vorgang ruft Dateimetadaten unter Verwendung der Datei-ID ab.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
 | ---|---|---|
-|Host Server Address| Ja | Geben Sie den vollqualifizierten Domänennamen (FQDN) oder die IP-Adresse des SFTP-Servers ein.|
-|Benutzername| Ja | Geben Sie den Benutzernamen für die Verbindung mit dem SFTP-Server ein.|
-|Kennwort | Ja | Geben Sie das Kennwort für den Benutzernamen ein.|
-|SSH Server Host Key Finger Print | Ja | Geben Sie den Fingerabdruck des öffentlichen Hostschlüssels für den SSH-Server ein. <br/><br/>In der Regel erhalten Sie diesen Schlüssel vom Serveradministrator. Sie können auch die Tools ```WinSCP``` oder ```ssh-keygen-g3 -F``` verwenden, um den Hostschlüssel-Fingerabdruck abzurufen. | 
+|id*|File|Angeben der Datei|
 
-Hier ist eine schrittweise Vorgehensweise zum Herstellen der Verbindung:
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
->[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit SFTP](../../includes/connectors-create-api-sftp.md)]
+#### Ausgabedetails
 
-Nachdem Sie eine Verbindung hergestellt haben, geben Sie die SFTP-Eigenschaften ein, z. B. Ordnerpfad oder Datei. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
-
->[AZURE.TIP] Sie können dieselbe SFTP-Verbindung in anderen Logik-Apps verwenden.
+BlobMetadata
 
 
-## Swagger-REST-API – Referenz
-Gilt für Version: 1.0.
-
-### Datei erstellen
-Lädt eine Datei in SFTP hoch. ```POST: /datasets/default/files```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|folderPath|string|Ja|query|(Keine) |Eindeutiger SFTP-Ordnerpfad|
-|name|string|Ja|query| (Keine)|Name der Datei|
-|body|string(binary) |Ja|body|(Keine) |Inhalt der Datei, die auf dem SFTP-Server erstellt werden soll|
-
-#### Antwort
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-### Datei kopieren
-Kopiert eine Datei in SFTP. ```POST: /datasets/default/copyFile```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|source|string|Ja|query| (Keine)|Pfad zur Quelldatei|
-|Ziel|string|Ja|query|(Keine) |Pfad zur Zieldatei, einschließlich des Dateinamens|
-|overwrite|Boolescher Wert|no|query|(Keine)|Überschreibt die Zieldatei, falls auf „True“ festgelegt|
-
-#### Antwort
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-### Datei löschen 
-Löscht eine Datei in SFTP. ```DELETE: /datasets/default/files/{id}```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|id|string|Ja|path|(Keine) |Eindeutiger Bezeichner der Datei auf dem SFTP-Server|
-
-#### Antwort
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-### Ordner extrahieren
-Extrahiert eine Archivdatei in einen Ordner mithilfe von SFTP (Beispiel: .zip). ```POST: /datasets/default/extractFolderV2```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|source|string|Ja|query|(Keine) |Pfad zur Archivdatei|
-|destination|string|Ja|query|(Keine) |Pfad zum Zielordner|
-|overwrite|Boolescher Wert|no|query|(Keine)|Überschreibt die Zieldateien, falls auf „True“ festgelegt|
-
-#### Antwort
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-### Dateiinhalte abrufen
-Ruft Dateiinhalte mithilfe der ID von SFTP ab. ```GET: /datasets/default/files/{id}/content```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|id|string|Ja|path|(Keine) |Eindeutiger Bezeichner der Datei auf dem SFTP-Server|
-
-#### Antwort
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
 
 
-### Dateiinhalt anhand des Pfads abrufen
-Ruft Dateiinhalte mithilfe des Pfads von SFTP ab. ```GET: /datasets/default/GetFileContentByPath```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|path|string|Ja|query| (Keine)|Eindeutiger Pfad zur Datei auf dem SFTP-Server|
-
-#### Antwort
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-
-### Dateimetadaten abrufen 
-Ruft Dateimetadaten von SFTP mithilfe der Datei-ID ab. ```GET: /datasets/default/files/{id}```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|id|string|Ja|path| (Keine)|Eindeutiger Bezeichner der Datei auf dem SFTP-Server|
-
-#### Antwort
-| Name | Beschreibung |
-| --- | --- |
-| 200 | OK | 
-| default | Fehler beim Vorgang.
-
-
-### Dateimetadaten anhand des Pfads abrufen
-Ruft Dateimetadaten von SFTP mithilfe des Pfads ab. ```GET: /datasets/default/GetFileByPath```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|path|string|Ja|query|(Keine) |Eindeutiger Pfad zur Datei auf dem SFTP-Server|
-
-#### Antwort
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
 
 
 ### Datei aktualisieren
-Aktualisiert den Dateiinhalt mithilfe von SFTP. ```PUT: /datasets/default/files/{id}```
+Dieser Vorgang aktualisiert Dateiinhalte.
 
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|id|string|Ja|path|(Keine) |Eindeutiger Bezeichner der Datei auf dem SFTP-Server|
-|body|string(binary) |Ja|body| (Keine)|Inhalt der Datei, die auf dem SFTP-Server aktualisiert werden soll|
 
-#### Antwort
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|id*|File|Angeben der Datei|
+|body*|Dateiinhalte|Inhalte der zu aktualisierenden Datei|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+BlobMetadata
+
+
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### Datei löschen
+Dieser Vorgang löscht eine Datei.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|id*|File|Angeben der Datei|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+
+
+
+### Dateimetadaten anhand des Pfads abrufen
+Dieser Vorgang ruft Dateimetadaten unter Verwendung des Dateipfads ab.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|path*|Dateipfad|Eindeutiger Pfad der Datei|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+BlobMetadata
+
+
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### Dateiinhalt anhand des Pfads abrufen
+Dieser Vorgang ruft Dateiinhalte unter Verwendung des Dateipfads ab.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|path*|Dateipfad|Eindeutiger Pfad der Datei|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+
+
+
+### Dateiinhalte abrufen
+Dieser Vorgang ruft Dateiinhalte unter Verwendung der Datei-ID ab.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|id*|File|Angeben der Datei|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+
+
+
+### Datei erstellen
+Dieser Vorgang lädt eine Datei an einen SFTP-Server hoch.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|folderPath*|Ordnerpfad|Eindeutiger Pfad des Ordners|
+|name*|Dateiname|Name der Datei|
+|body*|Dateiinhalte|Inhalt der zu erstellenden Datei|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+BlobMetadata
+
+
+|| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### Datei kopieren
+Dieser Vorgang kopiert eine Datei auf einen SFTP-Server.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|source*|Quelldateipfad|Pfad zur Quelldatei|
+|destination*|Zieldateipfad|Pfad zur Zieldatei, einschließlich des Dateinamens|
+|overwrite|Überschreiben?|Überschreibt die Zieldatei, falls auf „True“ festgelegt|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+BlobMetadata
+
+
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### When a file is added or modified (Wenn eine Datei hinzugefügt oder geändert wird)
+Dieser Vorgang löst einen Ablauf aus, wenn einem Ordner eine Datei hinzugefügt oder in einem Ordner eine Datei geändert wird.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|folderId*|Ordner|Angeben eines Ordners|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+
+
+
+### Dateien im Ordner aufführen
+Dieser Vorgang ruft in einem Ordner enthaltene Dateien ab.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|id*|Ordner|Angeben des Ordners|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+
+
+#### Ausgabedetails
+
+BlobMetadata
+
+
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### Dateien im Stammordner aufführen
+Dieser Vorgang ruft die Dateien im Stammordner ab.
+
+
+Es gibt keine Parameter für diesen Aufruf
+
+#### Ausgabedetails
+
+BlobMetadata
+
+
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### Ordner extrahieren
+Dieser Vorgang extrahiert eine Archivdatei (beispielsweise eine ZIP-Datei) in einen Ordner.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|source*|Quellarchiv-Dateipfad|Pfad zur Archivdatei|
+|destination*|Zielordnerpfad|Pfad zum Zielordner|
+|overwrite|Überschreiben?|Überschreibt die Zieldateien, falls auf „True“ festgelegt|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+
+
+#### Ausgabedetails
+
+BlobMetadata
+
+
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+
+## HTTP-Antworten
+
+Von den oben angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes zurückgegeben werden:
+
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|202|Zulässig|
+|400|Ungültige Anforderung|
+|401|Nicht autorisiert|
+|403|Verboten|
+|404|Nicht gefunden|
+|500|Interner Serverfehler. Unbekannter Fehler.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
-### Wenn eine Datei oder geändert erstellt wird 
-Löst einen Workflow aus, wenn eine Datei in SFTP geändert wird. ```GET: /datasets/default/triggers/onupdatedfile```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|folderId|string|Ja|query|(Keine) |Eindeutiger Bezeichner des Ordners|
-
-#### Antwort
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
 
 
-## Objektdefinitionen
 
-#### DataSetsMetadata
-
-| Name | Datentyp | Erforderlich|
-|---|---|---|
-|tabular|nicht definiert|no|
-|Blob|nicht definiert|no|
-
-#### TabularDataSetsMetadata
-
-| Name | Datentyp | Erforderlich|
-|---|---|---|
-|source|string|no|
-|displayName|string|no|
-|urlEncoding|string|no|
-|tableDisplayName|string|no|
-|tablePluralName|string|no|
-
-#### BlobDataSetsMetadata
-
-| Name | Datentyp | Erforderlich|
-|---|---|---|
-|source|string|no|
-|displayName|string|no|
-|urlEncoding|string|no|
-
-#### BlobMetadata
-
-| Name | Datentyp | Erforderlich|
-|---|---|---|
-|ID|string|no|
-|Name|string|no|
-|DisplayName|string|no|
-|Path|string|no|
-|LastModified|string|no|
-|Größe|integer|no|
-|MediaType|string|no|
-|IsFolder|Boolescher Wert|no|
-|ETag|string|no|
-|FileLocator|string|no|
 
 
 ## Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

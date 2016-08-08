@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/17/2016"
+	ms.date="07/25/2016"
 	ms.author="larryfr"/>
 
 
@@ -64,7 +64,7 @@ Der Workflow, den Sie mithilfe der Anweisungen in diesem Dokument implementieren
 
 ##Erstellen des Arbeitsverzeichnisses
 
-Oozie erwartet, dass die für einen Auftrag erforderlichen Ressourcen im selben Verzeichnis gespeichert werden. In diesem Beispiel wird **wasb:///tutorials/useoozie** verwendet. Geben Sie den folgenden Befehl zum Erstellen dieses Verzeichnisses und des Datenverzeichnisses ein, das die mit diesem Workflow erstellte neue Hive-Tabelle enthalten wird:
+Oozie erwartet, dass die für einen Auftrag erforderlichen Ressourcen im selben Verzeichnis gespeichert werden. In diesem Beispiel wird **wasbs:///tutorials/useoozie** verwendet. Geben Sie den folgenden Befehl zum Erstellen dieses Verzeichnisses und des Datenverzeichnisses ein, das die mit diesem Workflow erstellte neue Hive-Tabelle enthalten wird:
 
 	hdfs dfs -mkdir -p /tutorials/useoozie/data
 
@@ -114,7 +114,7 @@ Führen Sie die folgenden Schritte aus, um ein HiveQL-Skript zu erstellen, das e
 
 2. Drücken Sie STRG+X, um den Editor zu verlassen. Wählen Sie bei entsprechender Aufforderung **Y** aus, um die Datei zu speichern. Drücken Sie dann die **EINGABETASTE**, um den Dateinamen **useooziewf.hql** zu verwenden.
 
-3. Verwenden Sie die folgenden Befehle zum Kopieren von **useooziewf.hql** in **wasb:///tutorials/useoozie/useooziewf.hql**:
+3. Verwenden Sie die folgenden Befehle zum Kopieren von **useooziewf.hql** in **wasbs:///tutorials/useoozie/useooziewf.hql**:
 
 		hdfs dfs -copyFromLocal useooziewf.hql /tutorials/useoozie/useooziewf.hql
 
@@ -187,7 +187,7 @@ Definitionen von Oozie-Workflows werden in hPDL (einer XML-Prozessdefinitionsspr
 
 	- **RunSqoopExport**: Diese Aktion exportiert die vom Hive-Skript erstellten Daten mithilfe von Sqoop in die SQL-Datenbank. Diese Aktion wird nur ausgeführt, wenn die Aktion **RunHiveScript** erfolgreich war.
 
-		> [AZURE.NOTE] Weitere Informationen über den Oozie-Workflow und die Verwendung von Workflowaktionen finden Sie in der [Apache Oozie 4.0-Dokumentation][apache-oozie-400] \(für HDInsight der Version 3.0) oder in der [Apache Oozie 3.3.2-Dokumentation][apache-oozie-332] \(für HDInsight der Version 2.1).
+		> [AZURE.NOTE] Weitere Informationen über den Oozie-Workflow und die Verwendung von Workflowaktionen finden Sie in der [Apache Oozie 4.0-Dokumentation][apache-oozie-400] (für HDInsight der Version 3.0) oder in der [Apache Oozie 3.3.2-Dokumentation][apache-oozie-332] (für HDInsight der Version 2.1).
 
 	Beachten Sie, dass der Workflow mehrere Einträge hat (z. B. `${jobTracker}`), die durch Werte ersetzt werden, die Sie in der Auftragsdefinition weiter unten in diesem Dokument verwenden.
 
@@ -195,7 +195,7 @@ Definitionen von Oozie-Workflows werden in hPDL (einer XML-Prozessdefinitionsspr
 
 2. Drücken Sie zum Speichern der Datei STRG+X, **Y** und dann **EINGABE**.
 
-3. Verwenden Sie den folgenden Befehl zum Kopieren der Datei **workflow.xml** in **wasb:///tutorials/useoozie/workflow.xml**:
+3. Verwenden Sie den folgenden Befehl zum Kopieren der Datei **workflow.xml** in **wasbs:///tutorials/useoozie/workflow.xml**:
 
 		hdfs dfs -copyFromLocal workflow.xml /tutorials/useoozie/workflow.xml
 
@@ -257,9 +257,9 @@ Die Auftragsdefinition beschreibt den Speicherort der Datei "workflow.xml" sowie
 	Die Ausgabe dieses Befehls sollte etwa so aussehen:
 
 		<name>fs.defaultFS</name>
-		<value>wasb://mycontainer@mystorageaccount.blob.core.windows.net</value>
+		<value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net</value>
 
-	Speichern Sie den Wert **wasb://mycontainer@mystorageaccount.blob.core.windows.net**, da er in den nächsten Schritten verwendet wird.
+	Speichern Sie den Wert **wasbs://mycontainer@mystorageaccount.blob.core.windows.net**, da er in den nächsten Schritten verwendet wird.
 
 2. Rufen Sie den folgenden Befehl auf, um den FQDN des Cluster-Hauptknotens abzurufen. Dieser wird für die JobTracker-Adresse des Clusters verwendet. Diese wird in Kürze weiter unten in der Konfigurationsdatei verwendet:
 
@@ -282,7 +282,7 @@ Die Auftragsdefinition beschreibt den Speicherort der Datei "workflow.xml" sowie
 
 		  <property>
 		    <name>nameNode</name>
-		    <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net</value>
+		    <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net</value>
 		  </property>
 
 		  <property>
@@ -302,7 +302,7 @@ Die Auftragsdefinition beschreibt den Speicherort der Datei "workflow.xml" sowie
 
 		  <property>
 		    <name>hiveScript</name>
-		    <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/useooziewf.hql</value>
+		    <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/useooziewf.hql</value>
 		  </property>
 
 		  <property>
@@ -312,7 +312,7 @@ Die Auftragsdefinition beschreibt den Speicherort der Datei "workflow.xml" sowie
 
 		  <property>
 		    <name>hiveDataFolder</name>
-		    <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/data</value>
+		    <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/data</value>
 		  </property>
 
 		  <property>
@@ -332,13 +332,13 @@ Die Auftragsdefinition beschreibt den Speicherort der Datei "workflow.xml" sowie
 
 		  <property>
 		    <name>oozie.wf.application.path</name>
-		    <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie</value>
+		    <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie</value>
 		  </property>
 		</configuration>
 
-	* Ersetzen Sie alle Vorkommen von **wasb://mycontainer@mystorageaccount.blob.core.windows.net** durch den Wert, den Sie zuvor erhalten haben.
+	* Ersetzen Sie alle Vorkommen von **wasbs://mycontainer@mystorageaccount.blob.core.windows.net** durch den Wert, den Sie zuvor erhalten haben.
 
-	> [AZURE.WARNING] Sie müssen den vollständigen WASB-Pfad mit dem Container und Speicherkonto als Teil des Pfads verwenden. Das Verwenden des Kurzformats (wasb:///) bewirkt, dass die Aktion „RunHiveScript“ misslingt, wenn der Auftrag gestartet wird.
+	> [AZURE.WARNING] Sie müssen den vollständigen WASB-Pfad mit dem Container und Speicherkonto als Teil des Pfads verwenden. Das Verwenden des Kurzformats (wasbs:///) bewirkt, dass die Aktion „RunHiveScript“ misslingt, wenn der Auftrag gestartet wird.
 
 	* Ersetzen Sie **JOBTRACKERADDRESS** durch die JobTracker/ResourceManager-Adresse, die Sie zuvor erhalten haben.
 
@@ -392,7 +392,7 @@ Die folgenden Schritte verwenden den Oozie-Befehl zum Übermitteln und Verwalten
 		Job ID : 0000005-150622124850154-oozie-oozi-W
 		------------------------------------------------------------------------------------------------------------------------------------
 		Workflow Name : useooziewf
-		App Path      : wasb:///tutorials/useoozie
+		App Path      : wasbs:///tutorials/useoozie
 		Status        : PREP
 		Run           : 0
 		User          : USERNAME
@@ -530,7 +530,7 @@ Um einen Zeitplan für den Workflow zu definieren, führen Sie die folgenden Sch
 
 		    <property>
 		      <name>workflowPath</name>
-		      <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie</value>
+		      <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie</value>
 		    </property>
 
 		Ersetzen Sie die Werte für **mycontainer** und **mystorageaccount** durch die Werte in anderen Einträgen der Datei "job.xml".
@@ -599,7 +599,7 @@ Es folgen Fehlermeldungen, die auftreten können, und Möglichkeiten zu ihrer Be
 
 	JA009: Cannot initialize Cluster. Please check your configuration for map
 
-**Ursache**: Die in der Datei **job.xml** verwendeten WASB-Adressen enthalten nicht den Namen des Speichercontainers oder des Speicherkontos. Das WASB-Adressformat muss wie folgt lauten: `wasb://containername@storageaccountname.blob.core.windows.net`.
+**Ursache**: Die in der Datei **job.xml** verwendeten WASB-Adressen enthalten nicht den Namen des Speichercontainers oder des Speicherkontos. Das WASB-Adressformat muss wie folgt lauten: `wasbs://containername@storageaccountname.blob.core.windows.net`.
 
 **Lösung**: Ändern Sie die vom Auftrag verwendeten WASB-Adressen.
 
@@ -695,4 +695,4 @@ In diesem Lernprogramm haben Sie gelernt, wie ein Oozie-Workflow definiert und e
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0727_2016-->

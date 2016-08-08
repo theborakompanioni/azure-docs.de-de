@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="02/07/2016" 
+	ms.date="07/21/2016" 
 	ms.author="glenga"/>
 
 #Registrieren Ihrer Apps für die Twitter-Anmeldung mit Mobile Services
@@ -32,14 +32,14 @@ In diesem Thema erfahren Sie, wie Sie Ihre Apps registrieren, um Twitter zur Aut
 
 Sie benötigen ein Twitter-Konto mit verifizierter E-Mail-Adresse, um den in diesem Thema beschriebenen Vorgang abzuschließen. Rufen Sie die Seite <a href="http://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">twitter.com</a> auf, um ein neues Twitter-Konto zu erstellen.
 
-1. Navigieren Sie zur [Twitter-Entwickler](http://go.microsoft.com/fwlink/p/?LinkId=268300)-Website, melden Sie sich mit den Anmeldeinformationen für Ihr Twitter-Konto an, und klicken Sie auf **Create new app**.
+1. Navigieren Sie zur [Twitter Developers](http://go.microsoft.com/fwlink/p/?LinkId=268300)-Website, melden Sie sich mit den Anmeldeinformationen für Ihr Twitter-Konto an, und klicken Sie auf **Create new app**.
 
 2. Geben Sie die Werte für **Name**, **Beschreibung** und **Website** für Ihre App ein, geben Sie dann eines der folgenden URL-Formate in **Callback URL** ein.
 
 	+ **.NET-Back-End**: `https://<mobile_service>.azure-mobile.net/signin-twitter`
 	+ **JavaScript-Back-End**: `https://<mobile_service>.azure-mobile.net/login/twitter`
 
-	 >[AZURE.NOTE] Stellen Sie sicher, dass Sie das richtige Umleitungs-URL-Pfadformat für Ihren Typ von Mobile Services-Back-End verwenden. Wenn die Angabe falsch ist, wird die Authentifizierung nicht erfolgreich ausgeführt.&nbsp;
+	 >[AZURE.NOTE]Stellen Sie sicher, dass Sie das richtige Umleitungs-URL-Pfadformat für Ihren Typ von Mobile Services-Back-End verwenden. Wenn die Angabe falsch ist, wird die Authentifizierung nicht erfolgreich ausgeführt.&nbsp;
 
    	![][2]
 
@@ -66,4 +66,4 @@ Sie können nun ein Twitter-Login für die Authentifizierung in Ihrer App verwen
 [Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
 [Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-dotnet/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0727_2016-->

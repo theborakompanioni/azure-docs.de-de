@@ -8,12 +8,12 @@
 	services="mobile-services"/>
 
 <tags
-	ms.service="mobile-services" 
+	ms.service="mobile-services"
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="12/07/2015"
+	ms.date="07/21/2016"
 	ms.author="wesmc"/>
 
 # Rollenbasierte Zugriffssteuerung in Mobile Services mit JavaScript und Azure Active Directory
@@ -32,7 +32,7 @@ Unter rollenbasierter Zugriffssteuerung (RBAC) wird das Zuweisen von Berechtigun
 In diesem Lernprogramm wird die rollenbasierte Zugriffssteuerung erläutert, welche die Mitgliedschaft der einzelnen Benutzer in der Gruppe "Sales" prüft, die in Azure Active Directory (AAD) definiert ist. Die Zugriffsprüfung erfolgt mit dem Mobile Services .NET-Back-End unter Verwendung der [Graph REST API] für Azure Active Directory. Nur Benutzer, die der Gruppe "Sales" angehören, dürfen Daten abfragen.
 
 
->[AZURE.NOTE]Dieses Lernprogramm ist dazu vorgesehen, Ihre Kenntnisse bezüglich der Authentifizierung um Autorisierungsmethoden zu erweitern. Es wird davon ausgegangen, dass Sie zunächst das Lernprogramm [Hinzufügen von Authentifizierung zur App] unter Verwendung des Azure Active Directory-Authentifizierungsanbieters bearbeiten. In diesem Lernprogramm wird die Anwendung TodoItem weiter aktualisiert, die im Lernprogramm [Hinzufügen von Authentifizierung zur App] verwendet wurde.
+>[AZURE.NOTE] Dieses Lernprogramm ist dazu vorgesehen, Ihre Kenntnisse bezüglich der Authentifizierung um Autorisierungsmethoden zu erweitern. Es wird davon ausgegangen, dass Sie zunächst das Lernprogramm [Hinzufügen von Authentifizierung zur App] unter Verwendung des Azure Active Directory-Authentifizierungsanbieters bearbeiten. In diesem Lernprogramm wird die Anwendung TodoItem weiter aktualisiert, die im Lernprogramm [Hinzufügen von Authentifizierung zur App] verwendet wurde.
 
 ##Voraussetzungen
 
@@ -179,12 +179,12 @@ In diesem Abschnitt erstellen Sie ein neues benutzerdefiniertes Autorisierungsat
 
 9. Aktualisieren Sie in der Datei "AuthorizeAadRole.cs" die `GetAADToken`-Methode in der `AuthorizeAadRole`-Klasse. Diese Methode verwendet die Anwendungseinstellungen, die im Mobile Service gespeichert sind, um ein Zugriffstoken für AAD aus ADAL abzurufen.
 
-    >[AZURE.NOTE]ADAL für .NET umfasst standardmäßig einen speicherinternen Tokencache, um zusätzlichen Netzwerkverkehr mit Active Directory zu verringern. Allerdings können Sie auch eine eigene Cacheimplementierung schreiben oder die Zwischenspeicherung vollständig deaktivieren. Weitere Informationen hierzu finden Sie unter [ADAL für .NET].
+    >[AZURE.NOTE] ADAL für .NET umfasst standardmäßig einen speicherinternen Tokencache, um zusätzlichen Netzwerkverkehr mit Active Directory zu verringern. Allerdings können Sie auch eine eigene Cacheimplementierung schreiben oder die Zwischenspeicherung vollständig deaktivieren. Weitere Informationen hierzu finden Sie unter [ADAL für .NET].
 
         // Use ADAL and the authentication app settings from the Mobile Service to get an AAD access token
         private async Task<string> GetAADToken()
         {
-            // Try to get the required AAD authentication app settings from the mobile service.  
+            // Try to get the required AAD authentication app settings from the mobile service.
             if (!(services.Settings.TryGetValue("AAD_CLIENT_ID", out clientid) &
                   services.Settings.TryGetValue("AAD_CLIENT_KEY", out clientkey) &
                   services.Settings.TryGetValue("AAD_TENANT_DOMAIN", out tenantdomain)))
@@ -245,7 +245,7 @@ In diesem Abschnitt erstellen Sie ein neues benutzerdefiniertes Autorisierungsat
 
 11. Aktualisieren Sie in der Datei "AuthorizeAadRole.cs" die `OnAuthorization`-Methode in der `AuthorizeAadRole`-Klasse mit dem folgenden Code. Dieser Code erwartet, dass der Benutzer, der den mobilen Dienst aufruft, von der AAD authentifiziert wurde. Anschließend wird die AAD-Objekt-IID des Benutzers abgerufen und die Mitgliedschaft in der Active Directory-Gruppe überprüft, die der Rolle entspricht.
 
-    >[AZURE.NOTE]Die Active Directory-Gruppe kann nach dem Namen gesucht werden. In vielen Fällen ist es jedoch empfehlenswert, die Gruppen-ID als App-Einstellung des mobilen Diensts zu speichern. Der Gruppenname kann sich ändern, die ID bleibt dagegen immer gleich.
+    >[AZURE.NOTE] Die Active Directory-Gruppe kann nach dem Namen gesucht werden. In vielen Fällen ist es jedoch empfehlenswert, die Gruppen-ID als App-Einstellung des mobilen Diensts zu speichern. Der Gruppenname kann sich ändern, die ID bleibt dagegen immer gleich.
 
         public override void OnAuthorization(HttpActionContext actionContext)
         {
@@ -393,4 +393,4 @@ In diesem Abschnitt erstellen Sie ein neues benutzerdefiniertes Autorisierungsat
 [IsMemberOf]: http://msdn.microsoft.com/library/azure/dn151601.aspx
 [ADAL für .NET]: https://msdn.microsoft.com/library/azure/jj573266.aspx
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -14,16 +14,16 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="07/12/2016"
+	ms.date="07/25/2016"
 	ms.author="heidist"/>
 
 # Auswählen einer SKU oder eines Tarifs für Azure Search
 
-Im Zuge der [Dienstbereitstellung](search-create-service-portal.md) müssen Sie eine SKU oder einen Tarif angeben. Folgende Optionen stehen zur Verfügung: **Free**, **Basic** und **Standard**, wobei **Standard** mit verschiedenen Ressourcenkonfigurationen und Kapazitäten verfügbar ist.
+Im Zuge der [Dienstbereitstellung](search-create-service-portal.md) müssen Sie eine SKU oder einen Tarif angeben. Folgende Optionen stehen zur Verfügung: **Free**, **Basic** und **Standard**, wobei **Standard** mit verschiedenen Konfigurationen und Kapazitäten verfügbar ist.
 
-Es wird empfohlen, immer einen Dienst vom Typ **Free** bereitzustellen (jeweils einen pro Abonnement; ohne zeitliche Befristung), der jederzeit zu Demonstrations- oder Testzwecken zur Verfügung steht. Den Dienst vom Typ **Free** können Sie zum Testen und Evaluieren verwenden und anschließend einen zweiten abrechenbaren Dienst für die Produktion oder für umfangreichere Testworkloads erstellen.
+Es wird empfohlen, immer einen Dienst vom Typ **Free** bereitzustellen (jeweils einen pro Abonnement, ohne zeitliche Befristung), der jederzeit für Projekte von geringem Umfang zur Verfügung steht. Verwenden Sie den Dienst im Tarif **Free** zum Testen und Evaluieren. Erstellen Sie im Tarif **Basic** oder **Standard** einen zweiten abrechenbaren Dienst für die Produktion oder für umfangreichere Testworkloads.
 
-Die SKU bestimmt in Azure Search nicht die Verfügbarkeit von Features, sondern die Kapazität. In jedem Tarif stehen alle Features zur Verfügung.
+Die SKU bestimmt in Azure Search nicht die Verfügbarkeit von Features, sondern die Kapazität. Alle Features, einschließlich der Vorschaufeatures, stehen in jedem Tarif zur Verfügung.
 
 ## Wählen des passenden Tarifs
 
@@ -58,7 +58,7 @@ Standard 3 mit hoher Dichte (**S3 HD**) – Vorschau|Eine große Anzahl kleinere
 
 > [AZURE.NOTE] Maximalwerte für Replikate und Partitionen werden als Sucheinheiten (36 Einheiten pro Dienst) abgerechnet. Dadurch ergibt sich effektiv ein niedrigerer Grenzwert als der Maximalwert zunächst vermuten lässt. Wenn Sie also etwa die maximal zulässige Anzahl von 12 Replikaten verwenden möchten, können maximal drei Partitionen (12 * 3 = 36 Einheiten) vorhanden sein. Analog dazu gilt: Wenn Sie die maximale Anzahl von Partitionen verwenden möchten, muss die Anzahl der Replikate auf drei verringert werden. Ein Diagramm mit zulässigen Kombinationen finden Sie unter [Skalieren von Ressourcenebenen für Abfrage und Indizierung von Workloads in Azure Search](search-capacity-planning.md).
 
-## Entscheidungspfad für die Wahl einer SKUs
+## Überprüfen von Grenzwerte pro Tarif
 
 Das folgende Diagramm stellt einen Teil der Grenzwerte aus [Grenzwerte für den Azure Search-Dienst](search-limits-quotas-capacity.md) dar. Es enthält die Faktoren, die in der Regel für eine SKU-Entscheidung besonders relevant sind. Dieses Diagramm können Sie im Zusammenhang mit den weiter unten gestellten Fragen heranziehen.
 
@@ -72,14 +72,14 @@ Partitionsgröße|50 MB insgesamt|2 GB pro Dienst|25 GB pro Partition |100 GB pr
 Maximale Anzahl der Replikate|N/V |3 |12 |12 |12|12
 Abfragen pro Sekunde|–|~3 pro Replikat|~15 pro Replikat|~60 pro Replikat|>60 pro Replikat|>60 pro Replikat
 
-<sup>1</sup> Free- und Vorschau-SKUs verfügen über keine SLAs. SLAs werden angewendet, sobald eine SKU allgemein verfügbar ist.
+<sup>1</sup> Für Free- und Vorschau-SKUs gibt es keine SLAs. SLAs werden angewendet, sobald eine SKU allgemein verfügbar ist.
 
 
-### Allgemeine Fragen im Zusammenhang mit der SKU-Wahl
+## Entfernen von SKUs, die die Anforderungen nicht erfüllen 
 
 Die folgenden Fragen können dabei helfen, die passende SKU für Ihre Workload ermitteln:
 
-1. Benötigen Sie eine **Vereinbarung zum Servicelevel (Service Level Agreement, SLA)**? Beschränken Sie sich bei SKU-Entscheidung auf Basic und Standard (keine Vorschau).
+1. Sind Anforderungen aufgrund einer **Vereinbarung zum Servicelevel (Service Level Agreement, SLA)** vorhanden? Beschränken Sie sich bei SKU-Entscheidung auf Basic und Standard (keine Vorschau).
 2. **Wie viele Indizes** benötigen Sie? Eine der größten Variablen, die es bei der SKU-Entscheidung zu berücksichtigen gilt, ist die Anzahl von Indizes, die die jeweilige SKU unterstützt. Die Indexunterstützung ist bei den günstigeren Tarifen sehr unterschiedlich ausgeprägt. Die Anforderungen hinsichtlich der Indexanzahl kann ein Hauptentscheidungskriterium für eine bestimmte SKU sein.
 3. **Wie viele Dokumente** werden in die einzelnen Indizes geladen? Anzahl und Größe der Dokumente bestimmen letztlich die Größe des Index. Wenn Sie die voraussichtliche Größe des Index abschätzen können, können Sie diesen Wert mit der Partitionsgröße pro SKU vergleichen und dabei auch die Anzahl von Partitionen einbeziehen, die zum Speichern eines Index mit entsprechender Größe erforderlich sind.
 4. **Welches Abfrageaufkommen erwarten Sie**? Nach der Klärung des Speicherbedarfs können Sie sich den Abfrageworkloads zuwenden. Die SKUs S2 und S3 bieten beide einen nahezu identischen Durchsatz, Vorschau-SKUs kommen jedoch unter Umständen aufgrund von SLA-Anforderungen nicht infrage.
@@ -88,7 +88,7 @@ Auf der Grundlage der Antworten auf diese vier Fragen können die meisten Kunden
 
 ## Überprüfung der Entscheidung: Sind Speicherplatz und QPS der SKU ausreichend?
 
-Sehen Sie sich im letzten Schritt noch einmal die [Preise](https://azure.microsoft.com/pricing/details/search/) und die [Abschnitte zu dienst- und indexspezifischen Grenzwerten](search-limits-quotas-capacity.md) an, um Ihre Schätzungen anhand der Abonnement- und Dienstgrenzwerte zu überprüfen.
+Sehen Sie sich im letzten Schritt noch einmal die [Preise](https://azure.microsoft.com/pricing/details/search/) und die [Abschnitte zu dienst- und indexspezifischen Grenzwerten](search-limits-quotas-capacity.md) an, um Ihre Prognosen anhand der Abonnement- und Dienstgrenzwerte zu überprüfen.
 
 Sollten die Preis- oder die Speicheranforderungen nicht erfüllt werden, empfiehlt es sich unter Umständen, die Workloads beispielsweise auf mehrere kleinere Dienste aufzuteilen. Im Detail könnten Sie etwa Indizes neu gestalten, um sie zu verkleinern, oder Abfragen mithilfe von Filtern optimieren.
 
@@ -101,4 +101,4 @@ Wenn Sie die optimale SKU ermittelt haben, fahren Sie mit den folgenden Schritte
 - [Erstellen eines Azure Search-Diensts über das Azure-Portal](search-create-service-portal.md)
 - [Skalieren von Ressourcenebenen für Abfrage und Indizierung von Arbeitslasten in Azure Search](search-capacity-planning.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

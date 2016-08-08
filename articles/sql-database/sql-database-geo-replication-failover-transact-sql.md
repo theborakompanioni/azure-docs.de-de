@@ -50,7 +50,7 @@ Der Befehl hat den folgenden Workflow:
 
 2. Die Rollen der beiden Datenbanken in der Georeplikationspartnerschaft werden getauscht.
 
-Durch diese Sequenz wird sichergestellt, dass die beiden Datenbanken vor dem Rollenwechsel synchronisiert werden, damit keine Daten verloren gehen. Es gibt einen kurzer Zeitraum, in dem beide Datenbanken während des Rollenwechsels (ca. 0 bis 25 Sekunden) nicht verfügbar sind. Wenn die primäre Datenbank über mehrere sekundäre Datenbanken verfügt, werden die anderen sekundären Datenbanken durch den Befehl automatisch neu konfiguriert, sodass sie eine Verbindung mit der neuen primären Datenbank herstellen. Unter normalen Umständen dauert der gesamte Vorgang nicht länger als 1 Minute. Weitere Informationen finden Sie unter [ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) und [Tarife](sql-database-service-tiers.md).
+Durch diese Sequenz wird sichergestellt, dass die beiden Datenbanken vor dem Rollenwechsel synchronisiert werden, damit keine Daten verloren gehen. Es gibt einen kurzer Zeitraum, in dem beide Datenbanken während des Rollenwechsels (ca. 0 bis 25 Sekunden) nicht verfügbar sind. Wenn die primäre Datenbank über mehrere sekundäre Datenbanken verfügt, werden die anderen sekundären Datenbanken durch den Befehl automatisch neu konfiguriert, sodass sie eine Verbindung mit der neuen primären Datenbank herstellen. Unter normalen Umständen dauert der gesamte Vorgang nicht länger als 1 Minute. Weitere Informationen finden Sie unter [ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) und [Tarife](sql-database-service-tiers.md).
 
 
 Führen Sie die folgenden Schritte aus, um ein geplantes Failover auszulösen.
@@ -94,12 +94,12 @@ Führen Sie die folgenden Schritte aus, um ein ungeplantes Failover auszulösen.
 
 
 
-## Zusätzliche Ressourcen
+## Nächste Schritte   
 
-- [Spotlight on new Geo-Replication capabilities (Die neuen Georeplikationsfunktionen im Überblick)](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
-- [Entwerfen von Cloudanwendungen zum Sicherstellen der Geschäftskontinuität mithilfe der Georeplikation](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-- [SQL-Datenbankdokumentation](https://azure.microsoft.com/services/sql-database/)
-- [Warnungen zur Notfallwiederherstellung](sql-database-disaster-recovery-drills.md)
+- Informationen zur Wiederherstellung nach einem Ausfall mithilfe der aktiven Georeplikation, einschließlich der vor und nach der Wiederherstellung erforderlichen Schritte und der Ausführung eines Notfallwiederherstellungsverfahrens finden Sie unter [Notfallwiederherstellungsverfahren](sql-database-disaster-recovery.md).
+- Den Blogpost von Sasha Nosov über die aktive Georeplikation finden Sie unter [Spotlight on new Geo-Replication capabilities](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/) (Die neuen Georeplikationsfunktionen im Überblick).
+- Informationen zum Vorbereiten von Cloudanwendungen für die aktive Georeplikation finden Sie unter [Entwerfen von Cloudanwendungen zum Sicherstellen der Geschäftskontinuität mithilfe der Georeplikation](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
+- Informationen zur Verwendung der aktiven Georeplikation mit elastischen Datenbankpools finden Sie unter [Strategien zur Notfallwiederherstellung mit elastischen Pools](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+- Eine Übersicht zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

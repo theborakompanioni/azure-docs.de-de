@@ -1,11 +1,11 @@
 
 <properties
-	pageTitle="Technische Referenz: Bedingter Zugriff auf Azure AD-Apps | Microsoft Azure"
+	pageTitle="Technische Referenz zum bedingten Azure Active Directory-Zugriff | Microsoft Azure"
 	description="Mit der bedingten Zugriffssteuerung überprüft Azure Active Directory die besonderen Bedingungen, die Sie beim Authentifizieren des Benutzers und vor dem Gewähren des Zugriffs auf die Anwendung auswählen. Nachdem diese Bedingungen erfüllt sind, wird der Benutzer authentifiziert und erhält Zugriff auf die Anwendung."
     services="active-directory"
 	documentationCenter=""
-	authors="femila"
-	manager="swadhwa"
+	authors="markusvi"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -14,10 +14,10 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="06/23/2016"
-	ms.author="femila"/>
+	ms.date="07/26/2016"
+	ms.author="markvi"/>
 
-# Technische Referenz: Bedingter Zugriff auf Azure AD-Apps
+# Technische Referenz zum bedingten Azure Active Directory-Zugriff
 
 ## Dienste mit aktiviertem bedingtem Zugriff
 Bedingte Zugriffsregeln werden über verschiedene Arten von Azure AD-Anwendungen hinweg unterstützt. Diese Liste enthält:
@@ -82,4 +82,4 @@ Regeln, die derzeit angeboten werden:
 - [Sichern des Zugriffs auf Office 365 und andere mit Azure Active Directory verbundene Apps](active-directory-conditional-access.md)
 - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

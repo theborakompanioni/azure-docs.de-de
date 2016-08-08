@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory B2C-Vorschau: Aufrufen von Web-APIs aus einer Android-Anwendung | Microsoft Azure"
+	pageTitle="Azure Active Directory B2C: Aufrufen von Web-APIs aus einer Android-Anwendung | Microsoft Azure"
 	description="In diesem Artikel wird gezeigt, wie Sie eine Android-App für Aufgabenlisten erstellen, die eine Node.js-Web-API mithilfe von OAuth 2.0-Bearertoken aufruft. Sowohl die Android-App als auch die Web-API verwenden Azure Active Directory B2C zum Verwalten von Benutzeridentitäten und zum Authentifizieren von Benutzern."
 	services="active-directory-b2c"
 	documentationCenter="android"
@@ -13,20 +13,22 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="07/22/2016"
 	ms.author="brandwe"/>
 
-# Azure AD B2C-Vorschau: Aufrufen von Web-APIs aus einer Android-Anwendung
+# Azure AD B2C: Aufrufen von Web-APIs aus einer Android-Anwendung
+
+> [AZURE.WARNING] Für dieses Lernprogramm sind einige wichtige Updates erforderlich, insbesondere zum Entfernen von ADAL Android für B2C. Wir werden nächste Woche neue Informationen zur Verwendung von Azure AD B2C in Android-Apps veröffentlichen. Bitte warten Sie auf diese Anweisungen. Wenn Sie nur ein paar Dinge ausprobieren möchten, fahren Sie mit dem folgenden Artikel fort.
+
+
 
 Mit Azure Active Directory (Azure AD) B2C können Sie Ihren Android-Apps und -Web-APIs in wenigen Schritten leistungsstarke Self-Service-Features zur Identitätsverwaltung hinzufügen. In diesem Artikel wird gezeigt, wie Sie eine Android-App für Aufgabenlisten erstellen, die eine Node.js-Web-API mithilfe von OAuth 2.0-Bearertoken aufruft. Sowohl die Android-App als auch die Web-API verwenden Azure AD B2C zum Verwalten von Benutzeridentitäten und zum Authentifizieren von Benutzern.
-
-[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
 Für diesen Schnellstart benötigen Sie eine Web-API, die durch Azure AD mit B2C geschützt wird. Wir haben sowohl für .NET als auch für Node.js eine für Sie vorbereitet. Bei dieser exemplarischen Vorgehensweise wird davon ausgegangen, dass das Node.js-Web-API-Beispiel konfiguriert wurde. Weitere Informationen finden Sie im [Tutorial zur Azure AD B2C-Web-API für Node.js](active-directory-b2c-devquickstarts-api-node.md).
 
 Für Android-Clients, die auf geschützte Ressourcen zugreifen müssen, ist unter Azure AD die Active Directory Authentication Library (ADAL) verfügbar. Die einzige Aufgabe der ADAL besteht darin, Ihrer App das Abrufen von Zugriffstoken zu erleichtern. Um Ihnen zu zeigen, wie einfach es geht, erstellen wir in diesem Leitfaden eine Android-Anwendung für Aufgabenlisten, mit der folgende Aktionen ausgeführt werden können:
 
-- Abrufen von Zugriffstoken zum Aufrufen einer Aufgabenlisten-API mit dem [OAuth 2.0-Authentifizierungsprotokoll](https://msdn.microsoft.com/library/azure/dn645545.aspx)
+- Abrufen von Zugriffstoken zum Aufrufen einer Aufgabenlisten-API mit dem [OAuth 2.0-Authentifizierungsprotokoll](https://msdn.microsoft.com/library/azure/dn645545.aspx).
 - Abrufen der Aufgabenlisten von Benutzern
 - Abmelden von Benutzern
 
@@ -34,7 +36,7 @@ Für Android-Clients, die auf geschützte Ressourcen zugreifen müssen, ist unte
 
 ## Erstellen eines Azure AD B2C-Verzeichnisses
 
-Bevor Sie Azure AD B2C verwenden können, müssen Sie ein Verzeichnis oder einen Mandanten erstellen. Ein Verzeichnis ist ein Container für all Ihre Benutzer, Apps, Gruppen usw. Wenn Sie noch keines verwenden, [erstellen Sie ein B2C-Verzeichnis](active-directory-b2c-get-started.md), bevor Sie die weiteren Schritte in diesem Leitfaden ausführen.
+Bevor Sie Azure AD B2C verwenden können, müssen Sie ein Verzeichnis oder einen Mandanten erstellen. Ein Verzeichnis ist ein Container für all Ihre Benutzer, Apps, Gruppen usw. Wenn Sie noch keines verwenden, sollten Sie [ein B2C-Verzeichnis erstellen](active-directory-b2c-get-started.md), bevor Sie die weiteren Schritte in diesem Leitfaden ausführen.
 
 ## Erstellen einer Anwendung
 
@@ -975,4 +977,4 @@ CookieSyncManager.getInstance().sync();
 ```
 [Weitere Informationen zu Cookies](http://developer.android.com/reference/android/webkit/CookieSyncManager.html)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

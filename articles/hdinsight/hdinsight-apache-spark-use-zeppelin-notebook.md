@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/06/2016" 
+	ms.date="07/25/2016" 
 	ms.author="nitinme"/>
 
 
@@ -43,7 +43,7 @@ Sie können Zeppelin mithilfe von Skriptaktionen in einem Spark-Cluster installi
 
 ### Verwenden des Azure-Portals
 
-Eine Anleitung zur Verwendung des HDInsight .NET SDK zum Ausführen der Skriptaktion zum Installieren von Zeppelin finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktion](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-from-the-azure-portal). Sie müssen an den Anweisungen in diesem Artikel einige Änderungen vornehmen.
+Eine Anleitung zur Verwendung des Azure-Portals zum Ausführen der Skriptaktion zum Installieren von Zeppelin finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktion](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-from-the-azure-portal). Sie müssen an den Anweisungen in diesem Artikel einige Änderungen vornehmen.
 
 * Sie müssen das Skript verwenden, um Zeppelin installieren zu können. Das benutzerdefinierte Skript zum Installieren von Zeppelin in einem Spark-Cluster in HDInsight ist unter folgenden Links verfügbar:
 	* Für Spark 1.6.0-Cluster – `https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark160-v01.sh`
@@ -201,7 +201,7 @@ Wenn Sie FoxyProxy Standard installiert haben, konfigurieren Sie es folgenderma�
 
 	* **Name des Musters**: **zeppelinnotebook** – Dies ist lediglich ein Anzeigename für das Muster.
 
-	* **URL-Muster**: ***hn0*** – Dient zum Definieren eines Musters, das mit dem internen vollqualifizierten Domänennamen des Endpunkts übereinstimmt, auf dem die Zeppelin Notebooks gehostet werden. Da Zeppelin Notebooks nur auf „headnode0“ des Clusters verfügbar sind und der Endpunkt normalerweise `http://hn0-<string>.internal.cloudapp.net` lautet, wird durch die Verwendung des Musters **hn0** sichergestellt, dass die Anforderung an den Zeppelin-Endpunkt umgeleitet wird.
+	* **URL-Muster**: ***hn0**** – Dient zum Definieren eines Musters, das mit dem internen vollqualifizierten Domänennamen des Endpunkts übereinstimmt, auf dem die Zeppelin Notebooks gehostet werden. Da Zeppelin Notebooks nur auf „headnode0“ des Clusters verfügbar sind und der Endpunkt normalerweise `http://hn0-<string>.internal.cloudapp.net` lautet, wird durch die Verwendung des Musters **hn0** sichergestellt, dass die Anforderung an den Zeppelin-Endpunkt umgeleitet wird.
 
 		![FoxyProxy-Muster](./media/hdinsight-apache-spark-use-zeppelin-notebook/foxypattern.png)
 
@@ -211,11 +211,11 @@ Wenn Sie FoxyProxy Standard installiert haben, konfigurieren Sie es folgenderma�
 
 	![FoxyProxy – Modus auswählen](./media/hdinsight-apache-spark-use-zeppelin-notebook/selectmode.png)
 
-Nachdem Sie diese Schritte ausgeführt haben, werden ausschließlich Anforderungen für URLs, die die Zeichenfolge __internal.cloudapp.net__ enthalten, über den SSL-Tunnel weitergeleitet.
+Nachdem Sie diese Schritte ausgeführt haben, werden ausschließlich Anforderungen für URLs, die die Zeichenfolge __hn0__ enthalten, über den SSL-Tunnel weitergeleitet.
 
 ## Zugreifen auf das Zeppelin Notebook
 
-Nach dem Einrichten des SSH-Tunneling können Sie die folgenden Schritte ausführen, um auf das Zeppelin Notebook auf dem Spark-Cluster zuzugreifen.
+Nach dem Einrichten des SSH-Tunneling können Sie die folgenden Schritte ausführen, um auf das Zeppelin Notebook auf dem Spark-Cluster zuzugreifen. In diesem Abschnitt sehen Sie, wie die Anweisungen „%sql“ und „%hive“ ausgeführt werden.
 
 1. Öffnen Sie im Webbrowser den folgenden Endpunkt:
 
@@ -235,12 +235,14 @@ Nach dem Einrichten des SSH-Tunneling können Sie die folgenden Schritte ausfüh
 
 	![Zeppelin Notebook-Status](./media/hdinsight-apache-spark-use-zeppelin-notebook/hdispark.newnote.connected.png "Zeppelin Notebook-Status")
 
+### Ausführen von SQL-Anweisungen
+
 4. Laden Sie Beispieldaten in eine temporäre Tabelle. Wenn Sie einen Spark-Cluster in HDInsight erstellen, wird die Beispieldatei **hvac.csv** in das zugeordnete Speicherkonto unter **\\HdiSamples\\SensorSampleData\\hvac** kopiert.
 
 	Fügen Sie in den leeren Absatz, der im neuen Notebook standardmäßig erstellt wird, den folgenden Codeausschnitt ein.
 
 		// Create an RDD using the default Spark context, sc
-		val hvacText = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+		val hvacText = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 		
 		// Define a schema
 		case class Hvac(date: String, time: String, targettemp: Integer, actualtemp: Integer, buildingID: String)
@@ -297,6 +299,41 @@ Nach dem Einrichten des SSH-Tunneling können Sie die folgenden Schritte ausfüh
 
 	![Neustarten des Zeppelin-Interpreters](./media/hdinsight-apache-spark-use-zeppelin-notebook/hdispark.zeppelin.restart.interpreter.png "Neustarten des Zeppelin-Interpreters")
 
+### Ausführen von Hive-Anweisungen
+
+1. Klicken Sie im Zeppelin Notebook auf die Schaltfläche **Interpreter**.
+
+	![Aktualisieren des Hive-Interpreters](./media/hdinsight-apache-spark-use-zeppelin-notebook/zeppelin-update-hive-interpreter-1.png "Aktualisieren des Hive-Interpreters")
+
+2. Klicken Sie für den **Hive**-Interpreter auf **Bearbeiten**.
+
+	![Aktualisieren des Hive-Interpreters](./media/hdinsight-apache-spark-use-zeppelin-notebook/zeppelin-update-hive-interpreter-2.png "Aktualisieren des Hive-Interpreters")
+
+	Aktualisieren Sie die folgenden Eigenschaften.
+
+	* Legen Sie **default.password** auf das Kennwort fest, das Sie beim Erstellen des HDInsight Spark-Clusters für den Benutzer „admin“ angegeben haben.
+	* Legen Sie **default.url** auf `jdbc:hive2://<spark_cluster_name>.azurehdinsight.net:443/default;ssl=true?hive.server2.transport.mode=http;hive.server2.thrift.http.path=/hive2` fest. Ersetzen Sie **< Spark-Clustername >** durch den Namen Ihres Spark-Clusters.
+	* Legen Sie **default.user** auf den Namen des Benutzers „admin“ fest, den Sie beim Erstellen des Clusters angegeben haben. Beispiel: *admin*.
+
+3. Klicken Sie auf **Speichern**. Wenn Sie aufgefordert werden, den Hive-Interpreter neu zu starten, klicken Sie auf **OK**.
+
+4. Erstellen Sie ein neues Notebook, und führen Sie die folgende Anweisung aus, um alle Hive-Tabellen im Cluster aufzulisten.
+
+		%hive
+		SHOW TABLES
+
+	Standardmäßig enthält ein HDInsight-Cluster eine Beispieltabelle namens **hivesampletable**, sodass Sie die folgende Ausgabe erhalten sollten.
+
+	![Hive-Ausgabe](./media/hdinsight-apache-spark-use-zeppelin-notebook/zeppelin-update-hive-interpreter-3.png "Hive-Ausgabe")
+
+5. Führen Sie die folgende Anweisung aus, um die Einträge in der Tabelle anzuzeigen.
+
+		%hive
+		SELECT * FROM hivesampletable LIMIT 5
+
+	Sie sollten eine Ausgabe ähnlich der folgenden erhalten.
+
+	![Hive-Ausgabe](./media/hdinsight-apache-spark-use-zeppelin-notebook/zeppelin-update-hive-interpreter-4.png "Hive-Ausgabe")
 
 ## <a name="seealso"></a>Weitere Informationen
 
@@ -325,7 +362,7 @@ Nach dem Einrichten des SSH-Tunneling können Sie die folgenden Schritte ausfüh
 
 * [Verwenden des HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Erstellen und Übermitteln von Spark Scala-Anwendungen](hdinsight-apache-spark-intellij-tool-plugin.md)
 
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md) (Verwenden von HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Spark-Anwendungen)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely (Verwenden von HDInsight-Tools-Plug-Ins für IntelliJ IDEA zum Remotedebuggen von Spark-Anwendungen)](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 
 * [Verfügbare Kernels für Jupyter-Notebook im Spark-Cluster für HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 
@@ -337,7 +374,7 @@ Nach dem Einrichten des SSH-Tunneling können Sie die folgenden Schritte ausfüh
 
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 
-* [Track and debug jobs running on an Apache Spark cluster in HDInsight](hdinsight-apache-spark-job-debugging.md)(Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)
+* [Track and debug jobs running on an Apache Spark cluster in HDInsight(Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
 
 
 [hdinsight-versions]: hdinsight-component-versioning.md
@@ -350,4 +387,4 @@ Nach dem Einrichten des SSH-Tunneling können Sie die folgenden Schritte ausfüh
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

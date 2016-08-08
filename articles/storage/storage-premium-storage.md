@@ -3,7 +3,7 @@
 	description="Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für E/A-intensive Workloads, die auf virtuellen Azure-Computern ausgeführt werden. Virtuelle Computer der Azure-DS-, DSv2- und -GS-Serie unterstützen Storage Premium."
 	services="storage"
 	documentationCenter=""
-	authors="ms-prkhad"
+	authors="aungoo-msft"
 	manager=""
 	editor="tysonn"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/23/2016"
-	ms.author="prkhad"/>
+	ms.date="07/24/2016"
+	ms.author="aungoo-msft"/>
 
 
 # Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern
@@ -23,7 +23,7 @@
 
 Azure Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für virtuelle Computer mit E/A-intensiven Workloads. Datenträger von virtuellen Computern (VM), die Storage Premium nutzen, speichern Daten auf SSDs (Solid State Drives). Sie können die VM-Datenträger Ihrer Anwendung zu Azure Storage Premium migrieren, um von der Geschwindigkeit und Leistung dieser Laufwerke zu profitieren.
 
-Ein virtueller Azure-Computer unterstützt das Anfügen mehrerer Storage Premium-Datenträger, damit Ihre Anwendung bis zu 64 TB Speicher pro virtuellem Computer nutzen kann. Mit Storage Premium können Ihre Anwendungen bis zu 80.000 IOPS (Input/Output Operations Per Second, E/A-Vorgänge pro Sekunde) pro virtuellem Computer nutzen sowie 2.000 MB Datenträgerdurchsatz pro Sekunde und virtuellem Computer mit äußerst niedriger Latenz für Lesevorgänge erzielen.
+Ein virtueller Azure-Computer unterstützt das Anfügen mehrerer Storage Premium-Datenträger, damit Ihre Anwendung bis zu 64 TB Speicher pro virtuellem Computer nutzen kann. Mit Storage Premium können Ihre Anwendungen bis zu 80.000 IOPS (Input/Output Operations Per Second, E/A-Vorgänge pro Sekunde) pro virtuellem Computer nutzen sowie 2.000 MB Datenträgerdurchsatz pro Sekunde und virtuellem Computer mit äußerst niedriger Latenz für Lesevorgänge erzielen.
 
 Mit Storage Premium bietet Azure die Möglichkeit, anspruchsvollste Unternehmensanwendungen wie Dynamics AX, Dynamics CRM, Exchange Server, SharePoint-Farmen und SAP Business Suite in die Cloud zu verlagern. Sie können eine Vielzahl von leistungsintensiven Datenbankworkloads wie SQL Server, Oracle, MongoDB, MySQL und Redis ausführen, die eine konsistent hohe Leistung und eine geringe Latenz auf Storage Premium benötigen.
 
@@ -35,7 +35,7 @@ Informationen zu den ersten Schritten mit Azure Premium-Speicher finden Sie auf 
 
 ## Storage Premium-Funktionen
 
-**Storage Premium-Datenträger:** Azure Storage Premium unterstützt VM-Datenträger, die an virtuelle Azure-Computer der DS-, DSv2- oder GS-Serie angefügt werden können. Bei Verwendung von Storage Premium haben Sie die Wahl zwischen drei Datenträgergrößen: P10 (128 GiB), P20 (512 GiB) und P30 (1024 GiB), jeweils mit eigenen Leistungsspezifikationen. Je nach Anwendungsanforderung können Sie einen oder mehrere dieser Datenträger an Ihren virtuellen Computer der DS-, DSv2- oder GS-Serie anfügen. Im folgenden Abschnitt [Skalierbarkeits- und Leistungsziele für Storage Premium](#premium-storage-scalability-and-performance-targets) werden die Spezifikationen ausführlicher beschrieben.
+**Storage Premium-Datenträger:** Azure Storage Premium unterstützt VM-Datenträger, die an virtuelle Azure-Computer der DS-, DSv2- oder GS-Serie angefügt werden können. Bei Verwendung von Storage Premium haben Sie die Wahl zwischen drei Datenträgergrößen: P10 (128 GiB), P20 (512 GiB) und P30 (1024 GiB), jeweils mit eigenen Leistungsspezifikationen. Je nach Anwendungsanforderung können Sie einen oder mehrere dieser Datenträger an Ihren virtuellen Computer der DS-, DSv2- oder GS-Serie anfügen. Im folgenden Abschnitt [Skalierbarkeits- und Leistungsziele für Storage Premium](#premium-storage-scalability-and-performance-targets) werden die Spezifikationen ausführlicher beschrieben.
 
 **Storage Premium-Seitenblob:** Storage Premium unterstützt Azure-Seitenblobs, die verwendet werden, um persistente Datenträger für virtuelle Azure-Computer zu speichern. Storage Premium unterstützt derzeit nicht Azure Block Blobs, Azure Append Blobs, Azure Files, Azure Tables oder Azure Queues. Alle anderen Objekte in einem Storage Premium-Konto sind Seitenblobs. Die Objekte werden an einer der unterstützten bereitgestellten Größen ausgerichtet. Das Storage Premium-Konto eignet sich daher nicht zum Speichern sehr kleiner Blobs.
 
@@ -73,9 +73,9 @@ Im Folgenden sind einige Funktionen der virtuellen Computer der DS-, DSv2- und G
 
 **Analyse**: Um die Leistung virtueller Computer anhand von Datenträgern in Storage Premium-Konten zu analysieren, können Sie im Azure-Portal die Diagnose für virtuelle Azure-Computer aktivieren. Einzelheiten erfahren Sie unter [Microsoft Azure Virtual Machine Monitoring with Azure Diagnostics Extension](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/) (in englischer Sprache). Die Datenträgerleistung können Sie mithilfe von auf dem Betriebssystem basierenden Tools analysieren, z.B. [Windows-Leistungsüberwachung](https://technet.microsoft.com/library/cc749249.aspx) für virtuelle Windows-Computer und [IOSTAT](http://linux.die.net/man/1/iostat) für virtuelle Linux-Computer.
 
-**Skalierungslimits und Leistung virtueller Computer**: Jede Größe für virtuelle Computer der DS-, DSv2- und GS-Serie verfügt über Skalierungslimits und Leistungsspezifikationen für IOPS, Bandbreite und die Anzahl von Datenträgern, die pro virtuellem Computer angefügt werden können. Stellen Sie bei Verwendung von Storage Premium-Datenträgern mit virtuellen Computern der DS-, DSv2- oder GS-Serie sicher, dass auf dem virtuellen Computer ausreichend IOPS und Bandbreite für den Datenverkehr des Datenträgers verfügbar sind. Bei einem virtuellen Computer vom Typ „STANDARD\_DS1“ steht für Premium-Speicherdatenträgerverkehr beispielsweise eine dedizierte Bandbreite von 32 MB pro Sekunde zur Verfügung. Ein Storage Premium-Datenträger des Typs „P10“ kann eine Bandbreite von 100 MB pro Sekunde bereitstellen. Mit einem an diesen virtuellen Computer angefügten Storage Premium-Datenträger des Typs „P10“ sind maximal 32 MB pro Sekunde möglich (nicht bis zu 100 MB pro Sekunde, wie sie der P10-Datenträger bereitstellen kann).
+**Skalierungslimits und Leistung virtueller Computer**: Jede Größe für virtuelle Computer der DS-, DSv2- und GS-Serie verfügt über Skalierungslimits und Leistungsspezifikationen für IOPS, Bandbreite und die Anzahl von Datenträgern, die pro virtuellem Computer angefügt werden können. Stellen Sie bei Verwendung von Storage Premium-Datenträgern mit virtuellen Computern der DS-, DSv2- oder GS-Serie sicher, dass auf dem virtuellen Computer ausreichend IOPS und Bandbreite für den Datenverkehr des Datenträgers verfügbar sind. Bei einem virtuellen Computer vom Typ „STANDARD\_DS1“ steht für Premium-Speicherdatenträgerverkehr beispielsweise eine dedizierte Bandbreite von 32 MB pro Sekunde zur Verfügung. Ein Storage Premium-Datenträger des Typs „P10“ kann eine Bandbreite von 100 MB pro Sekunde bereitstellen. Mit einem an diesen virtuellen Computer angefügten Storage Premium-Datenträger des Typs „P10“ sind maximal 32 MB pro Sekunde möglich (nicht bis zu 100 MB pro Sekunde, wie sie der P10-Datenträger bereitstellen kann).
 
-Derzeit ist der größte virtuelle Computer der DS-Serie der STANDARD\_DS14. Er kann bis zu 512 MB pro Sekunde auf allen Datenträgern bereitstellen. Der größte virtuelle Computer der GS-Serie ist der STANDARD\_GS5. Er kann bis zu 2.000 MB pro Sekunde auf allen Datenträgern bereitstellen. Beachten Sie, dass diese Limits nur für den Datenträgerverkehr und nicht für Cachetreffer- und Netzwerkverkehr gelten. Für den Netzwerkdatenverkehr virtueller Computer steht eine separate Bandbreite zur Verfügung. Diese unterscheidet sich von der dedizierten Bandbreite für Premium-Speicherdatenträger.
+Derzeit ist der größte virtuelle Computer der DS-Serie der STANDARD\_DS14. Er kann bis zu 512 MB pro Sekunde auf allen Datenträgern bereitstellen. Der größte virtuelle Computer der GS-Serie ist der STANDARD\_GS5. Er kann bis zu 2.000 MB pro Sekunde auf allen Datenträgern bereitstellen. Beachten Sie, dass diese Limits nur für den Datenträgerverkehr und nicht für Cachetreffer- und Netzwerkverkehr gelten. Für den Netzwerkdatenverkehr virtueller Computer steht eine separate Bandbreite zur Verfügung. Diese unterscheidet sich von der dedizierten Bandbreite für Premium-Speicherdatenträger.
 
 Aktuelle Informationen zu maximalen IOPS- und Durchsatzwerten (d.h. Bandbreitenwerte) für virtuelle Computer der DS-, DSv2- und GS-Serie finden Sie unter [Größen für virtuelle Computer in Azure (Windows)](../virtual-machines/virtual-machines-windows-sizes.md) bzw. [Größen für virtuelle Computer in Azure (Linux)](../virtual-machines/virtual-machines-linux-sizes.md).
 
@@ -112,7 +112,7 @@ Storage Premium-Konten weisen folgende Skalierbarkeitsziele auf:
 
 Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungszielen für Azure Storage](storage-scalability-targets.md).
 
-Wenn die Anforderungen Ihrer Anwendung die Skalierbarkeitsziele eines einzelnen Speicherkontos überschreiten, erstellen Sie die Anwendung so, dass mehrere Speicherkonten verwendet werden, und partitionieren Sie Ihre Daten in diesen Speicherkonten. Wenn Sie z.B. Datenträger mit einer Kapazität von 51 Terabyte (TB) an mehrere virtuelle Computer anfügen möchten, verteilen Sie diese auf zwei Speicherkonten, da 35 TB der Grenzwert für ein einzelnes Storage Premium-Konto ist. Stellen Sie sicher, dass ein Premium-Speicherkonto stets Datenträger mit einer Größe von maximal 35 TB enthält.
+Wenn die Anforderungen Ihrer Anwendung die Skalierbarkeitsziele eines einzelnen Speicherkontos überschreiten, erstellen Sie die Anwendung so, dass mehrere Speicherkonten verwendet werden, und partitionieren Sie Ihre Daten in diesen Speicherkonten. Wenn Sie z.B. Datenträger mit einer Kapazität von 51 Terabyte (TB) an mehrere virtuelle Computer anfügen möchten, verteilen Sie diese auf zwei Speicherkonten, da 35 TB der Grenzwert für ein einzelnes Storage Premium-Konto ist. Stellen Sie sicher, dass ein Premium-Speicherkonto stets Datenträger mit einer Größe von maximal 35 TB enthält.
 
 ### Grenzwerte für Storage Premium-Datenträger
 
@@ -153,13 +153,13 @@ Es folgen einige wichtige Punkte, die Sie in Bezug auf die Skalierbarkeits- und 
 
 - **Bereitgestellte Kapazität und Leistung:** Im Gegensatz zu einem Standard-Speicherdatenträger sind bei der Bereitstellung eines Storage Premium-Datenträgers die Kapazität, die IOPS und der Durchsatz für diesen Datenträger garantiert. Wenn Sie beispielsweise einen P30-Datenträger erstellen, werden in Azure eine Speicherkapazität von 1.024 GB, 5.000 IOPS und ein Durchsatz von 200 MB pro Sekunde für diesen Datenträger bereitgestellt. Die Anwendung kann die Kapazität und Leistung ganz oder teilweise nutzen.
 
-- **Datenträgergröße:** Azure ordnet die (aufgerundete) Datenträgergröße der nächsten Option für Storage Premium-Datenträger wie in der Tabelle angegeben zu. Ein Datenträger mit der Größe 100 GB wird z.B. als Option „P10“ klassifiziert. Er kann bis zu 500 E/A-Einheiten pro Sekunde mit einem Durchsatz von bis zu 100 MB pro Sekunde ausführen. Analog wird ein Datenträger mit der Größe 400 GB als Option „P20“ klassifiziert. Er kann bis zu 2300 E/A-Einheiten pro Sekunde mit einem Durchsatz von bis zu 150 MB pro Sekunde ausführen.
+- **Datenträgergröße:** Azure ordnet die (aufgerundete) Datenträgergröße der nächsten Option für Storage Premium-Datenträger wie in der Tabelle angegeben zu. Ein Datenträger mit der Größe 100 GB wird z.B. als Option „P10“ klassifiziert. Er kann bis zu 500 E/A-Einheiten pro Sekunde mit einem Durchsatz von bis zu 100 MB pro Sekunde ausführen. Analog wird ein Datenträger mit der Größe 400 GB als Option „P20“ klassifiziert. Er kann bis zu 2300 E/A-Einheiten pro Sekunde mit einem Durchsatz von bis zu 150 MB pro Sekunde ausführen.
 
-	> [AZURE.NOTE] Sie können die Größe der vorhandenen Datenträger problemlos erhöhen. Sie können beispielsweise die Größe eines 30-GB-Datenträgers auf 128 GB oder 1 TB erhöhen. Sie haben auch die Möglichkeit, einen P20-Datenträger in einen P30-Datenträger umzuwandeln, wenn Sie mehr Kapazität oder mehr IOPS und einen höheren Durchsatz benötigen. Sie können den Datenträger mithilfe des PowerShell-Cmdlets Update-AzureDisk mit der Eigenschaft -ResizedSizeInGB erweitern. Für diese Aktion muss der Datenträger vom virtuellen Computer getrennt oder der virtuelle Computer angehalten werden.
+	> [AZURE.NOTE] Sie können die Größe der vorhandenen Datenträger problemlos erhöhen. Sie können beispielsweise die Größe eines 30-GB-Datenträgers auf 128 GB oder 1 TB erhöhen. Sie haben auch die Möglichkeit, einen P20-Datenträger in einen P30-Datenträger umzuwandeln, wenn Sie mehr Kapazität oder mehr IOPS und einen höheren Durchsatz benötigen. Sie können den Datenträger mithilfe des PowerShell-Cmdlets Update-AzureDisk mit der Eigenschaft -ResizedSizeInGB erweitern. Für diese Aktion muss der Datenträger vom virtuellen Computer getrennt oder der virtuelle Computer angehalten werden.
 
-- **E/A-Größe:** Die Größe der Eingabe-/Ausgabeeinheit (E/A) liegt bei 256 KB. Wenn die Daten, die übertragenen werden, kleiner als 256 KB sind, werden sie als einzelne E/A-Einheit betrachtet. Die größeren E/A-Größen werden als mehrere Ein- bzw. Ausgaben der Größe 256 KB gezählt. Eine EA von 1.100 KB wird beispielsweise als fünf E/A-Einheiten gezählt.
+- **E/A-Größe:** Die Größe der Eingabe-/Ausgabeeinheit (E/A) liegt bei 256 KB. Wenn die Daten, die übertragenen werden, kleiner als 256 KB sind, werden sie als einzelne E/A-Einheit betrachtet. Die größeren E/A-Größen werden als mehrere Ein- bzw. Ausgaben der Größe 256 KB gezählt. Eine EA von 1.100 KB wird beispielsweise als fünf E/A-Einheiten gezählt.
 
-- **Durchsatz:** Zu den Durchsatzlimits zählen Schreib- und Lesevorgänge auf dem Datenträger, die nicht vom Cache verarbeitet werden. Bei P10-Datenträgern liegt der Durchsatz beispielsweise bei 100 MB pro Sekunde pro Datenträger. Einige Beispiele für den gültigen Durchsatz bei P10-Datenträgern:
+- **Durchsatz:** Zu den Durchsatzlimits zählen Schreib- und Lesevorgänge auf dem Datenträger, die nicht vom Cache verarbeitet werden. Bei P10-Datenträgern liegt der Durchsatz beispielsweise bei 100 MB pro Sekunde pro Datenträger. Einige Beispiele für den gültigen Durchsatz bei P10-Datenträgern:
 <table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
 <tbody>
 <tr>
@@ -185,23 +185,23 @@ Es folgen einige wichtige Punkte, die Sie in Bezug auf die Skalierbarkeits- und 
 </tbody>
 </table>
 
-- **Cachetreffer:** Cachetreffer werden durch die zugeordneten IOPS-/Durchsatzwerte des Datenträgers nicht eingeschränkt. Beispielsweise unterliegen Lesevorgänge, die vom Cache verarbeitet werden, bei Verwendung eines Datenträgers mit der Cacheeinstellung ReadOnly für einen virtuellen Computer der DS-, DSv2- oder GS-Serie nicht den Einschränkungen für Storage Premium-Datenträger. Daher können Sie einen sehr hohen Durchsatz mit einem Datenträger erzielen, wenn der Workload vorwiegend aus Lesevorgängen besteht. Beachten Sie, dass für den Cache separate IOPS-/Durchsatzlimits auf Ebene des virtuellen Computers basierend auf der Größe des virtuellen Computers gelten. Virtuelle Computer der DS-Serie bieten etwa 4.000 IOPS und 33 MB pro Sekunde und Kern für E/A von Caches und lokalen SSDs. Virtuelle Computer der GS-Serie weisen eine Beschränkung von 5.000 IOPS und 50 MB pro Sekunde und Kern für E/A von Caches und lokalen SSDs auf.
+- **Cachetreffer:** Cachetreffer werden durch die zugeordneten IOPS-/Durchsatzwerte des Datenträgers nicht eingeschränkt. Beispielsweise unterliegen Lesevorgänge, die vom Cache verarbeitet werden, bei Verwendung eines Datenträgers mit der Cacheeinstellung ReadOnly für einen virtuellen Computer der DS-, DSv2- oder GS-Serie nicht den Einschränkungen für Storage Premium-Datenträger. Daher können Sie einen sehr hohen Durchsatz mit einem Datenträger erzielen, wenn der Workload vorwiegend aus Lesevorgängen besteht. Beachten Sie, dass für den Cache separate IOPS-/Durchsatzlimits auf Ebene des virtuellen Computers basierend auf der Größe des virtuellen Computers gelten. Virtuelle Computer der DS-Serie bieten etwa 4.000 IOPS und 33 MB pro Sekunde und Kern für E/A von Caches und lokalen SSDs. Virtuelle Computer der GS-Serie weisen eine Beschränkung von 5.000 IOPS und 50 MB pro Sekunde und Kern für E/A von Caches und lokalen SSDs auf.
 
 ## Drosselung
 Möglicherweise bemerken Sie eine Drosselung, wenn bei der IOPS oder beim Durchsatz der Anwendung die zugewiesenen Grenzwerte für einen Storage Premium-Datenträger überschritten werden oder der gesamte Datenträgerverkehr auf allen Datenträgern des virtuellen Computers das Bandbreitenlimit des Datenträgers für den virtuellen Computer überschreitet. Um die Drosselung zu verhindern, sollten Sie die Anzahl der ausstehenden E/A-Anforderungen für Datenträger einschränken, und zwar basierend auf den Skalierbarkeits- und Leistungszielen für den bereitgestellten Datenträger und auf der für den virtuellen Computer verfügbaren Datenträgerbandbreite.
 
 Ihre Anwendung kann die geringste Latenz erzielen, wenn sie so entworfen wird, dass Einschränkungen vermieden werden. Wenn die Anzahl der ausstehenden E/A-Anforderungen für den Datenträger zu klein ist, kann Ihre Anwendung andererseits die maximalen IOPS- und Durchsatzebenen nicht nutzen, die für den Datenträger verfügbar sind.
 
-Die folgenden Beispiele veranschaulichen, wie die Einschränkungsebenen berechnet werden. Alle Berechnungen basieren auf der E/A-Einheitengröße von 256 KB.
+Die folgenden Beispiele veranschaulichen, wie die Einschränkungsebenen berechnet werden. Alle Berechnungen basieren auf der E/A-Einheitengröße von 256 KB.
 
-### Beispiel 1:
-Ihre Anwendung hat 495 E/A-Einheiten mit einer Größe von 16 KB in einer Sekunde auf einem Datenträger des Typs P10 ausgeführt. Diese werden als 495 E/A-Einheiten pro Sekunde (IOPS) berechnet. Wenn Sie eine E/A von 2 MB in der gleichen Sekunde versuchen, entspricht die Summe der E/A-Einheiten 495 + 8. Dies liegt daran, dass 2 MB E/A zu 2048 KB / 256 KB = 8 E/A-Einheiten führt, wenn die E/A-Einheitengröße 256 KB beträgt. Da die Summe von 495 + 8 die IOPS-Grenze von 500 für den Datenträger überschreitet, tritt eine Einschränkung auf.
+### Beispiel 1:
+Ihre Anwendung hat 495 E/A-Einheiten mit einer Größe von 16 KB in einer Sekunde auf einem Datenträger des Typs P10 ausgeführt. Diese werden als 495 E/A-Einheiten pro Sekunde (IOPS) berechnet. Wenn Sie eine E/A von 2 MB in der gleichen Sekunde versuchen, entspricht die Summe der E/A-Einheiten 495 + 8. Dies liegt daran, dass 2 MB E/A zu 2048 KB / 256 KB = 8 E/A-Einheiten führt, wenn die E/A-Einheitengröße 256 KB beträgt. Da die Summe von 495 + 8 die IOPS-Grenze von 500 für den Datenträger überschreitet, tritt eine Einschränkung auf.
 
-### Beispiel 2:
-Ihre Anwendung hat 400 E/A-Einheiten mit einer Größe von 256 KB auf einem Datenträger des Typs P10 ausgeführt. Verwendete Gesamtbandbreite: (400 * 256) / 1024 = 100 MB/s. Das Durchsatzlimit eines P10-Datenträgers liegt bei 100 MB pro Sekunde. Wenn Ihre Anwendung versucht, weitere E/A-Vorgänge in dieser Sekunde auszuführen, wird sie eingeschränkt, weil der zugewiesene Grenzwert überschritten wird.
+### Beispiel 2:
+Ihre Anwendung hat 400 E/A-Einheiten mit einer Größe von 256 KB auf einem Datenträger des Typs P10 ausgeführt. Verwendete Gesamtbandbreite: (400 * 256) / 1024 = 100 MB/s. Das Durchsatzlimit eines P10-Datenträgers liegt bei 100 MB pro Sekunde. Wenn Ihre Anwendung versucht, weitere E/A-Vorgänge in dieser Sekunde auszuführen, wird sie eingeschränkt, weil der zugewiesene Grenzwert überschritten wird.
 
-### Beispiel 3:
-Sie besitzen einen virtuellen DS4-Computer mit zwei angefügten P30-Datenträgern. Bei jedem P30-Datenträger ist ein Durchsatz von 200 MB Datendurchsatz pro Sekunde möglich. Ein virtueller DS4-Computer verfügt jedoch über eine Datenträgerbandbreitenkapazität von insgesamt 256 MB pro Sekunde. Daher können Sie auf diesem virtuellen DS4-Computer für die angeschlossenen Datenträger nicht gleichzeitig den maximalen Durchsatz erzielen. Um dieses Problem zu beheben, können Sie auf einem Datenträger Datenverkehr von 200 MB pro Sekunde und auf dem anderen Datenträger 56 MB pro Sekunde tolerieren. Übersteigt die Summe des Datenträgerverkehrs 256 MB pro Sekunde, wird der Datenträgerverkehr gedrosselt.
+### Beispiel 3:
+Sie besitzen einen virtuellen DS4-Computer mit zwei angefügten P30-Datenträgern. Bei jedem P30-Datenträger ist ein Durchsatz von 200 MB Datendurchsatz pro Sekunde möglich. Ein virtueller DS4-Computer verfügt jedoch über eine Datenträgerbandbreitenkapazität von insgesamt 256 MB pro Sekunde. Daher können Sie auf diesem virtuellen DS4-Computer für die angeschlossenen Datenträger nicht gleichzeitig den maximalen Durchsatz erzielen. Um dieses Problem zu beheben, können Sie auf einem Datenträger Datenverkehr von 200 MB pro Sekunde und auf dem anderen Datenträger 56 MB pro Sekunde tolerieren. Übersteigt die Summe des Datenträgerverkehrs 256 MB pro Sekunde, wird der Datenträgerverkehr gedrosselt.
 
 >[AZURE.NOTE] Wenn der Datenverkehr des Datenträgers vor allem aus kleinen E/A-Größen besteht, ist es sehr wahrscheinlich, dass Ihre Anwendung den IOPS-Grenzwert vor dem Durchsatzgrenzwert erreicht. Wenn der Datenverkehr des Datenträgers vor allem aus großen E/A-Größen besteht, ist es andererseits sehr wahrscheinlich, dass Ihre Anwendung den Durchsatzgrenzwert und nicht den IOPS-Grenzwert erreicht. Sie können die IOPS und die Durchsatzkapazität Ihrer Anwendung mithilfe optimaler E/A-Größen und auch durch das Einschränken der Anzahl der ausstehenden E/A-Anforderungen für den Datenträger maximieren.
 
@@ -351,7 +351,7 @@ Bei der Verwendung des Premium-Speichers gelten die folgenden Abrechnungserwägu
 - Storage Premium-Momentaufnahmen
 - Ausgehende Datenübertragungen
 
-**Größe von Storage Premium-Datenträgern/-Blobs:** Die Abrechnung für einen Storage Premium-Datenträger bzw. ein Storage Premium-Blob hängt von der bereitgestellten Größe des Datenträgers/Blobs ab. Azure ordnet die bereitgestellte (aufgerundete) Größe der nächsten Option für den Storage Premium-Datenträger zu (siehe Tabelle im Abschnitt [Skalierbarkeits- und Leistungsziele für Storage Premium](#premium-storage-scalability-and-performance-targets)). Alle in einem Storage Premium-Konto gespeicherten Objekten werden einer unterstützten bereitgestellten Größe zugeordnet und entsprechend in Rechnung gestellt. Verwenden Sie daher Storage Premium-Konten nicht zum Speichern sehr kleiner Blobs. Die Abrechnung für bereitgestellte Datenträger/Blobs erfolgt anteilig auf Stundenbasis unter Verwendung des monatlichen Preises für das Storage Premium-Angebot. Wenn Sie z.B. einen Datenträger des Typs P10 bereitgestellt und diesen nach 20 Stunden gelöscht haben, erfolgt die Abrechnung für das P10-Angebot anteilig für 20 Stunden. Dies ist unabhängig von der tatsächlichen Menge von Daten, die auf den Datenträger geschrieben wurden, oder dem verwendeten IOPS/Durchsatz.
+**Größe von Storage Premium-Datenträgern/-Blobs:** Die Abrechnung für einen Storage Premium-Datenträger bzw. ein Storage Premium-Blob hängt von der bereitgestellten Größe des Datenträgers/Blobs ab. Azure ordnet die bereitgestellte (aufgerundete) Größe der nächsten Option für den Storage Premium-Datenträger zu (siehe Tabelle im Abschnitt [Skalierbarkeits- und Leistungsziele für Storage Premium](#premium-storage-scalability-and-performance-targets)). Alle in einem Storage Premium-Konto gespeicherten Objekten werden einer unterstützten bereitgestellten Größe zugeordnet und entsprechend in Rechnung gestellt. Verwenden Sie daher Storage Premium-Konten nicht zum Speichern sehr kleiner Blobs. Die Abrechnung für bereitgestellte Datenträger/Blobs erfolgt anteilig auf Stundenbasis unter Verwendung des monatlichen Preises für das Storage Premium-Angebot. Wenn Sie z.B. einen Datenträger des Typs P10 bereitgestellt und diesen nach 20 Stunden gelöscht haben, erfolgt die Abrechnung für das P10-Angebot anteilig für 20 Stunden. Dies ist unabhängig von der tatsächlichen Menge von Daten, die auf den Datenträger geschrieben wurden, oder dem verwendeten IOPS/Durchsatz.
 
 **Storage Premium-Momentaufnahmen:** Für Momentaufnahmen für Storage Premium wird die zusätzliche Kapazität in Rechnung gestellt, die von den Momentaufnahmen verwendet wird. Informationen zu Momentaufnahmen finden Sie unter [Erstellen einer Momentaufnahme eines Blobs](http://msdn.microsoft.com/library/azure/hh488361.aspx).
 
@@ -425,7 +425,7 @@ Ausführlichere Schritte finden Sie unter [Anfügen eines Datenträgers an eine 
 2. Navigieren Sie unter „Alle Einstellungen“ für den virtuellen Computer zu „Datenträger“, und klicken Sie auf den zu ändernden Datenträger.
 3. Legen Sie für die Option „Hostzwischenspeicherung“ den gewünschten Wert fest: „None“, „ReadOnly“ oder „ReadWrite“.
 
-### Erstellen eines virtuellen Azure-Computers mit Premium-Speicher über Azure PowerShell
+### Erstellen eines virtuellen Azure-Computers mit Premium-Speicher über Azure PowerShell
 
 #### I. Erstellen eines Storage Premium-Kontos in Azure PowerShell
 
@@ -466,7 +466,7 @@ Wenn Sie mehr Speicherplatz für Ihren virtuellen Computer benötigen, fügen Si
 
 #### IV. Ändern der Datenträger-Cacherichtlinie über Azure PowerShell
 
-Um die Datenträger-Cacherichtlinie zu aktualisieren, notieren Sie sich die LUN-Nummer des angefügten Datenträgers. Führen Sie den folgenden Befehl aus, um den unter LUN-Nummer 2 angefügten Datenträger in „ReadOnly“ zu ändern.
+Um die Datenträger-Cacherichtlinie zu aktualisieren, notieren Sie sich die LUN-Nummer des angefügten Datenträgers. Führen Sie den folgenden Befehl aus, um den unter LUN-Nummer 2 angefügten Datenträger in „ReadOnly“ zu ändern.
 
 		Get-AzureVM "myservice" -name "MyVM" | Set-AzureDataDisk -LUN 2 -HostCaching ReadOnly | Update-AzureVM
 
@@ -517,9 +517,9 @@ Beachten Sie, dass die Cacherichtlinienoptionen „ReadOnly“, „None“ oder 
 
 	Nein. An virtuelle Computer, die nicht aus der DS-, DSv2- oder GS-Serie stammen, können Sie nur Standard-Datenträger anfügen.
 
-3. **Welche Kosten fallen für mich an, wenn ich einen Storage Premium-Datenträger von einer vorhandenen virtuellen Festplatte mit einer Größe von 80 GB erstelle?**
+3. **Welche Kosten fallen für mich an, wenn ich einen Storage Premium-Datenträger von einer vorhandenen virtuellen Festplatte mit einer Größe von 80 GB erstelle?**
 
-	Ein Storage Premium-Datenträger, der von einer virtuellen Festplatte mit einer Größe von 80 GB erstellt wird, wird nach der nächsten verfügbaren Größe für Storage Premium-Datenträger berechnet, in diesem Fall als P10-Datenträger. Für Sie fallen die Preise für einen P10-Datenträger an.
+	Ein Storage Premium-Datenträger, der von einer virtuellen Festplatte mit einer Größe von 80 GB erstellt wird, wird nach der nächsten verfügbaren Größe für Storage Premium-Datenträger berechnet, in diesem Fall als P10-Datenträger. Für Sie fallen die Preise für einen P10-Datenträger an.
 
 4. **Fallen bei Verwendung von Storage Premium Transaktionskosten an?**
 
@@ -531,7 +531,7 @@ Beachten Sie, dass die Cacherichtlinienoptionen „ReadOnly“, „None“ oder 
 
 6. **Welche IOPS- und Durchsatzwerte erhalte ich über den Datenträgercache?**
 
-	Die kombinierte Beschränkung für den Cache und die lokale SSD für virtuelle Computer der DS-Serie liegt bei 4.000 IOPS pro Kern und 33 MB pro Sekunde und Kern. Virtuelle Computer der GS-Serie bieten 5.000 IOPS pro Kern und 50 MB pro Sekunde und Kern.
+	Die kombinierte Beschränkung für den Cache und die lokale SSD für virtuelle Computer der DS-Serie liegt bei 4.000 IOPS pro Kern und 33 MB pro Sekunde und Kern. Virtuelle Computer der GS-Serie bieten 5.000 IOPS pro Kern und 50 MB pro Sekunde und Kern.
 
 7. **Was ist die lokale SSD in einem virtuellen Computer der DS-, DSv2- oder GS-Serie?**
 
@@ -565,4 +565,4 @@ Weitere Informationen zu Azure Storage Premium finden Sie in den folgenden Artik
 
 [Image1]: ./media/storage-premium-storage/Azure_attach_premium_disk.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

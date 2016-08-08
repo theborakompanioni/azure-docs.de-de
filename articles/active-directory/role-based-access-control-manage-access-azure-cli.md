@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="07/14/2016"
+	ms.date="07/22/2016"
 	ms.author="kgremban"/>
 
 # Verwalten der rollenbasierten Zugriffssteuerung mit der Azure-Befehlszeilenschnittstelle
@@ -39,6 +39,10 @@ Um alle verfügbaren Rollen aufzulisten, verwenden Sie Folgendes:
 
 Das folgende Beispiel zeigt die Liste *aller verfügbaren Rollen*.
 
+```
+azure role list --json | jq '.[] | {"roleName":.properties.roleName, "description":.properties.description}'
+```
+
 ![Azure-Befehlszeile für die RBAC – Azure-Rollenliste – Screenshot](./media/role-based-access-control-manage-access-azure-cli/1-azure-role-list.png)
 
 ###	Liste der Aktionen einer Rolle
@@ -47,6 +51,12 @@ Um die Aktionen einer Rolle aufzulisten, verwenden Sie Folgendes:
     azure role show "<role name>"
 
 Das folgende Beispiel zeigt die Aktionen der Rollen *Contributor* und *Virtual Machine Contributor*.
+
+```
+azure role show "contributor" --json | jq '.[] | {"Actions":.properties.permissions[0].actions,"NotActions":properties.permissions[0].notActions}'
+
+azure role show "virtual machine contributor" --json | jq '.[] | .properties.permissions[0].actions'
+```
 
 ![Azure-Befehlszeile für die RBAC – Azure-Rollenanzeige – Screenshot](./media/role-based-access-control-manage-access-azure-cli/1-azure-role-show.png)
 
@@ -57,6 +67,10 @@ Verwenden Sie Folgendes, um die in einer Ressourcengruppe enthaltenen Rollenzuwe
     azure role assignment list --resource-group <resource group name>
 
 Das folgende Beispiel zeigt die Rollenzuweisungen für die Gruppe *pharma-sales-projectforecast*.
+
+```
+azure role assignment list --resource-group pharma-sales-projecforcast --json | jq '.[] | {"DisplayName":.properties.aADObject.displayName,"RoleDefinitionName":.properties.roleName,"Scope":.properties.scope}'
+```
 
 ![Azure-Befehlszeile für die RBAC – Azure-Rollenzuweisungsliste nach Gruppe – Screenshot](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-assignment-list-1.png)
 
@@ -70,6 +84,12 @@ Sie können auch von Gruppen geerbte Rollenzuweisungen anzeigen. Ändern Sie daz
 	azure role assignment list --expandPrincipalGroups --signInName <user email>
 
 Das folgende Beispiel zeigt die Rollenzuweisungen für den Benutzer *sameert@aaddemo.com*. Darin sind Rollen enthalten, die dem Benutzer direkt zugewiesen werden, aber auch Rollen, die von Gruppen geerbt werden.
+
+```
+azure role assignment list --signInName sameert@aaddemo.com --json | jq '.[] | {"DisplayName":.properties.aADObject.DisplayName,"RoleDefinitionName":.properties.roleName,"Scope":.properties.scope}'
+
+azure role assignment list --expandPrincipalGroups --signInName sameert@aaddemo.com --json | jq '.[] | {"DisplayName":.properties.aADObject.DisplayName,"RoleDefinitionName":.properties.roleName,"Scope":.properties.scope}'
+```
 
 ![Azure-Befehlszeile für die RBAC – Azure-Rollenzuweisungsliste nach Benutzer – Screenshot](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-assignment-list-2.png)
 
@@ -85,6 +105,7 @@ Um einer Gruppe im Abonnementkontext eine Rolle zuzuweisen, verwenden Sie Folgen
 
 Das folgende Beispiel weist die Rolle *Reader* dem *Christine Koch Team* im *Abonnementkontext* zu.
 
+
 ![Azure-Befehlszeile für die RBAC – Azure-Rollenzuweisungserstellung nach Gruppe – Screenshot](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-1.png)
 
 ###	Zuweisen einer Rolle zu einer Anwendung im Abonnementkontext
@@ -99,7 +120,7 @@ Das folgende Beispiel gewährt einer *Azure AD*-Anwendung für das ausgewählte 
 ###	Zuweisen einer Rolle zu einem Benutzer im Ressourcengruppenkontext
 Um einem Benutzer im Ressourcengruppenkontext eine Rolle zuzuweisen, verwenden Sie Folgendes:
 
-	azure role assignment create --signInName  <user's email address> --subscription <subscription> --roleName <name of role in quotes> --resourceGroup <resource group name>
+	azure role assignment create --signInName  <user email address> --roleName "<name of role>" --resourceGroup <resource group name>
 
 Im folgenden Beispiel wird dem Benutzer *samert@aaddemo.com* im Kontext der Ressourcengruppe *Pharma-Sales-ProjectForcast* die Rolle *Virtual Machine Contributor* gewährt:
 
@@ -160,9 +181,17 @@ Zum Auflisten der Rollen, die in einem Bereich für die Zuweisung verfügbar sin
 
 Im folgenden Beispiel werden alle Rollen aufgelistet, die für die Zuweisung im ausgewählten Abonnement verfügbar sind.
 
+```
+azure role list --json | jq '.[] | {"name":.properties.roleName, type:.properties.type}'
+```
+
 ![Azure-Befehlszeile für die RBAC – Azure-Rollenliste – Screenshot](./media/role-based-access-control-manage-access-azure-cli/5-azure-role-list1.png)
 
 Im folgenden Beispiel ist die benutzerdefinierte Rolle *Virtual Machine Operator* im Abonnement *Production4* nicht verfügbar, da dieses Abonnement nicht in **AssignableScopes** für die Rolle enthalten ist.
+
+```
+azure role list --json | jq '.[] | if .properties.type == "CustomRole" then .properties.roleName else empty end'
+```
 
 ![Azure-Befehlszeile für RBAC – Azure-Rollenliste für benutzerdefinierte Rollen – Screenshot](./media/role-based-access-control-manage-access-azure-cli/5-azure-role-list2.png)
 
@@ -173,4 +202,4 @@ Im folgenden Beispiel ist die benutzerdefinierte Rolle *Virtual Machine Operator
 ## RBAC-Themen
 [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

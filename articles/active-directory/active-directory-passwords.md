@@ -106,7 +106,7 @@ Weitere Informationen über die Preise für Azure AD Premium oder Basic finden 
 | Wie kann ich Benutzern das Entsperren von AD-Konten ohne Zurücksetzen eines Kennworts ermöglichen? | [Einstellung: Benutzern ermöglichen, ihre AD-Konten ohne Zurücksetzen eines Kennworts zu entsperren](active-directory-passwords-customize.md#allow-users-to-unlock-accounts-without-resetting-their-password) |
 | Wie kann ich Benachrichtigungen zur Kennwortzurücksetzung für Benutzer aktivieren? | [Einstellung: Benutzer benachrichtigen, wenn ihre Kennwörter zurückgesetzt wurden](active-directory-passwords-customize.md#notify-users-and-admins-when-their-own-password-has-been-reset) |
 | Wie kann ich Benachrichtigungen zur Kennwortzurücksetzung für Administratoren aktivieren? | [Einstellung: Andere Administratoren benachrichtigen, wenn ein Administrator sein eigenes Kennwort zurückgesetzt hat](active-directory-passwords-customize.md#notify-admins-when-other-admins-reset-their-own-passwords) |
-| Wie kann ich das Look-and-Feel für das Zurücksetzen von Kennwörtern anpassen? | [Einstellung: Firmenname, Branding und Logo](active-directory-passwords-customize.md#password-managment-look-and-feel) |
+| Wie kann ich das Look-and-Feel für das Zurücksetzen von Kennwörtern anpassen? | [Einstellung: Firmenname, Branding und Logo](active-directory-passwords-customize.md#password-management-look-and-feel) |
 
 
 ##Konfigurieren der Benutzer zur Verwendung der Kennwortzurücksetzung
@@ -252,4 +252,4 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 * [**Problembehandlung**](active-directory-passwords-troubleshoot.md) – Erfahren Sie, wie Sie Probleme mit dem Dienst schnell beheben.
 * [**Weitere Informationen**](active-directory-passwords-learn-more.md) – Erhalten Sie tiefgehende technische Details zur Funktionsweise des Diensts.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

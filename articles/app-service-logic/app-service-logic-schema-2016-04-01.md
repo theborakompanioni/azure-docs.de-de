@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Neue Schemaversion „2016-04-01-preview“ | Microsoft Azure" 
+	pageTitle="Neue Schemaversion „2016-06-01“ | Microsoft Azure" 
 	description="Erfahren Sie, wie die JSON-Definition für die aktuelle Version der Logik-Apps geschrieben wird." 
 	authors="jeffhollan" 
 	manager="dwrede" 
@@ -8,15 +8,15 @@
 	documentationCenter=""/>
 
 <tags
-	ms.service="app-service-logic"
+	ms.service="logic-apps"
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/17/2016"
+	ms.date="07/25/2016"
 	ms.author="jehollan"/>
 	
-# Neue Schemaversion „2016-04-01-preview“
+# Neue Schemaversion „2016-06-01“
 
 Die neue Schema- und API-Version für Logik-Apps enthält eine Reihe von Verbesserungen, die die Zuverlässigkeit und Benutzerfreundlichkeit von Logik-Apps erhöhen. Es gibt drei wichtige Unterschiede:
 
@@ -24,7 +24,7 @@ Die neue Schema- und API-Version für Logik-Apps enthält eine Reihe von Verbess
 1. Bedingungen und Schleifen sind erstklassige Aktionen.
 1. Ausführlichere Ausführungsreihenfolge mit der `runAfter`-Eigenschaft (ersetzt `dependsOn`)
 
-Informationen zum Upgraden Ihrer Logik-Apps von der Schemaversion „2015-08-01-preview“ auf die Schemaversion „2016-04-01-preview“ finden Sie weiter unten im [Upgradeabschnitt](#upgrading-to-2016-04-01-preview-schema).
+Informationen zum Upgraden Ihrer Logik-Apps von der Schemaversion „2015-08-01-preview“ auf die Schemaversion „2016-06-01“ finden Sie weiter unten im [Upgradeabschnitt](#upgrading-to-2016-06-01-schema).
 
 
 ## 1\. Bereiche
@@ -94,9 +94,9 @@ Die neue `runAfter`-Eigenschaft ersetzt `dependsOn`, um eine höhere Präzision 
 }
 ```
 
-## Upgraden auf die Schemaversion „2016-04-01-preview“
+## Upgrade auf Schemaversion „2016-06-01“
 
-Zum Upgraden auf die Schemaversion „2016-04-01-preview“ sind nur wenige Schritte erforderlich. Ausführliche Informationen zu den schemabedingten Änderungen finden Sie in [diesem Artikel](app-service-logic-schema-2016-04-01.md). Der Upgradeprozess umfasst das Ausführen des Upgradeskripts, das Speichern als neue Logik-App und ggf. das Überschreiben der alten Logik-App.
+Zum Upgraden auf die Schemaversion „2016-06-01“ sind nur wenige Schritte erforderlich. Ausführliche Informationen zu den schemabedingten Änderungen finden Sie in [diesem Artikel](app-service-logic-schema-2016-04-01.md). Der Upgradeprozess umfasst das Ausführen des Upgradeskripts, das Speichern als neue Logik-App und ggf. das Überschreiben der alten Logik-App.
 
 1. Öffnen Sie die aktuelle Logik-App.
 1. Klicken Sie auf der Symbolleiste auf die Schaltfläche **Schema aktualisieren**.
@@ -169,4 +169,4 @@ Aktionen können nun eine zusätzliche Eigenschaft namens `trackedProperties` (g
 <!-- Image references -->
 [1]: ./media/app-service-logic-schema-2016-04-01/upgradeButton.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0727_2016-->

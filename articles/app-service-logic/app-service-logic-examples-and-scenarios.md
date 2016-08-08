@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -72,4 +72,4 @@ Die [Definitionssprache für Workflows](http://aka.ms/logicappsdocs) in Logik-Ap
 
 Wir werden diesem Artikel weitere Beispiele und Szenarios hinzufügen. Im Bereich „Kommentare“ unten können Sie uns Wünsche zu Beispielen oder Szenarios mitteilen.
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

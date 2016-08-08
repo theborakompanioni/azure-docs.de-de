@@ -15,7 +15,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="05/03/2016"
+	ms.date="07/27/2016"
 	ms.author="jeffstok"
 />
 
@@ -32,8 +32,8 @@ Dieser Artikel ist ein Schritt im [Stream Analytics-Lernpfad](/documentation/lea
 
 Es gibt zwei unterschiedliche Eingabetypen in Stream Analytics: Datenströme und Verweisdaten.
 
-- **Datenströme**: Stream Analytics-Aufträge müssen mindestens eine Datenstromeingabe enthalten, die vom Auftrag genutzt und umgewandelt werden soll. Azure-BLOB-Speicher und Azure Event Hubs werden als Datenstrom-Eingabequellen unterstützt. Azure Event Hubs werden verwendet, um Ereignisströme von verbundenen Geräten, Diensten und Anwendungen zu erfassen. Azure-Blobspeicher kann als eine Eingabequelle für das Erfassen von Massendaten als Strom verwendet werden.  
-- **Verweisdaten**: Stream Analytics unterstützt einen zweiten zusätzlichen Eingabetyp, der als „Verweisdaten“ bezeichnet wird. Im Gegensatz zu Daten in Bewegung sind diese Daten statisch oder ändern sich nur langsam. In der Regel werden Sie zum Durchführen von Suchen und Korrelationen mit Datenströmen verwendet, um einen umfangreicheren Datensatz zu erstellen. Azure-BLOB-Speicher ist derzeit die einzige unterstützte Eingabequelle für Verweisdaten.  
+- **Datenströme**: Stream Analytics-Aufträge müssen mindestens eine Datenstromeingabe enthalten, die vom Auftrag genutzt und umgewandelt werden soll. Azure-BLOB-Speicher und Azure Event Hubs werden als Datenstrom-Eingabequellen unterstützt. Azure Event Hubs werden verwendet, um Ereignisströme von verbundenen Geräten, Diensten und Anwendungen zu erfassen. Azure-Blobspeicher kann als eine Eingabequelle für das Erfassen von Massendaten als Strom verwendet werden.
+- **Verweisdaten**: Stream Analytics unterstützt einen zweiten zusätzlichen Eingabetyp, der als „Verweisdaten“ bezeichnet wird. Im Gegensatz zu Daten in Bewegung sind diese Daten statisch oder ändern sich nur langsam. In der Regel werden Sie zum Durchführen von Suchen und Korrelationen mit Datenströmen verwendet, um einen umfangreicheren Datensatz zu erstellen. Azure-BLOB-Speicher ist derzeit die einzige unterstützte Eingabequelle für Verweisdaten.
 
 So fügen Sie Ihrem Stream Analytics-Auftrag eine Eingabe hinzu:
 
@@ -88,4 +88,4 @@ Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://
 - [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

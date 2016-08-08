@@ -1,5 +1,5 @@
 <properties
- pageTitle="Automatische Skalierung von Computeressourcen im HPC-Cluster | Microsoft Azure"
+ pageTitle="Automatisches Skalieren von HPC Pack-Clusterknoten | Microsoft Azure"
  description="Automatisches Vergrößern und Verkleinern der Anzahl der HPC Pack-Cluster-Compute-Knoten in Azure"
  services="virtual-machines-windows"
  documentationCenter=""
@@ -13,7 +13,7 @@ ms.service="virtual-machines-windows"
  ms.topic="article"
  ms.tgt_pltfrm="vm-multiple"
  ms.workload="big-compute"
- ms.date="04/14/2016"
+ ms.date="07/22/2016"
  ms.author="danlep"/>
 
 # Automatisches Vergrößern oder Verkleinern der HPC Pack-Clusterressourcen in Azure gemäß der Clusterworkload
@@ -21,9 +21,9 @@ ms.service="virtual-machines-windows"
 
 
 
-Wenn Sie Azure-Burstknoten im HPC Pack-Cluster bereitstellen oder einen HPC Pack-Cluster in virtuellen Azure-Computern erstellen, möchten Sie möglicherweise die Anzahl der Azure-Computeressourcen, wie Kerne, entsprechend der aktuellen Workload im Cluster automatisch vergrößern oder verkleinern. Auf diese Weise können Sie die Azure-Ressourcen effizienter nutzen und die Kosten kontrollieren. Richten Sie zu diesem Zweck die HPC Pack-Cluster-Eigenschaft **AutoGrowShrink** ein. Führen Sie hierzu das HPC PowerShell-Skript **AzureAutoGrowShrink.ps1** aus, das mit HPC Pack installiert wird.
+Wenn Sie Azure-Burstknoten im HPC Pack-Cluster bereitstellen oder einen HPC Pack-Cluster in virtuellen Azure-Computern erstellen, möchten Sie möglicherweise die Anzahl der Azure-Computeressourcen, wie Knoten oder Kerne, entsprechend der aktuellen Workload im Cluster automatisch vergrößern oder verkleinern. Auf diese Weise können Sie die Azure-Ressourcen effizienter nutzen und die Kosten kontrollieren. Richten Sie zu diesem Zweck die HPC Pack-Cluster-Eigenschaft **AutoGrowShrink** ein. Führen Sie hierzu das HPC PowerShell-Skript **AzureAutoGrowShrink.ps1** aus, das mit HPC Pack installiert wird.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]. Darüber hinaus können Sie derzeit nur die HPC Pack-Computeknoten automatisch vergrößern oder verkleinern, auf denen ein Windows Server-Betriebssystem ausgeführt wird.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Darüber hinaus können Sie derzeit nur die HPC Pack-Computeknoten automatisch vergrößern oder verkleinern, auf denen ein Windows Server-Betriebssystem ausgeführt wird.
 
 ## Festlegen der AutoGrowShrink-Clustereigenschaft
 
@@ -34,7 +34,7 @@ Wenn Sie Azure-Burstknoten im HPC Pack-Cluster bereitstellen oder einen HPC Pack
 
 * **Cluster mit einem Hauptknoten in Azure** – Wenn Sie das HPC Pack-IaaS-Bereitstellungsskript verwenden, um den Cluster zu erstellen, aktivieren Sie die **AutoGrowShrink**-Clustereigenschaft durch Festlegen der AutoGrowShrink-Option in der Clusterkonfigurationsdatei. Details finden Sie in der Dokumentation, die beim [Skriptdownload](https://www.microsoft.com/download/details.aspx?id=44949) bereitgestellt wird.
 
-    Legen Sie alternativ die **AutoGrowShrink**-Clustereigenschaft nach der Bereitstellung des Clusters mit den HPC PowerShell-Befehlen fest, die im folgenden Abschnitt beschrieben werden. Führen Sie zunächst die folgenden Schritte aus, um dafür HPC PowerShell zu verwenden:
+    Aktivieren Sie alternativ die **AutoGrowShrink**-Clustereigenschaft nach der Bereitstellung des Clusters mit den HPC PowerShell-Befehlen, die im folgenden Abschnitt beschrieben werden. Führen Sie zur Vorbereitung zuerst die folgenden Schritte aus:
     1. Konfigurieren Sie ein Azure-Verwaltungszertifikat auf dem Hauptknoten und im Azure-Abonnement. Für eine Testbereitstellung können Sie das selbstsignierte Standard-Microsoft HPC Azure-Zertifikat verwenden, das mit dem HPC Pack auf dem Hauptknoten installiert wird. Laden Sie dieses Zertifikat dann einfach in das Azure-Abonnement hoch. Optionen und Schritte finden Sie in den [Anleitungen der TechNet-Bibliothek](https://technet.microsoft.com/library/gg481759.aspx).
     2. Führen Sie **regedit** für den Hauptknoten aus, gehen Sie zu „HKLM\\SOFTWARE\\Microsoft\\HPC\\IaasInfo“, und fügen Sie einen neuen Zeichenfolgenwert hinzu. Legen Sie den Namen des Werts auf „Fingerabdruck“ und die Daten des Werts auf den Fingerabdruck des Zertifikats von Schritt 1 fest.
 
@@ -90,7 +90,7 @@ Im Folgenden werden AutoGrowShrink-Parameter aufgeführt, die Sie mit dem **Set-
 
 ### MPI-Beispiel
 
-Standardmäßig werden die MPI-Aufträge durch das HPC Pack um 1 % zusätzliche Knoten erweitert (**ExtraNodesGrowRatio** ist auf 1 festgelegt). Der Grund dafür ist, dass MPI möglicherweise mehrere Knoten benötigt und dass der Auftrag nur ausgeführt werden kann, wenn alle Knoten bereit sind. Wenn Azure Knoten startet, benötigt ein Knoten gelegentlich mehr Zeit als andere zum Starten, wodurch andere Knoten inaktiv sind, während sie darauf warten, dass dieser Knoten bereit ist. Durch die Erweiterung mit zusätzlichen Knoten, reduziert HPC Pack die Wartezeit für diese Ressource und spart potenziell Kosten. Um den Prozentsatz an zusätzlichen Knoten für MPI-Aufträge (z. B. auf 10 %) zu erhöhen, führen Sie einen Befehl ähnlich dem folgenden aus:
+Standardmäßig werden die MPI-Aufträge durch das HPC Pack um 1 % zusätzliche Knoten erweitert (**ExtraNodesGrowRatio** ist auf 1 festgelegt). Der Grund dafür ist, dass MPI möglicherweise mehrere Knoten benötigt und dass der Auftrag nur ausgeführt werden kann, wenn alle Knoten bereit sind. Wenn Azure Knoten startet, benötigt ein Knoten gelegentlich mehr Zeit als andere zum Starten, wodurch andere Knoten inaktiv sind, während sie darauf warten, dass dieser Knoten bereit ist. Durch die Erweiterung mit zusätzlichen Knoten, reduziert HPC Pack die Wartezeit für diese Ressource und spart potenziell Kosten. Um den Prozentsatz an zusätzlichen Knoten für MPI-Aufträge (z.B. auf 10%) zu erhöhen, führen Sie einen Befehl ähnlich dem folgenden aus:
 
     Set-HpcClusterProperty -ExtraNodesGrowRatio 10
 
@@ -179,4 +179,4 @@ Im folgenden Beispiel werden die mit der Standardvorlage "ComputeNode" bereitges
 .\AzureAutoGrowShrink.ps1 -NodeTemplates 'Default ComputeNode Template' -JobTemplates 'Default' -NodeType ComputeNodes -NumOfActiveQueuedTasksPerNodeToGrow 10 -NumOfActiveQueuedTasksToGrowThreshold 15 -NumOfInitialNodesToGrow 5 -GrowCheckIntervalMins 1 -ShrinkCheckIntervalMins 1 -ShrinkCheckIdleTimes 10 -ArgFile 'IaaSVMComputeNodes_Arg.xml' -LogFilePrefix 'IaaSVMComputeNodes_log'
 ```
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

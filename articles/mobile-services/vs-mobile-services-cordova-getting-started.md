@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="01/05/2016"
+	ms.date="07/21/2016"
 	ms.author="mlearned"/>
 
 # Erste Schritte mit Mobile Services (Cordova-Projekte)
@@ -69,7 +69,7 @@ Sie können die where-Methode zum Ändern der Abfrage verwenden. Das folgende Be
             items = results.slice();
         });
 
-Weitere Beispiele für Abfragen, die verwendet werden können, finden Sie unter dem Objekt [query](http://msdn.microsoft.com/library/azure/jj613353.aspx).
+Weitere Beispiele für Abfragen, die verwendet werden können, finden Sie unter dem Objekt [query](https://msdn.microsoft.com/library/azure/jj613353.aspx).
 
 ##Aktualisieren eines Tabellenelements
 
@@ -88,6 +88,4 @@ Löschen Sie eine Zeile aus einer Datentabelle mithilfe der Methode **del**. Ruf
         items.splice(items.indexOf(todoItem), 1);
     });
 
-[Weitere Informationen zu mobilen Diensten](https://azure.microsoft.com/documentation/services/mobile-services/)
-
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0727_2016-->

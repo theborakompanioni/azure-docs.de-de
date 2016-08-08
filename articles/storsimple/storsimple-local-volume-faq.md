@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/25/2016"
+   ms.date="07/26/2016"
    ms.author="manuaery" />
 
 # Lokale StorSimple-Volumes: Häufig gestellte Fragen (FAQ)
@@ -121,7 +121,7 @@ Wenn die lokalen Momentaufnahmen ungültig werden, erhalten Sie eine Warnung mit
 **A.** Die Konvertierung umfasst zwei Schritte:
 
   1. Bereitstellen von Speicherplatz auf dem Gerät für das lokale Volume, das in Kürze konvertiert wird
-  2. Herunterladen ausgelagerter Daten aus der Cloud, um lokale Garantien zu gewährleisten 
+  2. Herunterladen ausgelagerter Daten aus der Cloud, um lokale Garantien zu gewährleisten
 
 Bei beiden Schritten handelt es sich um Vorgänge mit langer Ausführungsdauer, die von der Größe des zu konvertierenden Volumes, den Daten auf dem Gerät und der verfügbaren Bandbreite abhängig sind. Da einige Daten von vorhandenen mehrstufigen Volumes im Rahmen des Bereitstellungsprozesses möglicherweise in die Cloud übergehen, kann es während dieser Zeit zu Leistungseinbußen auf dem Gerät kommen. Darüber hinaus kann der Konvertierungsprozess in folgenden Fällen langsamer sein:
 
@@ -213,4 +213,4 @@ Weitere Informationen zu [Failover und Notfallwiederherstellung bei lokalen Volu
 
 **A.** Ja, das ist möglich. Bei einem Failover der lokalen Volumes erhalten Sie mehrstufige Volumes. Weitere Informationen zu [Failover und Notfallwiederherstellung bei lokalen Volumes mit verschiedenen Versionen](storsimple-device-failover-disaster-recovery.md#considerations-for-device-failover)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

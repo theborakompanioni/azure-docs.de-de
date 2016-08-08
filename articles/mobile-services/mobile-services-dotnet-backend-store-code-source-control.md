@@ -10,10 +10,10 @@
 <tags
 	ms.service="mobile-services"
 	ms.workload="mobile"
-	ms.tgt_pltfrm="na" 
+	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="12/07/2015"
+	ms.date="07/21/2016"
 	ms.author="glenga"/>
 
 # Speichern von Projektcode des mobilen Diensts in der Quellcodeverwaltung
@@ -24,8 +24,8 @@
 
 
 > [AZURE.SELECTOR]
-- [.NET backend](mobile-services-dotnet-backend-store-code-source-control.md)
-- [Javascript backend](mobile-services-store-scripts-source-control.md)
+- [.NET-Back-End](mobile-services-dotnet-backend-store-code-source-control.md)
+- [JavaScript-Back-End](mobile-services-store-scripts-source-control.md)
 
 In diesem Thema erfahren Sie, wie Sie die von Azure Mobile Services bereitgestellte Quellcodeverwaltung verwenden, um ein .NET-Back-End-Dienstprojekt zu speichern. Ihr Projekt kann veröffentlicht werden, indem Sie es einfach aus Ihrem lokalen Git-Repository in Ihren mobilen Dienst in der Produktionsumgebung hochladen.
 
@@ -41,7 +41,8 @@ Dieses Lernprogramm setzt voraus, dass Sie bereits einen mobilen Dienst aus dem 
 
 	Die erforderlichen Schritte zum Installieren von Git variieren je nach Betriebssystem. Informationen zu Betriebssystem-spezifischen Distributionen und zur Installation finden Sie unter [Installieren von Git].
 
-	> [AZURE.NOTE]Einige Betriebssysteme verfügen über eine Befehlszeilenversion und eine GUI-Version von Git. Die in diesem Artikel bereitgestellten Anweisungen verwenden die Befehlszeilenversion.
+	> [AZURE.NOTE]
+	Einige Betriebssysteme verfügen über eine Befehlszeilenversion und eine GUI-Version von Git. Die in diesem Artikel bereitgestellten Anweisungen verwenden die Befehlszeilenversion.
 
 2. Öffnen Sie eine Befehlszeile, zum Beispiel **GitBash** (Windows) oder **Bash** (Unix Shell). Auf OS X-Systemen können Sie auf die Befehlszeile über die **Terminal**-Anwendung zugreifen.
 
@@ -64,7 +65,7 @@ Nachdem Sie nun Ihr lokales Repository erstellt haben, können Sie Ihr .NET-Back
 
 ##<a name="deploy-scripts"></a>Veröffentlichen Ihres Projekts mithilfe von Git
 
-1. Erstellen Sie ein neues mobiles .NET-Back-End-Dienstprojekt in Visual Studio 2013, oder verschieben Sie ein vorhandenes Projekt in das neue lokale Repository.  
+1. Erstellen Sie ein neues mobiles .NET-Back-End-Dienstprojekt in Visual Studio 2013, oder verschieben Sie ein vorhandenes Projekt in das neue lokale Repository.
 
 	Für einen schnellen Test laden Sie das und Mobile Services-Schnellstartprojekt herunter, und speichern Sie es in diesem Ordner.
 
@@ -103,4 +104,4 @@ Ihr mobiles Dienstprojekt wird jetzt in der Quellcodeverwaltung verwaltet, und S
 [Erste Schritte mit Mobile Services]: mobile-services-dotnet-backend-ios-get-started.md
 [Ändern des Datenmodells eines mobilen .NET-Back-End-Diensts]: mobile-services-dotnet-backend-how-to-use-code-first-migrations.md
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0727_2016-->

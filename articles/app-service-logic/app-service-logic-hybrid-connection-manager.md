@@ -8,7 +8,7 @@
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="app-service-logic" 
+	ms.service="logic-apps" 
 	ms.workload="integration" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
@@ -46,7 +46,7 @@ Kopieren Sie im Azure-Portal die Stamm-SAS-Verbindungszeichenfolge für Service 
 
 ## Den Hybrid Connection Manager installieren
 
-1. Wählen Sie im [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) den von Ihnen erstellten Connector aus. Um ihn zu öffnen, wählen Sie **Durchsuchen** aus, dann **API-Apps**, und anschließend Ihren Connector oder Ihre API-App. <br/><br/> In der **Hybridverbindung** ist das Setup **unvollständig**: <br/> ![][2] 
+1. Wählen Sie im [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) den von Ihnen erstellten Connector aus. Um ihn zu öffnen, wählen Sie **Durchsuchen** aus, dann **API-Apps**, und anschließend Ihren Connector oder Ihre API-App. <br/><br/> In der **Hybridverbindung** ist das Setup **unvollständig**: <br/> ![][2]
 
 2. Wählen Sie **Hybridverbindung** aus. Die zuvor eingegebenen Service Bus-Verbindungszeichenfolge wird aufgeführt.
 3. Kopieren Sie die **Primäre Konfigurationszeichenfolge**: <br/> ![][PrimaryConfigString]
@@ -84,19 +84,19 @@ Lokaler System-Port | Öffnen Sie im lokalen System den Port, der vom System ver
 
 1. Bestätigen Sie auf dem IIS-Server, dass die IIS-Webrolle installiert ist und die IIS-Dienste gestartet werden.
 2. Bestätigen Sie auf dem IIS-Server, dass der Hybrid Connection Manager installiert ist und ausgeführt wird:
- - Im IIS-Manager (inetmgr) sollte die ***MicrosoftAzureBizTalkHybridListener***-Website aufgeführt sein und ausgeführt werden. 
+ - Im IIS-Manager (inetmgr) sollte die ***MicrosoftAzureBizTalkHybridListener***-Website aufgeführt sein und ausgeführt werden.
  - Diese Website verwendet den ***HybridListenerAppPool***, der als lokales, integriertes Benutzerkonto *NetworkService* ausgeführt wird. Dieser AppPool sollte auch gestartet werden.
-3. Bestätigen Sie auf dem IIS-Server, dass der Connector installiert ist und ausgeführt wird: 
- - Für Ihren App Service-Connector wird eine Website erstellt. Wenn Sie beispielsweise einen SQL-Connector erstellt haben, gibt es eine ***MicrosoftSqlConnector\_nnn***-Website. Bestätigen Sie im IIS-Manager (inetmgr), dass diese Website aufgelistet ist und gestartet wird. 
- - Diese Website verwendet einen eigenen IIS-Anwendungspool mit dem Namen ***HybridAppPoolnnn***. Dieser AppPool wird als lokales, integriertes Benutzerkonto *NetworkService* ausgeführt. Diese Website und der AppPool sollten beide gestartet werden. 
+3. Bestätigen Sie auf dem IIS-Server, dass der Connector installiert ist und ausgeführt wird:
+ - Für Ihren App Service-Connector wird eine Website erstellt. Wenn Sie beispielsweise einen SQL-Connector erstellt haben, gibt es eine ***MicrosoftSqlConnector\_nnn***-Website. Bestätigen Sie im IIS-Manager (inetmgr), dass diese Website aufgelistet ist und gestartet wird.
+ - Diese Website verwendet einen eigenen IIS-Anwendungspool mit dem Namen ***HybridAppPoolnnn***. Dieser AppPool wird als lokales, integriertes Benutzerkonto *NetworkService* ausgeführt. Diese Website und der AppPool sollten beide gestartet werden.
  - Durchsuchen Sie den lokalen Connector. Wenn die Connector-Website z. B. Port 6569 verwendet, navigieren Sie zu http://localhost:6569. Ein Standarddokument ist nicht konfiguriert, also wird ein Fehler `HTTP Error 403.14 - Forbidden error` erwartet.
 4. Bestätigen Sie in Ihrer Firewall, dass die in diesem Thema aufgeführten TCP-Ports geöffnet sind.
 5. Sehen Sie sich das Quell- oder Ziel-System an:
  - Einige lokale Systeme erfordern zusätzliche Abhängigkeitsdateien. Wenn Sie beispielsweise eine lokale SAP-Verbindung herstellen, müssen einige zusätzliche SAP-Dateien auf dem IIS-Server installiert werden.
  - Überprüfen Sie die Konnektivität zum System mit dem Anmeldekonto. Beispielsweise muss der vom System verwendete TCP-Port offen sein, wie Port 1433 für SQL Server. Das Anmeldekonto, das Sie im Azure-Portal eingegeben haben, benötigt Zugriff auf das System.
-6. Überprüfen Sie auf dem IIS-Server die Ereignisprotokolle auf Fehler. 
-7. Den Hybrid Connection Manager bereinigen und installieren: 
- - Löschen Sie in IIS manuell die Connector-Website und deren Anwendungspool. 
+6. Überprüfen Sie auf dem IIS-Server die Ereignisprotokolle auf Fehler.
+7. Den Hybrid Connection Manager bereinigen und installieren:
+ - Löschen Sie in IIS manuell die Connector-Website und deren Anwendungspool.
  - Führen Sie den Hybrid Connection Manager erneut aus, und vergewissern Sie sich, die richtige **primäre Konfigurationszeichenfolge** für Ihren Connector einzugeben.
 
 
@@ -140,4 +140,4 @@ Wenn Ihre benutzerdefinierte API einen TCP- oder HTTP-Port verwendet, können Si
 
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

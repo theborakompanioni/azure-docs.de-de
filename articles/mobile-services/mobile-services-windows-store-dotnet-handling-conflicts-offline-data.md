@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/11/2016"
+	ms.date="07/21/2016"
 	ms.author="glenga"/>
 
 
@@ -168,4 +168,4 @@ Wenn ein Pushvorgang abgebrochen wird, löst `PushAsync` eine `MobileServicePush
 [GitHub-Repository mit Mobile Services-Beispielen]: http://go.microsoft.com/fwlink/?LinkId=512865
 [Todo Offline-Beispiel für Mobile Services]: http://go.microsoft.com/fwlink/?LinkId=512866
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0727_2016-->

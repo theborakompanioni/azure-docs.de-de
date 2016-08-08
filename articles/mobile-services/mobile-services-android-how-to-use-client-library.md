@@ -4,7 +4,7 @@
 	services="mobile-services"
 	documentationCenter="android"
 	authors="RickSaling"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="01/20/2016"
+	ms.date="07/21/2016"
 	ms.author="ricksal"/>
 
 
@@ -86,7 +86,7 @@ Die [zweite Überladung](http://go.microsoft.com/fwlink/p/?LinkId=296840) wird v
 
 ## <a name="api"></a>Die API-Struktur
 
-Seit Version 2.0 der Clientbibliothek verwenden Tabellevorgänge mobiler Dienste die Objekte [Future](http://developer.android.com/reference/java/util/concurrent/Future.html) und [AsyncTask](http://developer.android.com/reference/android/os/AsyncTask.html) in allen asynchronen Vorgängen, z. B. in Methoden, die Abfragen und Vorgänge wie Einfügungen, Aktualisierungen und Löschungen einbeziehen. Dies erleichtert die Ausführungen mehrerer Vorgänge (in einem Hintergrundthread), ohne sich um mehrere geschachtelte Rückrufe kümmern zu müssen.
+Seit Version 2.0 der Clientbibliothek verwenden Tabellevorgänge mobiler Dienste die Objekte [Future](http://developer.android.com/reference/java/util/concurrent/Future.html) und [AsyncTask](http://developer.android.com/reference/android/os/AsyncTask.html) in allen asynchronen Vorgängen, z. B. in Methoden, die Abfragen und Vorgänge wie Einfügungen, Aktualisierungen und Löschungen einbeziehen. Dies erleichtert die Ausführungen mehrerer Vorgänge (in einem Hintergrundthread), ohne sich um mehrere geschachtelte Rückrufe kümmern zu müssen.
 
 
 ##<a name="querying"></a>Gewusst wie: Abfragen von Daten aus einem mobilen Dienst
@@ -304,7 +304,7 @@ Wenn eine Anwendung einen Id-Wert übergibt, speichert der mobile Dienst diesen 
 Der `id`-Wert muss eindeutig sein und darf keine Zeichen aus den folgenden Sätzen enthalten:
 
 + Steuerzeichen: [0x0000-0x001F] und [0x007F-0x009F]. Weitere Informationen finden Sie unter [ASCII-Steuerzeichen C0 und C1].
-+  Druckbare Zeichen: **"**(0 x 0022), **\+** (0x002B), **/** (0x002F), **?** (0x003F), **\\** (0x005C), **`** (0x0060)
++  Druckbare Zeichen: **"**(0 x 0022), **+** (0x002B), **/** (0x002F), **?** (0x003F), **\** (0x005C), **`** (0x0060)
 +  Die IDs "." und ".."
 
 Alternativ können Sie auch ganzzahlige Ids für Ihre Tabellen verwenden. Um ganzzahlige Ids zu verwenden, müssen Sie bei der Tabellenerstellung für den `mobile table create`-Befehl die Option `--integerId` verwenden. Dieser Befehl wird in der Befehlszeilenschnittstelle (CLI) für Azure verwendet. Weitere Informationen zur CLI finden Sie unter "CLI zum Verwalten von Mobile Services-Tabellen".
@@ -867,7 +867,7 @@ Die Zuordnung von Client-Tabellennamen zu anderen Tabellennamen im mobilen Diens
 
 ### <a name="conversions"></a>Automatisieren von Tabellennamenzuordnungen
 
-Die Zuordnung von Spaltennamen für kleine Tabellen mit nur wenigen Spalten ist kein großer Aufwand, wie zuvor gezeigt. Angenommen, die Tabelle hat jedoch viele Spalten, z. B. 20 oder 30. In diesem Fall können wir die <a href=" http://go.microsoft.com/fwlink/p/?LinkId=290801" target="_blank">gson</a>-API aufrufen und eine Umwandlungsstrategie für alle Spalten angeben, um nicht jeden Spaltennamen einzeln zuordnen zu müssen.
+Die Zuordnung von Spaltennamen für kleine Tabellen mit nur wenigen Spalten ist kein großer Aufwand, wie zuvor gezeigt. Angenommen, die Tabelle hat jedoch viele Spalten, z. B. 20 oder 30. In diesem Fall können wir die <a href=" http://go.microsoft.com/fwlink/p/?LinkId=290801" target="_blank">gson</a>-API aufrufen und eine Umwandlungsstrategie für alle Spalten angeben, um nicht jeden Spaltennamen einzeln zuordnen zu müssen.
 
 Dazu verwenden wir die <a href=" http://go.microsoft.com/fwlink/p/?LinkId=290801" target="_blank">gson</a>-Bibliothek, mit der die Android-Clientbibliothek im Hintergrund Java-Objekte nach JSON-Daten serialisiert, die anschließend an Azure Mobile Services übertragen werden.
 
@@ -938,4 +938,4 @@ Sie können diese allgemeine Methode immer dann verwenden, wenn Sie mit komplexe
 [Erste Schritte mit Mobile Services]: mobile-services-android-get-started.md
 [ASCII-Steuerzeichen C0 und C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -21,12 +21,12 @@
 
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
+* **[Sehen Sie das Einführungsvideo an](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**.
+* **[Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo)**, wenn Ihre App noch keine Daten an Application Insights sendet.
 
 ## Öffnen von Analytics
 
-Klicken Sie auf der Startseite Ihrer App in Application Insights auf Analytics.
-
-![Öffnen Sie unter „portal.azure.com“ die Application Insights-Ressource, und wählen Sie „Analytics“.](./media/app-insights-analytics-using/001.png)
+Klicken Sie auf der Startseite Ihrer App in Application Insights auf Analytics .S.![Öffnen Sie unter „portal.azure.com“ die Application Insights-Ressource, und wählen Sie „Analytics“.](./media/app-insights-analytics-using/001.png)
 
 Das Inlinetutorial bietet Ihnen Anregungen, wozu Sie Analytics verwenden können.
 
@@ -121,13 +121,15 @@ Wenn Sie über mehrere Spalten mit den richtigen Typen verfügen, können Sie di
 
 Die Ergebnisse werden standardmäßig zunächst als Tabelle angezeigt. Sie wählen die Diagrammdarstellung dann manuell aus. Sie können jedoch die [render-Anweisung](app-insights-analytics-reference.md#render-directive) am Ende einer Abfrage verwenden, um ein Diagramm auszuwählen.
 
+Sie können ein Diagramm an eines Ihrer [freigegebenen Dashboards](app-insights-dashboards.md) anheften – klicken Sie einfach auf die Stecknadel. (Nur für Apps in einer kostenpflichtigen Preisstufe verfügbar.)
+
 ## Exportieren in Excel
 
 Nachdem Sie eine Abfrage ausgeführt haben, können Sie eine CSV-Datei herunterladen. Klicken Sie auf **Nach Excel exportieren**.
 
 ## Exportieren nach Power BI
 
-1. Positionieren Sie den Cursor in einer Abfrage, und wählen Sie **Export to Power BI** (Nach Power BI exportieren) aus.
+1. Positionieren Sie den Cursor in einer Abfrage, und wählen Sie **Nach Power BI exportieren** aus.
 
     ![](./media/app-insights-analytics-using/240.png)
 
@@ -148,4 +150,4 @@ Nachdem Sie eine Abfrage ausgeführt haben, können Sie eine CSV-Datei herunterl
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

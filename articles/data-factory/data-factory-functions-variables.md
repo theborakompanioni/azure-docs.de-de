@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/09/2016" 
+	ms.date="07/25/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory – Funktionen und Systemvariablen
@@ -37,7 +37,7 @@ Sie können Funktionen in Data Factory zusammen mit den zuvor genannten Systemva
 
 1.	Angeben von Abfragen zur Datenauswahl (siehe die Artikel zu Connectors, auf die im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) verwiesen wird).
 
-	Die Syntax zum Aufrufen einer Data Factory-Funktion ist **$$<function>** für Abfragen zur Datenauswahl und andere Eigenschaften in der Aktivität und den Datasets.  
+	Die Syntax zum Aufrufen einer Data Factory-Funktion ist **$$<function>** für Abfragen zur Datenauswahl und andere Eigenschaften in der Aktivität und den Datasets.
 2. Angeben von Eingabeabhängigkeiten mit Data Factory-Funktionen in der Auflistung der Aktivitätseingaben an (siehe das Beispiel oben).
 
 	$$ ist nicht erforderlich, um Eingabeabhängigkeitsausdrücke anzugeben.
@@ -88,4 +88,4 @@ Im Thema [Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](https:/
 > [AZURE.NOTE] Bei Verwenden einer Funktion in einer anderen Funktion müssen Sie für die innere Funktion nicht das Präfix **$$** verwenden. Beispiel: $$Text.Format('PartitionKey eq \\'my\_pkey\_filter\_value\\' und RowKey ge \\'{0:yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(SliceStart, -6)). Beachten Sie bei diesem Beispiel, dass das Präfix **$$** für die **Time.AddHours**-Funktion nicht verwendet wird.
   
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="06/27/2016" 
+	ms.date="07/25/2016" 
 	ms.author="larryfr"/>
 
 #Verwenden von Python mit Hive und Pig in HDInsight
@@ -41,7 +41,7 @@ Python kann als UDF von Hive aus mittels der Hive QL **TRANSFORM**-Anweisung ver
 
 **HDInsight (Linux-basiert)**
 
-	add file wasb:///streaming.py;
+	add file wasbs:///streaming.py;
 
 	SELECT TRANSFORM (clientid, devicemake, devicemodel)
 	  USING 'python streaming.py' AS
@@ -51,7 +51,7 @@ Python kann als UDF von Hive aus mittels der Hive QL **TRANSFORM**-Anweisung ver
 
 **HDInsight (Windows-basiert)**
 
-	add file wasb:///streaming.py;
+	add file wasbs:///streaming.py;
 
 	SELECT TRANSFORM (clientid, devicemake, devicemodel)
 	  USING 'D:\Python27\python.exe streaming.py' AS
@@ -107,8 +107,8 @@ Wie Sie dieses Beispiel auf Ihrem HDInsight-Cluster ausführen, erfahren Sie unt
 
 Ein Python-Skript kann als UDF von Pig aus mittels der **GENERATE**-Anweisung verwendet werden. Das folgende HiveQL verwendet beispielsweise ein Python-Skript, das in der Datei **jython.py** gespeichert ist.
 
-	Register 'wasb:///jython.py' using jython as myfuncs;
-    LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);
+	Register 'wasbs:///jython.py' using jython as myfuncs;
+    LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);
     LOG = FILTER LOGS by LINE is not null;
     DETAILS = FOREACH LOG GENERATE myfuncs.create_structure(LINE);
     DUMP DETAILS;
@@ -185,7 +185,7 @@ Nach dem Hochladen der Dateien, gehen Sie folgendermaßen vor, um die Hive- und 
 
 2. Geben Sie in der `hive>`-Befehlszeile Folgendes ein:
 
-		add file wasb:///streaming.py;
+		add file wasbs:///streaming.py;
 		SELECT TRANSFORM (clientid, devicemake, devicemodel)
 		  USING 'python streaming.py' AS
 		  (clientid string, phoneLabel string, phoneHash string)
@@ -206,8 +206,8 @@ Nach dem Hochladen der Dateien, gehen Sie folgendermaßen vor, um die Hive- und 
 
 2. Geben Sie in der `grunt>`-Befehlszeile die folgenden Anweisungen ein:
 
-		Register wasb:///jython.py using jython as myfuncs;
-	    LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);
+		Register wasbs:///jython.py using jython as myfuncs;
+	    LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);
 	    LOG = FILTER LOGS by LINE is not null;
 	    DETAILS = foreach LOG generate myfuncs.create_structure(LINE);
 	    DUMP DETAILS;
@@ -285,7 +285,7 @@ Das folgende Skript führt das Skript __streaming.py__ aus. Vor dem Ausführen w
         -StorageAccountName $storageAccountName `
         -StorageAccountKey $storageAccountKey
             
-	$HiveQuery = "add file wasb:///streaming.py;" +
+	$HiveQuery = "add file wasbs:///streaming.py;" +
 	             "SELECT TRANSFORM (clientid, devicemake, devicemodel) " +
 	               "USING 'D:\Python27\python.exe streaming.py' AS " +
 	               "(clientid string, phoneLabel string, phoneHash string) " +
@@ -352,8 +352,8 @@ Im Folgenden wird das Skript __jython.py__ verwendet. Vor dem Ausführen werden 
         -StorageAccountName $storageAccountName `
         -StorageAccountKey $storageAccountKey
             
-	$PigQuery = "Register wasb:///jython.py using jython as myfuncs;" +
-	            "LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);" +
+	$PigQuery = "Register wasbs:///jython.py using jython as myfuncs;" +
+	            "LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);" +
 	            "LOG = FILTER LOGS by LINE is not null;" +
 	            "DETAILS = foreach LOG generate myfuncs.create_structure(LINE);" +
 	            "DUMP DETAILS;"
@@ -444,4 +444,4 @@ Informationen zu anderen Möglichkeiten der Verwendung von Pig und Hive sowie In
 
 * [Verwenden von MapReduce mit HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

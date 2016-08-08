@@ -49,7 +49,7 @@ Damit Sie die in dieser Artikel aufgeführten Schritte ausführen können, benö
         DROP TABLE log4jLogs;
         CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
         ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
-        STORED AS TEXTFILE LOCATION 'wasb:///example/data/';
+        STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
         SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
 
     Diese Anweisungen führen die folgenden Aktionen aus:
@@ -87,7 +87,7 @@ Damit Sie die in dieser Artikel aufgeführten Schritte ausführen können, benö
     * **ALS ORC GESPEICHERT**: Speichert die Daten im ORC-Format (Optimized Row Columnar). Dies ist ein stark optimiertes und effizientes Format zum Speichern von Hive-Daten.
     * **ÜBERSCHREIBEN EINFÜGEN ... AUSWÄHLEN**: Wählt die Zeilen aus der Tabelle **log4jLogs** aus, die **[ERROR]** enthalten. Dann werden die Daten in die Tabelle **errorLogs** eingefügt.
 
-7. Wählen Sie auf der Symbolleiste **Übermitteln** aus, um den Auftrag auszuführen. Verwenden Sie **Auftragsstatus**, um zu ermitteln, ob der Auftrag erfolgreich abgeschlossen wurde.
+7. Wählen Sie auf der Symbolleiste **Übermitteln** aus, um den Auftrag auszuführen. Verwenden Sie ** Auftragsstatus**, um zu ermitteln, ob der Auftrag erfolgreich abgeschlossen wurde.
 
 8. Verwenden Sie den **Server-Explorer** und erweitern Sie **Azure** > **HDInsight** sowie Ihren HDInsight-Cluster > **Hive-Datenbanken** und **Standard**, um zu überprüfen, ob der Auftrag abgeschlossen und eine neue Tabelle erstellt wurde. Es sollten die beiden Tabellen **errorLogs** und **log4jLogs** angezeigt werden.
 
@@ -143,4 +143,4 @@ Weitere Informationen zu den HDInsight Tools für Visual Studio:
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0727_2016-->

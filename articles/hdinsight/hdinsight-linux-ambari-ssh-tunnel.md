@@ -13,10 +13,10 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="06/28/2016"
+ms.date="07/22/2016"
 ms.author="larryfr"/>
 
-#Verwenden von SSH-Tunneling zum Zugriff auf die Ambari-Webbenutzeroberfläche, ResourceManager, JobHistory, NameNode, Oozie und andere Webbenutzeroberflächen
+#Verwenden von SSH-Tunneling zum Zugriff auf die Ambari-Webbenutzeroberfläche, JobHistory, NameNode, Oozie und andere Webbenutzeroberflächen
 
 Linux-basierte HDInsight-Cluster bieten Zugriff auf die Ambari-Webbenutzeroberfläche über das Internet, dabei stehen aber einige Funktionen der Benutzeroberfläche nicht zur Verfügung. Dies gilt beispielsweise für die Webbenutzeroberflächen anderer Dienste, die nur durch Ambari dargestellt werden. Für eine vollständige Funktionalität der Ambari-Webbenutzeroberfläche müssen Sie einen SSH-Tunnel zum Clusterhauptknoten verwenden.
 
@@ -26,7 +26,6 @@ Einige der Menüs in Ambari werden ohne einen SSH-Tunnel SSH nicht vollständig 
 
 Im Folgenden finden Sie die Dienste, die von der Ambari-Webbenutzeroberfläche verwendet werden und auf die nur über einen SSH-Tunnel zugegriffen werden kann:
 
-* ResourceManager,
 * JobHistory,
 * NameNode,
 * Threadstapel,
@@ -149,6 +148,13 @@ Wenn Sie FoxyProxy Standard installiert haben, konfigurieren Sie es folgenderma�
 
 	![FoxyProxy-Muster](./media/hdinsight-linux-ambari-ssh-tunnel/foxypattern.png)
 
+    Fügen Sie ein weiteres Muster mit den folgenden Informationen für die Einstellungen hinzu:
+
+    * __Name des Musters__: Hauptknoten
+    * __URL-Muster__: *Hauptknotenhost*
+
+    Wählen Sie „OK“, um dieses Muster zu speichern.
+
 4. Klicken Sie auf **OK**, um den Proxy hinzuzufügen und **Proxyeinstellungen** zu schließen.
 
 5. Am oberen Rand des FoxyProxy-Dialogfelds ändern Sie **Modus auswählen** in **Proxys basierend auf ihren vordefinierten Mustern und Prioritäten verwenden**, und klicken Sie dann auf **Schließen**.
@@ -165,13 +171,13 @@ Nachdem der Cluster eingerichtet wurde, gehen Sie folgendermaßen vor, um zu üb
     
     > [AZURE.NOTE] Bei Verwendung der Adresse http://headnodehost:8080 zum Herstellen der Verbindung mit dem Cluster wird die Verbindung direkt über den Tunnel mit dem Hauptknoten hergestellt, auf dem Ambari ausgeführt wird. Hierfür wird HTTP genutzt, und die Kommunikation ist mit dem SSH-Tunnel geschützt. Bei einer Verbindung über das Internet ohne Tunnel wird die Kommunikation per HTTPS geschützt. Verwenden Sie zum Herstellen einer Verbindung über das Internet per HTTPS die Adresse https://CLUSTERNAME.azurehdinsight.net, wobei __CLUSTERNAME__ der Name des Clusters ist.
 
-2. Wählen Sie auf der Ambari-Webbenutzeroberfläche aus der Liste links auf der Seite YARN aus.
+2. Wählen Sie auf der Ambari-Webbenutzeroberfläche aus der Liste links auf der Seite „HDFS“ aus.
 
-	![Bild mit ausgewähltem YARN-Dienst](./media/hdinsight-linux-ambari-ssh-tunnel/yarnservice.png)
+	![Abbildung mit ausgewähltem HDFS-Dienst](./media/hdinsight-linux-ambari-ssh-tunnel/hdfsservice.png)
 
-3. Wenn die Dienstinformationen zu YARN angezeigt werden, wählen Sie __QuickLinks__ aus. Es wird eine Liste der Clusterhauptknoten angezeigt. Wählen Sie einen der Hauptknoten und dann __ResourceManager UI__ aus.
+3. Wenn die Informationen zum HDFS-Dienst angezeigt werden, wählen Sie __QuickLinks__ aus. Es wird eine Liste der Clusterhauptknoten angezeigt. Wählen Sie einen der Hauptknoten und dann __NameNode UI__ aus.
 
-	![Bild mit erweitertem Menü "QuickLinks"](./media/hdinsight-linux-ambari-ssh-tunnel/yarnquicklinks.png)
+	![Bild mit erweitertem Menü "QuickLinks"](./media/hdinsight-linux-ambari-ssh-tunnel/namenodedropdown.png)
 
 	> [AZURE.NOTE] Wenn Sie über eine langsame Internetverbindung verfügen oder der Hauptknoten stark ausgelastet ist, wird möglicherweise anstelle eines Menüs eine Benachrichtigung zum Warten angezeigt, wenn Sie __QuickLinks__ auswählen. Warten Sie in diesem Fall eine oder zwei Minuten auf den Empfang der Daten vom Server, und wiederholen Sie dann das Auflisten.
     >
@@ -179,7 +185,7 @@ Nachdem der Cluster eingerichtet wurde, gehen Sie folgendermaßen vor, um zu üb
 
 4. Eine Seite ähnlich der folgenden wird angezeigt:
 
-	![Bild der YARN-ResourceManager-Benutzeroberfläche](./media/hdinsight-linux-ambari-ssh-tunnel/yarnresourcemanager.png)
+	![Abbildung der NameNode-Benutzeroberfläche](./media/hdinsight-linux-ambari-ssh-tunnel/namenode.png)
 
 	> [AZURE.NOTE] Beachten Sie die URL für diese Seite. Sie sollte in etwa \_\_http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster__ lauten. Dabei wird der interne vollständig qualifizierte Domänenname (FQDN) des Knotens verwendet, auf den nicht ohne Verwendung eines SSH-Tunnels zugegriffen werden kann.
 
@@ -195,4 +201,4 @@ Weitere Informationen zur Verwendung von SSH mit HDInsight finden Sie in den fol
 
 * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

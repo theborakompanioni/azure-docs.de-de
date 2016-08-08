@@ -8,7 +8,7 @@
 	documentationCenter=""/>
 
 <tags
-	ms.service="app-service-logic"
+	ms.service="logic-apps"
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -35,7 +35,7 @@ Zusätzliche Features:
 - Wenn Sie eine Zuordnung erstellen, zeigen Sie eine grafische Darstellung der Zuordnung einschließlich aller erstellten Beziehungen und Links an.
 - Verwenden Sie das Feature **Testzuordnung** zum Hinzufügen einer XML-Beispielnachricht. Mit einem einfachen Mausklick können Sie die erstellte Zuordnung testen und die generierte Ausgabe anzeigen.
 - Laden Sie vorhandene Azure BizTalk Services-Zuordnungen (.trfm) hoch, und nutzen Sie alle Vorteile der Transformations-API-App.
-- Wenn Sie die Zuordnung erstellen, müssen Sie kein Schema hinzuzufügen. Wenn die Zuordnung bereit ist, fügen Sie sie zur Transformations-API-App hinzu, und schon kann es losgehen. 
+- Wenn Sie die Zuordnung erstellen, müssen Sie kein Schema hinzuzufügen. Wenn die Zuordnung bereit ist, fügen Sie sie zur Transformations-API-App hinzu, und schon kann es losgehen.
 - Unterstützung für das XML-Format.
 
 
@@ -117,4 +117,4 @@ Nachdem die Zuordnung erstellt und getestet wurde, steht sie jetzt zur Nutzung b
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0727_2016-->

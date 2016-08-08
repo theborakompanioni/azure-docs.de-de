@@ -1,545 +1,113 @@
 <properties
-pageTitle="Verwenden des SharePoint Online-Connectors in Ihren Logik-Apps oder PowerApps | Microsoft Azure"
-description="Erste Schritte mit dem SharePoint Online-Connector für Azure App Service in Ihren Logik-Apps und PowerApps."
-services=""    
-documentationCenter=""     
-authors="msftman"    
-manager="erikre"    
+pageTitle="So wird's gemacht: Verwenden des SharePoint Online-Connectors in Logik-Apps | Microsoft Azure"
+description="Erstellen Sie Logik-Apps mit dem SharePoint Online-Connector, um Listen in SharePoint zu verwalten."
+services="app-servicelogic"	
+documentationCenter=".net,nodejs,java" 	
+authors="msftman"	
+manager="erikre"	
 editor=""
-tags="connectors"/>
+tags="connectors" />
 
 <tags
-ms.service="multiple"
-ms.devlang="na"
+ms.service="logic-apps"
+ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
-ms.workload="na"
-ms.date="05/18/2016"
+ms.workload="integration"
+ms.date="07/19/2016"
 ms.author="deonhe"/>
 
-# Erste Schritte mit dem SharePoint Online-Connector 
+# Erste Schritte mit dem SharePoint Online-Connector
 
-Der SharePoint-Connector bietet eine Methode zum Arbeiten mit Listen in SharePoint.
+Verwenden Sie den SharePoint Online-Connector, um SharePoint-Listen zu verwalten.
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
+Wenn Sie einen [Connector](./apis-list.md) verwenden möchten, müssen Sie zuerst eine Logik-App erstellen. Erstellen Sie daher erst einmal eine Logik-App, wie [hier](../app-service-logic/app-service-logic-create-a-logic-app.md) beschrieben.
 
-SharePoint ermöglicht Folgendes:
+## Herstellen einer Verbindung mit SharePoint Online
 
-* Erstellen von Logik-Apps
-* Erstellen von PowerApps  
+Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, muss zunächst eine *Verbindung* mit dem Dienst hergestellt werden. Eine [Verbindung](./connectors-overview.md) stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her.
 
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+### Erstellen einer Verbindung mit SharePoint Online
 
-## Trigger und Aktionen
+>[AZURE.INCLUDE [Schritte zum Erstellen einer Verbindung mit SharePoint](../../includes/connectors-create-api-sharepointonline.md)]
 
-Der SharePoint-Connector kann als Aktion verwendet werden. Er verfügt über Trigger. Alle Connectors unterstützen Daten im JSON- und XML-Format.
+## Verwenden eines SharePoint Online-Triggers
 
-Der SharePoint-Connector verfügt über die folgenden Aktionen und/oder Trigger:
+Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
 
-### SharePoint-Aktionen
-Sie können diese Aktionen ausführen:
+>[AZURE.INCLUDE [Schritte zum Erstellen eines SharePoint Online-Triggers](../../includes/connectors-create-api-sharepointonline-trigger.md)]
 
-|Aktion|Beschreibung|
-|--- | ---|
-|GetFileMetadata|Dient zum Abrufen der Metadaten einer Datei in der Dokumentbibliothek|
-|UpdateFile|Dient zum Aktualisieren einer Datei in der Dokumentbibliothek|
-|DeleteFile|Dient zum Löschen einer Datei aus der Dokumentbibliothek|
-|GetFileMetadataByPath|Dient zum Abrufen der Metadaten einer Datei in der Dokumentbibliothek|
-|GetFileContentByPath|Dient zum Abrufen einer Datei aus der Dokumentbibliothek|
-|GetFileContent|Dient zum Abrufen einer Datei aus der Dokumentbibliothek|
-|CreateFile|Dient zum Hochladen einer Datei in die Dokumentbibliothek|
-|CopyFile|Dient zum Kopieren einer Datei in der Dokumentbibliothek|
-|ExtractFolderV2|Dient zum Extrahieren eines Ordners in der Dokumentbibliothek|
-|PostItem|Erstellt ein neues Element in einer SharePoint-Liste|
-|GetItem|Ruft ein einzelnes Element aus einer SharePoint-Liste ab|
-|DeleteItem|Löscht ein Element aus einer SharePoint-Liste|
-|PatchItem|Aktualisiert ein Element in einer SharePoint-Liste|
-### SharePoint-Trigger
-Sie können auf diese Ereignisse lauschen:
+## Verwenden einer SharePoint Online-Aktion
+
+Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
+
+>[AZURE.INCLUDE [Schritte zum Erstellen einer SharePoint Online-Aktion](../../includes/connectors-create-api-sharepointonline-action.md)]
+
+## Technische Details
+
+Im Anschluss finden Sie ausführliche Informationen zu den Triggern, Aktionen und Antworten, die von dieser Verbindung unterstützt werden:
+
+## SharePoint Online-Trigger
+
+Für SharePoint stehen folgende Trigger zur Verfügung:
 
 |Trigger | Beschreibung|
 |--- | ---|
-|OnNewFile|Löst einen Datenfluss aus, wenn in einem SharePoint-Ordner eine neue Datei erstellt wird|
-|OnUpdatedFile|Löst einen Datenfluss aus, wenn in einem SharePoint-Ordner eine Datei geändert wird|
-|GetOnNewItems|Wenn ein neues Element in einer SharePoint-Liste erstellt wird|
-|GetOnUpdatedItems|Wenn ein vorhandenes Element in einer SharePoint-Liste geändert wird|
+|[Wenn eine Datei erstellt wird](connectors-create-api-sharepointonline.md#when-a-file-is-created)|Dieser Vorgang löst einen Ablauf aus, wenn in einem SharePoint-Ordner eine neue Datei erstellt wird.|
+|[Wenn eine Datei geändert wird](connectors-create-api-sharepointonline.md#when-a-file-is-modified)|Dieser Vorgang löst einen Ablauf aus, wenn in einem SharePoint-Ordner eine Datei geändert wird.|
+|[When a new item is created](connectors-create-api-sharepointonline.md#when-a-new-item-is-created) (Wenn ein neues Element erstellt wird)|Dieser Vorgang löst einen Ablauf aus, wenn in einer SharePoint-Liste ein neues Element erstellt wird.|
+|[When an existing item is modified](connectors-create-api-sharepointonline.md#when-an-existing-item-is-modified) (Wenn ein vorhandenes Element geändert wird)|Dieser Vorgang löst einen Ablauf aus, wenn in einer SharePoint-Liste ein vorhandenes Element geändert wird.|
 
 
-## Herstellen einer Verbindung mit SharePoint
-Stellen Sie zum Verwenden des SharePoint-Connectors zunächst eine **Verbindung** her, und geben Sie anschließend die Details für diese Eigenschaften an:
+## SharePoint Online-Aktionen
 
-|Eigenschaft| Erforderlich|Beschreibung|
+Für SharePoint stehen folgende Aktionen zur Verfügung:
+
+
+|Aktion|Beschreibung|
+|--- | ---|
+|[Dateimetadaten abrufen](connectors-create-api-sharepointonline.md#get-file-metadata)|Dieser Vorgang ruft Dateimetadaten unter Verwendung der Datei-ID ab.|
+|[Datei aktualisieren](connectors-create-api-sharepointonline.md#update-file)|Dieser Vorgang aktualisiert Dateiinhalte.|
+|[Datei löschen](connectors-create-api-sharepointonline.md#delete-file)|Dieser Vorgang löscht eine Datei.|
+|[Dateimetadaten anhand des Pfads abrufen](connectors-create-api-sharepointonline.md#get-file-metadata-using-path)|Dieser Vorgang ruft Dateimetadaten unter Verwendung des Dateipfads ab.|
+|[Dateiinhalt anhand des Pfads abrufen](connectors-create-api-sharepointonline.md#get-file-content-using-path)|Dieser Vorgang ruft Dateiinhalte unter Verwendung des Dateipfads ab.|
+|[Dateiinhalte abrufen](connectors-create-api-sharepointonline.md#get-file-content)|Dieser Vorgang ruft Dateiinhalte unter Verwendung der Datei-ID ab.|
+|[Datei erstellen](connectors-create-api-sharepointonline.md#create-file)|Dieser Vorgang lädt eine Datei an eine SharePoint-Website hoch.|
+|[Datei kopieren](connectors-create-api-sharepointonline.md#copy-file)|Dieser Vorgang kopiert eine Datei an eine SharePoint-Website.|
+|[Ordner auflisten](connectors-create-api-sharepointonline.md#list-folder)|Dieser Vorgang ruft in einem SharePoint-Ordner enthaltene Dateien ab.|
+|[List root folder](connectors-create-api-sharepointonline.md#list-root-folder) (Stammordner auflisten)|Dieser Vorgang ruft die Dateien im SharePoint-Stammordner ab.|
+|[Ordner extrahieren](connectors-create-api-sharepointonline.md#extract-folder)|Dieser Vorgang extrahiert eine Archivdatei (beispielsweise eine ZIP-Datei) in einen SharePoint-Ordner.|
+|[Get items](connectors-create-api-sharepointonline.md#get-items) (Elemente abrufen)|Dieser Vorgang ruft Elemente aus einer SharePoint-Liste ab.|
+|[Create item](connectors-create-api-sharepointonline.md#create-item) (Element erstellen)|Dieser Vorgang erstellt ein neues Element in einer SharePoint-Liste.|
+|[Get item](connectors-create-api-sharepointonline.md#get-item) (Element abrufen)|Dieser Vorgang ruft anhand der ID ein einzelnes Element aus einer SharePoint-Liste ab.|
+|[Delete item](connectors-create-api-sharepointonline.md#delete-item) (Element löschen)|Dieser Vorgang löscht ein Element aus einer SharePoint-Liste.|
+|[Update item](connectors-create-api-sharepointonline.md#update-item) (Element aktualisieren)|Dieser Vorgang aktualisiert ein Element in einer SharePoint-Liste.|
+|[Get entity values](connectors-create-api-sharepointonline.md#get-entity-values) (Entitätswerte abrufen)|Dieser Vorgang ruft mögliche Werte für eine SharePoint-Entität ab.|
+|[Get lists](connectors-create-api-sharepointonline.md#get-lists) (Listen abrufen)|Dieser Vorgang ruft SharePoint-Listen von einer Website ab.|
+### Aktionsdetails
+
+Im Anschluss finden Sie ausführliche Informationen zu den Aktionen und Triggern für diesen Connector sowie die jeweiligen Antworten:
+
+
+
+### Dateimetadaten abrufen
+Dieser Vorgang ruft Dateimetadaten unter Verwendung der Datei-ID ab.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
 | ---|---|---|
-|Tokenverschlüsselung|Ja|Bereitstellen von SharePoint-Anmeldeinformationen|
+|dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
+|id*|Dateibezeichner|Datei auswählen|
 
-Um eine Verbindung mit **SharePoint Online** herzustellen, müssen Sie Ihre Identität (Benutzername und Kennwort, Smartcard-Anmeldeinformationen usw.) für SharePoint Online bereitstellen. Nachdem Sie authentifiziert wurden, können Sie den SharePoint Online-Connector in Ihrer Logik-App verwenden.
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
-Führen Sie im Designer der Logik-App die folgenden Schritte aus, um sich bei SharePoint anzumelden und die **Verbindung** zu erstellen, die Sie in Ihrer Logik-App verwenden können:
+#### Ausgabedetails
 
-1. Geben Sie in das Suchfeld „SharePoint“ ein, und warten Sie, bis die Suche alle Einträge mit „SharePoint“ im Namen zurückgibt: ![SharePoint konfigurieren][1]  
-2. Wählen Sie **SharePoint Online – Wenn eine Datei erstellt wird** aus.   
-3. Wählen Sie **Bei SharePoint Online anmelden**: ![SharePoint konfigurieren][2]    
-4. Geben Sie Ihre SharePoint-Anmeldeinformationen ein, um sich bei SharePoint zu authentifizieren. ![SharePoint konfigurieren][3]     
-5. Nach Abschluss der Authentifizierung werden Sie zu Ihrer Logik-App umgeleitet, damit Sie diese vervollständigen können. Dazu konfigurieren Sie das SharePoint-Dialogfeld **Wenn eine Datei erstellt wird**. ![SharePoint konfigurieren][4]  
-6. Sie können dann weitere Trigger und Aktionen hinzufügen, die Sie benötigen, um Ihre Logik-App abzuschließen.   
-7. Speichern Sie Ihre Arbeit durch Auswählen von **Speichern** in der Menüleiste oben.  
+BlobMetadata
 
->[AZURE.TIP] Sie können diese Verbindung in anderen Logik- oder PowerApps verwenden.
 
-## REST-API-Referenz für SharePoint
-#### Diese Dokumentation gilt für Version 1.0.
-
-
-### Dient zum Abrufen der Metadaten einer Datei in der Dokumentbibliothek
-**```GET: /datasets/{dataset}/files/{id}```**
-
-
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL. Beispiel: http://contoso.sharepoint.com/sites/mysite|
-|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner der Datei|
-
-
-### Im Folgenden sind die möglichen Antworten aufgeführt:
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-------
-
-
-
-### Dient zum Aktualisieren einer Datei in der Dokumentbibliothek
-**```PUT: /datasets/{dataset}/files/{id}```**
-
-
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL. Beispiel: http://contoso.sharepoint.com/sites/mysite|
-|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner der Datei|
-|body| |Ja|body|(Keine)|Der Inhalt der Datei|
-
-
-### Im Folgenden sind die möglichen Antworten aufgeführt:
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-------
-
-
-
-### Dient zum Löschen einer Datei aus der Dokumentbibliothek
-**```DELETE: /datasets/{dataset}/files/{id}```**
-
-
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL. Beispiel: http://contoso.sharepoint.com/sites/mysite|
-|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner der Datei|
-
-
-### Im Folgenden sind die möglichen Antworten aufgeführt:
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-------
-
-
-
-### Dient zum Abrufen der Metadaten einer Datei in der Dokumentbibliothek
-**```GET: /datasets/{dataset}/GetFileByPath```**
-
-
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL. Beispiel: http://contoso.sharepoint.com/sites/mysite|
-|path|string|Ja|query|(Keine)|Pfad der Datei|
-
-
-### Im Folgenden sind die möglichen Antworten aufgeführt:
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-------
-
-
-
-### Dient zum Abrufen einer Datei aus der Dokumentbibliothek
-**```GET: /datasets/{dataset}/GetFileContentByPath```**
-
-
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL. Beispiel: http://contoso.sharepoint.com/sites/mysite|
-|path|string|Ja|query|(Keine)|Pfad der Datei|
-
-
-### Im Folgenden sind die möglichen Antworten aufgeführt:
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-------
-
-
-
-### Dient zum Abrufen einer Datei aus der Dokumentbibliothek
-**```GET: /datasets/{dataset}/files/{id}/content```**
-
-
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL. Beispiel: http://contoso.sharepoint.com/sites/mysite|
-|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner der Datei|
-
-
-### Im Folgenden sind die möglichen Antworten aufgeführt:
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-------
-
-
-
-### Dient zum Hochladen einer Datei in die Dokumentbibliothek
-**```POST: /datasets/{dataset}/files```**
-
-
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL. Beispiel: http://contoso.sharepoint.com/sites/mysite|
-|folderPath|string|Ja|query|(Keine)|Der Pfad zum Ordner|
-|name|string|Ja|query|(Keine)|Name der Datei|
-|body| |Ja|body|(Keine)|Der Inhalt der Datei|
-
-
-### Im Folgenden sind die möglichen Antworten aufgeführt:
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-------
-
-
-
-### Dient zum Kopieren einer Datei in der Dokumentbibliothek
-**```POST: /datasets/{dataset}/copyFile```**
-
-
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL. Beispiel: http://contoso.sharepoint.com/sites/mysite|
-|Quelle|string|Ja|query|(Keine)|Pfad zur Quelldatei|
-|Ziel|string|Ja|query|(Keine)|Pfad zur Zieldatei|
-|overwrite|Boolescher Wert|no|query|false|Soll die vorhandene Datei überschrieben werden oder nicht?|
-
-
-### Im Folgenden sind die möglichen Antworten aufgeführt:
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-------
-
-
-
-### Löst einen Datenfluss aus, wenn in einem SharePoint-Ordner eine neue Datei erstellt wird
-**```GET: /datasets/{dataset}/triggers/onnewfile```**
-
-
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL|
-|folderId|string|Ja|query|(Keine)|Eindeutiger Bezeichner des Ordners in SharePoint|
-
-
-### Im Folgenden sind die möglichen Antworten aufgeführt:
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-------
-
-
-
-### Löst einen Datenfluss aus, wenn in einem SharePoint-Ordner eine Datei geändert wird
-**```GET: /datasets/{dataset}/triggers/onupdatedfile```**
-
-
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL|
-|folderId|string|Ja|query|(Keine)|Eindeutiger Bezeichner des Ordners in SharePoint|
-
-
-### Im Folgenden sind die möglichen Antworten aufgeführt:
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-------
-
-
-
-### Dient zum Extrahieren eines Ordners in der Dokumentbibliothek
-**```POST: /datasets/{dataset}/extractFolderV2```**
-
-
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL. Beispiel: http://contoso.sharepoint.com/sites/mysite|
-|Quelle|string|Ja|query|(Keine)|Pfad zur Quelldatei|
-|Ziel|string|Ja|query|(Keine)|Pfad zum Zielordner|
-|overwrite|Boolescher Wert|no|query|false|Soll die vorhandene Datei überschrieben werden oder nicht?|
-
-
-### Im Folgenden sind die möglichen Antworten aufgeführt:
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-------
-
-
-
-### Wenn ein neues Element in einer SharePoint-Liste erstellt wird
-**```GET: /datasets/{dataset}/tables/{table}/onnewitems```**
-
-
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
-|Tabelle|string|Ja|path|(Keine)|Name der SharePoint-Liste|
-|$skip|integer|no|query|(Keine)|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
-|$top|integer|no|query|(Keine)|Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256)|
-|$filter|string|no|query|(Keine)|Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge|
-|$orderby|string|no|query|(Keine)|Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen|
-
-
-### Im Folgenden sind die möglichen Antworten aufgeführt:
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-------
-
-
-
-### Wenn ein vorhandenes Element in einer SharePoint-Liste geändert wird
-**```GET: /datasets/{dataset}/tables/{table}/onupdateditems```**
-
-
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
-|Tabelle|string|Ja|path|(Keine)|Name der SharePoint-Liste|
-|$skip|integer|no|query|(Keine)|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
-|$top|integer|no|query|(Keine)|Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256)|
-|$filter|string|no|query|(Keine)|Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge|
-|$orderby|string|no|query|(Keine)|Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen|
-
-
-### Im Folgenden sind die möglichen Antworten aufgeführt:
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-------
-
-
-
-### Erstellt ein neues Element in einer SharePoint-Liste
-**```POST: /datasets/{dataset}/tables/{table}/items```**
-
-
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
-|Tabelle|string|Ja|path|(Keine)|Name der SharePoint-Liste|
-|item| |Ja|body|(Keine)|Zu erstellendes Element|
-
-
-### Im Folgenden sind die möglichen Antworten aufgeführt:
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-------
-
-
-
-### Ruft ein einzelnes Element aus einer SharePoint-Liste ab
-**```GET: /datasets/{dataset}/tables/{table}/items/{id}```**
-
-
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
-|Tabelle|string|Ja|path|(Keine)|Name der SharePoint-Liste|
-|id|integer|Ja|path|(Keine)|Eindeutiger Bezeichner des abzurufenden Elements|
-
-
-### Im Folgenden sind die möglichen Antworten aufgeführt:
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-------
-
-
-
-### Löscht ein Element aus einer SharePoint-Liste
-**```DELETE: /datasets/{dataset}/tables/{table}/items/{id}```**
-
-
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
-|Tabelle|string|Ja|path|(Keine)|Name der SharePoint-Liste|
-|id|integer|Ja|path|(Keine)|Eindeutiger Bezeichner des zu löschenden Elements|
-
-
-### Im Folgenden sind die möglichen Antworten aufgeführt:
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-------
-
-
-
-### Aktualisiert ein Element in einer SharePoint-Liste
-**```PATCH: /datasets/{dataset}/tables/{table}/items/{id}```**
-
-
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|dataset|string|Ja|path|(Keine)|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
-|Tabelle|string|Ja|path|(Keine)|Name der SharePoint-Liste|
-|id|integer|Ja|path|(Keine)|Eindeutiger Bezeichner des zu aktualisierenden Elements|
-|item| |Ja|body|(Keine)|Element mit geänderten Eigenschaften|
-
-
-### Im Folgenden sind die möglichen Antworten aufgeführt:
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-------
-
-
-
-## Objektdefinitionen: 
-
- **DataSetsMetadata:**
-
-Erforderliche Eigenschaften für DataSetsMetadata:
-
-
-Keine der Eigenschaften ist erforderlich.
-
-
-**Alle Eigenschaften:**
-
-
-| Name | Datentyp |
-|---|---|
-|tabular|nicht definiert|
-|Blob|nicht definiert|
-
-
-
- **TabularDataSetsMetadata:**
-
-Erforderliche Eigenschaften für TabularDataSetsMetadata:
-
-
-Keine der Eigenschaften ist erforderlich.
-
-
-**Alle Eigenschaften:**
-
-
-| Name | Datentyp |
-|---|---|
-|Quelle|string|
-|displayName|string|
-|urlEncoding|string|
-|tableDisplayName|string|
-|tablePluralName|string|
-
-
-
- **BlobDataSetsMetadata:**
-
-Erforderliche Eigenschaften für BlobDataSetsMetadata:
-
-
-Keine der Eigenschaften ist erforderlich.
-
-
-**Alle Eigenschaften:**
-
-
-| Name | Datentyp |
-|---|---|
-|Quelle|string|
-|displayName|string|
-|urlEncoding|string|
-
-
-
- **BlobMetadata**:
-
-Erforderliche Eigenschaften für BlobMetadata:
-
-
-Keine der Eigenschaften ist erforderlich.
-
-
-**Alle Eigenschaften:**
-
-
-| Name | Datentyp |
-|---|---|
+| Eigenschaftenname | Datentyp |
+|---|---|---|
 |ID|string|
 |Name|string|
 |DisplayName|string|
@@ -553,152 +121,551 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
- **Object:**
 
-Erforderliche Eigenschaften für „Object“:
-
-
-Keine der Eigenschaften ist erforderlich.
+### Datei aktualisieren
+Dieser Vorgang aktualisiert Dateiinhalte.
 
 
-**Alle Eigenschaften:**
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
+|id*|Dateibezeichner|Datei auswählen|
+|body*|Inhalt der Datei|Inhalt der Datei|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+BlobMetadata
 
 
-| Name | Datentyp |
-|---|---|
-
-
-
- **TableMetadata:**
-
-Erforderliche Eigenschaften für TableMetadata:
-
-
-Keine der Eigenschaften ist erforderlich.
-
-
-**Alle Eigenschaften:**
-
-
-| Name | Datentyp |
-|---|---|
-|name|string|
-|title|string|
-|x-ms-permission|string|
-|schema|nicht definiert|
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
 
 
 
- **DataSetsList:**
 
-Erforderliche Eigenschaften für DataSetsList:
-
-
-Keine der Eigenschaften ist erforderlich.
+### Datei löschen
+Dieser Vorgang löscht eine Datei.
 
 
-**Alle Eigenschaften**:
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
+|id*|Dateibezeichner|Datei auswählen|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
 
-| Name | Datentyp |
+
+
+### Dateimetadaten anhand des Pfads abrufen
+Dieser Vorgang ruft Dateimetadaten unter Verwendung des Dateipfads ab.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
+|path*|Dateipfad|Datei auswählen|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+BlobMetadata
+
+
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### Dateiinhalt anhand des Pfads abrufen
+Dieser Vorgang ruft Dateiinhalte unter Verwendung des Dateipfads ab.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
+|path*|Dateipfad|Datei auswählen|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+
+
+
+### Dateiinhalte abrufen
+Dieser Vorgang ruft Dateiinhalte unter Verwendung der Datei-ID ab.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
+|id*|Dateibezeichner|Datei auswählen|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+
+
+
+### Datei erstellen
+Dieser Vorgang lädt eine Datei an eine SharePoint-Website hoch.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
+|folderPath*|Ordnerpfad|Datei auswählen|
+|name*|Dateiname|Name der Datei|
+|body*|Inhalt der Datei|Inhalt der Datei|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+BlobMetadata
+
+
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### Datei kopieren
+Dieser Vorgang kopiert eine Datei an eine SharePoint-Website.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
+|source*|Quelldateipfad|Pfad zur Quelldatei|
+|destination*|Zieldateipfad|Pfad zur Zieldatei|
+|overwrite|Überschreibkennzeichen|Gibt an, ob eine ggf. bereits vorhandene Zieldatei überschrieben werden soll.|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+BlobMetadata
+
+
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### Wenn eine Datei erstellt wird
+Dieser Vorgang löst einen Ablauf aus, wenn in einem SharePoint-Ordner eine neue Datei erstellt wird.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|dataset*|Website-URL|SharePoint-Website-URL|
+|folderId*|Ordner-ID|Ordner auswählen|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+
+
+
+### Wenn eine Datei geändert wird
+Dieser Vorgang löst einen Ablauf aus, wenn in einem SharePoint-Ordner eine Datei geändert wird.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|dataset*|Website-URL|SharePoint-Website-URL|
+|folderId*|Ordner-ID|Ordner auswählen|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+
+
+
+### Ordner auflisten
+Dieser Vorgang ruft in einem SharePoint-Ordner enthaltene Dateien ab.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
+|id*|Dateibezeichner|Eindeutiger Bezeichner des Ordners|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+
+
+#### Ausgabedetails
+
+BlobMetadata
+
+
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### List root folder (Stammordner auflisten)
+Dieser Vorgang ruft die Dateien im SharePoint-Stammordner ab.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+
+
+#### Ausgabedetails
+
+BlobMetadata
+
+
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### Ordner extrahieren
+Dieser Vorgang extrahiert eine Archivdatei (beispielsweise eine ZIP-Datei) in einen SharePoint-Ordner.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
+|source*|Quelldateipfad|Pfad zur Quelldatei|
+|destination*|Zielordnerpfad|Pfad zum Zielordner|
+|overwrite|Überschreibkennzeichen|Gibt an, ob eine ggf. bereits vorhandene Zieldatei überschrieben werden soll.|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+
+
+#### Ausgabedetails
+
+BlobMetadata
+
+
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### When a new item is created (Wenn ein neues Element erstellt wird)
+Dieser Vorgang löst einen Ablauf aus, wenn in einer SharePoint-Liste ein neues Element erstellt wird.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
+|table*|Listenname|Name der SharePoint-Liste|
+|$filter|Filterabfrage|Eine ODATA-Filterabfrage zum Einschränken der Anzahl zurückgegebener Einträge|
+|$orderby|Sortieren nach|Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen|
+|$skip|Auslassungsanzahl|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
+|$top|Maximale Anzahl von Get-Anforderungen|Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256)|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+ItemsList
+
+
+| Eigenschaftenname | Datentyp | 
 |---|---|
 |value|array|
 
 
 
- **DataSet:**
 
-Erforderliche Eigenschaften für DataSet:
-
-
-Keine der Eigenschaften ist erforderlich.
+### When an existing item is modified (Wenn ein vorhandenes Element geändert wird)
+Dieser Vorgang löst einen Ablauf aus, wenn in einer SharePoint-Liste ein vorhandenes Element geändert wird.
 
 
-**Alle Eigenschaften:**
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
+|table*|Listenname|Name der SharePoint-Liste|
+|$filter|Filterabfrage|Eine ODATA-Filterabfrage zum Einschränken der Anzahl zurückgegebener Einträge|
+|$orderby|Sortieren nach|Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen|
+|$skip|Auslassungsanzahl|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
+|$top|Maximale Anzahl von Get-Anforderungen|Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256)|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+ItemsList
 
 
-| Name | Datentyp |
+| Eigenschaftenname | Datentyp |
 |---|---|
-|Name|string|
-|DisplayName|string|
+|value|array|
 
 
 
- **Tabelle**:
 
-Erforderliche Eigenschaften für „Table“:
-
-
-Keine der Eigenschaften ist erforderlich.
+### Get items (Elemente abrufen)
+Dieser Vorgang ruft Elemente aus einer SharePoint-Liste ab.
 
 
-**Alle Eigenschaften**:
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
+|table*|Listenname|Name der SharePoint-Liste|
+|$filter|Filterabfrage|Eine ODATA-Filterabfrage zum Einschränken der Anzahl zurückgegebener Einträge|
+|$orderby|Sortieren nach|Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen|
+|$skip|Auslassungsanzahl|Anzahl der zu überspringenden Einträge (Standardeinstellung = 0)|
+|$top|Maximale Anzahl von Get-Anforderungen|Maximale Anzahl abzurufender Einträge (Standardeinstellung = 256)|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+ItemsList
 
 
-| Name | Datentyp |
+| Eigenschaftenname | Datentyp |
 |---|---|
-|Name|string|
-|DisplayName|string|
+|value|array|
 
 
 
- **Item:**
 
-Erforderliche Eigenschaften für „Item“:
-
-
-Keine der Eigenschaften ist erforderlich.
+### Create item (Element erstellen)
+Dieser Vorgang erstellt ein neues Element in einer SharePoint-Liste.
 
 
-**Alle Eigenschaften:**
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
+|table*|Listenname|Name der SharePoint-Liste|
+|item*|Item|Zu erstellendes Element|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+Item
 
 
-| Name | Datentyp |
+| Eigenschaftenname | Datentyp |
 |---|---|
 |ItemInternalId|string|
 
 
 
- **ItemsList:**
 
-Erforderliche Eigenschaften für ItemsList:
-
-
-Keine der Eigenschaften ist erforderlich.
+### Get item (Element abrufen)
+Dieser Vorgang ruft anhand der ID ein einzelnes Element aus einer SharePoint-Liste ab.
 
 
-**Alle Eigenschaften:**
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
+|table*|Listenname|Name der SharePoint-Liste|
+|id*|ID|Eindeutiger Bezeichner des abzurufenden Elements|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+Item
 
 
-| Name | Datentyp |
+| Eigenschaftenname | Datentyp |
+|---|---|
+|ItemInternalId|string|
+
+
+
+
+### Delete item (Element löschen)
+Dieser Vorgang löscht ein Element aus einer SharePoint-Liste.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
+|table*|Listenname|Name der SharePoint-Liste|
+|id*|ID|Eindeutiger Bezeichner des zu löschenden Elements|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+
+
+
+### Update item (Element aktualisieren)
+Dieser Vorgang aktualisiert ein Element in einer SharePoint-Liste.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
+|table*|Listenname|Name der SharePoint-Liste|
+|id*|ID|Eindeutiger Bezeichner des zu aktualisierenden Elements|
+|item*|Item|Element mit geänderten Eigenschaften|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+Item
+
+
+| Eigenschaftenname | Datentyp |
+|---|---|
+|ItemInternalId|string|
+
+
+
+
+### Get entity values (Entitätswerte abrufen)
+Dieser Vorgang ruft mögliche Werte für eine SharePoint-Entität ab.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|dataset*|SharePoint-Website-URL|SharePoint-Website-URL|
+|table*|Tabellenname|Tabellenname|
+|id*|Entitäts-ID|Entitäts-ID|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+
+
+
+
+### Get lists (Listen abrufen)
+Dieser Vorgang ruft SharePoint-Listen von einer Website ab.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+TablesList
+
+
+| Eigenschaftenname | Datentyp |
 |---|---|
 |value|array|
 
 
 
- **TablesList:**
+## HTTP-Antworten
 
-Erforderliche Eigenschaften für TablesList:
+Von den oben angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes zurückgegeben werden:
 
-
-Keine der Eigenschaften ist erforderlich.
-
-
-**Alle Eigenschaften:**
-
-
-| Name | Datentyp |
+|Name|Beschreibung|
 |---|---|
-|value|array|
+|200|OK|
+|202|Zulässig|
+|400|Ungültige Anforderung|
+|401|Nicht autorisiert|
+|403|Verboten|
+|404|Nicht gefunden|
+|500|Interner Serverfehler. Unbekannter Fehler.|
+|die Standardeinstellung|Fehler beim Vorgang.|
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md) [Erstellen einer Power-App](../power-apps/powerapps-get-started-azure-portal.md)
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-[1]: ./media/connectors-create-api-sharepointonline/connectionconfig1.png
-[2]: ./media/connectors-create-api-sharepointonline/connectionconfig2.png
-[3]: ./media/connectors-create-api-sharepointonline/connectionconfig3.png
-[4]: ./media/connectors-create-api-sharepointonline/connectionconfig4.png
-[5]: ./media/connectors-create-api-sharepointonline/connectionconfig5.png
-
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -26,7 +26,7 @@ Es kann Situationen geben, in denen Sie versehentlich einige Daten in einer SQL-
 
 	**Hinweis**: Stellen Sie sicher, dass für die Tabelle, die umbenannt werden soll, keine Aktivitäten ausgeführt werden, um eine Blockierung zu vermeiden. Wenn Probleme auftreten, stellen Sie sicher, dass dieser Schritt während eines Wartungsfensters ausgeführt wird.
 
-2. Stellen Sie eine Sicherung Ihrer Datenbank zu einem Zeitpunkt wieder her, den Sie wiederherstellen möchten. Informationen zur Vorgehensweise finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank nach einem Benutzerfehler](sql-database-user-error-recovery.md).
+2. Stellen Sie eine Sicherung Ihrer Datenbank zu einem Zeitpunkt wieder her, den Sie wiederherstellen möchten. Informationen hierzu finden Sie in den Schritten unter [Point-In-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 	**Hinweise**:
 	- Der Name der wiederhergestellten Datenbank erhält das Format „Datenbankname + Zeitstempel“. Beispiel: **Adventureworks2012\_2016-01-01T22-12Z**. Durch diesen Schritt wird der vorhandene Datenbankname auf dem Server nicht überschrieben. Dies ist eine Sicherheitsmaßnahme, durch die der Benutzer die wiederhergestellte Datenbank überprüfen kann, bevor die aktuelle Datenbank gelöscht und die wiederhergestellte Datenbank zum Einsatz in der Produktion umbenannt wird.
@@ -71,4 +71,4 @@ Es kann Situationen geben, in denen Sie versehentlich einige Daten in einer SQL-
 
 [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="02/23/2016" 
+	ms.date="07/21/2016" 
 	ms.author="donnam;ricksal"/>
 
 # Skalieren von durch Azure SQL-Datenbank gesicherten mobillen Diensten
@@ -76,8 +76,8 @@ Nachdem Sie sich mit den einzelnen Datenbankstufen vertraut gemacht haben, könn
 
     - *Daten-E/A (Prozentsatz)* (nur für die Tarife Basic/Standard/Premium verfügbar)
     - *Protokoll-E/A (Prozentsatz)* (nur für die Tarife Basic/Standard/Premium verfügbar)
-    - *Speicher* 
-7. Prüfen Sie die Metriken über dem Zeitfenster, wenn der Dienst Probleme aufwies. 
+    - *Speicher*
+7. Prüfen Sie die Metriken über dem Zeitfenster, wenn der Dienst Probleme aufwies.
 
     ![Klassisches Azure-Portal – SQL-Datenbankmetriken][PortalSqlMetrics]
 
@@ -192,7 +192,7 @@ Die folgenden Richtlinien sollten bei Datenbankabfragen beachtet werden:
 - **Implementieren Sie Paging.** Bei Datenbankabfragen werden oft sehr viele Datensätze an den Client zurückgegeben. Um die Größe und Latenz der Vorgänge zu minimieren, sollten Sie Paging implementieren.
 
     - Standardmäßig begrenzt der mobile Dienst alle eingehenden Abfragen auf eine Seitengröße von 50. Sie können manuell bis zu 1.000 Datensätze anfordern. Weitere Informationen finden Sie unter „Daten seitenweise zurückgeben“ für [Windows Store](mobile-services-windows-dotnet-how-to-use-client-library.md#paging), [iOS](mobile-services-ios-how-to-use-client-library.md#paging), [Android](mobile-services-android-how-to-use-client-library.md#paging), [HTML/JavaScript](mobile-services-html-how-to-use-client-library#paging) und [Xamarin](partner-xamarin-mobile-services-how-to-use-client-library.md#paging).
-    - Für Abfragen von Ihrem Mobildienstcode aus gibt es keine Standardseitengröße. Wenn Ihre Anwendung Paging nicht implementiert, oder wenn Sie eine defensive Maßnahme ergreifen möchten, können Sie Standardlimits für Ihre Abfragen festlegen. Verwenden Sie im JavaScript-Back-End den Operator **take** für das [Abfrageobjekt](http://msdn.microsoft.com/library/azure/jj613353.aspx). Wenn Sie das .NET-Back-End verwenden, können Sie die [Take-Methode] als Teil der LINQ-Abfrage verwenden.  
+    - Für Abfragen von Ihrem Mobildienstcode aus gibt es keine Standardseitengröße. Wenn Ihre Anwendung Paging nicht implementiert, oder wenn Sie eine defensive Maßnahme ergreifen möchten, können Sie Standardlimits für Ihre Abfragen festlegen. Verwenden Sie im JavaScript-Back-End den Operator **take** für das [Abfrageobjekt](http://msdn.microsoft.com/library/azure/jj613353.aspx). Wenn Sie das .NET-Back-End verwenden, können Sie die [Take-Methode] als Teil der LINQ-Abfrage verwenden.
 
 
 Weitere Informationen zum Verbessern des Abfragedesigns, darunter die Analyse von Abfrageplänen, finden Sie unter [Erweitertes Abfragedesign](#AdvancedQuery) am Ende dieses Dokuments.
@@ -282,7 +282,7 @@ Im Verwaltungsportal werden einige Metriken bereitgestellt, wenn die Stufen Basi
     ORDER BY start_time DESC
 
 > [AZURE.NOTE]
-> Führen Sie diese Abfrage für die **master**-Datenbank auf dem Server aus. Die Sicht **sys.resource\\_stats** ist nur für diese Datenbank vorhanden.
+Führen Sie diese Abfrage für die **master**-Datenbank auf dem Server aus. Die Sicht **sys.resource\\_stats** ist nur für diese Datenbank vorhanden.
 
 Das Ergebnis enthält folgende nützliche Metriken: CPU (% des Stufenlimits), Speicher (Megabyte), physische Datenlesevorgänge (% des Stufenlimits), Protokollschreibvorgänge (% des Stufenlimits), Speicher (% des Stufenlimits), Workerzähler, Sitzungszähler usw.
 
@@ -296,7 +296,7 @@ Die Sicht **[sys.event\_log](http://msdn.microsoft.com/library/azure/jj819229.as
     order by start_time desc
 
 > [AZURE.NOTE]
-> Führen Sie diese Abfrage für die **master**-Datenbank auf dem Server aus. Die Sicht **sys.event\\_log** ist nur für diese Datenbank vorhanden.
+Führen Sie diese Abfrage für die **master**-Datenbank auf dem Server aus. Die Sicht **sys.event\\_log** ist nur für diese Datenbank vorhanden.
 
 <a name="AdvancedIndexing" ></a>
 ### Erweiterte Indizierung
@@ -310,7 +310,7 @@ Eine Tabelle oder Sicht kann die folgenden Indizierungstypen enthalten:
 Betrachten Sie analog dazu: ein Buch oder ein technisches Handbuch. Der Inhalt jeder Seite entspricht einem Datensatz, die Seitenzahl ist der gruppierte Index und der Themenindex am Ende des Buchs ist der nicht gruppierte Index. Jeder Eintrag im Themenindex verweist auf den gruppierten Index, die Seitenzahl.
 
 > [AZURE.NOTE]
-> Standardmäßig legt das JavaScript-Back-End für Azure Mobile Services **\\_createdAt** als gruppierten Index fest. Wenn Sie diese Spalte entfernen oder einen anderen gruppierten Index wählen möchten, müssen Sie die [Richtlinien für das Design von gruppierten Indizes](#ClusteredIndexes) unten befolgen. Im .NET-Back-End definiert die Klasse `EntityData` `CreatedAt` als gruppierten Index mit der Anmerkung `[Index(IsClustered = true)]`.
+Standardmäßig legt das JavaScript-Back-End für Azure Mobile Services **\\_createdAt** als gruppierten Index fest. Wenn Sie diese Spalte entfernen oder einen anderen gruppierten Index wählen möchten, müssen Sie die [Richtlinien für das Design von gruppierten Indizes](#ClusteredIndexes) unten befolgen. Im .NET-Back-End definiert die Klasse `EntityData` `CreatedAt` als gruppierten Index mit der Anmerkung `[Index(IsClustered = true)]`.
 
 <a name="ClusteredIndexes"></a>
 #### Richtlinien für das Design von gruppierten Indizes
@@ -494,4 +494,4 @@ Um den Abfrageplan im **Verwaltungsportal für SQL-Datenbank** zu analysieren, v
 <!-- BLOG LINKS -->
 [Was kostet dieser Schlüssel?]: http://www.sqlskills.com/blogs/kimberly/how-much-does-that-key-cost-plus-sp_helpindex9/
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0727_2016-->

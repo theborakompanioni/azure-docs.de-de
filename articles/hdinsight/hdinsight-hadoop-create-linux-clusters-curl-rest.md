@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="05/16/2016"
+   	ms.date="07/27/2016"
    	ms.author="larryfr"/>
 
 #Erstellen von Linux-basierten Clustern in HDInsight mithilfe von cURL und der Azure-REST-API
@@ -362,7 +362,7 @@ Gehen Sie wie folgt vor, um eine neue Ressourcengruppe zu erstellen. Sie müssen
 
 * Ersetzen Sie __SubscriptionID__ durch die Abonnement-ID, die Sie während der Erstellung des Dienstprinzipals erhalten haben.
 * Ersetzen Sie __AccessToken__ durch das Zugriffstoken, das Sie im vorherigen Schritt erhalten haben.
-* Ersetzen Sie __DataCenterLocation__ durch das Rechenzentrum, in dem Sie die Ressourcengruppe und die Ressourcen erstellen möchten. Beispiel: "USA, Mitte/Süden". 
+* Ersetzen Sie __DataCenterLocation__ durch das Rechenzentrum, in dem Sie die Ressourcengruppe und die Ressourcen erstellen möchten. Beispiel: "USA, Mitte/Süden".
 * Ersetzen Sie __ResourceGroupName__ durch den Namen, den Sie für diese Gruppe verwenden möchten.
 
 ```
@@ -380,7 +380,7 @@ Wenn die Anforderung erfolgreich ist, erhalten Sie eine 2xx-Antwort, deren Text 
 
 Gehen Sie wie folgt vor, um die Clusterkonfiguration (Vorlage und Parameterwerte) in der Ressourcengruppe bereitzustellen.
 
-* Ersetzen Sie __SubscriptionID__ und __AccessToken__ durch die oben verwendeten Werte. 
+* Ersetzen Sie __SubscriptionID__ und __AccessToken__ durch die oben verwendeten Werte.
 * Ersetzen Sie __ResourceGroupName__ durch den Namen der Ressourcengruppe, die Sie im vorherigen Abschnitt erstellt haben.
 * Ersetzen Sie __DeploymentName__ durch den Namen, den Sie für diese Bereitstellung verwenden möchten.
 
@@ -403,7 +403,7 @@ Wenn die Anforderung erfolgreich ist, erhalten Sie eine 2xx-Antwort, deren Text 
 
 Gehen Sie wie folgt vor, um den Status der Bereitstellung zu prüfen.
 
-* Ersetzen Sie __SubscriptionID__ und __AccessToken__ durch die oben verwendeten Werte. 
+* Ersetzen Sie __SubscriptionID__ und __AccessToken__ durch die oben verwendeten Werte.
 * Ersetzen Sie __ResourceGroupName__ durch den Namen der Ressourcengruppe, die Sie im vorherigen Abschnitt erstellt haben.
 
 ```
@@ -435,4 +435,4 @@ Nachdem Sie einen HDInsight-Cluster erfolgreich erstellt haben, nutzen Sie die f
 * [Verwenden von Python-Komponenten in Storm in HDInsight](hdinsight-storm-develop-python-topology.md)
 * [Bereitstellen und Überwachen von Topologien mit Storm in HDInsight](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

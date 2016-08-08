@@ -8,9 +8,9 @@ Führen Sie die folgenden Schritte aus, um das Softwareupdate aus dem Microsoft 
 
 2. Falls Sie den Microsoft Update-Katalog zum ersten Mal auf diesem Computer verwenden, klicken Sie auf **Installieren**, wenn Sie zum Installieren des Add-Ons für den Microsoft Update-Katalog aufgefordert werden. ![Katalog installieren](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
 
-3. Geben Sie im Suchfeld des Microsoft Update-Katalogs die KB-Nummer des Hotfixes ein, den Sie herunterladen möchten (beispielsweise **3162954**), und klicken Sie anschließend auf **Suchen**.
+3. Geben Sie im Suchfeld des Microsoft Update-Katalogs die KB-Nummer des Hotfixes ein, den Sie herunterladen möchten (beispielsweise **3179904**), und klicken Sie anschließend auf **Suchen**.
 
-    Die Hotfix-Auflistung wird angezeigt, z.B. das **kumulative Softwarepaket-Update 2.1 für die StorSimple 8000-Serie**.
+    Die Hotfix-Auflistung wird angezeigt, z.B. das **kumulative Softwarepaket-Update 2.2 für die StorSimple 8000-Serie**.
 
     ![Katalog durchsuchen](./media/storsimple-install-update2-hotfix/HCS_SearchCatalog1-include.png)
 
@@ -60,6 +60,8 @@ Führen Sie zum Installieren und Überprüfen der Hotfixes für den normalen Mod
 
 6. Geben Sie **Y** ein, um die Hotfixinstallation zu bestätigen.
 
+> [AZURE.IMPORTANT] Installieren Sie bei der Installation von Update 2.2 nur die Binärdatei mit dem Präfix „all-hcsmdssoftwareudpate“. Installieren Sie das CIS- und das MDS-Agent-Update mit dem Präfix „all-cismdsagentupdatebundle“ nicht. Andernfalls kommt es zu einem Fehler.
+
 7. Überwachen Sie das Update mithilfe des `Get-HcsUpdateStatus`-Cmdlets. Das Update wird zunächst auf dem passiven Controller abgeschlossen. Nachdem der passive Controller aktualisiert wurde, findet ein Failover statt, und das Update wird dann auf dem anderen Controller angewendet. Die Aktualisierung ist abgeschlossen, wenn beide Controller aktualisiert wurden.
 
     Die folgende Beispielausgabe zeigt den Status des Updates. Der Parameter `RunInprogress` ist `True`, wenn das Update ausgeführt wird.
@@ -95,9 +97,9 @@ Führen Sie zum Installieren und Überprüfen der Hotfixes für den normalen Mod
 
     Daraufhin sollten die folgenden Versionen angezeigt werden.
 
-    - `HcsSoftwareVersion: 6.3.9600.17705`
+    - `HcsSoftwareVersion: 6.3.9600.17708`
     - `CisAgentVersion: 1.0.9299.0`
-    - `MdsAgentVersion: 30.0.4698.16` 
+    - `MdsAgentVersion: 30.0.4698.16`
 
 	Wenn die Versionsnummern nach dem Anwenden des Updates nicht geändert werden, bedeutet dies, dass der Hotfix nicht angewendet werden konnte. Sollte dies der Fall sein, wenden Sie sich an den [Microsoft Support](storsimple-contact-microsoft-support.md), um weitere Unterstützung zu erhalten.
 
@@ -123,7 +125,7 @@ Führen Sie zum Installieren und Überprüfen der Hotfixes für den normalen Mod
 
 Verwenden Sie KB3121899, um die Datenträger-Firmwareupdates zu installieren. Es handelt sich dabei um beeinträchtigende Updates, die ca. 30 Minuten dauern. Sie können diese während eines geplanten Wartungsfensters durch Herstellen einer Verbindung mit der seriellen Konsole des Geräts installieren.
 
-Beachten Sie, dass Sie diese Updates nicht installieren müssen, wenn Ihre Datenträger-Firmware bereits auf dem neuesten Stand ist. Führen Sie das Cmdlet `Get-HcsUpdateAvailability` über die serielle Gerätekonsole aus, um zu überprüfen, ob Updates verfügbar sind und ob die Updates beeinträchtigend (Wartungsmodus) oder nicht beeinträchtigend (normaler Modus) sind.
+Beachten Sie, dass Sie diese Updates nicht installieren müssen, wenn Ihre Datenträger-Firmware bereits auf dem neuesten Stand ist. Führen Sie das Cmdlet `Get-HcsUpdateAvailability` über die serielle Gerätekonsole aus, um zu überprüfen, ob Updates verfügbar sind, und ob die Updates beeinträchtigend (Wartungsmodus) oder nicht beeinträchtigend (normaler Modus) sind.
 
 Folgen Sie den Anweisungen unten, um die Datenträger-Firmwareupdates zu installieren.
 
@@ -239,4 +241,4 @@ Folgen Sie den Anweisungen unten, um die Datenträger-Firmwareupdates zu install
 
 1. Beim Beenden des Wartungsmodus werden die Controller neu gestartet. Nachdem die Firmwareupdates für Datenträger erfolgreich installiert wurden und das Gerät den Wartungsmodus verlassen hat, kehren Sie zum klassischen Azure-Portal zurück. Beachten Sie, dass es bis zu 24 Stunden dauern kann, bis die Installation der Wartungsmodus-Updates im Portal angezeigt wird.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

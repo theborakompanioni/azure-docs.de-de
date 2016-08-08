@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/11/2016"
+   ms.date="07/21/2016"
    ms.author="terrylan"/>
 
 # Aktualisieren der Betriebssystemversion in Azure Security Center
 
 Für virtuelle Computer in Clouddiensten empfiehlt Azure Security Center die Aktualisierung des Betriebssystems, falls eine neuere Version zur Verfügung steht. Es werden nur Clouddienst-Webrollen und -Workerrollen überwacht, die in Produktionsslots ausgeführt werden.
 
-> [AZURE.NOTE] Die Informationen in diesem Dokument gelten für die Vorschauversion von Azure Security Center. Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
+> [AZURE.NOTE] Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
 
 ## Implementieren der Empfehlung
 
@@ -28,7 +28,7 @@ Für virtuelle Computer in Clouddiensten empfiehlt Azure Security Center die Akt
 
 2. Daraufhin wird das Blatt **Betriebssystemversion aktualisieren** geöffnet. Führen Sie die Schritte auf diesem Blatt aus, um die Betriebssystemversion zu aktualisieren.
 
-## Nächste Schritte
+## Weitere Informationen
 
 In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Betriebssystemversion aktualisieren“ implementieren. Weitere Informationen zu Clouddiensten und zum Aktualisieren der Betriebssystemversion für einen Clouddienst finden Sie in folgenden Themen:
 
@@ -49,4 +49,4 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 <!--Image references-->
 [1]: ./media/security-center-update-os-version/update-os-version.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

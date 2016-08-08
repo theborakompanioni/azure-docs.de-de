@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -25,6 +25,6 @@ Wir haben den Inhalt, der sich auf Logik-Apps der Version „2014-12-01-preview�
 ## Nächste Schritte    
 
 - [Weitere Informationen zu diesem neuen Connector](../connectors/connectors-create-api-twilio.md)
-- [Vollständige Liste](../connectors/apis-list.md) aller Connectors, die unter der neuen Logik-Apps-Schemaversion „2015-08-01-preview“ ausgeführt werden  
+- [Vollständige Liste](../connectors/apis-list.md) aller Connectors, die unter der neuen Logik-Apps-Schemaversion „2015-08-01-preview“ ausgeführt werden
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0727_2016-->

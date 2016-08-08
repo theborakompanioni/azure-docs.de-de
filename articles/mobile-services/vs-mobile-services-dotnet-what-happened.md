@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Was ist mit meinem .NET-Projekt passiert, nachdem Mobile Services mithilfe von Visual Studio Verbundene Dienste hinzugefügt wurde? | Microsoft Azure"
-	description="Beschreibt, was in Ihrem Visual Studio .NET-Projekt passiert ist, nachdem Azure Mobile Services mithilfe von Verbundene Dienste hinzugefügt wurde."
+	description="Beschreibt, was in Ihrem Visual Studio .NET-Projekt passiert ist, nachdem Azure Mobile Services mithilfe von Verbundene Dienste hinzugefügt wurde. "
 	services="mobile-services"
 	documentationCenter=""
 	authors="mlhoop"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="01/05/2016"
+	ms.date="07/21/2016"
 	ms.author="mlearned"/>
 
 # Was ist mit meinem Visual Studio .NET-Projekt passiert, nachdem Azure Mobile Services mithilfe von Verbundene Dienste hinzugefügt wurde?
@@ -41,4 +41,4 @@ Wenn ein .NET Mobile Service im Anbieter für verbundene Dienste erstellt wird, 
 
 [Weitere Informationen zu mobilen Diensten](https://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0727_2016-->

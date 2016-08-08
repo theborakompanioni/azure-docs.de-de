@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="07/21/2016"
 	ms.author="donnam"/>
 
 # Verwendung der Offlinedatensynchronisierung in Mobile Services
@@ -46,7 +46,7 @@ In diesem Lernprogramm werden die grundlegenden Schritte erläutert:
 
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
-* Visual Studio mit Xamarin. Anweisungen finden Sie unter [Setup und Installation für Visual Studio und Xamarin](https://msdn.microsoft.com/library/mt613162.aspx). 
+* Visual Studio mit Xamarin. Anweisungen finden Sie unter [Setup und Installation für Visual Studio und Xamarin](https://msdn.microsoft.com/library/mt613162.aspx).
 * Ein Mac, auf dem Xcode Version 7.0 oder höher und Xamarin Studio Community installiert ist. Informationen finden Sie unter [Setup und Installation für Visual Studio und Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) und [Setup, Installation und Überprüfungen für Mac-Benutzer](https://msdn.microsoft.com/library/mt488770.aspx) (MSDN).
 * Abschluss des Lernprogramms [Erste Schritte mit Mobile Services]
 
@@ -183,4 +183,4 @@ In diesem Abschnitt verbinden Sie die App erneut mit dem mobilen Dienst. Dies si
 [Vorläufiges Löschen]: mobile-services-using-soft-delete.md
 [klassischen Azure-Portal]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0727_2016-->
