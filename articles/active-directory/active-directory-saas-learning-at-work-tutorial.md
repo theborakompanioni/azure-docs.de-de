@@ -176,8 +176,8 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 
 	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-learning-at-work-tutorial/create_aaduser_04.png)
 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus: 
-	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-learning-at-work-tutorial/create_aaduser_05.png)
+5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:  
+	![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-learning-at-work-tutorial/create_aaduser_05.png) 
 
     a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
 
