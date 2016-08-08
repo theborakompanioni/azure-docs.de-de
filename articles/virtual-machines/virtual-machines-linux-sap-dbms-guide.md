@@ -537,7 +537,8 @@ Die Konfiguration muss beim Einführen von virtuellen Computern entsprechend dem
 Wenn hochverfügbare Konfigurationen von DBMS-Bereitstellungen erstellt werden sollen (unabhängig von den einzelnen benötigten DBMS-HA-Funktionen), müssen die virtuellen DBMS-Computer Folgendes erfüllen:
 
 * Hinzufügen der virtuellen Computer zu dem gleichen virtuellen Azure-Netzwerk (<https://azure.microsoft.com/documentation/services/virtual-network/>).
-* Die virtuellen Computer der HA-Konfiguration sollten sich auch im gleichen Subnetz befinden. Die Namensauflösung zwischen den verschiedenen Subnetzen ist in Nur-Cloud-Bereitstellungen nicht möglich, nur die IP-Auflösung. Bei der Verwendung von Site-to-Site- oder ExpressRoute-Verbindungen für standortübergreifende Bereitstellungen ist ein Netzwerk mit mindestens einem Subnetz bereits eingerichtet. Die Auflösung erfolgt gemäß den lokalen AD-Richtlinien und der Netzwerkinfrastruktur. [Kommentar]: <> (MSSedusch TODO Prüfen, ob weiterhin für ARM zutreffend)
+* Die virtuellen Computer der HA-Konfiguration sollten sich auch im gleichen Subnetz befinden. Die Namensauflösung zwischen den verschiedenen Subnetzen ist in Nur-Cloud-Bereitstellungen nicht möglich, nur die IP-Auflösung. Bei der Verwendung von Site-to-Site- oder ExpressRoute-Verbindungen für standortübergreifende Bereitstellungen ist ein Netzwerk mit mindestens einem Subnetz bereits eingerichtet. Die Auflösung erfolgt gemäß den lokalen AD-Richtlinien und der Netzwerkinfrastruktur. 
+[Kommentar]: <> (MSSedusch TODO Prüfen, ob weiterhin für ARM zutreffend)
 
 #### IP-Adressen
 Es wird dringend empfohlen, die virtuellen Computer für HA-Konfigurationen robust einzurichten. Die Adressierung der HA-Partner mit IP-Adressen innerhalb der HA-Konfiguration ist in Azure nur dann zuverlässig, wenn statische IP-Adressen verwendet werden. Es gibt zwei Konzepte von „Herunterfahren“ in Azure:
@@ -615,7 +616,8 @@ Die Datenbankkomprimierung funktioniert auf virtuellen Azure-Computern genauso w
 SQL Server 2014 bietet die Möglichkeit, Datenbankdateien direkt im Azure-Blobspeicher ohne den umschließenden „Wrapper“ einer virtuellen Festplatte zu speichern. Insbesondere bei der Verwendung von standardmäßigem Azure-Speicher oder kleinerer VM-Typen werden hierdurch Szenarien möglich, in denen Sie die IOPS-Einschränkungen überwinden können, die durch eine begrenzte Anzahl von VHDs erzwungen werden können, die auf einigen kleineren VM-Typen bereitgestellt werden können. Dies funktioniert für Benutzerdatenbanken, jedoch nicht für die Systemdatenbanken von SQL Server. Es funktioniert auch für Daten- und Protokolldateien von SQL Server. Wenn Sie eine SAP SQL Server-Datenbank auf diese Weise bereitstellen möchten, statt sie in virtuelle Festplatten „einzuschließen“, bedenken Sie Folgendes:
 
 * Das verwendete Speicherkonto muss sich in derselben Azure-Region befinden wie das Speicherkonto, das zur Bereitstellung des virtuellen Computers verwendet wird, auf dem SQL Server ausgeführt wird.
-* Die bereits genannten Überlegungen im Hinblick auf die Verteilung virtueller Festplatten auf verschiedene Azure-Speicherkonten gelten auch für diese Bereitstellungsmethode. Dies bedeutet, dass die E/A-Vorgänge für die Grenzwerte des Azure-Speicherkontos eingerechnet werden. [comment]: <> (MSSedusch TODO Dabei wird aber nur die Netzwerkbandbreite und keine Speicherbandbreite genutzt, richtig?)
+* Die bereits genannten Überlegungen im Hinblick auf die Verteilung virtueller Festplatten auf verschiedene Azure-Speicherkonten gelten auch für diese Bereitstellungsmethode. Dies bedeutet, dass die E/A-Vorgänge für die Grenzwerte des Azure-Speicherkontos eingerechnet werden. 
+[comment]: <> (MSSedusch TODO Dabei wird aber nur die Netzwerkbandbreite und keine Speicherbandbreite genutzt, richtig?)
 
 Ausführliche Informationen zu dieser Art der Bereitstellung finden Sie hier: <https://msdn.microsoft.com/library/dn385720.aspx>.
  
@@ -761,9 +763,19 @@ Im Folgenden finden Sie einige Überlegungen zur Verwendung eines Verfügbarkeit
 * Der Verfügbarkeitsgruppenlistener wird in Azure mit TCP/IP-Endpunkten erstellt, die den virtuellen Computern zugewiesen werden, auf denen die primären und sekundären Replikate der Verfügbarkeitsgruppe ausgeführt werden.
 * Möglicherweise müssen diese Endpunkte mit Zugriffssteuerungslisten (ACLs) gesichert werden.
 
-[comment]: <> (TODO alter Bog) [comment]: <> (Die einzelnen Schritte und Anforderungen bei der Installation einer AlwaysOn-Konfiguration in Azure werden am besten durch das Tutorial veranschaulicht, das [hier][virtual-machines-windows-classic-ps-sql-alwayson-availability-groups] verfügbar ist.) [comment]: <> (Vorkonfigurierte AlwaysOn-Einrichtung über den Azure-Katalog <https://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx>) [comment]: <> (Die Erstellung eines Verfügbarkeitsgruppenlisteners wird am besten in [diesem][virtual-machines-windows-classic-ps-sql-int-listener] Tutorial beschrieben.) [comment]: <> (Die Sicherung von Netzwerkendpunkten mit ACLs wird am besten hier erklärt:) [comment]: <> (* <https://michaelwasham.com/windows-azure-powershell-reference-guide/network-access-control-list-capability-in-windows-azure-powershell/>) [comment]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/08/31/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-1-of-2.aspx>) [comment]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/01/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-2-of-2.aspx>) [comment]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/18/creating-acls-for-windows-azure-endpoints.aspx>)
+[comment]: <> (TODO alter Bog)
+[comment]: <> (Die einzelnen Schritte und Anforderungen bei der Installation einer AlwaysOn-Konfiguration in Azure werden am besten durch das Tutorial veranschaulicht, das [hier][virtual-machines-windows-classic-ps-sql-alwayson-availability-groups] verfügbar ist.) 
+[comment]: <> (Vorkonfigurierte AlwaysOn-Einrichtung über den Azure-Katalog <https://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx>) 
+[comment]: <> (Die Erstellung eines Verfügbarkeitsgruppenlisteners wird am besten in [diesem][virtual-machines-windows-classic-ps-sql-int-listener] Tutorial beschrieben.) 
+[comment]: <> (Die Sicherung von Netzwerkendpunkten mit ACLs wird am besten hier erklärt:) 
+[comment]: <> (* <https://michaelwasham.com/windows-azure-powershell-reference-guide/network-access-control-list-capability-in-windows-azure-powershell/>) 
+[comment]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/08/31/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-1-of-2.aspx>) 
+[comment]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/01/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-2-of-2.aspx>) 
+[comment]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/18/creating-acls-for-windows-azure-endpoints.aspx>)
 
-Es ist auch möglich, eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe über verschiedene Azure-Regionen hinweg bereitzustellen. Bei dieser Funktion wird die Azure-VNet-zu-Vnet-Konnektivität verwendet ([weitere Details][virtual-networks-configure-vnet-to-vnet-connection]). [comment]: <> (TODO alter Blog) [comment]: <> (Die Einrichtung von SQL Server-AlwaysOn-Verfügbarkeitsgruppen in einem solchen Szenario wird hier beschrieben: <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.)
+Es ist auch möglich, eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe über verschiedene Azure-Regionen hinweg bereitzustellen. Bei dieser Funktion wird die Azure-VNet-zu-Vnet-Konnektivität verwendet ([weitere Details][virtual-networks-configure-vnet-to-vnet-connection]).
+[comment]: <> (TODO alter Blog) 
+[comment]: <> (Die Einrichtung von SQL Server-AlwaysOn-Verfügbarkeitsgruppen in einem solchen Szenario wird hier beschrieben: <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.)
 
 #### SQL Server-Hochverfügbarkeit in Azure – Zusammenfassung
 Da der Azure-Speicher Inhalte schützt, gibt es einen Grund weniger, der für ein Hot-Standby-Image spricht. Dies bedeutet, dass Ihr Hochverfügbarkeitsszenario nur in den folgenden Fällen einen Schutz bieten muss:
@@ -1123,7 +1135,8 @@ Wenn mehr IOPS erforderlich sind, wird ausdrücklich empfohlen, Windows-Speicher
 Die Funktionen zum Sichern und Wiederherstellen werden für die SAP BR-Tools für Oracle genauso unterstützt wie auf standardmäßigen Windows Server-Betriebssystemen und Hyper-V. Auch Oracle Recovery Manager (RMAN) wird für die Sicherung auf einen Datenträger und die Wiederherstellung von einem Datenträger unterstützt.
 
 #### Hohe Verfügbarkeit
-[comment]: <> (Link bezieht sich auf ASM.) Oracle Data Guard wird aus Gründen der hohen Verfügbarkeit und der Notfallwiederherstellung unterstützt. Einzelheiten finden Sie in [dieser][virtual-machines-windows-classic-configure-oracle-data-guard] Dokumentation.
+[comment]: <> (Link bezieht sich auf ASM.)
+ Oracle Data Guard wird aus Gründen der hohen Verfügbarkeit und der Notfallwiederherstellung unterstützt. Einzelheiten finden Sie in [dieser][virtual-machines-windows-classic-configure-oracle-data-guard] Dokumentation.
 
 #### Andere
 Bezüglich aller weiteren allgemeinen Themen wie Azure-Verfügbarkeitsgruppen oder SAP-Überwachung gelten die Angaben in den ersten drei Kapiteln dieses Dokuments auch für Bereitstellungen von VMs mit Oracle Database.

@@ -19,7 +19,9 @@
 #Tutorial: Azure Active Directory-Integration mit Salesforce Sandbox
 >[AZURE.TIP]Klicken Sie [hier](http://go.microsoft.com/fwlink/?LinkId=521878), um Feedback abzugeben.
   
-In diesem Tutorial wird die Integration von Azure und Salesforce Sandbox erläutert. Sandboxes bieten Ihnen die Möglichkeit, mehrere Kopien Ihres Unternehmens in separaten Umgebungen für eine Vielzahl von Zwecken, wie z. B. Entwicklung, Tests und Schulungen, ohne eine Beeinträchtigung der Daten und Anwendungen in Ihrer Vertriebsproduktions-Organisation zu erstellen. Weitere Informationen finden Sie unter [Sandbox-Übersicht](https://help.salesforce.com/HTViewHelpDoc?id=create_test_instance.htm&language=en_US)
+In diesem Tutorial wird die Integration von Azure und Salesforce Sandbox erläutert.  
+Sandboxes bieten Ihnen die Möglichkeit, mehrere Kopien Ihres Unternehmens in separaten Umgebungen für eine Vielzahl von Zwecken, wie z. B. Entwicklung, Tests und Schulungen, ohne eine Beeinträchtigung der Daten und Anwendungen in Ihrer Vertriebsproduktions-Organisation zu erstellen.  
+Weitere Informationen finden Sie unter [Sandbox-Übersicht](https://help.salesforce.com/HTViewHelpDoc?id=create_test_instance.htm&language=en_US)
   
 Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
@@ -136,7 +138,8 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
 ##Aktivieren Ihrer Domäne
   
-In diesem Abschnitt wird davon ausgegangen, dass Sie bereits eine Domäne erstellt haben. Weitere Informationen finden Sie unter [Define Your Domain Name](https://help.salesforce.com/HTViewHelpDoc?id=domain_name_define.htm&language=en_US) (in englischer Sprache).
+In diesem Abschnitt wird davon ausgegangen, dass Sie bereits eine Domäne erstellt haben.
+ Weitere Informationen finden Sie unter [Define Your Domain Name](https://help.salesforce.com/HTViewHelpDoc?id=domain_name_define.htm&language=en_US) (in englischer Sprache).
 
 ###Führen Sie zum Aktivieren Ihrer Domäne die folgenden Schritte aus:
 

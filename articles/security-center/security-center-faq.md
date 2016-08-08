@@ -124,9 +124,9 @@ Unterstützte Linux-VMs:
 
 - Ubuntu-Versionen 12.04, 14.04, 15.10, 16.04
 - Debian-Versionen 7, 8
-- CentOS-Versionen 6.*, 7.*
-- Red Hat Enterprise Linux-Versionen (RHEL) 6.*, 7.*
-- SUSE Linux Enterprise Server-Versionen (SLES) 11.*, 12.*
+- CentOS-Versionen 6.\*, 7.*
+- Red Hat Enterprise Linux-Versionen (RHEL) 6.\*, 7.*
+- SUSE Linux Enterprise Server-Versionen (SLES) 11.\*, 12.*
 
 VMs, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt. Es werden nur Clouddienst-Webrollen und -Workerrollen überwacht, die in Produktionsslots ausgeführt werden. Weitere Informationen zum Clouddienst finden Sie unter [Übersicht über Cloud Services](../cloud-services/cloud-services-choose-me.md).
 

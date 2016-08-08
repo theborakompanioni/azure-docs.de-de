@@ -200,7 +200,14 @@ Für die oben aufgeführten Typen sind folgende **Vorgänge** zulässig:
 | timeinterval *Operator* timeinterval | +, - | timeInterval |
 | timeinterval *Operator* timestamp | + | timestamp |
 | timestamp *Operator* timeinterval | + | timestamp |
-| timestamp *Operator* timestamp | - | timeinterval | | *Operator*double | -, ! | double | | *Operator*timeinterval | - | timeinterval | | double *Operator* double | <, <=, ==, >=, >, != | double | | string *Operator* string | <, <=, ==, >=, >, != | double | | timestamp *Operator* timestamp | <, <=, ==, >=, >, != | double | | timeinterval *Operator* timeinterval | <, <=, ==, >=, >, != | double | | double *Operator* double | &&, || | double |
+| timestamp *Operator* timestamp | - | timeinterval |
+| *Operator*double | -, ! | double |
+| *Operator*timeinterval | - | timeinterval |
+| double *Operator* double | <, <=, ==, >=, >, != | double |
+| string *Operator* string | <, <=, ==, >=, >, != | double |
+| timestamp *Operator* timestamp | <, <=, ==, >=, >, != | double |
+| timeinterval *Operator* timeinterval | <, <=, ==, >=, >, != | double |
+| double *Operator* double | &&, || | double |
 
 Beim Testen von „double“ mit einem ternären Operator (`double ? statement1 : statement2`) sind Werte ungleich Null **true**, und Null ist **false**.
 
