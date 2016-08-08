@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/18/2016"
+	ms.date="07/25/2016"
 	ms.author="jgao"/>
 
 #Ausführen von Hadoop MapReduce-Beispielen in Windows-basiertem HDInsight
@@ -51,7 +51,7 @@ Mittlerweile entscheiden sich viele Benutzer lieber für Hive und Pig als für M
 
 ## <a name="hdinsight-sample-wordcount"></a>Wortzählung – Java 
 
-Um ein MapReduce-Projekt zu übermitteln, erstellen Sie zunächst eine MapReduce-Auftragsdefinition. In der Auftragsdefinition geben Sie die JAR-Datei des MapReduce-Programms und den Speicherort der JAR-Datei, d. h. „**wasb:///example/jars/hadoop-mapreduce-examples.jar**“, den Klassennamen und die Argumente an. Das MapReduce-Programm für die Wortzählung akzeptiert zwei Argumente: die Quelldatei, die zum Zählen von Wörtern verwendet wird, und den Speicherort der Ausgabe.
+Um ein MapReduce-Projekt zu übermitteln, erstellen Sie zunächst eine MapReduce-Auftragsdefinition. In der Auftragsdefinition geben Sie die JAR-Datei des MapReduce-Programms und den Speicherort der JAR-Datei, d. h. „wasbs:///example/jars/hadoop-mapreduce-examples.jar**“, den Klassennamen und die Argumente an. Das MapReduce-Programm für die Wortzählung akzeptiert zwei Argumente: die Quelldatei, die zum Zählen von Wörtern verwendet wird, und den Speicherort der Ausgabe.
 
 Den Quellcode finden Sie in [Anhang A](#apendix-a---the-word-count-MapReduce-program-in-java).
 
@@ -70,9 +70,9 @@ Anweisungen zum Entwickeln eines Java MapReduce-Programms finden Sie unter [Entw
 		
 		# Define the MapReduce job
 		$mrJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
-									-JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" `
+									-JarFile "wasbs:///example/jars/hadoop-mapreduce-examples.jar" `
 									-ClassName "wordcount" `
-									-Arguments "wasb:///example/data/gutenberg/davinci.txt", "wasb:///example/data/WordCountOutput1"
+									-Arguments "wasbs:///example/data/gutenberg/davinci.txt", "wasbs:///example/data/WordCountOutput1"
 		
 		# Submit the job and wait for job completion
 		$cred = Get-Credential -Message "Enter the HDInsight cluster HTTP user credential:" 
@@ -160,7 +160,7 @@ Das Skript in diesem Beispiel übermittelt einen Hadoop JAR-Auftrag und wird mit
 - Befolgen Sie das Verfahren unter [Wortzählung – Java](#word-count-java), und ersetzen Sie die Auftragsdefinition durch Folgendes:
 
 		$mrJobJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
-									-JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" `
+									-JarFile "wasbs:///example/jars/hadoop-mapreduce-examples.jar" `
 									-ClassName "pi" `
 									-Arguments "16", "10000000"
 
@@ -1000,4 +1000,4 @@ Sie finden den Code für das TeraSort MapReduce-Programm in diesem Abschnitt zu 
 [console-writeline]: http://msdn.microsoft.com/library/system.console.writeline
 [stdin-stdout-stderr]: https://msdn.microsoft.com/library/3x292kth.aspx
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

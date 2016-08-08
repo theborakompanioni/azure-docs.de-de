@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/20/2016"
+   ms.date="07/21/2016"
    ms.author="terrylan"/>
 
 # Aktivieren des VM-Agents in Azure Security Center
 
-Der VM-Agent muss auf virtuellen Maschinen (VMs) installiert werden, um das Überprüfen von Patches und Grundregeln sowie Antischadsoftware bereitzustellen. Im Azure Security Center können Sie prüfen, welche VMs den VM-Agent benötigen. Es wird eine Empfehlung angezeigt, den VM-Agent auf diesen VMs zu aktivieren.
+Der VM-Agent muss auf virtuellen Computern installiert sein, um [die Datensammlung zu aktivieren](security-center-enable-data-collection.md). Im Azure Security Center können Sie prüfen, welche VMs den VM-Agent benötigen. Es wird eine Empfehlung angezeigt, den VM-Agent auf diesen VMs zu aktivieren.
 
-Der VM-Agent wird standardmäßig für virtuelle Maschinen installiert, die vom Azure Marketplace bereitgestellt werden. Der Artikel [VM-Agent und Erweiterungen – Teil 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/) enthält Informationen zum Installieren des VM-Agents.
+Der VM-Agent wird standardmäßig für virtuelle Maschinen installiert, die vom Azure Marketplace bereitgestellt werden. Der Artikel [VM-Agent und Erweiterungen – Teil 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/) enthält Informationen zum Installieren des VM-Agents.
 
 
 > [AZURE.NOTE] Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
@@ -36,7 +36,7 @@ Der VM-Agent wird standardmäßig für virtuelle Maschinen installiert, die vom 
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
 - [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
-- [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
+- [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz Ihrer Azure-Ressourcen helfen.
 - [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 - [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
 - [Überwachen von Partnerlösungen mit Azure Security Center:](security-center-partner-solutions.md) Erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
@@ -47,4 +47,4 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 [1]: ./media/security-center-enable-vm-agent/enable-vm-agent.png
 [2]: ./media/security-center-enable-vm-agent/vm-agent-is-missing.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

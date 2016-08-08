@@ -137,7 +137,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 	                    "value": {
 	                        "type": "DateTime",
 	                        "date": "SliceStart",
-	                        "format": "%M"
+	                        "format": "MM"
 	                    }
 	                },
 	                {
@@ -145,7 +145,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 	                    "value": {
 	                        "type": "DateTime",
 	                        "date": "SliceStart",
-	                        "format": "%d"
+	                        "format": "dd"
 	                    }
 	                },
 	                {
@@ -153,7 +153,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 	                    "value": {
 	                        "type": "DateTime",
 	                        "date": "SliceStart",
-	                        "format": "%H"
+	                        "format": "HH"
 	                    }
 	                }
 	            ]
@@ -368,4 +368,4 @@ Verwenden Sie die Registerkarte **Diagnose** im **Datenverwaltungsgateway-Konfig
 ## Leistung und Optimierung  
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

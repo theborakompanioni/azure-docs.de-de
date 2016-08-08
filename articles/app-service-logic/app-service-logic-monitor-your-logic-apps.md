@@ -1,62 +1,141 @@
 <properties 
 	pageTitle="Überwachen Ihrer Logik-Apps in Azure App Service | Microsoft Azure" 
 	description="Erfahren Sie, wie Sie die Ergebnisse Ihrer Logik-Apps überprüfen können." 
-	authors="stepsic-microsoft-com" 
+	authors="jeffhollan" 
 	manager="erikre" 
 	editor="" 
 	services="app-service\logic" 
 	documentationCenter=""/>
 
 <tags
-	ms.service="app-service-logic"
+	ms.service="logic-apps"
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
-	ms.author="stepsic"/>
+	ms.date="07/22/2016"
+	ms.author="jehollan"/>
 
 # Überwachen von Logik-Apps
 
-Nach dem [Erstellen einer Logik-App](app-service-logic-create-a-logic-app.md) können Sie den vollständigen Verlauf ihrer Ausführung im Azure-Portal einsehen. Wählen Sie zum Anzeigen des Verlaufs **Durchsuchen** und dann **Logik-Apps**. Eine Liste der Logik-Apps in Ihrem Abonnement wird angezeigt. Jede Logik-App lässt sich auswählen, **aktivieren** und **deaktivieren**. **Aktivierte** Logik-Apps bedeutet, dass Trigger Ihre Logik-App in Reaktion auf auslösende Ereignisse ausführen. **Deaktivierte** Logik-Apps werden nicht als Reaktion auf Ereignisse ausgeführt.
+Nach dem [Erstellen einer Logik-App](app-service-logic-create-a-logic-app.md) können Sie den vollständigen Verlauf ihrer Ausführung im Azure-Portal einsehen. Sie können auch Dienste wie Azure-Diagnose und Azure-Warnungen einrichten, um Ereignisse in Echtzeit zu überwachen und in bestimmten Situationen benachrichtigt zu werden (beispielsweise, wenn innerhalb einer Stunde mehr als fünf Ausführungen nicht erfolgreich waren).
+
+## Überwachen im Azure-Portal
+
+Wählen Sie zum Anzeigen des Verlaufs **Durchsuchen** und dann **Logic Apps** aus. Eine Liste mit allen Logik-Apps Ihres Abonnements wird angezeigt. Wählen Sie die zu überwachende Logik-App aus. Daraufhin erscheint eine Liste mit allen Aktionen und Triggern, die für diese Logik-App aufgetreten sind.
 
 ![Übersicht](./media/app-service-logic-monitor-your-logic-apps/overview.png)
 
-Wenn das Blatt Ihrer Logik-App angezeigt wird, gibt es zwei nützliche Abschnitte:
+Das Blatt bietet einige hilfreiche Abschnitte:
 
-- **Zusammenfassung** gibt Aufschluss über den aktuellen Status und dient als Einstiegspunkt für die Bearbeitung Ihrer Logik-App.
-- **Alle Ausführungen** zeigt eine Liste der Ausführungen dieser Logik-App.
+- In der **Zusammenfassung** werden alle Ausführungen und der **Triggerverlauf** aufgeführt.
+	- Unter **All runs** (Alle Ausführungen) werden die neuesten Logik-App-Ausführungen aufgelistet. Sie können auf eine beliebige Zeile klicken, um Details zur jeweiligen Ausführung anzuzeigen. Wenn Sie auf die Kachel klicken, werden weitere Ausführungen aufgelistet.
+	- Unter **Triggerverlauf** werden sämtliche Triggeraktivitäten für die Logik-App aufgelistet. Bei einer Triggeraktivität kann es sich um eine übersprungene Überprüfung auf neue Daten handeln (mit der etwa geprüft werden sollte, ob dem FTP-Server eine neue Datei hinzugefügt wurde). Bei erfolgreichen Aktivitäten wurden Daten zum Auslösen einer Logik-App zurückgegeben, und bei einem Fehler liegt ein Konfigurationsfehler vor.
+- Mithilfe der **Diagnose** können Sie Laufzeitdetails und -ereignisse anzeigen und [Azure-Warnungen](#adding-azure-alerts) abonnieren.
 
-## Anzeigen der Ausführungen Ihrer App
+### Anzeigen der Ausführungsdetails
 
-![Alle Ausführungen](./media/app-service-logic-monitor-your-logic-apps/allruns.png)
+Diese Ausführungsliste gibt Aufschluss über **Status**, **Startzeit** und **Dauer** einer bestimmten Ausführung. Wählen Sie eine beliebige Zeile aus, um Details zur jeweiligen Ausführung anzuzeigen.
 
-Diese Liste der Ausführungen zeigt die **Startzeit**, den **Ausführungsbezeichner** (dient zum Aufrufen der REST-API) und die **Dauer** der jeweiligen Ausführung. Wählen Sie eine beliebige Zeile aus, um Details zur jeweiligen Ausführung anzuzeigen.
+Die Überwachungsansicht enthält die einzelnen Ausführungsschritte, die Eingaben und Ausgaben sowie ggf. ausgelöste Fehlermeldungen.
 
-Das Blatt "Details" zeigt ein Diagramm mit der Ausführungszeit und Sequenz aller Aktionen in der Ausführung. Im Folgenden finden Sie die vollständige Liste aller Aktionen, die ausgeführt wurden:
+![Ausführung und Aktionen](./media/app-service-logic-monitor-your-logic-apps/monitor-view.png)
 
-![Ausführung und Aktionen](./media/app-service-logic-monitor-your-logic-apps/runandaction.png)
+Sollten Sie weitere Details wie etwa die **Korrelations-ID** der Ausführung benötigen (kann für die REST-API verwendet werden), klicken Sie auf die Schaltfläche **Ausführungsdetails**. Dort finden Sie sämtliche Schritte, Statusinformationen und Ein-/Ausgaben für die Ausführung.
 
-Schließlich können Sie in den Abschnitten **Eingaben** und **Ausgaben** zu einer bestimmten Aktion alle Daten ablesen, die an die Aktion übergeben und von dieser empfangen wurden. Wählen Sie die Links aus, um den vollständigen Inhalt anzuzeigen (Sie können auch die Links zum Herunterladen des Inhalts kopieren).
+## Azure-Diagnose und -Warnungen
 
-Eine andere wichtige Information ist die **Nachverfolgungs-ID**. Dieser Bezeichner wird in den Headern aller Aufrufe der Aktion übergeben. Wenn Sie die Protokollierung in einem eigenen Dienst aktiviert haben, empfehlen wir die Protokollierung der Nachverfolgungs-ID und einen anschließenden Querverweis auf Ihre eigenen Protokolle mittels dieses Bezeichners.
+Zusätzlich zu den oben angegebenen Details des Azure-Portals und der REST-API können Sie Ihre Logik-App für die Verwendung der Azure-Diagnose konfigurieren, um ausführlichere Details zu erhalten und Debuggingmaßnahmen zu ergreifen.
 
-## Anzeigen des Triggerverlaufs 
+1. Klicken Sie auf dem Logik-App-Blatt auf den Diagnosebereich.
+1. Klicken Sie, um die **Diagnoseeinstellungen** zu konfigurieren.
+1. Konfigurieren Sie einen Event Hub oder ein Speicherkonto für die Datenausgabe.
 
-Abfragetrigger überprüfen die API in bestimmten Abständen, starten aber nicht unbedingt eine Ausführung, was abhängig von der Antwort ist (`200` bedeutet z. B. Ausführung, während `202` keine Ausführung bedeutet). Der Triggerverlauf bietet Ihnen eine Möglichkeit, alle Aufrufe einzusehen, die erfolgen, aber nicht die Logik-App ausführen (die Antworten vom Typ `202`):
+	![Azure-Diagnoseeinstellungen](./media/app-service-logic-monitor-your-logic-apps/diagnostics.png)
 
-![Triggerverlauf](./media/app-service-logic-monitor-your-logic-apps/triggerhistory.png)
+### Hinzufügen von Azure-Warnungen
 
-Für jeden Trigger können Sie anzeigen, ob er **ausgelöst** bzw. nicht ausgelöst wurde, oder ob ein **Fehler** aufgetreten ist. Um zu prüfen, warum Ihr Trigger nicht ausgeführt werden konnte, wählen Sie den Link **Ausgaben**. Wenn er ausgelöst wurde, wählen Sie den Link **Ausführung**, um zu prüfen, was nach seinem Auslösen passiert ist.
+Nachdem Sie die Diagnose konfiguriert haben, können Sie Azure-Warnungen hinzufügen, die bei einer Überschreitung bestimmter Schwellenwerte ausgelöst werden. Wählen Sie auf dem Blatt **Diagnose** die Kachel **Warnungen** und anschließend **Warnung hinzufügen** aus. Daraufhin werden Sie durch die Konfiguration einer Warnung auf der Grundlage einer Reihe von Schwellenwerten und Metriken geführt.
 
-Beachten Sie, dass für *Pushtrigger* *nicht* angezeigt wird, wie oft hier eine Ausführung gestartet wurde. Stattdessen sehen Sie die *Rückrufregistrierungs*-Aufrufe, wenn die Logik-App sich registriert, um zurückgerufen zu werden. Falls Ihr Pushtrigger nicht funktioniert, liegt ggf. ein Problem mit der Registrierung vor (was Sie unter "Ausgaben" erkennen können). Andernfalls müssen Sie diese API speziell untersuchen.
+![Azure-Warnungsmetriken](./media/app-service-logic-monitor-your-logic-apps/alerts.png)
 
-## Aktivieren der Azure-Diagnose
+**Bedingung**, **Schwellenwert** und **Zeitraum** können nach Bedarf konfiguriert werden. Zum Schluss können Sie noch eine Ziel-E-Mail-Adresse für Benachrichtigungen oder einen Webhook konfigurieren. Der [Anforderungstrigger](../connectors/connectors-native-reqres.md) in einer Logik-App kann ebenfalls für die Ausführung im Falle einer Warnung verwendet werden (um beispielsweise Aktionen wie [In Slack posten](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app), [SMS senden](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app) oder [Nachricht einer Warteschlange hinzufügen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app) auszuführen).
 
-Sie können Diagnoseinformationen aktivieren, um Laufzeitdaten für Ihre Workflows abzurufen und zu speichern. Führen Sie auf dem Blatt „Logik-App“ einen Bildlauf nach unten zu den Diagrammen zur **Überwachung** aus, und wählen Sie **Click here to enable diagnostics** (Hier klicken, um die Diagnose zu aktivieren). Sie können dann ein Speicherkonto in der Region der Logik-App konfigurieren und in der Logik-App **Protokolle** oder **Metriken** abonnieren. Bei der Einstellung **Protokolle** wird ein Ereignis gesendet, wenn eine Ausführung, eine Aktion oder ein Ereignis gestartet oder abgeschlossen wird. **Metriken** stellen aggregierte Daten zur Anzahl der Ausführungen in einem bestimmten Zeitfenster bereit.
+### Azure-Diagnoseeinstellungen
 
-## Aktivieren der Versionsverwaltung
+Jedes dieser Ereignisse enthält Details zur Logik-App und zum Ereignis (beispielsweise den Status). Im Anschluss sehen Sie ein Beispiel für ein *ActionCompleted*-Ereignis:
 
-Es gibt eine zusätzliche Funktion, die auf der Benutzeroberfläche derzeit nicht verfügbar ist (in Planung), aber über die [REST-API](https://msdn.microsoft.com/library/azure/mt643788.aspx) zur Verfügung steht. Wenn Sie die Definition einer Logik-App aktualisieren, wird die vorherige Version der Definition gespeichert. Dies liegt daran, dass wenn eine Ausführung bereits läuft, diese Ausführung auf die Version der Logik-App verweist, die zum Zeitpunkt des Ausführungsbeginns vorhanden war. Definitionen laufender Ausführungen können nicht geändert werden. Die REST-API für den Versionsverlauf ermöglicht Ihnen den Zugriff auf diese Informationen.
+```javascript
+{
+			"time": "2016-07-09T17:09:54.4773148Z",
+			"workflowId": "/SUBSCRIPTIONS/80D4FE69-ABCD-EFGH-A938-9250F1C8AB03/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.LOGIC/WORKFLOWS/MYLOGICAPP",
+			"resourceId": "/SUBSCRIPTIONS/80D4FE69-ABCD-EFGH-A938-9250F1C8AB03/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.LOGIC/WORKFLOWS/MYLOGICAPP/RUNS/08587361146922712057/ACTIONS/HTTP",
+			"category": "WorkflowRuntime",
+			"level": "Information",
+			"operationName": "Microsoft.Logic/workflows/workflowActionCompleted",
+			"properties": {
+				"$schema": "2016-06-01",
+				"startTime": "2016-07-09T17:09:53.4336305Z",
+				"endTime": "2016-07-09T17:09:53.5430281Z",
+				"status": "Succeeded",
+				"code": "OK",
+				"resource": {
+					"subscriptionId": "80d4fe69-ABCD-EFGH-a938-9250f1c8ab03",
+					"resourceGroupName": "MyResourceGroup",
+					"workflowId": "cff00d5458f944d5a766f2f9ad142553",
+					"workflowName": "MyLogicApp",
+					"runId": "08587361146922712057",
+					"location": "eastus",
+					"actionName": "Http"
+				},
+				"correlation": {
+					"actionTrackingId": "e1931543-906d-4d1d-baed-dee72ddf1047",
+					"clientTrackingId": "my-custom-tracking-id"
+				},
+				"trackedProperties": {
+					"myProperty": "<value>"
+				}
+			}
+		}
+```
 
-<!---HONumber=AcomDC_0601_2016-->
+Zur Nachverfolgung und Überwachung sind insbesondere zwei Eigenschaften hilfreich: *clientTrackingId* und *trackedProperties*.
+
+#### Clientnachverfolgungs-ID
+
+Der Wert der Clientnachverfolgungs-ID korreliert Ereignisse innerhalb der gesamten Ausführung einer Logik-App. Dies schließt auch geschachtelte Workflows ein, die im Rahmen einer Logik-App aufgerufen werden. Falls keine ID angegeben ist, wird automatisch eine generiert. Die Clientnachverfolgungs-ID kann aber auch manuell über einen Trigger angegeben werden. Hierzu muss in der Triggeranforderung (Anforderungstrigger, HTTP-Trigger oder Webhook-Trigger) ein `x-ms-client-tracking-id`-Header mit dem ID-Wert übergeben werden.
+
+#### Nachverfolgte Eigenschaften
+
+Nachverfolgte Eigenschaften können Aktionen in der Workflowdefinition hinzugefügt werden, um Eingaben oder Ausgaben in Diagnosedaten nachzuverfolgen. Dies kann hilfreich sein, wenn Sie Daten wie etwa eine Auftrags-ID in Ihrer Telemetrie nachverfolgen möchten. Schließen Sie zum Hinzufügen einer nachverfolgte Eigenschaft in einer Aktion die `trackedProperties`-Eigenschaft ein. Nachverfolgte Eigenschaften können nur die Eingaben und Ausgaben einer einzelnen Aktion nachverfolgen. Mit den `correlation`-Eigenschaften der Ereignisse ist jedoch eine aktionsübergreifende Korrelation innerhalb einer Ausführung möglich.
+
+```javascript
+{
+	"myAction": {
+		"type": "http",
+		"inputs": {
+			"uri": "http://uri",
+			"headers": {
+				"Content-Type": "application/json"
+			},
+			"body": "@triggerBody()"
+		},
+		"trackedProperties":{
+			"myActionHTTPStatusCode": "@action()['outputs']['statusCode']",
+			"myActionHTTPValue": "@action()['outputs']['body']['foo']",
+			"transactionId": "@action()['inputs']['body']['bar']"
+		}
+	}
+}
+```
+
+### Erweitern Ihrer Lösungen
+
+Sie können diese Telemetrie aus dem Event Hub oder Speicher auch in anderen Diensten wie [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite), [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) und [Power BI](https://powerbi.com) zur Echtzeitüberwachung Ihrer Integrationsworkflows verwenden.
+
+## Nächste Schritte
+- [Allgemeine Beispiele und Szenarien für Logik-Apps](app-service-logic-examples-and-scenarios.md)
+- [Erstellen einer Bereitstellungsvorlage für Logik-Apps](app-service-logic-create-deploy-template.md)
+- [Unternehmensintegrationsfeatures](app-service-logic-enterprise-integration-overview.md)
+
+<!---HONumber=AcomDC_0727_2016-->

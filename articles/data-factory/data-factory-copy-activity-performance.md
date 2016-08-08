@@ -182,13 +182,13 @@ Im **Cloudkopierszenario**, in dem sich sowohl der Quell- als auch der Senkendat
 
 ![Gestaffeltes Kopieren – Cloudszenario](media/data-factory-copy-activity-performance/staged-copy-cloud-scenario.png)
 
-Im **Hybridkopierszenario** (lokale Quelle und Senke in der Cloud) wird die Bewegung der Daten aus dem Quelldatenspeicher in den Stagingdatenspeicher vom **Datenverwaltungsgateway** und die Bewegung der Daten aus dem Stagingdatenspeicher in den Senkendatenspeicher vom **Azure Data Factory-Dienst** durchgeführt.
+Im **Hybridkopierszenario** (lokale Quelle und Senke in der Cloud) wird die Bewegung der Daten aus dem Quelldatenspeicher in den Stagingdatenspeicher vom **Datenverwaltungsgateway** und die Bewegung der Daten aus dem Stagingdatenspeicher in den Senkendatenspeicher vom **Azure Data Factory-Dienst** durchgeführt. Das Kopieren von Daten aus einem Clouddatenspeicher in einen lokalen Datenspeicher mithilfe eines Stagingspeichers wird auch in umgekehrter Richtung unterstützt.
 
 ![Gestaffeltes Kopieren – Hybridszenario](media/data-factory-copy-activity-performance/staged-copy-hybrid-scenario.png)
 
 Wenn Sie die Datenverschiebung unter Verwendung des Stagingspeichers aktivieren, können Sie angeben, ob die Daten vor dem Bewegen aus dem Quelldatenspeicher in den Zwischen-/Stagingdatenspeicher komprimiert und vor dem Bewegen der Daten aus dem Zwischen-/Stagingdatenspeicher in den Senkendatenspeicher wieder dekomprimiert werden sollen.
 
-Das Kopieren von Daten aus einem Clouddatenspeicher in einen lokalen Datenspeicher oder zwischen zwei lokalen Datenspeichern mit Stagingspeicher wird derzeit nicht unterstützt, soll aber in Kürze möglich werden.
+Das Kopieren von Daten zwischen zwei lokalen Datenspeichern mithilfe eines Stagingspeichers wird derzeit nicht unterstützt, soll aber in Kürze möglich sein.
 
 ### Konfiguration
 Sie können für die Kopieraktivität die Einstellung **enableStaging** konfigurieren, um anzugeben, ob die Daten in einem Azure-Blobspeicher bereitgestellt werden sollen, bevor sie in einen Zieldatenspeicher geladen werden. Wenn Sie „enableStaging“ auf „true“ festlegen, müssen Sie zusätzliche Eigenschaften angeben. Diese werden in der folgenden Tabelle aufgeführt. Außerdem müssen Sie einen mit Azure Storage oder Azure Storage SAS verknüpften Dienst als Stagingdienst erstellen, falls noch keiner vorhanden ist.
@@ -392,4 +392,4 @@ Hier finden Sie einige Referenzen zur Leistungsüberwachung und -optimierung fü
 - Lokale SQL Server: [Überwachen und Optimieren der Leistung](https://msdn.microsoft.com/library/ms189081.aspx)
 - Lokaler Dateiserver: [Leistungsoptimierung für Dateiserver](https://msdn.microsoft.com/library/dn567661.aspx)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

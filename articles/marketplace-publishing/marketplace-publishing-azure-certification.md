@@ -3,7 +3,7 @@
    description="Hier erfahren Sie mehr über das Microsoft Azure Certified-Partnerprogramm und wie Sie das Image Ihres virtuellen Computers, die Lösungsvorlage, den Entwicklerdienst oder den Datendienst im Azure Marketplace verkaufen können."
    services="marketplace-publishing"
    documentationCenter="na"
-   authors="anishkannan "
+   authors="HannibalSII"
    manager=" "
    editor=""
    tags=""/>
@@ -14,14 +14,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/05/2015"
+   ms.date="07/21/2016"
    ms.author="anishk;hascipio"/>
 
 # Anfordern einer Vorabgenehmigung für das Microsoft Azure Certified-Programm
 
 In diesem Artikel erfahren Sie, wie Sie die Microsoft Azure-Zertifizierung erhalten. Eine ausführliche Übersicht über das Microsoft Azure Certified-Programm und dessen Vorteile finden Sie unter [http://azure.com/certified](http://azure.com/certified).
 
-> [AZURE.NOTE]Die Azure-Zertifizierung ist nur relevant, wenn Sie beabsichtigen, einen virtuellen Computer, eine Lösungsvorlage und Entwicklerdienste für den Azure Marketplace zu erstellen. Wenn Sie keines dieser Artefakte erstellen, können Sie diesen Schritt überspringen und mit [Microsoft-Verkäuferkonto: Erstellung und Registrierung](marketplace-publishing-accounts-creation-registration.md) fortfahren.
+> [AZURE.NOTE] Die Azure-Zertifizierung ist nur relevant, wenn Sie beabsichtigen, einen virtuellen Computer, eine Lösungsvorlage und Entwicklerdienste für den Azure Marketplace zu erstellen. Wenn Sie keines dieser Artefakte erstellen, können Sie diesen Schritt überspringen und mit [Microsoft-Verkäuferkonto: Erstellung und Registrierung](marketplace-publishing-accounts-creation-registration.md) fortfahren.
 
 ## Erste Schritte
 1. Der erste Schritt auf dem Weg zur Zertifizierung Ihrer Anwendung oder Ihres Diensts und der Integration in den Azure Marketplace besteht im Ausfüllen des Anwendungsformulars auf der Webseite [Microsoft Azure Certified](https://azure.microsoft.com/marketplace/partner-program/).
@@ -32,7 +32,7 @@ In diesem Artikel erfahren Sie, wie Sie die Microsoft Azure-Zertifizierung erhal
 
 **Verkäuferländer**
 
-> [AZURE.WARNING]Um Ihre Dienste im Microsoft Azure Marketplace verkaufen zu können, muss die registrierte Organisation in einem der genehmigten Verkäuferländer ansässig sein. Diese Einschränkung hat auszahlungstechnische und steuerliche Gründe. Die Länderliste wird in Kürze erweitert, prüfen Sie sie also regelmäßig. Die vollständige Liste finden Sie in Abschnitt 1b der [Teilnahmerichtlinien für den Azure Marketplace](http://go.microsoft.com/fwlink/?LinkID=526833).
+> [AZURE.WARNING] Um Ihre Dienste im Microsoft Azure Marketplace verkaufen zu können, muss die registrierte Organisation in einem der genehmigten Verkäuferländer ansässig sein. Diese Einschränkung hat auszahlungstechnische und steuerliche Gründe. Die Länderliste wird in Kürze erweitert, prüfen Sie sie also regelmäßig. Die vollständige Liste finden Sie in Abschnitt 1b der [Teilnahmerichtlinien für den Azure Marketplace](http://go.microsoft.com/fwlink/?LinkID=526833).
 
 ## Nächster Schritt
 Nach Erhalt der Vorabgenehmigung für das Microsoft Azure Certified-Programm können Sie mit dem Schritt [Microsoft-Verkäuferkonto: Erstellung und Registrierung](marketplace-publishing-accounts-creation-registration.md) fortfahren.
@@ -40,4 +40,4 @@ Nach Erhalt der Vorabgenehmigung für das Microsoft Azure Certified-Programm k�
 ## Weitere Informationen
 - [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md)
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0727_2016-->

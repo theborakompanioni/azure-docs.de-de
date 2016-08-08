@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory B2C-Vorschau: Benutzerdefinierte Attribute | Microsoft Azure"
+	pageTitle="Azure Active Directory B2C: Benutzerdefinierte Attribute | Microsoft Azure"
 	description="Informationen zur Verwendung von benutzerdefinierten Attributen in Azure Active Directory B2C zum Erfassen von Informationen über Ihre Kunden"
 	services="active-directory-b2c"
 	documentationCenter=""
@@ -13,12 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="07/24/2016"
 	ms.author="swkrish"/>
 
-#  Azure Active Directory B2C-Vorschau: Verwenden benutzerdefinierter Attribute zum Erfassen von Informationen über Ihre Kunden
-
-[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
+#  Azure Active Directory B2C: Verwenden benutzerdefinierter Attribute zum Erfassen von Informationen über Ihre Kunden
 
 Das Azure Active Directory (Azure AD) B2C-Verzeichnis bietet einen integrierten Satz von Informationen (Attributen): Vorname, Nachname, Ort, Postleitzahl und weitere Attribute. Allerdings hat jede kundenorientierte Anwendung eigene Anforderungen an die Attribute, die von Kunden erfasst werden sollen. Mit Azure AD B2C haben Sie die Möglichkeit, den für die einzelnen Kundenkonten gespeicherten Satz von Attributen zu erweitern. Im [Azure-Portal](https://portal.azure.com/) können Sie benutzerdefinierte Attribute erstellen und wie unten dargestellt in den Registrierungsrichtlinien verwenden. Außerdem können Sie diese Attribute mit der [Azure AD Graph-API](active-directory-b2c-devquickstarts-graph-dotnet.md) lesen und schreiben.
 
@@ -51,6 +49,6 @@ Mit dem Feature "Jetzt ausführen" für die Richtlinie können Sie die Benutzere
 ## Hinweise
 
 - Zusammen mit Registrierungsrichtlinien können benutzerdefinierte Attribute auch in Registrierungs- oder Anmelderichtlinien sowie in Richtlinien für die Profilbearbeitung verwendet werden.
-- Die Einschränkung von benutzerdefinierten Attributen ist bekannt. Sie wird nur erstellt, wenn sie zum ersten Mal in einer Richtlinie verwendet wird und nicht, wenn Sie sie zur Liste der **Benutzerattribute** hinzufügen. Wir möchten dieses Problem schnellstmöglich beheben.
+- Die Einschränkung von benutzerdefinierten Attributen ist bekannt. Sie wird nur erstellt, wenn sie zum ersten Mal in einer Richtlinie verwendet wird und nicht, wenn Sie sie zur Liste der **Benutzerattribute** hinzufügen.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

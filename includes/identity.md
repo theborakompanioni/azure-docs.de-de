@@ -2,7 +2,9 @@ Die Identitätsverwaltung ist in der öffentlichen Cloud genauso wichtig wie in 
 
 - Sie können Windows Server Active Directory (meist nur "AD" genannt) mithilfe von virtuellen Computern in der Cloud ausführen, die mit Azure Virtual Machines erstellt wurden. Dieser Ansatz ist sinnvoll, wenn Sie ein lokales Datencenter mit Azure in die Cloud erweitern.
 
-- Mit Azure Active Directory können Sie Ihren Benutzern die Möglichkeit einer einmaligen Anmeldung für SaaS-Anwendungen (Software as a Service) eröffnen. So setzt beispielsweise Office 365 von Microsoft diese Technologie ein, und auch Anwendungen, die auf Azure oder anderen Cloud-Plattformen ausgeführt werden, können sie nutzen.
+
+- Mit Azure Active Directory können Sie Ihren Benutzern die Möglichkeit einer einmaligen Anmeldung für [SaaS-Anwendungen (Software as a Service)](https://azure.microsoft.com/overview/what-is-saas/) eröffnen. So setzt beispielsweise Office 365 von Microsoft diese Technologie ein, und auch Anwendungen, die auf Azure oder anderen Cloud-Plattformen ausgeführt werden, können sie nutzen.
+
 
 - Mithilfe von Azure Active Directory Access Control können in der Cloud oder lokal ausgeführte Anwendungen ihren Benutzern die Anmeldung mit Identitäten aus Facebook, Google, Microsoft und von anderen Identitätsanbietern ermöglichen.
 
@@ -25,7 +27,7 @@ Die Ausführung von Windows Server AD auf virtuellen Azure-Computern gleicht ein
 ![Azure Active Directory auf virtuellem Computer](./media/identity/identity_01_ADinVM.png)
 
 
-<a name="Fig1"></a>Abbildung 1: Windows Server Active Directory kann auf virtuellen Azure-Computern ausgeführt werden, die über Azure Virtual Network mit dem lokalen Rechenzentrum eines Unternehmens verbunden sind.
+<a name="Fig1"></a>Abbildung 1: Windows Server Active Directory kann auf virtuellen Azure-Computern ausgeführt werden, die über Azure Virtual Network mit dem lokalen Rechenzentrum eines Unternehmens verbunden sind.
 
 Im hier gezeigten Beispiel wird Windows Server AD auf VMs ausgeführt, die mittels Azure Virtual Machines, der IaaS-Technologie der Plattform, erstellt wurden. Diese virtuellen Computer und einige wenige andere werden zu einem virtuellen Netzwerk gruppiert, das über ein virtuelles Azure-Netzwerk mit dem lokalen Datencenter eines Unternehmens verbunden ist. Das virtuelle Netzwerk legt eine Gruppe von virtuellen Cloud-Computern fest, die über eine Verbindung mit einem virtuellen privaten Netzwerk (VPN) mit dem lokalen Netzwerk interagieren. Auf diese Weise gleichen die virtuellen Azure-Computer jedem anderen Subnetz des lokalen Datencenters. Wie die Abbildung zeigt, führen zwei der VMs Windows Server AD-Domänencontroller aus. Die anderen virtuellen Computer im virtuellen Netzwerk können Anwendungen wie beispielsweise SharePoint ausführen oder eine andere Verwendung haben und etwa zu Entwicklungs- oder Testzwecken genutzt werden. Das lokale Rechenzentrum führt ebenfalls zwei Windows Server AD-Domänencontroller aus.
 
@@ -64,7 +66,7 @@ Für die Verwendung des Verzeichnisdienstes in der Cloud gibt es zwei Hauptoptio
 
 ![Azure Active Directory auf virtuellem Computer](./media/identity/identity_02_AD.png)
 
-<a name="fig2"></a>Abbildung 2: Azure Active Directory ermöglicht Benutzern einer Organisation die einmalige Anmeldung (SSO) für SaaS-Anwendungen, Office 365 eingeschlossen.
+<a name="fig2"></a>Abbildung 2: Azure Active Directory ermöglicht Benutzern einer Organisation die einmalige Anmeldung (SSO) für SaaS-Anwendungen, Office 365 eingeschlossen.
 
 Wie die Abbildung zeigt, ist Azure AD ein mehrinstanzenfähiger Dienst. Dies bedeutet, dass es zahlreiche unterschiedliche Organisationen gleichzeitig unterstützen und dabei Verzeichnisinformationen über die Benutzer jeder einzelnen speichern kann. In diesem Beispiel versucht ein Benutzer von Organisation A, auf eine SaaS-Anwendung zuzugreifen. Dabei kann es sich um eine Komponente von Office 365 handeln, zum Beispiel SharePoint Online, oder um etwas anderes – auch Anwendungen, die nicht von Microsoft stammen, können diese Technologie nutzen. Da Azure AD das SAML 2.0-Protokoll unterstützt, ist die einzige Voraussetzung für eine Anwendung, auf Grundlage dieses Industriestandards interagieren zu können. (Tatsächlich können Anwendungen, die mit Azure AD arbeiten, in jedem beliebigen Datencenter ausgeführt werden, nicht nur in Azure-Datencentern.)
 
@@ -76,11 +78,11 @@ Das Token wird dann an die SaaS-Anwendung gesendet (Schritt 4), die die Signatur
 
 Wenn die Anwendung mehr Informationen über den Benutzer benötigt, als im Token enthalten sind, kann sie diese mithilfe der Azure AD Graph-API direkt von Azure AD anfordern (Schritt 6). In der anfänglichen Version von Azure AD ist das Verzeichnisschema recht einfach: Es enthält lediglich Benutzer und Gruppen sowie Beziehungen zwischen diesen. Anwendungen können mit diesen Informationen Erkenntnisse über die Verbindungen zwischen den Benutzern gewinnen. So könnte es für eine Anwendung erforderlich sein zu wissen, wer Vorgesetzter eines Benutzers ist, um über den Zugriff auf bestimmte Daten zu entscheiden. Diese Informationen kann sie über eine Azure AD-Abfrage durch die Graph-API erhalten.
 
-Die Graph-API nutzt ein gewöhnliches RESTful-Protokoll, wodurch sie von den meisten Clients einschließlich Mobilgeräten problemlos genutzt werden kann. Die API unterstützt auch die von OData definierten Erweiterungen, die Aspekte wie etwa eine Abfragesprache hinzufügen, mit der Clients auf nützlichere Weise auf Daten zugreifen können. (Weitere Informationen über OData finden Sie unter [Introducing OData](http://download.microsoft.com/download/E/5/A/E5A59052-EE48-4D64-897B-5F7C608165B8/IntroducingOData.pdf) (Einführung in OData, in englischer Sprache).) Da die Graph-API Informationen über Beziehungen zwischen Benutzern liefern kann, können Anwendungen mit ihrer Hilfe das in das Azure AD-Schema eingebettete soziale Diagramm einer bestimmten Organisation verstehen (weshalb sie auch Graph-API – "Diagramm-API" genannt wird). Für ihre eigene Authentifizierung gegenüber Azure AD für Graph-API-Anforderungen verwendet eine Anwendung OAuth 2.0.
+Die Graph-API nutzt ein gewöhnliches RESTful-Protokoll, wodurch sie von den meisten Clients einschließlich Mobilgeräten problemlos genutzt werden kann. Die API unterstützt auch die von OData definierten Erweiterungen, die Aspekte wie etwa eine Abfragesprache hinzufügen, mit der Clients auf nützlichere Weise auf Daten zugreifen können. (Weitere Informationen über OData finden Sie unter [Introducing OData](http://download.microsoft.com/download/E/5/A/E5A59052-EE48-4D64-897B-5F7C608165B8/IntroducingOData.pdf) (Einführung in OData, in englischer Sprache).) Da die Graph-API Informationen über Beziehungen zwischen Benutzern liefern kann, können Anwendungen mit ihrer Hilfe das in das Azure AD-Schema eingebettete soziale Diagramm einer bestimmten Organisation verstehen (weshalb sie auch Graph-API – "Diagramm-API" genannt wird). Für ihre eigene Authentifizierung gegenüber Azure AD für Graph-API-Anforderungen verwendet eine Anwendung OAuth 2.0.
 
 Falls eine Organisation Windows Server Active Directory nicht verwendet – sie nicht über lokale Server oder Domänen verfügt – und nur mit Cloud-Anwendungen arbeitet, die Azure AD nutzen, können die Benutzer des Unternehmens mithilfe dieses Cloud-Directory mit einer Anmeldung auf alle Anwendungen zugreifen. Aber auch wenn dieses Szenario täglich häufiger wird, arbeiten die meisten Organisationen nach wie vor mit lokalen, mit Windows Server Active Directory erstellten Domänen. Azure AD kann auch hier eine nützliche Rolle spielen, wie [Abbildung 3](#fig3) zeigt.
 
-![Azure Active Directory auf virtuellem Computer](./media/identity/identity_03_AD.png) <a id="fig3"></a>Abbildung 3: Eine Organisation kann einen Verbund zwischen Windows Server Active Directory und Azure Active Directory einrichten, damit ihre Benutzer per einmaliger Anmeldung auf SaaS-Anwendungen zugreifen können.
+![Azure Active Directory auf virtuellem Computer](./media/identity/identity_03_AD.png) <a id="fig3"></a>Abbildung 3: Eine Organisation kann einen Verbund zwischen Windows Server Active Directory und Azure Active Directory einrichten, damit ihre Benutzer per einmaliger Anmeldung auf SaaS-Anwendungen zugreifen können.
 
 In diesem Szenario möchte ein Benutzer von Organisation B auf eine SaaS-Anwendung zugreifen. Dies ist erst möglich, wenn die Directory-Administratoren der Organisation eine Verbundbeziehung mit Azure AD unter Verwendung von AD FS hergestellt haben, wie die Abbildung zeigt. Daneben müssen die Administratoren auch die Datensynchronisierung zwischen lokalem Windows Server AD und Azure AD konfigurieren. Dadurch werden Benutzer- und Gruppeninformationen automatisch vom lokalen Verzeichnis nach Azure AD kopiert. Beachten Sie, was dadurch möglich wird: Tatsächlich erweitert die Organisation ihr lokales Verzeichnis in die Cloud. Durch eine derartige Kombination von Windows Server AD und Azure AD erhält die Organisation einen Verzeichnisdienst, der als eine Entität verwaltet werden kann und dennoch sowohl lokal als auch in der Cloud präsent ist.
 
@@ -98,7 +100,7 @@ Aber auch wenn jeder Identitätsanbieter ein Token irgendeiner Art ausgibt, gibt
 
 Weshalb aber so vorgehen? Weshalb nicht statt dessen eine Vermittlungsinstanz erstellen, die ein einziges Tokenformat mit einer vereinheitlichten Darstellung von Identitätsinformationen erzeugen kann? Dieser Ansatz würde für Anwendungsentwickler die Dinge sehr vereinfachen, da sie auf diese Weise nur eine Art Token berücksichtigen müssten. Dies ist genau die Rolle der Zugriffssteuerung mit Azure Active Directory Access Control: als Vermittler in der Cloud zu agieren, um unterschiedlichste Token nutzen zu können. [Abbildung 4](#fig4) zeigt, wie dies funktioniert.
 
-![Azure Active Directory auf virtuellem Computer](./media/identity/identity_04_IdentityProviders.png) <a id="fig4"></a>Abbildung 4: Azure Active Directory Access Control erleichtert Anwendungen die Annahme von Token, die von unterschiedlichen Identitätsanbietern ausgegeben wurden.
+![Azure Active Directory auf virtuellem Computer](./media/identity/identity_04_IdentityProviders.png) <a id="fig4"></a>Abbildung 4: Azure Active Directory Access Control erleichtert Anwendungen die Annahme von Token, die von unterschiedlichen Identitätsanbietern ausgegeben wurden.
 
 Der Vorgang beginnt, wenn ein Benutzer versucht, von einem Browser aus auf die Anwendung zuzugreifen. Die Anwendung leitet ihn an einen IdP seiner Wahl (dem auch die Anwendung vertraut) weiter. Er authentifiziert sich bei diesem IdP zum Beispiel durch Eingabe von Benutzername und Kennwort (Schritt 1), der IdP gibt dann ein Token mit den Benutzerinformationen aus (Schritt 2).
 
@@ -118,4 +120,4 @@ Das Arbeiten mit Identitäten ist für beinahe jede Anwendung wichtig. Das Ziel 
 
 David Chappell ist Direktor von Chappell & Associates [www.davidchappell.com](http://www.davidchappell.com) in San Francisco, Kalifornien.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

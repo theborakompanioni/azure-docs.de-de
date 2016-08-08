@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="mobile"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/28/2016"
+	ms.date="07/25/2016"
 	ms.author="mahender"/>
 
 # Aktualisieren des vorhandenen .NET-Azure Mobile Service auf App Service
 
 Mobile App Service-Apps sind eine neue Methode zum Erstellen mobiler Anwendungen mit Microsoft Azure. Weitere Informationen finden Sie unter [Was sind Mobile Apps?].
 
-In diesem Thema wird beschrieben, wie Sie eine vorhandene .NET-Back-End-Anwendung von Azure Mobile Services auf eine neue mobile App Service-App aktualisieren. Während Sie dieses Upgrade ausführen, können Sie Ihre vorhandene Mobile Services-Anwendung weiter betreiben.
+In diesem Thema wird beschrieben, wie Sie eine vorhandene .NET-Back-End-Anwendung von Azure Mobile Services auf eine neue mobile App Service-App aktualisieren. Während Sie dieses Upgrade ausführen, können Sie Ihre vorhandene Mobile Services-Anwendung weiter betreiben. Wenn Sie eine Node.js-Back-End-Anwendung aktualisieren müssen, lesen Sie die Informationen unter [Aktualisieren eines vorhandenen Node.js-Azure Mobile Services auf App Service](./app-service-mobile-node-backend-upgrading-from-mobile-services.md).
 
 Wenn ein Mobil-Back-End auf Azure App Service aktualisiert wird, hat dieses Zugriff auf alle App Service-Features, und die Abrechnung erfolgt gemäß [App Service-Preisen], nicht gemäß den Mobile Services-Preisen.
 
@@ -277,4 +277,4 @@ Wenn die neue Clientversion bereit ist, testen Sie sie mit dem aktualisierten Se
 [App Service-Preisen]: https://azure.microsoft.com/de-DE/pricing/details/app-service/
 [Übersicht über das .NET Server-SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

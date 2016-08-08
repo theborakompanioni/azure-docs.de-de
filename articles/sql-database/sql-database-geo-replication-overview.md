@@ -13,8 +13,8 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-   ms.workload="sqldb-bcdr"
-	ms.date="06/14/2016"
+   ms.workload="NA"
+	ms.date="07/14/2016"
 	ms.author="sstein" />
 
 # Übersicht: Aktive Georeplikation in Azure SQL-Datenbank
@@ -128,10 +128,9 @@ Wie bereits zuvor erwähnt, kann die aktive Georeplikation nicht nur über das A
 
 ## Nächste Schritte
 
-- Eine Übersicht zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
+- Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
 - Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
-- Informationen über Entwurfs- und Wiederherstellungsszenarien für die Geschäftskontinuität finden Sie unter [Geschäftskontinuitätsszenarien](sql-database-business-continuity-scenarios.md).
 - Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).
 - Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

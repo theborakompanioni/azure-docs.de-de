@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="06/16/2016"
+	ms.date="07/16/2016"
 	ms.author="carlrab"
    ms.workload="sqldb-bcdr"
 	ms.topic="article"
@@ -44,7 +44,7 @@ Die einzelnen Schritte und die zum Wiederherstellen benötigte Zeit hängen von 
 
 Damit Ihre Geschäftskontinuitätslösung effektiv funktioniert, wird empfohlen, in regelmäßigen Abständen die Anwendungsbereitschaft für den Wiederherstellungsworkflow zu überprüfen. Überprüfungen des Anwendungsverhaltens und der Auswirkungen von Datenverlusten und/oder Unterbrechungen durch Failover gehören zu einem angemessenen Entwicklungsverfahren. Solche Überprüfungen werden auch für die meisten Branchenstandards im Zuge von Zertifizierungen zur Geschäftskontinuität vorausgesetzt.
 
-Notfallwiederherstellungsübungen umfassen Folgendes:
+Notfallwiederherstellungsverfahren umfassen Folgendes:
 
 - Simulieren von Ausfällen auf Datenebene
 - Wiederherstellen
@@ -76,4 +76,4 @@ Unter [Strategien für die Notfallwiederherstellung für Anwendungen mit elastis
 - Informationen über schnellere Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
 - Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

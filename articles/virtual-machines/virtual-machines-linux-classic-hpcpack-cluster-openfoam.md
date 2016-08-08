@@ -13,12 +13,12 @@
  ms.topic="article"
  ms.tgt_pltfrm="vm-linux"
  ms.workload="big-compute"
- ms.date="03/24/2016"
+ ms.date="07/22/2016"
  ms.author="danlep"/>
 
 # Ausführen von OpenFOAM mit Microsoft HPC Pack auf einem Linux-RDMA-Cluster in Azure
 
-In diesem Artikel wird eine Methode zum Ausführen von OpenFoam in Azure beschrieben. Sie stellen einen Microsoft HPC Pack-Cluster unter Azure bereit und führen einen [OpenFOAM](http://openfoam.com/)-Auftrag mit Intel MPI auf mehreren Linux-Computeknoten aus, die über das RDMA-Netzwerk (Azure Remote Direct Memory Access) verbunden sind. Andere Optionen zum Ausführen von OpenFoam in Azure beinhalten vollständig konfigurierte kommerzielle Images im Marketplace.
+In diesem Artikel wird eine Methode zum Ausführen von OpenFoam auf Azure-VMs beschrieben. Sie stellen einen Microsoft HPC Pack-Cluster unter Azure bereit und führen einen [OpenFOAM](http://openfoam.com/)-Auftrag mit Intel MPI auf mehreren Linux-Computeknoten aus, die über das RDMA-Netzwerk (Azure Remote Direct Memory Access) verbunden sind. Andere Optionen zum Ausführen von OpenFoam in Azure beinhalten im Marketplace verfügbare vollständig konfigurierte kommerzielle Images, z.B. [OpenFoam 2.3 on CentOS 6](https://azure.microsoft.com/marketplace/partners/ubercloud/openfoam-v2dot3-centos-v6/) von UberCloud, und durch Ausführung von [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/).
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -26,25 +26,25 @@ OpenFOAM (Open Field Operation and Manipulation) ist ein frei verfügbares Open 
 
 Microsoft HPC Pack bietet eine Vielzahl von umfangreichen HPC- und parallelen Anwendungen, einschließlich MPI-Anwendungen, auf Clustern mit virtuellen Microsoft Azure-Computern. HPC Pack unterstützt auch die Ausführung von Linux-HPC-Anwendungen auf virtuellen Computern für Linux-Computeknoten, die in einem HPC Pack-Cluster bereitgestellt werden. Eine Einführung in die Verwendung von Linux-Computeknoten mit HPC Pack finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md).
 
->[AZURE.NOTE] In diesem Artikel wird vorausgesetzt, dass Sie sich bereits etwas mit der Verwaltung von Linux-Systemen und der Ausführung von MPI-Workloads in Linux-HPC-Clustern auskennen.
+>[AZURE.NOTE] Dieser Artikel zeigt die Ausführung einer Linux MPI-Workload mit HPC Pack und setzt voraus, dass Sie sich bereits etwas mit der Verwaltung von Linux-Systemen und der Ausführung von MPI-Workloads auf Linux-Clustern auskennen. Wenn Sie andere Versionen von MPI und OpenFOAM verwenden, als die in diesem Artikel vorgestellten, müssen Sie möglicherweise einige Installations- und Konfigurationsschritte ändern.
 
 ## Voraussetzungen
 
-*   **HPC Pack-Cluster mit Linux-Computeknoten der Größe A8 oder A9:** Stellen Sie einen HPC Pack-Cluster mit Linux-Computeknoten der Größe A8 oder A9 in Azure entweder mit einer [Azure Resource Manager-Vorlage](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) oder einem [Azure PowerShell-Skript](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md) bereit. Voraussetzungen und Schritte für beide Optionen finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md). Wenn Sie sich für die Bereitstellungsoption mit dem PowerShell-Skript entscheiden, hilft Ihnen die Datei mit der Beispielkonfiguration am Ende dieses Artikels weiter. Hiermit können Sie einen Azure-basierten HPC Pack-Cluster bereitstellen, der aus einem Windows Server 2012-Hauptknoten der Größe A8 und zwei SUSE Linux Enterprise Server 12-Computeknoten der Größe A8 besteht. Ersetzen Sie die Werte durch die entsprechenden Werte für Ihr Abonnement und Ihre Dienstnamen. 
+*   **HPC Pack-Cluster mit Linux-Serverknoten der Größe A8 oder A9:** Stellen Sie einen HPC Pack-Cluster mit Linux-Serverknoten der Größe A8 oder A9 in Azure entweder mit einer [Azure Resource Manager-Vorlage](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) oder einem [Azure PowerShell-Skript](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md) bereit. Voraussetzungen und Schritte für beide Optionen finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md). Wenn Sie sich für die Bereitstellungsoption mit dem PowerShell-Skript entscheiden, hilft Ihnen die Datei mit der Beispielkonfiguration am Ende dieses Artikels weiter. Hiermit können Sie einen Azure-basierten HPC Pack-Cluster bereitstellen, der aus einem Windows Server 2012-Hauptknoten der Größe A8 und zwei SUSE Linux Enterprise Server 12-Computeknoten der Größe A8 besteht. Ersetzen Sie die Werte durch die entsprechenden Werte für Ihr Abonnement und Ihre Dienstnamen.
 
     **Weitere wichtige Informationen**
 
-    *   Derzeit werden Linux-RDMA-Netzwerke in Azure nur für virtuelle Computer der Größe A8 oder A9 unterstützt, die mit SUSE Linux Enterprise Server 12 erstellten wurden – optimiert für Hochleistungs-Compute-Images aus dem Azure Marketplace. Weitere Überlegungen hierzu finden Sie unter [About the A8, A9, A10, and A11 compute-intensive instances](virtual-machines-windows-a8-a9-a10-a11-specs.md) (Informationen zu den rechenintensiven A8-, A9-, A10- und A11-Instanzen).
+    *   Derzeit werden Linux RDMA-Netzwerkfunktionen in Azure nur für VMs der Größe A8 oder A9 unterstützt, die auf einer SUSE Linux Enterprise Server (SLES) 12 für HPC-, SLES 12 (Premium) für HPC-, CentOS-basierten 7.1 HPC- oder CentOS-basierten 6.5 HPC-Verteilung ausgeführt werden, die auf einem Azure Marketplace-Image bereitgestellt wird. Weitere Überlegungen hierzu finden Sie unter [About the A8, A9, A10, and A11 compute-intensive instances](virtual-machines-windows-a8-a9-a10-a11-specs.md) (Informationen zu den rechenintensiven A8-, A9-, A10- und A11-Instanzen).
 
     *   Bei Verwendung der Bereitstellungsoption mit PowerShell-Skript stellen Sie alle Linux-Computeknoten unter einem Clouddienst bereit, um die RDMA-Netzwerkverbindung zu verwenden.
 
     *   Falls Sie nach der Bereitstellung der Linux-Knoten eine Verbindung per SSH herstellen müssen, um zusätzliche Verwaltungsaufgaben durchzuführen, finden Sie die SSH-Verbindungsdetails für die einzelnen virtuellen Linux-Computer im Azure-Portal.
         
-*   **Intel MPI:** Zum Ausführen von OpenFOAM auf Linux-Computeknoten in Azure benötigen Sie die Intel MPI Library 5-Laufzeit von der [Intel.com-Website](https://software.intel.com/de-DE/intel-mpi-library/) (Registrierung erforderlich). In einem späteren Schritt installieren Sie Intel MPI auf Ihren Linux-Serverknoten. Folgen Sie als Vorbereitung dazu nach der Registrierung bei Intel dem Link in der Bestätigungs-E-Mail auf die entsprechende Webseite, und kopieren Sie den Downloadlink der TGZ-Datei für die entsprechende Version von Intel MPI. Dieser Artikel basiert auf Intel MPI-Version 5.0.3.048.
+*   **Intel MPI**: Zum Ausführen von OpenFOAM auf SLES 12 HPC-Serverknoten in Azure müssen Sie die Intel MPI Library 5-Laufzeit von der [Intel.com-Website](https://software.intel.com/de-DE/intel-mpi-library/) installieren. (Intel MPI 5 ist auf CentOS-basierten HPC-Images bereits vorinstalliert). In einem späteren Schritt installieren Sie ggf. Intel MPI auf Ihren Linux-Serverknoten. Folgen Sie als Vorbereitung dazu nach der Registrierung bei Intel dem Link in der Bestätigungs-E-Mail auf die entsprechende Webseite, und kopieren Sie den Downloadlink der TGZ-Datei für die entsprechende Version von Intel MPI. Dieser Artikel basiert auf Intel MPI-Version 5.0.3.048.
 
-*   **OpenFOAM Source Pack**: Laden Sie die OpenFOAM Source Pack-Software für Linux auf der [Website der OpenFOAM Foundation](http://www.openfoam.org/download/source.php) herunter. Dieser Artikel basiert auf Source Pack-Version 2.3.1, die als „OpenFOAM-2.3.1.tgz“ zum Download verfügbar ist. Befolgen Sie die Anleitung weiter unten in diesem Artikel, um OpenFOAM auf den Linux-Computeknoten zu entpacken und zu kompilieren.
+*   **OpenFOAM Source Pack**: Laden Sie die OpenFOAM Source Pack-Software für Linux auf der [Website der OpenFOAM Foundation](http://openfoam.org/download/2-3-1-source/) herunter. Dieser Artikel basiert auf Source Pack-Version 2.3.1, die als „OpenFOAM-2.3.1.tgz“ zum Download verfügbar ist. Befolgen Sie die Anleitung weiter unten in diesem Artikel, um OpenFOAM auf den Linux-Computeknoten zu entpacken und zu kompilieren.
 
-*   **EnSight** (optional): Um die Ergebnisse Ihrer OpenFOAM-Simulation anzuzeigen, müssen Sie die Windows-Version der [EnSight](https://www.ceisoftware.com/download/)-Visualisierung und das Analyseprogramm auf den Hauptknoten des HPC Pack-Clusters herunterladen und installieren. Die Informationen zu Lizenzierung und Download finden Sie auf der EnSight-Website.
+*   **EnSight** (optional): Um die Ergebnisse Ihrer OpenFOAM-Simulation anzuzeigen, müssen Sie die [EnSight](https://www.ceisoftware.com/download/)-Visualisierung und das Analyseprogramm herunterladen und installieren. Die Informationen zu Lizenzierung und Download finden Sie auf der EnSight-Website.
 
 
 ## Einrichten der gegenseitigen Vertrauensstellung zwischen Computeknoten
@@ -101,14 +101,14 @@ Das Generieren eines RSA-Schlüsselpaars, das einen öffentlichen Schlüssel und
 
 Richten Sie nun eine SMB-Standardfreigabe für einen Ordner auf dem Hauptknoten ein, und stellen Sie den freigegebenen Ordner für alle Linux-Knoten bereit, damit die Linux-Knoten auf Anwendungsdateien mit einem gemeinsamen Pfad zugreifen können. Wenn Sie möchten, können Sie eine andere Dateifreigabeoption verwenden, z. B. eine Azure Files-Freigabe (für viele Szenarien empfohlen) oder eine NFS-Freigabe. Dateifreigabeinformationen und die zugehörigen ausführlichen Schritte finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md).
 
-1.	Erstellen Sie auf dem Hauptknoten einen Ordner, und geben Sie ihn für alle Benutzer mit Lese-/Schreibberechtigungen frei. Beispielsweise können Sie „C:\\OpenFOAM“ auf dem Hauptknoten als „\\\SUSE12RDMA-HN\\OpenFOAM“ freigeben. Hierbei ist *SUSE12RDMA-HN* der Hostname des Hauptknotens.
+1.	Erstellen Sie auf dem Hauptknoten einen Ordner, und geben Sie ihn für alle Benutzer frei, indem Sie Lese-/Schreibberechtigungen festlegen. Beispielsweise können Sie „C:\\OpenFOAM“ auf dem Hauptknoten als „\\\SUSE12RDMA-HN\\OpenFOAM“ freigeben. Hierbei ist *SUSE12RDMA-HN* der Hostname des Hauptknotens.
 
 2.	Öffnen Sie ein Windows PowerShell-Fenster, und führen Sie die folgenden Befehle aus, um den freigegebenen Ordner bereitzustellen.
 
     ```
     clusrun /nodegroup:LinuxNodes mkdir -p /openfoam
 
-    clusrun /nodegroup:LinuxNodes mount -t cifs //SUSE12RDMA-HN/OpenFOAM /openfoam -o vers=2.1`,username=<username>`,password='<password>’`,dir_mode=0777`,file_mode=0777
+    clusrun /nodegroup:LinuxNodes mount -t cifs //SUSE12RDMA-HN/OpenFOAM /openfoam -o vers=2.1`,username=<username>`,password='<password>'`,dir_mode=0777`,file_mode=0777
     ```
 
 Der erste Befehl erstellt einen Ordner namens „/openfoam“ auf allen Knoten in der Gruppe „LinuxNodes“. Der zweite Befehl stellt den freigegebenen Ordner „//SUSE12RDMA-HN/OpenFOAM“ auf den Linux-Knoten bereit, wobei die Bits „dir\_mode“ und „file\_mode“ auf 777 festgelegt sind. Die Parameter *username* und *password* im Befehl sollten mit den Anmeldeinformationen eines Benutzers auf dem Hauptknoten übereinstimmen.
@@ -119,9 +119,9 @@ Der erste Befehl erstellt einen Ordner namens „/openfoam“ auf allen Knoten i
 
 Zum Ausführen von OpenFOAM als MPI-Auftrag im RDMA-Netzwerk müssen Sie OpenFOAM mit den Intel MPI-Bibliotheken kompilieren.
 
-Sie führen zuerst mehrere **clusrun**-Befehle aus, um Intel MPI-Bibliotheken und OpenFOAM auf allen Linux-Knoten zu installieren. Verwenden Sie die bereits konfigurierte Hauptknotenfreigabe, um die Installationsdateien auf die Linux-Knoten zu verteilen.
+Sie führen zuerst mehrere **clusrun**-Befehle aus, um Intel MPI-Bibliotheken (falls nicht bereits installiert) und OpenFOAM auf allen Ihren Linux-Knoten zu installieren. Verwenden Sie die bereits konfigurierte Hauptknotenfreigabe, um die Installationsdateien auf die Linux-Knoten zu verteilen.
 
->[AZURE.IMPORTANT]Diese Installations- und Kompilierschritte sind Beispiele, und es sind gewisse Kenntnisse im Bereich der Verwaltung von Linux-Systemen erforderlich, um sicherzustellen, dass die abhängigen Compiler und Bibliotheken richtig installiert werden. Unter Umständen müssen Sie bestimmte Umgebungsvariablen oder andere Einstellungen für Ihre Versionen von Intel MPI und OpenFOAM ändern. Weitere Informationen finden Sie unter [Intel MPI Library für Linux – Installationsleitfaden](http://scc.ustc.edu.cn/zlsc/tc4600/intel/impi/INSTALL.html) und [OpenFOAM Source Pack-Installation](http://www.openfoam.org/download/source.php).
+>[AZURE.IMPORTANT]Diese Installations- und Kompilierschritte sind Beispiele, und es sind gewisse Kenntnisse im Bereich der Verwaltung von Linux-Systemen erforderlich, um sicherzustellen, dass die abhängigen Compiler und Bibliotheken richtig installiert werden. Unter Umständen müssen Sie bestimmte Umgebungsvariablen oder andere Einstellungen für Ihre Versionen von Intel MPI und OpenFOAM ändern. Weitere Informationen finden Sie unter [Intel MPI Library für Linux – Installationsleitfaden](http://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html) und [OpenFOAM Source Pack-Installation](http://openfoam.org/download/2-3-1-source/) für Ihre Umgebung.
 
 
 ### Installieren von Intel MPI
@@ -138,7 +138,7 @@ Speichern Sie das heruntergeladene Installationspaket für Intel MPI (in diesem 
     clusrun /nodegroup:LinuxNodes tar -xzf /opt/intel/l_mpi_p_5.0.3.048.tgz -C /opt/intel/
     ```
 
-2.  Verwenden Sie für die unbeaufsichtigte Installation von Intel MPI Library die Datei „silent.cfg“. Ein Beispiel finden Sie in den Beispieldateien am Ende dieses Artikels. Legen Sie diese Datei im freigegebenen Ordner „/openfoam“ ab. Weitere Informationen zur Datei „silent.cfg“ finden Sie unter [Intel MPI Library für Linux – Installationsleitfaden (Unbeaufsichtigte Installation)](http://scc.ustc.edu.cn/zlsc/tc4600/intel/impi/INSTALL.html#silentinstall).
+2.  Verwenden Sie für die unbeaufsichtigte Installation von Intel MPI Library die Datei „silent.cfg“. Ein Beispiel finden Sie in den Beispieldateien am Ende dieses Artikels. Legen Sie diese Datei im freigegebenen Ordner „/openfoam“ ab. Weitere Informationen zur Datei „silent.cfg“ finden Sie unter [Intel MPI Library für Linux – Installationsleitfaden (Unbeaufsichtigte Installation)](http://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html#silentinstall).
 
     >[AZURE.TIP]Stellen Sie sicher, dass Sie die Datei „silent.cfg“ als Textdatei mit Linux-Zeilenenden (nur LF, nicht CR-LF) speichern. Dadurch wird sichergestellt, dass es auf den Linux-Knoten ordnungsgemäß ausgeführt wird.
 
@@ -152,10 +152,10 @@ Speichern Sie das heruntergeladene Installationspaket für Intel MPI (in diesem 
 
 Zu Testzwecken sollten Sie auf den Linux-Knoten in „/etc/security/limits.conf“ die folgenden Zeilen hinzufügen:
 
-```
-*               hard    memlock         unlimited
-*               soft    memlock         unlimited
-```
+
+    clusrun /nodegroup:LinuxNodes echo "*               hard    memlock         unlimited" `>`> /etc/security/limits.conf
+    clusrun /nodegroup:LinuxNodes echo "*               soft    memlock         unlimited" `>`> /etc/security/limits.conf
+
 
 Starten Sie die Linux-Knoten neu, nachdem Sie die Datei „limits.conf“ aktualisiert haben. Verwenden Sie z. B. den folgenden Befehl **clusrun**.
 
@@ -167,7 +167,7 @@ Stellen Sie nach dem Neustart sicher, dass der freigegebene Ordner als „/openf
 
 ### Kompilieren und Installieren von OpenFOAM
 
-Speichern Sie das heruntergeladene Installationspaket für das OpenFOAM Source Pack (in diesem Beispiel „OpenFOAM-2.3.1.tgz“) unter „C:\\OpenFoam“ auf dem Hauptknoten, damit die Linux-Knoten auf diese Datei über „/openfoam“ zugreifen können. Führen Sie anschließend **clusrun** aus, um OpenFOAM auf allen Linux-Knoten zu kompilieren.
+Speichern Sie das heruntergeladene Installationspaket für das OpenFOAM Source Pack (in diesem Beispiel „OpenFOAM-2.3.1.tgz“) unter „C:\\OpenFoam“ auf dem Hauptknoten, damit die Linux-Knoten auf diese Datei über „/openfoam“ zugreifen können. Führen Sie anschließend **clusrun**-Befehle aus, um OpenFOAM auf allen Linux-Knoten zu kompilieren.
 
 
 1.  Erstellen Sie den Ordner „/opt/OpenFOAM“ auf jedem Linux-Knoten, kopieren Sie das Quellpaket in diesen Ordner, und extrahieren Sie ihn dort.
@@ -176,7 +176,7 @@ Speichern Sie das heruntergeladene Installationspaket für das OpenFOAM Source P
     clusrun /nodegroup:LinuxNodes mkdir -p /opt/OpenFOAM
 
     clusrun /nodegroup:LinuxNodes cp /openfoam/OpenFOAM-2.3.1.tgz /opt/OpenFOAM/
-
+    
     clusrun /nodegroup:LinuxNodes tar -xzf /opt/OpenFOAM/OpenFOAM-2.3.1.tgz -C /opt/OpenFOAM/
     ```
 
@@ -293,11 +293,11 @@ In diesem Schritt erstellen Sie eine Hostdatei (eine Liste mit Serverknoten), di
 
         Hierbei gilt:
 
-        * `<Number of nodes>`: Anzahl der Knoten, die diesem Auftrag zugeordnet sind.  
+        * `<Number of nodes>`: Anzahl der Knoten, die diesem Auftrag zugeordnet sind.
         
         * `<Name of node_n_...>`: Namen der einzelnen Knoten, die dem Auftrag zugeordnet sind.
         
-        * `<Cores of node_n_...>`: Anzahl der Kerne auf dem Knoten, die dem Auftrag zugeordnet sind.
+        * `<Cores of node_n_...>`: Anzahl der Kerne auf dem Knoten, der dem Auftrag zugeordnet ist.
 
         Wenn der Auftrag für die Ausführung beispielsweise zwei Kerne benötigt, lautet „$CCP\_NODES\_CORES“ etwa wie folgt:
         
@@ -558,6 +558,7 @@ ENVIRONMENT_REG_MPI_ENV=no
 # Select yes to update ld.so.conf, valid values are: {yes, no}
 ENVIRONMENT_LD_SO_CONF=no
 
+
 ```
 
 ### Beispielskript „settings.sh“
@@ -654,4 +655,4 @@ exit ${RTNSTS}
 [isosurface_color]: ./media/virtual-machines-linux-classic-hpcpack-cluster-openfoam/isosurface_color.png
 [linux_processes]: ./media/virtual-machines-linux-classic-hpcpack-cluster-openfoam/linux_processes.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="07/19/2016"
+ms.date="07/25/2016"
 ms.author="larryfr"/>
 
 #Migrieren von einem Windows-basierten HDInsight-Cluster zu einem Linux-basierten Cluster
@@ -79,7 +79,7 @@ Mithilfe der folgenden Schritte können Sie den Hadoop-HDFS-Befehl verwenden, um
 
 6. Verwenden Sie über die SSH-Sitzung den folgenden Befehl, um Daten aus dem verknüpften Speicherkonto in das neue Standardspeicherkonto zu kopieren. Ersetzen Sie CONTAINER und ACCOUNT durch die Container- und Kontoinformationen, die in Schritt 1 von dem PowerShell-Skript zurückgegeben wurden. Ersetzen Sie den Datenpfad mit dem Datendateipfad.
 
-        hdfs dfs -cp wasb://CONTAINER@ACCOUNT.blob.core.windows.net/path/to/old/data /path/to/new/location
+        hdfs dfs -cp wasbs://CONTAINER@ACCOUNT.blob.core.windows.net/path/to/old/data /path/to/new/location
 
     [AZURE.NOTE] Wenn die Verzeichnisstruktur, die die Daten enthält, in der Testumgebung nicht existiert, können Sie diese mithilfe des folgenden Befehls erstellen:
 
@@ -240,9 +240,9 @@ Wenn Sie wissen, dass die Skripts keine Zeichenfolgen mit eingebetteten CR-Zeich
 
 -   **Wenn Sie Skripts haben, die sich bereits im vom Cluster verwendeten Speicher befinden**, können Sie den folgenden Befehl aus einer SSH-Sitzung für den Linux-basierten Cluster zum Ändern des Skripts verwenden.
 
-        hdfs dfs -get wasb:///path/to/script.py oldscript.py
+        hdfs dfs -get wasbs:///path/to/script.py oldscript.py
         tr -d '\r' < oldscript.py > script.py
-        hdfs dfs -put -f script.py wasb:///path/to/script.py
+        hdfs dfs -put -f script.py wasbs:///path/to/script.py
 
 ##Nächste Schritte
 
@@ -254,4 +254,4 @@ Wenn Sie wissen, dass die Skripts keine Zeichenfolgen mit eingebetteten CR-Zeich
 
 -   [Verwalten eines Linux-basierten Clusters mithilfe von Ambari](hdinsight-hadoop-manage-ambari.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

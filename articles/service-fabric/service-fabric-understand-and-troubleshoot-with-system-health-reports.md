@@ -475,7 +475,7 @@ Visual Studio 2015-Diagnoseereignisse: RunAsync-Fehler in **fabric:/HelloWorldSt
 
 **System.NamingService** liefert Informationen zur Integrität des entsprechenden primären Replikats, wenn ein Naming-Vorgang zu lang dauert. Beispiele für Naming-Vorgänge sind [CreateServiceAsync](https://msdn.microsoft.com/library/azure/mt124028.aspx) und [DeleteServiceAsync](https://msdn.microsoft.com/library/azure/mt124029.aspx). Weitere Methoden finden Sie unter FabricClient (beispielsweise unter [Dienstverwaltungsmethoden](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.servicemanagementclient.aspx) sowie unter [Eigenschaftsverwaltungsmethoden](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.propertymanagementclient.aspx)).
 
-> [AZURE.NOTE] Der Naming-Dienst löst die Dienstnamen in einen Speicherort im Cluster auf und ermöglicht Benutzern, Dienstnamen und -eigenschaften zu verwalten. Hierbei handelt es sich um einen partitionierten, persistenten Service Fabric-Dienst. Eine der Partition stellt den Autoritätsbesitzer mit Metadaten zu allen System Fabric-Namen und -Diensten dar. Die Service Fabric-Namen werden verschiedenen Partitionen (so genannten Namensbesitzerpartitionen) zugeordnet, um die Erweiterung des Diensts zu ermöglichen. Weitere Informationen finden Sie unter [Service Fabric-Architektur](service-fabric-architecture.md).
+> [AZURE.NOTE] Der Naming-Dienst löst die Dienstnamen in einen Speicherort im Cluster auf und ermöglicht Benutzern, Dienstnamen und -eigenschaften zu verwalten. Hierbei handelt es sich um einen partitionierten, persistenten Service Fabric-Dienst. Eine der Partitionen stellt den Autoritätsbesitzer dar, der Metadaten zu allen Service Fabric-Namen und -Diensten enthält. Die Service Fabric-Namen werden verschiedenen Partitionen (so genannten Namensbesitzerpartitionen) zugeordnet, um die Erweiterung des Diensts zu ermöglichen. Weitere Informationen finden Sie unter [Service Fabric-Architektur](service-fabric-architecture.md).
 
 Wenn ein Naming-Vorgang unerwartet lang dauert, wird der Vorgang im *primären Replikat der Naming-Dienstpartition, die den Vorgang abwickelt*, mit einem Warnungsbericht gekennzeichnet. Ist der Vorgang erfolgreich, wird die Warnung gelöscht. Wird der Vorgang mit einem Fehler abgeschlossen, enthält der Integritätsbericht Einzelheiten zu dem Fehler.
 
@@ -667,4 +667,4 @@ HealthEvents          :
 
 [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

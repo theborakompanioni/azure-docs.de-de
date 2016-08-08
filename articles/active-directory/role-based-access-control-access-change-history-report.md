@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="kgremban"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -55,7 +55,7 @@ Get-AzureRMAuthorizationChangeLog -StartTime ([DateTime]::Now - [TimeSpan]::From
 ## Erstellen eines Berichts über die Azure-Befehlszeilenschnittstelle
 Verwenden Sie zum Erstellen eines Verlaufsberichts zu Zugriffsänderungen in der Azure-Befehlszeilenschnittstelle den folgenden Befehl:
 ```
-azure authorization changelog
+azure role assignment changelog list
 ```
 
 ## Exportieren in eine Kalkulationstabelle
@@ -67,4 +67,4 @@ Wenn Sie den Bericht speichern oder die Daten bearbeiten möchten, exportieren S
 - Erste Schritte mit der [rollenbasierten Zugriffssteuerung von Azure](role-based-access-control-configure.md)
 - Arbeiten mit [benutzerdefinierten Rollen in Azure RBAC](role-based-access-control-custom-roles.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

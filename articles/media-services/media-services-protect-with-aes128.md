@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="07/27/2016"
 	ms.author="juliako"/>
 
 #Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts
@@ -543,15 +543,14 @@ Im folgenden Code wird gezeigt, wie Sie eine Anforderung an den Media Services-S
 		            Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
 		                new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
 		            {
-		                        {AssetDeliveryPolicyConfigurationKey.EnvelopeKeyAcquisitionUrl, keyAcquisitionUri.ToString()},
-		                        {AssetDeliveryPolicyConfigurationKey.EnvelopeEncryptionIVAsBase64, envelopeEncryptionIV}
+		                        {AssetDeliveryPolicyConfigurationKey.EnvelopeKeyAcquisitionUrl, keyAcquisitionUri.ToString()}
 		            };
 		
 		            IAssetDeliveryPolicy assetDeliveryPolicy =
 		                _context.AssetDeliveryPolicies.Create(
 		                            "AssetDeliveryPolicy",
 		                            AssetDeliveryPolicyType.DynamicEnvelopeEncryption,
-		                            AssetDeliveryProtocol.SmoothStreaming | AssetDeliveryProtocol.HLS,
+		                            AssetDeliveryProtocol.SmoothStreaming | AssetDeliveryProtocol.HLS | AssetDeliveryProtocol.Dash,
 		                            assetDeliveryPolicyConfiguration);
 		
 		            // Add AssetDelivery Policy to the asset
@@ -630,4 +629,4 @@ Im folgenden Code wird gezeigt, wie Sie eine Anforderung an den Media Services-S
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

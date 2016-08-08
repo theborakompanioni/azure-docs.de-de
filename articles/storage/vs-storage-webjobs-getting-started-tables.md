@@ -18,7 +18,7 @@
 
 # Erste Schritte mit Azure Storage (Azure WebJob-Projekte)
 
-[AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
+[AZURE.INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## Übersicht
 
@@ -155,4 +155,4 @@ Informationen zur Handhabung der durch eine Warteschlangennachricht ausgelösten
 
 In diesem Artikel wurden Codebeispiele bereitgestellt, in denen veranschaulicht wird, wie häufige Szenarien für das Arbeiten mit Azure-Tabellen behandelt werden. Weitere Informationen zur Verwendung von Azure WebJobs und des WebJobs SDK finden Sie unter [Dokumentationsressourcen für Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

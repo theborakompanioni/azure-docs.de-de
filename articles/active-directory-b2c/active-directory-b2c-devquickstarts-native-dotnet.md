@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory B2C-Vorschau | Microsoft Azure"
+	pageTitle="Azure Active Directory B2C | Microsoft Azure"
 	description="Erstellen einer Windows-Desktopanwendung mit Anmeldung, Registrierung und Profilverwaltung mithilfe von Azure Active Directory B2C."
 	services="active-directory-b2c"
 	documentationCenter=".net"
@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="07/22/2016"
 	ms.author="dastrock"/>
 
-# Azure AD B2C-Vorschau: Erstellen von Windows-Desktop-Apps
+# Azure AD B2C: Erstellen von Windows-Desktop-Apps
 
 Mit Azure Active Directory (Azure AD) B2C können Sie Ihren Desktop-Apps in wenigen Schritten leistungsstarke Self-Service-Features zur Identitätsverwaltung hinzufügen. In diesem Artikel erfahren Sie, wie eine .NET Windows Presentation Foundation-App (WPF) für eine Aufgabenliste erstellt wird, die Benutzerregistrierung, -anmeldung und die Verwaltung von Profilen umfasst. Die App verfügt über Unterstützung für die Registrierung und Anmeldung mit einem Benutzernamen oder einer E-Mail-Adresse. Sie bietet auch Unterstützung für die Registrierung und Anmeldung über Konten für soziale Netzwerke wie Facebook und Google.
-
-[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
 ## Erstellen eines Azure AD B2C-Verzeichnisses
 
@@ -57,39 +55,20 @@ Der Code für dieses Tutorial wird [auf GitHub](https://github.com/AzureADQuickS
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet.git
 ```
 
-Die fertige App ist ebenfalls [als ZIP-Datei verfügbar](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip) oder unter der Verzweigung `complete` im gleichen Repository enthalten.
+Die fertige App ist ebenfalls [als ZIP-Datei](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip) oder unter der Verzweigung `complete` im gleichen Repository verfügbar.
 
-Nachdem Sie den Beispielcode heruntergeladen haben, öffnen Sie zum Einstieg die Visual Studio-SLN-Datei. Die Projektmappendatei enthält zwei Projekte: ein `TaskClient`-Projekt und ein `TaskService`-Projekt. `TaskClient` ist die WPF-Desktopanwendung, mit der der Benutzer interagiert. `TaskService` ist die Back-End-Web-API der App, in der die Aufgabenlisten der einzelnen Benutzer gespeichert werden. In diesem Fall werden `TaskClient` und `TaskService` durch eine einzige Anwendungs-ID dargestellt, da sie zusammen eine logische Anwendung bilden.
-
-## Konfigurieren des Aufgabendiensts
-
-Wenn `TaskService` eine Anforderung von `TaskClient` erhält, sucht er nach einem gültigen Zugriffstoken zum Authentifizieren der Anforderung. Zum Überprüfen des Zugriffstokens müssen Sie für `TaskService` Informationen zur App bereitstellen. Öffnen Sie im `TaskService`-Projekt die Datei `web.config` im Stammverzeichnis des Projekts, und ersetzen Sie die Werte im Abschnitt `<appSettings>`:
-
-```
-<appSettings>
-    <add key="webpages:Version" value="3.0.0.0" />
-    <add key="webpages:Enabled" value="false" />
-    <add key="ClientValidationEnabled" value="true" />
-    <add key="UnobtrusiveJavaScriptEnabled" value="true" />
-    <add key="ida:AadInstance" value="https://login.microsoftonline.com/{0}/{1}/{2}?p={3}" />
-    <add key="ida:Tenant" value="{Enter the name of your B2C tenant - it usually looks like constoso.onmicrosoft.com}" />
-    <add key="ida:ClientId" value="{Enter the Application ID assigned to your app by the Azure Portal}" />
-    <add key="ida:PolicyId" value="{Enter the name of one of the policies you created, like `b2c_1_my_sign_in_policy`}" />
-  </appSettings>
-```
-
-[AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
+Nachdem Sie den Beispielcode heruntergeladen haben, öffnen Sie zum Einstieg die Visual Studio-SLN-Datei. Das `TaskClient`-Projekt ist eine WPF-Desktopanwendung, mit der der Benutzer interagiert. In diesem Tutorial wird eine Back-End-Aufgaben-Web-API aufgerufen, die in Azure gehostet und zum Speichern der Aufgabenlisten von Benutzern verwendet wird. Sie müssen die Web-API, die wir für Sie bereits ausführen, nicht selbst erstellen.
 
 Um zu erfahren, wie eine Web-API Anforderungen mithilfe von Azure AD B2C sicher authentifiziert, können Sie sich unseren [Artikel mit den ersten Schritten für die Web-API](active-directory-b2c-devquickstarts-api-dotnet.md) ansehen.
 
 ## Ausführen von Richtlinien
-Wenn `TaskService` zum Authentifizieren von Anforderungen bereit ist, können Sie `TaskClient` implementieren. Ihre App kommuniziert mit Azure AD B2C, indem HTTP-Authentifizierungsanforderungen gesendet werden. Sie geben die Richtlinie an, die als Teil der Anforderung ausgeführt werden soll. Für .NET-Desktopanwendungen können Sie die Active Directory Authentication Library (ADAL) zum Senden von OAuth 2.0-Authentifizierungsnachrichten, zum Ausführen von Richtlinien und zum Abrufen von Token, die Web-APIs aufrufen, verwenden.
+Ihre App kommuniziert mit Azure AD B2C durch das Senden von Authentifizierungsnachrichten, in denen die Richtlinie, die ausgeführt werden soll, als Teil der HTTP-Anforderung angegeben wird. Für .NET-Desktopanwendungen können Sie die Vorschauversion der Microsoft Authentication Library (MSAL) zum Senden von OAuth 2.0-Authentifizierungsnachrichten, zum Ausführen von Richtlinien und zum Abrufen von Token, die Web-APIs aufrufen, verwenden.
 
-### Installieren von ADAL
-Fügen Sie ADAL mithilfe der Paket-Manager-Konsole von Visual Studio dem `TaskClient`-Projekt hinzu.
+### Installieren der MSAL
+Fügen Sie die MSAL mithilfe der Paket-Manager-Konsole von Visual Studio dem `TaskClient`-Projekt hinzu.
 
 ```
-PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TaskClient -IncludePrerelease
+PM> Install-Package Microsoft.Identity.Client -IncludePrerelease
 ```
 
 ### Eingeben der B2C-Details
@@ -98,98 +77,93 @@ PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory
 ```C#
 public static class Globals
 {
-	public static string tenant = "{Enter the name of your B2C tenant - it usually looks like constoso.onmicrosoft.com}";
-	public static string clientId = "{Enter the Application ID assigned to your app by the Azure Portal}";
-	public static string signInPolicy = "{Enter the name of your sign in policy, e.g. b2c_1_sign_in}";
-	public static string signUpPolicy = "{Enter the name of your sign up policy, e.g. b2c_1_sign_up}";
-	public static string editProfilePolicy = "{Enter the name of your edit profile policy, e.g. b2c_1_edit_profile}";
+    ...
 
-	public static string taskServiceUrl = "https://localhost:44332";
-	public static string aadInstance = "https://login.microsoftonline.com/";
-	public static string redirectUri = "urn:ietf:wg:oauth:2.0:oob";
+    // TODO: Replace these five default with your own configuration values
+    public static string tenant = "fabrikamb2c.onmicrosoft.com";
+    public static string clientId = "90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6";
+    public static string signInPolicy = "b2c_1_sign_in";
+    public static string signUpPolicy = "b2c_1_sign_up";
+    public static string editProfilePolicy = "b2c_1_edit_profile";
 
+    ...
 }
 ```
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
 
-### Erstellen von „AuthenticationContext“
-Die primäre Klasse von ADAL ist `AuthenticationContext`. Sie stellt die Verbindung Ihrer App mit Ihrem B2C-Verzeichnis dar. Wenn die App gestartet wird, erstellen Sie eine Instanz von `AuthenticationContext` in `MainWindow.xaml.cs`. Diese kann im gesamten Fenster verwendet werden.
+### Erstellen der PublicClientApplication
+Die primäre Klasse der MSAL ist `PublicClientApplication`. Mit dieser Klasse wird Ihre Anwendung im Azure AD B2C-System dargestellt. Wenn die App initialisiert wird, erstellen Sie eine Instanz von `PublicClientApplication` in `MainWindow.xaml.cs`. Diese kann im gesamten Fenster verwendet werden.
 
 ```C#
-public partial class MainWindow : Window
+protected async override void OnInitialized(EventArgs e)
 {
-	private HttpClient httpClient = new HttpClient();
-	private AuthenticationContext authContext = null;
+    base.OnInitialized(e);
 
-	protected async override void OnInitialized(EventArgs e)
-	{
-		base.OnInitialized(e);
-
-		// The authority parameter can be constructed by appending the name of your tenant to 'https://login.microsoftonline.com/'.
-		// ADAL implements an in-memory cache by default. Because we want tokens to persist when the user closes the app,
-		// we've extended the ADAL TokenCache and created a simple FileCache in this app.
-		authContext = new AuthenticationContext("https://login.microsoftonline.com/contoso.onmicrosoft.com", new FileCache());
-		...
-	...
+    pca = new PublicClientApplication(Globals.clientId)
+    {
+        // MSAL implements an in-memory cache by default.  Since we want tokens to persist when the user closes the app, 
+        // we've extended the MSAL TokenCache and created a simple FileCache in this app.
+        UserTokenCache = new FileCache(),
+    };
+    
+    ...
 ```
 
 ### Initiieren eines Registrierungsflusses
-Wenn sich ein Benutzer registrieren möchte, sollte ein Registrierungsfluss initiiert werden, der die Registrierungsrichtlinie verwendet, die Sie erstellt haben. Bei Verwendung von ADAL rufen Sie einfach `authContext.AcquireTokenAsync(...)` auf. Die von Ihnen an `AcquireTokenAsync(...)` übergebenen Parameter legen fest, welches Token Sie erhalten, welche Richtlinie in der Authentifizierungsanforderung verwendet wird usw.
+Wenn sich ein Benutzer registrieren möchte, sollte ein Registrierungsfluss initiiert werden, der die Registrierungsrichtlinie verwendet, die Sie erstellt haben. Bei Verwendung der MSAL rufen Sie einfach `pca.AcquireTokenAsync(...)` auf. Die von Ihnen an `AcquireTokenAsync(...)` übergebenen Parameter legen fest, welches Token Sie erhalten, welche Richtlinie in der Authentifizierungsanforderung verwendet wird usw.
 
 ```C#
 private async void SignUp(object sender, RoutedEventArgs e)
 {
-	AuthenticationResult result = null;
-	try
-	{
-		// Use the app's clientId here as the scope parameter, indicating that you want a token to our own back-end API.
-		// Use the PromptBehavior. Always flag to indicate to ADAL that it should show a sign-up UI, no matter what.
-		// Pass in the name of your sign-up policy to execute the sign-up experience.
-		result = await authContext.AcquireTokenAsync(new string[] { Globals.clientId },
-			null, Globals.clientId, new Uri(Globals.redirectUri),
-			new PlatformParameters(PromptBehavior.Always, null), Globals.signUpPolicy);
+    AuthenticationResult result = null;
+    try
+    {
+        // Use the app's clientId here as the scope parameter, indicating that
+        // you want a token to the your app's backend web API (represented by
+        // the cloud hosted task API).  Use the UiOptions.ForceLogin flag to
+        // indicate to MSAL that it should show a sign-up UI no matter what.
+        result = await pca.AcquireTokenAsync(new string[] { Globals.clientId },
+                string.Empty, UiOptions.ForceLogin, null, null, Globals.authority,
+                Globals.signUpPolicy);
 
-		// Indicate in the app that the user is signed in.
-		SignInButton.Visibility = Visibility.Collapsed;
-		SignUpButton.Visibility = Visibility.Collapsed;
-		EditProfileButton.Visibility = Visibility.Visible;
-		SignOutButton.Visibility = Visibility.Visible;
+        // Upon success, indicate in the app that the user is signed in.
+        SignInButton.Visibility = Visibility.Collapsed;
+        SignUpButton.Visibility = Visibility.Collapsed;
+        EditProfileButton.Visibility = Visibility.Visible;
+        SignOutButton.Visibility = Visibility.Visible;
 
-		// When the request completes successfully, you can get user information from AuthenticationResult
-		UsernameLabel.Content = result.UserInfo.Name;
+        // When the request completes successfully, you can get user 
+        // information from the AuthenticationResult
+        UsernameLabel.Content = result.User.Name;
 
-		// After the sign-up successfully completes, display the user's to-do list
-		GetTodoList();
-	}
+        // After the sign up successfully completes, display the user's To-Do List
+        GetTodoList();
+    }
 
-	// Handle any exemptions that occurred during execution of the policy.
-	catch (AdalException ex)
-	{
-		if (ex.ErrorCode == "authentication_canceled")
-		{
-			MessageBox.Show("Sign up was canceled by the user");
-		}
-		else
-		{
-			// An unexpected error occurred.
-			string message = ex.Message;
-			if (ex.InnerException != null)
-			{
-				message += "Inner Exception : " + ex.InnerException.Message;
-			}
+    // Handle any exeptions that occurred during execution of the policy.
+    catch (MsalException ex)
+    {
+        if (ex.ErrorCode != "authentication_canceled")
+        {
+            // An unexpected error occurred.
+            string message = ex.Message;
+            if (ex.InnerException != null)
+            {
+                message += "Inner Exception : " + ex.InnerException.Message;
+            }
 
-			MessageBox.Show(message);
-		}
+            MessageBox.Show(message);
+        }
 
-		return;
-	}
+        return;
+    }
 }
 ```
 
 ### Initiieren eines Anmeldeflusses
-Sie können einen Anmeldefluss auf die gleiche Weise wie einen Registrierungsfluss initiieren. Wenn sich ein Benutzer anmeldet, nehmen Sie den gleichen Aufruf von ADAL vor, dieses Mal mithilfe der Anmelderichtlinie:
+Sie können einen Anmeldefluss auf die gleiche Weise wie einen Registrierungsfluss initiieren. Wenn sich ein Benutzer anmeldet, nehmen Sie den gleichen Aufruf der MSAL vor, und zwar dieses Mal mithilfe der Anmelderichtlinie:
 
 ```C#
 private async void SignIn(object sender = null, RoutedEventArgs args = null)
@@ -197,9 +171,9 @@ private async void SignIn(object sender = null, RoutedEventArgs args = null)
 	AuthenticationResult result = null;
 	try
 	{
-		result = await authContext.AcquireTokenAsync(new string[] { Globals.clientId },
-                    null, Globals.clientId, new Uri(Globals.redirectUri),
-                    new PlatformParameters(PromptBehavior.Always, null), Globals.signInPolicy);
+		result = await pca.AcquireTokenAsync(new string[] { Globals.clientId },
+                    string.Empty, UiOptions.ForceLogin, null, null, Globals.authority,
+                    Globals.signInPolicy);
 		...
 ```
 
@@ -212,103 +186,136 @@ private async void EditProfile(object sender, RoutedEventArgs e)
 	AuthenticationResult result = null;
 	try
 	{
-		result = await authContext.AcquireTokenAsync(new string[] { Globals.clientId },
-                    null, Globals.clientId, new Uri(Globals.redirectUri),
-                    new PlatformParameters(PromptBehavior.Always, null), Globals.editProfilePolicy);
+		result = await pca.AcquireTokenAsync(new string[] { Globals.clientId },
+                    string.Empty, UiOptions.ForceLogin, null, null, Globals.authority,
+                    Globals.editProfilePolicy);
 ```
 
-In all diesen Fällen gibt ADAL entweder in `AuthenticationResult` ein Token zurück oder löst eine Ausnahme aus. Jedes Mal, wenn Sie ein Token von der ADAL abrufen, können Sie mit dem `AuthenticationResult.UserInfo`-Objekt die Benutzerdaten in der App (z. B. die Benutzeroberfläche) aktualisieren. ADAL speichert das Token auch für die Verwendung in anderen Teilen der Anwendung zwischen.
+In all diesen Fällen gibt die MSAL entweder in `AuthenticationResult` ein Token zurück oder löst eine Ausnahme aus. Jedes Mal, wenn Sie ein Token von der MSAL erhalten, können Sie mit dem `AuthenticationResult.User`-Objekt die Benutzerdaten in der App (z.B. die Benutzeroberfläche) aktualisieren. ADAL speichert das Token auch für die Verwendung in anderen Teilen der Anwendung zwischen.
 
-## Aufrufen von APIs
-Sie haben jetzt ADAL zum Ausführen von Richtlinien sowie zum Abrufen von Token verwendet. In vielen Fällen möchten Sie jedoch prüfen, ob ein zwischengespeichertes Token vorhanden ist, ohne eine Richtlinie auszuführen. Ein solcher Fall tritt z.B. ein, wenn die App versucht, die Aufgabenliste des Benutzers von `TaskService` abzurufen. Sie können dazu dieselbe `authContext.AcquireTokenAsync(...)`-Methode verwenden und erneut `clientId` als Bereichsparameter einsetzen, dieses Mal aber zusätzlich mit `PromptBehavior.Never`:
+
+### Durchführen einer Prüfung auf Token beim App-Start
+Sie können die MSAL auch verwenden, um den Anmeldestatus des Benutzers nachzuverfolgen. Bei dieser App soll der Benutzer auch dann angemeldet bleiben, wenn er die App schließt und dann wieder öffnet. Navigieren Sie zurück zur `OnInitialized`-Überschreibung, und verwenden Sie die `AcquireTokenSilent`-Methode von MSAL, um eine Prüfung auf zwischengespeicherte Token durchzuführen:
+
+```C#
+AuthenticationResult result = null;
+try
+{
+    // If the user has has a token cached with any policy, we'll display them as signed-in.
+    TokenCacheItem tci = pca.UserTokenCache.ReadItems(Globals.clientId).Where(i => i.Scope.Contains(Globals.clientId) && !string.IsNullOrEmpty(i.Policy)).FirstOrDefault();
+    string existingPolicy = tci == null ? null : tci.Policy;
+    result = await pca.AcquireTokenSilentAsync(new string[] { Globals.clientId }, string.Empty, Globals.authority, existingPolicy, false);
+
+    SignInButton.Visibility = Visibility.Collapsed;
+    SignUpButton.Visibility = Visibility.Collapsed;
+    EditProfileButton.Visibility = Visibility.Visible;
+    SignOutButton.Visibility = Visibility.Visible;
+    UsernameLabel.Content = result.User.Name;
+    GetTodoList();
+}
+catch (MsalException ex)
+{
+    if (ex.ErrorCode == "failed_to_acquire_token_silently")
+    {
+        // There are no tokens in the cache.  Proceed without calling the To Do list service.
+    }
+    else
+    {
+        // An unexpected error occurred.
+        string message = ex.Message;
+        if (ex.InnerException != null)
+        {
+            message += "Inner Exception : " + ex.InnerException.Message;
+        }
+        MessageBox.Show(message);
+    }
+    return;
+}
+```
+
+## Aufrufen der Aufgaben-API
+Sie haben die MSAL jetzt zum Ausführen von Richtlinien sowie zum Abrufen von Token verwendet. Wenn Sie eines dieser Token zum Aufrufen der Aufgaben-API verwenden möchten, können Sie auch die `AcquireTokenSilent`-Methode der MSAL nutzen, um eine Prüfung auf zwischengespeicherte Token durchzuführen:
 
 ```C#
 private async void GetTodoList()
 {
-	AuthenticationResult result = null;
-	try
-	{
-		// Here we want to check for a cached token, independent of whatever policy was used to acquire it.
-		TokenCacheItem tci = authContext.TokenCache.ReadItems().Where(i => i.Scope.Contains(Globals.clientId) && !string.IsNullOrEmpty(i.Policy)).FirstOrDefault();
-		string existingPolicy = tci == null ? null : tci.Policy;
+    AuthenticationResult result = null;
+    try
+    {
+        // Here we want to check for a cached token, independent of whatever policy was used to acquire it.
+        TokenCacheItem tci = pca.UserTokenCache.ReadItems(Globals.clientId).Where(i => i.Scope.Contains(Globals.clientId) && !string.IsNullOrEmpty(i.Policy)).FirstOrDefault();
+        string existingPolicy = tci == null ? null : tci.Policy;
 
-		// We use the PromptBehavior.Never flag to indicate that ADAL should throw an exception if a token
-		// could not be acquired from the cache, rather than automatically prompt the user to sign in.
-		result = await authContext.AcquireTokenAsync(new string[] { Globals.clientId },
-			null, Globals.clientId, new Uri(Globals.redirectUri),
-			new PlatformParameters(PromptBehavior.Never, null), existingPolicy);
+        // Use AcquireTokenSilent to indicate that MSAL should throw an exception if a token cannot be acquired
+        result = await pca.AcquireTokenSilentAsync(new string[] { Globals.clientId }, string.Empty, Globals.authority, existingPolicy, false);
 
-	}
+    }
+    // If a token could not be acquired silently, we'll catch the exception and show the user a message.
+    catch (MsalException ex)
+    {
+        // There is no access token in the cache, so prompt the user to sign-in.
+        if (ex.ErrorCode == "failed_to_acquire_token_silently")
+        {
+            MessageBox.Show("Please sign up or sign in first");
+            SignInButton.Visibility = Visibility.Visible;
+            SignUpButton.Visibility = Visibility.Visible;
+            EditProfileButton.Visibility = Visibility.Collapsed;
+            SignOutButton.Visibility = Visibility.Collapsed;
+            UsernameLabel.Content = string.Empty;
+        }
+        else
+        {
+            // An unexpected error occurred.
+            string message = ex.Message;
+            if (ex.InnerException != null)
+            {
+                message += "Inner Exception : " + ex.InnerException.Message;
+            }
+            MessageBox.Show(message);
+        }
 
-	// If a token could not be acquired silently, we'll catch the exception and show the user a message.
-	catch (AdalException ex)
-	{
-		// There is no access token in the cache, so prompt the user to sign in.
-		if (ex.ErrorCode == "user_interaction_required")
-		{
-			MessageBox.Show("Please sign up or sign in first");
-			SignInButton.Visibility = Visibility.Visible;
-			SignUpButton.Visibility = Visibility.Visible;
-			EditProfileButton.Visibility = Visibility.Collapsed;
-			SignOutButton.Visibility = Visibility.Collapsed;
-			UsernameLabel.Content = string.Empty;
-
-		}
-		else
-		{
-			// An unexpected error occurred.
-			string message = ex.Message;
-			if (ex.InnerException != null)
-			{
-				message += "Inner Exception : " + ex.InnerException.Message;
-			}
-			MessageBox.Show(message);
-		}
-
-		return;
-	}
+        return;
+    }
 	...
 ```
 
-Wenn der Aufruf von `AcquireTokenAsync(...)` erfolgreich ist und ein Token im Cache gefunden wird, können Sie das Token dem `Authorization`-Header der HTTP-Anforderung hinzufügen. Auf diese Weise kann `TaskService` die Anforderung zum Lesen der Aufgabenliste für den Benutzer authentifizieren:
+Wenn der Aufruf von `AcquireTokenSilentAsync(...)` erfolgreich ist und ein Token im Cache gefunden wird, können Sie das Token dem `Authorization`-Header der HTTP-Anforderung hinzufügen. Die Aufgaben-Web-API nutzt diesen Header, um die Anforderung zum Lesen der Aufgabenliste eines Benutzers zu authentifizieren:
 
 ```C#
 	...
-	// After the token has been returned by ADAL, add it to the HTTP authorization header before the call is made to TaskService.
-	httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.Token);
+	// Once the token has been returned by MSAL, add it to the http authorization header, before making the call to access the To Do list service.
+    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.Token);
 
-	// Call the to-do-list service.
-	HttpResponseMessage response = await httpClient.GetAsync(taskServiceUrl + "/api/tasks");
+    // Call the To Do list service.
+    HttpResponseMessage response = await httpClient.GetAsync(Globals.taskServiceUrl + "/api/tasks");
 	...
 ```
 
-Dieses Muster können Sie jederzeit anwenden, um den Tokencache auf Token zu überprüfen, ohne dass der Benutzer sich anmelden muss. Wenn die App gestartet wird, möchten Sie z.B. unter Umständen `FileCache` auf vorhandene Token überprüfen. Auf diese Weise bleibt die Anmeldesitzung des Benutzers immer erhalten, wenn die App ausgeführt wird. Sie finden den gleichen Code im `OnInitialized`-Ereignis von `MainWindow`. `OnInitialized` verarbeitet die erste Ausführung.
-
 ## Abmelden des Benutzers
-Sie können mit ADAL die App-Sitzung des Benutzers beenden, wenn dieser **Abmelden** auswählt. Mithilfe von ADAL wird dies durch Löschen aller Token aus dem Tokencache erreicht:
+Abschließend können Sie mit der MSAL die Sitzung des Benutzers beenden, wenn dieser **Abmelden** auswählt. Bei Verwendung der MSAL wird dies durch das Löschen aller Token aus dem Tokencache erreicht:
 
 ```C#
 private void SignOut(object sender, RoutedEventArgs e)
 {
-	// Clear any remnants of the user's session.
-	authContext.TokenCache.Clear();
+    // Clear any remnants of the user's session.
+    pca.UserTokenCache.Clear(Globals.clientId);
 
-	// This is a helper method that clears browser cookies in the browser control that ADAL uses. It is not part of ADAL.
-	ClearCookies();
+    // This is a helper method that clears browser cookies in the browser control that MSAL uses, it is not part of MSAL.
+    ClearCookies();
 
-	// Update the UI to show the user as signed out.
-	TaskList.ItemsSource = string.Empty;
-	SignInButton.Visibility = Visibility.Visible;
-	SignUpButton.Visibility = Visibility.Visible;
-	EditProfileButton.Visibility = Visibility.Collapsed;
-	SignOutButton.Visibility = Visibility.Collapsed;
-	return;
+    // Update the UI to show the user as signed out.
+    TaskList.ItemsSource = string.Empty;
+    SignInButton.Visibility = Visibility.Visible;
+    SignUpButton.Visibility = Visibility.Visible;
+    EditProfileButton.Visibility = Visibility.Collapsed;
+    SignOutButton.Visibility = Visibility.Collapsed;
+    return;
 }
 ```
 
 ## Ausführen der Beispiel-App
 
-Zum Schluss erstellen Sie `TaskClient` und `TaskService` und führen diese Elemente aus. Registrieren Sie sich für die App mit einer E-Mail-Adresse oder einem Benutzernamen. Melden Sie sich ab und unter demselben Benutzer wieder an. Bearbeiten Sie das Profil dieses Benutzers. Melden Sie sich ab, und registrieren Sie sich als ein anderer Benutzer.
+Abschließend erstellen Sie das Beispiel und führen es aus. Registrieren Sie sich für die App mit einer E-Mail-Adresse oder einem Benutzernamen. Melden Sie sich ab und unter demselben Benutzer wieder an. Bearbeiten Sie das Profil dieses Benutzers. Melden Sie sich ab, und registrieren Sie sich als ein anderer Benutzer.
 
 ## Soziale Netzwerke als IDPs hinzufügen
 
@@ -323,22 +330,10 @@ Um Ihrer App soziale Netzwerke als IdPs hinzuzufügen, befolgen Sie zunächst di
 
 Nachdem Sie Ihrem B2C-Verzeichnis die Identitätsanbieter hinzugefügt haben, müssen Sie jede der drei Richtlinien bearbeiten, um die neuen IdPs wie im [Artikel mit Richtlinienreferenzen](active-directory-b2c-reference-policies.md) beschrieben einzubeziehen. Nachdem Sie Ihre Richtlinien gespeichert haben, führen Sie die App erneut aus. Die neuen IdPs sollten als Registrierungs- und Anmeldeoptionen in allen Benutzeroberflächen für Identitäten angezeigt werden.
 
-Sie können mit Ihren Richtlinien experimentieren und die Auswirkungen auf die Beispiel-App beobachten. Fügen Sie IdPs hinzu, oder entfernen Sie sie, bearbeiten Sie Anwendungsansprüche, oder ändern Sie Registrierungsattribute. Experimentieren Sie so lange, bis Sie die Zusammenhänge zwischen Richtlinien, Authentifizierungsanforderungen und ADAL nachvollziehen können.
+Sie können mit Ihren Richtlinien experimentieren und die Auswirkungen auf die Beispiel-App beobachten. Fügen Sie IdPs hinzu, oder entfernen Sie sie, bearbeiten Sie Anwendungsansprüche, oder ändern Sie Registrierungsattribute. Experimentieren Sie so lange, bis Sie die Zusammenhänge zwischen Richtlinien, Authentifizierungsanforderungen und der MSAL nachvollziehen können.
 
 Als Referenz wird das fertige Beispiel [als ZIP-Datei bereitgestellt](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip). Sie können sie auch aus GitHub klonen:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet.git```
 
-<!--
-
-## Next steps
-
-You can now move on to more advanced B2C topics. You may try:
-
-[Call a web API from a web app]()
-
-[Customize the UX of your B2C app]()
-
--->
-
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

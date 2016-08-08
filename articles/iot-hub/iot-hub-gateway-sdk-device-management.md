@@ -207,22 +207,24 @@ Führen Sie die folgenden Schritte auf demselben Ubuntu 14.04-Computer aus, den 
 
 3. Kopieren Sie die Datei **iotdm-edison-sample.bb** aus dem Ordner **~/azure-iot-sdks/c/iotdm\_client/samples/iotdm\_edison\_sample/bitbake/** in den Ordner **~/edison-src/meta-intel-edison/meta-intel-edison-distro/recipes-support/iotdm-edison-sample**.
 
-4. Kopieren Sie die Datei **iotdm\_edison\_sample.service** aus dem Ordner **~/azure-iot-sdks/c/iotdm\_client/samples/iotdm\_edison\_sample/bitbake/** in den Ordner **~/edison-src/meta-intel-edison/meta-intel-edison-distro/recipes-support/iotdm-edison-sample/files**.
+4. Bearbeiten Sie die Datei **~/edison-src/meta-intel-edison/meta-intel-edison-distro/recipes-support/iotdm-edison-sample/iotdm-edison-sample.bb**, und ersetzen Sie `-Duse_http:BOOL=OFF` durch `-Duse_http:BOOL=ON`.
 
-5. Bearbeiten Sie die Datei **~/edison-src/meta-intel-edison/meta-intel-edison-distro/recipes-core/images/edison-image.bb**, um einen Eintrag für Ihr neues Rezept hinzuzufügen. Fügen Sie am Ende der Datei die folgende Zeile hinzu:
+5. Kopieren Sie die Datei **iotdm\_edison\_sample.service** aus dem Ordner **~/azure-iot-sdks/c/iotdm\_client/samples/iotdm\_edison\_sample/bitbake/** in den Ordner **~/edison-src/meta-intel-edison/meta-intel-edison-distro/recipes-support/iotdm-edison-sample/files**.
+
+6. Bearbeiten Sie die Datei **~/edison-src/meta-intel-edison/meta-intel-edison-distro/recipes-core/images/edison-image.bb**, um einen Eintrag für Ihr neues Rezept hinzuzufügen. Fügen Sie am Ende der Datei die folgende Zeile hinzu:
     
     ```
     IMAGE_INSTALL += "iotdm-edison-sample"
     ```
 
-6. Da das Gateway-SDK und der Geräteverwaltungsclient einige Bibliotheken gemeinsam nutzen, müssen Sie die Datei **~/edison-src/out/linux64/poky/meta/classes/sstate.bbclass** bearbeiten. Fügen Sie am Ende der Datei die folgenden Zeilen hinzu. Achten Sie darauf, dass Sie `<your user>` durch Ihren derzeitigen Benutzernamen ersetzen:
+7. Da das Gateway-SDK und der Geräteverwaltungsclient einige Bibliotheken gemeinsam nutzen, müssen Sie die Datei **~/edison-src/out/linux64/poky/meta/classes/sstate.bbclass** bearbeiten. Fügen Sie am Ende der Datei die folgenden Zeilen hinzu. Achten Sie darauf, dass Sie `<your user>` durch Ihren derzeitigen Benutzernamen ersetzen:
     
     ```
     SSTATE_DUPWHITELIST += "/home/<your user>/edison-src/out/linux64/build/tmp/sysroots/edison/usr/lib/libaziotsharedutil.a"
     SSTATE_DUPWHITELIST += "/home/<your user>/edison-src/out/linux64/build/tmp/sysroots/edison/usr/include/azureiot"
     ```
 
-7. Führen Sie die Konfiguration so durch, dass WLAN auf dem Edison Board automatisch gestartet wird, indem Sie die Datei **~/edison-src/meta-intel-edison/meta-intel-edison-distro/recipes-connectivity/wpa\_supplicant/wpa-supplicant/wpa\_supplicant.conf-sane** bearbeiten und am Ende der Datei die folgenden Zeilen hinzufügen. Achten Sie darauf, dass Sie `<your wifi ssid>` und `<your wifi password>` durch die richtigen Werte für Ihr WLAN ersetzen:
+8. Führen Sie die Konfiguration so durch, dass WLAN auf dem Edison Board automatisch gestartet wird, indem Sie die Datei **~/edison-src/meta-intel-edison/meta-intel-edison-distro/recipes-connectivity/wpa\_supplicant/wpa-supplicant/wpa\_supplicant.conf-sane** bearbeiten und am Ende der Datei die folgenden Zeilen hinzufügen. Achten Sie darauf, dass Sie `<your wifi ssid>` und `<your wifi password>` durch die richtigen Werte für Ihr WLAN ersetzen:
     
     ```
     network={
@@ -235,7 +237,7 @@ Führen Sie die folgenden Schritte auf demselben Ubuntu 14.04-Computer aus, den 
     }
     ```
 
-8. Sie können nun das Image für Ihr Edison Board erstellen, in dem das Gateway-SDK und der Geräteverwaltungsclient enthalten sind. Der Befehl **bitbake** wird jetzt deutlich schneller als vorher ausgeführt, da nur das neue Rezept erstellt und dem Image hinzugefügt werden muss:
+9. Sie können nun das Image für Ihr Edison Board erstellen, in dem das Gateway-SDK und der Geräteverwaltungsclient enthalten sind. Der Befehl **bitbake** wird jetzt deutlich schneller als vorher ausgeführt, da nur das neue Rezept erstellt und dem Image hinzugefügt werden muss:
     
     ```
     cd ~/edison-src/out/linux64/
@@ -243,7 +245,7 @@ Führen Sie die folgenden Schritte auf demselben Ubuntu 14.04-Computer aus, den 
     bitbake edison-image
     ```
 
-9. Schließen Sie den Buildvorgang ab, indem Sie die folgenden Befehle ausführen:
+10. Schließen Sie den Buildvorgang ab, indem Sie die folgenden Befehle ausführen:
   
     ```
     cd ~/edison-src/
@@ -423,4 +425,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

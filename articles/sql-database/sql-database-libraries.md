@@ -24,10 +24,10 @@ In diesem Thema sind die einzelnen Bibliotheken/Treiber aufgelistet, mit denen C
 | Sprache | Plattform | Zusätzliche Ressourcen | Herunterladen |
 | :-- | :-- | :-- | :-- |
 | ADO.NET | Windows, Linux, Mac | [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von .NET (C#)](sql-database-develop-dotnet-simple.md) | [Herunterladen](https://msdn.microsoft.com/vstudio/aa496123.aspx) |
-| Java | Windows | [Herstellen von Verbindungen mit der SQL-Datenbank mithilfe von Java mit JDBC unter Windows](sql-database-develop-java-simple-windows.md) | [Herunterladen](http://go.microsoft.com/fwlink/?LinkId=245496) |
+| Java | Windows, Linux, Mac | [Herstellen von Verbindungen mit der SQL-Datenbank mithilfe von Java mit JDBC unter Windows](sql-database-develop-java-simple-windows.md) | [Herunterladen](http://go.microsoft.com/fwlink/?LinkId=245496) |
 | PHP | Windows | [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von PHP unter Windows](sql-database-develop-php-simple-windows.md) | [Herunterladen](https://www.microsoft.com/download/details.aspx?id=20098) |
 | Node.js | Windows, Linux, Mac | [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Node.js](sql-database-develop-nodejs-simple.md) | [Installieren](https://msdn.microsoft.com/library/mt652094.aspx) |
 | Python | Windows, Linux, Mac | [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Python](sql-database-develop-python-simple.md) | [Installieren](https://msdn.microsoft.com/library/mt694094.aspx) |
 | Ruby | Windows, Linux, Mac | [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Ruby](sql-database-develop-ruby-simple.md) | [Installieren](https://msdn.microsoft.com/library/mt711041.aspx) |
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

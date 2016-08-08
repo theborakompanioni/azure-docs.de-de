@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="search"
-   ms.date="06/01/2016"
+   ms.date="07/25/2016"
    ms.author="brjohnst"/>
 
 # Azure-Suchdienst-REST-API: Version 2015-02-28-Preview
@@ -978,6 +978,8 @@ Mit dem Vorgang **Indexstatistik abrufen** werden von Azure Search Informationen
 	GET https://[service name].search.windows.net/indexes/[index name]/stats?api-version=[api-version]
     api-key: [admin key]
 
+> [AZURE.NOTE] Statistiken zur Anzahl und Speichergröße von Dokumenten werden im Abstand von einigen Minuten gesammelt, nicht in Echtzeit. Daher spiegeln die von dieser API zurückgegebenen Statistiken möglicherweise nicht die von kürzlich durchgeführten Indizierungsvorgängen verursachten Änderungen wider.
+
 **Anforderung**
 
 HTTPS ist für alle Dienstanforderungen erforderlich. Die Anforderung **Indexstatistiken abrufen** kann mit der GET-Methode erstellt werden.
@@ -1021,7 +1023,7 @@ Die **Analyse-API** zeigt, wie ein Analysemodul Text in einzelne Token unterteil
 
 **Anforderung**
 
-HTTPS ist für alle Dienstanforderungen erforderlich. Die Anforderung der **Analyse-API** kann mit der POST-Methode erstellt werden.
+HTTPS ist für alle Dienstanforderungen erforderlich. Die **Analyse-API**-Anforderung kann mit der POST-Methode erstellt werden.
 
 `api-version=[string]` (erforderlich). Die Vorschauversion ist `api-version=2015-02-28-Preview`. Details und alternative Versionen finden Sie unter [Versionsverwaltung für den Azure-Suchdienst](http://msdn.microsoft.com/library/azure/dn864560.aspx).
 
@@ -1030,7 +1032,7 @@ HTTPS ist für alle Dienstanforderungen erforderlich. Die Anforderung der **Anal
 
 In der folgenden Liste werden die erforderlichen und optionalen Anforderungsheader beschrieben.
 
-- `api-key`: Mit `api-key` wird die Anforderung bei Ihrem Suchdienst authentifiziert. Es handelt sich um einen für Ihren Dienst eindeutigen Zeichenfolgewert. Die Anforderung der **Analyse-API** muss einen `api-key` enthalten, der auf einen Administratorschlüssel (keinen Abfrageschlüssel) festgelegt ist.
+- `api-key`: Mit `api-key` wird die Anforderung bei Ihrem Suchdienst authentifiziert. Es handelt sich um einen für Ihren Dienst eindeutigen Zeichenfolgewert. Die **Analyse-API**-Anforderung muss einen `api-key` enthalten, der auf einen Administratorschlüssel (keinen Abfrageschlüssel) festgelegt ist.
 
 Sie benötigen außerdem den Index- sowie den Dienstnamen, um die URL der Anforderung zu erstellen. Sie können den Dienstnamen und den `api-key` in Ihrem Dienst-Dashboard im Azure-Portal abrufen. Hilfe bei der Seitennavigation finden Sie unter [Erstellen eines Azure-Suchdienstes im Portal](search-create-service-portal.md).
 
@@ -1050,7 +1052,7 @@ oder
       "charFilters": (optional) [ "char_filter_name" ]
     }
 
-`analyzer_name`, `tokenizer_name`, `token_filter_name` und `char_filter_name` müssen gültige Namen von vordefinierten oder benutzerdefinierten Analysen, Tokenizern, Tokenfiltern und Char-Filtern für den Index sein. Weitere Informationen zum Prozess der lexikalischen Analyse finden Sie unter [Analyse in Azure Search](https://aka.ms/azsanalysis).
+`analyzer_name`, `tokenizer_name`, `token_filter_name` und `char_filter_name` müssen gültige Namen von vordefinierten oder benutzerdefinierten Analyseprogrammen, Tokenizern, Tokenfiltern und Zeichenfiltern für den Index sein. Weitere Informationen zum Prozess der lexikalischen Analyse finden Sie unter [Analyse in Azure Search](https://aka.ms/azsanalysis).
 
 **Antwort**
 
@@ -1167,7 +1169,7 @@ Der Anforderungstext enthält ein oder mehrere zu indizierende Dokumente. Dokume
 - `upload`: Das Hochladen entspricht einer "upsert"-Aktion, bei der neue Dokumente eingefügt und bestehende Dokumente aktualisiert/ersetzt werden. Beachten Sie, dass bei einer Aktualisierung alle Felder ersetzt werden.
 - `merge`: Beim Zusammenführen wird ein bestehendes Dokument mit den angegebenen Feldern aktualisiert. Wenn das Dokument nicht vorhanden ist, schlägt die Zusammenführung fehl. Jedes Feld, das Sie in einer Zusammenführung angeben, ersetzt das vorhandene Feld im Dokument. Dies beinhaltet auch Felder vom Typ `Collection(Edm.String)`. Beispiel: Wenn das Dokument ein Feld namens "tags" mit dem Wert `["budget"]` enthält, und Sie eine Zusammenführung mit dem Wert `["economy", "pool"]` für "tags" durchführen, hat das Feld "tags" am Ende den Wert `["economy", "pool"]`. Der Wert lautet **nicht** `["budget", "economy", "pool"]`.
 - `mergeOrUpload`: Verhält sich wie beim `merge`-Vorgang, wenn im Index bereits ein Dokument mit dem gegebenen Schlüssel vorhanden ist. Wenn das Dokument noch nicht vorhanden ist, verhält es sich wie beim `upload`-Vorgang eines neuen Dokuments.
-- `delete`: Hiermit wird das angegebenen Dokument aus dem Index gelöscht. Beachten Sie, dass (mit Ausnahme des Schlüsselfelds) alle Felder, die Sie in einem `delete`-Vorgang angeben, ignoriert werden. Wenn Sie ein einzelnes Feld aus einem Dokument entfernen möchten, verwenden Sie stattdessen `merge` und setzen das Feld explizit auf `null`.
+- `delete`: Hiermit wird das angegebenen Dokument aus dem Index gelöscht. Beachten Sie, dass mit Ausnahme des Schlüsselfelds alle Felder, die Sie in einem `delete`-Vorgang angeben, ignoriert werden. Wenn Sie ein einzelnes Feld aus einem Dokument entfernen möchten, verwenden Sie stattdessen `merge` und setzen das Feld explizit auf `null`.
 
 **Antwort**
 
@@ -1196,7 +1198,7 @@ Für eine erfolgreiche Antwort wird als Statuscode „200“ (OK) zurückgeben. 
       ]
     }  
 
-Statuscode „207“ (Multistatus) wird zurückgegeben, wenn mindestens ein Element nicht erfolgreich indiziert wurde. Bei Elementen, die nicht indiziert wurden, ist für das Feld `status` „false“ festgelegt. Die Eigenschaften `errorMessage` und `statusCode` geben den Grund für den Indizierfehler an:
+Statuscode „207“ (Multistatus) wird zurückgegeben, wenn mindestens ein Element nicht erfolgreich indiziert wurde. Bei Elementen, die nicht indiziert wurden, ist für das Feld `status` „false“ festgelegt. Die Eigenschaften `errorMessage` und `statusCode` geben den Grund für den Indizierungsfehler an:
 
     {
       "value": [
@@ -1342,7 +1344,7 @@ Ein Vorgang vom Typ **Search** wird als GET- oder POST-Anforderung ausgegeben un
 
 Wenn die API **Search** mittels „HTTP GET“ aufrufen, darf die Länge der angeforderten URL maximal 8 KB betragen. Dies ist für die meisten Anwendungen ausreichend. Manche Anwendungen erzeugen jedoch sehr große Abfragen oder OData-Filterausdrücke. Bei solchen Anwendungen ist HTTP POST besser geeignet, da dadurch größere Filter und Abfragen als mit GET möglich sind. Bei POST stellt die Anzahl der Begriffe oder Klauseln in einer Abfrage die Einschränkung dar, nicht die Größe der unformatierten Abfrage, da die maximal zulässige Größe für Anforderungen bei POST etwa 16 MB ist.
 
-> [AZURE.NOTE] Obwohl die Größenbeschränkung für POST-Anforderungen sehr hoch ist, dürfen Suchabfragen und Filterausdrücke nicht übermäßig komplex sein. Weitere Informationen zu Einschränkungen bei der Komplexität von Suchabfragen und Filtern finden Sie in den Artikeln [Lucene-Abfragesyntax in Azure Search](https://msdn.microsoft.com/library/mt589323.aspx) und [OData-Ausdruckssyntax für Azure Search](https://msdn.microsoft.com/library/dn798921.aspx). **Anforderung**
+> [AZURE.NOTE] Obwohl die Größenbeschränkung für POST-Anforderungen sehr hoch ist, dürfen Suchabfragen und Filterausdrücke nicht übermäßig komplex sein. Weitere Informationen zu Einschränkungen hinsichtlich der Komplexität von Suchabfragen und -filtern finden Sie in den Artikeln [Lucene-Abfragesyntax](https://msdn.microsoft.com/library/mt589323.aspx) und [OData-Ausdruckssyntax](https://msdn.microsoft.com/library/dn798921.aspx). **Anforderung**
 
 Für Dienstanforderungen ist HTTPS erforderlich. Die Anforderung **Search** kann mit der GET- oder POST-Methode erstellt werden.
 
@@ -1402,7 +1404,7 @@ Darüber hinaus ist die URL-Codierung nur erforderlich, wenn Sie die REST-API di
 `facet=[string]` (null oder höher): Ein Feld, anhand dessen die Facettenbildung erfolgen soll. Die Zeichenfolge kann optional Parameter enthalten, um die in Form von kommagetrennten `name:value`-Paaren ausgedrückte Facettenbildung anzupassen. Gültige Parameter sind:
 
 - `count` (max. Anzahl von Facettenbegriffen; Standardwert: 10). Es gibt keine Obergrenze, höhere Werte führen jedoch zu einem entsprechenden Leistungsabzug, insbesondere wenn das Facettenfeld eine große Anzahl eindeutiger Begriffe enthält.
-  - Beispiel: `facet=category,count:5` ruft die ersten fünf Kategorien der Facettenergebnisse ab.  
+  - Beispiel: `facet=category,count:5` ruft die ersten fünf Kategorien der Facettenergebnisse ab.
   - **Hinweis**: Wenn der Parameter `count` unter der Anzahl der eindeutigen Begriffe liegt, sind die Ergebnisse möglicherweise nicht exakt. Dies liegt an der Art, wie Facettenabfragen über Shards hinweg verteilt werden. Durch ein Erhöhen von `count` erhöht sich im Allgemeinen auch die Genauigkeit der Begriffsanzahl, jedoch zulasten der Leistung.
 - `sort` (`count` zum *absteigenden* Sortieren nach Anzahl, `-count` zum *aufsteigenden* Sortieren nach Anzahl, `value` zum *aufsteigenden* Sortieren nach Wert oder `-value` zum *absteigenden* Sortieren nach Wert)
   - Beispiel: `facet=category,count:3,sort:count` ruft die ersten drei Kategorien in Facettenergebnisse in absteigender Reihenfolge nach der Anzahl der Dokumente mit jedem Ortsname ab. Wenn beispielsweise die ersten drei Kategorien "Budget", "Motel" und "Luxus" sind und für Budget 5 Treffer, für Motel 6 Treffer und für Luxus 4 Treffer vorhanden sind, werden die Bereiche (Buckets) in der Reihenfolge Motel, Budget, Luxus sortiert.
@@ -1413,10 +1415,10 @@ Darüber hinaus ist die URL-Codierung nur erforderlich, wenn Sie die REST-API di
 - `interval` (ganzzahliges Intervall größer als 0 für Zahlen oder `minute`, `hour`, `day`, `week`, `month`, `quarter`, `year` für Datum-Uhrzeit-Werte)
   - Beispiel: `facet=baseRate,interval:100` erstellt Buckets basierend auf Basistarifbereichen von 100. Wenn die Basistarife beispielsweise alle zwischen 60 $ und 600 $ liegen, werden Buckets für 0 – 100, 100 – 200, 200 – 300, 300 – 400, 400 – 500 und 500 – 600 erstellt.
   - Beispiel: `facet=lastRenovationDate,interval:year` erstellt ein Bucket für jedes Jahr, in dem Hotels renoviert wurden.
-- `timeoffset` ([+-]hh:mm, [+-]hhmm oder [+-]hh). `timeoffset` ist optional. Es ist nur eine Kombination mit der Option `interval` möglich, und das auch nur dann, wenn das entsprechende Feld den Typ `Edm.DateTimeOffset` aufweist. Der Wert gibt den Offset zur UTC-Zeit für die Festlegung der zeitlichen Grenzwerte an.
+- `timeoffset` ([+-]hh:mm, [+-]hhmm oder [+-]hh) `timeoffset` ist optional. Es ist nur eine Kombination mit der Option `interval` möglich, und das auch nur dann, wenn das entsprechende Feld den Typ `Edm.DateTimeOffset` aufweist. Der Wert gibt den Offset zur UTC-Zeit für die Festlegung der zeitlichen Grenzwerte an.
   - Beispiel: `facet=lastRenovationDate,interval:day,timeoffset:-01:00` verwendet eine Tagesgrenze, die um 01:00:00 Uhr UTC (Mitternacht in der Zielzeitzone) beginnt.
 - **Hinweis**: `count` und `sort` können in derselben Facettenspezifikation kombiniert werden. Eine Kombination mit `interval` oder `values` ist jedoch nicht möglich. Ebenso wenig können `interval` und `values` kombiniert werden.
-- **Hinweis:** Intervallabschnitte für Datum und Uhrzeit werden basierend auf der UTC-Zeit berechnet, sofern nicht `timeoffset` angegeben wurde. Beispiel: Für `facet=lastRenovationDate,interval:day` beginnt der Tag um 00:00:00 Uhr UTC. 
+- **Hinweis:** Intervallfacetten für Datum und Uhrzeit werden basierend auf der UTC-Zeit berechnet, sofern `timeoffset` nicht angegeben wurde. Beispiel: Für `facet=lastRenovationDate,interval:day` beginnt die Tagesgrenze um 00:00:00 Uhr UTC.
 
 > [AZURE.NOTE] Wenn Sie **Search** mithilfe von „POST“ aufrufen, heißt dieser Parameter nicht `facet`, sondern `facets`. Darüber hinaus muss ein JSON-Zeichenfolgenarray mit jeweils separaten Facettenausdrücken angegeben werden.
 
@@ -1440,7 +1442,7 @@ Darüber hinaus ist die URL-Codierung nur erforderlich, wenn Sie die REST-API di
 
 - Beispiel: Wenn das Bewertungsprofil eine Funktion mit einem Parameter namens „mylocation“ definiert, lautet die Option für die Abfragezeichenfolge `&scoringParameter=mylocation--122.2,44.8`. Der erste Bindestrich trennt den Namen aus der Werteliste, und der zweite Bindestrich ist Teil des ersten Werts (Länge in diesem Beispiel).
 - Für Bewertungsparameter wie für Tagverstärkung, die Kommas enthalten können, können Sie solche Werte in der Liste mit einfachen Anführungszeichen als Escapezeichen versehen. Wenn die Werte selbst einfache Anführungszeichen enthalten, können Sie sie verdoppeln, um sie mit Escapezeichen zu versehen.
-  - Wenn Sie z.B. bei einem Tagverstärkungsparameter namens „mytag“ die Tagwerte „Hello, O'Brien“ und „Smith“ verstärken möchten, wäre die Abfragezeichenfolgenoption `&scoringParameter=mytag-'Hello, O''Brien',Smith`. Beachten Sie, dass Anführungszeichen nur erforderlich sind für Werte, die Kommas enthalten.
+  - Wenn Sie z.B. bei einem Tagverstärkungsparameter namens „mytag“ die Tagwerte „Hello, O'Brien“ und „Smith“ höher einstufen möchten, wäre die Abfragezeichenfolgenoption `&scoringParameter=mytag-'Hello, O''Brien',Smith`. Beachten Sie, dass Anführungszeichen nur erforderlich sind für Werte, die Kommas enthalten.
 
 > [AZURE.NOTE] Wenn Sie **Search** mithilfe von „POST“ aufrufen, heißt dieser Parameter nicht `scoringParameter`, sondern `scoringParameters`. Darüber hinaus muss ein JSON-Zeichenfolgenarray mit jeweils separaten `name-values`-Paaren angegeben werden.
 
@@ -1835,7 +1837,7 @@ Ein Vorgang vom Typ **Suggestions** wird als GET- oder POST-Anforderung ausgegeb
 
 Wenn Sie die API **Suggestions** mittels „HTTP GET“ aufrufen, darf die Länge der angeforderten URL maximal 8 KB betragen. Dies ist für die meisten Anwendungen ausreichend. Manche Anwendungen erzeugen jedoch sehr große Abfragen. Das gilt insbesondere für OData-Filterausdrücke. Bei solchen Anwendungen ist HTTP POST besser geeignet, da dadurch größere Filter als mit GET möglich sind. Bei POST stellt die Anzahl der Klauseln in einem Filter die Einschränkung dar, nicht die Größe der unformatierten Filterzeichenfolge, da die maximal zulässige Größe für Anforderungen bei POST etwa 16 MB ist.
 
-> [AZURE.NOTE] Obwohl die Größenbeschränkung für POST-Anforderungen sehr hoch ist, dürfen Filterausdrücke nicht übermäßig komplex sein. Weitere Informationen zu Einschränkungen bei der Komplexität von Filtern finden Sie unter [OData-Ausdruckssyntax für Azure Search](https://msdn.microsoft.com/library/dn798921.aspx).
+> [AZURE.NOTE] Obwohl die Größenbeschränkung für POST-Anforderungen sehr hoch ist, dürfen Filterausdrücke nicht übermäßig komplex sein. Weitere Informationen zu Einschränkungen bei der Komplexität von Filtern finden Sie unter [OData-Ausdruckssyntax](https://msdn.microsoft.com/library/dn798921.aspx).
 
 **Anforderung**
 
@@ -1968,4 +1970,4 @@ Rufen Sie 5 Vorschläge mit der Teilsuche nach "lux" ab.
       "suggesterName": "sg"
     }
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

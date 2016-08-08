@@ -22,7 +22,7 @@
 
 ## 2\. Video der Reihe „Data Science für Einsteiger“
 
-Erfahren Sie, wie Sie Ihre Daten bewerten können, um sicherzustellen, dass sie die Basiskriterien für Data Science erfüllen.
+Erfahren Sie, wie Sie Ihre Daten bewerten können, um sicherzustellen, dass sie die Basiskriterien erfüllen und für Data Science bereit sind.
 
 Die Reihe bietet den größten Nutzen, wenn Sie sich die Videos in der vorgegebenen Reihenfolge ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)
 
@@ -71,7 +71,7 @@ Sehen wir uns nun die Tabelle auf der rechten Seite an. Dieses Mal haben wir die
 
 Die nächste Zutat sind verbundene Daten.
 
-![Verbundene Daten im Vergleich mit nicht verbundenen Daten: Kriterien von Daten](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-connected-vs-disconnected-data.png)
+![Verbundene Daten im Vergleich mit nicht verbundenen Daten: Kriterien von Daten, Daten bereit](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-connected-vs-disconnected-data.png)
 
 Hier einige relevante Daten zur Qualität von Hamburgern: Grilltemperatur, Fleischgewicht und Bewertung im lokalen Gastroführer. Beachten Sie jedoch die Lücken in der Tabelle auf der linken Seite.
 
@@ -119,4 +119,4 @@ Sehen Sie sich unbedingt auch die anderen vier Videos in der Reihe *Data Science
   * [Durchführen Ihres ersten Data Science-Experiments mit Azure Machine Learning](machine-learning-create-experiment.md)
   * [Einführung in Machine Learning in Microsoft Azure](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

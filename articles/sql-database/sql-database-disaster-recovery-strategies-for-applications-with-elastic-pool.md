@@ -12,8 +12,8 @@
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="sqldb-bcdr" 
-   ms.date="06/16/2016"
+   ms.workload="NA" 
+   ms.date="07/16/2016"
    ms.author="sashan"/>
 
 # Strategien für die Notfallwiederherstellung für Anwendungen mit elastischem SQL-Datenbankpool 
@@ -165,9 +165,9 @@ In diesem Artikel geht es um die Notfallwiederherstellungsstrategien für die Da
 ## Nächste Schritte
 
 - Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
-- Informationen über Entwurfs- und Wiederherstellungsszenarien für die Geschäftskontinuität finden Sie unter [Geschäftskontinuitätsszenarien](sql-database-business-continuity-scenarios.md).
+- Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
 - Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).
 - Informationen über schnellere Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
 - Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

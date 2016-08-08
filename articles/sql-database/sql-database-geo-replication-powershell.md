@@ -12,8 +12,8 @@
     ms.devlang="NA"
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
-   ms.workload="sqldb-bcdr"
-    ms.date="06/14/2016"
+   ms.workload="NA"
+    ms.date="07/14/2016"
     ms.author="sstein"/>
 
 # Konfigurieren der Georeplikation für die Azure SQL-Datenbank mit PowerShell
@@ -146,6 +146,6 @@ Der folgende Befehl ruft den Status der Replikationsverknüpfung zwischen der pr
 ## Nächste Schritte
 
 - Weitere Informationen zur aktiven Georeplikation finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
-- Informationen über Entwurfs- und Wiederherstellungsszenarien für die Geschäftskontinuität finden Sie unter [Geschäftskontinuitätsszenarien](sql-database-business-continuity-scenarios.md).
+- Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

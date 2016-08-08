@@ -33,8 +33,8 @@ In einem Cluster, dem mehr Worker-Knoten zur Verfügung stehen, können mehr Map
 
 - Bei der Bereitstellung können Sie die Anzahl der Worker-Knoten im Azure-Portal, in Azure PowerShell oder in der plattformübergreifenden Befehlszeilenschnittstelle angeben. Weitere Informationen finden Sie unter [Bereitstellen von HDInsight-Clustern](hdinsight-provision-clusters.md). Der folgende Screenshot zeigt die Konfiguration der Worker-Knoten im Azure-Portal:
 
-	![scaleout\_1][image-hdi-optimize-hive-scaleout_1]
-- Aber auch während der Laufzeit kann ein Cluster horizontal skaliert werden, ohne ihn neu zu erstellen. Dies wird nachfolgend gezeigt. ![scaleout\_1][image-hdi-optimize-hive-scaleout_2]
+	![scaleout\_1][image-hdi-optimize-hive-scaleout\_1]
+- Aber auch während der Laufzeit kann ein Cluster horizontal skaliert werden, ohne ihn neu zu erstellen. Dies wird nachfolgend gezeigt. ![scaleout\_1][image-hdi-optimize-hive-scaleout\_2]
 
 Weitere Informationen zu den von HDInsight unterstützten virtuellen Computern finden Sie unter [HDInsight-Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
 
@@ -42,7 +42,7 @@ Weitere Informationen zu den von HDInsight unterstützten virtuellen Computern f
 
 [Apache Tez](http://hortonworks.com/hadoop/tez/) ist eine Alternative zum Ausführungsmodul MapReduce:
 
-![tez\_1][image-hdi-optimize-hive-tez_1]
+![tez\_1][image-hdi-optimize-hive-tez\_1]
 
 
 Tez ist jedoch aus folgenden Gründen schneller:
@@ -90,7 +90,7 @@ E/A-Vorgänge sind bei der Ausführung von Hive-Abfragen der größte Leistungse
 
 Die Partitionierung in Hive erfolgt durch Neuorganisation der Rohdaten in neuen Verzeichnissen, wobei jede Partition ein eigenes, vom Benutzer definiertes Verzeichnis erhält. Das folgende Diagramm veranschaulicht die Partitionierung einer Hive-Tabelle nach der Spalte *Jahr*. Für jedes Jahr wird ein neues Verzeichnis erstellt.
 
-![Partitionierung][image-hdi-optimize-hive-partitioning_1]
+![partitioning][image-hdi-optimize-hive-partitioning\_1]
 
 Überlegungen zur Partitionierung:
 
@@ -122,7 +122,7 @@ Für die erstellte Partitionstabelle können Sie eine statische oder eine dynami
 	    WHERE lineitem.L_SHIPDATE = ‘5/23/1996 12:00:00 AM’
 
 	    ALTER TABLE lineitem_part ADD PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’))
-	    LOCATION ‘wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
+	    LOCATION ‘wasbs://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
 
 - **Dynamische Partitionierung** bedeutet, dass Hive die Partitionen automatisch erstellen und anpassen soll. Da wir die Partitionstabelle bereits aus der Stagingtabelle erstellt haben, müssen wir die Tabelle nun nur noch mit Daten füllen, wie nachfolgend gezeigt:
 
@@ -215,9 +215,6 @@ In diesem Artikel haben Sie mehrere allgemeine Hive-Methoden zur Optimierung von
 - [Verwenden von Hive in HDInsight zum Analysieren von Website-Protokollen](hdinsight-hive-analyze-website-log.md)
 
 
-[image-hdi-optimize-hive-scaleout_1]: ./media/hdinsight-hadoop-optimize-hive-query-v1/scaleout_1.png
-[image-hdi-optimize-hive-scaleout_2]: ./media/hdinsight-hadoop-optimize-hive-query-v1/scaleout_2.png
-[image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query-v1/tez_1.png
-[image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query-v1/partitioning_1.png
+[image-hdi-optimize-hive-scaleout_1]: ./media/hdinsight-hadoop-optimize-hive-query-v1/scaleout_1.png [image-hdi-optimize-hive-scaleout_2]: ./media/hdinsight-hadoop-optimize-hive-query-v1/scaleout_2.png [image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query-v1/tez_1.png [image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query-v1/partitioning_1.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

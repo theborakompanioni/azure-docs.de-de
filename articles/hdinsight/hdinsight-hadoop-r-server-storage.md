@@ -34,17 +34,17 @@ Bei Bedarf können Sie mit Ihrem HDI-Cluster auf mehrere Azure-Speicherkonten zu
 2. Geben Sie zusätzlich ein Speicherkonto mit dem Namen **storage2** an.
 3. Kopieren Sie die Datei „mycsv.csv“ in das Verzeichnis „/share“, und führen Sie eine Analyse für diese Datei durch.
 
-````
-hadoop fs –mkdir /share
-hadoop fs –copyFromLocal myscsv.scv /share  
-````
+    ````
+    hadoop fs –mkdir /share
+    hadoop fs –copyFromLocal myscsv.scv /share  
+    ````
 
 3.	Legen Sie im R-Code den Namensknoten auf **default** fest, und geben Sie das Verzeichnis und die Datei für die Verarbeitung an.
 
-````
-myNameNode <- "default"
-myPort <- 0
-````
+    ````
+    myNameNode <- "default"
+    myPort <- 0
+    ````
 
   Speicherort der Daten:
 
@@ -66,13 +66,13 @@ myPort <- 0
 
     inputFile <-file.path(bigDataDirRoot,"mycsv.csv")
 
-Alle Verzeichnis- und Dateiverweise zeigen auf das Speicherkonto wasb://container1@storage1.blob.core.windows.net. Dies ist das **Standardspeicherkonto**, das dem HDInsight-Cluster zugeordnet ist.
+Alle Verzeichnis- und Dateiverweise zeigen auf das Speicherkonto wasbs://container1@storage1.blob.core.windows.net. Dies ist das **Standardspeicherkonto**, das dem HDInsight-Cluster zugeordnet ist.
 
 Angenommen, Sie möchten eine Datei mit dem Namen „mySpecial.csv“ verarbeiten, die im Verzeichnis „/private“ von **container2** in **storage2** enthalten ist.
 
 Legen Sie den Namensknotenverweis im R-Code auf das Speicherkonto **storage2** fest.
 
-    myNameNode <- "wasb://container2@storage2.blob.core.windows.net"
+    myNameNode <- "wasbs://container2@storage2.blob.core.windows.net"
     myPort <- 0
 
   Speicherort der Daten:
@@ -95,13 +95,13 @@ Legen Sie den Namensknotenverweis im R-Code auf das Speicherkonto **storage2** f
 
     inputFile <-file.path(bigDataDirRoot,"mySpecial.csv")
 
-Alle Verzeichnis- und Dateiverweise zeigen jetzt auf das Speicherkonto wasb://container2@storage2.blob.core.windows.net. Dies ist der **Namensknoten**, den Sie angegeben haben.
+Alle Verzeichnis- und Dateiverweise zeigen jetzt auf das Speicherkonto wasbs://container2@storage2.blob.core.windows.net. Dies ist der **Namensknoten**, den Sie angegeben haben.
 
 Beachten Sie, dass Sie das Verzeichnis „/user/RevoShare/<SSH username>“ unter **storage2** wie folgt konfigurieren müssen:
 
-    hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user
-    hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare
-    hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
+    hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user
+    hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShare
+    hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
 
 ## Verwenden eines Azure Data Lake-Speichers
 
@@ -117,7 +117,7 @@ Sie greifen auf einen Data Lake-Speicher zu, indem Sie einen Azure AD-Dienstprin
 
 Nachdem Sie dem Dienstprinzipal einen Namen gegeben und ein Kennwort dafür erstellt haben, wird eine neue Registerkarte geöffnet. Darüber können Sie den Dienstprinzipal Ihren Data Lake-Speichern zuordnen.
 
-Beachten Sie, dass Sie Zugriff auf einen Data Lake-Speicher auch später hinzufügen können, indem Sie den Data Lake-Speicher im Azure-Portal öffnen und zu **Daten-Explorer** > **Zugriff** wechseln. Unten ist ein Beispiel für ein Dialogfeld angegeben, das verdeutlicht, wie Sie einen Dienstprinzipal erstellen und dem Data Lake-Speicher „rkadl11“ zuordnen.
+Beachten Sie, dass Sie Zugriff auf Data Lake Store auch später hinzufügen können, indem Sie Data Lake Store im Azure-Portal öffnen und zu **Daten-Explorer** > **Zugriff** wechseln. Unten ist ein Beispiel für ein Dialogfeld angegeben, das verdeutlicht, wie Sie einen Dienstprinzipal erstellen und dem Data Lake-Speicher „rkadl11“ zuordnen.
 
 ![Data Lake-Speicher erstellen – Dienstprinzipal 1](./media/hdinsight-hadoop-r-server-storage/hdinsight-hadoop-r-server-storage-adls-sp1.png)
 
@@ -190,4 +190,4 @@ Da Sie jetzt die Grundlagen zur Verwendung der R-Konsole über eine SSH-Sitzung 
 - [Hinzufügen von RStudio Server zu HDInsight Premium](hdinsight-hadoop-r-server-install-r-studio.md)
 - [Rechenkontextoptionen für R Server in HDInsight](hdinsight-hadoop-r-server-compute-contexts.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

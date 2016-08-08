@@ -13,14 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/11/2016"
+   ms.date="07/26/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center – Häufig gestellte Fragen
 
 Hier werden häufig gestellte Fragen zu Azure Security Center beantwortet. Azure Security Center ist ein Dienst, der Sie durch größere Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen dabei unterstützt, Bedrohungen zu verhindern, zu erkennen und darauf zu reagieren.
-
-> [AZURE.NOTE] Die Informationen in diesem Dokument gelten für die Vorschauversion von Azure Security Center.
 
 ## Allgemeine Fragen
 
@@ -41,12 +39,12 @@ Security Center sammelt Daten von Ihren virtuellen Computern, um den Sicherheits
 
 ### Wie deaktiviere ich Datensammlung?
 
-Die Option **Datensammlung** kann für ein Abonnement jederzeit in der Sicherheitsrichtlinie deaktiviert werden. ([Melden Sie sich beim Azure-Portal an](https://portal.azure.com), und wählen Sie **Durchsuchen** > **Security Center** > **Sicherheitsrichtlinie** aus.) Wenn Sie ein Abonnement auswählen, wird ein neues Blatt geöffnet, auf dem Sie die Option **Datensammlung** deaktivieren können. Wählen Sie im oberen Menüband die Option **Agents löschen** aus, um die Agents von vorhandenen virtuellen Computern zu entfernen.
+Die Option **Datensammlung** kann für ein Abonnement jederzeit in der Sicherheitsrichtlinie deaktiviert werden. ([Melden Sie sich beim Azure-Portal an](https://portal.azure.com), und wählen Sie nacheinander **Durchsuchen**, **Security Center** und **Sicherheitsrichtlinie** aus.) Wenn Sie ein Abonnement auswählen, wird ein neues Blatt geöffnet, auf dem Sie die Option **Datensammlung** deaktivieren können. Wählen Sie im oberen Menüband die Option **Agents löschen** aus, um die Agents von vorhandenen virtuellen Computern zu entfernen.
 
 > [AZURE.NOTE] Sicherheitsrichtlinien können auf der Ebene des Azure-Abonnements und der Ressourcengruppe festgelegt werden. Zum Deaktivieren der Datensammlung muss allerdings ein Abonnement ausgewählt werden.
 
 ### Wie aktiviere ich die Datensammlung?
-Sie können Datensammlung für Ihre Azure-Abonnements in der Sicherheitsrichtlinie aktivieren. Um die Datensammlung zu aktivieren, [melden Sie sich beim Azure-Portal an](https://portal.azure.com), und wählen Sie **Durchsuchen** > **Security Center** > **Richtlinie** aus. Legen Sie **Datensammlung** auf **Ein** fest, und konfigurieren Sie die Speicherkonten, in denen Sie die gesammelten Daten anzeigen möchten (siehe die Frage [Wo werden meine Daten gespeichert?](#where-is-my-data-stored)). Wenn **Datensammlung** aktiviert ist, werden automatisch Sicherheitskonfigurations- und Ereignisinformationen von allen virtuellen Computern gesammelt, die im Abonnement unterstützt werden.
+Sie können Datensammlung für Ihre Azure-Abonnements in der Sicherheitsrichtlinie aktivieren. Um die Datensammlung zu aktivieren, [melden Sie sich beim Azure-Portal an](https://portal.azure.com), und wählen Sie nacheinander **Durchsuchen**, **Security Center** und **Richtlinie** aus. Legen Sie **Datensammlung** auf **Ein** fest, und konfigurieren Sie die Speicherkonten, in denen Sie die gesammelten Daten anzeigen möchten (siehe die Frage [Wo werden meine Daten gespeichert?](#where-is-my-data-stored)). Wenn **Datensammlung** aktiviert ist, werden automatisch Sicherheitskonfigurations- und Ereignisinformationen von allen virtuellen Computern gesammelt, die im Abonnement unterstützt werden.
 
 > [AZURE.NOTE] Sicherheitsrichtlinien können auf der Ebene des Azure-Abonnements und der Ressourcengruppe festgelegt werden, die Konfiguration von Datensammlung erfolgt jedoch nur auf Abonnementebene.
 
@@ -57,7 +55,7 @@ Datensammlung wird über den Azure-Überwachungs-Agent und die Azure-Erweiterung
 Der Agent und die Erweiterung beanspruchen eine äußerst geringe Menge von Systemressourcen und sollten nur eine geringe Auswirkung auf die Leistung haben.
 
 ### Wo werden meine Daten gespeichert?
-Wählen Sie für jede Region, in der Sie virtuelle Computer ausführen, ein Speicherkonto, in dem Daten dieser virtuellen Computer gespeichert werden. Dies macht es einfach für Sie, Daten aus Datenschutz- und Datenhoheitszwecken im selben geografischen Gebiet zu speichern. Das Speicherkonto für ein Abonnement wählen Sie in der Sicherheitsrichtlinie aus. ([Melden Sie sich beim Azure-Portal an](https://portal.azure.com), und wählen Sie **Durchsuchen** > **Security Center** > **Sicherheitsrichtlinie** aus.) Wenn Sie auf ein Abonnement klicken, wird ein neues Blatt geöffnet. Klicken Sie auf **Speicherkonten wählen**, um eine Region auszuwählen.
+Wählen Sie für jede Region, in der Sie virtuelle Computer ausführen, ein Speicherkonto, in dem Daten dieser virtuellen Computer gespeichert werden. Dies macht es einfach für Sie, Daten aus Datenschutz- und Datenhoheitszwecken im selben geografischen Gebiet zu speichern. Das Speicherkonto für ein Abonnement wählen Sie in der Sicherheitsrichtlinie aus. ([Melden Sie sich beim Azure-Portal an](https://portal.azure.com), und wählen Sie nacheinander **Durchsuchen**, **Security Center** und **Richtlinie** aus.) Wenn Sie auf ein Abonnement klicken, wird ein neues Blatt geöffnet. Klicken Sie auf **Speicherkonten wählen**, um eine Region auszuwählen.
 
 > [AZURE.NOTE] Sicherheitsrichtlinien können auf der Ebene von Azure-Abonnement und Ressourcengruppe festgelegt werden. Die Auswahl einer Region für Ihr Speicherkonten erfolgt jedoch nur auf Abonnementebene.
 
@@ -114,7 +112,7 @@ Damit Sie eine Sicherheitsrichtlinie bearbeiten können, müssen Sie ein Besitze
 ## Virtual Machines
 
 ### Welche Typen von virtuellen Maschinen werden unterstützt?
-Die Überwachung der Sicherheitsintegrität und Empfehlungen sind für virtuelle Computer (VMs) verfügbar, die mit dem [klassischen Bereitstellungsmodell oder mit dem Resource Manager-Bereitstellungsmodell](../azure-classic-rm.md) erstellt wurden. Dies gilt auch für VMs, die Teil von Azure Service Fabric-Clustern sind.
+Die Überwachung der Sicherheitsintegrität und entsprechende Empfehlungen sind für virtuelle Computer (virtual machines, VMs) verfügbar, die mit dem [klassischen Bereitstellungsmodell oder mit dem Resource Manager-Bereitstellungsmodell](../azure-classic-rm.md) erstellt wurden.
 
 Unterstützte Windows-VMs:
 
@@ -126,10 +124,10 @@ Unterstützte Linux-VMs:
 
 - Ubuntu-Versionen 12.04, 14.04, 15.10, 16.04
 - Debian-Versionen 7, 8
-- CentOS-Versionen 6.\*, 7.*
-- Red Hat Enterprise Linux-Versionen (RHEL) 6.\*, 7.*
-- SUSE Linux Enterprise Server-Versionen (SLES) 11.\*, 12.*
+- CentOS-Versionen 6.*, 7.*
+- Red Hat Enterprise Linux-Versionen (RHEL) 6.*, 7.*
+- SUSE Linux Enterprise Server-Versionen (SLES) 11.*, 12.*
 
 VMs, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt. Es werden nur Clouddienst-Webrollen und -Workerrollen überwacht, die in Produktionsslots ausgeführt werden. Weitere Informationen zum Clouddienst finden Sie unter [Übersicht über Cloud Services](../cloud-services/cloud-services-choose-me.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

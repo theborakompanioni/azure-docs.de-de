@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/18/2016"
+	ms.date="07/27/2016"
 	ms.author="micurd"/>
 
 # Verschieben von Daten in und aus Azure Storage
@@ -27,6 +27,8 @@ Wenn Sie eine Anwendung erstellen, ist das Entwickeln mit der REST-API oder eine
 Azure Storage bietet umfangreiche Clientbibliotheken für .NET, iOS, Java, Android, die universelle Windows-Plattform (UWP), Xamarin, C++, Node.JS, PHP, Ruby und Python. Die Clientbibliotheken bieten erweiterte Funktionen, beispielsweise Wiederholungslogik, Protokollierung und parallele Uploads. Die Entwicklung kann direkt mit der REST-API erfolgen. Diese API lässt sich mithilfe jeder Sprache aufrufen, die HTTP/HTTPS-Anforderungen verarbeitet.
 
 Weitere Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](storage-dotnet-how-to-use-blobs.md).
+
+Darüber hinaus bieten wir auch die [Azure Storage Data Movement Library](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement) an, eine Bibliothek, die für das Kopieren von Daten zu und aus Azure mit hoher Leistung konzipiert wurde. Die [Dokumentation](https://github.com/Azure/azure-storage-net-data-movement) zu unserer Data Movement Library bietet weitere Informationen.
 
 ## Schnelles Anzeigen/Interagieren mit den Daten
 
@@ -80,4 +82,4 @@ Wenn Sie über lokale Workloads und Anwendungen verfügen, benötigen Sie eine L
 
 Weitere Informationen finden Sie unter [Azure Site Recovery](../site-recovery/site-recovery-overview.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0727_2016-->

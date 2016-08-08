@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="07/25/2016"
 	ms.author="nitinme"/>
 
 
@@ -68,7 +68,7 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 
 	![IP-Adresse des Hauptknotens ermitteln](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-hosts.png)
 
-3. Eine Liste mit Hauptknoten, Workerknoten und Zookeeper-Knoten wird angezeigt. Die Hauptknoten haben das Präfix **hn**. Klicken Sie auf den ersten Hauptknoten.
+3. Eine Liste mit Hauptknoten, Workerknoten und Zookeeper-Knoten wird angezeigt. Die Hauptknoten haben das Präfix **hn***. Klicken Sie auf den ersten Hauptknoten.
 
 	![IP-Adresse des Hauptknotens ermitteln](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/cluster-headnodes.png)
 
@@ -202,8 +202,8 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 		    val sc = new SparkContext(conf)
 		
 		    SparkSample.executeJob(sc,
-		                           "wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv",
-		                           "wasb:///HVACOut")
+		                           "wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv",
+		                           "wasbs:///HVACOut")
 		  }
 		}
 
@@ -238,20 +238,20 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 		    val conf = new SparkConf().setAppName("SparkSample")
 		                              .setMaster("yarn-client")
 		                              .set("spark.yarn.am.extraJavaOptions", "-Dhdp.version=2.4")
-		                              .set("spark.yarn.jar", "wasb:///hdp/apps/2.4.2.0-258/spark-assembly-1.6.1.2.4.2.0-258-hadoop2.7.1.2.4.2.0-258.jar")
+		                              .set("spark.yarn.jar", "wasbs:///hdp/apps/2.4.2.0-258/spark-assembly-1.6.1.2.4.2.0-258-hadoop2.7.1.2.4.2.0-258.jar")
 		                              .setJars(Seq("""C:\WORK\IntelliJApps\MyClusterApp\out\artifacts\MyClusterApp_DefaultArtifact\default_artifact.jar"""))
 		                              .set("spark.hadoop.validateOutputSpecs", "false")
 		    val sc = new SparkContext(conf)
 		
 		    SparkSample.executeJob(sc,
-		      "wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv",
-		      "wasb:///HVACOut")
+		      "wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv",
+		      "wasbs:///HVACOut")
 		  }
 		}
 
 	Hierbei sind einige wichtige Punkte zu beachten:
 	
-	* Stellen Sie für `.set("spark.yarn.jar", "wasb:///hdp/apps/2.4.2.0-258/spark-assembly-1.6.1.2.4.2.0-258-hadoop2.7.1.2.4.2.0-258.jar")` sicher, dass die Spark-Assembly-JAR-Datei im Clusterspeicher unter dem angegebenen Pfad verfügbar ist.
+	* Stellen Sie für `.set("spark.yarn.jar", "wasbs:///hdp/apps/2.4.2.0-258/spark-assembly-1.6.1.2.4.2.0-258-hadoop2.7.1.2.4.2.0-258.jar")` sicher, dass die Spark-Assembly-JAR-Datei im Clusterspeicher unter dem angegebenen Pfad verfügbar ist.
 	* Geben Sie für `setJars` den Speicherort an, an dem die Artefakt-JAR-Datei erstellt wird. Normalerweise ist dies `<Your IntelliJ project directory>\out<project name>_DefaultArtifact\default_artifact.jar`.
 
 
@@ -346,4 +346,4 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

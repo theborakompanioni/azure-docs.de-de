@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Bedingter Zugriff unter Azure – Vorschau für SaaS-Apps | Microsoft Azure"
+	pageTitle="Bedingter Zugriff unter Azure für SaaS-Apps | Microsoft Azure"
 	description="Der bedingte Zugriff in Azure AD ermöglicht Ihnen die anwendungsspezifische Konfiguration von Zugriffsregeln für die mehrstufige Authentifizierung und das Blockieren des Zugriffs für Benutzer, die nicht zu einem vertrauenswürdigen Netzwerk gehören. "
 	services="active-directory"
 	documentationCenter=""
-	authors="femila"
-	manager="swadhwa"
+	authors="markusvi"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/14/2016"
-	ms.author="femila"/>
+	ms.date="07/26/2016"
+	ms.author="markvi"/>
 
 # Erste Schritte mit bedingtem Zugriff auf Azure AD  
 
-Der bedingte Zugriff mit Azure Active Directory für SaaS-Apps und verbundene Azure AD-Apps ist als öffentliche Vorschau verfügbar. In der Vorschauversion kann bedingter Zugriff auf der Grundlage von Gruppe, Standort und Anwendungsvertraulichkeit konfiguriert werden.
+Bedingter Zugriff mit Azure Active Directory für [SaaS](https://azure.microsoft.com/overview/what-is-saas/)-Apps und verbundene Azure AD-Apps ermöglicht den bedingten Zugriff nach Gruppe, Standort und Anwendungsvertraulichkeit.
 
 Die Regeln für die Multi-Factor Authentication können auf alle Benutzer angewendet werden, die einer Anwendung zugewiesen sind, oder nur auf Benutzer in angegebenen Sicherheitsgruppen. Mit bedingtem Zugriff auf der Grundlage der Anwendungsvertraulichkeit können Sie anwendungsspezifische MFA-Zugriffsregeln festlegen und so den Zugriff für Benutzer blockieren, die sich nicht in einem vertrauenswürdigen Netzwerk befinden. Benutzer können von der Pflicht zur mehrstufigen Authentifizierung ausgenommen werden, wenn sie von einer IP-Adresse innerhalb des Netzwerks der Organisation auf die Anwendung zugreifen.
 
@@ -30,9 +30,6 @@ Diese Funktionen stehen Kunden zur Verfügung, die eine Azure Active Directory P
 * Verbundbasierter oder verwalteter Azure Active Directory-Mandant
 
 * Verbundmandanten erfordern die Aktivierung der mehrstufigen Authentifizierung.
-
-## Bekannte Probleme in dieser Vorschauversion
-Diese Vorschau gilt für vorab integrierte SaaS-Verbundanwendungen, Anwendungen, die einmaliges Anmelden mit Kennwort verwenden, registrierte entwickelte Anwendungen und Branchenanwendungen sowie den Azure AD-Anwendungsproxy. Zusätzliche Anwendungen werden noch aktiviert.
 
 ## Konfigurieren anwendungsspezifischer Zugriffsregeln
 
@@ -50,7 +47,7 @@ Dieser Abschnitt beschreibt die Konfiguration anwendungsspezifischer Zugriffsreg
 
 ##Grundlegendes zu Zugriffsregeln
 
-Dieser Abschnitt enthält eine ausführliche Beschreibung der Zugriffsregeln, die in der Vorschau der Azure-Funktion für bedingten Anwendungszugriff unterstützt werden.
+Dieser Abschnitt enthält eine ausführliche Beschreibung der Zugriffsregeln, die in der Azure-Funktion für bedingten Anwendungszugriff unterstützt werden.
 
 ### Angeben der Benutzer, für die die Zugriffsregeln gelten
 
@@ -58,13 +55,13 @@ Standardmäßig gilt die Richtlinie für alle Benutzer, die auf die Anwendung zu
 
 Sicherheitsgruppen können auch explizit von der Richtlinie ausgeschlossen werden, indem Sie die Ausnahmeoption aktivieren und eine oder mehrere Gruppen angeben. Benutzer, die Mitglied einer Gruppe in der Ausnahmenliste sind, unterliegen nicht der Pflicht zur mehrstufigen Authentifizierung, selbst wenn sie einer Gruppe angehören, für die die Regel gilt. Die unten gezeigte Zugriffsregel verlangt von allen Benutzern in der Manager-Gruppe, dass sie über die mehrstufige Authentifizierung auf die Anwendung zugreifen.
 
-![Festlegen bedingter Zugriffsregeln mit MFA](./media/active-directory-conditional-access/conditionalaccess-saas-apps.png)
+![Festlegen bedingter Zugriffsregeln mit MFA](./media/active-directory-conditional-access-azuread-connected-apps/conditionalaccess-saas-apps.png)
 
 ## Bedingte Zugriffsregeln mit MFA
 Wenn ein Benutzer mit der benutzerspezifischen mehrstufigen Authentifizierung konfiguriert wurde, wird diese Einstellung für den Benutzer mit den Regeln der App für die mehrstufige Authentifizierung kombiniert. Dies bedeutet, dass ein Benutzer, für den die benutzerspezifische mehrstufige Authentifizierung konfiguriert wurde, auch dann die mehrstufige Authentifizierung ausführen muss, wenn er aus den anwendungsspezifischen Regeln für die mehrstufige Authentifizierung ausgenommen wurde. Hier erfahren Sie mehr über die mehrstufige Authentifizierung und benutzerspezifische Einstellungen.
 
 ### Zugriffsregeloptionen
-Die aktuelle Vorschau unterstützt folgende Optionen:
+Die folgenden Optionen werden unterstützt:
 
 * **Erfordert mehrstufige Authentifizierung**: Mit dieser Option müssen die Benutzer, für die die Zugriffsregeln gelten, die Multi-Factor Authentication durchlaufen, um auf die Anwendung zugreifen zu können, für die die Richtlinie gilt.
 
@@ -94,4 +91,4 @@ Zusätzlich zum Festlegen dieses Kennzeichens muss die AD FS-Instanz des Verbund
 - [Sichern des Zugriffs auf Office 365 und andere mit Azure Active Directory verbundene Apps](active-directory-conditional-access.md)
 - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

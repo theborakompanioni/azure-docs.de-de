@@ -1,6 +1,6 @@
 <properties
    pageTitle="Aktivieren der Datensammlung in Azure Security Center | Microsoft Azure"
-   description="Hier erfahren Sie, wie Sie die Datensammlung in Azure Security Center aktivieren."
+   description=" Hier erfahren Sie, wie Sie die Datensammlung in Azure Security Center aktivieren. "
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/14/2016"
+   ms.date="07/21/2016"
    ms.author="terrylan"/>
 
 # Aktivieren der Datensammlung in Azure Security Center
 
 Azure Security Center erfasst und verarbeitet Daten zu Ihren virtuellen Azure-Computern (einschließlich Konfigurationsinformationen, Metadaten, Ereignisprotokolle und mehr), um Kunden bei der Vermeidung, Erkennung und Behandlung von Bedrohungen zu unterstützen. Beim ersten Zugriff auf Security Center wird die Datensammlung für alle virtuellen Computer in Ihrem Abonnement aktiviert. Die Datensammlung wird zwar empfohlen, kann aber in der Security Center-Richtlinie deaktiviert werden (siehe [Deaktivieren der Datensammlung](#disabling-data-collection)). Wenn Sie die Datensammlung deaktivieren, empfiehlt Security Center, die Datensammlung in der Sicherheitsrichtlinie für dieses Abonnement zu aktivieren.
 
-> [AZURE.NOTE] Die Informationen in diesem Dokument gelten für die Vorschauversion von Azure Security Center. Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
+> [AZURE.NOTE] Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
 
 ## Implementieren der Empfehlung
 
@@ -60,7 +60,7 @@ Die Datensammlung kann jederzeit deaktiviert werden. Dadurch werden sämtliche �
 
 5.	Wählen Sie im oberen Menüband die Option **Agents löschen** aus, um die Agents von vorhandenen virtuellen Computern zu entfernen.
 
-## Nächste Schritte
+## Weitere Informationen
 
 In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Datensammlung aktivieren“ implementieren. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
@@ -80,4 +80,4 @@ In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Daten
 [5]: ./media/security-center-enable-data-collection/policy.png
 [6]: ./media/security-center-enable-data-collection/disable-data-collection.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

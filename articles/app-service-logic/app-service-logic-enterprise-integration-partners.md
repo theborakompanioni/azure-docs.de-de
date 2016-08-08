@@ -8,7 +8,7 @@
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="app-service-logic" 
+	ms.service="logic-apps" 
 	ms.workload="integration" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
@@ -61,4 +61,4 @@ Gehen Sie wie folgt vor, um einen Partner zu bearbeiten, der bereits in Ihrem In
 ## Nächste Schritte
 - [Weitere Informationen zu Vereinbarungen](./app-service-logic-enterprise-integration-agreements.md "Informationen zu Vereinbarungen zur Unternehmensintegration")
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

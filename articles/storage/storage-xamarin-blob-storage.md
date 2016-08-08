@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/21/2016"
+	ms.date="07/26/2016"
 	ms.author="micurd"/>
 
 # Verwenden des Blob-Speichers mit Xamarin (Vorschau)
 
-[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
+[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## Übersicht
 
@@ -49,7 +49,7 @@ Der SAS-URI für den neuen Container sollte dem folgenden ähneln:
 
 Die für den Container erstellte SAS ist für den nächsten Tag gültig. Die Signatur gewährt uneingeschränkte Berechtigungen (*z. B.* Lese-, Schreib-, Lösch- und Listenberechtigung) für Blobs im Container.
 
-Weitere Informationen zum Erstellen einer Shared Access Signature finden Sie unter [Shared Access Signatures: Erstellen und Verwenden einer SAS mit Blob Storage](storage-dotnet-shared-access-signature-part-2.md).
+Weitere Informationen zum Erstellen einer Shared Access Signature finden Sie unter [Shared Access Signatures: Erstellen und Verwenden einer SAS mit Blobspeicher](storage-dotnet-shared-access-signature-part-2.md).
 
 ## Erstellen einer neuen Xamarin-Anwendung
 
@@ -179,4 +179,4 @@ Weitere Informationen zu Blobs, Tabellen und Warteschlangen finden Sie über die
 - [Erste Schritte mit Azure File Storage unter Windows](storage-dotnet-how-to-use-files.md)
 - [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0727_2016-->

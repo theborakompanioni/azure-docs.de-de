@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/15/2016"
+   ms.date="07/21/2016"
    ms.author="terrylan"/>
 
 # Hinzufügen einer Web Application Firewall in Azure Security Center
 
 In Azure Security Center wird unter Umständen empfohlen, dass Sie zum Schutz Ihrer Webanwendungen eine Web Application Firewall (WAF) von einem Microsoft-Partner hinzufügen. In diesem Dokument sehen wir uns ein Beispiel zu dieser Vorgehensweise an.
 
-> [AZURE.NOTE] Die Informationen in diesem Dokument gelten für die Vorschauversion von Azure Security Center. Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
+> [AZURE.NOTE] Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
 
 ## Implementieren der Empfehlung
 
@@ -35,7 +35,7 @@ In Azure Security Center wird unter Umständen empfohlen, dass Sie zum Schutz Ih
 6. Das Blatt **New Web Application Firewall** wird geöffnet, auf dem Sie Schritte zur **VM-Konfiguration** ausführen und **WAF-Informationen** bereitstellen können. Wählen Sie **VM-Konfiguration** aus.
 
 7. Auf dem Blatt **VM-Konfiguration** können Sie Informationen eingeben, die erforderlich sind, um den virtuellen Computer einzurichten, auf dem die WAF ausgeführt wird. ![Konfiguration des virtuellen Computers][4]
-8. Kehren Sie zum Blatt **New Web Application Firewall** zurück, und wählen Sie **WAF-Informationen**. Auf dem Blatt **WAF-Informationen** können Sie die WAF selbst konfigurieren. In Schritt 7 können Sie den virtuellen Computer konfigurieren, auf dem die WAF ausgeführt wird, und in Schritt 8 können Sie die WAF selbst bereitstellen.
+8. Kehren Sie zum Blatt **New Web Application Firewall** zurück, und wählen Sie **WAF-Informationen**. Auf dem Blatt **WAF-Informationen** können Sie die WAF selbst konfigurieren. In Schritt 7 können Sie den virtuellen Computer konfigurieren, auf dem die WAF ausgeführt wird, und in Schritt 8 können Sie die WAF selbst bereitstellen.
 
 ## Finalize application protection (Anwendungsschutz abschließen)
 
@@ -48,7 +48,7 @@ In Azure Security Center wird unter Umständen empfohlen, dass Sie zum Schutz Ih
 
 Die Protokolle dieser WAF sind nun vollständig integriert. Security Center kann automatisch beginnen, die Protokolle zu sammeln und zu analysieren, damit Sie wichtige Sicherheitswarnungen erhalten können.
 
-## Nächste Schritte
+## Weitere Informationen
 
 In diesem Dokument wurde gezeigt, wie Sie die Security Center-Empfehlung „Web Application Firewall hinzufügen“ implementieren. Weitere Informationen zum Konfigurieren einer Web Application Firewall finden Sie im folgenden Artikel:
 
@@ -71,4 +71,4 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 [5]: ./media/security-center-add-web-application-firewall/finalize-waf.png
 [6]: ./media/security-center-add-web-application-firewall/restrict-traffic.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

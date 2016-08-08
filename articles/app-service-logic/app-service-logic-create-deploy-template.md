@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -44,7 +44,7 @@ Am einfachsten installieren Sie das Modul über den [PowerShell-Katalog](https:/
 
 Sie können das PowerShell-Modul auch manuell installieren:
 
-1. Laden Sie die neueste Version von [Logic App Template Creator](https://github.com/jeffhollan/LogicAppTemplateCreator/releases) herunter.  
+1. Laden Sie die neueste Version von [Logic App Template Creator](https://github.com/jeffhollan/LogicAppTemplateCreator/releases) herunter.
 1. Extrahieren Sie den Ordner in Ihren PowerShell-Modulordner (in der Regel `%UserProfile%\Documents\WindowsPowerShell\Modules`).
 
 Damit das Modul mit jedem Mandanten und Abonnementzugriffstoken funktioniert, empfiehlt es sich, es zusammen mit dem Befehlszeilentool [ARMClient](https://github.com/projectkudu/ARMClient) zu verwenden. In diesem [Blogbeitrag](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) wird ARMClient ausführlich erläutert.
@@ -85,4 +85,4 @@ Ein häufiges Szenario für die Bereitstellung und Verwaltung einer Umgebung ist
 <!-- Image References -->
 [1]: ./media/app-service-logic-create-deploy-template/emptyReleaseDefinition.PNG
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

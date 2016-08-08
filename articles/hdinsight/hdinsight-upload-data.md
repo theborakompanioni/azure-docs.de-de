@@ -161,7 +161,7 @@ Beispiel: `hadoop fs -copyFromLocal data.txt /example/data/data.txt`
 
 Da sich das Standarddateisystem für HDInsight im Azure-Blob-Speicher befindet, befindet sich die Datei "/example/data.txt" auch tatsächlich im Azure-Blob-Speicher. Sie können auch folgendermaßen auf die Datei verweisen:
 
-	wasb:///example/data/data.txt
+	wasbs:///example/data/data.txt
 
 oder
 
@@ -188,7 +188,7 @@ Es gibt auch einige Anwendungen, die eine grafische Benutzeroberfläche für die
 
 Bevor Sie das Tool verwenden können, müssen Sie den Namen Ihres Azure-Speicherkontos und den Kontoschlüssel kennen. Anleitungen zum Abrufen dieser Informationen finden Sie unter [Erstellen, Verwalten oder Löschen von Speicherkonten][azure-create-storage-account] im Abschnitt "Anzeigen, Kopieren und Neuerstellen von Speicherzugriffsschlüsseln".
 
-1. Führen Sie den Azure-Speicher-Explorer aus. Wenn Sie den Speicher-Explorer erstmalig ausführen, werden Sie zur Eingabe von ___Speicherkontonamen__ und __Speicherkontoschlüssel__ aufgefordert. Wenn Sie den Speicher-Explorer zuvor bereits ausgeführt haben, verwenden Sie die Schaltfläche __Hinzufügen__, um einen neuen Speicherkontonamen und -schlüssel hinzuzufügen.
+1. Führen Sie den Azure-Speicher-Explorer aus. Wenn Sie den Speicher-Explorer erstmals ausführen, werden Sie zur Eingabe des ___Speicherkontonamens_ und __Speicherkontoschlüssels__ aufgefordert. Wenn Sie den Speicher-Explorer zuvor bereits ausgeführt haben, wählen Sie die Schaltfläche __Add\_\_, um einen neuen Speicherkontonamen und -schlüssel hinzuzufügen.
 
     Geben Sie den Namen und Schlüssel für das vom HDinsight-Cluster verwendete Speicherkonto ein, und wählen Sie dann __SPEICHERN UND ÖFFNEN__ aus.
 
@@ -282,4 +282,4 @@ Jetzt wissen Sie, wie Sie Daten in HDInsight importieren. Lesen Sie in den folge
 [image-ase-addaccount]: ./media/hdinsight-upload-data/HDI.ASEAddAccount.png
 [image-ase-blob]: ./media/hdinsight-upload-data/HDI.ASEBlob.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

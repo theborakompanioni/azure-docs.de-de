@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/19/2016"
+   ms.date="07/21/2016"
    ms.author="terrylan"/>
 
 # Einführung in Azure Security Center
 
 Sie erhalten Informationen zu Azure Security Center, zu dessen wichtigsten Funktionen und dazu, wie es funktioniert.
 
-> [AZURE.NOTE] Die Informationen in diesem Dokument gelten für die Vorschauversion von Azure Security Center. Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.
+> [AZURE.NOTE] Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.
 
 ## Was ist Azure Security Center?
  Security Center unterstützt Sie beim Vorbeugen, Erkennen und Beheben von Bedrohungen. Mit dieser Cloudlösung gewinnen Sie mehr Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
@@ -150,7 +150,7 @@ In diesem Dokument wurden Security Center, seine wichtigsten Funktionen sowie di
 - [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Neuigkeiten und Informationen zur Azure-Sicherheit.
 
 <!--Image references-->
-[1]: ./media/security-center-intro/security-tile.PNG
+[1]: ./media/security-center-intro/security-tile.png
 [2]: ./media/security-center-intro/security-center.png
 [3]: ./media/security-center-intro/security-policy.png
 [4]: ./media/security-center-intro/security-policy-blade.png
@@ -160,4 +160,4 @@ In diesem Dokument wurden Security Center, seine wichtigsten Funktionen sowie di
 [8]: ./media/security-center-intro/security-alert-detail.png
 [9]: ./media/security-center-intro/partner-solutions.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

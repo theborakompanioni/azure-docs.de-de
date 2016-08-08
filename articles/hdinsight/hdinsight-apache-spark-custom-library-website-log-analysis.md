@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/06/2016" 
+	ms.date="07/25/2016" 
 	ms.author="nitinme"/>
 
 # Analysieren von Websiteprotokollen mithilfe einer benutzerdefinierten Bibliothek mit Apache Spark-Cluster unter HDInsight (Linux)
@@ -36,7 +36,7 @@ In diesem Abschnitt verwenden wir das [Jupyter](https://jupyter.org) Notebook, d
 
 Nachdem Ihre Daten als Hive-Tabelle gespeichert wurden, können wir im nächsten Abschnitt eine Verbindung mit der Hive-Tabelle herstellen. Hierzu verwenden wir BI-Tools wie Power BI und Tableau.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) im Startmenü auf die Kachel für Ihren Spark-Cluster (sofern Sie die Kachel ans Startmenü angeheftet haben). Sie können auch unter **Alle durchsuchen** > **HDInsight-Cluster** zu Ihrem Cluster navigieren.   
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) im Startmenü auf die Kachel für Ihren Spark-Cluster (sofern Sie die Kachel ans Startmenü angeheftet haben). Sie können auch unter **Alle durchsuchen** > **HDInsight-Cluster** zu Ihrem Cluster navigieren.
 
 2. Klicken Sie auf dem Blatt für den Spark-Cluster auf **Quicklinks** und anschließend auf dem Blatt **Cluster Dashboard** auf **Jupyter Notebook**. Geben Sie die Administratoranmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
 
@@ -62,7 +62,7 @@ Nachdem Ihre Daten als Hive-Tabelle gespeichert wurden, können wir im nächsten
 5. Erstellen Sie unter Verwendung der bereits im Cluster verfügbaren Beispielprotokolldaten ein RDD. Die Daten stehen im standardmäßigen, dem Cluster zugeordneten Speicherkonto unter **\\HdiSamples\\HdiSamples\\WebsiteLogSampleData\\SampleLog\\909f2b.log** zur Verfügung.
 
 
-		logs = sc.textFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log')
+		logs = sc.textFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log')
 
 
 6. Rufen Sie einen Beispielprotokollsatz ab, um sich zu vergewissern, dass der vorherige Schritt erfolgreich ausgeführt wurde.
@@ -88,7 +88,7 @@ Nachdem Ihre Daten als Hive-Tabelle gespeichert wurden, können wir im nächsten
 	Da sie jedoch nicht in `PYTHONPATH` enthalten ist, können wir sie nicht mithilfe einer Importanweisung wie `import iislogparser` verwenden. Zur Verwendung dieser Bibliothek müssen wir sie an alle Workerknoten verteilen. Führen Sie den folgenden Codeausschnitt aus:
 
 
-		sc.addPyFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
+		sc.addPyFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
 
 
 9. `iislogparser` stellt die Funktion `parse_log_line` bereit, die `None` zurückgibt, wenn es sich bei einer Protokollzeile um eine Kopfzeile handelt. Handelt es sich dagegen um eine Protokollzeile, gibt die Funktion eine Instanz der Klasse `LogLine` zurück. Verwenden Sie die Klasse `LogLine`, um nur die Protokollzeilen aus dem RDD zu extrahieren:
@@ -119,7 +119,7 @@ Nachdem Ihre Daten als Hive-Tabelle gespeichert wurden, können wir im nächsten
 		numLines = logLines.count()
 		numErrors = errors.count()
 		print 'There are', numErrors, 'errors and', numLines, 'log entries'
-		errors.map(lambda p: str(p)).saveAsTextFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b-2.log')
+		errors.map(lambda p: str(p)).saveAsTextFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b-2.log')
 
 	Folgendes sollte angezeigt werden:
 
@@ -252,4 +252,4 @@ Nachdem Ihre Daten als Hive-Tabelle gespeichert wurden, können wir im nächsten
 
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight](hdinsight-apache-spark-job-debugging.md) (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

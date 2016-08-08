@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/15/2016" 
+    ms.date="07/22/2016" 
     ms.author="markvi" />
 
 
@@ -44,7 +44,7 @@ Die folgenden Voraussetzungen müssen für alle Szenarien in diesem Thema erfül
 
 - Zugriff auf Zertifizierungsstellen, um Clientzertifikate auszustellen.
 
-- Die Zertifizierungsstelle(n) muss/müssen in Azure Active Directory konfiguriert sein. Ausführliche Schrittanleitungen zum Durchführen der Konfiguration finden Sie im Abschnitt „Erste Schritte“.
+- Die Zertifizierungsstelle(n) muss/müssen in Azure Active Directory konfiguriert sein. Ausführliche Schrittanleitungen zum Durchführen der Konfiguration finden Sie im Abschnitt [Erste Schritte](#getting-started).
 
 - Die Stammzertifizierungsstelle und alle Zwischenzertifizierungsstellen müssen in Azure Active Directory konfiguriert sein.
 
@@ -61,9 +61,11 @@ Die folgenden Voraussetzungen müssen für alle Szenarien in diesem Thema erfül
 
 | Apps | Support |
 | ---                       | ---          |
-| OneDrive | Ja |
+| Word/Excel/PowerPoint | ![Prüfen][1] |
+| OneNote | ![Prüfen][1] |
+| OneDrive | ![Prüfen][1] |
 | Outlook | In Kürze verfügbar |
-| Word/Excel/PowerPoint | Ja |
+| Yammer | ![Prüfen][1] |
 | Skype for Business | In Kürze verfügbar |
 
 
@@ -71,7 +73,7 @@ Die folgenden Voraussetzungen müssen für alle Szenarien in diesem Thema erfül
 
 Die Betriebssystemversion des Geräts muss iOS 9 oder eine höhere Version sein.
 
-Für die zertifikatbasierte Authentifizierung bei mobilen Office-Anwendungen muss ein Verbundserver konfiguriert sein.
+Ein Verbundserver muss konfiguriert werden.
 
 Für Office-Anwendungen auf iOS ist Azure Authenticator erforderlich.
 
@@ -145,7 +147,7 @@ Zum Hochladen der Informationen können Sie das Azure AD-Modul über Windows Pow
 
 2. Installieren Sie das Azure AD-Modul. Sie müssen die Version [1\.1.143.0](http://www.powershellgallery.com/packages/AzureADPreview/1.1.143.0) oder eine höhere Version installieren.
 
-        Install-Module -Name AzureAD –RequiredVersion 1.1.143.0 
+        Install-Module -Name AzureADPreview –RequiredVersion 1.1.143.0 
 
 3. Verbinden Sie sich mit Ihrem Zielmandanten:
 
@@ -271,4 +273,9 @@ Die unten aufgeführten Schritte zeigen, wie Sie das Autorisierungstoken aktuali
 
 Das festgelegte Datum muss in der Zukunft liegen. Wenn das Datum nicht in der Zukunft liegt, wird die **StsRefreshTokensValidFrom**-Eigenschaft nicht festgelegt. Wenn das Datum in der Zukunft liegt, wird **StsRefreshTokensValidFrom** auf die aktuelle Uhrzeit festgelegt (nicht das Datum, das mit dem Befehl „Set-MsolUser“ angegeben ist).
 
-<!---HONumber=AcomDC_0720_2016-->
+
+
+<!--Image references-->
+[1]: ./media/active-directory-certificate-based-authentication-ios/ic195031.png
+
+<!---HONumber=AcomDC_0727_2016-->

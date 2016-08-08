@@ -1,6 +1,6 @@
 <properties
    pageTitle="Erstellen einer vollständigen Linux-Umgebung über die Azure-Befehlszeilenschnittstelle | Microsoft Azure"
-   description="Erfahren Sie, wie Sie einen virtuellen Linux-Computer, den erforderlichen Speicher, ein virtuelles Netzwerk mitsamt Subnetz, einen Load Balancer, eine NIC, eine öffentliche IP-Adresse und eine Netzwerksicherheitsgruppe über die Azure-Befehlszeilenschnittstelle von Grund auf neu erstellen."
+   description="Erfahren Sie, wie Sie Speicher, einen virtuellen Linux-Computer, ein virtuelles Netzwerk mitsamt Subnetz, einen Load Balancer, eine NIC, eine öffentliche IP-Adresse und eine Netzwerksicherheitsgruppe über die Azure-Befehlszeilenschnittstelle von Grund auf neu erstellen."
    services="virtual-machines-linux"
    documentationCenter="virtual-machines"
    authors="iainfoulds"
@@ -19,116 +19,117 @@
 
 # Erstellen einer vollständigen Linux-Umgebung über die Azure-Befehlszeilenschnittstelle
 
-Wir erstellen mit einem Load Balancer und zwei virtuellen Computern ein einfaches Netzwerk zu Entwicklungszwecken und für einfache Berechnungen. Sie werden Befehl für Befehl durch die gesamte Umgebung geführt, bis Sie über funktionierende, sichere virtuelle Linux-Computer verfügen, mit denen Sie über das Internet von jedem Ort aus eine Verbindung herstellen können. Anschließend können Sie sich mit komplexeren Netzwerken und Umgebungen beschäftigen.
+In diesem Artikel erstellen wir ein einfaches Netzwerk mit einem Load Balancer und zwei virtuellen Computern, die zu Entwicklungszwecken und für einfache Berechnungen nützlich sind. Wir führen Sie Befehl für Befehl durch den Prozess, bis Sie über zwei funktionierende, sichere virtuelle Linux-Computer verfügen, mit denen Sie über das Internet von jedem Ort aus eine Verbindung herstellen können. Anschließend können Sie sich mit komplexeren Netzwerken und Umgebungen beschäftigen.
 
 Im Laufe dieses Vorgangs lernen Sie die Abhängigkeitshierarchie kennen, die Sie mit dem Resource Manager-Bereitstellungsmodell erhalten, sowie die damit verbundene hohe Leistungsfähigkeit. Wenn Sie wissen, wie das System aufgebaut ist, können Sie es mithilfe von [Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md) deutlich schneller neu erstellen. Und wenn Sie wissen, wie die einzelnen Komponenten Ihrer Umgebung zusammenwirken, ist die Erstellung von Vorlagen für deren Automatisierung viel einfacher.
 
-Die Umgebung wird Folgendes umfassen:
+Die Umgebung enthält:
 
 - Zwei virtuelle Computer in einer Verfügbarkeitsgruppe
-- Einen Load Balancer mit Lastenausgleichsregel an Port 80
-- Regeln für Netzwerksicherheitsgruppen zum Schutz der virtuellen Computer vor unerwünschtem Datenverkehr
+- Load Balancer mit Lastenausgleichsregel an Port 80
+- Regeln für Netzwerksicherheitsgruppen (NSG) zum Schutz der virtuellen Computer vor unerwünschtem Datenverkehr
 
 ![Grundlegende Umgebung – Übersicht](./media/virtual-machines-linux-create-cli-complete/environment_overview.png)
 
-Um diese benutzerdefinierte Umgebung zu erstellen, muss die aktuelle [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) installiert sein und sich im Resource Manager-Modus befinden (`azure config mode arm`). Darüber hinaus benötigen Sie ein JSON-Analysetool – in diesem Beispiel wird [jq](https://stedolan.github.io/jq/) verwendet.
+Um diese benutzerdefinierte Umgebung zu erstellen, benötigen Sie die aktuelle [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) im Resource Manager-Modus (`azure config mode arm`). Sie benötigen außerdem ein JSON-Analysetool. In diesem Beispiel wird [jq](https://stedolan.github.io/jq/) verwendet.
 
 ## Schnellbefehle
-Die folgenden Schnellbefehle werden zum Erstellen Ihrer benutzerdefinierten Umgebung verwendet. Weitere Erläuterungen und einen Überblick darüber, welche Aufgaben Sie beim Erstellen der Umgebung mit den einzelnen Befehlen ausführen können, finden Sie in der [ausführlichen exemplarischen Vorgehensweise unten](#detailed-walkthrough).
+Sie können die folgenden Schnellbefehle zum Erstellen Ihrer benutzerdefinierten Umgebung verwenden. Weitere Informationen darüber, welche Aufgaben Sie beim Erstellen der Umgebung mit den einzelnen Befehlen ausführen können, finden Sie in der [ausführlichen exemplarischen Vorgehensweise unten](#detailed-walkthrough).
 
-Erstellen der Ressourcengruppe
+Erstellen Sie die Ressourcengruppe:
 
 ```bash
 azure group create TestRG -l westeurope
 ```
 
-Überprüfen der Ressourcengruppe mithilfe des JSON-Parsers
+Überprüfen Sie die Ressourcengruppe mit dem JSON-Parser:
 
 ```bash
 azure group show TestRG --json | jq '.'
 ```
 
-Erstellen des Speicherkontos
+Erstellen Sie das Speicherkonto:
 
 ```bash
 azure storage account create -g TestRG -l westeurope --kind Storage --sku-name GRS computeteststore
 ```
 
-Überprüfen des Speichers mithilfe des JSON-Parsers
+Überprüfen Sie das Speicherkonto mithilfe des JSON-Parsers:
 
 ```bash
 azure storage account show -g TestRG computeteststore --json | jq '.'
 ```
 
-Erstellen des virtuellen Netzwerks
+Erstellen Sie das virtuelle Netzwerk:
 
 ```bash
 azure network vnet create -g TestRG -n TestVNet -a 192.168.0.0/16 -l westeurope
 ```
 
-Erstellen des Subnetzes
+Erstellen Sie das Subnetz:
 
 ```bash
 azure network vnet subnet create -g TestRG -e TestVNet -n FrontEnd -a 192.168.1.0/24
 ```
 
-Überprüfen des VNET und Subnetzes mithilfe des JSON-Parsers
+Überprüfen Sie das virtuelle Netzwerk und Subnetz mit der JSON-Parser:
+
 
 ```bash
 azure network vnet show TestRG TestVNet --json | jq '.'
 ```
 
-Erstellen einer öffentlichen IP
+Erstellen Sie eine öffentliche IP-Adresse:
 
 ```bash
 azure network public-ip create -g TestRG -n TestLBPIP -l westeurope -d testlb -a static -i 4
 ```
 
-Erstellen des Load Balancers
+Erstellen Sie den Load Balancer:
 
 ```bash
 azure network lb create -g TestRG -n TestLB -l westeurope
 ```
 
-Erstellen eines Front-End-IP-Pools für den Load Balancer und Zuordnen der öffentlichen IP
+Erstellen Sie einen Front-End-IP-Pool für den Load Balancer, und ordnen Sie die öffentliche IP-Adresse zu:
 
 ```bash
 azure network lb frontend-ip create -g TestRG -l TestLB -n TestFrontEndPool -i TestLBPIP
 ```
 
-Erstellen des Back-End-IP-Pools für den Load Balancer
+Erstellen Sie den Back-End-IP-Pool für den Load Balancer:
 
 ```bash
 azure network lb address-pool create -g TestRG -l TestLB -n TestBackEndPool
 ```
 
-Erstellen der eingehenden NAT-Regeln (SSH) für den Load Balancer
+Erstellen Sie die eingehenden NAT-Regeln (SSH) für den Load Balancer:
 
 ```bash
 azure network lb inbound-nat-rule create -g TestRG -l TestLB -n VM1-SSH -p tcp -f 4222 -b 22
 azure network lb inbound-nat-rule create -g TestRG -l TestLB -n VM2-SSH -p tcp -f 4223 -b 22
 ```
 
-Erstellen der eingehenden NAT-Regeln (Web) für den Load Balancer
+Erstellen Sie die eingehenden NAT-Regeln (Web) für den Load Balancer:
 
 ```bash
 azure network lb rule create -g TestRG -l TestLB -n WebRule -p tcp -f 80 -b 80 \
      -t TestFrontEndPool -o TestBackEndPool
 ```
 
-Erstellen des Integritätstests für den Load Balancer
+Erstellen Sie den Integritätstest für den Load Balancer:
 
 ```bash
 azure network lb probe create -g TestRG -l TestLB -n HealthProbe -p "http" -f healthprobe.aspx -i 15 -c 4
 ```
 
-Überprüfen des Load Balancers, der IP-Pools und der NAT-Regeln mithilfe des JSON-Parsers
+Überprüfen Sie Load Balancer, IP-Pools und NAT-Regeln mithilfe des JSON-Parsers:
 
 ```bash
 azure network lb show -g TestRG -n TestLB --json | jq '.'
 ```
 
-Erstellen der ersten Netzwerkkarte
+Erstellen Sie die erste Netzwerkschnittstellenkarte (NIC, Network Interface Card):
 
 ```bash
 azure network nic create -g TestRG -n LB-NIC1 -l westeurope --subnet-vnet-name TestVNet --subnet-name FrontEnd \
@@ -136,7 +137,7 @@ azure network nic create -g TestRG -n LB-NIC1 -l westeurope --subnet-vnet-name T
     -e "/subscriptions/########-####-####-####-############/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/inboundNatRules/VM1-SSH"
 ```
 
-Erstellen der zweiten Netzwerkkarte
+Erstellen Sie die zweite Netzwerkkarte:
 
 ```bash
 azure network nic create -g TestRG -n LB-NIC2 -l westeurope --subnet-vnet-name TestVNet --subnet-name FrontEnd \
@@ -144,20 +145,20 @@ azure network nic create -g TestRG -n LB-NIC2 -l westeurope --subnet-vnet-name T
     -e "/subscriptions/########-####-####-####-############/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/inboundNatRules/VM2-SSH"
 ```
 
-Überprüfen der Netzwerkkarten mithilfe des JSON-Parsers
+Überprüfen Sie die Netzwerkkarten mithilfe des JSON-Parsers:
 
 ```bash
 azure network nic show TestRG LB-NIC1 --json | jq '.'
 azure network nic show TestRG LB-NIC2 --json | jq '.'
 ```
 
-Erstellen der NSG
+Erstellen Sie die NSG:
 
 ```bash
 azure network nsg create -g TestRG -n TestNSG -l westeurope
 ```
 
-Hinzufügen der eingehenden Regeln für die NSG
+Fügen Sie die eingehenden Regeln für die NSG hinzu:
 
 ```bash
 azure network nsg rule create --protocol tcp --direction inbound --priority 1000 \
@@ -166,26 +167,26 @@ azure network nsg rule create --protocol tcp --direction inbound --priority 1001
     --destination-port-range 80 --access allow -g TestRG -a TestNSG -n HTTPRule
 ```
 
-Überprüfen der NSG und der eingehenden Regeln mithilfe des JSON-Parsers
+Überprüfen Sie die NSG und die eingehenden Regeln mithilfe des JSON-Parsers:
 
 ```bash
 azure network nsg show -g TestRG -n TestNSG --json | jq '.'
 ```
 
-Binden der NSG an die Netzwerkkarten
+Binden der NSG an die Netzwerkkarten:
 
 ```bash
 azure network nic set -g TestRG -n LB-NIC1 -o TestNSG
 azure network nic set -g TestRG -n LB-NIC2 -o TestNSG
 ```
 
-Erstellen der Verfügbarkeitsgruppe
+Erstellen Sie die Verfügbarkeitsgruppe:
 
 ```bash
 azure availset create -g TestRG -n TestAvailSet -l westeurope
 ```
 
-Erstellen des ersten virtuellen Linux-Computers
+Erstellen Sie den ersten virtuellen Linux-Computer:
 
 ```bash
 azure vm create \
@@ -203,7 +204,7 @@ azure vm create \
     --admin-username ops
 ```
 
-Erstellen des zweiten virtuellen Linux-Computers
+Erstellen Sie den zweiten virtuellen Linux-Computer:
 
 ```bash
 azure vm create \
@@ -221,7 +222,7 @@ azure vm create \
     --admin-username ops
 ```
 
-Überprüfen aller erstellten Elemente mithilfe des JSON-Parsers
+Stellen Sie mit dem JSON-Parser sicher, dass alle Elemente erstellt wurden:
 
 ```bash
 azure vm show -g TestRG -n TestVM1 --json | jq '.'
@@ -235,17 +236,17 @@ azure resource export TestRG
 ```
 
 ## Ausführliche exemplarische Vorgehensweise
-In diesen ausführlichen Schritten wird beschrieben, welche Aufgaben Sie beim Erstellen der Umgebung mit den einzelnen Befehlen ausführen können, damit Sie anhand dieser Konzepte selbst benutzerdefinierte Umgebungen für Entwicklungs- oder Produktionsworkloads erstellen können.
+In den folgenden ausführlichen Schritten wird erklärt, was jeder Befehl macht, wenn Sie Ihre Umgebung erstellen. Diese Konzepte helfen Ihnen beim Erstellen Ihrer eigenen benutzerdefinierten Umgebungen für Entwicklung oder Produktion.
 
 ## Erstellen einer Ressourcengruppe und Auswählen von Standorten für die Bereitstellung
 
-Azure-Ressourcengruppen sind logische Bereitstellungsentitäten, die Konfigurationsdaten und andere Metadaten enthalten, um die logische Verwaltung von Ressourcenbereitstellungen zu ermöglichen.
+Azure-Ressourcengruppen sind logische Bereitstellungsentitäten, die Konfigurationsdaten und Metadaten enthalten, um die logische Verwaltung von Ressourcenbereitstellungen zu ermöglichen.
 
 ```bash
 azure group create TestRG westeurope
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash                        
 info:    Executing command group create
@@ -261,9 +262,9 @@ data:
 info:    group create command OK
 ```
 
-## Speicherkonto erstellen
+## Erstellen Sie ein Speicherkonto.
 
-Sie benötigen unter anderem Speicherkonten für Ihre VM-Datenträger und für alle zusätzlichen Datenträger, die Sie hinzufügen möchten. Anders ausgedrückt: Sie erstellen Speicherkonten normalerweise immer direkt nach der Erstellung von Ressourcengruppen.
+Sie benötigen unter anderem Speicherkonten für Ihre VM-Datenträger und für alle zusätzlichen Datenträger, die Sie hinzufügen möchten. Sie erstellen Speicherkonten normalerweise immer direkt nach der Erstellung von Ressourcengruppen.
 
 Hier verwenden wir den Befehl `azure storage account create` und übergeben den Speicherort des Kontos, die Ressourcengruppe, mit der es gesteuert wird, und den Typ der gewünschten Speicherunterstützung.
 
@@ -275,7 +276,7 @@ azure storage account create \
 computeteststore
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash
 info:    Executing command storage account create
@@ -305,14 +306,14 @@ data:
 info:    group show command OK
 ```
 
-Wir nutzen das Tool [jq](https://stedolan.github.io/jq/) (Sie können **jsawk** oder eine andere bevorzugte Sprachbibliothek für die JSON-Analyse verwenden) zusammen mit der Option `--json` der Azure-Befehlszeilenschnittstelle, um die Ressourcengruppe mit dem Befehl `azure group show` zu untersuchen.
+Wir setzen das Tool [jq](https://stedolan.github.io/jq/) zusammen mit der Azure-CLI-Option `--json` ein, um unsere Ressourcengruppe mit dem Befehl `azure group show` zu überprüfen. (Zur Analyse von JSON können Sie **jsawk** oder eine andere Sprachbibliothek Ihrer Wahl verwenden.)
 
 ```bash
 azure group show TestRG --json | jq                                                                                      
 ```
 
 
-Ausgabe
+Ausgabe:
 
 ```bash
 {
@@ -344,19 +345,19 @@ Ausgabe
 }
 ```
 
-Zum Untersuchen des Speicherkontos mit der Befehlszeilenschnittstelle müssen Sie zuerst die Kontonamen und Schlüssel festlegen, indem Sie eine Variante des unten angegebenen Befehls verwenden. Ersetzen Sie den Namen des Speicherkontos in diesem Artikel durch den Namen Ihres Speicherkontos.
+Um das Speicherkonto mithilfe der Befehlszeilenschnittstelle zu untersuchen, müssen Sie zunächst die Kontonamen und Schlüssel festlegen, indem Sie eine Variante des folgenden Befehls verwenden. Ersetzen Sie den Namen des Speicherkontos im folgenden Beispiel mit einem Namen Ihrer Wahl:
 
 ```
 AZURE_STORAGE_CONNECTION_STRING="$(azure storage account connectionstring show computeteststore --resource-group testrg --json | jq -r '.string')"
 ```
 
-Sie können die Speicherinformationen dann leicht anzeigen:
+Sie können Ihre Speicherinformationen dann leicht anzeigen:
 
 ```bash
 azure storage container list
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash
 info:    Executing command storage container list
@@ -367,15 +368,15 @@ data:    vhds  Off            Sun, 27 Sep 2015 19:03:54 GMT
 info:    storage container list command OK
 ```
 
-## Erstellen des Virtual Network und des Subnetzes
+## Erstellen eines virtuellen Netzwerks und des Subnetzes
 
-Sie müssen ein Azure Virtual Network und ein Subnetz erstellen, in dem Sie die virtuellen Computer installieren können.
+Als Nächstes müssen Sie ein virtuelles Netzwerk erstellen, das in Azure ausgeführt wird, und ein Subnetz, in dem Sie Ihre virtuellen Computer installieren können.
 
 ```bash
 azure network vnet create -g TestRG -n TestVNet -a 192.168.0.0/16 -l westeurope
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash
 info:    Executing command network vnet create
@@ -392,13 +393,13 @@ data:      192.168.0.0/16
 info:    network vnet create command OK
 ```
 
-Wir erstellen die Ressourcen, indem wir die Option „--json“ von `azure group show` und **jq** verwenden. Wir verfügen nun über eine `storageAccounts`-Ressource und eine `virtualNetworks`-Ressource.
+Auch hier verwenden wir wieder die Option „--json“ von `azure group show` und **jq**, um zu sehen, wie wir unsere Ressourcen erstellen. Wir verfügen nun über eine `storageAccounts`-Ressource und eine `virtualNetworks`-Ressource.
 
 ```bash
 azure group show TestRG --json | jq '.'
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash
 {
@@ -437,13 +438,13 @@ Ausgabe
 }
 ```
 
-Jetzt erstellen wir ein Subnetz im virtuellen Netzwerk `TestVnet`, in dem die virtuellen Computer bereitgestellt werden. Wir verwenden den Befehl `azure network vnet subnet create` zusammen mit den Ressourcen, die wir bereits erstellt haben: der Ressourcengruppe `TestRG` und dem virtuellen Netzwerk `TestVNet`. Außerdem fügen wir den Subnetznamen `FrontEnd` und das Subnetzadresspräfix `192.168.1.0/24` wie folgt hinzu:
+Jetzt erstellen wir ein Subnetz im virtuellen Netzwerk `TestVnet`, in dem die virtuellen Computer bereitgestellt werden. Wir verwenden den Befehl `azure network vnet subnet create` zusammen mit den Ressourcen, die wir bereits erstellt haben: die Ressourcengruppe `TestRG` und das virtuelle Netzwerk `TestVNet`. Wir fügen den Subnetznamen `FrontEnd` und das Subnetzadresspräfix `192.168.1.0/24` wie folgt hinzu:
 
 ```bash
 azure network vnet subnet create -g TestRG -e TestVNet -n FrontEnd -a 192.168.1.0/24
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash
 info:    Executing command network vnet subnet create
@@ -459,13 +460,13 @@ data:
 info:    network vnet subnet create command OK
 ```
 
-Da das Subnetz logisch im virtuellen Netzwerk angeordnet ist, ermitteln wir die Subnetzinformationen mit einem etwas anderen Befehl: `azure network vnet show`. Die JSON-Ausgabe wird aber weiterhin mit **jq** untersucht.
+Da das Subnetz logisch im virtuellen Netzwerk angeordnet ist, ermitteln wir die Subnetzinformationen mit einem etwas anderen Befehl. Wir verwenden den Befehl `azure network vnet show`, doch wir untersuchen die JSON-Ausgabe weiterhin mit **jq**.
 
 ```bash
 azure network vnet show TestRG TestVNet --json | jq '.'
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash
 {
@@ -496,15 +497,15 @@ Ausgabe
 }
 ```
 
-## Erstellen der öffentlichen IP-Adresse (PIP)
+## Erstellen einer öffentlichen IP-Adresse (PIP)
 
-Jetzt erstellen wir Ihre öffentliche IP-Adresse (PIP), die dem Load Balancer zugewiesen wird und mit der Sie mithilfe des Befehls `azure network public-ip create` über das Internet eine Verbindung mit den virtuellen Computern herstellen können. Da die Standardeinstellung eine dynamische Adresse ist, erstellen wir in der Domäne **cloudapp.azure.com** mit der Option `-d testsubdomain` einen benannten DNS-Eintrag.
+Jetzt erstellen wir die öffentliche IP-Adresse (PIP), die wir Ihrem Load Balancer zuweisen werden. Damit können Sie mithilfe des Befehls `azure network public-ip create` über das Internet eine Verbindung mit Ihren virtuellen Computern herstellen. Da die Standardadresse dynamisch ist, erstellen wir in der Domäne **cloudapp.azure.com** mit der Option `-d testsubdomain` einen benannten DNS-Eintrag.
 
 ```bash
 azure network public-ip create -d testsubdomain TestRG TestPIP westeurope
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash
 info:    Executing command network public-ip create
@@ -529,7 +530,7 @@ Dies ist außerdem eine Ressource der obersten Ebene, die Sie mit `azure group s
 azure group show TestRG --json | jq '.'
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash
 {
@@ -582,13 +583,13 @@ Ausgabe
 }
 ```
 
-Wie immer können Sie mit dem umfassenderen Befehl `azure network public-ip show` auch auf weitere Ressourcendetails zugreifen, z.B. auf den vollqualifizierten Domänennamen (FQDN) der Unterdomäne. Beachten Sie, dass die öffentliche IP-Adressressource logisch zugeordnet wurde, aber noch keine spezielle Adresse zugewiesen wurde. Hierfür benötigen Sie einen Load Balancer, den wir noch nicht erstellt haben.
+Sie können mit dem umfassenderen Befehl `azure network public-ip show` auf weitere Ressourcendetails zugreifen, z.B. auf den vollqualifizierten Domänennamen (FQDN) der Unterdomäne. Beachten Sie, dass die öffentliche IP-Adressressource logisch zugeordnet wurde, aber noch keine spezielle Adresse zugewiesen wurde. Hierfür benötigen Sie einen Load Balancer, den wir noch nicht erstellt haben.
 
 ```bash
 azure network public-ip show TestRG TestPIP --json | jq '.'
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash
 {
@@ -607,8 +608,8 @@ Ausgabe
 }
 ```
 
-## Erstellen des Load Balancers und der IP-Pools
-Wenn Sie einen Load Balancer erstellen, können Sie den Datenverkehr auf mehrere virtuelle Computer verteilen, z.B. beim Ausführen von Webanwendungen. Der Load Balancer gewährleistet zudem Redundanz für Ihre Anwendung, indem mehrere virtuelle Computer ausgeführt werden, die bei der Wartung oder bei hoher Auslastung auf Anforderungen von Benutzern reagieren.
+## Erstellen eines Load Balancers und IP-Pools
+Wenn Sie einen Load Balancer erstellen, können sie den Datenverkehr auf mehrere virtuelle Computer verteilen. Dies ist z.B. bei der Ausführung von Webanwendungen möglich. Der Load Balancer gewährleistet zudem Redundanz für Ihre Anwendung, indem mehrere virtuelle Computer ausgeführt werden, die bei der Wartung oder bei hoher Auslastung auf Anforderungen von Benutzern reagieren.
 
 Der Load Balancer wird wie folgt erstellt:
 
@@ -620,7 +621,7 @@ azure network lb create -g TestRG -n TestLB -l westeurope
 azure network lb create -g TestRG -n TestLB -l westeurope
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash
 info:    Executing command network lb create
@@ -633,7 +634,7 @@ data:    Location                        : westeurope
 data:    Provisioning state              : Succeeded
 info:    network lb create command OK
 ```
-Da der Load Balancer leer ist, erstellen wir einige IP-Pools. Wir möchten zwei IP-Pools für den Load Balancer erstellen: einen für das Front-End und einen für das Back-End. Der Front-End-IP-Pool ist öffentlich sichtbar. In diesem IP-Pool weisen wir die zuvor erstellte PIP zu. Der Back-End-IP-Pool wird dann für die Verbindung mit den virtuellen Computern verwendet, sodass der Datenverkehr durch den Load Balancer an sie geleitet wird.
+Da der Load Balancer ziemlich leer ist, erstellen wir einige IP-Pools. Wir möchten zwei IP-Pools für den Load Balancer erstellen: einen für das Front-End und einen für das Back-End. Der Front-End-IP-Adresspool ist öffentlich sichtbar. Es ist auch der Speicherort, den wir der PIP zuweisen, die wir zuvor erstellt haben. Dann verwenden wir den Back-End-Pool als Speicherort für die virtuellen Computer, mit denen wir eine Verbindung herstellen. Auf diese Weise kann der Datenverkehr über den Load Balancer zu den virtuellen Computern weitergeleitet werden.
 
 Zunächst erstellen wir den Front-End-IP-Pool:
 
@@ -641,7 +642,7 @@ Zunächst erstellen wir den Front-End-IP-Pool:
 azure network lb frontend-ip create -g TestRG -l TestLB -n TestFrontEndPool -i TestLBPIP
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash
 info:    Executing command network lb frontend-ip create
@@ -663,7 +664,7 @@ Als Nächstes erstellen wir den zweiten IP-Pool für den Back-End-Datenverkehr:
 azure network lb address-pool create -g TestRG -l TestLB -n TestBackEndPool
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash
 info:    Executing command network lb address-pool create
@@ -680,7 +681,7 @@ Wir können den Load Balancer mit `azure network lb show` überprüfen und die J
 azure network lb show TestRG TestLB --json | jq '.'
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash
 {
@@ -720,13 +721,13 @@ Ausgabe
 ```
 
 ## Erstellen der NAT-Regeln für den Load Balancer
-Damit der Datenverkehr tatsächlich durch den Load Balancer fließt, müssen wir NAT-Regeln erstellen, die eingehende oder ausgehende Aktionen angeben. Sie können das verwendete Protokoll angeben und dann wie gewünscht externe Ports internen Ports zuordnen. Wir erstellen für unsere Umgebung einige Regeln, die SSH-Datenverkehr durch den Load Balancer an die virtuellen Computer ermöglichen. Wir richten die TCP-Ports 4222 und 4223 so ein, dass der Datenverkehr an den TCP-Port 22 auf den virtuellen Computern geleitet wird (die wir später erstellen):
+Damit der Datenverkehr durch den Load Balancer fließt, müssen wir NAT-Regeln erstellen, die eingehende oder ausgehende Aktionen angeben. Sie können das verwendete Protokoll angeben und dann wie gewünscht externe Ports internen Ports zuordnen. Wir erstellen für unsere Umgebung einige Regeln, die SSH-Datenverkehr durch den Load Balancer an die virtuellen Computer ermöglichen. Wir richten die TCP-Ports 4222 und 4223 so ein, dass der Datenverkehr an den TCP-Port 22 auf den virtuellen Computern geleitet wird (die wir später erstellen):
 
 ```bash
 azure network lb inbound-nat-rule create -g TestRG -l TestLB -n VM1-SSH -p tcp -f 4222 -b 22
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash
 info:    Executing command network lb inbound-nat-rule create
@@ -752,14 +753,14 @@ Wiederholen Sie dies für die zweite NAT-Regel für SSH:
 azure network lb inbound-nat-rule create -g TestRG -l TestLB -n VM2-SSH -p tcp -f 4223 -b 22
 ```
 
-Wir erstellen auch eine NAT-Regel für den TCP-Port 80 und binden die Regel in die IP-Pools ein. Da die Regel nicht einzeln in die virtuellen Computer eingebunden wird, können virtuelle Computer im IP-Pool einfach hinzugefügt und entfernt werden, und der Load Balancer passt automatisch den Fluss des Datenverkehrs an.
+Wir erstellen auch eine NAT-Regel für den TCP-Port 80 und binden die Regel in die IP-Pools ein. Wenn wir dies tun, anstatt die Regel einzeln auf den virtuellen Computern einzubinden, können wir VMs einfach dem IP-Pool hinzufügen oder daraus entfernen. Der Load Balancer passt dann automatisch den Fluss des Datenverkehrs an:
 
 ```bash
 azure network lb rule create -g TestRG -l TestLB -n WebRule -p tcp -f 80 -b 80 \
      -t TestFrontEndPool -o TestBackEndPool
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash
 info:    Executing command network lb rule create
@@ -783,13 +784,13 @@ info:    network lb rule create command OK
 
 ## Erstellen des Integritätstests für den Load Balancer
 
-Mit einem Integritätstest werden die virtuellen Computer hinter dem Load Balancer regelmäßig überprüft, um sicherzustellen, dass sie wie definiert ausgeführt werden und auf Anforderungen reagieren. Wenn dies nicht der Fall ist, werden sie außer Betrieb gesetzt, sodass Benutzer nicht an sie weitergeleitet werden. Sie können benutzerdefinierte Überprüfungen sowie Intervalle und Timeoutwerte für den Integritätstest definieren. Weitere Informationen zu Integritätstests finden Sie unter [Load Balancer-Tests](../load-balancer/load-balancer-custom-probe-overview.md).
+Mit einem Integritätstest werden die virtuellen Computer hinter dem Load Balancer regelmäßig überprüft, um sicherzustellen, dass sie wie definiert ausgeführt werden und auf Anforderungen reagieren. Wenn dies nicht der Fall ist, werden sie außer Betrieb gesetzt, sodass Benutzer nicht an sie weitergeleitet werden. Sie können benutzerdefinierte Überprüfungen sowie Intervalle und Timeoutwerte für den Integritätstest definieren. Weitere Informationen zu Integritätstests finden Sie unter [Load Balancer-Integritätstest](../load-balancer/load-balancer-custom-probe-overview.md).
 
 ```bash
 azure network lb probe create -g TestRG -l TestLB -n HealthProbe -p "http" -f healthprobe.aspx -i 15 -c 4
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash
 info:    Executing command network lb probe create
@@ -805,18 +806,24 @@ data:    Number of probes                : 4
 info:    network lb probe create command OK
 ```
 
-Hier haben wir ein Intervall von 15 Sekunden für die Integritätstests angegeben. Maximal vier Tests (1 Minute) können ausfallen, bevor der Load Balancer feststellt, dass der Host nicht mehr funktionsfähig ist.
+Hier haben wir ein Intervall von 15 Sekunden für die Integritätstests angegeben. Bei maximal vier Tests (1 Minute) können Fehler auftreten, bevor der Load Balancer feststellt, dass der Host nicht mehr funktionsfähig ist.
 
 ## Überprüfen des Load Balancers
-Damit ist die Load Balancer-Konfiguration abgeschlossen. Sie haben einen Load Balancer erstellt, dann einen Front-End-IP-Pool erstellt und ihm eine öffentliche IP zugewiesen, und schließlich haben Sie einen Back-End-IP-Pool erstellt, mit dem die virtuellen Computer verbunden werden. Als Nächstes haben Sie NAT-Regeln für den SSH-Datenverkehr für die virtuellen Computer für Verwaltungszwecke sowie eine Regel für den TCP-Port 80 für die Web-App erstellt. Um sicherzustellen, dass Benutzer nicht auf einen virtuellen Computer zugreifen, der nicht mehr funktionsfähig ist und keine Inhalte mehr enthält, haben Sie schließlich einen Integritätstest hinzugefügt, um die virtuellen Computer in regelmäßigen Abständen zu überprüfen.
+Jetzt ist die Load Balancer-Konfiguration abgeschlossen. Folgende Schritte haben Sie ausgeführt:
 
-Sehen wir uns nun den Load Balancer an:
+1. Zunächst erstellt Sie einen Load Balancer.
+2. Dann erstellten Sie einen Front-End-IP-Adresspool und wiesen ihm eine öffentliche IP-Adresse zu.
+3. Anschließend erstellten Sie einen Back-End-IP-Adresspool, mit dem virtuelle Computer eine Verbindung herstellen können.
+4. Danach haben Sie NAT-Regeln für den SSH-Datenverkehr für die virtuellen Computer zu Verwaltungszwecken sowie eine Regel für den TCP-Port 80 für die Web-App erstellt.
+5. Schließlich haben Sie einen Integritätstest zur regelmäßigen Überprüfung der virtuellen Computer hinzugefügt. Dies stellt sicher, dass Benutzer nicht versuchen, auf einen virtuellen Computer zuzugreifen, der nicht mehr funktioniert bzw. keine Inhalte mehr liefert.
+
+So sieht Ihr Load Balancer nun aus:
 
 ```bash
 azure network lb show -g TestRG -n TestLB --json | jq '.'
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash
 {
@@ -935,7 +942,7 @@ Ausgabe
 
 ## Erstellen einer Netzwerkschnittstellenkarte zur Verwendung mit der Linux-VM
 
-Netzwerkschnittstellen sind auch programmgesteuert verfügbar, und Sie können Regeln für ihre Verwendung anwenden und mehr als eine verwenden. Mit dem folgenden `azure network nic create`-Befehl wird die Netzwerkkarte in den Back-End-IP-Pool eingebunden und der NAT-Regel für das Zulassen von SSH-Datenverkehr zugeordnet. Dazu müssen Sie anstelle von `<GUID>` die Abonnement-ID Ihres Azure-Abonnements angeben:
+ NICs sind programmgesteuert verfügbar, da Sie Regeln zu ihrer Verwendung anwenden können. Sie können auch mehrere Regeln anwenden. Mit dem folgenden Befehl `azure network nic create` wird die Netzwerkkarte in den Last-Back-End-IP-Pool eingebunden und der NAT-Regel für das Zulassen von SSH-Datenverkehr zugeordnet. Dazu müssen Sie anstelle von `<GUID>` die Abonnement-ID Ihres Azure-Abonnements angeben:
 
 ```bash
 azure network nic create -g TestRG -n LB-NIC1 -l westeurope --subnet-vnet-name TestVNet --subnet-name FrontEnd \
@@ -943,9 +950,9 @@ azure network nic create -g TestRG -n LB-NIC1 -l westeurope --subnet-vnet-name T
      -e /subscriptions/<GUID>/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/inboundNatRules/VM1-SSH
 ```
 
-Ausgabe
+Ausgabe:
 
-```bash 
+```bash
 info:    Executing command network nic create
 + Looking up the subnet "FrontEnd"
 + Looking up the network interface "LB-NIC1"
@@ -970,13 +977,13 @@ data:
 info:    network nic create command OK
 ```
 
-Sie können die Details sehen, wenn Sie die Ressource mit dem Befehl `azure network nic show` direkt untersuchen.
+Sie können die Details sehen, wenn Sie die Ressource direkt untersuchen. Verwenden Sie dazu den Befehl `azure network nic show`:
 
 ```bash
 azure network nic show TestRG LB-NIC1 --json | jq '.'
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash
 {
@@ -1018,7 +1025,7 @@ Ausgabe
 }
 ```
 
-Wir erstellen nun die zweite Netzwerkkarte und binden auch diese in den Back-End-IP-Pool ein und ordnen sie der zweiten NAT-Regel für den SSH-Datenverkehr zu:
+Jetzt erstellen wir die zweite NIC und binden sie erneut in unseren Back-End-IP-Adresspool ein. Dieses Mal lässt die zweite NAT-Regel SSH-Datenverkehr zu:
 
 ```bash
 azure network nic create -g TestRG -n LB-NIC2 -l westeurope --subnet-vnet-name TestVNet --subnet-name FrontEnd \
@@ -1026,9 +1033,9 @@ azure network nic create -g TestRG -n LB-NIC2 -l westeurope --subnet-vnet-name T
     -e /subscriptions/<GUID>/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/inboundNatRules/VM2-SSH
 ```
 
-## Erstellen der Netzwerksicherheitsgruppe und der Regeln
+## Erstellen einer Netzwerksicherheitsgruppe und von Regeln
 
-Als Nächstes erstellen wir eine Netzwerksicherheitsgruppe (NSG) und die eingehenden Regeln, mit denen der Zugriff auf die Netzwerkschnittstellenkarte gesteuert wird.
+Als Nächstes erstellen wir eine NSG und die eingehenden Regeln, mit denen der Zugriff auf die Netzwerkschnittstellenkarte gesteuert wird.
 
 ```bash
 azure network nsg create TestRG TestNSG westeurope
@@ -1046,7 +1053,7 @@ azure network nsg rule create --protocol tcp --direction inbound --priority 1001
     --destination-port-range 80 --access allow -g TestRG -a TestNSG -n HTTPRule
 ```
 
-> [AZURE.NOTE] Die eingehende Regel ist ein Filter für eingehende Netzwerkverbindungen. In diesem Beispiel binden wir die NSG an die virtuelle Netzwerkschnittstellenkarte (NIC) der virtuellen Computer. Dies bedeutet, dass alle Anforderungen an Port 22 über die NIC auf dem virtuellen Computer übergeben werden. Da dies eine Regel für eine Netzwerkverbindung ist – und kein Endpunkt wie bei klassischen Bereitstellungen –, müssen Sie zum Öffnen eines Ports für `--source-port-range` die Einstellung „*“ (Standardwert) beibehalten. Dann können eingehende Anforderungen von **allen** anfordernden Ports akzeptiert werden, die normalerweise dynamisch sind.
+> [AZURE.NOTE] Die eingehende Regel ist ein Filter für eingehende Netzwerkverbindungen. In diesem Beispiel binden wir die NSG an die virtuelle NIC der virtuellen Computer. Dies bedeutet, dass alle Anforderungen an Port 22 über die NIC auf dem virtuellen Computer übergeben werden. Dies ist eine Regel über eine Netzwerkverbindung, und nicht über einen Endpunkt wie in klassischen Bereitstellungen. Dies bedeutet, dass Sie zum Öffnen eines Ports `--source-port-range` auf „*“ (Standardwert) festgelegt lassen müssen, um eingehende Anforderungen von **jedem** anfordernden Port zu akzeptieren. Ports sind in der Regel dynamisch.
 
 ## Binden an die Netzwerkkarte
 
@@ -1061,25 +1068,32 @@ azure network nic set -g TestRG -n LB-NIC2 -o TestNSG
 ```
 
 ## Verfügbarkeitsgruppe erstellen
-Mit Verfügbarkeitsgruppen können die virtuellen Computer auf sogenannte Fehlerdomänen und Upgradedomänen verteilt werden. Wir erstellen eine Verfügbarkeitsgruppe für die virtuellen Computer:
+Mit Verfügbarkeitsgruppen können die virtuellen Computer auf Fehlerdomänen und Upgradedomänen verteilt werden. Wir erstellen eine Verfügbarkeitsgruppe für die virtuellen Computer:
 
 ```bash
 azure availset create -g TestRG -n TestAvailSet -l westeurope
 ```
 
-Durch Fehlerdomänen wird eine Gruppe virtueller Computer definiert, die eine Stromquelle und einen Netzwerkswitch gemeinsam nutzen. Die innerhalb der Verfügbarkeitsgruppe konfigurierten virtuellen Computer werden standardmäßig auf bis zu drei Fehlerdomänen verteilt. Dadurch wirkt sich ein Hardwareproblem in einer dieser Fehlerdomänen nicht auf jeden virtuellen Computer aus, auf dem Ihre Anwendung ausgeführt wird. In Azure werden virtuelle Computer automatisch auf die verschiedenen Fehlerdomänen verteilt, wenn sie sich in einer Verfügbarkeitsgruppe befinden.
+Durch Fehlerdomänen wird eine Gruppe virtueller Computer definiert, die eine Stromquelle und einen Netzwerkswitch gemeinsam nutzen. Die innerhalb der Verfügbarkeitsgruppe konfigurierten virtuellen Computer werden standardmäßig auf bis zu drei Fehlerdomänen verteilt. Dadurch wirkt sich ein Hardwareproblem in einer dieser Fehlerdomänen nicht auf jeden virtuellen Computer aus, auf dem Ihre Anwendung ausgeführt wird. Azure verteilt virtuelle Computer automatisch auf die Fehlerdomänen, wenn sie in einer Verfügbarkeitsgruppe platziert werden.
 
-Upgradedomänen definieren Gruppen virtueller Computer und die zugrunde liegende physische Hardware, die gleichzeitig neu gestartet werden können. Während einer geplanten Wartung werden die Upgradedomänen möglicherweise nicht der Reihe nach neu gestartet. Es wird aber jeweils nur eine Upgradedomäne neu gestartet. Auch hier werden virtuelle Computer automatisch auf die verschiedenen Upgradedomänen verteilt, wenn sie sich in einer Verfügbarkeitsgruppe befinden.
+Upgradedomänen definieren Gruppen virtueller Computer und die zugrunde liegende physische Hardware, die gleichzeitig neu gestartet werden können. Während einer geplanten Wartung werden die Upgradedomänen möglicherweise nicht der Reihe nach neu gestartet. Es wird aber jeweils nur eine Upgradedomäne neu gestartet. Azure verteilt Ihre virtuellen Computer auch hier automatisch auf die Upgradedomänen, wenn sie in einer Verfügbarkeitsgruppe platziert werden.
 
 Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](./virtual-machines-linux-manage-availability.md).
 
-## Erstellen der virtuellen Linux-Computer
+## Erstellen der Linux-VMs
 
-Sie haben die Speicher- und Netzwerkressourcen zur Unterstützung von über das Internet erreichbaren virtuellen Computern erstellt. Wir erstellen jetzt diese virtuellen Computer und schützen sie mit einem SSH-Schlüssel ohne Kennwort. In diesem Fall erstellen wir eine Ubuntu-VM basierend auf dem aktuellen LTS-Stand. Wir ermitteln diese Imageinformationen per `azure vm image list`. Dies wird unter [Suchen nach Azure VM-Images](virtual-machines-linux-cli-ps-findimage.md) beschrieben. Wir haben ein Image mit dem Befehl `azure vm image list westeurope canonical | grep LTS` ausgewählt. Hier verwenden wir `canonical:UbuntuServer:14.04.4-LTS:14.04.201604060`, aber für das letzte Feld übergeben wir `latest`, damit wir in Zukunft immer den aktuellen Build erhalten (verwendete Zeichenfolge: `canonical:UbuntuServer:14.04.4-LTS:14.04.201604060`).
+Sie haben die Speicher- und Netzwerkressourcen zur Unterstützung von über das Internet erreichbaren virtuellen Computern erstellt. Wir erstellen jetzt diese virtuellen Computer und schützen sie mit einem SSH-Schlüssel ohne Kennwort. In diesem Fall erstellen wir eine Ubuntu-VM basierend auf dem aktuellen LTS-Stand. Wir ermitteln diese Imageinformationen per `azure vm image list`. Dies wird unter [Suchen nach Azure VM-Images](virtual-machines-linux-cli-ps-findimage.md) beschrieben.
 
-> [AZURE.NOTE] Der nächste Schritt ist allen Benutzern vertraut, die mit **ssh-keygen -t rsa -b 2048** bereits ein Paar aus einem öffentlichen und einem privaten SSH-RSA-Schlüssel unter Linux oder Mac erstellt haben. Falls in Ihrem `~/.ssh`-Verzeichnis keine Zertifikatschlüsselpaare enthalten sind, können Sie diese <br /> 1. automatisch mit der Option `azure vm create --generate-ssh-keys` oder 2. mithilfe [dieser Anweisungen](virtual-machines-linux-ssh-from-linux.md) manuell selbst erstellen.<br /> Alternativ dazu können Sie die Optionen `azure vm create --admin-username --admin-password` nutzen, um die normalerweise weniger sichere Methode mit Benutzername und Kennwort für die Authentifizierung Ihrer SSH-Verbindungen zu verwenden, nachdem der virtuelle Computer erstellt wurde.
+Wir haben ein Image mithilfe des Befehls `azure vm image list westeurope canonical | grep LTS` ausgewählt. In diesem Fall verwenden wir `canonical:UbuntuServer:14.04.4-LTS:14.04.201604060`. Für das letzte Feld übergeben wir `latest`, sodass in Zukunft immer die letzten Builds abgerufen werden. (Die Zeichenfolge, die wir verwenden, ist `canonical:UbuntuServer:14.04.4-LTS:14.04.201604060`).
 
-Wir erstellen den virtuellen Computer, indem wir alle Ressourcen und Informationen mit dem Befehl `azure vm create` zusammenfassen.
+Der nächste Schritt ist allen Benutzern vertraut, die mit **ssh-keygen -t rsa -b 2048** bereits ein Paar aus einem öffentlichen und einem privaten SSH-RSA-Schlüssel unter Linux oder Mac erstellt haben. Wenn sich in Ihrem `~/.ssh`-Verzeichnis keine Zertifikatsschlüsselpaare befinden, können Sie sie erstellen:
+
+- Automatisch mithilfe der Option `azure vm create --generate-ssh-keys`.
+- Manuell mithilfe [der Anweisungen zur Selbsterstellung](virtual-machines-linux-ssh-from-linux.md).
+
+Alternativ können Sie mit der --admin-Kennwortmethode Ihre SSH-Verbindungen nach der Erstellung des virtuellen Computers authentifizieren. Diese Methode ist in der Regel weniger sicher.
+
+Wir erstellen den virtuellen Computer, indem wir alle Ressourcen und Informationen mit dem Befehl `azure vm create` zusammenfassen:
 
 ```bash
 azure vm create \            
@@ -1097,7 +1111,7 @@ azure vm create \
     --admin-username ops
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash
 info:    Executing command vm create
@@ -1116,13 +1130,13 @@ info:    The storage URI 'https://computeteststore.blob.core.windows.net/' will 
 info:    vm create command OK
 ```
 
-Sie können sofort mithilfe der SSH-Standardschlüssel eine Verbindung mit dem virtuellen Computer herstellen. Achten Sie dabei auf die Angabe des entsprechenden Ports, da der Datenverkehr über den Load Balancer erfolgt (für den ersten virtuellen Computer haben wir die NAT-Regel für die Weiterleitung an Port 4222 des virtuellen Computers eingerichtet):
+Anschließend können Sie mit Ihren standardmäßigen SSH-Schlüsseln eine Verbindung mit dem virtuellen Computer herstellen. Stellen Sie sicher, dass Sie den entsprechenden Port angeben, da die Weiterleitung über den Load Balancer erfolgt. (Für unseren ersten virtuellen Computer richten wir die NAT-Regel zum Weiterleiten von Port 4222 an den virtuellen Computer ein):
 
 ```bash
  ssh ops@testlb.westeurope.cloudapp.azure.com -p 4222
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash
 The authenticity of host '[testlb.westeurope.cloudapp.azure.com]:4222 ([xx.xx.xx.xx]:4222)' can't be established.
@@ -1177,13 +1191,13 @@ azure vm create \
     --admin-username ops
 ```
 
-Jetzt können Sie mit dem Befehl `azure vm show testrg testvm` die erstellten Elemente untersuchen. Nun werden die virtuellen Ubuntu-Computer hinter einem Load Balancer in Azure ausgeführt, an denen Sie sich nur mit Ihrem SSH-Schlüsselpaar anmelden können. Kennwörter sind deaktiviert. Sie können nginx oder httpd installieren und eine Web-App bereitstellen. Zudem können Sie den Datenverkehrsfluss durch den Load Balancer an beide virtuellen Computer sehen.
+Jetzt können Sie mit dem Befehl `azure vm show testrg testvm` die erstellten Elemente untersuchen. Nun werden die virtuellen Ubuntu-Computer, bei denen Sie sich nur mit Ihrem SSH-Schlüsselpaar anmelden können (weil Kennwörter deaktiviert sind), hinter einem Load Balancer in Azure ausgeführt. Sie können „nginx“ oder „httpd“ installieren und eine Web-App bereitstellen. Zudem können Sie den Datenverkehrsfluss durch den Load Balancer an beide virtuellen Computer sehen.
 
 ```bash
 azure vm show TestRG TestVM1
 ```
 
-Ausgabe
+Ausgabe:
 
 ```bash
 info:    Executing command vm show
@@ -1241,13 +1255,13 @@ info:    vm show command OK
 
 
 ## Exportieren der Umgebung als Vorlage
-Nachdem Sie nun diese Umgebung erstellt haben, möchten Sie vielleicht eine weitere Entwicklungsumgebung mit denselben Parametern oder eine entsprechende Produktionsumgebung erstellen. Resource Manager verwendet JSON-Vorlagen, die alle Parameter für Ihre Umgebung definieren, sodass Sie mithilfe einer JSON-Vorlage ganze Umgebungen aufbauen können. Sie können [JSON-Vorlagen entweder manuell erstellen](../resource-group-authoring-templates.md) oder einfach eine vorhandene Umgebung exportieren, um eine JSON-Vorlage zu erstellen:
+Nachdem Sie nun diese Umgebung erstellt haben, möchten Sie vielleicht eine weitere Entwicklungsumgebung mit den gleichen Parametern oder eine entsprechende Produktionsumgebung erstellen. Der Resource Manager verwendet die JSON-Vorlagen, die alle Parameter für Ihre Umgebung definieren. Dies bedeutet, dass Sie ganze Umgebungen durch Verweisen auf diese JSON-Vorlage erstellen können. Sie können [JSON-Vorlagen entweder manuell erstellen](../resource-group-authoring-templates.md) oder einfach eine vorhandene Umgebung exportieren, um eine JSON-Vorlage zu erstellen:
 
 ```bash
 azure group export TestRG
 ```
 
-Auf diese Weise wird die `TestRG.json`-Datei in Ihrem aktuellen Arbeitsverzeichnis erstellt. Wenn Sie eine neue Umgebung aus dieser Vorlage erstellen, werden Sie aufgefordert, alle Ressourcennamen, beispielsweise für den Load Balancer, Netzwerkschnittstellen, virtuelle Computer usw. einzugeben. Sie können Ihre Vorlagendatei mit diesen Angaben auffüllen, indem Sie `-p` oder `--includeParameterDefaultValue` zum oben stehenden `azure group export`-Befehl hinzufügen, indem Sie die JSON-Vorlage bearbeiten, um die Ressourcennamen anzugeben, oder indem Sie eine [parameters.json-Datei erstellen](../resource-group-authoring-templates.md#parameters), die nur die Ressourcennamen angibt.
+Auf diese Weise wird die `TestRG.json`-Datei in Ihrem aktuellen Arbeitsverzeichnis erstellt. Wenn Sie eine neue Umgebung aus dieser Vorlage erstellen, werden Sie aufgefordert, alle Ressourcennamen, beispielsweise die Namen für Load Balancer, Netzwerkschnittstellen, virtuelle Computer usw. einzugeben. Diese können Sie in Ihre Vorlagendatei eintragen, indem Sie `-p` oder `--includeParameterDefaultValue` dem Befehl `azure group export` hinzufügen, der zuvor gezeigt wurde. Bearbeiten Sie die JSON-Vorlage zum Angeben der Ressourcennamen, oder [erstellen Sie eine Datei „parameters.json“](../resource-group-authoring-templates.md#parameters), die die Ressourcennamen angibt.
 
 Erstellen Sie wie folgt eine neue Umgebung aus Ihrer Vorlage:
 
@@ -1255,10 +1269,10 @@ Erstellen Sie wie folgt eine neue Umgebung aus Ihrer Vorlage:
 azure group deployment create -f TestRG.json -g NewRGFromTemplate
 ```
 
-[Erfahren Sie mehr über das Bereitstellen von Vorlagen](../resource-group-template-deploy-cli.md), z.B. darüber, wie Sie Umgebungen unter Verwendung der Datei „parameters“ schrittweise aktualisieren und über einen zentralen Speicherort auf Vorlagen zugreifen.
+Möglicherweise möchten Sie [weitere Informationen zum Bereitstellen von Vorlagen](../resource-group-template-deploy-cli.md) lesen. Erfahren Sie, wie Sie Umgebungen unter Verwendung der Parameterdatei schrittweise aktualisieren und von einem zentralen Speicherort aus auf Vorlagen zugreifen.
 
 ## Nächste Schritte
 
-Sie können jetzt mit mehreren Netzwerkkomponenten und VMs starten. Sie können diese Beispielumgebung nutzen, um Ihre Anwendung mithilfe der hier eingeführten zentralen Komponenten zu erstellen.
+Sie können jetzt beginnen, mit mehreren Netzwerkkomponenten und VMs zu arbeiten. Sie können diese Beispielumgebung nutzen, um Ihre Anwendung mithilfe der hier eingeführten zentralen Komponenten zu erstellen.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0727_2016-->

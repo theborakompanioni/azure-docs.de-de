@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/11/2016"
+	ms.date="07/26/2016"
 	ms.author="robinsh"/>
 
 # Azure Storage Service Encryption für ruhende Daten (Vorschau)
@@ -35,11 +35,11 @@ Nach Klicken auf die Einstellung „Verschlüsselung“ können Sie Storage Serv
 
 ![Portal-Screenshot mit Verschlüsselungseigenschaften](./media/storage-service-encryption/image2.png)
 
-##Availability
+##Verfügbarkeit
 
-Für Storage Standard ist dieses Feature derzeit in den Regionen „Australien, Südosten“, „USA, Mitte“, „Asien, Osten“ „USA, Osten 2“, „Asien, Südosten“, „Europa, Westen“ und „USA, Westen“ verfügbar.
+Für Storage Standard ist dieses Feature derzeit in den Regionen „Australien, Südosten“, „Kanada, Mitte“, „Kanada, Osten“, „USA, Mitte“, „Asien, Osten“ „USA, Osten 2“, „USA, Norden-Mitte“, „Asien, Südosten“, „Europa, Westen“ und „USA, Westen“ verfügbar.
 
-Für Storage Premium ist dieses Feature derzeit in den Regionen „Australien, Südosten“, „USA, Mitte“, „Asien, Osten“ „USA, Osten 2“, „Asien, Südosten“, „Japan, Osten“ und „USA, Westen“ verfügbar.
+Für Storage Premium ist dieses Feature derzeit in den Regionen „Australien, Südosten“, „Kanada, Mitte“, „Kanada, Osten“, „USA, Mitte“, „Asien, Osten“ „USA, Osten 2“, „USA, Norden-Mitte“, „Asien, Südosten“, „Japan, Osten“ und „USA, Westen“ verfügbar.
 
 Wenn wir dieses Feature in weiteren Regionen einführen, werden wir dieses Dokument entsprechend aktualisieren.
 
@@ -229,4 +229,4 @@ A: Bitte wenden Sie sich in allen Angelegenheiten, die Storage Service Encryptio
 
 Azure Storage bietet einen umfassenden Satz von Sicherheitsfunktionen, die Entwicklern das Erstellen sicherer Anwendungen ermöglichen. Weitere Informationen finden Sie im [Azure Storage-Sicherheitsleitfaden](storage-security-guide.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

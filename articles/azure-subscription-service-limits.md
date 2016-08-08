@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/08/2016"
+	ms.date="07/26/2016"
 	ms.author="jroth"/>
 
 # Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
@@ -239,11 +239,7 @@ Detailliertere Informationen zu anderen Grenzwerten, einschließlich Dokumentgr�
 [AZURE.INCLUDE [azure-data-lake-analytics-limits](../includes/azure-data-lake-analytics-limits.md)]
 
 ### Stream Analytics-Grenzwerte
-
-| Grenzwertbezeichner | Begrenzung | Kommentare |
-|----------------- | ------------|--------- |
-| Maximale Anzahl der Streamingeinheiten pro Abonnement und Region | 50 | Beim [Microsoft Support](https://support.microsoft.com/de-DE) können Sie die Erhöhung der Streamingeinheiten auf über 50 für Ihr Abonnement anfordern. |
-| Maximaler Durchsatz einer Streamingeinheit | 1 MB/s* | Der maximale Durchsatz pro Streamingeinheit hängt vom jeweiligen Szenario ab. Der tatsächliche Durchsatz kann geringer ausfallen und hängt von der Komplexität der Abfragen und von der Partitionierung ab. Weitere Informationen finden Sie im Artikel [Skalieren von Azure Stream Analytics-Aufträgen](../articles/stream-analytics/stream-analytics-scale-jobs.md). |
+[AZURE.INCLUDE [stream-analytics-limits-table](../includes/stream-analytics-limits-table.md)]
 
 ### Active Directory-Grenzwerte
 
@@ -305,4 +301,4 @@ Einschränkungen für SQL-Datenbanken finden Sie unter [Ressourceneinschränkung
 
 [Größen für Cloud Services](cloud-services/cloud-services-sizes-specs.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

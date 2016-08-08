@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/07/2016" 
+	ms.date="07/21/2016" 
 	ms.author="awills"/>
  
 # Exportieren von Telemetriedaten aus Application Insights
@@ -24,7 +24,7 @@ Der fortlaufende Export ist im kostenlosen Testzeitraum und in den [Standard- un
 
 Bevor Sie den fortlaufenden Export einrichten, sollten Sie folgende Alternativen zu dieser Vorgehensweise prüfen:
 
-* [Die Schaltfläche „Exportieren“](app-insights-metrics-explorer.md#export-to-excel) ganz oben in einem Blatt „Metriken“ oder „Suche“, mit der Sie Tabellen und Diagramme in ein Excel-Arbeitsblatt übertragen können. 
+* [Die Schaltfläche „Exportieren“](app-insights-metrics-explorer.md#export-to-excel) ganz oben in einem Blatt „Metriken“ oder „Suche“, mit der Sie Tabellen und Diagramme in ein Excel-Arbeitsblatt übertragen können.
 * [Analytics](app-insights-analytics.md) bietet eine leistungsstarke Abfragesprache für Telemetriedaten, und mithilfe dieser Sprache lassen sich auch Ergebnisse exportieren.
 * Wenn Sie [Ihre Daten in Power BI untersuchen](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx) möchten, benötigen Sie dazu keinen fortlaufenden Export.
 
@@ -111,7 +111,7 @@ Hierbei gilt:
 
 ## <a name="format"></a> Datenformat
 
-* Jedes Blob ist eine Textdatei, die mehrere durch '\\n' getrennte Zeilen enthält.
+* Jedes Blob ist eine Textdatei, die mehrere durch '\\n' getrennte Zeilen enthält. Es enthält die Telemetriedaten, die über einen Zeitraum von etwa einer halben Minute verarbeitet wurden.
 * Jede Zeile stellt einen Telemetriedatenpunkt dar, z.B. eine Anforderung oder einen Seitenaufruf.
 * Jede Zeile ist ein unformatiertes JSON-Dokument. Wenn Sie den Vorgang verfolgen möchten, öffnen Sie es in Visual Studio, und wählen Sie "Bearbeiten", "Erweitert", "Formatdatei":
 
@@ -178,7 +178,7 @@ Bei größeren Dimensionen sollten Sie [HDInsight](https://azure.microsoft.com/s
 
 ## Fragen und Antworten
 
-* *Ich möchte aber nur ein Diagramm einmalig herunterladen.*  
+* *Ich möchte aber nur ein Diagramm einmalig herunterladen.*
  
     Das ist kein Problem. Klicken Sie oben im Blatt auf [Daten exportieren](app-insights-metrics-explorer.md#export-to-excel).
 
@@ -229,4 +229,4 @@ Bei größeren Dimensionen sollten Sie [HDInsight](https://azure.microsoft.com/s
 
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="06/16/2016"
+	ms.date="07/16/2016"
 	ms.author="carlrab" />
 
 # Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung
@@ -23,7 +23,7 @@
 
 ## Übersicht über die Authentifizierungsanforderungen für die Notfallwiederherstellung
 
-In diesem Thema werden die Authentifizierungsanforderungen zum Konfigurieren und Steuern der [aktiven Georeplikation](sql-database-geo-replication-overview.md) sowie die erforderlichen Schritte zum Einrichten des Benutzerzugriffs auf die sekundäre Datenbank beschrieben. Außerdem wird beschrieben, wie nach der [Geowiederherstellung](sql-database-recovery-using-backups.md#geo-restore) der Zugriff auf die wiederhergestellte Datenbank aktiviert wird. Weitere Informationen zu Wiederherstellungsoptionen finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank nach einem Ausfall](sql-database-disaster-recovery.md).
+In diesem Thema werden die Authentifizierungsanforderungen zum Konfigurieren und Steuern der [aktiven Georeplikation](sql-database-geo-replication-overview.md) sowie die erforderlichen Schritte zum Einrichten des Benutzerzugriffs auf die sekundäre Datenbank beschrieben. Außerdem wird beschrieben, wie nach der [Geowiederherstellung](sql-database-recovery-using-backups.md#geo-restore) der Zugriff auf die wiederhergestellte Datenbank aktiviert wird. Weitere Informationen zu Wiederherstellungsoptionen finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
 
 ## Notfallwiederherstellung mit eigenständigen Benutzern
 
@@ -95,4 +95,4 @@ Der letzte Schritt besteht darin, auf dem oder den Zielservern die Anmeldungen m
 
 ## Zusätzliche Ressourcen
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

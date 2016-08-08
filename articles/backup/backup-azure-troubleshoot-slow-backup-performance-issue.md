@@ -4,7 +4,7 @@
    services="backup"
    documentationCenter=""
    authors="genlin"
-   manager="markgal"
+   manager="jimpark"
    editor=""/>
 
 <tags
@@ -31,6 +31,8 @@ Bevor Sie mit der Problembehandlung beginnen, empfehlen wir Ihnen, den [aktuelle
 
 Wir legen Ihnen auch den Artikel [Azure Backup-Dienst – FAQ](backup-azure-backup-faq.md) ans Herz, damit Sie häufig auftretende Konfigurationsprobleme vermeiden können.
 
+[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+
 ## Schritte zur Problembehandlung
 <a id="cause1"></a>
 ## Ursache 1: Langsame Sicherung aufgrund von Leistungsengpässen auf dem zu sichernden Computer
@@ -45,13 +47,13 @@ Hier sind einige Leistungsindikatoren und Bereiche angegeben, die bei der Diagno
 
 | Indikator | Status |
 |---|---|
-|Logical Disk(Physical Disk)--%idle | • 100% Leerlauf bis 50% Leerlauf = Fehlerfrei</br>• 49% Leerlauf bis 20% Leerlauf = Warnung oder Überwachen</br>• 19% Leerlauf bis 0% Leerlauf = Kritisch oder außerhalb der Spezifikation|
-| Logical Disk(Physical Disk)--%Avg. Disk Sec Read or Write | • 0,001ms bis 0,015ms = Fehlerfrei</br>• 0,015ms bis 0,025 = Warnung oder Überwachen</br>• 0,026ms oder länger = Kritisch oder außerhalb der Spezifikation|
+|Logical Disk(Physical Disk)--%idle | • 100 % Leerlauf bis 50 % Leerlauf = Fehlerfrei</br>• 49 % Leerlauf bis 20 % Leerlauf = Warnung oder Überwachen</br>• 19 % Leerlauf bis 0 % Leerlauf = Kritisch oder außerhalb der Spezifikation|
+| Logical Disk(Physical Disk)--%Avg. Disk Sec Read or Write | • 0,001 ms bis 0,015 ms = Fehlerfrei</br>• 0,015 ms bis 0,025 = Warnung oder Überwachen</br>• 0,026 ms oder länger = Kritisch oder außerhalb der Spezifikation|
 | Logical Disk(Physical Disk)--Current Disk Queue Length (für alle Instanzen) | 80 Anforderungen über einen Zeitraum von mehr als 6 Minuten |
-| Memory--Pool Non Paged Bytes|• Weniger als 60% des Pools verbraucht = Fehlerfrei<br>• 61% - 80% des Pools verbraucht = Warnung oder Überwachen</br>• Mehr als 80% des Pools verbraucht = Kritisch oder außerhalb der Spezifikation|
-| Memory--Pool Paged Bytes |• Weniger als 60% des Pools verbraucht = Fehlerfrei</br>• 61% - 80% des Pools verbraucht = Warnung oder Überwachen</br>• Mehr als 80% des Pools verbraucht = Kritisch oder außerhalb der Spezifikation|
-| Memory--Available Megabytes| • 50% freier Arbeitsspeicher oder mehr = Fehlerfrei</br>• 25% freier Arbeitsspeicher = Überwachen</br>• 10% freier Arbeitsspeicher = Warnung</br>• Weniger als 100 MB oder 5% freier Arbeitsspeicher = Kritisch oder außerhalb der Spezifikation|
-|Processor--\\%Processor Time (alle Instanzen)|• Weniger als 60% verbraucht = Fehlerfrei</br>• 61% - 90% verbraucht = Überwachen oder Vorsicht</br>• 91% - 100% verbraucht = Kritisch|
+| Memory--Pool Non Paged Bytes|• Weniger als 60 % des Pools verbraucht = Fehlerfrei<br>• 61 % - 80 % des Pools verbraucht = Warnung oder Überwachen</br>• Mehr als 80 % des Pools verbraucht = Kritisch oder außerhalb der Spezifikation|
+| Memory--Pool Paged Bytes |• Weniger als 60 % des Pools verbraucht = Fehlerfrei</br>• 61 % - 80 % des Pools verbraucht = Warnung oder Überwachen</br>• Mehr als 80 % des Pools verbraucht = Kritisch oder außerhalb der Spezifikation|
+| Memory--Available Megabytes| • 50 % freier Arbeitsspeicher oder mehr = Fehlerfrei</br>• 25 % freier Arbeitsspeicher = Überwachen</br>• 10% freier Arbeitsspeicher = Warnung</br>• Weniger als 100 MB oder 5 % freier Arbeitsspeicher = Kritisch oder außerhalb der Spezifikation|
+|Processor--\\%Processor Time (alle Instanzen)|• Weniger als 60 % verbraucht = Fehlerfrei</br>• 61 % - 90 % verbraucht = Überwachen oder Vorsicht</br>• 91 % - 100 % verbraucht = Kritisch|
 
 
 > [AZURE.NOTE] Falls die Infrastruktur als mögliche Ursache ermittelt wird, ist es ratsam, die geschützten Datenträger regelmäßig zu defragmentieren, um eine bessere Leistung zu erzielen.
@@ -93,4 +95,4 @@ a. **Benutzeroberfläche zeigt Status zur übertragenen Datenmenge an**: In dies
 
 b. **Benutzeroberfläche zeigt keinen Status an**: Öffnen Sie die Protokolle unter „C:\\Microsoft Azure Recovery Services Agent\\Temp“, und suchen Sie darin nach dem Eintrag „FileProvider::EndData“. Dieser Eintrag verdeutlicht, dass die Datenübertragung abgeschlossen ist und der Katalogisierungsvorgang durchgeführt wird. Brechen Sie die Sicherungsaufträge nicht ab, sondern warten Sie, bis die Katalogisierung abgeschlossen ist. Wenden Sie sich an den [Azure-Support](https://portal.azure.com/#create/Microsoft.Support), wenn das Problem weiterhin besteht.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -26,6 +26,10 @@ Damit der Azure Data Factory-Dienst eine Verbindung mit Ihrer lokalen Oracle-D
 - Datenverwaltungsgateway auf dem Computer, der die Datenbank hostet, oder auf einem separaten Computer, um zu vermeiden, dass der Computer mit der Datenbank um Ressourcen konkurriert. Datenverwaltungsgateway ist eine Software, die lokale Datenquellen mit Cloud-Diensten auf sichere, verwaltete Weise verbindet. Weitere Informationen zum Datenverwaltungsgateway finden Sie im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md).
 - Oracle-Datenanbieter für .NET. Dieser ist in [Oracle Data Access Components (ODAC) für Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/) enthalten. Installieren Sie die geeignete Version (32/64 Bit) auf dem Hostcomputer, auf dem das Gateway installiert ist. [Oracle Data Provider .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) kann auf Oracle Database 10g, Version 2 oder höher, zugreifen.
 
+	Wenn Sie „XCopy Installation“ auswählen, führen Sie die Schritte in der Datei „Readme.htm“ aus. Es wird empfohlen, das Installationsprogramm mit Benutzeroberfläche (nicht das von XCopy) auszuwählen.
+ 
+	Starten Sie nach der Installation des Anbieters den Hostdienst des Datenverwaltungsgateways auf Ihrem Computer mithilfe des Applets „Dienste“ oder Datenverwaltungsgateway-Konfigurations-Managers neu.
+
 > [AZURE.NOTE] Unter [Problembehandlung bei Gateways](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.
 
 ## Beispiel: Kopieren von Daten aus Oracle in Azure-Blob
@@ -123,7 +127,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%M"
+	            "format": "MM"
 	          }
 	        },
 	        {
@@ -131,7 +135,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%d"
+	            "format": "dd"
 	          }
 	        },
 	        {
@@ -139,7 +143,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%H"
+	            "format": "HH"
 	          }
 	        }
 	      ],
@@ -280,7 +284,7 @@ Daten werden stündlich aus einem neuen Blob übernommen ("frequency": "hour", "
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%M"
+	            "format": "MM"
 	          }
 	        },
 	        {
@@ -288,7 +292,7 @@ Daten werden stündlich aus einem neuen Blob übernommen ("frequency": "hour", "
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%d"
+	            "format": "dd"
 	          }
 	        },
 	        {
@@ -296,7 +300,7 @@ Daten werden stündlich aus einem neuen Blob übernommen ("frequency": "hour", "
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%H"
+	            "format": "HH"
 	          }
 	        }
 	      ],
@@ -501,4 +505,4 @@ XML | String
 ## Leistung und Optimierung  
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

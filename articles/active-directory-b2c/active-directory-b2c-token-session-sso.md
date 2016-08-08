@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory B2C – Vorschau: Token, Sitzung und einmaliges Anmelden – Konfiguration | Microsoft Azure"
+	pageTitle="Azure Active Directory B2C: Token, Sitzung und einmaliges Anmelden – Konfiguration | Microsoft Azure"
 	description="Token, Sitzung und einmaliges Anmelden – Konfiguration in Azure Active Directory B2C "
 	services="active-directory-b2c"
 	documentationCenter=""
@@ -13,12 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="07/24/2016"
 	ms.author="swkrish"/>
 
-# Azure Active Directory B2C – Vorschau: Token, Sitzung und einmaliges Anmelden – Konfiguration
-
-[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
+# Azure Active Directory B2C: Token, Sitzung und einmaliges Anmelden – Konfiguration
 
 Diese Funktion ermöglicht Ihnen eine präzisere Steuerung auf [Basis einer Richtlinie](active-directory-b2c-reference-policies.md) von:
  
@@ -28,8 +26,8 @@ Diese Funktion ermöglicht Ihnen eine präzisere Steuerung auf [Basis einer Rich
 
 Sie können diese Funktion in Ihrem B2C-Mandanten wie folgt verwenden:
 
-1. Führen Sie diese Schritte aus, um [im Azure-Portal zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
-2. Klicken Sie auf **Anmelderichtlinien**. *Hinweis: Sie können diese Funktion auf jeden Richtlinientyp anwenden, nicht nur auf **Anmelderichtlinien***.
+1. Führen Sie die folgenden Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
+2. Klicken Sie auf **Anmelderichtlinien**. *Hinweis: Sie können diese Funktion auf jeden Richtlinientyp anwenden, nicht nur auf *Anmelderichtlinien**.
 3. Öffnen Sie eine Richtlinie, indem Sie darauf klicken. Klicken Sie z. B. auf **B2C\_1\_SiIn**.
 4. Klicken Sie oben auf dem Blatt auf **Bearbeiten**.
 5. Klicken Sie auf **Token, Sitzung und einmaliges Anmelden**.
@@ -45,7 +43,7 @@ Azure AD B2C unterstützt das [Authorization-Protokoll OAuth 2.0](active-directo
 
 - **Gültigkeitsdauer von Zugriffs-ID-Token(Minuten)**: Die Gültigkeitsdauer des OAuth 2.0-Bearertokens, das verwendet wird, um auf eine geschützte Ressource zuzugreifen. Azure AD B2C gibt zurzeit nur ID-Token heraus. Dieser Wert würde auch für Zugriffstoken gelten, wenn wir Unterstützung für sie hinzufügen.
    - Standardwert: 60 Minuten.
-   - Minimum (inklusive): 15 Minuten.
+   - Minimum (inklusive): 5 Minuten.
    - Maximum (inklusive): 1.440 Minuten.
 - **Aktualisierungstoken-Gültigkeitsdauer (Tage)**: Der maximale Zeitraum, vor dessen Verstreichen ein Aktualisierungstoken verwendet werden kann, um einen neuen Zugriff oder ein neues ID-Token zu erwerben (und optional ein neues Aktualisierungstoken, wenn Ihrer Anwendung der `offline_access`-Bereich gewährt wurde).
    - Standardwert: 14 Tage.
@@ -74,15 +72,15 @@ Azure AD B2C unterstützt das [OpenID Connect-Authentifizierungsprotokoll](activ
 Dies sind einige Anwendungsfälle, die Sie mit diesen Eigenschaften aktivieren können:
 
 - Erfüllen Sie die Sicherheits- und Complianceanforderungen Ihrer Branche durch Festlegung der entsprechenden Webanwendungssitzungs-Gültigkeitsdauer.
-- Erzwingen Sie erneute Authentifizierung nach einem festgelegten Zeitraum während der Interaktion eines Benutzers mit einem Hochsicherheitsteil Ihrer Webanwendung. 
+- Erzwingen Sie erneute Authentifizierung nach einem festgelegten Zeitraum während der Interaktion eines Benutzers mit einem Hochsicherheitsteil Ihrer Webanwendung.
 
 ## Einmaliges Anmelden (Single Sign-on, SSO) – Konfiguration
 
 Wenn Sie in Ihrem B2C-Mandanten über mehrere Anwendungen und Richtlinien verfügen, können Sie die Interaktionen der Benutzer mithilfe der Eigenschaft **Konfiguration des einmaligen Anmeldens** übergreifend verwalten. Sie können die Eigenschaft auf eine der folgenden Optionen festlegen:
 
 - **Mandant**: Dies ist die Standardeinstellung. Mit dieser Einstellung können mehrere Anwendungen und Richtlinien in Ihrem B2C-Mandanten die gleiche Benutzersitzung gemeinsam nutzen. Sobald sich ein Benutzer bei einer Anwendung – beispielsweise Contoso Shopping – angemeldet hat, erfolgt die Anmeldung bei einer anderen Anwendung – etwa Contoso Pharmacy – nahtlos beim Zugriff auf die Anwendung.
-- **Anwendung**: Damit können Sie eine Benutzersitzung ausschließlich für eine Anwendung beibehalten, unabhängig von anderen Anwendungen. Verwenden Sie diese Einstellung beispielsweise, wenn Sie möchten, dass sich der Benutzer (mit denselben Anmeldeinformationen) bei Contoso Pharmacy anmeldet – auch wenn der Benutzer bereits bei Contoso Shopping angemeldet ist, einer anderen Anwendung im selben B2C-Mandanten. 
+- **Anwendung**: Damit können Sie eine Benutzersitzung ausschließlich für eine Anwendung beibehalten, unabhängig von anderen Anwendungen. Verwenden Sie diese Einstellung beispielsweise, wenn Sie möchten, dass sich der Benutzer (mit denselben Anmeldeinformationen) bei Contoso Pharmacy anmeldet – auch wenn der Benutzer bereits bei Contoso Shopping angemeldet ist, einer anderen Anwendung im selben B2C-Mandanten.
 - **Richtlinie**: Damit können Sie eine Benutzersitzung ausschließlich für eine Richtlinie beibehalten, unabhängig von den Anwendungen, die sie verwenden. Wenn der Benutzer sich z. B. bereits angemeldet und einen Multi-Factor Authentication-Schritt (MFA) abgeschlossen hat, kann er Zugriff auf Hochsicherheitsteile mehrerer Anwendungen erhalten, solange die an die Richtlinie gebundene Sitzung nicht abläuft.
 - **Deaktiviert**: Bei jeder Ausführung der Richtlinie muss der Benutzer die gesamte User Journey ausführen. Dies erlaubt beispielsweise mehreren Benutzern, sich bei der Anwendung anzumelden (in einem Szenario mit freigegebenem Desktop), auch während ein einzelner Benutzer während der gesamten Zeit angemeldet bleibt.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

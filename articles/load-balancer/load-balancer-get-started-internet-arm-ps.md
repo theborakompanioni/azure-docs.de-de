@@ -159,7 +159,7 @@ Sie müssen Netzwerkschnittstellen erstellen (oder vorhandene ändern) und diese
 
 ### Schritt 1 
 
-Rufen Sie das virtuelle Netzwerk und das zugehörige Subnetz ab, in denen die NICs erstellt werden sollen.
+Rufen Sie das virtuelle Netzwerk und das zugehörige Subnetz ab, in denen die Netzwerkkarten erstellt werden sollen.
 
 	$vnet = Get-AzureRmVirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG
 	$backendSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name LB-Subnet-BE -VirtualNetwork $vnet 
@@ -308,4 +308,4 @@ Verwenden Sie den Befehl `Remove-AzureLoadBalancer`, um den zuvor erstellten Loa
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

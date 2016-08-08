@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/11/2016" 
+	ms.date="07/21/2016" 
 	ms.author="donnam"/>
 
 # Hinzufügen von Authentifizierung zur Mobile Services-App
@@ -142,4 +142,4 @@ Im nächsten Lernprogramm [Autorisieren von Benutzern mit Skripts] werden Sie de
 [Autorisieren von Benutzern mit Skripts]: mobile-services-javascript-backend-service-side-authorization.md
 [abgeschlossene Beispielprojekt]: http://go.microsoft.com/fwlink/p/?LinkId=331328
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0727_2016-->

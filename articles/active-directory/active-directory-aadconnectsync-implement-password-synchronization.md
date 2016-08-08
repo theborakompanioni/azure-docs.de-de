@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 <tags
 	ms.service="active-directory"
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/02/2016"
+	ms.date="07/20/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -31,14 +31,14 @@ Die Kennwortsynchronisierung ist ein Feature zum Synchronisieren von Benutzerken
 
 Die Kennwortsynchronisierung verringert die Anzahl von Kennwörtern, die Benutzer sich merken müssen, auf ein einziges Kennwort. So unterstützt dieses Feature Sie bei Folgendem:
 
-- Verbessern der Produktivität der Benutzer 
-- Senken der Kosten in Verbindung mit dem Helpdesk  
+- Verbessern der Produktivität der Benutzer
+- Senken der Kosten in Verbindung mit dem Helpdesk
 
 Wenn Sie die Option [**Verbund mit AD FS**](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect) auswählen, können Sie die Kennwortsynchronisierung optional auch als zusätzliche Sicherheit für den Fall aktivieren, dass Ihre AD FS-Infrastruktur ausfällt.
 
 Die Kennwortsynchronisierung ist eine Erweiterung des durch die Azure AD Connect-Synchronisierung implementierten Verzeichnissynchronisierungsfeatures. Um die Kennwortsynchronisierung in Ihrer Umgebung zu verwenden, müssen Sie Folgendes ausführen:
 
-- Installieren von Azure AD Connect  
+- Installieren von Azure AD Connect
 
 - Konfigurieren der Verzeichnissynchronisierung zwischen Ihrem lokalen Active Directory und Ihrem Azure Active Directory
 
@@ -53,7 +53,7 @@ Ausführlichere Informationen finden Sie unter [Integrieren Ihrer lokalen Identi
 
 ## So funktioniert die Kennwortsynchronisierung
 
-Der Active Directory-Domänendienst speichert Kennwörter in Form einer Hashwertdarstellung des tatsächlichen Benutzerkennworts. Ein Hashwert ist das Ergebnis einer unidirektionalen mathematischen Funktion (des „ *Hashalgorithmus* “). Es gibt keine Methode, das Ergebnis einer unidirektionalen Funktion in die Nur-Text-Version eines Kennworts umzukehren. Sie können einen Kennworthash nicht zur Anmeldung in Ihrem lokalen Netzwerk verwenden.
+Der Active Directory-Domänendienst speichert Kennwörter in Form einer Hashwertdarstellung des tatsächlichen Benutzerkennworts. Ein Hashwert ist das Ergebnis einer unidirektionalen mathematischen Funktion (des „*Hashalgorithmus*“). Es gibt keine Methode, das Ergebnis einer unidirektionalen Funktion in die Nur-Text-Version eines Kennworts umzukehren. Sie können einen Kennworthash nicht zur Anmeldung in Ihrem lokalen Netzwerk verwenden.
 
 Um Ihr Kennwort zu synchronisieren, extrahiert Azure AD Connect Sync den Kennworthash aus der lokalen Active Directory-Instanz. Vor der Synchronisierung mit dem Azure Active Directory-Authentifizierungsdienst wird der Kennworthash einer zusätzlichen Sicherheitsverarbeitung unterzogen. Kennwörter werden pro Benutzer und in chronologischer Reihenfolge synchronisiert.
 
@@ -129,8 +129,8 @@ Wenn Ihr Server wegen FIPS (Federal Information Processing Standard) gesperrt is
 
 1. Wechseln Sie zu **%programfiles%\\Azure AD Sync\\Bin**.
 2. Öffnen Sie **miiserver.exe.config**.
-2. Navigieren Sie zum Knoten **configuration/runtime** (am Ende der Datei). 
-3. Fügen Sie den folgenden Knoten hinzu: **<enforceFIPSPolicy enabled="false"/>** 
+2. Navigieren Sie zum Knoten **configuration/runtime** (am Ende der Datei).
+3. Fügen Sie den folgenden Knoten hinzu: **<enforceFIPSPolicy enabled="false"/>**
 4. Speichern Sie die Änderungen.
 
 Informationen über Sicherheitsfragen und FIPS finden Sie im Blogbeitrag [AAD Password Sync, Encryption and FIPS compliance](http://blogs.technet.com/b/ad/archive/2014/06/28/aad-password-sync-encryption-and-and-fips-compliance.aspx) (in englischer Sprache).
@@ -201,4 +201,4 @@ Normalerweise ist es nicht erforderlich, eine vollständige Synchronisierung all
 * [Azure AD Connect-Synchronisierung: Anpassen von Synchronisierungsoptionen](active-directory-aadconnectsync-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/05/2016" 
+	ms.date="07/21/2016" 
 	ms.author="glenga"/>
 
 # Senden von Pushbenachrichtigungen an authentifizierte Benutzer
@@ -100,4 +100,4 @@ Nachdem Sie diese beiden Lernprogramme abgeschlossen haben, können Sie verhinde
 [Hinzufügen von Authentifizierung zur App]: ../mobile-services-windows-store-dotnet-get-started-users.md
 [Hinzufügen von Pushbenachrichtigungen zur App]: ../mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0727_2016-->

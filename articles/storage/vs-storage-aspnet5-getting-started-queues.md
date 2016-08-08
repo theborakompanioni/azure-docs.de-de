@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Erste Schritte mit Warteschlangenspeicher und verbundenen Visual Studio-Diensten (ASP.NET 5) | Microsoft Azure"
-	description="Erste Schritte mit Azure-Warteschlangenspeicher in einem ASP.NET 5-Projekt in Visual Studio"
+	pageTitle="Erste Schritte mit Warteschlangenspeicher und verbundenen Visual Studio-Diensten (ASP.NET 5) | Microsoft Azure"
+	description="Erste Schritte mit Azure-Warteschlangenspeicher in einem ASP.NET 5-Projekt in Visual Studio"
 	services="storage"
 	documentationCenter=""
 	authors="TomArcher"
@@ -16,15 +16,15 @@
 	ms.date="07/18/2016"
 	ms.author="tarcher"/>
 
-# Erste Schritte mit Warteschlangenspeicher und verbundenen Visual Studio-Diensten (ASP.NET 5)
+# Erste Schritte mit Warteschlangenspeicher und verbundenen Visual Studio-Diensten (ASP.NET 5)
 
-[AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
+[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ##Übersicht
 
 Dieser Artikel beschreibt, wie die ersten Schritte beim Verwenden von Azure Queue Storage in Visual Studio aussehen, nachdem Sie über das Visual Studio-Dialogfeld **Verbundene Dienste hinzufügen** in einem ASP.NET 5-Projekt ein Azure-Speicherkonto erstellt oder auf ein solches Konto verwiesen haben. Bei einem **Verbundene Dienste hinzufügen**-Vorgang werden die entsprechenden NuGet-Pakete installiert, um auf Azure-Speicher in Ihrem Projekt zuzugreifen, und wird die Verbindungszeichenfolge für das Speicherkonto in Ihren Konfigurationsdateien des Projekts hinzugefügt.
 
-Der Azure-Warteschlangenspeicher ist ein Dienst zum Speichern einer großen Anzahl von Nachrichten, auf die weltweit mit authentifizierten Aufrufen mithilfe von HTTP oder HTTPS zugegriffen werden kann. Eine einzelne Warteschlangennachricht kann bis zu 64 Kilobytes (KB) groß sein, und eine Warteschlange kann Millionen von Nachrichten enthalten. Deren Anzahl ist nur durch die Kapazität des Speicherkontos begrenzt.
+Der Azure-Warteschlangenspeicher ist ein Dienst zum Speichern einer großen Anzahl von Nachrichten, auf die weltweit mit authentifizierten Aufrufen mithilfe von HTTP oder HTTPS zugegriffen werden kann. Eine einzelne Warteschlangennachricht kann bis zu 64 Kilobytes (KB) groß sein, und eine Warteschlange kann Millionen von Nachrichten enthalten. Deren Anzahl ist nur durch die Kapazität des Speicherkontos begrenzt.
 
 Damit Sie beginnen können, müssen Sie zuerst eine Azure-Warteschlage in Ihrem Speicherkonto erstellen. Wir zeigen Ihnen, wie Sie eine Warteschlange in Code erstellen. Außerdem wird gezeigt, wie Sie grundlegende Warteschlangenvorgänge, etwa Hinzufügen, Ändern, Lesen und Entfernen von Warteschlangennachrichten ausführen. Die Beispiele sind in C# geschrieben und greifen auf die Azure-Speicherclientbibliothek für .NET zurück. Weitere Informationen zu ASP.NET finden Sie unter [ASP.NET](http://www.asp.net).
 
@@ -168,4 +168,4 @@ Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen S
 
 [AZURE.INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

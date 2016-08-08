@@ -42,7 +42,7 @@ Und Sie können dem Pool Datenbanken hinzufügen oder Datenbanken aus dem Pool e
 
 ![SQL-Datenbanken, die eDTUs in einem Pool für elastische Datenbanken gemeinsam nutzen][1]
 
-Datenbanken, die für Pools für elastische Datenbanken besonders geeignet sind, weisen in der Regel Zeiträume der Aktivität sowie Zeiträume der Inaktivität auf. Im obigen Beispiel können Sie die Aktivität einer einzelnen Datenbank, von vier Datenbanken und schließlich eines Pools für elastische Datenbanken mit 20 Datenbanken sehen. Datenbanken mit veränderlicher Aktivität im Laufe der Zeit eignen sich besonders für elastische Pools, da sie nicht alle zur gleichen Zeit aktiv sind und eDTUs gemeinsam nutzen können. Nicht alle Datenbanken entsprechen jedoch diesem Muster. Datenbanken mit einem konstanteren Ressourcenbedarf eignen sich besser für die Basic-, Standard- und Premium-Dienstebenen, bei denen Ressourcen einzeln zugewiesen werden.
+Datenbanken, die für Pools für elastische Datenbanken besonders geeignet sind, weisen in der Regel Zeiträume der Aktivität sowie Zeiträume der Inaktivität auf. Im obigen Beispiel können Sie die Aktivität einer einzelnen Datenbank, von vier Datenbanken und schließlich eines Pools für elastische Datenbanken mit 20 Datenbanken sehen. Datenbanken mit veränderlicher Aktivität im Laufe der Zeit eignen sich besonders für elastische Pools, da sie nicht alle zur gleichen Zeit aktiv sind und eDTUs gemeinsam nutzen können. Nicht alle Datenbanken entsprechen jedoch diesem Muster. Datenbanken mit einem konstanteren Ressourcenbedarf eignen sich besser für die Basic-, Standard- und Premium-Dienstebenen, bei denen Ressourcen einzeln zugewiesen werden.
 
 [Überlegungen zum Preis und zur Leistung eines Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md)
 
@@ -92,11 +92,11 @@ Elastische Datenbanken unterstützen in der Regel die gleichen [Funktionen der G
 
 ### Point-in-Time-Wiederherstellung
 
-Bei der Point-in-Time-Wiederherstellung werden automatische Datenbanksicherungen verwendet, um den Status einer Datenbank in einem Pool zu einem bestimmten Zeitpunkt wiederherzustellen. Siehe [Wiederherstellen einer Azure SQL-Datenbank nach einem Benutzerfehler](sql-database-user-error-recovery.md).
+Bei der Point-in-Time-Wiederherstellung werden automatische Datenbanksicherungen verwendet, um den Status einer Datenbank in einem Pool zu einem bestimmten Zeitpunkt wiederherzustellen. Siehe [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 ### Geografische Wiederherstellung
 
-Die geografische Wiederherstellung ist die Standardoption für die Wiederherstellung, wenn eine Datenbank aufgrund eines Vorfalls in der Region, in der die Datenbank gehostet wird, nicht verfügbar ist. Siehe [Wiederherstellen einer Azure SQL-Datenbank nach einem Ausfall](sql-database-disaster-recovery.md).
+Die geografische Wiederherstellung ist die Standardoption für die Wiederherstellung, wenn eine Datenbank aufgrund eines Vorfalls in der Region, in der die Datenbank gehostet wird, nicht verfügbar ist. Siehe [Wiederherstellen einer Azure SQL-Datenbank oder Failover auf eine sekundäre Datenbank](sql-database-disaster-recovery.md).
 
 ### Aktive Georeplikation
 
@@ -106,4 +106,4 @@ Bei Anwendungen, für die umfangreichere Wiederherstellungsanforderungen als bei
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool/databases.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

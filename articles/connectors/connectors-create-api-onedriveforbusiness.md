@@ -9,7 +9,7 @@ editor=""
 tags="connectors" />
 
 <tags
-ms.service="app-service-logic"
+ms.service="logic-apps"
 ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
@@ -23,9 +23,9 @@ ms.author="deonhe"/>
 
 Der OneDrive for Business-Connector kann verwendet werden in:
 
-- [Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)  
-- [PowerApps](http://powerapps.microsoft.com)  
-- [Flow](http://flows.microsoft.com)  
+- [Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)
+- [PowerApps](http://powerapps.microsoft.com)
+- [Flow](http://flows.microsoft.com)
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
@@ -366,4 +366,4 @@ Ordner extrahieren: Extrahiert einen Ordner zu OneDrive for Business.
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/22/2016"
+	ms.date="07/23/2016"
 	ms.author="juliako"/>
 
 
@@ -53,7 +53,9 @@ Vergleichstest|[Eingabedatei: Dauer: 5 Minuten, 640x360p bei 29,97 Bildern pro S
 
 - Bei Verwendung des gemeinsam genutzten Pools, d.h. ohne reservierte Einheiten, haben die Codierungsaufgaben die gleiche Leistung wie S1-RUs. Allerdings können sich die Aufgaben beliebig lange in der Warteschlange befinden, und es wird immer nur maximal eine Aufgabe ausgeführt.
 
-- Der **S3**-Typ für reservierte Einheiten ist in den folgenden Rechenzentren nicht verfügbar: Brasilien, Süden; Indien, Westen; Indien, Mitte und Indien, Süden.
+- Der **S2**-Typ für reservierte Einheiten ist in den folgenden Rechenzentren nicht verfügbar: Brasilien, Süden; Indien, Westen; Indien, Mitte; Indien, Süden.
+
+- Der **S3**-Typ für reservierte Einheiten ist in den folgenden Rechenzentren nicht verfügbar: Brasilien, Süden; Indien, Westen; Indien, Mitte.
 
 - Die höchste für den 24-Stunden-Zeitraum angegebene Anzahl an Einheiten wird zum Berechnen der Kosten verwendet.
 
@@ -65,7 +67,7 @@ Führen Sie folgende Schritte aus, um den Typ reservierter Einheiten und die Anz
 
 2. Wählen Sie die Seite **CODIERUNG** aus.
 
-	Um den **TYP RESERVIERTER EINHEITEN** zu ändern, wählen Sie S1, S2 oder S3.
+	Um den **TYP RESERVIERTER EINHEITEN** zu ändern, wählen Sie S1, S2 oder S3 aus.
 
 	Verwenden Sie zum Ändern der Anzahl reservierter Einheiten für den ausgewählten Typ reservierter Einheiten den Schieberegler unter **CODIERUNG**.
 
@@ -91,4 +93,4 @@ Informationen zu Kontingenten und Einschränkungen sowie zum Öffnen von Support
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

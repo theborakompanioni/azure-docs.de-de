@@ -154,7 +154,15 @@ Möchten Sie Anpassungsvorschläge zu diesem Dokument machen? Nutzen Sie [UserVo
 
 ## Nächste Schritte
 
-Weitere Informationen zu IoT-Geräten finden Sie auf der [Azure IoT-Entwicklerwebsite](https://azure.microsoft.com/develop/iot/), die entsprechende Links und Dokumente enthält.
+Weitere Informationen zu den Optionen zum Anpassen der vorkonfigurierten Lösungen finden Sie unter:
+
+- [Verbinden einer Logik-App mit der vorkonfigurierten Remoteüberwachungslösung von Azure IoT Suite][lnk-logicapp]
+- [Verwenden dynamischer Telemetriedaten mit der vorkonfigurierten Lösung für die Remoteüberwachung][lnk-dynamic]
+- [Geräteinformationen-Metadaten in der vorkonfigurierten Lösung für die Remoteüberwachung][lnk-devinfo]
+
+[lnk-logicapp]: iot-suite-logic-apps-tutorial.md
+[lnk-dynamic]: iot-suite-dynamic-telemetry.md
+[lnk-devinfo]: iot-suite-remote-monitoring-device-info.md
 
 [IoT-Geräte-SDK]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/
 [lnk-permissions]: iot-suite-permissions.md
@@ -164,4 +172,4 @@ Weitere Informationen zu IoT-Geräten finden Sie auf der [Azure IoT-Entwicklerwe
 [lnk-sample-device-factory]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Common/Factory/SampleDeviceFactory.cs#L40
 [lnk-classic-portal]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

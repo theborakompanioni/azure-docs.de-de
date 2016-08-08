@@ -8,7 +8,7 @@
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="app-service-logic" 
+	ms.service="logic-apps" 
 	ms.workload="integration" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
@@ -74,4 +74,4 @@ Sie können jetzt Ihre Transformation testen, indem Sie eine Anforderung an den 
 - [Weitere Informationen zu Zuordnungen](./app-service-logic-enterprise-integration-maps.md "Informationen zu Zuordnungen für die Unternehmensintegration")
  
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

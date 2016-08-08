@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="04/27/2016"
+	ms.date="07/25/2016"
 	ms.author="jgao"/>
 
 
@@ -108,4 +108,4 @@ Das Verfahren für das SDK ist ähnlich. Die Erstellung und Bereitstellung eines
 - [Herstellen einer Verbindung zu HDInsight-Clustern mit RDP](hdinsight-administer-use-management-portal.md#rdp)
 - [Verwenden des HDInsight .NET SDK](hdinsight-provision-clusters.md#sdk)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

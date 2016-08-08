@@ -8,7 +8,7 @@
 	documentationCenter=""/>
 
 <tags
-	ms.service="app-service-logic"
+	ms.service="logic-apps"
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -68,7 +68,7 @@ Um den Connector außerhalb einer Logik-App zu verwenden, können die vom Connec
 Ausführliche Informationen zu den APIs finden sie unter [File Connector] (Datei-Connector).
 
 ## Mehr mit Ihrem Connector machen
-Der Connector ist nun erstellt, und Sie können ihn mit einer Logik-App einem Geschäftsworkflow hinzufügen. Informationen finden Sie unter [Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md).
+Nachdem der Connector nun erstellt ist, können Sie ihn mit einer Logik-App einem Geschäftsworkflow hinzufügen. Informationen finden Sie unter [Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md).
 
 >[AZURE.NOTE] Wenn Sie Azure Logik-Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto registrieren, wechseln Sie zu [Logik-App testen](https://tryappservice.azure.com/?appservice=logic). Dort können Sie sofort eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
@@ -87,4 +87,4 @@ Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connec
 [File Connector]: https://msdn.microsoft.com/library/dn936296.aspx
 [Hybrid Connection Manager verwenden]: app-service-logic-hybrid-connection-manager.md
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

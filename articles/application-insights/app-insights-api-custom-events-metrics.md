@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="07/11/2016" 
+	ms.date="07/21/2016" 
 	ms.author="awills"/>
 
 # Application Insights-API für benutzerdefinierte Ereignisse und Metriken 
@@ -240,7 +240,7 @@ Sie können diese Methode auch selbst aufrufen, wenn Sie Anforderungen in einem 
     // ... process the request ...
 
     stopwatch.Stop();
-    telemetryClient.TrackRequest(requestName, DateTime.Now,
+    telemetry.TrackRequest(requestName, DateTime.Now,
        stopwatch.Elapsed, 
        "200", true);  // Response code, success
 
@@ -300,7 +300,21 @@ Verwenden Sie diese Methode zur Diagnose von Problemen, indem Sie eine "Brotkrü
 
     telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
 
-Die Größenbeschränkung für `message` liegt wesentlich höher als der Grenzwert für Eigenschaften. Sie können nach Nachrichteninhalt suchen, aber (anders als bei Eigenschaftswerten) nicht danach filtern.
+
+Sie können nach Nachrichteninhalt suchen, aber (anders als bei Eigenschaftswerten) nicht danach filtern.
+
+Die Größenbeschränkung für `message` liegt wesentlich höher als der Grenzwert für Eigenschaften. Ein Vorteil von TrackTrace ist, dass relativ lange Daten in die Nachricht eingefügt werden können. Sie können dort z. B. POST-Daten codieren.
+
+
+Darüber hinaus können Sie Ihrer Nachricht einen Schweregrad hinzufügen. Wie andere Telemetriedaten können Sie Eigenschaftswerte hinzufügen, die Sie verwenden können, um zu filtern oder nach verschiedene Spuren zu suchen. Beispiel:
+
+
+    var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
+    telemetry.TrackTrace("Slow database response",
+                   SeverityLevel.Warning,
+                   new Dictionary<string,string> { {"database", db.ID} });
+
+Auf diese Weise können Sie in der [Suche][diagnostic] alle Nachrichten eines bestimmten Schweregrads, die im Zusammenhang mit einer bestimmten Datenbank stehen, einfach herausfiltern.
 
 ## TrackDependency
 
@@ -690,7 +704,7 @@ Auf Webseiten empfiehlt es sich, ihn über den Zustand des Webservers festzulege
 
 TelemetryClient besitzt eine Eigenschaft "Context", die eine Reihe von Werten enthält, die zusammen mit allen Telemetriedaten gesendet werden. Sie werden normalerweise von den Standardtelemetriemodulen festgelegt, aber Sie können sie auch selbst einstellen. Beispiel:
 
-    telemetryClient.Context.Operation.Name = "MyOperationName";
+    telemetry.Context.Operation.Name = "MyOperationName";
 
 Wenn Sie diese Werte selbst festlegen, empfiehlt es sich, die entsprechende Zeile aus [ApplicationInsights.config][config] zu entfernen, damit kein Konflikt zwischen Ihren Werten und den Standardwerten entsteht.
 
@@ -778,4 +792,4 @@ Wenn Sie diese Werte selbst festlegen, empfiehlt es sich, die entsprechende Zeil
 
  
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

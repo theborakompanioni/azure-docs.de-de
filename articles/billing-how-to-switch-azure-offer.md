@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Umstellen Ihres Azure-Abonnements auf ein anderes Angebot | Microsoft Azure"
-	description="Beschreibt, wie ein Azure-Abonnent zu einem anderen Azure-Angebot wechseln kann."
+	description="Erfahren Sie, wie Sie Ihr Azure-Abonnement ändern, und mit dem Abonnement-Verwaltungsportal auf ein anderes Azure-Angebot umsteigen."
 	services=""
 	documentationCenter=""
 	authors="genlin"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/15/2016"
+	ms.date="07/21/2016"
 	ms.author="genli"/>
 
 # Umstellen Ihres Azure-Abonnements auf ein anderes Angebot
@@ -22,14 +22,14 @@
 Sie können Ihr vorhandenes Abonnement ohne Dienstausfall auf ein günstigeres Angebot umstellen. Für das Wechseln des Angebots gibt es folgende Gründe:
 
 -	Wenn Sie feststellen, dass Azure hohe Ausgaben verursacht, besitzen Sie möglicherweise Anspruch auf Rabatt, indem Sie zum Angebot mit Zahlungsverpflichtung wechseln. Klicken Sie [hier](billing-usage-rate-card-overview.md), um weitere Informationen zum Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure zu erhalten.
--	Wenn Sie z. B. Mitgliedervorteile wie MSDN oder BizSpark in Anspruch nehmen möchten, nachdem Sie sich bereits für ein Abonnement mit nutzungsbasierter Zahlung registriert haben.
+-	Wenn Sie z. B. Mitgliedervorteile wie MSDN oder BizSpark in Anspruch nehmen möchten, nachdem Sie sich bereits für ein Abonnement mit nutzungsbasierter Zahlung registriert haben.
 
-## Umstellen Ihres Abonnements auf ein anderes Angebot
+## Anleitung zum Umstellen Ihres Abonnements auf ein anderes Angebot
 
 > [AZURE.VIDEO switch-to-a-different-azure-offer]
 
 1.	Melden Sie sich beim [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions) an.
-2.	Wählen Sie das Abonnement, das Sie übertragen möchten.
+2.	Wählen Sie das Abonnement aus, das Sie ändern möchten.
 3.	Klicken Sie auf **Zu einem anderen Angebot wechseln**.
 
 	![switchbutton](.\media\billing-how-to-switch-azure-offer\switchbutton.png)
@@ -48,7 +48,7 @@ Sie können Ihr vorhandenes Abonnement ohne Dienstausfall auf ein günstigeres A
 
 **Welche Angebotsänderungen werden unterstützt?**
 
-Informationen hierzu finden Sie unter [Verfügbare Angebote für einen Wechsel](#available-offers-you-can-switch-to).
+Informationen hierzu finden Sie in der Liste [Verfügbare Angebote für einen Wechsel](#available-offers-you-can-switch-to).
 
 **Wird mein Dienst durch den Wechsel des Angebots beeinträchtigt?**
 
@@ -70,9 +70,11 @@ Dieser Mechanismus kann zum Wechseln von und nach Web Direct-Angeboten genutzt w
 
 ## Verfügbare Angebote für einen Wechsel
 
-Im Folgenden sind die Pfade aufgeführt, die derzeit im [Kontocenter](https://account.windowsazure.com/Subscriptions) unterstützt werden. Dieser Artikel wird aktualisiert, wenn wir weitere Optionen hinzufügen. Für weitere Angebotsänderungen wenden Sie sich an den [Support](http://go.microsoft.com/fwlink/?LinkID=619338).
+Im Folgenden sind die Pfade aufgeführt, die derzeit im [Kontocenter](https://account.windowsazure.com/Subscriptions) unterstützt werden. Dieser Artikel wird aktualisiert, wenn wir weitere Optionen hinzufügen.
 
 -	[Nutzungsbasiert](https://azure.microsoft.com/offers/ms-azr-0003p/) zum [12-Monatsangebot mit Vorauszahlung](https://azure.microsoft.com/offers/ms-azr-0026p/)
 -	[Nutzungsbasiert](https://azure.microsoft.com/offers/ms-azr-0003p/) zu einem der [Angebote mit monatlicher Azure-Gutschrift für Abonnenten von Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)
 
-<!---HONumber=AcomDC_0720_2016-->
+Für weitere Angebotsänderungen wenden Sie sich an den Support.
+
+<!---HONumber=AcomDC_0727_2016-->

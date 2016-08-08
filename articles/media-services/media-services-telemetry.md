@@ -1,11 +1,22 @@
 <properties pageTitle="Azure Media Services-Telemetrie mit .NET | Microsoft Azure" 
 	description="In diesem Artikel erfahren Sie, wie Sie die Azure Media Services-Telemetrie verwendet." 
-	services="" 
-	documentationCenter=""
-	authors="juliako" />
+	services="media-services" 
+	documentationCenter="" 
+	authors="juliako" 
+	manager="erikre" 
+	editor=""/>
+
+<tags 
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="07/23/2016"   
+	ms.author="juliako"/>
 
 # Azure Media Services-Telemetrie mit .NET
-
+ 
 ## Übersicht
 
 Die Media Services-Telemetrie/-Überwachung ermöglicht Media Services-Kunden den Zugriff auf Metrikdaten für die entsprechenden Dienste. Die aktuelle Version unterstützt Telemetriedaten für die Entitäten „Channel“ und „StreamingEndpoint“. Die Telemetrie kann auf Komponentenebene konfiguriert werden. Dabei stehen zwei Detailstufen zur Verfügung: „Normal“ und „Ausführlich“. Die aktuelle Version unterstützt nur „Normal“.
@@ -21,7 +32,7 @@ In diesem Thema erfahren Sie, wie Sie die Telemetrie für die angegebenen AMS-Di
 Zum Aktivieren der Telemetrie sind folgende Schritte erforderlich:
 
 - Ermitteln Sie die Anmeldeinformationen des mit dem Media Services-Konto verknüpften Speicherkontos.
-- Erstellen Sie einen Benachrichtigungsendpunkt, bei dem **EndPointType** auf **AzureTable** festgelegt ist und „endPointAddress“ auf die Speichertabelle verweist.
+- Erstellen Sie einen Benachrichtigungsendpunkt, bei dem **EndPointType** auf **AzureTable** festgelegt ist und endPointAddress auf die Speichertabelle verweist.
 
 	    INotificationEndPoint notificationEndPoint = 
 	                  _context.NotificationEndPoints.Create("monitoring", 
@@ -37,55 +48,52 @@ Zum Aktivieren der Telemetrie sind folgende Schritte erforderlich:
                 new ComponentMonitoringSetting(MonitoringComponent.StreamingEndpoint, MonitoringLevel.Normal)
             });
 
+## Verwenden von Telemetriedaten
 
-## StreamingEndpoint-Protokoll
+Telemetriedaten werden in eine Azure-Speichertabelle in dem Speicherkonto geschrieben, das bei der Konfiguration der Telemetrie für das Media Services-Konto angegeben wurde. Das Telemetriesystem erstellt für jeden neuen Tag (Grundlage: 00:00 UTC) eine separate Tabelle. Beispiel: „TelemetryMetrics20160321“, wobei „20160321“ das Erstellungsdatum der Tabelle ist. Für jeden Tag wird eine separate Tabelle erstellt.
 
-###Verfügbare Metriken
+Sie können die Tabellen nach den folgenden Metrikinformationen abfragen.
+
+### StreamingEndpoint-Protokoll
 
 Folgende StreamingEndPoint-Metriken können abgefragt werden:
 
-- **PartitionKey**: Ruft den Partitionsschlüssel des Datensatzes ab.
-- **RowKey**: Ruft den Zeilenschlüssel des Datensatzes ab.
-- **AccountId**: Ruft die Media Services-Konto-ID ab.
-- **AccountId**: Ruft die Media Services-Streamingendpunkt-ID ab.
-- **ObservedTime**: Ruft den beobachteten Zeitraum der Metrik ab.
-- **HostName**: Ruft den Hostnamen des Streamingendpunkts ab.
-- **StatusCode**: Ruft den Statuscode ab.
-- **ResultCode**: Ruft den Ergebniscode ab.
-- **RequestCount**: Ruft die Anforderungsanzahl ab.
-- **BytesSent**: Ruft die gesendeten Bytes ab.
-- **ServerLatency**: Ruft die Serverlatenz ab.
-- **EndToEndLatency**: Ruft die Gesamtanforderungszeit ab.
-
-###Beispielergebnis einer Streamingendpunkt-Abfrage
-
-![Streamingendpunkt-Abfrage](media/media-services-telemetry/media-services-telemetry01.png)
+Eigenschaft|Beschreibung|Beispielwert
+---|---|---
+**PartitionKey**|Ruft den Partitionsschlüssel des Datensatzes ab.|60b71b0f6a0e4d869eb0645c16d708e1\_6efed125eef44fb5b61916edc80e6e23
+**Zeilenschlüssel**|Ruft den Zeilenschlüssel des Datensatzes ab.|00959\_00000
+**AccountId**|Ruft die Media Services-Konto-ID ab.|6efed125-eef4-4fb5-b619-16edc80e6e23
+**StreamingEndpointId**|Ruft die Media Services-Streamingendpunkt-ID ab.|d17ec9e4-a5d4-033d-0c36-def70229f06f
+**ObservedTime**|Ruft den beobachteten Zeitraum der Metrik ab.|1/20/16 23:44:01
+**HostName**|Ruft den Hostnamen des Streamingendpunkts ab.|builddemoserver.origin.mediaservices.windows.net
+**StatusCode**|Ruft den Statuscode ab.|200
+**ResultCode**|Ruft den Ergebniscode ab.|S\_OK
+**RequestCount**|Ruft die Anzahl von Anforderungen ab.|3
+**BytesSent**|Ruft die gesendeten Bytes ab.|2987358
+**ServerLatency**|Ruft die Serverlatenz ab (einschließlich Speicher).|129
+**EndToEndLatency**|Ruft die Anforderungszeit insgesamt ab.|250
 
 
-## Livekanaltakt
-
-###Verfügbare Metriken
+### Livekanaltakt
 
 Folgende Livekanalmetriken können abgefragt werden:
 
-- **PartitionKey**: Ruft den Partitionsschlüssel des Datensatzes ab.
-- **RowKey**: Ruft den Zeilenschlüssel des Datensatzes ab.
-- **AccountId**: Ruft die Media Services-Konto-ID ab.
-- **ChannelId**: Ruft die Media Services-Kanal-ID ab.
-- **ObservedTime**: Ruft den beobachteten Zeitraum der Metrik ab.
-- **CustomAttributes**: Ruft die benutzerdefinierten Attribute ab.
-- **TrackType**: Ruft den Nachverfolgungstyp ab.
-- **TrackName**: Ruft den Nachverfolgungsnamen ab.
-- **Bitrate**: Ruft die Bitrate ab.
-- **IncomingBitrate**: Ruft die eingehende Bitrate ab.
-- **OverlapCount**: Ruft die Überschneidungsanzahl ab.
-- **DiscontinuityCount**: Ruft die Diskontinuitätsanzahl ab.
-- **LastTimestamp**: Ruft den letzten Zeitstempel ab.
+Eigenschaft|Beschreibung|Beispielwert
+---|---|---
+**PartitionKey**|Ruft den Partitionsschlüssel des Datensatzes ab.|60b71b0f6a0e4d869eb0645c16d708e1\_0625cc45918e4f98acfc9a33e8066628
+**Zeilenschlüssel**|Ruft den Zeilenschlüssel des Datensatzes ab.|13872\_00005
+**AccountId**|Ruft die Media Services-Konto-ID ab.|6efed125-eef4-4fb5-b619-16edc80e6e23
+**ChannelId**|Ruft die Media Services-Kanal-ID ab.|
+**ObservedTime**|Ruft den beobachteten Zeitraum der Metrik ab.|1/21/2016 20:08:49
+**CustomAttributes**|Ruft die benutzerdefinierten Attribute ab.|
+**TrackType**|Ruft den Nachverfolgungstyp ab.|video
+**TrackName**|Ruft den Nachverfolgungsnamen ab.|video
+**Bitrate**|Ruft die Bitrate ab.|785000
+**IncomingBitrate**|Ruft die eingehende Bitrate ab.|784548
+**OverlapCount**|Ruft die Anzahl von Überlappungen ab.|0
+**DiscontinuityCount**|Ruft die Anzahl von Unterbrechungen ab.|0
+**LastTimestamp**|Ruft den letzten Zeitstempel ab.|1800488800
  
-###Beispielergebnis einer Livekanalabfrage
-
-![Streamingendpunkt-Abfrage](media/media-services-telemetry/media-services-telemetry01.png)
-
 ## StreamingEndpoint-Metrikbeispiel
 		
 	using System;
@@ -125,8 +133,7 @@ Folgende Livekanalmetriken können abgefragt werden:
 	            // Used the cached credentials to create CloudMediaContext.
 	            _context = new CloudMediaContext(_cachedCredentials);
 	
-	            INotificationEndPoint notificationEndPoint = 
-	                          _context.NotificationEndPoints.Create("monitoring", NotificationEndPointType.AzureTable, GetTableEndPoint());
+
 	
 	            var monitoringConfigurations = _context.MonitoringConfigurations;
 	            IMonitoringConfiguration monitoringConfiguration = null;
@@ -138,6 +145,10 @@ Folgende Livekanalmetriken können abgefragt werden:
 	            }
 	            else
 	            {
+		            INotificationEndPoint notificationEndPoint = 
+		                          _context.NotificationEndPoints.Create("monitoring", 
+								  NotificationEndPointType.AzureTable, GetTableEndPoint());
+
 	                monitoringConfiguration = _context.MonitoringConfigurations.Create(notificationEndPoint.Id,
 	                    new List<ComponentMonitoringSetting>()
 	                    {
@@ -235,4 +246,4 @@ Unter den Azure Media Services-Lernpfaden finden Sie Informationen zu weiteren A
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

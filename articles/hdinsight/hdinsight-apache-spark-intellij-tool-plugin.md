@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="07/25/2016"
 	ms.author="nitinme"/>
 
 
@@ -100,12 +100,12 @@ Das HDInsight-Tools-Plug-In für IntelliJ IDEA ist als Teil des Azure-Toolkits f
 			    val conf = new SparkConf().setAppName("MyClusterApp")
 			    val sc = new SparkContext(conf)
 
-			    val rdd = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+			    val rdd = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
 			    //find the rows which have only one digit in the 7th column in the CSV
 				val rdd1 =  rdd.filter(s => s.split(",")(6).length() == 1)
 
-			    rdd1.saveAsTextFile("wasb:///HVACOut")
+			    rdd1.saveAsTextFile("wasbs:///HVACOut")
 			  }
 
 			}
@@ -155,7 +155,7 @@ Sie können eine Vielzahl von Vorgängen mit dem HDInsight-Plug-In ausführen.
 
 	![Zugreifen auf Clusterspeicher](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-access-storage.png)
 
-4. Klicken Sie auf den Namen des Speichercontainers, der dem Cluster zugeordnet ist. Im rechten Bereich sollten Sie einen Ordner namens **HVACOut** sehen. Doppelklicken Sie darauf, um den Ordner zu öffnen. Sie sehen Dateien vom Typ **part-**. Öffnen Sie eine dieser Dateien, um die Ausgabe der Anwendung anzuzeigen.
+4. Klicken Sie auf den Namen des Speichercontainers, der dem Cluster zugeordnet ist. Im rechten Bereich sollten Sie einen Ordner namens **HVACOut** sehen. Doppelklicken Sie darauf, um den Ordner zu öffnen. Sie sehen Dateien vom Typ **part-***. Öffnen Sie eine dieser Dateien, um die Ausgabe der Anwendung anzuzeigen.
 
 ### Direkter Zugriff auf die Auftragsansicht im Plug-In
 
@@ -316,4 +316,4 @@ Falls Sie Vorschläge oder Feedback haben oder bei Verwendung dieses Tools Probl
 
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

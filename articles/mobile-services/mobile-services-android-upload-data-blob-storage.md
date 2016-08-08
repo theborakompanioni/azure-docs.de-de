@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="04/11/2016"
+	ms.date="07/21/2016"
 	ms.author="ricksal"/>
 
 # Hochladen von Bildern auf Azure Storage aus einem Android-Gerät
@@ -426,4 +426,4 @@ Nachdem Sie nun gelernt haben, Ihre Bilder durch die Integration Ihres mobilen D
 [Mobile Services .NET-Anleitungen: Konzeptionelle Referenz]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

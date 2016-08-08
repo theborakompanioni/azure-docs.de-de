@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="07/01/2016"
+   ms.date="07/26/2016"
    ms.author="owend"/>
 
 # Authentifizieren und Autorisieren mit Power BI Embedded
@@ -36,7 +36,7 @@ Ihr App-Token kann folgende Ansprüche enthalten:
 
 | Anspruch | Beschreibung |
 |--------------|------------|
-| **ver** | Die Version des App-Tokens. Die aktuelle Version ist .1.0.0. |
+| **ver** | Die Version des App-Tokens. Die aktuelle Version ist 0.2.0. |
 | **aud** | Der vorgesehene Empfänger des Tokens. Bei Power BI Embedded: https://analysis.windows.net/powerbi/api. |
 | **iss** | Eine Zeichenfolge, die die Anwendung angibt, die das Token ausgestellt hat. |
 | **type** | Die Art des App-Tokens, das erstellt wird. Aktuell wird nur der Typ **embed** unterstützt. |
@@ -93,4 +93,4 @@ Nachdem **Power BI Embedded** einen Bericht an den Benutzer geschickt hat, kann 
 - [Häufige Microsoft Power BI Embedded-Szenarios](power-bi-embedded-scenarios.md)
 - [Erste Schritte mit Microsoft Power BI Embedded](power-bi-embedded-get-started.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

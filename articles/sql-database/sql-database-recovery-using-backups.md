@@ -12,8 +12,8 @@
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="sqldb-bcdr"
-   ms.date="06/09/2016"
+   ms.workload="NA"
+   ms.date="07/09/2016"
    ms.author="sstein"/>
 
 # Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen
@@ -24,7 +24,7 @@ SQL-Datenbank bietet drei Optionen für die Datenbankwiederherstellung mit [auto
 - Eine Datenbank auf dem gleichen Server, die auf den Zustand zum Zeitpunkt des Löschens einer gelöschten Datenbank wiederhergestellt wird.
 - Eine neue Datenbank auf einem beliebigen logischen Server in einer beliebigen Region, die auf den Zustand der neuesten täglichen Sicherung im georeplizierten Blobspeicher (RA-GRS) wiederhergestellt wird.
 
-Sie können die [automatisierten SQL-Datenbanksicherungen](sql-database-automated-backups.md) auch verwenden, um auf einem beliebigen logischen Server in einer beliebigen Region eine [Datenbankkopie](sql-database-copy.md) zu erstellen, die transaktional mit der aktuellen SQL-Datenbank konsistent ist. Sie können die Datenbankkopie [in eine BACPAC-Datei exportieren](sql-database-export.md), um eine transaktional konsistente Kopie der Datenbank für die langfristige Archivierung über die für Sie gültige Aufbewahrungsdauer hinaus zu erhalten oder um eine Kopie der Datenbank an eine lokale Instanz oder eine Azure VM-Instanz von SQL Server zu übertragen.
+Sie können die [automatisierten SQL-Datenbanksicherungen](sql-database-automated-backups.md) auch verwenden, um auf einem beliebigen logischen Server in einer beliebigen Region eine [Datenbankkopie](sql-database-copy.md) zu erstellen, die im Hinblick auf Transaktionen mit der aktuellen SQL-Datenbank konsistent ist. Sie können die Datenbankkopie [in eine BACPAC-Datei exportieren](sql-database-export.md), um eine transaktional konsistente Kopie der Datenbank für die langfristige Archivierung über die für Sie gültige Aufbewahrungsdauer hinaus zu erhalten oder um eine Kopie der Datenbank an eine lokale Instanz oder eine Azure VM-Instanz von SQL Server zu übertragen.
 
 ## Wiederherstellungszeit
 
@@ -40,6 +40,8 @@ Die Zeit, die zum Wiederherstellen einer Datenbank mit automatisierten Sicherung
 
  Es gibt keine integrierte Funktion für Massenwiederherstellungen. Das Skript [Azure SQL-Datenbank: Vollständige Serverwiederherstellung](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) ist ein Beispiel für eine Möglichkeit, diese Aufgabe auszuführen.
 
+> [AZURE.IMPORTANT] Um eine Wiederherstellung mithilfe von automatisierten Sicherungen durchzuführen, müssen Sie Mitglied der Rolle „SQL Server-Mitwirkender“ im Abonnement oder Besitzer des Abonnements sein. Sie können das Azure-Portal, PowerShell oder die REST-API zur Wiederherstellung verwenden. Die Nutzung von Transact-SQL ist nicht möglich.
+
 ## Point-in-Time-Wiederherstellung
 
 Mit der Point-in-Time-Wiederherstellung können Sie mithilfe [automatisierter SQL-Datenbanksicherungen](sql-database-automated-backups.md) auf dem gleichen logischen Server eine vorhandene Datenbank als neue Datenbank mit einem früheren Datenbankzustand wiederherstellen. Sie können die vorhandene Datenbank nicht überschreiben. Die Wiederherstellung eines früheren Zustands kann im [Azure-Portal](sql-database-point-in-time-restore-portal.md), mit [PowerShell](sql-database-point-in-time-restore-powershell.md) oder mit der [REST-API](https://msdn.microsoft.com/library/azure/mt163685.aspx) durchgeführt werden.
@@ -52,10 +54,10 @@ Die Datenbank kann für eine beliebige Leistungsstufe und einen beliebigen elast
 
 Im Allgemeinen wird beim Wiederherstellen der Datenbank der Zustand zu einem früheren Zeitpunkt wiederhergestellt. Sie können die wiederhergestellte Datenbank entweder als Ersatz für die ursprüngliche Datenbank verwenden oder Daten daraus abrufen und die ursprüngliche Datenbank damit aktualisieren.
 
-- ***Ersetzung der Datenbank:*** Wenn die wiederhergestellte Datenbank als Ersatz für die ursprüngliche Datenbank fungieren soll, vergewissern Sie sich, dass Leistungs- und Tarifstufe angemessen sind, und skalieren Sie die Datenbank bei Bedarf entsprechend. Sie können die ursprüngliche Datenbank umbenennen und dann die wiederhergestellte Datenbank mit dem Namen der ursprünglichen Datenbank versehen. Verwenden Sie hierzu den Befehl „ALTER DATABASE“ in T-SQL.
-- ***Wiederherstellung der Datenbank:*** Wenn Sie Daten aus der wiederhergestellten Datenbank abrufen möchten, um einen Benutzer- oder Anwendungsfehler zu korrigieren, müssen Sie die entsprechende Datenwiederherstellungsskripts separat schreiben und ausführen, um die Daten aus der wiederhergestellten Datenbank zu extrahieren und sie in der ursprünglichen Datenbank wiederherzustellen. Der Wiederherstellungsvorgang kann zwar eine ganze Weile dauern, die wiederherstellende Datenbank wird jedoch während der gesamten Zeit in der Datenbankliste angezeigt. Wenn Sie diese Datenbank während der Wiederherstellung löschen, wird der Vorgang abgebrochen, und es fallen keine Kosten für die Datenbank an, die die Wiederherstellung nicht abgeschlossen hat.
+- ***Ersetzung der Datenbank:*** Wenn die wiederhergestellte Datenbank als Ersatz für die ursprüngliche Datenbank fungieren soll, vergewissern Sie sich, dass Leistungs- und Tarifebene angemessen sind, und skalieren Sie die Datenbank bei Bedarf entsprechend. Sie können die ursprüngliche Datenbank umbenennen und dann die wiederhergestellte Datenbank mit dem Namen der ursprünglichen Datenbank versehen. Verwenden Sie hierzu den Befehl „ALTER DATABASE“ in T-SQL.
+- ***Wiederherstellung der Daten:*** Wenn Sie Daten aus der wiederhergestellten Datenbank abrufen möchten, um einen Benutzer- oder Anwendungsfehler zu korrigieren, müssen Sie die entsprechende Datenwiederherstellungsskripts separat schreiben und ausführen, um die Daten aus der wiederhergestellten Datenbank zu extrahieren und sie in der ursprünglichen Datenbank wiederherzustellen. Der Wiederherstellungsvorgang kann zwar eine ganze Weile dauern, die wiederherstellende Datenbank wird jedoch während der gesamten Zeit in der Datenbankliste angezeigt. Wenn Sie diese Datenbank während der Wiederherstellung löschen, wird der Vorgang abgebrochen, und es fallen keine Kosten für die Datenbank an, die die Wiederherstellung nicht abgeschlossen hat.
 
-Ausführliche Informationen zum Verwenden von Point-in-Time-Wiederherstellungen zur Behebung von Benutzer- und Anwendungsfehlern finden Sie unter [Wiederherstellen nach einem Benutzerfehler](sql-database-user-error-recovery.md).
+Ausführliche Informationen zum Verwenden von Point-in-Time-Wiederherstellungen zur Behebung von Benutzer- und Anwendungsfehlern finden Sie unter [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 ## Wiederherstellen einer gelöschten Datenbank
 
@@ -71,7 +73,7 @@ Für die wiederhergestellte Datenbank können Sie den gleichen oder einen neuen 
 
 ## Geowiederherstellung
 
-Mit der Geowiederherstellung können Sie eine SQL-Datenbank auf einem beliebigen Server in einer beliebigen Azure-Region aus der letzten georeplizierten [automatischen täglichen Sicherung](sql-database-automated-backups.md) wiederherstellen. Die Geowiederherstellung verwendet eine georedundante Sicherung als Quelle und kann selbst dann zum Wiederherstellen einer Datenbank verwendet werden, wenn die Datenbank oder das Rechenzentrum aufgrund eines Ausfalls nicht mehr verfügbar ist. Sie können dazu das [Azure-Portal](sql-database-geo-restore-portal.md), [PowerShell](sql-database-geo-restore-powershell.md) oder [REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) verwenden.
+Mit der Geowiederherstellung können Sie eine SQL-Datenbank auf einem beliebigen Server in einer beliebigen Azure-Region aus der letzten georeplizierten [automatisierten täglichen Sicherung](sql-database-automated-backups.md) wiederherstellen. Die Geowiederherstellung verwendet eine georedundante Sicherung als Quelle und kann selbst dann zum Wiederherstellen einer Datenbank verwendet werden, wenn die Datenbank oder das Rechenzentrum aufgrund eines Ausfalls nicht mehr verfügbar ist. Sie können dazu das [Azure-Portal](sql-database-geo-restore-portal.md), [PowerShell](sql-database-geo-restore-powershell.md) oder [REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) verwenden.
 
 > [AZURE.SELECTOR]
 - [Geowiederherstellung: im Azure-Portal](sql-database-geo-restore-portal.md)
@@ -115,10 +117,9 @@ Automatische Sicherungen schützen Ihre Datenbanken vor Benutzer- und Anwendungs
 
 ## Nächste Schritte
 
-- Eine Übersicht zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
-- Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
-- Informationen über Entwurfs- und Wiederherstellungsszenarien für die Geschäftskontinuität finden Sie unter [Geschäftskontinuitätsszenarien](sql-database-business-continuity-scenarios.md).
+- Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
+- Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
 - Informationen über schnellere Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
 - Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

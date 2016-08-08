@@ -35,7 +35,7 @@ Das [Azure-Portal](https://portal.azure.com/) ermöglicht das Erstellen, Überwa
 
 Das Azure-Portal bietet eine Reihe von allgemeinen Datenbankaktionen, auf die oben auf dem Blatt „Datenbank“ zugegriffen werden kann. Sie können eine Datenbank zu einem früheren Zeitpunkt wiederherstellen, eine Datenbank in Visual Studio öffnen, eine Datenbank auf einen neuen Server kopieren und die Datenbank in ein Azure-Speicherkonto exportieren.
 
-- [Wiederherstellen einer SQL-­Datenbank](sql-database-user-error-recovery.md)
+- [Wiederherstellen einer SQL-­Datenbank](sql-database-recovery-using-backups.md)
 - [Öffnen einer SQL-Datenbank in Visual Studio](sql-database-connect-query.md)
 - [Exportieren einer SQL-­Datenbank](sql-database-export.md)
 
@@ -74,4 +74,4 @@ Azure SQL-Datenbanken können konfiguriert werden, um bereits übergebene Transa
 
 - [SQL-Datenbank](sql-database-technical-overview.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

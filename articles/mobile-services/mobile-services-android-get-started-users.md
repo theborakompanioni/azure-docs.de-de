@@ -4,7 +4,7 @@
 	services="mobile-services"
 	documentationCenter="android"
 	authors="RickSaling"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="01/20/2016"
+	ms.date="07/21/2016"
 	ms.author="ricksal"/>
 
 # Hinzufügen von Authentifizierung zu Ihrer Mobile Services-Android-App (JavaScript-Back-End)
@@ -107,4 +107,4 @@ Im nächsten Lernprogramm [Autorisieren von Benutzern mit Skripts] werden Sie de
 [Erste Schritte mit Mobile Services]: mobile-services-android-get-started.md
 [Autorisieren von Benutzern mit Skripts]: mobile-services-javascript-backend-service-side-authorization.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="04/19/2016"
+   ms.date="07/27/2016"
    ms.author="alkohli" />
 
 # Klonen eines Volumes mithilfe des StorSimple Manager-Diensts (Update 2)
@@ -55,11 +55,11 @@ Sie können einen Klon anhand einer lokalen oder einer Cloudmomentaufnahme auf d
 
   1. Ermitteln Sie ein Zielgerät. Dies ist der Speicherort, an dem der Klon erstellt wird. Sie können das gleiche Gerät auswählen oder ein anderes Gerät angeben. Bei Auswahl eines Volumes, das anderen Cloud-Service Providern als Azure zugeordnet ist, werden in der Dropdownliste für das Zielgerät nur physische Geräte angezeigt. Ein Volume kann nicht auf ein virtuelles Gerät geklont werden, wenn es anderen Cloud-Service Providern zugeordnet ist.
 
-        >[AZURE.NOTE] Stellen Sie sicher, dass für den Klon weniger Kapazität benötigt wird, als auf dem Zielgerät zur Verfügung steht.
+        >[AZURE.NOTE] Make sure that the capacity required for the clone is lower than the capacity available on the target device.
 
   2. Geben Sie einen eindeutigen Volumenamen für Ihren Klon an. Der Name muss zwischen 3 und 127 Zeichen lang sein.
     
-        >[AZURE.NOTE] Das Feld **Volume klonen als** lautet selbst dann **Mehrstufig**, wenn Sie ein lokales Volume klonen. Sie können diese Einstellung nicht ändern. Sie können jedoch das geklonte Volume nach dem erfolgreichen Erstellen des Klons in ein lokales Volume konvertieren. Informationen zum Konvertieren eines mehrstufigen Volumes in ein lokales Volume finden Sie unter [Ändern des Volumetyps](storsimple-manage-volumes-u2.md#change-the-volume-type).
+        >[AZURE.NOTE] The **Clone Volume As** field will be **Tiered** even if you are cloning a locally pinned volume. You cannot change this setting; however, if you need the cloned volume to be locally pinned as well, you can convert the clone to a locally pinned volume after you successfully create the clone. For information about converting a tiered volume to a locally pinned volume, go to [Change the volume type](storsimple-manage-volumes-u2.md#change-the-volume-type).
 
         ![Clone wizard 1](./media/storsimple-clone-volume-u2/clone1.png) 
 
@@ -90,9 +90,9 @@ Dieser Klon ist jetzt ein reguläres Volume, und jeder mit einem Volume möglich
 
 ## Vergleich von vorübergehenden und dauerhaften Klonen
 
-Vorübergehende und dauerhafte Klone werden nur erstellt, wenn das Klonen auf einem anderen Gerät erfolgt. Sie können ein bestimmtes Volume aus einem Sicherungssatz auf einem anderen Gerät klonen. Ein auf diese Weise erstellter Klon ist ein *vorübergehender* Klon. Der vorübergehende Klon enthält Verweise auf das ursprüngliche Volume, und er verwendet dieses für das Lesen während des lokalen Schreibens.
+Vorübergehende Klone werden nur erstellt, wenn das Klonen auf einem anderen Gerät erfolgt. Sie können ein bestimmtes Volume aus einem Sicherungssatz auf einem anderen, vom StorSimple Manager verwalteten Gerät klonen. Der vorübergehende Klon enthält Verweise auf die Daten im ursprünglichen Volume, und er verwendet diese Daten zum lokalen Lesen und Schreiben auf dem Zielgerät.
 
-Nachdem Sie eine Cloudmomentaufnahme eines vorübergehenden Klons erstellt haben, wird der daraus resultierende Klon ein *dauerhafter* Klon. Der dauerhafte Klon ist unabhängig und verfügt nicht über Verweise auf das ursprüngliche Volume, aus dem er geklont wurde.
+Nachdem Sie eine Cloudmomentaufnahme eines vorübergehenden Klons erstellt haben, wird der daraus resultierende Klon ein *dauerhafter* Klon. Während dieses Vorgangs wird eine Kopie der Daten in der Cloud erstellt, und die Zeit zum Kopieren dieser Daten wird durch die Datenmenge und die Azure-Latenzen bestimmt (hierbei handelt es sich um eine Azure-zu-Azure-Kopie). Dieser Vorgang kann einige Tage bis Wochen dauern. Der vorübergehende Klon wird so zum dauerhaften Klon und verfügt nicht über Verweise auf die ursprünglichen Volumedaten, aus denen er geklont wurde.
 
 ## Szenarios für vorübergehende und dauerhafte Klone
 
@@ -117,4 +117,4 @@ Sie müssen einen Testfehler in der Produktionsumgebung überprüfen. Sie erstel
 
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

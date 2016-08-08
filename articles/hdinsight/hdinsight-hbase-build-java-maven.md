@@ -14,7 +14,7 @@ ms.workload="big-data"
 ms.tgt_pltfrm="na"
 ms.devlang="na"
 ms.topic="article"
-ms.date="06/29/2016"
+ms.date="07/25/2016"
 ms.author="larryfr"/>
 
 #Verwenden von Maven zur Entwicklung von Java-Anwendungen, die HBase mit Windows-basiertem HDInsight (Hadoop) nutzen
@@ -436,7 +436,7 @@ Es gibt viele Möglichkeiten, eine Datei in einen HDInsight-Cluster hochzuladen,
         $storage = GetStorage -clusterName $clusterName
         
         # The JAR
-        $jarFile = "wasb:///example/jars/hbaseapp-1.0-SNAPSHOT.jar"
+        $jarFile = "wasbs:///example/jars/hbaseapp-1.0-SNAPSHOT.jar"
         
         # The job definition
         $jobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
@@ -646,4 +646,4 @@ Ersetzen Sie __hdinsightclustername__ durch den Namen Ihres HDInsight-Clusters.
 
 Verwenden Sie den Parameter `-showErr`, wenn Sie den Standardfehler (STDERR) sehen möchten, der während der Ausführung des Auftrags erzeugt wurde.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

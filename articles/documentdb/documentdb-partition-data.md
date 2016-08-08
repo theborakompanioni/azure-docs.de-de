@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/16/2016" 
+	ms.date="07/21/2016" 
 	ms.author="arramac"/>
 
 # Partitionieren und Skalieren von Daten in DocumentDB
@@ -82,7 +82,7 @@ Wenn DocumentDB Dokumente speichert, verteilt es diese anhand des Partitionsschl
 DocumentDB unterstützt die Erstellung von einzelnen Partitionen und partitionierte Sammlungen.
 
 - **Partitionierte Sammlungen** können mehrere Partitionen umfassen und sehr große Mengen an Speicher und Durchsatz unterstützen. Sie müssen einen Partitionsschlüssel für die Sammlung angeben.
-- **Einzelne partitionierte Sammlungen** haben niedrigere Preisoptionen und die Fähigkeit, Transaktionen über alle Sammlungsdaten hinweg abzufragen und durchzuführen. Sie haben das Skalierbarkeitslimit und die Speichergrenzwerte einer einzelnen Partition. Sie müssen keinen Partitionsschlüssel für diese Sammlungen angeben. 
+- **Einzelne partitionierte Sammlungen** haben niedrigere Preisoptionen und die Fähigkeit, Transaktionen über alle Sammlungsdaten hinweg abzufragen und durchzuführen. Sie haben das Skalierbarkeitslimit und die Speichergrenzwerte einer einzelnen Partition. Sie müssen keinen Partitionsschlüssel für diese Sammlungen angeben.
 
 ![Partitionierte Sammlungen in DocumentDB][2]
 
@@ -248,6 +248,24 @@ Die folgende Abfrage verfügt nicht über einen Filter für den Partitionsschlü
         new FeedOptions { EnableCrossPartitionQuery = true })
         .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
 
+### Ausführung paralleler Abfragen
+
+Ab dem DocumentDB SDK 1.9.0 werden Optionen zur parallelen Ausführung von Abfragen unterstützt. Dadurch können Sie Abfragen mit niedriger Latenz auf partitionierte Sammlungen anwenden, auch wenn eine große Anzahl von Sammlungen berücksichtigt werden muss. Die folgende Abfrage ist z.B. so konfiguriert, dass sie partitionsübergreifend parallel ausgeführt wird.
+
+    // Cross-partition Order By Queries
+    IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<DeviceReading>(
+        UriFactory.CreateDocumentCollectionUri("db", "coll"), 
+        new FeedOptions { EnableCrossPartitionQuery = true, MaxDegreeOfParallelism = 10, MaxBufferedItemCount = 100})
+        .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100)
+        .OrderBy(m => m.MetricValue);
+
+Sie können die parallele Ausführung von Abfragen verwalten, indem Sie die folgenden Parameter optimieren:
+
+- Durch Festlegen von `MaxDegreeOfParallelism` können Sie den Grad der Parallelität steuern, d.h. die maximale Anzahl gleichzeitiger Verbindungen mit den Partitionen der Sammlung. Wenn Sie diese Einstellung auf „-1“ festlegen, wird der Grad der Parallelität vom SDK verwaltet.
+- Durch Festlegen von `MaxBufferedItemCount` können Sie eine Abstimmung zwischen Abfragelatenz und Speicherauslastung auf Clientseite ermöglichen. Wenn Sie diesen Parameter weglassen oder auf „-1“ festlegen, wird die Anzahl der Elemente, die während der Ausführung paralleler Abfragen gepuffert wird, vom SDK verwaltet.
+
+Bei gleichem Zustand der Sammlung gibt eine parallele Abfrage Ergebnisse in der gleichen Reihenfolge wie bei einer seriellen Ausführung zurück. Beim Durchführen einer partitionsübergreifenden Abfrage mit Sortierung (ORDER BY und/oder TOP) führt das DocumentDB SDK die Abfrage parallel auf den Partitionen durch und führt teilweise sortierte Ergebnisse auf Clientseite zusammen, um global sortierte Ergebnisse zu generieren.
+
 ### Ausführen von gespeicherten Prozeduren
 
 Sie können auch atomarische Transaktionen für Dokumente mit derselben Geräte-ID ausführen, z.B. wenn Sie Aggregate oder den aktuellen Status eines Geräts in einem einzelnen Dokument verwalten.
@@ -296,8 +314,8 @@ Beachten Sie, dass in einigen Fällen (z.B. bei IoT und Benutzerprofilen wie obe
 ### Partitionierung und Protokollierung/Zeitreihendaten
 Einen der häufigsten Anwendungsfälle von DocumentDB stellen Protokollierung und Telemetrie dar. Es ist wichtig, einen guten Partitionsschlüssel auswählen, da Sie möglicherweise große Datenmengen lesen oder schreiben müssen. Die Auswahl hängt von Ihren Lese- und Schreibraten und den zu erwartenden Abfragen ab. Im Folgenden finden Sie einige Tipps zum Auswählen eines guten Partitionsschlüssels.
 
-- Wenn Ihr Anwendungsfall eine geringe Rate von Schreibvorgängen umfasst, die sich über längere Zeit ansammeln, und Abfragen nach Zeitstempelbereichen und anderen Filtern durchführen müssen, ist ein Rollup des Zeitstempels, z.B. mit dem Datum als Partitionsschlüssel, ein guter Ansatz. Dadurch können Sie Abfragen über alle Daten für ein Datum von einer einzigen Partition ausführen. 
-- Wenn Ihre Workload schreiblastig ist (im Allgemeinen der häufigere Fall), sollten Sie einen Partitionsschlüssel verwenden, der nicht auf Zeitstempeln basiert, sodass DocumentDB Schreibvorgänge gleichmäßig über eine Anzahl von Partitionen verteilen kann. Hierbei sind Hostname, Prozess-ID, Aktivitäts-ID oder eine andere Eigenschaft mit hoher Kardinalität eine gute Wahl. 
+- Wenn Ihr Anwendungsfall eine geringe Rate von Schreibvorgängen umfasst, die sich über längere Zeit ansammeln, und Abfragen nach Zeitstempelbereichen und anderen Filtern durchführen müssen, ist ein Rollup des Zeitstempels, z.B. mit dem Datum als Partitionsschlüssel, ein guter Ansatz. Dadurch können Sie Abfragen über alle Daten für ein Datum von einer einzigen Partition ausführen.
+- Wenn Ihre Workload schreiblastig ist (im Allgemeinen der häufigere Fall), sollten Sie einen Partitionsschlüssel verwenden, der nicht auf Zeitstempeln basiert, sodass DocumentDB Schreibvorgänge gleichmäßig über eine Anzahl von Partitionen verteilen kann. Hierbei sind Hostname, Prozess-ID, Aktivitäts-ID oder eine andere Eigenschaft mit hoher Kardinalität eine gute Wahl.
 - Ein dritter Ansatz ist eine Mischung, bei der für jeden Tag/Monat eine Sammlung vorhanden ist und der Partitionsschlüssel eine differenzierte Eigenschaft wie Hostname ist. Dies hat den Vorteil, dass Sie unterschiedliche Leistungsstufen entsprechend dem Zeitfenster festlegen können, z.B. kann die Sammlung für den aktuellen Monat mit höherem Durchsatz bereitgestellt werden, da sie für Lese- und Schreibvorgänge verwendet wird, während in vorherigen Monaten ein geringerer Durchsatz ausreichend war, da nur Lesevorgänge ausgeführt wurden.
 
 ### Partitionierung und Mehrinstanzenfähigkeit
@@ -322,4 +340,4 @@ In diesem Artikel haben wir beschrieben, wie Partitionierung in Azure DocumentDB
 
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

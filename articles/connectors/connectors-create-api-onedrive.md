@@ -9,25 +9,29 @@
 	tags="connectors"/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="07/19/2016"
+   ms.date="07/26/2016"
    ms.author="mandia"/>
 
 # Erste Schritte mit dem OneDrive-Connector
 
-Stellen Sie eine Verbindung mit OneDrive her, um Ihre Dateien zu verwalten, d. h. diese hochzuladen, abzurufen, zu löschen usw. OneDrive ermöglicht Folgendes:
+Stellen Sie eine Verbindung mit OneDrive her, um Ihre Dateien zu verwalten, d. h. diese hochzuladen, abzurufen, zu löschen usw.
+
+OneDrive ermöglicht Folgendes:
 
 - Erstellen Ihres Workflows durch Speichern von Dateien in OneDrive oder Aktualisieren vorhandener Dateien in OneDrive.
 - Verwenden von Triggern, um den Workflow zu starten, wenn eine Datei in OneDrive erstellt oder aktualisiert wird.
-- Verwenden von Aktionen, um z. B. eine Datei zu kopieren oder zu löschen. So kann beispielsweise bei Eingang einer neuen Office 365-E-Mail mit einer Anlage (Trigger) eine neue Datei in OneDrive erstellt werden (Aktion).
+- Verwenden von Aktionen, um z. B. eine Datei zu kopieren oder zu löschen. So kann beispielsweise bei Eingang einer neuen Office 365-E-Mail mit einer Anlage (Trigger) eine neue Datei in OneDrive erstellt werden (Aktion).
 
 Dieses Thema beschreibt, wie Sie den OneDrive-Connector in einer Logik-App verwenden, und enthält eine Liste mit den Triggern und Aktionen.
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die allgemein verfügbare Version von Logic Apps.
+
+Weitere Informationen zu Logic Apps finden Sie unter [Was sind Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md) sowie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 ## Herstellen einer Verbindung mit OneDrive
 
@@ -39,13 +43,13 @@ Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, muss zunächst 
 
 ## Verwenden eines Triggers
 
-Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
+Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Trigger fragen den Dienst im gewünschten Intervall und mit der gewünschten Häufigkeit ab. Weitere Informationen zu Triggern finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
 
 1. Geben Sie in der Logik-App „onedrive“ ein, um eine Liste mit den Triggern abzurufen:
 
 	![](./media/connectors-create-api-onedrive/onedrive-1.png)
 
-2. Wählen Sie **When a file is modified** (Wenn eine Datei geändert wird) aus. Falls bereits eine Verbindung vorhanden ist, wählen Sie die Schaltfläche **...** (Auswahl anzeigen) aus, um einen Ordner auszuwählen.
+2. Wählen Sie **When a file is modified** (Wenn eine Datei geändert wird) aus. Ist bereits eine Verbindung vorhanden, wählen Sie die Schaltfläche „Auswahl anzeigen“ aus, um einen Ordner auszuwählen.
 
 	![](./media/connectors-create-api-onedrive/sample-folder.png)
 
@@ -53,7 +57,11 @@ Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflo
 
 	> [AZURE.NOTE] In diesem Beispiel wird die Logik-App ausgeführt, wenn eine Datei im ausgewählten Ordner aktualisiert wird. Fügen Sie zum Anzeigen der Ergebnisse dieses Triggers eine weitere Aktion hinzu, die Ihnen eine E-Mail sendet. Fügen Sie beispielsweise die Office 365 Outlook-Aktion *E-Mail senden* hinzu, um eine E-Mail zu erhalten, wenn eine Datei aktualisiert wird.
 
-3. Speichern Sie Ihre Änderungen. (Die Option **Speichern** befindet sich links oben auf der Symbolleiste.) Ihre Logik-App wird gespeichert und ggf. automatisch aktiviert.
+3. Wählen Sie die Schaltfläche **Bearbeiten** aus, und legen Sie Werte für **Häufigkeit** und **Intervall** fest. Falls die Abfrage durch den Trigger also beispielsweise alle 15 Minuten erfolgen soll, legen Sie **Häufigkeit** auf **Minute** und **Intervall** auf **15** fest.
+
+	![](./media/connectors-create-api-onedrive/trigger-properties.png)
+
+4. Speichern Sie Ihre Änderungen. (Die Option **Speichern** befindet sich links oben auf der Symbolleiste.) Ihre Logik-App wird gespeichert und ggf. automatisch aktiviert.
 
 
 ## Verwenden einer Aktion
@@ -406,4 +414,4 @@ In der folgenden Tabelle werden die Antworten auf die Aktionen und Trigger aufge
 
 [Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Informieren Sie sich in unserer [API-Liste](apis-list.md) über die anderen verfügbaren Connectors für Logic Apps.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

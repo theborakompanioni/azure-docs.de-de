@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="02/07/2016"
+	ms.date="07/21/2016"
 	ms.author="glenga"/>
 
 # Konfigurieren des lokalen Webservers für Verbindungen mit einem lokalen mobilen Dienst
@@ -28,4 +28,4 @@ Um einen mobilen Dienst lokal mit Clients zu testen, die auf einem Emulator, ein
 
 [AZURE.INCLUDE [mobile-services-how-to-configure-iis-express](../../includes/mobile-services-how-to-configure-iis-express.md)]
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0727_2016-->

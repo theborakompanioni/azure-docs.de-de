@@ -1,247 +1,441 @@
 <properties
-    pageTitle="Hinzufügen des FTP-Connectors zu Ihren Logik-Apps | Microsoft Azure"
-    description="Übersicht über den FTP-Connector mit REST-API-Parametern"
-    services=""
-    documentationCenter="" 
-    authors="MandiOhlinger"
-    manager="erikre"
-    editor=""
-    tags="connectors"/>
+pageTitle="So wird's gemacht: Verwenden des FTP-Connectors in Logik-Apps | Microsoft Azure"
+description="Erstellen Sie Logik-Apps mit Azure App Service. Stellen Sie eine Verbindung mit einem FTP-Server her, um Dateien zu verwalten. Sie können verschiedene Aktionen ausführen und beispielsweise Dateien hochladen, aktualisieren, abrufen und vom FTP-Server löschen."
+services="app-servicelogic"	
+documentationCenter=".net,nodejs,java" 	
+authors="msftman"	
+manager="erikre"	
+editor=""
+tags="connectors" />
 
 <tags
-   ms.service="multiple"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na" 
-   ms.date="05/18/2016"
-   ms.author="mandia"/>
+ms.service="logic-apps"
+ms.devlang="multiple"
+ms.topic="article"
+ms.tgt_pltfrm="na"
+ms.workload="integration"
+ms.date="07/22/2016"
+ms.author="deonhe"/>
 
 # Erste Schritte mit dem FTP-Connector
-Stellen Sie eine Verbindung mit einem FTP-Server her, um Ihre Dateien zu verwalten, d. h. diese hochzuladen, zu löschen usw. Der FTP-Connector kann verwendet werden in:
 
-- Logik-Apps (in diesem Thema erläutert)
-- PowerApps (eine vollständige Liste finden Sie in der [PowerApps-Verbindungsliste](https://powerapps.microsoft.com/tutorials/connections-list/))
+Mit dem FTP-Connector können Sie Dateien auf einem FTP-Server überwachen, verwalten und erstellen.
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
-
-Mit FTP können Sie folgende Aktionen ausführen:
-
-- Erstellen eines Geschäftsworkflows basierend auf den Daten, die über FTP abgerufen werden. 
-- Implementieren eines Triggers, wenn eine Datei aktualisiert wird.
-- Ausführen von Aktionen, mit denen Sie u. a. eine Datei erstellen und Dateiinhalte abrufen können. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Sie können z. B. den Inhalt einer Datei abrufen und dann eine SQL-Datenbank aktualisieren. 
-
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md).
-
-
-## Trigger und Aktionen
-FTP verfügt über folgende Trigger und Aktionen:
-
-Trigger | Actions
---- | ---
-<ul><li>Ruft eine aktualisierte Datei ab</li></ul> | <ul><li>Datei erstellen</li><li>Datei kopieren</li><li>Datei löschen</li><li>Archiv in Ordner extrahieren</li><li>Dateiinhalt abrufen</li><li>Dateiinhalt anhand des Pfads abrufen</li><li>Dateimetadaten abrufen</li><li>Dateimetadaten anhand des Pfads abrufen</li><li>Aktualisierte Datei abrufen</li><li>Datei aktualisieren</li></ul>
-
-Alle Connectors unterstützen Daten im JSON- und XML-Format.
+Wenn Sie einen [Connector](./apis-list.md) verwenden möchten, müssen Sie zuerst eine Logik-App erstellen. Erstellen Sie daher erst einmal eine Logik-App, wie [hier](../app-service-logic/app-service-logic-create-a-logic-app.md) beschrieben.
 
 ## Herstellen einer FTP-Verbindung
 
+Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, muss zunächst eine *Verbindung* mit dem Dienst hergestellt werden. Eine [Verbindung](./connectors-overview.md) stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her.
 
->[AZURE.INCLUDE [Schritte zum Herstellen einer FTP-Verbindung](../../includes/connectors-create-api-ftp.md)]
+### Herstellen einer FTP-Verbindung
 
-Nachdem Sie eine Verbindung hergestellt haben, geben Sie die FTP-Eigenschaften ein, z. B. Quelldatei oder Zielordner. In der **REST-API-Referenz** in diesem Thema werden diese Eigenschaften beschrieben.
+>[AZURE.INCLUDE [Schritte zum Erstellen einer FTP-Verbindung](../../includes/connectors-create-api-ftp.md)]
 
->[AZURE.TIP] Sie können dieselbe FTP-Verbindung in anderen Logik-Apps verwenden.
+## Verwenden eines FTP-Triggers
 
-## Swagger-REST-API – Referenz
-Gilt für Version: 1.0.
+Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
 
-### Datei erstellen
-Lädt eine Datei auf einen FTP-Server hoch. ```POST: /datasets/default/files```
+>[AZURE.IMPORTANT]Für den FTP-Connector wird ein FTP-Server benötigt, auf den über das Internet zugegriffen werden kann und der mit dem passiven Betriebsmodus konfiguriert ist. Der FTP-Connector ist zudem **nicht mit implizitem FTPS (FTP über SSL) kompatibel**. Er unterstützt nur explizites FTPS (FTP über SSL).
 
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|folderPath|string|Ja|query|(Keine) |Ordnerpfad zum Hochladen der Datei auf den FTP-Server|
-|name|string|Ja|query| (Keine)|Name der Datei, die auf dem FTP-Server erstellt werden soll|
-|body| |Ja|body|(Keine) |Inhalt der Datei, die auf den FTP-Server hochgeladen werden soll|
+In diesem Beispiel erfahren Sie, wie Sie mithilfe des Triggers **FTP - When a file is added or modified** (FTP – Wenn eine Datei hinzugefügt oder geändert wird) einen Logik-App- Workflow auslösen, wenn einem FTP-Server eine Datei hinzugefügt oder eine Datei auf einem FTP-Server geändert wird. In einem Unternehmensszenario können Sie mit diesem Trigger beispielsweise einen FTP-Ordner auf neue Dateien überwachen, die jeweils Bestellungen von Kunden darstellen. Anschließend können Sie den Inhalt der Bestellung zur weiteren Verarbeitung und Speicherung in Ihrer Bestelldatenbank mithilfe einer FTP-Connectoraktion wie **Get file content** (Dateiinhalt abrufen) abrufen.
 
-#### Antwort
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-### Datei kopieren
-Kopiert eine Datei auf einen FTP-Server. ```POST: /datasets/default/copyFile```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|source|string|Ja|query|(Keine) |URL zur Quelldatei|
-|destination|string|Ja|query|(Keine) |Zieldateipfad auf dem FTP-Server, einschließlich Zieldateiname|
-|overwrite|Boolescher Wert|no|query|(Keine) |Überschreibt die Zieldatei, falls auf „True“ festgelegt|
-
-#### Antwort
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-### Datei löschen 
-Löscht eine Datei auf dem FTP-Server. ```DELETE: /datasets/default/files/{id}```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|id|string|Ja|path|(Keine) |Eindeutiger Bezeichner der auf dem FTP-Server zu löschenden Datei|
-
-#### Antwort
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-### Ordner extrahieren
-Extrahiert eine Archivdatei in einen Ordner auf dem FTP-Server (Beispiel: .zip). ```POST: /datasets/default/extractFolderV2```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|source|string|Ja|query| (Keine)|Pfad zur Archivdatei|
-|destination|string|Ja|query| (Keine)|Pfad zum Zielordner|
-|overwrite|Boolescher Wert|no|query|(Keine)|Überschreibt die Zieldateien, falls auf „True“ festgelegt|
-
-#### Antwort
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-
-### Dateiinhalte abrufen
-Ruft Dateiinhalte mithilfe der ID vom FTP-Server ab. ```GET: /datasets/default/files/{id}/content```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|id|string|Ja|path|(Keine) |Eindeutiger Bezeichner der Datei|
-
-#### Antwort
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
+1. Geben Sie im Suchfeld des Logik-App-Designers die Zeichenfolge *ftp* ein, und wählen Sie dann den Trigger **FTP - When a file is added or modified** (FTP – Wenn eine Datei hinzugefügt oder geändert wird) aus. ![FTP-Trigger – Abbildung 1](./media/connectors-create-api-ftp/ftp-trigger-1.png) Das Steuerelement **When a file is added or modified** (Wenn eine Datei hinzugefügt oder geändert wird) wird geöffnet. ![FTP-Trigger – Abbildung 2](./media/connectors-create-api-ftp/ftp-trigger-2.png)
+- Wählen Sie rechts im Steuerelement die drei Punkte (**...**) aus. Die Ordnerauswahl wird geöffnet. ![FTP-Trigger – Abbildung 3](./media/connectors-create-api-ftp/ftp-trigger-3.png)
+- Wählen Sie den Pfeil nach rechts (**>**) aus, und navigieren Sie zu dem Ordner, den Sie auf neue oder geänderte Dateien überwachen möchten. Wählen Sie den Ordner aus. Der Ordner wird nun im Steuerelement **Ordner** angezeigt. ![FTP-Trigger – Abbildung 4](./media/connectors-create-api-ftp/ftp-trigger-4.png)
 
 
-### Dateiinhalt anhand des Pfads abrufen
-Ruft Dateiinhalte mithilfe des Pfads vom FTP-Server ab. ```GET: /datasets/default/GetFileContentByPath```
+Ihre Logik-App ist jetzt mit einem Trigger konfiguriert, die eine Ausführung der anderen Trigger und Aktionen im Workflow startet, wenn in dem angegebenen FTP-Ordner eine Datei geändert oder erstellt wird.
 
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|path|string|Ja|query|(Keine) |Eindeutiger Pfad zur Datei auf dem FTP-Server|
-
-#### Antwort
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
+>[AZURE.NOTE]Eine Logik-App muss mindestens einen Trigger und eine Aktion enthalten. Führen Sie die Schritte im nächsten Abschnitt aus, um eine Aktion hinzufügen.
 
 
-### Dateimetadaten abrufen 
-Ruft Dateimetadaten vom FTP-Server mithilfe der Datei-ID ab. ```GET: /datasets/default/files/{id}```
 
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|id|string|Ja|path|(Keine)|Eindeutiger Bezeichner der Datei|
+## Verwenden einer FTP-Aktion
 
-#### Antwort
-| Name | Beschreibung |
-| --- | --- |
-| 200 | OK | 
-| default | Fehler beim Vorgang.
+Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
+
+Nachdem Sie bereits einen Trigger hinzugefügt haben, gehen Sie wie folgt vor, um eine Aktion hinzuzufügen, die den Inhalt der neuen oder geänderten Datei abruft, die der Trigger ermittelt hat.
+
+1. Wählen Sie **+ Neuer Schritt** aus, um die Aktion zum Abrufen des Inhalts der Datei auf dem FTP-Server hinzuzufügen.
+- Wählen Sie den Link **Aktion hinzufügen** aus. ![FTP-Aktion – Abbildung 1](./media/connectors-create-api-ftp/ftp-action-1.png)
+- Geben Sie *FTP* ein, um nach allen FTP-bezogenen Aktionen zu suchen.
+- Wählen Sie als Aktion, die ausgeführt werden soll, wenn in dem FTP-Ordner eine neue oder geänderte Datei gefunden wird, die Option **FTP - Get file content** (FTP – Dateiinhalt abrufen) aus. ![FTP-Aktion – Abbildung 2](./media/connectors-create-api-ftp/ftp-action-2.png) Das Steuerelement **Get file content** (Dateiinhalt abrufen) wird geöffnet. **Hinweis**: Sie werden aufgefordert, den Zugriff Ihrer Logik-App auf Ihr FTP-Serverkonto zu autorisieren, sofern Sie diesen Schritt noch nicht ausgeführt haben. ![FTP-Aktion – Abbildung 3](./media/connectors-create-api-ftp/ftp-action-3.png)
+- Wählen Sie das Steuerelement **Datei** (leerer Bereich unterhalb von **DATEI***) aus. Hier können Sie die unterschiedlichen Eigenschaften der neuen oder geänderten Datei verwenden, die auf dem FTP-Server gefunden wurde.
+- Wählen Sie die Option **Dateiinhalt** aus. ![FTP-Aktion – Abbildung 4](./media/connectors-create-api-ftp/ftp-action-4.png)
+-  Das Steuerelement wird aktualisiert und gibt an, dass die Aktion **FTP - Get file content** (FTP – Dateiinhalt abrufen) den *Dateiinhalt* der neuen oder geänderten Datei auf dem FTP-Server abruft. ![FTP-Aktion – Abbildung 5](./media/connectors-create-api-ftp/ftp-action-5.png)
+- Speichern Sie Ihre Arbeit, und fügen Sie dem FTP-Ordner eine Datei hinzu, um den Workflow zu testen.
+
+Die Logik-App ist nun mit einem Trigger konfiguriert, der einen Ordner auf einem FTP-Server überwacht und den Workflow initiiert, wenn auf dem FTP-Server eine neue oder geänderte Datei gefunden wird.
+
+Des Weiteren ist die Logik-App mit einer Aktion konfiguriert, die den Inhalt der neuen oder geänderten Datei abruft.
+
+Sie können nun eine weitere Aktion hinzufügen – beispielsweise die Aktion [SQL Server - insert row](./connectors-create-api-sqlazure.md#insert-row) (SQL Server – Zeile einfügen), um den Inhalt der neuen oder geänderten Datei in eine SQL-Datenbanktabelle einzufügen.
+
+## Technische Details
+
+Im Anschluss finden Sie ausführliche Informationen zu den Triggern, Aktionen und Antworten, die von dieser Verbindung unterstützt werden:
+
+## FTP-Trigger
+
+Für FTP stehen folgende Trigger zur Verfügung:
+
+|Trigger | Beschreibung|
+|--- | ---|
+|[When a file is added or modified](connectors-create-api-ftp.md#when-a-file-is-added-or-modified) (Wenn eine Datei hinzugefügt oder geändert wird)|Dieser Vorgang löst einen Ablauf aus, wenn einem Ordner eine Datei hinzugefügt oder in einem Ordner eine Datei geändert wird.|
+
+
+## FTP-Aktionen
+
+Für FTP stehen folgende Aktionen zur Verfügung:
+
+
+|Aktion|Beschreibung|
+|--- | ---|
+|[Dateimetadaten abrufen](connectors-create-api-ftp.md#get-file-metadata)|Dieser Vorgang ruft die Metadaten für eine Datei ab.|
+|[Datei aktualisieren](connectors-create-api-ftp.md#update-file)|Dieser Vorgang aktualisiert eine Datei.|
+|[Datei löschen](connectors-create-api-ftp.md#delete-file)|Dieser Vorgang löscht eine Datei.|
+|[Dateimetadaten anhand des Pfads abrufen](connectors-create-api-ftp.md#get-file-metadata-using-path)|Dieser Vorgang ruft die Metadaten einer Datei unter Verwendung des Pfads ab.|
+|[Dateiinhalt anhand des Pfads abrufen](connectors-create-api-ftp.md#get-file-content-using-path)|Dieser Vorgang ruft den Inhalt einer Datei unter Verwendung des Pfads ab.|
+|[Dateiinhalte abrufen](connectors-create-api-ftp.md#get-file-content)|Dieser Vorgang ruft den Inhalt einer Datei ab.|
+|[Datei erstellen](connectors-create-api-ftp.md#create-file)|Dieser Vorgang erstellt eine Datei.|
+|[Datei kopieren](connectors-create-api-ftp.md#copy-file)|Dieser Vorgang kopiert eine Datei auf einen FTP-Server.|
+|[Dateien im Ordner aufführen](connectors-create-api-ftp.md#list-files-in-folder)|Dieser Vorgang ruft die Liste mit den in einem Ordner enthaltenen Dateien und Unterordnern ab.|
+|[Dateien im Stammordner aufführen](connectors-create-api-ftp.md#list-files-in-root-folder)|Dieser Vorgang ruft die Liste mit den im Stammordner enthaltenen Dateien und Unterordnern ab.|
+|[Ordner extrahieren](connectors-create-api-ftp.md#extract-folder)|Dieser Vorgang extrahiert eine Archivdatei (beispielsweise eine ZIP-Datei) in einen Ordner.|
+### Aktionsdetails
+
+Im Anschluss finden Sie ausführliche Informationen zu den Aktionen und Triggern für diesen Connector sowie die jeweiligen Antworten:
+
+
+
+### Dateimetadaten abrufen
+Dieser Vorgang ruft die Metadaten für eine Datei ab.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|id*|File|Datei auswählen|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+BlobMetadata
+
+
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### Datei aktualisieren
+Dieser Vorgang aktualisiert eine Datei.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|id*|File|Datei auswählen|
+|body*|Dateiinhalte|Inhalt der Datei|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+BlobMetadata
+
+
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### Datei löschen
+Dieser Vorgang löscht eine Datei.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|id*|File|Datei auswählen|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+
 
 
 ### Dateimetadaten anhand des Pfads abrufen
-Ruft Dateimetadaten vom FTP-Server mithilfe des Pfads ab. ```GET: /datasets/default/GetFileByPath```
+Dieser Vorgang ruft die Metadaten einer Datei unter Verwendung des Pfads ab.
 
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|path|string|Ja|query| (Keine)|Eindeutiger Pfad zur Datei auf dem FTP-Server|
 
-#### Antwort
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|path*|Dateipfad|Datei auswählen|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+BlobMetadata
+
+
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### Dateiinhalt anhand des Pfads abrufen
+Dieser Vorgang ruft den Inhalt einer Datei unter Verwendung des Pfads ab.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|path*|Dateipfad|Datei auswählen|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+
+
+
+### Dateiinhalte abrufen
+Dieser Vorgang ruft den Inhalt einer Datei ab.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|id*|File|Datei auswählen|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+
+
+
+### Datei erstellen
+Dieser Vorgang erstellt eine Datei.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|folderPath*|Ordnerpfad|Ordner auswählen|
+|name*|Dateiname|Name der Datei|
+|body*|Dateiinhalte|Inhalt der Datei|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+BlobMetadata
+
+
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### Datei kopieren
+Dieser Vorgang kopiert eine Datei auf einen FTP-Server.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|source*|Quell-URL|URL zur Quelldatei|
+|destination*|Zieldateipfad|Zieldateipfad einschließlich Zieldateiname|
+|overwrite|Überschreiben?|Überschreibt die Zieldatei, falls auf „True“ festgelegt|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+BlobMetadata
+
+
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### When a file is added or modified (Wenn eine Datei hinzugefügt oder geändert wird)
+Dieser Vorgang löst einen Ablauf aus, wenn einem Ordner eine Datei hinzugefügt oder in einem Ordner eine Datei geändert wird.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|folderId*|Ordner|Ordner auswählen|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+
+
+
+### Dateien im Ordner aufführen
+Dieser Vorgang ruft die Liste mit den in einem Ordner enthaltenen Dateien und Unterordnern ab.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|id*|Ordner|Ordner auswählen|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+
+
+#### Ausgabedetails
+
+BlobMetadata
+
+
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### Dateien im Stammordner aufführen
+Dieser Vorgang ruft die Liste mit den im Stammordner enthaltenen Dateien und Unterordnern ab.
+
+
+Es gibt keine Parameter für diesen Aufruf
+
+#### Ausgabedetails
+
+BlobMetadata
+
+
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### Ordner extrahieren
+Dieser Vorgang extrahiert eine Archivdatei (beispielsweise eine ZIP-Datei) in einen Ordner.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|source*|Quellarchiv-Dateipfad|Pfad zur Archivdatei|
+|destination*|Zielordnerpfad|Pfad zum Zielordner|
+|overwrite|Überschreiben?|Überschreibt die Zieldateien, falls auf „True“ festgelegt|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+
+
+#### Ausgabedetails
+
+BlobMetadata
+
+
+| Eigenschaftenname | Datentyp |
+|---|---|---|
+|ID|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Größe|integer|
+|MediaType|string|
+|IsFolder|Boolescher Wert|
+|ETag|string|
+|FileLocator|string|
+
+
+
+## HTTP-Antworten
+
+Von den oben angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes zurückgegeben werden:
+
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
+|202|Zulässig|
+|400|Ungültige Anforderung|
+|401|Nicht autorisiert|
+|403|Verboten|
+|404|Nicht gefunden|
+|500|Interner Serverfehler. Unbekannter Fehler.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 
-### Ruft eine aktualisierte Datei ab
-Ruft eine aktualisierte Datei ab. ```GET: /datasets/default/triggers/onupdatedfile```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|folderId|string|Ja|query|(Keine) |Ordner-ID, unter der nach einer aktualisierten Datei gesucht werden soll|
-
-#### Antwort
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
 
 
-### Datei aktualisieren 
-Aktualisiert eine Datei auf dem FTP-Server. ```PUT: /datasets/default/files/{id}```
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|id|string|Ja|path| (Keine)|Eindeutiger Bezeichner der Datei, die auf dem FTP-Server aktualisiert werden soll|
-|body| |Ja|body|(Keine) |Inhalt der Datei, die auf dem FTP-Server aktualisiert werden soll|
-
-#### Antwort
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
 
 
-## Objektdefinitionen
-
-#### DataSetsMetadata
-
-| Name | Datentyp | Erforderlich |
-|---|---|---|
-|tabular|nicht definiert|no|
-|Blob|nicht definiert|no|
-
-#### TabularDataSetsMetadata
-
-| Name | Datentyp | Erforderlich |
-|---|---|---|
-|source|string|no|
-|displayName|string|no|
-|urlEncoding|string|no|
-|tableDisplayName|string|no|
-|tablePluralName|string|no|
-
-#### BlobDataSetsMetadata
-
-| Name | Datentyp | Erforderlich |
-|---|---|---|
-|source|string|no|
-|displayName|string|no|
-|urlEncoding|string|no|
-
-#### BlobMetadata
-
-| Name | Datentyp | Erforderlich |
-|---|---|---|
-|ID|string|no|
-|Name|string|no|
-|DisplayName|string|no|
-|Path|string|no|
-|LastModified|string|no|
-|Größe|integer|no|
-|MediaType|string|no|
-|IsFolder|Boolescher Wert|no|
-|ETag|string|no|
-|FileLocator|string|no|
 
 ## Nächste Schritte
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
-
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="javascript" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="02/23/2016" 
+	ms.date="07/21/2016" 
 	ms.author="ricksal"/>
 
 
@@ -27,7 +27,7 @@ In einem mobilen JavaScript-Back-End-Dienst können Sie benutzerdefinierte Gesch
 
 + [Lese-, Schreib-, Änderungs- oder Löschvorgänge in einer bestimmten Tabelle][Table operations].
 + [Geplante Aufträge][Job Scheduler].
-+ [Definieren von HTTP-Methoden in einer benutzerdefinierten API][Custom API anchor]. 
++ [Definieren von HTTP-Methoden in einer benutzerdefinierten API][Custom API anchor].
 
 Die Signatur der main-Funktion im Serverskript hängt davon ab, in welchem Kontext das Skript verwendet wird. Sie können auch CommonScript-Code als nodes.js-Module definieren, die von verschiedenen Skripts genutzt werden. Weitere Informationen finden Sie unter [Quellcodeverwaltung und freigegebener Code][Source control, shared code, and helper functions].
 
@@ -64,10 +64,10 @@ Skripts für Tabellenvorgänge dienen zur Umsetzung von benutzerdefinierter Gesc
 
 Tabellen-Skriptfunktionen nehmen immer drei Argumente entgegen.
 
-- Das erste Argument variiert je nach Tabellenvorgang. 
+- Das erste Argument variiert je nach Tabellenvorgang.
 
 	- Für Insert- und Update-Vorgänge ist dies ein **Item**-Objekt mit einer JSON-Abbildung der vom entsprechenden Vorgang betroffenen Zeile. Auf diese Weise können Sie die Spaltenwerte mit Namen ansprechen, z. B. *item.Owner*, wobei *Owner* einer der Namen in der JSON-Darstellung ist.
-	- Für Delete-Vorgänge ist dies die ID des zu löschenden Eintrags. 
+	- Für Delete-Vorgänge ist dies die ID des zu löschenden Eintrags.
 	- Für Select-Vorgänge ist das erste Argument ein [Suchabfrageobjekt], welches das zurückzuliefernde Rowset angibt.
 
 - Das zweite Argument ist immer ein [Benutzerobjekt][User object] und repräsentiert den Benutzer, der die Anforderung übermittelt hat.
@@ -336,11 +336,11 @@ Der globale Status bleibt zwischen Ausführungen erhalten.
 
 Sie können Serverskripts, die für HTTP-Methoden in einem Endpunkt einer benutzerdefinierten API registriert sind, auf folgende Arten definieren:
 
-+ Im [klassischen Azure-Portal]. Skripts für benutzerdefinierte APIs werden in der Registerkarte **API** erstellt und bearbeitet. Der Serverskript-Code befindet sich in der Registerkarte **Skripts** der jeweiligen benutzerdefinierten API. Im Folgenden wird das Skript gezeigt, das durch eine POST-Anforderung an den Endpunkt der benutzerdefinierten `CompleteAll`-API aufgerufen wird. 
++ Im [klassischen Azure-Portal]. Skripts für benutzerdefinierte APIs werden in der Registerkarte **API** erstellt und bearbeitet. Der Serverskript-Code befindet sich in der Registerkarte **Skripts** der jeweiligen benutzerdefinierten API. Im Folgenden wird das Skript gezeigt, das durch eine POST-Anforderung an den Endpunkt der benutzerdefinierten `CompleteAll`-API aufgerufen wird.
 
 	![2][2]
 	
-	Zugriffsberechtigungen für Methoden von benutzerdefinierten APIs werden in der Registerkarte Berechtigungen zugewiesen. Informationen zur Erstellung der API finden Sie unter [Aufrufen benutzerdefinierter APIs vom Client, in englischer Sprache].  
+	Zugriffsberechtigungen für Methoden von benutzerdefinierten APIs werden in der Registerkarte Berechtigungen zugewiesen. Informationen zur Erstellung der API finden Sie unter [Call a custom API from the client] (Aufrufen benutzerdefinierter APIs vom Client, in englischer Sprache.
 
 + Mithilfe von Quellcodeverwaltung. Falls Sie die Quellcodeverwaltung aktiviert haben, erstellen Sie einfach eine Datei mit dem Namen "<em>`<custom_api>`</em>.js" im Unterordner ".\\service\\api" in Ihrem Git-Repository, wobei <em>`<custom_api>`</em> der Name der benutzerdefinierten API ist, die registriert wird. Die Skriptdatei enthält eine _exported_-Funktion für jede HTTP-Methode, die von der benutzerdefinierten API verfügbar gemacht wird. Die Berechtigungen werden in einer separaten .json-Datei definiert. Weitere Informationen finden Sie unter [Quellcodeverwaltung und freigegebener Code][Source control, shared code, and helper functions].
 
@@ -471,7 +471,7 @@ In diesem Abschnitt wird gezeigt, wie Sie die Quellcodeverwaltung nutzen, um eig
 + [Gewusst wie: Laden von Node.js-Modulen]
 + [Gewusst wie: Arbeiten mit Hilfsfunktionen]
 + [Gewusst wie: Freigeben von Code mithilfe der Quellcodeverwaltung]
-+ [Gewusst wie: Arbeiten mit App-Einstellungen] 
++ [Gewusst wie: Arbeiten mit App-Einstellungen]
 
 ###<a name="leverage-source-control"></a>Übersicht über die Nutzung von freigegebenen Code
 
@@ -479,15 +479,15 @@ Da Mobile Services auf dem Server Node.js verwendet, haben Ihre Skripts bereits 
 
 Es folgt eine Liste hilfreicher Module, die Sie über die globale **require**-Funktion in Ihre Skripts einbinden können:
 
-+ **azure**: Macht die Funktionen des Azure SDK für Node.js verfügbar. Weitere Informationen finden Sie unter [Azure SDK für Node.js]. 
++ **azure**: Macht die Funktionen des Azure SDK für Node.js verfügbar. Weitere Informationen finden Sie unter [Azure SDK für Node.js].
 + **crypto**: Macht die Verschlüsselungsfunktionen von Open SSL verfügbar. Weitere Informationen finden Sie in der [Node.js-Dokumentation][crypto API].
 + **path**: Enthält Werkzeuge zum Arbeiten mit Dateipfaden. Weitere Informationen finden Sie in der [Node.js-Dokumentation][path API].
 + **querystring**: Enthält Werkzeuge zum Arbeiten mit Abfragezeichenfolgen. Weitere Informationen finden Sie in der [Node.js-Dokumentation][querystring API].
 + **request**: Verschickt HTTP-Anforderungen an externe REST-Dienste wie z. B. Twitter und Facebook. Weitere Informationen finden Sie unter [HTTP-Anforderungen senden].
 + **sendgrid**: Verschickt E-Mails über den Sendgrid-E-Mail-Dienst in Azure. Weitere Informationen finden Sie unter [Send email from Mobile Services with SendGrid] (E-Mail-Versand in Mobile Services mit SendGrid, in englischer Sprache).
 + **url**: Enthält Werkzeuge zum Analysieren und Auflösen von URLs. Weitere Informationen finden Sie in der [Node.js-Dokumentation][url API].
-+ **util**: Enthält verschiedene Werkzeuge wie z. B. Zeichenfolgenformatierung und Objekttypprüfungen. Weitere Informationen finden Sie in der [Node.js-Dokumentation][util API]. 
-+ **zlib**: Macht Komprimierungsmethoden wie z. B. "gzip" und "deflate" verfügbar. Weitere Informationen finden Sie in der [Node.js-Dokumentation][zlib API]. 
++ **util**: Enthält verschiedene Werkzeuge wie z. B. Zeichenfolgenformatierung und Objekttypprüfungen. Weitere Informationen finden Sie in der [Node.js-Dokumentation][util API].
++ **zlib**: Macht Komprimierungsmethoden wie z. B. "gzip" und "deflate" verfügbar. Weitere Informationen finden Sie in der [Node.js-Dokumentation][zlib API].
 
 ###<a name="modules-helper-functions"></a>Gewusst wie: Einbinden von Modulen
 
@@ -796,7 +796,7 @@ Mit diesen Methoden erhalten Sie eine immer tiefgehendere Kontrolle über die Ve
 + [Gewusst wie: Ausführen dynamischer Abfragen]
 + [Gewusst wie: Verknüpfen relationaler Tabellen]
 + [Gewusst wie: Ausführen einer Abfrage, die Ergebnisse im *raw*-Format zurückgibt]
-+ [Gewusst wie: Zugreifen auf eine Datenbankverbindung]	
++ [Gewusst wie: Zugreifen auf eine Datenbankverbindung]
 
 ####<a name="static-query"></a>Gewusst wie: Ausführen statischer Abfragen
 
@@ -1044,7 +1044,7 @@ Um Ihr Protokoll nicht zu überladen, sollten Sie Aufrufe von console.log() entf
 [util API]: http://go.microsoft.com/fwlink/p/?LinkId=288806
 [zlib API]: http://go.microsoft.com/fwlink/p/?LinkId=288807
 [Benutzerdefinierte API]: http://msdn.microsoft.com/library/windowsazure/dn280974.aspx
-[Aufrufen benutzerdefinierter APIs vom Client, in englischer Sprache]: /develop/mobile/tutorials/call-custom-api-dotnet/#define-custom-api
+[Call a custom API from the client]: /develop/mobile/tutorials/call-custom-api-dotnet/#define-custom-api
 [express.js-Bibliothek]: http://go.microsoft.com/fwlink/p/?LinkId=309046
 [Define a custom API that supports periodic notifications]: /develop/mobile/tutorials/create-pull-notifications-dotnet/
 [express-Objekt in express.js]: http://expressjs.com/api.html#express
@@ -1056,4 +1056,4 @@ Um Ihr Protokoll nicht zu überladen, sollten Sie Aufrufe von console.log() entf
 [Support for package.json in Azure Mobile Services]: http://go.microsoft.com/fwlink/p/?LinkId=391036
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0727_2016-->

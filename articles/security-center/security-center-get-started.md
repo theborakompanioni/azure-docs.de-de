@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/19/2016"
+   ms.date="07/21/2016"
    ms.author="terrylan"/>
 
 # Schnellstarthandbuch zu Azure Security Center
 
 Dieses Dokument unterstützt Sie beim Einstieg in Azure Security Center. Sie erhalten eine Einführung in die Sicherheitsüberwachungs- und Richtlinienverwaltungs-Komponenten und werden zu weiterführenden Schritten geleitet.
 
-> [AZURE.NOTE] Die Informationen in diesem Dokument gelten für die Vorschauversion von Azure Security Center. Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
+> [AZURE.NOTE] Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
 
 ## Datensammlung
 
@@ -110,4 +110,4 @@ In diesem Dokument wurden die Sicherheitsüberwachungs- und Richtlinienverwaltun
 [9]: ./media/security-center-get-started/partner-solutions.png
 [10]: ./media/security-center-get-started/partner-solutions-detail.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->
