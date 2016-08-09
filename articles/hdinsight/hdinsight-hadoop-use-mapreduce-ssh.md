@@ -57,9 +57,9 @@ Weitere Informationen zum Verwenden von PuTTY finden Sie unter [Verwenden von SS
 
 1. Nachdem die Verbindung mit dem HDInsight-Cluster hergestellt wurde, verwenden Sie den folgenden **Hadoop**-Befehl, um einen MapReduce-Auftrag zu starten:
 
-		hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/WordCountOutput
+		hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount wasbs:///example/data/gutenberg/davinci.txt wasbs:///example/data/WordCountOutput
 
-	Dadurch wird die Klasse **wordcount** gestartet, die in der Datei **hadoop-mapreduce-examples.jar** enthalten ist. Als Eingabe wird das Dokument **wasb://example/data/gutenberg/davinci.txt** verwendet, und die Ausgabe wird unter **wasb:///example/data/WordCountOutput** gespeichert.
+	Dadurch wird die Klasse **wordcount** gestartet, die in der Datei **hadoop-mapreduce-examples.jar** enthalten ist. Als Eingabe wird das Dokument **wasbs://example/data/gutenberg/davinci.txt** verwendet, und die Ausgabe wird unter **wasbs:///example/data/WordCountOutput** gespeichert.
 
 	> [AZURE.NOTE] Weitere Informationen über diesen MapReduce-Auftrag und die Beispieldaten finden Sie unter [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md).
 
@@ -70,9 +70,9 @@ Weitere Informationen zum Verwenden von PuTTY finden Sie unter [Verwenden von SS
 		File Output Format Counters
         Bytes Written=337623
 
-3. Sobald der Auftrag abgeschlossen ist, verwenden Sie den folgenden Befehl zum Auflisten der Ausgabedateien, die unter **wasb://example/data/WordCountOutput** gespeichert sind:
+3. Sobald der Auftrag abgeschlossen ist, verwenden Sie den folgenden Befehl zum Auflisten der Ausgabedateien, die unter **wasbs://example/data/WordCountOutput** gespeichert sind:
 
-		hdfs dfs -ls wasb:///example/data/WordCountOutput
+		hdfs dfs -ls wasbs:///example/data/WordCountOutput
 
 	Daraufhin sollten zwei Dateien angezeigt werden: **\_SUCCESS** und **part-r-00000**. Die Datei **part-r-00000** enthält die Ausgabe für diesen Auftrag.
 
@@ -80,9 +80,9 @@ Weitere Informationen zum Verwenden von PuTTY finden Sie unter [Verwenden von SS
 
 4. Verwenden Sie den folgenden Befehl, um die Ausgabe anzuzeigen:
 
-		hdfs dfs -cat wasb:///example/data/WordCountOutput/part-r-00000
+		hdfs dfs -cat wasbs:///example/data/WordCountOutput/part-r-00000
 
-	Dadurch wird eine Liste der Wörter, die in der Datei **wasb://example/data/gutenberg/davinci.txt** enthalten sind, sowie die Anzahl der Vorkommen der einzelnen Wörter angezeigt. Im Folgenden finden Sie ein Beispiel für die in der Datei enthaltenen Daten:
+	Dadurch wird eine Liste der Wörter, die in der Datei **wasbs://example/data/gutenberg/davinci.txt** enthalten sind, sowie die Anzahl der Vorkommen der einzelnen Wörter angezeigt. Im Folgenden finden Sie ein Beispiel für die in der Datei enthaltenen Daten:
 
 		wreathed        3
 		wreathing       1
@@ -108,4 +108,4 @@ Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeite
 
 * [Verwenden von Pig mit Hadoop in HDInsight](hdinsight-use-pig.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

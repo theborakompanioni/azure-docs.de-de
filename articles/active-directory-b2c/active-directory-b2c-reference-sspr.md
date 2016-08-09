@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory B2C (Vorschauversion): Self-Service-Kennwortzurücksetzung | Microsoft Azure"
+	pageTitle="Azure Active Directory B2C: Self-Service-Kennwortzurücksetzung | Microsoft Azure"
 	description="In diesem Thema wird das Einrichten der Self-Service-Kennwortrücksetzung für Ihre Kunden in Azure Active Directory B2C demonstriert."
 	services="active-directory-b2c"
 	documentationCenter=""
@@ -13,13 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/06/2016"
+	ms.date="07/24/2016"
 	ms.author="swkrish"/>
 
 
-# Azure Active Directory B2C-Vorschau: Einrichten der Self-Service-Kennwortrücksetzung für Ihre Kunden
-
-[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
+# Azure Active Directory B2C: Einrichten der Self-Service-Kennwortrücksetzung für Ihre Kunden
 
 Das Feature für die Self-Service-Kennwortrücksetzung ermöglicht Ihren Kunden (die für lokale Konten registriert sind) das eigenständige Zurücksetzen ihrer Kennwörter. Dadurch wird die Belastung für Ihre Supportmitarbeiter erheblich reduziert, insbesondere, wenn Ihre Anwendung Millionen von Kunden besitzt, die sie regelmäßig verwenden. Derzeit unterstützen wir nur die Verwendung einer verifizierten E-Mail-Adresse als Wiederherstellungsmethode. Wir werden zukünftig zusätzliche Wiederherstellungsmethoden (verifizierte Telefonnummer, Sicherheitsfragen usw.) hinzufügen.
 
@@ -43,4 +41,4 @@ Zum Testen verwenden Sie das Feature „Jetzt ausführen“ für eine beliebige 
 > [AZURE.NOTE]
 Die Seiten der Self-Service-Kennwortrücksetzung können mithilfe des [Features für Unternehmensbranding](../active-directory/active-directory-add-company-branding.md) angepasst werden.
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

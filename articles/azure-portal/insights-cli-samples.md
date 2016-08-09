@@ -13,14 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="07/20/2016"
 	ms.author="ashwink"/>
 
 # Azure Insights – Schnellstartbeispiele für plattformübergreifende Befehlszeilenschnittstelle
 
 In diesem Artikel werden Beispielbefehle für die Befehlszeilenschnittstelle (Command Line Interface, CLI) beschrieben, mit denen Sie auf Azure Insights-Überwachungsfeatures zugreifen können. Azure Insights ermöglicht die automatische Skalierung von Clouddiensten, virtuellen Computern und Web-Apps sowie das Senden von Warnbenachrichtigungen oder das Aufrufen von Web-URLs basierend auf Werten konfigurierter Telemetriedaten.
 
->[AZURE.NOTE] Einige der neuesten Fehlerbehebungen für die Azure Insights-Befehlszeilenschnittstelle sind noch nicht abgeschlossen. Aus diesem Grund stehen einige der neuesten Funktionen noch nicht in der aktuellen Version der Azure-Befehlszeilenschnittstelle zur Verfügung. In der Zwischenzeit können Sie die neueste Azure Insights-Befehlszeilenschnittstelle verwenden, die die Fehlerbehebungen enthält. Dazu laden Sie unter [Azure XPLAT Tarball](http://github.com/Azure/azure-xplat-cli/archive/dev.tar.gz) den neuesten Tarball aus der Entwicklungsabteilung herunter. Befolgen Sie anschließend die Anweisungen im [ plattformübergreifenden Befehlszeilen-Repository für Microsoft Azure](https://github.com/Azure/azure-xplat-cli#installation-from-a-particular-branch-of-this-repository), um die Befehlszeilenschnittstelle mithilfe des heruntergeladenen Tarballs zu installieren. Sobald die Azure-Befehlszeilenschnittstelle aktualisiert wird, werden die Fehlerbehebungen zu Azure Insights hinzugefügt. Wir werden dieses Dokument aktualisieren, sobald die Änderungen in der Hauptzweigstelle der Azure-Befehlszeilenschnittstelle zur Verfügung stehen.
 
 ## Voraussetzungen
 
@@ -221,4 +220,4 @@ node bin\azure insights autoscale setting list montest2 -n setting2
 node bin\azure insights autoscale setting set montest2 -n setting2 --settingSpec
 ```
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

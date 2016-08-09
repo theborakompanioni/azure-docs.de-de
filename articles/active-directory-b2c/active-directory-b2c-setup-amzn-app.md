@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Vorschau für Azure Active Directory B2C: Amazon-Konfiguration | Microsoft Azure"
+	pageTitle="Azure Active Directory B2C: Amazon-Konfiguration | Microsoft Azure"
 	description="Bereitstellen von Registrierung und Anmeldung für Kunden mit Amazon-Konten in mit Azure Active Directory B2C gesicherten Anwendungen."
 	services="active-directory-b2c"
 	documentationCenter=""
@@ -12,13 +12,11 @@
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/27/2016"
+    ms.topic="article"
+    ms.date="07/24/2016"
 	ms.author="swkrish"/>
 
-# Azure Active Directory B2C-Vorschau: Bereitstellen von Registrierung und Anmeldung für Kunden mit Amazon-Konten
-
-[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
+# Azure Active Directory B2C: Bereitstellen von Registrierung und Anmeldung für Kunden mit Amazon-Konten
 
 ## Erstellen einer Amazon-Anwendung
 
@@ -44,7 +42,7 @@ Um Amazon als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verw
 
 ## Konfigurieren von Amazon als Identitätsanbieter in Ihrem Mandanten
 
-1. Führen Sie diese Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
+1. Führen Sie die folgenden Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
 2. Klicken Sie auf dem B2C-Featureblatt auf **Identitätsanbieter**.
 3. Klicken Sie oben auf dem Blatt auf **+Hinzufügen**.
 4. Geben Sie einen aussagekräftigen Namen für die Konfiguration des Identitätsanbieters unter **Name** ein. Geben Sie z. B. "Amzn" ein.
@@ -52,4 +50,4 @@ Um Amazon als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verw
 6. Klicken Sie auf **Diesen Identitätsanbieter einrichten**, und geben Sie die Client-ID und den geheimen Clientschlüssel der Amazon-Anwendung ein, die Sie zuvor erstellt haben.
 7. Klicken Sie auf **OK** und dann auf **Erstellen**, um die Amazon-Konfiguration zu speichern.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

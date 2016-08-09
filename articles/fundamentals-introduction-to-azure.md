@@ -18,7 +18,7 @@
 
 # Einführung in Microsoft Azure
 
-Microsoft Azure ist die Anwendungsplattform von Microsoft für die öffentliche Cloud. Das Ziel dieses Artikels besteht darin, Ihnen ein grundlegendes Verständnis von Azure zu vermitteln, auch wenn Sie in Bezug auf das Cloud Computing über keine Erfahrungen verfügen.
+Microsoft Azure ist die Anwendungsplattform von Microsoft für die öffentliche Cloud. Das Ziel dieses Artikels besteht darin, Ihnen ein grundlegendes Verständnis von Azure zu vermitteln, auch wenn Sie in Bezug auf [Cloud Computing](https://azure.microsoft.com/overview/what-is-cloud-computing/) über keine Erfahrungen verfügen.
 
 **Wie Sie diesen Artikel lesen sollten**
 
@@ -36,7 +36,7 @@ Azure gruppiert Dienste im Verwaltungsportal unter verschiedenen Kategorien und 
 Dieser Artikel **geht anders vor**, denn die Dienste werden nach Funktionsverwandtschaft dargestellt, und es werden wichtige Teildienste hervorgehoben, die zu größeren Diensten gehören.
 
 ![Azure-Komponenten](./media/fundamentals-introduction-to-azure/AzureComponentsIntroNew780.png)  
-*Abbildung: Azure bietet über das Internet zugängliche Anwendungsdienste, die in Azure-Datencentern ausgeführt werden.*
+*Abbildung: Azure bietet über das Internet zugängliche Anwendungsdienste, die in Azure-Datencentern ausgeführt werden. *
 
 ## Verwaltungsportal
 Azure verfügt über eine Webschnittstelle, das so genannte [Verwaltungsportal](http://manage.windowsazure.com), über das Administratoren auf die meisten Azure-Features zugreifen und die meisten Azure-Features verwalten können. Microsoft gibt das Portal mit der neueren Benutzeroberfläche in der Regel als Beta-Version heraus, bevor eine ältere Version zurückgezogen wird. Die neuere Version heißt [Azure-Vorschauportal](https://portal.azure.com/).
@@ -56,7 +56,7 @@ Sie können diese Technologien separat verwenden oder sie wie benötigt miteinan
 
 ![Azure Virtual Machines ROBBCSIART\_TEST](./media/fundamentals-introduction-to-azure/mscsiart_VirtualMachinesIntroNew_12345.png) *Azure Virtual Machines bietet Ihnen vollständige Kontrolle über die Instanzen virtueller Computer in der Cloud.*
 
-Die Möglichkeit, bei Bedarf einen virtuellen Computer zu erstellen, sei es anhand eines Standard-Images oder anhand eines von Ihnen bereitgestellten Images, kann sehr nützlich sein. Genau diesen Ansatz, im Allgemeinen als Infrastructure-as-a-Services (IaaS) bezeichnet, bietet Ihnen Azure Virtual Machines. Abbildung 2 zeigt, wie ein virtueller Computer (VM) ausgeführt wird und wie ein solcher anhand einer VHD erstellt wird.
+Die Möglichkeit, bei Bedarf einen virtuellen Computer zu erstellen, sei es anhand eines Standard-Images oder anhand eines von Ihnen bereitgestellten Images, kann sehr nützlich sein. Genau diesen Ansatz, im Allgemeinen als Infrastructure-as-a-Services ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)) bezeichnet, bietet Ihnen Azure Virtual Machines. Abbildung 2 zeigt, wie ein virtueller Computer (VM) ausgeführt wird und wie ein solcher anhand einer VHD erstellt wird.
 
 Zum Erstellen eines virtuellen Computers legen Sie die VHD, die verwendet werden soll, sowie die Größe des virtuellen Computers fest. Dann zahlen Sie für die Zeit, die der virtuelle Computer ausgeführt wird. Sie zahlen pro Minute und nur, wenn der virtuelle Computer aktiv ist. Allerdings fällt dafür, dass die VHD verfügbar bleibt, eine minimale Speichergebühr an. Azure bietet einen Katalog mit Bestands-VHDs (sogenannte "Images"), die ein bootfähiges Betriebssystem enthalten. Hierzu gehören Microsoft- und Partneroptionen wie Windows Server und Linux, SQL Server, Oracle und vieles mehr. Sie haben die Möglichkeit, VHDs und Images zu erstellen und selbst hochzuladen. Sie können sogar VHDs hochladen, die nur Daten enthalten, und über Ihre aktiven virtuellen Computer darauf zugreifen.
 
@@ -607,4 +607,4 @@ Nachdem Sie nun einen Überblick erhalten haben, besteht der nächste Schritt da
 
 [Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

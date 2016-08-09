@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/13/2016"
+	ms.date="07/23/2016"
 	ms.author="dariagrigoriu"/>
     
 # Kontinuierliche Bereitstellung in Azure App Service
@@ -52,7 +52,7 @@ Eine Visual Studio-Projektmappe lässt sich genauso leicht mithilfe von Push an 
 
 Die Schritte zur Pushübertragung der Visual Studio-Projektmappe an App Service sind mit denen im [vorherigen Abschnitt](#overview) identisch, wenn Sie Ihre Projektmappe und das Repository wie folgt konfigurieren:
 
--	Verwenden Sie die Visual Studio-Option zur Quellcodeverwaltung, um wie in der nachstehenden Abbildung eine `.gitignore`-Datei zu generieren, oder fügen Sie Ihrem Repositorystamm manuell eine `.gitignore`-Datei hinzu, die einen ähnlichen Inhalt hat wie dieses [.gitignore-Beispiel](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore). 
+-	Verwenden Sie die Visual Studio-Option zur Quellcodeverwaltung, um wie in der nachstehenden Abbildung eine `.gitignore`-Datei zu generieren, oder fügen Sie Ihrem Repositorystamm manuell eine `.gitignore`-Datei hinzu, die einen ähnlichen Inhalt hat wie dieses [.gitignore-Beispiel](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore).
 
     ![](./media/app-service-continous-deployment/VS_source_control.png)
  
@@ -72,6 +72,7 @@ Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu
 
 ## Zusätzliche Ressourcen
 
+* [How to investigate common issues with continuous deployment](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment) (Gewusst wie: Untersuchen allgemeiner Probleme bei Continuous Deployment)
 * [Verwenden von PowerShell für Azure]
 * [Verwenden des Azure-Befehlszeilentools für Mac und Linux]
 * [Git-Dokumentation]
@@ -79,7 +80,7 @@ Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu
 
 >[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
-[Azure App Service]: https://azure.microsoft.com/documentation/articles/app-service-changes-existing-services/
+[Azure App Service]: https://azure.microsoft.com/de-DE/documentation/articles/app-service-changes-existing-services/
 [Azure-Portal]: https://portal.azure.com
 [VSTS Portal]: https://www.visualstudio.com/de-DE/products/visual-studio-team-services-vs.aspx
 [Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
@@ -92,4 +93,4 @@ Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu
 [Erste Schritte mit VSTS]: https://www.visualstudio.com/get-started/overview-of-get-started-tasks-vs
 [Continuous delivery to Azure using Visual Studio Team Services]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

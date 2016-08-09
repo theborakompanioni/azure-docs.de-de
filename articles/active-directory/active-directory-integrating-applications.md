@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/06/2016"
+   ms.date="07/25/2016"
    ms.author="mbaldwin;bryanla" />
 
 # Integrieren von Anwendungen in Azure Active Directory
@@ -153,10 +153,10 @@ Sie können eine Web-API entwickeln und sie Clientanwendungen zur Verfügung ste
 ![Anzeige von Aufgabenlistenberechtigungen](./media/active-directory-integrating-applications/listpermissions.png)
 
 #### Weitere Informationen zum Anwendungsmanifest
-Das Anwendungsmanifest dient als Mechanismus zum Aktualisieren der Anwendungsentität, der alle Attribute der Identitätskonfiguration einer Azure AD-Anwendung einschließlich der erörterten API-Zugriffsbereiche definiert. Weitere Informationen zur Anwendungsentität finden Sie in der [Dokumentation zur Anwendungsentität der Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#EntityreferenceApplicationEntity). Dort finden Sie umfassende Referenzinformationen zu den Anwendungsentitätselementen, die verwendet werden, um Berechtigungen für Ihre API anzugeben:
+Das Anwendungsmanifest dient als Mechanismus zum Aktualisieren der Anwendungsentität, der alle Attribute der Identitätskonfiguration einer Azure AD-Anwendung einschließlich der erörterten API-Zugriffsbereiche definiert. Weitere Informationen zur Anwendungsentität finden Sie in der [Dokumentation zur Anwendungsentität der Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity). Dort finden Sie umfassende Referenzinformationen zu den Anwendungsentitätselementen, die verwendet werden, um Berechtigungen für Ihre API anzugeben:
 
-- Das appRoles-Mitglied, das eine Sammlung von [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#AppRoleType)-Entitäten darstellt, die zum Definieren der **Anwendungsberechtigungen** für eine Web-API verwendet werden können  
-- Das oauth2Permissions-Mitglied, das eine Sammlung von [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#OAuth2PermissionType)-Entitäten darstellt, die zum Definieren der **delegierten Berechtigungen** für eine Web-API verwendet werden können
+- Das appRoles-Mitglied, das eine Sammlung von [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type)-Entitäten darstellt, die zum Definieren der **Anwendungsberechtigungen** für eine Web-API verwendet werden können
+- Das oauth2Permissions-Mitglied, das eine Sammlung von [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type)-Entitäten darstellt, die zum Definieren der **delegierten Berechtigungen** für eine Web-API verwendet werden können
 
 Weitere Informationen zu Anwendungsmanifestkonzepten im Allgemeinen finden Sie unter [Grundlegendes zum Azure Active Directory-Anwendungsmanifest](active-directory-application-manifest.md).
 
@@ -166,8 +166,8 @@ Wie bereits zuvor erwähnt, können Sie zusätzlich zum Verfügbarmachen von/Zug
 
 Eine vollständige Erläuterung zu Zugriffsbereichen, die durch Folgendes verfügbar gemacht werden:
 
-- Graph-API von Azure AD. Informationen dazu finden Sie im Artikel [Berechtigungsbereiche | Graph-API-Konzepte](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes).
-- Office 365-APIs. Informationen dazu finden Sie im Artikel [Authentifizierung und Autorisierung mit dem allgemeinen Consent Framework](https://msdn.microsoft.com/office/office365/howto/application-manifest). Unter [Einrichten der Office 365-Entwicklungsumgebung](https://msdn.microsoft.com/office/office365/HowTo/setup-development-environment) finden Sie eine umfangreiche Erörterung zum Erstellen einer Client-App, die in Office 365-APIs integriert wird.
+- Graph-API von Azure AD, finden Sie im Artikel [Berechtigungsbereiche | Graph-API-Konzepte(https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)].
+- Office 365-APIs, finden Sie im Artikel [Authentifizierung und Autorisierung mit dem allgemeinen Consent Framework](https://msdn.microsoft.com/office/office365/howto/application-manifest). Unter [Einrichten der Office 365-Entwicklungsumgebung](https://msdn.microsoft.com/office/office365/HowTo/setup-development-environment) finden Sie eine umfangreiche Erörterung zum Erstellen einer Client-App, die in Office 365-APIs integriert wird.
 
 >[AZURE.NOTE] Aufgrund einer aktuellen Einschränkung können systemeigene Clientanwendungen die Azure AD Graph-API nur aufrufen, wenn sie die Berechtigung „Zugriff auf das Verzeichnis Ihrer Organisation“ verwenden. Diese Einschränkung gilt nicht für Webanwendungen.
 
@@ -196,7 +196,7 @@ So aktivieren Sie den Zugriff auf Ihre App für externe Benutzer:
 
 1. Erweitern Sie auf der Seite „Schnellstart“ den Abschnitt **Mehrinstanzenfähige Anwendung konfigurieren**, und klicken Sie dann im Abschnitt „Zugriff aktivieren“ auf den Link **Jetzt konfigurieren**. Die Seite mit den Anwendungseigenschaften wird angezeigt.
 
-1. Klicken Sie neben „Die Anwendung ist mehrinstanzenfähig“ auf **Ja**, und klicken Sie dann auf der Befehlsleiste auf die Schaltfläche **Speichern**.
+1. Klicken Sie neben „Die Anwendung ist mehrinstanzenfähig“ auf **Ja**, und klicken Sie dann in der Befehlsleiste auf die Schaltfläche **Speichern**.
 
 Nachdem Sie die oben genannten Änderungen vorgenommen haben, können Benutzer und Administratoren in anderen Organisationen Ihrer Anwendung Zugriff auf ihr Verzeichnis und andere Daten gewähren.
 
@@ -351,4 +351,4 @@ Um den Zugriff einer mehrinstanzenfähigen Anwendung auf Ihr Verzeichnis zu entz
 
 - Besuchen Sie das [Entwicklerhandbuch zu Azure Active Directory](active-directory-developers-guide.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

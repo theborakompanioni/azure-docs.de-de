@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="03/05/2016"
+	ms.date="07/21/2016"
 	ms.author="glenga"/>
 
 
@@ -138,4 +138,4 @@ Da Sie jetzt die Datenbankverbindung überprüft haben, müssen Sie eine App-Ein
 [klassischen Azure-Portal]: http://manage.windowsazure.com
 [Erste Schritte mit Mobile Services]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

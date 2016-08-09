@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="05/09/2016"
+	ms.date="07/09/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -38,7 +38,7 @@ Ein „BACPAC“ ist eine BACPAC-Datei, die ein Datenbankschema und Daten enthä
 
 Zum Importieren einer SQL-­Datenbank aus einer BACPAC-Datei benötigen Sie Folgendes:
 
-- Ein Azure-Abonnement. 
+- Ein Azure-Abonnement.
 - Einen Azure SQL-Datenbank V12-Server Wenn Sie nicht über einen Server der Version 12 verfügen, erstellen Sie ihn anhand der Schritte in dem Artikel [Erstellen der ersten Azure SQL-Datenbank](sql-database-get-started.md).
 - Eine BACPAC-Datei der Datenbank, die Sie in einen Blobcontainer eines [Azure Storage-Kontos (Standard)](../storage/storage-create-storage-account.md) importieren möchten.
 
@@ -65,7 +65,7 @@ Zum Importieren einer SQL-­Datenbank aus einer BACPAC-Datei benötigen Sie Folg
     ![Tarif auswählen][3]
 
 1.  Geben Sie einen **DATENBANKNAMEN** für die Datenbank ein, die Sie aus der BACPAC-Datei erstellen.
-2.  Wählen Sie den Authentifizierungstyp aus, und geben Sie dann die Authentifizierungsinformationen für den Server an. 
+2.  Wählen Sie den Authentifizierungstyp aus, und geben Sie dann die Authentifizierungsinformationen für den Server an.
 3.  Klicken Sie auf **Erstellen**, um die Datenbank aus der BACPAC-Datei zu erstellen.
 
     ![Datenbank erstellen][4]
@@ -92,13 +92,7 @@ Durch Klicken auf **Erstellen** wird eine Anforderung zum Importieren der Datenb
 
 ## Nächste Schritte
 
-- [Herstellen einer Verbindung mit einer Azure SQL-Datenbank mit SQL Server Management Studio und Ausführen einer T-SQL-Beispielabfrage](sql-database-connect-query-ssms.md)
-
-
-
-## Zusätzliche Ressourcen
-
-- [SQL-Datenbankdokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
+- Informationen zum Herstellen einer Verbindung mit einer importierten SQL-Datenbank und zum Abfragen einer solchen Datenbank finden Sie unter [Herstellen einer Verbindung mit einer SQL-Datenbank mit SQL Server Management Studio und Ausführen einer T-SQL-Beispielabfrage](sql-database-connect-query-ssms.md).
 
 
 <!--Image references-->
@@ -109,4 +103,4 @@ Durch Klicken auf **Erstellen** wird eine Anforderung zum Importieren der Datenb
 [5]: ./media/sql-database-import/import-history.png
 [6]: ./media/sql-database-import/import-status.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

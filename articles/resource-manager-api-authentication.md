@@ -86,7 +86,7 @@ Sie beginnen an dem Punkt, an dem der Benutzer entscheidet, sein Azure-Abonnemen
 
 Sie müssen den Benutzer um zwei Dinge bitten:
 
-1. **Verzeichnisdomänenname**: Der Domänenname des Azure Active Directory-Verzeichnisses, das mit dem Azure-Abonnement des Benutzers verknüpft ist. Die OAuth 2.0-Autorisierungsanforderung muss an dieses Azure AD-Verzeichnis gesendet werden. Der Benutzer kann den Azure AD-Domänennamen ermitteln, indem er zum Azure-Portal navigiert und das Konto oben rechts auswählt. Sie könnten dem Benutzer visuelle Hinweise wie den folgenden bereitstellen: 
+1. **Verzeichnisdomänenname**: Der Domänenname des Azure Active Directory-Verzeichnisses, das mit dem Azure-Abonnement des Benutzers verknüpft ist. Die OAuth 2.0-Autorisierungsanforderung muss an dieses Azure AD-Verzeichnis gesendet werden. Der Benutzer kann den Azure AD-Domänennamen ermitteln, indem er zum Azure-Portal navigiert und das Konto oben rechts auswählt. Sie könnten dem Benutzer visuelle Hinweise wie den folgenden bereitstellen:
 
      ![](./media/resource-manager-api-authentication/show-directory.png)
    
@@ -319,7 +319,7 @@ Beispielantwort für ein Token zur Gewährung von Clientanmeldeinformationen:
 
 ### Abrufen der Objekt-ID des Dienstprinzipals der Anwendung im Azure AD-Verzeichnis des Benutzers
 
-Verwenden Sie jetzt das nur für die App geltende Zugriffstoken, um die API für [Azure AD Graph-Dienstprinzipale](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#ServicePrincipalEntity) abzufragen und die Objekt-ID des Dienstprinzipals der Anwendung im Verzeichnis zu ermitteln.
+Verwenden Sie jetzt das nur für die App geltende Zugriffstoken, um die API für [Azure AD Graph-Dienstprinzipale](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abzufragen und die Objekt-ID des Dienstprinzipals der Anwendung im Verzeichnis zu ermitteln.
 
 Die [GetObjectIdOfServicePrincipalInOrganiation](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs#L66)-Methode der ASP.NET MVC-Beispielanwendung implementiert diesen Aufruf.
 
@@ -444,4 +444,4 @@ Die [RevokeRoleFromServicePrincipalOnSubscription](https://github.com/dushyantgi
 
 Jetzt können Benutzer Ihre Anwendung verwenden, um problemlos eine Verbindung mit ihren Azure-Abonnements herzustellen und sie zu verwalten.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

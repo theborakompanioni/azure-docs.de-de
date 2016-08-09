@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="06/08/2016"
+   ms.date="07/22/2016"
    ms.author="allclark" />
 
 # Debuggen von Apps in einem lokalen Docker-Container
@@ -107,6 +107,7 @@ Die [Visual Studio 2015 Tools für Docker](https://aka.ms/DockerToolsForVS) biet
 - [Docker-Tools für Visual Studio Code](http://aka.ms/dockertoolsforvscode) – Sprachdienste für die Bearbeitung von Docker-Dateien, mit weiteren e2e-Szenarien in Planung
 - [Informationen zu Windows-Containern](http://aka.ms/containers) – Informationen zu Windows Server und Nano Server
 - [Azure-Containerdienst](https://azure.microsoft.com/services/container-service/) – [Inhalt des Azure-Containerdiensts](http://aka.ms/AzureContainerService)
+-    Weitere Beispiele zum Arbeiten mit Docker finden Sie unter [Working with Docker](https://github.com/Microsoft/HealthClinic.biz/wiki/Working-with-Docker) (Arbeiten mit Docker) aus der [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect-[Demo](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/). Weitere Schnellstarts aus der Demo „HealthClinic.biz“ finden Sie unter [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts) (Schnellstarts zu Azure-Entwicklungstools).
 
 ## Verschiedene Docker-Tools
 
@@ -124,4 +125,4 @@ Die [Visual Studio 2015 Tools für Docker](https://aka.ms/DockerToolsForVS) biet
 
 [2]: ./media/vs-azure-tools-docker-edit-and-refresh/breakpoint.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

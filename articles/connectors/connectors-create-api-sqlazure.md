@@ -9,17 +9,19 @@
     tags="connectors"/>
 
 <tags
-   ms.service="multiple"
+   ms.service="logic-apps"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="07/18/2016"
+   ms.date="07/25/2016"
    ms.author="mandia"/>
 
 
 # Erste Schritte mit dem Azure SQL-Datenbank-Connector
-Mithilfe des Azure SQL-Datenbank-Connectors können Sie für Ihre Organisation Workflows zur Verwaltung von Tabellendaten erstellen. Weitere Informationen:
+Mithilfe des Azure SQL-Datenbank-Connectors können Sie für Ihre Organisation Workflows zur Verwaltung von Tabellendaten erstellen.
+
+SQL-Datenbank ermöglicht Folgendes:
 
 - Erstellen Sie Ihren Workflow, indem Sie einer Kundendatenbank einen neuen Kunden hinzufügen oder einen Auftrag in einer Auftragsdatenbank aktualisieren.
 - Verwenden Sie Aktionen, um eine Datenzeile abzurufen, eine neue Zeile einzufügen oder Löschvorgänge auszuführen. Wenn also etwa ein Datensatz in Dynamics CRM Online erstellt wird (Trigger), soll eine Zeile in eine Azure SQL-Datenbank eingefügt werden (Aktion).
@@ -28,44 +30,23 @@ Dieses Thema beschreibt, wie Sie den SQL-Datenbank-Connector in einer Logik-App 
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die allgemein verfügbare Version von Logic Apps.
 
-Weitere Informationen zu Logic Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
-
->[AZURE.INCLUDE [Voraussetzungen](../../includes/connectors-create-api-sqlazure.md)]
+Weitere Informationen zu Logic Apps finden Sie unter [Was sind Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md) sowie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 ## Herstellen einer Verbindung mit Azure SQL-Datenbank
 
 Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, muss zunächst eine *Verbindung* mit dem Dienst hergestellt werden. Eine Verbindung stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her. Für die Verbindungsherstellung mit SQL-Datenbank erstellen Sie beispielsweise zuerst eine *SQL-Datenbank-Verbindung*. Hierzu geben Sie die Anmeldeinformationen ein, mit denen Sie normalerweise auf den Dienst zugreifen, mit dem Sie eine Verbindung herstellen möchten. Geben Sie in SQL-Datenbank also Ihre SQL-Datenbank-Anmeldeinformationen ein, um die Verbindung zu erstellen.
 
-Wenn Sie Ihren Logik-Apps diesen Connector hinzufügen, erstellen Sie die Verbindung mit SQL-Datenbank. Beim erstmaligen Hinzufügen dieses Connectors werden Sie zur Eingabe der Verbindungsinformationen aufgefordert:
-
-![](./media/connectors-create-api-sqlazure/connection-details.png)
-
 #### Erstellen der Verbindung
 
-1. Geben Sie die SQL-Datenbank-Details ein. Mit einem Sternchen gekennzeichnete Eigenschaften müssen angegeben werden.
-
-	| Eigenschaft | Details |
-|---|---|
-| Connect via Gateway (Verbinden über Gateway) | Lassen Sie dieses Kontrollkästchen deaktiviert. Diese Option wird bei der Verbindungsherstellung mit einer lokalen SQL Server-Instanz verwendet. |
-| Verbindungsname* | Geben Sie einen beliebigen Namen für Ihre Verbindung ein. | 
-| SQL Server-Name* | Geben Sie den Servernamen ein. Dieser sieht in etwa wie folgt aus: *servername.database.windows.net*. Der Servername wird sowohl im Azure-Portal als auch in der Verbindungszeichenfolge in den SQL-Datenbankeigenschaften angezeigt. | 
-| SQL-Datenbankname* | Geben Sie den Namen Ihrer SQL-Datenbank ein. Dieser wird in den SQL-Datenbankeigenschaften in der Verbindungszeichenfolge aufgeführt: Initial Catalog=*Name\_Ihrer\_SQL-Datenbank*. | 
-| Benutzername* | Geben Sie den Benutzernamen ein, den Sie beim Erstellen der SQL-Datenbank erstellt haben. Dieser wird im Azure-Portal in den SQL-Datenbankeigenschaften aufgeführt. | 
-| Kennwort* | Geben Sie das Kennwort ein, das Sie beim Erstellen der SQL-Datenbank erstellt haben. | 
-
-	Mit diesen Anmeldeinformationen kann Ihre Logik-App eine Verbindung herstellen und auf Ihre SQL-Daten zugreifen. Nach Abschluss des Vorgangs sehen Ihre Verbindungsdetails in etwa wie folgt aus:
-
-	![Schritt zur Erstellung der SQL Azure-Verbindung](./media/connectors-create-api-sqlazure/sample-connection.png)
-
-2. Klicken Sie auf **Erstellen**.
+>[AZURE.INCLUDE [Erstellen der Verbindung mit SQL Azure](../../includes/connectors-create-api-sqlazure.md)]
 
 ## Verwenden eines Triggers
 
-Dieser Connector verfügt über keine Trigger. Verwenden Sie andere Trigger, um die Logik-App zu starten – etwa einen Wiederholungstrigger, einen HTTP-Webhook-Trigger oder einen Trigger eines anderen Connectors. Ein Beispiel finden Sie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Dieser Connector verfügt über keine Trigger. Verwenden Sie andere Trigger, um die Logik-App zu starten – beispielsweise einen Wiederholungstrigger, einen HTTP-Webhook-Trigger oder einen Trigger eines anderen Connectors. Ein Beispiel finden Sie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 ## Verwenden einer Aktion
 	
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird.
+Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
 
 1. Wählen Sie das Pluszeichen aus. Es stehen mehrere Auswahlmöglichkeiten zur Verfügung: **Aktion hinzufügen**, **Bedingung hinzufügen** oder eine der Optionen unter **Mehr**.
 
@@ -90,7 +71,7 @@ Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workfl
 
 ## Technische Details
 
-## Aktionen
+## SQL-Datenbank-Aktion
 Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Der SQL-Datenbank-Connector beinhaltet die folgenden Aktionen.
 
 |Aktion|Beschreibung|
@@ -170,7 +151,7 @@ ItemsList
 #### Zeile einfügen 
 Fügt eine neue Zeile in eine SQL-Tabelle ein.
 
-|Eigenschaftenname| Display Name|Beschreibung|
+|Eigenschaftenname| Anzeigename|Beschreibung|
 | ---|---|---|
 |table*|Tabellenname|Name der SQL-Tabelle|
 |item*|Zeile|In der angegebenen SQL-Tabelle einzufügende Zeile|
@@ -188,7 +169,7 @@ Item
 #### Zeile löschen 
 Löscht eine Zeile aus einer SQL-Tabelle.
 
-|Eigenschaftenname| Anzeigeame|Beschreibung|
+|Eigenschaftenname| Anzeigename|Beschreibung|
 | ---|---|---|
 |table*|Tabellenname|Name der SQL-Tabelle|
 |id*|Zeilen-ID|Eindeutiger Bezeichner der zu löschenden Zeile|
@@ -249,4 +230,4 @@ Das Aufrufen der verschiedenen Aktionen löst unter Umständen bestimmte Antwort
 
 [Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Informieren Sie sich in unserer [API-Liste](apis-list.md) über die anderen verfügbaren Connectors für Logic Apps.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

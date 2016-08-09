@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="02/07/2016"
+	ms.date="07/21/2016"
 	ms.author="glenga"/>
 
 # Planen von periodischen Aufträgen in Mobile Services
@@ -24,8 +24,8 @@
 
 
 > [AZURE.SELECTOR]
-- [.NET backend](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
-- [Javascript backend](mobile-services-schedule-recurring-tasks.md)
+- [.NET-Back-End](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
+- [JavaScript-Back-End](mobile-services-schedule-recurring-tasks.md)
 
 In diesem Thema erfahren Sie, wie Sie die Auftragsplanerfunktion im klassischen Azure-Portal verwenden, um Serverskript-Code zu definieren, der auf der Grundlage eines von Ihnen festgelegten Plans ausgeführt wird. Im vorliegenden Fall führt das Skript einen periodischen Abgleich mit einem Remote-Dienst, hier Twitter, aus und speichert die Ergebnisse in einer neuen Tabelle. Im Folgenden sind einige weitere periodische Aufgaben aufgeführt, die geplant werden können:
 
@@ -91,7 +91,7 @@ Als Nächstes müssen Sie eine neue Tabelle erstellen, in der Tweets gespeichert
 	        public DateTime Date { get; set; }
     	}
 
-4. Erweitern Sie den Ordner "Models", öffnen Sie die Datenmodellkontextdatei (mit der Bezeichnung "Dienstname*Context.cs"), und fügen Sie die folgende Eigenschaft hinzu, die ein typisiertes **DbSet** zurückgibt:
+4. Erweitern Sie den Ordner "Models", öffnen Sie Datenmodellkontextdatei (mit der Bezeichnung *service\_name*Context.cs), und fügen Sie die folgende Eigenschaft hinzu, die ein typisiertes **DbSet** zurückgibt:
 
 		public DbSet<Updates> Updates { get; set; }
 
@@ -218,7 +218,7 @@ Als Nächstes erstellen Sie den geplanten Auftrag, der auf Twitter zugreift und 
 		    }
 		}
 
-	Im oben angegebenen Code müssen Sie die Zeichenfolgen _todolistService_ und _todolistContext_ durch den Namespace und den DbContext Ihres heruntergeladenen Projekts ersetzen. Dabei handelt es sich in diesem Fall um den Namespace "Name&#95;mobiler&#95;Dienst*Service" beziehungsweise um den Kontext "Name&#95;mobiler&#95;Dienst*Context".
+	Im oben angegebenen Code müssen Sie die Zeichenfolgen _todolistService_ und _todolistContext_ durch den Namespace und den DbContext Ihres heruntergeladenen Projekts ersetzen. Dabei handelt es sich in diesem Fall um den Namespace *mobile&#95;service&#95;name*Service bzw. um den Kontext *mobile&#95;service&#95;name*Context.
 
 	Im oben angegebenen Code ruft die Überschreibungsmethode **ExecuteAsync** die Twitter-Abfrage-API mithilfe der gespeicherten Anmeldeinformationen auf, um aktuelle Tweets anzufordern, die das Hashtag `#mobileservices` enthalten. Doppelte Tweets und Antworten werden aus den Ergebnissen entfernt, bevor sie in der Tabelle gespeichert werden.
 
@@ -305,4 +305,4 @@ Glückwunsch! Sie haben erfolgreich einen neuen geplanten Auftrag in Ihrem mobil
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 [LINQtoTwitter-CodePlex-Projekt]: http://linqtotwitter.codeplex.com/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0727_2016-->

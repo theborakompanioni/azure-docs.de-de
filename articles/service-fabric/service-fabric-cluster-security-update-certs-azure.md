@@ -30,7 +30,7 @@ Um ein anderes Zertifikat als sekundäres hinzuzufügen, müssen Sie das Zertifi
 3. Klicken Sie unter **Einstellungen** auf die Zertifikateinstellung, und geben Sie den sekundären Zertifikatfingerabdruck ein.
 4. Klicken Sie auf **Speichern**. Eine Bereitstellung wird gestartet, nach deren erfolgreichem Abschluss Sie sowohl das primäre als auch das sekundäre Zertifikat zum Ausführen von Verwaltungsvorgängen im Cluster verwenden können.
 
-![Screenshot mit Zertifikatfingerabdrücken im Portal][SecurityConfigurations\_02]
+![Screenshot mit Zertifikatfingerabdrücken im Portal][SecurityConfigurations_02]
 
 ## Entfernen eines Zertifikats
 Es folgt der Prozess zum Entfernen eines alten Zertifikats, damit der Cluster es nicht mehr verwendet:

@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-    ms.date="04/29/2016"
+    ms.date="07/26/2016"
 	ms.author="jehine"/>
 
 # Verwenden des Azure-Blob-Speichers mit Python
 
-[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
+[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## Übersicht
 
@@ -61,7 +61,7 @@ Nach dieser Änderung kann jeder Benutzer im Internet Blobs in einem öffentlich
 
 Verwenden Sie zum Erstellen eines Blockblobs und zum Hochladen von Daten die Methoden **create\_blob\_from\_path**, **create\_blob\_from\_stream**, **create\_blob\_from\_bytes** oder **create\_blob\_from\_text**. Dies sind allgemeine Methoden zur Durchführung der erforderlichen Teilung, wenn die Größe der Daten 64 MB übersteigt.
 
-**create\_blob\_from\_path** lädt den Inhalt einer Datei aus dem angegebenen Pfad hoch, und **create\_blob\_from\_stream** lädt den Inhalt aus einer bereits geöffneten Datei/einem Datenstrom. **create\_blob\_from\_bytes** lädt ein Byte-Array hoch, und **create\_blob\_from\_text** lädt den angegebenen Textwert unter Verwendung der festgelegten Codierung (standardmäßig UTF-8) hoch.
+**create\_blob\_from\_path** lädt den Inhalt einer Datei aus dem angegebenen Pfad hoch, und **create\_blob\_from\_stream** lädt den Inhalt aus einer bereits geöffneten Datei/einem Datenstrom. **create\_blob\_from\_bytes** lädt ein Bytearray hoch, und **create\_blob\_from\_text** lädt den angegebenen Textwert unter Verwendung der festgelegten Codierung (standardmäßig UTF-8) hoch.
 
 Das folgende Beispiel lädt den Inhalt der Datei **sunset.png** in das Blob **myblob** hoch.
 
@@ -127,4 +127,4 @@ Nachdem Sie sich nun mit den Grundlagen von Blobspeichern vertraut gemacht haben
 [Azure Storage-Teamblog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage-SDK für Python]: https://github.com/Azure/azure-storage-python
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

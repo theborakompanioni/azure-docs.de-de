@@ -56,7 +56,7 @@ Erfahren Sie, wie JSON-Dateien mit Hive in HDInsight verarbeitet und analysiert 
 	    ]
 	}
 
-Die Datei finden Sie unter wasb://processjson@hditutorialdata.blob.core.windows.net/. Weitere Informationen zur Verwendung von Azure-Blobspeicher mit HDInsight finden Sie unter [Verwenden des HDFS-kompatiblen Azure-Blobspeichers mit Hadoop in HDInsight](hdinsight-hadoop-use-blob-storage.md). Wenn Sie möchten, können Sie die Datei in den Standardcontainer des Clusters kopieren.
+Die Datei finden Sie unter wasbs://processjson@hditutorialdata.blob.core.windows.net/. Weitere Informationen zur Verwendung von Azure-Blobspeicher mit HDInsight finden Sie unter [Verwenden des HDFS-kompatiblen Azure-Blobspeichers mit Hadoop in HDInsight](hdinsight-hadoop-use-blob-storage.md). Wenn Sie möchten, können Sie die Datei in den Standardcontainer des Clusters kopieren.
 
 In diesem Tutorial verwenden Sie die Hive-Konsole. Anweisungen zum Öffnen der Hive-Konsole finden Sie unter [Verwenden von Hive mit Hadoop in HDInsight über den Remotedesktop](hdinsight-hadoop-use-hive-remote-desktop.md).
 
@@ -81,7 +81,7 @@ Die im nächsten Abschnitt aufgeführten Methoden erfordern das JSON-Dokument in
 
 	SELECT * FROM StudentsOneLine
 
-Die unformatierte JSON-Datei befindet sich unter **wasb://processjson@hditutorialdata.blob.core.windows.net/**. Die Hive-Tabelle *StudentsRaw* verweist auf das unformatierte, nicht vereinfachte JSON-Dokument.
+Die unformatierte JSON-Datei befindet sich unter **wasbs://processjson@hditutorialdata.blob.core.windows.net/**. Die Hive-Tabelle *StudentsRaw* verweist auf das unformatierte, nicht vereinfachte JSON-Dokument.
 
 Die Hive-Tabelle *StudentsOneLine* speichert die Daten im HDInsight-Standarddateisystem im Pfad */json/students/*.
 
@@ -126,7 +126,7 @@ Deshalb wird im Hive-Wiki die Verwendung von "json\_tuple" empfohlen.
 
 ### Verwenden der JSON\_TUPLE-UDF
 
-Eine andere in Hive verfügbare UDF ist [json\_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple). Diese Funktion ist leistungsfähiger als [get\_ json object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object). Bei dieser Methode wird mit einer einzigen Funktion ein Satz von Schlüsseln sowie eine JSON-Zeichenfolge verwendet, um ein Tupel Werte zurückzugeben. Die folgende Abfrage gibt die ID der Studierenden und die Klasse aus dem JSON-Dokument zurück:
+Eine andere in Hive verfügbare UDF ist [json\_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple). Diese Funktion ist leistungsfähiger als [get\_ json \_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object). Bei dieser Methode wird mit einer einzigen Funktion ein Satz von Schlüsseln sowie eine JSON-Zeichenfolge verwendet, um ein Tupel Werte zurückzugeben. Die folgende Abfrage gibt die ID der Studierenden und die Klasse aus dem JSON-Dokument zurück:
 
     SELECT q1.StudentId, q1.Grade
       FROM StudentsOneLine jt
@@ -153,7 +153,7 @@ SerDe ist die beste Wahl für die Analyse von geschachtelten JSON-Dokumenten. Si
 	Nachdem die Installation abgeschlossen ist, fügen Sie eine neue Benutzerumgebungsvariable hinzu:
 
 	1. Öffnen Sie **Erweiterte Systemeinstellungen anzeigen** auf dem Windows-Bildschirm.
-	2. Klicken Sie auf **Umgebungsvariablen**.  
+	2. Klicken Sie auf **Umgebungsvariablen**.
 	3. Fügen Sie eine neue **JAVA\_HOME** -Umgebungsvariable hinzu, die auf **C:\\Programme\\Java\\jdk1.7.0\_55** bzw. auf den JDK-Installationsort verweist.
 
 	![Einrichten der richtigen Konfigurationswerte für JDK][image-hdi-hivejson-jdk]
@@ -260,4 +260,4 @@ Verwandte Artikel
 [image-hdi-hivejson-serde_query3]: ./media/hdinsight-using-json-in-hive/serde_query3.png
 [image-hdi-hivejson-serde_result]: ./media/hdinsight-using-json-in-hive/serde_result.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0727_2016-->

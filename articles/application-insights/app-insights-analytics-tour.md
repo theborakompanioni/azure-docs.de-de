@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/20/2016" 
+	ms.date="07/20/2016" 
 	ms.author="awills"/>
 
 
@@ -22,7 +22,11 @@
 
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
- 
+
+* **[Sehen Sie sich das Einführungsvideo an](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**.
+* **[Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo)**, wenn Ihre App noch keine Daten an Application Insights sendet.
+
+
 Sehen Sie sich zu Beginn einige grundlegende Abfragen im Detail an.
 
 ## Verbinden mit Ihren Application Insights-Daten
@@ -34,7 +38,7 @@ Sehen Sie sich zu Beginn einige grundlegende Abfragen im Detail an.
 	
 ## [take](app-insights-analytics-reference.md#take-operator): Anzeigen von n Zeilen
 
-Datenpunkte, mit denen Benutzervorgänge protokolliert werden (normalerweise HTTP-Anforderungen, die von der Web-App empfangen werden) werden in einer Tabelle mit dem Namen `requests` gespeichert. Jede Zeile ist ein Telemetriedatenpunkt, der aus dem Application Insights-SDK in Ihrer App empfangen wird.
+Datenpunkte, mit denen Benutzervorgänge protokolliert werden (normalerweise von der Web-App empfangene HTTP-Anforderungen), werden in einer Tabelle mit dem Namen `requests` gespeichert. Jede Zeile ist ein Telemetriedatenpunkt, der aus dem Application Insights-SDK in Ihrer App empfangen wird.
 
 Wir beginnen, indem wir einige Beispielzeilen der Tabelle untersuchen:
 
@@ -77,7 +81,7 @@ Zeigen Sie die ersten n Zeilen, sortiert nach einer bestimmten Spalte an:
 	requests | sort by timestamp desc | take 10
 ```
 
-Das Ergebnis wäre identisch, würde jedoch etwas langsamer ausgeführt. (Sie könnten auch `order` schreiben, wobei es sich um einen Alias von `sort` handelt.)
+Das Ergebnis wäre identisch, würde jedoch etwas langsamer ausgeführt. (Sie können auch `order` schreiben, wobei es sich um einen Alias von `sort` handelt.)
 
 Die Spaltenüberschriften in der Tabellenansicht können auch zum Sortieren der Ergebnisse auf dem Bildschirm verwendet werden. Wenn Sie aber `take` oder `top` verwendet haben, um nur einen Teil einer Tabelle abzurufen, ordnen Sie nur die Reihenfolge der abgerufenen Datensätze neu.
 
@@ -110,18 +114,18 @@ Sie können auch Spalten umbenennen und neue definieren:
 
 ![result](./media/app-insights-analytics-tour/270.png)
 
-* [Spaltennamen](app-insights-analytics-reference.md#names) können Leerzeichen oder Symbole enthalten, wenn diese wie folgt in Klammern stehen: `['...']` oder `["..."]`
+* [Spaltennamen](app-insights-analytics-reference.md#names) können Leerzeichen oder Symbole enthalten, wenn diese wie folgt in Klammern stehen: `['...']` oder `["..."]`.
 * `%` ist der übliche Modulo-Operator.
 * `1d` (die Ziffer Eins, gefolgt von einem „d“) ist ein Zeitraumliteral für einen Tag. Dies sind einige weitere Zeitraumliterale: `12h`, `30m`, `10s`, `0.01s`.
 * `floor` (Alias `bin`) rundet einen Wert auf das nächste Vielfache des von Ihnen angegebenen Basiswerts ab. `floor(aTime, 1s)` rundet demnach eine Zeit auf die nächstniedrigere Sekunde ab.
 
-[Ausdrücke](app-insights-analytics-reference.md#scalars) können alle üblichen Operatoren (`+`, `-` ...) enthalten. Zudem gibt es zahlreiche nützliche Funktionen.
+[Ausdrücke](app-insights-analytics-reference.md#scalars) können alle üblichen Operatoren (`+`, `-` usw.) enthalten. Zudem gibt es zahlreiche nützliche Funktionen.
 
     
 
 ## [extend:](app-insights-analytics-reference.md#extend-operator) Berechnen von Spalten
 
-Wenn Sie nur neue Spalten zu den vorhandenen hinzufügen möchten, verwenden Sie [`extend`](app-insights-analytics-reference.md#extend-operator):
+Wenn Sie nur neue Spalten den vorhandenen hinzufügen möchten, verwenden Sie [`extend`](app-insights-analytics-reference.md#extend-operator):
 
 ```AIQL
 
@@ -264,7 +268,7 @@ Sehen Sie sich nur die vom Browser gemeldeten Ausnahmen an:
 Der `where`-Operator akzeptiert einen booleschen Ausdruck. Dazu einige wichtige Punkte:
 
  * `and`, `or`: Boolesche Operatoren
- * `==`, `<>`: gleich und ungleich
+ * `==`, `<>`: Gleich und ungleich
  * `=~`, `!=`: Zeichenfolge ohne Beachtung der Groß-/Kleinschreibung, gleich und ungleich. Es gibt viele weitere Zeichenfolgenvergleichsoperatoren.
 
 Erfahren Sie mehr über [skalare Ausdrücke](app-insights-analytics-reference.md#scalars).
@@ -321,7 +325,7 @@ Verwenden Sie mehrere Werte in einer `summarize by`-Klausel, um eine separate Ze
 
 ![](./media/app-insights-analytics-tour/090.png)
 
-Um mehrere Linien in einem Diagramm anzuzeigen, klicken Sie auf **Teilen nach**, und wählen Sie eine Spalte aus.
+Um mehrere Linien in einem Diagramm anzuzeigen, klicken Sie auf **Teilen nach** und wählen eine Spalte aus.
 
 ![](./media/app-insights-analytics-tour/100.png)
 
@@ -470,6 +474,9 @@ Verwenden Sie [let](./app-insights-analytics-reference.md#let-statements), um di
 > Tipp: Fügen Sie im Analytics-Client keine Leerzeilen zwischen diesen Teilen ein. Stellen Sie sicher, dass Sie alles ausführen.
 
 
+* **[Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo)**, wenn Ihre App noch keine Daten an Application Insights sendet.
+
+
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

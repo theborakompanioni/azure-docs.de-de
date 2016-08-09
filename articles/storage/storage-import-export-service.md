@@ -45,7 +45,7 @@ Sie können diesen Dienst in folgenden Szenarien verwenden:
 
 In diesem Abschnitt sind die Voraussetzungen aufgeführt, die für diesen Dienst erforderlich sind. Lesen Sie sich diese Informationen sorgfältig durch, bevor Sie Ihre Laufwerke verschicken.
 
-### Speicherkonten
+### Speicherkonto
 
 Sie müssen über ein Azure-Abonnement und ein oder mehrere **klassische** Speicherkonten verfügen, um den Import/Export-Dienst nutzen zu können. Bei jedem Auftrag können lediglich Daten auf ein oder von einem klassischen Speicherkonto übertragen werden. Anders ausgedrückt: Ein einzelner Import/Export-Auftrag kann nicht mehrere Speicherkonten umfassen. Weitere Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-create-storage-account.md#create-a-storage-account).
 
@@ -80,7 +80,7 @@ Laden Sie die aktuelle Version des [Azure Import/Export-Clienttools](http://go.m
 
 ### Festplattenlaufwerke
 
-Für den Import/Export-Dienst werden nur interne 3,5-Zoll-SATA II/III-Festplatten unterstützt. Sie können Festplatten mit bis zu 8 TB verwenden. Bei Importaufträgen wird nur das erste Datenvolume auf dem Laufwerk verarbeitet. Das Datenvolume muss mit NTFS formatiert sein. Beim Kopieren von Daten auf Ihre Festplatte können Sie sie direkt mit einem SATA-Connector oder extern mit einem externen SATA II/III-USB-Adapter verbinden. Wir empfehlen Ihnen die Verwendung von einem der folgenden externen SATA II/III-USB-Adapter:
+Für den Import/Export-Dienst werden nur interne 3,5-Zoll-SATA II/III-Festplatten unterstützt. Sie können Festplatten mit bis zu 10TB verwenden. Bei Importaufträgen wird nur das erste Datenvolume auf dem Laufwerk verarbeitet. Das Datenvolume muss mit NTFS formatiert sein. Beim Kopieren von Daten auf Ihre Festplatte können Sie sie direkt mit einem SATA-Connector oder extern mit einem externen SATA II/III-USB-Adapter verbinden. Wir empfehlen Ihnen die Verwendung von einem der folgenden externen SATA II/III-USB-Adapter:
 
 - Anker 68UPSATAA-02BU
 - Anker 68UPSHHDS-BU
@@ -160,7 +160,7 @@ Sie müssen auch eine gültige Nummer Ihres Kontos bei FedEx oder DHL angeben, d
 
 Beim Versand Ihrer Pakete müssen Sie die Nutzungsbedingungen unter [Microsoft Azure-Nutzungsbedingungen](https://azure.microsoft.com/support/legal/services-terms/) beachten.
 
-> [AZURE.IMPORTANT] Beachten Sie, dass die physischen Medien beim Versand unter Umständen Ländergrenzen überqueren. Sie müssen sicherstellen, dass Ihre physischen Medien und Daten gemäß geltender Gesetze importiert bzw. exportiert werden. Prüfen Sie vor dem Versand der physischen Medien mit Ihren Rechtsberatern, ob Medien und Daten laut Gesetz an das entsprechende Rechenzentrum verschickt werden dürfen. So stellen Sie sicher, dass Ihre Daten zeitnah bei Microsoft eintreffen.
+> [AZURE.IMPORTANT] Beachten Sie, dass die physischen Medien beim Versand unter Umständen Ländergrenzen überqueren. Sie müssen sicherstellen, dass Ihre physischen Medien und Daten gemäß geltender Gesetze importiert bzw. exportiert werden. Prüfen Sie vor dem Versand der physischen Medien mit Ihren Rechtsberatern, ob Medien und Daten laut Gesetz an das entsprechende Rechenzentrum verschickt werden dürfen. So stellen Sie sicher, dass Ihre Daten zeitnah bei Microsoft eintreffen. Z.B. muss allen Paketen, die Ländergrenzen überschreiten (Grenzüberschreitungen innerhalb der Europäischen Union ausgenommen), eine Handelsrechnung beiliegen. Sie könnten eine ausgefüllte Kopie der Handelsrechnung von der Website des Frachtführers ausdrucken. Beispiele für Handelsrechnungen sind die [DHL-Handelsrechnung](http://invoice-template.com/wp-content/uploads/dhl-commercial-invoice-template.pdf) oder die [FedEx-Handelsrechnung](http://images.fedex.com/downloads/shared/shipdocuments/blankforms/commercialinvoice.pdf). Stellen Sie sicher, dass Microsoft nicht als Exporteur angegeben wurde.
 
 ## Wie funktioniert der Azure Import/Export-Dienst?
 
@@ -322,7 +322,7 @@ Ausführlichere Schritt-für-Schritt-Anleitungen finden Sie unter [Beispielworkf
 
 	Falls Sie Ihre Nachverfolgungsnummer haben, können Sie Ihren Kurierdienst in der Liste auswählen und die Nummer eingeben.
 
-	Wenn Sie noch keine Tracking-Nummer haben, wählen Sie **I will provide my shipping information for this import job once I have shipped my package**, und schließen Sie den Importprozess ab.
+	Wenn Sie noch keine Tracking-Nummer haben, wählen Sie **Ich werde die Versanddaten für diesen Importauftrag an, sobald ich mein Paket verschickt habe**, und schließen Sie den Importprozess ab.
 
 6. Um Ihre Nachverfolgungsnummer einzugeben, nachdem Sie das Paket verschickt haben, kehren Sie zur Seite **Import/Export** für Ihr Speicherkonto im klassischen Portal zurück, wählen Sie den Auftrag in der Liste aus, und klicken Sie auf **Versandinformationen**. Navigieren Sie durch den Assistenten und geben Sie Ihre Nachverfolgungsnummer in Schritt 2 ein.
 
@@ -501,4 +501,4 @@ Informationen hierzu finden Sie unter [Workflow zur Offlinesicherung in Azure Ba
 
 - [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

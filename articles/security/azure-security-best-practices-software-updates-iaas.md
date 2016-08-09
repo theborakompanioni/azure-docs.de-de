@@ -18,7 +18,7 @@
 
 #Best Practices für Softwareupdates in Microsoft Azure IaaS
 
-Bevor wir hier näher auf die bewährten Methoden für eine Azure IaaS-Umgebung eingehen, soll zunächst erläutert werden, welche Szenarien für die Verwaltung von Softwareupdates es gibt. Unterstützung hierbei bietet das nachstehende Diagramm:
+Bevor wir hier näher auf die bewährten Methoden für eine Azure [IaaS](https://azure.microsoft.com/overview/what-is-iaas/)-Umgebung eingehen, soll zunächst erläutert werden, welche Szenarien für die Verwaltung von Softwareupdates es gibt. Unterstützung hierbei bietet das nachstehende Diagramm:
 
 ![Cloudmodelle und Verantwortlichkeiten](./media/azure-security-best-practices-software-updates-iaas/sec-cloudstack.png)
 
@@ -118,4 +118,4 @@ Zusätzlich zu den allgemeinen Überlegungen, die in diesem Artikel vorgestellt 
 
 Verwenden Sie die in diesem Artikel beschriebenen Richtlinien, um die optimalen Optionen für Softwareupdates für virtuelle Computer in Azure IaaS zu ermitteln. Es gibt viele Ähnlichkeiten zwischen den Best Practices für Softwareupdates in einem traditionellen Datencenter und in Azure IaaS. Deshalb wird empfohlen, dass Sie Azure-VMs in Ihre aktuellen Richtlinien für Softwareupdates einbeziehen und die relevanten Best Practices aus diesem Artikel in Ihren allgemeinen Softwareupdateprozess einbinden.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

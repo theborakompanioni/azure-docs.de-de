@@ -126,10 +126,10 @@ Auf der Startseite können Sie die folgenden Schritte ausführen:
 ### Seite "Einstellungen"
 Auf der Seite „Einstellungen“ können Sie die folgenden Schritte ausführen:
 
-- Anzeigen, Ändern und Exportieren des **Zertifikats**, das vom Gateway verwendet wird.
+- Anzeigen, Ändern und Exportieren des **Zertifikats**, das vom Gateway verwendet wird. Dieses Zertifikat dient zum Verschlüsseln von Anmeldeinformationen für Datenquellen.
 - Ändern des **HTTPS-Ports** für den Endpunkt. Das Gateway öffnet einen Port für die Festlegung der Datenquellen-Anmeldeinformationen.
 - **Status** des Endpunkts
-- Anzeigen des **SSL-Zertifikats**, das zum Festlegen der Anmeldeinformationen für Datenquellen verwendet wird.
+- **SSL-Zertifikat anzeigen** wird für die SSL-Kommunikation zwischen Portal und Gateway zum Festlegen von Anmeldeinformationen für Datenquellen verwendet.
 
 ### Seite „Diagnose“
 Auf der Seite „Diagnose“ können Sie die folgenden Schritte ausführen:
@@ -426,4 +426,4 @@ Sie können ein Gateway mit dem **Remove-AzureRmDataFactoryGateway**-Cmdlet entf
 ## Nächste Schritte
 - Ausführliche Informationen über das Gateway finden Sie in dem Artikel [Data Management Gateway](data-factory-data-management-gateway.md) (Datenverwaltungsgateway).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

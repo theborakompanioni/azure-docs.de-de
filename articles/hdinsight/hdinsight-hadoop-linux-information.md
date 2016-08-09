@@ -82,7 +82,7 @@ Zu Hadoop zugehörige Dateien befinden sich auf den Clusterknoten in `/usr/hdp`.
 * __2.2.4.9-1__: Dieses Verzeichnis wird gemäß der Version von Hortonworks Data Platform benannt, die von HDInsight verwendet wird. Die Zahl für Ihren Cluster kann sich daher von der hier angegebenen Zahl unterscheiden.
 * __current__: Dieses Verzeichnis enthält Links zu Verzeichnissen im Verzeichnis __2.2.4.9-1__. Dadurch müssen Sie nicht bei jedem Dateizugriff eine Versionsnummer eingeben (die sich außerdem ändern kann).
 
-Beispieldaten und JAR-Dateien für Hadoop Distributed File System (HDFS) oder Azure-Blobspeicher finden Sie unter '/example' oder 'wasb:///example'.
+Beispieldaten und JAR-Dateien für Hadoop Distributed File System (HDFS) oder Azure-Blobspeicher finden Sie unter '/example' oder 'wasbs:///example'.
 
 ## Bewährte Methoden für HDFS, Azure-Blobspeicher und Speicher
 
@@ -98,11 +98,11 @@ Da dies der Standardspeicher für HDInsight ist, sind für seine Verwendung in d
 
 	hadoop fs -ls /example/data
 
-Bei einigen Befehlen müssen Sie möglicherweise angeben, dass Sie Blobspeicher verwenden. Diesen Befehle können Sie die Zeichenfolge "**WASB://**" voranstellen.
+Bei einigen Befehlen müssen Sie möglicherweise angeben, dass Sie Blobspeicher verwenden. Diesen Befehle können Sie die Zeichenfolge **wasb://** oder **wasbs://** voranstellen.
 
-Mit HDInsight können Sie auch mehrere Blobspeicherkonten einem Cluster zuordnen. Für den Zugriff auf Daten in einem nicht standardmäßigen Blobspeicherkonto können Sie das Format **WASB://&lt;container-name>@&lt;Kontoname>.blob.core.windows.net/** verwenden. Der folgende Befehl listet z. B. den Inhalt des Verzeichnisses **/example/data** für den angegebenen Container und das Blobspeicherkonto auf:
+Mit HDInsight können Sie auch mehrere Blobspeicherkonten einem Cluster zuordnen. Für den Zugriff auf Daten in einem nicht standardmäßigen Blobspeicherkonto können Sie das Format **wasbs://&lt;container-name>@&lt;Kontoname>.blob.core.windows.net/** verwenden. Der folgende Befehl listet z. B. den Inhalt des Verzeichnisses **/example/data** für den angegebenen Container und das Blobspeicherkonto auf:
 
-	hadoop fs -ls wasb://mycontainer@mystorage.blob.core.windows.net/example/data
+	hadoop fs -ls wasbs://mycontainer@mystorage.blob.core.windows.net/example/data
 
 ### Welchen Blobspeicher verwendet der Cluster?
 
@@ -116,7 +116,7 @@ Während der Clustererstellung haben Sie entweder die Verwendung eines vorhanden
 
     Dadurch wird ein ähnlicher Wert wie der folgende zurückgegeben, wobei __CONTAINER__ der Standardcontainer und __ACCOUNTNAME__ der Name des Azure-Speicherkontos ist:
 
-        wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net
+        wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net
 
 1. Rufen Sie die Ressourcengruppe für das Speicherkonto über die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) ab. Ersetzen Sie im folgenden Befehl __ACCOUNTNAME__ durch den aus Ambari abgerufenen Namen des Speicherkontos:
 
@@ -206,7 +206,7 @@ Folgende Clustertypen sind von der Skalierung betroffen:
 
 	* __Storm-Benutzeroberfläche__: Führen Sie die folgenden Schritte aus, um eine Topologie mithilfe der Storm-Benutzeroberfläche erneut auszugleichen.
 
-		1. Öffnen Sie \_\___https://CLUSTERNAME.azurehdinsight.net/stormui__ in Ihrem Webbrowser, wobei CLUSTERNAME der Name Ihres Storm-Clusters ist. Geben Sie bei entsprechender Aufforderung den Namen und das Kennwort des HDInsight-Clusteradministrators ein, die Sie beim Erstellen des Clusters festgelegt haben.
+		1. Öffnen Sie \_\_https://CLUSTERNAME.azurehdinsight.net/stormui__ in Ihrem Webbrowser, wobei CLUSTERNAME der Name Ihres Storm-Clusters ist. Geben Sie bei entsprechender Aufforderung den Namen und das Kennwort des HDInsight-Clusteradministrators ein, die Sie beim Erstellen des Clusters festgelegt haben.
 
 		3. Wählen Sie die Topologie aus, die Sie erneut ausgleichen möchten, und klicken Sie dann auf die Schaltfläche __Neu ausgleichen__. Geben Sie die Verzögerung ein, bevor der Neuausgleich ausgeführt wird.
 
@@ -257,4 +257,4 @@ Wenn der Cluster bereits eine Version einer Komponente als eigenständige JAR-Da
 * [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
 * [Verwenden von MapReduce-Aufträgen mit HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

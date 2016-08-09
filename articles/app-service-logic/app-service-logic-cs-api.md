@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -23,7 +23,7 @@
 Die C#-API-App bietet Ihnen eine gute Möglichkeit, einfache C#-Ausdrücke auszuführen, *während Ihre Logik-App ausgeführt wird*.
 
 ##Wann sollten Sie diese API-App verwenden?
-Das Hauptszenario für diese API-App ist, wenn der Lebenszyklus des Codes, den Sie schreiben, mit der Logik-App identisch sein soll und der Code in *keinem* anderen Szenario aufgerufen werden soll.
+Das Hauptszenario für diese API-App ist, wenn der Lebenszyklus des Codes, den Sie schreiben, mit der Logik-App identisch sein soll und der Code in *keinem*anderen Szenario aufgerufen werden soll.
 
 Wenn Sie jedoch einen wiederverwendbaren Codeausschnitt erstellen möchten, der einen von der Logik-App unabhängigen Lebenszyklus aufweist, sollten Sie die WebJobs-API-App verwenden, um einfache Codeausdrücke zu schreiben und über Ihre Logik-App aufzurufen.
 
@@ -52,7 +52,7 @@ var d = new DateTime.Now; return (d.Minute > 15) && (d.Minute < 30);
 Ebenso können Sie eine auszuführende Aktion bereitstellen.
 
 Die Eingaben für die Aktion sind:
-- **C#-Ausdruck** – Ein Ausdruck, der ausgewertet wird. Sie müssen die `return`-Anweisung aufnehmen, um Inhalte zu erhalten. 
+- **C#-Ausdruck** – Ein Ausdruck, der ausgewertet wird. Sie müssen die `return`-Anweisung aufnehmen, um Inhalte zu erhalten.
 - **Kontextobjekt(e)** – Ein optionales Kontextobjekt, das an den Trigger übergeben werden kann. Sie können beliebig viele Eigenschaften definieren, aber die Basis muss ein JObject `{ ... }` sein. Auf Objekte kann im Skript über den Schlüsselnamen verwiesen werden (der Wert wird als JToken übergeben, das dem Namen entspricht).
 - **Bibliotheken** – Ein optionales Array von DLL-Dateien, die beim Kompilieren des Skripts aufgenommen werden müssen. Das Array verwendet die folgende Struktur und funktioniert am besten neben einem Blobspeicherconnector mit der DLL-Datei als Ausgabe:
 
@@ -112,4 +112,4 @@ Nachdem der Connector nun erstellt ist, können Sie ihn mit einer Logik-App in e
 <!--Links -->
 [Creating a Logic App]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0727_2016-->

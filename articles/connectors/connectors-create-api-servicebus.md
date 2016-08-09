@@ -1,148 +1,176 @@
 <properties
-pageTitle="Verwenden des Azure Service Bus-Connectors in Ihren Logik-Apps | Microsoft Azure"
-description="Erste Schritte mit dem Azure Service Bus-Connector in Ihren Microsoft Azure App Service-Logik-Apps"
-services=""    
-documentationCenter=""     
-authors="msftman"    
-manager="erikre"    
+pageTitle="So wird's gemacht: Verwenden des Azure Service Bus-Connectors in Ihren Logik-Apps | Microsoft Azure"
+description="Erstellen Sie Logik-Apps mit Azure App Service. Stellen Sie eine Verbindung mit Azure Service Bus her, um Nachrichten zu senden und zu empfangen. Sie können Aktionen ausführen wie Senden an eine Warteschlange, Senden an ein Thema, Empfangen aus der Warteschlange, Empfangen aus Abonnements usw."
+services="app-servicelogic"	
+documentationCenter=".net,nodejs,java" 	
+authors="msftman"	
+manager="erikre"	
 editor=""
-tags="connectors"/>
+tags="connectors" />
 
 <tags
-ms.service="multiple"
-ms.devlang="na"
+ms.service="logic-apps"
+ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
-ms.workload="na"
-ms.date="05/23/2016"
+ms.workload="integration"
+ms.date="07/27/2016"
 ms.author="deonhe"/>
 
-# Erste Schritte mit dem Azure Service Bus-Connector 
+# Erste Schritte mit dem Azure Service Bus-Connector
 
 Stellen Sie eine Verbindung mit Azure Service Bus her, um Nachrichten zu senden und zu empfangen. Sie können Aktionen ausführen wie Senden an eine Warteschlange, Senden an ein Thema, Empfangen aus der Warteschlange, Empfangen aus Abonnements usw.
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
+Wenn Sie einen [Connector](./apis-list.md) verwenden möchten, müssen Sie zuerst eine Logik-App erstellen. Erstellen Sie daher erst einmal eine Logik-App, wie [hier](../app-service-logic/app-service-logic-create-a-logic-app.md) beschrieben.
 
-Mit Azure Service Bus können Sie folgende Aktionen ausführen:
+## Herstellen einer Verbindung mit Azure Service Bus
 
-* Erstellen von Logik-Apps  
+Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, muss zunächst eine *Verbindung* mit dem Dienst hergestellt werden. Eine [Verbindung](./connectors-overview.md) stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her.
 
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+### Erstellen einer Verbindung mit Azure Service Bus
 
-## Trigger und Aktionen
+>[AZURE.INCLUDE [Schritte zum Erstellen einer Verbindung mit Azure Service Bus](../../includes/connectors-create-api-servicebus.md)]
 
-Der Azure Service Bus-Connector kann als Aktion verwendet werden. Er verfügt über Trigger. Alle Connectors unterstützen Daten im JSON- und XML-Format.
+## Verwenden eines Azure Service Bus-Triggers
 
- Der Azure Service Bus-Connector verfügt über die folgenden Aktionen und/oder Trigger:
+Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
 
-### Azure Service Bus-Aktionen
-Sie können die folgenden Aktionen ausführen:
+>[AZURE.INCLUDE [Schritte zum Erstellen eines Service Bus-Triggers](../../includes/connectors-create-api-servicebus-trigger.md)]
 
-|Aktion|Beschreibung|
-|--- | ---|
-|SendMessage|Sendet eine Nachricht an ein Azure Service Bus-Warteschlange oder -Thema.|
-### Azure Service Bus-Trigger
-Sie können auf diese Ereignisse lauschen:
+## Verwenden einer Azure Service Bus-Aktion
+
+Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
+
+[AZURE.INCLUDE [Schritte zum Erstellen einer Service Bus-Aktion](../../includes/connectors-create-api-servicebus-action.md)]
+
+## Technische Details
+
+Im Anschluss finden Sie ausführliche Informationen zu den Triggern, Aktionen und Antworten, die von dieser Verbindung unterstützt werden:
+
+## Azure Service Bus-Trigger
+
+Für Azure Service Bus stehen folgende Trigger zur Verfügung:
 
 |Trigger | Beschreibung|
 |--- | ---|
-|GetMessageFromQueue|Ruft eine neue Nachricht aus der Azure Service Bus-Warteschlange ab.|
-|GetMessageFromTopic|Ruft eine neue Nachricht aus dem Azure Service Bus-Themenabonnement ab.|
+|[When a message is received in a queue](connectors-create-api-servicebus.md#when-a-message-is-received-in-a-queue) (Wenn bei einer Warteschlange eine Nachricht eingeht)|Dieser Vorgang löst einen Ablauf aus, wenn bei einer Warteschlange eine Nachricht eingeht.|
+|[When a message is received in a topic subscription](connectors-create-api-servicebus.md#when-a-message-is-received-in-a-topic-subscription) (Wenn bei einem Themenabonnement eine Nachricht eingeht)|Dieser Vorgang löst einen Ablauf aus, wenn bei einem Themenabonnement eine Nachricht eingeht.|
 
 
-## Erstellen einer Verbindung mit Azure Service Bus
-Zur Verwendung des Azure Service Bus-Connectors stellen Sie zunächst eine **Verbindung** her und geben anschließend die Details für diese Eigenschaften an:
+## Azure Service Bus-Aktionen
 
->[AZURE.INCLUDE [Schritte zum Herstellen einer Verbindung mit ServiceBus](../../includes/connectors-create-api-servicebus.md)]
-
->[AZURE.TIP] Sie können diese Verbindung in anderen Logik-Apps verwenden.
-
-## Azure Service Bus-REST-API-Referenz
-#### Diese Dokumentation gilt für Version 1.0.
+Für Azure Service Bus stehen folgende Aktionen zur Verfügung:
 
 
-### Sendet eine Nachricht an ein Azure Service Bus-Warteschlange oder -Thema.
-**```POST: /{entityName}/messages```**
+|Aktion|Beschreibung|
+|--- | ---|
+|[Nachricht senden](connectors-create-api-servicebus.md#send-message)|Dieser Vorgang sendet eine Nachricht an eine Warteschlange oder an ein Thema.|
+### Aktionsdetails
+
+Im Anschluss finden Sie ausführliche Informationen zu den Aktionen und Triggern für diesen Connector sowie die jeweiligen Antworten:
 
 
 
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|message| |Ja|body|(Keine)|Service Bus-Nachricht|
-|entityName|string|Ja|path|(Keine)|Name der Warteschlange oder des Themas|
+### Nachricht senden
+Dieser Vorgang sendet eine Nachricht an eine Warteschlange oder an ein Thema.
 
 
-### Im Folgenden sind die möglichen Antworten aufgeführt:
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|message*|Message|Zu sendende Nachricht|
+|entityName*|Warteschlangen-/Themenname|Name der Warteschlange oder des Themas|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+
+
+
+### When a message is received in a queue (Wenn bei einer Warteschlange eine Nachricht eingeht)
+Dieser Vorgang löst einen Ablauf aus, wenn bei einer Warteschlange eine Nachricht eingeht.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|queueName*|Warteschlangenname|Name der Warteschlange|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+ServiceBusMessage: Dieses Objekt enthält den Inhalt und die Eigenschaften einer Service Bus-Nachricht.
+
+
+| Eigenschaftenname | Datentyp | Beschreibung |
+|---|---|---|
+|ContentData|string|Inhalt der Nachricht|
+|ContentType|string|Inhaltstyp der Nachricht|
+|ContentTransferEncoding|string|Übertragungscodierung für den Nachrichteninhalt („none“|„base64“)|
+|Eigenschaften|Objekt|Schlüssel-Wert-Paare für die einzelnen vermittelten Eigenschaften|
+|MessageId|string|Benutzerdefinierter Wert, mit dem Service Bus doppelte Nachrichten ermitteln kann (sofern aktiviert)|
+|To  
+|string|Zieladresse|
+|ReplyTo|string|Warteschlangenadresse für die Antwort|
+|ReplyToSessionId|string|Sitzungs-ID für die Antwort|
+|Bezeichnung|string|Anwendungsspezifische Bezeichnung|
+|ScheduledEnqueueTimeUtc|string|Zeitpunkt, zu dem die Nachricht der Warteschlange hinzugefügt wird (Datum und Uhrzeit im UTC-Format)|
+|SessionId|string|ID der Sitzung|
+|CorrelationId|string|ID der Korrelation|
+|TimeToLive|string|Die Gültigkeitsdauer einer Nachricht (in Ticks). Der Zeitraum beginnt, wenn die Nachricht an den Service Bus gesendet wird.|
+
+
+
+
+### When a message is received in a topic subscription (Wenn bei einem Themenabonnement eine Nachricht eingeht)
+Dieser Vorgang löst einen Ablauf aus, wenn bei einem Themenabonnement eine Nachricht eingeht.
+
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|topicName*|Themenname|Name des Themas|
+|subscriptionName*|Topic subscription name (Themenabonnementname)|Name des Themenabonnements|
+
+Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
+
+#### Ausgabedetails
+
+ServiceBusMessage: Dieses Objekt enthält den Inhalt und die Eigenschaften einer Service Bus-Nachricht.
+
+
+| Eigenschaftenname | Datentyp | Beschreibung |
+|---|---|---|
+|ContentData|string|Inhalt der Nachricht|
+|ContentType|string|Inhaltstyp der Nachricht|
+|ContentTransferEncoding|string|Übertragungscodierung für den Nachrichteninhalt („none“|„base64“)|
+|Eigenschaften|Objekt|Schlüssel-Wert-Paare für die einzelnen vermittelten Eigenschaften|
+|MessageId|string|Benutzerdefinierter Wert, mit dem Service Bus doppelte Nachrichten ermitteln kann (sofern aktiviert)|
+|To  
+|string|Zieladresse|
+|ReplyTo|string|Warteschlangenadresse für die Antwort|
+|ReplyToSessionId|string|Sitzungs-ID für die Antwort|
+|Bezeichnung|string|Anwendungsspezifische Bezeichnung|
+|ScheduledEnqueueTimeUtc|string|Zeitpunkt, zu dem die Nachricht der Warteschlange hinzugefügt wird (Datum und Uhrzeit im UTC-Format)|
+|SessionId|string|ID der Sitzung|
+|CorrelationId|string|ID der Korrelation|
+|TimeToLive|string|Die Gültigkeitsdauer einer Nachricht (in Ticks). Der Zeitraum beginnt, wenn die Nachricht an den Service Bus gesendet wird.|
+
+
+
+## HTTP-Antworten
+
+Von den oben angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes zurückgegeben werden:
 
 |Name|Beschreibung|
 |---|---|
 |200|OK|
-|default|Fehler beim Vorgang.|
-------
-
-
-
-### Ruft eine neue Nachricht aus der Azure Service Bus-Warteschlange ab.
-**```GET: /{queueName}/messages/head```**
-
-
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|queueName|string|Ja|path|(Keine)|Name der Warteschlange.|
-
-
-### Im Folgenden sind die möglichen Antworten aufgeführt:
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-------
-
-
-
-### Ruft eine neue Nachricht aus dem Azure Service Bus-Themenabonnement ab.
-**```GET: /{topicName}/subscriptions/{subscriptionName}/messages/head```**
-
-
-
-| Name| Datentyp|Erforderlich|Enthalten in|Standardwert|Beschreibung|
-| ---|---|---|---|---|---|
-|topicName|string|Ja|path|(Keine)|Name des Themas.|
-|subscriptionName|string|Ja|path|(Keine)|Name des Themenabonnements.|
-
-
-### Im Folgenden sind die möglichen Antworten aufgeführt:
-
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|default|Fehler beim Vorgang.|
-------
-
-
-
-## Objektdefinitionen: 
-
- **ServiceBusMessage:** Nachricht besteht aus Inhalt und Eigenschaften
-
-Erforderliche Eigenschaften für ServiceBusMessage:
-
-ContentTransferEncoding
-
-**Alle Eigenschaften**:
-
-
-| Name | Datentyp |
-|---|---|
-|ContentData|string|
-|ContentType|string|
-|ContentTransferEncoding|string|
-|Eigenschaften|Objekt|
-
+|202|Zulässig|
+|400|Ungültige Anforderung|
+|401|Nicht autorisiert|
+|403|Verboten|
+|404|Nicht gefunden|
+|500|Interner Serverfehler. Unbekannter Fehler.|
+|die Standardeinstellung|Fehler beim Vorgang.|
 
 ## Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="07/05/2016"
+ms.date="07/25/2016"
 ms.author="larryfr"/>
 
 #Verwenden von Azure Storage Shared Access Signatures zum Einschränken des Zugriffs auf Daten mit HDInsight
@@ -226,25 +226,25 @@ Nachdem die Verbindung mit dem Cluster hergestellt wurde, befolgen Sie die folge
 
 1. Geben Sie an der Eingabeaufforderung den folgenden Befehl ein. Ersetzen Sie __SASCONTAINER__ durch den Namen des Containers, den Sie für das SAS-Speicherkonto erstellt haben. Ersetzen Sie __SASACCOUNTNAME__ durch den Namen des Speicherkontos, das für die SAS verwendet wird:
 
-        hdfs dfs -ls wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/
+        hdfs dfs -ls wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/
     
     Dadurch wird der Inhalt des Containers aufgelistet, der die Datei enthalten sollte, die bei der Erstellung des Containers und der SAS hochgeladen wurde.
     
 2. Geben Sie Folgendes an, um sicherzustellen, dass Sie den Inhalt der Datei lesen können. Ersetzen Sie __SASCONTAINER__ und __SASACCOUNTNAME__ wie im vorigen Schritt. Ersetzen Sie __FILENAME__ durch den Namen der Datei, die im vorherigen Befehl angezeigt wurde:
 
-        hdfs dfs -text wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME
+        hdfs dfs -text wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME
         
     Dadurch wird der Inhalt der Datei aufgelistet.
     
 3. Geben Sie Folgendes an, um die Datei in das lokale Dateisystem herunterzuladen:
 
-        hdfs dfs -get wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME testfile.txt
+        hdfs dfs -get wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME testfile.txt
     
     Damit wird die Datei in eine lokale Datei mit dem Namen __testfile.txt__ heruntergeladen.
 
 4. Gehen Sie zum Hochladen der lokalen Datei in eine neue Datei mit dem Namen __testupload.txt__ in den SAS-Speicher Folgendes an:
 
-        hdfs dfs -put testfile.txt wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/testupload.txt
+        hdfs dfs -put testfile.txt wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/testupload.txt
     
     Sie erhalten eine Meldung wie die folgende:
     
@@ -252,7 +252,7 @@ Nachdem die Verbindung mit dem Cluster hergestellt wurde, befolgen Sie die folge
         
     Dieser Fehler tritt auf, weil der Speicherort nur einen Lese- und Auflistungszugriff zulässt. Geben Sie Folgendes an, um die Daten im Standardspeicher des Clusters abzulegen, der Schreibzugriff zulässt:
     
-        hdfs dfs -put testfile.txt wasb:///testupload.txt
+        hdfs dfs -put testfile.txt wasbs:///testupload.txt
         
     Dieses Mal sollte der Vorgang erfolgreich abgeschlossen werden.
     
@@ -290,4 +290,4 @@ Nachdem Sie erfahren haben, wie Sie Ihrem HDInsight-Cluster Speicher mit eingesc
 
 [powershell]: ../powershell-install-configure.md
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

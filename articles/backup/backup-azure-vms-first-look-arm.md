@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Schützen von mit Resource Manager erstellten virtuellen Computern mit Azure Backup | Microsoft Azure"
-	description="Schützen Sie mit Resource Manager erstellte virtuelle Computer mit dem Azure Backup-Dienst. Verwenden Sie Sicherungen von mit Resource Manager bereitgestellten virtuellen Computern und Sicherungen von virtuellen Storage Premium-Computern, um Ihre Daten zu schützen. Erstellen und registrieren Sie einen Recovery Services-Tresor. Registrieren Sie VMs, erstellen Sie eine Richtlinie, und schützen Sie VMs in Azure."
+	pageTitle="Einführung: Schützen von Azure-VMs mit einem Recovery Services-Tresor | Microsoft Azure"
+	description="Es wird beschrieben, wie Sie Azure-VMs mit einem Recovery Services-Tresor schützen. Verwenden Sie Sicherungen von mit Resource Manager bereitgestellten virtuellen Computern, klassischen bereitgestellten Computern und virtuellen Storage Premium-Computern, um Ihre Daten zu schützen. Erstellen und registrieren Sie einen Recovery Services-Tresor. Registrieren Sie VMs, erstellen Sie eine Richtlinie, und schützen Sie VMs in Azure."
 	services="backup"
 	documentationCenter=""
 	authors="markgalioto"
@@ -18,13 +18,13 @@
 	ms.author="markgal; jimpark"/>
 
 
-# Einführung: Sichern von mit Resource Manager bereitgestellten virtuellen Computern in einem Recovery Services-Tresor
+# Einführung: Schützen von Azure-VMs mit einem Recovery Services-Tresor
 
 > [AZURE.SELECTOR]
-- [Sichern von mit Resource Manager bereitgestellten virtuellen Computern](backup-azure-vms-first-look-arm.md)
-- [Sichern von VMs im klassischen Modus](backup-azure-vms-first-look.md)
+- [Einführung: Schützen von VMs mit einem Recovery Services-Tresor](backup-azure-vms-first-look-arm.md)
+- [Einführung: Schützen von Azure-VMs mit einem Sicherungstresor](backup-azure-vms-first-look.md)
 
-In diesem Tutorial werden Sie durch die Schritte zum Erstellen eines Recovery Services-Tresors und Sichern eines virtuellen Azure-Computers (VM) geführt. Recovery Services-Tresore schützen Folgendes:
+In diesem Tutorial werden die Schritte zum Erstellen eines Recovery Services-Tresors und Sichern eines virtuellen Azure-Computers (VM) beschrieben. Recovery Services-Tresore schützen Folgendes:
 
 - Mit Azure Resource Manager bereitgestellte virtuelle Computer
 - Klassische virtuelle Computer
@@ -50,7 +50,7 @@ Bei einem Recovery Services-Tresor handelt es sich um eine Entität, in der alle
 >[AZURE.NOTE] Das Sichern von VMs ist ein lokaler Vorgang. Es ist nicht möglich, VMs eines Standorts in einem Recovery Services-Tresor an einem anderen Standort zu sichern. An jedem Azure-Standort, der über zu sichernde VMs verfügt, muss also mindestens ein Recovery Services-Tresor vorhanden sein.
 
 
-So erstellen Sie einen Recovery Services-Tresor
+So erstellen Sie einen Recovery Services-Tresor:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -68,7 +68,7 @@ So erstellen Sie einen Recovery Services-Tresor
 
     ![Erstellen eines Recovery Services-Tresors – Schritt 5](./media/backup-azure-vms-first-look-arm/rs-vault-attributes.png)
 
-4. Geben Sie unter **Name** einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der zwischen 2 und 50 Zeichen enthält. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
+4. Geben Sie unter **Name** einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der zwischen 2 und 50 Zeichen enthält. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
 
 5. Klicken Sie auf **Abonnement**, um die Liste mit den verfügbaren Abonnements anzuzeigen. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Organisationskonto mehreren Azure-Abonnements zugeordnet ist.
 
@@ -219,4 +219,4 @@ Falls bei der Durchführung einiger Aufgaben in diesem Artikel Probleme auftrete
 ## Fragen?
 Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](http://aka.ms/azurebackup_feedback).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

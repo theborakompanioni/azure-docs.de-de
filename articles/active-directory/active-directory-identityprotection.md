@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/17/2016"
+	ms.date="07/25/2016"
 	ms.author="markvi"/>
 
 #Azure Active Directory Identity Protection 
@@ -33,9 +33,10 @@ Die Vorschau von Azure Active Directory Identity Protection ist zurzeit nur für
 
 Die Vorschau von Azure Active Directory Identity Protection weist die folgenden Einschränkungen bei Verbunddomänen auf:
 
-- Sicherheitsrichtlinien funktionieren nicht für Verbunddomänen.
+- Bei Verbunddomänen kann nur die Sicherheitsrichtlinie für Anmelderisiken verwendet werden. Derzeit kann die Benutzerrisiko-Sicherheitsrichtlinie für Verbunddomänen nicht verwendet werden.
 
 - Risikoereignisse werden nur für Apps ermittelt, die in einem Verbund mit Azure Active Directory vorhanden sind.
+
 
 ##Erste Schritte
 
@@ -51,7 +52,7 @@ Azure Active Directory Identity Protection ist aber viel mehr als ein Tool für 
 
 **Erkennen von Risikoereignissen und gefährdeten Konten:**
 
-- Erkennen von sechs Risikoereignistypen per Machine Learning und heuristischen Regeln 
+- Erkennen von sechs Risikoereignistypen per Machine Learning und heuristischen Regeln
 
 - Berechnen von Benutzerrisikostufen
 
@@ -97,7 +98,7 @@ Einige dieser Risikoereignisse sind über die Berichte zu anomalen Aktivitäten 
 | Anmeldungen von infizierten Geräten | Anmeldungen von möglicherweise infizierten Geräten |
 | Anmeldungen von anonymen IP-Adressen | Anmeldungen von unbekannten Quellen |
 | Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten |	Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten |
-| Anmeldungen von unbekannten Standorten | - | 
+| Anmeldungen von unbekannten Standorten | - |
 | Sperr-Ereignisse (nicht Teil der öffentlichen Vorschau) | - |
 
 Die folgenden Azure AD-Berichte zu anomalen Aktivitäten sind nicht als Risikoereignisse in Azure AD Identity Protection enthalten und daher auch nicht über Identity Protection verfügbar. Diese Berichte sind im Azure-Verwaltungsportal noch enthalten, aber sie werden nach und nach eingestellt, da sie durch Risikoereignisse in Identity Protection ersetzt werden.
@@ -109,11 +110,11 @@ Die folgenden Azure AD-Berichte zu anomalen Aktivitäten sind nicht als Risikoer
 
 Die Risikostufe für ein Risikoereignis ist ein Hinweis (Hoch, Mittel oder Niedrig) auf den Schweregrad des Risikoereignisses. Die Risikostufe dient Identity Protection-Benutzern als Hilfe beim Priorisieren der Aktionen, die sie durchführen müssen, um das Risiko für ihre Organisation zu mindern. Der Schweregrad des Risikoereignisses steht für die Stärke des Signals, das zum Vorhersagen der Kompromittierung einer Identität dient, kombiniert mit dem damit üblicherweise verbundenen „Rauschen“.
 
-- **Hoch**: Risikoereignis mit hohem Vertraulichkeitsgrad und hohem Schweregrad. Ereignisse dieser Art sind starke Indikatoren dafür, dass die Identität des Benutzers kompromittiert wurde, und für alle betroffenen Benutzerkonten sollten sofort Korrekturmaßnahmen eingeleitet werden.
+- **Hoch:** Risikoereignis mit hohem Vertraulichkeitsgrad und hohem Schweregrad. Ereignisse dieser Art sind starke Indikatoren dafür, dass die Identität des Benutzers kompromittiert wurde, und für alle betroffenen Benutzerkonten sollten sofort Korrekturmaßnahmen eingeleitet werden.
 
-- **Mittel**: Risikoereignis mit hohem Schweregrad, aber niedrigerem Vertraulichkeitsgrad (oder umgekehrt). Diese Ereignisse sind potenziell risikobehaftet, und für alle betroffenen Benutzerkonten sollten Korrekturmaßnahmen eingeleitet werden.
+- **Mittel:** Risikoereignis mit hohem Schweregrad, aber niedrigerem Vertraulichkeitsgrad (oder umgekehrt). Diese Ereignisse sind potenziell risikobehaftet, und für alle betroffenen Benutzerkonten sollten Korrekturmaßnahmen eingeleitet werden.
 
-- **Niedrig**: Risikoereignis mit niedrigem Vertraulichkeits- und Schweregrad. Bei diesem Ereignis ist unter Umständen keine sofortige Aktion erforderlich, aber zusammen mit anderen Risikoereignissen kann auch dies ein starker Hinweis dafür sein, dass die Identität kompromittiert wurde.
+- **Niedrig:** Risikoereignis mit niedrigem Vertraulichkeits- und Schweregrad. Bei diesem Ereignis ist unter Umständen keine sofortige Aktion erforderlich, aber zusammen mit anderen Risikoereignissen kann auch dies ein starker Hinweis dafür sein, dass die Identität kompromittiert wurde.
 
 
 ![Risikostufe](./media/active-directory-identityprotection/01.png "Risikostufe")
@@ -153,8 +154,8 @@ Der Status eines Risikoereignisses lautet entweder **Aktiv** oder **Geschlossen*
 Die Benutzerrisikostufe wird anhand der folgenden Eingaben berechnet:
 
 - Aktive Risikoereignisse des Benutzers
-- Risikostufe dieser Ereignisse 
-- Durchgeführte Korrekturaktionen 
+- Risikostufe dieser Ereignisse
+- Durchgeführte Korrekturaktionen
 
 <br> ![Benutzerrisiken](./media/active-directory-identityprotection/86.png "Benutzerrisiken") <br>
 
@@ -194,7 +195,7 @@ Eine Korrektur bzw. Bereinigung ist eine Aktion zum Schützen einer Identität o
 
 Sie können wie folgt vorgehen, um Benutzerrisikoereignisse zu bereinigen:
 
-- Durchführen einer sicheren Kennwortzurücksetzung, um Benutzerrisikoereignisse manuell zu beseitigen 
+- Durchführen einer sicheren Kennwortzurücksetzung, um Benutzerrisikoereignisse manuell zu beseitigen
 
 - Konfigurieren einer Sicherheitsrichtlinie für das Benutzerrisiko, um Benutzerrisikoereignisse automatisch zu minimieren oder zu beseitigen
 
@@ -258,7 +259,7 @@ Die empfohlene Standardvorgehensweise für die meisten Organisationen ist die Ko
 
 Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
 
-- [Wiederherstellung für kompromittierte Konten](active-directory-identityprotection-flows.md#compromised-account-recovery)  
+- [Wiederherstellung für kompromittierte Konten](active-directory-identityprotection-flows.md#compromised-account-recovery)
 
 - [Blockierter Ablauf bei kompromittierten Konten](active-directory-identityprotection-flows.md#compromised-account-blocked)
 
@@ -337,11 +338,11 @@ Für die Richtlinie zum Anmelderisiko gilt Folgendes:
 Auf der Seite **Risikoereignisse** in der Identity Protection-Konsole werden alle Ereignisse aufgeführt:
 
 - Die Richtlinie wurde angewendet auf
-- Sie können die Aktivität überprüfen und ermitteln, ob die Aktion geeignet war oder nicht. 
+- Sie können die Aktivität überprüfen und ermitteln, ob die Aktion geeignet war oder nicht.
 
 Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
 
-- [Wiederherstellung risikobehafteter Anmeldungen](active-directory-identityprotection-flows.md#risky-sign-in-recovery) 
+- [Wiederherstellung risikobehafteter Anmeldungen](active-directory-identityprotection-flows.md#risky-sign-in-recovery)
 
 - [Risikobehaftete Anmeldung blockiert](active-directory-identityprotection-flows.md#risky-sign-in-blocked)
 
@@ -383,7 +384,7 @@ Azure AD Identity Protection unterstützt Sie beim Verwalten des Rollouts der M
 
 Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
 
-- [Registrierung für Multi-Factor Authentication](active-directory-identityprotection-flows.md#multi-factor-authentication-registration)  
+- [Registrierung für Multi-Factor Authentication](active-directory-identityprotection-flows.md#multi-factor-authentication-registration)
 
 - [Multi-Factor Authentication-Registrierung während einer risikobehafteten Anmeldung](active-directory-identityprotection-flows.md#multi-factor-authentication-registration-during-a-risky-sign-in)
 
@@ -411,4 +412,4 @@ Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
  - [Azure Active Directory Identity Protection – Glossar](active-directory-identityprotection-glossary.md)
  - [Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0727_2016-->

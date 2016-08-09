@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -76,7 +76,7 @@ Nun wollen wir Transformationen zum Normalisieren der eingehenden Daten konfigur
 
 1. Fügen Sie aus dem Katalog **BizTalk-Transformationsdienst** hinzu.
 2. Um eine Transformation zum Transformieren der eingehenden XML-Nachrichten zu konfigurieren, wählen Sie die Aktion **Transformation** als die Aktion aus, die ausgeführt wird, wenn diese API aufgerufen wird. Wählen Sie ```triggers(‘httplistener’).outputs.Content``` als Wert für _inputXml_ aus. *Map* ist ein optionaler Parameter, da die eingehenden Daten mit allen konfigurierten Transformationen abgeglichen werden. Nur diejenigen, die mit dem Schema übereinstimmen, werden angewendet.
-3. Schließlich erfolgt die Transformation nur nach erfolgreicher Überprüfung. Um diese Bedingung zu konfigurieren, klicken Sie rechts oben auf das Zahnradsymbol und wählen _Eine zu erfüllende Bedingung hinzufügen_ aus. Legen Sie die Bedingung auf ```equals(actions('xmlvalidator').status,'Succeeded')``` fest:  
+3. Schließlich erfolgt die Transformation nur nach erfolgreicher Überprüfung. Um diese Bedingung zu konfigurieren, klicken Sie rechts oben auf das Zahnradsymbol und wählen _Eine zu erfüllende Bedingung hinzufügen_ aus. Legen Sie die Bedingung auf ```equals(actions('xmlvalidator').status,'Succeeded')``` fest:
 
 ![BizTalk-Transformationen][4]
 
@@ -86,7 +86,7 @@ Als Nächstes fügen wir eine Service Bus-Warteschlange als Ziel hinzu, in das D
 
 1. Fügen Sie einen **Service Bus-Connector** aus dem Katalog hinzu. Legen Sie **Name** auf _Servicebus1_, **Verbindungszeichenfolge** auf die Verbindungszeichenfolge für Ihre Service Bus-Instanz und **Entitätsname** auf _Warteschlange_ fest. Überspringen Sie **Abonnementname**.
 2. Wählen Sie die Aktion **Nachricht senden** aus, und legen das Feld **Inhalt** für die Aktion auf _actions('transformservice').outputs.OutputXml_ fest.
-3. Legen Sie das Feld **Inhaltstyp** auf *application/xml* fest.  
+3. Legen Sie das Feld **Inhaltstyp** auf *application/xml* fest.
 
 ![Service Bus][5]
 
@@ -118,4 +118,4 @@ Einige hilfreichen Themen:
 [4]: ./media/app-service-logic-create-EAI-logic-app-using-VETR/BizTalkTransforms.PNG
 [5]: ./media/app-service-logic-create-EAI-logic-app-using-VETR/AzureServiceBus.PNG
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0727_2016-->

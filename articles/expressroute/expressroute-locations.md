@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/17/2016"
+   ms.date="07/28/2016"
    ms.author="cherylmc" />
 
 # ExpressRoute-Partner und Peeringstandorte
@@ -52,6 +52,10 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
 
 
 ## Standorte von Konnektivitätsanbietern
+
+> [AZURE.SELECTOR]
+[Locations By Provider](expressroute-locations.md#connectivity-provider-locations)
+[Providers By Location](expressroute-locations-providers.md#connectivity-provider-locations)
 
 ### Azure-Produktionsumgebungen
 
@@ -102,7 +106,7 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
 |-----------------------|--------------------|----------------|---------------|
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | Unterstützt | Unterstützt | Chicago, Washington DC |
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | Unterstützt | Unterstützt | Chicago, Dallas+, New York, Washington DC |
-| **[Level 3 Communications - IPVPN](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | Unterstützt | In Kürze verfügbar | Chicago, New York+, Washington DC |
+| **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | Unterstützt | In Kürze verfügbar | Chicago, New York+, Washington DC |
 | **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | Unterstützt | Unterstützt | Chicago, Dallas+, New York, Washington DC |
 
 #### China
@@ -121,7 +125,7 @@ Weitere Informationen finden Sie unter [ExpressRoute in China](http://www.window
 | **e-shelter** | In Kürze verfügbar | Nicht unterstützt | Berlin+|
 | **Interxion** | Unterstützt | Nicht unterstützt | Frankfurt|
 
-## <a name="nonpartners"></a>Konnektivität über nicht aufgeführte Service Provider
+## <a name="nonpartners"></a>Konnektivität über nicht aufgeführte Service Providers
 
 Wenn Ihr Konnektivitätsanbieter nicht in den vorherigen Abschnitten enthalten ist, können Sie dennoch eine Verbindung erstellen.
 
@@ -140,9 +144,11 @@ Wenn Ihr Konnektivitätsanbieter nicht in den vorherigen Abschnitten enthalten i
 
 |**Konnektivitätsanbieter**|**Exchange**|**Standorte**|
 |---|---|---|
-|**Alaska Communications**|Equinix|Seattle|
-|**[XO Communications](http://www.xo.com/)**|Equinix|Silicon Valley|
 |**[1CLOUDSTAR](http://www.1cloudstar.com/service/cloudconnect-azure-expressroute/)**|Equinix|Singapur|
+|**Alaska Communications**|Equinix|Seattle|
+|**[Lightower](http://www.lightower.com/network-solutions/cloud-connect/#microsoft-azure)**|Equinix|New York, Washington DC|
+|**[XO Communications](http://www.xo.com/)**|Equinix|Silicon Valley|
+
 
 ## ExpressRoute-Systemintegratoren
 
@@ -165,4 +171,4 @@ Je nach Ihrer Netzwerkgröße kann das Aktivieren privater Verbindungen für Ihr
 <!--Image References-->
 [0]: ./media/expressroute-locations/expressroute-locations-map.png "Standortkarte"
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="reference" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="multiple" 
-	ms.date="06/29/2016" 
+	ms.date="07/22/2016" 
 	ms.author="alokkirpal"/>
 
 
@@ -34,7 +34,9 @@ Diese APIs können die folgenden Arten von anomalen Mustern in Zeitreihendaten e
 Diese Machine Learning-Erkennungselemente verfolgen diese Art von Wertänderungen in Abhängigkeit der Zeit, und fortlaufende Änderungen der Werte werden als Anomaliebewertungen gemeldet. Sie benötigen keine Ad-hoc-Schwellenwertanpassung, und ihre Bewertungen können verwendet werden, um falsch positive Raten zu steuern. Die Anomaly Detection-API ist beispielsweise in den folgenden Szenarios nützlich: Dienstüberwachung durch Nachverfolgen von KPIs in Abhängigkeit der Zeit, Nutzungsüberwachung anhand von Metriken wie der Anzahl von Suchvorgängen oder der Anzahl von Klicks, Leistungsüberwachung anhand von Indikatoren wie Arbeitsspeicher, CPU, Dateilesevorgänge usw. in Abhängigkeit der Zeit.
 
 Das Anomaly Detection-Angebot verfügt über nützliche Tools für die ersten Schritte.
+
 * Mit der [Webanwendung](http://anomalydetection-aml.azurewebsites.net/) können Sie die Ergebnisse von Anomaly Detection-APIs für Ihre Daten auswerten und visualisieren.
+
 * Der [Beispielcode](http://adresultparser.codeplex.com/) veranschaulicht, wie Sie programmgesteuert auf die API zugreifen und die Ergebnisse in C# analysieren.
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -156,10 +158,10 @@ Die Anomaly Detection-API unterstützt Erkennungsmodule in drei allgemeinen Kate
 |Kategorie des Erkennungsmoduls|Erkennungsmodul|Beschreibung|Eingabeparameter|Ausgaben
 |---|---|---|---|---|
 |Spitzenerkennungsmodule|TSpike-Erkennungsmodul|Erkennen von Spitzen und Abfällen anhand der festgelegten Empfindlichkeit|*tspikedetector.sensitivity:* Verwendet einen Ganzzahlwert zwischen 1 und 10. Der Standardwert ist 3. Je höher der Wert, desto geringer die Empfindlichkeit.|TSpike: Binärwerte – „1“, wenn eine Spitze oder ein Abfall erkannt wird, andernfalls „0“.|
-|ZSpike-Erkennungsmodul|Erkennen von Spitzen und Abfällen anhand der festgelegten Empfindlichkeit|*zspikedetector.sensitivity:* Verwendet einen Ganzzahlwert zwischen 1 und 10. Der Standardwert ist 3. Je höher der Wert, desto geringer die Empfindlichkeit.|ZSpike: Binärwerte – „1“, wenn eine Spitze oder ein Abfall erkannt wird, andernfalls „0“.|
-|Erkennungsmodul für langsame Trends|Erkennungsmodul für langsame Trends|Erkennen von langsamen positiven Trends anhand der festgelegten Empfindlichkeit|*trenddetector.sensitivity:* Schwellenwert der Erkennungsmodulbewertung (Standard: 3,25, 3,25 - 5 ist ein geeigneter Bereich. Je höher der Wert, desto geringer die Empfindlichkeit.)|tscore: Gleitzahl, die für die Anomaliebewertung des Trends steht.|
-|Erkennungsmodule für Pegeländerungen|Erkennungsmodul für unidirektionale Pegeländerungen|Erkennen einer Pegeländerung in Aufwärtsrichtung anhand der festgelegten Empfindlichkeit|Identisch mit Erkennungsmodul für langsame Trends|pscore: Gleitzahl, die für die Anomaliebewertung von Pegeländerungen in Aufwärtsrichtung steht.|
-|Erkennungsmodul für bidirektionale Pegeländerungen|Erkennen von Pegeländerungen in Aufwärts- und Abwärtsrichtung anhand der festgelegten Empfindlichkeit|Identisch mit Erkennungsmodul für langsame Trends|rpscore: Gleitzahl, die für die Anomaliebewertung von Pegeländerungen in Aufwärts- und Abwärtsrichtung steht.
+||ZSpike-Erkennungsmodul|Erkennen von Spitzen und Abfällen anhand der festgelegten Empfindlichkeit|*zspikedetector.sensitivity:* Verwendet einen Ganzzahlwert zwischen 1 und 10. Der Standardwert ist 3. Je höher der Wert, desto geringer die Empfindlichkeit.|ZSpike: Binärwerte – „1“, wenn eine Spitze oder ein Abfall erkannt wird, andernfalls „0“.|
+|Erkennungsmodul für langsame Trends|Erkennungsmodul für langsame Trends|Erkennen von langsamen positiven Trends anhand der festgelegten Empfindlichkeit|*trenddetector.sensitivity:* Schwellenwert der Erkennungsmodulbewertung (Standard: 3,25. 3,25 – 5 ist ein geeigneter Bereich; je höher der Wert, desto geringer die Empfindlichkeit).|TScore: Gleitzahl, die für die Anomaliebewertung des Trends steht.|
+|Erkennungsmodule für Pegeländerungen|Erkennungsmodul für unidirektionale Pegeländerungen|Erkennen einer Pegeländerung in Aufwärtsrichtung anhand der festgelegten Empfindlichkeit|*upleveldetector.sensitivity:* Schwellenwert der Erkennungsmodulbewertung (Standard: 3,25. 3,25 – 5 ist ein geeigneter Bereich; je höher der Wert, desto geringer die Empfindlichkeit).|PScore: Gleitzahl, die für die Anomaliebewertung von Pegeländerungen in Aufwärtsrichtung steht.|
+||Erkennungsmodul für bidirektionale Pegeländerungen|Erkennen von Pegeländerungen in Aufwärts- und Abwärtsrichtung anhand der festgelegten Empfindlichkeit|*bileveldetector.sensitivity:* Schwellenwert der Erkennungsmodulbewertung (Standard: 3,25. 3,25 – 5 ist ein geeigneter Bereich; je höher der Wert, desto geringer die Empfindlichkeit).|RPScore: Gleitzahl, die für die Anomaliebewertung von Pegeländerungen in Aufwärts- und Abwärtsrichtung steht.
 
 ###Parameter
 
@@ -188,7 +190,7 @@ Die API führt alle Erkennungsmodule für Ihre Zeitreihendaten aus und gibt für
 |---|---|
 |Time|Zeitstempel aus Rohdaten oder aggregierte (und/oder) zugeordnete Daten, wenn Aggregation (und/oder) die Zuordnung fehlender Daten angewendet wird|
 |OriginalData|Werte aus Rohdaten, oder aggregierte (und/oder) zugeordnete Daten, wenn Aggregation (und/oder) die Zuordnung fehlender Daten angewendet wird|
-|ProcessedData|Eine der beiden folgenden Möglichkeiten: <ul><li>Saisonabhängig angepasste Zeitreihen, wenn eine signifikante Saisonabhängigkeit erkannt und die Option „deseason“ gewählt wurde</li><li>Saisonabhängig angepasste und trendbereinigte Zeitreihen, wenn eine signifikante Saisonabhängigkeit erkannt und die Option „deseasontrend“ gewählt wurde</li><li>Andernfalls identisch mit OriginalData</li>|
+|ProcessedData|Eine der folgenden Möglichkeiten: <ul><li>Saisonabhängig angepasste Zeitreihen, wenn eine signifikante Saisonabhängigkeit erkannt und die Option „deseason“ gewählt wurde</li><li>Saisonabhängig angepasste und trendbereinigte Zeitreihen, wenn eine signifikante Saisonabhängigkeit erkannt und die Option „deseasontrend“ gewählt wurde</li><li>Andernfalls identisch mit OriginalData</li>|
 |TSpike|Binärer Indikator, um anzugeben, ob eine Spitze vom TSpike-Erkennungsmodul erkannt wird|
 |ZSpike|Binärer Indikator, um anzugeben, ob eine Spitze vom ZSpike-Erkennungsmodul erkannt wird|
 |Pscore|Gleitzahl, die für die Anomaliebewertung von Pegeländerungen in Aufwärtsrichtung steht|
@@ -209,4 +211,4 @@ Diese Ausgabe kann mit einem [einfachen Parser](https://adresultparser.codeplex.
 
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/06/2016"
+   ms.date="07/25/2016"
    ms.author="dkershaw;bryanla"/>
 
 # Grundlegendes zum Azure Active Directory-Anwendungsmanifest
@@ -104,7 +104,7 @@ Nun gehen wir die erforderlichen Schritte zum Aktualisieren der Identitätskonfi
 Nachdem das Manifest gespeichert wurde, können Sie einer registrierten Clientanwendung Zugriff auf die neue Berechtigung gewähren, die wir oben hinzugefügt haben. Jetzt können Sie aber die Webbenutzeroberfläche des klassischen Azure-Portals verwenden, anstatt das Manifest der Clientanwendung zu bearbeiten:
 
 1. Navigieren Sie zuerst zur Seite „Konfigurieren“ der Clientanwendung, der Sie den Zugriff auf die neue API hinzufügen möchten, und klicken Sie auf die Schaltfläche „Anwendung hinzufügen“.
-2. Anschließend wird die Liste mit den registrierten Ressourcenanwendungen (APIs) des Mandanten angezeigt. Klicken Sie auf das Pluszeichen neben dem Namen der Ressourcenanwendung, um sie auszuwählen.  
+2. Anschließend wird die Liste mit den registrierten Ressourcenanwendungen (APIs) des Mandanten angezeigt. Klicken Sie auf das Pluszeichen neben dem Namen der Ressourcenanwendung, um sie auszuwählen.
 3. Klicken Sie anschließend unten rechts auf das Häkchen.
 4. Wenn Sie zurück zum Abschnitt „Anwendung hinzufügen“ auf der Konfigurationsseite Ihres Clients wechseln, ist die neue Ressourcenanwendung in der Liste aufgeführt. Wenn Sie rechts von dieser Zeile mit der Maus auf den Abschnitt „Delegierte Berechtigungen“ zeigen, wird eine Dropdownliste angezeigt. Klicken Sie auf die Liste, und wählen Sie dann die neue Berechtigung aus, um sie der angeforderten Liste mit den Berechtigungen des Clients hinzuzufügen. Hinweis: Diese neue Berechtigung wird in der Identitätskonfiguration der Clientanwendung in der Auflistungseigenschaft „RequiredResourceAccess“ gespeichert.
 
@@ -135,9 +135,9 @@ Verwenden Sie den unten angezeigten DISQUS-Kommentarabschnitt, um uns Feedback z
 <!--article references -->
 [AAD-GROUPS-FOR-AUTHORIZATION]: http://www.dushyantgill.com/blog/2014/12/10/authorization-cloud-applications-using-ad-groups/
 [ADD-UPD-RMV-APP]: active-directory-integrating-applications.md
-[APPLICATION-ENTITY]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#ApplicationEntity
-[APPLICATION-ENTITY-APP-ROLE]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#AppRoleType
-[APPLICATION-ENTITY-OAUTH2-PERMISSION]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#OAuth2PermissionType
+[APPLICATION-ENTITY]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
+[APPLICATION-ENTITY-APP-ROLE]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type
+[APPLICATION-ENTITY-OAUTH2-PERMISSION]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type
 [AZURE-CLASSIC-PORTAL]: https://manage.windowsazure.com
 [DEV-GUIDE-TO-AUTH-WITH-ARM]: http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/
 [GRAPH-API]: active-directory-graph-api.md
@@ -147,4 +147,4 @@ Verwenden Sie den unten angezeigten DISQUS-Kommentarabschnitt, um uns Feedback z
 [O365-SERVICE-DAEMON-APPS]: https://msdn.microsoft.com/office/office365/howto/building-service-apps-in-office-365
 [RBAC-CLOUD-APPS-AZUREAD]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

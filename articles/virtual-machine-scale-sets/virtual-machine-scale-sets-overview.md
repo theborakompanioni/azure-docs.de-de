@@ -141,11 +141,11 @@ Dieser Abschnitt enthält einige typische Szenarien für VM-Skalierungsgruppen. 
 
 **F.** Welche virtuellen Computer werden entfernt, wenn ich meine Kapazität für VM-Skalierungsgruppen von 20 auf 15 verringere?
 
-**A.** Die Entfernung der virtuellen Computer aus den Skalierungsgruppen erfolgt gleichmäßig über Upgrade- und Fehlerdomänen hinweg, um die Verfügbarkeit zu maximieren.
+**A.** Die Entfernung der virtuellen Computer aus den Skalierungsgruppen erfolgt gleichmäßig über Upgrade- und Fehlerdomänen hinweg, um die Verfügbarkeit zu maximieren. Die VMs mit den höchsten IDs werden zuerst entfernt.
 
 **F.** Was passiert, wenn ich dann die Kapazität von 15 auf 18 erhöhe?
 
-**A.** Wenn Sie auf 18 erhöhen, werden virtuelle Computer mit den Indizes 15, 16 und 17 erstellt. In beiden Fällen werden die virtuellen Computer über Fehlerdomänen (FDs) und Updatedomänen (UDs) ausgeglichen.
+**A.** Wenn Sie die Kapazität auf 18 erhöhen, werden 3 neue VMs erstellt. Jedes Mal wird die VM-Instanz-ID vom vorherigen höchsten Wert ausgehend erhöht (z.B. 20, 21, 22). Die virtuellen Computer werden gleichmäßig über Fehlerdomänen (FDs) und Updatedomänen (UDs) verteilt.
 
 **F.** Kann ich beim Verwenden mehrerer Erweiterungen in einer VM-Skalierungsgruppe eine Ausführungsreihenfolge erzwingen?
 
@@ -155,4 +155,4 @@ Dieser Abschnitt enthält einige typische Szenarien für VM-Skalierungsgruppen. 
 
 **A.** Ja. Eine VM-Skalierungsgruppe ist eine implizite Verfügbarkeitsgruppe mit 5 Fehlerdomänen (FDs) und 5 Updatedomänen (UDs). Unter virtualMachineProfile brauchen Sie nichts zu konfigurieren. In künftigen Versionen werden VM-Skalierungsgruppen wahrscheinlich mehrere Mandanten umspannen, aber derzeit entspricht eine Skalierungsgruppe einer einzigen Verfügbarkeitsgruppe.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -161,12 +161,16 @@ Zusätzlich zum Empfangen von E-Mails können Sie auch prüfen, wann die Logik-A
 
 ## Nächste Schritte
 
-Nachdem Sie eine Logik-App zum Verbinden der vorkonfigurierten Lösung mit einem Geschäftsprozess genutzt haben, möchten Sie vielleicht mehr über das [Anpassen vorkonfigurierter Lösungen][lnk-customize] oder [Hinzufügen eines physischen Geräts zu Ihrer Lösung][lnk-connect] erfahren.
+Nachdem Sie eine Logik-App zum Verbinden der vorkonfigurierten Lösung mit einem Geschäftsprozess genutzt haben, können Sie mehr über die Optionen zum Anpassen der vorkonfigurierten Lösungen erfahren:
+
+- [Verwenden dynamischer Telemetriedaten mit der vorkonfigurierten Lösung für die Remoteüberwachung][lnk-dynamic]
+- [Geräteinformationen-Metadaten in der vorkonfigurierten Lösung für die Remoteüberwachung][lnk-devinfo]
+
+[lnk-dynamic]: iot-suite-dynamic-telemetry.md
+[lnk-devinfo]: iot-suite-remote-monitoring-device-info.md
 
 [lnk-internetofthings]: https://azure.microsoft.com/documentation/suites/iot-suite/
 [lnk-getstarted]: iot-suite-getstarted-preconfigured-solutions.md
-[lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
-[lnk-connect]: iot-suite-connecting-devices.md
 [lnk-azureportal]: https://portal.azure.com
 [lnk-logic-apps-actions]: ../connectors/apis-list.md
 [lnk-rmgithub]: https://github.com/Azure/azure-iot-remote-monitoring
@@ -174,4 +178,4 @@ Nachdem Sie eine Logik-App zum Verbinden der vorkonfigurierten Lösung mit einem
 [lnk-localdeploy]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/local-deployment.md
 [lnk-clouddeploy]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/cloud-deployment.md
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

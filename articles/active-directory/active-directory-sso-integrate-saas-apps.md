@@ -5,7 +5,7 @@
 	  keywords="Integrieren von Azure AD in SaaS-Apps"
     documentationCenter=""
     authors="curtand"
-    manager="stevenpo"
+    manager="femila"
     editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-    ms.date="04/26/2016"
+    ms.date="07/20/2016"
     ms.author="curtand"/>
 
 # Integrieren des einmaligen Anmeldens mit Azure Active Directory in SaaS-Apps  
@@ -31,7 +31,7 @@ Für Anwendungen, die nur Anmeldungen auf HTML-Formularbasis unterstützen, verw
 
 ## Autorisierung
 
-Ein bereitgestelltes Konto ermöglicht es, Benutzer zur Verwendung einer Anwendung zu autorisieren, nachdem sie sich durch einmaliges Anmelden authentifiziert haben. Die Benutzerbereitstellung kann manuell erfolgen, oder in einigen Fällen können Sie Benutzerinformationen aus der SaaS-App anhand von Änderungen in Azure Active Directory hinzufügen und entfernen. Weitere Informationen zur Verwendung vorhandener Azure AD-Connectors für die automatisierte Bereitstellung finden Sie unter [Automatisierte Bereitstellung und Aufheben der Bereitstellung für SaaS-Anwendungen](active-directory-saas-app-provisioning.md).
+Ein bereitgestelltes Konto ermöglicht es, Benutzer zur Verwendung einer Anwendung zu autorisieren, nachdem sie sich durch einmaliges Anmelden authentifiziert haben. Die Benutzerbereitstellung kann manuell erfolgen, oder in einigen Fällen können Sie Benutzerinformationen aus der SaaS-App anhand von Änderungen in Azure Active Directory hinzufügen und entfernen. Weitere Informationen zur Verwendung vorhandener Azure AD-Connectors für die automatisierte Bereitstellung finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](active-directory-saas-app-provisioning.md).
 
 Andernfalls können Sie einer App Benutzerinformationen manuell hinzufügen oder andere Bereitstellungslösungen verwenden, die auf dem Markt verfügbar sind.
 
@@ -72,4 +72,4 @@ In der Azure.com-Bibliothek finden Sie weitaus umfassendere Informationen zu die
 
 - [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

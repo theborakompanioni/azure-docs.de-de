@@ -216,7 +216,7 @@ Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe
 
         var coreConfigs = new Dictionary<string, string>
         {
-            {"fs.defaultFS", string.Format("wasb://{0}@{1}", ExistingBlobContainer, ExistingStorageName)},
+            {"fs.defaultFS", string.Format("wasbs://{0}@{1}", ExistingBlobContainer, ExistingStorageName)},
             {
                 string.Format("fs.azure.account.key.{0}", ExistingStorageName),
                 ExistingStorageKey
@@ -394,4 +394,4 @@ Nachdem Sie einen HDInsight-Cluster erfolgreich erstellt haben, nutzen Sie die f
 - [Run Sqoop jobs in HDInsight using .NET SDK](hdinsight-hadoop-use-sqoop-dotnet-sdk.md) (Ausführen von Sqoop-Aufträgen in HDInsight mithilfe des .NET SDK)
 - [Run Oozie jobs in HDInsight](hdinsight-use-oozie.md) (Ausführen von Oozie-Aufträgen in HDInsight)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

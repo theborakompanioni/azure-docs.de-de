@@ -20,7 +20,7 @@
 
 ##Was ist eine automatisierte Benutzerbereitstellung für SaaS-Anwendungen?
 
-Azure Active Directory (Azure AD) ermöglicht Ihnen das automatisierte Erstellen, Warten und Entfernen von Benutzeridentitäten in Cloudanwendungen (SaaS), wie z. B. Dropbox, Salesforce, ServiceNow und weiteren.
+Azure Active Directory (Azure AD) ermöglicht Ihnen das automatisierte Erstellen, Warten und Entfernen von Benutzeridentitäten in Cloudanwendungen [(SaaS)](https://azure.microsoft.com/overview/what-is-saas/), wie z.B. Dropbox, Salesforce und ServiceNow.
 
 **Nachstehend finden Sie einige Beispiele für Aufgaben, die Sie mit diesem Feature ausführen können:**
 
@@ -116,4 +116,4 @@ Wenn Sie das Azure AD-Entwicklungsteam kontaktieren möchten, um Bereitstellungs
 - [Kontobereitstellungsbenachrichtigungen](active-directory-saas-account-provisioning-notifications.md)
 - [Liste der Tutorials zur Integration von SaaS-Apps](active-directory-saas-tutorial-list.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0727_2016-->

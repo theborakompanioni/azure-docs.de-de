@@ -9,7 +9,7 @@ editor=""
 tags="connectors" />
 
 <tags
-ms.service="app-service-logic"
+ms.service="logic-apps"
 ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
@@ -23,9 +23,9 @@ Project Online ist eine flexible Onlinelösung von Microsoft für das für Proje
 
 Der Project Online-Connector kann verwendet werden in:
 
-- [Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)  
-- [PowerApps](http://powerapps.microsoft.com)  
-- [Flow](http://flow.microsoft.com)  
+- [Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)
+- [PowerApps](http://powerapps.microsoft.com)
+- [Flow](http://flow.microsoft.com)
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
@@ -89,7 +89,7 @@ Wenn ein neues Projekt erstellt wird: Löst einen Workflow aus, sobald ein neues
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
@@ -111,7 +111,7 @@ Wenn eine neue Ressource erstellt wird: Löst einen neuen Workflow aus, sobald e
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
@@ -133,7 +133,7 @@ Wenn eine neue Aufgabe erstellt wird: Löst einen Workflow aus, sobald eine neue
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
@@ -155,7 +155,7 @@ Projekte auflisten: Listet die Projekte auf Ihrer Project Online-Website auf.
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
@@ -202,7 +202,7 @@ Neue Aufgabe erstellen: Erstellt eine neue Aufgabe in Ihrem Projekt.
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
@@ -225,7 +225,7 @@ Neue Ressource erstellen: Erstellt eine Enterprise-Ressource auf Ihrer Project O
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
@@ -248,7 +248,7 @@ Aufgaben auflisten: Listet die veröffentlichten Aufgaben in einem Projekt auf.
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
@@ -271,7 +271,7 @@ Ein Projekt auschecken: Checkt ein Projekt auf Ihrer Website aus.
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
@@ -294,7 +294,7 @@ Projekt einchecken und veröffentlichen: Checkt ein vorhandenes Projekt auf Ihre
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
@@ -524,4 +524,4 @@ Projekt einchecken und veröffentlichen: Checkt ein vorhandenes Projekt auf Ihre
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

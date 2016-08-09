@@ -4,7 +4,7 @@
 	services="active-directory" 
 	documentationCenter="" 
 	authors="markusvi" 
-	manager="stevenpo"  
+	manager="femila"  
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/03/2016" 
+	ms.date="07/20/2016" 
 	ms.author="markvi"/>
 
 # Bekannte Netzwerke
@@ -25,7 +25,7 @@ Möglicherweise werden in den Berichten „*Anmeldungen aus mehreren geografisch
 
 Dies kann in folgenden Fällen geschehen:
 
-- Ein Benutzer in der Niederlassung in Boston hat sich per Remoteverbindung beim Rechenzentrum San Francisco angemeldet. Dadurch wird der Bericht „Anmeldungen aus mehreren geografischen Regionen“ ausgelöst. 
+- Ein Benutzer in der Niederlassung in Boston hat sich per Remoteverbindung beim Rechenzentrum San Francisco angemeldet. Dadurch wird der Bericht „Anmeldungen aus mehreren geografischen Regionen“ ausgelöst.
 
 - Ein Benutzer Ihrer Organisation versucht mehrere Male, sich mit einem falschen Kennwort anzumelden. Dadurch wird der Bericht „Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten“ ausgelöst.
 
@@ -56,4 +56,4 @@ Damit in diesen Fällen keine irreführenden Sicherheitsberichte generiert werde
 * [Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)
 * [Anmeldungen aus mehreren geografischen Regionen](active-directory-reporting-sign-ins-from-multiple-geographies.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

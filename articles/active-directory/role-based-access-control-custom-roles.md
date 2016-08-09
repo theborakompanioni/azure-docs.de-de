@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="kgremban"
-	manager="stevenpo"
+	manager="kgremban"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="04/28/2016"
+	ms.date="07/25/2016"
 	ms.author="kgremban"/>
 
 
@@ -62,7 +62,19 @@ Mit der **Actions**-Eigenschaft einer benutzerdefinierten Rolle werden die Azure
 
 Verwenden Sie `Get-AzureRmProviderOperation` (in PowerShell) oder `azure provider operations show` (in Azure-CLI) zum Auflisten von Vorgängen von Azure-Ressourcenanbietern. Sie können diese Befehle auch verwenden, um zu überprüfen, ob eine Vorgangszeichenfolge gültig ist, und um Zeichenfolgen für Platzhaltervorgänge zu erweitern.
 
+```
+Get-AzureRMProviderOperation Microsoft.Computer/virtualMachines/*/action | FT Operation, OperationName
+
+Get-AzureRMProviderOperation Microsoft.Network/*
+```
+
 ![PowerShell-Screenshot: Get-AzureRMProviderOperation Microsoft.Compute/virtualMachines/*/action | FT Operation, OperationName](./media/role-based-access-control-configure/1-get-azurermprovideroperation-1.png)
+
+```
+azure provider operations show "Microsoft.Compute/virtualMachines/*/action" --js on | jq '.[] | .operation'
+
+azure provider operations show "Microsoft.Network/*"
+```
 
 ![Azure-Befehlszeilenschnittstelle – Screenshot: azure provider operations show „Microsoft.Compute/virtualMachines/*/action“](./media/role-based-access-control-configure/1-azure-provider-operations-show.png)
 
@@ -92,11 +104,11 @@ Mit der **AssignableScopes**-Eigenschaft der benutzerdefinierten Rolle wird auch
 - Wer kann benutzerdefinierte Rollen anzeigen? Alle integrierten Rollen in Azure RBAC ermöglichen das Anzeigen von Rollen, die für die Zuweisung verfügbar sind. Benutzer, die den Vorgang `Microsoft.Authorization/roleDefinition/read` für einen Bereich durchführen können, können die RBAC-Rollen anzeigen, die für die Zuweisung in diesem Bereich verfügbar sind.
 
 ## Weitere Informationen
-- [Rollenbasierte Zugriffssteuerung:](role-based-access-control-configure.md) Erste Schritte mit RBAC im Azure-Portal.
+- [Rollenbasierte Zugriffssteuerung](role-based-access-control-configure.md): Erste Schritte mit RBAC im Azure-Portal.
 - Informationen zur Zugriffsverwaltung mit:
 	- [PowerShell](role-based-access-control-manage-access-powershell.md)
 	- [Azure-Befehlszeilenschnittstelle](role-based-access-control-manage-access-azure-cli.md)
 	- [REST-API](role-based-access-control-manage-access-rest.md)
 - [Integrierte Rollen:](role-based-access-built-in-roles.md) Hier erhalten Sie ausführliche Informationen zu den Standardrollen in RBAC.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

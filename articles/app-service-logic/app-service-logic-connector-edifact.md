@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -42,24 +42,24 @@ Der Edifact-Connector kann als Trigger oder als Aktion verwendet werden.
 
 ### Trigger
 - Starten Sie den Azure-Datenfluss-Designer für Logik-Apps.
-- Klicken Sie im rechten Bereich auf den Edifact-Connector:  
+- Klicken Sie im rechten Bereich auf den Edifact-Connector: 
 ![Triggereinstellungen][3]
-- Klicken Sie auf ->:  
+- Klicken Sie auf ->: 
 ![Triggeroptionen][4]
-- Der EDIFACT-Connector stellt einen einzelnen Trigger bereit. Wählen Sie *Batch veröffentlichen* aus:  
+- Der EDIFACT-Connector stellt einen einzelnen Trigger bereit. Wählen Sie *Batch veröffentlichen* aus: 
 ![Eingabe für Release Batch][5]
-- Dieser Trigger weist keine Eingaben auf. Klicken Sie auf ->:  
+- Dieser Trigger weist keine Eingaben auf. Klicken Sie auf ->: 
 ![Release Batch konfiguriert][6]
 - Im Rahmen der Ausgabe gibt der Connector die Edifact-Nutzlast, die Vereinbarungs-ID sowie Informationen dazu zurück, ob die Nachricht als Batch ausgeführt wird.
 
 ### Aktion
-- Klicken Sie im rechten Bereich auf den Edifact-Connector:  
+- Klicken Sie im rechten Bereich auf den Edifact-Connector: 
 ![Aktionseinstellungen][7]
-- Klicken Sie auf ->:  
+- Klicken Sie auf ->: 
 ![Liste der Aktionen][8]
-- Der Edifact-Connector unterstützt zahlreiche Aktionen. Wählen Sie *Codieren* aus:  
+- Der Edifact-Connector unterstützt zahlreiche Aktionen. Wählen Sie *Codieren* aus: 
 ![Eingabe codieren][9]
-- Nehmen Sie die Eingaben für die Aktion vor, und konfigurieren Sie sie:  
+- Nehmen Sie die Eingaben für die Aktion vor, und konfigurieren Sie sie: 
 ![Konfigurierte Elemente codieren][10]
 
 	Parameter|Typ|Beschreibung des Parameters
@@ -100,4 +100,4 @@ Anzeigen der Swagger-REST-API-Referenz unter [Referenz zu Connectors und API-App
 [9]: ./media/app-service-logic-connector-edifact/EncodeInput.PNG
 [10]: ./media/app-service-logic-connector-edifact/EncodeConfigured.PNG
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0727_2016-->

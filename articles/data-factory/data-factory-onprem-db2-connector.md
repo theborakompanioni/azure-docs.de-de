@@ -25,13 +25,9 @@ Data Factory unterstützt das Herstellen einer Verbindung mit lokalen DB2-Datenq
 
 Data Factory unterstützt derzeit nur das Verschieben von Daten aus DB2 in andere Datenspeicher und nicht aus anderen Datenspeichern in DB2.
 
-> [AZURE.NOTE] Dieser DB2-Connector unterstützt derzeit DB2 für LUW (Linux, UNIX und Windows). Verwenden Sie zum Kopieren von Daten aus DB2 für z/OS oder DB2 für AS/400 ggf. den generischen ODBC-Connector, und installieren Sie den entsprechenden ODBC-Treiber auf dem Gatewaycomputer. Wenn Sie also beispielsweise Daten aus DB2 für AS/400 erfassen möchten, können Sie den iSeries Access-ODBC-Treiber verwenden. Informationen zum Einrichten der Kopieraktivität finden Sie unter [Verschieben von Daten aus ODBC-Datenspeichern mithilfe von Azure Data Factory](data-factory-odbc-connector.md).
-
 ## Installation 
 
-Damit sich das Datenverwaltungsgateway mit der DB2-Datenbank verbindet, müssen Sie den [IBM DB2 Data Server-Treiber](http://go.microsoft.com/fwlink/p/?LinkID=274911) auf dem System mit dem Datenverwaltungsgateway installieren.
-
-IBM hat bekannte Probleme bei der Installation des IBM DB2 Data Server-Treibers unter Windows 8 gemeldet, die zusätzliche Installationsschritte erforderlich machen. Weitere Informationen zum IBM DB2 Data Server-Treiber für Windows 8 finden Sie unter [http://www-01.ibm.com/support/docview.wss?uid=swg21618434](http://www-01.ibm.com/support/docview.wss?uid=swg21618434).
+Zum Herstellen einer Verbindung zwischen dem Datenverwaltungsgateway und der DB2-Datenbank bietet Azure Data Factory ab der Gatewayversion 2.1 einen integrierten Treiber mit DB2-Unterstützung (SQLAM 9/10/11), einschließlich DB2 für LUW (Linux, Unix, Windows), DB2 für z/OS und DB2 für i (alias AS/400). Deshalb müssen Sie zum Kopieren von Daten aus DB2 die Treiber nicht mehr manuell installieren.
 
 > [AZURE.NOTE] Unter [Problembehandlung bei Gateways](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.
 
@@ -141,7 +137,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 	                    "value": {
 	                        "type": "DateTime",
 	                        "date": "SliceStart",
-	                        "format": "%M"
+	                        "format": "MM"
 	                    }
 	                },
 	                {
@@ -149,7 +145,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 	                    "value": {
 	                        "type": "DateTime",
 	                        "date": "SliceStart",
-	                        "format": "%d"
+	                        "format": "dd"
 	                    }
 	                },
 	                {
@@ -157,7 +153,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 	                    "value": {
 	                        "type": "DateTime",
 	                        "date": "SliceStart",
-	                        "format": "%H"
+	                        "format": "HH"
 	                    }
 	                }
 	            ]
@@ -326,4 +322,4 @@ Char | String
 ## Leistung und Optimierung  
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

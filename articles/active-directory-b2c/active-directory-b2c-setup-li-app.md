@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Vorschau für Azure Active Directory B2C: LinkedIn-Konfiguration | Microsoft Azure"
+	pageTitle="Azure Active Directory B2C: LinkedIn-Konfiguration | Microsoft Azure"
 	description="Bereitstellen von Registrierung und Anmeldung für Kunden mit LinkedIn-Konten in mit Azure Active Directory B2C gesicherten Anwendungen"
 	services="active-directory-b2c"
 	documentationCenter=""
@@ -13,12 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/19/2016"
+	ms.date="07/24/2016"
 	ms.author="swkrish"/>
 
-# Azure Active Directory B2C-Vorschau: Bereitstellen von Registrierung und Anmeldung für Kunden mit LinkedIn-Konten
-
-[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
+# Azure Active Directory B2C: Bereitstellen von Registrierung und Anmeldung für Kunden mit LinkedIn-Konten
 
 ## Erstellen einer LinkedIn-Anwendung
 
@@ -34,7 +32,7 @@ Um LinkedIn als Identitätsanbieter in Azure Active Directory (Azure AD) B2C ve
 
     ![LinkedIn – Registrieren einer App](./media/active-directory-b2c-setup-li-app/linkedin-register-app.png)
 
-5. Kopieren Sie die Werte für **Client ID** und **Client Secret**. (Sie finden sie unter **Authentication Keys**.) Sie benötigen beide Angaben, um LinkedIn als Identitätsanbieter in Ihrem Mandanten zu konfigurieren.
+5. Kopieren Sie die Werte für **Client-ID** und **Client Secret**. (Sie finden sie unter **Authentication Keys**.) Sie benötigen beide Angaben, um LinkedIn als Identitätsanbieter in Ihrem Mandanten zu konfigurieren.
 
 	>[AZURE.NOTE] Der **geheime Clientschlüssel** ist eine wichtige Sicherheitsanmeldeinformation.
 
@@ -52,4 +50,4 @@ Um LinkedIn als Identitätsanbieter in Azure Active Directory (Azure AD) B2C ve
 6. Klicken Sie auf **Diesen Identitätsanbieter einrichten**, und geben Sie die Client-ID und den geheimen Clientschlüssel der LinkedIn-Anwendung ein, die Sie zuvor erstellt haben.
 7. Klicken Sie auf **OK** und dann auf **Erstellen**, um die LinkedIn-Konfiguration zu speichern.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

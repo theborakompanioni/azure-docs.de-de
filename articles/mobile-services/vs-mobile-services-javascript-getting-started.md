@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Erste Schritte mit einer mobilen Javascript-App, nachdem Mobile Services mithilfe von Visual Studio Verbundene Dienste hinzugefügt wurde | Microsoft Azure" 
+	pageTitle="Erste Schritte mit einer mobilen Javascript-App, nachdem Mobile Services mithilfe von Visual Studio Verbundene Dienste hinzugefügt wurde | Microsoft Azure " 
 	description="Beschreibt die ersten Schritte mit Mobile Services in einem JavaScript-Projekt in Visual Studio." 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started" 
 	ms.devlang="JavaScript" 
 	ms.topic="article" 
-	ms.date="01/05/2016" 
+	ms.date="07/21/2016" 
 	ms.author="mlearned"/>
 
 # Erste Schritte mit einer mobilen Javascript-App, nachdem Azure Mobile Services mithilfe von Visual Studio Verbundene Dienste hinzugefügt wurde
@@ -88,4 +88,4 @@ Löschen Sie eine Zeile in einer Datentabelle. Rufen Sie die Methode [done]() f�
 
 [Weitere Informationen zu mobilen Diensten](https://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0727_2016-->

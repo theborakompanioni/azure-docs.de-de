@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory B2C-Vorschau | Microsoft Azure"
+	pageTitle="Azure Active Directory B2C | Microsoft Azure"
 	description="Erstellen einer Webanwendung mit Anmeldung, Registrierung und Profilverwaltung mithilfe von Azure Active Directory B2C."
 	services="active-directory-b2c"
 	documentationCenter=".net"
@@ -13,20 +13,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="07/22/2016"
 	ms.author="dastrock"/>
 
-# Azure AD B2C-Vorschau: Erstellen einer .NET-Web-App
+# Azure AD B2C: Erstellen einer .NET-Web-App
 
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
 Mit Azure Active Directory (Azure AD) B2C können Sie Ihren Web-Apps in wenigen Schritten leistungsstarke Self-Service-Features zur Identitätsverwaltung hinzufügen. In diesem Artikel erfahren Sie, wie eine .NET MVC-Web-App (Model-View-Controller) erstellt wird, die Benutzerregistrierung, -anmeldung und die Verwaltung von Profilen umfasst. Die App umfasst Unterstützung für die Registrierung und Anmeldung mit einem Benutzernamen oder einer E-Mail-Adresse sowie über Konten für soziale Netzwerke wie Facebook und Google.
 
-[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
-
 ## Erstellen eines Azure AD B2C-Verzeichnisses
 
-Bevor Sie Azure AD B2C verwenden können, müssen Sie ein Verzeichnis oder einen Mandanten erstellen. Ein Verzeichnis ist ein Container für all Ihre Benutzer, Apps, Gruppen usw. Wenn Sie noch keines verwenden, [erstellen Sie ein B2C-Verzeichnis](active-directory-b2c-get-started.md), bevor Sie die weiteren Schritte in diesem Leitfaden ausführen.
+Bevor Sie Azure AD B2C verwenden können, müssen Sie ein Verzeichnis oder einen Mandanten erstellen. Ein Verzeichnis ist ein Container für all Ihre Benutzer, Apps, Gruppen usw. Wenn Sie noch keines verwenden, sollten Sie [ein B2C-Verzeichnis erstellen](active-directory-b2c-get-started.md), bevor Sie die weiteren Schritte in diesem Leitfaden ausführen.
 
 ## Erstellen einer Anwendung
 
@@ -34,7 +32,7 @@ Als Nächstes müssen Sie in Ihrem B2C-Verzeichnis eine App erstellen. Dadurch w
 
 - Fügen Sie der Anwendung eine **Web-App/Web-API** hinzu.
 - Geben Sie `https://localhost:44316/` als **Umleitungs-URI** ein. Dies ist die Standard-URL für dieses Codebeispiel.
-- Notieren Sie sich die **Anwendungs-ID**, die Ihrer App zugewiesen ist. Sie benötigen sie später.
+- Notieren Sie die **Anwendungs-ID**, die Ihrer App zugewiesen ist. Sie benötigen sie später.
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
@@ -57,9 +55,7 @@ Nachdem Sie die drei Richtlinien erstellt haben, können Sie Ihre App erstellen.
 
 ## Herunterladen des Codes und Konfigurieren der Authentifizierung
 
-[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-devquickstarts-bug-fix.md)]
-
-Der Code für dieses Beispiel wird [auf GitHub](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet) verwaltet. Zum Erstellen des Beispiels können Sie [das Projektgerüst als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet/archive/skeleton.zip). Sie können das Gerüst auch klonen:
+Der Code für dieses Beispiel wird [auf GitHub](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet) verwaltet. Zum Erstellen des Beispiels können Sie [ein Projektgerüst als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet/archive/skeleton.zip). Sie können das Gerüst auch klonen:
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIdConnect-DotNet.git
@@ -69,7 +65,7 @@ Das fertige Beispiel ist ebenfalls [als ZIP-Datei verfügbar](https://github.com
 
 Nachdem Sie den Beispielcode heruntergeladen haben, öffnen Sie zum Einstieg die Visual Studio-SLN-Datei.
 
-Ihre App kommuniziert mit Azure AD B2C durch Senden von HTTP-Authentifizierungsanforderungen, in denen die Richtlinie, die ausgeführt werden soll, als Teil der Anforderung angegeben wird. Für .NET-Webanwendungen können Sie die OWIN-Bibliothek von Microsoft verwenden, um OpenID Connect-Authentifizierungsanfragen zu senden, Richtlinien auszuführen, die Sitzung des Benutzers zu verwalten usw.
+Ihre App kommuniziert mit Azure AD B2C durch Senden von Authentifizierungsnachrichten, in denen die Richtlinie, die ausgeführt werden soll, als Teil der HTTP-Anforderung angegeben wird. Für .NET-Webanwendungen können Sie die OWIN-Middleware von Microsoft verwenden, um OpenID Connect-Authentifizierungsanfragen zu senden, Richtlinien auszuführen, die Sitzung des Benutzers zu verwalten usw.
 
 Fügen Sie dem Projekt zunächst über die Visual Studio-Paket-Manager-Konsole die NuGet-Pakete der OWIN-Middleware hinzu.
 
@@ -79,7 +75,7 @@ PM> Install-Package Microsoft.Owin.Security.Cookies
 PM> Install-Package Microsoft.Owin.Host.SystemWeb
 ```
 
-Öffnen Sie dann die Datei `web.config` aus dem Stammverzeichnis des Projekts, und geben Sie die Konfigurationswerte Ihrer App im Abschnitt `<appSettings>` ein.
+Öffnen Sie dann die Datei `web.config` aus dem Stammverzeichnis des Projekts, und geben Sie die Konfigurationswerte Ihrer App im Abschnitt `<appSettings>` ein. Ersetzen Sie dabei die vorhandenen Werte.
 
 ```
 <configuration>
@@ -88,20 +84,20 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
     <add key="webpages:Enabled" value="false" />
     <add key="ClientValidationEnabled" value="true" />
     <add key="UnobtrusiveJavaScriptEnabled" value="true" />
-    <add key="ida:Tenant" value="[Enter the name of your B2C directory, e.g. contoso.onmicrosoft.com]" />
-    <add key="ida:ClientId" value="[Enter the Application Id assigned to your app by the Azure portal, e.g.580e250c-8f26-49d0-bee8-1c078add1609]" />
-    <add key="ida:AadInstance" value="https://login.microsoftonline.com/{0}{1}{2}" />
+    <add key="ida:Tenant" value="fabrikamb2c.onmicrosoft.com" />
+    <add key="ida:ClientId" value="90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6" />
+    <add key="ida:AadInstance" value="https://login.microsoftonline.com/{0}/v2.0/.well-known/openid-configuration?p={1}" />
     <add key="ida:RedirectUri" value="https://localhost:44316/" />
-    <add key="ida:SignUpPolicyId" value="[Enter your sign up policy name, e.g. b2c_1_sign_up]" />
-    <add key="ida:SignInPolicyId" value="[Enter your sign in policy name, e.g. b2c_1_sign_in]" />
-    <add key="ida:UserProfilePolicyId" value="[Enter your edit profile policy name, e.g. b2c_1_profile_edit]" />
+    <add key="ida:SignUpPolicyId" value="b2c_1_sign_up" />
+    <add key="ida:SignInPolicyId" value="b2c_1_sign_in" />
+    <add key="ida:UserProfilePolicyId" value="b2c_1_edit_profile" />
   </appSettings>
 ...
 ```
 
 [AZURE.INCLUDE [active-directory-b2c-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
-Fügen Sie als Nächstes dem Projekt eine OWIN-Startklasse mit dem Namen `Startup.cs` hinzu. Klicken Sie mit der rechten Maustaste auf das Projekt, wählen Sie **Hinzufügen** und **Neues Element** aus, und suchen Sie dann nach „OWIN“. Ändern Sie die Klassendeklaration in `public partial class Startup`. Wir haben für Sie einen Teil dieser Klasse in einer anderen Datei implementiert. Die OWIN-Middleware ruft beim Starten Ihrer Anwendung die Methode `Configuration(...)` auf. Rufen Sie in dieser Methode `ConfigureAuth(...)` auf, um die Authentifizierung für Ihre App einzurichten.
+Fügen Sie als Nächstes dem Projekt eine OWIN-Startklasse mit dem Namen `Startup.cs` hinzu. Klicken Sie mit der rechten Maustaste auf das Projekt, wählen Sie **Hinzufügen** und **Neues Element** aus, und suchen Sie dann nach „OWIN“. **Ändern Sie die Klassendeklaration in `public partial class Startup`**. Wir haben für Sie einen Teil dieser Klasse in einer anderen Datei implementiert. Die OWIN-Middleware ruft beim Starten Ihrer Anwendung die Methode `Configuration(...)` auf. Rufen Sie in dieser Methode `ConfigureAuth(...)` auf, um die Authentifizierung für Ihre App einzurichten.
 
 ```C#
 // Startup.cs
@@ -122,11 +118,6 @@ public partial class Startup
 
 public partial class Startup
 {
-    // The ACR claim is used to indicate which policy was executed
-    public const string AcrClaimType = "http://schemas.microsoft.com/claims/authnclassreference";
-    public const string PolicyKey = "b2cpolicy";
-    public const string OIDCMetadataSuffix = "/.well-known/openid-configuration";
-
     // App config settings
     private static string clientId = ConfigurationManager.AppSettings["ida:ClientId"];
     private static string aadInstance = ConfigurationManager.AppSettings["ida:AadInstance"];
@@ -144,8 +135,37 @@ public partial class Startup
 
         app.UseCookieAuthentication(new CookieAuthenticationOptions());
 
-        OpenIdConnectAuthenticationOptions options = new OpenIdConnectAuthenticationOptions
+        // Configure OpenID Connect middleware for each policy
+        app.UseOpenIdConnectAuthentication(CreateOptionsFromPolicy(SignUpPolicyId));
+        app.UseOpenIdConnectAuthentication(CreateOptionsFromPolicy(ProfilePolicyId));
+        app.UseOpenIdConnectAuthentication(CreateOptionsFromPolicy(SignInPolicyId));
+    }
+
+    // Used for avoiding yellow-screen-of-death
+    private Task AuthenticationFailed(AuthenticationFailedNotification<OpenIdConnectMessage, OpenIdConnectAuthenticationOptions> notification)
+    {
+        notification.HandleResponse();
+        if (notification.Exception.Message == "access_denied")
         {
+            notification.Response.Redirect("/");
+        }
+        else
+        {
+            notification.Response.Redirect("/Home/Error?message=" + notification.Exception.Message);
+        }
+
+        return Task.FromResult(0);
+    }
+
+    private OpenIdConnectAuthenticationOptions CreateOptionsFromPolicy(string policy)
+    {
+        return new OpenIdConnectAuthenticationOptions
+        {
+            // For each policy, give OWIN the policy-specific metadata address, and
+            // set the authentication type to the id of the policy
+            MetadataAddress = String.Format(aadInstance, tenant, policy),
+            AuthenticationType = policy,
+
             // These are standard OpenID Connect parameters, with values pulled from web.config
             ClientId = clientId,
             RedirectUri = redirectUri,
@@ -153,29 +173,18 @@ public partial class Startup
             Notifications = new OpenIdConnectAuthenticationNotifications
             {
                 AuthenticationFailed = AuthenticationFailed,
-                RedirectToIdentityProvider = OnRedirectToIdentityProvider,
             },
             Scope = "openid",
             ResponseType = "id_token",
 
-            // The PolicyConfigurationManager takes care of getting the correct Azure AD authentication
-            // endpoints from the OpenID Connect metadata endpoint. It is included in the PolicyAuthHelpers folder.
-            // The first parameter is the metadata URL of your B2C directory.
-            // The second parameter is an array of the policies that your app will use.
-            ConfigurationManager = new PolicyConfigurationManager(
-                String.Format(CultureInfo.InvariantCulture, aadInstance, tenant, "/v2.0", OIDCMetadataSuffix),
-                new string[] { SignUpPolicyId, SignInPolicyId, ProfilePolicyId }),
-
-            // This piece is optional. It is used to display the user's name in the navigation bar.
+            // This piece is optional - it is used for displaying the user's name in the navigation bar.
             TokenValidationParameters = new TokenValidationParameters
-            {  
+            {
                 NameClaimType = "name",
             },
         };
-
-        app.UseOpenIdConnectAuthentication(options);
-
     }
+}
 ```
 
 ## Senden von Authentifizierungsanforderungen an Azure AD
@@ -191,17 +200,9 @@ public void SignIn()
     if (!Request.IsAuthenticated)
     {
         // To execute a policy, you simply need to trigger an OWIN challenge.
-        // You can indicate which policy to use by adding it to the AuthenticationProperties by using the PolicyKey provided.
-
+        // You can indicate which policy to use by specifying the policy id as the AuthenticationType
         HttpContext.GetOwinContext().Authentication.Challenge(
-            new AuthenticationProperties (
-                new Dictionary<string, string>
-                {
-                    {Startup.PolicyKey, Startup.SignInPolicyId}
-                })
-            {
-                RedirectUri = "/",
-            }, OpenIdConnectAuthenticationDefaults.AuthenticationType);
+            new AuthenticationProperties () { RedirectUri = "/" }, Startup.SignInPolicyId);
     }
 }
 
@@ -210,14 +211,7 @@ public void SignUp()
     if (!Request.IsAuthenticated)
     {
         HttpContext.GetOwinContext().Authentication.Challenge(
-            new AuthenticationProperties(
-                new Dictionary<string, string>
-                {
-                    {Startup.PolicyKey, Startup.SignUpPolicyId}
-                })
-            {
-                RedirectUri = "/",
-            }, OpenIdConnectAuthenticationDefaults.AuthenticationType);
+            new AuthenticationProperties() { RedirectUri = "/" }, Startup.SignUpPolicyId);
     }
 }
 
@@ -227,25 +221,18 @@ public void Profile()
     if (Request.IsAuthenticated)
     {
         HttpContext.GetOwinContext().Authentication.Challenge(
-            new AuthenticationProperties(
-                new Dictionary<string, string>
-                {
-                    {Startup.PolicyKey, Startup.ProfilePolicyId}
-                })
-            {
-                RedirectUri = "/",
-            }, OpenIdConnectAuthenticationDefaults.AuthenticationType);
+            new AuthenticationProperties() { RedirectUri = "/" }, Startup.ProfilePolicyId);
     }
 }
 ```
 
-Sie können auch ein benutzerdefiniertes `PolicyAuthorize`-Tag in Ihren Controllern verwenden, um die Ausführung einer bestimmten Richtlinie durchzusetzen, wenn der Benutzer nicht angemeldet ist. Öffnen Sie `Controllers\HomeController.cs`, und fügen Sie dem Anspruchscontroller das `[PolicyAuthorize]`-Tag hinzu. Ersetzen Sie die Beispielrichtlinie durch eine eigene Anmelderichtlinie.
+Sie können auch ein `[Authorize]`-Tag in Ihren Controllern verwenden, um die Ausführung einer bestimmten Richtlinie durchzusetzen, wenn der Benutzer nicht angemeldet ist. Öffnen Sie `Controllers\HomeController.cs`, und fügen Sie dem Anspruchscontroller das `[Authorize]`-Tag hinzu. OWIN wählt die letzte Richtlinie, die ausgeführt werden soll, wenn das Autorisierungstag aufgerufen wird.
 
 ```C#
 // Controllers\HomeController.cs
 
-// You can use the PolicyAuthorize decorator to execute a certain policy if the user is not already signed in the app.
-[PolicyAuthorize(Policy = "b2c_1_sign_in")]
+// You can use the Authorize decorator to execute a policy if the user is not already signed in the app.
+[Authorize]
 public ActionResult Claims()
 {
   ...
@@ -258,35 +245,12 @@ Sie können auch OWIN zum Abmelden des Benutzers von der App verwenden. In `Cont
 
 public void SignOut()
 {
-    // To sign out the user, you should issue an OpenID Connect sign-out request by using the last policy that the user executed.
-    // This is as easy as looking up the current value of the ACR claim, adding it to the AuthenticationProperties, and making an OWIN SignOut call.
-
-    HttpContext.GetOwinContext().Authentication.SignOut(
-        new AuthenticationProperties(
-            new Dictionary<string, string>
-            {
-                {Startup.PolicyKey, ClaimsPrincipal.Current.FindFirst(Startup.AcrClaimType).Value}
-            }), OpenIdConnectAuthenticationDefaults.AuthenticationType, CookieAuthenticationDefaults.AuthenticationType);
-}
-```
-
-Standardmäßig sendet OWIN die in `AuthenticationProperties` angegebenen Richtlinien nicht an Azure AD. Sie können jedoch die von OWIN in der `RedirectToIdentityProvider`-Benachrichtigung generierten Anforderungen bearbeiten. Verwenden Sie diese Benachrichtigung in `App_Start\Startup.Auth.cs`, um den richtigen Endpunkt für jede Richtlinie aus den Metadaten der Richtlinie abzurufen. Dadurch wird sichergestellt, dass für jede Richtlinie, die Ihre App ausführen möchte, die richtige Anforderung an Azure AD gesendet wird.
-
-```C#
-// App_Start\Startup.Auth.cs
-
-private async Task OnRedirectToIdentityProvider(RedirectToIdentityProviderNotification<OpenIdConnectMessage, OpenIdConnectAuthenticationOptions> notification)
-{
-    PolicyConfigurationManager mgr = notification.Options.ConfigurationManager as PolicyConfigurationManager;
-    if (notification.ProtocolMessage.RequestType == OpenIdConnectRequestType.LogoutRequest)
+    // To sign out the user, you should issue an OpenIDConnect sign out request
+    if (Request.IsAuthenticated)
     {
-        OpenIdConnectConfiguration config = await mgr.GetConfigurationByPolicyAsync(CancellationToken.None, notification.OwinContext.Authentication.AuthenticationResponseRevoke.Properties.Dictionary[Startup.PolicyKey]);
-        notification.ProtocolMessage.IssuerAddress = config.EndSessionEndpoint;
-    }
-    else
-    {
-        OpenIdConnectConfiguration config = await mgr.GetConfigurationByPolicyAsync(CancellationToken.None, notification.OwinContext.Authentication.AuthenticationResponseChallenge.Properties.Dictionary[Startup.PolicyKey]);
-        notification.ProtocolMessage.IssuerAddress = config.AuthorizationEndpoint;
+        IEnumerable<AuthenticationDescription> authTypes = HttpContext.GetOwinContext().Authentication.GetAuthenticationTypes();
+        HttpContext.GetOwinContext().Authentication.SignOut(authTypes.Select(t => t.AuthenticationType).ToArray());
+        Request.GetOwinContext().Authentication.GetAuthenticationTypes();
     }
 }
 ```
@@ -299,7 +263,7 @@ Bei der Authentifizierung von Benutzern mit OpenID Connect gibt Azure AD ein ID-
 ```C#
 // Controllers\HomeController.cs
 
-[PolicyAuthorize(Policy = "b2c_1_sign_in")]
+[Authorize]
 public ActionResult Claims()
 {
 	Claim displayName = ClaimsPrincipal.Current.FindFirst(ClaimsPrincipal.Current.Identities.First().NameClaimType);
@@ -347,4 +311,4 @@ You can now move on to more advanced B2C topics. You might try:
 
 -->
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

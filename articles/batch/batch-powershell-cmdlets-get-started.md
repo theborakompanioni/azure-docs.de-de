@@ -13,20 +13,20 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="powershell"
    ms.workload="big-compute"
-   ms.date="04/21/2016"
+   ms.date="07/28/2016"
    ms.author="danlep"/>
 
-# Erste Schritte mit Azure Batch für PowerShell-Cmdlets
-Dies ist eine kurze Einführung in die Azure PowerShell-Cmdlets, mit denen Sie Ihre Batch-Konten verwalten und Batch-Ressourcen wie Pools, Aufträge und Aufgaben verwenden. Sie können viele Aufgaben, für die Sie die Batch-APIs, das Azure-Portal und die Azure Befehlszeilenschnittstelle (CLI) verwenden, auch mit Batch-Cmdlets durchführen. Dieser Artikel basiert auf Cmdlets in Azure PowerShell Version 1.3.2 oder höher.
+# Erste Schritte mit Azure Batch-PowerShell-Cmdlets
+Mit den Azure Batch-PowerShell-Cmdlets können Sie viele Aufgaben durchführen, für die Sie die Batch-APIs, das Azure-Portal und die Azure Befehlszeilenschnittstelle (CLI) verwenden, und Skripts dafür erstellen. Dies ist eine kurze Einführung in die Cmdlets, mit denen Sie Ihre Batch-Konten verwalten und Batch-Ressourcen wie Pools, Aufträge und Aufgaben verwenden. Dieser Artikel basiert auf Cmdlets in Azure PowerShell Version 1.6.0.
 
 Eine vollständige Liste mit Batch-Cmdlets und deren ausführliche Cmdlet-Syntax finden Sie in der Referenz zu [Azure Batch Cmdlets](https://msdn.microsoft.com/library/azure/mt125957.aspx) (Azure Batch-Cmdlets).
 
 
 ## Voraussetzungen
 
-* **Azure PowerShell**: Eine Anleitung zum Herunterladen und Installieren von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). 
+* **Azure PowerShell**: Eine Anleitung zum Herunterladen und Installieren von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
    
-    * Da die Azure Batch-Cmdlets Teil des Azure-Ressourcen-Manager-Moduls sind, müssen Sie das Cmdlet **Login-AzureRmAccount** ausführen, um eine Verbindung mit Ihrem Abonnement herzustellen. 
+    * Da die Azure Batch-Cmdlets Teil des Azure-Ressourcen-Manager-Moduls sind, müssen Sie das Cmdlet **Login-AzureRmAccount** ausführen, um eine Verbindung mit Ihrem Abonnement herzustellen.
     
     * Wir empfehlen, dass Sie Azure PowerShell regelmäßig aktualisieren, damit Sie von den Dienstupdates und Verbesserungen profitieren.
     
@@ -39,13 +39,13 @@ Eine vollständige Liste mit Batch-Cmdlets und deren ausführliche Cmdlet-Syntax
 
 ### Erstellen eines Batch-Kontos
 
-**New-AzureRmBatchAccount** erstellt ein neues Batch-Konto in einer angegebenen Ressourcengruppe. Wenn Sie noch keine Ressourcengruppe erstellt haben, erstellen Sie sie durch Ausführen des Cmdlets [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/azure/mt603739.aspx). Geben Sie dabei eine der Azure-Regionen im **Location**-Parameter an, z. B. „Central US“. Beispiel:
+**New-AzureRmBatchAccount** erstellt ein neues Batch-Konto in einer angegebenen Ressourcengruppe. Wenn Sie noch keine Ressourcengruppe erstellt haben, erstellen Sie sie durch Ausführen des Cmdlets [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/azure/mt603739.aspx). Geben Sie dabei eine der Azure-Regionen im **Location**-Parameter an, z. B. „Central US“. Zum Beispiel:
 
 
     New-AzureRmResourceGroup –Name MyBatchResourceGroup –location "Central US"
 
 
-Erstellen Sie dann ein neues Batch-Konto in der Ressourcengruppe. Geben Sie zudem einen Kontonamen für <*account\_name*> und einen Standort an, an dem der Batch-Dienst verfügbar ist. Die Erstellung des Kontos kann mehrere Minuten in Anspruch nehmen. Beispiel:
+Erstellen Sie anschließend ein neues Batch-Konto in der Ressourcengruppe, und geben Sie einen Namen für das Konto in <*account\_name*> und den Speicherort und Namen der Ressourcengruppe an. Die Erstellung des Batch-Kontos kann einige Zeit dauern. Zum Beispiel:
 
 
     New-AzureRmBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName MyBatchResourceGroup
@@ -63,7 +63,7 @@ Erstellen Sie dann ein neues Batch-Konto in der Ressourcengruppe. Geben Sie zude
 
 
 ### Generieren eines neuen Zugriffsschlüssels
-**New-AzureRmBatchAccountKey** generiert einen neuen primären oder sekundären Kontoschlüssel für ein Azure Batch-Konto. Geben Sie zum Generieren eines neuen primären Schlüssels für Ihr Batch-Konto z. B. Folgendes ein:
+**New-AzureRmBatchAccountKey** generiert einen neuen primären oder sekundären Kontoschlüssel für ein Azure Batch-Konto. Geben Sie zum Generieren eines neuen primären Schlüssels für Ihr Batch-Konto z. B. Folgendes ein:
 
 
     New-AzureRmBatchAccountKey -AccountName <account_name> -KeyType Primary
@@ -94,16 +94,22 @@ Zum Authentifizieren mithilfe von Batch PowerShell-Cmdlets beim Erstellen und Ve
 ## Erstellen und Ändern von Batch-Ressourcen
 Verwenden Sie Cmdlets wie **New-AzureBatchPool**, **New-AzureBatchJob** und **New-AzureBatchTask**, um unter einem Batch-Konto Ressourcen zu erstellen. Die entsprechenden Cmdlets **Get-** und **Set-** zum Aktualisieren der Eigenschaften vorhandener Ressourcen sind vorhanden sowie Cmdlets vom Typ **Remove-**, um unter einem Batch-Konto Ressourcen zu entfernen.
 
+Bei der Verwendung von vielen dieser Cmdlets müssen Sie zusätzlich zum Übergeben eines BatchContext-Objekts auch Objekte erstellen oder übergeben, die ausführliche Ressourceneinstellungen enthalten. Dies wird im folgenden Beispiel veranschaulicht. In der detaillierten Hilfe für die einzelnen Cmdlets finden Sie weitere Beispiele.
+
 ### Batch-Pool erstellen
 
-Mit dem folgenden Cmdlet wird beispielsweise ein neuer Batch-Pool erstellt, der für die Verwendung kleiner virtueller Computer konfiguriert ist, die über ein Image mit der aktuellen Betriebssystemversion der Familie 3 (Windows Server 2012) verfügen und für die die Zielanzahl der Computeknoten anhand einer Formel für die automatische Skalierung ermittelt wird. In diesem Fall lautet die Formel einfach **$TargetDedicated=3** und gibt an, dass die Anzahl der Computeknoten im Pool maximal „3“ beträgt. Mit dem Parameter **BatchContext** wird eine zuvor definierte Variable *$context* als BatchAccountContext-Objekt angegeben.
+Beim Erstellen oder Aktualisieren eines Batch-Pools wählen Sie eine Clouddienstkonfiguration oder die Konfiguration eines virtuellen Computers für das Betriebssystem auf den Computeknoten (siehe [Übersicht über Azure Batch-Features](batch-api-basics.md#pool)). Anhand Ihrer Auswahl wird bestimmt, ob die Computeknoten ein Image mit einer [Azure-Gastbetriebssystemversion](../cloud-services/cloud-services-guestos-update-matrix.md#releases) oder mit einem der unterstützten Linux- oder Windows VM-Images im Azure Marketplace erhalten.
+
+Übergeben Sie beim Ausführen von **New-AzureBatchPool** die Betriebssystemeinstellungen in einem PSCloudServiceConfiguration- oder PSVirtualMachineConfiguration-Objekt. Mit dem folgenden Cmdlet wird beispielsweise ein neuer Batch-Pool mit Computeknoten der Größe „Small“ (Klein) in der Clouddienstkonfiguration erstellt, und es wird ein Image der aktuellen Betriebssystemversion der Familie 3 (Windows Server 2012) verwendet. Hier gibt der Parameter **CloudServiceConfiguration** die Variable *$configuration* als PSCloudServiceConfiguration-Objekt an. Mit dem Parameter **BatchContext** wird eine zuvor definierte Variable *$context* als BatchAccountContext-Objekt angegeben.
 
 
-    New-AzureBatchPool -Id "MyAutoScalePool" -VirtualMachineSize "Small" -OSFamily "3" -TargetOSVersion "*" -AutoScaleFormula '$TargetDedicated=3;' -BatchContext $Context
+    $configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @(3,"*")
+    
+    New-AzureBatchPool -Id "AutoScalePool" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -AutoScaleFormula '$TargetDedicated=4;' -BatchContext $context
 
->[AZURE.NOTE]Derzeit unterstützen Batch PowerShell-Cmdlets nur die Clouddienstkonfiguration für Computeknoten. Dadurch können Sie eine der Azure-Gast-BS-Versionen des Windows Server-Betriebssystems auswählen, das auf den Computeknoten ausgeführt wird. Verwenden Sie die Batch SDKs oder die Azure-Befehlszeilenschnittstelle für andere Konfigurationsoptionen für den Computeknoten.
+Die Zielanzahl von Computeknoten im neuen Pool wird mit einer Formel für die automatische Skalierung bestimmt. In diesem Fall lautet die Formel einfach **$TargetDedicated=4** und gibt an, dass die Anzahl von Computeknoten im Pool maximal „4“ beträgt.
 
-## Abfragen von Pool, Aufträgen, Aufgaben und weiteren Details
+## Abfragen von Pools, Aufträgen, Aufgaben und weiteren Details
 
 Verwenden Sie Cmdlets wie **Get-AzureBatchPool**, **Get-AzureBatchJob** und **Get-AzureBatchTask** zum Abfragen von Entitäten, die in einem Batch-Konto erstellt wurden.
 
@@ -141,7 +147,7 @@ Der **Id**-Parameter unterstützt ausschließlich die Suche nach der vollständi
 
 ### Verwenden des MaxCount-Parameters
 
-Jedes Cmdlet gibt standardmäßig bis zu 1.000 Objekte zurück. Wenn dieser Grenzwert erreicht ist, können Sie entweder den Filter weiter eingrenzen, sodass weniger Objekte zurückgegeben werden, oder mit dem **MaxCount**-Parameter explizit einen maximalen Wert festlegen. Beispiel:
+Jedes Cmdlet gibt standardmäßig bis zu 1.000 Objekte zurück. Wenn dieser Grenzwert erreicht ist, können Sie entweder den Filter weiter eingrenzen, sodass weniger Objekte zurückgegeben werden, oder mit dem **MaxCount**-Parameter explizit einen maximalen Wert festlegen. Beispiel:
 
 
     Get-AzureBatchTask -MaxCount 2500 -BatchContext $context
@@ -159,6 +165,6 @@ Batch-Cmdlets können die PowerShell-Pipeline zum Senden von Daten zwischen Cmdl
 ## Nächste Schritte
 * Die ausführliche Cmdlet-Syntax sowie Beispiele finden Sie in der [Referenz zu Azure Batch-Cmdlets](https://msdn.microsoft.com/library/azure/mt125957.aspx).
 
-* Unter [Query the Batch service efficiently](batch-efficient-list-queries.md) (Effizientes Abfragen des Batch-Diensts) finden Sie weitere Informationen dazu, wie Sie die Anzahl der Elemente sowie die Art der Informationen, die bei Abfragen an Batch zurückgegeben werden, verringern.
+* Unter [Effizientes Abfragen des Azure Batch-Diensts](batch-efficient-list-queries.md) finden Sie weitere Informationen dazu, wie Sie die Anzahl der Elemente sowie die Art der Informationen verringern, die bei Abfragen an Batch zurückgegeben werden.
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0803_2016-->

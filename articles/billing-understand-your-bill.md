@@ -14,8 +14,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/28/2016"
-   ms.author="erihur"/>
+   ms.date="07/21/2016"
+   ms.author="erihur;genli"/>
 
 
 # Informationen zu Ihrer Rechnung für Microsoft Azure
@@ -217,7 +217,7 @@ Service Info 2 | Service Info 2 | Dies ist ein Legacyfeld, in dem optionale dien
 
 Zusätzlich zu einigen neuen Feldern und Namensänderungen für CSV-Version 2 wird eine standardisierte Formatierung für die Daten in den unten aufgeführten Feldern verwendet:
 
-- **Instance ID**: Im Feld „Instance ID“ wird der vom Benutzer festgelegte Bezeichner für den bereitgestellten Dienst angegeben. Derzeit gibt es zwei Formate, in denen die Instanz-ID angegeben wird: Dies ist entweder der Name der Ressource oder die vollqualifizierte Ressourcen-ID. Microsoft Azure-Dienste werden dahingehend umgestellt, dass die Instanz-ID in einem standardisierten vollqualifizierten Ressourcen-ID-Format angegeben wird _**(/subscriptions/<subscription id>/resourcegroups/<resourcegroupname>/providers/<providername>/<resourcename>)**_. Wenn die Dienste auf das neue Format umgestellt werden, wird das Datenfeld „Instance ID“ so geändert, dass nicht mehr nur der Ressourcenname zu sehen ist, sondern die Ressourcen-ID. Die Ressourcen-ID ist das Format, das von der [Azure-Ressourcen-Manager-API](https://msdn.microsoft.com/library/azure/dn790567.aspx) zum Identifizieren von Ressourcen in einem Abonnement verwendet wird.
+- **Instance ID**: Im Feld „Instance ID“ wird der vom Benutzer festgelegte Bezeichner für den bereitgestellten Dienst angegeben. Derzeit gibt es zwei Formate, in denen die Instanz-ID angegeben wird: Dies ist entweder der Name der Ressource oder die vollqualifizierte Ressourcen-ID. Microsoft Azure-Dienste werden dahingehend umgestellt, dass die Instanz-ID in einem standardisierten vollqualifizierten Ressourcen-ID-Format angegeben wird _**(/subscriptions/<Abonnement-ID>/resourcegroups/<Ressourcengruppennname>/providers/<Anbietername>/<Ressourcenname>)**_. Wenn die Dienste auf das neue Format umgestellt werden, wird das Datenfeld „Instance ID“ so geändert, dass nicht mehr nur der Ressourcenname zu sehen ist, sondern die Ressourcen-ID. Die Ressourcen-ID ist das Format, das von der [Azure-Ressourcen-Manager-API](https://msdn.microsoft.com/library/azure/dn790567.aspx) zum Identifizieren von Ressourcen in einem Abonnement verwendet wird.
 
 ![instanceid](./media/billing-understand-your-bill/instanceid.png)
 
@@ -225,7 +225,7 @@ Zusätzlich zu einigen neuen Feldern und Namensänderungen für CSV-Version 2 w
 
 ![additionalinfo\_csv2](./media/billing-understand-your-bill/AdditionaInfo_csv2.png)
 
-- **Tags**: Diese Spalte enthält die vom Benutzer angegebenen Ressourcentags. Die Tags können zum Gruppieren von Abrechnungsdatensätzen verwendet werden. Beispielsweise können Sie Tags verwenden, um Kosten nach den Abteilungen zu unterteilen, die den Dienst nutzen. Weitere Informationen finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](./resource-group-using-tags.md). Dienste, die das Ausgeben von Tags unterstützen, sind:  
+- **Tags**: Diese Spalte enthält die vom Benutzer angegebenen Ressourcentags. Die Tags können zum Gruppieren von Abrechnungsdatensätzen verwendet werden. Beispielsweise können Sie Tags verwenden, um Kosten nach den Abteilungen zu unterteilen, die den Dienst nutzen. Weitere Informationen finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](./resource-group-using-tags.md). Dienste, die das Ausgeben von Tags unterstützen, sind:
     - Virtual Machines
     - Storage und
     - Netzwerkdienste, die mit der [Azure-Ressourcen-Manager-API](https://msdn.microsoft.com/library/azure/dn790567.aspx) bereitgestellt werden
@@ -253,4 +253,4 @@ OLD MSDN Articles
 
 <!--Image references-->
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -4,7 +4,7 @@
 	keywords="Datenbankoptionen, Datenbankleistung"
 	services="sql-database"
 	documentationCenter=""
-	authors="carlrabeler"
+	authors="CarlRabeler"
 	manager="jhubbard"
 	editor=""/>
 
@@ -22,7 +22,7 @@
 [Azure SQL-Datenbank](sql-database-technical-overview.md) umfasst mehrere Dienstebenen für unterschiedliche Workloads. Sie können jederzeit [Dienstebenen ändern](sql-database-scale-up.md) und die Ausfallzeiten für Ihre Anwendung dabei gering halten (im Durchschnitt meist unter vier Sekunden). Sie haben auch die Möglichkeit zum [Erstellen einer Einzeldatenbank](sql-database-get-started.md) mit definierten Merkmalen und Preisen. Oder Sie können mehrere Datenbanken verwalten, indem Sie einen [Pool für elastische Datenbanken erstellen](sql-database-elastic-pool-create-portal.md). In beiden Fällen sind die Dienstebenen **Basic**, **Standard** und **Premium** verfügbar. Die Datenbankoptionen dieser Ebenen sind bei Einzeldatenbanken und elastischen Pools ähnlich, bei elastischen Pools sind jedoch weitere Aspekte zu beachten. Dieser Artikel enthält ausführliche Informationen zu den Dienstebenen für Einzeldatenbanken und elastische Datenbanken.
 
 ## Tarife und Datenbankoptionen
-Die Dienstebenen "Basic", "Standard" und "Premium" haben alle eine Betriebszeit-SLA von 99,99 % und bieten vorhersagbare Leistung, flexible Optionen für Geschäftskontinuität, Sicherheitsfeatures und stündliche Abrechnung. In der folgenden Tabelle sind Beispiele für Dienstebenen aufgeführt, die sich für unterschiedliche Anwendungsworkloads am besten eignen.
+Die Dienstebenen "Basic", "Standard" und "Premium" haben alle eine Betriebszeit-SLA von 99,99 % und bieten vorhersagbare Leistung, flexible Optionen für Geschäftskontinuität, Sicherheitsfeatures und stündliche Abrechnung. In der folgenden Tabelle sind Beispiele für Dienstebenen aufgeführt, die sich für unterschiedliche Anwendungsworkloads am besten eignen.
 
 | Dienstebene | Zielworkloads |
 |---|---|
@@ -58,6 +58,30 @@ Für jede Datenbank in einem Pool gelten auch die Merkmale für Einzeldatenbanke
 
 [AZURE.INCLUDE [Beschreibung von SQL-Datenbank-DTUs](../../includes/sql-database-understanding-dtus.md)]
 
+## Auswählen einer Dienstebene
+
+Ermitteln Sie zum Auswählen einer Dienstebene zunächst, ob die Datenbank eine eigenständige Datenbank oder Teil eines elastischen Pools sein soll.
+
+### Auswählen einer Dienstebene für eine eigenständige Datenbank
+
+Beginnen Sie bei einer Dienstebene für eine eigenständige Datenbank damit, die benötigten Datenbankfeatures zu bestimmen, um die SQL-Datenbank-Edition auswählen zu können:
+
+- Datenbankgröße (maximal 5 GB für Basic, maximal 250 GB für Standard und maximal 500 GB bis 1 TB für Premium, je nach Leistungsebene)
+- Datenbank-Aufbewahrungszeitraum (7 Tage bei Basic und 35 Tage bei Standard und Premium)
+
+Nach der Ermittlung der SQL-Datenbank-Edition können Sie die Leistungsebene für die Datenbank (Anzahl von DTUs) bestimmen. Sie können dies schätzen und dann anhand der tatsächlichen Erfahrungen [dynamisch zentral hoch- oder herunterskalieren](sql-database-scale-up.md). Sie können auch den [DTU Calculator](http://dtucalculator.azurewebsites.net/) (DTU-Rechner) verwenden, um die geschätzte Anzahl von erforderlichen DTUs zu ermitteln.
+
+### Auswählen einer Dienstebene für einen Pool für elastische Datenbanken
+
+Ermitteln Sie bei der Dienstebene für einen Pool für elastische Datenbanken zunächst die benötigten Datenbankfeatures, um die Dienstebene für den Pool auswählen zu können:
+
+- Datenbankgröße (2 GB für Basic, 250 GB für Standard und 500 GB für Premium)
+- Datenbank-Aufbewahrungszeitraum (7 Tage bei Basic und 35 Tage bei Standard und Premium)
+- Anzahl von Datenbanken pro Pool (400 für Basic, 400 für Standard und 50 für Premium)
+- Maximaler Speicher pro Pool (117 GB für Basic, 1.200 für Standard und 750 für Premium)
+
+Nachdem Sie die Dienstebene für Ihren Pool ermittelt haben, können Sie die Leistungsebene für den Pool (eDTUs) bestimmen. Sie können dies schätzen und dann anhand der tatsächlichen Erfahrungen [dynamisch zentral hoch- oder herunterskalieren](sql-database-elastic-pool-manage-portal.md#change-performance-settings-of-a-pool). Sie können auch den [DTU Calculator](http://dtucalculator.azurewebsites.net/) (DTU-Rechner) verwenden, um die Anzahl von erforderlichen DTUs für eine einzelne Datenbank im Pool zu ermitteln, damit Sie die Obergrenze für den Pool festlegen können.
+
 ## Nächste Schritte
 - Erfahren Sie mehr über die Preise für diese Ebenen unter [SQL-Datenbank Preise](https://azure.microsoft.com/pricing/details/sql-database/).
 - Erfahren Sie mehr über [Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md), und lesen Sie sich die [Überlegungen zum Preis und zur Leistung eines Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md) durch.
@@ -66,6 +90,6 @@ Für jede Datenbank in einem Pool gelten auch die Merkmale für Einzeldatenbanke
 
 ## Zusätzliche Ressourcen
 
-Informationen zu gängigen Datenarchitekturmustern von mehrinstanzenfähigen SaaS-Datenbankanwendungen (Software as a Service) finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+Informationen zu gängigen Datenarchitekturmustern von mehrinstanzenfähigen SaaS-Datenbankanwendungen (Software-as-a-Service) finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
-<!----HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

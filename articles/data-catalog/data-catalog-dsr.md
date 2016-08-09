@@ -3,8 +3,8 @@
    description="Spezifikation für die derzeit unterstützten Datenquellen."
    services="data-catalog"
    documentationCenter=""
-   authors="trhabe"
-   manager="jstrauss"
+   authors="spelluru"
+   manager="paulettm"
    editor=""
    tags=""/>
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="05/10/2016"
+   ms.date="07/25/2016"
    ms.author="trhabe"/>
 
 # Von Azure Data Catalog unterstützte Datenquellen
@@ -416,660 +416,715 @@ Wenn Sie Unterstützung für zusätzliche Quellen benötigen, senden Sie einen F
 ## Datenquellen-Referenzspezifikation
 > [AZURE.NOTE] Die Spalte „DSL-Struktur“ in der folgenden Tabelle enthält nur die Verbindungseigenschaften für den Eigenschaftenbehälter „Adresse“, den Azure Data Catalog verwendet (d.h. Eigenschaftenbehälter „Adresse“ kann andere Verbindungseigenschaften der Datenquelle enthalten, die Azure Data Catalog weiterhin behält, jedoch nicht verwendet.)
 <table>
->     <tr>
->        <td><b>Quellentyp</b></td>
->        <td><b>Assettyp</b></td>
->        <td><b>Objekttype(n)</b></td>
->        <td><b>DSL-Struktur<b></td>
->     </tr>
->     <tr>
->       <td>Azure Data Lake-Speicher</td>
->       <td>Container</td>
->       <td>Data Lake</td>
->       <td>
->         <font size=2> protocol: webhdfs
->             <br>authentication: {basic, oauth}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; url </font>
->       </td>
->     </tr>
->     <tr>
->       <td>Azure Data Lake-Speicher</td>
->       <td>Table</td>
->       <td>Verzeichnis, Datei</td>
->       <td>
->         <font size=2> protocol: webhdfs
->             <br>authentication: {basic, oauth}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; url </font>
->       </td>
->     </tr>
->     <tr>
->       <td>Azure Storage</td>
->       <td>Container</td>
->       <td>Container</td>
->       <td>
->         <font size=2> protocol: azure-blobs
->             <br>authentication: {azure-access-key}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; domain
->             <br>&#160;&#160;&#160;&#160;&#160; account
->             <br>&#160;&#160;&#160;&#160;&#160; container </font>
->       </td>
->     </tr>
->     <tr>
->       <td>Azure Storage</td>
->       <td>Table</td>
->       <td>Blob, Verzeichnis</td>
->       <td>
->         <font size=2> protocol: azure-blobs
->             <br>authentication: {azure-access-key}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; domain
->             <br>&#160;&#160;&#160;&#160;&#160; account
->             <br>&#160;&#160;&#160;&#160;&#160; container
->             <br>&#160;&#160;&#160;&#160;&#160; name </font>
->       </td>
->     </tr>
->     <tr>
->       <td>Azure Storage</td>
->       <td>Container</td>
->       <td>Container</td>
->       <td>
->         <font size=2> protocol: azure-tables
->             <br>authentication: {azure-access-key}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; domain
->             <br>&#160;&#160;&#160;&#160;&#160; account </font>
->       </td>
->     </tr>
->     <tr>
->       <td>Azure Storage</td>
->       <td>Tabelle</td>
->       <td>Table</td>
->       <td>
->         <font size=2> protocol: azure-tables
->             <br>authentication: {azure-access-key}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; domain
->             <br>&#160;&#160;&#160;&#160;&#160; account
->             <br>&#160;&#160;&#160;&#160;&#160; name </font>
->       </td>
->     </tr>
->     <tr>
->       <td>Cosmos</td>
->       <td>Container</td>
->       <td>Virtueller Cluster</td>
->       <td>
->         <font size=2> protocol: cosmos
->             <br>authentication: {basic, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; url </font>
->       </td>
->     </tr>
->     <tr>
->       <td>Cosmos</td>
->       <td>Table</td>
->       <td>Stream, Streamgruppe, Ansicht</td>
->       <td>
->         <font size=2> protocol: cosmos
->             <br>authentication: {basic, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; url </font>
->       </td>
->     </tr>
->     <tr>
->       <td>DataZen</td>
->       <td>Container</td>
->       <td>Website</td>
->       <td>
->         <font size=2> protocol: http
->             <br>authentication: {none, basic, windows, oauth}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; url </font>
->       </td>
->     </tr>
->     <tr>
->       <td>DataZen</td>
->       <td>Bericht</td>
->       <td>Bericht, Dashboard</td>
->       <td>
->         <font size=2> protocol: http
->             <br>authentication: {none, basic, windows, oauth}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; url </font>
->       </td>
->     </tr>
->     <tr>
->       <td>DB2</td>
->       <td>Container</td>
->       <td>Datenbank</td>
->       <td>
->         <font size=2> protocol: db2
->             <br>authentication: {basic, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database </font>
->       </td>
->     </tr>
->     <tr>
->       <td>DB2</td>
->       <td>Table</td>
->       <td>Tabelle, Ansicht</td>
->       <td>
->         <font size=2> protocol: db2
->             <br>authentication: {basic, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database
->             <br>&#160;&#160;&#160;&#160;&#160; Objekt
->             <br>&#160;&#160;&#160;&#160;&#160; schema </font>
->       </td>
->     </tr>
->     <tr>
->       <td>Dateisystem</td>
->       <td>Tabelle</td>
->       <td>File</td>
->       <td>
->         <font size=2> protocol: file
->             <br>authentication: {none, basic, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; path </font>
->       </td>
->     </tr>
->     <tr>
->       <td>FTP</td>
->       <td>Table</td>
->       <td>Verzeichnis, Datei</td>
->       <td>
->         <font size=2> protocol: ftp
->             <br>authentication: {none, basic, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; url </font>
->       </td>
->     </tr>
->     <tr>
->       <td>Hadoop Distributed File System</td>
->       <td>Container</td>
->       <td>bereitstellen</td>
->       <td>
->         <font size=2> protocol: webhdfs
->             <br>authentication: {basic, oauth}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; url </font>
->       </td>
->     </tr>
->     <tr>
->       <td>Hadoop Distributed File System</td>
->       <td>Table</td>
->       <td>Verzeichnis, Datei</td>
->       <td>
->         <font size=2> protocol: webhdfs
->             <br>authentication: {basic, oauth}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; url </font>
->       </td>
->     </tr>
->     <tr>
->       <td>Hive</td>
->       <td>Container</td>
->       <td>Datenbank</td>
->       <td>
->         <font size=2> protocol: hive
->             <br>authentication: {hdinsight, basic, username, none}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database
->             <br>connectionProperties:
->             <br>&#160;&#160;&#160;&#160;&#160; serverProtocol: {hive2} </font>
->       </td>
->     </tr>
->     <tr>
->       <td>Hive</td>
->       <td>Table</td>
->       <td>Tabelle, Ansicht</td>
->       <td>
->         <font size=2> protocol: hive
->             <br>authentication: {hdinsight, basic, username, none}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database
->             <br>&#160;&#160;&#160;&#160;&#160; Objekt
->             <br>connectionProperties:
->             <br>&#160;&#160;&#160;&#160;&#160; serverProtocol: {hive2} </font>
->       </td>
->     </tr>
->     <tr>
->       <td>HTTP</td>
->       <td>Container</td>
->       <td>Website</td>
->       <td>
->         <font size=2> protocol: http
->             <br>authentication: {none, basic, windows, oauth}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; url </font>
->       </td>
->     </tr>
->     <tr>
->       <td>HTTP</td>
->       <td>Bericht</td>
->       <td>Bericht, Dashboard</td>
->       <td>
->         <font size=2> protocol: http
->             <br>authentication: {none, basic, windows, oauth}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; url </font>
->       </td>
->     </tr>
->     <tr>
->       <td>HTTP</td>
->       <td>Table</td>
->       <td>Endpunkt, Datei</td>
->       <td>
->         <font size=2> protocol: http
->             <br>authentication: {none, basic, windows, oauth}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; url </font>
->       </td>
->     </tr>
->     <tr>
->       <td>MySQL</td>
->       <td>Container</td>
->       <td>Datenbank</td>
->       <td>
->         <font size=2> protocol: mysql
->             <br>authentication: {protocol, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database </font>
->       </td>
->     </tr>
->     <tr>
->       <td>MySQL</td>
->       <td>Table</td>
->       <td>Tabelle, Ansicht</td>
->       <td>
->         <font size=2> protocol: mysql
->             <br>authentication: {protocol, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database
->             <br>&#160;&#160;&#160;&#160;&#160; object </font>
->       </td>
->     </tr>
->     <tr>
->       <td>OData</td>
->       <td>Container</td>
->       <td>Entitätencontainer</td>
->       <td>
->         <font size=2> protocol: odata
->             <br>authentication: {none, basic, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; url </font>
->       </td>
->     </tr>
->     <tr>
->       <td>OData</td>
->       <td>Table</td>
->       <td>Entitätenmenge, Funktion</td>
->       <td>
->         <font size=2> protocol: odata
->             <br>authentication: {none, basic, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; url
->             <br>&#160;&#160;&#160;&#160;&#160; resource </font>
->       </td>
->     </tr>
->     <tr>
->       <td>Oracle-Datenbank</td>
->       <td>Container</td>
->       <td>Datenbank</td>
->       <td>
->         <font size=2> protocol: oracle
->             <br>authentication: {protocol, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database </font>
->       </td>
->     </tr>
->     <tr>
->       <td>Oracle-Datenbank</td>
->       <td>Table</td>
->       <td>Tabelle, Ansicht</td>
->       <td>
->         <font size=2> protocol: oracle
->             <br>authentication: {protocol, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database
->             <br>&#160;&#160;&#160;&#160;&#160; schema
->             <br>&#160;&#160;&#160;&#160;&#160; object </font>
->       </td>
->     </tr>
->     <tr>
->       <td>PostgreSQL</td>
->       <td>Container</td>
->       <td>Datenbank</td>
->       <td>
->         <font size=2> protocol: postgresql
->             <br>authentication: {basic, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database </font>
->       </td>
->     </tr>
->     <tr>
->       <td>PostgreSQL</td>
->       <td>Table</td>
->       <td>Tabelle, Ansicht</td>
->       <td>
->         <font size=2> protocol: postgresql
->             <br>authentication: {basic, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database
->             <br>&#160;&#160;&#160;&#160;&#160; schema
->             <br>&#160;&#160;&#160;&#160;&#160; object </font>
->       </td>
->     </tr>
->     <tr>
->       <td>Power BI</td>
->       <td>Container</td>
->       <td>Website</td>
->       <td>
->         <font size=2> protocol: http
->             <br>authentication: {none, basic, windows, oauth}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; url </font>
->       </td>
->     </tr>
->     <tr>
->       <td>Power BI</td>
->       <td>Bericht</td>
->       <td>Bericht, Dashboard</td>
->       <td>
->         <font size=2> protocol: http
->             <br>authentication: {none, basic, windows, oauth}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; url </font>
->       </td>
->     </tr>
->     <tr>
->       <td>Salesforce</td>
->       <td>Tabelle</td>
->       <td>Object</td>
->       <td>
->         <font size=2> protocol: salesforce-com
->             <br>authentication: {basic, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; loginServer
->             <br>&#160;&#160;&#160;&#160;&#160; class
->             <br>&#160;&#160;&#160;&#160;&#160; itemName </font>
->       </td>
->     </tr>
->     <tr>
->       <td>SAP Hana</td>
->       <td>Container</td>
->       <td>Server</td>
->       <td>
->         <font size=2> protocol: sap-hana-sql
->             <br>authentication: {protocol, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server </font>
->       </td>
->     </tr>
->     <tr>
->       <td>SAP Hana</td>
->       <td>Tabelle</td>
->       <td>Ansicht</td>
->       <td>
->         <font size=2> protocol: sap-hana-sql
->             <br>authentication: {protocol, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; schema
->             <br>&#160;&#160;&#160;&#160;&#160; object </font>
->       </td>
->     </tr>
->     <tr>
->       <td>SharePoint</td>
->       <td>Tabelle</td>
->       <td>Auflisten</td>
->       <td>
->         <font size=2> protocol: sharepoint-list
->             <br>authentication: {basic, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; url </font>
->       </td>
->     </tr>
->     <tr>
->       <td>SQL Data Warehouse</td>
->       <td>Container</td>
->       <td>Datenbank</td>
->       <td>
->         <font size=2> protocol: tds
->             <br>authentication: {protocol, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database </font>
->       </td>
->     </tr>
->     <tr>
->       <td>SQL Data Warehouse</td>
->       <td>Table</td>
->       <td>Tabelle, Ansicht</td>
->       <td>
->         <font size=2> protocol: tds
->             <br>authentication: {protocol, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database
->             <br>&#160;&#160;&#160;&#160;&#160; schema
->             <br>&#160;&#160;&#160;&#160;&#160; object </font>
->       </td>
->     </tr>
->     <tr>
->       <td>SQL Server</td>
->       <td>Container</td>
->       <td>Datenbank</td>
->       <td>
->         <font size=2> protocol: tds
->             <br>authentication: {protocol, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database </font>
->       </td>
->     </tr>
->     <tr>
->       <td>SQL Server</td>
->       <td>Table</td>
->       <td>Tabelle, Ansicht, Tabellenwertfunktion</td>
->       <td>
->         <font size=2> protocol: tds
->             <br>authentication: {protocol, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database
->             <br>&#160;&#160;&#160;&#160;&#160; schema
->             <br>&#160;&#160;&#160;&#160;&#160; object </font>
->       </td>
->     </tr>
->     <tr>
->       <td>SQL Server Analysis Services – mehrdimensional</td>
->       <td>Container</td>
->       <td>Modell</td>
->       <td>
->         <font size=2> protocol: analysis-services
->             <br>authentication: {windows, basic, anonymous, none}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database
->             <br>&#160;&#160;&#160;&#160;&#160; model </font>
->       </td>
->     </tr>
->     <tr>
->       <td>SQL Server Analysis Services – mehrdimensional</td>
->       <td>KPI</td>
->       <td>KPI</td>
->       <td>
->         <font size=2> protocol: analysis-services
->             <br>authentication: {windows, basic, anonymous, none}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database
->             <br>&#160;&#160;&#160;&#160;&#160; model
->             <br>&#160;&#160;&#160;&#160;&#160; Objekt
->             <br>&#160;&#160;&#160;&#160;&#160; objectType: {KPI} </font>
->       </td>
->     </tr>
->     <tr>
->       <td>SQL Server Analysis Services – mehrdimensional</td>
->       <td>Kennzahl</td>
->       <td>Kennzahl</td>
->       <td>
->         <font size=2> protocol: analysis-services
->             <br>authentication: {windows, basic, anonymous, none}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database
->             <br>&#160;&#160;&#160;&#160;&#160; model
->             <br>&#160;&#160;&#160;&#160;&#160; Objekt
->             <br>&#160;&#160;&#160;&#160;&#160; objectType: {Measure} </font>
->       </td>
->     </tr>
->     <tr>
->       <td>SQL Server Analysis Services – mehrdimensional</td>
->       <td>Table</td>
->       <td>Dimension</td>
->       <td>
->         <font size=2> protocol: analysis-services
->             <br>authentication: {windows, basic, anonymous, none}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database
->             <br>&#160;&#160;&#160;&#160;&#160; model
->             <br>&#160;&#160;&#160;&#160;&#160; objekt
->             <br>&#160;&#160;&#160;&#160;&#160; objectType: {Dimension} </font>
->       </td>
->     </tr>
->     <tr>
->       <td>SQL Server Analysis Services-Tabelle</td>
->       <td>Container</td>
->       <td>Modell</td>
->       <td>
->         <font size=2> protocol: analysis-services
->             <br>authentication: {windows, basic, anonymous, none}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database
->             <br>&#160;&#160;&#160;&#160;&#160; model </font>
->       </td>
->     </tr>
->     <tr>
->       <td>SQL Server Analysis Services-Tabelle</td>
->       <td>KPI</td>
->       <td>KPI</td>
->       <td>
->         <font size=2> protocol: analysis-services
->             <br>authentication: {windows, basic, anonymous, none}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database
->             <br>&#160;&#160;&#160;&#160;&#160; model
->             <br>&#160;&#160;&#160;&#160;&#160; Objekt
->             <br>&#160;&#160;&#160;&#160;&#160; objectType: {KPI} </font>
->       </td>
->     </tr>
->     <tr>
->       <td>SQL Server Analysis Services-Tabelle</td>
->       <td>Kennzahl</td>
->       <td>Kennzahl</td>
->       <td>
->         <font size=2> protocol: analysis-services
->             <br>authentication: {windows, basic, anonymous, none}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database
->             <br>&#160;&#160;&#160;&#160;&#160; model
->             <br>&#160;&#160;&#160;&#160;&#160; Objekt
->             <br>&#160;&#160;&#160;&#160;&#160; objectType: {Measure} </font>
->       </td>
->     </tr>
->     <tr>
->       <td>SQL Server Analysis Services-Tabelle</td>
->       <td>Tabelle</td>
->       <td>Table</td>
->       <td>
->         <font size=2> protocol: analysis-services
->             <br>authentication: {windows, basic, anonymous, none}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database
->             <br>&#160;&#160;&#160;&#160;&#160; model
->             <br>&#160;&#160;&#160;&#160;&#160; Objekt
->             <br>&#160;&#160;&#160;&#160;&#160; objectType: {Table} </font>
->       </td>
->     </tr>
->     <tr>
->       <td>SQL Server Reporting Services</td>
->       <td>Container</td>
->       <td>Server</td>
->       <td>
->         <font size=2> protocol: reporting-services
->             <br>authentication: {windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; version: {ReportingService2010} </font>
->       </td>
->     </tr>
->     <tr>
->       <td>SQL Server Reporting Services</td>
->       <td>Bericht</td>
->       <td>Bericht</td>
->       <td>
->         <font size=2> protocol: reporting-services
->             <br>authentication: {windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; path
->             <br>&#160;&#160;&#160;&#160;&#160; version: {ReportingService2010} </font>
->       </td>
->     </tr>
->     <tr>
->       <td>Teradata</td>
->       <td>Container</td>
->       <td>Datenbank</td>
->       <td>
->         <font size=2> protocol: teradata
->             <br>authentication: {protocol, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database </font>
->       </td>
->     </tr>
->     <tr>
->       <td>Teradata</td>
->       <td>Table</td>
->       <td>Tabelle, Ansicht</td>
->       <td>
->         <font size=2> protocol: teradata
->             <br>authentication: {protocol, windows}
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; server
->             <br>&#160;&#160;&#160;&#160;&#160; database
->             <br>&#160;&#160;&#160;&#160;&#160; object </font>
->       </td>
->     </tr>
->     <tr>
->       <td>Andere (keine der oben genannten)</td>
->       <td>*</td>
->       <td>*</td>
->       <td>
->         <font size=2> protocol: generic-asset
->             <br>address:
->             <br>&#160;&#160;&#160;&#160;&#160; assetId </font>
->       </td>
->     </tr>
-> </table>
+    <tr>
+       <td><b>Quellentyp</b></td>
+       <td><b>Assettyp</b></td>
+       <td><b>Objekttype(n)</b></td>
+       <td><b>DSL-Struktur<b></td>
+    </tr>
+    <tr>
+      <td>Azure Data Lake-Speicher</td>
+      <td>Container</td>
+      <td>Data Lake</td>
+      <td>
+        <font size=2> protocol: webhdfs
+            <br>authentication: {basic, oauth}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Azure Data Lake-Speicher</td>
+      <td>Table</td>
+      <td>Verzeichnis, Datei</td>
+      <td>
+        <font size=2> protocol: webhdfs
+            <br>authentication: {basic, oauth}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Azure Storage</td>
+      <td>Container</td>
+      <td>Container</td>
+      <td>
+        <font size=2> protocol: azure-blobs
+            <br>authentication: {azure-access-key}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; domain
+            <br>&#160;&#160;&#160;&#160;&#160; account
+            <br>&#160;&#160;&#160;&#160;&#160; container </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Azure Storage</td>
+      <td>Table</td>
+      <td>Blob, Verzeichnis</td>
+      <td>
+        <font size=2> protocol: azure-blobs
+            <br>authentication: {azure-access-key}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; domain
+            <br>&#160;&#160;&#160;&#160;&#160; account
+            <br>&#160;&#160;&#160;&#160;&#160; container
+            <br>&#160;&#160;&#160;&#160;&#160; name </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Azure Storage</td>
+      <td>Container</td>
+      <td>Container</td>
+      <td>
+        <font size=2> protocol: azure-tables
+            <br>authentication: {azure-access-key}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; domain
+            <br>&#160;&#160;&#160;&#160;&#160; account </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Azure Storage</td>
+      <td>Tabelle</td>
+      <td>Table</td>
+      <td>
+        <font size=2> protocol: azure-tables
+            <br>authentication: {azure-access-key}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; domain
+            <br>&#160;&#160;&#160;&#160;&#160; account
+            <br>&#160;&#160;&#160;&#160;&#160; name </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Cosmos</td>
+      <td>Container</td>
+      <td>Virtueller Cluster</td>
+      <td>
+        <font size=2> protocol: cosmos
+            <br>authentication: {basic, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Cosmos</td>
+      <td>Table</td>
+      <td>Stream, Streamgruppe, Ansicht</td>
+      <td>
+        <font size=2> protocol: cosmos
+            <br>authentication: {basic, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+      </td>
+    </tr>
+    <tr>
+      <td>DataZen</td>
+      <td>Container</td>
+      <td>Website</td>
+      <td>
+        <font size=2> protocol: http
+            <br>authentication: {none, basic, windows, oauth}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+      </td>
+    </tr>
+    <tr>
+      <td>DataZen</td>
+      <td>Bericht</td>
+      <td>Bericht, Dashboard</td>
+      <td>
+        <font size=2> protocol: http
+            <br>authentication: {none, basic, windows, oauth}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+      </td>
+    </tr>
+    <tr>
+      <td>DB2</td>
+      <td>Container</td>
+      <td>Datenbank</td>
+      <td>
+        <font size=2> protocol: db2
+            <br>authentication: {basic, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database </font>
+      </td>
+    </tr>
+    <tr>
+      <td>DB2</td>
+      <td>Table</td>
+      <td>Tabelle, Ansicht</td>
+      <td>
+        <font size=2> protocol: db2
+            <br>authentication: {basic, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; Objekt
+            <br>&#160;&#160;&#160;&#160;&#160; schema </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Dateisystem</td>
+      <td>Tabelle</td>
+      <td>File</td>
+      <td>
+        <font size=2> protocol: file
+            <br>authentication: {none, basic, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; path </font>
+      </td>
+    </tr>
+    <tr>
+      <td>FTP</td>
+      <td>Table</td>
+      <td>Verzeichnis, Datei</td>
+      <td>
+        <font size=2> protocol: ftp
+            <br>authentication: {none, basic, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Hadoop Distributed File System</td>
+      <td>Container</td>
+      <td>bereitstellen</td>
+      <td>
+        <font size=2> protocol: webhdfs
+            <br>authentication: {basic, oauth}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Hadoop Distributed File System</td>
+      <td>Table</td>
+      <td>Verzeichnis, Datei</td>
+      <td>
+        <font size=2> protocol: webhdfs
+            <br>authentication: {basic, oauth}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Hive</td>
+      <td>Container</td>
+      <td>Datenbank</td>
+      <td>
+        <font size=2> protocol: hive
+            <br>authentication: {hdinsight, basic, username, none}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>connectionProperties:
+            <br>&#160;&#160;&#160;&#160;&#160; serverProtocol: {hive2} </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Hive</td>
+      <td>Table</td>
+      <td>Tabelle, Ansicht</td>
+      <td>
+        <font size=2> protocol: hive
+            <br>authentication: {hdinsight, basic, username, none}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; Objekt
+            <br>connectionProperties:
+            <br>&#160;&#160;&#160;&#160;&#160; serverProtocol: {hive2} </font>
+      </td>
+    </tr>
+    <tr>
+      <td>HTTP</td>
+      <td>Container</td>
+      <td>Website</td>
+      <td>
+        <font size=2> protocol: http
+            <br>authentication: {none, basic, windows, oauth}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+      </td>
+    </tr>
+    <tr>
+      <td>HTTP</td>
+      <td>Bericht</td>
+      <td>Bericht, Dashboard</td>
+      <td>
+        <font size=2> protocol: http
+            <br>authentication: {none, basic, windows, oauth}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+      </td>
+    </tr>
+    <tr>
+      <td>HTTP</td>
+      <td>Table</td>
+      <td>Endpunkt, Datei</td>
+      <td>
+        <font size=2> protocol: http
+            <br>authentication: {none, basic, windows, oauth}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+      </td>
+    </tr>
+    <tr>
+      <td>MySQL</td>
+      <td>Container</td>
+      <td>Datenbank</td>
+      <td>
+        <font size=2> protocol: mysql
+            <br>authentication: {protocol, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database </font>
+      </td>
+    </tr>
+    <tr>
+      <td>MySQL</td>
+      <td>Table</td>
+      <td>Tabelle, Ansicht</td>
+      <td>
+        <font size=2> protocol: mysql
+            <br>authentication: {protocol, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; object </font>
+      </td>
+    </tr>
+    <tr>
+      <td>OData</td>
+      <td>Container</td>
+      <td>Entitätencontainer</td>
+      <td>
+        <font size=2> protocol: odata
+            <br>authentication: {none, basic, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+      </td>
+    </tr>
+    <tr>
+      <td>OData</td>
+      <td>Table</td>
+      <td>Entitätenmenge, Funktion</td>
+      <td>
+        <font size=2> protocol: odata
+            <br>authentication: {none, basic, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; url
+            <br>&#160;&#160;&#160;&#160;&#160; resource </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Oracle-Datenbank</td>
+      <td>Container</td>
+      <td>Datenbank</td>
+      <td>
+        <font size=2> protocol: oracle
+            <br>authentication: {protocol, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Oracle-Datenbank</td>
+      <td>Table</td>
+      <td>Tabelle, Ansicht</td>
+      <td>
+        <font size=2> protocol: oracle
+            <br>authentication: {protocol, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; schema
+            <br>&#160;&#160;&#160;&#160;&#160; object </font>
+      </td>
+    </tr>
+    <tr>
+      <td>PostgreSQL</td>
+      <td>Container</td>
+      <td>Datenbank</td>
+      <td>
+        <font size=2> protocol: postgresql
+            <br>authentication: {basic, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database </font>
+      </td>
+    </tr>
+    <tr>
+      <td>PostgreSQL</td>
+      <td>Table</td>
+      <td>Tabelle, Ansicht</td>
+      <td>
+        <font size=2> protocol: postgresql
+            <br>authentication: {basic, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; schema
+            <br>&#160;&#160;&#160;&#160;&#160; object </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Power BI</td>
+      <td>Container</td>
+      <td>Website</td>
+      <td>
+        <font size=2> protocol: http
+            <br>authentication: {none, basic, windows, oauth}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Power BI</td>
+      <td>Bericht</td>
+      <td>Bericht, Dashboard</td>
+      <td>
+        <font size=2> protocol: http
+            <br>authentication: {none, basic, windows, oauth}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Salesforce</td>
+      <td>Tabelle</td>
+      <td>Object</td>
+      <td>
+        <font size=2> protocol: salesforce-com
+            <br>authentication: {basic, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; loginServer
+            <br>&#160;&#160;&#160;&#160;&#160; class
+            <br>&#160;&#160;&#160;&#160;&#160; itemName </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SAP Hana</td>
+      <td>Container</td>
+      <td>Server</td>
+      <td>
+        <font size=2> protocol: sap-hana-sql
+            <br>authentication: {protocol, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SAP Hana</td>
+      <td>Tabelle</td>
+      <td>Ansicht</td>
+      <td>
+        <font size=2> protocol: sap-hana-sql
+            <br>authentication: {protocol, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; schema
+            <br>&#160;&#160;&#160;&#160;&#160; object </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SharePoint</td>
+      <td>Tabelle</td>
+      <td>Auflisten</td>
+      <td>
+        <font size=2> protocol: sharepoint-list
+            <br>authentication: {basic, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Data Warehouse</td>
+      <td>Befehl</td>
+      <td>Gespeicherte Prozedur</td>
+      <td>
+        <font size=2> protocol: tds
+            <br>authentication: {protocol, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; schema
+            <br>&#160;&#160;&#160;&#160;&#160; object </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Data Warehouse</td>
+      <td>Container</td>
+      <td>Datenbank</td>
+      <td>
+        <font size=2> protocol: tds
+          <br>authentication: {protocol, windows}
+          <br>address:
+          <br>&#160;&#160;&#160;&#160;&#160; server
+          <br>&#160;&#160;&#160;&#160;&#160; database </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Data Warehouse</td>
+      <td>Table</td>
+      <td>Tabelle, Ansicht</td>
+      <td>
+        <font size=2> protocol: tds
+            <br>authentication: {protocol, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; schema
+            <br>&#160;&#160;&#160;&#160;&#160; object </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Server</td>
+      <td>Befehl</td>
+      <td>Gespeicherte Prozedur</td>
+      <td>
+        <font size=2> protocol: tds
+            <br>authentication: {protocol, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; schema
+            <br>&#160;&#160;&#160;&#160;&#160; object </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Server</td>
+      <td>Container</td>
+      <td>Datenbank</td>
+      <td>
+        <font size=2> protocol: tds
+            <br>authentication: {protocol, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Server</td>
+      <td>Table</td>
+      <td>Tabelle, Ansicht, Tabellenwertfunktion</td>
+      <td>
+        <font size=2> protocol: tds
+            <br>authentication: {protocol, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; schema
+            <br>&#160;&#160;&#160;&#160;&#160; object </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Server Analysis Services – mehrdimensional</td>
+      <td>Container</td>
+      <td>Modell</td>
+      <td>
+        <font size=2> protocol: analysis-services
+            <br>authentication: {windows, basic, anonymous, none}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; model </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Server Analysis Services – mehrdimensional</td>
+      <td>KPI</td>
+      <td>KPI</td>
+      <td>
+        <font size=2> protocol: analysis-services
+            <br>authentication: {windows, basic, anonymous, none}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; model
+            <br>&#160;&#160;&#160;&#160;&#160; Objekt
+            <br>&#160;&#160;&#160;&#160;&#160; objectType: {KPI} </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Server Analysis Services – mehrdimensional</td>
+      <td>Kennzahl</td>
+      <td>Kennzahl</td>
+      <td>
+        <font size=2> protocol: analysis-services
+            <br>authentication: {windows, basic, anonymous, none}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; model
+            <br>&#160;&#160;&#160;&#160;&#160; Objekt
+            <br>&#160;&#160;&#160;&#160;&#160; objectType: {Measure} </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Server Analysis Services – mehrdimensional</td>
+      <td>Table</td>
+      <td>Dimension</td>
+      <td>
+        <font size=2> protocol: analysis-services
+            <br>authentication: {windows, basic, anonymous, none}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; model
+            <br>&#160;&#160;&#160;&#160;&#160; objekt
+            <br>&#160;&#160;&#160;&#160;&#160; objectType: {Dimension} </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Server Analysis Services-Tabelle</td>
+      <td>Container</td>
+      <td>Modell</td>
+      <td>
+        <font size=2> protocol: analysis-services
+            <br>authentication: {windows, basic, anonymous, none}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; model </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Server Analysis Services-Tabelle</td>
+      <td>KPI</td>
+      <td>KPI</td>
+      <td>
+        <font size=2> protocol: analysis-services
+            <br>authentication: {windows, basic, anonymous, none}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; model
+            <br>&#160;&#160;&#160;&#160;&#160; Objekt
+            <br>&#160;&#160;&#160;&#160;&#160; objectType: {KPI} </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Server Analysis Services-Tabelle</td>
+      <td>Kennzahl</td>
+      <td>Kennzahl</td>
+      <td>
+        <font size=2> protocol: analysis-services
+            <br>authentication: {windows, basic, anonymous, none}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; model
+            <br>&#160;&#160;&#160;&#160;&#160; Objekt
+            <br>&#160;&#160;&#160;&#160;&#160; objectType: {Measure} </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Server Analysis Services-Tabelle</td>
+      <td>Tabelle</td>
+      <td>Table</td>
+      <td>
+        <font size=2> protocol: analysis-services
+            <br>authentication: {windows, basic, anonymous, none}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; model
+            <br>&#160;&#160;&#160;&#160;&#160; Objekt
+            <br>&#160;&#160;&#160;&#160;&#160; objectType: {Table} </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Server Reporting Services</td>
+      <td>Container</td>
+      <td>Server</td>
+      <td>
+        <font size=2> protocol: reporting-services
+            <br>authentication: {windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; version: {ReportingService2010} </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Server Reporting Services</td>
+      <td>Bericht</td>
+      <td>Bericht</td>
+      <td>
+        <font size=2> protocol: reporting-services
+            <br>authentication: {windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; path
+            <br>&#160;&#160;&#160;&#160;&#160; version: {ReportingService2010} </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Teradata</td>
+      <td>Container</td>
+      <td>Datenbank</td>
+      <td>
+        <font size=2> protocol: teradata
+            <br>authentication: {protocol, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Teradata</td>
+      <td>Table</td>
+      <td>Tabelle, Ansicht</td>
+      <td>
+        <font size=2> protocol: teradata
+            <br>authentication: {protocol, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; object </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Server Master Data Services</td>
+      <td>Container</td>
+      <td>Modell</td>
+      <td>
+        <font size="2"> protocol: mssql-mds
+          <br>authentication: {windows}
+          <br>address:
+          <br>&#160;&#160;&#160;&#160;&#160; url
+          <br>&#160;&#160;&#160;&#160;&#160; model
+          <br>&#160;&#160;&#160;&#160;&#160; version </font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Server Master Data Services</td>
+      <td>Tabelle</td>
+      <td>Entität</td>
+      <td>
+        <font size="2"> protocol: mssql-mds
+          <br>authentication: {windows}
+          <br>address:
+          <br>&#160;&#160;&#160;&#160;&#160; url
+          <br>&#160;&#160;&#160;&#160;&#160; model
+          <br>&#160;&#160;&#160;&#160;&#160; Version
+          <br>&#160;&#160;&#160;&#160;&#160; entity </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Andere (keine der oben genannten)</td>
+      <td>*</td>
+      <td>*</td>
+      <td>
+        <font size=2> protocol: generic-asset
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; assetId </font>
+      </td>
+    </tr>
+</table>
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

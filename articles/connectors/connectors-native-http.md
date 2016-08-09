@@ -9,7 +9,7 @@
 	tags="connectors"/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -108,11 +108,11 @@ Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workfl
 |---|---|
 |HTTP|Führt einen HTTP-Aufruf durch und gibt den Antwortinhalt zurück.|
 
-### Aktionsdetails
+## HTTP-Details
 
 Für den HTTP-Connector steht eine mögliche Aktion zur Verfügung. Im Anschluss finden Sie Informationen zu den einzelnen Aktionen und den erforderlichen und optionalen Eingabefeldern sowie entsprechende Ausgabedetails in Verbindung mit deren Verwendung.
 
-#### HTTP-Anforderung
+### HTTP-Anforderung
 Führt eine ausgehende HTTP-Anforderung durch. Mit einem Sternchen gekennzeichnete Felder sind Pflichtfelder.
 
 |Anzeigename|Eigenschaftenname|Beschreibung|
@@ -121,6 +121,7 @@ Führt eine ausgehende HTTP-Anforderung durch. Mit einem Sternchen gekennzeichne
 |URI*|uri|URI für die HTTP-Anforderung|
 |Header|headers|Ein JSON-Objekt für die einzubeziehenden Header|
 |Body|body|Der HTTP-Anforderungstext|
+|Authentifizierung|authentication|[Details finden Sie hier](#authentication)|
 <br>
 
 **Ausgabedetails**
@@ -133,20 +134,83 @@ HTTP-Antwort
 |Body|Objekt|Antwortobjekt|
 |Statuscode|int|HTTP-Statuscode|
 
-### HTTP-Antworten
+## Authentifizierung
 
-Das Aufrufen verschiedener Aktionen löst unter Umständen bestimmte Antworten aus. Die folgende Tabelle enthält entsprechende Antworten und Beschreibungen:
+Durch Logik-Apps können Sie verschiedene Arten von Authentifizierung bei HTTP-Endpunkten verwenden. Diese Authentifizierung kann mit den Connectors HTTP, [HTTP + Swagger](./connectors-native-http-swagger.md) und [HTTP-Webhook](./connectors-native-webhook.md) genutzt werden. Die folgenden Arten der Authentifizierung können konfiguriert werden:
 
-|Name|Beschreibung|
-|---|---|
-|200|OK|
-|202|Zulässig|
-|400|Ungültige Anforderung|
-|401|Nicht autorisiert|
-|403|Verboten|
-|404|Nicht gefunden|
-|500|Interner Serverfehler. Unbekannter Fehler ist aufgetreten|
-|die Standardeinstellung|Fehler beim Vorgang.|
+* [Standardauthentifizierung](#basic-authentication)
+* [ClientCertificate-Authentifizierung](#client-certificate-authentication)
+* [ActiveDirectoryOAuth-Authentifizierung](#azure-active-directory-oauth-authentication)
+
+#### Standardauthentifizierung
+
+Das folgende Authentifizierungsobjekt ist für die Standardauthentifizierung erforderlich: Mit einem Sternchen gekennzeichnete Felder sind Pflichtfelder.
+
+|Eigenschaftenname|Datentyp|Beschreibung|
+|---|---|---|
+|Typ*|Typ|Die Art der Authentifizierung. Für die Standardauthentifizierung muss der Wert `Basic` lauten.|
+|Benutzername*|username|Der zu authentifizierende Benutzername|
+|Kennwort*|password|Das zu authentifizierende Kennwort|
+
+>[AZURE.TIP] Wenn Sie ein Kennwort verwenden möchten, das aus der Definition nicht abgerufen werden kann, verwenden Sie einen `securestring`-Parameter und die `@parameters()`-[Funktion für die Workflowdefinition](http://aka.ms/logicappdocs).
+
+Sie erstellen also ein Objekt wie das folgende im Authentifizierungsfeld:
+
+```javascript
+{
+	"type": "Basic",
+	"username": "user",
+	"password": "test"
+}
+```
+
+#### Clientzertifikatsauthentifizierung
+
+Das folgende Authentifizierungsobjekt ist für die Clientzertifikatsauthentifizierung erforderlich: Mit einem Sternchen gekennzeichnete Felder sind Pflichtfelder.
+
+|Eigenschaftenname|Datentyp|Beschreibung|
+|---|---|---|
+|Typ*|Typ|Die Art der Authentifizierung. Für SSL-Clientzertifikate muss der Wert `ClientCertificate` lauten.|
+|PFX*|pfx|Base64-codierte Inhalte der PFX-Datei|
+|Kennwort*|password|Kennwort für den Zugriff auf die PFX-Datei|
+
+>[AZURE.TIP] Sie können einen `securestring`-Parameter und die `@parameters()`-[Funktion für die Workflowdefinition](http://aka.ms/logicappdocs) verwenden, um einen Parameter zu nutzen, der in der Definition nach dem Speichern nicht lesbar ist.
+
+Beispiel:
+
+```javascript
+{
+	"type": "ClientCertificate",
+	"pfx": "aGVsbG8g...d29ybGQ=",
+	"password": "@parameters('myPassword')"
+}
+```
+
+#### Azure Active Directory OAuth-Authentifizierung
+
+Das folgende Authentifizierungsobjekt ist für die Azure Active Directory OAuth-Authentifizierung erforderlich: Mit einem Sternchen gekennzeichnete Felder sind Pflichtfelder.
+
+|Eigenschaftenname|Datentyp|Beschreibung|
+|---|---|---|
+|Typ*|Typ|Die Art der Authentifizierung. Für ActiveDirectoryOAuth muss der Wert `ActiveDirectoryOAuth` lauten.|
+|Mandant*|tenant|Die Mandanten-ID für den Azure AD-Mandanten|
+|Zielgruppe*|audience|Dieser Wert wird auf `https://management.core.windows.net/` festgelegt.|
+|Client-ID*|clientId|Geben Sie die Client-ID für die Azure AD-Anwendung an|
+|Geheimer Schlüssel*|secret|Der geheime Schlüssel des Clients, der das Token anfordert|
+
+>[AZURE.TIP] Sie können einen `securestring`-Parameter und die `@parameters()`-[Funktion für die Workflowdefinition](http://aka.ms/logicappdocs) verwenden, um einen Parameter zu nutzen, der in der Definition nach dem Speichern nicht lesbar ist.
+
+Beispiel:
+
+```javascript
+{
+	"type": "ActiveDirectoryOAuth",
+	"tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+	"audience": "https://management.core.windows.net/",
+	"clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
+	"secret": "hcqgkYc9ebgNLA5c+GDg7xl9ZJMD88TmTJiJBgZ8dFo="
+}
+```
 
 ---
 
@@ -158,4 +222,4 @@ Im Anschluss finden Sie Details zur den weiteren Schritten mit Logik-Apps und un
 
 Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

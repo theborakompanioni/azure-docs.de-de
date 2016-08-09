@@ -133,7 +133,7 @@ Beim Premium-Tarifangebot für HDInsight ist R Server Teil des HDInsight-Cluster
     | ------------------ | --------------------- |
     | ![Erstellungsanzeige im Startmenü](./media/hdinsight-getting-started-with-r/provisioning.png) | ![Kachel für einen erstellten Cluster](./media/hdinsight-getting-started-with-r/provisioned.png) |
 
-    > [AZURE.NOTE] Die Erstellung des Clusters dauert in der Regel ca. 15 Minuten. Sie können den Status des Erstellungsprozesses auf der Kachel im Startmenü oder im linken Bereich der Seite unter **Benachrichtigungen** überprüfen.
+    > [AZURE.NOTE] Die Erstellung des Clusters dauert in der Regel ca. 15 Minuten. Sie können den Status des Erstellungsprozesses auf der Kachel im Startmenü oder im linken Bereich der Seite unter **Benachrichtigungen** überprüfen.
 
 ## Herstellen einer Verbindung mit dem R Server-Edgeknoten
 
@@ -196,7 +196,7 @@ Nachdem die Verbindung hergestellt wurde, wird eine Eingabeaufforderung wie die 
     
     Sie können auch eine Adressierung mit der WASB-Syntax verwenden.
     
-        rxHadoopListFiles("wasb:///")
+        rxHadoopListFiles("wasbs:///")
 
 ## Verwenden von R Server in HDI in einer Remote-Instanz von Microsoft R Server oder Microsoft R Client
 
@@ -411,4 +411,4 @@ Mit beide Vorlagen werden ein neuer HDInsight-Cluster und das zugehörige Speich
 
 Informationen zum Aufrufen von ARM-Vorlagen zur Erstellung von HDInsight-Clustern finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight mit Azure Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

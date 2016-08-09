@@ -110,7 +110,7 @@ Ein VM-Datenträger wird als Seitenblob in Azure Storage gespeichert und erhält
 
 Azure SQL-Datenbank ermöglicht „Database as a Service“. Hierbei können Anwendungen relationale Datenbanken schnell bereitstellen, Daten einfügen und die Datenbanken abfragen. Azure SQL-Datenbank stellt viele der vertrauten SQL Server-Features und -Funktionen bereit und entbindet Sie gleichzeitig vom Aufwand für Hardware, Konfiguration, Patching und Resilienz.
 
->[AZURE.NOTE] Azure SQL-Datenbank weist keine 1:1-Featureübereinstimmung mit SQL Server auf. Es sollen andere Anforderungen erfüllt werden, und zwar speziell für Cloudanwendungen (elastische Skalierung, „Database as a Service“ zur Reduzierung von Wartungskosten usw.). Weitere Informationen finden Sie unter [Wählen Sie eine SQL Server-Cloudoption: Azure SQL-Datenbank (PaaS) oder SQL Server auf Azure-VMs (IaaS)](../sql-database/data-management-azure-sql-database-and-sql-server-iaas.md).
+>[AZURE.NOTE] Azure SQL-Datenbank weist keine 1:1-Featureübereinstimmung mit SQL Server auf. Es sollen andere Anforderungen erfüllt werden, und zwar speziell für Cloudanwendungen (elastische Skalierung, „Database as a Service“ zur Reduzierung von Wartungskosten usw.). Weitere Informationen finden Sie unter [Wählen Sie eine SQL Server-Cloudoption: Azure SQL-Datenbank (PaaS) oder SQL Server auf Azure-VMs (IaaS)](../sql-database/sql-database-paas-vs-sql-server-iaas.md).
 
 ####Replikation
 
@@ -223,4 +223,4 @@ Die mit Azure HDInsight verknüpften Daten werden standardmäßig in Azure Blob 
 
 Dieser Artikel gehört zu einer Reihe von Artikeln, die als [Technischer Leitfaden zur Resilienz in Azure](./resiliency-technical-guidance.md) dienen. Der nächste Artikel dieser Reihe ist [Wiederherstellung nach einer regionsweiten Dienstunterbrechung](./resiliency-technical-guidance-recovery-loss-azure-region.md).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

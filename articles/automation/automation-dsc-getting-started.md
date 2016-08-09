@@ -19,9 +19,9 @@
 
 # Erste Schritte mit Azure Automation DSC
 
-In diesem Thema wird erläutert, wie die gängigsten Aufgaben mit Azure Automation DSC (Desired State Configuration, Konfiguration des gewünschten Zustands) ausgeführt werden, z. B. das Erstellen, Importieren und Kompilieren von Konfigurationen, das Integrieren (Onboarding) zu verwaltender Computer und Anzeigen von Berichten. Eine Übersicht über Azure Automation DSC finden Sie unter [Azure Automation DSC – Übersicht](automation-dsc-overview.md). Die DSC-Dokumentation finden Sie unter [Windows PowerShell DSC – Übersicht] (Windows PowerShell DSC – Übersicht).
+In diesem Thema wird erläutert, wie die gängigsten Aufgaben mit Azure Automation DSC (Desired State Configuration, Konfiguration des gewünschten Zustands) ausgeführt werden, z. B. das Erstellen, Importieren und Kompilieren von Konfigurationen, das Integrieren (Onboarding) zu verwaltender Computer und Anzeigen von Berichten. Eine Übersicht über Azure Automation DSC finden Sie unter [Azure Automation DSC – Übersicht](automation-dsc-overview.md). Die DSC-Dokumentation finden Sie unter [Windows PowerShell DSC – Übersicht](https://msdn.microsoft.com/PowerShell/dsc/overview).
 
-Dieses Thema bietet eine detaillierte Anleitung zur Verwendung von Azure Automation DSC. Wenn Sie eine Beispielumgebung wünschen, die bereits eingerichtet ist, ohne die in diesem Thema beschriebenen Schritte zu befolgen, können Sie die ARM-Vorlage unter https://github.com/azureautomation/automation-packs/tree/master/102-sample-automation-setup verwenden. Mit dieser Vorlage wird eine vollständige Azure Automation DSC-Umgebung eingerichtet, einschließlich einer Azure-VM, die von Azure Automation DSC verwaltet wird.
+Dieses Thema bietet eine detaillierte Anleitung zur Verwendung von Azure Automation DSC. Wenn Sie eine Beispielumgebung wünschen, die bereits eingerichtet ist, ohne die in diesem Thema beschriebenen Schritte zu befolgen, können Sie [diese ARM-Vorlage](https://github.com/azureautomation/automation-packs/tree/master/102-sample-automation-setup) verwenden. Mit dieser Vorlage wird eine vollständige Azure Automation DSC-Umgebung eingerichtet, einschließlich einer Azure-VM, die von Azure Automation DSC verwaltet wird.
  
 ## Voraussetzungen
 
@@ -138,7 +138,7 @@ Nachdem Sie eine Kompilierung gestartet haben, können Sie sie auf dem Blatt **K
 
     ![Screenshot des Blatts „Kompilierungsauftrag“](./media/automation-dsc-getting-started/CompilationJob.png)
   
-6. Klicken Sie auf dem Blatt **Kompilierungsauftrag** auf eine Kachel, um weitere Details zu dem Auftrag zu erhalten.
+6. Klicken Sie auf dem Blatt **Kompilierungsauftrag** auf eine Kachel, um weitere Details zum Auftrag zu erhalten.
 
 ## Anzeigen von Knotenkonfigurationen
 
@@ -211,12 +211,12 @@ Immer wenn Azure Automation DSC eine Konsistenzprüfung auf einem verwalteten Kn
     ![Screenshot des Blatts „Bericht“](./media/automation-dsc-getting-started/NodeReport.png)
 
 Auf dem Blatt einen einzelnen Berichts können Sie die folgenden Statusinformationen für die zugehörige Konsistenzprüfung finden:
-- Berichtstatus. Dieser gibt an, ob der Knoten kompatibel, die Konfiguration fehlerhaft oder der Knoten nicht kompatibel (Knoten befindet sich im Modus **applyandmonitor** und Computer nicht im gewünschten Zustand) ist.
+- Berichtstatus: Gibt an, ob der Knoten kompatibel, die Konfiguration fehlerhaft oder der Knoten nicht kompatibel (Knoten befindet sich im Modus **applyandmonitor** und Computer nicht im gewünschten Zustand) ist.
 - Startzeit der Konsistenzprüfung.
 - Gesamtdauer der Konsistenzprüfung.
 - Typ der Konsistenzprüfung.
 - Fehler, einschließlich Fehlercode und -meldung.
-- Alle in der Konfiguration verwendeten DSC-Ressourcen und der Status jeder Ressource (ob der Knoten den gewünschten Status für diese Ressource hat). Sie können auf die einzelnen Ressourcen klicken, um detailliertere Informationen zu erhalten.
+- Alle in der Konfiguration verwendeten DSC-Ressourcen und der Status jeder Ressource (ob der Knoten den gewünschten Status für diese Ressource hat): Sie können auf die einzelnen Ressourcen klicken, um detailliertere Informationen zu erhalten.
 - Name, IP-Adresse und Konfigurationsmodus des Knotens.
 
 Sie können auch auf **Unformatierten Bericht anzeigen** klicken, um die tatsächlichen Daten anzuzeigen, die der Knoten an den Server sendet. Weitere Informationen zur Verwendung dieser Daten finden Sie unter [Verwenden eines DSC-Berichtsservers](https://msdn.microsoft.com/powershell/dsc/reportserver).
@@ -253,7 +253,7 @@ Wenn ein Knoten nicht mehr von Azure Automation DSC verwaltet werden soll, könn
 
 3. Klicken Sie auf dem Blatt **Automation-Konto** auf **DSC-Knoten**.
 
-4. Klicken Sie auf dem Blatt **DSC-Knoten** auf den Namen des Knotens, den Sie neu zuweisen möchten.
+4. Klicken Sie auf dem Blatt **DSC-Knoten** auf den Namen des Knotens, dessen Registrierung Sie aufheben möchten.
 
 5. Klicken Sie auf dem Blatt dieses Knotens auf **Registrierung aufheben**.
 
@@ -266,4 +266,4 @@ Wenn ein Knoten nicht mehr von Azure Automation DSC verwaltet werden soll, könn
 * [Azure Automation DSC-Cmdlets](https://msdn.microsoft.com/library/mt244122.aspx)
 * [Azure Automation DSC – Preise](https://azure.microsoft.com/pricing/details/automation/)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

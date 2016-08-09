@@ -8,7 +8,7 @@
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="app-service-logic" 
+	ms.service="logic-apps" 
 	ms.workload="integration" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
@@ -51,7 +51,7 @@ Es folgen die einzelnen Schritte zum Hochladen Ihrer öffentlichen Zertifikate i
 ### Privates Zertifikat
 Sie können in Ihr Integrationskonto auch private Zertifikate hochladen. Dafür müssen Sie die folgenden Schritte ausführen:
 1. [Laden Sie Ihren privaten Schlüssel in den Schlüsseltresor hoch.](../key-vault/key-vault-get-started.md "Informationen zu Key Vault")
-2. Erstellen Sie ein privates Zertifikat.Laden Sie das private Zertifikat in Ihr Integrationskonto hoch.
+2. Erstellen Sie ein privates Zertifikat. Laden Sie das private Zertifikat in Ihr Integrationskonto hoch.
 
 Nachdem Sie diese Schritte ausgeführt haben, können Sie das private Zertifikat nutzen, um Vereinbarungen zu erstellen.
 
@@ -73,4 +73,4 @@ Nachdem Sie ein Zertifikat hochgeladen haben, steht es Ihnen zum Schutz Ihrer B2
 - [Erstellen einer Logik-App mithilfe von B2B-Features](./app-service-logic-enterprise-integration-b2b.md)
 - [Weitere Informationen zum Schlüsseltresor](../key-vault/key-vault-get-started.md "Informationen zu Key Vault")
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

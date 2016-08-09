@@ -8,7 +8,7 @@
 	editor="cgronlun"/>
 
 <tags
-	ms.service="app-service-logic"
+	ms.service="logic-apps"
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -36,8 +36,8 @@ Auch im Kontext von Logik-Apps können Sie Ihre eigene Anwendung anstelle der St
 
 4. Wechseln Sie zu [Twitter](http://apps.twitter.com) und **Neue App erstellen**. Fügen Sie in die Eigenschaft **Rückruf-URL** den Wert von **Umleitungs-URI** ein, den Sie aus dem Twitter-Connector kopiert haben: ![][4]
 5. Wählen Sie nach Erstellen der Twitter-App **Schlüssel und Zugriffstoken** aus. Kopieren Sie diese Werte.
-6. Fügen Sie in diese Werte in den Authentifizierungseinstellungen Ihres Twitter-Connectors in die Eigenschaften **Client-ID** und **Geheimer Clientschlüssel** ein: ![][5]  
-7. Speichern Sie Ihre Connectoreinstellungen.  
+6. Fügen Sie in diese Werte in den Authentifizierungseinstellungen Ihres Twitter-Connectors in die Eigenschaften **Client-ID** und **Geheimer Clientschlüssel** ein: ![][5]
+7. Speichern Sie Ihre Connectoreinstellungen.
 
 Jetzt sollten Sie den Connector in Logik-Apps verwenden können. Wenn Sie diesen Connector in Logik-Apps verwenden, wird Ihre Anwendung anstelle der Standardanwendung verwendet.
 
@@ -51,4 +51,4 @@ Jetzt sollten Sie den Connector in Logik-Apps verwenden können. Wenn Sie diesen
 [4]: ./media/app-service-logic-oauth-security/TwitterApp.png
 [5]: ./media/app-service-logic-oauth-security/TwitterKeys.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

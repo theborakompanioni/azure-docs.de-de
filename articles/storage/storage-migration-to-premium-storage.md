@@ -3,7 +3,7 @@
     description="Migrieren Sie die vorhandenen virtuellen Computer zu Azure Storage Premium. Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für E/A-intensive Workloads, die auf virtuellen Azure-Computern ausgeführt werden."
     services="storage"
     documentationCenter="na"
-    authors="ms-prkhad"
+    authors="aungoo-msft"
     manager=""
     editor="tysonn"/>
 
@@ -13,8 +13,8 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="03/28/2016"
-    ms.author="prkhad"/>
+    ms.date="07/25/2016"
+    ms.author="aungoo-msft"/>
 
 
 # Migrieren zu Azure Premium-Speicher
@@ -23,7 +23,7 @@
 
 Azure Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für virtuelle Computer mit E/A-intensiven Workloads. Datenträger von virtuellen Computern (VM), die Storage Premium nutzen, speichern Daten auf SSDs (Solid State Drives). Sie können die VM-Datenträger Ihrer Anwendung zu Azure Storage Premium migrieren, um von der Geschwindigkeit und Leistung dieser Laufwerke zu profitieren.
 
-Ein virtueller Azure-Computer unterstützt das Anfügen mehrerer Storage Premium-Datenträger, damit Ihre Anwendung bis zu 64 TB Speicher pro virtuellem Computer nutzen kann. Mit Storage Premium können Ihre Anwendungen bis zu 80.000 IOPS (Input/Output Operations Per Second, E/A-Vorgänge pro Sekunde) pro virtuellem Computer nutzen sowie 2.000 MB Datenträgerdurchsatz pro Sekunde und virtuellem Computer mit äußerst niedriger Latenz für Lesevorgänge erzielen.
+Ein virtueller Azure-Computer unterstützt das Anfügen mehrerer Storage Premium-Datenträger, damit Ihre Anwendung bis zu 64 TB Speicher pro virtuellem Computer nutzen kann. Mit Storage Premium können Ihre Anwendungen bis zu 80.000 IOPS (Input/Output Operations Per Second, E/A-Vorgänge pro Sekunde) pro virtuellem Computer nutzen sowie 2.000 MB Datenträgerdurchsatz pro Sekunde und virtuellem Computer mit äußerst niedriger Latenz für Lesevorgänge erzielen.
 
 >[AZURE.NOTE] Es wird empfohlen, alle Datenträger von virtuellen Computer, die eine hohe IOPS-Leistung erfordern, zu Azure Storage Premium zu migrieren, um die beste Leistung für Ihre Anwendung zu erzielen. Wenn Ihr Datenträger keine hohe IOPS-Leistung erfordert, können Sie die Kosten beschränken, indem Sie sie im Standard-Speicher belassen. Dieser Speicher speichert Daten auf Datenträgern virtueller Computer auf Festplatten (Hard Disk Drives, HDDs) anstelle von SSDs.
 
@@ -68,7 +68,7 @@ Premium-Speicherkonten haben zusätzlich zu den unter [Ziele für Skalierbarkeit
 
 |Gesamtkapazität des Kontos|Gesamtbandbreite für ein lokal redundantes Speicherkonto|
 |:--|:---|
-|Festplattenkapazität: 35 TB<br />Kapazität für Momentaufnahmen: 10 TB|Bis zu 50 GB pro Sekunde für eingehenden und ausgehenden Datenverkehr|
+|Festplattenkapazität: 35 TB<br />Kapazität für Momentaufnahmen: 10 TB|Bis zu 50 GB pro Sekunde für eingehenden und ausgehenden Datenverkehr|
 
 Weitere Informationen zu den Spezifikationen für Storage Premium finden Sie unter [Skalierbarkeits- und Leistungsziele bei der Verwendung des Premium-Speichers](storage-premium-storage.md#scalability-and-performance-targets-whde-DEing-premium-storage).
 
@@ -77,7 +77,7 @@ Weitere Informationen zu den Spezifikationen für Storage Premium finden Sie unt
 Legen Sie je nach Workload fest, ob zusätzliche Datenträger für Ihren virtuellen Computer erforderlich sind. Sie können mehrere Datenträger für permanente Daten auf Ihrem virtuellen Computer anfügen. Bei Bedarf können Sie Daten über die Datenträger verteilen, um die Kapazität und die Leistung des Volumens zu erhöhen. Wenn Sie Daten über Premium-Speicher-Datenträger mithilfe von [Speicherplätzen](http://technet.microsoft.com/library/hh831739.aspx) verteilen, sollten Sie sie für jeden verwendeten Datenträger eine Spalte konfigurieren. Andernfalls kann die Gesamtleistung des Stripesetvolume aufgrund ungleicher Verteilung des Datenverkehrs auf die Datenträger niedriger sein als erwartet. Für Linux-VMs können Sie dazu das Hilfsprogramm *mdadm* verwenden. Weitere Informationen finden Sie im Artikel [Konfigurieren von Software-RAID unter Linux](../virtual-machines/virtual-machines-linux-configure-raid.md).
 
 #### Zwischenspeicherungsrichtlinie für Datenträger
-Standardmäßig ist die Richtlinie für das Zwischenspeichern für alle Premium-Datenträger *Schreibgeschützt* und für die Premium-Betriebssystem-Datenträger, die an den virtuellen Computer angeschlossen sind, *Lesen/Schreiben*. Diese Konfigurationseinstellung wird empfohlen, um die optimale E/A-Leistung für Ihre Anwendung zu erreichen. Für Datenträger mit hohem oder ausschließlichem Schreibzugriff (z. B. SQL Server-Protokolldateien) deaktivieren Sie das Zwischenspeichern, sodass Sie eine bessere Anwendungsleistung erzielen können. Die Einstellungen für das Zwischenspeichern bei vorhandenen Datenträgern können Sie über das [Azure-Portal](https://portal.azure.com) oder den Parameter *-HostCaching* des Cmdlets *Set-AzureDataDisk* aktualisieren.
+Standardmäßig ist die Richtlinie für das Zwischenspeichern für alle Premium-Datenträger *Schreibgeschützt* und für die Premium-Betriebssystem-Datenträger, die an den virtuellen Computer angeschlossen sind, *Lesen/Schreiben*. Diese Konfigurationseinstellung wird empfohlen, um die optimale E/A-Leistung für Ihre Anwendung zu erreichen. Für Datenträger mit hohem oder ausschließlichem Schreibzugriff (z. B. SQL Server-Protokolldateien) deaktivieren Sie das Zwischenspeichern, sodass Sie eine bessere Anwendungsleistung erzielen können. Die Einstellungen für das Zwischenspeichern bei vorhandenen Datenträgern können Sie über das [Azure-Portal](https://portal.azure.com) oder den Parameter *-HostCaching* des Cmdlets *Set-AzureDataDisk* aktualisieren.
 
 #### Standort
 Wählen Sie einen Speicherort, an dem Azure Premium-Speicher verfügbar ist. Aktuelle Informationen zu verfügbaren Standorten finden Sie unter [Azure: Dienste nach Region](https://azure.microsoft.com/regions/#services). Virtuelle Computer in der gleichen Umgebung wie das Speicherkonto, in dem die Datenträger für den virtuellen Computer gespeichert sind, erzielen eine höhere Leistung als solche in unterschiedlichen Regionen.
@@ -148,7 +148,7 @@ Erstellen Sie ein Speicherkonto für die Verwaltung Ihrer virtuellen Festplatten
 - Der Speicherort des Zielspeicherkontos kann sich je nach Anwendungsanforderungen in einem Standard- oder Premium-Speicher befinden.
 - Der Speicherort für das Speicherkonto muss mit dem der Azure-VMs der DS-, DSv2- oder GS-Serie übereinstimmen, die Sie in der letzten Phase erstellen. Sie können je nach Anforderungen in ein neues Speicherkonto kopieren oder die Verwendung desselben Speicherkontos planen.
 - Kopieren und speichern Sie den Speicherkontenschlüssel des Zielspeicherkontos für die nächste Phase.
-- Für Datenträger können Sie auswählen, dass einige in einem Standardspeicherkonto verbleiben (z. B. Festplatten mit Daten, auf die weniger zugegriffen wird) und andere mit hohem IOPS-Wert in einem Premium-Speicherkonto gespeichert werden.
+- Für Datenträger können Sie auswählen, dass einige in einem Standardspeicherkonto verbleiben (z. B. Festplatten mit Daten, auf die weniger zugegriffen wird) und andere mit hohem IOPS-Wert in einem Premium-Speicherkonto gespeichert werden.
 
 ### Kopieren der virtuellen Festplatte aus der Quelle
 
@@ -158,7 +158,7 @@ Im Folgenden sind einige Szenarios zum Kopieren der virtuellen Festplatte beschr
 
 Wenn Sie VHDs aus einem Azure-Standardspeicherkonto zu einem Azure Premium-Speicherkonto migrieren, müssen Sie den Quellpfad des VHD-Containers, den Namen der VHD-Datei und den Speicherkontoschlüssel des Quellspeicherkontos kopieren.
 
-1. Wechseln Sie zu **Azure-Portal > Virtuelle Computer > Datenträger**.
+1. Wechseln Sie zu **Azure-Portal > Virtuelle Computer > Datenträger**.
 2. Kopieren und speichern Sie die VHD-Container-URL aus der Spalte "Speicherort". Die Container-URL ähnelt dem folgenden Format: `https://myaccount.blob.core.windows.net/mycontainer/`.
 
 #### Kopieren von VHDs aus anderen Clouddiensten
@@ -295,7 +295,7 @@ Erstellen Sie eine neue Azure-VM-Instanz der DS-Serie mit dem **Azure-Betriebssy
 
 	New-AzureVM -ServiceName $serviceName –VM $vm
 
-Geben Sie andere Azure-VM-Informationen an, z. B. Clouddienst, Region, Speicherkonto, Verfügbarkeitssatz und Zwischenspeicherungsrichtlinie. Beachten Sie, dass die VM-Instanz mit dem zugehörigen Betriebssystem oder Datenträger angeordnet werden muss, d. h., dass alle ausgewählten Clouddienste, Regionen und Speicherkonten sich an demselben Speicherort befinden müssen wie die zugrundeliegenden VHDs des Datenträgers.
+Geben Sie andere Azure-VM-Informationen an, z. B. Clouddienst, Region, Speicherkonto, Verfügbarkeitssatz und Zwischenspeicherungsrichtlinie. Beachten Sie, dass die VM-Instanz mit dem zugehörigen Betriebssystem oder Datenträger angeordnet werden muss, d. h., dass alle ausgewählten Clouddienste, Regionen und Speicherkonten sich an demselben Speicherort befinden müssen wie die zugrundeliegenden VHDs des Datenträgers.
 
 ### Datenträger anfügen
 
@@ -325,7 +325,7 @@ In diesem einfachen Szenario versuchen Sie, Ihre Konfiguration beim Migrieren vo
 #### Vorbereitung
 1. Stellen Sie sicher, dass Storage Premium in der Region verfügbar ist, in die migriert werden soll.
 2. Bestimmen Sie die neue VM-Serie, die Sie verwenden möchten. Abhängig von der Verfügbarkeit in der Region und Ihren Bedürfnissen sollte es sich dabei um eine der Serien DS, DSv2 oder GS handeln.
-3. Bestimmen Sie die genaue VM-Größe, die Sie verwenden möchten. Die VM-Größe muss groß genug sein, um die Anzahl der vorhandenen Datenträger zu unterstützen. Wenn Sie z. B. über 4 Datenträger verfügen, muss der virtuelle Computer 2 oder mehr Kerne haben. Berücksichtigen Sie auch die Anforderungen hinsichtlich Verarbeitungsleistung, Arbeitsspeicher und Netzwerkbandbreite.
+3. Bestimmen Sie die genaue VM-Größe, die Sie verwenden möchten. Die VM-Größe muss groß genug sein, um die Anzahl der vorhandenen Datenträger zu unterstützen. Wenn Sie z. B. über 4 Datenträger verfügen, muss der virtuelle Computer 2 oder mehr Kerne haben. Berücksichtigen Sie auch die Anforderungen hinsichtlich Verarbeitungsleistung, Arbeitsspeicher und Netzwerkbandbreite.
 4. Erstellen Sie ein Storage Premium-Konto in der Zielregion. Dies ist das Konto, das Sie für den neuen virtuellen Computer verwenden werden.
 5. Halten Sie die Details zum aktuellen virtuellen Computer bereit, einschließlich der Liste der Datenträger und die zugehörigen VHD-Blobs.
 6. Bereiten Sie Ihre Anwendung für Ausfallzeiten vor. Für eine saubere Migration müssen Sie die gesamte Verarbeitung im aktuellen System beenden. Erst dann können Sie den konsistenten Zustand erreichen, den Sie auf die neue Plattform migrieren können. Die Dauer der Ausfallzeit hängt von der Datenmenge der zu migrierenden Datenträger ab.
@@ -415,7 +415,7 @@ Wenn Sie mehrere zu migrierende virtuelle Computer haben, kann eine Automatisier
 
     # whether or not to copy the os disk, the default is only copy data disks
     [Parameter(Mandatory = $false)]
-    [String] $DataDiskOnly = $true,
+    [Bool] $DataDiskOnly = $true,
 
     # how frequently to report the copy status in sceconds
     [Parameter(Mandatory = $false)]
@@ -646,7 +646,7 @@ Wenn Sie mehrere zu migrierende virtuelle Computer haben, kann eine Automatisier
     New-AzureVM -ServiceName $DestServiceName -VMs $vm -Location $Location
 
 ### Optimierung
-Die aktuelle Konfiguration des virtuellen Computers kann speziell für die Arbeit mit Standarddatenträgern angepasst werden, zum Beispiel, um die Leistung zu erhöhen. Verwenden Sie dazu viele Datenträger in einem Stripesetvolume. Da Storage Premium-Datenträger eine bessere Leistung bieten, können Sie Ihre Kosten optimieren, indem Sie die Anzahl der Datenträger reduzieren. Ihre Anwendung benötigt möglicherweise ein Volume mit 2000 IOPS, und Sie verwenden ein Stripeset mit 4 Standardspeicherdatenträgern, um 4 x 500 = 2000 IOPS zu erhalten. Mit Storage Premium-Datenträger kann ein einzelner 512-GB-Datenträger 2300 IOPS bereitstellen. Folglich können Sie, statt 4 Datenträger separat unter Storage Premium zu verwenden, die Kosten optimieren, indem Sie einen einzelnen Datenträger verwenden. Optimierungen wie diese Anforderung müssen von Fall zu Fall behandelt werden und erfordern benutzerdefinierte Schritte nach der Migration. Beachten Sie auch, dass dieser Prozess bei Datenbanken und Anwendungen, die von dem während der Einrichtung definierten Datenträgerlayout abhängig sind, möglicherweise nicht gut funktioniert.
+Die aktuelle Konfiguration des virtuellen Computers kann speziell für die Arbeit mit Standarddatenträgern angepasst werden, zum Beispiel, um die Leistung zu erhöhen. Verwenden Sie dazu viele Datenträger in einem Stripesetvolume. Da Storage Premium-Datenträger eine bessere Leistung bieten, können Sie Ihre Kosten optimieren, indem Sie die Anzahl der Datenträger reduzieren. Ihre Anwendung benötigt möglicherweise ein Volume mit 2000 IOPS, und Sie verwenden ein Stripeset mit 4 Standardspeicherdatenträgern, um 4 x 500 = 2000 IOPS zu erhalten. Mit Storage Premium-Datenträger kann ein einzelner 512-GB-Datenträger 2300 IOPS bereitstellen. Folglich können Sie, statt 4 Datenträger separat unter Storage Premium zu verwenden, die Kosten optimieren, indem Sie einen einzelnen Datenträger verwenden. Optimierungen wie diese Anforderung müssen von Fall zu Fall behandelt werden und erfordern benutzerdefinierte Schritte nach der Migration. Beachten Sie auch, dass dieser Prozess bei Datenbanken und Anwendungen, die von dem während der Einrichtung definierten Datenträgerlayout abhängig sind, möglicherweise nicht gut funktioniert.
 
 #### Vorbereitung
 1.	Führen Sie die einfache Migration wie im vorigen Abschnitt beschrieben durch. Optimierungen werden nach der Migration auf dem neuen virtuellen Computer ausgeführt.
@@ -680,4 +680,4 @@ Lesen Sie außerdem die folgenden Ressourcen, um mehr über Azure Sstorage und A
 [2]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [3]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-3.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0727_2016-->

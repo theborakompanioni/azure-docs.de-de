@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/29/2016"
+   ms.date="08/02/2016"
    ms.author="nitinme"/>
 
 # Erste Schritte mit Azure Data Lake-Speicher mithilfe von REST-APIs
@@ -34,7 +34,7 @@ In diesem Artikel erfahren Sie, wie Sie mit WebHDFS-REST-APIs und Data Lake Spei
 ## Voraussetzungen
 
 - **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-- **Aktiviertes Azure-Abonnement** für die öffentliche Vorschauversion des Data Lake-Speichers. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
+- **Aktiviertes Azure-Abonnement** für die öffentliche Vorschauversion des Data Lake-Speichers. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
 - **Erstellen einer Azure Active Directory-Anwendung.** Zur Authentifizierung mithilfe von Azure Active Directory stehen Ihnen zwei Möglichkeiten zur Verfügung: **interaktiv** und **nicht interaktiv**. Je nach der gewählten Authentifizierung gelten unterschiedliche Voraussetzungen.
 	* **Interaktive Authentifizierung** (die in diesem Artikel verwendet wird) – Sie müssen in Azure Active Directory eine **native Clientanwendung** erstellen. Nach dem Erstellen der Anwendung rufen Sie die folgenden Werte ab, die mit der Anwendung in Zusammenhang stehen.
 		- Abrufen von **Client-ID** und **Umleitungs-URI** für die Anwendung
@@ -43,7 +43,7 @@ In diesem Artikel erfahren Sie, wie Sie mit WebHDFS-REST-APIs und Data Lake Spei
 	* **Nicht interaktive Authentifizierung** – Sie müssen in Azure Active Directory eine **Webanwendung** erstellen. Nach dem Erstellen der Anwendung rufen Sie die folgenden Werte ab, die mit der Anwendung in Zusammenhang stehen.
 		- Abrufen von **Client-ID**,**geheimem Clientschlüssel** und **Umleitungs-URI** für die Anwendung
 		- Festlegen der delegierten Berechtigungen
-		- Weisen Sie die Azure Active Directory-Anwendung einer Rolle zu. Die Rolle kann sich auf der Ebene des Bereichs befinden, auf der Sie die Berechtigung für die Azure Active Directory-Anwendung gewähren möchten. Beispielsweise können Sie die Anwendung auf Abonnementebene oder auf der Ebene einer Ressourcengruppe zuweisen. Eine Anleitung hierzu finden Sie unter [Zuweisen einer Anwendung zur Rolle](../resource-group-create-service-principal-portal.md#assign-application-to-role). 
+		- Weisen Sie die Azure Active Directory-Anwendung einer Rolle zu. Die Rolle kann sich auf der Ebene des Bereichs befinden, auf der Sie die Berechtigung für die Azure Active Directory-Anwendung gewähren möchten. Beispielsweise können Sie die Anwendung auf Abonnementebene oder auf der Ebene einer Ressourcengruppe zuweisen. Eine Anleitung hierzu finden Sie unter [Zuweisen einer Anwendung zur Rolle](../resource-group-create-service-principal-portal.md#assign-application-to-role).
 
 	Anweisungen dazu, wie Sie diese Werte abrufen, Berechtigungen festlegen und Rollen zuweisen können, finden Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mithilfe des Portals](../resource-group-create-service-principal-portal.md).
 
@@ -108,7 +108,7 @@ Die Ausgabe dieser Anforderung enthält ein Autorisierungstoken (gekennzeichnet 
 
 In diesem Artikel wird der **nicht interaktive** Ansatz verfolgt. Weitere Informationen zur nicht interaktiven Authentifizierung (Dienst-zu-Dienst-Aufrufe) finden Sie unter [Aufrufe zwischen Diensten mithilfe von Clientanmeldeinformationen](https://msdn.microsoft.com/library/azure/dn645543.aspx).
 
-## Erstellen eines Data Lake-Speicherkontos
+## Erstellen eines Data Lake-Speicherkontos
 
 Dieser Vorgang basiert auf dem [hier](https://msdn.microsoft.com/library/mt694078.aspx) definierten REST-API-Aufruf.
 
@@ -242,7 +242,7 @@ Es sollte eine Ausgabe angezeigt werden, die Folgendem ähnelt:
 	
 	{"boolean":true}
 
-## Löschen einer Datei aus einem Data Lake-Speicherkonto
+## Löschen einer Datei aus einem Data Lake-Speicherkonto
 
 Dieser Vorgang basiert auf dem [hier](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Delete_a_FileDirectory) definierten WebHDFS-REST-API-Aufruf.
 
@@ -257,11 +257,11 @@ Folgendes sollte angezeigt werden:
 	
 	{"boolean":true}
 
-## Löschen eines Data Lake-Speicherkontos
+## Löschen eines Data Lake-Speicherkontos
 
 Dieser Vorgang basiert auf dem [hier](https://msdn.microsoft.com/library/mt694075.aspx) definierten REST-API-Aufruf.
 
-Verwenden Sie zum Löschen eines Data Lake-Speicherkontos den folgenden cURL-Befehl. Ersetzen Sie **<yourstorename>** durch Ihren Data Lake-Speichernamen.
+Verwenden Sie zum Löschen eines Data Lake-Speicherkontos den folgenden cURL-Befehl. Ersetzen Sie **<yourstorename>** durch Ihren Data Lake-Speichernamen.
 
 	curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstorename>?api-version=2015-10-01-preview
 
@@ -276,4 +276,4 @@ Folgendes sollte angezeigt werden:
 - [Open Source-Big Data-Anwendungen, die mit Azure Data Lake-Speicher funktionieren](data-lake-store-compatible-oss-other-applications.md)
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -24,6 +24,9 @@ Mit unterstützten Logik-Apps-Connectors können Sie die Verbindung zum Zugriff 
 
 * Um das lokale Datengateway Ihrem Konto (auf Azure Active Directory-Basis) zuzuordnen, müssen Sie eine E-Mail-Adresse Ihrer Schule bzw. Ihres Unternehmens in Azure angeben.
     * Bei Verwendung eines Microsoft-Kontos (z.B. @outlook.com, @live.com) können Sie mit Ihrem Azure-Konto mit [folgenden Schritten](../virtual-machines/virtual-machines-windows-create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal) eine Schul- bzw. Unternehmens-E-Mailadresse erstellen.
+
+> [AZURE.WARNING] Derzeit gilt eine Einschränkung, dass die lokale Gateway-Installation nur abgeschlossen wird, wenn ein mit Power BI registriertes Konto verwendet wird. Registrieren Sie in der Zwischenzeit ein Konto mit „Power BI Free“, um die Installation erfolgreich abzuschließen.
+
 * Das lokale Datengateway muss [auf einem lokalen Computer installiert sein](app-service-logic-gateway-install.md).
 * Das Gateway darf nicht bereits anderweitig als lokales Azure-Datengateway in Anspruch genommen werden ([der Anspruch erfolgt mit der Erstellung von Schritt 2 unten](#2-create-an-azure-on-premises-data-gateway-resource)) – eine Installation kann nur einer einzigen Gatewayressource zugeordnet werden.
 
@@ -67,4 +70,4 @@ Die Verbindung sollte jetzt erfolgreich für die Verwendung in Ihrer Logik-App k
 [2]: ./media/app-service-logic-gateway-connection/blankconnection.PNG
 [3]: ./media/app-service-logic-gateway-connection/checkbox.PNG
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

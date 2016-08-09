@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="07/15/2016"
+   ms.date="07/26/2016"
    ms.author="vturecek"/>
 
 # Service Fabric-Reverseproxy
@@ -141,7 +141,7 @@ Sobald Sie über die Vorlage für den Cluster verfügen, die Sie bereitstellen m
         }
     },
     ```
-2. Geben Sie diesen Port im Abschnitt **Cluster** [Resource type](../resource-group-authoring-templates.md) an.
+2. Geben Sie den Port für jedes der nodetype-Objekte im [Abschnitt der Ressourcentypen](../resource-group-authoring-templates.md) des **Clusters** an.
 
     ```json
     {
@@ -150,9 +150,14 @@ Sobald Sie über die Vorlage für den Cluster verfügen, die Sie bereitstellen m
         "name": "[parameters('clusterName')]",
         "location": "[parameters('clusterLocation')]",
         ...
+       "nodeTypes": [
+          {
+           ...
+           "httpApplicationGatewayEndpointPort": "[parameters('SFReverseProxyPort')]",
+           ...
+          },
         ...
-        "httpApplicationGatewayEndpointPort": "[parameters('SFReverseProxyPort')]",
-        ...
+        ],
         ...
     }
     ```
@@ -236,4 +241,4 @@ Sobald Sie über die Vorlage für den Cluster verfügen, die Sie bereitstellen m
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

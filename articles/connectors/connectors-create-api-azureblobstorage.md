@@ -9,16 +9,18 @@
     tags="connectors"/>
 
 <tags
-   ms.service="multiple"
+   ms.service="logic-apps"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="na" 
-   ms.date="07/18/2016"
+   ms.workload="integration" 
+   ms.date="07/25/2016"
    ms.author="mandia"/>
 
 # Erste Schritte mit dem Azure Blob Storage-Connector
 Azure Blob Storage ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten. In Azure Blob Storage können Sie verschiedene Aktionen für Blobs ausführen und sie beispielsweise hochladen, aktualisieren, abrufen oder löschen.
+
+Azure-Blobspeicher ermöglicht Folgendes:
 
 - Gestalten Sie Ihren Workflow, indem Sie neue Projekte hochladen oder kürzlich aktualisierte Dateien abrufen.
 - Mithilfe von Aktionen können Sie unter anderem Dateimetadaten abrufen, eine Datei löschen und Dateien kopieren. Wenn also beispielsweise ein Tool auf einer Azure-Website aktualisiert wird (Trigger), kann eine Datei in Blob Storage aktualisiert werden (Aktion).
@@ -27,40 +29,19 @@ Dieses Thema beschreibt, wie Sie den Blob Storage-Connector in einer Logik-App v
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die allgemein verfügbare Version von Logic Apps.
 
-[Erstellen Sie zunächst eine Logik-App.](../app-service-logic/app-service-logic-create-a-logic-app.md)
-
->[AZURE.INCLUDE [Voraussetzungen](../../includes/connectors-create-api-azureblobstorage.md)]
-
+Weitere Informationen zu Logic Apps finden Sie unter [Was sind Logik-Apps?](../app-service-logic/app-service-logic-what-are-logic-apps.md) sowie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 ## Herstellen einer Verbindung mit Azure Blob Storage
 
-Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, muss zunächst eine *Verbindung* mit dem Dienst hergestellt werden. Eine Verbindung stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her. Wenn Sie also beispielsweise eine Verbindung mit Dropbox herstellen möchten, müssen Sie zunächst eine entsprechende *Verbindung* erstellen. Zum Erstellen einer Verbindung geben Sie die Anmeldeinformationen ein, mit denen Sie normalerweise auf den Dienst zugreifen, mit dem Sie eine Verbindung herstellen möchten. Im Falle des Dropbox-Beispiels geben Sie also Ihre Dropbox-Anmeldeinformationen ein, um die Verbindung mit Dropbox zu erstellen.
-
-Wenn Sie Ihren Logik-Apps diesen Connector hinzufügen, erstellen Sie eine Verbindung mit dem Blob Storage-Konto. Beim erstmaligen Hinzufügen dieses Connectors werden Sie zur Eingabe der Verbindungsinformationen aufgefordert:
-
-![](./media/connectors-create-api-azureblobstorage/connection-details.png)
-
+Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, muss zunächst eine *Verbindung* mit dem Dienst hergestellt werden. Eine Verbindung stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her. Um eine Verbindung mit einem Speicherkonto herzustellen, müssen Sie beispielsweise zuerst eine Blob-Speicher-*Verbindung* erstellen. Hierzu geben Sie die Anmeldeinformationen ein, mit denen Sie normalerweise auf den Dienst zugreifen, mit dem Sie eine Verbindung herstellen möchten. Geben Sie für Azure Storage also die Anmeldeinformationen Ihres Speicherkontos ein, um die Verbindung zu erstellen.
 
 #### Erstellen der Verbindung
 
-1. Geben Sie die Speicherkontodetails ein. Mit einem Sternchen gekennzeichnete Eigenschaften müssen angegeben werden.
-
-	| Eigenschaft | Details |
-|---|---|
-| Verbindungsname* | Geben Sie einen beliebigen Namen für Ihre Verbindung ein. |
-| Kontoname für Azure-Speicher* | Geben Sie den Namen des Speicherkontos ein. Der Name des Speicherkontos wird im Azure-Portal in den Speichereigenschaften angezeigt. |
-| Zugriffsschlüssel für das Azure-Speicherkonto* | Geben Sie den Schlüssel des Speicherkontos ein. Die Zugriffsschlüssel werden im Azure-Portal in den Speichereigenschaften angezeigt. |
-
-	Mit diesen Anmeldeinformationen kann Ihre Logik-App eine Verbindung herstellen und auf Ihre Daten zugreifen. Nach Abschluss des Vorgangs sehen Ihre Verbindungsdetails in etwa wie folgt aus:
-
-	![Schritt zur Erstellung der Azure Blob Storage-Verbindung](./media/connectors-create-api-azureblobstorage/sample-connection.png)
-
-2. Klicken Sie auf **Erstellen**.
-
+>[AZURE.INCLUDE [Herstellen einer Verbindung mit Azure Blob Storage](../../includes/connectors-create-api-azureblobstorage.md)]
  
 ## Verwenden eines Triggers
 
-Dieser Connector verfügt über keine Trigger. Verwenden Sie andere Trigger, um die Logik-App zu starten – etwa einen Wiederholungstrigger, einen HTTP-Webhook-Trigger oder einen Trigger eines anderen Connectors. Ein Beispiel finden Sie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Dieser Connector verfügt über keine Trigger. Verwenden Sie andere Trigger, um die Logik-App zu starten – beispielsweise einen Wiederholungstrigger, einen HTTP-Webhook-Trigger oder einen Trigger eines anderen Connectors. Ein Beispiel finden Sie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 ## Verwenden einer Aktion
 	
@@ -90,7 +71,7 @@ Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workfl
 
 ## Technische Details
 
-## Aktionen
+## Storage-Blobaktionen
 
 |Aktion|Beschreibung|
 |--- | ---|
@@ -326,6 +307,6 @@ Das Aufrufen der verschiedenen Aktionen löst unter Umständen bestimmte Antwort
 
 ## Nächste Schritte
 
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Untersuchen der anderen verfügbaren Connectors für Logic Apps in unserer [API-Liste](apis-list.md).
+[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Informieren Sie sich in unserer [API-Liste](apis-list.md) über die anderen verfügbaren Connectors für Logic Apps.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

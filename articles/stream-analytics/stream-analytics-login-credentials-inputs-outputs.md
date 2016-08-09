@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="05/03/2016" 
+	ms.date="07/27/2016" 
 	ms.author="jeffstok"/>
 
 #Austauschen von Anmeldeinformationen für Ein- und Ausgaben in Stream Analytics-Aufträgen
@@ -46,15 +46,15 @@ Für andere Ein-/Ausgaben fahren Sie mit Teil 2 fort.
 ###Event Hubs
 1.  Wechseln Sie zur Service Bus-Erweiterung des Azure-Verwaltungsportals: ![Grafik6][graphic6]
 2.  Suchen Sie den vom Auftrag verwendeten Service Bus-Namespace, und wechseln Sie zu diesem: ![Grafik7][graphic7]
-3.  Wenn für den Auftrag eine SAS-Richtlinie für den Service Bus-Namespace verwendet wird, wechseln Sie zu Schritt 6.  
+3.  Wenn für den Auftrag eine SAS-Richtlinie für den Service Bus-Namespace verwendet wird, wechseln Sie zu Schritt 6.
 4.  Wechseln Sie zur Registerkarte "Event Hubs": ![Grafik8][graphic8]
 5.  Suchen Sie nach dem für den Auftrag verwendeten Event Hub, und wechseln Sie zu diesem: ![Grafik9][graphic9]
 6.  Wechseln Sie zur Registerkarte "Konfigurieren": ![Grafik10][graphic10]
 7.  Suchen Sie im Dropdownlistenfeld "Richtlinienname" nach der SAS-Richtlinie für den Auftrag: ![Grafik11][graphic11]
-8.  Wählen Sie entweder den primären oder den sekundären Schlüssel abhängig davon aus, **welcher für den Auftrag nicht verwendet wird**.  
+8.  Wählen Sie entweder den primären oder den sekundären Schlüssel abhängig davon aus, **welcher für den Auftrag nicht verwendet wird**.
 9.  Klicken Sie auf "Neu generieren": ![Grafik12][graphic12]
 10. Kopieren Sie den neu generierten Schlüssel: ![Grafik13][graphic13]
-11. Fahren Sie mit Teil 2 fort.  
+11. Fahren Sie mit Teil 2 fort.
 
 ###SQL-Datenbank
 
@@ -66,13 +66,13 @@ Für andere Ein-/Ausgaben fahren Sie mit Teil 2 fort.
 4.  Geben Sie den Datenbank-Master ein: ![Grafik17][graphic17]
 5.  Geben Sie Ihren Benutzernamen und das Kennwort ein, und klicken Sie auf "Anmelden": ![Grafik18][graphic18]
 6.  Klicken Sie auf "Neue Abfrage": ![Grafik19][graphic19]
-7.  Geben Sie die folgende Abfrage ein, und ersetzen Sie <login_name> mit Ihrem Benutzernamen und <enterStrongPasswordHere> mit dem neuen Kennwort: `CREATE LOGIN <login_name> WITH PASSWORD = '<enterStrongPasswordHere>'`
+7.  Geben Sie die folgende Abfrage ein, und ersetzen Sie „<login\_name>“ mit Ihrem Benutzernamen und „<enterStrongPasswordHere>“ mit dem neuen Kennwort: `CREATE LOGIN <login_name> WITH PASSWORD = '<enterStrongPasswordHere>'`
 8.  Klicken Sie auf "Ausführen": ![Grafik20][graphic20]
 9.  Kehren Sie zu Schritt 2 zurück, und klicken Sie dieses Mal auf die Datenbank: ![Grafik21][graphic21]
 10. Klicken Sie auf den Befehl "Verwalten": ![Grafik22][graphic22]
 11. Geben Sie Ihren Benutzernamen und das Kennwort ein, und klicken Sie auf "Anmelden": ![Grafik23][graphic23]
 12. Klicken Sie auf "Neue Abfrage": ![Grafik24][graphic24]
-13. Geben Sie die folgende Abfrage ein, und ersetzen Sie <user_name> mit einem Namen, mit dem diese Anmeldung im Kontext der Datenbank identifiziert werden soll (Sie können z. B. den gleichen Wert wie für <login_name> eingeben). Ersetzen Sie anschließend <login_name> mit Ihrem neuen Benutzernamen: `CREATE USER <user_name> FROM LOGIN <login_name>`
+13. Geben Sie die folgende Abfrage ein, und ersetzen Sie „<user\_name>“ mit einem Namen, mit dem diese Anmeldung im Kontext der Datenbank identifiziert werden soll (Sie können z.B. den gleichen Wert wie für „<login\_name>“ eingeben). Ersetzen Sie anschließend „<login\_name>“ mit Ihrem neuen Benutzernamen: `CREATE USER <user_name> FROM LOGIN <login_name>`
 14. Klicken Sie auf "Ausführen": ![Grafik25][graphic25]
 15. Sie sollten nun dem neuen Benutzer die gleichen Rollen und Berechtigungen zuweisen, über die der ursprüngliche Benutzer verfügte.
 16. Fahren Sie mit Teil 2 fort.
@@ -100,9 +100,9 @@ Für andere Ein-/Ausgaben fahren Sie mit Teil 2 fort.
 4.	Fahren Sie mit Teil 4 fort.
 
 ###Power BI
-1.	Klicken Sie auf "Renew authorization":  
+1.	Klicken Sie auf "Renew authorization":
 * ![Grafik35][graphic35]
-* Die folgende Bestätigung wird geöffnet:  
+* Die folgende Bestätigung wird geöffnet:
 * ![Grafik36][graphic36]
 2.	Klicken Sie auf den Befehl "Speichern", und bestätigen Sie das Speichern der Änderungen: ![Grafik37][graphic37]
 3.	Beim Speichern der Änderungen wird automatisch ein Verbindungstest gestartet, dessen erfolgreiche Ausführung Sie prüfen sollten.
@@ -111,14 +111,14 @@ Für andere Ein-/Ausgaben fahren Sie mit Teil 2 fort.
 ###SQL-Datenbank
 1.	Suchen Sie die Felder "Benutzername" und "Kennwort", und fügen Sie den neu erstellten Anmeldeinformationssatz ein: ![Grafik38][graphic38]
 2.	Klicken Sie auf den Befehl "Speichern", und bestätigen Sie das Speichern der Änderungen: ![Grafik39][graphic39]
-3.	Beim Speichern der Änderungen wird automatisch ein Verbindungstest gestartet, dessen erfolgreiche Ausführung Sie prüfen sollten.  
+3.	Beim Speichern der Änderungen wird automatisch ein Verbindungstest gestartet, dessen erfolgreiche Ausführung Sie prüfen sollten.
 4.	Fahren Sie mit Teil 4 fort.
 
 ##Teil 4: Starten des Auftrags ab dem letzten Anhaltepunkt
 1.	Verlassen Sie die Ein-/Ausgabe: ![Grafik40][graphic40]
 2.	Klicken Sie auf den Befehl "Start": ![Grafik41][graphic41]
 3.	Wählen Sie den letzten Anhaltepunkt aus, und klicken Sie auf "OK": ![Grafik42][graphic42]
-4.	Fahren Sie mit Teil 5 fort.  
+4.	Fahren Sie mit Teil 5 fort.
 
 ##Teil 5: Entfernen des alten Anmeldeinformationssatzes
 Dieser Teil gilt für die folgenden Eingaben/Ausgaben:
@@ -134,8 +134,8 @@ Wiederholen Sie Teil 1 für den Zugriffsschlüssel, der bislang für den Auftra
 Wiederholen Sie Teil 1 für den Schlüssel, der bislang für den Auftrag verwendet wurde, um den jetzt nicht mehr verwendeten Schlüssel zu erneuern.
 
 ###SQL-Datenbank
-1.	Wechseln Sie zurück zum Abfragefenster von Teil 1 Schritt 7, geben Sie die folgende Abfrage ein, und ersetzen Sie <previous_login_name> mit dem Benutzernamen, der zuvor für den Auftrag verwendet wurde: `DROP LOGIN <previous_login_name>`  
-2.	Klicken Sie auf "Ausführen": ![Grafik43][graphic43]  
+1.	Wechseln Sie zurück zum Abfragefenster von Teil 1 Schritt 7, geben Sie die folgende Abfrage ein, und ersetzen Sie „<previous\_login\_name>“ mit dem Benutzernamen, der zuvor für den Auftrag verwendet wurde: `DROP LOGIN <previous_login_name>`
+2.	Klicken Sie auf "Ausführen": ![Grafik43][graphic43]
 
 Die folgende Bestätigung wird geöffnet:
 
@@ -198,4 +198,4 @@ Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://
 [graphic43]: ./media/stream-analytics-login-credentials-inputs-outputs/43-stream-analytics-login-credentials-inputs-outputs.png
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

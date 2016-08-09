@@ -1,8 +1,7 @@
 <properties
- pageTitle="Schützen des Internets der Dinge von Anfang an | Microsoft Azure"
+ pageTitle="Schützen Ihrer IoT-Lösung von Grund auf | Microsoft Azure"
  description="In diesem Artikel werden die integrierten Sicherheitsfeatures der Microsoft Azure IoT Suite beschrieben."
- services=""
- suite="iot-hub"
+ services="iot-hub"
  documentationCenter=""
  authors="YuriDio"
  manager="timlt"
@@ -19,4 +18,28 @@
 
 [AZURE.INCLUDE [iot-security-ground-up](../../includes/iot-security-ground-up.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+## Nächste Schritte
+
+Weitere Informationen zum Schützen Ihrer IoT-Lösung finden Sie hier:
+
+- [IoT – Bewährte Methoden für die Sicherheit][lnk-security-best-practices]
+- [IoT-Sicherheitsarchitektur][lnk-security-architecture]
+- [Schützen Ihrer IoT-Bereitstellung][lnk-security-deployment]
+
+Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
+
+- [Entwerfen Ihrer Lösung][lnk-design]
+- [Erkunden der Geräteverwaltung mithilfe der Beispielbenutzeroberfläche][lnk-dmui]
+- [Simulieren eines Geräts mit dem Gateway SDK][lnk-gateway]
+- [Verwenden des Azure-Portals zur Verwaltung von IoT Hub][lnk-portal]
+
+[lnk-security-best-practices]: iot-hub-security-best-practices.md
+[lnk-security-architecture]: iot-hub-security-architecture.md
+[lnk-security-deployment]: iot-hub-security-deployment.md
+
+[lnk-design]: iot-hub-guidance.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-portal]: iot-hub-manage-through-portal.md
+
+<!---HONumber=AcomDC_0727_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/18/2016"
+   ms.date="07/22/2016"
    ms.author="rortloff;barbkess;sonyama"/>
 
 # Sichern einer Datenbank in SQL Data Warehouse
@@ -34,7 +34,7 @@ Dieser Artikel beschreibt die Grundlagen zum Sichern der Azure SQL Data Warehous
 
 Verbindungssicherheit bezieht sich darauf, auf welche Weise Sie die Verbindungen zu Ihrer Datenbank mithilfe von Firewall-Regeln und Verbindungsverschlüsselung einschränken und sichern.
 
-Firewall-Regeln werden vom Server und der Datenbank verwendet, um Verbindungsversuche von IP-Adressen abzuwehren, die nicht explizit der weißen Liste hinzugefügt wurden. Damit von Ihrer Anwendung oder von der öffentlichen IP-Adresse Ihres Clientcomputers aus Verbindungen hergestellt werden können, müssen Sie zuerst über das klassische Azure-Portal, über REST-API oder PowerShell eine Firewallregel auf Serverebene erstellen. Eine bewährte Methode besteht darin, die von der Server-Firewall zugelassenen IP-Adressbereiche so weit wie möglich einzuschränken. Um von Ihrem lokalen Computer aus auf Azure SQL Data Warehouse zuzugreifen, stellen Sie sicher, dass die Firewall im Netzwerk und auf dem lokalen Computer eine ausgehende Kommunikation an TCP-Port 1433 zulässt. Weitere Informationen finden Sie unter [Firewall für die Azure SQL-Datenbank][].
+Firewall-Regeln werden vom Server und der Datenbank verwendet, um Verbindungsversuche von IP-Adressen abzuwehren, die nicht explizit der weißen Liste hinzugefügt wurden. Damit von Ihrer Anwendung oder von der öffentlichen IP-Adresse Ihres Clientcomputers aus Verbindungen hergestellt werden können, müssen Sie zuerst über das klassische Azure-Portal, über REST-API oder PowerShell eine Firewallregel auf Serverebene erstellen. Eine bewährte Methode besteht darin, die von der Server-Firewall zugelassenen IP-Adressbereiche so weit wie möglich einzuschränken. Um von Ihrem lokalen Computer aus auf Azure SQL Data Warehouse zuzugreifen, stellen Sie sicher, dass die Firewall im Netzwerk und auf dem lokalen Computer eine ausgehende Kommunikation an TCP-Port 1433 zulässt. Weitere Informationen finden Sie unter [Azure SQL-Datenbankfirewall][], [sp\_set\_firewall\_rule][] und [sp\_set\_database\_firewall\_rule][].
 
 Verbindungen mit SQL Data Warehouse können verschlüsselt werden, indem Sie den Verschlüsselungsmodus in der Verbindungszeichenfolge festlegen. Die Syntax zum Aktivieren der Verschlüsselung für die Verbindung variiert je nach Protokoll. Um Ihre Verbindungszeichenfolge festzulegen, navigieren Sie im Azure-Portal zu Ihrer Datenbank. Klicken Sie unter *Essentials* auf *Datenbank-Verbindungszeichenfolgen anzeigen*.
 
@@ -47,7 +47,7 @@ Bei der Erstellung des logischen Servers für die Datenbank haben Sie eine "Serv
 
 Allerdings sollten die Benutzer in Ihrer Organisation als bewährte Methode ein anderes Konto für die Authentifizierung verwenden. Auf diese Weise können Sie die Berechtigungen für die Anwendung beschränken und die Risiken schädlicher Aktivitäten reduzieren, falls Ihr Anwendungscode für einen SQL-Injection-Angriff anfällig ist.
 
-Stellen Sie mit den Anmeldeinformationen eine Verbindung mit der **Masterdatenbank** auf dem Server her, und erstellen Sie einen neuen authentifizierten SQL Server-Benutzer.
+Um einen authentifizierten SQL Server-Benutzer zu erstellen, stellen Sie mit den Anmeldeinformationen des Serveradministrators eine Verbindung mit der **Masterdatenbank** auf dem Server her, und erstellen Sie eine neue Serveranmeldung.
 
 ```sql
 -- Connect to master database and create a login
@@ -55,7 +55,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'strong_password';
 
 ```
 
-Stellen Sie dann mit den Anmeldedaten für den Serveradministrator eine Verbindung mit der **SQL Data Warehouse-Datenbank** her, und erstellen Sie einen Datenbankbenutzer mit der gerade erstellten Serveranmeldung.
+Stellen Sie dann mit den Anmeldedaten für den Serveradministrator eine Verbindung mit der **SQL Data Warehouse-Datenbank** her, und erstellen Sie einen Datenbankbenutzer basierend auf der gerade erstellten Serveranmeldung.
 
 ```sql
 -- Connect to SQL DW database and create a database user
@@ -63,7 +63,7 @@ CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 
 ```
 
-Weitere Informationen zur Authentifizierung bei einer SQL-Datenbank finden Sie unter [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank][]. Weitere Informationen zur Verwendung der Azure AD-Vorschau für SQL Data Warehouse finden Sie unter [Herstellen einer Verbindung mit SQL Data Warehouse mithilfe von Azure Active Directory-Authentifizierung][].
+Weitere Informationen zur Authentifizierung bei einer SQL-Datenbank finden Sie unter [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank][]. Weitere Informationen zur Verwendung der Azure AD-Vorschau für SQL Data Warehouse finden Sie unter [Herstellen einer Verbindung mit SQL Data Warehouse mithilfe der Azure Active Directory-Authentifizierung][].
 
 
 ## Autorisierung
@@ -103,7 +103,7 @@ Sie können Transparent Data Encryption auch über die Datenbankeinstellungen im
 Die Überwachung und Nachverfolgung von Datenbankereignissen kann Sie bei der Einhaltung von gesetzlichen Bestimmungen und der Erkennung von verdächtigen Aktivitäten unterstützen. Mit SQL Data Warehouse-Überwachung können Sie Ereignisse in der Datenbank in einem Überwachungsprotokoll in Ihrem Azure-Speicherkonto aufzeichnen. SQL Data Warehouse-Überwachung kann auch in Microsoft Power BI integriert werden, um detaillierte Berichte und Analysen zu ermöglichen. Weitere Informationen finden Sie unter [Erste Schritte mit der SQL-Datenbanküberwachung][].
 
 ## Nächste Schritte
-Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehouse anhand von verschiedenen Protokollen finden Sie unter [Herstellen einer Verbindung mit SQL Data Warehouse][].
+Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehouse über verschiedene Protokolle finden Sie unter [Herstellen einer Verbindung mit SQL Data Warehouse][].
 
 <!--Image references-->
 
@@ -111,10 +111,12 @@ Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehou
 [Herstellen einer Verbindung mit SQL Data Warehouse]: ./sql-data-warehouse-develop-connections.md
 [Erste Schritte mit der SQL-Datenbanküberwachung]: ./sql-data-warehouse-overview-auditing.md
 [Erste Schritte mit Transparent Data Encryption (TDE)]: ./sql-data-warehouse-encryption-tde.md
-[Herstellen einer Verbindung mit SQL Data Warehouse mithilfe von Azure Active Directory-Authentifizierung]: ./sql-data-warehouse-get-started-connect-aad-authentication.md
+[Herstellen einer Verbindung mit SQL Data Warehouse mithilfe der Azure Active Directory-Authentifizierung]: ./sql-data-warehouse-get-started-connect-aad-authentication.md
 
 <!--MSDN references-->
-[Firewall für die Azure SQL-Datenbank]: https://msdn.microsoft.com/library/ee621782.aspx
+[Azure SQL-Datenbankfirewall]: https://msdn.microsoft.com/library/ee621782.aspx
+[sp\_set\_firewall\_rule]: https://msdn.microsoft.com/library/dn270017.aspx
+[sp\_set\_database\_firewall\_rule]: https://msdn.microsoft.com/library/dn270010.aspx
 [Datenbankrollen]: https://msdn.microsoft.com/library/ms189121.aspx
 [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank]: https://msdn.microsoft.com/library/ee336235.aspx
 [Berechtigungen]: https://msdn.microsoft.com/library/ms191291.aspx
@@ -125,4 +127,4 @@ Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehou
 <!--Other Web references-->
 [Rollenbasierte Zugriffssteuerung im Azure-Portal]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

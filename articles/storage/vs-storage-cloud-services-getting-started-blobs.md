@@ -18,7 +18,7 @@
 
 # Erste Schritte mit Azure-BLOB-Speicher und verbundenen Visual Studio-Diensten (Clouddienstprojekte)
 
-[AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
+[AZURE.INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## Übersicht
 
@@ -242,4 +242,4 @@ Da die Beispielmethode eine asynchrone Methode aufruft, muss sie mit dem Schlüs
 
 [AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

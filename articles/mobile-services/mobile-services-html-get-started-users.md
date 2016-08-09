@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple" 
 	ms.devlang="javascript" 
 	ms.topic="article" 
-	ms.date="11/30/2015" 
+	ms.date="07/21/2016" 
 	ms.author="glenga"/>
 
 # Hinzufügen von Authentifizierung zur Mobile Services-App 
@@ -35,7 +35,7 @@ Dieses Lernprogramm baut auf dem Mobile Services-Schnellstart auf. Sie müssen z
 
 3. Starten Sie im Ordner der App eine der folgenden Befehlsdateien aus dem **server**-Unterordner.
 
-	+ **launch-windows** (Windows-Computer) 
+	+ **launch-windows** (Windows-Computer)
 	+ **launch-mac.command** (Mac OS X-Computer)
 	+ **launch-linux.sh** (Linux-Computer)
 
@@ -105,7 +105,7 @@ Anschließend werden Sie die App aktualisieren, sodass diese sich authentifizier
 
 	>[AZURE.IMPORTANT]In einer PhoneGap-App müssen Sie dem Projekt auch die folgenden Plug-Ins hinzufügen:
 	><ul><li><code>PhoneGap-Plug-In hinzufügen https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git</code></li>
-	> <li><code>PhoneGap-Plug-In hinzufügen https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git</code></li></ul>
+	><li><code>PhoneGap-Plug-In hinzufügen https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git</code></li></ul>
 
 9. Wechseln Sie zum Browser, in dem Ihre App ausgeführt wird, und aktualisieren Sie die Seite.
 
@@ -137,4 +137,4 @@ Im nächsten Lernprogramm [Autorisieren von Benutzern mit Skripts] werden Sie de
 [Mobile Services HTML/JavaScript How-to Conceptual Reference]: mobile-services-html-how-to-use-client-library.md
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

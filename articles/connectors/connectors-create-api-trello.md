@@ -9,7 +9,7 @@ editor=""
 tags="connectors" />
 
 <tags
-ms.service="app-service-logic"
+ms.service="logic-apps"
 ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
@@ -23,9 +23,9 @@ ms.author="deonhe"/>
 
 Der Trello-Connector kann verwendet werden in:
 
-- [Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)  
-- [PowerApps](http://powerapps.microsoft.com)  
-- [Flow](http://flows.microsoft.com)  
+- [Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)
+- [PowerApps](http://powerapps.microsoft.com)
+- [Flow](http://flows.microsoft.com)
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
@@ -91,7 +91,7 @@ Wenn einem Board eine neue Karte hinzugefügt wird: Löst einen Ablauf aus, wenn
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |die Standardeinstellung|Fehler beim Vorgang|
@@ -114,7 +114,7 @@ Wenn einer Liste eine neue Karte hinzugefügt wird: Löst einen Ablauf aus, wenn
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |die Standardeinstellung|Fehler beim Vorgang|
@@ -149,7 +149,7 @@ Auflisten von Karten im Board: Auflisten von Karten im Board
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |die Standardeinstellung|Fehler beim Vorgang|
@@ -195,7 +195,7 @@ Abrufen von Karten nach ID: Abrufen von Karten nach ID
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |die Standardeinstellung|Fehler beim Vorgang|
@@ -219,7 +219,7 @@ Aktualisieren von Karten: Aktualisieren von Karten
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |die Standardeinstellung|Fehler beim Vorgang|
@@ -242,7 +242,7 @@ Löschen von Karten: Löschen von Karten
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |die Standardeinstellung|Fehler beim Vorgang|
@@ -265,7 +265,7 @@ Erstellen von Karten: Erstellt eine neue Karten in Ihrem Trello-Konto
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |die Standardeinstellung|Fehler beim Vorgang|
@@ -298,7 +298,7 @@ Auflisten von Boards: Auflisten von Boards
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |die Standardeinstellung|Fehler beim Vorgang|
@@ -357,7 +357,7 @@ Abrufen von Boards nach ID: Abrufen von Boards nach ID
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |die Standardeinstellung|Fehler beim Vorgang|
@@ -383,7 +383,7 @@ Auflisten von Kartenlisten im Board: Auflisten von Kartenlisten im Board
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |die Standardeinstellung|Fehler beim Vorgang|
@@ -411,7 +411,7 @@ Abrufen von Listen nach ID: Abrufen von Listen nach ID
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |die Standardeinstellung|Fehler beim Vorgang|
@@ -610,4 +610,4 @@ Abrufen von Listen nach ID: Abrufen von Listen nach ID
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

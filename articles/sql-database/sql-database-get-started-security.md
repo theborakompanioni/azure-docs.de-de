@@ -4,7 +4,7 @@
 	keywords=""
 	services="sql-database"
 	documentationCenter=""
-	authors="carlrabeler"
+	authors="CarlRabeler"
 	manager="jhubbard"
 	editor=""/>
 
@@ -50,4 +50,4 @@ In diesem Tutorial erfahren Sie, wie Sie das Azure-Portal für Folgendes verwend
 ## Nächste Schritte
 Nachdem Sie dieses Tutorial zur SQL-Datenbank ausgeführt, ein Benutzerkonto erstellt und dem Benutzerkonto DBO-Berechtigungen erteilt haben, können Sie sich weiter über die [Sicherheit von SQL-Datenbanken](sql-database-manage-logins.md) informieren.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

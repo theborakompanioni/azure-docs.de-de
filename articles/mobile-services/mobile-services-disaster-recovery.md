@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="02/07/2016"
+	ms.date="07/21/2016"
 	ms.author="christopheranderson"/>
 
 # Notfallwiederherstellung mobiler Dienste
@@ -114,4 +114,4 @@ Jetzt sollte der mobile Dienst in einer neuen Azure-Region wiederhergestellt wor
 [Azure-Dienstdashboard]: http://www.windowsazure.com/support/service-dashboard/
 [Automatisieren von mobilen Diensten mit Befehlszeilentools]: http://www.windowsazure.com/develop/mobile/tutorials/command-line-administration/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0727_2016-->

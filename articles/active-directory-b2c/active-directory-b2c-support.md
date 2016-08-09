@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Vorschau für Azure Active Directory B2C: Support | Microsoft Azure"
+	pageTitle="Azure Active Directory B2C: Support | Microsoft Azure"
 	description="Senden von Supportanfragen für Azure Active Directory B2C"
 	services="active-directory-b2c"
 	documentationCenter=""
@@ -13,12 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="07/24/2016"
 	ms.author="swkrish"/>
 
-# Azure Active Directory B2C Preview: Senden von Supportanfragen
-
-[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
+# Azure Active Directory B2C: Senden von Supportanfragen
 
 Führen Sie die folgenden Schritte aus, um Supportanfragen für Azure Active Directory (Azure AD) B2C im Azure-Portal zu senden:
 
@@ -40,14 +38,14 @@ Führen Sie die folgenden Schritte aus, um Supportanfragen für Azure Active Dir
     - Wählen Sie für **Problemtyp** den Eintrag **Technisch** aus.
 	- Wählen Sie das entsprechende **Abonnement**.
     - **Dienst** ist **Active Directory**.
-    - Wählen Sie den entsprechenden **Supportplan**. Wenn Sie keinen besitzen, können Sie sich [hier](https://azure.microsoft.com/support/plans/) für einen Supportplan registrieren.
+    - Wählen Sie den entsprechenden **Supportplan**. Wenn Sie keinen besitzen, können Sie sich [hier](https://azure.microsoft.com/de-DE/support/plans/) für einen Supportplan registrieren.
 
     ![Support: Grundlagen](./media/active-directory-b2c-support/support-basics.png)
 
 6. Verwenden Sie diese Informationen auf dem Blatt **Problem**, und klicken Sie auf **Weiter**.
 
     - Wählen Sie den entsprechenden **Schweregrad**.
-    - Der **Problemtyp** lautet **B2C Preview**
+    - Der **Problemtyp** lautet **B2C**.
     - Wählen Sie die entsprechende **Kategorie**.
 	- Beschreiben Sie Ihr Problem im Feld **Details**. Geben Sie Details wie den Namen des B2C-Mandanten, eine Beschreibung des Problems, Fehlermeldungen, Korrelations-IDs (falls verfügbar) usw. an.
     - Geben Sie im Feld **Zeitrahmen** durch Datum und Uhrzeit (einschließlich Zeitzone) an, wann das Problem aufgetreten ist.
@@ -55,7 +53,7 @@ Führen Sie die folgenden Schritte aus, um Supportanfragen für Azure Active Dir
 
     ![Support: Problem](./media/active-directory-b2c-support/support-problem.png)
 
-7. Fügen Sie auf dem Blatt **Kontaktinformationen** Ihre Kontaktinformationen hinzu. Klicken Sie auf **Erstellen**. *Hinweis: Während der Vorschau steht der Support für Azure AD B2C nur auf Englisch zur Verfügung.*
+7. Fügen Sie auf dem Blatt **Kontaktinformationen** Ihre Kontaktinformationen hinzu. Klicken Sie auf **Erstellen**.
 
     ![Support: Kontakt](./media/active-directory-b2c-support/support-contact.png)
 
@@ -70,4 +68,4 @@ Versuchen Sie nicht, sich in Ihrem B2C-Mandanten für ein neues Azure-Abonnement
 
 ![Support – Kein Abonnement](./media/active-directory-b2c-support/support-no-sub.png)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

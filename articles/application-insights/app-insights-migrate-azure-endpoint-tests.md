@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Migrieren von Azure-Endpunkttests zu Application Insights-Verfügbarkeitstests" 
-	description="Wir haben Ihre klassischen Azure-Endpunktüberwachungs-Tests in die neuen Application Insights-Verfügbarkeitstests verschoben. Wir werden am 4. April 2016 zu ihnen umschalten."
+	description="Wir verschieben Ihre klassischen Azure-Endpunktüberwachungs-Tests in die neuen Application Insights-Verfügbarkeitstests. Wir planen den Wechsel in der Woche vom 22. August 2016."
 	services="application-insights" 
     documentationCenter=""
 	authors="soubhagyadash" 
@@ -12,12 +12,12 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/10/2016" 
+	ms.date="07/25/2016" 
 	ms.author="awills"/>
  
 # Verschieben von Azure-Endpunktüberwachung nach Application Insights-Verfügbarkeitstests
 
-Verwenden Sie die [Endpunktüberwachung](https://blogs.msdn.microsoft.com/mast/2013/03/03/windows-azure-portal-update-configure-web-endpoint-status-monitoring-preview/) für Ihre Azure-Web-Apps? Am 4. April 2016 wird sie durch die neuen und leistungsfähigeren [Verfügbarkeitstests](app-insights-monitor-web-app-availability.md) ersetzt. Wir haben bereits die neuen Tests erstellt, obwohl sie bis zum 4. April deaktiviert sind.
+Verwenden Sie die [Endpunktüberwachung](https://blogs.msdn.microsoft.com/mast/2013/03/03/windows-azure-portal-update-configure-web-endpoint-status-monitoring-preview/) für Ihre Azure-Apps? In der Woche um den 22. August 2016 wird sie durch die neuen und leistungsfähigeren [Verfügbarkeitstests](app-insights-monitor-web-app-availability.md) ersetzt. Wir haben bereits die neuen Tests erstellt, obwohl sie bis zum 22. August 2016 deaktiviert sind.
 
 Sie können die neuen Tests bearbeiten und den Wechsel selbst vollziehen, wenn Sie möchten. Sie finden sie im [Azure-Portal](https://portal.azure.com) in der Default-ApplicationInsights-CentralUS-Ressourcengruppe.
 
@@ -28,10 +28,10 @@ Verfügbarkeitstests sind ein Feature von Azure, das fortlaufend überprüft, ob
 
 Im [klassischen Azure-Portal](https://manage.windowsazure.com) wurden diese Tests als „Endpunktüberwachung“ bezeichnet. Sie waren im Umfang stärker beschränkt. Die neuen Verfügbarkeitstests wurden wesentlich verbessert:
 
-* Bis zu 10 Visual Studio-Webtests oder Ping-Tests pro Application Insights-Ressource. 
-* Bis zu 16 Standorte weltweit zum Senden von Testanforderungen an Ihre Web-App. Bessere Steuerung der Testerfolgskriterien. 
+* Bis zu 10 Visual Studio-Webtests oder Ping-Tests pro Application Insights-Ressource.
+* Bis zu 16 Standorte weltweit zum Senden von Testanforderungen an Ihre Web-App. Bessere Steuerung der Testerfolgskriterien.
 * Jede Website bzw. jeder Dienst wird getestet – nicht nur Azure-Web-Apps.
-* Erneute Testversuche: Falsch positive Warnungen aufgrund vorübergehender Netzwerkprobleme werden reduziert. 
+* Erneute Testversuche: Falsch positive Warnungen aufgrund vorübergehender Netzwerkprobleme werden reduziert.
 * Webhooks können HTTP POST-Benachrichtigungen für die Warnungen empfangen.
 
 ![](./media/app-insights-migrate-azure-endpoint-tests/16-1test.png)
@@ -44,7 +44,7 @@ Verfügbarkeitstests sind Teil von [Visual Studio Application Insights](app-insi
 
 ## Was passiert denn nun mit meinen Endpunkttests?
 
-* Wir haben Ihre Endpunktüberwachungs-Tests in die neuen Application Insights-Verfügbarkeitstests kopiert. Wir haben sie am 4. März 2016 kopiert, d. h. wir haben keine Endpunkttests kopiert, die Sie seither erstellt haben.
+* Wir haben Ihre Endpunktüberwachungs-Tests in die neuen Application Insights-Verfügbarkeitstests kopiert.
 * Die neuen Verfügbarkeitstests sind derzeit deaktiviert, und die alten Endpunkttests werden weiterhin ausgeführt.
 * Die Warnungsregeln wurden *nicht* migriert. Die neuen Tests wurden ursprünglich mit einer Standardregel eingerichtet:
  * Auslösung einer Warnung erfolgt, wenn mehrere Standorte in 5 Minuten Fehler melden.
@@ -54,29 +54,29 @@ Im [Azure-Portal](https://portal.azure.com) finden Sie die migrierten Tests in d
 
 ## Was muss ich tun?
 
-* Wenn Sie die älteren Tests nach dem 4. März 2016 erstellt haben (oder wir versäumt haben, Ihre Tests zu migrieren), lassen sich die neuen Verfügbarkeitstests [mühelos einrichten](app-insights-monitor-web-app-availability.md).
+* Wenn wir versäumt haben, Ihre Tests zu migrieren, lassen sich die neuen Verfügbarkeitstests [mühelos einrichten](app-insights-monitor-web-app-availability.md).
 
 ### Option A: Sie unternehmen gar nichts. Überlassen Sie alles uns.
 
-**Am 4. April** werden wir Folgendes tun:
+**In der Woche um dem 22. August 2016** werden wir:
 
 * Die alten Endpunkttests deaktivieren.
 * Die migrierten Verfügbarkeitstests aktivieren.
 
 ### Option B: Sie verwalten und/oder aktivieren die neuen Tests.
 
-* Überprüfen und bearbeiten Sie die neuen Verfügbarkeitstests im neuen [Azure-Portal](https://portal.azure.com). 
+* Überprüfen und bearbeiten Sie die neuen Verfügbarkeitstests im neuen [Azure-Portal](https://portal.azure.com).
  * Überprüfen Sie die Auslösekriterien
  * Überprüfen Sie die E-Mail-Empfänger
 * Aktivieren Sie die neuen Tests
-* Löschen Sie die alten Endpunkttests [im klassischen Portal](https://manage.windowsazure.com). Sie sollten dies tun, um doppelte Warnungen zu vermeiden und die Testverkehrsauslastung auf Ihrer Website zu verringern. Wenn dies nicht der Fall ist, löschen wir sie am 4. April 2016.
+* Löschen Sie die alten Endpunkttests [im klassischen Portal](https://manage.windowsazure.com). Sie sollten dies tun, um doppelte Warnungen zu vermeiden und die Testverkehrsauslastung auf Ihrer Website zu verringern. Wenn dies nicht der Fall ist, löschen wir sie am 22. August 2016.
 
 
 ### Option C: Sie lehnen ab.
 
 Wenn Sie keine Verfügbarkeitstests verwenden möchten, können Sie sie im [Azure-Portal](https://portal.azure.com) löschen. Sie finden auch einen Link zum Abbestellen am unteren Rand der E-Mail-Benachrichtigungen.
 
-Wir werden dennoch die alten Endpunkttests am 4. April löschen.
+Wir werden dennoch die alten Endpunkttests am 22. August 2016 löschen.
 
 ## Wie bearbeite ich die neuen Tests?
 
@@ -116,12 +116,12 @@ Dies wird von Ihren alten Endpunkttests beibehalten:
 * Endpunkt-URL, die getestet werden soll.
 * Geografische Standorte, von denen aus die Anforderungen gesendet werden.
 * Die Testhäufigkeit bleibt bei 5 Minuten.
-* Die Testzeitüberschreitung bleibt bei 30 Sekunden. 
+* Die Testzeitüberschreitung bleibt bei 30 Sekunden.
 
 Nicht migriert:
 
 * Warnungsauslöseregel. Die Regel, die wir eingerichtet haben, löst eine Warnung aus, wenn 1 Standort mehrere Fehler in 5 Minuten meldet.
-* Warnungsempfänger. E-Mail-Benachrichtigungen werden an die Abonnementbesitzer und Mitbesitzer gesendet. 
+* Warnungsempfänger. E-Mail-Benachrichtigungen werden an die Abonnementbesitzer und Mitbesitzer gesendet.
 
 ## Wie finde ich die neuen Tests?
 
@@ -137,4 +137,4 @@ Option A gilt. Wir aktivieren die migrierten Tests und richten die Standardwarnu
 
 Wir schätzen Ihr Feedback! Bitte [senden Sie uns eine E-Mail](mailto:vsai@microsoft.com).
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0727_2016-->

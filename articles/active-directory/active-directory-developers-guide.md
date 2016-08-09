@@ -29,9 +29,9 @@ Als Plattform vom Typ „Identity Management as a Service (IDMaaS)“ stellt Azu
 
 1. [Integrieren von Anwendungen in Azure Active Directory](active-directory-integrating-applications.md): Weitere Informationen, wie Sie Anwendungen in Azure AD hinzufügen, aktualisieren und entfernen, sowie zu den Brandingrichtlinien für integrierte Apps.
 
-1. [Azure Active Directory Graph-API](active-directory-graph-api.md): Verwenden Sie die Azure AD Graph-API, um über REST-API-Endpunkte programmgesteuert auf Azure AD zuzugreifen. Beachten Sie, dass die Azure AD Graph-API auch über [Microsoft Graph](https://graph.microsoft.io/) zugänglich ist, eine einheitliche API, die Zugriff auf mehrere Microsoft Clouddienst-APIs über einen einzelnen Endpunkt für die REST-API und mit einem einzelnen Zugriffstoken ermöglicht.
+1. [Azure Active Directory Graph-API](active-directory-graph-api.md): Verwenden Sie die Azure AD Graph-API, um über REST-API-Endpunkte programmgesteuert auf Azure AD zuzugreifen. Beachten Sie, dass die Azure AD Graph-API auch über [Microsoft Graph](https://graph.microsoft.io/) zugänglich ist, eine einheitliche API, die Zugriff auf mehrere Microsoft Clouddienst-APIs über einen einzelnen Endpunkt für die REST-API und mit einem einzelnen Zugriffstoken ermöglicht.
 
-1. [Azure Active Directory-Authentifizierungsbibliotheken](active-directory-authentication-libraries.md): Authentifizieren Sie Benutzer auf einfache Weise, indem Sie Zugriffstoken über die Azure AD-Authentifizierungsbibliotheken für .NET, JavaScript, Objective-C, Android und weitere abrufen.
+1. [Azure Active Directory-Authentifizierungsbibliotheken](active-directory-authentication-libraries.md): Authentifizieren Sie Benutzer auf einfache Weise, indem Sie Zugriffstoken über die Azure AD-Authentifizierungsbibliotheken für .NET, JavaScript, Objective-C, Android und weitere abrufen.
 
 
 ## Erste Schritte
@@ -40,7 +40,7 @@ Diese Tutorials sind auf verschiedene Plattformen ausgelegt und ermöglichen Ihn
 
 ### Mobile Anwendung und PC-Anwendung – Schnellstartanleitungen
 
-|[![iOS](./media/active-directory-developers-guide/ios.png)](active-directory-devquickstarts-ios.md)|[![Android](./media/active-directory-developers-guide/android.png)](active-directory-devquickstarts-android.md)|[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-dotnet.md)|[![Windows Universal](./media/active-directory-developers-guide/windows.png)](active-directory-devquickstarts-windowsstore.md)|[![Xamarin](./media/active-directory-developers-guide/xamarin.png)](active-directory-devquickstarts-xamarin.md)|[![Cordova](./media/active-directory-developers-guide/cordova.png)](active-directory-devquickstarts-cordova.md)|[![OAuth 2.0](./media/active-directory-developers-guide/oauth-2.png)](active-directory-protocols-oauth-code.md)
+|[![iOS](./media/active-directory-developers-guide/ios.png)](active-directory-devquickstarts-ios.md)|[![Android](./media/active-directory-developers-guide/android.png)](active-directory-devquickstarts-android.md)|[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-dotnet.md)|[![Windows Universal](./media/active-directory-developers-guide/windows.png)](active-directory-devquickstarts-windowsstore.md)|[![Xamarin](./media/active-directory-developers-guide/xamarin.png)](active-directory-devquickstarts-xamarin.md)|[![Cordova](./media/active-directory-developers-guide/cordova.png)](active-directory-devquickstarts-cordova.md)|[![OAuth 2.0](./media/active-directory-developers-guide/oauth-2.png)](active-directory-protocols-oauth-code.md)
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |[iOS](active-directory-devquickstarts-ios.md)|[Android](active-directory-devquickstarts-android.md)|[.NET](active-directory-devquickstarts-dotnet.md)|[Windows Universal](active-directory-devquickstarts-windowsstore.md)|[Xamarin](active-directory-devquickstarts-xamarin.md)|[Cordova](active-directory-devquickstarts-cordova.md)|[Direktes Integrieren mit OAuth 2.0](active-directory-protocols-oauth-code.md)|
 
@@ -71,7 +71,7 @@ In diesen Artikeln wird beschrieben, wie Sie mit Azure Active Directory bestimmt
 - Aktivieren Sie App-übergreifendes SSO per ADAL auf [Android](active-directory-sso-android.md)- und [iOS](active-directory-sso-ios.md)-Geräten.
 - [How to get AppSource Certified for Azure Active Directory (AD)](active-directory-devhowto-appsource-certified.md) (Zertifizieren Ihrer AppSource-Anwendung für Azure AD)
 - [Auflisten Ihrer Anwendung im Azure AD-Anwendungskatalog](active-directory-app-gallery-listing.md)
-- [Übertragen von Web-Apps für Office 365 an das Verkäuferdashboard (in englischer Sprache)](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
+- [Übertragen von Web-Apps für Office 365 an das Verkäuferdashboard (in englischer Sprache)](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
 - [Grundlegendes zum Azure Active Directory-Anwendungsmanifest](active-directory-application-manifest.md)
 - [Grundlegendes zu den Brandingrichtlinien für die Schaltflächen für Anmeldung und App-Erwerb in Ihrer Clientanwendung](active-directory-branding-guidelines.md)
 - [Vorschau: Erstellen von Apps, bei denen sich Benutzer sowohl mit persönlichen als auch mit Arbeits- oder Schulkonten anmelden können](active-directory-appmodel-v2-overview.md)
@@ -97,19 +97,25 @@ Diese Artikel enthalten grundlegende Referenzen zu REST- und Authentifizierungsb
 
 - [Graph-API-Referenz](https://msdn.microsoft.com/library/azure/hh974476.aspx): Hier finden Sie die REST-Referenz für die Azure Active Directory Graph-API. [Sehen Sie sich die interaktive Umgebung für die Graph-API-Referenz an](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).
 
-- [Graph-API-Berechtigungsbereiche](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes): Hier werden die OAuth 2.0-Berechtigungsbereiche beschrieben, mit denen gesteuert wird, welchen Zugriff eine App auf die Verzeichnisdaten für einen Mandanten hat.
+- [Graph-API-Berechtigungsbereiche](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes): Hier werden die OAuth 2.0-Berechtigungsbereiche beschrieben, mit denen gesteuert wird, welchen Zugriff eine App auf die Verzeichnisdaten für einen Mandanten hat.
 
 ### Protokolle für Authentifizierung und Autorisierung
 
 - [Rollover von Signaturschlüsseln in Azure AD](active-directory-signing-key-rollover.md): Erfahren Sie mehr über die Rolloverkadenz von Signaturschlüsseln von Azure AD und zur Aktualisierung des Schlüssels für die häufigsten Anwendungsszenarien.
 
+- [OAuth 2.0-Protokoll: Verwenden der Autorisierungscodegewährung](active-directory-protocols-oauth-code.md): Sie können die Autorisierungscodegewährung des OAuth 2.0-Protokolls verwenden, um den Zugriff auf Webanwendungen und Web-APIs in Ihrem Azure Active Directory-Mandanten zu autorisieren.
+
 - [OAuth 2.0-Protokoll: Grundlagen der impliziten Gewährung](active-directory-dev-understanding-oauth2-implicit-grant.md): Hier erhalten Sie weitere Informationen zur impliziten Autorisierungsgewährung und zur Eignung für Ihre Anwendung.
 
-- [SAML 2.0-Protokoll – Referenz](active-directory-saml-protocol-reference.md): Mit dem SAML 2.0-Protokoll können Anwendungen für Benutzer das einmalige Anmelden bereitstellen.
+- [OAuth 2.0-Protokoll: Verwenden von Clientanmeldeinformationen für Dienst-zu-Dienst-Aufrufe](active-directory-protocols-oauth-service-to-service.md): Beim Fluss zum Erteilen von OAuth 2.0-Clientanmeldeinformationen kann ein Webdienst (ein vertraulicher Client) seine eigenen Anmeldeinformationen zum Authentifizieren verwenden, wenn ein anderer Webdienst aufgerufen wird, anstatt die Identität eines anderen Benutzers anzunehmen. In diesem Szenario ist der Client normalerweise ein Webdienst der mittleren Ebene, ein Daemondienst oder eine Website.
+
+- [OpenID Connect 1.0-Protokoll: Anmeldung und Authentifizierung](active-directory-protocols-openid-connect-code.md): Mit dem OpenID Connect 1.0-Protokoll wird OAuth 2.0 um die Verwendung als Authentifizierungsprotokoll erweitert. Eine Clientanwendung kann ein ID-Token (id\_token) erhalten, um den Anmeldeprozess zu verwalten, oder der Autorisierungscodefluss kann erweitert werden, um sowohl ein ID-Token als auch einen Autorisierungscode zu erhalten.
+
+- [SAML 2.0-Protokoll – Referenz](active-directory-saml-protocol-reference.md): Mit dem SAML 2.0-Protokoll können Anwendungen für Benutzer das einmalige Anmelden bereitstellen.
 
 - [WS-Federation 1.2-Protokoll ](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html): Azure Active Directory unterstützt WS-Federation 1.2, wie es in der Spezifikation zu Web Services Federation Version 1.2 angegeben ist. Weitere Informationen zum Verbundmetadaten-Dokument finden Sie unter [Verbundmetadaten](active-directory-federation-metadata.md).
 
-- [Unterstützte Token und Anspruchstypen](active-directory-token-and-claims.md): Verwenden Sie dieses Handbuch, um die Ansprüche in Token vom Typ SAML 2.0 und JSON Web Token (JWT) zu verstehen und auszuwerten.
+- [Unterstützte Token und Anspruchstypen](active-directory-token-and-claims.md): Verwenden Sie dieses Handbuch, um die Ansprüche in SAML 2.0- und JSON-Webtoken (JWT) zu verstehen und auszuwerten.
 
 ## Videos
 
@@ -137,6 +143,6 @@ In diesen Übersichtspräsentationen zur Entwicklung von Apps mithilfe von Azure
 
 - [Cloudidentität](http://www.cloudidentity.net): Hier finden Sie Informationen zu IMaaS (Identity Management as a Service) von einem erfahrenen Azure Active Directory-PM.
 
-- [Azure Active Directory auf Twitter](https://twitter.com/azuread): Azure Active Directory-Ankündigungen in höchstens 140 Zeichen.
+- [Azure Active Directory auf Twitter](https://twitter.com/azuread): Azure Active Directory-Ankündigungen in höchstens 140 Zeichen.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

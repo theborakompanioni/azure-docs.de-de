@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="NA"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="02/07/2016"
+	ms.date="07/21/2016"
 	ms.author="glenga"/>
 
 # Ändern des Datenmodells eines mobilen .NET-Backend-Dienstes
@@ -32,7 +32,7 @@ Beachten Sie, dass automatische Migrationen in einem .NET-Back-End-Projekt nicht
 
 ## Aktualisieren des Datenmodells
 
-Mit neuen Funktionen fügen Sie Ihrem mobilen .NET-Back-End-Dienst auch Controller hinzu, um in Ihrer API neue Endpunkte bereitzustellen. Erstellen Sie eine neue API als einen benutzerdefinierten Controller oder einen Tabellen-Controller. Ein [TableController<TEntity>] stellt einen Datentyp bereit, der Informationen von [EntityData] übernimmt. Damit Daten in der Datenbank gespeichert werden können, muss dieser Datentyp dem Datenmodell auch als neues [DbSet<T>] im [DbContext] hinzugefügt werden. Weitere Informationen zu Code First im Entity Framework finden Sie unter [Erstellen eines Modells mit Code First](https://msdn.microsoft.com/data/ee712907#codefirst).
+Mit neuen Funktionen fügen Sie Ihrem mobilen .NET-Back-End-Dienst auch Controller hinzu, um in Ihrer API neue Endpunkte bereitzustellen. Erstellen Sie eine neue API als einen benutzerdefinierten Controller oder einen Tabellen-Controller. Eine [TableController<TEntity>] stellt einen Datentyp bereit, der von [EntityData] erbt. Damit Daten dauerhaft in der Datenbank gespeichert werden können, muss dieser Datentyp dem Datenmodell auch als neues [DbSet<T>] im [DbContext] hinzugefügt werden. Weitere Informationen zu Code First im Entity Framework finden Sie unter [Erstellen eines Modells mit Code First](https://msdn.microsoft.com/data/ee712907#codefirst).
 
 Visual Studio erleichtert das Erstellen eines neuen Tabellen-Controllers, um einen neuen Datentyp für Clientanwendungen bereitzustellen. Weitere Informationen finden Sie unter [Verwenden von Controllern für den Zugriff auf Daten in Mobile Services](https://msdn.microsoft.com/library/windows/apps/xaml/dn614132.aspx).
 
@@ -181,4 +181,4 @@ Dieser Code ruft die Hilfserweiterungsmethode [AddOrUpdate] auf, um Seed-Daten i
 [EntityData]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.entitydata.aspx
 [DbSet<T>]: https://msdn.microsoft.com/library/azure/gg696460.aspx
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0727_2016-->

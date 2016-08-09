@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Einrichten des Schlüsseltresors mit End-to-End-Schlüsselrotation und Überwachung | Microsoft Azure"
 	description="Dieser Artikel bietet Informationen zum Einrichten der Schlüsselrotation und Überwachen von Schlüsseltresorprotokollen."
-	services="key-vault, automation,app-service\logic"
+	services="key-vault"
 	documentationCenter=""
 	authors="swgriffith"
 	manager=""
@@ -424,4 +424,4 @@ Wählen Sie als Aktion _Office 365 – E-Mail senden_. Füllen Sie die Felder au
 
 An diesem Punkt haben Sie eine lückenlose Pipeline, die einmal pro Minute eine Überprüfung auf neue Schlüsseltresor-Überwachungsprotokolle vornimmt. Alle neu gefundenen Protokolle werden in eine Service Bus-Warteschlange übertragen. Die Logik-App wird ausgelöst, sobald eine neue Nachricht in der Warteschlange eingeht. Wenn die App-ID im Ereignis nicht der App-ID der aufrufenden Anwendung entspricht, wird eine E-Mail gesendet.
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -62,7 +62,7 @@ Führen Sie in der Hive-Ansicht folgende Schritte aus, um eine Hive-Abfrage an D
 		DROP TABLE log4jLogs;
 		CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
 		ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
-		STORED AS TEXTFILE LOCATION 'wasb:///example/data/';
+		STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
 		SELECT t4 AS sev, COUNT(*) AS cnt FROM log4jLogs WHERE t4 = '[ERROR]' GROUP BY t4;
 
 	Diese Anweisungen führen die folgenden Aktionen aus:
@@ -169,13 +169,13 @@ Nachdem Sie der Hive-Ansicht eine benutzerdefinierte Funktion hinzugefügt haben
 Beispielsweise können Sie eine UDF mit den folgenden Eigenschaften definieren:
 
 * Ressourcenname: myudfs
-* Ressourcenpfad: wasb:///myudfs.jar
+* Ressourcenpfad: wasbs:///myudfs.jar
 * UDF-Name: myawesomeudf
 * UDF-Klassenname: com.myudfs.Awesome
 
 Mit der Schaltfläche __UDFs einfügen__ wird ein Eintrag mit dem Namen __myudfs__ angezeigt, der über eine weitere Dropdownliste für jede UDF verfügt, die für diese Ressource definiert ist. In diesem Fall ist dies __myawesomeudf__. Wenn Sie diesen Eintrag auswählen, wird am Anfang der Abfrage Folgendes hinzugefügt:
 
-    add jar wasb:///myudfs.jar;
+    add jar wasbs:///myudfs.jar;
 
     create temporary function myawesomeudf as 'com.myudfs.Awesome';
 
@@ -199,4 +199,4 @@ Informationen zu anderen Möglichkeiten, wie Sie mit Hadoop in HDInsight arbeite
 
 * [Verwenden von MapReduce mit Hadoop in HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

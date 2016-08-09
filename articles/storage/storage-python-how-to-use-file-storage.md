@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="05/23/2016"
+	ms.date="07/26/2016"
 	ms.author="emgerner"/>
 
 # Gewusst wie: Verwenden von Azure File Storage mit Python
 
-[AZURE.INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
+[AZURE.INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-files](../../includes/storage-try-azure-tools-files.md)]
 
 ## Übersicht
 
@@ -30,7 +30,7 @@ In diesem Artikel wird die Durchführung gängiger Szenarios mit File Storage de
 
 ## Erstellen einer Freigabe
 
-Das **FileService**-Objekt ermöglicht das Arbeiten mit Freigaben, Verzeichnisse und Dateien. Der folgende Code erstellt ein **FileService**-Objekt. Fügen Sie am Anfang jeder Python-Datei, in der Sie programmgesteuert auf Azure-Speicher zugreifen möchten, den folgenden Code hinzu:
+Das **FileService**-Objekt ermöglicht das Arbeiten mit Freigaben, Verzeichnissen und Dateien. Der folgende Code erstellt ein **FileService**-Objekt. Fügen Sie am Anfang jeder Python-Datei, in der Sie programmgesteuert auf Azure-Speicher zugreifen möchten, den folgenden Code hinzu:
 
 	from azure.storage.file import FileService
 
@@ -48,7 +48,7 @@ Eine Azure-Dateispeicherfreigabe enthält mindestens ein Stammverzeichnis, in de
 
 Verwenden Sie zum Erstellen einer Datei und zum Hochladen von Daten die Methoden **create\_file\_from\_path**, **create\_file\_from\_stream**, **create\_file\_from\_bytes** oder **create\_file\_from\_text**. Dies sind allgemeine Methoden zur Durchführung der erforderlichen Teilung, wenn die Größe der Daten 64 MB übersteigt.
 
-**create\_file\_from\_path** lädt den Inhalt einer Datei aus dem angegebenen Pfad hoch, und **create\_file\_from\_stream** lädt den Inhalt aus einer bereits geöffneten Datei/einem Stream. **create\_file\_from\_bytes** lädt ein Byte-Array hoch, und **create\_file\_from\_text** lädt den angegebenen Textwert unter Verwendung der festgelegten Codierung (standardmäßig UTF-8) hoch.
+**create\_file\_from\_path** lädt den Inhalt einer Datei aus dem angegebenen Pfad hoch, und **create\_file\_from\_stream** lädt den Inhalt aus einer bereits geöffneten Datei/einem Stream. **create\_file\_from\_bytes** lädt ein Bytearray hoch, und **create\_file\_from\_text** lädt den angegebenen Textwert unter Verwendung der festgelegten Codierung (standardmäßig UTF-8) hoch.
 
 Das folgende Beispiel lädt den Inhalt der Datei **sunset.png** in die Datei **myfile** hoch.
 
@@ -100,4 +100,4 @@ Nachdem Sie sich nun mit den Grundlagen von File Storage vertraut gemacht haben,
 [Azure Storage-Teamblog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage-SDK für Python]: https://github.com/Azure/azure-storage-python
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

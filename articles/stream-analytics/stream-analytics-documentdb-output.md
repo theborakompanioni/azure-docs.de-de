@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="05/03/2016"
+	ms.date="07/27/2016"
 	ms.author="jeffstok"/>
 
 # Ausrichten der JSON-Ausgabe von Stream Analytics auf Azure DocumentDB
@@ -54,12 +54,12 @@ Beim Erstellen einer DocumentDB-Datenbank als Ausgabe in Stream Analytics wird e
 
 ![Bildschirm mit DocumentDB als Stream Analytics-Ausgabe](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output.png)
 
--   **Ausgabealias**: Ein Alias zum Verweisen auf diese Ausgabe in Ihrer ASA-Abfrage.  
--   **Kontoname**: Der Name oder Endpunkt-URI des DocumentDB-Kontos.  
--   **Kontoschlüssel**: Der gemeinsame Zugriffsschlüssel für das DocumentDB-Konto.  
--   **Datenbank**: Der Name der DocumentDB-Datenbank.  
--   **Muster für Sammlungsnamen**: Das Muster für Sammlungsnamen für die zu verwendenden Sammlungen. Das Sammlungsnamenformat kann mit dem optionalen Token {partition} gebildet werden, wobei Partitionen bei 0 beginnen. Es folgen Beispiele gültiger Eingaben: 1.) MyCollection: Eine Sammlung mit dem Namen „MyCollection“ muss vorhanden sein. 2.) MyCollection{partition}: Solche Auflistungen müssen vorhanden sein: „MyCollection0“, „MyCollection1“, „MyCollection2“ usw.  
--   **Partitionsschlüssel**: Der Name des Felds in Ausgabeereignissen, das zur Angabe des Schlüssels für die sammlungsübergreifende Partitionierung der Ausgabe verwendet wird. Für die Ausgabe einer einzelnen Sammlung kann eine beliebige Ausgabespalte wie „PartitionId“ verwendet werden.  
--   **Dokument-ID**: Optional. Der Name des Felds in Ausgabeereignissen, das zur Angabe des Primärschlüssels verwendet wird, auf dem Einfüge- und Aktualisierungsvorgänge basieren.  
+-   **Ausgabealias**: Ein Alias zum Verweisen auf diese Ausgabe in Ihrer ASA-Abfrage.
+-   **Kontoname**: Der Name oder Endpunkt-URI des DocumentDB-Kontos.
+-   **Kontoschlüssel**: Der gemeinsame Zugriffsschlüssel für das DocumentDB-Konto.
+-   **Datenbank**: Der Name der DocumentDB-Datenbank.
+-   **Muster für Sammlungsnamen**: Das Muster für Sammlungsnamen für die zu verwendenden Sammlungen. Das Sammlungsnamenformat kann mit dem optionalen Token {partition} gebildet werden, wobei Partitionen bei 0 beginnen. Es folgen Beispiele gültiger Eingaben: 1.) MyCollection: Eine Sammlung mit dem Namen „MyCollection“ muss vorhanden sein. 2.) MyCollection{partition}: Solche Auflistungen müssen vorhanden sein: „MyCollection0“, „MyCollection1“, „MyCollection2“ usw.
+-   **Partitionsschlüssel**: Der Name des Felds in Ausgabeereignissen, das zur Angabe des Schlüssels für die sammlungsübergreifende Partitionierung der Ausgabe verwendet wird. Für die Ausgabe einer einzelnen Sammlung kann eine beliebige Ausgabespalte wie „PartitionId“ verwendet werden.
+-   **Dokument-ID**: Optional. Der Name des Felds in Ausgabeereignissen, das zur Angabe des Primärschlüssels verwendet wird, auf dem Einfüge- und Aktualisierungsvorgänge basieren.
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

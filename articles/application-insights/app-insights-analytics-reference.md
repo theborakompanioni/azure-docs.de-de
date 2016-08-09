@@ -19,6 +19,7 @@
 
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
+> [AZURE.NOTE] [Test drive Analytics on our simulated data]Führen Sie https://analytics.applicationinsights.io/demo aus, wenn Ihre App noch keine Daten an Application Insights sendet.
 
 ## Index
 
@@ -62,7 +63,7 @@
        (interval:timespan) { requests | where timestamp > ago(interval) };
     Recent(3h) | count
 
-    let us_date = (t:datetime){strcat(getmonth(t),'/',dayofmonth(t),'/',getyear(t)) }; 
+    let us_date = (t:datetime) { strcat(getmonth(t),'/',dayofmonth(t),'/',getyear(t)) }; 
     requests | summarize count() by bin(timestamp, 1d) | project count_, day=us_date(timestamp)
 
 Eine let-Klausel bindet einen [Namen](#names) an ein tabellarisches Ergebnis, einen Skalarwert oder eine Funktion. Die Klausel ist das Präfix einer Abfrage, und diese Abfrage ist der Bereich der Bindung. (Die let-Klausel bietet keine Möglichkeit, Dinge zu benennen, die Sie später in der Sitzung verwenden.)
@@ -82,7 +83,7 @@ Eine let-Klausel bindet einen [Namen](#names) an ein tabellarisches Ergebnis, ei
 
 **Beispiele**
 
-    let rows(n:long) = range steps from 1 to n step 1;
+    let rows = (n:long) { range steps from 1 to n step 1 };
     rows(10) | ...
 
 
@@ -424,7 +425,7 @@ Eine Kopie der Eingabetabelle mit den angegebenen zusätzlichen Spalten.
 * Verwenden Sie stattdessen [`project`](#project-operator), wenn Sie auch einige Spalten löschen oder umbenennen möchten.
 * Verwenden Sie nicht einfach `extend`, um einen kürzeren Namen zur Verwendung in einem langen Ausdruck zu erhalten. `...| extend x = anonymous_user_id_from_client | ... func(x) ...`
 
-    Die systemeigenen Spalten der Tabelle wurden indiziert; der neue Name definiert eine zusätzliche, nicht indizierte Spalte, d. h. die Abfrage wird wahrscheinlich langsamer ausgeführt.
+    Die systemeigenen Spalten der Tabelle wurden indiziert; der neue Name definiert eine zusätzliche, nicht indizierte Spalte, d. h. die Abfrage wird wahrscheinlich langsamer ausgeführt.
 
 **Beispiel**
 
@@ -945,7 +946,7 @@ Auch wenn Sie beliebige Ausdrücke für die Aggregation und Gruppierung von Ausd
 
 ### take-Operator
 
-Alias von [limit](#limit-operator).
+Alias von [limit](#limit-operator)
 
 
 ### top-Operator
@@ -964,7 +965,7 @@ Gibt die ersten *N* Datensätze nach den angegebenen Spalten sortiert zurück.
 * *NumberOfRows:* Die zurückzugebende Zeilenanzahl von *T*.
 * *Sort\_expression:* Ein Ausdruck, nach dem die Zeilen sortiert werden. Dies ist in der Regel nur ein Spaltenname. Sie können mehrere „Sort\_expression“-Angaben machen.
 * Unter Umständen wird `asc` oder `desc` (Standard) angezeigt, um zu steuern, ob die tatsächliche Auswahl vom „unteren“ oder „oberen“ Ende des Bereichs erfolgt.
-* `nulls first` oder `nulls last` steuert, wo der Nullwerte zurückgegeben werden. `First` ist die Standardeinstellung für `asc`, `last` die Standardeinstellung für `desc`.
+* `nulls first` oder `nulls last` steuert, wo Nullwerte zurückgegeben werden. `First` ist die Standardeinstellung für `asc`, und `last` ist die Standardeinstellung für `desc`.
 
 
 **Tipps**
@@ -1091,7 +1092,7 @@ Traces
     and ActivityId == SubActivityIt 
 ```
 
-Datensätze, die nicht älter als 1 Stunde sind, aus der Quelle namens „Kuskus“ stammen und zwei Spalten mit dem gleichen Wert aufweisen.
+Datensätze, die nicht älter als 1 Stunde sind, aus der Quelle namens „Kuskus“ stammen und zwei Spalten mit dem gleichen Wert aufweisen.
 
 Beachten Sie, dass wir den Vergleich zwischen zwei Spalten an das Ende stellen, da der Index nicht genutzt werden kann und ein Scan erzwungen wird.
 
@@ -1109,7 +1110,7 @@ Aggregationen dienen zum Kombinieren von Werten in Gruppen, die im [summarize-Vo
 
 Wählt eine Zeile der Gruppe nach dem Zufallsprinzip aus, und gibt den Wert des angegebenen Ausdrucks zurück.
 
-Dies empfiehlt sich beispielsweise, wenn eine Spalte über eine große Anzahl von ähnlichen Werten verfügt (z. B. eine Spalte „Fehlertext“) und Sie einmal pro eindeutigem Wert für den zusammengesetzten Gruppenschlüssel Stichproben aus dieser Spalte abrufen möchten.
+Dies empfiehlt sich beispielsweise, wenn eine Spalte über eine große Anzahl von ähnlichen Werten verfügt (z. B. eine Spalte „Fehlertext“) und Sie einmal pro eindeutigem Wert für den zusammengesetzten Gruppenschlüssel Stichproben aus dieser Spalte abrufen möchten.
 
 **Beispiel**
 
@@ -1165,7 +1166,7 @@ Berechnet den Durchschnitt von *Expression* in der Gruppe.
 
 Gibt das minimale Schema zurück, das alle Werte von *DynamicExpression* zulässt.
 
-Der Parameterspaltentyp sollte `dynamic` lauten, d.h. ein Array oder ein Eigenschaftenbehälter.
+Der Parameterspaltentyp sollte `dynamic` lauten (Array oder ein Eigenschaftenbehälter).
 
 **Beispiel**
 
@@ -1344,7 +1345,7 @@ Berechnet das Maximum von *Expr*.
 
 Berechnet das Minimum von *Expr*.
 
-**Tipp:** Damit erhalten Sie ausschließlich die Mindest- oder Maximalwerte, z.B. den höchsten oder niedrigsten Preis. Wenn Sie jedoch andere Spalten in der Zeile abrufen möchten, z.B. den Namen des Lieferanten mit dem niedrigsten Preis, verwenden Sie [argmin oder argmax](#argmin-argmax).
+**Tipp:** Hiermit erhalten Sie ausschließlich die Mindest- oder Maximalwerte, z.B. den höchsten oder niedrigsten Preis. Wenn Sie jedoch andere Spalten in der Zeile abrufen möchten, z.B. den Namen des Lieferanten mit dem niedrigsten Preis, verwenden Sie [argmin oder argmax](#argmin-argmax).
 
 
 <a name="percentile"></a> <a name="percentiles"></a> <a name="percentilew"></a> <a name="percentilesw"></a>
@@ -1387,7 +1388,7 @@ Berechnen Sie gleichzeitig mehrere Perzentile für andere Anforderungsnamen:
 
 ![](./media/app-insights-analytics-reference/percentiles.png)
 
-Die Ergebnisse zeigen, dass für die Anforderung „/Events/Index“ auf 5 % der Anforderungen in weniger als 2,44 Sekunden reagiert wird, auf die Hälfte in 3,52 Sekunden und auf 5 % langsamer als 6,85 Sekunden.
+Die Ergebnisse zeigen, dass für die Anforderung „/Events/Index“ auf 5 % der Anforderungen in weniger als 2,44 Sekunden reagiert wird, auf die Hälfte in 3,52 Sekunden und auf 5 % langsamer als 6,85 Sekunden.
 
 Berechnen Sie mehrere Statistiken:
 
@@ -1440,8 +1441,8 @@ Das Perzentilaggregat stellt einen ungefähren Wert mithilfe von [T-Digest](http
 
 Einige wichtige Punkte:
 
-* Die Grenzen für den Schätzungsfehler variieren je nach dem Wert des angeforderten Perzentils. Die beste Genauigkeit erhalten Sie an den Enden der Skala von [0 bis 100]. Die Perzentile 0 und 100 sind die Mindest- und Maximalwerte für die Verteilung. Die Genauigkeit nimmt zur Mitte der Skala hin ab. Am Mittelpunkt ist die Genauigkeit am unpräzisesten und auf 1 % begrenzt.
-* Fehlergrenzen werden in Bezug auf den Rang, nicht auf den Wert sichtbar. Beispiel: Perzentil(X, 50) hat den Wert Xm zurückgegeben. Die Schätzung garantiert, dass mindestens 49 % und höchstens 51 % der Werte von X kleiner sind als Xm. Es gibt keine theoretische Beschränkung hinsichtlich des Unterschieds zwischen Xm und dem tatsächlichen Mittelwert von X.
+* Die Grenzen für den Schätzungsfehler variieren je nach dem Wert des angeforderten Perzentils. Die beste Genauigkeit erhalten Sie an den Enden der Skala von [0 bis 100]. Die Perzentile 0 und 100 sind die Mindest- und Maximalwerte für die Verteilung. Die Genauigkeit nimmt zur Mitte der Skala hin ab. Am Mittelpunkt ist die Genauigkeit am unpräzisesten und auf 1 % begrenzt.
+* Fehlergrenzen werden in Bezug auf den Rang, nicht auf den Wert sichtbar. Beispiel: Perzentil(X, 50) hat den Wert Xm zurückgegeben. Die Schätzung garantiert, dass mindestens 49 % und höchstens 51 % der Werte von X kleiner sind als Xm. Es gibt keine theoretische Beschränkung hinsichtlich des Unterschieds zwischen Xm und dem tatsächlichen Mittelwert von X.
 
 ### stdev
 
@@ -1519,7 +1520,7 @@ Sie können einen Typ in einen anderen umwandeln. Wenn die Konvertierung sinnvol
 
 **Rückgabe**
 
-Eine Zeichenfolge, die den zugrunde liegenden Speichertyp des einzigen Arguments darstellt. Dies ist besonders dann nützlich, wenn Sie über Werte vom Typ `dynamic` verfügen: In diesem Fall zeigt `gettype()`, wie ein Wert codiert ist.
+Eine Zeichenfolge, die den zugrunde liegenden Speichertyp des einzigen Arguments darstellt. Dies ist besonders nützlich, wenn Sie über Werte vom Typ `dynamic` verfügen: In diesem Fall zeigt `gettype()`, wie ein Wert codiert ist.
 
 **Beispiele**
 
@@ -1563,7 +1564,7 @@ hash(datetime("2015-01-01"))    // 1380966698541616202
 ```
 ### iff
 
-Die `iff()`-Funktion wertet das erste Argument (Prädikat) aus und gibt entweder den Wert des zweiten oder den Wert des dritten Arguments zurück, und zwar abhängig davon, ob das Prädikat `true` oder `false` ist. Die zweiten und dritten Argumente müssen vom gleichen Typ sein.
+Die `iff()`-Funktion wertet das erste Argument (Prädikat) aus und gibt entweder den Wert des zweiten oder den Wert des dritten Arguments zurück, und zwar abhängig davon, ob das Prädikat `true` oder `false` lautet. Die zweiten und dritten Argumente müssen vom gleichen Typ sein.
 
 **Syntax**
 
@@ -1683,11 +1684,11 @@ Das ausgewertete Argument. Wenn das Argument eine Tabelle ist, wird die erste Sp
 || |
 |---|-------------|
 | + | Hinzufügen |
-| - | Subtrahieren | 
-| * | Multiplizieren | 
-| / | Dividieren | 
-| % | Modulo | 
-|| 
+| - | Subtrahieren |
+| * | Multiplizieren |
+| / | Dividieren |
+| % | Modulo |
+||
 | `<` | Kleiner 
 | `<=` | Kleiner gleich 
 | `>` | Größer 
@@ -1715,7 +1716,7 @@ Das ausgewertete Argument. Wenn das Argument eine Tabelle ist, wird die erste Sp
 
 Rundet Werte auf eine ganze Zahl ab, die ein Vielfaches der angegebenen bin-Größe ist. Wird häufig in der [`summarize by`](#summarize-operator)-Abfrage verwendet. Wenn Sie über einen verstreuten Satz von Werten verfügen, werden sie zu einem kleineren Satz bestimmter Werte gruppiert.
 
-Alias: `floor`.
+Alias: `floor`
 
 **Syntax**
 
@@ -1833,7 +1834,7 @@ Die Quadratwurzelfunktion.
 
 [ago](#ago) | [dayofmonth](#dayofmonth) | [dayofweek](#dayofweek) | [dayofyear](#dayofyear) |[datepart](#datepart) | [endofday](#endofday) | [endofmonth](#endofmonth) | [endofweek](#endofweek) | [endofyear](#endofyear) | [getmonth](#getmonth)| [getyear](#getyear) | [now](#now) | [startofday](#startofday) | [startofmonth](#startofmonth) | [startofweek](#startofweek) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan) | [weekofyear](#weekofyear)
 
-### Datum und Uhrzeit – Literale
+### Datum und Uhrzeit – Literale
 
 |||
 ---|---
@@ -1843,19 +1844,19 @@ Die Quadratwurzelfunktion.
 `now(`-*timespan*`)`|`now()-`*timespan*
 `ago(`*timespan*`)`|`now()-`*timespan*
 **timespan**|
-`2d`|2 Tage
+`2d`|2 Tage
 `1.5h`|1,5 Stunden 
 `30m`|30 Minuten
-`10s`|10 Sekunden
-`0.1s`|0,1 Sekunde
-`100ms`| 100 Millisekunden
+`10s`|10 Sekunden
+`0.1s`|0,1 Sekunde
+`100ms`| 100 Millisekunden
 `10microsecond`|
-`1tick`|100 ns
+`1tick`|100 ns
 `time("15 seconds")`|
-`time("2")`| 2 Tage
+`time("2")`| 2 Tage
 `time("0.12:34:56.7")`|`0d+12h+34m+56.7s`
 
-### Datum und Uhrzeit – Ausdrücke
+### Datum und Uhrzeit – Ausdrücke
 
 Ausdruck |Ergebnis
 ---|---
@@ -2051,7 +2052,7 @@ T | where ... | extend Elapsed=now() - timestamp
 
 ### todatetime
 
-Alias: `datetime()`.
+Alias: `datetime()`
 
      todatetime("2016-03-28")
      todatetime("03/28/2016")
@@ -2069,7 +2070,7 @@ Alias: `datetime()`.
 
 ### totimespan
 
-Alias: `timespan()`.
+Alias: `timespan()`
 
     totimespan("21d")
     totimespan("21h")
@@ -2206,7 +2207,7 @@ Wenn keine Übereinstimmung vorhanden ist oder bei der Typkonvertierung ein Fehl
 
 **Beispiele**
 
-Die Beispielzeichenfolge `Trace` wird nach einer Definition für `Duration` durchsucht. Die Übereinstimmung wird in `real` konvertiert und dann mit einer Zeitkonstanten (`1s`) multipliziert, damit `Duration` den Typ `timespan` erhält. In diesem Beispiel entspricht dies 123,45 Sekunden:
+Die Beispielzeichenfolge `Trace` wird nach einer Definition für `Duration` durchsucht. Die Übereinstimmung wird in `real` konvertiert und dann mit einer Zeitkonstanten (`1s`) multipliziert, damit `Duration` den Typ `timespan` erhält. In diesem Beispiel entspricht dies 123,45 Sekunden:
 
 ```AIQL
 ...
@@ -2337,7 +2338,7 @@ split("aabbcc", "bb")         // ["aa","cc"]
 
     strcat("hello", " ", "world")
 
-Verkettet zwischen 1 und 16 Argumente, bei denen es sich um Zeichenfolgen handeln muss.
+Verkettet zwischen 1 und 16 Argumente, bei denen es sich um Zeichenfolgen handeln muss.
 
 ### strlen
 
@@ -2478,7 +2479,7 @@ Beachten Sie, dass mit `indexer` markiert wird, an welcher Stelle Sie einen nume
 
 Verwenden Sie `parsejson` zum Erstellen eines dynamischen Literals (Alias: `todynamic`) mit einem JSON-Zeichenfolgenargument:
 
-* `parsejson('[43, 21, 65]')`: Ein Array von Zahlen
+* `parsejson('[43, 21, 65]')`: Ein Array mit Zahlen
 * `parsejson('{"name":"Alan", "age":21, "address":{"street":432,"postcode":"JLK32P"}}')`
 * `parsejson('21')`: Ein einzelner Wert vom Typ „dynamic“ mit einer Zahl
 * `parsejson('"21"')`: Ein einzelner Wert vom Typ „dynamic“ mit einer Zeichenfolge
@@ -2721,4 +2722,4 @@ Geben Sie einen Namen mit ['... '] oder [" ... "] an, um andere Zeichen einzubez
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

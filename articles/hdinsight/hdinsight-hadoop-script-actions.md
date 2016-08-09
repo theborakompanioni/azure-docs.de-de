@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/28/2016"
+	ms.date="07/25/2016"
 	ms.author="jgao"/>
 
 # Entwickeln von Script Action-Skripts für HDInsight
@@ -96,7 +96,7 @@ Name | Skript
 
 Skriptaktionen können über das Azure-Portal, Azure PowerShell oder das HDInsight .NET SDK bereitgestellt werden. Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen][hdinsight-cluster-customize].
 
-> [AZURE.NOTE] Die Beispielskripts funktionieren nur mit HDInsight-Clustern der Version 3.1 oder höher. Weitere Informationen zu HDInsight-Clusterversionen finden Sie unter [HDInsight-Clusterversionen](../hdinsight-component-versioning/).
+> [AZURE.NOTE] Die Beispielskripts funktionieren nur mit HDInsight-Clustern der Version 3.1 oder höher. Weitere Informationen zu HDInsight-Clusterversionen finden Sie unter [HDInsight-Clusterversionen](hdinsight-component-versioning.md).
 
 
 
@@ -174,7 +174,7 @@ Wenn Sie ein benutzerdefiniertes Skript für einen HDInsight-Cluster entwickeln,
 
 	HDInsight hat eine Aktiv-Passiv-Architektur für hohe Verfügbarkeit, in dem sich ein Hauptknoten im aktiven Modus (d. h. die HDInsight-Dienste werden ausgeführt) und der andere Hauptknoten im Standby-Modus (d. h. HDInsight-Dienste werden nicht ausgeführt) befindet. Die Knoten schalten zwischen aktivem und passivem Modus um, wenn die HDInsight-Dienste unterbrochen werden. Wenn eine Skriptaktion zur Installation von Diensten auf beiden Hauptknoten für hohe Verfügbarkeit verwendet wird, ist der HDInsight-Failovermechanismus nicht in der Lage, für diese vom Benutzer installierten Dienste automatisch ein Failover durchzuführen. Daher müssen vom Benutzer installierte Dienste auf HDInsight-Hauptknoten, die hoch verfügbar sein sollen, im Aktiv-Passiv-Modus über ihren eigenen Failovermechanismus verfügen oder sich im Aktiv-Aktiv-Modus befinden.
 
-	Der HDInsight-Befehl "Script Action" wird auf beiden Hauptknoten ausgeführt, wenn die Hauptknotenrolle als Wert im Parameter *ClusterRoleCollection* angegeben ist (Informationen dazu finden Sie im nachstehenden Abschnitt [Ausführen einer Skriptaktion](#runScriptAction)). Vergewissern Sie sich beim Entwurf eines benutzerdefinierten Skripts, dass Ihrem Skript diese Konfiguration bekannt ist. Sie sollten beispielsweise keine Probleme bekommen, wenn dieselben Dienste auf beiden Hauptknoten installiert und gestartet wurden und letztlich in Konkurrenz zueinander treten. Daten gehen auch beim Re-imaging verloren, weshalb mithilfe von Skriptaktionen installierte Software bei solchen Ereignissen ausfallsicher sein muss. Anwendungen sollten so konzipiert sein, dass sie mit hoch verfügbaren Daten arbeiten können, die über viele Knoten verteilt werden. Beachten Sie, dass für maximal 1/5 der Knoten eines Clusters gleichzeitig ein neues Abbild erstellt werden kann.
+	Ein HDInsight-Skriptaktionsbefehl wird auf beiden Hauptknoten ausgeführt, wenn die Hauptknotenrolle im *ClusterRoleCollection*-Parameter angegeben wird. Vergewissern Sie sich beim Entwurf eines benutzerdefinierten Skripts, dass Ihrem Skript diese Konfiguration bekannt ist. Sie sollten beispielsweise keine Probleme bekommen, wenn dieselben Dienste auf beiden Hauptknoten installiert und gestartet wurden und letztlich in Konkurrenz zueinander treten. Daten gehen auch beim Re-imaging verloren, weshalb mithilfe von Skriptaktionen installierte Software bei solchen Ereignissen ausfallsicher sein muss. Anwendungen sollten so konzipiert sein, dass sie mit hoch verfügbaren Daten arbeiten können, die über viele Knoten verteilt werden. Beachten Sie, dass für maximal 1/5 der Knoten eines Clusters gleichzeitig ein neues Abbild erstellt werden kann.
 
 
 - Konfigurieren benutzerdefinierter Komponenten zur Verwendung von Azure-Blobspeicher
@@ -206,7 +206,7 @@ In diesem Beispiel müssen Sie sicherstellen, dass der Container "somecontainer"
 
 Um mehrere Parameter an das Cmdlet "Add-AzureRmHDInsightScriptAction" zu übergeben, müssen Sie den Zeichenfolgenwert so formatieren, dass er alle Parameter für das Skript enthält. Beispiel:
 
-	"-CertifcateUri wasb:///abc.pfx -CertificatePassword 123456 -InstallFolderName MyFolder"
+	"-CertifcateUri wasbs:///abc.pfx -CertificatePassword 123456 -InstallFolderName MyFolder"
  
 or
 
@@ -245,39 +245,6 @@ Es folgen unsere Schritte bei der Vorbereitung der Bereitstellung dieser Skripts
 4. Verwenden Sie einen temporären Dateiordner wie "$env:TEMP", um die heruntergeladene von den Skripts verwendete Dateien aufzubewahren, und leeren Sie den Ordner nach der Ausführung der Skripts.
 5. Installieren Sie benutzerdefinierte Software nur auf "D:\" oder in "C:\\apps". Andere Speicherorte auf Laufwerk C:\\ dürfen nicht verwendet werden, da sie reserviert sind. Beachten Sie, dass das Installieren von Dateien auf Laufwerk C:\\ außerhalb des Ordners "C:/apps" beim Erstellen neuer Abbilder des Knotens zu Einrichtungsfehlern führen kann.
 6. Wenn sich Einstellungen auf Betriebssystemebene oder Hadoop-Dienstkonfigurationsdateien geändert haben, können Sie bei Bedarf die HDInsight-Dienste neu starten. Diese können dann Einstellungen auf Betriebssystemebene übernehmen, z. B. die in den Skripts festgelegten Umgebungsvariablen.
-
-
-
-## Testen von benutzerdefinierten Skripts mit dem HDInsight-Emulator
-
-Eine einfache Möglichkeit, ein benutzerdefiniertes Skript vor der Verwendung im HDInsight-Skriptaktionsbefehl zu testen, ist seine Ausführung im HDInsight-Emulator. Sie können den HDInsight-Emulator auf einer Azure-IaaS-VM (Infrastructure as a Service) mit Windows Server 2012 R2 oder einem lokalen Computer installieren und beobachten, ob sich das Skript ordnungsgemäß verhält. Beachten Sie, dass die Windows Server 2012 R2 VM dieselbe VM ist, die HDInsight für seine Knoten verwendet.
-
-In diesem Abschnitt werden die Schritte zur lokalen Nutzung des HDInsight Emulators für Testzwecke beschrieben, aber das Verfahren für die Verwendung eines virtuellen Computers ist ähnlich.
-
-**Installieren des HDInsight-Emulators**: Um die Skriptaktion lokal auszuführen, muss der HDInsight-Emulator installiert sein. Installationsanweisungen finden Sie unter [Erste Schritte mit dem HDInsight-Emulator](../hdinsight-get-started-emulator/).
-
-**Festlegen der Ausführungsrichtlinie für Azure PowerShell**: Öffnen Sie Azure PowerShell, und führen Sie den folgenden Befehl (als Administrator) aus, um die Ausführungsrichtlinie auf *LocalMachine* und auf *Unrestricted* festzulegen:
-
-	Set-ExecutionPolicy Unrestricted –Scope LocalMachine
-
-Diese Richtlinie muss uneingeschränkt sein, da Skripts nicht signiert sind.
-
-**Laden Sie die Skriptaktion herunter**, die Sie mit einem lokalen Ziel ausführen möchten. Die folgenden Beispielskripts können von den folgenden Adressen herunterladen werden:
-
-* **Spark**. https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv02/spark-installer-v02.ps1
-* **R**. https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1
-* **Solr**. https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1
-* **Giraph**. https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1
-
-**Ausführen der Skriptaktion**: Öffnen Sie ein neues Azure PowerShell-Fenster im Administratormodus, und führen Sie das Spark- oder R-Installationsskript am lokalen Speicherort aus, an dem es gespeichert wurde.
-
-**Verwendungsbeispiele**: Bei Verwendung der Spark- und R-Cluster sind benötigte Datendateien ggf. nicht im HDInsight-Emulator enthalten. Daher müssen Sie möglicherweise die relevanten TXT-Dateien mit Daten in einen Pfad in HDFS hochladen und dann diesen Pfad für den Datenzugriff verwenden. Zum Beispiel:
-
-	val file = sc.textFile("/example/data/gutenberg/davinci.txt")
-
-
-Mitunter kann ein benutzerdefiniertes Skript tatsächlich von HDInsight-Komponenten abhängig sein, z. B. zum Erkennen, ob bestimmte Hadoop-Dienste in Betrieb sind. In diesem Fall müssen Sie Ihre benutzerdefinierten Skripts testen, indem Sie sie in einem tatsächlichen HDInsight-Cluster bereitstellen.
-
 
 ## Debuggen von benutzerdefinierten Skripts
 
@@ -344,13 +311,13 @@ Bei Auftreten eines Ausführungsfehlers enthält die Protokolldatei auch die bes
 - [Installieren und Verwenden von Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install.md)
 - [Installieren und Verwenden von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install.md)
 
-[hdinsight-provision]: ../hdinsight-provision-clusters/
-[hdinsight-cluster-customize]: ../hdinsight-hadoop-customize-cluster
-[hdinsight-install-spark]: ../hdinsight-hadoop-spark-install/
-[hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
-[powershell-install-configure]: ../install-configure-powershell/
+[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
+[hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
+[hdinsight-r-scripts]: hdinsight-hadoop-r-scripts.md
+[powershell-install-configure]: install-configure-powershell.md
 
 <!--Reference links in article-->
 [1]: https://msdn.microsoft.com/library/96xafkes(v=vs.110).aspx
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->
