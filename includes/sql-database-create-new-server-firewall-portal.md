@@ -2,7 +2,7 @@
 <!--
 includes/sql-database-create-new-server-firewall-portal.md
 
-Latest Freshness check:  2016-04-11 , carlrab.
+Latest Freshness check:  2016-08-01 , rickbyh.
 
 As of circa 2016-04-11, the following topics might include this include:
 articles/sql-database/sql-database-get-started-tutorial.md
@@ -31,7 +31,7 @@ Führen Sie im Azure-Portal die folgenden Schritte aus, um eine Firewallregel au
  	![Neue Serverfirewall](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-4.png)
     
 
- 	> [AZURE.IMPORTANT] Wenn die Option für **Firewall** auf dem geöffneten Blatt nicht angezeigt wird, gehen Sie zurück, und stellen Sie sicher, dass Sie das Blatt für den logischen SQL-Datenbankserver und nicht das Blatt für eine SQL-Datenbank aufgerufen haben.
+ 	> [AZURE.NOTE] Sie können auch auf dem Blatt „Datenbank“ über die Symbolleiste auf das Blatt **Firewalleinstellungen** der Serverebene zugreifen.
 
 5. Klicken Sie auf **Client-IP-Adresse hinzufügen**, damit Azure eine Regel für Ihre Client-IP-Adresse erstellt.
 
@@ -47,4 +47,4 @@ Führen Sie im Azure-Portal die folgenden Schritte aus, um eine Firewallregel au
 
 	>[AZURE.IMPORTANT] Die Client-IP-Adresse kann sich von Zeit zu Zeit ändern, und Sie können dann möglicherweise nicht auf den Server zugreifen, bis Sie eine neue Firewallregel erstellt haben. Überprüfen Sie die IP-Adresse mit [Bing](http://www.bing.com/search?q=my%20ip%20address), und fügen Sie dann eine einzelne IP-Adresse oder einen Bereich von IP-Adressen hinzu. Ausführlichere Informationen finden Sie unter [Verwalten von Firewalleinstellungen](sql-database-configure-firewall-settings.md#manage-existing-server-level-firewall-rules-through-the-azure-portal).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

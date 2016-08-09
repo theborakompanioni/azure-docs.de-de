@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/10/2016"
+	ms.date="08/01/2016"
 	ms.author="tomfitz"/>
 
 # Anpassen einer exportierten Azure Resource Manager-Vorlage
@@ -233,4 +233,4 @@ Die angepasste Vorlage und die Parameterdateien können mit Azure PowerShell ode
 - Informationen zum Exportieren einer Vorlage mithilfe der Azure-Befehlszeilenschnittstelle finden Sie unter [Verwenden der plattformübergreifenden Azure-Befehlszeilenschnittstelle mit dem Azure Resource Manager](xplat-cli-azure-resource-manager.md).
 - Informationen zur Struktur von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](resource-group-authoring-templates.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

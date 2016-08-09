@@ -104,13 +104,13 @@ Die Datei **package.json** ist eine der im Stammverzeichnis des Projekts erstell
 
 ## <a name="_Toc395783180"></a>Schritt 4: Verwenden des DocumentDB-Diensts in einer Knotenanwendung
 
-Dies ist für die anfängliche Einrichtung und Konfiguration erforderlich. Jetzt wollen wir zur eigentlichen Aufgabe übergehen, d. h. Code mithilfe von Azure DocumentDB erstellen.
+Dies ist für die anfängliche Einrichtung und Konfiguration erforderlich. Jetzt wollen wir zur eigentlichen Aufgabe übergehen, d. h. Code mithilfe von Azure DocumentDB erstellen.
 
 ### Erstellen des Modells
 
 1. Erstellen Sie im Projektverzeichnis ein neues Verzeichnis namens **models**.
 2. Erstellen Sie im Verzeichnis **models** eine neue Datei namens **taskDao.js**. Diese Datei enthält das Modell für die von Ihrer Anwendung erstellten Aufgaben.
-3. Erstellen Sie im gleichen Verzeichnis **models** eine weitere neue Datei namens **docdbUtils.js**. Diese Datei enthält einigen nützlichen, wiederverwendbaren Code, den wir in unserer Anwendung verwenden werden. 
+3. Erstellen Sie im gleichen Verzeichnis **models** eine weitere neue Datei namens **docdbUtils.js**. Diese Datei enthält einigen nützlichen, wiederverwendbaren Code, den wir in unserer Anwendung verwenden werden.
 4. Kopieren Sie den folgenden Code in **docdbUtils.js**
 
 		var DocumentDBClient = require('documentdb').DocumentClient;
@@ -305,7 +305,7 @@ Dies ist für die anfängliche Einrichtung und Konfiguration erforderlich. Jetzt
 
 ### Erstellen des Controllers
 
-1. Erstellen Sie im Verzeichnis **routes** des Projekts eine neue Datei namens **tasklist.js**. 
+1. Erstellen Sie im Verzeichnis **routes** des Projekts eine neue Datei namens **tasklist.js**.
 2. Fügen Sie **tasklist.js** den folgenden Code hinzu. Hierdurch werden die Module "DocumentDBClient" und "async" geladen, die von **tasklist.js** verwendet werden. Darüber hinaus wird hierdurch die Funktion **TaskList** definiert, an die eine Instanz des zuvor definierten **Task-Objekts** übergeben wird:
 
 		var DocumentDBClient = require('documentdb').DocumentClient;
@@ -439,7 +439,7 @@ Dies ist für die anfängliche Einrichtung und Konfiguration erforderlich. Jetzt
 
 Jetzt konzentrieren wir uns auf die Erstellung der Benutzeroberfläche, um den Benutzern die eigentliche Interaktion mit unserer Anwendung zu ermöglichen. Die von uns erstellte Express-Anwendung verwendet **Jade** als Ansichtsmodul. Weitere Informationen zu Jade finden Sie unter [http://jade-lang.com/](http://jade-lang.com/).
 
-1. Die Datei **layout.jade** im Verzeichnis **views** dient als globale Vorlage für andere **.jade**-Dateien. In diesem Schritt werden Sie sie modifizieren, um [Twitter Bootstrap](https://github.com/twbs/bootstrap) zu verwenden, ein Toolkit zum mühelosen Gestalten ansprechender Websites. 
+1. Die Datei **layout.jade** im Verzeichnis **views** dient als globale Vorlage für andere **.jade**-Dateien. In diesem Schritt werden Sie sie modifizieren, um [Twitter Bootstrap](https://github.com/twbs/bootstrap) zu verwenden, ein Toolkit zum mühelosen Gestalten ansprechender Websites.
 2. Öffnen Sie die Datei **layout.jade**, die sich im Ordner **views** befindet, und ersetzen Sie die Inhalte durch folgenden Code:
 	
 		doctype html
@@ -460,7 +460,7 @@ Jetzt konzentrieren wir uns auf die Erstellung der Benutzeroberfläche, um den B
 
 	Dadurch wird dem **Jade**-Modul mitgeteilt, dass für unsere Anwendung einige HTML-Elemente dargestellt werden müssen. Das Modul erstellt dann einen **Block** mit der Bezeichnung **content**, in dem wir das Layout für unsere Inhaltsseiten bereitstellen können. Speichern und schließen Sie die Datei **layout.jade**.
 
-4. Öffnen Sie nun die Datei **index.jade**, d. h. die Ansicht, die von der Anwendung verwendet wird, und ersetzen Sie den Inhalt der Datei durch Folgendes:
+4. Öffnen Sie nun die Datei **index.jade**, d. h. die Ansicht, die von der Anwendung verwendet wird, und ersetzen Sie den Inhalt der Datei durch Folgendes:
 
 		extends layout
 		
@@ -545,7 +545,7 @@ Jetzt konzentrieren wir uns auf die Erstellung der Benutzeroberfläche, um den B
 
 ## <a name="_Toc395783182"></a>Schritt 7: Bereitstellen Ihres Anwendungsentwicklungsprojekts auf Azure Websites
 
-1. Falls noch nicht geschehen, aktivieren Sie ein Git-Repository für Ihre Azure-Website. Anweisungen dazu finden Sie im Thema [Kontinuierliche Bereitstellung mit GIT in Azure App Service](../app-service-web/web-sites-publish-source-control.md).
+1. Falls noch nicht geschehen, aktivieren Sie ein Git-Repository für Ihre Azure-Website. Eine Anleitung hierzu finden Sie im Thema [Lokale Git-Bereitstellung in Azure App Service](../app-service-web/app-service-deploy-local-git.md).
 
 2. Fügen Sie Ihre Azure-Website als "Git Remote" hinzu.
 
@@ -570,4 +570,4 @@ Weitere Informationen finden Sie im [Node.js Developer Center](https://azure.mic
 [Github]: https://github.com/Azure-Samples/documentdb-node-todo-app
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0803_2016-->

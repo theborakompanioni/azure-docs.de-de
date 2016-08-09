@@ -6,4 +6,6 @@
 
 (+) bedeutet, dass diese Bereitstellungsmethode nur für VNETs in demselben Abonnement verfügbar ist.
 
-<!---HONumber=AcomDC_0323_2016-->
+Beachten Sie, dass das VNet-Peering (derzeit als Vorschauversion) für bestimmte Bereitstellungsmodelle und Konfigurationen verfügbar ist. Weitere Informationen finden Sie im Artikel [VNet-Peering](../articles/virtual-network/virtual-network-peering-overview.md).
+
+<!---HONumber=AcomDC_0803_2016-->

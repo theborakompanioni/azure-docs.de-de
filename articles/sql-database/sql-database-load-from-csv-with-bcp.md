@@ -3,7 +3,7 @@
    description="Für kleinere Datenmengen wird BCP zum Importieren von Daten in Azure SQL-Datenbank verwendet."
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="carlrabeler"
+   authors="CarlRabeler"
    manager="jhubbard"
    editor=""/>
 
@@ -127,4 +127,4 @@ Informationen zum Migrieren einer SQL Server-Datenbank finden Sie im Artikel zur
 <!--Other Web references-->
 [Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

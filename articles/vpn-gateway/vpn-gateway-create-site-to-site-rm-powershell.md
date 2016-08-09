@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/13/2016"
+   ms.date="08/02/2016"
    ms.author="cherylmc"/>
 
 # Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung mit PowerShell und Azure Resource Manager
@@ -117,7 +117,7 @@ Azure verwendet das angegebene Präfix der IP-Adresse, um zu erkennen, welcher D
 
 Beachten Sie beim Verwenden der PowerShell-Beispiele Folgendes:
 	
-- *GatewayIPAddress* ist die IP-Adresse Ihres lokalen VPN-Geräts. Das VPN-Gerät darf sich nicht hinter einer NAT befinden. 
+- *GatewayIPAddress* ist die IP-Adresse Ihres lokalen VPN-Geräts. Das VPN-Gerät darf sich nicht hinter einer NAT befinden.
 - *AddressPrefix* ist Ihr lokaler Adressraum.
 
 So fügen Sie ein Gateway für das lokale Netzwerk mit einem Adresspräfix hinzu
@@ -157,10 +157,10 @@ In diesem Schritt erstellen Sie das Gateway des virtuellen Netzwerks. Beachten S
 
 Verwenden Sie die folgenden Werte:
 
-- *-GatewayType* für eine Standort-zu-Standort-Konfiguration lautet *Vpn*. Der Gatewaytyp ist immer spezifisch für die Konfiguration, die Sie implementieren. Beispielsweise kann für andere Gatewaykonfigurationen für -GatewayType die Einstellung „ExpressRoute“ erforderlich sein. 
+- *-GatewayType* für eine Standort-zu-Standort-Konfiguration lautet *Vpn*. Der Gatewaytyp ist immer spezifisch für die Konfiguration, die Sie implementieren. Beispielsweise kann für andere Gatewaykonfigurationen für -GatewayType die Einstellung „ExpressRoute“ erforderlich sein.
 
 - *-VpnType* kann *routenbasiert* (in einigen Dokumentationen als dynamisches Gateway bezeichnet) oder *richtlinienbasiert* sein (in einigen Dokumentationen als statisches Gateway bezeichnet). Weitere Informationen zu VPN-Gatewaytypen finden Sie unter [Informationen zu VPN-Gateways](vpn-gateway-about-vpngateways.md#vpntype).
-- *-GatewaySku* kann auf *Basic*, *Standard* oder *HighPerformance* festgelegt werden. 	
+- *-GatewaySku* kann auf *Basic*, *Standard* oder *HighPerformance* festgelegt werden.
 
 		New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard
 
@@ -198,8 +198,8 @@ Verwenden Sie die unten angegebene Anleitung, wenn Sie die Präfixe für Ihr Gat
 
 ## Nächste Schritte
 
-- Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
+- Sie können Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Für diese Schritte finden Sie Informationen unter [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
 
 - Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [How to configure BGP](vpn-gateway-bgp-resource-manager-ps.md) (Gewusst wie: Konfiguration von BGP).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

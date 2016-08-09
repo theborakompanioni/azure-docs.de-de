@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="05/11/2016"
+   ms.date="08/02/2016"
    ms.author="nitinme"/>
 
 # Erste Schritte mit Azure Data Lake-Speicher mithilfe des Azure-Portals
@@ -27,7 +27,7 @@
 - [Azure-Befehlszeilenschnittstelle](data-lake-store-get-started-cli.md)
 - [Node.js](data-lake-store-manage-use-nodejs.md)
 
-Hier erfahren Sie, wie Sie im Azure-Portal ein Azure Data Lake-Speicherkonto erstellen und grundlegende Vorgänge ausführen, z. B. Ordner erstellen, Datendateien hoch- und herunterladen, Ihr Konto löschen usw. Weitere Informationen zu Data Lake-Speicher finden Sie unter [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md).
+Hier erfahren Sie, wie Sie im Azure-Portal ein Azure Data Lake-Speicherkonto erstellen und grundlegende Vorgänge ausführen, z. B. Ordner erstellen, Datendateien hoch- und herunterladen, Ihr Konto löschen usw. Weitere Informationen zu Data Lake-Speicher finden Sie unter [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md).
 
 ## Voraussetzungen
 
@@ -49,7 +49,7 @@ Zunächst müssen Sie die Aktivierung Ihres Azure-Abonnements für die öffentli
 
 Sehen Sie sich die folgenden Videos mit ersten Schritten mit dem Data Lake-Speicher an.
 
-* [Erstellen eines Data Lake-Speicherkontos](https://mix.office.com/watch/1k1cycy4l4gen)
+* [Erstellen eines Data Lake-Speicherkontos](https://mix.office.com/watch/1k1cycy4l4gen)
 * [Verwalten von Daten im Data Lake-Speicher mit dem Daten-Explorer](https://mix.office.com/watch/icletrxrh6pc)
 
 ## Erstellen eines Azure Data Lake-Speicherkontos
@@ -70,7 +70,7 @@ Sehen Sie sich die folgenden Videos mit ersten Schritten mit dem Data Lake-Speic
 
 5. Klicken Sie auf **Erstellen**. Wenn Sie die Option zum Anheften des Kontos an das Startmenü ausgewählt haben, wird wieder das Startmenü angezeigt, und Sie können den Fortschritt der Bereitstellung Ihres Data Lake-Speicherkontos überprüfen. Nachdem das Data Lake-Speicherkonto bereitgestellt wurde, wird das Kontoblatt angezeigt.
 
-6. Erweitern Sie die Dropdownliste **Zusammenfassung**, um die Informationen zu Ihrem Data Lake-Speicherkonto anzuzeigen, z. B. die zugehörige Ressourcengruppe, den Ort usw. Klicken Sie auf das Symbol **Schnellstart**, um Links zu anderen Ressourcen im Zusammenhang mit Data Lake-Speicher anzuzeigen.
+6. Erweitern Sie die Dropdownliste **Zusammenfassung**, um die Informationen zu Ihrem Data Lake-Speicherkonto anzuzeigen, z. B. die zugehörige Ressourcengruppe, den Ort usw. Klicken Sie auf das Symbol **Schnellstart**, um Links zu anderen Ressourcen im Zusammenhang mit Data Lake-Speicher anzuzeigen.
 
 	![Ihr Azure Data Lake-Speicherkonto](./media/data-lake-store-get-started-portal/ADL.Account.QuickStart.png "Ihr Azure Data Lake-Konto")
 
@@ -136,5 +136,6 @@ Um ein Azure Data Lake-Speicherkonto zu löschen, klicken Sie auf dem Blatt „D
 - [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
 - [Verwenden von Azure Data Lake Analytics mit Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
+- [Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store](data-lake-store-diagnostic-logs.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->
