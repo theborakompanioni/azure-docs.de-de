@@ -110,7 +110,7 @@ Mit der folgenden Anweisung wird der WASB-URI des Clusterstandardspeichers abger
 
 Dadurch wird ein ähnlicher Wert wie der folgende zurückgegeben, wobei __CONTAINER__ der Standardcontainer und __ACCOUNTNAME__ der Name des Azure-Speicherkontos ist:
 
-    wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net
+    wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net
 
 Sie können dann diese Information mit der [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) verwenden, um Daten in den Container hochzuladen oder aus diesem herunterzuladen.
 
@@ -136,7 +136,7 @@ Sie können dann diese Information mit der [Azure-Befehlszeilenschnittstelle](..
         
     Ersetzen Sie __ACCOUNTNAME__ durch den Namen des Speicherkontos. Ersetzen Sie __ACCOUNTKEY__ durch den zuvor abgerufenen Schlüssel. __FILEPATH__ ist der Pfad zu der Datei, die Sie hochladen möchten, und __BLOBPATH__ ist der Pfad im Container.
 
-    Wenn beispielsweise die Datei in HDInsight in wasb://example/data/filename.txt angegeben werden soll, lautet __BLOBPATH__ `example/data/filename.txt`.
+    Wenn beispielsweise die Datei in HDInsight in wasbs://example/data/filename.txt angegeben werden soll, lautet __BLOBPATH__ `example/data/filename.txt`.
 
 ##Beispiel: Aktualisieren der Ambari-Konfiguration
 
@@ -255,4 +255,4 @@ Eine vollständige Referenz der REST-API finden Sie unter [Referenz zur Ambari-A
 
 > [AZURE.NOTE] Einige Ambari-Funktionen sind deaktiviert, da sie vom HDInsight-Clouddienst verwaltet werden, z. B. Hinzufügen oder Entfernen von Hosts im Cluster oder Hinzufügen neuer Dienste.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -73,7 +73,7 @@ Sie können diese Service Bus-Warteschlangen mithilfe einer im Beispielpaket ent
 
 3.  Geben Sie auf dem Bildschirm den Service Bus-ACS-Namespace, den Ausstellernamen und den Ausstellerschlüssel ein.
 
-    ![][2]  
+    ![][2]
 4.  In einem Meldungsfeld werden Sie informiert, dass drei Warteschlangen in Ihrem Service Bus-Namespace erstellt werden. Klicken Sie auf **OK**.
 
 5.  Führen Sie den Tutorialclient weiter aus. Öffnen Sie das Portal, klicken Sie auf **Service Bus** > **_Ihr Service Bus-Namespace_** > **Warteschlangen**, und überprüfen Sie, ob die drei Warteschlangen erstellt wurden.
@@ -112,7 +112,7 @@ Handelspartnervereinbarungen werden zwischen Geschäftsprofilen von Handelspartn
 
     3.  Laden Sie auf der Registerkarte **Protokoll** im Abschnitt **Schemas** das Schema **EFACT\_D93A\_INVOIC.xsd** hoch. Dieses Schema steht im Beispielpaket zur Verfügung.
 
-        ![][4]  
+        ![][4]
     4.  Geben Sie auf der Registerkarte **Transport** die Details für die Service Bus-Warteschlangen an. Für den sendeseitigen Vertrag verwenden wir die Warteschlange **northwindreceive**, um die EDIFACT-Rechnung an Northwind zu senden, und die Warteschlange **suspended**, an die alle Nachrichten weitergeleitet werden, bei deren Verarbeitung ein Fehler auftritt und die deswegen angehalten werden. Sie haben diese Warteschlangen in **Schritt 1: Erstellen der Azure Service Bus-Warteschlangen** (in diesem Thema) erstellt.
 
         ![][5]
@@ -161,15 +161,15 @@ Das BizTalk Services-Projekt **InvoiceProcessingBridge**, das die Umformung der 
 
 2.  Klicken Sie auf eine beliebige Stelle des Zeichenbereichs, und legen Sie die **BizTalk Service-URL** im Eigenschaftenfeld fest, um Ihren BizTalk Services-Abonnementnamen anzugeben. Beispiel: `https://contosowabs.biztalk.windows.net`.
 
-    ![][7]  
+    ![][7]
 3.  Ziehen Sie aus der Toolbox eine **unidirektionale XML-Brücke** auf den Zeichenbereich. Legen Sie die Eigenschaften **Entitätsname** und **Relative Adresse** der Brücke auf **ProcessInvoiceBridge** fest. Doppelklicken Sie auf **ProcessInvoiceBridge**, um die Konfigurationsoberfläche der Brücke zu öffnen.
 
 4.  Klicken Sie im Feld **Nachrichtentypen** auf das Pluszeichen (**+**), um das Schema der eingehenden Nachricht anzugeben. Da die eingehende Rechnung für die EAI-Brücke immer die interne Rechnung ist, legen Sie diese auf **INHOUSEINVOICE** fest.
 
-    ![][8]  
+    ![][8]
 5.  Klicken Sie auf das Shape **XML-Transformation**, und klicken Sie im Eigenschaftenfeld für die Eigenschaft **Zuordnung** auf die Auslassungsschaltfläche (**...**). Wählen Sie im Dialogfeld **Zuordnungsauswahl** die Transformationsdatei **INHOUSEINVOICE\_to\_D93AINVOIC** aus, und klicken Sie dann auf **OK**.
 
-    ![][9]  
+    ![][9]
 6.  Wechseln Sie wieder zu **MessageFlowItinerary.bcs**, und ziehen Sie aus der Toolbox einen **bidirektionalen externen Dienstendpunkt** auf die rechte Seite von **ProcessInvoiceBridge**. Legen Sie seine Eigenschaft **Entitätsname** auf **EDIBridge** fest.
 
 7.  Erweitern Sie im Projektmappen-Explorer **MessageFlowItinerary.bcs**, und doppelklicken Sie auf die Datei **EDIBridge.config**. Ersetzen Sie den Inhalt von **EDIBridge.config** durch Folgendes.
@@ -231,8 +231,8 @@ Das BizTalk Services-Projekt **InvoiceProcessingBridge**, das die Umformung der 
 
 9.  Klicken Sie in der Toolbox auf den **Connector**, und verbinden Sie die Komponenten **ProcessInvoiceBridge** und **EDIBridge** miteinander. Wählen Sie den Connector aus, und legen Sie im Feld „Eigenschaften“ den Parameter **Filterbedingung** auf** Alle zuordnen** fest. Dadurch wird sichergestellt, dass alle von der EAI-Brücke gesendeten Nachrichten an die EDI-Brücke weitergeleitet werden.
 
-    ![][10]  
-10.  Speichern Sie Änderungen an der Lösung.  
+    ![][10]
+10.  Speichern Sie Änderungen an der Lösung.
 
 ### Bereitstellen des Projekts
 
@@ -259,16 +259,16 @@ In diesem Thema sehen wir uns an, wie die Lösung mithilfe der Anwendung **Tutor
 
     Sie hatten den Endpunkt der EAI-Bridge im vorhergehenden Schritt kopiert. Für den Endpunkt der EDI-Empfangsbrücke navigieren Sie im BizTalk Services-Portal zu „Vereinbarung > Empfangseinstellungen > Transport > Endpunkt“.
 
-    ![][12]  
+    ![][12]
 4.  Klicken Sie im nächsten Fenster unter Contoso auf die Schaltfläche **Interne Rechnung senden**. Öffnen Sie im Dialogfeld „Datei öffnen“ die Datei „INHOUSEINVOICE.txt“. Untersuchen Sie den Inhalt der Datei, und klicken Sie dann auf **OK**, um die Rechnung zu senden.
 
-    ![][13]  
+    ![][13]
 5.  Nach wenigen Sekunden wird die Rechnung bei Northwind empfangen. Klicken Sie auf den Link **Nachricht anzeigen**, um die von Northwind empfangene Rechnung anzuzeigen. Beachten Sie, dass die von Northwind empfangene Rechnung dem EDIFACT-Standardschema entspricht, während die von Contoso gesendete Rechnung einem internen Schema entsprach.
 
-    ![][14]  
+    ![][14]
 6.  Wählen Sie die Rechnung aus, und klicken Sie dann auf **Bestätigung senden**. Beachten Sie, dass in dem jetzt angezeigten Dialogfeld die Austausch-ID der empfangenen Rechnung und der zu sendenden Bestellung gleich ist. Klicken Sie im Dialogfeld **Bestätigung senden** auf „OK“.
 
-    ![][15]  
+    ![][15]
 7.  Nach wenigen Sekunden wird die Bestätigung erfolgreich bei Contoso empfangen.
 
     ![][16]
@@ -284,10 +284,10 @@ Der wichtigste Aspekt beim Arbeiten mit Batches besteht in der eigentlichen Frei
 
 3.  Geben Sie ein Batchkriterium an, das definiert, welche Nachrichten als Batch gesendet werden müssen. In dieser Lösung werden alle Nachrichten im Batch gesendet. Wählen Sie also die Option „Erweiterte Definitionen verwenden“ aus, und geben Sie **1 = 1** ein. Dies ist eine Bedingung, die immer wahr ist. Daher werden alle Nachrichten als Batch gesendet. Klicken Sie auf **Weiter**.
 
-    ![][17]  
+    ![][17]
 4.  Geben Sie ein Batchfreigabekriterium ein. Wählen Sie im Dropdownfeld **MessageCountBased** aus, und geben Sie als **Anzahl** den Wert **3** an. Dies bedeutet, dass ein aus drei Nachrichten bestehender Batch an Northwind gesendet wird. Klicken Sie auf **Weiter**.
 
-    ![][18]  
+    ![][18]
 5.  Überprüfen Sie die Zusammenfassung, und klicken Sie dann auf **Speichern**. Klicken Sie auf **Bereitstellen**, um die Vereinbarung erneut bereitzustellen.
 
 6.  Wechseln Sie wieder zum **Tutorialclient** zurück, klicken Sie auf **Interne Rechnung senden**, und befolgen Sie die Anweisungen zum Senden der Rechnung. Sie werden feststellen, dass bei Northwind keine Rechnung empfangen wird, da die Batchgröße nicht erreicht wird. Wiederholen Sie diesen Schritt noch zweimal, damit drei Rechnungsnachrichten an Northwind gesendet werden. Dadurch wird das Batchfreigabekriterium der 3 Nachrichten erfüllt, und Sie sollten jetzt Rechnungen bei Northwind sehen.
@@ -313,4 +313,4 @@ Der wichtigste Aspekt beim Arbeiten mit Batches besteht in der eigentlichen Frei
 [17]: ./media/biztalk-process-edifact-invoice/process-edifact-invoices-with-auzure-bts-17.PNG
 [18]: ./media/biztalk-process-edifact-invoice/process-edifact-invoices-with-auzure-bts-18.PNG
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

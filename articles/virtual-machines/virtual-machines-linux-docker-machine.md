@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure-services"
-	ms.date="04/20/2016"
+	ms.date="07/22/2016"
 	ms.author="rasquill"/>
 
 # Verwenden eines Docker-Computers mit dem Azure-Treiber
@@ -130,4 +130,6 @@ Und prüfen Sie, ob Sie den ausgeführten Container sehen. Geben Sie `docker-mac
 
 Bei Interesse können Sie die [Docker-VM-Erweiterung](virtual-machines-linux-dockerextension.md) für Azure ausprobieren, um den gleichen Vorgang mithilfe der Azure-Befehlszeilenschnittstelle oder Azure Resource Manager-Vorlagen auszuführen.
 
-<!---HONumber=AcomDC_0427_2016-->
+Weitere Beispiele zum Arbeiten mit Docker finden Sie unter [Working with Docker](https://github.com/Microsoft/HealthClinic.biz/wiki/Working-with-Docker) (Arbeiten mit Docker) aus der [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect-[Demo](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/). Weitere Schnellstarts aus der HealthClinic.biz-Demo finden Sie unter [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts) (Schnellstarts zu Azure-Entwicklungstools).
+
+<!---HONumber=AcomDC_0727_2016-->

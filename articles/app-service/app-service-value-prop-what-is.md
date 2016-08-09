@@ -33,7 +33,7 @@ Hier sind einige wichtige Features und Funktionen von App Service aufgeführt:
 
 - **Mehrere Sprachen und Frameworks**: App Service verfügt über erstklassige Unterstützung für ASP.NET, Node.js, Java, PHP und Python. Außerdem können Sie [Windows PowerShell und andere Skripts oder ausführbare Dateien](../app-service-web/web-sites-create-web-jobs.md) auf App Service-VMs ausführen.
 
-- **DevOps-Optimierung** – Richten Sie mit Visual Studio Team Services, GitHub oder BitBucket [Continuous Integration und Bereitstellung](../app-service-web/app-service-continous-deployment.md) ein. Stufen Sie Updates über [Test- und Stagingumgebungen](../app-service-web/web-sites-staged-publishing.md) herauf. Führen Sie [A/B-Tests](../app-service-web/app-service-web-test-in-production-get-start.md) aus. Verwalten Sie Ihre Apps in App Service mithilfe von [Azure PowerShell](../powershell-install-configure.md) oder der [plattformübergreifenden Befehlszeilenschnittstelle (Command-Line Interface, CLI)](../xplat-cli-install.md).
+- **DevOps-Optimierung**: Richten Sie mit Visual Studio Team Services, GitHub oder BitBucket die [fortlaufende Integration und Bereitstellung](../app-service-web/app-service-continuous-deployment.md) ein. Stufen Sie Updates über [Test- und Stagingumgebungen](../app-service-web/web-sites-staged-publishing.md) herauf. Führen Sie [A/B-Tests](../app-service-web/app-service-web-test-in-production-get-start.md) aus. Verwalten Sie Ihre Apps in App Service mithilfe von [Azure PowerShell](../powershell-install-configure.md) oder der [plattformübergreifenden Befehlszeilenschnittstelle (Command-Line Interface, CLI)](../xplat-cli-install.md).
  
 - **Globale Skalierung mit hoher Verfügbarkeit** – Skalieren Sie manuell oder automatisch [zentral](../app-service-web/web-sites-scale.md) oder [horizontal](../azure-portal/insights-how-to-scale.md) hoch. Hosten Sie Ihre Apps überall in der globalen Rechenzentrumsinfrastruktur von Microsoft. Die App Service-Vereinbarung zum Servicelevel ([SLA](https://azure.microsoft.com/support/legal/sla/app-service/)) garantiert eine hohe Verfügbarkeit.
 
@@ -80,4 +80,4 @@ Oder eröffnen Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/pri
 * [Tutorial: Erstellen einer API-App](../app-service-api/app-service-api-dotnet-get-started.md)
 * [Tutorial: Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

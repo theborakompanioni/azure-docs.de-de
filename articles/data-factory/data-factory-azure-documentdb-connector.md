@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/09/2016" 
+	ms.date="07/25/2016" 
 	ms.author="spelluru"/>
 
 # Verschieben von Daten in und aus DocumentDB mithilfe von Azure Data Factory
@@ -22,7 +22,7 @@ Dieser Artikel beschreibt die Verwendung der Kopieraktivität in einer Azure Dat
 
 In den folgenden Beispielen wird veranschaulicht, wie Sie Daten in und aus Azure DocumentDB und Azure-BLOB-Speicher kopieren. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus beliebigen Quellen in die [hier](data-factory-data-movement-activities.md#supported-data-stores) aufgeführten Senken kopiert werden.
 
-[AZURE.NOTE] Das Kopieren von Daten aus Azure DocumentDB an lokale/Azure IaaS-basierte Datenspeicher (und umgekehrt) wird derzeit nicht unterstützt. Die vollständige Matrix für Azure DocumentDB wird in Kürze unterstützt.
+> [AZURE.NOTE] Das Kopieren von Daten aus lokalen/Azure IaaS-Datenspeichern in Azure DocumentDB und umgekehrt wird ab Version 2.1 des Datenverwaltungsgateways unterstützt.
 
 ## Beispiel: Kopieren von Daten aus DocumentDB in ein Azure-Blob
 
@@ -401,7 +401,7 @@ Wenn bei der Kopieraktivität "source" den Typ **DocumentDbCollectionSource** ha
 | **Eigenschaft** | **Beschreibung** | **Zulässige Werte** | **Erforderlich** |
 | ------------ | --------------- | ------------------ | ------------ |
 | query | Geben Sie die Abfrage an, um Daten zu lesen. | Die Abfragezeichenfolge wird durch DocumentDB unterstützt. <br/><br/>Beispiel: SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > "2009-01-01T00:00:00" | Nein <br/><br/>Falls nicht angegeben, die SQL-Anweisung, die ausgeführt wird: select <in „structure“ definierte Spalten> from mycollection 
-| nestingSeparator | Sonderzeichen, um anzugeben, dass das Dokument geschachtelt ist. | Beliebiges Zeichen. <br/><br/>DocumentDB ist ein NoSQL-Speicher für JSON-Dokumente, und geschachtelte Strukturen sind zulässig. Azure Data Factory ermöglicht dem Benutzer, über einen "nestingSeparator", in den obigen Beispielen ".", eine Hierarchie anzugeben. Mit dem Trennzeichen generiert die Kopieraktivität das Objekt "Name" mit den drei untergeordneten Elementen "First", "Middle" und "Last" gemäß "Name.First", "Name.Middle" und "Name.Last" in der Tabellendefinition. | Nein
+| nestingSeparator | Sonderzeichen, um anzugeben, dass das Dokument geschachtelt ist. | Beliebiges Zeichen. <br/><br/>DocumentDB ist ein NoSQL-Speicher für JSON-Dokumente, in denen geschachtelte Strukturen zulässig sind. Azure Data Factory ermöglicht dem Benutzer, über einen "nestingSeparator", in den obigen Beispielen ".", eine Hierarchie anzugeben. Mit dem Trennzeichen generiert die Kopieraktivität das Objekt "Name" mit den drei untergeordneten Elementen "First", "Middle" und "Last" gemäß "Name.First", "Name.Middle" und "Name.Last" in der Tabellendefinition. | Nein
 
 **DocumentDbCollectionSink** unterstützt die folgenden Eigenschaften:
 
@@ -430,4 +430,4 @@ Wenn bei der Kopieraktivität "source" den Typ **DocumentDbCollectionSource** ha
 ## Leistung und Optimierung  
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory B2C-Vorschau: Multi-Factor Authentication | Microsoft Azure"
+	pageTitle="Azure Active Directory B2C: Multi-Factor Authentication | Microsoft Azure"
 	description="Aktivieren der Multi-Factor Authentication in kundenorientierten Anwendungen, die mit Azure Active Directory B2C geschützt werden"
 	services="active-directory-b2c"
 	documentationCenter=""
@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="07/24/2016"
 	ms.author="swkrish"/>
 
-# Azure Active Directory B2C-Vorschau: Aktivieren der Multi-Factor Authentication in kundenorientierten Anwendungen
+# Azure Active Directory B2C: Aktivieren der Multi-Factor Authentication in kundenorientierten Anwendungen
 
 Azure Active Directory (Azure AD) B2C bietet eine direkte Integration in die [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md), damit Sie eine zweite Sicherheitsebene zu Registrierungs- und Anmeldeoberflächen in kundenorientierten Anwendungen hinzufügen können. Sie erreichen dies, ohne eine einzige Codezeile schreiben zu müssen. Derzeit wird eine Überprüfung per Telefonanruf und Textnachricht unterstützt. Sie können die Multi-Factor Authentication auch dann aktivieren, wenn Sie bereits Registrierungs- und Anmelderichtlinien erstellt haben.
-
-[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
 > [AZURE.NOTE]
 Die Multi-Factor Authentication kann auch beim Erstellen von Registrierungs- und Anmelderichtlinien aktiviert werden und nicht nur durch Bearbeiten von vorhandenen Richtlinien.
@@ -58,4 +56,4 @@ Wenn sich der Kunde (mit einem lokalen Konto oder dem Konto eines sozialen Netzw
 
 Wie für Registrierungs- und Anmeldungsrichtlinien oben beschrieben, ist es auch möglich, die mehrstufige Authentifizierung für Registrierungs- und Anmeldungsrichtlinien sowie für Richtlinien zur Kennwortrücksetzung zu aktivieren. Dies ist bald auch für Richtlinien zur Profilbearbeitung möglich.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

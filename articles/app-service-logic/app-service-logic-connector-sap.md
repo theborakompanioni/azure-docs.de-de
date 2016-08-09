@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -54,7 +54,7 @@ Ein Connector kann innerhalb einer Logik-App oder direkt aus dem Azure Marketpla
 
 ## Konfigurieren der soeben erstellten SAP-Connector-API-App ##
 
-Navigieren Sie zu der soeben erstellten API-App über "Durchsuchen" -> "API-Apps" -> <Name of the API App just created>. Sie stellen das folgende Verhalten fest. Die Installation ist unvollständig, da die Hybridverbindung noch nicht hergestellt wurde: ![][2]
+Navigieren Sie über „Durchsuchen“ -> „API-Apps“ -> <Name der soeben erstellten App-API< zu der soeben erstellten API-App. Sie stellen das folgende Verhalten fest. Die Installation ist unvollständig, da die Hybridverbindung noch nicht hergestellt wurde: ![][2]
 
 Der SAP-Connector erfordert eine Hybridkonnektivität zum Herstellen einer Verbindung mit einem *beliebigen* SAP-Endpunkt. So richten Sie die Hybridkonnektivität ein
 
@@ -82,7 +82,7 @@ Der Schritt/die Aktion wird nun in der Logik-App als konfiguriert angezeigt. Die
 Vervollständigen Sie die Logik-App, um den Geschäftsprozess zu definieren, und führen Sie sie dann aus, um den beabsichtigten Zweck zu erreichen.
 
 ## Mehr mit Ihrem Connector machen
-Der Connector ist nun erstellt, und Sie können ihn mit einer Logik-App einem Geschäftsworkflow hinzufügen. Informationen finden Sie unter [Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md).
+Nachdem der Connector nun erstellt ist, können Sie ihn mit einer Logik-App einem Geschäftsworkflow hinzufügen. Informationen finden Sie unter [Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md).
 
 >[AZURE.NOTE] Wenn Sie Azure Logik-Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto registrieren, wechseln Sie zu [Logik-App testen](https://tryappservice.azure.com/?appservice=logic). Dort können Sie sofort eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
@@ -99,4 +99,4 @@ Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connec
 [6]: ./media/app-service-logic-connector-sap/LogicApp2.jpg
 [7]: ./media/app-service-logic-connector-sap/LogicApp3.jpg
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

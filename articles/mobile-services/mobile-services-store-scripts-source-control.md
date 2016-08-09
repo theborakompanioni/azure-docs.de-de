@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="12/07/2015"
+	ms.date="07/21/2016"
 	ms.author="glenga"/>
 
 # Speichern von Projektcode des mobilen Diensts in der Quellcodeverwaltung
@@ -24,8 +24,8 @@
 
 
 > [AZURE.SELECTOR]
-- [.NET backend](mobile-services-dotnet-backend-store-code-source-control.md)
-- [Javascript backend](mobile-services-store-scripts-source-control.md)
+- [.NET-Back-End](mobile-services-dotnet-backend-store-code-source-control.md)
+- [JavaScript-Back-End](mobile-services-store-scripts-source-control.md)
 
 In diesem Thema erfahren Sie, wie Sie die von Azure Mobile Services bereitgestellte Quellcodeverwaltung verwenden, um Ihre Serverskripts zu speichern. Sie können Skripts und andere JavaScript-Back-End-Codedateien aus Ihrem lokalen Git-Repository in Ihre Produktionsumgebung im mobilen Dienst befördern. Außerdem erfahren Sie, wie Sie freigegebenen Code definieren, der möglicherweise für mehrere Skripts erforderlich ist, und wie Sie die Datei „package.jason“ verwenden, um Ihrem mobilen Dienst Node.js-Module hinzuzufügen.
 
@@ -41,7 +41,8 @@ Dieses Lernprogramm setzt voraus, dass Sie bereits einen mobilen Dienst aus dem 
 
 	Die erforderlichen Schritte zum Installieren von Git variieren je nach Betriebssystem. Informationen zu Betriebssystem-spezifischen Distributionen und zur Installation finden Sie unter [Installieren von Git].
 
-	> [AZURE.NOTE]Einige Betriebssysteme verfügen über eine Befehlszeilenversion und eine GUI-Version von Git. Die in diesem Artikel bereitgestellten Anweisungen verwenden die Befehlszeilenversion.
+	> [AZURE.NOTE]
+	Einige Betriebssysteme verfügen über eine Befehlszeilenversion und eine GUI-Version von Git. Die in diesem Artikel bereitgestellten Anweisungen verwenden die Befehlszeilenversion.
 
 2. Öffnen Sie eine Befehlszeile, zum Beispiel **GitBash** (Windows) oder **Bash** (Unix Shell). Auf OS X-Systemen können Sie auf die Befehlszeile über die **Terminal**-Anwendung zugreifen.
 
@@ -98,9 +99,7 @@ Sie haben nun Ihr lokales Repository erstellt und können Änderungen an Servers
 
 	Daraufhin wird eine Reihe von Ausgaben für die Bereitstellung des Commits im mobilen Dienst angezeigt.
 
-6. Kehren Sie zurück zum Verwaltungsportal, klicken Sie auf die Registerkarte **Daten**, klicken Sie anschließend auf die Tabelle **TodoItem**, klicken Sie auf **Skript**, und wählen Sie dann den Vorgang **Einfügen** aus.
-7. 
-	Beachten Sie, dass das angezeigte Skript für die Einfügen-Operation denselben JavaScript-Code enthält, den Sie soeben in Ihr Repository hochgeladen haben.
+6. Kehren Sie zurück zum [klassischen Azure-Portal], klicken Sie auf die Registerkarte **Daten**, klicken Sie anschließend auf die Tabelle **TodoItem**, klicken Sie auf **Skript**, und wählen Sie dann den Vorgang **Einfügen** aus. Beachten Sie, dass das angezeigte Skript für die Einfügen-Operation denselben JavaScript-Code enthält, den Sie soeben in Ihr Repository hochgeladen haben.
 
 ##<a name="use-npm"></a>Verwenden von freigegebenem Code und Node.js-Modulen in Ihren Serverskripts.
 
@@ -138,7 +137,7 @@ Die empfohlene Vorgehensweise zum Hinzufügen von Node.js-Modulen zu Ihrem mobil
 Nach Abschluss dieses Lernprogramms sind Sie in der Lage, Ihre Skripts in einer Quellcodeverwaltung zu speichern. Die folgenden Artikel enthalten weiterführende Informationen zu Serverskripts und benutzerdefinierten APIs:
 
 + [Arbeiten mit Serverskripts in Mobile Services]  
-Beschreibt die Verwendung von Serverskripts, Auftragsplaner und benutzerdefinierten APIs.
+<br/>Beschreibt die Verwendung von Serverskripts, Auftragsplaner und benutzerdefinierten APIs.
 
 <!-- Anchors. -->
 [Enable source control in your mobile service]: #enable-source-control
@@ -161,4 +160,4 @@ Beschreibt die Verwendung von Serverskripts, Auftragsplaner und benutzerdefinier
 [Module]: http://nodejs.org/api/modules.html
 [node-uuid]: https://npmjs.org/package/node-uuid
 
-<!-----HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0727_2016-->

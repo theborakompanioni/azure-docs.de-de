@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="05/24/2016"
+	ms.date="07/21/2016"
 	ms.author="ricksal"/>
 
 
@@ -612,11 +612,11 @@ Nutzen Sie die Active Directory-Authentifizierungsbibliothek (Active Directory A
 
 * Ersetzen Sie **INSERT-AUTHORITY-HERE** durch den Namen des Mandanten, unter dem Sie Ihre Anwendung bereitgestellt haben. Das Format sollte https://login.windows.net/contoso.onmicrosoft.com entsprechen. Sie können diesen Wert auf der Registerkarte „Domäne“ in Ihrer Azure Active Directory-Instanz im [klassischen Azure-Portal] kopieren.
 
-* Ersetzen Sie **INSERT-RESOURCE-ID-HERE** durch die Client-ID für Ihr mobiles App-Back-End. Sie finden diese auf der Registerkarte **Erweitert** unter **Azure Active Directory-Einstellungen** im Portal.
+* Ersetzen Sie **INSERT-RESOURCE-ID-HERE** durch die Client-ID für Ihr mobiles App-Back-End. Sie finden diese im Portal auf der Registerkarte **Erweitert** unter **Azure Active Directory-Einstellungen**.
 
 * Ersetzen Sie **INSERT-CLIENT-ID-HERE** durch die Client-ID, die Sie aus der nativen Clientanwendung kopiert haben.
 
-* Ersetzen Sie **INSERT-REDIRECT-URI-HERE** durch den Endpunkt _/.auth/login/done_ Ihrer Website mithilfe des HTTPS-Schemas. Dieser Wert sollte etwa so aussehen: \__https://contoso.azurewebsites.net/.auth/login/done_.
+* Ersetzen Sie mithilfe des HTTPS-Schemas **INSERT-REDIRECT-URI-HERE** durch den Endpunkt _/.auth/login/done_ Ihrer Website. Dieser Wert sollte etwa so aussehen: \_https://contoso.azurewebsites.net/.auth/login/done_.
 
 		private AuthenticationContext mContext;
 		private void authenticate() {
@@ -753,7 +753,7 @@ Sie müssen die clientseitigen Namen zu JSON-Namen serialisieren, die den Spalte
 	@com.google.gson.annotations.SerializedName("duration")
 	private String mDuration;
 
-### <a name="table"></a>Gewusst wie: Zuordnen unterschiedlicher Tabellennamen zwischen Client und Back-End
+### <a name="table"></a>Zuordnen unterschiedlicher Tabellennamen zwischen Client und Back-End
 
 Die Zuordnung von Client-Tabellennamen zu anderen Tabellennamen im mobilen Dienst ist einfach. Verwenden Sie dazu eine der Überschreibungen der <a href="http://go.microsoft.com/fwlink/p/?LinkId=296840" target="_blank">getTable()</a>-Funktion, wie im folgenden Code gezeigt.
 
@@ -837,4 +837,4 @@ Sie können diese allgemeine Methode immer dann verwenden, wenn Sie mit komplexe
 [Get started with authentication]: app-service-mobile-android-get-started-users.md
 [Erste Schritte mit Authentifizierungen]: app-service-mobile-android-get-started-users.md
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

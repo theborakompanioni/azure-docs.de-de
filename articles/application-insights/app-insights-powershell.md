@@ -123,7 +123,7 @@ Fügen Sie diese Ressource hinzu. Oder wenn eine `siteextensions`-Ressource bere
 
 ```json
     {
-      "apiVersion": "2014-04-01",
+      "apiVersion": "2014-06-01",
       "name": "Microsoft.ApplicationInsights.AzureWebSites",
       "type": "siteextensions",
       "dependsOn": [
@@ -321,4 +321,4 @@ Andere Artikel zu Automation:
 * [Senden von Azure-Diagnosedaten an Application Insights](app-insights-powershell-azure-diagnostics.md)
 * [Erstellen von Versionsanmerkungen](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

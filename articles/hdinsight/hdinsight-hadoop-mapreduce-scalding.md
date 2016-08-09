@@ -203,13 +203,13 @@ Erfahren Sie in diesem Dokument, wie Maven verwendet wird, um einen einfachen Ma
 
 3. Nachdem eine Verbindung mit dem Hauptknoten hergestellt wurde, verwenden Sie den folgenden Befehl zum Ausführen des Wortzählauftrags.
 
-        yarn jar scaldingwordcount-1.0-SNAPSHOT.jar com.microsoft.example.WordCount --hdfs --input wasb:///example/data/gutenberg/davinci.txt --output wasb:///example/wordcountout
+        yarn jar scaldingwordcount-1.0-SNAPSHOT.jar com.microsoft.example.WordCount --hdfs --input wasbs:///example/data/gutenberg/davinci.txt --output wasbs:///example/wordcountout
 
     Dadurch wird die zuvor implementierte WordCount-Klasse ausgeführt. `--hdfs` weist den Auftrag an, HDFS zu verwenden. `--input` Gibt die Eingabetextdatei an, während `--output` den Ausgabespeicherort festlegt.
 
 4. Wenn der Auftrag abgeschlossen ist, können Sie die Ausgabe wie folgt anzeigen.
 
-        hdfs dfs -text wasb:///example/wordcountout/part-00000
+        hdfs dfs -text wasbs:///example/wordcountout/part-00000
 
     Die angezeigten Informationen sehen in etwa folgendermaßen aus:
 
@@ -279,13 +279,13 @@ Die folgenden Schritte geschehen mithilfe von Windows PowerShell. Weitere Method
         #Create a job definition and start the job
         $jobDef=New-AzureRmHDInsightMapReduceJobDefinition `
             -JobName ScaldingWordCount `
-            -JarFile wasb:///example/jars/scaldingwordcount-1.0-SNAPSHOT.jar `
+            -JarFile wasbs:///example/jars/scaldingwordcount-1.0-SNAPSHOT.jar `
             -ClassName com.microsoft.example.WordCount `
             -arguments "--hdfs", `
                        "--input", `
-                       "wasb:///example/data/gutenberg/davinci.txt", `
+                       "wasbs:///example/data/gutenberg/davinci.txt", `
                        "--output", `
-                       "wasb:///example/wordcountout"
+                       "wasbs:///example/wordcountout"
         $job = Start-AzureRmHDInsightJob `
             -clustername $clusterName `
             -jobdefinition $jobDef `
@@ -343,4 +343,4 @@ Nachdem Sie erfahren haben, wie mit Scalding MapReduce-Aufträge für HDInsight 
 
 * [Verwenden von MapReduce-Aufträgen mit HDInsight](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

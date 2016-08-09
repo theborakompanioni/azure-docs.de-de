@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/31/2016"
+   ms.date="07/25/2016"
    ms.author="alkohli" />
 
 # Ausführen eines Failovers und einer Notfallwiederherstellung für das StorSimple-Gerät
@@ -37,15 +37,16 @@ Bei einer Notfallwiederherstellung funktioniert das primäre Gerät nicht mehr. 
 
 Bei einem Notfall können Sie als Failoverziel für Ihr StorSimple-Gerät Folgendes auswählen:
 
-- Ein physisches Gerät 
+- Ein physisches Gerät
 - Das Gerät selbst
 - Ein virtuelles Gerät
 
 Bedenken Sie bei jedem Gerätefailover Folgendes:
 
-- Als Voraussetzung für die Notfallwiederherstellung müssen alle Volumes innerhalb der Volumecontainer offline sein, und den Volumecontainern muss eine Cloudmomentaufnahme zugeordnet sein. 
-- Die verfügbaren Zielgeräte für die Notfallwiederherstellung sind Geräte, die über ausreichenden Speicherplatz zur Aufnahme der ausgewählten Volumecontainer verfügen. 
+- Als Voraussetzung für die Notfallwiederherstellung müssen alle Volumes innerhalb der Volumecontainer offline sein, und den Volumecontainern muss eine Cloudmomentaufnahme zugeordnet sein.
+- Die verfügbaren Zielgeräte für die Notfallwiederherstellung sind Geräte, die über ausreichenden Speicherplatz zur Aufnahme der ausgewählten Volumecontainer verfügen.
 - Geräte, die mit dem Dienst verbunden sind, aber das Speicherplatzkriterium nicht erfüllen, stehen als Zielgeräte nicht zur Verfügung.
+- Nach einer Notfallwiederherstellung kann für eine bestimmte Dauer die Datenzugriffsleistung erheblich beeinträchtigt sein, da das Gerät auf die Daten aus der Cloud zugreifen und sie lokal speichern muss.
 
 #### Gerätefailover in allen Softwareversionen
 
@@ -91,7 +92,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät auf einem physischen Zielg
 	1. Wählen Sie in der Liste der Volumecontainer die Volumecontainer aus, für die ein Failover durchgeführt werden soll.
 	
 
-		>[AZURE.NOTE] **Nur die Volumecontainer mit zugeordneten Cloudmomentaufnahmen und Offlinevolumes werden angezeigt.**
+		>[AZURE.NOTE] **Nur die Volumecontainer mit zugeordneten Cloudmomentaufnahmen und Offlinevolumes werden angezeigt.** <br></br>
 
 	1. Wählen Sie unter **Choose a target device for the volumes in the selected containers** ein Zielgerät aus der Dropdownliste der verfügbaren Geräte aus. Nur die Geräte, die über die verfügbare Kapazität verfügen, werden in der Dropdownliste angezeigt.
 
@@ -176,4 +177,4 @@ Wenn StorSimple-Geräte direkt vor einem Notfall registriert wurden, müssen die
 - Weitere Informationen zum Verwenden des StorSimple Manager-Diensts finden Sie unter [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

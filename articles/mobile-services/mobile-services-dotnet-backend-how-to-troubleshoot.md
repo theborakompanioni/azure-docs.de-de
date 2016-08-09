@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="07/13/2016" 
+	ms.date="07/21/2016" 
 	ms.author="wesmc;ricksal"/>
 
 # Problembehandlung beim Mobile Services .NET-Back-End
@@ -124,7 +124,7 @@ Wenn Sie Ihren mobilen Dienst auf Azure veröffentlichen, wird er von der Mobile
 
 Es ist manchmal möglich, dass es durch das Verweisen auf *unterschiedliche Hauptversionen* benötigter Assemblys zu Versionskonflikten kommt (unterschiedliche *Nebenversionen* sind zulässig). Das passiert häufig dann, wenn NuGet Sie zum Upgrade auf die neueste Version eines der Pakete auffordert, die vom Mobile Services-.NET-Back-End verwendet werden.
 
->[AZURE.NOTE] Mobile Services ist derzeit nur mit ASP.NET 5.1 kompatibel. ASP.NET 5.2 wird derzeit nicht unterstützt. Ein Upgrade Ihrer ASP.NET NuGet-Pakete auf 5.2.* kann nach der Bereitstellung zu einem Fehler führen.
+>[AZURE.NOTE] Mobile Services ist derzeit nur mit ASP.NET 5.1 kompatibel. ASP.NET 5.2 wird derzeit nicht unterstützt. Ein Upgrade Ihrer ASP.NET NuGet-Pakete auf 5.2.* kann nach der Bereitstellung zu einem Fehler führen.
 
 Wenn Sie ein solches Paket aktualisieren und dann den aktualisierten Dienst auf Azure veröffentlichen, sehen Sie eine Warnseite, die auf den Konflikt hinweist:
 
@@ -164,4 +164,4 @@ Migrationen können komplex sein und erfordern, dass der Zustand der Datenbank s
 <!-- Links -->
 [SymbolSource]: http://www.symbolsource.org/Public
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

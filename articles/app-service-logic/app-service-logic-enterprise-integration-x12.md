@@ -18,6 +18,8 @@
 
 # Unternehmensintegration mit X12 
 
+>[AZURE.NOTE]Auf dieser Seite werden die X12-Features von Logik-Apps beschrieben. Informationen zu EDIFACT finden Sie [hier](app-service-logic-enterprise-integration-edifact.md).
+
 ## Erstellen einer X12-Vereinbarung 
 Bevor Sie X12-Nachrichten austauschen können, müssen Sie eine X12-Vereinbarung erstellen und in Ihrem Integrationskonto speichern. In den folgenden Schritten werden Sie durch das Erstellen einer X12-Vereinbarung begleitet.
 
@@ -32,10 +34,10 @@ Nachdem Sie [ein Integrationskonto erstellt](./app-service-logic-enterprise-inte
 
 ### Auf der Startseite des Azure-Portals
 
-Nach Anmeldung beim [Azure-Portal](http://portal.azure.com "Azure-Portal"):
-1. Wählen Sie im Menü links **Durchsuchen** aus.
+Nach der Anmeldung beim [Azure-Portal](http://portal.azure.com "Azure-Portal"):
+1. Wählen Sie im Menü links **Durchsuchen**.
 
->[AZURE.TIP]Wenn der Link **Durchsuchen** nicht angezeigt wird, müssen Sie möglicherweise zuerst das Menü erweitern. Wählen Sie dazu den Link **Menü anzeigen** aus, der sich links oben neben dem zugeklappten Menü befindet.
+>[AZURE.TIP]Wenn der Link **Durchsuchen** nicht angezeigt wird, müssen Sie möglicherweise zuerst das Menü erweitern. Wählen Sie dazu den Link **Menü anzeigen** aus, der sich links oben neben dem reduzierten Menü befindet.
 
 ![](./media/app-service-logic-enterprise-integration-overview/overview-1.png)
 2. Geben Sie in das Filtersuchfeld *Integration* ein, und wählen Sie in der Ergebnisliste **Integrationskonten** aus. ![](./media/app-service-logic-enterprise-integration-x12/x12-1-3.png)
@@ -45,7 +47,7 @@ Nach Anmeldung beim [Azure-Portal](http://portal.azure.com "Azure-Portal"):
 6. Geben Sie einen **Namen** für die Vereinbarung ein. Wählen Sie dann auf dem geöffneten Blatt „Vereinbarungen“ den **Vereinbarungstyp**, **Hostpartner**, die **Hostidentität**, den **Gastpartner** und die **Gastidentität** aus. ![](./media/app-service-logic-enterprise-integration-x12/x12-1.png)
 7. Nachdem Sie die Eigenschaften der Empfangseinstellungen festgelegt haben, wählen Sie die Schaltfläche **OK**. Wir fahren fort:
 8. Wählen Sie **Empfangseinstellungen** aus, um zu konfigurieren, wie Nachrichten, die über diese Vereinbarung empfangen werden, behandelt werden.
-9. Das Steuerelement „Empfangseinstellungen“ ist in die folgenden Abschnitte unterteilt, einschließlich Bezeichnern, Bestätigung, Schemas, Umschläge, Kontrollnummern, Überprüfungen und interne Einstellungen. Konfigurieren Sie diese Eigenschaften basierend auf Ihrer Vereinbarung mit dem Partner, mit dem Sie Nachrichten austauschen. Hier ist eine Ansicht dieser Steuerelemente; konfigurieren sie Sie so, wie diese Vereinbarung eingehende Nachrichten identifizieren und verarbeiten soll: ![](./media/app-service-logic-enterprise-integration-x12/x12-2.png)
+9. Das Steuerelement „Empfangseinstellungen“ ist in die folgenden Abschnitte unterteilt, einschließlich Bezeichnern, Bestätigung, Schemas, Umschläge, Kontrollnummern, Überprüfungen und interne Einstellungen. Konfigurieren Sie diese Eigenschaften basierend auf Ihrer Vereinbarung mit dem Partner, mit dem Sie Nachrichten austauschen. Hier ist eine Ansicht dieser Steuerelemente angegeben. Konfigurieren Sie sie so, wie diese Vereinbarung eingehende Nachrichten identifizieren und verarbeiten soll: ![](./media/app-service-logic-enterprise-integration-x12/x12-2.png)
 
 ![](./media/app-service-logic-enterprise-integration-x12/x12-3.png)
 10. Wählen Sie die Schaltfläche **OK**, um die Einstellungen zu speichern.
@@ -117,7 +119,7 @@ So konfigurieren Sie die Einstellungen, die Nachrichten verarbeiten, die Sie an 
 
 Das Steuerelement „Sendeeinstellungen“ ist in die folgenden Abschnitte unterteilt, einschließlich Bezeichnern, Bestätigung, Schemas, Umschläge, Kontrollnummern, Zeichensätze und Trennzeichen sowie Überprüfung.
 
-Hier ist eine Ansicht dieser Steuerelemente. Treffen Sie Ihre Auswahl nach der Art und Weise, in der Sie Nachrichten verarbeiten möchten, die Sie über diese Vereinbarung an Partner senden: ![](./media/app-service-logic-enterprise-integration-x12/x12-4.png)
+Hier ist eine Ansicht dieser Steuerelemente. Treffen Sie Ihre Auswahl danach, wie Nachrichten verarbeitet werden sollen, die Sie über diese Vereinbarung an Partner senden: ![](./media/app-service-logic-enterprise-integration-x12/x12-4.png)
 
 ![](./media/app-service-logic-enterprise-integration-x12/x12-5.png)
 
@@ -170,7 +172,7 @@ Anders als beim Zeichensatz können Sie für jeden Nachrichtentyp einen anderen 
 |Eigenschaft|Beschreibung |
 |----|----|
 |Zu verwendender Zeichensatz|Wählen Sie den X12-Zeichensatz zum Überprüfen der Eigenschaften, die Sie für die Vereinbarung eingeben.</br></br>**Hinweis**: Das BizTalk Services-Portal verwendet diese Einstellung nur zum Überprüfen der Werte, die für die zugehörigen Vereinbarungseigenschaften eingegeben werden. Die Empfangspipeline oder Sendepipeline ignoriert diese Zeichensatzeigenschaft während der Laufzeitverarbeitung.|
-|Schema|Wählen Sie das (+)-Symbol, und wählen Sie ein Schema aus der Dropdownliste. Wählen Sie die zu verwendenden Trennzeichen für das ausgewählte Schema:</br></br>Komponentenelementtrennzeichen – Geben Sie ein einzelnes Zeichen zum Trennen zusammengesetzter Datenelemente an.</br></br>Datenelementtrennzeichen – Geben Sie ein einzelnes Zeichen zum Trennen einfacher Datenelemente in zusammengesetzten Datenelementen an.</br></br></br></br>Ersetzungszeichen – Wählen Sie dieses Kontrollkästchen, wenn die Nutzlastdaten Zeichen enthalten, die auch als Daten-, Segment- oder Komponententrennzeichen verwendet werden. Sie können anschließend ein Ersatzzeichen eingeben. Beim Generieren der ausgehenden X12-Nachricht werden alle Instanzen von Trennzeichen in den Nutzlastdaten durch das angegebene Zeichen ersetzt.</br></br>Segmentabschlusszeichen – Geben Sie ein einzelnes Zeichen ein, um das Ende eines EDI-Segments anzuzeigen.</br></br>Suffix – wählen Sie das Zeichen, das mit dem Segmentbezeichner verwendet wird. Wenn Sie ein Suffix angeben, kann das Segmentabschlusszeichen-Datenelement leer sein. Wenn das Segmentabschlusszeichen leer gelassen wird, müssen Sie ein Suffix angeben.|
+|Schema|Wählen Sie das (+)-Symbol, und wählen Sie ein Schema aus der Dropdownliste. Wählen Sie die zu verwendenden Trennzeichen für das ausgewählte Schema:</br></br>Komponentenelementtrennzeichen: Geben Sie ein einzelnes Zeichen zum Trennen zusammengesetzter Datenelemente an.</br></br>Datenelementtrennzeichen: Geben Sie ein einzelnes Zeichen zum Trennen einfacher Datenelemente in zusammengesetzten Datenelementen an.</br></br></br></br>Ersetzungszeichen: Wählen Sie dieses Kontrollkästchen, wenn die Nutzlastdaten Zeichen enthalten, die auch als Daten-, Segment- oder Komponententrennzeichen verwendet werden. Sie können anschließend ein Ersatzzeichen eingeben. Beim Generieren der ausgehenden X12-Nachricht werden alle Instanzen von Trennzeichen in den Nutzlastdaten durch das angegebene Zeichen ersetzt.</br></br>Segmentabschlusszeichen: Geben Sie ein einzelnes Zeichen ein, um das Ende eines EDI-Segments anzuzeigen.</br></br>Suffix: Wählen Sie das Zeichen, das mit dem Segmentbezeichner verwendet wird. Wenn Sie ein Suffix angeben, kann das Segmentabschlusszeichen-Datenelement leer sein. Wenn das Segmentabschlusszeichen leer gelassen wird, müssen Sie ein Suffix angeben.|
 
 ### Überprüfen
 |Eigenschaft|Beschreibung |
@@ -181,10 +183,10 @@ Anders als beim Zeichensatz können Sie für jeden Nachrichtentyp einen anderen 
 |Führende/nachfolgende Nullen zulassen|Diese Option gibt an, dass ein von der Partei empfangener EDI-Austausch die Überprüfung auch dann besteht, wenn ein Datenelement in einem EDI-Austausch aufgrund nachfolgender Leerzeichen nicht der Längenanforderung entspricht, jedoch nach Entfernen der Leerzeichen der Längenanforderung entspricht.|
 |Nachfolgendes Trennzeichen|Diese Option gibt an, dass ein von der Partei empfangener EDI-Austausch die Überprüfung auch dann besteht, wenn ein Datenelement in einem EDI-Austausch aufgrund führender (oder nachfolgender) Nullen oder Leerzeichen nicht der Längenanforderung entspricht, jedoch nach deren Entfernung der Längenanforderung entspricht.</br></br>Wählen Sie „Nicht zulässig“, wenn Sie keine nachfolgenden Trennzeichen in einem vom Austauschabsender empfangenen Austausch zulassen möchten. Wenn der Austausch nachfolgende Trennzeichen enthält, wird er für ungültig erklärt.</br></br>Wählen Sie „Optional“, um Austauschvorgänge mit oder ohne nachfolgende Trennzeichen zu akzeptieren.</br></br>Wählen Sie „Erforderlich“, wenn der empfangene Austausch nachfolgende Trennzeichen enthalten muss.|
 
-Tun Sie nach Auswahl von **OK** auf den geöffneten Blättern Folgendes:
-13. Wählen Sie auf dem Blatt „Integrationskonto“ die Kachel **Vereinbarungen** aus, auf der die neu hinzugefügte Vereinbarung aufgeführt ist. ![](./media/app-service-logic-enterprise-integration-x12/x12-7.png)
+Gehen Sie nach der Auswahl von **OK** auf den geöffneten Blättern wie folgt vor:
+13. Wählen Sie auf dem Blatt „Integrationskonto“ die Kachel **Vereinbarungen** aus, auf dem die neu hinzugefügte Vereinbarung aufgeführt ist. ![](./media/app-service-logic-enterprise-integration-x12/x12-7.png)
 
 ## Weitere Informationen
 - [Weitere Informationen zum Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

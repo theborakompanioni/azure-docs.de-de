@@ -129,7 +129,7 @@ Sie können sich darüber informieren, welche anderen Möglichkeiten Sie mit der
 
 - [Kaufen und Konfigurieren eines benutzerdefinierten Domänennamens](custom-dns-web-site-buydomains-web-app.md): Erwerben Sie für Ihre Web-App eine attraktive Domäne (anstelle von „*.azurewebsites.net“). Alternativ können Sie natürlich auch eine Domäne verwenden, die Ihnen bereits gehört.
 - [Einrichten von Stagingumgebungen](web-sites-staged-publishing.md): Stellen Sie Ihre App vor der Bereitstellung in einer Produktionsumgebung mit einer Staging-URL bereit. Aktualisieren Sie bedenkenlos Ihre Live-Web-App. Richten Sie eine ausgeklügelte DevOps-Lösung mit mehreren Bereitstellungsslots ein.
-- [Einrichten der fortlaufenden Bereitstellung](web-sites-publish-source-control.md): Integrieren Sie die App-Bereitstellung in Ihr Quellcodeverwaltungssystem. Führen Sie bei jedem Commit eine Bereitstellung für Azure durch.
+- [Einrichten der fortlaufenden Bereitstellung](app-service-continuous-deployment.md): Integrieren Sie die App-Bereitstellung in Ihr Quellcodeverwaltungssystem. Führen Sie bei jedem Commit eine Bereitstellung für Azure durch.
 - [Zugreifen auf lokale Ressourcen](web-sites-hybrid-connection-get-started.md): Greifen Sie auf eine bereits vorhandene lokale Datenbank oder auf ein bereits vorhandenes CRM-System zu.
 - [Sichern der App](web-sites-backup.md): Richten Sie Sicherung und Wiederherstellung für Ihre Web-App ein. Sorgen Sie für unerwartete Ausfälle und für deren Behebung vor.
 - [Aktivieren von Diagnoseprotokollen](web-sites-enable-diagnostic-log.md): Lesen Sie die IIS-Protokolle von Azure oder aus der Anwendungsablaufverfolgung. Lesen Sie sie in einem Datenstrom, laden Sie sie herunter, oder portieren Sie sie zur direkten Analyse in [Application Insights](../application-insights/app-insights-overview.md).
@@ -137,4 +137,4 @@ Sie können sich darüber informieren, welche anderen Möglichkeiten Sie mit der
 - [Ausführen von Hintergrundaufträgen](../azure-functions/functions-overview.md): Führen Sie Aufträge für Datenverarbeitung, Berichterstellung usw. aus.
 - [Informationen zur Funktionsweise von App Service](../app-service/app-service-how-works-readme.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

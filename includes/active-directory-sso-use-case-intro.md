@@ -1,4 +1,5 @@
-Unternehmen verwenden aus Produktivitätsgründen zunehmend SaaS-Anwendungen (Software-as-a-Service), da die Cloudtechnologie und entsprechende Tools immer mehr zur Verfügung stehen. Mit der steigenden Anzahl von SaaS-Apps wird es zu einer Herausforderung für die Administratoren, Konten und Zugriffsrechte zu verwalten, und für die Benutzer, die verschiedenen Kennwörter nicht zu vergessen. Die individuelle Verwaltung der einzelnen Programme verursacht zusätzliche Arbeit und ist weniger sicher.
+Unternehmen verwenden aus Produktivitätsgründen zunehmend [SaaS-Anwendungen (Software-as-a-Service)](https://azure.microsoft.com/overview/what-is-saas/), da die Cloudtechnologie und entsprechende Tools immer mehr zur Verfügung stehen. Mit der steigenden Anzahl von SaaS-Apps wird es zu einer Herausforderung für die Administratoren, Konten und Zugriffsrechte zu verwalten, und für die Benutzer, die verschiedenen Kennwörter nicht zu vergessen. Die individuelle Verwaltung der einzelnen Programme verursacht zusätzliche Arbeit und ist weniger sicher.
+
 
 - Mitarbeiter, die den Überblick über viele Kennwörter behalten müssen, verwenden tendenziell weniger sichere Methoden, um sie sich zu merken: Sie schreiben sie auf oder verwenden dieselben Kennwörter über viele Konten hinweg.
 
@@ -21,4 +22,4 @@ Für den Fall, dass Benutzer ihre eigenen Konten für SaaS-Apps erstellt haben, 
 
 Wenn Sie eine Anwendung in Azure AD integrieren, können Sie die eingerichteten Anwendungsidentitäten der Benutzer den jeweiligen Azure AD-Identitäten zuordnen.
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -1,6 +1,6 @@
 <properties
  pageTitle="Geräteinformationen-Metadaten in der Lösung für die Remoteüberwachung | Microsoft Azure"
- description="Eine Beschreibung der vorkonfigurierten Lösung für Remoteüberwachung von Azure IoT und deren Architektur."
+ description="Eine Beschreibung der vorkonfigurierten Lösung für Remoteüberwachung von Azure IoT und deren Architektur."
  services=""
  suite="iot-suite"
  documentationCenter=""
@@ -26,7 +26,7 @@ Die vorkonfigurierte Lösung für die Azure IoT Suite-Remoteüberwachung ist ein
 
 ## Kontext
 
-Für die vorkonfigurierte Lösung für die Remoteüberwachung wird [Azure IoT Hub][lnk-iot-hub] verwendet, um für Ihre Geräte das Senden von Daten an die Cloud zu ermöglichen. IoT Hub enthält eine [Geräteidentitätsregistrierung][lnk-identity-registry], um den Zugriff auf IoT Hub zu steuern. Die IoT Hub-Geräteidentitätsregistrierung ist von der speziellen *Geräteregistrierung* der Remoteüberwachungslösung getrennt, in der Geräteinformationen-Metadaten gespeichert werden. Für die Remoteüberwachungslösung wird eine [DocumentDB][lnk-docdb]-Datenbank verwendet, um die Geräteregistrierung zum Speichern von Geräteinformationen-Metadaten zu implementieren. Unter [Microsoft Azure IoT Reference Architecture][lnk-ref-arch] \(Microsoft Azure IoT-Referenzarchitektur) wird die Rolle der Geräteregistrierung in einer typischen IoT-Lösung beschrieben.
+Für die vorkonfigurierte Lösung für die Remoteüberwachung wird [Azure IoT Hub][lnk-iot-hub] verwendet, um für Ihre Geräte das Senden von Daten an die Cloud zu ermöglichen. IoT Hub enthält eine [Geräteidentitätsregistrierung][lnk-identity-registry], um den Zugriff auf IoT Hub zu steuern. Die IoT Hub-Geräteidentitätsregistrierung ist von der speziellen *Geräteregistrierung* der Remoteüberwachungslösung getrennt, in der Geräteinformationen-Metadaten gespeichert werden. Für die Remoteüberwachungslösung wird eine [DocumentDB][lnk-docdb]-Datenbank verwendet, um die Geräteregistrierung zum Speichern von Geräteinformationen-Metadaten zu implementieren. Unter [Microsoft Azure IoT Reference Architecture][lnk-ref-arch] (Microsoft Azure IoT-Referenzarchitektur) wird die Rolle der Geräteregistrierung in einer typischen IoT-Lösung beschrieben.
 
 > [AZURE.NOTE] Die vorkonfigurierte Lösung für die Remoteüberwachung sorgt dafür, dass die Geräteidentitätsregistrierung mit der Geräteregistrierung synchron bleibt. Beide nutzen die gleiche Geräte-ID, um alle Geräte, die mit IoT Hub verbunden werden, eindeutig zu identifizieren.
 
@@ -260,9 +260,13 @@ Unten ist die **DeviceInfo**-JSON-Nachricht angegeben, die vom Gerät zum Aktual
 
 ## Nächste Schritte
 
-Weitere Informationen zum Senden von Geräteinformationsnachrichten von Ihrem Gerät finden Sie unter [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung][lnk-connect-custom].
+Nachdem Sie erfahren haben, wie Sie die vorkonfigurierten Lösungen anpassen, können Sie einige der anderen Features und Funktionen der vorkonfigurierter IoT Suite-Lösungen ausprobieren:
 
-Weitere Informationen zum Anpassen der vorkonfigurierten Lösungen finden Sie unter [Anpassen vorkonfigurierter Lösungen][lnk-customize].
+- [Übersicht über die vorkonfigurierte Lösung für vorhersagbaren Wartungsbedarf][lnk-predictive-overview]
+- [Häufig gestellte Fragen zu IoT Suite][lnk-faq]
+- [IoT-Sicherheit von Grund auf][lnk-security-groundup]
+
+
 
 <!-- Images and links -->
 [img-device-list]: media/iot-suite-remote-monitoring-device-info/image1.png
@@ -273,10 +277,12 @@ Weitere Informationen zum Anpassen der vorkonfigurierten Lösungen finden Sie un
 [lnk-identity-registry]: ../iot-hub/iot-hub-devguide.md#device-identity-registry
 [lnk-docdb]: https://azure.microsoft.com/documentation/services/documentdb/
 [lnk-ref-arch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
-[lnk-connect-custom]: iot-suite-connecting-devices.md
-[lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
 [lnk-stream-analytics]: https://azure.microsoft.com/documentation/services/stream-analytics/
 [lnk-dm-preview]: ../iot-hub/iot-hub-device-management-overview.md
 [lnk-dynamic-telemetry]: iot-suite-dynamic-telemetry.md
 
-<!---HONumber=AcomDC_0720_2016-->
+[lnk-predictive-overview]: iot-suite-predictive-overview.md
+[lnk-faq]: iot-suite-faq.md
+[lnk-security-groundup]: securing-iot-ground-up.md
+
+<!---HONumber=AcomDC_0727_2016-->

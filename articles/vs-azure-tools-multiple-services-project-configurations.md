@@ -85,7 +85,7 @@ Eine Workerrolle kann eine beliebige Anzahl von HTTP-, HTTPS- oder TCP-Endpunkte
 
 ## Seite "Lokaler Speicher"
 
-Sie können die Eigenschaftenseite **Lokaler Speicher** verwenden, um mindestens eine lokale Speicherressource für eine Rolle zu reservieren. Eine lokale Speicherressource ist ein reserviertes Verzeichnis im Dateisystem des virtuellen Azure-Computers, in dem eine Instanz einer Rolle ausgeführt wird. Weitere Informationen zur Verwendung lokaler Speicherressourcen finden Sie unter [Konfigurieren von lokalen Speicherressourcen](./cloud-services/cloud-services-configure-local-storage-resources.md).
+Sie können die Eigenschaftenseite **Lokaler Speicher** verwenden, um mindestens eine lokale Speicherressource für eine Rolle zu reservieren. Eine lokale Speicherressource ist ein reserviertes Verzeichnis im Dateisystem des virtuellen Azure-Computers, in dem eine Instanz einer Rolle ausgeführt wird.
 
 ## Seite "Zertifikate"
 
@@ -110,4 +110,4 @@ Zum Konfigurieren von für ein gesamtes Azure-Clouddienstprojekt gültigen Einst
 |Entwicklung|Auf dieser Seite geben Sie Buildkonfigurationsanweisungen und die Bedingungen an, unter denen Postbuildereignisse ausgeführt werden.|
 |Web|Auf dieser Seite konfigurieren Sie Einstellungen für den Webserver.|
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -13,12 +13,12 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="big-compute"
-	ms.date="04/21/2016"
+	ms.date="07/25/2016"
 	ms.author="marsma" />
 
 # Maximieren der Azure Batch Compute-Ressourcenauslastung mit parallelen Knotenaufgaben
 
-Erfahren Sie, wie Sie in Ihrem Azure Batch-Pool mehrere Aufgaben gleichzeitig auf jedem Serverknoten ausführen. Durch Aktivieren der zeitgleichen Ausführung auf den Computeknoten eines Pools wird die Maximierung der Ressourcenauslastung auf einer kleineren Anzahl von Knoten innerhalb des Pools möglich. Bei einigen Workloads kann dies zu kürzeren Auftragszeiten und niedrigeren Kosten führen.
+Wenn Sie mehrere Aufgaben gleichzeitig in jedem Computeknoten in Ihrem Azure Batch-Pool ausführen, wird die Maximierung der Ressourcenauslastung auf einer kleineren Anzahl von Knoten im Pool möglich. Bei einigen Workloads kann dies zu kürzeren Auftragszeiten und niedrigeren Kosten führen.
 
 In manchen Szenarien profitieren Sie davon, dass alle Ressourcen eines Knotens einer einzigen Aufgabe zugewiesen werden können. Dagegen profitieren Sie in vielen Situationen davon, diese Ressourcen von mehreren Aufgaben nutzen zu lassen.
 
@@ -32,13 +32,13 @@ In manchen Szenarien profitieren Sie davon, dass alle Ressourcen eines Knotens e
 
 ## Beispielszenario
 
-Nachstehend finden Sie ein Beispiel, das die Vorteile der parallelen Aufgabenausführung demonstriert: Nehmen wir an, dass für Ihre Aufgabenanwendung CPU- und Arbeitsspeicher-Anforderungen der Art vorliegen, dass die Knotengröße [Standard\_D1](../cloud-services/cloud-services-sizes-specs.md#general-purpose-d) geeignet ist. Um den Auftrag in der geforderten Zeit aufzuführen, sind jedoch 1.000 solcher Knoten nötig.
+Um die Vorteile der parallelen Aufgabenausführung zu veranschaulichen, nehmen wir an, dass für Ihre Aufgabenanwendung CPU- und Speicheranforderungen vorliegen, sodass die Knotengröße Standard\_D1 geeignet ist. Um den Auftrag in der geforderten Zeit abzuschließen, sind jedoch 1.000 dieser Knoten nötig.
 
-Statt Standard\_D1-Knoten mit 1 CPU-Kern zu verwenden, können Sie [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md#memory-intensive-d) mit je 16 Kernen verwenden und so die parallele Ausführung von Aufgaben ermöglichen. In diesem Fall könnte daher *etwa ein Sechzehntel der Knoten* verwendet werden – statt 1.000 Knoten wären nur 63 erforderlich. Dadurch wird die Ausführungszeit und Effizienz beträchtlich verbessert, wenn für jeden Knoten große Anwendungsdateien oder Referenzdaten benötigt werden.
+Statt Standard\_D1-Knoten mit 1 CPU-Kern zu verwenden, können Sie [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md#memory-intensive-d)-Knoten mit je 16 Kernen verwenden und so die parallele Ausführung von Aufgaben ermöglichen. Daher könnte *etwa ein Sechzehntel der Knoten* verwendet werden – statt 1.000 Knoten wären nur 63 erforderlich. Wenn große Anwendungsdateien oder Verweisdaten für jeden Knoten erforderlich sind, werden Auftragsdauer und Effizienz erneut verbessert, da die Daten auf nur 16 Knoten kopiert werden.
 
 ## Aktivieren der parallelen Aufgabenausführung
 
-Sie konfigurieren die Computeknoten in Ihrer Batch-Lösung für die parallele Aufgabenausführung auf der Pool-Ebene. Beim Arbeiten mit der Batch .NET-Bibliothek legen Sie die [CloudPool.MaxTasksPerComputeNode][maxtasks_net]-Eigenschaft fest, wenn Sie einen Pool erstellen. Bei Verwenden der Batch REST-API legen Sie das [maxTasksPerNode][rest_addpool]-Element bei der Erstellung des Pools im Anforderungstext fest.
+Sie konfigurieren die Computeknoten für die parallele Aufgabenausführung auf der Pool-Ebene. Bei der Batch .NET-Bibliothek legen Sie die Eigenschaft [CloudPool.MaxTasksPerComputeNode][maxtasks_net] fest, wenn Sie einen Pool erstellen. Bei Verwenden der Batch REST-API legen Sie das [maxTasksPerNode][rest_addpool]-Element bei der Erstellung des Pools im Anforderungstext fest.
 
 Die maximale Anzahl an Aufgaben pro Knoten in Azure Batch beträgt bis zu viermal (4x) die Anzahl der Knotenkerne. Ist der Pool beispielsweise mit Knoten der Größe „Groß“ (vier Kerne) konfiguriert, kann für „`maxTasksPerNode`” 16 festgelegt werden. Ausführliche Informationen zur Anzahl der Kerne für jede Knotengröße finden Sie unter [Größen für Clouddienste](../cloud-services/cloud-services-sizes-specs.md). Weitere Informationen zu den Grenzen des Dienstes finden Sie in [Kontingente und Einschränkungen für den Azure Batch-Dienst](batch-quota-limit.md).
 
@@ -71,7 +71,7 @@ pool.Commit();
 
 ## Beispiel für Batch REST
 
-Dieser [Batch REST][api_rest]-API-Ausschnitt zeigt eine Anforderung zum Erstellen eines Pools aus zwei großen Knoten mit maximal vier Aufgaben pro Knoten. Weitere Informationen zum Hinzufügen von Pools mit der REST-API finden Sie unter [Add a pool to an account][rest_addpool] \(Hinzufügen eines Pools zu einem Konto).
+Dieser [Batch REST][api_rest]-API-Ausschnitt zeigt eine Anforderung zum Erstellen eines Pools aus zwei großen Knoten mit maximal vier Aufgaben pro Knoten. Weitere Informationen zum Hinzufügen von Pools mit der REST-API finden Sie unter [Add a pool to an account][rest_addpool] (Hinzufügen eines Pools zu einem Konto).
 
 ```json
 {
@@ -90,9 +90,9 @@ Dieser [Batch REST][api_rest]-API-Ausschnitt zeigt eine Anforderung zum Erstelle
 
 > [AZURE.NOTE] Sie können das `maxTasksPerNode`-Element und die [MaxTasksPerComputeNode][maxtasks_net]-Eigenschaft nur zum Zeitpunkt der Poolerstellung festlegen. Nach der Erstellung eines Pools können sie nicht mehr geändert werden.
 
-## Untersuchen des Beispielprojekts
+## Codebeispiel
 
-Sehen Sie sich das [ParallelNodeTasks][parallel_tasks_sample]-Projekt auf GitHub an. Es handelt sich dabei um ein ausführbares Codebeispiel, das die Verwendung von [CloudPool.MaxTasksPerComputeNode][maxtasks_net] veranschaulicht.
+Das [ParallelNodeTasks][parallel_tasks_sample]-Projekt auf GitHub veranschaulicht die Verwendung der [CloudPool.MaxTasksPerComputeNode][maxtasks_net]-Eigenschaft.
 
 Diese C#-Konsolenanwendung verwendet die [Batch .NET][api_net]- Bibliothek zum Erstellen eines Pools mit einem oder mehreren Serverknoten. Sie führt eine konfigurierbare Anzahl an Aufgaben auf diesen Knoten aus, um eine variable Auslastung zu simulieren. Die Ausgabe der Anwendung gibt an, welcher Knoten welche Aufgabe ausgeführt hat. Die Anwendung liefert auch eine Zusammenfassung der Aufgabenparameter und der -dauer. Die Zusammenfassung der Ausgabe von zwei verschiedenen Ausführungen der Beispielanwendung wird unten angezeigt.
 
@@ -118,9 +118,11 @@ Die zweite Ausführung des Beispiels zeigt eine deutliche Verringerung der Aufga
 
 > [AZURE.NOTE] In der Aufgabedauer in den oben aufgeführten Zusammenfassungen ist die Erstellung des Pools nicht berücksichtigt. Jede der oben aufgeführten Aufgaben wurde an bereits erstellte Pools übermittelt, deren Serverknoten sich zum Übermittlungszeitpunkt im *Idle*-Status befanden.
 
-## Heat Map für Batch Explorer
+## Nächste Schritte
 
-Der [Azure Batch-Explorer][batch_explorer], eine der [Beispielanwendungen][github_samples] von Azure Batch, enthält eine *Heat Map*-Funktion, die die Aufgabenausführung veranschaulicht. Wenn Sie die [ParallelTasks][parallel_tasks_sample]-Beispielanwendung ausführen, können Sie die Heat Map-Funktion für eine einfache Visualisierung der Ausführung paralleler Aufgaben auf jedem Knoten verwenden.
+### Heat Map für Batch Explorer
+
+Der [Azure Batch Explorer][batch_explorer], eine der [Beispielanwendungen][github_samples] von Azure Batch, enthält ein *Heat Map*-Funktion, die die Aufgabenausführung veranschaulicht. Wenn Sie die [ParallelTasks][parallel_tasks_sample]-Beispielanwendung ausführen, können Sie die Heat Map-Funktion für eine einfache Visualisierung der Ausführung paralleler Aufgaben auf jedem Knoten verwenden.
 
 ![Heat Map für Batch Explorer][1]
 
@@ -141,4 +143,4 @@ Der [Azure Batch-Explorer][batch_explorer], eine der [Beispielanwendungen][githu
 
 [1]: ./media/batch-parallel-node-tasks\heat_map.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

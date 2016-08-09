@@ -87,14 +87,9 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ## Nächste Schritte
 
-- [Importieren einer BACPAC-Datei in eine Azure SQL­Datenbank](sql-database-import.md)
-- [Importieren einer BACPAC-Datei in eine SQL Server-Datenbank](https://msdn.microsoft.com/library/hh710052.aspx)
+- Informationen zum Importieren einer BACPAC-Datei in eine Azure SQL-Datenbank finden Sie unter [Importieren einer BACPAC-Datei in eine Azure SQL-Datenbank](sql-database-import.md).
+- Informationen zum Importieren einer BACPAC-Datei in eine SQL Server-Datenbank finden Sie unter [Importieren einer BACPAC-Datei in eine SQL Server-Datenbank](https://msdn.microsoft.com/library/hh710052.aspx).
 
-## Zusätzliche Ressourcen
-
-- [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-- [Warnungen zur Notfallwiederherstellung](sql-database-disaster-recovery-drills.md)
-- [SQL-Datenbankdokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
 
 
 <!--Image references-->
@@ -104,4 +99,4 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 [4]: ./media/sql-database-export/export-history.png
 [5]: ./media/sql-database-export/bacpac-archive.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

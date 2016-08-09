@@ -9,7 +9,7 @@ editor=""
 tags="connectors" />
 
 <tags
-ms.service="app-service-logic"
+ms.service="logic-apps"
 ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
@@ -23,9 +23,9 @@ ms.author="deonhe"/>
 
 Der MailChimp-Connector kann verwendet werden in:
 
-- [Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)  
-- [PowerApps](http://powerapps.microsoft.com)  
-- [Flow](http://flows.microsoft.com)  
+- [Logik-Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)
+- [PowerApps](http://powerapps.microsoft.com)
+- [Flow](http://flows.microsoft.com)
 
 >[AZURE.NOTE] Diese Version des Artikels gilt für die Schemaversion 2015-08-01-preview für Logik-Apps.
 
@@ -86,7 +86,7 @@ Neue Kampagne: Erstellen einer neuen Kampagne auf Grundlage eines Kampagnentyps,
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
@@ -108,7 +108,7 @@ Neue Liste: Erstellen einer neuen Liste in Ihrem MailChimp-Konto
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
@@ -131,7 +131,7 @@ Mitglied einer Liste hinzufügen: Hinzufügen eines Mitglieds zu einer Liste ode
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
@@ -154,7 +154,7 @@ Mitglied aus der Liste entfernen: Löschen eines Mitglied aus der Liste
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
@@ -178,7 +178,7 @@ Mitgliedsinformationen aktualisieren: Aktualisieren von Informationen für ein b
 |200|OK|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
@@ -201,7 +201,7 @@ Wenn einer Liste ein Mitglied hinzugefügt wurde: Löst einen Workflow aus, wenn
 |202|Zulässig|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
@@ -221,7 +221,7 @@ Es gibt keine Parameter für diesen Aufruf
 |202|Zulässig|
 |400|Ungültige Anforderung|
 |401|Nicht autorisiert|
-|403|Verboten (403)|
+|403|Verboten|
 |404|Nicht gefunden|
 |500|Interner Serverfehler. Unbekannter Fehler aufgetreten|
 |default|Fehler beim Vorgang.|
@@ -419,7 +419,7 @@ Es gibt keine Parameter für diesen Aufruf
 |social\_card|nicht definiert|Nein |
 |report\_summary|nicht definiert|Nein |
 |delivery\_status|nicht definiert|Nein |
-|_\_links|array|No |
+|\_links|array|Nein |
 
 
 
@@ -552,7 +552,7 @@ Es gibt keine Parameter für diesen Aufruf
 |visibility|string|Nein |
 |modules|array|Nein |
 |stats|nicht definiert|Nein |
-|_\_links|array|No |
+|\_links|array|Nein |
 
 
 
@@ -651,7 +651,7 @@ Es gibt keine Parameter für diesen Aufruf
 |location|nicht definiert|Nein |
 |last\_note|nicht definiert|Nein |
 |list\_id|string|Nein |
-|_\_links|array|No |
+|\_links|array|Nein |
 
 
 
@@ -738,10 +738,10 @@ Es gibt keine Parameter für diesen Aufruf
 |location|nicht definiert|Nein |
 |last\_note|nicht definiert|Nein |
 |list\_id|string|Nein |
-|_\_links|array|No |
+|\_links|array|Nein |
 
 
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-services"
-   ms.date="07/07/2016"
+   ms.date="07/21/2016"
    ms.author="jeffstok"
 />
 
@@ -26,12 +26,14 @@ Der Edgeknoten eines Premium-Clusters ist ein praktischer Ort für die Verbindun
 
 ## Computekontexte für einen Edgeknoten
 
-Im Allgemeinen wird ein R-Skript, das in R Server auf dem Edgeknoten ausgeführt wird, im R-Interpreter auf diesem Knoten ausgeführt. Bei Schritten, in denen eine ScaleR-Funktion aufgerufen wird, ist dies nicht der Fall. Die ScaleR-Aufrufe werden in einer Computeumgebung ausgeführt, die dadurch bestimmt wird, wie Sie den ScaleR-Computekontext festlegen. Wenn Sie Ihr R-Skript auf einem Edgeknoten ausführen, sind für den Computekontext folgende Werte möglich: lokal sequenziell („local“), lokal parallel („localpar“), Map Reduce und Spark. Hierbei gilt Folgendes:
+Im Allgemeinen wird ein R-Skript, das in R Server auf dem Edgeknoten ausgeführt wird, im R-Interpreter auf diesem Knoten ausgeführt. Bei Schritten, in denen eine ScaleR-Funktion aufgerufen wird, ist dies nicht der Fall. Die ScaleR-Aufrufe werden in einer Computeumgebung ausgeführt, die dadurch bestimmt wird, wie Sie den ScaleR-Computekontext festlegen. Wenn Sie Ihr R-Skript auf einem Edgeknoten ausführen, sind für den Computekontext folgende Werte möglich: lokal sequenziell („local“), lokal parallel („localpar“), Map Reduce und Spark.
+
+Die Optionen „local“ und „localpar“ unterscheiden sich nur darin, wie rxExec-Aufrufe ausgeführt werden. Beide führen andere „rx-function“-Aufrufe auf allen verfügbaren Knoten parallel aus, es sei denn, über die ScaleR-Option „numCoresToUse“ ist etwas anderes angegeben. Beispiel: rxOptions(numCoresToUse=6). Im folgenden werden die verschiedenen Optionen für den Computekontext zusammengefasst.
 
 | Computekontext | Festlegung | Ausführungskontext |
 |------------------|---------------------------------|---------------------------------------------------------------------------------------|
-| Lokal sequenziell | rxSetComputeContext(‘local’) | Sequenzielle (nicht parallelisierte) Ausführung auf dem Edgeknotenserver |
-| Lokal parallel | rxSetComputeContext(‘localpar’) | Parallelisierte Ausführung über die Kerne des Edgeknotenservers hinweg |
+| Lokal sequenziell | rxSetComputeContext(‘local’) | Parallele Ausführung auf den Kernen des Edgeknotenservers außer für rxExec-Aufrufe, die seriell ausgeführt werden |
+| Lokal parallel | rxSetComputeContext(‘localpar’) | Parallele Ausführung auf den Kernen des Edgeknotenservers |
 | Spark | RxSpark() | Parallelisierte verteilte Ausführung mit Spark über die Knoten des HDI-Clusters hinweg |
 | Map Reduce | RxHadoopMR() | Parallelisierte verteilte Ausführung mit Map Reduce über die Knoten des HDI-Clusters hinweg |
 
@@ -50,10 +52,10 @@ Der zu verwendende Kontext lässt sich derzeit nicht anhand einer Formel ermitte
 
 Neben diesen Richtlinien sollten bei der Auswahl des Rechenkontexts die folgenden allgemeinen Regeln berücksichtigt werden:
 
-### Lokal parallel
+### Lokal
 
-- Wenn die zu analysierende Datenmenge klein und keine wiederholte Analyse erforderlich ist, sollten Sie die Daten direkt in die Analyseroutine streamen und „localpar“ verwenden.
-- Wenn die zu analysierende Datenmenge klein oder mittelgroß und eine wiederholte Analyse erforderlich ist, kopieren Sie die Daten in das lokale Dateisystem, importieren Sie sie in XDF, und führen Sie die Analyse mit „localpar“ durch.
+- Wenn die zu analysierende Datenmenge klein und keine wiederholte Analyse erforderlich ist, sollten Sie die Daten direkt in die Analyseroutine streamen und „local“ oder „localpar“ verwenden.
+- Wenn die zu analysierende Datenmenge klein oder mittelgroß und eine wiederholte Analyse erforderlich ist, kopieren Sie die Daten in das lokale Dateisystem, importieren Sie sie in XDF, und führen Sie die Analyse mit „local“ oder „localpar“ durch.
 
 ### Hadoop Spark
 
@@ -81,4 +83,4 @@ In diesem Artikel haben Sie gelernt, wie Sie einen neuen HDInsight-Cluster mit R
 - [Installing RStudio on HDInsight cluster with R Server (Installieren von RStudio auf einem HDInsight-Cluster mit R Server)](hdinsight-hadoop-r-server-install-r-studio.md)
 - [Azure Storage options for R Server on HDInsight Premium (Azure Storage-Optionen für R Server in HDInsight Premium)](hdinsight-hadoop-r-server-storage.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

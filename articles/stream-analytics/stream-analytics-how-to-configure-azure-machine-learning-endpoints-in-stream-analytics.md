@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="05/03/2016" 
+	ms.date="07/27/2016" 
 	ms.author="jeffstok"
 />
 
@@ -52,7 +52,7 @@ Mit REST-APIs können Sie Ihren Auftrag so konfigurieren, dass er Azure Machine 
 
 Beispielsweise wird im folgenden Beispielcode eine Skalar-UDF mit dem Namen *newudf* erstellt, die an einen Azure Machine Learning-Endpunkt gebunden ist. Beachten Sie, dass sich der *Endpunkt* (Dienst-URI) auf der API-Hilfeseite für den gewählten Dienst und der *apiKey* auf der Hauptseite der Dienste befindet.
 
-PUT: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
+PUT: /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.StreamAnalytics/streamingjobs/<Streamingauftragsname>/functions/<UDF-Name>?api-version=<API-Version>
 
 Beispiel für Anforderungstext:
 
@@ -76,7 +76,7 @@ Beispiel für Anforderungstext:
 
 Nachdem das UDF-Gerüst erstellt wurde, wird die vollständige Definition der UDF benötigt. Über den RetrieveDefaultDefinition-Endpunkt können Sie die Standarddefinition für eine Skalarfunktion erhalten, die an einen Azure Machine Learning-Endpunkt gebunden ist. Für die unten angegebene Nutzlast ist es erforderlich, dass Sie die UDF-Standarddefinition für eine Skalarfunktion abrufen, die an einen Azure Machine Learning-Endpunkt gebunden ist. Hierbei wird der eigentliche Endpunkt nicht angegeben, da er bereits während der PUT-Anforderung bereitgestellt wurde. Stream Analytics ruft den in der Anforderung angegebenen Endpunkt auf, falls er explizit bereitgestellt wird. Andernfalls wird der ursprünglich angegebene Endpunkt verwendet. Hier verwendet die UDF einen einzelnen Zeichenfolgenparameter (einen Satz) und gibt eine Einzelausgabe einer Typzeichenfolge zurück, mit der die Bezeichnung „sentiment“ (Stimmung) für diesen Satz angegeben wird.
 
-POST: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/RetrieveDefaultDefinition?api-version=<apiVersion>
+POST: /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.StreamAnalytics/streamingjobs/<Streamingauftragsname>/functions/<UDF-Name>/RetrieveDefaultDefinition?api-version=<API-Version>
 
 Beispiel für Anforderungstext:
 
@@ -131,7 +131,7 @@ Eine Beispielausgabe sieht hierfür ungefähr wie folgt aus:
 
 Jetzt muss die UDF mit der vorherigen Antwort wie unten gezeigt gepatcht werden.
 
-PATCH: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
+PATCH: /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.StreamAnalytics/streamingjobs/<Streamingauftragsname>/functions/<UDF-Name>?api-version=<API-Version>
 
 Anforderungstext: Ausgabe von RetrieveDefaultDefinition
 
@@ -160,4 +160,4 @@ Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://
 - [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

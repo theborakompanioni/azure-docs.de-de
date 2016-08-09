@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -45,7 +45,7 @@ In diesem Tutorial wird davon ausgegangen, dass Sie ein grundlegendes Verständn
 1. Erstellen Sie eine Instanz des **Azure Storage-Blobconnectors**. Dies erfordert die Anmeldeinformationen für ein Azure Storage-Konto. Stellen Sie sicher, dass es bereit ist, bevor Sie beginnen, dieses Szenario zu erstellen.
 2. Erstellen Sie eine Instanz der **BizTalk-Handelspartnerverwaltung**. Hierfür ist eine leere SQL-Datenbank erforderlich. Stellen Sie sicher, dass sie bereit ist, bevor Sie beginnen, diese Instanz zu erstellen.
 3. Erstellen Sie eine Instanz des **AS2-Connectors**. Hierfür ist auch eine leere SQL-Datenbank erforderlich. Stellen Sie sicher, dass sie bereit ist, bevor Sie beginnen, diese Instanz zu erstellen. Wenn Sie außerdem Nachrichten im Rahmen der AS2-Verarbeitung archivieren möchten, können Sie Anmeldeinformationen für ein Azure-Blob bei dessen Erstellung angeben.
-4. Konfigurieren Sie den TPM-Dienst (Trading Partner Management, Handelspartnerverwaltung), der erstellt wird:  
+4. Konfigurieren Sie den TPM-Dienst (Trading Partner Management, Handelspartnerverwaltung), der erstellt wird:
 	1. Navigieren Sie zur Instanz des TPM-Diensts, die als Teil der oben genannten Schritte erstellt wird.
 	2. Verwenden Sie die Option **Partner** unter *Komponenten* zum **Hinzufügen** eines neuen Partners mit dem Namen **Contoso**, und fügen Sie die erforderliche AS2-Identität in seinem Profil hinzu.
 	3. Verwenden Sie die Option **Partner** unter *Komponenten* zum **Hinzufügen** eines neuen Partners mit dem Namen **Northwind**, und fügen Sie die erforderliche AS2-Identität in seinem Profil hinzu.
@@ -53,7 +53,7 @@ In diesem Tutorial wird davon ausgegangen, dass Sie ein grundlegendes Verständn
 
 
 ## Erstellen eines Datenflusses/Geschäftsprozesses
-1. Erstellen Sie einen neuen Datenfluss, in dem AS2 der erste Schritt ist. Sie müssen den **AS2-Connector** ziehen und ablegen und dann die bereits erstellte Instanz wählen. Wählen Sie „Trigger“ als Funktion aus: ![][1]  
+1. Erstellen Sie einen neuen Datenfluss, in dem AS2 der erste Schritt ist. Sie müssen den **AS2-Connector** ziehen und ablegen und dann die bereits erstellte Instanz wählen. Wählen Sie „Trigger“ als Funktion aus: ![][1]
 2. Sie müssen als Nächstes den **Azure Storage-Blobconnector** ziehen und ablegen und dann die bereits erstellte Instanz wählen. Wählen Sie „Aktion“ als Funktion und dann **Blob hochladen** als gewünschte Funktionalität aus. Konfigurieren Sie nach Bedarf.
 3. Danach müssen Sie den Datenfluss erstellen bzw. bereitstellen.
 
@@ -70,4 +70,4 @@ In diesem Tutorial wird davon ausgegangen, dass Sie ein grundlegendes Verständn
 [2]: ./media/app-service-logic-create-a-b2b-process/Tracking.png
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0727_2016-->

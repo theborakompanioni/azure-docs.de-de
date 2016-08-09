@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/25/2016"
+   ms.date="07/26/2016"
    ms.author="alkohli" />
 
 # Verwalten von StorSimple-Gerätecontrollern
@@ -140,6 +140,8 @@ In diesem Abschnitt wird erklärt, wie Sie ein aktives oder ausgefallenes StorSi
 
 ## Zurücksetzen des Geräts auf die werkseitigen Standardeinstellungen
 
+> [AZURE.IMPORTANT] Wenn Sie Ihr Gerät auf die werkseitigen Standardeinstellungen zurücksetzen möchten, wenden Sie sich an den Microsoft Support. Das folgende Verfahren sollte nur in Verbindung mit dem Microsoft Support verwendet werden.
+
 Hier erfahren Sie, wie Sie mit Windows PowerShell für StorSimple Ihr Microsoft Azure StorSimple-Gerät auf die werkseitigen Standardeinstellungen zurücksetzen. Durch Zurücksetzen eines Geräts werden standardmäßig alle Daten und Einstellungen aus dem gesamten Cluster entfernt.
 
 Führen Sie die folgenden Schritte aus, um das Microsoft Azure StorSimple-Gerät auf die werkseitigen Standardeinstellungen zurückzusetzen:
@@ -213,4 +215,4 @@ In diesem Abschnitt haben wir einige der häufig gestellten Fragen zur Verwaltun
 
 - Weitere Informationen zum Verwenden des StorSimple Manager-Diensts finden Sie unter [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

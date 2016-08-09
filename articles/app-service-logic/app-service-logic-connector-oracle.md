@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -58,10 +58,10 @@ Tabellen | Nein | Geben Sie die Tabellen in der Datenbank ein, die vom Connector
 Gespeicherte Prozeduren | Nein | Geben Sie die gespeicherten Prozeduren in der Datenbank ein, die vom Connector aufgerufen werden können. Geben Sie z. B. *IsEmployeeEligible,CalculateOrderDiscount* ein.
 Funktionen | Nein | Geben Sie die Funktionen in der Datenbank ein, die vom Connector aufgerufen werden können. Geben Sie z. B. *IsEmployeeEligible,CalculateOrderDiscount* ein.
 Paket-Entitäten | Nein | Geben Sie die Pakete in der Datenbank ein, die vom Connector aufgerufen werden können. Geben Sie z. B. *PackageOrderProcessing.CompleteOrder,PackageOrderProcessing.GenerateBill* ein.
-Anweisung für verfügbare Daten | Nein | Geben Sie die Anweisung ein, um festzustellen, ob Daten für den Abruf verfügbar sind. Geben Sie z. B. *SELECT * from table\_name* ein.
+Anweisung für verfügbare Daten | Nein | Geben Sie die Anweisung ein, um festzustellen, ob Daten für den Abruf verfügbar sind. Geben Sie z.B. *SELECT* from table\_name* ein.
 Abruftyp | Nein | Geben Sie den Abruftyp ein. Zulässige Werte sind "Auswählen", "Prozedur", "Funktion" und "Paket".
-Abrufanweisung | Nein | Geben Sie die Anweisung zur Abfrage der Oracle-Datenbank ein. Geben Sie z. B. *SELECT * from table\_name* ein.
-Anweisung nach Abruf | Nein | Geben Sie die Anweisung ein, die nach der Abfrage ausgeführt werden soll. Geben Sie z. B. *DELETE * from table\_name* ein.
+Abrufanweisung | Nein | Geben Sie die Anweisung zur Abfrage der Oracle-Datenbank ein. Geben Sie z.B. *SELECT* from table\_name* ein.
+Anweisung nach Abruf | Nein | Geben Sie die Anweisung ein, die nach der Abfrage ausgeführt werden soll. Geben Sie z.B. *DELETE * from table\_name* ein.
 
 5. Nach Abschluss des Vorgangs sehen die Paketeinstellungen etwa wie folgt aus: <br/> ![][1]
 
@@ -100,7 +100,7 @@ App Service verwendet den Hybrid-Konfigurations-Manager, um sicher eine Verbindu
 Informationen finden Sie unter [Hybrid Connection Manager konfigurieren](app-service-logic-hybrid-connection-manager.md).
 
 ## Mehr mit Ihrem Connector machen
-Der Connector ist nun erstellt, und Sie können ihn mit einer Logik-App einem Geschäftsworkflow hinzufügen. Informationen finden Sie unter [Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md).
+Nachdem der Connector nun erstellt ist, können Sie ihn mit einer Logik-App einem Geschäftsworkflow hinzufügen. Informationen finden Sie unter [Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md).
 
 >[AZURE.NOTE] Wenn Sie Azure Logik-Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto registrieren, wechseln Sie zu [Logik-App testen](https://tryappservice.azure.com/?appservice=logic). Dort können Sie sofort eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
@@ -120,4 +120,4 @@ Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connec
 [11]: ./media/app-service-logic-connector-oracle/LogicApp7.png
 [12]: ./media/app-service-logic-connector-oracle/LogicApp8.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

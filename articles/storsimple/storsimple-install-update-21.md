@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="07/18/2016"
+   ms.date="07/21/2016"
    ms.author="alkohli" />
 
 # Installieren von Update 2.2 auf Ihrem StorSimple-Gerät
@@ -57,7 +57,7 @@ Wenn Sie Update 2 oder höher anwenden (einschließlich Update 2.1), wird Micros
 
 ## Installieren von Update 2.2 als Hotfix
 
-Gehen Sie wie folgt vor, falls beim Installieren über das klassische Azure-Portal ein Fehler bei der Gatewayprüfung auftritt. Die Überprüfung zeigt einen Fehler, weil Sie ein Gateway auf einer anderen Netzwerkschnittstelle als DATA 0 zugewiesen haben und auf Ihrem Gerät eine Softwareversion vor Update 1 ausgeführt wird.
+Gehen Sie wie folgt vor, falls beim Installieren über das klassische Azure-Portal ein Fehler bei der Gatewayprüfung auftritt. Die Überprüfung zeigt einen Fehler, weil Sie ein Gateway auf einer anderen Netzwerkschnittstelle als DATA 0 zugewiesen haben und auf Ihrem Gerät eine Softwareversion vor Update 1 ausgeführt wird.
 
 Die Softwareversionen, die mithilfe dieser Methode aktualisiert werden können, sind:
 
@@ -80,13 +80,13 @@ Das Hotfixverfahren umfasst die folgenden drei Schritte:
 **Wenn auf Ihrem Gerät Update 2.1 ausgeführt wird**, müssen Sie nur das Update für die Gerätesoftware KB3179904 herunterladen. Installieren Sie nur die Binärdatei mit dem Präfix „all-hcsmdssoftwareudpate“. Installieren Sie das CIS- und das MDS-Agent-Update mit dem Präfix `all-cismdsagentupdatebundle` nicht. Andernfalls kommt es zu einem Fehler.
 
 
-#### Herunterladen von Updates für ein Gerät mit der Update 2- oder 2.1-Software
+#### Herunterladen von Updates für ein Gerät mit der Update 2-Software
 
 **Wenn auf Ihrem Gerät Update 2 ausgeführt wird**, müssen Sie die folgenden Hotfixes in der vorgeschriebenen Reihenfolge herunterladen und installieren:
 
 | Reihenfolge | KB | Beschreibung | Updatetyp | Installationszeit |
 |--------|-----------|-------------------------|------------- |-------------|
-| 1\. | KB3179954 | Softwareupdate &#42; | Normal | ~ 45 Min. |
+| 1\. | KB3179904 | Softwareupdate &#42; | Normal | ~ 45 Min. |
 | 2\. | KB3146621 | iSCSI-Paket | Normal | ~ 20 Min. |
 | 3\. | KB3103616 | WMI-Paket | Normal | ~ 12 Min. |
 
@@ -136,4 +136,4 @@ Führen Sie die folgenden Schritte aus, um diese Datei herunterzuladen und die H
 
 Weitere Informationen finden Sie unter [Versionsanmerkungen zu Update 2.1](storsimple-update21-release-notes.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

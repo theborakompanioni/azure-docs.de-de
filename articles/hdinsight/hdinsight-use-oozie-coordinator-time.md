@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/26/2016"
+	ms.date="07/25/2016"
 	ms.author="jgao"/>
 
 
@@ -86,7 +86,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 	<tr><td>SQL-Datenbankname</td><td>$sqlDatabaseName</td><td></td><td>Die Azure SQL-Datenbank, in die Sqoop Daten exportiert. </td></tr>
 	</table>
 
-	> [AZURE.NOTE] Eine Azure SQL-Datenbank ermöglicht standardmäßig Verbindungen von Azure-Diensten wie Azure HDInsight. Wenn die Firewalleinstellung deaktiviert ist, müssen Sie sie im Azure-Portal aktivieren. Anweisungen zum Erstellen einer SQL-Datenbank und zum Konfigurieren von Firewallregeln finden Sie unter [Erstellen und Konfigurieren einer SQL-Datenbank]\[sqldatabase-get-started].
+	> [AZURE.NOTE] Eine Azure SQL-Datenbank ermöglicht standardmäßig Verbindungen von Azure-Diensten wie Azure HDInsight. Wenn die Firewalleinstellung deaktiviert ist, müssen Sie sie im Azure-Portal aktivieren. Anweisungen zum Erstellen einer SQL-Datenbank und zum Konfigurieren von Firewallregeln finden Sie unter [Erstellen und Konfigurieren einer SQL-Datenbank][sqldatabase-get-started].
 
 
 > [AZURE.NOTE] Tragen Sie die Werte in die Tabellen ein. Dies wird Ihnen helfen, wenn Sie dieses Lernprogramm durcharbeiten.
@@ -191,7 +191,7 @@ Von der Hive-Aktion im Workflow wird eine HiveQL-Skriptdatei aufgerufen. Die Skr
 	<table border = "1">
 	<tr><th>Workflow-Variablen</th><th>Beschreibung</th></tr>
 	<tr><td>${jobTracker}</td><td>Geben Sie die URL des Hadoop-JobTrackers an. Verwenden Sie <strong>jobtrackerhost:9010</strong> bei Clustern der HDInsight-Versionen 3.0 und 2.0.</td></tr>
-	<tr><td>${nameNode}</td><td>Geben Sie die URL des Hadoop-NameNode an. Verwenden Sie die "wasb://"-Adresse des Standarddateisystems, zum Beispiel: <i>wasb://&lt;containerName>@&lt;storageAccountName>.blob.core.windows.net</i>.</td></tr>
+	<tr><td>${nameNode}</td><td>Geben Sie die URL des Hadoop-NameNode an. Verwenden Sie die wasbs://-Standard-Dateisystemadresse. Beispiel: <i>wasbs://&lt;Containername>@&lt;Speicherkontoname>.blob.core.windows.net</i>.</td></tr>
 	<tr><td>${queueName}</td><td>Gibt den Namen der Warteschlange an, an die der Auftrag gesendet wird. Verwenden Sie <strong>default</strong>.</td></tr>
 	</table>
 
@@ -243,15 +243,15 @@ Von der Hive-Aktion im Workflow wird eine HiveQL-Skriptdatei aufgerufen. Die Skr
 
 Sie führen ein Azure PowerShell-Skript aus, um folgende Aktionen durchzuführen:
 
-- Kopieren des HiveQL-Skripts (useoozie.hql) in den Azure-Blobspeicher, wasb:///tutorials/useoozie/useoozie.hql.
-- Kopieren der Datei "workflow.xml" nach wasb:///tutorials/useoozie/workflow.xml.
-- Kopieren der Datei "coordinator.xml" nach wasb:///tutorials/useoozie/coordinator.xml.
-- Kopieren der Datendatei ("/example/data/sample.log") nach wasb:///tutorials/useoozie/data/sample.log.
+- Kopieren des HiveQL-Skripts (useoozie.hql) in den Azure-Blobspeicher, wasbs:///tutorials/useoozie/useoozie.hql.
+- Kopieren der Datei "workflow.xml" nach wasbs:///tutorials/useoozie/workflow.xml.
+- Kopieren der Datei "coordinator.xml" nach wasbs:///tutorials/useoozie/coordinator.xml.
+- Kopieren der Datendatei ("/example/data/sample.log") nach wasbs:///tutorials/useoozie/data/sample.log.
 - Erstellen einer Azure SQL-Datenbanktabelle zum Speichern der Sqoop-Exportdaten. Der Tabellenname lautet *log4jLogCount*.
 
 **Grundlagen des HDInsight-Speichers**
 
-HDInsight verwendet Azure-Blobspeicher für die Datenspeicherung. "wasb://" ist die HDFS-Implementierung (Hadoop Distributed File System) von Microsoft im Azure-Blobspeicher. Weitere Informationen finden Sie unter [Verwenden von Azure-Blobspeicher mit HDInsight][hdinsight-storage].
+HDInsight verwendet Azure-Blobspeicher für die Datenspeicherung. „wasbs://“ ist die HDFS-Implementierung (Hadoop Distributed File System) von Microsoft im Azure-Blobspeicher. Weitere Informationen finden Sie unter [Verwenden von Azure-Blobspeicher mit HDInsight][hdinsight-storage].
 
 Während des Prozesses zur Bereitstellung eines HDInsight-Clusters werden wie in HDFS ein Azure-Blobspeicherkonto und ein bestimmter Container aus diesem Konto als Standarddateisystem festgelegt. Zusätzlich zu diesem Speicherkonto können Sie während des Bereitstellungsprozesses weitere Speicherkonten aus demselben Azure-Abonnement oder aus anderen Azure-Abonnements hinzufügen. Informationen zum Hinzufügen zusätzlicher Speicherkonten finden Sie unter [Bereitstellen von HDInsight-Clustern][hdinsight-provision]. Um das in diesem Lernprogramm verwendete Azure PowerShell-Skript zu vereinfachen, werden alle Dateien im Standarddateisystemcontainer unter */tutorials/useoozie* gespeichert. Dieser Container hat standardmäßig denselben Namen wie der HDInsight-Cluster. Die Syntax ist:
 
@@ -263,8 +263,8 @@ Während des Prozesses zur Bereitstellung eines HDInsight-Clusters werden wie in
 
 Auf eine Datei, die im Standarddateisystemcontainer gespeichert ist, kann in HDInsight über einen der folgenden URIs zugegriffen werden (als Beispiel wird hier "workflow.xml" verwendet):
 
-	wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/workflow.xml
-	wasb:///tutorials/useoozie/workflow.xml
+	wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/workflow.xml
+	wasbs:///tutorials/useoozie/workflow.xml
 	/tutorials/useoozie/workflow.xml
 
 Wenn Sie direkt aus dem Speicherkonto auf die Datei zugreifen möchten, lautet der Blob-Name für die Datei:
@@ -394,7 +394,7 @@ Azure PowerShell stellt derzeit keine Cmdlets zum Definieren von Oozie-Jobs bere
 		#Azure Blob storage (WASB) variables
 		$storageAccountName = "<StorageAccountName>"
 		$storageContainerName = "<BlobContainerName>"
-		$storageUri="wasb://$storageContainerName@$storageAccountName.blob.core.windows.net"
+		$storageUri="wasbs://$storageContainerName@$storageAccountName.blob.core.windows.net"
 
 		#Azure SQL database variables
 		$sqlDatabaseServer = "<SQLDatabaseServerName>"
@@ -740,4 +740,4 @@ In diesem Lernprogramm haben Sie einen Oozie-Workflow und einen Oozie-Koordinato
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

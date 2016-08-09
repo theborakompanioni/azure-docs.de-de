@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="07/19/2016"
 	ms.author="kgremban"/>
 
 
@@ -97,7 +97,7 @@ Die Active Directory-Konfiguration variiert in Abhängigkeit davon, ob Ihr Anwen
 3. Legen Sie unter **Eigenschaften** die Option **Interne Authentifizierungsmethode** auf **Integrierte Windows-Authentifizierung** fest. ![Erweiterte Anwendungskonfiguration](./media/active-directory-application-proxy-sso-using-kcd/cwap_auth2.png)
 4. Geben Sie den Wert für **Interner Anwendungs-SPN** des Anwendungsservers ein. In diesem Beispiel ist der SPN für die veröffentlichte Anwendung http/lob.contoso.com.
 
->[AZURE.IMPORTANT] Die UPNs in Azure Active Directory müssen mit den UPNs in Ihrem lokalen Active Directory identisch sein, damit die Vorauthentifizierung funktioniert. Stellen Sie sicher, dass Azure AD mit der lokalen AD-Instanz synchronisiert ist.
+>[AZURE.IMPORTANT] Stimmen Ihre lokale UPN und die UPN in Azure Active Directory nicht überein, müssen Sie die [Delegierte Identität für Anmeldung](#delegated-login-identity) konfigurieren, damit die Präauthentifizierung funktioniert.
 
 | | |
 | --- | --- |
@@ -110,14 +110,17 @@ Der Ablauf der Kerberos-Delegierung im Azure AD-Anwendungsproxy wird gestartet,
 
 ![Nicht-Windows-SSO-Diagramm](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_nonwindows_diagram.png)
 
-### Teilweise delegierte Identität
-Nicht-Windows-Anwendungen erhalten in der Regel die Benutzeridentität in Form eines Benutzernamens oder SAM-Kontonamens anstelle einer E-Mail-Adresse (username@domain). Dies unterscheidet sich von den meisten Windows-basierten Systemen, bei denen eher ein UPN bevorzugt wird, der aussagekräftiger ist und dafür sorgt, dass keine domänenübergreifende Duplizierung vorliegt.
+### Delegierte Identität für Anmeldung
+Die Delegierte Identität für Anmeldung unterstützt zwei verschiedene Anmeldeszenarien:
 
-Aus diesem Grund lässt sich bei Anwendungsproxy für jede Anwendung festlegen, welche Identität im Kerberos-Ticket verwendet wird. Einige dieser Optionen eignen sich für Systeme, die kein E-Mail-Adressformat akzeptieren.
+- Nicht-Windows-Anwendungen erhalten in der Regel die Benutzeridentität in Form eines Benutzernamens oder SAM-Kontonamens anstelle einer E-Mail-Adresse (username@domain).
+- Alternative Anmeldungskonfigurationen, bei denen sich die UPN in Azure AD und die UPN in Ihrem lokalen Active Directory unterscheiden.
+
+Mit dem Anwendungsproxy können Sie wählen, welche Identität verwendet werden soll, um das Kerberos-Ticket erhalten. Diese Einstellung erfolgt pro Anwendung. Einige dieser Optionen eignen sich für Systeme, die kein E-Mail-Adressformat akzeptieren, andere sind auf eine alternative Anmeldung ausgelegt.
 
 ![Screenshot: Parameter „Delegierte Identität für Anmeldung“](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_upn.png)
 
-Wenn eine partielle Identität verwendet wird, die unter Umständen nicht für alle Domänen oder Gesamtstrukturen der Organisation eindeutig ist, kann es sinnvoll sein, die betreffenden Anwendungen zweimal mit zwei unterschiedlichen Connectorgruppen zu veröffentlichen. Da jede Anwendung einen anderen Benutzerkreis aufweist, lassen sich die Connectors mit einer unterschiedlichen Domäne verknüpfen.
+Bei Verwendung der Delegierten Identität für Anmeldung ist der Wert unter Umständen nicht für alle Domänen oder Gesamtstrukturen in Ihrer Organisation eindeutig. Sie können dieses Problem umgehen, indem Sie die Anwendung zweimal mit zwei unterschiedlichen Connectorgruppen veröffentlichen. Da jede Anwendung einen anderen Benutzerkreis aufweist, lassen sich die Connectors mit einer unterschiedlichen Domäne verknüpfen.
 
 
 ## Der Umgang mit SSO im lokalen Umfeld unterscheidet sich von dem mit Cloud-Identitäten.
@@ -131,7 +134,7 @@ Diese Funktion ermöglicht vielen Organisationen mit unterschiedlichen lokalen I
 
 - Sie verwenden intern keine Domänennamen (Joe).
 
-- Sie verwenden lokal und in der Cloud unterschiedliche Aliase. Beispiel: joe-johns@contoso.com und joej@contoso.com.
+- Sie verwenden lokal und in der Cloud unterschiedliche Aliase. Beispiel: joe-johns@contoso.com und joej@contoso.com
 
 Dies hilft auch bei Anwendungen, die keine Adressen in Form von E-Mail-Adressen akzeptieren – einem häufigen Szenario bei nicht Windows-basierten Back-End-Servern.
 
@@ -166,4 +169,4 @@ Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http:/
 [1]: ./media/active-directory-application-proxy-sso-using-kcd/AuthDiagram.png
 [2]: ./media/active-directory-application-proxy-sso-using-kcd/Properties.jpg
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

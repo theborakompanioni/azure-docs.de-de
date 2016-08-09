@@ -12,7 +12,7 @@
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="sqldb-bcdr"
+   ms.workload="NA"
    ms.date="06/16/2016"
    ms.author="carlrab"/>
 
@@ -24,7 +24,7 @@ Die Datenbanksicherungen werden automatisch ohne vorherige Registrierung oder zu
 
 ## Kosten der automatisierten Sicherung
 
-Microsoft Azure SQL-Datenbanken bieten bis zu 200 Prozent Ihres maximal bereitgestellten Sicherungsdatenbankspeichers ohne zusätzliche Kosten. Wenn Sie z. B. über eine Standard-DB-Instanz mit einer bereitgestellten Größe von 250 GB verfügen, werden Ihnen ohne zusätzliche Kosten 500 GB Sicherungsspeicher bereitgestellt. Wenn die maximale Größe Ihres bereitgestellten Sicherungsspeichers überschritten wird, können Sie sich entweder an den Azure-Support wenden, um den Aufbewahrungszeitraum zu verkürzen, oder zusätzlichen Sicherungsspeicher erwerben, für den die standardmäßigen Gebühren für geografisch redundanten Speicher mit Lesezugriff (Read-Access Geographically Redundant Storage, RA-GRS) anfallen.
+Microsoft Azure SQL-Datenbanken bieten bis zu 200 Prozent Ihres maximal bereitgestellten Sicherungsdatenbankspeichers ohne zusätzliche Kosten. Wenn Sie z. B. über eine Standard-DB-Instanz mit einer bereitgestellten Größe von 250 GB verfügen, werden Ihnen ohne zusätzliche Kosten 500 GB Sicherungsspeicher bereitgestellt. Wenn die maximale Größe Ihres bereitgestellten Sicherungsspeichers überschritten wird, können Sie sich entweder an den Azure-Support wenden, um den Aufbewahrungszeitraum zu verkürzen, oder zusätzlichen Sicherungsspeicher erwerben, für den die standardmäßigen Gebühren für geografisch redundanten Speicher mit Lesezugriff (Read-Access Geographically Redundant Storage, RA-GRS) anfallen.
 
 ## Details zur automatischen Sicherung
 
@@ -32,13 +32,13 @@ Alle Basic-, Standard- und Premium-Datenbanken werden durch automatische Sicheru
 
 ## Georedundanz
 
-Die Sicherungsdateien werden in einem georedundanten Speicherkonto mit Lesezugriff (RA-GRS) gespeichert, um die Verfügbarkeit für eine Notfallwiederherstellung zu gewährleisten. Die folgende Abbildung veranschaulicht die Georeplikation von wöchentlichen und täglichen Sicherungen in einem georedundanten Speicherkonto mit Lesezugriff (RA-GRS), um die Verfügbarkeit für eine Notfallwiederherstellung zu gewährleisten.
+Die Sicherungsdateien werden in einem georedundanten Speicherkonto mit Lesezugriff (RA-GRS) gespeichert, um die Verfügbarkeit für eine Notfallwiederherstellung zu gewährleisten. Dadurch wird sichergestellt, dass die Sicherungsdateien in ein [gekoppeltes Rechenzentrum](../best-practices-availability-paired-regions.md) repliziert werden. Die folgende Abbildung veranschaulicht die Georeplikation von wöchentlichen und täglichen Sicherungen in einem georedundanten Speicherkonto mit Lesezugriff (RA-GRS), um die Verfügbarkeit für eine Notfallwiederherstellung zu gewährleisten.
 
 ![Geowiederherstellung](./media/sql-database-geo-restore/geo-restore-1.png)
 
 ## Verwenden automatisierter Sicherungen
 
-Während der [Aufbewahrungsdauer](sql-database-service-tiers.md) können Sie [eine Datenbank aus vom Dienst initiierten Sicherungen wiederherstellen](sql-database-recovery-using-backups.md). Diese Wiederherstellung kann erfolgen als:
+Während der [Aufbewahrungsdauer](sql-database-service-tiers.md) können Sie [eine Datenbank aus automatischen Sicherungen wiederherstellen](sql-database-recovery-using-backups.md). Diese Wiederherstellung kann erfolgen als:
 
 - Eine neue Datenbank auf dem gleichen logischen Server, die auf den Zustand zu einem angegebenen Zeitpunkt innerhalb der Aufbewahrungsdauer wiederhergestellt wird.
 - Eine Datenbank auf dem gleichen Server, die auf den Zustand zum Zeitpunkt des Löschens einer gelöschten Datenbank wiederhergestellt wird.
@@ -62,4 +62,4 @@ Die Aufbewahrungsdauer wird anhand der Dienstebene der Datenbank, während sie v
 - Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
 - Eine Übersicht zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

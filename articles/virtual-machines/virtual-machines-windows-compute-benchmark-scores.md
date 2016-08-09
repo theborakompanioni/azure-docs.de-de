@@ -68,4 +68,4 @@ Die Windows-Zahlen wurden durch die Ausführung von [SPECint 2006](https://www.s
 
 * Speicherkapazitäten, Details zu Datenträgern und weitere Überlegungen zur Auswahl von Größen für virtuelle Computer finden Sie unter [Größen für virtuelle Computer](virtual-machines-windows-sizes.md).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

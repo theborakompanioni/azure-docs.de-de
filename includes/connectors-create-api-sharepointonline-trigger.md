@@ -1,14 +1,12 @@
-In this example, I will show you how to use the **SharePoint Online - When a new item is created** trigger to initiate a logic app workflow when a new item is created in a SharePoint Online list.
+In diesem Beispiel zeige ich Ihnen, wie mit dem Trigger **SharePoint Online - Wenn ein neues Element erstellt wird** der Workflow einer Logik-App ausgelöst wird, wenn ein neues Element in einer SharePoint Online-Liste erstellt wird.
 
->[AZURE.NOTE]You will get prompted to sign into your SharePoint account if you have not already created a *connection* to SharePoint Online.  
+>[AZURE.NOTE]Sie werden aufgefordert, sich bei Ihrem SharePoint-Konto anzumelden, wenn Sie noch keine *Verbindung* mit SharePoint Online erstellt haben.
 
-1. Enter *sharepoint* in the search box on the logic apps designer then select the **SharePoint Online - When a new item is created**  trigger.  
-![SharePoint online trigger image ](./media/connectors-create-api-sharepointonline/trigger-1.png)  
-- The **When a new item is created** control is displayed.  
-![SharePoint online trigger image 2](./media/connectors-create-api-sharepointonline/trigger-2.png)   
-- Select a **Site URL**. This is the SharePoint online site you want to monitor for new items to trigger your workflow.  
-![SharePoint online trigger image 3](./media/connectors-create-api-sharepointonline/trigger-3.png)   
-- Select a **List name**. This is the list on the SharePoint Online site you want to monitor for new items that will trigger your workflow.  
-![SharePoint online trigger image 4](./media/connectors-create-api-sharepointonline/trigger-4.png)   
+1. Geben Sie im Suchfeld des Designers für Logik-Apps die Zeichenfolge *SharePoint* ein, und wählen Sie anschließend den Trigger **SharePoint - Wenn ein neues Element erstellt wird** aus. ![SharePoint Online-Trigger – Abbildung](./media/connectors-create-api-sharepointonline/trigger-1.png)
+- Das Steuerelement **Wenn ein neues Element erstellt wird** wird angezeigt. ![SharePoint Online-Trigger – Abbildung 2](./media/connectors-create-api-sharepointonline/trigger-2.png)
+- Wählen Sie einen **Website-URL** aus. Dies ist die SharePoint Online-Website, die Sie auf neue Elemente überwachen möchten, um den Workflow auszulösen. ![SharePoint Online-Trigger – Abbildung 3](./media/connectors-create-api-sharepointonline/trigger-3.png)
+- Wählen Sie einen **Listenname** aus. Dies ist die Liste auf der SharePoint Online-Website, die Sie auf neue Elemente überwachen möchten, die den Workflow auslösen. ![SharePoint Online-Trigger – Abbildung 4](./media/connectors-create-api-sharepointonline/trigger-4.png)
 
-At this point, your logic app has been configured with a trigger that will begin a run of the other triggers and actions in the workflow. This will take place each time a new item is created in SharePoint Online list you selected.  
+Jetzt haben Sie Ihre Logik-App mit einem Trigger konfiguriert, der eine Ausführung der anderen Trigger und Aktionen im Workflow startet. Dies findet jedes Mal statt, wenn ein neues Element in der ausgewählten SharePoint Online-Liste erstellt wird.
+
+<!---HONumber=AcomDC_0727_2016-->

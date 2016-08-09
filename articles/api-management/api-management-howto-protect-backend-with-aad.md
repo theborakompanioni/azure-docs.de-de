@@ -93,7 +93,7 @@ Fügen Sie am Anfang der `CalcInput.cs`-Datei die folgende `using`-Anweisung hin
         public int b;
     }
 
-Klicken Sie mit der rechten Maustaste im **Projektmappen-Explorer** auf **Controller**, und wählen Sie **Hinzufügen**->**Controller**. Wählen Sie **Web API 2-Controller – Leer**, und klicken Sie auf **Hinzufügen**. Geben Sie als Controllername **CalcController** ein, und klicken Sie auf **Hinzufügen**.
+Klicken Sie mit der rechten Maustaste im ** Projektmappen-Explorer** auf **Controller**, und wählen Sie **Hinzufügen**->**Controller**. Wählen Sie **Web API 2-Controller – Leer**, und klicken Sie auf **Hinzufügen**. Geben Sie als Controllername **CalcController** ein, und klicken Sie auf **Hinzufügen**.
 
 ![Controller hinzufügen][api-management-add-controller]
 
@@ -143,8 +143,11 @@ Ersetzen Sie die generierte Controllerklasse durch den folgenden Code: Dieser Co
         public HttpResponseMessage GetDiv([FromUri]int a, [FromUri]int b)
         {
             string xml = string.Format("<result><value>{0}</value><broughtToYouBy>Azure API Management - http://azure.microsoft.com/apim/ </broughtToYouBy></result>", a / b);
-HttpResponseMessage response = Request.CreateResponse(); response.Content = new StringContent(xml, System.Text.Encoding.UTF8, "application/xml"); return response; } }
-
+    	    HttpResponseMessage response = Request.CreateResponse();
+    	    response.Content = new StringContent(xml, System.Text.Encoding.UTF8, "application/xml");
+    	    return response;
+    	}
+    }
 
 Drücken Sie **F6**, um die Lösung zu erstellen und zu überprüfen.
 
@@ -239,7 +242,7 @@ Wählen Sie **Web-Anwendung und/oder Web-API-**, geben Sie einen Namen ein, und 
 
 Geben Sie als **Anmelde-URL** die URL Ihres API Management-Diensts ein, und fügen Sie `/signin`an. In diesem Beispiel wird **https://contoso5.portal.azure-api.net/signin** verwendet.
 
-Geben Sie als **App-ID-URL** die URL Ihres API Management-Diensts ein, und fügen Sie einige eindeutige Zeichen an. Dabei kann es sich um beliebige Zeichen handeln. In diesem Beispiel wird **https://contoso5.portal.azure-api.net/dp** verwendet. Wenn die gewünschten **App-Eigenschaften** konfiguriert sind, klicken Sie auf das Häkchen, um die Anwendung zu erstellen.
+Geben Sie als **App-ID-URL** die URL Ihres API Management-Diensts ein, und fügen Sie einige eindeutige Zeichen an. Dabei kann es sich um beliebige Zeichen handeln. In diesem Beispiel wird **https://contoso5.portal.azure-api.net/dp** verwendet. Wenn die gewünschten **App-Eigenschaften konfiguriert sind, klicken Sie auf das Häkchen, um die Anwendung zu erstellen.
 
 ![Neue Anwendung][api-management-aad-new-application-devportal-2]
 
@@ -413,4 +416,4 @@ Eine weitere Demonstration der Konfiguration und Verwendung dieser Richtlinie fi
 [Erstellen einer API Management-Dienstinstanz]: api-management-get-started.md#create-service-instance
 [Verwalten Ihrer ersten API]: api-management-get-started.md
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

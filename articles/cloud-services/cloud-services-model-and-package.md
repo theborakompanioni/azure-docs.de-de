@@ -249,7 +249,6 @@ Die Variablen sind dabei wie folgt definiert:
 
 Ich erstelle ein Clouddienstpaket und möchte ...
 
-* [Konfigurieren lokaler Speicherressourcen](cloud-services-configure-local-storage-resources.md)
 * [Eine Remotedesktopverbindung für eine Clouddienstinstanz einrichten][remotedesktop]
 * [Ein Clouddienstprojekt bereitstellen][deploy]
 
@@ -267,4 +266,4 @@ Ich verwende Visual Studio und möchte ...
 [vs_reconfigure]: ../vs-azure-tools-configure-roles-for-cloud-service.md
 [vs_create]: ../vs-azure-tools-azure-project-create.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

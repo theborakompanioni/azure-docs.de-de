@@ -8,7 +8,7 @@
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="app-service-logic" 
+	ms.service="logic-apps" 
 	ms.workload="integration" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
@@ -61,4 +61,4 @@ Für die Unternehmensintegration werden unterstützt diese Branchenstandards unt
 - [Überprüfung von XML-Nachrichten](./app-service-logic-enterprise-integration-xml.md "Informationen zum Überprüfen von XML-Nachrichten mit Logik-Apps")
 - [XML-Transformation](./app-service-logic-enterprise-integration-transform.md "Informationen zu Zuordnungen für die Unternehmensintegration")
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

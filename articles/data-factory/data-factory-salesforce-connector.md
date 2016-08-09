@@ -215,9 +215,12 @@ Wenn bei der Kopieraktivität „source“ den Typ **RelationalSource** aufweist
 | -------- | ----------- | -------------- | -------- |
 | query | Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. | SQL-92-Abfrage oder Abfrage vom Typ [Salesforce Object Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.de-DE.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm). Beispiel: select * from MyTable\_\_c. | Nein (wenn **tableName** von **Dataset** angegeben ist) |
 
-> [AZURE.IMPORTANT]  Der Abschnitt „\_\_c“ von „API Name“ wird für benutzerdefinierte Objekte benötigt.<br> Wenn Sie eine Abfrage mit einer where-Klausel in der datetime-Spalte erstellen, verwenden Sie SOQL. Beispiel: $$Text.Format('SELECT Id, Type, Name, BillingCity, BillingCountry FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd).
+> [AZURE.IMPORTANT]  Der Abschnitt „\_\_c“ von „API Name“ wird für benutzerdefinierte Objekte benötigt. <br><br> Verwenden Sie beim Angeben einer Abfrage mit einer WHERE-Klausel für die „datetime“-Spalte eine SQL-Abfrage wie beispielsweise: $$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd), oder eine SQL-Abfrage wie beispielsweise: $$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts'{0:yyyy-MM-dd HH:mm:ss}'}} AND LastModifiedDate < {{ts'{1:yyyy-MM-dd HH:mm:ss}'}}', WindowStart, WindowEnd).
 
 ![Data Factory – Salesforce-Verbindung – API-Name](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
+
+## Abrufen von Daten aus Salesforce-Bericht
+Sie können Daten aus Salesforce-Berichten abrufen, indem Sie die Abfrage als {call "< Berichtsname >"} angeben, z. B. "query": "{call "TestReport"}".
 
 ## Anforderungslimits in Salesforce
 Salesforce weist Grenzwerte sowohl für die Gesamtanzahl von API-Anforderungen als auch für die Anzahl gleichzeitiger API-Anforderungen auf. Weitere Informationen finden Sie im Abschnitt **API Request Limits** (API-Anforderungslimits) im Artikel [Salesforce API Request Limits](http://resources.docs.salesforce.com/200/20/de-DE/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf) (Salesforce-API-Anforderungslimits).
@@ -256,4 +259,4 @@ URL | String
 ## Leistung und Optimierung  
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

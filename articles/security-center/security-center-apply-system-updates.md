@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/12/2016"
+   ms.date="07/21/2016"
    ms.author="terrylan"/>
 
 # Anwenden von Systemupdates in Azure Security Center
 
 Azure Security Center überprüft virtuelle Windows- und Linux Computer (Virtual Machines, VMs) täglich auf fehlende Betriebssystemupdates. Security Center ruft eine Liste mit verfügbaren Sicherheitsupdates und wichtigen Updates von Windows Update oder WSUS (Windows Server Update Services) ab – je nachdem, welcher Dienst für einen virtuellen Windows-Computer konfiguriert ist. Darüber hinaus prüft Security Center auch die neuesten Updates für Linux-Systeme. Falls auf Ihrem virtuellen Computer ein Systemupdate fehlt, empfiehlt Security Center die Anwendung von Systemupdates.
 
-> [AZURE.NOTE] Die Informationen in diesem Dokument gelten für die Vorschauversion von Azure Security Center. Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
+> [AZURE.NOTE] Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
 
 ## Implementieren der Empfehlung
 
@@ -40,7 +40,7 @@ Azure Security Center überprüft virtuelle Windows- und Linux Computer (Virtual
 
 Starten Sie den virtuellen Computer über Azure neu, um den Prozess abzuschließen.
 
-## Nächste Schritte
+## Weitere Informationen
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
@@ -60,4 +60,4 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 [5]: ./media/security-center-apply-system-updates/reboot-after-system-updates.png
 [6]: ./media/security-center-apply-system-updates/restart-pending.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

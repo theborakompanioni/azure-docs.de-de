@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/18/2016"
+	ms.date="07/25/2016"
 	ms.author="jgao"/>
 
 #Analysieren von Flugverspätungsdaten mit Hive in HDInsight
@@ -63,8 +63,8 @@ In der folgenden Tabelle sind die in diesem Lernprogramm verwendeten Dateien auf
 
 <table border="1">
 <tr><th>Dateien</th><th>Beschreibung</th></tr>
-<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql</td><td>Die HiveQL-Skriptdatei, die vom Hive-Auftrag verwendet wird, den Sie ausführen werden. Dieses Skript wurde in ein Azure-Blobspeicherkonto mit öffentlichem Zugriff hochgeladen. <a href="#appendix-b">Anhang&#160;B</a> enthält Anweisungen zum Vorbereiten und Hochladen dieser Datei in Ihr eigenes Azure-Blobspeicherkonto.</td></tr>
-<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data</td><td>Die Eingabedaten für den Hive-Auftrag. Die Daten wurden in ein Azure-Blobspeicherkonto mit öffentlichem Zugriff hochgeladen. In <a href="#appendix-a">Anhang&#160;A</a> finden Sie Anweisungen zum Einfügen und Hochladen der Daten in Ihr eigenes Azure-Blobspeicherkonto.</td></tr>
+<tr><td>wasbs://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql</td><td>Die HiveQL-Skriptdatei, die vom Hive-Auftrag verwendet wird, den Sie ausführen werden. Dieses Skript wurde in ein Azure-Blobspeicherkonto mit öffentlichem Zugriff hochgeladen. <a href="#appendix-b">Anhang&#160;B</a> enthält Anweisungen zum Vorbereiten und Hochladen dieser Datei in Ihr eigenes Azure-Blobspeicherkonto.</td></tr>
+<tr><td>wasbs://flightdelay@hditutorialdata.blob.core.windows.net/2013Data</td><td>Die Eingabedaten für den Hive-Auftrag. Die Daten wurden in ein Azure-Blobspeicherkonto mit öffentlichem Zugriff hochgeladen. In <a href="#appendix-a">Anhang&#160;A</a> finden Sie Anweisungen zum Einfügen und Hochladen der Daten in Ihr eigenes Azure-Blobspeicherkonto.</td></tr>
 <tr><td>\tutorials\flightdelays\output</td><td>Der Ausgabepfad für den Hive-Auftrag. Der Standardcontainer wird für die Speicherung der Ausgabedaten verwendet.</td></tr>
 <tr><td>\tutorials\flightdelays\jobstatus</td><td>Der Ordner mit dem Hive-Job-Status im Standardcontainer.</td></tr>
 </table>
@@ -195,7 +195,7 @@ Hadoop MapReduce verwendet Stapelbearbeitung. Die kosteneffizienteste Möglichke
 		###########################################
 		# Submit the Sqoop job
 		###########################################
-		$exportDir = "wasb://$defaultBlobContainerName@$defaultStorageAccountName.blob.core.windows.net/tutorials/flightdelays/output"
+		$exportDir = "wasbs://$defaultBlobContainerName@$defaultStorageAccountName.blob.core.windows.net/tutorials/flightdelays/output"
 		
 		$sqoopDef = New-AzureRmHDInsightSqoopJobDefinition `
 						-Command "export --connect $sqlDatabaseConnectionString --table $sqlDatabaseTableName --export-dir $exportDir --fields-terminated-by \001 "
@@ -258,7 +258,7 @@ Das Hochladen der Datendatei und der HiveQL-Skriptdateien (siehe [Anhang B](#ap
 3. Klicken Sie auf **Download**.
 4. Entpacken Sie die Datei im Ordner **C:\\Tutorials\\FlightDelay\\2013Data**. Jede Datei ist eine CSV-Datei und hat eine Größe von ungefähr 60 GB.
 5.	Geben Sie der Datei den Monat, für den sie Daten enthält, als neuen Namen. Die Datei mit Daten aus dem Monat Januar hieße dann beispielsweise *January.csv*.
-6. Wiederholen Sie die Schritte 2 und 5, um eine Datei für jeden der 12 Monate des Jahres 2013 herunterzuladen. Für das Lernprogramm benötigen Sie mindestens eine Datei.  
+6. Wiederholen Sie die Schritte 2 und 5, um eine Datei für jeden der 12 Monate des Jahres 2013 herunterzuladen. Für das Lernprogramm benötigen Sie mindestens eine Datei.
 
 **So laden Sie Daten zu Flugverspätungen in den Azure-Blobspeicher hoch**
 
@@ -346,7 +346,7 @@ Das Hochladen der Datendatei und der HiveQL-Skriptdateien (siehe [Anhang B](#ap
 
 Wenn Sie für das Hochladen der Dateien eine andere Methode verwenden möchten, stellen Sie sicher, dass der Dateipfad „tutorials/flightdelay/data“ lautet. Für den Zugriff auf die Dateien gilt folgende Syntax:
 
-	wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/tutorials/flightdelay/data
+	wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/tutorials/flightdelay/data
 
 Bei „tutorials/flightdelay/data“ handelt es sich um den virtuellen Ordner, den Sie beim Hochladen der Dateien erstellt haben. Überprüfen Sie, dass 12 Dateien vorhanden sind, eine für jeden Monat.
 
@@ -362,7 +362,7 @@ Mit Azure PowerShell können Sie mehrere HiveQL-Anweisungen gleichzeitig ausfüh
 Das HiveQL-Skript führt Folgendes durch:
 
 1. **Löschen der Tabelle delays\_raw**, wenn diese Tabelle bereits vorhanden ist.
-2. **Erstellen der externen Hive-Tabelle "delays\_raw"**, die auf den Blobspeicherort mit den Dateien zu Flugverspätungen verweist. Diese Abfrage legt fest, dass Felder durch "," getrennt und Zeilen mit "\\n" beendet werden. Dies stellt ein Problem dar, wenn Feldwerte Kommas enthalten, da Hive nicht zwischen einem Komma als Trennzeichen für Felder und einem Komma als Teil eines Feldwerts unterscheiden kann. (Letzteres ist der Fall bei Feldwerten für ORIGIN\_CITY\_NAME und DEST\_CITY\_NAME.) Zur Behebung dieses Problems erstellt die Abfrage TEMP-Spalten zur Aufbewahrung von Daten, die fehlerhaft in Spalten aufgeteilt sind.  
+2. **Erstellen der externen Hive-Tabelle "delays\_raw"**, die auf den Blobspeicherort mit den Dateien zu Flugverspätungen verweist. Diese Abfrage legt fest, dass Felder durch "," getrennt und Zeilen mit "\\n" beendet werden. Dies stellt ein Problem dar, wenn Feldwerte Kommas enthalten, da Hive nicht zwischen einem Komma als Trennzeichen für Felder und einem Komma als Teil eines Feldwerts unterscheiden kann. (Letzteres ist der Fall bei Feldwerten für ORIGIN\_CITY\_NAME und DEST\_CITY\_NAME.) Zur Behebung dieses Problems erstellt die Abfrage TEMP-Spalten zur Aufbewahrung von Daten, die fehlerhaft in Spalten aufgeteilt sind.
 3. **Löschen der Tabelle "delays"**, falls diese Tabelle bereits vorhanden ist.
 4. **Erstellen der Tabelle delays**. Es ist hilfreich, die Daten vor der weiteren Verarbeitung zu bereinigen. Mit dieser Abfrage wird eine neue Tabelle *delays* aus der Tabelle "delays\_raw" erstellt. Beachten Sie, dass die TEMP-Spalten (wie zuvor erwähnt) nicht kopiert werden und dass die **substring**-Funktion verwendet wird, um Anführungszeichen aus den Daten zu entfernen.
 5. **Berechnen der durchschnittlichen Verspätungen aufgrund des Wetters und Gruppieren der Ergebnisse nach Stadt.** Darüber hinaus werden die Ergebnisse in den Blobspeicher ausgegeben. Beachten Sie, dass bei der Abfrage Apostrophe aus den Daten entfernt werden und dass Zeilen ausgeschlossen werden, bei denen der Wert für **weather\_delay** Null ist. Dies ist erforderlich, da Sqoop, das Sie später in diesem Lernprogramm verwenden werden, diese Werte standardmäßig nicht ordnungsgemäß verarbeitet.
@@ -495,7 +495,7 @@ Eine vollständige Liste der HiveQL-Befehle finden Sie unter [Hive Data Definiti
 			"ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' " +
 			"LINES TERMINATED BY '\n' " +
 			"STORED AS TEXTFILE " +
-			"LOCATION 'wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data';"
+			"LOCATION 'wasbs://flightdelay@hditutorialdata.blob.core.windows.net/2013Data';"
 		
 		$hqlDropDelays = "DROP TABLE delays;"
 		
@@ -742,4 +742,4 @@ Jetzt wissen Sie, wie Sie eine Datei in den Azure-Blobspeicher hochladen, eine H
 [img-hdi-flightdelays-run-hive-job-output]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.RunHiveJob.Output.png
 [img-hdi-flightdelays-flow]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.Flow.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

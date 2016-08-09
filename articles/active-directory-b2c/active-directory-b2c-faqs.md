@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Preview-Version von Azure Active Directory B2C: Häufig gestellte Fragen | Microsoft Azure"
+	pageTitle="Häufig gestellte Fragen zu Azure Active Directory B2C | Microsoft Azure"
 	description="Häufig gestellte Fragen zu Azure Active Directory B2C"
 	services="active-directory-b2c"
 	documentationCenter=""
@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="07/22/2016"
 	ms.author="swkrish"/>
 
-# Preview-Version von Azure Active Directory B2C: Häufig gestellte Fragen
+# Häufig gestellte Fragen zu Azure Active Directory B2C
 
-Auf dieser Seite werden häufig gestellte Fragen zur Vorschau von Azure Active Directory (Azure AD) B2C beantwortet. Die Seite wird bei Bedarf aktualisiert.
-
-[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
+Auf dieser Seite werden häufig gestellte Fragen zu Azure Active Directory (Azure AD) B2C beantwortet. Die Seite wird bei Bedarf aktualisiert.
 
 ### Kann ich Azure AD B2C-Features in meinem vorhandenen mitarbeiterbasierten Azure AD Directory-Mandanten nutzen?
 
@@ -56,7 +54,7 @@ Nein, Sie können Ihre Anwendung überall hosten (in der Cloud oder lokal). Für
 
 ### Ich habe mehrere Azure AD B2C-Mandanten. Wie kann ich sie im Azure-Portal verwalten?
 
-Jeder Azure AD B2C-Mandant verfügt im Azure-Portal über ein eigenes Blatt mit B2C-Funktionen. Informationen dazu, wie Sie im Azure-Portal zum Blatt mit den B2C-Funktionen eines bestimmten Mandanten navigieren, finden Sie unter [Azure AD B2C-Vorschau: Registrieren Ihrer Anwendung](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade). Beim Wechseln zwischen Azure AD B2C-Verzeichnissen im Azure-Portal bleibt das Blatt mit den B2C-Funktionen in den meisten Browsern nicht geöffnet.
+Jeder Azure AD B2C-Mandant verfügt im Azure-Portal über ein eigenes Blatt mit B2C-Funktionen. Informationen dazu, wie Sie im Azure-Portal zum Blatt mit den B2C-Funktionen eines bestimmten Mandanten navigieren, finden Sie unter [Azure AD B2C: Registrieren Ihrer Anwendung](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade). Beim Wechseln zwischen Azure AD B2C-Verzeichnissen im Azure-Portal bleibt das Blatt mit den B2C-Funktionen in den meisten Browsern nicht geöffnet.
 
 ### Wie kann ich Bestätigungs-E-Mails anpassen (Inhalt und das Feld „Von:“), die von Azure AD B2C gesendet werden?
 
@@ -68,7 +66,7 @@ Sie können Ihr Migrationstool mithilfe der Azure AD Graph-API schreiben. Einzel
 
 ### Welche Kennwortrichtlinie wird für lokale Konten in Azure AD B2C verwendet?
 
-Die Kennwortrichtlinie von Azure AD B2C für lokale Konten basiert auf der Kennwortrichtlinie von Azure AD. Bei Azure AD B2C müssen sichere Kennwörter verwendet werden, und die Kennwörter laufen nicht ab. Weitere Informationen finden Sie in der [Kennwortrichtlinie von Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx).
+Die Kennwortrichtlinie von Azure AD B2C für lokale Konten basiert auf der Kennwortrichtlinie von Azure AD. Die Azure AD B2C-Richtlinien zur Registrierung, Anmeldung und Kennwortrücksetzung verwenden sichere Kennwörter, und die Kennwörter laufen nicht ab. Weitere Informationen finden Sie in der [Kennwortrichtlinie von Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx).
 
 ### Kann ich Azure AD Connect zum Migrieren von Endkundenidentitäten, die in meinem lokalen Active Directory gespeichert sind, zu Azure AD B2C verwenden?
 
@@ -110,7 +108,7 @@ Führen Sie die folgenden Schritte aus, um Ihren Azure AD B2C-Mandanten zu lösc
 - Wählen Sie nacheinander die einzelnen Benutzer aus – mit Ausnahme des Benutzers, als der Sie gerade angemeldet sind (Abonnementadministrator). Klicken Sie im unteren Bereich der Seite auf **Löschen**, und klicken Sie auf **JA**, wenn Sie zur Bestätigung aufgefordert werden.
 - Klicken Sie auf die Registerkarte **Anwendungen**.
 - Wählen Sie im Dropdownfeld **Anzeigen** die Einstellung **Anwendungen im Besitz meines Unternehmens** aus, und klicken Sie auf das Häkchen.
-- Es wird eine Anwendung namens**b2c-extensions-app** angezeigt. Klicken Sie im unteren Bereich der Seite auf **Löschen**, und klicken Sie auf **JA**, wenn Sie zur Bestätigung aufgefordert werden.
+- Eine Anwendung namens**b2c-extensions-app** wird angezeigt. Klicken Sie im unteren Bereich der Seite auf **Löschen**, und klicken Sie auf **JA**, wenn Sie zur Bestätigung aufgefordert werden.
 - Navigieren Sie erneut zur Active Directory-Erweiterung, und wählen Sie Ihren B2C-Mandanten aus.
 - Klicken Sie unten auf der Seite auf **Löschen**. Folgen Sie den Anweisungen auf dem Bildschirm, um den Vorgang abzuschließen.
 
@@ -122,12 +120,8 @@ Nein. Azure AD B2C ist ein Azure-Dienst mit nutzungsbasierter Bezahlung und nich
 
 Siehe [Azure Active Directory B2C: Senden von Supportanfragen](active-directory-b2c-support.md).
 
-### Wann wird Azure AD B2C allgemein verfügbar sein?
-
-Derzeit können wir noch keine Angaben zum Datum der allgemeinen Verfügbarkeit machen.
-
 ## Weitere Informationen
 
-Es kann hilfreich sein, sich auch über die aktuellen [Einschränkungen der Vorschauversion](active-directory-b2c-limitations.md) zu informieren.
+Informieren Sie sich über die aktuellen [Einschränkungen des Dienstes](active-directory-b2c-limitations.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

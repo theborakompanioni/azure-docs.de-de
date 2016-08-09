@@ -28,7 +28,7 @@ Azure weist viele integrierte Plattformfunktionen auf, die hoch verfügbare Anwe
 
 Mit dem Azure Fabric Controller wird der Zustand der Azure-Computeinstanzen bereitgestellt und überwacht. Der Fabric Controller überprüft den Status der Hardware und Software für die Host- und Gastcomputerinstanzen. Wenn ein Fehler erkannt wird, werden SLAs durch automatisches Verschieben der VM-Instanzen erzwungen. Das Konzept von Fehler- und Upgradedomänen unterstützt Compute-SLAs zusätzlich.
 
-Wenn mehrere Rolleninstanzen bereitgestellt werden, stellt Azure diese in verschiedenen Fehlerdomänen bereit. Eine Fehlerdomänengrenze ist im Grunde ein anderes Hardwarerack in der gleichen Region. Fehlerdomänen reduzieren die Wahrscheinlichkeit, dass ein ermittelter Hardwarefehler die Dienstbereitstellung einer Anwendung unterbricht. Sie können die Anzahl von Fehlerdomänen, die Ihren Worker- oder Webrollen zugeordnet werden, nicht verwalten. Der Fabric Controller verwendet dedizierte Ressourcen, die von den in Azure gehosteten Anwendungen getrennt sind. Er weist eine Verfügbarkeit von 100% auf, da er das Kernstück des Azure-Systems darstellt. Er überwacht und verwaltet Rolleninstanzen über Fehlerdomänen hinweg.
+Wenn mehrere Clouddienst-Rolleninstanzen bereitgestellt werden, stellt Azure diese in verschiedenen Fehlerdomänen bereit. Eine Fehlerdomänengrenze ist im Grunde ein anderes Hardwarerack in der gleichen Region. Fehlerdomänen reduzieren die Wahrscheinlichkeit, dass ein ermittelter Hardwarefehler die Dienstbereitstellung einer Anwendung unterbricht. Sie können die Anzahl von Fehlerdomänen, die Ihren Worker- oder Webrollen zugeordnet werden, nicht verwalten. Der Fabric Controller verwendet dedizierte Ressourcen, die von den in Azure gehosteten Anwendungen getrennt sind. Er weist eine Verfügbarkeit von 100% auf, da er das Kernstück des Azure-Systems darstellt. Er überwacht und verwaltet Rolleninstanzen über Fehlerdomänen hinweg.
 
 Im folgenden Diagramm sind gemeinsam genutzte Azure-Ressourcen dargestellt, die vom Fabric Controller über verschiedene Fehlerdomänen hinweg bereitgestellt und verwaltet werden.
 
@@ -143,4 +143,4 @@ Es ist wichtig zu beachten, dass sich die Skalierbarkeit des Clouddiensts direkt
 
 Dieser Artikel ist Teil einer Reihe von Artikeln mit Fokus auf [Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](./resiliency-disaster-recovery-high-availability-azure-applications.md). Der nächste Artikel dieser Reihe ist [Notfallwiederherstellung für in Microsoft Azure erstellte Anwendungen](./resiliency-disaster-recovery-azure-applications.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -30,7 +30,7 @@ Der Warten-Connector kann als eine Aktion verwendet werden. Er besitzt keine Tri
 
 ### Aktion
 - Klicken Sie im rechten Bereich auf den Warten-Connector: ![Liste der Aktionen][1]
-- Der Warten-Connector unterstützt zwei Aktionen: 
+- Der Warten-Connector unterstützt zwei Aktionen:
 	- Verzögern
 	- Verzögern bis
 	 
@@ -56,4 +56,4 @@ Anzeigen der Swagger-REST-API-Referenz unter [Referenz zu Connectors und API-App
 [2]: ./media/app-service-logic-wait/DelayInput.PNG
 [3]: ./media/app-service-logic-wait/ActionConfigured.PNG
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0727_2016-->

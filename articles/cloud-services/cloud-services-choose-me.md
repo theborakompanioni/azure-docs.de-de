@@ -1,18 +1,18 @@
-<properties 
-	pageTitle="Compute-Optionen in Azure – Cloud Services | Microsoft Azure" 
-	description="Erfahren Sie mehr über die Computehostingoptionen in Azure und ihre Funktionsweise: App Service, Cloud Services und Virtual Machines" 
+<properties
+	pageTitle="Compute-Optionen in Azure – Cloud Services | Microsoft Azure"
+	description="Erfahren Sie mehr über die Computehostingoptionen in Azure und ihre Funktionsweise: App Service, Cloud Services und Virtual Machines"
 	services="cloud-services"
     documentationCenter=""
-	authors="Thraka" 
+	authors="Thraka"
 	manager="timlt"/>
 
-<tags 
-	ms.service="multiple" 
-	ms.workload="multiple" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/05/2016" 
+<tags
+	ms.service="multiple"
+	ms.workload="multiple"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/05/2016"
 	ms.author="adegeo"/>
 
 # Sollte ich mich für Clouddienste oder eine andere Lösung entscheiden?
@@ -24,7 +24,7 @@ Ist Azure Cloud Services das Richtige für Sie? Azure bietet verschiedene Hostin
 <a name="tellmecs"></a>
 ## Informationen zu Cloud Services
 
-Cloud Services ist ein Beispiel für Platform-as-a-Service (PaaS). Diese Technologie unterstützt wie [App Service](../app-service-web/app-service-web-overview.md) skalierbare und zuverlässige Anwendungen mit niedrigen Betriebskosten. Cloud Services werden ebenso wie ein App Service auf VMs gehostet. Sie haben jedoch mehr Kontrolle über die virtuellen Computer. Sie können Ihre eigene Software auf Clouddienst-VMs installieren und per Remotezugriff auf diese zugreifen.
+Cloud Services ist ein Beispiel für [Platform-as-a-Service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Diese Technologie unterstützt wie [App Service](../app-service-web/app-service-web-overview.md) skalierbare und zuverlässige Anwendungen mit niedrigen Betriebskosten. Cloud Services werden ebenso wie ein App Service auf VMs gehostet. Sie haben jedoch mehr Kontrolle über die virtuellen Computer. Sie können Ihre eigene Software auf Clouddienst-VMs installieren und per Remotezugriff auf diese zugreifen.
 
 ![cs\_diagramcs\_diagram](./media/cloud-services-choose-me/diagram.png)
 
@@ -35,7 +35,7 @@ Diese Technologie bietet zwei leicht abweichende Optionen für VM: Auf Instanzen
 Eine beliebige Kombination dieser zwei leicht unterschiedlichen VM Hostingoptionen sind in einem Clouddienst verfügbar:
 
 * **Webrolle** Führt Windows Server mit Ihrer Web-App aus, die automatisch auf IIS bereitgestellt wird.
-  
+
 * **Workerrolle** Führt Windows-Server ohne IIS aus.
 
 Einfache Anwendungen verwenden z. B. nur eine Webrolle, während komplexere Anwendungen eine Webrolle für die Verarbeitung eingehender Benutzeranforderungen verwenden und die aus diesen Anforderungen entstandene Arbeit an Workerrollen abgeben. (Diese Kommunikation erfolgt über einen [Service Bus](../service-bus/service-bus-fundamentals-hybrid-solutions.md) oder über [Azure-Warteschlangen](../storage/storage-introduction.md).)
@@ -55,6 +55,6 @@ Cloud Services bietet außerdem Überwachungsfunktionen. Wie auch bei Azure Virt
 Die PaaS-Funktionsweise von Cloud Services hat auch noch andere Auswirkungen. Zum Beispiel sollten Anwendungen für diese Technologie so entwickelt werden, dass sie auch dann korrekt funktionieren, wenn eine beliebige Web- oder Workerrolle ausfällt. Aus diesem Grund sollten Cloud Services-Anwendungen keinen Status im Dateisystem der eigenen virtuellen Computer speichern. Im Gegensatz zu virtuellen Computern mit Azure Virtual Machines sind Schreibvorgänge in virtuellen Cloud Services-Computern nicht persistent. Diese virtuellen Computer haben keine eigenen Datenträger. Cloud Services-Anwendungen sollten daher ihren Status in SQL-Datenbanken, Blobs, Tabellen oder andere externe Speichermedien schreiben. Die auf diese Weise erstellten Anwendungen sind skalierbarer und fehlerresistenter; zwei wichtige Ziele von Cloud Services.
 
 ## Nächste Schritte
-[Erstellen einer Clouddienst-App in .NET](cloud-services-dotnet-get-started.md) [Erstellen einer Clouddienst-App in Node.js](cloud-services-nodejs-develop-deploy-app.md) [Erstellen einer Clouddienst-App in PHP](../cloud-services-php-create-web-role.md) [Erstellen einer Clouddienst-App in Python](../cloud-services-python-ptvs.md)
+[Erstellen einer Clouddienst-App in .NET](cloud-services-dotnet-get-started.md) [Erstellen einer Clouddienst-App in Node.js](cloud-services-nodejs-develop-deploy-app.md) [Erstellen einer Clouddienst-App in PHP](../cloud-services-php-create-web-role.md) [Erstellen einer Clouddienst-App in Python](cloud-services-python-ptvs.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

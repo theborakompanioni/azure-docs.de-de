@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Analytics, das leistungsfähige Suchtool von Application Insights | Microsoft Azure" 
-	description="Übersicht über Analytics, das leistungsfähige Diagnosesuchtool von Application Insights." 
+	description="Übersicht über Analytics, das leistungsfähige Diagnosesuchtool von Application Insights. " 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016" 
+	ms.date="07/25/2016" 
 	ms.author="awills"/>
 
 
@@ -21,7 +21,10 @@
 
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
+* **[Sehen Sie das Einführungsvideo an](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**.
+* **[Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo)**, wenn Ihre App noch keine Daten an Application Insights sendet.
 
+## Abfragen in Analytics
  
 Eine typische Abfrage ist eine *Quelltabelle*, gefolgt von einer Reihe von *Operatoren*, die durch `|` getrennt sind.
 
@@ -81,4 +84,4 @@ Derzeit sind Abfrageergebnisse auf eine Woche alte Daten beschränkt.
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

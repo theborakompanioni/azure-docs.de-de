@@ -55,23 +55,23 @@ Die in diesem Artikel beschriebene Architektur gilt zwar für eine einfache Lös
 
 Das Diagramm veranschaulicht, (1) wie Data Factory die Datenverschiebung und -verarbeitung koordiniert und (2) wie Azure Batch die Daten parallel verarbeitet. Laden Sie zum einfachen Nachschlagen das Diagramm herunter, und drucken Sie es aus (28 x 43 cm oder A3-Format): [HPC und Datenorchestrierung mit Azure Batch und Data Factory](http://go.microsoft.com/fwlink/?LinkId=717686).
 
-![Diagramm für HPC als Service](./media/data-factory-data-processing-using-batch/image1.png)
+[![Diagramm der Verarbeitung großer Datenmengen](./media/data-factory-data-processing-using-batch/image1.png)](http://go.microsoft.com/fwlink/?LinkId=717686)
 
 Dies sind die grundlegenden Schritte des Prozesses. Die Lösung enthält Code und Erklärungen zum Erstellen der End-to-End-Lösung.
 
-1.  Konfigurieren von Azure mit einem Pool von Computeknoten (VMs). Sie können die Anzahl der Knoten und die Größe der einzelnen Knoten angeben.
+1.  **Konfigurieren von Azure Batch mit einem Pool von Computeknoten (VMs)**. Sie können die Anzahl der Knoten und die Größe der einzelnen Knoten angeben.
 
-2.  Erstellen Sie eine Azure Data Factory-Instanz, die mit Entitäten konfiguriert wird, die Azure Blob-Speicher, Azure Batch-Computedienst, Ein-/Ausgabedaten und einen Workflow bzw. eine Pipeline mit Aktivitäten zum Verschieben und Transformieren von Daten darstellen.
+2.  **Erstellen einer Azure Data Factory-Instanz**, die mit Entitäten konfiguriert wird, die Azure Blob-Speicher, Azure Batch-Computedienst, Ein-/Ausgabedaten und einen Workflow bzw. eine Pipeline mit Aktivitäten zum Verschieben und Transformieren von Daten darstellen.
 
-3.  Die Data Factory-Pipeline verfügt über eine benutzerdefinierte .NET-Aktivität, die für die Ausführung in Azure Batch-Knotenpools konfiguriert ist.
+3.   **Erstellen einer benutzerdefinierten .NET-Aktivität in der Data Factory-Pipeline**. Die Aktivität ist Ihr Benutzercode, der im Azure Batch-Pool ausgeführt wird.
 
-4.  Große Mengen von Eingabedaten als Blobs im Azure-Speicher. Daten werden in logische Einheiten (in der Regel nach Zeit) aufgeteilt.
+4.  **Speichern großer Mengen von Eingabedaten als Blobs in Azure-Speicher**. Daten werden in logische Einheiten (in der Regel nach Zeit) aufgeteilt.
 
-5.  Data Factory kopiert Daten, die parallel zum sekundären Speicherort verarbeitet werden.
+5.  **Data Factory kopiert Daten, die parallel zum sekundären Speicherort verarbeitet werden**.
 
-6.  Data Factory führt die benutzerdefinierte Aktivität mit dem von Batch zugeordneten Pool aus. Data Factory kann Aktivitäten gleichzeitig ausführen. Jede Aktivität verarbeitet einen Slice von Daten. Die Aufgaben werden im Azure-Speicher gespeichert.
+6.  **Data Factory führt die benutzerdefinierte Aktivität mit dem von Batch zugeordneten Pool aus**. Data Factory kann Aktivitäten gleichzeitig ausführen. Jede Aktivität verarbeitet einen Slice von Daten. Die Aufgaben werden im Azure-Speicher gespeichert.
 
-7.  Nachdem alle Ergebnisse abgerufen werden, verschiebt Data Factory die Ergebnisse für die Verteilung über eine App oder zur weiteren Verarbeitung durch andere Tools an einen dritten Speicherort.
+7.  Nachdem alle Ergebnisse abgerufen werden, **verschiebt Data Factory die Ergebnisse für die Verteilung über eine App oder zur weiteren Verarbeitung durch andere Tools an einen dritten Speicherort**.
 
 ## Implementierung der Beispiellösung
 Diese Beispiellösung wurde absichtlich einfach gehalten und soll veranschaulichen, wie Sie Data Factory und Batch zusammen zum Verarbeiten von Datasets verwenden. Die Lösung zählt einfach, wie häufig ein Suchbegriff („Microsoft“) in Eingabedateien vorkommt, die in einer Zeitreihe organisiert sind. Sie gibt die Anzahl der Ausgabedateien an.
@@ -467,13 +467,13 @@ Legen Sie eine oder mehrere Dateien in die Eingangsordner:
 		2015-11-16-03
 		2015-11-16-04
 
-Legen Sie z. B. eine Datei (file.txt) mit dem folgenden Inhalt in die Ordner.
+Legen Sie z. B. eine Datei (file.txt) mit dem folgenden Inhalt in die Ordner.
 
 	test custom activity Microsoft test custom activity Microsoft
 
 Der Eingabeordner entspricht einem Slice in Azure Data Factory, auch wenn der Ordner über zwei oder mehr Dateien verfügt. Wenn jeder Slice von der Pipeline verarbeitet wird, durchläuft die benutzerdefinierte Aktivität alle Blobs im Eingabeordner für diesen Slice.
 
-Sie sehen fünf Ausgabedateien mit dem gleichen Inhalt. Die Ausgabedatei vom Verarbeiten der Datei im Ordner „2015-11-16-00“ wird z. B. den folgenden Inhalt aufweisen:
+Sie sehen fünf Ausgabedateien mit dem gleichen Inhalt. Die Ausgabedatei vom Verarbeiten der Datei im Ordner „2015-11-16-00“ wird z. B. den folgenden Inhalt aufweisen:
 
 	2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file.txt.
 
@@ -500,7 +500,7 @@ Die folgende exemplarische Vorgehensweise enthält weitere Details.
 
     3.  Klicken Sie auf dem Blatt **Datenanalyse** auf **Data Factory**.
 
-2.  Geben Sie auf dem Blatt **Neue Data Factory** als Namen die Zeichenfolge **CustomActivityFactory** ein. Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data Factory-Name "CustomActivityFactory" ist nicht verfügbar** ändern Sie den Namen der Data Factory (z. B.in **IhrNameCustomActivityFactory**) und wiederholen den Vorgang.
+2.  Geben Sie auf dem Blatt **Neue Data Factory** als Namen die Zeichenfolge **CustomActivityFactory** ein. Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Data Factory-Name "CustomActivityFactory" ist nicht verfügbar** ändern Sie den Namen der Data Factory (z. B.in **IhrNameCustomActivityFactory**) und wiederholen den Vorgang.
 
 3.  Klicken Sie auf **RESSOURCENGRUPPENNAME**, und wählen Sie eine vorhandene Ressourcengruppe aus oder erstellen Sie eine neue.
 
@@ -514,7 +514,7 @@ Die folgende exemplarische Vorgehensweise enthält weitere Details.
 
  ![](./media/data-factory-data-processing-using-batch/image6.png)
 
-#### Schritt 2: Erstellen von verknüpften Diensten
+#### Schritt 2: Erstellen von verknüpften Diensten
 
 Verknüpfte Dienste verknüpfen Datenspeicher oder Serverdienste mit einer Azure Data Factory. In diesem Schritt verknüpfen Sie Ihr **Azure Storage**-Konto und das **Azure Batch**-Konto mit Ihrer Data Factory.
 
@@ -697,7 +697,7 @@ In diesem Schritt erstellen Sie ein weiteres Dataset des Typs „Azureblob“, u
 	| 4 | 2015-11-16T**03**:00:00 | 2015-11-16-**03.txt** |
 	| 5 | 2015-11-16T**04**:00:00 | 2015-11-16-**04.txt** |
 
-	 Denken Sie daran, dass alle Dateien in einem Eingabeordner (z. B.: 2015-11-16-00) zu einem Slice mit der Startzeit 2015-11-16-00 gehören. Wenn dieser Slice verarbeitet wird, durchsucht die benutzerdefinierte Aktivität jede Datei und erzeugt eine Zeile in der Ausgabedatei mit der Anzahl der Vorkommnisse des Suchbegriffs („Microsoft“). Wenn drei Dateien im Ordner 2015-11-16-00 vorhanden sind, werden drei Zeilen in der Ausgabedatei erstellt: 2015-11-16-00.txt.
+	 Denken Sie daran, dass alle Dateien in einem Eingabeordner (z. B.: 2015-11-16-00) zu einem Slice mit der Startzeit 2015-11-16-00 gehören. Wenn dieser Slice verarbeitet wird, durchsucht die benutzerdefinierte Aktivität jede Datei und erzeugt eine Zeile in der Ausgabedatei mit der Anzahl der Vorkommnisse des Suchbegriffs („Microsoft“). Wenn drei Dateien im Ordner 2015-11-16-00 vorhanden sind, werden drei Zeilen in der Ausgabedatei erstellt: 2015-11-16-00.txt.
 
 3.  Klicken Sie in der Symbolleiste auf **Bereitstellen**, um **OutputDataset** zu erstellen und bereitzustellen.
 
@@ -769,7 +769,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Aktivität, der zuvor er
 
 	-   Die Eigenschaft **linkedServiceName** der benutzerdefinierten Aktivität zeigt auf **AzureBatchLinkedService**, das Azure Data Factory mitteilt, dass die benutzerdefinierte Aktivität in einem Azure HDInsight-Cluster ausgeführt werden muss.
 
-	-   Die Einstellung **Parallelität** ist wichtig. Wenn Sie den Standardwert 1 verwenden, auch wenn Sie über 2 oder mehr Computeknoten im Azure Batch-Pool verfügen, werden die Slices nacheinander verarbeitet. Daher haben Sie nicht die Möglichkeit, die parallele Verarbeitung von Azure Batch nutzen. Wenn Sie **Parallelität** auf einen höheren Wert wie z. B. 2 festlegen, können 2 Segmente (was 2 Aufgaben in Azure Batch entspricht) gleichzeitig verarbeitet werden. In diesem Fall werden die virtuellen Maschinen im Azure Batch-Pool verwendet. Legen Sie daher Sie die Parallelitätseigenschaft entsprechend fest.
+	-   Die Einstellung **Parallelität** ist wichtig. Wenn Sie den Standardwert 1 verwenden, auch wenn Sie über 2 oder mehr Computeknoten im Azure Batch-Pool verfügen, werden die Slices nacheinander verarbeitet. Daher haben Sie nicht die Möglichkeit, die parallele Verarbeitung von Azure Batch nutzen. Wenn Sie **Parallelität** auf einen höheren Wert wie z. B. 2 festlegen, können 2 Segmente (was 2 Aufgaben in Azure Batch entspricht) gleichzeitig verarbeitet werden. In diesem Fall werden die virtuellen Maschinen im Azure Batch-Pool verwendet. Legen Sie daher Sie die Parallelitätseigenschaft entsprechend fest.
 
 	-   Nur eine Aufgabe (Slice) wird standardmäßig auf einer virtuellen Maschine zu einem beliebigen Zeitpunkt ausgeführt. Dies liegt daran, dass standardmäßig die **maximalen Aufgaben pro virtueller Maschine** für einen Azure Batch-Pool auf 1 festgelegt ist. Im Rahmen der Voraussetzungen haben Sie einen Pool mit dieser Eigenschaft auf 2 festgelegt, damit die beiden Data Factory-Slices auf einem virtuellen Computer zur gleichen Zeit ausgeführt werden können.
 
@@ -842,7 +842,7 @@ Der Data Factory-Dienst erstellt in Azure Batch einen Auftrag mit dem Namen **ad
 
 Bei jeder Aktivitätsausführung eines Slices wird eine Aufgabe im Auftrag erstellt. Wenn zehn Slices zur Verarbeitung bereitstehen, werden zehn Aufgaben im Auftrag erstellt. Sie können mehrere Slices parallel ausführen, wenn Sie über mehrere Compute-Knoten im Pool verfügen. Sie können auch mehrere Slices auf dem gleichen Compute-Knoten ausführen, wenn die maximale Anzahl der Aufgaben pro Compute-Knoten auf mehr als 1 festgelegt ist.
 
-Dieses Beispiel umfasst 5 Slices, also 5 Aufgaben in Azure Batch. Wenn die **Parallelität** im Pipeline-JSON-Code in Azure Data Factory auf **5** und die maximale Anzahl von Aufgaben pro virtuellem Computer in einem Azure Batch-Pool mit zwei virtuellen Computern auf **2** festgelegt ist, werden die Aufgaben sehr schnell ausgeführt (wie anhand der Start- und Endzeit von Aufgaben zu sehen).
+Dieses Beispiel umfasst 5 Slices, also 5 Aufgaben in Azure Batch. Wenn die **Parallelität** im Pipeline-JSON-Code in Azure Data Factory auf **5** und die **maximale Anzahl von Aufgaben pro virtuellem Computer** in einem Azure Batch-Pool mit **zwei** virtuellen Computern auf **2** festgelegt ist, werden die Aufgaben sehr schnell ausgeführt (wie anhand der Start- und Endzeit von Aufgaben zu sehen).
 
 Verwenden Sie das Portal, um den Batch-Auftrag und die den **Slices** zugeordneten Aufgaben anzuzeigen und zu ermitteln, auf welchem virtuellen Computer die Slices jeweils ausgeführt wurden.
 
@@ -893,7 +893,7 @@ Das Debuggen umfasst einige grundlegende Verfahren:
     **Hinweis:** sehen Sie einen **Container** im Azure Blob-Speicher **adfjobs**. Dieser Container wird nicht automatisch gelöscht, jedoch können Sie ihn nach dem Testen der Lösung problemlos löschen. Ebenso erstellt die Data Factory-Lösung einen Azure Batch-**Auftrag** mit dem Namen: **adf-< Pool-ID/Name>:job-0000000001**. Sie können diesen Auftrag bei Belieben löschen, nachdem Sie die Lösung getestet haben.
 7. Die benutzerdefinierte Aktivität verwendet nicht die **app.config**-Datei aus Ihrem Paket. Wenn Ihr Code also Verbindungszeichenfolgen aus der Konfigurationsdatei liest, funktioniert er zur Laufzeit nicht. Die bewährte Methode bei der Verwendung von Azure Batch ist die Aufbewahrung aller geheimen Schlüssel in einem **Azure Key Vault** (Schlüsseltresor), die Verwendung eines zertifikatbasierten Dienstprinzipals zum Schützen des Schlüsseltresors und die Verteilung des Zertifikats an den Azure Batch-Pool. Die benutzerdefinierte .NET-Aktivität kann anschließend auf die geheimen Schlüssel aus dem Schlüsseltresor während der Laufzeit zugreifen. Dabei handelt es sich um eine generische Lösung, die auf jede Art von geheimem Schlüssel skalieren kann, nicht nur auf eine Verbindungszeichenfolge.
 
-	Es existiert eine einfachere Problemumgehung (aber keine bewährte Methode): Sie können einen neuen **mit Azure SQL verknüpften Dienst** mit Verbindungszeichenfolgen-Einstellungen erstellen, ein Dataset mit Verwendung des verknüpften Diensts erstellen und das Dataset als Dummyeingabedataset mit der benutzerdefinierten .NET-Aktivität verketten. Sie können anschließend auf die Verbindungszeichenfolge des verknüpften Diensts im Code der benutzerdefinierten Aktivität zugreifen. Sie sollte während der Laufzeit problemlos funktionieren.
+	Es gibt eine einfachere Problemumgehung (aber keine bewährte Methode): Sie können einen neuen **mit Azure SQL verknüpften Dienst** mit Verbindungszeichenfolgen-Einstellungen erstellen, ein Dataset mit Verwendung des verknüpften Diensts erstellen und das Dataset als Dummyeingabedataset mit der benutzerdefinierten .NET-Aktivität verketten. Sie können anschließend auf die Verbindungszeichenfolge des verknüpften Diensts im Code der benutzerdefinierten Aktivität zugreifen. Sie sollte während der Laufzeit problemlos funktionieren.
 
 #### Erweitern des Beispiels
 
@@ -901,9 +901,9 @@ Sie können dieses Beispiel erweitern, um mehr über Azure Data Factory und Azur
 
 1.  Fügen Sie dem **inputfolder** die folgenden Unterordner hinzu: 2015-11-16-05 2015-11-16-06 201-11-16-07, 2011-11-16-08, 2015-11-16-09 und legen Sie die Eingabedateien in diesen Ordnern ab. Ändern Sie die Endzeit für die Pipeline von 2015-11-16T05:00:00Z auf 2015-11-16T10:00:00Z. Doppelklicken Sie in der **Diagrammansicht** auf das **InputDataset**, und vergewissern Sie sich, dass die Eingabeslices bereit sind. Doppelklicken Sie auf **OuptutDataset**, um den Status der Ausgabeslices anzeigen. Wenn sie bereit sind, überprüfen Sie den Ausgangsordner für die Ausgabedateien.
 
-2.  Erhöhen oder verringern Sie die **Parallelität**-Einstellung, um zu verstehen, wie sie sich auf die Leistung Ihrer Lösung, insbesondere auf die Verarbeitung auf Azure Batch auswirkt. (Siehe Schritt 4: Erstellen und führen Sie die Pipeline aus, um mehr über die **Parallelität**-Einstellung zu erfahren.)
+2.  Erhöhen oder verringern Sie die **Parallelität**-Einstellung, um zu verstehen, wie sie sich auf die Leistung Ihrer Lösung, insbesondere auf die Verarbeitung auf Azure Batch auswirkt. (Siehe Schritt 4: Erstellen und führen Sie die Pipeline aus, um mehr über die **Parallelität**-Einstellung zu erfahren.)
 
-3.  Erstellen Sie einen Pool mit einer höheren/niedrigeren **maximalen Anzahl an Aufgaben pro virtueller Maschine**. Aktualisieren Sie den mit Azure Batch verknüpften Dienst in der Data Factory-Lösung, um den neu erstellten Anwendungspool zu verwenden. (Siehe Schritt 4: Erstellen und führen Sie die Pipeline aus, um mehr über die Einstellung zur **maximalen Anzahl an Aufgaben pro virtueller Maschine** zu erfahren.)
+3.  Erstellen Sie einen Pool mit einer höheren/niedrigeren **maximalen Anzahl an Aufgaben pro virtueller Maschine**. Aktualisieren Sie den mit Azure Batch verknüpften Dienst in der Data Factory-Lösung, um den neu erstellten Anwendungspool zu verwenden. (Siehe Schritt 4: Erstellen und führen Sie die Pipeline aus, um mehr über die Einstellung zur **maximalen Anzahl an Aufgaben pro virtueller Maschine** zu erfahren.)
 
 4.  Erstellen Sie einen Azure Batch-Pool mit **automatischer Skalierung**. Das automatische Skalieren von Computeknoten in einem Azure Batch-Pool ist die dynamische Anpassung der Verarbeitungsleistung, die von der Anwendung beansprucht wird. Sie können z.B. einen Azure Batch-Pool ohne dedizierte VM erstellen und dabei eine Formel für die automatische Skalierung angeben, die von der Anzahl der ausstehenden Aufgaben abhängig ist:
  
@@ -962,4 +962,4 @@ Nachdem Sie Daten verarbeitet haben, können Sie sie mit Online-Tools wie **Micr
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

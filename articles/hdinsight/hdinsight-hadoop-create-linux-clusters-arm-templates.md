@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/26/2016"
+   ms.date="07/25/2016"
    ms.author="jgao"/>
 
 # Erstellen Linux-basierter Hadoop-Cluster in HDInsight mithilfe von ARM-Vorlagen
@@ -313,4 +313,4 @@ Die folgende Azure-Ressourcen-Manager-Vorlage erstellt einen Linux-basierten Had
     }
     }
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

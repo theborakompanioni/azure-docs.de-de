@@ -4,7 +4,7 @@
    services="data-catalog"
    documentationCenter=""
    authors="spelluru"
-   manager=""
+   manager="paulettm"
    editor=""
    tags=""/>
 <tags 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="05/10/2016"
-   ms.author="spelluru"/>
+   ms.date="07/25/2016"
+   ms.author="derrickv"/>
 
 # Azure Data Catalog – Entwicklerkonzepte
 
@@ -117,7 +117,7 @@ Diese Eigenschaften gelten für alle Nicht-Singleton-Anmerkungstypen (d.h. Anmer
 
 Stammassettypen stellen die verschiedenen Typen von Datenassets dar, die im Katalog registriert werden können. Für jeden Stammtyp ist eine Ansicht definiert, die die Assets und Anmerkungen beschreibt, die in der Ansicht enthalten sind. Der Sichtname sollte bei der Veröffentlichung eines Assets mithilfe der REST-API im entsprechenden {view\_name}-URL-Segment verwendet werden.
 
-<table><tr><td><b>Assettyp (Sichtname)</b></td><td><b>Zusätzliche Eigenschaften</b></td><td><b>Datentyp</b></td><td><b>Zulässige Anmerkungen</b></td><td><b>Kommentare</b></td></tr><tr><td>Tabelle („tables“)</td><td></td><td></td><td>Beschreibung<p>FriendlyName<p>Tag<p>Schema<p>ColumnDescription<p>ColumnTag<p> Experten<p>Vorschau<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>Dokumentation<p></td><td>Eine Tabelle stellt beliebige Tabellendaten dar. Dazu zählen SQL-Tabellen, SQL-Sichten, tabellarische Analysis&#160;Services-Tabellen, mehrdimensionale Analysis&#160;Services-Dimensionen, Oracle-Tabellen usw.   </td></tr><tr><td>Kennzahl („measures“)</td><td></td><td></td><td>Beschreibung<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt eine Analysis&#160;Services-Kennzahl dar.</td></tr><tr><td></td><td>Kennzahl</td><td>Column</td><td></td><td>Metadaten zur Beschreibung der Kennzahl.</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td></td><td>Gibt an, ob es sich um eine berechnete Kennzahl handelt.</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Der physische Container für die Kennzahl.</td></tr><td>KPI („kpis“)</td><td></td><td></td><td>Beschreibung<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation</td><td></td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Der physische Container für die Kennzahl.</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td></td><td>Ein numerischer MDX-Ausdruck oder eine Berechnung, die den Zielwert des KPI zurückgibt.</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td></td><td>Ein numerischer MDX-Ausdruck, der den tatsächlichen Wert des KPI zurückgibt.</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td></td><td>Ein MDX-Ausdruck, der den Status des KPI zu einem bestimmten Zeitpunkt darstellt.</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td></td><td>Ein MDX-Ausdruck, der den Wert des KPI im Zeitverlauf auswertet. Der Trend kann ein beliebiges zeitbasiertes Kriterium sein, das in einem bestimmten Geschäftskontext hilfreich ist.</td>
+<table><tr><td><b>Assettyp (Sichtname)</b></td><td><b>Zusätzliche Eigenschaften</b></td><td><b>Datentyp</b></td><td><b>Zulässige Anmerkungen</b></td><td><b>Kommentare</b></td></tr><tr><td>Tabelle („tables“)</td><td></td><td></td><td>Beschreibung<p>FriendlyName<p>Tag<p>Schema<p>ColumnDescription<p>ColumnTag<p> Experten<p>Vorschau<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentation<p></td><td>Eine Tabelle stellt beliebige Tabellendaten dar. Dazu zählen SQL-Tabellen, SQL-Sichten, tabellarische Analysis&#160;Services-Tabellen, mehrdimensionale Analysis&#160;Services-Dimensionen, Oracle-Tabellen usw.   </td></tr><tr><td>Kennzahl („measures“)</td><td></td><td></td><td>Beschreibung<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt eine Analysis&#160;Services-Kennzahl dar.</td></tr><tr><td></td><td>Kennzahl</td><td>Column</td><td></td><td>Metadaten zur Beschreibung der Kennzahl.</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td></td><td>Gibt an, ob es sich um eine berechnete Kennzahl handelt.</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Der physische Container für die Kennzahl.</td></tr><td>KPI („kpis“)</td><td></td><td></td><td>Beschreibung<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation</td><td></td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Der physische Container für die Kennzahl.</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td></td><td>Ein numerischer MDX-Ausdruck oder eine Berechnung, die den Zielwert des KPI zurückgibt.</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td></td><td>Ein numerischer MDX-Ausdruck, der den tatsächlichen Wert des KPI zurückgibt.</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td></td><td>Ein MDX-Ausdruck, der den Status des KPI zu einem bestimmten Zeitpunkt darstellt.</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td></td><td>Ein MDX-Ausdruck, der den Wert des KPI im Zeitverlauf auswertet. Der Trend kann ein beliebiges zeitbasiertes Kriterium sein, das in einem bestimmten Geschäftskontext hilfreich ist.</td>
 <tr><td>Bericht („reports“)</td><td></td><td></td><td>Beschreibung<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt einen SQL&#160;Server&#160;Reporting&#160;Services-Bericht dar. </td></tr><tr><td></td><td>assetCreatedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>String</td><td></td><td></td></tr><tr><td>Container („containers“)</td><td></td><td></td><td>Beschreibung<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt einen Container für andere Objekte dar, z.&#160;B. eine SQL-Datenbank, ein Azure-Blobcontainer oder ein Analysis Services-Modell.</td></tr></table>
 
 ### Anmerkungstypen
@@ -165,6 +165,10 @@ Anmerkungstypen stellen Typen von Metadaten dar, die anderen Typen innerhalb des
 
 <tr><td>ColumnsDataProfile („columnsDataProfiles“)</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>columns</td></td><td>ColumnDataProfile[]</td><td>Ein Array von Spaltendatenprofilen.</td></tr>
+
+<tr><td>ColumnDataClassification ("columnDataClassifications")</td><td></td><td></td><td></td></tr>
+<tr><td></td><td>columnName</td><td>String</td><td>Der Name der Spalte, auf die sich diese Klassifizierung bezieht.</td></tr>
+<tr><td></td><td>Klassifizierung</td><td>String</td><td>Die Klassifizierung der Daten in dieser Spalte.</td></tr>
 
 <tr><td>Dokumentation („documentation“)</td><td></td><td></td><td>Einem bestimmten Asset kann nur eine Dokumentation zugeordnet sein.</td></tr>
 <tr><td></td><td>mimeType</td><td>string</td><td>Der MIME-Typ des Inhalts.</td></tr>
@@ -278,7 +282,7 @@ Mit den Ansichtselementanforderungen **PUT** und **POST** können Sie Rollen und
 >
 > Die Rolle **Besitzer** gilt nur für ein Stammelement.
 >
-> Bei der Erstellung eines Elements im Katalog wird standardmäßig der entsprechende **Mitwirkende** als derzeit authentifizierter Benutzer festgelegt. Soll ein Element für jeden Benutzer aktualisierbar sein, muss der **Mitwirkende** in der Eigenschaft **roles** bei der Erstveröffentlichung des Elements auf den speziellen Sicherheitsprinzipal <Everyone> festgelegt werden (siehe Beispiel weiter unten). Der **Mitwirkende** kann nicht geändert werden (auch nicht vom **Administrator** oder **Besitzer**) und bleibt während der gesamten Lebensdauer eines Elements unverändert. Der einzige unterstützte Wert zum expliziten Festlegen des **Mitwirkenden** ist <Everyone>. Der **Mitwirkende** kann also nur ein Benutzer sein, der ein Element erstellt hat, oder <Everyone>.
+> Bei der Erstellung eines Elements im Katalog wird standardmäßig der entsprechende **Mitwirkende** als derzeit authentifizierter Benutzer festgelegt. Soll ein Element für jeden Benutzer aktualisierbar sein, muss der **Mitwirkende** in der Eigenschaft **roles** bei der Erstveröffentlichung des Elements auf den speziellen Sicherheitsprinzipal <Everyone> festgelegt werden (siehe Beispiel weiter unten). Der **Mitwirkende** kann nicht geändert werden (auch nicht vom **Administrator** oder **Besitzer**) und bleibt während der gesamten Lebensdauer eines Elements unverändert. Der einzige unterstützte Wert zum expliziten Festlegen des **Mitwirkenden** ist <Everyone>. Der **Mitwirkende** kann also nur ein Benutzer, der ein Element erstellt hat, oder <Everyone> sein.
 
 ###Beispiele
 **Festlegen des Mitwirkenden auf <Everyone> beim Veröffentlichen eines Elements.** Die Objekt-ID des speziellen Sicherheitsprinzipals <Everyone> lautet „00000000-0000-0000-0000-000000000201“. **POST** https://api.azuredatacatalog.com/catalogs/default/views/tables/?api-version=2016-03-30
@@ -300,11 +304,53 @@ Mit den Ansichtselementanforderungen **PUT** und **POST** können Sie Rollen und
 		]
 	}
 
-  **Zuweisen von Besitzern und Einschränken der Sichtbarkeit für ein vorhandenes Stammelement** **PUT** https://api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30 { "roles": [ { "role": "Owner", "members": [ { "objectId": "c4159539-846a-45af-bdfb-58efd3772b43", "upn": "user1@contoso.com" }, { "objectId": "fdabd95b-7c56-47d6-a6ba-a7c5f264533f", "upn": "user2@contoso.com" } ] } ], "permissions": [ { "principal": { "objectId": "27b9a0eb-bb71-4297-9f1f-c462dab7192a", "upn": "user3@contoso.com" }, "rights": [ { "right": "Read" } ] }, { "principal": { "objectId": "4c8bc8ce-225c-4fcf-b09a-047030baab31", "upn": "user4@contoso.com" }, "rights": [ { "right": "Read" } ] } ] }
+  **Zuweisen von Besitzern und Einschränken der Sichtbarkeit für ein vorhandenes Stammelement.** **PUT** https://api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
+
+	{
+		"roles": [
+			{
+				"role": "Owner",
+				"members": [
+					{
+						"objectId": "c4159539-846a-45af-bdfb-58efd3772b43",
+						"upn": "user1@contoso.com"
+					},
+					{
+						"objectId": "fdabd95b-7c56-47d6-a6ba-a7c5f264533f",
+						"upn": "user2@contoso.com"
+					}
+				]
+			}
+		],
+		"permissions": [
+			{
+				"principal": {
+					"objectId": "27b9a0eb-bb71-4297-9f1f-c462dab7192a",
+					"upn": "user3@contoso.com"
+				},
+				"rights": [
+					{
+						"right": "Read"
+					}
+				]
+			},
+			{
+				"principal": {
+					"objectId": "4c8bc8ce-225c-4fcf-b09a-047030baab31",
+					"upn": "user4@contoso.com"
+				},
+				"rights": [
+					{
+						"right": "Read"
+					}
+				]
+			}
+		]
+	}
 
 > [AZURE.NOTE] Bei „PUT“ muss im Text keine Elementnutzlast angegeben werden: „PUT“ kann zur reinen Aktualisierung von Rollen und/oder Berechtigungen verwendet werden.
 
 <!--Image references-->
 [1]: ./media/data-catalog-developer-concepts/concept2.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

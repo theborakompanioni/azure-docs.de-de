@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/06/2016" 
+	ms.date="07/25/2016" 
 	ms.author="nitinme"/>
 
 
@@ -55,7 +55,7 @@ In den folgenden Schritten entwickeln Sie ein Modell, um zu ermitteln, wie Sie e
 
 ## Schreiben einer Anwendung für maschinelles Lernen mit Spark MLlib
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) im Startmenü auf die Kachel für Ihren Spark-Cluster (sofern Sie die Kachel ans Startmenü angeheftet haben). Sie können auch unter **Alle durchsuchen** > **HDInsight-Cluster** zu Ihrem Cluster navigieren.   
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) im Startmenü auf die Kachel für Ihren Spark-Cluster (sofern Sie die Kachel ans Startmenü angeheftet haben). Sie können auch unter **Alle durchsuchen** > **HDInsight-Cluster** zu Ihrem Cluster navigieren.
 
 2. Klicken Sie auf dem Blatt für den Spark-Cluster auf **Quicklinks** und anschließend auf dem Blatt **Cluster Dashboard** auf **Jupyter Notebook**. Geben Sie die Administratoranmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
 
@@ -85,7 +85,7 @@ In den folgenden Schritten entwickeln Sie ein Modell, um zu ermitteln, wie Sie e
 
 Wir können `sqlContext` verwenden, um Transformationen strukturierter Daten auszuführen. Die erste Aufgabe besteht darin, die Beispieldaten ((**Food\_Inspections1.csv**)) in einen Spark SQL-*Dataframe* zu laden.
 
-1. Da die Rohdaten im CSV-Format vorliegen, müssen wir den Spark-Kontext verwenden, um jede Zeile der Datei als unstrukturierten Text in den Arbeitsspeicher zu verschieben. Verwenden Sie dann die Python CSV-Bibliothek, um jede Zeile einzeln zu analysieren. 
+1. Da die Rohdaten im CSV-Format vorliegen, müssen wir den Spark-Kontext verwenden, um jede Zeile der Datei als unstrukturierten Text in den Arbeitsspeicher zu verschieben. Verwenden Sie dann die Python CSV-Bibliothek, um jede Zeile einzeln zu analysieren.
 
 
 		def csvParse(s):
@@ -96,7 +96,7 @@ Wir können `sqlContext` verwenden, um Transformationen strukturierter Daten aus
 		    sio.close()
 		    return value
 		
-		inspections = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv')\
+		inspections = sc.textFile('wasbs:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv')\
 		                .map(csvParse)
 
 
@@ -222,11 +222,11 @@ Wir können `sqlContext` verwenden, um Transformationen strukturierter Daten aus
 
 4. Es gibt fünf unterschiedliche Ergebnisse einer Untersuchung:
 	
-	* Business not located 
+	* Business not located
 	* Fail
 	* Pass
 	* Pss w/ conditions und
-	* Out of Business 
+	* Out of Business
 
 	Entwickeln Sie ein Modell, mit dem das Ergebnis einer Lebensmittelkontrolle anhand der Verstöße vorhergesagt werden kann. Da die logistische Regression eine binäre Klassifizierungsmethode ist, ist es sinnvoll, die Daten in zwei Kategorien zu gruppieren: **Fail** und **Pass**. Bei einem „Pass w/ Conditions“ wurde die Kontrolle dennoch bestanden. Beim Trainieren des Modells werden die beiden Ergebnisse als gleichwertig bewertet. Daten mit anderen Ergebnissen („Out of Business“, „Business not found“) sind nicht nützlich, sodass wir sie von unserem Trainingssatz entfernen. Dies sollte kein Problem sein, da diese beiden Kategorien nur einen kleinen Prozentsatz der Ergebnisse ausmachen.
 
@@ -283,7 +283,7 @@ Wir können das zuvor erstellte Modell verwenden, um basierend auf den beobachte
 1. Mit dem folgenden Codeausschnitt wird ein neuer Dataframe, **predictionsDf**, erstellt, das die vom Modell generierte Vorhersage enthält. Der Codeausschnitt erstellt basierend auf dem Dataframe auch eine temporäre Tabelle namens **Predictions**.
 
 
-		testData = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
+		testData = sc.textFile('wasbs:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
 	             .map(csvParse) \
 	             .map(lambda l: (int(l[0]), l[1], l[12], l[13]))
 		testDf = sqlContext.createDataFrame(testData, schema).where("results = 'Fail' OR results = 'Pass' OR results = 'Pass w/ Conditions'")
@@ -341,7 +341,7 @@ Wir können das zuvor erstellte Modell verwenden, um basierend auf den beobachte
 
 Wir können nun eine endgültige Visualisierung erstellen, um uns mit den Ergebnissen dieses Tests auseinanderzusetzen.
 
-1. Wir beginnen mit dem Extrahieren der unterschiedlichen Vorhersagen und Ergebnisse aus der zuvor erstellten temporären Tabelle **Predictions**. Die folgenden Abfragen teilt die Ausgabe auf *true\_positive*, *false\_positive*, *true\_negative*, und *false\_negative* auf. In den folgenden Abfragen deaktivieren wir die Visualisierung mithilfe von `-q` und speichern auch die Ausgabe (mithilfe von `-o`) als Dataframes, die dann mit der `%%local`-Magic verwendet werden können. 
+1. Wir beginnen mit dem Extrahieren der unterschiedlichen Vorhersagen und Ergebnisse aus der zuvor erstellten temporären Tabelle **Predictions**. Die folgenden Abfragen teilt die Ausgabe auf *true\_positive*, *false\_positive*, *true\_negative*, und *false\_negative* auf. In den folgenden Abfragen deaktivieren wir die Visualisierung mithilfe von `-q` und speichern auch die Ausgabe (mithilfe von `-o`) als Dataframes, die dann mit der `%%local`-Magic verwendet werden können.
 
 		%%sql -q -o true_positive
 		SELECT count(*) AS cnt FROM Predictions WHERE prediction = 0 AND results = 'Fail'
@@ -420,4 +420,4 @@ Nach Ausführen der Anwendung empfiehlt es sich, das Notebook herunterzufahren, 
 
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight](hdinsight-apache-spark-job-debugging.md) (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

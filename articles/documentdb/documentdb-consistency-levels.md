@@ -48,7 +48,7 @@ Sie können eine Standardkonsistenzebene für Ihr Datenbankkonto konfigurieren, 
 - BEGRENZTE VERALTUNG bietet eine vollständige globale Reihenfolge außer innerhalb des „Veraltungsfensters“. Beachten Sie, dass die monotonen Lesegarantien innerhalb einer Region sowohl innerhalb als auch außerhalb des „Veraltungsfensters“ vorliegen.
 - BEGRENZTE VERALTUNG bietet eine stärkere Konsistenzgarantie als die Konsistenzebenen SITZUNG und LETZTLICH. Für global verteilte Anwendungen wird empfohlen, BEGRENZTE VERALTUNG in Szenarien zu nutzen, in denen Sie eine hohe Konsistenz, aber auch eine Verfügbarkeit von 99,99% und niedrige Latenz wünschen.
 - DocumentDB-Konten, die mit der Konsistenzebene BEGRENZTE VERALTUNG konfiguriert sind, kann eine beliebige Anzahl von Azure-Regionen zugeordnet werden.
-- Die Kosten eines Lesevorgangs (im Sinne genutzter Anforderungseinheiten) mit der Konsistenzebene STARK sind höher als bei SITZUNG und LETZTLICH, jedoch identisch mit BEGRENZTE VERALTUNG.
+- Die Kosten eines Lesevorgangs (im Sinne genutzter Anforderungseinheiten) mit der Konsistenzebene BEGRENZTE VERALTUNG sind höher als bei SITZUNG und LETZTLICH, jedoch identisch mit STARKE KONSISTENZ.
 
 **Sitzung (Session)**:
 
@@ -122,4 +122,4 @@ Wenn Sie weitere Informationen zu Konsistenzebenen und deren Vor- und Nachteile 
 
 [1]: ./media/documentdb-consistency-levels/consistency-tradeoffs.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

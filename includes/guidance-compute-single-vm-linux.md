@@ -10,15 +10,15 @@ Die Bereitstellung einer einzelnen VM in Azure umfasst mehr „bewegliche Teile�
 
 ![[0]][0]
 
-- **Ressourcengruppe:** Eine [Ressourcengruppe][resource-manager-overview] ist ein Container, der verwandte Ressourcen enthält. Erstellen Sie eine Ressourcengruppe für die Ressourcen dieser VM.
+- **Ressourcengruppe:** Eine [_Ressourcengruppe_][resource-manager-overview] ist ein Container, der verwandte Ressourcen enthält. Erstellen Sie eine Ressourcengruppe für die Ressourcen dieser VM.
 
 - **VM**. Sie können eine VM über eine Liste mit veröffentlichten Images oder über eine VHD-Datei bereitstellen, die Sie in Azure Blob Storage hochladen.
 
 - **Betriebssystem-Datenträger:** Der Betriebssystemdatenträger ist eine virtuelle Festplatte (Virtual Hard Disk, VHD), die im [Azure-Speicher][azure-storage] gespeichert ist. Dies bedeutet, dass er auch dann noch vorhanden ist, wenn der Hostcomputer ausfällt. Der Betriebssystemdatenträger ist `/dev/sda1`.
 
-- **Temporärer Datenträger.** Die VM wird mit einem temporären Datenträger erstellt. Dieser Datenträger wird auf dem Hostcomputer auf einem physischen Laufwerk gespeichert. Er wird _nicht_ im Azure-Speicher gespeichert und kann bei Neustarts und anderen Ereignissen während des VM-Lebenszyklus verloren gehen. Verwenden Sie diesen Datenträger nur für temporäre Daten, z. B. Auslagerungsdateien. Der temporäre Datenträger ist `/dev/sdb1` und wird in `/mnt/resource` oder `/mnt` bereitgestellt.
+- **Temporärer Datenträger.** Die VM wird mit einem temporären Datenträger erstellt. Dieser Datenträger wird auf dem Hostcomputer auf einem physischen Laufwerk gespeichert. Er wird _nicht_ im Azure-Speicher gespeichert und kann bei Neustarts und anderen Ereignissen während des VM-Lebenszyklus verloren gehen. Verwenden Sie diesen Datenträger nur für temporäre Daten, z. B. Auslagerungsdateien. Der temporäre Datenträger ist `/dev/sdb1` und wird in `/mnt/resource` oder `/mnt` bereitgestellt.
 
-- **Datenträger:** Bei einem [Datenträger für Daten][data-disk] handelt es sich um eine persistente VHD, die für Anwendungsdaten verwendet wird. Datenträger werden im Azure-Speicher gespeichert, z. B. auf dem Betriebssystem-Datenträger.
+- **Datenträger:** Bei einem [Datenträger für Daten][data-disk] handelt es sich um eine persistente VHD, die für Anwendungsdaten verwendet wird. Datenträger werden im Azure-Speicher gespeichert, z. B. auf dem Betriebssystem-Datenträger.
 
 - **Virtuelles Netzwerk (VNet) und Subnetz\_** Jede VM in Azure wird in einem virtuellen Netzwerk (VNet) bereitgestellt, das weiter in Subnetze unterteilt wird.
 
@@ -70,6 +70,7 @@ Die Bereitstellung einer einzelnen VM in Azure umfasst mehr „bewegliche Teile�
 
 - Erstellen Sie ein separates Speicherkonto zum Speichern der Diagnoseprotokolle, um eine optimale Leistung zu erzielen. Ein standardmäßiger lokal redundanter Speicher (LRS) reicht für Diagnoseprotokolle aus.
 
+
 ### Netzwerkempfehlungen
 
 - Die öffentliche IP-Adresse kann dynamisch oder statisch sein. Die Standardeinstellung ist „Dynamisch“.
@@ -102,7 +103,7 @@ Die Bereitstellung einer einzelnen VM in Azure umfasst mehr „bewegliche Teile�
 
 - **Ressourcengruppen.** Legen Sie eng miteinander verknüpfte Ressourcen mit demselben Lebenszyklus in derselben [Ressourcengruppe][resource-manager-overview] ab. Ressourcengruppen ermöglichen Ihnen das Bereitstellen und Überwachen von Ressourcen und das Zusammenfassen von Abrechnungskosten nach Ressourcengruppe. Sie können auch Ressourcen als Gruppe löschen, was für Testbereitstellungen sehr nützlich ist. Versehen Sie Ressourcen mit aussagekräftigen Namen. Dies vereinfacht das Auffinden einer bestimmten Ressource und Verstehen ihrer Rolle. Siehe [Empfohlene Benennungskonventionen für Azure-Ressourcen][naming conventions].
 
-- **SSH**. Bevor Sie eine Linux-VM erstellen, wird ein 2048-Bit-RSA-Paar aus privatem und öffentlichem Schlüssel generiert. Verwenden Sie die öffentliche Schlüsseldatei bei der Erstellung der VM. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux und Mac in Azure][ssh-linux].
+- **ssh**. Bevor Sie eine Linux-VM erstellen, wird ein 2048-Bit-RSA-Paar aus privatem und öffentlichem Schlüssel generiert. Verwenden Sie die öffentliche Schlüsseldatei bei der Erstellung der VM. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux und Mac in Azure][ssh-linux].
 
 - **VM-Diagnose.** Ermöglichen Sie die Überwachung und Diagnose, einschließlich grundlegender Integritätsmetriken, Infrastrukturprotokolle zur Diagnose und [Startdiagnose][boot-diagnostics]. Startdiagnosen dienen dazu, einen Fehler beim Startvorgang zu untersuchen, wenn Ihre VM einen nicht startfähigen Zustand hat. Weitere Informationen finden Sie unter [Aktivieren von Überwachung und Diagnose][enable-monitoring].
 
@@ -140,174 +141,202 @@ Die Bereitstellung einer einzelnen VM in Azure umfasst mehr „bewegliche Teile�
 
 ## Lösungskomponenten
 
-<!-- TO BE UPDATED WHEN THE NEW TEMPLATES ARE AVAILABLE -->
+Das Beispielskript [Deploy-ReferenceArchitecture.ps1][solution-script] steht zur Verfügung, mit dessen Hilfe Sie die Architektur implementieren können, die den Empfehlungen in diesem Artikel folgt. Dieses Skript nutzt [Azure Resource Manager][arm-templates]-Vorlagen. Die Vorlagen bestehen aus verschiedenen Basisbausteinen, von denen jeder eine bestimmte Aktion ausführt, z.B. Erstellen eines virtuellen Netzwerks oder Konfigurieren einer Netzwerksicherheitsgruppe. Zweck des Skripts ist es, die Vorlagenbereitstellung zu orchestrieren.
 
-Mit dem folgenden Bash-Skript werden die [Azure-CLI][azure-cli]-Befehle ausgeführt, um eine einzelne VM-Instanz und die dazugehörigen Netzwerk- und Speicherressourcen bereitzustellen (siehe das vorherige Diagramm).
+Die Vorlagen enthalten Parameter, die sich in getrennten JSON-Dateien befinden. Sie können die Parameter in diesen Dateien so ändern, dass die Bereitstellung entsprechend Ihren Anforderungen konfiguriert wird. Sie müssen die Vorlagen nicht selbst ändern. Beachten Sie, dass Sie die Schemas der Objekte in den Parameterdateien nicht ändern dürfen.
 
-Das Skript verwendet die Benennungskonventionen, die unter [Empfohlene Benennungskonventionen für Azure-Ressourcen][naming conventions] beschrieben sind.
+Wenn Sie die Vorlagen bearbeiten, erstellen Sie Objekte, die den Benennungskonventionen folgen, die unter [Empfohlene Benennungskonventionen für Azure-Ressourcen][naming conventions] beschrieben sind.
 
-So führen Sie das Skript aus
+Das Skript verweist zum Erstellen des virtuellen Computers und der zugehörigen Infrastruktur auf die folgenden Parameterdateien:
 
-1. Generieren Sie einen 2048-Bit-RSA-Authentifizierungsschlüssel.
+- **[virtualNetwork.parameters.json][vnet-parameters]**. Diese Datei definiert die VNet-Einstellungen, z.B. Name, Adressraum, Subnetze und die Adressen erforderlicher DNS-Server. Beachten Sie, dass Subnetzadressen vom Adressraum des VNet klassifiziert werden müssen.
 
-        ssh-keygen -t rsa -b 2048
+	```json
+	"parameters": {
+      "virtualNetworkSettings": {
+        "value": {
+          "name": "app1-vnet",
+          "addressPrefixes": [
+            "172.17.0.0/16"
+          ],
+          "subnets": [
+            {
+              "name": "app1-subnet",
+              "addressPrefix": "172.17.0.0/24"
+            }
+          ],
+          "dnsServers": [ ]
+        }
+      }
+	}
+	```
 
-2. Übergeben Sie Ihre Azure-Abonnement-ID und den Namen der öffentlichen Schlüsseldatei als Parameter an das Skript.
+- **[networkSecurityGroup.parameters.json][nsg-parameters]**. Diese Datei enthält die Definitionen von NSGs und NSG-Regeln. Der Parameter `name` im Block `virtualNetworkSettings` gibt das VNet an, dem die NSG zugeordnet ist. Der Parameter `subnets` im Block `networkSecurityGroupSettings` bestimmt alle Subnetze, für die die NSG-Regeln im VNet gelten. Dies müssen Elemente sein, die in der Datei **virtualNetwork.parameters.json** definiert sind.
 
-        ./azurecli-single-vm-sample.sh <subscription ID> ~/.ssh/id_rsa.pub
+	Die im Beispiel gezeigte Sicherheitsregel ermöglicht Benutzern eine Verbindung mit dem virtuellen Computer über eine SSH-Verbindung. Sie können zusätzliche Ports öffnen (oder den Zugriff über bestimmte Ports verweigern), indem Sie dem `securityRules`-Array weitere Elemente hinzufügen.
 
-3. Sobald das Skript abgeschlossen ist, melden Sie sich über SSH an der VM an. Verwenden Sie zur Authentifizierung den privaten Schlüssel.
+	```json
+	"parameters": {
+      "virtualNetworkSettings": {
+        "value": {
+          "name": "app1-vnet"
+        },
+        "metadata": {
+          "description": "Infrastructure Settings"
+        }
+      },
+      "networkSecurityGroupSettings": {
+        "value": {
+          "name": "app1-nsg",
+          "subnets": [
+            "app1-subnet"
+          ],
+          "securityRules": [
+            {
+              "name": "default-allow-ssh",
+              "direction": "Inbound",
+              "priority": 1000,
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "22",
+              "access": "Allow",
+              "protocol": "Tcp"
+            }
+          ]
+        }
+      }
+	}
+	```
 
-        ssh testuser@<app>-vm1.<location>.cloudapp.azure.com -i ~/.ssh/id_rsa
+- **[virtualMachineParameters.json][vm-parameters]**. Diese Datei definiert die Einstellungen für den virtuellen Computer selbst, einschließlich Name und Größe, die Sicherheitsanmeldeinformationen für den Benutzer „admin“, die zu erstellenden Datenträger und die Speicherkonten für diese Datenträger.
 
-    Dabei ist `<app>` der Wert der Skriptvariablen `APP_NAME` und `<location>` der Wert der Variablen `LOCATION`.
+	Stellen Sie sicher, dass Sie den Parameter `osType` auf `linux` festlegen. Sie müssen auch im Abschnitt `imageReference` ein Bild angeben. Anhand der nachstehenden Werte wird ein virtueller Computer mit dem neuesten Build von RedHat Linux 7.2 erstellt. Über den folgenden Azure CLI-Befehl können Sie eine Liste aller verfügbaren RedHat-Images in einer Region abrufen (im Beispiel ist die Region „USA, Westen“):
 
-```bat
-#!/bin/bash
+	```powershell
+	azure vm image list westus redhat rhel
+	```
 
-############################################################################
-#script for generating infrastructure for single VM running linux          #
-# of user choice. It creates azure resource group, storage account for VM  #
-# vnet, subnets for VM, and NSG rule                                       #
-# tags for main variables used                                             #
-# ScriptCommandParameters                                                  #
-# ScriptVars                                                               #
-############################################################################
+	Der Parameter `subnetName` im Abschnitt `nics` gibt das Subnetz für den virtuellen Computer an. Der Parameter `name` in `virtualNetworkSettings` gibt das zu verwendende VNet an. Dies muss der Name eines Subnetzes und VNet sein, das in der Datei **virtualNetwork.parameters.json** definiert ist.
 
-############################################################################
-# User defined functions for single VM script                              #
-# errhandle : handles errors via trap if any exception happens             #
-# in the cli execution or if the user interrupts with CTRL+C               #
-# allowing for fast interruption                                           #
-############################################################################
+	Sie können mehrere virtuelle Computer erstellen, die sich entweder ein Speicherkonto teilen oder ein eigenes Speicherkonto haben, indem Sie die Einstellungen im Abschnitt `buildingBlockSettings` ändern. Wenn Sie mehrere virtuelle Computer erstellen, müssen Sie auch den Namen einer zu verwendenden Verfügbarkeitsgruppe angeben oder eine im Abschnitt `availabilitySet` erstellen.
 
-# error handling or interruption via ctrl-c.
-# line number and error code of executed command is passed to errhandle function
+	```json
+	"parameters": {
+      "virtualMachinesSettings": {
+        "value": {
+          "namePrefix": "app1",
+          "computerNamePrefix": "",
+          "size": "Standard_DS1",
+          "osType": "linux",
+          "adminUsername": "testuser",
+          "adminPassword": "AweS0me@PW",
+          "osAuthenticationType": "password",
+          "nics": [
+            {
+              "isPublic": "true",
+              "subnetName": "app1-subnet",
+              "privateIPAllocationMethod": "dynamic",
+              "publicIPAllocationMethod": "dynamic",
+              "isPrimary": "true"
+            }
+          ],
+          "imageReference": {
+            "publisher": "RedHat",
+            "offer": "RHEL",
+            "sku": "7.2",
+            "version": "latest"
+          },
+          "dataDisks": {
+            "count": 2,
+            "properties": {
+              "diskSizeGB": 128,
+              "caching": "None",
+              "createOption": "Empty"
+            }
+          },
+          "osDisk": {
+            "caching": "ReadWrite"
+          },
+          "availabilitySet": {
+            "useExistingAvailabilitySet": "No",
+            "name": ""
+          }
+        },
+        "metadata": {
+          "description": "Settings for Virtual Machines"
+        }
+      },
+      "virtualNetworkSettings": {
+        "value": {
+          "name": "app1-vnet",
+          "resourceGroup": "app1-dev-rg"
+        },
+        "metadata": {
+          "description": "Infrastructure Settings"
+        }
+      },
+      "buildingBlockSettings": {
+        "value": {
+          "storageAccountsCount": 1,
+          "vmCount": 1,
+          "vmStartIndex": 0
+        },
+        "metadata": {
+          "description": "Settings specific to the building block"
+        }
+      }
+	}
+	```
 
-trap 'errhandle $LINENO $?' SIGINT ERR
+## Bereitstellung
 
-errhandle()
-{
-  echo "Error or Interruption at line ${1} exit code ${2} "
-  exit ${2}
-}
+Für die Lösung wird Folgendes vorausgesetzt:
 
-###############################################################################
-############################## End of user defined functions ##################
-###############################################################################
+- Sie haben ein Azure-Abonnement, in dem Sie Ressourcengruppen erstellen können.
 
-# 2 paramaters are expected
-# public key file needs to be generated using ssh-keygen
+- Sie haben den neuesten Build von Azure PowerShell heruntergeladen und installiert. Anweisungen dazu finden Sie [hier][azure-powershell-download].
 
-if [ $# -ne 2  ]
-then
-	echo  "Usage:  ${0}  subscription-id public-ssh-key-file"
-	exit
-fi
+So führen Sie das Skript aus, das die Lösung bereitstellt:
 
-if [ ! -f $2  ]
-then
-	echo "Public Key file ${2} does not exist. please generate it"
-	echo "ssh-keygen -t rsa -b 2048"
-	exit
-fi
+1. Wechseln Sie auf Ihrem lokalen Computer zu einem geeigneten Ordner, und erstellen Sie die beiden Unterordner:
 
-# Explicitly set the subscription to avoid confusion as to which subscription
-# is active/default
-# ScriptCommandParameters
-SUBSCRIPTION=$1
-PUBLICKEYFILE=$2
+	- Skripts
 
-# ScriptVars
-LOCATION=eastus2
-APP_NAME=app1
-ENVIRONMENT=dev
-USERNAME=testuser
-VM_NAME="${APP_NAME}-vm1"
-RESOURCE_GROUP="${APP_NAME}-${ENVIRONMENT}-rg"
-IP_NAME="${APP_NAME}-pip"
-NIC_NAME="${VM_NAME}-1nic"
-NSG_NAME="${APP_NAME}-nsg"
-SUBNET_NAME="${APP_NAME}-subnet"
-VNET_NAME="${APP_NAME}-vnet"
-VHD_STORAGE="${VM_NAME//-}st1"
-DIAGNOSTICS_STORAGE="${VM_NAME//-}diag"
+	- Vorlagen
 
-# Use the following command to get the list of URNs for RHEL, UBUNTU, and OPENSUSE:
-# RHEL
-# azure vm image list $LOCATION  redhat RHEL 7.2
-# UBUNTU
-# azure vm image list $LOCATION canonical ubuntuserver 14.04.3-LTS
-# SUSE
-# azure vm image $LOCATION  suse opensuse 13.2
+2. Erstellen Sie im Ordner „Templates“ einen weiteren Unterordner namens „Linux“.
 
-LINUX_BASE_IMAGE=redhat:rhel:7.2:7.2.20160302
+3. Laden Sie die Datei [Deploy-ReferenceArchitecture.ps1][solution-script] in den Ordner „Scripts“ herunter.
 
-# For a list of VM sizes see: 
-#   https://azure.microsoft.com/documentation/articles/virtual-machines-size-specs/
-# To see the VM sizes available in a region:
-# 	azure vm sizes --location <location>
-VM_SIZE=Standard_DS1
+4. Laden Sie folgende Dateien in den Ordner „Templates/Linux“ herunter:
 
-# Set up the postfix variables attached to most CLI commands
+	- [virtualNetwork.parameters.json][vnet-parameters]
 
-POSTFIX="--resource-group ${RESOURCE_GROUP} --subscription ${SUBSCRIPTION}"
+	- [networkSecurityGroup.parameters.json][nsg-parameters]
 
-azure config mode arm
+	- [virtualMachineParameters.json][vm-parameters]
 
-#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-#Create resources
+5. Bearbeiten Sie im Ordner „Scripts“ die Datei „Deploy-ReferenceArchitecture.ps1“, und ändern Sie die folgende Zeile so, dass die Ressourcengruppe angegeben wird, die zum Aufnehmen des vom Skript erstellten virtuellen Computers und der zugehörigen Ressourcen erstellt bzw. verwendet werden soll:
 
-#Create the enclosing resource group
-azure group create --name $RESOURCE_GROUP --location $LOCATION --subscription $SUBSCRIPTION
+	```powershell
+	$resourceGroupName = "app1-dev-rg"
+	```
+6. Bearbeiten Sie die JSON-Dateien im Ordner „Templates/Linux“ so, dass die Parameter für das virtuelle Netzwerk, die NSG und VM entsprechend der Beschreibung im vorherigen Abschnitt „Lösungskomponenten“ festgelegt werden.
 
-# Create the VNet
-azure network vnet create --address-prefixes 172.17.0.0/16 --name $VNET_NAME \
---location $LOCATION $POSTFIX
+	>[AZURE.NOTE] Stellen Sie sicher, dass Sie den Parameter `resourceGroup` im Abschnitt `virtualNetworkSettings` der Datei „virtualMachineParameters.json“ entsprechend der Angabe in der Skriptdatei „Deploy-ReferenceArchitecture.ps1“ festlegen.
 
-#Create the network security group
-azure network nsg create --name $NSG_NAME --location $LOCATION $POSTFIX
+7. Öffnen Sie ein Azure PowerShell-Fenster, wechseln Sie zum Ordner „Scripts“, und führen Sie den folgenden Befehl aus:
 
-#Create the subnet
-azure network vnet subnet create --vnet-name $VNET_NAME --address-prefix  "172.17.0.0/24" \
---name $SUBNET_NAME --network-security-group-name $NSG_NAME $POSTFIX
+	```powershell
+	.\Deploy-ReferenceArchitecture.ps1 <subscription id> <location> Linux
+	```
 
-#Create the public IP address (dynamic)
-azure network public-ip create --name $IP_NAME --domain-name-label $VM_NAME \
---location $LOCATION $POSTFIX
+	Ersetzen Sie `<subscription id>` durch Ihre Azure-Abonnement-ID.
 
-#Create the NIC
-azure network nic create --public-ip-name $IP_NAME --subnet-name $SUBNET_NAME \
---subnet-vnet-name $VNET_NAME --name $NIC_NAME --location $LOCATION $POSTFIX
+	Geben Sie für `<location>` eine Azure-Region an, z.B. `eastus` oder `westus`.
 
-#Create the storage account for the OS VHD
-azure storage account create --type PLRS --location $LOCATION $POSTFIX $VHD_STORAGE
-
-#Create the storage account for diagnostics logs
-azure storage account create --type LRS --location $LOCATION $POSTFIX $DIAGNOSTICS_STORAGE
-
-#Create the VM
-azure vm create --name $VM_NAME --os-type Linux --image-urn  $LINUX_BASE_IMAGE \
---vm-size $VM_SIZE --vnet-subnet-name $SUBNET_NAME --vnet-name $VNET_NAME \
---nic-name $NIC_NAME --storage-account-name $VHD_STORAGE \
---os-disk-vhd "${VM_NAME}-osdisk.vhd" --admin-username $USERNAME \
---ssh-publickey-file $PUBLICKEYFILE --boot-diagnostics-storage-uri \
-"https://${DIAGNOSTICS_STORAGE}.blob.core.windows.net/" --location $LOCATION $POSTFIX
-
-#Attach a data disk
-azure vm disk attach-new --vm-name $VM_NAME --size-in-gb 128 --vhd-name data1.vhd \
---storage-account-name $VHD_STORAGE $POSTFIX
-
-#Allow SSH
-azure network nsg rule create --nsg-name $NSG_NAME --direction Inbound --protocol Tcp \
---destination-port-range 22  --source-port-range "*"  --priority 100 --access Allow \
-SSHAllow $POSTFIX
-
-#Install patching extension
-PATCH_CONFIG='{"rebootAfterPatch":"RebootIfNeed","startTime":"3:00","dayOfWeek":"Sunday","category":"ImportantAndRecommended"}'
-azure vm extension set --name OSPatchingForLinux --publisher-name Microsoft.OSTCExtensions \
---public-config $PATCH_CONFIG --vm-name $VM_NAME --version 2.0 $POSTFIX
-```
+8. Überprüfen Sie nach Abschluss des Skripts im Azure-Portal, ob das Netzwerk, die NSG und VM erfolgreich erstellt wurden.
 
 ## Nächste Schritte
 
@@ -315,14 +344,13 @@ Damit die [SLA für virtuelle Computer][vm-sla] gilt, müssen Sie in einer Verf�
 
 <!-- links -->
 
-[arm-templates]: ../articles/virtual-machines/virtual-machines-linux-cli-deploy-templates.md
-[audit-logs]: https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/
+[audit-logs]: https://azure.microsoft.com/de-DE/blog/analyze-azure-audit-logs-in-powerbi-more/
 [azure-cli]: ../articles/virtual-machines-command-line-tools.md
 [azure-linux]: ../articles/virtual-machines/virtual-machines-linux-azure-overview.md
 [azure-storage]: ../articles/storage/storage-introduction.md
 [blob-snapshot]: ../articles/storage/storage-blob-snapshots.md
 [blob-storage]: ../articles/storage/storage-introduction.md
-[boot-diagnostics]: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/
+[boot-diagnostics]: https://azure.microsoft.com/de-DE/blog/boot-diagnostics-for-virtual-machines-v2/
 [cname-record]: https://en.wikipedia.org/wiki/CNAME_record
 [data-disk]: ../articles/virtual-machines/virtual-machines-linux-about-disks-vhds.md
 [disk-encryption]: ../articles/azure-security-disk-encryption.md
@@ -341,20 +369,26 @@ Damit die [SLA für virtuelle Computer][vm-sla] gilt, müssen Sie in einer Verf�
 [rbac-roles]: ../articles/active-directory/role-based-access-built-in-roles.md
 [rbac-devtest]: ../articles/active-directory/role-based-access-built-in-roles.md#devtest-lab-user
 [rbac-network]: ../articles/active-directory/role-based-access-built-in-roles.md#network-contributor
-[reboot-logs]: https://azure.microsoft.com/blog/viewing-vm-reboot-logs/
+[reboot-logs]: https://azure.microsoft.com/de-DE/blog/viewing-vm-reboot-logs/
 [Resize-VHD]: https://technet.microsoft.com/de-DE/library/hh848535.aspx
-[Resize virtual machines]: https://azure.microsoft.com/blog/resize-virtual-machines/
+[Resize virtual machines]: https://azure.microsoft.com/de-DE/blog/resize-virtual-machines/
 [resource-lock]: ../articles/resource-group-lock-resources.md
 [resource-manager-overview]: ../articles/resource-group-overview.md
 [select-vm-image]: ../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md
-[services-by-region]: https://azure.microsoft.com/regions/#services
+[services-by-region]: https://azure.microsoft.com/de-DE/regions/#services
 [ssh-linux]: ../articles/virtual-machines/virtual-machines-linux-ssh-from-linux.md
 [static-ip]: ../articles/virtual-network/virtual-networks-reserved-public-ip.md
 [storage-price]: https://azure.microsoft.com/pricing/details/storage/
 [virtual-machine-sizes]: ../articles/virtual-machines/virtual-machines-linux-sizes.md
 [vm-disk-limits]: ../articles/azure-subscription-service-limits.md#virtual-machine-disk-limits
 [vm-resize]: ../articles/virtual-machines/virtual-machines-linux-change-vm-size.md
-[vm-sla]: https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/
-[0]: ./media/guidance-blueprints/compute-single-vm.png "Allgemeine Architektur einer Azure-VM"
+[vm-sla]: https://azure.microsoft.com/de-DE/support/legal/sla/virtual-machines/v1_0/
+[arm-templates]: https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/
+[solution-script]: https://raw.githubusercontent.com/mspnp/arm-building-blocks/master/guidance-compute-single-vm/Scripts/Deploy-ReferenceArchitecture.ps1
+[vnet-parameters]: https://raw.githubusercontent.com/mspnp/arm-building-blocks/master/guidance-compute-single-vm/Templates/linux/virtualNetwork.parameters.json
+[nsg-parameters]: https://raw.githubusercontent.com/mspnp/arm-building-blocks/master/guidance-compute-single-vm/Templates/linux/networkSecurityGroup.parameters.json
+[vm-parameters]: https://raw.githubusercontent.com/mspnp/arm-building-blocks/master/guidance-compute-single-vm/Templates/linux/virtualMachine.parameters.json
+[azure-powershell-download]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[0]: ./media/guidance-blueprints/compute-single-vm.png "Architektur einer einzelnen Linux-VM in Azure"
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

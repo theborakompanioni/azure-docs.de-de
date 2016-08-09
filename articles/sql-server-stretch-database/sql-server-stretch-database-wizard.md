@@ -32,6 +32,7 @@ Weitere Informationen zu Stretch-Datenbank finden Sie unter [Stretch-Datenbank](
 Überprüfen Sie den Zweck des Assistenten und die Voraussetzungen.
 
 Zu diesen wichtigen Voraussetzungen gehört Folgendes:
+
 -   Sie müssen ein Administrator sein, um die Datenbankeinstellungen zu ändern.
 -   Sie müssen über ein Microsoft Azure-Abonnement verfügen.
 -   Ihre SQL Server-Instanz muss mit dem Azure-Remoteserver kommunizieren können.
@@ -89,7 +90,7 @@ Führen Sie einen der folgenden Schritte aus, wenn Sie eine andere Art von Filte
 
 1.  Melden Sie sich bei Microsoft Azure mit einem Microsoft-Konto an.
 
-    ![Anmelden bei Azure – Assistent der Stretch-Datenbank][StretchWizardImage3]
+    ![Anmelden bei Azure – Assistent der Stretch-Datenbank][StretchWizardImage3]
 
 2.  Wählen Sie das vorhandene Azure-Abonnement aus, das für Stretch-Datenbank verwendet werden soll.
 
@@ -109,7 +110,7 @@ Führen Sie einen der folgenden Schritte aus, wenn Sie eine andere Art von Filte
 
         2.  Wählen Sie optional ein Verbunddienstkonto für SQL Server für die Kommunikation mit dem Azure-Remoteserver aus.
 
-		![Erstellen eines neuen Azure-Server – Assistent der Stretch-Datenbank][StretchWizardImage4]
+		![Erstellen eines neuen Azure-Server – Assistent der Stretch-Datenbank][StretchWizardImage4]
 
     -   **Vorhandener Server**
 
@@ -121,7 +122,7 @@ Führen Sie einen der folgenden Schritte aus, wenn Sie eine andere Art von Filte
 
             -   Wählen Sie **Integrierte Active Directory-Authentifizierung** aus, um ein Verbunddienstkonto für SQL Server für die Kommunikation mit dem Azure-Remoteserver zu verwenden. Diese Option wird nicht angezeigt, wenn der ausgewählte Server nicht in Azure Active Directory integriert ist.
 
-		![Auswählen eines vorhandenen Azure-Servers – Assistent der Stretch-Datenbank][StretchWizardImage5]
+		![Auswählen eines vorhandenen Azure-Servers – Assistent der Stretch-Datenbank][StretchWizardImage5]
 
 ## <a name="Credentials"></a>Sichere Anmeldeinformationen
 Sie brauchen einen Datenbankhauptschlüssel, um die Anmeldeinformationen zu sichern, die Stretch-Datenbank für die Verbindung mit der Remotedatenbank verwendet.
@@ -190,4 +191,4 @@ Aktivieren von zusätzlichen Tabellen für Stretch-Datenbank Überwachen der Dat
 [StretchWizardImage8]: ./media/sql-server-stretch-database-wizard/stretchwiz8.png
 [StretchWizardImage9]: ./media/sql-server-stretch-database-wizard/stretchwiz9.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

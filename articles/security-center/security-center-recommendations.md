@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/20/2016"
+   ms.date="07/26/2016"
    ms.author="terrylan"/>
 
 # Verwalten von Sicherheitsempfehlungen in Azure Security Center
@@ -66,13 +66,13 @@ Der folgenden Tabelle können Sie entnehmen, welche Empfehlungen verfügbar sind
 |Empfehlungen|Beschreibung|
 |-----|-----|
 |[Sammlung von Daten für Abonnements aktivieren](security-center-enable-data-collection.md)|Empfiehlt Ihnen, in der Sicherheitsrichtlinie die Datensammlung für alle Abonnements und alle virtuellen Computer in Ihren Abonnements zu aktivieren.|
-|[Betriebssystem-Sicherheitsrisiken beheben](security-center-resolve-mismatch-baseline-rules.md)|Empfiehlt Ihnen, Ihre Betriebssystemkonfigurationen an den empfohlenen Konfigurationsregeln zu orientieren und z.B. nicht zuzulassen, dass Kennwörter gespeichert werden.|
+|[Betriebssystem-Sicherheitsrisiken beheben](security-center-remediate-os-vulnerabilities.md)|Empfiehlt Ihnen, Ihre Betriebssystemkonfigurationen an den empfohlenen Konfigurationsregeln zu orientieren und z.B. nicht zuzulassen, dass Kennwörter gespeichert werden.|
 |[Systemupdates anwenden](security-center-apply-system-updates.md)|Empfiehlt Ihnen, fehlende Systemupdates und kritische Updates für virtuelle Computer bereitzustellen.|
 |[Neustart nach Systemupdates](security-center-apply-system-updates.md#reboot-after-system-updates)|Empfiehlt Ihnen, einen virtuellen Computer neu zu starten, um die Anwendung von Systemupdates abzuschließen.|
 |[Web Application Firewall hinzufügen](security-center-add-web-application-firewall.md)|Empfiehlt Ihnen, eine Web Application Firewall (WAF) für Webendpunkte bereitzustellen. Sie können mehrere Webanwendungen in Security Center schützen, indem Sie diese Anwendungen Ihren vorhandenen WAF-Bereitstellungen hinzufügen. WAF-Geräte (erstellt mit dem Ressourcen-Manager-Bereitstellungsmodell) müssen in einem separaten virtuellen Netzwerk bereitgestellt werden. WAF-Geräte (erstellt mit dem klassischen Bereitstellungsmodell) sind auf die Verwendung einer Netzwerksicherheitsgruppe beschränkt. Diese Unterstützung wird in Zukunft auf eine vollständig angepasste Bereitstellung eines WAF-Geräts (klassisch) erweitert.|
 |[Finalize application protection](security-center-add-web-application-firewall.md#finalize-application-protection) (Anwendungsschutz abschließen)|Um die Konfiguration einer WAF abzuschließen, muss Datenverkehr an das WAF-Gerät umgeleitet werden. Nach dieser Empfehlung werden die erforderlichen Setupänderungen vorgenommen.|
 |[Firewall der nächsten Generation hinzufügen](security-center-add-next-generation-firewall.md)|Empfiehlt, dass Sie zum Verbessern Ihrer Sicherheitsmaßnahmen eine Firewall der nächsten Generation eines Microsoft-Partners hinzufügen.|
-|[Datenverkehr nur durch Firewall der nächsten Generation leiten](security-center-route-traffic-through-ngfw-only.md)|Empfiehlt, dass Sie die Regeln der Netzwerksicherheitsgruppe so konfigurieren, dass zu Ihrer VM eingehender Datenverkehr durch Ihre Firewall der nächsten Generation geleitet werden muss.|
+|[Datenverkehr nur durch Firewall der nächsten Generation leiten](security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only)|Empfiehlt, dass Sie die Regeln der Netzwerksicherheitsgruppe so konfigurieren, dass zu Ihrer VM eingehender Datenverkehr durch Ihre Firewall der nächsten Generation geleitet werden muss.|
 |[Endpoint Protection installieren](security-center-install-endpoint-protection.md)|Empfiehlt Ihnen, Antischadsoftware für virtuelle Maschinen bereitzustellen (nur Windows-VMs).|
 |[Endpoint Protection-Integritätswarnungen auflösen](security-center-resolve-endpoint-protection-health-alerts.md)|Empfiehlt, dass Sie Endpoint Protection-Fehler beheben.|
 |[Netzwerksicherheitsgruppen in Subnetzen oder auf virtuellen Computern aktivieren](security-center-enable-network-security-groups.md)|Empfiehlt, dass Sie NSGs in Subnetzen oder auf virtuellen Computern aktivieren.|
@@ -80,7 +80,7 @@ Der folgenden Tabelle können Sie entnehmen, welche Empfehlungen verfügbar sind
 |[Überwachung von SQL-Server aktivieren](security-center-enable-auditing-on-sql-servers.md)|Empfiehlt Ihnen, die Überwachung für Azure SQL-Server zu aktivieren (nur Azure SQL-Dienst, keine Ausführung von SQL auf Ihren virtuellen Maschinen).|
 |[Überwachung der SQL-Datenbank aktivieren](security-center-enable-auditing-on-sql-databases.md)|Empfiehlt Ihnen, die Überwachung für Azure SQL-Datenbanken zu aktivieren (nur Azure SQL-Dienst, keine Ausführung von SQL auf Ihren virtuellen Maschinen).|
 |[Transparent Data Encryption für SQL-Datenbanken aktivieren](security-center-enable-transparent-data-encryption.md)|Empfiehlt Ihnen, die Verschlüsselung für SQL-Datenbanken zu aktivieren (nur Azure SQL-Dienst).|
-|[VM-Agent aktivieren](security-center-enable-vm-agent.md)|Ermöglicht Ihnen, anzuzeigen, welche VMs den VM-Agent benötigen. Der VM-Agent muss auf virtuellen Maschinen installiert werden, um das Überprüfen von Patches, Überprüfen von Grundregeln und Antischadsoftware bereitzustellen. Der VM-Agent wird standardmäßig für virtuelle Maschinen installiert, die vom Azure Marketplace bereitgestellt werden. Der Artikel [VM-Agent und Erweiterungen – Teil 2](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) enthält Informationen zum Installieren des VM-Agents.|
+|[VM-Agent aktivieren](security-center-enable-vm-agent.md)|Ermöglicht Ihnen, anzuzeigen, welche VMs den VM-Agent benötigen. Der VM-Agent muss auf virtuellen Maschinen installiert werden, um das Überprüfen von Patches, Überprüfen von Grundregeln und Antischadsoftware bereitzustellen. Der VM-Agent wird standardmäßig für virtuelle Maschinen installiert, die vom Azure Marketplace bereitgestellt werden. Der Artikel [VM-Agent und Erweiterungen – Teil 2](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) enthält Informationen zum Installieren des VM-Agents.|
 | [Datenträgerverschlüsselung anwenden](security-center-apply-disk-encryption.md) |Empfiehlt Ihnen, dass Sie Ihre VM-Datenträger per Azure Disk Encryption (Windows- und Linux-VMs) verschlüsseln. Die Verschlüsselung wird sowohl für die Betriebssystem- als auch für die Datenvolumes auf Ihrer VM empfohlen.|
 |[Sicherheitskontaktinformationen bereitstellen](security-center-provide-security-contact-details.md) | Empfiehlt, dass Sie Sicherheitskontaktinformationen für all Ihre Abonnements bereitstellen. Die Kontaktinformationen bestehen aus einer E-Mail-Adresse und einer Telefonnummer. Die Informationen werden verwendet, um mit Ihnen Kontakt aufzunehmen, sobald unser Sicherheitsteam feststellt, dass ein unbefugter Zugriff auf Ihre Ressourcen erfolgt. |
 | [Betriebssystemversion aktualisieren](security-center-update-os-version.md) | Die Empfehlung lautet, dass Sie die Betriebssystemversion für den Clouddienst auf die aktuelle Version aktualisieren sollten, die für Ihre Betriebssystemfamilie verfügbar ist. Weitere Informationen zu Cloud Services finden Sie unter [Übersicht über Cloud Services](../cloud-services/cloud-services-choose-me.md). |
@@ -115,4 +115,4 @@ In diesem Dokument wurden Ihnen die Sicherheitsempfehlungen in Security Center v
 [2]: ./media/security-center-recommendations/filter-recommendations.png
 [3]: ./media/security-center-recommendations/dismiss-recommendations.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

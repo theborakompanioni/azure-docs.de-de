@@ -15,7 +15,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="05/03/2016"
+	ms.date="07/27/2016"
 	ms.author="jeffstok"
 />
 
@@ -31,7 +31,7 @@ Eine Machine Learning-Funktion kann in Stream Analytics wie ein normaler Funktio
 
 Beim Konfigurieren einer Machine Learning-Funktion für einen Stream Analytics-Auftrag müssen zwei Parameter berücksichtigt werden: die Batchgröße der Machine Learning-Funktionsaufrufe und die Streamingeinheiten (Streaming Units, SUs), die für den Stream Analytics-Auftrag bereitgestellt werden. Zum Bestimmen der richtigen Werte hierfür muss zuerst eine Entscheidung zwischen der Latenz und dem Durchsatz getroffen werden, also der Latenz des Stream Analytics-Auftrags und des Durchsatzes der einzelnen Streamingeinheiten. SUs können einem Auftrag immer hinzugefügt werden, um den Durchsatz einer gut partitionierten Stream Analytics-Abfrage zu erhöhen. Zusätzliche SUs führen aber zu einer Erhöhung der Kosten für die Ausführung des Auftrags.
 
-Daher ist es wichtig, die *Toleranz* in Bezug auf die Latenz beim Ausführen eines Stream Analytics-Auftrags zu bestimmen. Die zusätzliche Latenz aufgrund der Ausführung von Azure Machine Learning-Dienstanforderungen steigt logischerweise an, wenn sich die Batchgröße erhöht, und somit auch die Gesamtlatenz des Stream Analytics-Auftrags. Andererseits ermöglicht eine höhere Batchgröße auch, dass vom Stream Analytics-Auftrag mehr Ereignisse mit *der gleichen Anzahl* von Machine Learning-Webdienstanforderungen verarbeitet werden. Häufig ist die Erhöhung der Machine Learning-Webdienstlatenz sublinear zum Anstieg der Batchgröße. Daher ist es wichtig, für einen Machine Learning-Webdienst immer die Batchgröße mit der größten Kosteneffizienz zu ermitteln. Die standardmäßige Batchgröße für die Webdienstanforderungen lautet 1.000 und kann geändert werden, indem Sie entweder die [Stream Analytics-REST-API](https://msdn.microsoft.com/library/mt653706.aspx "Stream Analytics-REST-API") oder den [PowerShell-Client für Stream Analytics](stream-analytics-monitor-and-manage-jobs-use-powershell.md "PowerShell-Client für Stream Analytics") verwenden.
+Daher ist es wichtig, die *Toleranz* in Bezug auf die Latenz beim Ausführen eines Stream Analytics-Auftrags zu bestimmen. Die zusätzliche Latenz aufgrund der Ausführung von Azure Machine Learning-Dienstanforderungen steigt logischerweise an, wenn sich die Batchgröße erhöht, und somit auch die Gesamtlatenz des Stream Analytics-Auftrags. Andererseits ermöglicht eine höhere Batchgröße auch, dass vom Stream Analytics-Auftrag *mehr Ereignisse mit der gleichen Anzahl** von Machine Learning-Webdienstanforderungen verarbeitet werden. Häufig ist die Erhöhung der Machine Learning-Webdienstlatenz sublinear zum Anstieg der Batchgröße. Daher ist es wichtig, für einen Machine Learning-Webdienst immer die Batchgröße mit der größten Kosteneffizienz zu ermitteln. Die standardmäßige Batchgröße für die Webdienstanforderungen lautet 1.000 und kann geändert werden, indem Sie entweder die [Stream Analytics-REST-API](https://msdn.microsoft.com/library/mt653706.aspx "Stream Analytics-REST-API") oder den [PowerShell-Client für Stream Analytics](stream-analytics-monitor-and-manage-jobs-use-powershell.md "PowerShell-Client für Stream Analytics") verwenden.
 
 Nachdem eine Batchgröße bestimmt wurde, kann die Menge an Streamingeinheiten basierend auf der Anzahl von Ereignissen ermittelt werden, die von der Funktion pro Sekunde verarbeitet werden müssen. Weitere Informationen zu Streamingeinheiten finden Sie im Artikel [Stream Analytics-Skalierungsaufträge](stream-analytics-scale-jobs.md#configuring-streaming-units).
 
@@ -76,7 +76,7 @@ Bei der zweiten Option müssen mehr SUs bereitgestellt werden und daher mehr gle
 Angenommen, die Latenz des Machine Learning-Webdiensts für die Stimmungsanalyse beträgt 200ms für Batches mit 1.000 Ereignissen oder weniger, 250ms für Batches mit 5.000 Ereignissen, 300ms für Batches mit 10.000 Ereignissen oder 500ms für Batches mit 25.000 Ereignissen.
 
 1. Bei der ersten Option (**ohne** Bereitstellung von mehr SUs) kann die Batchgröße auf **25.000** erhöht werden. Mit dem Auftrag könnten dann wiederum 1.000.000 Ereignisse mit 20 gleichzeitigen Verbindungen mit dem Machine Learning-Webdienst verarbeitet werden (bei einer Latenz von 500ms pro Aufruf). Die zusätzliche Latenz des Stream Analytics-Auftrags würde sich also aufgrund der Stimmungsfunktionsanforderungen an die Machine Learning-Webdienstanforderungen von **200ms** auf **500ms** erhöhen. Beachten Sie aber, dass die Batchgröße **nicht** unendlich erhöht werden kann, da es für die Machine Learning-Webdienste erforderlich ist, dass die Nutzlastgröße einer Anforderung maximal 4MB beträgt. Für Webdienstanforderungen tritt nach 100 Sekunden eine Zeitüberschreitung auf.
-2. Bei der zweiten Option wird die Batchgröße von 1.000 beibehalten. Bei einer Webdienstlatenz von 200ms können mit 20 gleichzeitigen Verbindungen mit dem Webdienst also jeweils Ereignisse in folgendem Umfang verarbeitet werden: 1000 * 20 * 5 Ereignisse = 100.000 pro Sekunde. Es sind also 60 SUs für den Auftrag erforderlich, damit 1.000.000 Ereignisse pro Sekunde verarbeitet werden können. Verglichen mit der ersten Option fallen für den Stream Analytics-Auftrag mehr Webdienst-Batchanforderungen an, sodass sich die Kosten erhöhen.
+2. Bei der zweiten Option wird die Batchgröße von 1.000 beibehalten. Bei einer Webdienstlatenz von 200ms können mit 20 gleichzeitigen Verbindungen mit dem Webdienst also jeweils Ereignisse in folgendem Umfang verarbeitet werden: 1.000 * 20 * 5 Ereignisse = 100.000 pro Sekunde. Es sind also 60 SUs für den Auftrag erforderlich, damit 1.000.000 Ereignisse pro Sekunde verarbeitet werden können. Verglichen mit der ersten Option fallen für den Stream Analytics-Auftrag mehr Webdienst-Batchanforderungen an, sodass sich die Kosten erhöhen.
 
 Unten ist eine Tabelle mit Informationen zum Durchsatz des Stream Analytics-Auftrags für unterschiedliche SUs und Batchgrößen angegeben (Anzahl von Ereignissen pro Sekunde).
 
@@ -105,11 +105,11 @@ Im Überwachungsbereich eines Stream Analytics-Auftrags wurden drei zusätzliche
 
 Diese sind wie folgt definiert:
 
-**FUNKTIONSANFORDERUNGEN**: Anzahl von Funktionsanforderungen
+**FUNKTIONSANFORDERUNGEN**: Anzahl der Funktionsanforderungen.
 
-**FUNKTIONSEREIGNISSE**: Anzahl von Ereignissen in den Funktionsanforderungen
+**FUNKTIONSEREIGNISSE**: Anzahl der Ereignisse in den Funktionsanforderungen.
 
-**FEHLER BEI FUNKTIONSANFORDERUNGEN**: Anzahl von Funktionsanforderungen mit Fehlern
+**FEHLER BEI FUNKTIONSANFORDERUNGEN**: Anzahl der Funktionsanforderungen mit Fehlern.
 
 ## Wesentliche Punkte  
 
@@ -130,4 +130,4 @@ Weitere Informationen zu Stream Analytics finden Sie unter:
 - [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

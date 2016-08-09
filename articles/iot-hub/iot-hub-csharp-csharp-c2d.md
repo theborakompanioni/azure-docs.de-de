@@ -79,7 +79,7 @@ In diesem Abschnitt ändern Sie die simulierte Geräteanwendung, die Sie in [Ers
 
 > [AZURE.NOTE] Der Einfachheit halber wird in diesem Lernprogramm keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (etwa einen exponentiellen Backoff), wie im MSDN-Artikel zum [Behandeln vorübergehender Fehler] beschrieben.
 
-## Senden einer Cloud-zu-Gerät-Nachricht vom App-Back-End
+## Senden einer C2D-Nachricht
 
 In diesem Abschnitt schreiben Sie eine Windows-Konsolen-App, die Cloud-zu-Gerät-Nachrichten an die simulierte Geräte-App sendet.
 
@@ -197,4 +197,4 @@ Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Io
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

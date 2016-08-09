@@ -77,7 +77,7 @@ In diesem Abschnitt ändern Sie die simulierte Geräteanwendung, die Sie in [Ers
 
     > [AZURE.NOTE] Wenn Sie anstelle von AMQP den HTTP/1-Transport verwenden, prüft die **DeviceClient**-Instanz nur selten (weniger als alle 25 Minuten), ob Nachrichten von IoT Hub vorliegen. Weitere Informationen zu den Unterschieden zwischen der AMQP- und HTTP/1-Unterstützung sowie zur IoT Hub-Drosselung finden Sie im [Entwicklungsleitfaden für IoT Hub][IoT Hub Developer Guide - C2D].
 
-## Senden einer Cloud-zu-Gerät-Nachricht vom App-Back-End
+## Senden einer C2D-Nachricht
 
 In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die C2D-Nachrichten an die simulierte Geräte-App sendet. Dazu benötigen Sie die Geräte-ID des Geräts, das Sie im Tutorial [Erste Schritte mit IoT Hub] hinzugefügt haben, sowie die Verbindungszeichenfolge für Ihre IoT Hub-Instanz, die Sie im [Azure-Portal] finden können.
 
@@ -165,7 +165,7 @@ Sie können nun die Anwendungen ausführen.
     node SimulatedDevice.js 
     ```
 
-    ![][img-simulated-device]
+    ![Ausführen der simulierten Geräte-App][img-simulated-device]
 
 2. Führen Sie an einer Befehlszeile im Ordner **sendcloudtodevicemessage** den folgenden Befehl aus, um eine C2D-Nachricht zu senden, und warten Sie auf das Bestätigungsfeedback:
 
@@ -173,7 +173,7 @@ Sie können nun die Anwendungen ausführen.
     node SendCloudToDeviceMessage.js 
     ```
 
-    ![][img-send-command]
+    ![Ausführen der App zum Senden des C2D-Befehls][img-send-command]
 
     > [AZURE.NOTE] Der Einfachheit halber wird in diesem Lernprogramm keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (etwa einen exponentiellen Backoff), wie im MSDN-Artikel zum [Behandeln vorübergehender Fehler] beschrieben.
 
@@ -193,12 +193,7 @@ Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Io
 
 [Erste Schritte mit IoT Hub]: iot-hub-node-node-getstarted.md
 [IoT Hub Developer Guide - C2D]: iot-hub-devguide.md#c2d
-[Process Device-to-Cloud messages]: iot-hub-csharp-csharp-process-d2c.md
-[Uploading files from devices]: iot-hub-csharp-csharp-file-upload.md
-[IoT Hub Overview]: iot-hub-what-is-iot-hub.md
-[IoT Hub Guidance]: iot-hub-guidance.md
 [IoT Hub-Entwicklerhandbuch]: iot-hub-devguide.md
-[Supported device platforms and languages]: iot-hub-supported-devices.md
 [Azure IoT Developer Center]: http://www.azure.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
@@ -206,4 +201,4 @@ Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Io
 [Azure-Portal]: https://portal.azure.com
 [Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

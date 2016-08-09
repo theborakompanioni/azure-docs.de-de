@@ -4,7 +4,7 @@
     services="active-directory"
     documentationCenter=""
     authors="markusvi"
-    manager="stevenpo"
+    manager="femila"
     editor=""/>
 
    <tags
@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="identity"
-      ms.date="05/03/2016"
+      ms.date="07/20/2016"
       ms.author="markvi"/>
 
 # Verwalten von Anwendungen mit Azure Active Directory
@@ -24,15 +24,15 @@ Abgesehen vom eigentlichen Workflow oder Inhalt gibt es für Unternehmen zwei gr
 
 2. Um Sicherheit und Governance zu ermöglichen, benötigt die Organisation die Kontrolle und einen Überblick darüber, wer auf die einzelnen Anwendungen zugreifen kann und diese Möglichkeit auch nutzt.
 
-In Bezug auf Cloudanwendungen gelingt dies am besten über Identitäten, mit denen gesteuert wird, „*WER zu WAS berechtigt ist“*.
+In Bezug auf Cloudanwendungen gelingt dies am besten über Identitäten, mit denen gesteuert wird, „*WER zu WAS berechtigt ist*“.
 
 In Computerterminologie:
 
-- Das *Wer* bezeichnet man als *Identität*: die Verwaltung von Benutzern und Gruppen.
+- Das *Wer* bezeichnet man als *Identität*: die Verwaltung von Benutzern und Gruppen
 
-- Das *Was* nennt man *Zugriffsverwaltung*: die Verwaltung des Zugriffs auf geschützte Ressourcen.
+- Das *Was* nennt man *Zugriffsverwaltung*: die Verwaltung des Zugriffs auf geschützte Ressourcen
 
-Beide Komponenten werden zusammen als *Identity and Access Management (IAM)* (Identitäts- und Zugriffsverwaltung) bezeichnet, was durch die [Gartner](http://www.gartner.com/it-glossary/identity-and-access-management-iam)-Gruppe definiert wird als „die Sicherheitsdisziplin, die den richtigen Personen zur rechten Zeit und aus den richtigen Gründen den Zugriff auf die richtigen Ressourcen ermöglicht*“.
+Beide Komponenten werden zusammen als *Identity and Access Management (IAM)* (Identitäts- und Zugriffsverwaltung) bezeichnet, was durch die [Gartner](http://www.gartner.com/it-glossary/identity-and-access-management-iam)-Gruppe definiert wird als „*die Sicherheitsdisziplin, die den richtigen Personen zur rechten Zeit und aus den richtigen Gründen den Zugriff auf die richtigen Ressourcen ermöglicht*“.
 
 Wo liegt also das Problem? Wenn IAM *nicht zentral mit einer integrierten Lösung verwaltet* wird:
 
@@ -54,7 +54,7 @@ Was hält Organisationen im Allgemeinen davon ab, integrierte IAM-Lösungen einz
 
 Azure Active Directory ist die umfassende IDaaS-Lösung (Identity as a Service) von Microsoft, die folgende Vorteile bietet:
 
-- Sie ermöglicht IAM als Clouddienst. 
+- Sie ermöglicht IAM als Clouddienst.
 
 - Sie stellt eine zentrale Zugriffsverwaltung, einmaliges Anmelden (SSO) und Berichterstellung bereit.
 
@@ -135,4 +135,4 @@ Erste Schritte in die Anwendungsintegration in Azure AD finden Sie unter [Erste 
 
 [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

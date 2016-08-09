@@ -170,6 +170,7 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 - [Entwicklerhandbuch][lnk-devguide]
 - [Erkunden der Geräteverwaltung mithilfe der Beispielbenutzeroberfläche][lnk-dmui]
 - [Simulieren eines Geräts mit dem Gateway SDK][lnk-gateway]
+- [Schützen Ihrer IoT-Lösung von Grund auf][lnk-securing]
 
 
   [4]: ./media/iot-hub-manage-through-portal/create-iothub.png
@@ -193,5 +194,6 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-securing]: iot-hub-security-ground-up.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

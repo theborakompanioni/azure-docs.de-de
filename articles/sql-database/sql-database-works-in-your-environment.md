@@ -21,27 +21,23 @@
 
 ## Verbindungen mit dem bereits Bekannten
 
-Ein Entwickler möchte auf keinen Fall etwas Neues lernen, nur um die Verbindung mit einer Datenbank herzustellen. Azure SQL-Datenbank vereinfacht diesen Vorgang mit einer Vielzahl von Sprachen und Plattformen, mit denen Sie bereits vertraut sind.
+Sie möchten sicherlich nicht etwas vollständig Neues lernen müssen, nur um die Verbindung mit einer Datenbank herstellen zu können. Azure SQL-Datenbank vereinfacht diesen Vorgang mit einer Vielzahl von Sprachen und Plattformen, mit denen Sie bereits vertraut sind.
 
 ![works-in-your-environment](./media/sql-database-works-in-your-environment/sql-database-works-in-your-environment.png)
 
-## JavaScript, Node.JS und Python sind nur einige davon.
+Wenn Sie eine Datenbank auswählen, sollten Sie keine neue Plattform einsetzen oder eine neue Sprache lernen müssen. SQL-Datenbank verfügt über Codebeispiele, die Ihnen beim Einstieg helfen.
 
-Wenn Sie eine Datenbank auswählen, sollten Sie keine neue Sprache lernen müssen. Azure SQL-Datenbank verfügt über viele Codebeispiele für die ersten Schritte mit der Plattform, auf der Sie arbeiten (d. h. Linux, Mac OS oder Windows). Zusätzlich erreichen Sie mit dem Azure-Verwaltungsportal, mit PowerShell und REST-APIs beim Entwickeln zusätzliche Produktivität.
-
-[Dokumentation lesen](sql-database-develop-overview.md)
+[Weitere Informationen zur Entwicklung für SQL-Datenbanken](sql-database-develop-overview.md).
 
 ## Die richtigen Tools für die Aufgabe
 
-Mit SQL-Datenbank müssen Sie kein neues Tool erlernen, wenn Sie eine App entwickeln. Sie können Open-Source-Tools wie [Cheetah](https://github.com/wunderlist/cheetah), [Sql-Cli](https://www.npmjs.com/package/sql-cli) und [VS Code](https://code.visualstudio.com/) nutzen. Darüber hinaus funktioniert Azure SQL-Datenbank mit Microsoft-Tools wie [Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) und [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).
+Sie müssen keine vollständig neuen Tools erlernen, um mit SQL-Datenbank zu beginnen. Sie können Open-Source-Tools wie [Cheetah](https://github.com/wunderlist/cheetah), [Sql-Cli](https://www.npmjs.com/package/sql-cli) und [VS Code](https://code.visualstudio.com/) nutzen. Darüber hinaus funktioniert Azure SQL-Datenbank mit Microsoft-Tools wie [Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) und [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx). Sie können auch das Azure-Verwaltungsportal, PowerShell und REST-APIs nutzen, um produktiver zu arbeiten.
 
 ## Schneller Einstieg
 
-Mit garantierten Ressourcen, Lernprogrammen zum Erstellen Ihrer ersten SQL-Datenbank, Problembehandlungsabfragen und Schnellstart-Codebeispielen ist es stets einfach, die richtige Antwort auf Ihre Datenbankfragen zu erhalten.
+Mit Tutorials zum Erstellen Ihrer ersten SQL-Datenbank, Informationen zur Problembehandlung bei Abfragen und Codebeispielen für den Schnelleinstieg finden Sie schnell die richtige Antwort auf Ihre Fragen zu SQL-Datenbank.
 
-[Dokumentation lesen](sql-database-technical-overview.md)
-
-Wechseln Sie zur Startseite, um zu erfahren, welche weiteren Features SQL-Datenbank zu bieten hat. [Weitere Informationen](https://azure.microsoft.com/services/sql-database/)
+[Weitere Informationen zur SQL-Datenbank](sql-database-technical-overview.md).
 
 ## Nächste Schritte
 
@@ -49,8 +45,8 @@ Erhalten Sie ein [kostenloses Azure-Abonnement](https://azure.microsoft.com/get-
 
 ## Zusätzliche Ressourcen
 
-Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/services/sql-database/).
- 
-Lesen Sie die [Technische Übersicht über SQL-Datenbank](sql-database-technical-overview.md).
+* Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/services/sql-database/).
+* Lesen Sie die [technische Übersicht über SQL-Datenbank](sql-database-technical-overview.md).
+* [Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="07/25/2016"
 	ms.author="piyushjo;ricksal" />
 
 #Verwenden der Engagement-API unter Android
@@ -297,4 +297,4 @@ Im vorherigen Beispiel enthält die an den Server gesendete JSON 44 Zeichen:
 
 			{"expiration":"2016-12-07","status":"premium"}
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

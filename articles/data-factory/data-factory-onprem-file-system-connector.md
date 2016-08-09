@@ -107,7 +107,7 @@ Durch Festlegen von "external" auf "true" und Angeben der Richtlinie "externalDa
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%M"
+	            "format": "MM"
 	          }
 	        },
 	        {
@@ -115,7 +115,7 @@ Durch Festlegen von "external" auf "true" und Angeben der Richtlinie "externalDa
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%d"
+	            "format": "dd"
 	          }
 	        },
 	        {
@@ -123,7 +123,7 @@ Durch Festlegen von "external" auf "true" und Angeben der Richtlinie "externalDa
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%H"
+	            "format": "HH"
 	          }
 	        }
 	      ]
@@ -168,7 +168,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%M"
+	            "format": "MM"
 	          }
 	        },
 	        {
@@ -176,7 +176,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%d"
+	            "format": "dd"
 	          }
 	        },
 	        {
@@ -184,7 +184,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%HH"
+	            "format": "HH"
 	          }
 	        }
 	      ],
@@ -345,7 +345,7 @@ Daten werden stündlich in eine neue Datei kopiert, wobei der Pfad des Blobs jew
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%M"
+	            "format": "MM"
 	          }
 	        },
 	        {
@@ -353,7 +353,7 @@ Daten werden stündlich in eine neue Datei kopiert, wobei der Pfad des Blobs jew
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%d"
+	            "format": "dd"
 	          }
 	        },
 	        {
@@ -361,7 +361,7 @@ Daten werden stündlich in eine neue Datei kopiert, wobei der Pfad des Blobs jew
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%HH"
+	            "format": "HH"
 	          }
 	        }
 	      ]
@@ -574,4 +574,4 @@ Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-fa
 
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/05/2016" 
+	ms.date="07/25/2016" 
 	ms.author="larryfr"/>
 
 #Analysieren von Flugverspätungsdaten mit Hive in HDInsight
@@ -236,9 +236,9 @@ Wenn Sie noch nicht über eine SQL-Datenbank verfügen, nutzen Sie die Informati
 
 3. Verwenden Sie den folgenden Befehl, um Daten aus „hivesampletable“ in die Tabelle „mobiledata“ zu exportieren:
 
-		sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=<databaseName>' --username <adminLogin> --password <adminPassword> --table 'delays' --export-dir 'wasb:///tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
+		sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=<databaseName>' --username <adminLogin> --password <adminPassword> --table 'delays' --export-dir 'wasbs:///tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
 
-	Dadurch wird Sqoop angewiesen, eine Verbindung mit der SQL-Datenbank herzustellen, mit der Datenbank, die die Tabelle „delays“ enthält, und Daten aus wasb:///tutorials/flightdelays/output (wo wir zuvor die Ausgabe der Hive-Abfrage gespeichert haben) in die Tabelle „delays“ zu exportieren.
+	Dadurch wird Sqoop angewiesen, eine Verbindung mit Azure SQL-Datenbank und der Datenbank herzustellen, die die Tabelle „delays“ enthält, und Daten aus wasbs:///tutorials/flightdelays/output (wo wir zuvor die Ausgabe der Hive-Abfrage gespeichert haben) in die Tabelle „delays“ zu exportieren.
 
 4. Nach Abschluss des Befehls stellen Sie wie folgt über TSQL eine Verbindung mit der Datenbank her:
 
@@ -291,4 +291,4 @@ Jetzt wissen Sie, wie Sie eine Datei in den Azure-Blobspeicher hochladen, eine H
 
  
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

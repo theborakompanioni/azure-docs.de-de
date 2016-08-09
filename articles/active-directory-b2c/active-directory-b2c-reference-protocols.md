@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure Active Directory B2C-Vorschau | Microsoft Azure"
-	description="Hier erfahren Sie, wie Sie Apps direkt mit den von der Azure Active Directory B2C-Vorschau unterstützten Protokollen erstellen."
+	pageTitle="Azure Active Directory B2C | Microsoft Azure"
+	description="Hier erfahren Sie, wie Sie Apps direkt mit den von Azure Active Directory B2C unterstützten Protokollen erstellen."
 	services="active-directory-b2c"
 	documentationCenter=""
 	authors="dstrockis"
@@ -13,22 +13,20 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="07/22/2016"
 	ms.author="dastrock"/>
 
-# Azure AD B2C-Vorschau: Authentifizierungsprotokolle
+# Azure AD B2C: Authentifizierungsprotokolle
 
 Azure Active Directory (Azure AD) B2C bietet Identity-as-a-Service (IDaaS) für Ihre Apps durch die Unterstützung zweier gängiger Standardprotokolle: OpenID Connect und OAuth 2.0. Auch wenn der Dienst standardkonform ist, kann es feine Unterschiede zwischen zwei Implementierungen dieser Protokolle geben. Die in diesem Leitfaden bereitgestellten Informationen sind nützlich, wenn Sie Code direkt durch Senden und Verarbeiten von HTTP-Anforderungen schreiben, anstatt eine unserer Open Source-Bibliotheken zu nutzen. Es wird empfohlen, diese Seite zu lesen, bevor Sie sich mit den Details der spezifischen Protokolle beschäftigen. Aber wenn Sie bereits mit Azure AD B2C vertraut sind, können Sie direkt zu den [Protokollreferenzhandbüchern](#protocols) wechseln.
 
 <!-- TODO: Need link to libraries above -->
 
-[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
-
 ## Grundlagen
 Jede App, die Azure AD B2C verwendet, muss im B2C-Verzeichnis im [Azure-Portal](https://portal.azure.com) registriert werden. Beim App-Registrierungsprozess werden einige Werte gesammelt und der App zugewiesen:
 
 - Eine **Anwendungs-ID**, die Ihre App eindeutig identifiziert.
-- Ein **Umleitungs-URI** oder **Paketbezeichner**, der zum Umleiten von Antworten zurück an die App verwendet werden kann.
+- Einen **Umleitungs-URI** oder **Paketbezeichner**, der zum Umleiten von Antworten zurück an die App verwendet werden kann.
 - Einige andere szenariospezifische Werte. Weitere Informationen finden Sie im Abschnitt [zum Registrieren Ihrer Anwendung](active-directory-b2c-app-registration.md).
 
 Nach dem Registrieren Ihrer App kommuniziert diese mit Azure AD, indem sie Anforderungen an den v2.0-Endpunkt sendet:
@@ -45,7 +43,7 @@ In fast allen OAuth- und OpenID Connect-Abläufen gibt es beim Austausch vier Be
 - Der **Autorisierungsserver** ist der Azure AD v2.0-Endpunkt. Er kümmert sich um die sichere Verwaltung rund um Benutzerinformationen und Zugriff. Zudem verarbeitet er die Vertrauensstellungen zwischen den Parteien in einem Ablauf. Er ist verantwortlich für das Überprüfen der Identität des Benutzers, das Erteilen und Widerrufen des Zugriffs auf Ressourcen und das Ausstellen von Token. Er wird auch als Identitätsanbieter bezeichnet.
 - Beim **Ressourcenbesitzer** handelt es sich normalerweise um den Endbenutzer. Diese Person besitzt die Daten und hat die Möglichkeit, Dritten den Zugriff auf die Daten oder die Ressource zu gewähren.
 - Der **OAuth-Client** ist Ihre App. Sie wird durch die Anwendungs-ID identifiziert. Sie ist normalerweise die Komponente, mit der die Endbenutzer interagieren. Sie fordert auch Token vom Autorisierungsserver an. Der Ressourcenbesitzer muss dem Client die Berechtigung für den Zugriff auf die Ressource erteilen.
-- Der **Ressourcenserver** ist der Ort, an dem sich die Ressourcen oder die Daten befinden. Er vertraut auf die sichere Authentifizierung und Autorisierung des OAuth-Clients durch den Autorisierungsserver. Außerdem verwendet er Bearerzugriffstoken, um sicherzustellen, dass der Zugriff auf eine Ressource gewährt werden kann.
+- Der **Ressourcenserver** ist der Ort, an dem die Ressource oder die Daten abgelegt sind. Er vertraut auf die sichere Authentifizierung und Autorisierung des OAuth-Clients durch den Autorisierungsserver. Außerdem verwendet er Bearerzugriffstoken, um sicherzustellen, dass der Zugriff auf eine Ressource gewährt werden kann.
 
 ## Richtlinien
 Die Richtlinien in Azure AD B2C sind wohl das wichtigste Feature des Diensts. Azure AD B2C erweitert die Standardprotokolle OAuth 2.0 und OpenID Connect durch die Einführung von Richtlinien. Diese ermöglichen Azure AD B2C viel mehr als nur die einfache Authentifizierung und Autorisierung. Richtlinien beschreiben Benutzeroberflächen im Zusammenhang mit der Endkundenidentität, einschließlich Registrierung, Anmeldung und Profilbearbeitung. Richtlinien können in einer Administratorbenutzeroberfläche definiert werden. Sie können mithilfe eines speziellen Abfrageparameters in HTTP-Authentifizierungsanforderungen ausgeführt werden. Richtlinien sind kein Standardfeature von OAuth 2.0 und OpenID Connect. Sie sollten sich also die Zeit nehmen, sich damit vertraut zu machen. Weitere Informationen finden Sie im [Referenzhandbuch zu Azure AD B2C-Richtlinien](active-directory-b2c-reference-policies.md).
@@ -65,9 +63,5 @@ Wenn Sie bereit sind, sich einige Beispielanforderungen anzusehen, können Sie m
 
 - [Erstellen von mobilen und nativen Anwendungen mit OAuth 2.0](active-directory-b2c-reference-oauth-code.md)
 - [Erstellen von Web-Apps mithilfe von OpenID Connect](active-directory-b2c-reference-oidc.md)
-- Erstellen von Single-Page-Apps mit dem impliziten OAuth 2.0-Fluss (bald verfügbar)
-- Erstellen von Daemons oder serverseitigen Prozessen mit dem OAuth 2.0-Ablauf für Clientanmeldeinformationen (bald verfügbar)
-- Verwenden von Benutzernamen und Kennwörtern zum Abrufen von Token über den OAuth 2.0-Ablauf für Ressourcenbesitzer-Kennwortanmeldeinformationen (bald verfügbar)
-- Abrufen von Token in einer Web-API mit dem OAuth 2.0-Ablauf „Im Auftrag von“ (bald verfügbar)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->
