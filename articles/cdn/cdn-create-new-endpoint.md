@@ -1,5 +1,5 @@
 <properties
-	 pageTitle="Verwenden von Azure CDN"
+	 pageTitle="Verwenden von Azure CDN | Microsoft Azure"
 	 description="Dieses Thema zeigt, wie Sie das Content Delivery Network (CDN) für Azure aktivieren. Das Tutorial enthält ausführliche Informationen zur Erstellung eines neuen CDN-Profils und -Endpunkts."
 	 services="cdn"
 	 documentationCenter=""
@@ -12,7 +12,7 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="get-started-article"
-	 ms.date="05/24/2016" 
+	 ms.date="07/28/2016" 
 	 ms.author="casoper"/>
 
 # Verwenden von Azure CDN  
@@ -55,9 +55,9 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 
 	![CDN-Ursprung](./media/cdn-create-new-endpoint/cdn-origin-type.png)
 		
-5. Wählen Sie in der Dropdownliste **Ursprungshostname** Ihre Ursprungsdomäne aus, bzw. geben Sie sie ein. In der Dropdownliste werden alle verfügbaren Ursprungstypen aufgelistet, die Sie in Schritt 4 angegeben haben. Bei Auswahl von *Benutzerdefinierter Ursprung* als **Ursprungstyp** geben Sie die Domäne Ihres benutzerdefinierten Ursprungs ein.
+5. Wählen Sie in der Dropdownliste **Ursprungshostname** Ihre Ursprungsdomäne aus, bzw. geben Sie sie ein. In der Dropdownliste werden alle verfügbaren Ursprungstypen aufgelistet, die Sie in Schritt 4 angegeben haben. Bei Auswahl von *Benutzerdefinierter Ursprung* als **Ursprungstyp** geben Sie die Domäne Ihres benutzerdefinierten Ursprungs ein.
 
-6. Geben Sie im Textfeld **Ursprünglicher Pfad** den Pfad zu den Ressourcen ein, die Sie zwischenspeichern möchten, oder lassen Sie das Feld leer, um das Zwischenspeichern aller Ressourcen in der Domäne zuzulassen, die Sie in Schritt 5 angegeben haben.
+6. Geben Sie im Textfeld **Ursprünglicher Pfad** den Pfad zu den Ressourcen ein, die Sie zwischenspeichern möchten, oder lassen Sie das Feld leer, um das Zwischenspeichern aller Ressourcen in der Domäne zuzulassen, die Sie in Schritt 5 angegeben haben.
 
 7. Geben Sie unter **Header des Ursprungshosts** den Hostheader ein, den das CDN bei jeder Anforderung senden soll, oder übernehmen Sie den Standardwert.
 
@@ -67,7 +67,7 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 	
 	> [AZURE.NOTE] Der **Ursprungsport** bezieht sich nur darauf, welchen Port der Endpunkt zum Abrufen von Informationen vom Ursprung verwendet. Der Endpunkt selbst ist nur für Endclients auf den Standard-HTTP- und -HTTPS-Ports (80 und 443) verfügbar, unabhängig vom **Ursprungsport**.
 	>
-	> Endpunkte vom Typ **Azure CDN von Akamai** lassen nicht den vollständigen TCP-Portbereich für Ursprünge zu. Eine Liste der nicht zulässigen Ursprungsports finden Sie unter [Azure CDN from Akamai behavior details](cdn-akamai-behavior-details.md) (Verhaltensdetails für Azure CDN von Akamai).
+	> Endpunkte vom Typ **Azure CDN von Akamai** lassen nicht den vollständigen TCP-Portbereich für Ursprünge zu. Eine Liste der nicht zulässigen Ursprungsports finden Sie unter [Azure CDN from Akamai Allowed Origin Ports](https://msdn.microsoft.com/library/mt757337.aspx) (Azure CDN von Akamai – Zulässige Ursprungsports).
 	>
 	> Der Zugriff auf CDN-Inhalte über HTTPS weist folgende Einschränkungen auf:
 	> 
@@ -97,4 +97,4 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten. Jedes Profil enthält minde
 [cdn-add-endpoint]: ./media/cdn-create-new-endpoint/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-create-new-endpoint/cdn-endpoint-success.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -32,7 +32,7 @@ Dieser Artikel führt Sie durch die Schritte zum Konfigurieren eines Application
 2. Sie erstellen ein virtuelles Netzwerk und ein Subnetz für das Application Gateway. Stellen Sie sicher, dass keine virtuellen Maschinen oder Cloudbereitstellungen das Subnetz verwenden. Das Application Gateway muss sich allein im Subnetz eines virtuellen Netzwerks befinden.
 3. Die Server, die Sie für die Verwendung des Application Gateways konfigurieren, müssen vorhanden sein oder Endpunkte aufweisen, die im virtuellen Netzwerk erstellt wurden oder denen eine öffentliche IP-Adresse/VIP zugewiesen wurde.
 
-## Was ist zum Erstellen eines Application Gateways erforderlich?
+## Was ist zum Erstellen eines Anwendungsgateways erforderlich?
 
 
 - **Back-End-Serverpool:** Die Liste der IP-Adressen der Back-End-Server. Die aufgelisteten IP-Adressen sollten entweder zum virtuellen Netzwerk gehören, dann aber in einem anderen Subnetz für das Application Gateway, oder es sollte sich um eine öffentliche IP/VIP handeln.
@@ -45,7 +45,7 @@ Dieser Artikel führt Sie durch die Schritte zum Konfigurieren eines Application
 
 ## Erstellen eines neuen Anwendungsgateways
 
-Der Unterschied zwischen dem klassischen Azure-Modell und Azure-Ressourcen-Manager besteht in der Reihenfolge, in der Sie ein Application Gateway und die Elemente erstellen, die konfiguriert werden müssen. Beim Ressourcen-Manager werden alle Elemente, die ein Application Gateway bilden, einzeln konfiguriert und anschließend zusammengesetzt, um die Application Gateway-Ressource zu erstellen.
+Der Unterschied zwischen dem klassischen Azure-Modell und Azure Resource Manager besteht in der Reihenfolge, in der Sie ein Anwendungsgateway und die Elemente erstellen, die konfiguriert werden müssen. Beim Resource Manager werden alle Elemente, die ein Anwendungsgateway bilden, einzeln konfiguriert und anschließend zusammengesetzt, um die Anwendungsgatewayressource zu erstellen.
 
 
 Hier sind die erforderlichen Schritte zum Erstellen eines Application Gateways angegeben:
@@ -62,13 +62,13 @@ Stellen Sie sicher, dass Sie in den PowerShell-Modus wechseln, um die Azure-Ress
 
 ### Schritt 1
 
-		PS C:\> Login-AzureRmAccount
+		Login-AzureRmAccount
 
 ### Schritt 2
 
 Überprüfen Sie die Abonnements für das Konto.
 
-		PS C:\> get-AzureRmSubscription
+		get-AzureRmSubscription
 
 Sie werden zur Authentifizierung mit Ihren Anmeldeinformationen aufgefordert.<BR>
 
@@ -77,7 +77,7 @@ Sie werden zur Authentifizierung mit Ihren Anmeldeinformationen aufgefordert.<BR
 Wählen Sie aus, welches Azure-Abonnement Sie verwenden möchten.<BR>
 
 
-		PS C:\> Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+		Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 
 
 ### Schritt 4
@@ -86,7 +86,7 @@ Erstellen Sie eine neue Ressourcengruppe (Überspringen Sie diesen Schritt, wenn
 
     New-AzureRmResourceGroup -Name appgw-rg -location "West US"
 
-Der Azure-Ressourcen-Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Dieser wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Stellen Sie sicher, dass alle Befehle, mit denen ein Application Gateway erstellt wird, die gleiche Ressourcengruppe verwenden.
+Der Azure Resource Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Dieser wird als Standardspeicherort für Ressourcen in dieser Ressourcengruppe verwendet. Stellen Sie sicher, dass alle Befehle, mit denen ein Application Gateway erstellt wird, die gleiche Ressourcengruppe verwenden.
 
 Im obigen Beispiel haben wir eine Ressourcengruppe namens „appgw-rg“ mit dem Standort „USA, Westen“ erstellt.
 
@@ -186,7 +186,7 @@ Um ein Application Gateway zu löschen, müssen Sie die folgenden Schritte in de
 
 ### Schritt 1
 
-Rufen Sie das Application Gateway-Objekt ab, und ordnen Sie es einer „$getgw“-Variablen zu.
+Rufen Sie das Anwendungsgatewayobjekt ab, und ordnen Sie es einer „$getgw“-Variablen zu.
 
 	$getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 
@@ -237,4 +237,4 @@ Weitere Informationen zu Lastenausgleichsoptionen im Allgemeinen finden Sie unte
 - [Azure-Lastenausgleich](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0803_2016-->

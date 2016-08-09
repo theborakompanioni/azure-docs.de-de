@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/29/2016"
+   ms.date="07/28/2016"
    ms.author="cherylmc" />
 
 # Informationen zu VPN-Geräten für VPN-Gatewayverbindungen zwischen Standorten
@@ -26,8 +26,8 @@ Wenn Ihr Gerät in der Tabelle mit den überprüften VPN-Geräten nicht aufgefü
 
 - Die Terminologie für statisches und dynamisches Routing wurde geändert. Wahrscheinlich finden Sie beide Begriffe. Die Funktionalität hat sich nicht geändert, nur die Namen.
 	- Statisches Routing = Richtlinienbasiert
-	- Dynamisches Routing = Routenbasiert 
-- Die Spezifikationen für Hochleistungs-VPN-Gateways und routenbasierte VPN-Gateways bleiben dieselben, sofern nicht anders angegeben. Beispielsweise sind die überprüften VPN-Geräte, die mit den routenbasierten VPN-Gateways kompatibel sind, auch mit dem neuen Azure-Hochleistungs-VPN-Gateway kompatibel. 
+	- Dynamisches Routing = Routenbasiert
+- Die Spezifikationen für Hochleistungs-VPN-Gateways und routenbasierte VPN-Gateways bleiben dieselben, sofern nicht anders angegeben. Beispielsweise sind die überprüften VPN-Geräte, die mit den routenbasierten VPN-Gateways kompatibel sind, auch mit dem neuen Azure-Hochleistungs-VPN-Gateway kompatibel.
 
 
 ## Überprüfte VPN-Geräte 
@@ -49,9 +49,9 @@ Hilfreiche Informationen zur Konfiguration des VPN-Geräts finden Sie unter den 
 | Cisco | ASR | IOS 15.1 (richtlinienbasiert), IOS 15.2 (routenbasiert) | [Cisco-Beispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) | [Cisco-Beispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
 | Cisco | ISR | IOS 15.0 (richtlinienbasiert), IOS 15.1 (routenbasiert*) | [Cisco-Beispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) | [Cisco-Beispiele*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
 | Citrix | CloudBridge-MPX-Gerät oder virtuelles VPX-Gerät | N/V | [Integrationsanweisungen](https://www.citrix.com/welcome.html?resource=%2Fdownloads%2Fcloudbridge%2Fbetas-and-tech-previews%2Fcloudbridge-azure-integration) | Nicht kompatibel |
-| Dell SonicWALL | TZ-Serie, NSA-Serie, SuperMassive-Serie, E-Class-NSA-Serie | SonicOS 5.8.x, [SonicOS 5.9.x](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=850), [SonicOS 6.x](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=646) | [Anleitung: SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [Anleitung: SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) | [Anleitung: SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [Anleitung: SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
+| Dell SonicWALL | TZ-Serie, NSA-Serie, SuperMassive-Serie, E-Class-NSA-Serie | SonicOS 5.8.x, [SonicOS 5.9.x](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=850), [SonicOS 6.x](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=646) | [Anleitung: SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [Anleitung: SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) | [Anleitung: SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [Anleitung: SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
 | F5 | BIG-IP-Serie | N/V | [Konfigurationsanweisungen](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) | Nicht kompatibel |
-| Fortinet | FortiGate | FortiOS 5.0.7 | [Konfigurationsanweisungen](http://docs.fortinet.com/d/fortigate-configuring-ipsec-vpn-between-a-fortigate-and-microsoft-azure) | [Konfigurationsanweisungen](http://docs.fortinet.com/d/fortigate-configuring-ipsec-vpn-between-a-fortigate-and-microsoft-azure) |
+| Fortinet | FortiGate | FortiOS 5.2.7 | [Konfigurationsanweisungen](http://docs.fortinet.com/d/fortigate-configuring-ipsec-vpn-between-a-fortigate-and-microsoft-azure) | [Konfigurationsanweisungen](http://docs.fortinet.com/d/fortigate-configuring-ipsec-vpn-between-a-fortigate-and-microsoft-azure) |
 | Internet Initiative Japan (IIJ) | SEIL-Serie | SEIL / X 4.60, SEIL/B1 4.60, SEIL/x86 3.20 | [Konfigurationsanweisungen](http://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) | Nicht kompatibel |
 | Juniper | SRX | JunOS 10.2 (richtlinienbasiert), JunOS 11.4 (routenbasiert) | [Juniper-Beispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX) | [Juniper-Beispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX) |
 | Juniper | J-Serie | JunOS 10.4r9 (richtlinienbasiert), JunOS 11.4 (routenbasiert) | [Juniper-Beispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) | [Juniper-Beispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) |
@@ -76,7 +76,7 @@ Nachdem Sie die bereitgestellte Konfigurationsvorlage für das VPN-Gerät herunt
 
 **So bearbeiten Sie eine Vorlage:**
 
-1. Öffnen Sie die Vorlage im Editor. 
+1. Öffnen Sie die Vorlage im Editor.
 1. Suchen und ersetzen Sie alle <*text*>-Zeichenfolgen mit den Werten, die für Ihre Umgebung gelten. Schließen Sie dabei unbedingt „<“ und „>“ mit ein. Wenn ein Name angegeben ist, sollte der ausgewählte Name eindeutig sein. Wenn ein Befehl nicht funktioniert, lesen Sie zunächst die Dokumentation des Geräteherstellers.
 
 | **Vorlagentext** | **Ändern in** |
@@ -118,10 +118,7 @@ Nachdem Sie die bereitgestellte Konfigurationsvorlage für das VPN-Gerät herunt
 | IKE-Version | IKEv1 | IKEv2 |
 | Hashalgorithmus | SHA1(SHA128) | SHA1(SHA128) |
 | Phase 2 Sicherheitszuordnung (SA) Lebensdauer (Zeit) | 3\.600 Sekunden | 3\.600 Sekunden |
-| Phase 2 Sicherheitszuordnung (SA) Lebensdauer (Durchsatz) | 102.400.000 KB | - |
-| IPsec-SA-Verschlüsselung und Authentifizierungsangebote (Rangfolge) | 1. ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. N/V | Siehe *IPsec-Sicherheitszuordnungsangebote (SA) für routenbasierte Gateways* (unten) |
-| Perfect Forward Secrecy (PFS) | Nein | Ja (DH-Gruppe 1, 2, 5, 14, 24) |
-| Erkennung inaktiver Peers | Nicht unterstützt | Unterstützt |
+| Phase 2 Sicherheitszuordnung (SA) Lebensdauer (Durchsatz) | 102.400.000 KB | - | | IPsec-SA-Verschlüsselung und Authentifizierungsangebote (Rangfolge) | 1. ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. N/V | Siehe *IPsec-Sicherheitszuordnungsangebote (SA) für routenbasierte Gateways* (unten) | | Perfect Forward Secrecy (PFS) | Nein | Ja (DH-Gruppe 1, 2, 5, 14, 24) | | Erkennung inaktiver Peers | Nicht unterstützt | Unterstützt |
 
 ### IPsec-Sicherheitszuordnungsangebote (SA) für routenbasierte Gateways
 
@@ -145,12 +142,11 @@ Die folgende Tabelle listet die IPSec-SA-Verschlüsselungs und -Authentifizierun
 | 14 | AH MD5 mit ESP DES Null HMAC, keine vorgesehene Lebensdauer | AH MD5 mit ESP DES MD5, keine Lebensdauer |
 | 15 | AH SHA1 mit ESP DES SHA1, keine Lebensdauer | ESP SHA, keine Lebensdauer |
 | 16 | AH MD5 mit ESP DES MD5, keine Lebensdauer | ESP MD5, keine Lebensdauer |
-| 17 | - | AH SHA, keine Lebensdauer |
-| 18 | - | AH MD5, keine Lebensdauer |
+| 17 | - | AH SHA, keine Lebensdauer || 18 | - | AH MD5, keine Lebensdauer |
 
 
 - Sie können IPsec-ESP-NULL-Verschlüsselung mit routenbasierten und High-Performance-VPN Gateways angeben. Verschlüsselung auf Basis von NULL bietet keinen Schutz der Daten während der Übertragung und sollte nur verwendet werden, wenn maximaler Durchsatz und minimale Latenz erforderlich sind. Clients können diese in Szenarios mit VNET-zu-VNET-Kommunikation oder bei Anwendung der Verschlüsselung an anderer Stelle in der Lösung verwenden.
 
 - Verwenden Sie für standortübergreifende Konnektivität über das Internet die Standardeinstellungen für Azure-VPN-Gateways mit Verschlüsselung und Hashalgorithmen, die in der Tabelle oben aufgelistet werden, um die Sicherheit Ihrer kritischen Kommunikation zu gewährleisten.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

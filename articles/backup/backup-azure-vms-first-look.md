@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Einstieg: Schützen virtueller Computer in Azure mit Azure Backup | Microsoft Azure"
-	description="Schützen virtueller Azure-Computer mit dem Azure Backup-Dienst Dieses Tutorial erläutert das Erstellen von Tresoren, das Registrieren virtueller Computer, das Erstellen von Richtlinien und das Schützen virtueller Computer in Azure."
+	pageTitle="Einführung: Schützen von Azure-VMs mit einem Sicherungstresor | Microsoft Azure"
+	description="Es wird beschrieben, wie Sie Azure-VMs mit einem Sicherungstresor schützen. Dieses Tutorial erläutert das Erstellen von Tresoren, das Registrieren virtueller Computer, das Erstellen von Richtlinien und das Schützen virtueller Computer in Azure."
 	services="backup"
 	documentationCenter=""
 	authors="markgalioto"
@@ -13,17 +13,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="07/18/2016"
+	ms.date="07/29/2016"
 	ms.author="markgal; jimpark"/>
 
 
 # Einführung: Sichern von virtuellen Azure-Computern
 
 > [AZURE.SELECTOR]
-- [Sichern von ARM-VMs](backup-azure-vms-first-look-arm.md)
-- [Sichern von VMs im klassischen Modus](backup-azure-vms-first-look.md)
+- [Einführung: Schützen von VMs mit einem Recovery Services-Tresor](backup-azure-vms-first-look-arm.md)
+- [Einführung: Schützen von Azure-VMs mit einem Sicherungstresor](backup-azure-vms-first-look.md)
 
-In diesem Tutorial werden die Schritte zum Sichern eines virtuellen Azure-Computers (VM) in einem Sicherungstresor in Azure beschrieben. In diesem Artikel wird das klassische Modell bzw. Service Manager-Bereitstellungsmodell zum Sichern von VMs erläutert. Wenn Sie Informationen zum Sichern einer VM in einem Recovery Services-Tresor benötigen, der einer Ressourcengruppe angehört, können Sie die andere Registerkarte verwenden: „Sichern von ARM-VMs“. Die folgenden Voraussetzungen müssen erfüllt sein, damit Sie dieses Tutorial erfolgreich durcharbeiten können:
+In diesem Tutorial werden die Schritte zum Sichern eines virtuellen Azure-Computers (VM) in einem Sicherungstresor in Azure beschrieben. In diesem Artikel wird das klassische Modell bzw. Service Manager-Bereitstellungsmodell zum Sichern von VMs erläutert. Wenn Sie am Ablauf der Sicherung einer VM in einem Recovery Services-Tresor interessiert sind, der einer Ressourcengruppe angehört, helfen Ihnen die Informationen unter [Einführung: Schützen von VMs mit einem Recovery Services-Tresor](backup-azure-vms-first-look-arm.md) weiter. Die folgenden Voraussetzungen müssen erfüllt sein, damit Sie dieses Tutorial erfolgreich durcharbeiten können:
 
 - Sie haben in Ihrem Azure-Abonnement eine VM erstellt.
 - Der virtuelle Computer ist mit öffentlichen Azure-IP-Adressen verbunden. Weitere Informationen finden Sie unter [Netzwerkverbindung](./backup-azure-vms-prepare.md#network-connectivity).
@@ -34,11 +34,11 @@ Im Folgenden finden Sie die fünf wesentlichen Schritte, die zum Sichern eines v
 
 ![Allgemeiner Überblick über den Sicherungsvorgang für virtuelle Computer](./media/backup-azure-vms-first-look/backupazurevm-classic.png)
 
->[AZURE.NOTE] Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../resource-manager-deployment-model.md). Dieses Tutorial ist für die Verwendung mit VMs bestimmt, die im klassischen Azure-Portal erstellt werden können. Der Azure Backup-Dienst unterstützt auf Azure Resource Manager (ARM) basierende VMs, die auch als IaaS-V2-VMs bezeichnet werden. Weitere Informationen zum Sichern von ARM-VMs finden Sie unter [Einführung: Sichern von ARM-VMs in einem Recovery Services-Tresor](backup-azure-vms-first-look-arm.md).
+>[AZURE.NOTE] Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../resource-manager-deployment-model.md). Dieses Tutorial ist für die Verwendung mit VMs bestimmt, die im klassischen Azure-Portal erstellt werden können. Der Azure Backup-Dienst unterstützt VMs, die auf Resource Manager basieren. Weitere Informationen zum Sichern von virtuellen Computern in einem Recovery Services-Tresor finden Sie unter [Einführung: Schützen von VMs mit einem Recovery Services-Tresor](backup-azure-vms-first-look-arm.md).
 
 
 
-## Schritt 1 – Erstellen eines Sicherungstresors für einen virtuellen Computer
+## Schritt 1 – Erstellen eines Sicherungstresors für einen virtuellen Computer
 
 Bei einem Sicherungstresor handelt es sich um eine Entität, in der alle Sicherungen und Wiederherstellungspunkte gespeichert werden, die im Laufe der Zeit erstellt wurden. Der Sicherungstresor enthält auch die Sicherungsrichtlinien, die auf die zu sichernden virtuellen Computer angewendet werden.
 
@@ -58,7 +58,7 @@ Bei einem Sicherungstresor handelt es sich um eine Entität, in der alle Sicheru
 
 5. Wählen Sie unter **Region** die geografische Region für den Tresor aus. Die Region des Tresors **muss** mit der Region der zu schützenden virtuellen Computer übereinstimmen.
 
-    Falls Sie nicht sicher sind, in welcher Region sich der virtuelle Computer befindet, schließen Sie diesen Assistenten und klicken Sie in der Liste mit den Azure-Diensten auf **Virtuelle Computer**. Die Spalte „Standort“ enthält den Namen der Region. Wenn Sie über virtuelle Computer in verschiedenen Regionen verfügen, sollten Sie in jeder dieser Regionen einen Sicherungstresor erstellen.
+    Falls Sie nicht sicher sind, in welcher Region sich der virtuelle Computer befindet, schließen Sie diesen Assistenten, und klicken Sie in der Liste mit den Azure-Diensten auf **Virtuelle Computer**. Die Spalte „Standort“ enthält den Namen der Region. Wenn Sie über virtuelle Computer in verschiedenen Regionen verfügen, sollten Sie in jeder dieser Regionen einen Sicherungstresor erstellen.
 
 6. Falls im Assistenten das Dialogfeld **Abonnement** nicht vorhanden ist, können Sie mit dem nächsten Schritt fortfahren. Wählen Sie bei Verwendung mehrerer Abonnements ein Abonnement aus, das dem neuen Sicherungstresor zugeordnet werden soll.
 
@@ -82,7 +82,7 @@ Bei einem Sicherungstresor handelt es sich um eine Entität, in der alle Sicheru
 
     ![Liste der Sicherungstresore](./media/backup-azure-vms-first-look/backup-vault-storage-options-border.png)
 
-    Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher. Wählen Sie georedundanten Speicher, wenn Sie Azure als primäre Sicherung verwenden. Wählen Sie lokal redundanten Speicher, wenn Sie eine günstigere und weniger langfristige Option wünschen. Unter [Azure Storage replication](../storage/storage-redundancy.md) (Azure Storage-Replikation) erfahren Sie mehr über die Optionen für georedundante und lokal redundante Speicher.
+    Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher. Wählen Sie georedundanten Speicher, wenn Sie Azure als primäre Sicherung verwenden. Wählen Sie lokal redundanten Speicher, wenn Sie eine günstigere und weniger langfristige Option wünschen. Weitere Informationen zu den Optionen für georedundanten und lokal redundanten Speicher finden Sie in der Übersicht über die [Azure Storage-Replikation](../storage/storage-redundancy.md).
 
 Wenn Sie die Speicheroption für Ihren Tresor ausgewählt haben, können Sie den virtuellen Computer dem Tresor zuordnen. Ermitteln und registrieren Sie die virtuellen Azure-Computer, um mit der Zuordnung zu beginnen.
 
@@ -135,11 +135,11 @@ Führen Sie vor dem Registrieren der VM mit einem Tresor den Ermittlungsvorgang 
 
     ![Registrierungsstatus 2](./media/backup-azure-vms/register-status02.png)
 
-## Schritt 3 – Installieren Sie den VM-Agent auf dem virtuellen Computer.
+## Schritt 3 – Installieren Sie den VM-Agent auf dem virtuellen Computer.
 
 Der Azure VM-Agent muss auf dem virtuellen Azure-Computer installiert werden, damit die Sicherungserweiterung funktioniert. Wenn Ihr virtueller Computer aus dem Azure-Katalog erstellt wurde, ist der VM-Agent auf dem virtuellen Computer bereits vorhanden. Sie können dann mit [Schützen Ihrer VMs](backup-azure-vms-first-look.md#step-4---protect-azure-virtual-machines) fortfahren.
 
-Falls Sie Ihren virtueller Computer aus einem lokalen Rechenzentrum migriert haben, wurde der VM-Agent wahrscheinlich noch nicht für den virtuellen Computer installiert. Sie müssen den VM-Agent auf dem virtuellen Computer installieren, bevor Sie mit dem Schützen des virtuellen Computers fortfahren. Ausführliche Schritte zum Installieren des VM-Agents finden Sie im[Abschnitt zum VM-Agent im Artikel, der das Sichern virtueller Computer behandelt](backup-azure-vms-prepare.md#vm-agent).
+Falls Sie Ihren virtueller Computer aus einem lokalen Rechenzentrum migriert haben, wurde der VM-Agent wahrscheinlich noch nicht für den virtuellen Computer installiert. Sie müssen den VM-Agent auf dem virtuellen Computer installieren, bevor Sie mit dem Schützen des virtuellen Computers fortfahren. Ausführliche Schritte zum Installieren des VM-Agents finden Sie im [Abschnitt zum VM-Agent im Artikel, in dem das Sichern virtueller Computer behandelt wird](backup-azure-vms-prepare.md#vm-agent).
 
 
 ## Schritt 4 – Erstellen der Sicherungsrichtlinie
@@ -180,7 +180,7 @@ Bevor Sie den ersten Sicherungsauftrag ausführen, legen Sie einen Zeitplan für
 
     Nachdem Sie diese Richtlinie nun eingerichtet haben, können Sie mit dem nächsten Schritt fortfahren und die erste Sicherung durchführen.
 
-## Schritt 5 – Erste Sicherung
+## Schritt 5 – Erste Sicherung
 
 Wenn ein virtueller Computer mit einer Richtlinie geschützt wird, können Sie diese Beziehung auf der Registerkarte **Geschützte Elemente** anzeigen. Bis zur Durchführung der ersten Sicherung wird der **Schutzstatus** als **Geschützt (erste Sicherung ausstehend)** angezeigt. Standardmäßig ist die erste geplante Sicherung die *Anfangssicherung*.
 
@@ -213,4 +213,4 @@ Nachdem Sie einen virtuellen Computer erfolgreich gesichert haben, sind unter Um
 ## Fragen?
 Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](http://aka.ms/azurebackup_feedback).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

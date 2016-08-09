@@ -4,7 +4,7 @@
 Zuallererst muss die aktuelle Version der [Azure PowerShell](https://msdn.microsoft.com/library/mt619274.aspx) installiert sein und ausgeführt werden. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../articles/powershell-install-configure.md).
 
 
->[AZURE.NOTE] Viele neue Funktionen von SQL-Datenbank werden nur unter Verwendung des [Azure Resource Manager-Bereitstellungsmodells](../articles/resource-group-overview.md) unterstützt. Daher werden in den Beispielen die [Azure SQL-Datenbank-PowerShell-Cmdlets](https://msdn.microsoft.com/library/azure/mt574084.aspx) für Resource Manager verwendet. Die vorhandenen [(klassischen) Azure SQL-Datenbank-Cmdlets](https://msdn.microsoft.com/library/azure/dn546723.aspx) des klassischen Bereitstellungsmodells werden für die Abwärtskompatibilität zwar unterstützt, aber dennoch wird die Verwendung der Resource Manager-Cmdlets empfohlen.
+>[AZURE.NOTE] Viele neue Funktionen von SQL-Datenbank werden nur bei Verwendung des [Azure Resource Manager-Bereitstellungsmodells](../articles/resource-group-overview.md) unterstützt. Daher werden in den Beispielen die [Azure SQL-Datenbank-PowerShell-Cmdlets](https://msdn.microsoft.com/library/azure/mt574084.aspx) für Resource Manager verwendet. Die vorhandenen [(klassischen) Azure SQL-Datenbank-Cmdlets](https://msdn.microsoft.com/library/azure/dn546723.aspx) des klassischen Bereitstellungsmodells werden für die Abwärtskompatibilität zwar unterstützt, aber dennoch wird die Verwendung der Resource Manager-Cmdlets empfohlen.
 
 
 Führen Sie das Cmdlet [**Add-AzureRmAccount**](https://msdn.microsoft.com/library/mt619267.aspx) aus. Daraufhin wird eine Anmeldeseite angezeigt, auf der Sie Ihre Anmeldeinformationen eingeben müssen. Verwenden Sie die gleichen Anmeldeinformationen wie für die Anmeldung beim Azure-Portal.
@@ -15,4 +15,4 @@ Wenn Sie über mehrere Abonnements verfügen, wählen Sie mit dem Cmdlet [**Set-
 
 	Set-AzureRmContext -SubscriptionId '4cac86b0-1e56-bbbb-aaaa-000000000000'
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

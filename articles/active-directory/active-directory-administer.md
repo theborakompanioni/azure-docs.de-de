@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Verwalten Ihres Azure AD-Verzeichnisses | Microsoft Azure"
-	description="Hier wird erklärt, was ein Azure AD-Mandant ist und wie Azure über Azure Active Directory verwaltet wird."
+	description="Hier wird erklärt, was ein Azure AD-Mandant ist und wie Azure über Azure Active Directory verwaltet wird."
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
@@ -101,8 +101,8 @@ Sie können jedes Verzeichnis als vollständig unabhängige Ressource verwalten:
 
 - **Ressourcenunabhängigkeit**. Wenn Sie eine Ressource in einem Verzeichnis erstellen oder löschen, hat dies keine Auswirkungen auf Ressourcen in einem anderen Verzeichnis. Eine teilweise geltende Ausnahme bilden externe Benutzer, wie unten beschrieben. Wenn Sie eine benutzerdefinierte Domäne "contoso.com" in einem Verzeichnis verwenden, kann sie in keinem anderen Verzeichnis verwendet werden.
 - **Verwaltungsunabhängigkeit**. Wenn ein Benutzer ohne Administratorrechte aus dem Verzeichnis "Contoso" ein Testverzeichnis "Test" erstellt, dann gibt es/geschieht Folgendes:
-    - ◦Das Verzeichnissynchronisierungstool zum Synchronisieren von Daten mit einer einzigen Active Directory-Gesamtstruktur.
-    - ◦Die Administratoren des Verzeichnisses "Contoso" haben keine direkten Administratorberechtigungen für das Verzeichnis "Test", sofern ihnen nicht ein Administrator diese Verzeichnisses die Berechtigungen gesondert erteilt. Die Administratoren von "Contoso" steuern den Zugriff auf das Verzeichnis "Test", da sie das Benutzerkonto steuern, mit dem dieses Verzeichnis erstellt wurde.
+    - Verzeichnissynchronisierungstool zum Synchronisieren von Daten mit einer AD-Gesamtstruktur.
+    - Die Administratoren für das Verzeichnis „Contoso“ haben keine direkten Administratorberechtigungen für das Verzeichnis „Test“, sofern ihnen nicht ein Administrator dieses Verzeichnisses die Berechtigungen explizit erteilt. Die Administratoren von "Contoso" steuern den Zugriff auf das Verzeichnis "Test", da sie das Benutzerkonto steuern, mit dem dieses Verzeichnis erstellt wurde.
 
     Und wenn Sie eine Administratorrolle für einen Benutzer in einem Verzeichnis ändern (hinzufügen oder entfernen), hat die Änderung keine Auswirkungen auf Administratorrollen, die der Benutzer möglicherweise in einem anderen Verzeichnis besitzt.
 
@@ -129,8 +129,8 @@ Die folgenden Bedingungen werden überprüft:
 - Es können keine Anwendungen im Verzeichnis vorhanden sein. Alle Anwendungen müssen gelöscht werden, bevor das Verzeichnis gelöscht werden kann.
 - Es können keine Abonnements für Microsoft-Onlinedienste wie Microsoft Azure, Office 365 oder Azure AD Premium mit dem Verzeichnis verknüpft sein. Wenn z. B. ein Standardverzeichnis für Sie in Azure erstellt wurde, können Sie es nicht löschen, wenn Ihr Azure-Abonnement noch für die Authentifizierung darauf zugreifen muss. Auf ähnliche Weise können Sie kein Verzeichnis löschen, wenn ein anderer Benutzer über ein Abonnement damit verbunden ist. Um Ihr Abonnement einem anderen Verzeichnis zuzuordnen, melden Sie sich beim Azure-Verwaltungsportal an, und klicken Sie im linken Navigationsbereich auf **Einstellungen**. Klicken Sie dann unten auf der Seite **Abonnements** auf **Verzeichnis bearbeiten**. Weitere Informationen zu Azure-Abonnements finden Sie unter [Wie Azure-Abonnements mit Azure AD verknüpft sind](active-directory-how-subscriptions-associated-directory.md).
 
-    > [AZURE.NOTE]
-    Wenn der Benutzer mit einem Geschäfts- oder Schulkonto angemeldet ist, darf er das Basisverzeichnis nicht löschen. Wenn der Benutzer z. B. als joe@contoso.onmicrosoft.com angemeldet ist, kann dieser Benutzer nicht das Verzeichnis mit der Standarddomäne contoso.onmicrosoft.com löschen.
+> [AZURE.NOTE]
+Wenn der Benutzer mit einem Geschäfts- oder Schulkonto angemeldet ist, darf er das Basisverzeichnis nicht löschen. Wenn der Benutzer z. B. als joe@contoso.onmicrosoft.com angemeldet ist, kann dieser Benutzer nicht das Verzeichnis mit der Standarddomäne contoso.onmicrosoft.com löschen.
 
 - Kein Multi-Factor Authentication-Anbieter kann mit dem Verzeichnis verknüpft werden.
 
@@ -148,4 +148,4 @@ Die folgenden Bedingungen werden überprüft:
 [1]: ./media/active-directory-administer/aad_portals.png
 [2]: ./media/active-directory-administer/azure_tenants.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

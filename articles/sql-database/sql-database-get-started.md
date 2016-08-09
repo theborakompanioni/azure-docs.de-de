@@ -4,7 +4,7 @@
 	keywords="Tutorial zu SQL-Datenbank, Erstellen einer SQL-Datenbank"
 	services="sql-database"
 	documentationCenter=""
-	authors="carlrabeler"
+	authors="CarlRabeler"
 	manager="jhubbard"
 	editor=""/>
 
@@ -61,4 +61,4 @@ Nachdem Sie dieses Tutorial zu SQL-Datenbank ausgeführt und eine Datenbank mit 
 
 [Was ist SQL Database?](sql-database-technical-overview.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

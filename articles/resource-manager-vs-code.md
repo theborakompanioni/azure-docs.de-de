@@ -42,7 +42,7 @@ Mit den obigen Schritten wurde die Toolunterstützung installiert, aber jetzt m�
 
 1. Kopieren Sie den Inhalt der Datei aus dem Repository [azure-xplat-arm-tooling](https://raw.githubusercontent.com/Azure/azure-xplat-arm-tooling/master/VSCode/armsnippets.json) in die Zwischenablage.
 2. Starten Sie VS Code.
-3. In VS Code können Sie die Datei mit den JSON-Codeausschnitten öffnen, indem Sie entweder zu **Datei** > **Einstellungen** > **User Snippets** (Benutzercodeausschnitte) > **JSON** navigieren oder **F1** wählen und **Einstellungen** eingeben, bis Sie **Preferences: Snippets** (Einstellungen: Ausschnitte) auswählen können.
+3. In VS Code können Sie die Datei mit den JSON-Codeausschnitten öffnen, indem Sie entweder zu **Datei** > **Einstellungen** > **User Snippets** (Benutzercodeausschnitte) > **JSON** navigieren oder **F1** wählen und **Einstellungen** eingeben, bis Sie **Preferences: Snippets** (Einstellungen: Codeausschnitte) auswählen können.
 
     ![Einstellungen: Ausschnitte](./media/resource-manager-vs-code/preferences-snippets.png)
 
@@ -134,5 +134,6 @@ Wenn die Vorlage fertig ist, können Sie die neuen Ressourcen wie unten beschrie
 
 - Weitere Informationen zu Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 - Informationen zu den Vorlagenfunktionen finden Sie unter [Vorlagenfunktionen im Azure-Ressourcen-Manager](resource-group-template-functions.md).
+- Weitere Beispiele zur Verwendung von Visual Studio Code finden Sie unter [Build cloud apps with Visual Studio Code](https://github.com/Microsoft/HealthClinic.biz/wiki/Build-cloud-apps-with-Visual-Studio-Code) (Erstellen von Cloud-Apps mit Visual Studio Code) in der [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect-[Demo](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/). Weitere Schnellstarts aus der HealthClinic.biz-Demo finden Sie unter [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts) (Schnellstarts zu Azure-Entwicklungstools).
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

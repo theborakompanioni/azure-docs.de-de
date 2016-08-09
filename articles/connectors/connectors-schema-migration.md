@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Gewusst wie: Migrieren von Logik-Apps zur Schemaversion 2015-08-01-preview | Microsoft Azure App Service"
 	description="Sie können Logik-Apps einfach zur neuesten Schemaversion migrieren: Führen Sie einfach die folgenden Schritte aus:"
-	services="app-service\logic"
+	services="logic-apps"
 	documentationCenter=""
 	authors="MSFTMAN"
 	manager="erikre"
@@ -42,4 +42,4 @@ Um Ihre vorhandenen Logik-Apps in das neue Schema zu verschieben, führen Sie fo
 [step1]: ./media/connectors-schema-migration/migrateschema1.png
 [step2]: ./media/connectors-schema-migration/migrateschema2.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

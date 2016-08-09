@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="hero-article"
-	ms.date="07/20/2016"
+	ms.date="08/03/2016"
 	ms.author="adegeo"/>
 
 
@@ -23,8 +23,8 @@ Dieser Artikel enthält eine Übersicht über die Verwendung von Python-Web- und
 
 ## Voraussetzungen
 
- - Visual Studio 2013 oder 2015
- - [Python-Tools für Visual Studio][] \(PTVS)
+ - Visual Studio 2013 oder 2015
+ - [Python-Tools für Visual Studio][] (PTVS)
  - [Azure SDK-Tools für VS 2013][] oder [Azure SDK-Tools für VS 2015][]
  - [Python 2.7 32-Bit][] oder [Python 3.5 32-Bit][]
 
@@ -57,7 +57,7 @@ Sie können Web- oder Workerrollen jederzeit zu einem vorhandenen Cloud-Dienst h
 
 ![Befehl "Rolle hinzufügen"](./media/cloud-services-python-ptvs/add-new-or-existing-role.png)
 
-Ihr Cloud-Dienst kann Rollen enthalten, die in verschiedenen Sprachen implementiert wurden. Sie können beispielsweise eine Python-Webrolle mithilfe von Django in Python- oder C#-Workerrollen implementieren. Sie können mit Service Bus-Warteschlangen oder Speicherwarteschlangen einfach zwischen Ihren Rollen kommunizieren.
+Ihr Cloud-Dienst kann Rollen enthalten, die in verschiedenen Sprachen implementiert wurden. Sie können beispielsweise eine Python-Webrolle mithilfe von Django in Python- oder C#-Workerrollen implementieren. Sie können mit Service Bus-Warteschlangen oder Speicherwarteschlangen einfach zwischen Ihren Rollen kommunizieren.
 
 ## Installieren von Python im Clouddienst
 
@@ -248,18 +248,33 @@ $is_emulated = $env:EMULATED -eq "true"
 $is_python2 = $env:PYTHON2 -eq "on"
 $nl = [Environment]::NewLine
 
-if (-not $is_emulated){
+if (-not $is_emulated)
+{
 	Write-Host "Running worker.py$nl"
 
 	if ($is_python2) {
-        cd..
+		cd..
 		iex "$env:PYPATH\python.exe worker.py"
 	}
 	else {
 		cd..
 		iex "py worker.py"
 	}
-	
+}
+else
+{
+	Write-Host "Running (EMULATED) worker.py$nl"
+
+	# Customize to your local dev environment
+
+	if ($is_python2) {
+		cd..
+		iex "$env:PYPATH\python.exe worker.py"
+	}
+	else {
+		cd..
+		iex "py worker.py"
+	}
 }
 ```
 
@@ -348,4 +363,4 @@ Weitere Details zur Verwendung von Azure-Diensten aus Ihren Web- und Workerrolle
 [Python 2.7 32-bit]: https://www.python.org/downloads/
 [Python 3.5 32-bit]: https://www.python.org/downloads/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->
