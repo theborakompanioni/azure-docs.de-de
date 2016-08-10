@@ -46,7 +46,7 @@ Zum Neustarten eines oder mehrerer Knoten Ihres Caches wählen Sie die gewünsch
 Die Auswirkungen auf Clientanwendungen hängen von den Knoten ab, die Sie neu starten.
 
 -	**Master**: Wenn der Masterknoten neu gestartet wird, führt Azure Redis Cache ein Failover auf den Replikatknoten durch, der zum Master hochgestuft wird. Während dieses Failovers gibt es möglicherweise ein kurzes Intervall, in dem keine Verbindungen mit dem Cache aufgebaut werden können.
--	**Slave**: Wenn der Slaveknoten neu gestartet wird, hat dies meist keine Auswirkungen auf Cacheclients.
+-	**Untergeordneter Knoten**: Wenn der Slaveknoten neu gestartet wird, hat dies meist keine Auswirkungen auf Cacheclients.
 -	**Master und Slave**: Wenn beide Cacheknoten neu gestartet werden, gehen alle Daten im Cache verloren, und es können erst wieder Verbindungen mit dem Cache hergestellt werden, wenn der primäre Knoten wieder online ist. Wenn Sie [Datenpersistenz](cache-how-to-premium-persistence.md) konfiguriert haben, wird die letzten Sicherung wiederhergestellt, sobald der Cache wieder online ist. Beachten Sie, dass alle Cacheschreibvorgänge verloren gehen, die nach der letzten Sicherung durchgeführt wurden.
 -	**Knoten eines Premium-Caches mit aktiviertem Clustering**: Wenn Sie die Knoten eines Premium-Caches mit aktiviertem Clustering neu starten, entspricht das Verhalten dem Neustarten von Knoten eines Caches ohne Cluster.
 
@@ -64,7 +64,7 @@ Die Auswirkungen auf Clientanwendungen hängen von den Knoten ab, die Sie neu st
 
 ### Welche Knoten sollte ich neu starten, um meine Anwendung zu testen?
 
-Um die Stabilität Ihrer Anwendung bei Ausfall des primären Knotens Ihres Caches zu testen, starten Sie den **Master**-Knoten neu. Um die Stabilität Ihrer Anwendung bei Ausfall des sekundären Knotens Ihres Caches zu testen, starten Sie den **Slave**-Knoten neu. Um die Stabilität Ihrer Anwendung bei Ausfall Ihres gesamten Caches zu testen, starten Sie den **beide** Knoten neu.
+Um die Stabilität Ihrer Anwendung bei Ausfall des primären Knotens Ihres Caches zu testen, starten Sie den **Master**-Knoten neu. Um die Stabilität Ihrer Anwendung bei Ausfall des sekundären Knotens Ihres Caches zu testen, starten Sie den **untergeordneten**-Knoten neu. Um die Stabilität Ihrer Anwendung bei Ausfall Ihres gesamten Caches zu testen, starten Sie den **beide** Knoten neu.
 
 ### Kann ich den Cache neu starten, um Clientverbindungen zu löschen?
 
@@ -74,7 +74,7 @@ Ja, wenn Sie den Cache neu starten, werden alle Clientverbindungen gelöscht. Di
 
 ### Gehen beim Neustart Daten aus dem Cache verloren?
 
-Wenn Sie sowohl den **Master**- als auch den **Slave**-Knoten neu starten, gehen alle Daten im Cache (oder im jeweiligen Shard, wenn Sie einen Premium-Cache mit aktiviertem Clustering nutzen) verloren. Wenn Sie [Datenpersistenz](cache-how-to-premium-persistence.md) konfiguriert haben, wird die letzte Sicherung wiederhergestellt, sobald der Cache wieder online ist. Beachten Sie, dass keine Cacheschreibvorgänge verloren gegangen sind, die seit der Sicherung durchgeführt wurden.
+Wenn Sie sowohl den **Master**- als auch den **untergeordneten**-Knoten neu starten, gehen alle Daten im Cache (oder im jeweiligen Shard, wenn Sie einen Premium-Cache mit aktiviertem Clustering nutzen) verloren. Wenn Sie [Datenpersistenz](cache-how-to-premium-persistence.md) konfiguriert haben, wird die letzte Sicherung wiederhergestellt, sobald der Cache wieder online ist. Beachten Sie, dass keine Cacheschreibvorgänge verloren gegangen sind, die seit der Sicherung durchgeführt wurden.
 
 Wenn Sie nur einen der Knoten neu starten, gehen Daten in der Regel nicht verloren, möglicherweise aber doch. Wenn z.B. der Masterknoten neu gestartet und ein Cacheschreibvorgang ausgeführt wird, gehen die Daten des Cacheschreibvorgangs verloren. Ein weiteres Szenario für Datenverlust ist der Fall, in dem Sie einen Knoten neu starten und der andere Knoten aufgrund eines Fehlers gleichzeitig ausfällt. Weitere Informationen zu den möglichen Ursachen für den Datenverlust finden Sie unter [Was ist mit meinen Daten in Redis passiert?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md).
 
