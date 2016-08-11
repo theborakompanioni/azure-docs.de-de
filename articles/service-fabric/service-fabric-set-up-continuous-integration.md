@@ -67,7 +67,7 @@ Eine Team Services-Builddefinition beschreibt einen Workflow, der aus verschiede
       1. Plattform: $(BuildPlatform)
       2. Konfiguration: $(BuildConfiguration)
    3. Visual Studio-Build (Name: Anwendung packen)
-      1. Projektmappe: **\\*.sfproj
+      1. Projektmappe: *\*\\*.sfproj
       2. MSBuild Argumente: /t:Package /p:PackageLocation=$(build.artifactstagingdirectory)\\applicationpackage
       3. Plattform: $(BuildPlatform)
       4. Konfiguration: $(BuildConfiguration)
@@ -75,7 +75,7 @@ Eine Team Services-Builddefinition beschreibt einen Workflow, der aus verschiede
       1. Anwendungspaket: $(build.artifactstagingdirectory)\\applicationpackage
    5. Dateien kopieren
       1. Quellordner: $(build.sourcesdirectory)
-      2. Inhalt: **\\PublishProfiles\\*.xml &lt;new line&gt; **\\ApplicationParameters\\*.xml
+      2. Inhalt: \*\*\PublishProfiles\\\*.xml &lt;new line&gt; \*\*\ApplicationParameters\\\*.xml
       3. Zielordner: $(build.artifactstagingdirectory)\\projectartifacts
    6. Buildartefakte veröffentlichen
       1. Veröffentlichungspfad: $(build.artifactstagingdirectory)
