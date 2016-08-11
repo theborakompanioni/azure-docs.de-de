@@ -106,7 +106,7 @@ Sie müssen mit der Indizierung von Solr mit einigen Datendateien beginnen. Sie 
 
 		curl "http://localhost:8983/solr/collection1/select?q=*%3A*&wt=json&indent=true"
 
-	Dadurch wird eine Abfrage gegen __collection1__ für alle Dokumente ausgestellt, die __*:*__ (codiert als *% 3A* in der Abfragezeichenfolge) entsprechen. Die Antwort sollte im JSON-Format zurückgegeben werden. Die Antwort sollte in etwa wie folgt aussehen:
+	Dadurch wird eine Abfrage gegen __collection1__ für alle Dokumente ausgestellt, die __\*:\*__ (codiert als \*% 3A\* in der Abfragezeichenfolge) entsprechen. Die Antwort sollte im JSON-Format zurückgegeben werden. Die Antwort sollte in etwa wie folgt aussehen:
 
 			"response": {
 			    "numFound": 2,
@@ -184,7 +184,7 @@ Wenn Sie einen SSH-Tunnel eingerichtet haben, gehen Sie folgendermaßen vor, um 
 
 3. Wählen Sie aus den Einträgen unter __collection1__ __Abfrage__ aus. Verwenden Sie die folgenden Werte zum Auffüllen der Suchseite:
 
-	* Geben Sie im Textfeld **q** Folgendes ein: ***:***. Dadurch werden alle Dokumente zurückgegeben, die in Solr indiziert sind. Wenn Sie nach einer bestimmten Zeichenfolge innerhalb der Dokumente suchen möchten, können diese Zeichenfolge hier eingeben.
+	* Geben Sie im Textfeld **q** Folgendes ein: **\*:**\*. Dadurch werden alle Dokumente zurückgegeben, die in Solr indiziert sind. Wenn Sie nach einer bestimmten Zeichenfolge innerhalb der Dokumente suchen möchten, können diese Zeichenfolge hier eingeben.
 
 	* Wählen Sie im Textfeld **wt** das Ausgabeformat aus. Der Standardwert ist **json**.
 

@@ -27,7 +27,7 @@ Diese Funktion ermöglicht Ihnen eine präzisere Steuerung auf [Basis einer Rich
 Sie können diese Funktion in Ihrem B2C-Mandanten wie folgt verwenden:
 
 1. Führen Sie die folgenden Schritte aus, um im Azure-Portal [zum Blatt „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
-2. Klicken Sie auf **Anmelderichtlinien**. *Hinweis: Sie können diese Funktion auf jeden Richtlinientyp anwenden, nicht nur auf *Anmelderichtlinien**.
+2. Klicken Sie auf **Anmelderichtlinien**. *Hinweis: Sie können diese Funktion auf jeden Richtlinientyp anwenden, nicht nur auf **Anmelderichtlinien***.
 3. Öffnen Sie eine Richtlinie, indem Sie darauf klicken. Klicken Sie z. B. auf **B2C\_1\_SiIn**.
 4. Klicken Sie oben auf dem Blatt auf **Bearbeiten**.
 5. Klicken Sie auf **Token, Sitzung und einmaliges Anmelden**.
