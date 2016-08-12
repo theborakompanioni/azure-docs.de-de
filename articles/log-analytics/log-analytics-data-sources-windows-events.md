@@ -66,8 +66,8 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollsuchvorgänge, d
 |:--|:--|
 | Type=Event | Alle Windows-Ereignisse. |
 | Type=Event EventLevelName=error | Alle Windows-Ereignisse mit dem Schweregrad „error“. |
-| Type=Event | Measure count() by Source | Anzahl von Windows-Ereignissen nach Quelle. |
-| Type=Event EventLevelName=error | Measure count() by Source | Anzahl von Windows-Fehlerereignissen nach Quelle. |
+| Type=Event &#124; Measure count() by Source | Anzahl von Windows-Ereignissen nach Quelle. |
+| Type=Event EventLevelName=error &#124; Measure count() by Source | Anzahl von Windows-Fehlerereignissen nach Quelle. |
 
 ## Nächste Schritte
 
