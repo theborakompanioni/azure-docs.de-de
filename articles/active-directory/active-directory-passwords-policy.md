@@ -29,7 +29,7 @@ Jedes Benutzerkonto, das sich beim Azure AD-Authentifizierungssystem anmeldet, m
 
 | Eigenschaft | UserPrincipalName-Richtlinien |
 |   ----------------------- |   ----------------------- |
-| Zulässige Zeichen | <ul> <li>A – Z</li> <li>a -z </li><li>0 – 9</li> <li> . - \_ ! # ^ ~</li></ul> |
+| Zulässige Zeichen | <ul> <li>A – Z</li> <li>a -z </li><li>0 – 9</li> <li> . - \_ !\# ^ \~</li></ul> |
 | Unzulässige Zeichen | <ul> <li>Alle @-Zeichen, die nicht den Benutzernamen und die Domäne trennen.</li> <li>Darf keinen Punkt (.) unmittelbar vor dem @-Symbol enthalten.</li></ul> |
 | Längenbeschränkungen | <ul> <li>Die Gesamtlänge darf 113 Zeichen nicht überschreiten.</li><li>64 Zeichen vor dem @-Symbol</li><li>48 Zeichen nach dem @-Symbol</li></ul>
 
