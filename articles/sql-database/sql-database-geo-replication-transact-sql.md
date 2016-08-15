@@ -3,7 +3,7 @@
     description="Konfigurieren der Georeplikation für Azure SQL-Datenbank mit Transact-SQL"
     services="sql-database"
     documentationCenter=""
-    authors="carlrabeler"
+    authors="CarlRabeler"
     manager="jhubbard"
     editor=""/>
 
@@ -187,4 +187,4 @@ Im April 2017 wird der nicht lesbare sekundäre Typ eingestellt, und vorhandene 
 - Weitere Informationen zur aktiven Georeplikation finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
 - Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

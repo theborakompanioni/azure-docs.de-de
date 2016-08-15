@@ -5,7 +5,9 @@
 	documentationCenter=""
 	authors="rothja"
 	manager="jeffreyg"
-	editor="monicar"/>
+	editor=""
+	tags="billing"
+	/>
 
 <tags
 	ms.service="multiple"
@@ -13,8 +15,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/26/2016"
-	ms.author="jroth"/>
+	ms.date="08/03/2016"
+	ms.author="btardif"/>
 
 # Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 
@@ -65,7 +67,7 @@ Daher sollten Sie gegebenenfalls überlegen, wie hoch Ihre Azure-Ressourcengrupp
 - [Operational Insights](#operational-insights-limits)
 - [Ressourcengruppe](#resource-group-limits)
 - [Scheduler](#scheduler-limits)
-- [Suchen](#search-limits)
+- [Suchen,](#search-limits)
 - [Service Bus](#service-bus-limits)
 - [Site Recovery](#site-recovery-limits)
 - [SQL-Datenbank](#sql-database-limits)
@@ -301,4 +303,4 @@ Einschränkungen für SQL-Datenbanken finden Sie unter [Ressourceneinschränkung
 
 [Größen für Cloud Services](cloud-services/cloud-services-sizes-specs.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

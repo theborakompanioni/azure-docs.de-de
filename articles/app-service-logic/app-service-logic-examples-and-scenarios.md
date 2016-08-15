@@ -1,9 +1,9 @@
 <properties
    pageTitle="Beispiele und Szenarios für Logik-Apps | Microsoft Azure"
    description="Hier finden Sie Informationen zu häufig verwendeten Logik-Apps und zum Implementieren verschiedener Szenarios."
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
-   authors="msftman"
+   authors="jeffhollan"
    manager="erikre"
    editor=""/>
 
@@ -13,34 +13,39 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="04/25/2016"
-   ms.author="deonhe"/>
+   ms.date="08/01/2016"
+   ms.author="jehollan"/>
 
 # Beispiele und häufige Szenarios für Logik-Apps
 
 In diesem Artikel werden häufige Szenarios und Beispiele für die Verwendung von Logik-Apps zum Automatisieren von Geschäftsprozessen erläutert.
 
-## Auslösen einer Logik-App
+## Trigger und Aktionen
 
 Sie können eine Logik-App auf verschiedene Weise über eine andere App auslösen. Hier einige Beispiele:
 
-- [HTTP-Anforderung (POST)](app-service-logic-http-endpoint.md)
-- [Empfangen eines Webhooks](app-service-logic-create-api-app.md)
-- [Abrufen eines Endpunkts](app-service-logic-create-api-app.md)
+- [Erstellen eines benutzerdefinierten Triggers oder einer benutzerdefinierten Aktion](app-service-logic-create-api-app.md)
+- [Aktionen mit langer Ausführungszeit](app-service-logic-create-api-app.md)
+- [HTTP-Anforderungstrigger (POST)](app-service-logic-http-endpoint.md)
+- [Webhooktrigger und -aktionen](app-service-logic-create-api-app.md)
+- [Abfragetrigger](app-service-logic-create-api-app.md)
 
 ### Szenarios
 
-- [Logik-Apps als aufrufbare Endpunkte](app-service-logic-http-endpoint.md)
+- [Anfordern synchroner Antworten](app-service-logic-http-endpoint.md)
 
-## Benutzerdefinierte und lang ausgeführte Aktionen
+## Fehlerbehandlung und Protokollierung
 
-- [Erstellen einer benutzerdefinierten Aktion](app-service-logic-create-api-app.md)
+- [Konfigurieren von Azure-Warnungen und Diagnose](app-service-logic-monitor-your-logic-apps.md)
 
-## Bereitstellen und Verwalten von Logik-Apps
+### Szenarios
 
-- [Create a Logic App Deployment Template](app-service-logic-create-deploy-template.md) (Erstellen einer Bereitstellungsvorlage für Logik-Apps)
-- [Diagnosing Issues with a Logic App](app-service-logic-diagnosing-failures.md) (Diagnostizieren von Problemen mit Logik-Apps)
-- [Bereitstellen einer Logik-App von Visual Studio aus](app-service-logic-deploy-from-vs.md)
+- [Anwendungsfall: Fehler- und Ausnahmebehandlung](app-service-logic-scenario-error-and-exception-handling.md)
+
+## Bereitstellen und Verwalten
+
+- [Erstellen einer automatisierten Bereitstellung](app-service-logic-create-deploy-template.md)
+- [Erstellen und Bereitstellen von Logik-Apps von Visual Studio aus](app-service-logic-deploy-from-vs.md)
 - [Überwachen von Logik-Apps](app-service-logic-monitor-your-logic-apps.md)
 
 ## Inhaltstypen, Konvertierungen und Transformationen
@@ -72,4 +77,4 @@ Die [Definitionssprache für Workflows](http://aka.ms/logicappsdocs) in Logik-Ap
 
 Wir werden diesem Artikel weitere Beispiele und Szenarios hinzufügen. Im Bereich „Kommentare“ unten können Sie uns Wünsche zu Beispielen oder Szenarios mitteilen.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

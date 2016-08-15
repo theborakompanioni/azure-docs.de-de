@@ -1,7 +1,7 @@
 <properties
    pageTitle="Tutorial: Verarbeiten von EDIFACT-Rechnungen mit Azure BizTalk Services | Microsoft Azure BizTalk Services"
    description="Erstellen und Konfigurieren des Box-Connectors oder einer API-App und Verwenden in einer Logik-App in Azure App Service"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="msftman"
    manager="erikre"
@@ -313,4 +313,4 @@ Der wichtigste Aspekt beim Arbeiten mit Batches besteht in der eigentlichen Frei
 [17]: ./media/biztalk-process-edifact-invoice/process-edifact-invoices-with-auzure-bts-17.PNG
 [18]: ./media/biztalk-process-edifact-invoice/process-edifact-invoices-with-auzure-bts-18.PNG
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

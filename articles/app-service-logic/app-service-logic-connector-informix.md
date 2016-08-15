@@ -1,7 +1,7 @@
 <properties
    pageTitle="Verwenden des Informix-Connectors in Microsoft Azure App Service | Microsoft Azure"
    description="Sie erfahren, wie Sie den Informix-Connector mit Triggern und Aktionen für Logik-Apps verwenden."
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="gplarsen"
    manager="erikre"
@@ -67,7 +67,7 @@ PollToAlterData | Nein | UPDATE- oder DELETE-Anweisung zum Verwenden mit einem L
 ## Logik-App mit Informix-Connectoraktion zum Hinzufügen von Daten ##
 Sie können eine Logik-App-Aktion definieren, um Daten einer Informix-Tabelle mit einem OData-Vorgang vom Typ „API einfügen“ oder „Post an Entität“ hinzuzufügen. Beispielsweise können Sie einen neuen Datensatz mit einer Kundenbestellung einfügen, indem Sie eine SQL INSERT-Anweisung für eine Tabelle verarbeiten, die mit einer Identitätsspalte definiert wurde, und den Identitätswert oder die betroffenen Zeilen an die Logik-App zurückgeben (SELECT ORDID FROM FINAL TABLE (INSERT INTO NEWORDERS (CUSTID,SHIPNAME,SHIPADDR,SHIPCITY,SHIPREG,SHIPZIP) VALUES (?,?,?,?,?,?))).
 
-> [AZURE.TIP] Mit der Informix-Verbindung „*Post an EntitySet*“ wird der Wert der Identitätsspalte zurückgegeben, und mit „*API einfügen*“ werden betroffene Zeilen zurückgegeben.
+> [AZURE.TIP] Mit der Informix-Verbindung „ *Post an EntitySet* “ wird der Wert der Identitätsspalte zurückgegeben, und mit „ *API einfügen* “ werden betroffene Zeilen zurückgegeben.
 
 1. Wählen Sie im Azure-Startmenü **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
 2. Geben Sie den Namen (z. B. „NewOrdersInformix“), den App Service-Plan und andere Eigenschaften ein, und wählen Sie **Erstellen**.
@@ -274,4 +274,4 @@ Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connec
 [13]: ./media/app-service-logic-connector-informix/LogicApp_RemoveOrdersInformix_TriggersActions.png
 [14]: ./media/app-service-logic-connector-informix/LogicApp_RemoveOrdersInformix_Outputs.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

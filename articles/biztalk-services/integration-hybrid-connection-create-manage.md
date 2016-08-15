@@ -21,12 +21,20 @@
 
 
 ## Übersicht über die Schritte
-1. Erstellen Sie eine Hybridverbindung, indem Sie den Hostnamen oder die IP-Adresse der lokalen Ressource im privaten Netzwerk eingeben.
+1. Erstellen Sie eine Hybridverbindung, indem Sie den **Hostnamen** oder den **FQDN** der lokalen Ressource im privaten Netzwerk eingeben.
 2. Verknüpfen Sie Ihre Azure-Web-Apps bzw. mobile Azure-Apps mit der Hybridverbindung.
 3. Installieren Sie den Hybrid Connection Manager auf der lokalen Ressource, und stellen Sie eine Verbindung zur betreffenden Hybridverbindung her. Das Azure-Portal stellt ein Ein-Klick-Verfahren für die Installation und Verbindung bereit.
 4. Verwalten Sie Hybridverbindungen und deren Verbindungsschlüssel.
 
 In diesem Thema werden diese Schritte aufgeführt.
+
+> [AZURE.IMPORTANT] Sie können einen Hybridverbindungsendpunkt auf eine IP-Adresse festlegen. Bei Verwendung einer IP-Adresse hängt es vom Client ab, ob die lokale Ressource erreichbar ist. Die Hybridverbindung ist darauf angewiesen, dass der Client eine DNS-Suche ausführt. In den meisten Fällen handelt es sich beim __Client__ um den Anwendungscode. Falls der Client keine DNS-Suche ausführt (er versucht nicht, die IP-Adresse aufzulösen, als handele es sich um einen Domänennamen (x.x.x.x)), wird der Datenverkehr nicht über die Hybridverbindung gesendet.
+>
+> Beispiel: Sie legen **10.4.5.6** als lokalen Host fest:
+> 
+> **Das folgende Szenario funktioniert:** `Application code -> GetHostByName("10.4.5.6") -> Resolves to 127.0.0.3 -> Connect("127.0.0.3") -> Hybrid Connection -> on-prem host`
+> 
+> **Das folgende Szenario funktioniert nicht:** `Application code -> Connect("10.4.5.6") -> ?? -> No route to host`
 
 
 ## <a name="CreateHybridConnection"></a>Erstellen einer Hybridverbindung
@@ -48,7 +56,7 @@ Eine Hybridverbindung kann im Azure-Portal anhand von Web-Apps **oder** BizTalk 
 	Eigenschaft | Beschreibung
 --- | ---
 Name | Der Name der Hybridverbindung muss eindeutig sein, und es darf sich nicht um den Namen des BizTalk Service handeln. Sie können jeden beliebigen Namen eingeben; er sollte aber auf den Zweck hinweisen. Beispiele:<br/><br/>Lohnbuch*SQLServer*<br/>Lieferliste*SharepointServer*<br/>Kunden*OracleServer*
-Hostname | Geben Sie den vollständig qualifizierten Hostnamen, nur den Hostnamen oder die IPv4-Adresse der lokalen Ressource ein. Beispiele:<br/><br/>mySQLServer<br/>*mySQLServer*.*Domain*.corp.*IhrUnternehmen*.com<br/>*MeinHTTPSharePointServer*<br/>*MeinHTTPSharePointServer*.*IhrUnternehmen*.com<br/>10.100.10.10
+Hostname | Geben Sie den vollständig qualifizierten Hostnamen, nur den Hostnamen oder die IPv4-Adresse der lokalen Ressource ein. Beispiele:<br/><br/>mySQLServer<br/>*mySQLServer*.*Domain*.corp.*yourCompany*.com<br/>*myHTTPSharePointServer*<br/>*myHTTPSharePointServer*.*yourCompany*.com<br/>10.100.10.10<br/><br/>Beachten Sie bei Verwendung der IPv4-Adresse, dass Ihr Client- oder Anwendungscode die IP-Adresse unter Umständen nicht auflöst. Lesen Sie den wichtigen Hinweis am Anfang dieses Themas.
 Port | Geben Sie die Portnummer der lokalen Ressource ein. Wenn Sie Web-Apps verwenden, geben Sie beispielsweise Port 80 oder Port 443 ein. Wenn Sie SQL Server verwenden, geben Sie Port 1433 ein.
 
 5. Wählen Sie das Häkchen aus, um das Setup abzuschließen.
@@ -120,7 +128,7 @@ Zum Verwalten der Hybridverbindungen haben Sie folgende Möglichkeiten:
 	**Verbindungen verwalten** führt die Anwendung und die Vor-Ort-Verbindungszeichenfolgen auf. Sie können die Verbindungszeichenfolgen kopieren oder den Zugriffsschlüssel in der Verbindungszeichenfolge regenerieren.
 
 	**Wenn Sie "Regenerieren" auswählen**, verändert sich der freigegebene Zugriffsschlüssel innerhalb der Verbindungszeichenfolge. Gehen Sie wie folgt vor:
-	- Wählen Sie im klassischen Azure-Portal in der Azure-Anwendung **Synchronisierungsschlüssel** aus.
+	- Wählen Sie im klassischen Azure-Portal in der Azure-Anwendung **Synchronisierungsschlüssel**.
 	- Führen Sie das **lokale Setup** erneut aus. Wenn Sie das lokale Setup erneut ausführen, wird die lokale Ressource automatisch für die Verwendung der aktualisierten primären Verbindungszeichenfolge konfiguriert.
 
 
@@ -152,4 +160,4 @@ Nach dem Kopieren können Sie den Gruppenrichtlinien-Editor verwenden, um die Ri
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionManageConn.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

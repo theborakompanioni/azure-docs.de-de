@@ -70,7 +70,7 @@ azure vm reset-access -g <resource group> <vm name> -u <username> -p <new passwo
 Wenn Sie die SSH-Schlüsselauthentifizierung verwenden, können Sie den SSH-Schlüssel für einen bestimmten Benutzer zurücksetzen:
 
 ```bash
-azure vm reset-access -g <resource group> -n <vm name> -u <usernamer> -M <~/.ssh/azure_id_rsa.pub>
+azure vm reset-access -g <resource group> -n <vm name> -u <username> -M <~/.ssh/azure_id_rsa.pub>
 ```
 
 #### Erweiterungen für den Zugriff auf virtuelle Computer
@@ -97,7 +97,7 @@ azure vm extension set <resource group> <vmname> VMAccessForLinux Microsoft.OSTC
 ```
 
 ### Erneutes Bereitstellen eines virtuellen Computers
-Sie können einen virtuellen Computer in Azure auf einem anderen Knoten erneut bereitstellen und dadurch möglicherweise zugrunde liegende Netzwerkprobleme beheben. Um einen virtuellen Computer im Azure-Portal erneut bereitzustellen, wählen Sie **Durchsuchen** > **Virtuelle Computer ** > *Ihr virtueller Linux-Computer* > **Erneut bereitstellen**. Informationen hierzu finden Sie unter [Einen virtuellen Computer in einem neuen Azure-Knoten erneut bereitstellen](virtual-machines-windows-redeploy-to-new-node.md). Zurzeit können Sie virtuelle Computer nicht über die Azure-Befehlszeilenschnittstelle erneut bereitstellen.
+Sie können einen virtuellen Computer in Azure auf einem anderen Knoten erneut bereitstellen und dadurch möglicherweise zugrunde liegende Netzwerkprobleme beheben. Um einen virtuellen Computer im Azure-Portal erneut bereitzustellen, wählen Sie **Durchsuchen** > **Virtuelle Computer** > *Ihr virtueller Linux-Computer* > **Erneut bereitstellen**. Informationen hierzu finden Sie unter [Einen virtuellen Computer in einem neuen Azure-Knoten erneut bereitstellen](virtual-machines-windows-redeploy-to-new-node.md). Zurzeit können Sie virtuelle Computer nicht über die Azure-Befehlszeilenschnittstelle erneut bereitstellen.
 
 > [AZURE.NOTE] Beachten Sie, dass nach Beenden dieses Vorgangs kurzlebige Datenträgerdaten verloren gehen und dynamische, dem virtuellen Computer zugeordnete IP-Adressen aktualisiert werden.
 
@@ -134,4 +134,4 @@ Führen Sie die folgenden Schritte aus, um die häufigsten SSH-Verbindungsfehler
 
 - Weitere Informationen zur Problembehandlung bei virtuellen Computern, die mit dem klassischen Bereitstellungsmodell erstellt wurden, finden Sie unter [Zurücksetzen eines Kennworts oder eines SSH-Schlüssels für Linux-basierte virtuelle Computer](virtual-machines-linux-classic-reset-access.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

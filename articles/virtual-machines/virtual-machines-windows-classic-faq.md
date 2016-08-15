@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Häufig gestellte Fragen zu virtuellen Computern | Microsoft Azure"
-	description="Hier finden Sie Antworten auf die häufigsten Fragen zu virtuellen Azure-Computern, die mit dem klassischen Bereitstellungsmodell erstellt wurden."
+	pageTitle="Häufig gestellte Fragen zu klassischen virtuellen Computern | Microsoft Azure"
+	description="Hier finden Sie Antworten auf die häufigsten Fragen zu virtuellen Azure-Computern unter Windows, die mit dem klassischen Bereitstellungsmodell erstellt wurden."
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="cynthn"
@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/05/2016"
+	ms.date="07/28/2016"
 	ms.author="cynthn"/>
 
-# Häufig gestellte Fragen zu virtuellen Azure-Computern, die mit dem klassischen Bereitstellungsmodell erstellt wurden
+# Häufig gestellte Fragen zu virtuellen Azure-Computern unter Windows, die mit dem klassischen Bereitstellungsmodell erstellt wurden
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 [AZURE.INCLUDE [virtual-machines-common-classic-faq](../../includes/virtual-machines-common-classic-faq.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,7 +1,7 @@
 <properties
 pageTitle="SMTP | Microsoft Azure"
 description="Erstellen Sie Logik-Apps mit Azure App Service. Stellen Sie eine SMTP-Verbindung her, um E-Mails zu senden."
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -89,11 +89,9 @@ Im Anschluss finden Sie ausführliche Informationen zu den Aktionen für diesen 
 Dieser Vorgang sendet eine E-Mail an einen oder mehrere Empfänger.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|To  
-|To  
-|Geben Sie E-Mail-Adressen an, und trennen Sie sie jeweils durch ein Semikolon. (Beispiel: recipient1@domain.com;recipient2@domain.com)|
+|To |To |Geben Sie E-Mail-Adressen an, und trennen Sie sie jeweils durch ein Semikolon. (Beispiel: recipient1@domain.com;recipient2@domain.com)|
 |CC|cc|Geben Sie E-Mail-Adressen an, und trennen Sie sie jeweils durch ein Semikolon. (Beispiel: recipient1@domain.com;recipient2@domain.com)|
 |Betreff|Betreff|E-Mail-Betreff|
 |Body|Body|E-Mail-Text|
@@ -128,4 +126,4 @@ Von den oben angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

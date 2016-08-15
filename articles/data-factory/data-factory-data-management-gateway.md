@@ -196,7 +196,7 @@ Auf Ebene der Unternehmensfirewall müssen Sie die folgenden Domänen und ausgeh
 | Domänennamen | Ports | Beschreibung |
 | ------ | --------- | ------------ |
 | *.servicebus.windows.net | 443, 80 | Listener auf Service Bus Relay per TCP (443 für Access Control-Tokenbeschaffung erforderlich) | 
-| *.servicebus.windows.net | 9350 - 9354 | Optionales Service Bus Relay per TCP | 
+| *.servicebus.windows.net | 9350-9354, 5671 | Optionales Service Bus Relay per TCP | 
 | *.core.windows.net | 443 | HTTPS | 
 | *.clouddatahub.net | 443 | HTTPS | 
 | graph.windows.net | 443 | HTTPS |
@@ -426,4 +426,4 @@ Sie können ein Gateway mit dem **Remove-AzureRmDataFactoryGateway**-Cmdlet entf
 ## Nächste Schritte
 - Ausführliche Informationen über das Gateway finden Sie in dem Artikel [Data Management Gateway](data-factory-data-management-gateway.md) (Datenverwaltungsgateway).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

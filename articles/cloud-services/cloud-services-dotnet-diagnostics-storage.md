@@ -1,19 +1,19 @@
 <properties
-  pageTitle="Speichern und Anzeigen von Diagnosedaten in Azure Storage | Microsoft Azure"
-  description="Azure-Diagnosedaten in den Azure-Speicher abrufen und anzeigen"
-  services="cloud-services"
-  documentationCenter=".net"
-  authors="rboucher"
-  manager="jwhit"
-  editor="tysonn" />
+	pageTitle="Speichern und Anzeigen von Diagnosedaten in Azure Storage | Microsoft Azure"
+	description="Azure-Diagnosedaten in den Azure-Speicher abrufen und anzeigen"
+	services="cloud-services"
+	documentationCenter=".net"
+	authors="rboucher"
+	manager="jwhit"
+	editor="tysonn" />
 <tags
-  ms.service="cloud-services"
-  ms.devlang="na"
-  ms.topic="article"
-  ms.tgt_pltfrm="na"
-  ms.workload="na"
-  ms.date="02/20/2016"
-  ms.author="robb" />
+	ms.service="cloud-services"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="08/01/2016"
+	ms.author="robb" />
 
 # Speichern und Anzeigen von Diagnosedaten im Azure-Speicher
 
@@ -85,7 +85,7 @@ Mehrere Tools stehen zum Anzeigen der Daten nach der Übertragung an den Speiche
 
 - Server-Explorer in Visual Studio – wenn Sie die Azure-Tools für Microsoft Visual Studio installiert haben, können Sie den Azure-Speicherknoten im Server-Explorer zum Anzeigen schreibgeschützter Blob- und Tabellendaten aus Ihren Azure-Speicherkonten verwenden. Sie können Daten aus dem lokalen Speicheremulatorkonto und auch aus den für Azure erstellten Speicherkonten anzeigen. Weitere Informationen finden Sie unter [Durchsuchen und Verwalten von Speicherressourcen mit dem Server-Explorer](../vs-azure-tools-storage-resources-server-explorer-browse-manage.md).
 
-- [Azure Storage Explorer von Neudesic](http://azurestorageexplorer.codeplex.com/) ist ein praktisches Tool mit grafischer Benutzeroberfläche zum Überprüfen und Ändern der Daten in Azure-Speicherprojekten, einschließlich der Protokolle Ihrer Azure-Anwendungen.
+- Bei [Microsoft Azure-Speicher-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine eigenständige App, über die Sie ganz einfach mit Azure Storage-Daten arbeiten können – unter Windows, OSX und Linux.
 
 - [Azure Management Studio](http://www.cerebrata.com/products/azure-management-studio/introduction) enthält Azure Diagnostics Manager, mit dem Sie die Diagnosedaten anzeigen, herunterladen und verwalten können, die von den auf Azure ausgeführten Anwendungen gesammelt werden.
 
@@ -94,4 +94,4 @@ Mehrere Tools stehen zum Anzeigen der Daten nach der Übertragung an den Speiche
 
 [Verfolgen des Ablaufs in einer Cloud Services-Anwendung mit der Azure-Diagnose](cloud-services-dotnet-diagnostics-trace-flow.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,8 +1,8 @@
 <properties
-	pageTitle="CDN – Analysieren der Edgeleistung"
+	pageTitle="Analysieren der Edgeleistung in Azure CDN | Microsoft Azure"
 	description="Analysieren der Leistung von Edgeknoten in Microsoft Azure CDN. Das Edge Performance Analytics-Modul liefert differenzierte Informationen zu Datenverkehr und Bandbreitenauslastung im CDN."
 	services="cdn"
-	documentationCenter=".NET"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
 
 # Analysieren der Leistung von Edgeknoten in Microsoft Azure CDN
@@ -192,4 +192,4 @@ HTTP Response Codes | Bietet eine Aufschlüsselung der HTTP-Statuscodes (z. B. 2
 * [Überschreiben des HTTP-Standardverhaltens mithilfe des Regelmoduls](cdn-rules-engine.md)
 * [Erweiterte HTTP-Berichte](cdn-advanced-http-reports.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

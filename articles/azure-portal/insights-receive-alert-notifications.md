@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Empfangen von Warnbenachrichtigungen" 
-	description="Benachrichtigt werden, wenn die Bedingungen von Warnungsregeln erfüllt sind." 
-	authors="stepsic-microsoft-com" 
-	manager="ronmart" 
-	editor="" 
-	services="azure-portal" 
-	documentationCenter="na"/>
+<properties
+	pageTitle="Empfangen von Warnbenachrichtigungen für Azure-Dienste | Microsoft Azure"
+	description="Benachrichtigt werden, wenn die Bedingungen von Warnungsregeln erfüllt sind."
+	authors="stepsic-microsoft-com"
+	manager="ronmart"
+	editor=""
+	services="monitoring"
+	documentationCenter="monitoring"/>
 
-<tags 
-	ms.service="azure-portal" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/08/2015" 
+<tags
+	ms.service="monitoring"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/08/2015"
 	ms.author="stepsic"/>
 
 # Empfangen von Warnbenachrichtigungen
@@ -65,6 +65,5 @@ Sie können diese Warnungsregel natürlich bearbeiten und **deaktivieren** und w
 * [Überwachen der Anwendungsleistung](insights-perf-analytics.md), um präzise Informationen zur Leistung Ihres Codes in der Cloud zu ermitteln.
 * [Anzeigen von Ereignissen und Überwachungsprotokollen](insights-debugging-with-events.md), um sich über sämtliche Aktivitäten Ihres Diensts zu informieren.
 * [Nachverfolgen des Dienststatus](insights-service-health.md), um den Zeitpunkt von Leistungsabfällen oder Dienstunterbrechungen zu ermitteln, die bei Azure aufgetreten sind.
- 
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0803_2016-->

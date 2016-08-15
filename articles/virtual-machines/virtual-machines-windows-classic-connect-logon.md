@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/05/2016"
+	ms.date="07/28/2016"
 	ms.author="cynthn"/>
 
 
@@ -24,8 +24,9 @@ Im klassischen Azure-Portal können Sie über die Schaltfläche **Verbinden** ei
 
 Möchten Sie eine Verbindung mit einem virtuellen Linux-Computer herstellen? Siehe [Anmelden bei einem mit Linux betriebenen virtuellen Computer](virtual-machines-linux-classic-log-on.md).
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](virtual-machines-windows-connect-logon.md).
+Erfahren Sie, wie Sie [diese Schritte über das neue Azure-Portal ausführen](virtual-machines-windows-connect-logon.md).
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 ## Exemplarische Vorgehensweise per Video
 
@@ -44,7 +45,7 @@ Hier finden Sie ein Video mit einer exemplarischen Vorgehensweise für die Schri
 
 	![Anmelden beim virtuellen Computer](./media/virtual-machines-windows-classic-connect-logon/connectwindows.png)
 	
-> [AZURE.TIP] Wenn die Schaltfläche "Verbinden" nicht verfügbar ist, finden Sie weitere Informationen in den Tipps zur Problembehandlung am Ende dieses Artikels.
+> [AZURE.TIP] Wenn die Schaltfläche **Verbinden** nicht verfügbar ist, finden Sie weitere Informationen in den Tipps zur Problembehandlung am Ende dieses Artikels.
 
 ## Melden Sie sich beim virtuellen Computer an.
 
@@ -57,4 +58,4 @@ Hier finden Sie ein Video mit einer exemplarischen Vorgehensweise für die Schri
 
 Wenn die Tipps nicht funktionieren oder nicht das Gesuchte sind, finden Sie entsprechende Informationen unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](virtual-machines-windows-troubleshoot-rdp-connection.md). Dieser Artikel führt Sie durch die Diagnose und Behebung von häufigen Problemen.
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

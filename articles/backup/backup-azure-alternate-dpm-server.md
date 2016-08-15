@@ -3,7 +3,7 @@
 	description="Wiederherstellen von Daten, die Sie in einem Azure-Sicherungstresor auf einem beliebigen bei diesem Tresor registrierten DPM-Server gesichert haben."
 	services="backup"
 	documentationCenter=""
-	authors="giridharreddy"
+	authors="nkolli1"
 	manager="shreeshd"
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="05/05/2016"
-	ms.author="giridham;jimpark"/>
+	ms.author="giridham;jimpark;trinadhk;markgal"/>
 
 # Wiederherstellen von Daten von einem anderen DPM-Server im Sicherungstresor
 Sie können nun Daten wiederherstellen, die Sie in einem Azure-Sicherungstresor auf einem beliebigen bei diesem Tresor registrierten DPM-Server gesichert haben. Das entsprechende Verfahren ist vollständig in die DPM-Verwaltungskonsole integriert und ähnelt dem anderer Wiederherstellungsworkflows.
@@ -86,8 +86,8 @@ So stellen Sie Daten von einem anderen DPM-Server wieder her
 | :-------------: |:-------------| :-----|
 |1\.|		Dieser Server ist nicht bei dem Tresor registriert, der durch die Tresoranmeldeinformationen angegeben ist.|	**Ursache**: Dieser Fehler wird angezeigt, wenn die ausgewählte Datei mit den Tresoranmeldeinformationen nicht zu dem Sicherungstresor gehört, dem der DPM-Server zugeordnet ist, auf dem die Wiederherstellung versucht wird. <br> **Lösung**: Laden Sie die Anmeldeinformationsdatei für den Tresor aus dem Sicherungstresor herunter, bei dem der DPM-Server registriert ist.|
 |2\.|		Die wiederherzustellenden Daten sind nicht verfügbar, oder der ausgewählte Server ist kein DPM-Server.|	**Ursache**: Es sind keine anderen DPM-Server mit DPM 2012 R2 UR7 bei dem Sicherungstresor registriert, oder die DPM-Server mit DPM 2012 R2 UR7 haben ihre Metadaten noch nicht hochgeladen, oder der ausgewählte Server ist kein DPM-Server (also kein Windows-Server oder Windows-Client). <br> **Lösung**: Wenn noch andere DPM-Server bei dem Sicherungstresor registriert sind, müssen Sie sicherstellen, dass SCDPM 2012 R2 UR7 und der neueste Azure Backup-Agent installiert sind. <br>Sind noch andere DPM-Server mit DPM 2012 R2 UR7 bei dem Sicherungstresor registriert, warten Sie nach der Installation von UR7 einen Tag, um den Wiederherstellungsprozess zu starten. Während der Nacht werden die Metadaten für zuvor geschützte Sicherungen in die Cloud hochgeladen. Die Daten sind dann für die Wiederherstellung verfügbar.|
-|3\.|		Es sind keine anderen DPM-Server bei diesem Tresor registriert.|	**Ursache**: Es sind keine anderen DPM-Server mit DPM 2012 R2 UR7 oder höher bei dem Tresor registriert, von dem die Wiederherstellung versucht wird.<br>**Lösung**: Wenn andere DPM-Server bei dem Sicherungstresor registriert sind, müssen Sie sicherstellen, dass SCDPM 2012 R2 UR7 und der neueste Azure Backup-Agent installiert sind.<br>Sind noch andere DPM-Server mit DPM 2012 R2 UR7 bei dem Sicherungstresor registriert, warten Sie nach der Installation von UR7 einen Tag, um den Wiederherstellungsprozess zu starten. Während der Nacht werden die Metadaten für zuvor geschützte Sicherungen in die Cloud hochgeladen. Die Daten sind dann für die Wiederherstellung verfügbar.|
-|4\.|		Die angegebene Verschlüsselungspassphrase stimmt nicht mit der Passphrase überein, die dem folgenden Server zugeordnet ist: **<server name>**|	**Ursache**: Die beim Verschlüsseln der wiederherzustellenden Daten auf dem DPM-Server verwendete Verschlüsselungspassphrase stimmt nicht mit der angegebenen Verschlüsselungspassphrase überein. Der Agent kann die Daten nicht entschlüsseln. Daher schlägt die Wiederherstellung fehl.<br>**Lösung**: Geben Sie genau dieselbe Verschlüsselungspassphrase in, die dem DPM-Server zugeordnet ist, dessen Daten wiederhergestellt werden sollen.|
+|3\.|		Es sind keine anderen DPM-Server bei diesem Tresor registriert.|	**Ursache**: Es sind keine anderen DPM-Server mit DPM 2012 R2 UR7 oder höher bei dem Tresor registriert, von dem die Wiederherstellung versucht wird.<br>**Lösung:** Wenn andere DPM-Server bei dem Sicherungstresor registriert sind, müssen Sie sicherstellen, dass SCDPM 2012 R2 UR7 und der neueste Azure Backup-Agent installiert sind.<br>Sind noch andere DPM-Server mit DPM 2012 R2 UR7 bei dem Sicherungstresor registriert, warten Sie nach der Installation von UR7 einen Tag, um den Wiederherstellungsprozess zu starten. Während der Nacht werden die Metadaten für zuvor geschützte Sicherungen in die Cloud hochgeladen. Die Daten sind dann für die Wiederherstellung verfügbar.|
+|4\.|		Die angegebene Verschlüsselungspassphrase stimmt nicht mit der Passphrase überein, die dem folgenden Server zugeordnet ist: **<Servername>**|	**Ursache**: Die beim Verschlüsseln der wiederherzustellenden Daten auf dem DPM-Server verwendete Verschlüsselungspassphrase stimmt nicht mit der angegebenen Verschlüsselungspassphrase überein. Der Agent kann die Daten nicht entschlüsseln. Daher schlägt die Wiederherstellung fehl.<br>**Lösung:** Geben Sie genau dieselbe Verschlüsselungspassphrase an, die dem DPM-Server zugeordnet ist, dessen Daten wiederhergestellt werden sollen.|
 
 ## Häufig gestellte Fragen:
 1. **Warum kann ich nach der Installation von UR7 und dem neuesten Azure Backup-Agent keinen externen DPM-Server von einem anderen DPM-Server hinzufügen?**
@@ -103,4 +103,4 @@ So stellen Sie Daten von einem anderen DPM-Server wieder her
 ## Nächste Schritte:
 • [Azure Backup – Häufig gestellte Fragen](backup-azure-backup-faq.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -3,7 +3,7 @@
    description="Microsoft Azure SQL-Datenbank, Datenbankmigration, Datenbank exportieren, BACPAC-Datei exportieren, sqlpackage"
    services="sql-database"
    documentationCenter=""
-   authors="carlrabeler"
+   authors="CarlRabeler"
    manager="jhubbard"
    editor=""/>
 
@@ -27,13 +27,13 @@ Dieser Artikel zeigt, wie Sie eine SQL-Serverdatenbank in eine [BACPAC](https://
 1. Öffnen Sie ein Eingabeaufforderungsfenster, und wechseln Sie in ein Verzeichnis mit dem Befehlszeilen-Hilfsprogramm „sqlpackage.exe“. Dieses Hilfsprogramm ist im Lieferumfang von Visual Studio und SQL Server enthalten. Verwenden Sie die Suche auf dem Computer, um den Pfad in Ihrer Umgebung zu finden.
 2. Führen Sie den folgenden sqlpackage.exe-Befehl mit den unten angegebenen Argumenten für Ihre Umgebung aus:
 
-	'sqlpackage.exe /Action:Export /ssn:< server_name > /sdn:< database_name > /tf:< target_file >
+	'sqlpackage.exe /Action:Export /ssn:< Servername > /sdn:< Datenbankname > /tf:< Zieldatei >
 
 	| Argument | Beschreibung |
 	|---|---|
-	| < server_name > | Name des Quellservers |
-	| < database_name > | Name der Quelldatenbank |
-	| < target_file > | Dateiname und Speicherort für die BACPAC-Datei |
+	| < Servername > | Name des Quellservers |
+	| < Datenbankname > | Name der Quelldatenbank |
+	| < Zieldatei > | Dateiname und Speicherort für die BACPAC-Datei |
 
 	![Exportieren von Datenebenenanwendungen im Menü "Aufgaben"](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage01b.png)
 
@@ -52,4 +52,4 @@ Dieser Artikel zeigt, wie Sie eine SQL-Serverdatenbank in eine [BACPAC](https://
 - [Teilweise oder vollständig unterstützte Transact-SQL-Funktionen](sql-database-transact-sql-information.md)
 - [Migrate non-SQL Server databases using SQL Server Migration Assistant (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

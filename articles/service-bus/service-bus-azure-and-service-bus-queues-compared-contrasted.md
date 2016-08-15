@@ -179,7 +179,7 @@ In diesem Abschnitt werden Azure-Warteschlangen und Service Bus-Warteschlangen i
 |---|---|---|
 |Maximale Warteschlangengröße|**200 TB**<br/><br/>(beschränkt auf die Kapazität eines einzelnen Speicherkontos)|**1–80 GB**<br/><br/>(wird bei Erstellung einer Warteschlange und dem [Aktivieren von Partitionierung](service-bus-partitioning.md) definiert – weitere Informationen finden Sie im Abschnitt "Zusätzliche Informationen")|
 |Maximale Nachrichtengröße|**64 KB**<br/><br/>(48 KB bei Verwendung der **Base64**-Codierung)<br/><br/>Azure unterstützt große Nachrichten, indem Warteschlangen und Blobs kombiniert werden – in diesem Fall können bis zu 200 GB für ein einzelnes Element in der Warteschlange gespeichert werden.|**256 KB** oder **1 MB**<br/><br/>(einschließlich Header und Text. Maximale Headergröße: 64 KB).<br/><br/>Abhängig von der [Preisstufe](service-bus-premium-messaging.md).|
-|Maximaler TTL-Wert der Nachricht|**7 Tage**|**Unbegrenzt**|
+|Maximaler TTL-Wert der Nachricht|**7 Tage**|**`TimeSpan.Max`**|
 |Maximale Anzahl von Warteschlangen|**Unbegrenzt**|**10.000**<br/><br/>(pro Dienstnamespace, kann jedoch erhöht werden)|
 |Maximale Anzahl gleichzeitiger Clients|**Unbegrenzt**|**Unbegrenzt**<br/><br/>(Die Beschränkung auf 100 gleichzeitige Verbindungen gilt nur für die Kommunikation über das TCP-Protokoll.)|
 
@@ -211,8 +211,8 @@ In diesem Abschnitt werden die von Azure-Warteschlangen und Service Bus-Wartesch
 |PHP-API|**Ja**|**Ja**|
 |Node.js-API|**Ja**|**Ja**|
 |Unterstützung beliebiger Metadaten|**Ja**|**Nein**|
-|Benennungsregeln für Warteschlangen|**Bis zu 63 Zeichen**<br/><br/>(Warteschlangennamen müssen in Kleinbuchstaben geschrieben sein.)|**Bis zu 260 Zeichen**<br/><br/>(Bei Warteschlangenpfaden und -namen wird die Groß-/Kleinschreibung nicht unterschieden.)|
-|Funktion zum Abrufen der Warteschlangenlänge|**Ja**<br/><br/>(Ungefährer Wert, wenn Nachrichten nach dem TTL-Wert ablaufen, ohne gelöscht zu werden.)|**Ja**<br/><br/>(Genauer Zeitpunktwert.)|
+|Benennungsregeln für Warteschlangen|**Bis zu 63 Zeichen**<br/><br/>(Warteschlangennamen müssen in Kleinbuchstaben geschrieben sein.)|**Bis zu 260 Zeichen**<br/><br/>(bei Warteschlangenpfaden und -namen wird die Groß-/Kleinschreibung nicht berücksichtigt.)|
+|Funktion zum Abrufen der Warteschlangenlänge|**Ja**<br/><br/>(ungefährer Wert, wenn Nachrichten nach dem TTL-Wert ablaufen, ohne gelöscht zu werden.)|**Ja**<br/><br/>(genauer Zeitpunktwert.)|
 |Peek-Funktion|**Ja**|**Ja**|
 
 ### Zusätzliche Informationen
@@ -249,7 +249,7 @@ In diesem Abschnitt werden Azure-Warteschlangen und Service Bus-Warteschlangen i
 
 - Verwenden Sie mehrere Service Bus-Warteschlangen, um einen höheren Durchsatz zu erzielen. Weitere Informationen zur Leistungsoptimierung mit Service Bus finden Sie unter [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus-Brokermessaging](service-bus-performance-improvements.md).
 
-- Sobald der maximale Durchsatz für eine Service Bus-Warteschlange erreicht ist, wird (bei Verwendung der .NET-API für Messaging) eine [ServerBusyException](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.serverbusyexception.aspx)-Antwort bzw. (bei Verwendung der REST-API) eine HTTP 503-Antwort an den Warteschlangenclient zurückgegeben. Dies weist darauf hin, dass die Warteschlange gedrosselt ist.
+- Sobald der maximale Durchsatz für eine Service Bus-Warteschlange erreicht ist, wird (bei Verwendung der .NET-API für Messaging) eine [ServerBusyException](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.serverbusyexception.aspx)-Antwort bzw. (bei Verwendung der REST-API) eine HTTP 503-Antwort an den Warteschlangenclient zurückgegeben. Diese weisen darauf hin, dass die Warteschlange gedrosselt wird.
 
 ## Authentifizierung und Autorisierung
 
@@ -277,7 +277,7 @@ In diesem Abschnitt werden Azure-Warteschlangen und Service Bus-Warteschlangen i
 |Abrechenbare Vorgänge|**Alle**|**Nur Senden/Empfangen**<br/><br/>(keine Gebühren für andere Vorgänge)|
 |Transaktionen im Leerlauf|**Abrechenbar**<br/><br/>(Die Abfrage einer leeren Warteschlange wird als abrechenbare Transaktion angerechnet.)|**Abrechenbar**<br/><br/>(Ein Empfangsvorgang für eine leere Warteschlange wird als abrechenbare Nachricht angerechnet.)|
 |Speicherkosten|**0,07 $**<br/><br/>(pro GB/Monat)|**0,00 $**|
-|Übertragungskosten für ausgehende Daten|**0,12 - 0,19 $**<br/><br/>(Je nach Geografie.)|**0,12 - 0,19 $**<br/><br/>(Je nach Geografie.)|
+|Übertragungskosten für ausgehende Daten|**0,12 – 0,19 $**<br/><br/>(Je nach Geografie.)|**0,12 – 0,19 $**<br/><br/>(Je nach Geografie.)|
 
 ### Zusätzliche Informationen
 
@@ -314,4 +314,4 @@ Die folgenden Artikel enthalten weitere Anleitungen und Informationen zur Verwen
 [klassischen Azure-Portals]: http://manage.windowsazure.com
  
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

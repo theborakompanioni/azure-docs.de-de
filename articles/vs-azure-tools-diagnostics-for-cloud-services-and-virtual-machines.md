@@ -41,13 +41,13 @@ Es gibt einige wichtige Unterschiede zwischen der Funktion der Verbindungszeiche
 
 - Ab Azure SDK 2.6 wird die Diagnoseverbindungszeichenfolge von Visual Studio während der Veröffentlichung zum Konfigurieren der Diagnoseerweiterung mit den entsprechenden Speicherkontoinformationen verwendet. Mit der Verbindungszeichenfolge können Sie die verschiedenen Speicherkonten für verschiedene Dienstkonfigurationen definieren, die Visual Studio beim Veröffentlichen verwendet. Da das Diagnose-Plug-In (nach Azure SDK 2.5) nicht mehr verfügbar ist, kann jedoch die CSCFG-Datei allein die Diagnoseerweiterung nicht aktivieren. Sie müssen die Erweiterung mithilfe von Tools wie Visual Studio oder PowerShell separat aktivieren.
 
-- Um die Konfiguration der Diagnoseerweiterung mit PowerShell zu vereinfachen, enthält die Paketausgabe von Visual Studio auch die öffentliche Konfigurations-XML für die Diagnoseerweiterung jeder Rolle. Visual Studio verwendet die Diagnoseverbindungszeichenfolge zum Ausfüllen der Speicherkontoinformationen, die in der öffentlichen Konfiguration vorhanden sind. Die öffentlichen Konfigurationsdateien werden im Extensions-Ordner erstellt und haben das folgende Namensgebungsmuster: "PaaSDiagnostics.<RoleName>. PubConfig.xml". Dieses Muster kann von allen PowerShell-basierten Bereitstellungen verwendet werden, um die einzelnen Konfigurationen einer Rolle zuzuordnen.
+- Um die Konfiguration der Diagnoseerweiterung mit PowerShell zu vereinfachen, enthält die Paketausgabe von Visual Studio auch die öffentliche Konfigurations-XML für die Diagnoseerweiterung jeder Rolle. Visual Studio verwendet die Diagnoseverbindungszeichenfolge zum Ausfüllen der Speicherkontoinformationen, die in der öffentlichen Konfiguration vorhanden sind. Die öffentlichen Konfigurationsdateien werden im Extensions-Ordner erstellt und haben das folgende Namensgebungsmuster: PaaSDiagnostics.&lt;RoleName>.PubConfig.xml. Dieses Muster kann von allen PowerShell-basierten Bereitstellungen verwendet werden, um die einzelnen Konfigurationen einer Rolle zuzuordnen.
 
 - Die Verbindungszeichenfolge in der CSCFG-Datei wird auch im [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) verwendet, um auf die Diagnosedaten zuzugreifen, sodass sie auf der Registerkarte **Überwachung** angezeigt werden können. Die Verbindungszeichenfolge ist erforderlich, um den Dienst so zu konfigurieren, dass ausführliche Überwachungsdaten im Portal angezeigt werden.
 
 ## Migrieren von Projekten zu Azure SDK 2.6 und höher
 
-Wenn beim Migrieren von Azure SDK 2.5 zu Azure SDK 2.6 oder höher in der WADCFGX-Datei ein Diagnosespeicherkonto angegeben ist, dann bleibt der Speicherort unverändert. Um von der Flexibilität zu profitieren, verschiedene Speicherkonten für unterschiedliche Speicherkonfigurationen verwenden zu können, müssen Sie die Verbindungszeichenfolge manuell dem Projekt hinzufügen. Wenn Sie ein Projekt von Azure SDK 2.4 oder früher zu Azure SDK 2.6 migrieren, werden die Diagnoseverbindungszeichenfolgen beibehalten. Beachten Sie jedoch die Änderungen im Hinblick auf die Handhabung von Verbindungszeichenfolgen in Azure SDK 2.6, wie im vorherigen Abschnitt beschrieben.
+Wenn beim Migrieren von Azure SDK 2.5 zu Azure SDK 2.6 oder höher in der WADCFGX-Datei ein Diagnosespeicherkonto angegeben ist, dann bleibt der Speicherort unverändert. Um die Flexibilität, die sich aus der Verwendung verschiedener Speicherkonten für unterschiedliche Speicherkonfigurationen ergibt, nutzen zu können, müssen Sie Ihrem Projekt die Verbindungszeichenfolge manuell hinzufügen. Wenn Sie ein Projekt aus Azure SDK 2.4 oder früher zu Azure SDK 2.6 migrieren, werden die Diagnoseverbindungszeichenfolgen beibehalten. Beachten Sie jedoch die Änderungen im Hinblick auf die Handhabung von Verbindungszeichenfolgen in Azure SDK 2.6, wie im vorherigen Abschnitt beschrieben.
 
 ### Bestimmung des Diagnosespeicherkontos durch Visual Studio
 
@@ -67,13 +67,13 @@ Beispiel: Sie aktivieren dieses Kontrollkästchen, und die Diagnoseverbindungsze
 
 Wenn Sie für Ihr Projekt ein Upgrade von Azure SDK 2.4 auf Azure SDK 2.5 oder höher durchführen, sollten Sie die folgenden Diagnosefunktionsunterschiede beachten.
 
-- **Konfigurations-APIs sind veraltet** – In Azure SDK 2.4 oder früheren Versionen ist eine programmgesteuerte Konfiguration der Diagnose verfügbar; diese Funktion ist jedoch in Azure SDK 2.5 und höher veraltet. Wenn die Diagnosekonfiguration derzeit im Code definiert ist, müssen Sie diese Einstellungen im Projekt von Grund auf neu konfigurieren, damit die Diagnose weiterhin funktioniert. Die Diagnosekonfigurationsdatei für Azure SDK 2.4 ist "diagnostics.wadcfg"; in Azure SDK 2.5 oder höher hat sie den Namen "diagnostics.wadcfgx".
+- **Konfigurations-APIs sind veraltet** – In Azure SDK 2.4 oder früheren Versionen ist eine programmgesteuerte Konfiguration der Diagnose verfügbar; diese Funktion ist jedoch in Azure SDK 2.5 und höher veraltet. Wenn die Diagnosekonfiguration derzeit im Code definiert ist, müssen Sie diese Einstellungen im Projekt von Grund auf neu konfigurieren, damit die Diagnose weiterhin funktioniert. Die Diagnosekonfigurationsdatei für Azure SDK 2.4 ist "diagnostics.wadcfg"; in Azure SDK 2.5 oder höher hat sie den Namen "diagnostics.wadcfgx".
 
 - **Diagnose für Clouddienstanwendungen kann nur auf Rollenebene, nicht auf der Instanzebene konfiguriert werden.**
 
-- **Jedes Mal, wenn Sie Ihre App bereitstellen, wird die Diagnosekonfiguration aktualisiert** – Dies kann Paritätsprobleme verursachen, wenn Sie die Diagnosekonfiguration im Server-Explorer ändern und anschließend die App erneut bereitstellen.
+- **Jedes Mal, wenn Sie Ihre App bereitstellen, wird die Diagnosekonfiguration aktualisiert** – Dies kann Paritätsprobleme verursachen, wenn Sie die Diagnosekonfiguration im Server-Explorer ändern und anschließend die App erneut bereitstellen.
 
-- **In Azure SDK 2.5 und höher werden Absturzabbilder in der Diagnosekonfigurationsdatei und nicht im Code konfiguriert** – Wenn Sie Absturzabbilder im Code konfiguriert haben, müssen Sie die Konfiguration manuell vom Code in die Konfigurationsdatei übertragen, da die Absturzabbilder während der Migration zu Azure SDK 2.6 nicht übertragen werden.
+- **In Azure SDK 2.5 und höher werden Absturzabbilder in der Diagnosekonfigurationsdatei und nicht im Code konfiguriert** – Wenn Sie Absturzabbilder im Code konfiguriert haben, müssen Sie die Konfiguration manuell vom Code in die Konfigurationsdatei übertragen, da die Absturzabbilder während der Migration zu Azure SDK 2.6 nicht übertragen werden.
 
 ## Aktivieren der Diagnose in Clouddienstprojekten vor der Bereitstellung
 
@@ -87,7 +87,7 @@ In Visual Studio können Sie Diagnosedaten für Rollen erfassen, die in Azure au
 
     ![Zugreifen auf die Option "Diagnose aktivieren"](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC796660.png)
 
-1. Wählen Sie die Schaltfläche mit dem Auslassungszeichen (...), um das Speicherkonto anzugeben, in dem die Diagnosedaten gespeichert werden sollen. Das ausgewählte Speicherkonto ist der Speicherort, an dem die Diagnosedaten gespeichert werden.
+1. Klicken Sie auf die Schaltfläche mit den Auslassungspunkten (…), um das Speicherkonto anzugeben, in dem die Diagnosedaten gespeichert werden sollen. Die Diagnosedaten werden im ausgewählten Speicherkonto gespeichert.
 
     ![Angeben des zu verwendenden Speicherkontos](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC796661.png)
 
@@ -101,7 +101,7 @@ In Visual Studio können Sie Diagnosedaten für Rollen erfassen, die in Azure au
 
   - Wenn Sie die Option "Manuell eingegebene Anmeldeinformationen" auswählen, werden Sie aufgefordert, den Namen und Schlüssel des gewünschten Azure-Kontos einzugeben.
 
-1. Wählen Sie die Schaltfläche **Konfigurieren** aus, um das Dialogfeld **Diagnosekonfiguration** anzuzeigen. Jede Registerkarte (mit Ausnahme von **Allgemein** und **Protokollverzeichnisse**) stellt eine Quelle für Diagnosedaten dar, die Sie sammeln können. Die Standardregisterkarte **Allgemein** enthält die folgenden Optionen für die Diagnosedatensammlung: **Nur Fehler**, **Alle Informationen** und **Benutzerdefinierter Plan**. Die Standardoption **Nur Fehler** benötigt am wenigsten Speicherplatz, da keine Warnungen oder Ablaufverfolgungsmeldungen übertragen werden. Die Option "Alle Informationen" überträgt die meisten Informationen und ist daher die teuerste Option in Bezug auf Speicher.
+1. Klicken Sie auf die Schaltfläche **Konfigurieren**, um das Dialogfeld mit der Diagnosekonfiguration anzuzeigen. Jede Registerkarte (mit Ausnahme von **Allgemein** und **Protokollverzeichnisse**) stellt eine Diagnosedatenquelle dar, die Sie erfassen können. Die Standardregisterkarte **Allgemein** enthält die folgenden Optionen für die Diagnosedatensammlung: **Nur Fehler**, **Alle Informationen** und **Benutzerdefinierter Plan**. Die Standardoption **Nur Fehler** benötigt am wenigsten Speicherplatz, da keine Warnungen oder Ablaufverfolgungsmeldungen übertragen werden. Die Option "Alle Informationen" überträgt die meisten Informationen und ist daher die teuerste Option in Bezug auf Speicher.
 
     ![Aktivieren der Azure-Diagnose und Konfiguration](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758144.png)
 
@@ -109,7 +109,7 @@ In Visual Studio können Sie Diagnosedaten für Rollen erfassen, die in Azure au
 
 1. Über das Feld **Datenträgerkontingent in MB** können Sie festlegen, wie viel Speicherplatz Sie in Ihrem Speicherkonto für Diagnosedaten zuordnen möchten. Sie können den Standardwert bei Bedarf ändern.
 
-1. Wählen Sie auf jeder Registerkarte der erfassten Diagnosedaten das Kontrollkästchen **Übertragung von <log type> aktivieren** aus. Wählen Sie beispielsweise das Kontrollkästchen **Übertragung von Anwendungsprotokollen aktivieren** auf der Registerkarte **Anwendungsprotokolle** aus, wenn Sie die Anwendungsprotokolle erfassen möchten. Geben Sie auch alle andere Informationen an, die für die einzelnen Diagnosedatentypen erforderlich sind. Die Konfigurationsangaben für jede Registerkarte finden Sie nachfolgend im Abschnitt **Konfigurieren von Diagnosedatenquellen**.
+1. Aktivieren Sie auf jeder Registerkarte für Diagnosedaten, die Sie sammeln möchten, das Kontrollkästchen **Übertragung von <Protokolltyp> aktivieren** aus. Wählen Sie beispielsweise die Kontrollkästchen **Übertragung von Anwendungsprotokollen aktivieren** auf der Registerkarte **Anwendungsprotokolle** aus, wenn Sie Anwendungsprotokolle erfassen möchten. Geben Sie auch alle andere Informationen an, die für die einzelnen Diagnosedatentypen erforderlich sind. Die Konfigurationsangaben für jede Registerkarte finden Sie nachfolgend im Abschnitt **Konfigurieren von Diagnosedatenquellen**.
 
 1. Nachdem Sie die Sammlung aller gewünschten Diagnosedaten aktiviert haben, wählen Sie die Schaltfläche **OK** aus.
 
@@ -149,7 +149,7 @@ In Visual Studio können Sie festlegen, dass Diagnosedaten für virtuelle Azure-
 
 1. Über das Feld **Datenträgerkontingent in MB** können Sie festlegen, wie viel Speicherplatz Sie in Ihrem Speicherkonto für Diagnosedaten zuordnen möchten. Sie können den Standardwert bei Bedarf ändern.
 
-1. Wählen Sie auf jeder Registerkarte für Diagnosedaten, die Sie sammeln möchten, das Kontrollkästchen **Übertragung von <log type> aktivieren** aus.
+1. Aktivieren Sie auf jeder Registerkarte für Diagnosedaten, die Sie sammeln möchten, das Kontrollkästchen **Übertragung von <Protokolltyp> aktivieren** aus.
 
     Wählen Sie beispielsweise die Kontrollkästchen **Übertragung von Anwendungsprotokollen aktivieren** auf der Registerkarte **Anwendungsprotokolle** aus, wenn Sie Anwendungsprotokolle erfassen möchten. Geben Sie auch alle andere Informationen an, die für die einzelnen Diagnosedatentypen erforderlich sind. Die Konfigurationsangaben für jede Registerkarte finden Sie nachfolgend im Abschnitt **Konfigurieren von Diagnosedatenquellen**.
 
@@ -177,7 +177,7 @@ Wählen Sie das Kontrollkästchen **Übertragung von Windows-Ereignisprotokollen
 
   ![Ereignisprotokolle](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC796664.png)
 
-Wenn Sie Azure SDK 2.6 oder höher verwenden und eine benutzerdefinierte Datenquelle angeben möchten, geben Sie sie in das Textfeld **<Data source name>** ein, und wählen Sie dann die Schaltfläche**Hinzufügen** daneben aus. Die Datenquelle wird der Datei "diagnostics.cfcfg" hinzugefügt.
+Wenn Sie Azure SDK 2.6 oder höher verwenden und eine benutzerdefinierte Datenquelle angeben möchten, geben Sie sie in das Textfeld **<Name der Datenquelle>** ein, und wählen Sie dann die Schaltfläche**Hinzufügen** daneben aus. Die Datenquelle wird der Datei "diagnostics.cfcfg" hinzugefügt.
 
 Wenn Sie Azure SDK 2.5 verwenden und eine benutzerdefinierte Datenquelle angeben möchten, können Sie sie dem Abschnitt "`WindowsEventLog`" in der Datei "diagnostics.wadcfgx" hinzufügen, wie im folgenden Beispiel gezeigt.
 
@@ -357,4 +357,4 @@ Legen Sie im Fenster **Eigenschaften** die Eigenschaft **In Ausgabeverzeichnis k
 
 Weitere Informationen zur Diagnoseprotokollierung in Azure finden Sie unter [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](./cloud-services/cloud-services-dotnet-diagnostics.md) und [Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](./app-service-web/web-sites-enable-diagnostic-log.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0803_2016-->

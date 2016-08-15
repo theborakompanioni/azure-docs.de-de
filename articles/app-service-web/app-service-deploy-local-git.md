@@ -24,7 +24,7 @@ In diesem Tutorial erfahren Sie, wie Sie Ihre App aus einem Git-Repository auf d
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- Git. Sie können die Binärdateien für die Installation [hier](http://www.git-scm.com/downloads) herunterladen.  
+- Git. Sie können die Binärdateien für die Installation [hier](http://www.git-scm.com/downloads) herunterladen.
 - Git-Grundkenntnisse.
 - Ein Microsoft Azure-Konto. Wenn Sie kein Konto haben, können Sie sich [für eine kostenlose Testversion registrieren](https://azure.microsoft.com/pricing/free-trial) oder [Ihre Visual Studio-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details).
 
@@ -46,7 +46,7 @@ Führen Sie die folgenden Aufgaben durch, um ein neues Git-Repository zu erstell
 
 App Service unterstützt in verschiedenen Programmiersprachen erstellte Anwendungen.
 
-1. Wenn das Repository bereits Inhalt enthält, überspringen Sie diesen Punkt, und fahren Sie mit Punkt 2 weiter unten fort. Enthält Ihr Repository noch keinen Inhalt, nehmen Sie ihn einfach wie folgt mit einer statischen HTML-Datei auf: 
+1. Wenn das Repository bereits Inhalt enthält, überspringen Sie diesen Punkt, und fahren Sie mit Punkt 2 weiter unten fort. Enthält Ihr Repository noch keinen Inhalt, nehmen Sie ihn einfach wie folgt mit einer statischen HTML-Datei auf:
 
     - Erstellen Sie mit einem Text-Editor eine neue Datei namens **index.html** im Stammverzeichnis des Git-Repositorys.
     - Geben Sie den folgenden Text als Inhalt der Datei „index.html“ ein, und speichern Sie die Datei: *Hello Git!*
@@ -166,7 +166,7 @@ Die folgenden Fehler und Probleme treten häufiger auf, wenn Git zum Veröffentl
 
 * [Git-Dokumentation](http://git-scm.com/documentation)
 * [Project Kudu documentation](https://github.com/projectkudu/kudu/wiki) (Dokumentation für das Projekt Kudu)
-* [Kontinuierliche Bereitstellung in Azure App Service](app-service-continous-deployment.md)
+* [Kontinuierliche Bereitstellung in Azure App Service](app-service-continuous-deployment.md)
 * [Verwenden von PowerShell für Azure](../powershell-install-configure.md)
 * [Verwenden der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md)
 
@@ -180,4 +180,4 @@ Die folgenden Fehler und Probleme treten häufiger auf, wenn Git zum Veröffentl
 [Using Git with CodePlex]: http://codeplex.codeplex.com/wikipage?title=Using%20Git%20with%20CodePlex&referringTitle=Source%20control%20clients&ProjectName=codeplex
 [Quick Start - Mercurial]: http://mercurial.selenic.com/wiki/QuickStart
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

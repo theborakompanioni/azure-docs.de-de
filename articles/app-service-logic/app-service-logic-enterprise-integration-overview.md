@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Übersicht über die Unternehmensintegration | Microsoft Azure App Service | Microsoft Azure" 
 	description="Nutzen Sie die Enterprise Integration-Features, um die Integration von Geschäftsprozessen mithilfe von Logik-Apps zu ermöglichen." 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
 	manager="erikre" 
@@ -61,4 +61,4 @@ Für die Unternehmensintegration werden unterstützt diese Branchenstandards unt
 - [Überprüfung von XML-Nachrichten](./app-service-logic-enterprise-integration-xml.md "Informationen zum Überprüfen von XML-Nachrichten mit Logik-Apps")
 - [XML-Transformation](./app-service-logic-enterprise-integration-transform.md "Informationen zu Zuordnungen für die Unternehmensintegration")
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

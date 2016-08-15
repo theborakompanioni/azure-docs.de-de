@@ -67,7 +67,6 @@ Klicken Sie auf die Registerkarte **KONFIGURIEREN**.
 Auf der Registerkarte "Konfiguration" haben Sie folgende Möglichkeiten:
 
 - Blockieren des Zugriffs auf den Machine Learning-Arbeitsbereich, indem Sie auf "DENY" klicken. Benutzer können den Arbeitsbereich dann nicht mehr in Machine Learning Studio öffnen. Klicken Sie auf "ALLOW", um den Zugang wiederherzustellen.
-- Ändern des Besitzers des Arbeitsbereichs, indem Sie ein anderes Microsoft-Konto angeben.
 
 Um zusätzliche Konten zu verwalten, die Zugriff auf den Arbeitsbereich in Machine Learning Studio haben, klicken Sie auf der Registerkarte **DASHBOARD** auf**Bei ML Studio anmelden** (siehe obigen Hinweis zu **ML Studio anmelden**). Dadurch wird der Arbeitsbereich in Machine Learning Studio geöffnet. Klicken Sie dort auf die Registerkarte **EINSTELLUNGEN** und dann auf **BENUTZER**. Sie können auf **INVITE MORE USERS** klicken, um Benutzern den Zugriff auf den Arbeitsbereich zu gewähren, oder einen Benutzer auswählen und durch Klicken auf **ENTFERNEN** entfernen.
 
@@ -97,4 +96,4 @@ Klicken Sie auf die Registerkarte **KONFIGURIEREN**, um die Beschreibung zu bear
 [consume]: machine-learning-consume-web-services.md
 [marketplace]: machine-learning-publish-web-service-to-azure-marketplace.md
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

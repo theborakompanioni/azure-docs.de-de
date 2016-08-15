@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Unternehmensintegration mit EDIFACT | Microsoft Azure" 
 	description="Es wird beschrieben, wie Sie EDIFACT-Vereinbarungen zum Erstellen von Logik-Apps verwenden." 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="jeffhollan" 
 	manager="erikre" 
@@ -34,8 +34,8 @@ Nachdem Sie [ein Integrationskonto erstellt](./app-service-logic-enterprise-inte
 
 ### Auf der Startseite des Azure-Portals
 
-Nach Anmeldung beim [Azure-Portal](http://portal.azure.com "Azure-Portal"):
-1. Wählen Sie im Menü links **Durchsuchen** aus.
+Nach der Anmeldung beim [Azure-Portal](http://portal.azure.com "Azure-Portal"):
+1. Wählen Sie im Menü links **Durchsuchen**.
 
 >[AZURE.TIP]Wenn der Link **Durchsuchen** nicht angezeigt wird, müssen Sie möglicherweise zuerst das Menü erweitern. Wählen Sie dazu den Link **Menü anzeigen** aus, der sich links oben neben dem reduzierten Menü befindet.
 
@@ -178,4 +178,4 @@ Gehen Sie auf dem geöffneten Blatt nach der Auswahl von **OK** wie folgt vor:
 ## Weitere Informationen
 - [Weitere Informationen zum Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

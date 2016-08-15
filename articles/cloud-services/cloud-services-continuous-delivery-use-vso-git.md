@@ -224,7 +224,7 @@ Wenn Sie Git verwenden, nehmen Sie die Änderungen normalerweise an einer Arbeit
 
 ## Nächste Schritte
 
-Zusätzliche Tipps zur Verwendung von Git mit Visual Studio Team Services finden Sie unter [Entwickeln und Freigeben von Code in Git mit Visual Studio](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx). Informationen zur Verwendung eines nicht von Visual Studio Team Services verwalteten Git-Repositorys zur Veröffentlichung für Azure finden Sie unter [Kontinuierliche Bereitstellung mit GIT in Azure App Service](../app-service-web/web-sites-publish-source-control.md). Weitere Informationen zu Visual Studio Team Services finden Sie unter [Visual Studio Team Services](http://go.microsoft.com/fwlink/?LinkId=253861).
+Zusätzliche Tipps zur Verwendung von Git mit Visual Studio Team Services finden Sie unter [Entwickeln und Freigeben von Code in Git mit Visual Studio](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx). Informationen zur Verwendung eines nicht von Visual Studio Team Services verwalteten Git-Repositorys zur Veröffentlichung in Azure finden Sie unter [Kontinuierliche Bereitstellung in Azure App Service](../app-service-web/app-service-continuous-deployment.md). Weitere Informationen zu Visual Studio Team Services finden Sie unter [Visual Studio Team Services](http://go.microsoft.com/fwlink/?LinkId=253861).
 
 [0]: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
 [1]: ./media/cloud-services-continuous-delivery-use-vso-git/CreateTeamProjectInGit.PNG
@@ -272,4 +272,4 @@ Zusätzliche Tipps zur Verwendung von Git mit Visual Studio Team Services finden
 [47]: ./media/cloud-services-continuous-delivery-use-vso-git/SourceSettingsPage.PNG
 [48]: ./media/cloud-services-continuous-delivery-use-vso-git/IncludeWorkingBranch.PNG
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

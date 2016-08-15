@@ -29,7 +29,7 @@ Wenn Sie diesen Fehler erhalten, wurde der Azure Data Factory-Ressourcenanbieter
 3. Führen Sie den folgenden Befehl aus, um den Azure Data Factory-Anbieter zu registrieren. Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
 
 ### Problem: Autorisierungsfehler beim Ausführen eines Data Factory-Cmdlets
-Sie verwenden wahrscheinlich nicht das richtige Azure-Konto oder -Abonnement für Azure-PowerShell. Wählen Sie mithilfe der folgenden Cmdlets das richtige Azure-Konto und -Abonnement für die Verwendung mit Azure-PowerShell.
+Sie verwenden wahrscheinlich nicht das richtige Azure-Konto oder -Abonnement für Azure PowerShell. Wählen Sie mithilfe der folgenden Cmdlets das richtige Azure-Konto und -Abonnement für die Verwendung mit Azure PowerShell.
 
 1. Login-AzureRmAccount: Verwenden Sie die richtige Benutzer-ID und das richtige Kennwort.
 2. Get-AzureRmSubscription: Zeigen Sie alle Abonnements für das Konto an.
@@ -47,14 +47,14 @@ Für das Express-Setup des Datenverwaltungsgateways ist Internet Explorer oder e
 - Verwenden Sie den Link **Manuelles Setup**, der auf dem gleichen Blatt im Portal angezeigt wird, um die Installationsdatei herunterzuladen, und führen Sie sie manuell aus. Wenn die Installation abgeschlossen ist, wird das Dialogfeld für die Datenverwaltungsgateway-Konfiguration angezeigt. Kopieren Sie den **Schlüssel** auf dem Portalbildschirm, und verwenden Sie ihn im Konfigurations-Manager, um das Gateway manuell für den Dienst zu registrieren.
 
 ### Problem: Fehler beim Herstellen einer Verbindung mit der lokalen SQL Server-Datenbank 
-Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager** auf dem Gatewaycomputer, und verwenden Sie die Registerkarte **Problembehandlung**, um die Verbindung mit SQL Server über den Gatewaycomputer zu testen. Ausführliche Informationen finden Sie unter [Problembehandlung bei Gateways](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting).
+Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager** auf dem Gatewaycomputer, und verwenden Sie die Registerkarte **Problembehandlung**, um die Verbindung mit SQL Server über den Gatewaycomputer zu testen. Unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshoot-gateway-issues) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.
  
 
 ### Problem: Eingabeslices haben dauerhaft den Status „Waiting“
 
 Slices können sich aus unterschiedlichen Gründen im Zustand **Waiting** befinden. Zu den häufigsten Gründen zählt, dass die Eigenschaft **external** nicht auf **true** festgelegt ist. Ein Dataset, das außerhalb des Gültigkeitsbereichs von Azure Data Factory erstellt wird, sollte mit der Eigenschaft **external** gekennzeichnet sein. Dies bedeutet, dass es sich um externe Daten handelt, die nicht von Pipelines innerhalb der Data Factory unterstützt werden. Die Datenslices werden als **Ready** gekennzeichnet, sobald die Daten im entsprechenden Speicher verfügbar sind.
 
-Das folgende Beispiel zeigt die Verwendung der Eigenschaft **external**. Sie können optional **externalData** angeben, wenn Sie "external" auf "true" festlegen.
+Das folgende Beispiel zeigt die Verwendung der Eigenschaft **external**. Sie können optional **externalData*** angeben, wenn Sie "external" auf "true" festlegen.
 
 Weitere Informationen zu dieser Eigenschaft finden Sie im Artikel [Datasets](data-factory-create-datasets.md).
 	
@@ -85,7 +85,7 @@ Weitere Informationen zu dieser Eigenschaft finden Sie im Artikel [Datasets](dat
 Um den Fehler zu beheben, fügen Sie die Eigenschaft **external** und den optionalen Abschnitt **externalData** der JSON-Definition für die Eingabetabelle hinzu und erstellen die Tabelle erneut.
 
 ### Problem: Fehler beim Hybridkopiervorgang
-Die Schritte zum Behandeln von Problemen beim Kopieren in und aus lokalen Datenspeichern mit dem Datenverwaltungsgateway finden Sie unter [Problembehandlung bei Gateways](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting).
+Die Schritte zum Behandeln von Problemen beim Kopieren in lokale Datenspeicher und aus lokalen Datenspeichern mit dem Datenverwaltungsgateway finden Sie unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshoot-gateway-issues).
 
 ### Problem: Fehler bei der bedarfsgesteuerten HDInsight-Bereitstellung
 Wenn Sie einen verknüpften Dienst vom Typ „HDInsightOnDemand“ verwenden, müssen Sie einen „linkedServiceName“ angeben, der auf einen Azure-Blobspeicher verweist. Der Data Factory-Dienst verwendet diesen Speicher, um Protokolle und unterstützende Dateien für Ihren bedarfsgesteuerten HDInsight-Cluster zu speichern. Manchmal schlägt die Bereitstellung eines bedarfsgesteuerten HDInsight-Clusters mit dem folgenden Fehler fehl:
@@ -143,4 +143,4 @@ Ausführliche Informationen finden Sie unter [Überwachen von Data Factory-Pipel
 [image-data-factory-troubleshoot-activity-run-details]: ./media/data-factory-troubleshoot/Walkthrough2ActivityRunDetails.png
  
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

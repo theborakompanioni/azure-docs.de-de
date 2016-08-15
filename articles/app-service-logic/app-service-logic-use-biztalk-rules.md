@@ -1,7 +1,7 @@
 <properties
    pageTitle="Erfahren Sie mehr über die BizTalk-Regeln API-App und erstellen Sie diese in Ihrer Logik-App | Microsoft Azure"
    description="Dieses Thema behandelt die Funktionen des BizTalk-Regel-Connectors und bietet Anleitungen zu dessen Verwendung"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="anuragdalmia"
    manager="erikre"
@@ -112,8 +112,8 @@ Nach dem Erstellen einer BizTalk-Regel-API-App besteht der nächste Schritt im E
 
    ![Alt text][4]
 
-2\. Wählen Sie „Vocabulary definitions“ aus. Der Bildschirm zum Verfassen des Vokabulars wird angezeigt. 
-3. Wählen Sie „Hinzufügen“ aus, um neue Vokabulardefinitionen hinzuzufügen. Derzeit werden zwei Arten von Vokabulardefinitionen unterstützt – literal und XML.
+2\. Wählen Sie „Vocabulary definitions“ aus. Der Bildschirm zum Verfassen des Vokabulars wird angezeigt.  
+3\. Wählen Sie „Hinzufügen“ aus, um neue Vokabulardefinitionen hinzuzufügen. Derzeit werden zwei Arten von Vokabulardefinitionen unterstützt – literal und XML.
 
 ##Literale Definition
 1.	Nach dem Klicken auf "Hinzufügen" wird ein neues Blatt "Definition hinzufügen" geöffnet. Geben Sie die folgenden Werte ein:
@@ -122,18 +122,18 @@ Nach dem Erstellen einer BizTalk-Regel-API-App besteht der nächste Schritt im E
   3.	Definitionstyp – Es werden 2 Typen unterstützt. Wählen Sie in diesem Beispiel "Literal".
   4.	Datentyp – Ermöglicht Benutzern das Auswählen des Datentyps der Definition. Derzeit werden 4 Datentypen unterstützt: 
   	i. String – Diese Werte müssen in doppelte Anführungszeichen (“Beispielzeichenfolge”) eingeschlossen werden. 
-	ii. Boolean – Kann entweder "true" oder "false" sein. 
-	iii. Number – Kann jede Dezimalzahl sein. 
-	iv. DateTime – Die Definition ist vom Typ Datum/Uhrzeit. Daten müssen in diesem Format eingegeben werden: mm/tt/jjjj hh:mm:ss AM\\PM.
+ 	 ii. Boolean – Kann entweder "true" oder "false" sein. 
+  	iii. Number – Kann jede Dezimalzahl sein. 
+ 	 iv. DateTime – Die Definition ist vom Typ Datum/Uhrzeit. Daten müssen in diesem Format eingegeben werden: mm/tt/jjjj hh:mm:ss AM\\PM.  
   5. Input – Hier geben Sie den Wert Ihrer Definition ein. Die hier eingegebenen Werte müssen dem ausgewählten Datentyp entsprechen. Sie können einen einzelnen Wert, einen durch Kommas getrennten Satz von Werten oder einen Bereich von Werten mit dem Schlüsselwort *to* eingeben. Beispielsweise können Sie den eindeutigen Wert 1, den Satz 1, 2, 3 oder einen Bereich von 1 bis 5 angeben. Beachten Sie, dass Bereiche nur für Zahlen unterstützt werden.
   6. Klicken Sie auf *OK*.
 
 ![Alt text][5]
 ##XML-Definition
-Wenn als Vokabulartyp XML ausgewählt wird, muss folgende Eingabe bereitgestellt werden: 
-  a. Schema – Durch Klicken auf diese Option wird ein neues Blatt geöffnet, in dem der Benutzer entweder aus einer Liste bereits hochgeladener Schemas auswählen oder ein neues Schema hochladen kann.  
-    b. XPATH – Diese Eingabe wird erst freigegeben, wenn Sie im vorherigen Schritt ein Schema ausgewählt haben. Durch Klicken auf diese Option wird das ausgewählte Schema angezeigt. Der Benutzer kann den Knoten auswählen, für den eine Vokabulardefinition erstellt werden soll.  
-    c. FACT – Diese Eingabe legt fest, welches Datenobjekt dem Regelmodul zur Verarbeitung vorgelegt wird. Dies ist eine erweiterte Eigenschaft, die standardmäßig auf das übergeordnete Element des ausgewählten XPATH festgelegt ist. FACT ist für die Verkettung und Auflistung von Szenarien besonders wichtig.
+Wenn als Vokabulartyp XML ausgewählt wird, muss folgende Eingabe bereitgestellt werden:  
+  a. 	Schema – Durch Klicken auf diese Option wird ein neues Blatt geöffnet, in dem der Benutzer entweder aus einer Liste bereits hochgeladener Schemas auswählen oder ein neues Schema hochladen kann.  
+  b. 	XPATH – Diese Eingabe wird erst freigegeben, wenn Sie im vorherigen Schritt ein Schema ausgewählt haben. Durch Klicken auf diese Option wird das ausgewählte Schema angezeigt. Der Benutzer kann den Knoten auswählen, für den eine Vokabulardefinition erstellt werden soll.  
+  c. 	FACT – Diese Eingabe legt fest, welches Datenobjekt dem Regelmodul zur Verarbeitung vorgelegt wird. Dies ist eine erweiterte Eigenschaft, die standardmäßig auf das übergeordnete Element des ausgewählten XPATH festgelegt ist. FACT ist für die Verkettung und Auflistung von Szenarien besonders wichtig.
 
 ![Alt text][6]
 
@@ -253,4 +253,4 @@ Einer der Hauptvorteile der Verwendung von Geschäftsregeln ist, dass Änderunge
 [10]: ./media/app-service-logic-use-biztalk-rules/APIDef.PNG
 [11]: ./media/app-service-logic-use-biztalk-rules/PublicAnon.PNG
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

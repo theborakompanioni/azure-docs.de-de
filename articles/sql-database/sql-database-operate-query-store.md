@@ -4,7 +4,7 @@
    keywords=""
    services="sql-database"
    documentationCenter=""
-   authors="carlrabeler"
+   authors="CarlRabeler"
    manager="jhubbard"
    editor=""/>
 
@@ -53,7 +53,7 @@ Zur Sicherstellung eines unterbrechungsfreien und zuverlässigen Betriebs verfü
 
 Azure SQL-Datenbank nutzt die gesammelten Daten für folgende Zwecke:
 
-- ***Erlernen von Verwendungsmustern für eine große Zahl von Datenbanken und Verbessern der Zuverlässigkeit und Qualität von Funktionen:*** Der Abfragespeicher wird mit jedem Update von Azure SQL-Datenbank verbessert. 
+- ***Erlernen von Verwendungsmustern für eine große Zahl von Datenbanken und Verbessern der Zuverlässigkeit und Qualität von Funktionen:*** Der Abfragespeicher wird mit jedem Update von Azure SQL-Datenbank verbessert.
 - ***Lösen oder Minimieren von Problemen, die vom Abfragespeicher verursacht werden:*** Azure SQL-Datenbank kann innerhalb kurzer Zeit (weniger als eine Stunde) Probleme erkennen und minimieren oder lösen, die sich erheblich auf die Workload von Kunden auswirken. Probleme werden am häufigsten behandelt, indem der Abfragespeicher vorübergehend deaktiviert wird (***OFF***).
 
 Von Zeit zu Zeit werden mit Updates des Abfragespeichers Änderungen an den Standardeinstellungen vorgenommen, die auf interne und in seltenen Fällen auch auf externe Konfigurationen für Kunden angewendet werden. Aus diesem Grund kann sich die Nutzung des Abfragespeichers unter Azure SQL-Datenbank für Kunden gegenüber lokalen Umgebungen unterscheiden, da von der Azure-Plattform automatische Aktionen durchgeführt werden:
@@ -93,7 +93,7 @@ Falls Sie weiterhin Ihre benutzerdefinierten Einstellungen nutzen möchten, helf
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [A flight data recorder for your database (Ein Flugdatenschreiber für Ihre Datenbank)](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database) 
+- [A flight data recorder for your database (Ein Flugdatenschreiber für Ihre Datenbank)](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database)
 
 - [Überwachen der Leistung mit dem Abfragespeicher](https://msdn.microsoft.com/library/dn817826.aspx)
 
@@ -101,4 +101,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - [Überwachen der Leistung mit dem Abfragespeicher](https://msdn.microsoft.com/library/dn817826.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

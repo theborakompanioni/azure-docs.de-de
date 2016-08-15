@@ -3,7 +3,7 @@
 	description="Dieses Thema beschreibt den Azure SQL Database Benchmark-Vergleichstest zum Messen der Leistung von Azure SQL-Datenbank."
 	services="sql-database"
 	documentationCenter="na"
-	authors="carlrabeler"
+	authors="CarlRabeler"
 	manager="jhubbard"
 	editor="monicar" />
 
@@ -130,4 +130,4 @@ Der Azure SQL-Datenbankvergleichstest misst die relative Leistung von Azure SQL-
 
 [Leitfaden zur Leistung für Einzeldatenbanken](sql-database-performance-guidance.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

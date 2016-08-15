@@ -3,7 +3,7 @@
 	description="In diesem Thema werden Sicherheitsaspekte bei der Verwaltung der Sicherheit nach einer Wiederherstellung oder einem Failover einer Datenbank erläutert."
 	services="sql-database"
 	documentationCenter="na"
-	authors="carlrabeler"
+	authors="CarlRabeler"
 	manager="jhubbard"
 	editor="monicar" />
 
@@ -95,4 +95,4 @@ Der letzte Schritt besteht darin, auf dem oder den Zielservern die Anmeldungen m
 
 ## Zusätzliche Ressourcen
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -4,11 +4,11 @@
 	authors="kamathashwin"
 	manager=""
 	editor=""
-	services="azure-portal"
-	documentationCenter="na"/>
+	services="monitoring"
+	documentationCenter="monitoring"/>
 
 <tags
-	ms.service="azure-portal"
+	ms.service="monitoring"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -148,13 +148,13 @@ In der folgenden Tabelle werden die Parameter und Werte beschrieben, die zum Ers
 |Standort für diese Warnungsregel|	USA (Ost)|
 |ResourceGroup|	montest|
 |TargetResourceId|	/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig|
-|„MetricName“ für die Warnung, die erstellt wird|	\\PhysicalDisk(\_Total)\\Disk Writes/sec. Unter den Informationen zum Cmdlet `Get-MetricDefinitions` weiter unten finden Sie Details dazu, wie Sie die genauen Metriknamen abrufen.|
-|Operator| GreaterThan|
-|Schwellenwert (Anzahl/s für diese Metrik)| 1|
-| WindowSize (Format: hh:mm:ss)| 00:05:00|
-|Aggregator (Statistik der Metrik, die in diesem Fall die durchschnittliche Anzahl verwendet)| Average|
+|„MetricName“ für die Warnung, die erstellt wird|	\\PhysicalDisk(\_Total)\\Schreibvorgänge/s. Unter den Informationen zum Cmdlet `Get-MetricDefinitions` weiter unten finden Sie Details dazu, wie Sie die genauen Metriknamen abrufen.|
+|operator|	GreaterThan|
+|Schwellenwert (Anzahl/s für diese Metrik)|	1|
+|WindowSize (Format: hh:mm:ss)|	00:05:00|
+|Aggregator (Statistik der Metrik, die in diesem Fall die durchschnittliche Anzahl verwendet)|	Durchschnitt|
 |Benutzerdefinierte E-Mail-Adressen (Zeichenfolgenarray)|'foo@example.com','bar@example.com'|
-|E-Mail an Besitzer, Mitwirkende und Leser senden| -SendToServiceOwners|
+|E-Mail an Besitzer, Mitwirkende und Leser senden|	-SendToServiceOwners|
 
 Erstellen einer E-Mail-Aktion
 
@@ -215,7 +215,7 @@ Get-AzureRmAlertRule -Name superalert1 -ResourceGroup myrg1 -DetailedOutput
 Mit dem Cmdlet `Add-AlertRule` können verschiedene weitere Parameter verwendet werden. Weitere Informationen finden Sie unter [Add-AlertRule](https://msdn.microsoft.com/library/mt282468.aspx).
 
 ## Abrufen einer Liste der verfügbaren Metriken für Warnungen
-Sie können Cmdlet `Get-AzureRmMetricDefinition` zum Anzeigen der Liste alle Metriken für eine bestimmte Ressource verwenden.
+Sie können das Cmdlet `Get-AzureRmMetricDefinition` zum Anzeigen der Liste aller Metriken für eine bestimmte Ressource verwenden.
 
 ```
 Get-AzureRmMetricDefinition -ResourceId <resource_id>
@@ -311,7 +311,7 @@ Get-AzureRmAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting -Detai
 ```
 
 ### Entfernen einer Einstellung zur automatischen Skalierung
-Sie können das Cmdlet `Remove-Autoscalesetting` zum Löschen einer Einstellung für automatische Skalierung verwenden.
+Sie können das Cmdlet `Remove-Autoscalesetting` zum Löschen einer Einstellung zur automatischen Skalierung verwenden.
 
 ```
 Remove-AzureRmAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
@@ -384,4 +384,4 @@ Aktivieren der Diagnoseeinstellung mit Aufbewahrung für eine bestimmte Protokol
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/sakteststorage -Categories NetworkSecurityGroupEvent -Enable $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0803_2016-->

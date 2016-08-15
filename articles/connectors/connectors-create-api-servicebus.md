@@ -1,7 +1,7 @@
 <properties
 pageTitle="So wird's gemacht: Verwenden des Azure Service Bus-Connectors in Ihren Logik-Apps | Microsoft Azure"
 description="Erstellen Sie Logik-Apps mit Azure App Service. Stellen Sie eine Verbindung mit Azure Service Bus her, um Nachrichten zu senden und zu empfangen. Sie können Aktionen ausführen wie Senden an eine Warteschlange, Senden an ein Thema, Empfangen aus der Warteschlange, Empfangen aus Abonnements usw."
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -14,7 +14,7 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="07/27/2016"
+ms.date="08/02/2016"
 ms.author="deonhe"/>
 
 # Erste Schritte mit dem Azure Service Bus-Connector
@@ -77,8 +77,28 @@ Dieser Vorgang sendet eine Nachricht an eine Warteschlange oder an ein Thema.
 
 |Eigenschaftenname| Anzeigename|Beschreibung|
 | ---|---|---|
-|message*|Message|Zu sendende Nachricht|
+|ContentData*|Inhalt|Inhalt der Nachricht|
+|ContentType|Inhaltstyp|Inhaltstyp der Nachricht|
+|Eigenschaften|Eigenschaften|Schlüssel-Wert-Paare für die einzelnen vermittelten Eigenschaften|
 |entityName*|Warteschlangen-/Themenname|Name der Warteschlange oder des Themas|
+
+Die folgenden erweiterten Parameter sind ebenfalls verfügbar:
+
+|Eigenschaftenname| Anzeigename|Beschreibung|
+| ---|---|---|
+|MessageId|Nachrichten-ID|Benutzerdefinierter Wert, mit dem Service Bus doppelte Nachrichten ermitteln kann (sofern aktiviert)|
+|To  
+|To  
+|Zieladresse|
+|ReplyTo|Antworten an|Warteschlangenadresse für die Antwort|
+|ReplyToSessionId|Antwort an Sitzungs-ID|Sitzungs-ID für die Antwort|
+|Bezeichnung|Bezeichnung|Anwendungsspezifische Bezeichnung|
+|ScheduledEnqueueTimeUtc|ScheduledEnqueueTimeUtc|Zeitpunkt, zu dem die Nachricht der Warteschlange hinzugefügt wird (Datum und Uhrzeit im UTC-Format)|
+|SessionId|Sitzungs-ID|ID der Sitzung|
+|CorrelationId|Korrelations-ID|ID der Korrelation|
+|TimeToLive|Gültigkeitsdauer (Time To Live, TTL)|Die Gültigkeitsdauer einer Nachricht (in Ticks). Der Zeitraum beginnt, wenn die Nachricht an den Service Bus gesendet wird.|
+
+
 
 Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
@@ -93,6 +113,7 @@ Dieser Vorgang löst einen Ablauf aus, wenn bei einer Warteschlange eine Nachric
 | ---|---|---|
 |queueName*|Warteschlangenname|Name der Warteschlange|
 
+
 Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
 #### Ausgabedetails
@@ -104,7 +125,6 @@ ServiceBusMessage: Dieses Objekt enthält den Inhalt und die Eigenschaften einer
 |---|---|---|
 |ContentData|string|Inhalt der Nachricht|
 |ContentType|string|Inhaltstyp der Nachricht|
-|ContentTransferEncoding|string|Übertragungscodierung für den Nachrichteninhalt („none“|„base64“)|
 |Eigenschaften|Objekt|Schlüssel-Wert-Paare für die einzelnen vermittelten Eigenschaften|
 |MessageId|string|Benutzerdefinierter Wert, mit dem Service Bus doppelte Nachrichten ermitteln kann (sofern aktiviert)|
 |To  
@@ -129,6 +149,7 @@ Dieser Vorgang löst einen Ablauf aus, wenn bei einem Themenabonnement eine Nach
 |topicName*|Themenname|Name des Themas|
 |subscriptionName*|Topic subscription name (Themenabonnementname)|Name des Themenabonnements|
 
+
 Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 
 #### Ausgabedetails
@@ -140,7 +161,6 @@ ServiceBusMessage: Dieses Objekt enthält den Inhalt und die Eigenschaften einer
 |---|---|---|
 |ContentData|string|Inhalt der Nachricht|
 |ContentType|string|Inhaltstyp der Nachricht|
-|ContentTransferEncoding|string|Übertragungscodierung für den Nachrichteninhalt („none“|„base64“)|
 |Eigenschaften|Objekt|Schlüssel-Wert-Paare für die einzelnen vermittelten Eigenschaften|
 |MessageId|string|Benutzerdefinierter Wert, mit dem Service Bus doppelte Nachrichten ermitteln kann (sofern aktiviert)|
 |To  
@@ -173,4 +193,4 @@ Von den oben angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

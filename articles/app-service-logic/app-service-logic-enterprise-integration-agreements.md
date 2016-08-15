@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Übersicht über Partner und Enterprise Integration Pack | Microsoft Azure App Service" 
 	description="Erfahren Sie, wie Sie Partner mit dem Enterprise Integration Pack und Logik-Apps verwenden" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
 	manager="erikre" 
@@ -65,4 +65,4 @@ Sie können eine Vereinbarung löschen, indem Sie diese Schritte im Integrations
 ## Nächste Schritte
 - [Erstellen einer AS2-Vereinbarung](./app-service-logic-enterprise-integration-as2.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

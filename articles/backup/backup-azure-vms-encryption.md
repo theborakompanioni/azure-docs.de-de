@@ -3,8 +3,8 @@
    description="Erfahren Sie, wie Azure Backup Daten behandelt, die während der IaaS-VM-Sicherung mit BitLocker oder dmcrypt verschlüsselt wurden. Dieser Artikel behandelt die Unterschiede bei der Sicherung und Wiederherstellung, wenn verschlüsselte Datenträger verwendet werden."
    services="backup"
    documentationCenter=""
-   authors="markgalioto"
-   manager="cfreeman"
+   authors="pallavijoshi"
+   manager="vijayts"
    editor=""/>
 <tags
    ms.service="backup"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="storage-backup-recovery"
    ms.date="07/01/2016"
-   ms.author="markgal; jimpark"/>
+   ms.author="markgal; jimpark; trinadhk"/>
 
 # Behandeln verschlüsselter Festplatten während der Sicherung virtueller Computer
 
@@ -71,4 +71,4 @@ Wenn Sie für virtuelle Computer mit Sicherungen einen Rollover der Schlüssel d
 - [Deployment guide – PDF (in englischer Sprache)](http://www.cloudlinktech.com/Azure/CL_SecureVM_4_0_DG_EMC_Azure_R2.pdf)
 - [Deploying and using SecureVM – Video (in englischer Sprache)](https://www.youtube.com/watch?v=8AIRe92UDNg)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

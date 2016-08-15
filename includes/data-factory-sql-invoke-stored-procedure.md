@@ -55,9 +55,9 @@ Definieren Sie in der Datenbank den Tabellentyp mit demselben Namen wie "SqlWrit
 
 	CREATE TYPE [dbo].[MarketingType] AS TABLE(
 	    [ProfileID] [varchar](256) NOT NULL,
-	    [State] [varchar](256) NOT NULL,
+	    [State] [varchar](256) NOT NULL
 	)
 
 Das Feature der gespeicherten Prozedur nutzt [Tabellenwertparameter](https://msdn.microsoft.com/library/bb675163.aspx).
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0803_2016-->

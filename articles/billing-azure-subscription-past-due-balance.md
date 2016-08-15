@@ -1,11 +1,11 @@
 <properties
 	pageTitle="Warum haben Sie eine Benachrichtigung erhalten, dass Ihr Azure-Abonnement einen überfälligen Saldo aufweist? | Microsoft Azure"
 	description="Informationen zur Zahlung, wenn das Azure-Abonnement einen überfälligen Saldo aufweist."
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="genlin"
 	manager="jarrettr"
-	editor="meerak"
+	editor=""
 	tags="billing"
 	/>
 
@@ -45,4 +45,4 @@ Anweisungen zum Ändern der Zahlungsmethode in Azure finden Sie unter [Ändern d
 
 > [AZURE.NOTE] Wenn Ihr Abonnement deaktiviert wird, können Sie es mit den Schritten des folgenden Artikels wieder aktivieren: [Was kann ich tun, wenn mein Abonnement deaktiviert wird?](billing-subscription-become-disable.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

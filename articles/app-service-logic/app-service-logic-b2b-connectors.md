@@ -1,7 +1,7 @@
 <properties 
-	pageTitle="Business-to-Business-Connectors und API-Apps in Microsoft Azure App Service | Microsoft Azure" 
+	pageTitle="Business-to-Business-Connectors und API-Apps in Logic Apps | Microsoft Azure" 
 	description="Erfahren Sie mehr über das Erstellen und Konfigurieren von EDI-, EDIFACT-, AS2- und TPM-Connectors; Microservices-Architektur" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter="" 
 	authors="MandiOhlinger" 
 	manager="erikre" 
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/20/2016" 
+	ms.date="07/28/2016" 
 	ms.author="mandia"/>
 
-# Business-to-Business-Connectors und API-Apps in Microsoft Azure App Service
+# Business-to-Business-Connectors und API-Apps
 
 [AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
-Microsoft Azure App Service (oder kurz App Service) bietet viele BizTalk-API-Apps, die für die Integration von Umgebungen wichtig sind. Diese API-Apps basieren auf Konzepten und Tools, die in BizTalk Server verwendet werden, aber nun als Teil von Azure App Service verfügbar sind.
+Logic Apps enthält zahlreiche BizTalk-API-Apps, die für Integrationsumgebungen von entscheidender Bedeutung sind. Diese API-Apps basieren auf Konzepten und Tools, die in BizTalk Server verwendet werden, aber nun als Teil von Logic Apps verfügbar sind.
 
 Eine Kategorie dieser API-Apps sind die Business-to-Business-API-Apps (B2B). Mithilfe dieser B2B-API-Apps können Sie problemlos Partner hinzufügen, Vereinbarungen erstellen und mit EDI, AS2 und EDIFACT alle Vorgänge genauso durchführen, als wären sie lokal.
 
@@ -194,7 +194,7 @@ Wenn Sie in Ihrer App die B2B-API-Apps aus dem Katalog auswählen, werden sie au
 
 4. Klicken Sie zum Speichern der Änderungen auf **OK**.
 
->[AZURE.NOTE] Wenn Sie sich zunächst mit Azure Logic Apps vertraut machen möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie [Logik-Apps testen](https://tryappservice.azure.com/?appservice=logic). Sie können sofort eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+>[AZURE.NOTE] Wenn Sie sich zunächst mit Azure Logic Apps vertraut machen möchten, ehe Sie sich für ein Azure-Konto registrieren, können Sie [Logik-Apps testen](https://tryappservice.azure.com/?appservice=logic). Sie können sofort eine kurzlebige Starter-Logik-App erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
 ## Weitere B2B-Ressourcen
 
@@ -209,4 +209,4 @@ Wenn Sie in Ihrer App die B2B-API-Apps aus dem Katalog auswählen, werden sie au
 
 [Liste mit Connectors und API-Apps](app-service-logic-connectors-list.md)<br/><br/> [Was sind Connectors und BizTalk-API-Apps?](app-service-logic-what-are-biztalk-api-apps.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

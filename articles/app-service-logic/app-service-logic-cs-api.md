@@ -1,7 +1,7 @@
 <properties
    pageTitle="Ausführen von C#-Ausdrücken in einer C#-API-App in einer Logik-App | Microsoft Azure"
    description="C#-API-App oder -Connector"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net"
    authors="jeffhollan"
    manager="dwrede"
@@ -112,4 +112,4 @@ Nachdem der Connector nun erstellt ist, können Sie ihn mit einer Logik-App in e
 <!--Links -->
 [Creating a Logic App]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

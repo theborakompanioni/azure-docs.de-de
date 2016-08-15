@@ -42,7 +42,7 @@ Site Recovery kann in verschiedenen Szenarien verwendet werden und für den Schu
 
 ## Voraussetzungen für Azure
 
-- Sie benötigen ein [Microsoft Azure](https://azure.microsoft.com/)-Konto. Für den Einstieg steht ein [kostenloses Testkonto](pricing/free-trial/) zur Verfügung.
+- Sie benötigen ein [Microsoft Azure](https://azure.microsoft.com/)-Konto. Für den Einstieg steht ein [kostenloses Testkonto](https://azure.microsoft.com/pricing/free-trial/) zur Verfügung.
 - Sie benötigen ein Azure-Speicherkonto, um replizierte Daten zu speichern. Für das Konto muss Georeplikation aktiviert sein. Es muss sich in der gleichen Region wie der Azure Site Recovery-Tresor befinden und dem gleichen Abonnement zugeordnet sein. [Weitere Informationen zu Azure Storage](../storage/storage-introduction.md) Beachten Sie, dass das Verschieben von Speicherkonten, die mit dem [neuen Azure-Portal](../storage/storage-create-storage-account.md) erstellt wurden, über Ressourcengruppen hinweg nicht unterstützt wird.
 - Sie benötigen ein virtuelles Azure-Netzwerk, damit für virtuelle Azure-Maschinen eine Netzwerkverbindung besteht, wenn Sie ein Failover von Ihrem primären Standort durchführen.
 
@@ -55,7 +55,7 @@ Site Recovery kann in verschiedenen Szenarien verwendet werden und für den Schu
 
 ## Voraussetzungen für virtuelle Computer
 
-Die zu schützenden virtuellen Computer sollten die [Anforderungen für virtuelle Azure-Computer](site-recovery-best-practices.md#azure-virtual-machine-requirements) erfüllen.
+Die zu schützenden virtuellen Computer müssen die [Anforderungen für virtuelle Azure-Computer](site-recovery-best-practices.md#azure-virtual-machine-requirements) erfüllen.
 
 ## Voraussetzungen für Anbieter und Agent
 
@@ -90,7 +90,7 @@ Diese Grafik zeigt die verschiedenen Kommunikationskanäle und Ports, die Site R
 
 4. Geben Sie unter **Name** einen Anzeigenamen ein, über den der Tresor identifiziert wird.
 
-5. Wählen Sie unter **Region** die geografische Region für den Tresor aus. Eine Liste mit den unterstützten Regionen finden Sie in den [Preisdetails zu Azure Site Recovery](pricing/details/site-recovery/) unter „Geografische Verfügbarkeit“.
+5. Wählen Sie unter **Region** die geografische Region für den Tresor aus. Eine Liste mit den unterstützten Regionen finden Sie in den [Preisdetails zu Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/) unter „Geografische Verfügbarkeit“.
 
 6. Klicken Sie auf **Tresor erstellen**.
 
@@ -138,25 +138,19 @@ Wenn Sie die Installation für einen Hyper-V-Cluster vornehmen, führen Sie die 
 
 8. Fahren Sie nach der Installation mit der Einrichtung fort, um den Server im Tresor zu registrieren.
 
-	![Installation abgeschlossen](./media/site-recovery-hyper-v-site-to-azure-classic/provider3.png)
-
-
-9. Geben Sie auf der Seite **Internetverbindung** an, wie die Verbindung zwischen Anbieter und Azure Site Recovery hergestellt werden soll. Wählen Sie **Proxyeinstellungen des Systems verwenden** aus, um die Standard-Internetverbindungseinstellungen auf dem Server zu verwenden. Wenn Sie keinen Wert angeben, werden die Standardeinstellungen verwendet.
-
-	![Interneteinstellungen](./media/site-recovery-hyper-v-site-to-azure-classic/provider4.png)
-
 9. Klicken Sie auf der Seite **Tresoreinstellungen** auf **Durchsuchen**, um die Schlüsseldatei auszuwählen. Geben Sie das Azure Site Recovery-Abonnement, den Tresornamen und den Hyper-V-Standort an, zu dem der Hyper-V-Server gehört.
 
-	![Serverregistrierung](./media/site-recovery-hyper-v-site-to-azure-classic/select-key.png)
+	![Serverregistrierung](./media/site-recovery-hyper-v-site-to-azure-classic/provider8.PNG)
 
+10. Geben Sie auf der Seite **Internetverbindung** an, wie die Verbindung zwischen Anbieter und Azure Site Recovery hergestellt werden soll. Wählen Sie **Proxyeinstellungen des Systems verwenden** aus, um die Standard-Internetverbindungseinstellungen auf dem Server zu verwenden. Wenn Sie keinen Wert angeben, werden die Standardeinstellungen verwendet.
+
+	![Interneteinstellungen](./media/site-recovery-hyper-v-site-to-azure-classic/provider7.PNG)
 
 11. Die Registrierung des Servers im Tresor beginnt.
 
-	![Serverregistrierung](./media/site-recovery-hyper-v-site-to-azure-classic/provider5.png)
+	![Serverregistrierung](./media/site-recovery-hyper-v-site-to-azure-classic/provider15.PNG)
 
 11. Nach der Registrierung ruft Azure Site Recovery Metadaten vom Hyper-V-Server ab, und der Server wird im Tresor auf der Registerkarte **Hyper-V-Standorte** der Seite **Server** angezeigt.
-
-	![Serverregistrierung](./media/site-recovery-hyper-v-site-to-azure-classic/provider6.png)
 
 
 ### Installieren des Anbieters über die Befehlszeile
@@ -192,7 +186,7 @@ Parameter:
 
 	![Speicherkonto erstellen](./media/site-recovery-hyper-v-site-to-azure-classic/create-resources.png)
 
->[AZURE.NOTE] Das Verschieben von Speicherkonten, die mit dem [neuen Azure-Portal](../storage/storage-create-storage-account.md) erstellt wurden, über Ressourcengruppen hinweg wird nicht unterstützt.
+>[AZURE.NOTE] Eine Verschiebung von mit dem [neuen Azure-Portal](../storage/storage-create-storage-account.md) erstellten Speicherkonten über Ressourcengruppen hinweg wird nicht unterstützt.
 
 
 ## Schritt 5: Erstellen und Konfigurieren von Schutzgruppen
@@ -221,7 +215,7 @@ Fügen Sie einer Schutzgruppe virtuelle Computer hinzu, um sie zu schützen.
 
 >[AZURE.NOTE] Das Schützen von VMs, auf denen Linux mit einer statischen IP-Adresse ausgeführt wird, wird nicht unterstützt.
 
-1. Klicken Sie auf der Registerkarte **Virtuelle Computer** der Schutzgruppe auf **Virtuelle Computer zum Aktivieren von Schutz zu Schutzgruppen hinzufügen**.
+1. Klicken Sie auf der Registerkarte **Computer** der Schutzgruppe auf **Virtuelle Computer zum Aktivieren von Schutz zu Schutzgruppen hinzufügen**.
 2. Wählen Sie auf der Seite **Schutz für virtuelle Computer aktivieren** die virtuellen Computer aus, die Sie schützen möchten.
 
 	![Aktivieren des Schutzes für virtuelle Computer](./media/site-recovery-hyper-v-site-to-azure-classic/add-vm.png)
@@ -235,7 +229,7 @@ Fügen Sie einer Schutzgruppe virtuelle Computer hinzu, um sie zu schützen.
 		- **Größe**: Die Zielgröße des virtuellen Computers, für den ein Failover durchgeführt wird.
 
 		![Konfigurieren der Eigenschaften virtueller Computer](./media/site-recovery-hyper-v-site-to-azure-classic/vm-properties.png)
-	- Konfigurieren weiterer Einstellungen für den virtuellen Computer unter *Geschützte Elemente** > **Schutzgruppen** > *<Name der Schutzgruppe>* > **Virtuelle Computer** > *<Name des virtuellen Computers>* > **Konfigurieren**. Hierzu zählen:
+	- Konfigurieren weiterer Einstellungen für den virtuellen Computer unter *Geschützte Elemente* *> **Schutzgruppen** > *Name der Schutzgruppe* > **Virtuelle Computer* Name des virtuellen Computers* > **Konfigurieren**. Hierzu zählen:
 
 		- **Netzwerkadapter**: Die Anzahl der Netzwerkadapter hängt von der Größe ab, die Sie für den virtuellen Zielcomputer angeben. Überprüfen Sie in den [Spezifikationen für virtuelle Computer](../virtual-machines/virtual-machines-linux-sizes.md#size-tables), wie viele Netzwerkschnittstellenkarten von virtuellen Maschinen einer bestimmten Größe unterstützt werden.
 
@@ -245,7 +239,7 @@ Fügen Sie einer Schutzgruppe virtuelle Computer hinzu, um sie zu schützen.
 
 			- Wenn die Anzahl der Netzwerkadapter des Quellcomputers maximal der Anzahl der Netzwerkadapter entspricht, die für die Größe des Zielcomputers zulässig ist, hat der Zielcomputer die gleiche Anzahl von Netzwerkadaptern wie der Quellcomputer.
 			- Wenn die Anzahl der Netzwerkadapter für den virtuellen Quellcomputer die maximal zulässige Anzahl für die Größe des Zielcomputers übersteigt, wird die Anzahl verwendet, die maximal für die Größe des Zielcomputers zulässig ist.
-			- Ein Beispiel: Wenn ein Quellcomputer zwei Netzwerkkarten besitzt und der Zielcomputer aufgrund seiner Größe vier Netzwerkkarten unterstützt, erhält der Zielcomputer zwei Netzwerkkarten. Wenn der Quellcomputer dagegen zwei Netzwerkadapter besitzt und der Zielcomputer aufgrund seiner Größe nur einen Adapter unterstützt, erhält der Zielcomputer nur einen Adapter. 	
+			- Ein Beispiel: Wenn ein Quellcomputer zwei Netzwerkkarten besitzt und der Zielcomputer aufgrund seiner Größe vier Netzwerkkarten unterstützt, erhält der Zielcomputer zwei Netzwerkkarten. Wenn der Quellcomputer dagegen zwei Netzwerkadapter besitzt und der Zielcomputer aufgrund seiner Größe nur einen Adapter unterstützt, erhält der Zielcomputer nur einen Adapter.
 		- **Azure-Netzwerk**: Geben Sie das Failover-Zielnetzwerk für den virtuellen Computer an. Wenn der virtuelle Computer mehrere Netzwerkadapter besitzt, müssen alle Adapter mit dem gleichen Azure-Netzwerk verbunden werden.
 		- **Subnetz**: Wählen Sie für jeden Netzwerkadapter des virtuellen Computers das Subnetz im Azure-Netzwerk aus, mit dem der Computer nach einem Failover eine Verbindung herstellen soll.
 		- **Ziel-IP-Adresse**: Wenn der Netzwerkadapter der virtuellen Quellmaschine für die Verwendung einer statischen IP-Adresse konfiguriert ist, können Sie die IP-Adresse für die virtuelle Zielmaschine angeben, um sicherzustellen, dass die Maschine nach dem Failover die gleiche IP-Adresse besitzt. Wenn Sie keine IP-Adresse angeben, wird beim Failover eine der verfügbaren Adressen zugewiesen. Wenn Sie eine Adresse angeben, die bereits verwendet wird, ist das Failover nicht erfolgreich.
@@ -271,7 +265,7 @@ Wenn Sie ein Testfailover durchführen möchten, ohne ein Azure-Netzwerk anzugeb
 Für ein Testfailover mit einem Azure-Zielnetzwerk müssen Sie ein neues Azure-Netzwerk erstellen, das von Ihrem Azure-Produktionsnetzwerk isoliert ist (Standardverhalten bei der Erstellung eines neuen Netzwerks in Azure). Unter [Ausführen eines Testfailovers](site-recovery-failover.md#run-a-test-failover) finden Sie weitere Details.
 
 
-Um Ihre Replikation und Netzwerkbereitstellung vollständig zu testen, müssen Sie die Infrastruktur einrichten, damit die replizierte virtuelle Maschine wie erwartet funktioniert. Eine Möglichkeit ist: Richten Sie eine virtuelle Maschine als Domänencontroller mit DNS ein, und replizieren Sie sie in Azure. Verwenden Sie Site Recovery für die Erstellung im Testnetzwerk, indem Sie ein Testfailover ausführen. Weitere Informationen zu den Überlegungen zum Testfailover für Active Directory finden Sie [hier](site-recovery-active-directory.md#considerations-for-test-failover).
+Um Ihre Replikation und Netzwerkbereitstellung vollständig zu testen, müssen Sie die Infrastruktur einrichten, damit die replizierte virtuelle Maschine wie erwartet funktioniert. Eine Möglichkeit ist: Richten Sie eine virtuelle Maschine als Domänencontroller mit DNS ein, und replizieren Sie sie in Azure. Verwenden Sie Site Recovery für die Erstellung im Testnetzwerk, indem Sie ein Testfailover ausführen. Weitere Informationen zu den Testfailover-Aspekten für Active Directory finden Sie [hier](site-recovery-active-directory.md#considerations-for-test-failover).
 
 Führen Sie das Testfailover wie folgt aus:
 
@@ -287,7 +281,7 @@ Führen Sie das Testfailover wie folgt aus:
 5. Nach dem Failover können Sie das Testreplikat des virtuellen Computers im Azure-Portal sehen. Wenn Sie den Zugriff auf virtuelle Computer aus Ihrem lokalen Netzwerk eingerichtet haben, können Sie eine Remotedesktopverbindung mit dem virtuellen Computer herstellen.
 
 	1. Prüfen Sie, ob die virtuellen Computer erfolgreich starten.
-    2. Wenn Sie nach dem Failover eine Verbindung mit dem virtuellen Computer in Azure über Remote Desktop herstellen möchten, aktivieren Sie die Remote Desktop-Verbindung auf dem virtuellen Computer, bevor Sie das Test-Failover ausführen. Außerdem müssen Sie dem virtuellen Computer einen RDP-Endpunkt hinzufügen. Hierzu können Sie ein [Azure Automation-Runbook](site-recovery-runbook-automation.md) nutzen.
+    2. Wenn Sie nach dem Failover eine Verbindung mit dem virtuellen Computer in Azure über Remote Desktop herstellen möchten, aktivieren Sie die Remote Desktop-Verbindung auf dem virtuellen Computer, bevor Sie das Test-Failover ausführen. Außerdem müssen Sie dem virtuellen Computer einen RDP-Endpunkt hinzufügen. Hierzu können Sie ein [Azure Automation-Runbook](site-recovery-runbook-automation.md) verwenden.
     3. Falls Sie nach dem Failover über eine öffentliche IP-Adresse eine Remotedesktopverbindung mit dem virtuellen Computer in Azure herstellen, achten Sie darauf, dass keine Domänenrichtlinien vorhanden sind, die dies verhindern.
 
 6. Gehen Sie nach dem Test wie folgt vor:
@@ -305,4 +299,4 @@ Führen Sie das Testfailover wie folgt aus:
 
 Wenn die Bereitstellung eingerichtet ist und ausgeführt wird, informieren Sie sich über [Failover](site-recovery-failover.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

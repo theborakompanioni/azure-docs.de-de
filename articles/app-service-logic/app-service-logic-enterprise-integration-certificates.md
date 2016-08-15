@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Verwenden von Zertifikaten mit dem Enterprise Integration Pack | Microsoft Azure App Service" 
 	description="Erfahren Sie, wie Sie Zertifikate mit dem Enterprise Integration Pack und Logik-Apps verwenden" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
 	manager="erikre" 
@@ -73,4 +73,4 @@ Nachdem Sie ein Zertifikat hochgeladen haben, steht es Ihnen zum Schutz Ihrer B2
 - [Erstellen einer Logik-App mithilfe von B2B-Features](./app-service-logic-enterprise-integration-b2b.md)
 - [Weitere Informationen zum Schlüsseltresor](../key-vault/key-vault-get-started.md "Informationen zu Key Vault")
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -60,7 +60,7 @@ Führen Sie zum Installieren und Überprüfen der Hotfixes für den normalen Mod
 
 6. Geben Sie **Y** ein, um die Hotfixinstallation zu bestätigen.
 
-> [AZURE.IMPORTANT] Installieren Sie bei der Installation von Update 2.2 nur die Binärdatei mit dem Präfix „all-hcsmdssoftwareudpate“. Installieren Sie das CIS- und das MDS-Agent-Update mit dem Präfix „all-cismdsagentupdatebundle“ nicht. Andernfalls kommt es zu einem Fehler.
+	> [AZURE.IMPORTANT] Installieren Sie bei der Installation von Update 2.2 nur die Binärdatei mit dem Präfix „all-hcsmdssoftwareudpate“. Installieren Sie das CIS- und das MDS-Agent-Update mit dem Präfix „all-cismdsagentupdatebundle“ nicht. Andernfalls kommt es zu einem Fehler.
 
 7. Überwachen Sie das Update mithilfe des `Get-HcsUpdateStatus`-Cmdlets. Das Update wird zunächst auf dem passiven Controller abgeschlossen. Nachdem der passive Controller aktualisiert wurde, findet ein Failover statt, und das Update wird dann auf dem anderen Controller angewendet. Die Aktualisierung ist abgeschlossen, wenn beide Controller aktualisiert wurden.
 
@@ -102,13 +102,13 @@ Führen Sie zum Installieren und Überprüfen der Hotfixes für den normalen Mod
     - `MdsAgentVersion: 30.0.4698.16`
 
 	Wenn die Versionsnummern nach dem Anwenden des Updates nicht geändert werden, bedeutet dies, dass der Hotfix nicht angewendet werden konnte. Sollte dies der Fall sein, wenden Sie sich an den [Microsoft Support](storsimple-contact-microsoft-support.md), um weitere Unterstützung zu erhalten.
+	
+	> [AZURE.IMPORTANT] Sie müssen den aktiven Controller mit dem Cmdlet `Restart-HcsController` neu starten, bevor Sie die verbleibenden Updates anwenden können.
 
 9. Wiederholen Sie die Schritte 3 bis 5, um die verbleibenden Hotfixes für den normalen Modus zu installieren.
 
-	> [AZURE.IMPORTANT] Sie müssen den aktiven Controller mit dem Cmdlet `Restart-HcsController` neu starten, bevor Sie die verbleibenden Updates anwenden können.
-	
-	
 	- Das iSCSI-Update – KB3146621
+	
 	- Das WMI-Update – KB3103616
 	
 
@@ -241,4 +241,4 @@ Folgen Sie den Anweisungen unten, um die Datenträger-Firmwareupdates zu install
 
 1. Beim Beenden des Wartungsmodus werden die Controller neu gestartet. Nachdem die Firmwareupdates für Datenträger erfolgreich installiert wurden und das Gerät den Wartungsmodus verlassen hat, kehren Sie zum klassischen Azure-Portal zurück. Beachten Sie, dass es bis zu 24 Stunden dauern kann, bis die Installation der Wartungsmodus-Updates im Portal angezeigt wird.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

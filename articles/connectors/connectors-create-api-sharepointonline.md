@@ -1,7 +1,7 @@
 <properties
 pageTitle="So wird's gemacht: Verwenden des SharePoint Online-Connectors in Logik-Apps | Microsoft Azure"
 description="Erstellen Sie Logik-Apps mit dem SharePoint Online-Connector, um Listen in SharePoint zu verwalten."
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -94,7 +94,7 @@ Im Anschluss finden Sie ausführliche Informationen zu den Aktionen und Triggern
 Dieser Vorgang ruft Dateimetadaten unter Verwendung der Datei-ID ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
 |id*|Dateibezeichner|Datei auswählen|
@@ -126,7 +126,7 @@ BlobMetadata
 Dieser Vorgang aktualisiert Dateiinhalte.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
 |id*|Dateibezeichner|Datei auswählen|
@@ -159,7 +159,7 @@ BlobMetadata
 Dieser Vorgang löscht eine Datei.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
 |id*|Dateibezeichner|Datei auswählen|
@@ -173,7 +173,7 @@ Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 Dieser Vorgang ruft Dateimetadaten unter Verwendung des Dateipfads ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
 |path*|Dateipfad|Datei auswählen|
@@ -205,7 +205,7 @@ BlobMetadata
 Dieser Vorgang ruft Dateiinhalte unter Verwendung des Dateipfads ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
 |path*|Dateipfad|Datei auswählen|
@@ -219,7 +219,7 @@ Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 Dieser Vorgang ruft Dateiinhalte unter Verwendung der Datei-ID ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
 |id*|Dateibezeichner|Datei auswählen|
@@ -233,7 +233,7 @@ Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 Dieser Vorgang lädt eine Datei an eine SharePoint-Website hoch.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
 |folderPath*|Ordnerpfad|Datei auswählen|
@@ -267,7 +267,7 @@ BlobMetadata
 Dieser Vorgang kopiert eine Datei an eine SharePoint-Website.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
 |source*|Quelldateipfad|Pfad zur Quelldatei|
@@ -301,7 +301,7 @@ BlobMetadata
 Dieser Vorgang löst einen Ablauf aus, wenn in einem SharePoint-Ordner eine neue Datei erstellt wird.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|Website-URL|SharePoint-Website-URL|
 |folderId*|Ordner-ID|Ordner auswählen|
@@ -315,7 +315,7 @@ Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 Dieser Vorgang löst einen Ablauf aus, wenn in einem SharePoint-Ordner eine Datei geändert wird.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|Website-URL|SharePoint-Website-URL|
 |folderId*|Ordner-ID|Ordner auswählen|
@@ -329,7 +329,7 @@ Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 Dieser Vorgang ruft in einem SharePoint-Ordner enthaltene Dateien ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
 |id*|Dateibezeichner|Eindeutiger Bezeichner des Ordners|
@@ -363,7 +363,7 @@ BlobMetadata
 Dieser Vorgang ruft die Dateien im SharePoint-Stammordner ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
 
@@ -396,7 +396,7 @@ BlobMetadata
 Dieser Vorgang extrahiert eine Archivdatei (beispielsweise eine ZIP-Datei) in einen SharePoint-Ordner.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite|)
 |source*|Quelldateipfad|Pfad zur Quelldatei|
@@ -432,7 +432,7 @@ BlobMetadata
 Dieser Vorgang löst einen Ablauf aus, wenn in einer SharePoint-Liste ein neues Element erstellt wird.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
 |table*|Listenname|Name der SharePoint-Liste|
@@ -459,7 +459,7 @@ ItemsList
 Dieser Vorgang löst einen Ablauf aus, wenn in einer SharePoint-Liste ein vorhandenes Element geändert wird.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
 |table*|Listenname|Name der SharePoint-Liste|
@@ -486,7 +486,7 @@ ItemsList
 Dieser Vorgang ruft Elemente aus einer SharePoint-Liste ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
 |table*|Listenname|Name der SharePoint-Liste|
@@ -513,7 +513,7 @@ ItemsList
 Dieser Vorgang erstellt ein neues Element in einer SharePoint-Liste.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
 |table*|Listenname|Name der SharePoint-Liste|
@@ -537,7 +537,7 @@ Item
 Dieser Vorgang ruft anhand der ID ein einzelnes Element aus einer SharePoint-Liste ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
 |table*|Listenname|Name der SharePoint-Liste|
@@ -561,7 +561,7 @@ Item
 Dieser Vorgang löscht ein Element aus einer SharePoint-Liste.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
 |table*|Listenname|Name der SharePoint-Liste|
@@ -576,7 +576,7 @@ Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 Dieser Vorgang aktualisiert ein Element in einer SharePoint-Liste.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
 |table*|Listenname|Name der SharePoint-Liste|
@@ -601,7 +601,7 @@ Item
 Dieser Vorgang ruft mögliche Werte für eine SharePoint-Entität ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|SharePoint-Website-URL|SharePoint-Website-URL|
 |table*|Tabellenname|Tabellenname|
@@ -619,7 +619,7 @@ Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 Dieser Vorgang ruft SharePoint-Listen von einer Website ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |dataset*|Website-URL|SharePoint-Website-URL (Beispiel: http://contoso.sharepoint.com/sites/mysite)|
 
@@ -668,4 +668,4 @@ Von den oben angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

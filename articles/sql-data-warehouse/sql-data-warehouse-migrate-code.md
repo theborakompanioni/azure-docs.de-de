@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/30/2016"
+   ms.date="08/02/2016"
    ms.author="lodipalm;barbkess;sonyama;jrj"/>
 
 # Migrieren von SQL-Code nach SQL Data Warehouse
@@ -35,7 +35,7 @@ Die folgende Aufstellung enthält die wichtigsten Funktionen, die in Azure SQL D
 - Benutzerdefinierte Inlinefunktionen
 - Funktionen mit mehreren Anweisungen
 - [Allgemeine Tabellenausdrücke](#Common-table-expressions)
-- [Rekursive allgemeine Tabellenausdrücke (CTE)] (#Recursive-common-table-expressions-(CTE)
+- [Rekursive allgemeine Tabellenausdrücke (CTE)] \(#Recursive-common-table-expressions-(CTE)
 - CLR-Funktionen und -Prozeduren
 - $partition-Funktion
 - Tabellenvariablen
@@ -80,7 +80,7 @@ Allgemeine Tabellenausdrücke weisen einige der folgenden Einschränkungen in SQ
 
 Rekursive CTEs werden in SQL Data Warehouse nicht unterstützt. Die Migration rekursiver CTEs kann mehr oder weniger komplex sein, und die beste Vorgehensweise besteht darin, diese in mehrere Schritte aufzuteilen. In der Regel können Sie eine Schleife verwenden und eine temporäre Tabelle auffüllen, während Sie die rekursiven Zwischenabfragen durchlaufen. Sobald die temporäre Tabelle aufgefüllt ist, können Sie die Daten als ein einzelnes Resultset zurückgeben. Ein ähnlicher Ansatz wurde als Lösung für `GROUP BY WITH CUBE` im Artikel zur [GROUP BY-Klausel mit ROLLUP-, CUBE- oder GROUPING SETS-Option][] verwendet.
 
-## Systemfunktionen
+## Nicht unterstützte Systemfunktionen
 
 Es werden auch einige Systemfunktionen nicht unterstützt. Zu den wichtigsten Funktionen, die normalerweise in Data Warehousing verwendet, gehören u. a.:
 
@@ -91,21 +91,29 @@ Es werden auch einige Systemfunktionen nicht unterstützt. Zu den wichtigsten Fu
 - ROWCOUNT\_BIG
 - ERROR\_LINE()
 
-Wieder können viele dieser Probleme umgangen werden.
+Einige dieser Probleme können umgangen werden.
 
-Der folgende Code ist beispielsweise eine Alternativlösung zum Abrufen von @@ROWCOUNT-Informationen:
+## Problemumgehung für @@ROWCOUNT
+
+Um die fehlende Unterstützung für @@ROWCOUNT zu umgehen, erstellen Sie eine gespeicherte Prozedur, die die letzte Zeilenanzahl aus sys.dm\_pdw\_request\_steps auswählt und dann `EXEC LastRowCount` nach einer DML-Anweisung ausführt.
 
 ```sql
-SELECT  SUM(row_count) AS row_count
-FROM    sys.dm_pdw_sql_requests
-WHERE   row_count <> -1
-AND     request_id IN
-                    (   SELECT TOP 1    request_id
-                        FROM            sys.dm_pdw_exec_requests
-                        WHERE           session_id = SESSION_ID()
-                        AND             resource_class IS NOT NULL
-                        ORDER BY end_time DESC
-                    )
+CREATE PROCEDURE LastRowCount AS
+WITH LastRequest as 
+(   SELECT TOP 1    request_id
+    FROM            sys.dm_pdw_exec_requests
+    WHERE           session_id = SESSION_ID()
+    AND             resource_class IS NOT NULL
+    ORDER BY end_time DESC
+),
+LastRequestRowCounts as
+(
+    SELECT  step_index, row_count
+    FROM    sys.dm_pdw_request_steps
+    WHERE   row_count >= 0
+    AND     request_id IN (SELECT request_id from LastRequest)
+)
+SELECT TOP 1 row_count FROM LastRequestRowCounts ORDER BY step_index DESC
 ;
 ```
 
@@ -133,4 +141,4 @@ Eine vollständige Liste aller unterstützten T-SQL-Anweisungen finden Sie in de
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

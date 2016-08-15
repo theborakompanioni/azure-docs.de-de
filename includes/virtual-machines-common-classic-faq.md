@@ -3,6 +3,14 @@
 
 Dieser Artikel enthält die am häufigsten gestellten Fragen zu virtuellen Azure-Computern, die mit dem klassischen Bereitstellungsmodell erstellt wurden.
 
+## Kann ich meinen virtuellen Computer, der im klassischen Bereitstellungsmodell erstellt wurde, zum neuen Resource Manager-Modell migrieren?
+
+Ja. Anweisungen zur Migration Sie unter:
+
+- [Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe von Azure PowerShell](../articles/virtual-machines/virtual-machines-windows-ps-migration-classic-resource-manager.md)
+
+- [Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe der Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)
+
 ## Was kann ich auf einem virtuellen Azure-Computer ausführen?
 
 Alle Abonnenten können Serversoftware auf einem virtuellen Azure-Computer ausführen. Sie können die neuesten Versionen von Windows Server sowie eine Vielzahl von Linux-Distributionen ausführen. Supportinformationen finden Sie unter:
@@ -29,7 +37,7 @@ Azure-Speicherkonten bieten Speicher für Betriebssystem-Datenträger und Datent
 
 ## Welche Arten von virtuellen Festplatten kann ich verwenden?
 
-Azure unterstützt nur virtuelle Festplatten mit fester Größe im VHD-Format. Wenn Sie einen Datenträger im VHDX-Format in Azure verwenden möchten, konvertieren Sie ihn mit Hyper-V-Manager oder dem Cmdlet [convert-VHD](http://go.microsoft.com/fwlink/p/?LinkId=393656). Laden Sie danach mit dem Cmdlet [Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) (im Dienstverwaltungsmodus) die virtuelle Festplatte in ein Speicherkonto in Azure hoch, damit Sie sie mit virtuellen Computern verwenden können.
+Azure unterstützt nur virtuelle Festplatten mit fester Größe im VHD-Format. Wenn Sie einen Datenträger im VHDX-Format in Azure verwenden möchten, konvertieren Sie ihn zuerst mit dem Hyper-V-Manager oder dem Cmdlet [convert-VHD](http://go.microsoft.com/fwlink/p/?LinkId=393656). Laden Sie danach mit dem Cmdlet [Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) (im Dienstverwaltungsmodus) die virtuelle Festplatte in ein Speicherkonto in Azure hoch, damit Sie sie mit virtuellen Computern verwenden können.
 
 - Anweisungen für Linux finden Sie unter [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](../articles/virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md).
 
@@ -53,7 +61,7 @@ Sie müssen beim Erstellen des virtuellen Computers das Netzwerk angeben, zu dem
 
 Sie müssen über Remotedesktopverbindung (virtuelle Windows-Computer) oder SSH (Secure Shell, für virtuelle Linux-Computer) eine Remoteverbindung herstellen, um sich bei dem virtuellen Computer anzumelden. Anweisungen dazu finden Sie unter:
 
-- [Anmelden bei einem virtuellen Computer, auf dem Windows Server ausgeführt wird](../articles/virtual-machines/virtual-machines-windows-classic-connect-logon.md) Es werden maximal zwei gleichzeitige Verbindungen unterstützt, es sei denn, der Server wurde als Host für eine Remotedesktopdienste-Sitzung konfiguriert.  
+- [Anmelden bei einem virtuellen Computer, auf dem Windows Server ausgeführt wird](../articles/virtual-machines/virtual-machines-windows-classic-connect-logon.md) Es werden maximal zwei gleichzeitige Verbindungen unterstützt, es sei denn, der Server wurde als Host für eine Remotedesktopdienste-Sitzung konfiguriert.
 - [Anmelden bei einem mit Linux betriebenen virtuellen Computer](../articles/virtual-machines/virtual-machines-linux-classic-log-on.md) SSH erlaubt standardmäßig maximal 10 gleichzeitige Verbindungen. Sie können diese Anzahl erhöhen, indem Sie die Konfigurationsdatei bearbeiten.
 
 
@@ -138,6 +146,8 @@ Sie können auch über das klassische Azure-Portal oder Azure PowerShell die Neu
 
 Um Redundanz bereitzustellen, platzieren Sie zwei oder mehr ähnlich konfigurierte virtuelle Computer in der gleichen Verfügbarkeitsgruppe. Dadurch wird sichergestellt, dass während geplanter oder ungeplanter Wartungen mindestens ein virtueller Computer verfügbar ist. Azure garantiert für diese Konfiguration bestimmte Verfügbarkeitsstufen für virtuelle Computer. Weitere Details finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../articles/virtual-machines/virtual-machines-windows-manage-availability.md).
 
+
+
 ## Zusätzliche Ressourcen
 
 [Über virtuelle Azure-Computer](../articles/virtual-machines/virtual-machines-linux-about.md)
@@ -145,3 +155,5 @@ Um Redundanz bereitzustellen, platzieren Sie zwei oder mehr ähnlich konfigurier
 [Verschiedene Möglichkeiten zum Erstellen eines virtuellen Linux-Computers](../articles/virtual-machines/virtual-machines-linux-creation-choices.md)
 
 [Verschiedene Möglichkeiten zum Erstellen eines virtuellen Windows-Computers](../articles/virtual-machines/virtual-machines-windows-creation-choices.md)
+
+<!---HONumber=AcomDC_0803_2016-->

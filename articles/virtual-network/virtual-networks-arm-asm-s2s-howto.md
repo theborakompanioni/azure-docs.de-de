@@ -40,7 +40,7 @@ Befolgen Sie die Anweisungen unten, um das VPN-Gateway für das klassische VNet 
 1. Öffnen Sie das klassische Portal über https://manage.windowsazure.com, und geben Sie Ihre Anmeldeinformationen ein, falls erforderlich.
 2. Klicken Sie in der unteren linken Ecke des Bildschirms auf die Schaltfläche **NEU**, und klicken Sie dann auf **NETZWERKDIENSTE**, auf**VIRTUELLE NETZWERKE** und anschließend auf **LOKALES NETZWERK HINZUFÜGEN**.
 3. Geben Sie im Fenster **Details zum lokalen Netzwerk angeben** einen Namen für das ARM-VNet an, mit dem Sie eine Verbindung herstellen möchten, und klicken Sie dann in der unteren rechten Ecke des Fensters auf die Pfeilschaltfläche.
-3. Geben Sie im Adressraumtextfeld **Start-IP** das Netzwerkpräfix für das ARM-VNet ein, mit dem Sie eine Verbindung herstellen möchten. 
+3. Geben Sie im Adressraumtextfeld **Start-IP** das Netzwerkpräfix für das ARM-VNet ein, mit dem Sie eine Verbindung herstellen möchten.
 4. Wählen Sie in der Dropdownliste **CIDR (ANZAHL ADRESSEN)** die Anzahl der Bits aus, die für den Netzwerkteil des CIDR-Blocks verwendet wird, der vom ARM-VNet verwendet wird, mit dem Sie eine Verbindung herstellen möchten.
 5. Geben Sie in **IP-ADRESSE DES VPN-GERÄTS (OPTIONAL)** eine beliebige gültige öffentliche IP-Adresse ein. Wir werden diese IP-Adresse später ändern. Klicken Sie dann unten rechts auf dem Bildschirm auf die Schaltfläche mit dem Häkchen. Die folgende Abbildung zeigt Beispieleinstellungen für diese Seite.
 
@@ -64,7 +64,7 @@ Befolgen Sie die Anweisungen unten, um ein VPN-Gateway für das ARM-VNet zu erst
 
 3. Erstellen Sie eine öffentliche IP-Adresse für das Gateway, indem Sie den folgenden Befehl ausführen.
 
-		$ipaddress = New-AzureRmPublicIpAddress -Name gatewaypubIP`
+		$ipaddress = New-AzureRmPublicIpAddress -Name gatewaypubIP `
 			-ResourceGroupName RG1 -Location "East US" `
 			-AllocationMethod Dynamic
 
@@ -77,16 +77,17 @@ Befolgen Sie die Anweisungen unten, um ein VPN-Gateway für das ARM-VNet zu erst
 
 5. Erstellen Sie ein IP-Konfigurationsobjekt für das Gateway, indem Sie den folgenden Befehl ausführen. Beachten Sie die ID für das Gatewaysubnetz. Dieses Subnetz muss im VNet vorhanden sein.
 
+
 		$ipconfig = New-AzureRmVirtualNetworkGatewayIpConfig `
-			-Name ipconfig -PrivateIpAddress 10.1.2.4 `
-			-SubnetId $subnet.id -PublicIpAddressId $ipaddress.id
+		-Name ipconfig -SubnetId $subnet.id `
+		-PublicIpAddressId $ipaddress.id
 
 	>[AZURE.IMPORTANT] An die Parameter *SubnetzId* und *PublicIpAddressId* müssen die Eigenschaft "Id" aus dem Subnetz und die IP-Adressobjekte übergeben werden. Sie können keine einfache Zeichenfolge verwenden.
 	
 5. Erstellen Sie das ARM-VNet-Gateway, indem Sie den folgenden Befehl ausführen.
 
 		New-AzureRmVirtualNetworkGateway -Name v1v2Gateway -ResourceGroupName RG1 `
-			-Location "East US" -GatewayType Vpn -IpConfigurations $ipconfig `
+			-Location "East US" -GatewaySKU Standard -GatewayType Vpn -IpConfigurations $ipconfig `
 			-EnableBgp $false -VpnType RouteBased
 
 6. Nachdem das VPN-Gateway erstellt wurde, rufen Sie seine öffentliche IP-Adresse an, indem Sie den folgenden Befehl ausführen. Kopieren Sie die IP-Adresse. Sie benötigen diese, um das klassische VNet im lokalen Netzwerk zu konfigurieren.
@@ -118,4 +119,4 @@ Befolgen Sie die Anweisungen unten, um ein VPN-Gateway für das ARM-VNet zu erst
 - Weitere Informationen zum [Netzwerkressourcenanbieter (Network Resource Provider, NRP) für ARM](resource-groups-networking.md).
 - Erstellen einer [End-to-End-Lösung, die ein klassisches VNet mit einem ARM-VNet mithilfe einer S2S-VPN-Verbindung verbindet](virtual-networks-arm-asm-s2s.md).
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0803_2016-->

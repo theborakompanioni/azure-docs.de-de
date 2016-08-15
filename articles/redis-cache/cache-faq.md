@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/21/2016" 
+	ms.date="07/29/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache – häufig gestellte Fragen
@@ -28,6 +28,40 @@ Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns, und wir helfen
 -	Sie können eine Frage im [Diskussionsthread](#comments) am Ende dieser FAQ stellen und mit dem Azure Cache-Team und anderen Mitgliedern der Community über diesen Artikel diskutieren.
 -	Um eine größere Benutzergruppe zu erreichen, können Sie eine Frage im [MSDN-Forum zu Azure Cache](https://social.msdn.microsoft.com/forums/azure/home?forum=azurecache) stellen und mit dem Azure Cache-Team und anderen Mitgliedern der Community diskutieren.
 -	Sie können auch eine E-Mail an unsere Adresse für [externes Feedback zu Azure Cache](mailto:azurecache@microsoft.com) senden.
+
+## Azure Redis Cache – Grundlagen
+
+Die häufig gestellten Fragen in diesem Abschnitt beziehen sich auf die Grundlagen von Azure Redis Cache.
+
+-    [Was ist Azure Redis Cache?](#what-is-azure-redis-cache)
+-    [Erste Schritte mit Azure Redis Cache](#how-can-i-get-started-with-azure-redis-cache)
+
+Im Folgenden finden Sie häufig gestellte Fragen zu grundlegenden Konzepten. Fragen zu Azure Redis Cache werden in einem der anderen Abschnitte mit häufig gestellten Fragen beantwortet.
+
+-	[Welches Redis Cache-Angebot und welche Redis Cache-Größe sollte ich verwenden?](#what-redis-cache-offering-and-size-should-i-use)
+-	[Welche Redis Cache-Clients kann ich verwenden?](#what-redis-cache-clients-can-i-use)
+-	[Gibt es einen lokalen Emulator für Azure Redis Cache?](#is-there-a-local-emulator-for-azure-redis-cache)
+-	[Wie überwache ich die Integrität und Leistung meines Caches?](#how-do-i-monitor-the-health-and-performance-of-my-cache)
+
+
+### Was ist Azure Redis Cache?
+
+Azure Redis Cache basiert auf dem beliebten Open Source-[Redis Cache](http://redis.io). Sie erhalten Zugriff auf einen sicheren, dedizierten Redis Cache, der von Microsoft verwaltet wird und in Azure von einer beliebigen Anwendung aus aufgerufen werden kann. Eine ausführlichere Übersicht finden Sie auf der [Azure Redis Cache](https://azure.microsoft.com/services/cache/)-Produktseite auf Azure.com.
+
+
+### Erste Schritte mit Azure Redis Cache
+
+Es gibt verschiedene Möglichkeiten, mit Azure Redis Cache zu starten.
+
+-    Sie können sich eines unserer Tutorials ansehen, verfügbar für [.NET](cache-dotnet-how-to-use-azure-redis-cache.md), [ASP.NET](cache-web-app-howto.md), [Java](cache-java-get-started.md), [Node.js](cache-nodejs-get-started.md) und [Python](cache-python-get-started.md).
+-    Sie können sich das Video [How to Build High Performance Apps Using Microsoft Azure Redis Cache](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/) (So erstellen Sie mit Microsoft Azure Redis Cache hochleistungsfähige Apps) ansehen.
+-    Sie können sich die Clientdokumentation für die Clients für die jeweilige Entwicklersprache Ihres Projekts ansehen, um weitere Informationen zur Verwendung von Redis zu erhalten. Es gibt viele Redis-Clients, die mit Azure Redis Cache verwendet werden können. Eine Liste mit Redis-Clients finden Sie unter [http://redis.io/clients](http://redis.io/clients).
+
+
+Wenn Sie noch nicht über ein Azure-Konto verfügen, haben Sie folgende Möglichkeiten:
+
+-    [Kostenloses Anlegen eines Azure-Kontos](/pricing/free-trial/?WT.mc_id=redis_cache_hero). Sie erhalten ein Guthaben, mit dem Sie andere kostenpflichtige Azure-Dienste ausprobieren können. Auch nachdem Sie das Guthaben aufgebraucht haben, können Sie das Konto behalten und kostenlose Azure-Dienste und -Features nutzen.
+-    [Aktivieren Sie Visual Studio-Abonnementvorteile](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero). Ihr MSDN-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste verwenden können.
 
 ## Häufig gestellte Fragen zur Planung
 
@@ -298,9 +332,9 @@ In den häufig gestellten Fragen in diesem Abschnitt werden allgemeine Fragen zu
 
 Microsoft Azure Redis Cache-Instanzen können im [Azure-Portal](https://portal.azure.com) überwacht werden. Sie können Metriken anzeigen, Metrikdiagramme an das Startmenü anheften, Daten- und Zeitbereiche für Überwachungsdiagramme anpassen, Metriken aus Diagrammen hinzufügen und entfernen sowie Warnungen festlegen, die ausgelöst werden, wenn bestimmte Bedingungen erfüllt sind. Weitere Informationen finden Sie unter [Überwachen von Azure Redis Cache](cache-how-to-monitor.md).
 
-Der Abschnitt **Unterstützung und Problembehandlung** auf dem Redis Cache-Blatt **Einstellungen** enthält auch verschiedene Tools zur Überwachung und Problembehandlung Ihrer Caches.
+Der Abschnitt **Support und Problembehandlung** auf dem Redis Cache-Blatt **Einstellungen** enthält auch verschiedene Tools zur Überwachung und Problembehandlung Ihrer Caches.
 
--	**Problembehandlung** bietet Informationen zu gängigen Problemen und Strategien zu deren Behebung.
+-	**Problembehandlung** bietet Informationen zu gängigen Problemen sowie Strategien zu deren Behebung.
 -	**Überwachungsprotokolle** bietet Informationen zu Aktionen, die für Ihren Cache erfolgt sind. Sie können auch filtern, um diese Ansicht zum Einbeziehen anderer Ressourcen zu erweitern.
 -	Die Informationen zur **Ressourcenintegrität** dienen zum Überwachen Ihrer Ressource, d.h. ob sie wie erwartet ausgeführt wird. Weitere Informationen zum Azure Resource Health-Dienst finden Sie in der [Übersicht über Azure Resource Health](../resource-health/resource-health-overview.md).
 -	**Neue Supportanfrage** bietet Optionen, um eine Supportanfrage für Ihren Cache zu öffnen.
@@ -319,7 +353,7 @@ Caches in derselben Region und in im selben Abonnement haben die gleichen Diagno
 <a name="cache-timeouts"></a>
 ### Warum kommt es zu Timeouts?
 
-Timeouts treten auf dem Client auf, der mit Redis kommuniziert. In der Regel kommt es auf dem Redis-Server nicht zu Timeouts. Wenn ein Befehl an den Redis-Server gesendet wird, wird dieser in die Warteschlange eingereiht, bis der Redis-Server den Befehl auswählt und ausführt. Auf dem Client kann es bei diesem Vorgang zu einem Timeout kommen. In diesem Fall wird auf der aufrufenden Seite eine Ausnahme ausgelöst. Weitere Informationen zur Behandlung von Timeoutproblemen finden Sie unter [Behandeln von clientseitigen Problemen](cache-how-to-troubleshoot.md#client-side-troubleshooting) und [StackExchange.Redis-Timeoutausnahmen](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions).
+Timeouts treten auf dem Client auf, der mit Redis kommuniziert. In der Regel kommt es auf dem Redis-Server nicht zu Timeouts. Wenn ein Befehl an den Redis-Server gesendet wird, wird dieser in die Warteschlange eingereiht, bis der Redis-Server den Befehl auswählt und ausführt. Auf dem Client kann es bei diesem Vorgang zu einem Timeout kommen. In diesem Fall wird auf der aufrufenden Seite eine Ausnahme ausgelöst. Weitere Informationen zur Behandlung von Timeoutproblemen finden Sie unter [Behandeln von clientseitigen Problemen](cache-how-to-troubleshoot.md#client-side-troubleshooting) und [StackExchange.Redis-Timeoutausnahmen] \(Behandeln von clientseitigen Problemen](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions).
 
 '<-- Loc Comment: Broken link: [StackExchange.Redis timeout exceptions](Client side troubleshooting](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions). "(Client side troubleshooting]" should be removed. -->'
 
@@ -376,4 +410,4 @@ Weitere Informationen zu den ersten Schritten mit Azure Redis Cache finden Sie u
 
 [Konfigurationseinstellung „minIoThreads“]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

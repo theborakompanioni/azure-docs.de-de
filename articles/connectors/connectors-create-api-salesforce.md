@@ -1,7 +1,7 @@
 <properties
 pageTitle="Verwenden des Salesforce-Connectors in Ihren Logik-Apps | Microsoft Azure"
 description="Erstellen Sie Logik-Apps mit Azure App Service. Der Salesforce-Connector bietet eine API zum Verwenden von Salesforce-Objekten."
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -83,7 +83,7 @@ Im Anschluss finden Sie ausführliche Informationen zu den Aktionen und Triggern
 Dieser Vorgang ruft Objekte eines bestimmten Objekttyps (beispielsweise „Lead“) ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |table*|Objekttyp|Salesforce-Objekttyp (beispielsweise „Lead“)|
 |$filter|Filterabfrage|Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge|
@@ -109,7 +109,7 @@ ItemsList
 Dieser Vorgang erstellt ein Objekt.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |table*|Objekttyp|Objekttyp (beispielsweise „Lead“)|
 |item*|Object|Zu erstellendes Objekt|
@@ -132,7 +132,7 @@ Item
 Dieser Vorgang ruft ein Objekt ab.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |table*|Objekttyp|Salesforce-Objekttyp (beispielsweise „Lead“)|
 |id*|Objekt-ID|Bezeichner des abzurufenden Objekts|
@@ -155,7 +155,7 @@ Item
 Dieser Vorgang löscht ein Objekt.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |table*|Objekttyp|Objekttyp (beispielsweise „Lead“)|
 |id*|Objekt-ID|Bezeichner des zu löschenden Objekts|
@@ -169,7 +169,7 @@ Ein Sternchen gibt an, dass es sich um eine erforderliche Eigenschaft handelt.
 Dieser Vorgang aktualisiert ein Objekt.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |table*|Objekttyp|Objekttyp (beispielsweise „Lead“)|
 |id*|Objekt-ID|Bezeichner des zu aktualisierenden Objekts|
@@ -193,7 +193,7 @@ Item
 Dieser Vorgang löst einen Ablauf aus, wenn ein Objekt erstellt wird.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |table*|Objekttyp|Objekttyp (beispielsweise „Lead“)|
 |$filter|Filterabfrage|Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge|
@@ -219,7 +219,7 @@ ItemsList
 Dieser Vorgang löst einen Ablauf aus, wenn ein Objekt geändert wird.
 
 
-|Eigenschaftenname| Anzeigename|Beschreibung|
+|Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
 |table*|Objekttyp|Objekttyp (beispielsweise „Lead“)|
 |$filter|Filterabfrage|Eine ODATA-Filterabfrage zum Einschränken der Anzahl der Einträge|
@@ -281,4 +281,4 @@ Von den oben angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

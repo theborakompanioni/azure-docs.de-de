@@ -1,7 +1,7 @@
 <properties 
    pageTitle="Verwendung des BizTalk-Handelspartnerverwaltungs-Connectors in Logik-Apps | Microsoft Azure App Service" 
    description="Erstellen und Konfigurieren des BizTalk-Handelspartnerverwaltungs-Connectors oder einer API-App und Verwenden in einer Logik-App in Azure App Service" 
-   services="app-service\logic" 
+   services="logic-apps" 
    documentationCenter=".net,nodejs,java" 
    authors="rajeshramabathiran" 
    manager="erikre" 
@@ -43,4 +43,4 @@ Sie können auch Leistungsstatistiken überprüfen und die Sicherheit zum Connec
 <!--References-->
 [1]: app-service-logic-create-a-trading-partner-agreement.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

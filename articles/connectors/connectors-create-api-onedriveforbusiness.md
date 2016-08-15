@@ -1,7 +1,7 @@
 <properties
 pageTitle="OneDrive for Business | Microsoft Azure"
 description="Erstellen Sie Logik-Apps mit Azure App Service. Stellen Sie eine Verbindung mit OneDrive for Business her und verwalten Sie dort Ihre Dateien. Sie mit den Dateien verschiedene Aktionen ausführen, z.B. Hochladen, Aktualisieren, Abrufen und Löschen."
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -366,4 +366,4 @@ Ordner extrahieren: Extrahiert einen Ordner zu OneDrive for Business.
 ## Nächste Schritte
 [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

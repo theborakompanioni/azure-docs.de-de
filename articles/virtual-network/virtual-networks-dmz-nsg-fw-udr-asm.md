@@ -76,11 +76,11 @@ Wenn das Ziel für keins der Null- oder der VNETLocal-Präfixe gilt, würde es d
 
 Wenn die Routingtabelle zwei identische Präfixe aufweist, gilt folgende Präferenzreihenfolge, basierend auf dem Routenattribut "source":
 
-1.	<blank> = Eine benutzerdefinierte Route, die der Tabelle manuell hinzugefügt wurde.
+1.	<leer> = Eine benutzerdefinierte Route, die der Tabelle manuell hinzugefügt wurde.
 2.	"VPNGateway" = Eine dynamische Route (BGP bei Verwendung in Hybridnetzwerken), die durch ein dynamisches Netzwerkprotokoll hinzugefügt wurde. Diese Routen können sich im Lauf der Zeit ändern, da das dynamische Protokoll Änderungen im Peernetzwerk automatisch widerspiegelt.
 3.	"Default" = Die Systemrouten, das lokale VNet und die statischen Einträge, wie in der Routingtabelle oben gezeigt.
 
->[AZURE.NOTE] Aufgrund der Komplexität des dynamischen Routings im Azure-Gateway gelten für das benutzerdefinierte Routing (User Defined Routing, UDR) und ExpressRoute Einschränkungen. Auf Subnetze, die mit dem Azure-Gateway kommunizieren, das die ExpressRoute-Verbindung bereitstellt, sollte kein UDR angewendet werden. Darüber hinaus kann das Azure-Gateway nicht als NextHop-Gerät für andere UDR-gebundene Subnetze fungieren. Die Möglichkeit zur vollständigen Integration von UDR und ExpressRoute ist für eine spätere Azure-Version geplant.
+>[AZURE.NOTE] Jetzt können Sie benutzerdefiniertes Routing (UDR) mit ExpressRoute und VPN-Gateways verwenden, damit ausgehender und eingehender standortübergreifender Datenverkehr an ein virtuelles Netzwerkgerät (NVA) weitergeleitet wird.
 
 #### Erstellen der lokalen Routen
 
@@ -505,7 +505,7 @@ Denken Sie auch daran, dass Netzwerksicherheitsgruppen für den eingehenden Inte
 4.	Wenn in der Firewall eine erweiterte Bedrohungserkennung aktiviert wäre (dieses Thema wird im vorliegenden Dokument nicht behandelt, Informationen zu den erweiterten Funktionen zur Abwehr von Bedrohungen erhalten Sie in der Anbieterdokumentation für Ihr Netzwerkgerät), würde selbst Datenverkehr abgelehnt, der von den in diesem Thema beschriebenen grundlegenden Weiterleitungsregeln weitergeleitet würde. Voraussetzung hierfür wäre, dass der Datenverkehr bekannte Signaturen oder Muster enthält, die eine erweiterte Bedrohungsregel auslösen.
 
 #### (Abgelehnt) Internet-DNS-Lookup im DNS-Server
-1.	Internetbenutzer versucht, über den BackEnd001.CloudApp.Net-Dienst auf DNS01 einen internen DNS-Eintrag nachzuschlagen. 
+1.	Internetbenutzer versucht, über den BackEnd001.CloudApp.Net-Dienst auf DNS01 einen internen DNS-Eintrag nachzuschlagen.
 2.	Da keine Endpunkte für DNS-Datenverkehr geöffnet sind, würde die Anforderung nicht durch den Clouddienst geleitet und daher den Server nicht erreichen.
 3.	Wären aus irgendeinem Grund Endpunkte offen, würde die NSG-Regel (Internet blockieren) im Front-End-Subnetz diesen Datenverkehr blockieren.
 4.	Und schließlich würde die UDR-Route im Back-End-Subnetz jeglichen ausgehenden Datenverkehr von DNS01 an die Firewall (als nächsten Hop) senden. Die Firewall würde dies als asymmetrischen Datenverkehr betrachten und die ausgehende Antwort verwerfen. Daher existieren mindestens drei verschiedene Sicherheitsstufen zwischen Internet und DNS01 über den zugehörigen Clouddienst, um einen nicht autorisierten bzw. unangemessenen Zugriff zu verhindern.
@@ -941,4 +941,4 @@ Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installier
 [HOME]: ../best-practices-network-security.md
 [SampleApp]: ./virtual-networks-sample-app.md
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

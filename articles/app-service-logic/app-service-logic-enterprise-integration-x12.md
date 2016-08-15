@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Übersicht über X12 und das Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
 	description="Erfahren Sie, wie Sie X12-Vereinbarungen zum Erstellen von Logik-Apps verwenden" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
 	manager="erikre" 
@@ -189,4 +189,4 @@ Gehen Sie nach der Auswahl von **OK** auf den geöffneten Blättern wie folgt vo
 ## Weitere Informationen
 - [Weitere Informationen zum Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

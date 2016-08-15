@@ -117,4 +117,8 @@ Um Ihrem Lab ein Visual Studio Git-Artefaktrepository hinzuzufügen, rufen Sie z
     3. Geben Sie das gespeicherte **Persönliche Zugriffstoken** für das Artefaktrepository ein.
     4. Wählen Sie **Speichern** aus.
 
-<!---HONumber=AcomDC_0608_2016-->
+## Verwandte Blogbeiträge
+- [How to troubleshoot failing Artifacts in AzureDevTestLabs](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs) (Gewusst wie: Problembehandlung für fehlerhafte Artefakte in AzureDevTestLabs)
+- [Join a VM to existing AD Domain using ARM template in Azure Dev Test Lab](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs) (Hinzufügen eines virtuellen Computers zu einer vorhandenen AD-Domäne mithilfe einer ARM-Vorlage in Azure Dev Test Lab)
+
+<!---HONumber=AcomDC_0803_2016-->

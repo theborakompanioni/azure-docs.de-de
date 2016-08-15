@@ -1,12 +1,12 @@
 <properties
 	pageTitle="Verwenden eines Office 365-Mandanten mit einem Azure-Abonnement | Microsoft Azure"
 	description="Erfahren Sie, wie Sie ein Office 365-Verzeichnis (Mandant) zu einem Azure-Abonnement hinzufügen, um die Verknüpfung zu erstellen."
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="jiangchen79"
 	manager="mbaldwin"
 	editor=""
-	tags="top-support-issue"/>
+	tags="billing,top-support-issue"/>
 
 <tags
 	ms.service="billing"
@@ -145,4 +145,4 @@ Führen Sie zum Zuordnen des Office 365-Mandanten zum Azure-Abonnement die folge
 ## Nächste Schritte
 Es gibt ähnliche Szenarien, in denen Sie bereits über ein Office 365-Abonnement verfügen und ein Azure-Abonnement wünschen, jedoch das vorhandene Office 365-Benutzerkonto (bzw. die Benutzerkonten) für Ihr Azure-Abonnement verwenden möchten. Alternativ sind Sie Azure-Abonnent und wünschen ein Office 365-Abonnement für die Benutzer in Ihrem vorhandenen Azure Active Directory. Informationen hierzu finden Sie unter [Verwenden Ihres vorhandenen Office 365-Kontos mit Ihrem Azure-Abonnement (oder umgekehrt)](billing-use-existing-office-365-account-azure-subscription.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

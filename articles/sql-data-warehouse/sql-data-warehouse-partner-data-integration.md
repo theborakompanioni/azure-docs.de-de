@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/11/2016"
+   ms.date="07/31/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Partner für die Datenintegration bei SQL Data Warehouse
@@ -25,9 +25,9 @@ Für die Erstellung Ihrer eigenen End-to-End-Data Warehouse-Lösung können Sie 
 | Partner | Beschreibung | Links | Videos |
 | ------- | ----------- |------ | ------ |
 | ![Alteryx][1] | **Alteryx**<br> Alteryx Designer bietet einen wiederholbaren Workflow für Self-Service-Datenanalysen, mit dem Sie für detaillierte Einblicke nicht mehr Wochen, sondern nur noch wenige Stunden benötigen. Alteryx Designer erweitert die Möglichkeiten von Datenanalysten: Datenvorbereitung, Datenzusammenführung und vorhersagende, statistische und räumliche Analyse werden in der gleichen intuitiven Benutzeroberfläche zusammengeführt. | [Marketplace][alteryx_marketplace]<br>[Website][alteryx_designer_website]<br>[Datenblatt][alteryx_designer_datasheet]<br>[Twitter][alteryx_designer_twitter]<br>[YouTube][alteryx_designer_youtube] | [![Video zu Alteryx](./media/sql-data-warehouse-partner-data-integration/alteryx_designer_video.jpg)](https://www.youtube.com/watch?v=CdqSDPyNDKc) |
-| ![Attunity][2] | **Attunity**<br>Attunity CloudBeam bietet eine automatisierte und optimierte Lösung zum Laden von Daten in SQL Data Warehouse. Diese Lösung mit einem "Click-to-Load"-Design vereinfacht und beschleunigt sowohl das Laden von Batchdateien als auch die inkrementelle Replikation aus vielen heterogenen Datenbanken, darunter SQL Server, Oracle, DB2, Sybase und mySQL. | [Marketplace][attunity_marketplace]<br>[Website][attunity_cloudbeam_website]<br>[Datenblatt][attunity_cloudbeam_datasheet]<br>[Twitter][attunity_cloudbeam_twitter]<br>[YouTube][attunity_cloudbeam_youtube] | [![Video zu Attunity](./media/sql-data-warehouse-partner-data-integration/attunity_video.jpg)](https://www.youtube.com/watch?v=w14zuSjMlok) |
+| ![Attunity][2] | **Attunity**<br>Attunity CloudBeam bietet eine automatisierte und optimierte Lösung zum Laden von Daten in SQL Data Warehouse. Diese Lösung mit einem "Click-to-Load"-Design vereinfacht und beschleunigt sowohl das Laden von Batchdateien als auch die inkrementelle Replikation aus vielen heterogenen Datenbanken, darunter SQL Server, Oracle, DB2, Sybase und mySQL. | [Marketplace][attunity_marketplace]<br>[Schnellstart][attunity_quickstart]<br>[Website][attunity_cloudbeam_website]<br>[Datenblatt][attunity_cloudbeam_datasheet]<br>[Twitter][attunity_cloudbeam_twitter]<br>[YouTube][attunity_cloudbeam_youtube] | [![Video zu Attunity](./media/sql-data-warehouse-partner-data-integration/attunity_video.jpg)](https://www.youtube.com/watch?v=w14zuSjMlok) |
 | ![Bryte Systems][3] | **Bryte Systems**<br>Bryte Systems automatisiert die Datenübertragung in SQL Data Warehouse aus einer Vielzahl von Datenbanken und Quellen. Bryte Systems ist spezialisiert auf Technologien im Bereich Datenverschiebung und Datenintegration. Es erstellt skalierbare cloudbasierte Data Warehouses und Data Lakes für tiefere Einblicke. | [Marketplace][bryte_systems_marketplace]<br>[Website][bryte_systems_azure_website] | |
-| ![Informatica][4] | **Informatica Cloud**<br>Das Cloudintegrationsportfolio von Informatica ermöglicht es Ihnen, Datenquellen in der Cloud, lokale Datenquellen, mobile Datenquellen und Social Media-Datenquellen miteinander zu verknüpfen. So können Sie relevante, vertrauenswürdige Geschäftsdaten effizient gemeinsam nutzen. Unser Angebot für die Cloudintegration gehört zu den umfassendsten auf dem Markt. Es eignet sich für Batchprozesse genauso wie für die Echtzeitverarbeitung oder für die Verwaltung von Testdaten in der Cloud. Anwendungen zur Datenqualitätssicherung oder zur Stammdatenverwaltung in der Cloud werden ebenfalls abgedeckt. | [Marketplace][informatica_Cloud_Services_marketplace]<br>[Website][informatica_Cloud_Services_website]<br>[Datenblatt][informatica_cloud_datasheet]<br>[Twitter][informatica_cloud_twitter]<br>[YouTube][informatica_cloud_youtube] | |
+| ![Informatica][4] | **Informatica Cloud**<br>Das Cloudintegrationsportfolio von Informatica ermöglicht es Ihnen, Datenquellen in der Cloud, lokale Datenquellen, mobile Datenquellen und Social Media-Datenquellen miteinander zu verknüpfen. So können Sie relevante, vertrauenswürdige Geschäftsdaten effizient gemeinsam nutzen. Unser Angebot für die Cloudintegration gehört zu den umfassendsten auf dem Markt. Es eignet sich für Batchprozesse genauso wie für die Echtzeitverarbeitung oder für die Verwaltung von Testdaten in der Cloud. Anwendungen zur Datenqualitätssicherung oder zur Stammdatenverwaltung in der Cloud werden ebenfalls abgedeckt. | [Marketplace][informatica_Cloud_Services_marketplace]<br>[Kostenlos testen][informatica_cloud_free_trial]<br>[Konfigurationsanweisungen][informatica_cloud_services_config]<br>[Website][informatica_Cloud_Services_website]<br>[Datenblatt][informatica_cloud_datasheet]<br>[Twitter][informatica_cloud_twitter]<br>[YouTube][informatica_cloud_youtube] | |
 | ![Informatica][4] | **Informatica PowerCenter**<br>Informatica ist einer der weltweit bekanntesten unabhängigen Anbieter von Software für die Datenintegration. PowerCenter bildet das Fundament für all unsere Datenintegrationsprojekte – für Analyse und Data Warehousing genauso wie für Anwendungsmigration, Konsolidierung und Datengovernance. | [Marketplace (Standard Edition)][informatica_PowerCenter_std_marketplace]<br>[Marketplace (Advanced Edition)][informatica_PowerCenter_adv_marketplace]<br>[Website][informatica_PowerCenter_website]<br>[Datenblatt][informatica_powercenter_datasheet]<br>[Twitter][informatica_powercenter_twitter]<br>[YouTube][informatica_powercenter_youtube] | |
 | ![Redgate][5] | **Redgate Data Platform Studio (Vorschau)**<br>Das Data Platform Studio von Redgate ermöglicht eine einfache und zuverlässige Migration von lokalen SQL-Datenbanken zu Azure SQL Data Warehouse. Die Lösung wurde so konzipiert, dass intelligente Entscheidungen für eine vollständig automatisierte Migration getroffen werden. Für die einmalige Migration kann sie kostenlos genutzt werden. | [Website][redgate_website]<br>[Twitter][redgate_twitter]<br>[YouTube][redgate_youtube] | |
 | ![SnapLogic][6] | **SnapLogic**<br>Mit der SnapLogic iPaaS-Lösung (Integration Platform-as-a-Service) können Kunden Daten auf schnelle Weise in und aus Microsoft Azure SQL Data Warehouse übertragen. SnapLogic bietet die Möglichkeit der Integration von Hunderten von Anwendungen, Diensten und IoT in der Cloud, lokal oder im Hybridmodus für schnelle und wirksame Einblicke. | [Marketplace][snaplogic_marketplace]<br>[Website][snaplogic_website]<br>[Datenblatt][snaplogic_datasheet]<br>[Twitter][snaplogic_twitter]<br>[YouTube][snaplogic_youtube] | [![Video zu SnapLogic](./media/sql-data-warehouse-partner-data-integration/snaplogic_video.jpg)](https://www.youtube.com/watch?v=YiJCwObOh5Y) |
@@ -52,6 +52,9 @@ Weitere Informationen zu unseren anderen Partnern finden Sie unter [Business Int
 
 <!--ebook Links-->
 
+<!--Configuration Guides-->
+[informatica_cloud_services_config]: https://kb.informatica.com/proddocs/Product%20Documentation/5/IC_Winter2016_MicrosoftAzureSQLDataWarehouseConnectorGuide_en.pdf
+
 <!--Datasheet Links-->
 [alteryx_designer_datasheet]: http://www.alteryx.com/sites/default/files/resources/files/alt-designer-ds.pdf
 [attunity_cloudbeam_datasheet]: http://www.attunity.com/sites/default/files/content/attunity-azure-solution-sheet.pdf
@@ -59,6 +62,9 @@ Weitere Informationen zu unseren anderen Partnern finden Sie unter [Business Int
 [informatica_cloud_datasheet]: https://www.informatica.com/content/dam/informatica-com/global/amer/us/collateral/data-sheet/cloud-integration-platform_data-sheet_2711.pdf
 [informatica_powercenter_datasheet]: https://www.informatica.com/content/dam/informatica-com/global/amer/us/collateral/brochure/powercenter_brochure_6659.pdf
 [snaplogic_datasheet]: http://campaigns.snaplogic.com/rs/055-FYJ-916/images/SnapLogic-for-Microsoft-Cortana.pdf
+
+<!--Free Trial-->
+[informatica_cloud_free_trial]: https://www.informatica.com/products/cloud-integration/connectivity/microsoft-azure-connector.html
 
 <!--Website Links -->
 [alteryx_designer_website]: http://www.alteryx.com/products/alteryx-designer/
@@ -70,14 +76,17 @@ Weitere Informationen zu unseren anderen Partnern finden Sie unter [Business Int
 [snaplogic_website]: https://www.snaplogic.com/solutions/microsoft-cortana-analytics-integration/
 
 <!--Marketplace Links -->
-[alteryx_marketplace]: https://azure.microsoft.com/de-DE/marketplace/partners/alteryx/alteryx-designer/
+[alteryx_marketplace]: https://azure.microsoft.com/marketplace/partners/alteryx/alteryx-designer/
 [attunity_marketplace]: https://azure.microsoft.com/en-gb/marketplace/partners/attunity-cloudbeam/cloudbeam-dw-byol/
 [bryte_systems_marketplace]: https://azure.microsoft.com/en-gb/marketplace/partners/bryte/bryteflow-cdc-free-trial/
-[informatica_Cloud_Services_marketplace]: https://azure.microsoft.com/de-DE/marketplace/partners/informatica-cloud/informatica-cloud/
-[informatica_PowerCenter_std_marketplace]: https://azure.microsoft.com/de-DE/marketplace/partners/informatica/informatica-powercenter-standard-10-0pc-std-10-0-windows/
-[informatica_PowerCenter_adv_marketplace]: https://azure.microsoft.com/de-DE/marketplace/partners/informatica/informatica-powercenter-advanced-10-0pc-adv-10-0-ubuntu/
+[informatica_Cloud_Services_marketplace]: https://azure.microsoft.com/marketplace/partners/informatica-cloud/informatica-cloud/
+[informatica_PowerCenter_std_marketplace]: https://azure.microsoft.com/marketplace/partners/informatica/informatica-powercenter-standard-10-0pc-std-10-0-windows/
+[informatica_PowerCenter_adv_marketplace]: https://azure.microsoft.com/marketplace/partners/informatica/informatica-powercenter-advanced-10-0pc-adv-10-0-ubuntu/
 <!--[redgate_marketplace]:-->
-[snaplogic_marketplace]: https://azure.microsoft.com/de-DE/marketplace/partners/snaplogic/snaplogic-elastic-integration-windows/
+[snaplogic_marketplace]: https://azure.microsoft.com/marketplace/partners/snaplogic/snaplogic-elastic-integration-windows/
+
+<!--Quickstart_links-->
+[attunity_quickstart]: http://www.attunity.com/sites/default/files/product_resource/quick_start_guide_attunity_cloudbeam_for_microsoft_azure.pdf
 
 <!--PressRelease_links-->
 [alteryx_designer_press]: https://www.alteryx.com/press-releases/alteryx-now-enables-data-analysts-to-perform-in-database-blending-in-microsoft-azure
@@ -106,4 +115,4 @@ Weitere Informationen zu unseren anderen Partnern finden Sie unter [Business Int
 [redgate_twitter]: https://twitter.com/DataPlatform_S
 [snaplogic_twitter]: https://twitter.com/snaplogic
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->
