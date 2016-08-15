@@ -320,7 +320,7 @@ Führen Sie die App nun aus, um Always Encrypted in Aktion zu erleben.
         {
             int returnValue = 0;
 
-            string sqlCmdText = @"INSERT INTO [dbo].[Patients] ([SSN], [FirstName], [LastName], [BirthDate])
+            string sqlCmdText = @"INSERT INTO [dbo].[Patients] \([SSN], [FirstName], [LastName], [BirthDate])
          VALUES (@SSN, @FirstName, @LastName, @BirthDate);";
 
             SqlCommand sqlCmd = new SqlCommand(sqlCmdText);

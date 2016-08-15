@@ -42,7 +42,7 @@ Bei einer lokalen Instanz von SQL Server geben dynamische Verwaltungssichten Inf
 Die folgende Abfrage gibt die Größe Ihrer Datenbank (in Megabyte) zurück:
 
 ```
--- Calculates the size of the database.
+-- Berechnet die Größe der Datenbank. 
 SELECT SUM(reserved_page_count)*8.0/1024
 FROM sys.dm_db_partition_stats;
 GO

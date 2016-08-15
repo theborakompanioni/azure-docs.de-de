@@ -133,7 +133,7 @@ Die Bereitstellung einer einzelnen VM in Azure umfasst mehr „bewegliche Teile�
 
 - Automatisieren Sie Betriebssystemupdates mithilfe der VM-Erweiterung [OSPatching]. Installieren Sie diese Erweiterung, wenn Sie die VM bereitstellen. Sie können angeben, wie oft Patches installiert werden sollen und ob im Anschluss daran ein Neustart erfolgen soll.
 
-- Arbeiten Sie mit der [rollenbasierten Zugriffssteuerung][rbac] (Role-Based Access Control, RBAC) zum Steuern des Zugriffs auf die Azure-Ressourcen, die Sie bereitstellen. Mithilfe der RBAC können Sie Mitglieder Ihres DevOps-Teams Autorisierungsrollen zuweisen. Die Rolle „Leser“ kann beispielsweise Azure-Ressourcen anzeigen, diese aber nicht erstellen, verwalten oder löschen. Einige Rollen sind für bestimmte Azure-Ressourcentypen spezifisch. Die VM-Rolle „Mitwirkender“ kann z.B. eine VM neu starten oder freigeben, das Administratorkennwort zurücksetzen, eine neue VM erstellen usw. Andere [integrierte RBAC-Rollen][rbac-roles], die für diese Referenzarchitektur nützlich sein können, sind u.a. [DevTest Lab-Benutzer][rbac-devtest] und [Netzwerkmitwirkender][rbac-network]. Ein Benutzer kann mehreren Rollen zugewiesen werden. Außerdem können Sie für noch präzisere Berechtigungen benutzerdefinierte Rollen erstellen.
+- Arbeiten Sie mit der [rollenbasierten Zugriffssteuerung][rbac] \(Role-Based Access Control, RBAC) zum Steuern des Zugriffs auf die Azure-Ressourcen, die Sie bereitstellen. Mithilfe der RBAC können Sie Mitglieder Ihres DevOps-Teams Autorisierungsrollen zuweisen. Die Rolle „Leser“ kann beispielsweise Azure-Ressourcen anzeigen, diese aber nicht erstellen, verwalten oder löschen. Einige Rollen sind für bestimmte Azure-Ressourcentypen spezifisch. Die VM-Rolle „Mitwirkender“ kann z.B. eine VM neu starten oder freigeben, das Administratorkennwort zurücksetzen, eine neue VM erstellen usw. Andere [integrierte RBAC-Rollen][rbac-roles], die für diese Referenzarchitektur nützlich sein können, sind u.a. [DevTest Lab-Benutzer][rbac-devtest] und [Netzwerkmitwirkender][rbac-network]. Ein Benutzer kann mehreren Rollen zugewiesen werden. Außerdem können Sie für noch präzisere Berechtigungen benutzerdefinierte Rollen erstellen.
 
     > [AZURE.NOTE] Die RBAC schränkt nicht die Aktionen eines Benutzers ein, der bei einer VM angemeldet ist. Diese Berechtigungen werden vom Kontotyp im Gastbetriebssystem bestimmt.
 
@@ -350,13 +350,13 @@ Damit die [SLA für virtuelle Computer][vm-sla] gilt, müssen Sie in einer Verf�
 
 <!-- links -->
 
-[audit-logs]: https://azure.microsoft.com/de-DE/blog/analyze-azure-audit-logs-in-powerbi-more/
+[audit-logs]: https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/
 [azure-cli]: ../articles/virtual-machines-command-line-tools.md
 [azure-linux]: ../articles/virtual-machines/virtual-machines-linux-azure-overview.md
 [azure-storage]: ../articles/storage/storage-introduction.md
 [blob-snapshot]: ../articles/storage/storage-blob-snapshots.md
 [blob-storage]: ../articles/storage/storage-introduction.md
-[boot-diagnostics]: https://azure.microsoft.com/de-DE/blog/boot-diagnostics-for-virtual-machines-v2/
+[boot-diagnostics]: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/
 [cname-record]: https://en.wikipedia.org/wiki/CNAME_record
 [data-disk]: ../articles/virtual-machines/virtual-machines-linux-about-disks-vhds.md
 [disk-encryption]: ../articles/azure-security-disk-encryption.md
@@ -375,20 +375,20 @@ Damit die [SLA für virtuelle Computer][vm-sla] gilt, müssen Sie in einer Verf�
 [rbac-roles]: ../articles/active-directory/role-based-access-built-in-roles.md
 [rbac-devtest]: ../articles/active-directory/role-based-access-built-in-roles.md#devtest-lab-user
 [rbac-network]: ../articles/active-directory/role-based-access-built-in-roles.md#network-contributor
-[reboot-logs]: https://azure.microsoft.com/de-DE/blog/viewing-vm-reboot-logs/
+[reboot-logs]: https://azure.microsoft.com/blog/viewing-vm-reboot-logs/
 [Resize-VHD]: https://technet.microsoft.com/de-DE/library/hh848535.aspx
-[Resize virtual machines]: https://azure.microsoft.com/de-DE/blog/resize-virtual-machines/
+[Resize virtual machines]: https://azure.microsoft.com/blog/resize-virtual-machines/
 [resource-lock]: ../articles/resource-group-lock-resources.md
 [resource-manager-overview]: ../articles/resource-group-overview.md
 [select-vm-image]: ../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md
-[services-by-region]: https://azure.microsoft.com/de-DE/regions/#services
+[services-by-region]: https://azure.microsoft.com/regions/#services
 [ssh-linux]: ../articles/virtual-machines/virtual-machines-linux-ssh-from-linux.md
 [static-ip]: ../articles/virtual-network/virtual-networks-reserved-public-ip.md
 [storage-price]: https://azure.microsoft.com/pricing/details/storage/
 [virtual-machine-sizes]: ../articles/virtual-machines/virtual-machines-linux-sizes.md
 [vm-disk-limits]: ../articles/azure-subscription-service-limits.md#virtual-machine-disk-limits
 [vm-resize]: ../articles/virtual-machines/virtual-machines-linux-change-vm-size.md
-[vm-sla]: https://azure.microsoft.com/de-DE/support/legal/sla/virtual-machines/v1_0/
+[vm-sla]: https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/
 [arm-templates]: https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/
 [solution-script]: https://raw.githubusercontent.com/mspnp/arm-building-blocks/master/guidance-compute-single-vm/Scripts/Deploy-ReferenceArchitecture.ps1
 [vnet-parameters]: https://raw.githubusercontent.com/mspnp/arm-building-blocks/master/guidance-compute-single-vm/Templates/linux/virtualNetwork.parameters.json

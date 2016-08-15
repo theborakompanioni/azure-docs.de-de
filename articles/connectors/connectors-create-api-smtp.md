@@ -91,9 +91,7 @@ Dieser Vorgang sendet eine E-Mail an einen oder mehrere Empfänger.
 
 |Eigenschaftenname| Display Name|Beschreibung|
 | ---|---|---|
-|To  
-|To  
-|Geben Sie E-Mail-Adressen an, und trennen Sie sie jeweils durch ein Semikolon. (Beispiel: recipient1@domain.com;recipient2@domain.com)|
+|To |To |Geben Sie E-Mail-Adressen an, und trennen Sie sie jeweils durch ein Semikolon. (Beispiel: recipient1@domain.com;recipient2@domain.com)|
 |CC|cc|Geben Sie E-Mail-Adressen an, und trennen Sie sie jeweils durch ein Semikolon. (Beispiel: recipient1@domain.com;recipient2@domain.com)|
 |Betreff|Betreff|E-Mail-Betreff|
 |Body|Body|E-Mail-Text|

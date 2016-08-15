@@ -34,7 +34,7 @@ Sie erstellen eine Web-App mithilfe des Webframeworks Bottle. (Alternativ sind a
 - Python 2.7 oder 3.4
 - setuptools, pip, virtualenv (nur Python 2.7)
 - Git
-- [Python Tools 2.2 für Visual Studio][] (PTVS) – Hinweis: diese sind optional
+- [Python Tools 2.2 für Visual Studio][] \(PTVS) – Hinweis: diese sind optional
 
 **Hinweis**: TFS-Veröffentlichung wird derzeit für Python-Projekte nicht unterstützt.
 

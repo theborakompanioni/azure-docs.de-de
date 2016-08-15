@@ -35,7 +35,7 @@ Die folgende Aufstellung enthält die wichtigsten Funktionen, die in Azure SQL D
 - Benutzerdefinierte Inlinefunktionen
 - Funktionen mit mehreren Anweisungen
 - [Allgemeine Tabellenausdrücke](#Common-table-expressions)
-- [Rekursive allgemeine Tabellenausdrücke (CTE)] (#Recursive-common-table-expressions-(CTE)
+- [Rekursive allgemeine Tabellenausdrücke (CTE)] \(#Recursive-common-table-expressions-(CTE)
 - CLR-Funktionen und -Prozeduren
 - $partition-Funktion
 - Tabellenvariablen

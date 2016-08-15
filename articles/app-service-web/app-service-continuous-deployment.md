@@ -24,7 +24,7 @@ In diesem Tutorial erfahren Sie, wie Sie einen Workflow für die kontinuierliche
 
 Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu aktivieren:
 
-1. Veröffentlichen Sie Ihren App-Inhalt indem Repository, das für die kontinuierliche Bereitstellung verwendet werden soll. Weitere Informationen zum Veröffentlichen Ihres Projekts in einem dieser Dienst finden Sie unter [Create a repo (GitHub)] (Erstellen eines Repositorys), [Create a repo (BitBucket)] (Erstellen eines Repositorys) und [Erste Schritte mit VSTS].
+1. Veröffentlichen Sie Ihren App-Inhalt indem Repository, das für die kontinuierliche Bereitstellung verwendet werden soll. Weitere Informationen zum Veröffentlichen Ihres Projekts in einem dieser Dienst finden Sie unter [Create a repo (GitHub)] \(Erstellen eines Repositorys), [Create a repo (BitBucket)] \(Erstellen eines Repositorys) und [Erste Schritte mit VSTS].
 
 2. Klicken Sie im [Azure-Portal] auf dem Blatt Ihrer App auf **Einstellungen > Bereitstellungsquelle**. Klicken Sie auf **Quelle auswählen** und dann z. B. auf **GitHub**.
 
@@ -80,7 +80,7 @@ Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu
 
 >[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 
-[Azure App Service]: https://azure.microsoft.com/de-DE/documentation/articles/app-service-changes-existing-services/
+[Azure App Service]: https://azure.microsoft.com/documentation/articles/app-service-changes-existing-services/
 [Azure-Portal]: https://portal.azure.com
 [VSTS Portal]: https://www.visualstudio.com/de-DE/products/visual-studio-team-services-vs.aspx
 [Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git

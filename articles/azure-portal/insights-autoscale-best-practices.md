@@ -102,7 +102,7 @@ Wenn die automatische Skalierung zurück zum Standardprofil wechselt, wird auch 
 ### Skalierungsüberlegungen, wenn in einem Profil mehrere Regeln konfiguriert sind
 Es gibt Fälle, in denen Sie möglicherweise mehrere Regeln innerhalb eines Profils festlegen müssen. Die folgenden Regeln für die automatische Skalierung werden von Diensten verwendet, wenn mehrere Regeln festgelegt sind.
 
-Beim *horizontalen Hochskalieren* wird die automatische Skalierung durchgeführt, sobald eine Regel erfüllt wird. Beim * horizontalen Herunterskalieren* wird die automatische Skalierung nur ausgeführt, wenn alle Regeln erfüllt werden.
+Beim *horizontalen Hochskalieren* wird die automatische Skalierung durchgeführt, sobald eine Regel erfüllt wird. Beim *horizontalen Herunterskalieren* wird die automatische Skalierung nur ausgeführt, wenn alle Regeln erfüllt werden.
  
 Nehmen Sie an, Sie hätten die folgenden vier Regeln für die automatische Skalierung:
  

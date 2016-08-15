@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Alle Themen über den SQL-Datenbankdienst | Microsoft Azure"
-	description="Tabelle mit allen Themen für den Azure-Dienst namens „SQL-Datenbank“ auf https://azure.microsoft.com/de-de/documentation/articles/, Titel und Beschreibung"
+	description="Tabelle mit allen Themen für den Azure-Dienst namens „SQL-Datenbank“ auf https://azure.microsoft.com/documentation/articles/, Titel und Beschreibung"
 	services="sql-database"
 	documentationCenter=""
 	authors="MightyPen"

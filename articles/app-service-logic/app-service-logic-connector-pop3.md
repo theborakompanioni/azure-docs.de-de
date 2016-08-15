@@ -65,7 +65,9 @@ Sobald Ihre API-App erstellt wurde, können Sie den POP3-Connector als Trigger f
 5.	Sie können nun den POP3-Connector im Datenfluss verwenden. Wählen Sie den Trigger "E-Mail abrufen", und konfigurieren Sie die Häufigkeit und das Abrufintervall. Sie können nun die vom POP3-Trigger abgerufenen E-Mails in anderen Aktionen im Datenfluss verwenden.
 		 
 
-	![][5] ![][6]
+	![][5]
+	
+	![][6]
 
 ## Mehr mit Ihrem Connector machen
 Nachdem der Connector nun erstellt ist, können Sie ihn mit einer Logik-App einem Geschäftsworkflow hinzufügen. Informationen finden Sie unter [Was sind Logik-Apps?](app-service-logic-what-are-logic-apps.md).

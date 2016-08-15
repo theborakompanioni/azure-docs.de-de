@@ -138,8 +138,8 @@ Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklu
 
 [SQL Data Warehouse-Entwicklungsübersicht]: ./sql-data-warehouse-overview-develop.md
 [SQL Data Warehouse-Integration (Übersicht)]: ./sql-data-warehouse-overview-integration.md
-[Lernprogramm zum Erstellen eines Experiments]: https://azure.microsoft.com/de-DE/documentation/articles/machine-learning-create-experiment/
-[Einführung in Machine Learning in Azure]: https://azure.microsoft.com/de-DE/documentation/articles/machine-learning-what-is-machine-learning/
+[Lernprogramm zum Erstellen eines Experiments]: https://azure.microsoft.com/documentation/articles/machine-learning-create-experiment/
+[Einführung in Machine Learning in Azure]: https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
 [Azure Machine Learning Studio]: https://studio.azureml.net/Home
 [Azure-Portal]: https://portal.azure.com/
 

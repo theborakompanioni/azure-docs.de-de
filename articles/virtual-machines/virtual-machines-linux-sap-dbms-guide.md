@@ -445,7 +445,7 @@ ___
 > ![Linux][Logo_Linux] Linux
 >
 > Nur MDADM und LVM (Logical Volume Manager) werden unterstützt, um ein Software-RAID unter Linux zu erstellen. Weitere Informationen finden Sie in den folgenden Artikeln:
-> * [Konfigurieren von Software-RAID unter Linux][virtual-machines-linux-configure-raid] (für MDADM)
+> * [Konfigurieren von Software-RAID unter Linux][virtual-machines-linux-configure-raid] \(für MDADM)
 > * [Konfigurieren von LVM auf einem virtuellen Linux-Computer in Azure][virtual-machines-linux-configure-lvm]
 
 
@@ -1123,7 +1123,8 @@ Wenn mehr IOPS erforderlich sind, wird ausdrücklich empfohlen, Windows-Speicher
 Die Funktionen zum Sichern und Wiederherstellen werden für die SAP BR-Tools für Oracle genauso unterstützt wie auf standardmäßigen Windows Server-Betriebssystemen und Hyper-V. Auch Oracle Recovery Manager (RMAN) wird für die Sicherung auf einen Datenträger und die Wiederherstellung von einem Datenträger unterstützt.
 
 #### Hohe Verfügbarkeit
-[comment]: <> (Link bezieht sich auf ASM.) Oracle Data Guard wird aus Gründen der hohen Verfügbarkeit und der Notfallwiederherstellung unterstützt. Einzelheiten finden Sie in [dieser][virtual-machines-windows-classic-configure-oracle-data-guard] Dokumentation.
+[comment]: <> (Link bezieht sich auf ASM.)
+Oracle Data Guard wird aus Gründen der hohen Verfügbarkeit und der Notfallwiederherstellung unterstützt. Einzelheiten finden Sie in [dieser][virtual-machines-windows-classic-configure-oracle-data-guard] Dokumentation.
 
 #### Andere
 Bezüglich aller weiteren allgemeinen Themen wie Azure-Verfügbarkeitsgruppen oder SAP-Überwachung gelten die Angaben in den ersten drei Kapiteln dieses Dokuments auch für Bereitstellungen von VMs mit Oracle Database.

@@ -368,7 +368,7 @@ Die folgende Abfrage kann verwendet werden, um potenzielle fehlende Indizes zu e
 
 In diesem Beispiel wird der folgende Index empfohlen.
 
-	CREATE INDEX missing_index_5006_5005 ON [dbo].[missingindex] ([col2])  
+	CREATE INDEX missing_index_5006_5005 ON [dbo].[missingindex] \([col2])  
 
 Nach der Erstellung wird mit derselben SELECT-Anweisung jetzt ein anderer Plan ausgewählt, bei dem anstelle eines Scans eine Suche verwendet wird. Die Ausführung der Suche ist effizienter, wie im folgenden Abfrageplan zu sehen ist.
 

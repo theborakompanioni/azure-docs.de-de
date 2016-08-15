@@ -97,7 +97,7 @@ azure vm extension set <resource group> <vmname> VMAccessForLinux Microsoft.OSTC
 ```
 
 ### Erneutes Bereitstellen eines virtuellen Computers
-Sie können einen virtuellen Computer in Azure auf einem anderen Knoten erneut bereitstellen und dadurch möglicherweise zugrunde liegende Netzwerkprobleme beheben. Um einen virtuellen Computer im Azure-Portal erneut bereitzustellen, wählen Sie **Durchsuchen** > **Virtuelle Computer ** > *Ihr virtueller Linux-Computer* > **Erneut bereitstellen**. Informationen hierzu finden Sie unter [Einen virtuellen Computer in einem neuen Azure-Knoten erneut bereitstellen](virtual-machines-windows-redeploy-to-new-node.md). Zurzeit können Sie virtuelle Computer nicht über die Azure-Befehlszeilenschnittstelle erneut bereitstellen.
+Sie können einen virtuellen Computer in Azure auf einem anderen Knoten erneut bereitstellen und dadurch möglicherweise zugrunde liegende Netzwerkprobleme beheben. Um einen virtuellen Computer im Azure-Portal erneut bereitzustellen, wählen Sie **Durchsuchen** > **Virtuelle Computer** > *Ihr virtueller Linux-Computer* > **Erneut bereitstellen**. Informationen hierzu finden Sie unter [Einen virtuellen Computer in einem neuen Azure-Knoten erneut bereitstellen](virtual-machines-windows-redeploy-to-new-node.md). Zurzeit können Sie virtuelle Computer nicht über die Azure-Befehlszeilenschnittstelle erneut bereitstellen.
 
 > [AZURE.NOTE] Beachten Sie, dass nach Beenden dieses Vorgangs kurzlebige Datenträgerdaten verloren gehen und dynamische, dem virtuellen Computer zugeordnete IP-Adressen aktualisiert werden.
 

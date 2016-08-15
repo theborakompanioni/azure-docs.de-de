@@ -22,7 +22,7 @@
 
 Dieser Artikel bietet die Informationen, die Sie benötigen, um ein Ticket beim Azure-Support zu öffnen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. Wählen Sie **Hilfe und Support** > **Neue Supportanforderung**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. Wählen Sie **Hilfe und Support** > **Neue Supportanforderung**.
 
 	![helpandsupportbutton](./media/billing-how-to-create-billing-support-ticket/helpandsupport.png)
 2. Wählen Sie auf dem Blatt **Grundlagen** den Problemtyp, das Abonnement und den Supportplan aus.

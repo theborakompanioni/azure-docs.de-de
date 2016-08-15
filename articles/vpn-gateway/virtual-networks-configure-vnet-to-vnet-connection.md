@@ -112,8 +112,8 @@ Geben Sie auf der Seite „Details zum virtuellen Netzwerk“ die folgenden Info
 
   ![Details zum virtuellen Netzwerk](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736055.png)
 
-  - **Name** – Der Name des virtuellen Netzwerks. Beispiel: VNet1
-  - **Standort** – Wenn Sie ein virtuelles Netzwerk erstellen, ordnen Sie dieses einem Azure-Standort (einer Region) zu. Wenn Sie z. B. wünschen, dass Ihre virtuellen Computer, die Sie für Ihr virtuelles Netzwerk bereitgestellt haben, physisch in "USA West" vorhanden sind, wählen Sie diesen Standort aus. Sie können den Ihrem virtuellen Netzwerk zugeordnete Standort nach dem Erstellen nicht mehr ändern.
+  - **Name** – Der Name des virtuellen Netzwerks. Beispiel: VNet1
+  - **Standort** – Wenn Sie ein virtuelles Netzwerk erstellen, ordnen Sie dieses einem Azure-Standort (einer Region) zu. Wenn Sie z. B. wünschen, dass Ihre virtuellen Computer, die Sie für Ihr virtuelles Netzwerk bereitgestellt haben, physisch in "USA West" vorhanden sind, wählen Sie diesen Standort aus. Sie können den Ihrem virtuellen Netzwerk zugeordnete Standort nach dem Erstellen nicht mehr ändern.
 
 ### DNS-Server und VPN-Konnektivität
 
@@ -132,8 +132,8 @@ Wenn Sie ein VNet erstellen, das auch mit Ihrem lokalen Netzwerk verbunden ist, 
 
   ![Seite "Adressräume des virtuellen Netzwerks"](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736057.jpg)
 
-  - **Adressraum** – Umfasst Start-IP und die Anzahl Adressen. Stellen Sie sicher, dass die angegebenen Adressräume und die Adressräume im lokalen Netzwerk nicht überlappen. In diesem Beispiel verwenden Sie 10.1.0.0/16 für VNet1.
-  - **Subnetz hinzufügen** – Umfasst Start-IP und Anzahl Adressen. Zusätzliche Subnetze sind nicht erforderlich, aber Sie können eine getrenntes Subnetz für virtuelle Computer erstellen, die über statische DIPs verfügen sollen. Vielleicht möchten Sie jedoch auch Ihre virtuellen Computer in einem Subnetz zusammenfassen, das von Ihren anderen Rolleninstanzen getrennt ist.
+  - **Adressraum** – Umfasst Start-IP und die Anzahl Adressen. Stellen Sie sicher, dass die angegebenen Adressräume und die Adressräume im lokalen Netzwerk nicht überlappen. In diesem Beispiel verwenden Sie 10.1.0.0/16 für VNet1.
+  - **Subnetz hinzufügen** – Umfasst Start-IP und Anzahl Adressen. Zusätzliche Subnetze sind nicht erforderlich, aber Sie können eine getrenntes Subnetz für virtuelle Computer erstellen, die über statische DIPs verfügen sollen. Vielleicht möchten Sie jedoch auch Ihre virtuellen Computer in einem Subnetz zusammenfassen, das von Ihren anderen Rolleninstanzen getrennt ist.
  
 **Klicken Sie auf das Häkchen** rechts unten auf der Seite, damit das virtuelle Netzwerk erstellt wird. Sobald der Vorgang abgeschlossen ist, wird auf der Seite „Netzwerke“ unter „Status“ der Eintrag „Erstellt“ angezeigt.
 

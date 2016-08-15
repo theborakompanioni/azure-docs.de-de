@@ -165,7 +165,7 @@ Gibt den Index in dem mehrwertigen Attribut zurück, in dem die Zeichenfolge gef
 
 **Beispiel:** `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")` `ConvertFromBase64("SGVsbG8gd29ybGQh", UTF8)`
 
-Beide Beispiele geben "*Hello world!*" zurück.
+Beide Beispiele geben " *Hello world!* " zurück.
 
 ----------
 ### ConvertFromUTF8Hex
