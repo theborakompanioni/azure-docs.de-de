@@ -19,7 +19,7 @@
 
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
-> [AZURE.NOTE] [Test drive Analytics on our simulated data]Führen Sie https://analytics.applicationinsights.io/demo aus, wenn Ihre App noch keine Daten an Application Insights sendet.
+> [AZURE.NOTE] [Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo) wenn Ihre App noch keine Daten an Application Insights sendet.
 
 ## Index
 
