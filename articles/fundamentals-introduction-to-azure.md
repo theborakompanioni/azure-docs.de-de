@@ -69,7 +69,7 @@ Dieser eher allgemeine Cloud Computing-Ansatz kann zur Lösung verschiedener Pro
 **Virtual Machine-Szenarien**
 
 1.	**Dev/Test** – Damit können Sie eine günstige Entwicklungs- und Testplattform erstellen, die Sie nach Abschluss Ihrer Arbeiten wieder außer Betrieb nehmen. Sie können auch Anwendungen erstellen und ausführen, die genau die Sprachen und Bibliotheken nutzen, die Sie benötigen. Diese Anwendungen können jede Datenverwaltungsoption nutzen, die in Azure zur Verfügung steht. Sie können auch SQL Server oder ein anderes DBMS verwenden, das auf einem oder mehreren virtuellen Computern ausgeführt wird.
-2.	**Anwendungen nach Azure verschieben (anheben und verschieben)** - Bei "anheben und verschieben" geht es um das Verschieben Ihrer Anwendung. Vergleichen Sie dies mit dem Anheben eines großen Objekts mithilfe eines Gabelstaplers. Sie "heben" die VHD aus dem lokalen Datencenter, "verschieben" sie nach Azure und führen sie dort aus. In der Regel müssen Sie anschließend noch Abhängigkeiten von anderen Systemen entfernen. Wenn zu viele vorhanden sind, können Sie stattdessen die Option 3 auswählen.
+2.	**Anwendungen nach Azure verschieben (anheben und verschieben)** - Bei "anheben und verschieben" geht es um das Verschieben Ihrer Anwendung. Vergleichen Sie dies mit dem Anheben eines großen Objekts mithilfe eines Gabelstaplers. Sie "heben" die VHD aus dem lokalen Datencenter, "verschieben" sie nach Azure und führen sie dort aus. In der Regel müssen Sie anschließend noch Abhängigkeiten von anderen Systemen entfernen. Wenn zu viele vorhanden sind, können Sie stattdessen die Option 3 auswählen.  
 3.	**Datencenter erweitern** – Verwenden Sie Azure-VMs, auf denen SharePoint oder andere Anwendungen ausgeführt werden, als Erweiterung Ihres lokalen Datencenters. Zur Unterstützung dieser Option können Sie Windows-Domänen in der Cloud erstellen, indem Sie Active Directory auf Azure-VMs ausführen. Sie können Azure Virtual Network (Erläuterungen weiter unten) verwenden, um Ihr lokales Netzwerk und Ihr Netzwerk in Azure zu verbinden.
 
 
@@ -431,7 +431,7 @@ Unabhängig von der Funktion eines Codes muss eine häufige Interaktion mit ande
 
 Warteschlangen folgen einem einfachen Prinzip: Eine Anwendung stellt eine Nachricht in eine Warteschlange, und diese Nachricht wird von einer anderen Anwendung gelesen. Wenn Ihre Anwendung nur diesen überschaubaren Dienst erfordert, ist Azure Queues womöglich die beste Wahl.
 
-Aufgrund der Art und Weise, wie Azure im Laufe der Zeit gewachsen ist, bieten Azure-Speicherwarteschlangen und Service Bus-Warteschlangen ähnliche Warteschlangendienste. Die Gründe dafür, weshalb Sie eine Option der anderen eventuell vorziehen sollten, werden in dem ziemlich technischen Artikel [Azure-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](http://msdn.microsoft.com/library/azure/hh767287.aspx) dargestellt. In vielen Szenarien funktionieren beide.
+Aufgrund der Art und Weise, wie Azure im Laufe der Zeit gewachsen ist, bieten Azure-Speicherwarteschlangen und Service Bus-Warteschlangen ähnliche Warteschlangendienste. Die Gründe dafür, weshalb Sie eine Option der anderen eventuell vorziehen sollten, werden im technischen Artikel [<LINK>](http://msdn.microsoft.com/library/azure/hh767287.aspx "Azure-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung") dargelegt. In vielen Szenarien funktionieren beide.
 
 **Szenarien für Warteschlangen**
 
