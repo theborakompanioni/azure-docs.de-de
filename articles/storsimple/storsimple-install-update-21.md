@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="07/21/2016"
+   ms.date="08/02/2016"
    ms.author="alkohli" />
 
 # Installieren von Update 2.2 auf Ihrem StorSimple-Gerät
@@ -21,7 +21,7 @@
 
 In diesem Tutorial wird beschrieben, wie Sie Update 2.2 auf einem StorSimple-Gerät mit einer früheren Softwareversion über das klassische Azure-Portal und mithilfe der Hotfixmethode ausführen. Die Hotfixmethode wird verwendet, wenn ein Gateway auf einer anderen Netzwerkschnittstelle als DATA 0 des StorSimple-Geräts konfiguriert ist und Sie versuchen, das Update von einer Softwareversion durchzuführen, die noch nicht Update 1 enthält.
 
-Update 2.2 enthält Gerätesoftware-, WMI- und iSCSI-Updates. Wenn Sie von einer Version aktualisieren, die noch nicht Update 2 enthält, müssen Sie ebenso Updates des LSI-Treibers, Spaceport, Storport und Datenträgerfirmware anwenden. Die Fehlerbehebungen von Gerätesoftware, WMI, iSCSI, LSI-Treiber, Spaceport und Storport sind unterbrechungsfreie Updates und können über das klassische Azure-Portal angewendet werden. Die Updates für die Datenträgerfirmware führen zu einer Betriebsunterbrechung und können nur über die Windows PowerShell-Schnittstelle des Geräts angewendet werden.
+Update 2.2 enthält Gerätesoftware-, WMI- und iSCSI-Updates. Wenn Sie von Version 2.1 aktualisieren, muss nur das Update für die Gerätesoftware angewendet werden. Wenn Sie von einer Version aktualisieren, die noch nicht Update 2 enthält, müssen Sie ebenso Updates des LSI-Treibers, Spaceport, Storport und Datenträgerfirmware anwenden. Die Fehlerbehebungen von Gerätesoftware, WMI, iSCSI, LSI-Treiber, Spaceport und Storport sind unterbrechungsfreie Updates und können über das klassische Azure-Portal angewendet werden. Die Updates für die Datenträgerfirmware führen zu einer Betriebsunterbrechung und können nur über die Windows PowerShell-Schnittstelle des Geräts angewendet werden.
 
 > [AZURE.IMPORTANT]
 
@@ -63,7 +63,7 @@ Die Softwareversionen, die mithilfe dieser Methode aktualisiert werden können, 
 
 - Update 0.1, 0.2, 0.3
 - Update 1, 1.1, 1.2
-- Update 2. 2.1
+- Update 2, 2.1
 
 > [AZURE.IMPORTANT]
 >
@@ -77,7 +77,7 @@ Das Hotfixverfahren umfasst die folgenden drei Schritte:
 
 #### Herunterladen von Updates für ein Gerät mit der Update 2.1-Software
 
-**Wenn auf Ihrem Gerät Update 2.1 ausgeführt wird**, müssen Sie nur das Update für die Gerätesoftware KB3179904 herunterladen. Installieren Sie nur die Binärdatei mit dem Präfix „all-hcsmdssoftwareudpate“. Installieren Sie das CIS- und das MDS-Agent-Update mit dem Präfix `all-cismdsagentupdatebundle` nicht. Andernfalls kommt es zu einem Fehler.
+**Wenn auf Ihrem Gerät Update 2.1 ausgeführt wird**, müssen Sie nur das Update für die Gerätesoftware KB3179904 herunterladen. Installieren Sie nur die Binärdatei mit dem Präfix „all-hcsmdssoftwareudpate“. Installieren Sie das CIS- und das MDS-Agent-Update mit dem Präfix `all-cismdsagentupdatebundle` nicht. Andernfalls kommt es zu einem Fehler. Dies ist ein unterbrechungsfreies Update, E/A-Vorgänge werden nicht unterbrochen, und es treten keine Ausfallzeiten auf dem Gerät auf.
 
 
 #### Herunterladen von Updates für ein Gerät mit der Update 2-Software
@@ -86,9 +86,9 @@ Das Hotfixverfahren umfasst die folgenden drei Schritte:
 
 | Reihenfolge | KB | Beschreibung | Updatetyp | Installationszeit |
 |--------|-----------|-------------------------|------------- |-------------|
-| 1\. | KB3179904 | Softwareupdate &#42; | Normal | ~ 45 Min. |
-| 2\. | KB3146621 | iSCSI-Paket | Normal | ~ 20 Min. |
-| 3\. | KB3103616 | WMI-Paket | Normal | ~ 12 Min. |
+| 1\. | KB3179904 | Softwareupdate &#42; | Regulär <br></br>Unterbrechungsfrei | ~ 45 Min. |
+| 2\. | KB3146621 | iSCSI-Paket | Regulär <br></br>Unterbrechungsfrei | ~ 20 Min. |
+| 3\. | KB3103616 | WMI-Paket | Regulär <br></br>Unterbrechungsfrei | ~ 12 Min. |
 
 
  &#42;*Beachten Sie, dass das Softwareupdate aus zwei Binärdateien besteht: Update für die Gerätesoftware mit dem Präfix `all-hcsmdssoftwareupdate` und CIS- und MDS-Agent mit dem Präfix `all-cismdsagentupdatebundle`. Das Update für die Gerätesoftware muss vor dem CIS- und MDS-Agent installiert werden. Sie müssen auch den aktiven Controller über das `Restart-HcsController`-Cmdlet neu starten, nachdem Sie das Update für den CIS- und MDS-Agent angewendet haben (und bevor Sie die verbleibenden Updates anwenden).*
@@ -99,24 +99,24 @@ Das Hotfixverfahren umfasst die folgenden drei Schritte:
  
 | Reihenfolge | KB | Beschreibung | Updatetyp | Installationszeit |
 |--------|-----------|-------------------------|------------- |-------------|
-| 4\. | KB3121900 | LSI-Treiber und Firmware | Normal | ~ 20 Min. |
+| 4\. | KB3121900 | LSI-Treiber und Firmware | Regulär <br></br>Unterbrechungsfrei | ~ 20 Min. |
 
 
 <br></br> **Wenn auf Ihrem Gerät die Versionen 0.2, 0.3, 1.0, 1.1 und 1.2 ausgeführt werden**, müssen Sie die Spaceport- und Storport-Fehlerbehebung herunterladen und installieren. Diese sind bereits installiert, wenn Sie Update 2 ausführen
 
 | Reihenfolge | KB | Beschreibung | Updatetyp | Installationszeit |
 |--------|-----------|-------------------------|------------- |-------------|
-| 5\. | KB3090322 | Spaceport-Fehlerbehebung </br> Windows Server 2012 R2 | Normal | ~ 20 Min. |
-| 6\. | KB3080728 | Storport-Fehlerbehebung </br> Windows Server 2012 R2 | Normal | ~ 20 Min. |
+| 5\. | KB3090322 | Spaceport-Fehlerbehebung </br> Windows Server 2012 R2 | Regulär <br></br>Unterbrechungsfrei | ~ 20 Min. |
+| 6\. | KB3080728 | Storport-Fehlerbehebung </br> Windows Server 2012 R2 | Regulär <br></br>Unterbrechungsfrei | ~ 20 Min. |
 
 
 
-<br></br> Möglicherweise müssen Sie auch Datenträgerfirmware-Updates installieren. Sie können überprüfen, ob Sie die Datenträgerfirmware-Updates benötigen, indem Sie das Cmdlet `Get-HcsFirmwareVersion` ausführen. Wenn Sie die folgenden Firmwareversionen ausführen, müssen Sie diese Updates nicht installieren: `XMGG`, `XGEG`, `KZ50`, `F6C2`, `VR08`.
+<br></br> Möglicherweise müssen Sie auch Updates für die Datenträgerfirmware installieren. Sie können überprüfen, ob Sie Updates für die Datenträgerfirmware benötigen, indem Sie das Cmdlet `Get-HcsFirmwareVersion` ausführen. Wenn Sie die folgenden Firmwareversionen ausführen, müssen Sie diese Updates nicht installieren: `XMGG`, `XGEG`, `KZ50`, `F6C2`, `VR08`.
 
 
 | Reihenfolge | KB | Beschreibung | Updatetyp | Installationszeit |
 |--------|-----------|-------------------------|------------- |-------------|
-| 7\. | KB3121899 | Datenträgerfirmware | Wartung | ~ 30 Min. |
+| 7\. | KB3121899 | Datenträgerfirmware | Wartung <br></br>Mit Unterbrechung | ~ 30 Min. |
  
 <br></br>
 
@@ -134,6 +134,6 @@ Führen Sie die folgenden Schritte aus, um diese Datei herunterzuladen und die H
 
 ## Nächste Schritte
 
-Weitere Informationen finden Sie unter [Versionsanmerkungen zu Update 2.1](storsimple-update21-release-notes.md)
+Weitere Informationen finden Sie unter [Versionsanmerkungen zu Update 2.1](storsimple-update21-release-notes.md).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

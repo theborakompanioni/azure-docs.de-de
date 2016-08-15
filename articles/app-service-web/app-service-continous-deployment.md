@@ -28,7 +28,7 @@ Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu
 
 2. Klicken Sie im [Azure-Portal] auf dem Blatt Ihrer App auf **Einstellungen > Bereitstellungsquelle**. Klicken Sie auf **Quelle auswählen** und dann z. B. auf **GitHub**.
 
-	![](./media/app-service-continous-deployment/cd_options.png)
+	![](./media/app-service-continuous-deployment/cd_options.png)
 	
     > [AZURE.NOTE] Informationen zum Konfigurieren eines VSTS-Kontos für die App Service-Bereitstellung finden Sie in diesem [Tutorial](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
     
@@ -36,7 +36,7 @@ Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu
 
 4. Wählen Sie auf dem Blatt **Bereitstellungsquelle** das Projekt und den Branch für die Bereitstellung aus. Wenn Sie fertig sind, klicken Sie auf **OK**.
   
-	![](./media/app-service-continous-deployment/github_option.png)
+	![](./media/app-service-continuous-deployment/github_option.png)
 
 	> [AZURE.NOTE] Wenn Sie die kontinuierliche Bereitstellung mit GitHub oder BitBucket aktivieren, werden öffentliche und private Projekte angezeigt.
 
@@ -54,7 +54,7 @@ Die Schritte zur Pushübertragung der Visual Studio-Projektmappe an App Service 
 
 -	Verwenden Sie die Visual Studio-Option zur Quellcodeverwaltung, um wie in der nachstehenden Abbildung eine `.gitignore`-Datei zu generieren, oder fügen Sie Ihrem Repositorystamm manuell eine `.gitignore`-Datei hinzu, die einen ähnlichen Inhalt hat wie dieses [.gitignore-Beispiel](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore).
 
-    ![](./media/app-service-continous-deployment/VS_source_control.png)
+    ![](./media/app-service-continuous-deployment/VS_source_control.png)
  
 -	Fügen Sie Ihrem Repository die gesamte Verzeichnisstruktur des Projekts hinzu, wobei sich die .sln-Datei im Stammverzeichnis des Repositorys befinden muss.
 
@@ -66,7 +66,7 @@ Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu
 
 1. Klicken Sie im [Azure-Portal] auf dem Blatt Ihrer App auf **Einstellungen > Bereitstellungsquelle**. Klicken Sie dann auf dem Blatt **Bereitstellungen** auf **Trennen**.
 
-    ![](./media/app-service-continous-deployment/cd_disconnect.png)
+    ![](./media/app-service-continuous-deployment/cd_disconnect.png)
 
 2. Nachdem Sie die Bestätigungsmeldung mit **Ja** beantwortet haben, können Sie zum Blatt Ihrer App zurückkehren und auf **Einstellungen > Bereitstellungsquelle** klicken, wenn Sie die Veröffentlichung aus einer anderen Quelle einrichten möchten.
 
@@ -93,4 +93,4 @@ Führen Sie die folgenden Schritte aus, um die kontinuierliche Bereitstellung zu
 [Erste Schritte mit VSTS]: https://www.visualstudio.com/get-started/overview-of-get-started-tasks-vs
 [Continuous delivery to Azure using Visual Studio Team Services]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

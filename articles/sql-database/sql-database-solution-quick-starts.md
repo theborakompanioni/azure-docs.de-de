@@ -3,7 +3,7 @@
    description="Informationen zu Azure SQL-Datenbanklösungen"
    services="sql-database"
    documentationCenter=""
-   authors="carlrabeler"
+   authors="CarlRabeler"
    manager="jhubbard"
    editor=""/>
 
@@ -18,42 +18,57 @@
 
 # Übersicht über die Schnellstarts zur Azure SQL-Datenbanklösung
 
-Dieser Artikel bietet eine Übersicht über die Schnellstarts zur Azure SQL-Datenbanklösung. Diese Schnellstarts veranschaulichen den Einsatz der SQL-Datenbank in einer vollständigen Lösung anhand von Anwendungsbeispielen. Einfache Schritt-für-Schritt-Tutorials, die die Verwendung eines bestimmten Azure SQL-Datenbankfeatures veranschaulichen, finden Sie unter [Kennenlernen der SQL-Datenbank-Tutorials](sql-database-explore-tutorials.md).
+Dieser Artikel bietet eine Übersicht über die Schnellstarts zur Azure SQL-Datenbanklösung. Diese Schnellstarts befinden sich im GitHub-Repository mit SQL Server-Beispielen und zeigen die Verwendung von SQL-Datenbank in einer vollständigen Lösung basierend auf realen Szenarien. Einfache Schritt-für-Schritt-Tutorials, die die Verwendung eines bestimmten SQL-Datenbankfeatures veranschaulichen, finden Sie unter [Entdecken Sie Azure SQL-Datenbank-Tutorials](sql-database-explore-tutorials.md).
+
+## Ausprobieren der WingTipTickets-Demo und praktische Übungen
+
+Die [Azure SQL Database WingTipTickets](https://github.com/microsoft/wingtiptickets)-Demo und die zugehörigen praktischen Übungen veranschaulichen eine auf Azure SQL-Datenbank und Azure Search basierende Beispielanwendung, mit der Konzerttickets verkauft werden.
+
 
 ## Sammeln und Überwachen von Ressourcennutzungsdaten über mehrere Pools hinweg
 
-Dieser Lösungsschnellstart bietet eine Lösung für die Erfassung und Überwachung der Azure SQL-Datenbank-Ressourcennutzung über mehrere Pools in einem Abonnement hinweg. Wenn Sie über eine große Anzahl von Datenbanken in einem Abonnement verfügen, ist es mühselig, jeden elastischen Pool einzeln zu überwachen. Um dies zu vermeiden, können Sie PowerShell-Cmdlets für die SQL-Datenbank und T-SQL-Abfragen kombinieren, um Ressourcennutzungsdaten aus mehreren Pools und den zugehörigen Datenbanken zu sammeln und eine Überwachung und Analyse der Ressourcennutzung durchzuführen.
+[Solution Quick Start: Elastic Pool telemetry using PowerShell](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools) (Lösungsschnellstart: Telemetrie in elastischen Pools mithilfe von PowerShell) bietet eine Lösung für die Erfassung und Überwachung der SQL-Datenbank-Ressourcenverwendung über mehrere Pools in einem Abonnement hinweg. Wenn Sie über eine große Anzahl von Datenbanken in einem Abonnement verfügen, ist es mühselig, jeden elastischen Pool einzeln zu überwachen.
 
-Unter [Verwalten mehrerer elastischer Pools in der SQL-Datenbank mithilfe von PowerShell und Power BI](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools) im GitHub-Beispielrepository für SQL Server finden Sie einen Satz von Powershell-Skripts und T-SQL-Abfragen sowie Dokumentation zu Funktionen und Verwendung.
+Um dieses Problem zu lösen, können Sie PowerShell-Cmdlets für SQL-Datenbank und T-SQL-Abfragen kombinieren, um Ressourcennutzungsdaten aus mehreren Pools und den zugehörigen Datenbanken zu sammeln. So können Sie die Ressourcenverwendung effizienter überwachen und analysieren.
 
-## Erste Schritte mit elastischen Pools in einem SaaS-Szenario
+Dieser Schnellstart bietet eine Reihe von PowerShell-Skripts und T-SQL-Abfragen sowie Informationen zur Funktionsweise und zur Implementierung der Lösung.
 
-Dieser Lösungsschnellstart bietet eine Lösung für ein SaaS-Szenario (Software-as-a-Solution), das elastische Pools nutzt, um ein kostengünstiges, skalierbares Datenbank-Back-End einer SaaS-Anwendung bereitzustellen. Im Rahmen dieser Lösung werden Sie durch die Implementierung einer Web-App geführt, mit der Sie die durch einen Last-Generator auf einen elastischen Pool ausgeübte Last anhand eines benutzerdefinierten Dashboards, das das Azure-Portal ergänzt, visualisieren können.
+## Erste Schritte mit elastischen Datenbanken in einem SaaS-Szenario
 
-Im GitHub-Beispielrepository zu SQL Server finden Sie unter [Elastic Pool Custom Dashboard for Saas](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools-custom-dashboard) (Benutzerdefiniertes Dashboard für SaaS mit elastischem Pool) eine Last-Generator- und eine Überwachungs-Web-App sowie Dokumentation zu Funktionen und Verwendung.
+ Unter [Solution Quick Start: Elastic Pool Custom Dashboard for SaaS](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools-custom-dashboard) (Lösungsschnellstart: Benutzerdefiniertes Dashboard für SaaS mit elastischem Pool) finden Sie eine Beispiellösung für ein SaaS-Szenario (Software-as-a-Service), bei dem mithilfe des SQL-Datenbank-Features für elastische Datenbanken ein kostengünstiges und skalierbares Datenbank-Back-End für eine SaaS-Anwendung bereitgestellt wird.
 
-## Erstellen einer Azure SQL-Datenbank unter Verwendung von Entity Framework und Code First-Entwicklung
+Diese Lösung führt Sie Schritt für Schritt durch die Implementierung einer Web-App. Mit dieser Web-App können Sie die Last visualisieren, die in einer elastischen Datenbank von einem Lastengenerator erzeugt wird, der ein benutzerdefiniertes Dashboard als Ergänzung zum Azure-Portal verwendet.
 
-Dieses Video und das dazugehörige Beispiel bieten eine Einführung in die Code First-Entwicklung für eine neue Datenbank. Das Szenario umfasst die zielgerichtete Entwicklung für eine Datenbank, die noch nicht vorhanden ist und mittels Code First erstellt wird, bzw. für eine leere Datenbank, der mit Code First neue Tabellen hinzugefügt werden. Mit Code First können Sie Modelle unter Verwendung von C#- oder VB.NET-Klassen definieren. Optional können zusätzliche Konfigurationsschritte ausgeführt werden – beispielsweise durch Anwendung von Attributen auf Klassen und Eigenschaften oder durch die Verwendung einer Fluent-API. Weitere Informationen finden Sie unter [Code First für eine neue Datenbank](https://msdn.microsoft.com/data/jj193542.aspx).
+Dieser Schnellstart bietet einen Web-App für die Generierung und Überwachung von Lasten sowie Informationen zur Funktionsweise und Verwendung der App.
+
+## Erstellen einer Azure SQL-Datenbank unter Verwendung von Code First-Entwicklung und Entity Framework
+
+Das Video und dazugehörige Beispiel zur [Code First-Entwicklung](https://msdn.microsoft.com/data/jj193542.aspx) bieten eine Einführung in die Code First-Entwicklung für eine neue Datenbank. In diesem Szenario wird eine Datenbank verwendet, die noch nicht vorhanden ist, sondern von Code First erstellt wird. Alternativ dazu erstellt das Szenario eine leere Datenbank, der Code First neue Tabellen hinzufügt.
+
+Mit Code First können Sie Ihr Modell mithilfe von C#- oder Visual Basic .NET-Klassen definieren. Sie können optional zusätzliche Konfigurationsschritte ausführen – beispielsweise durch Anwendung von Attributen auf Klassen und Eigenschaften oder durch Verwendung einer Fluent-API.
 
 ## Integrieren von Tools für elastische Datenbanken in eine Entity Framework-Anwendung
 
-Dieses Beispiel zeigt, welche Änderungen in einer Entity Framework-Anwendung erforderlich sind, damit diese die Funktionen der [Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md) nutzen kann. Der Schwerpunkt liegt auf der Erstellung der [Shard-Zuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md) und des [datenabhängigen Routings](sql-database-elastic-scale-data-dependent-routing.md) mit dem Code First-Ansatz von Entity Framework. Das [Code First-Beispiel für eine neue Datenbank für EF](http://msdn.microsoft.com/data/jj193542.aspx) wird im gesamten Dokument als Beispiel verwendet. Der zu diesem Dokument gehörige Beispielcode ist Teil der Beispielserie der Tools für elastische Datenbanken in den Visual Studio-Codebeispielen. Weitere Informationen finden Sie unter [Clientbibliothek für elastische Datenbanken mit Entity Framework](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md).
+Das Beispiel [Clientbibliothek für elastische Datenbanken mit Entity Framework](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) zeigt die Änderungen, die Sie an einer Entity Framework-Anwendung vornehmen müssen, um sie in [Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md) zu integrieren. Der Schwerpunkt liegt auf der Erstellung der [Shardzuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md) und des [datenabhängigen Routings](sql-database-elastic-scale-data-dependent-routing.md) mit dem Code First-Ansatz von Entity Framework.
 
-## Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit
+Das [Code First-Beispiel für eine neue Datenbank für EF](http://msdn.microsoft.com/data/jj193542.aspx) wird im gesamten Dokument als Beispiel verwendet. Der zu diesem Dokument gehörige Beispielcode ist Teil der Beispielserie der Tools für elastische Datenbanken in den Visual Studio-Codebeispielen.
 
-Dieses Beispiel zeigt, welche Änderungen in einer Entity Framework-Anwendung erforderlich sind, damit [Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md) mit [Sicherheit auf Zeilenebene](https://msdn.microsoft.com/library/dn765131) integriert werden können. Dieses Beispiel veranschaulicht, wie die Technologien zusammen verwendet werden, um eine Anwendung mit einer hochgradig skalierbaren Datenebene zu erstellen, die mehrinstanzenfähige Shards mit ADO.NET SqlClient und/oder Entity Framework unterstützt. Dieses Beispiel erweitert die [Clientbibliothek für elastische Datenbanken mit Entity Framework](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) durch Hinzufügen von Unterstützung für Shard-Datenbanken mit mehreren Mandanten. Hierzu wird eine einfache Konsolenanwendung zum Erstellen von Blogs und Beiträgen mit vier Mandanten und zwei Shard-Datenbanken mit mehreren Mandanten erstellt. Weitere Informationen finden Sie unter [Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit](sql-database-elastic-tools-multi-tenant-row-level-security.md).
+## Integrieren der Tools für elastische Datenbank in die Sicherheit auf Zeilenebene
 
-## Tailspin-Anwendung „Surveys“
+Der Artikel [Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit](sql-database-elastic-tools-multi-tenant-row-level-security.md) zeigt die Änderungen, die Sie an einer Entity Framework-Anwendung vornehmen müssen, um [Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md) in die [Sicherheit auf Zeilenebene](https://msdn.microsoft.com/library/dn765131) zu integrieren. Dieses Beispiel veranschaulicht, wie diese Technologien zusammen verwendet werden, um eine Anwendung mit einer hochgradig skalierbaren Datenebene zu erstellen, die mehrinstanzenfähige Shards unterstützt.
 
-Bei diesem Beispiel handelt es sich um eine mehrinstanzenfähige Webanwendung namens „Surveys“, die Benutzern die Erstellung von Onlineumfragen ermöglicht. Das Beispiel veranschaulicht einige wichtige Aspekte der Verwaltung von Benutzeridentitäten in einer mehrinstanzenfähigen Anwendung (einschließlich Registrierung, Authentifizierung, Autorisierung und App-Rollen). Informationen zu Ausführen dieses Beispiels finden Sie unter [How to run the Tailspin Surveys sample application](https://github.com/Azure-Samples/guidance-identity-management-for-multitenant-apps/blob/master/docs/running-the-app.md) (So wird's gemacht: Ausführen der Tailspin-Beispielanwendung „Surveys“).
+Sie können hierfür mit ADO.NET SqlClient oder Entity Framework arbeiten. Dieses Beispiel erweitert die [Clientbibliothek für elastische Datenbanken mit Entity Framework](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) durch Hinzufügen von Unterstützung für mehrinstanzenfähige Sharddatenbanken. Hierzu wird eine einfache Konsolenanwendung mit vier Mandanten und zwei mehrinstanzenfähigen Sharddatenbanken zum Erstellen von Blogs und Beiträgen erstellt.
 
-## Contoso Clinic-Demoanwendung
+## Erstellen von Onlineumfragen mit der Tailspin Surveys-Anwendung
 
-In diesem Beispiel werden die Sicherheitsfeatures von Azure SQL-Datenbank (V12) vorgestellt. Um dieses Beispiel auszuführen, wechseln Sie zu [Contoso Clinic Demo Application](https://github.com/Microsoft/azure-sql-security-sample) (Contoso Clinic-Demoanwendung).
+Bei der [Tailspin Surveys-Beispielanwendung](https://github.com/Azure-Samples/guidance-identity-management-for-multitenant-apps/blob/master/docs/running-the-app.md) handelt es sich um eine mehrinstanzenfähige Webanwendung namens „Surveys“, die Benutzern die Erstellung von Onlineumfragen ermöglicht. Das Beispiel veranschaulicht einige wichtige Aspekte der Verwaltung von Benutzeridentitäten in einer mehrinstanzenfähigen Anwendung, einschließlich Registrierung, Authentifizierung, Autorisierung und App-Rollen.
+
+## Informationen zu den neuesten Sicherheitsfunktionen von SQL-Datenbank mit der Contoso Clinic-Demoanwendung
+
+Diese [Contoso Clinic-Demoanwendung](https://github.com/Microsoft/azure-sql-security-sample) zeigt die neuesten Sicherheitsfunktionen von SQL-Datenbank.
 
 ## Nächste Schritte
 
-[Kennenlernen der Azure SQL-Datenbank-Tutorials](sql-database-explore-tutorials.md)
+[Entdecken Sie Azure SQL-Datenbank-Tutorials](sql-database-explore-tutorials.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

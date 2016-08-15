@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
+	ms.date="08/02/2016"
 	ms.author="larryfr"/>
 
 # Installieren von Giraph in HDInsight Hadoop-Clustern und Verwenden von Giraph zur Verarbeitung großer Diagramme
@@ -105,15 +105,11 @@ Sobald die Clustererstellung abgeschlossen ist, gehen Sie folgendermaßen vor, u
 
 3. Verwenden Sie zum Speichern der Daten im primären Speicher für den HDInsight-Cluster den folgenden Befehl:
 
-		hadoop fs -copyFromLocal tiny_graph.txt /example/data/tiny_graph.txt
+		hdfs dfs -put tiny_graph.txt /example/data/tiny_graph.txt
 
-3. Verwenden Sie Folgendes, um den vollqualifizierten Domänennamen (FQDN) des Hauptknoten des Clusters abzurufen:
+4. Führen Sie das Beispiel "SimpleShortstPathsComputation" mit dem folgenden Befehl aus.
 
-        hostname -f
-        
-4. Führen Sie das Beispiel "SimpleShortstPathsComputation" mit dem folgenden Befehl aus. Ersetzen Sie __HEADNODE__ mit dem FQDN aus dem vorherigen Schritt:
-
-		 hadoop jar /usr/hdp/current/giraph/giraph-examples.jar org.apache.giraph.GiraphRunner org.apache.giraph.examples.SimpleShortestPathsComputation -ca mapred.job.tracker=HEADNODE:9010 -vif org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFormat -vip /example/data/tiny_graph.txt -vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat -op /example/output/shortestpaths -w 2
+		 yarn jar /usr/hdp/current/giraph/giraph-examples.jar org.apache.giraph.GiraphRunner org.apache.giraph.examples.SimpleShortestPathsComputation -ca mapred.job.tracker=headnodehost:9010 -vif org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFormat -vip /example/data/tiny_graph.txt -vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat -op /example/output/shortestpaths -w 2
 
 	Die mit diesem Befehl verwendeten Parameter werden in der folgenden Tabelle beschrieben.
 
@@ -122,7 +118,7 @@ Sobald die Clustererstellung abgeschlossen ist, gehen Sie folgendermaßen vor, u
 	| `jar /usr/hdp/current/giraph/giraph-examples.jar` | Die JAR-Datei, die die Beispiele enthält |
 	| `org.apache.giraph.GiraphRunner` | Die Klasse, die zum Starten der Beispiele verwendet wird. |
 	| `org.apache.giraph.examples.SimpleShortestPathsCoputation` | Das Beispiel, das ausgeführt wird. In diesem Fall wird der kürzeste Pfad zwischen ID 1 und allen anderen IDs im Graph berechnet. |
-	| `-ca mapred.job.tracker=HEADNODE:9010` | Der Hauptknoten für den Cluster. |
+	| `-ca mapred.job.tracker=headnodehost:9010` | Der Hauptknoten für den Cluster. |
 	| `-vif org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFromat` | Das Eingabeformat, das für die Eingabedaten verwendet wird. |
 	| `-vip /example/data/tiny_graph.txt` | Die Eingabedatendatei. |
 	| `-vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat` | Das Ausgabeformat. In diesem Fall die ID und der Wert als Nur-Text. |
@@ -133,7 +129,7 @@ Sobald die Clustererstellung abgeschlossen ist, gehen Sie folgendermaßen vor, u
 
 5. Nach Abschluss des Auftrags werden die Ergebnisse im Verzeichnis __wasbs:///example/out/shotestpaths__ gespeichert. Die erstellten Dateien beginnen mit __part-m-\_\_ und enden mit einer Zahl, die die erste, zweite, dritte Datei usw. anzeigt. Verwenden Sie den folgenden Befehl, um die Ausgabe anzuzeigen:
 
-		hadoop fs -text /example/output/shortestpaths/*
+		hdfs dfs -text /example/output/shortestpaths/*
 
 	Die Ausgabe sollte in etwa folgendermaßen aussehen:
 
@@ -158,4 +154,4 @@ Sobald die Clustererstellung abgeschlossen ist, gehen Sie folgendermaßen vor, u
 
 - [Installieren von Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install-linux.md). Verwenden Sie die Clusteranpassung, um Solr in HDInsight Hadoop-Clustern zu installieren. Solr ermöglicht es Ihnen, leistungsstarke Suchvorgänge für gespeicherte Daten durchzuführen.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

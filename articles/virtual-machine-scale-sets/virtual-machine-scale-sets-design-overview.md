@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/01/2016"
+	ms.date="07/28/2016"
 	ms.author="gatneil"/>
 
 # Entwerfen von VM-Skalierungsgruppen für die Skalierung
@@ -30,9 +30,9 @@ Eine Skalierungsgruppe verwendet Speicherkonten zum Speichern der Betriebssystem
 
 ## Überbereitstellung
 
-Ab der 2016-03-30-API-Version ist die „Überbereitstellung“ virtueller Computer bei VM-Skalierungsgruppen standardmäßig. Dies bedeutet, dass die Skalierungsgruppe tatsächlich mehr virtuelle Computer bereitstellt, als Sie angefordert haben, statt unnötige VMs zu löschen. Dies verbessert die Erfolgsraten bei der Bereitstellung, da die gesamte Bereitstellung von Azure Resource Manager sogar dann als „fehlgeschlagen“ betrachtet wird, wenn ein virtueller Computer nicht erfolgreich bereitgestellt wird. Diese zusätzlichen virtuellen Computer werden Ihnen nicht berechnet und nicht auf Ihre Kontingentgrenzen angerechnet.
+Ab der 2016-03-30-API-Version erfolgt die „Überbereitstellung“ virtueller Computer bei VM-Skalierungsgruppen standardmäßig. Dies bedeutet, dass die Skalierungsgruppe tatsächlich mehr virtuelle Computer bereitstellt, als Sie angefordert haben, und dann die zusätzlichen virtuellen Computer gelöscht werden, die zuletzt bereitgestellt wurden. Dies verbessert die Erfolgsraten bei der Bereitstellung, da die gesamte Bereitstellung von Azure Resource Manager sogar dann als „fehlgeschlagen“ betrachtet wird, wenn ein virtueller Computer nicht erfolgreich bereitgestellt wird. Diese zusätzlichen virtuellen Computer werden Ihnen nicht berechnet und nicht auf Ihre Kontingentgrenzen angerechnet.
 
-Während dies die Erfolgsraten bei der Bereitstellung verbessert, kann es ein verwirrendes Verhalten bei Anwendungen verursachen, die nicht dafür konzipiert sind, mit dem unangekündigten Verschwinden von VMs umzugehen. Um die Überbereitstellung zu deaktivieren, stellen Sie bitte sicher, dass Ihre Vorlage folgende Zeichenfolge enthält: „overprovision“: false.
+Während dies die Erfolgsraten bei der Bereitstellung verbessert, kann es ein verwirrendes Verhalten bei Anwendungen verursachen, die nicht dafür konzipiert sind, mit dem unangekündigten Verschwinden von virtuellen Computern umzugehen. Um die Überbereitstellung zu deaktivieren, stellen Sie bitte sicher, dass Ihre Vorlage folgende Zeichenfolge enthält: „overprovision: false“.
 
 Wenn Sie die Überbereitstellung deaktivieren, erhalten Sie ein größeres Verhältnis von VMs pro Speicherkonto, aber Sie sollten nicht über 40 gehen.
 
@@ -40,8 +40,8 @@ Wenn Sie die Überbereitstellung deaktivieren, erhalten Sie ein größeres Verh�
 ## Grenzen
 Eine Skalierungsgruppe, die auf der Grundlage eines (von Ihnen erstellten) benutzerdefinierten Images erstellt wird, muss alle Betriebssystem-Datenträger-VHDs in einem einzelnen Speicherkonto erstellen. Folglich ist 20 die maximal empfohlene Anzahl von virtuellen Computern in einer Skalierungsgruppe, die auf einem benutzerdefinierten Image basiert. Wenn Sie die Überbereitstellung deaktivieren, können Sie bis zu 40 gehen.
 
-Eine Skalierungsgruppe, die auf der Grundlage eines Plattformimages erstellt wird, ist auf 100 virtuelle Computer beschränkt. (Wir empfehlen fünf Speicherkonten für diese Skalierung.)
+Eine Skalierungsgruppe, die auf der Grundlage eines Plattformimages erstellt wird, ist derzeit auf 100 virtuelle Computer beschränkt. (Wir empfehlen fünf Speicherkonten für diese Skalierung.)
 
 Wenn die Anzahl benötigter virtueller Computer über diese Grenzwerte hinausgeht, müssen Sie mehrere Skalierungsgruppen bereitstellen. Eine exemplarische Vorgehensweise finden Sie in [dieser Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale).
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

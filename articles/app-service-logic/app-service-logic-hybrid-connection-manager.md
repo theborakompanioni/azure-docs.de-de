@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Verwenden des Hybrid Connection Managers | Microsoft Azure App Service" 
-	description="Installieren und Konfigurieren des Hybrid Connection Managers und Herstellen von Verbindungen mit lokalen Connectors in Azure App Service" 
+	pageTitle="Verwenden des Hybrid Connection Managers | Microsoft Azure" 
+	description="Installieren und Konfigurieren des Hybrid Connection Managers und Herstellen von Verbindungen mit lokalen Connectors in Logic Apps" 
 	services="app-service\logic" 
 	documentationCenter=".net,nodejs,java"
 	authors="MandiOhlinger" 
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016" 
+	ms.date="07/28/2016" 
 	ms.author="mandia"/>
 
-# Verbinden eines lokalen Connectors in Azure App Service mithilfe des Hybrid Connection Managers
+# Verbinden eines lokalen Connectors mithilfe des Hybrid Connection Managers
 
->[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview.
+>[AZURE.NOTE] Diese Version des Artikels gilt für die Logik-Apps-Schemaversion 2014-12-01-preview. Für die allgemeine Verfügbarkeit von Logic Apps wird ein Gateway für lokale Konnektivität verwendet. Lesen Sie mehr über das neue [Gateway](app-service-logic-gateway-connection.md) und die [allgemeine Verfügbarkeit von Logik-Apps](https://azure.microsoft.com/documentation/services/logic-apps/).
 
-Für die Verwendung eines lokalen Systems, greift Azure App Service auf den Hybrid Connection Manager zurück. Einige Connectors können mit einem lokalen System eine Verbindung herstellen, wie SharePoint, SQL Server, SAP usw..
+Für die Verwendung eines lokalen Systems greift Logic Apps auf den Hybrid Connection Manager zurück. Einige Connectors können mit einem lokalen System eine Verbindung herstellen, wie SharePoint, SQL Server, SAP usw..
 
 Der Hybrid Connection Manager (HCM) ist ein ClickOnce-Installationsprogramm, das auf einem IIS-Server in Ihrem Netzwerk hinter der Firewall installiert ist. Mithilfe eines Azure Service Bus Relays authentifiziert der HCM das lokale System mit dem Connector in Azure.
 
@@ -87,7 +87,7 @@ Lokaler System-Port | Öffnen Sie im lokalen System den Port, der vom System ver
  - Im IIS-Manager (inetmgr) sollte die ***MicrosoftAzureBizTalkHybridListener***-Website aufgeführt sein und ausgeführt werden.
  - Diese Website verwendet den ***HybridListenerAppPool***, der als lokales, integriertes Benutzerkonto *NetworkService* ausgeführt wird. Dieser AppPool sollte auch gestartet werden.
 3. Bestätigen Sie auf dem IIS-Server, dass der Connector installiert ist und ausgeführt wird:
- - Für Ihren App Service-Connector wird eine Website erstellt. Wenn Sie beispielsweise einen SQL-Connector erstellt haben, gibt es eine ***MicrosoftSqlConnector\_nnn***-Website. Bestätigen Sie im IIS-Manager (inetmgr), dass diese Website aufgelistet ist und gestartet wird.
+ - Für Ihren Connector wird eine Website erstellt. Wenn Sie beispielsweise einen SQL-Connector erstellt haben, gibt es eine ***MicrosoftSqlConnector\_nnn***-Website. Bestätigen Sie im IIS-Manager (inetmgr), dass diese Website aufgelistet ist und gestartet wird.
  - Diese Website verwendet einen eigenen IIS-Anwendungspool mit dem Namen ***HybridAppPoolnnn***. Dieser AppPool wird als lokales, integriertes Benutzerkonto *NetworkService* ausgeführt. Diese Website und der AppPool sollten beide gestartet werden.
  - Durchsuchen Sie den lokalen Connector. Wenn die Connector-Website z. B. Port 6569 verwendet, navigieren Sie zu http://localhost:6569. Ein Standarddokument ist nicht konfiguriert, also wird ein Fehler `HTTP Error 403.14 - Forbidden error` erwartet.
 4. Bestätigen Sie in Ihrer Firewall, dass die in diesem Thema aufgeführten TCP-Ports geöffnet sind.
@@ -140,4 +140,4 @@ Wenn Ihre benutzerdefinierte API einen TCP- oder HTTP-Port verwendet, können Si
 
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

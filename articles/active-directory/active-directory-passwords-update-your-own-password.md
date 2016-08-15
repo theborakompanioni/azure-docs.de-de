@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/12/2016"
+	ms.date="08/02/2016"
 	ms.author="asteen"/>
 
 # Aktualisieren Ihres eigenen Kennworts
@@ -27,6 +27,10 @@ Wenn Sie sich nicht sicher sind, wie Sie Ihr Geschäfts- oder Schulkonto verwalt
 * [**Häufige Probleme und Lösungen**](#common-problems-and-their-solutions)
 
 ## Registrieren für die Kennwortzurücksetzung
+
+> [AZURE.IMPORTANT]
+**Warum wird dies angezeigt?** Wenn Sie über einen Link auf diese Seite gelangt sind, fordert Ihr Administrator wahrscheinlich, dass Sie sich für die Kennwortzurücksetzung registrieren, um Zugriff auf die App zu erhalten. Sie werden unter Umständen zur Eingabe der Telefonnummer oder E-Mail-Adresse und zum Einrichten von Sicherheitsfragen aufgefordert. Keine Sorge, diese Informationen werden nicht verwendet, um Sie mit unerwünschten Informationen zu belästigen, sondern um Ihr Konto besser zu schützen. Die hier aufgeführten Schritte sollen Sie bei der Erreichung Ihres Ziels unterstützen.
+
 Am schnellsten können Sie sich für die Kennwortzurücksetzung registrieren, indem Sie http://aka.ms/ssprsetup aufrufen.
 
  1. Navigieren Sie zu http://aka.ms/ssprsetup.
@@ -253,4 +257,4 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 [014]: ./media/active-directory-passwords-update-your-own-password/014.jpg "Image_014.jpg"
 [015]: ./media/active-directory-passwords-update-your-own-password/015.jpg "Image_015.jpg"
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

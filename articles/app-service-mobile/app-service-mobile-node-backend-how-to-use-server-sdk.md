@@ -132,7 +132,7 @@ Wenn Sie ein neues Node.js-Mobile App-Back-End erstellen, indem Sie im Portal da
 
 1. Installieren Sie Git, falls Sie dies noch nicht getan haben. Die erforderlichen Schritte zum Installieren von Git variieren je nach Betriebssystem. Informationen zu Betriebssystem-spezifischen Distributionen und zur Installation finden Sie unter [Installieren von Git](http://git-scm.com/book/en/Getting-Started-Installing-Git).
 
-2. Führen Sie die Schritte unter [Aktivieren des Web-App-Repositorys](../app-service-web/web-sites-publish-source-control.md#Step4) aus, um das Git-Repository für Ihre Back-End-Website zu aktivieren, und notieren Sie sich den Benutzernamen und das Kennwort der Bereitstellung.
+2. Führen Sie die Schritte unter [Aktivieren des App Service-App-Repositorys](../app-service-web/web-sites-deploy-local-git.md#Step3) aus, um das Git-Repository für Ihre Back-End-Website zu aktivieren, und notieren Sie sich den Benutzernamen und das Kennwort der Bereitstellung.
 
 3. Notieren Sie sich auf dem Blatt für das Mobile App-Back-End, die Einstellung unter **Git-Klon-URL**.
 
@@ -917,4 +917,4 @@ Im Azure-Portal können Sie Ihre Node.js-Back-End-Skriptdateien im App Service-E
 [ExpressJS Middleware]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

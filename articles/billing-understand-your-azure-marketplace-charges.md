@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Grundlegendes zu Azure Marketplace-Gebühren | Microsoft Azure"
 	description="Es wird beschrieben, wie Sie Ihre Marketplace-Bestellungen besser verstehen."
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="jiangchen79"
 	manager="felixwu"
@@ -98,4 +98,4 @@ Führen Sie die folgenden Schritte aus, um die tatsächlichen Gebühren anzuzeig
 
     ![Bestelldetails](./media/billing-understand-your-azure-marketplace-charges/order-details.jpg)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0803_2016-->

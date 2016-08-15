@@ -18,21 +18,21 @@
 
 # Bereitstellen von Linux-Computeknoten in Azure Batch-Pools
 
-Azure Batch ermöglicht Ihnen das parallele Ausführen von Computeworkloads auf virtuellen Linux- und Windows-Computern. Dieser Artikel enthält Informationen zum Erstellen von Pools von Linux-Computeknoten im Batch-Dienst mit den Clientbibliotheken [Batch Python][py_batch_package] sowie [Batch .NET][api_net].
+Sie können Azure Batch verwenden, um Computeworkloads auf virtuellen Linux- und Windows-Computern parallel auszuführen. Dieser Artikel enthält Informationen zum Erstellen von Pools mit Linux-Computeknoten im Batch-Dienst mit den Clientbibliotheken [Batch Python][py_batch_package] sowie [Batch .NET][api_net].
 
-> [AZURE.NOTE] Die Unterstützung von Linux in Batch befindet sich derzeit in der Vorschauphase. Einige Aspekte des hier beschriebenen Features können sich vor der allgemeinen Verfügbarkeit ändern. [Anwendungspakete](batch-application-packages.md) werden auf Linux-Computeknoten **derzeit nicht unterstützt**.
+> [AZURE.NOTE] Die Unterstützung von Linux in Batch befindet sich derzeit in der Vorschauphase. Einige Aspekte der hier beschriebenen Features können sich vor der allgemeinen Verfügbarkeit ändern. [Anwendungspakete](batch-application-packages.md) werden auf Linux-Computeknoten derzeit nicht unterstützt.
 
 ## Konfiguration des virtuellen Computers
 
-Wenn Sie einen Pool von Computeknoten in Batch erstellen, stehen Ihnen zwei Optionen zur Auswahl der Knotengröße und des Betriebssystems zur Verfügung: die **Clouddienstkonfiguration** und die **Konfiguration des virtuellen Computers**.
+Wenn Sie einen Pool von Computeknoten in Batch erstellen, stehen Ihnen zwei Optionen zur Auswahl der Knotengröße und des Betriebssystems zur Verfügung: die Clouddienstkonfiguration und die Konfiguration des virtuellen Computers.
 
-Die **Clouddienstkonfiguration** stellt *nur* Windows-Computeknoten bereit. Die verfügbaren Größen für Computeknoten sind unter [Größen für Clouddienste](../cloud-services/cloud-services-sizes-specs.md) aufgelistet. Die verfügbaren Betriebssysteme sind unter [Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix](../cloud-services/cloud-services-guestos-update-matrix.md) aufgeführt. Beim Erstellen eines Pools, der Cloud Services-Knoten enthält, müssen Sie nur die Knotengröße und dessen „Betriebssystemfamilie“ angeben, die Sie in diesen Artikeln finden. Beim Erstellen von Pools von Windows-Computeknoten wird Cloud Services am häufigsten verwendet.
+Mit der **Clouddienstkonfiguration** werden *nur* Windows-Computeknoten bereitgestellt. Die verfügbaren Größen für Computeknoten sind unter [Größen für Clouddienste](../cloud-services/cloud-services-sizes-specs.md) aufgelistet. Die verfügbaren Betriebssysteme sind unter [Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix](../cloud-services/cloud-services-guestos-update-matrix.md) aufgeführt. Beim Erstellen eines Pools, der Azure Cloud Services-Knoten enthält, müssen Sie nur die Knotengröße und dessen „Betriebssystemfamilie“ angeben, die Sie in den oben angegebenen Artikeln finden. Für Pools mit Windows-Computeknoten wird Cloud Services am häufigsten verwendet.
 
-Die **Konfiguration des virtuellen Computers** stellt sowohl Linux- als auch Windows-Images für Computeknoten bereit. Die verfügbaren Größen für Computeknoten sind unter [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-linux-sizes.md) (Linux) und [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-windows-sizes.md) (Windows) aufgelistet. Beim Erstellen eines Pools mit Knoten mit der Konfiguration des virtuellen Computers müssen Sie nicht nur die Knotengröße angeben, sondern auch die **VM-Imagereferenz** und die **Knoten-Agent-SKU** von Batch, die auf den Knoten installiert werden soll.
+Die **Konfiguration des virtuellen Computers** stellt sowohl Linux- als auch Windows-Images für Computeknoten bereit. Die verfügbaren Größen für Computeknoten sind unter [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-linux-sizes.md) (Linux) und [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-windows-sizes.md) (Windows) aufgelistet. Beim Erstellen eines Pools, der Knoten mit der Konfiguration des virtuellen Computers enthält, müssen Sie die Knotengröße, die VM-Imagereferenz und die Knoten-Agent-SKU von Batch für die Installation auf den Knoten angeben.
 
 ### VM-Imagereferenz
 
-Der Batch-Dienst nutzt im Hintergrund [Skalierungsgruppen für virtuelle Computer](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) für die Bereitstellung von Linux-Computeknoten, und die Betriebssystem-Images für diese virtuellen Computer werden vom [Marketplace für virtuelle Azure-Computer][vm_marketplace] bereitgestellt. Wenn Sie eine VM-Imagereferenz konfigurieren, müssen Sie die Eigenschaften eines Marketplace-VM-Images festlegen. Die folgenden Eigenschaften sind erforderlich, wenn Sie eine VM-Imagereferenz erstellen:
+Der Batch-Dienst verwendet [VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md), um Linux-Computeknoten bereitzustellen. Die Betriebssystemimages für diese virtuellen Computer werden über den [Azure Marketplace][vm_marketplace] bereitgestellt. Wenn Sie eine VM-Imagereferenz konfigurieren, müssen Sie die Eigenschaften eines Marketplace-VM-Images festlegen. Die folgenden Eigenschaften sind erforderlich, wenn Sie eine VM-Imagereferenz erstellen:
 
 | **Imagereferenzeigenschaften** | **Beispiel** |
 | ----------------- | ------------------------ |
@@ -41,23 +41,23 @@ Der Batch-Dienst nutzt im Hintergrund [Skalierungsgruppen für virtuelle Compute
 | SKU | 14\.04.4-LTS |
 | Version | neueste |
 
-> [AZURE.TIP] Weitere Informationen zu diesen Eigenschaften und zur Auflistung von Marketplace-Images finden Sie unter [Navigieren zu und Auswählen von Images virtueller Linux-Computer in Azure mithilfe der Befehlszeilenschnittstelle oder PowerShell](../virtual-machines/virtual-machines-linux-cli-ps-findimage.md). Beachten Sie, dass nicht alle Marketplace-Images derzeit mit Batch kompatibel sind. Weitere Informationen dazu finden Sie unter [Knoten-Agent-SKU](#node-agent-sku) (unten).
+> [AZURE.TIP] Weitere Informationen zu diesen Eigenschaften und zur Auflistung von Marketplace-Images finden Sie unter [Navigieren zu und Auswählen von Images virtueller Linux-Computer in Azure mithilfe der Befehlszeilenschnittstelle oder PowerShell](../virtual-machines/virtual-machines-linux-cli-ps-findimage.md). Beachten Sie, dass nicht alle Marketplace-Images derzeit mit Batch kompatibel sind. Weitere Informationen hierzu finden Sie unter [Knoten-Agent-SKU](#node-agent-sku).
 
 ### Knoten-Agent-SKU
 
-Der Batch-Knoten-Agent ist ein Programm, das auf jedem Knoten im Pool ausgeführt wird, und stellt die Befehls- und Steuerungsschnittstelle zwischen dem Knoten und dem Batch-Dienst dar. Es gibt verschiedene Implementierungen des Knoten-Agents (SKUs) für verschiedene Betriebssysteme. Insbesondere beim Erstellen einer Konfiguration für einen virtuellen Computer legen Sie zuerst die VM-Imagereferenz fest und anschließend den auf Knoten-Agent, der auf dem Image installiert werden soll. In der Regel ist jede Knoten-Agent-SKU mit mehreren VM-Images kompatibel. Hier sind einige Beispiele für Knoten-Agent-SKUs:
+Der Batch-Knoten-Agent ist ein Programm, das auf jedem Knoten im Pool ausgeführt wird. Er stellt die Befehls- und Steuerungsschnittstelle zwischen dem Knoten und dem Batch-Dienst dar. Es gibt verschiedene Implementierungen des Knoten-Agents (SKUs) für verschiedene Betriebssysteme. Insbesondere beim Erstellen einer Konfiguration für einen virtuellen Computer legen Sie zuerst die VM-Imagereferenz und anschließend den Knoten-Agent fest, der auf dem Image installiert werden soll. In der Regel ist jede Knoten-Agent-SKU mit mehreren VM-Images kompatibel. Hier sind einige Beispiele für Knoten-Agent-SKUs:
 
 * batch.node.ubuntu 14.04
 * batch.node.centos 7
 * batch.node.windows amd64
 
-> [AZURE.IMPORTANT] Nicht alle im Marketplace verfügbaren VM-Images sind mit den derzeit verfügbaren Batch-Knoten-Agents kompatibel. Sie müssen die Batch-SDKs verwenden, um die verfügbaren Knoten-Agent-SKUs und die VM-Images, mit denen sie kompatibel sind, aufzulisten. Weitere Informationen finden Sie unten in der [Liste von VM-Images](#list-of-virtual-machine-images).
+> [AZURE.IMPORTANT] Nicht alle im Marketplace verfügbaren VM-Images sind mit den derzeit verfügbaren Batch-Knoten-Agents kompatibel. Sie müssen die Batch-SDKs verwenden, um die verfügbaren Knoten-Agent-SKUs und die VM-Images, mit denen sie kompatibel sind, aufzulisten. Weitere Informationen finden Sie unter [Liste mit VM-Images](#list-of-virtual-machine-images) weiter unten in diesem Artikel.
 
 ## Erstellen eines Linux-Pools: Batch Python
 
-Der folgende Codeausschnitt zeigt die Erstellung eines Pools von Ubuntu Server-Computeknoten mithilfe der [Microsoft Azure Batch-Clientbibliothek für Python][py_batch_package]. Referenzdokumentation für das Batch-Python-Modul finden Sie unter[azure.batch package ][py_batch_docs] unter „Read the Docs“ (Dokumente lesen).
+Der folgende Codeausschnitt enthält ein Beispiel für die Verwendung der [Microsoft Azure Batch-Clientbibliothek für Python][py_batch_package] zum Erstellen eines Pools mit Ubuntu Server-Computeknoten. Referenzdokumentation für das Batch-Python-Modul finden Sie unter [azure.batch package ][py_batch_docs] unter „Read the Docs“ (Dokumente lesen).
 
-In diesem Ausschnitt erstellen wir [ImageReference][py_imagereference] explizit und legen jede der Eigenschaften (Herausgeber, Angebot, SKU, Version) fest. Im Produktionscode empfehlen wir Ihnen jedoch die Verwendung der Methode [list\_node\_agent\_skus][py_list_skus], um die verfügbaren Kombinationen aus Image und Knoten-Agent-SKU zur Laufzeit zu bestimmen und eine Auswahl zu treffen.
+In diesem Ausschnitt erstellen wir [ImageReference][py_imagereference] explizit und legen die einzelnen Eigenschaften (Herausgeber, Angebot, SKU, Version) fest. Im Produktionscode empfehlen wir Ihnen jedoch die Verwendung der Methode [list\_node\_agent\_skus][py_list_skus], um die verfügbaren Kombinationen aus Image und Knoten-Agent-SKU zur Laufzeit zu bestimmen und eine Auswahl zu treffen.
 
 ```python
 # Import the required modules from the
@@ -134,9 +134,9 @@ vmc = batchmodels.VirtualMachineConfiguration(
 
 ## Erstellen eines Linux-Pools: Batch .NET
 
-Der folgende Codeausschnitt zeigt die Erstellung eines Pools von Ubuntu Server-Computeknoten mithilfe der [Batch .NET][nuget_batch_net]-Clientbibliothek. Auf MSDN finden Sie die [Batch .NET-Referenzdokumentation][api_net].
+Der folgende Codeausschnitt enthält ein Beispiel für die Verwendung der [Batch .NET][nuget_batch_net]-Clientbibliothek zum Erstellen eines Pools mit Ubuntu Server-Computeknoten. Auf MSDN finden Sie die [Batch .NET-Referenzdokumentation][api_net].
 
-Im folgenden Codeausschnitt wird die Methode [PoolOperations][net_pool_ops].[ListNodeAgentSkus][net_list_skus] eingesetzt, um aus der Liste der derzeit unterstützten Kombinationen von Marketplace-Image und Knoten-Agent-SKU eine Auswahl zu treffen. Diese Technik wird empfohlen, da sich die Liste der unterstützten Kombinationen von Zeit zu Zeit ändert (in der Regel werden weitere unterstützte Kombinationen hinzugefügt).
+Im folgenden Codeausschnitt wird die Methode [PoolOperations][net_pool_ops].[ListNodeAgentSkus][net_list_skus] eingesetzt, um aus der Liste der derzeit unterstützten Kombinationen von Marketplace-Image und Knoten-Agent-SKU eine Auswahl zu treffen. Diese Technik ist von Vorteil, da sich die Liste mit den unterstützten Kombinationen von Zeit zu Zeit ändern kann. In den meisten Fällen werden unterstützte Kombinationen hinzugefügt.
 
 ```csharp
 // Pool settings
@@ -186,7 +186,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 pool.Commit();
 ```
 
-Im oben aufgeführten Codeausschnitt wird zwar die Methode [PoolOperations][net_pool_ops].[ListNodeAgentSkus][net_list_skus] eingesetzt, um unterstützte Kombinationen aus Image und Knoten-Agent-SKU aufzulisten und eine Auswahl zu treffen (empfohlene Vorgehensweise), Sie können jedoch [ImageReference][net_imagereference] auch explizit konfigurieren:
+Im oben aufgeführten Codeausschnitt wird zwar die Methode [PoolOperations][net_pool_ops].[ListNodeAgentSkus][net_list_skus] eingesetzt, um unterstützte Kombinationen aus Image und Knoten-Agent-SKU aufzulisten und eine Auswahl zu treffen (empfohlene Vorgehensweise), aber Sie können [ImageReference][net_imagereference] auch explizit konfigurieren:
 
 ```csharp
 ImageReference imageReference = new ImageReference(
@@ -196,11 +196,11 @@ ImageReference imageReference = new ImageReference(
     version: "latest");
 ```
 
-## Liste von VM-Images
+## Liste mit VM-Images
 
-Die folgende Tabelle gibt an, welche Marketplace-VM-Images **zum Zeitpunkt der Erstellung dieses Dokuments** mit den verfügbaren Batch-Knoten-Agents kompatibel waren. Dabei ist zu beachten, dass diese Liste nicht final ist, da Images und Knoten-Agents jederzeit hinzugefügt oder entfernt werden können. Es wird empfohlen, dass für die Batch-Anwendungen und -Dienste immer [list\_node\_agent\_skus][py_list_skus] (Python) und [ListNodeAgentSkus][net_list_skus] (Batch .NET) verwendet werden, um die aktuell verfügbaren SKUs zu bestimmen und eine Auswahl zu treffen.
+In der folgenden Tabelle ist angegeben, welche Marketplace-VM-Images zum Zeitpunkt der Erstellung dieses Dokuments mit den verfügbaren Batch-Knoten-Agents kompatibel waren. Dabei ist zu beachten, dass diese Liste nicht final ist, da Images und Knoten-Agents jederzeit hinzugefügt oder entfernt werden können. Es wird empfohlen, für die Batch-Anwendungen und -Dienste immer [list\_node\_agent\_skus][py_list_skus] (Python) und [ListNodeAgentSkus][net_list_skus] (Batch .NET) zu verwenden, um die aktuell verfügbaren SKUs zu bestimmen und eine Auswahl zu treffen.
 
-> [AZURE.WARNING] Die unten aufgeführte Liste kann jederzeit geändert werden. Verwenden Sie immer die in den Batch-APIs verfügbaren Methoden **zum Auflisten von Knoten-Agent-SKUs**, um die kompatiblen virtuellen Computer und Knoten-Agent-SKUs aufzulisten und eine Auswahl zu treffen, wenn Sie Batch-Aufträge ausführen.
+> [AZURE.WARNING] Die folgende Liste kann sich jederzeit ändern. Verwenden Sie immer die in den Batch-APIs verfügbaren Methoden **zum Auflisten von Knoten-Agent-SKUs**, um die kompatiblen virtuellen Computer und Knoten-Agent-SKUs aufzulisten und eine Auswahl zu treffen, wenn Sie Batch-Aufträge ausführen.
 
 | **Herausgeber** | **Angebot** | **Image-SKU** | **Version** | **Knoten-Agent-SKU-ID** |
 | ------- | ------- | ------- | ------- | ------- |
@@ -231,7 +231,7 @@ Die folgende Tabelle gibt an, welche Marketplace-VM-Images **zum Zeitpunkt der E
 
 Während der Entwicklung oder bei der Fehlerbehebung ist es unter Umständen erforderlich, sich bei den Knoten im Pool anzumelden. Im Gegensatz zu Windows-Computeknoten können Sie das Remotedesktopprotokoll (RDP) für die Herstellung einer Verbindung mit Linux-Knoten nicht verwenden. Stattdessen ermöglicht der Batch-Dienst den SSH-Zugriff auf jeden Knoten zum Herstellen einer Remoteverbindung.
 
-Der folgende Python-Codeausschnitt erstellt auf jedem Knoten in einem Pool einen Benutzer (was für die Remoteverbindung erforderlich ist) und druckt daraufhin die SSH-Verbindunginformationen für jeden Knoten.
+Mit dem folgenden Python-Codeausschnitt wird ein Benutzer für jeden Knoten eines Pools erstellt, der für eine Remoteverbindung erforderlich ist. Anschließend werden die SSH-Verbindungsinformationen (Secure Shell) für die einzelnen Knoten ausgegeben.
 
 ```python
 import getpass
@@ -267,7 +267,7 @@ for node in nodes:
                                          login.remote_login_port))
 ```
 
-Im Folgenden sehen Sie eine Beispielausgabe für den o.g. Code für einen Pool mit vier Linux-Knoten:
+Hier ist eine Beispielausgabe für den vorherigen Code eines Pools mit vier Linux-Knoten angegeben:
 
 ```
 Password:
@@ -277,11 +277,11 @@ tvm-1219235766_3-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50002
 tvm-1219235766_4-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50001
 ```
 
-Beachten Sie, dass Sie anstelle eines Kennworts einen öffentlichen SSH-Schlüssel festlegen können, wenn Sie einen Benutzer auf einem Knoten erstellen. Im Python-SDK erfolgt dies mithilfe des Parameters **ssh\_public\_key** auf [ComputeNodeUser][py_computenodeuser]. In .NET wird dafür die Eigenschaft [ComputeNodeUser][net_computenodeuser].[SshPublicKey][net_ssh_key] verwendet.
+Beachten Sie, dass Sie anstelle eines Kennworts einen öffentlichen SSH-Schlüssel festlegen können, wenn Sie einen Benutzer auf einem Knoten erstellen. Im Python SDK wird hierfür der Parameter **ssh\_public\_key** unter [ComputeNodeUser][py_computenodeuser] verwendet. In .NET wird die [ComputeNodeUser][net_computenodeuser].[SshPublicKey][net_ssh_key]-Eigenschaft genutzt.
 
 ## Preise
 
-Azure Batch basiert auf der Technologie von Azure Cloud Services und von Azure Virtual Machines. Der Batch-Dienst wird kostenfrei angeboten, d.h. nur die Computeressourcen, die von Ihren Batch-Lösungen verbraucht werden, werden abgerechnet. Bei der Auswahl der **Clouddienstkonfiguration** erfolgt die Abrechnung auf Grundlage der Preisstruktur, die Sie unter [Cloud Services – Preise][cloud_services_pricing] finden. Die Abrechnung für die **Konfiguration des virtuellen Computers** erfolgt ausgehend von der Preisstruktur unter [Virtual Machines – Preise][vm_pricing].
+Azure Batch basiert auf der Technologie von Azure Cloud Services und von Azure Virtual Machines. Der Batch-Dienst wird kostenfrei angeboten. Es werden also nur die Computeressourcen berechnet, die von Ihren Batch-Lösungen verbraucht werden. Bei der Auswahl der **Clouddienstkonfiguration** erfolgt die Abrechnung auf Grundlage der Preisstruktur, die Sie unter [Cloud Services – Preise][cloud_services_pricing] finden. Die Abrechnung für die **Konfiguration des virtuellen Computers** erfolgt ausgehend von der Preisstruktur unter [Virtual Machines – Preise][vm_pricing].
 
 ## Nächste Schritte
 
@@ -291,11 +291,11 @@ Ein ausführlicheres Tutorial für die Arbeit mit Batch mithilfe von Python find
 
 ### Batch Python-Codebeispiele
 
-In den anderen [Python-Codebeispielen][github_samples_py] im Repository [azure-batch-samples][github_samples] auf GitHub finden Sie verschiedene Skripts, aus denen ersichtlich ist, wie häufige Batch-Vorgänge wie die Erstellung von Pools, Aufträgen, Tasks usw. ausgeführt werden. Die zu den Python-Beispielen gehörige [INFODATEI][github_py_readme] beinhaltet Details zur Installation der erforderlichen Pakete.
+In den anderen [Python-Codebeispielen][github_samples_py] im Repository [azure-batch-samples][github_samples] auf GitHub finden Sie verschiedene Skripts, aus denen ersichtlich ist, wie häufige Batch-Vorgänge wie die Erstellung von Pools, Aufträgen und Tasks ausgeführt werden. Die zu den Python-Beispielen gehörige [INFODATEI][github_py_readme] enthält Details zur Installation der erforderlichen Pakete.
 
 ### Batch-Forum
 
-Das [Azure Batch-Forum][forum] auf MSDN eignet sich hervorragend, um Informationen zu Batch zu erhalten und Fragen zu diesem Dienst zu stellen. Nutzen Sie das Forum, um hilfreiche Beiträge zu lesen, und posten Sie selber Fragen, die während der Erstellung Ihrer Batch-Lösungen auftreten.
+Das [Azure Batch-Forum][forum] auf der MSDN-Website eignet sich hervorragend, um Informationen zu Batch zu erhalten und Fragen zu diesem Dienst zu stellen. Lesen Sie die hilfreichen Beiträge, und posten Sie selber Fragen, die während der Erstellung Ihrer Batch-Lösungen auftreten.
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_mgmt]: https://msdn.microsoft.com/library/azure/mt463120.aspx
@@ -327,4 +327,4 @@ Das [Azure Batch-Forum][forum] auf MSDN eignet sich hervorragend, um Information
 
 [1]: ./media/batch-application-packages/app_pkg_01.png "Übersichtsdiagramm für Anwendungspakete"
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0803_2016-->

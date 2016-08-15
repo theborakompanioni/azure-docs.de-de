@@ -42,7 +42,7 @@ Weitere Informationen zu den Vorteilen von Azure App Service finden Sie im Thema
 
 Bevor Sie mit größeren Arbeiten an Ihrer Website beginnen, sollten Sie [Ihre Mobile Service-Skripts] und Ihre SQL-Datenbank sichern.
 
-Wenn Sie den Migrationsprozess vor der Migration Ihrer Produktionswebsite testen möchten, duplizieren Sie Ihren Azure Mobile Service für die Produktion innerhalb einer neuen [Azure-Region] \(zusammen mit einer Kopie der Datenquelle), und testen Sie die Migration anhand der neuen URL. Sie benötigen außerdem eine Testclientimplementierung, die auf die Testsite verweist, um die migrierte Website ordnungsgemäß zu testen.
+Wenn Sie den Migrationsprozess vor der Migration Ihrer Produktionswebsite testen möchten, duplizieren Sie Ihren Azure Mobile Service für die Produktion innerhalb einer neuen [Azure-Region] (zusammen mit einer Kopie der Datenquelle), und testen Sie die Migration anhand der neuen URL. Sie benötigen außerdem eine Testclientimplementierung, die auf die Testsite verweist, um die migrierte Website ordnungsgemäß zu testen.
 
 ## <a name="migrating-site"></a>Migrieren Ihrer Websites
 
@@ -287,17 +287,17 @@ Sie können den _Azure-Mobile_-Befehl nicht mehr verwenden, um Ihre Azure Mobile
 | mobile show _Name_ | site show _Name_ |
 | mobile restart _Name_ | site restart _Name_ |
 | mobile redeploy _Name_ | site deployment redeploy _Commit-ID_ _Name_ |
-| mobile key set _Name_ _Typ_ _Wert_ | site appsetting delete _Schlüssel__Name_ <br/> site appsetting add _Schlüssel_=\_Wert\_ _Name_ |
+| mobile key set _Name_ _Typ_ _Wert_ | site appsetting delete _Schlüssel_ _Name_ <br/> site appsetting add _Schlüssel_=_Wert_ _Name_ |
 | mobile config list _Name_ | site appsetting list _Name_ |
 | mobile config get _Name_ _Schlüssel_ | site appsetting show _Schlüssel_ _Name_ |
-| mobile config set _Name_ _Schlüssel_ | site appsetting delete _Schlüssel__Name_ <br/> site appsetting add _Schlüssel_=\_Wert\_ _Name_ |
+| mobile config set _Name_ _Schlüssel_ | site appsetting delete _Schlüssel_ _Name_ <br/> site appsetting add _Schlüssel_=_Wert_ _Name_ |
 | mobile domain list _Name_ | site domain list _Name_ |
 | mobile domain add _Name_ _Domäne_ | site domain add _Domäne_ _Name_ |
 | mobile domain delete _Name_ | site domain delete _Domäne_ _Name_ |
 | mobile scale show _Name_ | site show _Name_ |
 | mobile scale change _Name_ | site scale mode _Modus_ _Name_ <br /> site scale instances _Instanzen_ _Name_ |
 | mobile appsetting list _Name_ | site appsetting list _Name_ |
-| mobile appsetting add _Name_ _Schlüssel_ _Wert_ | site appsetting add _Schlüssel_=\_Wert\_ _Name_ |
+| mobile appsetting add _Name_ _Schlüssel_ _Wert_ | site appsetting add _Schlüssel_=_Wert_ _Name_ |
 | mobile appsetting delete _Name_ _Schlüssel_ | site appsetting delete _Schlüssel_ _Name_ |
 | mobile appsetting show _Name_ _Schlüssel_ | site appsetting delete _Schlüssel_ _Name_ |
 
@@ -381,7 +381,7 @@ Ihre Anwendung ist nicht nur zu App Service migriert, Sie können sogar noch meh
 [2]: ./media/app-service-mobile-migrating-from-mobile-services/triggering-job-with-postman.png
 
 <!-- Links -->
-[App Service – Preise]: https://azure.microsoft.com/pricing/details/app-service/
+[App Service – Preise]: https://azure.microsoft.com/de-DE/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
 [Automatische Skalierung]: ../app-service-web/web-sites-scale.md
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
@@ -389,10 +389,10 @@ Ihre Anwendung ist nicht nur zu App Service migriert, Sie können sogar noch meh
 [klassische Azure-Portal]: https://manage.windowsazure.com
 [klassischen Azure-Portal]: https://manage.windowsazure.com
 [Azure-Portal]: https://portal.azure.com
-[Azure-Region]: https://azure.microsoft.com/regions/
+[Azure-Region]: https://azure.microsoft.com/de-DE/regions/
 [Azure Scheduler-Pläne]: ../scheduler/scheduler-plans-billing.md
-[fortlaufend bereitstellen]: ../app-service-web/web-sites-publish-source-control.md
-[Ihre gemischten Namespaces konvertieren]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
+[fortlaufend bereitstellen]: ../app-service-web/app-service-continuous-deployment.md
+[Ihre gemischten Namespaces konvertieren]: https://azure.microsoft.com/de-DE/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
 [curl]: http://curl.haxx.se/
 [benutzerdefinierten Domänennamen]: ../app-service-web/web-sites-custom-domain-name.md
 [Fiddler]: http://www.telerik.com/fiddler
@@ -410,4 +410,4 @@ Ihre Anwendung ist nicht nur zu App Service migriert, Sie können sogar noch meh
 [WebJobs]: ../app-service-web/websites-webjobs-resources.md
 [XDT-Transformationsbeispielen]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

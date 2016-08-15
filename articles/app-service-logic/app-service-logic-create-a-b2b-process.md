@@ -1,7 +1,7 @@
 <properties 
    pageTitle="Erstellen eines B2B-Prozesses in Azure App Service | Microsoft Azure" 
    description="Übersicht über die Erstellung eines Business-to-Business-Prozesses" 
-   services="app-service\logic" 
+   services="logic-apps" 
    documentationCenter=".net,nodejs,java" 
    authors="rajram" 
    manager="erikre" 
@@ -70,4 +70,4 @@ In diesem Tutorial wird davon ausgegangen, dass Sie ein grundlegendes Verständn
 [2]: ./media/app-service-logic-create-a-b2b-process/Tracking.png
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

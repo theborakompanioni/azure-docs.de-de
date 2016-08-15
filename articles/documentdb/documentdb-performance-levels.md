@@ -95,7 +95,7 @@ Mit DocumentDB-Sammlungen können Sie Ihre Daten basierend auf den Abfragemuster
 
 Es wird empfohlen, dass die Anwendung eine kleine Anzahl von Sammlungen verwendet, sofern Sie nicht über große Speicher oder Durchsatzanforderungen verfügen. Stellen Sie sicher, dass Sie Anwendungsmuster für die Erstellung von neuen Sammlungen gut verstanden haben. Sie können die Sammlungserstellung als Verwaltungsaktion reservieren, die außerhalb Ihrer Anwendung durchgeführt wird. Ähnlich ändert sich der Stundensatz, über den die Sammlung abgerechnet wird, wenn Sie die Leistungsebene für eine Sammlung anpassen. Wenn Ihre Anwendung die Leistungsebenen dynamisch anpasst, sollten Sie diese überwachen.
 
-## <a href="changing-performance-levels-using-the-azure-portal"></a>Änderung bei den Tarifen S1, S2, S3 bei der benutzerdefinierten Leistung
+## <a id="changing-performance-levels-using-the-azure-portal"></a>Wechseln von S1, S2, S3 zu benutzerdefinierter Leistung
 
 Führen Sie die hier beschriebenen Schritte durch, um im Azure-Portal von vordefinierten Durchsatzstufen zu benutzerdefinierten Durchsatzstufen zu wechseln. Bei Verwendung benutzerdefinierter Durchsatzstufen können Sie den Durchsatz an Ihre Anforderungen anpassen. Wenn Sie immer noch ein S1-Konto verwenden, können Sie den Standarddurchsatz mit wenigen Klicks von 250 RU/s auf 400 RU/s erhöhen.
 
@@ -162,7 +162,7 @@ Besuchen Sie [MSDN](https://msdn.microsoft.com/library/azure/microsoft.azure.doc
 - [**ReplaceOfferAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.replaceofferasync.aspx)
 - [**CreateOfferQuery**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createofferquery.aspx)
 
-## <a href="change-throughput"></a>Änderung beim Durchsatz einer Sammlung
+## <a id="change-throughput"></a>Ändern des Durchsatzes einer Sammlung
 
 Wenn Sie bereits benutzerdefinierte Leistung nutzen, können Sie den Durchsatz der Sammlung wie folgt ändern. Wenn Sie von einer Leistungsebene des Typs S1, S2 oder S3 (vordefinierte Leistung) zu benutzerdefinierter Leistung wechseln müssen, siehe [Wechsel von den Leistungsebenen S1, S2 und S3 zu benutzerdefinierter Leistung](#changing-performance-levels-using-the-azure-portal).
 
@@ -193,4 +193,4 @@ Im Artikel [Leistungs- und Skalierungstests mit Azure DocumentDB](documentdb-per
 [1]: ./media/documentdb-performance-levels/documentdb-change-collection-performance7-9.png
 [2]: ./media/documentdb-performance-levels/documentdb-change-collection-performance10-11.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

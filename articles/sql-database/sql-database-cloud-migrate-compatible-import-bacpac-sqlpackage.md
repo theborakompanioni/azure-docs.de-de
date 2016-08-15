@@ -3,7 +3,7 @@
    description="Microsoft Azure SQL-Datenbank, Datenbankmigration, Datenbank importieren, BACPAC-Datei importieren, sqlpackage"
    services="sql-database"
    documentationCenter=""
-   authors="carlrabeler"
+   authors="CarlRabeler"
    manager="jhubbard"
    editor=""/>
 
@@ -37,15 +37,15 @@ Führen Sie die unten angegebenen Schritte aus, um das Befehlszeilen-Hilfsprogra
 1. Öffnen Sie ein Eingabeaufforderungsfenster, und wechseln Sie in ein Verzeichnis mit dem Befehlszeilen-Hilfsprogramm „sqlpackage.exe“. Dieses Hilfsprogramm ist im Lieferumfang von Visual Studio und SQL Server enthalten.
 2. Führen Sie den folgenden sqlpackage.exe-Befehl mit den unten angegebenen Argumenten für Ihre Umgebung aus:
 
-	'sqlpackage.exe /Action:Import /tsn:< server_name > /tdn:< database_name > /tu:< user_name > /tp:< password > /sf:< source_file >
+	'sqlpackage.exe /Action:Import /tsn:< Servername > /tdn:< Datenbankname > /tu:< Benutzername > /tp:< Kennwort > /sf:< Quelldatei >
 
 	| Argument | Beschreibung |
 	|---|---|
-	| < server_name > | Zielservername |
-	| < database_name > | Zieldatenbankname |
-	| < user_name > | Benutzername auf dem Zielserver |
-	| < password > | Kennwort des Benutzers |
-	| < source_file > | Dateiname und Speicherort für die zu importierende BACPAC-Datei |
+	| < Servername > | Zielservername |
+	| < Datenbankname > | Zieldatenbankname |
+	| < Benutzername > | Benutzername auf dem Zielserver |
+	| < Kennwort > | Kennwort des Benutzers |
+	| < Quelldatei > | Dateiname und Speicherort für die zu importierende BACPAC-Datei |
 
 	![Exportieren von Datenebenenanwendungen im Menü "Aufgaben"](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage01c.png)
 
@@ -58,6 +58,6 @@ Führen Sie die unten angegebenen Schritte aus, um das Befehlszeilen-Hilfsprogra
 
 - [SQL-Datenbank V12](sql-database-v12-whats-new.md)
 - [Teilweise oder vollständig unterstützte Transact-SQL-Funktionen](sql-database-transact-sql-information.md)
-- [Migrate non-SQL Server databases using SQL Server Migration Assistant](http://blogs.msdn.com/b/ssma/) (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)
+- [Migrate non-SQL Server databases using SQL Server Migration Assistant (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

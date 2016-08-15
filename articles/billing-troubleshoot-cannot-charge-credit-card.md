@@ -1,11 +1,11 @@
 <properties
 	pageTitle="Ich habe eine E-Mail erhalten, dass ich unter Umständen mit Dienstunterbrechungen rechnen muss | Microsoft Azure"
 	description="Beschreibt, was zu tun ist, wenn Ihre Kreditkarte nicht zur Zahlung Ihres Abonnements belastet werden kann"
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="genlin"
 	manager="jarrettr"
-	editor="na"
+	editor=""
 	tags="billing"
 	/>
 
@@ -30,4 +30,4 @@ Falls Sie Ihr Azure-Problem mit diesem Artikel nicht beheben konnten, suchen Sie
 
 Wenn Sie Hilfe beim Öffnen eines Supporttickets benötigen, gehen Sie zu [Erstellen eines Supporttickets bei Problemen mit Azure-Abrechnungen und -Abonnements](billing-how-to-create-billing-support-ticket.md).
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0803_2016-->

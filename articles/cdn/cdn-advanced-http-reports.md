@@ -1,8 +1,8 @@
 <properties
-	pageTitle="CDN – Erweiterte HTTP-Berichte"
+	pageTitle="Erweiterte HTTP-Berichte in Azure CDN | Microsoft Azure"
 	description="Erweiterte HTTP-Berichte in Microsoft Azure CDN. Diese Berichte enthalten detaillierte Informationen zur CDN-Aktivität."
 	services="cdn"
-	documentationCenter=".NET"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
 
 # Erweiterte HTTP-Berichte in Microsoft Azure CDN
@@ -28,11 +28,13 @@ In diesem Dokument werden die erweiterten HTTP-Berichte in Microsoft Azure CDN e
 
 1. Klicken Sie auf dem Blatt „CDN-Profil“ auf die Schaltfläche **Verwalten**.
 
-	![Schaltfläche „Verwalten“ auf dem Blatt „CDN-Profil“](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
+	![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
 
 	Das CDN-Verwaltungsportal wird geöffnet.
 
 2. Zeigen Sie auf die Registerkarte **Analysen** und dann auf das Flyout **Erweiterte HTTP-Berichte**. Klicken Sie auf **Große HTTP-Plattform**.
+
+	![CDN-Verwaltungsportal – Menü „Erweiterte Berichte“](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
 
 	Berichtsoptionen werden angezeigt.
 
@@ -196,4 +198,4 @@ Direkt unterhalb des Balkendiagramms werden die folgenden Informationen für die
 * [Überschreiben des HTTP-Standardverhaltens mithilfe des Regelmoduls](cdn-rules-engine.md)
 * [Analysieren der Edgeleistung](cdn-edge-performance.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

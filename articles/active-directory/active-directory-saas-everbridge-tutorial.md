@@ -27,7 +27,7 @@ Diese Integration bietet die folgenden Vorteile:
 - Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Everbridge anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## Voraussetzungen
 
@@ -119,7 +119,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
 
 	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-everbridge-tutorial/tutorial_everbridge_04.png)
 
-    a. Geben Sie im Textfeld **Identifier URL** (Bezeichner-URL) eine URL nach folgendem Muster ein: `https://sso.everbridge.net/{<company name>}`
+    a. Geben Sie im Textfeld **Bezeichner** die URL nach folgendem Muster ein: `https://sso.everbridge.net/{<company name>}`
 
 	b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://manager.everbridge.net/saml/SSO/{<company name>}/alias/defaultAlias`
 
@@ -289,4 +289,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Everbridge“ klicken, sollten Sie
 [204]: ./media/active-directory-saas-everbridge-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-everbridge-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/04/2016" 
+	ms.date="08/02/2016" 
 	ms.author="stbaro"/>
 
 # Bereitstellen von DocumentDB und Azure App Service-Web-Apps mithilfe einer Vorlage des Azure-Ressourcen-Managers
@@ -73,13 +73,13 @@ Jetzt stellen wir unsere erste Vorlage bereit.
 
 7.  Wenn die Bereitstellung abgeschlossen ist, wird das Blatt der Ressourcengruppe geöffnet. ![Screenshot des Blatts „Ressourcengruppe“](./media/documentdb-create-documentdb-website/TemplateDeployment7.png)
 
-8.  Um die Anwendung zu verwenden, navigieren Sie einfach zur URL der Web-App (im obigen Beispiel lautet die URL http://mydemodocdbwebapp.azurewebsites.net). Die folgende Webanwendung wird angezeigt:
+8.  Navigieren Sie zum Verwenden der Anwendung einfach zur URL der Web-App (im obigen Beispiel: http://mydemodocdbwebapp.azurewebsites.net). Die folgende Webanwendung wird angezeigt:
 
 	![Todo-Beispielanwendung](./media/documentdb-create-documentdb-website/image2.png)
 
 9. Fahren Sie fort, erstellen Sie eine Reihe von Aufgaben in der Web-App, und kehren Sie dann zum Blatt der Ressourcengruppe im Azure-Portal zurück. Klicken Sie auf die DocumentDB-Kontoressource in der Liste „Ressourcen“ und dann auf **Abfrage-Explorer**. ![Screenshot der Zusammenfassung mit der hervorgehobenen Web-Apps „Myotherdocumentdbwebapp“](./media/documentdb-create-documentdb-website/TemplateDeployment8.png)
 
-10. Führen Sie die Standardabfrage "SELECT * FROM c" aus, und überprüfen Sie die Ergebnisse. Beachten Sie, dass die Abfrage die JSON-Darstellung der Aufgaben abgerufen hat, die Sie in Schritt 7 oben erstellt haben. Sie können gerne mit Abfragen experimentieren; führen Sie z. B. SELECT * FROM c WHERE c.isComplete = true aus, um alle Aufgaben zurückzugeben, die als abgeschlossen gekennzeichnet wurden.
+10. Führen Sie die Standardabfrage „SELECT * FROM c“ aus, und überprüfen Sie die Ergebnisse. Beachten Sie, dass die Abfrage die JSON-Darstellung der Aufgaben abgerufen hat, die Sie in Schritt 7 oben erstellt haben. Sie können gerne mit Abfragen experimentieren. Führen Sie beispielsweise „SELECT * FROM c WHERE c.isComplete = true“ aus, um alle Aufgaben zurückzugeben, die als abgeschlossen gekennzeichnet wurden.
 
 	![Screenshot der Blätter „Abfrage-Explorer“ und „Ergebnisse“ mit Anzeige der Abfrageergebnisse](./media/documentdb-create-documentdb-website/image5.png)
 
@@ -94,7 +94,7 @@ Jetzt stellen wir unsere zweite Vorlage bereit. Diese Vorlage zeigt Ihnen sehr a
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf „Neu“, und suchen Sie nach „Vorlagenbereitstellung“. ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment1.png)
 
-2. Wählen Sie die Option zur Vorlagenbereitstellung, und klicken Sie auf **Erstellen**. ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment2.png)
+2. Wählen Sie die Option für die Vorlagenbereitstellung aus, und klicken Sie auf **Erstellen**. ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment2.png)
 
 3.  Klicken Sie auf **Vorlage bearbeiten**, fügen Sie den Inhalt der Vorlagendatei „DocDBWebSite.json“ ein, und klicken Sie auf **Speichern**. ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment3.png)
 
@@ -110,13 +110,13 @@ Jetzt stellen wir unsere zweite Vorlage bereit. Diese Vorlage zeigt Ihnen sehr a
 
 	![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment4.png)
 
-5. Wählen Sie eine vorhandene Ressourcengruppe aus, oder geben Sie einen Namen an, um eine neue Ressourcengruppe zu erstellen, und wählen Sie einen Speicherort für die Ressourcengruppe. ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment5.png)
+5. Wählen Sie eine vorhandene Ressourcengruppe aus, oder geben Sie einen Namen an, um eine neue Ressourcengruppe zu erstellen, und wählen Sie einen Speicherort für die Ressourcengruppe aus. ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment5.png)
   
-6.  Klicken Sie auf **Prüfen Sie die rechtlichen Bedingungen.**, **Kaufen** und dann auf **Erstellen**, um mit der Bereitstellung zu beginnen. Wählen Sie **An Dashboard anheften**, damit die resultierende Bereitstellung auf Ihrer Azure-Portal-Startseite problemlos sichtbar ist. ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment6.png)
+6.  Klicken Sie auf **Prüfen Sie die rechtlichen Bedingungen.** > **Kaufen** und anschließend auf **Erstellen**, um mit der Bereitstellung zu beginnen. Wählen Sie **An Dashboard anheften** aus, damit die resultierende Bereitstellung auf Ihrer Azure-Portal-Startseite problemlos sichtbar ist. ![Screenshot der Benutzeroberfläche der Vorlagenbereitstellung](./media/documentdb-create-documentdb-website/TemplateDeployment6.png)
 
-7.  Wenn die Bereitstellung abgeschlossen ist, wird das Blatt der Ressourcengruppe geöffnet. ![Screenshot des Blatts „Ressourcengruppe“](./media/documentdb-create-documentdb-website/TemplateDeployment7.png)
+7.  Nach Abschluss der Bereitstellung wird das Blatt der Ressourcengruppe geöffnet. ![Screenshot des Blatts „Ressourcengruppe“](./media/documentdb-create-documentdb-website/TemplateDeployment7.png)
 
-8. Klicken Sie auf die Web-App-Ressource in der Liste „Ressourcen“, und klicken Sie dann auf **Anwendungseinstellungen**. ![Screenshot der Ressourcengruppe](./media/documentdb-create-documentdb-website/TemplateDeployment9.png)
+8. Klicken Sie in der Liste „Ressourcen“ auf die Web-App-Ressource und anschließend auf **Anwendungseinstellungen**. ![Screenshot der Ressourcengruppe](./media/documentdb-create-documentdb-website/TemplateDeployment9.png)
 
 9. Beachten Sie, dass Anwendungseinstellungen für den DocumentDB-Endpunkt und jeden der DocumentDB-Hauptschlüssel vorhanden sind. ![Screenshot von Anwendungseinstellungen](./media/documentdb-create-documentdb-website/TemplateDeployment10.png)
 
@@ -141,4 +141,4 @@ Glückwunsch! Sie haben DocumentDB, eine App Service-Web-App und eine Beispielwe
 >[AZURE.NOTE] Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0803_2016-->

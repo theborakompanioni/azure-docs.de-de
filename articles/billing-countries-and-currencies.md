@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="genlin"
 	manager="msmbaldwin"
-	editor="meerak"
+	editor=""
 	tags="billing"/>
 
 <tags
@@ -49,7 +49,7 @@ Sie können Microsoft Azure in mehr als 140 Ländern weltweit erwerben, und zah
 | Bulgarien | EUR |
 | Kamerun | USD |
 | Kanada | CAD |
-| Kap Verde | USD |
+| Cabo Verde | USD |
 | Kaimaninseln | USD |
 | Chile | USD |
 | Kolumbien | USD |
@@ -103,7 +103,7 @@ Sie können Microsoft Azure in mehr als 140 Ländern weltweit erwerben, und zah
 | Liechtenstein | CHF |
 | Litauen | EUR |
 | Luxemburg | EUR |
-| Macao | USD |
+| Macau | USD |
 | Mazedonien | USD |
 | Malaysia | MYR |
 | Malaysia | USD |
@@ -111,7 +111,7 @@ Sie können Microsoft Azure in mehr als 140 Ländern weltweit erwerben, und zah
 | Mauritius | USD |
 | Mexiko | MXN |
 | Mexiko | USD |
-| Moldawien | USD |
+| Moldau | USD |
 | Monaco | EUR |
 | Mongolei | USD |
 | Montenegro | USD |
@@ -171,4 +171,4 @@ Sie können Microsoft Azure in mehr als 140 Ländern weltweit erwerben, und zah
 | Sambia | USD |
 | Simbabwe | USD |
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

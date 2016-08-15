@@ -34,7 +34,7 @@ Sie erstellen eine Web-App mithilfe des Webframeworks Bottle. (Alternativ sind a
 - Python 2.7 oder 3.4
 - setuptools, pip, virtualenv (nur Python 2.7)
 - Git
-- [Python Tools 2.2 für Visual Studio][] (PTVS) – Hinweis: diese sind optional
+- [Python Tools 2.2 für Visual Studio][] (PTVS) – Hinweis: diese sind optional
 
 **Hinweis**: TFS-Veröffentlichung wird derzeit für Python-Projekte nicht unterstützt.
 
@@ -44,7 +44,7 @@ Falls Python 2.7 oder 3.4 (32 Bit) noch nicht installiert ist, empfehlen wir die
 
 Für Git empfehlen wir [Git für Windows] oder [GitHub für Windows]. Wenn Sie Visual Studio verwenden, können Sie die integrierte Unterstützung für Git nutzen.
 
-Wir empfehlen auch die Installation von [Python Tools 2.2 für Visual Studio]. Dies ist optional, aber wenn Sie über [Visual Studio] einschließlich des kostenlosen Visual Studio Community 2013 oder Visual Studio Express 2013 für Web verfügen, erhalten Sie eine leistungsfähige Python-IDE.
+Wir empfehlen auch die Installation von [Python Tools 2.2 für Visual Studio]. Dies ist optional, aber wenn Sie über [Visual Studio] einschließlich des kostenlosen Visual Studio Community 2013 oder Visual Studio Express 2013 für Web verfügen, erhalten Sie eine leistungsfähige Python-IDE.
 
 ### Mac/Linux
 
@@ -55,11 +55,11 @@ Sie sollten Python und Git bereits installiert haben, doch stellen Sie sicher, d
 
 Der erste Schritt beim Erstellen einer App ist das Erstellen der Web-App über das [Azure-Portal](https://portal.azure.com).
 
-1. Klicken Sie im Azure-Portal in der unteren linken Ecke auf **NEU**. 
+1. Klicken Sie im Azure-Portal in der unteren linken Ecke auf **NEU**.
 3. Geben Sie im Suchfeld "python" ein.
 4. Wählen Sie in den Suchergebnissen **Bottle** aus, und klicken Sie dann auf **Erstellen**.
-5. Konfigurieren Sie die neue Bottle-App, indem Sie beispielsweise einen neuen App Service-Plan und eine neue Ressourcengruppe dafür erstellen. Klicken Sie dann auf **Erstellen**.
-6. Konfigurieren von Git-Veröffentlichung für Ihre neu erstellte Webanwendung anhand der Instruktionen unter [fortlaufende Bereitstellung mit GIT in Azure-App-Dienst](web-sites-publish-source-control.md).
+5. Konfigurieren Sie die neue Bottle-App, indem Sie beispielsweise einen neuen App Service-Plan und eine neue Ressourcengruppe dafür erstellen. Klicken Sie dann auf **Erstellen**.
+6. Konfigurieren Sie die Git-Veröffentlichung für Ihre neu erstellte Web-App anhand der Anleitung unter [Lokale Git-Bereitstellung in Azure App Service](app-service-deploy-local-git.md).
  
 ## Anwendungsübersicht
 
@@ -131,7 +131,7 @@ In den nächsten 3 Abschnitten wird beschrieben, wie Sie die Web-App-Entwicklung
 
 ### Klonen des Repositorys
 
-Klonen Sie zunächst das Repository mithilfe der URL, die im Azure-Portal bereitgestellt ist. Weitere Informationen finden Sie unter [Kontinuierliche Bereitstellung mit GIT in Azure App Service](web-sites-publish-source-control.md).
+Klonen Sie zunächst das Repository mithilfe der URL, die im Azure-Portal bereitgestellt ist. Weitere Informationen finden Sie unter [Lokale Git-Bereitstellung in Azure App Service](app-service-deploy-local-git.md).
 
 Öffnen Sie die Projektmappendatei (.sln), die im Stammverzeichnis des Repositorys enthalten ist.
 
@@ -198,7 +198,7 @@ Navigieren Sie zur Azure-URL, um die Änderungen anzuzeigen.
 
 ### Klonen des Repositorys
 
-Klonen Sie zunächst das Repository mithilfe der URL, die im Azure-Portal bereitgestellt ist, und fügen Sie das Azure-Repository als Remoterepository hinzu. Weitere Informationen finden Sie unter [Kontinuierliche Bereitstellung mit GIT in Azure App Service](web-sites-publish-source-control.md).
+Klonen Sie zunächst das Repository mithilfe der URL, die im Azure-Portal bereitgestellt ist, und fügen Sie das Azure-Repository als Remoterepository hinzu. Weitere Informationen finden Sie unter [Lokale Git-Bereitstellung in Azure App Service](app-service-deploy-local-git.md).
 
     git clone <repo-url>
     cd <repo-folder>
@@ -277,7 +277,7 @@ Navigieren Sie zur Azure-URL, um die Änderungen anzuzeigen.
 
 ### Klonen des Repositorys
 
-Klonen Sie zunächst das Repository mithilfe der URL, die im Azure-Portal bereitgestellt ist, und fügen Sie das Azure-Repository als Remoterepository hinzu. Weitere Informationen finden Sie unter [Kontinuierliche Bereitstellung mit GIT in Azure App Service](web-sites-publish-source-control.md).
+Klonen Sie zunächst das Repository mithilfe der URL, die im Azure-Portal bereitgestellt ist, und fügen Sie das Azure-Repository als Remoterepository hinzu. Weitere Informationen finden Sie unter [Lokale Git-Bereitstellung in Azure App Service](app-service-deploy-local-git.md).
 
     git clone <repo-url>
     cd <repo-folder>
@@ -391,11 +391,11 @@ Weitere Informationen zur Verwendung von Azure Table Storage und MongoDB:
 [GitHub für Windows]: https://windows.github.com/
 [Python Tools für Visual Studio]: http://aka.ms/ptvs
 [Python Tools 2.2 für Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
-[Python Tools 2.2 für Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
+[Python Tools 2.2 für Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
 [Visual Studio]: http://www.visualstudio.com/
 [Dokumentation zu Python Tools für Visual Studio]: http://aka.ms/ptvsdocs
 [Python Tools für Visual Studio – Dokumentation]: http://aka.ms/ptvsdocs
 [Dokumentation zu Bottle]: http://bottlepy.org/docs/dev/index.html
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0803_2016-->

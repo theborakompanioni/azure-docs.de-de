@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/17/2016" 
+    ms.date="07/27/2016" 
     ms.author="jeedes" />
 
 #Lernprogramm: Azure Active Directory-Integration mit Cherwell
@@ -62,6 +62,8 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Che
 7.  Wählen Sie im Ergebnisbereich **Cherwell** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
 ##Konfigurieren der einmaligen Anmeldung
 
+	![Cherwell](./media/active-directory-saas-cherwell-tutorial/IC798996.png "Cherwell")
+
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Cherwell zu authentifizieren.
 
 ###So konfigurieren Sie einmaliges Anmelden
@@ -78,17 +80,21 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 
     ![App-URL konfigurieren](./media/active-directory-saas-cherwell-tutorial/IC798992.png "App-URL konfigurieren")
 
-    1.  Geben Sie im Textfeld **Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei **Cherwell** verwenden (z. B. **https://pictdev.cherwellondemand.com/cherwellclient*).
-    2.  Klicken Sie auf **Weiter**.
+    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei **Cherwell** verwenden (z.B. *https://\<Unternehmensname>.cherwellondemand.com/cherwellclient*).
+
+    b. Klicken Sie auf **Weiter**.
 
 4.  Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren um Cherwell** die folgenden Schritte aus.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-cherwell-tutorial/IC798993.png "Einmaliges Anmelden konfigurieren")
 
-    1.  Klicken Sie auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat lokal auf Ihrem Computer.
-    2.  Kopieren Sie die **Identitätsanbieter-URL**.
-    3.  Kopieren Sie die **Dienst-URL für einmalige Anmeldung**.
-    4.  Klicken Sie auf **Weiter**.
+    a. Klicken Sie auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat lokal auf Ihrem Computer.
+
+    b. Kopieren Sie die **Identitätsanbieter-URL**.
+
+    c. Kopieren Sie die **Dienst-URL für einmalige Anmeldung**.
+
+    d. Klicken Sie auf **Weiter**.
 
 5.  Senden Sie das heruntergeladene Zertifikat, die **Identitätsanbieter-URL** und die **Dienst-URL für einmalige Anmeldung** an Ihr Cherwell-Supportteam.
 
@@ -97,6 +103,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 6.  Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-cherwell-tutorial/IC798994.png "Einmaliges Anmelden konfigurieren")
+
 ##Konfigurieren der Benutzerbereitstellung
 
 Damit sich Azure AD-Benutzer bei Cherwell anmelden können, müssen sie in Cherwell bereitgestellt werden. Im Fall von Cherwell müssen die Benutzerkonten vom Supportteam von Cherwell erstellt werden.
@@ -121,4 +128,4 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

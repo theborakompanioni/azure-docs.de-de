@@ -3,7 +3,7 @@
 	description="Referenz der Ausdrücke für die deklarative Bereitstellung in der Azure AD Connect-Synchronisierung."
 	services="active-directory"
 	documentationCenter=""
-	authors="femila"
+	authors="andkjell"
 	manager="StevenPo"
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="08/02/2016"
 	ms.author="andkjell;markvi"/>
 
 
@@ -108,12 +108,9 @@ Anders gesagt: sie gibt in allen Fällen 0 zurück, außer wenn die entsprechend
 
 **Hinweise:** Wenn die Auswertung des Ausdrucks einen Wert ungleich 0 ergibt, dann gibt CBool TRUE zurück, andernfalls FALSE.
 
-
 **Beispiel:** `CBool([attrib1] = [attrib2])`
 
 Gibt True zurück, wenn beide Attribute den gleichen Wert haben.
-
-
 
 ----------
 ### CDate
@@ -660,7 +657,13 @@ Wenn nicht "numChars" Zeichen ab der Ausgangsposition in der Zeichenfolge vorhan
 
 **Syntax:** `String PCase(string)`
 
+**Hinweise:**
+
+- Mit dieser Funktion können vollständig aus Großbuchstaben bestehende Wörter (etwa Akronyme) nicht in Wörter mit korrekter Groß-/Kleinschreibung umgewandelt werden.
+
 **Beispiel:** `PCase("TEsT")` Gibt „Test“ zurück.
+
+`PCase(LCase("TEST"))` Gibt „Test“ zurück.
 
 ----------
 ### RandomNum
@@ -760,7 +763,7 @@ Wenn die Zeichenfolge weniger Zeichen enthält als in "numChars" angegeben, wird
 
 **Syntax:** `str RTrim(str value)`
 
-**Beispiel:** `RTrim(" Test ")` Gibt „ Test“ zurück.
+**Beispiel:** `RTrim(" Test ")` Gibt „Test“ zurück.
 
 ----------
 ### Split
@@ -832,7 +835,7 @@ Ein Wert kann auch die Funktion "Error" sein, die eine benutzerdefinierte Zeiche
 
 **Syntax:** `str UCase(str string)`
 
-**Beispiel:** `UCase("TeSt")` Gibt „TEST“ zurück.
+**Beispiel:** `UCase("TeSt")` Gibt „Test“ zurück.
 
 ----------
 ### Word
@@ -862,4 +865,4 @@ Wenn "string" weniger als "WordNumber" Wörter enthält, oder "string" keine Wö
 * [Azure AD Connect-Synchronisierung: Anpassen von Synchronisierungsoptionen](active-directory-aadconnectsync-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

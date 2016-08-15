@@ -4,7 +4,7 @@
 	authors="msftman"
 	manager="erikre"
 	editor=""
-	services="app-service\logic"
+	services="logic-apps"
 	documentationCenter=""/>
 
 <tags
@@ -26,4 +26,4 @@ Wir haben den Inhalt, der sich auf Logik-Apps der Version „2014-12-01-preview�
 - [Weitere Informationen zu diesem neuen Connector](../connectors/connectors-create-api-onedrive.md)
 - [Vollständige Liste](../connectors/apis-list.md) aller Connectors, die unter der neuen Logik-Apps-Schemaversion „2015-08-01-preview“ ausgeführt werden
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

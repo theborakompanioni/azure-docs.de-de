@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/20/2016" 
+	ms.date="07/29/2016" 
 	ms.author="awills"/>
 
 
@@ -148,8 +148,10 @@ Sie können sie vereinfachen, indem Sie nur die für Sie interessanten Eigenscha
 ```AIQL
 
     exceptions | take 10
-    | extend method1 = details[0].parsedStack[1].method
+    | extend method1 = tostring(details[0].parsedStack[1].method)
 ```
+
+Beachten Sie, dass eine [Umwandlung](app-insights-analytics-reference.md#casts) in den entsprechenden Typ vorgenommen werden muss.
 
 ## Benutzerdefinierte Eigenschaften und Messungen
 
@@ -173,14 +175,14 @@ Und so extrahieren Sie diese Werte in Analytics:
 
     customEvents
     | extend p1 = customDimensions.p1, 
-      m1 = todouble(customMeasurements.m1) // cast numerics
+      m1 = todouble(customMeasurements.m1) // cast to expected type
 
 ``` 
 
 > [AZURE.NOTE] Im [Metrik-Explorer](app-insights-metrics-explorer.md) werden auf dem Blatt „Metriken“ alle benutzerdefinierten und an einen Telemetrietyp angefügten Messungen zusammen mit den Metriken angezeigt, die mithilfe von `TrackMetric()` gesendet wurden. In Analytics hingegen bleiben die benutzerdefinierten Messungen weiterhin an den jeweiligen Telemetrietyp gebunden, und die Metriken werden in ihrem eigenen `metrics`-Datenstrom angezeigt.
 
 
-## [summarize:](app-insights-analytics-reference.md#summarize-operator) Aggregieren von Zeilengruppen
+## [summarize](app-insights-analytics-reference.md#summarize-operator): Aggregieren von Zeilengruppen
 
 `Summarize` wendet eine angegebene *Aggregationsfunktion* auf Zeilengruppen an.
 
@@ -199,7 +201,7 @@ Außerdem können Ergebnisse nach der Tageszeit gruppiert werden:
 
 ![](./media/app-insights-analytics-tour/430.png)
 
-Beachten Sie, wie wir die `bin`-Funktion (auch `floor`) verwenden. Wenn wir nur `by timestamp` verwenden, wird jede Eingabezeile in einer eigenen kleinen Gruppe angeordnet. Für alle kontinuierlichen Skalare, z.B. Zeiten oder Zahlen, müssen wir den fortlaufenden Bereich in eine verwaltbare Anzahl von diskreten Werten unterteilen. Die Verwendung von `bin`, wobei es sich eigentlich nur um die vertraute `floor`-Funktion zum Abrunden handelt, ist hierfür die einfachste Möglichkeit.
+Beachten Sie, wie wir die Funktion `bin` (auch `floor`) verwenden. Wenn wir nur `by timestamp` verwenden, wird jede Eingabezeile in einer eigenen kleinen Gruppe angeordnet. Für alle kontinuierlichen Skalare, z.B. Zeiten oder Zahlen, müssen wir den fortlaufenden Bereich in eine verwaltbare Anzahl von diskreten Werten unterteilen. Die Verwendung von `bin`, wobei es sich eigentlich nur um die vertraute `floor`-Funktion zum Abrunden handelt, ist hierfür die einfachste Möglichkeit.
 
 Wir können dasselbe Verfahren anwenden, um Bereiche für Zeichenfolgen zu reduzieren:
 
@@ -210,7 +212,7 @@ Beachten Sie, dass Sie `name=` zum Festlegen des Namens einer Ergebnisspalte ver
 
 ## Zählen von Stichprobendaten
 
-`sum(itemCount)` ist die empfohlene Aggregation zum Zählen von Ereignissen. In vielen Fällen gilt „itemCount==1“. Mit der Funktion wird also einfach die Anzahl von Zeilen in der Gruppe gezählt. Wenn jedoch [Stichproben erstellt](app-insights-sampling.md) werden, wird nur ein Bruchteil der ursprünglichen Ereignisse als Datenpunkte in Application Insights beibehalten, sodass für jeden Datenpunkt, den Sie sehen, `itemCount`-Ereignisse vorhanden sind.
+`sum(itemCount)` ist die empfohlene Aggregation zum Zählen von Ereignissen. In vielen Fällen gilt „itemCount==1“. Mit der Funktion wird also einfach die Anzahl von Zeilen in der Gruppe gezählt. Wenn jedoch [Stichproben](app-insights-sampling.md) erstellt werden, wird nur ein Bruchteil der ursprünglichen Ereignisse als Datenpunkte in Application Insights beibehalten, sodass für jeden Datenpunkt, den Sie sehen, `itemCount`-Ereignisse vorhanden sind.
 
 Wenn z.B. bei der Stichprobenerstellung 75 % der ursprünglichen Ereignisse verworfen werden, gilt „itemCount== 4“ in den beibehaltenen Datensätzen, d.h., für jeden beibehaltenen Datensatz gab es ursprünglich vier Datensätze.
 
@@ -269,7 +271,7 @@ Der `where`-Operator akzeptiert einen booleschen Ausdruck. Dazu einige wichtige 
 
  * `and`, `or`: Boolesche Operatoren
  * `==`, `<>`: Gleich und ungleich
- * `=~`, `!=`: Zeichenfolge ohne Beachtung der Groß-/Kleinschreibung, gleich und ungleich. Es gibt viele weitere Zeichenfolgenvergleichsoperatoren.
+ * `=~`, `!=`: Zeichenfolge ohne Beachtung der Groß-/Kleinschreibung, gleich und ungleich Es gibt viele weitere Zeichenfolgenvergleichsoperatoren.
 
 Erfahren Sie mehr über [skalare Ausdrücke](app-insights-analytics-reference.md#scalars).
 
@@ -457,7 +459,7 @@ Es ist üblich, `project` zu verwenden, um vor dem Verknüpfen nur die Spalten a
 
 
 
-## [let:](app-insights-analytics-reference.md#let-clause) Zuweisen eines Ergebnisses zu einer Variablen
+## [let](app-insights-analytics-reference.md#let-clause): Zuweisen eines Ergebnisses zu einer Variablen
 
 Verwenden Sie [let](./app-insights-analytics-reference.md#let-statements), um die einzelnen Teile des vorherigen Ausdrucks zu separieren. Die Ergebnisse sind wie folgt unverändert:
 
@@ -479,4 +481,4 @@ Verwenden Sie [let](./app-insights-analytics-reference.md#let-statements), um di
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

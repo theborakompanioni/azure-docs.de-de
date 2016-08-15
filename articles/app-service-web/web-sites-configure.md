@@ -36,8 +36,8 @@ Das Blatt **Anwendungseinstellungen** enthält Einstellungen, die unter verschie
 
 **Frameworkversionen**. Legen Sie diese Optionen fest, falls Ihre App von einem der folgenden Frameworks Gebrauch macht:
 
-- **.NET Framework**: Legen Sie die .NET Framework-Version fest. 
-- **PHP**: Legen Sie die PHP-Version fest, oder wählen Sie **AUS** aus, um PHP zu deaktivieren. 
+- **.NET Framework**: Legen Sie die .NET Framework-Version fest.
+- **PHP**: Legen Sie die PHP-Version fest, oder wählen Sie **AUS** aus, um PHP zu deaktivieren.
 - **Java**: Wählen Sie die Java-Version oder **AUS**, um Java zu deaktivieren. Über die Option **Webcontainer** können Sie zwischen Tomcat und Jetty wählen.
 - **Python**: Legen Sie die Python-Version fest, oder wählen Sie **AUS** aus, um Python zu deaktivieren.
 
@@ -61,7 +61,7 @@ Aus technischen Gründen werden durch Aktivierung von Java für Ihre App die Opt
 
 Dieser Abschnitt enthält Name-Wert-Paare, die Ihre Web-App beim Start lädt.
 
-- Bei .NET-Apps werden diese Einstellungen zur Laufzeit in die `AppSettings` der .NET-Konfiguration eingefügt, wobei vorhandene Einstellungen überschrieben werden. 
+- Bei .NET-Apps werden diese Einstellungen zur Laufzeit in die `AppSettings` der .NET-Konfiguration eingefügt, wobei vorhandene Einstellungen überschrieben werden.
 
 - PHP-, Python-, Java- und Node-Anwendungen können auf diese Einstellungen als Umgebungsvariablen zur Laufzeit zugreifen. Für jede App-Einstellung werden zwei Umgebungsvariablen erstellt: eine mit dem Namen, der für die App-Einstellung eingegeben wurde, und eine weitere mit dem Präfix APPSETTING\_. Beide enthalten denselben Wert.
 
@@ -92,7 +92,7 @@ Fügen Sie in diesem Bereich benutzerdefinierte Skriptprozessoren hinzu, die Anf
 
 - **Erweiterung**. Die zu verarbeitende Dateierweiterung wie *.php oder handler.fcgi.
 - **Skriptprozessorpfad**. Der absolute Pfad des Skriptprozessors. Anforderungen für Dateien, die dieser Dateierweiterung entsprechen, werden vom Skriptprozessor verarbeitet. Verwenden Sie den Pfad `D:\home\site\wwwroot`, um auf das Stammverzeichnis Ihrer App zu verweisen.
-- **Zusätzliche Argumente**. Optionale Befehlszeilenargumente für den Skriptprozessor. 
+- **Zusätzliche Argumente**. Optionale Befehlszeilenargumente für den Skriptprozessor.
 
 
 ### Virtuelle Anwendungen und Verzeichnisse 
@@ -105,11 +105,11 @@ Um die virtuellen Anwendungen und Verzeichnisse zu konfigurieren, geben Sie jede
 So aktivieren Sie Diagnoseprotokolle
 
 1. Klicken Sie auf dem Blatt für die Web-App auf **Alle Einstellungen**.
-2. Klicken Sie auf **Diagnoseprotokolle**. 
+2. Klicken Sie auf **Diagnoseprotokolle**.
 
 Optionen zum Erstellen von Diagnoseprotokollen über eine Webanwendung, die die Protokollierung unterstützt:
 
-- **Anwendungsprotokollierung**. Schreibt Anwendungsprotokolle in das Dateisystem. Die Protokollierung erfolgt über zwölf Stunden. 
+- **Anwendungsprotokollierung**. Schreibt Anwendungsprotokolle in das Dateisystem. Die Protokollierung erfolgt über zwölf Stunden.
 
 **Ebene**. Wenn die Anwendungsprotokollierung aktiviert ist, bestimmt diese Option, ob Fehler, Warnmeldungen, Infos oder ausführliche Informationen protokolliert werden.
 
@@ -181,7 +181,6 @@ Weitere Informationen finden Sie unter [Vorgehensweise: Überwachen des Web-Endp
 [Skalieren einer Web-App in Azure App Service]: ./web-sites-scale.md
 [socket.io]: ./web-sites-nodejs-chat-app-socketio.md
 [App Service testen]: http://go.microsoft.com/fwlink/?LinkId=523751
-[Bereitstellen von Web-Apps in Azure App Service mit Git]: ./web-sites-publish-source-control.md
 
 <!-- IMG List -->
 
@@ -189,4 +188,4 @@ Weitere Informationen finden Sie unter [Vorgehensweise: Überwachen des Web-Endp
 [configure02]: ./media/web-sites-configure/configure02.png
 [configure03]: ./media/web-sites-configure/configure03.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0803_2016-->

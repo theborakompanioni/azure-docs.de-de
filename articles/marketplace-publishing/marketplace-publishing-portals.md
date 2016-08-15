@@ -13,23 +13,23 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/06/2015"
+   ms.date="07/27/2016"
    ms.author="hascipio" />
 
 
 # Portale, die Sie benötigen
 Bevor Sie mit der Veröffentlichung eines Angebots beginnen, sollten Sie sich mit den verschiedenen Portalen vertraut machen, die Sie dazu benötigen. Im Anschluss folgt eine kurze Zusammenfassung der Portale (Developer Center, Azure-Veröffentlichungsportal und Azure-Portal) in der Reihenfolge, in der Sie mit ihnen interagieren.
 ## Developer Center
-[http://dev.windows.com](http://dev.windows.com/registration?accountprogram=azure)
+[http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure)
 ### Beschreibung
 Das Erstellen Ihres Microsoft Developer Center-Kontos ist eine einmalige Aufgabe. Vergewissern Sie sich vor der Kontoerstellung, dass Ihr Unternehmen nicht bereits über ein Developer Center-Konto verfügt. Während des Prozesses erfassen wir Bankdaten, Steuerinformationen und Adressdaten Ihres Unternehmens.
 
-> [AZURE.NOTE]Wenn Sie nur kostenlose Angebote (oder Angebote mit Verwendung Ihrer eigenen Lizenz) veröffentlichen, benötigen wir keine steuerlichen Informationen oder Bankdaten.
+> [AZURE.NOTE] Wenn Sie nur kostenlose Angebote (oder Angebote mit Verwendung Ihrer eigenen Lizenz) veröffentlichen, benötigen wir keine steuerlichen Informationen oder Bankdaten.
 
 ### Verwendete Identität/Verwendetes Konto
-Im Idealfall eine Verteilerliste oder Sicherheitsgruppe (z. B. azurepublishing@*partnercompany*.com)). Diese Verteilerliste oder Sicherheitsgruppe **muss** als Microsoft-Konto registriert sein.
+Im Idealfall ist dies eine Verteilerliste oder Sicherheitsgruppe (z.B. azurepublishing@*partnercompany*.com). Diese Verteilerliste oder Sicherheitsgruppe **muss** als Microsoft-Konto registriert sein.
 
-> [AZURE.TIP]Wir empfehlen die Verwendung einer Verteilerliste oder Sicherheitsgruppe, um die Abhängigkeit von einer Einzelperson zu vermeiden. Es kann jedoch auch ein einzelnes Konto verwendet werden.
+> [AZURE.TIP] Wir empfehlen die Verwendung einer Verteilerliste oder Sicherheitsgruppe, um die Abhängigkeit von einer Einzelperson zu vermeiden. Es kann jedoch auch ein einzelnes Konto verwendet werden.
 
 ## Veröffentlichungsportal
 [https://publish.windowsazure.com](https://publish.windowsazure.com)
@@ -50,4 +50,4 @@ Beim Bereitstellen des Angebots über das Veröffentlichungsportal muss eine Abo
 ## Weitere Informationen
 - [Erste Schritte: Veröffentlichen eines Angebots im Azure Marketplace](marketplace-publishing-getting-started.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0803_2016-->

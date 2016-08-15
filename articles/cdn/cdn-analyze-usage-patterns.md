@@ -1,8 +1,8 @@
 <properties
-	pageTitle="Analysieren von CDN-Verwendungsmustern"
+	pageTitle="Analysieren von Azure CDN-Verwendungsmustern | Microsoft Azure"
 	description="Mithilfe der folgenden Berichte können Sie Verwendungsmuster für Ihr CDN anzeigen: Bandbreite, Übertragene Daten, Treffer, Cachestatus, Cachetrefferquote, Übertragene IPV4/IPV6-Daten."
 	services="cdn"
-	documentationCenter=".NET"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
 
-# Analysieren von CDN-Verwendungsmustern
+# Analysieren von Azure CDN-Verwendungsmustern
 
 [AZURE.INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
@@ -28,6 +28,19 @@ Mithilfe der folgenden Berichte können Sie Verwendungsmuster für Ihr CDN anzei
 - Cachestatus
 - Cachetrefferquote
 - Übertragene IPV4-/IPV6-Daten
+
+## Aufrufen erweiterter HTTP-Berichte
+
+1. Klicken Sie auf dem Blatt „CDN-Profil“ auf die Schaltfläche **Verwalten**.
+
+	![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-reports/cdn-manage-btn.png)
+
+	Das CDN-Verwaltungsportal wird geöffnet.
+
+2. Zeigen Sie auf die Registerkarte **Analysen** und dann auf das Flyout **Core Reports** (Kernberichte). Klicken Sie im Menü auf den gewünschten Bericht.
+
+	![CDN-Verwaltungsportal – Menü „Core Reports“ (Kernberichte)](./media/cdn-reports/cdn-core-reports.png)
+
 
 ## Bandbreite
 
@@ -122,7 +135,7 @@ Folgende Elemente sind im Bericht nicht enthalten:
 - Anforderungen für Medienobjekte, deren Header darauf hinweisen, dass sie nicht zwischengespeichert werden sollen. Beispielsweise verhindern die Header "Cache-Control: private", "Cache-Control: no-cache" oder "Pragma: no-cache", dass ein Medienobjekt zwischengespeichert wird.
 - Bytebereichsanforderungen für teilweise zwischengespeicherte Inhalte.
 
-Die Formel lautet: (TCP\_ HIT/(TCP\_ HIT+TCP\_MISS))*100
+Die Formel lautet: (TCP_ HIT÷(TCP_ HIT+TCP\_MISS))·100
 
 - Wählen Sie "Datumsbereich", um Daten für heute/diese Woche/diesen Monat usw. anzuzeigen, oder geben Sie selbst Datumsangaben ein, und klicken Sie auf "Los", um sicherzustellen, dass Ihre Auswahl aktualisiert wird.
 - Sie können die Daten exportieren und herunterladen, indem Sie neben "Los" auf das Excel-Arbeitsblattsymbol klicken.
@@ -144,4 +157,4 @@ Dieser Bericht zeigt die Verteilung des Datenverkehrs in IPV4 und IPV6.
 
 Berichte können nur über die letzten 18 Monate generiert werden.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/25/2016"
+   ms.date="08/03/2016"
    ms.author="kipandya"/>
    
    
@@ -54,9 +54,7 @@ Da DocumentDB ganz [ohne Schemas arbeitet][vldb], müssen Sie sich nicht um die 
 
 ## Ermöglichen der globalen Verteilung 
 
-Sie können Ihre Daten lokal bereitstellen oder global verteilen, indem Sie einem DocumentDB-Datenbankkonto eine oder mehrere Azure-Regionen zuordnen. Sie können Ihre Daten zu jedem Zeitpunkt global verteilen oder auf eine einzige Region beschränken, indem Sie Regionen zu Ihrem Datenbankkonto hinzufügen oder daraus entfernen. DocumentDB-Datenbankkonten mit Unterstützung für mehrere Regionen können über den Azure Marketplace erstellt werden. Wählen Sie die Option „DocumentDB – Datenbankkonto für mehrere Regionen“.
-
-
+Sie können Ihre Daten lokal bereitstellen oder global verteilen, indem Sie einem DocumentDB-Datenbankkonto eine oder mehrere Azure-Regionen zuordnen. Sie können Ihrem Datenbankkonto jederzeit Regionen hinzufügen oder Regionen daraus entfernen.
 
 ## Nächste Schritte
 
@@ -89,4 +87,4 @@ In den folgenden Artikeln erfahren Sie mehr über die globale Verteilung von Dat
 [vldb]: http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf
 [sqlqueries]: https://azure.microsoft.com/documentation/articles/documentdb-sql-query/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

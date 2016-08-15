@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Übersicht zu Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
 	description="Nutzen Sie die Enterprise Integration Pack-Features, um die Integration von Geschäftsprozessen mithilfe des Microsoft Azure App Service-Diensts zu ermöglichen." 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
 	manager="erikre" 
@@ -74,4 +74,4 @@ Sie können jetzt Ihre Transformation testen, indem Sie eine Anforderung an den 
 - [Weitere Informationen zu Zuordnungen](./app-service-logic-enterprise-integration-maps.md "Informationen zu Zuordnungen für die Unternehmensintegration")
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

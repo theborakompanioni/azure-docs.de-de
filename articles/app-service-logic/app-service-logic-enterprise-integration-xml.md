@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Übersicht über XML-Verarbeitung im Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
 	description="Informationen zur Verarbeitung und Überprüfung von XML-Nachrichten mit Enterprise Integration Pack und Logik-Apps" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
 	manager="erikre" 
@@ -30,4 +30,4 @@ Mit Enterprise Integration Pack können Sie mühelos XML-Dokumente überprüfen 
 
 [Weitere Informationen zum Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,12 +1,12 @@
 <properties
 	pageTitle="Kredit- oder Debitkarte wird bei der Registrierung abgelehnt | Microsoft Azure"
 	description="Informationen zu häufigen Ursachen von Problemen bei der Registrierung bei Microsoft Azure wie der Ablehnung Ihrer Kredit- oder Debitkarte."
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="jiangchen79"
 	manager="felixwu"
 	editor=""
-	tags="top-support-issue"
+	tags="billing,top-support-issue"
 	keywords="Kreditkarte abgelehnt, Debitkarte abgelehnt, Ihre Kreditkarte wurde abgelehnt, Kreditkarte wird nicht akzeptiert"/>
 
 <tags
@@ -41,4 +41,4 @@ Die Rechnungszahlungsoption kann nur von Unternehmen genutzt werden. Diese Optio
 
 Nähere Informationen zum Starten des Prozesses zum Einrichten einer Rechnung finden Sie unter [Azure – Rechnungsstellung](https://azure.microsoft.com/pricing/invoicing/).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

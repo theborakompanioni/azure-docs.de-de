@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/30/2016"
+   ms.date="07/29/2016"
    ms.author="sonyama;barbkess"/>
 
 # Bewährte Methoden für Azure SQL Data Warehouse
@@ -80,7 +80,7 @@ Da Columnstore-Tabellen Daten im Allgemeinen erst dann in ein komprimiertes Colu
 
 Beim Abfragen einer Columnstore-Tabelle werden die Abfragen schneller ausgeführt, wenn Sie nur die benötigten Spalten auswählen.
 
-Siehe auch [Tabellenindizes][], [Beschreibung von Columnstore-Indizes][].
+Siehe auch [Tabellenindizes][], [Beschreibung von Columnstore-Indizes][] und [Neuerstellen von Columnstore-Indizes][].
 
 ## Verwenden einer größeren Ressourcenklasse zum Verbessern der Abfrageleistung
 SQL Data Warehouse nutzt Ressourcengruppen zum Zuordnen von Arbeitsspeicher zu Abfragen. Standardmäßig werden alle Benutzer der kleinen Ressourcenklasse zugewiesen, bei der pro Verteilung 100 MB Arbeitsspeicher gewährt werden. Da immer 60 Verteilungen vorhanden sind und jede Verteilung mindestens 100 MB erhält, beträgt die gesamte systemweite Arbeitsspeicherzuordnung 6.000 MB bzw. knapp 6 GB. Bestimmte Abfragen, z.B. große Verknüpfungen oder Ladevorgänge für gruppierte Columnstore-Tabellen, profitieren von größeren Arbeitsspeicherzuordnungen. Für einige Abfragen, z.B. reine Scans, ergibt sich kein Vorteil. Andererseits wirkt sich die Nutzung größerer Ressourcenklassen auf die Parallelität aus. Dies sollten Sie berücksichtigen, bevor Sie alle Benutzer in eine große Ressourcenklasse verschieben.
@@ -88,21 +88,21 @@ SQL Data Warehouse nutzt Ressourcengruppen zum Zuordnen von Arbeitsspeicher zu A
 Siehe auch [Parallelitäts- und Workloadverwaltung][].
 
 ## Verwenden einer kleineren Ressourcenklasse zur Steigerung der Parallelität
-Wenn Sie bemerken, dass Benutzerabfragen mit einer langen Verzögerung verbunden sind, werden Ihre Benutzer unter Umständen in größeren Ressourcenklassen ausgeführt und verbrauchen viele Parallelitätsslots, sodass für andere Abfragen eine Warteschlange entsteht. Führen Sie `SELECT * FROM sys.dm_pdw_waits` aus, um zu ermitteln, ob Benutzeranfragen in eine Warteschlange eingereiht werden. So können Sie testen, ob Zeilen zurückgegeben werden.
+Wenn Sie bemerken, dass Benutzerabfragen mit einer langen Verzögerung verbunden sind, werden Ihre Benutzer unter Umständen in größeren Ressourcenklassen ausgeführt und verbrauchen viele Parallelitätsslots, sodass für andere Abfragen eine Warteschlange entsteht. Führen Sie `SELECT * FROM sys.dm_pdw_waits` aus, um zu ermitteln, Zeilen zurückgegeben werden. So können Sie feststellen, ob Benutzeranfragen in eine Warteschlange eingereiht werden.
 
-Siehe auch [Parallelitäts- und Workloadverwaltung][], [sys.dm\_pdw\_waits][].
+Siehe auch [Parallelitäts- und Workloadverwaltung][] und [sys.dm\_pdw\_waits][].
 
 ## Verwenden von DMVs zum Überwachen und Optimieren von Abfragen
 SQL Data Warehouse verfügt über mehrere dynamische Verwaltungssichten (DMVs), die zum Überwachen der Abfrageausführung verwendet werden können. Unten im Artikel zur Überwachung werden Sie Schritt für Schritt durch das Anzeigen einer ausgeführten Abfrage geführt. Die Verwendung der Option LABEL für Abfragen kann hilfreich sein, um Abfragen für diese DMVs schnell finden zu können.
 
-Siehe auch [Überwachen Ihres Workloads mit dynamischen Verwaltungssichten][], [LABEL][], [OPTION][], [sys.dm\_exec\_sessions][], [sys.dm\_pdw\_exec\_requests][], [sys.dm\_pdw\_request\_steps][], [sys.dm\_pdw\_sql\_requests][], [sys.dm\_pdw\_dms\_workers], [DBCC PDW\_SHOWEXECUTIONPLAN][], [sys.dm\_pdw\_waits][].
+Siehe auch [Überwachen Ihres Workloads mit dynamischen Verwaltungssichten][], [LABEL][], [OPTION][], [sys.dm\_exec\_sessions][], [sys.dm\_pdw\_exec\_requests][], [sys.dm\_pdw\_request\_steps][], [sys.dm\_pdw\_sql\_requests][], [sys.dm\_pdw\_dms\_workers], [DBCC PDW\_SHOWEXECUTIONPLAN][] und [sys.dm\_pdw\_waits][]
 
 ## Weitere Ressourcen
-Informationen zu häufigen Problemen und den dazugehörigen Lösungen finden Sie im Artikel [Problembehandlung][].
+Informationen zu häufigen Problemen und den entsprechenden Lösungen finden Sie im Artikel [Problembehandlung][].
 
-Wenn Sie die gewünschten Informationen in diesem Artikel nicht gefunden haben, können Sie links auf dieser Seite die Option zum Suchen nach Dokumenten (Search for docs) verwenden, um alle Dokumente zu Azure SQL Data Warehouse zu durchsuchen. Das [MSDN-Forum für Azure SQL Data Warehouse][] ist ein Ort, an dem Sie Fragen an andere Benutzer und an die SQL Data Warehouse-Produktgruppe stellen können. Wir überwachen dieses Forum aktiv, um sicherzustellen, dass Ihre Frage entweder von einem anderen Benutzer oder einem Mitarbeiter beantwortet wird. Falls Sie Ihre Fragen lieber über Stack Overflow stellen möchten, können Sie auch das [Stack Overflow-Forum für Azure SQL Data Warehouse][] verwenden.
+Wenn Sie die gewünschten Informationen in diesem Artikel nicht gefunden haben, können Sie links auf dieser Seite die Option zum Suchen nach Dokumenten (Search for docs) verwenden, um alle Dokumente zu Azure SQL Data Warehouse zu durchsuchen. Das [MSDN-Forum für Azure SQL Data Warehouse][] ist ein Ort, an dem Sie anderen Benutzern und dem SQL Data Warehouse-Produktteam Fragen stellen können. Wir überwachen dieses Forum aktiv, um sicherzustellen, dass Ihre Frage entweder von einem anderen Benutzer oder einem Mitarbeiter beantwortet wird. Falls Sie Ihre Fragen lieber über Stack Overflow stellen möchten, können Sie auch das [Stack Overflow-Forum für Azure SQL Data Warehouse][] verwenden.
 
-Verwenden Sie abschließend die Seite für [Azure SQL Data Warehouse-Feedback][], um Anfragen zu Features zu stellen. Indem Sie Ihre Anfragen hinzufügen oder für andere Anfragen stimmen, leisten Sie wertvolle Unterstützung beim Priorisieren von Funktionen.
+Verwenden Sie die Seite für [Azure SQL Data Warehouse-Feedback][], um Anfragen zu Features zu stellen. Indem Sie Ihre Anfragen hinzufügen oder für andere Anfragen stimmen, leisten Sie wertvolle Unterstützung beim Priorisieren von Funktionen.
 
 <!--Image references-->
 
@@ -116,6 +116,7 @@ Verwenden Sie abschließend die Seite für [Azure SQL Data Warehouse-Feedback][]
 [Indexing tables in SQL Data Warehouse]: ./sql-data-warehouse-tables-index.md
 [Tabellenindizes]: ./sql-data-warehouse-tables-index.md
 [Causes of poor columnstore index quality]: ./sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality
+[Neuerstellen von Columnstore-Indizes]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
 [Tabellenpartitionierung]: ./sql-data-warehouse-tables-partition.md
 [Verwalten von Tabellenstatistiken]: ./sql-data-warehouse-tables-statistics.md
 [Temporäre Tabellen]: ./sql-data-warehouse-tables-temporary.md
@@ -160,4 +161,4 @@ Verwenden Sie abschließend die Seite für [Azure SQL Data Warehouse-Feedback][]
 [Stack Overflow-Forum für Azure SQL Data Warehouse]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Azure SQL Data Warehouse loading patterns and strategies]: https://blogs.msdn.microsoft.com/sqlcat/2016/02/06/azure-sql-data-warehouse-loading-patterns-and-strategies
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

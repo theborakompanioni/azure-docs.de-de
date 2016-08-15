@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Empfangen von Warnbenachrichtigungen" 
-	description="Benachrichtigt werden, wenn die Bedingungen von Warnungsregeln erfüllt sind." 
-	authors="stepsic-microsoft-com" 
-	manager="ronmart" 
-	editor="" 
-	services="azure-portal" 
-	documentationCenter="na"/>
+<properties
+	pageTitle="Empfangen von Warnbenachrichtigungen für Azure-Dienste | Microsoft Azure"
+	description="Benachrichtigt werden, wenn die Bedingungen von Warnungsregeln erfüllt sind."
+	authors="stepsic-microsoft-com"
+	manager="ronmart"
+	editor=""
+	services="monitoring"
+	documentationCenter="monitoring"/>
 
-<tags 
-	ms.service="azure-portal" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/08/2015" 
+<tags
+	ms.service="monitoring"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/08/2015"
 	ms.author="stepsic"/>
 
 # Empfangen von Warnbenachrichtigungen
@@ -32,16 +32,13 @@ Beim Erstellen einer Warnungsregel können Sie Optionen auswählen, um eine E-Ma
 
 2. Klicken Sie im Bereich **Operations** auf die Kachel **Warnungsregeln**.
 
-3. Klicken Sie auf den Befehl **Warnung hinzufügen**.
-    ![Warnung hinzufügen](./media/insights-receive-alert-notifications/Insights_AddAlert.png)
+3. Klicken Sie auf den Befehl **Warnung hinzufügen**. ![Warnung hinzufügen](./media/insights-receive-alert-notifications/Insights_AddAlert.png)
 
 4. Sie können einen Namen für die Warnungsregel eingeben und eine Beschreibung auswählen, die in der Benachrichtigungs-E-Mail angezeigt wird.
 
-5. Bei Auswahl von **Metrics** geben Sie eine Bedingung und einen Schwellenwert für die Metrik an. Dies ist der Zeitraum, den Azure verwendet, um die Warnungsaktivität zu überwachen und darzustellen.
-    ![Bedingung und Schwellenwert](./media/insights-receive-alert-notifications/Insights_ConditionAndThreshold.png)
+5. Bei Auswahl von **Metrics** geben Sie eine Bedingung und einen Schwellenwert für die Metrik an. Dies ist der Zeitraum, den Azure verwendet, um die Warnungsaktivität zu überwachen und darzustellen. ![Bedingung und Schwellenwert](./media/insights-receive-alert-notifications/Insights_ConditionAndThreshold.png)
 
-6. Sie können auch **Events** auswählen, um eine Benachrichtigung zu erhalten, wenn ein bestimmtes Ereignis auftritt. 
-    ![Ereignisse](./media/insights-receive-alert-notifications/Insights_Events.png)
+6. Sie können auch **Events** auswählen, um eine Benachrichtigung zu erhalten, wenn ein bestimmtes Ereignis auftritt. ![Ereignisse](./media/insights-receive-alert-notifications/Insights_Events.png)
 
 7. Anschließend können Sie festlegen, dass eine E-Mail-Benachrichtigung an die zuständigen Administratoren gesendet wird.
 
@@ -65,6 +62,5 @@ Sie können diese Warnungsregel natürlich bearbeiten und **deaktivieren** und w
 * [Überwachen der Anwendungsleistung](insights-perf-analytics.md), um präzise Informationen zur Leistung Ihres Codes in der Cloud zu ermitteln.
 * [Anzeigen von Ereignissen und Überwachungsprotokollen](insights-debugging-with-events.md), um sich über sämtliche Aktivitäten Ihres Diensts zu informieren.
 * [Nachverfolgen des Dienststatus](insights-service-health.md), um den Zeitpunkt von Leistungsabfällen oder Dienstunterbrechungen zu ermitteln, die bei Azure aufgetreten sind.
- 
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0803_2016-->

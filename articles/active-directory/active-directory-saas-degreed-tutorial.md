@@ -56,7 +56,7 @@ Zum Konfigurieren der Integration von Degreed in Azure AD müssen Sie Degreed a
 
 **Um Degreed aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
  
 	![Active Directory][1]
 
@@ -117,7 +117,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
 	![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-degreed-tutorial/tutorial_degreed_04.png)
 
 
-    a. Geben Sie im Textfeld „Anmelde-URL“ die URL, die von Ihren Benutzern zur Anmeldung bei der Degreed-Anwendung verwendet wird, nach folgendem Muster ein: **https://<Firmenname>.degreed.com**.
+    a. Geben Sie im Textfeld „Anmelde-URL“ die URL, die von Ihren Benutzern zur Anmeldung bei der Degreed-Anwendung verwendet wird, nach folgendem Muster ein: `https://degreed.com/?orgsso=<company code>`
 
     b. Klicken Sie auf **Weiter**.
 
@@ -271,4 +271,4 @@ In diesem Abschnitt soll Ihre Azure AD-Konfiguration für das einmalige Anmelden
 [204]: ./media/active-directory-saas-degreed-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-degreed-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

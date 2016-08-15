@@ -1,11 +1,11 @@
 <properties
 	pageTitle="Erstellen eines Supporttickets bei Problemen mit Azure-Abrechnungen und -Abonnements | Microsoft Azure"
 	description="Informationen zum Erstellen eines Supporttickets bei Problemen mit Azure-Abrechnungen und -Abonnements"
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="genlin"
 	manager="mbaldwin"
-	editor="na"
+	editor=""
 	tags="billing"
 	/>
 
@@ -44,4 +44,4 @@ Sie können auch über die Azure Support-Website oder das Azure-Kontocenter eine
 
  >[AZURE.NOTE]Nur der Azure-Kontoadministrator verfügt über eine Zugriffsberechtigung für das Kontocenter. Wie Sie herausfinden, wer der Kontoadministrator des Abonnements ist, erfahren Sie unter [Häufig gestellte Fragen (FAQ)](billing-subscription-transfer.md#faq).
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,7 +1,7 @@
 <properties
 	pageTitle="OAUTH-Sicherheitseinstellungen in SaaS-Connectors und API-Apps | Azure"
 	description="Informationen zu OAUTH-Sicherheitseinstellungen in den Connectors und API-Apps in Azure App Service; Microservices-Architektur; SaaS"
-	services="app-service\logic"
+	services="logic-apps"
 	documentationCenter=""
 	authors="MandiOhlinger"
 	manager="dwrede"
@@ -51,4 +51,4 @@ Jetzt sollten Sie den Connector in Logik-Apps verwenden können. Wenn Sie diesen
 [4]: ./media/app-service-logic-oauth-security/TwitterApp.png
 [5]: ./media/app-service-logic-oauth-security/TwitterKeys.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

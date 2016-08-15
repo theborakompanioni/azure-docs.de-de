@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Kopieren von Daten aus Azure Storage-Blobs in den Data  Lake-Speicher | Microsoft Azure"
-   description="Verwenden des AdlCopy-Tools zum Kopieren von Daten aus Azure Storage-Blobs in den Data  Lake-Speicher"
+   pageTitle="Kopieren von Daten aus Azure Storage-Blobs in den Data  Lake-Speicher | Microsoft Azure"
+   description="Verwenden des AdlCopy-Tools zum Kopieren von Daten aus Azure Storage-Blobs in den Data  Lake-Speicher"
    services="data-lake-store"
    documentationCenter=""
    authors="nitinme"
@@ -16,7 +16,11 @@
    ms.date="07/19/2016"
    ms.author="nitinme"/>
 
-# Kopieren von Daten aus Azure Storage-Blobs in den Data  Lake-Speicher
+# Kopieren von Daten aus Azure Storage-Blobs in den Data  Lake-Speicher
+
+> [AZURE.SELECTOR]
+- [Verwenden von DistCp](data-lake-store-copy-data-wasb-distcp.md)
+- [Verwenden von AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)
 
 Azure Data Lake Store bietet das Befehlszeilentool [AdlCopy](http://aka.ms/downloadadlcopy), mit dem Sie Daten aus den folgenden Quellen kopieren können:
 
@@ -26,7 +30,7 @@ Azure Data Lake Store bietet das Befehlszeilentool [AdlCopy](http://aka.ms/downl
 
 Sie können das AdlCopy-Tool in zwei verschiedenen Modi:
 
-* **Eigenständig**, wobei das Tool Ressourcen des Data Lake-Speichers verwendet, um die Aufgabe auszuführen.
+* **Eigenständig**, wobei das Tool Ressourcen des Data Lake-Speichers verwendet, um die Aufgabe auszuführen.
 * **Mit einem Data Lake Analytics-Konto**, wobei die Einheiten, die Ihrem Data Lake Analytics-Konto zugewiesen sind, zum Ausführen des Kopiervorgangs verwendet werden. Möglicherweise möchten diese Option verwenden, wenn Sie die Kopie in einer vorhersagbaren Weise ausführen möchten.
 
 ##Voraussetzungen
@@ -34,7 +38,7 @@ Sie können das AdlCopy-Tool in zwei verschiedenen Modi:
 Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
 - **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-- **Aktiviertes Azure-Abonnement** für die öffentliche Vorschauversion des Data Lake-Speichers. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
+- **Aktiviertes Azure-Abonnement** für die öffentliche Vorschauversion des Data Lake-Speichers. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md#signup).
 - **Azure Storage-Blobscontainer** mit einigen Daten.
 - **Azure Data Lake Analytics-Konto (optional)** – Anweisungen zum Erstellen eines Data Lake-Speicherkontos finden Sie unter [Erste Schritte mit Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md) .
 - **AdlCopy-Tool**. Installieren Sie das AdlCopy-Tool von [http://aka.ms/downloadadlcopy](http://aka.ms/downloadadlcopy).
@@ -169,4 +173,4 @@ In diesem Abschnitt erfahren Sie, wie Sie AdlCopy verwenden, um Daten mithilfe d
 - [Verwenden von Azure Data Lake Analytics mit Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

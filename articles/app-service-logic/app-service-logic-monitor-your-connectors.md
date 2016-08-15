@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Verwalten und Überwachen von Connectors und API-Apps in App Service | Microsoft Azure"
-	description="Anzeigen der Leistung von Connectors und API-Apps in Azure App Service; Microservices-Architektur"
+	description="Anzeigen der Leistung von Connectors und API-Apps in Logic Apps. Microservices-Architektur"
 	services="app-service\logic"
 	documentationCenter=".net,nodejs,java"
 	authors="MandiOhlinger"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="07/28/2016"
 	ms.author="mandia"/>
 
 # Verwalten und Überwachen integrierter API-Apps und Connectors
@@ -110,21 +110,18 @@ Sie können Benutzer problemlos hinzufügen und ihnen bestimmte Rollen für Ihre
 - Wählen Sie **API-Definition** aus, um die für Ihre spezifische API automatisch erstellte Swagger-Datei zu öffnen.
 - Wählen Sie **Abhängigkeiten** aus, um die von Ihrer API-App benötigten Dateien anzuzeigen. Wenn Sie z. B. den SAP-Connector verwenden, installieren Sie einige zusätzlichen Dateien für den lokalen Hybrid Connection Manager. Diese Abhängigkeiten werden auf dem Blatt "API-App" angezeigt.
 
-> [AZURE.IMPORTANT] Wenn Sie die Eigenschaften Ihrer API-App öffnen und unter **Essentials** nachsehen, gibt es die Links **Host** und **Gateway**, über die neue Blätter geöffnet werden:
+>[AZURE.IMPORTANT] Wenn Sie die Eigenschaften Ihrer API-App öffnen und unter **Essentials** nachsehen, gibt es die Links **Host** und **Gateway**, über die neue Blätter geöffnet werden:
 >
 > ![][host]
 >
-> Diese Eigenschaften sind spezifisch für die Website, die Ihre API-App hostet. Bei Verwendung einer integrierten API-App oder eines Connectors gelten die meisten dieser Eigenschaften nicht wirklich, und es wird empfohlen, dass Sie diese Eigenschaften nicht aktualisieren. Wenn Sie Ihre eigenen API-App in Visual Studio erstellt und in Ihrem Azure-Abonnement bereitgestellt haben, können Sie die Blätter "Host" und "Gateway" verwenden.
+>Diese Eigenschaften sind spezifisch für die Website, die Ihre API-App hostet. Bei Verwendung einer integrierten API-App oder eines Connectors gelten die meisten dieser Eigenschaften nicht wirklich, und es wird empfohlen, dass Sie diese Eigenschaften nicht aktualisieren. Wenn Sie Ihre eigenen API-App in Visual Studio erstellt und in Ihrem Azure-Abonnement bereitgestellt haben, können Sie die Blätter „Host“ und „Gateway“ verwenden. <br/><br/>
 
 
->[AZURE.NOTE] Wenn Sie Azure-Logik-Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, besuchen Sie [Logik-App testen](https://tryappservice.azure.com/?appservice=logic). Sie können eine kurzlebige Starter-Logik-App in App Service erstellen. Keine Kreditkarte und keine Verpflichtungen erforderlich.
+>[AZURE.NOTE] Wenn Sie Logik-Apps ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, besuchen Sie [Logik-App testen](https://tryappservice.azure.com/?appservice=logic). Sie können eine kurzlebige Starter-Logik-App erstellen. Keine Kreditkarte und keine Verpflichtungen erforderlich.
 
 ## Weitere Informationen
 
-[Überwachen von Logik-App](app-service-logic-monitor-your-logic-apps.md)<br/>
-[Liste der Connectors und API-Apps in Microsoft Azure App Service](app-service-logic-connectors-list.md)<br/>
-[Rollenbasierte Zugriffssteuerung über das Microsoft Azure-Portal](../active-directory/role-based-access-control-configure.md)<br/>
-[Verwenden des Hybrid Connection Managers in Azure App Service](app-service-logic-hybrid-connection-manager.md)
+[Überwachen von Logik-App](app-service-logic-monitor-your-logic-apps.md)<br/>[Liste der Connectors und API-Apps in Microsoft Azure App Service](app-service-logic-connectors-list.md)<br/>[Rollenbasierte Zugriffssteuerung über das Microsoft Azure-Portal](../active-directory/role-based-access-control-configure.md)<br/>[Verwenden des Hybrid Connection Managers in Azure App Service](app-service-logic-hybrid-connection-manager.md)
 
 
 <!--Image references-->
@@ -137,4 +134,4 @@ Sie können Benutzer problemlos hinzufügen und ihnen bestimmte Rollen für Ihre
 [hostsettings]: ./media/app-service-logic-monitor-your-connectors/hostsettings.png
 [apiapphost]: ./media/app-service-logic-monitor-your-connectors/apiapphost.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

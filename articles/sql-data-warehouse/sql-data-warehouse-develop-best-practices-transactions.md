@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/30/2016"
+   ms.date="07/31/2016"
    ms.author="jrj;barbkess"/>
 
 # Optimieren von Transaktionen für SQL Data Warehouse
@@ -33,6 +33,8 @@ Azure SQL Data Warehouse speichert Änderungen in Form von Transaktionsprotokoll
 ## Vergleich von minimaler und vollständiger Protokollierung
 
 Im Gegensatz zu vollständig protokollierten Vorgängen, bei denen das Transaktionsprotokoll zum Nachverfolgen aller Zeilenänderungen verwendet wird, werden bei Vorgängen mit minimaler Protokollierung nur Umfangszuordnungen und Metadatenänderungen nachverfolgt. Die minimale Protokollierung umfasst daher nur die Informationen, die erforderlich sind, um für die Transaktion im Falle eines Ausfalls oder einer expliziten Anforderung (`ROLLBACK TRAN`) ein Rollback durchzuführen. Da im Transaktionsprotokoll deutlich weniger Informationen nachverfolgt werden, weist ein Vorgang mit minimaler Protokollierung eine höhere Leistung als ein Vorgang mit ähnlicher Größe und vollständiger Protokollierung auf. Da außerdem weniger Schreibvorgänge für das Transaktionsprotokoll anfallen, wird eine viel kleinere Menge von Protokolldaten generiert, und die E/A-Effizienz steigt.
+
+Die Sicherheitslimits für Transaktionen gelten nur für Vorgänge mit vollständiger Protokollierung.
 
 >[AZURE.NOTE] Vorgänge mit minimaler Protokollierung können Teil von expliziten Transaktionen sein. Da alle Änderungen in Zuordnungsstrukturen nachverfolgt werden, ist es möglich, für Vorgänge mit minimaler Protokollierung ein Rollback durchzuführen. Es ist wichtig zu verstehen, dass für die Änderung eine „minimale“ Protokollierung erfolgt. Dies bedeutet nicht, dass keine Protokollierung durchgeführt wird.
 
@@ -55,6 +57,8 @@ Eine minimale Protokollierung ist für folgende Vorgänge möglich:
 - SELECT..INTO
 -->
 
+>[AZURE.NOTE] Interne Datenverschiebungsvorgänge (wie z.B. `BROADCAST` und `SHUFFLE`) sind vom Sicherheitslimit für Transaktionen nicht betroffen.
+
 ## Minimale Protokollierung mit Massenladen
 
 `CTAS` und `INSERT...SELECT` sind beides Massenladevorgänge. Beide werden aber durch die Zieltabellendefinition beeinflusst und sind vom Ladeszenario abhängig. In der Tabelle ist angegeben, ob der Massenvorgang über eine vollständige oder minimale Protokollierung verfügt:
@@ -76,7 +80,7 @@ Das Laden von Daten in eine nicht leere Tabelle mit einem gruppierten Index kann
 
 ## Optimieren der Löschvorgänge
 
-`DELETE` ist ein Vorgang mit vollständiger Protokollierung. Wenn Sie eine große Datenmenge in einer Tabelle oder Partition löschen müssen, ist es häufiger sinnvoller, stattdessen die Daten mit `SELECT` auszuwählen, die Sie behalten möchten. Dieser Vorgang kann mit minimaler Protokollierung ausgeführt werden. Um dies zu erreichen, erstellen Sie mit [CTAS][] eine neue Tabelle. Verwenden Sie nach der Erstellung [RENAME][], um die alte Tabelle durch die neu erstellte Tabelle auszutauschen.
+`DELETE` ist ein Vorgang mit vollständiger Protokollierung. Wenn Sie eine große Datenmenge in einer Tabelle oder Partition löschen müssen, ist es häufiger sinnvoller, stattdessen mit `SELECT` die Daten auszuwählen, die Sie behalten möchten. Dieser Vorgang kann mit minimaler Protokollierung ausgeführt werden. Um dies zu erreichen, erstellen Sie mit [CTAS][] eine neue Tabelle. Verwenden Sie nach der Erstellung [RENAME][], um die alte Tabelle durch die neu erstellte Tabelle auszutauschen.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -398,11 +402,11 @@ END
 
 Mit Azure SQL Data Warehouse können Sie den Vorgang anhalten und fortsetzen und das Data Warehouse bedarfsgesteuert skalieren. Wenn Sie SQL Data Warehouse anhalten oder skalieren, ist es wichtig zu verstehen, dass alle laufenden Transaktionen sofort beendet werden. Dies führt dazu, dass für alle geöffneten Transaktionen ein Rollback durchgeführt wird. Wenn für Ihre Workload vor dem Anhalte- oder Skaliervorgang eine längere und unvollständige Datenänderung ausgegeben wurde, müssen diese Schritte rückgängig gemacht werden. Dies kann sich auf den Zeitraum auswirken, der für das Anhalten oder Skalieren der Azure SQL Data Warehouse-Datenbank erforderlich ist.
 
-> [AZURE.IMPORTANT] Sowohl `UPDATE` als auch `DELETE` sind Vorgänge mit vollständiger Protokollierung. Diese Vorgänge zum Rückgängigmachen und Wiederholen können also deutlich länger als vergleichbare Vorgänge mit minimaler Protokollierung dauern.
+> [AZURE.IMPORTANT] Sowohl `UPDATE` als auch `DELETE` sind Vorgänge mit vollständiger Protokollierung. Diese Vorgänge zum Rückgängigmachen und Wiederholen können also deutlich länger dauern als vergleichbare Vorgänge mit minimaler Protokollierung.
 
 Die beste Vorgehensweise ist, auf den Abschluss aktiver Datenänderungstransaktionen zu warten, bevor SQL Data Warehouse angehalten oder skaliert wird. Allerdings ist dies unter Umständen nicht immer praktikabel. Sie können folgende Optionen verwenden, um das Risiko eines langen Rollbackvorgangs zu verringern:
 
-- Schreiben Sie Vorgänge mit langer Ausführungsdauer um, indem Sie [CTAS][] verwenden.
+- Schreiben Sie Vorgänge mit langer Ausführungsdauer mithilfe von [CTAS][] um.
 - Teilen Sie den Vorgang in Teile auf, und arbeiten Sie mit einer Teilmenge der Zeilen.
 
 ## Nächste Schritte
@@ -424,4 +428,4 @@ Weitere Informationen zu Isolationsstufen und Transaktionsgrenzen finden Sie unt
 
 <!-- Other web references -->
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

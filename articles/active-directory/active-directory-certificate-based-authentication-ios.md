@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/22/2016" 
+    ms.date="08/02/2016" 
     ms.author="markvi" />
 
 
@@ -98,7 +98,7 @@ Weitere Einzelheiten finden Sie unter [Anpassen der AD FS-Anmeldeseiten](https:/
 ### Unterstützung von Exchange ActiveSync-Clients 
 
 
-Bestimmte Exchange ActiveSync-Anwendungen auf iOS 9 oder einer höheren Version werden unterstützt. Wenden Sie sich an Ihren Anwendungsentwickler, um herauszufinden, ob Ihre E-Mail-Anwendung dieses Feature unterstützt.
+Unter iOS 9 oder höher wird der native iOS-E-Mail-Client unterstützt. Wenden Sie sich bei allen anderen Exchange ActiveSync-Anwendungen an den Anwendungsentwickler, um zu erfragen, ob dieses Feature unterstützt wird.
 
 
 
@@ -278,4 +278,4 @@ Das festgelegte Datum muss in der Zukunft liegen. Wenn das Datum nicht in der Zu
 <!--Image references-->
 [1]: ./media/active-directory-certificate-based-authentication-ios/ic195031.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

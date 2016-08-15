@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Aktivieren von Überwachung und Diagnose" 
-	description="Erfahren Sie, wie Sie die Diagnose für Ihre Ressourcen in Azure einrichten." 
-	authors="stepsic-microsoft-com" 
-	manager="ronmart" 
-	editor="" 
-	services="azure-portal" 
-	documentationCenter="na"/>
+<properties
+	pageTitle="Aktivieren von Überwachung und Diagnose in Microsoft Azure | Microsoft Azure "
+	description="Erfahren Sie, wie Sie die Diagnose für Ihre Ressourcen in Azure einrichten."
+	authors="stepsic-microsoft-com"
+	manager="ronmart"
+	editor=""
+	services="monitoring"
+	documentationCenter="monitoring"/>
 
-<tags 
-	ms.service="azure-portal" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/08/2015" 
+<tags
+	ms.service="monitoring"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/08/2015"
 	ms.author="stepsic"/>
 
 # Aktivieren von Überwachung und Diagnose
@@ -26,7 +26,7 @@ Diagnose-, Überwachungs- und Metrikdaten werden in Azure in einem Speicherkonto
 
 Die meisten Dienste ermöglichen es Ihnen, die Diagnose bei der ersten Erstellung im [Azure-Portal](https://portal.azure.com) zu aktivieren.
 
-1. Navigieren Sie zu **Neu**, und wählen Sie die gewünschte Ressource. 
+1. Navigieren Sie zu **Neu**, und wählen Sie die gewünschte Ressource.
 
 2. Wählen Sie **Optionale Konfiguration**. ![Blatt "Diagnose"](./media/insights-how-to-use-diagnostics/Insights_CreateTime.png)
 
@@ -49,12 +49,12 @@ Wenn Sie bereits eine Ressource erstellt haben und die Diagnoseeinstellungen fü
 ### Kategorien von Datensammlungen für virtuelle Computer
 Für virtuelle Computer werden alle Metriken und Protokolle in Intervallen von 1 Minute aufgezeichnet, sodass Sie stets über aktuelle Daten zu Ihrem Computer verfügen.
 
-- **Basismetriken**: Metriken zur Integrität des virtuellen Computers, z. B. für Prozessor und Arbeitsspeicher. 
+- **Basismetriken**: Metriken zur Integrität des virtuellen Computers, z. B. für Prozessor und Arbeitsspeicher.
 - **Netzwerk- und Webmetriken**: Metriken zu Ihren Netzwerkverbindungen und Webdiensten.
 - **.NET-Metriken**: Metriken zu den .NET- und ASP.NET-Anwendungen, die auf Ihrem virtuellen Computer ausgeführt werden.
 - **SQL-Metriken**: Wenn Sie Microsoft SQL Service ausführen, werden die zugehörigen Leistungsmetriken angezeigt.
 - **Anwendungsprotokolle zu Windows-Ereignissen**: Windows-Ereignisse, die an den Anwendungskanal gesendet werden.
-- **Systemprotokolle zu Windows-Ereignissen**: Windows-Ereignisse, die an den Systemkanal gesendet werden. Dazu gehören auch alle Ereignisse von [Microsoft Antimalware](http://go.microsoft.com/fwlink/?LinkID=404171&clcid=0x409). 
+- **Systemprotokolle zu Windows-Ereignissen**: Windows-Ereignisse, die an den Systemkanal gesendet werden. Dazu gehören auch alle Ereignisse von [Microsoft Antimalware](http://go.microsoft.com/fwlink/?LinkID=404171&clcid=0x409).
 - **Sicherheitsprotokolle zu Windows-Ereignissen**: Windows-Ereignisse, die an den Sicherheitskanal gesendet werden.
 - **Infrastrukturprotokolle der Diagnose**: Protokolle zur Sammlungsinfrastruktur für die Diagnose.
 - **IIS-Protokolle**: Protokolle zu Ihrem IIS-Server.
@@ -68,7 +68,6 @@ Beachten Sie, dass derzeit bestimmte Linux-Distributionen nicht unterstützt wer
 * [Automatisches Skalieren der Instanzenzahl](insights-how-to-scale.md), um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
 * [Überwachen der Anwendungsleistung](insights-perf-analytics.md), um präzise Informationen zur Leistung Ihres Codes in der Cloud zu ermitteln.
 * [Anzeigen von Ereignissen und Überwachungsprotokollen](insights-debugging-with-events.md), um sich über sämtliche Aktivitäten Ihres Diensts zu informieren.
-* [Nachverfolgen der Dienstintegrität](insights-service-health.md), um den Zeitpunkt von Leistungsabfällen oder Dienstunterbrechungen zu ermitteln, die in Azure aufgetreten sind. 
- 
+* [Nachverfolgen der Dienstintegrität](insights-service-health.md), um den Zeitpunkt von Leistungsabfällen oder Dienstunterbrechungen zu ermitteln, die in Azure aufgetreten sind.
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0803_2016-->

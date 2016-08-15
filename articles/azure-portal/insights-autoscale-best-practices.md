@@ -4,11 +4,11 @@
 	authors="kamathashwin"
 	manager=""
 	editor=""
-	services="azure-portal"
-	documentationCenter="na"/>
+	services="monitoring"
+	documentationCenter="monitoring"/>
 
 <tags
-	ms.service="azure-portal"
+	ms.service="monitoring"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -102,7 +102,7 @@ Wenn die automatische Skalierung zurück zum Standardprofil wechselt, wird auch 
 ### Skalierungsüberlegungen, wenn in einem Profil mehrere Regeln konfiguriert sind
 Es gibt Fälle, in denen Sie möglicherweise mehrere Regeln innerhalb eines Profils festlegen müssen. Die folgenden Regeln für die automatische Skalierung werden von Diensten verwendet, wenn mehrere Regeln festgelegt sind.
 
-Beim *horizontalen Hochskalieren* wird die automatische Skalierung durchgeführt, sobald eine Regel erfüllt wird. Beim *horizontalen Herunterskalieren* wird die automatische Skalierung nur ausgeführt, wenn alle Regeln erfüllt werden.
+Beim *horizontalen Hochskalieren* wird die automatische Skalierung durchgeführt, sobald eine Regel erfüllt wird. Beim * horizontalen Herunterskalieren* wird die automatische Skalierung nur ausgeführt, wenn alle Regeln erfüllt werden.
  
 Nehmen Sie an, Sie hätten die folgenden vier Regeln für die automatische Skalierung:
  
@@ -126,4 +126,4 @@ Die automatische Skalierung benachrichtigt die Administratoren und die Mitwirken
 - Für den Autoskalierungsdienst stehen keine Metriken zur Verfügung, auf deren Grundlage eine Skalierungsentscheidung getroffen werden kann.
 - Metriken stehen wieder zur Verfügung (Wiederherstellung), um eine Skalierungsentscheidung zu treffen. Zusätzlich zu den oben aufgeführten Bedingungen, können Sie E-Mail- oder Webhook-Benachrichtigungen konfigurieren, um bei erfolgreichen Skalierungsaktionen informiert zu werden.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

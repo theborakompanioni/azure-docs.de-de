@@ -48,7 +48,7 @@ Sie sollten keinen temporären Datenträger (/dev/sdb1) zum Speichern von Daten 
 
 ## Kann ich einen vorhandenen virtuellen Azure-Computer kopieren oder klonen?
 
-Ja. Anweisungen hierzu finden Sie unter [Erstellen einer Kopie eines virtuellen Linux-Computers im Resource Manager-Bereitstellungsmodell](virtual-machines-linux-specialized-image.md).
+Ja. Anweisungen hierzu finden Sie unter [Erstellen einer Kopie eines virtuellen Linux-Computers im Resource Manager-Bereitstellungsmodell](virtual-machines-linux-copy-vm.md).
 
 ## Warum werden die Regionen „Kanada, Mitte“ und „Kanada, Osten“ nicht in Azure Resource Manager angezeigt?
 
@@ -58,4 +58,4 @@ Die beiden neuen Regionen „Kanada, Mitte“ und „Kanada, Osten“ werden nic
 
 Nein. Dies ist derzeit nur zum Zeitpunkt der Erstellung möglich.
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

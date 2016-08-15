@@ -13,11 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/22/2016"
+	ms.date="07/27/2016"
 	ms.author="adegeo"/>
-
-
-
 
 # Konfigurieren von Clouddiensten
 
@@ -56,7 +53,7 @@ In dieser Ansicht können Sie eine Warnung einrichten. Über das Dropdownfeld **
 - Datenträgerschreibvorgänge
 - Eingehender Netzwerkverkehr
 - Ausgehender Netzwerkverkehr
-- CPU-Prozentsatz 
+- CPU-Prozentsatz
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
 
@@ -113,4 +110,4 @@ Sie müssen Ihren Clouddienst möglicherweise über die Datei mit der [Dienstkon
 * [Verwalten Ihres Clouddiensts](cloud-services-how-to-manage-portal.md)
 * Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate-portal.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0803_2016-->

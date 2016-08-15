@@ -1,7 +1,7 @@
 <properties
    pageTitle="Logik-App-Szenario: Erstellen eines Azure Service Bus-Triggers mithilfe von Azure Functions | Microsoft Azure"
    description="Verwenden Sie Azure Functions, um einen Service Bus-Trigger für eine Logik-App zu erstellen."
-   services="app-service\logic,functions"
+   services="logic-apps,functions"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
    manager="dwrede"
@@ -66,4 +66,4 @@ Fügen Sie zum Testen mithilfe eines Tools wie [Service Bus Explorer](https://gi
 [1]: ./media/app-service-logic-scenario-function-sb-trigger/manualTrigger.PNG
 [2]: ./media/app-service-logic-scenario-function-sb-trigger/newQueueTriggerFunction.PNG
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="07/23/2016"
+   ms.date="07/29/2016"
    ms.author="rickbyh;barbkess;sonyama"/>
 
 # Authentifizierung in Azure SQL Data Warehouse
@@ -37,14 +37,12 @@ Zum Herstellen einer Verbindung mit SQL Data Warehouse müssen Sie die folgenden
 - Kennwort
 - Standarddatenbank (optional)
 
-Es ist wichtig zu beachten, dass Benutzer mithilfe der SQL-Authentifizierung authentifiziert werden müssen. Die vertrauenswürdige Authentifizierung wird derzeit nicht unterstützt.
-
 Standardmäßig wird die Verbindung mit der Masterdatenbank hergestellt, nicht mit Ihrer Benutzerdatenbank. Sie haben zwei Möglichkeiten, um eine Verbindung mit Ihrer Benutzerdatenbank herzustellen:
 
-1. Geben Sie die Standarddatenbank an, wenn Sie Ihren Server mit dem SQL Server-Objekt-Explorer in SSDT registrieren, oder in Ihrer Verbindungszeichenfolge für die Anwendung. Fügen Sie für eine ODBC-Verbindung beispielsweise den InitialCatalog-Parameter ein.
+1. Geben Sie die Standarddatenbank an, wenn Sie Ihren Server mit dem SQL Server-Objekt-Explorer in SSDT oder SSMS registrieren, oder geben Sie die Datenbank in Ihrer Verbindungszeichenfolge für die Anwendung an. Fügen Sie für eine ODBC-Verbindung beispielsweise den InitialCatalog-Parameter ein.
 2. Markieren Sie zuerst die Benutzerdatenbank, bevor Sie eine Sitzung in SSDT erstellen.
 
-> [AZURE.NOTE] Eine Anleitung zum Herstellen einer Verbindung mit SQL Data Warehouse per SSDT finden Sie im Artikel [Abfragen mit Visual Studio][].
+> [AZURE.NOTE] Eine Anleitung zum Herstellen einer Verbindung mit SQL Data Warehouse über SSDT finden Sie im Artikel [Abfragen mit Visual Studio][].
 
 Hierbei ist es wiederum wichtig zu beachten, dass die Transact-SQL-Anweisung **USE <Ihre Datenbank>** zum Ändern der Datenbank für eine Verbindung nicht unterstützt wird.
 
@@ -78,11 +76,11 @@ Die Konfigurationsschritte schließen die folgenden Verfahren zum Konfigurieren 
 5. Erstellen eigenständiger Datenbankbenutzer in der Datenbank, die Azure AD-Identitäten zugeordnet sind
 6. Herstellen einer Verbindung mit Ihrem Data Warehouse unter Verwendung von Azure AD-Identitäten
 
-Der wesentliche Unterschied zwischen der Verwendung von Azure Active Directory-Authentifizierung mit Azure SQL-Datenbank und Azure SQL Data Warehouse liegt darin, dass Sie SQL Server Data Tools statt SQL Server Management Studio verwenden müssen, um eine Verbindung mit SQL Data Warehouse herzustellen SQL Data Warehouse erfordert mindestens die Version von April 2016 (Version 14.0.60311.1) von SQL Server Data Tools für Visual Studio 2015. Azure Active Directory-Benutzer werden derzeit nicht im SSDT-Objekt-Explorer angezeigt. Zur Umgehung dieses Problems können die Benutzer in [sys.database\_principals](https://msdn.microsoft.com/library/ms187328.aspx) angezeigt werden.
+Azure Active Directory-Benutzer werden derzeit nicht im SSDT-Objekt-Explorer angezeigt. Die Benutzer können aber in [sys.database\_principals](https://msdn.microsoft.com/library/ms187328.aspx) angezeigt werden.
   
 ### Suchen der Details
 - Führen Sie die ausführlichen Schritte aus. Die ausführlichen Schritte zum Konfigurieren und Verwenden der Azure Active Directory-Authentifizierung sind fast identisch für die Azure SQL-Datenbank und für Azure SQL Data Warehouse. Befolgen Sie die ausführlichen Schritte im Thema [Herstellen einer Verbindung mit SQL-Datenbank oder SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung](../sql-database/sql-database-aad-authentication.md).
-- Erstellen Sie benutzerdefinierte Datenbankrollen, und fügen Sie den Rollen Benutzer hinzu. Weisen Sie anschließend präzise Berechtigungen für die Rollen zu. Weitere Informationen finden Sie unter [Erste Schritte mit Berechtigungen für das Datenbankmodul](https://msdn.microsoft.com/library/mt667986.aspx).
+- Erstellen Sie benutzerdefinierte Datenbankrollen, und fügen Sie den Rollen Benutzer hinzu. Weisen Sie anschließend präzise Berechtigungen für die Rollen zu. Weitere Informationen finden Sie unter [Getting Started with Database Engine Permissions](https://msdn.microsoft.com/library/mt667986.aspx) (Erste Schritte mit Berechtigungen für Datenbankmodule).
 
 ## Nächste Schritte
 
@@ -93,4 +91,4 @@ Informationen zum Abfragen Ihres Data Warehouse mit Visual Studio und anderen An
 [Abfragen mit Visual Studio]: ./sql-data-warehouse-query-visual-studio.md
 [What is Azure Active Directory]: ../active-directory/active-directory-whatis.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

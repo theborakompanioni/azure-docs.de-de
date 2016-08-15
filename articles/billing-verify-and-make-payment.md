@@ -1,11 +1,12 @@
 <properties
 	pageTitle="Überprüfen Sie Ihre Zahlungsmethode, und nehmen Sie Zahlungen für Azure-Abonnements vor | Microsoft Azure"
 	description="Erklärt, wie Sie Ihre Zahlungsmethode überprüfen, und Zahlungen für Azure-Abonnements vornehmen"
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="genlin"
 	manager="msmbaldwin"
-	editor="meerak"
+	editor=""
+	tags="billing"
 	/>
 
 <tags
@@ -44,4 +45,4 @@ Wenn Sie eine Kredit- oder Debitkarte als Zahlungsmethode festgelegt haben, erfo
 
 Wenn Sie per Rechnung zahlen, senden Sie Ihre Zahlung an den Empfänger, der unten auf der Rechnung aufgeführt ist. Wenn Sie weitere Hilfe benötigen, wenden Sie sich an den [Microsoft-Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

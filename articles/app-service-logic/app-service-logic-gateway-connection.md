@@ -1,7 +1,7 @@
 <properties
    pageTitle="Lokale Datengatewayverbindung mit Logik-Apps | Microsoft Azure"
    description="Informationen zum Herstellen einer Verbindung mit dem lokalen Datengateway aus einer Logik-App heraus."
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
    manager="erikre"
@@ -70,4 +70,4 @@ Die Verbindung sollte jetzt erfolgreich für die Verwendung in Ihrer Logik-App k
 [2]: ./media/app-service-logic-gateway-connection/blankconnection.PNG
 [3]: ./media/app-service-logic-gateway-connection/checkbox.PNG
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

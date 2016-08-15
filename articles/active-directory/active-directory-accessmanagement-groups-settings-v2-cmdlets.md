@@ -219,10 +219,8 @@ Zum Entfernen eines Besitzers aus einer Gruppe verwenden Sie „Remove-AzureADGr
 
 Weitere Informationen zu Azure Active Directory PowerShell finden Sie unter [Azure Active Directory-Cmdlets](http://go.microsoft.com/fwlink/p/?LinkId=808260).
 
-Zusätzliche Anleitungen des Microsoft-Programmmanagers Rob de Jong stehen unter [Rob‘s Groups Blog](http://robsgroupsblog.com/blog/configuring-settings-for-office-365-groups-in-azure-ad) zur Verfügung.
-
 * [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](active-directory-manage-groups.md)
 
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

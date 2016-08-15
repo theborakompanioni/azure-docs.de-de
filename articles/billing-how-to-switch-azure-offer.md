@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="genlin"
 	manager="msmbaldwin"
-	editor="n/a"
+	editor=""
 	tags="billing,top-support-issue"/>
 
 <tags
@@ -75,6 +75,6 @@ Im Folgenden sind die Pfade aufgeführt, die derzeit im [Kontocenter](https://ac
 -	[Nutzungsbasiert](https://azure.microsoft.com/offers/ms-azr-0003p/) zum [12-Monatsangebot mit Vorauszahlung](https://azure.microsoft.com/offers/ms-azr-0026p/)
 -	[Nutzungsbasiert](https://azure.microsoft.com/offers/ms-azr-0003p/) zu einem der [Angebote mit monatlicher Azure-Gutschrift für Abonnenten von Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)
 
-Für weitere Angebotsänderungen wenden Sie sich an den [Support](http://go.microsoft.com/fwlink/?LinkID=619338).
+Für weitere Angebotsänderungen wenden Sie sich an den Support.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

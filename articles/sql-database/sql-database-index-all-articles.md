@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Alle Themen über den SQL-Datenbankdienst | Microsoft Azure"
-	description="Tabelle mit allen Themen für den Azure-Dienst namens „SQL-Datenbank“ auf https://azure.microsoft.com/documentation/articles/, Titel und Beschreibung"
+	description="Tabelle mit allen Themen für den Azure-Dienst namens „SQL-Datenbank“ auf https://azure.microsoft.com/de-de/documentation/articles/, Titel und Beschreibung"
 	services="sql-database"
 	documentationCenter=""
 	authors="MightyPen"
@@ -17,7 +17,7 @@
 	ms.author="genemi"/>
 
 
-# Alle Themen für den Azure SQL-Datenbankdienst
+# Alle Themen für den Azure SQL-Datenbankdienst
 
 Dieses Thema führt alle Themen mit direktem Bezug zum **SQL-Datenbankdienst** in Azure auf. Sie können auf dieser Webseite mit **STRG+F** nach Schlüsselwörtern suchen, um aktuell interessante Themen zu finden.
 
@@ -59,7 +59,7 @@ Dieses Thema führt alle Themen mit direktem Bezug zum **SQL-Datenbankdienst** i
 | --: | :-- | :-- |
 | 16 | [Durchführen der Problembehandlung, Diagnose und Verhinderung von SQL-Verbindungsfehlern und vorübergehenden Fehlern für SQL-Datenbank](sql-database-connectivity-issues.md) | Erfahren Sie, wie Sie einen SQL-Verbindungsfehler oder vorübergehenden Fehler in Azure SQL-Datenbank behandeln, diagnostizieren und verhindern. |
 | 17 | [Herstellen der Verbindung mit einer SQL-Datenbank mit Visual Studio](sql-database-connect-query.md) | Schreiben Sie ein Programm in C# zum Abfragen und Herstellen einer Verbindung mit einer SQL-Datenbank. Informationen zu IP-Adressen, Verbindungszeichenfolgen, sicherer Anmeldung und kostenlosem Visual Studio. |
-| 18 | [Andere Ports als 1433 für ADO.NET 4.5 und SQL-Datenbank V12](sql-database-develop-direct-route-ports-adonet-v12.md) | Bei Clientverbindungen von ADO.NET mit Azure SQL-Datenbank V12 wird der Proxy manchmal umgangen und direkt mit der Datenbank interagiert. Andere Ports als 1433 werden wichtig. |
+| 18 | [Andere Ports als 1433 für ADO.NET 4.5 und SQL-Datenbank V12](sql-database-develop-direct-route-ports-adonet-v12.md) | Bei Clientverbindungen von ADO.NET mit Azure SQL-Datenbank V12 wird der Proxy manchmal umgangen und direkt mit der Datenbank interagiert. Andere Ports als 1433 werden wichtig. |
 | 19 | [SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen: Datenbankverbindungsfehler und andere Probleme](sql-database-develop-error-messages.md) | Erfahren Sie mehr über SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen, beispielsweise zu häufigen Datenbankverbindungsfehlern, Datenbankkopiefehlern und allgemeinen Fehlern. |
 | 20 | [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von PHP unter Windows](sql-database-develop-php-simple.md) | Enthält ein PHP-Beispielprogramm, das eine Verbindung von einem Windows-Client mit Azure SQL-Datenbank herstellt, sowie Links zu den auf dem Client erforderlichen Softwarekomponenten. |
 | 21 | [Ausprobieren von SQL-Datenbank: Verwenden von C# zum Erstellen einer SQL-Datenbank mithilfe der SQL-Datenbankbibliothek für .NET](sql-database-get-started-csharp.md) | Probieren Sie SQL-Datenbank für das Entwickeln von SQL- und C#-Apps aus, und erstellen Sie eine Azure SQL-Datenbank mithilfe der SQL-Datenbankbibliothek für .NET. |
@@ -93,7 +93,7 @@ Dieses Thema führt alle Themen mit direktem Bezug zum **SQL-Datenbankdienst** i
 | 35 | [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md) | Grundlegende Erläuterung der Funktion „Tools für elastische Datenbanken“ von Azure SQL, einschließlich einer einfachen Beispiel-App. |
 | 36 | [SQL-Datenbank – Häufig gestellte Fragen](sql-database-faq.md) | Antworten auf häufig gestellte Fragen von Kunden zu Cloud-Datenbanken, zur Azure SQL-Datenbank, das Microsoft Managementsystem für relationale Datenbanken (RDBMS) und Database as a Service in der Cloud. |
 | 37 | [SQL-Datenbankratgeber](sql-database-index-advisor.md) | Der Azure SQL-Datenbank-Ratgeber stellt Empfehlungen für Ihre vorhandenen SQL-Datenbanken bereit, die die aktuelle Abfrageleistung verbessern können. |
-| 38 | [Erste Schritte mit In-Memory (Vorschau) in SQL-Datenbank](sql-database-in-memory.md) | SQL In-Memory-Technologien verbessern die Leistung von Transaktions- und Analyseworkloads erheblich. Erfahren Sie, wie Sie von diesen Technologien profitieren. |
+| 38 | [Erste Schritte mit In-Memory (Vorschau) in SQL-Datenbank](sql-database-in-memory.md) | SQL In-Memory-Technologien verbessern die Leistung von Transaktions- und Analyseworkloads erheblich. Erfahren Sie, wie Sie von diesen Technologien profitieren. |
 | 11,9 | [Verwenden von In-Memory-OLTP (Vorschau) zur Verbesserung der Anwendungsleistung in SQL-Datenbank](sql-database-in-memory-oltp-migration.md) | Verwenden von In-Memory OLTP zum Verbessern der Transaktionsleistung in einer vorhandenen SQL-Datenbank. |
 | 40 | [Überwachen des In-Memory-OLTP-Speichers](sql-database-in-memory-oltp-monitoring.md) | Einschätzen und Überwachen der XTP-In-Memory-Speicherverwendung und -kapazität; Beheben des Kapazitätsfehlers 41823 |
 | 41 | [Verwenden des Abfragespeichers in Azure SQL-Datenbank](sql-database-operate-query-store.md) | Erfahren Sie, wie Sie den Abfragespeicher in Azure SQL-Datenbank verwenden. |
@@ -103,7 +103,7 @@ Dieses Thema führt alle Themen mit direktem Bezug zum **SQL-Datenbankdienst** i
 | 45 | [Ändern der Dienstebene und Leistungsstufe (Tarif) einer SQL-Datenbank](sql-database-scale-up.md) | In „Ändern der Dienstebene und Leistungsstufe einer Azure SQL-Datenbank“ wird beschrieben, wie Sie die Dienstebene und Leistungsstufe Ihrer SQL-Datenbank zentral hoch- oder herunterstufen. Ändern des Tarifs einer Azure SQL-Datenbank. |
 | 46 | [Überwachen der Datenbankleistung mithilfe von Azure SQL-Datenbank](sql-database-single-database-monitor.md) | Lernen Sie die Optionen zum Überwachen Ihrer Datenbank mithilfe von Azure-Tools und dynamischen Verwaltungssichten kennen. |
 | 47 | [Tipps zur Optimierung der SQL-Datenbankleistung](sql-database-troubleshoot-performance.md) | Tipps für die Leistungsoptimierung in Azure SQL-Datenbank durch Auswertung und Verbesserung. |
-| 48 | [Gewusst wie: Verbessern der Leistung von SQL-Datenbankanwendungen mithilfe von Batchverarbeitung](sql-database-use-batching-to-improve-performance.md) | Dieses Thema belegt, dass die Verwendung der Batchverarbeitung bei Datenbankvorgängen erheblich zur Verbesserung der Geschwindigkeit und Skalierbarkeit Ihrer Azure SQL-Datenbankanwendungen beiträgt. Die Batchverarbeitungstechniken können zwar für jede beliebige SQL Server-Datenbank verwendet werden, der Artikel konzentriert sich jedoch auf Azure. |
+| 48 | [Gewusst wie: Verbessern der Leistung von SQL-Datenbankanwendungen mithilfe von Batchverarbeitung](sql-database-use-batching-to-improve-performance.md) | Dieses Thema belegt, dass die Verwendung der Batchverarbeitung bei Datenbankvorgängen erheblich zur Verbesserung der Geschwindigkeit und Skalierbarkeit Ihrer Azure SQL-Datenbankanwendungen beiträgt. Die Batchverarbeitungstechniken können zwar für jede beliebige SQL Server-Datenbank verwendet werden, der Artikel konzentriert sich jedoch auf Azure. |
 
 
 
@@ -179,7 +179,7 @@ Dieses Thema führt alle Themen mit direktem Bezug zum **SQL-Datenbankdienst** i
 
 | &nbsp; | Titel | Beschreibung |
 | --: | :-- | :-- |
-| 89 | [Übersicht über elastische Datenbanktransaktionen mit Azure SQL-Datenbank](sql-database-elastic-transactions-overview.md) | Übersicht über elastische Datenbanktransaktionen mit Azure SQL-Datenbank |
+| 89 | [Übersicht über elastische Datenbanktransaktionen mit Azure SQL-Datenbank](sql-database-elastic-transactions-overview.md) | Übersicht über elastische Datenbanktransaktionen mit Azure SQL-Datenbank |
 
 
 
@@ -189,8 +189,8 @@ Dieses Thema führt alle Themen mit direktem Bezug zum **SQL-Datenbankdienst** i
 | --: | :-- | :-- |
 | 90 | [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md) | Informieren Sie sich über integrierte Sicherungen der SQL-Datenbank, mit denen Sie einen früheren Zustand einer Azure SQL-Datenbank wiederherstellen oder eine Datenbank in eine neue Datenbank in einer geografischen Region kopieren können (bis zu 35 Tage). |
 | 91 | [Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md) | Erfahren Sie, wie Azure SQL-Datenbank die Geschäftskontinuität in der Cloud sowie die Datenbankwiederherstellung unterstützt und dafür sorgt, dass geschäftskritische Cloudanwendungen in Betrieb gehalten werden. |
-| 92 | [Aktualisieren einer Anwendung ohne Ausfallzeiten](sql-database-business-continuity-application-upgrade.md) | Dieser Abschnitt enthält eine Anleitung zum Vermeiden von Ausfallzeiten während eines Anwendungsupgrades. |
-| 93 | [Geschäftskontinuitätsszenarien für Azure SQL-Datenbank](sql-database-business-continuity-scenarios.md) | Geschäftskontinuitätsszenarien für Azure SQL-Datenbank |
+| 92 | [Aktualisieren einer Anwendung ohne Ausfallzeiten](sql-database-manage-application-rolling-upgrade.md) | Dieser Artikel enthält eine Anleitung zum Vermeiden von Ausfallzeiten während eines Anwendungsupgrades. |
+| 93 | [Geschäftskontinuitätsszenarien für Azure SQL-Datenbank](sql-database-business-continuity.md) | Geschäftskontinuitätsszenarien für Azure SQL-Datenbank |
 | 94 | [Wiederherstellen einer einzelnen Tabelle aus einer Azure SQL-Datenbanksicherung](sql-database-cloud-migrate-restore-single-table-azure-backup.md) | Erfahren Sie, wie Sie eine einzelne Tabelle aus einer Azure SQL-Datenbanksicherung wiederherstellen. |
 | 95 | [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung mithilfe der aktiven Georeplikation in SQL-Datenbank](sql-database-designing-cloud-solutions-for-disaster-recovery.md) | Erfahren Sie, wie Sie cloudbasierte Notfallwiederherstellungslösungen entwerfen, bei denen die Geschäftskontinuität unter Verwendung der Georeplikation für die App-Datensicherung mit Azure SQL-Datenbank erzielt wird. |
 | 96 | [Wiederherstellen einer Azure SQL-Datenbank oder Failover auf eine sekundäre Datenbank](sql-database-disaster-recovery.md) | Erfahren Sie, wie Sie eine Datenbank nach Störungen in einem regionalen Rechenzentrum oder dessen Ausfall mithilfe der aktiven Georeplikation oder der Geowiederherstellung von Azure SQL-Datenbank wiederherstellen. |
@@ -205,7 +205,7 @@ Dieses Thema führt alle Themen mit direktem Bezug zum **SQL-Datenbankdienst** i
 | 105 | [Wiederherstellen einer gelöschten Azure SQL-Datenbank im Azure-Portal](sql-database-restore-deleted-database-portal.md) | Wiederherstellen einer gelöschten Azure SQL-Datenbank (Azure-Portal) |
 | 106 | [Wiederherstellen einer gelöschten Azure SQL-Datenbank mit PowerShell](sql-database-restore-deleted-database-powershell.md) | Wiederherstellen einer gelöschten Azure SQL-Datenbank (PowerShell) |
 | 107 | [Wiederherstellen einer Datenbank zu einem früheren Zeitpunkt, einer gelöschten Datenbank oder eines Rechenzentrums nach einem Ausfall](sql-database-troubleshoot-backup-and-restore.md) | Erfahren Sie, wie eine Clouddatenbank bei Fehlern oder Ausfällen mithilfe von Sicherungen und Replikaten in Azure SQL-Datenbank wiederhergestellt wird. |
-| 108 | [Wiederherstellen einer Azure SQL-Datenbank nach einem Benutzerfehler](sql-database-user-error-recovery.md) | Erfahren Sie, wie Sie die Datenbankwiederherstellung nach einem Benutzerfehler, unbeabsichtigter Datenbeschädigungen oder bei einer gelöschten Datenbank mithilfe der Zeitpunktwiederherstellungsfunktion (PITR) von Azure SQL-Datenbank durchführen. |
+| 108 | [Wiederherstellen einer Azure SQL-Datenbank nach einem Benutzerfehler](sql-database-business-continuity.md) | Erfahren Sie, wie Sie die Datenbankwiederherstellung nach einem Benutzerfehler, unbeabsichtigter Datenbeschädigungen oder bei einer gelöschten Datenbank mithilfe der Zeitpunktwiederherstellungsfunktion (PITR) von Azure SQL-Datenbank durchführen. |
 | 109 | [Verwenden von Azure Storage für SQL Server-Sicherung und -Wiederherstellung](storage-use-storage-sql-server-backup-restore.md) | Erfahren Sie, wie Sie SQL Server in Azure Storage sichern. Erläutert die Vorteile der Sicherung von SQL-Datenbanken in Azure Storage. |
 
 
@@ -312,8 +312,8 @@ Dieses Thema führt alle Themen mit direktem Bezug zum **SQL-Datenbankdienst** i
 | --: | :-- | :-- |
 | 164 | [Verbesserte Abfrageleistung mit Kompatibilitätsgrad 130 in Azure SQL-Datenbank](sql-database-compatibility-level-query-performance-130.md) | Enthält eine Beschreibung der Schritte und Tools, mit denen ermittelt werden kann, welcher Kompatibilitätsgrad für Ihre Datenbank unter Azure SQL-Datenbank oder Microsoft SQL Server am besten geeignet ist. |
 | 165 | [Verwalten von parallelen Upgrades von Cloudanwendungen mithilfe der aktiven Georeplikation von SQL-Datenbank](sql-database-manage-application-rolling-upgrade.md) | Erfahren Sie, wie Sie die Georeplikation von Azure SQL-Datenbank verwenden, um Onlineupgrades Ihrer Cloudanwendung zu unterstützen. |
-| 166 | [Upgrade auf Azure SQL-Datenbank V12 mithilfe des Azure-Portals](sql-database-upgrade-server-portal.md) | Erläutert das Upgrade auf Azure SQL-Datenbank V12, einschließlich der Aktualisierung von Web- und Business-Datenbanken, sowie das Upgrade eines V11-Servers mit direkter Migration der Datenbanken in einen Pool für elastische Datenbanken mithilfe des Azure-Portals. |
-| 167 | [Upgrade auf Azure SQL-Datenbank V12 mithilfe von PowerShell](sql-database-upgrade-server-powershell.md) | Erläutert das Upgrade auf Azure SQL-Datenbank V12, einschließlich der Aktualisierung von Web- und Business-Datenbanken, sowie das Upgrade eines V11-Servers mit direkter Migration der zugehörigen Datenbanken in einen Pool für elastische Datenbanken mithilfe von PowerShell. |
+| 166 | [Upgrade auf Azure SQL-Datenbank V12 mithilfe des Azure-Portals](sql-database-upgrade-server-portal.md) | Erläutert das Upgrade auf Azure SQL-Datenbank V12, einschließlich der Aktualisierung von Web- und Business-Datenbanken, sowie das Upgrade eines V11-Servers mit direkter Migration der Datenbanken in einen Pool für elastische Datenbanken mithilfe des Azure-Portals. |
+| 167 | [Upgrade auf Azure SQL-Datenbank V12 mithilfe von PowerShell](sql-database-upgrade-server-powershell.md) | Erläutert das Upgrade auf Azure SQL-Datenbank V12, einschließlich der Aktualisierung von Web- und Business-Datenbanken, sowie das Upgrade eines V11-Servers mit direkter Migration der zugehörigen Datenbanken in einen Pool für elastische Datenbanken mithilfe von PowerShell. |
 | 168 | [Plan and prepare to upgrade to SQL Database V12 (Planen und Vorbereiten des Upgrades auf die SQL-Datenbank V12; in englischer Sprache)](sql-database-v12-plan-prepare-upgrade.md) | Beschreibt die Vorbereitungen und Einschränkungen im Zusammenhang mit einem Upgrade auf Version V12 der Azure SQL-Datenbank. |
 | 169 | [Neuerungen in SQL-Datenbank V12](sql-database-v12-whats-new.md) | Beschreibt, warum Geschäftssysteme, die eine Azure SQL-Datenbank in der Cloud verwenden von einem Upgrade auf Version V12 profitieren. |
 | 170 | [Häufig gestellte Fragen zur Einstellung von Web Edition und Business Edition](sql-database-web-business-sunset-faq.md) | Erfahren Sie, wann die Web- und Business-Datenbanken in Azure SQL-Datenbank eingestellt werden und welche Features und Funktionen die neuen Dienstebenen bieten. |
@@ -339,7 +339,7 @@ Dieses Thema führt alle Themen mit direktem Bezug zum **SQL-Datenbankdienst** i
 
 | &nbsp; | Titel | Beschreibung |
 | --: | :-- | :-- |
-| 179 | [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md) | Listet die mindestens erforderliche Versionsnummer für jeden Treiber auf, mit der Clientprogramme Verbindungen mit Azure SQL-Datenbank oder Microsoft SQL Server herstellen können. Es wird ein Link zu Versionsinformationen für die Treiber bereitgestellt, die nicht von Microsoft, sondern von der Community freigegeben werden. |
+| 179 | [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md) | Listet die mindestens erforderliche Versionsnummer für jeden Treiber auf, mit der Clientprogramme Verbindungen mit Azure SQL-Datenbank oder Microsoft SQL Server herstellen können. Es wird ein Link zu Versionsinformationen für die Treiber bereitgestellt, die nicht von Microsoft, sondern von der Community freigegeben werden. |
 | 180 | [Ressourceneinschränkungen für Azure SQL-Datenbanken](sql-database-resource-limits.md) | Diese Seite beschreibt einige allgemeine Ressourceneinschränkungen für Azure SQL-Datenbanken. |
 | 181 | [Azure SQL-Datenbank – Abweichungen bei Transact-SQL](sql-database-transact-sql-information.md) | Transact-SQL-Anweisungen, die in Azure SQL-Datenbank nicht vollständig unterstützt werden |
 
@@ -396,4 +396,4 @@ This bullet link is improperly disallowed by publishing automation due to presen
 - [Search SQL Database documentation, with filters](http://azure.microsoft.com/docuXXmentation/arXXticles/?service=sql-database)
 -->
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

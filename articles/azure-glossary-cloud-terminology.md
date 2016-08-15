@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="04/04/2016"
+    ms.date="08/03/2016"
     ms.author="monicar"/>
 
 
@@ -146,8 +146,8 @@ Ein Netzwerk, das für Konnektivität zwischen Ihren Azure-Ressourcen sorgt und 
 
 ###**Weitere Informationen**  
 - [Erste Schritte mit Azure](https://azure.microsoft.com/get-started/)
-- [Ressourcen für Ihren Einstieg in die Cloud](https://azure.microsoft.com/resources/)  
+- [Ressourcen für Ihren Einstieg in die Cloud](https://azure.microsoft.com/resources/)
 - [Azure für Ihre Geschäftsanwendungen](https://azure.microsoft.com/overview/business-apps-on-azure/)
-- [Azure in Ihrem Rechenzentrum](https://azure.microsoft.com/overview/business-apps-on-azure/) 
+- [Azure in Ihrem Rechenzentrum](https://azure.microsoft.com/overview/business-apps-on-azure/)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0803_2016-->
