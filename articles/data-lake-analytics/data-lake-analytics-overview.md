@@ -1,6 +1,6 @@
 <properties 
    pageTitle="Übersicht über Microsoft Azure Data Lake Analytics | Azure" 
-   description="Data Lake Analytics ist ein Azure Big Data-Berechnungsdienst zur Nutzung von Daten für die Betriebsführung auf Basis der aus Ihren Clouddaten ermittelten Erkenntnisse, unabhängig von Speicherort oder Datenvolumen. Data Lake Analytics ermöglicht dies auf die einfachste, am höchsten skalierbare und wirtschaftlichste Weise." 
+   description="Data Lake Analytics ist ein Azure Big Data-Berechnungsdienst zur Nutzung von Daten für die Betriebsführung auf Basis der aus Ihren Clouddaten ermittelten Erkenntnisse, unabhängig von Speicherort oder Datenvolumen. Data Lake Analytics ermöglicht dies auf die einfachste, am höchsten skalierbare und wirtschaftlichste Weise. " 
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="edmacauley" 
@@ -25,7 +25,7 @@ Azure Data Lake Analytics ist ein neuer Dienst zur Vereinfachung von Big Data-An
 
 ## Wichtige Funktionen
 
-- **Dynamische Skalierung** 
+- **Dynamische Skalierung**
 
     Data Lake Analytics wurde von Grund auf für eine hohe Leistung in der Cloud entwickelt und optimiert. Profitieren Sie von einer dynamischen Ressourcenbereitstellung und der Möglichkeit, Daten im Terabyte- oder sogar Exabytebereich zu analysieren. Sobald ein Auftrag abgeschlossen ist, werden die Ressourcen automatisch herunterskaliert, und Sie bezahlen nur für die tatsächlich in Anspruch genommene Verarbeitungsleistung. Außerdem sind keine Codeänderungen notwendig, wenn Sie die Menge an gespeicherten Daten oder die genutzte Computekapazität erhöhen oder verringern. So können Sie sich ausschließlich auf Ihre Geschäftslogik konzentrieren und müssen sich keinerlei Gedanken darüber machen, wie die großen Datenmengen verarbeitet oder gespeichert werden.
 
@@ -49,7 +49,7 @@ Azure Data Lake Analytics ist ein neuer Dienst zur Vereinfachung von Big Data-An
 
     Data Lake Analytics arbeitet mit einer ganzen Reihe von Azure-Datenquellen zusammen, z. B. Azure-Blobspeicher und Azure SQL-Datenbanken, und ist natürlich speziell für Azure Data Lake-Speicher optimiert. So erreichen Sie höchste Ergebnisse bei Leistungsfähigkeit, Durchsatz und Parallelisierung für Big Data-Workloads.
 
-## Weitere Informationen
+## Siehe auch
 
 - Erste Schritte
     - [Erste Schritte mit Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md)
@@ -67,6 +67,7 @@ Azure Data Lake Analytics ist ein neuer Dienst zur Vereinfachung von Big Data-An
     - [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md)
     - [Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
     - [Überwachen und Problembehandeln von Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+    - [Accessing diagnostic logs for Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md) (Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics)
 
 - Komplettes Lernprogramm
     - [Verwenden interaktiver Lernprogramme zu Azure Data Lake Analytics](data-lake-analytics-use-interactive-tutorials.md)
@@ -77,4 +78,4 @@ Azure Data Lake Analytics ist ein neuer Dienst zur Vereinfachung von Big Data-An
     - [Feature anfordern](http://aka.ms/adlafeedback)
     - [Hilfe in Foren](http://aka.ms/adlaforums)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0810_2016-->

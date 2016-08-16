@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/14/2016"
+	ms.date="08/05/2016"
 	ms.author="vakarand"/>
 
 
@@ -168,12 +168,11 @@ Es wird eine Eingabeaufforderung mit PowerShell-Befehlen zum Ausführen von „R
 
 ![Überprüfen von Azure AD Connect Health](./media/active-directory-aadconnect-health/aadconnect-health-adds-agent-install3.png)
 
-
 Nach der Anmeldung werden weitere PowerShell-Befehle ausgeführt. Nach deren Ausführung können Sie PowerShell schließen, und die Konfiguration ist abgeschlossen.
 
 Die Dienste sollten jetzt automatisch gestartet werden, und der Agent sammelt Daten und führt eine Überwachung durch. Der Screenshot unten enthält ein Beispiel für die Ausgabe. Wenn nicht sämtliche der in den obigen Abschnitten beschriebenen Voraussetzungen erfüllt sind, werden im PowerShell-Fenster entsprechende Warnungen angezeigt. Stellen Sie sicher, dass die [hier](active-directory-aadconnect-health-agent-install.md#requirements) aufgeführten Voraussetzungen erfüllt sind, bevor Sie den Agenten installieren.
 
-![Überprüfen von Azure AD Connect Health](./media/active-directory-aadconnect-health/aadconnect-health-adds-agent-install4.png)
+![Überprüfen von Azure AD Connect Health für AD DS](./media/active-directory-aadconnect-health/aadconnect-health-adds-agent-install4.png)
 
 Um sicherzustellen, dass der Agent installiert wurde, öffnen Sie die Dienste und prüfen Folgendes:
 
@@ -183,6 +182,11 @@ Um sicherzustellen, dass der Agent installiert wurde, öffnen Sie die Dienste un
 Die Dienste werden erst gestartet, wenn die Konfiguration abgeschlossen wurde.
 
 ![Überprüfen von Azure AD Connect Health](./media/active-directory-aadconnect-health/aadconnect-health-adds-agent-install5.png)
+
+## Installieren des Azure AD Connect Health-Agents für AD DS in Server Core 
+Nach der Installation der EXE-Datei können Sie den Registrierungsprozess durchführen, indem Sie den folgenden PowerShell-Befehl verwenden:
+
+`Register-AzureADConnectHealthADDSAgent -Credentials $cred
 
 ## Konfigurieren des Azure AD Connect Health-Agents zur Verwendung eines HTTP-Proxys
 Sie können den Azure AD Connect Health-Agent für die Arbeit mit einem HTTP-Proxy konfigurieren.
@@ -262,4 +266,4 @@ Sie können das Flag -ShowResults im Befehl verwenden, um detaillierte Protokoll
 * [Azure AD Connect Health – FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health: Versionsverlauf](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

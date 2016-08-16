@@ -13,7 +13,7 @@
    ms.devlang="na"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/21/2016"
+   ms.date="08/05/2016"
    ms.author="yurid"/>
 
 # Azure Security Center-Erkennungsfunktionen
@@ -49,12 +49,12 @@ Microsoft verfügt über eine große Menge von Informationen zu globalen Bedrohu
 
 ## Verhaltensanalyse
 
-Die Verhaltensanalyse ist ein Verfahren, bei dem Daten mit einer Sammlung bekannter Muster analysiert und verglichen werden. Bei diesen Mustern handelt es sich aber nicht nur um einfache Signaturen. Sie werden anhand von komplexen Machine Learning-Algorithmen bestimmt, die auf große Datasets angewendet werden. Azure Security Center kann die Verhaltensanalyse verwenden, um kompromittierte Ressourcen basierend auf der Analyse der Protokolle von virtuellen Computern, virtuellen Netzwerkgeräten, Fabrics und anderen Quellen zu identifizieren.
+Die Verhaltensanalyse ist ein Verfahren, bei dem Daten mit einer Sammlung bekannter Muster analysiert und verglichen werden. Bei diesen Mustern handelt es sich aber nicht nur um einfache Signaturen. Sie werden anhand von komplexen Machine Learning-Algorithmen bestimmt, die auf große Datasets angewendet werden. Außerdem werden sie anhand einer sorgfältigen Analyse von schädlichem Verhalten durch erfahrene Analysten bestimmt. Azure Security Center kann die Verhaltensanalyse verwenden, um kompromittierte Ressourcen basierend auf der Analyse der Protokolle von virtuellen Computern, virtuellen Netzwerkgeräten, Fabric-Protokolle, Absturzabbilder und anderen Quellen zu identifizieren.
 
 Außerdem ist eine Korrelation mit anderen Signalen vorhanden, damit weitere Beweise für eine größere Aktion ermittelt werden können. So können Ereignisse identifiziert werden, die mit vorhandenen Indikatoren für eine Kompromittierung übereinstimmen. Beispiele hierfür sind:
 
 - **Ausführung von verdächtigen Prozessen**: Angreifer nutzen verschiedene Verfahren, um beim Ausführen von Schadsoftware nicht erkannt zu werden. Beispielsweise können Angreifer Schadsoftware die gleichen Namen wie reguläre Systemdateien geben, diese dann aber an anderen Speicherorten ablegen, einen Namen verwenden, der dem Namen einer unwichtigen Datei stark ähnelt, oder die wahre Erweiterung der Datei verschleiern. Security Center modelliert Prozessverhalten und überwacht die Prozessausführung, um Ausreißer dieser Art zu erkennen.
-- **Versteckte Schadsoftware und fehlgeschlagene Ausnutzung von Schwachstellen**: Professionelle Schadsoftware kann herkömmliche Antischadsoftware-Produkte umgehen, indem entweder nie auf den Datenträger geschrieben wird oder auf dem Datenträger gespeicherte Softwarekomponenten verschlüsselt werden. Schadsoftware dieser Art kann aber mithilfe der Arbeitsspeicheranalyse erkannt werden, da die Schadsoftware Spuren im Arbeitsspeicher hinterlassen muss, um funktionieren zu können. Beim Absturz von Software wird in einem Absturzabbild ein Teil des Arbeitsspeichers zum Zeitpunkt des Absturzes erfasst. Indem die Arbeitsspeicherdaten im Absturzabbild analysiert werden, kann Azure Security Center Verfahren erkennen, die für folgende Zwecke verwendet werden: Ausnutzen von Schwachstellen in Software, Zugreifen auf vertrauliche Daten und Bewegen auf einem kompromittierten Computer ohne Auswirkung auf die Leistung des Computers.
+- **Versteckte Schadsoftware und versuchte Ausnutzung von Schwachstellen**: Professionelle Schadsoftware kann herkömmliche Antischadsoftware-Produkte umgehen, indem entweder nie auf den Datenträger geschrieben wird oder auf dem Datenträger gespeicherte Softwarekomponenten verschlüsselt werden. Schadsoftware dieser Art kann aber mithilfe der Arbeitsspeicheranalyse erkannt werden, da die Schadsoftware Spuren im Arbeitsspeicher hinterlassen muss, um funktionieren zu können. Beim Absturz von Software wird in einem Absturzabbild ein Teil des Arbeitsspeichers zum Zeitpunkt des Absturzes erfasst. Indem die Arbeitsspeicherdaten im Absturzabbild analysiert werden, kann Azure Security Center Verfahren erkennen, die für folgende Zwecke verwendet werden: Ausnutzen von Schwachstellen in Software, Zugreifen auf vertrauliche Daten und Bewegen auf einem kompromittierten Computer ohne Auswirkung auf die Leistung des Computers.
 - **Seitwärtsbewegung und interne Aufklärung**: Um sich in einem kompromittierten Netzwerk aufhalten und wertvolle Daten lokalisieren und abschöpfen zu können, versuchen Angreifer häufig, vom kompromittierten Computer aus eine Seitwärtsbewegung auf andere Computer in demselben Netzwerk auszuführen. Security Center überwacht die Verarbeitungs- und Anmeldeaktivitäten, um versuchte Aktionen aufzudecken, mit denen Angreifer ihre Basis im Netzwerk ausbauen möchten, z.B. Ausführung von Remotebefehlen im Netzwerk und Kontoauflistung.
 - **Schädliche PowerShell-Skripts**: PowerShell wird von Angreifern verwendet, um mit den unterschiedlichsten Zielen Schadcode auf virtuellen Zielcomputern auszuführen. Security Center untersucht die PowerShell-Aktivitäten auf Beweise für verdächtige Vorgänge.
 - **Ausgehende Angriffe**: Angreifer nehmen häufig Cloudressourcen ins Visier, um diese Ressourcen zur Durchführung weiterer Angriffe zu nutzen. Kompromittierte virtuelle Computer können beispielsweise verwendet werden, um Brute-Force-Angriffe auf andere virtuelle Computer zu starten, Spam zu senden oder nach offenen Ports und anderen Geräten im Internet zu suchen. Indem Machine Learning-Verfahren auf den Netzwerkdatenverkehr angewendet werden, kann Security Center erkennen, wenn ausgehende Netzwerkkommunikation außerhalb der Norm liegt. In Bezug auf Spam korreliert Security Center außerdem ungewöhnlichen E-Mail-Datenverkehr mit Informationen aus Office 365, um zu ermitteln, ob die E-Mail vermutlich schädlich oder das Ergebnis einer legitimen E-Mail-Kampagne ist.
@@ -76,7 +76,7 @@ Für Azure Security Center arbeiten Sicherheitsforschungs- und Data Science-Team
 
 Diese kombinierten Verfahren führen zu neuen und verbesserten Erkennungsergebnissen, von denen Sie sofort profitieren können. Sie müssen dabei nichts unternehmen.
 
-## Nächste Schritte
+## Siehe auch
 In diesem Dokument wurde beschrieben, wie die Erkennungsfunktionen von Azure Security Center funktionieren. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
 - [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md)
@@ -86,4 +86,4 @@ In diesem Dokument wurde beschrieben, wie die Erkennungsfunktionen von Azure Sec
 - [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 - [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

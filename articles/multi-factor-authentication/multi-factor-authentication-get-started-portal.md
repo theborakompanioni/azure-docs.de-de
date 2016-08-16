@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="05/16/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # Bereitstellen des Benutzerportals für den Azure Multi-Factor Authentication-Server
@@ -30,12 +30,12 @@ Es können Benutzerportaladministratoren eingerichtet werden, und ihnen kann die
 
 Die folgenden Voraussetzungen müssen erfüllt sein, um das Benutzerportal auf demselben Server wie der Azure Multi-Factor Authentication-Server zu installieren:
 
-- IIS, einschließlich ASP.NET und IIS 6-Metabasiskompatibilität (für IIS 7 oder höher), muss installiert sein. 
+- IIS, einschließlich ASP.NET und IIS 6-Metabasiskompatibilität (für IIS 7 oder höher), muss installiert sein.
 - Der angemeldete Benutzer muss über Administratorrechte für den Computer und ggf. die Domäne verfügen. Der Grund dafür ist, dass das Konto Berechtigungen zum Erstellen von Active Directory-Sicherheitsgruppen benötigt.
 
 ### So stellen Sie das Benutzerportal für den Azure Multi-Factor Authentication-Server bereit
 
-1. Klicken Sie auf dem Azure Multi-Factor Authentication-Server im linken Menü auf das Symbol für das Benutzerportal und dann auf die Schaltfläche „Benutzerportal installieren“. 
+1. Klicken Sie auf dem Azure Multi-Factor Authentication-Server im linken Menü auf das Symbol für das Benutzerportal und dann auf die Schaltfläche „Benutzerportal installieren“.
 1. Klicken Sie auf Weiter.
 1. Klicken Sie auf Weiter.
 1. Wenn der Computer zu einer Domäne gehört und die Active Directory-Konfiguration zum Sichern der Kommunikation zwischen dem Benutzerportal und dem Azure Multi-Factor Authentication-Dienst unvollständig ist, wird der Schritt „Active Directory“ angezeigt. Klicken Sie auf die Schaltfläche "Weiter", um diese Konfiguration automatisch abzuschließen.
@@ -80,7 +80,7 @@ Wenn das Azure Multi-Factor Authentication-Webdienst-SDK nicht bereits auf dem A
 Beachten Sie folgende Punkte, bevor Sie das Benutzerportal auf einem anderen Server installieren:
 
 - Es ist hilfreich, auf dem mit dem Internet verbundenen Webserver einen Webbrowser zu öffnen und die URL des Webdienst-SDK aufzurufen, die in die Datei "Web.config" eingegeben wurde. Wenn der Webdienst erfolgreich im Browser aufgerufen werden kann, werden Sie zur Eingabe von Anmeldeinformationen aufgefordert. Geben Sie den Benutzernamen und das Kennwort, die in die Datei "Web.config" eingegeben wurden, genau wie in der Datei angezeigt ein. Stellen Sie sicher, dass keine Zertifikatswarnungen oder -fehler angezeigt werden.
-- Wenn sich vor dem Benutzerportal-Webserver ein Reverseproxy oder eine Firewall befindet und SSL-Abladung durchführt, können Sie die Datei „web.config“ für das Benutzerportal bearbeiten und dem <appSettings>-Abschnitt den folgenden Schlüssel hinzufügen, damit das Benutzerportal HTTP anstelle von HTTPS verwenden kann. <add key="SSL_REQUIRED" value="false"/>
+- Wenn sich vor dem Benutzerportal-Webserver ein Reverseproxy oder eine Firewall befindet und SSL-Abladung durchführt, können Sie die Datei „web.config“ für das Benutzerportal bearbeiten und dem Abschnitt <appSettings> den folgenden Schlüssel hinzufügen. Das Benutzerportal kann dann „http“ anstelle von „https. <add key="SSL\_REQUIRED" value="false"/>“ verwenden.
 
 #### So installieren Sie das Benutzerportal
 
@@ -89,7 +89,7 @@ Beachten Sie folgende Punkte, bevor Sie das Benutzerportal auf einem anderen Ser
 3. Führen Sie die Installationsdatei "MultiFactorAuthenticationUserPortalSetup64" aus, und ändern Sie ggf. den Namen der Website und des virtuellen Verzeichnisses.
 4. Navigieren Sie nach Abschluss der Installation des Benutzerportals zu "C:\\inetpub\\wwwroot\\MultiFactorAuth" (oder zum entsprechenden Verzeichnis basierend auf dem Namen des virtuellen Verzeichnisses), und bearbeiten Sie die Datei "Web.config".
 5. Suchen Sie den Schlüssel USE\_WEB\_SERVICE\_SDK, und ändern Sie den Wert von "false" in "true". Suchen Sie die Schlüssel WEB\_SERVICE\_SDK\_AUTHENTICATION\_USERNAME und WEB\_SERVICE\_SDK\_AUTHENTICATION\_PASSWORD, und legen Sie die Werte auf den Benutzernamen und das Kennwort des Dienstkontos fest, das Mitglied der Sicherheitsgruppe "PhoneFactor Admins" ist (siehe oben im Abschnitt zu den Anforderungen). Geben Sie den Benutzernamen und das Kennwort zwischen den Anführungszeichen am Ende der Zeile ein (value=""/>). Es wird empfohlen, einen qualifizierten Benutzernamen (z. B. „Domäne\\Benutzername“ oder „Computer\\Benutzername“) zu verwenden.
-6. Suchen Sie die Einstellung "pfup\_pfwssdk\_PfWsSdk", und ändern Sie den Wert "http://localhost:4898/PfWsSdk.asmx" in die URL des Webdienst-SDK, das auf dem Azure Multi-Factor Authentication-Server ausgeführt wird (z. B. https://computer1.domain.local/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx)). Für diese Verbindung wird SSL verwendet. Deshalb müssen Sie auf das Webdienst-SDK mit dem Servernamen und nicht mit der IP-Adresse verweisen, da das SSL-Zertifikat für den Servernamen ausgestellt wurde und die URL dem Namen des Zertifikats entsprechen muss. Wenn der Servername nicht als IP-Adresse des Servers mit Internetzugriff aufgelöst wird, fügen Sie der HOSTS-Datei auf diesem Server einen Eintrag hinzu, um den Namen des Azure Multi-Factor Authentication-Servers seiner IP-Adresse zuzuordnen. Speichern Sie die Datei "Web.config", nachdem Änderungen vorgenommen wurden.
+6. Suchen Sie die Einstellung „pfup\_pfwssdk\_PfWsSdk“, und ändern Sie den Wert „http://localhost:4898/PfWsSdk.asmx“ in die URL des Webdienst-SDK, das auf dem Azure Multi-Factor Authentication-Server ausgeführt wird (z.B. https://computer1.domain.local/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx). Für diese Verbindung wird SSL verwendet. Deshalb müssen Sie auf das Webdienst-SDK mit dem Servernamen und nicht mit der IP-Adresse verweisen, da das SSL-Zertifikat für den Servernamen ausgestellt wurde und die URL dem Namen des Zertifikats entsprechen muss. Wenn der Servername nicht als IP-Adresse des Servers mit Internetzugriff aufgelöst wird, fügen Sie der HOSTS-Datei auf diesem Server einen Eintrag hinzu, um den Namen des Azure Multi-Factor Authentication-Servers seiner IP-Adresse zuzuordnen. Speichern Sie die Datei "Web.config", nachdem Änderungen vorgenommen wurden.
 7. Wenn die Website, unter der das Benutzerportal installiert wurde (z. B. die Standardwebsite), noch nicht mit einem öffentlich signierten Zertifikat gebunden wurde, installieren Sie das Zertifikat auf dem Server, falls es nicht bereits installiert wurde. Öffnen Sie dann den IIS-Manager, und binden Sie das Zertifikat an die Website.
 8. Öffnen Sie auf einem beliebigen Computer einen Webbrowser, und navigieren Sie zu der URL, unter der das Benutzerportal installiert wurde (z. B. https://www.publicwebsite.com/MultiFactorAuth). Stellen Sie sicher, dass keine Zertifikatswarnungen oder -fehler angezeigt werden.
 
@@ -189,4 +189,4 @@ Die Selbstregistrierung des Benutzers ist jetzt abgeschlossen, und der Benutzer 
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

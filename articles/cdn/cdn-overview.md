@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="07/28/2016"
+	ms.date="08/09/2016"
 	ms.author="casoper"/>
 
 # Übersicht über das Azure Content Delivery Network (CDN)
@@ -39,7 +39,7 @@ Die Verwendung des CDN zum Zwischenspeichern von Websiteobjekten bietet folgende
 
 3. Der Ursprung gibt die Datei an den Edgeserver zurück, und zwar einschließlich der optionalen HTTP-Header, in denen die Lebensdauer (Time-To-Live, TTL) beschrieben wird.
 
-4. Der Edgeserver speichert die Datei zwischen und gibt sie an die ursprüngliche anfordernde Person (Alice) zurück. Die Datei bleibt auf dem Edgeserver so lange zwischengespeichert, bis die Lebensdauer abläuft. Falls vom Ursprung kein TTL-Wert angegeben wurde, wird der Standardwert von 7 Tagen verwendet.
+4. Der Edgeserver speichert die Datei zwischen und gibt sie an die ursprüngliche anfordernde Person (Alice) zurück. Die Datei bleibt auf dem Edgeserver so lange zwischengespeichert, bis die Lebensdauer abläuft. Falls vom Ursprung kein TTL-Wert angegeben wurde, wird der Standardwert von sieben Tagen verwendet.
 
 5. Weitere Benutzer (z.B. Bob) können die Datei dann über dieselbe URL anfordern und werden ggf. auch an denselben POP geleitet.
 
@@ -57,6 +57,7 @@ Es gibt drei Azure CDN-Produkte: **Azure CDN Standard von Akamai**, **Azure CDN 
 | Lastenausgleich | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | DDoS-Schutz | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | Dualer IPv4-/IPv6-Stapel | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| [HTTP/2](https://msdn.microsoft.com/library/mt762901.aspx) | **&#x2713;** | | |
 | [Unterstützung benutzerdefinierter Domänennamen](cdn-map-content-to-custom-domain.md) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | [Zwischenspeicherung von Abfragezeichenfolgen](cdn-query-string.md) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | [Länderfilter](cdn-restrict-access-by-country.md) | | **&#x2713;** | **&#x2713;** |
@@ -82,4 +83,4 @@ Erfahren Sie, wie Sie Azure CDN mit [.NET](./cdn-app-dev-net.md) oder [Node.js](
 
 Preisinformationen finden Sie unter [Content Delivery Network (CDN) – Preise](https://azure.microsoft.com/pricing/details/cdn/).
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

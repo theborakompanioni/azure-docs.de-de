@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/25/2016"
+	ms.date="08/09/2016"
 	ms.author="sdanie"/>
 
 # Hinzufügen der Zwischenspeicherung zum Verbessern der Leistung in Azure API Management
@@ -40,7 +40,7 @@ Klicken Sie zunächst im klassischen Azure-Portal für Ihren API Management-Dien
 
 Klicken Sie auf der linken Seite im Menü **API Management** auf **APIs**, und klicken Sie anschließend auf **Echo API**.
 
-![Echo API][api-management-echo-api]
+![Echo-API][api-management-echo-api]
 
 Klicken Sie auf die Registerkarte **Operationen**, und klicken Sie dann auf die Operation **GET Resource (cached)** in der Liste der **Operationen**.
 
@@ -99,7 +99,7 @@ Um die Zwischenspeicherung in Aktion zu sehen, können Sie die Operation im Entw
 
 Klicken Sie auf **APIs** im Hauptmenü, und wählen Sie dann **Echo API** aus.
 
-![Echo API][api-management-apis-echo-api]
+![Echo-API][api-management-apis-echo-api]
 
 >Falls nur eine API konfiguriert oder für Ihr Konto sichtbar ist, können Sie auf APIs klicken, um direkt zu den Operationen für diese API zu gelangen.
 
@@ -163,4 +163,4 @@ Geben Sie **25** in das Feld **param2** ein, und klicken Sie dann auf **HTTP Get
 [Call an operation and test the caching]: #test-operation
 [Next steps]: #next-steps
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

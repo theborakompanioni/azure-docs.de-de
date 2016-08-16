@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # Erste Schritte mit dem Webdienst der mobilen App für den MFA-Server
@@ -51,9 +51,9 @@ Wenn das Azure Multi-Factor Authentication-Webdienst-SDK nicht bereits auf dem A
 ## Installieren des Webdiensts der mobilen App
 Beachten Sie folgende Punkte, bevor Sie den Webdienst der mobilen App installieren:
 
-- Wenn das Azure Multi-Factor Authentication-Benutzerportal bereits auf dem Server mit Internetverbindung installiert ist, können der Benutzername, das Kennwort und die URL für das Webdienst-SDK aus der Datei "Web.config" des Benutzerportals kopiert werden. 
+- Wenn das Azure Multi-Factor Authentication-Benutzerportal bereits auf dem Server mit Internetverbindung installiert ist, können der Benutzername, das Kennwort und die URL für das Webdienst-SDK aus der Datei "Web.config" des Benutzerportals kopiert werden.
 - Es ist hilfreich, auf dem mit dem Internet verbundenen Webserver einen Webbrowser zu öffnen und die URL des Webdienst-SDK aufzurufen, die in die Datei "Web.config" eingegeben wurde. Wenn der Webdienst erfolgreich im Browser aufgerufen werden kann, werden Sie zur Eingabe von Anmeldeinformationen aufgefordert. Geben Sie den Benutzernamen und das Kennwort, die in die Datei "Web.config" eingegeben wurden, genau wie in der Datei angezeigt ein. Stellen Sie sicher, dass keine Zertifikatswarnungen oder -fehler angezeigt werden.
-- Wenn sich vor dem Webserver mit dem Webdienst der mobilen App ein Reverseproxy oder eine Firewall befindet und SSL-Abladung durchführt, können Sie die Datei "Web.config" für das Benutzerportal bearbeiten und dem <appSettings>-Abschnitt den folgenden Schlüssel hinzufügen, damit der Webdienst der mobilen App HTTP anstelle von HTTPS verwenden kann. SSL ist aber weiterhin für die Verbindung von der mobilen Anwendung mit der Firewall/dem Reverseproxy erforderlich. <add key="SSL_REQUIRED" value="false"/> 
+- Wenn sich vor dem Webserver mit dem Webdienst der mobilen App ein Reverseproxy oder eine Firewall befindet und SSL-Abladung durchführt, können Sie die Datei „web.config“ für das Benutzerportal bearbeiten und dem Abschnitt „<appSettings>“ den folgenden Schlüssel hinzufügen, damit der Webdienst der mobilen App HTTP anstelle von HTTPS verwenden kann. SSL ist aber weiterhin für die Verbindung von der mobilen Anwendung mit der Firewall/dem Reverseproxy erforderlich. <add key="SSL\_REQUIRED" value="false"/>
 
 ### So installieren Sie den Webdienst der mobilen App
 
@@ -83,11 +83,11 @@ Nachdem Sie den Webdienst der mobilen App installiert haben, müssen Sie den Azu
 2. Aktivieren Sie das Kontrollkästchen "Aktivierung der mobilen Anwendung durch Benutzer zulassen".
 3. Aktivieren Sie das Kontrollkästchen "Benutzerregistrierung zulassen".
 4. Klicken Sie auf das Symbol "Mobile App".
-5. Geben Sie die URL, die für das virtuelle Verzeichnis verwendet wird, das bei der Installation von Azure Multi-Factor AuthenticationMobileAppWebServiceSetup erstellt wurde. Ein Kontoname kann in das Eingabefeld eingegeben werden. Dieser Firmenname wird in der mobilen App angezeigt. Wenn Sie das Feld leer lassen, wird der Name des Anbieters für mehrstufige Authentifizierung angezeigt, der im Azure-Verwaltungsportal erstellt wurde. 
+5. Geben Sie die URL, die für das virtuelle Verzeichnis verwendet wird, das bei der Installation von Azure Multi-Factor AuthenticationMobileAppWebServiceSetup erstellt wurde. Ein Kontoname kann in das Eingabefeld eingegeben werden. Dieser Firmenname wird in der mobilen App angezeigt. Wenn Sie das Feld leer lassen, wird der Name des Anbieters für mehrstufige Authentifizierung angezeigt, der im Azure-Verwaltungsportal erstellt wurde.
 
 
 
 <center>![Setup](./media/multi-factor-authentication-get-started-server-webservice/mobile.png)</center>
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

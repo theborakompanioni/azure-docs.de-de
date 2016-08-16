@@ -63,7 +63,7 @@ Dadurch werden die Anforderungsüberwachung, die Nachverfolgung von Ausnahmefehl
 
 ```javascript
 
-import appInsights = require("applicationinsights");
+var appInsights = require("applicationinsights");
 appInsights.setup("<instrumentation_key>").start();
 ```
 
@@ -84,7 +84,7 @@ Kehren Sie zum [Azure-Portal](https://portal.azure.com) zurück, und navigieren 
 
 Suchen Sie nach Daten auf der Übersichtsseite. Zuerst sehen Sie lediglich einen oder zwei Punkte. Zum Beispiel:
 
-![Klicken Sie, um weitere Daten anzuzeigen](./media/app-insights-asp-net-manual/12-first-perf.png)
+![Klicken Sie, um weitere Daten anzuzeigen.](./media/app-insights-asp-net-manual/12-first-perf.png)
 
 Klicken Sie sich durch ein beliebiges Diagramm, um ausführlichere Metriken anzuzeigen. [Weitere Informationen zu Metriken.][perf]
 
@@ -224,4 +224,4 @@ server.on("listening", () => {
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0810_2016-->

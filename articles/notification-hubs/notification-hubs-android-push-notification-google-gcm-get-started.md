@@ -33,7 +33,7 @@ Den vollständigen Code für dieses Tutorial können Sie [hier](https://github.c
 
 ##Voraussetzungen
 
-> [AZURE.IMPORTANT] Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fde-DE%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started).
+> [AZURE.IMPORTANT] Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fde-DE%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started).
 
 Zusätzlich zum oben erwähnten aktiven Azure-Konto ist für dieses Tutorial nur noch die aktuelle Version von [Android Studio](http://go.microsoft.com/fwlink/?LinkId=389797) erforderlich.
 
@@ -232,7 +232,7 @@ Der Notification Hub ist jetzt für die Arbeit mit GCM konfiguriert, und Sie bes
 
 		                // If you want to use tags...
 						// Refer to : https://azure.microsoft.com/de-DE/documentation/articles/notification-hubs-routing-tag-expressions/
-		                // regID = hub.register(token, "tag1,tag2").getRegistrationId();
+		                // regID = hub.register(token, "tag1", "tag2").getRegistrationId();
 
 		                resultString = "Registered Successfully - RegId : " + regID;
 		                Log.i(TAG, resultString);		
@@ -726,4 +726,4 @@ Weitere allgemeine Informationen zu Notification Hubs finden Sie in unserem [Not
 [Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten]: notification-hubs-aspnet-backend-android-breaking-news.md
 [Azure-Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0810_2016-->

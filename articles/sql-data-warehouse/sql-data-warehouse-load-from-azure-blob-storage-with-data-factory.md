@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/29/2016"
+   ms.date="08/08/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Laden von Daten aus dem Azure-Blobspeicher in Azure SQL Data Warehouse (Azure Data Factory)
@@ -239,4 +239,4 @@ Diese Themen enthalten ausführliche Informationen zu Azure Data Factory. Darin 
 [Azure-Portal]: https://portal.azure.com
 [Laden Sie Beispieldaten herunter]: https://migrhoststorage.blob.core.windows.net/adfsample/FactInternetSales.csv
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # Windows-Authentifizierung und Azure Multi-Factor Authentication-Server
@@ -22,7 +22,7 @@ Mit dem Abschnitt für die Windows-Authentifizierung kann der Administrator die 
 
 -  Ein Neustart ist erforderlich, bevor Azure Multi-Factor Authentication für Terminaldienste wirksam wird.
 -  Wenn "Multi-Factor Authentication-Benutzerabgleich erforderlich" aktiviert ist und Sie nicht in der Benutzerliste aufgeführt sind, können Sie sich nach dem Neustart des Computers nicht anmelden.
--  Vertrauenswürdige IPs hängen davon ab, ob die Anwendung der Client-IP die Authentifizierung bereitstellen kann. Derzeit werden nur Terminaldienste unterstützt.  
+-  Vertrauenswürdige IPs hängen davon ab, ob die Anwendung der Client-IP die Authentifizierung bereitstellen kann. Derzeit werden nur Terminaldienste unterstützt.
 
 
 
@@ -46,7 +46,7 @@ Mit dem Abschnitt für die Windows-Authentifizierung kann der Administrator die 
 7. Klicken Sie auf die Schaltfläche "Hinzufügen".
 8. Wählen Sie "Einzelne IP-Adresse", wenn Sie eine einzelne IP-Adresse überspringen möchten.
 9. Wählen Sie die "IP-Bereich", wenn Sie einen gesamten IP-Bereich überspringen möchten. Beispiel 10.63.193.1-10.63.193.100.
-10. Wählen Sie "Subnetz", wenn Sie einen IP-Bereich mithilfe der Subnetznotation angeben möchten. Geben Sie die Start-IP des Subnetzes an, und wählen Sie die entsprechende Netzmaske aus der Dropdown-Liste. 
+10. Wählen Sie "Subnetz", wenn Sie einen IP-Bereich mithilfe der Subnetznotation angeben möchten. Geben Sie die Start-IP des Subnetzes an, und wählen Sie die entsprechende Netzmaske aus der Dropdown-Liste.
 11. Klicken Sie auf die Schaltfläche "OK".
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

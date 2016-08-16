@@ -1,40 +1,49 @@
-Sie können eine VPN-Verbindung im Azure-Portal überprüfen, indem Sie zu **Virtuelle Netzwerkgateways** navigieren, ***auf den Gatewaynamen klicken*** und dann **Einstellungen** und schließlich **Verbindungen** auswählen. Wenn Sie den Namen der Verbindung auswählen, können Sie weitere Informationen zur Verbindung anzeigen. Im folgenden Beispiel ist keine Verbindung hergestellt, und es werden keine Daten übertragen.
+### So überprüfen Sie Ihre Verbindung mithilfe von PowerShell
 
+Mit dem `Get-AzureRmVirtualNetworkGatewayConnection`-Cmdlet (mit oder ohne `-Debug`) können Sie überprüfen, ob die Verbindung erfolgreich hergestellt wurde.
 
-![Überprüfen der Verbindung](./media/vpn-gateway-verify-connection-rm-include/connectionverify450.png)
+1. Verwenden Sie das folgende Cmdlet-Beispiel, und konfigurieren Sie die Werte so, dass sie Ihren eigenen Werten entsprechen. Wählen Sie ggf. die Option „A“ für „Alle ausführen“ aus. In dem Beispiel verweist `-Name` auf den Namen der Verbindung, die Sie erstellt haben und testen möchten.
 
+		Get-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnection -ResourceGroupName MyRG
 
-### So überprüfen Sie Ihre Verbindung mithilfe der PowerShell
+2. Sehen Sie sich nach Abschluss des Cmdlets die Werte an. Im Beispiel weiter unten ist der Verbindungsstatus als „Connected“ (Verbunden) angegeben, und Sie sehen die Eingangs- und Ausgangsbytes.
 
-Sie können auch mit `Get-AzureRmVirtualNetworkGatewayConnection –Debug` überprüfen, ob die Verbindung eingerichtet wurde. Sie können das folgende Cmdlet-Beispiel verwenden und die Werte so konfigurieren, dass sie Ihren eigenen Werten entsprechen. Wählen Sie bei Aufforderung die Option „A“ aus, um alle auszuführen.
+		Body:
+		{
+		  "name": "MyGWConnection",
+		  "id":
+		"/subscriptions/086cfaa0-0d1d-4b1c-94544-f8e3da2a0c7789/resourceGroups/MyRG/providers/Microsoft.Network/connections/MyGWConnection",
+		  "properties": {
+		    "provisioningState": "Succeeded",
+		    "resourceGuid": "1c484f82-23ec-47e2-8cd8-231107450446b",
+		    "virtualNetworkGateway1": {
+		      "id":
+		"/subscriptions/086cfaa0-0d1d-4b1c-94544-f8e3da2a0c7789/resourceGroups/MyRG/providers/Microsoft.Network/virtualNetworkGa
+		teways/vnetgw1"
+		    },
+		    "localNetworkGateway2": {
+		      "id":
+		"/subscriptions/086cfaa0-0d1d-4b1c-94544-f8e3da2a0c7789/resourceGroups/MyRG/providers/Microsoft.Network/localNetworkGate
+		ways/LocalSite"
+		    },
+		    "connectionType": "IPsec",
+		    "routingWeight": 10,
+		    "sharedKey": "abc123",
+		    "connectionStatus": "Connected",
+		    "ingressBytesTransferred": 33509044,
+		    "egressBytesTransferred": 4142431
+		  }
 
-	Get-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg -Debug
+### So überprüfen Sie Ihre Verbindung mithilfe des Azure-Portals
 
- Nachdem der Cmdlet-Vorgang abgeschlossen ist, können Sie einen Bildlauf durchführen, um die Werte anzuzeigen. Im Beispiel unten wird der Verbindungsstatus als *Verbunden* angegeben, und Sie sehen die Eingangs- und Ausgangsbytes.
+Navigieren Sie im Azure-Portal zur gewünschten Verbindung, um den Verbindungsstatus anzuzeigen. Dazu gibt es verschiedene Möglichkeiten. Im Anschluss folgt eine davon.
 
-	Body:
-	{
-	  "name": "localtovon",
-	  "id":
-	"/subscriptions/086cfaa0-0d1d-4b1c-9455-f8e3da2a0c7789/resourceGroups/testrg/providers/Microsoft.Network/connections/loca
-	ltovon",
-	  "properties": {
-	    "provisioningState": "Succeeded",
-	    "resourceGuid": "1c484f82-23ec-47e2-8cd8-231107450446b",
-	    "virtualNetworkGateway1": {
-	      "id":
-	"/subscriptions/086cfaa0-0d1d-4b1c-9455-f8e3da2a0c7789/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworkGa
-	teways/vnetgw1"
-	    },
-	    "localNetworkGateway2": {
-	      "id":
-	"/subscriptions/086cfaa0-0d1d-4b1c-9455-f8e3da2a0c7789/resourceGroups/testrg/providers/Microsoft.Network/localNetworkGate
-	ways/LocalSite"
-	    },
-	    "connectionType": "IPsec",
-	    "routingWeight": 10,
-	    "sharedKey": "abc123",
-	    "connectionStatus": "Connected",
-	    "ingressBytesTransferred": 33509044,
-	    "egressBytesTransferred": 4142431
-	  }
+1. Navigieren Sie im [Azure-Portal](http://portal.azure.com) zu **Virtuelle Netzwerkgateways**. Klicken Sie auf den Namen Ihres Gateways.
+2. Klicken Sie im Bereich unter **Einstellungen** auf **Verbindungen**. Der Status der einzelnen Verbindungen wird angezeigt.
+3. Klicken Sie auf den Namen der Verbindung, um weitere Informationen zur Verbindung anzuzeigen. Beachten Sie den **Verbindungsstatus** auf der Zusammenfassungsseite für die Verbindung. Der Status lautet „Erfolgreich“ und „Verbunden“, wenn die Verbindung erfolgreich hergestellt wurde. Die Angaben unter **Eingehende Daten** und **Ausgehende Daten** geben Aufschluss über den Datenfluss.
+
+	Im folgenden Beispiel lautet der Verbindungsstatus**Nicht verbunden**:
+
+	![Überprüfen der Verbindung](./media/vpn-gateway-verify-connection-rm-include/connectionverify450.png)
+
+<!---HONumber=AcomDC_0810_2016-->

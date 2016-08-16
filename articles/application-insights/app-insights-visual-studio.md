@@ -98,15 +98,16 @@ Wählen Sie zum Ermitteln von Anomalien in Ihren Daten in der Dropdownliste „A
 
 ![Trends](./media/app-insights-visual-studio/51.png)
 
+[Weitere Informationen zu Trends](app-insights-visual-studio-trends.md)
 
 ## Wie geht es weiter?
 
 ||
 |---|---
 |**[Hinzufügen weiterer Daten](app-insights-asp-net-more.md)**<br/>Überwachen Sie Nutzung, Verfügbarkeit, Abhängigkeiten und Ausnahmen. Integrieren Sie Ablaufverfolgungen aus Protokollierungsframeworks. Schreiben Sie benutzerdefinierte Telemetriedaten. | ![Visual Studio](./media/app-insights-asp-net/64.png)
-|**[Navigation und Dashboards im Application Insights-Portal](app-insights-dashboards.md)**<br/> Enthält Informationen zu Dashboards, leistungsstarken Diagnose- und Analysetools, Warnungen, eine Livekarte der Abhängigkeiten Ihrer Anwendung und zum Export von Telemetriedaten. |![Visual Studio](./media/app-insights-asp-net/62.png)
+|**[Navigation und Dashboards im Application Insights-Portal](app-insights-dashboards.md)**<br/>Enthält Informationen zu Dashboards, leistungsstarken Diagnose- und Analysetools, Warnungen und zum Export von Telemetriedaten sowie eine Livekarte der Abhängigkeiten Ihrer Anwendung. |![Visual Studio](./media/app-insights-asp-net/62.png)
 
 
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0810_2016-->

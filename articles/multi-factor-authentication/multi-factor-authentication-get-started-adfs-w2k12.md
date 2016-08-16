@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/12/2016"
+	ms.date="08/04/2016"
 	ms.author="billmath"/>
 
 
@@ -85,4 +85,4 @@ An diesem Punkt ist Multi-Factor Authentication-Server als zusätzlicher Authent
 
 Führen Sie das Skript „\\Programme\\Multi-Factor Authentication Server\\Register-MultiFactorAuthenticationAdfsAdapter.ps1“ in PowerShell aus, um den Adapter zu registrieren. Der Adapter wird als "WindowsAzureMultiFactorAuthentication" registriert. Sie müssen den AD FS-Dienst neu starten, damit die Registrierung wirksam wird.
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

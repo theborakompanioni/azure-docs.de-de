@@ -3,8 +3,8 @@
 	description="Mithilfe von Azure Backup und Recovery Services können Sie Daten und Anwendungen von Windows-Servern, Windows-Clientcomputern, System Center DPM-Servern oder virtuellen Azure-VMs sichern und wiederherstellen."
 	services="backup"
 	documentationCenter=""
-	authors="Jim-Parker"
-	manager="jwhit"
+	authors="markgalioto"
+	manager="cfreeman"
 	editor="tysonn"
 	keywords="Sichern und Wiederherstellen; Wiederherstellungsdienste; Sicherungslösungen"/>
 
@@ -42,7 +42,7 @@ Als eine hybride Sicherungslösung besteht Azure Backup aus mehreren Komponenten
 
 ### Bereitstellungsszenarien
 
-| Komponente | Bereitstellung in Azure möglich? | Lokale Bereitstellung möglich? | Unterstützter Zielspeicher|
+| Component | Bereitstellung in Azure möglich? | Lokale Bereitstellung möglich? | Unterstützter Zielspeicher|
 | --- | --- | --- | --- |
 | Azure Backup-Agent | <p>**Ja**</p> <p>Der Azure Backup-Agent kann auf allen virtuellen Windows Server-Computern bereitgestellt werden, die in Azure ausgeführt werden.</p> | <p>**Ja**</p> <p>Der Azure Backup-Agent kann auf allen virtuellen Windows Server-Computern oder physischen Computern bereitgestellt werden.</p> | <p>Azure Backup-Tresor</p> |
 | System Center Data Protection Manager (DPM) | <p>**Ja**</p><p>Erfahren Sie mehr über den [Schutz von Workloads in Azure mithilfe von System Center DPM](http://blogs.technet.com/b/dpm/archive/2014/09/02/azure-iaas-workload-protection-using-data-protection-manager.aspx).</p> | <p>**Ja**</p> <p>Erfahren Sie mehr zum [Schutz von Workloads und virtuellen Computern im Datencenter](https://technet.microsoft.com/library/hh758173.aspx).</p> | <p>Lokal angefügter Datenträger, </p><p>Azure Backup-Tresor,</p> <p>Band (nur lokal)</p> |
@@ -69,8 +69,7 @@ Als eine hybride Sicherungslösung besteht Azure Backup aus mehreren Komponenten
 | Microsoft SQL Server | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup-Agent),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (enthält Azure Backup-Agent)</p> |
 | Microsoft SharePoint | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup-Agent),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (enthält Azure Backup-Agent)</p> |
 | Microsoft Exchange | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup-Agent),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (enthält Azure Backup-Agent)</p> |
-| Azure IaaS-VMs (Windows) | - | [Azure Backup (VM-Erweiterung)](backup-azure-vms-introduction.md) | 
-| Azure IaaS-VMs (Linux) | - | [Azure Backup (VM-Erweiterung)](backup-azure-vms-introduction.md) |
+| Azure IaaS-VMs (Windows) | - | [Azure Backup (VM-Erweiterung)](backup-azure-vms-introduction.md) | | Azure IaaS-VMs (Linux) | - | [Azure Backup (VM-Erweiterung)](backup-azure-vms-introduction.md) |
 
 ## ARM- und Linux-Unterstützung
 
@@ -105,7 +104,7 @@ In diesen fünf Tabellen wird zusammengefasst, wie Sicherungsfunktionen in jeder
 
 ### Speicher
 
-| Funktion | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure Backup (VM-Erweiterung) |
+| Feature | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure Backup (VM-Erweiterung) |
 | ------- | --- | --- | --- | ---- |
 | Azure Backup-Tresor | ![Ja][green] | ![Ja][green] | ![Ja][green] | ![Ja][green] |
 | Datenträgerspeicher | | ![Ja][green] | ![Ja][green] | |
@@ -131,7 +130,7 @@ Die Deduplizierung wird für System Center DPM und Backup Server unterstützt, w
 
 ### Sicherheit
 
-| Funktion | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure Backup (VM-Erweiterung) |
+| Feature | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure Backup (VM-Erweiterung) |
 | ------- | --- | --- | --- | ---- |
 | Netzwerksicherheit (Azure) | ![Ja][green] |![Ja][green] | ![Ja][green] | ![Teilweise][yellow]|
 | Datensicherheit (in Azure) | ![Ja][green] |![Ja][green] | ![Ja][green] | ![Teilweise][yellow]|
@@ -146,7 +145,7 @@ Für das Sichern virtueller Azure-Computer ist das Einrichten der Verschlüsselu
 
 ### Unterstützte Workloads
 
-| Funktion | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure Backup (VM-Erweiterung) |
+| Feature | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure Backup (VM-Erweiterung) |
 | ------- | --- | --- | --- | ---- |
 | Windows Server-Computer – Dateien und Ordner | ![Ja][green] | ![Ja][green] | ![Ja][green] | |
 | Windows-Clientcomputer – Dateien und Ordner | ![Ja][green] | ![Ja][green] | ![Ja][green] | |
@@ -162,7 +161,7 @@ Für das Sichern virtueller Azure-Computer ist das Einrichten der Verschlüsselu
 
 ### Netzwerk
 
-| Funktion | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure Backup (VM-Erweiterung) |
+| Feature | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure Backup (VM-Erweiterung) |
 | ------- | --- | --- | --- | ---- |
 | Netzwerkkomprimierung (zum Sicherungsserver) | | ![Ja][green] | ![Ja][green] | |
 | Netzwerkkomprimierung (zum Sicherungstresor) | ![Ja][green] | ![Ja][green] | ![Ja][green] | |
@@ -228,4 +227,4 @@ Da diese Tutorials als schnelle Hilfe beim Sichern dienen sollen, wird nur der d
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
 [red]: ./media/backup-introduction-to-azure-backup/red.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->
