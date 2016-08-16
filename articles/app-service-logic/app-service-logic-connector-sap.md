@@ -54,18 +54,21 @@ Ein Connector kann innerhalb einer Logik-App oder direkt aus dem Azure Marketpla
 
 ## Konfigurieren der soeben erstellten SAP-Connector-API-App ##
 
-Navigieren Sie über „Durchsuchen“ -> „API-Apps“ -> <Name der soeben erstellten App-API< zu der soeben erstellten API-App. Sie stellen das folgende Verhalten fest. Die Installation ist unvollständig, da die Hybridverbindung noch nicht hergestellt wurde: ![][2]
+Navigieren Sie über „Durchsuchen“ -> „API-Apps“ -> <Name der soeben erstellten App-API< zu der soeben erstellten API-App. Sie stellen das folgende Verhalten fest. Die Installation ist unvollständig, da die Hybridverbindung noch nicht hergestellt wurde:  
+![][2]
 
 Der SAP-Connector erfordert eine Hybridkonnektivität zum Herstellen einer Verbindung mit einem *beliebigen* SAP-Endpunkt. So richten Sie die Hybridkonnektivität ein
 
 1. Kopieren Sie die primäre Verbindungszeichenfolge.
 2. Klicken Sie auf den Link "Herunterladen und konfigurieren".
 3. Führen Sie den gestarteten Installationsvorgang durch, und geben Sie nach Aufforderung die primäre Verbindungszeichenfolge an.
-4. Sobald der Installationsvorgang abgeschlossen ist, wird ein Dialogfeld wie das Folgende angezeigt: ![][3]
+4. Sobald der Installationsvorgang abgeschlossen ist, wird ein Dialogfeld wie das Folgende angezeigt:  
+![][3]
 
 Weitere Informationen zur [Integration in einen lokalen SAP-Server](app-service-logic-integrate-with-an-on-premise-sap-server.md).
 
-Wenn Sie jetzt erneut zur erstellten API-App wechseln, stellen Sie fest, dass der Hybridverbindungsstatus "Verbunden" lautet: ![][4]
+Wenn Sie jetzt erneut zur erstellten API-App wechseln, stellen Sie fest, dass der Hybridverbindungsstatus "Verbunden" lautet:  
+![][4]
 
 Hinweis: Für den Fall, dass Sie zur sekundären Verbindungszeichenfolge wechseln möchten, führen Sie die Hybrideinrichtung einfach erneut durch, und geben Sie anstelle der primären Verbindungszeichenfolge die sekundäre Verbindungszeichenfolge an.
 
@@ -73,11 +76,14 @@ Hinweis: Für den Fall, dass Sie zur sekundären Verbindungszeichenfolge wechsel
 
 Der SAP-Connector kann nur in einer Logik-App als Aktion/Schritt verwendet werden.
 
-Beim Erstellen/Bearbeiten einer Logik-App wählen Sie die oben erstellte SAP-Connector-API-App. Dadurch werden alle zulässigen Aktionen aufgeführt, die zur Auswahl stehen: ![][5]
+Beim Erstellen/Bearbeiten einer Logik-App wählen Sie die oben erstellte SAP-Connector-API-App. Dadurch werden alle zulässigen Aktionen aufgeführt, die zur Auswahl stehen:  
+![][5]
 
-Nach Auswahl einer Aktion werden die Eingabeparameter für diesen Vorgang aufgelistet. Geben Sie die entsprechenden Werte ein, und klicken Sie auf das Häkchensymbol: ![][6]
+Nach Auswahl einer Aktion werden die Eingabeparameter für diesen Vorgang aufgelistet. Geben Sie die entsprechenden Werte ein, und klicken Sie auf das Häkchensymbol:  
+![][6]
 
-Der Schritt/die Aktion wird nun in der Logik-App als konfiguriert angezeigt. Die Ausgaben des Vorgangs werden angezeigt und können in einem nachfolgenden Schritt als Eingaben verwendet werden: ![][7]
+Der Schritt/die Aktion wird nun in der Logik-App als konfiguriert angezeigt. Die Ausgaben des Vorgangs werden angezeigt und können in einem nachfolgenden Schritt als Eingaben verwendet werden:  
+![][7]
 
 Vervollständigen Sie die Logik-App, um den Geschäftsprozess zu definieren, und führen Sie sie dann aus, um den beabsichtigten Zweck zu erreichen.
 
