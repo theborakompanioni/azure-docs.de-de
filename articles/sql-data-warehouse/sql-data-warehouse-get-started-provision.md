@@ -1,6 +1,6 @@
 <properties
    pageTitle="Erstellen eines SQL Data Warehouse im Azure-Portal | Microsoft Azure"
-   description="Erfahren Sie, wie Sie ein Azure SQL Data Warehouse im Azure-Portal erstellen."
+   description="Erfahren Sie, wie Sie eine Azure SQL Data Warehouse-Instanz im Azure-Portal erstellen."
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="barbkess"
@@ -24,7 +24,7 @@
 - [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
 - [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 
-In diesem Tutorial verwenden Sie das Azure-Portal zum Erstellen eines SQL Data Warehouse, das eine AdventureWorksDW-Beispieldatenbank enthält.
+In diesem Tutorial verwenden Sie das Azure-Portal zum Erstellen einer SQL Data Warehouse-Instanz, die eine AdventureWorksDW-Beispieldatenbank enthält.
 
 
 ## Voraussetzungen
@@ -34,11 +34,11 @@ Zunächst benötigen Sie Folgendes:
 - **Azure-Konto:** Lesen Sie zum Erstellen eines Kontos die Informationen unter [Kostenlose Azure-Testversion][] oder [MSDN-Azure-Gutschriften][].
 - **Azure SQL Server**: Weitere Einzelheiten finden Sie unter [Erstellen eines logischen Azure SQL-Datenbankservers mit dem Azure-Portal][].
 
-> [AZURE.NOTE] Wenn Sie ein neues SQL Data Warehouse erstellen, wird dadurch unter Umständen auch ein neuer abrechenbarer Dienst erstellt. Unter [SQL Data Warehouse – Preise][] finden Sie weitere Informationen zu den Preisen.
+> [AZURE.NOTE] Wenn Sie eine SQL Data Warehouse-Instanz erstellen, wird dadurch unter Umständen auch ein neuer abrechenbarer Dienst erstellt. Unter [SQL Data Warehouse – Preise][] finden Sie weitere Informationen.
 
 ## Erstellen eines SQL Data Warehouse
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com) an.
 
 2. Klicken Sie auf **+Neu** > **Daten + Speicher** > **SQL Data Warehouse**.
 
@@ -48,21 +48,21 @@ Zunächst benötigen Sie Folgendes:
 
     ![Erstellen einer Datenbank](./media/sql-data-warehouse-get-started-provision/create-database.png)
 
-	- **Server**: Es wird empfohlen, zuerst den Server auszuwählen. Sie können einen vorhandenen Server auswählen oder [einen neuen Server erstellen](./sql-data-warehouse-get-started-new-server.md).
+	- **Server**: Es wird empfohlen, zuerst den Server auszuwählen.
 
 	- **Datenbankname**: Der Name, mit dem auf das SQL Data Warehouse verwiesen wird. Dieser Name muss für den Server eindeutig sein.
 	
     - **Leistung**: Es wird empfohlen, mit 400 [DWUs][DWU] zu beginnen. Bewegen Sie den Schieberegler nach links oder rechts, um die Leistung Ihres Data Warehouse anzupassen oder nach dem Erstellen hoch- oder herunterzuskalieren. Weitere Informationen zu DWUs finden Sie in der Dokumentation zur [Skalierung](./sql-data-warehouse-manage-compute-overview.md) oder auf der Seite mit unseren [Preisen][SQL Data Warehouse pricing].
 
-    - **Abonnement**: Wählen Sie das [Abonnement] aus, dem SQL Data Warehouse in Rechnung gestellt wird.
+    - **Abonnement**: Wählen Sie das [Abonnement] aus, für das diese SQL Data Warehouse-Instanz in Rechnung gestellt wird.
 
     - **Ressourcengruppe**: [Ressourcengruppen][Resource group] sind Container, die zum Verwalten einer Azure-Ressourcensammlung entwickelt wurden. Weitere Informationen zu [Ressourcengruppen](../resource-group-overview.md).
 
-    - **Quelle auswählen**: Klicken Sie auf **Quelle auswählen** > **Beispiel**. Da derzeit nur eine Beispieldatenbank verfügbar ist, füllt Azure bei Wählen von "Beispiel" automatisch die Option **Beispiel auswählen** mit "AdventureWorksDW" aus.
+    - **Quelle auswählen**: Klicken Sie auf **Quelle auswählen** > **Beispiel**. Azure füllt die Option **Beispiel auswählen** automatisch mit AdventureWorksDW auf.
 
 4. Klicken Sie auf **Erstellen**, um Ihre SQL Data Warehouse-Instanz zu erstellen.
 
-5. Warten Sie ein paar Minuten, bis das SQL Data Warehouse bereit ist. Im Anschluss sollten Sie sich wieder im [Azure-Portal](https://portal.azure.com) befinden. Sie finden Ihr SQL Data Warehouse in Ihrem Dashboard unter den SQL-Datenbanken oder in der Ressourcengruppe, mit der Sie es erstellt haben.
+5. Warten Sie einige Minuten. Wenn Ihr Data Warehouse bereit ist, sollten Sie zurück zum [Azure-Portal](https://portal.azure.com) gelangen. Sie finden Ihr SQL Data Warehouse in Ihrem Dashboard unter den SQL-Datenbanken oder in der Ressourcengruppe, mit der Sie es erstellt haben.
 
     ![Portalansicht](./media/sql-data-warehouse-get-started-provision/database-portal-view.png)
 
@@ -78,14 +78,14 @@ Wenn Sie versuchen, eine vorhandene Datenbank zu SQL Data Warehouse zu migrieren
 
 Firewall-Regeln können auch mithilfe von Transact-SQL konfiguriert werden. Weitere Informationen finden Sie unter [sp\_set\_firewall\_rule][] und [sp\_set\_database\_firewall\_rule][].
 
-Zudem wird empfohlen, sich die [bewährten Methoden][] anzusehen.
+Es ist auch empfehlenswert, sich über die [Bewährten Methoden][] zu informieren.
 
 <!--Article references-->
 [Erstellen eines logischen Azure SQL-Datenbankservers mit dem Azure-Portal]: ../sql-database/sql-database-get-started.md#create-an-azure-sql-database-logical-server
 [Create an Azure SQL Database logical server with PowerShell]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
 [resource groups]: ../resource-group-template-deploy-portal.md
-[bewährten Methoden]: ./sql-data-warehouse-best-practices.md
-[DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
+[Bewährten Methoden]: sql-data-warehouse-best-practices.md
+[DWU]: sql-data-warehouse-overview-what-is.md#data-warehouse-units
 [Abonnement]: ../azure-glossary-cloud-terminology.md#subscription
 [resource group]: ../azure-glossary-cloud-terminology.md#resource-group
 
@@ -99,4 +99,4 @@ Zudem wird empfohlen, sich die [bewährten Methoden][] anzusehen.
 [Kostenlose Azure-Testversion]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN-Azure-Gutschriften]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

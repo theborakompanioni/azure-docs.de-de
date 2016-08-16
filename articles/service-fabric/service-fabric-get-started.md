@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/15/2016"
+   ms.date="06/16/2016"
    ms.author="ryanwi"/>
 
 # Vorbereiten Ihrer Entwicklungsumgebung
@@ -28,7 +28,7 @@ Die folgenden Betriebssystemversionen werden bei der Entwicklung unterstützt:
 - Windows Server 2012 R2
 - Windows 10
 
->[AZURE.NOTE] Windows 7 enthält standardmäßig nur Windows PowerShell 2.0. Damit Sie Service Fabric PowerShell-Cmdlets verwenden können, müssen Sie PowerShell 3.0 oder höher installieren. Sie können [Windows PowerShell 5.0][powershell5-download] aus dem Microsoft Download Center herunterladen.
+>[AZURE.NOTE] Windows 7 enthält standardmäßig nur Windows PowerShell 2.0. Für Service Fabric PowerShell-Cmdlets ist PowerShell 3.0 oder höher erforderlich. Sie können [Windows PowerShell 5.0][powershell5-download] aus dem Microsoft Download Center herunterladen.
 
 ## Installieren von Laufzeit, SDK und Tools
 
@@ -48,13 +48,13 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ```
 
 ## Nächste Schritte
-Ihre Entwicklungsumgebung ist nun eingerichtet, und Sie können mit der Entwicklung und Ausführung von Apps beginnen.
+Nachdem Sie die Entwicklungsumgebung eingerichtet haben, können Sie nun mit dem Erstellen und Ausführen von Apps beginnen.
 
 - [Erstellen Ihrer ersten Service Fabric-Anwendung in Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md)
 - [Weitere Informationen zum Bereitstellen und Verwalten von Anwendungen in Ihrem lokalen Cluster](service-fabric-get-started-with-a-local-cluster.md)
 - [Weitere Informationen zu Programmiermodellen: Reliable Services und Reliable Actors](service-fabric-choose-framework.md)
 - [Service Fabric-Codebeispiele auf GitHub](https://aka.ms/servicefabricsamples)
-- [Visualisieren des Clusters mit Service Fabric-Explorer](service-fabric-visualizing-your-cluster.md)
+- [Visualisieren des Clusters mit Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
 - [Folgen Sie dem Service Fabric-Lernpfad, um eine umfassende Einführung in die Plattform zu erhalten.](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
 
 [1]: http://azure.microsoft.com/campaigns/service-fabric/ "Service Fabric-Kampagnenseite"
@@ -64,4 +64,4 @@ Ihre Entwicklungsumgebung ist nun eingerichtet, und Sie können mit der Entwickl
 [core-sdk]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=ServiceFabricSDK_2_1 "WebPI-Link für Core SDK"
 [powershell5-download]: https://www.microsoft.com/de-DE/download/details.aspx?id=50395
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0810_2016-->

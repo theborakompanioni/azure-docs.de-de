@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 
@@ -43,21 +43,21 @@ Zum Konfigurieren der RADIUS-Authentifizierung installieren Sie den Azure Multi-
 9. Sie können die Schritte 4 bis 8 wiederholen, um zusätzliche RADIUS-Clients hinzuzufügen.
 10. Klicken Sie auf die Registerkarte "Ziel".
 11. Wenn der Azure Multi-Factor Authentication-Server auf einem domänenverbundenen Server in einer Active Directory-Umgebung installiert ist, wählen Sie die Windows-Domäne.
-12. Wenn der Benutzer mit einem LDAP-Verzeichnis authentifiziert werden sollen, wählen Sie die LDAP-Bindung. Bei der Verwendung von LDAP-Bindungen müssen Sie auf das Symbol "Verzeichnisintegration" klicken, und die LDAP-Konfiguration auf der Registerkarte "Einstellungen" bearbeiten, damit der Server in Ihr Verzeichnis binden kann. Anweisungen zum Konfigurieren von LDAP finden Sie im Konfigurationshandbuch zum LDAP-Proxy. 
+12. Wenn der Benutzer mit einem LDAP-Verzeichnis authentifiziert werden sollen, wählen Sie die LDAP-Bindung. Bei der Verwendung von LDAP-Bindungen müssen Sie auf das Symbol "Verzeichnisintegration" klicken, und die LDAP-Konfiguration auf der Registerkarte "Einstellungen" bearbeiten, damit der Server in Ihr Verzeichnis binden kann. Anweisungen zum Konfigurieren von LDAP finden Sie im Konfigurationshandbuch zum LDAP-Proxy.
 13. Wenn Benutzer für einen anderen RADIUS-Server authentifiziert werden sollen, wählen Sie den/die RADIUS-Server.
 14. Konfigurieren Sie den Server, auf den der Server die RADIUS-Anforderungen per Proxy weitergibt, durch Klicken auf die Schaltfläche "Hinzufügen".
 15. Geben Sie im Dialogfeld "RADIUS-Server hinzufügen" die IP-Adresse des RADIUS-Servers und einen gemeinsamen geheimen Schlüssel ein. Der gemeinsame geheime Schlüssel muss auf dem Azure Multi-Factor Authentication-Server und dem RADIUS-Server identisch sein. Ändern Sie den Authentifizierungs- und Kontoführungsport, wenn der RADIUS-Server andere Ports verwendet.
-16. Klicken Sie auf die Schaltfläche "OK". 
+16. Klicken Sie auf die Schaltfläche "OK".
 17. Sie müssen den Azure Multi-Factor Authentication-Server als RADIUS-Client auf dem anderen RADIUS-Server hinzufügen, damit aus dem Azure Multi-Factor Authentication-Server gesendete Zugriffsanforderungen verarbeitet werden. Sie müssen den gleichen gemeinsamen geheimen Schlüssel verwenden, der in Azure Multi-Factor Authentication-Server konfigurierten ist.
-18. Sie können diesen Schritt wiederholen, um zusätzliche RADIUS-Server hinzuzufügen und die Reihenfolge zu konfigurieren, in der der Server diese mit den Schaltflächen "Nach oben" und "Nach unten" aufruft. Dadurch wird die Konfiguration des Azure Multi-Factor Authentication-Servers abgeschlossen. Der Server wartet jetzt auf den konfigurierten Ports auf RADIUS-Zugriffsanforderungen von den konfigurierten Clients.   
+18. Sie können diesen Schritt wiederholen, um zusätzliche RADIUS-Server hinzuzufügen und die Reihenfolge zu konfigurieren, in der der Server diese mit den Schaltflächen "Nach oben" und "Nach unten" aufruft. Dadurch wird die Konfiguration des Azure Multi-Factor Authentication-Servers abgeschlossen. Der Server wartet jetzt auf den konfigurierten Ports auf RADIUS-Zugriffsanforderungen von den konfigurierten Clients.
 
 
 ## RADIUS-Clientkonfiguration
 
 Verwenden Sie die folgenden Richtlinien, um den RADIUS-Client zu konfigurieren:
 
-- Konfigurieren Sie Ihre Appliance/Ihren Server zur Authentifizierung über RADIUS an die IP-Adresse des Azure Multi-Factor Authentication-Servers, die als RADIUS-Server fungiert. 
-- Verwenden Sie den gleichen gemeinsamen geheimen Schlüssel, der weiter oben konfiguriert wurde. 
+- Konfigurieren Sie Ihre Appliance/Ihren Server zur Authentifizierung über RADIUS an die IP-Adresse des Azure Multi-Factor Authentication-Servers, die als RADIUS-Server fungiert.
+- Verwenden Sie den gleichen gemeinsamen geheimen Schlüssel, der weiter oben konfiguriert wurde.
 - Konfigurieren Sie den RADIUS-Timeout auf 30 bis 60 Sekunden, sodass genug Zeit ist, die Anmeldeinformationen des Benutzers zu überprüfen, die mehrstufige Authentifizierung auszuführen, deren Antwort zu empfangen, und dann auf die RADIUS-Zugriffsanforderung zu reagieren.
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Hybrid-Identität: Vergleich von Tools für die Verzeichnisintegration | Microsoft Azure"
-	description="Diese Seite enthält umfassende Tabellen zum Vergleich der verschiedenen Tools für die Verzeichnisintegration, die für die Verzeichnisintegration verwendet werden können."
+	description="Diese Seite enthält eine umfassende Tabelle mit einem Vergleich der verschiedenen Tools für die Verzeichnisintegration."
 	services="active-directory"
 	documentationCenter=""
 	authors="billmath"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/12/2016"
+	ms.date="08/08/2016"
 	ms.author="billmath"/>
 
 # Vergleich von Tools für die Verzeichnisintegration für Hybrid-Identitäten
@@ -24,7 +24,7 @@ Im Laufe der Jahre sind die Tools für die Verzeichnisintegration umfangreicher 
 
 >[AZURE.NOTE] Azure AD Connect umfasst die Komponenten und Funktionen, die zuvor als DirSync und AAD Sync veröffentlicht wurden. Diese Tools werden nicht mehr einzeln veröffentlicht, und alle künftigen Verbesserungen werden in den Updates von Azure AD Connect enthalten sein, sodass Sie immer wissen, wo Sie die aktuellsten Funktionen bekommen.
 >
->DirSync and Azure AD Sync sind veraltet. Weitere Informationen finden Sie unter [Upgrade Microsoft Azure Active Directory Sync („DirSync“) and Azure Active Directory Sync („Azure AD Sync“)](https://azure.microsoft.com/documentation/articles/active-directory-aadconnect-dirsync-deprecated/?WT.mc_id=DirSyncDepACOM) (Aktualisieren von Microsoft Azure Active Directory-Synchronisierung (DirSync) und von Azure Active Directory Sync (Azure AD Sync)).
+>DirSync and Azure AD Sync sind veraltet. Weitere Informationen finden Sie [hier](active-directory-aadconnect-dirsync-deprecated.md).
 
 
 Verwenden Sie den folgenden Schlüssel für jede der Tabellen.
@@ -33,7 +33,7 @@ Verwenden Sie den folgenden Schlüssel für jede der Tabellen.
 
 ## Synchronisierung vom lokalen Standort zur Cloud
 
-| Funktion | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste (AAD Sync) | Azure Active Directory-Synchronisierungstool (DirSync)| Forefront Identity Manager 2010 R2 (FIM) |Microsoft Identity Manager 2016 (MIM)|
+| Feature | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste (AAD Sync) | Azure Active Directory-Synchronisierungstool (DirSync)| Forefront Identity Manager 2010 R2 (FIM) |Microsoft Identity Manager 2016 (MIM)|
 | :-------- |:--------:|:--------:|:--------:|:--------:|:--------:
 | Herstellen einer Verbindung mit einer einzelnen lokalen AD-Gesamtstruktur | ● | ● | ● | ● |● |
 | Herstellen einer Verbindung mit mehreren lokalen AD-Gesamtstrukturen |● | ● | | ● |● |
@@ -48,7 +48,7 @@ Verwenden Sie den folgenden Schlüssel für jede der Tabellen.
 
 ## Synchronisierung von der Cloud zum lokalen Standort
 
-| Funktion | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste | Azure Active Directory-Synchronisierungstool (DirSync) | Forefront Identity Manager 2010 R2 (FIM) |Microsoft Identity Manager 2016 (MIM)|
+| Feature | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste | Azure Active Directory-Synchronisierungstool (DirSync) | Forefront Identity Manager 2010 R2 (FIM) |Microsoft Identity Manager 2016 (MIM)|
 | :-------- |:--------:|:--------:|:--------:|:--------:|:--------:
 | Rückschreiben von Geräten | ● | | ● | ||
 | Rückschreiben von Attributen (für Exchange-Hybridbereitstellung) | ● | ● | ● | ● |● |
@@ -59,7 +59,7 @@ Verwenden Sie den folgenden Schlüssel für jede der Tabellen.
 
 ## Unterstützung von Authentifizierungsfunktionen
 
-| Funktion | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste | Azure Active Directory-Synchronisierungstool (DirSync) | Forefront Identity Manager 2010 R2 (FIM) |Microsoft Identity Manager 2016 (MIM)|
+| Feature | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste | Azure Active Directory-Synchronisierungstool (DirSync) | Forefront Identity Manager 2010 R2 (FIM) |Microsoft Identity Manager 2016 (MIM)|
 | :-------- |:--------:|:--------:|:--------:|:--------:|:--------:
 | Kennwortsynchronisierung für eine einzelne lokale Active Directory-Gesamtstruktur | ● | ● | ● | ||
 | Kennwortsynchronisierung für mehrere lokale Active Directory-Gesamtstrukturen | ●| ● | | ||
@@ -70,7 +70,7 @@ Verwenden Sie den folgenden Schlüssel für jede der Tabellen.
 
 ## Einrichtung und Installation
 
-| Funktion | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste | Azure Active Directory-Synchronisierungstool (DirSync) | Microsoft Identity Manager 2016 (MIM) |
+| Feature | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste | Azure Active Directory-Synchronisierungstool (DirSync) | Microsoft Identity Manager 2016 (MIM) |
 | :-------- |:--------:|:--------:|:--------:|:--------:
 | Unterstützt die Installation auf einem Domänencontroller | ● | ● | ● | |
 | Unterstützt die Installation mit SQL Express | ● | ● | ● | |
@@ -82,7 +82,7 @@ Verwenden Sie den folgenden Schlüssel für jede der Tabellen.
 
 ## Filterung und Konfiguration
 
-Funktion | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste | Azure Active Directory-Synchronisierungstool (DirSync) | Forefront Identity Manager 2010 R2 (FIM)| Microsoft Identity Manager 2016 (MIM)
+Feature | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste | Azure Active Directory-Synchronisierungstool (DirSync) | Forefront Identity Manager 2010 R2 (FIM)| Microsoft Identity Manager 2016 (MIM)
 :-------- |:--------:|:--------:|:--------:|:--------:|:--------:|
 Filterung nach für Domänen und Organisationseinheiten | ● | ● | ● | ● | ●
 Filterung nach den Attributwerten eines Objekts | ● | ● | ● | ●| ●
@@ -94,4 +94,4 @@ Zulassen einer erweiterten Anpassung des Attributflusses | ● | ● | | ● | �
 ## Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

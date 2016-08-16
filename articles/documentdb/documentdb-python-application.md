@@ -4,7 +4,7 @@
 	keywords="Anwendungsentwicklung, Datenbanktutorial, Python Flask, Python-Webanwendung, Python-Webentwicklung, DocumentDB, Azure, Microsoft Azure"
     services="documentdb"
     documentationCenter="python"
-    authors="aliuy"
+    authors="AndrewHoh"
     manager="jhubbard"
     editor="cgronlun"/>
 
@@ -15,7 +15,7 @@
     ms.devlang="python"
     ms.topic="hero-article"
     ms.date="04/18/2016"
-    ms.author="andrl"/>
+    ms.author="anhoh"/>
 
 # Python Flask-Webanwendungsentwicklung mit DocumentDB
 
@@ -44,10 +44,10 @@ Im Verlauf dieses Lernprogramms erstellen Sie eine einfache Wahlanwendung, über
 Bevor Sie diesen Artikel durcharbeiten, sollten Sie sicherstellen, dass Folgendes installiert ist:
 
 - Ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-- [Visual Studio 2013](http://www.visualstudio.com/) oder höher oder [Visual Studio Express]() (die kostenlose Version). Die Anweisungen in diesem Tutorial wurden speziell für Visual Studio 2015 erstellt. 
-- Python Tools für Visual Studio aus [GitHub](http://microsoft.github.io/PTVS/). In diesem Tutorial werden Python Tools für VS 2015 verwendet. 
+- [Visual Studio 2013](http://www.visualstudio.com/) oder höher oder [Visual Studio Express]() (die kostenlose Version). Die Anweisungen in diesem Tutorial wurden speziell für Visual Studio 2015 erstellt.
+- Python Tools für Visual Studio aus [GitHub](http://microsoft.github.io/PTVS/). In diesem Tutorial werden Python Tools für VS 2015 verwendet.
 - Azure Python SDK für Visual Studio, Version 2.4 oder höher, ist auf [azure.com](https://azure.microsoft.com/downloads/) erhältlich. Hier wurde das Microsoft Azure SDK für Python 2.7 verwendet.
-- Python 2.7 von [python.org][2]. Wir haben Python 2.7.11 verwendet. 
+- Python 2.7 von [python.org][2]. Wir haben Python 2.7.11 verwendet.
 
 > [AZURE.IMPORTANT] Wenn Sie Python 2.7 zum ersten Mal installieren, stellen Sie sicher, dass Sie auf dem Bildschirm zum Anpassen von Python 2.7.11 die Option **Add python.exe to Path** auswählen.
 > 
@@ -133,7 +133,7 @@ Stellen Sie sicher, dass alles einwandfrei installiert ist.
 
 Nun erstellen Sie die Abstimmungsanwendung, indem Sie neue Dateien hinzufügen und andere Dateien aktualisieren.
 
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **tutorial**, und klicken Sie erst auf **Hinzufügen** und dann auf **Neues Element**. Wählen Sie **Leere Python-Datei** aus, und benennen Sie die Datei **forms.py**.  
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **tutorial**, und klicken Sie erst auf **Hinzufügen** und dann auf **Neues Element**. Wählen Sie **Leere Python-Datei** aus, und benennen Sie die Datei **forms.py**.
 2. Fügen Sie der Datei „forms.py“ den folgenden Code hinzu, und speichern Sie die Datei.
 
 ```python
@@ -150,7 +150,7 @@ class VoteForm(Form):
 
 ### Fügen Sie die erforderlichen Importe zu views.py hinzu.
 
-1. Erweitern Sie im Projektmappen-Explorer den Ordner **tutorial**, und öffnen Sie die Datei **views.py**. 
+1. Erweitern Sie im Projektmappen-Explorer den Ordner **tutorial**, und öffnen Sie die Datei **views.py**.
 2. Fügen Sie die folgenden import-Anweisungen am Anfang der Datei **views.py** ein, und speichern Sie die Datei: Dadurch werden die DocumentDB-Pakete für PythonSDK und Flask importiert.
 
 	```python
@@ -256,8 +256,8 @@ def vote():
 
 ### Erstellen der HTML-Dateien
 
-1. Klicken Sie im Projektmappen-Explorer im Projekt **tutorial** mit der rechten Maustaste auf den Ordner **Vorlagen**, und klicken Sie auf **Hinzufügen** und dann auf **Neues Element**. 
-2. Wählen Sie **HTML-Seite** aus, und geben Sie im Namensfeld den Namen **create.html** ein. 
+1. Klicken Sie im Projektmappen-Explorer im Projekt **tutorial** mit der rechten Maustaste auf den Ordner **Vorlagen**, und klicken Sie auf **Hinzufügen** und dann auf **Neues Element**.
+2. Wählen Sie **HTML-Seite** aus, und geben Sie im Namensfeld den Namen **create.html** ein.
 3. Wiederholen Sie die Schritte 1 und 2, um zwei weitere HTML-Dateien hinzuzufügen: „results.html“ und „vote.html“.
 4. Fügen Sie den folgenden Code zur Datei **create.html** im `<body>`-Element hinzu. Damit wird eine Meldung angezeigt, dass eine neue Datenbank, eine neue Sammlung und ein neues Dokument erstellt wurden.
 
@@ -342,7 +342,7 @@ def vote():
 
 3. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zum Blatt **Schlüssel**, indem Sie auf **Durchsuchen** und **DocumentDB-Konten** klicken. Doppelklicken Sie auf den Namen des Kontos, das Sie verwenden möchten, und klicken Sie dann im Bereich **Zusammenfassung** auf die Schaltfläche **Schlüssel**. Kopieren Sie auf dem Blatt **Keys** den **URI**-Wert, und fügen Sie ihn in der Datei **config.py** als Wert für die **DOCUMENTDB\_HOST**-Eigenschaft ein.
 4. Kopieren Sie im Azure-Portal auf dem Blatt **Schlüssel** den Wert für **Primärer Schlüssel** oder **Sekundärer Schlüssel**, und fügen Sie ihn in der Datei **config.py** als Wert für die **DOCUMENTDB\_KEY**-Eigenschaft ein.
-5. Fügen Sie in der Datei **\_\_init\_\_.py** folgende Zeile ein. 
+5. Fügen Sie in der Datei **\_\_init\_\_.py** folgende Zeile ein.
 
         app.config.from_object('config')
 
@@ -385,7 +385,7 @@ def vote():
 
 Nachdem Sie eine vollständige Anwendung erstellt haben, die DocumentDB ordnungsgemäß nutzt, stellen wir diese in Azure Websites bereit.
 
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt (stellen Sie sicher, dass es nicht lokal ausgeführt wird), und wählen Sie dann **Veröffentlichen** aus.  
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt (stellen Sie sicher, dass es nicht lokal ausgeführt wird), und wählen Sie dann **Veröffentlichen** aus.
 
  	![Screenshot des im Projektmappen-Explorer ausgewählten Lernprogramms mit hervorgehobener Option „Veröffentlichen“](./media/documentdb-python-application/image20.png)
 
@@ -433,4 +433,4 @@ Weitere Python Flask-Tutorials finden Sie unter [The Flask Mega-Tutorial, Part I
   [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
   [Azure portal]: http://portal.azure.com
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0810_2016-->

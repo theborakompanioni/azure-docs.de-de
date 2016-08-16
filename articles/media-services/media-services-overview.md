@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="hero-article" 
-	ms.date="06/22/2016"
+	ms.date="08/07/2016"
 	ms.author="juliako;anilmur"/>
 
 #Azure Media Services – Übersicht und häufige Szenarios
@@ -49,7 +49,7 @@ Sie können sich die AMS-Lernpfade hier ansehen:
 
 Um mit Azure Media Services loszulegen, sollten Sie Folgendes haben:
  
-3. Ein Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com).
+3. Ein Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com).
 2. Ein Azure Media Services-Konto. Verwenden Sie das klassische Azure-Portal, .NET oder die REST-API zum Erstellen eines Azure Media Services-Kontos. Weitere Informationen finden Sie unter [Erstellen von Konten](media-services-create-account.md).
 3. (Optional) Eine eingerichtete Entwicklungsumgebung. Wählen Sie .NET oder REST-API für Ihre Entwicklungsumgebung. Weitere Informationen finden Sie unter [Einrichten der Umgebung](media-services-dotnet-how-to-use.md).
 
@@ -60,7 +60,7 @@ Um mit Azure Media Services loszulegen, sollten Sie Folgendes haben:
 
 Azure Media Services-Konzepte finden Sie unter [Konzepte](media-services-concepts.md).
 
-Eine Reihe mit Vorgehensweisen (Gewusst wie), in der Sie in die wichtigsten Komponenten von Azure Media Services eingeführt werden, finden Sie unter [Azure Media Services Step-by-Step tutorials](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series) (Schritt-für-Schritt-Tutorials zu Azure Media Services). Diese Serie bietet einen hervorragenden Überblick über die Konzepte und verwendet das AMSE-Tool, um die AME-Aufgaben zu erläutern. Beachten Sie, dass es sich beim AMSE-Tool um ein Windows-Tool handelt. Dieses Tool unterstützt die meisten Aufgaben, die Sie programmgesteuert mit dem [AMS SDK für .NET](https://github.com/Azure/azure-sdk-for-media-services), dem [Azure SDK für Java](https://github.com/Azure/azure-sdk-for-java) oder dem [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) durchführen können.
+Eine Reihe mit Vorgehensweisen (Gewusst wie), in der Sie in die wichtigsten Komponenten von Azure Media Services eingeführt werden, finden Sie unter [Azure Media Services Step-by-Step tutorials](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series) (Schritt-für-Schritt-Tutorials zu Azure Media Services). Diese Serie bietet eine hervorragende Übersicht über die Konzepte und verwendet das AMSE-Tool, um die AMS-Aufgaben zu erläutern. Beachten Sie, dass es sich beim AMSE-Tool um ein Windows-Tool handelt. Dieses Tool unterstützt die meisten Aufgaben, die Sie programmgesteuert mit dem [AMS SDK für .NET](https://github.com/Azure/azure-sdk-for-media-services), dem [Azure SDK für Java](https://github.com/Azure/azure-sdk-for-java) oder dem [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) durchführen können.
 
 ##<a id="vod_scenarios"></a>Bereitstellen von Medien-on-Demand mit Azure Media Services: häufige Szenarios und Aufgaben.
 
@@ -85,7 +85,7 @@ Dieser Abschnitt erläutert allgemeine Szenarien und enthält Links zu relevante
 
 1. Veröffentlichen Sie das Medienobjekt durch Erstellen eines OnDemand-Locators.
 
-	Vergewissern Sie sich, dass auf dem Streamingendpunkt, von dem aus Inhalte gestreamt werden sollen, mindestens eine reservierte Einheit für das Streaming vorhanden ist.
+	Stellen Sie sicher, dass auf dem Streamingendpunkt, von dem Sie Inhalte streamen möchten, mindestens eine für das Streaming reservierte Einheit verfügbar ist.
 
 1. Streamen Sie die veröffentlichten Inhalte.
 
@@ -220,4 +220,4 @@ Weitere Informationen finden Sie im [Microsoft Azure-SLA](https://azure.microsof
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

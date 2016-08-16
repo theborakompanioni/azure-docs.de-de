@@ -1,6 +1,6 @@
 <properties
    pageTitle="Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio | Azure"
-   description="Erfahren Sie, wie Sie Data Lake-Tools für Visual Studio installieren und U-SQL-Skripts entwickeln und testen."
+   description="Erfahren Sie, wie Sie Data Lake-Tools für Visual Studio installieren und U-SQL-Skripts entwickeln und testen. "
    services="data-lake-analytics"
    documentationCenter=""
    authors="edmacauley"
@@ -130,20 +130,20 @@ Die Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weite
 
 		IntelliSense für Katalogentitäten (Datenbanken, Schemas, Tabellen, UDOs usw.) bezieht sich auf Ihr Compute-Konto. Sie können das aktuelle aktive Compute-Konto, die Datenbank und das Schema in der obersten Symbolleiste überprüfen und über die Dropdownlisten wechseln.
 
-    - **Erweitern von Spalten mit**
+    - Erweitern von Spalten
 
-        Klicken Sie rechts neben das Sternchen-Symbol („*“), und dann sehen Sie unter dem Sternchen eine blaue Unterstreichung. Zeigen Sie mit dem Mauszeiger auf die blaue Unterstreichung, und klicken Sie auf den Pfeil nach unten. ![Data Lake visual studio tools expand *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
+        Klicken Sie rechts neben das Sternchen-Symbol („*“). Unter dem Sternchen wird eine blaue Unterstreichung angezeigt. Bewegen Sie den Mauszeiger auf die blaue Unterstreichung, und klicken Sie auf den Pfeil nach unten. ![Data Lake Visual Studio-Tools – Erweitern *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
         Klicken Sie auf **Spalten erweitern**, und das Tool ersetzt das Sternchen („*“) durch die Spaltennamen.
 
 	- **Automatische Formatierung**
 
-		Benutzer können den Einzug des Scope-Skripts basierend auf der Codestruktur unter „Bearbeiten“ -> „Erweitert“ ändern:
+		Benutzer können den Einzug des U-SQL-Skripts basierend auf der Codestruktur unter „Bearbeiten“ > „Erweitert“ ändern:
 
-		- Dokument formatieren (STRG+E, D): Das gesamte Dokument wird formatiert.   
-		- Auswahl formatieren (STRG+K, STRG+F): Die Auswahl wird formatiert. Wenn keine Auswahl getroffen wurde, wird mit dieser Tastenkombination die Zeile formatiert, in der sich der Cursor befindet.  
+		- Dokument formatieren (STRG+E, D): Das gesamte Dokument wird formatiert.
+		- Auswahl formatieren (STRG+K, STRG+F): Die Auswahl wird formatiert. Wenn keine Auswahl getroffen wurde, wird mit dieser Tastenkombination die Zeile formatiert, in der sich der Cursor befindet.
 
-		Sie können alle Formatierungsregeln unter „Extras“ -> „Optionen“ -> „Text-Editor“ - > „SIP“ -> „Formatierung“ konfigurieren.  
+		Sie können alle Formatierungsregeln unter „Extras“ -> „Optionen“ -> „Text-Editor“ - > „SIP“ -> „Formatierung“ konfigurieren.
 	- **Intelligenter Einzug**
 
 		Mit Data Lake-Tools für Visual Studio können Sie automatische Einzüge für Ausdrücke verwenden, während Sie Skripts schreiben. Dieses Feature ist standardmäßig deaktiviert. Benutzer müssen es aktivieren, indem sie die Option „U-SQL“ -> „Optionen und Einstellungen“ -> „Schalter“ -> „Intelligenten Einzug aktivieren“ aktivieren.
@@ -172,7 +172,7 @@ Die Data Lake Analytics-Aufträge werden in der Sprache U-SQL geschrieben. Weite
 
 	![U-SQL Visual Studio Data Lake Analytics-Diagramm zur Auftragsleistung](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-performance-graph.png)
 
-	* Auftragszusammenfassung. Hier können Sie die zusammengefassten Informationen des aktuellen Auftrags anzeigen, z. B. Zustand, Status, Ausführungszeit, Laufzeitname, Absender usw.   
+	* Auftragszusammenfassung. Hier können Sie die zusammengefassten Informationen des aktuellen Auftrags anzeigen, z. B. Zustand, Status, Ausführungszeit, Laufzeitname, Absender usw.
 	* Auftragsdetails. Hier werden ausführliche Informationen zum Auftrag bereitgestellt, z. B. Skript, Ressource, Scheitelpunktausführungsansicht.
 	* Auftragsdiagramm: Es werden vier Diagramme zur Visualisierung der Auftragsinformationen bereitgestellt: Status, gelesene Daten, geschriebene Daten, Ausführungszeit, durchschnittliche Ausführungszeit pro Knoten, Eingangsdurchsatz, Ausgangsdurchsatz.
 	* Metadatenvorgänge: Hier werden alle Metadatenvorgänge angezeigt.
@@ -272,9 +272,9 @@ Das folgende Verfahren funktioniert nur in Visual Studio 2015. In älteren Versi
 
         CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
 3.	Legen Sie Haltepunkte im C#-Code fest.
-4.	Drücken Sie **F5**, um das Skript mit Verweis auf die C#-DLL lokal zu debuggen.  
+4.	Drücken Sie **F5**, um das Skript mit Verweis auf die C#-DLL lokal zu debuggen.
 
-##Weitere Informationen
+##Siehe auch
 
 Informationen zu den ersten Schritten mit Data Lake Analytics unter Verwendung unterschiedlicher Tools finden Sie unter:
 
@@ -361,4 +361,4 @@ Mit dem folgenden PowerShell-Skript werden das Azure Data Lake Analytics-Konto u
     Get-AzureRmDataLakeStoreChildItem -Account $dataLakeStoreName -Path  "/Samples/Data/"
     #endregion
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -11,7 +11,7 @@ Sie können die Azure-Befehlszeilenschnittstelle verwenden, um Ihre Azure-Ressou
 
 		info:    New mode is arm
 
-3. Führen Sie bei Bedarf **azure group create** aus, um eine neue Ressourcengruppe zu erstellen, wie unten dargestellt. Beachten Sie die Ausgabe des Befehls. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../articles/virtual-network/resource-group-overview.md/#resource-groups).
+3. Führen Sie bei Bedarf **azure group create** aus, um eine neue Ressourcengruppe zu erstellen, wie unten dargestellt. Beachten Sie die Ausgabe des Befehls. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../articles/virtual-network/resource-group-overview.md#resource-groups).
 
 		azure group create -n TestRG -l centralus
 
@@ -106,4 +106,4 @@ Sie können die Azure-Befehlszeilenschnittstelle verwenden, um Ihre Azure-Ressou
 		data:
 		info:    network vnet show command OK
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0810_2016-->

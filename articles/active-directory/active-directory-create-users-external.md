@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/21/2016"
-	ms.author="curtand;viviali"/>
+	ms.date="08/02/2016"
+	ms.author="curtand"/>
 
 # Hinzufügen von Benutzern aus anderen Verzeichnissen oder Partnerunternehmen zu Azure Active Directory
 
-Fügen Sie Benutzer hinzu, um Ihr Verzeichnis aufzufüllen. In diesem Artikel wird beschrieben, wie Sie Benutzer von anderen Verzeichnissen in Azure Active Directory sowie Benutzer von Partnerunternehmen hinzufügen. Informationen dazu, wie Sie neue Benutzer in Ihrer Organisation sowie Benutzer mit Microsoft-Konten hinzufügen finden Sie unter [Hinzufügen neuer Benutzer zu Azure Active Directory](active-directory-create-users.md). Hinzugefügte Benutzer verfügen nicht standardmäßig über Administratorberechtigungen, aber Sie können ihnen jederzeit Rollen zuweisen.
+In diesem Artikel wird beschrieben, wie Sie Benutzer von anderen Verzeichnissen in Azure Active Directory sowie Benutzer von Partnerunternehmen hinzufügen. Informationen dazu, wie Sie neue Benutzer in Ihrer Organisation sowie Benutzer mit Microsoft-Konten hinzufügen finden Sie unter [Hinzufügen neuer Benutzer zu Azure Active Directory](active-directory-create-users.md). Hinzugefügte Benutzer verfügen nicht standardmäßig über Administratorberechtigungen, aber Sie können ihnen jederzeit Rollen zuweisen.
 
 ## Hinzufügen eines Benutzers
 
@@ -84,4 +84,4 @@ Wenn ein Benutzer in seinem Basisverzeichnis gelöscht wird oder sein Microsoft-
 - [Verwalten von Kennwörtern in Azure AD](active-directory-manage-passwords.md)
 - [Verwalten von Gruppen in Azure AD](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0810_2016-->

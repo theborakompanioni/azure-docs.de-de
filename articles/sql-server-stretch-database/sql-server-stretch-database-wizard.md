@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="06/27/2016"
+	ms.date="08/05/2016"
 	ms.author="douglasl"/>
 
 # Ausführen des Assistenten zum Aktivieren einer Datenbank für Stretch
@@ -22,11 +22,13 @@ Führen Sie zum Konfigurieren einer Datenbank für Stretch-Datenbank den Assiste
 
 Weitere Informationen zu Stretch-Datenbank finden Sie unter [Stretch-Datenbank](sql-server-stretch-database-overview.md).
 
+ >   [AZURE.NOTE] Bedenken Sie später beim Deaktivieren von Stretch-Datenbank Folgendes: Wenn Sie Stretch-Datenbank für eine Tabelle oder eine Datenbank deaktivieren, wird das Remoteobjekt nicht gelöscht. Wenn Sie die Remotetabelle oder die Remotedatenbank löschen möchten, müssen Sie sie mithilfe des Azure-Verwaltungsportals entfernen. Für die Remoteobjekte fallen weiterhin Azure-Kosten an, bis Sie die Objekte manuell löschen.
+
 ## Starten des Assistenten
 
 1.  Wählen Sie in SQL Server Management Studio im Objekt-Explorer die Datenbank aus, für die Stretch aktiviert werden soll.
 
-2.  Klicken Sie mit der rechten Maustaste, und wählen Sie **Aufgaben** und dann **Stretch** aus. Wählen Sie dann **Aktivieren**, um den Assistenten zu starten.
+2.  Klicken Sie mit der rechten Maustaste, wählen Sie **Aufgaben** > **Stretch** und anschließend **Aktivieren** aus, um den Assistenten zu starten.
 
 ## <a name="Intro"></a>Einführung
 Überprüfen Sie den Zweck des Assistenten und die Voraussetzungen.
@@ -53,24 +55,24 @@ Tabellen mit vielen Zeilen werden in der sortierten Liste oben angezeigt. Bevor 
 |(ohne Titel)|Ein Symbol in dieser Spalte kann eine Warnung darstellen, durch die nicht verhindert wird, dass Sie die ausgewählte Tabelle für Stretch aktivieren. Es kann auch für ein Hindernis stehen, durch das die Aktivierung der ausgewählten Tabelle für Stretch verhindert wird. Der Grund kann beispielsweise sein, dass in der Tabelle ein nicht unterstützter Datentyp verwendet wird. Zeigen Sie auf das Symbol, um weitere Informationen in einer QuickInfo anzuzeigen. Weitere Informationen finden Sie unter [Einschränkungen für Stretch-Datenbank](sql-server-stretch-database-limitations.md).|
 |**Gestreckt**|Gibt an, ob die Tabelle bereits für Stretch aktiviert ist.|
 |**Migrieren**|Sie können eine gesamte Tabelle migrieren (**Ganze Tabelle**) oder einen Filter für eine vorhandene Spalte in der Tabelle angeben. Wenn Sie eine andere Filterfunktion verwenden möchten, um die zu migrierenden Spalten auszuwählen, führen Sie die Anweisung ALTER TABLE aus, um die Filterfunktion nach dem Beenden des Assistenten festzulegen. Weitere Informationen zur Filterfunktion finden Sie unter [Auswählen von Zeilen für die Migration mit einer Filterfunktion](sql-server-stretch-database-predicate-function.md). Weitere Informationen zum Anwenden der Funktion finden Sie unter [Aktivieren von Stretch-Datenbank für eine Tabelle](sql-server-stretch-database-enable-table.md) oder [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx).|
-|**beibehalten**|Gibt die Anzahl der Zeilen in der Tabelle an|
+|**Zeilen**|Gibt die Anzahl der Zeilen in der Tabelle an.|
 |**Größe (KB)**|Gibt die Größe der Tabelle in KB an.|
 
 ## <a name="Filter"></a>Optionales Bereitstellen eines Zeilenfilters
 
-Führen Sie auf der Seite **Tabellen auswählen** die folgenden Schritte aus, wenn Sie zum Auswählen von zu migrierenden Spalten eine Filterfunktion angeben möchten.
+Führen Sie auf der Seite **Tabellen auswählen** die folgenden Schritte aus, wenn Sie eine Filterfunktion zum Auswählen der zu migrierenden Spalten angeben möchten.
 
-1.  Klicken Sie in der Liste **Zu streckende Tabellen auswählen** in der Spalte für die Tabelle auf **Ganze Tabelle**. Das Dialogfeld **Zu streckende Zeilen auswählen** wird geöffnet.
+1.  Klicken Sie in der Liste **Wählen Sie die Tabellen aus, die Sie strecken möchten.** in der Spalte für die Tabelle auf **Ganze Tabelle**. Das Dialogfeld **Wählen Sie die zu streckenden Zeilen aus.** wird geöffnet.
 
     ![Definieren einer Filterfunktion][StretchWizardImage2a]
 
-2.  Wählen Sie im Dialogfeld **Zu streckende Zeilen auswählen** die Option **Zeilen auswählen** aus.
+2.  Wählen Sie im Dialogfeld **Wählen Sie die zu streckenden Zeilen aus.** die Option **Zeilen auswählen** aus.
 
-3.  Geben Sie im **Namensfeld** einen Namen für die Filterfunktion an.
+3.  Geben Sie im Feld **Name** einen Namen für die Filterfunktion an.
 
-4.  Wählen Sie für die **WHERE**-Klausel eine Spalte der Tabelle und anschließend einen Operator aus, und geben Sie einen Wert an.
+4.  Wählen Sie für die **Where**-Klausel eine Spalte der Tabelle und anschließend einen Operator aus, und geben Sie einen Wert an.
 
-5. Klicken Sie zum Prüfen der Funktion auf **Überprüfen**. Wenn die Funktion aus der Tabelle Ergebnisse zurückgibt (also wenn zu migrierende Zeilen vorhanden sind, auf die die Bedingung zutrifft), meldet der Test **Erfolg**.
+5. Klicken Sie zum Prüfen der Funktion auf **Überprüfen**. Wenn die Funktion Ergebnisse aus der Tabelle zurückgibt (also zu migrierende Zeilen vorhanden sind, auf die die Bedingung zutrifft), wird **Erfolgreich** zurückgegeben.
 
     >   [AZURE.NOTE] Das Textfeld, in dem die Filterabfrage angezeigt wird, ist schreibgeschützt. Es ist nicht möglich, die Abfrage im Textfeld zu bearbeiten.
 
@@ -90,13 +92,13 @@ Führen Sie einen der folgenden Schritte aus, wenn Sie eine andere Art von Filte
 
 1.  Melden Sie sich bei Microsoft Azure mit einem Microsoft-Konto an.
 
-    ![Anmelden bei Azure – Assistent der Stretch-Datenbank][StretchWizardImage3]
+    ![Anmelden bei Azure – Assistent der Stretch-Datenbank][StretchWizardImage3]
 
 2.  Wählen Sie das vorhandene Azure-Abonnement aus, das für Stretch-Datenbank verwendet werden soll.
 
 3.  Wählen Sie eine Azure-Region.
     -   Wenn Sie einen neuen Server erstellen, wird der Server in dieser Region erstellt.
-    -   Wenn Sie in der ausgewählten Region über Server verfügen, werden diese vom Assistenten aufgeführt, wenn Sie **Vorhandener Server** wählen.
+    -   Falls Sie über Server in der ausgewählten Region verfügen, werden diese vom Assistenten aufgeführt, wenn Sie **Vorhandener Server** auswählen.
 
     Um Latenz zu minimieren, wählen Sie die Azure-Region, in der sich Ihr SQL Server befindet. Weitere Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).
 
@@ -110,7 +112,7 @@ Führen Sie einen der folgenden Schritte aus, wenn Sie eine andere Art von Filte
 
         2.  Wählen Sie optional ein Verbunddienstkonto für SQL Server für die Kommunikation mit dem Azure-Remoteserver aus.
 
-		![Erstellen eines neuen Azure-Server – Assistent der Stretch-Datenbank][StretchWizardImage4]
+		![Erstellen eines neuen Azure-Server – Assistent der Stretch-Datenbank][StretchWizardImage4]
 
     -   **Vorhandener Server**
 
@@ -118,11 +120,11 @@ Führen Sie einen der folgenden Schritte aus, wenn Sie eine andere Art von Filte
 
         2.  Wählen Sie die Authentifizierungsmethode aus.
 
-            -   Geben Sie den Administratorbenutzernamen und das Kennwort an, wenn Sie die Option **SQL Server-Authentifizierung** verwenden.
+            -   Geben Sie bei Verwendung der Option **SQL Server-Authentifizierung** den Administratorbenutzernamen und das dazugehörige Kennwort an.
 
-            -   Wählen Sie **Integrierte Active Directory-Authentifizierung** aus, um ein Verbunddienstkonto für SQL Server für die Kommunikation mit dem Azure-Remoteserver zu verwenden. Diese Option wird nicht angezeigt, wenn der ausgewählte Server nicht in Azure Active Directory integriert ist.
+            -   Wählen Sie **Integrierte Active Directory-Authentifizierung** aus, um für die Kommunikation mit dem Azure-Remoteserver ein Verbunddienstkonto für SQL Server zu verwenden. Diese Option wird nicht angezeigt, wenn der ausgewählte Server nicht in Azure Active Directory integriert ist.
 
-		![Auswählen eines vorhandenen Azure-Servers – Assistent der Stretch-Datenbank][StretchWizardImage5]
+		![Auswählen eines vorhandenen Azure-Servers – Assistent der Stretch-Datenbank][StretchWizardImage5]
 
 ## <a name="Credentials"></a>Sichere Anmeldeinformationen
 Sie brauchen einen Datenbankhauptschlüssel, um die Anmeldeinformationen zu sichern, die Stretch-Datenbank für die Verbindung mit der Remotedatenbank verwendet.
@@ -135,7 +137,7 @@ Wenn die Datenbank keinen vorhandenen Hauptschlüssel aufweist, müssen Sie ein 
 
 ![Seite mit den sicheren Anmeldeinformationen des Assistenten der Stretch-Datenbank][StretchWizardImage6]
 
-Weitere Informationen zum Datenbankhauptschlüssel finden Sie unter [CREATE MASTER KEY (Transact-SQL)](https://msdn.microsoft.com/library/ms174382.aspx) und [Erstellen eines Datenbankhauptschlüssels](https://msdn.microsoft.com/library/aa337551.aspx). Weitere Informationen zu den Anmeldeinformationen, die der Assistent erstellt, finden Sie unter [CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/mt270260.aspx).
+Weitere Informationen zum Datenbankhauptschlüssel finden Sie unter [CREATE MASTER KEY (Transact-SQL)](https://msdn.microsoft.com/library/ms174382.aspx) sowie unter [Erstellen eines Datenbankhauptschlüssels](https://msdn.microsoft.com/library/aa337551.aspx). Weitere Informationen zu den Anmeldeinformationen, die der Assistent erstellt, finden Sie unter [CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/mt270260.aspx).
 
 ## <a name="Network"></a>Auswählen der IP-Adresse
 Verwenden Sie den Subnetz-IP-Adressbereich (empfohlen) oder die öffentliche IP-Adresse Ihrer SQL Server-Instanz, um eine Firewallregel für Azure zu erstellen, damit SQL Server mit dem Azure-Remoteserver kommunizieren kann.
@@ -145,7 +147,7 @@ Die auf dieser Seite angegebenen IP-Adressen informieren den Azure-Server darüb
 ![Auswählen der IP-Adressseite des Assistenten der Stretch-Datenbank][StretchWizardImage7]
 
 ## <a name="Summary"></a>Zusammenfassung
-Überprüfen Sie die Werte, die Sie eingegeben haben, und die im Assistenten ausgewählten Optionen sowie die geschätzten Kosten in Azure. Wählen Sie dann **Fertig stellen**, um Stretch zu aktivieren.
+Überprüfen Sie die Werte, die Sie eingegeben haben, und die im Assistenten ausgewählten Optionen sowie die geschätzten Kosten in Azure. Wählen Sie dann **Fertig stellen** aus, um Stretch zu aktivieren.
 
 ![Zusammenfassungsseite des Assistenten der Stretch-Datenbank][StretchWizardImage8]
 
@@ -191,4 +193,4 @@ Aktivieren von zusätzlichen Tabellen für Stretch-Datenbank Überwachen der Dat
 [StretchWizardImage8]: ./media/sql-server-stretch-database-wizard/stretchwiz8.png
 [StretchWizardImage9]: ./media/sql-server-stretch-database-wizard/stretchwiz9.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

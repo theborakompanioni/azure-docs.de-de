@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # Verzeichnisintegration zwischen Azure MFA-Server und Active Directory
@@ -25,7 +25,7 @@ Standardmäßig wird der Azure Multi-Factor Authentication-Server zum Importiere
 
 ![Einstellungen](./media/multi-factor-authentication-get-started-server-dirint/dirint.png)
 
-| Funktion | Beschreibung |
+| Feature | Beschreibung |
 | ------- | ----------- |
 | Active Directory verwenden | Wählen Sie die Option „Active Directory verwenden“ aus, um Active Directory zum Importieren und Synchronisieren zu nutzen. Dies ist die Standardeinstellung. <br>Hinweis: Der Computer muss einer Domäne angehören, und Sie müssen mit einem Domänenkonto angemeldet sein, damit die Active Directory-Integration richtig funktioniert. |
 | Vertrauenswürdige Domänen einschließen | Aktivieren Sie das Kontrollkästchen „Vertrauenswürdige Domänen einschließen“. Der Agent versucht dann, eine Verbindung mit Domänen herzustellen, die von der aktuellen Domäne als vertrauenswürdig angesehen werden, oder mit einer anderen Domäne in der Gesamtstruktur bzw. mit an einer Gesamtstruktur-Vertrauensstellung beteiligten Domänen. Wenn Sie keine Benutzer aus den vertrauenswürdigen Domänen importieren bzw. keine Synchronisierung dafür durchführen, sollten Sie das Kontrollkästchen deaktivieren, um die Leistung zu verbessern. Diese Option ist standardmäßig aktiviert. |
@@ -35,7 +35,7 @@ Standardmäßig wird der Azure Multi-Factor Authentication-Server zum Importiere
 
 In der folgenden Tabelle sind die LDAP-Konfigurationseinstellungen beschrieben.
 
-| Funktion | Beschreibung |
+| Feature | Beschreibung |
 | ------- | ----------- |
 | Server | Geben Sie den Hostnamen oder die IP-Adresse des Servers ein, auf dem das LDAP-Verzeichnis ausgeführt wird. Sie können auch einen Sicherungsserver durch ein Semikolon getrennt angeben. <br>Hinweis: Wenn der Bindungstyp SSL lautet, ist normalerweise ein vollqualifizierter Hostname erforderlich. |
 | Basis-DN | Geben Sie den Distinguished Name des Basisverzeichnisobjekts an, von dem alle Verzeichnisabfragen ausgehen. Beispiel: dc=abc,dc=com. |
@@ -64,12 +64,12 @@ Attribute können je nach Bedarf für ein bestimmtes Verzeichnis angepasst werde
 
 ![Attribute](./media/multi-factor-authentication-get-started-server-dirint/dirint3.png)
 
-| Funktion | Beschreibung |
+| Feature | Beschreibung |
 | ------- | ----------- |
 | Eindeutiger Bezeichner | Geben Sie den Attributnamen des Attributs ein, das als eindeutiger Bezeichner von Container-, Sicherheitsgruppen- und Benutzerdatensätzen dient. In Active Directory ist dies normalerweise „objectGUID“. In anderen LDAP-Implementierungen kann dies „entryUUID“ oder etwas Ähnliches sein. Der Standardwert lautet „objectGUID“. |
 | ... Schaltflächen für „Attribut auswählen“ | Neben jedem Attributfeld befindet sich die Schaltfläche „...“, mit dem Sie das Dialogfeld „Attribut auswählen“ anzeigen können, um ein Attribut aus einer Liste auszuwählen. <br><br>Dialogfeld „Attribut auswählen“<br><br>Hinweis: Attribute können manuell eingegeben werden und müssen nicht mit einem Attribut in der Attributliste übereinstimmen. |
 | Typ des eindeutigen Bezeichners | Wählen Sie den Typ des eindeutigen Bezeichnerattributs aus. In Active Directory hat das objectGUID-Attribut den Typ GUID. In anderen LDAP-Implementierungen kann der Typ „ASCII-Bytearray“ oder „Zeichenfolge“ lauten. Der Standardwert lautet GUID. <br><br>Hinweis: Es ist wichtig, dies richtig festzulegen. Auf Synchronisierungselemente wird über ihren eindeutigen Bezeichner verwiesen, und der Typ des eindeutigen Bezeichners wird verwendet, um das Objekt direkt im Verzeichnis ermitteln zu können. Falls dies auf „Zeichenfolge“ festgelegt wird, wenn der Wert im Verzeichnis als Bytearray mit ASCII-Zeichen gespeichert wird, funktioniert die Synchronisierung nicht richtig. |
-| Distinguished Name | Geben Sie den Attributnamen des Attributs ein, das den Distinguished Name für die einzelnen Datensätze enthält. In Active Directory ist dies normalerweise „distinguishedName“. In anderen LDAP-Implementierungen kann dies „entryDN“ oder etwas Ähnliches sein. Der Standardwert lautet „distinguishedName“. <br><br>Hinweis: Wenn kein Attribut vorhanden ist, das nur den Distinguished Name enthält, kann das adspath-Attribut verwendet werden. Der Teil „LDAP://<server>/“ des Pfads wird automatisch entfernt, sodass nur der Distinguished Name des Objekts übrig bleibt. |
+| Distinguished Name | Geben Sie den Attributnamen des Attributs ein, das den Distinguished Name für die einzelnen Datensätze enthält. In Active Directory ist dies normalerweise „distinguishedName“. In anderen LDAP-Implementierungen kann dies „entryDN“ oder etwas Ähnliches sein. Der Standardwert lautet „distinguishedName“. <br><br>Hinweis: Wenn kein Attribut vorhanden ist, das nur den Distinguished Name enthält, kann das adspath-Attribut verwendet werden. Der Teil „LDAP://<Server>/“ des Pfads wird automatisch entfernt, sodass nur der Distinguished Name des Objekts übrig bleibt. |
 | Containername | Geben Sie den Attributnamen des Attributs ein, das den Namen in einem Containerdatensatz enthält. Der Wert dieses Attributs wird in der Containerhierarchie angezeigt, wenn aus Active Directory importiert wird oder Synchronisierungselemente hinzugefügt werden. Die Standardeinstellung lautet „name“. <br><br>Hinweis: Wenn unterschiedliche Container verschiedene Attribute für ihre Namen verwenden, können mehrere Containernamenattribute getrennt durch Semikolons angegeben werden. Das erste Containernamenattribut eines Containerobjekts wird zum Anzeigen des Namens verwendet. |
 | Sicherheitsgruppenname | Geben Sie den Attributnamen des Attributs ein, das den Namen in einem Sicherheitsgruppendatensatz enthält. Der Wert dieses Attributs wird in der Liste „Sicherheitsgruppe“ angezeigt, wenn aus Active Directory importiert wird oder Synchronisierungselemente hinzugefügt werden. Die Standardeinstellung lautet „name“. |
 | Benutzer | Die folgenden Attribute werden zum Suchen, Anzeigen, Importieren und Synchronisieren von Benutzerinformationen aus dem Verzeichnis verwendet. |
@@ -112,7 +112,7 @@ Wenn die Verwendung von LDAP konfiguriert ist und das LDAP-Verzeichnis die DirSy
 
 Die Tabelle unten enthält weitere Informationen zu den einzelnen Einstellungen auf der Registerkarte „Synchronisierung“.
 
-| Funktion | Beschreibung |
+| Feature | Beschreibung |
 | ------- | ----------- |
 | Synchronisierung mit Active Directory aktivieren | Wenn dieses Kontrollkästchen aktiviert ist, wird der Multi-Factor Authentication-Server-Dienst gestartet, um Active Directory regelmäßig auf Änderungen abzufragen. <br><br>Hinweis: Es muss mindestens ein Synchronisierungselement hinzugefügt werden, und es muss der Schritt „Jetzt synchronisieren“ ausgeführt werden, bevor der Multi-Factor Authentication-Server-Dienst mit dem Verarbeiten von Änderungen beginnt. |
 | Synchronisierung alle | Geben Sie das Zeitintervall an, wie lange der Multi-Factor Authentication-Server-Dienst zwischen dem Abrufen und Verarbeiten von Änderungen wartet. <br><br>Hinweis: Das angegebene Intervall ist der Zeitraum zwischen dem Startzeitpunkt der jeweiligen Zyklen. Wenn die Zeit zum Verarbeiten von Änderungen das Intervall überschreitet, startet der Dienst sofort wieder einen Abruf. |
@@ -137,4 +137,4 @@ Zusätzliche Multi-Factor Authentication-Server können als RADIUS-Backupproxy, 
 
 ![Multi-Factor Authentication-Server](./media/multi-factor-authentication-get-started-server-dirint/dirint6.png)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->
