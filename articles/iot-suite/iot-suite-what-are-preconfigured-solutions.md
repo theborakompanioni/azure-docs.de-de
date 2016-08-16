@@ -34,7 +34,8 @@ In der folgenden Tabelle wird gezeigt, welchen IoT-Features die Lösungen zugeor
 
 | Lösung | Datenerfassung | Geräteidentität | Befehl und Steuerung | Regeln und Aktionen | Predictive Analytics |
 |------------------------|-----|-----|-----|-----|-----|
-| [Remoteüberwachung][lnk-getstarted-preconfigured] | Ja | Ja | Ja | Ja | – | | [Vorbeugende Wartung][lnk-predictive-maintenance] | Ja | Ja | Ja | Ja | Ja |
+| [Remoteüberwachung][lnk-getstarted-preconfigured] | Ja | Ja | Ja | Ja | – |
+| [Vorbeugende Wartung][lnk-predictive-maintenance] | Ja | Ja | Ja | Ja | Ja |
 
 - *Datenerfassung:* Skalierbarer Dateneingang in der Cloud
 - *Geräteidentität:* Verwaltung eindeutiger Identitäten von jedem verbundenen Gerät
