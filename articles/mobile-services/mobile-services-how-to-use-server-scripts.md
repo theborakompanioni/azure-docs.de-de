@@ -237,7 +237,7 @@ Alternativ können Sie auch ganzzahlige IDs für Ihre Tabellen verwenden. Um gan
 
 Wenn Sie eine Anforderung an Ihren Mobile Service schicken, können Sie die Anforderungs-URI um benutzerdefinierte Parameter erweitern, um Ihrem Tabellenvorgangs-Skript mitzuteilen, wie eine bestimmte Anforderung behandelt werden soll. Anschließend ändern Sie Ihr Skript, sodass dieses den Parameter ausliest und den Verarbeitungspfad ermittelt.
 
-Die folgende URI für eine POST-Anforderung weist den Service z. B. an, keine Einfügung von *TodoItem*s mit demselben Textwert zuzulassen:
+Die folgende URI für eine POST-Anforderung weist den Service z. B. an, keine Einfügung von *TodoItem* s mit demselben Textwert zuzulassen:
 
 		https://todolist.azure-mobile.net/tables/TodoItem?duplicateText=false
 
